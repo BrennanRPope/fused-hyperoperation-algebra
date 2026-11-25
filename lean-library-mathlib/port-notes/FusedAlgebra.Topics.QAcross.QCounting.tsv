@@ -1,0 +1,22 @@
+original	status	new_name	note
+gauss	ported	QCounting.gauss	kept as a coefficient list by q-Pascal (mathlib has no Gaussian binomials); equation lemmas gauss_zero_right, gauss_zero_succ, gauss_succ_succ added
+peval	ported	QCounting.peval	computable Horner evaluation; QCounting.peval_eq_eval identifies it with Polynomial.eval
+peval_padd	ported	QCounting.peval_padd	
+peval_pzeros	ported	QCounting.peval_pzeros	pw x k is now x ^ k
+gauss_at_one	ported	QCounting.gauss_at_one	Cube.layer is now Nat.choose
+gauss_4_2	ported	QCounting.gauss_4_2	
+gauss_at_neg_one	ported	QCounting.gauss_at_neg_one	Cube.layer is now Nat.choose; Bool test written as a Prop
+padd2	ported	QCounting.padd2	
+mulLin	ported	QCounting.mulLin	
+qbinLHS	ported	QCounting.qbinLHS	
+qbinRHS	ported	QCounting.qbinRHS	
+q_binomial_theorem	ported	QCounting.q_binomial_theorem	finite check n ≤ 6, as in the original
+uq_sl2_commutator	ported	QCounting.uq_sl2_commutator	
+uq_sl2_weight	mathlib	mul_assoc	the statement q * q * x = q * (q * x) is associativity
+sl2_classical	ported	QCounting.sl2_classical	generalised from ℤ to any commutative ring
+quantum_dim_is_loop	ported	QCounting.quantum_dim_is_loop	written with powers
+isingStep	ported	QCounting.isingStep	
+ising	ported	QCounting.ising	now (isingStep u)^[n] (1, 0); ising_zero, ising_succ added; new transfer_pow and trace_transfer_pow tie it to the Matrix !![1, u; u, 1] ^ n
+ising_eigen	ported	QCounting.ising_eigen	
+ising_trace	ported	QCounting.ising_trace	
+ising_multAdd	ported	QCounting.ising_multAdd	
