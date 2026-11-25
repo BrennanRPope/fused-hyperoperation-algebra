@@ -44,6 +44,7 @@ public import FusedAlgebra.Topics.QAcross.QDial
 public import FusedAlgebra.Topics.QuantumNoise
 public import FusedAlgebra.Topics.Relativity
 public import FusedAlgebra.Topics.Rulecraft
+public import FusedAlgebra.Topics.RungShape
 public import FusedAlgebra.Topics.ShapeDirections
 public import FusedAlgebra.Topics.Thermodynamics
 public import FusedAlgebra.Topics.Topology.CubeProofs

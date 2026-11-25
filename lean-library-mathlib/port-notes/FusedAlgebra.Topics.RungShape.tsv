@@ -1,0 +1,20 @@
+original	status	new_name	note
+twist_rung1	ported	RungShape.twist_rung1	
+twist_dial	ported	RungShape.twist_dial	
+ruled_rung1	ported	RungShape.ruled_rung1	
+ruled_rung1'	ported	RungShape.ruled_rung1'	
+axis_rung1	ported	RungShape.axis_rung1	
+flow_heights_add	ported	RungShape.flow_heights_add	
+flow_zero	ported	RungShape.flow_zero	
+sheet_rung0	mathlib	add_sub_cancel	a + (c - a) = c
+sheet_rung1	ported	RungShape.sheet_rung1	follows from MultAdd.msub_multAdd
+sheet_dial	ported	RungShape.sheet_dial	
+sheet_edges	ported	RungShape.sheet_edges	is MultAdd.multAdd_zero and MultAdd.zero_multAdd
+flow_closed	ported	RungShape.flow_closed	is div_mul_cancel₀
+addPow	mathlib	HSMul.hSMul	addPow a d is d • a (the natural-number scalar multiple)
+addPow_eq	mathlib	smul_eq_mul	d • a = d * a on ℕ
+cube_count	ported	RungShape.cube_count	is MultAdd.one_add_mpow at 1; compare MultAdd.Cube.mpow_one_add_one
+lensOp	ported	RungShape.lensOp	universe-polymorphic
+sheet_iff_line	ported	RungShape.sheet_iff_line	hypotheses stated as Function.LeftInverse; φ ψ implicit
+sheet_diagonal	ported	RungShape.sheet_diagonal	hypotheses stated as Function.LeftInverse; φ ψ implicit
+sheet_rung1_lens	ported	RungShape.sheet_rung1_lens	
