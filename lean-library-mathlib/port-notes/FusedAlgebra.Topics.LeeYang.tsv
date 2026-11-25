@@ -1,0 +1,49 @@
+original	status	new_name	note
+Mat2	mathlib	Matrix (Fin 2) (Fin 2) R	hand-rolled 2×2 record replaced by mathlib matrices
+Mat2.ext'	mathlib	Matrix.ext	also Matrix.eta_fin_two
+Mat2.one	mathlib	1 (Matrix.one_fin_two)	
+Mat2.mul	mathlib	HMul.hMul (Matrix.mul_fin_two)	
+Mat2.smul	mathlib	SMul.smul (Matrix.smul)	
+Mat2.tr	mathlib	Matrix.trace	Matrix.trace_fin_two
+Mat2.det	mathlib	Matrix.det	Matrix.det_fin_two
+Mat2.pow	mathlib	HPow.hPow (NPow.npow)	original recursion multiplied on the left; same value
+edge_gas	ported	LeeYang.edge_gas	
+edge_gas_free	ported	LeeYang.edge_gas_free	
+edge_gas_hardcore	ported	LeeYang.edge_gas_hardcore	
+ringT	ported	LeeYang.ringT	now !![1, z; 1, k * z]
+ringT_tr	ported	LeeYang.trace_ringT	renamed
+ringT_det	ported	LeeYang.det_ringT	renamed
+cayley_hamilton	ported	LeeYang.sq_eq_trace_smul_sub_det_smul_one	renamed; stated as x ^ 2 = tr x • x - det x • 1; general theorem is Matrix.aeval_self_charpoly; sq_of_trace_eq_zero added
+odd_pow_of_tr_zero	ported	LeeYang.pow_two_mul_add_one_of_trace_eq_zero	renamed
+tr_odd_pow_zero	ported	LeeYang.trace_pow_two_mul_add_one_of_trace_eq_zero	renamed
+odd_ring_vanishes_on_wall	ported	LeeYang.odd_ring_vanishes_on_wall	
+even_pow_of_tr_zero	ported	LeeYang.pow_two_mul_of_trace_eq_zero	renamed
+even_ring_on_wall	ported	LeeYang.even_ring_on_wall	
+triangle_count	ported	LeeYang.triangle_count	
+square_count	ported	LeeYang.square_count	
+pentagon_count	ported	LeeYang.pentagon_count	
+triangle_factor	ported	LeeYang.triangle_factor	
+triangle_disc	ported	LeeYang.triangle_disc	discrim_triangle added (same identity through mathlib's discrim)
+triangle_disc_nonpos	ported	LeeYang.triangle_disc_nonpos	generalised from ℤ to any linearly ordered commutative ring
+ring_disc	ported	LeeYang.ring_disc	
+ring_disc_free	ported	LeeYang.ring_disc_free	
+ring_zero_family	ported	LeeYang.ring_zero_family	
+ring_family_wall	ported	LeeYang.ring_family_wall	
+ring_family_edge	ported	LeeYang.ring_family_edge	
+ring_family_zeta	ported	LeeYang.ring_family_zeta	
+ring_edges_vieta	ported	LeeYang.ring_edges_vieta	
+pottsRing	ported	LeeYang.pottsRing	
+ising_ring_transfer	ported	LeeYang.ising_ring_transfer	matrix is !![1 + v, 1; 1, 1 + v]
+pottsRing_lift	ported	LeeYang.pottsRing_lift	generalised from a field to any commutative ring (the hypothesis is division-free)
+two_rings	ported	LeeYang.two_rings	
+cycle_chromatic	ported	LeeYang.cycle_chromatic	
+colourings_on_wall	ported	LeeYang.colourings_on_wall	
+ring_zero_at_q0	ported	LeeYang.ring_zero_at_q0	
+ring_zero_at_q1	ported	LeeYang.ring_zero_at_q1	
+one_pow'	mathlib	one_pow	
+ring_zero_at_q2_odd	ported	LeeYang.ring_zero_at_q2_odd	
+ring_at_q2_even	ported	LeeYang.ring_at_q2_even	
+ring_at_parity	ported	LeeYang.ring_at_parity	
+two_pow_ge_four	mathlib	pow_le_pow_right₀	helper; used inline as 2 ^ 2 ≤ 2 ^ n
+neg_one_pow_cases	mathlib	neg_one_pow_eq_or	helper; no longer needed (pow_ne_zero is used instead)
+parity_never_zero	ported	LeeYang.parity_never_zero	

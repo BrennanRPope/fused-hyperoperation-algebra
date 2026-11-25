@@ -1,0 +1,86 @@
+original	status	new_name	note
+M2	mathlib	Matrix (Fin 2) (Fin 2) R	entries a b c d are M 0 0, M 0 1, M 1 0, M 1 1; literals are !![a, b; c, d]
+M3	mathlib	Matrix (Fin 3) (Fin 3) R	entries aᵢⱼ are M (i-1) (j-1)
+M2.ext'	mathlib	Matrix.ext	
+M3.ext'	mathlib	Matrix.ext	
+M2.one	mathlib	One (Matrix n n R)	1; Matrix.one_fin_two
+M2.zero	mathlib	Zero (Matrix n n R)	0
+M2.add	mathlib	Matrix.add	A + B
+M2.sub	mathlib	Matrix.sub	A - B
+M2.mul	mathlib	Matrix.instHMulOfFintypeOfMulOfAddCommMonoid	A * B
+M2.smul	mathlib	Matrix.smul	k • A
+M2.transpose	mathlib	Matrix.transpose	Aᵀ
+M2.tr	mathlib	Matrix.trace	Matrix.trace_fin_two
+M2.det	mathlib	Matrix.det	Matrix.det_fin_two
+M2.madd	mathlib	MultAdd.multAdd	A ✳ B on the semiring Matrix n n R
+M2.wmadd	ported	LinearAlgebraMA.wmadd	one definition for any R-algebra: x + y + k • (x * y)
+M2.Dk	ported	LinearAlgebraMA.dialTwo	renamed
+M2.lift	mathlib	MultAdd.one_add_multAdd	holds in any semiring, so for matrices of any size
+M2.wlift	ported	LinearAlgebraMA.one_add_smul_wmadd	renamed; any algebra over a commutative semiring
+M2.madd_assoc	mathlib	MultAdd.multAdd_assoc	Basic.lean, any non-unital semiring
+M2.madd_zero	mathlib	MultAdd.multAdd_zero	
+M2.zero_madd	mathlib	MultAdd.zero_multAdd	
+M2.wmadd_zero_weight	ported	LinearAlgebraMA.wmadd_zero_weight	any algebra
+M2.det_one_add_smul	ported	LinearAlgebraMA.det_one_add_smul_fin_two	renamed; k * k written k ^ 2; see also LinearAlgebraMA.det_one_add_smul_eq_dialTwo
+M2.det_mul	mathlib	Matrix.det_mul	
+M2.tr_add	mathlib	Matrix.trace_add	
+M2.Dk_hom	ported	LinearAlgebraMA.dialTwo_wmadd	renamed
+M2.shifted_det_hom	ported	LinearAlgebraMA.shifted_det_hom	generalised to Matrix n n R for any finite n; see also LinearAlgebraMA.det_one_add_multAdd
+M2.coupling_sets_weight	ported	LinearAlgebraMA.coupling_sets_weight	
+M2.diagonal_is_multAdd	ported	LinearAlgebraMA.diagonal_is_multAdd	
+M2.rank_one_is_add	ported	LinearAlgebraMA.rank_one_is_add	hypothesis m.b * m.c = m.a * m.d restated as the equivalent M.det = 0, conclusion as M.trace
+M2.madd_not_comm	ported	LinearAlgebraMA.multAdd_not_comm	renamed
+M2.orth_lift	ported	LinearAlgebraMA.transpose_one_add_smul_mul	renamed; any finite n
+M2.rotation_condition	ported	LinearAlgebraMA.rotation_condition	x * x written x ^ 2
+M2.rotation_condition_flat	ported	LinearAlgebraMA.wmadd_zero_transpose	renamed; any finite n
+M3.one	mathlib	One (Matrix n n R)	
+M3.zero	mathlib	Zero (Matrix n n R)	
+M3.add	mathlib	Matrix.add	
+M3.smul	mathlib	Matrix.smul	
+M3.mul	mathlib	Matrix.instHMulOfFintypeOfMulOfAddCommMonoid	
+M3.transpose	mathlib	Matrix.transpose	
+M3.tr	mathlib	Matrix.trace	Matrix.trace_fin_three
+M3.e2	ported	LinearAlgebraMA.e2	on Matrix (Fin 3) (Fin 3) R; mathlib has no named second elementary invariant
+M3.det	mathlib	Matrix.det	Matrix.det_fin_three
+M3.madd	mathlib	MultAdd.multAdd	
+M3.wmadd	ported	LinearAlgebraMA.wmadd	same definition as the 2×2 case
+M3.Dk	ported	LinearAlgebraMA.dialThree	renamed
+M3.lift	mathlib	MultAdd.one_add_multAdd	
+M3.wlift	ported	LinearAlgebraMA.one_add_smul_wmadd	same theorem as the 2×2 case
+M3.madd_assoc	mathlib	MultAdd.multAdd_assoc	
+M3.madd_zero	mathlib	MultAdd.multAdd_zero	
+M3.det_one_add_smul	ported	LinearAlgebraMA.det_one_add_smul_fin_three	renamed; powers written with ^; see also LinearAlgebraMA.det_one_add_smul_eq_dialThree
+M3.det_one_add	ported	LinearAlgebraMA.det_one_add_fin_three	renamed
+M3.det_mul	mathlib	Matrix.det_mul	
+M3.box_cube	ported	LinearAlgebraMA.box_cube	
+M3.triangular_eigen	ported	LinearAlgebraMA.triangular_eigen	right side is multAddList; the any-size form is LinearAlgebraMA.det_one_add_of_isUpperTriangular (new, from Matrix.det_of_isUpperTriangular)
+M3.tr_add	mathlib	Matrix.trace_add	
+M3.orth_lift	ported	LinearAlgebraMA.transpose_one_add_smul_mul	same theorem as the 2×2 case
+M3.Dk_hom	ported	LinearAlgebraMA.dialThree_wmadd	renamed; generalised from fields to any commutative ring (ring proves it directly)
+M2.inv	mathlib	Matrix.inv	A⁻¹ = Ring.inverse A.det • A.adjugate; Matrix.adjugate_fin_two
+M2.mul_inv	mathlib	Matrix.mul_nonsing_inv	hypothesis det ≠ 0 becomes IsUnit det
+M2.add_one_eq_one	mathlib	add_eq_left	a + b = a ↔ b = 0; no longer needed
+M2.madd_inverse	ported	LinearAlgebraMA.multAdd_inv_sub_one	renamed; any finite n, any commutative ring, hypothesis IsUnit (1 + A).det (in a field: det ≠ 0)
+M2.msubM	ported	LinearAlgebraMA.msubM	any finite n, any commutative ring
+M2.msub_undo_W	dropped	LinearAlgebraMA.msubM_multAdd	helper for msub_undo; the new proof does not need it
+M2.msub_undo	ported	LinearAlgebraMA.msubM_multAdd	renamed; any finite n, any commutative ring, hypothesis IsUnit (1 + A).det
+M2.skew	ported	LinearAlgebraMA.skew	now over any commutative ring; LinearAlgebraMA.transpose_skew is new
+M2.cayley	ported	LinearAlgebraMA.cayley	uses Matrix.inv
+M2.det_one_add_skew	ported	LinearAlgebraMA.det_one_add_skew	s * s written s ^ 2
+M2.cayley_eq	ported	LinearAlgebraMA.cayley_eq	s * s written s ^ 2
+M2.cayley_is_msub	ported	LinearAlgebraMA.cayley_eq_one_add_msubM	renamed
+M2.cayley_on_circle	ported	LinearAlgebraMA.cayley_on_circle	squares written with ^ 2
+M2.cayley_on_wall_circle	ported	LinearAlgebraMA.cayley_on_wall_circle	squares written with ^ 2
+rotation_circle	ported	LinearAlgebraMA.rotation_circle	squares written with ^ 2
+kdv_two_soliton	ported	LinearAlgebraMA.kdv_two_soliton	squares written with ^ 2
+sadd	ported	LinearAlgebraMA.sadd	now for any type with + and 1, so it also applies to vectors
+fl1	ported	LinearAlgebraMA.fl	fl1 and fl2 are the two coordinates of fl M v = M *ᵥ (1 + v) - 1, for any finite n
+fl2	ported	LinearAlgebraMA.fl	see fl1
+fl_fixes_wall	ported	LinearAlgebraMA.fl_neg_one	renamed; vector form, any n, any ring
+fl_sadd	ported	LinearAlgebraMA.fl_sadd	vector form, any n, any ring
+fl_scale	ported	LinearAlgebraMA.fl_multAdd	renamed; vector form, any n
+multAdd_is_zoom	ported	LinearAlgebraMA.multAdd_is_zoom	any ring
+pow_mul''	mathlib	pow_mul	(a ^ m) ^ n = a ^ (m * n) is (pow_mul a m n).symm
+mono	ported	LinearAlgebraMA.mono	
+mono_hom	ported	LinearAlgebraMA.mono_multAdd	renamed
+mono_compose	ported	LinearAlgebraMA.mono_compose	generalised to any commutative monoid

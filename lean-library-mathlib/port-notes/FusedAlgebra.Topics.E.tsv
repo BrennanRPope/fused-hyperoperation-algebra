@@ -1,0 +1,45 @@
+original	status	new_name	note
+fall	mathlib	Nat.descFactorial	fall n k = n.descFactorial k
+tri	mathlib	Nat.choose	tri k = k.choose 2
+layer_mul_fact	mathlib	Nat.descFactorial_eq_factorial_mul_choose	n.descFactorial k = k ! * n.choose k
+fall_le_pow	mathlib	Nat.descFactorial_le_pow	
+layer_fact_le	ported	MultAdd.E.choose_mul_factorial_le_pow	renamed; two lines from mathlib (see also Nat.choose_le_pow_div)
+collisions	ported	MultAdd.E.collisions	stated with Nat.descFactorial and k.choose 2
+pow2_le_fact	mathlib	Nat.factorial_mul_pow_le_factorial	the case m = 1: 1! * 2 ^ N ≤ (1 + N)!
+tri_mono	mathlib	Nat.choose_le_choose	
+bernoulli	ported	MultAdd.E.bernoulli	same statement (mean-value form; mathlib's one_add_mul_le_pow is the usual form)
+bernoulli_strict	ported	MultAdd.E.bernoulli_strict	
+stair_nat_lt	ported	MultAdd.E.stair_nat_lt	
+rsum	mathlib	Finset.sum	rsum f m = ∑ k ∈ Finset.range m, f k
+rsum_add	mathlib	Finset.sum_add_distrib	
+rsum_mul	mathlib	Finset.mul_sum	
+rsum_shift	mathlib	Finset.sum_range_succ'	
+rsum_le	mathlib	Finset.sum_le_sum	
+rsum_nonneg	mathlib	Finset.sum_nonneg	
+rsum_mono	mathlib	Finset.sum_le_sum_of_subset_of_nonneg	with Finset.range_mono
+binomial	ported	MultAdd.E.binomial	any commutative semiring; one line from add_pow via MultAdd.Cube.one_add_mpow_eq_sum_choose
+le_div_of_mul_le	mathlib	le_div_iff₀	
+one_div_nonneg	mathlib	one_div_nonneg	
+one_div_le_one_div	mathlib	one_div_le_one_div_of_le	
+natcast_ne	mathlib	Nat.cast_ne_zero	
+fact_cast_pos	mathlib	Nat.factorial_pos	with Nat.cast_pos; in practice `positivity`
+inv_pow_mul	mathlib	one_div_pow	(1 / N) ^ k = 1 / N ^ k, then one_div_mul_cancel
+stair	ported	MultAdd.E.stair	any field K, K is an explicit argument: stair K n
+stair_eq_mpow	ported	MultAdd.E.stair_eq_mpow	any field
+wt	ported	MultAdd.E.wt	any field K, explicit argument: wt K n k
+stair_eq_cube	ported	MultAdd.E.stair_eq_cube	Finset sum; any field
+wt_nonneg	ported	MultAdd.E.wt_nonneg	any linearly ordered field
+wt_le	ported	MultAdd.E.wt_le	any linearly ordered field; from Nat.choose_le_pow_div
+wt_ge	ported	MultAdd.E.wt_ge	any linearly ordered field; tri k is k.choose 2
+s	ported	MultAdd.E.s	Finset sum; any field K, explicit argument
+u	ported	MultAdd.E.u	any field K, explicit argument
+stair_le_s	ported	MultAdd.E.stair_le_s	any linearly ordered field
+s_bound	ported	MultAdd.E.s_bound	any linearly ordered field
+s_lt_three	ported	MultAdd.E.s_lt_three	any linearly ordered field
+s_mono	ported	MultAdd.E.s_mono	restated as Monotone (s K)
+s_le_u	ported	MultAdd.E.s_le_u	any linearly ordered field
+u_step	ported	MultAdd.E.u_step	any linearly ordered field
+u_anti	ported	MultAdd.E.u_anti	any linearly ordered field
+stair_le_u	ported	MultAdd.E.stair_le_u	any linearly ordered field
+s_le_stair	ported	MultAdd.E.s_le_stair	any linearly ordered field; tri N is N.choose 2
+stair_lt_succ	ported	MultAdd.E.stair_lt_succ	any linearly ordered field

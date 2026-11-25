@@ -1,0 +1,30 @@
+original	status	new_name	note
+mre	ported	SimpleLaws.mre	any commutative ring; equals the real part of a product in mathlib's QuadraticAlgebra R (-q) k (SimpleLaws.mre_eq_re_mul, SimpleLaws.mk_mul_mk)
+mu	ported	SimpleLaws.mu	any commutative ring; equals the ω-part of a product in QuadraticAlgebra R (-q) k (SimpleLaws.mu_eq_im_mul)
+mul_rule	ported	SimpleLaws.mul_rule	any commutative ring; hypothesis written u ^ 2 = k * u - q
+mul_comm_re	ported	SimpleLaws.mul_comm_re	any commutative ring
+mul_comm_u	ported	SimpleLaws.mul_comm_u	any commutative ring
+mul_assoc_re	ported	SimpleLaws.mul_assoc_re	any commutative ring; now read off mul_assoc in QuadraticAlgebra
+mul_assoc_u	ported	SimpleLaws.mul_assoc_u	any commutative ring; now read off mul_assoc in QuadraticAlgebra
+tilted_re	ported	SimpleLaws.tilted_re	any commutative ring
+tilted_u	ported	SimpleLaws.tilted_u	any commutative ring
+multadd_point_u	ported	SimpleLaws.multAdd_point_u	renamed (multAdd spelling); any commutative ring
+multadd_point_re	ported	SimpleLaws.multAdd_point_re	renamed (multAdd spelling); any commutative ring
+complex_point	ported	SimpleLaws.complex_point	any commutative ring
+split_point	ported	SimpleLaws.split_point	any commutative ring
+dual_point	ported	SimpleLaws.dual_point	any commutative ring
+norm	ported	SimpleLaws.norm	any commutative ring; equals QuadraticAlgebra.norm (SimpleLaws.norm_eq_norm)
+norm_mul	ported	SimpleLaws.norm_mul	any commutative ring; now map_mul for QuadraticAlgebra.norm
+norm_conj	ported	SimpleLaws.norm_conj	any commutative ring; hypothesis written u ^ 2 = k * u - q
+four_norm	ported	SimpleLaws.four_norm	any commutative ring; squares written ^ 2; mathlib's QuadraticAlgebra.four_mul_norm_eq in coordinates
+sq_nonneg	mathlib	mul_self_nonneg	also sq_nonneg for x ^ 2
+norm_nonneg_turning	ported	SimpleLaws.norm_nonneg_turning	any linearly ordered commutative ring; hypothesis written k ^ 2 ≤ 4 * q
+norm_border	ported	SimpleLaws.norm_border	any commutative ring; squares written ^ 2
+norm_walls	ported	SimpleLaws.norm_walls	any commutative ring
+norm_complex	ported	SimpleLaws.norm_complex	any commutative ring; squares written ^ 2
+norm_split	ported	SimpleLaws.norm_split	any commutative ring; squares written ^ 2
+norm_dual	ported	SimpleLaws.norm_dual	any commutative ring; squares written ^ 2
+norm_multadd	ported	SimpleLaws.norm_multAdd	renamed (multAdd spelling); any commutative ring
+norm_multadd_tilted	ported	SimpleLaws.norm_multAdd_tilted	renamed; any commutative ring
+norm_multadd_lift	ported	SimpleLaws.norm_multAdd_lift	renamed; any commutative ring; now from norm_mul
+unit_circle_is_hyperbola	ported	SimpleLaws.unit_circle_is_hyperbola	any commutative ring

@@ -1,0 +1,12 @@
+original	status	new_name	note
+burgers_corner_defect	ported	FusedRungs.burgers_corner_defect	any commutative ring (original over ℤ)
+burgers_corner_ok_iff	ported	FusedRungs.burgers_corner_ok_iff	any commutative domain with 2 ≠ 0
+c0	ported	FusedRungs.c0	any commutative ring
+c1	ported	FusedRungs.c1	any commutative ring
+c2	ported	FusedRungs.c2	any commutative ring
+shell_energy	ported	FusedRungs.shell_energy	
+shell_helicity	ported	FusedRungs.shell_helicity	
+signs	mathlib	Finset.univ	the list of all sign triples is Finset.univ : Finset (Bool × Bool × Bool)
+minuses	ported	FusedRungs.minuses	
+sign_cube_layers	ported	FusedRungs.sign_cube_layers	counts are Finset cards over all triples instead of lengths of filtered lists; same numbers [1, 3, 3, 1]
+homochiral_layers	ported	FusedRungs.homochiral_layers	

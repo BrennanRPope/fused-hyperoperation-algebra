@@ -1,0 +1,57 @@
+original	status	new_name	note
+climb	dropped	MultAdd.one_add_mul_wpow	identical to the Basic lemma once pw is ^
+linearize	ported	InfoFused.linearize	any commutative semiring, any additive target
+lsum	mathlib	List.sum	
+outer	ported	InfoFused.outer	now (xs ×ˢ ys).map of the product; outer_nil and outer_cons give the old recursion
+lsum_append	mathlib	List.sum_append	
+lsum_map	mathlib	List.sum_map_mul_left	
+outer_sum	ported	InfoFused.outer_sum	any commutative semiring
+shan	ported	InfoFused.shan	now (xs.map fun x ↦ x * L x).sum; shan_nil and shan_cons give the old recursion
+shan_append	ported	InfoFused.shan_append	
+shan_map	ported	InfoFused.shan_map	
+outer_shan	ported	InfoFused.outer_shan	
+union_rule	ported	InfoFused.union_rule	one-line corollary of MultAdd.wAdd_neg_one; any commutative ring
+survival	ported	InfoFused.survival	any commutative ring
+union_is_flipped_madd	ported	InfoFused.union_is_flipped_madd	one-line corollary of MultAdd.wAdd_neg_one_eq_neg_multAdd
+incl_excl3	ported	InfoFused.incl_excl3	any commutative ring
+series_system	ported	InfoFused.series_system	one-line corollary of MultAdd.wpow_neg_one
+hazards_add	ported	InfoFused.hazards_add	any commutative ring, any additive target
+union_grows	ported	InfoFused.union_grows	any linearly ordered commutative ring
+hartley	ported	InfoFused.hartley	one-line corollary of pow_add; any semiring
+shannon_additive	ported	InfoFused.shannon_additive	any commutative semiring
+joint_sums_to_one	ported	InfoFused.joint_sums_to_one	any commutative semiring
+power_sums_multiply	ported	InfoFused.power_sums_multiply	same statement as outer_sum, kept under its topical name
+tsallis	ported	InfoFused.tsallis	any commutative ring; the variable R is renamed Q
+renyi_additive	ported	InfoFused.renyi_additive	any commutative semiring, any additive target
+gini_simpson	ported	InfoFused.gini_simpson	any commutative ring
+support_count	ported	InfoFused.support_count	any commutative ring
+shannon_weight	ported	InfoFused.shannon_weight	one-line corollary of MultAdd.wAdd_weight_zero
+uniform_tsallis_is_fused_power	ported	InfoFused.uniform_tsallis_is_fused_power	any commutative ring
+kraft_slack	ported	InfoFused.kraft_slack	same statement as gini_simpson, kept under its topical name
+kraft_product	ported	InfoFused.kraft_product	any linearly ordered commutative ring
+campbell	ported	InfoFused.campbell	same statement as support_count, kept under its topical name
+lengths_add	ported	InfoFused.lengths_add	one-line corollary of MultAdd.wAdd_weight_zero
+bsc_cascade	ported	InfoFused.bsc_cascade	any commutative ring
+bsc_cascade_diag	ported	InfoFused.bsc_cascade_diag	any commutative ring
+bsc_polarization	ported	InfoFused.bsc_polarization	any commutative ring
+piling_up	ported	InfoFused.piling_up	any field of characteristic zero
+n_flips	ported	InfoFused.n_flips	any commutative ring
+qary_cascade	ported	InfoFused.qary_cascade	any commutative ring
+ladder_never_cancel	ported	InfoFused.ladder_never_cancel	any commutative ring
+ladder_binary	ported	InfoFused.ladder_binary	any commutative ring
+ladder_four	ported	InfoFused.ladder_four	any field of characteristic zero
+bec_capacity	ported	InfoFused.bec_capacity	same statement as survival, kept under its topical name
+bec_dpi	ported	InfoFused.bec_dpi	one-line corollary of mul_le_of_le_one_right, in that lemma's generality
+bsc_dpi	ported	InfoFused.bsc_dpi	any linearly ordered field
+bsc_stays_below_half	ported	InfoFused.bsc_stays_below_half	any linearly ordered field
+sdpi_multiplies	ported	InfoFused.sdpi_multiplies	squares written as ^ 2 instead of x * x
+parallel_capacity	ported	InfoFused.parallel_capacity	same statement as hartley, kept under its topical name
+parity3	ported	InfoFused.parity3	products written as (1 - p) ^ 2 and p ^ 3
+cube_corners	ported	InfoFused.cube_corners	any commutative ring
+hamming_perfect	ported	InfoFused.hamming_perfect	
+check_node	ported	InfoFused.check_node	one-line corollary of MultAdd.mul_wAdd
+variable_node	ported	InfoFused.variable_node	same statement as support_count, kept under its topical name
+odds_to_velocity	ported	InfoFused.odds_to_velocity	any commutative ring
+velocity_corners	ported	InfoFused.velocity_corners	any commutative ring
+vadd	ported	InfoFused.vadd	any commutative ring
+vadd_assoc	ported	InfoFused.vadd_assoc	any commutative ring

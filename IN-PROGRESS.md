@@ -27,6 +27,6 @@ Full audit of the working folder against main, Nov 25 ~22:00 UTC: everything wit
 
 Nov 25 ~22:25 UTC: two folders saved mid-way as drafts at Brennan's ask, both merged into other streams: `topics/height-running-coupling/` and `topics/lucas-weights/`. Each README opens with a DRAFT banner, and INDEX.md lists them under Drafts.
 
-A port of the Lean library to mathlib is on the separate branch `mathlib-port`, not merged into main. The Mathlib build check runs on that branch (and builds it green on GitHub); no pull request to Mathlib is planned until the theory is more complete.
+The Mathlib version of the Lean library (`lean-library-mathlib/`) was merged into main on Nov 25 at Brennan's ask ("I'd like to make sure that everything's on main"), and main's CI now builds it with the proof-complexity study on every push. No pull request to Mathlib is planned until the theory is more complete.
 
 When syncing again, copy the current state of every folder and update INDEX.md.

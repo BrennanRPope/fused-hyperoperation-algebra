@@ -1,0 +1,10 @@
+original	status	new_name	note
+dial_or	dropped	MultAdd.wAdd_neg_one	identical statement, already in Basic for any commutative ring
+dial_three	ported	FractionalRungs.dial_three	any commutative semiring (original over ℤ)
+kdv_weight	ported	FractionalRungs.kdv_weight	any commutative ring
+fuse	ported	FractionalRungs.fuse	
+fuse_succ	ported	FractionalRungs.fuse_succ	
+fuse_max	ported	FractionalRungs.fuse_max	
+fuse_min	ported	FractionalRungs.fuse_min	
+fuse_add	ported	FractionalRungs.fuse_add	
+fuse_mul	ported	FractionalRungs.fuse_mul	right side written a ✳ b

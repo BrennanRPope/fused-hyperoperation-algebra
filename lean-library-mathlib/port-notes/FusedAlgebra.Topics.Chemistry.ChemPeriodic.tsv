@@ -1,0 +1,17 @@
+original	status	new_name	note
+shell_square	ported	ChemPeriodic.shell_square	ℕ → commutative semiring; (m + 1) ^ 2
+shellOrbitals	ported	ChemPeriodic.shellOrbitals	now the Finset sum ∑ l ∈ range (m + 1), (2 * l + 1)
+gnomons_fill	ported	ChemPeriodic.gnomons_fill	(m + 1) ^ 2
+gnomon	ported	ChemPeriodic.gnomon	kept on ℕ (truncated subtraction); squares
+shell_capacity	ported	ChemPeriodic.shell_capacity	
+two_spins	ported	ChemPeriodic.two_spins	ℕ → commutative semiring
+diagCap	ported	ChemPeriodic.diagCap	
+diagonals	ported	ChemPeriodic.diagonals	
+diagCap_closed	ported	ChemPeriodic.diagCap_closed	
+periodLen	ported	ChemPeriodic.periodLen	
+periods	ported	ChemPeriodic.periods	
+nobleZ	ported	ChemPeriodic.nobleZ	now the Finset sum ∑ i ∈ range p, periodLen (i + 1)
+noble_gases	ported	ChemPeriodic.noble_gases	
+period_is_diagonal	ported	ChemPeriodic.period_is_diagonal	
+q_integer	ported	ChemPeriodic.q_integer	commutative semiring; one line from MultAdd.one_add_mul_wpow
+q_integer_classical	ported	ChemPeriodic.q_integer_classical	ℚ → any commutative semiring (cast of n)

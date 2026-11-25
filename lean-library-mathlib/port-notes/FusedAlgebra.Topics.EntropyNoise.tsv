@@ -1,0 +1,50 @@
+original	status	new_name	note
+sq_nn	mathlib	mul_self_nonneg	also sq_nonneg
+pow_nn	mathlib	pow_nonneg	
+pow_le_one'	mathlib	pow_le_one₀	
+mul_ne_zero'	mathlib	mul_ne_zero	
+mul_bound	ported	EntropyNoise.abs_mul_le_of_abs_le_one	renamed and restated with abs: |a| ≤ u → |b| ≤ 1 → |a * b| ≤ u; equivalent to the original by abs_le'
+certainty_absorbs_iff	ported	EntropyNoise.certainty_absorbs_iff	any commutative ring
+escort_powers	ported	EntropyNoise.escort_powers	any monoid
+lsum_div	mathlib	List.sum_map_mul_right	with div_eq_mul_inv
+escort	ported	EntropyNoise.escort	any division ring; uses List.sum
+div_pow'	mathlib	div_pow	
+pow_ne_zero'	mathlib	pow_ne_zero	
+escort_escort	ported	EntropyNoise.escort_escort	any field
+len2	ported	EntropyNoise.len2	squares written as ^ 2; any commutative ring
+coll	ported	EntropyNoise.coll	squares written as ^ 2; any semiring
+collision_parseval	ported	EntropyNoise.collision_parseval	any field of characteristic zero
+linear_entropy_choi	ported	EntropyNoise.linear_entropy_choi	any field of characteristic zero
+midsphere_iff	ported	EntropyNoise.midsphere_iff	any linearly ordered field
+corner	ported	EntropyNoise.corner	any type with 0 and 1
+centre	ported	EntropyNoise.centre	any field of characteristic zero
+edgeMid	ported	EntropyNoise.edgeMid	any field of characteristic zero
+corner_point	ported	EntropyNoise.corner_point	any commutative ring
+centre_point	ported	EntropyNoise.centre_point	any field of characteristic zero
+edge_midpoint	ported	EntropyNoise.edge_midpoint	any field of characteristic zero
+octahedron_in_ball	ported	EntropyNoise.octahedron_in_ball	restated with abs: |x| + |y| + |z| ≤ 1 → x ^ 2 + y ^ 2 + z ^ 2 ≤ 1 (the original bounds u, v, w are |x|, |y|, |z|); any linearly ordered commutative ring
+ball_in_cube	ported	EntropyNoise.ball_in_cube	squares written as ^ 2; any linearly ordered commutative ring
+compose_stays_in_ball	ported	EntropyNoise.compose_stays_in_ball	squares written as ^ 2; any linearly ordered commutative ring
+compose_stays_in_octahedron	ported	EntropyNoise.compose_stays_in_octahedron	restated with abs; equivalent by abs_le'
+compose_stays_in_cube	ported	EntropyNoise.compose_stays_in_cube	restated with abs; same statement as abs_mul_le_of_abs_le_one, kept under its topical name
+collision_series	ported	EntropyNoise.collision_series	squares written as ^ 2; any field of characteristic zero
+map_sq_outer	ported	EntropyNoise.map_sq_outer	squares written as ^ 2; any commutative semiring
+collision_parallel	ported	EntropyNoise.collision_parallel	squares written as ^ 2; any commutative semiring
+depol	ported	EntropyNoise.depol	any field of characteristic zero
+depol_point	ported	EntropyNoise.depol_point	any field of characteristic zero
+diagonal_crossings	ported	EntropyNoise.diagonal_crossings	any linearly ordered field; (1/3) * (1/3) written as (1/3) ^ 2
+bit_collision	ported	EntropyNoise.bit_collision	squares written as ^ 2; any field of characteristic zero
+pattern_linear_entropy	ported	EntropyNoise.pattern_linear_entropy	any commutative ring
+cancellation_hides	ported	EntropyNoise.cancellation_hides	strengthened: the hypothesis x ≤ 1 is not needed and was removed; corollary of FinanceMultAdd.arith_mean_pow_le (this adds an import of Topics.Finance); any linearly ordered field
+gap_two	ported	EntropyNoise.gap_two	any field of characteristic zero
+synd	ported	EntropyNoise.synd	
+synd_antipodal	ported	EntropyNoise.synd_antipodal	
+synd_diagonal	ported	EntropyNoise.synd_diagonal	
+syndromes_total	ported	EntropyNoise.syndromes_total	any commutative ring
+no_alarm_polar	ported	EntropyNoise.no_alarm_polar	any field of characteristic zero
+alarm_polar	ported	EntropyNoise.alarm_polar	any field of characteristic zero
+decoder_failure	ported	EntropyNoise.decoder_failure	any commutative ring
+alarm_one_coin	ported	EntropyNoise.alarm_one_coin	any field
+chain_rule_pair	ported	EntropyNoise.chain_rule_pair	any field
+nishimori_tanh	ported	EntropyNoise.nishimori_tanh	any field
+kw_lens_polar	ported	EntropyNoise.kw_lens_polar	any field with 2 ≠ 0

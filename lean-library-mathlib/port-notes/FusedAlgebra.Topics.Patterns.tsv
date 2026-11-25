@@ -1,0 +1,38 @@
+original	status	new_name	note
+step	ported	Patterns.step	any commutative ring (mathlib CommRing in place of Lean.Grind.CommRing); its matrix is the new Patterns.stepMatrix (Patterns.stepMatrix_mulVec)
+step_num	ported	Patterns.step_num	any commutative ring (mathlib CommRing in place of Lean.Grind.CommRing)
+step_den	ported	Patterns.step_den	any commutative ring (mathlib CommRing in place of Lean.Grind.CommRing)
+step_is_law	ported	Patterns.step_is_law	any commutative ring (mathlib CommRing in place of Lean.Grind.CommRing)
+iter	ported	Patterns.iter	now (step k q a)^[n] (0, 1) (Function.iterate); added iter_zero, iter_succ
+lucas	ported	Patterns.lucas	any commutative ring (mathlib CommRing in place of Lean.Grind.CommRing); mathlib has no general Lucas sequence
+lucas_zero	ported	Patterns.lucas_zero	simp
+lucas_one	ported	Patterns.lucas_one	simp
+lucas_succ_succ	ported	Patterns.lucas_succ_succ	
+iter_lucas	ported	Patterns.iter_lucas	a * a written a ^ 2
+step_trace	ported	Patterns.step_trace	restated as Matrix.trace (stepMatrix k q a) = 2 + k * a (was the bare identity (1 + k * a) + 1 = 2 + k * a); takes an extra argument q
+step_det	ported	Patterns.step_det	restated as Matrix.det (stepMatrix k q a) = 1 + k * a + q * a ^ 2 (was the bare 2 × 2 determinant expression)
+wall_absorbs	ported	Patterns.wall_absorbs	w * w written w ^ 2
+lucas_add_pair	dropped	Patterns.lucas_add	helper for the paired induction; lucas_add is now proved directly with Nat.twoStepInduction
+lucas_add	ported	Patterns.lucas_add	
+cassini	ported	Patterns.cassini	squares written ^ 2
+cycle_of_lucas_zero	ported	Patterns.cycle_of_lucas_zero	
+lucas_five	ported	Patterns.lucas_five	squares written ^ 2
+lucas_five_golden	ported	Patterns.lucas_five_golden	squares written ^ 2
+multadd_den_one	ported	Patterns.multAdd_den_one	renamed (multAdd spelling)
+multadd_iter	ported	Patterns.multAdd_iter	renamed; now a corollary of the new, stronger Patterns.iter_multAdd : iter 1 0 a n = (mpow a n, 1)
+golden_step	ported	Patterns.golden_step	
+ladder_is_step	ported	Patterns.ladder_is_step	
+mirror_num	ported	Patterns.mirror_num	one-line corollary of MultAdd.wAdd_neg_neg
+mirror_den	ported	Patterns.mirror_den	
+golden_walls	ported	Patterns.golden_walls	w * w written w ^ 2
+lucas_fib_pair	dropped	Patterns.lucas_fib	helper for the paired induction; lucas_fib is now proved directly with Nat.twoStepInduction
+lucas_fib	ported	Patterns.lucas_fib	generalised from ℤ to any commutative ring; right side is (Nat.fib n : R)
+golden_law_fib	ported	Patterns.golden_law_fib	generalised from ℤ to any commutative ring; Nat.fib with casts
+golden_cassini	ported	Patterns.golden_cassini	generalised from ℤ to any commutative ring; Nat.fib with casts; squares written ^ 2
+disc_square_or_ge_five	ported	Patterns.disc_square_or_ge_five	conclusion ∃ s, _ = s * s is now IsSquare _ (the same thing by definition); squares written ^ 2
+no_integer_five_cycle	ported	Patterns.no_integer_five_cycle	
+nfib	mathlib	Nat.fib	
+mfib	ported	Patterns.mfib	any commutative semiring; added mfib_zero, mfib_one, mfib_succ_succ
+mfib_lift_pair	dropped	Patterns.one_add_mfib	helper for the paired induction; one_add_mfib is now proved directly with Nat.twoStepInduction
+mfib_lift	ported	Patterns.one_add_mfib	renamed after its statement; exponents are Nat.fib
+mfib_one_one	ported	Patterns.mfib_one_one	exponent is Nat.fib (n + 2)

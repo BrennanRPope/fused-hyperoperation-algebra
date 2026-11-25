@@ -1,0 +1,11 @@
+original	status	new_name	note
+small_of_mul	mathlib	Int.natAbs_le_of_dvd_ne_zero	helper: a divisor of c ≠ 0 has |a| ≤ |c|
+beraha5_not_int	ported	LeeYangCluster.beraha5_not_int	k * k written k ^ 2
+beraha7_not_int	ported	LeeYangCluster.beraha7_not_int	products written as powers
+beraha8_not_int	ported	LeeYangCluster.beraha8_not_int	k * k written k ^ 2
+beraha9_not_int	ported	LeeYangCluster.beraha9_not_int	products written as powers
+beraha10_not_int	ported	LeeYangCluster.beraha10_not_int	k * k written k ^ 2
+beraha12_not_int	ported	LeeYangCluster.beraha12_not_int	k * k written k ^ 2
+wAdd_units	ported	LeeYangCluster.wAdd_units	generalised to commutative semirings
+leverage_is_compounding	ported	LeeYangCluster.leverage_is_compounding	right side written (2 * a) ✳ (2 * b) instead of wAdd 1 (2 * a) (2 * b) (equal by wAdd_one); one line from MultAdd.mul_wAdd
+units_bend	ported	LeeYangCluster.units_bend	lam * lam written l ^ 2

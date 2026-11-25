@@ -1,0 +1,26 @@
+original	status	new_name	note
+OneMod	dropped	multiplicity	OneMod j x (x = 2 ^ j * odd + 1) is now the statement multiplicity 2 (x - 1) = j
+oneMod_oddPow	mathlib	emultiplicity_pow_sub_pow_of_prime	at p = 2 in ℤ: an odd exponent keeps the power of 2 in x ^ n - 1; only the case A = 3 is used, as MultAdd.HopfOne.multiplicity_two_three_pow_sub_one_of_odd
+oneMod_sq	mathlib	Int.two_pow_two_pow_sub_pow_two_pow	with n = 1: squaring raises the power of 2 in x - 1 by one when 4 ∣ x - 1
+three_pow_two_pow	dropped	MultAdd.HopfOne.level_three_pow	the case t = 0 of level_three_pow
+two_adic_split	mathlib	Nat.exists_eq_two_pow_mul_odd	hypothesis n ≠ 0, the odd part is given as Odd m
+level_three_pow	ported	MultAdd.HopfOne.level_three_pow	restated with multiplicity 2 in place of OneMod; proved from mathlib's lifting-the-exponent lemma Nat.two_pow_sub_pow; the even and odd cases are also stated on their own (multiplicity_two_three_pow_sub_one_of_even / _of_odd)
+le_of_dvd_two_pow_odd	mathlib	FiniteMultiplicity.pow_dvd_iff_le_multiplicity	2 ^ n ∣ x ↔ n ≤ multiplicity 2 x
+pow_ge	ported	MultAdd.HopfOne.add_three_le_two_pow	renamed
+only_one_two_four	ported	MultAdd.HopfOne.only_one_two_four	same statement
+one_two_four_work	ported	MultAdd.HopfOne.one_two_four_work	
+Elt	ported	MultAdd.HopfOne.Elt	
+psi	ported	MultAdd.HopfOne.psi	
+commute_equation	ported	MultAdd.HopfOne.commute_equation	
+IsOdd	mathlib	Odd	
+odd_mul	mathlib	Odd.mul	
+odd_three_pow	mathlib	Odd.pow	Odd.pow (by decide : Odd (3 : ℤ))
+two_pow_dvd_of_mul_odd	mathlib	IsCoprime.dvd_of_dvd_mul_right	with (Int.isCoprime_two_left.2 hy).pow_left
+hopf_invariant_one	ported	MultAdd.HopfOne.hopf_invariant_one	same statement with Odd in place of IsOdd
+Trunc	ported	MultAdd.HopfOne.Trunc	now carries a NonUnitalCommRing instance (the ideal (x) of ℤ[x]/(x^3))
+madd	mathlib	MultAdd.multAdd	the library's ✳ on the non-unital ring Trunc; the old formula is MultAdd.HopfOne.Trunc.multAdd_eq
+mpow	mathlib	MultAdd.mpow	HopfOne.mpow k is the library's mpow Trunc.x k, where Trunc.x = ⟨1, 0⟩
+mpow_formula	ported	MultAdd.HopfOne.mpow_formula	stated for mpow Trunc.x k
+psiT	ported	MultAdd.HopfOne.psiT	
+psi_compose	ported	MultAdd.HopfOne.psi_compose	stated for mpow Trunc.x
+cp2_case	ported	MultAdd.HopfOne.cp2_case	stated for mpow Trunc.x

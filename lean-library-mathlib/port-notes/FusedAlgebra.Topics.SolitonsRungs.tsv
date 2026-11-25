@@ -1,0 +1,30 @@
+original	status	new_name	note
+tau2	ported	SolitonsRungs.tau2	generalised from ℤ to any commutative ring
+tau2_is_wAdd	ported	SolitonsRungs.tau2_eq_one_add_wAdd	renamed; generalised from ℤ to any commutative ring
+tau2_free	ported	SolitonsRungs.tau2_free	generalised from ℤ to any commutative ring
+tau2_merge	ported	SolitonsRungs.tau2_merge	generalised from ℤ to any commutative ring
+tau2_scaled	ported	SolitonsRungs.mul_tau2_sub_one	renamed; follows from MultAdd.mul_wAdd; generalised from ℤ to any commutative ring
+tau2_excess	ported	SolitonsRungs.tau2_excess	generalised from ℤ to any commutative ring
+tau3	ported	SolitonsRungs.tau3	generalised from ℤ to any commutative ring
+tau3_free	ported	SolitonsRungs.tau3_free	generalised from ℤ to any commutative ring
+tau3_splits	ported	SolitonsRungs.tau3_splits	generalised from ℤ to any commutative ring
+tau3_equal_corner	ported	SolitonsRungs.tau3_equal_corner	k * k * k written k ^ 3; generalised from ℤ to any commutative ring
+wAdd_three_corner	ported	SolitonsRungs.wAdd_three_corner	k * k written k ^ 2; generalised from ℤ to any commutative ring
+soliton_vs_wAdd_corner	ported	SolitonsRungs.soliton_vs_wAdd_corner	written with powers; generalised from ℤ to any commutative ring without zero divisors
+three_body_roads	ported	SolitonsRungs.three_body_roads	written with powers; generalised from ℤ to any commutative ring
+rung_three_body	ported	SolitonsRungs.rung_three_body	written with powers; generalised from ℤ to any commutative ring
+rung_three_body_zero	ported	SolitonsRungs.rung_three_body_zero	generalised from ℤ to any commutative ring without zero divisors
+four_body_roads	ported	SolitonsRungs.four_body_roads	written with powers; generalised from ℤ to any commutative ring
+four_body_half	ported	SolitonsRungs.four_body_half	restated: the original was the bare numeral identity 2 + 4 + 8 - 32 + 16 = -2 (16 times the quartic at s = 1/2); now the quartic of four_body_roads evaluated at 1/2 in ℚ equals -1/8
+tri_nonneg	ported	SolitonsRungs.tri_nonneg	ℤ only (false in ℚ)
+tri_zero_iff	ported	SolitonsRungs.tri_zero_iff	generalised from ℤ to any commutative ring without zero divisors
+face_iff	ported	SolitonsRungs.face_iff	ℤ only
+theta2	ported	SolitonsRungs.theta2	now a double Finset sum over range 4 with exponents n * (n - 1) / 2 (same polynomial, same term order); generalised from ℤ to any commutative ring
+theta2_face	ported	SolitonsRungs.theta2_face	generalised from ℤ to any commutative ring
+theta2_free_face	ported	SolitonsRungs.theta2_free_face	generalised from ℤ to any commutative ring
+glue_is_multAdd	ported	SolitonsRungs.glue_is_multAdd	generalised from ℤ to any commutative ring
+orbit_product	ported	SolitonsRungs.orbit_product	generalised from ℤ to any commutative ring
+orbit_product_q0	ported	SolitonsRungs.orbit_product_q0	generalised from ℤ to any commutative ring
+kdv_weight_below_one	ported	SolitonsRungs.kdv_weight_below_one	written with squares; generalised from ℤ to any linearly ordered commutative ring
+kdv_weight_nonneg	mathlib	sq_nonneg	0 ≤ (k₁ - k₂) ^ 2
+kdv_weight_zero	ported	SolitonsRungs.kdv_weight_zero	written with a square; any commutative ring without zero divisors; one line from sq_eq_zero_iff and sub_eq_zero

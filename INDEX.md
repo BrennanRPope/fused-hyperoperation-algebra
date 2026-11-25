@@ -16,11 +16,12 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | Topic | Folder | Page |
 |---|---|---|
 | Shared Lean library: 3,164 theorems, 132 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
-| Proof complexity: proofs through the circle operation are not shorter (negative result; its Lean files need Mathlib, so CI doesn't build them) | `topics/proof-complexity/` | — |
+| Proof complexity: proofs through the circle operation are not shorter (negative result; its Lean files are built in `lean-library-mathlib/`) | `topics/proof-complexity/` | — |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
-| Mathlib port check: does the port on the `mathlib-port` branch prove the same 1,750 theorems? (read side by side, not compiled) | `topics/mathlib-port-check/` | no page |
+| Mathlib port check: does the Mathlib version prove the same 1,750 theorems? (read side by side) | `topics/mathlib-port-check/` | no page |
 | Common patterns pass | `topics/patterns/` | no page yet |
 | The theory's shape: the Boolean lattice (n-cube); a chain of circle operations sums over its corners | `topics/boolean-lattice/` | — |
 | Do shapes depend on shapes? Proof bodies order yes, whole laws no | `topics/shape-dependencies/` | not yet published |

@@ -1,0 +1,74 @@
+original	status	new_name	note
+sq_nonneg'	mathlib	mul_self_nonneg	
+outer	ported	ThermoFused.outer	now xs.flatMap fun x ↦ ys.map (x * ·), for any type with a multiplication; outer_nil and outer_cons give the old equations
+sumL_map_mul	mathlib	List.sum_map_mul_left	
+outer_sum	ported	ThermoFused.sum_outer	renamed; any non-unital non-associative semiring
+partition_square	ported	ThermoFused.partition_square	generalised from ℚ to any commutative ring
+partition_multiplies	ported	ThermoFused.partition_multiplies	generalised from ℚ to any commutative ring
+partition_excess	ported	ThermoFused.partition_excess	generalised from ℚ to any commutative ring
+free_energy_adds	ported	ThermoFused.free_energy_adds	any commutative ring; G in any universe
+third_law_identity	ported	ThermoFused.third_law_identity	generalised from ℚ to any commutative ring
+residual_degeneracy	ported	ThermoFused.residual_degeneracy	generalised from ℚ to any commutative ring
+pauling_ice	ported	ThermoFused.pauling_ice	any field of characteristic zero
+landauer_states	ported	ThermoFused.landauer_states	generalised from ℚ to any commutative ring
+cooling_step_pos	ported	ThermoFused.cooling_step_pos	generalised from ℚ to any linearly ordered commutative ring
+unattainable	ported	ThermoFused.unattainable	generalised from ℚ to any linearly ordered commutative ring; foldMA is multAddList
+never_the_wall	ported	ThermoFused.never_the_wall	generalised from ℚ to any linearly ordered commutative ring
+equipartition	ported	ThermoFused.equipartition	generalised from ℚ to any commutative ring
+fermion_lift	ported	ThermoFused.fermion_lift	kept as a one-line restatement of MultAdd.one_add_multAddList
+fermion_cube	ported	ThermoFused.fermion_cube	kept as a one-line restatement of MultAdd.one_add_multAddList_eq_sum_sublists
+boson_mode	ported	ThermoFused.boson_mode	any field; hypothesis written 1 - z ≠ 0 instead of 1 + -z ≠ 0
+boson_fermion_dual	ported	ThermoFused.boson_fermion_dual	any field; hypothesis written 1 - z ≠ 0 instead of 1 + -z ≠ 0
+fermi_velocity_num	ported	ThermoFused.fermi_velocity_num	generalised from ℚ to any commutative ring
+fermi_velocity_den	ported	ThermoFused.fermi_velocity_den	generalised from ℚ to any commutative ring
+vel	ported	ThermoFused.vel	generalised from ℚ to any field
+vel_wall_pos	ported	ThermoFused.vel_wall_pos	generalised from ℚ to any field
+vel_wall_neg	ported	ThermoFused.vel_wall_neg	generalised from ℚ to any field
+vel_identity	ported	ThermoFused.vel_identity	generalised from ℚ to any field; simp lemma
+engine_cascade	ported	ThermoFused.engine_cascade	generalised from ℚ to any commutative ring
+carnot_series	ported	ThermoFused.carnot_series	any field; the unused hypothesis h ≠ 0 is dropped (stronger statement)
+perfect_stage	ported	ThermoFused.perfect_stage	generalised from ℚ to any commutative ring
+fridge_cascade	ported	ThermoFused.fridge_cascade	generalised from ℚ to any commutative ring
+reverse_is_inverse	ported	ThermoFused.reverse_is_inverse	any field; the unused hypothesis 1 - eta ≠ 0 is dropped (stronger statement)
+fridge_lift	ported	ThermoFused.fridge_lift	generalised from ℚ to any field
+carnot_fridge	ported	ThermoFused.carnot_fridge	generalised from ℚ to any field
+curzon_ahlborn_half	ported	ThermoFused.curzon_ahlborn_half	generalised from ℚ to any commutative ring
+ratio_series	ported	ThermoFused.ratio_series	generalised from ℚ to any commutative ring
+second_law_composes	ported	ThermoFused.second_law_composes	generalised from ℚ to any linearly ordered commutative ring
+map_mul_map	dropped	ThermoFused.map_outer	helper; List.map_map and map_mul do it inside map_outer
+outer_map	ported	ThermoFused.map_outer	renamed; f is any MulHomClass map between types with a multiplication
+power_sum_multiplies	ported	ThermoFused.power_sum_multiplies	f is any MulHomClass map into a commutative ring, instead of f : ℚ → ℚ with a multiplicativity hypothesis
+tsallis_composes	ported	ThermoFused.tsallis_composes	generalised from ℚ to any commutative domain
+qlog_qsum	ported	ThermoFused.qlog_wAdd	renamed; f is any MulHomClass map into a field
+renyi_adds	ported	ThermoFused.renyi_adds	generalised from ℚ to any commutative ring
+decimation_num	ported	ThermoFused.decimation_num	generalised from ℚ to any commutative ring
+decimation_den	ported	ThermoFused.decimation_den	generalised from ℚ to any commutative ring
+ising_series	ported	ThermoFused.ising_series	generalised from ℚ to any commutative ring
+lens	ported	ThermoFused.lens	generalised from ℚ to any field
+lens_num	ported	ThermoFused.lens_num	generalised from ℚ to any commutative ring
+lens_den	ported	ThermoFused.lens_den	generalised from ℚ to any commutative ring
+lens_vel	ported	ThermoFused.lens_vel	generalised from ℚ to any field
+lens_involution	ported	ThermoFused.lens_involution	any field with 2 ≠ 0 (false in characteristic 2)
+lens_fixed_point	ported	ThermoFused.lens_fixed_point	generalised from ℚ to any field
+doppler_is_lens	ported	ThermoFused.doppler_is_lens	generalised from ℚ to any field
+stokes	ported	ThermoFused.stokes	generalised from ℚ to any field
+stokes_identity	ported	ThermoFused.stokes_identity	generalised from ℚ to any field; simp lemma
+stokes_wall	ported	ThermoFused.stokes_wall	generalised from ℚ to any field
+stokes_num	ported	ThermoFused.stokes_num	generalised from ℚ to any commutative ring
+stokes_den	ported	ThermoFused.stokes_den	generalised from ℚ to any commutative ring
+stokes_additive	ported	ThermoFused.stokes_additive	generalised from ℚ to any field
+stokes_double_wall	ported	ThermoFused.stokes_double_wall	generalised from ℚ to any commutative ring
+stokes_on_border	ported	ThermoFused.stokes_on_border	generalised from ℚ to any commutative ring
+shields	ported	ThermoFused.shields	any field; the unused hypothesis 1 - r ≠ 0 is dropped (stronger statement)
+bond_infinite_T	ported	ThermoFused.bond_infinite_T	generalised from ℚ to any commutative ring
+bond_zero_T	ported	ThermoFused.bond_zero_T	generalised from ℚ to any commutative ring
+two_spin_no_real_zero	ported	ThermoFused.two_spin_no_real_zero	generalised from ℚ to any linearly ordered commutative ring
+chain3	ported	ThermoFused.chain3	generalised from ℚ to any commutative ring
+chain3_multAdd	ported	ThermoFused.chain3_multAdd	generalised from ℚ to any commutative ring
+chain3_factor	ported	ThermoFused.chain3_factor	generalised from ℚ to any commutative ring
+chain3_ferro_bound	ported	ThermoFused.chain3_ferro_bound	generalised from ℚ to any linearly ordered commutative ring
+chain3_disc	ported	ThermoFused.chain3_disc	generalised from ℚ to any linearly ordered commutative ring
+wick_num	ported	ThermoFused.wick_num	any commutative ring; the hypothesis i * i = -1 was never needed (the identity holds for every i) and is dropped
+wick_den	ported	ThermoFused.wick_den	generalised from ℚ to any commutative ring
+jarzynski_composes	ported	ThermoFused.jarzynski_composes	generalised from ℚ to any commutative ring
+hess	ported	ThermoFused.hess	generalised from ℚ to any commutative ring

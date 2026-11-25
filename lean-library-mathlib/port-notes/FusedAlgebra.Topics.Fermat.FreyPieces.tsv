@@ -1,0 +1,65 @@
+original	status	new_name	note
+FLT	mathlib	FermatLastTheoremFor	mathlib's version also assumes z ≠ 0; FreyPieces.fermatLastTheoremFor_iff proves it equivalent to the original shape
+flt_of_dvd	mathlib	FermatLastTheoremFor.mono	
+prime_ne_two_odd	mathlib	Nat.Prime.odd_of_ne_two	also Nat.Prime.mod_two_eq_one_iff_ne_two for the % 2 = 1 form
+four_or_odd_prime	mathlib	Nat.four_dvd_or_exists_odd_prime_and_dvd_of_two_lt	
+flt_reduction	ported	FreyPieces.flt_reduction	conclusion is mathlib's FermatLastTheorem (∀ n ≥ 3, FermatLastTheoremFor n); known, cf. FermatLastTheorem.of_odd_primes
+flt_reduction_frey	ported	FreyPieces.flt_reduction_frey	conclusion is mathlib's FermatLastTheorem
+euclid	mathlib	Nat.Prime.dvd_mul	the .mp direction
+euclid_int	mathlib	Int.Prime.dvd_mul'	or Prime.dvd_or_dvd with Nat.prime_iff_prime_int
+odd_prime_coprime_two	mathlib	Nat.coprime_primes	(Nat.coprime_primes hq Nat.prime_two).2 h2
+coprime_reduction	ported	FreyPieces.coprime_reduction	hypothesis 1 ≤ n written n ≠ 0
+flt_of_coprime	ported	FreyPieces.flt_of_coprime	hypothesis 1 ≤ n written n ≠ 0; conclusion FermatLastTheoremFor n
+pow_mod_two	dropped	FreyPieces.coprime_parity	inlined (Nat.pow_mod); cf. Nat.even_pow'
+coprime_parity	ported	FreyPieces.coprime_parity	hypothesis 1 ≤ n written n ≠ 0
+neg_pow_odd	mathlib	Odd.neg_pow	
+neg_pow_of_odd	mathlib	Odd.neg_pow	
+int_pow_emod_two	ported	FreyPieces.int_pow_emod_two	hypothesis 1 ≤ n written n ≠ 0
+normalize_core	ported	FreyPieces.normalize_core	strengthened: returns |a'| = |o₁|, |b'| = |e|, |c'| = |o₂| separately (implies the original |a'b'c'| equation and covers FermatRoute.normalize_core'); p % 2 = 1 written Odd p
+two_pow_dvd	ported	FreyPieces.two_pow_dvd	
+frey_normalize	ported	FreyPieces.frey_normalize	strengthened: also returns Int.gcd a' b' = 1 (this was FermatRoute.frey_normalize_cop); p % 2 = 1 written Odd p
+freyRHS	dropped	EllipticLead.freyCurve	the cubic x(x - A)(x + B) is the right side of EllipticLead.freyCurve_equation
+frey_two_torsion	ported	FreyPieces.frey_two_torsion	stated as WeierstrassCurve.Affine.Equation on EllipticLead.freyCurve; any commutative ring
+frey_disc_roots	ported	FreyPieces.frey_disc_roots	any commutative ring
+frey_change_of_vars	ported	FreyPieces.frey_change_of_vars	any commutative ring
+frey_minimal_divisibility	ported	FreyPieces.frey_minimal_divisibility	
+a2of	ported	FreyPieces.a2of	
+a4of	ported	FreyPieces.a4of	
+frey_minimal_model	ported	FreyPieces.frey_minimal_model	both sides stated with WeierstrassCurve.Affine.Equation (freyCurve and freyModel); general-ring version is frey_model_equation, field version via mathlib's VariableChange is variableChange_freyCurve
+Weier	mathlib	WeierstrassCurve	
+Weier.b2	mathlib	WeierstrassCurve.b₂	
+Weier.b4	mathlib	WeierstrassCurve.b₄	
+Weier.b6	mathlib	WeierstrassCurve.b₆	
+Weier.b8	mathlib	WeierstrassCurve.b₈	
+Weier.c4	mathlib	WeierstrassCurve.c₄	
+Weier.disc	mathlib	WeierstrassCurve.Δ	
+freyModel	ported	FreyPieces.freyModel	now a mathlib WeierstrassCurve over any commutative ring
+frey_c4	ported	FreyPieces.frey_c4	any commutative ring; c4 → WeierstrassCurve.c₄
+frey_disc	ported	FreyPieces.frey_disc	any commutative ring; disc → WeierstrassCurve.Δ
+prime_dvd_gcd_false	ported	FreyPieces.prime_dvd_gcd_false	IsPrime → Nat.Prime
+frey_c4_not_dvd	ported	FreyPieces.frey_c4_not_dvd	IsPrime → Nat.Prime
+frey_semistable	ported	FreyPieces.frey_semistable	IsPrime → Nat.Prime; Δ and c₄ are mathlib's
+frey_at_two	ported	FreyPieces.frey_at_two	
+frey_a4_mod_q	ported	FreyPieces.frey_a4_mod_q	IsPrime → Nat.Prime
+frey_reduces_to_node	ported	FreyPieces.frey_reduces_to_node	MEq → Int.ModEq; curve-level form added as freyModel_map_zmod (reduction mod q equals EllipticLead.nodalCurve 1 a₂)
+nodeX	ported	FreyPieces.nodeX	Lean.Grind.CommRing → CommRing
+chordDet	ported	FreyPieces.chordDet	Lean.Grind.CommRing → CommRing
+node_chord_identity	ported	FreyPieces.node_chord_identity	
+node_point	ported	FreyPieces.node_point	stated as Affine.Equation on EllipticLead.nodalCurve; any commutative ring
+rat_mul_ne_zero	mathlib	mul_ne_zero	
+one_add_div_mul	dropped	FreyPieces.node_chord_multAdd	one line of field_simp inside the proof
+node_chord_multAdd	ported	FreyPieces.node_chord_multAdd	generalised from ℚ to any field
+frey_disc_pth_power	ported	FreyPieces.frey_disc_pth_power	any commutative ring
+factor_out	mathlib	Nat.exists_eq_pow_mul_and_not_dvd	
+not_dvd_pow	mathlib	Nat.Prime.dvd_of_dvd_pow	contrapositive
+pow_dvd_bound	ported	FreyPieces.pow_dvd_bound	restored Nov 25 with the original hypothesis 2 ≤ q (q need not be prime); exact_exponent_pth_power still uses Nat.Prime.pow_dvd_iff_le_factorization
+exact_exponent_pth_power	ported	FreyPieces.exact_exponent_pth_power	proved from Nat.factorization_pow
+frey_disc_valuation	ported	FreyPieces.frey_disc_valuation	
+rat_div_pow	mathlib	div_pow	with div_mul_cancel₀
+flt_multAdd	ported	FreyPieces.flt_multAdd	generalised from ℚ to any field
+mu2	ported	FreyPieces.mu2	now the number of nonzero vectors of ZMod 2 × ZMod 2 (a Finset card), as the original docstring described
+nu2	ported	FreyPieces.nu2	Finset card over ZMod 2
+nu3	ported	FreyPieces.nu3	Finset card over ZMod 2
+nuInf	ported	FreyPieces.nuInf	now literally ∑ d ∈ Nat.divisors 2, φ(gcd(d, 2 / d)); the original counted divisors of 2 (same value)
+level2_counts	ported	FreyPieces.level2_counts	
+genus_X0_2	ported	FreyPieces.genus_X0_2	the genus formula stays a hypothesis

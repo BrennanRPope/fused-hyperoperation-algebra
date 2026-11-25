@@ -1,0 +1,11 @@
+original	status	new_name	note
+fragments_multAdd	ported	ChemQuantum.fragments_multAdd	one line from MultAdd.one_add_multAdd
+cisd_drops_corner	ported	ChemQuantum.cisd_drops_corner	
+three_fragments	ported	ChemQuantum.three_fragments	
+cisd_drops_three	ported	ChemQuantum.cisd_drops_three	
+secular	ported	ChemQuantum.Secular	renamed (a Prop is UpperCamelCase); ℚ → commutative ring; g * g written g ^ 2
+cisd_gap	ported	ChemQuantum.cisd_gap	ℚ → commutative ring
+cisd_not_extensive	ported	ChemQuantum.cisd_not_extensive	ℚ → commutative ring with no zero divisors
+spin_multiplicity	ported	ChemQuantum.spin_multiplicity	ℕ → any semiring; one line from MultAdd.multAdd_add_one
+oddSum	mathlib	Finset.sum	∑ S ∈ range (n + 1), (2 * S + 1)
+clebsch_gordan_square	ported	ChemQuantum.clebsch_gordan_square	stated with the Finset sum and (n + 1) ^ 2

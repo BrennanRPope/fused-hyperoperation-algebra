@@ -1,0 +1,25 @@
+original	status	new_name	note
+corner	ported	MultAdd.Toric.corner	any type with zero and multiplication; Type*
+corner_all_on	ported	MultAdd.Toric.corner_all_on	
+corner_scale	ported	MultAdd.Toric.corner_scale	any MulZeroClass with no zero divisors
+P1	ported	MultAdd.Toric.P1	now mathlib's OnePoint K (definitionally Option K): some x is ↑x, none is ∞
+chart1	ported	MultAdd.Toric.chart1	values in OnePoint K
+chart1_injective	ported	MultAdd.Toric.chart1_injective	restated as Function.Injective (chart1 b)
+chart1_cover	ported	MultAdd.Toric.chart1_cover	
+InChart1	ported	MultAdd.Toric.InChart1	
+torus_in_both	ported	MultAdd.Toric.torus_in_both	
+origin_in_one_chart	ported	MultAdd.Toric.origin_in_one_chart	
+trans1	ported	MultAdd.Toric.trans1	
+chart1_trans	ported	MultAdd.Toric.chart1_trans	
+chart2	ported	MultAdd.Toric.chart2	
+chart2_injective	ported	MultAdd.Toric.chart2_injective	restated as Function.Injective (chart2 c)
+chart2_cover	ported	MultAdd.Toric.chart2_cover	
+InChart2	ported	MultAdd.Toric.InChart2	
+inChart2_iff	ported	MultAdd.Toric.inChart2_iff	
+torus_in_all	ported	MultAdd.Toric.torus_in_all	
+fixed_point_in_one_chart	ported	MultAdd.Toric.fixed_point_in_one_chart	
+trans2	ported	MultAdd.Toric.trans2	
+chart2_trans	ported	MultAdd.Toric.chart2_trans	
+trans1_cocycle	ported	MultAdd.Toric.trans1_cocycle	
+trans2_cocycle	ported	MultAdd.Toric.trans2_cocycle	
+fan_count	ported	MultAdd.Toric.fan_count	any commutative semiring (original over ℕ)

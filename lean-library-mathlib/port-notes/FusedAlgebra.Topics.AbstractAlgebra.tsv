@@ -1,0 +1,75 @@
+original	status	new_name	note
+CommMonoidLaws	mathlib	CommMonoid	the explicit record of laws is mathlib's CommMonoid class
+CommGroupLaws	mathlib	CommGroup	the explicit record of laws is mathlib's CommGroup class
+OpIso	mathlib	MulEquiv	an isomorphism of operations preserving the identity is a MulEquiv (≃*) of monoids
+OpIso.self_op	mathlib	map_mul	with map_one; used that way in zmod4_not_mulEquiv_add
+multAdd_commMonoid	dropped	PreQuasiregular.instCommMonoid	already in FusedAlgebra.Basic: (R, ✳, 0) is the commutative monoid PreQuasiregular R
+wAdd_commMonoid	ported	AbstractAlgebra.Weighted.instCommMonoid	now a CommMonoid instance on the new type copy Weighted k (multiplication wAdd k, identity 0)
+mul_commMonoid	mathlib	CommSemiring.toCommMonoid	(R, *, 1) is a commutative monoid
+shiftIso	dropped	MultAdd.oneAddEquiv	already in FusedAlgebra.Basic as PreQuasiregular R ≃* R (any ring, not only commutative)
+shift_wall	ported	AbstractAlgebra.shift_wall	stated for MultAdd.oneAddEquiv; any ring
+multAdd_unit_iff	ported	AbstractAlgebra.multAdd_unit_iff	right side ∃ c, (1 + a) * c = 1 is now IsUnit (1 + a) (equivalent by isUnit_iff_exists_inv); also new multAdd_unit_iff_isQuasiregular linking to mathlib's IsQuasiregular
+wAdd_unit_iff	ported	AbstractAlgebra.isUnit_one_add_mul_of_wAdd_eq_zero	renamed: the original was an implication, not an iff; conclusion ∃ c, (1 + k * a) * c = 1 is now IsUnit (1 + k * a)
+int_multAdd_units	ported	AbstractAlgebra.int_multAdd_units	now from Int.isUnit_iff
+neg_two_self_inverse	ported	AbstractAlgebra.neg_two_self_inverse	
+int_not_group	ported	AbstractAlgebra.int_not_group	
+field_unit	ported	AbstractAlgebra.field_unit	any field; see also MultAdd.isQuasiregular_iff_one_add_ne_zero in Basic
+scaleIso	ported	AbstractAlgebra.Weighted.scaleEquiv	now a MulEquiv Weighted k ≃* PreQuasiregular K; any field
+scale_wall	ported	AbstractAlgebra.Weighted.scale_wall	stated for scaleEquiv
+int_scale_hom	ported	AbstractAlgebra.Weighted.scaleHom	now a MonoidHom Weighted k →* PreQuasiregular R over any commutative semiring; the underlying identity is MultAdd.mul_wAdd
+int_scale_inj	ported	AbstractAlgebra.Weighted.scaleHom_injective	injectivity of scaleHom for k ≠ 0 in any commutative semiring with cancellation (IsLeftCancelMulZero), e.g. ℤ
+int_weight_units	ported	AbstractAlgebra.int_weight_units	
+parity_is_xor	ported	AbstractAlgebra.parity_is_xor	
+geom	mathlib	Finset.sum	the geometric sum is ∑ i ∈ Finset.range m, x ^ i
+geom_mul	mathlib	mul_neg_geom_sum	
+nilpotent_weight_inverse	ported	AbstractAlgebra.nilpotent_weight_inverse	geom replaced by the Finset geometric sum; any commutative ring
+nilpotent_weight_group	ported	AbstractAlgebra.Weighted.commGroupOfPowEqZero	now a CommGroup structure on Weighted k (a reducible def, not a global instance, since it depends on the proof k ^ m = 0)
+fin12_group_criterion	ported	AbstractAlgebra.zmod12_group_criterion	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin8_group_criterion	ported	AbstractAlgebra.zmod8_group_criterion	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin9_group_criterion	ported	AbstractAlgebra.zmod9_group_criterion	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin12_units	ported	AbstractAlgebra.zmod12_units	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin12_wall	ported	AbstractAlgebra.zmod12_wall	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin4_klein	ported	AbstractAlgebra.zmod4_klein	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin4_not_iso_add	ported	AbstractAlgebra.zmod4_not_mulEquiv_add	renamed; now IsEmpty (Weighted (2 : ZMod 4) ≃* Multiplicative (ZMod 4))
+fin9_cyclic	ported	AbstractAlgebra.zmod9_cyclic	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin8_weight4_cyclic	ported	AbstractAlgebra.zmod8_weight4_cyclic	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fin8_weight2_not_cyclic	ported	AbstractAlgebra.zmod8_weight2_not_cyclic	renamed; Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+fadd	ported	AbstractAlgebra.fadd	any commutative ring; added fadd_def
+fadd_lift	ported	AbstractAlgebra.one_add_fadd	renamed after its statement
+fadd_group	ported	AbstractAlgebra.Fused.instCommRing	the group laws of fadd are the additive group of the new commutative ring Fused R; Fused.val_add, Fused.val_zero, Fused.val_neg identify its addition, zero and negative with fadd, -1 and -a - 2
+multAdd_fadd_distrib	ported	AbstractAlgebra.multAdd_fadd	renamed; it is also left_distrib in the ring Fused R
+fused_zero_absorbs	dropped	MultAdd.multAdd_neg_one	already in FusedAlgebra.Basic; also mul_zero in the ring Fused R
+shift_ring_hom	ported	AbstractAlgebra.Fused.shiftRingEquiv	the four-part conjunction is now a RingEquiv Fused R ≃+* R; the parts are one_add_fadd, MultAdd.one_add_multAdd, Fused.val_zero, Fused.val_one
+multAdd_not_distrib_add	ported	AbstractAlgebra.multAdd_not_distrib_add	
+mpow_multAdd	ported	AbstractAlgebra.mpow_multAdd	any non-unital commutative semiring; now mul_pow in PreQuasiregular R
+mpow_mul	dropped	MultAdd.mpow_mul	already in FusedAlgebra.Basic, with the two sides swapped
+mpow_one	dropped	MultAdd.mpow_one	already in FusedAlgebra.Basic
+mpow_zero_base	ported	AbstractAlgebra.zero_mpow	renamed; one_pow in PreQuasiregular R
+tateRel	ported	AbstractAlgebra.tateRel	any commutative semiring
+tateRel_refl	ported	AbstractAlgebra.tateRel_refl	
+tateRel_symm	ported	AbstractAlgebra.tateRel_symm	
+tateRel_trans	ported	AbstractAlgebra.tateRel_trans	
+tate_glue	ported	AbstractAlgebra.tate_glue	
+tateRel_multAdd	ported	AbstractAlgebra.tateRel_multAdd	
+tateSetoid	ported	AbstractAlgebra.tateCon	upgraded from a Setoid on R to a congruence (mathlib Con) on the monoid PreQuasiregular R; the setoid is (tateCon q).toSetoid
+TateQ	ported	AbstractAlgebra.TateQ	now the quotient monoid (tateCon q).Quotient
+TateQ.op	mathlib	Con.hasMul	multiplication of the quotient monoid
+TateQ.zero	mathlib	Con.one	the identity 1 of the quotient monoid, the class of 0
+tateQ_commMonoid	mathlib	Con.commMonoid	the quotient of a commutative monoid by a congruence is a commutative monoid; found by instance search on TateQ q
+tateQ_glued	ported	AbstractAlgebra.tateQ_glued	stated in the quotient monoid
+tateQ_inverse	ported	AbstractAlgebra.tateQ_inverse	stated in the quotient monoid; any field
+slope_walls_mod5	ported	AbstractAlgebra.slope_walls_mod5	Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide; a * a written a ^ 2
+slope_walls_mod13	ported	AbstractAlgebra.slope_walls_mod13	Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide; a * a written a ^ 2
+slope_no_walls_mod3	ported	AbstractAlgebra.slope_no_walls_mod3	Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide; a * a written a ^ 2
+slope_no_walls_mod7	ported	AbstractAlgebra.slope_no_walls_mod7	Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide; a * a written a ^ 2
+slope_no_walls_mod11	ported	AbstractAlgebra.slope_no_walls_mod11	Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide; a * a written a ^ 2
+multAdd_one_wall_mod7	ported	AbstractAlgebra.multAdd_one_wall_mod7	Fin n replaced by ZMod n (mathlib's ring of integers mod n); proof still by decide
+CommMonoidLaws.comm	mathlib	mul_comm	field of the record; the CommMonoid axiom
+CommMonoidLaws.assoc	mathlib	mul_assoc	field of the record; the CommMonoid axiom
+CommMonoidLaws.ident	mathlib	mul_one	field of the record; the CommMonoid axiom
+CommGroupLaws.inv	mathlib	mul_inv_cancel	field of the record; in a CommGroup the inverse is given, not just asserted to exist
+CommGroupLaws.toCommMonoidLaws	mathlib	CommGroup.toCommMonoid	parent projection of the record
+OpIso.left	mathlib	MulEquiv.symm_apply_apply	field of the record
+OpIso.right	mathlib	MulEquiv.apply_symm_apply	field of the record
+OpIso.map_op	mathlib	map_mul	field of the record
+OpIso.map_id	mathlib	map_one	field of the record; automatic for a MulEquiv of monoids

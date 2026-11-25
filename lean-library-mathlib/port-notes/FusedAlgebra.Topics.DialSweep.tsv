@@ -1,0 +1,35 @@
+original	status	new_name	note
+scale2	ported	DialSweep.smul_wmadd	renamed; one theorem for any algebra over a commutative semiring, so matrices of any size
+scale3	ported	DialSweep.smul_wmadd	same theorem as scale2
+charpoly2	mathlib	Matrix.charpoly	charpoly2 x t is A.charpoly.eval t; the explicit form is DialSweep.eval_charpoly_fin_two (new; cf. Matrix.charpoly_fin_two)
+charpoly3	mathlib	Matrix.charpoly	charpoly3 x t is A.charpoly.eval t; the explicit form is DialSweep.eval_charpoly_fin_three (new)
+det_one_sub_2	ported	DialSweep.det_one_add_neg_one_smul	renamed; one theorem for any finite n, from Matrix.eval_charpoly
+det_one_sub_3	ported	DialSweep.det_one_add_neg_one_smul	same theorem as det_one_sub_2
+det_top	ported	DialSweep.det_top	powers written with ^
+orth_neg_one	ported	DialSweep.transpose_one_sub_mul	renamed; any finite n; stated as (1 - X)ᵀ * (1 - X) = 1 - wmadd (-1) Xᵀ X, which is the original with (-1) • Y written -Y
+dialU	ported	DialSweep.dialU	!![0, -q; 1, k]
+dialU_sq	ported	DialSweep.dialU_mul_self	renamed
+dial_product	ported	DialSweep.dial_product	
+dial_det	ported	DialSweep.dial_det	q * a * a written q * a ^ 2
+dial_det_eigen	ported	DialSweep.dial_det_eigen	
+dial_discriminant	ported	DialSweep.dial_discriminant	squares written with ^ 2
+or_line	ported	DialSweep.or_line	
+unitU	ported	DialSweep.unitU	
+unitU_sq	ported	DialSweep.unitU_mul_self	renamed
+unit_product	ported	DialSweep.unit_product	
+boost_walls	ported	DialSweep.boost_walls	
+rotation_no_wall	ported	DialSweep.rotation_no_wall	a * a written a ^ 2
+shear_is_add	ported	DialSweep.shear_is_add	
+kmadd	ported	DialSweep.kmadd	now in any semiring (not only 2×2 matrices)
+kmadd_lift	ported	DialSweep.one_add_kmadd_mul	renamed; any semiring
+sylvester2	mathlib	Matrix.det_one_add_mul_comm	Weinstein–Aronszajn identity, any sizes (even rectangular)
+sylvester3	mathlib	Matrix.det_one_add_mul_comm	
+outer3	mathlib	Matrix.vecMulVec	vecMulVec u v with u v : n → R
+rank_one3	ported	DialSweep.det_one_add_vecMulVec	renamed; any finite n; a corollary of Matrix.det_one_add_replicateCol_mul_replicateRow
+rank_one_dial3	ported	DialSweep.det_one_add_mul_vecMulVec	renamed; any finite n; right side written 1 + v ⬝ᵥ A *ᵥ u
+det_charpoly2	ported	DialSweep.det_one_add_smul_eq_charpoly	renamed; one theorem for any finite n: the factor is (-k) ^ Fintype.card n, which is k * k for n = 2
+det_charpoly3	ported	DialSweep.det_one_add_smul_eq_charpoly	same theorem; (-k) ^ 3 = -(k * k * k) for n = 3
+wall_iff_eigen2	ported	DialSweep.wall_iff_isRoot_charpoly	renamed; any finite n; right side is A.charpoly.IsRoot (-1 / k)
+dial_lens	ported	DialSweep.dial_lens	
+cayley_weighted	ported	DialSweep.cayley_weighted	helper DialSweep.smul_skew is new
+winv	ported	DialSweep.wAdd_neg_div	renamed

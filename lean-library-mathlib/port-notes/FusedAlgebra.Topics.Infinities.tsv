@@ -1,0 +1,20 @@
+original	status	new_name	note
+sumOnes	mathlib	Finset.sum	∑ _i ∈ range n, 1
+maddOnes	mathlib	MultAdd.mpow	mpow 1 n on ℕ
+sumOnes_eq	ported	Infinities.sumOnes_eq	stated for the Finset sum; simp (Finset.sum_const, Finset.card_range)
+maddOnes_succ	ported	Infinities.maddOnes_succ	stated for mpow 1 n; from MultAdd.one_add_mpow
+addL	dropped	Finset.sum_add_distrib	coefficient-list addition; not needed once the layers are Nat.choose (Polynomial addition in mathlib)
+evalL	mathlib	Finset.sum	∑ k ∈ range (n + 1), c k * t ^ k (Polynomial.eval in mathlib)
+evalL_addL	dropped	Finset.sum_add_distrib	helper for layers_eval; Polynomial.eval_add in mathlib
+layers	mathlib	Nat.choose	row n of Pascal's triangle; the example layers 3 = [1,3,3,1] is kept as an example on Nat.choose 3
+layers_eval	ported	Infinities.layers_eval	the binomial theorem add_pow; stated as ∑ k ∈ range (n + 1), n.choose k * t ^ k = (1 + t) ^ n in any commutative semiring
+wOnes	mathlib	MultAdd.wpow	wpow t 1 n
+wkey	dropped	ring	one-line ring identity, helper for wOnes_spec
+wOnes_spec	ported	Infinities.wOnes_spec	stated for wpow t 1 n in any commutative semiring; from MultAdd.one_add_mul_wpow
+wOnes_zero	ported	Infinities.wOnes_zero	stated for wpow 0 1 n in any commutative semiring
+cantor	ported	Infinities.cantor	same statement, Type*; mathlib's form is Function.cantor_surjective
+single	ported	Infinities.single	
+single_inj	ported	Infinities.single_inj	stated as Function.Injective single
+half_iter_upper	ported	Infinities.half_iter_upper	ℕ → any preorder; monotonicity hypothesis is Monotone h
+half_iter_lower	ported	Infinities.half_iter_lower	ℕ → any preorder; Monotone f
+half_not_poly	ported	Infinities.half_not_poly	

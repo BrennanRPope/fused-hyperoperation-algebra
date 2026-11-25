@@ -1,0 +1,30 @@
+name = "FusedAlgebraMathlib"
+version = "0.1.0"
+defaultTargets = ["FusedAlgebra", "ProofComplexity"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+# The repo has no LICENSE file, so files carry no copyright header.
+weak.linter.style.header = false
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.37.0-rc1"
+
+[[lean_lib]]
+name = "FusedAlgebra"
+
+# The proof-complexity study (topics/proof-complexity/ on main). Same Lean and Mathlib versions.
+# Its options match the scratch project it was first compiled in, which used Lean's defaults.
+[[lean_lib]]
+name = "ProofComplexity"
+roots = ["ProofComplexity"]
+
+[lean_lib.leanOptions]
+relaxedAutoImplicit = true
+weak.linter.mathlibStandardSet = false
+maxSynthPendingDepth = 1

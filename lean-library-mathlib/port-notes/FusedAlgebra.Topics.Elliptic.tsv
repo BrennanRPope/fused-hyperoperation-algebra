@@ -1,0 +1,29 @@
+original	status	new_name	note
+node_param	ported	EllipticLead.node_param	now WeierstrassCurve.Affine.Equation on nodalCurve a₁ a₂ (new def); any commutative ring
+walls_are_branches	ported	EllipticLead.walls_are_branches	any commutative ring
+slopes_factor	ported	EllipticLead.slopes_factor	any commutative ring
+wall_poly_factor	ported	EllipticLead.wall_poly_factor	any commutative ring
+slope_discriminant	ported	EllipticLead.slope_discriminant	left side a₁² + 4a₂ is now stated as (nodalCurve a₁ a₂).b₂
+nodal_w	ported	EllipticLead.nodal_w	any commutative ring
+tate_q0_law	ported	EllipticLead.tate_q0_law	any commutative ring
+tate_q0_is_multAdd	ported	EllipticLead.tate_q0_is_multAdd	any commutative ring
+d1	ported	EllipticLead.d1	any commutative ring
+d2	ported	EllipticLead.d2	any commutative ring
+d3	ported	EllipticLead.d3	any commutative ring
+d4	ported	EllipticLead.d4	any commutative ring
+d5	ported	EllipticLead.d5	any commutative ring
+d4_weight	ported	EllipticLead.d4_weight	any commutative ring
+d5_weight	ported	EllipticLead.d5_weight	any commutative ring
+multAdd_curve_d	ported	EllipticLead.multAdd_curve_d	any commutative ring
+ochanine_nodal_num	ported	EllipticLead.ochanine_nodal_num	any commutative ring
+ochanine_nodal_den	ported	EllipticLead.ochanine_nodal_den	any commutative ring
+frey_discriminant	ported	EllipticLead.freyCurve_Δ	restated as mathlib's WeierstrassCurve.Δ of freyCurve A B (new def); the original had the same 16·(cubic discriminant) written out
+frey_c4	ported	EllipticLead.freyCurve_c₄	restated as mathlib's WeierstrassCurve.c₄ of freyCurve A B
+frey_c4_at_A	ported	EllipticLead.freyCurve_c₄_zero_left	restated as c₄ (freyCurve 0 B) = 16 B²
+frey_c4_at_C	ported	EllipticLead.freyCurve_c₄_neg	restated as c₄ (freyCurve A (-A)) = 16 A²
+euler_factor_walls	ported	EllipticLead.euler_factor_walls	any commutative ring
+hasse_turning	ported	EllipticLead.hasse_turning	any ordered commutative ring
+euler_units	ported	EllipticLead.euler_units	any commutative ring; lam renamed l
+gap6	ported	EllipticLead.gap6	
+gap6_zero_at_rungs	ported	EllipticLead.gap6_zero	split in two: gap6_zero and gap6_one
+gap6_whole	ported	EllipticLead.gap6_ne_zero	renamed

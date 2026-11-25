@@ -1,0 +1,18 @@
+original	status	new_name	note
+v2	ported	GravityProbeB.v2	generalised from ℚ to any field
+gamma_sq	ported	GravityProbeB.gamma_sq	any field; the unused hypothesis 1 - 3 * x ≠ 0 is dropped (stronger statement)
+factors_multiply	ported	GravityProbeB.factors_multiply	generalised from ℚ to any field
+fractions_fuse	ported	GravityProbeB.fractions_fuse	generalised from ℚ to any commutative ring
+fuse_factors	ported	GravityProbeB.fuse_factors	generalised from ℚ to any commutative ring
+fuse_weight_minus_one	ported	GravityProbeB.fuse_weight_minus_one	any commutative ring; relative of MultAdd.wAdd_neg_one_eq_neg_multAdd
+weak_split	ported	GravityProbeB.weak_split	generalised from ℚ to any field of characteristic zero
+corner_is_second_order	ported	GravityProbeB.corner_is_second_order	generalised from ℚ to any commutative ring
+ppn_geodetic	ported	GravityProbeB.ppn_geodetic	generalised from ℚ to any field of characteristic zero
+thirds	ported	GravityProbeB.thirds	generalised from ℚ to any field of characteristic zero
+geodetic_within_error	ported	GravityProbeB.geodetic_within_error	kept over ℚ (measured numbers); proved by norm_num
+geodetic_parts	ported	GravityProbeB.geodetic_parts	kept over ℚ (measured numbers); proved by norm_num
+parts_alone_ruled_out	ported	GravityProbeB.parts_alone_ruled_out	kept over ℚ (measured numbers); proved by norm_num
+frame_dragging_within_error	ported	GravityProbeB.frame_dragging_within_error	kept over ℚ (measured numbers); proved by norm_num
+polar_average_four	ported	GravityProbeB.polar_average_four	generalised from ℚ to any field of characteristic zero
+polar_average_eight	ported	GravityProbeB.polar_average_eight	generalised from ℚ to any field of characteristic zero
+polar_average_pair	ported	GravityProbeB.polar_average_pair	generalised from ℚ to any field of characteristic zero

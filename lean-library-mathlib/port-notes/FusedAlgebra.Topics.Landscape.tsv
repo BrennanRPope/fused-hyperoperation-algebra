@@ -1,0 +1,30 @@
+original	status	new_name	note
+num	ported	LandscapeMap.num	generalised from ℤ to any commutative ring; added num_def
+den	ported	LandscapeMap.den	any commutative ring; added den_def
+num_comm	ported	LandscapeMap.num_comm	any commutative ring
+den_comm	ported	LandscapeMap.den_comm	any commutative ring
+num_zero	ported	LandscapeMap.num_zero	any commutative ring; simp
+den_zero	ported	LandscapeMap.den_zero	any commutative ring; simp
+assoc_num	ported	LandscapeMap.assoc_num	any commutative ring
+assoc_den	ported	LandscapeMap.assoc_den	any commutative ring
+inverse_num	ported	LandscapeMap.inverse_num	any commutative ring
+riccati_rate	ported	LandscapeMap.riccati_rate	any commutative ring; a * a written a ^ 2
+rate_factors	ported	LandscapeMap.rate_factors	any commutative ring; a * a written a ^ 2
+lens_lift	ported	LandscapeMap.lens_lift	any commutative ring; now proved from the two factor lemmas
+lens_factor_u	ported	LandscapeMap.lens_factor_u	any commutative ring
+lens_factor_v	ported	LandscapeMap.lens_factor_v	any commutative ring
+multadd_point	ported	LandscapeMap.multAdd_point	renamed (multAdd spelling); any commutative ring
+velocity_point	ported	LandscapeMap.velocity_point	any commutative ring
+discriminant	ported	LandscapeMap.discriminant	any commutative ring; squares written ^ 2
+parabola_additive	ported	LandscapeMap.parabola_additive	any commutative ring
+parabola_den	ported	LandscapeMap.parabola_den	any commutative ring; now lens_factor_u at u = v
+units_num	ported	LandscapeMap.units_num	any commutative ring; lam renamed l
+units_den	ported	LandscapeMap.units_den	any commutative ring; lam * lam written l ^ 2
+dial_is_multadd	ported	LandscapeMap.dial_is_multAdd	renamed; one-line corollary of MultAdd.mul_wAdd
+kdv_phase_shift	ported	LandscapeMap.kdv_phase_shift	one-line corollary of MultAdd.mul_wAdd
+chi_y_line	ported	LandscapeMap.chi_y_line	any commutative ring
+chi_y_touch	ported	LandscapeMap.chi_y_touch	any commutative ring; squares written ^ 2
+rung_discriminant	ported	LandscapeMap.rung_discriminant	any commutative ring; squares written ^ 2
+rung_equivalent	ported	LandscapeMap.rung_equivalent	any commutative ring; squares written ^ 2
+channel_floor	ported	LandscapeMap.channel_floor	any linearly ordered commutative ring; L n m now implicit
+parity_reaches_floor	ported	LandscapeMap.parity_reaches_floor	any commutative ring

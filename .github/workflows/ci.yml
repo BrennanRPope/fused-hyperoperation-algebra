@@ -1,5 +1,5 @@
 # The whole theory, checked on every push and pull request to main.
-# Fails loudly if any Lean proof breaks, if any theorem uses `sorry` or an axiom beyond
+# Fails loudly if any Lean proof breaks (core library or the Mathlib version), if any theorem uses `sorry` or an axiom beyond
 # Lean's standard three, if the assumptions ledger is out of date, or if any topic's
 # numeric checks fail. It never tags, releases or touches VERSION.
 name: CI
@@ -66,3 +66,7 @@ jobs:
       - name: Topic write-ups still missing an Assumptions section (report only)
         if: always()
         run: python tools/assumption_sections.py
+
+  mathlib:
+    name: Mathlib version (lean-library-mathlib)
+    uses: ./.github/workflows/mathlib-build.yml

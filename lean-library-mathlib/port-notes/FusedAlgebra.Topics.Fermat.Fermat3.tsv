@@ -1,0 +1,128 @@
+original	status	new_name	note
+pow_emod_of	mathlib	Int.ModEq.pow	`x ^ n % m = (x % m) ^ n % m` is `(Int.ModEq.pow n (Int.mod_modEq x m)).symm`
+cube_mod9	ported	Fermat3.cube_mod9	same statement
+case1	ported	Fermat3.case1	same statement, proved from cube_mod9; mathlib has it as `fermatLastTheoremThree_case_1`, but that is private to Mathlib.NumberTheory.FLT.Three
+mpow_three	ported	Fermat3.mpow_three	generalised from ℤ to any commutative ring
+flt3_multAdd_iff	ported	Fermat3.flt3_multAdd_iff	generalised from ℚ to any field
+cube_mod3	ported	Fermat3.cube_mod3	same statement
+sum_mod3	ported	Fermat3.sum_mod3	same statement
+dvd_of_dvd_mul_cop	mathlib	IsCoprime.dvd_of_dvd_mul_left	with IsCoprime k m in place of Int.gcd k m = 1 (`Int.isCoprime_iff_gcd_eq_one`)
+cop_symm	mathlib	IsCoprime.symm	
+cop_of_dvd_left	mathlib	IsCoprime.of_isCoprime_of_dvd_left	
+cop_of_dvd_right	mathlib	IsCoprime.of_isCoprime_of_dvd_right	
+cop_mul_right	mathlib	IsCoprime.mul_right	
+cop_mul_left	mathlib	IsCoprime.mul_left	
+cop_of_pow	mathlib	IsCoprime.pow_iff	
+cop_two_of_odd	mathlib	Int.isCoprime_two_left	`IsCoprime 2 m ↔ Odd m`
+cop_three	mathlib	Prime.coprime_iff_not_dvd	for the prime `Int.prime_three`
+three_dvd_of_sq	mathlib	Prime.dvd_of_dvd_pow	`Int.prime_three.dvd_of_dvd_pow`
+three_dvd_of_cube	mathlib	Prime.dvd_of_dvd_pow	`Int.prime_three.dvd_of_dvd_pow`
+cube_of_mul_cop	mathlib	Int.eq_pow_of_mul_eq_pow_odd_left	with IsCoprime and `Odd 3`
+cube_of_mul_cop'	mathlib	Int.eq_pow_of_mul_eq_pow_odd_right	with IsCoprime and `Odd 3`
+cube_of_mul3	ported	Fermat3.cube_of_mul3	hypotheses Int.gcd _ _ = 1 restated as IsCoprime (equivalent, `Int.isCoprime_iff_gcd_eq_one`)
+Eis	ported	Fermat3.Eis	the hand-rolled structure is now `abbrev Eis := QuadraticAlgebra ℤ (-1) (-1)`; a + bω with ω² = -1 - ω, same re/im coordinates
+Eis.ext	mathlib	QuadraticAlgebra.ext	
+Eis.ext_iff	mathlib	QuadraticAlgebra.ext_iff	
+Eis.instAdd (instance : Add Eis)	mathlib	QuadraticAlgebra.instAdd	ring operations of QuadraticAlgebra; the multiplication formula is the same
+Eis.instNeg (instance : Neg Eis)	mathlib	QuadraticAlgebra.instNeg	ring operations of QuadraticAlgebra; the multiplication formula is the same
+Eis.instSub (instance : Sub Eis)	mathlib	QuadraticAlgebra.instSub	ring operations of QuadraticAlgebra; the multiplication formula is the same
+Eis.instMul (instance : Mul Eis)	mathlib	QuadraticAlgebra.instMul	ring operations of QuadraticAlgebra; the multiplication formula is the same
+Eis.instNatCast (instance : NatCast Eis)	mathlib	QuadraticAlgebra.instAddCommMonoidWithOne	
+Eis.instIntCast (instance : IntCast Eis)	mathlib	QuadraticAlgebra.instAddCommGroupWithOne	
+Eis.instOfNat (instance : OfNat Eis n)	mathlib	QuadraticAlgebra.instAddCommMonoidWithOne	numerals come from the ring structure
+Eis.instSMulNat (instance : SMul Nat Eis)	mathlib	QuadraticAlgebra.instSMul	
+Eis.instSMulInt (instance : SMul Int Eis)	mathlib	QuadraticAlgebra.instSMul	
+Eis.npow	mathlib	QuadraticAlgebra.instCommRing	powers come from the commutative ring structure (`NPow.npow`)
+Eis.instHPow (instance : HPow Eis Nat Eis)	mathlib	QuadraticAlgebra.instCommRing	`x ^ n` is the monoid power of the commutative ring
+Eis.add_re	mathlib	QuadraticAlgebra.re_add	
+Eis.add_im	mathlib	QuadraticAlgebra.im_add	
+Eis.neg_re	mathlib	QuadraticAlgebra.re_neg	
+Eis.neg_im	mathlib	QuadraticAlgebra.im_neg	
+Eis.sub_re	mathlib	QuadraticAlgebra.re_sub	
+Eis.sub_im	mathlib	QuadraticAlgebra.im_sub	
+Eis.mul_re	mathlib	QuadraticAlgebra.re_mul	
+Eis.mul_im	mathlib	QuadraticAlgebra.im_mul	
+Eis.ofNat_re	mathlib	QuadraticAlgebra.re_ofNat	
+Eis.ofNat_im	mathlib	QuadraticAlgebra.im_ofNat	
+Eis.natCast_re	mathlib	QuadraticAlgebra.re_natCast	
+Eis.natCast_im	mathlib	QuadraticAlgebra.im_natCast	
+Eis.intCast_re	mathlib	QuadraticAlgebra.re_intCast	
+Eis.intCast_im	mathlib	QuadraticAlgebra.im_intCast	
+Eis.nsmul_re	mathlib	QuadraticAlgebra.re_smul	
+Eis.nsmul_im	mathlib	QuadraticAlgebra.im_smul	
+Eis.zsmul_re	mathlib	QuadraticAlgebra.re_smul	
+Eis.zsmul_im	mathlib	QuadraticAlgebra.im_smul	
+Eis.zero_re	mathlib	QuadraticAlgebra.re_zero	
+Eis.zero_im	mathlib	QuadraticAlgebra.im_zero	
+Eis.one_re	mathlib	QuadraticAlgebra.re_one	
+Eis.one_im	mathlib	QuadraticAlgebra.im_one	
+Eis.pow_zero'	mathlib	pow_zero	
+Eis.pow_succ'	mathlib	pow_succ	
+Eis.instCommRing (instance : Lean.Grind.CommRing Eis)	mathlib	QuadraticAlgebra.instCommRing	mathlib CommRing instead of the Lean.Grind class
+Eis.instDvd (instance : Dvd Eis)	mathlib	semigroupDvd	divisibility of the commutative ring
+Eis.dvd_def	mathlib	dvd_def	
+Eis.dvd_trans	mathlib	dvd_trans	
+Eis.dvd_add	mathlib	dvd_add	
+Eis.dvd_sub	mathlib	dvd_sub	
+Eis.dvd_mul_left_of	mathlib	Dvd.dvd.mul_left	
+Eis.dvd_refl	mathlib	dvd_refl	
+Eis.N	mathlib	QuadraticAlgebra.norm	the norm as a monoid homomorphism; `Fermat3.Eis.norm_eq` gives the original formula a² - ab + b²
+Eis.conj	mathlib	Star.star	`star` of QuadraticAlgebra (`QuadraticAlgebra.re_star`, `im_star`): (a - b) - bω
+Eis.N_mul	mathlib	map_mul	the norm is a MonoidHom
+Eis.N_conj	mathlib	QuadraticAlgebra.norm_star	
+Eis.mul_conj	mathlib	QuadraticAlgebra.algebraMap_norm_eq_mul_star	
+Eis.sq_nonneg'	mathlib	mul_self_nonneg	
+Eis.sq_pos'	mathlib	mul_self_pos	
+Eis.four_N	ported	Fermat3.Eis.four_mul_norm	renamed; squares written with ^ 2 (general form in mathlib: `QuadraticAlgebra.four_mul_norm_eq`)
+Eis.N_nonneg	ported	Fermat3.Eis.norm_nonneg	renamed
+Eis.eq_zero_of_N	ported	Fermat3.Eis.norm_eq_zero_iff	renamed; now an iff
+Eis.N_zero	mathlib	QuadraticAlgebra.norm_zero	
+Eis.mul_eq_zero	ported	Fermat3.Eis.instIsDomain	now the instance `IsDomain Eis` (from `QuadraticAlgebra.Int.isDomain_iff`, the discriminant -3 is not a square); the statement is then `mul_eq_zero`
+Eis.N_pos	ported	Fermat3.Eis.norm_pos	renamed
+Eis.N_dvd	mathlib	map_dvd	`map_dvd QuadraticAlgebra.norm`
+Eis.IsUnit	mathlib	IsUnit	mathlib units
+Eis.isUnit_of_N	ported	Fermat3.Eis.isUnit_iff_norm_eq_one	merged with N_of_isUnit into one iff
+Eis.N_of_isUnit	ported	Fermat3.Eis.isUnit_iff_norm_eq_one	merged with isUnit_of_N into one iff
+Eis.small_of_sq_le_one	dropped	nlinarith / interval_cases	one-line bound b * b ≤ 1 → b ∈ {-1, 0, 1}; done inline by `nlinarith` and `interval_cases` in units_list
+Eis.units_list	ported	Fermat3.Eis.units_list	same statement, units written 1, -1, ω, -ω, 1 + ω, -(1 + ω) instead of coordinate pairs
+Eis.div_rem	ported	Fermat3.Eis.norm_mod_lt	restated for the explicit rounding quotient `a / b` and remainder `a % b = a - b * (a / b)` (new `Div`/`Mod` instances, `div_def`, `mod_def`, `four_mul_norm_sub_mul`); the existence form follows with q = a / b, r = a % b
+Eis.bezout_aux	mathlib	EuclideanDomain.gcd_eq_gcd_ab	scaffolding for Bezout; supplied by the new instance `Fermat3.Eis.instEuclideanDomain`
+Eis.bezout	mathlib	EuclideanDomain.gcd_eq_gcd_ab	with `EuclideanDomain.gcd_dvd_left`/`gcd_dvd_right`, from `Fermat3.Eis.instEuclideanDomain`
+Eis.Cop	mathlib	IsCoprime	"every common divisor is a unit" gives IsCoprime in a Euclidean domain by `isCoprime_of_dvd`; conversely `IsCoprime.isUnit_of_dvd'`
+Eis.cop_bezout	mathlib	isCoprime_of_dvd	IsCoprime is by definition the Bezout identity s * a + t * b = 1
+Eis.cube_of_cop	mathlib	exists_associated_pow_of_mul_eq_pow'	in the principal ideal domain given by `Fermat3.Eis.instEuclideanDomain`; `Associated (δ ^ 3) α` is "α is a unit times a cube"
+odd_norm	ported	Fermat3.odd_norm	parity stated with Odd instead of % 2 = 1
+norm_one	ported	Fermat3.eq_one_of_dvd_sq_add_three_mul_sq	renamed (the old name clashes in meaning with `QuadraticAlgebra.norm_one`); IsCoprime and Odd in place of Int.gcd = 1 and % 2 = 1
+Eis.cube_eq	mathlib	pow_three'	
+Eis.cube_int	mathlib	map_pow	`(c : Eis) ^ 3 = ((c ^ 3 : ℤ) : Eis)` is `Int.cast_pow`; integers embed by the ring cast, not by ⟨c, 0⟩
+Eis.omega_cube	ported	Fermat3.Eis.omega_pow_three	renamed; ⟨0, 1⟩ is `QuadraticAlgebra.omega`
+Eis.even_cube_root	ported	Fermat3.Eis.even_cube_root	`Even δ'.im` instead of `δ'.im % 2 = 0`
+Eis.cube_sqrt3	ported	Fermat3.Eis.cube_sqrt3	same statement
+key_cube	ported	Fermat3.key_cube	Euler's lemma, proved (not in mathlib); IsCoprime p q and Odd (p + q) in place of Int.gcd p q = 1 and (p + q) % 2 = 1
+cube_mod9_all	ported	Fermat3.cube_mod9_all	same statement
+cube_ne_two	ported	Fermat3.cube_ne_two	same statement
+cube_mod2	ported	Fermat3.cube_mod2	same statement
+eq_zero_of_cube	mathlib	pow_eq_zero_iff	`eq_zero_of_pow_eq_zero`
+cube_ne_zero	mathlib	pow_ne_zero	
+cop_of_cubes	ported	Fermat3.cop_of_cubes	IsCoprime in place of Int.gcd = 1
+Sol	ported	Fermat3.Sol	IsCoprime x y in place of Int.gcd x y = 1
+sol_cop	dropped	Fermat3.no_sol	descent scaffolding about `Sol`, which has no instances (`no_sol`); the content is `Fermat3.cop_of_cubes`
+sol_swap	dropped	Fermat3.no_sol	descent scaffolding: symmetry of `Sol`, vacuous once `no_sol` is taken from mathlib
+sol_rot	dropped	Fermat3.no_sol	descent scaffolding: rotation of `Sol`, vacuous once `no_sol` is taken from mathlib
+odd_of_cop_even	mathlib	Int.isCoprime_two_left	coprime to an even number implies odd (`IsCoprime.of_isCoprime_of_dvd_right` then `Int.isCoprime_two_left`); used only in the descent step
+sol_even	dropped	Fermat3.no_sol	descent scaffolding about `Sol` (some entry is even); the parity content is `Fermat3.cube_mod2`
+measure_lt	ported	Fermat3.measure_lt	restored Nov 25 with the original statement; the descent that used it is still replaced by fermatLastTheoremThree
+par_ab	ported	Fermat3.par_ab	Odd in place of % 2 = 1
+cop_of_param	ported	Fermat3.cop_of_param	IsCoprime in place of Int.gcd = 1
+step	dropped	fermatLastTheoremThree	Euler's descent step (190 lines): from a `Sol` build a smaller one. Its hypothesis is contradictory by mathlib's `fermatLastTheoremThree`, so it is not re-proved; its ingredients `key_cube`, `cube_of_mul3`, `par_ab`, `cop_of_param`, `cube_ne_two` are ported
+no_sol	ported	Fermat3.no_sol	restated as `∀ x y z, ¬ Sol x y z` (the index n = |xyz| was only the descent measure; the new form implies the old one); now a corollary of mathlib's `fermatLastTheoremThree`
+primitive_of_sol	mathlib	fermatLastTheoremWith_of_fermatLastTheoremWith_coprime	reduction to primitive solutions; its hypotheses are contradictory by `fermatLastTheoremThree`, and mathlib's general reduction is the named lemma
+flt3	ported	Fermat3.flt3	same statement; corollary of mathlib's `fermatLastTheoremThree` via `fermatLastTheoremFor_iff_int`
+flt3_nat	ported	Fermat3.flt3_nat	same statement; corollary of mathlib's `fermatLastTheoremThree`
+flt3_multAdd	ported	Fermat3.flt3_multAdd	same statement; corollary of mathlib's `fermatLastTheoremThree`
+sum_cubes	ported	Fermat3.sum_cubes	generalised from ℤ to any commutative ring
+second_factor	ported	Fermat3.second_factor	generalised from ℤ to any commutative ring
+gcd_factors	ported	Fermat3.gcd_factors	hypothesis IsCoprime x y in place of Int.gcd x y = 1; conclusion unchanged
+three_dvd_mul	mathlib	Prime.dvd_mul	`Int.prime_three.dvd_mul`
+exactly_one_three	ported	Fermat3.exactly_one_three	IsCoprime x y in place of Int.gcd x y = 1
+mpow_three_mod3	ported	Fermat3.mpow_three_mod3	same statement

@@ -1,36 +1,25 @@
-# Builds the mathlib version of the library (lean-library-mathlib/) on GitHub,
-# using mathlib's prebuilt cache, then checks every theorem uses only the
-# standard axioms and no sorry. Runs on pushes and pull requests that touch the
-# port, and by hand ("Run workflow") on any branch, such as mathlib-port.
+# Builds the Mathlib version of the library (lean-library-mathlib/: the ported library
+# and the proof-complexity study) with Mathlib's prebuilt cache, then checks every theorem uses
+# only the standard axioms and no sorry. Main's CI (ci.yml) calls this on every push and pull
+# request; it can also be run by hand on any branch, tag or commit ("Run workflow").
 # It never tags, releases or touches VERSION.
 name: Mathlib build
 
 on:
-  push:
-    branches: [main, mathlib-port]
-    paths:
-      - "lean-library-mathlib/**"
-      - ".github/workflows/mathlib-build.yml"
-  pull_request:
-    paths:
-      - "lean-library-mathlib/**"
-      - ".github/workflows/mathlib-build.yml"
+  workflow_call:
   workflow_dispatch:
     inputs:
       ref:
         description: "Branch, tag or commit to build"
         required: true
-        default: "mathlib-port"
+        default: "main"
 
 permissions:
   contents: read
 
-concurrency:
-  group: mathlib-build-${{ github.event.inputs.ref || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build:
+    name: Mathlib library and proof complexity
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:

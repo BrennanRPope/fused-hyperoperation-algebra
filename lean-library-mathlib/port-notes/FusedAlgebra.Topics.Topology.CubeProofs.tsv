@@ -1,0 +1,30 @@
+original	status	new_name	note
+IsPrime	mathlib	Nat.Prime	hand-rolled primality; use `p.Prime` and `hp.two_le`, `hp.eq_one_or_self_of_dvd`
+coprime_of_lt	mathlib	Nat.coprime_of_lt_prime	arguments are (k ≠ 0) (k < p) (p.Prime)
+prime_dvd_middle	ported	MultAdd.Cube.prime_dvd_middle	one-line corollary of Nat.Prime.dvd_choose_self; layer → Nat.choose
+MEq	mathlib	Int.ModEq	MEq p x y is now x ≡ y [ZMOD p]; Int.modEq_iff_dvd unfolds it (note: p ∣ y - x)
+MEq.refl	mathlib	Int.ModEq.refl	
+MEq.symm	mathlib	Int.ModEq.symm	
+MEq.trans	mathlib	Int.ModEq.trans	
+MEq.add	mathlib	Int.ModEq.add	
+MEq.mul	mathlib	Int.ModEq.mul	
+MEq.zero_of_dvd	mathlib	Int.modEq_zero_iff_dvd	the .mpr direction
+divmod_of_eq	mathlib	Nat.mul_add_div	with Nat.mul_add_mod and Nat.div_eq_of_lt / Nat.mod_eq_of_lt for the two halves
+blockCount	dropped	MultAdd.Cube.lucas_step	the product (n / p).choose (k / p) * (n % p).choose (k % p) is written inline in lucas_step
+blockCount_eq	dropped	MultAdd.Cube.lucas_step	helper for the hand proof of Lucas; not needed once Lucas comes from mathlib
+layer_zero_left	mathlib	Nat.choose_zero_succ	with Nat.choose_zero_right for the k = 0 case
+lucas_step	ported	MultAdd.Cube.lucas_step	corollary of Choose.choose_modEq_choose_mod_mul_choose_div; blockCount written inline, Int.ModEq
+digitProd	dropped	MultAdd.Cube.lucas	replaced by the Finset product ∏ i ∈ range f, (n / p ^ i % p).choose (k / p ^ i % p), as in mathlib
+lucas	ported	MultAdd.Cube.lucas	corollary of Choose.lucas_theorem; digitProd became a Finset product over the digits
+exists_prime_factor	mathlib	Nat.exists_prime_and_dvd	hypothesis is n ≠ 1 instead of 2 ≤ n
+aks_middle	ported	MultAdd.Cube.aks_middle	same statement with Nat.choose and Nat.Prime; forward half is Nat.Prime.dvd_choose_self, converse proved here from Lucas
+bsum	mathlib	Finset.sum	bsum f m is ∑ k ∈ Finset.range m, f k
+bsum_add	mathlib	Finset.sum_add_distrib	
+bsum_mul	mathlib	Finset.mul_sum	
+bsum_shift	mathlib	Finset.sum_range_succ'	summands in the other order
+bsum_congr	mathlib	Finset.sum_congr	
+bsum_dvd	mathlib	Finset.dvd_sum	
+cubeSum	dropped	MultAdd.Cube.binomial	the sum ∑ k ∈ range (n + 1), n.choose k * x ^ k is written inline
+binomial	ported	MultAdd.Cube.binomial	generalised from ℤ to any commutative semiring; argument order (n x) kept; it is add_pow, via MultAdd.Cube.one_add_mpow_eq_sum_choose
+frobenius	ported	MultAdd.Cube.frobenius	corollary of add_pow_char in ZMod p; stated with Int.ModEq; mult-add form added as MultAdd.Cube.mpow_prime_modEq
+fermat	ported	MultAdd.Cube.fermat	corollary of ZMod.pow_card; generalised from a : ℕ to a : ℤ
