@@ -22,6 +22,24 @@ Draw a unit square, stretch it by a one way and by b the other. The new area min
 
 **Honesty note.** Each piece found so far matches known mathematics (formal group laws, jet and dual numbers, Clifford algebra, K-theory, the Hirota form of KdV solitons, and more). The possibly new part is the single geometric picture that unifies them. The write-ups say which is which.
 
+## Where it unifies
+
+It's easy to get stuck in one corner of mathematics and miss the forest for the trees. The point of the mult-add box is that one shape shows up in areas that are usually kept apart. Stretch a unit square by a one way and b the other: the new area is (1 + a)(1 + b), and the part beyond the old square is a + b + ab. With n numbers the box has one corner piece for every subset of them, and a dial k can weigh the corner: a + b + k·ab.
+
+![The mult-add box in the middle, with counting, primes, probability, special relativity, general relativity and topology hanging off it](docs/where-it-unifies.svg)
+
+| Area | What the box says there | Already known as | Folder |
+|---|---|---|---|
+| Counting and power sets | Multiplying out ∏(1 + tₓ) gives one term per subset; all dials at 1 give the 2ⁿ subsets, and two random subsets joined have odds t ✳ s. | The multilinear expansion; p-biased product measures | [`fractional-powerset-dials`](topics/fractional-powerset-dials/) |
+| Primes and zeta functions | Put dial p⁻ˢ on each prime: subsets of primes are the squarefree numbers, so ∏(1 + p⁻ˢ) = ζ(s)/ζ(2s). Turning the dial k gives ∏(1 − k·p⁻ˢ)^(−1/k), which is ζ(s) itself at k = 1. | Euler products; the fermionic and bosonic primon gases (Julia 1990, Spector 1990) | [`dial-survey`](topics/dial-survey/) |
+| Probability and measure | k = −1 is "A or B" for independent events, p + q − pq. Sugeno's λ-measure is the dial with k = λ, and α-determinantal point processes are the dial with k = α (fermions −1, Poisson 0, bosons 1). | Sugeno 1974; Shirai and Takahashi 2003 | [`measure-probability`](topics/measure-probability/), [`dial-point-processes`](topics/dial-point-processes/) |
+| Special relativity | Velocity addition is mult-add in d = 2u/(1 − u). Then 1 + d is the Doppler factor squared, and the rapidity ½·log(1 + d) simply adds. | Rapidities add; Doppler factors multiply | [`relativity`](topics/relativity/) |
+| General relativity | In the "river" picture of a black hole, one boost stretches clocks and radial rulers by mult-add inverses: (−g_tt − 1) ✳ (g_rr − 1) = 0. That's why time and space bend equally and light bends twice Newton's angle. | Painlevé 1921, Gullstrand 1922; Hamilton and Lisle's river model, 2008 | [`general-relativity`](topics/general-relativity/) |
+| Composition laws | Every law (a + b + k·ab)/(1 − q·ab) is a point on one plane, and k itself is a choice of units (only its sign survives rescaling). Tsallis' q-algebra is the dial with k = 1 − q. | One-parameter Möbius groups (Lie, Klein); Tsallis 1988 | [`landscape`](topics/landscape/), [`dial-survey`](topics/dial-survey/) |
+| Topology | The Todd genus composes by mult-add, the signature by velocity addition, and all of Hirzebruch's χ_y genera lie on one straight line of the plane. | Hirzebruch's genera | [`landscape`](topics/landscape/) |
+
+Every link in this table is known mathematics. What the box adds is one shape that holds them all, so a fact in one row suggests where to look in another. No new theorem is claimed here.
+
 ## What's here that could help mathematicians
 
 These are the pieces most worth a working mathematician's time. The bar is strict: an item is here only if it gives something usable (a formal check, a sharp open question, a measurable number, a negative result that saves effort, or a lookup tool). Pure re-derivations of known math are left out; INDEX.md has those.
@@ -60,6 +78,17 @@ Known mathematics, but the one-picture reading may help someone teaching or conn
 - **The half power set under joining** is unique: dial √2 − 1 on every element (odds of inclusion), with a mirror twin √2 + 1 under complement; on the primes every reasonable half gives growth X/√(log X) (Selberg–Delange). 48 Lean theorems. [`topics/fractional-powerset-dials/`](topics/fractional-powerset-dials/)
 - **Wick rotation is a change of units by i:** it moves a law from (k, q) to (i·k, −q), turning thermal tanh addition into quantum tan addition. [`topics/thermodynamics/`](topics/thermodynamics/)
 - **In Schwarzschild, the clock and radial-ruler deficits are mult-add inverses,** (−g_tt − 1) ✳ (g_rr − 1) = 0, from one boost through the Painlevé–Gullstrand "river"; it shows at a glance why light bends twice the Newtonian amount. [`topics/general-relativity/`](topics/general-relativity/)
+
+## Promising leads
+
+The live leads, each judged on its own merits. "Known" marks what is already established mathematics or physics; anything else is our claim and is labelled as such. This list is updated as each piece of work reports.
+
+- **A dial that depends on direction (k as a matrix or Clifford number) for curved geometry.** A single number dial can't make curvature that varies from place to place in 3 or more dimensions (Schur's theorem blocks it), so the dial has to depend on direction. The smallest version, a dial on each pair of directions, is exactly a metric g_ij, and the law a + b + a·k·b stays associative with its lift for any multivector k. *Known:* Schur's theorem, Clifford algebra, gauge-theory gravity (Lasenby, Doran and Gull). *Our claim:* this is the step where mult-add's own rules stop and the metric has to come in. *Status:* in progress (Clifford write-up and Lean file being finished); no new prediction so far.
+- **Four bridges from mult-add to Einstein's equations (Jacobson, teleparallel, Lovelock, Deser).** Once the direction dial is in, every bridge reaches Einstein's equations, and Jacobson's heat-flow route is where mult-add supplies the most (area bookkeeping and the Unruh temperature). *Known:* all four bridges. *Status:* in progress, page being published; no new prediction.
+- **Fractal boxes as fractional power sets.** A box with 2^d corners for fractional d: the half box (1 + a)^(1/2) has negative layers, and a Cantor set of dimension ½ gives no single corner count (its count wobbles from level to level), while a half box squared is dust rather than a line. *Known:* box-counting and Moran dimension. *Status:* early; 25 of 25 checks pass, write-up not yet done.
+- **The dial k setting how many copies each element may have.** k = −1 allows each element once, k = −1/m at most m times, k = 1 without limit, which runs the prime products from ζ(s)/ζ(2s) to ζ(s). *Next step:* the wall at Re s = 0, which the Estermann–Dahlquist theorems may already settle, and whether the k = −1/m points match the Lee–Yang special values. *Status:* exact computation and 18 Lean theorems ([write-up](topics/dial-survey/), [page](https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr)).
+- **The size dial, and what mult-add leaves unexplained across sets.** Weighing a set's elements by size, a plain ½ on every whole number keeps −12·Li₂(−½)/π² ≈ 54.5% of the total, and the share depends only on the set's dimension. The open question is how much of each set's behaviour mult-add accounts for and what is left over. *Status:* in progress; checks written, no write-up yet.
+- **The dial's potential.** A scored search of about 80 guesses tying the dial to measured constants. What survives: dial boosts plus the river give general relativity (γ = 1, matching Cassini), and a slowly rolling dial today fits supernova and BAO data best at slope 0.80, with √(2/3) inside the 1σ range (but 13 of 43 simple slopes are too, and the natural coupling would need screening in the solar system). Guesses for the Higgs and top masses did no better than random targets. *Status:* in progress, page being built.
 
 ## Lean
 

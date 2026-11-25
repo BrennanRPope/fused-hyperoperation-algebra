@@ -23,7 +23,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/patterns/`
 - `topics/shape-directions/`
 
-Still running and not in the repo yet (Nov 25, 16:45 UTC): Clifford algebra, the dial potential search, and the general relativity bridges. They will be added when they finish.
+Still running and not in the repo yet (Nov 25, 16:55 UTC): Clifford algebra, the dial potential search, the general relativity bridges, fractal boxes, and the size dial residual. README.md "Promising leads" tracks where each stands. They will be added when they finish.
 
 A port of the Lean library to mathlib is happening on a separate branch, not on main.
 

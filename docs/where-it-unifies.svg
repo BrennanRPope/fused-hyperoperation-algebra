@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 660" width="940" height="660" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="940" height="660" fill="#ffffff"/>
+  <!-- connectors -->
+  <g stroke="#9aa3ad" stroke-width="2" fill="none">
+    <line x1="300" y1="120" x2="370" y2="230"/>
+    <line x1="300" y1="330" x2="370" y2="305"/>
+    <line x1="300" y1="540" x2="370" y2="400"/>
+    <line x1="640" y1="120" x2="580" y2="230"/>
+    <line x1="640" y1="330" x2="580" y2="305"/>
+    <line x1="640" y1="540" x2="580" y2="400"/>
+  </g>
+  <!-- the box -->
+  <text x="475" y="172" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2933">The mult-add box</text>
+  <rect x="370" y="190" width="130" height="130" fill="#e4e7eb" stroke="#52606d" stroke-width="2"/>
+  <rect x="500" y="190" width="80" height="130" fill="#bcdcf5" stroke="#52606d" stroke-width="2"/>
+  <rect x="370" y="320" width="130" height="80" fill="#bcdcf5" stroke="#52606d" stroke-width="2"/>
+  <rect x="500" y="320" width="80" height="80" fill="#f7c59f" stroke="#52606d" stroke-width="2"/>
+  <text x="435" y="261" text-anchor="middle" font-size="22" fill="#1f2933">1</text>
+  <text x="540" y="261" text-anchor="middle" font-size="22" fill="#1f2933">a</text>
+  <text x="435" y="366" text-anchor="middle" font-size="22" fill="#1f2933">b</text>
+  <text x="540" y="366" text-anchor="middle" font-size="22" fill="#1f2933">ab</text>
+  <text x="475" y="428" text-anchor="middle" font-size="15" fill="#1f2933">a ✳ b = a + b + ab = (1 + a)(1 + b) − 1</text>
+  <text x="475" y="450" text-anchor="middle" font-size="14" fill="#3e4c59">n numbers: one corner piece per subset</text>
+  <text x="475" y="472" text-anchor="middle" font-size="14" fill="#3e4c59">the dial k weighs the corner: a + b + k·ab</text>
+  <!-- nodes -->
+  <g font-size="13" fill="#1f2933">
+    <rect x="20" y="60" width="280" height="120" rx="10" fill="#f5f7fa" stroke="#7b8794"/>
+    <text x="34" y="86" font-size="15" font-weight="bold">Counting and power sets</text>
+    <text x="34" y="112">∏(1 + tₓ): one term per subset</text>
+    <text x="34" y="134">all dials 1 gives the 2ⁿ subsets</text>
+    <text x="34" y="156">odds of random subsets join by ✳</text>
+
+    <rect x="20" y="270" width="280" height="120" rx="10" fill="#f5f7fa" stroke="#7b8794"/>
+    <text x="34" y="296" font-size="15" font-weight="bold">Primes and zeta</text>
+    <text x="34" y="322">subsets of primes = squarefree numbers</text>
+    <text x="34" y="344">∏(1 + p⁻ˢ) = ζ(s) / ζ(2s)</text>
+    <text x="34" y="366">dial k = 1 gives ζ(s) itself</text>
+
+    <rect x="20" y="480" width="280" height="120" rx="10" fill="#f5f7fa" stroke="#7b8794"/>
+    <text x="34" y="506" font-size="15" font-weight="bold">Probability and measure</text>
+    <text x="34" y="532">k = −1: P(A or B) = p + q − pq</text>
+    <text x="34" y="554">Sugeno λ-measure: λ is the dial k</text>
+    <text x="34" y="576">fermions, Poisson, bosons: k = −1, 0, 1</text>
+
+    <rect x="640" y="60" width="280" height="120" rx="10" fill="#f5f7fa" stroke="#7b8794"/>
+    <text x="654" y="86" font-size="15" font-weight="bold">Special relativity</text>
+    <text x="654" y="112">1 + d = (1 + u)/(1 − u), Doppler factor²</text>
+    <text x="654" y="134">velocities combine by ✳ in d</text>
+    <text x="654" y="156">rapidity = ½ log(1 + d)</text>
+
+    <rect x="640" y="270" width="280" height="120" rx="10" fill="#f5f7fa" stroke="#7b8794"/>
+    <text x="654" y="296" font-size="15" font-weight="bold">General relativity</text>
+    <text x="654" y="322">the "river" picture of a black hole</text>
+    <text x="654" y="344">(−g_tt − 1) ✳ (g_rr − 1) = 0</text>
+    <text x="654" y="366">so light bends twice Newton's angle</text>
+
+    <rect x="640" y="480" width="280" height="120" rx="10" fill="#f5f7fa" stroke="#7b8794"/>
+    <text x="654" y="506" font-size="15" font-weight="bold">Topology</text>
+    <text x="654" y="532">Todd genus composes by ✳</text>
+    <text x="654" y="554">signature: velocity addition</text>
+    <text x="654" y="576">all χ_y genera on one straight line</text>
+  </g>
+  <text x="470" y="636" text-anchor="middle" font-size="13" fill="#52606d">Every link is known mathematics. What the box adds is one shape that holds them all.</text>
+</svg>
