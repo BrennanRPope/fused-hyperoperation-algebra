@@ -7,6 +7,9 @@ For each topics/**/checks*.py this runs the script in its own folder and fails i
   - the saved checks*_output.txt states a pass count ("29/29", "18 of 18", "49 passed",
     "101 PASS") and the new run does not reach the same count.
 Scripts with no saved output still have to run cleanly with no FAIL line.
+Some scripts name their working folder as /mnt/project-files/math-theory/<topic> (to import a
+helper such as topics/gr-bridges/ga.py, or to write their output). Those paths are rewritten to
+the repo's topics/<topic> before the script runs, so the repo copy is what gets checked.
 Numeric checks are evidence, not proofs; the Lean library is where proofs live.
 
 Usage: python3 tools/run_checks.py [--jobs N] [--timeout SECONDS] [paths...]
@@ -22,6 +25,14 @@ COUNT_PATTERNS = [
     re.compile(r"(?:all\s+)?(\d+)\s+(?:checks?\s+)?(?:pass|passed|PASS)\b", re.I),
 ]
 FAIL_LINE = re.compile(r"^\s*(FAIL|FAILED)\b")
+WORK_PREFIX = "/mnt/project-files/math-theory/"
+RUNNER = (
+    "import sys\n"
+    "path, prefix, topics = sys.argv[1], sys.argv[2], sys.argv[3]\n"
+    "src = open(path, encoding='utf-8').read().replace(prefix, topics)\n"
+    "sys.argv = [path]\n"
+    "exec(compile(src, path, 'exec'), {'__name__': '__main__', '__file__': path})\n"
+)
 FAILED_COUNT = re.compile(r"\b([1-9]\d*)\s+(?:checks?\s+)?(?:fail|failed|FAIL)\b", re.I)
 
 
@@ -43,7 +54,10 @@ def run_one(script, timeout):
     t0 = time.time()
     env = dict(os.environ, MPLBACKEND="Agg", PYTHONHASHSEED="0")
     try:
-        p = subprocess.run([sys.executable, script.name], cwd=script.parent, capture_output=True,
+        cmd = [sys.executable, script.name]
+        if WORK_PREFIX in script.read_text(errors="replace"):
+            cmd = [sys.executable, "-c", RUNNER, str(script), WORK_PREFIX, str(ROOT / "topics") + "/"]
+        p = subprocess.run(cmd, cwd=script.parent, capture_output=True,
                            text=True, timeout=timeout, env=env)
     except subprocess.TimeoutExpired:
         return script, False, f"timed out after {timeout}s", time.time() - t0
