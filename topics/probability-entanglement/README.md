@@ -6,7 +6,8 @@ the very last digit of the internal clock", to a whole-path picture where Bohm's
 superdeterminism are "the same thing", and to the loop being a helix. One question, one write-up.
 
 Checks: `checks.py` → `checks_output.txt` (**51 of 51 pass**; numpy + sympy, helpers in `lib.py`). Pictures:
-`figures.py` → `figures/`. Pushed to the repo Nov 25 as a DRAFT so it isn't lost; CI runs `checks.py`. DRAFT: the computations reproduce known results unless marked
+`figures.py` → `figures/`. Second pass (stress tests and the bath, section 9): `checks2.py` → `checks2_output.txt`
+(**41 of 41 pass**), pictures from `figures2.py`. Pushed to the repo Nov 25 as a DRAFT so it isn't lost; CI runs both check scripts. DRAFT: the computations reproduce known results unless marked
 "ours", and the "ours" items are readings and a toy model, not theorems.
 
 ## The result in plain words
@@ -224,7 +225,7 @@ CHSH 2, and a whole-path loop reaches quantum only with the |Σ phases|² rule, 
 
 ## What looks worth following next
 
-1. **The clock reading of the cross-ratio, under stress.** In a thermal state on a line (BTZ), modular time for one
+1. **The clock reading of the cross-ratio, under stress (done in section 9).** In a thermal state on a line (BTZ), modular time for one
    interval is still geometric, so the Poisson reading should survive; check it. In an excited state, modular time is
    no longer geometric, and the Poisson reading may break. Whether the ∘₋₁ gluing law survives there is a sharp,
    computable test (free fermions again).
@@ -232,3 +233,115 @@ CHSH 2, and a whole-path loop reaches quantum only with the |Σ phases|² rule, 
    five-region holographic rules from the exploration become statements about one Poisson clock.
 3. **A principle for |Σ|².** If the whole-path loop is to explain, not restate, quantum correlations, it needs a
    reason to stop at 2√2. Information causality is the obvious first candidate to translate into loop language.
+
+---
+
+## 9. Stress tests: heat, excitation, pressure, spin; the bath and the dial k (DRAFT, second pass)
+
+Asked for after the first pass: test the clock reading and the ∘₋₁ gluing in a heated state, an excited state (heavy
+particle, local quench), a pressure state ("compression at fairly low heat, like a star's core"), and a spinning state
+as its own test; then put the cube in a bath with knobs (β, μ or P, Ω) and ask whether the dial k of ∘ₖ moves, first
+with the knobs as dials and then with the bath as a bigger cube that is traced out.
+
+Checks: `checks2.py` → `checks2_output.txt` (**41 of 41 pass**). Pictures: `figures2.py` → `figures/fig9`–`fig14`.
+
+### The result in plain words
+
+The union-rule dial stays at k = −1 in every heated, squeezed, spinning and excited state we tested, because gluing is
+just the chain rule of conditional mutual information, which holds in any quantum state. What the environment changes
+is the clock's speed and how far its geometric (modular-time) reading reaches. The dial only moves if you forget the
+bath: a two-state bath turns ∘₋₁ into ∘ₖ′ with k′ = −(1 + e^{β(Δ−μ−ΩJ)}), minus one over the Fermi occupation (ours, toy).
+
+| Test | Clock reading x = 1 − e^(−t) | Gluing by ∘₋₁ | Checks |
+|---|---|---|---|
+| **Heated** (thermal line) | Holds, with the thermal (sinh) clock; the vacuum clock is wrong | Holds | H1–H3 |
+| **Heated black hole on a circle** (BTZ) | Holds until A+B+C nearly wraps the circle (plateau at 1.93π here), then breaks upward | Holds for the true entropies | B1–B3 |
+| **Heavy particle** (conical defect) | Holds for exactly half the circle, then the pure-state flip takes over | Holds | C1–C3 |
+| **Local quench** (one added fermion) | Holds, then jumps by 2 ln 2 while the two halves sit in A and C, then returns | Holds | Q0–Q4, G1 |
+| **Spinning** (β_L ≠ β_R) | Splits into a left and a right clock, each at half speed: x = y_L ∘₋₁ y_R | Holds | P1, P2 |
+| **Chemical potential** | μ drops out; only the Fermi velocity sets the thermal length | Holds | P3 |
+| **Compression at low heat** | Heavy matter squeezed to the black-hole threshold keeps the reach at exactly half the circle; cold dense fermions hold until the hole spacing nears the block size | Holds | K1–K5 |
+| **Tunnelling** (optional) | Barrier exponents add, so "blocked" glues by ∘₋₁ up to an edge term that fades (13% → 2%) | Approximately | T1 |
+
+### What breaks and what replaces it
+
+![fig9](figures/fig9_heat_and_spin.png)
+
+Heat does not break the clock; it swaps it. Positions w go to e^(2πw/β) before the cross-ratio is taken, which is our
+height flow E(x) = eˣ − 1 applied at scale 2π/β (check D5). The clock's speed relative to the vacuum clock runs from 1
+at short distances to 0 beyond the thermal length, like a coupling under RG (D4). Spin gives two clocks: left movers
+and right movers each run their own thermal clock at half speed, and the link probability is their union (P1, P2).
+
+![fig10](figures/fig10_where_the_reading_breaks.png)
+
+The geometric reading, t = a region's width in another region's modular time, is what breaks. It fails past the BTZ
+plateau, where the whole region's entropy switches to "complement plus horizon", and past half the circle in a pure
+heavy state, where S(region) = S(complement). Panel (c) is the heat-versus-pressure answer: heat widens the clock's
+reach toward the whole circle, while squeezing heavy matter all the way to the black-hole threshold keeps it at exactly
+half. At the threshold the two meet (K1–K3).
+
+![fig11](figures/fig11_local_quench.png)
+
+A local quench breaks the reading by a point lump: one shared bit, counted from both A and C, adds 2 ln 2 only while
+the particle's two halves sit in A and C (Q2, Q4). This is the quasiparticle picture. Gluing still holds there, because
+it never depended on geometry.
+
+![fig12](figures/fig12_squeezed_fermions_and_tunnelling.png)
+
+Under strong compression at zero temperature the clock survives until the spacing between holes approaches the block
+size, where the continuum description itself fails (K4, K5). Tunnelling fits the clock reading loosely: the Gamow
+exponent adds over slices, so "no transmission" behaves like "at least one tick", up to edge factors.
+
+![fig13](figures/fig13_gluing_never_breaks.png)
+
+The law that never breaks: define x = 1 − exp(−3I(A:C|B)/c) from the true entropies. Then
+x(A:C₁C₂|B) = x(A:C₁|B) ∘₋₁ x(A:C₂|BC₁) in every state, because that is the chain rule of conditional mutual
+information, and strong subadditivity keeps x in [0, 1) (G1, G2). Across nine environments, including past the
+plateau, every triple of regions gives k = −1 to rounding error (D1).
+
+### The bath and the dial k
+
+Turning a knob changes the clock's rate: x → 1 − (1 − x)^λ. Every such map commutes with ∘₋₁ (D2), so the knobs act as
+symmetries of the union rule, not as changes of k. The only way to move k is to change the ceiling, y = s·x, which
+gives k = −1/s; since x is a probability, s = 1 (D3).
+
+![fig14](figures/fig14_bath_as_bigger_cube.png)
+
+Treat the bath as one more axis of the cube. Given the bath's state, events are independent and glue by ∘₋₁. Forget
+the bath, summing over its states with weights set by (β, μ, Ω), and the events become correlated through the shared
+bath. For a two-state bath that is "on" with probability π, the reduced rule is exactly ∘ₖ′ with k′ = −1/π, for any
+number of events and for the corner sum too (E1, Monte Carlo E2). With the on level at energy Δ (and spin J),
+π is the Fermi occupation, so k′ = −(1 + e^{β(Δ−μ−ΩJ)}): −2 when infinitely hot, −∞ when cold with Δ > μ, −1 when cold
+with Δ < μ (E3, E4). A bath with three or more levels leaves the ∘ₖ family altogether (E5). Remembering the bath
+(conditioning on it) restores −1 (E6), which is exactly why the CMI-based gluing above stays at −1: conditioning on B
+is remembering.
+
+### Known vs ours (second pass)
+
+| Piece | Status | Source |
+|---|---|---|
+| Thermal entanglement entropy (sinh form) | Known | Calabrese and Cardy, J. Stat. Mech. (2004) P06002 |
+| Free-fermion entropies from the correlation matrix | Known | Peschel, J. Phys. A 36, L205 (2003) |
+| Thermal modular Hamiltonian of an interval | Known | Cardy and Tonni, J. Stat. Mech. (2016) 123103 |
+| BTZ entanglement plateau | Known | Hubeny, Maxfield, Rangamani, Tonni, JHEP 08 (2013) 092 |
+| Rotating BTZ, left and right temperatures | Known | Hubeny, Rangamani, Takayanagi, JHEP 07 (2007) 062 |
+| Heavy states (conical defect) and local quenches in holography | Known | Asplund, Bernamonti, Galli, Hartman, JHEP 02 (2015) 171 |
+| Local quench; quasiparticle excess entanglement | Known | Calabrese and Cardy, J. Stat. Mech. (2007) P10004; Castro-Alvaredo et al., PRL 121, 170602 (2018) |
+| Chain rule; strong subadditivity | Known | Lieb and Ruskai, J. Math. Phys. 14, 1938 (1973) |
+| Mixtures that inflate zeros / shared hidden risk | Known | Lambert, Technometrics 34, 1 (1992); Vaupel, Manton, Stallard, Demography 16, 439 (1979); Clayton, Biometrika 65, 141 (1978) |
+| Averaging over a fluctuating bath parameter | Known | Beck and Cohen, Physica A 322, 267 (2003) (superstatistics); de Finetti mixtures |
+| Tracing out an environment; coarse-graining | Known (analogy) | Breuer and Petruccione, The Theory of Open Quantum Systems (2002); Kadanoff block-spin RG (1966) |
+| Spinning state as two half-speed clocks joined by ∘₋₁ | **Ours (reading)** | checks P1, P2 |
+| Heat as our height flow E at scale 2π/β; the clock's speed runs with scale while k stays −1 | **Ours (reading)** | checks D4, D5 |
+| Heat widens the clock's reach, squeezing keeps it at half | **Ours (framing of known entropies)** | checks K1–K3 |
+| Knobs as automorphisms x → 1 − (1 − x)^λ of ∘₋₁; k moves only with the ceiling | **Ours (elementary)** | checks D2, D3 |
+| k′ = −1/π = −(1 + e^{β(Δ−μ−ΩJ)}) for a forgotten two-state bath; three levels leave the family | **Ours (toy)** | checks E1–E6 |
+
+Not done: a collapsing shell (the dynamical version of compression). The tunnelling check is a one-dimensional sketch.
+
+### What looks worth following next (second pass)
+
+1. **Many-level baths.** A bath with three or more levels gives a reduced rule outside the ∘ₖ family. Finding what
+   family it does land in (a mixture of ∘ₖ's, one per bath level) would say what "forgetting" does in general.
+2. **A collapsing shell** in AdS₃ (Vaidya), to see the clock's reach move from half the circle to the plateau as matter
+   falls in and a horizon forms.

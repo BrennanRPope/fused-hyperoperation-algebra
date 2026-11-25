@@ -1,0 +1,112 @@
+== 1. heated state: free fermions at temperature 1/beta (c = 1, velocity 2 for hopping 1)
+   beta=15.0  (40, 20, 40)  CMI=0.0050  t_thermal/3=0.0051  t_vacuum/3=0.1959
+   beta=15.0  (60, 30, 50)  CMI=0.0006  t_thermal/3=0.0006  t_vacuum/3=0.1797
+   beta=15.0  (50, 50, 50)  CMI=0.0000  t_thermal/3=0.0000  t_vacuum/3=0.0959
+   beta=15.0  (30, 15, 80)  CMI=0.0146  t_thermal/3=0.0147  t_vacuum/3=0.2747
+   beta=15.0  (80, 40, 30)  CMI=0.0001  t_thermal/3=0.0001  t_vacuum/3=0.1122
+PASS H1 beta=15.0: CMI = t_beta/3 with t from the thermal (sinh) cross-ratio; the clock survives heating   [max diff 0.0001]
+PASS H2 beta=15.0: the vacuum clock would be wrong (heating changes which clock, not whether there is one)   [max vacuum miss 0.260]
+   beta=40.0  (40, 20, 40)  CMI=0.0718  t_thermal/3=0.0718  t_vacuum/3=0.1959
+   beta=40.0  (60, 30, 50)  CMI=0.0323  t_thermal/3=0.0323  t_vacuum/3=0.1797
+   beta=40.0  (50, 50, 50)  CMI=0.0064  t_thermal/3=0.0064  t_vacuum/3=0.0959
+   beta=40.0  (30, 15, 80)  CMI=0.1126  t_thermal/3=0.1126  t_vacuum/3=0.2747
+   beta=40.0  (80, 40, 30)  CMI=0.0133  t_thermal/3=0.0133  t_vacuum/3=0.1122
+PASS H1 beta=40.0: CMI = t_beta/3 with t from the thermal (sinh) cross-ratio; the clock survives heating   [max diff 0.0000]
+PASS H2 beta=40.0: the vacuum clock would be wrong (heating changes which clock, not whether there is one)   [max vacuum miss 0.162]
+PASS H3 thermal cross-ratio = vacuum cross-ratio after w -> e^{2 pi w/beta}; t = width in the interval's thermal modular time (Cardy-Tonni weight)
+== 2. 'pressure' states: rotating / boosted (beta_L != beta_R) and chemical potential
+   (40, 20, 40)  CMI=0.0608  (t_L+t_R)/6=0.0607  t_L/3=0.0051  t_R/3=0.1164
+   (60, 30, 50)  CMI=0.0352  (t_L+t_R)/6=0.0352  t_L/3=0.0006  t_R/3=0.0698
+   (50, 50, 50)  CMI=0.0109  (t_L+t_R)/6=0.0109  t_L/3=0.0000  t_R/3=0.0218
+   (30, 15, 80)  CMI=0.0913  (t_L+t_R)/6=0.0913  t_L/3=0.0147  t_R/3=0.1679
+   (80, 40, 30)  CMI=0.0174  (t_L+t_R)/6=0.0174  t_L/3=0.0001  t_R/3=0.0347
+PASS P1 SPINNING state: rotating/boosted (left movers 4x hotter than right movers): CMI = (t_L + t_R)/6, two clocks at half rate each   [max diff 0.0000]
+PASS P2 so x = y_L o_{-1} y_R: the link probability is the union of a left-mover clock and a right-mover clock, each at half rate
+   kF=0.3pi beta=0  (60, 40, 60)  CMI=0.1488  t/3=0.1488
+   kF=0.3pi beta=0  (80, 60, 70)  CMI=0.1226  t/3=0.1226
+   kF=0.3pi beta=0  (100, 50, 100)  CMI=0.1959  t/3=0.1959
+   kF=0.3pi beta=40.0  (60, 40, 60)  CMI=0.0069  t/3=0.0069
+   kF=0.3pi beta=40.0  (80, 60, 70)  CMI=0.0010  t/3=0.0010
+   kF=0.3pi beta=40.0  (100, 50, 100)  CMI=0.0026  t/3=0.0026
+   kF=0.4pi beta=0  (60, 40, 60)  CMI=0.1488  t/3=0.1488
+   kF=0.4pi beta=0  (80, 60, 70)  CMI=0.1226  t/3=0.1226
+   kF=0.4pi beta=0  (100, 50, 100)  CMI=0.1959  t/3=0.1959
+   kF=0.4pi beta=40.0  (60, 40, 60)  CMI=0.0123  t/3=0.0123
+   kF=0.4pi beta=40.0  (80, 60, 70)  CMI=0.0023  t/3=0.0023
+   kF=0.4pi beta=40.0  (100, 50, 100)  CMI=0.0054  t/3=0.0054
+PASS P3 chemical potential (filling 30%, 40%): CMI = t/3 with the thermal length set by the Fermi velocity; mu itself drops out (spectral flow)   [max diff 0.0000 (Friedel ripples)]
+== 3. black hole on a circle (holographic BTZ, units c/3): the entanglement plateau
+PASS B1 BTZ on a circle: CMI = (c/3) t while A+B+C is smaller than the plateau size 6.052 (of 2 pi)
+PASS B2 beyond it the whole region's entropy switches to 'complement + horizon' and CMI rises above the clock value: the geometric reading breaks   [largest excess 1.821 (units c/3)]
+PASS B3 what replaces it: the link-weight built from the true entropies gains a positive lump on geodesics of length theta*, plus the complement's weight beyond; the entropic clock still glues by o_(-1)   [lump weight 6.000 (units c/3)]
+== 4. heavy primary state (conical defect, alpha = sqrt(1 - 24h/c)) on a circle
+PASS C1 alpha=0.5: up to half the circle, CMI = (c/3) t_alpha with t from the cross-ratio of the points e^(i alpha u)
+PASS C2 alpha=0.5: beyond half the circle the pure-state flip S(A) = S(complement) takes over and CMI departs from the clock
+PASS C3 alpha=0.5: gluing by o_(-1) still holds for the defect's cross-ratios (projective identity)
+PASS C1 alpha=0.8: up to half the circle, CMI = (c/3) t_alpha with t from the cross-ratio of the points e^(i alpha u)
+PASS C2 alpha=0.8: beyond half the circle the pure-state flip S(A) = S(complement) takes over and CMI departs from the clock
+PASS C3 alpha=0.8: gluing by o_(-1) still holds for the defect's cross-ratios (projective identity)
+== 5. local excitation: add one fermion wave packet to the ring's ground state and let it split and fly apart
+PASS Q0 ground state of the ring: CMI = t/3 (chord form)   [0.0479 vs 0.0479]
+PASS Q1 while the two halves of the particle sit in B (not yet out): no change, the clock reading holds   [max 0.000]
+PASS Q2 once one half is in A and the other in C: CMI jumps by 2 ln 2 = 1.386 (one shared bit counted from both sides): the reading breaks   [values [1.381, 1.383, 1.383, 1.383]]
+PASS Q3 after both halves leave A and C: back to the clock value   [max 0.001]
+PASS Q4 the extra weight is a point lump: present only when the pair (left half, right half) falls in the A x C rectangle   [A x C: 1.382 A x B: 0.000 both outside: 0.000]
+== 6. the general law: x := 1 - exp(-3 I(A:C|B)/c) glues by o_(-1) in ANY state (chain rule) and is a probability (strong subadditivity)
+PASS G1 gluing x(A:C1C2|B) = x(A:C1|B) o_(-1) x(A:C2|BC1) holds exactly in heated, quenched and random 4-qubit states (it IS the chain rule)
+PASS G2 strong subadditivity makes every such x a genuine probability in [0, 1) (300 random mixed states)
+== 7. compression: heavy matter squeezed toward the black-hole threshold (alpha -> 0), and dense fermions at zero temperature
+   compressed, alpha=0.9: clock holds for A+B+C up to 0.999 pi
+   compressed, alpha=0.6: clock holds for A+B+C up to 0.999 pi
+   compressed, alpha=0.3: clock holds for A+B+C up to 0.999 pi
+   compressed, alpha=0.1: clock holds for A+B+C up to 0.999 pi
+   compressed, alpha=0.02: clock holds for A+B+C up to 0.999 pi
+   heated BTZ, r+=0.002 (T = r+/2pi): clock holds up to 1.003 pi
+   heated BTZ, r+=0.02 (T = r+/2pi): clock holds up to 1.030 pi
+   heated BTZ, r+=0.2 (T = r+/2pi): clock holds up to 1.295 pi
+   heated BTZ, r+=0.5 (T = r+/2pi): clock holds up to 1.585 pi
+   heated BTZ, r+=1.0 (T = r+/2pi): clock holds up to 1.780 pi
+   heated BTZ, r+=2.0 (T = r+/2pi): clock holds up to 1.889 pi
+   heated BTZ, r+=4.0 (T = r+/2pi): clock holds up to 1.945 pi
+PASS K1 squeezing heavy matter all the way to the black-hole threshold never moves the window: the clock holds for exactly half the circle
+PASS K2 heat widens the window toward the whole circle (the plateau); right at the threshold heat and squeezing meet at half
+PASS K3 as alpha -> 0 the squeezed clock becomes the flat-space (line) clock: t -> log[(a+b)(b+c)/(b(a+b+c))]
+   filling 0.50 (hole spacing 2 sites): CMI=0.1488  clock t/3=0.1488
+   filling 0.80 (hole spacing 5 sites): CMI=0.1488  clock t/3=0.1488
+   filling 0.90 (hole spacing 10 sites): CMI=0.1492  clock t/3=0.1488
+   filling 0.95 (hole spacing 20 sites): CMI=0.1507  clock t/3=0.1488
+   filling 0.98 (hole spacing 50 sites): CMI=0.1655  clock t/3=0.1488
+   filling 0.99 (hole spacing 100 sites): CMI=0.1766  clock t/3=0.1488
+PASS K4 dense fermions at zero temperature: the clock holds while blocks are much bigger than the spacing between holes
+PASS K5 squeezed until the spacing approaches the block size, it breaks (the continuum description itself fails)   [miss at 99% filling 0.028]
+== 8. tunnelling through a barrier: transmission T plays the role of 1 - x (no tick), so blocking glues by o_(-1) in the WKB limit
+   slice width 1: -ln T(both) = 7.060   -ln T1 - ln T2 = 6.141
+   slice width 2: -ln T(both) = 15.060   -ln T1 - ln T2 = 14.120
+   slice width 3: -ln T(both) = 23.060   -ln T1 - ln T2 = 22.120
+   slice width 4: -ln T(both) = 31.060   -ln T1 - ln T2 = 30.120
+   slice width 6: -ln T(both) = 47.060   -ln T1 - ln T2 = 46.120
+PASS T1 the exponent of tunnelling adds over adjacent slices, so 'blocked' = blocked1 o_(-1) blocked2 up to edge factors that fade for thick barriers   [relative miss 0.13 -> 0.020]
+== 9. the hypercube in a bath with knobs (heat beta, pressure/density mu, spin Omega): does the gluing dial k move?
+   vacuum                       k_eff = -1.000000  (spread 1.4e-11, 4 triples)
+   hot (beta=15)                k_eff = -1.000000  (spread 2.5e-08, 3 triples)
+   spinning (15 / 60)           k_eff = -1.000000  (spread 3.0e-10, 4 triples)
+   dense (90% full)             k_eff = -1.000000  (spread 1.4e-11, 4 triples)
+   dense + warm (mu, beta=40)   k_eff = -1.000000  (spread 3.7e-10, 4 triples)
+   quench                       k_eff = -1.000000  (spread 3.3e-12, 4 triples)
+   squeezed alpha=0.5           k_eff = -1.000000  (spread 9.9e-15, 2 triples)
+   squeezed alpha=0.05          k_eff = -1.000000  (spread 6.5e-14, 2 triples)
+   black hole past plateau      k_eff = -1.000000  (spread 5.8e-13, 2 triples)
+PASS D1 k does not move: every environment (hot, spinning, dense, warm+dense, squeezed, quenched, past the plateau) glues at k = -1 exactly   [max |k+1| 2.5e-08]
+PASS D2 turning a knob changes the clock's RATE: x -> 1 - (1-x)^lambda, and every such change commutes with the union rule (automorphism)
+PASS D3 the only way to move k is to change the ceiling: y = s*x glues by o_k with k = -1/s (x stays a probability, so s = 1)
+PASS D4 the rate runs with scale: thermal clock / vacuum clock -> 1 for regions much smaller than beta and -> 0 for much larger (the clock runs, k doesn't)
+PASS D5 heat acts on positions by our height flow: the hot cross-ratio is the cold cross-ratio of E(2 pi w / beta) = e^(2 pi w/beta) - 1
+== 10. the bath as a bigger cube: system corners inside a system+bath cube; forget (sum over) the bath and see what dial is left
+PASS E1 two-state bath (on with probability pi, off otherwise): forgetting it turns o_(-1) into o_k' with k' = -1/pi, exactly, for 2 to 5 events (corner sum too)
+PASS E2 Monte Carlo of the same bath agrees   [sim 0.2459 vs o_(-1/pi) 0.2461; plain union would give 0.3381]
+PASS E3 with the bath's 'on' level at energy Delta in a bath of temperature 1/beta, chemical potential mu, spin Omega: k' = -(1 + e^{beta(Delta - mu - Omega J)}) = -1/(Fermi occupation)
+PASS E4 the knobs move k': infinitely hot -> k' = -2; cold with Delta > mu -> k' -> -infinity (bath almost never on); cold with Delta < mu -> k' -> -1 (bath always on: plain union rule)
+PASS E5 a bath with three or more levels leaves no single dial: the k' that fits two events misfits three (the reduced rule leaves the o_k family)   [largest pair-vs-triple mismatch 59.00]
+PASS E6 remembering the bath (conditioning on its state) restores k = -1 in every bath state: k moves only when the bath is forgotten
+
+41 passed, 0 failed
