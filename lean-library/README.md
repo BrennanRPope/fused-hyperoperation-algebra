@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 62 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 1750 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 108 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 2735 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -62,10 +62,12 @@ Topics (each imports the foundation):
 | `Topics/GeometryTrig` | simple-laws/lean/GeometryTrig.lean | |
 | `Topics/EarlyScience` | simple-laws/lean/EarlyScience.lean | |
 | `Topics/Patterns` | patterns/lean/Patterns.lean | first compiled here; three steps fixed |
+| `Topics/EllipticCounting` | patterns/lean/EllipticCounting.lean | first compiled here; fixes listed below |
 | `Topics/Fermat/Fermat4` | fermat/lean/Fermat4.lean | |
 | `Topics/Fermat/Fermat3` | fermat/lean/Fermat3.lean | |
 | `Topics/Fermat/FreyPieces` | fermat/lean/FreyPieces.lean | |
 | `Topics/Fermat/FermatRoute` | fermat/lean/FermatRoute.lean | imports the three above |
+| `Topics/Fermat/CounterexampleMap` | fermat-counterexample-map/lean/CounterexampleMap.lean | first compiled here; one proof reworked |
 | `Foundations/MultAddRing` | axioms/lean/Axioms/MultAddRing.lean | standalone; does not import Base |
 | `Foundations/Independence` | axioms/lean/Axioms/Independence.lean | standalone |
 | `Foundations/FusedPeano` | axioms/lean/Axioms/FusedPeano.lean | standalone |
@@ -84,16 +86,59 @@ Topics (each imports the foundation):
 | `Topics/QAcross/Partitions` | q-across/lean/Partitions.lean | first compiled here |
 | `Topics/QAcross/QCounting` | q-across/lean/QCounting.lean | first compiled here; class name fixed |
 | `Topics/SolitonsRungs` | solitons-rungs/lean/SolitonsRungs.lean | first compiled here |
+| `Topics/PvsNP` | p-vs-np (written here) | 20 theorems; first try |
 | `Topics/Relativity` | relativity/lean/Relativity.lean | 4 twins removed |
 | `Topics/LeeYang` | lee-yang/lean/LeeYang.lean | |
 | `Topics/LeeYangCluster` | lee-yang/lean/LeeYangCluster.lean | |
 | `Topics/LeeYangSpill` | lee-yang/lean/LeeYangSpill.lean | |
 | `Topics/TwistedBoosts` | twisted-boosts/lean/TwistedBoosts.lean | first compiled here; one step fixed |
 | `Topics/GravityProbeB` | twisted-boosts/gpb/lean/GravityProbeB.lean | first compiled here |
+| `Topics/BinaryPulsar` | twisted-boosts/pulsar/lean/BinaryPulsar.lean | first compiled here |
 | `Topics/Chemistry/ChemQuantum` | chemistry/01-quantum/lean/ChemQuantum.lean | 4 twins removed |
 | `Topics/Chemistry/ChemConservation` | chemistry/02-conservation/lean/ChemConservation.lean | 1 twin removed |
 | `Topics/Chemistry/ChemPeriodic` | chemistry/03-periodic/lean/ChemPeriodic.lean | |
+| `Topics/Chemistry/ChemBonding` | chemistry/04-bonding/lean/ChemBonding.lean | |
+| `Topics/Chemistry/ChemStoichiometry` | chemistry/05-stoichiometry/lean/ChemStoichiometry.lean | 2 twins removed |
+| `Topics/Chemistry/ChemGas` | chemistry/06-gas-laws/lean/ChemGas.lean | 1 twin removed |
+| `Topics/Chemistry/ChemGibbs` | chemistry/07-gibbs/lean/ChemGibbs.lean | |
+| `Topics/Chemistry/ChemEquilibrium` | chemistry/08-equilibrium/lean/ChemEquilibrium.lean | |
+| `Topics/Chemistry/ChemRates` | chemistry/09-rates/lean/ChemRates.lean | 3 twins removed |
+| `Topics/Chemistry/ChemElectro` | chemistry/10-electrochemistry/lean/ChemElectro.lean | 3 twins removed |
+| `Topics/Chemistry/ChemAcids` | chemistry/11-acids-bases/lean/ChemAcids.lean | 2 twins removed |
+| `Topics/Chemistry/ChemOrganic` | chemistry/12-organic/lean/ChemOrganic.lean | 2 twins removed |
+| `Topics/Chemistry/ChemBiochem` | chemistry/13-biochemistry/lean/ChemBiochem.lean | 3 twins removed |
 | `Topics/ShapeDirections` | shape-directions/lean/ShapeDirections.lean | first compiled here |
+| `Topics/LogicSets` | logic-sets/lean/LogicSets.lean |  |
+| `Topics/CategoryTheory` | category-theory/lean/CategoryTheory.lean |  |
+| `Topics/Combinatorics` | combinatorics/lean/Combinatorics.lean |  |
+| `Topics/GroupsLie` | groups-lie/lean/GroupsLie.lean | 2 twins removed |
+| `Topics/GraphTheory` | graph-theory/lean/GraphTheory.lean | 4 twins removed |
+| `Topics/MeasureProbability` | measure-probability/lean/MeasureProbability.lean |  |
+| `Topics/ComplexAnalysis` | complex-analysis/lean/ComplexAnalysis.lean |  |
+| `Topics/FunctionalAnalysis` | functional-analysis/lean/FunctionalAnalysis.lean |  |
+| `Topics/DiffGeometry` | differential-geometry/lean/DiffGeometry.lean | 1 twin removed |
+| `Topics/KnotTheory` | knot-theory/lean/KnotTheory.lean | 1 twin removed |
+| `Topics/Dynamics` | dynamical-systems/lean/Dynamics.lean | 1 twin removed |
+| `Topics/InformationFull` | information-theory-full/lean/InformationFull.lean | 2 twins removed |
+| `Topics/Numerical` | numerical-analysis/lean/Numerical.lean |  |
+| `Topics/GameTheory` | game-theory/lean/GameTheory.lean | 1 twin removed |
+| `Topics/DiamondLattice` | diamond-lattice/lean/DiamondLattice.lean | |
+| `Topics/DialPointProcesses` | dial-point-processes/lean/DialPointProcesses.lean | |
+| `Topics/SeveralWaves` | shape-directions/lean/SeveralWaves.lean | first compiled here |
+| `Topics/RuleBreakers` | shape-directions/lean/RuleBreakers.lean | first compiled here; recursion limit raised |
+| `Topics/Biology/MolecularBiology` | biology/01-molecular/lean/MolecularBiology.lean | no twins |
+| `Topics/Biology/Metabolism` | biology/02-metabolism/lean/Metabolism.lean | 2 twins removed |
+| `Topics/Biology/CellBiology` | biology/03-cell/lean/CellBiology.lean | 2 twins removed |
+| `Topics/Biology/Genetics` | biology/04-genetics/lean/Genetics.lean | 3 twins removed |
+| `Topics/Biology/Development` | biology/05-development/lean/Development.lean | 3 twins removed, 1 kept |
+| `Topics/Biology/Physiology` | biology/06-physiology/lean/Physiology.lean | 5 twins removed |
+| `Topics/Biology/NeuroScience` | biology/07-neuroscience/lean/NeuroScience.lean | 3 twins removed |
+| `Topics/Biology/Evolution` | biology/08-evolution/lean/Evolution.lean | 4 twins removed |
+| `Topics/Biology/Population` | biology/09-population/lean/Population.lean | 7 twins removed |
+| `Topics/Biology/Ecology` | biology/10-ecology/lean/Ecology.lean | 3 twins removed |
+| `Topics/Biology/Behaviour` | biology/11-behaviour/lean/Behaviour.lean | 4 twins removed |
+| `Topics/FractionalPowerset` | fractional-powerset/lean/FractionalPowerset.lean | first compiled here, unchanged |
+| `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |
 | `Topics/NavierStokes` | ns-rungs/lean/FusedRungs.lean (Burgers, shell model) | |
 | `Topics/QuantumNoise` | quantum-noise/QuantumNoise.lean | |
 | `Topics/Rulecraft` | rulecraft/lean/RulecraftFused.lean | first compile, one step fixed |
@@ -171,6 +216,67 @@ the two parity proofs take their split from `omega` because `Int.emod_add_ediv` 
 ShapeDirections (36) had never been compiled; it compiled unchanged with no exact
 twins. Its Int star_def and weight_is_units sit beside the general multAdd_def and
 LeeYangCluster.wAdd_units.
+BinaryPulsar (10) compiled unchanged after GravityProbeB, with no exact twins.
+The 14-branch pass added 14 modules (513 theorems as sent), built after the Fermat
+modules so that their imports (Statistics, InformationTheory, the QAcross files) come
+first. All compiled as sent. Twins were found by comparing every new theorem's
+elaborated statement with every library theorem's, so a match is the same statement
+up to variable names. Twelve exact twins were removed, each with a comment naming the
+theorem that stays: GroupsLie scale_disc and shift_disc (ShapeDirections), GraphTheory
+parallel_rel, or_line, union_multAdd and series_fails, DiffGeometry halfplane_dilation,
+KnotTheory qnum_at_one, Dynamics chain_multAdd, InformationFull joint_mass and
+shannon_engine, and GameTheory hedge_expert (a twin of kelly_many in the same file).
+Numerical keeps multAdd_bound, the same statement as ComplexAnalysis.corner_bound,
+because a later proof there uses it and the file does not import ComplexAnalysis; its
+Rat helpers sq_nonneg_rat and pow_nonneg_rat stay local as under Small leftovers.
+Chemistry subjects 4 to 6 compiled as sent. ChemBonding (23) is unchanged. ChemStoichiometry
+lost yield_lift (StatFused.de_morgan) and any_heavy (loss_n in the same file), leaving 15;
+ChemGas lost mayer_list (ThermoFused.fermion_lift), leaving 12.
+Chemistry subjects 7 to 9 compiled as sent. ChemGibbs (11) and ChemEquilibrium (11) are
+unchanged. ChemRates lost first_order_compose (ThermoFused.ratio_series), qlog_zero
+(ThermoFused.partition_square) and qlog_two (InformationFull.qlog_neg_one), leaving 8.
+DiamondLattice (48) and DialPointProcesses (40) compiled unchanged after GameTheory, with no
+exact twins; DialPointProcesses keeps its Rat helper sq_nonneg' local.
+SeveralWaves (23) had never been compiled; it compiled unchanged, the four `rule4` checks
+included, with no exact twins.
+RuleBreakers (14) had never been compiled and builds after SeveralWaves. Its seven symbolic
+`grind` proofs on the expanded rule4 hit Lean's default recursion limit, so the file sets
+`maxRecDepth 100000`; no proof step or statement changed otherwise. No exact twins.
+Later, paw_obeys was widened by its author from one weight to four (rule4 x y 1 z 1 w = 0);
+it compiles with the same setting.
+Chemistry subjects 10 to 13 compiled with no proof changes; ten theorems were exact twins.
+ChemElectro lost ratio_series and bv_one_sided (InfoFused.campbell) and stage_losses
+(ChemStoichiometry.loss_two), leaving 9. ChemAcids lost chained_K (InfoFused.campbell) and
+indep_groups (ChemStoichiometry.loss_two), leaving 7. ChemOrganic lost hammett_compose
+(InfoFused.campbell) and route_losses (ChemStoichiometry.loss_two), leaving 9. ChemBiochem
+lost exclusive_loewe (InfoFused.shannon_weight), proofreading (InfoFused.campbell) and
+bliss_fraction (ChemStoichiometry.loss_two), leaving 8.
+Biology, eleven files with 164 theorems, compiled with no proof changes and builds after
+RuleBreakers; MolecularBiology also imports LeeYang. 36 theorems were exact twins and are
+removed with a comment naming the survivor, leaving 128. Every file restated the ✳
+definition as star_def, so the copy in MolecularBiology stays and the other ten go. The rest
+mostly restate Metabolism.limitation_pow (the "or" power), ChemQuantum.fragments_multAdd,
+CellBiology.bliss_or and MolecularBiology.mwc_R. Development keeps pow_mul', a twin of
+Dynamics.pow_mul_R, because its later proofs use it and it does not import Dynamics.
+FractionalPowerset (11) was written without a toolchain and compiled unchanged, with no
+imports and no exact twins; it builds after the biology files.
+GeneralRelativity (28) imports only Base and builds last. Written and compiled in the same
+session: the dial's boosts close on −q·rotation, PPN fractions for dial-only theories, the river
+facts (deficits are mult-add inverses, horizon at the wall, β = γ = 1 remainders, Friedmann as
+Newton, Gravity Probe B's factor), and the b = −a/2 step behind G = R − ½Rg.
+CounterexampleMap (24 theorems) was written without a toolchain and builds after
+FermatRoute. One proof changed: germain_residues used decide on a nested bounded ∀, which
+core Lean cannot decide, so it now checks the same table as a Bool over List.range 11 and
+reads it back; the statement is unchanged. No exact twins. The theorem count lists 28
+names for it, because the four fields of its DeepArrows structure (wiles, ribet, mazur,
+dim_eq_genus) are Props. They are named hypotheses, not proofs: flt_of_deep_arrows proves
+Fermat's Last Theorem only from them.
+EllipticCounting (19) had never been compiled and builds after Patterns. Proof fixes:
+lucas_shift_one's step case gives grind the two recurrence steps, lucas_eds_unit uses
+MultAdd.one_pow', and disc needed a `;` after its `let b8` line, because the next line's
+leading minus was read as part of b8. One statement was false as written and was corrected
+to match its own docstring: order_five_point's last conjunct had w3 * (w3 * w3 * w3), which
+is W3⁴ and evaluates to −2; it now has w3 * w3 * w3 (W3³), and the conjunct is 0 as claimed.
 
 ## What was merged
 

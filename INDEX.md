@@ -6,7 +6,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 1,750 theorems, 62 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 2,735 theorems, 108 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
@@ -68,6 +68,12 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | The birth of a prime (Claude Doc) | `topics/primes/` | [page](https://claude.ai/artifact/SisvRHEDreffPYfN8mD1ch) |
 | q across knots, primes, counting and physics | `topics/q-across/` | [page](https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL) |
 | Unsolved problems through the mult-add lens | (page only) | [page](https://claude.ai/artifact/FkH6Zb3JS7URmP7S46HWoz) |
+
+## Computation
+
+| Topic | Folder | Page |
+|---|---|---|
+| P vs NP: what can't work, and where mult-add touches it | `topics/p-vs-np/` | [page](https://claude.ai/artifact/FQr7rMChaa6ofsJV2WfDjs) |
 
 ## Physics
 

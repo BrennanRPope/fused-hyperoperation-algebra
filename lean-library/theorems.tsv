@@ -272,6 +272,144 @@ FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tateRel_trans	propext, Class
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tate_glue	
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.wAdd_commMonoid	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.wAdd_unit_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.corner_tiny	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.double_pulsar_within_error	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.drag_needed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.drag_vanishes	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.parts_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.test_limit	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.three_twists	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.three_twists_poly	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.velocity_not_isolated	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.velocity_space_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.dial_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.dial_steps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.herrnstein	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.hyperbolic_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.hyperbolic_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.rw_phases	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.rw_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.subadditive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.bliss_odds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.bliss_or	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.ci_hsa	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.ci_hsa_field	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.ci_is_wAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.ci_loewe	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.ci_nonexclusive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.ci_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.ci_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.loewe_slope_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.CellBiology	CellBiology.one_add_odds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Development	Development.allometry	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Development	Development.bertalanffy	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Development	Development.gompertz_steps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Development	Development.logistic_shortfall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Development	Development.pow_mul'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Ecology	Ecology.bd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Ecology	Ecology.budget_states	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Ecology	Ecology.cm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Ecology	Ecology.corner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Ecology	Ecology.search_share	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Ecology	Ecology.tsallis_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Ecology	Ecology.tsallis_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.add_is_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.additive_dominance	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.common_slope_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.consistent_forces_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.epistasis	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.from_the_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.generations_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.mult_null	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.order_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.path_consistent_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.proportional_consistent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.three_mutations	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.wall_at	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.wall_neutral	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.complete_interference	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.haldane	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.haldane_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.haldane_star	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.haldane_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.haldane_unlinked	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.interference	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.kosambi_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.lens_haldane	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.lens_kosambi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.lens_unlinked	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.reri	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Genetics	Genetics.risk_additive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.bisub_is_wAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.bisub_line	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.bisub_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.free_fraction	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.limitation_or	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.limitation_or_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.limitation_pow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.lines_meet_at_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.meeting_point_unique	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.michaelis_menten	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.monod_additive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.ordered_is_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.pingpong	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.random_independent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.random_independent'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.saturation	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Metabolism	Metabolism.wAdd_comm'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_excess	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_exclusive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_half	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_independent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_independent'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_is_wAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.catch_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.catch_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.copy_loss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.eigen_excess	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.eigen_threshold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_R	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_T	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_c_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_poly	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.star_def	
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.swap_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.swap_one	propext
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.swap_pow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.tr_swap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_det	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_is_dial_gas	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_odd_ring_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_ring_eq_dial_ring	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_ring_relabel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_tr	propext
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.T_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.clear_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.clear_num	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.div_mul_cancel'	
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.factor_A	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.factor_B	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.lens_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.odds_vss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.one_compartment	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.reversal_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.soma_line	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.soma_reversal_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.twoport	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.twoport_lens	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Physiology	Physiology.dose_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Physiology	Physiology.hill_level_set	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Physiology	Physiology.hill_velocity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Physiology	Physiology.same_site	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Physiology	Physiology.separate_sites	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Physiology	Physiology.series_gain	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Population	Population.bh_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Population	Population.bh_room	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Population	Population.hassell_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Population	Population.interventions	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Population	Population.survival_assoc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Calculus	MultAdd.Calculus.cubes_example	
 FusedAlgebra.Topics.Calculus	MultAdd.Calculus.dif_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Calculus	MultAdd.Calculus.dif_shift	
@@ -301,6 +439,82 @@ FusedAlgebra.Topics.Calculus	MultAdd.Calculus.step_iff	propext, Classical.choice
 FusedAlgebra.Topics.Calculus	MultAdd.Calculus.ts_exp	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Calculus	MultAdd.Calculus.ts_exp_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Calculus	MultAdd.Calculus.ts_inverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.Iso.left	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.Iso.right	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.align_fst	propext, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.align_length	propext
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.align_snd	propext, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.align_zip	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.allThese_complete	propext, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.allThese_length	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.bothL_complete	propext, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.bothL_length	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.circle_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.empty_initial	Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.empty_pair	Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.empty_terminal	Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.ev_padd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.ev_pmul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.ev_smul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.ev_top	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.fm_fst_this	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.fm_snd_that	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.fst_pair	Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.map_comp	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.map_id	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.ofPairK_toPairK	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.ofPair_toPair	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.option_empty	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.pair_unique	Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.reduced_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.s2_s2	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.snd_pair	Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.sphere_rchi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.suspension_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.swap_swap	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.toPairK_ofPairK	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.toPair_natural	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.toPair_ofPair	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.torus_cells	
+FusedAlgebra.Topics.CategoryTheory	CategoryTheory.wedge_smash	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.fold_gap_log3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.fold_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.fold_unequal_gaps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.isoelectric	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.mediant_above	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.mediant_below	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.pairwise_equal_gaps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.bliss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.calvin_efficiency	
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.independent_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.isobole	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.nitrogenase_atp	
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.nitrogenase_electrons	
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.series_rate	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBiochem	ChemBiochem.yonetani_theorell	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.allyl	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.band_edge	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.band_square	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.benzene_aromatic	
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.bonding_norm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.butadiene	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.cassini	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.cassini_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.dial_ladder	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.f2_single	
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.gap_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.huckel_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.huckel_unimodular	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.mobius_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.n2_triple	
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.no_root_in_band	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.o2_double	
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.one_pow_rat	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.overlap_border	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.overlap_opposite	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.overlap_orthogonal	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.split_asymmetry	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemBonding	ChemBonding.sq_nonneg_rat	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemConservation	ChemConservation.binding_exact	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemConservation	ChemConservation.bound_lighter	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemConservation	ChemConservation.circle_closed	propext, Classical.choice, Quot.sound
@@ -311,6 +525,58 @@ FusedAlgebra.Topics.Chemistry.ChemConservation	ChemConservation.fugacity_multAdd
 FusedAlgebra.Topics.Chemistry.ChemConservation	ChemConservation.lavoisier	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemConservation	ChemConservation.neutral_identity	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemConservation	ChemConservation.small_angle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.kok_damped	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.kok_mean	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.luther_balance	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.luther_idem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.nernst_midpoint	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.stage_losses3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.two_site	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.two_site_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemElectro	ChemElectro.zscheme_bounds	
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.binding_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.cooperative_no_real_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.diacid_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.fold_is_mwc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.fold_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.four_site_coeffs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.haber_pressure	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.independent_double_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.sq_nonneg_rat	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.two_site_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemEquilibrium	ChemEquilibrium.two_site_square	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.corner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.critical_Z	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.cubic_discriminants	
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.dalton	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.fugacity_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.mayer_clusters	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.mayer_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.pr_denominator	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.rk_denominator	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.two_corrections	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.vdw_denominator	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGas	ChemGas.vdw_inverse_Z	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.K_excess	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.K_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.Z2_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.covariance	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.covariance_pos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.exclusion_adds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.gibbs_adds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.haber_enthalpy	
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.haber_entropy	
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.independent_factors	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemGibbs	ChemGibbs.independent_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.benzene_charpoly	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.benzene_resonance	
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.cyclobutadiene_charpoly	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.ee_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.ee_is_landscape	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.ee_two_walls	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.ee_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.horeau	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemOrganic	ChemOrganic.mobius4_charpoly	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemPeriodic	ChemPeriodic.diagCap_closed	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemPeriodic	ChemPeriodic.diagonals	
 FusedAlgebra.Topics.Chemistry.ChemPeriodic	ChemPeriodic.gnomon	propext, Classical.choice, Quot.sound
@@ -331,6 +597,29 @@ FusedAlgebra.Topics.Chemistry.ChemQuantum	ChemQuantum.clebsch_gordan_square	prop
 FusedAlgebra.Topics.Chemistry.ChemQuantum	ChemQuantum.fragments_multAdd	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemQuantum	ChemQuantum.spin_multiplicity	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemQuantum	ChemQuantum.three_fragments	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.arrhenius_steps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.first_order_point	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.half_order_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.osculating_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.osculating_small	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.parallel_channels	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.second_order_border	
+FusedAlgebra.Topics.Chemistry.ChemRates	ChemRates.second_order_lens	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.bromine_121	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.chlorine_961	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.eight_fragments	
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.haber_balanced	
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.loss_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.loss_n	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.loss_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.magnetite	
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.magnetite_between	
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.mediant_between	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.multiple_proportions	
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.nitrogenase_family	
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.respiration_balanced	
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.ten_steps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Chemistry.ChemStoichiometry	ChemStoichiometry.two_atoms	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ClosingRate	FusedRate.e_pow_lt	
 FusedAlgebra.Topics.ClosingRate	FusedRate.grow	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ClosingRate	FusedRate.inv_hi	
@@ -338,6 +627,80 @@ FusedAlgebra.Topics.ClosingRate	FusedRate.inv_lo
 FusedAlgebra.Topics.ClosingRate	FusedRate.ladder	
 FusedAlgebra.Topics.ClosingRate	FusedRate.sq_bound	
 FusedAlgebra.Topics.ClosingRate	FusedRate.two_lt	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.S2_rows_bell	propext, Classical.choice
+FusedAlgebra.Topics.Combinatorics	Combinatorics.alternating_corners	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.arrangements	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.bell_is_E_twice	propext, Classical.choice
+FusedAlgebra.Topics.Combinatorics	Combinatorics.compositions_cube	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.cube_is_stirling	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.cyc_row_sums	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.derangements_incl_excl	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.derangements_values	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.dial_blocks_minus_one	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.ffold_fact	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.ffold_small	propext
+FusedAlgebra.Topics.Combinatorics	Combinatorics.flow_at_minus_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.flow_at_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.flow_at_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.flow_at_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.flow_order2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.flow_order3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.flow_order4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.foldMA_replicate	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.graphs_from_connected	propext, Classical.choice
+FusedAlgebra.Topics.Combinatorics	Combinatorics.groups_length	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.half_rung_x4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.kfold_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.nonempty_subsets	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.nonempty_subsets_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.painted_subsets	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.parity_corners	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.prodL_eq_zero_of_mem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.quarter_rung_negative	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.rung_three	propext, Classical.choice
+FusedAlgebra.Topics.Combinatorics	Combinatorics.sign_balance	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.stirling_row4	
+FusedAlgebra.Topics.Combinatorics	Combinatorics.wall_entry_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Combinatorics	Combinatorics.wfold_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.Cx.ext'	
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.Eis.ext'	
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.Mob.ext'	
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.affine_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.affine_fixing_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.cayley_tan	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.circle_closed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.circle_equation	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.corner_bound	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.double_wall_adds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.eis_root_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.eis_roots_total	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.fixed_points_are_walls	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.fold_bound	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.fold_wall_iff_int	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.fold_wall_of_mem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.gauss_root_four	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.gauss_root_steps	propext
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.gauss_roots_on_circle	propext
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.gauss_roots_total	propext
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.ma_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.ma_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.ma_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.ma_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.mroot_of_unity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.normSq_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.omega_cubed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.prodL_eq_zero_int	propext
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.size_nonneg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.spin_about_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.step_is_turned_w	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.tate_glue	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.trans_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.trans_det	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.trans_type	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.two_walls_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.two_walls_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.wall_distance_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ComplexAnalysis	ComplexAnalysis.wall_fixed	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Consensus	ConsensusFused.additive_split	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Consensus	ConsensusFused.bft_safe	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Consensus	ConsensusFused.bft_unsafe	propext, Classical.choice, Quot.sound
@@ -398,6 +761,46 @@ FusedAlgebra.Topics.DataCenter	DataCenterFused.spare_fan_helps	propext, Classica
 FusedAlgebra.Topics.DataCenter	DataCenterFused.spread	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DataCenter	DataCenterFused.stack	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DataCenter	DataCenterFused.unit_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.boson_superpoisson	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.count_parabola	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.count_walls	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.dial_rescale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.empty_mode_multadd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fact2_formula	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fano_line	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fermion_subpoisson	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_append	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_boson	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_fermion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_poisson	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_scale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_swap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.fold_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.full_mode_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.half_mode_velocity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.lifted_kernel_same	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.modeVar_empty	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.modeVar_expand	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.modeVar_poisson	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.modeVar_rescale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.modeVar_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.mode_fano	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.particle_hole	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.prodL_zero_of_mem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.rate_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.shape_is_fano	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.slots_full	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.sq_nonneg'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.tilt_in_ruler	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.tilt_lens	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.two_fermion_copies	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.var_append	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.var_formula	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.var_from_fact2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.var_superpose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.wall_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.wall_mode_fills	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.boost_walls	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.cayley_weighted	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.det_charpoly2	propext, Classical.choice, Quot.sound
@@ -426,6 +829,115 @@ FusedAlgebra.Topics.DialSweep	DialSweep.unitU_sq	propext, Classical.choice, Quot
 FusedAlgebra.Topics.DialSweep	DialSweep.unit_product	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.wall_iff_eigen2	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.winv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.attract_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.bend_recip	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.colour_bond	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.colour_wall_doubles	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.crit_colour	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.crs_cubic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.dden_at_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.disc_square	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.dmap_even	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.dmap_fixed_param	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.dmap_formula	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fixed_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fold_ferro_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fold_ferro_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fold_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fold_neutral	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fold_point	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fold_value	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fortyfive_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.fortyfive_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.golden_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.ising_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.lift_dmap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.lift_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.lift_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.mirror_only_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.parallel_weights	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.param_cubic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.param_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.q_one_poly	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.q_three_mirror	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.q_two_inversion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.q_zero_double	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.q_zero_map	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.q_zero_parabolic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.quot_helper	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.quotient_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.sixteen_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.sixteen_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.slope_at_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.slope_helper	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.slope_in_y	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.slope_num_at_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.three_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.three_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.wall_colour	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.wall_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiamondLattice	DiamondLattice.wall_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.central_chart	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.central_chart_unit	propext
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.cr_base	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.cr_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.cr_num	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.curv_chart_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.curv_scale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.dbl_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.dbl_is_self	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.dbl_num	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.dbl_of_sum	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.dial_curv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.dial_flat_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.flat_adds	propext
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.halfplane_horizon	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.halfplane_isometry	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.hyperbola_closed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.lens_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.mobius_collinear	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.mobius_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.multAdd_curv	
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.parity_curv	
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.poincare_klein	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.rmul_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.rmul_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.rmul_form	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.rmul_one	propext
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.sphere_closed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.stereo_gnomonic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.tan_vel_curv	
+FusedAlgebra.Topics.DiffGeometry	DiffGeometry.walls_curv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.cheb_comp	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.cheb_joukowski	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.dial_power_units	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.dial_square_units	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.dial_wall_superattracting	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.failure_square	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.flow_time_law	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.fold_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.fold_inv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.identity_repelling	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.inv_inv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.iter_jet_fst	
+FusedAlgebra.Topics.Dynamics	Dynamics.iter_jet_ruler	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.iter_msq_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.iter_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.iter_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.joukowski_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.logistic_T2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.logistic_fold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.mpow_mpow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.msq_inv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.msq_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.parity_logistic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.periodic_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.pflow_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.pflow_ruler	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.pow_mul_R	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.sum_is_neg_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.wall_fixed_mpow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Dynamics	Dynamics.wall_superattracting	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.E	MultAdd.E.bernoulli	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.E	MultAdd.E.bernoulli_strict	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.E	MultAdd.E.binomial	propext, Classical.choice, Quot.sound
@@ -502,6 +1014,25 @@ FusedAlgebra.Topics.Elliptic	EllipticLead.tate_q0_is_multAdd	propext, Classical.
 FusedAlgebra.Topics.Elliptic	EllipticLead.tate_q0_law	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Elliptic	EllipticLead.wall_poly_factor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Elliptic	EllipticLead.walls_are_branches	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.golden_fifth_power	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.lucas_catalan	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.lucas_eds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.lucas_eds_unit	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.lucas_exchange	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.lucas_exchange_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.lucas_shift_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.lucas_somos4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.order_five_lines	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.order_five_point	
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.order_five_points	
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.tate5_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.tate5_golden_pinch	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.w37_eds	propext, Classical.choice
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.w37_odd_somos	propext, Classical.choice
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.w37_point	
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.w37_seeds	propext, Classical.choice
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.w37_somos4	propext, Classical.choice
+FusedAlgebra.Topics.EllipticCounting	EllipticCounting.w37_strong_div	propext, Classical.choice
 FusedAlgebra.Topics.EllipticS3	EllipticS3.cayley_hamilton	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.circle_moments	
 FusedAlgebra.Topics.EllipticS3	EllipticS3.lefschetz_count	propext, Classical.choice, Quot.sound
@@ -560,6 +1091,34 @@ FusedAlgebra.Topics.EntropyNoise	EntropyNoise.sq_nn	propext, Classical.choice, Q
 FusedAlgebra.Topics.EntropyNoise	EntropyNoise.synd_antipodal	
 FusedAlgebra.Topics.EntropyNoise	EntropyNoise.synd_diagonal	
 FusedAlgebra.Topics.EntropyNoise	EntropyNoise.syndromes_total	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.DeepArrows.dim_eq_genus	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.DeepArrows.mazur	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.DeepArrows.ribet	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.DeepArrows.wiles	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.abc_lt_cube	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.disc_two_part	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.explicit_abc_kills	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.fake_passes_mod	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.flt_of_deep_arrows	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.frey_bad_primes	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.frey_c4_c6_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.frey_c6	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.frey_j_denominator	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.frey_j_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.g12_table	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.g12_two	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.germain_mod_11	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.germain_residues	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.irregular_37	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.near_misses	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.no_norm_two_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.odd_prime_coprime_256	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.six_two_ways	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.sq_mod_five	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.squeeze	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.two_exponent_not_multiple	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.wieferich_1093_3511	
+FusedAlgebra.Topics.Fermat.CounterexampleMap	CounterexampleMap.znorm_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Fermat.Fermat3	Fermat3.Eis.N_conj	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Fermat.Fermat3	Fermat3.Eis.N_dvd	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Fermat.Fermat3	Fermat3.Eis.N_mul	propext, Classical.choice, Quot.sound
@@ -748,6 +1307,17 @@ FusedAlgebra.Topics.Finance	FinanceMultAdd.pow_le_pow'	propext, Classical.choice
 FusedAlgebra.Topics.Finance	FinanceMultAdd.pow_nonneg'	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Finance	FinanceMultAdd.power_mean	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Finance	FinanceMultAdd.sq_nonneg'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.dial_inflationary	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.flat_add_flat_succ	
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.flat_madd_iff_flat_mul	
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.flat_mul_flat_add	
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.half_shift_even	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.no_descending	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.no_descending_wf	Classical.choice
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.no_dyadic_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.no_half_shift_odd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.no_monotone_half_pow2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.strictMono_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.dial_or	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.dial_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.fuse_add	propext, Classical.choice, Quot.sound
@@ -756,6 +1326,41 @@ FusedAlgebra.Topics.FractionalRungs	FractionalRungs.fuse_min	propext, Classical.
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.fuse_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.fuse_succ	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.kdv_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.M2.ext'	
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.character_op	
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.cube_zero_qi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.det_madd_swap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.foldW_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.fredholm_fold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.gap_fold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.jacobson_circle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.neumann_miss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.neumann_miss_right	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.nilpotent_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.nilpotent_pair_noncomm	propext
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.nilpotent_pair_sixth_root	propext
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.nilpotent_quasi_inverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.opMA_comm_eq	
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.op_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.op_comm_of_commute	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.op_conj	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.op_dial_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.op_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.op_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.perlis_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.qi_of_inverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.qi_reverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.qi_reverse_left	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.quasi_inverse_unique	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.resolvent_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.rpow_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.rpow_neg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.square_zero_qi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.tr_madd_swap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.wall_left	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.wall_no_quasi_inverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.wall_right	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.zero_op	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FusedConstants	FusedConstants.H_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FusedConstants	FusedConstants.H_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FusedConstants	FusedConstants.H_pow	propext, Classical.choice, Quot.sound
@@ -776,6 +1381,69 @@ FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_fixed	propext, Classical
 FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_gap	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_kiss	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.banzhaf3_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.bigger_smaller_bonus	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.bonus_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.corners3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.dfold_append	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.dfold_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.dfold_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.dial_game_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.edge_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.edge_prob	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.hedge_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_foc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_loss_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_many	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_ruin	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_stake	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.kelly_win_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.lifted_regret	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.marginal	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.multilinear2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.multilinear3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.odds_is_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.odds_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.prob_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.run_expert	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.run_pos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.run_total	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.shapley2_efficient	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.shapley2_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.shapley2_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.shapley3_corners	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.shapley3_efficient	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GameTheory	GameTheory.shapley3_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.beta_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.boost_x_keeps_form	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.boost_y_keeps_form	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.boosts_close	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.cassini_excludes_dial_only	
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.conformal_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.deficits_inverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.dial_only_half_bending	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.dial_only_perihelion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.einstein_combination	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.einstein_divergence_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.friedmann_newton	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.full_bending_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.galilean_boosts_commute	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.gamma_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.gpb_through_river	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.horizon_is_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.infall_light	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.isotropic_radius	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.lapse_bracket_is_rotation	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.metric_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.perpendicular_fuse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.redshifts_fuse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.river_full_bending	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.river_full_perihelion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.rotation_keeps_form	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.static_clock	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GeneralRelativity	GeneralRelativity.static_ruler	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GeometryTrig	SimpleLaws.angle_addition	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GeometryTrig	SimpleLaws.box_corners	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GeometryTrig	SimpleLaws.cube_layers	propext, Classical.choice, Quot.sound
@@ -800,6 +1468,40 @@ FusedAlgebra.Topics.GeometryTrig	SimpleLaws.triangles_compose	propext, Classical
 FusedAlgebra.Topics.GeometryTrig	SimpleLaws.triangles_compose_norm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GeometryTrig	SimpleLaws.triple_angle	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GeometryTrig	SimpleLaws.unit_circle_closed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.add_div'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.c4_indep	
+FusedAlgebra.Topics.GraphTheory	GraphTheory.c4_strong_c4	
+FusedAlgebra.Topics.GraphTheory	GraphTheory.c5_indep	
+FusedAlgebra.Topics.GraphTheory	GraphTheory.c5_strong_p2	
+FusedAlgebra.Topics.GraphTheory	GraphTheory.cancel_left	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.colouring_bond	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.colouring_is_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.colouring_wall_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.ddiv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.diamondQ_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.diamond_poly	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.golden_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.golden_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.ising_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.join_adds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.p3_strong_p3	
+FusedAlgebra.Topics.GraphTheory	GraphTheory.parallel_join	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.parallel_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.parallel_tr	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.perfect_bond_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.potts_is_amh	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.q_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.q_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.q_zero_cusp	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.series_local	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.series_odds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.series_tr	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.strong_count	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.strong_entry	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.strong_entry_diag	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.three_state_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GraphTheory	GraphTheory.two_k2_indep	
+FusedAlgebra.Topics.GraphTheory	GraphTheory.wheatstone	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GravityProbeB	GravityProbeB.corner_is_second_order	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GravityProbeB	GravityProbeB.factors_multiply	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GravityProbeB	GravityProbeB.fractions_fuse	propext, Classical.choice, Quot.sound
@@ -816,6 +1518,56 @@ FusedAlgebra.Topics.GravityProbeB	GravityProbeB.polar_average_pair	propext, Clas
 FusedAlgebra.Topics.GravityProbeB	GravityProbeB.ppn_geodetic	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GravityProbeB	GravityProbeB.thirds	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GravityProbeB	GravityProbeB.weak_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.Bl_diag	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.Bl_invariant	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.Fld.ext'	propext
+FusedAlgebra.Topics.GroupsLie	GroupsLie.M2.ext'	propext
+FusedAlgebra.Topics.GroupsLie	GroupsLie.T_comp	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.T_dilation	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.T_eq_wAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.T_scale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.T_zero_no_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.br_antisymm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.br_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.br_dilation_translation	
+FusedAlgebra.Topics.GroupsLie	GroupsLie.br_jacobi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.bracket_trace	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.circle7_closed	propext
+FusedAlgebra.Topics.GroupsLie	GroupsLie.circle_counts	propext
+FusedAlgebra.Topics.GroupsLie	GroupsLie.deriv_numerator	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.f11_cyclic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.f13_cyclic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.f5_cyclic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.f7_cyclic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.gen_sq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.invariant_ruler	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.landscape_Q	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.landscape_no_twist	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.maM_bracket	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mersenne	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_acts	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_linear	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_mul_entries	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.mob_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.rate_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.rate_walls	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.shift_conj_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.shift_conj_num	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.shift_rate	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.theta_dual	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.theta_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.theta_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.theta_tan	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.theta_velocity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.tmul_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.tmul_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_one_theta	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.GroupsLie	GroupsLie.twist_example	
 FusedAlgebra.Topics.Infinities	Infinities.cantor	propext
 FusedAlgebra.Topics.Infinities	Infinities.evalL_addL	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Infinities	Infinities.half_iter_lower	
@@ -828,6 +1580,35 @@ FusedAlgebra.Topics.Infinities	Infinities.sumOnes_eq	propext
 FusedAlgebra.Topics.Infinities	Infinities.wOnes_spec	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Infinities	Infinities.wOnes_zero	propext
 FusedAlgebra.Topics.Infinities	Infinities.wkey	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.bsc_from_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.channel_cascade	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.channel_det	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.dary_full	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.dary_graft	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.dary_leaves	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.flip_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.full_inner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.graft_inner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.graft_leaves	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.graft_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.kraft_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.leaves_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.outer_shan_w	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qexpN_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qexpN_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qexp_climb	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlogN_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlogN_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlogN_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlogN_one_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlogNeg_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlog_dual	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlog_neg_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.qlog_of_root	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.shan_map_w	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.sm_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.tsallis_engine	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.InformationFull	InformationFull.z_cascade	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.InformationTheory	InfoFused.bec_capacity	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.InformationTheory	InfoFused.bec_dpi	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.InformationTheory	InfoFused.bsc_cascade	propext, Classical.choice, Quot.sound
@@ -926,6 +1707,50 @@ FusedAlgebra.Topics.JetFields	MultAdd.JetFields.units_wAdd	propext, Classical.ch
 FusedAlgebra.Topics.JetFields	MultAdd.JetFields.wall_no_inverse	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.JetFields	MultAdd.JetFields.wmul_assoc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.JetFields	MultAdd.JetFields.wmul_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.alexander_T2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.closeD_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.closeD_tsum	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.closeD_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.closeN_vsum	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.conway_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.conway_stack	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.conway_twist	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.hstep_det	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.hstep_inv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.kink	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.lift_is_closing	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.loop_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.mirror_q	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.poly_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.potts_Q	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.q_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.qnum_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.ratio_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.rational_fractions	
+FusedAlgebra.Topics.KnotTheory	KnotTheory.stack_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.stack_step_y	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.stack_zero_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.step_about_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tangle_cinquefoil	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tangle_figEight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tangle_figEight_D	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tangle_trefoil	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tsum_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tsum_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tsum_infT	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tsum_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.tsum_zeroT	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.twist_closeD	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.twist_formula	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.twist_step_y	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.twists_close	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.twists_on_circle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.vstep_det	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.vstep_inv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.vsum_eq_swap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.walls_merge	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.weight_is_q_minus_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.KnotTheory	KnotTheory.y_scale	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Landscape	LandscapeMap.assoc_den	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Landscape	LandscapeMap.assoc_num	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Landscape	LandscapeMap.channel_floor	propext, Classical.choice, Quot.sound
@@ -1063,6 +1888,77 @@ FusedAlgebra.Topics.LinearAlgebra	LinearAlgebraMA.mono_hom	propext, Classical.ch
 FusedAlgebra.Topics.LinearAlgebra	LinearAlgebraMA.multAdd_is_zoom	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.LinearAlgebra	LinearAlgebraMA.pow_mul''	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.LinearAlgebra	LinearAlgebraMA.rotation_circle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.absorb_defect	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.absorb_on_idem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.and_keeps_idem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.bits_closed_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.dial_table	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.dist_defect	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.dist_on_idem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.fexp_one_inj	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.fold_or_trues	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.fold_xor_trues	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.hamS_bits	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.hamS_is_lens	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.hamS_miss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.hamS_odds	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.hamT_mirror	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.ham_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.ham_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.ham_zero_cusp	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.hamacher_line	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.idem_defect	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.lift_iso	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.multAdd_definable	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.one_time_pad	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.or_from_xor_and	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.or_keeps_idem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.or_self	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.or_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.order_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.sadd_definable	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.succ_and_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.xor_from_or_and	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.xor_keeps_idem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.xor_self	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.xor_self_idem	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.LogicSets	LogicSets.zero_definable	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.Ex_append	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.Ex_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.Ex_prod	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.Ex_row	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.against_and	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.dial_gap_cov	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.dual_involution	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.dual_q	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.dual_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.indep_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_additive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_append	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_comm_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_corners	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_equal_atoms	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_incl_excl	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_neg_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_scale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.lam_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.martingale_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.no_norm_past_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.norm_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.norm_two_root	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.norm_two_sign	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.odds_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.odds_or	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.odds_or_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.prodL_eq_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.sexp_inverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.sure_atom	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.sure_atom_exists	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.wall_blocks	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.wall_list	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.yor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.MeasureProbability	MeasureProbability.yor_step	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NSContinuum	MultAdd.NSContinuum.annulus_cells	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NSContinuum	MultAdd.NSContinuum.annulus_graded	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NSContinuum	MultAdd.NSContinuum.box_doubles	propext
@@ -1113,6 +2009,38 @@ FusedAlgebra.Topics.NumberPlane	SimpleLaws.sq_nonneg	propext
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.tilted_re	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.tilted_u	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.unit_circle_is_hyperbola	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.bernoulli	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.chain_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.fma_shape_corner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.fma_shape_left	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.fma_shape_right	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.gamma_bound	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.gamma_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.gold_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.gold_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.hornerMA_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.horner_cube	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.inverse_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.inverse_sensitivity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.lift_amplifier	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.mpow_double	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.mpow_horner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.mpow_nonneg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.multAdd_bound	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.multAdd_sensitivity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.newton_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.newton_iter_residual	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.newton_residual	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.nonneg_of_mul_pos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.pow_nonneg_rat	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.relerr_div	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.relerr_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.relerr_mul3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.sq_nonneg_rat	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.sterbenz_window_neg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.sterbenz_window_pos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.theta_bound	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Numerical	Numerical.theta_is_fold	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.blk_le	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.block_start	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.condensation	propext, Classical.choice, Quot.sound
@@ -1243,6 +2171,26 @@ FusedAlgebra.Topics.Pi	PiMultAdd.quarter_twice
 FusedAlgebra.Topics.Pi	PiMultAdd.slope_one_four	
 FusedAlgebra.Topics.Pi	PiMultAdd.slope_one_twice	
 FusedAlgebra.Topics.Pi	PiMultAdd.term_shrink	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.Circ.size_mapC	propext
+FusedAlgebra.Topics.PvsNP	PvsNP.evalS_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.eval_from_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.foldMA_ones	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.gf2_lift_de_morgan	
+FusedAlgebra.Topics.PvsNP	PvsNP.gf2_multAdd_is_or	
+FusedAlgebra.Topics.PvsNP	PvsNP.gf2_shift_is_not	
+FusedAlgebra.Topics.PvsNP	PvsNP.minplus_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.minplus_distrib	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.modp_period	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.multAdd_sAdd_distrib	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.np_point	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.np_point_forgets	propext
+FusedAlgebra.Topics.PvsNP	PvsNP.parityP_point	propext
+FusedAlgebra.Topics.PvsNP	PvsNP.qnum_two_nonneg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.qnum_two_strictMono	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.sAdd_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.sharpP_point	propext
+FusedAlgebra.Topics.PvsNP	PvsNP.shifted_identities	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PvsNP	PvsNP.witness_fold	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.QAcross.Knots	QKnots.cinquefoilL_f	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.QAcross.Knots	QKnots.figEight_amphichiral	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.QAcross.Knots	QKnots.figEight_f	propext, Classical.choice, Quot.sound
@@ -1355,6 +2303,20 @@ FusedAlgebra.Topics.Relativity	Relativity.squeeze_plus	propext, Classical.choice
 FusedAlgebra.Topics.Relativity	Relativity.squeeze_ratio	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Relativity	Relativity.under_light	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Relativity	Relativity.velC_units	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.fourth_wave_forces	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.omega_cube_root	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.path_obeys	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.paw_obeys	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.star_obeys	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.tetrahedral_waves	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.third_wave	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.triangle_obeys	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.uniform_minus_two_obeys	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.uniform_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RuleBreakers	RuleBreakers.uniform_three_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Rulecraft	MultAdd.Rulecraft.balance	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Rulecraft	MultAdd.Rulecraft.balance_le	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Rulecraft	MultAdd.Rulecraft.boundary	propext, Classical.choice, Quot.sound
@@ -1382,6 +2344,29 @@ FusedAlgebra.Topics.RungShape	RungShape.sheet_rung1	propext, Classical.choice, Q
 FusedAlgebra.Topics.RungShape	RungShape.sheet_rung1_lens	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RungShape	RungShape.twist_dial	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RungShape	RungShape.twist_rung1	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.config_one_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.config_one_weights	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.config_two_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.config_two_weights	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.cross_ratio_affine	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.cross_ratio_inversion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.cross_ratio_minus_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.excess_agree	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.excess_curves	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.excess_from_four	
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.excess_kdv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.excess_points	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.free_iff_trivial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.kdv_cross_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.kdv_excess_from_three	
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.kp_dispersion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.kp_pair_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.resonance_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.rule4_all_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.rule4_second_value	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.tau4_exclusion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.tau4_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SeveralWaves	SeveralWaves.tau4_splits	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.additive_at_five	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.additive_at_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.additive_at_two	propext, Classical.choice, Quot.sound

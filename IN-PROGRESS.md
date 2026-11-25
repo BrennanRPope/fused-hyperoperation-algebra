@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 1,750 theorems in 62 modules)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 2,735 theorems in 108 modules, synced Nov 25 ~15:50 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`

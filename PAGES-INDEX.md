@@ -42,3 +42,26 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - bio 01 molecular biology D4N4o6M3e7vRJuU5NkDpLh
 - bio 02 metabolism 8sJ7P1mBE6PeqqNEDg7JhQ
 - chem 04 bonding and valence N7zionN5F7ABGi86xAW1nE
+- patterns across results GdFpL9wfnowa3CrfU4ggiX
+- chem 05 stoichiometry and proportions F6KLdvnVUQ2VUS4rMbscMj
+- chem 06 gas laws VRTU1XGxbaxTzGT3yiB5TK
+- chem 07 chemical thermodynamics Q14CAvSfgRNYMtd5Q36cwn
+- chem 08 equilibrium and mass action 6MZCz3kfVLy4fKRLwXTdNn
+- chem 09 rates and Arrhenius 4bv4XrP5PCNSJEbJxqLSf4
+- chem 10 electrochemistry and Nernst YJyPaYuGYCdwEPPwFJohp5
+- bio 03 cell biology MD9HyXQFA5M5ai5okJdWEX
+- chem 11 acids and bases HD9Qo9wtMqhYCqyTuNPoW4
+- chem 12 organic chemistry 1EZy9KmDV2Zne7xvHoCMRL
+- bio 04 genetics AzdqcvaM3ScGG28kVTS4No
+- chem 13 biochemistry SUDjpM1zrqnDHdBXeMJvXq
+- bio 05 developmental biology 898LXAfMTPjWoS3wg5crNY
+- bio 06 physiology 4tvsRPgwNeGVhqQWPTZkCw
+- bio 07 neuroscience DU5rWsu5k7VxUHVPFGmTwt
+- bio 08 evolution 7Bp87asyNsREZjqMeKPWhT
+- bio 09 population BsidfaottuXfA8RPPGDVgT
+- bio 10 ecology Xw4bKkWgC9u7G2EsK7vnwW
+- bio 11 behaviour 6fsetfzEB6Yq6FfPCzMZnA
+- fractional power set + choice grades 94mPKskoy8QKXDumoDjRb7
+- Fermat counterexample map G1nEFedgkjtv7X5ehD3ber
+- general relativity (mult-add toward Einstein) SHrK88RpTBLLfTaeAxgi37
+- P vs NP: what can't work FQr7rMChaa6ofsJV2WfDjs
