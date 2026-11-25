@@ -8,7 +8,8 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| DRAFT: the height flow read as a running coupling. Early verdict: behaves exactly like a marginal coupling, but so does any map with a double fixed point; no physics test found. Merged into the height-flow stream. | `topics/height-running-coupling/` | — |
+| DRAFT: the height flow read as a running coupling. Early verdict: behaves exactly like a marginal coupling, but so does any map with a double fixed point; no physics test found. Merged into the height-flow stream (`topics/height-flow/`). | `topics/height-running-coupling/` | — |
+| Height flow: entropy family, running coupling and invariants. Invariants part DRAFT: the two-loop number of the height-s map is exactly 1/(3s), and the two half-height maps differ by the horn coefficient times \|sin πs\|. Entropy family is a modest catalogue entry (inside Tempesta's group-entropy framework); running coupling has no physics test; telling maps apart by the horn map is the known Écalle–Voronin theorem. | `topics/height-flow/` | — |
 | DRAFT: Lucas corner weights U_m(k, d) for the two-dial plane law. Early verdict: the weights are known Lucas sequences and the corner formula is probably folklore. Merged into the corner-weights stream. | `topics/lucas-weights/` | — |
 | DRAFT: which parts of the cube can carry a weight? Square faces as a reordering cost give soliton pair weights (known vertex-operator picture; cube framing ours) | `topics/cube-weights/` | — |
 | DRAFT: the holographic entropy cone as the cube corner sum at k = −1 (physics published; cube reading ours; one open lead: a softened min cut keeps monogamy) | `topics/holographic-entropy-cube/` | — |

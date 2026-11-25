@@ -1,0 +1,78 @@
+PASS ln_s(X) = E^(1-s)(log X) equals E^-s(X-1)   worst 2.0e-11
+PASS ln_s(XY) = B_(1-s)(ln_s X, ln_s Y)  (group logarithm with law B_(1-s))   worst 4.4e-10
+PASS T_1 = Shannon
+PASS T_0 = (support size) - 1  = Tsallis q = 0
+PASS H_{1,a} = Renyi R_a
+PASS H_{0,a} = D_a - 1 = Sharma-Mittal with beta = 0
+PASS H_{2,a} = log(1 + R_a) = Tempesta-Jensen 2019 'rapidly growing' entropy with k1 = 1 (known)
+worst relative composition error by height:
+   H {-0.5: '1.9e-11', 0.25: '6.7e-12', 0.5: '4.6e-12', 0.75: '3.0e-12', 1.0: '3.1e-12', 1.5: '2.4e-12', 2.0: '1.8e-12', 0.0: '8.6e-12'}
+   Z {-0.5: '3.7e-12', 0.25: '2.5e-12', 0.5: '2.0e-12', 0.75: '2.5e-12', 1.0: '5.0e-12', 1.5: '4.1e-11', 2.0: '2.7e-11', 0.0: '3.2e-12'}
+   T {-0.5: '1.0e+00', 0.25: '4.3e-02', 0.5: '2.6e-02', 0.75: '1.2e-02', 1.0: '3.1e-12', 1.5: '1.7e-02', 2.0: '2.7e-02', 0.0: '9.5e-12'}
+   Esc {-0.5: '1.0e+00', 0.25: '1.6e-02', 0.5: '1.2e-02', 0.75: '4.0e-03', 1.0: '2.6e-12', 1.5: '5.4e-03', 2.0: '7.6e-03', 0.0: '8.6e-12'}
+   T_uniform {-0.5: '1.6e-08', 0.25: '4.4e-11', 0.5: '1.9e-11', 0.75: '8.3e-12', 1.0: '9.1e-12', 1.5: '2.5e-12', 2.0: '2.2e-12', 0.0: '2.3e-10'}
+PASS Hill form H_{s,a} composes EXACTLY by B_(1-s), all distributions, a = 0.5, 1, 2, every height
+PASS Tempesta Z form composes exactly by its own law (Jensen-Tempesta eq. 23)
+PASS trace form T_s composes exactly on uniform distributions (weak composability)
+PASS trace form T_s FAILS exact composition off uniform at every height except s = 0, 1 (Tempesta: only Tsallis is strongly composable)   smallest failure 1.18e-02
+PASS escort form composes exactly only at s = 0 and 1, fails elsewhere
+PASS height shift: H_{s-t} = E^t(H_s)  (one flow; Tsallis/Sharma-Mittal dial has no such law)   worst 1.3e-11
+PASS dial family does NOT compose: G_0.5(G_0.5(1)) != G_1(1) for (e^{kt}-1)/k   gap 0.108
+PASS power-set step: ln_(s+1)(e^(W-1)) = ln_s(W)  (one height up undoes one 'exponentiate the state count')   worst 4.5e-13
+PASS H_s minus Sharma-Mittal (matched k = r) = r(r-1)/12 * R^3 + ...: agree to 2nd order, part at 3rd   {"0.25": [-0.0156, -0.0156], "0.5": [-0.0209, -0.0208], "0.75": [-0.0158, -0.0156]}
+PASS E^r has a quadratic term (r/2): not Kaniadakis (sinh, odd) unless r = 0
+PASS fractional-height G is not analytic at 0 (Baker; reused check), so it is none of Tempesta's listed entire G's
+concavity / expansibility table:
+   s= -1.0:  {'ln_s concave on X>=1': False, 'trace g concave': False, 'bend at 1': 1.0, 'g(0)': inf}
+   s= -0.5:  {'ln_s concave on X>=1': False, 'trace g concave': False, 'bend at 1': 0.5, 'g(0)': inf}
+   s=  0.0:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -0.0, 'g(0)': 1.0}
+   s=  0.1:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -0.1, 'g(0)': 3.3108536535493536e-194}
+   s= 0.25:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -0.25, 'g(0)': 5.116430200234424e-266}
+   s=  0.5:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -0.5, 'g(0)': 2.537720437793997e-290}
+   s= 0.75:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -0.75, 'g(0)': 6.933945428994251e-296}
+   s=  1.0:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -1.0, 'g(0)': 6.907755278982137e-298}
+   s=  1.5:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -1.5, 'g(0)': 2.3957117142611657e-299}
+   s=  2.0:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -2.0, 'g(0)': 6.539261521344581e-300}
+   s=  3.0:  {'ln_s concave on X>=1': True, 'trace g concave': True, 'bend at 1': -3.0, 'g(0)': 2.020124235760266e-300}
+PASS ln_s concave on X >= 1 for every s >= 0 (Tempesta's group-log condition where entropy uses it); bend at 1 is -s, so convex for s < 0
+PASS trace form g(p) = p ln_s(1/p) concave on [0,1] for every s >= 0 tested (0 to 3), not for s < 0
+PASS expansibility g(0) = 0 for s > 0; fails at s = 0 (counts W-1) and blows up for s < 0
+Lesche: sup over ln W in [3, 1e5] of |dS|/S_max for delta = 1e-2, 1e-3, 1e-4, 1e-5, and the value at ln W = 1e5 (delta = 1e-2):
+   T s= 0.0: 1.0524 1.0524 1.0524 1.0524   (at ln W = 1e5: 1.000)
+   T s=0.25: 0.1446 0.0423 0.0113 0.0028   (at ln W = 1e5: 0.010)
+   T s= 0.5: 0.0581 0.0105 0.0017 0.0003   (at ln W = 1e5: 0.010)
+   T s=0.75: 0.0366 0.0052 0.0007 0.0001   (at ln W = 1e5: 0.010)
+   T s= 1.0: 0.0287 0.0036 0.0004 0.0001   (at ln W = 1e5: 0.010)
+   T s= 1.5: 0.0235 0.0027 0.0003 0.0000   (at ln W = 1e5: 0.010)
+   T s= 2.0: 0.0227 0.0024 0.0003 0.0000   (at ln W = 1e5: 0.010)
+   H s= 0.0: 1.0000 1.0000 1.0000 0.6321   (at ln W = 1e5: 1.000)
+   H s=0.25: 0.9667 0.2877 0.0333 0.0034   (at ln W = 1e5: 0.967)
+   H s= 0.5: 0.1722 0.0186 0.0019 0.0002   (at ln W = 1e5: 0.172)
+   H s=0.75: 0.0323 0.0033 0.0003 0.0000   (at ln W = 1e5: 0.032)
+   H s= 1.0: 0.0287 0.0036 0.0004 0.0001   (at ln W = 1e5: 0.010)
+   H s= 1.5: 0.3101 0.1407 0.0477 0.0095   (at ln W = 1e5: 0.310)
+   H s= 2.0: 0.6001 0.4009 0.2083 0.0602   (at ln W = 1e5: 0.600)
+PASS trace form: the sup shrinks steadily as delta -> 0 for every s > 0 (evidence of Lesche stability)
+PASS trace form unstable at s = 0 (Tsallis q = 0 edge): sup stays at 1
+Hill form, delta = 1e-2, |dS|/S_max at ln W = 1e2, 1e4, 1e6, 1e8, 1e10, 1e12:
+   s= 0.0: 0.654 1.000 1.000 1.000 1.000 1.000
+   s=0.25: 0.151 0.700 1.000 1.000 1.000 1.000
+   s= 0.5: 0.046 0.114 0.234 0.396 0.558 0.736
+   s=0.75: 0.019 0.028 0.036 0.045 0.052 0.060
+   s= 1.0: 0.011 0.010 0.010 0.010 0.010 0.010
+   s= 1.5: 0.074 0.231 0.364 0.450 0.506 0.554
+   s= 2.0: 0.164 0.486 0.665 0.752 0.798 0.833
+   s= 3.0: 0.329 0.730 0.861 0.910 0.932 0.948
+PASS Hill form (a = 1) is Lesche-unstable at every height except s = 1: its error ratio climbs with W at fixed delta for s != 1, falls at s = 1   {"0.0": 0.0, "0.25": 0.3, "0.5": 0.621, "0.75": 0.033, "1.0": -0.0, "1.5": 0.323, "2.0": 0.347, "3.0": 0.218}
+PASS maxent condition G(L) - G'(L) = a + b*eps is solvable (left side increasing) for s = 0.25 ... 1.5
+maxent tail: d log(-log p)/d log eps on eps in [50, 400] (1 = exponential, c = stretched exp, -> 0 power law): {0.25: 0.222, 0.5: 0.345, 0.75: 0.56}
+PASS maxent tails at s in (0,1) lie between power law and exponential (local slope strictly between 0 and 1)
+PASS uniform S_s = N exactly on state spaces W(N) = exp(E^(s-1)(N)) (Jensen-Tempesta procedure gives G = E^(1-s))   {"-0.5": "1.5e-10", "0.0": "1.8e-15", "0.5": "1.5e-10", "1.0": "0.0e+00", "1.5": "1.5e-10"}
+Boolean functions on N bits: S_2/N and S_1/N: [(4, 0.6231, '2.77e+00'), (8, 0.648, '2.22e+01'), (16, 0.6702, '2.84e+03'), (32, 0.6817, '9.30e+07'), (48, 0.6855, '4.06e+12')]
+PASS Boolean functions on N bits (W = 2^(2^N)): S_2/N -> ln 2 (extensive) while Shannon S_1/N blows up
+PASS Fatou coordinate Phi(E(x)) = Phi(x) + 1 (rung ruler, used as the RG-invariant scale)   err 2.9e-11
+PASS dH_s/ds = -beta(H_s) with beta = Julia's iterative log v(x) = x^2/2 - x^3/12 + ... (the entropy family IS a running-coupling trajectory)   worst rel 1.3e-08
+PASS RG invariant: Phi(H_s) + s is constant along the family (the 'Lambda' of an entropy is Phi(R) + 1)   {"0.4": "5.2e-09", "1.3": "1.3e-09", "2.5": "6.9e-09"}
+PASS far above Shannon every entropy runs to 0 like 2/s (one loop), and the two-loop log term closes most of the gap   {"0.4": ["0.031663", "0.031096", "0.031666"], "1.3": ["0.033697", "0.033067", "0.033700"], "2.5": ["0.034231", "0.033583", "0.034234"], "10.0": ["0.034795", "0.034130", "0.034799"]}
+
+32 of 32 checks pass

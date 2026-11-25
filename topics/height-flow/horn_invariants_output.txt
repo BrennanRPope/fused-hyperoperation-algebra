@@ -1,0 +1,50 @@
+PASS resit(e^x - 1) = 1 - a2/a1^2 = 1 - (1/6)/(1/4) = 1/3, and equals the Fatou log coefficient rho (= the running-coupling two-loop invariant)
+Fatou series c_j for e^x - 1 (Z = -2/x): ['1/18', '1/135', '-1/972', '-71/27216', '-8759/5103000', '31/328050']
+formal E^s = x + ( s/2 ) x^2 + ( s**2/4 - s/12 ) x^3 + ...;  resit(E^s) = 1/(3*s)
+PASS resit(E^s) = 1/(3s) at every height s: height times iterative residue is the constant 1/3
+PASS corner dial: resit((e^{kx}-1)/k) = 1/3 for every k (conjugate to e^x - 1 by x -> kx; the dial is invisible locally)
+plane dial: G = t + ( k/2 ) t^2 + ( (2*d + k**2)/6 ) t^3;  resit = -(4*d - k**2)/(3*k**2)
+PASS plane dial: resit(G_{k,d}) = 1/3 - 4d/(3k^2) = -(4/3) kappa/k^2 with kappa = d - k^2/4 (the Cayley-Klein number); zero exactly at kappa = 0
+upper horn, Im Z = 2.0: Im W ~ 1.444; A0 = (-5.95721e-29 - 2.28782e-28j), A1 = (-0.0854052381401 + 0.02524579954j), A2 = (0.0066198705 + 0.010588299j), fit resid 2.4e-27
+upper horn, Im Z = 2.5: Im W ~ 1.949; A0 = (-4.65877e-32 - 1.88597e-33j), A1 = (-0.0854052381401 + 0.02524579954j), A2 = (0.0066198705 + 0.010588299j), fit resid 2.69e-31
+upper horn, Im Z = 3.0: Im W ~ 2.453; A0 = (2.09748e-32 + 1.25296e-34j), A1 = (-0.0854052381401 + 0.02524579954j), A2 = (0.0066198705 + 0.010588299j), fit resid 2.53e-31
+PASS upper horn map of e^x - 1 is NOT a translation: A1 is nonzero and the same from three strips (Im Z = 2, 2.5, 3)   |A1| = 0.0890584364122, spread 2.3e-23
+PASS upper constant A0+ = 0 in the canonical normalisation   (2.1e-32 + 1.25e-34j)
+lower horn: A0- = (2.09754141542e-32 + 2.09439510239j), A_-1 = (-44317.0470493 - 13100.1248914j)
+PASS lower constant A0- = 2 pi i * resit = 2 pi i / 3 (the known link between the two horn constants and the residue)   (2.1e-32 - 9.63e-35j)
+PASS real map: the lower horn mirrors the upper once the 2 pi i/3 branch shift is undone: |A_-1| = |A1| e^(4 pi^2/3); the shift-free invariant A1*A_-1 is real   A1*A_-1 = 4115.63108387096, sqrt = 64.1531845185
+PASS resit(E^2) = 1/6 (= 1/(3*2))
+E^2 upper horn: A1 = (3.082e-25 - 7.137e-25j), |A2| = 0.0445292182061, |A1(E)|/2 = 0.0445292182061
+PASS height 2: the horn map of E^2 keeps only even modes and |A2(E^2)| = |A1(E)|/2  (h_2(W) = h(2W - c)/2 + c)
+  s =  0.0: attracting-vs-repelling half-rung gap |D| = 1.7256381e-31   predicted 0.0
+  s =  0.1: attracting-vs-repelling half-rung gap |D| = 1.993795e-7   predicted 1.993795e-7
+  s = 0.25: attracting-vs-repelling half-rung gap |D| = 4.5622942e-7   predicted 4.5622942e-7
+  s =  0.5: attracting-vs-repelling half-rung gap |D| = 6.4520562e-7   predicted 6.4520562e-7
+  s = 0.75: attracting-vs-repelling half-rung gap |D| = 4.5622898e-7   predicted 4.5622898e-7
+  s =  0.9: attracting-vs-repelling half-rung gap |D| = 1.9937939e-7   predicted 1.9937939e-7
+  s =  1.0: attracting-vs-repelling half-rung gap |D| = 1.7256381e-31   predicted 6.180033e-42
+  s = 1.25: attracting-vs-repelling half-rung gap |D| = 4.5622942e-7   predicted 4.5622942e-7
+  s =  1.5: attracting-vs-repelling half-rung gap |D| = 6.4520562e-7   predicted 6.4520562e-7
+  s =  2.0: attracting-vs-repelling half-rung gap |D| = 1.7256381e-31   predicted 1.2360066e-41
+PASS fractional heights: the two petals' E^s disagree by exactly the horn coefficients; the gap is ~ 2|A1||sin(pi s)| e^{-2 pi Im W}, zero only at whole heights
+  Möbius x/(1 − x/2): A1 = (-2.030313223e-24 + 2.315749546e-53j), A_-1 = (-2.030313223e-24 - 2.315749546e-53j), sqrt|A1 A_-1| = 2.030313223e-24, strip spread 1.2, fit resid 1.7e-31
+  x + x²/2 + x³/6 (e^x − 1 cut at x³): A1 = (-19.81567068 + 76.62122638j), A_-1 = (-10282413.92 - 39758995.68j), sqrt|A1 A_-1| = 57009.96349, strip spread 1.8e-19, fit resid 9.6e-31
+  x·e^(x/2): A1 = (0.05673326064 - 0.01692438487j), A_-1 = (21206412.48 + 6326191.769j), sqrt|A1 A_-1| = 1144.629124, strip spread 2.8e-25, fit resid 2.5e-31
+  −log(1 − x): A1 = (-61.52160561 - 18.18579465j), A_-1 = (-0.0001185608638 + 3.50466068e-5j), sqrt|A1 A_-1| = 0.08905843641, strip spread 7.8e-22, fit resid 8.7e-29
+  x + x²/2: A1 = (-0.05895043056 + 0.0100098659j), A_-1 = (-8.236560661e+15 - 1.398579567e+15j), sqrt|A1 A_-1| = 22350579.22, strip spread 2.5e-14, fit resid 6.5e-26
+  plane dial k = 1, d = −1/4: A1 = (-0.08122593888 + 0.02136822761j), A_-1 = (-2.187093517e+10 - 5753619190.0j), sqrt|A1 A_-1| = 43582.47225, strip spread 1.9e-22, fit resid 4.1e-31
+  plane dial k = 1, d = 1/4 (κ = 0): A1 = (-2.030313223e-24 + 2.315749546e-53j), A_-1 = (-2.030313223e-24 - 2.315749546e-53j), sqrt|A1 A_-1| = 2.030313223e-24, strip spread 1.2, fit resid 1.7e-31
+germs that all fade like -2/n:
+   e^x − 1 (our height-1 map)                 resit = 1/3     |A1+| = 0.08905843641  shift-free size sqrt|A1 A_-1| = 64.15318452
+   Möbius x/(1 − x/2)                         resit = 0       |A1+| = 2.030313223e-24 shift-free size sqrt|A1 A_-1| = 2.030313223e-24
+   x + x²/2 + x³/6 (e^x − 1 cut at x³)        resit = 1/3     |A1+| = 79.14210723    shift-free size sqrt|A1 A_-1| = 57009.96349
+   x·e^(x/2)                                  resit = 1/2     |A1+| = 0.0592038653   shift-free size sqrt|A1 A_-1| = 1144.629124
+   −log(1 − x)                                resit = -1/3    |A1+| = 64.15318452    shift-free size sqrt|A1 A_-1| = 0.08905843641
+   x + x²/2                                   resit = 1       |A1+| = 0.05979423617  shift-free size sqrt|A1 A_-1| = 22350579.22
+   plane dial k = 1, d = −1/4                 resit = 2/3     |A1+| = 0.08398960827  shift-free size sqrt|A1 A_-1| = 43582.47225
+   plane dial k = 1, d = 1/4 (κ = 0)          resit = 0       |A1+| = 2.030313223e-24 shift-free size sqrt|A1 A_-1| = 2.030313223e-24
+PASS Möbius x/(1 - x/2): resit 0 and trivial horn map (A1 = 0): it embeds in an analytic flow, unlike e^x - 1
+PASS plane dial at kappa = 0 is that Möbius map: every height analytic there
+PASS e^x - 1 cut at x^3 has the SAME fading rate and the SAME residue 1/3, yet a different horn map: only the horn map tells them apart
+
+14 of 14 checks pass

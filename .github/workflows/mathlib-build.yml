@@ -68,8 +68,7 @@ jobs:
         working-directory: lean-library-mathlib
         run: lake env lean tools/CheckNames.lean
 
-      - name: Tesseract coordinates (topics/tesseract/TesseractCoords.lean; report only until it has passed once)
+      - name: Tesseract coordinates (topics/tesseract/TesseractCoords.lean, the one topic file that imports Mathlib)
         if: steps.port.outputs.present == 'true'
-        continue-on-error: true
         working-directory: lean-library-mathlib
         run: lake build Tesseract
