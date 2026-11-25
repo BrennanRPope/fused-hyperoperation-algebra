@@ -1,0 +1,31 @@
+original	status	new_name	note
+amplitude_damping	ported	QuantumNoise.amplitude_damping	any commutative ring
+bit_flip	ported	QuantumNoise.bit_flip	any commutative ring
+depolarizing	ported	QuantumNoise.depolarizing	any field
+call_rule_gap	ported	QuantumNoise.call_rule_gap	any commutative ring
+stacked_bit_flips	ported	QuantumNoise.stacked_bit_flips	any commutative ring
+Pauli	ported	QuantumNoise.Pauli	now Pauli R for any type R (the original is Pauli ℚ); @[ext]
+Pauli.lx	ported	QuantumNoise.Pauli.lx	any commutative ring
+Pauli.ly	ported	QuantumNoise.Pauli.ly	any commutative ring
+Pauli.lz	ported	QuantumNoise.Pauli.lz	any commutative ring
+Pauli.comp	ported	QuantumNoise.Pauli.comp	any commutative ring; it is multiplication in the group algebra of the Klein four-group, not connected to MonoidAlgebra here
+comp_lx	ported	QuantumNoise.comp_lx	
+comp_ly	ported	QuantumNoise.comp_ly	
+comp_lz	ported	QuantumNoise.comp_lz	
+comp_total	ported	QuantumNoise.comp_total	
+faces	ported	QuantumNoise.faces	any commutative ring
+maj3	ported	QuantumNoise.maj3	any commutative ring
+f	ported	QuantumNoise.vote	renamed (one-letter name); any field
+maj3_polar	ported	QuantumNoise.maj3_polar	any field with 2 ≠ 0
+odd3_polar	ported	QuantumNoise.odd3_polar	any commutative ring
+f_fixed	ported	QuantumNoise.vote_sub_self	renamed; any field with 2 ≠ 0
+f_helps	ported	QuantumNoise.vote_helps	renamed; any linearly ordered field
+gx	ported	QuantumNoise.gx	any field
+gz	ported	QuantumNoise.gz	any field
+gx_below	ported	QuantumNoise.gx_below	stays over ℚ; by norm_num instead of decide +kernel
+gx_above	ported	QuantumNoise.gx_above	stays over ℚ; by norm_num
+gz_below	ported	QuantumNoise.gz_below	stays over ℚ; by norm_num
+gz_above	ported	QuantumNoise.gz_above	stays over ℚ; by norm_num
+macwilliams_rep3	ported	QuantumNoise.macwilliams_rep3	any field with 2 ≠ 0
+undetected_two_ways	ported	QuantumNoise.undetected_two_ways	any field of characteristic zero
+madd_inverse	ported	QuantumNoise.madd_inverse	one-line corollary of MultAdd.multAdd_multAddInv; any field

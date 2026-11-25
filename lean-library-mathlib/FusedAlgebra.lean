@@ -20,3 +20,4 @@ public import FusedAlgebra.Topics.LinearAlgebra
 public import FusedAlgebra.Topics.NSContinuum
 public import FusedAlgebra.Topics.NumberPlane
 public import FusedAlgebra.Topics.Pi
+public import FusedAlgebra.Topics.QuantumNoise
