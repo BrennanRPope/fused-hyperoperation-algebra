@@ -22,6 +22,7 @@ public import FusedAlgebra.Topics.EllipticS3
 public import FusedAlgebra.Topics.EntropyNoise
 public import FusedAlgebra.Topics.Fermat.Fermat3
 public import FusedAlgebra.Topics.Fermat.Fermat4
+public import FusedAlgebra.Topics.Fermat.FermatRoute
 public import FusedAlgebra.Topics.Fermat.FreyPieces
 public import FusedAlgebra.Topics.Finance
 public import FusedAlgebra.Topics.FractionalRungs

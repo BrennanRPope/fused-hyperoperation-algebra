@@ -1,0 +1,11 @@
+original	status	new_name	note
+flt_of_prime_case	ported	FermatRoute.flt_of_prime_case	IsPrime → Nat.Prime, FLT → FermatLastTheoremFor, conclusion is mathlib's FermatLastTheorem; uses the library's fermat4 and Fermat3.flt3_nat (both corollaries of mathlib)
+prime_dvd_of_dvd_pow	mathlib	Prime.dvd_of_dvd_pow	with Nat.prime_iff_prime_int
+gcd_one_of_no_prime	mathlib	Nat.eq_one_iff_not_exists_prime_dvd	applied to Int.gcd a c; no longer needed because cop_left is proved with IsCoprime
+dvd_self_pow	mathlib	dvd_pow_self	
+cop_left	ported	FreyPieces.gcd_eq_one_of_add_pow_eq	moved to FreyPieces (frey_normalize needs it); hypothesis a ≠ 0 dropped (not needed), 1 ≤ p written p ≠ 0
+gcd_natAbs_congr	mathlib	Int.gcd_def	Int.gcd i j = i.natAbs.gcd j.natAbs, then rewrite
+normalize_core'	dropped	FreyPieces.normalize_core	FreyPieces.normalize_core was strengthened to return the separate absolute values, so the primed copy is redundant
+frey_normalize_cop	ported	FermatRoute.frey_normalize_cop	p % 2 = 1 written Odd p; now a projection of the strengthened FreyPieces.frey_normalize
+NoFreyCurve	ported	FermatRoute.NoFreyCurve	IsPrime → Nat.Prime; still a hypothesis-definition, not proved
+flt_of_no_frey_curve	ported	FermatRoute.flt_of_no_frey_curve	conclusion is mathlib's FermatLastTheorem
