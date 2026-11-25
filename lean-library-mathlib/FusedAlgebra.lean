@@ -52,3 +52,4 @@ public import FusedAlgebra.Topics.Thermodynamics
 public import FusedAlgebra.Topics.Topology.CubeProofs
 public import FusedAlgebra.Topics.Topology.KummerWilson
 public import FusedAlgebra.Topics.Toric.ProjectivePlane
+public import FusedAlgebra.Topics.Toric.ToricCharts
