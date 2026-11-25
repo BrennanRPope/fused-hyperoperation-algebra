@@ -63,6 +63,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 |---|---|---|
 | Fermat | `topics/fermat/` | [page](https://claude.ai/artifact/Q3GveFG3TjJSeqrYbXEouL) |
 | Fermat's Last Theorem in pieces | `topics/fermat/` | [page](https://claude.ai/artifact/9wdazdAULhiQ32uXPpgKLa) |
+| Tracking the Lean FLT project (Buzzard; futarchy-fi fork) | `topics/flt-tracking/` | no page yet |
 | Elliptic curves lead | `topics/elliptic/` | [page](https://claude.ai/artifact/JhsmEQaHNRhZ9t5Ph5RZ6y) |
 | The birth of a prime (Claude Doc) | `topics/primes/` | [page](https://claude.ai/artifact/SisvRHEDreffPYfN8mD1ch) |
 | q across knots, primes, counting and physics | `topics/q-across/` | [page](https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL) |
