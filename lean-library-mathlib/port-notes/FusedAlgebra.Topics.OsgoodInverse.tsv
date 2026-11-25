@@ -1,0 +1,70 @@
+original	status	new_name	note
+recip_diff	mathlib	inv_sub_inv	a⁻¹ - b⁻¹ = (b - a) / (a * b); also one_div_sub_one_div style lemmas
+ric	ported	MultAdd.OsgoodInverse.ric	
+ric_lift	ported	MultAdd.OsgoodInverse.one_add_ric	renamed; right side written (1 - t)⁻¹
+ric_step	ported	MultAdd.OsgoodInverse.ric_step	
+ric_step_multAdd	ported	MultAdd.OsgoodInverse.ric_step_multAdd	
+riccati_clock_step	ported	MultAdd.OsgoodInverse.riccati_clock_step	1 / x written x⁻¹
+steps	mathlib	AddMonoid.nsmul	steps h n is n • h
+steps_add	mathlib	add_nsmul	
+riccati_clock	ported	MultAdd.OsgoodInverse.riccati_clock	steps h n is n • h; 1 / x written x⁻¹
+riccati_hits_wall	ported	MultAdd.OsgoodInverse.riccati_hits_wall	steps h m is m • h; 1 / x written x⁻¹
+mirror_step	ported	MultAdd.OsgoodInverse.mirror_step	
+mirror_lift	dropped	MultAdd.inv_one_add	same statement (sides swapped), already in FusedAlgebra.Basic
+rung1_lift	ported	MultAdd.OsgoodInverse.rung1_lift	generalised from fields to any semiring
+rung1_never_wall	ported	MultAdd.OsgoodInverse.rung1_never_wall	generalised from ℚ to any strictly ordered semiring
+steps_quarter	dropped	MultAdd.OsgoodInverse.riccati_quarter_blows_up	4 • (1 / 4 : ℚ) = 1 is a norm_num step inlined in the proof
+riccati_quarter_blows_up	ported	MultAdd.OsgoodInverse.riccati_quarter_blows_up	
+ric_near_one	ported	MultAdd.OsgoodInverse.ric_near_one	generalised from ℚ to any linearly ordered field
+time_left_pos	ported	MultAdd.OsgoodInverse.time_left_pos	any linearly ordered field; by positivity
+fan	ported	MultAdd.OsgoodInverse.fan	
+root	ported	MultAdd.OsgoodInverse.root	
+root_sq	ported	MultAdd.OsgoodInverse.root_sq	
+fan_step	ported	MultAdd.OsgoodInverse.fan_step	
+fan_zero	ported	MultAdd.OsgoodInverse.fan_zero	
+fan_distinct	ported	MultAdd.OsgoodInverse.fan_distinct	
+lipschitz_unique	ported	MultAdd.OsgoodInverse.lipschitz_unique	generalised from ℚ to any field
+fsum	mathlib	Finset.sum	fsum a s len is ∑ k ∈ Finset.Ico s (s + len), a k
+fsum_append	mathlib	Finset.sum_Ico_consecutive	
+fsum_mono	mathlib	Finset.sum_le_sum	
+fsum_nonneg	mathlib	Finset.sum_nonneg	
+one_le_pow2	mathlib	Nat.one_le_two_pow	
+pow2_succ	mathlib	Nat.two_pow_succ	
+const_block	ported	MultAdd.OsgoodInverse.blk_const	renamed; stated for the dyadic block blk (start 2 ^ j) only, which is the only use; the general start is Finset.sum_const with Nat.card_Ico
+block_start	ported	MultAdd.OsgoodInverse.block_start	one line from MultAdd.Cube.mpow_one_add_one
+blk	ported	MultAdd.OsgoodInverse.blk	Finset sum over Ico (2 ^ j) (2 ^ (j + 1)); any field
+Antitone1	mathlib	AntitoneOn	Antitone1 a is AntitoneOn a (Set.Ici 1)
+blk_le	ported	MultAdd.OsgoodInverse.blk_le	any linearly ordered field
+le_blk	ported	MultAdd.OsgoodInverse.le_blk	any linearly ordered field
+dsum	ported	MultAdd.OsgoodInverse.dsum	Finset sum over Ico 1 (2 ^ n); any field
+dsum_succ	ported	MultAdd.OsgoodInverse.dsum_succ	
+csum	ported	MultAdd.OsgoodInverse.csum	Finset sum over range n; the old recursion is csum_succ
+dsum_le_csum	ported	MultAdd.OsgoodInverse.dsum_le_csum	any linearly ordered field; the same fact is Finset.le_sum_condensed' in mathlib
+csum_le_dsum	ported	MultAdd.OsgoodInverse.csum_le_dsum	any linearly ordered field; compare Finset.sum_condensed_le
+condensation	ported	MultAdd.OsgoodInverse.condensation	any linearly ordered field; summability form in mathlib is summable_condensed_iff_of_nonneg
+lt_pow2	mathlib	Nat.lt_two_pow_self	
+fsum_le_dsum	ported	MultAdd.OsgoodInverse.sum_Ico_le_dsum	renamed; fsum a 1 N is ∑ k ∈ Ico 1 (N + 1), a k
+nr	mathlib	Nat.cast	
+nr_add	mathlib	Nat.cast_add	
+nr_nonneg	mathlib	Nat.cast_nonneg	
+nr_pos	mathlib	Nat.cast_pos	
+nr_mono	mathlib	Nat.cast_le	
+nr_pow2	mathlib	Nat.cast_pow	with Nat.cast_ofNat
+one_div_pos	mathlib	one_div_pos	
+harm	ported	MultAdd.OsgoodInverse.harm	1 / (k : ℚ)
+harm_nonneg	ported	MultAdd.OsgoodInverse.harm_nonneg	
+harm_anti	ported	MultAdd.OsgoodInverse.harm_anti	
+csum_harm	ported	MultAdd.OsgoodInverse.csum_harm	
+harmonic_grows	ported	MultAdd.OsgoodInverse.harmonic_grows	
+isq	ported	MultAdd.OsgoodInverse.isq	
+isq_anti	ported	MultAdd.OsgoodInverse.isq_anti	
+csum_isq	ported	MultAdd.OsgoodInverse.csum_isq	
+inverse_squares_bounded	ported	MultAdd.OsgoodInverse.inverse_squares_bounded	
+rot1	ported	MultAdd.OsgoodInverse.rot1	generalised from ℤ to any commutative ring
+rot2	ported	MultAdd.OsgoodInverse.rot2	any commutative ring
+rad1	ported	MultAdd.OsgoodInverse.rad1	any commutative ring
+rad2	ported	MultAdd.OsgoodInverse.rad2	any commutative ring
+rot_speed	ported	MultAdd.OsgoodInverse.rot_speed	any commutative ring
+rad_speed	ported	MultAdd.OsgoodInverse.rad_speed	any commutative ring
+rot_perp	ported	MultAdd.OsgoodInverse.rot_perp	any commutative ring
+rad_out	ported	MultAdd.OsgoodInverse.rad_out	any commutative ring
