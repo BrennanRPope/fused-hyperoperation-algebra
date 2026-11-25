@@ -18,3 +18,4 @@ public import FusedAlgebra.Topics.Landscape
 public import FusedAlgebra.Topics.LeeYang
 public import FusedAlgebra.Topics.LinearAlgebra
 public import FusedAlgebra.Topics.NSContinuum
+public import FusedAlgebra.Topics.NumberPlane
