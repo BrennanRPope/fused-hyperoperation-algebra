@@ -23,6 +23,7 @@ import FusedAlgebra.Topics.RungShape
 import FusedAlgebra.Topics.Elliptic
 import FusedAlgebra.Topics.EllipticS3
 import FusedAlgebra.Topics.Thermodynamics
+import FusedAlgebra.Topics.Relativity
 import FusedAlgebra.Topics.NumberPlane
 import FusedAlgebra.Topics.GeometryTrig
 import FusedAlgebra.Topics.EarlyScience
@@ -40,6 +41,7 @@ import FusedAlgebra.Topics.QAcross.QDial
 import FusedAlgebra.Topics.QAcross.Knots
 import FusedAlgebra.Topics.QAcross.Partitions
 import FusedAlgebra.Topics.QAcross.QCounting
+import FusedAlgebra.Topics.SolitonsRungs
 import FusedAlgebra.Topics.NavierStokes
 import FusedAlgebra.Topics.QuantumNoise
 import FusedAlgebra.Topics.Rulecraft

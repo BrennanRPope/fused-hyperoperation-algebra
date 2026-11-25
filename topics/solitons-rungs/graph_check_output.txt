@@ -1,0 +1,1 @@
+log of pair-road series counts connected graphs with edge weight A-1: True [t, t**3 + 3*t**2]

@@ -19,8 +19,8 @@ from collections import Counter, defaultdict
 HERE = pathlib.Path(__file__).resolve().parent
 F = json.load(open(HERE / "features.json"))
 
-ACTIONS = ["squash", "dial", "flatten", "regroup", "swap", "explode", "collapse", "repeat"]
-SHAPE_MOVES = ACTIONS + ["lift", "multadd", "extrude", "tally"]
+ACTIONS = ["squash", "dial", "flatten", "regroup", "swap", "explode", "collapse", "repeat", "measure", "tally"]
+SHAPE_MOVES = ACTIONS + ["lift", "multadd", "extrude"]
 
 FIELD = {
     "FusedAlgebra.Base": ("Foundation", "foundation"),
@@ -44,10 +44,42 @@ FIELD = {
     "FusedAlgebra.Topics.Topology.CubeProofs": ("Primes on the cube", "numbers and infinity"),
     "FusedAlgebra.Topics.Topology.KummerWilson": ("Kummer and Wilson", "numbers and infinity"),
     "FusedAlgebra.Topics.Topology.HopfInvariantOne": ("Hopf invariant one", "geometry and topology"),
+    "FusedAlgebra.Foundations.MultAddRing": ("Mult-add ring axioms", "foundation"),
+    "FusedAlgebra.Foundations.Independence": ("Axiom independence", "foundation"),
+    "FusedAlgebra.Foundations.FusedPeano": ("Fused Peano arithmetic", "foundation"),
+    "FusedAlgebra.Topics.AbstractAlgebra": ("Abstract algebra", "algebra"),
+    "FusedAlgebra.Topics.LinearAlgebra": ("Linear algebra", "algebra"),
+    "FusedAlgebra.Topics.Calculus": ("Calculus", "analysis"),
+    "FusedAlgebra.Topics.Pi": ("The number pi", "numbers and infinity"),
+    "FusedAlgebra.Topics.Statistics": ("Statistics", "economy and society"),
+    "FusedAlgebra.Topics.Thermodynamics": ("Thermodynamics", "physics"),
+    "FusedAlgebra.Topics.EntropyNoise": ("Entropy and noise", "computing and information"),
+    "FusedAlgebra.Topics.Elliptic": ("Elliptic curves", "numbers and infinity"),
+    "FusedAlgebra.Topics.EllipticS3": ("Elliptic curves on S3", "numbers and infinity"),
+    "FusedAlgebra.Topics.Landscape": ("Laws landscape", "foundation"),
+    "FusedAlgebra.Topics.RungShape": ("Rung shape", "foundation"),
+    "FusedAlgebra.Topics.NumberPlane": ("Number plane", "geometry and topology"),
+    "FusedAlgebra.Topics.GeometryTrig": ("Geometry and trigonometry", "geometry and topology"),
+    "FusedAlgebra.Topics.EarlyScience": ("Early science laws", "physics"),
+    "FusedAlgebra.Topics.NSContinuum": ("Fluids across dimensions", "physics"),
+    "FusedAlgebra.Topics.JetFields": ("Jet fields", "physics"),
+    "FusedAlgebra.Topics.OsgoodInverse": ("Osgood inverse", "analysis"),
+    "FusedAlgebra.Topics.DialSweep": ("Dial sweep (matrices)", "algebra"),
+    "FusedAlgebra.Topics.QAcross.QDial": ("The q dial", "numbers and infinity"),
+    "FusedAlgebra.Topics.QAcross.Knots": ("Knots (q across)", "geometry and topology"),
+    "FusedAlgebra.Topics.QAcross.Partitions": ("Partitions (q across)", "numbers and infinity"),
+    "FusedAlgebra.Topics.QAcross.QCounting": ("q counting", "numbers and infinity"),
+    "FusedAlgebra.Topics.Fermat.Fermat4": ("Fermat n = 4", "numbers and infinity"),
+    "FusedAlgebra.Topics.Fermat.Fermat3": ("Fermat n = 3", "numbers and infinity"),
+    "FusedAlgebra.Topics.Fermat.FreyPieces": ("Frey curve pieces", "numbers and infinity"),
+    "FusedAlgebra.Topics.Fermat.FermatRoute": ("Fermat route", "numbers and infinity"),
 }
 
-def body(d):
-    if d is None: return "unclear"
+def body(d, lean_sides=None):
+    if d is None:
+        # fall back on the engine Reader's picture of the statement (largest box)
+        if lean_sides is None: return "unclear"
+        d = lean_sides
     if d >= 99: return "cube"
     if d >= 4: return "hyper"
     return ["point", "rod", "rect", "box"][d]
@@ -58,7 +90,8 @@ ACTION_NAME = {
     "plain": "read straight off", "squash": "squashed onto the hyperbola", "dial": "with a dialed corner",
     "flatten": "flattened, area to length", "regroup": "cut two ways", "swap": "flipped on its diagonal",
     "explode": "broken into corner pieces", "collapse": "with a side shrunk to nothing",
-    "repeat": "stacked layer on layer",
+    "repeat": "stacked layer on layer", "measure": "measured rod against rod",
+    "tally": "counted cell by cell",
 }
 ACTION_SENT = {
     "plain": "The proof only reads the picture: no re-cut, flip, squash or dial is needed.",
@@ -70,6 +103,8 @@ ACTION_SENT = {
     "explode": "The box is pulled apart into its 2ⁿ corner pieces and they are counted by layer (Pascal, factorials, corner sums).",
     "collapse": "A side of length 0 (or a factor of 1) flattens a whole dimension away.",
     "repeat": "One layer is laid down again and again (induction): the shape grows a slice at a time.",
+    "measure": "Rods are laid side by side and compared by length (linear arithmetic: omega, linarith, order facts).",
+    "tally": "The picture has fixed numbers, and the cells are counted one by one (decide).",
 }
 FRAME_NAME = {"same": "the two pictures are the same", "inside": "one picture fits inside the other",
               "mismatch": "the pictures cannot match", "tiles": "the picture tiles evenly",
@@ -91,13 +126,10 @@ def rung_height(f):
     if d >= 2: return 1
     return 0
 
-def ambiguity(f, own):
+def ambiguity(f, own, kown):
     why = []
-    if f["dim"] is None: why.append("its statement could not be read, so its size is a guess")
-    if not own: why.append("no move shows in its own text; it was closed by an automatic step, so only the statement gives its shape")
-    halfonly = [m for m, v in f["moves"].items() if v == 0.5 and m in ACTIONS]
-    if halfonly and not own:
-        why.append("it touches " + ", ".join(halfonly) + " only through a definition or lemma it cites")
+    if f["dim"] is None and not f.get("lean_sides"): why.append("its statement could not be read, so its size is a guess")
+    if not own and not kown: why.append("no move shows in its own text or in its compiled proof term, so only the statement gives its shape")
     if not f["moves"] and f["dim"] is not None and f["dim"] <= 1 and f["frame"] in ("tiles", "witness", "both_ways"):
         why.append("it is about chart or divisibility logic more than about a mult-add picture")
     return why
@@ -106,14 +138,22 @@ def main():
     rows = []
     for f in F:
         own = [m for m in ACTIONS if f["moves"].get(m, 0) >= 1]
+        km = f.get("term_moves", {})
+        kown = [m for m in ACTIONS if km.get(m, 0) >= 1]
         allm = sorted(m for m in SHAPE_MOVES if f["moves"].get(m, 0) >= 1)
-        lead = own[0] if own else "plain"
+        kall = sorted(m for m in SHAPE_MOVES if km.get(m, 0) >= 1)
+        # lead: the proof's own words first; when it names no move (grind, omega, simp),
+        # the compiled proof term says what the automatic step did
+        if own: lead, src = own[0], "text"
+        elif kown: lead, src = kown[0], "term"
+        else: lead, src = "plain", "none"
         fld, grp = FIELD[f["module"]]
         rows.append(dict(name=f["name"], short=f["name"].split(".")[-1], module=f["module"], field=fld, group=grp,
-                         line=f["line"], doc=f["doc"], statement=f["statement"], body=body(f["dim"]),
-                         dim=f["dim"], frame=f["frame"], moves=allm, lead=lead,
+                         line=f["line"], doc=f["doc"], statement=f["statement"], body=body(f["dim"], f.get("lean_sides")),
+                         dim=f["dim"], frame=f["frame"], moves=allm, kmoves=kall, lead=lead, lead_src=src,
+                         lean_sides=f.get("lean_sides"), lean_marks=f.get("lean_marks", []),
                          touched=sorted(m for m, v in f["moves"].items() if v == 0.5),
-                         height=rung_height(f), ambiguous=ambiguity(f, own)))
+                         height=rung_height(f), ambiguous=ambiguity(f, own, kown)))
     # ---- groups
     key = lambda r: (r["body"], r["lead"])
     cnt = Counter(key(r) for r in rows)
@@ -144,7 +184,7 @@ def main():
                                members=[r["name"] for r in members]))
     for r in rows: r["cluster"] = f"{r['cluster'][0]}-{r['cluster'][1]}"
     # ---- twins: identical full shape, different broad fields (foundation left out)
-    sig = lambda r: (r["body"], r["frame"], tuple(r["moves"]))
+    sig = lambda r: (r["body"], r["frame"], tuple(sorted(set(r["moves"]) | set(r["kmoves"]))))
     by = defaultdict(list)
     for r in rows: by[sig(r)].append(r)
     twins = []
@@ -161,7 +201,11 @@ def main():
     data = dict(proofs=rows, groups=out_groups, twins=twins[:12],
                 stats=dict(total=len(rows), groups=len(out_groups),
                            ambiguous=sum(1 for r in rows if r["ambiguous"]),
-                           unclear=sum(1 for r in rows if r["dim"] is None),
+                           unclear=sum(1 for r in rows if r["body"] == "unclear"),
+                           text_none=sum(1 for r in rows if not r["moves"]),
+                           all_none=sum(1 for r in rows if not r["moves"] and not r["kmoves"]),
+                           plain=sum(1 for r in rows if r["lead"] == "plain"),
+                           from_term=sum(1 for r in rows if r["lead_src"] == "term"),
                            shapes=len(by)))
     json.dump(data, open(HERE / "gallery.json", "w"), indent=1, ensure_ascii=False)
     print(data["stats"])

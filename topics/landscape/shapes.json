@@ -1,0 +1,2647 @@
+{
+ "dots": [
+  {
+   "n": 1,
+   "x": 1,
+   "y": 0,
+   "t": "Mult-add",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "MultAdd.multAdd_lift",
+     "s": "1 + multAdd a b = (1 + a) * (1 + b)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift",
+      "multadd"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "MultAdd.multAdd_comm",
+     "s": "multAdd a b = multAdd b a",
+     "c": "rect-swap",
+     "b": "rect",
+     "lead": "swap",
+     "mv": [
+      "multadd",
+      "swap"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "MultAdd.multAdd_assoc",
+     "s": "multAdd (multAdd a b) c = multAdd a (multAdd b c)",
+     "c": "box-swap",
+     "b": "box",
+     "lead": "swap",
+     "mv": [
+      "multadd",
+      "swap"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "DarkSector.redshift_compose",
+     "s": "(1 + z₁) * (1 + z₂) = 1 + multAdd z₁ z₂",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift",
+      "multadd"
+     ],
+     "km": [
+      "explode",
+      "lift"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "DarkSector.redshift_power",
+     "s": "(1 + z) ^ n = 1 + mpow z n",
+     "c": "cube-repeat",
+     "b": "cube",
+     "lead": "repeat",
+     "mv": [
+      "extrude",
+      "lift",
+      "multadd",
+      "repeat"
+     ],
+     "km": [
+      "explode",
+      "extrude",
+      "lift",
+      "multadd",
+      "repeat"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "DataCenterFused.pue_corner",
+     "s": "(1 + p) * (1 + c) = 1 + p + c + p * c",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "lift"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "DataCenterFused.additive_books_corner",
+     "s": "it * (1 + p) * (1 + c) = it + it * p + (it * c + it * p * c)",
+     "c": "box-explode",
+     "b": "box",
+     "lead": "explode",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "lift"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "DataCenterFused.foldMA_split",
+     "s": "foldMA (xs ++ ys) = multAdd (foldMA xs) (foldMA ys)",
+     "c": "cube-regroup",
+     "b": "cube",
+     "lead": "regroup",
+     "mv": [
+      "lift",
+      "multadd",
+      "regroup"
+     ],
+     "km": [
+      "lift",
+      "measure",
+      "multadd",
+      "tally"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "FinanceMultAdd.fisher",
+     "s": "multAdd (msub a b) b = a",
+     "c": "rect-squash",
+     "b": "rect",
+     "lead": "squash",
+     "mv": [
+      "multadd",
+      "squash"
+     ],
+     "km": [
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.uniform_tsallis_is_fused_power",
+     "s": "wpow 1 (N - 1) m = pw N m - 1",
+     "c": "cube-dial",
+     "b": "cube",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "extrude"
+     ],
+     "km": [
+      "collapse",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.campbell",
+     "s": "MA * MB - 1 = multAdd (MA - 1) (MB - 1)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift",
+      "multadd"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "LandscapeMap.multadd_point",
+     "s": "num (-((-1) + 0)) a b = multAdd a b ∧ den ((-1) * 0) a b = 1",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "multadd"
+     ],
+     "km": [
+      "collapse",
+      "dial"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "rect-explode",
+     4
+    ],
+    [
+     "rect-swap",
+     1
+    ],
+    [
+     "box-swap",
+     1
+    ],
+    [
+     "cube-repeat",
+     1
+    ],
+    [
+     "box-explode",
+     1
+    ],
+    [
+     "cube-regroup",
+     1
+    ],
+    [
+     "rect-squash",
+     1
+    ],
+    [
+     "cube-dial",
+     1
+    ],
+    [
+     "rect-dial",
+     1
+    ]
+   ],
+   "main": "rect-explode"
+  },
+  {
+   "n": 2,
+   "x": 0,
+   "y": 0,
+   "t": "Addition",
+   "region": "border",
+   "proofs": [
+    {
+     "n": "MultAdd.wAdd_weight_zero",
+     "s": "wAdd 0 a b = a + b",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "collapse",
+      "dial"
+     ],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.hazards_add",
+     "s": "L (1 - wAdd (-1) p q) = L (1 - p) + L (1 - q)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.shannon_additive",
+     "s": "shan L (outer ps rs) = shan L ps + shan L rs",
+     "c": "cube-regroup",
+     "b": "cube",
+     "lead": "regroup",
+     "mv": [
+      "regroup"
+     ],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.shannon_weight",
+     "s": "wAdd 0 a b = a + b",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "collapse",
+      "dial"
+     ],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.hartley",
+     "s": "pw (2 : Rat) (m + n) = pw (2 : Rat) m * pw (2 : Rat) n",
+     "c": "cube-flatten",
+     "b": "cube",
+     "lead": "flatten",
+     "mv": [
+      "extrude",
+      "flatten"
+     ],
+     "km": [
+      "flatten"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.lengths_add",
+     "s": "wAdd 0 EA EB = EA + EB",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "collapse",
+      "dial"
+     ],
+     "km": [],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "FusedRungs.burgers_corner_defect",
+     "s": "(ν * a1 ^ 2 + ν * a2 ^ 2) - ν * (a1 + a2) ^ 2 = -2 * ν * a1 * a2",
+     "c": "box-explode",
+     "b": "box",
+     "lead": "explode",
+     "mv": [
+      "extrude"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "FusedRungs.burgers_corner_ok_iff",
+     "s": "(ν * a1 ^ 2 + ν * a2 ^ 2) - ν * (a1 + a2) ^ 2 = 0 ↔ a1 = 0 ∨ a2 = 0",
+     "c": "box-collapse",
+     "b": "box",
+     "lead": "collapse",
+     "mv": [
+      "collapse",
+      "extrude"
+     ],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "both_ways",
+     "src": "text"
+    },
+    {
+     "n": "ThermoFused.renyi_adds",
+     "s": "L (1 + k * wAdd k SA SB) = L (1 + k * SA) + L (1 + k * SB)",
+     "c": "box-dial",
+     "b": "box",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "lift",
+      "multadd"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "DialSweep.shear_is_add",
+     "s": "M2.mul (M2.add M2.one (M2.smul a (unitU 0))) (M2.add M2.one (M2.smul b (unitU 0))) = M2.add M2.one (M2.smul (a + b) (unitU 0))",
+     "c": "rod-explode",
+     "b": "rod",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rect-dial",
+     4
+    ],
+    [
+     "cube-regroup",
+     1
+    ],
+    [
+     "cube-flatten",
+     1
+    ],
+    [
+     "box-explode",
+     1
+    ],
+    [
+     "box-collapse",
+     1
+    ],
+    [
+     "box-dial",
+     1
+    ],
+    [
+     "rod-explode",
+     1
+    ]
+   ],
+   "main": "rect-dial"
+  },
+  {
+   "n": 3,
+   "x": -1,
+   "y": 0,
+   "t": "Union of failures",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "MultAdd.wAdd_either",
+     "s": "wAdd (-1) a b = 1 - (1 - a) * (1 - b)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.union_rule",
+     "s": "wAdd (-1) p q = 1 - (1 - p) * (1 - q)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.survival",
+     "s": "1 - wAdd (-1) p q = (1 - p) * (1 - q)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "lift",
+      "measure",
+      "multadd"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.union_is_flipped_madd",
+     "s": "wAdd (-1) p q = -(multAdd (-p) (-q))",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "multadd"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.union_grows",
+     "s": "p ≤ wAdd (-1) p q",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "inside",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.series_system",
+     "s": "wpow (-1) p n = 1 - pw (1 - p) n",
+     "c": "cube-dial",
+     "b": "cube",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "extrude",
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.gini_simpson",
+     "s": "1 - QA * QB = wAdd (-1) (1 - QA) (1 - QB)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.kraft_slack",
+     "s": "1 - KA * KB = wAdd (-1) (1 - KA) (1 - KB)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "QuantumNoise.amplitude_damping",
+     "s": "1 - wAdd (-1) g h = (1 - g) * (1 - h)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "ConsensusFused.either",
+     "s": "wAdd (-1) a b = 1 - (1 - a) * (1 - b)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "ConsensusFused.caught",
+     "s": "wpow (-1) d m = 1 - pw (1 - d) m",
+     "c": "cube-dial",
+     "b": "cube",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "extrude",
+      "lift",
+      "multadd"
+     ],
+     "km": [
+      "explode",
+      "lift",
+      "multadd",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "rect-dial",
+     9
+    ],
+    [
+     "cube-dial",
+     2
+    ]
+   ],
+   "main": "rect-dial"
+  },
+  {
+   "n": 4,
+   "x": -2,
+   "y": 0,
+   "t": "Parity",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "InfoFused.bsc_cascade",
+     "s": "(1 - p) * q + p * (1 - q) = wAdd (-2) p q",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.bsc_cascade_diag",
+     "s": "(1 - p) * (1 - q) + p * q = 1 - wAdd (-2) p q",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.piling_up",
+     "s": "1/2 - wAdd (-2) p q = 2 * (1/2 - p) * (1/2 - q)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial"
+     ],
+     "km": [
+      "collapse",
+      "explode",
+      "measure",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.n_flips",
+     "s": "1 - 2 * wpow (-2) p n = pw (1 - 2 * p) n",
+     "c": "cube-dial",
+     "b": "cube",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "extrude",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.parity3",
+     "s": "wpow (-2) p 3 = 3 * p * (1 - p) * (1 - p) + p * p * p",
+     "c": "box-dial",
+     "b": "box",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "extrude",
+      "lift"
+     ],
+     "km": [
+      "collapse",
+      "dial",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "QuantumNoise.bit_flip",
+     "s": "1 - 2 * wAdd (-2) p q = (1 - 2 * p) * (1 - 2 * q)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "QuantumNoise.stacked_bit_flips",
+     "s": "1 - 2 * wpow (-2) p n = (1 - 2 * p) ^ n",
+     "c": "cube-dial",
+     "b": "cube",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "extrude",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "extrude",
+      "lift",
+      "measure",
+      "multadd"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.parity_reaches_floor",
+     "s": "2 * m = 2 * (2 - 1) * m",
+     "c": "rod-explode",
+     "b": "rod",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "ThermoFused.ising_series",
+     "s": "1 - 2 * wAdd (-2) p1 p2 = (1 - 2 * p1) * (1 - 2 * p2)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "rect-dial",
+     5
+    ],
+    [
+     "cube-dial",
+     2
+    ],
+    [
+     "box-dial",
+     1
+    ],
+    [
+     "rod-explode",
+     1
+    ]
+   ],
+   "main": "rect-dial"
+  },
+  {
+   "n": 5,
+   "x": -1.5,
+   "y": 0,
+   "t": "3-letter channel",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "InfoFused.qary_cascade",
+     "s": "1 - ((1 - e1) * (1 - e2) + c * e1 * e2) = wAdd (-(1 + c)) e1 e2",
+     "c": "box-dial",
+     "b": "box",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.ladder_never_cancel",
+     "s": "wAdd (-(1 + 0)) e1 e2 = wAdd (-1) e1 e2",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.ladder_binary",
+     "s": "wAdd (-(1 + 1)) e1 e2 = wAdd (-2) e1 e2",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.channel_floor",
+     "s": "L * n ≤ 2 * (L - 1) * m",
+     "c": "rect-measure",
+     "b": "rect",
+     "lead": "measure",
+     "mv": [],
+     "km": [
+      "measure",
+      "tally"
+     ],
+     "fr": "inside",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rect-dial",
+     2
+    ],
+    [
+     "box-dial",
+     1
+    ],
+    [
+     "rect-measure",
+     1
+    ]
+   ],
+   "main": "rect-dial"
+  },
+  {
+   "n": 6,
+   "x": -1.3333333333333333,
+   "y": 0,
+   "t": "4-letter channel",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "InfoFused.ladder_four",
+     "s": "wAdd (-(1 + 1/3)) e1 e2 = wAdd (-4/3) e1 e2",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "collapse",
+      "explode",
+      "measure",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "QuantumNoise.depolarizing",
+     "s": "1 - 4/3 * wAdd (-4/3) p q = (1 - 4/3 * p) * (1 - 4/3 * q)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "rect-dial",
+     2
+    ]
+   ],
+   "main": "rect-dial"
+  },
+  {
+   "n": 7,
+   "x": -1.125,
+   "y": 0,
+   "t": "Depolarizing qutrit",
+   "region": "two",
+   "proofs": [],
+   "families": [],
+   "main": null
+  },
+  {
+   "n": 8,
+   "x": 2,
+   "y": 0,
+   "t": "2× leverage",
+   "region": "two",
+   "proofs": [],
+   "families": [],
+   "main": null
+  },
+  {
+   "n": 9,
+   "x": -0.5,
+   "y": 0,
+   "t": "Partial damage",
+   "region": "two",
+   "proofs": [],
+   "families": [],
+   "main": null
+  },
+  {
+   "n": 10,
+   "x": 0,
+   "y": -1,
+   "t": "Velocity addition",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "LandscapeMap.velocity_point",
+     "s": "num (-(1 + (-1))) a b = a + b ∧ den (1 * (-1)) a b = 1 + a * b",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial"
+     ],
+     "km": [
+      "collapse",
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "InfoFused.velocity_corners",
+     "s": "(1 + a * b) + (a + b) = (1 + a) * (1 + b) ∧ (1 + a * b) - (a + b) = (1 - a) * (1 - b)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "InfoFused.odds_to_velocity",
+     "s": "(o1 - 1) * (o2 + 1) + (o2 - 1) * (o1 + 1) = 2 * (o1 * o2 - 1) ∧ (o1 + 1) * (o2 + 1) + (o1 - 1) * (o2 - 1) = 2 * (o1 * o2 + 1)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "InfoFused.vadd_assoc",
+     "s": "vadd (vadd x y) z = vadd x (vadd y z)",
+     "c": "box-dial",
+     "b": "box",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "swap"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "SimpleLaws.split_point",
+     "s": "mu 0 1 x 1 y = x + y ∧ mre (-1) 1 x 1 y = 1 + x * y",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "collapse",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "StatFused.amh_velocity",
+     "s": "lens (-(1 + -1)) (-1) a b = (a + b) / (1 + a * b)",
+     "c": "rect-squash",
+     "b": "rect",
+     "lead": "squash",
+     "mv": [
+      "lift",
+      "squash"
+     ],
+     "km": [
+      "explode",
+      "measure",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "StatFused.pool_velocity",
+     "s": "2 * pool p q - 1 = ((2*p - 1) + (2*q - 1)) / (1 + (2*p - 1) * (2*q - 1))",
+     "c": "rect-squash",
+     "b": "rect",
+     "lead": "squash",
+     "mv": [
+      "lift",
+      "squash"
+     ],
+     "km": [
+      "explode",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "DialSweep.boost_walls",
+     "s": "M2.det (M2.add M2.one (M2.smul a (unitU 1))) = (1 - a) * (1 + a)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rect-explode",
+     4
+    ],
+    [
+     "rect-squash",
+     2
+    ],
+    [
+     "rect-dial",
+     1
+    ],
+    [
+     "box-dial",
+     1
+    ]
+   ],
+   "main": "rect-explode"
+  },
+  {
+   "n": 11,
+   "x": 0,
+   "y": 1,
+   "t": "Slope addition",
+   "region": "none",
+   "proofs": [
+    {
+     "n": "SimpleLaws.tangent_addition",
+     "s": "LandscapeMap.num 0 x y = x + y ∧ LandscapeMap.den 1 x y = 1 - x * y",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial"
+     ],
+     "km": [
+      "collapse",
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "SimpleLaws.complex_point",
+     "s": "mu 0 1 x 1 y = x + y ∧ mre 1 1 x 1 y = 1 - x * y",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "collapse",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "DialSweep.rotation_no_wall",
+     "s": "M2.det (M2.add M2.one (M2.smul a (unitU (-1)))) = 1 + a * a",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rect-explode",
+     2
+    ],
+    [
+     "rect-dial",
+     1
+    ]
+   ],
+   "main": "rect-explode"
+  },
+  {
+   "n": 12,
+   "x": 0,
+   "y": -0.5,
+   "t": "Sine addition",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "SimpleLaws.angle_addition",
+     "s": "mre 1 c1 s1 c2 s2 = c1 * c2 - s1 * s2 ∧ mu 0 c1 s1 c2 s2 = c1 * s2 + s1 * c2",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "collapse",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rect-explode",
+     1
+    ]
+   ],
+   "main": "rect-explode"
+  },
+  {
+   "n": 13,
+   "x": 2,
+   "y": 1,
+   "t": "Euler characteristic",
+   "region": "border",
+   "proofs": [
+    {
+     "n": "LandscapeMap.chi_y_line",
+     "s": "-y = (1 - y) - 1",
+     "c": "rod-measure",
+     "b": "rod",
+     "lead": "measure",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "LandscapeMap.chi_y_touch",
+     "s": "(1 - y) * (1 - y) - 4 * (-y) = (1 + y) * (1 + y)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "EllipticLead.ochanine_nodal_num",
+     "s": "a * (1 - δ * b * b) + b * (1 - δ * a * a) = (a + b) * (1 - δ * a * b)",
+     "c": "hyper-explode",
+     "b": "hyper",
+     "lead": "explode",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rod-measure",
+     1
+    ],
+    [
+     "rect-explode",
+     1
+    ],
+    [
+     "hyper-explode",
+     1
+    ]
+   ],
+   "main": "rod-measure"
+  },
+  {
+   "n": 14,
+   "x": 2,
+   "y": 0.5,
+   "t": "Rung 2",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "MultAdd.fexp_lift",
+     "s": "fexp a b + 1 = (a + 1) ^ (b + 1)",
+     "c": "cube-measure",
+     "b": "cube",
+     "lead": "measure",
+     "mv": [
+      "extrude",
+      "lift"
+     ],
+     "km": [
+      "measure",
+      "tally"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "MultAdd.fexp_iter",
+     "s": "fexp a (b + 1) = multAdd a (fexp a b)",
+     "c": "cube-swap",
+     "b": "cube",
+     "lead": "swap",
+     "mv": [
+      "extrude",
+      "lift",
+      "multadd",
+      "swap"
+     ],
+     "km": [
+      "extrude",
+      "lift",
+      "multadd",
+      "swap"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "MultAdd.fexp_tower",
+     "s": "fexp (fexp a b) c = fexp a (multAdd b c)",
+     "c": "cube-flatten",
+     "b": "cube",
+     "lead": "flatten",
+     "mv": [
+      "extrude",
+      "flatten",
+      "lift",
+      "multadd"
+     ],
+     "km": [
+      "extrude",
+      "flatten",
+      "lift",
+      "multadd"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "MultAdd.fexp_multAdd_right",
+     "s": "fexp (multAdd a b) c = multAdd (fexp a c) (fexp b c)",
+     "c": "cube-plain",
+     "b": "cube",
+     "lead": "plain",
+     "mv": [
+      "extrude",
+      "lift",
+      "multadd"
+     ],
+     "km": [
+      "extrude",
+      "lift",
+      "multadd"
+     ],
+     "fr": "same",
+     "src": "none"
+    },
+    {
+     "n": "MultAdd.fexp_sadd",
+     "s": "fexp a (sadd b c) = multAdd (fexp a b) (fexp a c)",
+     "c": "cube-flatten",
+     "b": "cube",
+     "lead": "flatten",
+     "mv": [
+      "extrude",
+      "flatten",
+      "lift",
+      "multadd"
+     ],
+     "km": [
+      "extrude",
+      "flatten",
+      "lift",
+      "multadd"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "MultAdd.fexp_carries_multAdd",
+     "s": "fexp a b = multAdd a ((a + 1) ^ b - 1)",
+     "c": "cube-swap",
+     "b": "cube",
+     "lead": "swap",
+     "mv": [
+      "collapse",
+      "extrude",
+      "lift",
+      "multadd",
+      "swap"
+     ],
+     "km": [
+      "extrude",
+      "lift",
+      "multadd",
+      "swap"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "cube-swap",
+     2
+    ],
+    [
+     "cube-flatten",
+     2
+    ],
+    [
+     "cube-measure",
+     1
+    ],
+    [
+     "cube-plain",
+     1
+    ]
+   ],
+   "main": "cube-swap"
+  },
+  {
+   "n": 15,
+   "x": -1,
+   "y": 0.5,
+   "t": "Rung −1",
+   "region": "none",
+   "proofs": [
+    {
+     "n": "FractionalRungs.fuse_max",
+     "s": "fuse max a b = max a b",
+     "c": "rod-measure",
+     "b": "rod",
+     "lead": "measure",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "measure",
+      "tally"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "FractionalRungs.fuse_add",
+     "s": "fuse (· + ·) a b = a + b + 1",
+     "c": "rod-measure",
+     "b": "rod",
+     "lead": "measure",
+     "mv": [
+      "lift"
+     ],
+     "km": [
+      "measure",
+      "tally"
+     ],
+     "fr": "same",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rod-measure",
+     2
+    ]
+   ],
+   "main": "rod-measure"
+  },
+  {
+   "n": 16,
+   "x": 0.5,
+   "y": -0.0625,
+   "t": "Half rung",
+   "region": "two",
+   "proofs": [
+    {
+     "n": "LandscapeMap.lens_lift",
+     "s": "(den (u * v) a b - u * num (-(u + v)) a b) * ((1 - v * a) * (1 - v * b)) = (den (u * v) a b - v * num (-(u + v)) a b) * ((1 - u * a) * (1 - u * b))",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.lens_factor_u",
+     "s": "den (u * v) a b - u * num (-(u + v)) a b = (1 - u * a) * (1 - u * b)",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.lens_factor_v",
+     "s": "den (u * v) a b - v * num (-(u + v)) a b = (1 - v * a) * (1 - v * b)",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "hyper-dial",
+     3
+    ]
+   ],
+   "main": "hyper-dial"
+  }
+ ],
+ "stretches": [
+  {
+   "t": "KdV corner, dimension dial",
+   "where": "the straight line between k = 0 and k = 1",
+   "region": "line",
+   "proofs": [
+    {
+     "n": "LandscapeMap.dial_is_multadd",
+     "s": "k * wAdd k a b = multAdd (k * a) (k * b)",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "multadd"
+     ],
+     "km": [
+      "dial"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.kdv_phase_shift",
+     "s": "A * wAdd A e1 e2 = multAdd (A * e1) (A * e2)",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "multadd"
+     ],
+     "km": [
+      "dial"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "FractionalRungs.kdv_weight",
+     "s": "(k1 + k2) * (k1 + k2) - (k1 - k2) * (k1 - k2) = 4 * k1 * k2",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "FractionalRungs.dial_or",
+     "s": "wAdd (-1) a b = 1 - (1 - a) * (1 - b)",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "FractionalRungs.dial_three",
+     "s": "wAdd k (wAdd k a b) c = a + b + c + k * (a * b + b * c + c * a) + k * k * (a * b * c)",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "MultAdd.wAdd_scale",
+     "s": "k * wAdd k a b = multAdd (k * a) (k * b)",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "multadd"
+     ],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "hyper-dial",
+     4
+    ],
+    [
+     "rect-explode",
+     1
+    ],
+    [
+     "rect-dial",
+     1
+    ]
+   ],
+   "main": "hyper-dial"
+  },
+  {
+   "t": "The border (double wall)",
+   "where": "the parabola q = k²/4",
+   "region": "border",
+   "proofs": [
+    {
+     "n": "LandscapeMap.parabola_additive",
+     "s": "num (-(u + u)) a b = a * (1 - u * b) + b * (1 - u * a)",
+     "c": "box-dial",
+     "b": "box",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.parabola_den",
+     "s": "den (u * u) a b - u * num (-(u + u)) a b = (1 - u * a) * (1 - u * b)",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.discriminant",
+     "s": "(-(u + v)) * (-(u + v)) - 4 * (u * v) = (u - v) * (u - v)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "term"
+    },
+    {
+     "n": "DialSweep.dial_discriminant",
+     "s": "(l1 + l2) * (l1 + l2) - 4 * (l1 * l2) = (l1 - l2) * (l1 - l2)",
+     "c": "rect-explode",
+     "b": "rect",
+     "lead": "explode",
+     "mv": [],
+     "km": [
+      "explode"
+     ],
+     "fr": "same",
+     "src": "term"
+    }
+   ],
+   "families": [
+    [
+     "rect-explode",
+     2
+    ],
+    [
+     "box-dial",
+     1
+    ],
+    [
+     "hyper-dial",
+     1
+    ]
+   ],
+   "main": "rect-explode"
+  },
+  {
+   "t": "Every law at once",
+   "where": "the whole map: F(a, b) = N/D",
+   "region": "all",
+   "proofs": [
+    {
+     "n": "LandscapeMap.num_comm",
+     "s": "num p a b = num p b a",
+     "c": "rect-dial",
+     "b": "rect",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "swap"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "swap"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.den_comm",
+     "s": "den q a b = den q b a",
+     "c": "box-swap",
+     "b": "box",
+     "lead": "swap",
+     "mv": [
+      "swap"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.assoc_num",
+     "s": "num p a b + c * den q a b + p * num p a b * c = a * den q b c + num p b c + p * a * num p b c",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.assoc_den",
+     "s": "den q a b - q * num p a b * c = den q b c - q * a * num p b c",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.inverse_num",
+     "s": "a * (1 + p * a) + (-a) + p * a * (-a) = 0",
+     "c": "box-collapse",
+     "b": "box",
+     "lead": "collapse",
+     "mv": [
+      "collapse",
+      "lift"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.units_num",
+     "s": "num p (lam * a) (lam * b) = lam * num (lam * p) a b",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "swap"
+     ],
+     "km": [
+      "dial",
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "LandscapeMap.units_den",
+     "s": "den q (lam * a) (lam * b) = den (lam * lam * q) a b",
+     "c": "hyper-swap",
+     "b": "hyper",
+     "lead": "swap",
+     "mv": [
+      "swap"
+     ],
+     "km": [
+      "explode",
+      "measure"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "DialSweep.dial_product",
+     "s": "M2.mul (M2.add M2.one (M2.smul a (dialU k q))) (M2.add M2.one (M2.smul b (dialU k q))) = M2.add (M2.smul (1 - q * a * b) M2.one) (M2.smul (a + b + k * a * b) (dialU k q))",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "DialSweep.dial_lens",
+     "s": "M2.mul (M2.add M2.one (M2.smul a (dialU k q))) (M2.add M2.one (M2.smul b (dialU k q))) = M2.smul (1 - q * a * b) (M2.add M2.one (M2.smul ((a + b + k * a * b) / (1 - q * a * b)) (dialU k q)))",
+     "c": "hyper-squash",
+     "b": "hyper",
+     "lead": "squash",
+     "mv": [
+      "dial",
+      "lift",
+      "squash"
+     ],
+     "km": [
+      "collapse",
+      "explode",
+      "squash"
+     ],
+     "fr": "same",
+     "src": "text"
+    },
+    {
+     "n": "DialSweep.dial_det",
+     "s": "M2.det (M2.add M2.one (M2.smul a (dialU k q))) = 1 + k * a + q * a * a",
+     "c": "hyper-dial",
+     "b": "hyper",
+     "lead": "dial",
+     "mv": [
+      "dial",
+      "lift"
+     ],
+     "km": [
+      "collapse",
+      "explode"
+     ],
+     "fr": "same",
+     "src": "text"
+    }
+   ],
+   "families": [
+    [
+     "hyper-dial",
+     5
+    ],
+    [
+     "rect-dial",
+     1
+    ],
+    [
+     "box-swap",
+     1
+    ],
+    [
+     "box-collapse",
+     1
+    ],
+    [
+     "hyper-swap",
+     1
+    ],
+    [
+     "hyper-squash",
+     1
+    ]
+   ],
+   "main": "hyper-dial"
+  }
+ ],
+ "families": {
+  "box-collapse": {
+   "id": "box-collapse",
+   "name": "Box, with a side shrunk to nothing",
+   "body": "box",
+   "action": "collapse",
+   "sentence": "A side of length 0 (or a factor of 1) flattens a whole dimension away.",
+   "count": 11,
+   "height": 1
+  },
+  "box-dial": {
+   "id": "box-dial",
+   "name": "Box, with a dialed corner",
+   "body": "box",
+   "action": "dial",
+   "sentence": "The corner piece is weighted by k, so it shrinks, grows or flips sign (the a + b + k·ab family, solitons).",
+   "count": 22,
+   "height": 1
+  },
+  "box-explode": {
+   "id": "box-explode",
+   "name": "Box, broken into corner pieces",
+   "body": "box",
+   "action": "explode",
+   "sentence": "The box is pulled apart into its 2ⁿ corner pieces and they are counted by layer (Pascal, factorials, corner sums).",
+   "count": 49,
+   "height": 1
+  },
+  "box-swap": {
+   "id": "box-swap",
+   "name": "Box, flipped on its diagonal",
+   "body": "box",
+   "action": "swap",
+   "sentence": "The picture is reflected across its diagonal, so the same pieces come in another order.",
+   "count": 13,
+   "height": 1
+  },
+  "cube-dial": {
+   "id": "cube-dial",
+   "name": "Cube of any size, with a dialed corner",
+   "body": "cube",
+   "action": "dial",
+   "sentence": "The corner piece is weighted by k, so it shrinks, grows or flips sign (the a + b + k·ab family, solitons).",
+   "count": 51,
+   "height": 2
+  },
+  "cube-flatten": {
+   "id": "cube-flatten",
+   "name": "Cube of any size, flattened, area to length",
+   "body": "cube",
+   "action": "flatten",
+   "sentence": "Area becomes length: a product turns into a sum of exponents, logs, digit sums or carries.",
+   "count": 42,
+   "height": 0
+  },
+  "cube-measure": {
+   "id": "cube-measure",
+   "name": "Cube of any size, measured rod against rod",
+   "body": "cube",
+   "action": "measure",
+   "sentence": "Rods are laid side by side and compared by length (linear arithmetic: omega, linarith, order facts).",
+   "count": 13,
+   "height": 2
+  },
+  "cube-plain": {
+   "id": "cube-plain",
+   "name": "Cube of any size, read straight off",
+   "body": "cube",
+   "action": "plain",
+   "sentence": "The proof only reads the picture: no re-cut, flip, squash or dial is needed.",
+   "count": 25,
+   "height": 2
+  },
+  "cube-regroup": {
+   "id": "cube-regroup",
+   "name": "Cube of any size, cut two ways",
+   "body": "cube",
+   "action": "regroup",
+   "sentence": "The same box is cut as slabs one way and as columns the other (associativity, appending lists).",
+   "count": 33,
+   "height": 2
+  },
+  "cube-repeat": {
+   "id": "cube-repeat",
+   "name": "Cube of any size, stacked layer on layer",
+   "body": "cube",
+   "action": "repeat",
+   "sentence": "One layer is laid down again and again (induction): the shape grows a slice at a time.",
+   "count": 76,
+   "height": 2
+  },
+  "cube-swap": {
+   "id": "cube-swap",
+   "name": "Cube of any size, flipped on its diagonal",
+   "body": "cube",
+   "action": "swap",
+   "sentence": "The picture is reflected across its diagonal, so the same pieces come in another order.",
+   "count": 16,
+   "height": 2
+  },
+  "hyper-dial": {
+   "id": "hyper-dial",
+   "name": "Hyperbox, with a dialed corner",
+   "body": "hyper",
+   "action": "dial",
+   "sentence": "The corner piece is weighted by k, so it shrinks, grows or flips sign (the a + b + k·ab family, solitons).",
+   "count": 37,
+   "height": 1
+  },
+  "hyper-explode": {
+   "id": "hyper-explode",
+   "name": "Hyperbox, broken into corner pieces",
+   "body": "hyper",
+   "action": "explode",
+   "sentence": "The box is pulled apart into its 2ⁿ corner pieces and they are counted by layer (Pascal, factorials, corner sums).",
+   "count": 63,
+   "height": 1
+  },
+  "hyper-squash": {
+   "id": "hyper-squash",
+   "name": "Hyperbox, squashed onto the hyperbola",
+   "body": "hyper",
+   "action": "squash",
+   "sentence": "A rod is rescaled to 1/(1+a), so a rectangle of area exactly 1 sits on the hyperbola xy = 1 (inverses, division, the wall at −1).",
+   "count": 23,
+   "height": 1
+  },
+  "hyper-swap": {
+   "id": "hyper-swap",
+   "name": "Hyperbox, flipped on its diagonal",
+   "body": "hyper",
+   "action": "swap",
+   "sentence": "The picture is reflected across its diagonal, so the same pieces come in another order.",
+   "count": 6,
+   "height": 1
+  },
+  "rect-dial": {
+   "id": "rect-dial",
+   "name": "Rectangle, with a dialed corner",
+   "body": "rect",
+   "action": "dial",
+   "sentence": "The corner piece is weighted by k, so it shrinks, grows or flips sign (the a + b + k·ab family, solitons).",
+   "count": 58,
+   "height": 1
+  },
+  "rect-explode": {
+   "id": "rect-explode",
+   "name": "Rectangle, broken into corner pieces",
+   "body": "rect",
+   "action": "explode",
+   "sentence": "The box is pulled apart into its 2ⁿ corner pieces and they are counted by layer (Pascal, factorials, corner sums).",
+   "count": 140,
+   "height": 1
+  },
+  "rect-measure": {
+   "id": "rect-measure",
+   "name": "Rectangle, measured rod against rod",
+   "body": "rect",
+   "action": "measure",
+   "sentence": "Rods are laid side by side and compared by length (linear arithmetic: omega, linarith, order facts).",
+   "count": 11,
+   "height": 1
+  },
+  "rect-squash": {
+   "id": "rect-squash",
+   "name": "Rectangle, squashed onto the hyperbola",
+   "body": "rect",
+   "action": "squash",
+   "sentence": "A rod is rescaled to 1/(1+a), so a rectangle of area exactly 1 sits on the hyperbola xy = 1 (inverses, division, the wall at −1).",
+   "count": 48,
+   "height": 1
+  },
+  "rect-swap": {
+   "id": "rect-swap",
+   "name": "Rectangle, flipped on its diagonal",
+   "body": "rect",
+   "action": "swap",
+   "sentence": "The picture is reflected across its diagonal, so the same pieces come in another order.",
+   "count": 16,
+   "height": 1
+  },
+  "rod-explode": {
+   "id": "rod-explode",
+   "name": "Rod, broken into corner pieces",
+   "body": "rod",
+   "action": "explode",
+   "sentence": "The box is pulled apart into its 2ⁿ corner pieces and they are counted by layer (Pascal, factorials, corner sums).",
+   "count": 41,
+   "height": 0
+  },
+  "rod-measure": {
+   "id": "rod-measure",
+   "name": "Rod, measured rod against rod",
+   "body": "rod",
+   "action": "measure",
+   "sentence": "Rods are laid side by side and compared by length (linear arithmetic: omega, linarith, order facts).",
+   "count": 20,
+   "height": 0
+  }
+ },
+ "grouped": {
+  "rect-explode": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 4,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 10,
+    "t": "Velocity addition",
+    "k": 4,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 11,
+    "t": "Slope addition",
+    "k": 2,
+    "region": "none"
+   },
+   {
+    "kind": "dot",
+    "n": 12,
+    "t": "Sine addition",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 13,
+    "t": "Euler characteristic",
+    "k": 1,
+    "region": "border"
+   },
+   {
+    "kind": "stretch",
+    "n": 0,
+    "t": "KdV corner, dimension dial",
+    "k": 1,
+    "region": "line"
+   },
+   {
+    "kind": "stretch",
+    "n": 1,
+    "t": "The border (double wall)",
+    "k": 2,
+    "region": "border"
+   }
+  ],
+  "rect-swap": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   }
+  ],
+  "box-swap": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "stretch",
+    "n": 2,
+    "t": "Every law at once",
+    "k": 1,
+    "region": "all"
+   }
+  ],
+  "cube-repeat": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   }
+  ],
+  "box-explode": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 2,
+    "t": "Addition",
+    "k": 1,
+    "region": "border"
+   }
+  ],
+  "cube-regroup": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 2,
+    "t": "Addition",
+    "k": 1,
+    "region": "border"
+   }
+  ],
+  "rect-squash": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 10,
+    "t": "Velocity addition",
+    "k": 2,
+    "region": "two"
+   }
+  ],
+  "cube-dial": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 3,
+    "t": "Union of failures",
+    "k": 2,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 4,
+    "t": "Parity",
+    "k": 2,
+    "region": "two"
+   }
+  ],
+  "rect-dial": [
+   {
+    "kind": "dot",
+    "n": 1,
+    "t": "Mult-add",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 2,
+    "t": "Addition",
+    "k": 4,
+    "region": "border"
+   },
+   {
+    "kind": "dot",
+    "n": 3,
+    "t": "Union of failures",
+    "k": 9,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 4,
+    "t": "Parity",
+    "k": 5,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 5,
+    "t": "3-letter channel",
+    "k": 2,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 6,
+    "t": "4-letter channel",
+    "k": 2,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 10,
+    "t": "Velocity addition",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 11,
+    "t": "Slope addition",
+    "k": 1,
+    "region": "none"
+   },
+   {
+    "kind": "stretch",
+    "n": 0,
+    "t": "KdV corner, dimension dial",
+    "k": 1,
+    "region": "line"
+   },
+   {
+    "kind": "stretch",
+    "n": 2,
+    "t": "Every law at once",
+    "k": 1,
+    "region": "all"
+   }
+  ],
+  "cube-flatten": [
+   {
+    "kind": "dot",
+    "n": 2,
+    "t": "Addition",
+    "k": 1,
+    "region": "border"
+   },
+   {
+    "kind": "dot",
+    "n": 14,
+    "t": "Rung 2",
+    "k": 2,
+    "region": "two"
+   }
+  ],
+  "box-collapse": [
+   {
+    "kind": "dot",
+    "n": 2,
+    "t": "Addition",
+    "k": 1,
+    "region": "border"
+   },
+   {
+    "kind": "stretch",
+    "n": 2,
+    "t": "Every law at once",
+    "k": 1,
+    "region": "all"
+   }
+  ],
+  "box-dial": [
+   {
+    "kind": "dot",
+    "n": 2,
+    "t": "Addition",
+    "k": 1,
+    "region": "border"
+   },
+   {
+    "kind": "dot",
+    "n": 4,
+    "t": "Parity",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 5,
+    "t": "3-letter channel",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "dot",
+    "n": 10,
+    "t": "Velocity addition",
+    "k": 1,
+    "region": "two"
+   },
+   {
+    "kind": "stretch",
+    "n": 1,
+    "t": "The border (double wall)",
+    "k": 1,
+    "region": "border"
+   }
+  ],
+  "rod-explode": [
+   {
+    "kind": "dot",
+    "n": 2,
+    "t": "Addition",
+    "k": 1,
+    "region": "border"
+   },
+   {
+    "kind": "dot",
+    "n": 4,
+    "t": "Parity",
+    "k": 1,
+    "region": "two"
+   }
+  ],
+  "rect-measure": [
+   {
+    "kind": "dot",
+    "n": 5,
+    "t": "3-letter channel",
+    "k": 1,
+    "region": "two"
+   }
+  ],
+  "rod-measure": [
+   {
+    "kind": "dot",
+    "n": 13,
+    "t": "Euler characteristic",
+    "k": 1,
+    "region": "border"
+   },
+   {
+    "kind": "dot",
+    "n": 15,
+    "t": "Rung −1",
+    "k": 2,
+    "region": "none"
+   }
+  ],
+  "hyper-explode": [
+   {
+    "kind": "dot",
+    "n": 13,
+    "t": "Euler characteristic",
+    "k": 1,
+    "region": "border"
+   }
+  ],
+  "cube-swap": [
+   {
+    "kind": "dot",
+    "n": 14,
+    "t": "Rung 2",
+    "k": 2,
+    "region": "two"
+   }
+  ],
+  "cube-measure": [
+   {
+    "kind": "dot",
+    "n": 14,
+    "t": "Rung 2",
+    "k": 1,
+    "region": "two"
+   }
+  ],
+  "cube-plain": [
+   {
+    "kind": "dot",
+    "n": 14,
+    "t": "Rung 2",
+    "k": 1,
+    "region": "two"
+   }
+  ],
+  "hyper-dial": [
+   {
+    "kind": "dot",
+    "n": 16,
+    "t": "Half rung",
+    "k": 3,
+    "region": "two"
+   },
+   {
+    "kind": "stretch",
+    "n": 0,
+    "t": "KdV corner, dimension dial",
+    "k": 4,
+    "region": "line"
+   },
+   {
+    "kind": "stretch",
+    "n": 1,
+    "t": "The border (double wall)",
+    "k": 1,
+    "region": "border"
+   },
+   {
+    "kind": "stretch",
+    "n": 2,
+    "t": "Every law at once",
+    "k": 5,
+    "region": "all"
+   }
+  ],
+  "hyper-swap": [
+   {
+    "kind": "stretch",
+    "n": 2,
+    "t": "Every law at once",
+    "k": 1,
+    "region": "all"
+   }
+  ],
+  "hyper-squash": [
+   {
+    "kind": "stretch",
+    "n": 2,
+    "t": "Every law at once",
+    "k": 1,
+    "region": "all"
+   }
+  ]
+ },
+ "stats": {
+  "linked": 94,
+  "dots_with_proofs": 13,
+  "families": 22
+ }
+}

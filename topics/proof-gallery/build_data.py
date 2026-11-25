@@ -11,7 +11,8 @@ P = []
 for p in G["proofs"]:
     P.append(dict(n=p["name"], f=fields.index(p["field"]), g=p["group"], m=modules.index(p["module"]), l=p["line"],
                   d=p["doc"], s=p["statement"], b=p["body"], fr=p["frame"], mv=p["moves"], t=p["touched"],
-                  c=cl.index(p["cluster"]), h=p["height"], a=p["ambiguous"], lead=p["lead"]))
+                  c=cl.index(p["cluster"]), h=p["height"], a=p["ambiguous"], lead=p["lead"],
+                  km=p["kmoves"], src=p["lead_src"], ls=p["lean_sides"], lm=p["lean_marks"]))
 sh = R["sheet"]
 keep = [i for i, s in enumerate(sh["s"]) if -2 <= s <= 3.5 and abs(s * 4 - round(s * 4)) < 1e-9]
 sheet = dict(s=[sh["s"][i] for i in keep], a=sh["a"], b=[sh["b"][i] for i in keep])

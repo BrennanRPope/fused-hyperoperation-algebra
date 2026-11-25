@@ -1,13 +1,9 @@
-# Still in progress (as of Nov 25, 2026, 07:20 UTC)
+# Still in progress (last synced Nov 25, 2026, 07:45 UTC)
 
-This repo is a snapshot. Work on the theory carries on in other sessions, and these folders were still changing when it was copied (each was written to in the half hour before):
+This repo is a snapshot. Work on the theory carries on in other sessions, so any folder may get newer results after the last sync.
 
-- `lean-library/` (growing as new topics are proved)
-- `topics/entropy-noise/`
-- `topics/jet-fields/`
-- `topics/linear-algebra/`
-- `topics/osgood-inverse/`
-- `topics/q-across/`
-- `topics/solitons-rungs/`
+- `lean-library/` grows as new topics are proved.
+- **Lee–Yang** was still running at the last sync and is not in the repo yet.
+- `topics/entropy-noise/`, `topics/jet-fields/`, `topics/linear-algebra/`, `topics/osgood-inverse/` and `topics/q-across/` were still changing at the first sync and may be newer on disk.
 
-Any folder may get newer results after this date. When syncing again, copy the current state of every folder and update INDEX.md.
+When syncing again, copy the current state of every folder and update INDEX.md.

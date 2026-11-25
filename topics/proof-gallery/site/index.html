@@ -60,6 +60,9 @@ input{flex:1 1 200px}
 .g{all:unset;box-sizing:border-box;width:52px;height:52px;border:1px solid var(--rule);border-radius:3px;background:var(--tile);cursor:pointer;display:grid;place-items:center}
 .g.amb{border-style:dashed}
 .g.amb svg{opacity:.62}
+.g.krn{box-shadow:inset 0 0 0 2px var(--rule)}
+.g.krn::after{content:'';position:absolute;right:3px;top:3px;width:5px;height:5px;background:var(--mute);border-radius:1px}
+.g{position:relative}
 .g.dim{opacity:.13}
 .g.on{outline:2px solid var(--red);outline-offset:1px}
 .g svg{width:46px;height:46px;display:block}
@@ -122,16 +125,18 @@ th{font-weight:600}
 
 <section class="band" id="method"><div class="wrap">
   <h2>How shapes were read</h2>
-  <p>Nothing was assigned by hand. Three scripts read the Lean files (the library itself is untouched) and the same rules apply to every proof:</p>
+  <p>Nothing was assigned by hand. Scripts read the Lean files, and a Lean program reads the compiled library (the library itself is untouched); the same rules apply to every proof:</p>
   <div class="scroll"><table class="stack"><thead><tr><th>Part</th><th>Read from</th><th>Rule</th></tr></thead><tbody>
   <tr><td>Size (body)</td><td>The statement</td><td>Its polynomial degree in its variables, with the library's definitions expanded (mult-add a b counts as a + b + ab). Degree 0 is a point, 1 a rod, 2 a rectangle, 3 a box, 4 to 9 a hyperbox. A power with a symbolic exponent, a fold over a list or a recursive definition run n times is a cube of any size.</td></tr>
   <tr><td>Frame</td><td>The statement</td><td>Equal: the same picture. ≤ or &lt;: one fits inside the other. ≠ or ¬: they cannot match. Divides or congruent: it tiles evenly. ∃: a piece is found that fits. ↔: each holds the other.</td></tr>
-  <tr><td>Moves</td><td>The proof, the definitions it unfolds and the lemmas it cites</td><td>The proof engine's moves, matched by a fixed table of lemma names and patterns: lift, mult-add, swap, regroup, collapse, squash, dial, flatten, extrude. Four extra marks: explode (corner pieces), repeat (induction), tally (checked by counting). Swap, regroup and collapse are also read from the two sides of the statement directly.</td></tr>
+  <tr><td>Moves</td><td>The proof, the definitions it unfolds and the lemmas it cites</td><td>The proof engine's moves, matched by a fixed table of lemma names and patterns: lift, mult-add, swap, regroup, collapse, squash, dial, flatten, extrude. Extra marks: explode (corner pieces), repeat (induction), measure (rods compared by length), tally (checked by counting). Swap, regroup and collapse are also read from the two sides of the statement directly.</td></tr>
+  <tr><td>Compiled moves</td><td>The proof term Lean compiled (engine/Extract.lean)</td><td>Every constant the kernel-checked proof uses, with Lean's own helper lemmas opened and the statement's own words removed, matched by a second table. Grind's ring normaliser counts as explode (a polynomial as a sum of monomials is the box broken into corner pieces); omega and linear arithmetic count as measure; decide counts as tally. Used for the leading move only when the proof's own text names none.</td></tr>
+  <tr><td>Size check</td><td>The engine's Reader, run on the elaborated statement</td><td>The proof engine reads each statement as a picture (lifted products, mult-adds, dialed corners, mult-add powers, squashes). Its largest box sets the size when the polynomial reading fails.</td></tr>
   <tr><td>Family</td><td>Size and moves</td><td>Size plus the leading move, the first present in this order: squash, dial, flatten, regroup, swap, explode, collapse, repeat; otherwise plain. Families under four proofs are pooled by move, and the last few into odd ones out.</td></tr>
   <tr><td>Height on the sheet</td><td>The statement</td><td>s = 0 for rods (addition), 1 for rectangles, boxes and hyperboxes (mult-add), 2 for any-size cubes (the fused exponent), 3 and 4 for tetration and pentation; flattening proofs drop a rung. A family sits at its median.</td></tr>
   </tbody></table></div>
   <p style="margin-top:14px" id="honest"></p>
-  <p class="small mute">Scripts and data: math-theory/proof-gallery/ in the project folder (parse.py, degree.py, features.py, cluster.py, build_data.py; gallery.json holds every proof's shape). Sheet curves from the rung-shape work.</p>
+  <p class="small mute">Scripts and data: math-theory/proof-gallery/ in the project folder (parse.py, degree.py, features.py, cluster.py, build_data.py; gallery.json holds every proof's shape), with the Lean extract from math-theory/proof-engine/lean/Extract.lean. Sheet curves from the rung-shape work.</p>
 </div></section>
 
 <aside id="panel" hidden aria-live="polite"><button class="btn x" id="px" type="button" aria-label="Close">×</button><div id="pbody"></div></aside>
@@ -139,8 +144,8 @@ th{font-weight:600}
 <script>
 {
 const C={a:'#1d5aa6',b:'#d0312d',c:'#e8b417',ab:'#6a3d9a',u:'#d9d6cf',ink:'#10131a',green:'#3f8f4f',orange:'#e0701f',slate:'#2e6f8e'};
-const MOVEC={squash:C.ink,dial:C.c,flatten:C.slate,regroup:C.a,swap:C.b,explode:C.ab,collapse:'#8a8780',repeat:C.green,lift:'#b9b5ad',multadd:C.orange,extrude:'#555a63',tally:'#555a63'};
-const MOVEN={lift:'lift',multadd:'mult-add',swap:'swap',regroup:'regroup',collapse:'collapse',squash:'squash',dial:'dial',flatten:'flatten',extrude:'extrude',explode:'explode',repeat:'repeat',tally:'tally'};
+const MOVEC={squash:C.ink,dial:C.c,flatten:C.slate,regroup:C.a,swap:C.b,explode:C.ab,collapse:'#8a8780',repeat:C.green,lift:'#b9b5ad',multadd:C.orange,extrude:'#555a63',measure:'#2e6f8e',tally:'#9a6b2f'};
+const MOVEN={lift:'lift',multadd:'mult-add',swap:'swap',regroup:'regroup',collapse:'collapse',squash:'squash',dial:'dial',flatten:'flatten',extrude:'extrude',explode:'explode',repeat:'repeat',measure:'measure',tally:'tally'};
 const BODYN={point:'point',rod:'rod',rect:'rectangle',box:'box',hyper:'hyperbox',cube:'cube of any size',unclear:'unread'};
 const FRAMEN={same:'the two pictures are the same',inside:'one picture fits inside the other',mismatch:'the pictures cannot match',tiles:'the picture tiles evenly',witness:'a piece is found that fits',both_ways:'each picture holds the other'};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -169,6 +174,8 @@ function overlay(lead){
     case 'regroup': return `<line x1="22" y1="3" x2="22" y2="40" stroke="${C.a}" stroke-width="1.4" stroke-dasharray="3 2"/><line x1="3" y1="22" x2="40" y2="22" stroke="${C.b}" stroke-width="1.4" stroke-dasharray="3 2"/>`;
     case 'swap': return `<line x1="6" y1="39" x2="38" y2="7" stroke="${C.b}" stroke-width="1.6"/><path d="M33,7 h5 v5" fill="none" stroke="${C.b}" stroke-width="1.4"/><path d="M6,34 v5 h5" fill="none" stroke="${C.b}" stroke-width="1.4"/>`;
     case 'repeat': return '';
+    case 'measure': return `<line x1="5" y1="5" x2="31" y2="5" stroke="${C.slate}" stroke-width="2.4"/><line x1="5" y1="10" x2="39" y2="10" stroke="${C.slate}" stroke-width="2.4"/><path d="M31,3 v9" stroke="${C.ink}" stroke-width=".8" stroke-dasharray="1.5 1"/>`;
+    case 'tally': return `<g fill="#9a6b2f">${[0,1,2,3].map(i=>[0,1].map(j=>`<circle cx="${8+i*4}" cy="${5+j*4}" r="1.3"/>`).join('')).join('')}</g>`;
     default: return '';
   }
 }
@@ -213,7 +220,7 @@ function init(){
   /* drawers */
   document.getElementById('drawers').innerHTML=G.map((g,gi)=>{
     const rep=P.find(p=>p.c===gi);
-    const tiles=P.map((p,pi)=>p.c===gi?`<button type="button" class="g${p.a.length?' amb':''}" data-p="${pi}" title="${esc(p.n.split('.').pop())}: ${esc(D.fields[p.f])}">${glyph(p)}</button>`:'').join('');
+    const tiles=P.map((p,pi)=>p.c===gi?`<button type="button" class="g${p.a.length?' amb':''}${p.src==='term'?' krn':''}" data-p="${pi}" title="${esc(p.n.split('.').pop())}: ${esc(D.fields[p.f])}">${glyph(p)}</button>`:'').join('');
     return `<div class="drawer" id="dr${gi}"><div class="dh"><div class="g" style="cursor:default">${glyph({...rep,mv:[],fr:''})}</div><div><h3><span class="num" style="margin-right:8px">${gi+1}</span>${esc(g.name)}</h3><p class="small" style="margin:0 0 4px">${esc(g.sentence)}</p><p class="small mute" style="margin:0">${g.count} proofs from ${g.fields.length} fields: ${g.fields.map(([f,n])=>esc(f)+' '+n).join(', ')}. Rung height s = ${g.height}.</p></div></div><div class="grid">${tiles}</div></div>`;}).join('');
   document.getElementById('drawers').addEventListener('click',e=>{const b=e.target.closest('[data-p]'); if(b) show(+b.dataset.p,b);});
   /* twins */
@@ -224,13 +231,13 @@ function init(){
   document.getElementById('twinlist').addEventListener('click',e=>{const b=e.target.closest('[data-p]'); if(b){e.preventDefault(); show(+b.dataset.p,b);}});
   /* legend */
   const L=[['Point: numbers only',{b:'point',lead:'plain',mv:[],fr:''}],['Rod: one rod, addition',{b:'rod',lead:'plain',mv:[],fr:''}],['Rectangle: a + b + ab',{b:'rect',lead:'plain',mv:[],fr:''}],['Box: three rods',{b:'box',lead:'plain',mv:[],fr:''}],['Hyperbox: four to nine rods',{b:'hyper',lead:'plain',mv:[],fr:''}],['Cube of any size: n rods',{b:'cube',lead:'plain',mv:[],fr:''}],
-    ['Squash: onto the hyperbola xy = 1',{b:'rect',lead:'squash',mv:[],fr:''}],['Dial: the corner weighted by k',{b:'rect',lead:'dial',mv:[],fr:''}],['Flatten: area to length',{b:'rect',lead:'flatten',mv:[],fr:''}],['Regroup: cut as slabs and as columns',{b:'rect',lead:'regroup',mv:[],fr:''}],['Swap: reflected on the diagonal',{b:'rect',lead:'swap',mv:[],fr:''}],['Explode: pulled into corner pieces',{b:'rect',lead:'explode',mv:[],fr:''}],['Collapse: a side shrunk to nothing',{b:'rect',lead:'collapse',mv:[],fr:''}],['Repeat: one layer laid again',{b:'rect',lead:'repeat',mv:[],fr:''}],
+    ['Squash: onto the hyperbola xy = 1',{b:'rect',lead:'squash',mv:[],fr:''}],['Dial: the corner weighted by k',{b:'rect',lead:'dial',mv:[],fr:''}],['Flatten: area to length',{b:'rect',lead:'flatten',mv:[],fr:''}],['Regroup: cut as slabs and as columns',{b:'rect',lead:'regroup',mv:[],fr:''}],['Swap: reflected on the diagonal',{b:'rect',lead:'swap',mv:[],fr:''}],['Explode: pulled into corner pieces',{b:'rect',lead:'explode',mv:[],fr:''}],['Collapse: a side shrunk to nothing',{b:'rect',lead:'collapse',mv:[],fr:''}],['Repeat: one layer laid again',{b:'rect',lead:'repeat',mv:[],fr:''}],['Measure: rods compared by length',{b:'rod',lead:'measure',mv:[],fr:''}],['Tally: cells counted',{b:'point',lead:'tally',mv:[],fr:''}],
     ['Frame: fits inside',{b:'rect',lead:'plain',mv:[],fr:'inside'}],['Frame: cannot match',{b:'rect',lead:'plain',mv:[],fr:'mismatch'}],['Frame: tiles evenly',{b:'rect',lead:'plain',mv:[],fr:'tiles'}],['Frame: a piece found that fits',{b:'rect',lead:'plain',mv:[],fr:'witness'}],['Frame: each holds the other',{b:'rect',lead:'plain',mv:[],fr:'both_ways'}]];
   let lg=L.map(([t,p])=>`<div><span class="gl">${glyph(p)}</span><span>${esc(t)}</span></div>`).join('');
   lg+=`<div><span class="gl"><svg viewBox="0 0 46 46">${Object.entries(MOVEC).filter(([m])=>m!=='lift').map(([m,c],i)=>`<circle cx="${5+(i%5)*9}" cy="${12+Math.floor(i/5)*11}" r="3" fill="${c}"/>`).join('')}</svg></span><span>Bottom marks, left to right: ${Object.keys(MOVEC).filter(m=>m!=='lift').map(m=>MOVEN[m]).join(', ')}</span></div>`;
   document.getElementById('leg').innerHTML=lg;
   const st=D.stats;
-  document.getElementById('honest').textContent=`Where the reading is shaky: ${st.ambiguous} of ${st.total} proofs are drawn with a dashed tile. Most of these were closed by an automatic step (grind, omega, simp), so no move shows in their own text and only the statement gives their shape; ${st.unclear} statement could not be parsed at all. The rules are a first pass, built without running Lean here, so lemma names stand in for the moves; a move hidden inside an automatic step is missed. Across the library there are ${st.shapes} distinct exact shapes; the ${G.length} families group them by size and leading move.`;
+  document.getElementById('honest').textContent=`Where the reading is shaky: ${st.text_none} of ${st.total} proofs name no move in their own text, mostly because an automatic step (grind, omega, simp, decide) closed them. Lean was run this time, and each compiled proof term was read: that gives a move to all but ${st.all_none} of them. Tiles with a small grey corner took their leading move from the compiled term (${st.from_term} proofs). The ${st.all_none} still without any move are dashed: Lean generated some of them itself (structure fields, extensionality), and the rest only chain earlier theorems, split cases or hold by definition, so no picture changes. Across the library there are ${st.shapes} distinct exact shapes; the ${G.length} families group them by size and leading move.`;
   drawSheet(); new ResizeObserver(drawSheet).observe(document.getElementById('sheetfig'));
   document.getElementById('fsel').addEventListener('change',filt);
   document.getElementById('q').addEventListener('input',filt);
@@ -250,7 +257,8 @@ function show(i,btn){
   document.querySelectorAll('.g.on').forEach(x=>x.classList.remove('on'));
   const t=document.querySelector(`#drawers [data-p="${i}"]`); if(t) t.classList.add('on');
   const moves=p.mv.length?p.mv.map(m=>`<span class="tag">${esc(MOVEN[m])}</span>`).join(''):'<span class="mute">none in its own text</span>';
-  document.getElementById('pbody').innerHTML=`<h3>${esc(p.n)}</h3><p class="small mute" style="margin:0 0 6px">${esc(D.fields[p.f])}. ${esc(D.modules[p.m])}, line ${p.l}.</p><pre>${esc(p.s)}</pre>${p.d?`<p class="small">${esc(p.d)}</p>`:''}<p class="small" style="margin:0 0 4px"><b>Shape:</b> ${esc(BODYN[p.b])}; ${esc(FRAMEN[p.fr])}. Family ${p.c+1}, ${esc(g.name)}. Rung height s = ${p.h}.</p><p class="small" style="margin:0 0 4px"><b>Moves:</b> ${moves}</p>${p.t.length?`<p class="small mute" style="margin:0 0 4px">Touched only through what it cites: ${p.t.map(m=>esc(MOVEN[m])).join(', ')}.</p>`:''}${p.a.length?`<p class="small" style="margin:6px 0 0"><b>Why the shape is uncertain:</b> ${p.a.map(esc).join('; ')}.</p>`:''}`;
+  const kmoves=p.km&&p.km.length?p.km.map(m=>`<span class="tag">${esc(MOVEN[m])}</span>`).join(''):'<span class="mute">none</span>';
+  document.getElementById('pbody').innerHTML=`<h3>${esc(p.n)}</h3><p class="small mute" style="margin:0 0 6px">${esc(D.fields[p.f])}. ${esc(D.modules[p.m])}, line ${p.l}.</p><pre>${esc(p.s)}</pre>${p.d?`<p class="small">${esc(p.d)}</p>`:''}<p class="small" style="margin:0 0 4px"><b>Shape:</b> ${esc(BODYN[p.b])}; ${esc(FRAMEN[p.fr])}. Family ${p.c+1}, ${esc(g.name)}. Rung height s = ${p.h}.</p><p class="small" style="margin:0 0 4px"><b>Moves in its text:</b> ${moves}</p><p class="small" style="margin:0 0 4px"><b>Moves in the compiled proof:</b> ${kmoves}${p.src==='term'?' (its leading move comes from here)':''}</p>${p.ls!=null?`<p class="small mute" style="margin:0 0 4px">Engine reading of the statement: largest box ${p.ls>=99?'of any size':p.ls+' side'+(p.ls===1?'':'s')}${p.lm&&p.lm.length?'; '+p.lm.join(', '):''}.</p>`:''}${p.t.length?`<p class="small mute" style="margin:0 0 4px">Touched only through what it cites: ${p.t.map(m=>esc(MOVEN[m])).join(', ')}.</p>`:''}${p.a.length?`<p class="small" style="margin:6px 0 0"><b>Why the shape is uncertain:</b> ${p.a.map(esc).join('; ')}.</p>`:''}`;
   const pn=document.getElementById('panel'); pn.hidden=false;
 }
 /* the rung sheet, oblique view, with family pins */

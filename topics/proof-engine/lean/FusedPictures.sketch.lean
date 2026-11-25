@@ -1,3 +1,4 @@
+-- SUPERSEDED: the compiled engine is FusedPictures.lean in this folder. Kept for history.
 /-
   FusedPictures (SKETCH): a geometric proof engine for Fused Hyperoperation Algebra.
 

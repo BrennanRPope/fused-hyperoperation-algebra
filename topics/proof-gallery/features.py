@@ -18,7 +18,7 @@ LIB = HERE.parent / "lean-library" / "FusedAlgebra"
 T = json.load(open(HERE / "theorems.json"))
 
 MOVES = ["lift", "multadd", "swap", "regroup", "collapse", "squash", "dial", "flatten", "extrude",
-         "explode", "repeat", "tally"]
+         "explode", "repeat", "measure", "tally"]
 
 # ---------------------------------------------------------------- definitions
 DEF = re.compile(r"^(?:private |noncomputable )*(?:def|abbrev)\s+(?:\{[^}]*\}\s*)?([\w.']+)", re.M)
@@ -72,8 +72,8 @@ IDENT = re.compile(r"[A-Za-z_][\w'.]*")
 RULES = [
     ("lift",     r"_lift\b|\blift_inj\b|\blifts?\b|\bslide\b|\bfuse\b|\(1 \+ [^()]+\)|\([^()]+ \+ 1\)|\(1 - [^()]+\)|\(o\d - 1\)|- 1 =|1 \+ multAdd|1 \+ k \*"),
     ("multadd",  r"\bmultAdd\w*|⊞|\bmadd\b|\bfoldMA\w*|\bmpow\w*|\bmaddOnes\b|\bvariable_node\b"),
-    ("swap",     r"_comm\b|\bcomm\b|_perm\b|\bperm\b|\bmul_comm\b|\badd_comm\b|\.symm\b|\bsymm\b|\bflip\b"),
-    ("regroup",  r"_assoc\b|\bassoc\b|_append\b|\bappend\b|\bmul_assoc\b|\badd_assoc\b|\bouter\b"),
+    ("swap",     r"\bac_rfl\b|_comm\b|\bcomm\b|_perm\b|\bperm\b|\bmul_comm\b|\badd_comm\b|\.symm\b|\bsymm\b|\bflip\b"),
+    ("regroup",  r"\bac_rfl\b|_assoc\b|\bassoc\b|_append\b|\bappend\b|\bmul_assoc\b|\badd_assoc\b|\bouter\b"),
     ("collapse", r"_zero\b|\bzero_\w+|_one\b|\bone_\w+|\bmul_one\b|\badd_zero\b|multAdd \w+ 0\b|multAdd 0 |\bwAdd 0 |\bsub_self\b|\bsub_add_cancel\b"),
     ("squash",   r"[Ii]nv\b|⁻¹|\bmsub\b|/\s*\(?\s*[A-Za-z(]|\bdiv\w*|\bneg_one_absorbs\b|\bwall\b|\bmultAddInv\b|\btrans1?2?\b|\breciprocal\b"),
     ("dial",     r"\bwAdd\w*|\bwpow\w*|\bwOnes\b|\bweight\w*|\bclimb\b|\bscale\w*|\bk \* [a-z]|\bwkey\b|\bvadd\b|\bwt\b"),
@@ -84,6 +84,52 @@ RULES = [
     ("tally",    r"\bdecide\b|\bnative_decide\b"),
 ]
 RULES = [(m, re.compile(r, re.M)) for m, r in RULES]
+
+# ---------------------------------------------------------------- compiled proofs
+# The Lean extract (engine/Extract.lean) lists every constant each compiled proof term
+# uses, with Lean's own auxiliary lemmas opened, plus the engine Reader's picture of the
+# statement. Constants that already appear in the statement are left out, so a move
+# counts only when the proof itself does it. Automatic tactics show up here: grind's
+# ring normaliser (polynomials as sums of monomials = the box broken into corner
+# pieces), omega and linear arithmetic (rods compared by length), decide (counting).
+EXTRACT = {}
+for cand in (HERE.parent / "engine" / "build" / "extract.jsonl",
+             HERE.parent / "proof-engine" / "lean" / "build" / "extract.jsonl"):
+    if cand.exists():
+        for ln in cand.read_text().splitlines():
+            j = json.loads(ln); EXTRACT[j["name"]] = j
+        break
+
+TERM_RULES = [
+    ("lift",     r"_lift'?$|\blift_inj$|lift_back|add_right_cancel|add_left_cancel|AddRightCancel|add_left_inj|add_right_inj"),
+    ("multadd",  r"^MultAdd\.(multAdd|mpow|foldMA)$|multAdd_def|multAdd\.eq_|_lift'?$"),
+    ("swap",     r"\.mul_comm$|\.add_comm$|_comm$|\.comm$|Perm|_perm$|mul_left_comm|add_left_comm"),
+    ("regroup",  r"\.mul_assoc$|\.add_assoc$|_assoc$|append_assoc"),
+    ("collapse", r"\.(mul_one|one_mul|add_zero|zero_add|mul_zero|zero_mul|sub_self|add_neg_cancel|neg_add_cancel|pow_zero|one_pow)$|_zero$|^\w+\.zero_\w+|one_add_neg_one"),
+    ("squash",   r"^Inv\.inv$|\.inv$|inv_|_inv|div_eq_mul_inv|multAddInv|msub|Rat\.div|\.recip"),
+    ("dial",     r"^MultAdd\.(wAdd|wpow|wOnes)|_scale$|\.wAdd"),
+    ("flatten",  r"pow_add|pw_add|pow_mul|pw_mul|mpow_add|\blog|\.log|carries|digit"),
+    ("extrude",  r"pow_succ|^HPow\.hPow$|\.npow|fexp|ftet|fpent|\btet\b|\.tet$|\.pent$|_iter$|\.pw$"),
+    ("explode",  r"^Lean\.Grind\.CommRing\.|left_distrib|right_distrib|mul_add$|add_mul$|corner|layer|choose|fact|binom|sumL|prodL"),
+    ("repeat",   r"\.rec$|\.recAux$|\.brecOn$|\.induct|\.binductionOn$|\.strongRecOn"),
+    ("measure",  r"^Lean\.Omega\.|^Int\.Internal\.Linear\.|^Lean\.Grind\.Linarith\.|^Lean\.Grind\.Order\.|^Nat\.(le|lt)_|le_of_|lt_of_|_le_|_lt_"),
+    ("tally",    r"^Decidable\.decide$|of_decide_eq_true|^Nat\.decEq$|^Nat\.decLe$|^Nat\.decLt$|native_decide|Lean\.ofReduceBool"),
+]
+TERM_RULES = [(m, re.compile(r)) for m, r in TERM_RULES]
+AUX = re.compile(r"\._proof.*|\.match_\d+.*|\._simp.*|\._aux.*|\._unary.*|\.proof_\d+.*")
+
+def term_moves(name):
+    j = EXTRACT.get(name)
+    if not j: return None, None
+    stmt = set(j.get("typeConsts", []))
+    own_short = name.split(".")[-1]
+    cs = {AUX.sub("", c) for c in j["consts"]} - stmt - {name}
+    hits = Counter()
+    for c in cs:
+        if c.split(".")[-1] == own_short: continue
+        for m, rx in TERM_RULES:
+            if rx.search(c): hits[m] += 1
+    return {m: hits[m] for m in MOVES if hits[m] > 0}, j
 
 def reach(t):
     own = t["statement"] + "\n" + t["proof"]
@@ -234,10 +280,13 @@ def main():
         if dim == 0 and re.search(r"\b(?:decide|rfl|norm_num|native_decide)\b", t["proof"]) and not re.search(r"[A-Za-z]", re.sub(r"\b(?:fexp|ftet|fpent|sadd|multAdd|wAdd|tet|pent|Rat|Nat|Int)\b", "", t["statement"])):
             hits["tally"] += 1
         moves = {m: hits[m] for m in MOVES if hits[m] > 0}
+        tm, j = term_moves(t["name"])
         cites = sorted({i.split(".")[-1] for i in IDENT.findall(t["proof"]) if i.split(".")[-1] in thm_by_short and i.split(".")[-1] != t["short"]})
         out.append(dict(name=t["name"], module=t["module"], line=t["line"], doc=t["doc"],
                         statement=t["statement"], proof=t["proof"], frame=f, rods=n, counts=counts,
-                        lists=lists, dim=dim, moves=moves, cites=cites))
+                        lists=lists, dim=dim, moves=moves, cites=cites,
+                        term_moves=tm or {}, lean_sides=(j or {}).get("maxSides"),
+                        lean_marks=(j or {}).get("marks") or [], lean_shape=(j or {}).get("shape")))
     json.dump(out, open(HERE / "features.json", "w"), indent=1, ensure_ascii=False)
     print("frames", Counter(o["frame"] for o in out))
     print("dim", Counter(o["dim"] for o in out))
@@ -245,6 +294,11 @@ def main():
     for o in out:
         for m in o["moves"]: tot[m] += 1
     print("moves", tot)
+    tt = Counter()
+    for o in out:
+        for m in o["term_moves"]: tt[m] += 1
+    print("term moves", tt)
+    print("no extract:", sum(1 for o in out if o["lean_shape"] is None and o["lean_sides"] is None))
 
 if __name__ == "__main__":
     main()

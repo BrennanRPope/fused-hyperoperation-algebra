@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relativity Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical write-up for one person who thinks in pictures
+   IDEA a Minkowski chart on a physicist's light table, with three rulers beside it
+   PICTURE live spacetime diagram: light cone as red walls, hyperbola, two boosts, the rapidity sector
+   COLOUR steel panel, black ink, white, alarm red for light (the wall); night steel-black
+   TYPE Inter Tight 600 display + Inter
+   LAYOUT diagram 60% left, readout rulers right; stacks title, diagram, sliders, readout on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#d5dbe0,#16191c);--panel:light-dark(#ffffff,#20252a);--ink:light-dark(#0d0f11,#eef1f3);--soft:light-dark(#4a535b,#a7b0b8);--rule:light-dark(#b4bcc3,#363d44);--red:#e8251a;--blue:light-dark(#1f5fbf,#6ea2ff);--fill:light-dark(rgba(31,95,191,.16),rgba(110,162,255,.2))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font:600 clamp(32px,4.6vw,50px)/1.05 "Inter Tight",Inter,sans-serif;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;max-width:20ch}
+h2{font:600 26px/1.15 "Inter Tight",Inter,sans-serif;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:68ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.fig{position:relative;min-height:440px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:14px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 4.2em;gap:10px;align-items:center;margin:6px 0}
+.ctl label{font-weight:600;white-space:nowrap}
+.ctl output{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{width:100%;height:44px;accent-color:var(--blue)}
+input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.big{font:600 clamp(40px,6vw,64px)/1 "Inter Tight",Inter,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.small{color:var(--soft);font-size:14px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+td.k{font-weight:600}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
+.cols p,.cols li{max-width:66ch}
+.eq{font:17px/1.6 "Inter Tight",Inter,sans-serif;background:var(--panel);border-left:3px solid var(--red);padding:10px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.fig2{position:relative;min-height:320px}
+.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+.ledger td{white-space:normal;text-align:left}
+.ledger td:last-child{color:var(--soft)}
+ul{padding-left:20px}
+code{font-size:14px;overflow-wrap:anywhere}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:380px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.fig{min-height:330px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>Relativity's speed limit is mult-add's wall</h1>
+<p class="lede">Einstein's velocity addition, (u + v)/(1 + uv/c²), is mult-add wearing a lens. Measure a speed by its Doppler factor squared and boosts multiply; take the log and they add. The speed of light is the wall, the same way −1 is mult-add's wall.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="mk"></div>
+<div class="ctl"><label for="u">First boost u</label><input id="u" type="range" min="-0.95" max="0.95" step="0.01" value="0.6"><output id="uo"></output></div>
+<div class="ctl"><label for="v">Second boost v</label><input id="v" type="range" min="-0.95" max="0.95" step="0.01" value="0.6"><output id="vo"></output></div>
+<p class="small">Speeds in units of light. Red lines are light, the two walls. The curve is the hyperbola T² − X² = 1 that boosts slide points along. The shaded sector's area is half the second boost's rapidity, wherever it sits.</p>
+</div>
+<div class="panel">
+<div class="small">Combined speed</div>
+<div class="big" id="w"></div>
+<p class="small" id="gal"></p>
+<table>
+<thead><tr><th>Ruler</th><th>u</th><th>v</th><th>together</th></tr></thead>
+<tbody id="tb"></tbody>
+</table>
+<p class="small">Speed fuses. The lift multiplies. Mult-add's variable d = lift − 1 mult-adds. Rapidity, the log ruler, just adds. All four rows are the same two boosts.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div>
+<h2>The disguise comes off in two steps</h2>
+<p>First the lens. Send each speed u to its lift (1 + u)/(1 − u). That number is the Doppler factor squared: how much a light signal is stretched going between the two frames. Lifts multiply exactly:</p>
+<div class="eq">(1 + u⊕v)/(1 − u⊕v) = (1 + u)/(1 − u) · (1 + v)/(1 − v)</div>
+<p>So with d = 2u/(1 − u), velocity addition is mult-add: <b>d(u⊕v) = d(u) + d(v) + d(u)·d(v)</b>. Speed of light u = 1 is where d blows up, and u = −1 lands on d = −1, mult-add's own wall. Anything added to light is light, as anything mult-added to −1 is −1.</p>
+<p>Then the ruler. Rapidity φ = ½·log(lift), so the lift is e^(2φ) and d = e^(2φ) − 1: one step of the mult-add flow. On the rapidity ruler boosts add like plain numbers, and speed is tanh φ.</p>
+</div>
+<div>
+<h2>The geometry: a squeeze on the light cone</h2>
+<p>Turn the chart 45° so the two light lines are the axes, P = T + X and M = T − X. A boost by u stretches P by (1 + u) and shrinks M by (1 − u). It is a squeeze, and its ratio is exactly the lift. Two boosts squeeze twice, so the ratios multiply. That is mult-add's lift (1 + a)(1 + b) drawn as rectangles.</p>
+<p>A squeeze keeps the area P·M = T² − X², so points slide along the hyperbola, and the light lines (P = 0 or M = 0) never move. The hyperbola is relativity's circle: rapidity is twice the area of the sector swept, just as an angle is twice the area of a circle's sector.</p>
+<p>In the dial sweep this was the κ = +1 matrix [[0, 1], [1, 0]]. Its neighbours are κ = 0, the Galilean shear where speeds just add, and κ = −1, rotation, where slopes add by the tangent rule.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>On the landscape and the rungs</h2>
+<p>On the landscape map, velocity addition sits at k = 0, q = −1/c². <b>It has no corner at all.</b> Relativity leaves the ab cell empty and bends only the next layer, a²b and ab². Its walls 1 − a²/c² = (1 − a/c)(1 + a/c) are the light cone, two real walls placed symmetrically, so it lives in the saturating country with a speed limit. Galilean addition is the same point with c → ∞, at the origin.</p>
+<p>It is not a rung of its own. It is rung 0 (addition) seen through tanh, and rung 1 (mult-add) seen through the Doppler lens.</p>
+<p>The one placement that is ours: the landscape's shape number for rung s is exactly s, and velocity addition has shape 0. Put the fractional rungs in their natural units (scale so the walls sit near ±1) and rung s = t² lands at (2t, t² − 1). That is the parabola drawn here, running from relativity at t = 0 to mult-add at t = 1. In raw units the walls of rung s sit at −2/(√s(1 + √s)) and 2/(√s(1 − √s)): just above plain addition a near-symmetric speed limit about 2/√s appears, which goes to infinity at addition itself. This is a third-layer match only; the landscape page showed the fractional rungs are not exact lens laws.</p>
+</div>
+<div class="panel"><div class="fig2" id="ls"></div>
+<p class="small">Landscape in natural units. Grey: the border parabola q = k²/4 (one double wall). Blue: rungs 0 to 1, q = k²/4 − 1. Red dot: velocity addition. Black dot: mult-add at weight 2. Open dot: tangent addition, the rotation partner.</p></div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div>
+<h2>What is known and what is new</h2>
+<table class="ledger"><tbody>
+<tr><td>Velocity addition and its light-speed wall</td><td>Einstein 1905</td></tr>
+<tr><td>Rapidity adds; the hyperbola as relativity's circle</td><td>Varićak 1910, Robb 1911, Minkowski 1908</td></tr>
+<tr><td>Doppler factors multiply as boosts compose</td><td>Bondi's k-calculus, 1960s</td></tr>
+<tr><td>Boosts as squeezes on light-cone axes</td><td>Standard (light-cone coordinates)</td></tr>
+<tr><td>d = lift − 1 obeys mult-add exactly</td><td>Immediate from Bondi; not usually written this way</td></tr>
+<tr><td>No corner, only third layer (k = 0, q = −1/c²)</td><td>Ours: placement on the landscape</td></tr>
+<tr><td>Rungs 0 to 1 in natural units run from relativity's shape to mult-add's</td><td>Ours, third layer only; no physical prediction</td></tr>
+</tbody></table>
+</div>
+<div>
+<h2>Is there a lead worth following?</h2>
+<p><b>Yes, one: velocities in different directions.</b> Everything above is one dimension, where velocity addition commutes and is mult-add exactly. Two boosts in different directions do not combine into a boost. They give a boost plus a small rotation (the Thomas–Wigner rotation), and the order matters. That rotation is measurable: Thomas precession supplies a factor of ½ in atomic spectra.</p>
+<p>That is the first place relativity's addition stops being commutative, so it is a real test of the fused picture: what does the corner become when it can twist? It also leads straight to a known bridge, the Lorentz group acting as Möbius maps on the sky, and every lens on the landscape is a Möbius map.</p>
+<p>The rung placement is a neat picture for the framework but not a physics lead on its own: it predicts nothing new.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Proved and checked</h2>
+<p><b>34 Lean theorems</b>, core Lean 4.37, compiled against the shared library, no sorry, standard axioms only. Among them: <code>dop_vel</code> (velocity addition is mult-add in d), <code>under_light</code> (two forward speeds under light stay under light), <code>kicks_lift</code> (n equal kicks lift to the n-th power), <code>boost_mul</code>, <code>squeeze_plus</code>, <code>hyperbola</code>, <code>landscape_walls</code>, <code>rung_walls</code>, <code>rung_raw_walls</code>.</p>
+<p><b>37 of 37 sympy checks pass</b>, including the rapidity and tanh identities Lean can't state without real numbers, and the third-layer coefficients of the fractional rungs.</p>
+</div>
+<div>
+<h2>n equal kicks</h2>
+<p>Kick a ship n times with the same speed u. Its lift is the n-th power, so its speed is ((1 + u)ⁿ − (1 − u)ⁿ)/((1 + u)ⁿ + (1 − u)ⁿ). That is the mult-add power d^(⊞n) = (1 + d)ⁿ − 1 seen through the lens. Ten kicks of 0.5c give 0.99997c: it approaches light and never reaches it.</p>
+</div>
+</div>
+</section>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const vel=(a,b)=>(a+b)/(1+a*b), lift=a=>(1+a)/(1-a), rap=a=>Math.atanh(a);
+const f=(x,n=3)=>(Math.abs(x)>=1e4?x.toExponential(2):x.toFixed(n)).replace('-','−');
+const mk=$('mk'), ls=$('ls');
+mk.innerHTML='<svg role="img" aria-label="Spacetime diagram"></svg>';
+ls.innerHTML='<svg role="img" aria-label="Landscape map"></svg>';
+const s1=mk.firstChild, s2=ls.firstChild;
+function draw(){
+  const u=+$('u').value, v=+$('v').value, w=vel(u,v);
+  $('uo').textContent=f(u,2); $('vo').textContent=f(v,2);
+  $('w').textContent=f(w,4)+' c';
+  $('gal').textContent='Plain adding would say '+f(u+v,2)+' c.';
+  const pu=rap(u),pv=rap(v);
+  const rows=[['Speed (fuses)',u,v,w],['Lift (multiplies)',lift(u),lift(v),lift(w)],['d = lift − 1 (mult-adds)',lift(u)-1,lift(v)-1,lift(w)-1],['Rapidity (adds)',pu,pv,pu+pv]];
+  $('tb').innerHTML=rows.map(r=>'<tr><td class="k">'+r[0]+'</td><td>'+f(r[1])+'</td><td>'+f(r[2])+'</td><td>'+f(r[3])+'</td></tr>').join('');
+  const W=s1.clientWidth,H=s1.clientHeight,R=Math.min(W,H)/2-14,cx=W/2,cy=H-18;
+  const sc=(H-36)/2.2, X=x=>cx+x*sc, Y=t=>cy-t*sc;
+  const narrow=W<520;
+  let g='';
+  g+='<line x1="'+X(-1.15)+'" y1="'+Y(0)+'" x2="'+X(1.15)+'" y2="'+Y(0)+'" stroke="var(--rule)"/>';
+  g+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(0)+'" y2="'+Y(2.15)+'" stroke="var(--rule)"/>';
+  // sector between rapidity pu and pu+pv
+  const a0=Math.min(pu,pu+pv),a1=Math.max(pu,pu+pv);
+  let sp='M'+X(0)+' '+Y(0);
+  for(let i=0;i<=40;i++){const a=a0+(a1-a0)*i/40;sp+=' L'+X(Math.sinh(a))+' '+Y(Math.cosh(a));}
+  g+='<path d="'+sp+' Z" fill="var(--fill)"/>';
+  // hyperbola
+  let hp='';const amax=Math.acosh(2.1);
+  for(let i=0;i<=80;i++){const a=-amax+2*amax*i/80;hp+=(i?' L':'M')+X(Math.sinh(a))+' '+Y(Math.cosh(a));}
+  g+='<path d="'+hp+'" fill="none" stroke="var(--soft)" stroke-width="1.5"/>';
+  // light cone
+  const L=Math.min(1.1,2.1);
+  g+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(L)+'" y2="'+Y(L)+'" stroke="var(--red)" stroke-width="3"/>';
+  g+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(-L)+'" y2="'+Y(L)+'" stroke="var(--red)" stroke-width="3"/>';
+  // worldlines
+  const wl=(sp,col,dash)=>{const t=2.05;return '<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(sp*t)+'" y2="'+Y(t)+'" stroke="'+col+'" stroke-width="2.5"'+(dash?' stroke-dasharray="6 5"':'')+'/>';};
+  g+=wl(u,'var(--blue)',true)+wl(w,'var(--ink)',false);
+  const dot=(a,col)=>'<circle cx="'+X(Math.sinh(a))+'" cy="'+Y(Math.cosh(a))+'" r="5" fill="'+col+'"/>';
+  g+=dot(0,'var(--soft)')+dot(pu,'var(--blue)')+dot(pu+pv,'var(--ink)');
+  const lbl=(x,y,t,anc)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(anc||'start')+'">'+t+'</text>';
+  g+=lbl(X(L)+(narrow?-4:6),Y(L)+(narrow?18:4),'light',narrow?'end':'start');
+  const tx=2.05;
+  g+=lbl(X(u*tx)+(u>=0?6:-6),Y(tx)+14,'u',u>=0?'start':'end');
+  g+=lbl(X(w*tx)+(w>=u?6:-6),Y(tx)+30,'u⊕v',w>=u?'start':'end');
+  g+=lbl(X(0)+8,Y(2.12)+4,'T')+lbl(X(1.12),Y(0)-8,'X','end');
+  s1.innerHTML=g;
+}
+function drawLS(){
+  const W=s2.clientWidth,H=s2.clientHeight,m=28;
+  const k0=-1.2,k1=3.2,q0=-1.4,q1=1.4;
+  const X=k=>m+(k-k0)/(k1-k0)*(W-2*m), Y=q=>m+(q1-q)/(q1-q0)*(H-2*m);
+  let g='<line x1="'+X(k0)+'" y1="'+Y(0)+'" x2="'+X(k1)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+Y(q0)+'" x2="'+X(0)+'" y2="'+Y(q1)+'" stroke="var(--rule)"/>';
+  let p='';for(let i=0;i<=60;i++){const k=-2.3+4.6*i/60,q=k*k/4;if(q>q1)continue;p+=(p?' L':'M')+X(k)+' '+Y(q);}
+  g+='<path d="'+p+'" fill="none" stroke="var(--soft)" stroke-width="1.5"/>';
+  let r='';for(let i=0;i<=40;i++){const t=i/40;r+=(i?' L':'M')+X(2*t)+' '+Y(t*t-1);}
+  g+='<path d="'+r+'" fill="none" stroke="var(--blue)" stroke-width="3"/>';
+  g+='<circle cx="'+X(0)+'" cy="'+Y(-1)+'" r="6" fill="var(--red)"/><circle cx="'+X(2)+'" cy="'+Y(0)+'" r="6" fill="var(--ink)"/><circle cx="'+X(0)+'" cy="'+Y(1)+'" r="5.5" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>';
+  const narrow=W<420;
+  g+='<text x="'+(X(0)+10)+'" y="'+(Y(-1)+5)+'">'+(narrow?'velocity':'velocity addition')+'</text>';
+  g+='<text x="'+(X(2)+2)+'" y="'+(Y(0)-12)+'">mult-add</text>';
+  g+='<text x="'+(X(0)+10)+'" y="'+(Y(1)+5)+'">tangent</text>';
+  g+='<text x="'+(X(k1))+'" y="'+(Y(0)+18)+'" text-anchor="end">k</text><text x="'+(X(0)-8)+'" y="'+(Y(q1)+4)+'" text-anchor="end">q</text>';
+  g+='<text x="'+X(1.05)+'" y="'+(Y(-0.72)+20)+'">rungs 0→1</text>';
+  s2.innerHTML=g;
+}
+$('u').addEventListener('input',draw);$('v').addEventListener('input',draw);
+const roA=new ResizeObserver(draw);roA.observe(mk);
+const roB=new ResizeObserver(drawLS);roB.observe(ls);
+draw();drawLS();
+}
+</script>
+</body>
+</html>

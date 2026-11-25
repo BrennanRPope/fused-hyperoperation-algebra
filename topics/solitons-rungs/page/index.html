@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solitons on the Rungs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful field report on one question, plain and exact.
+   IDEA: a tide chart, where a lone wave and a train of waves are read off one gauge.
+   PICTURE: the theta lattice, with the mult-add cube as the one square left lit at q = 0.
+   COLOUR and TYPE: deep sea teal leads, sand for the copies and the second road, white ground; Spectral titles, Inter text.
+   LAYOUT: a teal band with the finding, then figure-led sections, each opening with its point. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0d1719);--ink:light-dark(#1d2a33,#e3ecee);--soft:light-dark(#53636b,#a9b9be);
+--sea:light-dark(#0f6e7a,#5fb7c2);--sand:light-dark(#b8731d,#e0a55a);--line:light-dark(#d7e2e4,#25373b);--panel:light-dark(#eef5f6,#132124)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,60px) max(5vw,16px)}
+.wrap{max-width:1040px;margin:0 auto}
+header.band{background:#0f6e7a;color:#f3fafb}
+header .kicker{font-size:14px;opacity:.85;margin:0 0 10px}
+h1,h2{font-family:Spectral,Georgia,serif;font-weight:600;line-height:1.08;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,4.6vw,48px);max-width:22ch}
+h2{font-size:clamp(24px,3vw,32px);margin-bottom:12px}
+header p.lede{font-size:18px;max-width:62ch;margin:18px 0 0}
+.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-top:26px}
+.answers div{background:rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;font-size:15.5px}
+.answers b{display:block;font-size:15px;margin-bottom:4px}
+p{max-width:70ch}
+figure{margin:20px 0 6px;background:#fff;border-radius:12px;padding:12px;border:1px solid var(--line)}
+figure img{width:100%;height:auto;display:block}
+figcaption{color:#53636b;font-size:14px;margin-top:6px;padding:0 4px}
+.eq{font-family:Spectral,Georgia,serif;font-size:19px;background:var(--panel);border-radius:10px;padding:12px 16px;margin:14px 0;overflow-x:auto;white-space:nowrap}
+.scroll{overflow-x:auto;display:flex;gap:18px;font-size:14px;padding:10px max(5vw,16px);border-bottom:1px solid var(--line)}
+.scroll a{color:var(--sea);text-decoration:none;flex:none}
+@media(min-width:900px){.scroll{position:sticky;top:0;background:var(--bg);z-index:2}}
+section+section{border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:10px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--soft)}
+.tag{display:inline-block;font-size:13px;padding:1px 8px;border-radius:99px;background:var(--panel);color:var(--sea);white-space:nowrap}
+.tag.new{color:var(--sand)}
+.lead{border-left:3px solid var(--sea);padding:2px 0 2px 16px;margin:16px 0}
+.lead.no{border-color:var(--line)}
+.lead h3{margin:0 0 4px;font-size:17px}
+code{font-size:14px;overflow-wrap:anywhere}
+ul{padding-left:20px}li{margin:4px 0;max-width:68ch}
+html{scroll-padding-top:72px}
+small{color:var(--soft)}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--soft)}.stack td:empty{display:none}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<header class="band"><div class="wrap">
+<p class="kicker">Fused Hyperoperation Algebra · solitons, rungs and the gluing number q · Nov 25, 2026</p>
+<h1>Mult-add is the q = 0 edge of a bigger shape, and solitons live on that edge</h1>
+<p class="lede">Your sense was right, in a precise and well-known way. The soliton cube is the q = 0 face of a lattice sum (the theta function of a Riemann surface). Turning q on glues each soliton into a repeating wave. One matrix holds both of your dials: q on its diagonal, the collision weight A off it, and both work the same way, as a weight paid once for every pair.</p>
+<div class="answers">
+<div><b>Which rung?</b>Exponentials lift the motion to rung 1, and exactly one whole rung step back down turns them into a soliton. Fractional steps never give one.</div>
+<div><b>Collisions</b>Two solitons look like rung s = A. With three or more they leave the rung flow and take their own road from rung 0 to rung 1.</div>
+<div><b>Does q place them?</b>Not as a rung height. q is a second direction: q = 0 is the soliton, and as q grows toward 1 the wave flattens into a ripple where mult-add shrinks to plain addition.</div>
+</div>
+</div></header>
+<nav class="scroll"><a href="#bigger">The bigger shape</a><a href="#glue">What q does</a><a href="#rung">Which rung</a><a href="#roads">Two roads</a><a href="#qplace">q on the sheet</a><a href="#shape">The crease</a><a href="#known">Known or new</a><a href="#leads">Leads</a><a href="#lean">Lean</a></nav>
+
+<section class="band" id="bigger"><div class="wrap">
+<h2>The soliton cube is one square of a whole lattice</h2>
+<p>Two solitons have the tau function 1 + w₁ + w₂ + A·w₁w₂, your weighted mult-add cube, with w = e^η the exponential of each wave's phase. The periodic waves of the same equation use a theta function, a sum over every lattice point (n₁, n₂):</p>
+<div class="eq">Θ = Σ q₁^(n₁(n₁−1)/2) · q₂^(n₂(n₂−1)/2) · A^(n₁n₂) · w₁^n₁ · w₂^n₂</div>
+<p>The q exponent n(n−1)/2 is zero only for n = 0 and n = 1. So at q = 0 every lattice point dies except the four corners of the unit square, and what is left is exactly the soliton cube. Turn q on and weight leaks onto the rest of the lattice.</p>
+<figure><img src="figures/lattice.svg" alt="Theta lattice weights at q = 0.35 and at q = 0, with the mult-add cube shaded"><figcaption>Left: with q on, the whole lattice carries weight. Right: at q = 0 only the mult-add cube is left. Checked: the error shrinks in proportion to q (check 5a).</figcaption></figure>
+<p>The numbers in the exponent form one symmetric matrix, the period matrix of a Riemann surface. Its off-diagonal entries are log A, your mult-add weights, which say how solitons push each other. Its diagonal entries are log q, the gluing numbers, which say how each wave closes into a loop. Both are a weight paid once per pair: A for each pair of different solitons, q for each pair of copies of the same wave. Solitons are the corner of this space where every handle of the surface pinches shut, the same degeneration that turns the Tate curve into mult-add at q = 0 (already in the library as <code>tate_q0_is_multAdd</code>).</p>
+</div></section>
+
+<section class="band" id="glue"><div class="wrap">
+<h2>q turns one soliton into a train of copies</h2>
+<p>For a single wave, Jacobi's triple product (1829) says the theta function is a product over the q-orbit of w:</p>
+<div class="eq">Θ(w; q) = (q; q)∞ · (1 + w) · Π (1 + w·qᵐ)(1 + qᵐ/w)</div>
+<p>Each factor is a 1 + x lift, so Θ/(q; q)∞ − 1 is the mult-add of every point of the orbit (check 4b, error 10⁻⁴⁰). In wave terms, the periodic (cnoidal) KdV wave is an exact sum of identical copies of the q = 0 soliton, spaced −log q apart. Toda found this first and Boyd gave a second proof in 1984.</p>
+<figure><img src="figures/copies.svg" alt="Cnoidal waves as sums of soliton copies for four values of q"><figcaption>Every row is an exact KdV wave (check 4d, residual below 10⁻¹⁸). The copies keep the soliton's height; q sets only their spacing.</figcaption></figure>
+<p>Geometrically, gluing is the annulus between radius |q| and radius 1 with its two rims sewn together, which makes a torus. Multiplying w by q is the same as mult-adding q − 1 to w − 1, and q − 1 = E(log q). So the gluing step itself is a rung-1 move, on the same rung as the soliton's own w − 1.</p>
+<figure><img src="figures/annulus.svg" alt="The annulus picture of gluing for q not zero and for q near zero"><figcaption>As q goes to 0 the inner rim shrinks to a point, and the torus opens back into the punctured plane, which is where mult-add lives.</figcaption></figure>
+</div></section>
+
+<section class="band" id="rung"><div class="wrap">
+<h2>One whole rung step makes the soliton</h2>
+<p>A soliton is built in two moves. The phase η = kx − k³t moves by plain addition, which is rung 0. The exponential w = e^η = 1 + E(η) lifts it to rung 1, where solitons combine by the weighted mult-add cube. Then the solution reads it back down: u = 2·∂²log τ, and log τ is E⁻¹(τ − 1), exactly one step of the rung flow.</p>
+<p>So I tested the rung flow at every step size t from 0 to 2.5: take E⁻ᵗ of the exponential and differentiate twice. Only t = 1 gives a KdV soliton. Below one step the right side keeps growing, so there is no lump. Above one step the tail dips negative and fades only slowly.</p>
+<figure><img src="figures/flow.svg" alt="Profiles after rung steps 0.6 to 2, and the mismatch with a soliton against step size"><figcaption>Left: profiles after fractional rung steps. Right: mismatch with a KdV solitary wave, lowest at t = 1 with speed 1, the lone soliton's (checks 6a to 6d).</figcaption></figure>
+<p>This matches Cole and Hopf's trick for Burgers' equation (1950–51), where one log and one derivative turn a linear heat flow into a shock. KdV uses the same one-step log with two derivatives.</p>
+</div></section>
+
+<section class="band" id="roads"><div class="wrap">
+<h2>Collisions take their own road from rung 0 to rung 1</h2>
+<p>For two solitons the cube is a + b + A·ab. To second order that is also what rung s looks like with s = A, so a pair of solitons seems to sit at a fractional rung. The real test comes with three bodies, by reading off the corner of the cube.</p>
+<ul>
+<li><b>Solitons:</b> each corner carries the product of its pair weights, so equal weights give A, A³, A⁶ for two, three and four solitons. KdV forces this: adding any three-body term to the corner breaks the equation (check 2b).</li>
+<li><b>Rung s:</b> the corners are s, s(3s−1)/2, s(2s−1)(3s−1)/2, from n!·[yⁿ]E^s(y).</li>
+</ul>
+<p>They agree for two bodies. For three they agree only at s = 0, ½ and 1, and the meeting at ½ is gone by four bodies. So solitons don't sit on a fractional rung. They follow a second road, with addition at one end (A = 0, equal speeds merge) and mult-add at the other (A = 1, no interaction). Real KdV pairs always have 0 ≤ A &lt; 1 (check 2d).</p>
+<figure><img src="figures/roads.svg" alt="Corner weights for three and four bodies along the rung flow and along the soliton weight"><figcaption>Both roads start at rung 0 and end at rung 1 and share their two-body step. The dots mark where they meet.</figcaption></figure>
+<p>The soliton road has a name of its own: the series Σ A^(n(n−1)/2) yⁿ/n!. It uses the same triangular exponent as q in the theta function, which is why the collision dial and the gluing dial behave alike.</p>
+</div></section>
+
+<section class="band" id="qplace"><div class="wrap">
+<h2>q is a second direction, not a rung height</h2>
+<p>q does not move a soliton up or down the rungs. Every wave in the q family is built at the same rung, from the same rung-1 cube. What q changes is how many copies are glued in and how tightly.</p>
+<p>Its two ends still line up with rungs 0 and 1. At q = 0 you have a lone soliton, which carries every harmonic. As q goes to 1 the copies crowd together and the wave flattens into its mean plus a tiny cosine: a ripple height of 10⁻¹³ at q = 0.9. A ripple sits next to E's fixed point at 0, where a + b + ab is just a + b because ab is negligible, so the ripple's waves simply add, like linear waves. One number tracks the slide: the second harmonic over the first equals sech(2π² / (−log q)), which is 1 at q = 0 and falls to 0 as q goes to 1 (check 4f).</p>
+<p>So q does give solitons a place, at the q = 0 end of a line that runs from rung-1 behaviour to rung-0 behaviour. It gets there by shrinking the wave toward the fixed point, not by passing through fractional rungs.</p>
+</div></section>
+
+<section class="band" id="shape"><div class="wrap">
+<h2>A soliton's path is the crease of a max</h2>
+<p>log τ is the log-sum-exp of the four corner heights 0, η₁, η₂ and η₁ + η₂ + log A, so it is never more than log 4 above their maximum (check 3a). Where the maximum switches from one corner to another, log τ bends, and that bend is the soliton. The space-time paths are the creases of a max, a piecewise straight graph. That picture is the tropical limit of Dimakis and Müller-Hoissen (2013). The small offset at the crossing is log A, and the fast soliton's measured jump matches it to four digits (check 3b).</p>
+<figure><img src="figures/tropical.svg" alt="Two KdV solitons in space-time with the creases of the max drawn over them"><figcaption>Blue: two KdV solitons with wave numbers 1 and 1.6. Red: where the max changes corner. The rung sheet's bottom, far below rung 0, is also the max (B₋₄(0.4, 0.7) = 0.7004, check 3c). So a soliton touches the ladder three times: built at rung 1, read back with one step down, and its shape drawn by the bottom.</figcaption></figure>
+</div></section>
+
+<section class="band" id="known"><div class="wrap">
+<h2>What is known and what is the new reading</h2>
+<table class="stack"><thead><tr><th>Statement</th><th>Status</th><th>Source</th></tr></thead><tbody>
+<tr><td>Soliton tau is a cube with pair-product corners</td><td><span class="tag">known</span></td><td>Hirota 1971</td></tr>
+<tr><td>Theta function at q = 0 gives the soliton tau</td><td><span class="tag">known</span></td><td>Krichever 1977; Dubrovin 1981; Belokolos, Bobenko, Enolskii, Its, Matveev 1994; Mumford, Tata Lectures on Theta II</td></tr>
+<tr><td>Cnoidal wave = exact sum of soliton copies</td><td><span class="tag">known</span></td><td>Toda; Boyd, SIAM J. Appl. Math. 44 (1984) 952</td></tr>
+<tr><td>Triple product as a product over the q-orbit</td><td><span class="tag">known</span></td><td>Jacobi 1829</td></tr>
+<tr><td>Soliton paths as tropical creases</td><td><span class="tag">known</span></td><td>Dimakis, Müller-Hoissen 2013 (arXiv 1308.1545)</td></tr>
+<tr><td>log of Σ A^C(n,2) yⁿ/n! counts connected graphs, edge weight A − 1</td><td><span class="tag">known</span></td><td>Riddell and Uhlenbeck 1953; Gilbert 1956 (checked to n = 5 here)</td></tr>
+<tr><td>Only a whole rung step of E turns an exponential into a soliton</td><td><span class="tag new">new reading</span></td><td>checks 6a–6d</td></tr>
+<tr><td>Rung flow and soliton road share two-body corners and split at three or four</td><td><span class="tag new">new reading</span></td><td>checks 1a–1e</td></tr>
+<tr><td>Gluing by q is a rung-1 move; q and A are both one weight per pair</td><td><span class="tag new">new reading</span></td><td>checks 4b, 4g, 5a</td></tr>
+</tbody></table>
+<p><small>"New reading" means the statement follows from known facts. What is new is laying it on the rung picture; I found no earlier source that does.</small></p>
+</div></section>
+
+<section class="band" id="leads"><div class="wrap">
+<h2>Leads worth following</h2>
+<div class="lead"><h3>Worth following: draw the soliton road as a sheet</h3><p>The soliton road F_A(y) = Σ A^(n(n−1)/2) yⁿ/n! runs between the same two rungs as the rung flow and splits from it at three bodies. Its log counts connected graphs, with your mult-add excess A − 1 as the weight on each edge. Why follow it: it is a second path from addition to mult-add that comes from physics rather than from iterating E, and it carries q's triangular exponent, so the gluing dial and the collision dial would share one picture. Next step: draw its level curves the way the rung sheet was drawn and lay the two sheets over each other.</p></div>
+<div class="lead"><h3>Worth following: waves with both dials on</h3><p>A soliton riding on a cnoidal background is a genus-2 theta solution with one q at 0 and the other above it, so A and q act at the same time. These solutions are known. Reading them on the rungs has not been tried. Why follow it: it is the one place where the claim "q and A are the same kind of weight" can fail, so it is a real test of the picture.</p></div>
+<div class="lead no"><h3>Not worth following: fractional rung steps on a soliton</h3><p>Only t = 1 gives a soliton. The fractional profiles solve nothing and never form a lump.</p></div>
+</div></section>
+
+<section class="band" id="lean"><div class="wrap">
+<h2>Lean</h2>
+<p>26 theorems in <code>math-theory/solitons-rungs/lean/SolitonsRungs.lean</code>, core Lean 4 in the library's style, with no mathlib and no sorry. They aren't compiled yet because Lean isn't installed where this was written; the library build should fold them in.</p>
+<ul>
+<li><b>Two solitons:</b> τ = 1 + (a ⊞_A b); weight 1 gives (1+a)(1+b); weight 0 gives plain addition; A(τ − 1) = (Aa) ⊞ (Ab).</li>
+<li><b>Three solitons:</b> corners multiply over pairs; a soliton that interacts with nobody factors off; equal weights give k³ where weighted mult-add gives k², and these agree only at k = 0 or 1.</li>
+<li><b>Roads:</b> the three-body gap is s(2s−1)(s−1); the four-body gap is s(s−1) times a quartic that is not zero at ½; the rung flow's own three-body term is s(s−1)/2.</li>
+<li><b>Theta face:</b> n(n−1) ≥ 0, it is 0 only at n = 0 or 1, the two-wave exponent vanishes exactly on the unit square, and the written-out theta series at q = 0 is the cube.</li>
+<li><b>Gluing and weights:</b> wq − 1 = (w−1) ⊞ (q−1); a truncated triple product is the mult-add of its orbit; KdV weights lie in [0, 1), and are 0 only for equal speeds.</li>
+</ul>
+<p><small>Left out, because core Lean has no exp, log or limits: the rung flow itself, the infinite triple product, theta functions solving KdV, and the tropical limit. Those stand on the numerical checks in <code>checks.py</code> (25 of 25 pass) and <code>graph_check_output.txt</code>.</small></p>
+</div></section>
+</body>
+</html>

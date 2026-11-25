@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 50 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 1485 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 52 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 1541 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -82,6 +82,8 @@ Topics (each imports the foundation):
 | `Topics/QAcross/Knots` | q-across/lean/Knots.lean | first compiled here; class name fixed |
 | `Topics/QAcross/Partitions` | q-across/lean/Partitions.lean | first compiled here |
 | `Topics/QAcross/QCounting` | q-across/lean/QCounting.lean | first compiled here; class name fixed |
+| `Topics/SolitonsRungs` | solitons-rungs/lean/SolitonsRungs.lean | first compiled here |
+| `Topics/Relativity` | relativity/lean/Relativity.lean | 4 twins removed |
 | `Topics/NavierStokes` | ns-rungs/lean/FusedRungs.lean (Burgers, shell model) | |
 | `Topics/QuantumNoise` | quantum-noise/QuantumNoise.lean | |
 | `Topics/Rulecraft` | rulecraft/lean/RulecraftFused.lean | first compile, one step fixed |
@@ -129,6 +131,12 @@ No statement changed and none is an exact twin; QDial's parity_xor and failure_o
 give the same truth tables as StatFused.xor_table and or_table but over Int, and
 their docstrings say so. Partitions' theorems are finite checks (to q^30 or p(50)),
 as its header says.
+SolitonsRungs (26) had never been compiled; it built on the first try with no
+changes and has no twins. Relativity came with 34 theorems; four stated exactly
+what a library theorem already states and were removed, with a comment naming the
+library theorem: lift_num (ThermoFused.lens_den), lift_den (ThermoFused.lens_num),
+light_absorbs (ThermoFused.vel_wall_pos) and multAdd_wall (MultAdd.neg_one_absorbs).
+The other 30 compiled unchanged. Relativity builds right after Thermodynamics.
 
 ## What was merged
 

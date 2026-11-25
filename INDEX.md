@@ -6,7 +6,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 1,485 theorems, 50 modules (in progress) | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 1,541 theorems, 52 modules (in progress) | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
 
@@ -55,7 +55,8 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Navier–Stokes | `topics/navier-stokes/` | [page](https://claude.ai/artifact/SkJga4ih1vuxS5ozxeZefF) |
 | Navier–Stokes at each rung | `topics/ns-rungs/` | [page](https://claude.ai/artifact/35PaQq5t56ZxNhHjKdq8pJ) |
 | Dimension continuum and the 3D Navier–Stokes gap | `topics/ns-continuum/` | [page](https://claude.ai/artifact/GBDAr2D6pBnyedGtWAG8Va) |
-| Solitons at each rung (in progress) | `topics/solitons-rungs/` | not published yet |
+| Solitons on the rungs | `topics/solitons-rungs/` | [page](https://claude.ai/artifact/5yXzCgEwC2jY5y6LkFCUXJ) |
+| Relativity | `topics/relativity/` | [page](https://claude.ai/artifact/S2RVDVVQWR4UAQVtmDQQMq) |
 | Thermodynamics | `topics/thermodynamics/` | [page](https://claude.ai/artifact/SKKLwKiEg4nyYGfrw32sp5) |
 | Entropy and quantum noise (in progress) | `topics/entropy-noise/` | [page](https://claude.ai/artifact/1To24w7SazEuaE5Pjsj4YM) |
 | Quantum noise | `topics/quantum-noise/` | [page](https://claude.ai/artifact/X6u4iNGch19w41ioqJ5VoW) |

@@ -9,3 +9,4 @@ topics/econ-forecasting/data/SP500_const.rda
 lean-library/build/
 *.olean
 *.ilean
+topics/*/lean/build/
