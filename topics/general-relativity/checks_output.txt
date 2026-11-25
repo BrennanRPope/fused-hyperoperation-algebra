@@ -1,0 +1,62 @@
+
+== A. The dial's boosts made local: q is the signature coefficient
+[PASS] [K_x, K_y] = -q (x d_y - y d_x): two boosts close on q times a rotation
+[PASS] q = 0 (Galilean dial): boosts commute, no twist
+[PASS] HKT bracket with linear lapses: N grad M - M grad N is a rigid rotation (the twist)
+
+== B. Route (a): the dial alone as a field = scalar gravity
+[PASS] GR metric: light bending at the Sun's limb 1.751"  (1.7512")
+[PASS] GR metric: Mercury's perihelion 42.98"/century  (42.981")
+[PASS] PPN law bending = (1+gamma)/2 x GR for 'GR (Schwarzschild, isotropic)'  (1.7512")
+[PASS] PPN law perihelion = (2+2gamma-beta)/3 x GR for 'GR (Schwarzschild, isotropic)'  (42.98")
+[PASS] PPN law bending = (1+gamma)/2 x GR for 'dial in time only, A = 1-2U'  (0.8756")
+[PASS] PPN law perihelion = (2+2gamma-beta)/3 x GR for 'dial in time only, A = 1-2U'  (28.65")
+[PASS] PPN law bending = (1+gamma)/2 x GR for 'dial in time only, A = exp(-2U)'  (0.8756")
+[PASS] PPN law perihelion = (2+2gamma-beta)/3 x GR for 'dial in time only, A = exp(-2U)'  (14.33")
+[PASS] PPN law bending = (1+gamma)/2 x GR for 'conformal dial (Nordstrom), A = B = exp(-2U)'  (-0.0000")
+[PASS] PPN law perihelion = (2+2gamma-beta)/3 x GR for 'conformal dial (Nordstrom), A = B = exp(-2U)'  (-14.33")
+[PASS] Cassini rules out every dial-only theory (gamma <= 0) by > 40,000 sigma  (43,477 sigma for gamma = 0)
+
+== C. Route (c): the river. Flat space + local mult-add velocity addition + Newton's escape speed
+[PASS] River at Newton's escape speed v = sqrt(2M/r): Einstein tensor vanishes (vacuum)
+[PASS] Changing the clock to t_S = t - int v/(1-v^2) dr gives Schwarzschild exactly
+[PASS] River observers fall freely (geodesics) and are at rest at infinity
+[PASS] Static clock rate = 1/gamma_river: 1 - v^2 = 1 - 2M/r = -g_tt
+[PASS] Static radial ruler = gamma_river: 1/(1 - v^2) = g_rr (Lorentz contraction)
+[PASS] Time deficit and radial-space deficit are mult-add inverses: (-g_tt-1) ✳ (g_rr-1) = 0
+[PASS] Horizon r = 2M is where the river reaches light speed (the velocity wall)
+[PASS] Areal and isotropic radii: 1 - 2M/r = ((1-u)/(1+u))^2 with r = rho(1+u)^2, u = M/(2 rho)
+[PASS] Weak field of the river: -g_tt = 1 - 2U + 2U^2 (beta = 1), g_ij = (1 + 2U) (gamma = 1)
+
+== C2. Rivers with matter: Einstein's equations in spherical symmetry = Newton's shell law for the river
+[PASS] G^t_t = -(2/r^2) dm/dr with m = r v^2/2: the Hamiltonian constraint is Newton's shell theorem m' = 4 pi r^2 rho  (G^t_t = -(2*r*Derivative(v(t, r), r) + v(t, r))*v(t, r)/r**2)
+[PASS] G^r_t = (2/r^2) dm/dt: the momentum constraint is mass flux  (G^r_t = 2*v(t, r)*Derivative(v(t, r), t)/r)
+[PASS] G^r_r = (2/(r^2 v)) (d_t - v d_r) m: for dust (no pressure) the river carries its mass along, m conserved along the flow  (G^r_r = -(2*r*v(t, r)*Derivative(v(t, r), r) - 2*r*Derivative(v(t, r), t) + v(t, r)**2)/r**2)
+[PASS] Momentum constraint for dust: G^r_t - 8 pi rho v = v G^r_r, so it is the same transport law
+[PASS] Once m rides with the flow, the angular equation G^th_th = 0 holds too (no extra condition)  (G^th_th -> 0)
+[PASS] Bianchi identity: nabla_a G^a_b = 0 for every river v(t,r) (automatic, any metric)
+
+== C3. Cosmology is a river too: v = -H r
+[PASS] Hubble river: G^t_t = -3H^2 (Friedmann: H^2 = 8 pi rho/3 = Newton's escape speed for a uniform ball)
+[PASS] Hubble river: G^r_r = G^th_th = -(2 H' + 3 H^2) (acceleration equation)
+[PASS] Newton: v = H R with v^2/2 = M/R, M = (4 pi/3) R^3 rho  <=>  H^2 = 8 pi rho/3
+
+== D. Where the river stops: gravitational waves
+[PASS] A plane gravitational wave has real tidal curvature R^x_txt = -h''/2 (linear order)  (R^x_txt ~ -Subs(Derivative(h(_xi_1), (_xi_1, 2)), _xi_1, t - z)/2)
+[PASS] Its transverse-traceless part (h_xx - h_yy, h_xy) cannot be moved by any change of coordinates
+[PASS] So no slicing makes space flat: a river in flat space cannot carry the wave (2 polarizations)
+[PASS] Data: Hulse-Taylor orbital decay matches GR's wave emission (0.9983 +- 0.0016)
+[PASS] Data: GW170817 — one dial for light and gravity: |c_g - c|/c < 3e-15  (-3e-15 < dc/c < 7e-16)
+
+== E. Route (b): twist = curvature x area, in spacetime
+[PASS] Contracted Bianchi: nabla_a R^a_b = (1/2) d_b R
+[PASS] so a R^a_b + b R delta^a_b is divergence-free only if b = -a/2 (here dR/dt != 0)  (R = 40*r)
+[PASS] Small loop in the t-r plane returns a boosted vector: rapidity = (2M/r^3) x area (tidal curvature)  (eta 3.685e-06 vs 3.704e-06)
+
+== F. Exact mult-add facts the river gives
+[PASS] Orbit speed seen from the river (perpendicular composition): 1 - w^2 = (1-2x)(1 - v_o^2) = 1 - 3x
+[PASS] so Gravity Probe B's factor sqrt(1-3M/r) is 1/gamma of the gyroscope's speed through the river; -w^2 = (-v_r^2) ✳ (-v_o^2)
+[PASS] Redshifts chain by multiplying (1+z) factors, so redshifts mult-add: z = z1 ✳ z2
+[PASS] Infalling light seen by the river: blueshift gamma times Doppler sqrt((1-v)/(1+v)) = 1/(1+v)
+
+44 of 44 checks pass

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mult-add toward Einstein</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful research report: what is derived, what is put in, where each route stops
+   IDEA a transit route map: three lines leave "mult-add" for "Einstein's equations"
+   PICTURE the route map, each line ending at its terminus or a stop marker
+   COLOUR atlas plate: deep sea ground in both themes, sky blue lines, white text, signal pink for stops
+   TYPE Hanken Grotesk 300 large titles, Hanken Grotesk text
+   LAYOUT finding and map in the first screen; then three route sections, table, leads, files */
+:root{color-scheme:dark;--bg:#0a2540;--ink:#f3f7fb;--mute:#a9c1d6;--sky:#8fd3ff;--pink:#ff5c8a;--panel:#0f2f50;--rule:#24496e}
+:root[data-theme=light]{color-scheme:dark}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,60px) max(5vw,16px)}.wrap{max-width:1180px;margin:0 auto}
+h1,h2{font-weight:300;line-height:1.06;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,5vw,52px)}h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:14px}
+h3{font-size:18px;font-weight:600;margin:20px 0 6px}
+p,li{max-width:70ch}p{margin:0 0 12px}.lede{font-size:18.5px;margin-top:16px}
+.mute{color:var(--mute)}.sky{color:var(--sky)}.pink{color:var(--pink)}
+.top{border-bottom:1px solid var(--rule)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(18px,3vw,44px);align-items:center}
+@media(max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}}
+.fig{position:relative;min-height:380px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:9px 14px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--sky)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2;background:var(--bg)}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,3vw,40px)}
+@media(max-width:780px){.two{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:18px 20px}
+.verdict{border-left:4px solid var(--pink);padding:10px 16px;background:var(--panel);border-radius:0 10px 10px 0;margin:14px 0}
+.verdict.go{border-left-color:var(--sky)}
+table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:9px 10px;border-bottom:1px solid var(--rule);text-align:left}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bars{display:grid;gap:10px;margin-top:12px}.bar{display:grid;grid-template-columns:11em minmax(0,1fr) 5.5em;gap:10px;align-items:center;font-size:14.5px}
+.bar i{display:block;height:14px;border-radius:7px;background:var(--sky)}.bar i.p{background:var(--pink)}.bar b{text-align:right;font-weight:400;white-space:nowrap}
+@media(max-width:520px){.bar{grid-template-columns:7.5em minmax(0,1fr) 4.5em;font-size:13px}}
+code{overflow-wrap:anywhere;color:var(--sky)}a{color:var(--sky)}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<header class="band top"><div class="wrap hero">
+ <div>
+  <p class="mute">Fused Hyperoperation Algebra · November 25, 2026</p>
+  <h1>Mult-add gets you to the door of general relativity, not through it</h1>
+  <p class="lede">Mult-add gives the local rules of motion: the dial q sets the speed of light and the signature, and twist = curvature × area. Einstein's equations also need a rule for how matter bends spacetime. Three routes show exactly where that rule has to come in.</p>
+  <p class="mute">44 of 44 checks pass (sympy, mpmath, scipy). 28 Lean theorems merged; the shared library builds clean at 2,715.</p>
+ </div>
+ <div class="fig" id="mapfig" role="img" aria-label="Route map: three routes from mult-add toward Einstein's equations. Route a stops at half the light bending. Route c reaches black holes and cosmology and stops at gravitational waves. Route b reaches Einstein's equations once a metric and a second-order law are added."><svg id="map"></svg></div>
+</div></header>
+
+<nav class="nav"><a href="#route-a">Route a: dial as a field</a><a href="#route-c">Route c: the river</a><a href="#route-b">Route b: holonomy</a><a href="#leads">Leads</a><a href="#files">Files</a></nav>
+
+<section class="band" id="route-a"><div class="wrap two">
+ <div>
+  <h2>Route a: let the dial vary from place to place</h2>
+  <p>A dial field k(x) = 1/c(x)² changes the local speed of light. On its own it touches only clocks, or clocks and rulers equally (the conformal case). That is a scalar theory of gravity, the kind Einstein tried in 1911–12 and Nordström in 1913.</p>
+  <p>Exact geodesic integration at the Sun's limb and for Mercury gives the numbers on the right. Every dial-only theory bends light by exactly half, whatever its second-order term.</p>
+  <div class="verdict"><b class="pink">Stops here.</b> Space has to curve as much as time slows, and the dial alone can't do that. Cassini measured γ − 1 = (2.1 ± 2.3)×10⁻⁵, which puts γ = 0 about 43,000 σ away.</div>
+ </div>
+ <div class="card">
+  <h3 style="margin-top:0">Light bending at the Sun's limb</h3>
+  <div class="bars" id="bend"></div>
+  <h3>Mercury's perihelion, arcseconds per century</h3>
+  <div class="bars" id="peri"></div>
+  <p class="mute" style="margin-top:12px">γ measures how much space curves; β how gravity adds to itself. Bending is (1+γ)/2 of GR's, perihelion (2+2γ−β)/3.</p>
+ </div>
+</div></section>
+
+<section class="band" id="route-c" style="background:var(--panel)"><div class="wrap">
+ <h2>Route c: the river of free fall</h2>
+ <div class="two">
+  <div>
+   <p>Two postulates in mult-add's own language:</p>
+   <ol><li>At every event there is a free-fall frame, the river, in which space is flat and special relativity holds, so speeds compose by mult-add on the Doppler-squared ruler.</li>
+   <li>The river flows past standing observers at Newton's escape speed, v² = 2m/r.</li></ol>
+   <p>That is enough for the exact Schwarzschild black hole. A standing clock and a standing ruler are both boosted through the river, and one boost gives both factors: the clock runs at 1 − v² and the ruler stretches by 1/(1 − v²). So <b>the time deficit and the space deficit are mult-add inverses</b>, (−g<sub>tt</sub> − 1) ✳ (g<sub>rr</sub> − 1) = 0. That is why light bends twice the Newtonian amount: half from clocks, half from rulers, because a boost dilates time and shortens length by the same factor.</p>
+   <p>The horizon r = 2M is where the river reaches light speed, the wall of the velocity law.</p>
+  </div>
+  <div>
+   <h3 style="margin-top:0">What the river gives, exactly</h3>
+   <ul>
+    <li>Zero Einstein tensor for v² = 2M/r; Schwarzschild after one clock change.</li>
+    <li>Weak field: β = 1 and γ = 1, so 1.751″ bending, 42.98″/century perihelion, Shapiro delay, redshift.</li>
+    <li>With dust: the spherical Einstein equations <b>are</b> Newton's shell theorem m′ = 4πr²ρ, with the mass carried along by the flow.</li>
+    <li>The Hubble river v = −Hr gives Friedmann: H² = 8πρ/3 is Newton's escape speed for a uniform ball.</li>
+    <li>Gravity Probe B's exact factor √(1 − 3M/r) is 1/γ of the gyroscope's speed through the river: −w² = (−v<sub>r</sub>²) ✳ (−v<sub>o</sub>²). The earlier twisted-boosts work took Schwarzschild's space curvature as given; the river now supplies it.</li>
+   </ul>
+   <p class="mute">Known physics in our language: Painlevé 1921, Gullstrand 1922, Milne–McCrea 1934, Hamilton and Lisle's river model 2008.</p>
+  </div>
+ </div>
+ <div class="verdict"><b class="pink">Stops at gravitational waves.</b> A passing wave has real tidal curvature, and its transverse part can't be removed by any change of coordinates, so no slicing makes space flat. A river in flat space can't carry the wave's two polarizations, and the data need them: the Hulse–Taylor orbit shrinks at 0.9983 ± 0.0016 of GR's prediction, and LIGO hears the waves directly.</div>
+</div></section>
+
+<section class="band" id="route-b"><div class="wrap two">
+ <div>
+  <h2>Route b: twist = curvature × area, in spacetime</h2>
+  <p>Carry a vector around a small loop in the time–radius plane outside a mass and it comes back boosted, with rapidity (2M/r³) × area (numerical transport agrees to 0.5%). Curvature in a plane that contains time gives a boost: the twisted-boosts law with q &lt; 0.</p>
+  <p>The Bianchi identity comes for free (checked on every river). Its contracted form forces the left side of the field equation to be R − ½Rg, and Lovelock's theorem (1971) says that in four dimensions this, plus Λg, is the only second-order local choice.</p>
+  <p>The dial's boosts close on −q × a rotation and commute at q = 0. Hojman, Kuchař and Teitelboim (1976) proved that if these boosts are made local and must compose the same way along every path, the only second-order dynamics for a spatial metric is Einstein's, with G and Λ left free. The coefficient in their bracket is the sign of q.</p>
+  <div class="verdict go"><b class="sky">Reaches Einstein's equations,</b> once two things are added by hand: a metric field, and the demand for a local second-order law.</div>
+ </div>
+ <div class="card">
+  <h3 style="margin-top:0">Derived or put in</h3>
+  <div class="scroll"><table class="stack"><thead><tr><th>Piece</th><th>Where it comes from</th></tr></thead><tbody id="ledger"></tbody></table></div>
+ </div>
+</div></section>
+
+<section class="band" id="leads" style="background:var(--panel)"><div class="wrap">
+ <h2>Leads, each judged on its own</h2>
+ <div class="two">
+  <div class="card"><h3 style="margin-top:0">A derivation chain worth writing up</h3><p>Dial boosts → twist rule (ours) → made local → Hojman–Kuchař–Teitelboim → Einstein's equations. Every link is proved, ours or known. The output is general relativity exactly, so it is a clean account, not new physics.</p></div>
+  <div class="card"><h3 style="margin-top:0">No new prediction</h3><p>Every route either reproduces general relativity or is ruled out by data. GW170817 also showed gravity travels at light speed to about 10⁻¹⁵, so light and gravity share one dial.</p></div>
+  <div class="card"><h3 style="margin-top:0">The one place a varying dial goes beyond GR</h3><p>Letting q vary inside the boost bracket is active research. In loop quantum cosmology the coefficient turns negative above half the critical density, read as a switch to Euclidean signature (<a href="https://arxiv.org/abs/1304.2208">Mielczarek</a>, <a href="https://arxiv.org/abs/1606.03271">1606.03271</a>; disputed in <a href="https://arxiv.org/abs/1610.07467">1610.07467</a>). Bojowald and Duque build consistent theories where the coefficient is a free function (<a href="https://arxiv.org/abs/2310.06798">2310.06798</a>, <a href="https://arxiv.org/abs/2404.06375">2404.06375</a>).</p><p>Worth following as theory if the dial-as-field idea matters to the project. Its effects show only near Planck density or through free functions, so nothing can test it today.</p></div>
+  <div class="card"><h3 style="margin-top:0">Not tested here</h3><p>Matter with pressure (it adds a second clock factor to the river), rotating black holes (the river also twists there), and the field equations beyond weak fields outside spherical symmetry.</p></div>
+ </div>
+</div></section>
+
+<footer class="band" id="files"><div class="wrap">
+ <h2>Files</h2>
+ <ul>
+  <li><code>topics/general-relativity/checks.py</code> → <code>checks_output.txt</code>, <code>results.json</code>: 44 of 44 checks.</li>
+  <li><code>grtools.py</code>: Christoffels, Riemann, Ricci, Einstein, divergence (sympy).</li>
+  <li><code>lean/GeneralRelativity.lean</code>: 28 theorems, core Lean 4.37.0-rc1, no sorry, merged as <code>FusedAlgebra/Topics/GeneralRelativity</code>.</li>
+ </ul>
+</div></footer>
+
+<script>{
+const bend=[["General relativity",1.751,0],["Dial in time only",0.876,1],["Conformal dial",0,1]];
+const peri=[["General relativity",42.98,0],["Time only, A = 1−2U",28.65,1],["Time only, A = e^(−2U)",14.33,1],["Conformal dial",-14.33,1]];
+const row=(l,v,p,mx,u)=>`<div class="bar"><span>${l}</span><span><i class="${p?'p':''}" style="width:${Math.max(Math.abs(v)/mx*100,1.5)}%"></i></span><b>${v}${u}</b></div>`;
+document.getElementById('bend').innerHTML=bend.map(r=>row(r[0],r[1],r[2],1.751,'″')).join('');
+document.getElementById('peri').innerHTML=peri.map(r=>row(r[0],r[1],r[2],42.98,'″')).join('');
+const led=[["Lorentz rules, light speed, signature","Derived: the dial q (mult-add on the Doppler ruler)"],["Twist = curvature × area","Derived: twisted boosts; in spacetime it is the Riemann tensor"],["Bianchi identity","Automatic for any metric"],["Left side R − ½Rg","Forced by Bianchi + Lovelock"],["A metric field at all","Put in"],["Local, second-order law","Put in"],["Newton's escape speed for the river","Put in (route c)"],["Gravitational waves","Not reachable by the river"],["Values of G and Λ","Free"]];
+document.getElementById('ledger').innerHTML=led.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+const s=document.getElementById('map');
+function draw(){const W=s.clientWidth,H=s.clientHeight,sm=W<520;
+ const x0=sm?48:70,x1=W-(sm?48:70),ym=H/2,ya=H*0.18,yb=H*0.82;
+ const X=f=>x0+(x1-x0)*f;
+ const line=(d,c,w)=>`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+ const stop=(x,y)=>`<g><line x1="${x-9}" y1="${y-9}" x2="${x+9}" y2="${y+9}" stroke="#ff5c8a" stroke-width="4"/><line x1="${x-9}" y1="${y+9}" x2="${x+9}" y2="${y-9}" stroke="#ff5c8a" stroke-width="4"/></g>`;
+ const dot=(x,y,r,f)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${f}" stroke="#0a2540" stroke-width="3"/>`;
+ const t=(x,y,str,a,cl,sz)=>`<text x="${x}" y="${y}" text-anchor="${a}" fill="${cl}" font-size="${sz||(sm?12:14)}" font-family="Hanken Grotesk,sans-serif">${str}</text>`;
+ let g='';
+ g+=line(`M${x0} ${ym} C${X(.12)} ${ym},${X(.15)} ${ya},${X(.28)} ${ya} L${X(.42)} ${ya}`,'#ff5c8a',5);
+ g+=line(`M${x0} ${ym} L${X(.72)} ${ym}`,'#8fd3ff',5);
+ g+=line(`M${X(.72)} ${ym} L${X(.86)} ${ym}`,'#8fd3ff',2)+`<path d="M${X(.72)} ${ym} L${X(.86)} ${ym}" stroke="#0a2540" stroke-width="2" stroke-dasharray="4 7"/>`;
+ g+=line(`M${x0} ${ym} C${X(.12)} ${ym},${X(.15)} ${yb},${X(.28)} ${yb} L${X(.86)} ${yb} C${X(.95)} ${yb},${X(.95)} ${ym},${x1} ${ym}`,'#ffffff',5);
+ g+=stop(X(.42),ya)+stop(X(.86),ym);
+ g+=dot(x0,ym,12,'#8fd3ff')+dot(x1,ym,12,'#ffffff');
+ [[.55,ym],[.64,ym]].forEach(p=>g+=dot(X(p[0]),p[1],6,'#0a2540').replace('stroke="#0a2540"','stroke="#8fd3ff"'));
+ [[.45,yb],[.62,yb]].forEach(p=>g+=dot(X(p[0]),p[1],6,'#0a2540').replace('stroke="#0a2540"','stroke="#ffffff"'));
+ g+=t(x0,ym-24,'mult-add','middle','#8fd3ff',sm?13:16)+t(x0,ym+32,'dial q','middle','#a9c1d6');
+ g+=t(x1,ym-24,'Einstein','middle','#ffffff',sm?13:16)+t(x1,ym+32,'G = 8πT','middle','#a9c1d6');
+ g+=t(X(.28),ya-16,'a · dial as a field','middle','#ff5c8a')+t(X(.42),ya+30,'half the bending','middle','#a9c1d6');
+ g+=t(X(.40),ym-14,'c · the river','middle','#8fd3ff');
+ g+=t(X(.55),ym+26,sm?'black holes':'black holes','middle','#a9c1d6')+t(X(.66),ym+26,sm?'Friedmann':'cosmology','start','#a9c1d6');
+ g+=t(X(.86),ym-18,'waves','middle','#ff5c8a');
+ g+=t(X(.36),yb-14,'b · twist made local','middle','#ffffff');
+ g+=t(X(.45),yb+28,'Bianchi','middle','#a9c1d6')+t(X(.66),yb+28,sm?'+ metric':'+ metric, 2nd order','middle','#a9c1d6');
+ s.setAttribute('viewBox',`0 0 ${W} ${H}`);s.innerHTML=g;}
+const ro=new ResizeObserver(draw);ro.observe(s);draw();
+}</script>
+</body></html>

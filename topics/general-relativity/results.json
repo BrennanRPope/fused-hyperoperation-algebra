@@ -1,0 +1,37 @@
+{
+ "A": "two dial boosts close on q x rotation; the HKT bracket {H(N),H(M)} = eps D(N grad M - M grad N) carries the same coefficient, eps = sign(q)",
+ "B": {
+  "GR (Schwarzschild, isotropic)": {
+   "bending_arcsec": 1.7511938391862274,
+   "perihelion_arcsec_per_century": 42.98067974120163,
+   "gamma": 1,
+   "beta": 1
+  },
+  "dial in time only, A = 1-2U": {
+   "bending_arcsec": 0.8755991429672713,
+   "perihelion_arcsec_per_century": 28.653787662681857,
+   "gamma": 0,
+   "beta": 0
+  },
+  "dial in time only, A = exp(-2U)": {
+   "bending_arcsec": 0.875596223698301,
+   "perihelion_arcsec_per_century": 14.326892496261493,
+   "gamma": 0,
+   "beta": 1
+  },
+  "conformal dial (Nordstrom), A = B = exp(-2U)": {
+   "bending_arcsec": -4.16770162343233e-22,
+   "perihelion_arcsec_per_century": -14.32689135190893,
+   "gamma": -1,
+   "beta": 1
+  }
+ },
+ "B_cassini_sigma_gamma0": 43477.34782608695,
+ "C": "river at v^2 = 2M/r in flat space is exactly Schwarzschild; gamma = beta = 1; horizon = river at light speed",
+ "C2": "spherical Einstein equations with dust = v^2/2 = m/r, m' = 4 pi r^2 rho, m carried by the flow (Newtonian dust)",
+ "D": "TT part gauge invariant -> flat slices impossible for waves; river model is the non-radiative sector",
+ "E": {
+  "loop_rapidity": 3.685199061978796e-06,
+  "curvature_times_area": 3.7037037037037037e-06
+ }
+}

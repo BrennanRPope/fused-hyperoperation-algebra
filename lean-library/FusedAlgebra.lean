@@ -64,3 +64,4 @@ import FusedAlgebra.Topics.Fermat.Fermat4
 import FusedAlgebra.Topics.Fermat.Fermat3
 import FusedAlgebra.Topics.Fermat.FreyPieces
 import FusedAlgebra.Topics.Fermat.FermatRoute
+import FusedAlgebra.Topics.GeneralRelativity

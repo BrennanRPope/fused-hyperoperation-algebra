@@ -21,6 +21,7 @@ mods=(
   FusedAlgebra.Topics.QAcross.QDial FusedAlgebra.Topics.QAcross.Knots FusedAlgebra.Topics.QAcross.Partitions FusedAlgebra.Topics.QAcross.QCounting
   FusedAlgebra.Topics.SolitonsRungs
   FusedAlgebra.Topics.Fermat.Fermat4 FusedAlgebra.Topics.Fermat.Fermat3 FusedAlgebra.Topics.Fermat.FreyPieces FusedAlgebra.Topics.Fermat.FermatRoute
+  FusedAlgebra.Topics.GeneralRelativity
   FusedAlgebra Check
 )
 export LEAN_PATH="$PWD/build"
