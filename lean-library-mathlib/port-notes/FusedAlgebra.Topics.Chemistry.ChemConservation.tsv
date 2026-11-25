@@ -1,0 +1,12 @@
+original	status	new_name	note
+mass2	ported	ChemConservation.mass2	ℚ → commutative ring; squares
+lavoisier	ported	ChemConservation.lavoisier	ℚ → commutative ring
+deficit	ported	ChemConservation.deficit	ℚ → commutative ring
+binding_exact	ported	ChemConservation.binding_exact	ℚ → commutative ring
+bound_lighter	ported	ChemConservation.bound_lighter	ℚ → linearly ordered commutative ring
+free_heavier	ported	ChemConservation.free_heavier	ℚ → linearly ordered commutative ring
+cosine_extra	ported	ChemConservation.cosine_extra	ℚ → commutative ring
+small_angle	ported	ChemConservation.small_angle	restated without division: with s in place of t / 2 the deficit is m1 * m2 * (2 * s); the original is the case s = t / 2 over ℚ
+fugacity_multAdd	ported	ChemConservation.fugacity_multAdd	pw is now ^
+neutral_identity	ported	ChemConservation.neutral_identity	pw is now ^
+circle_closed	ported	ChemConservation.circle_closed	ℚ → commutative ring; in ℂ this is map_mul Complex.normSq
