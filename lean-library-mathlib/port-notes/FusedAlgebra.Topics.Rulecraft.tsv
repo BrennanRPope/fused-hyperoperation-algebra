@@ -1,0 +1,11 @@
+original	status	new_name	note
+thermostat_residue	ported	MultAdd.Rulecraft.thermostat_residue	d * d written d ^ 2
+panel_grid	ported	MultAdd.Rulecraft.panel_grid	
+balance	ported	MultAdd.Rulecraft.balance	written with squares; is sq_sub_sq
+fused_price_step	ported	MultAdd.Rulecraft.fused_price_step	written with squares
+fused_price_expand	ported	MultAdd.Rulecraft.fused_price_expand	written with squares
+boundary	ported	MultAdd.Rulecraft.boundary	foldMA is now multAddList; is MultAdd.multAddList_append; any non-unital semiring
+recovery	ported	MultAdd.Rulecraft.recovery	
+sq_nonneg'	mathlib	mul_self_nonneg	also sq_nonneg
+balance_le	ported	MultAdd.Rulecraft.balance_le	written with a square; generalised from ℤ to any linearly ordered commutative ring
+fexp_not_comm_values	ported	MultAdd.Rulecraft.fexp_not_comm_values	
