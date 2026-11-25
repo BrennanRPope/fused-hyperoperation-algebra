@@ -104,6 +104,14 @@ All the Lean proofs are gathered in [`lean-library/`](lean-library/README.md): o
 
 Some topic folders also keep the original Lean file they were first written in. The one file that imports mathlib, `topics/tesseract/TesseractCoords.lean`, writes mult-add as `✳` (mathlib already uses `⊞` for biproducts) and compiles cleanly against mathlib v4.37.0-rc1 (checked on Brennan's Mac Studio, Nov 25, 2026). A port of the whole library to mathlib is under way on its own branch.
 
+## License
+
+Copyright 2026 Brennan Pope.
+
+- **Code** (the Lean library and every `.lean` file, the Python checks and scripts, and the page-building code) is under the [Apache License 2.0](LICENSE).
+- **Everything else** (the write-ups, READMEs, notes, pages, figures and the data we generated) is under [Creative Commons Attribution 4.0 International](LICENSE-docs) (CC BY 4.0): share and adapt it freely, with credit.
+- Outside data copied in for checks, such as the Pantheon+ supernova tables, keeps its own source's terms.
+
 ## Where to look
 
 - [INDEX.md](INDEX.md) lists every topic with its folder and its published page.

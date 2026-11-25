@@ -5,6 +5,7 @@ type: software
 authors:
   - family-names: Pope
     given-names: Brennan
+license: Apache-2.0
 repository-code: "https://github.com/BrennanRPope/fused-hyperoperation-algebra"
 abstract: >-
   One geometric picture behind the composition law a + b + k·ab (mult-add):
@@ -12,7 +13,8 @@ abstract: >-
   product term. The repository gathers proofs, numerical checks, figures and
   write-ups across counting, primes, probability, relativity, gravity,
   electromagnetism and topology, with a shared machine-checked library of
-  over 3,000 theorems in core Lean 4.
+  over 3,000 theorems in core Lean 4. Code is under Apache-2.0; write-ups,
+  notes, pages, figures and generated data are under CC-BY-4.0.
 keywords:
   - composition laws
   - formal group laws

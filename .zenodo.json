@@ -2,8 +2,19 @@
   "title": "Fused Hyperoperation Algebra",
   "upload_type": "software",
   "creators": [
-    { "name": "Pope, Brennan" }
+    {
+      "name": "Pope, Brennan"
+    }
   ],
   "description": "One geometric picture behind the composition law a + b + k·ab (mult-add): stretch a unit box by a one way and b the other, and the extra area is the product term. The repository gathers proofs, numerical checks, figures and write-ups across counting, primes, probability, relativity, gravity, electromagnetism and topology, with a shared machine-checked library of over 3,000 theorems in core Lean 4.",
-  "keywords": ["composition laws", "formal group laws", "Lean 4", "formal verification", "Clifford algebra", "relativity"]
+  "keywords": [
+    "composition laws",
+    "formal group laws",
+    "Lean 4",
+    "formal verification",
+    "Clifford algebra",
+    "relativity"
+  ],
+  "license": "Apache-2.0",
+  "notes": "Code (Lean library, Python checks and scripts) is licensed Apache-2.0. Write-ups, notes, pages, figures and generated data are licensed CC-BY-4.0 (see LICENSE-docs). Third-party data keeps its source terms."
 }
