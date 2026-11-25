@@ -1,0 +1,37 @@
+original	status	new_name	note
+mint	ported	MultAdd.Calculus.mint	now a Finset.prod over range n in PreQuasiregular R; the old recursion is mint_zero, mint_succ
+liftProd	mathlib	Finset.prod	written ∏ k ∈ range n, (1 + d k)
+mint_lift	ported	MultAdd.Calculus.one_add_mint	renamed
+ftc_step	ported	MultAdd.Calculus.mint_succ	renamed (was rfl, now a lemma)
+ftc	ported	MultAdd.Calculus.ftc	
+ftc_box	ported	MultAdd.Calculus.ftc_box	
+mint_const	ported	MultAdd.Calculus.mint_const	
+mint_add	ported	MultAdd.Calculus.mint_add	
+product_rule_step	ported	MultAdd.Calculus.product_rule_step	
+mint_multAdd	ported	MultAdd.Calculus.mint_multAdd	
+mpow_mul	dropped	MultAdd.mpow_mul	already in FusedAlgebra.Basic with the same statement
+rate_product	ported	MultAdd.Calculus.rate_product	the hypotheses F' = F * (1 + h * p), G' = G * (1 + h * q) are substituted into the statement
+rate_product_limit	dropped	MultAdd.wAdd_weight_zero	was a restatement of the Basic lemma
+ts_exp	dropped	MultAdd.one_add_mul_wpow	was a restatement of the Basic lemma
+ts_exp_mul	ported	MultAdd.Calculus.ts_exp_mul	
+diff	mathlib	fwdDiff	diff f k is Δ_[1] f k
+step_iff	ported	MultAdd.Calculus.step_iff	
+leibniz_corner	ported	MultAdd.Calculus.leibniz_corner	
+diff_multAdd	ported	MultAdd.Calculus.fwdDiff_multAdd	renamed
+diff_pow	ported	MultAdd.Calculus.fwdDiff_one_add_pow	renamed
+sumTo	mathlib	Finset.sum	written ∑ k ∈ range n, g k
+ftc_add	ported	MultAdd.Calculus.ftc_add	one-line corollary of Finset.sum_range_sub; generalised to any additive commutative group
+jackson_gap	ported	MultAdd.Calculus.jackson_gap	
+mslope	ported	MultAdd.Calculus.mslope	
+mslope_step	ported	MultAdd.Calculus.mslope_step	
+ftc_mslope	ported	MultAdd.Calculus.ftc_mslope	
+ts_inverse	ported	MultAdd.Calculus.ts_inverse	
+dif	mathlib	fwdDiff	dif k f is (Δ_[1])^[k] f (Function.iterate)
+dif_shift	mathlib	fwdDiff_iter_comp_add	
+dif_one	dropped	Function.iterate_succ_apply'	immediate from the definition of fwdDiff; only needed for the hand proof of newton
+isum	mathlib	Finset.sum	written ∑ k ∈ range n, g k
+isum_add	mathlib	Finset.sum_add_distrib	
+isum_congr	mathlib	Finset.sum_congr	
+pascal_sum	ported	MultAdd.Calculus.pascal_sum	Cube.layer is Nat.choose; generalised from ℤ to any ring; no longer used by newton
+newton	ported	MultAdd.Calculus.newton	one-line corollary of mathlib's shift_eq_sum_fwdDiff_iter; generalised from ℤ to any ring
+cubes_example	ported	MultAdd.Calculus.cubes_example	
