@@ -1,0 +1,35 @@
+PASS S1 shift x -> 1+x carries sadd to +
+PASS S2 shift x -> 1+x carries multAdd to x
+PASS S3 multAdd distributes over sadd (madd_sadd / multAdd_fadd_distrib / multAdd_sAdd_distrib are one law)
+PASS S4 zero of the shifted pair is -1 (absorbs under multAdd), one is 0
+PASS S5 multAdd does NOT distribute over plain + (multAdd_not_distrib_add)
+PASS G1 circ_k = g^-1(g(a) g(b)) with generator g(x) = 1 + kx
+PASS G2 partner a + b + 1/k = g^-1(g(a) + g(b))
+PASS G3 circ_k distributes over the partner at every k (symbolic)
+PASS G4 at k = 1 the partner is exactly rung 1, sadd
+PASS H1 pulled back by E, multAdd is + : E^-1(E a o1 E b) = a + b
+PASS H2 pulled back by E, sadd is log-sum-exp : E^-1(E a + E b + 1) = log(e^a + e^b)
+PASS H3 same, 2000 random reals  [max err 8.9e-16]
+PASS H4 log semiring law a + lse(b,c) = lse(a+b, a+c)  [max err 8.9e-16]
+PASS H5 Maslov dequantization: h*lse(a/h, b/h) -> max(a,b) as h -> 0  [[np.float64(2.474077), np.float64(2.000672), np.float64(2.0), np.float64(2.0)]]
+PASS L1 Bennett: + distributes over lse  [2.1e-16]
+PASS L2 Bennett: x distributes over +  [3.7e-16]
+PASS L3 Bennett: a^(log b) distributes over x (x > 1)  [5.3e-16]
+PASS L4 ours: +(1) = o1 does NOT distribute over +(0) = +  [0.28]
+PASS L5 ours: +(2) does NOT distribute over +(1)  [0.375]
+PASS L6 ours: +(2) DOES distribute over its partner E_+(a+b+1)  [5.9e-16]
+PASS R1 fexp right-distributes over multAdd: (a o b)^c = a^c o b^c (fexp_multAdd_right)
+PASS R2 fexp does not left-distribute over multAdd and is not commutative
+PASS W1 fold at k=-1 is OR (Boolean semiring), k=0 is count (N), k=-2 is XOR (GF(2)), all lists up to 6
+PASS W2 distributivity gap of AND over the k-sum is k*a*b*c*(c-1) (ksum_distrib_gap)
+PASS W3 so on 0/1 values AND distributes over OR and over XOR
+PASS P1 sum over subsets of prod of dials = prod(1 + t) (distributive law, factorization)
+PASS P2 union (OR) convolution of two dialled power sets = dials multAdded (conv_W)  [1.1e-16]
+PASS P3 the zeta transform turns union convolution into pointwise product (Fourier meets Mobius)  [4.4e-16]
+PASS M1 Sugeno lambda-measure: mu(A u B) = mu(A) o_lambda mu(B) for disjoint A, B (lam_append)
+PASS M2 and g(mu) = 1 + lambda*mu is multiplicative: mu is a g-decomposable measure
+PASS T1 min-plus distributivity on Nat (minplus_distrib)
+PASS T2 log tau = lse of corner heights sits within log 4 of their max (solitons-rungs check 3a)
+PASS C1 soft min cut -h*lse(-c/h) -> min cut as h -> 0 (exploration part 2b)  [err at h=0.01: 0.0073]
+
+33/33 pass

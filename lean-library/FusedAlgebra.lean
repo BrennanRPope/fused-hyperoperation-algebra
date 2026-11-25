@@ -132,4 +132,5 @@ import FusedAlgebra.Topics.ShapeDependencies
 import FusedAlgebra.Topics.BooleanLattice
 import FusedAlgebra.Topics.BeyondOneLoop
 import FusedAlgebra.Topics.CornerWeights
+import FusedAlgebra.Topics.Precession
 import FusedAlgebra.Deprecated

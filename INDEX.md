@@ -15,12 +15,15 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: the holographic entropy cone as the cube corner sum at k = −1 (physics published; cube reading ours; one open lead: a softened min cut keeps monogamy) | `topics/holographic-entropy-cube/` | — |
 | DRAFT: is probability entanglement? Time, small loops, the helix and the union rule. Mostly known results; one lead: the AdS₃ cross-ratio read as a clock's tick probability, which explains why ∘₋₁ appears there. A hidden loop or helix still hits Bell's wall. Section 9 (second pass): gluing by ∘₋₁ holds in heated, excited, squeezed and spinning states; the dial moves only when a bath is forgotten. | `topics/probability-entanglement/` | — |
 | DRAFT: how quantum paths add up to everyday laws, and path sums as database aggregates. The circle operation does the bookkeeping along a path, but the canceling that gives Newton's laws is ordinary addition, so no new physics. Two tidy pieces: one dial map of path aggregates (counting, least action, quantum, statistical), and the height flow as a critical family tree. | `topics/quantum-to-classical/` | — |
+| DRAFT: precession. Thomas, Foucault and Berry precession from one swap rule of the circle operation (known physics, cube reading ours); open lead: frame dragging from the swap rule. 23 Lean theorems. | `topics/precession/` | — |
+| DRAFT: semiring audit. ∘ₖ with a + b + 1/k is a known generated semiring in Pap's pseudo-analysis (cite and reuse); renames proposed only. | `topics/semiring-audit/` | — |
+| DRAFT: number-theory geometries as ways to bend the hypercube: tropical (corners), permutohedron (paths), cluster algebras (cube into associahedra). | `topics/number-theory-geometries/` | — |
 
 ## The library and tools
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,176 theorems, 133 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,201 theorems, 134 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |

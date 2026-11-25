@@ -1,0 +1,54 @@
+== A. Swap = turn: the circle operation on quaternions
+PASS A1 lift survives non-commutativity: 1 + k(a o b) = (1 + ka)(1 + kb) for quaternions (sympy, exact)
+PASS A2 the circle operation stays associative on quaternions (exact)
+PASS A3 swap difference: a o b - b o a = k (ab - ba) (exact)
+PASS A4 two directions: uv - vu = 2 (u x v), real part 0 (exact): the swap points at 90 deg to both inputs
+PASS A5 swap = turn: b o a = X^-1 (a o b) X with X = 1 + ka (2000 random quaternions and k)   [max err 1.8e-15]
+PASS A6 swapping keeps the size: |1 + k(a o b)| = |1 + k(b o a)| (four-square identity)   [max err 1.1e-13]
+PASS A7 inputs along one line commute, so no turn: one-dimensional pages have no precession
+== B. One composition law, two ends
+PASS B1 turns compose by o_1 on quaternions: g' = (g + h + g x h)/(1 - g.h) (Rodrigues 1840), matches SO(3) for 2000 random pairs; the dot part is the plane dial d = +1, the cross part is the tilt   [max err 3.0e-12]
+PASS B2 boosts compose by o_1 in the Pauli algebra: (1 + u)(1 + v) = (1 + u.v) + (u + v) + i(u x v) (the dial flips: d = -1 puts + in front of u.v)   [max err 4.4e-16]
+PASS B3 the cross part of the boost corner is a turn: Thomas-Wigner angle tan(theta/2) = |u x v|/(1 + u.v) matches 4x4 Lorentz matrices (500 random pairs)   [max err 3.7e-13]
+PASS B4 perpendicular boosts: corner angle obeys the textbook cos(theta) = (g1 + g2)/(1 + g1 g2)
+== C. Twist = d x area: Foucault from the d = +1 law, Thomas from d = -1
+PASS C1 the plane law cancels on the left: w (+) ((-w) (+) x) = x, at d = +1 and d = -1   [max err 7.2e-16]
+PASS C2 one triangle: twist = +1 x (spherical area) at d = +1 (500 random triangles; Gauss-Bonnet)   [max err 2.7e-15]
+PASS C3 one triangle: twist = -1 x (hyperbolic area) at d = -1 (Thomas side, as on the twisted-boosts page)   [max err 1.9e-13]
+PASS C4 one law for every dial: fan of o-twists around a circle of radius rho gives 2 pi (1 - cos(sqrt(d) rho)) (d from +1 to -1; cosh for d < 0; 0 at d = 0, Galilean: no precession)   [max err 2.8e-06]
+PASS C5 Foucault: swing plane turns 2 pi - (cap area) = 2 pi sin(latitude) per sidereal day, from the d = +1 twists alone   [max err 4.9e-07 rad]
+PASS C6 Paris (48.85 N, Foucault 1851): 11.3 deg per hour (about 31.8 h per full turn); pole 15.04 deg/h, equator 0   [11.326 deg/h]
+PASS C7 a pendulum integrated on the rotating Earth (Coriolis force) turns at the same rate (3 latitudes)   [max miss 5.7e-04 rad]
+PASS C8 Thomas from the same fan code with the dial flipped (d = -1): 2 pi (gamma - 1) per lap, retrograde   [max err 1.3e-05]
+== D. Free rigid body: Montgomery's phase, orientation built only by composing turns with o_1
+   axis 3, w0 [0.1 0.2 1. ]: T = 6.2676, dtheta = -6.205222, 2ET/L = 6.395526, Lambda = +0.034377, miss -5.6e-10 (other sign -0.07)
+   axis 3, w0 [0.3  0.05 0.9 ]: T = 7.0455, dtheta = -6.101508, 2ET/L = 6.544136, Lambda = +0.079273, miss -1.3e-09 (other sign -0.16)
+   axis 1, w0 [1.   0.2  0.15]: T = 10.9645, dtheta = -0.859476, 2ET/L = 10.778879, Lambda = -0.928015, miss 1.2e-08 (other sign 1.86)
+   axis 1, w0 [0.9 0.3 0.3]: T = 12.9812, dtheta = +1.532699, 2ET/L = 11.623894, Lambda = -2.475175, miss 1.9e-08 (other sign -1.33)
+PASS D1 after one body period the composed rotation is a pure turn about the fixed angular momentum (4 runs)   [max off-axis 1.5e-14]
+PASS D2 Montgomery's rigid-body phase: turn = 2ET/|L| - Lambda, with Lambda the solid angle from the d = +1 fan (4 runs, both stable axes)   [max miss 1.9e-08 rad]
+PASS D3 the other sign (+Lambda) fails, so the twist term is really there
+== E. The torqued gyroscope (heavy symmetric top)
+PASS E1 the push is at 90 deg: gravity's torque is horizontal and perpendicular to the axle at every step   [max |tau.axle|, |tau_z| = 2.8e-17]
+PASS E2 steady precession, axle horizontal: rate = m g l /(I3 w3) from composing turns (quarter lap)   [rate 0.050000 vs 0.050000]
+PASS E3 the axle stays level in steady precession   [max height 5.0e-07]
+PASS E4 energy conserved   [rel drift 3.5e-09]
+PASS E5 released without precession it dips and loops (nutation); depth matches 2 I1 m g l/(I3 w3)^2 (fast top)   [dip 0.00750 rad vs 0.00750]
+PASS E6 its average precession rate is still m g l /(I3 w3) to within 3%   [0.05000 vs 0.05000]
+== F. Larmor precession and Berry's half angle (spin 1/2)
+PASS F1 Larmor: spin turned by composing small turns with o_1 matches rotation at gamma B about B   [err 2.1e-14]
+PASS F2 precession keeps |S| and the angle to B (the turn is at 90 deg to both)
+PASS F3 Berry: spin 1/2 following a field around a cone picks up -1/2 x (solid angle), cone angles 0.4, 0.9, 1.3 rad   [max miss 1.5e-03 (adiabatic error ~ nu/b)]
+PASS F4 the Berry phase is exactly half the d = +1 twist of the field's loop: the spinor is the half-angle chart
+== G. Frame dragging in the spinning BTZ black hole (2+1 gravity, l = 1, 8G = 1)
+PASS G1 rotating BTZ: g_tt = -(r^2 - M) and g_t phi = -J/2 exactly (static observers exist outside r^2 = M)
+PASS G2 a gyroscope held still beside the hole turns, relative to the static frame locked to the far boundary, at w = J / (2 (r^2 - M)) per unit proper time; a zero-angular-momentum observer's gyroscope does not   [w_static = J/(2*(-M + r**2))]
+PASS G3 independent check: Fermi-Walker transport integrated along a static worldline turns at the same rate   [numeric -0.256410256 vs 0.256410256]
+PASS G4 no spin, no drag: J = 0 gives w = 0
+PASS G5 far out the static gyroscope's rate approaches the frame-dragging angular velocity J/(2 r^2)
+PASS G6 horizon drag speed Omega_H l = r_-/r_+ = (T_R - T_L)/(T_R + T_L); Hawking temperature = harmonic mean of T_L, T_R
+PASS G7 its relativity-page coordinate 2u/(1 - u) (Doppler factor squared minus one) is T_R/T_L - 1: the temperature ratio is the lift
+PASS G8 stacking two drags (Einstein addition) multiplies the temperature ratios, i.e. o_1 on T_R/T_L - 1
+PASS G9 the spinning bath of the probability-entanglement thread (left movers 4x hotter): horizon drags at 3/5 of light speed
+
+41/41 checks pass
