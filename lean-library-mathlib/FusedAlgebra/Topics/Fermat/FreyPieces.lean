@@ -431,6 +431,15 @@ theorem frey_disc_pth_power {R : Type*} [CommRing R] {a b c Δ : R} {p : ℕ}
     (hΔ : 256 * Δ = (a ^ p * b ^ p * c ^ p) ^ 2) : 256 * Δ = ((a * b * c) ^ 2) ^ p := by
   rw [hΔ]; ring
 
+/-- `q ^ a ∣ q ^ b * m` with `q ∤ m` forces `a ≤ b`. Here `q` need not be prime; for a prime
+`q` this is `Nat.Prime.pow_dvd_iff_le_factorization`. -/
+theorem pow_dvd_bound {q a b m : ℕ} (hq : 2 ≤ q) (hm : ¬ q ∣ m) (h : q ^ a ∣ q ^ b * m) :
+    a ≤ b := by
+  by_contra hab
+  have h1 : q ^ (b + 1) ∣ q ^ b * m := (pow_dvd_pow q (by lia)).trans h
+  rw [pow_succ] at h1
+  exact hm (Nat.dvd_of_mul_dvd_mul_left (Nat.pow_pos (by lia)) h1)
+
 /-- The exact exponent of a prime in a `p`-th power is a multiple of `p`. -/
 theorem exact_exponent_pth_power {q M e : ℕ} (p : ℕ) (hq : q.Prime) (hM : M ≠ 0)
     (he : q ^ e ∣ M ^ p) (he1 : ¬q ^ (e + 1) ∣ M ^ p) : p ∣ e := by

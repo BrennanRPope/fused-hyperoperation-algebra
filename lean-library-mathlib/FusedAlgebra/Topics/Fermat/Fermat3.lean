@@ -459,6 +459,18 @@ theorem cop_of_param {a b p q : ℤ} (hpq : IsCoprime p q) (hp : p = a ^ 3 - 9 *
 
 /-! ### Fermat's Last Theorem for exponent 3, from mathlib -/
 
+/-- The descent measure: if `N ^ 3 < |z ^ 3|` and `x, y ≠ 0`, then `N < |x * y * z|`. In Euler's
+descent this is the step showing that the new solution is smaller than the old one. The descent
+itself is not ported (mathlib's `fermatLastTheoremThree` replaces it); this bookkeeping lemma is
+kept because it is a true statement in its own right. -/
+theorem measure_lt {x y z : ℤ} {N : ℕ} (hx : x ≠ 0) (hy : y ≠ 0) (h : N ^ 3 < (z ^ 3).natAbs) :
+    N < (x * y * z).natAbs := by
+  rw [Int.natAbs_pow] at h
+  calc N < z.natAbs := lt_of_pow_lt_pow_left₀ 3 (Nat.zero_le _) h
+    _ ≤ (x * y).natAbs * z.natAbs :=
+      Nat.le_mul_of_pos_left _ (Int.natAbs_pos.2 (mul_ne_zero hx hy))
+    _ = (x * y * z).natAbs := (Int.natAbs_mul _ _).symm
+
 /-- Fermat's Last Theorem for exponent 3, over the integers: no nonzero `x`, `y`, `z` with
 `x ^ 3 + y ^ 3 = z ^ 3`. This is mathlib's `fermatLastTheoremThree`. -/
 theorem flt3 (x y z : ℤ) (hx : x ≠ 0) (hy : y ≠ 0) (hz : z ≠ 0) : x ^ 3 + y ^ 3 ≠ z ^ 3 :=

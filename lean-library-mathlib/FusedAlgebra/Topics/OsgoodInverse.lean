@@ -233,10 +233,16 @@ theorem dsum_succ (a : ℕ → K) (n : ℕ) : dsum a (n + 1) = dsum a n + blk a 
 theorem csum_succ (a : ℕ → K) (n : ℕ) : csum a (n + 1) = csum a n + 2 ^ n * a (2 ^ n) :=
   sum_range_succ _ _
 
-/-- A constant over the `j`-th block sums to `2 ^ j * c`. -/
-theorem blk_const (c : K) (j : ℕ) : blk (fun _ ↦ c) j = 2 ^ j * c := by
-  rw [blk, sum_const, Nat.card_Ico, pow_succ, mul_two, Nat.add_sub_cancel, nsmul_eq_mul]
+/-- A constant over any block of length `2 ^ j`, starting anywhere, sums to `2 ^ j * c`. -/
+theorem const_block (c : K) (j s : ℕ) : ∑ _k ∈ Ico s (s + 2 ^ j), c = 2 ^ j * c := by
+  rw [sum_const, Nat.card_Ico, Nat.add_sub_cancel_left, nsmul_eq_mul]
   norm_num
+
+/-- A constant over the `j`-th block sums to `2 ^ j * c`: the case `s = 2 ^ j` of
+`const_block`. -/
+theorem blk_const (c : K) (j : ℕ) : blk (fun _ ↦ c) j = 2 ^ j * c := by
+  rw [blk, Nat.two_pow_succ]
+  exact const_block c j (2 ^ j)
 
 variable [LinearOrder K] [IsStrictOrderedRing K]
 

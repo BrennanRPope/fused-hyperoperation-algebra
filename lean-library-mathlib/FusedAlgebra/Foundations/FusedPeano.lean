@@ -202,6 +202,22 @@ noncomputable def ringEquivNat : N ≃+* ℕ := equivNat.ringEquiv
 
 @[simp] theorem ringEquivNat_apply (n : N) : ringEquivNat n = equivNat n := rfl
 
+/-- Addition on any model cancels on the right (`add_right_cancel'` in the original). It is
+proved here for the model itself, by carrying the equation to `ℕ` along `ringEquivNat`. -/
+protected theorem add_right_cancel {a b c : N} (h : a + c = b + c) : a = b :=
+  ringEquivNat.injective <| Nat.add_right_cancel (m := ringEquivNat c) <| by
+    rw [← map_add, ← map_add, h]
+
+/-- Addition on any model cancels on the left. -/
+protected theorem add_left_cancel {a b c : N} (h : a + b = a + c) : b = c :=
+  FusedPeano.add_right_cancel (c := a) <| by rw [add_comm b a, add_comm c a, h]
+
+/-- Every model is a cancellative additive monoid, so mathlib's `add_right_cancel`,
+`add_left_cancel` and their `iff` forms apply to it directly. -/
+instance instIsCancelAdd : IsCancelAdd N where
+  add_left_cancel _ _ _ := FusedPeano.add_left_cancel
+  add_right_cancel _ _ _ := FusedPeano.add_right_cancel
+
 @[simp] theorem ringEquivNat_symm_apply (k : ℕ) : (ringEquivNat (N := N)).symm k = toN k := rfl
 
 theorem zero_eq : (0 : N) = zero := (map_zero (ringEquivNat (N := N)).symm).symm
