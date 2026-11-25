@@ -1,0 +1,39 @@
+original	status	new_name	note
+dop	ported	Relativity.dop	generalised from ℚ to any field
+dop_lift	ported	Relativity.one_add_dop	renamed; any field
+dop_vel	ported	Relativity.dop_vel	generalised from ℚ to any field
+dop_back	ported	Relativity.dop_back	any field with 2 ≠ 0 (false in characteristic 2)
+velC	ported	Relativity.velC	generalised from ℚ to any field
+velC_units	ported	Relativity.velC_units	any field; the unused hypothesis c ≠ 0 is dropped (stronger statement)
+dop_wall	ported	Relativity.dop_wall	any field with 2 ≠ 0 (false in characteristic 2)
+gap_to_light	ported	Relativity.gap_to_light	generalised from ℚ to any field
+under_light	ported	Relativity.under_light	generalised from ℚ to any linearly ordered field
+kicks	ported	Relativity.kicks	now (vel · u)^[n] 0 (Function.iterate); kicks_zero and kicks_succ give the old equations; any field
+kN	ported	Relativity.kN	now the entry (boost u ^ n) 0 1 of the matrix power, instead of a mutual recursion; kN_zero and kN_succ give the old equations; any commutative ring
+kD	ported	Relativity.kD	now the entry (boost u ^ n) 0 0 of the matrix power; kD_zero and kD_succ give the old equations; any commutative ring
+kicks_plus	ported	Relativity.kD_add_kN	renamed; any commutative ring
+kicks_minus	ported	Relativity.kD_sub_kN	renamed; any commutative ring
+kick_step	ported	Relativity.kick_step	any field; the unused hypothesis kD n u + u * kN n u ≠ 0 is dropped (stronger statement)
+kicks_lift	ported	Relativity.kicks_lift	generalised from ℚ to any commutative ring
+B2	mathlib	Matrix (Fin 2) (Fin 2) R	the four-number structure is a 2×2 matrix
+boost	ported	Relativity.boost	now the matrix !![1, u; u, 1] over any commutative ring
+B2.mul	mathlib	Matrix.instMul	matrix multiplication (HMul.hMul); Matrix.mul_fin_two is the four-entry formula
+boost_mul	ported	Relativity.boost_mul	matrix product; any commutative ring. New: boost_mul_boost (= (1 + u * v) • boost (vel u v)) and det_boost
+boost_mul_vel	ported	Relativity.boost_mul_vel	generalised from ℚ to any field
+squeeze_plus	ported	Relativity.squeeze_plus	generalised from ℚ to any commutative ring
+squeeze_minus	ported	Relativity.squeeze_minus	generalised from ℚ to any commutative ring
+squeeze_ratio	ported	Relativity.squeeze_ratio	generalised from ℚ to any field
+hyperbola	ported	Relativity.hyperbola	generalised from ℚ to any commutative ring
+hyperbola_cone	ported	Relativity.hyperbola_cone	generalised from ℚ to any commutative ring
+cone_fixed	ported	Relativity.cone_fixed	generalised from ℚ to any commutative ring
+cone_fixed'	ported	Relativity.cone_fixed_neg	renamed; any commutative ring
+landscape_point	ported	Relativity.landscape_point	generalised from ℚ to any field
+landscape_walls	ported	Relativity.landscape_walls	any field; the unused hypothesis c ≠ 0 is dropped (stronger statement)
+corner_tax	ported	Relativity.corner_tax	generalised from ℚ to any field
+rung_natural_k	ported	Relativity.rung_natural_k	generalised from ℚ to any field
+rung_natural_q	ported	Relativity.rung_natural_q	any field with 2 ≠ 0 (false in characteristic 2)
+rung_parabola	ported	Relativity.rung_parabola	any field with 2 ≠ 0 (false in characteristic 2)
+rung_walls	ported	Relativity.rung_walls	generalised from ℚ to any commutative ring
+rung_zero_is_velocity	ported	Relativity.rung_zero_is_velocity	generalised from ℚ to any commutative ring
+rung_one_is_multadd	ported	Relativity.rung_one_is_multAdd	renamed (camelCase multAdd); any commutative ring
+rung_raw_walls	ported	Relativity.rung_raw_walls	any field with 2 ≠ 0 (false in characteristic 2)
