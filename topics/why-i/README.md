@@ -150,7 +150,7 @@ Multiply the steps of a path in the Heisenberg group and the central part record
 
 - `checks.py` → `checks_output.txt`: 44/44 pass (numpy, sympy, scipy).
 - `figures.py` → `figures/fig1` … `fig14` (PNG, labeled; fig10–14 are the path-integral section).
-- `lean/WhyI.lean`: 21 theorems, core Lean 4, no imports, no `sorry`, **not yet compiled**. To add: copy to `lean-library/FusedAlgebra/Topics/WhyI.lean`, add `FusedAlgebra.Topics.WhyI` to `build.sh` after `FusedAlgebra.Topics.OrderDial`, add an import line in `FusedAlgebra.lean`, then run `build.sh`.
+- `lean/WhyI.lean`: 21 theorems, core Lean 4, no imports, no `sorry`. Compiled in the shared library as `FusedAlgebra/Topics/WhyI.lean` (standard axioms only).
 
 ## Sources
 

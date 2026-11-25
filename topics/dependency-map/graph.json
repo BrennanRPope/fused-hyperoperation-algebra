@@ -1,0 +1,692 @@
+{
+ "nodes": [
+  {
+   "id": "MA",
+   "label": "mult-add a+b+kab lift 1+k(a*b)=(1+ka)(1+kb)",
+   "layer": 0
+  },
+  {
+   "id": "AFF",
+   "label": "stretch-and-shift (order dial)",
+   "layer": 0
+  },
+  {
+   "id": "TW",
+   "label": "the twist = oriented area",
+   "layer": 0
+  },
+  {
+   "id": "CH",
+   "label": "chain = product integral = ordered sub-chains",
+   "layer": 0
+  },
+  {
+   "id": "CK",
+   "label": "k is one Cayley-Klein label",
+   "layer": 1
+  },
+  {
+   "id": "MX",
+   "label": "matrix chains carry kappa1 (Lambda), kappa2 (c)",
+   "layer": 1
+  },
+  {
+   "id": "HP",
+   "label": "half-plane: invariant length gives J",
+   "layer": 1
+  },
+  {
+   "id": "KS",
+   "label": "keep size => Re k = 0",
+   "layer": 1
+  },
+  {
+   "id": "LT",
+   "label": "local tomography = mult-add of counts",
+   "layer": 1
+  },
+  {
+   "id": "E",
+   "label": "e = real dial chained finely",
+   "layer": 1
+  },
+  {
+   "id": "WI",
+   "label": "wall -1/k flips i",
+   "layer": 1
+  },
+  {
+   "id": "SR",
+   "label": "special relativity: velocity addition",
+   "layer": 2
+  },
+  {
+   "id": "TWB",
+   "label": "twisted boosts: twist = q x area",
+   "layer": 2
+  },
+  {
+   "id": "EM",
+   "label": "EM fixes q = -1/c^2",
+   "layer": 2
+  },
+  {
+   "id": "KP",
+   "label": "kappa-Poincare = affine chain, k=-1/kappa",
+   "layer": 2
+  },
+  {
+   "id": "I",
+   "label": "i = twist + one more ingredient",
+   "layer": 2
+  },
+  {
+   "id": "PI",
+   "label": "pi = half turn to the wall's mirror",
+   "layer": 2
+  },
+  {
+   "id": "PW",
+   "label": "path integral (weak): chain at k = -i/hbar",
+   "layer": 2
+  },
+  {
+   "id": "CB",
+   "label": "checkerboard = Kac one chain, two dials",
+   "layer": 2
+  },
+  {
+   "id": "CBV",
+   "label": "+ potential: Dirac / Schrodinger",
+   "layer": 2
+  },
+  {
+   "id": "PREC",
+   "label": "Gravity Probe B, pulsar precession",
+   "layer": 3
+  },
+  {
+   "id": "RIV",
+   "label": "river -> Schwarzschild exactly",
+   "layer": 3
+  },
+  {
+   "id": "DD",
+   "label": "direction dial = metric (Schur)",
+   "layer": 3
+  },
+  {
+   "id": "STAB",
+   "label": "c, hbar, Lambda are rigid deformations",
+   "layer": 3
+  },
+  {
+   "id": "REV",
+   "label": "lossless steps force the imaginary dial",
+   "layer": 3
+  },
+  {
+   "id": "RES",
+   "label": "every trip length forces the imaginary dial",
+   "layer": 3
+  },
+  {
+   "id": "PS",
+   "label": "path integral (strong): mass = twist; hbar only as ratio",
+   "layer": 3
+  },
+  {
+   "id": "NB",
+   "label": "Newton binding = k = -G/(rc^2), 1st order",
+   "layer": 3
+  },
+  {
+   "id": "LOV",
+   "label": "Lovelock / Deser: Einstein + Lambda",
+   "layer": 4
+  },
+  {
+   "id": "JAC",
+   "label": "Jacobson: Einstein from dQ = T dS",
+   "layer": 4
+  },
+  {
+   "id": "LED",
+   "label": "dial ledger: c, hbar, Lambda have dials; G none",
+   "layer": 4
+  },
+  {
+   "id": "HAW",
+   "label": "Hawking T: where e, i, pi, hbar, c, G meet",
+   "layer": 4
+  },
+  {
+   "id": "GD",
+   "label": "G dials (in progress)",
+   "layer": 5
+  },
+  {
+   "id": "in_H",
+   "label": "Hamiltonian / action",
+   "layer": -1
+  },
+  {
+   "id": "in_hb",
+   "label": "size of hbar",
+   "layer": -1
+  },
+  {
+   "id": "in_new",
+   "label": "Newton's escape speed v^2=2GM/r",
+   "layer": -1
+  },
+  {
+   "id": "in_2nd",
+   "label": "second-order equations",
+   "layer": -1
+  },
+  {
+   "id": "in_s2",
+   "label": "massless spin-2 field",
+   "layer": -1
+  },
+  {
+   "id": "in_eta",
+   "label": "entropy per area 1/(4 G hbar)",
+   "layer": -1
+  },
+  {
+   "id": "in_ax",
+   "label": "Hardy / Masanes-Muller axioms",
+   "layer": -1
+  }
+ ],
+ "edges": [
+  {
+   "source": "MA",
+   "target": "AFF",
+   "kind": "proved in Lean",
+   "note": "k_slice, app_comp (OrderDial); T_comp (GroupsLie)"
+  },
+  {
+   "source": "MA",
+   "target": "CH",
+   "kind": "proved in Lean",
+   "note": "chain_two, chain_three (WhyI); foldMA_lift (Base)"
+  },
+  {
+   "source": "MA",
+   "target": "KS",
+   "kind": "numeric / symbolic check",
+   "note": "e-i-pi A4-A5 (complex k; no Lean)"
+  },
+  {
+   "source": "MA",
+   "target": "E",
+   "kind": "numeric / symbolic check",
+   "note": "e-i-pi A2; Lean Topics/E has the discrete identities"
+  },
+  {
+   "source": "MA",
+   "target": "LT",
+   "kind": "proved in Lean",
+   "note": "counts_mult_add (EIPi)"
+  },
+  {
+   "source": "MA",
+   "target": "CK",
+   "kind": "numeric / symbolic check",
+   "note": "cayley-klein K2 (Cayley map)"
+  },
+  {
+   "source": "MA",
+   "target": "SR",
+   "kind": "proved in Lean",
+   "note": "Relativity (30 theorems)"
+  },
+  {
+   "source": "MA",
+   "target": "NB",
+   "kind": "prose argument or reading only",
+   "note": "a reading at fixed separation; differs from ADM at 3rd order"
+  },
+  {
+   "source": "AFF",
+   "target": "TW",
+   "kind": "proved in Lean",
+   "note": "order_gap (OrderDial); wedge_antisymm, dial_twist (WhyI)"
+  },
+  {
+   "source": "AFF",
+   "target": "HP",
+   "kind": "numeric / symbolic check",
+   "note": "why-i C1-C9; Milnor 1976 cited"
+  },
+  {
+   "source": "AFF",
+   "target": "WI",
+   "kind": "cited theorem, not proved here",
+   "note": "Gelfand-Naimark 1947; why-i G1-G4"
+  },
+  {
+   "source": "AFF",
+   "target": "KP",
+   "kind": "numeric / symbolic check",
+   "note": "kappa-poincare K2"
+  },
+  {
+   "source": "TW",
+   "target": "I",
+   "kind": "cited theorem, not proved here",
+   "note": "six published roads; why-i B1-B8, D1-D4, H1-H2"
+  },
+  {
+   "source": "CH",
+   "target": "PW",
+   "kind": "numeric / symbolic check",
+   "note": "why-i P1-P5; unbounded H rests on Chernoff (cited)"
+  },
+  {
+   "source": "CH",
+   "target": "CB",
+   "kind": "proved in Lean",
+   "note": "circ_three, counts_five (Checkerboard); B1-B3 numeric"
+  },
+  {
+   "source": "CK",
+   "target": "MX",
+   "kind": "numeric / symbolic check",
+   "note": "cayley-klein N3"
+  },
+  {
+   "source": "CK",
+   "target": "KP",
+   "kind": "numeric / symbolic check",
+   "note": "kappa-poincare K3, K7"
+  },
+  {
+   "source": "MX",
+   "target": "STAB",
+   "kind": "cited theorem, not proved here",
+   "note": "H^2 numbers checked (dial-map S0-S4); rigidity cited: Levy-Nahas, Vey, BFFLS"
+  },
+  {
+   "source": "MX",
+   "target": "LED",
+   "kind": "numeric / symbolic check",
+   "note": "Lambda as kappa1"
+  },
+  {
+   "source": "HP",
+   "target": "I",
+   "kind": "numeric / symbolic check",
+   "note": "why-i C5"
+  },
+  {
+   "source": "HP",
+   "target": "PS",
+   "kind": "numeric / symbolic check",
+   "note": "path-integral-strong M2-M5"
+  },
+  {
+   "source": "KS",
+   "target": "I",
+   "kind": "numeric / symbolic check",
+   "note": "why-i D1, P6; e-i-pi A4-A5"
+  },
+  {
+   "source": "KS",
+   "target": "PI",
+   "kind": "numeric / symbolic check",
+   "note": "e-i-pi A6-A8 (Gaussian-integer version in Lean EIPi)"
+  },
+  {
+   "source": "KS",
+   "target": "PW",
+   "kind": "numeric / symbolic check",
+   "note": "why-i P6 (direction only)"
+  },
+  {
+   "source": "KS",
+   "target": "LED",
+   "kind": "prose argument or reading only",
+   "note": "hbar's direction"
+  },
+  {
+   "source": "LT",
+   "target": "I",
+   "kind": "cited theorem, not proved here",
+   "note": "picks complex numbers only given the axioms"
+  },
+  {
+   "source": "E",
+   "target": "HAW",
+   "kind": "prose argument or reading only",
+   "note": "thermal weight as evolution at imaginary time"
+  },
+  {
+   "source": "SR",
+   "target": "TWB",
+   "kind": "proved in Lean",
+   "note": "TwistedBoosts (36 theorems)"
+  },
+  {
+   "source": "SR",
+   "target": "RIV",
+   "kind": "numeric / symbolic check",
+   "note": "sympy (general-relativity C); postulates stated in prose"
+  },
+  {
+   "source": "SR",
+   "target": "EM",
+   "kind": "proved in Lean",
+   "note": "Electromagnetism (41 theorems)"
+  },
+  {
+   "source": "SR",
+   "target": "LED",
+   "kind": "prose argument or reading only",
+   "note": "c as the signature dial"
+  },
+  {
+   "source": "TWB",
+   "target": "PREC",
+   "kind": "proved in Lean",
+   "note": "GravityProbeB (16), BinaryPulsar (10) + measured data"
+  },
+  {
+   "source": "TWB",
+   "target": "DD",
+   "kind": "numeric / symbolic check",
+   "note": "gr-bridges S2-S8; Schur's theorem cited"
+  },
+  {
+   "source": "KP",
+   "target": "GD",
+   "kind": "prose argument or reading only",
+   "note": "candidate: Planck energy as kappa"
+  },
+  {
+   "source": "PI",
+   "target": "HAW",
+   "kind": "numeric / symbolic check",
+   "note": "e-i-pi C21 (2 pi period)"
+  },
+  {
+   "source": "PW",
+   "target": "PS",
+   "kind": "cited theorem, not proved here",
+   "note": "Bargmann, Groenewold-van Hove, Daubechies-Klauder cited; K, Q, M checks"
+  },
+  {
+   "source": "PW",
+   "target": "RES",
+   "kind": "numeric / symbolic check",
+   "note": "chain-resolves R4-R8 (Gaussian actions only)"
+  },
+  {
+   "source": "CB",
+   "target": "CBV",
+   "kind": "numeric / symbolic check",
+   "note": "checkerboard-potential A2-E3; subsetSum_eq_prod in Lean"
+  },
+  {
+   "source": "CB",
+   "target": "REV",
+   "kind": "numeric / symbolic check",
+   "note": "chain-resolves R15-R18"
+  },
+  {
+   "source": "RIV",
+   "target": "JAC",
+   "kind": "numeric / symbolic check",
+   "note": "gr-bridges J1, J4"
+  },
+  {
+   "source": "DD",
+   "target": "LOV",
+   "kind": "cited theorem, not proved here",
+   "note": "Lovelock 1971 / Deser 1970 cited"
+  },
+  {
+   "source": "DD",
+   "target": "JAC",
+   "kind": "numeric / symbolic check",
+   "note": "gr-bridges J3"
+  },
+  {
+   "source": "STAB",
+   "target": "LED",
+   "kind": "cited theorem, not proved here",
+   "note": "stability theorems cited"
+  },
+  {
+   "source": "REV",
+   "target": "I",
+   "kind": "numeric / symbolic check",
+   "note": "strengthens: the turn is forced, not just allowed"
+  },
+  {
+   "source": "RES",
+   "target": "I",
+   "kind": "numeric / symbolic check",
+   "note": "strengthens: the turn is forced, not just allowed"
+  },
+  {
+   "source": "PS",
+   "target": "LED",
+   "kind": "prose argument or reading only",
+   "note": "hbar fixed only as a ratio"
+  },
+  {
+   "source": "NB",
+   "target": "GD",
+   "kind": "prose argument or reading only",
+   "note": "first-order only"
+  },
+  {
+   "source": "LOV",
+   "target": "GD",
+   "kind": "prose argument or reading only",
+   "note": "form forced, G free"
+  },
+  {
+   "source": "JAC",
+   "target": "HAW",
+   "kind": "numeric / symbolic check",
+   "note": "gr-bridges J2 (Unruh)"
+  },
+  {
+   "source": "JAC",
+   "target": "GD",
+   "kind": "prose argument or reading only",
+   "note": "candidate: G from entropy per area"
+  },
+  {
+   "source": "LED",
+   "target": "GD",
+   "kind": "prose argument or reading only",
+   "note": "G is the empty slot"
+  },
+  {
+   "source": "in_H",
+   "target": "PW",
+   "kind": "outside input",
+   "note": "Hamiltonian / action"
+  },
+  {
+   "source": "in_H",
+   "target": "PS",
+   "kind": "outside input",
+   "note": "Hamiltonian / action"
+  },
+  {
+   "source": "in_hb",
+   "target": "PW",
+   "kind": "outside input",
+   "note": "size of hbar"
+  },
+  {
+   "source": "in_hb",
+   "target": "PS",
+   "kind": "outside input",
+   "note": "size of hbar"
+  },
+  {
+   "source": "in_new",
+   "target": "RIV",
+   "kind": "outside input",
+   "note": "Newton's escape speed v^2=2GM/r"
+  },
+  {
+   "source": "in_2nd",
+   "target": "LOV",
+   "kind": "outside input",
+   "note": "second-order equations"
+  },
+  {
+   "source": "in_s2",
+   "target": "LOV",
+   "kind": "outside input",
+   "note": "massless spin-2 field"
+  },
+  {
+   "source": "in_eta",
+   "target": "JAC",
+   "kind": "outside input",
+   "note": "entropy per area 1/(4 G hbar)"
+  },
+  {
+   "source": "in_ax",
+   "target": "LT",
+   "kind": "outside input",
+   "note": "Hardy / Masanes-Muller axioms"
+  }
+ ],
+ "cycles": [],
+ "not_reachable_by_lean_or_checked_links": [
+  "WI",
+  "STAB",
+  "NB",
+  "LOV",
+  "GD"
+ ],
+ "lean_modules": {
+  "Base": {
+   "theorems": 46,
+   "imports": []
+  },
+  "Thermodynamics": {
+   "theorems": 68,
+   "imports": [
+    "Base"
+   ]
+  },
+  "GroupsLie": {
+   "theorems": 50,
+   "imports": [
+    "Base"
+   ]
+  },
+  "OrderDial": {
+   "theorems": 33,
+   "imports": [
+    "Base"
+   ]
+  },
+  "Relativity": {
+   "theorems": 30,
+   "imports": [
+    "Base",
+    "Thermodynamics"
+   ]
+  },
+  "TwistedBoosts": {
+   "theorems": 36,
+   "imports": [
+    "Base",
+    "Thermodynamics",
+    "Relativity"
+   ]
+  },
+  "Electromagnetism": {
+   "theorems": 41,
+   "imports": [
+    "Base",
+    "Thermodynamics",
+    "Relativity",
+    "TwistedBoosts"
+   ]
+  },
+  "GravityProbeB": {
+   "theorems": 16,
+   "imports": [
+    "Base"
+   ]
+  },
+  "BinaryPulsar": {
+   "theorems": 10,
+   "imports": [
+    "Base"
+   ]
+  },
+  "GeneralRelativity": {
+   "theorems": 28,
+   "imports": [
+    "Base"
+   ]
+  },
+  "GRBridges": {
+   "theorems": 22,
+   "imports": [
+    "Base"
+   ]
+  },
+  "Clifford": {
+   "theorems": 53,
+   "imports": [
+    "Base",
+    "GroupsLie"
+   ]
+  },
+  "Pi": {
+   "theorems": 45,
+   "imports": [
+    "Base"
+   ]
+  },
+  "E": {
+   "theorems": 37,
+   "imports": [
+    "Base",
+    "Cube"
+   ]
+  },
+  "Cube": {
+   "theorems": 7,
+   "imports": [
+    "Base"
+   ]
+  },
+  "WhyI": {
+   "theorems": 21,
+   "imports": []
+  },
+  "EIPi": {
+   "theorems": 17,
+   "imports": []
+  },
+  "Checkerboard": {
+   "theorems": 4,
+   "imports": []
+  },
+  "CheckerboardPotential": {
+   "theorems": 3,
+   "imports": []
+  },
+  "PathNames": {
+   "theorems": 5,
+   "imports": []
+  }
+ }
+}

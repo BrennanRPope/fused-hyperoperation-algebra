@@ -12,6 +12,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
 | Mathlib port check: does the port on the `mathlib-port` branch prove the same 1,750 theorems? (read side by side, not compiled) | `topics/mathlib-port-check/` | no page |
 | Common patterns pass | `topics/patterns/` | no page yet |
+| Dependency map: prerequisites for a G dial, how results depend on each other, and what each rests on ([DEPENDENCY-MAP.md](DEPENDENCY-MAP.md)) | `topics/dependency-map/` | — |
 
 ## Foundations
 

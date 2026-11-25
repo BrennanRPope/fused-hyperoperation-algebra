@@ -35,6 +35,8 @@ Every result here rests on one of three things, and the repo keeps each one visi
 
 The [CI build](https://github.com/BrennanRPope/fused-hyperoperation-algebra/actions/workflows/ci.yml) enforces all of this on every push: it rebuilds the whole library, fails on any `sorry` or non-standard axiom, fails if ASSUMPTIONS.md is out of date, and runs every topic's check scripts. A red badge at the top means something new broke something old.
 
+[DEPENDENCY-MAP.md](DEPENDENCY-MAP.md) shows how the results depend on each other and how each link is backed (Lean, checks, a cited theorem or prose), and scores them against 22 prerequisites any quantum-gravity answer or G dial has to meet: 4 met, 7 met only with an input put in by hand, 7 not met. The biggest gap is the black-hole area law S = A/(4Għ). It also flags the results held up only by prose, including the dial ledger itself.
+
 ## The idea in plain words
 
 Ordinary arithmetic throws information away. 0 × 4 = 0 forgets the 4, and 4 / 0 is simply "undefined". This project looks for operations that keep that information, and for one simple geometric picture that ties a lot of existing math together.
