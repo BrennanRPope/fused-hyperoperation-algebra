@@ -1,0 +1,90 @@
+original	status	new_name	note
+FusedPeano	ported	MAFound.FusedPeano	same fields and axioms; Type generalised to Type*
+FusedPeano.zero	ported	MAFound.FusedPeano.zero	
+FusedPeano.succ	ported	MAFound.FusedPeano.succ	
+FusedPeano.sadd	ported	MAFound.FusedPeano.sadd	
+FusedPeano.madd	ported	MAFound.FusedPeano.madd	
+FusedPeano.succ_ne_zero	ported	MAFound.FusedPeano.succ_ne_zero	axiom P1
+FusedPeano.succ_inj	ported	MAFound.FusedPeano.succ_inj	axiom P2
+FusedPeano.sadd_zero	ported	MAFound.FusedPeano.sadd_zero	axiom R1
+FusedPeano.sadd_succ	ported	MAFound.FusedPeano.sadd_succ	axiom R1
+FusedPeano.madd_zero	ported	MAFound.FusedPeano.madd_zero	axiom R2
+FusedPeano.madd_succ	ported	MAFound.FusedPeano.madd_succ	axiom R2
+FusedPeano.ind	ported	MAFound.FusedPeano.ind	axiom I
+FusedPeano.succ_sadd	ported	MAFound.FusedPeano.succ_sadd	
+FusedPeano.zero_sadd	ported	MAFound.FusedPeano.zero_sadd	
+FusedPeano.sadd_comm	ported	MAFound.FusedPeano.sadd_comm	
+FusedPeano.sadd_assoc	ported	MAFound.FusedPeano.sadd_assoc	
+FusedPeano.sadd_right_cancel	ported	MAFound.FusedPeano.sadd_right_cancel	
+FusedPeano.sadd_ne_zero	ported	MAFound.FusedPeano.sadd_ne_zero	
+FusedPeano.zero_madd	ported	MAFound.FusedPeano.zero_madd	
+FusedPeano.succ_madd	ported	MAFound.FusedPeano.succ_madd	
+FusedPeano.madd_comm	ported	MAFound.FusedPeano.madd_comm	
+FusedPeano.madd_sadd	ported	MAFound.FusedPeano.madd_sadd	
+FusedPeano.madd_assoc	ported	MAFound.FusedPeano.madd_assoc	
+FusedPeano.sadd_is_succ	dropped	MAFound.FusedPeano.succ_add_eq_sadd	existence lemma used only to define `add` by choice; `+` is now carried over from ℕ along `equivNat`, and the witness is `x + y`
+FusedPeano.add	ported	MAFound.FusedPeano.instCommSemiring	`+` of the CommSemiring instance (structure of ℕ carried along `equivNat`) instead of a choice from `sadd_is_succ`; the defining property is `succ_add_eq_sadd`, which determines it since `succ` is injective
+FusedPeano.succ_add_eq	ported	MAFound.FusedPeano.succ_add_eq_sadd	renamed; also `MAFound.FusedPeano.sadd_eq : sadd x y = x + y + 1`
+FusedPeano.add_zero'	mathlib	add_zero	with `MAFound.FusedPeano.zero_eq : (0 : N) = zero`
+FusedPeano.add_succ'	mathlib	add_assoc	`x + succ y = succ (x + y)` is `(add_assoc x y 1).symm` after `MAFound.FusedPeano.succ_eq_add_one`
+FusedPeano.zero_add'	mathlib	zero_add	with `zero_eq`
+FusedPeano.add_comm'	mathlib	add_comm	
+FusedPeano.succ_add'	mathlib	add_right_comm	`succ x + y = succ (x + y)` is `add_right_comm x 1 y` after `succ_eq_add_one`
+FusedPeano.add_assoc'	mathlib	add_assoc	
+FusedPeano.add_right_cancel'	mathlib	add_right_cancel	N is cancellative because it is ring-isomorphic to ℕ (`ringEquivNat.injective` + `Nat.add_right_cancel`); no `IsCancelAdd N` instance is declared
+FusedPeano.madd_is	dropped	MAFound.FusedPeano.madd_eq	existence lemma used only to define `mul` by choice; the witness is `x * y`
+FusedPeano.mul	ported	MAFound.FusedPeano.instCommSemiring	`*` of the CommSemiring instance instead of a choice from `madd_is`; the defining property is `madd_eq`
+FusedPeano.madd_eq'	ported	MAFound.FusedPeano.madd_eq	renamed; `madd x y = x + y + x * y`
+FusedPeano.mul_zero'	mathlib	mul_zero	with `zero_eq`
+FusedPeano.mul_succ'	mathlib	mul_add_one	after `succ_eq_add_one`
+FusedPeano.toN	ported	MAFound.FusedPeano.toN	
+FusedPeano.toN_injective	ported	MAFound.FusedPeano.toN_injective	stated as `Function.Injective toN`
+FusedPeano.toN_surjective	ported	MAFound.FusedPeano.toN_surjective	stated as `Function.Surjective toN`
+FusedPeano.toN_bijective	ported	MAFound.FusedPeano.toN_bijective	stated as `Function.Bijective toN`; packaged as `MAFound.FusedPeano.equivNat : N ≃ ℕ`
+FusedPeano.toN_sadd	ported	MAFound.FusedPeano.toN_sadd	stated with `MultAdd.sadd a b` for `a + b + 1`
+FusedPeano.toN_madd	ported	MAFound.FusedPeano.toN_madd	stated with `a ✳ b`
+FusedPeano.toN_add	ported	MAFound.FusedPeano.toN_add	now `map_add` of `ringEquivNat.symm`
+FusedPeano.toN_mul	ported	MAFound.FusedPeano.toN_mul	now `map_mul` of `ringEquivNat.symm`
+FusedPeano.fromN	ported	MAFound.FusedPeano.equivNat	the map N → ℕ is now the forward direction of the equivalence `equivNat : N ≃ ℕ`
+FusedPeano.toN_fromN	ported	MAFound.FusedPeano.toN_equivNat	renamed
+FusedPeano.fromN_toN	ported	MAFound.FusedPeano.equivNat_toN	renamed
+FusedPeano.recN	ported	MAFound.FusedPeano.recN	target generalised to Type*
+FusedPeano.recN_zero	ported	MAFound.FusedPeano.recN_zero	
+FusedPeano.recN_succ	ported	MAFound.FusedPeano.recN_succ	
+FusedPeano.ladBase	dropped	MAFound.FusedPeano.rung_one_zero_right, MAFound.FusedPeano.rung_add_two_zero_right	base values of the schema, now lemmas about `MultAdd.rung`
+FusedPeano.lad	dropped	MultAdd.rung	the fused ladder on ℕ already exists in the ported `FusedAlgebra.Rungs`; its schema is `rung_zero`, `rung_one_zero_right`, `rung_add_two_zero_right` (this file) and `MultAdd.rung_succ_succ`
+FusedPeano.hypBase	mathlib	hyperoperation	base values are `hyperoperation_one`, `hyperoperation_two`, `hyperoperation_ge_three_eq_one` at 0
+FusedPeano.hyp	mathlib	hyperoperation	
+FusedPeano.hyp_one	mathlib	hyperoperation_ge_two_eq_self	
+FusedPeano.lad_lift	dropped	MultAdd.rung_add_one	already in the ported `FusedAlgebra.Rungs` (there `rung` is defined through the lift, so the content sits in `MultAdd.rung_succ_succ`)
+FusedPeano.hyp_add	mathlib	hyperoperation_one	
+FusedPeano.hyp_mul	mathlib	hyperoperation_two	
+FusedPeano.hyp_pow	mathlib	hyperoperation_three	
+FusedPeano.lad_one	dropped	MultAdd.rung_one	`rung 1 a b = sadd a b = a + b + 1`
+FusedPeano.lad_two	dropped	MultAdd.rung_two	`rung 2 a b = a ✳ b`
+FusedPeano.lad_three	dropped	MultAdd.rung_three	with `MultAdd.fexp_add_one`: `fexp a b + 1 = (a + 1) ^ (b + 1)`
+FusedPeano.ladN	ported	MAFound.FusedPeano.ladN	
+FusedPeano.ladN_zero_right	ported	MAFound.FusedPeano.ladN_zero_right	
+FusedPeano.ladN_succ	ported	MAFound.FusedPeano.ladN_succ	
+FusedPeano.ladN_one	ported	MAFound.FusedPeano.ladN_one	
+FusedPeano.ladN_two	ported	MAFound.FusedPeano.ladN_two	
+FusedPeano.toN_lad	ported	MAFound.FusedPeano.toN_rung	renamed; stated with `MultAdd.rung` in place of `lad`
+FusedPeano.add_toN_fromN	mathlib	Equiv.add_def	`x + y = equivNat.symm (equivNat x + equivNat y)` is how the transported `+` is defined
+FusedPeano.npow'	mathlib	Monoid.npow	power of the CommSemiring instance
+FusedPeano.instAdd	mathlib	CommSemiring instance	from MAFound.FusedPeano.instCommSemiring
+FusedPeano.instMul	mathlib	CommSemiring instance	from MAFound.FusedPeano.instCommSemiring
+FusedPeano.instNatCast	mathlib	CommSemiring instance	`MAFound.FusedPeano.natCast_eq_toN : (k : N) = toN k`
+FusedPeano.instOfNat	mathlib	instOfNat	numerals come from the CommSemiring instance
+FusedPeano.instSMulNat	mathlib	AddMonoid.toNSMul	
+FusedPeano.instHPowNat	mathlib	Monoid.Pow	
+FusedPeano.transfer2	mathlib	Function.Surjective.forall₂	applied to `toN_surjective`; proofs use `obtain ⟨a, rfl⟩ := toN_surjective x`
+FusedPeano.transfer3	mathlib	Function.Surjective.forall₃	applied to `toN_surjective`
+FusedPeano.mul_comm'	mathlib	mul_comm	
+FusedPeano.mul_assoc'	mathlib	mul_assoc	
+FusedPeano.mul_add'	mathlib	mul_add	
+FusedPeano.mul_one'	mathlib	mul_one	with `MAFound.FusedPeano.toN_one : toN 1 = 1`
+FusedPeano.instCommSemiring	ported	MAFound.FusedPeano.instCommSemiring	now a mathlib `CommSemiring N` (was `Lean.Grind.CommSemiring N`), built as `equivNat.commSemiring`; strengthened by `MAFound.FusedPeano.ringEquivNat : N ≃+* ℕ`
+FusedPeano.multAdd_eq	ported	MAFound.FusedPeano.multAdd_eq	stated with the library's `✳`
+FusedPeano.ma	mathlib	MultAdd.multAdd	`✳` on ℕ, from the ported `FusedAlgebra.Basic`
+FusedPeano.mul_definable	ported	MAFound.FusedPeano.mul_definable	stated with `✳`
+FusedPeano.add_definable	ported	MAFound.FusedPeano.add_definable	
