@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Shape's Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a surveyor's report for one person who thinks in pictures, sibling of the relativity and boosts pages
+   IDEA a surveyor's atlas: one sheet per level of "the same", with the routes drawn on the landscape plane
+   PICTURE the landscape plane with its same-shape parabolas, the rung route crossing it, and a strip showing how far the route leaves the plane
+   COLOUR paper white / night slate; blue for line-shaped laws, amber for circle-shaped laws, red for the border and the route marker, violet for the nome
+   TYPE Inter Tight 600 display + Inter
+   LAYOUT plane 60% left, readout right; then the period lattices, the table, the leads; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#eef0ec,#14171a);--panel:light-dark(#fff,#1d2226);--ink:light-dark(#101214,#eef1f3);--soft:light-dark(#4b545c,#a5afb7);--rule:light-dark(#c3c9c4,#363d44);--blue:light-dark(#2457c5,#7aa2ff);--bfill:light-dark(rgba(36,87,197,.10),rgba(122,162,255,.12));--amber:light-dark(#b45f06,#f2b24a);--afill:light-dark(rgba(180,95,6,.12),rgba(242,178,74,.13));--red:light-dark(#cc2b1d,#ff6a58);--violet:light-dark(#6b3fc4,#b79bff);--grey:light-dark(#8d969e,#6a737b)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}.wrap{max-width:1240px;margin:0 auto}
+h1{font:600 clamp(32px,4.6vw,50px)/1.05 "Inter Tight",Inter,sans-serif;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;max-width:24ch}
+h2{font:600 26px/1.15 "Inter Tight",Inter,sans-serif;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+h3{font:600 17px/1.25 "Inter Tight",Inter,sans-serif;margin:0 0 6px}
+p{max-width:68ch}.lede{font-size:17px;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.fig{position:relative;min-height:430px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.strip{position:relative;min-height:150px;margin-top:8px}.strip>svg{position:absolute;inset:0;width:100%;height:100%}
+.mini{position:relative;min-height:220px}.mini>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.ctl{display:grid;grid-template-columns:6.5em minmax(0,1fr) 4.4em;gap:10px;align-items:center;margin:4px 0}
+.ctl label{font-weight:600}.ctl output{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{width:100%;height:44px;accent-color:var(--red)}
+input[type=range]:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.big{font:600 clamp(36px,5.4vw,56px)/1 "Inter Tight",Inter,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.small{color:var(--soft);font-size:14px}
+dl.read{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:12px 0 0}
+dl.read dt{color:var(--soft)}dl.read dd{margin:0;font-variant-numeric:tabular-nums}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+table{border-collapse:collapse;width:100%}
+th,td{padding:8px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--soft);font-size:14px}
+td.v{font-weight:600}
+.tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap}
+.t-true{background:var(--violet);color:var(--panel)}.t-lens{background:var(--grey);color:var(--panel)}.t-switch{background:var(--amber);color:var(--panel)}.t-more{background:var(--blue);color:var(--panel)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+ul{padding-left:1.2em}li{margin:4px 0;max-width:72ch}
+code{font-size:14px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+@media(max-width:860px){.first,.two{grid-template-columns:minmax(0,1fr)}.three{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--soft)}.stack td:empty{display:none}.fig{min-height:340px}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<section class="band"><div class="wrap">
+<h1>Weight, bend and rung change the ruler. The nome is the one direction that changes the shape.</h1>
+<p class="lede">For a one-input law like mult-add there are exactly three global shapes, told apart by how many periods the law's log has: none (addition), one (mult-add), two (a torus). The only continuous dial left after that is the torus's proportions, the nome q. Weight is the size of the measuring stick, the landscape bend is a switch between line and circle, and rung height is a route through rulers that matches the bend to third order and leaves it at the fourth. New directions do appear, but only when there are two or more waves (pair weights) or when you insist on whole numbers (the weight's primes).</p>
+<div class="first">
+ <div class="panel">
+  <div class="fig"><svg id="plane" role="img" aria-label="The landscape plane: corner p across, bend q up, with the parabolas of constant discriminant and the rung route"></svg></div>
+  <div class="strip"><svg id="gap" role="img" aria-label="How far the rung route leaves the plane at fourth order, against rung height"></svg></div>
+ </div>
+ <div class="panel">
+  <div class="ctl"><label for="s">Rung height</label><input id="s" type="range" min="-1.5" max="3" step="0.05" value="2"><output id="so">2</output></div>
+  <div class="small">Third-order point of rung s, and how far it sits off the plane</div>
+  <div class="big" id="dbig">D = 2</div>
+  <dl class="read">
+   <dt>Point on the plane</dt><dd id="pq"></dd>
+   <dt>Its one period</dt><dd id="per"></dd>
+   <dt>Real points form</dt><dd id="form"></dd>
+   <dt>Fourth-order gap</dt><dd id="r3"></dd>
+  </dl>
+  <p class="small">Each thin parabola is one shape seen through different rulers: the ruler x ↦ x/(1+cx) slides a law along its parabola and keeps its discriminant D = p² − 4q. Zooming the units multiplies D by λ², so after units only the sign of D is left: blue below the red border (two real walls, a line), amber above it (complex walls, a circle). The rung route lands on the parabola D = s, so to third order rung height is the bend's D. Below, its fourth-order coefficient −s(s−1)/12 is a height no point of the plane has; it crosses the plane only at rungs 0 and 1.</p>
+ </div>
+</div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+<h2>The whole shape is the number of periods</h2>
+<p>Every one-input law is plain addition seen through its log. What cannot be removed by any ruler is the set of periods of that log: the steps that bring you back to the start. That set is a lattice of rank 0, 1 or 2 (a classical theorem: the connected one-dimensional complex groups are ℂ, ℂ* and the tori). Counting the points that return to the start in n equal steps tells them apart: 1, n, n². Checked with division polynomials for n = 3 and 5 on the cusp, the node and the Tate torus at q = 0.1.</p>
+<div class="three">
+ <div class="panel"><h3>No period: addition</h3><div class="mini"><svg id="l0"></svg></div><p class="small">k = 0, the cusp y² = x³. Three steps back to the start: 1 point.</p></div>
+ <div class="panel"><h3>One period: mult-add</h3><div class="mini"><svg id="l1"></svg></div><p class="small">Period 2πi/k. Every k ≠ 0 is the same shape after a zoom, so the weight is a size, not a direction. Three steps back: 3 points.</p></div>
+ <div class="panel"><h3>Two periods: a torus</h3><div class="mini"><svg id="l2"></svg></div>
+  <div class="ctl"><label for="t">Torus length</label><input id="t" type="range" min="1" max="3" step="0.02" value="1.3"><output id="to"></output></div>
+  <div class="ctl"><label for="x">Shear</label><input id="x" type="range" min="-0.5" max="0.5" step="0.01" value="0"><output id="xo"></output></div>
+  <p class="small" id="nome"></p></div>
+</div>
+<p class="small">The torus's shape is the ratio τ of its two periods; the nome is q = e^{2πiτ}. Stretching the torus (q → 0) pinches it into mult-add's cylinder, which is the soliton edge of the theta lattice. The gluing a ↦ a ✳ (q − 1) commutes with the law for every q, so nothing near 0 can see the nome; only the whole torus can, through j.</p>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+<h2>Every candidate, sorted</h2>
+<p>Three levels of "the same law": after a zoom of units, after any change of ruler near 0, and as a whole group. A direction is real only if it survives the level you care about.</p>
+<div class="panel scroll"><table class="stack"><thead><tr><th>Candidate</th><th>What it is</th><th>After a zoom</th><th>After any ruler</th><th>Whole group</th><th>Verdict</th></tr></thead><tbody id="tab"></tbody></table></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap two">
+<div>
+<h2>Where new directions do appear</h2>
+<h3>Several waves</h3>
+<p>A pair weight survives every separate rescaling of the waves (proved), so with g waves the period matrix has g(g+1)/2 entries: g nomes and g(g−1)/2 pair weights. The KdV collision weight A is the off-diagonal one at the soliton edge. From four waves on, Riemann's matrices outnumber the curves that can produce them (3g − 3): that gap is Schottky's problem, which Shiota settled in 1986 using exactly these soliton equations.</p>
+<div class="panel scroll"><table><thead><tr><th>Waves g</th><th class="num">Period-matrix numbers</th><th class="num">Curves (3g − 3)</th><th class="num">Room for a law with no curve</th></tr></thead><tbody id="gt"></tbody></table></div>
+</div>
+<div>
+<h3>Whole numbers</h3>
+<p>Over the integers the weight is no longer just a size. The p-fold power of a + b + k·ab is 0 mod p when p divides k (the law looks like addition at p) and x^p mod p otherwise (it looks like mult-add). So k carries its set of primes. This is Sekiguchi, Oort and Suwa's bridge from multiplication to addition.</p>
+<div class="panel scroll"><table><thead><tr><th>k</th><th>p = 2</th><th>p = 3</th><th>p = 5</th><th>p = 7</th></tr></thead><tbody id="pt"></tbody></table></div>
+<h3 style="margin-top:16px">On a graph</h3>
+<p>The same holds when one weight sits on many bonds at once: on three sites in a row, Z = 1 + 3z + (2k+1)z² + k²z³, and no rescaling of the sites changes k (proved). That is why the Potts colour count is physical even though a single law's weight is not.</p>
+</div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap two">
+<div>
+<h2>Is any lead worth following?</h2>
+<ul>
+<li><b>Several waves: yes.</b> This is the only place a whole new dimension actually appears, and the soliton pair weights already live there. The next test is concrete: three waves with three independent pair weights, and the count from the table above. It is known mathematics (Riemann, Krichever, Shiota), so it builds the map rather than discovering something, but it is where the map continues.</li>
+<li><b>Rung height: not as a new direction.</b> The third-order match D = s and the exact fourth-order gap −s(s−1)/12 are clean, but every rung is addition in its own ruler, so this route can never produce a new shape. It is worth following only if the question is about the ladder itself.</li>
+<li><b>Whole numbers: a modest yes</b> if you want the 2ⁿ − 1 counts and the integer side of mult-add in the same picture. Known (Sekiguchi–Oort–Suwa), and it adds one discrete layer, not a dial.</li>
+<li><b>Another dial for one-input laws: no.</b> The classification is complete. A fourth shape would need a return count other than 1, n or n², which a one-dimensional group cannot have.</li>
+</ul>
+</div>
+<div>
+<h2>What would confirm a further direction</h2>
+<ul>
+<li>For one input: a smooth, associative, commutative law whose n-step return count is not 1, n or n². None exists, so the map for one input is closed.</li>
+<li>For several waves: three or more waves whose pair weights cannot be set by one weight (already shown in the soliton work: KdV needs the triple corner A₁₂A₁₃A₂₃, a single law gives k²).</li>
+<li>For non-commuting laws in three or more dimensions without rotational symmetry: Bianchi's classification has families with a free parameter, so a law that needs a direction-dependent twist would bring a genuine new dial. In the plane with rotational symmetry the twist adds nothing: it is curvature × area, one number.</li>
+</ul>
+<h3>Proofs</h3>
+<p class="small">36 Lean theorems in <code>shape-directions/lean/ShapeDirections.lean</code> (core Lean, no mathlib, no sorry, ✳ notation): weight_is_units, graph_weight_survives, ruler_num, ruler_den, ruler_keeps_disc, zoom_disc, ladder_forces_c3, ladder_forces_c4, rung_rate_inverts, rung_disc_is_height, rung_crossings, jet_rank, glue_commutes, glue_descends, cusp_psi3, node_psi3, pair_weight_survives, periods_outnumber_curves, additive_at_three, mult_at_three and more. Every statement was checked in sympy first; the library compiles them next. Numerical checks: 29 of 29 pass in <code>checks.py</code>.</p>
+<p class="small">Known pieces: the classification of one-dimensional complex groups, Tate's curve, Bennett's commutative hyperoperations (the rung sheet), Sekiguchi–Oort–Suwa, Riemann's period matrices, Shiota's theorem, Helmholtz–Lie. What is ours: the sorting of the project's dials against them, the third-order identity D = s, and the fourth-order gap.</p>
+</div>
+</div></section>
+
+<script>
+{
+const NS='http://www.w3.org/2000/svg';
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const el=(t,a,txt)=>{let s='<'+t;for(const k in a)s+=` ${k}="${a[k]}"`;return txt==null?s+'/>':s+'>'+txt+'</'+t+'>'};
+const sIn=document.getElementById('s'),tIn=document.getElementById('t'),xIn=document.getElementById('x');
+const P=[-3,3.4],Q=[-1.7,2.4];
+function plane(){
+ const sv=document.getElementById('plane'),W=sv.clientWidth,H=sv.clientHeight;if(!W)return;
+ const m={l:34,r:12,t:12,b:30},X=p=>m.l+(p-P[0])/(P[1]-P[0])*(W-m.l-m.r),Y=q=>H-m.b-(q-Q[0])/(Q[1]-Q[0])*(H-m.t-m.b);
+ const s=+sIn.value,narrow=W<520;let h='';
+ const par=(D,step=0.05)=>{let d='';for(let p=P[0];p<=P[1]+1e-9;p+=step){const q=(p*p-D)/4;d+=(d?'L':'M')+X(p).toFixed(1)+','+Y(Math.max(Q[0]-1,Math.min(Q[1]+1,q))).toFixed(1)}return d};
+ h+=el('rect',{x:m.l,y:m.t,width:W-m.l-m.r,height:H-m.t-m.b,fill:'var(--bfill)'});
+ h+=el('path',{d:par(0)+`L${X(P[1])},${m.t}L${X(P[0])},${m.t}Z`,fill:'var(--afill)'});
+ h+=`<clipPath id="cp">${el('rect',{x:m.l,y:m.t,width:W-m.l-m.r,height:H-m.t-m.b})}</clipPath><g clip-path="url(#cp)">`;
+ for(const D of [-6,-4,-2,-1,1,2,4,6,9])h+=el('path',{d:par(D),fill:'none',stroke:'var(--grey)','stroke-width':.8,opacity:.7});
+ h+=el('path',{d:par(s),fill:'none',stroke:'var(--red)','stroke-width':1.6,'stroke-dasharray':'6 4'});
+ h+=el('path',{d:par(0),fill:'none',stroke:'var(--red)','stroke-width':2});
+ h+=el('line',{x1:X(P[0]),y1:Y(0),x2:X(P[1]),y2:Y(0),stroke:'var(--ink)','stroke-width':1.6});
+ h+=el('line',{x1:X(0),y1:Y(Q[0]),x2:X(0),y2:Y(Q[1]),stroke:'var(--grey)','stroke-width':1});
+ let d='';for(let u=-1.6;u<=3.25;u+=0.02)d+=(d?'L':'M')+X(u).toFixed(1)+','+Y(u*(u-1)/4).toFixed(1);
+ h+=el('path',{d,fill:'none',stroke:'var(--ink)','stroke-width':3});
+ h+='</g>';
+ for(const r of [-1,0,1,2,3]){h+=el('circle',{cx:X(r),cy:Y(r*(r-1)/4),r:3.5,fill:'var(--ink)'});if(!narrow||r%2)h+=el('text',{x:X(r)+7,y:Y(r*(r-1)/4)-7},'rung '+r)}
+ const dots=[[1,0,'mult-add'],[-1,0,'or'],[-2,0,'parity'],[0,-1,'velocity'],[0,1,'slope']];
+ for(const [p,q,n] of dots){h+=el('circle',{cx:X(p),cy:Y(q),r:4.5,fill:'var(--panel)',stroke:'var(--ink)','stroke-width':1.5});h+=el('text',{x:X(p)+7,y:Y(q)+15},n)}
+ h+=el('circle',{cx:X(s),cy:Y(s*(s-1)/4),r:7,fill:'var(--red)',stroke:'var(--panel)','stroke-width':2});
+ h+=el('text',{x:X(P[1])-6,y:Y(0)-8,'text-anchor':'end'},narrow?'weight line':'weight line: every k ≠ 0 is mult-add');
+ h+=el('text',{x:X(-2.9),y:Y(2.25)},'circle-shaped (D < 0)');h+=el('text',{x:X(-2.9),y:Y(-1.5)},'line-shaped (D > 0)');
+ h+=el('text',{x:W-m.r,y:H-8,'text-anchor':'end'},'corner p →');h+=el('text',{x:4,y:m.t+12},'bend q');
+ sv.innerHTML=h;
+}
+function gap(){
+ const sv=document.getElementById('gap'),W=sv.clientWidth,H=sv.clientHeight;if(!W)return;
+ const m={l:34,r:12,t:16,b:26},S=[-1.6,3.2],R=[-0.55,0.45];
+ const X=u=>m.l+(u-S[0])/(S[1]-S[0])*(W-m.l-m.r),Y=v=>H-m.b-(v-R[0])/(R[1]-R[0])*(H-m.t-m.b);
+ const s=+sIn.value;let h='';
+ h+=el('line',{x1:X(S[0]),y1:Y(0),x2:X(S[1]),y2:Y(0),stroke:'var(--blue)','stroke-width':2});
+ let d='';for(let u=S[0];u<=S[1];u+=0.02)d+=(d?'L':'M')+X(u).toFixed(1)+','+Y(-u*(u-1)/12).toFixed(1);
+ h+=el('path',{d,fill:'none',stroke:'var(--ink)','stroke-width':2.5});
+ for(const r of [-1,0,1,2,3])h+=el('text',{x:X(r),y:H-6,'text-anchor':'middle'},r);
+ h+=el('circle',{cx:X(s),cy:Y(-s*(s-1)/12),r:6,fill:'var(--red)',stroke:'var(--panel)','stroke-width':2});
+ h+=el('text',{x:X(S[0])+4,y:Y(0)-6},'the plane (r₃ = 0)');h+=el('text',{x:W-m.r,y:m.t,'text-anchor':'end'},'off the plane: r₃ = −s(s−1)/12');
+ sv.innerHTML=h;
+}
+function readout(){
+ const s=+sIn.value,fmt=v=>(Math.abs(v)<5e-4?0:v).toFixed(3).replace(/\.?0+$/,'')||'0';
+ document.getElementById('so').textContent=fmt(s);
+ document.getElementById('dbig').textContent='D = '+fmt(s);
+ document.getElementById('pq').textContent=`p = ${fmt(s)}, q = ${fmt(s*(s-1)/4)}`;
+ const per=Math.abs(s)<1e-9?'none (infinitely long)':s>0?`2πi/√${fmt(s)} = ${(2*Math.PI/Math.sqrt(s)).toFixed(3)} i`:`2π/√${fmt(-s)} = ${(2*Math.PI/Math.sqrt(-s)).toFixed(3)}, real`;
+ document.getElementById('per').textContent=per;
+ document.getElementById('form').textContent=Math.abs(s)<1e-9?'neither: one double wall, plain addition':s>0?'a line (two real walls)':'a circle (complex walls)';
+ const r3=-s*(s-1)/12;document.getElementById('r3').textContent=Math.abs(r3)<1e-9?'0: on the plane':`${r3.toFixed(4)}: off the plane`;
+}
+// period lattices
+function lattices(){
+ const ink='var(--ink)';
+ const a=document.getElementById('l0');if(a.clientWidth){const W=a.clientWidth,H=a.clientHeight;
+  a.innerHTML=el('line',{x1:16,y1:H/2,x2:W-16,y2:H/2,stroke:ink,'stroke-width':2})+el('circle',{cx:W/2,cy:H/2,r:6,fill:'var(--red)'})+el('text',{x:W/2,y:H/2+26,'text-anchor':'middle'},'only the start returns')}
+ const b=document.getElementById('l1');if(b.clientWidth){const W=b.clientWidth,H=b.clientHeight,cx=W/2,cy=H/2,rx=Math.min(W*0.32,90),ry=rx*0.38;let h='';
+  h+=el('ellipse',{cx,cy:cy-50,rx,ry,fill:'none',stroke:ink,'stroke-width':1.5})+el('ellipse',{cx,cy:cy+50,rx,ry,fill:'none',stroke:'var(--grey)','stroke-width':1,'stroke-dasharray':'4 3'});
+  h+=el('line',{x1:cx-rx,y1:cy-50,x2:cx-rx,y2:cy+50,stroke:'var(--grey)'})+el('line',{x1:cx+rx,y1:cy-50,x2:cx+rx,y2:cy+50,stroke:'var(--grey)'});
+  for(let i=0;i<3;i++){const t=-Math.PI/2+i*2*Math.PI/3;h+=el('circle',{cx:cx+rx*Math.cos(t),cy:cy-50+ry*Math.sin(t),r:5.5,fill:i?'var(--blue)':'var(--red)'})}
+  h+=el('text',{x:cx,y:H-14,'text-anchor':'middle'},'one loop: 3 points in 3 steps');b.innerHTML=h}
+ const c=document.getElementById('l2');if(c.clientWidth){const W=c.clientWidth,H=c.clientHeight,t=+tIn.value,x=+xIn.value;
+  const sc=Math.min((W-40)/(1.6),(H-40)/(t+0.2)),ox=W/2-sc*(1+x)/2,oy=H-20;const pt=(u,v)=>[ox+sc*(u+v*x),oy-sc*v*t];let h='';
+  const c0=pt(0,0),c1=pt(1,0),c2=pt(1,1),c3=pt(0,1);
+  h+=el('polygon',{points:[c0,c1,c2,c3].map(p=>p.join(',')).join(' '),fill:'var(--afill)',stroke:'var(--violet)','stroke-width':2});
+  for(let i=0;i<3;i++)for(let j=0;j<3;j++){const p=pt(i/3,j/3);h+=el('circle',{cx:p[0],cy:p[1],r:4.5,fill:i||j?'var(--violet)':'var(--red)'})}
+  h+=el('text',{x:c1[0]+6,y:c1[1]-4},'1')+el('text',{x:c3[0]-6,y:c3[1]-4,'text-anchor':'end'},'τ');c.innerHTML=h;
+  document.getElementById('to').textContent=t.toFixed(2);document.getElementById('xo').textContent=x.toFixed(2);
+  // nome and j
+  const qa=Math.exp(-2*Math.PI*t),qr=qa*Math.cos(2*Math.PI*x),qi=qa*Math.sin(2*Math.PI*x);
+  const mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]],q=[qr,qi];
+  let E4=[1,0],Dp=[1,0],qn=[1,0];
+  for(let n=1;n<=12;n++){qn=mul(qn,q);let s3=0;for(let dd=1;dd<=n;dd++)if(n%dd==0)s3+=dd**3;E4=[E4[0]+240*s3*qn[0],E4[1]+240*s3*qn[1]];let f=[1-qn[0],-qn[1]],f24=[1,0];for(let r=0;r<24;r++)f24=mul(f24,f);Dp=mul(Dp,f24)}
+  const Del=mul(q,Dp),E43=mul(mul(E4,E4),E4),den=Del[0]**2+Del[1]**2,j=[(E43[0]*Del[0]+E43[1]*Del[1])/den,(E43[1]*Del[0]-E43[0]*Del[1])/den];
+  const jm=Math.hypot(j[0],j[1]);
+  document.getElementById('nome').textContent=`Nome |q| = ${qa.toExponential(2)}. j = ${Math.abs(j[1])<1e-6*jm?j[0].toPrecision(6):j[0].toPrecision(4)+(j[1]<0?' − ':' + ')+Math.abs(j[1]).toPrecision(4)+'i'}. Nine points return in three steps. At length 1 and no shear (the square torus) j = 1728.`}
+}
+const rows=[
+['Weight k','a + b + k·ab; also the q of q-integers and Potts colours (q = k + 1)','collapses: every k ≠ 0 is mult-add','collapses','one period, 2πi/k: only its size','<span class="tag t-lens">units</span> (but real on graphs and over whole numbers)'],
+['Landscape bend q','(a + b + p·ab)/(1 − q·ab); the boosts\' curvature','one number p²/D','only the sign of D','period imaginary (line) or real (circle)','<span class="tag t-switch">a switch</span> line or circle'],
+['Rung height s','E^s(E^{−s}a + E^{−s}b), the rung sheet','survives (the ladder fixes its own units)','collapses: each rung is addition in its ruler','no new shape (fractional rungs are not even analytic)','<span class="tag t-lens">a route through rulers</span> equals the bend\'s D to third order'],
+['Nome q','the torus ℂ*/q^ℤ: theta lattice, Tate gluing','survives','invisible near 0 for every q','second period; j tells tori apart','<span class="tag t-true">the one true direction</span>'],
+['Doppler rapidity','the coordinate in which velocity addition is addition','','','','<span class="tag t-lens">a position</span> on one law, not a dial'],
+['Boost twist','turn after a loop of boosts = curvature × area','','','','<span class="tag t-lens">no new dial</span> it is the bend in the plane'],
+['Pair weights','A between two waves (KdV, theta matrix)','survive every rescaling of the waves','survive','off-diagonal period-matrix entries','<span class="tag t-more">new, with 2+ waves</span>'],
+['Weight\'s primes','which primes divide k, over the integers','','','additive at p ∣ k, multiplicative elsewhere','<span class="tag t-more">a discrete layer</span>']];
+document.getElementById('tab').innerHTML=rows.map(r=>'<tr>'+r.map((c,i)=>`<td${i==5?' class="v"':''}>${c}</td>`).join('')+'</tr>').join('');
+document.getElementById('gt').innerHTML=[1,2,3,4,5,6].map(g=>{const a=g*(g+1)/2,b=g<2?(g==1?1:0):3*g-3;return `<tr><td>${g}</td><td class="num">${a}</td><td class="num">${g==1?'1 (j)':b}</td><td class="num">${a-(g==1?1:b)}</td></tr>`}).join('');
+const pr=[2,3,5,7];document.getElementById('pt').innerHTML=[1,2,3,6,10,15].map(k=>'<tr><td>'+k+'</td>'+pr.map(p=>`<td>${k%p?'mult-add (x^'+p+')':'addition (0)'}</td>`).join('')+'</tr>').join('');
+const all=()=>{plane();gap();readout();lattices()};
+sIn.addEventListener('input',()=>{plane();gap();readout()});tIn.addEventListener('input',lattices);xIn.addEventListener('input',lattices);
+const ro=new ResizeObserver(all);for(const id of ['plane','gap','l0','l1','l2'])ro.observe(document.getElementById(id));
+all();
+}
+</script>
+</body>
+</html>

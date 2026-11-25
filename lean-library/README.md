@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 52 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 1541 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 62 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 1750 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -61,6 +61,7 @@ Topics (each imports the foundation):
 | `Topics/NumberPlane` | simple-laws/lean/NumberPlane.lean | |
 | `Topics/GeometryTrig` | simple-laws/lean/GeometryTrig.lean | |
 | `Topics/EarlyScience` | simple-laws/lean/EarlyScience.lean | |
+| `Topics/Patterns` | patterns/lean/Patterns.lean | first compiled here; three steps fixed |
 | `Topics/Fermat/Fermat4` | fermat/lean/Fermat4.lean | |
 | `Topics/Fermat/Fermat3` | fermat/lean/Fermat3.lean | |
 | `Topics/Fermat/FreyPieces` | fermat/lean/FreyPieces.lean | |
@@ -84,6 +85,15 @@ Topics (each imports the foundation):
 | `Topics/QAcross/QCounting` | q-across/lean/QCounting.lean | first compiled here; class name fixed |
 | `Topics/SolitonsRungs` | solitons-rungs/lean/SolitonsRungs.lean | first compiled here |
 | `Topics/Relativity` | relativity/lean/Relativity.lean | 4 twins removed |
+| `Topics/LeeYang` | lee-yang/lean/LeeYang.lean | |
+| `Topics/LeeYangCluster` | lee-yang/lean/LeeYangCluster.lean | |
+| `Topics/LeeYangSpill` | lee-yang/lean/LeeYangSpill.lean | |
+| `Topics/TwistedBoosts` | twisted-boosts/lean/TwistedBoosts.lean | first compiled here; one step fixed |
+| `Topics/GravityProbeB` | twisted-boosts/gpb/lean/GravityProbeB.lean | first compiled here |
+| `Topics/Chemistry/ChemQuantum` | chemistry/01-quantum/lean/ChemQuantum.lean | 4 twins removed |
+| `Topics/Chemistry/ChemConservation` | chemistry/02-conservation/lean/ChemConservation.lean | 1 twin removed |
+| `Topics/Chemistry/ChemPeriodic` | chemistry/03-periodic/lean/ChemPeriodic.lean | |
+| `Topics/ShapeDirections` | shape-directions/lean/ShapeDirections.lean | first compiled here |
 | `Topics/NavierStokes` | ns-rungs/lean/FusedRungs.lean (Burgers, shell model) | |
 | `Topics/QuantumNoise` | quantum-noise/QuantumNoise.lean | |
 | `Topics/Rulecraft` | rulecraft/lean/RulecraftFused.lean | first compile, one step fixed |
@@ -137,6 +147,30 @@ what a library theorem already states and were removed, with a comment naming th
 library theorem: lift_num (ThermoFused.lens_den), lift_den (ThermoFused.lens_num),
 light_absorbs (ThermoFused.vel_wall_pos) and multAdd_wall (MultAdd.neg_one_absorbs).
 The other 30 compiled unchanged. Relativity builds right after Thermodynamics.
+LeeYang (39) compiled unchanged after Relativity; none of its theorems is an
+exact twin of a library theorem.
+TwistedBoosts (32 theorems, 36 by the check's count with its two @[ext] lemma
+pairs) had never been compiled. One proof step changed, no statement: in
+sphere_no_wall, two `Rat.le_total 0 x` calls became `(Rat.le_total : (0 : Rat) ≤ x ∨ x ≤ 0)`.
+LeeYangCluster (10) compiled unchanged after LeeYang. It has no exact twins; its
+ring-general `wAdd_units` is kept beside the Int-only Landscape.units_num.
+GravityProbeB (16) had never been compiled; it compiled unchanged after
+TwistedBoosts, every `grind` step closing, with no exact twins.
+LeeYangSpill (10) compiled unchanged after LeeYangCluster; its Int helper
+`sq_nonneg'` stays local like the others under Small leftovers.
+The first three chemistry subjects go under Topics/Chemistry. All compiled as
+sent. ChemPeriodic (12) is unchanged. Five theorems were exact twins of Base
+and were removed with a comment naming the Base theorem: in ChemQuantum,
+cisd_is_weight_zero (wAdd_weight_zero), exact_is_weight_one (wAdd_one),
+n_fragments (mpow_lift) and fragments_assoc (mpow_add); in ChemConservation,
+fugacity_mul (pw_add). That leaves ChemQuantum 8 and ChemConservation 10.
+Patterns (32) had never been compiled and builds right after EarlyScience. Three
+proof steps changed, no statement: step_is_law splits the pair before `grind`, and
+the two parity proofs take their split from `omega` because `Int.emod_add_ediv` and
+`Int.emod_two_eq_zero_or_one` are not in core Lean 4.37. No exact twins.
+ShapeDirections (36) had never been compiled; it compiled unchanged with no exact
+twins. Its Int star_def and weight_is_units sit beside the general multAdd_def and
+LeeYangCluster.wAdd_units.
 
 ## What was merged
 

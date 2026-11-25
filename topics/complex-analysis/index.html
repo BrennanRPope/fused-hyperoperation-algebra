@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Analysis Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a technical write-up for one person who thinks in pictures
+   IDEA a phase wheel: every colour of the plane meets at the wall, the one point mult-add turns around
+   PICTURE live plane: polar web about −1, a small triangle and its image under ✳w, the two similar triangles
+   COLOUR warm paper and ink; magenta for the wall, teal for z, amber for w; night indigo
+   TYPE Newsreader 600 display + Inter
+   LAYOUT plane 60% left, readout right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#f3efe6,#14121b);--panel:light-dark(#fffdf8,#1e1b27);--ink:light-dark(#1b1822,#efeaf6);--soft:light-dark(#5d5866,#aaa3b8);--rule:light-dark(#d6cfc2,#3a3547);--wall:light-dark(#c2185b,#ff5c93);--z:light-dark(#00796b,#4fd1c0);--w:light-dark(#b26a00,#ffb547);--fz:light-dark(rgba(0,121,107,.14),rgba(79,209,192,.18));--fw:light-dark(rgba(178,106,0,.14),rgba(255,181,71,.16))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font:600 clamp(32px,4.6vw,52px)/1.05 Newsreader,Georgia,serif;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;max-width:22ch}
+h2{font:600 27px/1.15 Newsreader,Georgia,serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:70ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:440px}.fig2{position:relative;min-height:320px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:14px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 4.4em;gap:10px;align-items:center;margin:6px 0}
+.ctl label{font-weight:600;white-space:nowrap}
+.ctl output{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{width:100%;height:44px;accent-color:var(--wall)}
+input[type=range]:focus-visible{outline:2px solid var(--wall);outline-offset:2px}
+.big{font:600 clamp(30px,4.4vw,46px)/1.05 Newsreader,Georgia,serif;font-variant-numeric:tabular-nums}
+.small{color:var(--soft);font-size:14px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
+p,li{max-width:68ch}
+.eq{font:18px/1.6 Newsreader,Georgia,serif;background:var(--panel);border-left:3px solid var(--wall);padding:10px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.alt .eq{background:var(--bg)}
+table{border-collapse:collapse;width:100%}
+td,th{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-size:14px;color:var(--soft);font-weight:600}
+td:last-child{color:var(--soft)}
+.rd td{white-space:nowrap;font-variant-numeric:tabular-nums}.rd td:last-child{color:var(--ink);text-align:right}
+a{color:var(--wall)}
+code{font-size:14px;overflow-wrap:anywhere}
+ul{padding-left:20px}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:380px}}
+@media(max-width:600px){.fig{min-height:320px}.fig2{min-height:280px}td,th{padding:6px 4px;font-size:14px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>In the complex plane, mult-add is a spin and a stretch about the wall</h1>
+<p class="lede">Read a ✳ b = (1 + a)(1 + b) − 1 with complex numbers and it becomes a picture. Mult-adding w turns the whole plane about the point −1 by the angle of 1 + w and stretches it by the length of 1 + w. The wall is the one point that never moves, and almost everything complex analysis says about mult-add is about hitting that point or winding around it.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="hero"></div>
+<div class="ctl"><label for="hr">Stretch |1 + w|</label><input id="hr" type="range" min="0.3" max="1.7" step="0.01" value="1.25"><output id="hro"></output></div>
+<div class="ctl"><label for="ht">Turn of 1 + w</label><input id="ht" type="range" min="-180" max="180" step="1" value="40"><output id="hto"></output></div>
+<p class="small">Magenta dot: the wall −1. Circles and rays: distances and angles seen from the wall. Amber: w. Teal: a small triangle near z and its image after ✳ w. The two shaded triangles, (−1, 0, w) and (−1, z, z ✳ w), always have the same shape.</p>
+</div>
+<div class="panel">
+<div class="small">The step z ↦ z ✳ w, as seen from the wall</div>
+<div class="big" id="hb"></div>
+<table class="rd"><tbody id="htb"></tbody></table>
+<p class="small">Seen from the wall, mult-add is plain complex multiplication: z ✳ w + 1 = (1 + w)(z + 1). It is the old way of drawing a product with similar triangles, with the origin moved to −1 and the unit moved to 0.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The log of the lift turns the spin into a slide, and the wall is the branch point</h2>
+<p>Take L(z) = log(1 + z). Then L(z ✳ w) = L(z) + L(w), up to a whole number of turns 2πi. The way back is E(w) = e^w − 1, one step of the rung flow: it sends straight lines to the polar web about the wall. Vertical lines become circles round −1, horizontal lines become rays out of −1, and a climb of 2π up the strip is one full trip round the wall, landing back where it started (E(2πi) = 0).</p>
+<p>So log(1 + z) has its branch point at the wall, not at 0. A loop round 0 that misses −1 changes nothing; any loop round −1 adds 2πi. The colour picture shows it: hue is the angle seen from the wall, and every hue meets at −1.</p>
+<p>On the circle |1 + z| = 1, which passes through 0 with its centre on the wall, mult-add just adds angles. That circle is the k = 1 rotation condition 2x + x² + y² = 0 from the <a href="https://claude.ai/artifact/6MmBPSMK179Q7ZRFTjz3L3">linear algebra page</a>.</p>
+</div>
+<div class="panel"><div class="fig2" id="strip" style="min-height:420px"></div>
+<p class="small">Left: the w strip, a grid of plain addition. Right: its image under e^w − 1 over the phase colouring of 1 + z. Each coloured line on the left lands on the matching line on the right.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div class="panel"><div class="fig2" id="roots"></div>
+<div class="ctl"><label for="rn">n</label><input id="rn" type="range" min="2" max="12" step="1" value="5"><output id="rno"></output></div></div>
+<div>
+<h2>The mult-add roots of 0 sit on the circle through 0 around the wall</h2>
+<p>Mult-add z with itself n times and you get (1 + z)ⁿ − 1. That is 0 exactly when 1 + z is an n-th root of unity, so the n mult-add roots of 0 are ζ − 1: a regular n-gon on the circle |1 + z| = 1, with one corner at 0, the identity.</p>
+<p>Mult-add all n of them together and the answer is the product of the roots of unity, minus 1: 0 for odd n and −2 for even n, the point straight across the circle from 0. For n = 4 the square is 0, −1 + i, −2, −1 − i; for n = 3 the triangle is 0, ω − 1, ω² − 1. Both are proved in Lean on the Gaussian and Eisenstein integers.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap">
+<h2>Every landscape law is a Möbius flow whose fixed points are the walls</h2>
+<p>Fix a and look at b ↦ F(a, b) = (a + b + p·ab)/(1 − q·ab) as a map of the complex plane. It is a Möbius map with matrix [[1 + pa, a], [−qa, 1]], these matrices compose by the law itself, and their determinant 1 + pa + qa² is the wall polynomial. The fixed points of every one of these maps, whatever a is, are the two walls. The type is set by one number: trace² − 4·det = a²(p² − 4q).</p>
+<div class="cols" style="margin-top:14px">
+<div class="panel"><div class="fig2" id="m1"></div><p class="small">Mult-add, walls −1 and ∞, complex a: orbits spiral out of the wall (loxodromic).</p></div>
+<div class="panel"><div class="fig2" id="m2"></div><p class="small">Velocity addition, walls ±1: orbits run on arcs from one wall to the other (hyperbolic).</p></div>
+<div class="panel"><div class="fig2" id="m3"></div><p class="small">Tangent addition, walls ±i: orbits circle the walls forever (elliptic).</p></div>
+</div>
+<p>Over the complex numbers this collapses the landscape to two laws. With two separate walls w₁, w₂, the coordinate ζ = (1 − x/w₁)/(1 − x/w₂) turns the law into multiplication, so the law is mult-add in disguise (for tangent addition ζ is the Cayley map e^(2i·arctan x); for velocity addition it is the Doppler factor squared). When the two walls merge (p² = 4q) the law is plain addition in the coordinate x/(1 + cx). This is the textbook fact that a one-parameter Möbius group is conjugate to either z ↦ λz or z ↦ z + t.</p>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>The rung step e^z − 1 has a parabolic flower, and its two rulers disagree by a ripple</h2>
+<p>E(z) = e^z − 1 fixes 0 with slope exactly 1. In the complex plane that makes a Leau–Fatou flower with one attracting petal on the left (forward orbits creep into 0 like −2/n) and one repelling petal on the right (backward orbits, log(1 + z), creep in like 2/n).</p>
+<p>Each petal has its own Abel ruler α, with α(E(z)) = α(z) + 1, and both start α(z) = −2/z + (1/3)·log z − z/36 + z²/540 + …. Where the petals overlap, above and below 0, the two rulers differ by a ripple a₁·e^(2πiw) with <b>a₁ ≈ 10.7488 + 63.2463i</b> (|a₁| ≈ 64.15), dying like e^(−2π·Im w) as you move toward 0.</p>
+<p>Because the ripple is not zero, no single analytic fractional rung E^t lives on a whole neighbourhood of 0: every fractional rung is built petal by petal and the two sides glue smoothly but not analytically. This is the complex reason behind the divergence of the half-rung series that the <a href="https://claude.ai/artifact/35PaQq5t56ZxNhHjKdq8pJ">fractional rungs section</a> checked (Baker 1958; Écalle and Voronin around 1981).</p>
+</div>
+<div>
+<div class="panel"><div class="fig2" id="flower"></div><p class="small">Teal: forward orbits of e^z − 1. Amber: orbits of its inverse log(1 + z). Both crowd into 0, from opposite sides.</p></div>
+<div class="panel" style="margin-top:16px"><div class="fig2" id="ripple" style="min-height:220px"></div><p class="small">Size of the gap between the two rulers at five starting points (dots) against height Im w. The line has slope −2π.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div class="panel"><div class="fig2" id="prod"></div></div>
+<div>
+<h2>A product's zeros are exactly where one piece hits the wall</h2>
+<p>An infinite product is a mult-add fold: ∏(1 + aₙ) − 1 = a₁ ✳ a₂ ✳ a₃ ✳ …. Euler's sine product is the fold of the pieces −z²/n²:</p>
+<div class="eq">sin(πz)/(πz) − 1 = (−z²) ✳ (−z²/4) ✳ (−z²/9) ✳ …</div>
+<p>Its zeros are the points where one piece lands on the wall, −z²/n² = −1, that is z = ±n. Weierstrass's product for 1/Γ is the same with pieces (1 + z/n)e^(−z/n) − 1, which hit the wall at z = −n, the poles of Γ.</p>
+<p>The fold converges when Σ|aₙ| does, because |a₁ ✳ … ✳ aₙ| ≤ |a₁| ✳ … ✳ |aₙ| (proved in Lean). A merely convergent Σaₙ is not enough: aₙ = (−1)ⁿ/√n sums fine, yet its product sinks to 0, because the corner terms aₙ²/2 pile up.</p>
+<p>The argument principle counts wall hits too. The output-lifted derivative f′/(1 + f) of the <a href="https://claude.ai/artifact/VBRCmFrQVwQiXjMxZkY5SY">calculus page</a>, integrated round a loop and divided by 2πi, is the number of times f hits −1 inside. Round |z| = 3.5 the sine fold gives 6; e^z − 1 gives 0, because it never reaches the wall.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Lee–Yang zeros are wall hits on the dial</h2>
+<p>The <a href="https://claude.ai/artifact/UQQzmkzekxe2hL4m8F8NQL">Lee–Yang page</a> already followed this to physics: the zeros of a dial gas's partition function, where 1 + (fold) vanishes, fill arcs that start at the wall. Nothing is repeated here; the counting tool above (winding round the wall) is the same one.</p>
+</div>
+<div>
+<h2>Glue the punctured plane and you get the elliptic page's torus</h2>
+<p>Remove the wall and mult-add on what is left is the group of nonzero complex numbers. The log of the lift unrolls it to a cylinder of period 2πi; gluing 1 + a to q(1 + a) folds the cylinder into a torus, the Tate curve of the <a href="https://claude.ai/artifact/JhsmEQaHNRhZ9t5Ph5RZ6y">elliptic page</a>. The gluing respects mult-add (proved), so the torus inherits the law.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table><tbody>
+<tr><td>Complex product as similar triangles; affine maps fixing a point</td><td>Wessel 1799, Argand 1806</td></tr>
+<tr><td>Branch point of log(1 + z); e^w − 1 turns + into ✳</td><td>Euler, Cauchy, Riemann</td></tr>
+<tr><td>One-parameter Möbius groups, fixed points, trace² test</td><td>Klein, Poincaré; any textbook</td></tr>
+<tr><td>Parabolic petals; Abel coordinates; horn-map invariants</td><td>Leau 1897, Fatou 1919, Écalle, Voronin 1981</td></tr>
+<tr><td>Half-iterate of e^z − 1 is not analytic</td><td>Baker 1958</td></tr>
+<tr><td>Sine, Gamma products; convergence by Σ|aₙ|</td><td>Euler 1734, Weierstrass 1876</td></tr>
+<tr><td>Argument principle</td><td>Cauchy 1831</td></tr>
+<tr><td>The value a₁ ≈ 10.7488 + 63.2463i for e^z − 1 in this ruler's normalisation</td><td>Computed here; we did not find it published</td></tr>
+<tr><td>One picture: every item above is hitting the wall or winding round it</td><td>Ours, a reframing</td></tr>
+</tbody></table>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>No new mathematical lead here.</b> Complex analysis meets mult-add as the group of nonzero complex numbers seen through the lift, and every result on this page is classical. What the branch gives the project is a sure geometric footing: the wall is a genuine puncture, the log of the lift is the cylinder over it, and the zeros, poles, roots and fixed points that showed up on other pages are all the same event, a piece landing on −1.</p>
+<p>One thread has real content: the ripple between the two Abel rulers of the rung step. Its size says how far fractional rungs are from being one analytic flow, and it makes the choice of petal unavoidable. Follow it only if you want a canonical half rung; the answer is that none exists, and the ripple measures by how much.</p>
+</div>
+</div>
+</section>
+
+<section class="band"><div class="wrap"><p class="small" id="foot">50 of 50 numeric and symbolic checks pass (checks.py). 39 Lean theorems in ComplexAnalysis.lean, core Lean 4.37, compiled against the shared library, no sorry, standard axioms only.</p></div></section>
+<script>
+{
+const $=id=>document.getElementById(id);
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]], sub=(a,b)=>[a[0]-b[0],a[1]-b[1]], mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];
+const div=(a,b)=>{const d=b[0]*b[0]+b[1]*b[1];return [(a[0]*b[0]+a[1]*b[1])/d,(a[1]*b[0]-a[0]*b[1])/d];};
+const ma=(a,b)=>add(add(a,b),mul(a,b)), cexp=a=>[Math.exp(a[0])*Math.cos(a[1]),Math.exp(a[0])*Math.sin(a[1])];
+const clog=a=>[Math.log(Math.hypot(a[0],a[1])),Math.atan2(a[1],a[0])], abs=a=>Math.hypot(a[0],a[1]);
+const PHASE="data:image/jpeg;base64,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";
+const fmt=(x,n=2)=>x.toFixed(n).replace('-','−'), cf=a=>fmt(a[0])+(a[1]<0?' − ':' + ')+fmt(Math.abs(a[1]))+'i';
+function mk(id,label){const el=$(id);el.innerHTML='<svg role="img" aria-label="'+label+'"></svg>';return el.firstChild;}
+function frame(svg,x0,x1,y0,y1,pad=10,ox=0,oy=0,Wb,Hb){const W=Wb||svg.clientWidth,H=Hb||svg.clientHeight;const s=Math.min((W-2*pad)/(x1-x0),(H-2*pad)/(y1-y0));const cx=ox+W/2,cy=oy+H/2,mx=(x0+x1)/2,my=(y0+y1)/2;return {X:x=>cx+(x-mx)*s,Y:y=>cy-(y-my)*s,s};}
+const ln=(f,a,b,c,w,d)=>'<line x1="'+f.X(a[0])+'" y1="'+f.Y(a[1])+'" x2="'+f.X(b[0])+'" y2="'+f.Y(b[1])+'" stroke="'+c+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const dot=(f,a,c,r,o)=>'<circle cx="'+f.X(a[0])+'" cy="'+f.Y(a[1])+'" r="'+(r||4)+'" fill="'+c+'"'+(o!=null?' fill-opacity="'+o+'"':'')+'/>';
+const txt=(f,a,t,dx,dy,anc)=>'<text x="'+(f.X(a[0])+(dx||0))+'" y="'+(f.Y(a[1])+(dy||0))+'" text-anchor="'+(anc||'start')+'">'+t+'</text>';
+const poly=(f,ps,fill,stroke,w,d)=>'<polygon points="'+ps.map(p=>f.X(p[0])+','+f.Y(p[1])).join(' ')+'" fill="'+fill+'" stroke="'+(stroke||'none')+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const path=(f,ps,c,w,d)=>'<path d="'+ps.map((p,i)=>(i?'L':'M')+f.X(p[0])+' '+f.Y(p[1])).join(' ')+'" fill="none" stroke="'+c+'" stroke-width="'+(w||1.5)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+function web(f,R){let g='';for(let r=0.5;r<=R;r+=0.5)g+='<circle cx="'+f.X(-1)+'" cy="'+f.Y(0)+'" r="'+r*f.s+'" fill="none" stroke="var(--rule)"/>';for(let k=0;k<12;k++){const t=k*Math.PI/6;g+=ln(f,[-1,0],[-1+R*Math.cos(t),R*Math.sin(t)],'var(--rule)');}return g;}
+const WALL=[-1,0];
+// hero
+const sh=mk('hero','Mult-add as a turn and stretch about the wall −1');
+function hero(){
+  const r=+$('hr').value, th=+$('ht').value*Math.PI/180;
+  $('hro').textContent=fmt(r); $('hto').textContent=Math.round(th*180/Math.PI)+'°';
+  const L=[r*Math.cos(th),r*Math.sin(th)], w=sub(L,[1,0]);
+  const f=frame(sh,-2.9,2.1,-1.9,1.9);
+  const z=[0.3,0.15], tri=[z,[0.62,0.15],[0.3,0.42]], img=tri.map(p=>ma(p,w)), zw=img[0];
+  let g=web(f,4);
+  g+=ln(f,[-3,0],[2.2,0],'var(--soft)',1)+ln(f,[0,-2],[0,2],'var(--soft)',1);
+  g+=poly(f,[WALL,[0,0],w],'var(--fw)','var(--w)',1.5)+poly(f,[WALL,z,zw],'var(--fz)','var(--z)',1.5);
+  g+=poly(f,tri,'none','var(--z)',2,'5 4')+poly(f,img,'var(--fz)','var(--z)',2.5);
+  g+=dot(f,[0,0],'var(--ink)',4)+dot(f,w,'var(--w)',6)+dot(f,z,'var(--z)',5)+dot(f,zw,'var(--z)',6)+dot(f,WALL,'var(--wall)',7);
+  g+=txt(f,WALL,'wall −1',-10,-12,'end')+txt(f,[0,0],'0',6,16)+txt(f,w,'w',8,-8)+txt(f,z,'z',-8,-8,'end')+txt(f,zw,'z ✳ w',8,-8);
+  sh.innerHTML=g;
+  $('hb').textContent=cf(zw);
+  const rows=[['z',cf(z)],['w',cf(w)],['1 + w: length, turn',fmt(r)+', '+Math.round(th*180/Math.PI)+'°'],['distance of z from wall',fmt(abs(add(z,[1,0])),3)],['distance of z ✳ w',fmt(abs(add(zw,[1,0])),3)],['ratio',fmt(abs(add(zw,[1,0]))/abs(add(z,[1,0])),3)]];
+  $('htb').innerHTML=rows.map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td></tr>').join('');
+}
+// strip
+const ss=mk('strip','Grid of the w strip and its image under e to the w minus 1');
+function strip(){
+  const W=ss.clientWidth,H=ss.clientHeight, wide=W>560;
+  const Wb=wide?W/2:W, Hb=wide?H:H/2;
+  const fL=frame(ss,-1.7,0.9,-3.3,3.3,14,0,0,Wb,Hb), fR=frame(ss,-3,1.5,-1.9,1.9,10,wide?W/2:0,wide?0:H/2,Wb,Hb);
+  const S=[-1.2,-0.6,0,0.5], T=[-2.6,-1.6,-0.6,0.4,1.4,2.4];
+  const hue=t=>'hsl('+(((t/(2*Math.PI))%1+1)%1*360)+',70%,42%)';
+  let g='';
+  g+=ln(fL,[-1.7,0],[0.9,0],'var(--soft)')+ln(fL,[0,-3.3],[0,3.3],'var(--soft)');
+  g+=ln(fL,[-1.7,Math.PI],[0.9,Math.PI],'var(--wall)',1.5,'4 4')+ln(fL,[-1.7,-Math.PI],[0.9,-Math.PI],'var(--wall)',1.5,'4 4');
+  S.forEach(s=>g+=ln(fL,[s,-3.1],[s,3.1],'var(--ink)',1.5));
+  T.forEach(t=>g+=ln(fL,[-1.6,t],[0.8,t],hue(t),2.5));
+  g+=txt(fL,[-1.65,Math.PI],'Im w = π',2,-6);
+  const ix=fR.X(-3),iy=fR.Y(1.9),iw=4.5*fR.s,ih=3.8*fR.s;
+  g+='<image href="'+PHASE+'" x="'+ix+'" y="'+iy+'" width="'+iw+'" height="'+ih+'" preserveAspectRatio="none" opacity=".55"/>';
+  S.forEach(s=>g+='<circle cx="'+fR.X(-1)+'" cy="'+fR.Y(0)+'" r="'+Math.exp(s)*fR.s+'" fill="none" stroke="var(--ink)" stroke-width="1.5"/>');
+  T.forEach(t=>g+=ln(fR,[-1+Math.exp(-1.6)*Math.cos(t),Math.exp(-1.6)*Math.sin(t)],[-1+Math.exp(0.8)*Math.cos(t),Math.exp(0.8)*Math.sin(t)],hue(t),2.5));
+  g+=dot(fR,WALL,'var(--wall)',6)+dot(fR,[0,0],'var(--ink)',4)+txt(fR,WALL,'wall',-8,-10,'end')+txt(fR,[0,0],'0',6,16);
+  ss.innerHTML=g;
+}
+// roots
+const sr=mk('roots','Mult-add roots of zero on the circle about the wall');
+function roots(){
+  const n=+$('rn').value; $('rno').textContent=n;
+  const f=frame(sr,-2.6,0.7,-1.35,1.35);
+  const P=[];for(let j=0;j<n;j++){const t=2*Math.PI*j/n;P.push([Math.cos(t)-1,Math.sin(t)]);}
+  let g=ln(f,[-2.6,0],[0.7,0],'var(--rule)')+'<circle cx="'+f.X(-1)+'" cy="'+f.Y(0)+'" r="'+f.s+'" fill="none" stroke="var(--soft)" stroke-width="1.5"/>';
+  g+=poly(f,P,'var(--fz)','var(--z)',2);
+  P.forEach((p,j)=>g+=dot(f,p,'var(--z)',j?5:7));
+  const tot=n%2?[0,0]:[-2,0];
+  g+='<circle cx="'+f.X(tot[0])+'" cy="'+f.Y(tot[1])+'" r="12" fill="none" stroke="var(--w)" stroke-width="2.5"/>';
+  g+=dot(f,WALL,'var(--wall)',6)+txt(f,WALL,'wall',0,-12,'middle')+txt(f,[0,0],'0',10,-10);
+  g+=txt(f,[-1,-1.25],'all '+n+' mult-added: '+(n%2?'0':'−2'),0,0,'middle');
+  sr.innerHTML=g;
+}
+// Moebius panels
+function mob(id,lab,p,q,a,win,starts,steps,walls){
+  const s=mk(id,lab);
+  return ()=>{
+    const f=frame(s,...win);
+    let g=ln(f,[win[0],0],[win[1],0],'var(--rule)')+ln(f,[0,win[2]],[0,win[3]],'var(--rule)');
+    starts.forEach(b0=>{let b=b0;const pts=[b];for(let i=0;i<steps;i++){b=div(add(add(a,b),[p*mul(a,b)[0],p*mul(a,b)[1]]),sub([1,0],[q*mul(a,b)[0],q*mul(a,b)[1]]));if(abs(b)>9)break;pts.push(b);}
+      pts.forEach((pt,i)=>g+=dot(f,pt,'var(--z)',2.6,0.35+0.65*i/pts.length));});
+    walls.forEach(w=>g+=dot(f,w[0],'var(--wall)',6)+txt(f,w[0],w[1],8,-8));
+    s.innerHTML=g;};
+}
+const C=(r,t)=>[r*Math.cos(t),r*Math.sin(t)];
+const m1=mob('m1','Orbits of mult-add translation',1,0,[0.08,0.12],[-3.2,1.4,-2.2,2.2],[0,1,2,3,4,5].map(k=>add(WALL,C(0.18,k*Math.PI/3+0.3))),45,[[WALL,'−1']]);
+const m2=mob('m2','Orbits of velocity addition',0,-1,[0.2,0],[-1.6,1.6,-1.5,1.5],[[-0.92,0],[-0.85,0.35],[-0.85,-0.35],[-0.7,0.9],[-0.7,-0.9],[-0.95,0.12]],30,[[[-1,0],'−1'],[[1,0],'+1']]);
+const m3=mob('m3','Orbits of tangent addition',0,1,[0.3,0],[-2.3,2.3,-2.3,2.3],[[0,0.35],[0,0.65],[0,1.55],[0,-0.5],[0,-1.75],[-2.2,0]],40,[[[0,1],'i'],[[0,-1],'−i']]);
+// flower and ripple
+const sf=mk('flower','Parabolic flower of e to the z minus 1'), sp=mk('ripple','Ripple size against height');
+function flower(){
+  const f=frame(sf,-1.7,1.7,-1.45,1.45);
+  let g=ln(f,[-1.7,0],[1.7,0],'var(--rule)')+ln(f,[0,-1.5],[0,1.5],'var(--rule)');
+  for(let k=0;k<9;k++){let z=C(1.25,(100+20*k)*Math.PI/180);for(let i=0;i<50;i++){g+=dot(f,z,'var(--z)',2.4,0.9-0.6*i/50);z=sub(cexp(z),[1,0]);}}
+  for(let k=0;k<9;k++){let z=C(1.25,(-80+20*k)*Math.PI/180);for(let i=0;i<50;i++){g+=dot(f,z,'var(--w)',2.4,0.9-0.6*i/50);z=clog(add(z,[1,0]));}}
+  g+=dot(f,[0,0],'var(--ink)',4)+dot(f,WALL,'var(--wall)',6)+txt(f,WALL,'wall',0,-12,'middle')+txt(f,[-1.2,-1.25],'attracting')+txt(f,[1.2,-1.25],'repelling',0,0,'end');
+  sf.innerHTML=g;
+  const W=sp.clientWidth,H=sp.clientHeight,m=50,X=x=>m+(x-2)/5*(W-m-12),Y=y=>10+(-4-y)/13*(H-m-10);
+  const a1=Math.log10(64.1532), pts=[[2.4958,9.929e-6],[2.4265,1.5347e-5],[2.5745,6.054e-6],[4.5097,3.1723e-11],[6.4081,2.0942e-16]];
+  let h='<line x1="'+X(2)+'" y1="'+Y(-17)+'" x2="'+X(7)+'" y2="'+Y(-17)+'" stroke="var(--soft)"/><line x1="'+X(2)+'" y1="'+Y(-4)+'" x2="'+X(2)+'" y2="'+Y(-17)+'" stroke="var(--soft)"/>';
+  h+='<line x1="'+X(2)+'" y1="'+Y(a1-2*Math.PI*2/Math.LN10)+'" x2="'+X(7)+'" y2="'+Y(Math.max(-17,a1-2*Math.PI*7/Math.LN10))+'" stroke="var(--wall)" stroke-width="2"/>';
+  pts.forEach(p=>h+='<circle cx="'+X(p[0])+'" cy="'+Y(Math.log10(p[1]))+'" r="5" fill="var(--z)"/>');
+  [-5,-10,-15].forEach(y=>h+='<text x="'+(X(2)-4)+'" y="'+(Y(y)+5)+'" text-anchor="end">1e'+y+'</text>');
+  [3,5,7].forEach(x=>h+='<text x="'+X(x)+'" y="'+(Y(-17)+18)+'" text-anchor="middle">'+x+'</text>');
+  h+='<text x="'+X(6.9)+'" y="'+Y(-5)+'" text-anchor="end">height Im w →</text>';
+  sp.innerHTML=h;
+}
+// products
+const sq=mk('prod','Sine product and its partial folds');
+function prod(){
+  const W=sq.clientWidth,H=sq.clientHeight,m=30,X=x=>m+x/4.6*(W-m-10),Y=y=>12+(1.1-y)/1.6*(H-m-12);
+  const pl=(fn,c,w,d)=>{let s='',pen=false;for(let i=0;i<=230;i++){const x=4.6*i/230,y=fn(x);if(y<-0.5||y>1.15){pen=false;continue;}s+=(pen?' L':' M')+X(x)+' '+Y(y);pen=true;}return '<path d="'+s.trim()+'" fill="none" stroke="'+c+'" stroke-width="'+w+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';};
+  const part=N=>x=>{let p=1;for(let n=1;n<=N;n++)p*=1-x*x/(n*n);return p;};
+  let g='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(4.6)+'" y2="'+Y(0)+'" stroke="var(--soft)"/><line x1="'+X(0)+'" y1="'+Y(-0.5)+'" x2="'+X(0)+'" y2="'+Y(1.1)+'" stroke="var(--soft)"/>';
+  g+=pl(part(1),'var(--w)',1.5,'5 4')+pl(part(2),'var(--w)',1.5,'2 3')+pl(part(5),'var(--z)',1.5,'6 3');
+  g+=pl(x=>x?Math.sin(Math.PI*x)/(Math.PI*x):1,'var(--ink)',2.5);
+  [1,2,3,4].forEach(n=>g+='<circle cx="'+X(n)+'" cy="'+Y(0)+'" r="6" fill="var(--wall)"/><text x="'+X(n)+'" y="'+(Y(0)+22)+'" text-anchor="middle">'+n+'</text>');
+  g+='<text x="'+(X(0)+6)+'" y="'+(Y(1.1)+12)+'">1 + fold</text><text x="'+X(1.9)+'" y="'+Y(0.55)+'">red: piece n hits the wall</text>';
+  g+='<text x="'+X(4.55)+'" y="'+(Y(0.95))+'" text-anchor="end">dashed: 1, 2 and 5 pieces</text>';
+  sq.innerHTML=g;
+}
+const all=[hero,strip,roots,m1,m2,m3,flower,prod];
+$('hr').addEventListener('input',hero);$('ht').addEventListener('input',hero);$('rn').addEventListener('input',roots);
+const ro=new ResizeObserver(()=>all.forEach(fn=>fn()));
+['hero','strip','roots','m1','m2','m3','flower','ripple','prod'].forEach(id=>ro.observe($(id)));
+all.forEach(fn=>fn());
+}
+</script>
+</body>
+</html>

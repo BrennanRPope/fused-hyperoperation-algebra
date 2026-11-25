@@ -1,0 +1,44 @@
+# Math pages delivered (artifact ids; link as https://claude.ai/artifact/<id>; Docs marked)
+Parent task u4a32564ac49a3dc7a985ee689b18dee0.
+- Euler (Doc PwjUtELeuJQQbcx6vesXit)
+- PDEs 6LbCxRLB9aTtBAxzQcCiXt
+- physical laws DLhhZpKrY4FYYtAoaQxrQo
+- photosynthesis Bed2mSeyhXJHP3eS8A2exN
+- nitrogen CKd8YAk66brByG8FwZkG1f
+- Navier–Stokes SkJga4ih1vuxS5ozxeZefF
+- Fermat Q3GveFG3TjJSeqrYbXEouL
+- prime (Doc SisvRHEDreffPYfN8mD1ch)
+- tesseract KV9thET91iskRFkxqPne5n
+- toric PV2A6FTHF98FTqBvHsCazZ
+- topology/K-theory 4Nb6GyQBxi8gDNdHbszA26
+- actuarial AYgNMio88Y3VE9gtx11ipR
+- landscape E2ri2CF3xiGEWA5B9hAWYf (grouped by shape)
+- rung sheet AHr9NVcjzr4cHjQVrRaEnJ
+- elliptic JhsmEQaHNRhZ9t5Ph5RZ6y
+- thermodynamics SKKLwKiEg4nyYGfrw32sp5
+- early laws KjLF8S4j6DKkgUL5bUrNr9
+- Fermat in Pieces 9wdazdAULhiQ32uXPpgKLa
+- axioms PrF6u5bRhkq6tPBcD5K4i2
+- pi SsQ4CUfuyWHmmBSwvKYxYA
+- calculus VBRCmFrQVwQiXjMxZkY5SY
+- algebra atlas DTBbDjwUepJAUmU9AQEAhV
+- statistics FwYdFUqfFh4DEAjHMqNEsv
+- NS across dimensions GBDAr2D6pBnyedGtWAG8Va
+- jets Lg84gxR34iuBqZwQNZWjF3
+- Osgood inverse TrRisNESnD3ZPv6sHbK3Gy
+- linear algebra 6MmBPSMK179Q7ZRFTjz3L3
+- entropy 1To24w7SazEuaE5Pjsj4YM
+- infinities YEchSB4Ft97HsNEcV4q3aJ
+- q 9AtexUZrzvsPfzSA7g91dL
+- proof engine CZM59HVTwKMrK5Qnd7p2g9
+- shape gallery NWREn3Fbw1i5reUMrYaAXZ
+- solitons on rungs 5yXzCgEwC2jY5y6LkFCUXJ
+- relativity S2RVDVVQWR4UAQVtmDQQMq
+- Lee–Yang UQQzmkzekxe2hL4m8F8NQL
+- shape directions XJxHp4hRkWYBJ45ZWA7pqe
+- chem 01 quantum chemistry T7nq4VDeDLgZcdPFunvDXd
+- chem 02 conservation of mass and charge KrZP1fbkBG53nNKvcz2kYt
+- chem 03 periodic law 1noQ3igMrH77b9bZ7ocL8y
+- bio 01 molecular biology D4N4o6M3e7vRJuU5NkDpLh
+- bio 02 metabolism 8sJ7P1mBE6PeqqNEDg7JhQ
+- chem 04 bonding and valence N7zionN5F7ABGi86xAW1nE

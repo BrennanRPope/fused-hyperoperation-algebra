@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conservation of mass and charge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical write-up read by one curious person, often on a phone
+   IDEA a page from a chemistry handbook: each subject opens with its element-style tile and one finding
+   PICTURE one large drawn chart or diagram per page, carrying the subject's mult-add finding
+   COLOUR white ground, near-black ink, sodium-flame yellow slab behind the verdict, copper-blue marks, flame red accent
+   TYPE Archivo 800 titles + Source Sans 3 text
+   LAYOUT title and tile across the top, picture full width beneath, figures in a row; phone: stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1216);--ink:light-dark(#14161a,#e9ecef);--mute:light-dark(#555c66,#a3abb5);--rule:light-dark(#d9dde2,#2a3038);--blue:light-dark(#1f5fbf,#6ea3ff);--red:light-dark(#d23c2a,#ff7a66);--yel:light-dark(#ffd23f,#8a6d00);--yelink:light-dark(#14161a,#fff4c7);--panel:light-dark(#f4f6f8,#171b21);--green:light-dark(#1d7f4e,#5fd39a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(24px,4vw,56px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font:800 clamp(30px,4.4vw,48px)/1.06 Archivo,system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+h2{font:800 clamp(22px,2.6vw,28px)/1.15 Archivo,system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+h3{font:700 18px/1.3 Archivo,system-ui,sans-serif;margin:18px 0 6px}
+p{margin:0 0 12px;max-width:72ch}
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start}
+.tile{width:118px;height:132px;border:3px solid var(--ink);padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between;background:var(--bg)}
+.tile .z{font:700 15px Archivo,sans-serif}.tile .sym{font:800 46px/1 Archivo,sans-serif;letter-spacing:-.03em}.tile .nm{font-size:13px;line-height:1.2;color:var(--mute)}
+.lead{font-size:19px;max-width:70ch}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:14px;margin:18px 0 6px}
+.figs div{border-top:3px solid var(--ink);padding-top:6px}
+.figs b{display:block;font:800 clamp(24px,3vw,34px)/1.1 Archivo,sans-serif;white-space:nowrap}
+.figs span{font-size:14px;color:var(--mute)}
+.fig{position:relative;min-height:360px;margin:12px 0 4px}
+.fig.tall{min-height:440px}.fig.short{min-height:280px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cap{font-size:14px;color:var(--mute);margin:4px 0 0;max-width:none}
+svg text{font:14px "Source Sans 3",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+svg .ax{stroke:var(--rule);stroke-width:1}svg .axk{stroke:var(--ink);stroke-width:1.2}
+.verdict{background:var(--yel);color:var(--yelink);padding:clamp(18px,3vw,30px) max(5vw,16px)}
+.verdict h2{margin-bottom:6px}.verdict p{max-width:80ch;font-size:18px}
+.sec{border-top:1px solid var(--rule)}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:700;border-bottom:2px solid var(--ink)}
+.st{white-space:nowrap;font-weight:700}
+.st.known{color:var(--mute)}.st.tidy{color:var(--blue)}.st.new{color:var(--red)}
+code{font:14px ui-monospace,Menlo,monospace;overflow-wrap:anywhere;background:var(--panel);padding:1px 4px;border-radius:3px}
+.lean{columns:2 22em;column-gap:32px;font-size:15px;padding-left:18px}.lean li{break-inside:avoid;margin-bottom:6px}
+.eq{font:17px/1.4 "Source Sans 3",sans-serif;background:var(--panel);padding:10px 14px;margin:8px 0 14px;overflow-x:auto;white-space:nowrap}
+a{color:var(--blue)}
+.nav{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;margin-top:10px}
+footer{font-size:14px;color:var(--mute)}
+@media(max-width:700px){.two{grid-template-columns:minmax(0,1fr)}.top{grid-template-columns:minmax(0,1fr)}.tile{width:96px;height:108px}.tile .sym{font-size:36px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:block;border:0;padding:2px 0}.stack td::before{content:attr(data-l) ": ";font-weight:700}.lean{columns:1}}
+</style></head><body>
+<header class="band"><div class="wrap">
+<div class="top"><div><h1>Conservation of mass is the border of a law of cosines, and binding is a turn by Zα</h1><p class="lead">The mass of two parts is M² = m₁² + m₂² + 2m₁m₂c. Lavoisier's exact conservation is c = 1, the border; bound atoms and molecules turn by a real angle, and free particles boost. Hydrogen's binding angle is the fine-structure constant.</p></div>
+<div class="tile" aria-hidden="true"><span class="z">2</span><span class="sym">M</span><span class="nm">Conservation</span></div></div>
+<div class="figs"><div><b>15 / 15</b><span>numeric checks pass</span></div><div><b>11</b><span>Lean theorems, compiled</span></div><div><b>θ = α</b><span>hydrogen&#x27;s angle, to 8 ppm</span></div><div><b>1.8 × 10⁻¹⁰</b><span>mass lost burning hydrogen</span></div></div>
+<div class="fig tall"><svg id="pic" role="img" aria-label="Binding angles of real bound states on one log scale: chemical bonds near 10⁻⁴, every hydrogen-like atom at Zα, the deuteron near 0.1 rad. Computed in checks.py from measured binding energies and CODATA masses."></svg></div>
+<p class="cap">Binding angles of real bound states on one log scale: chemical bonds near 10⁻⁴, every hydrogen-like atom at Zα, the deuteron near 0.1 rad. Computed in checks.py from measured binding energies and CODATA masses.</p>
+<nav class="nav"><a href="#countries">Three countries</a><a href="#alpha">The angle α</a><a href="#charge">Charge</a><a href="#claims">Every claim</a><a href="#lean">Lean</a><a href="#files">Files</a></nav>
+</div></header>
+<section class="verdict"><div class="wrap"><h2>Lead check: a sturdy picture, not a lead to new results</h2><p>The angle picture is exact and geometric, and it ties Lavoisier, atomic binding and free collisions into one law of cosines; it predicts hydrogen's ionisation energy to 2.5 parts per million from α alone. But it is known physics reparametrised: θ = Zα is the Coulomb binding energy written as an angle. I found no prediction it makes that the usual formulas don't. Its value for the project is the map it gives the rest of the chemistry pass: bound means turning, free means two walls.</p></div></section>
+<section class="band sec" id="countries"><div class="wrap"><h2>Invariant mass is a law of cosines, and Lavoisier sits on the border</h2><div class="two"><div><p>Two parts with masses m₁ and m₂ make a whole whose mass obeys</p>
+<div class="eq">M² = m₁² + m₂² + 2 m₁ m₂ c</div>
+<p>This is the law of cosines, the line q = 1 on the landscape. The value of c decides the country:</p>
+<ul><li><b>c = 1, the border.</b> M = m₁ + m₂ exactly: Lavoisier's conservation of mass. The triangle is flat.</li>
+<li><b>c = cos θ &lt; 1, turning.</b> A bound state: the whole weighs less than its parts, and θ is a real angle.</li>
+<li><b>c = cosh η &gt; 1, two walls.</b> Two free particles flying apart: the pair weighs more, and η is their relative rapidity, the ruler from the relativity page.</li></ul>
+<p>So binding is a rotation and free motion is a boost, the same split the relativity and early-laws pages found between Euclid's and Einstein's countries. Lean proves the bookkeeping: bound pairs weigh less, free pairs weigh more, and the binding energy B satisfies B(2(m₁ + m₂) − B) = 2m₁m₂(1 − c) exactly.</p></div><div><div class="fig "><svg id="countries-fig"></svg></div><p class="cap">The mass of a pair of equal parts, as a fraction of the parts' sum, across the three countries. Left of the border the pair is bound by angle θ; right of it the parts fly apart with rapidity η.</p></div></div></div></section><section class="band sec" id="alpha"><div class="wrap"><h2>Hydrogen's binding angle is the fine-structure constant</h2><p>Measure the angle for real bound states and the Coulomb ones line up on one value. Hydrogen's 1s state gives θ = 7.297408e-03, against α = 7.297353e-03: they agree to 8 parts per million. Positronium and muonium, with very different masses, give the same angle. He⁺ gives 2α. To leading order θ = √(2B/μ), and a Coulomb binding energy is ½μ(Zα)², so θ = Zα for every hydrogen-like system, whatever its masses.</p>
+<p>Taking sin θ = α exactly, the compact two-body Dirac form, predicts hydrogen's ionisation energy as 13.598468 eV against the measured 13.598434 eV. The difference, 3.4 × 10⁻⁵ eV, is the 1s Lamb shift (a quantum-electrodynamics correction) to within 2%.</p>
+<p>Chemistry sits much nearer the border: an H₂ bond has θ ≈ 1.4 × 10⁻⁴, so burning hydrogen loses only 1.8 × 10⁻¹⁰ of the water's mass. Lavoisier's balances, good to about one part in ten thousand, could never see it. That is why conservation of mass is exact for chemists and approximate for physicists: chemistry lives within a hair of the border.</p></div></section><section class="band sec" id="charge"><div class="wrap"><h2>Charge is the k = 0 law, and its phase is mult-add on the circle</h2><p>Charges add with no corner: the k = 0 line, mult-add's own identity line. Their exponentials multiply. The phase e<sup>iQφ</sup> of a charge Q, or the fugacity z<sup>Q</sup> in a grand ensemble, multiplies as charges add, so its excess mult-adds: e<sup>i(Q₁+Q₂)φ</sup> − 1 = (e<sup>iQ₁φ</sup> − 1) ✳ (e<sup>iQ₂φ</sup> − 1). On the unit circle that is rotation, the turning country again.</p>
+<p>Every additive conservation law in chemistry has this shape: the conserved quantity is the log of a lift whose excess mult-adds. A balanced redox equation such as MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O balances atoms and charge (+17 on each side) by plain addition.</p></div></section>
+<section class="band sec" id="claims"><div class="wrap"><h2>Every claim, what it is, and how it was checked</h2>
+<p>Status: <b>known</b> is standard science restated; <b>tidy reading</b> is a known fact read in mult-add terms; <b>new here</b> is new as far as I could find.</p><div class="scroll"><table class="stack"><thead><tr><th>Claim</th><th>Status</th><th>Checked by</th></tr></thead><tbody><tr><td data-l="Claim">Invariant mass is a law of cosines, M² = m₁² + m₂² + 2m₁m₂c</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">500 random four-vector pairs</td></tr><tr><td data-l="Claim">Lavoisier = the border c = 1; bound = turning; free = two walls</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">Lean <code>lavoisier</code>, <code>bound_lighter</code>, <code>free_heavier</code></td></tr><tr><td data-l="Claim">Exact binding relation B(2(m₁+m₂) − B) = 2m₁m₂(1 − c)</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">Lean <code>binding_exact</code></td></tr><tr><td data-l="Claim">Hydrogen-like binding angle θ = Zα, whatever the masses</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">H, positronium, muonium, He⁺ to ≤ 3e-4</td></tr><tr><td data-l="Claim">sin θ = α gives hydrogen's ionisation energy to 2.5 ppm; the rest is the Lamb shift</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">mpmath, CODATA 2018</td></tr><tr><td data-l="Claim">Chemical bonds sit at θ ~ 10⁻⁴, so chemistry is within a hair of the border</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">H₂ and HCl bond energies</td></tr><tr><td data-l="Claim">Burning hydrogen loses 1.8 × 10⁻¹⁰ of the mass</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">ΔH = −571.66 kJ per 2 mol</td></tr><tr><td data-l="Claim">Charge phases mult-add on the circle; charges add at k = 0</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">300 cases; Lean <code>fugacity_multAdd</code>, <code>circle_closed</code></td></tr></tbody></table></div></div></section>
+<section class="band sec" id="lean"><div class="wrap"><h2>Proved in Lean</h2>
+<p><code>chemistry/02-conservation/lean/ChemConservation.lean</code>: core Lean 4.37.0-rc1, no mathlib, no <code>sorry</code>, compiled against the shared library; every theorem uses only Lean's standard axioms.</p>
+<ul class="lean"><li><code>lavoisier</code>: c = 1 gives (m₁ + m₂)² exactly</li><li><code>deficit</code>: (m₁ + m₂)² − M² = 2m₁m₂(1 − c)</li><li><code>binding_exact</code>: B(2(m₁+m₂) − B) = 2m₁m₂(1 − c)</li><li><code>bound_lighter</code>: c &lt; 1 and positive masses: the whole is lighter</li><li><code>free_heavier</code>: c &gt; 1: the pair is heavier</li><li><code>cosine_extra</code>: the extra piece beyond m₁² + m₂² is 2c·m₁m₂</li><li><code>small_angle</code>: c = 1 − θ²/2 gives deficit m₁m₂θ²</li><li><code>fugacity_mul, fugacity_multAdd</code>: z<sup>Q</sup> multiplies, its excess mult-adds</li><li><code>neutral_identity</code>: charge 0 is mult-add's identity</li><li><code>circle_closed</code>: products of points on the unit circle stay on it</li></ul></div></section>
+<section class="band sec" id="files"><div class="wrap"><h2>Files and sources</h2><p>In the project folder under math-theory/chemistry/02-conservation/: <code>checks.py</code> (15 checks), <code>checks_output.txt</code>, <code>results.json</code>, <code>lean/ChemConservation.lean</code>, <code>make_page.py</code>.</p><p>Sources: CODATA 2018 masses and α; NIST hydrogen ionisation energy 13.598434005 eV and 1s Lamb shift 8172.874 MHz; NIST-JANAF and CRC bond energies for H₂ (4.478 eV) and HCl (4.434 eV); deuteron binding 2.224566 MeV.</p>
+<footer><p>Chemistry pass, part 2 of 13: conservation of mass and charge. Before: quantum chemistry. Next: the periodic law.</p></footer></div></section>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function nice(lo,hi,n){const span=hi-lo,step0=span/n,mag=Math.pow(10,Math.floor(Math.log10(step0))),f=step0/mag;const st=(f<1.5?1:f<3?2:f<7?5:10)*mag;const out=[];for(let v=Math.ceil(lo/st-1e-9)*st;v<=hi+1e-9;v+=st)out.push(+v.toPrecision(12));return out}
+function fmt(v){const a=Math.abs(v);if(a!==0&&(a<1e-3||a>=1e5))return v.toExponential(0).replace('e+','e');return String(+v.toPrecision(4))}
+function plot(el,o){
+  const draw=()=>{const W=el.clientWidth,H=el.clientHeight,small=W<520;
+    const m={l:o.ml||(small?46:60),r:o.mr||(small?14:150),t:24,b:o.xlab?52:30};
+    const tx=v=>o.xlog?Math.log10(v):v,ty=v=>o.ylog?Math.log10(v):v;
+    const X=v=>m.l+(tx(v)-tx(o.x[0]))/(tx(o.x[1])-tx(o.x[0]))*(W-m.l-m.r);
+    const Y=v=>H-m.b-(ty(v)-ty(o.y[0]))/(ty(o.y[1])-ty(o.y[0]))*(H-m.t-m.b);
+    let s='';
+    const xt=o.xticks||(o.xlog?[]:nice(o.x[0],o.x[1],small?4:7)),yt=o.yticks||(o.ylog?[]:nice(o.y[0],o.y[1],5));
+    yt.forEach(v=>{s+=`<line class="ax" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l-8}" y="${Y(v)+5}" text-anchor="end">${esc(o.yfmt?o.yfmt(v):fmt(v))}</text>`});
+    xt.forEach((v,i)=>{if(small&&i%2&&xt.length>5)return;s+=`<text x="${X(v)}" y="${H-m.b+20}" text-anchor="middle">${esc(o.xfmt?o.xfmt(v):fmt(v))}</text>`});
+    s+=`<line class="axk" x1="${m.l}" x2="${W-m.r}" y1="${H-m.b}" y2="${H-m.b}"/>`;
+    if(o.xlab)s+=`<text x="${(m.l+W-m.r)/2}" y="${H-8}" text-anchor="middle">${esc(o.xlab)}</text>`;
+    if(o.ylab)s+=`<text x="${m.l}" y="14">${esc(o.ylab)}</text>`;
+    (o.bands||[]).forEach(b=>{s+=`<rect x="${X(b.x0)}" y="${m.t}" width="${X(b.x1)-X(b.x0)}" height="${H-m.t-m.b}" fill="${b.fill}" opacity="${b.op||.14}"/>`+(b.label?`<text x="${(X(b.x0)+X(b.x1))/2}" y="${m.t+16}" text-anchor="middle">${esc(b.label)}</text>`:'')});
+    (o.hlines||[]).forEach(h=>{s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(h.y)}" y2="${Y(h.y)}" stroke="${h.c||'var(--mute)'}" stroke-dasharray="5 4"/>`+(h.label?`<text x="${W-m.r+6}" y="${Y(h.y)+5}">${esc(small?(h.short||''):h.label)}</text>`:'')});
+    (o.series||[]).forEach(se=>{const c=se.c||'var(--blue)';
+      if(se.line!==false&&se.pts.length>1)s+=`<polyline fill="none" stroke="${c}" stroke-width="${se.w||3}" ${se.dash?`stroke-dasharray="${se.dash}"`:''} points="${se.pts.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+      if(se.dots)se.pts.forEach(p=>{s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${se.r||5}" fill="${c}"/>`});
+      if(se.name){const p=se.pts[se.pts.length-1];const lx=small?X(p[0])-4:X(p[0])+8;s+=`<text x="${lx}" y="${Y(p[1])+(se.dy||0)+5}" text-anchor="${small?'end':'start'}" fill="${c}">${esc(small?(se.short||se.name):se.name)}</text>`}
+      (se.labels||[]).forEach(L=>{s+=`<text x="${X(L.x)+(L.dx||8)}" y="${Y(L.y)+(L.dy||5)}" text-anchor="${L.a||'start'}">${esc(L.t)}</text>`});
+    });
+    if(o.extra)s+=o.extra({X,Y,W,H,m,small});
+    el.innerHTML=s};
+  const ro=new ResizeObserver(draw);ro.observe(el);draw();
+}
+
+{
+
+plot(document.getElementById('pic'),{xlog:true,x:[3e-5,1],y:[0,7],mr:40,ml:20,xticks:[1e-4,1e-3,1e-2,1e-1,1],yticks:[],
+ xfmt:v=>({'0.0001':'10⁻⁴','0.001':'10⁻³','0.01':'10⁻²','0.1':'10⁻¹','1':'1 rad'})[String(v)],
+ xlab:'binding angle θ, where the whole weighs (m₁² + m₂² + 2m₁m₂ cos θ)^½',
+ bands:[{x0:3e-5,x1:3e-4,fill:'var(--blue)',label:'chemical bonds'},{x0:5e-3,x1:2e-2,fill:'var(--yel)',op:.35,label:'Coulomb atoms: θ = Zα'},{x0:5e-2,x1:0.3,fill:'var(--red)',label:'nuclei'}],
+ series:[{pts:[[9.856e-05, 1], [0.00013813198863658327, 2], [0.007297408107813065, 3], [0.007297381758710276, 4], [0.014595157574459295, 5], [0.0973602369893647, 6]],line:false,dots:true,r:7,c:'var(--ink)',labels:[{"x": 9.856e-05, "y": 1, "t": "HCl bond", "dx": 12}, {"x": 0.00013813198863658327, "y": 2, "t": "H\u2082 bond", "dx": 12}, {"x": 0.007297408107813065, "y": 3, "t": "hydrogen atom", "dx": 12}, {"x": 0.007297381758710276, "y": 4, "t": "positronium", "dx": 12}, {"x": 0.014595157574459295, "y": 5, "t": "He\u207a ion", "dx": 12}, {"x": 0.0973602369893647, "y": 6, "t": "deuteron", "dx": 12}]}],
+ extra:({X,Y,H,m})=>`<line x1="${X(0.0072973525693)}" x2="${X(0.0072973525693)}" y1="${m.t+24}" y2="${H-m.b}" stroke="var(--red)" stroke-dasharray="4 4"/><text x="${X(0.0072973525693)+6}" y="${H-m.b-8}" fill="var(--red)">α = 1/137.036</text>`});
+
+
+plot(document.getElementById('countries-fig'),{x:[-3.1416,2],y:[0,2],mr:20,ml:44,xticks:[-3,-2,-1,0,1,2],xlab:'angle θ (bound, left)   ·   rapidity η (free, right)',ylab:'M ÷ (m₁ + m₂), equal masses',
+ bands:[{x0:-3.1416,x1:0,fill:'var(--blue)',label:'turning: bound'},{x0:0,x1:2,fill:'var(--red)',label:'two walls: free'}],
+ series:[{pts:[[-3.1416, 0.0], [-3.1245, 0.00857], [-3.1073, 0.01714], [-3.0902, 0.02571], [-3.073, 0.03427], [-3.0559, 0.04283], [-3.0388, 0.05139], [-3.0216, 0.05995], [-3.0045, 0.0685], [-2.9873, 0.07705], [-2.9702, 0.08559], [-2.9531, 0.09412], [-2.9359, 0.10265], [-2.9188, 0.11117], [-2.9017, 0.11968], [-2.8845, 0.12819], [-2.8674, 0.13668], [-2.8502, 0.14516], [-2.8331, 0.15364], [-2.816, 0.1621], [-2.7988, 0.17055], [-2.7817, 0.17899], [-2.7645, 0.18741], [-2.7474, 0.19582], [-2.7303, 0.20422], [-2.7131, 0.2126], [-2.696, 0.22096], [-2.6788, 0.22931], [-2.6617, 0.23765], [-2.6446, 0.24596], [-2.6274, 0.25426], [-2.6103, 0.26254], [-2.5932, 0.27079], [-2.576, 0.27903], [-2.5589, 0.28725], [-2.5417, 0.29545], [-2.5246, 0.30363], [-2.5075, 0.31178], [-2.4903, 0.31991], [-2.4732, 0.32802], [-2.456, 0.3361], [-2.4389, 0.34416], [-2.4218, 0.35219], [-2.4046, 0.3602], [-2.3875, 0.36818], [-2.3704, 0.37613], [-2.3532, 0.38406], [-2.3361, 0.39196], [-2.3189, 0.39983], [-2.3018, 0.40767], [-2.2847, 0.41548], [-2.2675, 0.42326], [-2.2504, 0.431], [-2.2332, 0.43872], [-2.2161, 0.4464], [-2.199, 0.45406], [-2.1818, 0.46167], [-2.1647, 0.46926], [-2.1476, 0.47681], [-2.1304, 0.48432], [-2.1133, 0.4918], [-2.0961, 0.49925], [-2.079, 0.50665], [-2.0619, 0.51402], [-2.0447, 0.52135], [-2.0276, 0.52865], [-2.0104, 0.5359], [-1.9933, 0.54312], [-1.9762, 0.55029], [-1.959, 0.55743], [-1.9419, 0.56452], [-1.9247, 0.57157], [-1.9076, 0.57858], [-1.8905, 0.58555], [-1.8733, 0.59248], [-1.8562, 0.59936], [-1.8391, 0.6062], [-1.8219, 0.61299], [-1.8048, 0.61974], [-1.7876, 0.62644], [-1.7705, 0.6331], [-1.7534, 0.63971], [-1.7362, 0.64627], [-1.7191, 0.65278], [-1.7019, 0.65925], [-1.6848, 0.66567], [-1.6677, 0.67204], [-1.6505, 0.67836], [-1.6334, 0.68463], [-1.6163, 0.69085], [-1.5991, 0.69702], [-1.582, 0.70314], [-1.5648, 0.70921], [-1.5477, 0.71523], [-1.5306, 0.72119], [-1.5134, 0.7271], [-1.4963, 0.73295], [-1.4791, 0.73876], [-1.462, 0.74451], [-1.4449, 0.7502], [-1.4277, 0.75584], [-1.4106, 0.76142], [-1.3935, 0.76695], [-1.3763, 0.77242], [-1.3592, 0.77783], [-1.342, 0.78319], [-1.3249, 0.78849], [-1.3078, 0.79373], [-1.2906, 0.79891], [-1.2735, 0.80404], [-1.2563, 0.8091], [-1.2392, 0.81411], [-1.2221, 0.81906], [-1.2049, 0.82394], [-1.1878, 0.82877], [-1.1706, 0.83353], [-1.1535, 0.83824], [-1.1364, 0.84288], [-1.1192, 0.84746], [-1.1021, 0.85198], [-1.085, 0.85643], [-1.0678, 0.86082], [-1.0507, 0.86515], [-1.0335, 0.86942], [-1.0164, 0.87362], [-0.9993, 0.87776], [-0.9821, 0.88183], [-0.965, 0.88584], [-0.9478, 0.88978], [-0.9307, 0.89366], [-0.9136, 0.89748], [-0.8964, 0.90122], [-0.8793, 0.9049], [-0.8622, 0.90852], [-0.845, 0.91206], [-0.8279, 0.91554], [-0.8107, 0.91896], [-0.7936, 0.9223], [-0.7765, 0.92558], [-0.7593, 0.92879], [-0.7422, 0.93193], [-0.725, 0.93501], [-0.7079, 0.93801], [-0.6908, 0.94095], [-0.6736, 0.94381], [-0.6565, 0.94661], [-0.6394, 0.94934], [-0.6222, 0.952], [-0.6051, 0.95458], [-0.5879, 0.9571], [-0.5708, 0.95955], [-0.5537, 0.96193], [-0.5365, 0.96423], [-0.5194, 0.96647], [-0.5022, 0.96863], [-0.4851, 0.97073], [-0.468, 0.97275], [-0.4508, 0.9747], [-0.4337, 0.97658], [-0.4165, 0.97839], [-0.3994, 0.98013], [-0.3823, 0.98179], [-0.3651, 0.98338], [-0.348, 0.9849], [-0.3309, 0.98635], [-0.3137, 0.98772], [-0.2966, 0.98903], [-0.2794, 0.99026], [-0.2623, 0.99141], [-0.2452, 0.9925], [-0.228, 0.99351], [-0.2109, 0.99445], [-0.1937, 0.99531], [-0.1766, 0.9961], [-0.1595, 0.99682], [-0.1423, 0.99747], [-0.1252, 0.99804], [-0.1081, 0.99854], [-0.0909, 0.99897], [-0.0738, 0.99932], [-0.0566, 0.9996], [-0.0395, 0.9998], [-0.0224, 0.99994], [-0.0052, 1.0], [0.0119, 1.00002], [0.0291, 1.00011], [0.0462, 1.00027], [0.0633, 1.0005], [0.0805, 1.00081], [0.0976, 1.00119], [0.1147, 1.00165], [0.1319, 1.00218], [0.149, 1.00278], [0.1662, 1.00345], [0.1833, 1.0042], [0.2004, 1.00503], [0.2176, 1.00592], [0.2347, 1.00689], [0.2519, 1.00794], [0.269, 1.00906], [0.2861, 1.01025], [0.3033, 1.01152], [0.3204, 1.01286], [0.3376, 1.01428], [0.3547, 1.01577], [0.3718, 1.01733], [0.389, 1.01897], [0.4061, 1.02069], [0.4232, 1.02248], [0.4404, 1.02434], [0.4575, 1.02628], [0.4747, 1.0283], [0.4918, 1.03039], [0.5089, 1.03255], [0.5261, 1.03479], [0.5432, 1.03711], [0.5604, 1.03951], [0.5775, 1.04198], [0.5946, 1.04452], [0.6118, 1.04715], [0.6289, 1.04985], [0.646, 1.05263], [0.6632, 1.05548], [0.6803, 1.05842], [0.6975, 1.06143], [0.7146, 1.06451], [0.7317, 1.06768], [0.7489, 1.07093], [0.766, 1.07425], [0.7832, 1.07765], [0.8003, 1.08113], [0.8174, 1.08469], [0.8346, 1.08833], [0.8517, 1.09206], [0.8688, 1.09586], [0.886, 1.09974], [0.9031, 1.1037], [0.9203, 1.10774], [0.9374, 1.11187], [0.9545, 1.11607], [0.9717, 1.12036], [0.9888, 1.12473], [1.006, 1.12918], [1.0231, 1.13372], [1.0402, 1.13834], [1.0574, 1.14304], [1.0745, 1.14783], [1.0917, 1.1527], [1.1088, 1.15765], [1.1259, 1.16269], [1.1431, 1.16782], [1.1602, 1.17303], [1.1773, 1.17833], [1.1945, 1.18371], [1.2116, 1.18918], [1.2288, 1.19474], [1.2459, 1.20039], [1.263, 1.20612], [1.2802, 1.21195], [1.2973, 1.21786], [1.3145, 1.22386], [1.3316, 1.22995], [1.3487, 1.23613], [1.3659, 1.24241], [1.383, 1.24877], [1.4001, 1.25522], [1.4173, 1.26177], [1.4344, 1.26841], [1.4516, 1.27515], [1.4687, 1.28197], [1.4858, 1.28889], [1.503, 1.29591], [1.5201, 1.30302], [1.5373, 1.31023], [1.5544, 1.31753], [1.5715, 1.32493], [1.5887, 1.33243], [1.6058, 1.34002], [1.6229, 1.34771], [1.6401, 1.35551], [1.6572, 1.3634], [1.6744, 1.37139], [1.6915, 1.37948], [1.7086, 1.38768], [1.7258, 1.39597], [1.7429, 1.40437], [1.7601, 1.41287], [1.7772, 1.42148], [1.7943, 1.43019], [1.8115, 1.439], [1.8286, 1.44792], [1.8458, 1.45695], [1.8629, 1.46608], [1.88, 1.47532], [1.8972, 1.48467], [1.9143, 1.49413], [1.9314, 1.5037], [1.9486, 1.51338], [1.9657, 1.52316], [1.9829, 1.53307], [2.0, 1.54308]],c:'var(--ink)'}],
+ extra:({X,Y,H,m})=>`<line x1="${X(0)}" x2="${X(0)}" y1="${m.t+20}" y2="${H-m.b}" stroke="var(--yel)" stroke-width="4"/><text x="${X(0)-8}" y="${Y(1.55)}" text-anchor="end">border: Lavoisier,</text><text x="${X(0)-8}" y="${Y(1.55)+18}" text-anchor="end">M = m₁ + m₂</text>`});
+
+}</script></body></html>

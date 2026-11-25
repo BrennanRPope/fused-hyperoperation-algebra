@@ -1,0 +1,97 @@
+law,k,q,page
+"Compound growth, returns, interest",1.0,0.0,landscape
+Redshifts stacking,1.0,0.0,landscape
+"K-theory, Todd genus",1.0,0.0,landscape
+Claim-count models (PGF),1.0,0.0,landscape
+PUE overheads,1.0,0.0,landscape
+Tsallis q=0 / Campbell cost,1.0,0.0,landscape
+"Shannon and Renyi entropy, hazards, log-returns",0.0,0.0,landscape
+Burgers shocks,0.0,0.0,landscape
+"Union of failures, survival, decrements",-1.0,0.0,landscape
+Amplitude damping (T1),-1.0,0.0,landscape
+"Gini-Simpson, Kraft slack, erasures",-1.0,0.0,landscape
+"Slashing, validator churn",-1.0,0.0,landscape
+"Parity, bit flips, binary channel cascade",-2.0,0.0,landscape
+Bit-flip and phase-flip noise,-2.0,0.0,landscape
+3-letter channel,-1.5,0.0,landscape
+"4-letter channel, depolarizing qubit",-1.3333333333333333,0.0,landscape
+Depolarizing qutrit,-1.125,0.0,landscape
+"Leveraged compounding, 2x",2.0,0.0,landscape
+"Partial damage, half per hit",-0.5,0.0,landscape
+"Velocity addition, stacked reflections",0.0,-1.0,landscape
+Slope addition (tangent),0.0,1.0,landscape
+Sine addition (third order),0.0,-0.5,landscape
+Euler characteristic genus (cusp),2.0,1.0,landscape
+Rung 2,2.0,0.5,landscape
+Rung -1,-1.0,0.5,landscape
+Half rung,0.5,-0.0625,landscape
+Partition functions multiply,1.0,0.0,thermodynamics
+Third law,1.0,0.0,thermodynamics
+Unattainability,1.0,0.0,thermodynamics
+Pauling's ice,1.0,0.0,thermodynamics
+Landauer's bound,1.0,0.0,thermodynamics
+Equipartition,1.0,0.0,thermodynamics
+Fermion grand partition,1.0,0.0,thermodynamics
+Fridges in cascade,1.0,0.0,thermodynamics
+Jarzynski equality,1.0,0.0,thermodynamics
+Hess's law,1.0,0.0,thermodynamics
+"Free energy, heat capacity add",0.0,0.0,thermodynamics
+Heat capacity from Var E,0.0,0.0,thermodynamics
+"Engines in series, Carnot",-1.0,0.0,thermodynamics
+Curzon-Ahlborn,-1.0,0.0,thermodynamics
+"Otto cycle, heat pumps",-1.0,0.0,thermodynamics
+Second law composes,-1.0,0.0,thermodynamics
+Ising bonds in series,-2.0,0.0,thermodynamics
+Fermi function,0.0,-1.0,thermodynamics
+Negative temperature,0.0,-1.0,thermodynamics
+Ising bonds in parallel,0.0,-1.0,thermodynamics
+Doppler temperature,0.0,-1.0,thermodynamics
+"Stokes' pile, gray plates",-2.0,1.0,thermodynamics
+Kaniadakis kappa-sum (kappa=1),0.0,0.5,thermodynamics
+Fermi function after Wick rotation,0.0,1.0,thermodynamics
+Adding counts,0.0,0.0,simple-laws
+Relative errors add (first order),0.0,0.0,simple-laws
+Torques add,0.0,0.0,simple-laws
+Buoyancy,0.0,0.0,simple-laws
+Galilean velocity addition,0.0,0.0,simple-laws
+Equal areas,0.0,0.0,simple-laws
+Lenses in contact,0.0,0.0,simple-laws
+Mirror and thin-lens equation,0.0,0.0,simple-laws
+Springs side by side,0.0,0.0,simple-laws
+Springs end to end,0.0,0.0,simple-laws
+Forces and momenta add,0.0,0.0,simple-laws
+Series resistors,0.0,0.0,simple-laws
+Parallel resistors,0.0,0.0,simple-laws
+Multiplying through +1,1.0,0.0,simple-laws
+Non-empty choices,1.0,0.0,simple-laws
+Relative error of a product,1.0,0.0,simple-laws
+Rectangle and gnomon,1.0,0.0,simple-laws
+Box and cube volume,1.0,0.0,simple-laws
+Pressure gains stacking,1.0,0.0,simple-laws
+Volume losses stacking,-1.0,0.0,simple-laws
+Law of cooling,-1.0,0.0,simple-laws
+Pythagoras,0.0,1.0,simple-laws
+Euclid's triples,0.0,1.0,simple-laws
+Sine and cosine addition,0.0,1.0,simple-laws
+Telegraph line,0.0,-1.0,simple-laws
+Disjoint events add,0.0,0.0,statistics
+"Mean, variance, cumulants add",0.0,0.0,statistics
+CLT shape numbers,0.0,0.0,statistics
+Log-odds add,0.0,0.0,statistics
+Independent union,-1.0,0.0,statistics
+Inclusion-exclusion,-1.0,0.0,statistics
+Generating functions multiply,1.0,0.0,statistics
+Moments of a sum,1.0,0.0,statistics
+Bayes odds,1.0,0.0,statistics
+Pooling opinions,0.0,-1.0,statistics
+Tsallis entropy,family,"k = 1 - q, the whole line",thermodynamics
+Lee-Yang three-spin chain,family,"(2a, 1)",thermodynamics
+Law of cosines,family,"(-2cos C, 1)",simple-laws
+Rotation in tilted axes,family,"(2cos theta, 1)",simple-laws
+Lenses a distance d apart,family,"(-d, 0)",simple-laws
+Changing units,family,"(lam k, lam^2 q)",simple-laws
+Dependent union,family,"(-lift, 0)",statistics
+AMH dependence,family,k + q = -1,statistics
+Elliptic curve over F_p,family,"(-a_p, p)",elliptic
+"Noisy channels, d letters",family,"(-d/(d-1), 0) and (-d^2/(d^2-1), 0)",information
+Kaniadakis kappa-sum,family,"(0, kappa^2/2)",thermodynamics

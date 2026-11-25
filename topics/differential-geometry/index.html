@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Differential Geometry Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a surveyor's plate: three surfaces (globe, flat sheet, saddle) and the one chart line they share
+   COLOUR sphere globe-blue, hyperbolic saddle-terracotta, flat graphite, walls red, warm paper / night slate
+   TYPE Source Serif 4 600 display + Inter
+   LAYOUT conic picture left, readout right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#f4f1ea,#15171a);--panel:light-dark(#fffdf8,#1e2125);--ink:light-dark(#1b1a17,#efece6);--soft:light-dark(#5d5a52,#aaa69c);--rule:light-dark(#cfc9bb,#383b40);--red:light-dark(#c8102e,#ff5c6c);--sph:light-dark(#2266b0,#73a9ff);--hyp:light-dark(#b4512b,#f08a5d);--flat:light-dark(#4a4a4a,#c9c9c9);--sphF:light-dark(rgba(34,102,176,.12),rgba(115,169,255,.14));--hypF:light-dark(rgba(180,81,43,.12),rgba(240,138,93,.14))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:600 clamp(30px,4.4vw,48px)/1.08 "Source Serif 4",Georgia,serif;margin:0 0 14px;max-width:24ch;text-wrap:balance}
+h2{font:600 25px/1.2 "Source Serif 4",Georgia,serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:70ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:430px}.fig2{position:relative;min-height:320px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.alt svg text{stroke:var(--bg)}
+.ctl{display:grid;grid-template-columns:7em minmax(0,1fr) 3.6em;gap:10px;align-items:center;margin:4px 0}
+.ctl label{font-weight:600;white-space:nowrap}
+.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:40px;accent-color:var(--hyp)}
+.big{font:600 clamp(26px,3.6vw,36px)/1.1 "Source Serif 4",Georgia,serif}
+.small{color:var(--soft);font-size:14px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:26px}
+.cols p{max-width:66ch}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:start}
+.eq{font:17px/1.6 "Source Serif 4",Georgia,serif;background:var(--panel);border-left:3px solid var(--hyp);padding:10px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.alt .eq{background:var(--bg)}
+.ledger td:last-child{color:var(--soft)}
+footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:360px}}
+@media(max-width:600px){.fig{min-height:320px}.fig2{min-height:280px}table{font-size:14px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>The bend is curvature: every landscape law slides along a line of a sphere, a flat plane or a hyperbolic plane</h1>
+<p class="lede">Turn the curve t² + Kx² = 1 about its centre and watch where the rays cross the line t = 1. Those crossing points combine by (r₁ + r₂)/(1 − K·r₁r₂), the landscape law with bend q = K. A circle gives tangent addition, a hyperbola gives Einstein's velocity addition, and in between, at K = 0, plain addition.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="con"></div>
+<div class="ctl"><label for="K">curvature K</label><input id="K" type="range" min="-1.5" max="1.5" step="0.05" value="-1"><output id="Ko"></output></div>
+<div class="ctl"><label for="t1">first turn</label><input id="t1" type="range" min="-1.2" max="1.2" step="0.01" value="0.45"><output id="t1o"></output></div>
+<div class="ctl"><label for="t2">second turn</label><input id="t2" type="range" min="-1.2" max="1.2" step="0.01" value="0.5"><output id="t2o"></output></div>
+<p class="small">The coloured curve is t² + Kx² = 1. The horizontal line t = 1 is the chart. Thin ray: after the first turn. Thick ray: after both. For a circle the turns are angles, for a hyperbola they are rapidities; either way they simply add.</p>
+</div>
+<div class="panel">
+<div class="small">Geometry</div>
+<div class="big" id="geo"></div>
+<p class="small" id="rad"></p>
+<div class="scroll"><table><tbody id="tb"></tbody></table></div>
+<p class="small">r₁ and r₂ are where each turn alone meets the chart. The last two rows agree for every K: the chart composes by the landscape law at p = 0, q = K. Distance from the centre along the chart is the law's ruler, ds = dr/(1 + K r²).</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>Distance is the ruler, and the walls are the horizon</h2>
+<p>The groups page found that each law has a ruler, L(x) = ∫ ds/(1 + ps + qs²), which turns it into addition. Here that ruler is literally distance. Put a line of a sphere, a plane or a hyperbolic plane on a chart where straight lines stay straight (gnomonic for the sphere, Beltrami–Klein for the hyperbolic plane), and the distance from the centre to the point r is L(r). Equal steps of distance are the ticks below.</p>
+<p>On the hyperbolic line the ticks crowd toward two points they never reach. Those are the walls. They are the line's two ends at infinity, where it meets the horizon of the hyperbolic plane. Cayley (1859) and Klein (1871) saw that distance on such a line is the logarithm of a cross-ratio taken with those two end points; that log is exactly the ruler. On the sphere the ticks run off to infinity and come back from the other side: the line closes after length π/√K, half a great circle, because the chart sees antipodal points as one. On the flat line the ticks are even.</p>
+</div>
+<div class="panel"><div class="fig2" id="tix"></div>
+<p class="small">Ticks every 0.25 of distance along the chart line, for K = +1, 0 and −1. Red: the hyperbolic line's walls at ±1, infinitely far away.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>Mult-add lives in the upper half plane, with −1 on the horizon</h2>
+<p>Read the lift 1 + x as a height y above a horizon. Mult-add by a is y ↦ (1 + a)·y, a dilation of the upper half plane, and dilations are rigid motions of the hyperbolic metric (dx² + dy²)/y², which has curvature −1. They slide points along the vertical geodesic. The distance from height 1 to height 1 + x is log(1 + x), mult-add's ruler.</p>
+<p>The wall −1 is height 0: the horizon, infinitely far down. Its other wall sits at x = ∞, infinitely far up. Every dial k ≠ 0 is the same picture shrunk: curvature −k², radius 1/|k|. As k → 0 the radius grows without bound and the plane goes flat: plain addition.</p>
+</div>
+<div class="panel"><div class="fig2" id="hp"></div>
+<p class="small">Grey arcs: other geodesics of the half plane. Dots: heights 1 + x for x = mult-add powers of 1 and of its inverse, equally spaced in distance. Red: the horizon, the wall x = −1.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>Every landscape point has a curvature, set by 4q − p²</h2>
+<p>A change of coordinate on the line, x ↦ x/(1 − cx), moves (p, q) along a parabola and keeps 4q − p² fixed. So every landscape point carries one number, and it is a curvature. In straight-line charts K = q − p²/4. In angle-true charts (Poincaré, stereographic, the half plane) the same law sits at K = 4q − p², four times as much, because those charts measure the point at half the distance. The bridge between them is doubling, a ⊕ a = 2a/(1 − qa²), which is exactly how the Poincaré radius becomes the Klein radius.</p>
+<p>A line on its own has no curvature: it can always be laid flat. The number belongs to the plane the line sits in. Its sign is the groups page's trichotomy: line-type laws (two real walls) are hyperbolic, circle-type laws are spherical, the border parabola is flat. The whole dial line is hyperbolic (K = −k²/4), and so is relativity: velocity addition at q = −1/c² has K = −1/c², the known fact that the space of velocities is a hyperbolic space of radius c (Varićak 1910).</p>
+</div>
+<div class="panel"><div class="fig2" id="map"></div>
+<p class="small">Blue: spherical laws. Terracotta: hyperbolic laws. Grey parabola: flat. Dashed: curves of equal curvature K = q − p²/4, which a chart change slides a law along.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>Klein and Poincaré: where Einstein's addition lives</h2>
+<p>Abraham Ungar's work makes this precise in every direction. Einstein's velocity addition is a rigid motion of the Beltrami–Klein ball, the straight-line chart, where the speed of light is the horizon. Möbius addition, (a + z)/(1 + āz), is the same motion in the Poincaré disk, the angle-true chart. Along one line both reduce to (a + b)/(1 + ab), and doubling carries one to the other in every direction.</p>
+<p>The picture shows one point at distance d from the centre in both disks: Klein radius tanh d, Poincaré radius tanh(d/2). Straight chords in Klein become circular arcs meeting the edge at right angles in Poincaré.</p>
+<div class="ctl"><label for="d">distance d</label><input id="d" type="range" min="0" max="3" step="0.01" value="1.1"><output id="do"></output></div>
+</div>
+<div class="panel"><div class="fig2" id="dsk"></div>
+<p class="small" id="dskc"></p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>Where curvature makes boosts twist</h2>
+<p>Everything on this page happens along one line, where curvature cannot be felt. It shows up when you move in two directions. Walk a triangle of geodesics in a curved plane and you come back turned, by an angle equal to curvature times area (Gauss 1827, Bonnet 1848): on the hyperbolic plane the angles of a triangle fall short of π by exactly its area. That turn is the geometric reason two boosts in different directions leave a rotation behind. That work, non-collinear boosts, Thomas–Wigner rotation and gyrogroups, is on the twisted boosts page and is not repeated here.</p>
+</div>
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>Distance as log of a cross-ratio with the absolute; the three plane geometries from one projective picture</td><td>Cayley 1859, Klein 1871</td></tr>
+<tr><td>Straight-line (Beltrami–Klein) and angle-true (Poincaré) models of the hyperbolic plane</td><td>Beltrami 1868, Poincaré 1882</td></tr>
+<tr><td>Velocity space is hyperbolic with radius c</td><td>Varićak 1910</td></tr>
+<tr><td>Einstein addition in the Klein ball, Möbius addition in the Poincaré ball</td><td>Ungar, 2000s</td></tr>
+<tr><td>Angle defect equals curvature times area</td><td>Gauss 1827, Bonnet 1848</td></tr>
+<tr><td>Rotating t² + Kx² = 1 gives (r₁ + r₂)/(1 − K r₁r₂) on the central chart</td><td>Classical (Cayley–Klein; Yaglom's nine geometries)</td></tr>
+<tr><td>Curvature of any landscape point: q − p²/4 (straight charts), 4q − p² (angle-true charts); mult-add as the half plane with its wall on the horizon</td><td>Ours as a placement, from standard pieces</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Lead worth following? No independent one.</h2>
+<p>The geometry is sure and it is classical: the bend q, corrected by p, is the curvature of the plane the law lives in, the walls are that plane's horizon, and the ruler is distance. That gives every point of the landscape a picture, and it gives mult-add a home, the hyperbolic half plane with −1 on the horizon. It does not predict anything new, because in one dimension curvature has no effect you could measure.</p>
+<p>The only place curvature acts is in two or more directions, as the turn left behind by a closed loop. That is exactly what the twisted boosts work is following, so this branch adds no separate lead.</p>
+</div>
+<div>
+<h2>Proved and checked</h2>
+<p><b>32 Lean theorems</b> in core Lean 4.37, compiled against the shared library, no sorry, standard axioms only. Among them <code>rmul_form</code>, <code>central_chart</code>, <code>flat_adds</code>, <code>dbl_num</code>, <code>dbl_den</code>, <code>curv_chart_free</code>, <code>walls_curv</code>, <code>cr_base</code>, <code>halfplane_isometry</code>, <code>mobius_collinear</code>.</p>
+<p><b>34 of 34 checks pass</b> in sympy, mpmath and scipy, including the Gaussian curvature of both chart metrics, the Cayley–Klein formula against numerical integration, Ungar's doubling in two dimensions and one Gauss–Bonnet triangle.</p>
+</div>
+</div>
+</section>
+<footer>Checks: 34 of 34 pass. Lean: 32 theorems, compiled clean. Differential geometry, Fused Hyperoperation Algebra, November 2026.</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const f=(x,n=3)=>!isFinite(x)||Math.abs(x)>1e6?'∞':(Math.abs(x)>=1e4?x.toExponential(2):x.toFixed(n)).replace('-','−');
+const mk=(el,lab)=>{el.innerHTML='<svg role="img" aria-label="'+lab+'"></svg>';return el.firstChild;};
+const S1=mk($('con'),'Conic and chart line'),S2=mk($('tix'),'Ticks of equal distance'),S3=mk($('hp'),'Upper half plane'),S4=mk($('map'),'Landscape by curvature'),S5=mk($('dsk'),'Klein and Poincare disks');
+const cs=(K,th)=>K>1e-9?[Math.cos(Math.sqrt(K)*th),Math.sin(Math.sqrt(K)*th)/Math.sqrt(K)]:K<-1e-9?[Math.cosh(Math.sqrt(-K)*th),Math.sinh(Math.sqrt(-K)*th)/Math.sqrt(-K)]:[1,th];
+const kcol=K=>K>1e-9?'var(--sph)':K<-1e-9?'var(--hyp)':'var(--flat)';
+function drawCon(){
+  const K=+$('K').value,a1=+$('t1').value,a2=+$('t2').value;
+  $('Ko').textContent=f(K,2);$('t1o').textContent=f(a1,2);$('t2o').textContent=f(a2,2);
+  const W=S1.clientWidth,H=S1.clientHeight,xr=2.2,tlo=-0.25,thi=1.9;
+  const sc=Math.min((W-20)/(2*xr),(H-20)/(thi-tlo)),cx=W/2,cy=H/2+(thi+tlo)/2*sc;
+  const X=x=>cx+x*sc,Y=t=>cy-t*sc,col=kcol(K);
+  let s='<line x1="'+X(-xr)+'" y1="'+Y(0)+'" x2="'+X(xr)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+Y(tlo)+'" x2="'+X(0)+'" y2="'+Y(thi)+'" stroke="var(--rule)"/>';
+  // conic
+  let d='';
+  if(K>1e-9){const R=Math.PI/Math.sqrt(K);for(let i=0;i<=200;i++){const p=cs(K,-R+2*R*i/200);if(p[0]<tlo-0.05){d+=' ';continue;}d+=(d.endsWith(' ')||!d?'M':'L')+X(p[1]).toFixed(1)+' '+Y(p[0]).toFixed(1);}}
+  else if(K<-1e-9){const m=Math.asinh(xr*Math.sqrt(-K))/Math.sqrt(-K);for(let i=0;i<=160;i++){const p=cs(K,-m+2*m*i/160);if(p[0]>thi)continue;d+=(d?'L':'M')+X(p[1]).toFixed(1)+' '+Y(p[0]).toFixed(1);}}
+  else d='M'+X(-xr)+' '+Y(1)+' L'+X(xr)+' '+Y(1);
+  s+='<path d="'+d.replace(/\s+M/g,' M').trim()+'" fill="none" stroke="'+col+'" stroke-width="3"/>';
+  if(K<-1e-9){const sl=Math.sqrt(-K);s+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(Math.min(xr,thi/sl))+'" y2="'+Y(Math.min(thi,xr*sl))+'" stroke="var(--red)" stroke-dasharray="5 4"/><line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(-Math.min(xr,thi/sl))+'" y2="'+Y(Math.min(thi,xr*sl))+'" stroke="var(--red)" stroke-dasharray="5 4"/>';}
+  s+='<line x1="'+X(-xr)+'" y1="'+Y(1)+'" x2="'+X(xr)+'" y2="'+Y(1)+'" stroke="var(--ink)" stroke-width="1.5"/><text x="'+(X(-xr)+4)+'" y="'+(Y(1)-8)+'">chart t = 1</text>';
+  const ray=(th,w,lab,dy)=>{const p=cs(K,th);let o='';const r=p[1]/p[0];
+    const nr=Math.hypot(p[0],p[1]),ex=p[1]/nr,et=p[0]/nr;let L=1.2*Math.max(1,nr);if(et>0.05)L=Math.max(L,1.15/et);
+    o+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(ex*Math.min(L,8))+'" y2="'+Y(et*Math.min(L,8))+'" stroke="'+col+'" stroke-width="'+w+'"/>';
+    o+='<circle cx="'+X(p[1])+'" cy="'+Y(p[0])+'" r="5" fill="'+col+'"/>';
+    if(p[0]>0.05&&Math.abs(r)<xr)o+='<circle cx="'+X(r)+'" cy="'+Y(1)+'" r="5" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/><text x="'+X(r)+'" y="'+(Y(1)+dy)+'" text-anchor="middle">'+lab+'</text>';
+    return o;};
+  s+=ray(a1,1.5,'r₁',20)+ray(a1+a2,3.5,'r₁₂',-12);
+  s+='<circle cx="'+X(0)+'" cy="'+Y(0)+'" r="4" fill="var(--ink)"/><text x="'+(X(0)+8)+'" y="'+(Y(0)+16)+'">centre</text><text x="'+(X(0)+8)+'" y="'+(Y(thi)+12)+'">t</text><text x="'+(X(xr)-4)+'" y="'+(Y(0)-6)+'" text-anchor="end">x</text>';
+  S1.innerHTML=s;
+  const r=th=>{const p=cs(K,th);return p[1]/p[0];};
+  const r1=r(a1),r2=r(a2),r12=r(a1+a2);
+  $('geo').textContent=K>1e-9?'Sphere':K<-1e-9?'Hyperbolic plane':'Flat plane';
+  $('geo').style.color=col;
+  $('rad').textContent=Math.abs(K)>1e-9?'Curvature '+f(K,2)+', radius '+f(1/Math.sqrt(Math.abs(K)),2)+(K<0?'. Dashed red: the asymptotes, the walls at r = ±'+f(1/Math.sqrt(-K),2):''):'Curvature 0: the chart line is the curve itself.';
+  $('tb').innerHTML='<tr><td>r₁</td><td>'+f(r1)+'</td></tr><tr><td>r₂</td><td>'+f(r2)+'</td></tr><tr><td>r₁₂ (both turns)</td><td>'+f(r12)+'</td></tr><tr><td>(r₁ + r₂)/(1 − K r₁r₂)</td><td>'+f((r1+r2)/(1-K*r1*r2))+'</td></tr>';
+  drawMap();
+}
+function drawTix(){
+  const W=S2.clientWidth,H=S2.clientHeight,m=24,xr=2.4,X=x=>W/2+x/xr*(W/2-m);
+  let s='';const rows=[[1,'sphere K = +1'],[0,'flat K = 0'],[-1,'hyperbolic K = −1']];
+  rows.forEach(([K,lab],i)=>{const y=40+i*(H-90)/2,col=kcol(K);
+    s+='<line x1="'+X(-xr)+'" y1="'+y+'" x2="'+X(xr)+'" y2="'+y+'" stroke="'+col+'" stroke-width="2"/><text x="'+m+'" y="'+(y-20)+'">'+lab+'</text>';
+    for(let j=-40;j<=40;j++){const dd=j*0.25;let x;if(K>0){if(Math.abs(dd)>=Math.PI/2)continue;x=Math.tan(dd);}else if(K<0)x=Math.tanh(dd);else x=dd;
+      if(Math.abs(x)>xr)continue;const hgt=j%4===0?10:5;s+='<line x1="'+X(x)+'" y1="'+(y-hgt)+'" x2="'+X(x)+'" y2="'+(y+hgt)+'" stroke="'+col+'" stroke-width="'+(j%4===0?2:1)+'"/>';}
+    if(K<0)[-1,1].forEach(w=>s+='<line x1="'+X(w)+'" y1="'+(y-16)+'" x2="'+X(w)+'" y2="'+(y+16)+'" stroke="var(--red)" stroke-width="2.5"/>');
+    s+='<text x="'+X(0)+'" y="'+(y+28)+'" text-anchor="middle">0</text>';});
+  S2.innerHTML=s;
+}
+function drawHP(){
+  const W=S3.clientWidth,H=S3.clientHeight,m=20,hor=H-34,sc=(hor-m)/4.2,cx=W/2;
+  const X=x=>cx+x*sc,Y=y=>hor-y*sc;
+  let s='';
+  [[-2.2,1.2],[1.9,1.6],[-0.4,2.6],[2.6,0.7],[-3.0,0.6]].forEach(([c,r])=>{s+='<path d="M'+X(c-r)+' '+hor+' A'+(r*sc)+' '+(r*sc)+' 0 0 1 '+X(c+r)+' '+hor+'" fill="none" stroke="var(--rule)" stroke-width="1.5"/>';});
+  s+='<line x1="'+X(0)+'" y1="'+hor+'" x2="'+X(0)+'" y2="'+m+'" stroke="var(--hyp)" stroke-width="3"/>';
+  s+='<line x1="0" y1="'+hor+'" x2="'+W+'" y2="'+hor+'" stroke="var(--red)" stroke-width="3"/><text x="'+(W-6)+'" y="'+(hor+20)+'" text-anchor="end">horizon y = 0: the wall x = −1</text>';
+  for(let n=-6;n<=2;n++){const y=Math.pow(2,n);if(Y(y)<m)continue;s+='<circle cx="'+X(0)+'" cy="'+Y(y)+'" r="'+(n===0?6:4.5)+'" fill="'+(n===0?'var(--ink)':'var(--hyp)')+'"/>';
+    if(n>=-2)s+='<text x="'+(X(0)+12)+'" y="'+(Y(y)+4)+'">'+(n===0?'x = 0 (y = 1)':'x = '+f(y-1,n<0?2:0))+'</text>';}
+  s+='<text x="'+(X(0)-10)+'" y="'+(m+12)+'" text-anchor="end">up to x = ∞</text>';
+  S3.innerHTML=s;
+}
+function drawMap(){
+  const K=+$('K').value,W=S4.clientWidth,H=S4.clientHeight,m=26,p0=-3,p1=3,q0=-2,q1=3;
+  const X=x=>m+(x-p0)/(p1-p0)*(W-2*m),Y=y=>m+(q1-y)/(q1-q0)*(H-2*m);
+  let par='';for(let i=0;i<=80;i++){const x=p0+(p1-p0)*i/80;par+=(i?'L':'M')+X(x)+' '+Y(Math.min(q1,x*x/4));}
+  let s='<rect x="'+X(p0)+'" y="'+Y(q1)+'" width="'+(X(p1)-X(p0))+'" height="'+(Y(q0)-Y(q1))+'" fill="var(--hypF)"/><path d="'+par+' L'+X(p1)+' '+Y(q1)+' L'+X(p0)+' '+Y(q1)+' Z" fill="var(--sphF)"/>';
+  [-1,-0.25,1,2].forEach(k=>{let d='';for(let i=0;i<=80;i++){const x=p0+(p1-p0)*i/80,y=x*x/4+k;if(y<q0||y>q1)continue;d+=(d?'L':'M')+X(x)+' '+Y(y);}s+='<path d="'+d+'" fill="none" stroke="'+kcol(k)+'" stroke-dasharray="5 5" stroke-width="1.2"/>';});
+  s+='<path d="'+par+'" fill="none" stroke="var(--flat)" stroke-width="2.5"/><line x1="'+X(p0)+'" y1="'+Y(0)+'" x2="'+X(p1)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+Y(q0)+'" x2="'+X(0)+'" y2="'+Y(q1)+'" stroke="var(--rule)"/>';
+  const pt=(x,y,lab,anc,dx,dy)=>'<circle cx="'+X(x)+'" cy="'+Y(y)+'" r="5" fill="var(--ink)"/><text x="'+(X(x)+dx)+'" y="'+(Y(y)+dy)+'" text-anchor="'+anc+'">'+lab+'</text>';
+  s+=pt(1,0,'mult-add, K = −1/4','start',6,16)+pt(0,-1,'velocity, K = −1','start',8,4)+pt(0,1,'tangent, K = 1','start',8,4);
+  s+='<circle cx="'+X(0)+'" cy="'+Y(Math.max(q0,Math.min(q1,K)))+'" r="7" fill="'+kcol(K)+'" stroke="var(--panel)" stroke-width="2"/>';
+  s+='<text x="'+(X(p1)-2)+'" y="'+(Y(0)-6)+'" text-anchor="end">p</text><text x="'+(X(0)-6)+'" y="'+(Y(q1)+12)+'" text-anchor="end">q</text>';
+  S4.innerHTML=s;
+}
+function drawDsk(){
+  const d=+$('d').value;$('do').textContent=f(d,2);
+  const W=S5.clientWidth,H=S5.clientHeight,two=W>=440,R=two?Math.min((W-50)/4,H/2-30):Math.min(W/2-20,(H-70)/4);
+  const cA=two?[W/4+5,H/2]:[W/2,R+18],cB=two?[3*W/4-5,H/2]:[W/2,3*R+48];
+  const rK=Math.tanh(d),rP=Math.tanh(d/2);
+  let s='';
+  const disk=(c,lab)=>'<circle cx="'+c[0]+'" cy="'+c[1]+'" r="'+R+'" fill="var(--hypF)" stroke="var(--hyp)" stroke-width="2"/><text x="'+c[0]+'" y="'+(c[1]-R-6)+'" text-anchor="middle">'+lab+'</text>';
+  s+=disk(cA,'Klein (straight lines)')+disk(cB,'Poincaré (true angles)');
+  const e1=2.2,e2=0.6;
+  s+='<line x1="'+(cA[0]+R*Math.cos(e1))+'" y1="'+(cA[1]-R*Math.sin(e1))+'" x2="'+(cA[0]+R*Math.cos(e2))+'" y2="'+(cA[1]-R*Math.sin(e2))+'" stroke="var(--sph)" stroke-width="2"/>';
+  const mid=(e1+e2)/2,half=(e1-e2)/2,cd=R/Math.cos(half),rr=R*Math.tan(half);
+  const ox=cB[0]+cd*Math.cos(mid),oy=cB[1]-cd*Math.sin(mid);
+  const pa=[cB[0]+R*Math.cos(e1),cB[1]-R*Math.sin(e1)],pb=[cB[0]+R*Math.cos(e2),cB[1]-R*Math.sin(e2)];
+  s+='<path d="M'+pa[0]+' '+pa[1]+' A'+rr+' '+rr+' 0 0 0 '+pb[0]+' '+pb[1]+'" fill="none" stroke="var(--sph)" stroke-width="2"/>';
+  [[cA,rK],[cB,rP]].forEach(([c,r])=>{s+='<line x1="'+(c[0]-R)+'" y1="'+c[1]+'" x2="'+(c[0]+R)+'" y2="'+c[1]+'" stroke="var(--rule)"/><circle cx="'+c[0]+'" cy="'+c[1]+'" r="3.5" fill="var(--ink)"/><circle cx="'+(c[0]+r*R)+'" cy="'+c[1]+'" r="6" fill="var(--hyp)"/>';});
+  S5.innerHTML=s;
+  $('dskc').textContent='Distance '+f(d,2)+': Klein radius tanh d = '+f(rK)+', Poincaré radius tanh(d/2) = '+f(rP)+'. Check: 2·'+f(rP)+'/(1 + '+f(rP)+'²) = '+f(2*rP/(1+rP*rP))+'. Blue: the same geodesic in both pictures.';
+}
+['K','t1','t2'].forEach(k=>$(k).addEventListener('input',drawCon));$('d').addEventListener('input',drawDsk);
+new ResizeObserver(drawCon).observe($('con'));new ResizeObserver(drawTix).observe($('tix'));new ResizeObserver(drawHP).observe($('hp'));
+new ResizeObserver(drawMap).observe($('map'));new ResizeObserver(drawDsk).observe($('dsk'));
+drawCon();drawTix();drawHP();drawDsk();
+}
+</script>
+</body>
+</html>

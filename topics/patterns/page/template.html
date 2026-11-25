@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Patterns across the results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful lab notebook; plain answers, honest marks of what is known.
+   IDEA: a stepping machine: one 2×2 step, turned by the law, counting out the n-fold sum.
+   PICTURE: the landscape plane with every law, and a live counter that steps a value and shows its Lucas numbers.
+   COLOUR and TYPE: aluminium ground, black ink, orange for walls, violet for turns, gold only for φ; Geist.
+   LAYOUT: verdict first, the plane and the counter, then golden ratio, constant census, q, proofs, leads. */
+:root{color-scheme:light dark;--bg:light-dark(#e9eaec,#141517);--card:light-dark(#ffffff,#1d1f22);--ink:light-dark(#101214,#eceef0);--mute:light-dark(#555a60,#a3a8ae);--line:light-dark(#c9ccd1,#33373c);--wall:#ff4f00;--turn:#6a4ce2;--gold:light-dark(#b8860b,#e2b33c);--blue:light-dark(#257de0,#4c9cf0)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Geist,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.05;margin:0 0 14px;text-wrap:balance;font-weight:700}
+h2{font-size:clamp(22px,2.6vw,30px);line-height:1.1;margin:0 0 12px;text-wrap:balance}
+h3{font-size:18px;margin:18px 0 6px}
+p{max-width:70ch;margin:0 0 12px}.mute{color:var(--mute)}.small{font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,2.4vw,26px)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:860px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.fig{position:relative;min-height:380px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig.short{min-height:280px}
+.nums{display:flex;flex-wrap:wrap;gap:12px 28px;margin:18px 0 6px}.nums b{display:block;font-size:clamp(24px,3vw,34px);line-height:1}
+.nums span{font-size:14px;color:var(--mute)}
+.verdict{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.verdict li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.tag{font-size:13px;font-weight:700;padding:3px 8px;border-radius:999px;justify-self:start;align-self:start;white-space:nowrap}
+.t-keep{background:color-mix(in srgb,var(--blue) 18%,transparent);color:var(--blue)}
+.t-no{background:color-mix(in srgb,var(--mute) 18%,transparent);color:var(--mute)}
+.t-next{background:color-mix(in srgb,var(--turn) 18%,transparent);color:var(--turn)}
+@media(max-width:600px){.verdict li{grid-template-columns:minmax(0,1fr)}}
+label{display:block;font-size:14px;color:var(--mute);margin-top:8px}
+input[type=range]{width:100%;height:44px;accent-color:var(--turn)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--turn);outline-offset:2px}
+button.on{border-color:var(--turn);color:var(--turn)}
+.readout{font-variant-numeric:tabular-nums;font-size:15px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap}
+.scroll{overflow-x:auto}code{overflow-wrap:anywhere;font-size:14px}
+.links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;margin-top:8px}.links a{color:var(--blue)}
+details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<div class="band">
+<p class="mute small">Fused Hyperoperation Algebra · patterns across the results · Nov 25, 2026</p>
+<h1>One 2×2 step sits under every law, and Fibonacci is one setting of it</h1>
+<p>Every law on the map, mult-add, velocity addition, slope addition, the channels, the Euler characteristic, is the same machine: adding a value is one 2×2 step, and adding it n times is that step taken n times. Taking a 2×2 step n times always follows one recurrence, Lucas's: U(n+2) = P·U(n+1) − Q·U(n), where P is the step's trace and Q its determinant. Fibonacci is the case P = 1, Q = −1, which is exactly the law (a + b − ab)/(1 + ab) adding 1 to itself.</p>
+<p>The golden ratio is not a force running through the results. It shows up for one arithmetic reason, the number 5, and in the numbers our pages actually produced it turns up no more often than chance. The constants that do repeat above chance are e and its family, which is the ruler that turns every law into plain multiplication.</p>
+<div class="nums">
+<div><b>__NCHECK__</b><span>exact and numeric checks pass</span></div>
+<div><b>__NLEAN__</b><span>Lean theorems (__LEANSTATUS__)</span></div>
+<div><b>__NNUM__</b><span>numbers scanned from __NPAGES__ pages</span></div>
+<div><b>__PHIHITS__ vs __PHINULL__</b><span>golden-ratio hits vs chance</span></div>
+</div>
+</div>
+
+<div class="band">
+<h2>Verdict on each pattern, fundamental first</h2>
+<ul class="verdict">
+<li><span class="tag t-keep">Keep as the lens</span><div><b>One step, three kinds.</b> Each law is a 2×2 step. Its three countries are the three kinds of 2×2 step: two walls (it stretches toward a wall), the border (it slides), no wall (it turns). This is the classification of Möbius maps, known since the 1800s. It is the shape underneath the 1-D laws, not a new prediction.</div></li>
+<li><span class="tag t-keep">Keep as a tool</span><div><b>Lucas sequences count every law.</b> For any law and any value a, the n-fold sum is a·U(n)/(U(n) − Q·U(n−1)) with P = 2 + k·a and Q = 1 + k·a + q·a². Associativity becomes Lucas's addition rule, Cassini's identity becomes the determinant, and a wall is exactly where the determinant is zero. Known (Lucas 1878); new only as a placement of every law on one recurrence. Proved in Lean.</div></li>
+<li><span class="tag t-no">Not a force</span><div><b>The golden ratio comes from 5, twice.</b> The smallest irrational walls a whole-number law can have are the golden walls (discriminant 5, at k = ±1, q = −1): that is the resistor ladder and the Fibonacci law. And the first cycle a whole-number turn can never make is the 5-cycle, so a 5-cycle forces a golden trace: that is where Lee–Yang's 1.618 came from. Both facts are classical number theory. In the census φ appears at chance level, and every hit was put in by hand.</div></li>
+<li><span class="tag t-keep">Explained</span><div><b>e and its family repeat above chance.</b> e, e − 1 and 1/e turn up on 5 to 6 independent pages, far above chance. That is the exponential ruler: the lens that turns mult-add into multiplication, and rung flow. It confirms that the ruler is the shared object across pages.</div></li>
+<li><span class="tag t-no">Not one force</span><div><b>q names two different numbers.</b> The pages use q for the map's second coordinate (curvature: relativity, twisted boosts) and for the gluing/colour number q = k + 1 (elliptic, solitons, q-counting, Lee–Yang). Parallels hold within each meaning, not across them. How the two meet is the subject of the map-of-directions work, so it is left there.</div></li>
+<li><span class="tag t-next">Worth following</span><div><b>One level up: elliptic laws count with Somos sequences.</b> On the elliptic direction the n-fold sum is governed by elliptic divisibility sequences (Ward 1948), the exact twin of Lucas one level up, and they shrink back to Lucas sequences at q = 0. That would carry today's counting engine across the elliptic and soliton pages. Known math, but it is the natural next placement.</div></li>
+</ul>
+</div>
+
+<div class="band">
+<h2>The plane of laws, and the step that counts them</h2>
+<div class="grid2">
+<div class="card">
+<div class="fig" id="plane"><svg role="img" aria-label="The plane of laws: weight k across, second coordinate q up, the parabola q = k²/4, and every law as a dot"></svg></div>
+<p class="small mute">Across: weight k. Up: the map's second coordinate q, in a ⊕ b = (a + b + k·ab)/(1 − q·ab). Below the parabola: two walls. On it: the border. Above: turning. Gold rings are the golden walls (±1, −1). Click anywhere to load that law into the counter.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Step counter</h3>
+<div class="presets" id="presets"></div>
+<label for="kk">weight k: <span id="kv"></span></label><input id="kk" type="range" min="-3" max="3" step="0.01">
+<label for="qq">second coordinate q: <span id="qv"></span></label><input id="qq" type="range" min="-3" max="3" step="0.01">
+<label for="aa">value added each step a: <span id="av"></span></label><input id="aa" type="range" min="-2" max="2" step="0.001">
+<div class="readout" id="read"></div>
+<div class="fig short" id="steps"><svg role="img" aria-label="The n-fold sums a, a⊕a, … as dots, with the walls as orange lines"></svg></div>
+</div>
+</div>
+</div>
+
+<div class="band">
+<h2>Where the golden ratio actually lives</h2>
+<div class="grid2">
+<div class="card">
+<div class="fig short" id="fib"><svg role="img" aria-label="The Fibonacci law counting 1, 1/2, 2/3, 3/5, … into the wall 1/φ, and the ladder counting into φ"></svg></div>
+<p class="small mute">Violet: the Fibonacci law adds 1 to itself and gets F(n)/F(n+1), marching into its wall 1/φ. Orange: its mirror image, the resistor ladder of the simple-laws page, marches into φ. Both have discriminant 5.</p>
+</div>
+<div class="card">
+<div class="fig short" id="turns"><svg role="img" aria-label="Turn number 4cos²(π/n) for each period n, with whole-number turns marked"></svg></div>
+<p class="small mute">A turning step has period n exactly when its turn number P²/Q equals 4cos²(πm/n), the Beraha numbers. Filled dots are whole numbers (periods 1, 2, 3, 4, 6, the only cycles a whole-number law can make). Period 5 is the first gap, and its turn numbers are φ² and 1/φ².</p>
+</div>
+</div>
+</div>
+
+<div class="band">
+<h2>Constant census against a fair null</h2>
+<p>Every number printed to at least 4 significant digits in every page's check output (__NNUM4__ numbers, __NPAGES4__ pages) was matched against 21 named constants, also allowing the negative, the reciprocal and ±1 (mult-add shifts by 1). The null keeps each number's first two digits and size and scrambles the rest, __REPS__ times. A constant counts as a real repeat only if it beats its null.</p>
+<div class="card">
+<div class="fig short" id="census"><svg role="img" aria-label="Observed matches per constant against the chance level"></svg></div>
+<div class="scroll"><table class="stack" id="ctab"><thead><tr><th>Constant</th><th class="n">Hits</th><th class="n">Chance</th><th class="n">p</th><th>Pages</th></tr></thead><tbody></tbody></table></div>
+<p class="small mute">At 6 or more digits (stricter, __NNUM6__ numbers) φ has 0 hits. Most π hits are on the π page, which looked for π. The e hits on the biology, rung-shape and Navier–Stokes pages came out of computations that were not looking for e.</p>
+</div>
+</div>
+
+<div class="band">
+<h2>Proofs</h2>
+<p>__LEANNOTE__ File: <code>patterns/lean/Patterns.lean</code>, namespace <code>Patterns</code>.</p>
+<div class="scroll"><table class="stack"><thead><tr><th>Theorem</th><th>What it says</th></tr></thead><tbody id="ptab"></tbody></table></div>
+<h3>Checks</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody id="xtab"></tbody></table></div>
+</div>
+
+<div class="band">
+<h2>Known or new</h2>
+<p>Known: Möbius classification, Lucas sequences and their addition rule and Cassini identity (Lucas 1878), the infinite resistor ladder and φ, the crystallographic restriction (only periods 1, 2, 3, 4, 6 with whole numbers), Beraha numbers (Beraha, Kahane and Weiss), 5 as the smallest real quadratic discriminant, Fibonacci strong divisibility. New here: placing every law of this project on one Lucas recurrence, the Fibonacci law's spot on the map at (−1, −1), the census showing which constants really recur across the pages, and the Lean proofs on the fused base.</p>
+<p class="small mute">Files: patterns/checks.py, patterns/census.py, patterns/lean/Patterns.lean, beside this page in the project folder.</p>
+</div>
+
+<script>
+{
+const D=__DATA__;
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const phi=(1+Math.sqrt(5))/2;
+const st={k:1,q:0,a:1};
+const presets=[["Mult-add",1,0,1],["Velocity",0,-1,0.5],["Slope, 5-cycle",0,1,Math.tan(Math.PI/5)],["Fibonacci law",-1,-1,1],["Ladder",1,-1,1],["Euler char.",2,1,0.3]];
+const pe=document.getElementById('presets');
+pe.innerHTML=presets.map((p,i)=>`<button data-i="${i}">${esc(p[0])}</button>`).join('');
+pe.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const p=presets[+b.dataset.i];set(p[1],p[2],p[3]);});
+const kk=document.getElementById('kk'),qq=document.getElementById('qq'),aa=document.getElementById('aa');
+[kk,qq,aa].forEach(el=>el.addEventListener('input',()=>{st.k=+kk.value;st.q=+qq.value;st.a=+aa.value;update();}));
+function set(k,q,a){st.k=k;st.q=q;if(a!==undefined)st.a=a;kk.value=st.k;qq.value=st.q;aa.value=st.a;update();}
+function fmt(x){if(!isFinite(x))return '∞';const r=Math.abs(x)<1e-12?0:x;return Math.abs(r)>=1e4?r.toExponential(2):(+r.toFixed(4)).toString();}
+function counts(){const {k,q,a}=st;const P=2+k*a,Q=1+k*a+q*a*a;const U=[0,1];for(let i=0;i<24;i++)U.push(P*U[U.length-1]-Q*U[U.length-2]);
+ const s=[];for(let n=1;n<=16;n++){const den=U[n]-Q*U[n-1];s.push(Math.abs(den)<1e-12?Infinity:a*U[n]/den);}return {P,Q,U,s};}
+function walls(k,q){const d=k*k-4*q;if(Math.abs(q)<1e-12)return Math.abs(k)<1e-12?[]:[-1/k];if(d<0)return [];const r=Math.sqrt(d);return [(-k+r)/(2*q),(-k-r)/(2*q)];}
+function country(k,q){const d=k*k-4*q;return Math.abs(d)<1e-9?'border':(d>0?'two walls':'turning');}
+function update(){
+ document.getElementById('kv').textContent=fmt(st.k);document.getElementById('qv').textContent=fmt(st.q);document.getElementById('av').textContent=fmt(st.a);
+ const c=counts(),tau=c.P*c.P/c.Q;let per='none';for(let n=2;n<=16;n++){if(Math.abs(c.U[n])<1e-9*Math.max(1,Math.abs(c.U[n-1]))){per=n;break;}}
+ const w=walls(st.k,st.q);
+ document.getElementById('read').innerHTML=`<p style="margin:8px 0">Country: <b>${country(st.k,st.q)}</b>. Walls: ${w.length?w.map(fmt).join(', '):'none'}.<br>Trace P = ${fmt(c.P)}, determinant Q = ${fmt(c.Q)}, turn number P²/Q = ${fmt(tau)}. Period: ${per}.<br>Lucas U(1..8): ${c.U.slice(1,9).map(fmt).join(', ')}</p>`;
+ drawPlane();drawSteps(c,w);
+}
+function svgOf(id){const box=document.getElementById(id),s=box.querySelector('svg');return [box,s];}
+function drawPlane(){const [box,s]=svgOf('plane');const W=box.clientWidth,H=box.clientHeight,m=34;
+ const X=k=>m+(k+3)/6*(W-2*m),Y=q=>H-m-(q+3)/6*(H-2*m);const ink=css('--ink'),mute=css('--mute'),line=css('--line');
+ let g=`<rect x="${X(-3)}" y="${Y(3)}" width="${X(3)-X(-3)}" height="${Y(-3)-Y(3)}" fill="none" stroke="${line}"/>`;
+ let pa='',pt='';for(let i=0;i<=120;i++){const k=-3+6*i/120,q=k*k/4;if(q<=3){pa+=(pa?'L':'M')+X(k)+','+Y(q);}}
+ let fill='M'+X(-3)+','+Y(3);for(let i=0;i<=120;i++){const k=-3+6*i/120;fill+='L'+X(k)+','+Y(Math.min(3,k*k/4));}fill+='L'+X(3)+','+Y(3)+'Z';
+ g+=`<path d="${fill}" fill="${css('--turn')}" opacity=".08"/><path d="${pa}" fill="none" stroke="${ink}" stroke-width="1.5"/>`;
+ g+=`<line x1="${X(-3)}" x2="${X(3)}" y1="${Y(0)}" y2="${Y(0)}" stroke="${line}"/><line y1="${Y(-3)}" y2="${Y(3)}" x1="${X(0)}" x2="${X(0)}" stroke="${line}"/>`;
+ if(W>520){g+=`<text x="${X(0)+6}" y="${Y(2.7)}" fill="${css('--turn')}" font-size="13">turning (no wall)</text><text x="${X(-2.9)}" y="${Y(-2.6)}" fill="${css('--wall')}" font-size="13">two walls</text>`;}
+ g+=`<text x="${W-m}" y="${H-8}" text-anchor="end" fill="${mute}" font-size="12">k</text><text x="${m-4}" y="${m-10}" fill="${mute}" font-size="12">q</text>`;
+ for(const [k,q] of [[1,-1],[-1,-1]])g+=`<circle cx="${X(k)}" cy="${Y(q)}" r="10" fill="none" stroke="${css('--gold')}" stroke-width="2.5"/>`;
+ for(const d of D.dots){g+=`<circle cx="${X(d.x)}" cy="${Y(d.y)}" r="4.5" fill="${ink}"><title>${esc(d.t)} (${d.x}, ${d.y})</title></circle>`;}
+ const lab=W>620?D.dots.filter(d=>['Mult-add','Velocity addition','Slope addition','Euler characteristic','Parity','Addition'].includes(d.t)):[];
+ for(const d of lab)g+=`<text x="${X(d.x)+7}" y="${Y(d.y)-7}" fill="${mute}" font-size="12">${esc(d.t)}</text>`;
+ g+=`<text x="${X(-1)+12}" y="${Y(-1)+16}" fill="${css('--gold')}" font-size="12">Fibonacci law</text>`;
+ g+=`<circle cx="${X(Math.max(-3,Math.min(3,st.k)))}" cy="${Y(Math.max(-3,Math.min(3,st.q)))}" r="7" fill="${css('--turn')}" stroke="${css('--card')}" stroke-width="2"/>`;
+ s.innerHTML=g;s.onclick=e=>{const r=s.getBoundingClientRect();const k=((e.clientX-r.left-m)/(W-2*m))*6-3,q=((H-m-(e.clientY-r.top))/(H-2*m))*6-3;set(+k.toFixed(2),+q.toFixed(2));};}
+function drawSteps(c,w){const [box,s]=svgOf('steps');const W=box.clientWidth,H=box.clientHeight,m=30;
+ const vals=c.s.filter(isFinite);let lo=Math.min(0,...vals,...w),hi=Math.max(0,...vals,...w);lo=Math.max(lo,-6);hi=Math.min(hi,6);if(hi-lo<1e-6){hi+=1;lo-=1;}
+ const X=n=>m+(n-1)/15*(W-2*m),Y=v=>H-m-(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*(H-2*m);let g='';
+ g+=`<line x1="${m}" x2="${W-m}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--line')}"/>`;
+ for(const v of w)if(v>=lo&&v<=hi)g+=`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--wall')}" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${W-m}" y="${Y(v)-5}" text-anchor="end" fill="${css('--wall')}" font-size="12">wall ${fmt(v)}</text>`;
+ let p='';c.s.forEach((v,i)=>{if(isFinite(v)&&v>=lo-1e-9&&v<=hi+1e-9){p+=(p?'L':'M')+X(i+1)+','+Y(v);}});
+ g+=`<path d="${p}" fill="none" stroke="${css('--turn')}" opacity=".5"/>`;
+ c.s.forEach((v,i)=>{if(isFinite(v))g+=`<circle cx="${X(i+1)}" cy="${Y(v)}" r="4" fill="${css('--turn')}"><title>${i+1} copies: ${fmt(v)}</title></circle>`;});
+ g+=`<text x="${m}" y="${H-8}" fill="${css('--mute')}" font-size="12">copies of a, 1 to 16</text>`;s.innerHTML=g;}
+function drawFib(){const [box,s]=svgOf('fib');const W=box.clientWidth,H=box.clientHeight,m=30;const N=12;
+ const X=n=>m+(n-1)/(N-1)*(W-2*m),Y=v=>H-m-(v-0)/(2.1)*(H-2*m);let g='';const F=[0,1];for(let i=0;i<20;i++)F.push(F[F.length-1]+F[F.length-2]);
+ for(const [v,lab,col] of [[1/phi,'wall 1/φ = 0.618','--gold'],[phi,'φ = 1.618','--gold']])g+=`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css(col)}" stroke-dasharray="5 4"/><text x="${W-m}" y="${Y(v)-6}" text-anchor="end" fill="${css(col)}" font-size="12">${lab}</text>`;
+ let p1='',p2='';for(let n=1;n<=N;n++){const a=F[n]/F[n+1],b=F[2*n]/F[2*n-1];p1+=(p1?'L':'M')+X(n)+','+Y(a);p2+=(p2?'L':'M')+X(n)+','+Y(b);
+  g+=`<circle cx="${X(n)}" cy="${Y(a)}" r="4" fill="${css('--turn')}"><title>${F[n]}/${F[n+1]}</title></circle><circle cx="${X(n)}" cy="${Y(b)}" r="4" fill="${css('--wall')}"><title>${F[2*n]}/${F[2*n-1]}</title></circle>`;}
+ g=`<path d="${p1}" fill="none" stroke="${css('--turn')}" opacity=".5"/><path d="${p2}" fill="none" stroke="${css('--wall')}" opacity=".5"/>`+g;
+ if(W>420)g+=`<text x="${X(2)+6}" y="${Y(0.5)+18}" fill="${css('--turn')}" font-size="12">1/2, 2/3, 3/5, 5/8 …</text><text x="${X(2)+6}" y="${Y(1.5)-12}" fill="${css('--wall')}" font-size="12">1, 3/2, 8/5, 21/13 …</text>`;
+ s.innerHTML=g;}
+function drawTurns(){const [box,s]=svgOf('turns');const W=box.clientWidth,H=box.clientHeight,m=30;const N=12;
+ const X=n=>m+(n-1)/(N-1)*(W-2*m),Y=v=>H-m-v/4*(H-2*m);let g='';
+ for(const v of [0,1,2,3,4])g+=`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--line')}"/><text x="${m-6}" y="${Y(v)+4}" text-anchor="end" fill="${css('--mute')}" font-size="12">${v}</text>`;
+ for(let n=1;n<=N;n++){const v=4*Math.cos(Math.PI/n)**2;const whole=Math.abs(v-Math.round(v))<1e-9;const gold=n===5||n===10;
+  g+=`<circle cx="${X(n)}" cy="${Y(v)}" r="${gold?7:5}" fill="${whole?css('--ink'):'none'}" stroke="${gold?css('--gold'):css('--ink')}" stroke-width="${gold?2.5:1.5}"><title>period ${n}: ${v.toFixed(4)}</title></circle>`;
+  if(W>360||n%2)g+=`<text x="${X(n)}" y="${H-10}" text-anchor="middle" fill="${css('--mute')}" font-size="12">${n}</text>`;}
+ g+=`<text x="${X(5)+10}" y="${Y(phi*phi)+4}" fill="${css('--gold')}" font-size="12">φ²</text><text x="${W-m}" y="${m-10}" text-anchor="end" fill="${css('--mute')}" font-size="12">period n</text>`;s.innerHTML=g;}
+function drawCensus(){const [box,s]=svgOf('census');const W=box.clientWidth,H=box.clientHeight;const rows=D.census.slice(0,12);const lw=W>520?120:84,m=10,rh=(H-20)/rows.length;
+ const mx=Math.max(...rows.map(r=>Math.max(r.observed,r.null_mean)))*1.08;let g='';
+ rows.forEach((r,i)=>{const y=10+i*rh,bw=(W-lw-2*m-40)*r.observed/mx,nw=(W-lw-2*m-40)*r.null_mean/mx;const col=r.p<0.01?css('--blue'):(r.constant.startsWith('golden')||r.constant.startsWith('φ')?css('--gold'):css('--mute'));
+  g+=`<text x="${lw-6}" y="${y+rh*0.62}" text-anchor="end" fill="${css('--ink')}" font-size="12">${esc(r.constant)}</text><rect x="${lw}" y="${y+rh*0.18}" width="${Math.max(1,bw)}" height="${rh*0.64}" rx="3" fill="${col}"/><line x1="${lw+nw}" x2="${lw+nw}" y1="${y+2}" y2="${y+rh-2}" stroke="${css('--wall')}" stroke-width="2"/><text x="${lw+Math.max(bw,nw)+6}" y="${y+rh*0.62}" fill="${css('--mute')}" font-size="12">${r.observed}</text>`;});
+ s.innerHTML=g;}
+document.querySelector('#ctab tbody').innerHTML=D.census.map(r=>`<tr><td>${esc(r.constant)}</td><td class="n">${r.observed}</td><td class="n">${r.null_mean.toFixed(1)}</td><td class="n">${r.p<0.001?'&lt;0.001':r.p.toFixed(3)}</td><td>${esc(Object.keys(r.pages).sort().join(', ')||'none')}</td></tr>`).join('');
+document.getElementById('ptab').innerHTML=D.proofs.map(p=>`<tr><td><code>${esc(p[0])}</code></td><td>${esc(p[1])}</td></tr>`).join('');
+document.getElementById('xtab').innerHTML=D.checks.map(c=>`<tr><td>${esc(c.name)}</td><td>${c.ok?'pass':'fail'}${c.detail?' · '+esc(c.detail):''}</td></tr>`).join('');
+const all=()=>{update();drawFib();drawTurns();drawCensus();};
+const ro=new ResizeObserver(all);['plane','steps','fib','turns','census'].forEach(id=>ro.observe(document.getElementById(id)));
+set(1,0,1);
+}
+</script>
+</body></html>

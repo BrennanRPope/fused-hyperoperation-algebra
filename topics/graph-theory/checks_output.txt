@@ -1,0 +1,56 @@
+PASS  parallel edges: Z(G) = Z(G with one edge of weight v1 * v2 = v1+v2+v1v2), triangle
+PASS  series edges: Z(G) = (Q+v1+v2) * Z(G') with v = v1 v2/(Q+v1+v2), 4-cycle
+PASS  deletion-contraction Z(G) = Z(G-e) + v_e Z(G/e), K4 with six weights
+PASS  Z = (X-1)^k (Y-1)^n T(X,Y) with Q=(X-1)(Y-1), v=Y-1: 4 vertices, 6 edges
+PASS  Z = (X-1)^k (Y-1)^n T(X,Y) with Q=(X-1)(Y-1), v=Y-1: 5 vertices, 5 edges
+PASS  chromatic polynomial = Z at v = -1: K4 gives Q(Q-1)(Q-2)(Q-3)
+PASS  parallel in t: t(v1 * v2) = (t1+t2+(Q-2)t1t2)/(1+(Q-1)t1t2) = F_{Q-2, 1-Q}
+PASS  series in t: t(v1 v2/(Q+v1+v2)) = t1 t2
+PASS  or line: (Q-2) + (1-Q) = -1 for every Q
+PASS  Q = 1 (percolation, reliability): F_{-1,0} = a + b - ab
+PASS  Q = 2 (Ising): F_{0,-1} = (a+b)/(1+ab), velocity addition
+PASS  Ising: v = e^{2K} - 1, t = v/(2+v) = tanh K, and parallel bonds add K (numeric)
+PASS  edge weight is the flow E of the coupling: E(J1+J2) = E(J1) * E(J2)
+PASS  lift of the parallel law: 1+v = (1+(Q-1)t)/(1-t), so it multiplies
+PASS  wall 1: a perfect bond t = 1 absorbs: F(a, 1) = 1
+PASS  wall 2: t = -1/(Q-1) absorbs, and it is v = -1 (proper colouring)
+PASS  Potts parallel = union under Ali-Mikhail-Haq dependence, theta = 1 - Q
+PASS  Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4q
+PASS  the or line q = -1 - k touches the border parabola q = k^2/4 only at k = -2, q = 1 (Q = 0)
+PASS  the parallel law is associative for every Q (symbolic)
+PASS  40 random series-parallel networks: brute-force reliability = (x, *_{-1}) reduction
+PASS  failure side: series fails = (1-p1) *_{-1} (1-p2), parallel fails = (1-p1)(1-p2)
+PASS  odds against u = 1/p - 1: series is plain mult-add, u(p1 p2) = u1 * u2
+PASS  Wheatstone bridge reliability = 2p^2 + 2p^3 - 5p^4 + 2p^5 (brute force)
+PASS  bridge by pivoting on the middle edge: p*(p*p)^2 [contracted] + (1-p)*(p^2 *_{-1} p^2) [deleted]
+PASS  the bridge has no series or parallel pair: the dial pair alone cannot reduce it
+PASS  diamond step p -> (p p) *_{-1} (p p) = 2p^2 - p^4
+PASS  level-2 diamond (16 edges), brute force = diamond step applied twice
+PASS  percolation fixed point (sqrt5 - 1)/2, the golden ratio
+PASS  slope there 4 - 4p* = 1.5279, length exponent ln2/ln(slope) = 1.6353
+PASS  Ising (Q=2) diamond fixed point solves t^3 + t^2 + t = 1: t* = 0.543689
+PASS  Potts diamond (level 1, any Q): effective t from brute-force Z = F_{Q-2,1-Q}(t^2, t^2)
+PASS  hero network, any Q: brute-force Potts effective t (s=0 to end=3) = F(t^2, t) * t
+PASS  Q = 0: the diamond step is 2t^2/(1+t^2); its only fixed points are 0 and a double one at 1
+PASS  exactly one fixed point t*(Q) strictly inside (0,1) for Q = 0.5,1,2,3,4: 0.6889, 0.6180, 0.5437, 0.5000, 0.4694
+PASS  Q = 3: the diamond fixed point is exactly 1/2
+PASS  t*(Q) decreases as Q grows (0.5 to 4)
+PASS  P3 strong P3 has 20 edges: 12 Cartesian (k = 0 part) + 8 diagonal (the corner)
+PASS  strong product edges = n1 m2 + n2 m1 + 2 m1 m2 (36 pairs of small graphs)
+PASS  lifted count 2m + n multiplies: (2m+n)(G strong H) = (2m1+n1)(2m2+n2)
+PASS  closed degrees multiply: deg = d1 * d2 = d1 + d2 + d1 d2
+PASS  adjacency: strong = A(x)I + I(x)B + A(x)B (Kronecker mult-add); Cartesian = k = 0 part; tensor = the corner
+PASS  eigenvalues of the strong product are lambda * mu (lambda+mu+lambda mu)
+PASS  OR (co-normal) product: J - A_or = (J - A)(x)(J - B), the k = -1 dial with J in place of I
+PASS  disjoint union: I(G u H) - 1 = (I(G)-1) * (I(H)-1) (mult-add)
+PASS  join: I(G + H) - 1 = (I(G)-1) + (I(H)-1) (plain addition, k = 0)
+PASS  C4 = join of two non-edges: I = 1 + 4x + 2x^2
+PASS  the Lee-Yang dial gas at k = 0 is the independence polynomial (Petersen, C5)
+PASS  the dial gas at k = 1 is free: (1+z)^n (C5)
+PASS  Bass: (1-u^2)^(m-n) det(I - uA + u^2(D-I)) = det(I - uB) (Hashimoto), 3 graphs incl. non-regular
+PASS  Euler product: log zeta = sum N_m u^m / m with N_m = tr B^m (closed non-backtracking walks), K4
+PASS  K4: shortest prime cycles are the triangles: N_1 = N_2 = 0, N_3 = 24 (8 oriented triangles x 3 starts)
+PASS  Petersen (3-regular, q = 2) is Ramanujan: every nontrivial factor 1 - lambda u + 2u^2 has roots on |u| = 1/sqrt2
+PASS  cycle C_n: 1/zeta = (1 - u^n)^2 (one prime cycle each way), n = 5
+
+54 of 54 checks pass

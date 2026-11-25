@@ -1,0 +1,38 @@
+== 1. Multiplicative weights (Hedge): weights live in the lift, the dial is the learning rate
+PASS each expert's weight is prod(1 + eps·g) = 1 + eps·(g1 ✳eps g2 ✳eps ...): the dial value is the learning rate
+PASS the total weight is n·prod(1 + eps·r_t): the algorithm's own gains fold under the same dial
+PASS lifted regret: sum log(1+eps r) >= best expert's sum log(1+eps g) - ln n (300 runs, three kinds of gains)
+PASS plain regret <= ln n / eps + eps·T for gains in [-1, 1], eps <= 1/2  worst regret/bound 0.84
+PASS with eps = sqrt(ln n / T): regret <= 2 sqrt(T ln n)
+PASS the corner cost: eps·g - (eps·g)^2 <= log(1 + eps·g) <= eps·g for |eps·g| <= 1/2
+== 2. Kelly betting: bets compose by the dial with k = f, ruin is the wall
+PASS wealth after bets r1..rn at fraction f is 1 + f·(r1 ✳f r2 ✳f ... ✳f rn)
+PASS ruin is the dial's wall: an outcome r = -1/f leaves wealth 0 whatever comes after
+PASS Kelly's fraction f* = p - q/b maximises the growth rate E log(1 + f·r)
+PASS at f* the wealth multiplies by p/pi on a win and q/(1-pi) on a loss, pi = 1/(1+b) the bookmaker's chance; growth = KL(p || pi)
+PASS betting twice Kelly gives about zero growth, exactly zero to second order in the edge  0.1215 0.0275 0.0067 0.0011 0.0003
+PASS past about twice Kelly the growth turns negative and keeps falling
+== 3. Elo: rating gaps add, odds multiply, edges add like velocities
+PASS Elo odds multiply along a chain, so (odds - 1) mult-adds (Bradley-Terry)
+PASS the edge s = 2P - 1 composes as (s1 + s2)/(1 + s1·s2): relativity's velocity addition, landscape point (0, -1)
+PASS edge = tanh(gap·ln10/800) and odds = (1 + s)/(1 - s): gap is rapidity, odds is the Doppler lift
+PASS win chance composes as p1·p2 / (p1·p2 + (1-p1)(1-p2))
+PASS a 200-point gap wins 76%; two 200-point gaps (400) win 91%, not 76% + 26%
+PASS a 200-point edge is 0.52; two compose to (0.52+0.52)/(1+0.52^2) = 0.82 (91%), while adding edges would claim 1.04 (102%)
+PASS certainty is a wall: no finite gap reaches P = 1; a 2000-point favourite still loses about 1 game in 100,000
+== 4. The dial game: v(S) = (prod(1 + k x_i) - 1)/k
+PASS disjoint coalitions combine by v(S ∪ T) = v(S) + v(T) + k·v(S)·v(T) (Sugeno's lambda-rule)
+PASS marginal value of joining S is x_i·(1 + k·v(S)) = x_i · prod over S of (1 + k x_j)
+PASS Shapley value in closed form: phi_i = x_i · sum_m k^m e_m(others)/(m+1) (exact, n = 2..6, five dial values)
+PASS the closed form shares out exactly v(N) (efficiency)
+PASS Owen's diagonal: phi_i = x_i · integral_0^1 prod_{j≠i}(1 + k t x_j) dt
+PASS everyone shows up with chance t: the expected worth is the dial fold of t·x_i (Owen's multilinear extension)
+PASS Banzhaf value: beta_i = x_i · prod_{j≠i}(1 + k x_j / 2), the dial fold at half participation
+PASS the game's Harsanyi dividends are the cube's corners k^(|S|-1)·prod x_S, and Shapley splits each corner equally
+PASS synergy (k > 0): smaller players get the larger bonus ratio phi_i/x_i; redundancy (k < 0): larger players keep more  k=2: 1.440 1.667 2.000  k=-1: 0.810 0.717 0.650
+PASS the log-chart split vN·log(1+k x_i)/sum log(1+k x_j) is also efficient but differs from Shapley  Shapley 0.7200 0.5000 0.2000  log split 0.7315 0.4960 0.1924
+PASS k = -1 is the 'some cause strikes' game, where Shapley = the actuarial UDD split q_i - corners shared equally
+== 5. What did not fit
+PASS winning a series is a binomial tail, not a fold: best-of-3 of best-of-3s is not best-of-9  0.7155 vs 0.7334
+
+31/31 checks pass

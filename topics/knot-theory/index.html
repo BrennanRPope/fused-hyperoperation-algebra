@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knots Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a rigger's chart: cords on sailcloth. Two cords (navy, ochre), the trapped loop in signal red.
+   LAYOUT corner grid as the hero, then the twist dial, the Jones dial circle, torus zeros; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#efe7d8,#14171b);--panel:light-dark(#fbf8f1,#1e2227);--ink:light-dark(#1c1a17,#ece8e1);--soft:light-dark(#5d574d,#a9a39a);--rule:light-dark(#cfc4b0,#383d44);--navy:light-dark(#1f3f6d,#86aee6);--ochre:light-dark(#9a6a12,#e0b45c);--red:light-dark(#b8261d,#ff6f61);--fill:light-dark(rgba(31,63,109,.12),rgba(134,174,230,.16))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font:600 clamp(30px,4.4vw,48px)/1.08 "Source Serif 4",Georgia,serif;margin:0 0 14px;max-width:22ch;text-wrap:balance}
+h2{font:600 25px/1.2 "Source Serif 4",Georgia,serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:68ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:400px}.fig.s{min-height:330px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:14px Inter,sans-serif;fill:var(--ink)}
+.eq{font:17px/1.6 "Source Serif 4",Georgia,serif;border-left:3px solid var(--red);padding:8px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.small{color:var(--soft);font-size:14px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
+p,li{max-width:68ch}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 5em;gap:10px;align-items:center}
+.ctl label{font-weight:600;white-space:nowrap}.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:44px;accent-color:var(--navy)}
+select{font:inherit;padding:8px;border-radius:6px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);min-height:44px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+.ledger td{text-align:left}.ledger td:last-child{color:var(--soft)}
+footer{padding:18px max(5vw,16px);color:var(--soft);font-size:14px}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 3px}.fig{min-height:360px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>Adding two tangles is mult-add, and the weight is the value of a loop</h1>
+<p class="lede">Cut a knot diagram open and you have a tangle: a box with four loose ends. Kauffman's bracket writes any tangle as a mix of two plain ones, f parts "two arcs across" and g parts "two arcs down". Put two tangles side by side and the mix follows the dial a + b + k·ab exactly, with k = d, the value of one closed loop. The corner term is a loop trapped in the middle. Closing the tangle is the lift.</p>
+<div class="first">
+<div class="panel"><div class="fig" id="hero"></div>
+<p class="small">Each tangle is either across ([0], weight f) or down ([∞], weight g). Side by side there are four corners, as in the mult-add square. Three give a plain tangle back. The fourth, down beside down, traps the red loop, and a loop is worth d = −A² − A⁻².</p></div>
+<div class="panel">
+<p style="margin-top:0"><b>The sum, read off the four corners:</b></p>
+<div class="eq">(f₁, g₁) + (f₂, g₂) = (f₁f₂,&nbsp; f₁g₂ + g₁f₂ + d·g₁g₂)</div>
+<p>Call x = g/f the tangle's share of "down". Then</p>
+<div class="eq">x(S + T) = x(S) + x(T) + d·x(S)·x(T)</div>
+<p>That is the weighted mult-add with dial k = d. Its lift is 1 + d·x = ⟨D(T)⟩/f, where D closes the tangle by joining the two left ends and the two right ends. Closing a sum gives a connected sum, and brackets multiply:</p>
+<div class="eq">⟨D(S + T)⟩ = ⟨D(S)⟩ · ⟨D(T)⟩</div>
+<p class="small">Checked against the full state sum over the cube for 40 random tangles up to 8 crossings, both closures. Proved for any ring in Lean (<code>ratio_dial</code>, <code>closeD_tsum</code>).</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>A twist is one step of the q-dial, and the twists walk round a circle</h2>
+<p>Rescale the share to y = A²·g/f. Adding one crossing sends y to <b>q·y + 1</b>, with q = −A⁻⁴. In Jones's variable t = A⁻⁴ that is q = −t. So n crossings in a row give y = [n]_q = 1 + q + … + q^(n−1): n copies of 1 under the dial ✳ with k = q − 1, the same q-integers as the q page.</p>
+<p>The step y ↦ qy + 1 has two walls (fixed points): ∞ and c = 1/(1 − q). It turns the plane about c by q. When q sits on the unit circle the twists are the corners of a regular polygon with side 1, starting at 0. At q = e^(2πi/m) the polygon closes after m twists.</p>
+<p>Slide q's angle to zero. The circle grows, the wall c runs off to infinity and meets the other wall, and the polygon opens into the integers 0, 1, 2, 3. That is the point A⁴ = −1, where the loop value d is 0 and the dial becomes plain addition. There y is <b>Conway's fraction</b>: a twist adds 1 to it, and two tangles side by side add their fractions.</p>
+</div>
+<div class="panel"><div class="fig s" id="poly"></div>
+<div class="ctl"><label for="th">q's angle</label><input id="th" type="range" min="0" max="120" step="1" value="60"><output id="tho"></output></div>
+<p class="small" id="polyc"></p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>At q = 1 the two dials are continued fractions, and the numerator is the determinant</h2>
+<p>Stacking a crossing under a tangle is the same step turned a quarter: 1/y ↦ q⁻¹·(1/y) + 1. At q = 1 the side step adds 1 to the fraction F and the stacked step adds 1 to 1/F. Alternate them a₁, a₂, a₃ times and F is a continued fraction. The two steps are the matrices [[1,1],[0,1]] and [[1,0],[1,1]], which generate SL(2, ℤ), so every rational tangle is a walk in the Möbius group.</p>
+<p>Close the tangle on top and you get a knot whose determinant, |V(−1)|, is the numerator of F. At general q the same two steps give the q-deformed rationals of Morier-Genoud and Ovsienko: the figure-eight tangle's y is exactly their [5/2]_q = (1 + 2q + q² + q³)/(1 + q).</p>
+<p><b>The landscape's bend does not appear.</b> Every law here sits on the dial line (bend 0). The stacked law is the dial seen through y ↦ 1/y, which moves its identity to ∞, so it is not a landscape point. The Möbius structure is real, but it comes from two dials, not from a bend.</p>
+</div>
+<div class="panel">
+<table><thead><tr><th>Knot</th><th>Steps a₁, a₂, …</th><th>F</th><th>|V(−1)|</th></tr></thead>
+<tbody id="rat"></tbody></table>
+<p class="small">Each row built as a diagram, closed, and its Jones polynomial computed by the state sum: all seven match the Knot Atlas (up to mirror). N(7/3) comes out as the mirror of N(7/2), as Schubert's theorem says.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div class="panel"><div class="fig s" id="dial"></div>
+<div class="ctl" style="grid-template-columns:auto minmax(0,1fr)"><label for="kn">Knot</label><select id="kn"></select></div>
+<p class="small">Around the circle t = e^(iφ), the curve's radius grows with |V(t)| (as its square root) for the chosen knot; the dashed ring is |V| = 1. Dots mark the five classical points, labelled by Q = d².</p></div>
+<div>
+<h2>The loop value picks out the Jones polynomial's special points</h2>
+<p>The loop value d also sets a Potts model: d² = 2 + t + 1/t is the number of colours Q (Jones 1989; the bracket is a Tutte polynomial, Thistlethwaite 1987). The classical evaluations sit exactly where Q is a whole number:</p>
+<ul>
+<li><b>Q = 0</b>, t = −1, d = 0: the determinant, Conway's fraction, the counting point q = 1.</li>
+<li><b>Q = 1</b>, t = e^(2πi/3): V = 1 for every knot.</li>
+<li><b>Q = 2</b>, t = i: V = ±1, the Arf invariant (Murakami 1986).</li>
+<li><b>Q = 3</b>, t = e^(iπ/3): |V| is a power of √3 (Lickorish and Millett 1986).</li>
+<li><b>Q = 4</b>, t = 1: V = 1 for every knot.</li>
+</ul>
+<p>This is the same list the Lee–Yang page met as Beraha's numbers. One correction to the q page: there, factoring d put the counting point at t = 1. The twist step pins q = −t, which puts the counting point at t = −1, where the determinant lives.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>Torus knots carry a ratio of q-numbers</h2>
+<p>The Alexander polynomial of the torus knot T(p, q) is (t^pq − 1)(t − 1)/((t^p − 1)(t^q − 1)). Read with q-numbers it is <b>[q]_(t^p) / [q]_t</b>, a ratio of two dial powers. Its zeros are the pq-th roots of unity that are neither p-th nor q-th roots: (p − 1)(q − 1) dots on the circle. For T(2, n) it is [n]_(−t) = 1 − t + t² − … + t^(n−1): the twist's own q-integer, at the same q = −t.</p>
+<p>Connected sum multiplies Jones, Alexander and HOMFLY. So the "mult-add value" P − 1 of a knot turns connected sum into ✳ exactly. That is honest relabelling: it is the lift read backwards, and it predicts nothing new.</p>
+</div>
+<div class="panel"><div class="fig s" id="tor"></div>
+<div class="ctl" style="grid-template-columns:auto minmax(0,1fr)"><label for="tk">Torus knot</label><select id="tk"><option>2,3</option><option>2,5</option><option selected>3,4</option><option>3,5</option><option>4,5</option></select></div>
+<p class="small">Filled: zeros of the Alexander polynomial. Hollow: the p-th and q-th roots of unity it skips.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>Bracket, loop value d, state sum over the cube</td><td>Kauffman 1987</td></tr>
+<tr><td>Jones polynomial; Potts and Tutte links</td><td>Jones 1984, 1989; Thistlethwaite 1987</td></tr>
+<tr><td>Rational tangles, fraction, continued fractions</td><td>Conway 1970; Goldman and Kauffman 1997</td></tr>
+<tr><td>Two-bridge knots classified by p/q</td><td>Schubert 1956</td></tr>
+<tr><td>q-deformed rationals, tied to Jones of rational knots</td><td>Morier-Genoud and Ovsienko 2020; Lee and Schiffler 2019</td></tr>
+<tr><td>Torus knot Alexander polynomial</td><td>Seifert, classical</td></tr>
+<tr><td>Tangle sum read as the dial with k = d; corner = trapped loop; lift = closing</td><td>Ours: a reading of the known sum formula</td></tr>
+<tr><td>Twist as rotation about the wall; walls merge at d = 0</td><td>Ours as a picture; the algebra is classical</td></tr>
+</tbody></table>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>Not as new knot theory.</b> Every formula here was known, and the q-deformation of Conway's fraction is already mapped by Morier-Genoud and Ovsienko. What the mult-add reading adds is a clean geometric reason for each piece: the corner is a trapped loop, closing is the lift, and Conway's fraction is the dial at weight zero, where the twist's two walls merge.</p>
+<p>It is worth keeping as a lens and as a teaching picture. One small test is left: tangles with four ends only ever reach the dial line. Tangles with six ends have a five-dimensional bracket space, and that is the first place a bend could appear. That is a question, not yet a lead.</p>
+</div>
+</div>
+</section>
+<footer>63 of 63 checks pass (checks.py). 45 Lean theorems, core Lean 4.37, no sorry, standard axioms only (lean/KnotTheory.lean).</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const JONES={"3_1": {"24": -1, "23": 1, "21": 1}, "4_1": {"22": 1, "21": -1, "20": 1, "19": -1, "18": 1}, "5_1": {"27": -1, "26": 1, "25": -1, "24": 1, "22": 1}, "5_2": {"19": 1, "18": -1, "17": 2, "16": -1, "15": 1, "14": -1}, "6_1": {"22": 1, "21": -1, "20": 2, "19": -2, "18": 1, "17": -1, "16": 1}, "6_2": {"25": 1, "24": -2, "23": 2, "22": -2, "21": 2, "20": -1, "19": 1}, "6_3": {"23": -1, "22": 2, "21": -2, "20": 3, "19": -2, "18": 2, "17": -1}};
+const mk=(id,lab)=>{$(id).innerHTML='<svg role="img" aria-label="'+lab+'"></svg>';return $(id).firstChild;};
+const sH=mk('hero','Four corners of a tangle sum'), sP=mk('poly','Twists on a circle'), sD=mk('dial','Jones polynomial around the circle'), sT=mk('tor','Alexander zeros');
+const T=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'middle')+'"'+(c?' fill="'+c+'"':'')+'>'+t+'</text>';
+function tile(x0,y1,y2,w,kind,cl,cr){
+  if(kind==0){const dl=(y2-y1)*.22;
+    return '<path d="M'+x0+' '+y1+' C'+(x0+w/3)+' '+(y1+dl)+','+(x0+2*w/3)+' '+(y1+dl)+','+(x0+w)+' '+y1+'" fill="none" stroke="'+cl+'" stroke-width="3"/>'+
+           '<path d="M'+x0+' '+y2+' C'+(x0+w/3)+' '+(y2-dl)+','+(x0+2*w/3)+' '+(y2-dl)+','+(x0+w)+' '+y2+'" fill="none" stroke="'+cl+'" stroke-width="3"/>';}
+  return '<path d="M'+x0+' '+y1+' C'+(x0+w*.42)+' '+y1+','+(x0+w*.42)+' '+y2+','+x0+' '+y2+'" fill="none" stroke="'+cl+'" stroke-width="3"/>'+
+         '<path d="M'+(x0+w)+' '+y1+' C'+(x0+w*.58)+' '+y1+','+(x0+w*.58)+' '+y2+','+(x0+w)+' '+y2+'" fill="none" stroke="'+(cr||cl)+'" stroke-width="3"/>';
+}
+function hero(){
+  const W=sH.clientWidth,H=sH.clientHeight,lw=Math.min(78,W*.17),top=44;
+  const cw=(W-lw)/2,ch=(H-top-8)/2,w=Math.min(cw*.42,ch*.72),hh=w*.8;
+  let g='';
+  const lab=['across [0]','down [∞]'],wt1=['f₁','g₁'],wt2=['f₂','g₂'];
+  for(let j=0;j<2;j++)g+=T(lw+cw*(j+.5),18,'T '+lab[j])+T(lw+cw*(j+.5),36,'weight '+wt2[j],'middle','var(--soft)');
+  for(let i=0;i<2;i++){g+=T(6,top+ch*(i+.5)-6,'S','start')+T(6,top+ch*(i+.5)+12,i?'down':'across','start','var(--soft)')+T(6,top+ch*(i+.5)+30,wt1[i],'start','var(--soft)');}
+  const res=[['f₁f₂ · [0]','f₁g₂ · [∞]'],['g₁f₂ · [∞]','d · g₁g₂ · [∞]']];
+  for(let i=0;i<2;i++)for(let j=0;j<2;j++){
+    const cx=lw+cw*(j+.5),cy=top+ch*(i+.5)-10,x0=cx-w,y1=cy-hh/2,y2=cy+hh/2,corner=i==1&&j==1;
+    if(corner)g+='<rect x="'+(lw+cw+4)+'" y="'+(top+ch+2)+'" width="'+(cw-8)+'" height="'+(ch-8)+'" rx="6" fill="var(--fill)"/>';
+    g+='<rect x="'+x0+'" y="'+(y1-8)+'" width="'+w+'" height="'+(hh+16)+'" fill="none" stroke="var(--rule)" stroke-dasharray="4 4"/>';
+    g+='<rect x="'+cx+'" y="'+(y1-8)+'" width="'+w+'" height="'+(hh+16)+'" fill="none" stroke="var(--rule)" stroke-dasharray="4 4"/>';
+    g+=tile(x0,y1,y2,w,i,'var(--navy)',corner?'var(--red)':null);
+    g+= corner? tile(cx,y1,y2,w,1,'var(--red)','var(--ochre)') : tile(cx,y1,y2,w,j,'var(--ochre)');
+    g+=T(cx,y2+34,res[i][j],'middle',corner?'var(--red)':null);
+  }
+  sH.innerHTML=g;
+}
+function poly(){
+  const W=sP.clientWidth,H=sP.clientHeight,deg=+$('th').value,th=deg*Math.PI/180;
+  $('tho').textContent=deg+'°';
+  const pts=[];let N=deg>0?Math.round(360/deg):9; const closes=deg>0&&Math.abs(360/deg-N)<1e-9;
+  if(!closes)N=Math.min(deg>0?Math.floor(360/deg)+1:9,12);
+  let re=0,im=0;for(let n=0;n<=Math.min(N,12);n++){pts.push([re,im]);const r2=re*Math.cos(th)-im*Math.sin(th)+1,i2=re*Math.sin(th)+im*Math.cos(th);re=r2;im=i2;}
+  let cx=null,cy=null,R=null;if(deg>0){const den=2-2*Math.cos(th);cx=(1-Math.cos(th))/den;cy=Math.sin(th)/den;R=Math.hypot(cx,cy);}
+  let xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+  if(R&&R<6){xs.push(cx-R,cx+R);ys.push(cy-R,cy+R);}
+  const x0=Math.min(...xs)-.6,x1=Math.max(...xs)+.6,y0=Math.min(...ys,-.5)-.6,y1=Math.max(...ys,.5)+.6;
+  const s=Math.min((W-20)/(x1-x0),(H-20)/(y1-y0)),ox=(W-s*(x1+x0))/2,oy=(H+s*(y1+y0))/2;
+  const X=x=>ox+s*x,Y=y=>oy-s*y;
+  let g='<line x1="0" y1="'+Y(0)+'" x2="'+W+'" y2="'+Y(0)+'" stroke="var(--rule)"/>';
+  if(R&&R<6)g+='<circle cx="'+X(cx)+'" cy="'+Y(cy)+'" r="'+s*R+'" fill="none" stroke="var(--rule)" stroke-dasharray="5 4"/><circle cx="'+X(cx)+'" cy="'+Y(cy)+'" r="6" fill="none" stroke="var(--red)" stroke-width="2.5"/>'+T(X(cx),Y(cy)+22,'wall c','middle','var(--red)');
+  for(let n=1;n<pts.length;n++)g+='<line x1="'+X(pts[n-1][0])+'" y1="'+Y(pts[n-1][1])+'" x2="'+X(pts[n][0])+'" y2="'+Y(pts[n][1])+'" stroke="var(--navy)" stroke-width="3"/>';
+  pts.forEach((p,n)=>{if(n>0&&closes&&n==N)return;g+='<circle cx="'+X(p[0])+'" cy="'+Y(p[1])+'" r="5" fill="var(--ochre)"/>'+T(X(p[0])+(n?9:-9),Y(p[1])-9,'['+n+']',n?'start':'end');});
+  sP.innerHTML=g;
+  $('polyc').textContent=deg==0?'q = 1: the walls have merged at ∞, d = 0, and [n] is just n. This is Conway\'s fraction.':
+    (closes?'q = e^(2πi/'+N+'): the polygon closes after '+N+' twists, [' + N + ']_q = 0.':'The twist turns the plane about the wall c = 1/(1 − q) by the angle of q.');
+}
+function dial(){
+  const W=sD.clientWidth,H=sD.clientHeight,cx=W/2,cy=H/2,Rm=Math.min(W/2-58,H/2-30),P=JONES[$('kn').value];
+  const V=ph=>{let r=0,i=0;for(const e in P){const a=(e-20)*ph;r+=P[e]*Math.cos(a);i+=P[e]*Math.sin(a);}return Math.hypot(r,i);};
+  let mx=0;for(let k=0;k<=720;k++)mx=Math.max(mx,V(k*Math.PI/360));
+  const rad=v=>Rm*Math.sqrt(v/mx),s=rad(1);let p='';for(let k=0;k<=720;k++){const ph=k*Math.PI/360,r=rad(V(ph));p+=(k?' L':'M')+(cx+r*Math.cos(ph))+' '+(cy-r*Math.sin(ph));}
+  let g='<circle cx="'+cx+'" cy="'+cy+'" r="'+s+'" fill="none" stroke="var(--soft)" stroke-dasharray="4 4"/>';
+  g+='<path d="'+p+'Z" fill="var(--fill)" stroke="var(--navy)" stroke-width="2.5"/>';
+  [[Math.PI,0],[2*Math.PI/3,1],[-2*Math.PI/3,1],[Math.PI/2,2],[-Math.PI/2,2],[Math.PI/3,3],[-Math.PI/3,3],[0,4]].forEach(([ph,Q])=>{
+    const r=rad(V(ph)),x=cx+r*Math.cos(ph),y=cy-r*Math.sin(ph);
+    g+='<circle cx="'+x+'" cy="'+y+'" r="5.5" fill="'+(Q==0?'var(--red)':'var(--ochre)')+'"/>';
+    if(ph>=0||Q==4){const L=Rm+18;g+='<line x1="'+x+'" y1="'+y+'" x2="'+(cx+(L-12)*Math.cos(ph))+'" y2="'+(cy-(L-12)*Math.sin(ph))+'" stroke="var(--rule)"/>'+T(cx+L*Math.cos(ph)+(Q==0?-8:Q==4?8:0),cy-L*Math.sin(ph)+5,'Q='+Q,Q==0?'end':Q==4?'start':'middle',Q==0?'var(--red)':null);}
+  });
+  sD.innerHTML=g;
+}
+function tor(){
+  const [p,q]=$('tk').value.split(',').map(Number),W=sT.clientWidth,H=sT.clientHeight,cx=W/2,cy=H/2,R=Math.min(W,H)/2-30,n=p*q;
+  let g='<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke="var(--rule)"/>';
+  for(let j=0;j<n;j++){const a=2*Math.PI*j/n,x=cx+R*Math.cos(a),y=cy-R*Math.sin(a),z=j%p&&j%q;
+    g+='<circle cx="'+x+'" cy="'+y+'" r="7" fill="'+(z?'var(--navy)':'var(--panel)')+'" stroke="'+(z?'var(--navy)':'var(--ochre)')+'" stroke-width="2.5"/>';}
+  g+=T(cx,cy-6,'T('+p+','+q+')')+T(cx,cy+16,(p-1)*(q-1)+' zeros','middle','var(--soft)');
+  sT.innerHTML=g;
+}
+const RAT=[['3₁','3','3',3],['4₁','1, 1, 2','5/2',5],['5₁','5','5',5],['5₂','1, 1, 3','7/2',7],['6₁','1, 1, 4','9/2',9],['6₂','2, 1, 3','11/3',11],['6₃','1, 1, 1, 1, 2','13/5',13]];
+$('rat').innerHTML=RAT.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>').join('');
+$('kn').innerHTML=Object.keys(JONES).map(k=>'<option value="'+k+'">'+k.replace('_',' ')+'</option>').join('');
+$('kn').value='4_1';
+$('th').addEventListener('input',poly);$('kn').addEventListener('change',dial);$('tk').addEventListener('change',tor);
+[[sH,hero],[sP,poly],[sD,dial],[sT,tor]].forEach(([s,f])=>{new ResizeObserver(f).observe(s.parentNode);f();});
+}
+</script>
+</body>
+</html>

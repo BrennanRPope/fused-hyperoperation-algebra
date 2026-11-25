@@ -1,0 +1,76 @@
+PASS - dial table on 0,1: 0,1,1 and 1 (+)k 1 = 2 + k
+PASS - idempotent defect: (a(+)k b)^2 - (a(+)k b) = (k+1)(k+2)ab when a^2=a, b^2=b
+PASS - roots of the defect are k = -1 (OR) and k = -2 (XOR)
+PASS - on the integers, 1 (+)k 1 in {0,1} only for k in {-2,-1} (k from -50 to 50)
+PASS - k=-1 on bits is OR
+PASS - k=-2 on bits is XOR
+PASS - product on bits is AND
+PASS - n trues under (+)k give the q-number [n]_q with q = k+1 (k in -3..3, n<12)
+PASS - OR folds n>=1 trues to 1 ([n]_0 = 1)
+PASS - XOR folds n trues to n mod 2 ([n]_-1)
+PASS - distributivity defect a(b(+)k c) - (ab (+)k ac) = k abc (1-a)
+PASS - absorption defect a (+)-1 ab = a + ab(1-a)
+PASS - OR self: a(+)-1 a - a = a - a^2;  XOR self: a(+)-2 a = 2(a - a^2)
+PASS - Boolean ring axioms for (XOR, AND) on bits
+PASS - Boolean lattice laws for (OR, AND) on bits (absorption, distributivity both ways)
+PASS - OR = (a XOR b) XOR (a AND b) on bits
+PASS - XOR = (a OR b)(1 - ab) on bits
+PASS - lattice order on bits: a (+)-1 b = b iff ab = a
+PASS - XOR lift: 1 - 2(a(+)-2 b) = (1-2a)(1-2b) (bits become signs, XOR becomes x)
+PASS - OR's wall is 1 (true absorbs): 1 (+)-1 b = 1
+PASS - XOR's wall is 1/2: m (+)-2 1/2 = 1/2 for every m
+PASS - one-time pad: P(cipher = 1) = 1/2 for message chance 3/10, and it equals m (+)-2 1/2
+PASS - one-time pad: cipher independent of message (joint = product of marginals)
+PASS - indicators: 1_(A union B) = a (+)-1 b
+PASS - indicators: 1_(A sym-diff B) = a (+)-2 b
+PASS - indicators: 1_(A intersect B) = ab
+PASS - inclusion-exclusion for 4 sets = signed corners of the 4-cube (1,4,6,4 layers)
+PASS - |A + B + AxB| = a (+) b and (A+*)x(B+*) minus the base point matches it one-to-one (a,b<6)
+PASS - finite sizes are >= 0: no set has the wall's size -1 or an inverse size -u/(1+u) < 0 (u>0)
+PASS - open interval has Euler characteristic -1 (Schanuel's negative set)
+PASS - half-open interval [0,1) = point + open interval has Euler characteristic 0 (the lift of the wall)
+PASS - wall: chi(I + B + IxB) = -1 for finite B of size 0..9 and for B = I, B = square
+PASS - two open intervals X: chi(X + X + XxX) = 0, so X is its own mult-add inverse at the level of chi
+PASS - chi of products multiplies and so chi(A + B + AxB) = chi A (+) chi B (random cell lists)
+PASS - Hamacher t-conorm is the landscape law at p = gamma - 2, q = 1 - gamma
+PASS - those points lie on the line p + q = -1
+PASS - gamma = 1 is the probabilistic sum (dial k = -1)
+PASS - gamma = 2 is the Einstein sum (a+b)/(1+ab), relativity's point (0,-1)
+PASS - gamma = 0 is (a+b-2ab)/(1-ab) at (-2,1), on the border parabola p^2 = 4q
+PASS - miss: 1 - S = (1-a)(1-b)/(1+(gamma-1)ab), independent of gamma in the numerator
+PASS - Hamacher is the dial on odds: odds(S) = odds a (+)gamma odds b
+PASS - Hamacher t-norm is the De Morgan mirror: T(a,b) = 1 - S(1-a,1-b)
+PASS - the t-norm is the dial on odds-against (1-x)/x
+PASS - gamma = 0 adds odds (dial k = 0), gamma = 1 mult-adds odds (k = 1)
+PASS - Hamacher's additive generator log(1 + gamma*odds(x)) is the log of the dial's lift on odds
+PASS - odds wall of dial gamma is o = -1/gamma, i.e. x = 1/(1-gamma); gamma = 2 gives x = -1 (light)
+PASS - on truth values every Hamacher t-conorm with gamma != 0 is OR
+PASS - Hamacher is a t-conorm (in [0,1], monotone, associative, identity 0) for gamma = 0 (corner by continuity), .5, 1, 2, 5, 50
+PASS - and fails for gamma = -0.5 and -2 (leaves [0,1] or blows up)
+PASS - the Hamacher t-norm is a copula (2-increasing) for gamma in [0,2] (checked 0, .5, 1, 1.5, 2)
+PASS - but not for gamma = 3 or 10: a t-norm that is not a probability law
+PASS - statistics page's AMH theta is 1 - gamma (same line, same points)
+PASS - Dombi (lambda=1) and Schweizer-Sklar (p=-1) t-conorms equal Hamacher gamma=0
+PASS - Aczel-Alsina (lambda=1) is the probabilistic sum
+   miss Frank s=0.5 0.00116
+   miss Frank s=2 0.000862
+   miss Frank s=10 0.00686
+   miss Yager w=2 0.352
+   miss Schweizer-Sklar p=-2 0.0389
+   miss Dombi lambda=2 0.682
+   miss Aczel-Alsina lambda=2 14.1
+PASS - Frank, Yager, Schweizer-Sklar, Dombi, Aczel-Alsina (other parameters) leave the landscape (miss > 1e-4)
+PASS - Frank's family hugs the line p + q = -1 without lying on it (fitted p + q within 0.05 of -1 for s = 0.5, 2)
+PASS - Frank's equation T + S = a + b holds in Hamacher's family only at gamma = 1 (the product)
+PASS - Frank s -> 1 gives the probabilistic sum (s = 1 + 1e-12 within 1e-9)
+PASS - the dial on another coordinate (log-odds) is again associative (conjugation keeps associativity)
+PASS - Lukasiewicz t-conorm min(a+b,1) is the k=0 dial clipped at 1, and not cancellative (0.6+0.6 = 0.6+0.7 = 1)
+PASS - max is the Frank limit s -> 0 (s = 1e-30 within 1e-3) and is idempotent, so no group law
+PASS - tower law (x * a) * b = x * (a (+) b) for the fused exponent * (x,a,b < 7)
+PASS - sum law (x * a) (+) (x * b) = x * (a + b + 1) (x,a,b < 7)
+PASS - definability: b (+) c = d  iff  for all x, (x*b)*c = x*d  (b,c,d < 7, x < 6)
+PASS - definability: b + c + 1 = d  iff  for all x, (x*b)(+)(x*c) = x*d
+PASS - zero is the only right identity of the fused exponent (y < 20)
+PASS - mult-add alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives
+
+67/67 checks passed

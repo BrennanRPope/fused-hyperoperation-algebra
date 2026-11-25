@@ -1,0 +1,25 @@
+PASS Schwarzschild r=6.5M: spin turns -4.610598 vs radial; known -2π√(1-3M/r) = -4.610598
+PASS Schwarzschild r=10.0M: spin turns -5.256890 vs radial; known -2π√(1-3M/r) = -5.256890
+PASS Schwarzschild r=30.0M: spin turns -5.960753 vs radial; known -2π√(1-3M/r) = -5.960753
+PASS Schwarzschild r=200.0M: spin turns -6.235883 vs radial; known -2π√(1-3M/r) = -6.235883
+PASS Gaussian curvature of the space slice is -M/r³ (tidal, saddle-like)
+PASS curvature outside the orbit: ∫ M/r³ dA = 2π(1 - √(1-2M/R)) exactly
+PASS space slice r=4.0M: carried vector comes back turned by 2π(1-√(1-2M/r)) = 1.840302
+PASS space slice r=10.0M: carried vector comes back turned by 2π(1-√(1-2M/r)) = 0.663334
+PASS space slice r=50.0M: carried vector comes back turned by 2π(1-√(1-2M/r)) = 0.126946
+PASS local orbital speed: v² = M/(r-2M), so γ = √((r-2M)/(r-3M))
+PASS exact factorization: √(1-3M/r) = √(1-2M/r) · (1/γ)  (squared exactly; and numerically on x in (0,1/3))
+PASS precession fractions fuse: -p = (-p_space) ✳ (-p_velocity)  (since 1-p = (1-p_s)(1-p_v))
+PASS first order: p_space ≈ M/r, p_velocity ≈ M/(2r), total ≈ 3M/(2r)
+PASS velocity part to first order = Thomas: (γ-1) and (1-1/γ) both ≈ v²/2 = M/(2r)
+   r = 7027.4 km: space part 4402.6 mas/yr, velocity part 2201.3 mas/yr, total 6603.9, exact 6603.9
+PASS space part + velocity part = (3/2)(GM)^{3/2}/(c² r^{5/2})
+PASS GP-B geodetic: twist bookkeeping gives 6604 mas/yr; measured 6601.8 ± 18.3 (GR with Earth's shape: 6606.1)
+PASS without the space part (velocity twist alone) it would be 1/3 of that: ruled out by ~240 sigma
+PASS without the velocity twist (space alone) it would be 2/3: ruled out by ~120 sigma
+PASS polar-orbit average of 3 sin² - 1 is 1/2
+   frame dragging 40.8 mas/yr
+PASS GP-B frame dragging: 40.8 mas/yr vs measured 37.2 ± 7.2 (GR 39.2)
+PASS frame-dragging field = circulation per unit area of the gravitomagnetic potential (Stokes), over the pole
+
+21/21 checks pass

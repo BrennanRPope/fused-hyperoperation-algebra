@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Groups and Lie Groups Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a slide rule: every landscape law becomes plain addition on its own ruler (its logarithm)
+   COLOUR line-groups teal, circle-groups amber, walls red, the ruler violet, on cool paper / night ink
+   TYPE Fraunces 600 display + Inter
+   LAYOUT ruler picture left, readout right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#eef0f4,#13151c);--panel:light-dark(#ffffff,#1c1f29);--ink:light-dark(#141821,#eceef4);--soft:light-dark(#525a6b,#a4abbb);--rule:light-dark(#c3c8d3,#353a48);--red:light-dark(#cf2236,#ff5a6a);--line:light-dark(#0f7c72,#4fd1c0);--circ:light-dark(#b25f08,#f2a341);--vio:light-dark(#5a3fc0,#a993ff);--lineF:light-dark(rgba(15,124,114,.10),rgba(79,209,192,.10));--circF:light-dark(rgba(178,95,8,.12),rgba(242,163,65,.12))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:600 clamp(30px,4.4vw,48px)/1.08 Fraunces,Georgia,serif;margin:0 0 14px;max-width:24ch;text-wrap:balance}
+h2{font:600 25px/1.2 Fraunces,Georgia,serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:70ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:430px}.fig2{position:relative;min-height:330px}.fig3{position:relative;min-height:200px}
+.fig>svg,.fig2>svg,.fig3>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.alt svg text{stroke:var(--bg)}
+.ctl{display:grid;grid-template-columns:5.5em minmax(0,1fr) 3.6em;gap:10px;align-items:center;margin:4px 0}
+.ctl label{font-weight:600;white-space:nowrap}
+.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:40px;accent-color:var(--vio)}
+select{font:inherit;padding:6px 8px;border-radius:6px;border:1px solid var(--rule);background:var(--panel);color:var(--ink)}
+.big{font:600 clamp(28px,4vw,40px)/1.1 Fraunces,Georgia,serif}
+.small{color:var(--soft);font-size:14px}
+.tag{display:inline-block;padding:2px 10px;border-radius:99px;font-weight:600;font-size:14px;color:#fff}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:26px}
+.cols p,.cols li{max-width:66ch}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:start}
+.eq{font:17px/1.6 Fraunces,Georgia,serif;background:var(--panel);border-left:3px solid var(--vio);padding:10px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.alt .eq{background:var(--bg)}
+.ledger td:last-child{color:var(--soft)}
+footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:360px}}
+@media(max-width:600px){.fig{min-height:310px}.fig2{min-height:290px}table{font-size:14px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>Every landscape law is one Möbius flow, and p² − 4q decides: a line or a circle</h1>
+<p class="lede">Each point (p, q) of the landscape is a one-dimensional group, and each has its own ruler: a logarithm that turns the law into plain addition. Drag the sliders. When p² − 4q is positive the ruler runs to infinity at two walls, and the group is a line. When it is negative the ruler closes up through the point at infinity, and the group is a circle.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="rul"></div>
+<div class="ctl"><label for="p">dial p</label><input id="p" type="range" min="-3" max="3" step="0.05" value="1"><output id="po"></output></div>
+<div class="ctl"><label for="q">bend q</label><input id="q" type="range" min="-2" max="3" step="0.05" value="0"><output id="qo"></output></div>
+<div class="ctl"><label for="a">a</label><input id="a" type="range" min="-3" max="3" step="0.01" value="0.5"><output id="ao"></output></div>
+<div class="ctl"><label for="b">b</label><input id="b" type="range" min="-3" max="3" step="0.01" value="0.8"><output id="bo"></output></div>
+<p class="small">Violet curve: the ruler L(x) = ∫₀ˣ ds/(1 + ps + qs²). Read a and b up to the ruler, add the two heights, read the sum back down: you land on F(a, b). Red lines are walls. Faded curve: the second piece beyond the walls.</p>
+</div>
+<div class="panel">
+<div id="cls"></div>
+<div class="small" style="margin-top:10px">F(a, b) = (a + b + pab)/(1 − qab)</div>
+<div class="big" id="fv"></div>
+<div class="scroll"><table><tbody id="tb"></tbody></table></div>
+<p class="small" id="lform"></p>
+<p class="small">Start at p = 1, q = 0: that is mult-add, with ruler log(1 + x) and wall −1. Set p = 0, q = −1 for velocity addition (ruler artanh), p = 0, q = 1 for tangent addition (ruler arctan, a circle of length π).</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The landscape is a slice of Lie's three-dimensional algebra</h2>
+<p>Every translation of a landscape law is a Möbius map: b ↦ ((1 + pa)b + a)/(−qa·b + 1), the matrix I + a·X with X = [[p, 1], [−q, 0]]. Multiplying two of them gives (1 − qab)·I + (a + b + pab)·X, which is the law up to scale. So the whole law is generated by one infinitesimal motion, the field 1 + px + qx², the Riccati rate from the landscape page.</p>
+<p>Sophus Lie showed around 1880 that every finite-dimensional family of motions of a line is, after a change of coordinates, made of fields α + βx + γx²: three directions, translation, dilation and the projective twist. The landscape is the plane α = 1 inside that space. On it, the Killing form (the algebra's own built-in measure of a direction) is 2(p² − 4q). The border parabola q = p²/4 is the light cone of that measure.</p>
+<p>Change the coordinate on the line by x ↦ x/(1 − cx) and (p, q) slides to (p + 2c, q + pc + c²): along a parabola, keeping p² − 4q. Rescale x and p² − 4q is multiplied by λ². So up to coordinates there are exactly three groups: a line (two walls), a line with one wall pushed to infinity (the border), and a circle (no real walls). That is why mult-add and velocity addition, both at p² − 4q &gt; 0, are the same group in different units. Parity, a + b − 2ab at (−2, 0), sits on velocity addition's own parabola: the chart change with c = 1 turns XOR's law into Einstein's exactly.</p>
+</div>
+<div class="panel"><div class="fig2" id="map"></div>
+<p class="small">Amber: circle groups. Teal: line groups. Grey parabola: the border, one double wall. Dashed: the curves a chart change moves a point along. The violet dot follows the sliders above.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>The lift for every point: 1 + xθ, with θ² = pθ − q</h2>
+<p>Mult-add's lift is x ↦ 1 + x. Every landscape point has one. Take a symbol θ with θ² = pθ − q and multiply:</p>
+<div class="eq">(1 + aθ)(1 + bθ) = (1 − qab) + (a + b + pab)·θ</div>
+<p>Divide by the plain part and the θ part is F(a, b). The rate is the size of the lift: the norm of 1 + aθ is 1 + pa + qa², and norms multiply. That one fact gives the invariant ruler: ∂F/∂b · V(b) = V(F(a, b)), so the tick spacing ds/V(s) slides along with every translation. Its integral is the logarithm L. This θ is the dial matrix U from the linear algebra page, seen as a number.</p>
+</div>
+<div class="scroll">
+<table>
+<thead><tr><th>Point</th><th>θ is</th><th>Group</th><th>Ruler L(x)</th></tr></thead>
+<tbody>
+<tr><td>mult-add (1, 0)</td><td>θ² = θ, a switch</td><td style="color:var(--line)">line</td><td>log(1 + x)</td></tr>
+<tr><td>velocity (0, −1)</td><td>j² = 1, split-complex</td><td style="color:var(--line)">line</td><td>artanh x</td></tr>
+<tr><td>plain + (0, 0)</td><td>ε² = 0, dual number</td><td>border</td><td>x</td></tr>
+<tr><td>tangent (0, 1)</td><td>i² = −1, complex</td><td style="color:var(--circ)">circle</td><td>arctan x</td></tr>
+<tr><td>any p² &gt; 4q</td><td>two real roots u, v</td><td style="color:var(--line)">line</td><td>log((1 − vx)/(1 − ux))/(u − v)</td></tr>
+<tr><td>any p² &lt; 4q</td><td>complex roots</td><td style="color:var(--circ)">circle</td><td>(2/r)(arctan((2qx + p)/r) − arctan(p/r)), r = √(4q − p²)</td></tr>
+</tbody></table>
+<p class="small">u and v are the roots in 1 + px + qx² = (1 − ux)(1 − vx). A circle has total length 2π/√(4q − p²). On the border, L = x/(1 + px/2).</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The dial is a dilation about the wall, which becomes a translation at k = 0</h2>
+<p>Read a ✳ₖ x as a motion of x: T(x) = (1 + ka)x + a. It is a straight-line map, an element of the ax + b group, and T_a ∘ T_b = T_(a ✳ₖ b). Every such motion holds one point still, the wall −1/k, and stretches the line around it by 1 + ka. Mult-add is stretching about −1.</p>
+<p>Slide k toward 0 and the still point runs off to infinity. Stretches about a very distant point look like shifts, and at k = 0 they are shifts: plain addition, with no still point at all. Inside the ax + b algebra the generators are 1 + kx. Every k ≠ 0 is a dilation (all of them the same up to scale), and k = 0 is the translation, which no dilation can be conjugated into. That limit is a contraction in the sense of Inönü and Wigner (1953), the same move that takes Lorentz boosts to Galilean shifts as c → ∞ (q = −1/c² → 0 on the landscape).</p>
+<p class="small">One honest caveat: in one dimension every Lie algebra is the same line, so k is not a Lie-algebra parameter of the law itself. It sets where the wall sits and which units you use. The contraction only becomes real one level up, in the ax + b group.</p>
+</div>
+<div class="panel"><div class="fig3" id="dil"></div>
+<div class="ctl"><label for="k">dial k</label><input id="k" type="range" min="-2" max="2" step="0.02" value="1"><output id="ko"></output></div>
+<p class="small">Grey dots: points x on the line. Arrows: where T_a sends them, a = 0.6. Red: the still point −1/k.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>On a finite clock the group is a cycle of p − 1 steps</h2>
+<p>Over the integers mod a prime p, mult-add on everything except the wall p − 1 is a group. The lift sends it onto the nonzero residues under multiplication, which Gauss showed are a single cycle. So some element g walks through every non-wall value under repeated ✳ and comes home to 0 after p − 1 steps.</p>
+<p>The simplest candidate is g = 1, and its walk is 1, 3, 7, 15, …: n copies of 1 under mult-add are the Mersenne numbers 2ⁿ − 1. So 1 generates the clock exactly when 2 is a primitive root mod p. Mod 7 it fails (2³ = 8 = 1, so 1 ✳ 1 ✳ 1 = 0) and 2 takes over. How often 1 works for all primes is Artin's conjecture (1927), still open.</p>
+<p>The circle groups have finite clocks too. Tangent addition on the residues mod p plus a point at infinity is a cycle of p + 1 steps when p leaves 3 over 4, and the circle x² + y² = 1 there has p + 1 points. Line, border and circle give p − 1, p and p + 1, the counts the elliptic and algebra atlas pages met as split node, cusp and turning node.</p>
+<p><select id="pr" aria-label="prime"><option>5</option><option selected>7</option><option>11</option><option>13</option></select> <span class="small">choose p</span></p>
+</div>
+<div class="panel"><div class="fig2" id="clk"></div><p class="small" id="clkc"></p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>When the corner can twist, its twist is the Lie bracket</h2>
+<p>Every landscape law commutes: its matrices are all I + sX for one X. Mult-add on matrices does not. For 2×2 matrices the lift still holds, (I + A)(I + B) = I + A ✳ B, and the failure to commute is exactly the commutator:</p>
+<div class="eq">A ✳ B − B ✳ A = AB − BA</div>
+<p>For small steps, going round a little square, (I + tA)(I + tB)(I + tA)⁻¹(I + tB)⁻¹ = I + t²(AB − BA) + …, so the corner ab is where a Lie group keeps its bracket. In a group ring the same move is g ↦ g − 1: (g − 1) ✳ (h − 1) = gh − 1. Expanding products of 1 + x this way, the mult-add cube, is the Magnus expansion (1937). In one dimension the corner is symmetric and the bracket vanishes, which is the whole reason every landscape law is so tame.</p>
+</div>
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>Formal group laws; every one over the rationals has a logarithm turning it into addition</td><td>Bochner 1946, Lazard 1955, Hazewinkel's book 1978</td></tr>
+<tr><td>Finite-dimensional motions of a line are α + βx + γx² (sl₂)</td><td>Lie, about 1880</td></tr>
+<tr><td>Möbius one-parameter groups are hyperbolic, parabolic or elliptic by the discriminant</td><td>Classical (Klein, Poincaré)</td></tr>
+<tr><td>Connected 1-dimensional Lie groups are the line and the circle</td><td>Classical</td></tr>
+<tr><td>Complex, split-complex and dual numbers</td><td>Cockle 1848, Clifford 1873; Yaglom 1968</td></tr>
+<tr><td>Contraction of groups</td><td>Inönü and Wigner 1953</td></tr>
+<tr><td>Commutator and bracket; Magnus expansion</td><td>Lie; Magnus 1937</td></tr>
+<tr><td>The landscape is exactly the plane α = 1 of Lie's sl₂; p² − 4q is its Killing form; chart changes slide along parabolas</td><td>Ours as a placement, all standard pieces</td></tr>
+<tr><td>Closed-form ruler for every landscape point; mult-add powers of 1 are Mersenne numbers</td><td>Ours as written, elementary</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Lead worth following? Not on its own.</h2>
+<p>This branch gives the landscape its proper name: it is the set of one-parameter Möbius groups, and its three countries are Lie's and Klein's three kinds of motion. That makes the map trustworthy and easy to use. It predicts nothing new, because one-dimensional groups are completely classified, and the dial turns out to be a choice of units and wall position rather than a new parameter.</p>
+<p>The one direction with real content is the twisting corner: mult-add on matrices, where order matters and the bracket appears. In physics that is two boosts in different directions, which is being followed separately on the twisted boosts page.</p>
+</div>
+<div>
+<h2>Proved and checked</h2>
+<p><b>52 Lean theorems</b> in core Lean 4.37, compiled against the shared library, no sorry, standard axioms only. Among them <code>mob_mul</code>, <code>theta_lift</code>, <code>tnorm_mul</code>, <code>invariant_ruler</code>, <code>Bl_invariant</code>, <code>shift_disc</code>, <code>T_dilation</code>, <code>maM_bracket</code>, <code>f7_cyclic</code>, <code>circle_counts</code>.</p>
+<p><b>59 of 59 checks pass</b> in sympy and mpmath, including the closed-form rulers against numerical integration and the finite clocks for every odd prime below 60 (below 500 for the Mersenne rule).</p>
+</div>
+</div>
+</section>
+<footer>Checks: 59 of 59 pass. Lean: 52 theorems, compiled clean. Group theory and Lie groups, Fused Hyperoperation Algebra, November 2026.</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const f=(x,n=3)=>!isFinite(x)?'∞':(Math.abs(x)>=1e4?x.toExponential(2):x.toFixed(n)).replace('-','−');
+const mkSvg=(el,lab)=>{el.innerHTML='<svg role="img" aria-label="'+lab+'"></svg>';return el.firstChild;};
+const S1=mkSvg($('rul'),'Ruler of the chosen law'),S2=mkSvg($('map'),'Landscape map'),S3=mkSvg($('dil'),'Dial as dilation'),S4=mkSvg($('clk'),'Finite clock');
+function law(p,q){
+  const D=p*p-4*q,o={D};
+  if(Math.abs(D)<1e-9){o.kind='border';o.L=x=>x/(1+p*x/2);o.walls=Math.abs(p)>1e-9?[-2/p]:[];o.form='L(x) = x/(1 + px/2)';}
+  else if(D>0){const r=Math.sqrt(D),u=(-p+r)/2,v=(-p-r)/2;o.kind='line';
+    o.L=x=>Math.log(Math.abs((1-v*x)/(1-u*x)))/r;o.walls=[u,v].filter(w=>Math.abs(w)>1e-9).map(w=>1/w);
+    o.inId=x=>(1-v*x)/(1-u*x)>0;o.form='L(x) = log((1 − vx)/(1 − ux))/√(p² − 4q), walls at 1/u and 1/v';}
+  else{const r=Math.sqrt(-D);o.kind='circle';o.L=x=>2/r*(Math.atan((2*q*x+p)/r)-Math.atan(p/r));o.walls=[];
+    o.per=2*Math.PI/r;o.form='L(x) = (2/r)(arctan((2qx + p)/r) − arctan(p/r)), r = √(4q − p²); total length 2π/r = '+f(2*Math.PI/r,3);}
+  if(!o.inId)o.inId=x=>!o.walls.some(w=>(w<0&&x<=w)||(w>0&&x>=w));
+  return o;
+}
+const F=(p,q,a,b)=>(a+b+p*a*b)/(1-q*a*b);
+function drawRul(){
+  const p=+$('p').value,q=+$('q').value,a=+$('a').value,b=+$('b').value;
+  ['p','q','a','b'].forEach(k=>$(k+'o').textContent=f(+$(k).value,2));
+  const g=law(p,q),Fv=F(p,q,a,b);
+  const col=g.kind==='line'?'var(--line)':g.kind==='circle'?'var(--circ)':'var(--soft)';
+  $('cls').innerHTML='<span class="tag" style="background:'+col+'">'+(g.kind==='line'?'a line':g.kind==='circle'?'a circle':'the border')+'</span> <span class="small">p² − 4q = '+f(g.D,2)+'</span>';
+  $('fv').textContent=f(Fv,4);
+  const La=g.L(a),Lb=g.L(b),LF=g.L(Fv);
+  let note='';
+  if(g.kind==='circle'){const d=((LF-La-Lb)%g.per+1.5*g.per)%g.per-0.5*g.per;note=Math.abs(d)<1e-6?'equal':'equal after one turn';}
+  else note=(g.inId(a)&&g.inId(b))?'equal':'a or b is past a wall';
+  $('tb').innerHTML='<tr><td>L(a) + L(b)</td><td>'+f(La+Lb,4)+'</td></tr><tr><td>L(F(a, b))</td><td>'+f(LF,4)+'</td></tr><tr><td>match</td><td>'+note+'</td></tr>';
+  $('lform').textContent=g.form;
+  const W=S1.clientWidth,H=S1.clientHeight,m=30,x0=-3.2,x1=3.2,ymax=2.6;
+  const X=x=>m+(x-x0)/(x1-x0)*(W-2*m),Y=y=>H/2-y/ymax*(H/2-m);
+  let s='<line x1="'+X(x0)+'" y1="'+Y(0)+'" x2="'+X(x1)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+m/2+'" x2="'+X(0)+'" y2="'+(H-m/2)+'" stroke="var(--rule)"/>';
+  if(g.kind==='circle'){const top=g.L(1e9),bot=g.L(-1e9);
+    s+='<rect x="'+X(x0)+'" y="'+Y(Math.min(top,ymax))+'" width="'+(X(x1)-X(x0))+'" height="'+(Y(Math.max(bot,-ymax))-Y(Math.min(top,ymax)))+'" fill="var(--circF)"/>';
+    if(top<ymax)s+='<text x="'+(X(x1)-4)+'" y="'+(Y(top)-6)+'" text-anchor="end">L(+∞)</text>';
+    if(bot>-ymax)s+='<text x="'+(X(x1)-4)+'" y="'+(Y(bot)+16)+'" text-anchor="end">L(−∞): the same point ∞, one turn lower</text>';}
+  g.walls.forEach(w=>{if(w>x0&&w<x1)s+='<line x1="'+X(w)+'" y1="'+m/2+'" x2="'+X(w)+'" y2="'+(H-m/2)+'" stroke="var(--red)" stroke-width="2.5"/><text x="'+(X(w)+4)+'" y="'+(m/2+12)+'">wall</text>';});
+  let segs=[[],[]],prev=null;
+  for(let i=0;i<=600;i++){const x=x0+(x1-x0)*i/600,y=g.L(x),id=g.inId(x)?0:1;
+    if(!isFinite(y)||Math.abs(y)>ymax*1.6){prev=null;continue;}
+    const pt=X(x).toFixed(1)+' '+Y(Math.max(-ymax*1.5,Math.min(ymax*1.5,y))).toFixed(1);
+    segs[id].push((prev===id?'L':'M')+pt);prev=id;}
+  s+='<path d="'+segs[1].join(' ')+'" fill="none" stroke="var(--vio)" stroke-opacity=".3" stroke-width="2"/>';
+  s+='<path d="'+segs[0].join(' ')+'" fill="none" stroke="var(--vio)" stroke-width="3"/>';
+  const guide=(x,y,c,lab,dash)=>{if(Math.abs(y)>ymax||x<x0||x>x1)return '';return '<line x1="'+X(x)+'" y1="'+Y(0)+'" x2="'+X(x)+'" y2="'+Y(y)+'" stroke="'+c+'" stroke-dasharray="'+dash+'"/><line x1="'+X(x)+'" y1="'+Y(y)+'" x2="'+X(0)+'" y2="'+Y(y)+'" stroke="'+c+'" stroke-dasharray="'+dash+'"/><circle cx="'+X(x)+'" cy="'+Y(0)+'" r="5" fill="'+c+'"/><text x="'+X(x)+'" y="'+(Y(0)+(y>0?18:-8))+'" text-anchor="middle">'+lab+'</text>';};
+  s+=guide(a,La,'var(--soft)','a','4 4')+guide(b,Lb,'var(--soft)','b','4 4');
+  const Fy=(g.kind==='circle'&&Math.abs(La+Lb-LF)>1e-6)?LF:La+Lb;
+  s+=guide(Fv,Fy,'var(--ink)','F','1 0');
+  if(Math.abs(La+Lb)<ymax)s+='<circle cx="'+X(0)+'" cy="'+Y(La+Lb)+'" r="5" fill="var(--vio)"/><text x="'+(X(0)-8)+'" y="'+(Y(La+Lb)+4)+'" text-anchor="end">L(a)+L(b)</text>';
+  s+='<text x="'+(X(x1))+'" y="'+(Y(0)-8)+'" text-anchor="end">x</text><text x="'+(X(0)+8)+'" y="'+(m/2+12)+'">L</text>';
+  S1.innerHTML=s;drawMap();
+}
+function drawMap(){
+  const p=+$('p').value,q=+$('q').value;
+  const W=S2.clientWidth,H=S2.clientHeight,m=26,p0=-3,p1=3,q0=-2,q1=3;
+  const X=x=>m+(x-p0)/(p1-p0)*(W-2*m),Y=y=>m+(q1-y)/(q1-q0)*(H-2*m);
+  let up='',par='';for(let i=0;i<=80;i++){const x=p0+(p1-p0)*i/80,y=Math.min(q1,x*x/4);par+=(i?'L':'M')+X(x)+' '+Y(y);}
+  let s='<rect x="'+X(p0)+'" y="'+Y(q1)+'" width="'+(X(p1)-X(p0))+'" height="'+(Y(q0)-Y(q1))+'" fill="var(--lineF)"/>';
+  s+='<path d="'+par+' L'+X(p1)+' '+Y(q1)+' L'+X(p0)+' '+Y(q1)+' Z" fill="var(--circF)"/>';
+  [-4,-1,1,4,8].forEach(D=>{let d='';for(let i=0;i<=80;i++){const x=p0+(p1-p0)*i/80,y=x*x/4-D/4;if(y<q0||y>q1){continue;}d+=(d?'L':'M')+X(x)+' '+Y(y);}s+='<path d="'+d+'" fill="none" stroke="'+(D<0?'var(--circ)':'var(--line)')+'" stroke-dasharray="5 5" stroke-width="1.2"/>';});
+  s+='<path d="'+par+'" fill="none" stroke="var(--soft)" stroke-width="2.5"/>';
+  s+='<line x1="'+X(p0)+'" y1="'+Y(0)+'" x2="'+X(p1)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+Y(q0)+'" x2="'+X(0)+'" y2="'+Y(q1)+'" stroke="var(--rule)"/>';
+  const narrow=W<420;
+  const pt=(x,y,lab,dx,anc)=>'<circle cx="'+X(x)+'" cy="'+Y(y)+'" r="5" fill="var(--ink)"/><text x="'+(X(x)+dx)+'" y="'+(Y(y)+4)+'" text-anchor="'+anc+'">'+lab+'</text>';
+  s+=pt(1,0,'mult-add',6,'start')+pt(0,-1,narrow?'velocity':'velocity addition',8,'start')+pt(0,1,'tangent',8,'start')+pt(0,0,'+',-8,'end')+pt(-2,0,'parity',0,'middle').replace('y="'+(Y(0)+4),'y="'+(Y(0)-10));
+  s+='<circle cx="'+X(Math.max(p0,Math.min(p1,p)))+'" cy="'+Y(Math.max(q0,Math.min(q1,q)))+'" r="7" fill="var(--vio)" stroke="var(--panel)" stroke-width="2"/>';
+  s+='<text x="'+(X(p1)-2)+'" y="'+(Y(0)+16)+'" text-anchor="end">p</text><text x="'+(X(0)-6)+'" y="'+(Y(q1)+12)+'" text-anchor="end">q</text>';
+  s+='<text x="'+(X(-2.9))+'" y="'+(Y(2.6))+'">circle</text><text x="'+(X(-2.9))+'" y="'+(Y(-1.6))+'">line</text>';
+  S2.innerHTML=s;
+}
+function drawDil(){
+  const k=+$('k').value,a=0.6;$('ko').textContent=f(k,2);
+  const W=S3.clientWidth,H=S3.clientHeight,m=20,x0=-3,x1=3,X=x=>m+(x-x0)/(x1-x0)*(W-2*m),y=H*0.62;
+  let s='<line x1="'+X(x0)+'" y1="'+y+'" x2="'+X(x1)+'" y2="'+y+'" stroke="var(--rule)" stroke-width="2"/><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--vio)"/></marker></defs>';
+  for(let x=-2.5;x<=2.51;x+=1){const tx=(1+k*a)*x+a;s+='<circle cx="'+X(x)+'" cy="'+y+'" r="4" fill="var(--soft)"/>';
+    if(tx>x0-1&&tx<x1+1&&Math.abs(tx-x)>1e-3){const mx=(X(x)+X(tx))/2,hh=Math.min(70,12+Math.abs(X(tx)-X(x))*0.35);s+='<path d="M'+X(x)+' '+(y-5)+' Q'+mx+' '+(y-hh)+' '+X(tx)+' '+(y-5)+'" fill="none" stroke="var(--vio)" stroke-width="1.6" marker-end="url(#ah)"/>';}}
+  if(Math.abs(k)>1e-6){const w=-1/k;if(w>x0&&w<x1)s+='<circle cx="'+X(w)+'" cy="'+y+'" r="7" fill="var(--red)"/><text x="'+X(w)+'" y="'+(y+24)+'" text-anchor="middle">still point −1/k</text>';
+    else s+='<text x="'+(w<0?X(x0):X(x1))+'" y="'+(y+24)+'" text-anchor="'+(w<0?'start':'end')+'">still point off screen at '+f(w,1)+'</text>';}
+  else s+='<text x="'+X(0)+'" y="'+(y+24)+'" text-anchor="middle">k = 0: a shift, no still point</text>';
+  S3.innerHTML=s;
+}
+function drawClk(){
+  const P=+$('pr').value,W=S4.clientWidth,H=S4.clientHeight,cx=W/2,cy=H/2,R=Math.min(W,H)/2-34;
+  const ma=(x,y)=>(x+y+x*y)%P;
+  let g=1;for(let c=1;c<P-1;c++){let r=0,seen=new Set();for(let j=0;j<P-1;j++){seen.add(r);r=ma(r,c);}if(seen.size===P-1){g=c;break;}}
+  const seq=[];let r=0;for(let j=0;j<P-1;j++){seq.push(r);r=ma(r,g);}
+  let s='<defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--line)"/></marker></defs>';
+  const pos=j=>{const t=-Math.PI/2+2*Math.PI*j/(P-1);return [cx+R*Math.cos(t),cy+R*Math.sin(t)];};
+  for(let j=0;j<P-1;j++){const [x1,y1]=pos(j),[x2,y2]=pos((j+1)%(P-1));const sh=0.82;s+='<line x1="'+(x1+(x2-x1)*(1-sh))+'" y1="'+(y1+(y2-y1)*(1-sh))+'" x2="'+(x1+(x2-x1)*sh)+'" y2="'+(y1+(y2-y1)*sh)+'" stroke="var(--line)" stroke-width="2" marker-end="url(#ah2)"/>';}
+  seq.forEach((v,j)=>{const [x,y]=pos(j);s+='<circle cx="'+x+'" cy="'+y+'" r="15" fill="var(--panel)" stroke="'+(v===0?'var(--ink)':'var(--line)')+'" stroke-width="2"/><text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" style="stroke:none">'+v+'</text>';});
+  s+='<circle cx="'+cx+'" cy="'+cy+'" r="17" fill="var(--red)"/><text x="'+cx+'" y="'+(cy+5)+'" text-anchor="middle" style="fill:#fff;stroke:none">'+(P-1)+'</text><text x="'+cx+'" y="'+(cy+36)+'" text-anchor="middle">wall</text>';
+  S4.innerHTML=s;
+  $('clkc').textContent='Mod '+P+': each arrow is "✳ '+g+'". Starting at 0 the walk visits all '+(P-1)+' non-wall values. The wall '+(P-1)+' sits apart: anything ✳ '+(P-1)+' is '+(P-1)+'.';
+}
+['p','q','a','b'].forEach(k=>$(k).addEventListener('input',drawRul));
+$('k').addEventListener('input',drawDil);$('pr').addEventListener('change',drawClk);
+new ResizeObserver(drawRul).observe($('rul'));new ResizeObserver(drawMap).observe($('map'));
+new ResizeObserver(drawDil).observe($('dil'));new ResizeObserver(drawClk).observe($('clk'));
+drawRul();drawDil();drawClk();
+}
+</script>
+</body>
+</html>

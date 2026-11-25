@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Information Theory Through Mult-add: The Full Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a switchboard engineer's notebook: decision trees, wires, signal strength
+   COLOUR blueprint-grey paper, navy ink, signal amber for the corner, cyan for the first copy
+   TYPE IBM Plex Sans Condensed display + IBM Plex Sans; LAYOUT figure left, readout right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#e7ebef,#11151b);--panel:light-dark(#fbfcfd,#1a2029);--ink:light-dark(#122033,#e6edf5);--soft:light-dark(#506176,#9fb0c4);--rule:light-dark(#c3ccd6,#2e3845);--amber:light-dark(#c97700,#ffb53d);--cyan:light-dark(#0b7fa6,#47c4ef);--fill:light-dark(rgba(11,127,166,.12),rgba(71,196,239,.16))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.58 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}.alt{background:var(--panel)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:600 clamp(31px,4.4vw,50px)/1.06 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;margin:0 0 14px;max-width:22ch;text-wrap:balance}
+h2{font:600 26px/1.18 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:68ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel,.alt .eq{background:var(--bg)}
+.fig{position:relative;min-height:420px}.fig2{position:relative;min-height:320px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:14px "IBM Plex Sans",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.ctl{display:grid;grid-template-columns:7.5em minmax(0,1fr) 2.4em;gap:10px;align-items:center;margin:4px 0}
+.ctl label{font-weight:600}.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:40px;accent-color:var(--amber)}
+.big{font:600 clamp(38px,5.5vw,58px)/1 "IBM Plex Sans Condensed",sans-serif;font-variant-numeric:tabular-nums}
+.small{color:var(--soft);font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:26px}
+.cols p,.cols li{max-width:66ch}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:start}
+.eq{font:17px/1.6 "IBM Plex Sans",sans-serif;background:var(--panel);border-left:3px solid var(--amber);padding:9px 14px;margin:12px 0;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+td:last-child{color:var(--soft)}
+footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:center}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:340px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.fig{min-height:300px}.fig2{min-height:270px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>In information theory the dial's weight is what you count</h1>
+<p class="lede">The earlier information page showed that failure chances, Tsallis entropy, Kraft sums and channel cascades all compose by a + b + k·ab. This full pass asks where k comes from. Grow a decision tree with D answers per question and k = D − 1. Take a Tsallis entropy of index q and k = 1 − q. Chain any two-input channel and k = −1. The q-logarithm turns out to be the dial's own logarithm, so these are one fact read three ways.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="hero"></div>
+<div class="ctl"><label for="ia">questions in A</label><input id="ia" type="range" min="1" max="3" step="1" value="2"><output id="iao"></output></div>
+<div class="ctl"><label for="ib">questions in B</label><input id="ib" type="range" min="1" max="2" step="1" value="1"><output id="ibo"></output></div>
+<div class="ctl"><label for="d">answers D</label><input id="d" type="range" min="2" max="3" step="1" value="2"><output id="do"></output></div>
+<p class="small">Tree A (navy) asks its questions; then tree B is grafted onto every leaf. The first copy of B (cyan) adds B's questions once. Every other copy (amber) is the corner: there are (D − 1)·I<sub>A</sub> of them, each with I<sub>B</sub> questions.</p>
+</div>
+<div class="panel">
+<div class="small">Questions in the grafted tree</div>
+<div class="big" id="tot"></div>
+<p class="small" id="parts"></p>
+<div class="eq">I<sub>A∘B</sub> = I<sub>A</sub> + I<sub>B</sub> + (D − 1)·I<sub>A</sub>·I<sub>B</sub></div>
+<p class="small">Leaves are the lift: a full D-ary tree with I questions has 1 + (D − 1)·I leaves, and leaves multiply when you graft. So questions compose by the dial with k = D − 1, and a complete tree of depth n asks [n]<sub>D</sub> = 1 + D + ⋯ + D<sup>n−1</sup> questions, a q-number with q = D = k + 1.</p>
+<p class="small" id="kr"></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>Counting decisions is the root: grafting trees is mult-add</h2>
+<p>Hartley's count (1928) says that choosing among N outcomes takes log N units; the earlier page noted that N − 1 composes by mult-add. Trees show why. Asking every question of A and then every question of B is grafting B onto each leaf of A. Leaves multiply (that is Hartley), and leaves = 1 + (D − 1)·questions, so the question count rides on the lift. Lean proves the binary case on actual trees, by structural induction, and the D-ary case on the counts.</p>
+<p>Two side facts drop out. Every full tree has Kraft sum exactly 1 (each leaf at depth ℓ weighs D<sup>−ℓ</sup>), and grafting keeps it 1, the tree form of the Kraft product on the earlier page. And the complete tree of depth n asks [n]<sub>D</sub> questions: this is where the project's q-numbers meet information, with q equal to the number of answers.</p>
+</div>
+<div>
+<h2>The q-logarithm is the dial's own logarithm</h2>
+<p>Tsallis' q-logarithm is ln<sub>q</sub>x = (x<sup>1−q</sup> − 1)/(1 − q). Write k = 1 − q and it is (x<sup>k</sup> − 1)/k: raise to the power k, then undo the dial's lift. So it turns products into the dial:</p>
+<div class="eq">ln<sub>q</sub>(xy) = ln<sub>q</sub>x ✳<sub>k</sub> ln<sub>q</sub>y,  e<sub>q</sub>(u ✳<sub>k</sub> v) = e<sub>q</sub>(u)·e<sub>q</sub>(v)</div>
+<p>with the q-exponential e<sub>q</sub>(u) = (1 + ku)<sup>1/k</sup> as its inverse. At k = 1 it is x − 1, the count minus one. At k = −1 it is 1 − 1/x, which obeys the union rule. At k = 0 it is the ordinary log. Lean proves the law for every whole-number weight, the k = −1 case, and the inverse.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>Tsallis entropy is an average, and the average passes through the dial</h2>
+<p>Call s(p) = ln<sub>q</sub>(1/p) the q-surprise of an outcome. Tsallis entropy is its average, Σ p·s(p), and that equals (Σp<sup>q</sup> − 1)/(1 − q). For independent sources the surprise of a joint outcome is s(p) ✳<sub>k</sub> s(r), because the q-log turns the product pr into the dial.</p>
+<p>The measure and probability page of this pass proves that for independent quantities E[X ✳<sub>k</sub> Y] = E X ✳<sub>k</sub> E Y. Apply it to the surprises and Tsallis' 1988 law follows in one line: S(A×B) = S(A) ✳<sub>k</sub> S(B). Lean proves this as one lemma for any surprise that turns products into ✳<sub>k</sub>; at k = 0 it is the earlier page's outer-log lemma for Shannon. For correlated sources the miss is exactly k·Cov of the two surprises.</p>
+<h2>Two q's, honestly</h2>
+<p>The project reads the dial as q-numbers with q = k + 1. Tsallis writes k = 1 − q. So the project's q is 2 − q<sub>Tsallis</sub>. That is not a clash to hide: q ↔ 2 − q is Tsallis statistics' own known "additive duality", ln<sub>2−q</sub>(x) = −ln<sub>q</sub>(1/x), and on the dial it is the sign flip k → −k. Lean proves the dual log composes with weight −k. Read a Tsallis index through the project's eyes by flipping it around 1.</p>
+</div>
+<div class="panel"><div class="fig2" id="plane" style="min-height:380px"></div>
+<p class="small">The Sharma–Mittal plane: order α across, dial weight k = 1 − β up. Each horizontal row composes by one dial. Teal: Rényi, k = 0, adds. Amber: Tsallis, k = 1 − α. Dashed: Landsberg–Vedral, k = α − 1, its flip.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>Every composable entropy here is Rényi pushed through a dial</h2>
+<p>Sharma and Mittal (1975) found a two-index family that contains Shannon, Rényi and Tsallis. Through the lift it has a one-line description: take Rényi entropy of order α, which adds over independent sources, and push it through the dial's exponential (e<sup>kx</sup> − 1)/k.</p>
+<div class="eq">H<sub>α,β</sub> = (e<sup>(1−β)·Rényi<sub>α</sub></sup> − 1)/(1 − β), and H(A×B) = H(A) ✳<sub>k</sub> H(B), k = 1 − β</div>
+<p>So the order α says which average you take, and the weight k says which dial carries it. Tsallis is the diagonal β = α; Landsberg and Vedral's normalized entropy (1998) is β = 2 − α, the flipped dial. Checked on 300 random pairs.</p>
+<h2>The q-exponential is compound interest, not the rung flow</h2>
+<p>At k = 1/n the q-exponential is (1 + x/n)<sup>n</sup>: n mult-add steps of x/n, the climb up the cube toward e. It runs from the identity (k = 1) to e<sup>x</sup> − 1 (k = 0), so it looked like a fractional rung flow. It is not one: two half-steps match e<sup>x</sup> − 1 through x² and miss at x³ (1/8 against 1/6). It interpolates between rungs without being a flow.</p>
+</div>
+<div class="panel"><div class="fig2" id="chan" style="min-height:300px"></div>
+<p class="small">A two-input channel as a parallelogram: its rows (1 − a, a) and (b, 1 − b) span an area 1 − (a + b). Chain two channels and the areas multiply, so the crossover sum composes by the union rule. Shown: s₁ = 0.3, s₂ = 0.4, cascade 0.58.</p>
+<h2 style="margin-top:18px">Any binary channel chains by the union rule</h2>
+<p>The earlier page had the symmetric channel (parity, k = −2) and the alphabet ladder. Here is the general two-input case: whatever a = P(1 | 0) and b = P(0 | 1) are, the crossover sum s = a + b of a cascade is s₁ ✳₋₁ s₂, because the determinant 1 − s multiplies. The symmetric channel has s = 2p, and the union rule on 2p is the parity rule on p. The Z-channel has s = p and chains by the union rule directly; its capacity falls every hop (0.504, 0.314, 0.206, … bits for s = 0.3).</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table><tbody>
+<tr><td>Tsallis entropy and its law S + S′ + (1 − q)SS′; q-log and q-exp</td><td>Tsallis 1988, 1994</td></tr>
+<tr><td>Additive duality q ↔ 2 − q</td><td>known in Tsallis statistics (Naudts; Wada and Scarfone)</td></tr>
+<tr><td>Sharma–Mittal family; Landsberg–Vedral entropy</td><td>Sharma and Mittal 1975; Landsberg and Vedral 1998</td></tr>
+<tr><td>Entropies from group laws</td><td>Tempesta 2011, 2016</td></tr>
+<tr><td>Hartley count; Kraft equality for full trees; internal nodes = (leaves − 1)/(D − 1)</td><td>Hartley 1928; Kraft 1949; classical</td></tr>
+<tr><td>Determinant of a cascade multiplies</td><td>classical linear algebra</td></tr>
+<tr><td>Grafting composes questions by the dial k = D − 1; depth-n tree = [n]<sub>D</sub></td><td>ours as a reading; one line from the counts</td></tr>
+<tr><td>Tsallis' law as "expectation passes through the dial"; Sharma–Mittal as Rényi through the dial</td><td>ours as a proof route and phrasing</td></tr>
+<tr><td>Crossover sum of any binary channel chains by the union rule</td><td>a one-line consequence; not found stated this way</td></tr>
+</tbody></table>
+<p class="small">Already covered, so only cited: the union rule, Shannon and Rényi additivity, Tsallis via power sums and its landmarks, Kraft and Campbell, the BSC and alphabet ladder, piling-up, Hamming and belief propagation on the <a href="https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v">information theory page</a>; entropies as norms on the noise tetrahedron and Tsallis k as Carnot's 1 − T₀/T on the <a href="https://claude.ai/artifact/1To24w7SazEuaE5Pjsj4YM">entropy page</a>; bit-flip and depolarizing weights on the <a href="https://claude.ai/artifact/X6u4iNGch19w41ioqJ5VoW">quantum noise page</a>; thermodynamic entropy on the <a href="https://claude.ai/artifact/SKKLwKiEg4nyYGfrw32sp5">thermodynamics page</a>; q-numbers on the <a href="https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL">q page</a>. Tested and dropped: the q-exponential as a rung flow (fails at third order).</p>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>No new lead on its own merits.</b> Every law here is known, and the full pass mostly confirms that the earlier page's picture was complete: wherever information composes, it composes by a dial, and the weight is fixed by what is being counted.</p>
+<p>What the pass adds is a cleaner account of where each weight comes from. The number of answers per question gives k = D − 1, which is exactly the project's q = k + 1 as an alphabet size. The Tsallis index gives k = 1 − q, which is the same q flipped by a known duality. And the general Tsallis law is no longer a separate fact: it is the measure page's "expectation passes through the dial", applied to surprise. That makes information theory a derived branch of the measure picture, which is the order these two pages follow.</p>
+<p>It predicts nothing new, so I would not spend more time here unless a bent landscape law turns out to describe some real coding cost, the way Campbell's exponential cost matches the dial.</p>
+</div>
+</div>
+</section>
+
+<footer>28 of 28 checks pass (checks.py) · 31 Lean theorems in InformationFull.lean, compiled with core Lean 4.37, no sorry</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const f=(x,n=3)=>x.toFixed(n).replace('-','−');
+const mk=id=>{$(id).innerHTML='<svg role="img"></svg>';return $(id).firstChild;};
+const S1=mk('hero'),S2=mk('plane'),S3=mk('chan');
+const T=(x,y,t,a)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'">'+t+'</text>';
+function cat(I,D,tag){if(I==0)return {tag,kids:[]};const kids=[];for(let i=0;i<D-1;i++)kids.push({tag,kids:[]});kids.push(cat(I-1,D,tag));return {tag,kids};}
+function copyT(t,tag){return {tag,kids:t.kids.map(c=>copyT(c,tag))};}
+function hero(){
+  const IA=+$('ia').value,IB=+$('ib').value,D=+$('d').value;
+  $('iao').textContent=IA;$('ibo').textContent=IB;$('do').textContent=D;
+  const B=cat(IB,D,'b');let n=0;
+  function graft(t){if(!t.kids.length){const c=copyT(B,n?'c':'b');n++;return c;}return {tag:'a',kids:t.kids.map(graft)};}
+  const G=graft(cat(IA,D,'a'));
+  let leaves=0,depth=0;(function walk(t,d){depth=Math.max(depth,d);if(!t.kids.length)leaves++;t.kids.forEach(c=>walk(c,d+1));})(G,0);
+  const W=S1.clientWidth,H=S1.clientHeight,mx=14,my=22,dx=(W-2*mx)/Math.max(1,leaves-1),dy=(H-2*my)/Math.max(1,depth);
+  let li=0,edges='',dots='';
+  function lay(t,d){let x;if(!t.kids.length){x=mx+li*dx;li++;}else{const xs=t.kids.map(c=>lay(c,d+1));x=(xs[0]+xs[xs.length-1])/2;
+      t.kids.forEach((c,i)=>{edges+='<line x1="'+x+'" y1="'+(my+d*dy)+'" x2="'+xs[i]+'" y2="'+(my+(d+1)*dy)+'" stroke="var(--rule)" stroke-width="1.5"/>';});}
+    const col=t.tag=='a'?'var(--ink)':t.tag=='b'?'var(--cyan)':'var(--amber)';
+    dots+=t.kids.length?'<circle cx="'+x+'" cy="'+(my+d*dy)+'" r="'+(W<420?5:7)+'" fill="'+col+'"/>':'<circle cx="'+x+'" cy="'+(my+d*dy)+'" r="2.5" fill="var(--soft)"/>';
+    return x;}
+  lay(G,0);S1.innerHTML=edges+dots;
+  const corner=(D-1)*IA*IB,tot=IA+IB+corner;
+  $('tot').textContent=tot;
+  $('parts').textContent=IA+' navy + '+IB+' cyan + '+corner+' amber = '+IA+' ✳'+(D-1==1?'':'ₖ')+' '+IB+(D-1==1?' (k = 1, plain mult-add)':' with k = '+(D-1));
+  $('kr').textContent=leaves+' leaves = '+(1+(D-1)*IA)+' × '+(1+(D-1)*IB)+'. Kraft sum of the grafted tree: exactly 1.';
+}
+function plane(){
+  const W=S2.clientWidth,H=S2.clientHeight,m=34,a0=0,a1=3,k0=-2,k1=2;
+  const X=a=>m+(a-a0)/(a1-a0)*(W-2*m),Y=k=>H-m-(k-k0)/(k1-k0)*(H-2*m);
+  let g='';for(let k=-2;k<=2;k+=.5)g+='<line x1="'+X(a0)+'" y1="'+Y(k)+'" x2="'+X(a1)+'" y2="'+Y(k)+'" stroke="var(--rule)" stroke-width="'+(k==0?1.5:.6)+'"/>';
+  g+='<line x1="'+X(0)+'" y1="'+Y(k0)+'" x2="'+X(0)+'" y2="'+Y(k1)+'" stroke="var(--rule)"/>';
+  g+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(3)+'" y2="'+Y(0)+'" stroke="var(--cyan)" stroke-width="4"/>';
+  g+='<line x1="'+X(0)+'" y1="'+Y(1)+'" x2="'+X(3)+'" y2="'+Y(-2)+'" stroke="var(--amber)" stroke-width="4"/>';
+  g+='<line x1="'+X(0)+'" y1="'+Y(-1)+'" x2="'+X(3)+'" y2="'+Y(2)+'" stroke="var(--ink)" stroke-width="2" stroke-dasharray="7 5"/>';
+  const dot=(a,k,t,dx,dy,an)=>'<circle cx="'+X(a)+'" cy="'+Y(k)+'" r="6" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/>'+T(X(a)+dx,Y(k)+dy,t,an);
+  const nar=W<420;
+  g+=dot(1,0,'Shannon',8,22)+dot(2,-1,nar?'Gini':'Gini–Simpson',10,5)+dot(0,1,nar?'N − 1':'count N − 1',10,-8)+dot(2,0,nar?'collision':'Rényi-2',8,-10)+dot(0,0,'Hartley',8,-10);
+  g+=T(X(2.95),Y(.05)-8,'Rényi','end')+T(X(2.95),Y(-1.9)-10,'Tsallis','end')+T(X(2.95),Y(1.9)+18,'L–V','end');
+  g+=T(X(a1),Y(k0)+24,'order α','end')+T(X(0)-6,Y(k1)+5,'k','end');
+  S2.innerHTML=g;
+}
+function chan(){
+  const W=S3.clientWidth,H=S3.clientHeight;
+  const chs=[[.1,.2],[.15,.25]];const M=(a,b)=>[[1-a,a],[b,1-b]];
+  const mul=(A,B)=>[[A[0][0]*B[0][0]+A[0][1]*B[1][0],A[0][0]*B[0][1]+A[0][1]*B[1][1]],[A[1][0]*B[0][0]+A[1][1]*B[1][0],A[1][0]*B[0][1]+A[1][1]*B[1][1]]];
+  const A=M(...chs[0]),Bm=M(...chs[1]),C=mul(A,Bm);
+  const box=Math.min((W-40)/3-12,H-90),gap=(W-3*box)/4;let g='';
+  [[A,'channel 1'],[Bm,'channel 2'],[C,'chained']].forEach(([Mx,lab],i)=>{
+    const ox=gap+i*(box+gap),oy=(H+box)/2-10,X=x=>ox+x*box,Y=y=>oy-y*box;
+    g+='<rect x="'+X(0)+'" y="'+Y(1)+'" width="'+box+'" height="'+box+'" fill="none" stroke="var(--rule)"/>';
+    const r1=Mx[0],r2=Mx[1];
+    g+='<path d="M'+X(0)+' '+Y(0)+' L'+X(r1[0])+' '+Y(r1[1])+' L'+X(r1[0]+r2[0])+' '+Y(r1[1]+r2[1])+' L'+X(r2[0])+' '+Y(r2[1])+' Z" fill="'+(i==2?'var(--amber)':'var(--fill)')+'" fill-opacity="'+(i==2?.45:1)+'" stroke="'+(i==2?'var(--amber)':'var(--cyan)')+'" stroke-width="2"/>';
+    const s=Mx[0][1]+Mx[1][0];
+    g+=T(X(.5),Y(0)+22,lab,'middle')+T(X(.5),Y(1.12)-6,'area '+f(1-s,2),'middle');});
+  S3.innerHTML=g;
+}
+['ia','ib','d'].forEach(i=>$(i).addEventListener('input',hero));
+[[S1,hero],[S2,plane],[S3,chan]].forEach(([s,fn])=>{new ResizeObserver(fn).observe(s.parentNode);fn();});
+}
+</script>
+</body>
+</html>

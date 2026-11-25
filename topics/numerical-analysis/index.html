@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floating Point Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* VOICE a technical write-up for one person who thinks in pictures
+   IDEA an engineer's pad: graph paper, a calculator's amber digits, the float grid drawn as ticks
+   PICTURE the float number line: a small number lifted to 1 + a snaps to the coarse grid near 1
+   COLOUR graph-paper green, ink, amber for digits lost (the lift), teal for digits kept (fused)
+   TYPE IBM Plex Sans 600 display + Plex Sans, Plex Mono for numbers
+   LAYOUT number line left, digits chart right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#e6ede3,#121815);--panel:light-dark(#f8fbf5,#1b231e);--ink:light-dark(#122019,#e8f0ea);--soft:light-dark(#4b5c52,#a4b4aa);--rule:light-dark(#c2cfbf,#33413a);--grid:light-dark(rgba(30,90,60,.07),rgba(140,220,180,.06));--amber:light-dark(#c96a00,#ffb03b);--teal:light-dark(#0b7a6b,#47d1bb);--shade:light-dark(rgba(11,122,107,.12),rgba(71,209,187,.14))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px;color:var(--ink);font:16px/1.55 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:600 clamp(30px,4.4vw,48px)/1.08 "IBM Plex Sans",sans-serif;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;max-width:22ch}
+h2{font:600 25px/1.18 "IBM Plex Sans",sans-serif;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:70ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.fig{position:relative;min-height:330px}.fig2{position:relative;min-height:300px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px "IBM Plex Sans",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 5.5em;gap:10px;align-items:center;margin:6px 0}
+.ctl label{font-weight:600;white-space:nowrap}
+.ctl output,.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.ctl output{text-align:right;white-space:nowrap}
+input[type=range]{width:100%;height:44px;accent-color:var(--amber)}
+input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.big{font:500 clamp(36px,5.5vw,56px)/1 "IBM Plex Mono",monospace;color:var(--amber)}
+.small{color:var(--soft);font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px;align-items:start}
+.cols p,.cols li{max-width:66ch}
+.eq{font:15px/1.6 "IBM Plex Mono",monospace;background:var(--panel);border-left:3px solid var(--teal);padding:10px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+.ledger td{text-align:left}.ledger td:last-child{color:var(--soft)}
+.key{display:inline-block;width:14px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
+ul{padding-left:20px}code{font-family:"IBM Plex Mono",monospace;font-size:14px;overflow-wrap:anywhere}
+footer{color:var(--soft);font-size:14px}
+@media(max-width:860px){.first{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.fig{min-height:290px}table{font-size:13px}th,td{padding:6px 3px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>The lift costs digits; the fused form keeps them</h1>
+<p class="lede">Mult-add is (1 + a)(1 + b) − 1 = a + b + ab. On paper the two sides are equal. On a computer they are not: adding 1 moves a small number onto the coarse part of the float grid, where its last digits are rounded away, and subtracting 1 afterwards cannot bring them back. Written as a + b + ab, the corner is a small correction and every digit survives. This page checks that on real float64 and follows it into compound interest, rounding errors, Newton's method and Horner's rule.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="line"></div>
+<div class="ctl"><label for="ai">Small number a</label><input id="ai" type="range" min="0" max="20" step="1" value="9"><output id="ao"></output></div>
+<p class="small">A toy float system with 3 significant bits, so the ticks are visible. Ticks are the numbers it can hold: crowded near 0, a quarter apart between 1 and 2. The amber arrow is the lift 1 + a snapping to the nearest tick; the hollow dot is what comes back after subtracting 1. Real float64 has 53 bits, the same picture with ticks 2⁻⁵² apart near 1.</p>
+</div>
+<div class="panel">
+<div class="small">Digits kept for a ✳ b at |a| ≈ 10⁻¹² (float64, median)</div>
+<div class="big"><span id="dl">4</span> <span class="small">lift</span> · <span style="color:var(--teal)">16</span> <span class="small">fused</span></div>
+<div class="fig2" id="dig"></div>
+<p class="small"><span class="key" style="background:var(--amber)"></span>(1 + a)(1 + b) − 1 &nbsp; <span class="key" style="background:var(--teal)"></span>a + b + ab and fma(a, b, a + b). The lift loses about log₁₀(1/|a|) digits: one for every power of ten a sits below 1.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div>
+<h2>Why: floats are dense near 0 and sparse near 1</h2>
+<p>A float stores a fixed number of significant digits, so its grid spacing is proportional to the number's size. Near 10⁻¹² the spacing is about 10⁻²⁸; near 1 it is 2.2 × 10⁻¹⁶. The lift x ↦ 1 + x is a translation: it carries 0, the identity, to 1, and with it carries every small number onto the coarse grid. The way back, subtracting 1, is exact, but by then the digits are gone.</p>
+<p>The rule behind it is an amplifier. If the lift rounds by a relative amount η, then a comes back with relative error <b>η·(1 + a)/a</b>. Lean proves that identity (<code>lift_amplifier</code>); in float64 it holds to the last bit. At a = 10⁻¹² the amplifier is a trillion.</p>
+</div>
+<div>
+<h2>One fused step is one fma</h2>
+<p>Hardware fused multiply-add computes x·y + z with a single rounding (IBM POWER, 1990; standard in IEEE 754-2008). Mult-add has three fma shapes, all equal on paper and proved equal in Lean:</p>
+<div class="eq">a ✳ b = fma(a, b, a + b) = fma(a, 1 + b, b) = fma(b, 1 + a, a)</div>
+<p>For small a and b, a + b + ab and fma(a, b, a + b) do equally well: within one rounding for 400 random pairs at each size from 10⁻⁴ down to 10⁻¹⁶. The shapes with 1 + b inside round a lift first and lose a little (up to about 10⁻¹³ in the checks). The real difference shows up next, near the way back.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div class="panel"><div class="fig2" id="band"></div>
+<p class="small">b is the inverse of a, −a/(1 + a), nudged by one part in 10⁹, so a ✳ b is tiny and everything cancels. <span class="key" style="background:var(--amber)"></span>a + b + ab &nbsp; <span class="key" style="background:var(--teal)"></span>fma(a, b, a + b). Shaded: the octave 1/2 ≤ 1 + a ≤ 2.</p></div>
+<div>
+<h2>Near the inverse, one fma is exact inside the octave around 1</h2>
+<p>When b is close to the inverse of a, a ✳ b is close to 0 and the two big pieces a + b and ab cancel. Plain a + b + ab rounds ab first and loses up to ten digits. fma(a, b, a + b) rounds ab not at all, so it is correct to the last bit whenever a + b itself is exact.</p>
+<p>Sterbenz's lemma (1974) says x − y is exact when y/2 ≤ x ≤ 2y. Lean proves the inverse lands in that window <b>whenever the lift 1 + a lies between 1/2 and 2</b> (<code>sterbenz_window_pos</code>, <code>_neg</code>). The checks agree: inside the shaded octave fma was correctly rounded 248 times out of 248; outside it, 572 of 952 were not. A geometric reading: stay within one factor of 2 of the identity in the lifted picture and one fma is perfect.</p>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div>
+<h2>log1p and expm1 are the rung chart that keeps 0 at 0</h2>
+<p>The other way to turn ✳ into something easy is the log: log(1 + a ✳ b) = log(1 + a) + log(1 + b). Library functions log1p(x) = log(1 + x) and expm1(x) = eˣ − 1 compute these without ever forming 1 + x. expm1 is the rung flow E at t = 1 and log1p is its inverse, and both fix 0 with slope 1. So this chart turns mult-add into adding <i>without</i> moving the identity onto the coarse grid. That is the whole reason they exist.</p>
+<div class="eq">a^(✳t) = expm1(t · log1p(a)) &nbsp;&nbsp; x₁ ✳ₖ … ✳ₖ xₙ = expm1(Σ log1p(k·xᵢ)) / k</div>
+<p>The second line is one routine for every dial value k. At k = −1 it is "at least one of many events": for 100,000 events of chance 10⁻¹², 1 − ∏(1 − p) is off by about 2 parts in 10⁷, while −expm1(Σ log1p(−p)) is right to 16 digits. A long product of 200,000 returns of size 10⁻⁷ tells the same story: naive product minus 1 keeps 9 digits, the fma fold 14, the log1p sum all 16.</p>
+</div>
+<div class="panel"><div class="fig2" id="int"></div>
+<p class="small">Relative error of 5% a year compounded n times. <span class="key" style="background:var(--amber)"></span>(1 + r/n)ⁿ − 1 &nbsp; <span class="key" style="background:var(--teal)"></span>expm1(n·log1p(r/n)). Compounding every second, the naive formula keeps 7 digits.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Every rounding error is a mult-add number</h2>
+<p>A float operation returns the true answer times (1 + δ) with |δ| ≤ u = 2⁻⁵³. Relative errors are lift coordinates, so they compose by the operation itself:</p>
+<div class="eq">x(1 + δ₁) · y(1 + δ₂) = xy(1 + δ₁ ✳ δ₂)<br>x(1 + δ₁) / y(1 + δ₂) = (x/y)(1 + δ₁ ⊟ δ₂)</div>
+<p>Division brings in mult-add subtraction, Fisher's rule for real interest rates. A product of n floats carries Higham's total error θₙ, and θₙ is exactly the mult-add fold δ₁ ✳ δ₂ ✳ … of the step errors: the checks compute each δ as an exact fraction and the fold matches θₙ to the last bit for n up to 1,000. Lean then proves Higham's bound in this form: if each |δ| ≤ u, the fold stays within u^(✳n) = (1 + u)ⁿ − 1, and that is at most nu/(1 − nu).</p>
+</div>
+<div class="panel">
+<table><thead><tr><th>Floats multiplied</th><th>actual |θₙ|</th><th>bound (1 + u)ⁿ − 1</th></tr></thead><tbody id="tt"></tbody></table>
+<p class="small">The bound is the worst case, every rounding in the same direction. Real roundings mostly cancel, like a random walk.</p>
+<h2 style="margin-top:18px">Where conditioning bites</h2>
+<p>Two points are dangerous, and they are the two special points of mult-add. At the identity 0 the way back from the lift amplifies by (1 + a)/a; fused arithmetic avoids that. At the wall −1 the problem itself is touchy: the inverse −u/(1 + u) has relative condition 1/|1 + u| and log1p blows up too. No trick fixes the wall, because the answer genuinely depends wildly on the input there.</p>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div class="panel"><div class="fig2" id="sq"></div>
+<div class="ctl"><label for="ei">Residual e</label><input id="ei" type="range" min="-0.9" max="0.9" step="0.01" value="0.5"><output id="eo"></output></div>
+<p class="small">The unit square against the lifted rectangle (1 + e) × (1 − e). Slide the teal strip to the top and it fills all but the amber e × e corner, so the new residual is −e². <span class="mono" id="seq"></span></p></div>
+<div>
+<h2>Newton's inverse without division: only the corner is left</h2>
+<p>To find the inverse v of u (so u ✳ v = 0, i.e. 1/(1 + u)) without dividing, repeat</p>
+<div class="eq">v ← v ✳ (−e), where e = u ✳ v is the residual</div>
+<p>Lean proves the new residual is exactly −e² (<code>newton_residual</code>), so after n steps it is −(−e₀)^(2ⁿ) (<code>newton_iter_residual</code>). In the lift the step multiplies by (1 − e), and (1 + e)(1 − e) = 1 − e²: the picture shows the e × e corner is the only thing that survives. That is quadratic convergence, digits doubling (0.9, 1.4, 2.3, 4.0, 7.6, 14.7, 16 in float64). It converges exactly when |e₀| < 1, i.e. 0 &lt; (1 + u)(1 + v₀) &lt; 2.</p>
+<p>Goldschmidt's division (1964) is the same corner, unrolled: (−e) ✳ e ✳ e² ✳ e⁴ ✳ … = −e^(2ⁿ) (<code>gold_eq</code>).</p>
+<h2>Horner's rule walks the cube</h2>
+<p>Mult-adding b is the affine step acc ↦ acc·(1 + b) + b, which is one Horner step and one fma. So x₁ ✳ x₂ ✳ … ✳ xₙ in n fma steps adds up all 2ⁿ − 1 corners of the mult-add cube (<code>horner_cube</code>), and the power a^(✳n) is Horner on b(1 + y + … + yⁿ⁻¹), y = 1 + b (<code>mpow_horner</code>).</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>Catastrophic cancellation; log1p and expm1, Kahan's x·log(w)/(w − 1) trick, compound interest</td><td>Kahan; Goldberg 1991, Theorem 4</td></tr>
+<tr><td>Single-rounding fma</td><td>IBM POWER 1990; IEEE 754-2008</td></tr>
+<tr><td>Sterbenz's exact subtraction</td><td>Sterbenz 1974</td></tr>
+<tr><td>θₙ, γₙ = nu/(1 − nu)</td><td>Higham, Accuracy and Stability, Lemma 3.1</td></tr>
+<tr><td>Newton reciprocal, Goldschmidt division, Horner's rule</td><td>Classical; Goldschmidt 1964; Horner 1819</td></tr>
+<tr><td>Relative errors compose by ✳ and ⊟; θₙ is the ✳-fold</td><td>Known content in mult-add words</td></tr>
+<tr><td>fma(a, b, a + b) is exact near the inverse inside the octave 1/2 ≤ 1 + a ≤ 2</td><td>Ours as stated; a two-line consequence of Sterbenz and fma, not found written</td></tr>
+<tr><td>One log1p/expm1 routine for every dial k</td><td>Ours as a packaging of the classical trick</td></tr>
+</tbody></table>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>A small practical lead, not a research one.</b> The theory here is classical: numerical analysts have long known that adding 1 throws digits away and built log1p, expm1 and fma for it. What mult-add adds is a single picture (the lift is a translation onto the coarse grid; the log chart is tangent to the identity) and one tidy rule (stay in the octave around 1 and one fma is exact).</p>
+<p>That is worth turning into a tiny, tested kit, because it touches everything else in the project: <code>multadd(a, b)</code> as fma(a, b, a + b), and <code>dialfold(k, xs)</code> as expm1(Σ log1p(k·x))/k, with the wall −1/k handled explicitly. Any code that compounds rates, combines small probabilities or folds the cube would get every digit for free. It predicts nothing new about numbers, so I would not chase it as mathematics.</p>
+</div>
+</div>
+</section>
+
+<section class="band" style="padding-top:0">
+<div class="wrap"><footer>41 of 41 float64 and exact checks pass (checks.py). 32 Lean theorems, core Lean 4.37, no sorry, standard axioms only (lean/Numerical.lean).</footer></div>
+</section>
+
+<script>
+{
+const D={"digits":[[0.316,15.44,16.0,16.0],[0.1,14.94,16.0,16.0],[0.0316,14.48,16.0,16.0],[0.01,13.93,16.0,16.0],[0.00316,13.4,16.0,16.0],[0.001,12.95,16.0,16.0],[0.000316,12.42,16.0,16.0],[0.0001,11.95,16.0,16.0],[3.16e-05,11.49,16.0,16.0],[1e-05,10.92,16.0,16.0],[3.16e-06,10.46,16.0,16.0],[1e-06,9.99,16.0,16.0],[3.16e-07,9.42,16.0,16.0],[1e-07,8.98,16.0,16.0],[3.16e-08,8.48,16.0,16.0],[1e-08,7.97,16.0,16.0],[3.16e-09,7.51,16.0,16.0],[1e-09,7.04,16.0,16.0],[3.16e-10,6.54,16.0,16.0],[1e-10,6.1,16.0,16.0],[3.16e-11,5.51,16.0,16.0],[1e-11,5.06,16.0,16.0],[3.16e-12,4.52,16.0,16.0],[1e-12,4.05,16.0,16.0],[3.16e-13,3.52,16.0,16.0],[1e-13,3.05,16.0,16.0],[3.16e-14,2.44,16.0,16.0],[1e-14,1.94,16.0,16.0],[3.16e-15,1.51,16.0,16.0],[1e-15,0.94,16.0,16.0],[3.16e-16,0.51,16.0,16.0],[1e-16,0.0,16.0,16.0]],"band":[[-0.9482,5.17,5.54],[-0.9358,5.61,6.26],[-0.9163,6.12,6.87],[-0.8941,6.91,6.47],[-0.8781,6.85,6.53],[-0.8312,5.8,6.05],[-0.7985,5.06,16.0],[-0.7683,6.69,16.0],[-0.707,7.31,16.0],[-0.6846,6.78,16.0],[-0.6461,7.48,16.0],[-0.6315,7.01,16.0],[-0.6175,6.97,16.0],[-0.6089,7.02,16.0],[-0.5886,7.16,16.0],[-0.576,4.74,16.0],[-0.56,6.57,16.0],[-0.5342,6.93,15.98],[-0.5044,6.74,16.0],[-0.4833,7.49,16.0],[-0.4498,7.36,16.0],[-0.4164,7.43,16.0],[-0.401,7.02,16.0],[-0.3841,7.78,16.0],[-0.3467,7.44,16.0],[-0.3257,7.59,16.0],[-0.2761,7.14,16.0],[-0.2493,7.27,16.0],[-0.2301,8.57,16.0],[-0.2112,7.85,16.0],[-0.1921,7.3,16.0],[-0.1823,7.91,16.0],[-0.1704,8.31,16.0],[-0.1434,8.12,16.0],[-0.1212,7.42,16.0],[-0.1142,8.6,16.0],[-0.0704,8.19,16.0],[-0.0518,8.07,16.0],[-0.0376,8.69,16.0],[0.0059,9.44,16.0],[0.0341,8.88,16.0],[0.0561,8.4,16.0],[0.0854,8.44,16.0],[0.0961,8.11,16.0],[0.1254,8.11,16.0],[0.1596,9.09,16.0],[0.1814,8.41,16.0],[0.2196,8.9,16.0],[0.2451,8.4,16.0],[0.2628,8.5,16.0],[0.2964,7.78,16.0],[0.3062,7.58,16.0],[0.36,7.64,16.0],[0.4207,7.89,16.0],[0.4411,8.66,16.0],[0.4682,7.77,16.0],[0.4914,9.62,16.0],[0.5225,7.93,16.0],[0.5496,6.02,16.0],[0.56,8.33,16.0],[0.5774,6.66,16.0],[0.5974,8.09,16.0],[0.6139,8.56,16.0],[0.6324,7.29,16.0],[0.6415,7.73,16.0],[0.6764,7.55,16.0],[0.6854,6.85,16.0],[0.7005,7.04,16.0],[0.7319,8.38,16.0],[0.7696,7.07,16.0],[0.795,7.56,16.0],[0.8082,6.86,16.0],[0.849,7.37,16.0],[0.8577,7.67,16.0],[0.8658,6.8,16.0],[0.8758,7.93,16.0],[0.8841,7.3,16.0],[0.9318,6.69,16.0],[0.9354,8.28,16.0],[0.9444,7.2,16.0],[0.9809,7.83,16.0],[1.0108,6.85,16.0],[1.0293,7.55,16.0],[1.0426,6.87,16.0],[1.0605,7.55,16.0],[1.0906,6.98,16.0],[1.1172,6.78,16.0],[1.1761,6.98,16.0],[1.1916,7.53,16.0],[1.2012,7.54,16.0],[1.2097,7.16,16.0],[1.2345,8.7,16.0],[1.2475,8.6,16.0],[1.2674,7.64,16.0],[1.2802,6.75,16.0],[1.3062,7.45,16.0],[1.3352,9.04,16.0],[1.3478,7.5,16.0],[1.3658,7.52,16.0],[1.4097,7.53,16.0],[1.4215,7.26,16.0],[1.4393,8.42,16.0],[1.4782,8.29,16.0],[1.5011,7.49,16.0],[1.5117,7.57,16.0],[1.5249,7.58,16.0],[1.5657,7.35,16.0],[1.5908,7.51,16.0],[1.6105,7.4,16.0],[1.6417,7.02,6.96],[1.6938,8.84,16.0],[1.7278,7.18,6.55],[1.7423,7.25,6.41],[1.7824,6.68,6.73],[1.8038,6.33,6.42],[1.8123,6.49,6.77],[1.8445,6.59,16.0],[1.8696,8.2,16.0],[1.8944,5.79,16.0],[1.9269,7.27,16.0],[1.9599,7.26,16.0],[1.9971,5.09,5.38],[2.0043,7.57,7.01],[2.0438,6.61,16.0],[2.0769,6.69,6.8],[2.083,6.21,6.28],[2.1011,8.28,16.0],[2.115,8.11,16.0],[2.1289,6.85,7.08],[2.1386,6.68,16.0],[2.1686,7.78,16.0],[2.1923,7.93,7.27],[2.2188,7.77,16.0],[2.2398,6.75,6.4],[2.2582,7.4,16.0],[2.2861,7.15,7.08],[2.3087,7.49,16.0],[2.323,7.6,7.31],[2.3418,6.55,6.83],[2.3644,7.27,16.0],[2.395,6.61,6.7],[2.4066,5.46,16.0],[2.4423,6.6,16.0],[2.4712,7.21,16.0],[2.4846,7.68,16.0],[2.5403,7.84,7.0],[2.5628,6.91,7.04],[2.581,7.47,7.07],[2.6049,7.66,16.0],[2.6343,7.06,16.0],[2.6531,8.11,16.0],[2.6773,7.07,7.19],[2.7334,7.38,7.12],[2.7442,6.43,16.0],[2.7656,5.97,6.27],[2.7844,6.36,6.72],[2.8078,7.76,7.28],[2.8209,6.83,7.29],[2.8535,8.94,16.0],[2.8707,6.88,7.11],[2.8963,5.21,5.37],[2.9353,7.25,7.32],[2.9577,7.69,6.45],[3.0021,7.18,6.87],[3.0078,6.56,6.8],[3.0212,7.3,16.0],[3.0383,6.26,5.89],[3.0616,6.7,6.8],[3.0917,6.74,7.12],[3.1247,7.17,16.0],[3.1325,7.65,7.37],[3.1628,6.9,16.0],[3.181,6.9,7.05],[3.1839,8.66,7.14],[3.1985,6.45,6.0],[3.219,7.57,7.27],[3.2462,7.51,7.25],[3.2715,7.02,7.38],[3.2888,7.91,7.38],[3.342,6.11,16.0],[3.3705,6.95,6.73],[3.3985,6.78,7.06],[3.4144,6.71,6.77],[3.4312,7.48,7.01],[3.4457,7.95,7.28],[3.4549,6.28,6.48],[3.485,7.67,7.24],[3.533,6.85,16.0],[3.5724,6.78,7.23],[3.5936,6.81,7.18],[3.6052,7.03,7.21],[3.6189,7.51,7.35],[3.6317,7.27,7.23],[3.6721,7.17,7.11],[3.698,6.93,7.02],[3.7161,7.51,6.18],[3.7302,7.57,16.0],[3.7473,7.43,7.36],[3.7845,7.66,15.99],[3.7939,7.97,7.36],[3.8357,7.27,7.04],[3.8551,6.08,6.05],[3.8705,7.06,6.84],[3.8796,7.74,7.17],[3.9071,7.5,7.07],[3.9145,7.45,16.0],[3.9281,7.29,7.41],[3.9605,7.29,7.5],[3.9661,7.48,7.45],[3.9903,5.83,6.21],[4.0077,7.27,7.54],[4.0238,6.67,6.77],[4.0328,6.63,6.87],[4.0585,6.42,6.69],[4.0731,7.36,7.19],[4.0961,7.73,16.0],[4.125,7.1,7.42],[4.1422,7.42,16.0],[4.1542,6.89,7.19],[4.1621,7.4,16.0],[4.1861,6.19,6.63],[4.2004,8.17,16.0],[4.2313,7.12,7.15],[4.259,7.03,16.0],[4.2652,7.87,16.0],[4.2783,7.26,16.0],[4.2987,7.67,16.0],[4.3161,7.17,7.47],[4.3412,6.78,6.68],[4.3622,6.49,16.0],[4.3972,7.12,7.01],[4.4201,6.35,6.6],[4.4408,7.53,16.0],[4.4516,6.76,7.18],[4.4773,7.06,7.06],[4.5018,7.5,7.28],[4.5428,6.39,6.22],[4.5795,6.66,6.95],[4.6077,8.16,7.26],[4.6207,7.55,7.36],[4.6356,6.54,6.21],[4.6685,7.26,7.57],[4.7103,7.11,7.39],[4.7375,7.05,16.0],[4.7496,7.22,16.0],[4.76,7.62,7.02],[4.7836,6.49,6.2],[4.8103,7.51,6.22],[4.8428,6.53,6.81],[4.8972,5.04,5.27],[4.9154,7.26,7.52],[4.9289,5.86,6.09],[4.9367,8.21,6.8],[4.9475,7.46,7.52],[4.9857,6.53,6.68],[4.9974,6.55,6.84],[5.0165,7.61,7.63],[5.035,6.72,6.56],[5.0735,7.35,6.85],[5.0954,6.79,7.22],[5.1173,6.54,7.16],[5.1318,7.06,16.0],[5.1568,7.67,6.81],[5.1767,7.55,16.0],[5.1857,7.21,16.0],[5.2006,6.9,7.05],[5.2174,6.25,6.27],[5.2391,7.24,6.35],[5.2532,6.04,6.11],[5.2673,7.09,6.66],[5.2786,7.13,7.35],[5.3077,4.59,5.27],[5.3163,6.61,16.0],[5.363,8.19,6.74],[5.4036,6.86,7.24],[5.43,7.32,7.53],[5.4439,6.53,5.82],[5.4662,6.9,7.09],[5.5152,7.51,7.69],[5.548,9.12,6.8],[5.5617,7.53,7.18],[5.5677,6.85,7.09],[5.5853,8.22,6.83],[5.6282,6.77,7.33],[5.6569,6.63,6.5],[5.6825,6.93,7.1],[5.7038,7.52,7.7],[5.7189,6.79,7.27],[5.7378,7.86,7.39],[5.752,6.94,7.05],[5.7723,7.3,16.0],[5.7906,7.25,7.08],[5.8107,6.66,7.01],[5.8287,7.07,7.65],[5.8338,7.18,7.29],[5.8615,6.93,7.21],[5.8694,7.37,7.48],[5.8988,6.99,16.0],[5.9262,8.28,7.14],[5.966,7.38,16.0]],"interest":[[12,4.23e-15,1.64e-16],[365,2.97e-13,5.58e-17],[8760,6.94e-12,1e-17],[525600,2.06e-10,1.93e-17],[31536000,5.29e-08,1.77e-16],[1000000000,8.48e-08,2.08e-17]],"theta":[[10,2.74e-16,9.99e-16],[100,1.36e-15,1.1e-14],[300,2.09e-16,3.32e-14],[1000,5.95e-16,1.11e-13]]};
+const $=id=>document.getElementById(id);
+const sv=(id,label)=>{const e=$(id);e.innerHTML='<svg role="img" aria-label="'+label+'"></svg>';return e.firstChild;};
+const S1=sv('line','Toy float number line with the lift snapping to the grid'),S2=sv('dig','Digits kept against size of a'),S3=sv('band','Digits kept near the inverse'),S4=sv('int','Compound interest error against number of periods'),S5=sv('sq','Unit square against the lifted rectangle');
+const T=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c?' style="fill:'+c+'"':'')+'>'+t+'</text>';
+const L=(x1,y1,x2,y2,c,w,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const P=(pts,c,w,d)=>'<path d="'+pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ')+'" fill="none" stroke="'+c+'" stroke-width="'+(w||2.5)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const sup=n=>String(n).replace('-','⁻').replace(/\d/g,d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+// toy floats: 3 significant bits
+const toy=[0];for(let e=-7;e<=0;e++)for(let j=0;j<4;j++)toy.push((1+j/4)*2**e);toy.push(2);
+const avals=toy.filter(v=>v>0&&v<=0.5);
+$('ai').max=avals.length-1;
+const near=x=>toy.reduce((b,v)=>Math.abs(v-x)<Math.abs(b-x)?v:b,0);
+function drawLine(){
+  const W=S1.clientWidth,H=S1.clientHeight,m=22,a=avals[+$('ai').value];
+  const X=v=>m+v/2.05*(W-2*m),y0=H*0.72;
+  const lifted=1+a,snap=near(lifted),back=snap-1;
+  $('ao').textContent=a.toPrecision(3);
+  let g=L(X(0),y0,X(2.05),y0,'var(--ink)',1.5);
+  toy.forEach(v=>{const h=v===0?16:6+3*Math.max(0,Math.log2(v)+7)/1.6;g+=L(X(v),y0-h,X(v),y0+h,'var(--soft)',1.2);});
+  [0,0.5,1,1.5,2].forEach(v=>g+=T(X(v),y0+34,v,'middle','var(--soft)'));
+  const ya=y0-70;
+  g+='<path d="M'+X(a)+' '+(y0-8)+' Q'+X((a+lifted)/2)+' '+(y0-120)+' '+X(lifted)+' '+(y0-10)+'" fill="none" stroke="var(--amber)" stroke-width="2.5"/>';
+  g+=L(X(lifted),y0-10,X(snap),y0-2,'var(--amber)',3);
+  g+='<circle cx="'+X(a)+'" cy="'+y0+'" r="6" fill="var(--teal)"/>';
+  g+='<circle cx="'+X(snap)+'" cy="'+y0+'" r="6" fill="var(--amber)"/>';
+  g+='<circle cx="'+X(Math.max(back,0))+'" cy="'+(y0+18)+'" r="6" fill="var(--panel)" stroke="var(--amber)" stroke-width="2.5"/>';
+  g+=T(X(lifted),y0-108,'1 + a = '+lifted.toPrecision(4),'middle');
+  g+=T(X(snap)+8,y0-18,'stored '+snap,'start','var(--amber)');
+  const rel=a?Math.abs(back-a)/a:0;
+  g+=T(m,24,'a = '+a.toPrecision(4)+' sits on a fine tick','start','var(--teal)');
+  g+=T(m,44,'back from the lift: '+back.toPrecision(4)+(rel?'  (off by '+(100*rel).toFixed(0)+'%)':'  (exact)'),'start','var(--amber)');
+  S1.innerHTML=g;
+}
+function axes(S,W,H,ml,mb,xt,yt){let g='';xt.forEach(t=>{g+=L(t[0],H-mb,t[0],H-mb+5,'var(--soft)')+T(t[0],H-mb+19,t[1],'middle','var(--soft)');});yt.forEach(t=>{g+=L(ml,t[0],W-10,t[0],'var(--rule)')+T(ml-6,t[0]+4,t[1],'end','var(--soft)');});return g;}
+function drawDig(){
+  const W=S2.clientWidth,H=S2.clientHeight,ml=34,mb=40,mt=12;
+  const X=lg=>ml+(lg+16)/16*(W-ml-12),Y=d=>mt+(16-d)/16*(H-mt-mb);
+  const xt=[-16,-12,-8,-4,0].map(k=>[X(k),'10'+sup(k)]),yt=[0,4,8,12,16].map(d=>[Y(d),d]);
+  let g=axes(S2,W,H,ml,mb,xt,yt)+T(W-12,H-4,'size of a','end','var(--soft)');
+  const pts=i=>D.digits.map(r=>[X(Math.log10(r[0])),Y(r[i])]);
+  g+=P(pts(2),'var(--teal)',4)+P(pts(3),'var(--ink)',1.5,'5 5')+P(pts(1),'var(--amber)',3);
+  g+=T(X(-15.5),Y(15.2),'fused: all 16','start','var(--teal)')+T(X(-8),Y(9.5),'lift','start','var(--amber)');
+  S2.innerHTML=g;
+  const c=D.digits.reduce((b,r)=>Math.abs(Math.log10(r[0])+12)<Math.abs(Math.log10(b[0])+12)?r:b);$('dl').textContent=Math.round(c[1]);
+}
+function drawBand(){
+  const W=S3.clientWidth,H=S3.clientHeight,ml=34,mb=40,mt=12;
+  const X=a=>ml+(a+1)/7*(W-ml-12),Y=d=>mt+(16-d)/16*(H-mt-mb);
+  let g='<rect x="'+X(-0.5)+'" y="'+mt+'" width="'+(X(1)-X(-0.5))+'" height="'+(H-mt-mb)+'" fill="var(--shade)"/>';
+  g+=axes(S3,W,H,ml,mb,[-1,0,1,2,4,6].map(a=>[X(a),String(a).replace('-','−')]),[0,4,8,12,16].map(d=>[Y(d),d]));
+  g+=L(X(-1),mt,X(-1),H-mb,'var(--amber)',2,'4 4');
+  D.band.forEach(r=>{g+='<circle cx="'+X(r[0]).toFixed(1)+'" cy="'+Y(r[1]).toFixed(1)+'" r="2.6" fill="var(--amber)"/><circle cx="'+X(r[0]).toFixed(1)+'" cy="'+Y(r[2]).toFixed(1)+'" r="2.6" fill="var(--teal)"/>';});
+  g+=T(W-12,H-4,'a (the wall −1 dashed)','end','var(--soft)')+T(X(0.25),mt+14,'exact','middle','var(--teal)')+T(ml+4,Y(14.6),'digits kept','start','var(--soft)');
+  S3.innerHTML=g;
+}
+function drawInt(){
+  const W=S4.clientWidth,H=S4.clientHeight,ml=40,mb=40,mt=12;
+  const X=lg=>ml+(lg-1)/8*(W-ml-14),Y=le=>mt+(-6.5-le)/11*(H-mt-mb);
+  let g=axes(S4,W,H,ml,mb,[1,3,5,7,9].map(k=>[X(k),'10'+sup(k)]),[-7,-10,-13,-16].map(k=>[Y(k),'10'+sup(k)]));
+  const pts=i=>D.interest.map(r=>[X(Math.log10(r[0])),Y(Math.log10(Math.max(r[i],1e-17)))]);
+  g+=P(pts(1),'var(--amber)',3)+P(pts(2),'var(--teal)',3);
+  D.interest.forEach(r=>{g+='<circle cx="'+X(Math.log10(r[0]))+'" cy="'+Y(Math.log10(r[1]))+'" r="4" fill="var(--amber)"/>';});
+  g+=T(X(Math.log10(365)),Y(Math.log10(D.interest[1][1]))-10,'daily','middle')+T(X(Math.log10(31536000)),Y(Math.log10(D.interest[4][1]))-10,'each second','end');
+  g+=T(W-14,H-4,'times compounded per year','end','var(--soft)');
+  S4.innerHTML=g;
+}
+function drawSq(){
+  const W=S5.clientWidth,H=S5.clientHeight,e=+$('ei').value,a=Math.abs(e);
+  $('eo').textContent=e.toFixed(2).replace('-','−');
+  const s=Math.min((W-40)/1.95,(H-30)/1.95),ox=(W-1.95*s)/2,oy=H-12,X=x=>ox+x*s,Y=y=>oy-y*s;
+  const w=1+e,h=1-e,R=(x0,y0,x1,y1,f,st)=>'<rect x="'+X(x0)+'" y="'+Y(y1)+'" width="'+((x1-x0)*s)+'" height="'+((y1-y0)*s)+'" '+(f||'')+(st||'')+'/>';
+  let g=R(0,0,w,h,'fill="var(--shade)"',' stroke="var(--teal)" stroke-width="2"');
+  if(e>0){g+=R(1,0,1+a,1-a,'fill="var(--teal)" opacity=".45"')+R(0,1-a,1-a,1,'fill="none"',' stroke="var(--teal)" stroke-width="2" stroke-dasharray="5 4"')+R(1-a,1-a,1,1,'fill="var(--amber)" opacity=".85"');}
+  else if(e<0){g+=R(0,1,1-a,1+a,'fill="var(--teal)" opacity=".45"')+R(1-a,0,1,1-a,'fill="none"',' stroke="var(--teal)" stroke-width="2" stroke-dasharray="5 4"')+R(1-a,1-a,1,1,'fill="var(--amber)" opacity=".85"');}
+  g+=R(0,0,1,1,'fill="none"',' stroke="var(--ink)" stroke-width="1.5"');
+  g+=T(X(0)+6,Y(0)-8,'unit square','start')+T(X(Math.max(w,1))+6,Y(Math.max(h,1))+14,'(1+e)(1−e)','start','var(--teal)');
+  if(a>0.12)g+=T(X(1-a/2),Y(1-a/2)+5,'e²','middle');
+  S5.innerHTML=g;
+  let r=e,out=[];for(let i=0;i<5;i++){out.push(r.toPrecision(2));r=-r*r;}
+  $('seq').textContent='Residuals: '+out.join(', ').replace(/-/g,'−');
+}
+$('tt').innerHTML=D.theta.map(r=>'<tr><td>'+r[0]+'</td><td class="mono">'+r[1].toExponential(1)+'</td><td class="mono">'+r[2].toExponential(1)+'</td></tr>').join('').replace(/e-(\d+)/g,(m,k)=>' × 10⁻'+k.replace(/\d/g,d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[d]));
+$('ai').addEventListener('input',drawLine);$('ei').addEventListener('input',drawSq);
+[[S1,drawLine],[S2,drawDig],[S3,drawBand],[S4,drawInt],[S5,drawSq]].forEach(([s,f])=>{new ResizeObserver(f).observe(s.parentNode);f();});
+}
+</script>
+</body>
+</html>

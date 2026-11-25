@@ -1,0 +1,58 @@
+Chem.ChemBonding	ChemBonding.allyl	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.band_edge	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.band_square	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.benzene_aromatic	
+Chem.ChemBonding	ChemBonding.bonding_norm	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.butadiene	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.cassini	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.cassini_step	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.dial_ladder	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.f2_single	
+Chem.ChemBonding	ChemBonding.gap_pair	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.huckel_rule	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.huckel_unimodular	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.mobius_rule	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.n2_triple	
+Chem.ChemBonding	ChemBonding.no_root_in_band	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.o2_double	
+Chem.ChemBonding	ChemBonding.one_pow'	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.overlap_border	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.overlap_opposite	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.overlap_orthogonal	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.split_asymmetry	propext, Classical.choice, Quot.sound
+Chem.ChemBonding	ChemBonding.sq_nonneg'	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.binding_exact	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.bound_lighter	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.circle_closed	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.cosine_extra	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.deficit	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.free_heavier	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.fugacity_mul	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.fugacity_multAdd	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.lavoisier	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.neutral_identity	propext, Classical.choice, Quot.sound
+Chem.ChemConservation	ChemConservation.small_angle	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.diagCap_closed	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.diagonals	
+Chem.ChemPeriodic	ChemPeriodic.gnomon	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.gnomons_fill	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.noble_gases	
+Chem.ChemPeriodic	ChemPeriodic.period_is_diagonal	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.periods	
+Chem.ChemPeriodic	ChemPeriodic.q_integer	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.q_integer_classical	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.shell_capacity	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.shell_square	propext, Classical.choice, Quot.sound
+Chem.ChemPeriodic	ChemPeriodic.two_spins	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.cisd_drops_corner	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.cisd_drops_three	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.cisd_gap	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.cisd_is_weight_zero	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.cisd_not_extensive	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.clebsch_gordan_square	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.exact_is_weight_one	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.fragments_assoc	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.fragments_multAdd	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.n_fragments	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.spin_multiplicity	propext, Classical.choice, Quot.sound
+Chem.ChemQuantum	ChemQuantum.three_fragments	propext, Classical.choice, Quot.sound

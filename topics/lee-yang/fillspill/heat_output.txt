@@ -1,0 +1,35 @@
+(a) Latent heat of the square-lattice Potts model per site, units of the bond energy (Baxter, exact):
+  k =   1.0 (Q =     2): latent heat 0.000000
+  k =   2.0 (Q =     3): latent heat 0.000000
+  k =   3.0 (Q =     4): latent heat 0.000000
+  k =   3.5 (Q =   4.5): latent heat 0.007408
+  k =   4.0 (Q =     5): latent heat 0.052919
+  k =   5.0 (Q =     6): latent heat 0.201464
+  k =   7.0 (Q =     8): latent heat 0.486358
+  k =   9.0 (Q =    10): latent heat 0.696049
+  k =  19.0 (Q =    20): latent heat 1.194155
+  k =  99.0 (Q =   100): latent heat 1.723715
+  Zero up to k = 3; past it the plateau opens, at first exponentially thin.
+
+(b) Monte Carlo check, 64 x 64, at the exact transition temperature, two starts:
+  k = 2 (Q = 3): ordered start -1.6201, disordered start -1.5615, gap 0.0586; exact latent heat 0.0000, exact midpoint -1.5774
+  k = 3 (Q = 4): ordered start -1.5310, disordered start -1.4014, gap 0.1296; exact latent heat 0.0000, exact midpoint -1.5000
+  k = 7 (Q = 8): ordered start -1.6161, disordered start -1.0829, gap 0.5332; exact latent heat 0.4864, exact midpoint -1.3536
+  k = 9 (Q = 10): ordered start -1.6382, disordered start -0.9433, gap 0.6948; exact latent heat 0.6960, exact midpoint -1.3162
+  k = 9 matches the exact latent heat to 0.2%; k = 7 is 10% high at this size. At k = 2 and 3 the transition is continuous
+  and the gap is slow settling, not latent heat: tripling the k = 2 run shrinks it from 0.059 to 0.034.
+
+(c) Dial gas on L x L tori: mu(n) = log Z_n - log Z_(n+1), the log fugacity that holds n particles.
+  Slope of mu across the middle third of densities (free gas: about 4; flat plateau: 0; negative: a loop):
+  L = 4: k=1: +3.86, k=3: +0.05, k=5.83: -1.49, k=12: -2.43, k=40: -2.41
+  L = 5: k=1: +3.94, k=3: +0.32, k=5.83: -1.09, k=12: -1.99, k=40: -1.81
+  L = 6: k=1: +3.98, k=3: +0.46, k=5.83: -0.82, k=12: -1.65, k=40: -2.97
+  Pair weight where the middle goes flat: L = 4: k = 3.06, L = 5: k = 3.41, L = 6: k = 3.69; it climbs with size toward k_c = 3 + 2 sqrt 2 = 5.83.
+  Past k_c the gas fills at one fixed fugacity while the dense phase grows: a true fill-then-spill in
+  density, the same shape as latent heat in energy.
+
+(d) Contrast with the landscape border:
+  Latent heat shrinks to nothing as k falls to 3 (an essential zero, faster than any power).
+  The border linger grows without limit as d falls to 0 (power -1/2).
+  And the edge laws of both models sit at (k, 0) on the landscape, in the two-walls country for every
+  k > 0: the physical phase changes happen while the law itself never crosses the border.

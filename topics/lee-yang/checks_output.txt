@@ -1,0 +1,192 @@
+PASS edge gas k=3
+PASS edge gas k=-2
+PASS edge gas k=1/2
+PASS ring n=3 k=4 on wall
+PASS ring n=4 k=4 on wall
+PASS ring n=5 k=4 on wall
+PASS ring n=6 k=4 on wall
+PASS ring n=7 k=4 on wall
+PASS ring n=8 k=4 on wall
+PASS ring n=9 k=4 on wall
+PASS ring n=10 k=4 on wall
+PASS ring n=11 k=4 on wall
+PASS ring n=12 k=4 on wall
+PASS ring n=13 k=4 on wall
+PASS ring n=14 k=4 on wall
+PASS ring n=15 k=4 on wall
+PASS ring n=3 k=3/2 on wall
+PASS ring n=4 k=3/2 on wall
+PASS ring n=5 k=3/2 on wall
+PASS ring n=6 k=3/2 on wall
+PASS ring n=7 k=3/2 on wall
+PASS ring n=8 k=3/2 on wall
+PASS ring n=9 k=3/2 on wall
+PASS ring n=10 k=3/2 on wall
+PASS ring n=11 k=3/2 on wall
+PASS ring n=12 k=3/2 on wall
+PASS ring n=13 k=3/2 on wall
+PASS ring n=14 k=3/2 on wall
+PASS ring n=15 k=3/2 on wall
+PASS ring n=3 k=1/3 on wall
+PASS ring n=4 k=1/3 on wall
+PASS ring n=5 k=1/3 on wall
+PASS ring n=6 k=1/3 on wall
+PASS ring n=7 k=1/3 on wall
+PASS ring n=8 k=1/3 on wall
+PASS ring n=9 k=1/3 on wall
+PASS ring n=10 k=1/3 on wall
+PASS ring n=11 k=1/3 on wall
+PASS ring n=12 k=1/3 on wall
+PASS ring n=13 k=1/3 on wall
+PASS ring n=14 k=1/3 on wall
+PASS ring n=15 k=1/3 on wall
+PASS ring n=3 k=-1 on wall
+PASS ring n=4 k=-1 on wall
+PASS ring n=5 k=-1 on wall
+PASS ring n=6 k=-1 on wall
+PASS ring n=7 k=-1 on wall
+PASS ring n=8 k=-1 on wall
+PASS ring n=9 k=-1 on wall
+PASS ring n=10 k=-1 on wall
+PASS ring n=11 k=-1 on wall
+PASS ring n=12 k=-1 on wall
+PASS ring n=13 k=-1 on wall
+PASS ring n=14 k=-1 on wall
+PASS ring n=15 k=-1 on wall
+PASS ring n=3 k=-2 on wall
+PASS ring n=4 k=-2 on wall
+PASS ring n=5 k=-2 on wall
+PASS ring n=6 k=-2 on wall
+PASS ring n=7 k=-2 on wall
+PASS ring n=8 k=-2 on wall
+PASS ring n=9 k=-2 on wall
+PASS ring n=10 k=-2 on wall
+PASS ring n=11 k=-2 on wall
+PASS ring n=12 k=-2 on wall
+PASS ring n=13 k=-2 on wall
+PASS ring n=14 k=-2 on wall
+PASS ring n=15 k=-2 on wall
+PASS ring n=3 k=-7/5 on wall
+PASS ring n=4 k=-7/5 on wall
+PASS ring n=5 k=-7/5 on wall
+PASS ring n=6 k=-7/5 on wall
+PASS ring n=7 k=-7/5 on wall
+PASS ring n=8 k=-7/5 on wall
+PASS ring n=9 k=-7/5 on wall
+PASS ring n=10 k=-7/5 on wall
+PASS ring n=11 k=-7/5 on wall
+PASS ring n=12 k=-7/5 on wall
+PASS ring n=13 k=-7/5 on wall
+PASS ring n=14 k=-7/5 on wall
+PASS ring n=15 k=-7/5 on wall
+PASS torus 3x3 k=4 at zeta=-1 zero
+PASS torus 3x3 k=1/4 at zeta=-1 zero
+PASS torus 3x3 k=-1 at zeta=-1 zero
+PASS torus 3x3 k=-3 at zeta=-1 zero
+PASS torus 3x5 k=4 at zeta=-1 zero
+PASS torus 3x5 k=1/4 at zeta=-1 zero
+PASS torus 3x5 k=-1 at zeta=-1 zero
+PASS torus 3x5 k=-3 at zeta=-1 zero
+PASS torus 5x5 k=4 at zeta=-1 zero
+PASS torus 5x5 k=1/4 at zeta=-1 zero
+PASS torus 5x5 k=-1 at zeta=-1 zero
+PASS torus 5x5 k=-3 at zeta=-1 zero
+PASS torus 3x4 k=4 at zeta=-1 nonzero
+PASS torus 3x4 k=1/4 at zeta=-1 nonzero
+PASS torus 3x4 k=-1 at zeta=-1 nonzero
+PASS torus 3x4 k=-3 at zeta=-1 nonzero
+PASS torus 4x4 k=4 at zeta=-1 nonzero
+PASS torus 4x4 k=1/4 at zeta=-1 nonzero
+PASS torus 4x4 k=-1 at zeta=-1 nonzero
+PASS torus 4x4 k=-3 at zeta=-1 nonzero
+PASS closed-form ring zeros k=3.0
+PASS closed-form ring zeros k=0.5
+PASS closed-form ring zeros k=-1.0
+PASS closed-form ring zeros k=-2.0
+PASS k=1.5>1: ring zeros on |zeta|=1
+PASS k=1.5: gap edge >= arccos(1-2/k)=1.911 (found 1.912)
+PASS k=3.0>1: ring zeros on |zeta|=1
+PASS k=3.0: gap edge >= arccos(1-2/k)=1.231 (found 1.233)
+PASS k=6.0>1: ring zeros on |zeta|=1
+PASS k=6.0: gap edge >= arccos(1-2/k)=0.841 (found 0.844)
+PASS 0<k=0.2<1: ring zeros real negative
+PASS 0<k=0.5<1: ring zeros real negative
+PASS 0<k=0.9<1: ring zeros real negative
+PASS k=-0.5<0: ring zeros on |zeta|=1 or positive real
+PASS k=-0.5<0: long rings (n=4001) reach the zero-field point zeta=+1
+PASS k=-1.0<0: ring zeros on |zeta|=1 or positive real
+PASS k=-1.0<0: long rings (n=4001) reach the zero-field point zeta=+1
+PASS k=-2.0<0: ring zeros on |zeta|=1 or positive real
+PASS k=-2.0<0: long rings (n=4001) reach the zero-field point zeta=+1
+PASS k=-3.0<0: ring zeros on |zeta|=1 or positive real
+PASS k=-3.0<0: long rings (n=4001) reach the zero-field point zeta=+1
+PASS k=6.0: all s real in [-2.000,1.333]
+PASS k=3.0: all s real in [-2.000,0.667]
+PASS k=1.5: all s real in [-2.000,-0.667]
+PASS k=0.7: all s real in [-3.714,-2.000]
+PASS k=0.3: all s real in [-11.333,-2.000]
+PASS k=-0.5: all s real in [-2.000,10.000]
+PASS k=-1.0: all s real in [-2.000,6.000]
+PASS k=-2.0: all s real in [-2.000,4.000]
+PASS k=-3.0: all s real in [-2.000,3.333]
+PASS torus 4x4 k=8.000: |z|=k^-2
+PASS torus 4x4 k=5.828: |z|=k^-2
+PASS torus 4x4 k=4.000: |z|=k^-2
+PASS torus 4x4 k=3.000: |z|=k^-2
+PASS torus 4x4 k=2.000: |z|=k^-2
+PASS torus 4x4 k=1.500: |z|=k^-2
+PASS torus 5x5 k=8.000: |z|=k^-2
+PASS torus 5x5 k=5.828: |z|=k^-2
+PASS torus 5x5 k=4.000: |z|=k^-2
+PASS torus 5x5 k=3.000: |z|=k^-2
+PASS torus 5x5 k=2.000: |z|=k^-2
+PASS torus 5x5 k=1.500: |z|=k^-2
+PASS torus 6x6 k=8.000: |z|=k^-2
+PASS torus 6x6 k=5.828: |z|=k^-2
+PASS torus 6x6 k=4.000: |z|=k^-2
+PASS torus 6x6 k=3.000: |z|=k^-2
+PASS torus 6x6 k=2.000: |z|=k^-2
+PASS torus 6x6 k=1.500: |z|=k^-2
+PASS Fisher L=4: no zero within 0.2 of k=-2,-1,0,1 (1.42, 0.71, 0.23, 0.85)
+PASS Fisher L=5: no zero within 0.2 of k=-2,-1,0,1 (1.22, 0.68, 0.31, 0.96)
+PASS Fisher L=6: no zero within 0.2 of k=-2,-1,0,1 (1.00, 0.56, 0.20, 0.83)
+PASS Fisher L=6 nearest to k_c: 4.188-2.510j
+PASS strip 1x7: P(0)=P(1)=0
+PASS strip 1x7: P(2)=0 iff n odd
+PASS strip 1x7: P(-1)=-126 nonzero with sign (-1)^N
+PASS strip 1x8: P(0)=P(1)=0
+PASS strip 1x8: P(2)=0 iff n odd
+PASS strip 1x8: P(-1)=254 nonzero with sign (-1)^N
+PASS strip 2x5: P(0)=P(1)=0
+PASS strip 2x5: P(2)=0 iff n odd
+PASS strip 2x5: P(-1)=14700 nonzero with sign (-1)^N
+PASS strip 2x6: P(0)=P(1)=0
+PASS strip 2x6: P(2)=0 iff n odd
+PASS strip 2x6: P(-1)=109334 nonzero with sign (-1)^N
+PASS strip 3x5: P(0)=P(1)=0
+PASS strip 3x5: P(2)=0 iff n odd
+PASS strip 3x5: P(-1)=-7168320 nonzero with sign (-1)^N
+PASS strip 3x6: P(0)=P(1)=0
+PASS strip 3x6: P(2)=0 iff n odd
+PASS strip 3x6: P(-1)=191251298 nonzero with sign (-1)^N
+PASS strip 4x5: P(0)=P(1)=0
+PASS strip 4x5: P(2)=0 iff n odd
+PASS strip 4x5: P(-1)=3494200440 nonzero with sign (-1)^N
+PASS strip 4x6: P(0)=P(1)=0
+PASS strip 4x6: P(2)=0 iff n odd
+PASS strip 4x6: P(-1)=334230670136 nonzero with sign (-1)^N
+PASS strip (1, 12): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (1, 24): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (1, 40): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (2, 8): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (2, 14): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (2, 20): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (3, 6): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (3, 10): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (3, 14): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (4, 5): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (4, 8): no real root below 0 or in (0,1) or (1,32/27]
+PASS strip (4, 10): no real root below 0 or in (0,1) or (1,32/27]
+PASS width-3 strips: zeros close in on Q=2 (k=1): [0.055981832687304944, 0.0006565076997215868, 2.4424573741299582e-05]
+
+190 checks passed

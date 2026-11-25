@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The periodic law</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical write-up read by one curious person, often on a phone
+   IDEA a page from a chemistry handbook: each subject opens with its element-style tile and one finding
+   PICTURE one large drawn chart or diagram per page, carrying the subject's mult-add finding
+   COLOUR white ground, near-black ink, sodium-flame yellow slab behind the verdict, copper-blue marks, flame red accent
+   TYPE Archivo 800 titles + Source Sans 3 text
+   LAYOUT title and tile across the top, picture full width beneath, figures in a row; phone: stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1216);--ink:light-dark(#14161a,#e9ecef);--mute:light-dark(#555c66,#a3abb5);--rule:light-dark(#d9dde2,#2a3038);--blue:light-dark(#1f5fbf,#6ea3ff);--red:light-dark(#d23c2a,#ff7a66);--yel:light-dark(#ffd23f,#8a6d00);--yelink:light-dark(#14161a,#fff4c7);--panel:light-dark(#f4f6f8,#171b21);--green:light-dark(#1d7f4e,#5fd39a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(24px,4vw,56px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font:800 clamp(30px,4.4vw,48px)/1.06 Archivo,system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+h2{font:800 clamp(22px,2.6vw,28px)/1.15 Archivo,system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+h3{font:700 18px/1.3 Archivo,system-ui,sans-serif;margin:18px 0 6px}
+p{margin:0 0 12px;max-width:72ch}
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start}
+.tile{width:118px;height:132px;border:3px solid var(--ink);padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between;background:var(--bg)}
+.tile .z{font:700 15px Archivo,sans-serif}.tile .sym{font:800 46px/1 Archivo,sans-serif;letter-spacing:-.03em}.tile .nm{font-size:13px;line-height:1.2;color:var(--mute)}
+.lead{font-size:19px;max-width:70ch}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:14px;margin:18px 0 6px}
+.figs div{border-top:3px solid var(--ink);padding-top:6px}
+.figs b{display:block;font:800 clamp(24px,3vw,34px)/1.1 Archivo,sans-serif;white-space:nowrap}
+.figs span{font-size:14px;color:var(--mute)}
+.fig{position:relative;min-height:360px;margin:12px 0 4px}
+.fig.tall{min-height:440px}.fig.short{min-height:280px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cap{font-size:14px;color:var(--mute);margin:4px 0 0;max-width:none}
+svg text{font:14px "Source Sans 3",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+svg .ax{stroke:var(--rule);stroke-width:1}svg .axk{stroke:var(--ink);stroke-width:1.2}
+.verdict{background:var(--yel);color:var(--yelink);padding:clamp(18px,3vw,30px) max(5vw,16px)}
+.verdict h2{margin-bottom:6px}.verdict p{max-width:80ch;font-size:18px}
+.sec{border-top:1px solid var(--rule)}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:700;border-bottom:2px solid var(--ink)}
+.st{white-space:nowrap;font-weight:700}
+.st.known{color:var(--mute)}.st.tidy{color:var(--blue)}.st.new{color:var(--red)}
+code{font:14px ui-monospace,Menlo,monospace;overflow-wrap:anywhere;background:var(--panel);padding:1px 4px;border-radius:3px}
+.lean{columns:2 22em;column-gap:32px;font-size:15px;padding-left:18px}.lean li{break-inside:avoid;margin-bottom:6px}
+.eq{font:17px/1.4 "Source Sans 3",sans-serif;background:var(--panel);padding:10px 14px;margin:8px 0 14px;overflow-x:auto;white-space:nowrap}
+a{color:var(--blue)}
+.nav{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;margin-top:10px}
+footer{font-size:14px;color:var(--mute)}
+@media(max-width:700px){.two{grid-template-columns:minmax(0,1fr)}.top{grid-template-columns:minmax(0,1fr)}.tile{width:96px;height:108px}.tile .sym{font-size:36px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:block;border:0;padding:2px 0}.stack td::before{content:attr(data-l) ": ";font-weight:700}.lean{columns:1}}
+</style></head><body>
+<header class="band"><div class="wrap">
+<div class="top"><div><h1>Shells are squares, periods are diagonals, and every exception is a near-tie with a neighbour</h1><p class="lead">Each shell holds n² = 1 + (n − 1) ✳ (n − 1) orbitals because hydrogen's symmetry is two equal spins multiplied. The periods run along the Madelung diagonals, each holding a doubled square, and all twenty exceptions move one or two electrons at most one diagonal over.</p></div>
+<div class="tile" aria-hidden="true"><span class="z">3</span><span class="sym">Pt</span><span class="nm">Periodic law</span></div></div>
+<div class="figs"><div><b>12 / 12</b><span>checks pass</span></div><div><b>12</b><span>Lean theorems, compiled</span></div><div><b>20 / 20</b><span>exceptions within one diagonal</span></div><div><b>2·⌈s/2⌉²</b><span>electrons on diagonal s</span></div></div>
+<div class="fig tall"><svg id="pic" role="img" aria-label="Subshells by n (rows) and l (columns), shaded by Madelung diagonal n + l; small numbers give the filling order. Red badges count the experimental exceptions that move electrons into or out of each subshell."></svg></div>
+<p class="cap">Subshells by n (rows) and l (columns), shaded by Madelung diagonal n + l; small numbers give the filling order. Red badges count the experimental exceptions that move electrons into or out of each subshell.</p>
+<nav class="nav"><a href="#square">Shells are squares</a><a href="#periods">Periods</a><a href="#exceptions">The exceptions</a><a href="#dial">The dial</a><a href="#claims">Every claim</a><a href="#lean">Lean</a><a href="#files">Files</a></nav>
+</div></header>
+<section class="verdict"><div class="wrap"><h2>Lead check: not a lead</h2><p>The square shells are SO(4), known since 1935, and the doubled-square periods are Janet's 1928 table. The exception pattern (always a neighbour on the diagonal, never more than two electrons) is a clean regularity I found no single statement of, but it is what the standard near-degeneracy explanation predicts, so it opens nothing new.</p></div></section>
+<section class="band sec" id="square"><div class="wrap"><h2>Each shell is a square, and its subshells are the square's gnomons</h2><div class="two"><div><p>Hydrogen's shell n holds subshells l = 0 to n − 1 with 2l + 1 orbitals each: 1, 3, 5, 7. Those are the L-shaped gnomons that build an n × n square, corner plus two edges each time, so the shell holds n² orbitals:</p>
+<div class="eq">n² = 1 + (n − 1) ✳ (n − 1)</div>
+<p>The square is not a coincidence. Hydrogen's hidden symmetry is SO(4), which splits into two independent spins of the same size j, with 2j = n − 1. Each spin has n states, the two multiply to n · n, and decomposing j ⊗ j by the Clebsch–Gordan rule gives exactly l = 0 to n − 1. So each shell is the lift of a mult-add of two equal spins, with a geometric underpinning we can be sure of (Fock, 1935).</p></div><div><div class="fig "><svg id="square-fig"></svg></div><p class="cap">Shells n = 1 to 4 as squares of orbitals; colour marks the subshell (s, p, d, f), each an L-shaped gnomon one wider than the last.</p></div></div></div></section><section class="band sec" id="periods"><div class="wrap"><h2>The periods are the Madelung diagonals, and each holds a doubled square</h2><p>Atoms fill subshells in order of n + l, then n (the Madelung rule). Each diagonal n + l = s holds 2 · ⌈s/2⌉² electrons: 2, 2, 8, 8, 18, 18, 32, 32. Those are the periods of Janet's left-step table exactly. The usual table merges the first two diagonals, giving periods 2, 8, 8, 18, 18, 32, 32 and noble gases at 2, 10, 18, 36, 54, 86, 118. Lean computes all three lists and proves that period 2k + 1 has the length of diagonal 2k + 2.</p>
+<p>Why the periods come in doubled squares is the same gnomon count run along a diagonal instead of a row: a diagonal picks up one subshell of each odd size up to its length, and odd numbers sum to squares.</p></div></section><section class="band sec" id="exceptions"><div class="wrap"><h2>All 20 exceptions move one or two electrons to a neighbouring diagonal</h2><p>Twenty elements have ground states that break the Madelung order (Wikipedia's Aufbau table: Cr, Cu, Nb, Mo, Ru, Rh, Pd, Ag, La, Ce, Gd, Pt, Au, Ac, Th, Pa, U, Np, Cm, Lr). I compared each with the rule. Every one moves only one or two electrons, and always between subshells at most one diagonal apart. Ten of them never leave their diagonal at all: La, Ce, Gd, Ac, Th, Pa, U, Np and Cm swap between d and f on one diagonal, and lawrencium swaps 6d for 7p on diagonal 8. The other ten move an electron from an s subshell up one diagonal into d. No exception touches a p subshell except lawrencium's.</p>
+<p>So the diagonals are sturdy and the exceptions are near-ties between neighbours, which matches the usual explanation (subshells on adjacent diagonals have nearly equal energies in heavy atoms). The red badges on the picture count how many exceptions touch each subshell.</p></div></section><section class="band sec" id="dial"><div class="wrap"><h2>The dial gives q-deformed shells, but I found no chemistry that uses them</h2><p>The q-integer [n]<sub>q</sub> = 1 + q + … + q<sup>n−1</sup> is exactly n copies of 1 under the weighted mult-add with k = q − 1, Brennan's dial q = k + 1. A q-deformed shell would hold [n]<sub>q</sub>² orbitals, and Negadi and Kibler built a q-deformed periodic table this way in the 1990s. Nothing in real atomic data asks for q ≠ 1: the shells are exact squares. This is a placement on the dial, not a finding.</p></div></section>
+<section class="band sec" id="claims"><div class="wrap"><h2>Every claim, what it is, and how it was checked</h2>
+<p>Status: <b>known</b> is standard science restated; <b>tidy reading</b> is a known fact read in mult-add terms; <b>new here</b> is new as far as I could find.</p><div class="scroll"><table class="stack"><thead><tr><th>Claim</th><th>Status</th><th>Checked by</th></tr></thead><tbody><tr><td data-l="Claim">Shell n holds n² = 1 + (n−1) ✳ (n−1) orbitals, built from gnomons</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">n ≤ 29; Lean <code>shell_square</code>, <code>gnomons_fill</code></td></tr><tr><td data-l="Claim">The square is SO(4): two spins j with 2j = n − 1</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">Clebsch–Gordan series, n ≤ 19</td></tr><tr><td data-l="Claim">Madelung diagonals hold 2, 2, 8, 8, 18, 18, 32, 32 (Janet's periods)</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">Python; Lean <code>diagonals</code>, <code>diagCap_closed</code></td></tr><tr><td data-l="Claim">Periods 2, 8, 8, 18, 18, 32, 32; noble gases at 2 … 118</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">Python; Lean <code>periods</code>, <code>noble_gases</code></td></tr><tr><td data-l="Claim">Every one of the 20 exceptions moves ≤ 2 electrons across ≤ 1 diagonal</td><td data-l="Status"><span class="st new">new here</span></td><td data-l="Checked by">checks.py against the 20 experimental configurations</td></tr><tr><td data-l="Claim">Ten exceptions stay on one diagonal; only Lr touches p</td><td data-l="Status"><span class="st new">new here</span></td><td data-l="Checked by">checks.py</td></tr><tr><td data-l="Claim">q-integers are weighted mult-add powers with k = q − 1</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">Python; Lean <code>q_integer</code></td></tr></tbody></table></div></div></section>
+<section class="band sec" id="lean"><div class="wrap"><h2>Proved in Lean</h2>
+<p><code>chemistry/03-periodic/lean/ChemPeriodic.lean</code>: core Lean 4.37.0-rc1, no mathlib, no <code>sorry</code>, compiled against the shared library; every theorem uses only Lean's standard axioms.</p>
+<ul class="lean"><li><code>shell_square</code>: (m+1)² = 1 + m ✳ m</li><li><code>gnomons_fill</code>: the subshells fill the square</li><li><code>gnomon</code>: each gnomon is corner + two edges</li><li><code>shell_capacity</code>: 2n² electrons</li><li><code>two_spins</code>: (a+1)(b+1) = 1 + a ✳ b</li><li><code>diagonals</code>: the eight Madelung diagonals' capacities</li><li><code>diagCap_closed</code>: diagonal s holds 2⌈s/2⌉²</li><li><code>periods, noble_gases</code>: the seven periods and noble-gas numbers</li><li><code>period_is_diagonal</code>: period 2k+1 = diagonal 2k+2</li><li><code>q_integer, q_integer_classical</code>: the dial gives q-integers; k = 0 gives n</li></ul></div></section>
+<section class="band sec" id="files"><div class="wrap"><h2>Files and sources</h2><p>In the project folder under math-theory/chemistry/03-periodic/: <code>checks.py</code> (12 checks), <code>checks_output.txt</code>, <code>results.json</code>, <code>lean/ChemPeriodic.lean</code>, <code>make_page.py</code>.</p><p>Sources: <a href="https://en.wikipedia.org/wiki/Aufbau_principle">Aufbau principle (Wikipedia)</a> for the 20 exceptions; Fock, Z. Phys. 98, 145 (1935) on SO(4); Janet’s left-step table (1928); Negadi and Kibler on the q-deformed periodic table (1990s).</p>
+<footer><p>Chemistry pass, part 3 of 13: the periodic law. Before: conservation of mass and charge. Next: bonding and valence.</p></footer></div></section>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function nice(lo,hi,n){const span=hi-lo,step0=span/n,mag=Math.pow(10,Math.floor(Math.log10(step0))),f=step0/mag;const st=(f<1.5?1:f<3?2:f<7?5:10)*mag;const out=[];for(let v=Math.ceil(lo/st-1e-9)*st;v<=hi+1e-9;v+=st)out.push(+v.toPrecision(12));return out}
+function fmt(v){const a=Math.abs(v);if(a!==0&&(a<1e-3||a>=1e5))return v.toExponential(0).replace('e+','e');return String(+v.toPrecision(4))}
+function plot(el,o){
+  const draw=()=>{const W=el.clientWidth,H=el.clientHeight,small=W<520;
+    const m={l:o.ml||(small?46:60),r:o.mr||(small?14:150),t:24,b:o.xlab?52:30};
+    const tx=v=>o.xlog?Math.log10(v):v,ty=v=>o.ylog?Math.log10(v):v;
+    const X=v=>m.l+(tx(v)-tx(o.x[0]))/(tx(o.x[1])-tx(o.x[0]))*(W-m.l-m.r);
+    const Y=v=>H-m.b-(ty(v)-ty(o.y[0]))/(ty(o.y[1])-ty(o.y[0]))*(H-m.t-m.b);
+    let s='';
+    const xt=o.xticks||(o.xlog?[]:nice(o.x[0],o.x[1],small?4:7)),yt=o.yticks||(o.ylog?[]:nice(o.y[0],o.y[1],5));
+    yt.forEach(v=>{s+=`<line class="ax" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l-8}" y="${Y(v)+5}" text-anchor="end">${esc(o.yfmt?o.yfmt(v):fmt(v))}</text>`});
+    xt.forEach((v,i)=>{if(small&&i%2&&xt.length>5)return;s+=`<text x="${X(v)}" y="${H-m.b+20}" text-anchor="middle">${esc(o.xfmt?o.xfmt(v):fmt(v))}</text>`});
+    s+=`<line class="axk" x1="${m.l}" x2="${W-m.r}" y1="${H-m.b}" y2="${H-m.b}"/>`;
+    if(o.xlab)s+=`<text x="${(m.l+W-m.r)/2}" y="${H-8}" text-anchor="middle">${esc(o.xlab)}</text>`;
+    if(o.ylab)s+=`<text x="${m.l}" y="14">${esc(o.ylab)}</text>`;
+    (o.bands||[]).forEach(b=>{s+=`<rect x="${X(b.x0)}" y="${m.t}" width="${X(b.x1)-X(b.x0)}" height="${H-m.t-m.b}" fill="${b.fill}" opacity="${b.op||.14}"/>`+(b.label?`<text x="${(X(b.x0)+X(b.x1))/2}" y="${m.t+16}" text-anchor="middle">${esc(b.label)}</text>`:'')});
+    (o.hlines||[]).forEach(h=>{s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(h.y)}" y2="${Y(h.y)}" stroke="${h.c||'var(--mute)'}" stroke-dasharray="5 4"/>`+(h.label?`<text x="${W-m.r+6}" y="${Y(h.y)+5}">${esc(small?(h.short||''):h.label)}</text>`:'')});
+    (o.series||[]).forEach(se=>{const c=se.c||'var(--blue)';
+      if(se.line!==false&&se.pts.length>1)s+=`<polyline fill="none" stroke="${c}" stroke-width="${se.w||3}" ${se.dash?`stroke-dasharray="${se.dash}"`:''} points="${se.pts.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+      if(se.dots)se.pts.forEach(p=>{s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${se.r||5}" fill="${c}"/>`});
+      if(se.name){const p=se.pts[se.pts.length-1];const lx=small?X(p[0])-4:X(p[0])+8;s+=`<text x="${lx}" y="${Y(p[1])+(se.dy||0)+5}" text-anchor="${small?'end':'start'}" fill="${c}">${esc(small?(se.short||se.name):se.name)}</text>`}
+      (se.labels||[]).forEach(L=>{s+=`<text x="${X(L.x)+(L.dx||8)}" y="${Y(L.y)+(L.dy||5)}" text-anchor="${L.a||'start'}">${esc(L.t)}</text>`});
+    });
+    if(o.extra)s+=o.extra({X,Y,W,H,m,small});
+    el.innerHTML=s};
+  const ro=new ResizeObserver(draw);ro.observe(el);draw();
+}
+
+{
+
+{const el=document.getElementById('pic');const L='spdf';const order=["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p", "8s", "5g", "6f", "7d", "8p", "6g", "7f", "8d", "6h", "7g", "8f", "7h", "8g", "7i", "8h", "8i", "8k"];const touch={"4s": 2, "3d": 2, "4d": 6, "5s": 6, "4f": 3, "5d": 5, "6s": 2, "6d": 7, "5f": 6, "7p": 1};
+const draw=()=>{const W=el.clientWidth,H=el.clientHeight,small=W<560;const cols=4,rows=7;
+const ml=small?34:60,mr=small?10:230,mt=30,mb=26;const cw=(W-ml-mr)/cols,rh=(H-mt-mb)/rows;
+const bx=(n,l)=>[ml+l*cw,mt+(n-1)*rh];let s='';
+const pal=['var(--blue)','var(--yel)'];
+for(let n=1;n<=7;n++)for(let l=0;l<Math.min(n,4);l++){const [x,y]=bx(n,l);const d=n+l;const idx=order.indexOf(n+L[l])+1;
+ s+=`<rect x="${x+3}" y="${y+3}" width="${cw-6}" height="${rh-6}" rx="4" fill="${pal[d%2]}" opacity="${d%2?0.55:0.22}"/>`;
+ s+=`<text x="${x+cw/2}" y="${y+rh/2+6}" text-anchor="middle" style="font-weight:700;font-size:${small?14:18}px">${n}${L[l]}</text>`;
+ if(!small)s+=`<text x="${x+8}" y="${y+18}" style="font-size:13px">${idx}</text>`;
+ const t=touch[n+L[l]];if(t)s+=`<circle cx="${x+cw-14}" cy="${y+16}" r="10" fill="var(--red)"/><text x="${x+cw-14}" y="${y+21}" text-anchor="middle" style="font-size:13px;fill:#fff;stroke:none">${t}</text>`;}
+for(let l=0;l<4;l++)s+=`<text x="${ml+l*cw+cw/2}" y="${mt-10}" text-anchor="middle">l = ${l} (${L[l]})</text>`;
+for(let n=1;n<=7;n++)s+=`<text x="${ml-10}" y="${mt+(n-0.5)*rh+5}" text-anchor="end">n = ${n}</text>`;
+if(!small){const caps=[2,2,8,8,18,18,32,32];for(let d=1;d<=8;d++){const n=Math.min(d,7);const y=mt+(Math.min(d,7)-0.5)*rh;
+ s+=`<text x="${W-mr+16}" y="${mt+(d-0.5)*(H-mt-mb)/8+5}">n + l = ${d}: holds ${caps[d-1]}</text>`;}}
+el.innerHTML=s};const ro=new ResizeObserver(draw);ro.observe(el);draw();}
+
+
+{const el=document.getElementById('square-fig');const draw=()=>{const W=el.clientWidth,H=el.clientHeight;const N=4;const gap=W<480?10:18;
+const side=Math.min((W-gap*(N+1))/(1+2+3+4),H*0.8/4);const cols=['var(--blue)','var(--red)','var(--yel)','var(--green)'];let s='';let x0=gap;
+for(let n=1;n<=N;n++){const y0=H*0.88-n*side;
+ for(let i=0;i<n;i++)for(let j=0;j<n;j++){const l=Math.max(i,j);s+=`<rect x="${x0+i*side+1}" y="${y0+(n-1-j)*side+1}" width="${side-2}" height="${side-2}" fill="${cols[l]}" opacity=".8"/>`}
+ s+=`<text x="${x0+n*side/2}" y="${H*0.88+22}" text-anchor="middle">n = ${n}: ${n*n}</text>`;x0+=n*side+gap}
+const lab=['s','p','d','f'];lab.forEach((t,i)=>{s+=`<rect x="${gap+i*70}" y="8" width="14" height="14" fill="${cols[i]}"/><text x="${gap+i*70+20}" y="20">${t}: ${2*i+1}</text>`});
+el.innerHTML=s};const ro3=new ResizeObserver(draw);ro3.observe(el);draw();}
+
+}</script></body></html>
