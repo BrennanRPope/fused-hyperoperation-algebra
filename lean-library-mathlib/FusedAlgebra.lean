@@ -40,6 +40,7 @@ public import FusedAlgebra.Topics.NumberPlane
 public import FusedAlgebra.Topics.OsgoodInverse
 public import FusedAlgebra.Topics.Patterns
 public import FusedAlgebra.Topics.Pi
+public import FusedAlgebra.Topics.QAcross.Knots
 public import FusedAlgebra.Topics.QAcross.QDial
 public import FusedAlgebra.Topics.QuantumNoise
 public import FusedAlgebra.Topics.Relativity

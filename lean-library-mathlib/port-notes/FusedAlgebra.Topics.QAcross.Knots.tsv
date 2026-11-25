@@ -1,0 +1,51 @@
+original	status	new_name	note
+Poly	ported	QKnots.Poly	kept as List ℤ (computable, for kernel checks); QKnots.toPolynomial and the toPolynomial_* lemmas are new and tie it to ℤ[X]
+padd	ported	QKnots.padd	
+pscale	ported	QKnots.pscale	
+pmul	ported	QKnots.pmul	
+ppow	ported	QKnots.ppow	
+pzeros	ported	QKnots.pzeros	now List.replicate k 0 ++ p (same function)
+trim	ported	QKnots.trim	now List.rdropWhile (same function)
+negOnePow	mathlib	HPow.hPow	written (-1 : ℤ) ^ n
+Crossing	ported	QKnots.Crossing	
+smooth	ported	QKnots.smooth	
+relabel	ported	QKnots.relabel	
+countLoops	ported	QKnots.countLoops	
+allStates	ported	QKnots.allStates	
+statePairs	ported	QKnots.statePairs	
+numA	ported	QKnots.numA	now List.count false
+numB	ported	QKnots.numB	now List.count true
+stateTerm	ported	QKnots.stateTerm	
+bracketP	ported	QKnots.bracketP	
+dropLead	ported	QKnots.dropLead	
+normLP	ported	QKnots.normLP	
+kauffmanF	ported	QKnots.kauffmanF	
+mirrorLP	ported	QKnots.mirrorLP	
+evalOne	ported	QKnots.evalOne	now List.sum
+evalTnegAux	ported	QKnots.evalTnegAux	
+evalTneg	ported	QKnots.evalTneg	
+kinkUnknot	ported	QKnots.kinkUnknot	
+trefoilL	ported	QKnots.trefoilL	
+trefoilR	ported	QKnots.trefoilR	
+figEight	ported	QKnots.figEight	
+hopf	ported	QKnots.hopf	
+cinquefoilL	ported	QKnots.cinquefoilL	
+kink_bracket	ported	QKnots.kink_bracket	decide +kernel, as in the original
+unknot_f	ported	QKnots.unknot_f	decide +kernel, as in the original
+trefoilL_bracket	ported	QKnots.trefoilL_bracket	decide +kernel, as in the original
+trefoilL_f	ported	QKnots.trefoilL_f	decide +kernel, as in the original
+trefoilR_f	ported	QKnots.trefoilR_f	decide +kernel, as in the original
+trefoil_mirror	ported	QKnots.trefoil_mirror	decide +kernel, as in the original
+trefoil_chiral	ported	QKnots.trefoil_chiral	decide +kernel, as in the original
+figEight_f	ported	QKnots.figEight_f	decide +kernel, as in the original
+figEight_amphichiral	ported	QKnots.figEight_amphichiral	decide +kernel, as in the original
+hopf_f	ported	QKnots.hopf_f	decide +kernel, as in the original
+cinquefoilL_f	ported	QKnots.cinquefoilL_f	decide +kernel, as in the original
+jones_at_one	ported	QKnots.jones_at_one	decide +kernel, as in the original
+jones_at_neg_one	ported	QKnots.jones_at_neg_one	decide +kernel, as in the original
+trefoilL_cube	ported	QKnots.trefoilL_cube	decide +kernel, as in the original
+state_layers	ported	QKnots.state_layers	strengthened: proved for every n and k (original: decide for n, k ≤ 5); stated with List.countP and Nat.choose
+loop_value_q	ported	QKnots.loop_value_q	written with powers (A ^ 2, A ^ 4); any commutative ring
+reidemeister_one	ported	QKnots.reidemeister_one	written with powers
+reidemeister_two	ported	QKnots.reidemeister_two	written with powers
+writhe_cancels	ported	QKnots.writhe_cancels	written with powers
