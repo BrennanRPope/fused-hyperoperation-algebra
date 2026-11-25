@@ -1,0 +1,30 @@
+original	status	new_name	note
+either	ported	ConsensusFused.either	one-line corollary of MultAdd.wAdd_neg_one; any commutative ring
+mpow_lift	dropped	MultAdd.one_add_mul_wpow	identical to the Basic lemma once pw is ^
+mpow_lift1	dropped	MultAdd.one_add_mpow	with MultAdd.wpow_one: 1 + wpow 1 a n = 1 + mpow a n = (1 + a) ^ n
+step_formula	ported	ConsensusFused.step_formula	any field
+half_is_identity	ported	ConsensusFused.half_is_identity	any field with 2 ≠ 0
+depth_useless	ported	ConsensusFused.depth_useless	generalised from weight 1 to any weight k, any commutative semiring; @[simp]
+quarter_six	ported	ConsensusFused.quarter_six	stays over ℚ
+bft_safe	ported	ConsensusFused.bft_safe	
+bft_unsafe	ported	ConsensusFused.bft_unsafe	
+three_quorums	ported	ConsensusFused.three_quorums	
+one_quorum	ported	ConsensusFused.one_quorum	
+maj3	ported	ConsensusFused.maj3	any commutative ring
+layers_sum	ported	ConsensusFused.layers_sum	any commutative ring
+maj3_closed	ported	ConsensusFused.maj3_closed	any commutative ring
+maj3_half	ported	ConsensusFused.maj3_half	any field with 2 ≠ 0
+maj3_mirror	ported	ConsensusFused.maj3_mirror	any commutative ring
+maj3_drift	ported	ConsensusFused.maj3_drift	any commutative ring
+maj3_shrinks	ported	ConsensusFused.maj3_shrinks	any linearly ordered field
+sybil_corner	ported	ConsensusFused.sybil_corner	any commutative ring
+sybil_gain	ported	ConsensusFused.sybil_gain	any ordered commutative ring
+additive_split	ported	ConsensusFused.additive_split	corollary of map_nsmul; f : R → S between a non-associative semiring and a non-associative ring; n is now an explicit argument before the colon
+coin_age_flip	ported	ConsensusFused.coin_age_flip	stays over ℚ
+fused_age_flip	ported	ConsensusFused.fused_age_flip	stays over ℚ; pw is ^
+linear_keeps	ported	ConsensusFused.linear_keeps	stays over ℚ
+caught	ported	ConsensusFused.caught	one-line corollary of MultAdd.wpow_neg_one; any commutative ring
+dbl	ported	ConsensusFused.dbl	now the Function.iterate of fun x ↦ x ✳ x; dbl_zero and dbl_succ give the old recursion; dbl_eq_mpow is new
+dbl_lift	ported	ConsensusFused.one_add_dbl	renamed; any semiring
+pietrzak_halves	ported	ConsensusFused.pietrzak_halves	any monoid
+merge_cut	ported	ConsensusFused.merge_cut	stays over ℚ
