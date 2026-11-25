@@ -3,26 +3,26 @@
   ==============================================================
 
   Peano's axioms with the fused ladder in place of + and ×. On a set N with
-  a starting point 0, a next-step map S, rung 1 (a ⊞ b, which is a + b + 1)
-  and rung 2 (a ⊕ b, which is a + b + ab):
+  a starting point 0, a next-step map S, rung 1 (sadd a b, which is a + b + 1)
+  and rung 2 (a ◯ b, which is a + b + ab):
 
     P1  S n ≠ 0                    0 is where counting starts
     P2  S m = S n → m = n          different numbers have different next steps
-    R1  a ⊞ 0 = S a                joining a rod to the unit rod
-        a ⊞ S b = S (a ⊞ b)
-    R2  a ⊕ 0 = a                  a box one cell wide is just the row
-        a ⊕ S b = (a ⊕ b) ⊞ a      a box grows one row at a time
+    R1  sadd a 0 = S a             joining a rod to the unit rod
+        sadd a (S b) = S (sadd a b)
+    R2  a ◯ 0 = a                  a box one cell wide is just the row
+        a ◯ S b = sadd (a ◯ b) a   a box grows one row at a time
     I   induction: whatever holds at 0 and passes from n to S n holds everywhere
 
   Rung 1 is needed in the axioms for the same reason ordinary Peano needs +
   before it can define ×: the recursion for rung 2 is written with rung 1.
-  As a matter of what can be *defined*, though, 0, S and ⊕ are enough: + and ×
+  As a matter of what can be *defined*, though, 0, S and ◯ are enough: + and ×
   are first-order definable from them (`add_definable`, `mul_definable`).
 
   Proved here from the axioms (core Lean, no `sorry`):
-  * rung 1 and rung 2 laws by induction alone: ⊕ commutative, associative,
-    identity 0, and ⊕ distributes over ⊞ exactly (`circ_sadd`),
-  * ordinary + and × defined from ⊞ and ⊕, with their Peano recursions,
+  * rung 1 and rung 2 laws by induction alone: ◯ commutative, associative,
+    identity 0, and ◯ distributes over sadd exactly (`circ_sadd`),
+  * ordinary + and × defined from sadd and ◯, with their Peano recursions,
   * categoricity: every model is a copy of Nat (`toN_bijective`, `toN_sadd`,
     `toN_circ`), so these axioms pin the numbers down completely,
   * recursion on any model, and the whole fused ladder from one schema
@@ -108,7 +108,7 @@ theorem circ_comm (a b : N) : circ a b = circ b a := by
   · intro b ih; rw [circ_succ, succ_circ, ih]
 
 /-- Rung 2 distributes over rung 1 exactly, with no correction term:
-    a ⊕ (b ⊞ c) = (a ⊕ b) ⊞ (a ⊕ c). Two boxes of the same width, stacked. -/
+    a ◯ (sadd b c) = sadd (a ◯ b) (a ◯ c). Two boxes of the same width, stacked. -/
 theorem circ_sadd (a b c : N) : circ a (sadd b c) = sadd (circ a b) (circ a c) := by
   refine ind (fun c => circ a (sadd b c) = sadd (circ a b) (circ a c)) ?_ ?_ c
   · rw [sadd_zero, circ_succ, circ_zero]
@@ -127,7 +127,7 @@ theorem sadd_is_succ (x y : N) : ∃ z, succ z = sadd x y := by
   · exact ⟨x, (sadd_zero x).symm⟩
   · intro y ⟨z, hz⟩; exact ⟨sadd x y, (sadd_succ x y).symm⟩
 
-/-- Addition: x + y is the number one step below x ⊞ y. -/
+/-- Addition: x + y is the number one step below sadd x y. -/
 noncomputable def add (x y : N) : N := Classical.choose (sadd_is_succ x y)
 
 theorem succ_add_eq (x y : N) : succ (add x y) = sadd x y :=
@@ -163,7 +163,7 @@ theorem circ_is (x y : N) : ∃ z, circ x y = add (add x y) z := by
     refine ⟨add z x, ?_⟩
     rw [circ_succ, ← succ_add_eq, hz, add_succ', succ_add', add_assoc' (add x y) z x]
 
-/-- Multiplication: x · y is what is left of x ⊕ y after taking off x and y. -/
+/-- Multiplication: x · y is what is left of x ◯ y after taking off x and y. -/
 noncomputable def mul (x y : N) : N := Classical.choose (circ_is x y)
 
 theorem circ_eq' (x y : N) : circ x y = add (add x y) (mul x y) :=
@@ -204,7 +204,7 @@ theorem toN_bijective :
     (∀ j k : Nat, toN (N := N) j = toN k → j = k) ∧ (∀ n : N, ∃ k, toN k = n) :=
   ⟨fun _ _ h => toN_injective h, toN_surjective⟩
 
-/-- Counting carries rung 1 to rung 1: (a + b + 1) ↦ a ⊞ b. -/
+/-- Counting carries rung 1 to rung 1: (a + b + 1) ↦ sadd a b. -/
 theorem toN_sadd (a b : Nat) : toN (N := N) (a + b + 1) = sadd (toN a) (toN b) := by
   induction b with
   | zero => show toN (a + 0 + 1) = sadd (toN a) zero; rw [sadd_zero]; rfl
@@ -212,7 +212,7 @@ theorem toN_sadd (a b : Nat) : toN (N := N) (a + b + 1) = sadd (toN a) (toN b) :
     show toN (a + (b + 1) + 1) = sadd (toN a) (succ (toN b))
     rw [sadd_succ, ← ih]; rfl
 
-/-- Counting carries mult-add to mult-add: (a + b + ab) ↦ a ⊕ b. -/
+/-- Counting carries mult-add to mult-add: (a + b + ab) ↦ a ◯ b. -/
 theorem toN_circ (a b : Nat) : toN (N := N) (a + b + a * b) = circ (toN a) (toN b) := by
   induction b with
   | zero => show toN (a + 0 + a * 0) = circ (toN a) zero; rw [circ_zero]; simp
@@ -338,13 +338,13 @@ theorem ladN_succ (n : Nat) (a b : N) : ladN (n + 1) a (succ b) = ladN n a (ladN
   | zero => simp only [ladN, recN_succ]
   | succ m => simp only [ladN]; rw [recN_succ]
 
-/-- The schema's rung 1 is the primitive ⊞. -/
+/-- The schema's rung 1 is the primitive sadd. -/
 theorem ladN_one (a b : N) : ladN 1 a b = sadd a b := by
   refine ind (fun b => ladN 1 a b = sadd a b) ?_ ?_ b
   · rw [ladN_zero_right, sadd_zero]; rfl
   · intro b ih; rw [ladN_succ, ih, sadd_succ]; rfl
 
-/-- The schema's rung 2 is the primitive ⊕. -/
+/-- The schema's rung 2 is the primitive ◯. -/
 theorem ladN_two (a b : N) : ladN 2 a b = circ a b := by
   refine ind (fun b => ladN 2 a b = circ a b) ?_ ?_ b
   · rw [ladN_zero_right, circ_zero]; rfl
@@ -405,7 +405,7 @@ theorem mul_one' (x : N) : mul x (toN 1) = x := by
   rw [← toN_fromN x, ← toN_mul, Nat.mul_one]
 
 /-- Any model of the fused Peano axioms is a commutative semiring, with
-    + and × derived from ⊞ and ⊕. -/
+    + and × derived from sadd and ◯. -/
 noncomputable instance instCommSemiring : Lean.Grind.CommSemiring N where
   add_zero := add_zero'
   add_comm := add_comm'
@@ -424,22 +424,22 @@ noncomputable instance instCommSemiring : Lean.Grind.CommSemiring N where
   ofNat_succ := fun n => by show toN (n + 1) = add (toN n) (toN 1); rw [← toN_add]
   mul_comm := mul_comm'
 
-/-- In the derived semiring, a + b + a·b is the primitive ⊕. -/
+/-- In the derived semiring, a + b + a·b is the primitive ◯. -/
 theorem circ_eq (a b : N) : a + b + a * b = circ a b := (circ_eq' a b).symm
 
 /-! ## Strength: + and × can be defined from successor and mult-add
 
   Mult-add alone on the whole numbers is multiplication in disguise
-  (a ⊕ b + 1 = (a + 1)(b + 1)), and the first-order theory of multiplication
+  (a ◯ b + 1 = (a + 1)(b + 1)), and the first-order theory of multiplication
   alone is decidable (Skolem 1930, Mostowski 1952): too weak to carry
   arithmetic. With the successor added, + and × become definable, so the
-  structure (Nat, 0, S, ⊕) carries all of first-order arithmetic. -/
+  structure (Nat, 0, S, ◯) carries all of first-order arithmetic. -/
 
 /-- Mult-add on Nat. -/
 def ma (a b : Nat) : Nat := a + b + a * b
 
-/-- × from S and ⊕: m·n = k exactly when one side is 0 and k = 0, or
-    m = S m', n = S n', k = S k' and m' ⊕ n' = k'. -/
+/-- × from S and ◯: m·n = k exactly when one side is 0 and k = 0, or
+    m = S m', n = S n', k = S k' and m' ◯ n' = k'. -/
 theorem mul_definable (m n k : Nat) :
     m * n = k ↔ (m = 0 ∧ k = 0) ∨ (n = 0 ∧ k = 0) ∨
       ∃ m' n' k', m = m' + 1 ∧ n = n' + 1 ∧ k = k' + 1 ∧ ma m' n' = k' := by

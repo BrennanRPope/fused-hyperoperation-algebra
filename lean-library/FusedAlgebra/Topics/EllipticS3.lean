@@ -40,7 +40,7 @@ theorem cayley_hamilton (k q : Int) :
     (-q) * k + 0 * (-q) = k * (-q) - q * 0 ∧ (-q) * 1 + 0 * 0 = k * 0 - q * 1 := by
   refine ⟨?_, ?_, ?_, ?_⟩ <;> grind
 
-/-- mult-add is the 1×1 case G = [1]: (1 + a)(1 + b) = 1 + (a ⊞ b) -/
+/-- mult-add is the 1×1 case G = [1]: (1 + a)(1 + b) = 1 + (a ◯ b) -/
 theorem circ_is_1x1 (a b : Int) : (1 + a) * (1 + b) = 1 + circ a b := (circ_lift a b).symm
 
 /-! ### 2. The turning country has no real wall: no rational eigenvalue when k² < 4q -/

@@ -12,7 +12,7 @@
 
   What is here:
   1. The dyadic shell is the mult-add cube: doubling a box in n dimensions adds
-     2^(nj) · 1^(⊞n) new cells, and those new cells fall into the cube's layers
+     2^(nj) · 1^(◯n) new cells, and those new cells fall into the cube's layers
      1..n (how many coordinates doubled).
   2. The fan: every scaling threshold is a ray from the pivot (n, α) = (−2, 0);
      lying on the same ray is an equivalence, so sliding the dimension and
@@ -38,7 +38,7 @@ open CircleOp CircleOp.Cube
 /-! ## 1. The dyadic shell is the mult-add cube -/
 
 /-- Mult-adding 1 to itself n times counts the nonempty corners of the n-cube:
-    1^(⊞n) + 1 = 2ⁿ. -/
+    1^(◯n) + 1 = 2ⁿ. -/
 theorem mpow_one_nat (n : Nat) : mpow (1 : Nat) n + 1 = 2 ^ n := by
   induction n with
   | zero => rfl
@@ -52,7 +52,7 @@ theorem box_doubles (n j : Nat) : 2 ^ (n * (j + 1)) = 2 ^ (n * j) * 2 ^ n := by
   rw [Nat.mul_succ, Nat.pow_add]
 
 /-- **The dyadic annulus is a mult-add power.** The new cells added when a box of
-    side 2ʲ doubles number 2^(nj) · 1^(⊞n): the old box times the n-fold
+    side 2ʲ doubles number 2^(nj) · 1^(◯n): the old box times the n-fold
     mult-add of 1. -/
 theorem annulus_cells (n j : Nat) :
     2 ^ (n * (j + 1)) - 2 ^ (n * j) = 2 ^ (n * j) * mpow (1 : Nat) n := by

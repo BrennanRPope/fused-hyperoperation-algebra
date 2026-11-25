@@ -8,7 +8,7 @@
   Coupled steps: equilibrium constants (and forward/backward rate ratios)
   multiply, so ratio − 1 mult-adds. Potentials combine by Luther's
   electron-weighted mean, which is idempotent and so not a mult-add.
-  Two redox sites: Z − 1 = x ⊞ₖ x, with complex zeros exactly when k > 1,
+  Two redox sites: Z − 1 = x ◯[k] x, with complex zeros exactly when k > 1,
   and the midpoint of the Nernst curve at x = 1/√k. Photosynthesis: stage
   losses compose at k = −1, and the Kok clock's damping eigenvalue has
   modulus at most 1.
@@ -41,7 +41,7 @@ theorem luther_idem (n1 n2 E : Rat) (h : n1 + n2 ≠ 0) : (n1 * E + n2 * E) / (n
   have : n1 * E + n2 * E = E * (n1 + n2) := by grind
   rw [this, Rat.mul_div_cancel h]
 
-/-- Two one-electron sites with interaction factor k: Z − 1 = x ⊞ₖ x. -/
+/-- Two one-electron sites with interaction factor k: Z − 1 = x ◯[k] x. -/
 theorem two_site (k x : Rat) : (1 + 2 * x + k * x * x) - 1 = circK k x x := by
   unfold circK; grind
 

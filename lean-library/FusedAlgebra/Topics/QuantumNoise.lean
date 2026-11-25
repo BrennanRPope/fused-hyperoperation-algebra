@@ -9,7 +9,7 @@
   `grind` tactic for ring arithmetic and `decide` for exact rational checks.
   Run it with `lean QuantumNoise.lean`. Checked with Lean 4.37.0-rc1.
 
-  Mult-add with a weight k:  a ⊕ₖ b = a + b + k·a·b.
+  Mult-add with a weight k:  a ◯[k] b = a + b + k·a·b.
   k = 1 is mult-add itself. The noise channels of a qubit use
     k = −1    amplitude damping (T1 decay), "any fault counts"
     k = −2    bit-flip and phase-flip, "only an odd number of faults counts"

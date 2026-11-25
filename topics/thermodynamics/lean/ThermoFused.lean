@@ -12,8 +12,8 @@
   To compile: copy to lean-library/FusedAlgebra/Topics/Thermodynamics.lean,
   add it to build.sh and FusedAlgebra.lean, run ./build.sh.
 
-  Mult-add a ⊞ b = a + b + ab, its lift 1 + (a ⊞ b) = (1 + a)(1 + b), the
-  weighted family circK k a b = a + b + k·ab with 1 + k(a ⊞ₖ b) = (1+ka)(1+kb),
+  Mult-add a ◯ b = a + b + ab, its lift 1 + (a ◯ b) = (1 + a)(1 + b), the
+  weighted family circK k a b = a + b + k·ab with 1 + k(a ◯[k] b) = (1+ka)(1+kb),
   the inverse −u/(1+u), list folds and the cube's corners all come from Base.
 
   What Lean does not check here: anything needing real exp, log, sqrt or
@@ -67,7 +67,7 @@ theorem partition_multiplies (wA wB : List Rat) :
     sumL (outer wA wB) = sumL wA * sumL wB := outer_sum wA wB
 
 /-- Put each ground state first with weight 1 (energies measured from it).
-    Then the joint partition function is 1 + (zA ⊞ zB), where z is the sum of
+    Then the joint partition function is 1 + (zA ◯ zB), where z is the sum of
     the excited weights: zA is "A excited, B in its ground state", zB the
     reverse, and the corner zA·zB is "both excited". -/
 theorem partition_excess (xs ys : List Rat) :
@@ -90,13 +90,13 @@ theorem third_law_identity : circ (0 : Rat) 0 = 0 := circ_zero 0
 theorem residual_degeneracy (g1 g2 : Rat) : g1 * g2 - 1 = circ (g1 - 1) (g2 - 1) :=
   partition_square g1 g2
 
-/-- Pauling's ice: W = (3/2)^N, so W − 1 is the mult-add power (1/2)^(⊞N). -/
+/-- Pauling's ice: W = (3/2)^N, so W − 1 is the mult-add power (1/2)^(◯N). -/
 theorem pauling_ice (n : Nat) : 1 + mpow (1/2 : Rat) n = (3/2) ^ n := by
   rw [mpow_lift]
   have e : (1 + 1/2 : Rat) = 3/2 := by grind
   rw [e]
 
-/-- Landauer: n bits have 2^n states, 2^n − 1 = 1^(⊞n). -/
+/-- Landauer: n bits have 2^n states, 2^n − 1 = 1^(◯n). -/
 theorem landauer_states (n : Nat) : 1 + mpow (1 : Rat) n = 2 ^ n := by
   rw [mpow_lift]
   have e : (1 + 1 : Rat) = 2 := by grind
@@ -126,7 +126,7 @@ theorem never_the_wall (l : List Rat) (h : ∀ x ∈ l, 0 < 1 + x) : foldCirc l 
   grind
 
 /-- Equipartition: n quadratic degrees of freedom are n half-steps of T.
-    If s·s = T/T₀ then 1 + (s − 1)^(⊞2m) = (T/T₀)^m. -/
+    If s·s = T/T₀ then 1 + (s − 1)^(◯2m) = (T/T₀)^m. -/
 theorem equipartition (s r : Rat) (hs : s * s = r) (m : Nat) :
     1 + mpow (s - 1) (2 * m) = r ^ m := by
   rw [mpow_lift]
@@ -140,7 +140,7 @@ theorem equipartition (s r : Rat) (hs : s * s = r) (m : Nat) :
 /-! ## 3. Fermions are the cube; bosons are the way back -/
 
 /-- Fermion grand partition function: each mode empty or full (Pauli), so
-    Ξ = Π(1 + zᵢ) = 1 + (z₁ ⊞ … ⊞ zₙ). -/
+    Ξ = Π(1 + zᵢ) = 1 + (z₁ ◯ … ◯ zₙ). -/
 theorem fermion_lift (l : List Rat) : 1 + foldCirc l = prodL (l.map (fun x => 1 + x)) :=
   foldCirc_lift l
 
@@ -185,12 +185,12 @@ theorem vel_identity (v : Rat) : vel 0 v = v := by
 /-! ## 4. Engines, fridges, heat pumps -/
 
 /-- Two engines in series, the second running on the first's waste heat:
-    total work / heat in = η₁ ⊞₋₁ η₂ (the failure-union rule). -/
+    total work / heat in = η₁ ◯[−1] η₂ (the failure-union rule). -/
 theorem engine_cascade (Qh e1 e2 : Rat) :
     e1 * Qh + e2 * (Qh - e1 * Qh) = circK (-1) e1 e2 * Qh := by
   unfold circK; grind
 
-/-- Carnot: η(Th,Tc) = η(Th,Tm) ⊞₋₁ η(Tm,Tc); the lift 1 − η is Tc/Th. -/
+/-- Carnot: η(Th,Tc) = η(Th,Tm) ◯[−1] η(Tm,Tc); the lift 1 − η is Tc/Th. -/
 theorem carnot_series (h m c : Rat) (hh : h ≠ 0) (hm : m ≠ 0) :
     1 - c / h = circK (-1) (1 - m / h) (1 - c / m) := by
   unfold circK; grind
@@ -220,11 +220,11 @@ theorem carnot_fridge (h c : Rat) (hc : c ≠ 0) : 1 + (h - c) / c = h / c := by
 
 /-- Curzon–Ahlborn (efficiency at maximum power): with s·s = Tc/Th,
     η_CA = 1 − s and η_C = 1 − s·s.  Two CA steps make one Carnot step:
-    η_C = η_CA ⊞₋₁ η_CA.  CA is the half-step of the k = −1 climb. -/
+    η_C = η_CA ◯[−1] η_CA.  CA is the half-step of the k = −1 climb. -/
 theorem curzon_ahlborn_half (s : Rat) : circK (-1) (1 - s) (1 - s) = 1 - s * s := by
   unfold circK; grind
 
-/-- CA engines in series also compose by ⊞₋₁ (and so do Otto cycles, whose
+/-- CA engines in series also compose by ◯[−1] (and so do Otto cycles, whose
     1 − η = r^(1−γ) multiplies with the compression ratios). -/
 theorem ratio_series (s1 s2 : Rat) : 1 - s1 * s2 = circK (-1) (1 - s1) (1 - s2) := by
   unfold circK; grind
@@ -259,7 +259,7 @@ theorem power_sum_multiplies (f : Rat → Rat) (hf : ∀ u v, f (u * v) = f u * 
   rw [outer_map f hf, outer_sum]
 
 /-- Tsallis pseudo-additivity: if 1 + k·S is the power sum for A, for B and for
-    the pair (whose power sum is the product), then S_AB = S_A ⊞ₖ S_B. -/
+    the pair (whose power sum is the product), then S_AB = S_A ◯[k] S_B. -/
 theorem tsallis_composes (k SA SB SAB PA PB : Rat) (hk : k ≠ 0)
     (hA : 1 + k * SA = PA) (hB : 1 + k * SB = PB) (hAB : 1 + k * SAB = PA * PB) :
     SAB = circK k SA SB := by
@@ -268,7 +268,7 @@ theorem tsallis_composes (k SA SB SAB PA PB : Rat) (hk : k ≠ 0)
   have e2 : SAB = (k * SAB) / k := by grind
   rw [e2, e]; grind
 
-/-- The q-logarithm ln_q u = (u^k − 1)/k obeys ln_q(uv) = ln_q u ⊞ₖ ln_q v. -/
+/-- The q-logarithm ln_q u = (u^k − 1)/k obeys ln_q(uv) = ln_q u ◯[k] ln_q v. -/
 theorem qlog_qsum (f : Rat → Rat) (hf : ∀ u v, f (u * v) = f u * f v) (k u v : Rat)
     (hk : k ≠ 0) :
     (f (u * v) - 1) / k = circK k ((f u - 1) / k) ((f v - 1) / k) := by
@@ -383,7 +383,7 @@ theorem two_spin_no_real_zero (a z : Rat) (h0 : 0 ≤ a) (h1 : a < 1) :
   grind
 
 /-- Three spins in a chain with bond weights a, b (a = e^{−2βJ}), summed state
-    by state (z counts up-spins).  The middle coefficients are a ⊞ b. -/
+    by state (z counts up-spins).  The middle coefficients are a ◯ b. -/
 def chain3 (a b z : Rat) : Rat :=
   1                                       -- no spin up
   + (a + a * b + b) * z                   -- {1}, {2}, {3}
@@ -394,11 +394,11 @@ theorem chain3_circ (a b z : Rat) :
     chain3 a b z = 1 + circ a b * z + circ a b * (z * z) + z * z * z := by
   unfold chain3 circ; grind
 
-/-- It factors as (1 + z)(1 + (m − 1)z + z²) with m = a ⊞ b. -/
+/-- It factors as (1 + z)(1 + (m − 1)z + z²) with m = a ◯ b. -/
 theorem chain3_factor (m z : Rat) :
     1 + m * z + m * (z * z) + z * z * z = (1 + z) * (1 + (m - 1) * z + z * z) := by grind
 
-/-- Ferromagnetic bonds (0 ≤ a, b ≤ 1) give 0 ≤ a ⊞ b ≤ 3, so the quadratic's
+/-- Ferromagnetic bonds (0 ≤ a, b ≤ 1) give 0 ≤ a ◯ b ≤ 3, so the quadratic's
     discriminant (m − 1)² − 4 = (m − 3)(m + 1) ≤ 0: its zeros lie on the unit
     circle (the turning country), as Lee–Yang says. -/
 theorem chain3_ferro_bound (a b : Rat) (ha0 : 0 ≤ a) (ha1 : a ≤ 1) (hb0 : 0 ≤ b) (hb1 : b ≤ 1) :

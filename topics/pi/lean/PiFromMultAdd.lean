@@ -8,7 +8,7 @@
   To fold into the library: copy to lean-library/FusedAlgebra/Topics/Pi.lean,
   add `FusedAlgebra.Topics.Pi` to build.sh and FusedAlgebra.lean, run ./build.sh.
 
-  The picture. Mult-add a ⊞ b = a + b + ab = (1+a)(1+b) − 1, over the Gaussian
+  The picture. Mult-add a ◯ b = a + b + ab = (1+a)(1+b) − 1, over the Gaussian
   numbers. The turning law (landscape point p = 0, q = 1) is slope addition
   x ⊕ y = (x + y)/(1 − xy). The lens 1 + a = (1 + ix)/(1 − ix) turns the turning
   law into mult-add, and it puts every real slope on the circle |1 + a| = 1:
@@ -23,7 +23,7 @@
     the conjugate lift multiplies too, so 1 + a(x ⊕ y) = (1 + a(x))(1 + a(y)).
   * The circle |1 + a| = 1 is closed under mult-add (norms multiply).
   * On the real line, the circle is exactly {0, −2}; and the slope ∞ lands on −2.
-  * The quarter step a = −1 + i: a ⊞ a = −2 and four copies make 0
+  * The quarter step a = −1 + i: a ◯ a = −2 and four copies make 0
     (slope 1 ⊕ 1 = 2/0 = ∞, four slope-1 steps come back to 0).
   * Machin (1706) and the other three two-term identities Størmer (1899) proved are
     the only ones, as exact Gaussian mult-add identities: four steps of i/5 and one
@@ -65,7 +65,7 @@ def G.conj (a : G) : G := ⟨a.re, -a.im⟩
 /-- squared length |a|² -/
 def G.norm (a : G) : Int := a.re * a.re + a.im * a.im
 
-/-- Gaussian mult-add a ⊞ b = a + b + ab -/
+/-- Gaussian mult-add a ◯ b = a + b + ab -/
 def gma (a b : G) : G := G.add (G.add a b) (G.mul a b)
 
 /-- mult-add power: n copies of a mult-added together -/
@@ -93,7 +93,7 @@ theorem gma_zero (a : G) : gma a G.zero = a := by
 theorem mul_assoc' (a b c : G) : G.mul (G.mul a b) c = G.mul a (G.mul b c) := by
   ext <;> simp [G.mul] <;> grind
 
-/-- the lift of a mult-add power is an ordinary power: 1 + a^(⊞n) = (1 + a)ⁿ -/
+/-- the lift of a mult-add power is an ordinary power: 1 + a^(◯n) = (1 + a)ⁿ -/
 theorem gpow_lift (a : G) (n : Nat) : G.add G.one (gpow a n) = G.pow (G.add G.one a) n := by
   induction n with
   | zero => ext <;> simp [gpow, G.pow, G.add, G.one, G.zero]
@@ -123,7 +123,7 @@ theorem circle_real_points (x : Rat) : (1 + x) * (1 + x) = 1 ↔ x = 0 ∨ x = -
     · exact Or.inr (by grind)
   · rintro (h | h) <;> subst h <;> decide +kernel
 
-/-- in mult-add units: x ⊞ x = 0 (a half turn twice is a full turn) exactly at 0 and −2 -/
+/-- in mult-add units: x ◯ x = 0 (a half turn twice is a full turn) exactly at 0 and −2 -/
 theorem circ_self_zero (x : Rat) : circ x x = 0 ↔ x = 0 ∨ x = -2 := by
   rw [← circle_real_points]; unfold circ; constructor <;> intro h <;> grind
 
@@ -147,7 +147,7 @@ theorem lens (x y : Slope) : toG (tl x y) = G.mul (toG x) (toG y) := by
   ext <;> simp [toG, tl, G.mul] <;> grind
 
 /-- and the conjugates multiply the same way, so the lift W/W̄ of a sum is the product of
-    the lifts: 1 + a(x ⊕ y) = (1 + a(x))·(1 + a(y)), i.e. a(x ⊕ y) = a(x) ⊞ a(y). -/
+    the lifts: 1 + a(x ⊕ y) = (1 + a(x))·(1 + a(y)), i.e. a(x ⊕ y) = a(x) ◯ a(y). -/
 theorem lens_conj (x y : Slope) : G.conj (toG (tl x y)) = G.mul (G.conj (toG x)) (G.conj (toG y)) := by
   ext <;> simp [toG, tl, G.mul, G.conj] <;> grind
 
@@ -173,7 +173,7 @@ theorem quarter_on_circle : G.norm (G.add G.one q4) = 1 := by decide
 /-- the same in slopes: 1 ⊕ 1 = 2/0 = ∞, and four steps of slope 1 come back to slope 0 -/
 theorem slope_one_twice : tl ⟨1, 1⟩ ⟨1, 1⟩ = ⟨2, 0⟩ := by decide
 theorem slope_one_four : tl (tl (tl ⟨1, 1⟩ ⟨1, 1⟩) ⟨1, 1⟩) ⟨1, 1⟩ = ⟨0, -4⟩ := by decide
-/-- the parity point is its own way back: (−2) ⊞ (−2) = 0 -/
+/-- the parity point is its own way back: (−2) ◯ (−2) = 0 -/
 theorem parity_twice : circ (-2 : Rat) (-2) = 0 := by decide +kernel
 
 /-! ## 5. Steps that land exactly on the eighth turn (the 45° ray, slope 1)

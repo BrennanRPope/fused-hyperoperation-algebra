@@ -10,7 +10,7 @@
   Topics/LinearAlgebra in build.sh and FusedAlgebra.lean, and run ./build.sh.
 
   What is here:
-    1. Every nonzero real weight is one law in other units: k(A ⊞ₖ B) = (kA) ⊞ (kB).
+    1. Every nonzero real weight is one law in other units: k(A ◯[k] B) = (kA) ◯ (kB).
     2. det(I + kA) is the reversed characteristic polynomial: det(I + kA) = (−k)ⁿ p_A(−1/k),
        so the matrix meets the wall exactly when −1/k is an eigenvalue. k = −1 is p_A(1).
     3. Weighted rotations and Cayley: I − X orthogonal at k = −1; the weighted Cayley transform
@@ -22,7 +22,7 @@
        "U has eigenvalue −1". The pure units U² = κI give rotations (κ = −1, tangent
        addition), shears (κ = 0, plain addition) and boosts (κ = 1, velocity addition, walls
        at ±1).
-    5. A matrix weight inside the law: A ⊞_K B = A + B + AKB lifts through I + AK;
+    5. A matrix weight inside the law: A ◯[K] B = A + B + AKB lifts through I + AK;
        Sylvester det(I + AK) = det(I + KA); a rank-one weight leaves no corner terms.
 -/
 import FusedAlgebra.Base
@@ -141,7 +141,7 @@ theorem shear_is_add (a b : R) :
 
 /-! ## 5. A matrix weight inside the law -/
 
-/-- A ⊞_K B = A + B + A·K·B. -/
+/-- A ◯[K] B = A + B + A·K·B. -/
 def kcirc (kk x y : M2 R) : M2 R := M2.add (M2.add x y) (M2.mul (M2.mul x kk) y)
 
 theorem kcirc_lift (kk x y : M2 R) :
@@ -216,7 +216,7 @@ theorem cayley_weighted (k s : K) :
     apply M2.ext' <;> simp only [M2.smul, M2.skew] <;> grind
   rw [e, M2.cayley]
 
-/-- The weighted inverse: off the weighted wall, a ⊞ₖ (−a/(1 + k·a)) = 0. -/
+/-- The weighted inverse: off the weighted wall, a ◯[k] (−a/(1 + k·a)) = 0. -/
 theorem winv (k a : K) (h : 1 + k * a ≠ 0) : circK k a (-a / (1 + k * a)) = 0 := by
   unfold circK; grind
 

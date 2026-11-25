@@ -118,7 +118,7 @@ theorem shan_map_w (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = circK 
   | nil => simp only [List.map_nil, shan, lsum]; grind
   | cons y ys ih => simp only [List.map_cons, shan, lsum]; rw [ih, hs]; unfold circK; grind
 
-/-- For any surprise s that turns products into ⊞ₖ, the joint "entropy" Σ p·s(p)
+/-- For any surprise s that turns products into ◯[k], the joint "entropy" Σ p·s(p)
     of independent sources is
       (Σr)·S_A + (Σp)·S_B + k·S_A·S_B.
     k = 0 is the information page's outer-log lemma (Shannon); any k is Tsallis. -/
@@ -152,8 +152,8 @@ theorem joint_mass (xs ys : List Rat) (hx : lsum xs = 1) (hy : lsum ys = 1) :
 
 /-! # 3. Sharma–Mittal: an additive entropy pushed through the dial's exponential -/
 
-/-- If R adds over independent sources and E turns + into ⊞ₖ, then E∘R composes
-    by ⊞ₖ.  With R = Rényi of order α and E(x) = (e^{kx} − 1)/k this is
+/-- If R adds over independent sources and E turns + into ◯[k], then E∘R composes
+    by ◯[k].  With R = Rényi of order α and E(x) = (e^{kx} − 1)/k this is
     Sharma–Mittal H_{α,β}, k = 1 − β. -/
 theorem sm_compose (E : Rat → Rat) (k : Rat) (hE : ∀ x y, E (x + y) = circK k (E x) (E y))
     (RA RB RAB : Rat) (hR : RAB = RA + RB) : E RAB = circK k (E RA) (E RB) := by

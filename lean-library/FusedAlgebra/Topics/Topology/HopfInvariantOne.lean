@@ -29,7 +29,7 @@
 
   Part 3 (the mult-add cube). On CP², which is the n = 1 case built on
     the Hopf map, the Adams operations ARE truncated mult-add powers:
-    the k-fold mult-add sum x ⊕ x ⊕ … ⊕ x in Z[x]/(x³) is
+    the k-fold mult-add sum x ◯ x ◯ … ◯ x in Z[x]/(x³) is
     k x + C(k,2) x². They compose (ψ^j ψ^k = ψ^(jk)), satisfy the mod 2
     rule with h = 1, and so meet every hypothesis of Part 2.
 
@@ -255,7 +255,7 @@ deriving DecidableEq
 /-- Mult-add: (1+p)(1+q) − 1 with x³ = 0. -/
 def circ (p q : Trunc) : Trunc := ⟨p.α + q.α, p.β + q.β + p.α * q.α⟩
 
-/-- The k-fold mult-add sum x ⊕ x ⊕ … ⊕ x, i.e. (1 + x)^k − 1. -/
+/-- The k-fold mult-add sum x ◯ x ◯ … ◯ x, i.e. (1 + x)^k − 1. -/
 def mpow : Nat → Trunc
   | 0 => ⟨0, 0⟩
   | k + 1 => circ (mpow k) ⟨1, 0⟩

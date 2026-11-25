@@ -6,7 +6,7 @@
   Core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 
   Two inhibitors (Yonetani–Theorell): the four-state binding polynomial is
-  1 + a + b + k·ab with k = 1/α, so v₀/vᵢ − 1 = a ⊞ₖ b. k = 0 is mutual
+  1 + a + b + k·ab with k = 1/α, so v₀/vᵢ − 1 = a ◯[k] b. k = 0 is mutual
   exclusion (Loewe additivity), k = 1 is independence (Bliss: remaining
   activities multiply). Steps in series add their times. Proofreading
   multiplies discrimination odds. Nitrogenase and Calvin-cycle bookkeeping.
@@ -23,17 +23,17 @@ open CircleOp
 
 open scoped CircleOp
 
-/-- Yonetani–Theorell: with k = 1/α the binding polynomial minus one is a ⊞ₖ b. -/
+/-- Yonetani–Theorell: with k = 1/α the binding polynomial minus one is a ◯[k] b. -/
 theorem yonetani_theorell (k a b : Rat) : (1 + a + b + k * a * b) - 1 = circK k a b := by
   unfold circK; grind
 
 -- LIBRARY: exclusive_loewe (Mutually exclusive inhibitors (k = 0): plain addition, Loewe's straight isobole) was an exact twin of InfoFused.shannon_weight and is removed.
 
-/-- Independent inhibitors (k = 1): mult-add, so 1 + (a ⊞₁ b) = (1 + a)(1 + b). -/
+/-- Independent inhibitors (k = 1): mult-add, so 1 + (a ◯[1] b) = (1 + a)(1 + b). -/
 theorem independent_lift (a b : Rat) : 1 + circK 1 a b = (1 + a) * (1 + b) := by
   unfold circK; grind
 
-/-- …which is Bliss independence for the remaining activity: 1/(1+a) · 1/(1+b) = 1/(1 + a ⊞₁ b). -/
+/-- …which is Bliss independence for the remaining activity: 1/(1+a) · 1/(1+b) = 1/(1 + a ◯[1] b). -/
 theorem bliss (a b : Rat) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0) :
     (1 / (1 + a)) * (1 / (1 + b)) = 1 / (1 + circK 1 a b) := by
   rw [independent_lift]
@@ -43,7 +43,7 @@ theorem bliss (a b : Rat) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0) :
 
 -- LIBRARY: bliss_fraction (Bliss in fractional-inhibition form: fractions combine at k = −1) was an exact twin of ChemStoichiometry.loss_two and is removed.
 
-/-- The 50% isobole for interaction k: b(1 + k·a) = 1 − a solves a ⊞ₖ b = 1. -/
+/-- The 50% isobole for interaction k: b(1 + k·a) = 1 − a solves a ◯[k] b = 1. -/
 theorem isobole (k a b : Rat) (h : b * (1 + k * a) = 1 - a) : circK k a b = 1 := by
   unfold circK; grind
 

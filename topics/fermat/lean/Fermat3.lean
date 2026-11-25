@@ -22,7 +22,7 @@
                           and "a coprime product that is a cube is a unit times a cube".
   * `step`, `no_sol`    : Euler's infinite descent on |xyz| for x³ + y³ + z³ = 0.
 
-  The mult-add angle (a ⊞ b = a + b + ab, mpow s n = (1 + s)ⁿ − 1, from FusedAlgebra.Base):
+  The mult-add angle (a ◯ b = a + b + ab, mpow s n = (1 + s)ⁿ − 1, from FusedAlgebra.Base):
   * `flt3_circ_iff` : over ℚ, with x ≠ 0, x³ + y³ = z³ iff (y/x)³ = mpow (z/x − 1) 3.
   * `flt3_circ`     : so for nonzero integers, (y/x)³ is never the mult-add cube of z/x − 1.
   * `mpow_three`       : mpow s 3 = s³ + 3(s + s²): the middle layers of the cube

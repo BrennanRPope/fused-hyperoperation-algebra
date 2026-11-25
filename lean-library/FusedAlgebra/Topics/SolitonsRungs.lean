@@ -31,7 +31,7 @@ theorem tau2_free (a b : Int) : tau2 1 a b = (1 + a) * (1 + b) := by
 theorem tau2_merge (a b : Int) : tau2 0 a b = 1 + (a + b) := by
   unfold tau2; grind
 
-/-- for two solitons the law is rung 1 in a rescaled coordinate: A·(τ − 1) = (A a) ⊞ (A b) -/
+/-- for two solitons the law is rung 1 in a rescaled coordinate: A·(τ − 1) = (A a) ◯ (A b) -/
 theorem tau2_scaled (A a b : Int) : A * (tau2 A a b - 1) = circ (A * a) (A * b) := by
   unfold tau2 circ; grind
 
@@ -155,7 +155,7 @@ def theta2 (q1 q2 A w1 w2 : Int) : Int :=
     r q2 2 * A ^ (n1 * 2) * w2 ^ 2 + r q2 3 * A ^ (n1 * 3) * w2 ^ 3
   r q1 0 * w1 ^ 0 * row 0 + r q1 1 * w1 ^ 1 * row 1 + r q1 2 * w1 ^ 2 * row 2 + r q1 3 * w1 ^ 3 * row 3
 
-/-- at q₁ = q₂ = 0 the theta series is the weighted mult-add cube 1 + (w₁ ⊞_A w₂) -/
+/-- at q₁ = q₂ = 0 the theta series is the weighted mult-add cube 1 + (w₁ ◯[A] w₂) -/
 theorem theta2_face (A w1 w2 : Int) : theta2 0 0 A w1 w2 = 1 + circK A w1 w2 := by
   unfold theta2 circK; simp <;> grind
 

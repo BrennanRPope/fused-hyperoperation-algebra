@@ -95,7 +95,7 @@ theorem units_num (p lam a b : Int) : num p (lam * a) (lam * b) = lam * num (lam
 theorem units_den (q lam a b : Int) : den q (lam * a) (lam * b) = den (lam * lam * q) a b := by
   unfold den; grind
 
-/-- the dial: k·(a ⊕ₖ b) = (k a) ⊕ (k b); every k ≠ 0 on the straight line is mult-add in other units -/
+/-- the dial: k·(a ◯[k] b) = (k a) ◯ (k b); every k ≠ 0 on the straight line is mult-add in other units -/
 theorem dial_is_multadd (k a b : Int) : k * (a + b + k * a * b) = k * a + k * b + (k * a) * (k * b) := by grind
 
 /-- the KdV soliton corner: A(f − 1) with f − 1 = e₁ + e₂ + A e₁e₂ is plain mult-add of A e₁ and A e₂

@@ -13,8 +13,8 @@
   honest map in math-theory/p-vs-np/README.md:
 
   1. The shifted ruler changes nothing about computation. With shifted add
-     a ⊕ b = a + b + 1 and mult-add a ⊞ b = a + b + ab, the map x ↦ 1 + x carries
-     (⊕, ⊞) gate for gate onto (+, ×). Any arithmetic circuit in one world becomes a
+     sAdd a b = a + b + 1 and mult-add a ◯ b = a + b + ab, the map x ↦ 1 + x carries
+     (sAdd, ◯) gate for gate onto (+, ×). Any arithmetic circuit in one world becomes a
      circuit of exactly the same size in the other (`evalS_lift`, `eval_from_shift`,
      `size_mapC`). So no circuit lower bound, and no fast algorithm, can appear or
      disappear by switching to mult-add.
@@ -89,14 +89,14 @@ section Semiring
 variable {R : Type} [CommSemiring R]
 open Circ
 
-/-- Shifted add: a ⊕ b = a + b + 1 (rung 1 seen on the shifted ruler). -/
+/-- Shifted add: sAdd a b = a + b + 1 (rung 1 seen on the shifted ruler). -/
 def sAdd (a b : R) : R := a + b + 1
 
-/-- The shift carries ⊕ to +. -/
+/-- The shift carries sAdd to +. -/
 theorem sAdd_lift (a b : R) : 1 + sAdd a b = (1 + a) + (1 + b) := by
   unfold sAdd; grind
 
-/-- On the shifted ruler, ⊞ distributes over ⊕ (the semiring law, moved by x ↦ 1 + x). -/
+/-- On the shifted ruler, ◯ distributes over sAdd (the semiring law, moved by x ↦ 1 + x). -/
 theorem circ_sAdd_distrib (a b c : R) :
     circ a (sAdd b c) = sAdd (circ a b) (circ a c) := by
   unfold circ sAdd; grind
@@ -108,14 +108,14 @@ def eval (env : Nat → R) : Circ R → R
   | add a b => eval env a + eval env b
   | mul a b => eval env a * eval env b
 
-/-- Shifted evaluation: the same wiring, with ⊕ and ⊞ as the gates. -/
+/-- Shifted evaluation: the same wiring, with sAdd and ◯ as the gates. -/
 def evalS (env : Nat → R) : Circ R → R
   | var i => env i
   | const c => c
   | add a b => sAdd (evalS env a) (evalS env b)
   | mul a b => circ (evalS env a) (evalS env b)
 
-/-- Transport: a ⊕/⊞ circuit is a +/× circuit of the same wiring, seen through x ↦ 1 + x. -/
+/-- Transport: a sAdd/◯ circuit is a +/× circuit of the same wiring, seen through x ↦ 1 + x. -/
 theorem evalS_lift (env : Nat → R) (C : Circ R) :
     1 + evalS env C = eval (fun i => 1 + env i) (mapC (fun c => 1 + c) C) := by
   induction C with
@@ -132,7 +132,7 @@ section Ring
 variable {R : Type} [CommRing R]
 open Circ
 
-/-- And back: every +/× circuit is a ⊕/⊞ circuit of the same wiring and size. -/
+/-- And back: every +/× circuit is a sAdd/◯ circuit of the same wiring and size. -/
 theorem eval_from_shift (env : Nat → R) (C : Circ R) :
     eval env C = 1 + evalS (fun i => env i - 1) (mapC (fun c => c - 1) C) := by
   induction C with
@@ -143,7 +143,7 @@ theorem eval_from_shift (env : Nat → R) (C : Circ R) :
   | mul a b iha ihb =>
     simp only [eval, evalS, mapC]; rw [iha, ihb]; unfold circ; grind
 
-/-- The identities of the shifted semiring: −1 for ⊕ and 0 for ⊞; −1 absorbs under ⊞. -/
+/-- The identities of the shifted semiring: −1 for sAdd and 0 for ◯; −1 absorbs under ◯. -/
 theorem shifted_identities (a : R) :
     sAdd a (-1) = a ∧ circ a 0 = a ∧ circ a (-1) = -1 := by
   unfold sAdd circ; refine ⟨?_, ?_, ?_⟩ <;> grind
@@ -253,14 +253,14 @@ theorem gf2_circ_is_or (a b : Bool) : gf2Circle a b = (a || b) := by
 
 theorem gf2_shift_is_not (a : Bool) : xor true a = !a := by cases a <;> rfl
 
-/-- The lift 1 + (a ⊞ b) = (1 + a)(1 + b) over GF(2) is De Morgan: ¬(a ∨ b) = ¬a ∧ ¬b. -/
+/-- The lift 1 + (a ◯ b) = (1 + a)(1 + b) over GF(2) is De Morgan: ¬(a ∨ b) = ¬a ∧ ¬b. -/
 theorem gf2_lift_de_morgan (a b : Bool) :
     xor true (gf2Circle a b) = (xor true a && xor true b) := by
   cases a <;> cases b <;> rfl
 
 /-! ## 4. Easy because it factors -/
 
-/-- n gates, 2ⁿ − 1 monomials: 1 + (1 ⊞ 1 ⊞ … ⊞ 1) = 2ⁿ. -/
+/-- n gates, 2ⁿ − 1 monomials: 1 + (1 ◯ 1 ◯ … ◯ 1) = 2ⁿ. -/
 theorem foldCirc_ones (n : Nat) : 1 + foldCirc (List.replicate n (1 : Nat)) = 2 ^ n := by
   induction n with
   | zero => rfl

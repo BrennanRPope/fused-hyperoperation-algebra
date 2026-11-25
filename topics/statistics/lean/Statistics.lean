@@ -6,7 +6,7 @@
 
   Core Lean 4.37 only (no mathlib), no `sorry`, standard axioms only.
   Library-ready: imports FusedAlgebra.Base, .Cube and .Topics.E, and uses
-  their mult-add a ⊞ b = a + b + ab, weighted mult-add a ⊞ₖ b = a + b + k·ab
+  their mult-add a ◯ b = a + b + ab, weighted mult-add a ◯[k] b = a + b + k·ab
   (`circK k a b`), powers, list folds and the cube's corner expansion.
 
   What this file proves, by part:
@@ -16,12 +16,12 @@
      Morgan).  Inclusion–exclusion for n events is the k = −1 fold, i.e. the
      signed corners of the n-cube.
   2. Finite probability spaces.  For events that need not be independent,
-     P(A ∪ B) = P(A) ⊞ₖ P(B) with k = −lift, lift = P(A∩B)/(P(A)P(B)):
+     P(A ∪ B) = P(A) ◯[k] P(B) with k = −lift, lift = P(A∩B)/(P(A)P(B)):
      disjoint is k = 0 (Kolmogorov's additivity), independent is k = −1.
      Inclusion–exclusion for n events with any dependence.
   3. The generating-function dial.  G(t) = E[t^X] multiplies under independent
      sums, so with t = 1 + k the "k-moment" a, 1 + k·a = G(1 + k), composes by
-     ⊞ₖ.  A coin's k-moment is p at every k.  t = 0 gives P(none) (the union
+     ◯[k].  A coin's k-moment is p at every k.  t = 0 gives P(none) (the union
      rule), t = −1 gives P(even) − P(odd) (piling-up, unequal coins).  The
      binomial is the weighted Pascal layers C(n,j)·pʲ·qⁿ⁻ʲ.
   4. Moments and cumulants.  Moments of X + Y follow the Pascal rows
@@ -92,11 +92,11 @@ theorem sq_diff_is_xor {x y : Rat} (hx : IsInd x) (hy : IsInd y) :
     (x - y) * (x - y) = circK (-2) x y := by
   unfold IsInd at *; unfold circK; grind
 
-/-- De Morgan: "not (A or B)" = "not A and not B"; complement x ↦ 1 − x turns ⊞₋₁ into ×. -/
+/-- De Morgan: "not (A or B)" = "not A and not B"; complement x ↦ 1 − x turns ◯[−1] into ×. -/
 theorem de_morgan (x y : Rat) : 1 - circK (-1) x y = (1 - x) * (1 - y) := by
   unfold circK; grind
 
-/-- The complement conjugates OR into AND: 1 − ((1−x) ⊞₋₁ (1−y)) = x·y. -/
+/-- The complement conjugates OR into AND: 1 − ((1−x) ◯[−1] (1−y)) = x·y. -/
 theorem de_morgan_and (x y : Rat) : 1 - circK (-1) (1 - x) (1 - y) = x * y := by
   unfold circK; grind
 
@@ -106,7 +106,7 @@ theorem xor_complement (x y : Rat) : circK (-2) (1 - x) (1 - y) = circK (-2) x y
 
 /-! ### n events: the k = −1 fold and its signed corners -/
 
-/-- Union of a list: x₁ ⊞₋₁ x₂ ⊞₋₁ … -/
+/-- Union of a list: x₁ ◯[−1] x₂ ◯[−1] … -/
 def unionL : List Rat → Rat
   | [] => 0
   | a :: l => circK (-1) a (unionL l)
@@ -204,7 +204,7 @@ theorem union_general (ws : List (α × Rat)) (A B : α → Rat) :
   rw [Ex_congr ws _ _ h, Ex_sub, Ex_add]
 
 /-- **Dependence is the weight.** If the overlap is `lift` times what independence
-    predicts, P(A ∩ B) = lift·P(A)·P(B), then P(A ∪ B) = P(A) ⊞ₖ P(B) with k = −lift. -/
+    predicts, P(A ∩ B) = lift·P(A)·P(B), then P(A ∪ B) = P(A) ◯[k] P(B) with k = −lift. -/
 theorem union_lift (ws : List (α × Rat)) (A B : α → Rat) (lift : Rat)
     (h : Ex ws (fun a => A a * B a) = lift * Ex ws A * Ex ws B) :
     Ex ws (fun a => circK (-1) (A a) (B a)) = circK (-lift) (Ex ws A) (Ex ws B) := by
@@ -325,7 +325,7 @@ theorem gen_conv (d e : NDist) (t : Rat) : gen (nconv d e) t = gen d t * gen e t
     obtain ⟨x, w⟩ := p; simp only [nconv, gen]; rw [gen_append, gen_nshift, ih]; grind
 
 /-- **The dial.** If a and b are the k-moments of X and Y, read through 1 + k·a = G(1 + k),
-    then the k-moment of X + Y is a ⊞ₖ b. -/
+    then the k-moment of X + Y is a ◯[k] b. -/
 theorem kmoment_law (k a b : Rat) (d e : NDist) (ha : 1 + k * a = gen d (1 + k))
     (hb : 1 + k * b = gen e (1 + k)) : 1 + k * circK k a b = gen (nconv d e) (1 + k) := by
   rw [gen_conv, ← ha, ← hb, circK_lift]
@@ -356,7 +356,7 @@ theorem heads_none (ps : List Rat) : gen (heads ps) 0 = 1 - foldW (-1) ps := by
   have e : (1 : Rat) + -1 = 0 := by grind
   rw [e] at h; rw [h]; grind
 
-/-- t = −1 (k = −2): G(−1) = P(even) − P(odd) = 1 − 2·(p₁ ⊞₋₂ p₂ ⊞₋₂ …): piling-up for unequal coins. -/
+/-- t = −1 (k = −2): G(−1) = P(even) − P(odd) = 1 − 2·(p₁ ◯[−2] p₂ ◯[−2] …): piling-up for unequal coins. -/
 theorem heads_parity (ps : List Rat) : gen (heads ps) (-1) = 1 - 2 * foldW (-2) ps := by
   have h := heads_kmoment (-2) ps
   have e : (1 : Rat) + -2 = -1 := by grind
@@ -404,7 +404,7 @@ theorem gen_zero (d : NDist) : gen d 0 = pZero d := by
     | zero => simp [pw]
     | succ n => simp [pw]
 
-/-- n equal coins: the k-moment climbs, 1 + k·a = (1 + kp)ⁿ = 1 + k·p^(⊞ₖ n) (rung 2). -/
+/-- n equal coins: the k-moment climbs, 1 + k·a = (1 + kp)ⁿ = 1 + k·p^(◯[k] n) (rung 2). -/
 def binom (p : Rat) : Nat → NDist
   | 0 => [(0, 1)]
   | n + 1 => nconv (nbern p) (binom p n)
@@ -705,7 +705,7 @@ theorem bern_stats (p : Rat) : mass (bern p) = 1 ∧ m1 (bern p) = p ∧
   unfold k2 k3 k4; simp only [bern, mass, m1, m2, m3, m4]
   refine ⟨?_, ?_, ?_, ?_, ?_⟩ <;> grind
 
-/-- A coin's variance is half its self-parity: Var = ½·(p ⊞₋₂ p), the chance two copies differ, halved. -/
+/-- A coin's variance is half its self-parity: Var = ½·(p ◯[−2] p), the chance two copies differ, halved. -/
 theorem bern_var_parity (p : Rat) : k2 (bern p) = circK (-2) p p / 2 := by
   rw [(bern_stats p).2.2.1]; unfold circK; grind
 
@@ -736,12 +736,12 @@ theorem bayes_odds (p lH lN : Rat) (hp0 : p ≠ 0) (hp1 : p ≠ 1) (hH : lH ≠ 
     grind
   rw [e]; grind
 
-/-- Two independent pieces of evidence: o·L₁·L₂ − 1 = (o − 1) ⊞ (L₁ − 1) ⊞ (L₂ − 1). -/
+/-- Two independent pieces of evidence: o·L₁·L₂ − 1 = (o − 1) ◯ (L₁ − 1) ◯ (L₂ − 1). -/
 theorem evidence_circ (o l1 l2 : Rat) :
     o * l1 * l2 - 1 = circ (circ (o - 1) (l1 - 1)) (l2 - 1) := by
   unfold circ; grind
 
-/-- The same evidence n times: o·Lⁿ − 1 = (o − 1) ⊞ (L − 1)^(⊞n), the climb (rung 2). -/
+/-- The same evidence n times: o·Lⁿ − 1 = (o − 1) ◯ (L − 1)^(◯n), the climb (rung 2). -/
 theorem repeated_evidence (o l : Rat) (n : Nat) :
     o * l ^ n - 1 = circ (o - 1) (mpow (l - 1) n) := by
   have h := mpow_lift (l - 1) n
@@ -814,7 +814,7 @@ theorem amh_lens_multiplies (θ a b : Rat) (h : 1 - θ * a * b ≠ 0) :
       (1 - a) * (1 - b) * (1 - θ * lens (-(1 + θ)) θ a b) := by
   unfold lens; grind
 
-/-- θ = 0: independence, the union rule a ⊞₋₁ b. -/
+/-- θ = 0: independence, the union rule a ◯[−1] b. -/
 theorem amh_independent (a b : Rat) : lens (-(1 + 0)) 0 a b = circK (-1) a b := by
   unfold lens circK; grind
 

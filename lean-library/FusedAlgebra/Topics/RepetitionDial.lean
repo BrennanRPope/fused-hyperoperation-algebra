@@ -11,7 +11,7 @@
   k = −1 is "any number of times" (1/(1 − x), multisets).
 
   1. Atoms compose by the weighted mult-add: if 1 + ka = A and 1 + kb = B then
-     1 + k(a ⊞ₖ b) = AB (`atoms_compose`). Read through the k-log (Z^k − 1)/k,
+     1 + k(a ◯[k] b) = AB (`atoms_compose`). Read through the k-log (Z^k − 1)/k,
      every atom's value is its own weight x, for every k.
   2. The coefficient of xⁿ in Z_k is cellCoeff k n = ∏_{j<n}(1 − jk)/n!, a
      polynomial in k, so the dial is smooth straight through k = 0
@@ -47,8 +47,8 @@ set_option linter.unusedSectionVars false
 section Compose
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- **Atoms compose by ⊞ₖ.** If the k-powers of two atoms are 1 + ka and
-    1 + kb, their product is 1 + k(a ⊞ₖ b). -/
+/-- **Atoms compose by ◯[k].** If the k-powers of two atoms are 1 + ka and
+    1 + kb, their product is 1 + k(a ◯[k] b). -/
 theorem atoms_compose (k a b A B : R) (hA : 1 + k * a = A) (hB : 1 + k * b = B) :
     1 + k * circK k a b = A * B := by
   rw [← hA, ← hB]; exact circK_lift k a b

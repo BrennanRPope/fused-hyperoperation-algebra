@@ -4,7 +4,7 @@
 
   Rung n is the ordinary hyperoperation conjugated by x ↦ 1 + x, on Nat:
     rung 1  sadd a b = a + b + 1          = (a+1) + (b+1) − 1
-    rung 2  a ⊞ b    = a + b + a·b        = (a+1)·(b+1) − 1   (mult-add, in Base)
+    rung 2  a ◯ b    = a + b + a·b        = (a+1)·(b+1) − 1   (mult-add, in Base)
     rung 3  fexp a b = (a+1)^(b+1) − 1                          (fused exponent)
     rung 4  ftet a b = (a+1)↑↑(b+1) − 1                         (fused tetration)
     rung 5  fpent a b                                           (fused pentation)
@@ -47,15 +47,15 @@ theorem fexp_carries_circ (a b : Nat) : fexp a b = circ a ((a + 1) ^ b - 1) := b
   rw [fexp_lift, circ_lift']
   have := pow_pos' a b
   rw [Nat.sub_add_cancel this, Nat.pow_succ, Nat.mul_comm]
-/-- Right distributivity over mult-add:  (a ⊕ b) ⊛ c = (a ⊛ c) ⊕ (b ⊛ c). -/
+/-- Right distributivity over mult-add:  fexp (a ◯ b) c = fexp a c ◯ fexp b c. -/
 theorem fexp_circ_right (a b c : Nat) : fexp (circ a b) c = circ (fexp a c) (fexp b c) := by
   apply lift_inj
   rw [fexp_lift, circ_lift', circ_lift', fexp_lift, fexp_lift, Nat.mul_pow]
-/-- Tower law:  (a ⊛ b) ⊛ c = a ⊛ (b ⊕ c). -/
+/-- Tower law:  fexp (fexp a b) c = fexp a (b ◯ c). -/
 theorem fexp_tower (a b c : Nat) : fexp (fexp a b) c = fexp a (circ b c) := by
   apply lift_inj
   rw [fexp_lift, fexp_lift, fexp_lift, circ_lift', Nat.pow_mul]
-/-- Sum law:  a ⊛ (b ⊞ c) = (a ⊛ b) ⊕ (a ⊛ c), with ⊞ the rung-1 shifted add. -/
+/-- Sum law:  fexp a (sadd b c) = fexp a b ◯ fexp a c, with sadd the rung-1 shifted add. -/
 theorem fexp_sadd (a b c : Nat) : fexp a (sadd b c) = circ (fexp a b) (fexp a c) := by
   apply lift_inj
   rw [fexp_lift, circ_lift', fexp_lift, fexp_lift, sadd_lift, ← Nat.pow_add]

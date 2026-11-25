@@ -10,26 +10,26 @@
   add `FusedAlgebra.Topics.LinearAlgebra` to build.sh and FusedAlgebra.lean, run ./build.sh.
 
   What is here (2×2 and 3×3 matrices written out as records, so `grind` does the algebra):
-    1. Matrix mult-add A ⊞ B = A + B + AB: the lift I + (A ⊞ B) = (I + A)(I + B), the weighted
+    1. Matrix mult-add A ◯ B = A + B + AB: the lift I + (A ◯ B) = (I + A)(I + B), the weighted
        lift with k, associativity, identity 0, and a 2×2 example where order matters.
     2. Determinants: det(I + kA) = 1 + k·e₁ + k²·e₂ + k³·e₃ (principal minors, counts 1,3,3,1),
        det(AB) = det A · det B, the box picture det(I + diag(a,b,c)), and for a triangular
-       matrix det(I + A) − 1 = a₁₁ ⊞ a₂₂ ⊞ a₃₃ (the shifted determinant is the mult-add of the
+       matrix det(I + A) − 1 = a₁₁ ◯ a₂₂ ◯ a₃₃ (the shifted determinant is the mult-add of the
        eigenvalues).
-    3. The dial homomorphism D_k(A ⊞ₖ B) = D_k(A) ⊞ₖ D_k(B) with D_k = e₁ + k·e₂ + k²·e₃:
+    3. The dial homomorphism D_k(A ◯[k] B) = D_k(A) ◯[k] D_k(B) with D_k = e₁ + k·e₂ + k²·e₃:
        k = 0 is "trace is additive", k = 1 is "det(I + A) is multiplicative".
-    4. 2×2 coupling sets the dial: det(I + M) − 1 = m₁₁ ⊞_w m₂₂ when m₁₂m₂₁ = (1 − w)m₁₁m₂₂;
+    4. 2×2 coupling sets the dial: det(I + M) − 1 = m₁₁ ◯[w] m₂₂ when m₁₂m₂₁ = (1 − w)m₁₁m₂₂;
        diagonal gives w = 1 (mult-add), rank one gives w = 0 (plain addition). The KdV
        two-soliton τ is the case w = ((k₁ − k₂)/(k₁ + k₂))².
-    5. Rotations: (I + kX)ᵀ(I + kX) = I + k(Xᵀ ⊞ₖ X); for X = [[x, −y],[y, x]] the condition is
+    5. Rotations: (I + kX)ᵀ(I + kX) = I + k(Xᵀ ◯[k] X); for X = [[x, −y],[y, x]] the condition is
        2x + k(x² + y²) = 0, the circle through 0 centred at the weighted wall −1/k; at k = 0 it
        is the skew condition Xᵀ + X = 0.
     6. Inverses on a field: the mult-add inverse (I + A)⁻¹ − I, matrix mult-add subtraction
-       X ⊟ A = (X − A)(I + A)⁻¹ undoes ⊞, and the Cayley transform of a 2×2 skew matrix is
+       X ⊟ A = (X − A)(I + A)⁻¹ undoes ◯, and the Cayley transform of a 2×2 skew matrix is
        I + (Sᵀ ⊟ S), the rational point ((1 − s²)/(1 + s²), 2s/(1 + s²)) of the unit circle.
     7. Fused-linear maps (linear maps about the wall corner (−1, −1)): they fix the corner,
-       respect the fused addition u + v + 1 and the mult-add scaling c ⊞ v.
-    8. Rate space: monomial maps u ↦ (u₁^m₁₁ u₂^m₁₂, u₁^m₂₁ u₂^m₂₂) turn ⊞ into ⊞, and
+       respect the fused addition u + v + 1 and the mult-add scaling c ◯ v.
+    8. Rate space: monomial maps u ↦ (u₁^m₁₁ u₂^m₁₂, u₁^m₂₁ u₂^m₂₂) turn ◯ into ◯, and
        composing two of them multiplies their exponent matrices.
 -/
 import FusedAlgebra.Base
@@ -90,9 +90,9 @@ def transpose (x : M2 R) : M2 R := ⟨x.a, x.c, x.b, x.d⟩
 def tr (x : M2 R) : R := x.a + x.d
 def det (x : M2 R) : R := x.a * x.d - x.b * x.c
 
-/-- Matrix mult-add: A ⊞ B = A + B + AB. -/
+/-- Matrix mult-add: A ◯ B = A + B + AB. -/
 def circ (x y : M2 R) : M2 R := add (add x y) (mul x y)
-/-- Weighted matrix mult-add: A ⊞ₖ B = A + B + k·AB. -/
+/-- Weighted matrix mult-add: A ◯[k] B = A + B + k·AB. -/
 def circK (k : R) (x y : M2 R) : M2 R := add (add x y) (smul k (mul x y))
 /-- The dial invariant: D_k(A) = tr A + k·det A, so det(I + kA) = 1 + k·D_k(A). -/
 def Dk (k : R) (x : M2 R) : R := tr x + k * det x
@@ -136,14 +136,14 @@ theorem tr_add (x y : M2 R) : tr (add x y) = tr x + tr y := by
 theorem Dk_hom (k : R) (x y : M2 R) : Dk k (circK k x y) = CircleOp.circK k (Dk k x) (Dk k y) := by
   simp only [Dk, tr, det, circK, add, smul, mul, CircleOp.circK]; grind
 
-/-- k = 1: the shifted determinant det(I + A) − 1 turns matrix ⊞ into scalar ⊞. -/
+/-- k = 1: the shifted determinant det(I + A) − 1 turns matrix ◯ into scalar ◯. -/
 theorem shifted_det_hom (x y : M2 R) :
     det (add one (circ x y)) - 1 = CircleOp.circ (det (add one x) - 1) (det (add one y) - 1) := by
   rw [lift, det_mul]; unfold CircleOp.circ; grind
 
 /-! ## 3. The off-diagonal entries set the dial -/
 
-/-- det(I + M) − 1 = m₁₁ ⊞_w m₂₂ whenever m₁₂·m₂₁ = (1 − w)·m₁₁·m₂₂. -/
+/-- det(I + M) − 1 = m₁₁ ◯[w] m₂₂ whenever m₁₂·m₂₁ = (1 − w)·m₁₁·m₂₂. -/
 theorem coupling_sets_weight (w : R) (m : M2 R) (h : m.b * m.c = (1 - w) * m.a * m.d) :
     det (add one m) - 1 = CircleOp.circK w m.a m.d := by
   simp only [det, add, one, CircleOp.circK]; grind
@@ -157,7 +157,7 @@ theorem rank_one_is_add (m : M2 R) (h : m.b * m.c = m.a * m.d) :
     det (add one m) - 1 = m.a + m.d := by
   simp only [det, add, one]; grind
 
-/-- Two by two, a matrix never commutes for free: order matters for matrix ⊞. -/
+/-- Two by two, a matrix never commutes for free: order matters for matrix ◯. -/
 theorem circ_not_comm :
     circ (⟨0, 1, 0, 0⟩ : M2 Int) ⟨0, 0, 1, 0⟩ ≠ circ ⟨0, 0, 1, 0⟩ ⟨0, 1, 0, 0⟩ := by
   intro h
@@ -167,14 +167,14 @@ theorem circ_not_comm :
     | decide
     | (simp only [circ, add, mul]; grind)
 
-/-! ## 4. Rotations: the orthogonal condition is Xᵀ ⊞ₖ X = 0 -/
+/-! ## 4. Rotations: the orthogonal condition is Xᵀ ◯[k] X = 0 -/
 
 theorem orth_lift (k : R) (x : M2 R) :
     mul (transpose (add one (smul k x))) (add one (smul k x))
       = add one (smul k (circK k (transpose x) x)) := by
   apply M2.ext' <;> simp only [transpose, circK, add, mul, smul, one] <;> grind
 
-/-- For X = [[x, −y], [y, x]], Xᵀ ⊞ₖ X is (2x + k(x² + y²))·I. -/
+/-- For X = [[x, −y], [y, x]], Xᵀ ◯[k] X is (2x + k(x² + y²))·I. -/
 theorem rotation_condition (k x y : R) :
     circK k (transpose ⟨x, -y, y, x⟩) ⟨x, -y, y, x⟩
       = ⟨2 * x + k * (x * x + y * y), 0, 0, 2 * x + k * (x * x + y * y)⟩ := by
@@ -330,7 +330,7 @@ theorem msub_undo_W (x w : M2 K) (h : det w ≠ 0) :
   have hd : det w = w.a * w.d - w.b * w.c := rfl
   apply M2.ext' <;> simp only [circ, add, sub, mul, inv, one] <;> grind
 
-/-- ⊟ undoes ⊞: (X ⊟ A) ⊞ A = X, off the wall. -/
+/-- ⊟ undoes ◯: (X ⊟ A) ◯ A = X, off the wall. -/
 theorem msub_undo (x a : M2 K) (h : det (add one a) ≠ 0) : circ (msubM x a) a = x := by
   have hA : sub (add one a) one = a := by
     apply M2.ext' <;> simp only [sub, add, one] <;> grind
@@ -445,7 +445,7 @@ theorem pow_mul'' (a : R) (m n : Nat) : (a ^ m) ^ n = a ^ (m * n) := by
 /-- A monomial map, first coordinate, in mult-add coordinates: (1 + x₁)^p (1 + x₂)^q − 1. -/
 def mono (p q : Nat) (x1 x2 : R) : R := (1 + x1) ^ p * (1 + x2) ^ q - 1
 
-/-- Monomial maps are the linear maps of rate space: they turn ⊞ into ⊞. -/
+/-- Monomial maps are the linear maps of rate space: they turn ◯ into ◯. -/
 theorem mono_hom (p q : Nat) (x1 x2 y1 y2 : R) :
     mono p q (circ x1 y1) (circ x2 y2) = circ (mono p q x1 x2) (mono p q y1 y2) := by
   unfold mono

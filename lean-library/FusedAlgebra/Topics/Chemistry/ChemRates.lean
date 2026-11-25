@@ -54,7 +54,7 @@ theorem osculating_disc (n : Rat) : (-n) * (-n) - 4 * (n * (n - 1) / 2) = n * (2
 theorem osculating_small : (0 : Rat) * (0 - 1) / 2 = 0 ∧ (1 : Rat) * (1 - 1) / 2 = 0 ∧ (2 : Rat) * (2 - 1) / 2 = 1 := by
   refine ⟨?_, ?_, ?_⟩ <;> grind
 
--- LIBRARY: qlog_two (q-logarithm with q = 2 (order-2 survival): ln₂ x = 1 − 1/x. Cleared form of ln₂(xy) = ln₂ x ⊞₋₁ ln₂ y: (1 − 1/(xy)) = circK (−1) (1 − 1/x) (1 − 1/y)) was an exact twin of InformationFull.qlog_neg_one and is removed.
+-- LIBRARY: qlog_two (q-logarithm with q = 2 (order-2 survival): ln₂ x = 1 − 1/x. Cleared form of ln₂(xy) = ln₂ x ◯[−1] ln₂ y: (1 − 1/(xy)) = circK (−1) (1 − 1/x) (1 − 1/y)) was an exact twin of InformationFull.qlog_neg_one and is removed.
 
 -- LIBRARY: qlog_zero (q-logarithm with q = 0: ln₀ x = x − 1, and ln₀(xy) = ln₀ x ◯ ln₀ y (k = 1 − 0 = 1)) was an exact twin of ThermoFused.partition_square (also ThermoFused.hess) and is removed.
 

@@ -35,7 +35,7 @@ theorem product_error_corner (e1 e2 : Int) : circ e1 e2 - (e1 + e2) = e1 * e2 :=
 
 /-! ## Archimedes' lever and Boyle's law: products held constant -/
 
-/-- if one factor of a constant product grows by a, the other must change by b with a ⊞ b = 0:
+/-- if one factor of a constant product grows by a, the other must change by b with a ◯ b = 0:
     the lever (weight × arm) and Boyle (pressure × volume) are the same picture -/
 theorem constant_product (P V a b : Int) (hPV : P * V ≠ 0) :
     (P * (1 + a)) * (V * (1 + b)) = P * V ↔ circ a b = 0 := by
@@ -66,7 +66,7 @@ theorem boyle_gain_loss (a b d1 d2 : Int) (h1 : (1 + a) * (1 - d1) = 1) (h2 : (1
 
 /-! ## Kepler's third law and Newton's inverse square: mult-add powers -/
 
-/-- T² ∝ a³ on percent changes: (1 + t)² = (1 + α)³ is t ⊞ t = α ⊞ α ⊞ α
+/-- T² ∝ a³ on percent changes: (1 + t)² = (1 + α)³ is t ◯ t = α ◯ α ◯ α
     (the square's gnomon equals the cube's layers) -/
 theorem kepler_third (t α : Int) :
     (1 + t) * (1 + t) = (1 + α) * (1 + α) * (1 + α) ↔ circ t t = circ (circ α α) α := by
@@ -75,7 +75,7 @@ theorem kepler_third (t α : Int) :
 /-- four times as far out, eight times as long a year -/
 example : (1 + 7) * (1 + 7) = (1 + 3) * (1 + 3) * (1 + 3) := by decide
 
-/-- gravity: when the distance grows by ρ the force changes by the mult-add inverse of ρ ⊞ ρ -/
+/-- gravity: when the distance grows by ρ the force changes by the mult-add inverse of ρ ◯ ρ -/
 theorem inverse_square {K : Type} [Lean.Grind.Field K] (ρ : K) (h : 1 + circ ρ ρ ≠ 0) :
     ((1 + ρ) * (1 + ρ))⁻¹ = 1 + circInv (circ ρ ρ) := by
   rw [← circ_lift]; exact inv_one_add _ h

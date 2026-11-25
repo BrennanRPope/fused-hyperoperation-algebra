@@ -9,7 +9,7 @@
   the K side is the lift, and K − 1 mult-adds.
 
   Two sites with occupation weights x, y and an interaction Boltzmann factor
-  ω have Z = 1 + x + y + ωxy, so Z − 1 is the weighted mult-add x ⊞_ω y.
+  ω have Z = 1 + x + y + ωxy, so Z − 1 is the weighted mult-add x ◯[ω] y.
   ω = 0 (hard exclusion) is plain addition, ω = 1 (no interaction) is
   mult-add, and the occupancy covariance is xy(ω − 1)/Z²: the dial's
   distance from 1 is the correlation.

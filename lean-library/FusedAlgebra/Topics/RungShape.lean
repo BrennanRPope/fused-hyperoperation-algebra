@@ -72,11 +72,11 @@ variable {K : Type} [Field K]
 /-- Rung 0 slice: a + b = c is the straight line b = c − a. -/
 theorem sheet_rung0 (a c : K) : a + (c - a) = c := by grind
 
-/-- Rung 1 slice: a ⊞ b = c is the hyperbola b = (c − a)/(1 + a). -/
+/-- Rung 1 slice: a ◯ b = c is the hyperbola b = (c − a)/(1 + a). -/
 theorem sheet_rung1 (a c : K) (h : 1 + a ≠ 0) : circ a ((c - a) / (1 + a)) = c := by
   unfold circ; grind
 
-/-- Corner-dial slice: a ⊞ₜ b = c is b = (c − a)/(1 + t·a). -/
+/-- Corner-dial slice: a ◯[t] b = c is b = (c − a)/(1 + t·a). -/
 theorem sheet_dial (t a c : K) (h : 1 + t * a ≠ 0) : circK t a ((c - a) / (1 + t * a)) = c := by
   unfold circK; grind
 
@@ -142,7 +142,7 @@ section Ring
 variable {R : Type} [CommRing R]
 
 /-- Rung 1 with no logarithms: its lens is x ↦ 1 + x into multiplication, and the slice
-  a ⊞ b = c is the "straight line" (1 + a)(1 + b) = 1 + c of that lens. -/
+  a ◯ b = c is the "straight line" (1 + a)(1 + b) = 1 + c of that lens. -/
 theorem sheet_rung1_lens (a b c : R) : circ a b = c ↔ (1 + a) * (1 + b) = 1 + c := by
   constructor
   · intro h; rw [← circ_lift, h]

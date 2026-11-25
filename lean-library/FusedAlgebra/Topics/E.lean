@@ -9,7 +9,7 @@
   axioms (propext, Classical.choice, Quot.sound). Run it with
   `lean EFromMultAdd.lean`. Checked with Lean 4.37.0-rc1.
 
-  Mult-add is a ⊕ b = a + b + ab = (1+a)(1+b) − 1. Mult-add 1/n to itself
+  Mult-add is a ◯ b = a + b + ab = (1+a)(1+b) − 1. Mult-add 1/n to itself
   n times and add back the unit corner: that is the staircase
   stair n = (1 + 1/n)ⁿ. On the n-cube, every switch weighs 1/n, so the
   corners with k switches on weigh C(n,k)/nᵏ in total.

@@ -8,7 +8,7 @@
   ----------
   1. Shape     : a small datatype for pictures (rods, boxes with corner weights, squashes).
   2. Reader    : reads any expression or goal and finds the boxes in it: lifted products
-                 (1+x)(1+y)..., mult-adds a ⊞ b ⊞ c (a box with its unit removed), the
+                 (1+x)(1+y)..., mult-adds a ◯ b ◯ c (a box with its unit removed), the
                  weighted family (a dialed corner), mult-add powers (a cube of n equal
                  sides), inverses (a squash onto the hyperbola). The picture is computed
                  from the goal, never drawn by hand per theorem.
@@ -178,11 +178,11 @@ mutual
 /-- Read one expression as a picture. -/
 partial def read (e0 : Expr) : ReadM Shape := do
   let e := (← instantiateMVars e0).consumeMData
-  -- mult-add a ⊞ b ⊞ ...: a box with its unit removed
+  -- mult-add a ◯ b ◯ ...: a box with its unit removed
   if (maOp? e).isSome then
     let (ls, cut) := flattenOp maOp? e 0
     return .box { sides := ← ls.mapM sideOf, cut }
-  -- weighted family a ⊞ₖ b: a box whose far corner is dialed to weight k
+  -- weighted family a ◯[k] b: a box whose far corner is dialed to weight k
   if constIs e ``CircleOp.circK then
     let as := lastArgs e 3
     let k := as[0]!
@@ -191,7 +191,7 @@ partial def read (e0 : Expr) : ReadM Shape := do
         let bs := lastArgs x 3; some (bs[1]!, bs[2]!) else none
     let (ls, cut) := flattenOp wOp e 0
     return .box { sides := ← ls.mapM sideOf, cut, weight := some (toString (← ppExpr k)) }
-  -- mult-add power a^(⊞n): a cube of n equal sides, unit removed
+  -- mult-add power a^(◯n): a cube of n equal sides, unit removed
   if constIs e ``CircleOp.mpow then
     let as := lastArgs e 2
     return .box { sides := #[← sideOf as[0]!], power := some (toString (← ppExpr as[1]!)) }
@@ -254,7 +254,7 @@ partial def read (e0 : Expr) : ReadM Shape := do
 partial def liftedPow? (e : Expr) : Bool :=
   constIs e ``HPow.hPow && e.getAppNumArgs == 6 && (asLifted? (e.getArg! 4)).isSome
 
-/-- A factor of a lifted product: (1 + x) gives one side; (1 + a ⊞ b) gives all of the
+/-- A factor of a lifted product: (1 + x) gives one side; (1 + a ◯ b) gives all of the
     box's sides, so nested mult-adds merge into one box. -/
 partial def readFactor (f : Expr) : ReadM Shape := do
   match asLifted? f with
@@ -399,7 +399,7 @@ syntax (name := liftMove) "lift" : tactic
                ← `(tactic| apply CircleOp.lift_inj)]
   showGoal stx "lift"
 
-/-- `multadd`: open every lifted mult-add into its box, (1 + a ⊞ b) ↦ (1 + a)(1 + b).
+/-- `multadd`: open every lifted mult-add into its box, (1 + a ◯ b) ↦ (1 + a)(1 + b).
     Uses the library's lift lemmas only. -/
 syntax (name := multaddMove) "multadd" : tactic
 @[tactic multaddMove] def evalMultadd : Tactic := fun stx => do
@@ -444,7 +444,7 @@ syntax (name := squashMove) "squash" (ppSpace colGt term:max)* : tactic
   evalTactic (← `(tactic| try rw [Lean.Grind.Field.mul_inv_cancel (by assumption)]))
   showGoal stx "squash"
 
-/-- `dial`: weight the far corner. k·(a ⊞ₖ b) is the plain mult-add of ka and kb;
+/-- `dial`: weight the far corner. k·(a ◯[k] b) is the plain mult-add of ka and kb;
     weight 1 is mult-add, weight 0 is plain addition. -/
 syntax (name := dialMove) "dial" : tactic
 @[tactic dialMove] def evalDial : Tactic := fun stx => do

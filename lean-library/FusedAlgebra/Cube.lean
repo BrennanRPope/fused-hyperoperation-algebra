@@ -2,7 +2,7 @@
   FusedAlgebra.Cube: the layers of the mult-add cube
   ==================================================
 
-  1 + (a ⊞ a ⊞ … ⊞ a) = (1 + a)^n, and the n-cube behind it has
+  1 + (a ◯ a ◯ … ◯ a) = (1 + a)^n, and the n-cube behind it has
   `layer n k` corners with k switches on (Pascal's triangle). Shared by the
   e, topology (Lucas, Fermat, AKS, Kummer, Wilson) modules.
 

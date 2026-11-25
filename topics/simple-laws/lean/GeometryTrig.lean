@@ -40,8 +40,8 @@ theorem box_corners (a b c : Int) :
     circ (circ a b) c = (a + b + c) + (a * b + b * c + c * a) + a * b * c := by
   unfold circ; grind
 
-/-- Galileo's square-cube law (1638): grow every length by a; area grows by A = a ⊞ a and
-    volume by A ⊞ a, so weight per unit of strength grows by the factor 1 + a -/
+/-- Galileo's square-cube law (1638): grow every length by a; area grows by A = a ◯ a and
+    volume by A ◯ a, so weight per unit of strength grows by the factor 1 + a -/
 theorem square_cube (a : Int) : 1 + circ (circ a a) a = (1 + circ a a) * (1 + a) :=
   circ_lift _ _
 
@@ -65,7 +65,7 @@ theorem fallen_square (n : Nat) : fallen n = n * n := by
   | zero => rfl
   | succ n ih => simp only [fallen, fall]; rw [ih]; grind
 
-/-- the gnomon step is mult-add's lift on Nat: (n ⊞ n) + 1 = (n + 1)² -/
+/-- the gnomon step is mult-add's lift on Nat: (n ◯ n) + 1 = (n + 1)² -/
 theorem gnomon_lift (n : Nat) : circ n n + 1 = (n + 1) * (n + 1) := circ_lift' n n
 
 /-- Pythagoras by the "bride's chair": the square on a + b holds the tilted square on c and

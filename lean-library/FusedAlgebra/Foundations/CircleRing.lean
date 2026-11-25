@@ -2,29 +2,29 @@
   FusedAlgebra.Foundations.CircleRing: arithmetic with mult-add as the primitive
   ==============================================================================
 
-  Mult-add a ⊕ b = a + b + ab is taken here as a basic operation, not as a
-  shorthand. Multiplication is then defined from it:  a · b := (a ⊕ b) − a − b.
+  Mult-add a ◯ b = a + b + ab is taken here as a basic operation, not as a
+  shorthand. Multiplication is then defined from it:  a · b := (a ◯ b) − a − b.
 
-  The axioms of a mult-add ring (MA-ring), on a set R with 0, +, −, ⊕ and a
+  The axioms of a mult-add ring (MA-ring), on a set R with 0, +, −, ◯ and a
   constant w (the wall):
 
     A1  (a + b) + c = a + (b + c)          laying rods end to end
     A2  a + b = b + a
     A3  a + 0 = a
     A4  −a + a = 0
-    M1  a ⊕ b = b ⊕ a                      a box turned on its side
-    M2  (a ⊕ b) ⊕ c = a ⊕ (b ⊕ c)          a 3-D box built two ways
-    M3  a ⊕ w = w                          the wall: a side of length 0 flattens the box
-    M4  a ⊕ (b + c) = (a ⊕ b) + (a ⊕ c) − a
+    M1  a ◯ b = b ◯ a                      a box turned on its side
+    M2  (a ◯ b) ◯ c = a ◯ (b ◯ c)          a 3-D box built two ways
+    M3  a ◯ w = w                          the wall: a side of length 0 flattens the box
+    M4  a ◯ (b + c) = (a ◯ b) + (a ◯ c) − a
                                            cutting a box in two along one side:
                                            the shared strip is counted once
 
-  "0 is the identity of ⊕" is NOT an axiom: it follows from M4 (`circ_zero`).
+  "0 is the identity of ◯" is NOT an axiom: it follows from M4 (`circ_zero`).
   `Axioms.Independence` shows M1, M2, M3 and M4 are each independent.
 
   Main results (all proved here, core Lean, no `sorry`):
   * every MA-ring is a commutative ring (`instCommRing`), with 1 = −w,
-  * in that ring the library's mult-add a + b + ab IS the primitive ⊕ (`add_add_mul_eq_circ`),
+  * in that ring the library's mult-add a + b + ab IS the primitive ◯ (`add_add_mul_eq_circ`),
   * every commutative ring is an MA-ring (`ofCommRing`), and going there and
     back changes nothing (`roundtrip_circ`, `roundtrip_mul`),
   * an MA-field (one more axiom: everything off the wall has a way back) is a
@@ -35,7 +35,7 @@
 
 namespace CircFound
 
-/-- A mult-add ring: an abelian group (+, −, 0) with a primitive mult-add ⊕
+/-- A mult-add ring: an abelian group (+, −, 0) with a primitive mult-add ◯
     and a wall w. -/
 class CircRing (R : Type) where
   zero : R
@@ -97,7 +97,7 @@ theorem neg_add_distrib (a b : R) : −(a +' b) = −a +' −b := by
 theorem circ_zero (a : R) : a ◯ zero = a := by
   have h := circ_add a zero zero
   rw [add_zero] at h
-  -- h : X = X + X − a   with X = a ⊞ 0
+  -- h : X = X + X − a   with X = a ◯ 0
   have h2 : (a ◯ zero) +' zero = (a ◯ zero) +' ((a ◯ zero) +' −a) := by
     rw [add_zero, ← add_assoc]; exact h
   have h3 := add_left_cancel h2
@@ -115,7 +115,7 @@ theorem wall_unique (v : R) (hv : ∀ a, a ◯ v = v) : v = wall := by
 
 /-! ## Multiplication, defined from mult-add -/
 
-/-- The product: a · b := (a ⊞ b) − a − b, the box minus its two edges. -/
+/-- The product: a · b := (a ◯ b) − a − b, the box minus its two edges. -/
 def mul (a b : R) : R := (a ◯ b) +' −a +' −b
 
 /-- The unit: 1 := −w. -/
@@ -141,7 +141,7 @@ theorem zero_mul (a : R) : zero ⬝ a = zero := by rw [mul_comm, mul_zero]
 theorem mul_add (a b c : R) : a ⬝ (b +' c) = a ⬝ b +' a ⬝ c := by
   unfold mul
   rw [circ_add, neg_add_distrib]
-  -- both sides are (a⊕b) + (a⊕c) − a − a − b − c, rearranged
+  -- both sides are (a◯b) + (a◯c) − a − a − b − c, rearranged
   ac_rfl
 
 theorem add_mul (a b c : R) : (a +' b) ⬝ c = a ⬝ c +' b ⬝ c := by
@@ -237,7 +237,7 @@ instance instCommRing : Lean.Grind.CommRing R where
   mul_comm := mul_comm
 
 /-- In the derived ring, the library's mult-add a + b + a·b is exactly the
-    primitive ⊕. So every theorem about mult-add is a theorem about ⊕. -/
+    primitive ◯. So every theorem about mult-add is a theorem about ◯. -/
 theorem add_add_mul_eq_circ (a b : R) : a + b + a * b = a ◯ b := (circ_eq a b).symm
 
 theorem one_eq : (1 : R) = −wall := rfl
@@ -249,7 +249,7 @@ end CircRing
 /-! ## Every commutative ring is an MA-ring, and back and forth is the identity -/
 
 open Lean.Grind in
-/-- A commutative ring gives an MA-ring: ⊞ := a + b + ab and w := −1. -/
+/-- A commutative ring gives an MA-ring: ◯ := a + b + ab and w := −1. -/
 @[instance_reducible] def ofCommRing (R : Type) [CommRing R] : CircRing R where
   zero := 0
   add := (· + ·)
@@ -271,7 +271,7 @@ theorem roundtrip_mul (R : Type) [CommRing R] (a b : R) :
     @CircRing.mul R (ofCommRing R) a b = a * b := by
   show a + b + a * b + -a + -b = a * b; grind
 
-/-- MA-ring → ring → mult-add: ⊞ comes back unchanged. -/
+/-- MA-ring → ring → mult-add: ◯ comes back unchanged. -/
 theorem roundtrip_circ (R : Type) [CircRing R] (a b : R) :
     (ofCommRing R).circ a b = CircRing.circ a b := CircRing.add_add_mul_eq_circ a b
 
@@ -283,7 +283,7 @@ theorem roundtrip_wall (R : Type) [CircRing R] :
 
   MA-field = MA-ring with
     F1  0 ≠ w                          (not everything is flat)
-    F2  for every a ≠ w there is b with a ⊞ b = 0
+    F2  for every a ≠ w there is b with a ◯ b = 0
                                        (every box off the wall can be undone)
 -/
 
@@ -309,7 +309,7 @@ theorem zero_ne_one' : (0 : R) ≠ 1 := by
   rw [zero_eq, w, ← e]; grind
 
 open Classical in
-/-- The reciprocal, built from the way back: if (a − 1) ⊕ b = 0 then a·(1 + b) = 1. -/
+/-- The reciprocal, built from the way back: if (a − 1) ◯ b = 0 then a·(1 + b) = 1. -/
 noncomputable def inv (a : R) : R :=
   if h : a = 0 then 0 else 1 + Classical.choose (way_back (a + wall) (add_wall_ne h))
 

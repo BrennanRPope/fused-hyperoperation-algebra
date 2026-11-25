@@ -14,13 +14,13 @@
   failure would be a proof-script problem, not a false statement. Run it
   with `lean RulecraftFused.lean`.
 
-  Mult-add: a ⊞ b = a + b + a·b = (1 + a)(1 + b) - 1.
+  Mult-add: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1.
 
   What it proves, in Rulecraft's words:
 
   * Scope matches spillover (the boundary theorem). Split the parties a
     decision touches into an inside list S and an outside list T. The
-    whole effect is X_S ⊞ X_T = X_S + X_T + X_S·X_T. The cross term X_S·X_T
+    whole effect is X_S ◯ X_T = X_S + X_T + X_S·X_T. The cross term X_S·X_T
     is exactly the corners of the cube that touch both sides: the
     spillover a body with scope S cannot see. The corner expansion
     (`one_add_foldCirc_eq_corners`) shows the mult-add of a list is the sum,
@@ -32,7 +32,7 @@
     exponent rung is not commutative (`fexp_not_comm`), so path dependence
     needs a higher rung or more than one quantity.
 
-  * The event horizon. -1 (losing everything) absorbs: (-1) ⊞ b = -1 for
+  * The event horizon. -1 (losing everything) absorbs: (-1) ◯ b = -1 for
     every b, so nothing ever composes back to 0. Everywhere else there is
     an exact way back, -a/(1+a). Losing n parts of n+1 needs a gain of n
     to recover (`recovery`): 90% lost needs +900%.
@@ -46,7 +46,7 @@
     (`balance`, `balance_le`). This is also why a tension held in balance
     keeps the most corner.
 
-  * Coupling weight. a ⊞_A b = a + b + A·a·b is ordinary mult-add seen
+  * Coupling weight. a ◯[A] b = a + b + A·a·b is ordinary mult-add seen
     through x ↦ A·x (`weighted_conj`). A > 0 is Benedict's high synergy,
     A < 0 a zero-sum corner, A = 0 no spillover at all.
 
@@ -74,7 +74,7 @@ set_option linter.unusedSectionVars false
 section Ring
 variable {R : Type} [CommRing R]
 
-/-- Mult-add: a ⊞ b = a + b + a·b. -/
+/-- Mult-add: a ◯ b = a + b + a·b. -/
 def circ (a b : R) : R := a + b + a * b
 
 theorem circ_lift (a b : R) : 1 + circ a b = (1 + a) * (1 + b) := by
@@ -134,12 +134,12 @@ theorem fused_price_expand (k : R) : (1 + k) * (1 + k) - 1 = k * k + 2 * k := by
 
 /-! ### The boundary theorem -/
 
-/-- The mult-add of a list of effects: x₁ ⊞ x₂ ⊞ … ⊞ xₙ. -/
+/-- The mult-add of a list of effects: x₁ ◯ x₂ ◯ … ◯ xₙ. -/
 def foldCirc : List R → R
   | [] => 0
   | a :: l => circ a (foldCirc l)
 
-/-- Scope matches spillover: the whole is the inside ⊞ the outside, and
+/-- Scope matches spillover: the whole is the inside ◯ the outside, and
     the cross term X_S·X_T is what crosses the boundary. -/
 theorem foldCirc_append (S T : List R) :
     foldCirc (S ++ T) = circ (foldCirc S) (foldCirc T) := by
@@ -192,7 +192,7 @@ theorem sumL_map_cons (a : R) (gs : List (List R)) :
   | nil => simp only [List.map, sumL]; grind
   | cons g gs ih => simp only [List.map, sumL, prodL] at ih ⊢; rw [ih]; grind
 
-/-- The corner expansion: 1 + (x₁ ⊞ … ⊞ xₙ) is the sum over every group
+/-- The corner expansion: 1 + (x₁ ◯ … ◯ xₙ) is the sum over every group
     of parties (the empty group gives the 1) of the product of their
     effects. Layer k of the cube is the groups of size k. -/
 theorem one_add_foldCirc_eq_corners (l : List R) :

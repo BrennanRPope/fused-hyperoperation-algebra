@@ -15,14 +15,14 @@
   The idea: a small kit of fused lemmas (Part 0) proves a whole family of
   known information-theory laws (Parts 1 to 7).  The kit is
 
-    K1  lift       1 + k·(a ⊕ₖ b) = (1 + k·a)(1 + k·b)
-    K2  climb      1 + k·(a ⊕ₖ a ⊕ₖ … ⊕ₖ a) = (1 + k·a)ⁿ
-    K3  flip       (−a) ⊕ₖ (−b) = −(a ⊕₋ₖ b)
-    K4  linearize  any L with L(xy) = L(x) + L(y) turns ⊕ₖ into +
+    K1  lift       1 + k·(a ◯[k] b) = (1 + k·a)(1 + k·b)
+    K2  climb      1 + k·(a ◯[k] a ◯[k] … ◯[k] a) = (1 + k·a)ⁿ
+    K3  flip       (−a) ◯[k] (−b) = −(a ◯[−k] b)
+    K4  linearize  any L with L(xy) = L(x) + L(y) turns ◯[k] into +
     K5  outer sum  Σᵢⱼ xᵢ·yⱼ = (Σ xᵢ)(Σ yⱼ)
     K6  outer log  Σᵢⱼ xᵢyⱼ·L(xᵢyⱼ) = (Σy)·Σ x·L(x) + (Σx)·Σ y·L(y)
 
-  where a ⊕ₖ b = a + b + k·a·b.  The weight k says how the corner cell a·b of
+  where a ◯[k] b = a + b + k·a·b.  The weight k says how the corner cell a·b of
   the mult-add square is counted.
 
   What Lean does NOT check here: anything that needs real numbers (log, real
@@ -83,7 +83,7 @@ theorem climb (k a : Rat) (n : Nat) : 1 + k * mpow k a n = pw (1 + k * a) n := b
   | zero => simp only [mpow, pw]; grind
   | succ n ih => rw [mpow, lift, ih, pw]
 
-/-- K4, linearize: any map that turns products into sums turns ⊕ₖ into +
+/-- K4, linearize: any map that turns products into sums turns ◯[k] into +
     in the coordinate 1 + k·a.  Taking L = log gives log(1 + k·a). -/
 theorem linearize {G : Type} [Add G] (L : Rat → G) (hL : ∀ x y, L (x * y) = L x + L y)
     (k a b : Rat) : L (1 + k * wmul k a b) = L (1 + k * a) + L (1 + k * b) := by
@@ -143,7 +143,7 @@ theorem outer_shan (L : Rat → Rat) (hL : ∀ x y, L (x * y) = L x + L y) (xs y
 
 /-! ## 1. Failure chances: the k = −1 rule -/
 
-/-- Union rule for independent events: P(A or B) = p + q − pq = p ⊕₋₁ q. -/
+/-- Union rule for independent events: P(A or B) = p + q − pq = p ◯[−1] q. -/
 theorem union_rule (p q : Rat) : wmul (-1) p q = 1 - (1 - p) * (1 - q) := by unfold wmul; grind
 
 /-- Survival multiplies (K1 at k = −1). -/
@@ -201,7 +201,7 @@ theorem power_sums_multiply (ws vs : List Rat) : lsum (outer ws vs) = lsum ws * 
 /-- Tsallis pseudo-additivity, S_q(A,B) = S_A + S_B + (1 − q)·S_A·S_B.
     With k = 1 − q, Tsallis entropy is S = (P − 1)/k where P is the power sum.
     Stated with the k cleared: if k·S_A = P − 1, k·S_B = R − 1 and
-    k·S_AB = P·R − 1, then k·S_AB = k·(S_A ⊕ₖ S_B). -/
+    k·S_AB = P·R − 1, then k·S_AB = k·(S_A ◯[k] S_B). -/
 theorem tsallis (k P R SA SB SAB : Rat) (hA : k * SA = P - 1) (hB : k * SB = R - 1)
     (hAB : k * SAB = P * R - 1) : k * SAB = k * wmul k SA SB := by
   have h := lift k SA SB
@@ -229,7 +229,7 @@ theorem support_count (N M : Rat) : N * M - 1 = circ (N - 1) (M - 1) := by
 theorem shannon_weight (a b : Rat) : wmul 0 a b = a + b := by unfold wmul; grind
 
 /-- Rung 2: for N equally likely outcomes and k = 1 − q a whole number m,
-    1 + k·S = Nᵐ, so k·S is the fused power (N − 1)^⊕m (K2 with k = 1). -/
+    1 + k·S = Nᵐ, so k·S is the fused power (N − 1)^◯m (K2 with k = 1). -/
 theorem uniform_tsallis_is_fused_power (N : Rat) (m : Nat) : mpow 1 (N - 1) m = pw N m - 1 := by
   have h := climb 1 (N - 1) m
   have e : (1 : Rat) + 1 * (N - 1) = N := by grind
@@ -260,7 +260,7 @@ theorem lengths_add (EA EB : Rat) : wmul 0 EA EB = EA + EB := shannon_weight EA 
 /-! ## 4. Channels: the alphabet ladder k = −(1 + c) -/
 
 /-- Binary symmetric channel cascade: the off-diagonal entry of the product of
-    [[1−p, p],[p, 1−p]] and [[1−q, q],[q, 1−q]] is p ⊕₋₂ q. -/
+    [[1−p, p],[p, 1−p]] and [[1−q, q],[q, 1−q]] is p ◯[−2] q. -/
 theorem bsc_cascade (p q : Rat) : (1 - p) * q + p * (1 - q) = wmul (-2) p q := by
   unfold wmul; grind
 
@@ -359,7 +359,7 @@ theorem hamming_perfect (r m : Nat) (h : m + r + 1 = 2 ^ r) :
   and in ρ that is Einstein's velocity addition (ρ₁ + ρ₂)/(1 + ρ₁ρ₂).
 -/
 
-/-- Check node: −2·(p ⊕₋₂ q) = (−2p) ⊕ (−2q), plain mult-add. -/
+/-- Check node: −2·(p ◯[−2] q) = (−2p) ◯ (−2q), plain mult-add. -/
 theorem check_node (p q : Rat) : -2 * wmul (-2) p q = circ (-2 * p) (-2 * q) := by
   unfold wmul circ; grind
 

@@ -4,20 +4,20 @@
 
   Core Lean 4.37, no mathlib, no `sorry`. Imports the shared base.
 
-  The picture. A quantity that grows step by step, f(k+1) = f(k) ⊞ d(k), has
+  The picture. A quantity that grows step by step, f(k+1) = f(k) ◯ d(k), has
   mult-add slope d(k). Through the lift x ↦ 1 + x every step multiplies a box
   by (1 + d(k)). Then:
 
   * Fundamental theorem: the steps mult-added give back the whole climb
     (`ftc`, `mint_lift`): the box after n steps is the product of the steps.
   * Straight lines are exponentials: a constant mult-add slope a gives the
-    mult-add power a^(⊞n) = (1 + a)^n − 1 (`mint_const`).
+    mult-add power a^(◯n) = (1 + a)^n − 1 (`mint_const`).
   * Product rule: in mult-add it is just the sum rule (`product_rule_step`,
     `mint_circ`). Its shadow in ordinary differences is Leibniz's rule
     with the corner square kept (`leibniz_corner`). Calculus is what is left
     when the corner is dropped.
   * Step size = corner weight: with steps of size h, relative rates combine
-    by the weighted mult-add p ⊞ₕ q = p + q + h·p·q (`rate_product`). This is
+    by the weighted mult-add p ◯[h] q = p + q + h·p·q (`rate_product`). This is
     the ⊕ of time-scale calculus (Hilger 1988, Bohner–Peterson 2001), and
     h = 0 gives plain addition, the ordinary derivative.
   * Chain rule for blocks: m steps at a time, n times, is a power of a power
@@ -26,7 +26,7 @@
     differences weighed by the cube's layers (`newton`). Shrinking the step
     turns the layers into xᵏ/k!, which is Taylor's series (not in Lean:
     it needs limits).
-  * Mult-add input steps: x ⊞ h − x = h(1 + x), so stepping the input by
+  * Mult-add input steps: x ◯ h − x = h(1 + x), so stepping the input by
     mult-add gives Jackson's q-derivative with q = 1 + h (`jackson_gap`).
 
   Limits (h → 0) are not in core Lean; everything here is exact.
@@ -66,7 +66,7 @@ theorem mint_lift (d : Nat → R) (n : Nat) : 1 + mint d n = liftProd d n := by
 theorem ftc_step (d : Nat → R) (n : Nat) : mint d (n + 1) = circ (mint d n) (d n) := rfl
 
 /-- Fundamental theorem, part 2: a path whose mult-add steps are d ends at
-    its start ⊞ the integral of d. -/
+    its start ◯ the integral of d. -/
 theorem ftc (f d : Nat → R) (h : ∀ k, f (k + 1) = circ (f k) (d k)) (n : Nat) :
     f n = circ (f 0) (mint d n) := by
   induction n with
@@ -78,7 +78,7 @@ theorem ftc_box (f d : Nat → R) (h : ∀ k, f (k + 1) = circ (f k) (d k)) (n :
     1 + f n = (1 + f 0) * liftProd d n := by
   rw [ftc f d h n, circ_lift, mint_lift]
 
-/-- Straight lines are exponentials: constant mult-add slope a gives a^(⊞n). -/
+/-- Straight lines are exponentials: constant mult-add slope a gives a^(◯n). -/
 theorem mint_const (a : R) (n : Nat) : mint (fun _ => a) n = mpow a n := by
   induction n with
   | zero => rfl
@@ -91,15 +91,15 @@ theorem mint_add (d : Nat → R) (a b : Nat) :
   | zero => simp only [Nat.add_zero, mint]; rw [circ_zero]
   | succ b ih => rw [← Nat.add_assoc, mint, mint, ih, circ_assoc]
 
-/-- Product rule = sum rule: if f steps by d and g steps by e, then f ⊞ g
-    steps by d ⊞ e. -/
+/-- Product rule = sum rule: if f steps by d and g steps by e, then f ◯ g
+    steps by d ◯ e. -/
 theorem product_rule_step (f g d e : Nat → R)
     (hf : ∀ k, f (k + 1) = circ (f k) (d k))
     (hg : ∀ k, g (k + 1) = circ (g k) (e k)) (k : Nat) :
     circ (f (k + 1)) (g (k + 1)) = circ (circ (f k) (g k)) (circ (d k) (e k)) := by
   rw [hf, hg]; unfold circ; grind
 
-/-- The integral of d ⊞ e is the integral of d ⊞ the integral of e. -/
+/-- The integral of d ◯ e is the integral of d ◯ the integral of e. -/
 theorem mint_circ (d e : Nat → R) (n : Nat) :
     mint (fun k => circ (d k) (e k)) n = circ (mint d n) (mint e n) := by
   induction n with
@@ -115,7 +115,7 @@ theorem mpow_mul (a : R) (m n : Nat) : mpow a (m * n) = mpow (mpow a m) n := by
 /-! ### Step size as corner weight (time-scale calculus) -/
 
 /-- If F grows by the factor (1 + h·p) over a step of size h and G by
-    (1 + h·q), then F·G grows by (1 + h·(p ⊞ₕ q)): relative rates combine by
+    (1 + h·q), then F·G grows by (1 + h·(p ◯[h] q)): relative rates combine by
     weighted mult-add with weight h. This is time-scale ⊕. -/
 theorem rate_product (h p q F G F' G' : R)
     (hF : F' = F * (1 + h * p)) (hG : G' = G * (1 + h * q)) :
@@ -125,10 +125,10 @@ theorem rate_product (h p q F G F' G' : R)
 /-- Weight 0 (step size 0) is ordinary calculus: rates just add. -/
 theorem rate_product_limit (p q : R) : circK 0 p q = p + q := circK_weight_zero p q
 
-/-- The time-scale exponential after n steps: 1 + h·p^(⊞ₕn) = (1 + h·p)ⁿ. -/
+/-- The time-scale exponential after n steps: 1 + h·p^(◯[h]n) = (1 + h·p)ⁿ. -/
 theorem ts_exp (h p : R) (n : Nat) : 1 + h * wpow h p n = (1 + h * p) ^ n := wpow_lift h p n
 
-/-- e_p · e_q = e_(p ⊞ₕ q): the exponential turns weighted mult-add into ×. -/
+/-- e_p · e_q = e_(p ◯[h] q): the exponential turns weighted mult-add into ×. -/
 theorem ts_exp_mul (h p q : R) (n : Nat) :
     (1 + h * wpow h p n) * (1 + h * wpow h q n) = 1 + h * wpow h (circK h p q) n := by
   rw [ts_exp, ts_exp, ts_exp, ← mul_pow', circK_lift]
@@ -154,7 +154,7 @@ theorem leibniz_corner (f g : Nat → R) (k : Nat) :
     diff (fun j => f j * g j) k = diff f k * g k + f k * diff g k + diff f k * diff g k := by
   unfold diff; grind
 
-/-- The ordinary difference of f ⊞ g: two lifted strips and the corner. -/
+/-- The ordinary difference of f ◯ g: two lifted strips and the corner. -/
 theorem diff_circ (f g : Nat → R) (k : Nat) :
     diff (fun j => circ (f j) (g j)) k
       = diff f k * (1 + g k) + (1 + f k) * diff g k + diff f k * diff g k := by
@@ -191,12 +191,12 @@ variable {K : Type} [Field K]
 /-- The mult-add slope of a step: (f(k+1) − f(k)) / (1 + f(k)). -/
 def mslope (f : Nat → K) (k : Nat) : K := msub (f (k + 1)) (f k)
 
-/-- Away from the wall, the mult-add slope is the step: f(k) ⊞ slope = f(k+1). -/
+/-- Away from the wall, the mult-add slope is the step: f(k) ◯ slope = f(k+1). -/
 theorem mslope_step (f : Nat → K) (k : Nat) (h : 1 + f k ≠ 0) :
     circ (f k) (mslope f k) = f (k + 1) := by
   unfold mslope; rw [circ_comm]; exact msub_circ _ _ h
 
-/-- Fundamental theorem with slopes read off: f(n) = f(0) ⊞ ∫ mslope f. -/
+/-- Fundamental theorem with slopes read off: f(n) = f(0) ◯ ∫ mslope f. -/
 theorem ftc_mslope (f : Nat → K) (h : ∀ k, 1 + f k ≠ 0) (n : Nat) :
     f n = circ (f 0) (mint (mslope f) n) :=
   ftc f (mslope f) (fun k => (mslope_step f k (h k)).symm) n

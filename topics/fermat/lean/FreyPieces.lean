@@ -495,7 +495,7 @@ theorem rat_mul_ne_zero {a b : Rat} (ha : a ≠ 0) (hb : b ≠ 0) : a * b ≠ 0 
 theorem one_add_div_mul {b d : Rat} (h : b ≠ 0) : (1 + d / b) * b = b + d := by
   rw [Rat.add_mul, Rat.div_mul_cancel h, Rat.one_mul]
 
-/-- 3f. Link: three points of the node are collinear exactly when s1 ⊞ s2 ⊞ s3 = 0, sᵢ = (m2 − m1)/(tᵢ − m2). -/
+/-- 3f. Link: three points of the node are collinear exactly when s1 ◯ s2 ◯ s3 = 0, sᵢ = (m2 − m1)/(tᵢ − m2). -/
 theorem node_chord_circ (m1 m2 t1 t2 t3 : Rat) (hm : m1 ≠ m2)
     (h12 : t1 ≠ t2) (h23 : t2 ≠ t3) (h31 : t3 ≠ t1)
     (h1 : t1 ≠ m2) (h2 : t2 ≠ m2) (h3 : t3 ≠ m2) :

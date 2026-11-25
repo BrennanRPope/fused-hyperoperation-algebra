@@ -20,7 +20,7 @@
   * Every chart change is a monomial map: a 2×2 integer matrix acting on
     exponents. c0 → c1 is (a, b) ↦ (1/a, b/a), which mixes the two
     coordinates. In mult-add coordinates (a = 1 + u, b = 1 + w) that is
-    (u, w) ↦ (u⁻, w ⊞ u⁻): take the mult-add inverse of u, then mult-add
+    (u, w) ↦ (u⁻, w ◯ u⁻): take the mult-add inverse of u, then mult-add
     it onto w. So the gluing of P² is mult-add division.
 
   * Windings x ↦ xⁿ commute with every chart change, because monomial maps
@@ -149,7 +149,7 @@ theorem torus_in_all (c d : Cone) (x y : K) (hx : x ≠ 0) (hy : y ≠ 0) :
 /-! Mult-add coordinates: a = 1 + u, b = 1 + w. -/
 
 /-- In mult-add coordinates, the chart change c0 → c1, (a, b) ↦ (1/a, b/a),
-is (u, w) ↦ (u⁻, w ⊞ u⁻): the mult-add inverse, then a mult-add. -/
+is (u, w) ↦ (u⁻, w ◯ u⁻): the mult-add inverse, then a mult-add. -/
 theorem trans01_circ (u w : K) (h : 1 + u ≠ 0) :
     trans c0 c1 (1 + u, 1 + w) = (1 + circInv u, 1 + circ w (circInv u)) := by
   simp only [trans, circ, circInv, Prod.mk.injEq]; constructor <;> grind

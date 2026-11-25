@@ -9,7 +9,7 @@ namespace DarkSector
 
 def circ (a b : Nat) : Nat := a + b + a * b
 def fexp (a b : Nat) : Nat := (a + 1) ^ (b + 1) - 1
-/-- n-fold mult-add power of z:  z ⊕ z ⊕ … ⊕ z  (n copies), with 0 copies = 0. -/
+/-- n-fold mult-add power of z:  z ◯ z ◯ … ◯ z  (n copies), with 0 copies = 0. -/
 def mpow (z : Nat) : Nat → Nat
   | 0 => 0
   | n + 1 => circ (mpow z n) z
@@ -17,10 +17,10 @@ def mpow (z : Nat) : Nat → Nat
 theorem circ_lift (a b : Nat) : circ a b + 1 = (a + 1) * (b + 1) := by unfold circ; grind
 
 /-! ## 1. Redshifts compose by mult-add (exact, no model needed)
-Light stretched by 1+z₁ and then by 1+z₂ is stretched by (1+z₁)(1+z₂).  So the total redshift is z₁ ⊕ z₂.
+Light stretched by 1+z₁ and then by 1+z₂ is stretched by (1+z₁)(1+z₂).  So the total redshift is z₁ ◯ z₂.
 Geometrically: the (1+z₁)×(1+z₂) rectangle = unit square + two strips z₁, z₂ + corner z₁z₂. -/
 theorem redshift_compose (z₁ z₂ : Nat) : (1 + z₁) * (1 + z₂) = 1 + circ z₁ z₂ := by unfold circ; grind
-/-- n equal stretches: (1+z)^n = 1 + (z ⊕ z ⊕ … ⊕ z). -/
+/-- n equal stretches: (1+z)^n = 1 + (z ◯ z ◯ … ◯ z). -/
 theorem redshift_power (z n : Nat) : (1 + z) ^ n = 1 + mpow z n := by
   induction n with
   | zero => simp [mpow]
@@ -33,13 +33,13 @@ theorem redshift_compose_int (z₁ z₂ : Int) : (1 + z₁) * (1 + z₂) = 1 + (
 theorem cube_layers (z : Nat) : (1 + z) ^ 3 = 1 + 3 * z + 3 * z ^ 2 + z ^ 3 := by grind
 theorem cube_is_mpow3 (z : Nat) : mpow z 3 = 3 * z + 3 * z ^ 2 + z ^ 3 := by
   have h := redshift_power z 3; rw [cube_layers] at h; omega
-/-- Flat ΛCDM, exactly:  Ωm(1+z)³ + (1-Ωm) = 1 + Ωm·(z ⊕ z ⊕ z).
+/-- Flat ΛCDM, exactly:  Ωm(1+z)³ + (1-Ωm) = 1 + Ωm·(z ◯ z ◯ z).
 The cosmological constant is the unit cube; matter is the weighted shell of the (1+z) cube around it. -/
 theorem lcdm_is_weighted_cube (Om z : Rat) :
     Om * (1 + z) ^ 3 + (1 - Om) = 1 + Om * (3 * z + 3 * z ^ 2 + z ^ 3) := by grind
 
 /-! ## 3. Constant expansion rate = growth fractions that compose by mult-add (rung 2)
-If the fractional growth A(t) over a time t satisfies A(t+s) = A(t) ⊕ A(s), the scale factor 1+A grows
+If the fractional growth A(t) over a time t satisfies A(t+s) = A(t) ◯ A(s), the scale factor 1+A grows
 exponentially: 1 + A(t) = (1 + A(1))^t.  That is de Sitter expansion, the cosmological constant. -/
 theorem circ_growth_is_exponential (A : Nat → Nat) (hA : ∀ t s, A (t + s) = circ (A t) (A s)) :
     ∀ t, A t + 1 = (A 1 + 1) ^ t := by
@@ -51,7 +51,7 @@ theorem circ_growth_is_exponential (A : Nat → Nat) (hA : ∀ t s, A (t + s) = 
   | succ n ih => rw [hA n 1, circ_lift, ih, Nat.pow_succ]
 
 /-! ## 4. No-go one rung up
-Expansion cannot compose at the fused-exponent rung.  If growth over t+s were A(t) ⊛ A(s), in either order,
+Expansion cannot compose at the fused-exponent rung.  If growth over t+s were fexp (A t) (A s), in either order,
 and nothing has grown at t = 0, then nothing ever grows.  So the ladder tops out at rung 2 for expansion:
 the cosmological constant is the highest rung that can carry it. -/
 theorem fexp_growth_trivial (A : Nat → Nat) (h0 : A 0 = 0) (hA : ∀ t s, A (t + s) = fexp (A t) (A s)) :
@@ -92,8 +92,8 @@ theorem corner_le_quarter (a b : Int) : 4 * (a * b) ≤ (a + b) ^ 2 := by
   omega
 
 /-! ## 6. MOND's simple interpolation is the mult-add inverse (up to sign)
-The mult-add inverse of x is y = -x/(1+x):  x ⊕ y = 0.  MOND's "simple" μ(x) = x/(1+x) is exactly -y.
-Stated without division: if x ⊕ y = 0 then (1+x)(1+y) = 1 and (1+x)·(-y) = x. -/
+The mult-add inverse of x is y = -x/(1+x):  x ◯ y = 0.  MOND's "simple" μ(x) = x/(1+x) is exactly -y.
+Stated without division: if x ◯ y = 0 then (1+x)(1+y) = 1 and (1+x)·(-y) = x. -/
 theorem minv_lift (x y : Int) (h : x + y + x * y = 0) : (1 + x) * (1 + y) = 1 := by grind
 theorem mu_is_neg_minv (x y : Int) (h : x + y + x * y = 0) : (1 + x) * (-y) = x := by grind
 /-- Simple-MOND law  g_N = g·μ(g/a₀)  written without division is  g·g = g_N·g + g_N·a₀ :

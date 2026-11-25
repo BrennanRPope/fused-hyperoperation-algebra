@@ -11,13 +11,13 @@
   a fix, and the generic mult-add laws, the list fold, the corner expansion
   and the way back now come from FusedAlgebra.Base.)
 
-  Mult-add: a ⊞ b = a + b + a·b = (1 + a)(1 + b) - 1.
+  Mult-add: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1.
 
   What it proves, in Rulecraft's words:
 
   * Scope matches spillover (the boundary theorem). Split the parties a
     decision touches into an inside list S and an outside list T. The
-    whole effect is X_S ⊞ X_T = X_S + X_T + X_S·X_T. The cross term X_S·X_T
+    whole effect is X_S ◯ X_T = X_S + X_T + X_S·X_T. The cross term X_S·X_T
     is exactly the corners of the cube that touch both sides: the
     spillover a body with scope S cannot see. The corner expansion
     (`one_add_foldCirc_eq_corners`) shows the mult-add of a list is the sum,
@@ -29,7 +29,7 @@
     exponent rung is not commutative (`fexp_not_comm`), so path dependence
     needs a higher rung or more than one quantity.
 
-  * The event horizon. -1 (losing everything) absorbs: (-1) ⊞ b = -1 for
+  * The event horizon. -1 (losing everything) absorbs: (-1) ◯ b = -1 for
     every b, so nothing ever composes back to 0. Everywhere else there is
     an exact way back, -a/(1+a). Losing n parts of n+1 needs a gain of n
     to recover (`recovery`): 90% lost needs +900%.
@@ -43,7 +43,7 @@
     (`balance`, `balance_le`). This is also why a tension held in balance
     keeps the most corner.
 
-  * Coupling weight. a ⊞_A b = a + b + A·a·b is ordinary mult-add seen
+  * Coupling weight. a ◯[A] b = a + b + A·a·b is ordinary mult-add seen
     through x ↦ A·x (`weighted_conj`). A > 0 is Benedict's high synergy,
     A < 0 a zero-sum corner, A = 0 no spillover at all.
 

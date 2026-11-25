@@ -5,7 +5,7 @@
   Companion page and checks: ../index.html, ../checks.py (12 checks).
   Core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 
-  Two binding sites with interaction factor ω: P − 1 = a ⊞_ω b.
+  Two binding sites with interaction factor ω: P − 1 = a ◯[ω] b.
   A symmetric diacid has ω = 4·10^(−ΔpKa).
   For two equal sites the binding polynomial 1 + 2x + ωx² has real zeros
   exactly when ω ≤ 1 (discriminant 4 − 4ω), so positive cooperativity and

@@ -72,13 +72,13 @@ theorem eulerProd_30_explicit :
     eulerProd 30 = [1, -1, -1, 0, 0, 1, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1,
       0, 0, 0, 1, 0, 0, 0] := by decide +kernel
 
-/-- The same product as a mult-add: x ⊞ y = x + y + xy on truncated series. -/
+/-- The same product as a mult-add: x ◯ y = x + y + xy on truncated series. -/
 def tma (N : Nat) (x y : Poly) : Poly := (padd (padd x y) (pmul x y)).take N
 
-/-- −q ⊞ −q² ⊞ … ⊞ −q^(N−1) mod q^N. -/
+/-- −q ◯ −q² ◯ … ◯ −q^(N−1) mod q^N. -/
 def eulerCirc (N : Nat) : Poly := (List.range' 1 (N - 1)).foldl (fun acc k => tma N acc (pzeros k [-1])) []
 
-/-- 1 + (−q ⊞ −q² ⊞ …) is Euler's product (the list lift foldCirc_lift, seen on series). -/
+/-- 1 + (−q ◯ −q² ◯ …) is Euler's product (the list lift foldCirc_lift, seen on series). -/
 theorem euler_is_circ_30 : trim (padd [1] (eulerCirc 30)) = trim (eulerProd 30) := by
   decide +kernel
 

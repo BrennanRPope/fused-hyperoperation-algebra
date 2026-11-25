@@ -41,7 +41,7 @@ theorem mediant_above (a1 a2 b1 b2 : Rat) (h : b1 * a2 ≤ b2 * a1) : b1 * (a1 +
 theorem mediant_below (a1 a2 b1 b2 : Rat) (h : b1 * a2 ≤ b2 * a1) : (b1 + b2) * a2 ≤ b2 * (a1 + a2) := by
   grind
 
-/-- The dial folded over three equal sites: x ⊞ₖ x ⊞ₖ x = 3x + 3k x² + k² x³. -/
+/-- The dial folded over three equal sites: x ◯[k] x ◯[k] x = 3x + 3k x² + k² x³. -/
 theorem fold_three (k x : Rat) : circK k (circK k x x) x = 3 * x + 3 * k * (x * x) + k * k * (x * x * x) := by
   unfold circK; grind
 

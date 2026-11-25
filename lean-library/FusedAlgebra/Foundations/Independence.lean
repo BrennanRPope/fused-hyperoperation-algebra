@@ -7,12 +7,12 @@
   among M1–M4. (A1–A4 are the usual abelian-group axioms; their independence
   is classical and not redone here.)
 
-  * no M1 (turning the box): 2×2 integer matrices, A ⊕ B = A + B + AB.
+  * no M1 (turning the box): 2×2 integer matrices, A ◯ B = A + B + AB.
   * no M2 (building a 3-D box two ways): a 3-number algebra with x·x = y,
-    y·y = x, x·y = 0, A ⊕ B = A + B + A·B.
-  * no M3 (the wall): whole numbers with a ⊕ b = a + b + 2ab, the weighted
+    y·y = x, x·y = 0, A ◯ B = A + B + A·B.
+  * no M3 (the wall): whole numbers with a ◯ b = a + b + 2ab, the weighted
     family at k = 2. Its wall would be −1/2, which is not a whole number.
-  * no M4 (cutting a box in two): whole numbers with a ⊕ b = a·b.
+  * no M4 (cutting a box in two): whole numbers with a ◯ b = a·b.
 
   LIBRARY NOTE: copied from axioms/lean/Axioms/Independence.lean (Nov 25) as Foundations/Independence.
 -/
@@ -44,7 +44,7 @@ theorem int_group (m : Int → Int → Int) (w : Int) :
     A1 (intOps m w) ∧ A2 (intOps m w) ∧ A3 (intOps m w) ∧ A4 (intOps m w) := by
   refine ⟨?_, ?_, ?_, ?_⟩ <;> simp only [A1, A2, A3, A4, intOps] <;> intros <;> omega
 
-/-! ## No M4: a ⊕ b = a·b -/
+/-! ## No M4: a ◯ b = a·b -/
 
 theorem no_M4 :
     let o := intOps (· * ·) 0

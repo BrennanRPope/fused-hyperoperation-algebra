@@ -47,10 +47,10 @@ variable {K : Type} [Field K] [DecidableEq K]
 
 /-! ## 1. Mult-add and its inverse: the gluing map -/
 
-/-- Mult-add: a ⊞ b = a + b + a·b = (1 + a)(1 + b) - 1. -/
+/-- Mult-add: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1. -/
 def circ (a b : K) : K := a + b + a * b
 
-/-- The mult-add inverse: the u' with u ⊞ u' = 0. -/
+/-- The mult-add inverse: the u' with u ◯ u' = 0. -/
 def circInv (u : K) : K := -u / (1 + u)
 
 theorem circ_circInv (u : K) (h : 1 + u ≠ 0) : circ u (circInv u) = 0 := by

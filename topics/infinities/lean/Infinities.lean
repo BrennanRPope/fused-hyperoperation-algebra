@@ -9,7 +9,7 @@
   workspace has no Lean toolchain, so nothing here has been run through
   Lean yet. Every identity below is also checked in ../checks.py.
 
-  Mult-add is a ⊕ b = a + b + ab = (1+a)(1+b) − 1.
+  Mult-add is a ◯ b = a + b + ab = (1+a)(1+b) − 1.
 
   What is stated and proved here:
   * sumOnes_eq      n ones added make n.                       (the countable side)

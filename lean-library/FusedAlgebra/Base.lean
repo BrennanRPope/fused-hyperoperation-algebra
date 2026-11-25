@@ -5,10 +5,10 @@
   Every topic module imports this file, so each law is proved once.
   Core Lean 4 only (no mathlib, no `sorry`). Written for Lean 4.37.
 
-  Mult-add:            a ⊞ b = a + b + a·b = (1 + a)(1 + b) − 1
-  Weighted family:     a ⊞ₖ b = a + b + k·a·b,  1 + k(a ⊞ₖ b) = (1 + ka)(1 + kb)
-  Mult-add power:      a^(⊞n) = (1 + a)^n − 1
-  Way back (inverse):  a ⊞ (−a/(1 + a)) = 0, everywhere but the wall a = −1
+  Mult-add:            a ◯ b = a + b + a·b = (1 + a)(1 + b) − 1
+  Weighted family:     a ◯[k] b = a + b + k·a·b,  1 + k(a ◯[k] b) = (1 + ka)(1 + kb)
+  Mult-add power:      a^(◯n) = (1 + a)^n − 1
+  Way back (inverse):  a ◯ (−a/(1 + a)) = 0, everywhere but the wall a = −1
 
   The laws are stated once for any commutative semiring (so they hold on
   Nat, Int and Rat at the same time); the ones that need minus are stated
@@ -58,7 +58,7 @@ theorem zero_circ (a : R) : circ 0 a = a := by
 /-- Mult-add is never less than its two pieces added: the corner a·b is extra. -/
 theorem circ_excess (a b : R) : circ a b = (a + b) + a * b := rfl
 
-/-! ### The weighted family a ⊞ₖ b = a + b + k·a·b -/
+/-! ### The weighted family a ◯[k] b = a + b + k·a·b -/
 
 /-- The circle operation with dial k: a ◯[k] b = a + b + k·a·b. -/
 def circK (k a b : R) : R := a + b + k * a * b
@@ -67,7 +67,7 @@ def circK (k a b : R) : R := a + b + k * a * b
 
 theorem circK_def (k a b : R) : circK k a b = a + b + k * a * b := rfl
 
-/-- The weighted lift: 1 + k·(a ⊞ₖ b) = (1 + k·a)(1 + k·b). -/
+/-- The weighted lift: 1 + k·(a ◯[k] b) = (1 + k·a)(1 + k·b). -/
 theorem circK_lift (k a b : R) : 1 + k * circK k a b = (1 + k * a) * (1 + k * b) := by
   unfold circK; grind
 
@@ -143,31 +143,31 @@ theorem one_pow' (n : Nat) : (1 : R) ^ n = 1 := by
   | zero => rw [Semiring.pow_zero]
   | succ n ih => rw [Semiring.pow_succ, ih]; grind
 
-/-! ### Powers: a ⊞ a ⊞ … ⊞ a climbs the cube -/
+/-! ### Powers: a ◯ a ◯ … ◯ a climbs the cube -/
 
-/-- The mult-add power a^(⊞n): n copies of a, mult-added. -/
+/-- The mult-add power a^(◯n): n copies of a, mult-added. -/
 def mpow (a : R) : Nat → R
   | 0 => 0
   | n + 1 => circ (mpow a n) a
 
-/-- 1 + a^(⊞n) = (1 + a)^n. -/
+/-- 1 + a^(◯n) = (1 + a)^n. -/
 theorem mpow_lift (a : R) (n : Nat) : 1 + mpow a n = (1 + a) ^ n := by
   induction n with
   | zero => rw [Semiring.pow_zero]; simp only [mpow]; grind
   | succ n ih => rw [Semiring.pow_succ, ← ih, mpow, circ_lift]
 
-/-- Powers add: a^(⊞(m+n)) = a^(⊞m) ⊞ a^(⊞n). -/
+/-- Powers add: a^(◯(m+n)) = a^(◯m) ◯ a^(◯n). -/
 theorem mpow_add (a : R) (m n : Nat) : mpow a (m + n) = circ (mpow a m) (mpow a n) := by
   induction n with
   | zero => simp only [Nat.add_zero, mpow]; rw [circ_zero]
   | succ n ih => rw [← Nat.add_assoc, mpow, mpow, ih, circ_assoc]
 
-/-- The weighted power: n copies of a under ⊞ₖ. -/
+/-- The weighted power: n copies of a under ◯[k]. -/
 def wpow (k a : R) : Nat → R
   | 0 => 0
   | n + 1 => circK k (wpow k a n) a
 
-/-- 1 + k·a^(⊞ₖn) = (1 + k·a)^n. -/
+/-- 1 + k·a^(◯[k]n) = (1 + k·a)^n. -/
 theorem wpow_lift (k a : R) (n : Nat) : 1 + k * wpow k a n = (1 + k * a) ^ n := by
   induction n with
   | zero => rw [Semiring.pow_zero]; simp only [wpow]; grind
@@ -178,7 +178,7 @@ theorem wpow_one (a : R) (n : Nat) : wpow 1 a n = mpow a n := by
   | zero => rfl
   | succ n ih => rw [wpow, mpow, ih, circK_one]
 
-/-! ### Lists: x₁ ⊞ x₂ ⊞ … ⊞ xₙ -/
+/-! ### Lists: x₁ ◯ x₂ ◯ … ◯ xₙ -/
 
 /-- The mult-add of a list. -/
 def foldCirc : List R → R
@@ -195,7 +195,7 @@ def sumL : List R → R
   | [] => 0
   | a :: l => a + sumL l
 
-/-- The whole is the first part ⊞ the second part. -/
+/-- The whole is the first part ◯ the second part. -/
 theorem foldCirc_append (S T : List R) :
     foldCirc (S ++ T) = circ (foldCirc S) (foldCirc T) := by
   induction S with
@@ -204,7 +204,7 @@ theorem foldCirc_append (S T : List R) :
     simp only [List.cons_append, foldCirc]
     rw [ih, circ_assoc]
 
-/-- The list lift: 1 + (x₁ ⊞ … ⊞ xₙ) = (1 + x₁)⋯(1 + xₙ). -/
+/-- The list lift: 1 + (x₁ ◯ … ◯ xₙ) = (1 + x₁)⋯(1 + xₙ). -/
 theorem foldCirc_lift (l : List R) : 1 + foldCirc l = prodL (l.map (fun x => 1 + x)) := by
   induction l with
   | nil => simp only [foldCirc, List.map, prodL]; grind
@@ -236,7 +236,7 @@ theorem sumL_map_cons (a : R) (gs : List (List R)) :
   | nil => simp only [List.map, sumL]; grind
   | cons g gs ih => simp only [List.map, sumL, prodL] at ih ⊢; rw [ih]; grind
 
-/-- The corner expansion: 1 + (x₁ ⊞ … ⊞ xₙ) is the sum over every corner of
+/-- The corner expansion: 1 + (x₁ ◯ … ◯ xₙ) is the sum over every corner of
     the cube (every sub-list) of the product of its entries. -/
 theorem one_add_foldCirc_eq_corners (l : List R) :
     1 + foldCirc l = sumL ((groups l).map prodL) := by
@@ -258,7 +258,7 @@ variable {R : Type} [CommRing R]
 theorem neg_one_absorbs (b : R) : circ (-1) b = -1 := by
   unfold circ; grind
 
-/-- The power in closed form: a^(⊞n) = (1 + a)^n − 1. -/
+/-- The power in closed form: a^(◯n) = (1 + a)^n − 1. -/
 theorem mpow_eq (a : R) (n : Nat) : mpow a n = (1 + a) ^ n - 1 := by
   have h := mpow_lift a n
   grind
@@ -267,7 +267,7 @@ theorem mpow_eq (a : R) (n : Nat) : mpow a n = (1 + a) ^ n - 1 := by
 theorem circK_either (a b : R) : circK (-1) a b = 1 - (1 - a) * (1 - b) := by
   unfold circK; grind
 
-/-- k = −1 is mult-add mirrored: a ⊞₋₁ b = −((−a) ⊞ (−b)). -/
+/-- k = −1 is mult-add mirrored: a ◯[−1] b = −((−a) ◯ (−b)). -/
 theorem circK_neg_one_mirror (a b : R) : circK (-1) a b = -(circ (-a) (-b)) := by
   unfold circK circ; grind
 
@@ -313,7 +313,7 @@ def msub (a b : K) : K := (a - b) / (1 + b)
 theorem msub_circ (a b : K) (h : 1 + b ≠ 0) : circ (msub a b) b = a := by
   unfold circ msub; grind
 
-/-- The weighted wall: −1/k absorbs everything under ⊞ₖ. -/
+/-- The weighted wall: −1/k absorbs everything under ◯[k]. -/
 theorem circK_wall (k a : K) (hk : k ≠ 0) : circK k a (-1 / k) = -1 / k := by
   unfold circK; grind
 

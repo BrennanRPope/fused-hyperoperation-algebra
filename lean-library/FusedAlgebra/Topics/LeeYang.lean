@@ -10,7 +10,7 @@
 
   Two ways to build a partition function from the dial k (with q = k + 1):
 
-  A. The dial gas. One edge: 1 + (x ⊞ₖ y) = 1 + x + y + k·xy is the two-site lattice gas
+  A. The dial gas. One edge: 1 + (x ◯[k] y) = 1 + x + y + k·xy is the two-site lattice gas
      with pair weight k (k = 1 free, k = 0 hard core). On a ring of n sites the transfer
      matrix is T = [[1, z], [1, k·z]], whose trace is the weighted lift 1 + k·z.
      When the trace is 0 (z on the wall −1/k), T² = −det(T)·I, so every odd power of T has

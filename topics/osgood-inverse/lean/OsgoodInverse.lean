@@ -18,18 +18,18 @@
   statements here are the exact algebraic and discrete forms of that picture:
 
   1. The Riccati climb y' = (1+y)²: its solution t/(1−t) obeys the exact
-     difference law Δy = h·(1+y(t))(1+y(t+h)) = h·(1 + y(t) ⊞ y(t+h)), and it
+     difference law Δy = h·(1+y(t))(1+y(t+h)) = h·(1 + y(t) ◯ y(t+h)), and it
      passes every height before t = 1.
   2. The discrete climb with that law hits the wall: its clock 1/(1+y) falls by
      exactly h per step, so it reaches 0 (y = ∞) after 1/h steps. The rung-1
-     climb y ↦ y ⊞ h never does. Through the mult-add inverse −u/(1+u) the
+     climb y ↦ y ◯ h never does. Through the mult-add inverse −u/(1+u) the
      blow-up is a walk at constant speed into the wall −1: blow-up at infinity
      and leaving the wall are one question.
   3. Non-uniqueness: the trapezoid scheme of x' = 2√x has a whole fan of
      solutions out of 0 (one for every start time c); the same scheme for the
      Lipschitz x' = x has only the zero solution.
   4. The test moves down one rung exactly: Cauchy condensation. The blocks
-     [2ʲ, 2ʲ⁺¹) start at 1 + 1^(⊞j), have length 2ʲ (the lift factor), and
+     [2ʲ, 2ʲ⁺¹) start at 1 + 1^(◯j), have length 2ʲ (the lift factor), and
      the dyadic partial sums are squeezed by the condensed sums both ways, so
      the test for a passes iff the test for j ↦ 2ʲ·a(2ʲ) passes.
      Instances: 1/k (rung 0) grows at least like n/2; 1/k² stays below 2.
@@ -76,7 +76,7 @@ theorem ric_step (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
     ric (t + h) - ric t = h * (1 + ric t) * (1 + ric (t + h)) := by
   unfold ric; grind
 
-/-- The same law in mult-add: the step is h times the lift of y(t) ⊞ y(t+h). -/
+/-- The same law in mult-add: the step is h times the lift of y(t) ◯ y(t+h). -/
 theorem ric_step_circ (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
     ric (t + h) - ric t = h * (1 + circ (ric t) (ric (t + h))) := by
   rw [ric_step t h h1 h2, circ_lift]; grind
@@ -143,7 +143,7 @@ theorem mirror_step (a b h : K) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0)
 theorem mirror_lift (u : K) (hu : 1 + u ≠ 0) : 1 + circInv u = 1 / (1 + u) := by
   unfold circInv; grind
 
-/-- **The rung-1 climb never reaches the wall.** If yₙ₊₁ = yₙ ⊞ h then
+/-- **The rung-1 climb never reaches the wall.** If yₙ₊₁ = yₙ ◯ h then
     1 + yₙ = (1 + y₀)(1 + h)ⁿ: the clock log₁₊ y advances by log(1+h) per step
     forever (continuous form: ∫ ds/(1+s) = log(1+s) → ∞). -/
 theorem rung1_lift (y : Nat → K) (h : K) (hs : ∀ n, y (n + 1) = circ (y n) h) :
@@ -263,7 +263,7 @@ theorem lipschitz_unique (x : Nat → Rat) (h : Rat) (hh : 2 - h ≠ 0) (h0 : x 
   The substitution s = E(x) (1 + s = eˣ) turns ∫ ds/((1+s)g(s)) into
   ∫ dx/g(E(x)): the test for f = (1+s)·g is the test for g∘E, one rung down.
   The discrete form is Cauchy condensation: sample at the points
-  1 + 1^(⊞j) = 2ʲ, weight each sample by the block length 2ʲ (the lift
+  1 + 1^(◯j) = 2ʲ, weight each sample by the block length 2ʲ (the lift
   factor). -/
 
 /-- Σ_{i<len} a(s + i). -/
@@ -314,7 +314,7 @@ theorem const_block (c : Rat) (j : Nat) : ∀ s, fsum (fun _ => c) s (2 ^ j) = (
     grind
 
 /-- **The blocks are the mult-add lattice.** The j-th block starts at
-    2ʲ = 1 + 1^(⊞j), the lift of the j-fold mult-add of 1. -/
+    2ʲ = 1 + 1^(◯j), the lift of the j-fold mult-add of 1. -/
 theorem block_start (j : Nat) : 2 ^ j = mpow (1 : Nat) j + 1 :=
   (CircleOp.NSContinuum.mpow_one_nat j).symm
 

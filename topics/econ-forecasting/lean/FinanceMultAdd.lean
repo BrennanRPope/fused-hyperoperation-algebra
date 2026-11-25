@@ -7,10 +7,10 @@
   STATUS: core Lean 4 only (no mathlib), no `sorry`. Run it with
   `lean FinanceMultAdd.lean`. Checked with Lean 4.37.0-rc1.
 
-  Mult-add is a ⊕ b = a + b + ab = (1+a)(1+b) − 1, and a ⊖ b = (a − b)/(1 + b) undoes it.
+  Mult-add is a ◯ b = a + b + ab = (1+a)(1+b) − 1, and a ⊖ b = (a − b)/(1 + b) undoes it.
 
   Proved:
-  * fisher:       (nominal ⊖ inflation) ⊕ inflation = nominal. The real rate is the
+  * fisher:       (nominal ⊖ inflation) ◯ inflation = nominal. The real rate is the
                   mult-add difference, not the plain difference.
   * mall_growth:  mult-adding a list of yearly returns gives the total growth minus 1
                   (the n-cube of returns, all its corners together).

@@ -13,7 +13,7 @@
     global (the whole group: how many periods its log has).
 
   What the file proves:
-    A. The weight is units: λ·(a ⊞_{λk} b) = (λa) ⊞_k (λb). The q of the q-integers is k + 1,
+    A. The weight is units: λ·(a ◯[λk] b) = (λa) ◯[k] (λb). The q of the q-integers is k + 1,
        the same dial. On a graph (three sites in a row) the weight can no longer be scaled away.
     B. The landscape bend: a projective ruler x ↦ x/(1+cx) slides (p, q) along the parabola of
        constant discriminant D = p² − 4q; units multiply D by λ². So after units and rulers only

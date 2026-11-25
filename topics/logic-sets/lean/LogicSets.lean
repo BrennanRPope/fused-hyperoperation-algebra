@@ -10,7 +10,7 @@
   Topics/Statistics and are not repeated here). What is new here:
 
     1. Why only OR and XOR: for idempotents a, b (a² = a, b² = b) the dial
-       a ⊞ₖ b is idempotent again up to the defect (k + 1)(k + 2)·ab. The two roots are
+       a ◯[k] b is idempotent again up to the defect (k + 1)(k + 2)·ab. The two roots are
        k = −1 (OR, the Boolean lattice) and k = −2 (XOR, the Boolean ring). In q-number
        terms q = k + 1 is 0 or −1, and n trues fold to [n]_0 = 1 or [n]_{−1} = n mod 2.
     2. Distributivity and absorption fail by a defect k·abc(1 − a) and ab(1 − a): both
@@ -39,13 +39,13 @@ set_option linter.unusedSectionVars false
 section Ring
 variable {R : Type} [CommRing R]
 
-/-- The dial's table on 0 and 1, for every weight k. Only the corner moves: 1 ⊞ₖ 1 = 2 + k. -/
+/-- The dial's table on 0 and 1, for every weight k. Only the corner moves: 1 ◯[k] 1 = 2 + k. -/
 theorem dial_table (k : R) :
     circK k (0:R) 0 = 0 ∧ circK k (0:R) 1 = 1 ∧ circK k (1:R) 0 = 1 ∧ circK k (1:R) 1 = 2 + k := by
   unfold circK; refine ⟨?_, ?_, ?_, ?_⟩ <;> grind
 
 /-- **The idempotent defect.** For a² = a and b² = b,
-    (a ⊞ₖ b)² − (a ⊞ₖ b) = (k + 1)(k + 2)·ab. -/
+    (a ◯[k] b)² − (a ◯[k] b) = (k + 1)(k + 2)·ab. -/
 theorem idem_defect (k a b : R) (ha : a * a = a) (hb : b * b = b) :
     circK k a b * circK k a b - circK k a b = (k + 1) * (k + 2) * (a * b) := by
   unfold circK
@@ -70,7 +70,7 @@ theorem and_keeps_idem (a b : R) (ha : a * a = a) (hb : b * b = b) :
   have : (a * b) * (a * b) = (a * a) * (b * b) := by grind
   rw [this, ha, hb]
 
-/-- The distributivity defect: a(b ⊞ₖ c) − (ab ⊞ₖ ac) = k·abc(1 − a). -/
+/-- The distributivity defect: a(b ◯[k] c) − (ab ◯[k] ac) = k·abc(1 − a). -/
 theorem dist_defect (k a b c : R) :
     a * circK k b c - circK k (a * b) (a * c) = k * a * b * c * (1 - a) := by
   unfold circK; grind
@@ -82,7 +82,7 @@ theorem dist_on_idem (k a b c : R) (ha : a * a = a) :
   have : k * a * b * c * (1 - a) = k * b * c * (a - a * a) := by grind
   rw [ha] at this; grind
 
-/-- The absorption defect: a ⊞₋₁ (ab) = a + ab(1 − a). -/
+/-- The absorption defect: a ◯[−1] (ab) = a + ab(1 − a). -/
 theorem absorb_defect (a b : R) : circK (-1) a (a * b) = a + a * b * (1 - a) := by
   unfold circK; grind
 
@@ -97,11 +97,11 @@ theorem absorb_on_idem (a b : R) (ha : a * a = a) :
     have : a * (a + b + -1 * a * b) = a * a + b * (a - a * a) := by grind
     rw [this, ha]; grind
 
-/-- OR is idempotent exactly on idempotents: a ⊞₋₁ a − a = a − a². -/
+/-- OR is idempotent exactly on idempotents: a ◯[−1] a − a = a − a². -/
 theorem or_self (a : R) : circK (-1) a a - a = a - a * a := by
   unfold circK; grind
 
-/-- XOR of a thing with itself: a ⊞₋₂ a = 2(a − a²), zero on idempotents (self-inverse). -/
+/-- XOR of a thing with itself: a ◯[−2] a = 2(a − a²), zero on idempotents (self-inverse). -/
 theorem xor_self (a : R) : circK (-2) a a = 2 * (a - a * a) := by
   unfold circK; grind
 
@@ -124,18 +124,18 @@ theorem xor_from_or_and (a b : R) (ha : a * a = a) (hb : b * b = b) :
       = a + b - a * b - (a * a) * b - a * (b * b) + (a * a) * (b * b) := by grind
   rw [e, ha, hb]; grind
 
-/-- OR's wall is "true": 1 absorbs everything under ⊞₋₁. -/
+/-- OR's wall is "true": 1 absorbs everything under ◯[−1]. -/
 theorem or_wall (b : R) : circK (-1) 1 b = 1 := by unfold circK; grind
 
 /-- The order of the Boolean lattice, read on the dial: on idempotents
-    a ⊞₋₁ b = b exactly when a·b = a. -/
+    a ◯[−1] b = b exactly when a·b = a. -/
 theorem order_iff (a b : R) :
     circK (-1) a b - b = a - a * b := by
   unfold circK; grind
 
 end Ring
 
-/-- On the integers: 1 ⊞ₖ 1 is a truth value exactly at k = −1 and k = −2. -/
+/-- On the integers: 1 ◯[k] 1 is a truth value exactly at k = −1 and k = −2. -/
 theorem bits_closed_iff (k : Int) :
     (circK k (1:Int) 1 = 0 ∨ circK k (1:Int) 1 = 1) ↔ (k = -2 ∨ k = -1) := by
   unfold circK; constructor <;> intro h <;> omega
@@ -209,7 +209,7 @@ theorem hamS_miss (γ a b : Rat) (h : 1 + (γ - 1) * a * b ≠ 0) :
     1 - hamS γ a b = (1 - a) * (1 - b) / (1 + (γ - 1) * a * b) := by
   unfold hamS; grind
 
-/-- **Hamacher is the dial on odds.** odds(S_γ(a, b)) = odds a ⊞_γ odds b. -/
+/-- **Hamacher is the dial on odds.** odds(S_γ(a, b)) = odds a ◯[γ] odds b. -/
 theorem hamS_odds (γ a b : Rat) (ha : 1 - a ≠ 0) (hb : 1 - b ≠ 0)
     (h : 1 + (γ - 1) * a * b ≠ 0) :
     odds (hamS γ a b) = circK γ (odds a) (odds b) := by
@@ -261,7 +261,7 @@ theorem fexp_one_inj (m n : Nat) : fexp 1 m = fexp 1 n ↔ m = n := by
   · intro h; rw [h]
 
 /-- Mult-add is definable from the fused exponent alone:
-    b ⊞ c = d exactly when (a ⊛ b) ⊛ c = a ⊛ d for every a (the tower law). -/
+    b ◯ c = d exactly when fexp (fexp a b) c = fexp a d for every a (the tower law). -/
 theorem circ_definable (b c d : Nat) :
     b ◯ c = d ↔ ∀ a, fexp (fexp a b) c = fexp a d := by
   constructor
@@ -272,7 +272,7 @@ theorem circ_definable (b c d : Nat) :
     exact (fexp_one_inj _ _).mp this
 
 /-- Shifted add (rung 0) is definable from the fused exponent and mult-add:
-    b + c + 1 = d exactly when (a ⊛ b) ⊞ (a ⊛ c) = a ⊛ d for every a. -/
+    b + c + 1 = d exactly when fexp a b ◯ fexp a c = fexp a d for every a. -/
 theorem sadd_definable (b c d : Nat) :
     sadd b c = d ↔ ∀ a, (fexp a b) ◯ (fexp a c) = fexp a d := by
   constructor
@@ -295,7 +295,7 @@ theorem zero_definable (y : Nat) : (∀ a, fexp a y = a) ↔ y = 0 := by
 theorem succ_and_add (x y z : Nat) : sadd x 0 = x + 1 ∧ (x + y = z ↔ sadd x y = z + 1) := by
   unfold sadd; constructor <;> omega
 
-/-- Mult-add alone is multiplication in disguise: the lift x ↦ x + 1 carries (Nat, ⊞, 0)
+/-- Mult-add alone is multiplication in disguise: the lift x ↦ x + 1 carries (Nat, ◯, 0)
     onto the positive numbers under ×, one-to-one. -/
 theorem lift_iso (a b : Nat) : (a ◯ b) + 1 = (a + 1) * (b + 1) ∧ (a + 1 = b + 1 → a = b) :=
   ⟨circ_lift' a b, fun h => by omega⟩

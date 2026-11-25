@@ -4,7 +4,7 @@
   so Nat/Int stand in for the real numbers; every statement is a polynomial identity or
   inequality, so it holds for the reals by the same algebra.
 
-  Mult-add (rung 2):  a ⊕ b = a + b + a*b,  and  (a ⊕ b) + 1 = (a+1)(b+1).
+  Mult-add (rung 2):  a ◯ b = a + b + a*b,  and  (a ◯ b) + 1 = (a+1)(b+1).
   A stage's overhead odds r = (input - output)/output, so input = output * (1 + r).
 
   LIBRARY NOTE: mult-add and the list fold (foldCirc, the power chain) come from FusedAlgebra.Base; the local copies were removed.
@@ -41,7 +41,7 @@ theorem foldCirc_swap (xs ys : List Nat) (a b : Nat) :
   have h2 := foldCirc_lift_nat (xs ++ b :: a :: ys)
   omega
 
-/-- Splitting the foldCirc at the IT meter: (outside ⊕ inside) is the whole foldCirc (TUE = PUE·ITUE). -/
+/-- Splitting the foldCirc at the IT meter: (outside ◯ inside) is the whole foldCirc (TUE = PUE·ITUE). -/
 theorem foldCirc_split (xs ys : List Nat) : foldCirc (xs ++ ys) = circ (foldCirc xs) (foldCirc ys) := by
   have h := foldCirc_lift_nat (xs ++ ys)
   rw [lifts_append, ← foldCirc_lift_nat xs, ← foldCirc_lift_nat ys, ← circ_lift'] at h
@@ -52,7 +52,7 @@ theorem foldCirc_split (xs ys : List Nat) : foldCirc (xs ++ ys) = circ (foldCirc
 theorem scale_anywhere (xs ys : List Nat) (f k : Nat) :
     lifts xs * (f * k) * lifts ys = k * (lifts xs * f * lifts ys) := by grind
 
-/-! ### Lead 2. PUE overhead = electrical ⊕ cooling. The corner p*c is cooling the losses. -/
+/-! ### Lead 2. PUE overhead = electrical ◯ cooling. The corner p*c is cooling the losses. -/
 theorem pue_corner (p c : Nat) : (1 + p) * (1 + c) = 1 + p + c + p * c := by grind
 /-- The additive breakdown PUE = 1 + PLF + CLF books the corner as cooling: CLF = c + p*c. -/
 theorem additive_books_corner (it p c : Nat) :

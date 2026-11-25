@@ -18,7 +18,7 @@
   a change of units. Velocity addition u ⊕ v = (u + v)/(1 + uv).
 
     1. Mult-add in disguise: with d(u) = 2u/(1 − u) (Doppler factor squared,
-       minus 1), d(u ⊕ v) = d(u) ⊞ d(v). The lift 1 + d is (1 + u)/(1 − u).
+       minus 1), d(u ⊕ v) = d(u) ◯ d(v). The lift 1 + d is (1 + u)/(1 − u).
     2. Light is the wall: 1 ⊕ v = 1, and d sends −1 to mult-add's wall −1.
        Below light stays below light.
     3. n equal kicks: 1 + d(u ⊕ … ⊕ u) = (1 + d(u))ⁿ, the mult-add power.
@@ -52,7 +52,7 @@ theorem dop_lift (u : Rat) (h : 1 - u ≠ 0) : 1 + dop u = (1 + u) / (1 - u) := 
    (was lift_num), and (1 + uv) − (u + v) = (1 − u)(1 − v) is ThermoFused.lens_num
    (was lift_den). -/
 
-/-- **Velocity addition is mult-add in disguise**: d(u ⊕ v) = d(u) ⊞ d(v). -/
+/-- **Velocity addition is mult-add in disguise**: d(u ⊕ v) = d(u) ◯ d(v). -/
 theorem dop_vel (u v : Rat) (hu : 1 - u ≠ 0) (hv : 1 - v ≠ 0) (huv : 1 + u * v ≠ 0) :
     dop (vel u v) = circ (dop u) (dop v) := by
   unfold dop vel circ
@@ -80,7 +80,7 @@ theorem velC_units (c u v : Rat) (hc : c ≠ 0) :
 /-! ## 2. Light is the wall -/
 
 /- Light absorbs, as −1 does in mult-add: 1 ⊕ v = 1 is ThermoFused.vel_wall_pos
-   (was light_absorbs), and −1 ⊞ b = −1 is CircleOp.neg_one_absorbs (was
+   (was light_absorbs), and −1 ◯ b = −1 is CircleOp.neg_one_absorbs (was
    circ_wall). -/
 
 /-- d carries the light wall −1 onto mult-add's wall −1. -/

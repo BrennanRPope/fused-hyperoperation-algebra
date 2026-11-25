@@ -96,7 +96,7 @@ theorem period_is_diagonal (k : Nat) : periodLen (2 * k + 1) = diagCap (2 * k + 
 section Dial
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- n copies of 1 under ⊞ₖ lift to (1 + k)ⁿ: with q = k + 1, that is qⁿ,
+/-- n copies of 1 under ◯[k] lift to (1 + k)ⁿ: with q = k + 1, that is qⁿ,
     so the weighted power is the q-integer (qⁿ − 1)/(q − 1). -/
 theorem q_integer (k : R) (n : Nat) : 1 + k * wpow k 1 n = (1 + k) ^ n := by
   have := wpow_lift k 1 n
