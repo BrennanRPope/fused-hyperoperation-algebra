@@ -87,6 +87,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Solitons on the rungs | `topics/solitons-rungs/` | [page](https://claude.ai/artifact/5yXzCgEwC2jY5y6LkFCUXJ) |
 | Relativity | `topics/relativity/` | [page](https://claude.ai/artifact/S2RVDVVQWR4UAQVtmDQQMq) |
 | Twisted boosts and Gravity Probe B | `topics/twisted-boosts/` | no page yet |
+| General relativity through mult-add | `topics/general-relativity/` | [page](https://claude.ai/artifact/SHrK88RpTBLLfTaeAxgi37) |
 | Lee–Yang zeros (cluster test, fill-then-spill) | `topics/lee-yang/` | [page](https://claude.ai/artifact/UQQzmkzekxe2hL4m8F8NQL) |
 | Thermodynamics | `topics/thermodynamics/` | [page](https://claude.ai/artifact/SKKLwKiEg4nyYGfrw32sp5) |
 | Entropy and quantum noise | `topics/entropy-noise/` | [page](https://claude.ai/artifact/1To24w7SazEuaE5Pjsj4YM) |
