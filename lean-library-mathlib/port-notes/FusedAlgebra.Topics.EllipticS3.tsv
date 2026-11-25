@@ -1,0 +1,20 @@
+original	status	new_name	note
+lift_11	ported	EllipticS3.one_add_smul_gen_mul	the four entry identities are one matrix identity (1 + a • G) * (1 + b • G) = (1 - q a b) • 1 + wAdd k a b • G; any commutative ring
+lift_12	ported	EllipticS3.one_add_smul_gen_mul	entry (0,1) of the matrix identity
+lift_21	ported	EllipticS3.one_add_smul_gen_mul	entry (1,0) of the matrix identity
+lift_22	ported	EllipticS3.one_add_smul_gen_mul	entry (1,1) of the matrix identity
+cayley_hamilton	ported	EllipticS3.gen_mul_self	now the matrix identity G * G = k • G - q • 1 for G = EllipticS3.gen k q (new def); general theorem is Matrix.aeval_self_charpoly
+multAdd_is_1x1	dropped	MultAdd.one_add_multAdd	was the base lift read backwards
+sq_nonneg_rat	mathlib	mul_self_nonneg	
+turning_no_wall	ported	EllipticS3.turning_no_wall	generalised from ℚ to any linearly ordered commutative ring
+nonsplit_frob_is_inverse	ported	EllipticS3.nonsplit_frob_is_inverse	any commutative ring
+split_frob_fixes	ported	EllipticS3.split_frob_fixes	any commutative ring
+lefschetz_count	ported	EllipticS3.lefschetz_count	any commutative ring
+quat_det_re	ported	EllipticS3.det_quatMatrix	real and imaginary parts merged: det (quatMatrix q) = Quaternion.normSq q for q : ℍ[ℝ], as a complex 2×2 matrix (new def quatMatrix); original had integer coordinates
+quat_det_im	ported	EllipticS3.det_quatMatrix	the imaginary part is 0 because the determinant is a real number
+quat_discriminant	ported	EllipticS3.quat_discriminant	stated with Quaternion.normSq over ℝ
+walks	ported	EllipticS3.walks	
+dyck	ported	EllipticS3.dyck	
+circle_moments	ported	EllipticS3.circle_moments	restated as ∀ n < 5, walks (2 n) 0 = Nat.centralBinom n (covers n = 0 too)
+sphere_moments	ported	EllipticS3.sphere_moments	restated as ∀ n < 5, dyck (2 n) 0 = catalan n (covers n = 0 too)
+middle_minus_neighbour	ported	EllipticS3.middle_minus_neighbour	20, 15, 70, 56 written as Nat.choose 6 3, 6 2, 8 4, 8 3
