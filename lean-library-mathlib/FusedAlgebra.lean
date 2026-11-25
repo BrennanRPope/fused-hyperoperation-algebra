@@ -16,6 +16,7 @@ public import FusedAlgebra.Topics.E
 public import FusedAlgebra.Topics.EarlyScience
 public import FusedAlgebra.Topics.Elliptic
 public import FusedAlgebra.Topics.EllipticS3
+public import FusedAlgebra.Topics.EntropyNoise
 public import FusedAlgebra.Topics.Fermat.Fermat4
 public import FusedAlgebra.Topics.Finance
 public import FusedAlgebra.Topics.InformationTheory
