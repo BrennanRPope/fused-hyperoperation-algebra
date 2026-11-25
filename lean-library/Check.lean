@@ -27,6 +27,7 @@ elab "#check_fused_library" : command => do
       if axs.any (fun a => !ok.contains a) then bad := bad.push n
       rows := rows.push s!"{mod}\t{n}\t{", ".intercalate (axs.toList.map toString)}"
   let sorted := rows.qsort (· < ·)
+  IO.FS.createDirAll "build"  -- build/ is gitignored, so a fresh clone may lack it
   IO.FS.writeFile "build/theorems.tsv" ("\n".intercalate sorted.toList ++ "\n")
   if bad.isEmpty then
     logInfo m!"{sorted.size} theorems, all using only the standard axioms, no sorry."
