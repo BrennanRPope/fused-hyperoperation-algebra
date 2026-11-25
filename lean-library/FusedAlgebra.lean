@@ -110,9 +110,12 @@ import FusedAlgebra.Topics.Fermat.FermatRoute
 import FusedAlgebra.Topics.Fermat.CounterexampleMap
 import FusedAlgebra.Topics.GeneralRelativity
 import FusedAlgebra.Topics.GRBridges
+import FusedAlgebra.Topics.Electromagnetism
 import FusedAlgebra.Topics.PvsNP
 import FusedAlgebra.Topics.PowersetDials
 import FusedAlgebra.Topics.DialSurvey
+import FusedAlgebra.Topics.SizeDialResidual
 import FusedAlgebra.Topics.DialWall
 import FusedAlgebra.Topics.FractalBoxes
+import FusedAlgebra.Topics.FractalDials
 import FusedAlgebra.Topics.DialPotential

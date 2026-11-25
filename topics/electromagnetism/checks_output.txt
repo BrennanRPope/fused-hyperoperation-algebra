@@ -1,0 +1,64 @@
+
+== A. Electromagnetism sets the dial
+[PASS] A1. c^2 eps0 mu0 = 1 (CODATA 2018): the speed in Maxwell's waves is 1/sqrt(eps0 mu0)  (c^2 eps0 mu0 = 1.000000000000)
+[PASS] A1b. so the dial of velocity addition is q = -1/c^2 = -eps0 mu0  (q = -1.112650e-17 s^2/m^2)
+[PASS] A2. the cross term d_X d_T vanishes only for q = -1/c^2 (Galilean q = 0 leaves it)  (q = [-1/c**2]; cross term at q=0: -2*g**2*v)
+[PASS] A2b. at q = -1/c^2 the operator keeps its form exactly (same wave speed c in the new frame)  (coefficient ratio TT/XX = -1/c**2)
+[PASS] A3. composing two dial boosts gives the landscape law (u+v)/(1 - q u v); q = -1 is Einstein's
+[PASS] A3b. Doppler-squared minus one composes by mult-add: d(u (+) v) = d(u) * d(v)
+
+== B. The fields ride the boosts: E and B on the light cone
+[PASS] B0. textbook boost of E, B along x equals the rational form in the Doppler factor D (gamma = (D^2+1)/2D)
+[PASS] B1. light-cone parts: (E_y + B_z) -> (E_y + B_z)/D and (E_y - B_z) -> D (E_y - B_z)
+[PASS] B1b. the other pair: (E_z - B_y) -> /D and (E_z + B_y) -> x D
+[PASS] B2. the ratio (E_y - B_z)/(E_y + B_z) is multiplied by D^2 = (1+v)/(1-v) = 1 + d(v), mult-add's lift
+[PASS] B3. two boosts compose as one with D = D1 D2 (all six components)
+[PASS] B3b. and v(D1 D2) is Einstein's sum of v(D1), v(D2); so d composes by mult-add
+[PASS] B4. E^2 - B^2 and E.B are unchanged by every boost (the field's two invariants)
+[PASS] B4b. each light-cone pair keeps its product: (E_y+B_z)(E_y-B_z) fixed (a squeeze, like T^2 - X^2)
+[PASS] B5a. reading E and B back off the bivector F = E + I B works
+[PASS] B5. the boost is the sandwich F' = R F R~ with rotor R = cosh(phi/2) +/- sinh(phi/2) sigma_x (D = e^phi): half-velocities, as on the Clifford page  (sign = -1)
+[PASS] B6a. a plane wave E_y = B_z = w(t - x) is null: E^2 - B^2 = 0 and E.B = 0 (it sits on the wall)
+[PASS] B6b. an observer moving along the wave sees amplitude x 1/D and energy density x 1/D^2 = 1/(1 + d(v))
+[PASS] B7. magnetism from electricity: a pure E_y, boosted, gets B_z = -gamma v E_y (Purcell's picture)
+
+== C. The gauge phase as a dial
+[PASS] C1. a unit phase written as a = e^{i theta} - 1 satisfies a * conj(a) = 0: its conjugate is its mult-add inverse
+[PASS] C1b. in general a * conj(a) = |1 + a|^2 - 1, so 'phase' means exactly 'a * conj(a) = 0'
+[PASS] C2. phases compose by mult-add: (e^{i t1} - 1) * (e^{i t2} - 1) = e^{i(t1+t2)} - 1 (a renaming of multiplication)
+[PASS] C2b. the wall a = -1 fails the phase rule: (-1) * conj(-1) = -1, not 0, so U(1) never reaches the wall
+[PASS] C3. in the half-angle chart t = tan(theta/2) phases compose by the landscape law at q = +1: (t1+t2)/(1 - t1 t2)
+[PASS] C3b. boosts in the half-rapidity chart s = tanh(phi/2) compose at the mirror dial q = -1: (s1+s2)/(1 + s1 s2)
+[PASS] C4. a Lorentz boost as a split-complex number a = (cosh phi - 1) + j sinh phi also has a * abar = 0 (j^2 = +1): the same rule, mirror sign
+[PASS] C4b. the phase version with i^2 = -1: 2 a0 + a0^2 + a1^2 = 0 for a0 = cos - 1, a1 = sin
+[PASS] C5. gauge invariance: A -> A + grad chi, phi -> phi - d_t chi leaves E and B unchanged
+[PASS] C6. holonomy: the loop integral of A around 20 random rational polygons is exactly B x enclosed area (phase = charge x flux)
+[PASS] C6b. Aharonov-Bohm: around a thin solenoid (B = 0 on the path) the phase is the flux for any loop around it, 0 for loops that miss it  (inside [0.999999999999, 1.0, 1.0], outside [-0.0, 0.0])
+[PASS] C7. a lattice plaquette is the mult-add of its four links (two run backwards, as mult-add inverses), and equals e^{i eps^2 F} - 1 exactly for a linear potential
+[PASS] C7b. discrete Stokes: plaquette * plaquette = the big loop (fluxes mult-add, the inner link cancels)
+[PASS] C8. contrast (Yang-Mills): with constant but non-commuting potentials the loop still turns, by eps^2 x [A_x, A_y]; U(1) phases commute, so constant A gives no field  (error ratio 2.00, 2.00 (about 2: first order))
+[PASS] C8b. the U(1) version of the same loop closes exactly (phases commute)
+
+== D. F is the corner of a Clifford product; Maxwell is one equation
+[PASS] D1. in spacetime algebra a b = a.b + a^b, and the order gap a b - b a = 2 a^b (the Clifford page's x*y - y*x)
+[PASS] D1b. (1 + a)(1 + b) = 1 + a + b + a.b + a^b: the corner splits into a dot part and a wedge part
+[PASS] D2. nabla A = nabla.A + nabla^A, and nabla^A is exactly F built from E = -grad phi - dA/dt, B = curl A
+[PASS] D2b. the scalar part nabla.A = d_t phi + div A (the Lorenz-gauge quantity)
+[PASS] D3. nabla F = J holds iff Maxwell's four equations hold: vector part = (div E, curl B - dE/dt) = (rho, J); trivector part = (div B, curl E + dB/dt) = 0
+[PASS] D4. charge conservation is automatic: the scalar part of nabla(nabla F) is identically 0, so nabla.J = 0
+[PASS] D5. nabla nabla = the wave operator: nabla(nabla A) = (d_t^2 - laplacian) A, so in Lorenz gauge Maxwell is box A = J
+[PASS] D6. for any antisymmetric F, k_mu k_nu F^{mu nu} = 0: in momentum space charge conservation k.J = 0 is forced
+[PASS] D7. F F = (E^2 - B^2) + 2 (E.B) I: the field's two invariants are the scalar and pseudoscalar parts of its square  (pseudoscalar coefficient = 2*(B_x*E_x + B_y*E_y + B_z*E_z))
+[PASS] D8. the plane wave solves nabla F = 0 (light in empty space), and F^2 = 0 (null)
+
+== E. Where the lens stops
+[PASS] E1. Maxwell in vacuum is linear: two solutions add by plain addition (k = 0, no corner term)
+[PASS] E2. Born-Infeld (1934): D = E / sqrt(1 - E^2/b^2), so E = D / sqrt(1 + D^2/b^2) <= b: the same wall shape as speed from momentum, v = p / sqrt(1 + p^2)
+[PASS] E2b. but Born-Infeld fields do not compose by velocity addition (D adds, by Gauss's law): only the wall shape is shared, not the mult-add law  (E(D1+D2) = 0.9029 vs E1 (+) E2 = 0.9479)
+[PASS] E3. the Schwinger field m^2 c^3/(e hbar) ~ 1.3e18 V/m: where QED makes the vacuum nonlinear (Maxwell's plain addition ends)  (1.3233e+18 V/m)
+
+== F. Bridge to gravity (side by side)
+[PASS] F1. nabla^(nabla^A) = 0 for every potential (the 'Bianchi identity' of electromagnetism: no magnetic charge)
+[NOTE] side by side, cited not re-checked: EM holonomy = charge x flux (C6); gravity's = rapidity (2M/r^3) x area (general-relativity page, route b). EM conservation (D4); gravity's Bianchi identity nabla.G = 0 (GR page).
+
+49 passed, 0 failed

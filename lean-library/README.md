@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 116 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 2930 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 119 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 3003 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -141,11 +141,14 @@ Topics (each imports the foundation):
 | `Topics/FractionalPowerset` | fractional-powerset/lean/FractionalPowerset.lean | first compiled here, unchanged |
 | `Topics/PowersetDials` | fractional-powerset-dials/lean/PowersetDials.lean | 48 theorems: per-element dials, merging, the half, complement, known sets |
 | `Topics/DialSurvey` | dial-survey/lean/DialSurvey.lean | first compile, Nov 25: k on per-element dials, odds, necklaces |
+| `Topics/SizeDialResidual` | size-dial-residual/lean/SizeDialResidual.lean | 18 theorems, first compile Nov 25: the size weight as a twist, the weighted merge gap, sharp weights commute, distinct-times-doubled and alternating doubling, two sign dials |
 | `Topics/DialWall` | dial-survey/wall/DialWall.lean | first compile, Nov 25: necklace exponents behind the wall at Re s = 0, k = ±1 special, the k = −1/2 cancellation |
 | `Topics/DialPotential` | dial-potential/lean/DialPotential.lean | 24 theorems, first compile Nov 25: dial flip and rescaling, even and power-law potentials, the mirror well, exponential fixed point, Coleman-Weinberg and Veltman checks, conformal γ = 5/7 |
 | `Topics/FractalBoxes` | fractal-boxes/lean/FractalBoxes.lean | 15 theorems, first compile Nov 25: signed corner layers of a half box (Newton's C(½,k)), two halves join to a stick, Cantor codes one to one in any base, no linear-size rule is a half of 2^d |
+| `Topics/FractalDials` | fractal-dials/lean/FractalDials.lean | 14 theorems, first compile Nov 25: five half-dimension sets certified exactly, Moran's equation as the mult-add identity, the uneven set is non-lattice (no Minkowski wobble), weights are the dial t, joining keeps shapes self-similar, gasket touches where dust never does, the power set fits no shape class |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |
 | `Topics/GRBridges` | gr-bridges/lean/GRBridges.lean | 22 theorems: Clifford boosts, sandwich mult-add for matrix weights, Schur factor, Raychaudhuri area terms, river constraint, Brans-Dicke; first compile, one witness fixed |
+| `Topics/Electromagnetism` | electromagnetism/lean/Electromagnetism.lean | 41 theorems, first compile Nov 25: the wave equation sets the dial q = −1/c², light-cone parts of E and B scale by D and 1/D, D² − 1 composes by mult-add, invariants and null fields, unit phases as a ✳ ā = 0, plaquettes and discrete Stokes, Born–Infeld cap |
 | `Topics/NavierStokes` | ns-rungs/lean/FusedRungs.lean (Burgers, shell model) | |
 | `Topics/QuantumNoise` | quantum-noise/QuantumNoise.lean | |
 | `Topics/Rulecraft` | rulecraft/lean/RulecraftFused.lean | first compile, one step fixed |

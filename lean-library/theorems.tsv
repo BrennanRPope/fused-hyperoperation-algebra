@@ -1102,6 +1102,47 @@ FusedAlgebra.Topics.EarlyScience	SimpleLaws.parallel_is_inverted_addition	propex
 FusedAlgebra.Topics.EarlyScience	SimpleLaws.product_error	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EarlyScience	SimpleLaws.product_error_corner	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EarlyScience	SimpleLaws.squeeze_multiplies	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.EB.ext'	propext
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.S_nsq_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.bi_cap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.bi_den_pos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.bi_inverse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.boost_closed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.charge_conserved	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.dop_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.dop_vD	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.doppler_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.galilean_cross	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.gam_add_gv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.gam_sq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.gam_sub_gv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.half_charts	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.inv1_boost	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.inv2_boost	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.lc_minus	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.lc_pair2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.lc_plus	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.lc_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.maC_conj	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.maC_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.maS_conj	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.maS_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.nsq_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.null_stays_null	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.phase_closed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.plaquette	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.purcell	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.sq_nn	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.sq_pos'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.stokes	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.stokes_multAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.vD_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.wall_not_phase	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.wave_boost	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.wave_cross_zero_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.wave_energy	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.wave_null	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Electromagnetism	Electromagnetism.wave_speed_kept	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Elliptic	EllipticLead.d4_weight	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Elliptic	EllipticLead.d5_weight	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Elliptic	EllipticLead.euler_factor_walls	propext, Classical.choice, Quot.sound
@@ -1432,6 +1473,20 @@ FusedAlgebra.Topics.FractalBoxes	FractalBoxes.other_half_squared	propext
 FusedAlgebra.Topics.FractalBoxes	FractalBoxes.pieces_join	propext
 FusedAlgebra.Topics.FractalBoxes	FractalBoxes.succ_le_two_pow	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractalBoxes	FractalBoxes.third_join_stick	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.dyadic_glue	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.four_corner_is_tree	propext
+FusedAlgebra.Topics.FractalDials	FractalDials.gasket_touches	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.gasket_vertices	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.half_dimension_certificates	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.mulAdd_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.mulAdd_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.pieces_join_closed	propext
+FusedAlgebra.Topics.FractalDials	FractalDials.powerset_branch	propext
+FusedAlgebra.Topics.FractalDials	FractalDials.powerset_not_selfsimilar	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.same_dimension_gasket_dust	propext
+FusedAlgebra.Topics.FractalDials	FractalDials.two_pow_mod7	propext
+FusedAlgebra.Topics.FractalDials	FractalDials.uneven_not_lattice	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FractalDials	FractalDials.weights_odds	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.dial_inflationary	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.flat_add_flat_succ	
 FusedAlgebra.Topics.FractionalPowerset	FractionalPowerset.flat_madd_iff_flat_mul	
@@ -2598,6 +2653,24 @@ FusedAlgebra.Topics.ShapeDirections	ShapeDirections.rung_rate_inverts	propext, C
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.star_def	propext
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.weight_is_units	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.zoom_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.S2_eq_S	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.alt_doubling	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.alt_eq_sum_sub_evens	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.at_most_m	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.at_most_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.distinct_times_doubled	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.even_half	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.evens_scale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.prod_minus_even_odd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.prod_plus_even_odd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.sharp_weight_commutes	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.stacked_dials	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.twisted_half	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.two_sign_dials	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.two_sign_dials_example	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.weight_is_twist	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.weight_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SizeDialResidual	SizeDialResidual.weighted_merge_gap	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.face_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.four_body_half	
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.four_body_roads	propext, Classical.choice, Quot.sound

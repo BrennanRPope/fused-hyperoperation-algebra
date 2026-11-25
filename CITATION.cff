@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Fused Hyperoperation Algebra"
+type: software
+authors:
+  - family-names: Pope
+    given-names: Brennan
+repository-code: "https://github.com/BrennanRPope/fused-hyperoperation-algebra"
+abstract: >-
+  One geometric picture behind the composition law a + b + k·ab (mult-add):
+  stretch a unit box by a one way and b the other, and the extra area is the
+  product term. The repository gathers proofs, numerical checks, figures and
+  write-ups across counting, primes, probability, relativity, gravity,
+  electromagnetism and topology, with a shared machine-checked library of
+  over 3,000 theorems in core Lean 4.
+keywords:
+  - composition laws
+  - formal group laws
+  - Lean 4
+  - formal verification
+  - Clifford algebra
+  - relativity

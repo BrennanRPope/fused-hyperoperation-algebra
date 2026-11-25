@@ -1,0 +1,10 @@
+{
+ "A1_c2_eps0_mu0": 0.9999999999999566,
+ "A1b_q_SI": -1.1126500560535701e-17,
+ "A2": "Maxwell's wave equation is invariant only under dial boosts with q = -1/c^2",
+ "B5_rotor_sign": -1,
+ "D7_pseudo": "2*(B_x*E_x + B_y*E_y + B_z*E_z)",
+ "E3_schwinger_Vpm": 1.323285474948166e+18,
+ "passed": 49,
+ "failed": 0
+}
