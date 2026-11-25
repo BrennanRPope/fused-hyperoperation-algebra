@@ -142,3 +142,7 @@ Checked by fetch this session:
 From the parent page or textbook: Weinberg (1979); Reuter (1998); Litim (2004), hep-th/0312114; Reuter–Saueressig, hep-th/0110054; Sakharov (1967); Sternberg linearization; Coleman–McGuinness, Pacific J. Math. 147 (1991) for the plane law.
 
 Builds on: [asymptotic-safety](../README.md), [g-dials](../../g-dials/README.md).
+
+## Follow-up: e at a different rung height
+
+Does using e at height s (e_s) close the 4.5% gap? No: s = 1.101 fits 23/11 but misses every second published number, and only s = 1 keeps G constant at low energy. See [`height-dial/README.md`](height-dial/README.md).

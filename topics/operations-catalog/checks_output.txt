@@ -1,0 +1,41 @@
+PASS lift turns o_k into multiplication   worst 3.9e-31
+PASS wall -1/k is the absorbing element: wall o_k b = wall
+PASS way back -a/(1+ka) is the quasi-inverse
+PASS circle power a^(o n) = ((1+ka)^n - 1)/k
+PASS real circle powers: half power twice = one
+PASS n-fold combine = sum over cube corners k^(m-1) e_m
+PASS matrix form: det(I + kA) = 1 + k(e1 + k e2 + k^2 e3)
+PASS Mobius inversion over the cube isolates the top corner k^2 abc
+PASS flip x/(1+kx) carries o_k to o_-k
+PASS flip = minus the way back
+PASS odds/probability is the flip at k = 1 / k = -1
+PASS mirror: a o_-k b = -((-a) o_k (-b))
+PASS L_k(a o_k b) = L_k(a) + L_k(b)
+PASS L_{k,d} = int_0^x dt/(1+kt+dt^2) turns the two-dial law into + (all three classes)   worst 4.9e-32
+PASS Box-Cox k-log carries x to o_k
+PASS L_k = log of the Tsallis k-exponential
+PASS slide y/(1+cy): (k,d) -> (k+2c, d+kc+c^2)
+PASS slide keeps the discriminant k^2 - 4d
+PASS rescale x -> lam x: (k,d) -> (lam k, lam^2 d)
+PASS o_k is o_1 rescaled: a o_k b = (ka o_1 kb)/k
+   (k,d)=(1.0,0.0) disc=+1.00 -> class velocity add (a+b)/(1+ab)
+   (k,d)=(2.0,0.0) disc=+4.00 -> class velocity add (a+b)/(1+ab)
+   (k,d)=(0.5,0.3) disc=-0.95 -> class tangent add (a+b)/(1-ab)
+   (k,d)=(2.0,1.0) disc=+0.00 -> class plain +
+   (k,d)=(0.0,-0.25) disc=+1.00 -> class velocity add (a+b)/(1+ab)
+   (k,d)=(1.0,0.25) disc=+0.00 -> class plain +
+PASS every two-dial law slides+rescales to exactly one of +, (a+b)/(1+ab), (a+b)/(1-ab)
+PASS velocity addition is o_2 seen through the slide y/(1-y)
+PASS rescaling limit h*log(e^(a/h)+e^(b/h)) -> max (Maslov dequantization)   [2.313262, 2.000005, 2.0]
+PASS climb: E_*(+) = a+b+ab
+PASS climb twice: E_*(E_*(+)) = (1+a)(1+b)e^{L(a)L(b)} - 1
+PASS climb down: L_*(+) = log(e^a + e^b - 1)
+PASS fuse +: a+b+1
+PASS fuse x: a o_1 b
+PASS fuse power: (1+a)^(1+b) - 1 (Rungs.fexp)
+PASS E = S^-1 o exp, so a climb is Bennett's exp-climb followed by a fuse
+PASS T_a o T_b = T_(a o_k b)
+PASS every T_a fixes the wall -1/k
+PASS order gap of two stretch-and-shifts = s1*c2 - s2*c1 (a wedge)
+
+33 of 33 checks pass

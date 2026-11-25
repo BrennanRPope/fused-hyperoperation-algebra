@@ -1,0 +1,26 @@
+files scanned: 946
+
+move                                              files   uses
+wall -1/k                                           367   2258
+lift 1+kx                                           340   1515
+circle power                                        154    936
+two-dial law (lens)                                 177    913
+logarithm L_k (bend / ruler / flat coordinate)      158    572
+flip x/(1+kx) (odds/probability)                     89    487
+fuse (shift by 1)                                    45    449
+classes by discriminant (countries)                 125    416
+climb a rung / conjugation                          126    305
+height flow E^t (regular iteration)                  73    296
+zoom (Moran exponent)                                53    261
+n-fold combine / cube corners                        76    222
+mirror x -> -x                                       83    222
+order gap (wedge)                                    58    197
+rescale x -> λx (units, Maslov)                      85    156
+height-s operation B_s                               28    153
+way back (quasi-inverse)                             48    127
+turning a dial: deformation / contraction            40    111
+translation T_a (motion)                             38     84
+k-log / k-exp (Box-Cox, Tsallis)                     31     77
+exponential tilting                                  15     50
+slide y/(1+cy) (chart change)                        13     43
+Möbius inversion                                     11     16

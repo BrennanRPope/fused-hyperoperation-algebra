@@ -1,0 +1,94 @@
+{
+ "two-dial law (lens)": {
+  "files": 177,
+  "uses": 913
+ },
+ "lift 1+kx": {
+  "files": 340,
+  "uses": 1515
+ },
+ "way back (quasi-inverse)": {
+  "files": 48,
+  "uses": 127
+ },
+ "wall -1/k": {
+  "files": 367,
+  "uses": 2258
+ },
+ "circle power": {
+  "files": 154,
+  "uses": 936
+ },
+ "n-fold combine / cube corners": {
+  "files": 76,
+  "uses": 222
+ },
+ "Möbius inversion": {
+  "files": 11,
+  "uses": 16
+ },
+ "flip x/(1+kx) (odds/probability)": {
+  "files": 89,
+  "uses": 487
+ },
+ "mirror x -> -x": {
+  "files": 83,
+  "uses": 222
+ },
+ "logarithm L_k (bend / ruler / flat coordinate)": {
+  "files": 158,
+  "uses": 572
+ },
+ "k-log / k-exp (Box-Cox, Tsallis)": {
+  "files": 31,
+  "uses": 77
+ },
+ "slide y/(1+cy) (chart change)": {
+  "files": 13,
+  "uses": 43
+ },
+ "rescale x -> λx (units, Maslov)": {
+  "files": 85,
+  "uses": 156
+ },
+ "classes by discriminant (countries)": {
+  "files": 125,
+  "uses": 416
+ },
+ "turning a dial: deformation / contraction": {
+  "files": 40,
+  "uses": 111
+ },
+ "height flow E^t (regular iteration)": {
+  "files": 73,
+  "uses": 296
+ },
+ "height-s operation B_s": {
+  "files": 28,
+  "uses": 153
+ },
+ "climb a rung / conjugation": {
+  "files": 126,
+  "uses": 305
+ },
+ "fuse (shift by 1)": {
+  "files": 45,
+  "uses": 449
+ },
+ "translation T_a (motion)": {
+  "files": 38,
+  "uses": 84
+ },
+ "exponential tilting": {
+  "files": 15,
+  "uses": 50
+ },
+ "zoom (Moran exponent)": {
+  "files": 53,
+  "uses": 261
+ },
+ "order gap (wedge)": {
+  "files": 58,
+  "uses": 197
+ }
+}

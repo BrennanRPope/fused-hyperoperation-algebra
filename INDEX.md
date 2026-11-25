@@ -23,6 +23,7 @@ None right now. The last one saved mid-way, e at every rung height, was finished
 | Do shapes depend on shapes? Proof bodies order yes, whole laws no | `topics/shape-dependencies/` | not yet published |
 | Mathlib port: what it takes to merge (plan; no Mathlib pull request yet) | `topics/mathlib-plan/` | — |
 | Dependency map: prerequisites for a G dial, how results depend on each other, and what each rests on ([DEPENDENCY-MAP.md](DEPENDENCY-MAP.md)) | `topics/dependency-map/` | — |
+| Operations catalog: names for the moves we keep using; five shorthands picked for the 1.0 rename, not applied yet | `topics/operations-catalog/` | — |
 
 ## Foundations
 
@@ -68,6 +69,7 @@ None right now. The last one saved mid-way, e at every rung height, was finished
 | Dials for G: three published dials with stable ends, and G as the square of the stability-forced length | `topics/why-i/e-i-pi/g-dials/` | — |
 | Units at different levels: asymptotic safety, dimension flow and G (the RG flow of G as a circle-operation chain) | `topics/why-i/e-i-pi/asymptotic-safety/` | — |
 | Beyond one loop: G's running matches the circle operation only at one loop or large N (limiting result) | `topics/why-i/e-i-pi/asymptotic-safety/beyond-one-loop/` | — |
+| Height dial: e at rung height 1.10 fits 23/11 but misses every other published number (negative result) | `topics/why-i/e-i-pi/asymptotic-safety/beyond-one-loop/height-dial/` | — |
 | k as the Cayley–Klein curvature dial (κ = −k²/4) | `topics/why-i/cayley-klein/` | — |
 | The circle operation as κ-Poincaré momentum addition | `topics/why-i/kappa-poincare/` | — |
 | The dial map: the framework does not make gravity a forced step | `topics/why-i/dial-map/` | — |
