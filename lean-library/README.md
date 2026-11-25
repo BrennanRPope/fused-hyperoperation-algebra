@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 124 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3080 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 125 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 3101 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -149,6 +149,7 @@ Topics (each imports the foundation):
 | `Topics/RepetitionDial` | repetition-dial/lean/RepetitionDial.lean | 22 theorems, first compile Nov 25: 1/k cells per element, at most m copies at k = 1/m, coefficients polynomial in k, k read off average copies, negative counts between the k = 1/m values |
 | `Topics/ZoomDial` | zoom-dial/lean/ZoomDial.lean | 10 theorems, first compile Nov 25: zoom weight is a twist, zooms compose, words of depth n weigh x(s)ⁿ, the word series, dimension at the wall x(d) = 1 (Moran), half boxes hit the wall |
 | `Topics/OrderDial` | order-dial/lean/OrderDial.lean | 33 theorems, first compile Nov 25: mult-add as composition of maps sharing the wall, stretch-and-shift composition, the order gap a·d − b·c, commuting iff shared centre, compounding corner, mutation algebras, quantum plane counts, anticommuting forces no repeats, no functor half power set |
+| `Topics/WhyI` | why-i/lean/WhyI.lean | 21 theorems, first compile Nov 25: the twist (order gap) is antisymmetric and equals (k − k₂)·a·b between two dials, dial-k elements on the line λ = 1 + k·s, the quarter turn J squares to −1 and turns the dot product into the area form, a mirror flips J to −J, symmetric matrices have antisymmetric commutators, weighted-circle chains multiply as ∏(1 + k·aⱼ), a path's accumulated twist is its shoelace area |
 | `Topics/Conventions` | names-review/lean/Conventions.lean | 7 theorems, first compile Nov 25: the weight-to-probability sign flip, both ring-theory circle conventions on the dial, (weights compose by k, probabilities by −k) and related notation facts; recommendations only, nothing renamed |
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |

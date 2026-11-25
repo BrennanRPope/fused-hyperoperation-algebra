@@ -1,0 +1,49 @@
+PASS A1 order gap of (a,c),(b,d) is the wedge a*d - b*c  | a*d - b*c
+PASS A2 the twist is antisymmetric: swapping the order flips its sign
+PASS A3 two mult-add elements with the same dial k have zero twist (shared centre)
+PASS A4 different dials k, k2: twist = (k - k2)*a*b  | a*b*(k - k2)
+PASS B1 every J in the Siegel family squares to -1
+PASS B2 ... keeps the oriented area: omega(Ju,Jv) = omega(u,v)
+PASS B3 ... is tamed by the orientation: omega(u,Ju) > 0
+PASS B4 the area form alone allows a whole half-plane of different J's (no unique i)
+PASS B5 area + length -> one J: omega(u,v) = g(Ju,v), J = rotation by 90 deg, J^2 = -1
+PASS B6 a different length gives a different J (still J^2 = -1)
+PASS B7 flipping orientation turns the area to -area and J into -J (i into -i)
+PASS B8 the twist raised by a length is theta*J; it squares to -(theta)^2
+PASS C1 element (lam,s) <-> point s + i*lam; composing = acting by z -> lam z + s (a holomorphic map)
+PASS C2 dial-k elements form the straight line from i to the edge point -1/k; the group law on it is a + b + k*ab
+PASS C3 every one-parameter subgroup exp(t(aX+bY)) is a line through i (dial k = alpha/beta)
+PASS C4 the Poincare length (ds^2 + dlam^2)/lam^2 is left-invariant
+PASS C5 invariant area + invariant length give J = rotation by 90 deg = multiplication by i on z = s + i lam
+PASS C6 Poincare curvature is -1  | -1
+PASS C7 ANY left-invariant length (p, r, q constants) gives constant negative curvature (Milnor 1976)  | -p/(p*q - r**2)
+PASS C8 each dial line keeps a constant hyperbolic distance from the vertical geodesic over its centre (a hypercycle)
+NOTE C9 (by definition, not a check): k = 0 is the line lam = 1, a horocycle centred at infinity; pure multiplication is the vertical geodesic s = 0
+PASS D1 real characters e^(lz) change size; only e^(ilz) adds twists while keeping size
+PASS D3 written with real numbers, a size-keeping twist is a rotation; its generator J has J^2 = -1
+PASS D4 Heisenberg commutator of shift a and boost b is the central element with area a*b
+PASS E1 the commutator of two real symmetric matrices (real observables) is antisymmetric (a twist)
+PASS E2 its eigenvalues are purely imaginary, in +/- pairs: the i appears even in an all-real theory
+PASS E3 in two dimensions the twist is theta*J, and (theta*J)^2 = -theta^2
+PASS E4 quaternion units give three different J's (each squares to -1): the twist alone does not choose C over H
+PASS F1 in the affine group [X,Y] = Y: ad_X has real eigenvalues 0 and 1 (a stretch, not a turn)
+NOTE F2 (proved in order-dial J5, J6): the affine twist lands on Y, which is not central, unlike Heisenberg
+PASS G1 stretch-and-shift with lam > 0 keeps a positive-frequency wave positive (the irrep pi+)  | neg-frequency weight after maps: ['3.2e-07', '6.5e-07', '3.9e-07']
+PASS G2 an orientation flip (x -> -x, lam < 0) sends it to negative frequency (pi-)
+PASS G3 complex conjugation (i -> -i) does the same: the twist's sign and i's sign are one choice
+PASS G4 mult-add elements before the wall (1 + k a > 0) keep the wave's frequency sign; past the wall (1 + k a < 0) they flip it  | before ['2.0e-18', '1.5e-07', '1.6e-07'], past ['1.0000', '1.0000', '1.0000']
+PASS H1 going round a loop of oriented area A multiplies by e^(iA)
+PASS H2 going round the other way gives e^(-iA): reversing the twist conjugates i
+PASS P1 a chain of weighted circle steps is a product: 1 + k*(a_N o ... o a_1) = (1 + k a_N)...(1 + k a_1), order kept
+PASS P2 expanded, the chain is a sum over every time-ordered subset of steps (the Dyson series skeleton)
+PASS P3 for a particle hopping on a ring, the chain's entry (end <- start) equals the sum over every lattice path of its step weights  | -0.990900+0.324000j vs -0.990900+0.324000j
+PASS P4 dial k = -i (hbar = 1): the chain of H*dt steps converges to the quantum propagator e^(-iHt); error ~ 1/N  | ['4.0e-01', '3.6e-02', '3.6e-03']
+PASS P5 dial k = -1 (real): the same chain converges to the heat kernel e^(-Ht) (Feynman-Kac / imaginary time)  | ['1.5e+00', '1.8e-01', '1.9e-02']
+PASS P6 one short step keeps size to first order only if the dial is imaginary: |1 + k h e| = 1 + Re(k) h e + ...  | first-order size change per unit step: k=-1.00+0.00j: -1.300, k=-0.00-1.00j: 0.000, k=0.50-0.87j: 0.650
+PASS P7 slicing two non-commuting steps: the error (e^(A/N) e^(B/N))^N - e^(A+B) is led by the twist [A,B]/(2N)  | |err| = 2.33e-05, |[A,B]/2N| = 2.34e-05
+PASS P8 multiplying the steps of a path in the Heisenberg group stores the path's signed (Levy) area: the twist of every pair, summed  | central part 2.9573, shoelace area 2.9573
+PASS P9 Chen's identity at level 2: the record of a joined path is the product of the two records
+NOTE P10 (follows from D1 + P8; order-dial J2, J4): represented with size kept, that area becomes the phase e^(i*area/hbar) of the path
+PASS P11 at k = -1 the chain of hazards is survival analysis (Kaplan-Meier): event probability = 1 - prod(1 - h_j)
+
+44/44 pass

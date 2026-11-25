@@ -6,7 +6,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,080 theorems, 124 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,101 theorems, 125 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
@@ -47,6 +47,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | The repetition dial: copies per element fall out of k (1/k cells); crowding between elements stays outside | `topics/repetition-dial/` | — |
 | The zoom dial: size as one new input; dimension comes out at the wall (Moran's equation) | `topics/zoom-dial/` | — |
 | Composition, order and the collection laws: mult-add as stretches about one centre, order cost as a wedge, the route to quantum, no functor half power set | `topics/order-dial/` | — |
+| Why quantum needs i: the twist fixes i's sign; path integrals as the weighted circle chain at an imaginary dial | `topics/why-i/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
 | Electromagnetism through mult-add: light sets the dial q = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
 | Size weighting as a dial, and what mult-add leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |

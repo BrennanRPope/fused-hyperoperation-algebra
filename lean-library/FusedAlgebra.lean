@@ -124,3 +124,4 @@ import FusedAlgebra.Topics.ZoomDial
 import FusedAlgebra.Topics.Conventions
 import FusedAlgebra.Topics.PathNames
 import FusedAlgebra.Topics.OrderDial
+import FusedAlgebra.Topics.WhyI
