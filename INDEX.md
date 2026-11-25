@@ -53,6 +53,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Adding a potential to the checkerboard and telegraph chain | `topics/why-i/checkerboard-potential/` | — |
 | e, i and π from one dial, and where i lives in physics | `topics/why-i/e-i-pi/` | — |
 | Does resolving the chain force the turn? Only reversibility and the classical path at every length force k = −i | `topics/why-i/e-i-pi/chain-resolves/` | — |
+| Dials for G: three published dials with stable ends, and G as the square of the stability-forced length | `topics/why-i/e-i-pi/g-dials/` | — |
 | k as the Cayley–Klein curvature dial (κ = −k²/4) | `topics/why-i/cayley-klein/` | — |
 | The circle operation as κ-Poincaré momentum addition | `topics/why-i/kappa-poincare/` | — |
 | The dial map: the framework does not make gravity a forced step | `topics/why-i/dial-map/` | — |

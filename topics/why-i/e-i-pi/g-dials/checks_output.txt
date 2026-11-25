@@ -1,0 +1,30 @@
+PASS D1 G alone has units, so no power of G is a pure number; with hbar, c and Lambda there is exactly ONE pure number, G hbar Lambda / c^3  | exponents (G, hbar, c, Lambda) = [ 1.  1. -3.  1.]
+PASS D2 with a mass m instead of Lambda the one pure number is G m^2/(hbar c) (gravitational fine-structure constant)  | exponents (G, hbar, c, m) = [ 1. -1. -1.  2.]
+PASS D3 sizes: G hbar Lambda/c^3 = (l_P)^2 Lambda ~ 2.9e-122; for the proton G m^2/(hbar c) ~ 5.9e-39  | 2.888e-122, 5.906e-39; l_P = 1.6163e-35 m, E_P = 1.2209e+19 GeV
+PASS S1 the two-scale algebra (Lorentz + positions X + momenta P + I) obeys Jacobi for every (g2, g3); at g2 = g3 = 0 it is Poincare-Heisenberg: [X_mu, P_nu] ~ eta_mu_nu I, I central, positions commute
+PASS S2 stability (same test as for c and hbar, H^2(g,g)): Poincare-Heisenberg (g2 = g3 = 0) CAN be deformed; turning on both scales gives a rigid algebra (H^2 = 0); one scale alone is not enough  | dim H^2 at (g2, g3) = (0,0) 7, (1,0) 1, (0,1) 1, (1,1) 0, (1,-1) 0
+PASS S3 the scales show up where expected: [X0, X1] = -g2 J (positions stop commuting: a minimal length l^2), [P0, P1] = -g3 J (curved momenta / de Sitter: 1/L^2), [X, I] = g2 P, [P, I] = -g3 X
+PASS S4 the same in 3+1 (15 generators): Poincare-Heisenberg can be deformed, the two-scale algebra is rigid (Mendes 1994; Chryssomalakos-Okon 2004)  | dim H^2 = (np.int64(3), np.int64(0))
+PASS S5 with hbar fixed by [x, p] = i hbar, the only pure number the rigid algebra carries is g2*g3 = l^2/L^2 (rescaling positions and momenta oppositely leaves it, and the algebra, unchanged)
+PASS S6 if l is the Planck length and L the de Sitter radius (L^2 = 3/Lambda), l^2/L^2 = G hbar Lambda/(3 c^3): the SAME pure number as D1, the coupling MacDowell-Mansouri and Freidel-Starodubtsev expand in (link ours)  | l_P^2/L^2 = 9.627e-123
+PASS S7 so G = c^3 l^2 / hbar: if stability's length l is the Planck length, G is not a dial of its own but l's square in other units
+PASS I1 on curvature 2-forms the Lorentzian Hodge star squares to -1 (eigenvalues +-i, three each): it plays i; the Euclidean one squares to +1 (known; Riemann-Silberstein in other clothes)
+PASS I2 Holst's operator 1 + (1/gamma)*star: det = (1 + 1/gamma^2)^3 in Lorentzian signature, never 0 for real gamma (Barbero's real dial, min 1 at gamma = infinity, the Palatini end) ...
+PASS I3 ... and 0 exactly at gamma = +-i: the self-dual (Ashtekar) value is the WALL of this lift, where it becomes a rank-3 projector (reading ours)
+PASS I4 Euclidean signature: det = (1 - 1/gamma^2)^3, wall at gamma = +-1, which is where Benedetti-Speziale (2011) find a UV fixed point gamma^2 = 1
+PASS I5 black-hole state counting fixes gamma: sum_j 2 exp(-2 pi gamma sqrt(j(j+1))) = 1 gives 0.2375 (Domagala-Lewandowski, Meissner 2004)  | gamma = 0.23753
+PASS I6 counting each puncture with its 2j+1 states instead gives 0.274 (Ghosh-Mitra); spin 1/2 only gives ln2/(pi sqrt3) = 0.127 (ABCK 1998)  | 0.27407, 0.12738
+PASS I7 gamma multiplies G in the area gap, A_min = 4 sqrt3 pi gamma hbar G/c^3: gamma rescales G's quantum of area but is not a dial on G itself  | A_min = 1.351e-69 m^2
+PASS J1 Jacobson: entropy per area eta = c^3/(4 G hbar), so G = c^3/(4 hbar eta): G -> 0 means infinitely many states per area (stiff spacetime). Solar-mass hole: S ~ 1.05e77 k_B  | S = 1.049e+77 k_B
+PASS J2 state counts of two horizon patches multiply, so (N - 1) composes by mult-add at dial 1 and entropy log N = log(1 + (N-1)) is its flat coordinate (reading ours; Tsallis's rule is the general dial, gr-bridges J5)
+PASS W1 Schwarzschild g_tt = 1 + k x with x = M/r and k = -2G/c^2: the lift hits 0 at the horizon r = 2GM/c^2 (the wall -1/k) and is negative inside, where time and radius trade roles (reading ours)
+PASS W2 the slope of g_tt at the wall is the surface gravity c^4/(4GM); with the 2 pi period it gives Hawking's 6.17e-8 K (same as e-i-pi C23)  | T = 6.1701e-08 K
+PASS W3 redshift factors between shells multiply, so (factor - 1) composes by mult-add at dial 1, but that dial is set by c (1/c^2 in the potential), not by G: masses themselves do not compose this way (dial-map G1-G2)
+PASS E1 Ehlers' frame theory dials lambda = 1/c^2 with G held fixed: c^2 (sqrt(g_tt) - 1) -> -GM/r as c -> infinity, so G survives the Newton-Cartan end; it is a c dial, not a G dial
+PASS R1 relative locality (Amelino-Camelia, Freidel, Kowalski-Glikman, Smolin 2011): hbar, G -> 0 with hbar/G fixed keeps the Planck energy and sends the Planck length to 0, isolating E_P as a dial
+PASS K1 kappa-Poincare: massless momenta moving together compose as a + b + k ab with k = -1/E_P (why-i/kappa-poincare K1, re-run)
+PASS U1 GUP [x, p] = i hbar (1 + beta p^2) gives a minimal length dx_min = hbar sqrt(beta) (Kempf-Mangano-Mann 1995); beta ~ l_P^2/hbar^2 inherits G through l_P
+PASS A1 asymptotic safety, toy flow beta(g) = 2g - 2g^2/g* for g = G k^2: g -> 0 in the infrared (Gaussian point), g -> g* in the ultraviolet (Weinberg 1979, Reuter 1998)
+PASS A2 in the variable 1/g those flow maps are stretch-and-shift maps x -> lam x + s with lam = e^(-2t), composing like the order dial's affine group with fixed point 1/g* (weak fit: any constant-coefficient Riccati flow does this)
+
+28/28 pass
