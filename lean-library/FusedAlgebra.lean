@@ -120,3 +120,4 @@ import FusedAlgebra.Topics.FractalBoxes
 import FusedAlgebra.Topics.FractalDials
 import FusedAlgebra.Topics.DialPotential
 import FusedAlgebra.Topics.RepetitionDial
+import FusedAlgebra.Topics.ZoomDial

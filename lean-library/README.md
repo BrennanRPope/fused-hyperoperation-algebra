@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 120 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3025 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 121 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 3035 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -147,6 +147,7 @@ Topics (each imports the foundation):
 | `Topics/FractalBoxes` | fractal-boxes/lean/FractalBoxes.lean | 15 theorems, first compile Nov 25: signed corner layers of a half box (Newton's C(½,k)), two halves join to a stick, Cantor codes one to one in any base, no linear-size rule is a half of 2^d |
 | `Topics/FractalDials` | fractal-dials/lean/FractalDials.lean | 14 theorems, first compile Nov 25: five half-dimension sets certified exactly, Moran's equation as the mult-add identity, the uneven set is non-lattice (no Minkowski wobble), weights are the dial t, joining keeps shapes self-similar, gasket touches where dust never does, the power set fits no shape class |
 | `Topics/RepetitionDial` | repetition-dial/lean/RepetitionDial.lean | 22 theorems, first compile Nov 25: 1/k cells per element, at most m copies at k = 1/m, coefficients polynomial in k, k read off average copies, negative counts between the k = 1/m values |
+| `Topics/ZoomDial` | zoom-dial/lean/ZoomDial.lean | 10 theorems, first compile Nov 25: zoom weight is a twist, zooms compose, words of depth n weigh x(s)ⁿ, the word series, dimension at the wall x(d) = 1 (Moran), half boxes hit the wall |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |
 | `Topics/GRBridges` | gr-bridges/lean/GRBridges.lean | 22 theorems: Clifford boosts, sandwich mult-add for matrix weights, Schur factor, Raychaudhuri area terms, river constraint, Brans-Dicke; first compile, one witness fixed |
 | `Topics/Electromagnetism` | electromagnetism/lean/Electromagnetism.lean | 41 theorems, first compile Nov 25: the wave equation sets the dial q = −1/c², light-cone parts of E and B scale by D and 1/D, D² − 1 composes by mult-add, invariants and null fields, unit phases as a ✳ ā = 0, plaquettes and discrete Stokes, Born–Infeld cap |

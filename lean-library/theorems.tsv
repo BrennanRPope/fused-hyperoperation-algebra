@@ -3023,3 +3023,13 @@ FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_on_circle	propext, Classic
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_trivial_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_turns	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.under_light_2d	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.half_box_walls	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.halving_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.sumL_flatMap_cons	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.uneven_depth_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.wall_every_depth	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.wall_partial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.word_series	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.words_weigh	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.zoom_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ZoomDial	ZoomDial.zoom_is_twist	propext, Classical.choice, Quot.sound

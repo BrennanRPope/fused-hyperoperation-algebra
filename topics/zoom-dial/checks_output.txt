@@ -1,0 +1,38 @@
+PASS 1 A two at 1/4: x(d) = 1 at d = 0.500000 (expected 0.500000)
+PASS 1 B three at 1/9: x(d) = 1 at d = 0.500000 (expected 0.500000)
+PASS 1 C three at 1/9 (off-centre): x(d) = 1 at d = 0.500000 (expected 0.500000)
+PASS 1 D uneven 9/100, 49/100: x(d) = 1 at d = 0.500000 (expected 0.500000)
+PASS 1 E four at 1/16: x(d) = 1 at d = 0.500000 (expected 0.500000)
+PASS 1 gasket three at 1/2: x(d) = 1 at d = 1.584963 (expected 1.584963)
+PASS 1 middle-third Cantor: x(d) = 1 at d = 0.630930 (expected 0.630930)
+PASS 2a A two at 1/4, s=0.3: words of depth 1..6 weigh x(s)^n
+PASS 2a A two at 1/4, s=0.5: words of depth 1..6 weigh x(s)^n
+PASS 2a A two at 1/4, s=0.8: words of depth 1..6 weigh x(s)^n
+PASS 2b A two at 1/4: above the dimension the word series converges to 1/(1-x)
+PASS 2c A two at 1/4: at the dimension every depth weighs exactly 1 (the wall, series diverges)
+PASS 2a D uneven 9/100, 49/100, s=0.3: words of depth 1..6 weigh x(s)^n
+PASS 2a D uneven 9/100, 49/100, s=0.5: words of depth 1..6 weigh x(s)^n
+PASS 2a D uneven 9/100, 49/100, s=0.8: words of depth 1..6 weigh x(s)^n
+PASS 2b D uneven 9/100, 49/100: above the dimension the word series converges to 1/(1-x)
+PASS 2c D uneven 9/100, 49/100: at the dimension every depth weighs exactly 1 (the wall, series diverges)
+PASS 3 A two at 1/4: natural weights r^d sum to 1
+PASS 3 B three at 1/9: natural weights r^d sum to 1
+PASS 3 C three at 1/9 (off-centre): natural weights r^d sum to 1
+PASS 3 D uneven 9/100, 49/100: natural weights r^d sum to 1
+PASS 3 E four at 1/16: natural weights r^d sum to 1
+PASS 3 gasket three at 1/2: natural weights r^d sum to 1
+PASS 3 middle-third Cantor: natural weights r^d sum to 1
+PASS 4 zoom r=0.250, d=0.500: w t ✳ w u = w (t ⊞_w u)
+PASS 4 zoom r=0.333, d=0.631: w t ✳ w u = w (t ⊞_w u)
+PASS 4 zoom r=0.500, d=1.000: w t ✳ w u = w (t ⊞_w u)
+PASS 4b size dial: zoom 1/2 at dimension beta gives weight 2^-beta (beta = 1, 2, 3)
+PASS 5a A: complex roots of N r^s = 1 lie on Re s = 1/2, spacing 4.53 (page: 4.53)
+PASS 5a B: complex roots of N r^s = 1 lie on Re s = 1/2, spacing 2.86 (page: 2.86)
+PASS 5a E: complex roots of N r^s = 1 lie on Re s = 1/2, spacing 2.27 (page: 2.27)
+PASS 5b D: 15 complex dimensions found up to height 40, all with Re s <= 1/2
+PASS 5c D: their real parts vary (non-lattice: no single evenly spaced line)
+D roots: [(np.float64(-0.181987), np.float64(2.267177)), (np.float64(-0.311149), np.float64(5.379913)), (np.float64(0.33644), np.float64(8.186044)), (np.float64(0.095319), np.float64(9.991786)), (np.float64(-0.340293), np.float64(13.013879)), (np.float64(-0.018154), np.float64(16.086316)), (np.float64(0.427842), np.float64(18.011301)), (np.float64(-0.280343), np.float64(20.649914))]
+PASS 6a zooms (1/4,1/4) and (9/100,49/100) both give d = 1/2
+PASS 6b d is monotone in the zoom: (0.2,0.2) < (0.25,0.25) < (0.3,0.3)
+
+35/35 checks passed
