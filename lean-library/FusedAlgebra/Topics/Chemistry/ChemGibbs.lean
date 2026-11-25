@@ -6,12 +6,12 @@
   Core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 
   Free energies add when reactions add, so equilibrium constants multiply:
-  the K side is the lift, and K − 1 mult-adds.
+  the K side is the lift, and K − 1 combines by the circle operation (called mult-add before 1.0).
 
   Two sites with occupation weights x, y and an interaction Boltzmann factor
-  ω have Z = 1 + x + y + ωxy, so Z − 1 is the weighted mult-add x ◯[ω] y.
+  ω have Z = 1 + x + y + ωxy, so Z − 1 is the circle operation x ◯[ω] y.
   ω = 0 (hard exclusion) is plain addition, ω = 1 (no interaction) is
-  mult-add, and the occupancy covariance is xy(ω − 1)/Z²: the dial's
+  the circle operation, and the occupancy covariance is xy(ω − 1)/Z²: the dial's
   distance from 1 is the correlation.
 
   LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
@@ -24,7 +24,7 @@ open CircleOp
 
 open scoped CircleOp
 
-/-- Equilibrium constants multiply; their excesses mult-add. -/
+/-- Equilibrium constants multiply; their excesses combine by the circle operation. -/
 theorem K_excess (K1 K2 : Rat) : (K1 - 1) ◯ (K2 - 1) = K1 * K2 - 1 := by
   rw [circ_def]; grind
 
@@ -35,7 +35,7 @@ theorem K_three (K1 K2 K3 : Rat) : (K1 - 1) ◯ (K2 - 1) ◯ (K3 - 1) = K1 * K2 
 /-- Two-site partition function with interaction factor ω. -/
 def Z2 (x y ω : Rat) : Rat := 1 + x + y + ω * x * y
 
-/-- Z − 1 is the weighted mult-add with weight ω. -/
+/-- Z − 1 is the circle operation with weight ω. -/
 theorem Z2_dial (x y ω : Rat) : Z2 x y ω - 1 = circK ω x y := by
   unfold Z2; rw [circK_def]; grind
 
@@ -47,7 +47,7 @@ theorem exclusion_adds (x y : Rat) : Z2 x y 0 = 1 + (x + y) := by
 theorem independent_factors (x y : Rat) : Z2 x y 1 = (1 + x) * (1 + y) := by
   unfold Z2; grind
 
-/-- Independent sites: Z − 1 is mult-add. -/
+/-- Independent sites: Z − 1 is the circle operation. -/
 theorem independent_circ (x y : Rat) : Z2 x y 1 - 1 = x ◯ y := by
   rw [Z2_dial, circK_one]
 

@@ -1,5 +1,5 @@
 /-
-  Game theory through mult-add
+  Game theory through the circle operation (called mult-add before 1.0)
   ============================
 
   Part of Fused Hyperoperation Algebra. Page and checks: ../ (game-theory).
@@ -11,7 +11,7 @@
   * Multiplicative weights (two experts): the total weight is 2·∏(1 + ε rₜ), each expert's weight
     is ∏(1 + ε gₜ), so the best expert's lifted gain is at most twice the algorithm's (the lifted
     regret bound, before logs).
-  * Elo / Bradley–Terry: odds − 1 mult-adds; the edge (O − 1)/(O + 1) composes like relativistic
+  * Elo / Bradley–Terry: odds − 1 combines by the circle operation; the edge (O − 1)/(O + 1) composes like relativistic
     velocities; the odds are the edge's Doppler lift; win chances compose by p₁p₂/(p₁p₂ + q₁q₂).
   * The dial game v(S) = dial fold of the members' values: Sugeno's rule, marginal values,
     Shapley values for 2 and 3 players in closed form (Harsanyi dividends = cube corners, split
@@ -65,7 +65,7 @@ theorem kelly_compose (f r₁ r₂ : R) :
 theorem kelly_many (f : R) (rs : List R) :
     prodL (rs.map (fun r => 1 + f * r)) = 1 + f * dfold f rs := (dfold_lift f rs).symm
 
-/-- In money terms the stakes' returns f·r mult-add plainly. -/
+/-- In money terms the stakes' returns f·r combine by the circle operation plainly. -/
 theorem kelly_stake (f r₁ r₂ : R) : f * circK f r₁ r₂ = (f * r₁) ◯ (f * r₂) := circK_scale f r₁ r₂
 
 /-- Ruin is the wall: one outcome with f·r = −1 leaves nothing, whatever follows. -/
@@ -138,7 +138,7 @@ theorem kelly_foc (p b : K) (hb : b ≠ 0) (h1 : 1 + b ≠ 0) (hp : p ≠ 0) (hq
   have e2 : (1 - p) / ((1 - p) * (1 + b) / b) = b / (1 + b) := by grind
   rw [e1, e2]; grind
 
-/-- Odds multiply along a chain, so odds − 1 mult-adds. -/
+/-- Odds multiply along a chain, so odds − 1 combines by the circle operation. -/
 theorem odds_circ (O₁ O₂ : K) : (O₁ - 1) ◯ (O₂ - 1) = O₁ * O₂ - 1 := by
   unfold circ; grind
 

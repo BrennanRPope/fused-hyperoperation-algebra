@@ -37,7 +37,7 @@ theorem haldane (r₁ r₂ : R) : r₁ + r₂ - 2 * r₁ * r₂ = circK (-2) r�
 theorem haldane_lift (r₁ r₂ : R) : 1 - 2 * circK (-2) r₁ r₂ = (1 - 2 * r₁) * (1 - 2 * r₂) := by
   unfold circK; grind
 
-/-- In the coordinate u = −2r Haldane is plain mult-add. -/
+/-- In the coordinate u = −2r Haldane is the plain circle operation (called mult-add before 1.0). -/
 theorem haldane_star (r₁ r₂ : R) : -2 * circK (-2) r₁ r₂ = (-2 * r₁) ◯ (-2 * r₂) := by
   unfold circK circ; grind
 

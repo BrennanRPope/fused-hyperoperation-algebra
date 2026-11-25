@@ -6,7 +6,7 @@
   Core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 
   Rings: characteristic polynomials of the 4- and 6-rings, Hückel and Möbius.
-  Hammett: rate ratios multiply, so ratio − 1 mult-adds. Stereoselectivity:
+  Hammett: rate ratios multiply, so ratio − 1 combines by the circle operation (called mult-add before 1.0). Stereoselectivity:
   with e(r) = (r − 1)/(r + 1), matched selectivities compose by the landscape
   law at (0, −1), (e₁ + e₂)/(1 + e₁e₂), the velocity-addition law; ee = ±1 are
   its walls, and Horeau's duplication is e ⊕ e.
@@ -39,7 +39,7 @@ theorem mobius4_charpoly (x : Rat) : x^4 - 4 * x^2 + 4 = (x * x - 2) * (x * x - 
 /-- Benzene's π energy (in β): 2·2 + 4·1 = 8, two more than three ethylenes (6). -/
 theorem benzene_resonance : 2 * 2 + 4 * 1 - 3 * 2 = (2 : Nat) := by decide
 
--- LIBRARY: hammett_compose (Hammett: σ adds, so rate ratios multiply and ratio − 1 mult-adds) was an exact twin of InfoFused.campbell and is removed.
+-- LIBRARY: hammett_compose (Hammett: σ adds, so rate ratios multiply and ratio − 1 combines by the circle operation) was an exact twin of InfoFused.campbell and is removed.
 
 /-- Matched selectivities: with e = (r − 1)/(r + 1), multiplying the ratios composes ee by
     (e₁ + e₂)/(1 + e₁e₂). Cleared form, with e₁, e₂ given by their defining equations. -/

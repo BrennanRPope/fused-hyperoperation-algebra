@@ -4,11 +4,11 @@
   Intended library path: FusedAlgebra/Topics/Biology/Development.lean
 
   1. The Richards family of growth curves: size/asymptote = 1 + mpow(x, p) with the excess x
-     decaying exponentially. Logistic growth is p = −1, the mult-add inverse (saturation);
+     decaying exponentially. Logistic growth is p = −1, the circle inverse (called mult-add inverse before 1.0) (saturation);
      von Bertalanffy is p = 3.
-  2. Gompertz in discrete time iterates one mult-add power; powers compose by multiplying
+  2. Gompertz in discrete time iterates one circle power; powers compose by multiplying
      exponents, so n steps are a single power.
-  3. Allometry y ∝ xᵃ: the growth of y is the mult-add power of the growth of x.
+  3. Allometry y ∝ xᵃ: the growth of y is the circle power of the growth of x.
   LIBRARY NOTE: first compiled in the shared library. 3 exact twins removed (star_def,
   mpow_mpow, logistic); each is marked where it stood. pow_mul' is a twin of
   Dynamics.pow_mul_R but stays, because later proofs here use it. No proof step or
@@ -36,7 +36,7 @@ theorem pow_mul' (a : R) (m n : Nat) : a ^ (m * n) = (a ^ m) ^ n := by
 
 -- LIBRARY: mpow_mpow (**Powers compose.** mpow(mpow(x, a), b) = mpow(x, a·b)) was an exact twin of Dynamics.mpow_mpow and is removed.
 
-/-- Iterating one mult-add power n times. -/
+/-- Iterating one circle power n times. -/
 def iter (l : Nat) : Nat → R → R
   | 0, x => x
   | n + 1, x => mpow (iter l n x) l

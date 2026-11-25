@@ -1,5 +1,5 @@
 /-
-  Axioms.FusedPeano: whole numbers with mult-add as a primitive
+  Axioms.FusedPeano: whole numbers with the circle operation (called mult-add before 1.0) as a primitive
   ==============================================================
 
   Peano's axioms with the fused ladder in place of + and ×. On a set N with
@@ -88,7 +88,7 @@ theorem sadd_ne_zero (a b : N) : sadd a b ≠ zero := by
   · rw [sadd_zero]; exact succ_ne_zero a
   · intro b _; rw [sadd_succ]; exact succ_ne_zero _
 
-/-! ## Rung 2 (mult-add) from the axioms -/
+/-! ## Rung 2 (the circle operation) from the axioms -/
 
 /-- 0 is a left identity too. -/
 theorem zero_circ (b : N) : circ zero b = b := by
@@ -103,7 +103,7 @@ theorem succ_circ (a b : N) : circ (succ a) b = sadd (circ a b) b := by
   · intro b ih
     rw [circ_succ, ih, circ_succ, sadd_succ, sadd_succ, sadd_assoc, sadd_assoc, sadd_comm b a]
 
-/-- Mult-add is commutative: the box turned on its side. -/
+/-- The circle operation is commutative: the box turned on its side. -/
 theorem circ_comm (a b : N) : circ a b = circ b a := by
   refine ind (fun b => circ a b = circ b a) ?_ ?_ b
   · rw [circ_zero, zero_circ]
@@ -116,7 +116,7 @@ theorem circ_sadd (a b c : N) : circ a (sadd b c) = sadd (circ a b) (circ a c) :
   · rw [sadd_zero, circ_succ, circ_zero]
   · intro c ih; rw [sadd_succ, circ_succ, ih, circ_succ, sadd_assoc]
 
-/-- Mult-add is associative: a 3-D box built two ways. -/
+/-- The circle operation is associative: a 3-D box built two ways. -/
 theorem circ_assoc (a b c : N) : circ (circ a b) c = circ a (circ b c) := by
   refine ind (fun c => circ (circ a b) c = circ a (circ b c)) ?_ ?_ c
   · rw [circ_zero, circ_zero]
@@ -214,7 +214,7 @@ theorem toN_sadd (a b : Nat) : toN (N := N) (a + b + 1) = sadd (toN a) (toN b) :
     show toN (a + (b + 1) + 1) = sadd (toN a) (succ (toN b))
     rw [sadd_succ, ← ih]; rfl
 
-/-- Counting carries mult-add to mult-add: (a + b + ab) ↦ a ◯ b. -/
+/-- Counting carries the circle operation to the circle operation: (a + b + ab) ↦ a ◯ b. -/
 theorem toN_circ (a b : Nat) : toN (N := N) (a + b + a * b) = circ (toN a) (toN b) := by
   induction b with
   | zero => show toN (a + 0 + a * 0) = circ (toN a) zero; rw [circ_zero]; simp
@@ -429,15 +429,15 @@ noncomputable instance instCommSemiring : Lean.Grind.CommSemiring N where
 /-- In the derived semiring, a + b + a·b is the primitive ◯. -/
 theorem circ_eq (a b : N) : a + b + a * b = circ a b := (circ_eq' a b).symm
 
-/-! ## Strength: + and × can be defined from successor and mult-add
+/-! ## Strength: + and × can be defined from successor and the circle operation
 
-  Mult-add alone on the whole numbers is multiplication in disguise
+  The circle operation alone on the whole numbers is multiplication in disguise
   (a ◯ b + 1 = (a + 1)(b + 1)), and the first-order theory of multiplication
   alone is decidable (Skolem 1930, Mostowski 1952): too weak to carry
   arithmetic. With the successor added, + and × become definable, so the
   structure (Nat, 0, S, ◯) carries all of first-order arithmetic. -/
 
-/-- Mult-add on Nat. -/
+/-- The circle operation on Nat. -/
 def ma (a b : Nat) : Nat := a + b + a * b
 
 /-- × from S and ◯: m·n = k exactly when one side is 0 and k = 0, or

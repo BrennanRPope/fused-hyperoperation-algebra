@@ -1,12 +1,12 @@
 /-
-  Combinatorics through mult-add
+  Combinatorics through the circle operation (called mult-add before 1.0)
   ==============================
 
   Companion page: ../index.html.  Numbers: ../checks.py.
   Core Lean 4.37 only (no mathlib), no `sorry`, standard axioms only.
   Intended library path: FusedAlgebra/Topics/Combinatorics.lean
 
-  1. The cube counts subsets. n copies of 1 mult-added give 2ⁿ − 1 (the nonempty
+  1. The cube counts subsets. n copies of 1 under the circle operation give 2ⁿ − 1 (the nonempty
      subsets); the dial k paints each chosen element one of k colours, (1 + k)ⁿ.
      k = −1 makes the alternating sum vanish, k = −2 gives (−1)ⁿ.
   2. The dial fold of a list, and the wall: one entry on the wall −1/k sends the
@@ -51,7 +51,7 @@ theorem groups_length {α : Type} (l : List α) : (groups l).length = 2 ^ l.leng
 section Semiring
 variable {R : Type} [Lean.Grind.CommSemiring R]
 
-/-- n copies of a, folded by mult-add, is the mult-add power. -/
+/-- n copies of a, folded by the circle operation, is the circle power. -/
 theorem foldCirc_replicate (a : R) (n : Nat) : foldCirc (List.replicate n a) = mpow a n := by
   induction n with
   | zero => rfl
@@ -63,7 +63,7 @@ theorem painted_subsets (k : R) (n : Nat) :
     sumL ((groups (List.replicate n k)).map prodL) = (1 + k) ^ n := by
   rw [← one_add_foldCirc_eq_corners, foldCirc_replicate, mpow_lift]
 
-/-- Mult-add of a with itself n times, at a = 1: the lift of 2ⁿ − 1 nonempty subsets. -/
+/-- The circle operation of a with itself n times, at a = 1: the lift of 2ⁿ − 1 nonempty subsets. -/
 theorem nonempty_subsets_lift (n : Nat) : 1 + foldCirc (List.replicate n (1 : R)) = 2 ^ n := by
   rw [foldCirc_replicate, mpow_lift]
   have : (1 : R) + 1 = 2 := by grind
@@ -124,14 +124,14 @@ theorem wall_entry_absorbs (k : R) (l : List R) (a : R) (h : a ∈ l) (hw : 1 + 
 
 end Ring
 
-/-! # 3. n! as a mult-add fold; Stirling cycle numbers are the cube's layers -/
+/-! # 3. n! as a circle-operation fold; Stirling cycle numbers are the cube's layers -/
 
 /-- 1 ◯ 2 ◯ ⋯ ◯ m. -/
 def ffold : Nat → Nat
   | 0 => 0
   | m + 1 => ffold m ◯ (m + 1)
 
-/-- **n! − 1 is a mult-add fold**: 1 + (1 ◯ 2 ◯ ⋯ ◯ m) = (m + 1)!. -/
+/-- **n! − 1 is a circle-operation fold**: 1 + (1 ◯ 2 ◯ ⋯ ◯ m) = (m + 1)!. -/
 theorem ffold_fact (m : Nat) : ffold m + 1 = fact (m + 1) := by
   induction m with
   | zero => rfl
@@ -239,7 +239,7 @@ def connF (n : Nat) : Nat := [0, 1, 1, 4, 38, 728, 26704, 1866256].getD n 0
 theorem graphs_from_connected :
     expList connF 7 = (List.range 8).map (fun n => 2 ^ (n * (n - 1) / 2)) := by decide
 
-/-- Labelled mult-add: (1 + A)(1 + B) − 1 at n is Aₙ + Bₙ + Σ C(n, j)·Aⱼ·B_{n−j}
+/-- The labelled circle operation: (1 + A)(1 + B) − 1 at n is Aₙ + Bₙ + Σ C(n, j)·Aⱼ·B_{n−j}
     over splits with both parts nonempty. For A = linear orders, B = sets this counts
     arrangements Σ C(n, j)·j!. -/
 def lsplit (a b : Nat → Nat) (n : Nat) : Nat :=

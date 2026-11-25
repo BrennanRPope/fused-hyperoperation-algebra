@@ -1,5 +1,5 @@
 /-
-  Infinities between countable and the continuum, through mult-add
+  Infinities between countable and the continuum, through the circle operation (called mult-add before 1.0)
   ==================================================================
 
   Part of Fused Hyperoperation Algebra. Companion page: ../index.html,
@@ -9,14 +9,14 @@
   workspace has no Lean toolchain, so nothing here has been run through
   Lean yet. Every identity below is also checked in ../checks.py.
 
-  Mult-add is a ◯ b = a + b + ab = (1+a)(1+b) − 1.
+  The circle operation is a ◯ b = a + b + ab = (1+a)(1+b) − 1.
 
   What is stated and proved here:
   * sumOnes_eq      n ones added make n.                       (the countable side)
-  * circOnes_succ   n ones mult-added make 2ⁿ − 1.             (the corner side)
-  * layers_eval     the mult-add cube's layers, weighted by t, fill (1+t)ⁿ
+  * circOnes_succ   n ones under the circle operation make 2ⁿ − 1.  (the corner side)
+  * layers_eval     the circle-operation cube's layers, weighted by t, fill (1+t)ⁿ
                     (layers 3 = [1,3,3,1]).
-  * wOnes_spec      the zoomed mult-add a + b + t·ab, folded n times on 1,
+  * wOnes_spec      the zoomed circle operation a + b + t·ab, folded n times on 1,
                     gives t·Wₙ + 1 = (1+t)ⁿ; t = 0 is plain addition.
   * cantor          no α-indexed list of 0/1 sequences contains them all:
                     the infinite cube has more corners than axes.
@@ -26,7 +26,7 @@
                     polynomial, g would be polynomial. Used for the claim that
                     fractional rungs grow faster than every polynomial.
 
-  LIBRARY NOTE: copied from the finished infinities file (Nov 25); mult-add and the weighted family come from FusedAlgebra.Base.
+  LIBRARY NOTE: copied from the finished infinities file (Nov 25); the circle operation and the weighted family come from FusedAlgebra.Base.
 -/
 import FusedAlgebra.Base
 
@@ -34,7 +34,7 @@ namespace Infinities
 
 open CircleOp
 
-/-! ## Sum of ones versus mult-add of ones -/
+/-! ## Sum of ones versus the circle operation of ones -/
 
 def sumOnes : Nat → Nat
   | 0 => 0
@@ -57,7 +57,7 @@ theorem circOnes_succ (n : Nat) : circOnes n + 1 = 2 ^ n := by
     rw [Nat.pow_succ, ← ih, Nat.mul_one]
     omega
 
-/-! ## The mult-add cube's layers (Pascal), weighted by t -/
+/-! ## The circle-operation cube's layers (Pascal), weighted by t -/
 
 def addL : List Nat → List Nat → List Nat
   | [], l => l
@@ -92,7 +92,7 @@ theorem layers_eval (t n : Nat) : evalL t (layers n) = (1 + t) ^ n := by
     simp only [evalL, ih, Nat.zero_add]
     rw [Nat.pow_succ, Nat.mul_add, Nat.mul_one, Nat.mul_comm t]
 
-/-! ## Zoomed mult-add: a + b + t·ab (t = 0 addition, t = 1 mult-add) -/
+/-! ## The zoomed circle operation: a + b + t·ab (t = 0 addition, t = 1 the circle operation) -/
 
 def wOnes (t : Nat) : Nat → Nat
   | 0 => 0

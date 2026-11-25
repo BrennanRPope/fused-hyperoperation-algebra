@@ -1,5 +1,5 @@
 /-
-  Rulecraft on the mult-add cube
+  Rulecraft on the circle-operation cube (called mult-add cube before 1.0)
   ==============================
 
   Part of Fused Hyperoperation Algebra. Companion to the page
@@ -8,10 +8,10 @@
 
   STATUS: compiled in the shared library with core Lean 4.37.0-rc1, no
   `sorry`. (The original file was written unchecked; one proof step needed
-  a fix, and the generic mult-add laws, the list fold, the corner expansion
+  a fix, and the generic circle-operation laws, the list fold, the corner expansion
   and the way back now come from FusedAlgebra.Base.)
 
-  Mult-add: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1.
+  The circle operation: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1.
 
   What it proves, in Rulecraft's words:
 
@@ -20,11 +20,11 @@
     whole effect is X_S ◯ X_T = X_S + X_T + X_S·X_T. The cross term X_S·X_T
     is exactly the corners of the cube that touch both sides: the
     spillover a body with scope S cannot see. The corner expansion
-    (`one_add_foldCirc_eq_corners`) shows the mult-add of a list is the sum,
+    (`one_add_foldCirc_eq_corners`) shows the circle operation of a list is the sum,
     over every nonempty group of parties, of the product of their effects.
 
-  * Order-free reforms. Mult-add is commutative and associative, so the
-    mult-add of any reshuffled list is the same (`foldCirc_perm`). Percent
+  * Order-free reforms. The circle operation is commutative and associative, so the
+    circle operation of any reshuffled list is the same (`foldCirc_perm`). Percent
     changes to one quantity can never be path-dependent. The fused
     exponent rung is not commutative (`fexp_not_comm`), so path dependence
     needs a higher rung or more than one quantity.
@@ -43,7 +43,7 @@
     (`balance`, `balance_le`). This is also why a tension held in balance
     keeps the most corner.
 
-  * Coupling weight. a ◯[A] b = a + b + A·a·b is ordinary mult-add seen
+  * Coupling weight. a ◯[A] b = a + b + A·a·b is the ordinary circle operation seen
     through x ↦ A·x (`weighted_conj`). A > 0 is Benedict's high synergy,
     A < 0 a zero-sum corner, A = 0 no spillover at all.
 
@@ -69,7 +69,7 @@ open Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-/-! ## 1. Readings of mult-add on any commutative ring -/
+/-! ## 1. Readings of the circle operation on any commutative ring -/
 
 section Ring
 variable {R : Type} [CommRing R]

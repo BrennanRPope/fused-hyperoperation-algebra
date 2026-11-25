@@ -1,5 +1,5 @@
 /-
-  Fused Hyperoperation Algebra: where mult-add touches P vs NP
+  Fused Hyperoperation Algebra: where the circle operation (called mult-add before 1.0) touches P vs NP
   ===========================================================
   Core Lean 4 only (no mathlib), no `sorry`. Written for Lean 4.37.
 
@@ -13,11 +13,11 @@
   honest map in math-theory/p-vs-np/README.md:
 
   1. The shifted ruler changes nothing about computation. With shifted add
-     sAdd a b = a + b + 1 and mult-add a ◯ b = a + b + ab, the map x ↦ 1 + x carries
+     sAdd a b = a + b + 1 and the circle operation a ◯ b = a + b + ab, the map x ↦ 1 + x carries
      (sAdd, ◯) gate for gate onto (+, ×). Any arithmetic circuit in one world becomes a
      circuit of exactly the same size in the other (`evalS_lift`, `eval_from_shift`,
      `size_mapC`). So no circuit lower bound, and no fast algorithm, can appear or
-     disappear by switching to mult-add.
+     disappear by switching to the circle operation.
 
   2. The dial, folded over a list of yes/no witnesses, gives the q-integer of the number
      of yes answers (`witness_fold`). Its settings are the classic counting classes:
@@ -28,13 +28,13 @@
      q = 2 keeps the whole count (`qnum_two_strictMono`); q = 0 throws all but one bit
      away (`np_point_forgets`). These classes are standard; the dial is one picture of them.
 
-  3. Over the two-element field, mult-add IS the OR gate and the shift x ↦ 1 + x IS
+  3. Over the two-element field, the circle operation IS the OR gate and the shift x ↦ 1 + x IS
      NOT, so the lift is De Morgan's law (`gf2_circ_is_or`, `gf2_lift_de_morgan`).
      That is exactly the arithmetized OR used in IP = PSPACE and in the
      Razborov–Smolensky lower bounds, which is why the algebrization and natural-proofs
      barriers cover any argument built from it.
 
-  4. The n-input mult-add fold has 2ⁿ − 1 monomials but is built from n − 1 gates
+  4. The n-input circle-operation fold has 2ⁿ − 1 monomials but is built from n − 1 gates
      (`foldCirc_ones`): it is easy because it factors. The hard counting problems
      (permanent, #SAT) are the ones whose monomials do not factor.
 
@@ -158,7 +158,7 @@ variable {R : Type} [CommRing R]
 /-- A yes/no answer as a number. -/
 def ind (b : Bool) : R := if b then 1 else 0
 
-/-- Fold a list with the weighted mult-add a + b + k·ab. -/
+/-- Fold a list with the circle operation a + b + k·ab. -/
 def foldW (k : R) : List R → R
   | [] => 0
   | a :: l => circK k a (foldW k l)
@@ -243,9 +243,9 @@ theorem qnum_two_strictMono {m n : Nat} (h : m < n) :
     · have := ih h'; omega
     · subst h'; omega
 
-/-! ## 3. The two-element field: mult-add is OR, the shift is NOT -/
+/-! ## 3. The two-element field: the circle operation is OR, the shift is NOT -/
 
-/-- Mult-add over GF(2): + is xor, × is and. -/
+/-- The circle operation over GF(2): + is xor, × is and. -/
 def gf2Circle (a b : Bool) : Bool := xor (xor a b) (a && b)
 
 theorem gf2_circ_is_or (a b : Bool) : gf2Circle a b = (a || b) := by

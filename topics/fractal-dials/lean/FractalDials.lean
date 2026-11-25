@@ -13,7 +13,7 @@
                                  the square roots of their zoom ratios add to 1
                                  (Moran's equation at s = 1/2), exactly.
   * mulAdd_shift, mulAdd_identity
-                                 (x-1) ◯ (y-1) = xy - 1: mult-add is multiplication
+                                 (x-1) ◯ (y-1) = xy - 1: the circle operation (called mult-add before 1.0) is multiplication
                                  of sides 1 + a. It has no notion of size, which is
                                  why a zoom dial would be new.
   * two_pow_mod7, uneven_not_lattice
@@ -60,12 +60,12 @@ theorem half_dimension_certificates :
     ((1/4 : Rat) * (1/4) = 1/16 ∧ (1/4 : Rat) + 1/4 + 1/4 + 1/4 = 1) := by
   refine ⟨⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_, ?_⟩, ⟨?_, ?_⟩⟩ <;> decide +kernel
 
-/-! ## 2. Mult-add multiplies sides; it has no zoom -/
+/-! ## 2. The circle operation multiplies sides; it has no zoom -/
 
-/-- mult-add: a ◯ b = a + b + ab. -/
+/-- the circle operation: a ◯ b = a + b + ab. -/
 def mulAdd (a b : Int) : Int := a + b + a * b
 
-/-- Writing sides as 1 + a, mult-add is plain multiplication of sides. -/
+/-- Writing sides as 1 + a, the circle operation is plain multiplication of sides. -/
 theorem mulAdd_shift (x y : Int) : mulAdd (x - 1) (y - 1) = x * y - 1 := by
   simp only [mulAdd, Int.sub_mul, Int.mul_sub, Int.one_mul, Int.mul_one]; omega
 
@@ -97,7 +97,7 @@ theorem uneven_not_lattice (p q : Nat) (hq : 0 < q) : 9 ^ p * 100 ^ q ≠ 49 ^ q
 
 /-! ## 4. Weights are the per-element dial t
 
-Splitting mass p : 1-p between two pieces is mult-add's per-element dial
+Splitting mass p : 1-p between two pieces is the circle operation's per-element dial
 t = p/(1-p), so p = t/(1+t). Fair weights (t = 1) give the smallest collision
 sum p² + (1-p)², which is what keeps all Rényi dimensions D_q equal. -/
 

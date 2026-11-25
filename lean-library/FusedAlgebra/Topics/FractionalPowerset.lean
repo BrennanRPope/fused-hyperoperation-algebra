@@ -164,7 +164,7 @@ theorem flat_add_flat_succ {C : Type} (add : C → C → C) (le : C → C → Pr
     exact this
   · exact self_le_add m one
 
-/-- Mult-add `m ◯ m = (m + m) + m·m` is flat exactly when multiplication is. -/
+/-- The circle operation (called mult-add before 1.0) `m ◯ m = (m + m) + m·m` is flat exactly when multiplication is. -/
 theorem flat_circ_iff_flat_mul {C : Type} (add mul : C → C → C) (le : C → C → Prop)
     (antisymm : ∀ a b, le a b → le b a → a = b)
     (two : C) (two_def : ∀ m, mul m two = add m m)

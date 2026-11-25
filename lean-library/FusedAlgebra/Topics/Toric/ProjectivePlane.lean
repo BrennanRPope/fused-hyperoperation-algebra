@@ -2,7 +2,7 @@
   The projective plane P² from three toric charts
   ================================================
 
-  Part of Fused Mult-Add Algebra. Companion to ToricCharts.lean (P¹ × P¹,
+  Part of Fused Hyperoperation Algebra. Companion to ToricCharts.lean (P¹ × P¹,
   same folder). Python check: p2_check.py.
 
   STATUS: CHECKED. Core Lean 4 only (no mathlib), compiled with Lean
@@ -19,9 +19,9 @@
 
   * Every chart change is a monomial map: a 2×2 integer matrix acting on
     exponents. c0 → c1 is (a, b) ↦ (1/a, b/a), which mixes the two
-    coordinates. In mult-add coordinates (a = 1 + u, b = 1 + w) that is
-    (u, w) ↦ (u⁻, w ◯ u⁻): take the mult-add inverse of u, then mult-add
-    it onto w. So the gluing of P² is mult-add division.
+    coordinates. In circle-operation coordinates (called mult-add coordinates before 1.0) (a = 1 + u, b = 1 + w) that is
+    (u, w) ↦ (u⁻, w ◯ u⁻): take the circle inverse of u, then combine
+    it with w by the circle operation. So the gluing of P² is circle-operation division.
 
   * Windings x ↦ xⁿ commute with every chart change, because monomial maps
     commute with powers. So the winding [x:y:z] ↦ [xⁿ:yⁿ:zⁿ] is one
@@ -37,7 +37,7 @@
   injective maps that cover, transition maps, the cocycle condition), not a
   construction of P² as a scheme, which would need mathlib.
 
-  LIBRARY NOTE: mult-add and its inverse now come from FusedAlgebra.Base.
+  LIBRARY NOTE: the circle operation and its inverse now come from FusedAlgebra.Base.
 -/
 import FusedAlgebra.Base
 
@@ -146,10 +146,10 @@ theorem torus_in_all (c d : Cone) (x y : K) (hx : x ≠ 0) (hy : y ≠ 0) :
     InChart d (chart c (x, y)) := by
   rw [inChart_iff]; cases c <;> cases d <;> simp [Dom, hx, hy]
 
-/-! Mult-add coordinates: a = 1 + u, b = 1 + w. -/
+/-! Circle-operation coordinates: a = 1 + u, b = 1 + w. -/
 
-/-- In mult-add coordinates, the chart change c0 → c1, (a, b) ↦ (1/a, b/a),
-is (u, w) ↦ (u⁻, w ◯ u⁻): the mult-add inverse, then a mult-add. -/
+/-- In circle-operation coordinates, the chart change c0 → c1, (a, b) ↦ (1/a, b/a),
+is (u, w) ↦ (u⁻, w ◯ u⁻): the circle inverse, then a circle operation. -/
 theorem trans01_circ (u w : K) (h : 1 + u ≠ 0) :
     trans c0 c1 (1 + u, 1 + w) = (1 + circInv u, 1 + circ w (circInv u)) := by
   simp only [trans, circ, circInv, Prod.mk.injEq]; constructor <;> grind

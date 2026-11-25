@@ -14,7 +14,7 @@
       fraction p_v = 1 − 1/γ with γ² = (r − 2M)/(r − 3M) (exact factor; equals
       Thomas's (γ − 1) to first order).
   They combine by multiplying the factors: 1 − p = (1 − p_s)(1 − p_v), so
-  −p = (−p_s) ◯ (−p_v): **the precession fractions mult-add**. The total is the
+  −p = (−p_s) ◯ (−p_v): **the precession fractions combine by the circle operation (called mult-add before 1.0)**. The total is the
   known exact geodetic precession 1 − √(1 − 3M/r) per orbit.
 
   Here x = M/r (in units G = c = 1). Lean works with the squares of the factors,
@@ -44,12 +44,12 @@ theorem factors_multiply (x : Rat) (h2 : 1 - 2 * x ≠ 0) :
     (1 - 2 * x) * (1 - v2 x) = 1 - 3 * x := by
   unfold v2; grind
 
-/-- **The precession fractions mult-add**: if 1 − p = (1 − a)(1 − b) then −p = (−a) ◯ (−b). -/
+/-- **The precession fractions combine by the circle operation**: if 1 − p = (1 − a)(1 − b) then −p = (−a) ◯ (−b). -/
 theorem fractions_fuse (p a b : Rat) (h : 1 - p = (1 - a) * (1 - b)) :
     -p = (-a) ◯ (-b) := by
   show -p = -a + -b + -a * -b; grind
 
-/-- And back: the mult-add form gives the product of factors. -/
+/-- And back: the circle-operation form gives the product of factors. -/
 theorem fuse_factors (a b : Rat) : 1 + ((-a) ◯ (-b)) = (1 - a) * (1 - b) := by
   show 1 + (-a + -b + -a * -b) = (1 - a) * (1 - b); grind
 

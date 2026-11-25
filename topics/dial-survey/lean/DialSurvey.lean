@@ -14,7 +14,7 @@
      independent random subsets has odds t ◯ s (`odds_union`). The uniform
      dial t = 2^a − 1 adds exponents: (2^a − 1) ◯ (2^b − 1) = 2^(a+b) − 1
      (`exponent_ruler`), so the per-element dial and the fractional exponent
-     are one dial, read through the mult-add ruler.
+     are one dial, read through the circle-operation ruler (called mult-add ruler before 1.0).
   3. k acting on per-element dials. One element with weight k contributes
      (1 − k·z)^(−1/k); its z^e coefficient is kRise k e / e!, where
      kRise k e = ∏_{j<e} (1 + j·k). Then:
@@ -43,7 +43,7 @@ theorem units_change_weight {R : Type} [CommSemiring R] (k l a b : R) :
     circK k (l * a) (l * b) = l * circK (k * l) a b := by
   unfold circK; grind
 
-/-- With units 1/k the weight becomes 1: every nonzero k is mult-add in its own units. -/
+/-- With units 1/k the weight becomes 1: every nonzero k is the circle operation in its own units. -/
 theorem weight_to_one (k a b : Rat) (hk : k ≠ 0) :
     circK k (a / k) (b / k) = (1 / k) * circ a b := by
   unfold circK circ; grind
@@ -62,8 +62,8 @@ theorem odds_complement (t : Rat) (ht : t ≠ 0) (ht1 : 1 + t ≠ 0) :
     1 - t / (1 + t) = (1 / t) / (1 + 1 / t) := by
   grind
 
-/-- The uniform dial 2^a − 1 is the exponent a read through the mult-add ruler:
-    dials mult-add exactly when exponents add. -/
+/-- The uniform dial 2^a − 1 is the exponent a read through the circle-operation ruler:
+    dials combine by the circle operation exactly when exponents add. -/
 theorem exponent_ruler (a b : Nat) :
     circ ((2 : Int) ^ a - 1) (2 ^ b - 1) = 2 ^ (a + b) - 1 := by
   unfold circ; rw [Int.pow_add]; grind

@@ -1,5 +1,5 @@
 /-
-  Category theory through mult-add
+  Category theory through the circle operation (called mult-add before 1.0)
   ================================
 
   Companion page and checks: ../index.html, ../checks.py.
@@ -19,7 +19,7 @@
     4. align / zipLongest: pairing two lists into These loses nothing; both inputs come back,
        the length is the max, and the zip is the `both` part.
     5. Decategorification: cell counts of CW complexes multiply under products (as polynomials
-       in t); the reduced count P − 1 mult-adds, at every t. At t = −1 this is the reduced Euler
+       in t); the reduced count P − 1 combines by the circle operation, at every t. At t = −1 this is the reduced Euler
        characteristic; the circle (χ̃ = −1) is the wall, spheres sit at ±1, suspension multiplies by t.
 -/
 import FusedAlgebra.Base
@@ -136,7 +136,7 @@ def assocInv : These α (These β γ) → These (These α β) γ
   | both a (that c) => both (this a) c
   | both a (both b c) => both (both a b) c
 
-/-- **Associativity**: (A ◯ B) ◯ C ≅ A ◯ (B ◯ C), the mult-add cube's seven corners. -/
+/-- **Associativity**: (A ◯ B) ◯ C ≅ A ◯ (B ◯ C), the circle-operation cube's seven corners. -/
 def assoc : Iso (These (These α β) γ) (These α (These β γ)) where
   to := assocTo
   inv := assocInv
@@ -368,7 +368,7 @@ theorem ev_pmul (t : Int) (xs ys : List Int) : ev t (pmul xs ys) = ev t xs * ev 
   | nil => simp [pmul, ev]
   | cons x xs ih => simp only [pmul, ev_padd, ev_smul, ev, ih]; grind
 
-/-- **The reduced count mult-adds**: P(X×Y) − 1 = (P(X) − 1) ◯ (P(Y) − 1), at every t.
+/-- **The reduced count combines by the circle operation**: P(X×Y) − 1 = (P(X) − 1) ◯ (P(Y) − 1), at every t.
     At t = 1: non-base cells of a pointed product = wedge + smash. At t = −1: χ̃(X×Y) = χ̃X ◯ χ̃Y. -/
 theorem reduced_product (t : Int) (xs ys : List Int) :
     ev t (pmul xs ys) - 1 = (ev t xs - 1) ◯ (ev t ys - 1) := by
@@ -399,7 +399,7 @@ theorem circle_wall (ys : List Int) : ev (-1) (pmul (sphere 1) ys) - 1 = -1 := b
 /-- The torus S¹ × S¹: one 0-cell, two 1-cells, one 2-cell. -/
 theorem torus_cells : pmul (sphere 1) (sphere 1) = [1, 2, 1] := by decide
 
-/-- Even spheres sit at mult-add's 1: χ̃(S² × S²) = 1 ◯ 1 = 3. -/
+/-- Even spheres sit at the circle operation's 1: χ̃(S² × S²) = 1 ◯ 1 = 3. -/
 theorem s2_s2 : ev (-1) (pmul (sphere 2) (sphere 2)) - 1 = 3 := by decide
 
 /-- Suspension multiplies the reduced count by t, so the splitting

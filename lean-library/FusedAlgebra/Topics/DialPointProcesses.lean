@@ -23,7 +23,7 @@
   4. Tilting.  Weighting a mode's count by tᴺ moves its mean; in the ruler
      x = (mean − μ)/Var the moves compose by the landscape lens law at
      p = 1 + 2s, q = s(1 + s), s = kμ, which always has p² − 4q = 1.
-     s = 0 is mult-add, s = −1 the union of failures, s = −1/2 velocity
+     s = 0 is the circle operation (called mult-add before 1.0), s = −1 the union of failures, s = −1/2 velocity
      addition with speed limit 2.
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/DialPointProcesses.lean; merged unchanged; no exact twins. Its Rat helper sq_nonneg'
   stays local like the other topics' Rat helpers.
@@ -58,7 +58,7 @@ theorem fold_lift (k : Rat) (l : List Rat) :
   | nil => simp only [fold, List.map, prodL]; grind
   | cons x l ih => simp only [fold, List.map, prodL]; rw [circK_lift, ih]
 
-/-- k·fold is plain mult-add of the scaled eigenvalues k·μᵢ. -/
+/-- k·fold is the plain circle operation of the scaled eigenvalues k·μᵢ. -/
 theorem fold_scale (k : Rat) (l : List Rat) : k * fold k l = foldCirc (l.map (fun x => k * x)) := by
   induction l with
   | nil => simp only [fold, List.map, foldCirc]; grind
@@ -76,7 +76,7 @@ theorem fold_fermion (l : List Rat) : fold (-1) l = 1 - prodL (l.map (fun x => 1
   | nil => simp only [fold, List.map, prodL]; grind
   | cons x l ih => simp only [fold, List.map, prodL]; rw [ih]; unfold circK; grind
 
-/-- Bosons (k = +1): the fold is plain mult-add of the eigenvalues. -/
+/-- Bosons (k = +1): the fold is the plain circle operation of the eigenvalues. -/
 theorem fold_boson (l : List Rat) : fold 1 l = foldCirc l := by
   induction l with
   | nil => rfl
@@ -243,7 +243,7 @@ theorem two_fermion_copies (x : Rat) : (1 - x / 2) * (1 - x / 2) = (1 + (-1 / 2)
 /-- The landscape law (a + b + p·ab)/(1 − q·ab). -/
 def lens (p q a b : Rat) : Rat := (a + b + p * a * b) / (1 - q * a * b)
 
-/-- The tilt ruler: tilt factor t = 1 + u (u composes by mult-add), x = u/(1 − s·u). -/
+/-- The tilt ruler: tilt factor t = 1 + u (u composes by the circle operation), x = u/(1 − s·u). -/
 def ruler (s u : Rat) : Rat := u / (1 - s * u)
 
 /-- Tilted mean: weighting a mode's count by tᴺ gives mean μt/(1 + kμ(1 − t)).
@@ -256,7 +256,7 @@ theorem tilt_in_ruler (k x t : Rat) (hx : x ≠ 0) (hv : 1 + k * x ≠ 0)
   rw [e1]
   grind
 
-/-- Tilts compose by mult-add in u, and by the lens law in the ruler:
+/-- Tilts compose by the circle operation in u, and by the lens law in the ruler:
     p = 1 + 2s, q = s(1 + s). -/
 theorem tilt_lens (s u v : Rat) (hu : 1 - s * u ≠ 0) (hv : 1 - s * v ≠ 0)
     (huv : 1 - s * (u ◯ v) ≠ 0) :
@@ -281,7 +281,7 @@ theorem shape_is_fano (s : Rat) : 1 + 2 * s = 2 * (1 + s) - 1 := by grind
 /-- Particle-hole: s and −1 − s give the same shape. -/
 theorem particle_hole (s : Rat) : (1 + 2 * (-1 - s)) * (1 + 2 * (-1 - s)) = (1 + 2 * s) * (1 + 2 * s) := by grind
 
-/-- s = 0 (rare points, Poisson): mult-add. -/
+/-- s = 0 (rare points, Poisson): the circle operation. -/
 theorem empty_mode_multadd (a b : Rat) : lens (1 + 2 * 0) (0 * (1 + 0)) a b = a ◯ b := by
   unfold lens circ; grind
 

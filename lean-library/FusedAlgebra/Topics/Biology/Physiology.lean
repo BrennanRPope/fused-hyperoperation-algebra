@@ -4,7 +4,7 @@
   Intended library path: FusedAlgebra/Topics/Biology/Physiology.lean
 
   1. Hill's force–velocity law (F + a)(v + b) = (F₀ + a)b is the level set X ◯ Y = X₀ in the
-     reduced variables X = F/a, Y = v/b; its asymptotes are mult-add's absorbing −1.
+     reduced variables X = F/a, Y = v/b; its asymptotes are the circle operation's absorbing −1.
   2. Two antagonists: the agonist dose ratio obeys DR₁₂ − 1 = (DR₁ − 1) ◯_ω (DR₂ − 1);
      same site ω = 0 (dose ratios add), independent sites ω = 1 (they multiply).
   3. Organ extraction with u = CLint/Q: parallel pathways add u (dial 0), organs in series
@@ -33,14 +33,14 @@ variable {R : Type} [Lean.Grind.CommRing R]
 theorem hill_level_set (X Y X₀ : R) (h : (1 + X) * (1 + Y) = 1 + X₀) : X ◯ Y = X₀ := by
   unfold circ; grind
 
--- LIBRARY: hill_asymptote (The asymptote X = −1 (force −a): mult-add's absorbing element) was an exact twin of CircleOp.neg_one_absorbs and is removed.
+-- LIBRARY: hill_asymptote (The asymptote X = −1 (force −a): the circle operation's absorbing element) was an exact twin of CircleOp.neg_one_absorbs and is removed.
 
 /-! ## 2. Antagonists -/
 
 /-- The antagonist part of the receptor's partition function, with interaction ω. -/
 def antag (ω b₁ b₂ : R) : R := 1 + b₁ + b₂ + ω * b₁ * b₂
 
-/-- The dose ratio is that partition function; DR − 1 is the weighted mult-add. -/
+/-- The dose ratio is that partition function; DR − 1 is the circle operation (called weighted mult-add before 1.0) with dial k. -/
 theorem dose_ratio (ω b₁ b₂ : R) : antag ω b₁ b₂ - 1 = circK ω b₁ b₂ := by
   unfold antag circK; grind
 
@@ -67,7 +67,7 @@ end Ring
 section Field
 variable {K : Type} [Lean.Grind.Field K]
 
-/-- **Velocity is a mult-add difference.** On Hill's curve Y = X₀ ◯ inv(X). -/
+/-- **Velocity is a circle-operation difference.** On Hill's curve Y = X₀ ◯ inv(X). -/
 theorem hill_velocity (X Y X₀ : K) (hX : 1 + X ≠ 0) (h : X ◯ Y = X₀) :
     Y = X₀ ◯ circInv X := by
   unfold circ circInv at *

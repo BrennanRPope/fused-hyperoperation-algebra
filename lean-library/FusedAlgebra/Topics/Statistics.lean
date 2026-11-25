@@ -6,7 +6,7 @@
 
   Core Lean 4.37 only (no mathlib), no `sorry`, standard axioms only.
   Library-ready: imports FusedAlgebra.Base, .Cube and .Topics.E, and uses
-  their mult-add a ◯ b = a + b + ab, weighted mult-add a ◯[k] b = a + b + k·ab
+  their circle operation (called mult-add before 1.0) a ◯ b = a + b + ab, the circle operation a ◯[k] b = a + b + k·ab
   (`circK k a b`), powers, list folds and the cube's corner expansion.
 
   What this file proves, by part:
@@ -29,7 +29,7 @@
      shape numbers fall exactly as 1/n (the exact part of the central limit
      theorem).  Coin and binomial mean, variance, κ₃, κ₄.
   5. Bayes.  Posterior odds = prior odds × likelihood ratio, so odds − 1
-     mult-adds; the complement is the mult-add inverse in odds; pooling two
+     combines by the circle operation; the complement is the circle inverse in odds; pooling two
      opinions is velocity addition in ρ = 2p − 1.
   6. The dependence line.  Union under Ali–Mikhail–Haq dependence θ is the
      landscape's lens law at k = −(1 + θ), q = θ: the lens laws with one wall
@@ -52,7 +52,7 @@ namespace StatFused
 
 set_option linter.unusedSectionVars false
 
-/-! # 1. Indicators: Boolean logic is weighted mult-add on {0, 1} -/
+/-! # 1. Indicators: Boolean logic is the circle operation with dial k on {0, 1} -/
 
 /-- An indicator: a 0/1 number, x·x = x. -/
 def IsInd (x : Rat) : Prop := x * x = x
@@ -120,7 +120,7 @@ theorem union_misses (l : List Rat) : 1 - unionL l = prodL (l.map (fun x => 1 - 
   | cons a l ih =>
     simp only [unionL, List.map, prodL]; rw [← ih]; unfold circK; grind
 
-/-- The k = −1 fold is mult-add read on the negatives. -/
+/-- The k = −1 fold is the circle operation read on the negatives. -/
 theorem union_neg_foldCirc (l : List Rat) : unionL l = -(foldCirc (l.map (fun x => -x))) := by
   induction l with
   | nil => simp only [unionL, List.map, foldCirc]; grind
@@ -724,7 +724,7 @@ theorem fair_coin_kurt (n : Nat) (hn : 0 < n) : kurt (convPow (bern (1/2)) n) * 
   rw [h]; unfold kurt; rw [(bern_stats _).2.2.1, (bern_stats _).2.2.2.2]; grind
 
 
-/-! # 5. Bayes: odds multiply, so odds − 1 mult-adds -/
+/-! # 5. Bayes: odds multiply, so odds − 1 combines by the circle operation -/
 
 def odds (p : Rat) : Rat := p / (1 - p)
 
@@ -750,7 +750,7 @@ theorem repeated_evidence (o l : Rat) (n : Nat) :
   have e : (1 : Rat) + (l - 1) = l := by grind
   rw [e] at h; unfold circ; rw [← h]; grind
 
-/-- The complement is the way back: odds(1 − p) − 1 is the mult-add inverse of odds(p) − 1. -/
+/-- The complement is the way back: odds(1 − p) − 1 is the circle inverse of odds(p) − 1. -/
 theorem complement_is_inverse (p : Rat) (hp0 : p ≠ 0) (hp1 : p ≠ 1) :
     odds (1 - p) - 1 = circInv (odds p - 1) := by
   unfold odds circInv

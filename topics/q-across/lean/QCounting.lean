@@ -7,7 +7,7 @@
   FusedAlgebra.lean, run ./build.sh.
 
   1. Gaussian binomials [n, k]_q (standard): q-Pascal, and the GENERAL theorem that at q = 1
-     they are the layers of the mult-add cube (gauss_at_one, every n and k). At q = 2 they count
+     they are the layers of the circle-operation cube (called mult-add cube before 1.0) (gauss_at_one, every n and k). At q = 2 they count
      subspaces over the two-element field, at q = −1 they fold Pascal in half.
   2. The q-binomial theorem (standard, Cauchy/Gauss): (1 + t)(1 + qt)⋯(1 + q^(n−1) t), i.e.
      1 + (t ◯ qt ◯ … ◯ q^(n−1) t), has layer k equal to q^(k(k−1)/2)·[n, k]_q. Checked n ≤ 6.
@@ -61,7 +61,7 @@ theorem peval_pzeros (x : Int) : ∀ (k : Nat) (p : Poly), peval x (pzeros k p) 
     rw [peval_pzeros x k p]
     grind
 
-/-- At q = 1 the Gaussian binomial is the binomial coefficient: the layer of the mult-add cube.
+/-- At q = 1 the Gaussian binomial is the binomial coefficient: the layer of the circle-operation cube.
     (Every n and k, not a finite check.) -/
 theorem gauss_at_one : ∀ n k : Nat, peval 1 (gauss n k) = (CircleOp.Cube.layer n k : Int)
   | n, 0 => by
@@ -91,7 +91,7 @@ theorem gauss_at_neg_one :
          else (CircleOp.Cube.layer (n.val / 2) (k.val / 2) : Int)) := by
   decide +kernel
 
-/-! ## 2. The q-binomial theorem is a mult-add fold -/
+/-! ## 2. The q-binomial theorem is a circle-operation fold -/
 
 /-- Polynomials in t whose coefficients are polynomials in q. -/
 def padd2 : List Poly → List Poly → List Poly
@@ -166,7 +166,7 @@ theorem ising_trace (u : R) (n : Nat) : 2 * (ising u n).1 = pw (1 + u) n + pw (1
   obtain ⟨h1, h2⟩ := ising_eigen u n
   grind
 
-/-- ... and in mult-add terms: Z = 2 + u^(◯n) + (−u)^(◯n). Only the even layers of the cube
+/-- ... and in circle-operation terms: Z = 2 + u^(◯n) + (−u)^(◯n). Only the even layers of the cube
     survive (a ring has an even number of domain walls). -/
 theorem ising_circ (u : R) (n : Nat) : 2 * (ising u n).1 = 2 + mpow u n + mpow (-u) n := by
   have h := ising_trace u n

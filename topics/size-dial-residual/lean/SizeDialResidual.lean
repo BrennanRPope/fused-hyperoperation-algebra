@@ -1,5 +1,5 @@
 /-
-  Size weighting as a dial, and what mult-add leaves unexplained
+  Size weighting as a dial, and what the circle operation (called mult-add before 1.0) leaves unexplained
   ==============================================================
 
   Part of Fused Hyperoperation Algebra. Companion page and checks:
@@ -9,7 +9,7 @@
   What is proved (the elementary identities behind the page):
 
   1. A size weight is a per-element twist. Weighing an element by w and
-     mult-adding equals the twisted (weighted) mult-add at k = w, scaled by w
+     combining by the circle operation equals the twisted (weighted) circle operation at k = w, scaled by w
      (`weight_is_twist`, Base's circK_scale). Union of two weighted dials differs
      from weighing the union dial by exactly t·s·w·(w − 1) (`weighted_merge_gap`),
      so the two commute when w·w = w, the sharp count (`sharp_weight_commutes`).
@@ -49,8 +49,8 @@ open scoped CircleOp
 section Weight
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- **A size weight is a twist.** Weighing two dials by w and mult-adding is the
-    twisted mult-add at k = w, scaled by w. -/
+/-- **A size weight is a twist.** Weighing two dials by w and combining by the circle operation is the
+    twisted circle operation at k = w, scaled by w. -/
 theorem weight_is_twist (w t s : R) : circ (w * t) (w * s) = w * circK w t s :=
   (circK_scale w t s).symm
 
@@ -153,7 +153,7 @@ def geo (x : R) : Nat → R
   | 0 => 1
   | m + 1 => geo x m + x ^ (m + 1)
 
-/-- **At most m copies.** (1 − x)(1 + x + … + x^m) = 1 − x^(m+1); m = 1 is mult-add's
+/-- **At most m copies.** (1 − x)(1 + x + … + x^m) = 1 − x^(m+1); m = 1 is the circle operation's
     "at most once", m → ∞ is full repetition. -/
 theorem at_most_m (x : R) (m : Nat) : (1 - x) * geo x m = 1 - x ^ (m + 1) := by
   induction m with
@@ -163,7 +163,7 @@ theorem at_most_m (x : R) (m : Nat) : (1 - x) * geo x m = 1 - x ^ (m + 1) := by
     have e : x ^ (m + 1 + 1) = x ^ (m + 1) * x := Semiring.pow_succ x (m + 1)
     rw [e]; grind
 
-/-- m = 1 is the mult-add factor. -/
+/-- m = 1 is the circle-operation factor. -/
 theorem at_most_one (x : R) : geo x 1 = 1 + x := by
   simp only [geo]; rw [Semiring.pow_succ, Semiring.pow_zero]; grind
 

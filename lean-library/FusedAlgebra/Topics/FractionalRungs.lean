@@ -17,7 +17,7 @@ namespace FractionalRungs
 
 open CircleOp
 
-/-! The corner dial a + b + k·a·b is the weighted mult-add `circK` of FusedAlgebra.Base;
+/-! The corner dial a + b + k·a·b is the circle operation (called weighted mult-add before 1.0) `circK` of FusedAlgebra.Base;
   its commutative, associative, identity, lift, rescale and mirror laws are
   circK_comm, circK_assoc, circK_zero, circK_lift, circK_scale and circK_flip there. -/
 

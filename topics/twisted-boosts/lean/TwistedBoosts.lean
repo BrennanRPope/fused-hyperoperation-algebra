@@ -328,19 +328,19 @@ theorem sphere_no_wall (u : C) : 1 ≤ sdet 1 C.one u := by
     · have := Rat.mul_nonneg (by grind : 0 ≤ -u.im) (by grind : 0 ≤ -u.im); grind
   simp only [sdet, C.nsq, C.one] <;> grind
 
-/-! ## 6. Half a kick, and the tie to mult-add -/
+/-! ## 6. Half a kick, and the tie to the circle operation (called mult-add before 1.0) -/
 
 /-- The half-velocity t composed with itself gives the velocity: t ⊕ t = 2t/(1 + t²). -/
 theorem half_kick (t : Rat) : vel t t = 2 * t / (1 + t * t) := by
   unfold vel; grind
 
-/-- On the mult-add ruler, the velocity is the half-velocity mult-added to itself:
+/-- On the circle-operation ruler, the velocity is the half-velocity combined with itself by the circle operation:
     d(t ⊕ t) = d(t) ◯ d(t). The half-velocity is half a kick. -/
 theorem half_kick_ruler (t : Rat) (h : 1 - t ≠ 0) (h2 : 1 + t * t ≠ 0) :
     dop (vel t t) = dop t ◯ dop t :=
   dop_vel t t h h h2
 
-/-- The twist's tangent, written with the mult-add corner: Y/X = q(u × v)/(1 − q(u·v)),
+/-- The twist's tangent, written with the circle-operation corner: Y/X = q(u × v)/(1 − q(u·v)),
     and both parts come from the one corner ū·v. -/
 theorem twist_from_corner (q : Rat) (u v : C) :
     tX q u v = 1 - q * (C.mul (C.conj u) v).re ∧ tY q u v = q * (C.mul (C.conj u) v).im := by

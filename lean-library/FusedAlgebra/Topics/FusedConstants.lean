@@ -12,7 +12,7 @@
   Fused rung r+1 is the same operation slid by one:  a (r) b = H r (1+a) (1+b) - 1.
 
   Proved:
-  * mult_add:        (1+a)(1+b) - 1 = a + b + ab, so fused rung 2 is mult-add.
+  * mult_add:        (1+a)(1+b) - 1 = a + b + ab, so fused rung 2 is the circle operation (called mult-add before 1.0).
   * slide_fixed, slide_gap, slide_step:  sliding a map by one (x -> 1+x) moves its
                      fixed points by exactly one and keeps every gap to the diagonal
                      and every step size.  So a kiss with the diagonal survives the
@@ -56,7 +56,7 @@ theorem H_add (a b : Nat) : H 0 a b = a + b := by rw [H]
 theorem H_mul (a b : Nat) : H 1 a b = a * b := by rw [H]
 theorem H_pow (a b : Nat) : H 2 a b = a ^ b := by rw [H]
 
-/-! ### Fused rung 2 is mult-add -/
+/-! ### Fused rung 2 is the circle operation -/
 
 theorem mult_add (a b : Int) : (1 + a) * (1 + b) - 1 = a + b + a * b := by
   rw [Int.add_mul, Int.one_mul, Int.mul_add, Int.mul_one]

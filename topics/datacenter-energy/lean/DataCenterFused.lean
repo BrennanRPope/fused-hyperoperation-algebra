@@ -4,7 +4,7 @@
   so Nat/Int stand in for the real numbers; every statement is a polynomial identity or
   inequality, so it holds for the reals by the same algebra.
 
-  Mult-add (rung 2):  a ◯ b = a + b + a*b,  and  (a ◯ b) + 1 = (a+1)(b+1).
+  The circle operation (called mult-add before 1.0) (rung 2):  a ◯ b = a + b + a*b,  and  (a ◯ b) + 1 = (a+1)(b+1).
   A stage's overhead odds r = (input - output)/output, so input = output * (1 + r).
 -/
 namespace DataCenterFused
@@ -14,7 +14,7 @@ theorem circ_lift (a b : Nat) : circ a b + 1 = (a + 1) * (b + 1) := by unfold ci
 theorem circ_comm (a b : Nat) : circ a b = circ b a := by unfold circ; grind
 theorem circ_assoc (a b c : Nat) : circ (circ a b) c = circ a (circ b c) := by unfold circ; grind
 
-/-- Fold a power chain of stage odds with mult-add. -/
+/-- Fold a power chain of stage odds with the circle operation. -/
 def chain : List Nat → Nat
   | [] => 0
   | r :: rs => circ r (chain rs)
@@ -23,7 +23,7 @@ def lifts : List Nat → Nat
   | [] => 1
   | r :: rs => (r + 1) * lifts rs
 
-/-! ### Lead 1. A power chain's overhead is the mult-add of its stages, in any order. -/
+/-! ### Lead 1. A power chain's overhead is the circle operation of its stages, in any order. -/
 theorem chain_lift (rs : List Nat) : chain rs + 1 = lifts rs := by
   induction rs with
   | nil => rfl
@@ -84,7 +84,7 @@ theorem equal_share (y d : Int) : (y + d) ^ 2 + (y - d) ^ 2 = 2 * y ^ 2 + 2 * d 
 example : (1 * 2 * 2 * 2 + 1 * 1 * 3 ^ 2 : Int) < 1 * 1 * 2 * 2 + 2 * 1 * 3 ^ 2 := by decide
 example : ¬ ((1 * 2 * 2 * 2 + 1 * 1 * 1 ^ 2 : Int) < 1 * 1 * 2 * 2 + 2 * 1 * 1 ^ 2) := by decide
 
-/-! ### Lead 4. Fans: power ∝ flow³ (affinity law). The mult-add cube. -/
+/-! ### Lead 4. Fans: power ∝ flow³ (affinity law). The circle-operation cube. -/
 /-- Layers 1, 3, 3, 1 of the fused cube (1+d)³ − 1 = 3d + 3d² + d³. -/
 theorem cube_layers (d : Int) : (1 + d) ^ 3 = 1 + 3 * d + 3 * d ^ 2 + d ^ 3 := by grind
 /-- k fans each moving q: k·q³·k² = (k·q)³, i.e. total power = Q³/k² for total flow Q = k q. -/
@@ -101,7 +101,7 @@ theorem spare_fan_helps (N : Nat) (h : 0 < N) : (N + 1) * N ^ 3 < N * (N + 1) ^ 
   rw [‹(N + 1) * N ^ 3 = _›, ‹N * (N + 1) ^ 3 = _›]
   exact Nat.mul_lt_mul_of_pos_left h1 hp
 
-/-! ### Stacking savings: kept fractions multiply, so savings compose by mult-add of the
+/-! ### Stacking savings: kept fractions multiply, so savings compose by the circle operation of the
     (negative) odds; in whole numbers, keep k1 of K and k2 of K: kept = k1*k2 of K². -/
 theorem stack (K s1 s2 : Int) :
     (K - s1) * (K - s2) = K * K - (s1 * K + s2 * K - s1 * s2) := by grind

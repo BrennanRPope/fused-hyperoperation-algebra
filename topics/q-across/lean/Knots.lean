@@ -10,7 +10,7 @@
   What is standard: the Kauffman bracket (1987) and Jones polynomial (1984). The bracket of a
   diagram with n crossings is a sum over the 2ⁿ corners of the n-cube (each crossing smoothed
   one of two ways), each corner weighted by A^(#A − #B)·d^(loops − 1) with loop value
-  d = −A² − A⁻². This is the same cube as the mult-add corner expansion; Khovanov homology
+  d = −A² − A⁻². This is the same cube as the circle-operation corner (called mult-add corner before 1.0) expansion; Khovanov homology
   (1999) is built on exactly this cube of states.
 
   The q-link: d = −A⁻²·[2] with [2] = 1 + A⁴ the q-integer of QDial at q = A⁴, and the Jones
@@ -211,7 +211,7 @@ theorem jones_at_neg_one :
     evalTneg (kauffmanF 4 8 figEight 0) = 5 ∧ evalTneg (kauffmanF 5 10 cinquefoilL (-5)) = 5 := by
   decide +kernel
 
-/-! ## The state cube is the mult-add cube -/
+/-! ## The state cube is the circle-operation cube -/
 
 /-- The trefoil's eight states as (number of B-smoothings, loops). The B-count runs over the
     layers of the 3-cube (1, 3, 3, 1). -/

@@ -15,7 +15,7 @@
   LIBRARY NOTE: copied from thermodynamics/lean/ThermoFused.lean (Nov 25) as
   Topics/Thermodynamics and compiled here with core Lean 4.37.0-rc1.
 
-  Mult-add a ◯ b = a + b + ab, its lift 1 + (a ◯ b) = (1 + a)(1 + b), the
+  The circle operation (called mult-add before 1.0) a ◯ b = a + b + ab, its lift 1 + (a ◯ b) = (1 + a)(1 + b), the
   weighted family circK k a b = a + b + k·ab with 1 + k(a ◯[k] b) = (1+ka)(1+kb),
   the inverse −u/(1+u), list folds and the cube's corners all come from Base.
 
@@ -60,7 +60,7 @@ theorem outer_sum (xs ys : List Rat) : sumL (outer xs ys) = sumL xs * sumL ys :=
 
 /-! ## 1. Partition functions: the corner is "both excited" -/
 
-/-- Independent systems: Z_AB = Z_A · Z_B, so Z − 1 composes by mult-add. -/
+/-- Independent systems: Z_AB = Z_A · Z_B, so Z − 1 composes by the circle operation. -/
 theorem partition_square (ZA ZB : Rat) : ZA * ZB - 1 = circ (ZA - 1) (ZB - 1) := by
   unfold circ; grind
 
@@ -89,11 +89,11 @@ theorem free_energy_adds {G : Type} [Add G] (L : Rat → G)
     to the identity: a composite's entropy also goes to 0. -/
 theorem third_law_identity : circ (0 : Rat) 0 = 0 := circ_zero 0
 
-/-- Residual entropy: ground-state degeneracies compose by mult-add of g − 1. -/
+/-- Residual entropy: ground-state degeneracies compose by the circle operation of g − 1. -/
 theorem residual_degeneracy (g1 g2 : Rat) : g1 * g2 - 1 = circ (g1 - 1) (g2 - 1) :=
   partition_square g1 g2
 
-/-- Pauling's ice: W = (3/2)^N, so W − 1 is the mult-add power (1/2)^(◯N). -/
+/-- Pauling's ice: W = (3/2)^N, so W − 1 is the circle power (1/2)^(◯N). -/
 theorem pauling_ice (n : Nat) : 1 + mpow (1/2 : Rat) n = (3/2) ^ n := by
   rw [mpow_lift]
   have e : (1 + 1/2 : Rat) = 3/2 := by grind
@@ -112,7 +112,7 @@ theorem cooling_step_pos (a b : Rat) (ha : 0 < 1 + a) (hb : 0 < 1 + b) :
   rw [circ_lift]; exact Rat.mul_pos ha hb
 
 /-- Unattainability: any finite list of cooling steps, each short of the wall,
-    stays short of it. T = 0 is the wall −1, and mult-add only reaches the
+    stays short of it. T = 0 is the wall −1, and the circle operation only reaches the
     wall if some step is already on it. -/
 theorem unattainable (l : List Rat) (h : ∀ x ∈ l, 0 < 1 + x) : 0 < 1 + foldCirc l := by
   induction l with
@@ -203,12 +203,12 @@ theorem perfect_stage (e : Rat) : circK (-1) 1 e = 1 := by
   unfold circK; grind
 
 /-- Two fridges in cascade (the second pumps the first's rejected heat):
-    work per unit of cold heat u = W/Qc composes by plain mult-add. -/
+    work per unit of cold heat u = W/Qc composes by the plain circle operation. -/
 theorem fridge_cascade (Qc u1 u2 : Rat) :
     u1 * Qc + u2 * (Qc + u1 * Qc) = circ u1 u2 * Qc := by
   unfold circ; grind
 
-/-- Running an engine backwards is the mult-add inverse:
+/-- Running an engine backwards is the circle inverse:
     u = η/(1 − η) = circInv(−η). -/
 theorem reverse_is_inverse (eta : Rat) (h : 1 - eta ≠ 0) :
     eta / (1 - eta) = circInv (-eta) := by
@@ -240,7 +240,7 @@ theorem second_law_composes (e1 e2 r1 r2 : Rat) (h1 : 0 ≤ r1) (h2 : 0 ≤ r2)
   have hB := Rat.mul_nonneg h1 (show (0 : Rat) ≤ 1 - e2 - r2 by grind)
   unfold circK; grind
 
-/-! ## 5. Tsallis: the q-sum is weighted mult-add with k = 1 − q -/
+/-! ## 5. Tsallis: the q-sum is the circle operation with k = 1 − q -/
 
 theorem map_mul_map (f : Rat → Rat) (hf : ∀ u v, f (u * v) = f u * f v) (x : Rat)
     (ys : List Rat) :
@@ -368,10 +368,10 @@ theorem shields (n r : Rat) (h1 : 1 - r ≠ 0) (h2 : 1 + (n - 1) * r ≠ 0) :
   have e : 1 - n * r / (1 + (n - 1) * r) = (1 - r) / (1 + (n - 1) * r) := by grind
   rw [e]; grind
 
-/-! ## 8. Lee–Yang: bonds are weighted mult-add squares -/
+/-! ## 8. Lee–Yang: bonds are circle-operation squares with dial k -/
 
 /-- At infinite temperature (a = 1) a bond's Lee–Yang square is the plain
-    mult-add square. -/
+    circle-operation square. -/
 theorem bond_infinite_T (x y : Rat) : 1 + 1 * x + 1 * y + x * y = 1 + circ x y := by
   unfold circ; grind
 
@@ -433,7 +433,7 @@ theorem wick_den (i q a b : Rat) (hi : i * i = -1) :
 /-! ## 10. Fluctuation theorems and chemistry -/
 
 /-- Jarzynski: for independent processes the averages ⟨e^{−βW}⟩ multiply
-    (weights times probabilities form a grid), so ⟨e^{−βW}⟩ − 1 mult-adds. -/
+    (weights times probabilities form a grid), so ⟨e^{−βW}⟩ − 1 combines by the circle operation. -/
 theorem jarzynski_composes (xs ys : List Rat) :
     sumL (outer xs ys) - 1 = circ (sumL xs - 1) (sumL ys - 1) := by
   rw [outer_sum]; unfold circ; grind

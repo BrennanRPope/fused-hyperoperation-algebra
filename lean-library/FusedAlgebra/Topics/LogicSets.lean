@@ -1,5 +1,5 @@
 /-
-  Logic and set theory through mult-add
+  Logic and set theory through the circle operation (called mult-add before 1.0)
   =====================================
 
   Companion page and checks: ../index.html, ../checks.py.
@@ -20,8 +20,8 @@
     4. Fuzzy logic: Hamacher's t-conorms are the landscape line p + q = −1, and in the
        odds coordinate x/(1 − x) every one of them is the dial with k = γ. The t-norms are
        their De Morgan mirrors.
-    5. Logic of the rungs: the fused exponent alone defines mult-add, shifted add and 0
-       (so it carries all of arithmetic), while mult-add alone is multiplication in
+    5. Logic of the rungs: the fused exponent alone defines the circle operation, shifted add and 0
+       (so it carries all of arithmetic), while the circle operation alone is multiplication in
        disguise (decidable, Skolem/Mostowski).
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/LogicSets.lean; merged unchanged; no exact twins.
 -/
@@ -261,7 +261,7 @@ theorem fexp_one_inj (m n : Nat) : fexp 1 m = fexp 1 n ↔ m = n := by
     omega
   · intro h; rw [h]
 
-/-- Mult-add is definable from the fused exponent alone:
+/-- The circle operation is definable from the fused exponent alone:
     b ◯ c = d exactly when fexp (fexp a b) c = fexp a d for every a (the tower law). -/
 theorem circ_definable (b c d : Nat) :
     b ◯ c = d ↔ ∀ a, fexp (fexp a b) c = fexp a d := by
@@ -272,7 +272,7 @@ theorem circ_definable (b c d : Nat) :
     rw [fexp_tower] at this
     exact (fexp_one_inj _ _).mp this
 
-/-- Shifted add (rung 0) is definable from the fused exponent and mult-add:
+/-- Shifted add (rung 0) is definable from the fused exponent and the circle operation:
     b + c + 1 = d exactly when fexp a b ◯ fexp a c = fexp a d for every a. -/
 theorem sadd_definable (b c d : Nat) :
     sadd b c = d ↔ ∀ a, (fexp a b) ◯ (fexp a c) = fexp a d := by
@@ -296,7 +296,7 @@ theorem zero_definable (y : Nat) : (∀ a, fexp a y = a) ↔ y = 0 := by
 theorem succ_and_add (x y z : Nat) : sadd x 0 = x + 1 ∧ (x + y = z ↔ sadd x y = z + 1) := by
   unfold sadd; constructor <;> omega
 
-/-- Mult-add alone is multiplication in disguise: the lift x ↦ x + 1 carries (Nat, ◯, 0)
+/-- The circle operation alone is multiplication in disguise: the lift x ↦ x + 1 carries (Nat, ◯, 0)
     onto the positive numbers under ×, one-to-one. -/
 theorem lift_iso (a b : Nat) : (a ◯ b) + 1 = (a + 1) * (b + 1) ∧ (a + 1 = b + 1 → a = b) :=
   ⟨circ_lift' a b, fun h => by omega⟩

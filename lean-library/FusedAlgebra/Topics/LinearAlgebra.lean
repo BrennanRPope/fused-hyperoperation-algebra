@@ -1,5 +1,5 @@
 /-
-  Fused Hyperoperation Algebra: linear algebra through mult-add.
+  Fused Hyperoperation Algebra: linear algebra through the circle operation (called mult-add before 1.0).
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library's Base.
 
   LIBRARY NOTE: copied from linear-algebra/lean/LinearAlgebra.lean (Nov 25). It
@@ -8,25 +8,25 @@
   in linear-algebra/checks.py.)
 
   What is here (2×2 and 3×3 matrices written out as records, so `grind` does the algebra):
-    1. Matrix mult-add A ◯ B = A + B + AB: the lift I + (A ◯ B) = (I + A)(I + B), the weighted
+    1. The matrix circle operation A ◯ B = A + B + AB: the lift I + (A ◯ B) = (I + A)(I + B), the weighted
        lift with k, associativity, identity 0, and a 2×2 example where order matters.
     2. Determinants: det(I + kA) = 1 + k·e₁ + k²·e₂ + k³·e₃ (principal minors, counts 1,3,3,1),
        det(AB) = det A · det B, the box picture det(I + diag(a,b,c)), and for a triangular
-       matrix det(I + A) − 1 = a₁₁ ◯ a₂₂ ◯ a₃₃ (the shifted determinant is the mult-add of the
+       matrix det(I + A) − 1 = a₁₁ ◯ a₂₂ ◯ a₃₃ (the shifted determinant is the circle operation of the
        eigenvalues).
     3. The dial homomorphism D_k(A ◯[k] B) = D_k(A) ◯[k] D_k(B) with D_k = e₁ + k·e₂ + k²·e₃:
        k = 0 is "trace is additive", k = 1 is "det(I + A) is multiplicative".
     4. 2×2 coupling sets the dial: det(I + M) − 1 = m₁₁ ◯[w] m₂₂ when m₁₂m₂₁ = (1 − w)m₁₁m₂₂;
-       diagonal gives w = 1 (mult-add), rank one gives w = 0 (plain addition). The KdV
+       diagonal gives w = 1 (the circle operation), rank one gives w = 0 (plain addition). The KdV
        two-soliton τ is the case w = ((k₁ − k₂)/(k₁ + k₂))².
     5. Rotations: (I + kX)ᵀ(I + kX) = I + k(Xᵀ ◯[k] X); for X = [[x, −y],[y, x]] the condition is
        2x + k(x² + y²) = 0, the circle through 0 centred at the weighted wall −1/k; at k = 0 it
        is the skew condition Xᵀ + X = 0.
-    6. Inverses on a field: the mult-add inverse (I + A)⁻¹ − I, matrix mult-add subtraction
+    6. Inverses on a field: the circle inverse (I + A)⁻¹ − I, matrix circle-operation subtraction
        X ⊟ A = (X − A)(I + A)⁻¹ undoes ◯, and the Cayley transform of a 2×2 skew matrix is
        I + (Sᵀ ⊟ S), the rational point ((1 − s²)/(1 + s²), 2s/(1 + s²)) of the unit circle.
     7. Fused-linear maps (linear maps about the wall corner (−1, −1)): they fix the corner,
-       respect the fused addition u + v + 1 and the mult-add scaling c ◯ v.
+       respect the fused addition u + v + 1 and the circle-operation scaling c ◯ v.
     8. Rate space: monomial maps u ↦ (u₁^m₁₁ u₂^m₁₂, u₁^m₂₁ u₂^m₂₂) turn ◯ into ◯, and
        composing two of them multiplies their exponent matrices.
 -/
@@ -88,14 +88,14 @@ def transpose (x : M2 R) : M2 R := ⟨x.a, x.c, x.b, x.d⟩
 def tr (x : M2 R) : R := x.a + x.d
 def det (x : M2 R) : R := x.a * x.d - x.b * x.c
 
-/-- Matrix mult-add: A ◯ B = A + B + AB. -/
+/-- The matrix circle operation: A ◯ B = A + B + AB. -/
 def circ (x y : M2 R) : M2 R := add (add x y) (mul x y)
-/-- Weighted matrix mult-add: A ◯[k] B = A + B + k·AB. -/
+/-- The matrix circle operation with dial k: A ◯[k] B = A + B + k·AB. -/
 def circK (k : R) (x y : M2 R) : M2 R := add (add x y) (smul k (mul x y))
 /-- The dial invariant: D_k(A) = tr A + k·det A, so det(I + kA) = 1 + k·D_k(A). -/
 def Dk (k : R) (x : M2 R) : R := tr x + k * det x
 
-/-! ## 1. The lift: matrix mult-add is matrix multiplication through A ↦ I + A -/
+/-! ## 1. The lift: the matrix circle operation is matrix multiplication through A ↦ I + A -/
 
 theorem lift (x y : M2 R) : add one (circ x y) = mul (add one x) (add one y) := by
   apply M2.ext' <;> simp only [circ, add, mul, one] <;> grind
@@ -146,7 +146,7 @@ theorem coupling_sets_weight (w : R) (m : M2 R) (h : m.b * m.c = (1 - w) * m.a *
     det (add one m) - 1 = CircleOp.circK w m.a m.d := by
   simp only [det, add, one, CircleOp.circK]; grind
 
-/-- No coupling (diagonal): mult-add, weight 1. -/
+/-- No coupling (diagonal): the circle operation, weight 1. -/
 theorem diagonal_is_circ (p q : R) : det (add one ⟨p, 0, 0, q⟩) - 1 = CircleOp.circ p q := by
   simp only [det, add, one, CircleOp.circ]; grind
 
@@ -238,7 +238,7 @@ theorem circ_assoc (x y z : M3 R) : circ (circ x y) z = circ x (circ y z) := by
 theorem circ_zero (x : M3 R) : circ x zero = x := by
   apply M3.ext' <;> simp only [circ, add, mul, zero] <;> grind
 
-/-- The mult-add cube of a matrix: det(I + kA) = 1 + k·e₁ + k²·e₂ + k³·e₃. -/
+/-- The circle-operation cube of a matrix: det(I + kA) = 1 + k·e₁ + k²·e₂ + k³·e₃. -/
 theorem det_one_add_smul (k : R) (x : M3 R) :
     det (add one (smul k x)) = 1 + k * tr x + k * k * e2 x + k * k * k * det x := by
   simp only [det, tr, e2, add, smul, one]; grind
@@ -259,7 +259,7 @@ theorem box_cube (a b c : R) :
   simp only [det, add, one]; grind
 
 /-- For a triangular matrix (eigenvalues on the diagonal) the shifted determinant is the
-    mult-add of the eigenvalues, as the trace is their sum. -/
+    circle operation of the eigenvalues, as the trace is their sum. -/
 theorem triangular_eigen (x : M3 R) (h21 : x.a21 = 0) (h31 : x.a31 = 0) (h32 : x.a32 = 0) :
     det (add one x) - 1 = foldCirc [x.a11, x.a22, x.a33] := by
   simp only [det, add, one, foldCirc, CircleOp.circ]; rw [h21, h31, h32]; grind
@@ -311,7 +311,7 @@ theorem add_one_eq_one {w : M2 K} (h : add one w = one) : w = zero := by
   simp only [add, one] at h1 h2 h3 h4
   apply M2.ext' <;> simp only [zero] <;> grind
 
-/-- Off the wall (det(I + A) ≠ 0) every matrix has a mult-add inverse: (I + A)⁻¹ − I. -/
+/-- Off the wall (det(I + A) ≠ 0) every matrix has a circle inverse: (I + A)⁻¹ − I. -/
 theorem circ_inverse (x : M2 K) (h : det (add one x) ≠ 0) :
     circ x (sub (inv (add one x)) one) = zero := by
   have hl := lift x (sub (inv (add one x)) one)
@@ -320,7 +320,7 @@ theorem circ_inverse (x : M2 K) (h : det (add one x) ≠ 0) :
   rw [hz, mul_inv (add one x) h] at hl
   exact add_one_eq_one hl
 
-/-- Matrix mult-add subtraction X ⊟ A = (X − A)(I + A)⁻¹. -/
+/-- Matrix circle-operation subtraction X ⊟ A = (X − A)(I + A)⁻¹. -/
 def msubM (x a : M2 K) : M2 K := mul (sub x a) (inv (add one a))
 
 theorem msub_undo_W (x w : M2 K) (h : det w ≠ 0) :
@@ -356,7 +356,7 @@ theorem cayley_eq (s : K) (h : 1 + s * s ≠ 0) :
     simp only [add, sub, one, skew]
     grind
 
-/-- The Cayley transform is mult-add subtraction of S from its transpose: I + (Sᵀ ⊟ S). -/
+/-- The Cayley transform is circle-operation subtraction of S from its transpose: I + (Sᵀ ⊟ S). -/
 theorem cayley_is_msub (s : K) (h : 1 + s * s ≠ 0) :
     cayley s = add one (msubM (transpose (skew s)) (skew s)) := by
   rw [cayley_eq s h]
@@ -404,7 +404,7 @@ end Field
 section Fused
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- The fused addition (the rung below mult-add): u + v + 1, zero −1. -/
+/-- The fused addition (the rung below the circle operation): u + v + 1, zero −1. -/
 def sadd (u v : R) : R := u + v + 1
 
 /-- A fused-linear map: shift to the box corner, apply M, shift back. -/
@@ -424,7 +424,7 @@ theorem fl_scale (m : M2 R) (c v1 v2 : R) :
     fl2 m (circ c v1) (circ c v2) = circ c (fl2 m v1 v2) := by
   unfold fl1 fl2 circ; constructor <;> grind
 
-/-- Mult-adding a is zooming by 1 + a about the wall −1. -/
+/-- Combining with a by the circle operation is zooming by 1 + a about the wall −1. -/
 theorem circ_is_zoom (a x : R) : circ a x - (-1) = (1 + a) * (x - (-1)) := by
   unfold circ; grind
 
@@ -440,7 +440,7 @@ theorem pow_mul'' (a : R) (m n : Nat) : (a ^ m) ^ n = a ^ (m * n) := by
   | zero => rw [Nat.mul_zero, Lean.Grind.Semiring.pow_zero, Lean.Grind.Semiring.pow_zero]
   | succ n ih => rw [Lean.Grind.Semiring.pow_succ, ih, Nat.mul_succ, pow_add']
 
-/-- A monomial map, first coordinate, in mult-add coordinates: (1 + x₁)^p (1 + x₂)^q − 1. -/
+/-- A monomial map, first coordinate, in circle-operation coordinates: (1 + x₁)^p (1 + x₂)^q − 1. -/
 def mono (p q : Nat) (x1 x2 : R) : R := (1 + x1) ^ p * (1 + x2) ^ q - 1
 
 /-- Monomial maps are the linear maps of rate space: they turn ◯ into ◯. -/

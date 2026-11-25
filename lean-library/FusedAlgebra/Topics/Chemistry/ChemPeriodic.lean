@@ -15,7 +15,7 @@
   left-step periods; the usual table merges the first two, giving
   2, 8, 8, 18, 18, 32, 32 and noble gases at 2, 10, 18, 36, 54, 86, 118.
 
-  The dial: the q-integer [n]_q is n copies of 1 under weighted mult-add
+  The dial: the q-integer [n]_q is n copies of 1 under the circle operation (called weighted mult-add before 1.0)
   with k = q − 1, so a q-deformed shell would hold [n]_q² orbitals.
 
   LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
@@ -54,7 +54,7 @@ theorem shell_capacity (m : Nat) : 2 * shellOrbitals m = 2 * ((m + 1) * (m + 1))
   rw [gnomons_fill]
 
 /-- SO(4): two independent spins with multiplicity n each give n · n states,
-    and (n − 1) mult-adds with itself. -/
+    and (n − 1) combines by the circle operation with itself. -/
 theorem two_spins (a b : Nat) : (a + 1) * (b + 1) = 1 + (a ◯ b) := by
   unfold circ; grind
 

@@ -1,22 +1,22 @@
 /-
-  e from mult-add
+  e from the circle operation (called mult-add before 1.0)
   ===============
 
-  Part of Fused Mult-Add Algebra. Companion page: ../e/index.html.
+  Part of Fused Hyperoperation Algebra. Companion page: ../e/index.html.
   Pictures: figures.py.
 
   STATUS: core Lean 4 only (no mathlib), no `sorry`, only Lean's standard
   axioms (propext, Classical.choice, Quot.sound). Run it with
   `lean EFromMultAdd.lean`. Checked with Lean 4.37.0-rc1.
 
-  Mult-add is a ◯ b = a + b + ab = (1+a)(1+b) − 1. Mult-add 1/n to itself
-  n times and add back the unit corner: that is the staircase
+  The circle operation is a ◯ b = a + b + ab = (1+a)(1+b) − 1. Combine 1/n with itself
+  n times by the circle operation and add back the unit corner: that is the staircase
   stair n = (1 + 1/n)ⁿ. On the n-cube, every switch weighs 1/n, so the
   corners with k switches on weigh C(n,k)/nᵏ in total.
 
   Proved:
-  * mpow_eq, mpow_add: n mult-adds of x make (1+x)ⁿ − 1, and the
-                  mult-add power obeys the exponential law.
+  * mpow_eq, mpow_add: n copies of x under the circle operation make (1+x)ⁿ − 1, and the
+                  circle power obeys the exponential law.
   * binomial:     (1 + x)ⁿ = Σₖ C(n,k)·xᵏ (the cube's corner pieces fill the box).
   * layer_mul_fact, layer_fact_le: C(n,k)·k! counts ordered picks of k
                   different axes, so C(n,k)·k! ≤ nᵏ.
@@ -36,7 +36,7 @@
   is the completeness of the real line. Everything before it is proved.
 
   All of this is classical (Bernoulli, Euler, Cauchy). What is new is only
-  the formal check in core Lean and the reading on the mult-add cube.
+  the formal check in core Lean and the reading on the circle-operation cube.
 -/
 
 namespace CircleOp.E
@@ -259,17 +259,17 @@ theorem stair_nat_lt (m : Nat) :
   omega
 
 
-/-! ## Mult-add on the rationals -/
+/-! ## The circle operation on the rationals -/
 
-/-- **Mult-add.** a ◯ b = a + b + ab = (1+a)(1+b) − 1. -/
+/-- **The circle operation.** a ◯ b = a + b + ab = (1+a)(1+b) − 1. -/
 def circ (a b : Rat) : Rat := a + b + a * b
 
-/-- x mult-added to itself n times (0 is the mult-add identity). -/
+/-- x combined with itself by the circle operation n times (0 is the circle-operation identity). -/
 def mpow (x : Rat) : Nat → Rat
   | 0 => 0
   | n + 1 => circ (mpow x n) x
 
-/-- n mult-adds of x make the box (1+x)ⁿ, minus the unit corner. -/
+/-- n copies of x under the circle operation make the box (1+x)ⁿ, minus the unit corner. -/
 theorem mpow_eq (x : Rat) : ∀ n, mpow x n = (1 + x) ^ n - 1
   | 0 => by simp [mpow] <;> grind
   | n + 1 => by
@@ -382,9 +382,9 @@ theorem mul_pow' (a b : Rat) : ∀ n : Nat, (a * b) ^ n = a ^ n * b ^ n
   | 0 => by simp
   | n + 1 => by rw [Rat.pow_succ, Rat.pow_succ, Rat.pow_succ, mul_pow' a b n]; grind
 
-/-! ## e from mult-add -/
+/-! ## e from the circle operation -/
 
-/-- **The staircase.** 1/n mult-added to itself n times, plus the unit corner. -/
+/-- **The staircase.** 1/n combined with itself by the circle operation n times, plus the unit corner. -/
 def stair (n : Nat) : Rat := (1 + 1 / (n : Rat)) ^ n
 
 theorem stair_eq_mpow (n : Nat) : stair n = mpow (1 / (n : Rat)) n + 1 := by

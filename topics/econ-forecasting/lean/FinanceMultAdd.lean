@@ -1,5 +1,5 @@
 /-
-  Finance as mult-add
+  Finance as the circle operation (called mult-add before 1.0)
   ===================
 
   Part of Fused Hyperoperation Algebra. Companion page and checks: ../ (econ-forecasting).
@@ -7,12 +7,12 @@
   STATUS: core Lean 4 only (no mathlib), no `sorry`. Run it with
   `lean FinanceMultAdd.lean`. Checked with Lean 4.37.0-rc1.
 
-  Mult-add is a ◯ b = a + b + ab = (1+a)(1+b) − 1, and a ⊖ b = (a − b)/(1 + b) undoes it.
+  The circle operation is a ◯ b = a + b + ab = (1+a)(1+b) − 1, and a ⊖ b = (a − b)/(1 + b) undoes it.
 
   Proved:
   * fisher:       (nominal ⊖ inflation) ◯ inflation = nominal. The real rate is the
-                  mult-add difference, not the plain difference.
-  * mall_growth:  mult-adding a list of yearly returns gives the total growth minus 1
+                  circle-operation difference, not the plain difference.
+  * mall_growth:  combining a list of yearly returns by the circle operation gives the total growth minus 1
                   (the n-cube of returns, all its corners together).
   * drag, drag_le: up s then down s around a mean m: (1+m+s)(1+m−s) = (1+m)² − s².
                   Volatility drag is the s×s square cut out of the corner.

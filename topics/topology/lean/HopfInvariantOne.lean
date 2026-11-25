@@ -2,7 +2,7 @@
   Only 1, 2 and 4: the number step of the Hopf invariant one theorem
   ================================================================
 
-  Part of Fused Mult-Add Algebra. Companion to the topology page and to
+  Part of Fused Hyperoperation Algebra. Companion to the topology page and to
   ../../tesseract/ToricCharts.lean. Python checks: ../checks.py.
 
   STATUS: core Lean 4 only (no mathlib), no `sorry`. Run it with
@@ -21,15 +21,15 @@
     when n is odd, and 2^(k+2) when n = 2^k · odd with k ≥ 1. That is
     far too small once n ≥ 5.
 
-  Part 2 (mult-add powers). On the K-theory of the glued space, with a
+  Part 2 (circle powers (called mult-add powers before 1.0)). On the K-theory of the glued space, with a
     bottom class a and a top class b = a² / h, the Adams operations act
     by ψ^k(a) = k^n a + μ_k b and ψ^k(b) = k^(2n) b. If ψ² and ψ³
     commute, and ψ²(a) ≡ a² mod 2, and h is odd, then 2^n | 3^n - 1,
     so n is 1, 2 or 4.
 
-  Part 3 (the mult-add cube). On CP², which is the n = 1 case built on
-    the Hopf map, the Adams operations ARE truncated mult-add powers:
-    the k-fold mult-add sum x ◯ x ◯ … ◯ x in Z[x]/(x³) is
+  Part 3 (the circle-operation cube). On CP², which is the n = 1 case built on
+    the Hopf map, the Adams operations ARE truncated circle powers:
+    the k-fold circle-operation sum x ◯ x ◯ … ◯ x in Z[x]/(x³) is
     k x + C(k,2) x². They compose (ψ^j ψ^k = ψ^(jk)), satisfy the mod 2
     rule with h = 1, and so meet every hypothesis of Part 2.
 
@@ -38,7 +38,7 @@
   operations exist on it, are additive and compose, that ψ^k acts on a
   2m-cell by k^m, and that ψ^p(x) ≡ x^p mod p. These are the standard
   K-theory facts (Atiyah, Hirzebruch, Adams); for line bundles they are
-  exactly the statements that ψ^k is the k-th mult-add power and that
+  exactly the statements that ψ^k is the k-th circle power and that
   the middle of the Pascal row vanishes mod p.
 -/
 
@@ -158,7 +158,7 @@ theorem only_one_two_four (n : Nat) (hn : 1 ≤ n) (h : 2 ^ n ∣ 3 ^ n - 1) :
 /-- And the three survivors really work. -/
 theorem one_two_four_work : 2 ^ 1 ∣ 3 ^ 1 - 1 ∧ 2 ^ 2 ∣ 3 ^ 2 - 1 ∧ 2 ^ 4 ∣ 3 ^ 4 - 1 := by decide
 
-/-! ## Part 2: commuting mult-add powers force 2^n | 3^n − 1 -/
+/-! ## Part 2: commuting circle powers force 2^n | 3^n − 1 -/
 
 /-- An element α·a + β·b of the glued space's K-theory (a bottom, b top). -/
 structure Elt where
@@ -241,7 +241,7 @@ theorem hopf_invariant_one (n : Nat) (hn : 1 ≤ n) (h μ₂ μ₃ : Int)
     exact Int.ofNat_dvd.mp hI
   exact only_one_two_four n hn hN
 
-/-! ## Part 3: on CP² the Adams operations are mult-add powers -/
+/-! ## Part 3: on CP² the Adams operations are circle powers -/
 
 /-- αx + βx² in Z[x]/(x³). -/
 structure Trunc where
@@ -249,10 +249,10 @@ structure Trunc where
   β : Int
 deriving DecidableEq
 
-/-- Mult-add: (1+p)(1+q) − 1 with x³ = 0. -/
+/-- The circle operation: (1+p)(1+q) − 1 with x³ = 0. -/
 def circ (p q : Trunc) : Trunc := ⟨p.α + q.α, p.β + q.β + p.α * q.α⟩
 
-/-- The k-fold mult-add sum x ◯ x ◯ … ◯ x, i.e. (1 + x)^k − 1. -/
+/-- The k-fold circle-operation sum x ◯ x ◯ … ◯ x, i.e. (1 + x)^k − 1. -/
 def mpow : Nat → Trunc
   | 0 => ⟨0, 0⟩
   | k + 1 => circ (mpow k) ⟨1, 0⟩
@@ -273,7 +273,7 @@ theorem mpow_formula (k : Nat) : (mpow k).α = k ∧ 2 * (mpow k).β = k * (k - 
 def psiT (j : Nat) (p : Trunc) : Trunc :=
   ⟨p.α * (mpow j).α, p.α * (mpow j).β + p.β * ((mpow j).α * (mpow j).α)⟩
 
-/-- Mult-add powers compose: ψ^j ψ^k = ψ^(jk), for every j, k. -/
+/-- Circle powers compose: ψ^j ψ^k = ψ^(jk), for every j, k. -/
 theorem psi_compose (j k : Nat) : psiT j (mpow k) = mpow (j * k) := by
   obtain ⟨a1, b1⟩ := mpow_formula j
   obtain ⟨a2, b2⟩ := mpow_formula k

@@ -26,7 +26,7 @@ variable {R : Type} [CommRing R]
 
 /-! ### The saddle: the twist of rung 1 is exactly the corner rectangle -/
 
-/-- Mixed second difference of mult-add = h·k, the area of the corner rectangle.
+/-- Mixed second difference of the circle operation (called mult-add before 1.0) = h·k, the area of the corner rectangle.
   (Rung 0 has twist 0: a flat plane. Rung 1 has twist 1: the saddle.) -/
 theorem twist_rung1 (a b h k : R) :
     circ (a + h) (b + k) - circ (a + h) b - circ a (b + k) + circ a b = h * k := by
@@ -103,7 +103,7 @@ theorem addPow_eq (a d : Nat) : addPow a d = d * a := by
   | zero => simp [addPow]
   | succ n ih => simp only [addPow, ih, Nat.succ_mul]
 
-/-- Rung 1, count d, edge 1: the d-cube's corners, 2^d (so the mult-add power is 2^d − 1). -/
+/-- Rung 1, count d, edge 1: the d-cube's corners, 2^d (so the circle power is 2^d − 1). -/
 theorem cube_count (d : Nat) : 1 + mpow (1 : Nat) d = 2 ^ d := by
   simpa using mpow_lift (1 : Nat) d
 

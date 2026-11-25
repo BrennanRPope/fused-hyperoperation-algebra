@@ -3,8 +3,8 @@
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library's Base.
   Intended library path: FusedAlgebra/Topics/OrderDial.lean (imports only FusedAlgebra.Base).
 
-  1. Where mult-add sits on the cube of laws: its only idempotents are 0 and the wall.
-  2. Composition first: one compounding period x ↦ (1 + r)x + d. In mult-add coordinates the
+  1. Where the circle operation (called mult-add before 1.0) sits on the cube of laws: its only idempotents are 0 and the wall.
+  2. Composition first: one compounding period x ↦ (1 + r)x + d. In circle-operation coordinates the
      stretches compose by ◯ and the shifts pick up order; the order gap is the wedge
      r₁d₂ − r₂d₁; maps commute exactly when the wedge is 0; the k-family is one such slice.
   3. Order inside the formula: a + b + αab + βba. Its commutator is (α − β)[a, b]; on
@@ -27,7 +27,7 @@ set_option linter.unusedSectionVars false
 
 open scoped CircleOp
 
-/-! ## 1. Mult-add on the cube of laws -/
+/-! ## 1. The circle operation on the cube of laws -/
 
 /-- The grouping-free, order-free, but repetition-counting corner: a ◯ₖ a = a only at 0 and the wall. -/
 theorem circK_idem_iff (k a : Int) : circK k a a = a ↔ a = 0 ∨ 1 + k * a = 0 := by
@@ -41,18 +41,18 @@ theorem circK_idem_iff (k a : Int) : circK k a a = a ↔ a = 0 ∨ 1 + k * a = 0
       rcases h with h | h <;> simp [h]
     grind
 
-/-- So mult-add counts repeats: 1 ◯ 1 = 3. -/
+/-- So the circle operation counts repeats: 1 ◯ 1 = 3. -/
 theorem one_circ_one : (1 : Int) ◯ 1 = 3 := by decide
 
-/-- The wall −1 absorbs everything (mult-add's zero, not its unit). -/
+/-- The wall −1 absorbs everything (the circle operation's zero, not its unit). -/
 theorem wall_absorbs (b : Int) : (-1 : Int) ◯ b = -1 := by simp only [circ]; grind
 
 /-! ## 2. Composition first: stretch-and-shift maps -/
 
-/-- A stretch-and-shift in mult-add coordinates: (a, c) is x ↦ (1 + a)x + c. -/
+/-- A stretch-and-shift in circle-operation coordinates: (a, c) is x ↦ (1 + a)x + c. -/
 def app (p : Int × Int) (x : Int) : Int := (1 + p.1) * x + p.2
 
-/-- Composition of two stretch-and-shifts: stretches mult-add, shifts pick up order. -/
+/-- Composition of two stretch-and-shifts: stretches combine by the circle operation, shifts pick up order. -/
 def comp (p q : Int × Int) : Int × Int := (p.1 ◯ q.1, p.2 + (1 + p.1) * q.2)
 
 /-- `comp` really is composition (functoriality of the one-object category). -/
@@ -119,7 +119,7 @@ theorem ext' {x y : M2} (h1 : x.a = y.a) (h2 : x.b = y.b) (h3 : x.c = y.c) (h4 :
 end M2
 
 open M2 in
-/-- Order-weighted mult-add: a + b + α·ab + β·ba. -/
+/-- The order-weighted circle operation: a + b + α·ab + β·ba. -/
 def mutAdd (al be : Int) (x y : M2) : M2 := add (add x y) (add (smul al (mul x y)) (smul be (mul y x)))
 
 open M2 in

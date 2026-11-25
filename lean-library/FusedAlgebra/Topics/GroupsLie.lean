@@ -1,5 +1,5 @@
 /-
-  Fused Hyperoperation Algebra: group theory and Lie groups through mult-add.
+  Fused Hyperoperation Algebra: group theory and Lie groups through the circle operation (called mult-add before 1.0).
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library's Base.
 
   Intended library path: FusedAlgebra/Topics/GroupsLie.lean (imports only FusedAlgebra.Base).
@@ -23,7 +23,7 @@
     6. The twisting corner on 2×2 matrices: A ◯ B − B ◯ A = AB − BA exactly; brackets are
        trace-free; landscape matrices commute.
     7. Finite clocks: (F_p minus the wall, ◯) is cyclic for p = 5, 7, 11, 13 (by decide), the
-       mult-add powers of 1 are Mersenne numbers 2ⁿ − 1, and the circle x² + y² = 1 has
+       circle powers of 1 are Mersenne numbers 2ⁿ − 1, and the circle x² + y² = 1 has
        p + 1 or p − 1 points.
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/GroupsLie.lean; two exact twins of ShapeDirections removed (see the LIBRARY comments).
 -/
@@ -97,7 +97,7 @@ theorem mob_mul_entries (p q a b : Int) :
 theorem mob_dial (k a b : Int) : M2.mul (mob k 0 a) (mob k 0 b) = mob k 0 (circK k a b) := by
   apply M2.ext' <;> simp only [M2.mul, mob, circK] <;> grind
 
-/-- Mult-add itself as 2×2 matrices [[1 + a, a], [0, 1]]. -/
+/-- The circle operation itself as 2×2 matrices [[1 + a, a], [0, 1]]. -/
 theorem mob_circ (a b : Int) : M2.mul (mob 1 0 a) (mob 1 0 b) = mob 1 0 (a ◯ b) := by
   apply M2.ext' <;> simp only [M2.mul, mob, circ] <;> grind
 
@@ -265,10 +265,10 @@ theorem T_zero_no_fixed (a x : Int) (ha : a ≠ 0) : T 0 a x ≠ x := by
 
 /-! ## 6. The twisting corner on matrices -/
 
-/-- Matrix mult-add A ◯ B = A + B + AB. -/
+/-- The matrix circle operation A ◯ B = A + B + AB. -/
 def maM (x y : M2) : M2 := M2.add (M2.add x y) (M2.mul x y)
 
-/-- The failure of matrix mult-add to commute is exactly the commutator AB − BA. -/
+/-- The failure of the matrix circle operation to commute is exactly the commutator AB − BA. -/
 theorem maM_bracket (x y : M2) : M2.sub (maM x y) (maM y x) = M2.sub (M2.mul x y) (M2.mul y x) := by
   apply M2.ext' <;> simp only [maM, M2.sub, M2.add, M2.mul] <;> grind
 
@@ -276,7 +276,7 @@ theorem maM_bracket (x y : M2) : M2.sub (maM x y) (maM y x) = M2.sub (M2.mul x y
 theorem bracket_trace (x y : M2) : (M2.sub (M2.mul x y) (M2.mul y x)).tr = 0 := by
   simp only [M2.tr, M2.sub, M2.mul]; grind
 
-/-- On the landscape, a·X and b·X mult-add the same in either order. -/
+/-- On the landscape, a·X and b·X combine by the circle operation the same way in either order. -/
 theorem landscape_no_twist (p q a b : Int) :
     maM (M2.smul a (gen p q)) (M2.smul b (gen p q)) = maM (M2.smul b (gen p q)) (M2.smul a (gen p q)) := by
   apply M2.ext' <;> simp only [maM, M2.add, M2.mul, M2.smul, gen] <;> grind
@@ -288,7 +288,7 @@ theorem twist_example :
 
 /-! ## 7. Finite clocks -/
 
-/-- n copies of 1 under mult-add are the Mersenne number 2ⁿ − 1. -/
+/-- n copies of 1 under the circle operation are the Mersenne number 2ⁿ − 1. -/
 theorem mersenne (n : Nat) : mpow (1 : Int) n = 2 ^ n - 1 := by
   rw [mpow_eq]; rfl
 

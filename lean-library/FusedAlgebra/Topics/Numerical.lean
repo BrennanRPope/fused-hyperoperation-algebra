@@ -1,5 +1,5 @@
 /-
-  Numerical analysis through mult-add
+  Numerical analysis through the circle operation (called mult-add before 1.0)
   ===================================
 
   Part of Fused Hyperoperation Algebra. Page and float64 checks: ../ (numerical-analysis).
@@ -7,13 +7,13 @@
 
   Rounding is not real-number arithmetic, so floats themselves live in ../checks.py.
   What Lean proves here is the exact algebra underneath:
-  * relative errors compose by mult-add (products) and mult-add subtraction (quotients);
-  * Higham's θₙ is the mult-add fold of the step errors, bounded by (1+u)ⁿ − 1 ≤ nu/(1 − nu);
+  * relative errors compose by the circle operation (products) and circle-operation subtraction (quotients);
+  * Higham's θₙ is the circle-operation fold of the step errors, bounded by (1+u)ⁿ − 1 ≤ nu/(1 − nu);
   * the lift's way back amplifies a rounding by (1 + a)/a; the inverse is sensitive only at the wall;
   * Sterbenz's window: inside the octave 1/2 ≤ 1 + a ≤ 2 the inverse is within a factor 2 of −a;
   * Newton's division-free inverse is v ↦ v ◯ (−(u ◯ v)), and the residual squares: e ↦ −e²;
   * Goldschmidt's factors fold to −e^(2ⁿ);
-  * a chain of mult-adds is a chain of Horner (fma) steps, and Bernoulli: a^(◯n) ≥ n·a.
+  * a chain of circle operations is a chain of Horner (fma) steps, and Bernoulli: a^(◯n) ≥ n·a.
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/Numerical.lean; merged unchanged. circ_bound states the same as ComplexAnalysis.corner_bound but is kept,
   because a later proof here uses it and this file does not import ComplexAnalysis; sq_nonneg_rat
   and pow_nonneg_rat stay as local Rat helpers like the ones in Finance and Thermodynamics.
@@ -36,9 +36,9 @@ theorem fma_shape_corner (a b : R) : a ◯ b = a * b + (a + b) := by unfold circ
 theorem fma_shape_right (a b : R) : a ◯ b = a * (1 + b) + b := by unfold circ; grind
 theorem fma_shape_left (a b : R) : a ◯ b = b * (1 + a) + a := by unfold circ; grind
 
-/-! ## 2. Relative errors are mult-add numbers -/
+/-! ## 2. Relative errors are circle-operation numbers -/
 
-/-- Multiply two perturbed values: the relative errors mult-add. -/
+/-- Multiply two perturbed values: the relative errors combine by the circle operation. -/
 theorem relerr_mul (x y d₁ d₂ : R) :
     (x * (1 + d₁)) * (y * (1 + d₂)) = x * y * (1 + (d₁ ◯ d₂)) := by
   have h := circ_lift d₁ d₂; rw [h]; grind
@@ -48,7 +48,7 @@ theorem relerr_mul3 (x y z d₁ d₂ d₃ : R) :
     (x * (1 + d₁)) * (y * (1 + d₂)) * (z * (1 + d₃)) = x * y * z * (1 + (d₁ ◯ d₂ ◯ d₃)) := by
   have h := circ_lift (d₁ ◯ d₂) d₃; have h' := circ_lift d₁ d₂; rw [h, h']; grind
 
-/-- Higham's θₙ: the product of the factors (1 + δᵢ), minus 1, is the mult-add fold. -/
+/-- Higham's θₙ: the product of the factors (1 + δᵢ), minus 1, is the circle-operation fold. -/
 theorem theta_is_fold (ds : List R) : prodL (ds.map (fun d => 1 + d)) - 1 = foldCirc ds := by
   have h := foldCirc_lift ds; grind
 
@@ -112,7 +112,7 @@ theorem gold_eq (e : R) : ∀ n, gold e n = -(pw e (2 ^ n))
 theorem gold_lift (e : R) (n : Nat) : 1 + gold e n = 1 - pw e (2 ^ n) := by
   rw [gold_eq]; grind
 
-/-! ## 3. Horner: a chain of mult-adds is a chain of fma steps -/
+/-! ## 3. Horner: a chain of circle operations is a chain of fma steps -/
 
 /-- Left-to-right fold with one Horner/fma step per entry: acc ↦ acc·(1 + b) + b. -/
 def hornerCirc : R → List R → R
@@ -134,7 +134,7 @@ def horner (x : R) : List R → R
   | [] => 0
   | c :: cs => c + x * horner x cs
 
-/-- Mult-adding the same b n times is Horner on the polynomial b(1 + y + … + yⁿ⁻¹), y = 1 + b. -/
+/-- Combining with the same b n times by the circle operation is Horner on the polynomial b(1 + y + … + yⁿ⁻¹), y = 1 + b. -/
 theorem mpow_horner (b : R) : ∀ n, mpow b n = horner (1 + b) (List.replicate n b)
   | 0 => rfl
   | n + 1 => by
@@ -235,7 +235,7 @@ theorem mpow_nonneg {u : Rat} (hu : 0 ≤ u) : ∀ n, 0 ≤ mpow u n
     have h := mpow_nonneg hu n
     have := Rat.mul_nonneg h hu; grind
 
-/-- Higham's Lemma 3.1 in mult-add form: n step errors of size at most u fold to at most
+/-- Higham's Lemma 3.1 in circle-operation form: n step errors of size at most u fold to at most
     (1 + u)ⁿ − 1 = u^(◯n). -/
 theorem theta_bound {u : Rat} (hu : 0 ≤ u) : ∀ (ds : List Rat), (∀ d ∈ ds, -u ≤ d ∧ d ≤ u) →
     -(mpow u ds.length) ≤ foldCirc ds ∧ foldCirc ds ≤ mpow u ds.length

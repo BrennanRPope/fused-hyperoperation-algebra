@@ -66,7 +66,7 @@ theorem lens_factor_v (u v a b : Int) :
     den (u * v) a b - v * num (-(u + v)) a b = (1 - v * a) * (1 - v * b) := by
   unfold num den; grind
 
-/-- mult-add is the point u = −1, v = 0: walls at −1 and at infinity -/
+/-- the circle operation (called mult-add before 1.0) is the point u = −1, v = 0: walls at −1 and at infinity -/
 theorem multadd_point (a b : Int) : num (-((-1) + 0)) a b = a + b + a * b ∧ den ((-1) * 0) a b = 1 := by
   unfold num den; constructor <;> grind
 
@@ -95,10 +95,10 @@ theorem units_num (p lam a b : Int) : num p (lam * a) (lam * b) = lam * num (lam
 theorem units_den (q lam a b : Int) : den q (lam * a) (lam * b) = den (lam * lam * q) a b := by
   unfold den; grind
 
-/-- the dial: k·(a ◯[k] b) = (k a) ◯ (k b); every k ≠ 0 on the straight line is mult-add in other units -/
+/-- the dial: k·(a ◯[k] b) = (k a) ◯ (k b); every k ≠ 0 on the straight line is the circle operation in other units -/
 theorem dial_is_multadd (k a b : Int) : k * (a + b + k * a * b) = k * a + k * b + (k * a) * (k * b) := by grind
 
-/-- the KdV soliton corner: A(f − 1) with f − 1 = e₁ + e₂ + A e₁e₂ is plain mult-add of A e₁ and A e₂
+/-- the KdV soliton corner: A(f − 1) with f − 1 = e₁ + e₂ + A e₁e₂ is the plain circle operation of A e₁ and A e₂
     (each wave moved by its phase shift log A) -/
 theorem kdv_phase_shift (A e1 e2 : Int) : A * (e1 + e2 + A * e1 * e2) = A * e1 + A * e2 + (A * e1) * (A * e2) := by grind
 

@@ -1,5 +1,5 @@
 /-
-  Tesseract coordinates for Fused Mult-Add Algebra
+  Tesseract coordinates for Fused Hyperoperation Algebra
   ================================================
 
   STATUS: checked. Compiled against mathlib v4.37.0-rc1 on Lean 4.37.0-rc1
@@ -14,7 +14,7 @@
   TesseractCoords.lean`.
 
   Notation: Lean already uses `⊕` for sum types and mathlib uses `⊞` for
-  biproducts, so mult-add is written `◯` here, the circle operation of
+  biproducts, so the operation is written `◯` here, the circle operation (called mult-add before 1.0) of
   ring theory. a ◯ b = a + b + a*b.
 
   The picture. Cut a box with sides 1+a, 1+b, 1+c, 1+d at 1 on every axis.
@@ -30,14 +30,14 @@ namespace CircleOp
 
 variable {R : Type*} [CommRing R]
 
-/-! ## Mult-add on numbers -/
+/-! ## The circle operation on numbers -/
 
-/-- Mult-add: one operation that adds and multiplies at once. -/
+/-- The circle operation: one operation that adds and multiplies at once. -/
 def circ (a b : R) : R := a + b + a * b
 
 @[inherit_doc] scoped infixl:65 " ◯ " => circ
 
-/-- The geometric heart: mult-add is a box with sides 1 + a and 1 + b,
+/-- The geometric heart: the circle operation is a box with sides 1 + a and 1 + b,
 minus the unit square. -/
 theorem one_add_circ (a b : R) : 1 + (a ◯ b) = (1 + a) * (1 + b) := by
   unfold circ; ring
@@ -56,7 +56,7 @@ theorem one_add_circ₄ (a b c d : R) :
     1 + (a ◯ b ◯ c ◯ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
   simp only [circ]; ring
 
-/-- Mult-add of a whole list (0 is the identity). -/
+/-- The circle operation of a whole list (0 is the identity). -/
 def circList : List R → R
   | [] => 0
   | x :: xs => x ◯ circList xs
@@ -93,7 +93,7 @@ def eval {n : ℕ} (x : Fin n → R) (c : Coord n R) : R :=
 /-- Box coordinates (the zeta transform): add up every corner inside T. -/
 def zeta {n : ℕ} (c : Coord n R) : Coord n R := fun T => ∑ S ∈ T.powerset, c S
 
-/-- Mult-add of two tesseract points: corners combine by joining their
+/-- The circle operation of two tesseract points: corners combine by joining their
 switches (S ∪ U). This is the union, or OR, product on subsets. -/
 def compose {n : ℕ} (v w : Coord n R) : Coord n R :=
   fun T => ∑ S : Corner n, ∑ U : Corner n, if S ∪ U = T then v S * w U else 0
@@ -135,7 +135,7 @@ theorem sum_corners_ofPoint {n : ℕ} (a : Fin n → R) :
   rw [Finset.prod_one_add, powerset_univ]
   simp only [ofPoint]
 
-/-- So the sum of all corners is 1 plus the mult-add of the coordinates. -/
+/-- So the sum of all corners is 1 plus the circle operation of the coordinates. -/
 theorem sum_corners_eq_one_add_circ {n : ℕ} (a : Fin n → R) :
     ∑ S : Corner n, ofPoint a S = 1 + circList (List.ofFn a) := by
   rw [sum_corners_ofPoint, one_add_circList, List.map_ofFn, List.prod_ofFn]
@@ -153,7 +153,7 @@ theorem zeta_ofPoint {n : ℕ} (a : Fin n → R) (T : Corner n) :
   rw [Finset.prod_one_add]
   rfl
 
-/-- In box coordinates, mult-add axis by axis is plain multiplication. -/
+/-- In box coordinates, the circle operation axis by axis is plain multiplication. -/
 theorem zeta_ofPoint_circ {n : ℕ} (a b : Fin n → R) (T : Corner n) :
     zeta (ofPoint (fun i => a i ◯ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
   simp only [zeta_ofPoint, one_add_circ, Finset.prod_mul_distrib]
@@ -166,7 +166,7 @@ theorem solitonWeights_one {n : ℕ} :
 
 /-
   Next step (not stated here yet): `zeta (compose v w) = zeta v * zeta w`
-  for every pair of points, which makes `compose` exactly mult-add in box
+  for every pair of points, which makes `compose` exactly the circle operation in box
   coordinates. The Python helpers test it on many random points.
 -/
 

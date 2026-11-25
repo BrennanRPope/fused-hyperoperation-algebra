@@ -1,9 +1,9 @@
 /-
-  Fused Hyperoperation Algebra: functional analysis through mult-add.
+  Fused Hyperoperation Algebra: functional analysis through the circle operation (called mult-add before 1.0).
   Core Lean 4 only (no mathlib), no `sorry`. Imports the shared library's Base.
 
   Operators do not commute, so most of this file works over a general (noncommutative)
-  ring `[Lean.Grind.Ring R]`: an algebra of operators is such a ring. Operator mult-add is
+  ring `[Lean.Grind.Ring R]`: an algebra of operators is such a ring. The operator circle operation is
   a ◯ₒ b = a + b + ab; on a commutative ring it is the library's ◯ (`opCirc_comm_eq`).
 
     1. The lift 1 + a ◯ₒ b = (1 + a)(1 + b), associativity, identity 0, the wall −1 on both sides.
@@ -12,10 +12,10 @@
        a + b − ab as the k = −1 dial, and the resolvent identity a' − b' = (1 + a')(b − a)(1 + b').
     3. Neumann series: the partial sum s_n = Σ_{j=1}^{n} (−a)^j misses by exactly one term,
        a ◯ₒ s_n = −(−a)^{n+1}; so a nilpotent a has a finite quasi-inverse.
-    4. Commuting operators mult-add in either order; conjugation and characters respect ◯ₒ;
+    4. Commuting operators combine by the circle operation in either order; conjugation and characters respect ◯ₒ;
        the operator dial with a central weight.
-    5. Two noncommuting nilpotent 2×2 matrices: their mult-add has det(1 + ·) = 1 and trace −t
-       (eigenvalues on the circle |1 + z| = 1), and at t = 1 it is a sixth mult-add root of 0.
+    5. Two noncommuting nilpotent 2×2 matrices: their circle operation has det(1 + ·) = 1 and trace −t
+       (eigenvalues on the circle |1 + z| = 1), and at t = 1 it is a sixth circle root of 0.
     6. Gap probabilities: the k = −1 dial fold of a list is 1 − ∏(1 − λᵢ).
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/FunctionalAnalysis.lean; merged unchanged; no exact twins.
 -/
@@ -31,7 +31,7 @@ set_option linter.unusedSectionVars false
 section Ring
 variable {R : Type} [Lean.Grind.Ring R]
 
-/-- Operator mult-add: a ◯ₒ b = a + b + ab (order matters). -/
+/-- The operator circle operation: a ◯ₒ b = a + b + ab (order matters). -/
 def opCirc (a b : R) : R := a + b + a * b
 
 local infixl:65 " ◯ₒ " => opCirc
@@ -76,7 +76,7 @@ theorem qi_of_inverse (a c : R) (h : (1 + a) * c = 1) : a ◯ₒ (c - 1) = 0 := 
   have e : a ◯ₒ (c - 1) = (1 + a) * c - 1 := by unfold opCirc; grind
   rw [e, h]; grind
 
-/-- Jacobson's circle a + b − ab is the k = −1 dial of mult-add. -/
+/-- Jacobson's circle a + b − ab is the k = −1 dial of the circle operation. -/
 theorem jacobson_circle (a b : R) : a + b - a * b = -((-a) ◯ₒ (-b)) := by unfold opCirc; grind
 
 /-- Socks and shoes: the quasi-inverse of a ◯ₒ b is b' ◯ₒ a'. -/
@@ -88,7 +88,7 @@ theorem qi_reverse_left (a a' b b' : R) (ha : a' ◯ₒ a = 0) (hb : b' ◯ₒ b
     (b' ◯ₒ a') ◯ₒ (a ◯ₒ b) = 0 := by
   rw [op_assoc, ← op_assoc a' a b, ha, zero_op, hb]
 
-/-- The resolvent identity in mult-add form: a' − b' = (1 + a')(b − a)(1 + b'). -/
+/-- The resolvent identity in circle-operation form: a' − b' = (1 + a')(b − a)(1 + b'). -/
 theorem resolvent_identity (a a' b b' : R) (ha : a' ◯ₒ a = 0) (hb : b ◯ₒ b' = 0) :
     a' - b' = (1 + a') * (b - a) * (1 + b') := by
   have h1 : (1 + a') * (1 + a) = 1 := (perlis_iff a' a).mp ha
@@ -167,7 +167,7 @@ theorem cube_zero_qi (a : R) (h : a * a * a = 0) : a ◯ₒ (-a + a * a) = 0 ∧
 theorem op_comm_of_commute (a b : R) (h : a * b = b * a) : a ◯ₒ b = b ◯ₒ a := by
   unfold opCirc; grind
 
-/-- Changing basis (conjugating by an invertible u) respects mult-add. -/
+/-- Changing basis (conjugating by an invertible u) respects the circle operation. -/
 theorem op_conj (u v a b : R) (h : v * u = 1) :
     (u * a * v) ◯ₒ (u * b * v) = u * (a ◯ₒ b) * v := by
   unfold opCirc
@@ -188,7 +188,7 @@ theorem op_dial_lift (k a b : R) (hk : a * k = k * a) :
 
 end Ring
 
-/-- On a commutative ring operator mult-add is the library's mult-add. -/
+/-- On a commutative ring the operator circle operation is the library's circle operation. -/
 theorem opCirc_comm_eq {R : Type} [Lean.Grind.CommRing R] (a b : R) : opCirc a b = a ◯ b := rfl
 
 /-! ## 5. Two noncommuting nilpotents -/
@@ -216,7 +216,7 @@ def det (x : M2 R) : R := x.a * x.d - x.b * x.c
 def tr (x : M2 R) : R := x.a + x.d
 end M2
 
-/-- Trace does not see the order of a mult-add. -/
+/-- Trace does not see the order of a circle operation. -/
 theorem tr_circ_swap (x y : M2 R) : M2.tr (M2.circ x y) = M2.tr (M2.circ y x) := by
   simp only [M2.tr, M2.circ, M2.add, M2.mul]; grind
 
@@ -225,7 +225,7 @@ theorem det_circ_swap (x y : M2 R) :
     M2.det (M2.add M2.one (M2.circ x y)) = M2.det (M2.add M2.one (M2.circ y x)) := by
   simp only [M2.det, M2.add, M2.circ, M2.mul, M2.one]; grind
 
-/-- N = [[0,1],[0,0]] and t·N' = [[0,0],[−t,0]], both nilpotent: their mult-add has
+/-- N = [[0,1],[0,0]] and t·N' = [[0,0],[−t,0]], both nilpotent: their circle operation has
     det(1 + ·) = 1 and trace −t, so its eigenvalues λ satisfy (1 + λ)(1 + λ̄) = 1:
     they ride the circle |1 + z| = 1 and never reach the wall. -/
 theorem nilpotent_pair (t : R) :
@@ -238,7 +238,7 @@ theorem nilpotent_pair_noncomm :
     M2.circ (⟨0, 1, 0, 0⟩ : M2 Int) ⟨0, 0, -1, 0⟩ ≠ M2.circ ⟨0, 0, -1, 0⟩ ⟨0, 1, 0, 0⟩ := by decide
 
 /-- …and X = N ◯ₒ N' satisfies X² + X + 1 = 0, so its lift cubes to −1: X is a sixth
-    mult-add root of 0, though N and N' each have spectrum {0}. -/
+    circle root of 0, though N and N' each have spectrum {0}. -/
 theorem nilpotent_pair_sixth_root :
     let X : M2 Int := M2.circ ⟨0, 1, 0, 0⟩ ⟨0, 0, -1, 0⟩
     let Y := M2.add M2.one X

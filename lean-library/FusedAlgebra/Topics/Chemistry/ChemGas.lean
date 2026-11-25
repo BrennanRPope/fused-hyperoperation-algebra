@@ -7,10 +7,10 @@
 
   van der Waals wrote his law as (P + a/V²)(V − b) = RT. Divided by RT·V
   it says 1/Z = (1 + α)(1 − β) with α = a/(PV²) and β = b/V, so
-  1/Z − 1 = α ◯ (−β): attraction mult-added with minus the excluded volume.
+  1/Z − 1 = α ◯ (−β): attraction combined by the circle operation (called mult-add before 1.0) with minus the excluded volume.
 
   Mayer: the Boltzmann factor of a set of pairs is Π(1 + f), the lift of
-  the mult-add fold of the f's; its expansion over subsets is the cluster
+  the circle-operation fold of the f's; its expansion over subsets is the cluster
   (graph) expansion.
 
   Cubic equations of state differ in the attraction denominator

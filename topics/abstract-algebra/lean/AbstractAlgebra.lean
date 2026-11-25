@@ -1,11 +1,11 @@
 /-
-  Fused Hyperoperation Algebra: abstract algebra through mult-add.
+  Fused Hyperoperation Algebra: abstract algebra through the circle operation (called mult-add before 1.0).
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library's Base.
 
   To fold into the library: copy to lean-library/FusedAlgebra/Topics/AbstractAlgebra.lean,
   add `FusedAlgebra.Topics.AbstractAlgebra` to build.sh and FusedAlgebra.lean, run ./build.sh.
 
-  What is here (the structures mult-add builds):
+  What is here (the structures the circle operation builds):
     1. Laws as explicit records: commutative monoid, group, isomorphism.
     2. (R, ◯) is a commutative monoid on any commutative semiring; on a ring the shift
        x ↦ 1 + x is an isomorphism (R, ◯, 0) ≅ (R, ·, 1) that sends the wall −1 to 0.
@@ -17,9 +17,9 @@
        fact), and Fin n examples: the exact group criterion for n = 12, the units of
        (Fin 12, ◯), the Klein four-group (Fin 4, ◯[2]) that is not (Fin 4, +), cyclic and
        non-cyclic cases mod 8 and 9.
-    6. The fused rung pair (shifted add, mult-add) is a commutative ring, zero −1, one 0,
+    6. The fused rung pair (shifted add, the circle operation) is a commutative ring, zero −1, one 0,
        isomorphic to (+, ·) by the shift.
-    7. Mult-add powers are a module action: (a ◯ b)^◯n = a^◯n ◯ b^◯n, (a^◯m)^◯n = a^◯(mn).
+    7. Circle powers are a module action: (a ◯ b)^◯n = a^◯n ◯ b^◯n, (a^◯m)^◯n = a^◯(mn).
     8. The Tate gluing (1 + a) ~ q(1 + a) is a congruence for ◯; the quotient is a
        commutative monoid, a group off the wall on a field.
     9. The landscape countries mod p: slope addition has walls mod 5 and 13, none mod 3, 7, 11.
@@ -134,7 +134,7 @@ variable {K : Type} [Lean.Grind.Field K]
 theorem field_unit (a : K) (h : 1 + a ≠ 0) : ∃ b, circ a b = 0 :=
   ⟨circInv a, circ_circInv a h⟩
 
-/-- Weighted laws with k ≠ 0 are all mult-add in other units: x ↦ k·x is an isomorphism. -/
+/-- Weighted laws with k ≠ 0 are all the circle operation in other units: x ↦ k·x is an isomorphism. -/
 def scaleIso (k : K) (hk : k ≠ 0) : OpIso K K (circK k) 0 circ 0 where
   toFun x := k * x
   invFun y := y / k
@@ -143,14 +143,14 @@ def scaleIso (k : K) (hk : k ≠ 0) : OpIso K K (circK k) 0 circ 0 where
   map_op a b := circK_scale k a b
   map_id := by grind
 
-/-- The scaling carries the weighted wall −1/k to the mult-add wall −1. -/
+/-- The scaling carries the weighted wall −1/k to the circle-operation wall −1. -/
 theorem scale_wall (k : K) (hk : k ≠ 0) : (scaleIso k hk).toFun (-1 / k) = -1 := by
   show k * (-1 / k) = -1; grind
 
 end Field
 
 /-- On the integers x ↦ k·x is an injective homomorphism (Int, ◯[k]) → (Int, ◯): weight k is
-    the sub-monoid kℤ of mult-add. -/
+    the sub-monoid kℤ of the circle operation. -/
 theorem int_scale_hom (k a b : Int) : k * circK k a b = circ (k * a) (k * b) := circK_scale k a b
 
 theorem int_scale_inj (k : Int) (hk : k ≠ 0) (a b : Int) (h : k * a = k * b) : a = b :=
@@ -252,7 +252,7 @@ theorem fadd_group : CommGroupLaws (fadd (R := R)) (-1) :=
     ident := fun a => by unfold fadd; grind
     inv := fun a => ⟨-a - 2, by unfold fadd; grind⟩ }
 
-/-- Mult-add distributes over shifted addition. -/
+/-- The circle operation distributes over shifted addition. -/
 theorem circ_fadd_distrib (a b c : R) : circ a (fadd b c) = fadd (circ a b) (circ a c) := by
   unfold circ fadd; grind
 
@@ -265,17 +265,17 @@ theorem shift_ring_hom (a b : R) :
     (1 : R) + -1 = 0 ∧ (1 : R) + 0 = 1 :=
   ⟨fadd_lift a b, circ_lift a b, by grind, by grind⟩
 
-/-- Plain addition and mult-add do not form a ring: ◯ does not distribute over +. -/
+/-- Plain addition and the circle operation do not form a ring: ◯ does not distribute over +. -/
 theorem circ_not_distrib_add : circ (1 : Int) (1 + 1) ≠ circ 1 1 + circ 1 1 := by decide
 
 end FusedRing
 
-/-! ## 6. Mult-add powers: the integers act on (R, ◯) -/
+/-! ## 6. Circle powers: the integers act on (R, ◯) -/
 
 section Powers
 variable {R : Type} [Lean.Grind.CommSemiring R]
 
-/-- (a ◯ b)^◯n = a^◯n ◯ b^◯n: each power map is an endomorphism of mult-add. -/
+/-- (a ◯ b)^◯n = a^◯n ◯ b^◯n: each power map is an endomorphism of the circle operation. -/
 theorem mpow_circ (a b : R) (n : Nat) : mpow (circ a b) n = circ (mpow a n) (mpow b n) := by
   induction n with
   | zero => simp only [mpow]; rw [circ_zero]
@@ -323,7 +323,7 @@ theorem tateRel_trans (q : R) {a b c : R} (h₁ : tateRel q a b) (h₂ : tateRel
 theorem tate_glue (q a : R) (h : 1 + a = q) : tateRel q a 0 :=
   ⟨0, 1, by rw [h, Lean.Grind.Semiring.pow_zero, Lean.Grind.Semiring.pow_succ, Lean.Grind.Semiring.pow_zero]; rw [Lean.Grind.Semiring.add_zero, Lean.Grind.Semiring.mul_one, Lean.Grind.Semiring.one_mul, Lean.Grind.Semiring.one_mul]⟩
 
-/-- Mult-add respects the gluing on each side. -/
+/-- The circle operation respects the gluing on each side. -/
 theorem tateRel_circ (q : R) {a a' b b' : R} (ha : tateRel q a a') (hb : tateRel q b b') :
     tateRel q (circ a b) (circ a' b') := by
   obtain ⟨m, n, ha⟩ := ha
@@ -338,10 +338,10 @@ def tateSetoid (q : R) : Setoid R where
   r := tateRel q
   iseqv := ⟨tateRel_refl q, tateRel_symm q, tateRel_trans q⟩
 
-/-- The Tate quotient: the points of mult-add with 1 + a and q·(1 + a) glued. -/
+/-- The Tate quotient: the points of the circle operation with 1 + a and q·(1 + a) glued. -/
 def TateQ (q : R) : Type := Quotient (tateSetoid q)
 
-/-- Mult-add on the Tate quotient. -/
+/-- The circle operation on the Tate quotient. -/
 def TateQ.op (q : R) : TateQ q → TateQ q → TateQ q :=
   Quotient.lift₂ (s₁ := tateSetoid q) (s₂ := tateSetoid q)
     (fun a b => Quotient.mk (tateSetoid q) (circ a b))
@@ -349,7 +349,7 @@ def TateQ.op (q : R) : TateQ q → TateQ q → TateQ q :=
 
 def TateQ.zero (q : R) : TateQ q := Quotient.mk (tateSetoid q) 0
 
-/-- The Tate quotient is a commutative monoid under mult-add. -/
+/-- The Tate quotient is a commutative monoid under the circle operation. -/
 theorem tateQ_commMonoid (q : R) : CommMonoidLaws (TateQ.op q) (TateQ.zero q) where
   comm x y := by
     induction x using Quotient.inductionOn; induction y using Quotient.inductionOn
@@ -390,7 +390,7 @@ theorem slope_no_walls_mod3 : ∀ a : Fin 3, 1 + a * a ≠ 0 := by decide
 theorem slope_no_walls_mod7 : ∀ a : Fin 7, 1 + a * a ≠ 0 := by decide
 theorem slope_no_walls_mod11 : ∀ a : Fin 11, 1 + a * a ≠ 0 := by decide
 
-/-- Mult-add mod p always has exactly one finite wall, −1 (the other wall is at infinity). -/
+/-- The circle operation mod p always has exactly one finite wall, −1 (the other wall is at infinity). -/
 theorem circ_one_wall_mod7 : ∀ a : Fin 7, (1 + a = 0 ↔ a = 6) := by decide
 
 end AbstractAlgebra

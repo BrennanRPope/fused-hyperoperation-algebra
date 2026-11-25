@@ -2,21 +2,21 @@
   Fused Hyperoperation Algebra and the dark sector: the exact statements behind the page.
   Core Lean 4 only (no mathlib), no `sorry`.
 
-  circ a b = a + b + a*b = (1+a)(1+b) - 1        (rung 2, mult-add)
+  circ a b = a + b + a*b = (1+a)(1+b) - 1        (rung 2, the circle operation (called mult-add before 1.0))
   fexp a b = (1+a)^(1+b) - 1                      (rung 3, fused exponent)
 -/
 namespace DarkSector
 
 def circ (a b : Nat) : Nat := a + b + a * b
 def fexp (a b : Nat) : Nat := (a + 1) ^ (b + 1) - 1
-/-- n-fold mult-add power of z:  z ◯ z ◯ … ◯ z  (n copies), with 0 copies = 0. -/
+/-- n-fold circle power of z:  z ◯ z ◯ … ◯ z  (n copies), with 0 copies = 0. -/
 def mpow (z : Nat) : Nat → Nat
   | 0 => 0
   | n + 1 => circ (mpow z n) z
 
 theorem circ_lift (a b : Nat) : circ a b + 1 = (a + 1) * (b + 1) := by unfold circ; grind
 
-/-! ## 1. Redshifts compose by mult-add (exact, no model needed)
+/-! ## 1. Redshifts compose by the circle operation (exact, no model needed)
 Light stretched by 1+z₁ and then by 1+z₂ is stretched by (1+z₁)(1+z₂).  So the total redshift is z₁ ◯ z₂.
 Geometrically: the (1+z₁)×(1+z₂) rectangle = unit square + two strips z₁, z₂ + corner z₁z₂. -/
 theorem redshift_compose (z₁ z₂ : Nat) : (1 + z₁) * (1 + z₂) = 1 + circ z₁ z₂ := by unfold circ; grind
@@ -28,7 +28,7 @@ theorem redshift_power (z n : Nat) : (1 + z) ^ n = 1 + mpow z n := by
 /-- The same with integers, so blueshifts (negative z) are covered too. -/
 theorem redshift_compose_int (z₁ z₂ : Int) : (1 + z₁) * (1 + z₂) = 1 + (z₁ + z₂ + z₁ * z₂) := by grind
 
-/-! ## 2. Matter dilutes as the mult-add cube of redshift
+/-! ## 2. Matter dilutes as the circle-operation cube of redshift
 (1+z)³ = 1 + 3z + 3z² + z³ : unit cube, three slabs, three bars, one small cube (Pascal layers 1,3,3,1). -/
 theorem cube_layers (z : Nat) : (1 + z) ^ 3 = 1 + 3 * z + 3 * z ^ 2 + z ^ 3 := by grind
 theorem cube_is_mpow3 (z : Nat) : mpow z 3 = 3 * z + 3 * z ^ 2 + z ^ 3 := by
@@ -38,7 +38,7 @@ The cosmological constant is the unit cube; matter is the weighted shell of the 
 theorem lcdm_is_weighted_cube (Om z : Rat) :
     Om * (1 + z) ^ 3 + (1 - Om) = 1 + Om * (3 * z + 3 * z ^ 2 + z ^ 3) := by grind
 
-/-! ## 3. Constant expansion rate = growth fractions that compose by mult-add (rung 2)
+/-! ## 3. Constant expansion rate = growth fractions that compose by the circle operation (rung 2)
 If the fractional growth A(t) over a time t satisfies A(t+s) = A(t) ◯ A(s), the scale factor 1+A grows
 exponentially: 1 + A(t) = (1 + A(1))^t.  That is de Sitter expansion, the cosmological constant. -/
 theorem circ_growth_is_exponential (A : Nat → Nat) (hA : ∀ t s, A (t + s) = circ (A t) (A s)) :
@@ -67,8 +67,8 @@ theorem pow_growth_trivial (a : Nat → Nat) (h0 : a 0 = 1) (ha : ∀ t s, a (t 
     ∀ t, a t = 1 := by
   intro t; have := ha 0 t; rw [Nat.zero_add, h0, Nat.one_pow] at this; exact this
 
-/-! ## 5. Why mult-add of gravity points the wrong way
-Combining non-negative pulls by mult-add never gives less than their sum, and the extra is exactly the
+/-! ## 5. Why the circle operation of gravity points the wrong way
+Combining non-negative pulls by the circle operation never gives less than their sum, and the extra is exactly the
 product: a corner rectangle a·b.  For many pieces the extra only grows. -/
 theorem circ_excess (a b : Nat) : circ a b = (a + b) + a * b := rfl
 theorem circ_ge_add (a b : Nat) : a + b ≤ circ a b := by unfold circ; omega
@@ -91,8 +91,8 @@ theorem corner_le_quarter (a b : Int) : 4 * (a * b) ≤ (a + b) ^ 2 := by
   have e : (a + b) ^ 2 = (a - b) * (a - b) + 4 * (a * b) := by grind
   omega
 
-/-! ## 6. MOND's simple interpolation is the mult-add inverse (up to sign)
-The mult-add inverse of x is y = -x/(1+x):  x ◯ y = 0.  MOND's "simple" μ(x) = x/(1+x) is exactly -y.
+/-! ## 6. MOND's simple interpolation is the circle inverse (up to sign)
+The circle inverse of x is y = -x/(1+x):  x ◯ y = 0.  MOND's "simple" μ(x) = x/(1+x) is exactly -y.
 Stated without division: if x ◯ y = 0 then (1+x)(1+y) = 1 and (1+x)·(-y) = x. -/
 theorem minv_lift (x y : Int) (h : x + y + x * y = 0) : (1 + x) * (1 + y) = 1 := by grind
 theorem mu_is_neg_minv (x y : Int) (h : x + y + x * y = 0) : (1 + x) * (-y) = x := by grind

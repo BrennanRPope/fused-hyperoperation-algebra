@@ -22,7 +22,7 @@
      passes every height before t = 1.
   2. The discrete climb with that law hits the wall: its clock 1/(1+y) falls by
      exactly h per step, so it reaches 0 (y = ∞) after 1/h steps. The rung-1
-     climb y ↦ y ◯ h never does. Through the mult-add inverse −u/(1+u) the
+     climb y ↦ y ◯ h never does. Through the circle inverse (called mult-add inverse before 1.0) −u/(1+u) the
      blow-up is a walk at constant speed into the wall −1: blow-up at infinity
      and leaving the wall are one question.
   3. Non-uniqueness: the trapezoid scheme of x' = 2√x has a whole fan of
@@ -76,7 +76,7 @@ theorem ric_step (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
     ric (t + h) - ric t = h * (1 + ric t) * (1 + ric (t + h)) := by
   unfold ric; grind
 
-/-- The same law in mult-add: the step is h times the lift of y(t) ◯ y(t+h). -/
+/-- The same law in the circle operation: the step is h times the lift of y(t) ◯ y(t+h). -/
 theorem ric_step_circ (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
     ric (t + h) - ric t = h * (1 + circ (ric t) (ric (t + h))) := by
   rw [ric_step t h h1 h2, circ_lift]; grind
@@ -128,10 +128,10 @@ theorem riccati_hits_wall (y : Nat → K) (h : K) (m : Nat)
   rw [hz] at hone
   grind
 
-/-- **The mirror.** Through the mult-add inverse v = −u/(1+u), a Riccati step
+/-- **The mirror.** Through the circle inverse v = −u/(1+u), a Riccati step
     is a step of exactly −h: the climb to infinity is a walk at constant speed
     into the wall −1. Blow-up at infinity and leaving the wall are one question,
-    swapped by the mult-add inverse. -/
+    swapped by the circle inverse. -/
 theorem mirror_step (a b h : K) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0)
     (hs : b - a = h * (1 + a) * (1 + b)) : circInv b - circInv a = -h := by
   have hc := riccati_clock_step a b h ha hb hs
@@ -313,8 +313,8 @@ theorem const_block (c : Rat) (j : Nat) : ∀ s, fsum (fun _ => c) s (2 ^ j) = (
     rw [pow2_succ, fsum_append, ih s, ih (s + 2 ^ j), Rat.pow_succ]
     grind
 
-/-- **The blocks are the mult-add lattice.** The j-th block starts at
-    2ʲ = 1 + 1^(◯j), the lift of the j-fold mult-add of 1. -/
+/-- **The blocks are the circle-operation lattice.** The j-th block starts at
+    2ʲ = 1 + 1^(◯j), the lift of the j-fold circle operation of 1. -/
 theorem block_start (j : Nat) : 2 ^ j = mpow (1 : Nat) j + 1 :=
   (CircleOp.NSContinuum.mpow_one_nat j).symm
 

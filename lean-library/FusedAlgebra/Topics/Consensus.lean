@@ -9,15 +9,15 @@
   Uses core `Rat`, `grind` for ring arithmetic, `omega` for whole numbers and
   `decide +kernel` for exact rational checks.
 
-  Weighted mult-add:  a ◯[k] b = a + b + k·a·b.
-    k =  1   plain mult-add, 1 + (a ◯ b) = (1+a)(1+b)
+  The circle operation (called weighted mult-add before 1.0):  a ◯[k] b = a + b + k·a·b.
+    k =  1   the plain circle operation, 1 + (a ◯ b) = (1+a)(1+b)
     k = −1   "either one happens":  a ◯[−1] b = 1 − (1−a)(1−b)
 
   What Lean does NOT check: anything with real numbers, logarithms or limits;
   the probability models themselves (that a race is a gambler's ruin, that a
   committee is a binomial draw); and the simulations. Those are in checks.py.
 
-  LIBRARY NOTE: in the shared library the mult-add, weighted mult-add and weighted power (circK, wpow) come from FusedAlgebra.Base; the local copies were removed.
+  LIBRARY NOTE: in the shared library the circle operation, the circle operation with dial k and the weighted power (circK, wpow) come from FusedAlgebra.Base; the local copies were removed.
 -/
 import FusedAlgebra.Base
 
@@ -31,7 +31,7 @@ open CircleOp
 /-- k = −1 is "at least one of two independent events". -/
 theorem either (a b : Rat) : circK (-1) a b = 1 - (1 - a) * (1 - b) := circK_either a b
 
-/-- The mult-add power climbs the cube: 1 + k·(a ◯[k] … ◯[k] a) = (1 + k·a)^n. -/
+/-- The circle power climbs the cube: 1 + k·(a ◯[k] … ◯[k] a) = (1 + k·a)^n. -/
 theorem mpow_lift (k a : Rat) (n : Nat) : 1 + k * wpow k a n = pw (1 + k * a) n := by
   induction n with
   | zero => simp only [wpow, pw]; grind
@@ -41,7 +41,7 @@ theorem mpow_lift1 (a : Rat) (n : Nat) : 1 + wpow 1 a n = pw (1 + a) n := by
   have h := mpow_lift 1 a n
   simp only [Rat.one_mul] at h; exact h
 
-/-! ## 1. Proof of work: depth is a mult-add power, 1/2 is the identity
+/-! ## 1. Proof of work: depth is a circle power, 1/2 is the identity
 
   An attacker with share q, honest share 1 − q, z blocks behind, catches up
   with probability r^z where r = q/(1−q).  Put a = r − 1.  Then r^z = 1 + a^(◯z).
@@ -53,7 +53,7 @@ theorem step_formula (q : Rat) (h : q ≠ 1) : (q / (1 - q) - 1) * (1 - q) = 2 *
   have : q / (1 - q) * (1 - q) = q := Rat.div_mul_cancel h1
   grind
 
-/-- At the 51% line the step is exactly the mult-add identity. -/
+/-- At the 51% line the step is exactly the circle-operation identity. -/
 theorem half_is_identity : (1/2 : Rat) / (1 - 1/2) - 1 = 0 := by decide +kernel
 
 /-- Powers of the identity do nothing: at q = 1/2 waiting more blocks buys no security. -/
@@ -62,7 +62,7 @@ theorem depth_useless (n : Nat) : wpow 1 0 n = 0 := by
   | zero => rfl
   | succ n ih => rw [wpow, ih, circK_zero]
 
-/-- Catch-up probability as a mult-add power, checked exactly for q = 1/4, z = 6:
+/-- Catch-up probability as a circle power, checked exactly for q = 1/4, z = 6:
     r = 1/3, a = −2/3, and 1 + a^(◯6) = (1/3)^6. -/
 theorem quarter_six : 1 + wpow 1 (-2/3) 6 = 1 / 729 := by decide +kernel
 
@@ -104,7 +104,7 @@ theorem maj3_shrinks (p : Rat) (h0 : 0 < p) (h1 : p < 1/2) : maj3 p < p := by
 
 /-! ## 4. Candidate B fails: the Sybil corner
 
-  Weighting stake by log(1+s) makes weight additive under mult-add.  Real stake
+  Weighting stake by log(1+s) makes weight additive under the circle operation.  Real stake
   adds with +.  In the multiplicative coordinate W = 1 + s, splitting s1 + s2
   into two accounts turns 1 + s1 + s2 into (1 + s1)(1 + s2): the gain is the
   corner square s1·s2, never negative.
@@ -152,7 +152,7 @@ theorem caught (d : Rat) (m : Nat) : wpow (-1) d m = 1 - pw (1 - d) m := by
 
 /-! ## 7. Verifiable delay functions: doubling up the cube
 
-  A VDF computes x^(2^T) by T squarings.  In mult-add coordinates squaring is
+  A VDF computes x^(2^T) by T squarings.  In circle-operation coordinates squaring is
   a ◯ a.  Pietrzak's proof checks the two halves: (x^(2^m))^(2^n) = x^(2^(m+n)).
 -/
 

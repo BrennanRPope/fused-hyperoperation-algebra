@@ -69,7 +69,7 @@ theorem tsum_lift (d : R) (S T : R × R) :
     (tsum d S T).1 + d * (tsum d S T).2 = (S.1 + d * S.2) * (T.1 + d * T.2) := by
   unfold tsum; grind
 
-/-- The "mult-add value" P − 1 of a closed diagram turns connected sum into ◯ exactly.
+/-- The "circle-operation value" (called the "mult-add value" before 1.0) P − 1 of a closed diagram turns connected sum into ◯ exactly.
     (A relabelling: it is the lift of P(K # L) = P(K)·P(L).) -/
 theorem closeD_circ (d : R) (S T : R × R) :
     closeD d (tsum d S T) - 1 = (closeD d S - 1) ◯ (closeD d T - 1) := by
@@ -199,7 +199,7 @@ end Ring
 section Field
 variable {K : Type} [Field K]
 
-/-- In x = g/f, adding tangles is the weighted mult-add with weight d. -/
+/-- In x = g/f, adding tangles is the circle operation with weight d. -/
 theorem ratio_dial (d : K) (S T : K × K) (hS : S.1 ≠ 0) (hT : T.1 ≠ 0) :
     (tsum d S T).2 / (tsum d S T).1 = circK d (S.2 / S.1) (T.2 / T.1) := by
   unfold tsum circK; grind

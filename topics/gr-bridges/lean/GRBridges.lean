@@ -1,5 +1,5 @@
 /-
-  Curved geometry from mult-add, and four bridges to Einstein's equations: the elementary parts
+  Curved geometry from the circle operation (called mult-add before 1.0), and four bridges to Einstein's equations: the elementary parts
   ===============================================================================================
 
   Companion checks: ../checks.py (sympy, mpmath, scipy; 65 of 65 pass). Core Lean 4.37.0-rc1,
@@ -7,14 +7,14 @@
 
   What is proved here (the algebra; the calculus and numerics are in the checks):
   1. Boosts in the Clifford plane Cl(1,1) (= 2×2 real matrices): 1 + βσ composes so that the two
-     light-cone parts multiply, i.e. they compose by mult-add; the norm 1 − β² is the wall.
-  2. The multivector mult-add a + b + a·k·b (2×2 integer matrices, a non-commutative model):
+     light-cone parts multiply, i.e. they compose by the circle operation; the norm 1 − β² is the wall.
+  2. The multivector circle operation a + b + a·k·b (2×2 integer matrices, a non-commutative model):
      exact lift 1 + k(a ◯ b) = (1 + k a)(1 + k b) and associativity for every k; the
      front-loaded a + b + k·a·b fails associativity for a non-central k (explicit witness).
   3. Schur's factor (n−1)(n−2)/2: zero only in dimension 2, so a place-only dial is free only there.
   4. Jacobson's area bookkeeping: bundle area = 1 + (a ◯ b); with straight rays the second
      difference of the area is the cross term 2αβ; θ²/2 + σ² = θ₁² + θ₂².
-  5. The river's energy constraint: e2 is the pairwise layer of a three-way mult-add; the
+  5. The river's energy constraint: e2 is the pairwise layer of a three-way circle operation; the
      spherical river's e2 is Newton's shell law; the Schwarzschild river has e2 = 0, and an aether
      river needs c₂ = −c₁₃.
   6. Light-like test directions force X = φ·η (two-dimensional slice).
@@ -27,7 +27,7 @@ open CircleOp
 
 open scoped CircleOp
 
-/-! ## 1. Boosts in Cl(1,1): light-cone parts compose by mult-add -/
+/-! ## 1. Boosts in Cl(1,1): light-cone parts compose by the circle operation -/
 
 /-- The product (1 + β₁σ)(1 + β₂σ) with σ² = 1 has scalar part 1 + β₁β₂ and σ-part β₁ + β₂. -/
 theorem boost_product (b1 b2 : Rat) :
@@ -47,7 +47,7 @@ theorem backward_part_circ (b1 b2 : Rat) :
 /-- The norm (1 + βσ)(1 − βσ) = 1 − β²: zero exactly at β = ±1, the wall (light speed). -/
 theorem boost_norm (b : Rat) : (1 + b) * (1 - b) = 1 - b * b := by grind
 
-/-! ## 2. Multivector mult-add on 2×2 integer matrices -/
+/-! ## 2. The multivector circle operation on 2×2 integer matrices -/
 
 structure M2 where
   a : Int
@@ -66,9 +66,9 @@ end M2
 
 open M2
 
-/-- Sandwich mult-add: a + b + a·k·b. -/
+/-- The sandwich circle operation: a + b + a·k·b. -/
 def sand (k a b : M2) : M2 := add (add a b) (mul (mul a k) b)
-/-- Front-loaded mult-add: a + b + k·a·b. -/
+/-- The front-loaded circle operation: a + b + k·a·b. -/
 def front (k a b : M2) : M2 := add (add a b) (mul k (mul a b))
 
 /-- **The lift holds for every matrix weight k:** 1 + k(a ◯ b) = (1 + k a)(1 + k b). -/
@@ -111,12 +111,12 @@ theorem flat_focusing (α β l : Rat) :
 /-- Focusing split: θ²/2 + σ² = θ₁² + θ₂², with θ = θ₁ + θ₂ and σ² = (θ₁ − θ₂)²/2. -/
 theorem focusing_split (t1 t2 : Rat) : (t1 + t2)^2 / 2 + (t1 - t2)^2 / 2 = t1^2 + t2^2 := by grind
 
-/-- The cross term: θ² − (θ₁² + θ₂²) = 2θ₁θ₂ (the ab part of mult-add, in rates). -/
+/-- The cross term: θ² − (θ₁² + θ₂²) = 2θ₁θ₂ (the ab part of the circle operation, in rates). -/
 theorem focusing_cross (t1 t2 : Rat) : (t1 + t2)^2 - (t1^2 + t2^2) = 2 * t1 * t2 := by grind
 
 /-! ## 5. The river's energy constraint -/
 
-/-- Three-way mult-add = sum + pairwise layer (e2) + triple layer. -/
+/-- The three-way circle operation = sum + pairwise layer (e2) + triple layer. -/
 theorem three_way_layers (a b c : Rat) :
     a ◯ (b ◯ c) = (a + b + c) + (a*b + b*c + c*a) + a*b*c := by
   unfold circ; grind

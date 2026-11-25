@@ -4,7 +4,7 @@
 
   Part of Fused Hyperoperation Algebra (1.0 checklist, item 2). Companion files:
   math-theory/zoom-dial/ (README.md, checks.py, figures). Completes the
-  fractal-dials page, which found mult-add had every dial but zoom.
+  fractal-dials page, which found the circle operation (called mult-add before 1.0) had every dial but zoom.
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports Base only.
 
   The dial: a piece shrunk by zoom r carries the weight r^s.
@@ -18,7 +18,7 @@
     grow without end (`wall_partial`). The five half boxes of the fractal page
     are certified at d = 1/2 (`half_box_walls`).
   * A zoom is a twist: scaling dial values by the natural weight w = r^d turns
-    mult-add into the weighted rule at k = w (`zoom_is_twist`), and two zooms
+    the circle operation into the weighted rule at k = w (`zoom_is_twist`), and two zooms
     in a row multiply (`zoom_compose`), so zoom 1/2 at dimension β is the size
     dial's doubling weight 2^(−β).
   Complex dimensions (the wobble) are the complex s with x(s) = 1; they are
@@ -105,7 +105,7 @@ section Twist
 variable {R : Type} [Lean.Grind.CommRing R]
 
 /-- **Zoom is twist.** Shrinking two dial values by the natural weight w = r^d and
-    mult-adding is the twisted mult-add at k = w, scaled by w. -/
+    combining by the circle operation is the twisted circle operation at k = w, scaled by w. -/
 theorem zoom_is_twist (w t u : R) : circ (w * t) (w * u) = w * circK w t u :=
   (circK_scale w t u).symm
 

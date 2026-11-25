@@ -6,8 +6,8 @@
   Core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 
   Coupled steps: equilibrium constants (and forward/backward rate ratios)
-  multiply, so ratio − 1 mult-adds. Potentials combine by Luther's
-  electron-weighted mean, which is idempotent and so not a mult-add.
+  multiply, so ratio − 1 combines by the circle operation (called mult-add before 1.0). Potentials combine by Luther's
+  electron-weighted mean, which is idempotent and so not a circle operation.
   Two redox sites: Z − 1 = x ◯[k] x, with complex zeros exactly when k > 1,
   and the midpoint of the Nernst curve at x = 1/√k. Photosynthesis: stage
   losses compose at k = −1, and the Kok clock's damping eigenvalue has
@@ -25,9 +25,9 @@ open CircleOp
 
 open scoped CircleOp
 
--- LIBRARY: ratio_series (Coupled steps: ratios (K, or forward/backward rate ratios) multiply, so ratio − 1 mult-adds) was an exact twin of InfoFused.campbell and is removed.
+-- LIBRARY: ratio_series (Coupled steps: ratios (K, or forward/backward rate ratios) multiply, so ratio − 1 combines by the circle operation) was an exact twin of InfoFused.campbell and is removed.
 
--- LIBRARY: bv_one_sided (One-sided Butler–Volmer (α = 1): with x = e^(Fη/RT), adding overpotentials multiplies x, so the current i/i₀ = x − 1 mult-adds) was an exact twin of InfoFused.campbell and is removed.
+-- LIBRARY: bv_one_sided (One-sided Butler–Volmer (α = 1): with x = e^(Fη/RT), adding overpotentials multiplies x, so the current i/i₀ = x − 1 combines by the circle operation) was an exact twin of InfoFused.campbell and is removed.
 
 /-- Luther's rule: the combined potential m = (n₁E₁ + n₂E₂)/(n₁ + n₂) balances the two couples. -/
 theorem luther_balance (n1 n2 E1 E2 : Rat) (h : n1 + n2 ≠ 0) :
@@ -36,7 +36,7 @@ theorem luther_balance (n1 n2 E1 E2 : Rat) (h : n1 + n2 ≠ 0) :
   grind
 
 /-- Luther's mean is idempotent: a couple combined with itself gives the same potential,
-    so potentials are averaged, not mult-added. -/
+    so potentials are averaged, not combined by the circle operation. -/
 theorem luther_idem (n1 n2 E : Rat) (h : n1 + n2 ≠ 0) : (n1 * E + n2 * E) / (n1 + n2) = E := by
   have : n1 * E + n2 * E = E * (n1 + n2) := by grind
   rw [this, Rat.mul_div_cancel h]

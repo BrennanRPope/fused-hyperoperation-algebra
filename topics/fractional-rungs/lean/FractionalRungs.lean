@@ -9,7 +9,7 @@
 -/
 namespace FractionalRungs
 
-/-- The corner dial: a + b + k·a·b.  k = 0 addition, k = 1 mult-add, k = -1 "or". -/
+/-- The corner dial: a + b + k·a·b.  k = 0 addition, k = 1 the circle operation (called mult-add before 1.0), k = -1 "or". -/
 def dial (k a b : Int) : Int := a + b + k * a * b
 
 theorem dial_comm (k a b : Int) : dial k a b = dial k b a := by unfold dial; grind
@@ -19,7 +19,7 @@ theorem dial_zero (k a : Int) : dial k a 0 = a := by unfold dial; grind
 /-- lift: the dial is multiplication seen through x ↦ 1 + k x -/
 theorem dial_lift (k a b : Int) : 1 + k * dial k a b = (1 + k * a) * (1 + k * b) := by
   unfold dial; grind
-/-- the dial is mult-add at another scale -/
+/-- the dial is the circle operation at another scale -/
 theorem dial_rescale (k a b : Int) : k * dial k a b = dial 1 (k * a) (k * b) := by
   unfold dial; grind
 /-- mirror: flipping signs flips the corner -/

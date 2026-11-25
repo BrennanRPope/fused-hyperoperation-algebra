@@ -1,5 +1,5 @@
 /-
-  Quantum noise through the mult-add cube
+  Quantum noise through the circle-operation cube (called mult-add cube before 1.0)
   =======================================
 
   Part of Fused Hyperoperation Algebra. Companion page: index.html.
@@ -9,8 +9,8 @@
   `grind` tactic for ring arithmetic and `decide` for exact rational checks.
   Run it with `lean QuantumNoise.lean`. Checked with Lean 4.37.0-rc1.
 
-  Mult-add with a weight k:  a ◯[k] b = a + b + k·a·b.
-  k = 1 is mult-add itself. The noise channels of a qubit use
+  The circle operation with a weight k:  a ◯[k] b = a + b + k·a·b.
+  k = 1 is the circle operation itself. The noise channels of a qubit use
     k = −1    amplitude damping (T1 decay), "any fault counts"
     k = −2    bit-flip and phase-flip, "only an odd number of faults counts"
     k = −4/3  depolarizing noise on one qubit
@@ -21,24 +21,24 @@
   (Lean only checks that the threshold lies between two given rationals).
 -/
 
-/-- Weighted mult-add. -/
+/-- The circle operation with dial k. -/
 def wmul (k a b : Rat) : Rat := a + b + k * a * b
-/-- Plain mult-add, rung 1 of the theory. -/
+/-- The plain circle operation, rung 1 of the theory. -/
 def circ (a b : Rat) : Rat := a + b + a * b
 
-/-! ## 1. Every weight is the same mult-add, scaled -/
+/-! ## 1. Every weight is the same circle operation, scaled -/
 
 theorem wmul_comm (k a b : Rat) : wmul k a b = wmul k b a := by unfold wmul; grind
 theorem wmul_assoc (k a b c : Rat) : wmul k (wmul k a b) c = wmul k a (wmul k b c) := by unfold wmul; grind
 theorem wmul_zero (k a : Rat) : wmul k a 0 = a := by unfold wmul; grind
 
-/-- Scaling by k turns weighted mult-add into plain mult-add. -/
+/-- Scaling by k turns the circle operation with dial k into the plain circle operation. -/
 theorem scale_hom (k a b : Rat) : k * wmul k a b = circ (k * a) (k * b) := by unfold wmul circ; grind
 
 /-- The coordinate 1 + k·a multiplies: this is the "polarization" of the channel. -/
 theorem one_plus_mul (k a b : Rat) : 1 + k * wmul k a b = (1 + k * a) * (1 + k * b) := by unfold wmul; grind
 
-/-- −1/k absorbs everything: total noise. For plain mult-add it is −1. -/
+/-- −1/k absorbs everything: total noise. For the plain circle operation it is −1. -/
 theorem wall_absorbs (k a : Rat) (hk : k ≠ 0) : wmul k a (-1 / k) = -1 / k := by
   unfold wmul
   have h : k * (1 / k) = 1 := Rat.mul_inv_cancel k hk |>.symm ▸ by grind
@@ -154,7 +154,7 @@ theorem macwilliams_rep3 (x y : Rat) : ((x + y)^3 + (x - y)^3) / 2 = x^3 + 3 * x
 theorem undetected_two_ways (p : Rat) :
     ((1 - p)^3 + p^3) - (1 - p)^3 = (2/8) * (1 + 3 * (1 - 2*p)^2) - (1 - p)^3 := by grind
 
-/-! ## 8. The echo: composing with the mult-add inverse -/
+/-! ## 8. The echo: composing with the circle inverse -/
 
 theorem circ_inverse (a : Rat) (h : 1 + a ≠ 0) : circ a (-a / (1 + a)) = 0 := by
   unfold circ

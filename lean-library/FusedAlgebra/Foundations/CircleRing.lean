@@ -1,11 +1,11 @@
 /-
-  FusedAlgebra.Foundations.CircleRing: arithmetic with mult-add as the primitive
+  FusedAlgebra.Foundations.CircleRing: arithmetic with the circle operation (called mult-add before 1.0) as the primitive
   ==============================================================================
 
-  Mult-add a ◯ b = a + b + ab is taken here as a basic operation, not as a
+  The circle operation a ◯ b = a + b + ab is taken here as a basic operation, not as a
   shorthand. Multiplication is then defined from it:  a · b := (a ◯ b) − a − b.
 
-  The axioms of a mult-add ring (MA-ring), on a set R with 0, +, −, ◯ and a
+  The axioms of a circle-operation ring, on a set R with 0, +, −, ◯ and a
   constant w (the wall):
 
     A1  (a + b) + c = a + (b + c)          laying rods end to end
@@ -23,11 +23,11 @@
   `Axioms.Independence` shows M1, M2, M3 and M4 are each independent.
 
   Main results (all proved here, core Lean, no `sorry`):
-  * every MA-ring is a commutative ring (`instCommRing`), with 1 = −w,
-  * in that ring the library's mult-add a + b + ab IS the primitive ◯ (`add_add_mul_eq_circ`),
-  * every commutative ring is an MA-ring (`ofCommRing`), and going there and
+  * every circle-operation ring is a commutative ring (`instCommRing`), with 1 = −w,
+  * in that ring the library's circle operation a + b + ab IS the primitive ◯ (`add_add_mul_eq_circ`),
+  * every commutative ring is a circle-operation ring (`ofCommRing`), and going there and
     back changes nothing (`roundtrip_circ`, `roundtrip_mul`),
-  * an MA-field (one more axiom: everything off the wall has a way back) is a
+  * a circle-operation field (one more axiom: everything off the wall has a way back) is a
     field (`instField`).
 
   LIBRARY NOTE: copied from axioms/lean/Axioms/MultAddRing.lean (Nov 25) as Foundations/CircleRing.
@@ -35,7 +35,7 @@
 
 namespace CircFound
 
-/-- A mult-add ring: an abelian group (+, −, 0) with a primitive mult-add ◯
+/-- A circle-operation ring: an abelian group (+, −, 0) with a primitive circle operation ◯
     and a wall w. -/
 class CircRing (R : Type) where
   zero : R
@@ -90,9 +90,9 @@ theorem neg_add_distrib (a b : R) : −(a +' b) = −a +' −b := by
   symm; apply neg_unique
   rw [add_assoc, add_left_comm b, add_neg, add_zero, add_neg]
 
-/-! ## Mult-add laws that follow -/
+/-! ## Circle-operation laws that follow -/
 
-/-- 0 is the identity of mult-add. Not an axiom: cut a box along a side of
+/-- 0 is the identity of the circle operation. Not an axiom: cut a box along a side of
     length 0 and both pieces are the whole box, so the box adds nothing. -/
 theorem circ_zero (a : R) : a ◯ zero = a := by
   have h := circ_add a zero zero
@@ -113,7 +113,7 @@ theorem wall_unique (v : R) (hv : ∀ a, a ◯ v = v) : v = wall := by
   rw [circ_comm, circ_wall] at h1
   exact h1.symm
 
-/-! ## Multiplication, defined from mult-add -/
+/-! ## Multiplication, defined from the circle operation -/
 
 /-- The product: a · b := (a ◯ b) − a − b, the box minus its two edges. -/
 def mul (a b : R) : R := (a ◯ b) +' −a +' −b
@@ -123,7 +123,7 @@ def one : R := −wall
 
 local infixl:70 " ⬝ " => CircRing.mul
 
-/-- Mult-add is the two edges plus the corner. -/
+/-- The circle operation is the two edges plus the corner. -/
 theorem circ_eq (a b : R) : a ◯ b = a +' b +' (a ⬝ b) := by
   unfold mul
   calc a ◯ b = a ◯ b +' (a +' −a) +' (b +' −b) := by rw [add_neg, add_neg, add_zero, add_zero]
@@ -213,7 +213,7 @@ instance : SMul Nat R := ⟨fun n a => mul (natCast n) a⟩
 instance : SMul Int R := ⟨fun i a => mul (intCast i) a⟩
 instance : HPow R Nat R := ⟨npow⟩
 
-/-- Every MA-ring is a commutative ring (with ⬝ as product and −w as 1). -/
+/-- Every circle-operation ring is a commutative ring (with ⬝ as product and −w as 1). -/
 instance instCommRing : Lean.Grind.CommRing R where
   add_zero := add_zero
   add_comm := add_comm
@@ -236,8 +236,8 @@ instance instCommRing : Lean.Grind.CommRing R where
   intCast_neg := intCast_neg'
   mul_comm := mul_comm
 
-/-- In the derived ring, the library's mult-add a + b + a·b is exactly the
-    primitive ◯. So every theorem about mult-add is a theorem about ◯. -/
+/-- In the derived ring, the library's circle operation a + b + a·b is exactly the
+    primitive ◯. So every theorem about the circle operation is a theorem about ◯. -/
 theorem add_add_mul_eq_circ (a b : R) : a + b + a * b = a ◯ b := (circ_eq a b).symm
 
 theorem one_eq : (1 : R) = −wall := rfl
@@ -246,10 +246,10 @@ theorem zero_eq : (zero : R) = 0 := rfl
 
 end CircRing
 
-/-! ## Every commutative ring is an MA-ring, and back and forth is the identity -/
+/-! ## Every commutative ring is a circle-operation ring, and back and forth is the identity -/
 
 open Lean.Grind in
-/-- A commutative ring gives an MA-ring: ◯ := a + b + ab and w := −1. -/
+/-- A commutative ring gives a circle-operation ring: ◯ := a + b + ab and w := −1. -/
 @[instance_reducible] def ofCommRing (R : Type) [CommRing R] : CircRing R where
   zero := 0
   add := (· + ·)
@@ -266,22 +266,22 @@ open Lean.Grind in
   circ_add _ _ _ := by grind
 
 open Lean.Grind in
-/-- Ring → MA-ring → product: the product comes back unchanged. -/
+/-- Ring → circle-operation ring → product: the product comes back unchanged. -/
 theorem roundtrip_mul (R : Type) [CommRing R] (a b : R) :
     @CircRing.mul R (ofCommRing R) a b = a * b := by
   show a + b + a * b + -a + -b = a * b; grind
 
-/-- MA-ring → ring → mult-add: ◯ comes back unchanged. -/
+/-- circle-operation ring → ring → the circle operation: ◯ comes back unchanged. -/
 theorem roundtrip_circ (R : Type) [CircRing R] (a b : R) :
     (ofCommRing R).circ a b = CircRing.circ a b := CircRing.add_add_mul_eq_circ a b
 
-/-- MA-ring → ring → MA-ring: the wall comes back unchanged. -/
+/-- circle-operation ring → ring → circle-operation ring: the wall comes back unchanged. -/
 theorem roundtrip_wall (R : Type) [CircRing R] :
     (ofCommRing R).wall = (CircRing.wall : R) := CircRing.wall_eq.symm
 
 /-! ## Fields: one more axiom, the way back
 
-  MA-field = MA-ring with
+  circle-operation field = circle-operation ring with
     F1  0 ≠ w                          (not everything is flat)
     F2  for every a ≠ w there is b with a ◯ b = 0
                                        (every box off the wall can be undone)
@@ -368,7 +368,7 @@ noncomputable instance instField : Lean.Grind.Field R :=
       | .ofNat (n + 1) => rfl
       | .negSucc n => show a ^ (n + 1) = inv (inv (a ^ (n + 1))); rw [inv_inv'] }
 
-/-- The way back, in closed form: the mult-add inverse of u is −u/(1 + u). -/
+/-- The way back, in closed form: the circle inverse of u is −u/(1 + u). -/
 theorem way_back_formula (u : R) (h : 1 + u ≠ 0) :
     CircRing.circ u (-u * inv (1 + u)) = (0 : R) := by
   rw [← add_add_mul_eq_circ]

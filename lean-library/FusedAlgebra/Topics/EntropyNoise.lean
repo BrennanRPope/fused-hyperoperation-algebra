@@ -1,5 +1,5 @@
 /-
-  Entropy and quantum noise on the mult-add cube
+  Entropy and quantum noise on the circle-operation cube (called mult-add cube before 1.0)
   ==============================================
 
   Part of Fused Hyperoperation Algebra. Companion page: index.html.

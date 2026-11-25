@@ -3,7 +3,7 @@
   ============================================================================
 
   Core Lean 4 (4.37.0-rc1), no mathlib, no `sorry`, no new axioms. Built on the shared
-  library (FusedAlgebra.Base for mult-add, CubeProofs for `IsPrime`, Elliptic for the node).
+  library (FusedAlgebra.Base for the circle operation (called mult-add before 1.0), CubeProofs for `IsPrime`, Elliptic for the node).
 
   FLT n says: no x, y ≠ 0 in Nat with x^n + y^n = z^n.
 
@@ -20,9 +20,9 @@
      change of variables to the minimal model Y² + XY = X³ + a2·X² + a4·X, the invariants
      c4 = A² + AB + B² and 256·Δ = (ABC)², semistability (no prime divides both Δ and c4,
      including the node at 2), the reduction mod q | A to the node family, whose chord law
-     is mult-add, and 256·Δ = ((abc)²)^p, so every odd prime's exact exponent in Δ is a
+     is the circle operation, and 256·Δ = ((abc)²)^p, so every odd prime's exact exponent in Δ is a
      multiple of p.
-  4. Mult-add restatement: x^n + y^n = z^n ⇔ (y/x)^n = mpow (z/x − 1) n over Rat.
+  4. Circle-operation restatement: x^n + y^n = z^n ⇔ (y/x)^n = mpow (z/x − 1) n over Rat.
   5. Level 2: the counts μ = 3, ν2 = 1, ν3 = 0, ν∞ = 2 for Γ0(2), which put the genus of
      X0(2) at 0 through the (cited, not proved) genus formula.
 
@@ -439,7 +439,7 @@ theorem frey_at_two {A B C a2 a4 : Int} (hC : A + B = C) (hA : A % 2 = 1) (hB : 
     rw [this] at hD
     exact ⟨(A * m * C) ^ 2, by omega⟩
 
-/-! ### 3f. Node shape and the mult-add chord law -/
+/-! ### 3f. Node shape and the circle-operation chord law -/
 
 /-- 3f. For an odd prime q dividing A, q divides a4. -/
 theorem frey_a4_mod_q {A B a4 : Int} (h4 : 16 * a4 = -(A * B)) {q : Nat} (hq : IsPrime q)
@@ -628,7 +628,7 @@ theorem frey_disc_valuation {a b c Δ : Int} {p : Nat}
     exact Nat.pos_iff_ne_zero.mp (Nat.pow_pos (Nat.pos_of_ne_zero this))
   exact exact_exponent_pth_power p hq hM ((tr e).mp he) (fun h => he1 ((tr (e + 1)).mpr h))
 
-/-! ## 4. Mult-add restatement -/
+/-! ## 4. Circle-operation restatement -/
 
 /-- (y/x)^n · x^n = y^n for x ≠ 0. -/
 theorem rat_div_pow {x : Rat} (y : Rat) (hx : x ≠ 0) (n : Nat) : (y / x) ^ n * x ^ n = y ^ n := by
@@ -640,7 +640,7 @@ theorem rat_div_pow {x : Rat} (y : Rat) (hx : x ≠ 0) (n : Nat) : (y / x) ^ n *
     have e : ∀ W w X : Rat, W * w * (X * x) = (W * X) * (w * x) := by intros; grind
     rw [e, ih, h]
 
-/-- 4. x^n + y^n = z^n exactly when (y/x)^n = mpow (z/x − 1) n: an n-th power equals a mult-add n-th power. -/
+/-- 4. x^n + y^n = z^n exactly when (y/x)^n = mpow (z/x − 1) n: an n-th power equals a circle n-th power. -/
 theorem flt_circ (x y z : Rat) (hx : x ≠ 0) (n : Nat) :
     x ^ n + y ^ n = z ^ n ↔ (y / x) ^ n = mpow (z / x - 1) n := by
   rw [mpow_eq]

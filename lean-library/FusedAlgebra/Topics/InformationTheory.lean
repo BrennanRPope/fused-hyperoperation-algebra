@@ -23,7 +23,7 @@
     K6  outer log  Σᵢⱼ xᵢyⱼ·L(xᵢyⱼ) = (Σy)·Σ x·L(x) + (Σx)·Σ y·L(y)
 
   where a ◯[k] b = a + b + k·a·b.  The weight k says how the corner cell a·b of
-  the mult-add square is counted.
+  the circle-operation square (called mult-add square before 1.0) is counted.
 
   What Lean does NOT check here: anything that needs real numbers (log, real
   powers p^q, the binary entropy function h(p) and its monotonicity), limits,
@@ -40,12 +40,12 @@ namespace InfoFused
 open CircleOp
 
 /-! ## 0. The common kit
-  (weighted mult-add circK, its power wpow, the plain power pw, and the laws
+  (the circle operation circK, its power wpow, the plain power pw, and the laws
   K1 circK_lift = circK_lift, scaling = circK_scale, K3 circK_flip = circK_flip, commutative,
   associative and identity come from FusedAlgebra.Base) -/
 
 
-/-- K2, climb: the mult-add power climbs the cube. -/
+/-- K2, climb: the circle power climbs the cube. -/
 theorem climb (k a : Rat) (n : Nat) : 1 + k * wpow k a n = pw (1 + k * a) n := by
   induction n with
   | zero => simp only [wpow, pw]; grind
@@ -118,12 +118,12 @@ theorem union_rule (p q : Rat) : circK (-1) p q = 1 - (1 - p) * (1 - q) := by un
 theorem survival (p q : Rat) : 1 - circK (-1) p q = (1 - p) * (1 - q) := by
   have h := circK_lift (-1) p q; grind
 
-/-- The k = −1 rule is mult-add read on the negatives (K3). -/
+/-- The k = −1 rule is the circle operation read on the negatives (K3). -/
 theorem union_is_flipped_circ (p q : Rat) : circK (-1) p q = -(circ (-p) (-q)) := by
   unfold circK circ; grind
 
 /-- Inclusion–exclusion for three independent events falls out of associativity:
-    the signed corners of the mult-add cube. -/
+    the signed corners of the circle-operation cube. -/
 theorem incl_excl3 (p q r : Rat) :
     circK (-1) (circK (-1) p q) r = p + q + r - p*q - p*r - q*r + p*q*r := by
   unfold circK; grind
@@ -177,7 +177,7 @@ theorem tsallis (k P R SA SB SAB : Rat) (hA : k * SA = P - 1) (hB : k * SB = R -
   grind
 
 /-- Rényi additivity: Rényi entropy is L(1 + k·S)/k, so it adds where Tsallis
-    mult-adds (K1 + K4).  Stated with the 1/k cleared. -/
+    combines by the circle operation (K1 + K4).  Stated with the 1/k cleared. -/
 theorem renyi_additive (L : Rat → Rat) (hL : ∀ x y, L (x * y) = L x + L y)
     (k SA SB : Rat) : L (1 + k * circK k SA SB) = L (1 + k * SA) + L (1 + k * SB) :=
   linearize L hL k SA SB
@@ -188,7 +188,7 @@ theorem renyi_additive (L : Rat → Rat) (hL : ∀ x y, L (x * y) = L x + L y)
 theorem gini_simpson (QA QB : Rat) : 1 - QA * QB = circK (-1) (1 - QA) (1 - QB) := by
   unfold circK; grind
 
-/-- Landmark q = 0 (k = 1): S₀ = N − 1, support sizes multiply, so N − 1 mult-adds:
+/-- Landmark q = 0 (k = 1): S₀ = N − 1, support sizes multiply, so N − 1 combines by the circle operation:
     the N×M grid minus its unit corner. -/
 theorem support_count (N M : Rat) : N * M - 1 = circ (N - 1) (M - 1) := by
   unfold circ; grind
@@ -217,7 +217,7 @@ theorem kraft_product (KA KB : Rat) (h0 : 0 ≤ KA) (hA : KA ≤ 1) (hB : KB ≤
   grind
 
 /-- Campbell's exponential cost: M = Σ pᵢ·D^(t·ℓᵢ) multiplies for concatenated
-    independent sources (K5 on the weights), so M − 1 composes by plain mult-add. -/
+    independent sources (K5 on the weights), so M − 1 composes by the plain circle operation. -/
 theorem campbell (MA MB : Rat) : MA * MB - 1 = circ (MA - 1) (MB - 1) := by
   unfold circ; grind
 
@@ -302,7 +302,7 @@ theorem parallel_capacity (C1 C2 : Nat) : pw (2 : Rat) (C1 + C2) = pw (2 : Rat) 
 
 /-! ## 6. Error-correcting codes -/
 
-/-- Parity of three noisy bits: the odd layers of the mult-add cube (1·3·3·1). -/
+/-- Parity of three noisy bits: the odd layers of the circle-operation cube (1·3·3·1). -/
 theorem parity3 (p : Rat) : wpow (-2) p 3 = 3 * p * (1 - p) * (1 - p) + p * p * p := by
   rw [show wpow (-2) p 3 = circK (-2) (circK (-2) (circK (-2) 0 p) p) p from rfl]
   unfold circK; grind
@@ -319,19 +319,19 @@ theorem hamming_perfect (r m : Nat) (h : m + r + 1 = 2 ^ r) :
     2 ^ m * (1 + (m + r)) = 2 ^ (m + r) := by
   rw [show 1 + (m + r) = 2 ^ r by omega, ← Nat.pow_add]
 
-/-! ## 7. Decoding: belief propagation is mult-add in two coordinates
+/-! ## 7. Decoding: belief propagation is the circle operation in two coordinates
 
   A bit's belief: chance p of a 1, odds o = (1−p)/p, ρ = 1 − 2p = tanh(LLR/2).
-  Check node (parity of two independent bits): ρ multiplies, −2p mult-adds.
-  Variable node (two independent looks at one bit): odds multiply, o − 1 mult-adds,
+  Check node (parity of two independent bits): ρ multiplies, −2p combines by the circle operation.
+  Variable node (two independent looks at one bit): odds multiply, o − 1 combines by the circle operation,
   and in ρ that is Einstein's velocity addition (ρ₁ + ρ₂)/(1 + ρ₁ρ₂).
 -/
 
-/-- Check node: −2·(p ◯[−2] q) = (−2p) ◯ (−2q), plain mult-add. -/
+/-- Check node: −2·(p ◯[−2] q) = (−2p) ◯ (−2q), the plain circle operation. -/
 theorem check_node (p q : Rat) : -2 * circK (-2) p q = circ (-2 * p) (-2 * q) := by
   unfold circK circ; grind
 
-/-- Variable node: posterior odds multiply, so o − 1 mult-adds. -/
+/-- Variable node: posterior odds multiply, so o − 1 combines by the circle operation. -/
 theorem variable_node (o1 o2 : Rat) : o1 * o2 - 1 = circ (o1 - 1) (o2 - 1) := by
   unfold circ; grind
 
@@ -342,7 +342,7 @@ theorem odds_to_velocity (o1 o2 : Rat) :
     (o1 + 1) * (o2 + 1) + (o1 - 1) * (o2 - 1) = 2 * (o1 * o2 + 1) := by
   constructor <;> grind
 
-/-- Velocity addition lifts to mult-add on both corners:
+/-- Velocity addition lifts to the circle operation on both corners:
     (1 + ab) + (a + b) = (1 + a)(1 + b) and (1 + ab) − (a + b) = (1 − a)(1 − b),
     so (1 + v)/(1 − v), the odds, multiplies. -/
 theorem velocity_corners (a b : Rat) :

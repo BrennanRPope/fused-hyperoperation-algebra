@@ -26,7 +26,7 @@ open scoped CircleOp
 
 -- LIBRARY: indep_groups (Independent groups: "at least one deprotonated" is failure-union, k = −1) was an exact twin of ChemStoichiometry.loss_two and is removed.
 
--- LIBRARY: chained_K (Chained dissociation constants multiply, so K − 1 mult-adds) was an exact twin of InfoFused.campbell and is removed.
+-- LIBRARY: chained_K (Chained dissociation constants multiply, so K − 1 combines by the circle operation (called mult-add before 1.0)) was an exact twin of InfoFused.campbell and is removed.
 
 /-- Isoelectric point of a two-group amino acid: if h² = K₁K₂, the carboxylate fraction
     K₁/(K₁ + h) equals the ammonium fraction h/(K₂ + h). Cleared form. -/

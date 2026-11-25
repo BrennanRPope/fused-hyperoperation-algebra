@@ -1,5 +1,5 @@
 /-
-  Information theory through mult-add: the full pass
+  Information theory through the circle operation (called mult-add before 1.0): the full pass
   ==================================================
 
   Companion page: ../index.html.  Numbers: ../checks.py.
@@ -14,7 +14,7 @@
      s(xy) = s(x) ◯ₖ s(y): the weighted outer-log lemma, which contains
      Shannon (k = 0) and Tsallis (any k) at once.
   3. The duality q ↔ 2 − q is the dial's sign flip; Sharma–Mittal entropies.
-  4. Binary trees: grafting composes internal nodes by mult-add; leaves are the lift.
+  4. Binary trees: grafting composes internal nodes by the circle operation; leaves are the lift.
   5. Any binary channel: the crossover sum a + b composes by the union rule.
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/InformationFull.lean; two exact twins of InfoFused removed (see the LIBRARY comments).
 -/
@@ -100,7 +100,7 @@ theorem qexpN_mul (n : Nat) (hn : n ≠ 0) (x y : Rat) :
     intro e; exact hn (by exact_mod_cast e)
   unfold circK; grind
 
-/-- Compound interest: e_q(x) − 1 is n mult-add steps of x/n (rung 2). -/
+/-- Compound interest: e_q(x) − 1 is n circle-operation steps of x/n (rung 2). -/
 theorem qexp_climb (n : Nat) (x : Rat) : qexpN n x - 1 = mpow (x / n) n := by
   unfold qexpN; rw [mpow_eq]
 
@@ -155,7 +155,7 @@ theorem sm_compose (E : Rat → Rat) (k : Rat) (hE : ∀ x y, E (x + y) = circK 
 theorem flip_weight (k a b : Rat) : circK (-k) a b = -(circK k (-a) (-b)) := by
   unfold circK; grind
 
-/-! # 4. Binary trees: grafting is mult-add -/
+/-! # 4. Binary trees: grafting is the circle operation -/
 
 inductive BT where
   | leaf : BT
@@ -191,7 +191,7 @@ theorem graft_inner (a b : BT) : inner (graft a b) = inner a + leaves a * inner 
   | node l r ihl ihr =>
     simp only [graft, inner, leaves]; rw [ihl, ihr, Nat.add_mul]; omega
 
-/-- Grafting composes internal nodes (decisions) by mult-add. -/
+/-- Grafting composes internal nodes (decisions) by the circle operation. -/
 theorem graft_circ (a b : BT) : inner (graft a b) = inner a ◯ inner b := by
   rw [graft_inner, leaves_lift]; unfold circ
   rw [Nat.add_mul, Nat.one_mul]; omega
@@ -201,7 +201,7 @@ def full : Nat → BT
   | 0 => .leaf
   | n + 1 => .node (full n) (full n)
 
-/-- It has 2^n − 1 = the mult-add power of 1 internal nodes: the q-number [n]₂. -/
+/-- It has 2^n − 1 = the circle power of 1 internal nodes: the q-number [n]₂. -/
 theorem full_inner (n : Nat) : inner (full n) = mpow 1 n := by
   induction n with
   | zero => rfl

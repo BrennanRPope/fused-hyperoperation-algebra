@@ -1,5 +1,5 @@
 /-
-  Electromagnetism through mult-add: the elementary parts
+  Electromagnetism through the circle operation (called mult-add before 1.0): the elementary parts
   =======================================================
 
   Companion checks: ../checks.py (sympy, numpy, scipy). Core Lean 4.37.0-rc1, no mathlib,
@@ -13,11 +13,11 @@
      its wave speed.
   2. Boosting E and B along x, written with the Doppler factor D (all rational): the light-cone
      parts E_y ± B_z, E_z ∓ B_y are scaled by D⁻¹ and D; boosts compose by multiplying D; the
-     speed of D₁D₂ is Einstein's sum; D² − 1 composes by mult-add; E² − B² and E·B are invariant;
+     speed of D₁D₂ is Einstein's sum; D² − 1 composes by the circle operation; E² − B² and E·B are invariant;
      null fields stay null; a light wave's amplitude scales by 1/D; a pure E field gains B.
   3. The gauge phase: a complex a is a unit phase exactly when a ◯ ā = 0; unit phases are closed
      under ◯. The split-complex (boost) version is the same rule with j² = +1.
-  4. Lattice gauge: a plaquette is the ◯ of its four links (two run backwards, as mult-add
+  4. Lattice gauge: a plaquette is the ◯ of its four links (two run backwards, as circle
      inverses); two plaquettes ◯ into the big loop (discrete Stokes).
   5. Charge conservation in momentum space: k_μ k_ν F^{μν} = 0 for any antisymmetric F.
   6. Born–Infeld's field cap: E² = D²/(b² + D²) · b² stays below b², with the exact inverse.
@@ -124,7 +124,7 @@ theorem lc_pair2 (D : Rat) (f : EB) (hD : D ≠ 0) :
     unfold boost; grind
   rw [e1, e2, h1, h2]; constructor <;> grind
 
-/-- The ratio of the two light-cone parts is multiplied by D², the mult-add lift. -/
+/-- The ratio of the two light-cone parts is multiplied by D², the circle-operation lift. -/
 theorem lc_ratio (D : Rat) (f : EB) (hD : D ≠ 0) :
     ((boost D f).ey - (boost D f).bz) * (f.ey + f.bz)
       = (D * D) * ((f.ey - f.bz) * ((boost D f).ey + (boost D f).bz)) := by
@@ -139,12 +139,12 @@ theorem dop_vD (D : Rat) (h : D * D + 1 ≠ 0) : dop (vD D) = D * D - 1 := by
   have e : 1 - (D * D - 1) / (D * D + 1) = 2 / (D * D + 1) := by grind
   rw [e]; grind
 
-/-- **D² − 1 composes by mult-add**: (D₁D₂)² − 1 = (D₁² − 1) ◯ (D₂² − 1). -/
+/-- **D² − 1 composes by the circle operation**: (D₁D₂)² − 1 = (D₁² − 1) ◯ (D₂² − 1). -/
 theorem doppler_circ (D1 D2 : Rat) :
     (D1 * D2) * (D1 * D2) - 1 = (D1 * D1 - 1) ◯ (D2 * D2 - 1) := by
   unfold circ; grind
 
-/-- So the field's light-cone ratio, under two boosts, rides the mult-add of the two d's. -/
+/-- So the field's light-cone ratio, under two boosts, rides the circle operation of the two d's. -/
 theorem dop_compose (D1 D2 : Rat) (h1 : D1 * D1 + 1 ≠ 0) (h2 : D2 * D2 + 1 ≠ 0)
     (h12 : (D1 * D2) * (D1 * D2) + 1 ≠ 0) :
     dop (vD (D1 * D2)) = dop (vD D1) ◯ dop (vD D2) := by
@@ -214,7 +214,7 @@ theorem wave_boost (D a : Rat) (hD : D ≠ 0) : boost D (wave a) = wave (a / D) 
     rw [show gam D * a - gv D * a = (gam D - gv D) * a by grind, h]; grind
   apply EB.ext' <;> unfold boost wave <;> simp only <;> grind
 
-/-- Its energy density (E² + B²)/2 = a² is divided by D², the inverse mult-add lift. -/
+/-- Its energy density (E² + B²)/2 = a² is divided by D², the inverse circle-operation lift. -/
 theorem wave_energy (D a : Rat) (hD : D ≠ 0) :
     (a / D) * (a / D) * (D * D) = a * a := by
   grind
@@ -226,7 +226,7 @@ theorem purcell (D e : Rat) : (boost D ⟨0, e, 0, 0, 0, 0⟩).bz = -(gv D * e) 
 /-! ## 3. The gauge phase as a dial -/
 
 open TwistedBoosts in
-/-- Mult-add on complex numbers (pairs of rationals). -/
+/-- The circle operation on complex numbers (pairs of rationals). -/
 def maC (a b : C) : C := C.add (C.add a b) (C.mul a b)
 
 open TwistedBoosts in
@@ -245,7 +245,7 @@ theorem nsq_mul (u w : C) : C.nsq (C.mul u w) = C.nsq u * C.nsq w := by
   unfold C.nsq C.mul; simp only; grind
 
 open TwistedBoosts in
-/-- **Unit phases are closed under mult-add**: if a ◯ ā = 0 and b ◯ b̄ = 0, the same holds for a ◯ b. -/
+/-- **Unit phases are closed under the circle operation**: if a ◯ ā = 0 and b ◯ b̄ = 0, the same holds for a ◯ b. -/
 theorem phase_closed (a b : C)
     (ha : C.nsq (C.add C.one a) = 1) (hb : C.nsq (C.add C.one b) = 1) :
     C.nsq (C.add C.one (maC a b)) = 1 := by
@@ -279,7 +279,7 @@ theorem maS_lift (a b : S) : S.add S.one (maS a b) = S.mul (S.add S.one a) (S.ad
 theorem S_nsq_mul (u w : S) : S.nsq (S.mul u w) = S.nsq u * S.nsq w := by
   unfold S.nsq S.mul; simp only; grind
 
-/-- Boosts (a ◯ ā = 0 in the split plane) are closed under mult-add too. -/
+/-- Boosts (a ◯ ā = 0 in the split plane) are closed under the circle operation too. -/
 theorem boost_closed (a b : S)
     (ha : S.nsq (S.add S.one a) = 1) (hb : S.nsq (S.add S.one b) = 1) :
     S.nsq (S.add S.one (maS a b)) = 1 := by
@@ -292,10 +292,10 @@ theorem half_charts (t1 t2 : Rat) :
     S.mul ⟨1, t1⟩ ⟨1, t2⟩ = ⟨1 + t1 * t2, t1 + t2⟩ := by
   unfold TwistedBoosts.C.mul S.mul; constructor <;> (simp only; congr 1 <;> grind)
 
-/-! ## 4. Lattice gauge: plaquettes compose by mult-add -/
+/-! ## 4. Lattice gauge: plaquettes compose by the circle operation -/
 
-/-- **A plaquette is the mult-add of its links**, the two backward links entering as
-    mult-add inverses: 1 + (a₁ ◯ a₂ ◯ a₃⁻ ◯ a₄⁻) = (1 + a₁)(1 + a₂)/((1 + a₃)(1 + a₄)). -/
+/-- **A plaquette is the circle operation of its links**, the two backward links entering as
+    circle inverses: 1 + (a₁ ◯ a₂ ◯ a₃⁻ ◯ a₄⁻) = (1 + a₁)(1 + a₂)/((1 + a₃)(1 + a₄)). -/
 theorem plaquette (a1 a2 a3 a4 : Rat) (h3 : 1 + a3 ≠ 0) (h4 : 1 + a4 ≠ 0) :
     1 + (a1 ◯ a2 ◯ circInv a3 ◯ circInv a4) = (1 + a1) * (1 + a2) / ((1 + a3) * (1 + a4)) := by
   rw [circ_lift, circ_lift, circ_lift, ← inv_one_add a3 h3, ← inv_one_add a4 h4]
@@ -307,7 +307,7 @@ theorem stokes (b1 s t1 l b2 r t2 : Rat) (hs : s ≠ 0) (ht1 : t1 ≠ 0) (hl : l
     (b1 * s / (t1 * l)) * (b2 * r / (t2 * s)) = b1 * b2 * r / (t2 * t1 * l) := by
   grind
 
-/-- In mult-add form: the big loop's value is the ◯ of the two plaquette values. -/
+/-- In circle-operation form: the big loop's value is the ◯ of the two plaquette values. -/
 theorem stokes_circ (p1 p2 big : Rat) (h : (1 + p1) * (1 + p2) = 1 + big) : big = p1 ◯ p2 := by
   unfold circ; grind
 

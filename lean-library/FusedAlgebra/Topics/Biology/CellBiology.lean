@@ -3,9 +3,9 @@
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports FusedAlgebra.Base only.
   Intended library path: FusedAlgebra/Topics/Biology/CellBiology.lean
 
-  1. Bliss independence (survivals multiply) is the "or" law on effects, dial −1, and plain
-     mult-add on effect odds o = E/(1 − E).
-  2. Chou–Talalay's combination index v₁ + v₂ + α·v₁v₂ is the weighted mult-add v₁ ◯_α v₂.
+  1. Bliss independence (survivals multiply) is the "or" law on effects, dial −1, and the plain
+     circle operation (called mult-add before 1.0) on effect odds o = E/(1 − E).
+  2. Chou–Talalay's combination index v₁ + v₂ + α·v₁v₂ is the circle operation v₁ ◯_α v₂.
      α = 0 is Loewe additivity, α = −1 is the Highest Single Agent model, and the wall
      v = −1/α is where one drug makes the other irrelevant.
   3. Multi-target cell kill: survival is a weighted power at dial −1.
@@ -34,7 +34,7 @@ theorem bliss_or (a b : R) : 1 - (1 - a) * (1 - b) = circK (-1) a b := by
 
 /-! ## 2. The Chou–Talalay dial -/
 
-/-- The combination index with interaction α is the weighted mult-add of the dose fractions. -/
+/-- The combination index with interaction α is the dose fractions combined by the circle operation with dial α. -/
 def ci (α v₁ v₂ : R) : R := v₁ + v₂ + α * v₁ * v₂
 
 theorem ci_is_circK (α v₁ v₂ : R) : ci α v₁ v₂ = circK α v₁ v₂ := by unfold ci circK; grind
@@ -69,7 +69,7 @@ def odds (E : K) : K := E / (1 - E)
 theorem one_add_odds (E : K) (h : 1 - E ≠ 0) : 1 + odds E = 1 / (1 - E) := by
   unfold odds; grind
 
-/-- **Bliss is plain mult-add on effect odds**, for any shape of dose–response curve. -/
+/-- **Bliss is the plain circle operation on effect odds**, for any shape of dose–response curve. -/
 theorem bliss_odds (a b : K) (ha : 1 - a ≠ 0) (hb : 1 - b ≠ 0) :
     odds (1 - (1 - a) * (1 - b)) = odds a ◯ odds b := by
   unfold odds circ

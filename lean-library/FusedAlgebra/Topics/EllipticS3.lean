@@ -15,7 +15,7 @@ import FusedAlgebra.Base
 namespace EllipticS3
 open CircleOp
 
-/-! ### 1. Every law on the map is mult-add's lift in 2×2 matrices
+/-! ### 1. Every law on the map is the circle operation's lift in 2×2 matrices
     The number 1 + a becomes the matrix I + a·G with G = [[k, 1], [−q, 0]] (trace k, det q).
     Entries of (I + aG)(I + bG) against (1 − q ab)·(I + F G), F = (a + b + k ab)/(1 − q ab),
     written with N = a + b + k ab and D = 1 − q ab so nothing is divided. -/
@@ -40,7 +40,7 @@ theorem cayley_hamilton (k q : Int) :
     (-q) * k + 0 * (-q) = k * (-q) - q * 0 ∧ (-q) * 1 + 0 * 0 = k * 0 - q * 1 := by
   refine ⟨?_, ?_, ?_, ?_⟩ <;> grind
 
-/-- mult-add is the 1×1 case G = [1]: (1 + a)(1 + b) = 1 + (a ◯ b) -/
+/-- the circle operation (called mult-add before 1.0) is the 1×1 case G = [1]: (1 + a)(1 + b) = 1 + (a ◯ b) -/
 theorem circ_is_1x1 (a b : Int) : (1 + a) * (1 + b) = 1 + circ a b := (circ_lift a b).symm
 
 /-! ### 2. The turning country has no real wall: no rational eigenvalue when k² < 4q -/
@@ -60,8 +60,8 @@ theorem turning_no_wall (k q l : Rat) (h : k * k < 4 * q) : l * l - k * l + q �
 
 /-! ### 3. Bad primes: Frobenius on the lift is the p-th power -/
 
-/-- turning (non-split) torus: u^(p+1) = 1, so v = u^p satisfies v·u = 1 and the mult-add of
-    v − 1 and u − 1 is 0: Frobenius sends the point to its mult-add inverse (a_p = −1) -/
+/-- turning (non-split) torus: u^(p+1) = 1, so v = u^p satisfies v·u = 1 and the circle operation of
+    v − 1 and u − 1 is 0: Frobenius sends the point to its circle inverse (a_p = −1) -/
 theorem nonsplit_frob_is_inverse (u v : Int) (h : v * u = 1) : circ (v - 1) (u - 1) = 0 := by
   unfold circ; grind
 

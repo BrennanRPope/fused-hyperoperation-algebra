@@ -14,7 +14,7 @@
      0 or 1 give 2^(number of ones): the old split P(A) × P(S∖A).
   2. Merging. Combining two dialled power sets of the same set by union
      (every pair (A, B), weighed by the product, landing on A ∪ B) gives the
-     dialled power set whose dials are mult-added, element by element
+     dialled power set whose dials are combined by the circle operation (called mult-add before 1.0), element by element
      (`conv_W`). The same one-element computation (`cell_merge`) says that
      merging two elements into one block, present when either is present,
      gives the block the dial t ◯ s. Dial 0 is the unit of merging.
@@ -25,8 +25,8 @@
      Each half has a partner: t ◯ (1 − t)/(1 + t) = 1; partnering is an
      involution swapping 0 and 1 and fixing exactly the dials with t ◯ t = 1.
   4. Complement. Taking complements turns dial t into 1/t (`W_compl`), so it
-     swaps "merge by union" (mult-add on the dials) with "merge by
-     intersection" (mult-add on the reciprocal dials). The only dial that
+     swaps "merge by union" (the circle operation on the dials) with "merge by
+     intersection" (the circle operation on the reciprocal dials). The only dial that
      complement leaves alone is 1: the full power set, not a half. The union
      half and the intersection half are reciprocal (√2 − 1 and √2 + 1); in
      probabilities they are 1 − r/2 and r/2, which add to 1, and no single
@@ -120,7 +120,7 @@ theorem total_W (ts : List R) :
     rw [e1, e2, sumL_map_mul, sumL_map_mul, ih]
     simp only [List.map, prodL]; grind
 
-/-- The count is the mult-add chain plus one: ∏(1 + tᵢ) = 1 + (t₁ ◯ … ◯ tₙ). -/
+/-- The count is the circle-operation chain plus one: ∏(1 + tᵢ) = 1 + (t₁ ◯ … ◯ tₙ). -/
 theorem total_W_chain (ts : List R) :
     sumL ((vecs ts.length).map (W ts)) = 1 + foldCirc ts := by
   rw [total_W, foldCirc_lift]
@@ -219,7 +219,7 @@ theorem inner_sum (t s : R) (ts ss : List R) (x z : Bool) (c : List Bool) (n : N
     intro y; funext b; exact summand_split t s ts ss x y z a b c
   rw [e false, e true, sumL_map_mul, sumL_map_mul]
 
-/-- **Merging dialled power sets multiplies nothing new in: the dials mult-add.**
+/-- **Merging dialled power sets multiplies nothing new in: the dials combine by the circle operation.**
     Union-convolving the family with dials ts and the family with dials ss
     gives the family with dials tᵢ ◯ sᵢ. -/
 theorem conv_W (n : Nat) (ts ss : List R) (c : List Bool)
@@ -254,7 +254,7 @@ theorem zipWith_zero (ss : List R) :
   | nil => rfl
   | cons s ss ih => simp only [List.length_cons, List.replicate, List.zipWith]; rw [ih, zero_circ]
 
-/-- Merging a constant family with itself mult-adds the dial with itself. -/
+/-- Merging a constant family with itself combines the dial with itself by the circle operation. -/
 theorem zipWith_replicate (t : R) (n : Nat) :
     List.zipWith circ (List.replicate n t) (List.replicate n t) = List.replicate n (t ◯ t) := by
   induction n with
@@ -268,7 +268,7 @@ theorem half_of_merge (r r' : R) :
     (r ◯ r') ◯ (r ◯ r') = (r ◯ r) ◯ (r' ◯ r') := by
   unfold circ; grind
 
-/-- m copies merged: the m-fold mult-add power of the dial. An m-th root of the
+/-- m copies merged: the m-fold circle power of the dial. An m-th root of the
     full power set is a dial with t^(◯m) = 1, that is (1 + t)^m = 2. -/
 theorem mth_root_of_full (t : R) (m : Nat) (h : (1 + t) ^ m = 1 + 1) :
     1 + mpow t m = 1 + 1 := by
@@ -309,7 +309,7 @@ variable {K : Type} [Lean.Grind.Field K]
 /-- The partner of a dial: the dial that completes it to the full power set. -/
 def partner (t : K) : K := (1 - t) / (1 + t)
 
-/-- Partners mult-add to 1: (1 + t)(1 + partner t) = 2. -/
+/-- Partners combine by the circle operation to 1: (1 + t)(1 + partner t) = 2. -/
 theorem partner_spec (t : K) (h : 1 + t ≠ 0) : t ◯ partner t = 1 := by
   unfold partner circ; grind
 
@@ -361,8 +361,8 @@ theorem W_compl (ts : List K) (c : List Bool) (h : ∀ t ∈ ts, t ≠ 0)
       simp only [List.length_cons, Nat.add_right_cancel_iff] at hc
       rw [ih c hts hc, cell_compl t ht b]; grind
 
-/-- Complement swaps the two mergers: reciprocal dials mult-add under
-    intersection exactly as dials mult-add under union.
+/-- Complement swaps the two mergers: reciprocal dials combine by the circle operation under
+    intersection exactly as dials combine by the circle operation under union.
     (1 + 1/t)(1 + 1/s) is the lift of t·s/(1 + t + s), the intersection's dial. -/
 theorem compl_swaps_merge (t s : K) (ht : t ≠ 0) (hs : s ≠ 0) (h : 1 + t + s ≠ 0) :
     t⁻¹ ◯ s⁻¹ = (t * s / (1 + t + s))⁻¹ := by

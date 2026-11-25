@@ -55,7 +55,7 @@ end Ring
 section Field
 variable {K : Type} [Lean.Grind.Field K]
 
--- LIBRARY: herd_threshold (The herd-immunity threshold is mult-add's inverse of the excess reproduction number) was an exact twin of Development.logistic_shortfall and is removed.
+-- LIBRARY: herd_threshold (The herd-immunity threshold is the circle inverse (called mult-add inverse before 1.0) of the excess reproduction number) was an exact twin of Development.logistic_shortfall and is removed.
 
 /-- Beverton–Holt map x ↦ R·x/(1 + x/M), written with reciprocal capacity m = 1/M. -/
 def bh (Rg m x : K) : K := Rg * x / (1 + m * x)

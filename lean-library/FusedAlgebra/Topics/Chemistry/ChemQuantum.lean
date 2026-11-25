@@ -1,5 +1,5 @@
 /-
-  Chemistry 1, quantum chemistry: independent fragments compose by mult-add
+  Chemistry 1, quantum chemistry: independent fragments compose by the circle operation (called mult-add before 1.0)
   ==========================================================================
 
   Companion page and checks: ../index.html, ../checks.py (25 checks).
@@ -34,7 +34,7 @@ open scoped CircleOp
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- Two independent fragments: the excess amplitude mult-adds. -/
+/-- Two independent fragments: the excess amplitude combines by the circle operation. -/
 theorem fragments_circ (cA cB : R) : (1 + cA) * (1 + cB) = 1 + (cA ◯ cB) := by
   unfold circ; grind
 
@@ -85,9 +85,9 @@ theorem cisd_not_extensive (D g e N : Rat) (hN0 : N ≠ 0) (hN1 : N ≠ 1) (he :
     · exact hN1 (by grind)
   · rcases Rat.mul_eq_zero.mp h with h' | h' <;> exact he h'
 
-/-! ## Spin coupling counts states by mult-add -/
+/-! ## Spin coupling counts states by the circle operation -/
 
-/-- Multiplicities multiply, so 2s (multiplicity − 1) mult-adds. -/
+/-- Multiplicities multiply, so 2s (multiplicity − 1) combines by the circle operation. -/
 theorem spin_multiplicity (s1 s2 : Nat) : (s1 + 1) * (s2 + 1) = (s1 ◯ s2) + 1 := by
   unfold circ; grind
 

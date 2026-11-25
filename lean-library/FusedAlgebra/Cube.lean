@@ -1,5 +1,5 @@
 /-
-  FusedAlgebra.Cube: the layers of the mult-add cube
+  FusedAlgebra.Cube: the layers of the circle-operation cube (called mult-add cube before 1.0)
   ==================================================
 
   1 + (a ◯ a ◯ … ◯ a) = (1 + a)^n, and the n-cube behind it has

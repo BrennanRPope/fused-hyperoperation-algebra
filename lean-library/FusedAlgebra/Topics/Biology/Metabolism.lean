@@ -86,7 +86,7 @@ end Ring
 section Field
 variable {K : Type} [Lean.Grind.Field K]
 
-/-- **The ordered mechanism is a weighted mult-add.** With u_A = K_a/A, u_B = K_b/B and
+/-- **The ordered mechanism is the circle operation (called weighted mult-add before 1.0) with dial k.** With u_A = K_a/A, u_B = K_b/B and
     k = K_ia/K_a, the textbook rate law
     V/v = 1 + K_a/A + K_b/B + K_ia·K_b/(A·B) equals 1 + (u_A ◯_k u_B). -/
 theorem ordered_is_dial (Ka Kia Kb A B : K) (hKa : Ka ≠ 0) (hA : A ≠ 0) (hB : B ≠ 0) :
@@ -116,7 +116,7 @@ theorem meeting_point_unique (k uA uB uB' : K) (hne : uB ≠ uB')
 
 /-! ## 4. Saturation -/
 
-/-- Saturation is the mult-add inverse lifted: 1/(1 + u) = 1 + inv(u). -/
+/-- Saturation is the circle inverse lifted: 1/(1 + u) = 1 + inv(u). -/
 theorem saturation (u : K) (_h : 1 + u ≠ 0) : 1 / (1 + u) = 1 + circInv u := by
   unfold circInv; grind
 

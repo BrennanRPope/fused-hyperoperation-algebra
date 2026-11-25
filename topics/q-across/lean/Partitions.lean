@@ -18,7 +18,7 @@
     Jacobi's triple product      Π(1 − q²ⁿ)(1 + q²ⁿ⁻¹)² = θ(q) = Σ q^(k²)   checked mod q³⁰
     Jacobi's four-square theorem θ(q)⁴ = 1 + 8 Σₙ (Σ_{d|n, 4∤d} d) qⁿ       checked mod q³⁰
 
-  The mult-add link: Π(1 − qⁿ) is 1 + (the mult-add of the list −q, −q², −q³, …), by the
+  The circle-operation link (called mult-add link before 1.0): Π(1 − qⁿ) is 1 + (the circle operation of the list −q, −q², −q³, …), by the
   library's foldCirc_lift. Its corner expansion is a signed sum over sets of distinct parts, and
   the pentagonal theorem says those corners cancel down to the pentagonal numbers (Franklin's
   picture: slide the top row of a Ferrers diagram onto its staircase edge). The q here is the
@@ -72,7 +72,7 @@ theorem eulerProd_30_explicit :
     eulerProd 30 = [1, -1, -1, 0, 0, 1, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1,
       0, 0, 0, 1, 0, 0, 0] := by decide +kernel
 
-/-- The same product as a mult-add: x ◯ y = x + y + xy on truncated series. -/
+/-- The same product as a circle operation: x ◯ y = x + y + xy on truncated series. -/
 def tma (N : Nat) (x y : Poly) : Poly := (padd (padd x y) (pmul x y)).take N
 
 /-- −q ◯ −q² ◯ … ◯ −q^(N−1) mod q^N. -/

@@ -6,9 +6,9 @@
 
   * `no_x4_y4_z2` : if x and y are nonzero naturals, x⁴ + y⁴ is never a perfect square.
   * `fermat4`     : so x⁴ + y⁴ = z⁴ has no solution in nonzero naturals (z⁴ is the square of z²).
-  * `fourth_power_ne_mpow_four` : the same fact said with mult-add. Since 1 + s^(◯4) = (1 + s)⁴,
-    "q⁴ is the mult-add 4th power of s" means 1 + q⁴ = (1 + s)⁴. No nonzero rational q and
-    rational s do this, i.e. no nonzero rational fourth power is a mult-add fourth power.
+  * `fourth_power_ne_mpow_four` : the same fact said with the circle operation (called mult-add before 1.0). Since 1 + s^(◯4) = (1 + s)⁴,
+    "q⁴ is the circle 4th power of s" means 1 + q⁴ = (1 + s)⁴. No nonzero rational q and
+    rational s do this, i.e. no nonzero rational fourth power is a circle fourth power.
 
   The route is Fermat's own infinite descent, by strong induction on z:
 
@@ -217,7 +217,7 @@ theorem fermat4 (x y z : Nat) (hx : x ≠ 0) (hy : y ≠ 0) : x^4 + y^4 ≠ z^4 
 
 
 
-/-- Mult-add form of FLT(4): for rationals q ≠ 0 and s, q⁴ is never the mult-add 4th power
+/-- Circle-operation form of FLT(4): for rationals q ≠ 0 and s, q⁴ is never the circle 4th power
     s^(◯4) = (1 + s)⁴ − 1. -/
 theorem fourth_power_ne_mpow_four (q s : Rat) (hq : q ≠ 0) : q^4 ≠ mpow s 4 := by
   intro h

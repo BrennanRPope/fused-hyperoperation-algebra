@@ -49,7 +49,7 @@ theorem fexp_iter_by_moves (a b : Nat) : fexp a (b + 1) = circ a (fexp a b) := b
   extrude
 
 /-- circ_circInv, again (fields): squash the second rod to 1/(1+u); the rectangle
-    has area 1, so the mult-add is 0. -/
+    has area 1, so the circle operation (called mult-add before 1.0) is 0. -/
 theorem inv_by_moves {K : Type} [Field K] (u : K) (h : 1 + u ≠ 0) :
     circ u (circInv u) = 0 := by
   lift

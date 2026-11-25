@@ -29,7 +29,7 @@ theorem yonetani_theorell (k a b : Rat) : (1 + a + b + k * a * b) - 1 = circK k 
 
 -- LIBRARY: exclusive_loewe (Mutually exclusive inhibitors (k = 0): plain addition, Loewe's straight isobole) was an exact twin of InfoFused.shannon_weight and is removed.
 
-/-- Independent inhibitors (k = 1): mult-add, so 1 + (a ◯[1] b) = (1 + a)(1 + b). -/
+/-- Independent inhibitors (k = 1): the circle operation (called mult-add before 1.0), so 1 + (a ◯[1] b) = (1 + a)(1 + b). -/
 theorem independent_lift (a b : Rat) : 1 + circK 1 a b = (1 + a) * (1 + b) := by
   unfold circK; grind
 
@@ -52,7 +52,7 @@ theorem isobole (k a b : Rat) (h : b * (1 + k * a) = 1 - a) : circK k a b = 1 :=
 theorem series_rate (t1 t2 t3 : Rat) (h : t1 + t2 + t3 ≠ 0) : (1 / (t1 + t2 + t3)) * (t1 + t2 + t3) = 1 := by
   grind
 
--- LIBRARY: proofreading (Proofreading: two discrimination stages multiply the odds, so odds − 1 mult-adds) was an exact twin of InfoFused.campbell and is removed.
+-- LIBRARY: proofreading (Proofreading: two discrimination stages multiply the odds, so odds − 1 combines by the circle operation) was an exact twin of InfoFused.campbell and is removed.
 
 /-- Nitrogenase: 6 of 8 electrons reach ammonia, 3/4. -/
 theorem nitrogenase_electrons : 6 * 4 = 3 * (8 : Nat) ∧ 2 * 3 + 2 = (8 : Nat) := by decide

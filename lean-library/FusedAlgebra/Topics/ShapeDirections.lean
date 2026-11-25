@@ -28,10 +28,10 @@
        (zero only at rungs 0 and 1). In jet space the rung adds a direction; the weight does not.
     D. The nome: gluing a ↦ a ◯ (q − 1) commutes with the law for every q and the law descends
        to every quotient, so nothing near 0 can see q. Torsion through the 3-division polynomial:
-       the cusp (addition) has no 3-step loop, the node (mult-add) has two plus the start.
+       the cusp (addition) has no 3-step loop, the node (the circle operation (called mult-add before 1.0)) has two plus the start.
     E. Several waves: a pair weight survives every separate rescaling of the waves. Riemann's
        period matrices (g(g+1)/2 numbers) outnumber curves (3g − 3) exactly from four waves on.
-    F. Whole numbers: the p-fold mult-add power of a + b + k·ab is ≡ 0 mod p when p ∣ k
+    F. Whole numbers: the p-fold circle power of a + b + k·ab is ≡ 0 mod p when p ∣ k
        (additive there) and ≡ x^p otherwise (multiplicative), shown for p = 2, 3, 5.
 -/
 import FusedAlgebra.Base
@@ -49,7 +49,7 @@ theorem star_def (a b : Int) : a ◯ b = a + b + a * b := rfl
 theorem weight_is_units (k l a b : Int) : l * circK (l * k) a b = circK k (l * a) (l * b) := by
   unfold circK; grind
 
-/- (Every nonzero weight is mult-add after a zoom: that is the base's `circK_scale`.) -/
+/- (Every nonzero weight is the circle operation after a zoom: that is the base's `circK_scale`.) -/
 
 /-- The q of the q-integers (and of the Potts colours) is the weight plus one. -/
 theorem qcount_is_weight (q a b : Int) : circK (q - 1) a b = a + b + q * a * b - a * b := by
@@ -159,7 +159,7 @@ theorem lens_jets_at_minus (s : Rat) :
 
 /-- Through third order the rung's discriminant is its height: r₁² − 4r₂ = s.
     So rung s looks, to third order, like the law with one period 2πi/√s
-    (rung 1: 2πi, mult-add; rung 0: no period; rung −1: real period 2π, a circle). -/
+    (rung 1: 2πi, the circle operation; rung 0: no period; rung −1: real period 2π, a circle). -/
 theorem rung_disc_is_height (s : Rat) : s * s - 4 * (s * (s - 1) / 4) = s := by grind
 
 /-- Every point of the landscape plane has rate 1 + p a + q a² exactly, so r₃ = 0 there;
@@ -176,7 +176,7 @@ theorem rung_crossings :
     -(2 * (0 : Rat) - 1) / 12 = 1/12 ∧ -(2 * (1 : Rat) - 1) / 12 = -1/12 := by
   refine ⟨?_, ?_, ?_, ?_⟩ <;> decide +kernel
 
-/-- Jet-space rank at mult-add, coordinates (r₁, r₂, r₃), scaled by 12:
+/-- Jet-space rank at the circle operation, coordinates (r₁, r₂, r₃), scaled by 12:
     zoom (12, 0, 0), weight (12, 0, 0), bend (0, 12, 0), rung (12, 3, −1).
     The weight is the zoom (no new direction); zoom, bend, rung have determinant −144 ≠ 0. -/
 def det3 (a1 a2 a3 b1 b2 b3 c1 c2 c3 : Int) : Int :=
@@ -191,12 +191,12 @@ theorem jet_rank :
 theorem glue_commutes (q a b : Int) : (a ◯ (q - 1)) ◯ b = (a ◯ b) ◯ (q - 1) := by
   unfold circ; grind
 
-/-- Two gluings are one gluing by the product: the gluings form the group q^ℤ (in mult-add form). -/
+/-- Two gluings are one gluing by the product: the gluings form the group q^ℤ (in circle-operation form). -/
 theorem glue_twice (q q' a : Int) : (a ◯ (q - 1)) ◯ (q' - 1) = a ◯ (q * q' - 1) := by
   unfold circ; grind
 
 /-- The law descends to the quotient: glued inputs give a glued output, whatever the gluings.
-    So the torus ℂ*/q^ℤ carries mult-add for every nome, and the nome is invisible near 0. -/
+    So the torus ℂ*/q^ℤ carries the circle operation for every nome, and the nome is invisible near 0. -/
 theorem glue_descends (x y a b : Int) : (a ◯ (x - 1)) ◯ (b ◯ (y - 1)) = (a ◯ b) ◯ (x * y - 1) := by
   unfold circ; grind
 
@@ -208,11 +208,11 @@ def psi3 (a1 a2 x : Rat) : Rat := 3 * x ^ 4 + (a1 * a1 + 4 * a2) * x ^ 3
     the start comes back in three steps. -/
 theorem cusp_psi3 (x : Rat) : psi3 0 0 x = 3 * x ^ 4 := by unfold psi3; grind
 
-/-- Node y² + xy = x³ (mult-add): ψ₃ = x³(3x + 1). Besides the node (x = 0) the root x = −1/3. -/
+/-- Node y² + xy = x³ (the circle operation): ψ₃ = x³(3x + 1). Besides the node (x = 0) the root x = −1/3. -/
 theorem node_psi3 (x : Rat) : psi3 1 0 x = x ^ 3 * (3 * x + 1) := by unfold psi3; grind
 
 /-- At x = −1/3 the node's equation y² + xy − x³ = 0 reads y² − y/3 + 1/27 = 0, whose
-    discriminant 1/9 − 4/27 = −1/27 is not 0: two points. With the start, three: mult-add's
+    discriminant 1/9 − 4/27 = −1/27 is not 0: two points. With the start, three: the circle operation's
     three cube roots of 1. (The Tate torus has nine: see checks.py, 5a.) -/
 theorem node_three_points : (-1/3 : Rat) * (-1/3) - 4 * (-(-1/3 : Rat) ^ 3) = -1/27 ∧ (-1/27 : Rat) ≠ 0 := by
   constructor <;> decide +kernel

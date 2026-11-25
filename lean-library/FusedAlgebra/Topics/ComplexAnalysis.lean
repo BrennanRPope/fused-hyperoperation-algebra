@@ -1,25 +1,25 @@
 /-
-  Fused Hyperoperation Algebra: complex analysis through mult-add.
+  Fused Hyperoperation Algebra: complex analysis through the circle operation (called mult-add before 1.0).
   Core Lean 4 only (no mathlib), no `sorry`. Imports the shared library's Base.
 
   Core Lean has no complex numbers, so a complex number is written out as a record
   ⟨re, im⟩ over any commutative ring (Int gives the Gaussian integers), and the cube
   roots of unity as Eisenstein numbers a + bω with ω² = −1 − ω.
 
-    1. Mult-add on the complex plane is a spin and a stretch about the wall −1:
+    1. The circle operation on the complex plane is a spin and a stretch about the wall −1:
        1 + (z ◯ w) = (1 + w)(1 + z), the step z ↦ z ◯ w is the vector w turned by 1 + z,
        squared distance from the wall multiplies, the circle |1 + z| = 1 is closed.
     2. Affine maps that fix −1 are exactly the maps z ↦ z ◯ c.
-    3. Mult-add roots of 0: if ζⁿ = 1 then (ζ − 1)^(◯n) = 0. Worked: the square n = 4 in
+    3. Circle roots of 0: if ζⁿ = 1 then (ζ − 1)^(◯n) = 0. Worked: the square n = 4 in
        the Gaussian integers and the triangle n = 3 in the Eisenstein integers.
     4. Möbius: the landscape law F(a,b) = (a + b + p·ab)/(1 − q·ab) in projective form.
        Translation matrices compose; det = wall polynomial; tr² − 4·det = a²(p² − 4q);
        the fixed points of every translation are the walls; two walls → multiplication
        (Cayley for the tan law), one double wall → addition.
-    5. Products: a mult-add fold hits the wall iff one piece does (Int), and the fold of
+    5. Products: a circle-operation fold hits the wall iff one piece does (Int), and the fold of
        the pieces is bounded by the fold of their sizes (Rat), the inequality behind
        Weierstrass's convergence test.
-    6. Tate gluing (1 + a) ~ q(1 + a) respects mult-add.
+    6. Tate gluing (1 + a) ~ q(1 + a) respects the circle operation.
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/ComplexAnalysis.lean; merged unchanged; no exact twins.
 -/
 import FusedAlgebra.Base
@@ -54,9 +54,9 @@ def sub (z w : Cx R) : Cx R := ⟨z.re - w.re, z.im - w.im⟩
 def mul (z w : Cx R) : Cx R := ⟨z.re * w.re - z.im * w.im, z.re * w.im + z.im * w.re⟩
 /-- Squared length |z|². -/
 def normSq (z : Cx R) : R := z.re * z.re + z.im * z.im
-/-- Complex mult-add z ◯ w = z + w + zw. -/
+/-- The complex circle operation z ◯ w = z + w + zw. -/
 def ma (z w : Cx R) : Cx R := add (add z w) (mul z w)
-/-- n copies of z under complex mult-add. -/
+/-- n copies of z under the complex circle operation. -/
 def mpowC (z : Cx R) : Nat → Cx R
   | 0 => zero
   | n + 1 => ma (mpowC z n) z
@@ -97,12 +97,12 @@ theorem step_is_turned_w (z w : Cx R) : sub (ma z w) z = mul (add one z) w := by
 theorem normSq_mul (z w : Cx R) : normSq (mul z w) = normSq z * normSq w := by
   simp only [normSq, mul]; grind
 
-/-- Squared distances from the wall multiply under mult-add. -/
+/-- Squared distances from the wall multiply under the circle operation. -/
 theorem wall_distance_mul (z w : Cx R) :
     normSq (add one (ma z w)) = normSq (add one z) * normSq (add one w) := by
   rw [ma_lift, normSq_mul]
 
-/-- The circle |1 + z| = 1 (centre the wall, through 0) is closed under mult-add. -/
+/-- The circle |1 + z| = 1 (centre the wall, through 0) is closed under the circle operation. -/
 theorem circle_closed (z w : Cx R) (hz : normSq (add one z) = 1) (hw : normSq (add one w) = 1) :
     normSq (add one (ma z w)) = 1 := by
   rw [wall_distance_mul, hz, hw]; grind
@@ -115,22 +115,22 @@ theorem circle_equation (z : Cx R) :
 
 /-! ## 2. Affine maps that fix the wall -/
 
-/-- An affine map z ↦ αz + β that fixes −1 is mult-add by α − 1. -/
+/-- An affine map z ↦ αz + β that fixes −1 is the circle operation by α − 1. -/
 theorem affine_fixing_wall (α β z : R) (h : α * (-1) + β = -1) : α * z + β = z ◯ (α - 1) := by
   unfold circ; grind
 
-/-- Composing two of them mult-adds their parameters. -/
+/-- Composing two of them combines their parameters by the circle operation. -/
 theorem affine_compose (z c d : R) : (z ◯ c) ◯ d = z ◯ (c ◯ d) := circ_assoc z c d
 
-/-! ## 3. Mult-add roots of zero -/
+/-! ## 3. Circle roots of zero -/
 
-/-- If ζⁿ = 1 then ζ − 1 is an n-th mult-add root of 0. -/
+/-- If ζⁿ = 1 then ζ − 1 is an n-th circle root of 0. -/
 theorem mroot_of_unity (ζ : R) (n : Nat) (h : ζ ^ n = 1) : mpow (ζ - 1) n = 0 := by
   rw [mpow_eq]
   have e : (1 + (ζ - 1)) = ζ := by grind
   rw [e, h]; grind
 
-/-- n = 4: i − 1 mult-added four times is 0 (any commutative ring). -/
+/-- n = 4: i − 1 combined by the circle operation four times is 0 (any commutative ring). -/
 theorem gauss_root_four : mpowC (⟨-1, 1⟩ : Cx R) 4 = zero := by
   apply Cx.ext' <;> simp only [mpowC, ma, add, mul, zero] <;> grind
 
@@ -139,7 +139,7 @@ theorem gauss_root_steps :
     mpowC (⟨-1, 1⟩ : Cx Int) 2 = ⟨-2, 0⟩ ∧ mpowC (⟨-1, 1⟩ : Cx Int) 3 = ⟨-1, -1⟩ := by
   decide
 
-/-- The four roots of the square mult-add to −2 (even n). -/
+/-- The four roots of the square combine by the circle operation to −2 (even n). -/
 theorem gauss_roots_total :
     ma (ma (ma (zero : Cx Int) ⟨-1, 1⟩) ⟨-2, 0⟩) ⟨-1, -1⟩ = ⟨-2, 0⟩ := by decide
 
@@ -168,12 +168,12 @@ end Eis
 theorem omega_cubed : Eis.mul (Eis.mul (⟨0, 1⟩ : Eis R) ⟨0, 1⟩) ⟨0, 1⟩ = ⟨1, 0⟩ := by
   apply Eis.ext' <;> simp only [Eis.mul] <;> grind
 
-/-- n = 3: ω − 1 mult-added three times is 0. -/
+/-- n = 3: ω − 1 combined by the circle operation three times is 0. -/
 theorem eis_root_three :
     Eis.ma (Eis.ma (⟨-1, 1⟩ : Eis R) ⟨-1, 1⟩) ⟨-1, 1⟩ = Eis.zero := by
   apply Eis.ext' <;> simp only [Eis.ma, Eis.add, Eis.mul, Eis.zero] <;> grind
 
-/-- The three roots 0, ω − 1, ω² − 1 = −2 − ω mult-add to 0 (odd n). -/
+/-- The three roots 0, ω − 1, ω² − 1 = −2 − ω combine by the circle operation to 0 (odd n). -/
 theorem eis_roots_total : Eis.ma (Eis.ma (Eis.zero : Eis R) ⟨-1, 1⟩) ⟨-2, -1⟩ = Eis.zero := by
   apply Eis.ext' <;> simp only [Eis.ma, Eis.add, Eis.mul, Eis.zero] <;> grind
 
@@ -226,7 +226,7 @@ theorem two_walls_lift (r1 r2 a b : R) :
     (D - r1 * N) * ((1 - r2 * a) * (1 - r2 * b)) = ((1 - r1 * a) * (1 - r1 * b)) * (D - r2 * N) := by
   intro N D; simp only [N, D]; grind
 
-/-- Mult-add is the case of one wall at −1 and the other at infinity (r₁ = −1, r₂ = 0). -/
+/-- The circle operation is the case of one wall at −1 and the other at infinity (r₁ = −1, r₂ = 0). -/
 theorem two_walls_circ (a b : R) :
     let N := a + b + (-((-1) + 0)) * a * b
     (1 - (-1) * N) = (1 - (-1) * a) * (1 - (-1) * b) := by
@@ -298,7 +298,7 @@ theorem corner_bound (a b A B : Rat) (ha1 : -A ≤ a) (ha2 : a ≤ A) (hb1 : -B 
   unfold circ
   constructor <;> grind
 
-/-- Sizes are never negative under mult-add of sizes. -/
+/-- Sizes are never negative under the circle operation of sizes. -/
 theorem size_nonneg (A B : Rat) (hA : 0 ≤ A) (hB : 0 ≤ B) : 0 ≤ A ◯ B := by
   have := Rat.mul_nonneg hA hB
   unfold circ; grind
@@ -317,7 +317,7 @@ theorem fold_bound : ∀ (l : List (Rat × Rat)), (∀ x ∈ l, -x.2 ≤ x.1 ∧
 
 /-! ## 6. Tate gluing -/
 
-/-- Gluing (1 + a) ~ q(1 + a) respects mult-add, so the punctured plane folds into a torus. -/
+/-- Gluing (1 + a) ~ q(1 + a) respects the circle operation, so the punctured plane folds into a torus. -/
 theorem tate_glue {R : Type} [Lean.Grind.CommRing R] (q a a' b : R) (h : 1 + a' = q * (1 + a)) :
     1 + (a' ◯ b) = q * (1 + (a ◯ b)) := by
   rw [circ_lift, circ_lift, h]; grind

@@ -12,7 +12,7 @@
   FusedAlgebra.lean, and run ./build.sh.
 
   What is here:
-  1. The dyadic shell is the mult-add cube: doubling a box in n dimensions adds
+  1. The dyadic shell is the circle-operation cube (called mult-add cube before 1.0): doubling a box in n dimensions adds
      2^(nj) · 1^(◯n) new cells, and those new cells fall into the cube's layers
      1..n (how many coordinates doubled).
   2. The fan: every scaling threshold is a ray from the pivot (n, α) = (−2, 0);
@@ -36,9 +36,9 @@ namespace CircleOp.NSContinuum
 
 open CircleOp CircleOp.Cube
 
-/-! ## 1. The dyadic shell is the mult-add cube -/
+/-! ## 1. The dyadic shell is the circle-operation cube -/
 
-/-- Mult-adding 1 to itself n times counts the nonempty corners of the n-cube:
+/-- Combining 1 with itself n times by the circle operation counts the nonempty corners of the n-cube:
     1^(◯n) + 1 = 2ⁿ. -/
 theorem mpow_one_nat (n : Nat) : mpow (1 : Nat) n + 1 = 2 ^ n := by
   induction n with
@@ -52,9 +52,9 @@ theorem mpow_one_nat (n : Nat) : mpow (1 : Nat) n + 1 = 2 ^ n := by
 theorem box_doubles (n j : Nat) : 2 ^ (n * (j + 1)) = 2 ^ (n * j) * 2 ^ n := by
   rw [Nat.mul_succ, Nat.pow_add]
 
-/-- **The dyadic annulus is a mult-add power.** The new cells added when a box of
+/-- **The dyadic annulus is a circle power.** The new cells added when a box of
     side 2ʲ doubles number 2^(nj) · 1^(◯n): the old box times the n-fold
-    mult-add of 1. -/
+    circle operation of 1. -/
 theorem annulus_cells (n j : Nat) :
     2 ^ (n * (j + 1)) - 2 ^ (n * j) = 2 ^ (n * j) * mpow (1 : Nat) n := by
   have h := mpow_one_nat n

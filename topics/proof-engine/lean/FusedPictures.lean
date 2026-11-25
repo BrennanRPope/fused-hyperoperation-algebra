@@ -8,8 +8,8 @@
   ----------
   1. Shape     : a small datatype for pictures (rods, boxes with corner weights, squashes).
   2. Reader    : reads any expression or goal and finds the boxes in it: lifted products
-                 (1+x)(1+y)..., mult-adds a ◯ b ◯ c (a box with its unit removed), the
-                 weighted family (a dialed corner), mult-add powers (a cube of n equal
+                 (1+x)(1+y)..., circle operations (called mult-add before 1.0) a ◯ b ◯ c (a box with its unit removed), the
+                 weighted family (a dialed corner), circle powers (a cube of n equal
                  sides), inverses (a squash onto the hyperbola). The picture is computed
                  from the goal, never drawn by hand per theorem.
   3. Widget    : one inline JavaScript module that draws a Shape as SVG in the infoview
@@ -43,7 +43,7 @@ structure Side where
 /-- A box (1+x₁)(1+x₂)…(1+xₙ): its 2ⁿ pieces are the corners of the n-cube.
     * `weight`: the far corner's weight k (the a + b + k·ab family), if dialed.
     * `power`: the box has this many equal sides (a symbolic count, e.g. "n").
-    * `dropUnit`: the unit cube is removed (a mult-add, as opposed to a product).
+    * `dropUnit`: the unit cube is removed (a circle operation, as opposed to a product).
     * `cut`: how the box was built, e.g. "((0 1) 2)" = slabs, "(0 (1 2))" = columns.
     * `any`: a list of rods, so any number of sides. -/
 structure Box where
@@ -178,7 +178,7 @@ mutual
 /-- Read one expression as a picture. -/
 partial def read (e0 : Expr) : ReadM Shape := do
   let e := (← instantiateMVars e0).consumeMData
-  -- mult-add a ◯ b ◯ ...: a box with its unit removed
+  -- the circle operation a ◯ b ◯ ...: a box with its unit removed
   if (maOp? e).isSome then
     let (ls, cut) := flattenOp maOp? e 0
     return .box { sides := ← ls.mapM sideOf, cut }
@@ -191,7 +191,7 @@ partial def read (e0 : Expr) : ReadM Shape := do
         let bs := lastArgs x 3; some (bs[1]!, bs[2]!) else none
     let (ls, cut) := flattenOp wOp e 0
     return .box { sides := ← ls.mapM sideOf, cut, weight := some (toString (← ppExpr k)) }
-  -- mult-add power a^(◯n): a cube of n equal sides, unit removed
+  -- circle power a^(◯n): a cube of n equal sides, unit removed
   if constIs e ``CircleOp.mpow then
     let as := lastArgs e 2
     return .box { sides := #[← sideOf as[0]!], power := some (toString (← ppExpr as[1]!)) }
@@ -202,7 +202,7 @@ partial def read (e0 : Expr) : ReadM Shape := do
   -- a fold over a list: a box with any number of sides
   if constIs e ``CircleOp.foldCirc then
     return .box { sides := #[← sideOf (lastArgs e 1)[0]!], any := true }
-  -- the inverse and mult-add subtraction: a squash onto the hyperbola
+  -- the inverse and circle-operation subtraction: a squash onto the hyperbola
   if constIs e ``CircleOp.circInv then
     return .squash (← read (lastArgs e 1)[0]!)
   if constIs e ``CircleOp.msub then
@@ -255,7 +255,7 @@ partial def liftedPow? (e : Expr) : Bool :=
   constIs e ``HPow.hPow && e.getAppNumArgs == 6 && (asLifted? (e.getArg! 4)).isSome
 
 /-- A factor of a lifted product: (1 + x) gives one side; (1 + a ◯ b) gives all of the
-    box's sides, so nested mult-adds merge into one box. -/
+    box's sides, so nested circle operations merge into one box. -/
 partial def readFactor (f : Expr) : ReadM Shape := do
   match asLifted? f with
   | some x =>
@@ -399,7 +399,7 @@ syntax (name := liftMove) "lift" : tactic
                ← `(tactic| apply CircleOp.lift_inj)]
   showGoal stx "lift"
 
-/-- `multadd`: open every lifted mult-add into its box, (1 + a ◯ b) ↦ (1 + a)(1 + b).
+/-- `multadd`: open every lifted circle operation into its box, (1 + a ◯ b) ↦ (1 + a)(1 + b).
     Uses the library's lift lemmas only. -/
 syntax (name := multaddMove) "multadd" : tactic
 @[tactic multaddMove] def evalMultadd : Tactic := fun stx => do
@@ -444,8 +444,8 @@ syntax (name := squashMove) "squash" (ppSpace colGt term:max)* : tactic
   evalTactic (← `(tactic| try rw [Lean.Grind.Field.mul_inv_cancel (by assumption)]))
   showGoal stx "squash"
 
-/-- `dial`: weight the far corner. k·(a ◯[k] b) is the plain mult-add of ka and kb;
-    weight 1 is mult-add, weight 0 is plain addition. -/
+/-- `dial`: weight the far corner. k·(a ◯[k] b) is the plain circle operation of ka and kb;
+    weight 1 is the circle operation, weight 0 is plain addition. -/
 syntax (name := dialMove) "dial" : tactic
 @[tactic dialMove] def evalDial : Tactic := fun stx => do
   tryRewrites [← `(tactic| rw [CircleOp.circK_scale]), ← `(tactic| rw [CircleOp.circK_one]),

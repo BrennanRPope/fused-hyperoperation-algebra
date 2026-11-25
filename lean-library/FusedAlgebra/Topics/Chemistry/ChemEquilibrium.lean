@@ -9,7 +9,7 @@
   A symmetric diacid has ω = 4·10^(−ΔpKa).
   For two equal sites the binding polynomial 1 + 2x + ωx² has real zeros
   exactly when ω ≤ 1 (discriminant 4 − 4ω), so positive cooperativity and
-  zeros off the real axis begin together at the mult-add setting ω = 1.
+  zeros off the real axis begin together at the circle-operation setting (called mult-add setting before 1.0) ω = 1.
   Folding the dial over n sites gives 1 + ((1 + kx)^n − 1)/k, the MWC model
   with binding only to the relaxed state and L = k − 1.
 

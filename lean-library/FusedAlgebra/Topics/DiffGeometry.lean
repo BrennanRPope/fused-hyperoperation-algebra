@@ -1,5 +1,5 @@
 /-
-  Fused Hyperoperation Algebra: differential geometry through mult-add.
+  Fused Hyperoperation Algebra: differential geometry through the circle operation (called mult-add before 1.0).
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library's Base.
 
   Intended library path: FusedAlgebra/Topics/DiffGeometry.lean (imports only FusedAlgebra.Base).
@@ -13,11 +13,11 @@
        F(0, q). At q = −1 it takes the Poincaré radius to the Klein radius, at q = 1 the
        stereographic radius to the gnomonic one.
     3. Curvature from a landscape point: 4q − p² is unchanged by every chart change of the line,
-       so K_proj = (4q − p²)/4 and K_conf = 4q − p² are well defined. Mult-add gives −1/4 and −1,
+       so K_proj = (4q − p²)/4 and K_conf = 4q − p² are well defined. The circle operation gives −1/4 and −1,
        the dial gives −k²/4 and −k², velocity addition gives −1/c² in the Klein chart.
     4. The walls are the absolute: the cross-ratio of (0, x) with the walls is the lens
        (1 − vx)/(1 − ux), and it multiplies under the law.
-    5. Mult-add in the upper half plane: height y = 1 + x, translations are dilations of the
+    5. The circle operation in the upper half plane: height y = 1 + x, translations are dilations of the
        half plane (isometries of (dx² + dy²)/y²), and the wall x = −1 is the horizon y = 0.
     6. Einstein and Möbius additions agree on a line: both are (a + b)/(1 + ab).
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/DiffGeometry.lean; one exact twin removed (see the LIBRARY comment).
@@ -122,7 +122,7 @@ theorem curv_chart_free (p q c : Int) : curv4 (p + 2 * c) (q + p * c + c * c) = 
 theorem curv_scale (p q l : Int) : curv4 (l * p) (l * l * q) = l * l * curv4 p q := by
   simp only [curv4]; grind
 
-/-- Mult-add: conformal curvature −1 (the half plane), projective curvature −1/4. -/
+/-- The circle operation: conformal curvature −1 (the half plane), projective curvature −1/4. -/
 theorem circ_curv : curv4 1 0 = -1 := by decide
 
 /-- The dial line: curvature −k², flat only at k = 0. -/
@@ -181,7 +181,7 @@ theorem cr_den (P Q u x : Int) (hu : u * P = 1) : Q * (x - P) = -(P * Q) * (1 - 
 theorem lens_factor (u v a b : Int) :
     1 - (u * v) * a * b - v * (a + b + (-(u + v)) * a * b) = (1 - v * a) * (1 - v * b) := by grind
 
-/-! ## 5. Mult-add in the upper half plane -/
+/-! ## 5. The circle operation in the upper half plane -/
 
 -- LIBRARY: halfplane_dilation (with height y = 1 + x, translation by a is dilation by 1 + a) was an exact twin of EllipticS3.circ_is_1x1 and is removed.
 

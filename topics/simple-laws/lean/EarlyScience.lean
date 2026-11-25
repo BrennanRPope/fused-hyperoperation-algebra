@@ -5,8 +5,8 @@
   Two kinds of law:
     * combination laws (two things of one kind make one thing of that kind) get a point (k, q);
     * product laws (y = c·x^m·z^n: Ohm, Newton's F = ma, Boyle, Kepler III, gravity) are not
-      points. They are mult-add itself, read on percent changes: every product law makes
-      percent changes combine by mult-add, and its exponents are mult-add powers.
+      points. They are the circle operation (called mult-add before 1.0) itself, read on percent changes: every product law makes
+      percent changes combine by the circle operation, and its exponents are circle powers.
 -/
 import FusedAlgebra.Base
 
@@ -16,14 +16,14 @@ open CircleOp
 /-! ## Counting -/
 
 /-- non-empty choices: a set of m things has 2^m − 1 non-empty subsets; joining two separate
-    sets combines those counts by mult-add (pick from either, or both, but not nothing) -/
+    sets combines those counts by the circle operation (pick from either, or both, but not nothing) -/
 theorem nonempty_subsets (m n : Nat) :
     circ ((2 : Int) ^ m - 1) ((2 : Int) ^ n - 1) = (2 : Int) ^ (m + n) - 1 := by
   unfold circ; rw [pow_add']; grind
 
 /-! ## Measurement -/
 
-/-- relative errors in a product combine by mult-add, exactly (the textbook rule "they add"
+/-- relative errors in a product combine by the circle operation, exactly (the textbook rule "they add"
     is the k = 0 shadow that drops the corner e₁e₂) -/
 theorem product_error (x y e1 e2 : Int) :
     (x * (1 + e1)) * (y * (1 + e2)) = (x * y) * (1 + circ e1 e2) := by
@@ -49,7 +49,7 @@ theorem constant_product (P V a b : Int) (hPV : P * V ≠ 0) :
     · exact h1
   · intro h; rw [h]; grind
 
-/-- on a field the partner change is the mult-add inverse −a/(1 + a) -/
+/-- on a field the partner change is the circle inverse −a/(1 + a) -/
 theorem boyle_partner {K : Type} [Lean.Grind.Field K] (a b : K) (ha : 1 + a ≠ 0)
     (h : circ a b = 0) : b = circInv a := by
   have h1 : b * (1 + a) = -a := by unfold circ at h; grind
@@ -64,7 +64,7 @@ theorem boyle_gain_loss (a b d1 d2 : Int) (h1 : (1 + a) * (1 - d1) = 1) (h2 : (1
   have : (1 + a) * (1 + b) * (1 - (1 - (1 - d1) * (1 - d2))) = ((1 + a) * (1 - d1)) * ((1 + b) * (1 - d2)) := by grind
   rw [this, h1, h2]; grind
 
-/-! ## Kepler's third law and Newton's inverse square: mult-add powers -/
+/-! ## Kepler's third law and Newton's inverse square: circle powers -/
 
 /-- T² ∝ a³ on percent changes: (1 + t)² = (1 + α)³ is t ◯ t = α ◯ α ◯ α
     (the square's gnomon equals the cube's layers) -/
@@ -75,7 +75,7 @@ theorem kepler_third (t α : Int) :
 /-- four times as far out, eight times as long a year -/
 example : (1 + 7) * (1 + 7) = (1 + 3) * (1 + 3) * (1 + 3) := by decide
 
-/-- gravity: when the distance grows by ρ the force changes by the mult-add inverse of ρ ◯ ρ -/
+/-- gravity: when the distance grows by ρ the force changes by the circle inverse of ρ ◯ ρ -/
 theorem inverse_square {K : Type} [Lean.Grind.Field K] (ρ : K) (h : 1 + circ ρ ρ ≠ 0) :
     ((1 + ρ) * (1 + ρ))⁻¹ = 1 + circInv (circ ρ ρ) := by
   rw [← circ_lift]; exact inv_one_add _ h
@@ -86,7 +86,7 @@ theorem inverse_square {K : Type} [Lean.Grind.Field K] (ρ : K) (h : 1 + circ ρ
     1 − (1 − a)ⁿ, the union-of-failures power -/
 theorem cooling (a : Int) (n : Nat) : wpow (-1) a n = 1 - (1 - a) ^ n := wpow_neg_one a n
 
-/-! ## Optics: lenses in contact add; lenses apart are weighted mult-add with k = −d -/
+/-! ## Optics: lenses in contact add; lenses apart are the circle operation with k = −d -/
 
 /-- a 2×2 ray matrix [[A, B], [C, D]] -/
 structure Ray where
@@ -106,7 +106,7 @@ def gap (d : Int) : Ray := ⟨1, d, 0, 1⟩
 theorem lenses_in_contact (P1 P2 : Int) : ((lens P2).mul (lens P1)).C = -(P1 + P2) := by
   simp only [Ray.mul, lens]; grind
 
-/-- two lenses a distance d apart: total power P₁ + P₂ − d·P₁P₂, weighted mult-add at k = −d -/
+/-- two lenses a distance d apart: total power P₁ + P₂ − d·P₁P₂, the circle operation at k = −d -/
 theorem lenses_apart (P1 d P2 : Int) :
     ((lens P2).mul ((gap d).mul (lens P1))).C = -(circK (-d) P1 P2) := by
   simp only [Ray.mul, lens, gap, circK]; grind

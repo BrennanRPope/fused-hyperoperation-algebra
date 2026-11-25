@@ -1,5 +1,5 @@
 /-
-  Graph theory through mult-add
+  Graph theory through the circle operation (called mult-add before 1.0)
   =============================
 
   Companion page: ../index.html.  Numbers: ../checks.py.
@@ -9,21 +9,21 @@
   and the Ali–Mikhail–Haq copula `amh`.
 
   1. Potts / random-cluster bonds (edge weight v, Q colours). Two bonds in parallel
-     join with weight v₁ ◯ v₂ (mult-add); two in series with v₁v₂/(Q + v₁ + v₂).
+     join with weight v₁ ◯ v₂ (the circle operation); two in series with v₁v₂/(Q + v₁ + v₂).
      In the transmissivity t = v/(Q + v): series multiplies, t = t₁t₂, and parallel
      is the landscape law F_{Q−2, 1−Q}, on the "or" line k + q = −1. Q = 1 is the
      failure union (reliability), Q = 2 velocity addition (Ising, tanh), and the
      law is AMH union with θ = 1 − Q. Walls: a perfect bond t = 1, and the proper
      colouring bond v = −1, t = −1/(Q − 1).
   2. Two-terminal reliability: series ×, parallel ◯₋₁; the failure side swaps them;
-     in odds-against coordinates series is plain mult-add. The Wheatstone bridge
+     in odds-against coordinates series is the plain circle operation. The Wheatstone bridge
      by pivoting.
   3. The diamond hierarchical lattice: the dial pair iterated. Percolation fixed
      point is the golden ratio (√5 − 1)/2; Ising's solves t³ + t² + t = 1; Q = 3's is 1/2.
   4. Products: closed adjacency (A + I) of the strong product is the Kronecker
-     product, so entries, degrees and the count 2m + n follow mult-add; edge counts
+     product, so entries, degrees and the count 2m + n follow the circle operation; edge counts
      of P₃ ⊠ P₃ and C₄ ⊠ C₄ by computation.
-  5. Independence polynomials: disjoint union mult-adds I − 1, join adds it;
+  5. Independence polynomials: disjoint union combines I − 1 by the circle operation, join adds it;
      checked on C₄ = K̄₂ + K̄₂ by brute force over vertex subsets.
 
   Classical sources: Moore and Shannon 1956; Fortuin and Kasteleyn 1972; Sokal 2005;
@@ -41,7 +41,7 @@ open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
-/-! # 1. Potts bonds: parallel mult-adds, series multiplies transmissivity -/
+/-! # 1. Potts bonds: parallel combines by the circle operation, series multiplies transmissivity -/
 
 /-- Two parallel bonds join their ends with weight v₁ + v₂ + v₁v₂: one, the other, or both. -/
 theorem parallel_join (v₁ v₂ : Rat) : v₁ + v₂ + v₁ * v₂ = v₁ ◯ v₂ := rfl
@@ -139,7 +139,7 @@ theorem colouring_wall_absorbs (Q a : Rat) (h : Q - 1 ≠ 0)
   rw [e] at hd ⊢
   grind
 
-/-- In weights, the colouring bond is mult-add's own wall −1. -/
+/-- In weights, the colouring bond is the circle operation's own wall −1. -/
 theorem colouring_is_wall (v : Rat) : (-1) ◯ v = -1 := neg_one_absorbs v
 
 /-! # 2. Two-terminal reliability: the dial pair (×, ◯₋₁) -/
@@ -151,7 +151,7 @@ theorem parallel_rel (p₁ p₂ : Rat) : circK (-1) p₁ p₂ = 1 - (1 - p₁) *
 theorem series_fails (p₁ p₂ : Rat) : 1 - p₁ * p₂ = circK (-1) (1 - p₁) (1 - p₂) := by
   unfold circK; grind
 
-/-- In odds against, u = 1/p − 1, series is plain mult-add. -/
+/-- In odds against, u = 1/p − 1, series is the plain circle operation. -/
 theorem series_odds (p₁ p₂ : Rat) (h1 : p₁ ≠ 0) (h2 : p₂ ≠ 0) :
     1 / (p₁ * p₂) - 1 = (1 / p₁ - 1) ◯ (1 / p₂ - 1) := by
   unfold circ; grind
@@ -207,7 +207,7 @@ theorem ising_fixed (t : Rat) (h : t * t * t + t * t + t = 1) : diamondQ 2 t = t
 theorem three_state_fixed : diamondQ 3 (1 / 2) = 1 / 2 := by
   unfold diamondQ lens; grind
 
-/-! # 4. Products: the strong product is the Kronecker mult-add -/
+/-! # 4. Products: the strong product is the Kronecker circle operation -/
 
 /-- Closed adjacency entries multiply: (a + i)(b + j) − i·j = a·j + i·b + a·b. With
     i = j = 1 (same vertex in both) this is a ◯ b; the three terms are the Cartesian
@@ -246,9 +246,9 @@ theorem c4_strong_c4 : edgeCount (strong (cycle 4) (cycle 4)) = 4 * 4 + 4 * 4 + 
 
 theorem c5_strong_p2 : edgeCount (strong (cycle 5) (path 2)) = 5 * 1 + 2 * 5 + 2 * 5 * 1 := by decide
 
-/-! # 5. Independence polynomials: union mult-adds, join adds -/
+/-! # 5. Independence polynomials: union combines by the circle operation, join adds -/
 
-/-- Disjoint union multiplies independence polynomials, so I − 1 mult-adds. -/
+/-- Disjoint union multiplies independence polynomials, so I − 1 combines by the circle operation. -/
 theorem union_circ (IG IH : Int) : IG * IH - 1 = (IG - 1) ◯ (IH - 1) := by
   unfold circ; grind
 

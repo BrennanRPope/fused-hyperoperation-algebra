@@ -1,5 +1,5 @@
 /-
-  Measure theory and probability through mult-add
+  Measure theory and probability through the circle operation (called mult-add before 1.0)
   ===============================================
 
   Companion page: ../index.html.  Numbers: ../checks.py.
@@ -9,12 +9,12 @@
   1. Sugeno λ-measures (Sugeno 1974).  A finite set of atoms with densities gᵢ;
      μ(A) is the dial fold of A's densities with weight k = λ.  Disjoint union is
      ◯ₖ, the lift 1 + λμ multiplies, and the Möbius masses are the corners of the
-     mult-add cube, λ^(|S|−1)·∏g_S.
+     circle-operation cube, λ^(|S|−1)·∏g_S.
   2. Inclusion–exclusion becomes multiplication; duality μ*(A) = 1 − μ(Aᶜ) is a
-     λ*-measure with λ* = the mult-add inverse of λ; m equal atoms give a q-number.
+     λ*-measure with λ* = the circle inverse of λ; m equal atoms give a q-number.
   3. The wall: values below the wall −1/k stay below it, so for k ≤ −1 no set
      of such atoms can have measure 1 (this is why Sugeno needs λ > −1).
-  4. Odds of an independent "or" mult-add; odds-against of an "and" mult-add.
+  4. Odds of an independent "or" combine by the circle operation; odds-against of an "and" combine by the circle operation.
   5. Expectation passes through the dial for independent variables; for
      dependent ones the gap is k·Cov.  Multiplicative martingales.
   6. Yor's formula, discrete: stochastic exponentials multiply step by step
@@ -51,7 +51,7 @@ theorem lam_lift (k : Rat) (l : List Rat) : 1 + k * lam k l = prodL (l.map (fun 
   | nil => simp only [lam, List.map, prodL]; grind
   | cons g l ih => simp only [lam, List.map, prodL]; rw [circK_lift, ih]
 
-/-- λ·μ is plain mult-add of the scaled densities λ·gᵢ. -/
+/-- λ·μ is the plain circle operation of the scaled densities λ·gᵢ. -/
 theorem lam_scale (k : Rat) (l : List Rat) : k * lam k l = foldCirc (l.map (fun g => k * g)) := by
   induction l with
   | nil => simp only [lam, List.map, foldCirc]; grind
@@ -236,7 +236,7 @@ theorem odds_lift (p : Rat) (hp : p ≠ 1) : 1 + odds p = 1 / (1 - p) := by
   unfold odds; have : (1 : Rat) - p ≠ 0 := by grind
   grind
 
-/-- Odds of an independent "or" mult-add: odds(p ◯₋₁ q) = odds p ◯ odds q. -/
+/-- Odds of an independent "or" combine by the circle operation: odds(p ◯₋₁ q) = odds p ◯ odds q. -/
 theorem odds_or (p q : Rat) (hp : p ≠ 1) (hq : q ≠ 1) :
     odds (circK (-1) p q) = odds p ◯ odds q := by
   unfold odds circ circK
@@ -247,14 +247,14 @@ theorem odds_or (p q : Rat) (hp : p ≠ 1) (hq : q ≠ 1) :
   have h3 : (1 - p) * (1 - q) ≠ 0 := by grind
   grind
 
-/-- Odds against an independent "and" mult-add. -/
+/-- Odds against an independent "and" combine by the circle operation. -/
 theorem against_and (p q : Rat) (hp : p ≠ 0) (hq : q ≠ 0) :
     against (p * q) = against p ◯ against q := by
   unfold against circ
   have h3 : p * q ≠ 0 := by grind
   grind
 
-/-- Three independent events: the odds of "any" is the three-way mult-add. -/
+/-- Three independent events: the odds of "any" is the three-way circle operation. -/
 theorem odds_or_three (p q r : Rat) (hp : p ≠ 1) (hq : q ≠ 1) (hr : r ≠ 1) :
     odds (circK (-1) (circK (-1) p q) r) = odds p ◯ odds q ◯ odds r := by
   have hpq : circK (-1) p q ≠ 1 := by
@@ -369,7 +369,7 @@ theorem yor (xs ys : List Rat) (h : xs.length = ys.length) :
 /-- One step: the increment of X + Y + [X, Y] is exactly Δx ◯ Δy. -/
 theorem yor_step (dx dy : Rat) : (1 + dx) * (1 + dy) = 1 + (dx + dy + dx * dy) := by grind
 
-/-- The self-bracket: one step of ℰ(x) against its own mult-add inverse is flat. -/
+/-- The self-bracket: one step of ℰ(x) against its own circle inverse is flat. -/
 theorem sexp_inverse (dx : Rat) (h : 1 + dx ≠ 0) : dx ◯ circInv dx = 0 :=
   circ_circInv dx h
 

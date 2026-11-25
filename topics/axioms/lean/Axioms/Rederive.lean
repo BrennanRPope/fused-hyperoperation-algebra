@@ -3,14 +3,14 @@
   ====================================================================
 
   1. Every library theorem stated for any commutative semiring, ring or field
-     is re-derived for an arbitrary MA-ring (or MA-field, for the field ones):
+     is re-derived for an arbitrary circle-operation ring (called MA-ring before 1.0) (or circle-operation field, for the field ones):
      its hypotheses are now consequences of M1–M4 (+ F1–F2). The command
      `#rederive` below makes one new theorem `CircFound.Rederived.<name>` for
      each, and Lean's kernel checks it. The ones stated for commutative
      semirings are also re-derived for any model of the fused Peano axioms.
 
   2. In both settings the library's `circ` (a + b + ab with the derived
-     + and ×) is the primitive mult-add (`circ_eq_field`, `circ_eq_field'`),
+     + and ×) is the primitive circle operation (`circ_eq_field`, `circ_eq_field'`),
      so these are theorems about the primitive.
 
   3. The rung laws of `FusedAlgebra.Rungs` are restated for an arbitrary model
@@ -176,7 +176,7 @@ theorem ftet_zero_left (y : N) : ladN 4 zero y = zero := by
 theorem fpent_zero_left (y : N) : ladN 5 zero y = zero := by
   rw [← toN_fromN y]; lift_rungs; rw [_root_.CircleOp.fpent_zero_left]
 
-/-- Rung 3 distributes over mult-add (library: `fexp_circ_right`). -/
+/-- Rung 3 distributes over the circle operation (library: `fexp_circ_right`). -/
 theorem fexp_circ_right (x y z : N) :
     ladN 3 (circ x y) z = circ (ladN 3 x z) (ladN 3 y z) := by
   rw [← toN_fromN x, ← toN_fromN y, ← toN_fromN z]; lift_rungs; rw [_root_.CircleOp.fexp_circ_right]

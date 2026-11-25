@@ -10,7 +10,7 @@
   k = 1 is "at most once" (1 + x, subsets), k = 0 is e^x (classical),
   k = −1 is "any number of times" (1/(1 − x), multisets).
 
-  1. Atoms compose by the weighted mult-add: if 1 + ka = A and 1 + kb = B then
+  1. Atoms compose by the circle operation (called weighted mult-add before 1.0) with dial k: if 1 + ka = A and 1 + kb = B then
      1 + k(a ◯[k] b) = AB (`atoms_compose`). Read through the k-log (Z^k − 1)/k,
      every atom's value is its own weight x, for every k.
   2. The coefficient of xⁿ in Z_k is cellCoeff k n = ∏_{j<n}(1 − jk)/n!, a
@@ -42,7 +42,7 @@ open Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-/-! ## 1. Atoms compose by the weighted mult-add -/
+/-! ## 1. Atoms compose by the circle operation with dial k -/
 
 section Compose
 variable {R : Type} [Lean.Grind.CommRing R]

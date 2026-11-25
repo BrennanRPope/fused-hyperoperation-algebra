@@ -56,7 +56,7 @@ open Mat2
 /-! ## A. The dial gas -/
 
 /-- One edge of the dial gas: the two-site lattice gas with pair weight k is the lift of
-    the weighted mult-add of the two fugacities. -/
+    the two fugacities combined by the circle operation (called weighted mult-add before 1.0) with dial k. -/
 theorem edge_gas (k x y : R) : 1 + circK k x y = 1 + x + y + k * x * y := by
   unfold circK; grind
 
@@ -256,8 +256,8 @@ theorem pottsRing_lift {K : Type} [Lean.Grind.Field K] (Q v t : K) (n : Nat)
     | succ m ih => grind
   rw [hp]; grind
 
-/-- Two separate rings together: their weights multiply, which in the lift is the weighted
-    mult-add of the two tⁿ, at the dial k = Q − 1. -/
+/-- Two separate rings together: their weights multiply, which in the lift is the circle
+    operation of the two tⁿ, at the dial k = Q − 1. -/
 theorem two_rings (Q t A B : R) (n m : Nat) :
     (A * (1 + (Q - 1) * t ^ n)) * (B * (1 + (Q - 1) * t ^ m))
       = (A * B) * (1 + (Q - 1) * circK (Q - 1) (t ^ n) (t ^ m)) := by
@@ -299,7 +299,7 @@ theorem one_pow' (n : Nat) : (1 : R) ^ n = 1 := by
     have : (1 : R) ^ (n + 1) = 1 ^ n * 1 := by grind
     rw [this, ih]; grind
 
-/-- q = 2 (mult-add, k = 1) is a zero exactly for odd rings. -/
+/-- q = 2 (the circle operation, k = 1) is a zero exactly for odd rings. -/
 theorem ring_zero_at_q2_odd (m : Nat) : pottsRing (2 : R) (-1) (2 * m + 1) = 0 := by
   unfold pottsRing
   have h1 : ((2 : R) + -1) = 1 := by grind

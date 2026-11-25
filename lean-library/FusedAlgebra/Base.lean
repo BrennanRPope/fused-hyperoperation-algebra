@@ -5,9 +5,9 @@
   Every topic module imports this file, so each law is proved once.
   Core Lean 4 only (no mathlib, no `sorry`). Written for Lean 4.37.
 
-  Mult-add:            a ◯ b = a + b + a·b = (1 + a)(1 + b) − 1
+  The circle operation (called mult-add before 1.0):  a ◯ b = a + b + a·b = (1 + a)(1 + b) − 1
   Weighted family:     a ◯[k] b = a + b + k·a·b,  1 + k(a ◯[k] b) = (1 + ka)(1 + kb)
-  Mult-add power:      a^(◯n) = (1 + a)^n − 1
+  Circle power:        a^(◯n) = (1 + a)^n − 1
   Way back (inverse):  a ◯ (−a/(1 + a)) = 0, everywhere but the wall a = −1
 
   The laws are stated once for any commutative semiring (so they hold on
@@ -21,7 +21,7 @@ open Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-/-! ## 1. Mult-add on any commutative semiring -/
+/-! ## 1. The circle operation on any commutative semiring -/
 
 section Semiring
 variable {R : Type} [CommSemiring R]
@@ -33,7 +33,7 @@ def circ (a b : R) : R := a + b + a * b
 
 theorem circ_def (a b : R) : circ a b = a + b + a * b := rfl
 
-/-- The lift: mult-add is multiplication seen through x ↦ 1 + x. -/
+/-- The lift: the circle operation is multiplication seen through x ↦ 1 + x. -/
 theorem circ_lift (a b : R) : 1 + circ a b = (1 + a) * (1 + b) := by
   unfold circ; grind
 
@@ -48,14 +48,14 @@ theorem circ_assoc (a b c : R) :
     circ (circ a b) c = circ a (circ b c) := by
   unfold circ; grind
 
-/-- 0 is the identity of mult-add (because 1 is the identity of ×). -/
+/-- 0 is the identity of the circle operation (because 1 is the identity of ×). -/
 theorem circ_zero (a : R) : circ a 0 = a := by
   unfold circ; grind
 
 theorem zero_circ (a : R) : circ 0 a = a := by
   unfold circ; grind
 
-/-- Mult-add is never less than its two pieces added: the corner a·b is extra. -/
+/-- The circle operation is never less than its two pieces added: the corner a·b is extra. -/
 theorem circ_excess (a b : R) : circ a b = (a + b) + a * b := rfl
 
 /-! ### The weighted family a ◯[k] b = a + b + k·a·b -/
@@ -71,7 +71,7 @@ theorem circK_def (k a b : R) : circK k a b = a + b + k * a * b := rfl
 theorem circK_lift (k a b : R) : 1 + k * circK k a b = (1 + k * a) * (1 + k * b) := by
   unfold circK; grind
 
-/-- Weighted mult-add is plain mult-add seen through x ↦ k·x. -/
+/-- The circle operation with dial k is the plain circle operation seen through x ↦ k·x. -/
 theorem circK_scale (k a b : R) : k * circK k a b = circ (k * a) (k * b) := by
   unfold circK circ; grind
 
@@ -88,7 +88,7 @@ theorem circK_zero (k a : R) : circK k a 0 = a := by
 theorem circK_weight_zero (a b : R) : circK 0 a b = a + b := by
   unfold circK; grind
 
-/-- k = 1: plain mult-add. -/
+/-- k = 1: the plain circle operation. -/
 theorem circK_one (a b : R) : circK 1 a b = circ a b := by
   unfold circK circ; grind
 
@@ -145,7 +145,7 @@ theorem one_pow' (n : Nat) : (1 : R) ^ n = 1 := by
 
 /-! ### Powers: a ◯ a ◯ … ◯ a climbs the cube -/
 
-/-- The mult-add power a^(◯n): n copies of a, mult-added. -/
+/-- The circle power a^(◯n): n copies of a, combined by the circle operation. -/
 def mpow (a : R) : Nat → R
   | 0 => 0
   | n + 1 => circ (mpow a n) a
@@ -180,7 +180,7 @@ theorem wpow_one (a : R) (n : Nat) : wpow 1 a n = mpow a n := by
 
 /-! ### Lists: x₁ ◯ x₂ ◯ … ◯ xₙ -/
 
-/-- The mult-add of a list. -/
+/-- The circle operation of a list. -/
 def foldCirc : List R → R
   | [] => 0
   | a :: l => circ a (foldCirc l)
@@ -254,7 +254,7 @@ end Semiring
 section Ring
 variable {R : Type} [CommRing R]
 
-/-- The wall: −1 absorbs everything mult-added to it. -/
+/-- The wall: −1 absorbs everything combined with it by the circle operation. -/
 theorem neg_one_absorbs (b : R) : circ (-1) b = -1 := by
   unfold circ; grind
 
@@ -267,7 +267,7 @@ theorem mpow_eq (a : R) (n : Nat) : mpow a n = (1 + a) ^ n - 1 := by
 theorem circK_either (a b : R) : circK (-1) a b = 1 - (1 - a) * (1 - b) := by
   unfold circK; grind
 
-/-- k = −1 is mult-add mirrored: a ◯[−1] b = −((−a) ◯ (−b)). -/
+/-- k = −1 is circle-operation mirrored: a ◯[−1] b = −((−a) ◯ (−b)). -/
 theorem circK_neg_one_mirror (a b : R) : circK (-1) a b = -(circ (-a) (-b)) := by
   unfold circK circ; grind
 
@@ -288,7 +288,7 @@ end Ring
 section Field
 variable {K : Type} [Field K]
 
-/-- The mult-add inverse: −u/(1 + u). -/
+/-- The circle inverse: −u/(1 + u). -/
 def circInv (u : K) : K := -u / (1 + u)
 
 /-- Everywhere but the wall there is an exact way back. -/
@@ -302,14 +302,14 @@ theorem circInv_circ (u : K) (h : 1 + u ≠ 0) : circ (circInv u) u = 0 := by
 theorem inv_one_add (u : K) (h : 1 + u ≠ 0) : (1 + u)⁻¹ = 1 + circInv u := by
   unfold circInv; grind
 
-/-- At the wall there is none: nothing mult-adds with −1 to give 0. -/
+/-- At the wall there is none: nothing combines by the circle operation with −1 to give 0. -/
 theorem no_circInv_at_wall (v : K) : circ (-1) v ≠ 0 := by
   unfold circ; grind
 
-/-- Mult-add subtraction: a ⊟ b = (a − b)/(1 + b). -/
+/-- Circle-operation subtraction: a ⊟ b = (a − b)/(1 + b). -/
 def msub (a b : K) : K := (a - b) / (1 + b)
 
-/-- Subtraction undoes mult-add (Fisher's rule for real rates). -/
+/-- Subtraction undoes the circle operation (Fisher's rule for real rates). -/
 theorem msub_circ (a b : K) (h : 1 + b ≠ 0) : circ (msub a b) b = a := by
   unfold circ msub; grind
 

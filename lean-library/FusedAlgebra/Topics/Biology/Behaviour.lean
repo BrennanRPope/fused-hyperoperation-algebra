@@ -63,7 +63,7 @@ end Ring
 section Field
 variable {K : Type} [Lean.Grind.Field K]
 
-/-- The hyperbolic discount factor is minus the mult-add inverse of the interest. -/
+/-- The hyperbolic discount factor is minus the circle inverse (called mult-add inverse before 1.0) of the interest. -/
 theorem hyperbolic_factor (k D : K) (h : 1 + k * D ≠ 0) : 1 / (1 + k * D) = 1 + circInv (k * D) := by
   unfold circInv
   have i := Lean.Grind.Field.inv_mul_cancel h

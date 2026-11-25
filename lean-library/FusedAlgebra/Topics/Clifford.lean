@@ -1,5 +1,5 @@
 /-
-  Fused Hyperoperation Algebra: W. K. Clifford's work, piece by piece, against mult-add.
+  Fused Hyperoperation Algebra: W. K. Clifford's work, piece by piece, against the circle operation (called mult-add before 1.0).
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library's Base and GroupsLie
   (for the θ-lift `tmul`, so the new statements attach to the existing ones).
 
@@ -9,22 +9,22 @@
     1. The Clifford algebra of the rate form x² + pxy + qy² (generators u, v with u² = 1, v² = q,
        uv + vu = p), as 4-tuples. It is associative, a vector squares to the form, and θ = uv
        obeys θ² = pθ − q: the θ-lift of GroupsLie is its even part. Two lifts multiply to the
-       landscape law; at (p, q) = (1, 0) they multiply to mult-add.
+       landscape law; at (p, q) = (1, 0) they multiply to the circle operation.
     2. Conjugation θ ↦ p − θ on the θ-lift: multiplicative, X·X̄ is the norm (a scalar), the lift
-       times its conjugate is the rate V(a), and mult-add's wall −1 is a zero divisor.
+       times its conjugate is the rate V(a), and the circle operation's wall −1 is a zero divisor.
     3. A two-part dial K = k₀ + k₁e with e² = κ: K² = tr(K)·K − N(K); the lift product reads as
-       the landscape law with p = tr K, q = N K; the class invariant p² − 4q is 4κk₁²; mult-add's
+       the landscape law with p = tr K, q = N K; the class invariant p² − 4q is 4κk₁²; the circle operation's
        dial is the null element c(1 + e) (κ = 1, N = 0).
     4. The three 2-D Clifford algebras: no zero divisor when κ = −1 (complex: the norm vanishes
        only at 0), a zero divisor (1 + e)(1 − e) = 0 when κ = 1, a nilpotent e² = 0 when κ = 0.
        Clifford's elliptic ω (κ = 1): (1 + ω)² = 2(1 + ω), and x + yω ↦ (x + y, x − y) is a
        multiplicative split into two copies of the line (left and right halves).
     5. Cl(2,0)-type algebra with squares κ₁, κ₂, as 4-tuples: associative; the multivector
-       mult-add X + Y + XKY is associative and has the lift (1 + KX)(1 + KY) = 1 + K(X ◯ Y);
+       circle operation X + Y + XKY is associative and has the lift (1 + KX)(1 + KY) = 1 + K(X ◯ Y);
        its commutator is XKY − YKX; for vectors with K = 1 it is twice the wedge (oriented area),
        and the corner of two vectors splits into dot + wedge; reversion turns X ◯_K Y into
        Ỹ ◯_K̃ X̃; two factors in different directions keep their product on its own blade.
-    6. Dual numbers: mult-add with ε² = 0 carries the derivative (a₁(1 + b₀) + b₁(1 + a₀)).
+    6. Dual numbers: the circle operation with ε² = 0 carries the derivative (a₁(1 + b₀) + b₁(1 + a₀)).
     7. The q = +1 twin of the light-wall identity: |1 − ūv|² + |u + v|² = (1 + |u|²)(1 + |v|²)
        (norm of the quaternion lift; no wall on the sphere side).
     8. Bott's count: the number of blades squaring to +1 minus those squaring to −1, sig(p, q),
@@ -98,12 +98,12 @@ theorem B4.lift_mul (p q a b : Int) :
     B4.mul p q ⟨1, 0, 0, a⟩ ⟨1, 0, 0, b⟩ = ⟨1 - q * a * b, 0, 0, a + b + p * a * b⟩ := by
   apply B4.ext' <;> simp only [B4.mul] <;> grind
 
-/-- At mult-add's point (1, 0) the geometric product of lifts is the lift of a ◯ b. -/
+/-- At the circle operation's point (1, 0) the geometric product of lifts is the lift of a ◯ b. -/
 theorem B4.lift_circ (a b : Int) :
     B4.mul 1 0 ⟨1, 0, 0, a⟩ ⟨1, 0, 0, b⟩ = ⟨1, 0, 0, a ◯ b⟩ := by
   apply B4.ext' <;> simp only [B4.mul, circ] <;> grind
 
-/-- Mult-add's rate form x² + xy factors as x(x + y): two light lines (a split form). -/
+/-- The circle operation's rate form x² + xy factors as x(x + y): two light lines (a split form). -/
 theorem circ_form_split (x y : Int) : x * x + 1 * x * y + 0 * y * y = x * (x + y) := by grind
 
 /-! ## 2. Conjugation, norm and the wall -/
@@ -127,7 +127,7 @@ theorem lift_tconj (p q a : Int) :
     GroupsLie.tmul p q (1, a) (tconj p (1, a)) = (1 + p * a + q * a * a, 0) := by
   simp only [tconj, GroupsLie.tmul]; ext <;> simp <;> grind
 
-/-- Mult-add: lift times conjugate = 1 + a, so the conjugate (1 + a) − aθ is (1 + a)·(lift of the inverse). -/
+/-- The circle operation: lift times conjugate = 1 + a, so the conjugate (1 + a) − aθ is (1 + a)·(lift of the inverse). -/
 theorem circ_lift_tconj (a : Int) : GroupsLie.tmul 1 0 (1, a) (tconj 1 (1, a)) = (1 + a, 0) := by
   simp only [tconj, GroupsLie.tmul]; ext <;> simp <;> grind
 
@@ -136,10 +136,10 @@ theorem circ_lift_tconj (a : Int) : GroupsLie.tmul 1 0 (1, a) (tconj 1 (1, a)) =
 theorem tconj_chart_inverse (p a : Int) :
     a * (1 + p * a) + (-a) + p * a * (-a) = (1 + p * a) * a - a - p * a * a := by grind
 
-/-- Mult-add's wall is a zero divisor: (1 − θ)·θ = 0 when θ² = θ. -/
+/-- The circle operation's wall is a zero divisor: (1 − θ)·θ = 0 when θ² = θ. -/
 theorem wall_zero_divisor : GroupsLie.tmul 1 0 (1, -1) (0, 1) = (0, 0) := by decide
 
-/-- θ is idempotent at mult-add's point. -/
+/-- θ is idempotent at the circle operation's point. -/
 theorem theta_idem : GroupsLie.tmul 1 0 (0, 1) (0, 1) = (0, 1) := by decide
 
 /-! ## 3. A two-part dial K = k₀ + k₁e, e² = κ -/
@@ -175,7 +175,7 @@ theorem dial_discriminant (κ : Int) (K : Int × Int) :
     ctr K * ctr K - 4 * cnorm κ K = 4 * κ * K.2 * K.2 := by
   simp only [ctr, cnorm]; grind
 
-/-- Mult-add's dial is null: K = c(1 + e) with e² = 1 has N = 0 and tr = 2c, so K² = 2c·K. -/
+/-- The circle operation's dial is null: K = c(1 + e) with e² = 1 has N = 0 and tr = 2c, so K² = 2c·K. -/
 theorem circ_dial_null (c : Int) :
     cnorm 1 (c, c) = 0 ∧ ctr (c, c) = 2 * c ∧ cmul 1 (c, c) (c, c) = (2 * c * c, 2 * c * c) := by
   simp only [cnorm, ctr, cmul]; refine ⟨?_, ?_, ?_⟩ <;> (try ext) <;> simp <;> grind
@@ -226,7 +226,7 @@ theorem quaternion_no_zero_norm (a b c d : Int) (h : a * a + b * b + c * c + d *
   refine ⟨sq_eq_zero' a (by omega), sq_eq_zero' b (by omega),
     sq_eq_zero' c (by omega), sq_eq_zero' d (by omega)⟩
 
-/-! ## 5. Multivector mult-add in a Clifford algebra with squares κ₁, κ₂ -/
+/-! ## 5. The multivector circle operation in a Clifford algebra with squares κ₁, κ₂ -/
 
 /-- x₀ + x₁e₁ + x₂e₂ + x₃e₁₂. -/
 structure G4 where
@@ -250,7 +250,7 @@ def G4.sub (x y : G4) : G4 := ⟨x.s - y.s, x.e1 - y.e1, x.e2 - y.e2, x.b - y.b�
 def G4.one : G4 := ⟨1, 0, 0, 0⟩
 def G4.rev (x : G4) : G4 := ⟨x.s, x.e1, x.e2, -x.b⟩
 
-/-- Multivector mult-add X ◯_K Y = X + Y + XKY. -/
+/-- The multivector circle operation X ◯_K Y = X + Y + XKY. -/
 def G4.star (k1 k2 : Int) (K x y : G4) : G4 :=
   G4.add (G4.add x y) (G4.mul k1 k2 (G4.mul k1 k2 x K) y)
 

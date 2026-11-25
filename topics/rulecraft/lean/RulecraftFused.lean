@@ -1,5 +1,5 @@
 /-
-  Rulecraft on the mult-add cube
+  Rulecraft on the circle-operation cube (called mult-add cube before 1.0)
   ==============================
 
   Part of Fused Hyperoperation Algebra. Companion to the page
@@ -14,7 +14,7 @@
   failure would be a proof-script problem, not a false statement. Run it
   with `lean RulecraftFused.lean`.
 
-  Mult-add: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1.
+  The circle operation: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1.
 
   What it proves, in Rulecraft's words:
 
@@ -23,11 +23,11 @@
     whole effect is X_S ◯ X_T = X_S + X_T + X_S·X_T. The cross term X_S·X_T
     is exactly the corners of the cube that touch both sides: the
     spillover a body with scope S cannot see. The corner expansion
-    (`one_add_foldCirc_eq_corners`) shows the mult-add of a list is the sum,
+    (`one_add_foldCirc_eq_corners`) shows the circle operation of a list is the sum,
     over every nonempty group of parties, of the product of their effects.
 
-  * Order-free reforms. Mult-add is commutative and associative, so the
-    mult-add of any reshuffled list is the same (`foldCirc_perm`). Percent
+  * Order-free reforms. The circle operation is commutative and associative, so the
+    circle operation of any reshuffled list is the same (`foldCirc_perm`). Percent
     changes to one quantity can never be path-dependent. The fused
     exponent rung is not commutative (`fexp_not_comm`), so path dependence
     needs a higher rung or more than one quantity.
@@ -46,7 +46,7 @@
     (`balance`, `balance_le`). This is also why a tension held in balance
     keeps the most corner.
 
-  * Coupling weight. a ◯[A] b = a + b + A·a·b is ordinary mult-add seen
+  * Coupling weight. a ◯[A] b = a + b + A·a·b is the ordinary circle operation seen
     through x ↦ A·x (`weighted_conj`). A > 0 is Benedict's high synergy,
     A < 0 a zero-sum corner, A = 0 no spillover at all.
 
@@ -69,12 +69,12 @@ open Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-/-! ## 1. Mult-add on any commutative ring -/
+/-! ## 1. The circle operation on any commutative ring -/
 
 section Ring
 variable {R : Type} [CommRing R]
 
-/-- Mult-add: a ◯ b = a + b + a·b. -/
+/-- The circle operation: a ◯ b = a + b + a·b. -/
 def circ (a b : R) : R := a + b + a * b
 
 theorem circ_lift (a b : R) : 1 + circ a b = (1 + a) * (1 + b) := by
@@ -98,10 +98,10 @@ theorem neg_one_absorbs (b : R) : circ (-1) b = -1 := by
 theorem thermostat_residue (d : R) : circ d (-d) = -(d * d) := by
   unfold circ; grind
 
-/-- Weighted mult-add: the corner carries a coupling weight A. -/
+/-- The circle operation with dial A: the corner carries a coupling weight A. -/
 def circK (A a b : R) : R := a + b + A * a * b
 
-/-- Weighted mult-add is mult-add seen through x ↦ A·x. -/
+/-- The circle operation with dial A is the circle operation seen through x ↦ A·x. -/
 theorem weighted_conj (A a b : R) : A * circK A a b = circ (A * a) (A * b) := by
   unfold circK circ; grind
 
@@ -109,7 +109,7 @@ theorem weighted_conj (A a b : R) : A * circK A a b = circ (A * a) (A * b) := by
 theorem circK_zero (a b : R) : circK 0 a b = a + b := by
   unfold circK; grind
 
-/-- A = 1: plain mult-add (pure compounding). -/
+/-- A = 1: the plain circle operation (pure compounding). -/
 theorem circK_one (a b : R) : circK 1 a b = circ a b := by
   unfold circK circ; grind
 
@@ -134,7 +134,7 @@ theorem fused_price_expand (k : R) : (1 + k) * (1 + k) - 1 = k * k + 2 * k := by
 
 /-! ### The boundary theorem -/
 
-/-- The mult-add of a list of effects: x₁ ◯ x₂ ◯ … ◯ xₙ. -/
+/-- The circle operation of a list of effects: x₁ ◯ x₂ ◯ … ◯ xₙ. -/
 def foldCirc : List R → R
   | [] => 0
   | a :: l => circ a (foldCirc l)

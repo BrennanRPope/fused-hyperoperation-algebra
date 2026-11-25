@@ -3,11 +3,11 @@
   ===================================================================================
   Core Lean 4 only (no mathlib), no `sorry`.
 
-  Classical facts, stated through mult-add:
+  Classical facts, stated through the circle operation (called mult-add before 1.0):
     * x ◯ x = (1+x)² − 1 is z ↦ z² through the lift z = 1 + x (Fatou, Julia 1918-19);
       the wall −1 is its superattracting fixed point, the identity 0 repels with multiplier 2.
     * Every dial square x ◯ₖ x is x ◯ x in other units; k = −2 is the logistic map at r = 2.
-    * The logistic map at r = 4 is x ◯ x folded by X(w) = w·ι(w)/4, ι the mult-add inverse
+    * The logistic map at r = 4 is x ◯ x folded by X(w) = w·ι(w)/4, ι the circle inverse
       (Ulam and von Neumann 1947, through Joukowski's map).
     * Chebyshev polynomials are zⁿ seen through Joukowski.
     * Near 0 the rung flow is the parabolic Möbius flow x/(1 − t·x/2), whose Abel ruler −2/x adds t.
@@ -31,10 +31,10 @@ def iter {α : Type} (f : α → α) : Nat → α → α
 section Ring
 variable {R : Type} [CommRing R]
 
-/-- Mult-add squaring. -/
+/-- Circle-operation squaring. -/
 def msq (x : R) : R := x ◯ x
 
-/-- The lift conjugates mult-add squaring to z ↦ z². -/
+/-- The lift conjugates circle-operation squaring to z ↦ z². -/
 theorem msq_lift (x : R) : 1 + msq x = (1 + x) * (1 + x) := circ_lift x x
 
 /-- (a^m)^n = a^(mn) for any commutative ring. -/
@@ -50,7 +50,7 @@ theorem iter_msq_lift (x : R) (n : Nat) : 1 + iter msq n x = (1 + x) ^ (2 ^ n) :
     rw [msq_lift, ih, Nat.pow_succ, pow_mul_R, Semiring.pow_succ, Semiring.pow_succ, Semiring.pow_zero]
     grind
 
-/-- Mult-add powers compose like ordinary powers: (x^(◯m))^(◯n) = x^(◯mn). -/
+/-- Circle powers compose like ordinary powers: (x^(◯m))^(◯n) = x^(◯mn). -/
 theorem mpow_mpow (x : R) (m n : Nat) : mpow (mpow x m) n = mpow x (m * n) := by
   have h1 := mpow_lift (mpow x m) n
   have h2 := mpow_lift x m
@@ -58,7 +58,7 @@ theorem mpow_mpow (x : R) (m n : Nat) : mpow (mpow x m) n = mpow x (m * n) := by
   rw [h2, ← pw_eq_pow, ← pw_eq_pow, ← pw_mul, pw_eq_pow, ← h3] at h1
   grind
 
-/-- Every dial square is mult-add squaring in other units: k·(x ◯ₖ x) = (kx) ◯ (kx). -/
+/-- Every dial square is circle-operation squaring in other units: k·(x ◯ₖ x) = (kx) ◯ (kx). -/
 theorem dial_square_units (k x : R) : k * circK k x x = msq (k * x) := circK_scale k x x
 
 /-- Dial powers too: k·x^(◯ₖn) = (kx)^(◯n). -/
@@ -98,7 +98,7 @@ theorem periodic_iff (x : R) (n : Nat) : iter msq n x = x ↔ (1 + x) ^ (2 ^ n) 
   · intro h; rw [h]
   · intro h; grind
 
-/-- Higher mult-add powers: the wall is fixed by x ↦ x^(◯(n+1)). -/
+/-- Higher circle powers: the wall is fixed by x ↦ x^(◯(n+1)). -/
 theorem wall_fixed_mpow (n : Nat) : mpow (-1 : R) (n + 1) = -1 := by
   rw [mpow, circ_comm]; exact neg_one_absorbs _
 
@@ -125,7 +125,7 @@ theorem iter_jet_ruler (p : R × R) (n : Nat) :
     have : (iter msqJet n p).2 * (1 + p.1) = 2 ^ n * p.2 * (1 + (iter msqJet n p).1) := ih
     grind
 
-/-- Flows: running y′ = 1 + y for time s then t is mult-adding the two lifts' parts:
+/-- Flows: running y′ = 1 + y for time s then t is combining the two lifts' parts by the circle operation:
     (a ◯ (e₁ − 1)) ◯ (e₂ − 1) = a ◯ (e₁e₂ − 1), with eᵢ = e^(tᵢ). -/
 theorem flow_time_law (a e1 e2 : R) : (a ◯ (e1 - 1)) ◯ (e2 - 1) = a ◯ (e1 * e2 - 1) := by
   unfold circ; grind
@@ -170,7 +170,7 @@ end Ring
 section Field
 variable {K : Type} [Field K]
 
-/-- The fold X(w) = w·ι(w)/4, ι the mult-add inverse. -/
+/-- The fold X(w) = w·ι(w)/4, ι the circle inverse. -/
 def fold (w : K) : K := w * circInv w / 4
 
 theorem fold_eq (w : K) (h : 1 + w ≠ 0) : fold w = -(w * w) / (4 * (1 + w)) := by
@@ -180,7 +180,7 @@ theorem fold_eq (w : K) (h : 1 + w ≠ 0) : fold w = -(w * w) / (4 * (1 + w)) :=
 theorem sum_is_neg_product (w : K) (h : 1 + w ≠ 0) : w + circInv w = -(w * circInv w) := by
   have := circ_circInv w h; unfold circ at this; grind
 
-/-- The mult-add inverse undoes itself. -/
+/-- The circle inverse undoes itself. -/
 theorem inv_inv (w : K) (h : 1 + w ≠ 0) : circInv (circInv w) = w := by
   unfold circInv
   have : 1 + -w / (1 + w) = 1 / (1 + w) := by grind
@@ -194,7 +194,7 @@ theorem fold_inv (w : K) (h : 1 + w ≠ 0) : fold (circInv w) = fold w := by
 theorem msq_inv (w : K) (h : 1 + w ≠ 0) : msq (circInv w) = circInv (msq w) := by
   unfold msq circ circInv; grind
 
-/-- The logistic map at r = 4 is mult-add squaring folded: 4X(1 − X) = X(w ◯ w). -/
+/-- The logistic map at r = 4 is circle-operation squaring folded: 4X(1 − X) = X(w ◯ w). -/
 theorem logistic_fold (w : K) (h : 1 + w ≠ 0) : 4 * fold w * (1 - fold w) = fold (msq w) := by
   have h2 : 1 + msq w ≠ 0 := by
     rw [msq_lift]; intro e
@@ -203,7 +203,7 @@ theorem logistic_fold (w : K) (h : 1 + w ≠ 0) : 4 * fold w * (1 - fold w) = fo
   rw [fold_eq w h, fold_eq (msq w) h2]
   unfold msq circ; grind
 
-/-- Joukowski in mult-add terms: z + 1/z = 2 + (w + ι(w)) for z = 1 + w. -/
+/-- Joukowski in circle-operation terms: z + 1/z = 2 + (w + ι(w)) for z = 1 + w. -/
 theorem joukowski_circ (w : K) (h : 1 + w ≠ 0) :
     (1 + w) + 1 / (1 + w) = 2 + (w + circInv w) := by
   unfold circInv; grind

@@ -156,16 +156,16 @@ theorem lucas_five (P Q : R) : lucas P Q 5 = (P * P - Q) * (P * P - Q) - Q * (P 
 theorem lucas_five_golden (P : R) : lucas P 1 5 = (P * P - P - 1) * (P * P + P - 1) := by
   rw [lucas_five]; grind
 
-/-! ## 3. Mult-add and the Fibonacci law are two points of the same picture -/
+/-! ## 3. The circle operation (called mult-add before 1.0) and the Fibonacci law are two points of the same picture -/
 
-/-- Mult-add (k, q) = (1, 0): the denominator is always 1, U(n+1) − (1 + a)·U n = 1. -/
+/-- The circle operation (k, q) = (1, 0): the denominator is always 1, U(n+1) − (1 + a)·U n = 1. -/
 theorem multadd_den_one (a : R) (n : Nat) :
     lucas (2 + a) (1 + a) (n + 1) - (1 + a) * lucas (2 + a) (1 + a) n = 1 := by
   induction n with
   | zero => simp only [lucas, Nat.zero_add]; grind
   | succ n ih => rw [show n + 1 + 1 = n + 2 from rfl, lucas_succ_succ]; grind
 
-/-- Mult-add's counting pair is ((1 + a)^(n+1) − 1, 1), via the Lucas formula. -/
+/-- The circle operation's counting pair is ((1 + a)^(n+1) − 1, 1), via the Lucas formula. -/
 theorem multadd_iter (a : R) (n : Nat) :
     (iter 1 0 a (n + 1)).2 = 1 := by
   rw [iter_lucas]
@@ -280,7 +280,7 @@ theorem no_integer_five_cycle (P : Int) : lucas P 1 5 ≠ 0 := by
     generalize 8 * (m * m * m * m) + 16 * (m * m * m) + 6 * (m * m) - 2 * m - 1 = t
     omega
 
-/-! ## 6. Fibonacci inside mult-add itself -/
+/-! ## 6. Fibonacci inside the circle operation itself -/
 
 section Semiring
 variable {R : Type} [Lean.Grind.CommSemiring R]
@@ -291,7 +291,7 @@ def nfib : Nat → Nat
   | 1 => 1
   | n + 2 => nfib (n + 1) + nfib n
 
-/-- The mult-add Fibonacci sequence: x(n+2) = x(n+1) ◯ x(n). -/
+/-- The circle-operation Fibonacci sequence: x(n+2) = x(n+1) ◯ x(n). -/
 def mfib (x0 x1 : R) : Nat → R
   | 0 => x0
   | 1 => x1
@@ -326,7 +326,7 @@ theorem mfib_lift (x0 x1 : R) (n : Nat) :
     1 + mfib x0 x1 (n + 1) = (1 + x0) ^ nfib n * (1 + x1) ^ nfib (n + 1) :=
   (mfib_lift_pair x0 x1 n).1
 
-/-- From 1, 1: the mult-add Fibonacci numbers are 2^F(n) − 1 (1, 1, 3, 7, 31, 255, 8191, …),
+/-- From 1, 1: the circle-operation Fibonacci numbers are 2^F(n) − 1 (1, 1, 3, 7, 31, 255, 8191, …),
     stated as 1 + x(n+1) = (1 + 1)^F(n+2) in any number system. -/
 theorem mfib_one_one (n : Nat) : 1 + mfib (1 : R) 1 (n + 1) = (1 + 1) ^ nfib (n + 2) := by
   rw [mfib_lift, show nfib (n + 2) = nfib (n + 1) + nfib n from rfl, pow_add']

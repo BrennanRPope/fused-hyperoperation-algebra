@@ -2,7 +2,7 @@
   Axioms.Independence: none of M1–M4 follows from the others
   ===========================================================
 
-  For each mult-add axiom we give a structure where every other axiom holds
+  For each circle-operation axiom (called mult-add axiom before 1.0) we give a structure where every other axiom holds
   and that one fails. So the list in `Foundations.CircleRing` has no spare part
   among M1–M4. (A1–A4 are the usual abelian-group axioms; their independence
   is classical and not redone here.)
