@@ -14,3 +14,4 @@ public import FusedAlgebra.Topics.EllipticS3
 public import FusedAlgebra.Topics.Fermat.Fermat4
 public import FusedAlgebra.Topics.Finance
 public import FusedAlgebra.Topics.InformationTheory
+public import FusedAlgebra.Topics.Landscape
