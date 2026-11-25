@@ -1,0 +1,77 @@
+== A. probability from entanglement (known: purification, Zurek envariance; union by branch counting)
+PASS A1 purification: any distribution p is the reduced state of a pure entangled state; Shannon H(p) = entanglement entropy
+PASS A2 envariance: swap on system undone by swap on environment iff Schmidt weights equal (weights [0.5 0.5] -> True)
+PASS A2 envariance: swap on system undone by swap on environment iff Schmidt weights equal (weights [0.7 0.3] -> False)
+PASS A3 fine-graining: amplitudes sqrt(3/8), sqrt(5/8) become 8 equal branches; counting gives 3/8, 5/8
+PASS A4 union rule by branch counting: independent systems, equal branches on an Ma x Mb grid, 'A or B' = p o_{-1} q exactly
+== B. the union rule is the signature of NO correlation (ours, stated in our terms; elementary)
+PASS B1 commuting projectors: P v Q = P o_{-1} Q at operator level (P + Q - PQ is a projector)
+PASS B2 product state: Prob(a or b) = p o_{-1} q
+PASS B3 defect = Prob(a or b) - p o_{-1} q = -covariance, and |defect| <= sqrt(2 I(A:B)) (Wolf-Verstraete-Hastings-Cirac 2008) in 48,000 tests
+PASS B4 union rule holds for all tested local yes/no pairs only when I(A:B)=0 (all states with I>1e-3 show a defect)
+PASS B5 one system, non-commuting tests: P + Q - PQ is not the 'or' projector whenever P, Q don't commute; exact when they do   [corr(commutator, error) 0.82]
+== C. typicality: small parts of a big entangled whole look random AND independent (known: Popescu-Short-Winter 2006, Page 1993)
+   d_env=   2  <I(A:B)>=0.51691 nats  <max union defect>=0.1055  <||rho_AB - I/4||_1>=1.1161  PSW bound sqrt(4/d)=1.4142
+   d_env=   4  <I(A:B)>=0.29192 nats  <max union defect>=0.0884  <||rho_AB - I/4||_1>=0.8294  PSW bound sqrt(4/d)=1.0000
+   d_env=   8  <I(A:B)>=0.15202 nats  <max union defect>=0.0690  <||rho_AB - I/4||_1>=0.5825  PSW bound sqrt(4/d)=0.7071
+   d_env=  16  <I(A:B)>=0.06956 nats  <max union defect>=0.0495  <||rho_AB - I/4||_1>=0.4154  PSW bound sqrt(4/d)=0.5000
+   d_env=  32  <I(A:B)>=0.03453 nats  <max union defect>=0.0337  <||rho_AB - I/4||_1>=0.2976  PSW bound sqrt(4/d)=0.3536
+   d_env=  64  <I(A:B)>=0.01799 nats  <max union defect>=0.0258  <||rho_AB - I/4||_1>=0.2143  PSW bound sqrt(4/d)=0.2500
+   d_env= 128  <I(A:B)>=0.00938 nats  <max union defect>=0.0187  <||rho_AB - I/4||_1>=0.1473  PSW bound sqrt(4/d)=0.1768
+   d_env= 256  <I(A:B)>=0.00401 nats  <max union defect>=0.0129  <||rho_AB - I/4||_1>=0.1016  PSW bound sqrt(4/d)=0.1250
+PASS C1 as the environment grows, I(A:B) and the union-rule defect fall toward 0 and rho_AB -> I/4 within the Popescu-Short-Winter bound
+PASS C2 mutual information of two small parts falls like 1/d_env (Page-type scaling; monogamy: entanglement with the environment uses it up)   [slope -1.02]
+== D. time from entanglement (known: Page-Wootters 1983; 't Hooft cogwheel)
+PASS D1 Page-Wootters: conditioning the static history state on clock reading t gives e^{-iHt}|psi0> exactly
+PASS D2 no change, no time: clock-system entanglement is 0 exactly for stationary states and >0 whenever the system changes
+PASS D3 the entanglement is largest (1 bit) when the qubit changes most (equal superposition)
+PASS D4 't Hooft cogwheel: a deterministic n-step loop (clock mod n) IS a quantum system with equally spaced energies 2*pi*k/n
+== E. a fast small loop read coarsely gives probability (known: Poincare, Hopf, Keller: method of arbitrary functions)
+PASS E1 fast loop: Prob(phase in a 1/3 sector) -> 1/3 as the loop speeds up, whatever the (smooth) spread of reading times   [0.5:0.244 1:0.317 2:0.230 4:0.032 8:0.001 16:0.000 32:0.001]
+PASS E2 computer clock: last digit of the tick counter is uniform when the reading time is spread over many ticks, not when it is sharp
+PASS E3 two independent loops (incommensurate speeds) combine by the union rule; locked loops (speed ratio 2) do not   [golden -0.0005, ratio-2 -0.0797]
+PASS E4 finite o_1 clock: 1 o 1 o ... o 1 (k times) = 2^k - 1 mod p
+PASS E5 for p = 1019 (2 a primitive root) the o_1 clock visits every element except the wall -1 once per loop
+PASS E6 its last digit is close to uniform   [[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.099, 0.099]]
+PASS E7 Poisson law: waiting time for a chaotic o_1 clock (step a = 16806 mod 2^31 - 1) to enter a small window is exponential   [KS 0.016, mean*eps 1.00]
+PASS E8 an irrational rotation (non-mixing loop) does NOT give exponential waiting (three-gap structure)   [KS 0.281]
+PASS E9 two separate windows of the chaotic clock: 'hit either by time t' = (hit 1) o_{-1} (hit 2) within sampling error   [[0.0022, 0.0011, 0.0015]]
+== F. can a loop give Born weights |a|^2? (known: Kochen-Specker 1967 qubit model; Bell 1964; Gleason 1957)
+PASS F1 one qubit: a loop with dwell density cos(phase) read by 'which half-circle' reproduces the Born rule cos^2(theta/2)
+PASS F2 averaging a fast relative-phase loop removes interference: <|a + b e^{i phi}|^2> = |a|^2 + |b|^2 (the square itself is not explained)
+PASS F3 Bell: every local loop/hidden-variable model has CHSH <= 2 (max over all 16 deterministic strategies = 2)
+== G. a whole-path model: outcomes from a loop phase whose weight depends on both ends of the path
+PASS G1 shared loop phase, settings independent of the phase: best CHSH = 2 (straight-line correlations)   [2.0000]
+PASS G2 whole-path weight w(phi | a, b): local readings A(phi,a), B(phi,b) reproduce the singlet E = -cos(a-b) and fair marginals
+PASS G3 ... and reach CHSH = 2*sqrt(2) with locality kept; what is dropped is measurement independence   [2.826]
+PASS G4 the same freedom gives a PR box (CHSH 4): whole-path weighting alone does NOT explain Tsirelson's 2*sqrt(2)   [4.000]
+PASS G5 path-sum version (phases composed along two branches, weight = |sum|^2) reproduces the singlet; random search never exceeds 2*sqrt(2)   [max 2.8244]
+PASS G6 how much the loop phase 'knows' the settings at the CHSH angles (bits, 72 bins; includes small binning noise)   [0.046 bits]
+PASS G7 a nonlocal (Bohm-like) model with settings-independent phase gives the same outcome table: same data, two stories   [max diff 0.0024]
+PASS G8 'not susceptible to entropy': a closed loop's winding number (3) survives noise in every one of 400 runs while the open phase spreads   [open-phase variance 10.8 rad^2]
+PASS G9 a single global phase is unobservable (e^{i alpha}|psi> gives identical probabilities); only phase differences between paths count
+PASS G10 composing path segments: loop phasors E(i t) = e^{it} - 1 compose by o_1 (height flow at imaginary height)
+== H. the cross-ratio is a probability: 'at least one tick' of a unit-rate clock running on A's modular time (ours, reading; ingredients known)
+PASS H1 t = -log(1 - x) equals the width of B measured in A's modular (Rindler) time coordinate zeta (2000 random arcs)
+PASS H2 t is also the Crofton (kinematic-space) measure of geodesics joining A to B (Czech-Lamprou-McCandlish-Sully 2015)   [max err 6.7e-06]
+PASS H3 Monte Carlo: a random (Poisson) spray of geodesics links A and B with probability x (3000 universes)   [B1: sim 0.320 vs x 0.322 B2: sim 0.324 vs x 0.317 B12: sim 0.542 vs x 0.537]
+PASS H4 gluing: links to B1 and to B2 are independent, so x(A,B1B2) = x(A,B1) o_{-1} x(A,B2) is the ordinary union rule   [count correlation 0.009]
+   lA,lB,lC=(20, 10, 20)  CMI=0.1961  t/3=0.1959
+   lA,lB,lC=(30, 30, 30)  CMI=0.0959  t/3=0.0959
+   lA,lB,lC=(40, 15, 60)  CMI=0.2907  t/3=0.2906
+   lA,lB,lC=(25, 50, 25)  CMI=0.0393  t/3=0.0393
+   lA,lB,lC=(60, 20, 40)  CMI=0.2311  t/3=0.2310
+   lA,lB,lC=(50, 50, 80)  CMI=0.1226  t/3=0.1226
+   lA,lB,lC=(80, 30, 30)  CMI=0.1507  t/3=0.1507
+PASS H5 real quantum state (free fermions, c = 1): conditional mutual information I(A:C|B) = t/3, so x = 1 - exp(-3 I/c)   [max |diff| 0.0001]
+PASS H6 odds X = x/(1-x) = E(t) = e^t - 1 has the form of a Doppler shift z = e^eta - 1; adding rapidities composes shifts by o_1
+PASS H7 A's modular flow (its own time) slides B along without changing x: x is a clock interval, not a clock reading
+== I. the helix: the loop's universal cover (known: covering spaces, Aharonov-Bohm 1959, Berry 1984); our lift/flow reading
+PASS I1 rolling up: the helix height theta maps to the circle point e^{i theta}; unrolling (lifting) recovers theta up to one constant turn
+PASS I2 the lift l_1 = log(1 + x) turns o_1 into + on the line, but on the circle its principal branch drops a turn (2.5 + 1.9 > pi)
+PASS I3 ... and the dropped piece is exactly 2*pi*i times the winding number: the helix is what keeps the count
+PASS I4 the finite tan-law clock over F_19 (p = 3 mod 4) is a loop of p+1 = 20 steps; counting steps on the integers is its helix   [generators [3, 6, 7, 8, 11, 12]]
+PASS I5 Aharonov-Bohm: a path winding n times around a hidden flux picks up n x flux, whatever its shape (a winding count noise can't change)
+PASS I6 a shared helix (phase + winding) read locally, settings independent of it: still CHSH <= 2 (Bell holds for any hidden variable)
+
+51 passed, 0 failed

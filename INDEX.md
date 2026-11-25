@@ -13,6 +13,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: Lucas corner weights U_m(k, d) for the two-dial plane law. Early verdict: the weights are known Lucas sequences and the corner formula is probably folklore. Merged into the corner-weights stream. | `topics/lucas-weights/` | — |
 | DRAFT: which parts of the cube can carry a weight? Square faces as a reordering cost give soliton pair weights (known vertex-operator picture; cube framing ours) | `topics/cube-weights/` | — |
 | DRAFT: the holographic entropy cone as the cube corner sum at k = −1 (physics published; cube reading ours; one open lead: a softened min cut keeps monogamy) | `topics/holographic-entropy-cube/` | — |
+| DRAFT: is probability entanglement? Time, small loops, the helix and the union rule. Mostly known results; one lead: the AdS₃ cross-ratio read as a clock's tick probability, which explains why ∘₋₁ appears there. A hidden loop or helix still hits Bell's wall. | `topics/probability-entanglement/` | — |
 
 ## The library and tools
 
