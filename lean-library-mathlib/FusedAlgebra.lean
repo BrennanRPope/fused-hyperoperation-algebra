@@ -8,4 +8,5 @@ public import FusedAlgebra.Rungs
 public import FusedAlgebra.Topics.Calculus
 public import FusedAlgebra.Topics.Consensus
 public import FusedAlgebra.Topics.E
+public import FusedAlgebra.Topics.EarlyScience
 public import FusedAlgebra.Topics.Finance

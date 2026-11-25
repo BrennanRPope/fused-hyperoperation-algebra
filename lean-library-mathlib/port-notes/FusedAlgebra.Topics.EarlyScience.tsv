@@ -1,0 +1,25 @@
+original	status	new_name	note
+nonempty_subsets	ported	SimpleLaws.nonempty_subsets	generalised from ℤ to any commutative ring
+product_error	ported	SimpleLaws.product_error	generalised from ℤ to any commutative ring
+product_error_corner	ported	SimpleLaws.product_error_corner	generalised from ℤ to any commutative ring
+constant_product	ported	SimpleLaws.constant_product	any commutative ring without zero divisors
+boyle_partner	ported	SimpleLaws.boyle_partner	any field (mathlib Field in place of Lean.Grind.Field)
+boyle_gain_loss	ported	SimpleLaws.boyle_gain_loss	generalised from ℤ to any commutative ring
+kepler_third	ported	SimpleLaws.kepler_third	generalised from ℤ to any commutative ring; powers written ^ 2 and ^ 3
+inverse_square	ported	SimpleLaws.inverse_square	any field; (1 + ρ) * (1 + ρ) written (1 + ρ) ^ 2
+cooling	ported	SimpleLaws.cooling	generalised from ℤ to any commutative ring; one-line corollary of MultAdd.wpow_neg_one
+Ray	mathlib	Matrix (Fin 2) (Fin 2) R	ray-transfer matrices are 2 × 2 matrices; entry C is M 1 0
+Ray.mul	mathlib	Matrix.mul_apply	matrix multiplication M * N (the Mul instance on square matrices; Matrix.mul_apply is its defining lemma)
+lens	ported	SimpleLaws.lens	now the matrix !![1, 0; -P, 1] over any commutative ring
+gap	ported	SimpleLaws.gap	now the matrix !![1, d; 0, 1] over any commutative ring
+lenses_in_contact	ported	SimpleLaws.lenses_in_contact	stated on the matrix entry (lens P₂ * lens P₁) 1 0; any commutative ring
+lenses_apart	ported	SimpleLaws.lenses_apart	stated on the matrix entry 1 0; any commutative ring
+squeeze_multiplies	ported	SimpleLaws.squeeze_multiplies	generalised from ℤ to any commutative ring
+field_lens	ported	SimpleLaws.field_lens	generalised from ℤ to any commutative ring
+parallel_is_inverted_addition	ported	SimpleLaws.parallel_is_inverted_addition	any field
+ladderStep	ported	SimpleLaws.ladderStep	unchanged (ℤ × ℤ)
+ladder	ported	SimpleLaws.ladder	now ladderStep^[n] (0, 1) (Function.iterate); added ladder_zero, ladder_succ
+fib	mathlib	Nat.fib	used through the cast (Nat.fib n : ℤ)
+ladder_fib	ported	SimpleLaws.ladder_fib	stated with (Nat.fib _ : ℤ)
+ladder_walls	ported	SimpleLaws.ladder_walls	generalised from ℤ to any commutative ring; squares written ^ 2
+ladder_hyperbola	ported	SimpleLaws.ladder_hyperbola	squares written ^ 2
