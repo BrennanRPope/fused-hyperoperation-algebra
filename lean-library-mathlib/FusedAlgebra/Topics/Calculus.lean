@@ -188,7 +188,8 @@ variable {R : Type*} [Ring R]
 /-- Pascal inside a weighted sum: the layers of the `(n + 1)`-cube split into two `n`-cubes. -/
 theorem pascal_sum (n : ℕ) (x : ℕ → R) (m : ℕ) :
     ∑ k ∈ range (m + 1), ((n + 1).choose k : R) * x k =
-      ∑ k ∈ range (m + 1), (n.choose k : R) * x k + ∑ k ∈ range m, (n.choose k : R) * x (k + 1) := by
+      ∑ k ∈ range (m + 1), (n.choose k : R) * x k +
+        ∑ k ∈ range m, (n.choose k : R) * x (k + 1) := by
   rw [sum_range_succ', sum_range_succ' _ m]
   simp only [Nat.choose_succ_succ, Nat.cast_add, add_mul, sum_add_distrib, Nat.choose_zero_right]
   abel

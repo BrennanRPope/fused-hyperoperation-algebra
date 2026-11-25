@@ -161,4 +161,3 @@ theorem planar_stretching_zero {R : Type*} [CommRing R] (G : Matrix (Fin 3) (Fin
   simp [hz]
 
 end MultAdd.NSContinuum
--- touched
