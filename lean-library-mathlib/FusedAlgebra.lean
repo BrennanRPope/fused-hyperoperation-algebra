@@ -34,6 +34,7 @@ public import FusedAlgebra.Topics.Patterns
 public import FusedAlgebra.Topics.Pi
 public import FusedAlgebra.Topics.QuantumNoise
 public import FusedAlgebra.Topics.Relativity
+public import FusedAlgebra.Topics.ShapeDirections
 public import FusedAlgebra.Topics.Thermodynamics
 public import FusedAlgebra.Topics.Topology.CubeProofs
 public import FusedAlgebra.Topics.Topology.KummerWilson

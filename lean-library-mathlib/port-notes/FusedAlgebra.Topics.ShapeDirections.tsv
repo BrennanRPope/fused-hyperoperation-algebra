@@ -1,0 +1,45 @@
+original	status	new_name	note
+star_def	dropped	MultAdd.multAdd_def	ℤ instance of multAdd_def; the local ✳ notation is now the library's
+weight_is_units	ported	ShapeDirections.weight_is_units	generalised from ℤ to commutative rings; same statement as LeeYangCluster.wAdd_units with arguments in another order
+qcount_is_weight	ported	ShapeDirections.qcount_is_weight	ℤ → commutative ring
+path3	ported	ShapeDirections.path3	ℤ → commutative ring; products written as powers
+path3_sum	ported	ShapeDirections.path3_sum	ℤ → commutative ring
+graph_weight_survives	ported	ShapeDirections.graph_weight_survives	kept over ℚ (needs 3 ≠ 0); l * l written l ^ 2
+ruler_num	ported	ShapeDirections.ruler_num	ℤ → commutative ring
+ruler_den	ported	ShapeDirections.ruler_den	ℤ → commutative ring
+ruler_keeps_disc	ported	ShapeDirections.ruler_keeps_disc	ℤ → commutative ring; squares
+zoom_disc	ported	ShapeDirections.zoom_disc	ℤ → commutative ring; squares
+Jet	ported	ShapeDirections.Jet	kept over ℚ
+comp4	ported	ShapeDirections.comp4	
+comp5	ported	ShapeDirections.comp5	
+E	ported	ShapeDirections.E	
+ladder_forces_c3	ported	ShapeDirections.ladder_forces_c3	
+ladder_forces_c4	ported	ShapeDirections.ladder_forces_c4	
+ladder_jets_commute	ported	ShapeDirections.ladder_jets_commute	
+rung_rate_inverts	ported	ShapeDirections.rung_rate_inverts	
+lens_jets_at_minus	ported	ShapeDirections.lens_jets_at_minus	
+rung_disc_is_height	ported	ShapeDirections.rung_disc_is_height	s * s written s ^ 2
+rung_leaves_plane	ported	ShapeDirections.rung_leaves_plane	norm_num instead of decide +kernel
+rung_crossings	ported	ShapeDirections.rung_crossings	norm_num instead of decide +kernel
+det3	mathlib	Matrix.det	Matrix.det_fin_three
+jet_rank	ported	ShapeDirections.jet_rank	restated with Matrix.det of !![…] 3×3 matrices, same rows
+glue_commutes	ported	ShapeDirections.glue_commutes	ℤ → commutative ring; is MultAdd.multAdd_right_comm
+glue_twice	ported	ShapeDirections.glue_twice	ℤ → commutative ring
+glue_descends	ported	ShapeDirections.glue_descends	ℤ → commutative ring
+psi3	ported	ShapeDirections.psi3	ℚ → commutative ring; psi3_eq_eval_Ψ₃ added, identifying it with WeierstrassCurve.Ψ₃
+cusp_psi3	ported	ShapeDirections.cusp_psi3	ℚ → commutative ring
+node_psi3	ported	ShapeDirections.node_psi3	ℚ → commutative ring
+node_three_points	ported	ShapeDirections.node_three_points	left side written as discrim 1 (-1/3) (-(-1/3)^3), which unfolds to the original expression with a factor 1
+tau2	ported	ShapeDirections.tau2	ℤ → commutative ring; tau2_eq_one_add_wAdd added
+pair_weight_survives	ported	ShapeDirections.pair_weight_survives	ℤ → commutative ring
+periods_outnumber_curves	ported	ShapeDirections.periods_outnumber_curves	strengthened: the bound g < 40 is removed, proved for all g ≥ 2
+pseries_two	ported	ShapeDirections.pseries_two	ℤ → commutative ring; powers
+pseries_three	ported	ShapeDirections.pseries_three	ℤ → commutative ring; powers
+pseries_five	ported	ShapeDirections.pseries_five	ℤ → commutative ring; powers
+additive_at_two	ported	ShapeDirections.additive_at_two	ℤ → commutative ring
+additive_at_three	ported	ShapeDirections.additive_at_three	ℤ → commutative ring
+additive_at_five	ported	ShapeDirections.additive_at_five	ℤ → commutative ring
+mult_at_three	ported	ShapeDirections.mult_at_three	ℤ → commutative ring
+fermat_three_a	ported	ShapeDirections.fermat_three_a	ℤ → commutative ring; general fact is ZMod.pow_card_sub_one_eq_one
+fermat_three_b	ported	ShapeDirections.fermat_three_b	ℤ → commutative ring
+mult_at_two	ported	ShapeDirections.mult_at_two	ℤ → commutative ring
