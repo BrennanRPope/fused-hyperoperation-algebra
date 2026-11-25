@@ -1,0 +1,31 @@
+original	status	new_name	note
+one	ported	QPartitions.one	
+tmul	ported	QPartitions.tmul	
+oneMinus	ported	QPartitions.oneMinus	
+onePlus	ported	QPartitions.onePlus	
+divAux	ported	QPartitions.divAux	
+divOneMinus	ported	QPartitions.divOneMinus	
+eulerProd	ported	QPartitions.eulerProd	
+pentCoeff	ported	QPartitions.pentCoeff	negOnePow k written (-1) ^ k; Bool tests written as Props
+pentagonal_30	ported	QPartitions.pentagonal_30	finite check, decide +kernel
+eulerProd_30_explicit	ported	QPartitions.eulerProd_30_explicit	finite check, decide +kernel
+tma	ported	QPartitions.tma	
+eulerMA	ported	QPartitions.eulerMA	
+euler_is_multAdd_30	ported	QPartitions.euler_is_multAdd_30	finite check; the general ring statement QPartitions.one_add_multAddList_neg_pow is new
+partGen	ported	QPartitions.partGen	
+partList	ported	QPartitions.partList	
+partitions_to_50	ported	QPartitions.partitions_to_50	finite check
+euler_inverse_30	ported	QPartitions.euler_inverse_30	finite check
+ramanujan_5	ported	QPartitions.ramanujan_5	finite check
+ramanujan_7	ported	QPartitions.ramanujan_7	finite check
+ramanujan_11	ported	QPartitions.ramanujan_11	finite check
+no_ramanujan_13	ported	QPartitions.no_ramanujan_13	finite check
+isSq	mathlib	IsSquare	decidable on ℕ
+theta	ported	QPartitions.theta	uses IsSquare
+tripleProd	ported	QPartitions.tripleProd	
+triple_product_30	ported	QPartitions.triple_product_30	finite check
+sigmaStar	ported	QPartitions.sigmaStar	now ∑ d ∈ n.divisors with ¬ 4 ∣ d, d
+r4	ported	QPartitions.r4	
+jacobi_four_squares_30	ported	QPartitions.jacobi_four_squares_30	finite check
+four_squares_primes	ported	QPartitions.four_squares_primes	the general QPartitions.r4_prime (every prime) is new
+lagrange_below_30	ported	QPartitions.lagrange_below_30	now a corollary of the new QPartitions.r4_pos (every n); the actual four-square theorem is Nat.sum_four_squares in mathlib
