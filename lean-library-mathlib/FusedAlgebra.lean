@@ -31,6 +31,7 @@ public import FusedAlgebra.Topics.GeometryTrig
 public import FusedAlgebra.Topics.GravityProbeB
 public import FusedAlgebra.Topics.Infinities
 public import FusedAlgebra.Topics.InformationTheory
+public import FusedAlgebra.Topics.JetFields
 public import FusedAlgebra.Topics.Landscape
 public import FusedAlgebra.Topics.LeeYang
 public import FusedAlgebra.Topics.LeeYangCluster

@@ -1,0 +1,79 @@
+original	status	new_name	note
+WDual	ported	MultAdd.JetFields.WDual	the weight k is now a parameter of the type (WDual k), so the ring structure is an instance; MultAdd.JetFields.WDual.instCommRing is new
+wmul	ported	MultAdd.JetFields.WDual.instMul	wmul k x y is x * y in WDual k (unnamed Mul instance, part of the CommRing instance)
+wmul_comm	mathlib	mul_comm	from the CommRing (WDual k) instance
+wmul_assoc	mathlib	mul_assoc	from the CommRing (WDual k) instance
+eps_sq	ported	MultAdd.JetFields.WDual.eps_mul_eps	renamed
+units_wAdd	ported	MultAdd.JetFields.WDual.mk_one_mul_mk_one	renamed
+units_multAdd	ported	MultAdd.JetFields.WDual.units_multAdd	
+dual_units_add	ported	MultAdd.JetFields.WDual.dual_units_add	
+twoPt	ported	MultAdd.JetFields.WDual.twoPt	now a bundled ring homomorphism WDual k →+* R × R
+twoPt_mul	mathlib	map_mul	map_mul twoPt x y, since twoPt is a RingHom; the content is the map_mul' field of MultAdd.JetFields.WDual.twoPt
+twoPt_weight_zero	ported	MultAdd.JetFields.WDual.twoPt_weight_zero	
+diff_leibniz	ported	MultAdd.JetFields.WDual.diff_leibniz	
+dual_inverse	ported	MultAdd.JetFields.WDual.dual_inverse	right side ⟨1, 0⟩ is now 1
+ofTwoPt	ported	MultAdd.JetFields.WDual.ofTwoPt	
+twoPt_ofTwoPt	ported	MultAdd.JetFields.WDual.twoPt_ofTwoPt	k is implicit; bundled with the next as MultAdd.JetFields.WDual.twoPtEquiv (new)
+ofTwoPt_twoPt	ported	MultAdd.JetFields.WDual.ofTwoPt_twoPt	k is implicit
+wall_no_inverse	ported	MultAdd.JetFields.WDual.wall_no_inverse	k is implicit; right side is 1
+off_wall_inverse	ported	MultAdd.JetFields.WDual.off_wall_inverse	k is implicit; right side is 1
+Jet2	ported	MultAdd.JetFields.Jet2	MultAdd.JetFields.Jet2.instCommRing is new
+jmul	ported	MultAdd.JetFields.Jet2.instMul	jmul x y is x * y in Jet2 R (unnamed Mul instance)
+jma	mathlib	MultAdd.multAdd	x ✳ y in the ring Jet2 R
+leibniz2	ported	MultAdd.JetFields.Jet2.leibniz2	
+jma_lift	mathlib	MultAdd.one_add_multAdd	with the ring structure, ⟨1 + x.c0, x.c1, x.c2⟩ is 1 + x and the statement is the general lift
+cube_depth_two	ported	MultAdd.JetFields.Jet2.cube_depth_two	
+cube_depth_one	ported	MultAdd.JetFields.WDual.cube_depth_one	
+nilpotent_inverse	ported	MultAdd.JetFields.Jet2.nilpotent_inverse	a * a written a ^ 2; right side is 0
+M3	mathlib	Matrix (Fin 3) (Fin 3) R	
+M3.mul	mathlib	Matrix.instHMulOfFintypeOfMulOfAddCommMonoid	X * Y
+M3.step	mathlib	HSMul.hSMul	X.step h is 1 + h • X
+M3.tr	mathlib	Matrix.trace	
+M3.e2	ported	LinearAlgebraMA.e2	shared with Topics.LinearAlgebra (the original had two copies)
+det9	mathlib	Matrix.det	det9 a … i is det !![a, b, c; d, e, f; g, h, i]; Matrix.det_fin_three_of
+M3.det	mathlib	Matrix.det	
+det_one_add_smul	dropped	LinearAlgebraMA.det_one_add_smul_fin_three	duplicate of LinearAlgebraMA.M3.det_one_add_smul in the original; one theorem now
+diag3	mathlib	Matrix.diagonal	diagonal ![a, b, c]
+det_diag_cube	ported	MultAdd.JetFields.det_diag_cube	
+diag_layers	ported	MultAdd.JetFields.diag_layers	
+cayley_hamilton	ported	MultAdd.JetFields.cayley_hamilton	nine entrywise equations restated as one matrix equation X ^ 3 - trace X • X ^ 2 + e2 X • X - det X • 1 = 0; proved by direct expansion, not derived from Matrix.aeval_self_charpoly (which is the general theorem)
+tr_sq_traceless	ported	MultAdd.JetFields.tr_sq_traceless	corollary of the new MultAdd.JetFields.trace_mul_self_fin_three (no trace hypothesis)
+tr_cube_traceless	ported	MultAdd.JetFields.tr_cube_traceless	corollary of the new MultAdd.JetFields.trace_mul_mul_self_fin_three (no trace hypothesis)
+M3.vort	ported	MultAdd.JetFields.vort	now a vector Fin 3 → R
+M3.symm2	mathlib	Matrix.transpose	X.symm2 is X + Xᵀ
+vsq	mathlib	dotProduct	vsq w is w ⬝ᵥ w
+M3.fsq	ported	MultAdd.JetFields.fsq	defined as trace (X * Xᵀ), for any size
+quad	mathlib	Matrix.mulVec	quad X w is w ⬝ᵥ X *ᵥ w
+e2_vorticity_strain	ported	MultAdd.JetFields.e2_vorticity_strain	corollary of the new MultAdd.JetFields.e2_vorticity_strain_add (no trace hypothesis)
+det_vorticity_strain	ported	MultAdd.JetFields.det_vorticity_strain	
+sym_tr_cube	ported	MultAdd.JetFields.sym_tr_cube	let-binding written out
+sym_e2_sumsq	ported	MultAdd.JetFields.sym_e2_sumsq	let-binding written out
+sq_nonneg_int	mathlib	mul_self_nonneg	
+sym_e2_nonpos	ported	MultAdd.JetFields.sym_e2_nonpos	generalised from ℤ to any linearly ordered commutative ring
+dE2	ported	MultAdd.JetFields.dE2	redefined as trace X * trace Y - trace (X * Y), which expands to the original formula; e2_expand checks it
+dDet	ported	MultAdd.JetFields.dDet	∑ i, det (X.updateRow i (Y i)), for any size
+M3.addS	mathlib	HSMul.hSMul	X.addS Y t is X + t • Y
+e2_expand	ported	MultAdd.JetFields.e2_expand	
+det_expand	ported	MultAdd.JetFields.det_expand	
+reStep	ported	MultAdd.JetFields.reStep	(-3) • (X * X) + trace (X * X) • 1
+re_traceless	ported	MultAdd.JetFields.re_traceless	
+re_dQ	ported	MultAdd.JetFields.re_dQ	
+re_dR	ported	MultAdd.JetFields.re_dR	
+re_conserved	ported	MultAdd.JetFields.re_conserved	
+M2	mathlib	Matrix (Fin 2) (Fin 2) R	
+M2.mul	mathlib	Matrix.instHMulOfFintypeOfMulOfAddCommMonoid	
+M2.tr	mathlib	Matrix.trace	
+M2.det	mathlib	Matrix.det	
+det2_step	dropped	LinearAlgebraMA.det_one_add_smul_fin_two	the same statement: det (1 + h • X) = 1 + h * trace X + h ^ 2 * det X (the original wrote the determinant out entrywise)
+tr_cube_2d	ported	MultAdd.JetFields.tr_cube_2d	
+re2_frozen	ported	MultAdd.JetFields.re2_frozen	four entrywise equations restated as one matrix equation
+d1	ported	MultAdd.JetFields.d1	kept; MultAdd.JetFields.d1_eq_fwdDiff (new) links it to mathlib's fwdDiff
+d2	ported	MultAdd.JetFields.d2	kept; MultAdd.JetFields.d2_eq_fwdDiff (new) links it to mathlib's fwdDiff
+minor	ported	MultAdd.JetFields.minor	
+shift_is_corner	ported	MultAdd.JetFields.shift_is_corner	
+minor_is_divergence	ported	MultAdd.JetFields.minor_is_divergence	
+sumTo	mathlib	Finset.sum	∑ k ∈ Finset.range n, f k
+sumTo_sub	mathlib	Finset.sum_sub_distrib	
+sumTo_telescope	mathlib	Finset.sum_range_sub	
+sumTo_congr	mathlib	Finset.sum_congr	
+box_minor_zero	ported	MultAdd.JetFields.box_minor_zero	sums are Finset sums over range n
