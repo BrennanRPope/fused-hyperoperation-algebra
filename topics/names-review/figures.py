@@ -147,3 +147,36 @@ for i, (g, note, fc) in enumerate(rows):
 ax.text(5, 0.25, "Recommended: a ◯ b for k = 1 and a ◯[k] b in Lean", ha="center", fontsize=10, weight="bold", color="#1e8449")
 fig.suptitle("Figure 4. The circle operation, generalized: ∘ₖ on the page, ◯[k] in Lean", fontsize=13, weight="bold", y=1.0)
 fig.tight_layout(); fig.savefig(os.path.join(HERE, "fig4-circle-operation.png"), dpi=130, bbox_inches="tight"); plt.close(fig)
+
+# ---------- Fig 5: is the circle operation a "path" construction?
+fig, axes = plt.subplots(1, 2, figsize=(14.5, 6.2), gridspec_kw={"width_ratios": [1, 1.15]})
+ax = axes[0]; ax.axis("off"); ax.set_xlim(0, 10); ax.set_ylim(0, 10)
+ax.set_title("A chain of 4 steps, composed with ∘₁, keeps all 15 ordered sub-chains", weight="bold", fontsize=10.5)
+steps = ["a", "b", "c", "d"]
+for i, s_ in enumerate(steps):
+    box(ax, 1.6 + 2.2*i, 9.0, 1.2, 0.7, s_, "#d6eaf8")
+    if i < 3: arrow(ax, (2.25 + 2.2*i, 9.0), (2.95 + 2.2*i, 9.0), "", "#1f618d")
+import itertools
+lv = {1: [], 2: [], 3: [], 4: []}
+for r in range(1, 5):
+    for c in itertools.combinations(steps, r): lv[r].append("".join(c))
+ys = {1: 7.5, 2: 6.0, 3: 4.5, 4: 3.0}
+for r in range(1, 5):
+    ax.text(0.05, ys[r], f"length {r}:", fontsize=9, va="center", color="#555")
+    ax.text(1.6, ys[r], "   ".join(lv[r]), fontsize=10.5, va="center", family="DejaVu Sans Mono")
+ax.text(5, 1.9, "a ∘₁ b ∘₁ c ∘₁ d = the sum of all of them, in order\n(chain4_landscape, proved in Lean, non-commutative ring)", ha="center", fontsize=9.5)
+ax.text(5, 0.6, "With dial k, a sub-chain of length m is weighted k^(m−1): k = 0 keeps only the single steps.",
+        ha="center", fontsize=9, style="italic")
+
+ax = axes[1]; ax.axis("off"); ax.set_xlim(0, 10); ax.set_ylim(0, 10)
+ax.set_title("Where it sits: inside the existing \"keep the whole path\" constructions", weight="bold", fontsize=10.5)
+box(ax, 5, 8.6, 6.4, 1.1, "Path algebra / free category (quivers)\nand Chen–Lyons path signatures: the whole path, nothing lost", "#d5f5e3")
+box(ax, 5, 5.6, 6.4, 1.1, "Our chain composite (1+a)(1+b)(1+c)(1+d) − 1\n= strict iterated sums (discrete signature); k = dilation", "#d6eaf8")
+box(ax, 5, 2.6, 6.4, 1.1, "The same composite over numbers:\none number, order forgotten (1 ∘₁ 2 = 2 ∘₁ 1 = 5)", "#fdebd0")
+arrow(ax, (5, 8.0), (5, 6.2), "a special case of", "#1e8449", off=(0.2, 0), ha="left")
+arrow(ax, (5, 5.0), (5, 3.2), "evaluate in numbers\n(loses order)", "#ba4a00", off=(0.2, 0), ha="left")
+box(ax, 1.3, 0.8, 2.4, 0.9, "Homotopy paths:\nunrelated", "#eeeeee")
+box(ax, 8.7, 0.8, 2.6, 0.9, "Path integrals:\nchecked separately", "#eeeeee")
+fig.suptitle("Figure 5. \"Path theory\": ours is a case of the path constructions, not the other way round",
+             fontsize=13, weight="bold", y=1.0)
+fig.tight_layout(); fig.savefig(os.path.join(HERE, "fig5-path-names.png"), dpi=130, bbox_inches="tight"); plt.close(fig)

@@ -48,3 +48,47 @@ words. They are mapped to the standard names and first sources in the credit glo
 - If 1.0 adopts a rename, this page keeps both rows, marked with the version each one applies to, so 0.1.0 readers can
   still follow.
 - Add a row whenever a new collision is found. Note the date and where it was found.
+
+## Proposed framework name: "path theory" (checked 2026-11-25, not adopted)
+
+Brennan asked whether "path theory" could name the whole framework, since its big idea is that a chain of compositions
+keeps its whole landscape, not just each step's result. He said the name is fine if the existing "path" fields turn out
+to be special cases of ours, and that this needs checking. Path integrals are being checked separately. The other three
+are below.
+
+**Verdict: none of them is a special case of ours. Two of them contain ours as a special case, and the third is
+unrelated.** Our idea is a case of theirs, not the other way round.
+
+![Figure 5](topics/names-review/fig5-path-names.png)
+
+| Field | What "path" means there | How it relates to ours |
+|---|---|---|
+| Path algebras and free categories (quiver representation theory; Gabriel 1972; Mac Lane's free category on a graph) | Formal sums of paths in a directed graph, multiplied by joining them end to end. Every path is kept as its own basis element, so nothing is lost. | **Ours is inside theirs.** Over a non-commutative ring, the circle composite of a chain is (1 + a)(1 + b)(1 + c)(1 + d) − 1, which equals the sum of every ordered sub-chain, each once (`chain4_landscape`, Lean). That is one particular element of the path algebra of a one-vertex quiver (the free algebra on the steps). The path algebra holds every path; ours picks out one combination. |
+| Path signatures and rough paths (Chen 1957; Lyons 1998; Hambly and Lyons 2010) | The signature of a path is the sequence of all its iterated integrals, and Chen's identity says that joining paths multiplies signatures. A path is determined by its signature up to "tree-like" detours (Hambly–Lyons). | **Ours is a case of theirs.** In the tensor algebra, the circle composite of a chain is the strict iterated sums of the steps, the discrete form of the signature (the iterated-sums signature of Diehl, Ebrahimi-Fard and Tapia, on words of single letters). As the steps shrink along a smooth path, these sums tend to Chen's iterated integrals. Our dial k weights a sub-chain of length m by k^(m−1) (`chain3_dial`, Lean), which is the graded dilation that rough-path theory already uses, divided by k. |
+| Homotopy paths and the path groupoid (topology) | Paths in a space, joined end to end and counted only up to continuous deformation. | **Unrelated.** Homotopy deliberately forgets almost everything about a path except its class, which is the opposite of keeping the whole landscape. Our circle-operation group has a path groupoid like any space does, but nothing in the framework adds to or comes from it. |
+
+**One honest caution about "nothing lost".** The landscape is kept only when the circle operation is computed in a
+non-commutative setting, such as the free algebra, matrices or operators. Over ordinary numbers the composite is a single
+number, and different chains give the same answer: 1 ∘₁ 2 = 2 ∘₁ 1 = 5 (`scalar_shadow`, Lean). Swapping two steps
+changes the composite by exactly k times their commutator (`circ_swap`, Lean), so order survives only where steps
+don't commute. The lossless version of the idea is the free one, which is exactly where path algebras and signatures
+already live.
+
+**Collision cost of the name, whatever the verdict.** "Rough path theory" is already the name of a field, so
+"path theory" reads as that field or its parent. "Path" also already names path algebras, path categories, path
+groupoids and path spaces, path integrals, and GLMY path homology of directed graphs (Grigor'yan, Lin, Muranov and Yau).
+Searches for the name would mostly find those. Taking it would also suggest that those fields sit under this one, and
+the check above shows they don't.
+
+**Alternatives that follow the literature:**
+1. **Keep naming the framework by its operation:** "the weighted circle operation" (ring theory; Coleman and
+   McGuinness for the two-dial family). This is accurate, and it matches the 1.0 rename plan.
+2. **For the whole-chain idea, use the signature's language:** describe it as "the signature of a chain under the
+   circle operation", citing Chen, Lyons and Diehl–Ebrahimi-Fard–Tapia. This places the idea where the literature
+   already has the tools: uniqueness, the shuffle algebra, and machine-learning uses.
+3. **For "nothing lost" as a principle, the standard mathematical word is "free":** free monoid, free category, free
+   algebra. In database theory, the same idea of keeping a record of how a result was composed is "provenance"
+   (Green, Karvounarakis and Tannen, "Provenance semirings", PODS 2007).
+
+Lean for this section: `lean/PathNames.lean` (core Lean 4.37, no `sorry`, standard axioms): `circ_one_assoc`,
+`chain4_landscape`, `chain3_dial`, `circ_swap`, `scalar_shadow`.
