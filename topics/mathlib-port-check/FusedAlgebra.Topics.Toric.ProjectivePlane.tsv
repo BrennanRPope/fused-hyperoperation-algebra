@@ -1,0 +1,20 @@
+original	new_name	verdict	confidence	reason
+MultAdd.Toric.P2.chart_injective	MultAdd.Toric.P2.chart_injective	EQUIV	high	∀ v w, chart c v = chart c w → v = w restated as Function.Injective (chart c); same. Charts identical case by case.
+MultAdd.Toric.P2.chart_cover	MultAdd.Toric.P2.chart_cover	SAME	high	Identical (P2 renamed Plane, same type (K×K) ⊕ Option K).
+MultAdd.Toric.P2.chart_trans	MultAdd.Toric.P2.chart_trans	SAME	high	Identical; trans and Dom tables identical entry by entry. route: grind -> field_simp.
+MultAdd.Toric.P2.inChart_iff	MultAdd.Toric.P2.inChart_iff	SAME	high	Identical.
+MultAdd.Toric.P2.trans_cocycle	MultAdd.Toric.P2.trans_cocycle	SAME	high	Identical hypotheses (Dom c d v, Dom c e v) and conclusion; same proof via injectivity.
+MultAdd.Toric.P2.origin_in_one_chart	MultAdd.Toric.P2.origin_in_one_chart	SAME	high	Identical.
+MultAdd.Toric.P2.torus_in_all	MultAdd.Toric.P2.torus_in_all	SAME	high	Identical.
+MultAdd.Toric.P2.trans01_multAdd	MultAdd.Toric.P2.trans01_multAdd	SAME	high	multAdd w (multAddInv u) -> w ✳ multAddInv u; multAddInv = -u/(1+u) in both. route: grind -> library lemmas one_add_multAdd, inv_one_add.
+MultAdd.Toric.P2.trans02_multAdd	MultAdd.Toric.P2.trans02_multAdd	SAME	high	Same as above for c0 -> c2.
+MultAdd.Toric.P2.inv_inv'	inv_inv	MATHLIB	high	(x⁻¹)⁻¹ = x is mathlib inv_inv (InvolutiveInv, any field).
+MultAdd.Toric.P2.inv_ne	inv_ne_zero	MATHLIB	high	x ≠ 0 → x⁻¹ ≠ 0 is mathlib inv_ne_zero.
+MultAdd.Toric.P2.inv_pow'	inv_pow	MATHLIB	high	(x⁻¹)^n = (x^n)⁻¹ is mathlib inv_pow.
+MultAdd.Toric.P2.pow_succ_eq_zero	pow_eq_zero_iff	MATHLIB	high	x^(n+1) = 0 ↔ x = 0 is pow_eq_zero_iff (n.succ_ne_zero) in a MonoidWithZero with NoZeroDivisors; fields qualify.
+MultAdd.Toric.P2.trans_wind	MultAdd.Toric.P2.trans_wind	SAME	high	pw n v -> v ^ n in the monoid K × K, which is componentwise (Prod.pow_mk); same statement.
+MultAdd.Toric.P2.chart_wind	MultAdd.Toric.P2.chart_wind	EQUIV	high	Exponent n+1 replaced by any n with n ≠ 0; equivalent. (n = 0 really fails, so the hypothesis is needed in both.)
+MultAdd.Toric.P2.fan_count	MultAdd.Toric.P2.fan_count	GENERAL	high	ℕ -> any commutative semiring; same identity a^2+3a+3 = (a+1)^2+(a+1)+1.
+def P2	MultAdd.Toric.P2.Plane	SAME	high	Renamed only; same type (K × K) ⊕ Option K with same reading of points.
+def chart/trans/Dom/InChart/wind/Cone	same names	SAME	high	Bodies identical, read case by case.
+def pw	v ^ n on K × K	SAME	high	Prod power is componentwise: (a,b)^n = (a^n, b^n).

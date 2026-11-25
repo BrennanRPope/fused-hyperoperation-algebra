@@ -1,0 +1,29 @@
+original	new_name	verdict	confidence	reason
+tau2_is_wAdd	SolitonsRungs.tau2_eq_one_add_wAdd	GENERAL	high	ℤ → any CommRing, same identity
+tau2_free	SolitonsRungs.tau2_free	GENERAL	high	ℤ → any CommRing, same identity
+tau2_merge	SolitonsRungs.tau2_merge	GENERAL	high	ℤ → any CommRing, same identity
+tau2_scaled	SolitonsRungs.mul_tau2_sub_one	GENERAL	high	ℤ → any CommRing, same identity; proved from mul_wAdd (Base wAdd_scale), as the original noted
+tau2_excess	SolitonsRungs.tau2_excess	GENERAL	high	ℤ → any CommRing, same identity
+tau3_free	SolitonsRungs.tau3_free	GENERAL	high	ℤ → any CommRing, same identity
+tau3_splits	SolitonsRungs.tau3_splits	GENERAL	high	ℤ → any CommRing, same identity
+tau3_equal_corner	SolitonsRungs.tau3_equal_corner	GENERAL	high	ℤ → any CommRing, same identity; k*k*k as k^3
+wAdd_three_corner	SolitonsRungs.wAdd_three_corner	GENERAL	high	ℤ → any CommRing, same identity; k*k as k^2
+soliton_vs_wAdd_corner	SolitonsRungs.soliton_vs_wAdd_corner	GENERAL	high	ℤ → CommRing with NoZeroDivisors (ℤ has it); k^3 = k^2 ↔ k = 0 ∨ k = 1
+three_body_roads	SolitonsRungs.three_body_roads	GENERAL	high	ℤ → any CommRing, same identity
+rung_three_body	SolitonsRungs.rung_three_body	GENERAL	high	ℤ → any CommRing, same identity
+rung_three_body_zero	SolitonsRungs.rung_three_body_zero	GENERAL	high	ℤ → CommRing with NoZeroDivisors
+four_body_roads	SolitonsRungs.four_body_roads	GENERAL	high	ℤ → any CommRing, same identity; quartic 2s^4+2s^3+2s^2-4s+1 same
+four_body_half	SolitonsRungs.four_body_half	EQUIV	medium	orig: bare ℤ numeral fact 2+4+8-32+16 = -2 (16× quartic at s=1/2 with S=2s=1); port: quartic at 1/2 in ℚ = -1/8. Consistent (16·-1/8 = -2); states what the docstring meant
+tri_nonneg	SolitonsRungs.tri_nonneg	SAME	high	still ℤ
+tri_zero_iff	SolitonsRungs.tri_zero_iff	GENERAL	high	ℤ → CommRing with NoZeroDivisors; still defined as rung_three_body_zero
+face_iff	SolitonsRungs.face_iff	SAME	high	still ℤ. route: add_eq_zero_iff_of_nonneg instead of omega
+theta2_face	SolitonsRungs.theta2_face	GENERAL	high	ℤ → any CommRing, same identity; theta2 is the same polynomial (see def row)
+theta2_free_face	SolitonsRungs.theta2_free_face	GENERAL	high	ℤ → any CommRing, same identity
+glue_is_multAdd	SolitonsRungs.glue_is_multAdd	GENERAL	high	ℤ → any CommRing, same identity
+orbit_product	SolitonsRungs.orbit_product	GENERAL	high	ℤ → any CommRing, same identity; w * q ✳ v * q parses as (w*q) ✳ (v*q)
+orbit_product_q0	SolitonsRungs.orbit_product_q0	GENERAL	high	ℤ → any CommRing, same identity
+kdv_weight_below_one	SolitonsRungs.kdv_weight_below_one	GENERAL	high	ℤ → linearly ordered comm ring (IsStrictOrderedRing); same hypotheses 0<k1, 0<k2
+kdv_weight_nonneg	sq_nonneg	MATHLIB	high	sq_nonneg (k1 - k2): 0 ≤ (k1-k2)^2 (mul_self_nonneg is the literal x*x form). route: his case-split proof replaced by mathlib
+kdv_weight_zero	SolitonsRungs.kdv_weight_zero	GENERAL	high	ℤ → CommRing NoZeroDivisors; square as ^2. route: sq_eq_zero_iff
+def tau2/tau3	SolitonsRungs.tau2, tau3	EQUIV	high	same polynomials, ℤ → CommRing
+def theta2	SolitonsRungs.theta2	EQUIV	high	double Finset sum over range 4 with q^(n(n-1)/2) (ℕ); exponents 0,0,1,3 and 0^0=1 match the orig r-table (1,1,q,q^3) incl. at q=0

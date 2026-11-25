@@ -1,0 +1,114 @@
+original	new_name	verdict	confidence	reason
+IsInd	IsIdempotentElem	MATHLIB	high	Both are x * x = x.
+unionL	StatFused.unionL	GENERAL	high	foldr (wAdd (-1)) 0 has the same recursion as the original; ℚ → comm ring.
+Ex	StatFused.expect	GENERAL	high	Sum over the list of w * f a, the same terms as the recursive Ex; ℚ → comm ring.
+sgn	(-1) ^ g.length	DROPPED-OK	high	sgn [] = 1, sgn (_::l) = -sgn l, which is (-1)^length.
+allOf	StatFused.allOf	GENERAL	high	Same product of A a over g.
+gen / nshift / nconv / nbern	StatFused.gen etc.	GENERAL	high	gen = Σ w * t^x (pw = pow); nconv via flatMap has the same cons recursion (nconv_cons is rfl); nbern is the same.
+heads / foldW / binom	StatFused.heads etc.	GENERAL	high	foldr forms with the same base cases [(0,1)] and 0; binom is the same.
+pEven / pOdd / pZero	StatFused.pEven etc.	GENERAL	high	x % 2 = 0 is now Even x (equivalent on ℕ); pZero is the same.
+litCorners	StatFused.litCorners	GENERAL	high	rsum over (x+1) of layer x j * k^j is now a Finset sum over range (x+1) of choose; same terms.
+bp	StatFused.bp	GENERAL	high	Identical recursion; ℚ → comm ring.
+mass / m1 / m2 / m3 / m4	StatFused.moment 0..4	EQUIV	high	moment r d = Σ w * x^r; r = 0 gives Σ w (x^0 = 1), and r = 1..4 match w*x, w*(x*x), ... exactly.
+shift / conv / point0 / convPow / scale	StatFused.shift etc.	GENERAL	high	Same definitions; conv via flatMap has the same cons recursion; point0 = [(0,1)] is inlined in convPow 0.
+k2 / k3 / k4	StatFused.k2 / k3 / k4	GENERAL	high	Same polynomials in the moments, with ^ in place of repeated products.
+skewSq / kurt	StatFused.skewSq / kurt	GENERAL	high	k3^2/k2^3 and k4/k2^2 over any field; the same as the original.
+bern / odds / pool / amh / lens	StatFused.bern etc.	GENERAL	high	Identical formulas, generalised from ℚ to a ring or field.
+StatFused.ind_cases	IsIdempotentElem.iff_eq_zero_or_one	MATHLIB	medium	Mathlib: with no zero divisors, idempotent ↔ a = 0 ∨ a = 1; ℚ qualifies. Not restated in the port. Settle: #check IsIdempotentElem.iff_eq_zero_or_one.
+StatFused.and_ind	IsIdempotentElem.mul	MATHLIB	high	In a commutative setting the product of idempotents is idempotent.
+StatFused.not_ind	IsIdempotentElem.one_sub	MATHLIB	high	1 - p is idempotent if p is.
+StatFused.or_ind	StatFused.or_ind	GENERAL	high	ℚ → comm ring; the hypotheses are the same x*x = x. Over ℚ the original went by 0/1 cases; the port proves it for all idempotents.
+StatFused.xor_ind	StatFused.xor_ind	GENERAL	high	ℚ → comm ring, for all idempotents; same statement.
+StatFused.or_table	StatFused.or_table	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.xor_table	StatFused.xor_table	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.count_table	StatFused.count_table	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.de_morgan	StatFused.de_morgan	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.de_morgan_and	StatFused.de_morgan_and	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.xor_complement	StatFused.xor_complement	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.sq_diff_is_xor	StatFused.sq_diff_is_xor	GENERAL	high	ℚ → any comm ring; same statement, with idempotent hypotheses.
+StatFused.union_misses	StatFused.one_sub_unionL	GENERAL	high	Renamed; prodL is now List.prod; ℚ → any comm ring; same statement.
+StatFused.union_neg_foldMA	StatFused.unionL_eq_neg_multAddList	GENERAL	high	Renamed; foldMA = multAddList; ℚ → any comm ring; same statement.
+StatFused.inclusion_exclusion	StatFused.inclusion_exclusion	GENERAL	high	groups is literally sublists' (same cons recursion), sumL is List.sum and prodL is List.prod; ℚ → any comm ring; same statement.
+StatFused.groups_map	List.sublists'_map	MATHLIB	high	sublists' (map f l) = map (map f) (sublists' l); groups = sublists'.
+StatFused.incl_excl_two	StatFused.unionL_pair	GENERAL	high	Renamed; ℚ → any comm ring; same statement.
+StatFused.Ex_add	StatFused.expect_add	GENERAL	high	Renamed; ℚ → any comm ring; same statement (sumL is List.sum).
+StatFused.Ex_sub	StatFused.expect_sub	GENERAL	high	Renamed; ℚ → any comm ring; same statement (sumL is List.sum).
+StatFused.Ex_smul	StatFused.expect_const_mul	GENERAL	high	Renamed; ℚ → any comm ring; same statement (sumL is List.sum).
+StatFused.Ex_const	StatFused.expect_const	GENERAL	high	Renamed; ℚ → any comm ring; same statement (sumL is List.sum).
+StatFused.Ex_sumL	StatFused.expect_list_sum	GENERAL	high	Renamed; ℚ → any comm ring; same statement (sumL is List.sum).
+StatFused.Ex_congr	(dropped) funext	DROPPED-OK	high	A trivial congruence for Ex under pointwise-equal functions; funext/congr covers it.
+StatFused.union_general	StatFused.union_general	GENERAL	high	ℚ → any comm ring; same statement, same lift hypothesis where present.
+StatFused.union_lift	StatFused.union_lift	GENERAL	high	ℚ → any comm ring; same statement, same lift hypothesis where present.
+StatFused.union_disjoint	StatFused.union_disjoint	GENERAL	high	ℚ → any comm ring; same statement, same lift hypothesis where present.
+StatFused.xor_lift	StatFused.xor_lift	GENERAL	high	ℚ → any comm ring; same statement, same lift hypothesis where present.
+StatFused.cov_is_corner_excess	StatFused.cov_is_corner_excess	GENERAL	high	ℚ → any comm ring; same statement, same lift hypothesis where present.
+StatFused.prodL_neg_sgn	List.prod_map_neg	MATHLIB	high	(l.map Neg.neg).prod = (-1)^l.length * l.prod, with sgn g = (-1)^length.
+StatFused.union_corners	StatFused.union_corners	GENERAL	high	sgn g is written (-1)^g.length; groups = sublists'; ℚ → any comm ring; same statement.
+StatFused.sgn_map	List.length_map	MATHLIB	high	With sgn = (-1)^length, sgn (map f g) = sgn g reduces to length_map.
+StatFused.inclusion_exclusion_general	StatFused.inclusion_exclusion_general	GENERAL	high	Same, with (-1)^length for sgn; ℚ → comm ring.
+StatFused.gen_append	StatFused.gen_append	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.gen_nshift	StatFused.gen_nshift	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.gen_conv	StatFused.gen_nconv	GENERAL	high	Renamed; ℚ → any comm ring; same statement.
+StatFused.kmoment_law	StatFused.kmoment_law	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.bern_kmoment	StatFused.bern_kmoment	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.heads_kmoment	StatFused.heads_kmoment	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.heads_none	StatFused.heads_none	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.heads_parity	StatFused.heads_parity	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.gen_neg_one	StatFused.gen_neg_one	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.gen_zero	StatFused.gen_zero	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.binom_kmoment	StatFused.binom_kmoment	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.gen_is_lit_corners	StatFused.gen_eq_litCorners	GENERAL	high	Renamed; ℚ → any comm ring; same statement.
+StatFused.pw_neg_one_parity	neg_one_pow_eq_ite (Even/Odd.neg_one_pow)	MATHLIB	medium	(-1)^n = if Even n then 1 else -1, with Even n ↔ n % 2 = 0. The port itself uses Even.neg_one_pow/Odd.neg_one_pow. Settle: #check neg_one_pow_eq_ite.
+StatFused.bp_layers	StatFused.bp_layers	GENERAL	high	Hypothesis j ≤ n dropped. Still true: above the diagonal choose n j = 0 and bp = 0. Pascal case uses choose_succ_succ'. ℚ → comm ring.
+StatFused.bp_zero_col	StatFused.bp_zero_col	GENERAL	high	pw q n = q^n; ℚ → comm ring. route: his own induction → corollary of bp_layers (still his lemma).
+StatFused.bp_above	StatFused.bp_above	GENERAL	high	Same n < j → 0; ℚ → comm ring. route: his own induction → corollary of bp_layers plus choose_eq_zero_of_lt.
+StatFused.mass_append	StatFused.moment_append	GENERAL	high	moment_append for every r; r = 0 is the original.
+StatFused.m1_append	StatFused.moment_append	GENERAL	high	moment_append for every r; r = 1 is the original.
+StatFused.m2_append	StatFused.moment_append	GENERAL	high	moment_append for every r; r = 2 is the original.
+StatFused.m3_append	StatFused.moment_append	GENERAL	high	moment_append for every r; r = 3 is the original.
+StatFused.m4_append	StatFused.moment_append	GENERAL	high	moment_append for every r; r = 4 is the original.
+StatFused.mass_shift	StatFused.moment_shift	GENERAL	high	r = 0: w * (choose 0 0 * x^0 * moment 0 e) = w * mass e. General Pascal-row form for every r.
+StatFused.m1_shift	StatFused.moment_shift	GENERAL	high	r = 1: w*(x*mass + m1); the coefficients and x^(r-j) match.
+StatFused.m2_shift	StatFused.moment_shift	GENERAL	high	r = 2: w*(x^2 mass + 2x m1 + m2); matches.
+StatFused.m3_shift	StatFused.moment_shift	GENERAL	high	r = 3: 1,3,3,1 with x^3, x^2, x, 1; matches.
+StatFused.m4_shift	StatFused.moment_shift	GENERAL	high	r = 4: 1,4,6,4,1 with x^4..1; matches.
+StatFused.mass_conv	StatFused.moment_zero_conv	GENERAL	high	moment 0 (conv d e) = moment 0 d * moment 0 e; ℚ → comm ring. route: corollary of the new general moment_conv.
+StatFused.m1_conv	StatFused.moment_one_conv	GENERAL	high	Same terms m1 d*mass e + mass d*m1 e. route: from the general moment_conv.
+StatFused.m2_conv	StatFused.moment_two_conv	GENERAL	high	Same row 1 2 1 in the same order (moment (r-j) d * moment j e). route: from moment_conv.
+StatFused.m3_conv	StatFused.moment_three_conv	GENERAL	high	Same row 1 3 3 1. route: from moment_conv.
+StatFused.m4_conv	StatFused.moment_four_conv	GENERAL	high	Same row 1 4 6 4 1. route: from moment_conv.
+StatFused.mean_add	StatFused.mean_add	GENERAL	high	mass = 1 hypotheses are now moment 0 = 1; ℚ → any comm ring; same statement.
+StatFused.var_add	StatFused.var_add	GENERAL	high	mass = 1 hypotheses are now moment 0 = 1; ℚ → any comm ring; same statement.
+StatFused.k3_add	StatFused.k3_add	GENERAL	high	mass = 1 hypotheses are now moment 0 = 1; ℚ → any comm ring; same statement.
+StatFused.k4_add	StatFused.k4_add	GENERAL	high	mass = 1 hypotheses are now moment 0 = 1; ℚ → any comm ring; same statement.
+StatFused.convPow_mass	StatFused.convPow_mass	GENERAL	high	Same, with hypothesis moment 0 d = 1 and n cast into R; ℚ → comm ring.
+StatFused.convPow_mean	StatFused.convPow_mean	GENERAL	high	Same, with hypothesis moment 0 d = 1 and n cast into R; ℚ → comm ring.
+StatFused.convPow_k2	StatFused.convPow_k2	GENERAL	high	Same, with hypothesis moment 0 d = 1 and n cast into R; ℚ → comm ring.
+StatFused.convPow_k3	StatFused.convPow_k3	GENERAL	high	Same, with hypothesis moment 0 d = 1 and n cast into R; ℚ → comm ring.
+StatFused.convPow_k4	StatFused.convPow_k4	GENERAL	high	Same, with hypothesis moment 0 d = 1 and n cast into R; ℚ → comm ring.
+StatFused.scale_m	StatFused.moment_scale	GENERAL	high	A 5-part conjunction, now one lemma for every r (c^0 = 1 covers mass; c^2 = c*c, etc.).
+StatFused.scale_k	StatFused.k2_scale, k3_scale, k4_scale	EQUIV	high	Conjunction split into three lemmas, all present; ℚ → comm ring.
+StatFused.skewSq_scale	StatFused.skewSq_scale	GENERAL	high	ℚ → any field; same statement; hc : c ≠ 0 kept.
+StatFused.kurt_scale	StatFused.kurt_scale	GENERAL	high	ℚ → any field; same statement; hc : c ≠ 0 kept.
+StatFused.clt_skew	StatFused.clt_skew	GENERAL	high	ℚ → field of char 0 (automatic for ℚ); 0 < n is now n ≠ 0 (same on ℕ); hd and hk are the same.
+StatFused.clt_kurt	StatFused.clt_kurt	GENERAL	high	ℚ → char-0 field; 0 < n → n ≠ 0; same.
+StatFused.bern_stats	StatFused.moment_zero_bern, moment_one_bern, k2_bern, k3_bern, k4_bern	EQUIV	high	5-part conjunction split into five lemmas, all present with the same formulas; ℚ → comm ring.
+StatFused.bern_var_parity	StatFused.bern_var_parity	GENERAL	high	ℚ → field with NeZero 2 (automatic for ℚ); same.
+StatFused.binom_mean_var	StatFused.binom_mean_var	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.fair_coin_kurt	StatFused.fair_coin_kurt	GENERAL	high	ℚ → char-0 field; 0 < n → n ≠ 0; same -2.
+StatFused.bayes_odds	StatFused.bayes_odds	GENERAL	high	Drops p ≠ 0 and lH ≠ 0. Still true: both sides are p*lH/((1-p)*lN) given D ≠ 0, 1-p ≠ 0, lN ≠ 0. Keeps p ≠ 1, lN ≠ 0, hden. ℚ → field.
+StatFused.evidence_multAdd	StatFused.evidence_multAdd	GENERAL	high	✳ is infixl, so it is left-nested as in the original; ℚ → any comm ring; same statement.
+StatFused.repeated_evidence	StatFused.repeated_evidence	GENERAL	high	ℚ → any comm ring; same statement. route: via mpow_eq instead of mpow_lift (both his Base lemmas).
+StatFused.complement_is_inverse	StatFused.complement_is_inverse	GENERAL	high	multAddInv is the same -u/(1+u); ℚ → any field; same statement.
+StatFused.complement_cancels	StatFused.complement_cancels	GENERAL	high	ℚ → any field; same statement.
+StatFused.pool_velocity	StatFused.pool_velocity	GENERAL	high	ℚ → field with NeZero 2 (automatic for ℚ); same.
+StatFused.pool_odds	StatFused.pool_odds	GENERAL	high	ℚ → any field; same statement.
+StatFused.amh_union_is_lens	StatFused.amh_union_is_lens	GENERAL	high	ℚ → any field; same statement.
+StatFused.amh_walls	StatFused.amh_walls	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.amh_lens_multiplies	StatFused.amh_lens_multiplies	GENERAL	high	ℚ → any field; same statement.
+StatFused.amh_independent	StatFused.amh_independent	GENERAL	high	ℚ → any field; same statement.
+StatFused.amh_velocity	StatFused.amh_velocity	GENERAL	high	ℚ → any field; same statement.
+StatFused.amh_cusp	StatFused.amh_cusp	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.amh_line	StatFused.amh_line	GENERAL	high	ℚ → any comm ring; same statement.
+StatFused.certainty_absorbs_iff	StatFused.certainty_absorbs_iff	GENERAL	high	ℚ → any field; same statement, same hypotheses a ≠ 0, 1 - q*a*1 ≠ 0.
+StatFused.amh_zero	StatFused.amh_zero	GENERAL	high	ℚ → any field; same statement.

@@ -6,10 +6,11 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 2,783 theorems, 110 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 2,801 theorems, 111 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
+| Mathlib port check: does the port on the `mathlib-port` branch prove the same 1,750 theorems? (read side by side, not compiled) | `topics/mathlib-port-check/` | no page |
 | Common patterns pass | `topics/patterns/` | no page yet |
 
 ## Foundations
@@ -39,6 +40,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Information theory | `topics/information-theory/` | [page](https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v) |
 | Fractional power sets and choice grades | `topics/fractional-powerset/` | [page](https://claude.ai/artifact/94mPKskoy8QKXDumoDjRb7) |
 | Power set dials: one dial per element (merging, complement, primes, other sets) | `topics/fractional-powerset-dials/` | [page](https://claude.ai/artifact/27MDnoDnLAMxUUmWGADYk9) |
+| Dial survey: the five dials, and k acting on per-element dials and on the primes | `topics/dial-survey/` | [page](https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr) |
 
 ## Fourteen branches of math
 
@@ -92,6 +94,8 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Twisted boosts and Gravity Probe B | `topics/twisted-boosts/` | no page yet |
 | General relativity through mult-add | `topics/general-relativity/` | [page](https://claude.ai/artifact/SHrK88RpTBLLfTaeAxgi37) |
 | Lee–Yang zeros (cluster test, fill-then-spill) | `topics/lee-yang/` | [page](https://claude.ai/artifact/UQQzmkzekxe2hL4m8F8NQL) |
+| Point processes on the dial (fermions, Poisson, bosons as k = −1, 0, 1) | `topics/dial-point-processes/` | page source `index.html` in the folder |
+| Diamond hierarchical lattice on the landscape (Potts model, Julia sets) | `topics/diamond-lattice/` | page source `index.html` in the folder |
 | Thermodynamics | `topics/thermodynamics/` | [page](https://claude.ai/artifact/SKKLwKiEg4nyYGfrw32sp5) |
 | Entropy and quantum noise | `topics/entropy-noise/` | [page](https://claude.ai/artifact/1To24w7SazEuaE5Pjsj4YM) |
 | Quantum noise | `topics/quantum-noise/` | [page](https://claude.ai/artifact/X6u4iNGch19w41ioqJ5VoW) |

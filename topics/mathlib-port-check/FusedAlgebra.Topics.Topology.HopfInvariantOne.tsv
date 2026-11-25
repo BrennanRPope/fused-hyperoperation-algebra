@@ -1,0 +1,26 @@
+original	new_name	verdict	confidence	reason
+OneMod (def)	multiplicity 2 (x - 1) = j	EQUIV	high	for j>=1 (all uses) x=2^j*odd+1 <-> multiplicity 2 (x-1)=j; they differ only at j=0,x=1 (multiplicity 2 0 = 0), never used
+Elt (def)	MultAdd.HopfOne.Elt	SAME	high	same structure over Z
+psi (def)	MultAdd.HopfOne.psi	SAME	high	identical formula
+IsOdd (def)	Odd	EQUIV	high	Odd y := exists m, y = 2*m+1; identical
+Trunc (def)	MultAdd.HopfOne.Trunc	SAME	high	same structure; now a NonUnitalCommRing with mul ⟨0, p.α*q.α⟩ (x^3=0), checked associative
+madd (def)	MultAdd.multAdd on Trunc	EQUIV	high	p+q+p*q = ⟨p.α+q.α, p.β+q.β+p.α q.α⟩, recorded as Trunc.multAdd_eq
+mpow (def)	MultAdd.mpow Trunc.x	EQUIV	high	mpow x 0 = 0 and mpow_succ: mpow x (k+1) = mpow x k ✳ x, same recursion as original with x=⟨1,0⟩
+psiT (def)	MultAdd.HopfOne.psiT	SAME	high	same formula with mpow Trunc.x
+MultAdd.HopfOne.oneMod_oddPow	emultiplicity_pow_sub_pow_of_prime	MATHLIB	medium	at p=2, y=1 in Z: 2|A-1, A odd, n odd -> emult 2 (A^n-1)=emult 2 (A-1); covers it after N->Z and OneMod->emult translation; route: own proof gone
+MultAdd.HopfOne.oneMod_sq	Int.two_pow_two_pow_sub_pow_two_pow	MATHLIB	medium	n=1, y=1: 4|A-1, A odd -> emult 2 (A^2-1) = emult 2 (A-1)+1; covers it after translation; route: own proof gone
+MultAdd.HopfOne.three_pow_two_pow	MultAdd.HopfOne.level_three_pow	DROPPED-OK	high	level_three_pow k 0 (k≠0) gives multiplicity 2 (3^(2^k*1)-1)=k+2, i.e. the original after 2^k*1=2^k
+MultAdd.HopfOne.two_adic_split	Nat.exists_eq_two_pow_mul_odd	MATHLIB	medium	n≠0 -> exists k m, Odd m ∧ n = 2^k*m; same content (n≠0 iff 1<=n)
+MultAdd.HopfOne.level_three_pow	MultAdd.HopfOne.level_three_pow	EQUIV	high	OneMod j (3^n) -> multiplicity 2 (3^n-1) = j; equivalent since 3^n-1>0 and j>=1; route: LTE Nat.two_pow_sub_pow instead of oneMod lemmas
+MultAdd.HopfOne.le_of_dvd_two_pow_odd	FiniteMultiplicity.pow_dvd_iff_le_multiplicity	MATHLIB	medium	named lemma gives 2^n|x <-> n<=multiplicity 2 x; still needs multiplicity 2 (2^e*odd)=e (done inline as hmul in level_three_pow); table claim is half the content
+MultAdd.HopfOne.pow_ge	MultAdd.HopfOne.add_three_le_two_pow	SAME	high	renamed
+MultAdd.HopfOne.only_one_two_four	MultAdd.HopfOne.only_one_two_four	SAME	high	identical statement; route: via multiplicity and mathlib LTE instead of OneMod
+MultAdd.HopfOne.one_two_four_work	MultAdd.HopfOne.one_two_four_work	SAME	high	identical decide
+MultAdd.HopfOne.commute_equation	MultAdd.HopfOne.commute_equation	SAME	high	identical
+MultAdd.HopfOne.odd_mul	Odd.mul	MATHLIB	high	same
+MultAdd.HopfOne.odd_three_pow	Odd.pow	MATHLIB	high	Odd.pow applied to Odd (3:Z); same
+MultAdd.HopfOne.two_pow_dvd_of_mul_odd	IsCoprime.dvd_of_dvd_mul_right	MATHLIB	medium	with (Int.isCoprime_two_left.2 hy).pow_left: IsCoprime (2^n) y, then 2^n | x*y -> 2^n | x; same content
+MultAdd.HopfOne.hopf_invariant_one	MultAdd.HopfOne.hopf_invariant_one	SAME	high	identical with Odd for IsOdd
+MultAdd.HopfOne.mpow_formula	MultAdd.HopfOne.mpow_formula	SAME	high	same with mpow Trunc.x; own induction kept
+MultAdd.HopfOne.psi_compose	MultAdd.HopfOne.psi_compose	SAME	high	same with mpow Trunc.x
+MultAdd.HopfOne.cp2_case	MultAdd.HopfOne.cp2_case	SAME	high	same numbers ⟨2,1⟩, ⟨3,3⟩, psi 1 2 1 / psi 1 3 3

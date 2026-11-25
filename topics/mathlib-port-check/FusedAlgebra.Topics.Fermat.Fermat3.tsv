@@ -1,0 +1,115 @@
+original	new_name	verdict	confidence	reason
+Fermat3.pow_emod_of	Int.ModEq.pow	MATHLIB	high	(Int.ModEq.pow n (Int.mod_modEq x m)).symm unfolds to x^n % m = (x%m)^n % m
+Fermat3.cube_mod9	Fermat3.cube_mod9	SAME	high	same statement
+Fermat3.case1	Fermat3.case1	SAME	high	same statement; still proved from cube_mod9 (mathlib's version is private)
+Fermat3.mpow_three	Fermat3.mpow_three	GENERAL	high	ℤ -> any CommRing
+Fermat3.flt3_multAdd_iff	Fermat3.flt3_multAdd_iff	GENERAL	high	ℚ -> any field; same iff
+Fermat3.cube_mod3	Fermat3.cube_mod3	SAME	high	same statement; route: by decide in ZMod 3 instead of case split
+Fermat3.sum_mod3	Fermat3.sum_mod3	SAME	high	same statement
+Fermat3.dvd_of_dvd_mul_cop	IsCoprime.dvd_of_dvd_mul_left	MATHLIB	high	IsCoprime k m → k ∣ m*n → k ∣ n; IsCoprime ↔ Int.gcd = 1 (Int.isCoprime_iff_gcd_eq_one)
+Fermat3.cop_symm	IsCoprime.symm	MATHLIB	high	standard
+Fermat3.cop_of_dvd_left	IsCoprime.of_isCoprime_of_dvd_left	MATHLIB	high	IsCoprime y z → x ∣ y → IsCoprime x z
+Fermat3.cop_of_dvd_right	IsCoprime.of_isCoprime_of_dvd_right	MATHLIB	high	standard
+Fermat3.cop_mul_right	IsCoprime.mul_right	MATHLIB	high	standard
+Fermat3.cop_mul_left	IsCoprime.mul_left	MATHLIB	high	standard
+Fermat3.cop_of_pow	IsCoprime.pow_iff	MATHLIB	high	IsCoprime (x^m) (y^n) ↔ IsCoprime x y for m,n>0
+Fermat3.cop_two_of_odd	Int.isCoprime_two_left	MATHLIB	high	verified in mathlib (RingTheory/Int/Basic): IsCoprime 2 m ↔ Odd m
+Fermat3.cop_three	Prime.coprime_iff_not_dvd	MATHLIB	high	verified (PrincipalIdealDomain): Prime p → (IsCoprime p n ↔ ¬p ∣ n), with Int.prime_three; ¬3∣a ↔ a%3≠0
+Fermat3.three_dvd_of_sq	Prime.dvd_of_dvd_pow	MATHLIB	high	Int.prime_three.dvd_of_dvd_pow
+Fermat3.three_dvd_of_cube	Prime.dvd_of_dvd_pow	MATHLIB	high	Int.prime_three.dvd_of_dvd_pow
+Fermat3.cube_of_mul_cop	Int.eq_pow_of_mul_eq_pow_odd_left	MATHLIB	high	IsCoprime a b → Odd k → a*b = c^k → ∃ d, a = d^k; with k=3. route: original gcd proof dropped
+Fermat3.cube_of_mul_cop'	Int.eq_pow_of_mul_eq_pow_odd_right	MATHLIB	high	right-factor version, k=3
+Fermat3.cube_of_mul3	Fermat3.cube_of_mul3	EQUIV	high	Int.gcd _ _ = 1 → IsCoprime (equivalent over ℤ); same conclusion
+Fermat3.Eis	Fermat3.Eis	EQUIV	high	def: abbrev QuadraticAlgebra ℤ (-1) (-1). Checked mathlib mul (re = ac + a·bd, im = ad+bc+b·bd) with a=b=-1 gives the original ac-bd, ad+bc-bd; ω^2 = -1-ω
+Fermat3.Eis.ext	QuadraticAlgebra.ext	MATHLIB	high	same coordinates re/im
+Fermat3.Eis.ext_iff	QuadraticAlgebra.ext_iff	MATHLIB	high	same coordinates
+Fermat3.Eis.add_re	QuadraticAlgebra.re_add	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.add_im	QuadraticAlgebra.im_add	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.neg_re	QuadraticAlgebra.re_neg	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.neg_im	QuadraticAlgebra.im_neg	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.sub_re	QuadraticAlgebra.re_sub	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.sub_im	QuadraticAlgebra.im_sub	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.mul_re	QuadraticAlgebra.re_mul	MATHLIB	high	checked: with a=b=-1 the mathlib formula equals the original's (re: ac-bd, im: ad+bc-bd)
+Fermat3.Eis.mul_im	QuadraticAlgebra.im_mul	MATHLIB	high	checked: with a=b=-1 the mathlib formula equals the original's (re: ac-bd, im: ad+bc-bd)
+Fermat3.Eis.ofNat_re	QuadraticAlgebra.re_ofNat	MATHLIB	high	mathlib re_ofNat needs n ≥ 2 (AtLeastTwo); n = 0, 1 are re_zero/re_one; together same content
+Fermat3.Eis.ofNat_im	QuadraticAlgebra.im_ofNat	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.natCast_re	QuadraticAlgebra.re_natCast	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.natCast_im	QuadraticAlgebra.im_natCast	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.intCast_re	QuadraticAlgebra.re_intCast	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.intCast_im	QuadraticAlgebra.im_intCast	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.nsmul_re	QuadraticAlgebra.re_smul	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.nsmul_im	QuadraticAlgebra.im_smul	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.zsmul_re	QuadraticAlgebra.re_smul	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.zsmul_im	QuadraticAlgebra.im_smul	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.zero_re	QuadraticAlgebra.re_zero	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.zero_im	QuadraticAlgebra.im_zero	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.one_re	QuadraticAlgebra.re_one	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.one_im	QuadraticAlgebra.im_one	MATHLIB	high	coordinate lemma of QuadraticAlgebra; values agree with the original's instances
+Fermat3.Eis.pow_zero'	pow_zero	MATHLIB	high	x^0 = 1 = <1,0>; monoid power
+Fermat3.Eis.pow_succ'	pow_succ	MATHLIB	high	x^(n+1) = x^n * x, same recursion as the original npow
+Fermat3.Eis.dvd_def	dvd_def	MATHLIB	high	a ∣ b ↔ ∃ c, b = a*c, same as the original's Dvd
+Fermat3.Eis.dvd_trans	dvd_trans	MATHLIB	high	standard
+Fermat3.Eis.dvd_add	dvd_add	MATHLIB	high	standard
+Fermat3.Eis.dvd_sub	dvd_sub	MATHLIB	high	standard
+Fermat3.Eis.dvd_mul_left_of	Dvd.dvd.mul_left	MATHLIB	high	a ∣ b → a ∣ c*b
+Fermat3.Eis.dvd_refl	dvd_refl	MATHLIB	high	standard
+Fermat3.Eis.N	QuadraticAlgebra.norm	EQUIV	high	def: verified mathlib norm_def = re^2 + b·re·im - a·im^2 = re^2 - re·im + im^2 at a=b=-1, the original N; port's Eis.norm_eq states it
+Fermat3.Eis.conj	Star.star	EQUIV	high	def: mathlib re_star = re + b·im = re - im, im_star = -im: the original (a-b) - bω
+Fermat3.Eis.N_mul	map_mul	MATHLIB	high	norm is a MonoidHom
+Fermat3.Eis.N_conj	QuadraticAlgebra.norm_star	MATHLIB	high	verified: (star x).norm = x.norm
+Fermat3.Eis.mul_conj	QuadraticAlgebra.algebraMap_norm_eq_mul_star	MATHLIB	high	algebraMap (norm z) = z * star z; algebraMap n = <n,0>
+Fermat3.Eis.sq_nonneg'	mul_self_nonneg	MATHLIB	high	0 ≤ x*x
+Fermat3.Eis.sq_pos'	mul_self_pos	MATHLIB	high	0 < x*x ↔ x ≠ 0
+Fermat3.Eis.four_N	Fermat3.Eis.four_mul_norm	SAME	high	4N = (2re-im)^2 + 3im^2, squares as ^2
+Fermat3.Eis.N_nonneg	Fermat3.Eis.norm_nonneg	SAME	high	renamed
+Fermat3.Eis.eq_zero_of_N	Fermat3.Eis.norm_eq_zero_iff	EQUIV	high	now an iff; the → direction is the original
+Fermat3.Eis.N_zero	QuadraticAlgebra.norm_zero	MATHLIB	high	verified
+Fermat3.Eis.mul_eq_zero	Fermat3.Eis.instIsDomain	EQUIV	high	IsDomain Eis instance (discriminant -3 not a square) gives mul_eq_zero, which is the original statement
+Fermat3.Eis.N_pos	Fermat3.Eis.norm_pos	SAME	high	renamed
+Fermat3.Eis.N_dvd	map_dvd	MATHLIB	high	map_dvd QuadraticAlgebra.norm
+Fermat3.Eis.IsUnit	IsUnit	EQUIV	high	def: original ∃ v, u*v = 1; mathlib IsUnit equivalent in a commutative monoid (isUnit_iff_exists_inv)
+Fermat3.Eis.isUnit_of_N	Fermat3.Eis.isUnit_iff_norm_eq_one	EQUIV	high	← direction of the iff
+Fermat3.Eis.N_of_isUnit	Fermat3.Eis.isUnit_iff_norm_eq_one	EQUIV	high	→ direction of the iff
+Fermat3.Eis.small_of_sq_le_one	(inline nlinarith/interval_cases in units_list)	DROPPED-OK	medium	trivial helper b*b ≤ 1 → b ∈ {-1,0,1}; no named lemma in port, done inline
+Fermat3.Eis.units_list	Fermat3.Eis.units_list	SAME	high	same six units in the same order: <1,0>,<-1,0>,ω=<0,1>,-ω,1+ω=<1,1>,-(1+ω)
+Fermat3.Eis.div_rem	Fermat3.Eis.norm_mod_lt	EQUIV	high	existence form follows with q = a/b, r = a%b := a - b*(a/b); same rounding quotient as the original (route kept), now feeding an EuclideanDomain instance
+Fermat3.Eis.bezout_aux	EuclideanDomain.gcd_eq_gcd_ab	MATHLIB	high	induction scaffolding for bezout; implied by bezout. route: user's hand Bezout replaced by mathlib via new instEuclideanDomain
+Fermat3.Eis.bezout	EuclideanDomain.gcd_eq_gcd_ab	MATHLIB	high	gcd a b = a*gcdA + b*gcdB with gcd_dvd_left/right gives ∃ g s t; needs the port's EuclideanDomain instance (present)
+Fermat3.Eis.Cop	IsCoprime	EQUIV	high	def: 'every common divisor is a unit' ↔ IsCoprime in a Bezout domain (isCoprime_of_dvd / IsCoprime.isUnit_of_dvd'); both false at (0,0)
+Fermat3.Eis.cop_bezout	isCoprime_of_dvd	MATHLIB	high	IsCoprime is by definition ∃ s t, s*a + t*b = 1; isCoprime_of_dvd turns the common-divisor form into it
+Fermat3.Eis.cube_of_cop	exists_associated_pow_of_mul_eq_pow'	MATHLIB	high	verified (PrincipalIdealDomain): IsCoprime a b → a*b = c^k → ∃ d, Associated (d^k) a = unit times cube. route: user's hand proof dropped
+Fermat3.odd_norm	Fermat3.odd_norm	EQUIV	high	% 2 = 1 → Odd (same over ℤ)
+Fermat3.norm_one	Fermat3.eq_one_of_dvd_sq_add_three_mul_sq	EQUIV	high	renamed; Int.gcd p q = 1 → IsCoprime, (p+q)%2=1 → Odd; same hypotheses otherwise and conclusion n = 1
+Fermat3.Eis.cube_eq	pow_three'	MATHLIB	high	z^3 = z*z*z
+Fermat3.Eis.cube_int	map_pow	MATHLIB	high	(c:Eis)^3 = ((c^3:ℤ):Eis) by Int.cast_pow; int cast is <c,0> (re_intCast, im_intCast)
+Fermat3.Eis.omega_cube	Fermat3.Eis.omega_pow_three	SAME	high	QuadraticAlgebra.omega = <0,1> (re_omega, im_omega)
+Fermat3.Eis.even_cube_root	Fermat3.Eis.even_cube_root	EQUIV	high	Even δ'.im for δ'.im % 2 = 0
+Fermat3.Eis.cube_sqrt3	Fermat3.Eis.cube_sqrt3	SAME	high	same explicit cube formula
+Fermat3.key_cube	Fermat3.key_cube	EQUIV	high	IsCoprime p q, Odd (p+q) for the gcd/%2 forms; same conclusion. route: Euler's lemma still proved here, but coprime-cube step now from mathlib (UFD/PID) instead of the hand Bezout
+Fermat3.cube_mod9_all	Fermat3.cube_mod9_all	SAME	high	same
+Fermat3.cube_ne_two	Fermat3.cube_ne_two	SAME	high	same
+Fermat3.cube_mod2	Fermat3.cube_mod2	SAME	high	same
+Fermat3.eq_zero_of_cube	pow_eq_zero_iff	MATHLIB	high	w^3 = 0 → w = 0
+Fermat3.cube_ne_zero	pow_ne_zero	MATHLIB	high	standard
+Fermat3.cop_of_cubes	Fermat3.cop_of_cubes	EQUIV	high	IsCoprime x y → IsCoprime y z, same equation hypothesis
+Fermat3.Sol	Fermat3.Sol	EQUIV	high	def: same five conjuncts with IsCoprime x y for Int.gcd x y = 1
+Fermat3.sol_cop	Fermat3.no_sol	DROPPED-OK	high	Sol never holds (no_sol), so true ex falso; its real content is one application of cop_of_cubes (ported)
+Fermat3.sol_swap	Fermat3.no_sol	DROPPED-OK	high	implication from Sol, true ex falso by no_sol. route: descent bookkeeping not ported
+Fermat3.sol_rot	Fermat3.no_sol	DROPPED-OK	high	as sol_swap
+Fermat3.odd_of_cop_even	Int.isCoprime_two_left	MATHLIB	high	coprime to even z ⇒ coprime to 2 (of_isCoprime_of_dvd_right) ⇒ Odd (Int.isCoprime_two_left, verified)
+Fermat3.sol_even	Fermat3.no_sol	DROPPED-OK	high	hypothesis Sol impossible by no_sol; parity content survives as cube_mod2
+Fermat3.measure_lt	fermatLastTheoremThree	MISSING	high	standalone fact x,y≠0, N1^3 < |z^3| ⇒ N1 < |xyz| has satisfiable hypotheses; fermatLastTheoremThree does not imply it and nothing in the port states it. Helper only used by step
+Fermat3.par_ab	Fermat3.par_ab	EQUIV	high	Odd for % 2 = 1 in hypothesis and conclusion
+Fermat3.cop_of_param	Fermat3.cop_of_param	EQUIV	high	IsCoprime for Int.gcd = 1
+Fermat3.step	fermatLastTheoremThree	DROPPED-OK	high	hypothesis Sol x y z is contradictory by fermatLastTheoremThree, so the statement holds ex falso. route: Euler's 190-line descent step (the user's own proof) is not ported
+Fermat3.no_sol	Fermat3.no_sol	EQUIV	high	∀ n x y z, |xyz| = n → ¬Sol becomes ∀ x y z, ¬Sol; n was only the descent index. route: now a corollary of mathlib fermatLastTheoremThree
+Fermat3.primitive_of_sol	fermatLastTheoremWith_of_fermatLastTheoremWith_coprime	MATHLIB	medium	named lemma is a different reduction (gcd of {a,b,c} = 1, contrapositive form), not gcd x y = 1. Original statement still holds ex falso from flt3. route: hand reduction dropped
+Fermat3.flt3	Fermat3.flt3	SAME	high	x,y,z ≠ 0 over ℤ, same as FermatLastTheoremWith ℤ 3. route: corollary of mathlib fermatLastTheoremThree, not Euler's descent
+Fermat3.flt3_nat	Fermat3.flt3_nat	SAME	high	x,y ≠ 0, z arbitrary as in original; z = 0 case handled in the proof. route: mathlib
+Fermat3.flt3_multAdd	Fermat3.flt3_multAdd	SAME	high	same statement. route: via flt3 (mathlib)
+Fermat3.sum_cubes	Fermat3.sum_cubes	GENERAL	high	ℤ -> any CommRing
+Fermat3.second_factor	Fermat3.second_factor	GENERAL	high	ℤ -> any CommRing
+Fermat3.gcd_factors	Fermat3.gcd_factors	EQUIV	high	hypothesis IsCoprime x y; conclusion still Int.gcd = 1 ∨ = 3
+Fermat3.three_dvd_mul	Prime.dvd_mul	MATHLIB	high	Int.prime_three.dvd_mul
+Fermat3.exactly_one_three	Fermat3.exactly_one_three	EQUIV	high	IsCoprime x y for Int.gcd = 1; same three-way conclusion
+Fermat3.mpow_three_mod3	Fermat3.mpow_three_mod3	SAME	high	same

@@ -1,0 +1,26 @@
+original	new_name	verdict	confidence	reason
+amplitude_damping	QuantumNoise.amplitude_damping	GENERAL	high	ℚ → any CommRing
+bit_flip	QuantumNoise.bit_flip	GENERAL	high	ℚ → any CommRing
+depolarizing	QuantumNoise.depolarizing	GENERAL	high	ℚ → any Field (identity holds for any constant c = 4/3, so no char condition needed)
+call_rule_gap	QuantumNoise.call_rule_gap	GENERAL	high	ℚ → any CommRing
+stacked_bit_flips	QuantumNoise.stacked_bit_flips	GENERAL	high	ℚ → any CommRing
+comp_lx	QuantumNoise.comp_lx	GENERAL	high	Pauli ℚ → Pauli R, CommRing; comp/lx formulas identical
+comp_ly	QuantumNoise.comp_ly	GENERAL	high	as comp_lx
+comp_lz	QuantumNoise.comp_lz	GENERAL	high	as comp_lx
+comp_total	QuantumNoise.comp_total	GENERAL	high	as comp_lx
+faces	QuantumNoise.faces	GENERAL	high	CommRing; same hypothesis (total = 1) and four conclusions
+maj3_polar	QuantumNoise.maj3_polar	GENERAL	high	ℚ → Field with NeZero 2 (needed: fails in char 2; automatic in ℚ)
+odd3_polar	QuantumNoise.odd3_polar	GENERAL	high	ℚ → any CommRing
+f_fixed	QuantumNoise.vote_sub_self	GENERAL	high	renamed f → vote; Field with NeZero 2 (automatic in ℚ)
+f_helps	QuantumNoise.vote_helps	GENERAL	high	ℚ → linearly ordered field; same hypotheses 0<l<1
+gx_below	QuantumNoise.gx_below	SAME	high	ℚ, same 806/1000; norm_num instead of decide +kernel
+gx_above	QuantumNoise.gx_above	SAME	high	ℚ, same 807/1000
+gz_below	QuantumNoise.gz_below	SAME	high	ℚ, same 850/1000
+gz_above	QuantumNoise.gz_above	SAME	high	ℚ, same 851/1000
+macwilliams_rep3	QuantumNoise.macwilliams_rep3	GENERAL	high	Field with NeZero 2 (automatic in ℚ)
+undetected_two_ways	QuantumNoise.undetected_two_ways	GENERAL	high	Field with CharZero (needs only char ≠ 2; automatic in ℚ)
+madd_inverse	QuantumNoise.madd_inverse	GENERAL	high	ℚ → Field; term multAdd_multAddInv as before
+def Pauli, lx, ly, lz, comp	QuantumNoise.Pauli …	EQUIV	high	same four fields and formulas, parametrised by R
+def maj3	QuantumNoise.maj3	EQUIV	high	3p^2(1-p)+p^3, CommRing
+def f	QuantumNoise.vote	EQUIV	high	(3l - l^3)/2, Field; renamed
+def gx, gz	QuantumNoise.gx, gz	EQUIV	high	vote (vote x ^ 9), vote (vote (z^3)) ^ 3, same

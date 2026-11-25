@@ -1,0 +1,17 @@
+original	new_name	verdict	confidence	reason
+ChemPeriodic.shell_square	ChemPeriodic.shell_square	GENERAL	high	ℕ -> CommSemiring; (m+1)*(m+1) -> (m+1)^2
+ChemPeriodic.shellOrbitals (def)	ChemPeriodic.shellOrbitals	SAME	high	def: recursion (0->1, m+1 -> prev+2(m+1)+1) -> ∑ l in range (m+1), (2l+1); same values for all m
+ChemPeriodic.gnomons_fill	ChemPeriodic.gnomons_fill	SAME	high	shellOrbitals m = (m+1)^2; def equal in value
+ChemPeriodic.gnomon	ChemPeriodic.gnomon	SAME	high	kept on ℕ with truncated subtraction; x*x -> x^2
+ChemPeriodic.shell_capacity	ChemPeriodic.shell_capacity	SAME	high	same
+ChemPeriodic.two_spins	ChemPeriodic.two_spins	GENERAL	high	ℕ -> CommSemiring
+ChemPeriodic.diagCap (def)	ChemPeriodic.diagCap	SAME	high	def unchanged: 2*shellOrbitals((s-1)/2)
+ChemPeriodic.diagonals	ChemPeriodic.diagonals	SAME	high	same list [2,2,8,8,18,18,32,32] over range 8
+ChemPeriodic.diagCap_closed	ChemPeriodic.diagCap_closed	SAME	high	squares written ^2
+ChemPeriodic.periodLen (def)	ChemPeriodic.periodLen	SAME	high	def: 2*((p/2+1)*(p/2+1)) -> 2*(p/2+1)^2
+ChemPeriodic.periods	ChemPeriodic.periods	SAME	high	same list [2,8,8,18,18,32,32] over range 7
+ChemPeriodic.nobleZ (def)	ChemPeriodic.nobleZ	SAME	high	def: running-total recursion -> ∑ i in range p, periodLen (i+1); same values
+ChemPeriodic.noble_gases	ChemPeriodic.noble_gases	SAME	high	same list [2,10,18,36,54,86,118]
+ChemPeriodic.period_is_diagonal	ChemPeriodic.period_is_diagonal	SAME	high	same
+ChemPeriodic.q_integer	ChemPeriodic.q_integer	GENERAL	high	Lean.Grind.CommRing -> CommSemiring; same statement; route unchanged (wpow_lift renamed one_add_mul_wpow)
+ChemPeriodic.q_integer_classical	ChemPeriodic.q_integer_classical	GENERAL	high	ℚ -> any CommSemiring, n cast; same statement

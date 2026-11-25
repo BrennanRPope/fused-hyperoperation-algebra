@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Point Processes on the Dial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a detector readout: particles land on a strip, a dial runs from fermion blue to boson amber, the wall in red
+   COLOUR fermions cyan-blue, bosons amber, Poisson green, wall red, on cool paper / night ink */
+:root{color-scheme:light dark;--bg:light-dark(#e9edf1,#10141b);--panel:light-dark(#fff,#19202a);--ink:light-dark(#10151c,#e9eef4);--soft:light-dark(#4b5663,#a3aebb);--rule:light-dark(#c2cad3,#313a46);--fer:light-dark(#1662c4,#5aa2ff);--bos:light-dark(#c4620a,#ffa94d);--poi:light-dark(#23865a,#52c98e);--red:#e0281c;--fill:light-dark(rgba(22,98,196,.13),rgba(90,162,255,.18));--bfill:light-dark(rgba(196,98,10,.13),rgba(255,169,77,.16))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(22px,4vw,52px) max(5vw,14px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:600 clamp(30px,4.4vw,48px)/1.06 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;letter-spacing:-.01em;margin:0 0 14px;max-width:22ch;text-wrap:balance}
+h2{font:600 25px/1.18 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:70ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:18px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:14px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:430px}.fig2{position:relative;min-height:330px}.fig3{position:relative;min-height:190px}
+.fig>svg,.fig2>svg,.fig3>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px "IBM Plex Sans",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.alt svg text{stroke:var(--bg)}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 3.6em;gap:10px;align-items:center}
+.ctl label{font-weight:600;white-space:nowrap}.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:44px;accent-color:var(--fer)}
+.small{color:var(--soft);font-size:14px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:6px 5px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:start}
+p,li{max-width:68ch}
+.eq{font:17px/1.6 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;background:var(--panel);border-left:3px solid var(--fer);padding:10px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.alt .eq{background:var(--bg)}
+.ledger td{text-align:left;vertical-align:top}.ledger td:last-child{color:var(--soft)}
+.key span{display:inline-block;width:11px;height:11px;border-radius:50%;margin:0 5px 0 12px;vertical-align:-1px}
+footer{color:var(--soft);font-size:14px}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:380px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:5px 3px}.fig{min-height:340px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>One dial runs fermions to bosons, and its wall decides which can exist</h1>
+<p class="lede">Points that repel (fermions), points that ignore each other (Poisson) and points that clump (bosons) are one family, the α-processes of Shirai and Takahashi. Read α as the dial k. On any region the kernel has eigenvalues μ; fold them with ✳ₖ and the chance the region is empty is the lift of that fold to the power −1/k. The wall −1/k must stay off the eigenvalues, and on the fermion side it must sit on a whole number.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="hero"></div>
+<div class="ctl"><label for="k">Dial k</label><input id="k" type="range" min="-1" max="2" step="0.01" value="-1"><output id="ko"></output></div>
+<p class="small">Top: the region's eight eigenvalues as beads, and the wall −1/k in red. Bottom: chance the region is empty, (1 + k·fold)^(−1/k), against k; dots are simulations at the seven dial values we can simulate (bars: ±2 standard errors).</p>
+</div>
+<div class="panel">
+<table><tbody id="tb"></tbody></table>
+<div class="fig3" id="strips" style="margin-top:12px"></div>
+<p class="small">One sample each on a ring of 120 sites, same kernel. Fermions space out, bosons stack (a tall bar is several points on one site).</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>The empty-region chance is the dial fold of the eigenvalues</h2>
+<p>Shirai and Takahashi's generating functional, on a region D with eigenvalues μᵢ of the kernel there:</p>
+<div class="eq">P(no point in D) = det(I + kK)<sup>−1/k</sup> = (1 + k·(μ₁ ✳ₖ μ₂ ✳ₖ ⋯))<sup>−1/k</sup></div>
+<div class="eq">−log P(no point) = Σ ℓₖ(μᵢ),&nbsp;&nbsp; ℓₖ(x) = log(1 + kx)/k</div>
+<p>ℓₖ is the dial's logarithm, the map that turns ✳ₖ into plain +. So for empty regions every process on the dial looks like Poisson with mean Σℓₖ(μ): at k = 0 that is the expected count, at k = −1 it is larger (fermions rarely leave gaps), at k = +1 smaller (bosons leave gaps by clumping elsewhere). At k = −1 the fold itself is the chance of at least one point, the functional-analysis page's 1 − det(I − K).</p>
+</div>
+<div>
+<h2>Each eigenvalue is its own independent mode</h2>
+<p>The count in D is a sum of independent pieces, one per eigenvalue (Hough, Krishnapur, Peres, Virág 2006 for k = −1; Shirai–Takahashi for all k). A mode with eigenvalue μ gives:</p>
+<table><thead><tr><th>dial</th><th>one mode's count</th><th>most it can hold</th></tr></thead><tbody>
+<tr><td style="color:var(--fer)">k = −1/m</td><td>binomial: m slots, each filled with chance μ/m</td><td>m = the wall</td></tr>
+<tr><td style="color:var(--poi)">k = 0</td><td>Poisson, mean μ</td><td>no limit</td></tr>
+<tr><td style="color:var(--bos)">k &gt; 0</td><td>negative binomial, shape 1/k, mean μ</td><td>no limit</td></tr>
+</tbody></table>
+<p class="small">Simulated: k = −1/m as m independent fermion copies with kernel K/m; k = 2/m as Poisson points whose intensity is the average of m squared Gaussian fields. All seven dial values match the exact count law (chi-square) and the formula above.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>Existence: the wall stays off the eigenvalues, and on the fermion side it sits on a whole number</h2>
+<p>For k &lt; 0 the wall −1/k is a positive number, and a mode is a real count only if its eigenvalue is at most the wall and the wall is a whole number m: m slots, each holding one point. Anywhere else on the fermion side some probability comes out negative. So the fermion side of the dial survives only at k = −1, −1/2, −1/3, …, each a vertical stalk that ends exactly on the wall curve μ = −1/k. An eigenvalue sitting on the wall means a slot that is always full: the region is never empty and that mode's count never varies.</p>
+<p>For k ≥ 0 the wall is negative, out of the way of every eigenvalue, so counts in a region are always fine. The whole process needs one more condition on the kernel for most k &gt; 0 (Maunoury 2016); at k = 2/m it always exists for a real symmetric kernel (k = 1/m for a complex one), as a Cox process.</p>
+<p><b>Same rule as Sugeno's measures, plus a lattice.</b> The measure page found λ-measures normalize when the wall −1/λ lies outside the range of values [0, 1]. Here the range is the spectrum and the rule is the same. Two differences: the process may touch the wall (a sure point; Sugeno must stay strictly off it), and the fermion side is quantized to whole m, which a measure does not need.</p>
+</div>
+<div class="panel"><div class="fig2" id="exist"></div>
+<p class="small">Shaded: allowed (k, eigenvalue). Blue stalks at k = −1/m end on the red wall curve. Amber: every k ≥ 0 gives real counts.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div class="panel"><div class="fig2" id="fano"></div>
+<p class="small">Fano factor Var/mean of the count in D. Line: 1 + k·tr K²/tr K. Dots: simulations.</p></div>
+<div>
+<h2>Number variance is a straight line in k</h2>
+<div class="eq">Var N = Σ μᵢ(1 + k·μᵢ) = tr K + k·tr K²</div>
+<p>Each mode adds its value times its lift. That product is zero at μ = 0 and again at the wall, the two places a mode's count is certain. Summed, the variance is a straight line in k through the Poisson value: fermions below it (sub-Poisson, repulsion), bosons above (super-Poisson, clumping). The second factorial moment is (Σμ)² + k·Σμ². Known (Shirai–Takahashi; the per-mode variance μ + kμ² is Morris's 1982 quadratic variance function for binomial, Poisson and negative binomial).</p>
+<p><b>Superposition slides along the dial.</b> m independent copies of the process (k, K) are exactly the process (k/m, m·K): the lifted kernel k·K is unchanged and 1/k counts copies. Underneath is the dial identity c·(a ✳ₖ b) = (c·a) ✳<sub>k/c</sub> (c·b), proved in Lean.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>Tilting a mode puts it on the landscape, always on one parabola</h2>
+<p>Weight a mode's count by t<sup>N</sup> (the standard exponential tilt). Its mean moves, by the rate m′ = m(1 + km). Measure the move in the ruler x = (new mean − μ)/variance. Then tilts compose exactly by the landscape's lens law (a + b + p·ab)/(1 − q·ab) at</p>
+<div class="eq">p = 1 + 2s,&nbsp;&nbsp; q = s(1 + s),&nbsp;&nbsp; s = kμ,&nbsp;&nbsp; so p² − 4q = 1</div>
+<p>Every mode of every dial process lands on that one parabola, inside the two-walled country. Its two walls are the empty mode and the full mode. A rare mode (s near 0) sits at mult-add, the Poisson point. A full fermion mode sits at the union of failures. A half-filled fermion mode is velocity addition with speed limit 2. Bosons climb toward the border parabola (gamma, the clumping limit) and never reach it. The units-free shape is (2F − 1)², F the mode's Fano factor, which is why particles and holes look alike.</p>
+<p><b>What the bend means here:</b> it is not a free knob. A mode's bend is fixed by its filling kμ, so the bend adds no new processes, and no dial process lives above the border, where slope addition sits. <b>Fractional rungs:</b> we found nothing genuine; a fermion filling can match a rung's shape, but the rung itself is not a lens law (landscape page), so we dropped it.</p>
+</div>
+<div class="panel"><div class="fig2" id="land"></div>
+<p class="small">The landscape (dial k across, bend q up). Grey: the border parabola. Coloured: the count parabola p² − 4q = 1, blue for fermion fillings, amber for bosons.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>A prediction across the whole dial, tested</h2>
+<p>Fix one kernel. Then for every k, with no fitting: the empty chance is exp(−Σℓₖ(μ)), the Fano factors of all dial values lie on one line of slope tr K²/tr K through 1 at Poisson, and a fermion kernel with every eigenvalue on the wall gives a count with no spread at all. Simulated at seven values of k (the full count law, not just these numbers):</p>
+<table><thead><tr><th>k</th><th>empty, sim</th><th>empty, formula</th><th>Var, sim</th><th>Var, formula</th></tr></thead><tbody id="pt"></tbody></table>
+<p class="small" id="fl"></p>
+</div>
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>α-processes, generating functional det(I + αK)^(−1/α), Var = tr K + α tr K², superposition</td><td>Shirai–Takahashi 2003; α-permanents Vere-Jones 1997</td></tr>
+<tr><td>Counts as independent modes; fermion sampling</td><td>Hough, Krishnapur, Peres, Virág 2006</td></tr>
+<tr><td>Permanental process as a Cox process</td><td>Macchi 1975; McCullagh–Møller 2006</td></tr>
+<tr><td>Exists for α &lt; 0 only if −1/α is whole and the spectrum lies in [0, −1/α]; extra kernel condition for α &gt; 0</td><td>Shirai–Takahashi 2003; Maunoury 2016</td></tr>
+<tr><td>Quadratic variance functions μ + kμ²</td><td>Morris 1982</td></tr>
+<tr><td>α as the dial; voids through the dial's logarithm; existence as "wall off the spectrum" next to Sugeno's rule</td><td>Ours: reading</td></tr>
+<tr><td>Tilt law on the landscape: the parabola p² − 4q = 1, shape (2F − 1)²</td><td>Ours: placement (each lens law with real walls is mult-add in other coordinates)</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Lead worth following? No, this one closes</h2>
+<p>The dial reading is exact everywhere we tried, and it gives clean pictures: voids through the dial's logarithm, existence as a wall that must stay off the spectrum on a whole-number lattice, variance as value times lift, and every mode on one parabola of the landscape. But each count statement is Shirai–Takahashi or Morris, already proved. The two open questions this was meant to settle come back empty for new math: the bend is pinned by the filling kμ, so it opens no new family of processes, and the fractional rungs have no point-process meaning we could find. Nothing here predicts a count that the known theory does not already predict, so we would not spend more time on it.</p>
+</div>
+<div>
+<h2>Proved and checked</h2>
+<ul>
+<li>Lean: hole lift 1 + k·fold = ∏(1 + kμ), a wall eigenvalue fills the region, Var = Σμ + kΣμ² and its Fano line, sub- and super-Poisson sides, the rescaling identity behind superposition, the tilt ruler and its lens law, the parabola p² − 4q = 1, and the three named points.</li>
+<li>Python: every number on this page, including Monte Carlo at k = −1, −1/2, −1/3, 0, 1/2, 1, 2.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<footer class="band" style="padding-top:0"><div class="wrap">checks.py: __CHECKS__ checks pass. lean/DialPointProcesses.lean: 40 theorems, core Lean, no sorry.</div></footer>
+
+<script>
+{
+const R=__DATA__;
+const $=id=>document.getElementById(id);
+const mu=R.mu, sim=R.sim, S1=R.fano.S1, S2=R.fano.S2;
+const f=(x,n=3)=>x.toFixed(n).replace('-','−');
+const fold=k=>mu.reduce((t,x)=>t+x+k*t*x,0);
+const ell=(k,x)=>Math.abs(k)<1e-9?x:Math.log1p(k*x)/k;
+const hole=k=>Math.exp(-mu.reduce((t,x)=>t+ell(k,x),0));
+const col=k=>k<-1e-9?'var(--fer)':k>1e-9?'var(--bos)':'var(--poi)';
+const kfrac=k=>{const t={'-1':'−1','-0.5':'−1/2','-0.333':'−1/3','0':'0','0.5':'1/2','1':'1','2':'2'};return t[String(+k.toFixed(3))]||f(k,2);};
+const mk=(el,lbl)=>{el.innerHTML='<svg role="img" aria-label="'+lbl+'"></svg>';return el.firstChild;};
+const sH=mk($('hero'),'Eigenvalue beads and the wall; empty chance against the dial'), sS=mk($('strips'),'Sample configurations'),
+ sE=mk($('exist'),'Where the process exists'), sF=mk($('fano'),'Fano line'), sL=mk($('land'),'Landscape placement');
+const T=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c?' style="fill:'+c+'"':'')+'>'+t+'</text>';
+const L=(x1,y1,x2,y2,c,w,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const C=(x,y,r,c)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+c+'"/>';
+function hero(){
+  const k=+$('k').value; $('ko').textContent=kfrac(k);
+  const W=sH.clientWidth,H=sH.clientHeight,m=34,nar=W<480;
+  let g='';
+  // top bar: eigenvalue axis from -1 to 3
+  const ty=62, X=v=>m+(v+1)/4*(W-2*m);
+  g+=L(X(-1),ty,X(3),ty,'var(--rule)',2);
+  for(const v of [-1,0,1,2,3]) g+=L(X(v),ty-4,X(v),ty+4,'var(--soft)')+T(X(v),ty+20,f(v,0),'middle');
+  const wall=Math.abs(k)>1e-9?-1/k:null;
+  if(wall!==null&&wall>=-1&&wall<=3) g+=L(X(wall),ty-26,X(wall),ty+8,'var(--red)',3)+T(X(wall),ty-31,'wall −1/k','middle','var(--red)');
+  else g+=T(X(3),ty-31,k===0?'wall at infinity':'wall off the axis','end','var(--red)');
+  mu.forEach((x,i)=>{g+=C(X(x),ty-8-(i%2)*7,5,col(k));});
+  g+=T(m,14,'eigenvalues of the kernel on the region');
+  // curve
+  const top=122,bot=H-36,k0=-1,k1=2,y0=0,y1=0.45, KX=v=>m+(v-k0)/(k1-k0)*(W-2*m), PY=p=>bot-(p-y0)/(y1-y0)*(bot-top);
+  g+=L(KX(k0),bot,KX(k1),bot,'var(--rule)')+L(KX(k0),bot,KX(k0),top,'var(--rule)');
+  for(const v of [-1,0,1,2]) g+=T(KX(v),bot+18,f(v,0),'middle');
+  for(const p of [0.1,0.2,0.3,0.4]) g+=L(KX(k0)-4,PY(p),KX(k0),PY(p),'var(--soft)')+T(KX(k0)+4,PY(p)+4,f(p,1));
+  let d='';for(let i=0;i<=150;i++){const v=k0+(k1-k0)*i/150;d+=(i?' L':'M')+KX(v).toFixed(1)+' '+PY(hole(v)).toFixed(1);}
+  g+='<path d="'+d+'" fill="none" stroke="var(--ink)" stroke-width="2"/>';
+  for(const s of sim){g+=L(KX(s.k),PY(s.hole-2*s.hole_se),KX(s.k),PY(s.hole+2*s.hole_se),col(s.k),2)+C(KX(s.k),PY(s.hole),4.5,col(s.k));}
+  g+=L(KX(k),top,KX(k),bot,'var(--soft)',1,'4 4')+C(KX(k),PY(hole(k)),6,'var(--red)');
+  g+=T(KX(k1),bot-8,'dial k','end')+T(KX(k0)+(nar?4:40),top-6,'chance the region is empty');
+  g+=T(KX(-1),top+30,'fermions','start','var(--fer)')+T(KX(2),bot-26,'bosons','end','var(--bos)');
+  sH.innerHTML=g;
+  const F=fold(k), lift=1+k*F, V=S1+k*S2;
+  $('tb').innerHTML=[['fold μ₁ ✳ₖ μ₂ ✳ₖ ⋯',f(F)],['lift 1 + k·fold = det(I + kK)',f(lift)],['chance empty',f(hole(k))],['Σ ℓₖ(μ) (Poisson-like mean)',f(-Math.log(hole(k)))],['mean count',f(S1)],['variance tr K + k tr K²',f(V)],['Fano factor',f(V/S1)]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('');
+}
+function strips(){
+  const W=sS.clientWidth,H=sS.clientHeight,m=8,rows=[['-1','fermions k = −1'],['0','Poisson k = 0'],['1','bosons k = +1']];
+  let g='';const n=120,dx=(W-2*m)/n,rh=H/3;
+  rows.forEach((r,i)=>{const c=R.picture[r[0]],base=(i+1)*rh-8,cc=col(+r[0]);
+    g+=L(m,base,W-m,base,'var(--rule)');
+    c.forEach((v,j)=>{for(let q=0;q<v;q++) g+=C(m+(j+.5)*dx,base-5-q*9,Math.min(4,dx*0.45+1),cc);});
+    g+=T(m,base-rh+26,r[1],'start',cc);});
+  sS.innerHTML=g;
+}
+function exist(){
+  const W=sE.clientWidth,H=sE.clientHeight,m=36,k0=-1.25,k1=2,y1=4.2;
+  const X=k=>m+(k-k0)/(k1-k0)*(W-m-12), Y=v=>H-m-v/y1*(H-m-14);
+  let g='<rect x="'+X(0)+'" y="'+Y(y1)+'" width="'+(X(k1)-X(0))+'" height="'+(Y(0)-Y(y1))+'" fill="var(--bfill)"/>';
+  g+=L(X(k0),Y(0),X(k1),Y(0),'var(--rule)')+L(X(0),Y(0),X(0),Y(y1),'var(--rule)');
+  let d='';for(let i=0;i<=80;i++){const k=-1.25+(-0.24+1.25)*i/80,v=-1/k;if(v>y1)continue;d+=(d?' L':'M')+X(k).toFixed(1)+' '+Y(v).toFixed(1);}
+  g+='<path d="'+d+'" fill="none" stroke="var(--red)" stroke-width="2.5"/>';
+  for(let mm=1;mm<=8;mm++){const k=-1/mm,top=Math.min(mm,y1);g+=L(X(k),Y(0),X(k),Y(top),'var(--fer)',mm<5?4:2.5);if(mm<=4)g+=C(X(k),Y(top),4,'var(--fer)');}
+  for(const v of [1,2,3,4]) g+=T(X(k0)-4,Y(v)+4,v,'end');
+  for(const k of [-1,0,1,2]) g+=T(X(k),Y(0)+18,f(k,0),'middle');
+  g+=T(X(-1)+6,Y(1)-6,'k = −1')+T(X(-0.5)+6,Y(2)-6,'−1/2')+T(X(-0.333)+6,Y(3)-6,'−1/3');
+  g+=T(X(k0)+4,Y(y1)+12,'eigenvalue μ')+T(X(k1)-4,Y(0)-8,'dial k','end');
+  g+=T(X(1),Y(2.4),'all real','middle','var(--bos)')+T(X(-0.8),Y(3.7),'wall μ = −1/k','start','var(--red)');
+  sE.innerHTML=g;
+}
+function fano(){
+  const W=sF.clientWidth,H=sF.clientHeight,m=40,k0=-1.2,k1=2.2,y0=0.2,y1=2.4;
+  const X=k=>m+(k-k0)/(k1-k0)*(W-m-14), Y=v=>H-m-(v-y0)/(y1-y0)*(H-m-14);
+  let g=L(X(k0),Y(1),X(k1),Y(1),'var(--rule)',1,'4 4')+L(X(0),Y(y0),X(0),Y(y1),'var(--rule)');
+  g+=L(X(k0),Y(1+k0*S2/S1),X(k1),Y(1+k1*S2/S1),'var(--ink)',2);
+  for(const s of sim){const fv=s.var/s.mean,e=2*s.var_se/s.mean;g+=L(X(s.k),Y(fv-e),X(s.k),Y(fv+e),col(s.k),2)+C(X(s.k),Y(fv),5,col(s.k));}
+  for(const v of [0.5,1,1.5,2]) g+=T(m-6,Y(v)+4,f(v,1),'end');
+  for(const k of [-1,0,1,2]) g+=T(X(k),H-m+18,f(k,0),'middle');
+  g+=T(X(k1)-4,H-m-8,'dial k','end')+T(m+4,18,'Var / mean')+T(X(-1),Y(0.35),'sub-Poisson','start','var(--fer)')+T(X(2),Y(2.25),'super-Poisson','end','var(--bos)');
+  sF.innerHTML=g;
+}
+function land(){
+  const W=sL.clientWidth,H=sL.clientHeight,m=30,k0=-1.6,k1=3.2,q0=-0.6,q1=2.3,nar=W<440;
+  const X=k=>m+(k-k0)/(k1-k0)*(W-2*m), Y=q=>H-m-(q-q0)/(q1-q0)*(H-2*m);
+  let g=L(X(k0),Y(0),X(k1),Y(0),'var(--rule)')+L(X(0),Y(q0),X(0),Y(q1),'var(--rule)');
+  let d='';for(let i=0;i<=80;i++){const k=-3+6*i/80,q=k*k/4;if(q>q1)continue;d+=(d?' L':'M')+X(k).toFixed(1)+' '+Y(q).toFixed(1);}
+  g+='<path d="'+d+'" fill="none" stroke="var(--soft)" stroke-width="1.5"/>';
+  const seg=(a,b,c)=>{let p='';for(let i=0;i<=60;i++){const s=a+(b-a)*i/60,P=1+2*s,Q=s*(1+s);if(Q>q1||P>k1)continue;p+=(p?' L':'M')+X(P).toFixed(1)+' '+Y(Q).toFixed(1);}return '<path d="'+p+'" fill="none" stroke="'+c+'" stroke-width="4"/>';};
+  g+=seg(-1,0,'var(--fer)')+seg(0,1.2,'var(--bos)');
+  g+=C(X(1),Y(0),6,'var(--poi)')+C(X(-1),Y(0),6,'var(--fer)')+C(X(0),Y(-0.25),6,'var(--fer)')+C(X(0),Y(1),5,'var(--soft)');
+  g+=T(X(1)+8,Y(0)+18,nar?'mult-add':'mult-add (Poisson)')+T(X(-1),Y(0)-12,nar?'full':'full mode: union','middle');
+  g+=T(X(0)+10,Y(-0.25)+18,nar?'half-filled':'half-filled: velocity')+T(X(0)+9,Y(1)+4,'slope addition');
+  g+=T(X(2.6),Y(1.95),'border','end','var(--soft)')+T(X(k1),Y(0)-8,'k','end')+T(X(0)-8,Y(q1)+10,'q','end');
+  sL.innerHTML=g;
+}
+$('pt').innerHTML=sim.map(s=>'<tr><td style="color:'+col(s.k)+'">'+kfrac(s.k)+'</td><td>'+f(s.hole)+'</td><td>'+f(hole(s.k))+'</td><td>'+f(s.var)+'</td><td>'+f(S1+s.k*S2)+'</td></tr>').join('');
+$('fl').textContent='Fano line fitted to the seven simulations: slope '+f(R.fano.slope)+' (predicted '+f(S2/S1)+'), value at k = 0: '+f(R.fano.icpt)+' (predicted 1). Rigid count: k = −1/2, rank-3 kernel with eigenvalues 2, 3000 samples, every one exactly 6 points.';
+$('k').addEventListener('input',hero);
+const all=()=>{hero();strips();exist();fano();land();};
+new ResizeObserver(all).observe(document.body); all();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+original	new_name	verdict	confidence	reason
+MultAdd.Cube.layer_zero_right	Nat.choose_zero_right	MATHLIB	high	n.choose 0 = 1
+MultAdd.Cube.layer_succ_succ	Nat.choose_succ_succ	MATHLIB	high	choose (n+1) (k+1) = choose n k + choose n (k+1), Pascal's rule exactly
+MultAdd.Cube.layer_eq_zero	Nat.choose_eq_zero_of_lt	MATHLIB	high	n < k → choose n k = 0 (implicit instead of explicit n k)
+MultAdd.Cube.layer_self	Nat.choose_self	MATHLIB	high	choose n n = 1
+MultAdd.Cube.absorb	Nat.add_one_mul_choose_eq	MATHLIB	medium	(n+1)*choose n k = choose (n+1) (k+1)*(k+1): original up to sides and mul_comm. Name is the newer form of Nat.succ_mul_choose_eq; unsure it exists under this name in the pinned mathlib. route: own proof gone
+MultAdd.Cube.fact_pos	Nat.factorial_pos	MATHLIB	high	0 < n !
+MultAdd.Cube.layer_step	Nat.choose_succ_right_eq	MATHLIB	high	choose n (k+1)*(k+1) = choose n k*(n-k): original up to mul_comm, same natural subtraction. route: own 30-line proof gone
+def layer	Nat.choose	MATHLIB	high	identical recursion (choose _ 0 = 1, choose 0 (k+1) = 0, Pascal)
+def fact	Nat.factorial	MATHLIB	high	identical recursion

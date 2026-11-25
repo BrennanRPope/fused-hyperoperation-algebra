@@ -1,0 +1,11 @@
+original	new_name	verdict	confidence	reason
+MultAdd.Rulecraft.thermostat_residue	MultAdd.Rulecraft.thermostat_residue	SAME	high	-(d*d) written -d ^ 2 (parses -(d^2))
+MultAdd.Rulecraft.panel_grid	MultAdd.Rulecraft.panel_grid	SAME	high	
+MultAdd.Rulecraft.balance	MultAdd.Rulecraft.balance	SAME	high	squares as ^2. route: now the term (sq_sub_sq s d).symm from mathlib instead of grind
+MultAdd.Rulecraft.fused_price_step	MultAdd.Rulecraft.fused_price_step	SAME	high	squares as ^2
+MultAdd.Rulecraft.fused_price_expand	MultAdd.Rulecraft.fused_price_expand	SAME	high	squares as ^2
+MultAdd.Rulecraft.boundary	MultAdd.Rulecraft.boundary	GENERAL	high	foldMA → multAddList (same right fold); CommRing → NonUnitalSemiring; term multAddList_append (as orig used foldMA_append)
+MultAdd.Rulecraft.recovery	MultAdd.Rulecraft.recovery	SAME	high	Field, same hypothesis n + 1 ≠ 0
+MultAdd.Rulecraft.sq_nonneg'	mul_self_nonneg	MATHLIB	high	mul_self_nonneg d : 0 ≤ d * d, exactly the statement (any linearly ordered ring). route: his case proof replaced
+MultAdd.Rulecraft.balance_le	MultAdd.Rulecraft.balance_le	GENERAL	high	ℤ → linearly ordered comm ring; s*s as s^2
+MultAdd.Rulecraft.fexp_not_comm_values	MultAdd.Rulecraft.fexp_not_comm_values	SAME	high	fexp same def ((a+1)^(b+1)-1, rung 3); values 7 and 8

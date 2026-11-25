@@ -1,0 +1,18 @@
+original	new_name	verdict	confidence	reason
+def qnum	QDial.qnum	EQUIV	high	Recursion qnum(n+1)=1+q*qnum n became ∑ i<n, q^i over a semiring; same values (qnum_succ proves the recursion). Original type Lean.Grind.CommRing.
+QDial.qnum_zero	QDial.qnum_zero	GENERAL	high	Same statement, now any semiring; rfl in both.
+QDial.qnum_succ	QDial.qnum_succ	GENERAL	high	Same statement over any semiring; was rfl (the definition), now proved from Finset.sum_range_succ'.
+QDial.qnum_eq_wpow	QDial.qnum_eq_wpow	SAME	high	qnum q n = wpow (q-1) 1 n, identical; wpow has the same recursion in the port.
+QDial.qnum_lift	QDial.one_add_mul_qnum	SAME	high	1+(q-1)*qnum q n = q^n identical. route: original went via qnum_eq_wpow + wpow_lift (mult-add lift); port cites mathlib Finset.mul_geom_sum.
+QDial.qnum_add	QDial.qnum_add	SAME	high	Identical. route: original by induction on n; port from qnum_add_eq_add_pow_mul and the lift.
+QDial.qnum_add_std	QDial.qnum_add_eq_add_pow_mul	GENERAL	high	Same identity, now any semiring. route: original derived it from qnum_add (mult-add) + lift; port is direct Finset.sum_range_add (direction of derivation reversed).
+QDial.qnum_mpow	QDial.mul_qnum_eq_mpow	SAME	high	(q-1)*qnum q n = mpow (q-1) n identical; port mpow is defined via PreQuasiregular but mpow_eq gives (1+a)^n-1, same values as original.
+QDial.tate_glue_step	QDial.tate_glue_step	SAME	high	(1+a)*q = 1 + (a ✳ (q-1)); identical.
+QDial.tate_glue_n	QDial.tate_glue_n	SAME	high	a ✳ (q-1)*qnum q n parses as a ✳ ((q-1)*qnum q n) (✳ is 65, * is 70): identical to original multAdd a ((q-1)*qnum q n).
+QDial.qnum_at_one	QDial.qnum_one	GENERAL	high	ℤ -> any semiring; qnum 1 n = (n : R).
+QDial.qnum_at_two	QDial.qnum_two	GENERAL	high	ℤ -> any commutative ring; qnum 2 n = mpow 1 n.
+QDial.qnum_at_zero	QDial.qnum_zero_left	GENERAL	high	ℤ -> any semiring; qnum 0 (n+1) = 1.
+QDial.qnum_at_neg_one	QDial.qnum_neg_one	GENERAL	high	ℤ -> any commutative ring; both conjuncts kept (2n -> 0, 2n+1 -> 1).
+QDial.parity_xor	QDial.parity_xor	GENERAL	high	ℤ -> any commutative ring; same four table entries (0,1,1,0). route: decide -> ring.
+QDial.failure_or	QDial.failure_or	GENERAL	high	ℤ -> any commutative ring; same four entries (0,1,1,1). route: decide -> ring.
+QDial.qnum_three_at_dial	QDial.qnum_three_at_dial	GENERAL	high	ℤ -> any commutative ring; same values 3, 7, 1, 1 at q = 1, 2, 0, -1.

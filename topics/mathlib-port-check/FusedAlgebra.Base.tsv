@@ -1,0 +1,58 @@
+original	new_name	verdict	confidence	reason
+MultAdd.multAdd_def	MultAdd.multAdd_def	GENERAL	high	same equation; port needs only [Add R] [Mul R] instead of CommSemiring
+MultAdd.multAdd_lift	MultAdd.one_add_multAdd	GENERAL	high	same equation 1 + (a ✳ b) = (1+a)(1+b); Semiring instead of CommSemiring
+MultAdd.multAdd_lift'	MultAdd.multAdd_add_one	GENERAL	high	same equation; Semiring instead of CommSemiring
+MultAdd.multAdd_comm	MultAdd.multAdd_comm	GENERAL	high	same; NonUnitalCommSemiring
+MultAdd.multAdd_assoc	MultAdd.multAdd_assoc	GENERAL	high	same; NonUnitalSemiring (no commutativity, no 1). route: proved from mul_assoc of mathlib PreQuasiregular, not by direct algebra
+MultAdd.multAdd_zero	MultAdd.multAdd_zero	GENERAL	high	same; NonUnitalNonAssocSemiring
+MultAdd.zero_multAdd	MultAdd.zero_multAdd	GENERAL	high	same; NonUnitalNonAssocSemiring
+MultAdd.multAdd_excess	MultAdd.multAdd_def	DROPPED-OK	high	original (a + b) + a*b parses identically to a + b + a*b, so it is literally multAdd_def
+MultAdd.wAdd_def	MultAdd.wAdd_def	SAME	high	same, CommSemiring
+MultAdd.wAdd_lift	MultAdd.one_add_mul_wAdd	SAME	high	renamed; identical statement
+MultAdd.wAdd_scale	MultAdd.mul_wAdd	SAME	high	renamed; k*wAdd k a b = (k*a) ✳ (k*b)
+MultAdd.wAdd_comm	MultAdd.wAdd_comm	SAME	high	identical
+MultAdd.wAdd_assoc	MultAdd.wAdd_assoc	SAME	high	identical
+MultAdd.wAdd_zero	MultAdd.wAdd_zero	SAME	high	identical (zero_wAdd added)
+MultAdd.wAdd_weight_zero	MultAdd.wAdd_weight_zero	SAME	high	identical
+MultAdd.wAdd_one	MultAdd.wAdd_one	SAME	high	identical
+MultAdd.pw_eq_pow	(pw replaced by ^)	DROPPED-OK	high	pw no longer exists; it had the same recursion as Monoid.npow (x^(n+1) = x^n * x), so the statement is trivial. route: hand induction gone
+MultAdd.pw_add	pow_add	MATHLIB	high	pow_add: a^(m+n) = a^m * a^n. route: hand induction replaced by mathlib
+MultAdd.pw_mul	pow_mul	MATHLIB	high	pow_mul: a^(m*n) = (a^m)^n, matches pw x (m*n) = pw (pw x m) n. route: mathlib
+MultAdd.pw_one	one_pow	MATHLIB	high	one_pow: 1^n = 1. route: mathlib
+MultAdd.pw_mul_base	mul_pow	MATHLIB	high	mul_pow (CommMonoid): (a*b)^n = a^n*b^n. route: mathlib
+MultAdd.pow_add'	pow_add	MATHLIB	high	identical statement in mathlib. route: mathlib
+MultAdd.mul_pow'	mul_pow	MATHLIB	high	identical statement in mathlib. route: mathlib
+MultAdd.one_pow'	one_pow	MATHLIB	high	identical statement in mathlib. route: mathlib
+MultAdd.mpow_lift	MultAdd.one_add_mpow	GENERAL	high	same 1 + mpow a n = (1+a)^n; Semiring. route: map_pow of the monoid hom oneAddHom instead of induction
+MultAdd.mpow_add	MultAdd.mpow_add	GENERAL	high	same; NonUnitalSemiring. route: pow_add in PreQuasiregular instead of induction
+MultAdd.wpow_lift	MultAdd.one_add_mul_wpow	SAME	high	renamed; identical, proof still by induction
+MultAdd.wpow_one	MultAdd.wpow_one	SAME	high	identical
+MultAdd.foldMA_append	MultAdd.multAddList_append	GENERAL	high	same; NonUnitalSemiring. route: List.prod_append in PreQuasiregular
+MultAdd.foldMA_lift	MultAdd.one_add_multAddList	GENERAL	high	same, prodL = List.prod; Semiring. route: map_list_prod oneAddHom instead of induction
+MultAdd.foldMA_perm	MultAdd.multAddList_perm	GENERAL	high	same; NonUnitalCommSemiring. route: List.Perm.prod_eq instead of induction on Perm
+MultAdd.sumL_append	List.sum_append	MATHLIB	high	List.sum_append: (l ++ m).sum = l.sum + m.sum
+MultAdd.sumL_map_cons	List.sum_map_mul_left	MATHLIB	medium	needs List.map_map and List.prod_cons around List.sum_map_mul_left to get the exact original form; content covered
+MultAdd.one_add_foldMA_eq_corners	MultAdd.one_add_multAddList_eq_sum_sublists	GENERAL	high	groups = List.sublists' (same recursion, sublists'_cons); statement same; Semiring (noncommutative ok)
+MultAdd.neg_one_absorbs	MultAdd.neg_one_multAdd	GENERAL	high	same -1 ✳ b = -1; Ring instead of CommRing
+MultAdd.mpow_eq	MultAdd.mpow_eq	GENERAL	high	same; Ring instead of CommRing
+MultAdd.wAdd_either	MultAdd.wAdd_neg_one	SAME	high	renamed; identical
+MultAdd.wAdd_neg_one_mirror	MultAdd.wAdd_neg_one_eq_neg_multAdd	SAME	high	renamed; -(-a ✳ -b) parses as -((-a) ✳ (-b))
+MultAdd.wAdd_flip	MultAdd.wAdd_neg_neg	SAME	high	renamed; identical
+MultAdd.wpow_neg_one	MultAdd.wpow_neg_one	SAME	high	identical
+MultAdd.multAdd_multAddInv	MultAdd.multAdd_multAddInv	SAME	high	identical, same hypothesis 1 + u ≠ 0
+MultAdd.multAddInv_multAdd	MultAdd.multAddInv_multAdd	SAME	high	identical
+MultAdd.inv_one_add	MultAdd.inv_one_add	SAME	high	identical
+MultAdd.no_multAddInv_at_wall	MultAdd.neg_one_multAdd_ne_zero	SAME	high	renamed; -1 ✳ v ≠ 0 in a field
+MultAdd.msub_multAdd	MultAdd.msub_multAdd	SAME	high	identical, same hypothesis 1 + b ≠ 0
+MultAdd.wAdd_wall	MultAdd.wAdd_wall	SAME	high	identical, same hypothesis k ≠ 0
+def multAdd	MultAdd.multAdd	GENERAL	high	same formula a + b + a*b; defined for any [Add R] [Mul R]; notation ✳ (was ⊞), infixl 65 as before
+def wAdd	MultAdd.wAdd	SAME	high	same formula a + b + k*a*b, CommSemiring
+def pw	HPow.hPow	MATHLIB	high	pw x 0 = 1, pw x (n+1) = pw x n * x is exactly Monoid.npow's recursion
+def mpow	MultAdd.mpow	EQUIV	high	now (equiv a ^ n).val in PreQuasiregular; mpow_zero (= 0) and mpow_succ (= mpow a n ✳ a) give the original recursion exactly
+def wpow	MultAdd.wpow	SAME	high	same recursion wpow 0 = 0, wpow (n+1) = wAdd k (wpow n) a
+def foldMA	MultAdd.multAddList	EQUIV	high	now List.prod in PreQuasiregular; multAddList_nil (= 0) and multAddList_cons (= a ✳ rest) give the original recursion
+def prodL	List.prod	MATHLIB	high	same foldr recursion with 1
+def sumL	List.sum	MATHLIB	high	same foldr recursion with 0
+def groups	List.sublists'	MATHLIB	high	sublists'_cons: sublists' (a::l) = sublists' l ++ map (cons a) (sublists' l), same as groups
+def multAddInv	MultAdd.multAddInv	SAME	high	-u/(1+u)
+def msub	MultAdd.msub	SAME	high	(a - b)/(1 + b)

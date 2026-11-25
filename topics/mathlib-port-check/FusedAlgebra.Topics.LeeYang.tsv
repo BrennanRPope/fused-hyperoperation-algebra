@@ -1,0 +1,49 @@
+original	new_name	verdict	confidence	reason
+Mat2	Matrix (Fin 2) (Fin 2) R	MATHLIB	high	def: record ⟨a,b,c,d⟩ = !![a,b;c,d]
+Mat2.one	1	MATHLIB	high	def: identity
+Mat2.mul	HMul.hMul	MATHLIB	high	def: same row-by-column formula (mul_fin_two)
+Mat2.smul	SMul.smul	MATHLIB	high	def: entrywise scalar
+Mat2.tr	Matrix.trace	MATHLIB	high	def: a + d (trace_fin_two)
+Mat2.det	Matrix.det	MATHLIB	high	def: ad - bc (det_fin_two)
+Mat2.pow	Monoid.npow	MATHLIB	high	def: original x * pow x n, npow is pow x n * x; powers of one matrix commute, same value
+ringT	LeeYang.ringT	SAME	high	def: ⟨1, z, 1, k z⟩ = !![1, z; 1, k * z]
+pottsRing	LeeYang.pottsRing	SAME	high	def: identical
+Mat2.ext'	Matrix.ext	MATHLIB	high	entrywise extensionality (eta_fin_two)
+edge_gas	LeeYang.edge_gas	SAME	high	
+edge_gas_free	LeeYang.edge_gas_free	SAME	high	
+edge_gas_hardcore	LeeYang.edge_gas_hardcore	SAME	high	
+ringT_tr	LeeYang.trace_ringT	SAME	high	
+ringT_det	LeeYang.det_ringT	SAME	high	
+cayley_hamilton	LeeYang.sq_eq_trace_smul_sub_det_smul_one	EQUIV	high	explicit four entries = tr•x - det•1 entrywise; x*x written x^2
+odd_pow_of_tr_zero	LeeYang.pow_two_mul_add_one_of_trace_eq_zero	SAME	high	route: original induction; port via pow_mul and the square
+tr_odd_pow_zero	LeeYang.trace_pow_two_mul_add_one_of_trace_eq_zero	SAME	high	
+odd_ring_vanishes_on_wall	LeeYang.odd_ring_vanishes_on_wall	SAME	high	
+even_pow_of_tr_zero	LeeYang.pow_two_mul_of_trace_eq_zero	SAME	high	route: induction replaced by pow_mul + sq_of_trace_eq_zero
+even_ring_on_wall	LeeYang.even_ring_on_wall	SAME	high	2 * (z * (1 - k)) ^ m kept
+triangle_count	LeeYang.triangle_count	SAME	high	coefficients 1,3,3k,k^3 kept
+square_count	LeeYang.square_count	SAME	high	coefficients kept
+pentagon_count	LeeYang.pentagon_count	SAME	high	coefficients kept
+triangle_factor	LeeYang.triangle_factor	SAME	high	
+triangle_disc	LeeYang.triangle_disc	SAME	high	
+triangle_disc_nonpos	LeeYang.triangle_disc_nonpos	GENERAL	high	ℤ → any linearly ordered comm ring (strict ordered ring); route: omega/Int lemmas → nlinarith
+ring_disc	LeeYang.ring_disc	SAME	high	
+ring_disc_free	LeeYang.ring_disc_free	SAME	high	
+ring_zero_family	LeeYang.ring_zero_family	SAME	high	
+ring_family_wall	LeeYang.ring_family_wall	SAME	high	
+ring_family_edge	LeeYang.ring_family_edge	SAME	high	
+ring_family_zeta	LeeYang.ring_family_zeta	SAME	high	
+ring_edges_vieta	LeeYang.ring_edges_vieta	SAME	high	
+ising_ring_transfer	LeeYang.ising_ring_transfer	SAME	high	matrix ⟨1+v,1,1,1+v⟩ = !![1+v,1;1,1+v]
+pottsRing_lift	LeeYang.pottsRing_lift	GENERAL	high	field → any comm ring; hypothesis t*(Q+v)=v unchanged
+two_rings	LeeYang.two_rings	SAME	high	
+cycle_chromatic	LeeYang.cycle_chromatic	SAME	high	
+colourings_on_wall	LeeYang.colourings_on_wall	SAME	high	
+ring_zero_at_q0	LeeYang.ring_zero_at_q0	SAME	high	
+ring_zero_at_q1	LeeYang.ring_zero_at_q1	SAME	high	
+one_pow'	one_pow	MATHLIB	high	helper
+ring_zero_at_q2_odd	LeeYang.ring_zero_at_q2_odd	SAME	high	
+ring_at_q2_even	LeeYang.ring_at_q2_even	SAME	high	
+ring_at_parity	LeeYang.ring_at_parity	SAME	high	
+two_pow_ge_four	pow_le_pow_right₀	DROPPED-OK	high	helper (4 ≤ 2^n for 2 ≤ n); used inline as 2^2 ≤ 2^n
+neg_one_pow_cases	neg_one_pow_eq_or	MATHLIB	high	helper; mathlib states (-1)^n = 1 ∨ (-1)^n = -1
+parity_never_zero	LeeYang.parity_never_zero	SAME	high	still over ℤ, 2 ≤ n

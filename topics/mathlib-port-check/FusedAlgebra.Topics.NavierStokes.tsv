@@ -1,0 +1,12 @@
+original	new_name	verdict	confidence	reason
+FusedRungs.burgers_corner_defect	FusedRungs.burgers_corner_defect	GENERAL	high	ℤ -> CommRing; same identity
+FusedRungs.burgers_corner_ok_iff	FusedRungs.burgers_corner_ok_iff	GENERAL	high	ℤ -> CommRing with IsDomain and 2≠0, both automatic for ℤ; same iff
+FusedRungs.c0 (def)	FusedRungs.c0	SAME	high	def: same polynomial, ℤ -> CommRing
+FusedRungs.c1 (def)	FusedRungs.c1	SAME	high	def: same polynomial, ℤ -> CommRing
+FusedRungs.c2 (def)	FusedRungs.c2	SAME	high	def: c0+c1, ℤ -> CommRing
+FusedRungs.shell_energy	FusedRungs.shell_energy	GENERAL	high	ℤ -> CommRing; same (sub_self)
+FusedRungs.shell_helicity	FusedRungs.shell_helicity	GENERAL	high	ℤ -> CommRing; same polynomial identity
+FusedRungs.signs (def)	Finset.univ	MATHLIB	high	def: explicit list of the 8 Bool triples -> Finset.univ on Bool×Bool×Bool; same 8 elements, no duplicates
+FusedRungs.minuses (def)	FusedRungs.minuses	SAME	high	def unchanged
+FusedRungs.sign_cube_layers	FusedRungs.sign_cube_layers	EQUIV	high	filtered-list lengths over signs -> Finset card over univ; same numbers [1,3,3,1]; port adds card_minuses_eq (choose 3 j)
+FusedRungs.homochiral_layers	FusedRungs.homochiral_layers	SAME	high	same

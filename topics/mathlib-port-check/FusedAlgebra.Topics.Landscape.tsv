@@ -1,0 +1,29 @@
+original	new_name	verdict	confidence	reason
+num_comm	LandscapeMap.num_comm	GENERAL	high	ℤ → any CommRing, same identity
+den_comm	LandscapeMap.den_comm	GENERAL	high	ℤ → any CommRing, same identity
+num_zero	LandscapeMap.num_zero	GENERAL	high	ℤ → any CommRing, same identity
+den_zero	LandscapeMap.den_zero	GENERAL	high	ℤ → any CommRing, same identity
+assoc_num	LandscapeMap.assoc_num	GENERAL	high	ℤ → any CommRing, same identity
+assoc_den	LandscapeMap.assoc_den	GENERAL	high	ℤ → any CommRing, same identity
+inverse_num	LandscapeMap.inverse_num	GENERAL	high	ℤ → any CommRing, same identity
+riccati_rate	LandscapeMap.riccati_rate	GENERAL	high	ℤ → any CommRing, same identity; a*a as a^2
+rate_factors	LandscapeMap.rate_factors	GENERAL	high	ℤ → any CommRing, same identity; a*a as a^2
+lens_lift	LandscapeMap.lens_lift	GENERAL	high	ℤ → any CommRing, same identity. route: now derived from lens_factor_u/v (his lemmas)
+lens_factor_u	LandscapeMap.lens_factor_u	GENERAL	high	ℤ → any CommRing, same identity
+lens_factor_v	LandscapeMap.lens_factor_v	GENERAL	high	ℤ → any CommRing, same identity
+multadd_point	LandscapeMap.multAdd_point	GENERAL	high	ℤ → any CommRing, same identity; renamed
+velocity_point	LandscapeMap.velocity_point	GENERAL	high	ℤ → any CommRing, same identity
+discriminant	LandscapeMap.discriminant	GENERAL	high	ℤ → any CommRing, same identity; squares as ^2
+parabola_additive	LandscapeMap.parabola_additive	GENERAL	high	ℤ → any CommRing, same identity
+parabola_den	LandscapeMap.parabola_den	GENERAL	high	ℤ → any CommRing, same identity; now the term lens_factor_u u u
+units_num	LandscapeMap.units_num	GENERAL	high	ℤ → any CommRing, same identity; lam → l
+units_den	LandscapeMap.units_den	GENERAL	high	ℤ → any CommRing, same identity; lam*lam as l^2
+dial_is_multadd	LandscapeMap.dial_is_multAdd	GENERAL	high	ℤ → any CommRing, same identity; renamed; term mul_wAdd as before (wAdd_scale)
+kdv_phase_shift	LandscapeMap.kdv_phase_shift	GENERAL	high	ℤ → any CommRing, same identity; term mul_wAdd
+chi_y_line	LandscapeMap.chi_y_line	GENERAL	high	ℤ → any CommRing, same identity
+chi_y_touch	LandscapeMap.chi_y_touch	GENERAL	high	ℤ → any CommRing, same identity; squares as ^2
+rung_discriminant	LandscapeMap.rung_discriminant	GENERAL	high	ℤ → any CommRing, same identity; s is fractional height
+rung_equivalent	LandscapeMap.rung_equivalent	GENERAL	high	ℤ → any CommRing, same identity
+parity_reaches_floor	LandscapeMap.parity_reaches_floor	GENERAL	high	ℤ → any CommRing, same identity
+channel_floor	LandscapeMap.channel_floor	GENERAL	high	ℤ → linearly ordered comm ring; same hypotheses 2≤L, 0≤n, n≤m; L n m implicit
+def num/den	LandscapeMap.num, den	EQUIV	high	num p = wAdd p, den q a b = 1 - q a b; ℤ → CommRing

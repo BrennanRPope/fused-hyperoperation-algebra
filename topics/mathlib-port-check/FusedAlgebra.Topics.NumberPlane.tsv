@@ -1,0 +1,30 @@
+original	new_name	verdict	confidence	reason
+mre (def)	SimpleLaws.mre	GENERAL	high	same formula a*c - q*b*d; Z -> CommRing
+mu (def)	SimpleLaws.mu	GENERAL	high	same formula a*d+b*c+k*b*d; Z -> CommRing
+norm (def)	SimpleLaws.norm	GENERAL	high	same formula a*a + k*a*b + q*b*b; Z -> CommRing
+SimpleLaws.mul_rule	SimpleLaws.mul_rule	GENERAL	high	u*u -> u^2 in hypothesis; any CommRing
+SimpleLaws.mul_comm_re	SimpleLaws.mul_comm_re	GENERAL	high	any CommRing
+SimpleLaws.mul_comm_u	SimpleLaws.mul_comm_u	GENERAL	high	any CommRing
+SimpleLaws.mul_assoc_re	SimpleLaws.mul_assoc_re	GENERAL	high	any CommRing; route: read off mul_assoc in QuadraticAlgebra R (-q) k instead of expanding
+SimpleLaws.mul_assoc_u	SimpleLaws.mul_assoc_u	GENERAL	high	any CommRing; route: via QuadraticAlgebra mul_assoc
+SimpleLaws.tilted_re	SimpleLaws.tilted_re	GENERAL	high	LandscapeMap.den unchanged (1 - q*a*b); any CommRing
+SimpleLaws.tilted_u	SimpleLaws.tilted_u	GENERAL	high	LandscapeMap.num = wAdd unchanged; any CommRing
+SimpleLaws.multadd_point_u	SimpleLaws.multAdd_point_u	GENERAL	high	renamed; any CommRing
+SimpleLaws.multadd_point_re	SimpleLaws.multAdd_point_re	GENERAL	high	renamed; any CommRing
+SimpleLaws.complex_point	SimpleLaws.complex_point	GENERAL	high	any CommRing
+SimpleLaws.split_point	SimpleLaws.split_point	GENERAL	high	any CommRing
+SimpleLaws.dual_point	SimpleLaws.dual_point	GENERAL	high	any CommRing
+SimpleLaws.norm_mul	SimpleLaws.norm_mul	GENERAL	high	any CommRing; route: map_mul of QuadraticAlgebra.norm instead of hand expansion
+SimpleLaws.norm_conj	SimpleLaws.norm_conj	GENERAL	high	u*u -> u^2; any CommRing
+SimpleLaws.four_norm	SimpleLaws.four_norm	GENERAL	high	squares as ^2; any CommRing
+SimpleLaws.sq_nonneg	mul_self_nonneg	MATHLIB	high	0 <= x*x; same
+SimpleLaws.norm_nonneg_turning	SimpleLaws.norm_nonneg_turning	GENERAL	high	Z -> linearly ordered comm ring (Z qualifies); k*k<=4q as k^2<=4q
+SimpleLaws.norm_border	SimpleLaws.norm_border	GENERAL	high	any CommRing
+SimpleLaws.norm_walls	SimpleLaws.norm_walls	GENERAL	high	any CommRing
+SimpleLaws.norm_complex	SimpleLaws.norm_complex	GENERAL	high	any CommRing
+SimpleLaws.norm_split	SimpleLaws.norm_split	GENERAL	high	any CommRing
+SimpleLaws.norm_dual	SimpleLaws.norm_dual	GENERAL	high	any CommRing
+SimpleLaws.norm_multadd	SimpleLaws.norm_multAdd	GENERAL	high	renamed; any CommRing
+SimpleLaws.norm_multadd_tilted	SimpleLaws.norm_multAdd_tilted	GENERAL	high	renamed; any CommRing
+SimpleLaws.norm_multadd_lift	SimpleLaws.norm_multAdd_lift	GENERAL	high	renamed; any CommRing; route: from norm_mul + one_add_multAdd
+SimpleLaws.unit_circle_is_hyperbola	SimpleLaws.unit_circle_is_hyperbola	GENERAL	high	any CommRing

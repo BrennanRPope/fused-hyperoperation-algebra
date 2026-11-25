@@ -1,0 +1,10 @@
+original	new_name	verdict	confidence	reason
+FractionalRungs.dial_or	MultAdd.wAdd_neg_one	DROPPED-OK	high	identical statement in Basic for any CommRing (orig ℤ)
+FractionalRungs.dial_three	FractionalRungs.dial_three	GENERAL	high	ℤ → CommSemiring, same expression
+FractionalRungs.kdv_weight	FractionalRungs.kdv_weight	GENERAL	high	ℤ → CommRing
+FractionalRungs.fuse_succ	FractionalRungs.fuse_succ	SAME	high	ℕ, same; proof now rfl
+FractionalRungs.fuse_max	FractionalRungs.fuse_max	SAME	high	ℕ
+FractionalRungs.fuse_min	FractionalRungs.fuse_min	SAME	high	ℕ
+FractionalRungs.fuse_add	FractionalRungs.fuse_add	SAME	high	ℕ
+FractionalRungs.fuse_mul	FractionalRungs.fuse_mul	SAME	high	RHS a+b+a*b written a ✳ b (defeq)
+def fuse	FractionalRungs.fuse	SAME	high	op (a+1) (b+1) - 1 on ℕ; fuse (hyperoperation n) = rung n holds by rfl, so index n matches orig Rungs (1 = sadd, 2 = mult-add, 3 = fexp)

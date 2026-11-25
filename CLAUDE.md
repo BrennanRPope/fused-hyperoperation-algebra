@@ -8,3 +8,4 @@ Conventions:
 - Lean is core Lean 4 only (no mathlib) unless a file says otherwise.
 - One folder per topic under `topics/`. Keep scripts and their saved output together, and keep large generated data out of git (see DATA.md).
 - Keep INDEX.md up to date when a topic or page is added.
+- When a new result could help mathematicians (a formal check, a sharp open question, a measurable number, a useful negative result), add it to the "What's here that could help mathematicians" catalog in README.md, with its status and an honest novelty label. Leave out pure re-derivations.

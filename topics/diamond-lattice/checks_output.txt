@@ -1,0 +1,81 @@
+--- 1. The map: series squares t, parallel is the landscape law
+PASS: T(t) = F_{Q-2,1-Q}(t^2,t^2) = (2t^2 + (Q-2)t^4)/(1 + (Q-1)t^4)
+PASS: conjugate (t = (x-1)/(x+Q-1), x = e^K) to the classical map x -> ((x^2+Q-1)/(2x+Q-2))^2
+PASS: t = (x-1)/(x+Q-1) is v/(Q+v) with v = x - 1
+PASS: brute-force Potts sums on the 4-edge diamond (Q = 2,3,4) give t' = T(t)
+PASS: brute force on the 16-edge level-2 diamond (Q = 2) gives T(T(t))
+--- 2. Walls and the lift
+PASS: wall 1 absorbs under the parallel law: F(w, b) = w
+PASS: wall 1/(1 - Q) absorbs under the parallel law: F(w, b) = w
+PASS: the second wall 1/(1-Q) is the colouring bond v = -1
+PASS: lift phi(t) = (1-t)/(1+(Q-1)t) turns parallel into multiplication
+PASS: phi(t) = 1/(1+v) = e^{-K}: parallel multiplies e^K
+PASS: so T = phi^-1(phi(t^2)^2): square in t, then square in e^{-K}
+PASS: discriminant p^2 - 4q = (Q-2)^2 + 4(Q-1) = Q^2
+PASS: wall gap squared (1 - 1/(1-Q))^2 = (p^2-4q)/q^2
+PASS: bend q = 1 - Q is the reciprocal of the second wall
+PASS: T'(t) = 4t(1-t^2)(1+(Q-1)t^2)/(1+(Q-1)t^4)^2
+PASS: critical points 0, +-1, +-sqrt(1/(1-Q)) (and infinity, the series wall)
+PASS: the parallel law doubles its own wall: F(w, w) = w for w = 1/(1-Q), so T(+-sqrt w) = w
+PASS: T(infinity) = (Q-2)/(Q-1)
+PASS: Q != 0: both t = 0 and t = 1 are superattracting (T' = 0)
+PASS: Q = 0 (walls merge, the border): T = 2t^2/(1+t^2), T - t = -t(t-1)^2/(1+t^2)
+PASS: Q = 0: T'(1) = 1, the cold point turns parabolic
+PASS: Q = 1: second wall at infinity meets the series wall; T = 2t^2 - t^4, a polynomial
+PASS: Q = 2: walls 0, inf, 1, -1 are harmonic, and T(1/t) = T(t)
+PASS: only Q = 2 has T(1/t) = T(t)
+PASS: T is even (series squares): T(-t) = T(t)
+--- 3. Fixed points: one cubic, one parametrisation, one slope formula
+PASS: T(t) - t = -t(t-1)((Q-1)t^3 + t^2 + t - 1)/(1+(Q-1)t^4)
+PASS: t = 1/y is fixed whenever Q = (y-1)^2 (y+1)
+PASS: and then e^{K} = y^2 (x = y^2 is fixed by the x map)
+PASS: matches Chang-Roeder-Shrock fixed cubic q^2 + 2qv - v^3 = 0 with v = y^2 - 1
+PASS: slope at every nontrivial fixed point: T'(1/y) = (2y/(y+1))^2
+PASS: same in t: lambda = 4/(1+t*)^2
+PASS: Q = 1: t* = -1/2 + sqrt(5)/2, lambda = 6 - 2*sqrt(5)
+PASS: Q = 3: t* = 1/2, lambda = 16/9
+PASS: Q = 16: t* = 1/3, lambda = 9/4
+PASS: Q = 45: t* = 1/4, lambda = 64/25
+PASS: Q = 1: lambda = 4/phi^2 = 4 - 4t* (golden)
+PASS: Q = 2: y* is the tribonacci constant 1.839287 (y^3 = y^2 + y + 1), t* = 0.543689
+PASS: Q = (m-1)^2 (m+1) gives t* = 1/m: Q = 0, 3, 16, 45, 96 for m = 1..5
+PASS: numerically: y* = m at Q = (m-1)^2(m+1), m = 2..5
+    nu: {1: np.float64(1.6353), 2: np.float64(1.3383), 3: np.float64(1.2047), 4: np.float64(1.1242), 16: np.float64(0.8548)}
+PASS: nu(1) = 1.6353, nu(2) = 1.3383, nu(3) = 1.2047, nu(4) = 1.1242, nu(16) = 0.8548
+PASS: nu(16) = ln2/(2 ln(3/2)) = 0.8548 and nu(45) = ln2/(2 ln(8/5)) = 0.7374
+PASS: slope 4/(1+t*)^2 > 1 for every Q > 0 (y* > 1 so t* < 1)
+PASS: nu(3) = ln2 / (2 ln(4/3)) exactly
+PASS: nu decreases with Q and tends to 1/2 (lambda -> 4) as Q grows; nu -> infinity as Q -> 0
+PASS: nu(Q) is smooth through Q = 4 (no kink: second differences stay tiny and of one sign)
+--- 4. The fold at 32/27 (known: Chang-Roeder-Shrock 2020)
+PASS: 32/27 - (y-1)^2(y+1) = (y + 1/3)^2 (5/3 - y): Q(y) peaks at y = -1/3 with value 32/27
+PASS: Q = 32/27: ferro point y = 5/3, t* = 3/5, slope 25/16, nu = 1.5531
+PASS: at the fold y = -1/3: t = -3, e^K = 1/9, slope 2y/(y+1) = -1 (neutral)
+PASS: |2y/(y+1)| < 1 exactly for y > -1/3 (when y > -1): (y+1)^2 - 4y^2 = (1-y)(1+3y)
+PASS: 0 < Q < 32/27: exactly one attracting antiferro fixed point; Q > 32/27: one real fixed root only
+PASS: Q = 1: that attracting point is t = infinity (y = 0)
+--- 5. Zeros: level-n zeros are where the n-th iterate hits t = infinity
+PASS: level-2 chromatic polynomial vanishes at Q = 0, 1 and has 2 at Q = 2 (bipartite: P(2) = 2)
+PASS: every other level-2 chromatic zero has T(t_c)^4 (Q-1) = -1, i.e. T^2(t_c) = infinity
+PASS: no real chromatic zero with Q > 1 at levels 1..5 (the real orbit never reaches infinity)
+--- 6. Beraha values 4cos^2(pi/n): tested, not assumed
+PASS: the critical cubic has a root in the Beraha field Q(B_n) only for n = 3, 6 (Q = 1, 3), n <= 30
+    switch points above 1.3: [np.float64(1.3231), np.float64(1.4099), np.float64(1.6386), np.float64(3.0001)]
+PASS: the chromatic point t_c = 1/(1-Q) switches basin on the real axis at 3, 1.6389, 1.4098, 1.3240, ... (count > 10, all in (32/27, 3])
+PASS: q1 = 1.6388969 is the real root of Q^3 - 5Q^2 + 11Q - 9 (as Chang-Roeder-Shrock state)
+PASS: the switch points crowd down onto 32/27 = 1.1852
+PASS: of the switch points above 1.2, only Q = 3 (n = 6) sits on a Beraha value
+PASS: why Q = 3: t_c = -t* exactly when (y-1)^2 = 1, y = 2; T even so T(t_c) = t* (T(-1/2) = 1/2 at Q = 3)
+PASS: Beraha n = 5, 7..12: the chromatic orbit never lands on t* within 6 steps
+PASS: nu at Beraha values lies on the smooth nu(Q) curve (no jumps: |d nu/dQ| bounded, monotone)
+--- 7. Julia-set pictures (numerical facts shown on the page)
+PASS: Q = 2: t* sits on the boundary (just below goes hot, just above goes cold)
+PASS: Q = 3: t* sits on the boundary (just below goes hot, just above goes cold)
+PASS: Q = 4: t* sits on the boundary (just below goes hot, just above goes cold)
+PASS: Q = 2 picture: every grid point is decided (no third attractor)
+PASS: Q = 2 picture is symmetric under t -> 1/t (sampled)
+PASS: Q = 1: a third basin (infinity) appears; percolation map is a polynomial
+PASS: Q = 0.6: the antiferro fixed point grabs most of the plane
+PASS: as Q grows past 2 the cold basin swallows more of the window (fractions [np.float64(0.22), np.float64(0.52), np.float64(0.9), np.float64(0.97), np.float64(0.98)])
+
+70/70 checks passed

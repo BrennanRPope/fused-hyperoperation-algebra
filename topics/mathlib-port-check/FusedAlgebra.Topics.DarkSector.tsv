@@ -1,0 +1,18 @@
+original	new_name	verdict	confidence	reason
+DarkSector.redshift_compose	MultAdd.one_add_multAdd	DROPPED-OK	high	ℕ case of 1 + (a ✳ b) = (1+a)(1+b), sides swapped
+DarkSector.redshift_power	MultAdd.one_add_mpow	DROPPED-OK	high	ℕ case of 1 + mpow a n = (1+a)^n, sides swapped
+DarkSector.redshift_compose_int	MultAdd.one_add_multAdd	DROPPED-OK	high	ℤ case with ✳ unfolded by multAdd_def
+DarkSector.cube_layers	DarkSector.cube_layers	GENERAL	high	ℕ → CommSemiring
+DarkSector.cube_is_mpow3	DarkSector.mpow_three	GENERAL	high	renamed; ℕ → CommSemiring. route: direct ring, not via redshift_power
+DarkSector.lcdm_is_weighted_cube	DarkSector.lcdm_is_weighted_cube	GENERAL	high	ℚ → CommRing; RHS written 1 + Om * mpow z 3, equal to orig 1 + Om*(3z+3z^2+z^3) by mpow_three
+DarkSector.multAdd_growth_is_exponential	DarkSector.multAdd_growth_is_exponential	SAME	high	ℕ; ∀ t moved before colon
+DarkSector.fexp_growth_trivial	DarkSector.fexp_growth_trivial	SAME	high	ℕ, same fexp (rung 3) and hypotheses
+DarkSector.fexp_growth_trivial'	DarkSector.fexp_growth_trivial'	SAME	high	ℕ, same
+DarkSector.pow_growth_trivial	DarkSector.pow_growth_trivial	SAME	high	ℕ, same
+DarkSector.multAdd_ge_add	DarkSector.add_le_multAdd	GENERAL	high	ℕ → ordered semiring with 0 ≤ a, 0 ≤ b: automatic on ℕ (Nat.zero_le), so ℕ case follows with no extra hypothesis
+DarkSector.foldMA_ge_sum	DarkSector.sum_le_multAddList	GENERAL	high	ℕ → ordered semiring with ∀ x ∈ l, 0 ≤ x: automatic on ℕ; foldMA → multAddList (same fold)
+DarkSector.corner_le_quarter	DarkSector.corner_le_quarter	GENERAL	high	ℤ → linearly ordered comm ring. route: now mathlib four_mul_le_sq_add instead of his (a-b)^2 proof
+DarkSector.minv_lift	DarkSector.one_add_mul_one_add_of_multAdd_eq_zero	GENERAL	high	ℤ → Semiring; hypothesis x+y+xy=0 written x ✳ y = 0 (defeq)
+DarkSector.mu_is_neg_minv	DarkSector.mu_is_neg_minv	GENERAL	high	ℤ → CommRing; hypothesis as x ✳ y = 0
+DarkSector.simple_mond_square	DarkSector.simple_mond_square	GENERAL	high	ℤ → Semiring
+DarkSector.deep_mond_square	DarkSector.deep_mond_square	GENERAL	high	ℕ → Monoid

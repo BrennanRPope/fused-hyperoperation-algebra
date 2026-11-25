@@ -1,0 +1,67 @@
+original	new_name	verdict	confidence	reason
+recip_diff	inv_sub_inv	MATHLIB	high	inv_sub_inv v u : v⁻¹ - u⁻¹ = (u - v)/(v*u); same as 1/v - 1/u = (u-v)/(u*v) up to one_div, mul_comm. route: was grind
+ric (def)	MultAdd.OsgoodInverse.ric	SAME	high	t/(1-t), K any field in both
+ric_lift	MultAdd.OsgoodInverse.one_add_ric	SAME	high	1 + ric t = (1-t)⁻¹ vs 1/(1-t); renamed
+ric_step	MultAdd.OsgoodInverse.ric_step	SAME	high	identical, any field
+ric_step_multAdd	MultAdd.OsgoodInverse.ric_step_multAdd	SAME	high	⊞→✳; ✳ is a+b+ab on any Add/Mul type, so defined on K
+riccati_clock_step	MultAdd.OsgoodInverse.riccati_clock_step	SAME	high	1/x written x⁻¹; route: grind → inv_sub_inv + linear_combination
+steps (def)	nsmul (n • h)	MATHLIB	high	steps h 0 = 0, steps h (n+1) = steps h n + h is exactly zero_nsmul/succ_nsmul
+steps_add	add_nsmul	MATHLIB	high	(m+n)•h = m•h + n•h
+riccati_clock	MultAdd.OsgoodInverse.riccati_clock	SAME	high	steps h n → n • h; ∀ n and hypothesis turned into binders
+riccati_hits_wall	MultAdd.OsgoodInverse.riccati_hits_wall	SAME	high	steps h m → m • h; 1/x → x⁻¹
+mirror_step	MultAdd.OsgoodInverse.mirror_step	SAME	high	multAddInv = -u/(1+u) in both cores
+mirror_lift	MultAdd.inv_one_add	DROPPED-OK	high	Basic: (1+u)⁻¹ = 1 + multAddInv u, hyp 1+u≠0: original with sides swapped
+rung1_lift	MultAdd.OsgoodInverse.rung1_lift	GENERAL	high	Field K → any Semiring R; same conclusion. route: induction kept
+rung1_never_wall	MultAdd.OsgoodInverse.rung1_never_wall	GENERAL	high	ℚ → semiring with PartialOrder + IsStrictOrderedRing (ℚ is one). route: now via rung1_lift + mul_pos/pow_pos instead of own induction
+steps_quarter	MultAdd.OsgoodInverse.riccati_quarter_blows_up	DROPPED-OK	high	steps (1/4) 4 = 1 is 4 • (1/4 : ℚ) = 1, discharged by norm_num inside riccati_quarter_blows_up; not exported as a lemma
+riccati_quarter_blows_up	MultAdd.OsgoodInverse.riccati_quarter_blows_up	SAME	high	same ℚ statement, h = 1/4, m = 4
+ric_near_one	MultAdd.OsgoodInverse.ric_near_one	GENERAL	high	ℚ → any linearly ordered field; same equation y(1-1/(M+2)) = M+1. route: hand proof → field_simp
+time_left_pos	MultAdd.OsgoodInverse.time_left_pos	GENERAL	high	ℚ → linearly ordered field. route: hand byContradiction proof → positivity
+fan (def)	MultAdd.OsgoodInverse.fan	SAME	high	(n - c)^2 on ℕ, truncated subtraction kept
+root (def)	MultAdd.OsgoodInverse.root	SAME	high	n - c on ℕ
+root_sq	MultAdd.OsgoodInverse.root_sq	SAME	high	identical, rfl
+fan_step	MultAdd.OsgoodInverse.fan_step	SAME	high	identical ℕ statement
+fan_zero	MultAdd.OsgoodInverse.fan_zero	SAME	high	identical; now @[simp]
+fan_distinct	MultAdd.OsgoodInverse.fan_distinct	SAME	high	identical
+lipschitz_unique	MultAdd.OsgoodInverse.lipschitz_unique	GENERAL	high	ℚ → any field; char 2 handled (h/2 = 0 there forces x(n+1) = 0); same hypotheses
+fsum (def)	Finset.sum over Ico s (s+len)	MATHLIB	high	fsum a s len = Σ_{i<len} a(s+i) = Σ k ∈ Ico s (s+len), a k
+fsum_append	Finset.sum_Ico_consecutive	MATHLIB	high	Ico s (s+m) and Ico (s+m) (s+m+n) glue; port uses it in dsum_succ
+fsum_mono	Finset.sum_le_sum	MATHLIB	high	pointwise ≤ on the index set
+fsum_nonneg	Finset.sum_nonneg	MATHLIB	high	nonneg terms
+one_le_pow2	Nat.one_le_two_pow	MATHLIB	high	1 ≤ 2^n; name used in port and compiles
+pow2_succ	Nat.two_pow_succ	MATHLIB	medium	2^(j+1) = 2^j + 2^j; not used anywhere in the port, name unverified (#check Nat.two_pow_succ settles; else pow_succ + mul_two)
+const_block	MultAdd.OsgoodInverse.blk_const	WEAKER	high	orig: ∀ s, fsum (fun _ => c) s (2^j) = 2^j*c (any start s); port: blk (fun _ => c) j = 2^j*c (start 2^j only). Narrowed as noted; general form is a 1-liner (sum_const, card_Ico)
+block_start	MultAdd.OsgoodInverse.block_start	SAME	high	2^j = mpow 1 j + 1 over ℕ. route: NSContinuum induction → Cube.mpow_one_add_one (monoid-hom proof via one_add_mpow)
+blk (def)	MultAdd.OsgoodInverse.blk	GENERAL	high	fsum a (2^j) (2^j) = Σ Ico (2^j) (2^(j+1)); ℚ → any field
+Antitone1 (def)	AntitoneOn a (Set.Ici 1)	EQUIV	high	∀ i k, 1≤i → i≤k → a k ≤ a i ⇔ AntitoneOn on [1,∞) (k ≥ i ≥ 1 puts k in Ici 1)
+blk_le	MultAdd.OsgoodInverse.blk_le	GENERAL	high	ℚ → linearly ordered field; same bound. route: block-by-block kept, now via blk_const + sum_le_sum
+le_blk	MultAdd.OsgoodInverse.le_blk	GENERAL	high	ℚ → linearly ordered field; same bound
+dsum (def)	MultAdd.OsgoodInverse.dsum	GENERAL	high	fsum a 1 (2^n - 1) = Σ Ico 1 (2^n); same index set (empty at n=0); any field
+dsum_succ	MultAdd.OsgoodInverse.dsum_succ	GENERAL	high	ℚ → any field; route: sum_Ico_consecutive
+csum (def)	MultAdd.OsgoodInverse.csum	GENERAL	high	recursion → Σ j ∈ range n, 2^j * a(2^j); csum_succ recovers the recursion; any field
+dsum_le_csum	MultAdd.OsgoodInverse.dsum_le_csum	GENERAL	high	ℚ → linearly ordered field; own induction kept (mathlib's le_sum_condensed' only cited in doc)
+csum_le_dsum	MultAdd.OsgoodInverse.csum_le_dsum	GENERAL	high	ℚ → linearly ordered field; same normalisation a 1 + 2*dsum; own proof kept
+condensation	MultAdd.OsgoodInverse.condensation	GENERAL	high	ℚ → linearly ordered field; same iff of boundedness; own proof kept
+lt_pow2	Nat.lt_two_pow_self	MATHLIB	high	n < 2^n; used in port
+fsum_le_dsum	MultAdd.OsgoodInverse.sum_Ico_le_dsum	GENERAL	high	fsum a 1 N = Σ Ico 1 (N+1); ℚ → lin. ord. field. route: fsum_append split → mathlib sum_le_sum_of_subset_of_nonneg
+nr (def)	Nat.cast	MATHLIB	high	nr k = k as rational
+nr_add	Nat.cast_add	MATHLIB	high	
+nr_nonneg	Nat.cast_nonneg	MATHLIB	high	
+nr_pos	Nat.cast_pos	MATHLIB	high	iff form; orig 1 ≤ k → 0 < nr k follows
+nr_mono	Nat.cast_le	MATHLIB	high	iff form
+nr_pow2	Nat.cast_pow	MATHLIB	high	with Nat.cast_ofNat
+one_div_pos	one_div_pos	MATHLIB	high	mathlib 0 < 1/a ↔ 0 < a
+harm (def)	MultAdd.OsgoodInverse.harm	SAME	high	1 / (k : ℚ); harm 0 = 0 in both
+harm_nonneg	MultAdd.OsgoodInverse.harm_nonneg	SAME	high	route: hand case split → positivity
+harm_anti	MultAdd.OsgoodInverse.harm_anti	SAME	high	Antitone1 ≡ AntitoneOn (Ici 1). route: PiMultAdd.div_le_div_of → mathlib one_div_le_one_div_of_le
+csum_harm	MultAdd.OsgoodInverse.csum_harm	SAME	high	csum harm n = (n : ℚ). route: induction → simp
+harmonic_grows	MultAdd.OsgoodInverse.harmonic_grows	SAME	high	(n:ℚ) ≤ 2 * dsum harm n
+isq (def)	MultAdd.OsgoodInverse.isq	SAME	high	1/(k*k) with casts at leaves; same value
+isq_anti	MultAdd.OsgoodInverse.isq_anti	SAME	high	route: own div_le_div_of → mathlib one_div_le_one_div_of_le
+csum_isq	MultAdd.OsgoodInverse.csum_isq	SAME	high	= 2 - 2*(1/2^n), same
+inverse_squares_bounded	MultAdd.OsgoodInverse.inverse_squares_bounded	SAME	high	dsum isq n ≤ 2
+rot1/rot2/rad1/rad2 (defs)	MultAdd.OsgoodInverse.rot1 etc.	GENERAL	high	same polynomials; ℤ → any commutative ring
+rot_speed	MultAdd.OsgoodInverse.rot_speed	GENERAL	high	ℤ → comm ring
+rad_speed	MultAdd.OsgoodInverse.rad_speed	GENERAL	high	ℤ → comm ring
+rot_perp	MultAdd.OsgoodInverse.rot_perp	GENERAL	high	ℤ → comm ring
+rad_out	MultAdd.OsgoodInverse.rad_out	GENERAL	high	ℤ → comm ring

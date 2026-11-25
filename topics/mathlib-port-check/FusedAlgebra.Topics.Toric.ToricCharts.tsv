@@ -1,0 +1,20 @@
+original	new_name	verdict	confidence	reason
+MultAdd.Toric.corner_all_on	MultAdd.Toric.corner_all_on	GENERAL	high	Field K -> any MulZeroClass M with DecidableEq; same statement.
+MultAdd.Toric.corner_scale	MultAdd.Toric.corner_scale	GENERAL	high	Field -> MulZeroClass with NoZeroDivisors (automatic in a field); same statement.
+MultAdd.Toric.chart1_injective	MultAdd.Toric.chart1_injective	EQUIV	high	Restated as Function.Injective (chart1 b); chart1 the same map (OnePoint K is def-equal to Option K: ↑x = some x, ∞ = none).
+MultAdd.Toric.chart1_cover	MultAdd.Toric.chart1_cover	SAME	high	Identical; induction via OnePoint.rec instead of Option cases.
+MultAdd.Toric.torus_in_both	MultAdd.Toric.torus_in_both	SAME	high	InChart1 b (some x) -> InChart1 b (↑x : OnePoint K); same point.
+MultAdd.Toric.origin_in_one_chart	MultAdd.Toric.origin_in_one_chart	SAME	high	Identical.
+MultAdd.Toric.chart1_trans	MultAdd.Toric.chart1_trans	SAME	high	Identical hypothesis c ≠ d → x ≠ 0 and conclusion; trans1 identical.
+MultAdd.Toric.chart2_injective	MultAdd.Toric.chart2_injective	EQUIV	high	Restated as Function.Injective (chart2 c); chart2 identical.
+MultAdd.Toric.chart2_cover	MultAdd.Toric.chart2_cover	SAME	high	Identical.
+MultAdd.Toric.inChart2_iff	MultAdd.Toric.inChart2_iff	SAME	high	Identical.
+MultAdd.Toric.torus_in_all	MultAdd.Toric.torus_in_all	SAME	high	(some x, some y) -> (↑x, ↑y); same.
+MultAdd.Toric.fixed_point_in_one_chart	MultAdd.Toric.fixed_point_in_one_chart	SAME	high	Identical.
+MultAdd.Toric.chart2_trans	MultAdd.Toric.chart2_trans	SAME	high	Identical hypotheses h1, h2 and conclusion.
+MultAdd.Toric.trans1_cocycle	MultAdd.Toric.trans1_cocycle	SAME	high	Identical, unconditional in both (x⁻¹⁻¹ = x with 0⁻¹ = 0).
+MultAdd.Toric.trans2_cocycle	MultAdd.Toric.trans2_cocycle	SAME	high	Identical.
+MultAdd.Toric.fan_count	MultAdd.Toric.fan_count	GENERAL	high	ℕ -> any commutative semiring; same identity a^2+4a+4 = (a+2)^2.
+def P1	MultAdd.Toric.P1	SAME	high	Option K -> OnePoint K, which mathlib defines as Option K; some x = ↑x, none = ∞.
+def chart1	MultAdd.Toric.chart1	SAME	high	false: x ↦ ↑x; true: 0 ↦ ∞, x ↦ ↑x⁻¹. Same as original some/none version.
+def corner/InChart1/trans1/chart2/InChart2/trans2	same names	SAME	high	Bodies identical (corner now over a MulZeroClass).

@@ -1,0 +1,65 @@
+original	new_name	verdict	confidence	reason
+FreyPieces.FLT	FermatLastTheoremFor	EQUIV	high	def. mathlib adds c≠0 (original allowed z=0); port proves FreyPieces.fermatLastTheoremFor_iff for every n incl. 0, so the two agree; exponent n unchanged
+FreyPieces.flt_of_dvd	FermatLastTheoremFor.mono	MATHLIB	high	verified: (hmn : m ∣ n) (hm : FermatLastTheoremFor m) : FermatLastTheoremFor n
+FreyPieces.prime_ne_two_odd	Nat.Prime.odd_of_ne_two	MATHLIB	high	Odd p ↔ p % 2 = 1; IsPrime ≡ Nat.Prime
+FreyPieces.four_or_odd_prime	Nat.four_dvd_or_exists_odd_prime_and_dvd_of_two_lt	MATHLIB	high	4 ∣ n ∨ ∃ p prime, p ∣ n ∧ Odd p, for 2<n; odd prime ↔ prime ≠ 2; used in the port's flt_reduction
+FreyPieces.flt_reduction	FreyPieces.flt_reduction	EQUIV	high	FLT→FermatLastTheoremFor (equivalent), conclusion FermatLastTheorem = ∀n≥3; IsPrime→Nat.Prime. route: divisor case split from mathlib
+FreyPieces.flt_reduction_frey	FreyPieces.flt_reduction_frey	EQUIV	high	same hypotheses h4, h3, primes ≥5 in mathlib form; conclusion FermatLastTheorem
+FreyPieces.euclid	Nat.Prime.dvd_mul	MATHLIB	high	.mp direction of p ∣ m*n ↔ p ∣ m ∨ p ∣ n
+FreyPieces.euclid_int	Int.Prime.dvd_mul'	MATHLIB	high	verified in mathlib: (hp : Nat.Prime p) (h : (p:ℤ) ∣ m*n) : (p:ℤ) ∣ m ∨ (p:ℤ) ∣ n — same statement
+FreyPieces.odd_prime_coprime_two	Nat.coprime_primes	MATHLIB	high	(coprime_primes hq prime_two).2 h2 : Coprime q 2
+FreyPieces.coprime_reduction	FreyPieces.coprime_reduction	EQUIV	high	1 ≤ n written n ≠ 0 (same on ℕ); conclusion identical
+FreyPieces.flt_of_coprime	FreyPieces.flt_of_coprime	EQUIV	high	n ≠ 0 for 1 ≤ n; conclusion FermatLastTheoremFor n (equivalent to FLT n)
+FreyPieces.pow_mod_two	FreyPieces.coprime_parity	DROPPED-OK	medium	x^n%2 = x%2 (n≥1) survives only as a local `have` inside coprime_parity, not as a lemma; mathlib Nat.even_pow' / Nat.pow_mod states it. Named replacement itself does not
+FreyPieces.coprime_parity	FreyPieces.coprime_parity	EQUIV	high	1 ≤ n written n ≠ 0; same three-way conclusion
+FreyPieces.neg_pow_odd	Odd.neg_pow	MATHLIB	high	(-x)^(2k+1) = -x^(2k+1) is Odd.neg_pow with odd_two_mul_add_one
+FreyPieces.neg_pow_of_odd	Odd.neg_pow	MATHLIB	high	p%2=1 ↔ Odd p
+FreyPieces.int_pow_emod_two	FreyPieces.int_pow_emod_two	EQUIV	high	1 ≤ n written n ≠ 0
+FreyPieces.normalize_core	FreyPieces.normalize_core	GENERAL	high	strengthened: returns |a'|=|o1|, |b'|=|e|, |c'|=|o2|, which implies the original |a'b'c'| = |o1 e o2|; Odd p for p%2=1
+FreyPieces.two_pow_dvd	FreyPieces.two_pow_dvd	SAME	high	same statement
+FreyPieces.frey_normalize	FreyPieces.frey_normalize	GENERAL	high	same conclusions plus an extra conjunct Int.gcd a' b' = 1; Odd p for p%2=1
+FreyPieces.freyRHS	EllipticLead.freyCurve	DROPPED-OK	high	def x(x-A)(x+B) is the right side of freyCurve via EllipticLead.freyCurve_equation (y^2 = x(x-A)(x+B)); freyCurve = <0,B-A,0,-AB,0>
+FreyPieces.frey_two_torsion	FreyPieces.frey_two_torsion	GENERAL	high	now Affine.Equation of freyCurve at (0,0),(A,0),(-B,0), equivalent to 0 = freyRHS via freyCurve_equation; ℤ -> any CommRing
+FreyPieces.frey_disc_roots	FreyPieces.frey_disc_roots	GENERAL	high	same identity; any CommRing
+FreyPieces.frey_change_of_vars	FreyPieces.frey_change_of_vars	GENERAL	high	same identity; any CommRing
+FreyPieces.frey_minimal_divisibility	FreyPieces.frey_minimal_divisibility	SAME	high	same statement over ℤ
+FreyPieces.a2of	FreyPieces.a2of	SAME	high	(B-A-1)/4, same ℤ division
+FreyPieces.a4of	FreyPieces.a4of	SAME	high	-(A*B/16), same ℤ division
+FreyPieces.frey_minimal_model	FreyPieces.frey_minimal_model	EQUIV	high	iff now between freyCurve Equation at (4X,8Y+4X) and freyModel Equation at (X,Y); both unfold to the original's two equations (a1=1,a3=a6=0)
+FreyPieces.Weier	WeierstrassCurve	MATHLIB	high	structure of a1..a6 over ℤ = WeierstrassCurve ℤ
+FreyPieces.Weier.b2	WeierstrassCurve.b₂	MATHLIB	high	verified formula a1^2+4a2 matches
+FreyPieces.Weier.b4	WeierstrassCurve.b₄	MATHLIB	high	2a4+a1a3 matches
+FreyPieces.Weier.b6	WeierstrassCurve.b₆	MATHLIB	high	a3^2+4a6 matches
+FreyPieces.Weier.b8	WeierstrassCurve.b₈	MATHLIB	high	a1^2a6+4a2a6-a1a3a4+a2a3^2-a4^2 matches
+FreyPieces.Weier.c4	WeierstrassCurve.c₄	MATHLIB	high	b2^2-24b4 matches
+FreyPieces.Weier.disc	WeierstrassCurve.Δ	MATHLIB	high	-b2^2b8-8b4^3-27b6^2+9b2b4b6 matches (same sign and scale)
+FreyPieces.freyModel	FreyPieces.freyModel	SAME	high	<1,a2,0,a4,0> in both; now a WeierstrassCurve over any CommRing
+FreyPieces.frey_c4	FreyPieces.frey_c4	GENERAL	high	same hypotheses 4a2=B-A-1, 16a4=-AB; c₄ = A^2+AB+B^2; any CommRing (identity holds by linear_combination, no division)
+FreyPieces.frey_disc	FreyPieces.frey_disc	GENERAL	high	256Δ = (ABC)^2, same hypotheses; checked 256Δ = (16a4)^2((1+4a2)^2-64a4); any CommRing
+FreyPieces.prime_dvd_gcd_false	FreyPieces.prime_dvd_gcd_false	EQUIV	high	IsPrime→Nat.Prime (equivalent definitions)
+FreyPieces.frey_c4_not_dvd	FreyPieces.frey_c4_not_dvd	EQUIV	high	IsPrime→Nat.Prime
+FreyPieces.frey_semistable	FreyPieces.frey_semistable	EQUIV	high	IsPrime→Nat.Prime; Δ, c₄ are mathlib's, same formulas as Weier
+FreyPieces.frey_at_two	FreyPieces.frey_at_two	EQUIV	high	same hypotheses/conclusion with mathlib c₄, Δ (same formulas)
+FreyPieces.frey_a4_mod_q	FreyPieces.frey_a4_mod_q	EQUIV	high	IsPrime→Nat.Prime
+FreyPieces.frey_reduces_to_node	FreyPieces.frey_reduces_to_node	EQUIV	high	MEq q x y := q ∣ x - y; Int.ModEq is q ∣ y - x; divisibility is sign-symmetric; Y*Y→Y^2
+FreyPieces.nodeX	FreyPieces.nodeX	SAME	high	(t-m1)(t-m2); Lean.Grind.CommRing → mathlib CommRing
+FreyPieces.chordDet	FreyPieces.chordDet	SAME	high	same determinant formula; Grind.CommRing → CommRing
+FreyPieces.node_chord_identity	FreyPieces.node_chord_identity	EQUIV	high	same identity; class Lean.Grind.CommRing replaced by mathlib CommRing (both describe commutative rings)
+FreyPieces.node_point	FreyPieces.node_point	GENERAL	high	now Affine.Equation of nodalCurve (-(m1+m2)) (-(m1m2)) at (nodeX, t*nodeX), same equation; ℤ -> any CommRing
+FreyPieces.rat_mul_ne_zero	mul_ne_zero	MATHLIB	high	standard
+FreyPieces.one_add_div_mul	FreyPieces.node_chord_multAdd	DROPPED-OK	medium	(1+d/b)*b = b+d for b≠0 is only done inline by field_simp; not a lemma in the port. Trivial; mathlib one_add_div + div_mul_cancel₀ give it
+FreyPieces.node_chord_multAdd	FreyPieces.node_chord_multAdd	GENERAL	high	ℚ -> any field; same 7 hypotheses; s1 ✳ s2 ✳ s3 parses as (s1 ✳ s2) ✳ s3 (infixl 65, / binds tighter), matching the original
+FreyPieces.frey_disc_pth_power	FreyPieces.frey_disc_pth_power	GENERAL	high	same; ℤ -> any CommRing
+FreyPieces.factor_out	Nat.exists_eq_pow_mul_and_not_dvd	MATHLIB	high	verified: (hn : n≠0) (p) (hp : p≠1) : ∃ e n', ¬p ∣ n' ∧ n = p^e*n'; covers the original's 2≤q
+FreyPieces.not_dvd_pow	Nat.Prime.dvd_of_dvd_pow	MATHLIB	high	contrapositive; IsPrime ≡ Nat.Prime
+FreyPieces.pow_dvd_bound	Nat.Prime.pow_dvd_iff_le_factorization	WEAKER	high	original: any q ≥ 2, q∤m, q^a ∣ q^b m → a ≤ b. Mathlib lemma needs q prime (porter's note admits it). Original only ever used it for primes
+FreyPieces.exact_exponent_pth_power	FreyPieces.exact_exponent_pth_power	EQUIV	high	IsPrime→Nat.Prime. route: proved from Nat.factorization_pow instead of factor_out/pow_dvd_bound
+FreyPieces.frey_disc_valuation	FreyPieces.frey_disc_valuation	EQUIV	high	same statement with Nat.Prime
+FreyPieces.rat_div_pow	div_pow	MATHLIB	high	(y/x)^n = y^n/x^n with div_mul_cancel₀ gives (y/x)^n*x^n = y^n
+FreyPieces.flt_multAdd	FreyPieces.flt_multAdd	GENERAL	high	ℚ -> any field; same iff with mpow (z/x-1) n
+FreyPieces.mu2	FreyPieces.mu2	EQUIV	high	def changed: List filter over range 4 → card of nonzero v in ZMod 2 × ZMod 2; both = 3 and the new one is what the docstring described
+FreyPieces.nu2	FreyPieces.nu2	EQUIV	high	def changed to Finset card over ZMod 2 of x^2+1=0; value 1 in both
+FreyPieces.nu3	FreyPieces.nu3	EQUIV	high	def changed to card over ZMod 2 of x^2+x+1=0; value 0 in both
+FreyPieces.nuInf	FreyPieces.nuInf	EQUIV	high	def changed from counting divisors of 2 to ∑ d∣2 φ(gcd(d,2/d)) = 1+1 = 2; same value, closer to the formula
+FreyPieces.level2_counts	FreyPieces.level2_counts	SAME	high	same numbers 3, 1, 0, 2 (checked against the new defs)
+FreyPieces.genus_X0_2	FreyPieces.genus_X0_2	SAME	high	genus formula 12g = 12+μ-3ν2-4ν3-6ν∞ stays a hypothesis in both; conclusion g = 0. The content is the cited formula, as in the original

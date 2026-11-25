@@ -1,0 +1,11 @@
+original	new_name	verdict	confidence	reason
+FermatRoute.flt_of_prime_case	FermatRoute.flt_of_prime_case	EQUIV	high	IsPrime→Nat.Prime (same: 2≤p ∧ divisors 1,p), FLT→FermatLastTheoremFor (equivalent by FreyPieces.fermatLastTheoremFor_iff), ∀n≥3 = FermatLastTheorem. route: n=3,4 now come from mathlib
+FermatRoute.prime_dvd_of_dvd_pow	Prime.dvd_of_dvd_pow	MATHLIB	high	with Nat.prime_iff_prime_int; same content (also covers n=0 case trivially)
+FermatRoute.gcd_one_of_no_prime	Nat.eq_one_iff_not_exists_prime_dvd	MATHLIB	high	verified in mathlib: n = 1 ↔ ∀ p prime, ¬ p ∣ n; applied to Int.gcd a c gives the original (hypothesis a≠0 not needed)
+FermatRoute.dvd_self_pow	dvd_pow_self	MATHLIB	high	dvd_pow_self x (hn : p ≠ 0); 1≤p ↔ p≠0
+FermatRoute.cop_left	FreyPieces.gcd_eq_one_of_add_pow_eq	GENERAL	high	hypothesis a≠0 dropped (statement still true at a=0), 1≤p → p≠0; same conclusion Int.gcd a c = 1. route: IsCoprime algebra instead of prime-factor argument
+FermatRoute.gcd_natAbs_congr	Int.gcd_def	MATHLIB	high	Int.gcd i j = natAbs gcd; original follows by rewriting (used this way in the port)
+FermatRoute.normalize_core'	FreyPieces.normalize_core	DROPPED-OK	high	port's normalize_core returns |a'|=|o1|, |b'|=|e|, |c'|=|o2| separately, which gives everything normalize_core' stated (product natAbs and the two absolute values)
+FermatRoute.frey_normalize_cop	FermatRoute.frey_normalize_cop	EQUIV	high	p % 2 = 1 written Odd p; same conclusion; now a projection of FreyPieces.frey_normalize
+FermatRoute.NoFreyCurve	FermatRoute.NoFreyCurve	EQUIV	high	definition identical except IsPrime→Nat.Prime; still an explicit hypothesis, not proved, not an axiom
+FermatRoute.flt_of_no_frey_curve	FermatRoute.flt_of_no_frey_curve	EQUIV	high	conclusion ∀n≥3 FLT n is mathlib FermatLastTheorem; hypothesis NoFreyCurve unchanged. Note: new noFreyCurve_of_flt shows NoFreyCurve is itself a special case of FLT (true of the original too)

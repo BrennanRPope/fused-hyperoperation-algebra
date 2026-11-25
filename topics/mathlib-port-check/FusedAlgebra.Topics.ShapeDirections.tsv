@@ -1,0 +1,42 @@
+original	new_name	verdict	confidence	reason
+star_def	MultAdd.multAdd_def	DROPPED-OK	high	ℤ instance of Basic multAdd_def (a ✳ b = a + b + a * b)
+weight_is_units	ShapeDirections.weight_is_units	GENERAL	high	ℤ → any CommRing, same identity
+qcount_is_weight	ShapeDirections.qcount_is_weight	GENERAL	high	ℤ → any CommRing, same identity
+path3_sum	ShapeDirections.path3_sum	GENERAL	high	ℤ → any CommRing, same identity; path3 now written with powers (same polynomial)
+graph_weight_survives	ShapeDirections.graph_weight_survives	SAME	high	still over ℚ; l * l written l ^ 2. route: linarith instead of grind
+ruler_num	ShapeDirections.ruler_num	GENERAL	high	ℤ → any CommRing, same identity
+ruler_den	ShapeDirections.ruler_den	GENERAL	high	ℤ → any CommRing, same identity; c * c as c ^ 2
+ruler_keeps_disc	ShapeDirections.ruler_keeps_disc	GENERAL	high	ℤ → any CommRing, same identity; squares as ^ 2
+zoom_disc	ShapeDirections.zoom_disc	GENERAL	high	ℤ → any CommRing, same identity; squares as ^ 2
+ladder_forces_c3	ShapeDirections.ladder_forces_c3	SAME	high	over ℚ, same Jet/comp4/E; same conclusion c3 = s(3s-1)/12
+ladder_forces_c4	ShapeDirections.ladder_forces_c4	SAME	high	over ℚ, same hypotheses h4 h5 and conclusion
+ladder_jets_commute	ShapeDirections.ladder_jets_commute	SAME	high	same jets, same two equations
+rung_rate_inverts	ShapeDirections.rung_rate_inverts	SAME	high	same three equations over ℚ
+lens_jets_at_minus	ShapeDirections.lens_jets_at_minus	SAME	high	same
+rung_disc_is_height	ShapeDirections.rung_disc_is_height	SAME	high	s * s written s ^ 2; s is the fractional rung height, not the hyperoperation index
+rung_leaves_plane	ShapeDirections.rung_leaves_plane	SAME	high	same rationals (s = 2, -1, 1/2); norm_num instead of decide +kernel
+rung_crossings	ShapeDirections.rung_crossings	SAME	high	same four rational equalities; norm_num instead of decide +kernel
+jet_rank	ShapeDirections.jet_rank	EQUIV	high	det3 replaced by Matrix.det of !![...]; rows (12,0,0),(0,12,0),(12,3,-1) and (12,0,0),(12,0,0),(0,12,0) match det3 argument order; values -144 and 0 same
+glue_commutes	ShapeDirections.glue_commutes	GENERAL	high	ℤ → any CommRing, same identity; now the term multAdd_right_comm
+glue_twice	ShapeDirections.glue_twice	GENERAL	high	ℤ → any CommRing, same identity
+glue_descends	ShapeDirections.glue_descends	GENERAL	high	ℤ → any CommRing, same identity
+cusp_psi3	ShapeDirections.cusp_psi3	GENERAL	high	ℚ → CommRing; psi3 same polynomial (a1*a1 as a1^2)
+node_psi3	ShapeDirections.node_psi3	GENERAL	high	ℚ → CommRing
+node_three_points	ShapeDirections.node_three_points	EQUIV	high	LHS now mathlib discrim 1 (-1/3) (-(-1/3)^3) = b^2 - 4*1*c, same value as the original expression; both = -1/27
+pair_weight_survives	ShapeDirections.pair_weight_survives	GENERAL	high	ℤ → CommRing; same hypothesis (∀ w1 w2) and conclusion A = A'
+periods_outnumber_curves	ShapeDirections.periods_outnumber_curves	GENERAL	high	strengthened: orig ∀ g < 40, 2 ≤ g (ℕ, decide); port all g ≥ 2 over ℕ, same ℕ-subtraction form; true since (g-2)(g-3)>0 for g≥4. route: decide → omega/nlinarith
+pseries_two	ShapeDirections.pseries_two	GENERAL	high	ℤ → any CommRing, same identity; same coefficients
+pseries_three	ShapeDirections.pseries_three	GENERAL	high	ℤ → any CommRing, same identity; same coefficients
+pseries_five	ShapeDirections.pseries_five	GENERAL	high	ℤ → any CommRing, same identity; coefficients 5,10,10,5,1 same
+additive_at_two	ShapeDirections.additive_at_two	GENERAL	high	ℤ → any CommRing, same identity
+additive_at_three	ShapeDirections.additive_at_three	GENERAL	high	ℤ → any CommRing, same identity; 3,3 coefficients same
+additive_at_five	ShapeDirections.additive_at_five	GENERAL	high	ℤ → any CommRing, same identity; 10,50,125,125 same
+mult_at_three	ShapeDirections.mult_at_three	GENERAL	high	ℤ → any CommRing, same identity
+fermat_three_a	ShapeDirections.fermat_three_a	GENERAL	high	ℤ → any CommRing, same identity
+fermat_three_b	ShapeDirections.fermat_three_b	GENERAL	high	ℤ → any CommRing, same identity
+mult_at_two	ShapeDirections.mult_at_two	GENERAL	high	ℤ → any CommRing, same identity
+def path3	ShapeDirections.path3	EQUIV	high	same polynomial 1+3z+(2k+1)z^2+k^2z^3, ℤ → CommRing
+def Jet/comp4/comp5/E	ShapeDirections.Jet etc.	SAME	high	same fields over ℚ, same composition formulas, E = (1/2,1/6,1/24,1/120)
+def det3	Matrix.det (det_fin_three)	MATHLIB	high	det3 is the cofactor expansion of the 3×3 determinant with rows (a),(b),(c)
+def psi3	ShapeDirections.psi3	EQUIV	high	3x^4+(a1^2+4a2)x^3; bridge psi3_eq_eval_Ψ₃ to mathlib Ψ₃ added
+def tau2	ShapeDirections.tau2	EQUIV	high	1+w1+w2+A w1 w2, ℤ → CommRing

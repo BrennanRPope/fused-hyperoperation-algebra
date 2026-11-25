@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Diamond Lattice on the Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA hot and cold: every complex temperature flows either to "hot" (t = 0) or "cold" (t = 1); the frontier is the fractal
+   COLOUR ember amber for hot, ice blue for cold, moss green for the antiferro basin, near-black ink for the frontier
+   LAYOUT hero: big basin picture with a Q slider left, the four walls right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#f4f1ec,#14161a);--panel:light-dark(#fffdf9,#1c1f24);--ink:light-dark(#1d1f24,#ece9e3);--soft:light-dark(#5d5a55,#a8a39b);--rule:light-dark(#d9d2c6,#353840);--hot:light-dark(#c8661f,#f0a060);--cold:light-dark(#2f6fa8,#7fb6e6);--af:light-dark(#2f8a5c,#72c999);--wall:light-dark(#9b2c2c,#ff8787)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font:600 clamp(30px,4.2vw,46px)/1.08 Fraunces,Georgia,serif;margin:0 0 14px;max-width:24ch;text-wrap:balance}
+h2{font:600 24px/1.2 Fraunces,Georgia,serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:72ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel{background:var(--bg)}
+.sq{position:relative;width:100%;max-width:520px;aspect-ratio:1;margin:0 auto}
+.sq img,.sq svg{position:absolute;inset:0;width:100%;height:100%;image-rendering:auto;border-radius:4px}
+.fig{position:relative;min-height:300px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.alt svg text{stroke:var(--bg)}
+.sq svg text{fill:#fff;stroke:#111;stroke-width:3px}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 5.2em;gap:10px;align-items:center;margin:8px 0}
+.ctl label{font-weight:600;white-space:nowrap}.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:44px;accent-color:var(--hot)}
+.small{color:var(--soft);font-size:14px}
+.key span{display:inline-block;width:.9em;height:.9em;border-radius:2px;vertical-align:-.1em;margin:0 4px 0 10px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+td,th{padding:6px;border-bottom:1px solid var(--rule);text-align:left}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px;align-items:start}
+p,li{max-width:68ch}
+.eq{font:17px/1.6 Fraunces,Georgia,serif;background:var(--panel);border-left:3px solid var(--hot);padding:10px 14px;margin:12px 0;overflow-x:auto}
+.alt .eq{background:var(--bg)}
+.ledger td:first-child{font-weight:600;white-space:nowrap}
+footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
+@media(max-width:860px){.first{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>Square, then square again: the diamond lattice is two multiplications, and its critical slope is always 4/(1 + t)²</h1>
+<p class="lede">The diamond lattice is built by replacing every bond with a little diamond: two bonds in series, twice, in parallel. In the transmissivity t of a Potts bond (Q colours), series multiplies t and parallel is the landscape law F<sub>Q−2, 1−Q</sub>, whose lift multiplies e<sup>−K</sup>. So one step squares in t, then squares in e<sup>−K</sup>. The colour count Q only moves one wall. Slide Q and watch the frontier between hot and cold, the set where the complex-temperature (Fisher) zeros pile up, bend and break.</p>
+<div class="first">
+<div class="panel">
+<div class="sq" id="jbox"><img id="jimg" alt="Basins of the diamond map in the complex t-plane"><svg id="jsvg" viewBox="-3 -3 6 6" preserveAspectRatio="none"></svg></div>
+<div class="ctl"><label for="q">Colours Q</label><input id="q" type="range" min="0" max="12" step="1" value="6"><output id="qo"></output></div>
+<p class="small key" id="jnote"></p>
+<p class="small key"><span style="background:#ed8c4d"></span>flows hot (t → 0)<span style="background:#5c9edb"></span>flows cold (t → 1)<span style="background:#59b88c"></span>third attractor<br>Window: −3 to 3 in the complex t-plane. White ring: the critical point t* = 1/y. Red ring: the colouring wall 1/(1 − Q).</p>
+</div>
+<div class="panel">
+<div class="fig" id="walls" style="min-height:240px"></div>
+<p class="small">The four walls on the real line of t. Series multiplies t, so its walls are 0 and ∞ (∞ drawn at the right edge). Parallel multiplies e<sup>−K</sup>, so its walls are 1 (a perfect bond) and 1/(1 − Q) (the colouring bond, v = −1). Only that last wall moves with Q. It crosses ∞ at Q = 1 (the map turns into a polynomial), meets 1 at Q = 0 (the walls merge), and creeps towards 0 as Q grows.</p>
+<table><tbody id="readout"></tbody></table>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>One step is two squarings in two coordinates</h2>
+<div class="eq">T(t) = F<sub>Q−2,1−Q</sub>(t², t²) = (2t² + (Q−2)t⁴) / (1 + (Q−1)t⁴)</div>
+<p>Series: two bonds in a row multiply transmissivity, t₁t₂. Parallel: couplings add, so 1 + v multiplies (mult-add on v), and in t that is the landscape law F<sub>Q−2,1−Q</sub>. Its lift is φ(t) = (1 − t)/(1 + (Q − 1)t), which is exactly 1/(1 + v) = e<sup>−K</sup>. So</p>
+<div class="eq">φ(T(t)) = φ(t²)²</div>
+<p>square in t, then square in φ. Swap t = (x − 1)/(x + Q − 1) and this is the classical map x ↦ ((x² + Q − 1)/(2x + Q − 2))² of Berker and Ostlund, x = e<sup>K</sup>. Brute-force sums over all colourings of the 4-bond and 16-bond diamonds confirm it.</p>
+</div>
+<div>
+<h2>The bend's sign never flips, because p² − 4q = Q²</h2>
+<p>On the landscape, a law is a "line group" when its two walls are real and apart, a "circle group" when they are complex, and on the border when they touch. For the Potts parallel law p = Q − 2 and q = 1 − Q, so</p>
+<div class="eq">p² − 4q = (Q − 2)² + 4(Q − 1) = Q²</div>
+<p>a perfect square. The walls are 1 and 1/(1 − Q), always real, and they meet only at Q = 0. So for real Q the circle type never happens and the sign tells the dynamics nothing. What matters is the zero: at Q = 0 the cold fixed point t = 1 stops being superattracting (slope 0) and turns parabolic (slope 1), T(t) − t = −t(t − 1)²/(1 + t²). The bend has one other job: q = 1 − Q is the reciprocal of the moving wall.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Every fixed point lies on one cubic curve, Q = (y − 1)²(y + 1)</h2>
+<div class="fig" id="cubic" style="min-height:330px"></div>
+<p class="small">Fixed points of T besides 0 and 1 are t = 1/y, where y solves Q = (y − 1)²(y + 1), and then e<sup>K</sup> = y². The horizontal line is your Q. Dots: fixed points, filled when attracting. The curve peaks at y = −1/3 with height 32/27: below that height a second branch gives an attracting antiferromagnetic point, which dies in a fold at Q = 32/27.</p>
+</div>
+<div>
+<h2>The slope there is always 4/(1 + t)²</h2>
+<div class="eq">T′(t*) = (2y/(y + 1))² = 4/(1 + t*)²</div>
+<p>At any nontrivial fixed point the derivative of the map collapses to this. So the length exponent ν = ln 2 / ln T′(t*) is as closed-form as t* itself, and t* comes from one cubic. It is rational exactly when y is: Q = (m − 1)²(m + 1).</p>
+<table><thead><tr><th>Q</th><th>t*</th><th>slope</th><th>ν</th></tr></thead><tbody>
+<tr><td>1 (percolation)</td><td>(√5 − 1)/2</td><td>4 − 4t*</td><td>1.6353</td></tr>
+<tr><td>2 (Ising)</td><td>1/tribonacci</td><td>4/(1 + t*)²</td><td>1.3383</td></tr>
+<tr><td>32/27 (fold)</td><td>3/5</td><td>25/16</td><td>1.5531</td></tr>
+<tr><td>3</td><td>1/2</td><td>16/9</td><td>1.2047</td></tr>
+<tr><td>16</td><td>1/3</td><td>9/4</td><td>0.8548</td></tr>
+<tr><td>45</td><td>1/4</td><td>64/25</td><td>0.7374</td></tr>
+</tbody></table>
+<p class="small">The tribonacci constant 1.8393 solves y³ = y² + y + 1. At Q = 32/27 the cubic splits as y = 5/3 (the ferromagnetic point, t* = 3/5) and a double y = −1/3, where the slope factor 2y/(y + 1) is exactly −1.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>ν(Q) is one smooth curve; the Beraha values sit on it like anyone else</h2>
+<div class="fig" id="nu" style="min-height:300px"></div>
+<p class="small">ν = ln 2 / (2 ln(2/(1 + t*))). Dots: Beraha values 4cos²(π/n), n = 3 to 12. ν falls from infinity at Q = 0 towards 1/2 as Q grows, smooth straight through Q = 4. The slope 4/(1 + t*)² stays above 1 for every Q smooth straight through Q = 4 (on this lattice the transition never turns first order).gt; 0, so the critical point never loses its grip.</p>
+</div>
+<div>
+<h2>Beraha values: tested, and only Q = 3 stands out, for a plainer reason</h2>
+<div class="sq" style="max-width:420px"><img id="qimg" alt="Where the colouring point flows, in the complex Q-plane"><svg id="qsvg" preserveAspectRatio="none"></svg></div>
+<p class="small">The complex Q-plane, coloured by where the colouring point t = 1/(1 − Q) flows (amber hot, blue cold, green the antiferro point). Its frontier is where chromatic zeros pile up (Chio and Roeder; Chang, Roeder and Shrock). White ticks: Beraha values. Red tick: 32/27.</p>
+<ul>
+<li>The critical cubic gets a root in the Beraha number field only for n = 3 and 6, that is Q = 1 and 3, both integers (all n up to 30).</li>
+<li>On the real axis the colouring point switches basin at 3, 1.6389, 1.41, 1.32, ..., crowding onto 32/27. Of these only 3 is a Beraha value.</li>
+<li>Why 3: T is even, and at Q = 3 the colouring wall −1/2 is the mirror of t* = 1/2, so it lands on t* in one step. The wall mirrors t* only when (y − 1)² = 1, y = 2, Q = 3.</li>
+<li>For Q &gt; 1 no level of the diamond has a real chromatic zero: the real orbit never reaches t = ∞.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>Known</td><td>The diamond recursion: Berker and Ostlund 1979. Transmissivity t = v/(Q + v): Tsallis and Levy 1981. Julia sets of zeros: Derrida, De Seze and Itzykson 1983; Bleher and Lyubich 1991.</td></tr>
+<tr><td>Known</td><td>Fixed-point cubic q² + 2qv = v³, the fold at 32/27, real crossings 3, q₁ = 1.6389 (root of q³ − 5q² + 11q − 9) and a run down to 32/27, closed forms at Q = 1, 3, 16: Chang, Roeder and Shrock 2020. Chromatic zeros fill a dimension-2 set: Chio and Roeder 2021.</td></tr>
+<tr><td>Ours</td><td>The landscape reading: series and parallel as two multiplications, four walls, the moving wall at the reciprocal of the bend, p² − 4q = Q².</td></tr>
+<tr><td>Ours</td><td>The parametrisation Q = (y − 1)²(y + 1), t* = 1/y, and the slope 4/(1 + t*)² at every fixed point (elementary; we did not find it written down). The mirror reason for Q = 3. The Beraha test.</td></tr>
+</tbody></table>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>No, this one closes.</b> The landscape gives a clean way to say why the map looks the way it does (two squarings, one moving wall) and a tidy slope formula, but it predicts nothing the complex-dynamics papers don't already have. The Beraha question gets a clear negative: one hit (Q = 3) with a non-Beraha explanation, misses everywhere else. The bend's sign is idle because the discriminant is a perfect square. A reader who wants more should go to Chang, Roeder and Shrock, where the real-axis structure is worked out fully.</p>
+</div>
+</div>
+</section>
+<footer>__CHECKS__ of __TOTAL__ checks pass (checks.py) · __THMS__ Lean theorems, core Lean 4, no sorry (lean/DiamondLattice.lean)</footer>
+<script>
+{
+const D = __DATA__;
+const $ = id => document.getElementById(id), NS = 'http://www.w3.org/2000/svg';
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const el = (p, tag, at, txt) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; };
+const roots = Q => { const r = []; for (let y = -1.2; y < 4; y += 0.0005) { const f = a => (a - 1) ** 2 * (a + 1) - Q; if (f(y) === 0 || f(y) * f(y + 0.0005) < 0) { let a = y, b = y + 0.0005; for (let i = 0; i < 50; i++) { const m = (a + b) / 2; if (f(a) * f(m) <= 0) b = m; else a = m; } r.push((a + b) / 2); } } if (Math.abs(Q) < 1e-9) r.push(1); return r; };
+const fmt = x => Math.abs(x) > 1e6 ? '∞' : (Math.round(x * 1e4) / 1e4).toString();
+let k = 6;
+function stage(id) { const box = $(id); box.innerHTML = ''; const w = box.clientWidth, h = box.clientHeight; const s = el(box, 'svg', { viewBox: `0 0 ${w} ${h}` }); return [s, w, h]; }
+function drawJulia() {
+  const f = D.julia[k], Q = f.Q; $('jimg').src = 'data:image/png;base64,' + f.png; $('qo').textContent = f.name; $('jnote').textContent = 'Q = ' + f.name + (f.note ? ': ' + f.note : '');
+  const s = $('jsvg'); s.innerHTML = '';
+  const ring = (x, c) => { if (Math.abs(x) < 2.95) el(s, 'circle', { cx: x, cy: 0, r: 0.09, fill: 'none', stroke: c, 'stroke-width': 0.035 }); };
+  const ys = roots(Q).filter(y => y > 1); if (ys.length) ring(1 / ys[0], '#fff');
+  if (Math.abs(1 - Q) > 1e-9) ring(1 / (1 - Q), '#ff6b6b');
+  const ts = ys.length ? 1 / ys[0] : 1, lam = ys.length ? 4 / (1 + ts) ** 2 : 1;
+  $('readout').innerHTML = `<tr><td>moving wall 1/(1 − Q)</td><td>${Math.abs(1 - Q) < 1e-9 ? '∞' : fmt(1 / (1 - Q))}</td></tr><tr><td>critical point t* = 1/y</td><td>${fmt(ts)}</td></tr><tr><td>slope 4/(1 + t*)²</td><td>${fmt(lam)}</td></tr><tr><td>exponent ν = ln 2 / ln slope</td><td>${lam > 1.0001 ? fmt(Math.log(2) / Math.log(lam)) : '∞'}</td></tr>`;
+  drawWalls(Q); drawCubic(Q);
+}
+function drawWalls(Q) {
+  const [s, w, h] = stage('walls'); const L = 30, R = w - 30, y0 = h * 0.55;
+  const X = t => L + (R - L) * (Math.atan(t / 1.2) / Math.PI + 0.5);
+  el(s, 'line', { x1: L, y1: y0, x2: R, y2: y0, stroke: css('--soft') });
+  for (const t of [-3, -1, 0, 1, 3]) { el(s, 'line', { x1: X(t), y1: y0 - 4, x2: X(t), y2: y0 + 4, stroke: css('--soft') }); el(s, 'text', { x: X(t), y: y0 + 20, 'text-anchor': 'middle' }, t); }
+  const dot = (x, c, lab, up) => { el(s, 'circle', { cx: x, cy: y0, r: 7, fill: c }); el(s, 'text', { x: x, y: y0 + (up ? -16 : 38), 'text-anchor': 'middle' }, lab); };
+  dot(X(0), css('--cold'), 'series 0', true); dot(R, css('--cold'), 'series ∞', true); dot(X(1), css('--hot'), 'parallel 1', false);
+  const wv = Math.abs(1 - Q) < 1e-9 ? 1e9 : 1 / (1 - Q); dot(wv > 1e6 ? R : X(wv), css('--wall'), 'moving wall', Math.abs(wv - 1) < 0.6 || wv > 1e6 ? true : false);
+  el(s, 'text', { x: L, y: 18 }, 'Q = ' + D.julia[k].name + ', bend q = 1 − Q = ' + fmt(1 - Q));
+}
+function drawCubic(Q) {
+  const [s, w, h] = stage('cubic'); const m = 36, y0 = -1.3, y1 = 3.2, q0 = -0.5, q1 = Math.max(5, Q + 1);
+  const X = y => m + (w - 2 * m) * (y - y0) / (y1 - y0), Y = q => h - m - (h - 2 * m) * (q - q0) / (q1 - q0);
+  el(s, 'line', { x1: m, y1: Y(0), x2: w - m, y2: Y(0), stroke: css('--rule') }); el(s, 'line', { x1: X(0), y1: m, x2: X(0), y2: h - m, stroke: css('--rule') });
+  let d = ''; for (let i = 0; i <= 300; i++) { const y = y0 + (y1 - y0) * i / 300, q = (y - 1) ** 2 * (y + 1); if (q < q1 + 1) d += (d ? 'L' : 'M') + X(y).toFixed(1) + ' ' + Y(Math.min(q, q1 + 0.5)).toFixed(1); }
+  el(s, 'path', { d, fill: 'none', stroke: css('--ink'), 'stroke-width': 2 });
+  el(s, 'line', { x1: m, y1: Y(Q), x2: w - m, y2: Y(Q), stroke: css('--hot'), 'stroke-dasharray': '6 4' });
+  el(s, 'line', { x1: X(-1 / 3) - 30, y1: Y(32 / 27), x2: X(-1 / 3) + 30, y2: Y(32 / 27), stroke: css('--wall') });
+  el(s, 'text', { x: X(-1 / 3), y: Y(32 / 27) - 8, 'text-anchor': 'middle' }, '32/27');
+  for (const y of roots(Q)) { const att = Math.abs(2 * y / (y + 1)) < 1; el(s, 'circle', { cx: X(y), cy: Y(Q), r: 6, fill: att ? css('--af') : css('--panel'), stroke: att ? css('--af') : css('--ink'), 'stroke-width': 2 }); }
+  el(s, 'text', { x: w - m, y: h - m + 22, 'text-anchor': 'end' }, 'y = 1/t'); el(s, 'text', { x: m + 4, y: m - 10 }, 'Q');
+}
+function drawNu() {
+  const [s, w, h] = stage('nu'); const m = 40, q1 = 20, n0 = 0, n1 = 4;
+  const X = q => m + (w - 2 * m) * Math.log1p(q) / Math.log1p(q1), Y = n => h - m - (h - 2 * m) * (Math.min(n, n1) - n0) / (n1 - n0);
+  el(s, 'line', { x1: m, y1: h - m, x2: w - m, y2: h - m, stroke: css('--rule') }); el(s, 'line', { x1: m, y1: m, x2: m, y2: h - m, stroke: css('--rule') });
+  for (const q of [0, 1, 2, 4, 8, 16]) el(s, 'text', { x: X(q), y: h - m + 18, 'text-anchor': 'middle' }, q);
+  for (const n of [1, 2, 3, 4]) el(s, 'text', { x: m - 8, y: Y(n) + 4, 'text-anchor': 'end' }, n);
+  el(s, 'line', { x1: m, y1: Y(0.5), x2: w - m, y2: Y(0.5), stroke: css('--rule'), 'stroke-dasharray': '4 4' });
+  el(s, 'path', { d: D.nu.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1)).join(''), fill: 'none', stroke: css('--cold'), 'stroke-width': 2.5 });
+  for (const b of D.beraha) el(s, 'circle', { cx: X(b[1]), cy: Y(b[2]), r: 4, fill: css('--hot') });
+  el(s, 'text', { x: w - m, y: Y(0.5) - 6, 'text-anchor': 'end' }, 'ν → 1/2'); el(s, 'text', { x: m + 6, y: m - 12 }, 'ν'); el(s, 'text', { x: w - m, y: h - m - 8, 'text-anchor': 'end' }, 'Q (log scale)');
+}
+function drawQ() {
+  const P = D.qplane; $('qimg').src = 'data:image/png;base64,' + P.png; const s = $('qsvg');
+  s.setAttribute('viewBox', `${P.x0} ${-P.y1} ${P.x1 - P.x0} ${P.y1 - P.y0}`); s.innerHTML = '';
+  const tick = (q, c) => el(s, 'line', { x1: q, y1: -0.25, x2: q, y2: 0.25, stroke: c, 'stroke-width': 0.045 });
+  for (const b of D.beraha) tick(b[1], '#fff'); tick(0, '#fff'); tick(32 / 27, '#ff6b6b');
+}
+$('q').addEventListener('input', e => { k = +e.target.value; drawJulia(); });
+new ResizeObserver(() => { drawJulia(); drawNu(); }).observe(document.body);
+drawQ();
+}
+</script>
+</body>
+</html>

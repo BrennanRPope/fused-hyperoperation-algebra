@@ -1,0 +1,55 @@
+original	new_name	verdict	confidence	reason
+G (def, with add/mul/one/zero/conj/norm)	GaussianInt	EQUIV	high	Zsqrtd (-1): mul re=re re'-im im', im=re im'+im re'; norm re^2+im^2; star=⟨re,-im⟩; all identical to G's
+gma (def)	MultAdd.multAdd on GaussianInt	EQUIV	high	a+b+ab, same
+gpow (def)	MultAdd.mpow	EQUIV	high	mpow a 0=0, mpow_succ = mpow ✳ a; same recursion
+G.pow (def)	Monoid.npow	EQUIV	high	a^n, same recursion
+Slope / tl / toG / q4 (defs)	PiMultAdd.Slope/tl/toG/q4	SAME	high	identical; toG = ⟨den, num⟩ in GaussianInt
+firstCross (def)	PiMultAdd.firstCross	SAME	high	identical with z * ⟨n,1⟩
+gt (def)	PiMultAdd.gregTerm	GENERAL	high	same formula, Q -> any field
+greg (def)	PiMultAdd.greg	EQUIV	high	sum k<n (-1)^k gregTerm; same recursion (greg_succ); any field, at Q same
+machinLo / machinHi (defs)	PiMultAdd.machinLo/machinHi	SAME	high	identical Q-valued formulas: 16*greg(1/5)(2N) - 4*greg(1/239)(2N+1) and the other way round
+PiMultAdd.G.ext'	Zsqrtd.ext	MATHLIB	high	same
+PiMultAdd.G.ext'_iff	Zsqrtd.ext_iff	MATHLIB	high	same
+PiMultAdd.gma_lift	MultAdd.one_add_multAdd	DROPPED-OK	high	1+(a✳b)=(1+a)(1+b) in any semiring; covers
+PiMultAdd.gma_comm	MultAdd.multAdd_comm	DROPPED-OK	high	covers
+PiMultAdd.gma_assoc	MultAdd.multAdd_assoc	DROPPED-OK	high	covers
+PiMultAdd.gma_zero	MultAdd.multAdd_zero	DROPPED-OK	high	covers
+PiMultAdd.mul_assoc'	mul_assoc	MATHLIB	high	same
+PiMultAdd.gpow_lift	MultAdd.one_add_mpow	DROPPED-OK	high	1+mpow a n = (1+a)^n; covers
+PiMultAdd.norm_mul	Zsqrtd.norm_mul	MATHLIB	high	same
+PiMultAdd.norm_conj	Zsqrtd.norm_conj	MATHLIB	high	(star x).norm = x.norm; same
+PiMultAdd.circle_closed	PiMultAdd.circle_closed	SAME	high	on GaussianInt
+PiMultAdd.circle_real_points	PiMultAdd.one_add_mul_self_eq_one_iff	GENERAL	high	Q -> any Ring with NoZeroDivisors (Q qualifies)
+PiMultAdd.multAdd_self_zero	PiMultAdd.multAdd_self_eq_zero_iff	GENERAL	high	Q -> any Ring with NoZeroDivisors
+PiMultAdd.lens	PiMultAdd.lens	SAME	high	identical
+PiMultAdd.lens_conj	PiMultAdd.lens_conj	SAME	high	conj = star
+PiMultAdd.lens_on_circle	PiMultAdd.lens_on_circle	SAME	high	identical
+PiMultAdd.lens_zero	PiMultAdd.lens_zero	SAME	high	identical
+PiMultAdd.lens_infinity	PiMultAdd.lens_infinity	EQUIV	high	⟨-1,0⟩ * z written -z; equal in Z[i]
+PiMultAdd.quarter_twice	PiMultAdd.quarter_twice	SAME	high	⟨-2,0⟩ written -2 (= ⟨-2,0⟩ via natCast)
+PiMultAdd.quarter_four	PiMultAdd.quarter_four	SAME	high	mpow q4 4 = 0
+PiMultAdd.quarter_on_circle	PiMultAdd.quarter_on_circle	SAME	high	identical
+PiMultAdd.slope_one_twice	PiMultAdd.slope_one_twice	SAME	high	identical numbers
+PiMultAdd.slope_one_four	PiMultAdd.slope_one_four	SAME	high	identical numbers ⟨0,-4⟩
+PiMultAdd.parity_twice	PiMultAdd.parity_twice	GENERAL	high	Q -> any Ring
+PiMultAdd.machin	PiMultAdd.machin	SAME	high	(5+i)^4 (239-i) = 114244(1+i); numbers identical, rechecked by hand
+PiMultAdd.euler	PiMultAdd.euler	SAME	high	(2+i)(3+i)=5+5i, identical
+PiMultAdd.hermann	PiMultAdd.hermann	SAME	high	(2+i)^2(7-i)=25+25i, identical
+PiMultAdd.hutton	PiMultAdd.hutton	SAME	high	(3+i)^2(7+i)=50+50i, identical
+PiMultAdd.machin_slopes	PiMultAdd.machin_slopes	SAME	high	identical numbers
+PiMultAdd.cross_10	PiMultAdd.cross_10	SAME	high	firstCross 10 100 0 1 = 32; identical, decide +kernel
+PiMultAdd.cross_100	PiMultAdd.cross_100	SAME	high	fuel 1000, 315; identical
+PiMultAdd.cross_1000	PiMultAdd.cross_1000	SAME	high	fuel 4000, 3142; identical
+PiMultAdd.div_le_div_of	div_le_div₀	MATHLIB	high	0<=c, a<=c, 0<d, d<=b -> a/b <= c/d; same content
+PiMultAdd.neg_one_pow_even	Even.neg_one_pow	MATHLIB	high	same
+PiMultAdd.neg_one_pow_odd	Odd.neg_one_pow	MATHLIB	high	same
+PiMultAdd.gt_nonneg	PiMultAdd.gregTerm_nonneg	GENERAL	high	Q -> linearly ordered field
+PiMultAdd.term_shrink	PiMultAdd.gregTerm_succ_le	GENERAL	high	Q -> linearly ordered field; same hypotheses 0<=x<=1
+PiMultAdd.greg_two	PiMultAdd.greg_two	GENERAL	high	any field
+PiMultAdd.greg_even_up	PiMultAdd.greg_even_up	GENERAL	high	linearly ordered field
+PiMultAdd.greg_odd_above	PiMultAdd.greg_odd_above	GENERAL	high	linearly ordered field
+PiMultAdd.greg_odd_down	PiMultAdd.greg_odd_down	GENERAL	high	linearly ordered field
+PiMultAdd.greg_even_le_odd	PiMultAdd.greg_even_le_odd	GENERAL	high	linearly ordered field; same m n quantification
+PiMultAdd.machin_lo_le_hi	PiMultAdd.machinLo_le_machinHi	SAME	high	renamed; identical over Q
+PiMultAdd.machin_nested	PiMultAdd.machin_nested	SAME	high	identical conjunction over Q
+PiMultAdd.machin_50_digits	PiMultAdd.machin_50_digits	SAME	high	identical: both 50-digit bounds compared character by character, N=22, decide +kernel

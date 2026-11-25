@@ -1,0 +1,38 @@
+original	new_name	verdict	confidence	reason
+Patterns.step_num	Patterns.step_num	SAME	high	Identical; Lean.Grind.CommRing -> mathlib CommRing; step body identical.
+Patterns.step_den	Patterns.step_den	SAME	high	Identical.
+Patterns.step_is_law	Patterns.step_is_law	SAME	high	step k q a (x,1) = (wAdd k x a, 1 - q*x*a), identical.
+Patterns.lucas_zero	Patterns.lucas_zero	SAME	high	Identical (rfl).
+Patterns.lucas_one	Patterns.lucas_one	SAME	high	Identical (rfl).
+Patterns.lucas_succ_succ	Patterns.lucas_succ_succ	SAME	high	Identical (rfl); lucas body identical.
+Patterns.iter_lucas	Patterns.iter_lucas	SAME	high	q*a*a -> q*a^2; iter now (step k q a)^[n] (0,1), same values (iter_succ).
+Patterns.step_trace	Patterns.step_trace	EQUIV	high	Original: bare identity (1+k*a)+1 = 2+k*a. Port: Matrix.trace (stepMatrix k q a) = 2+k*a, stepMatrix = !![1+ka, a; -(qa), 1] is step's matrix; trace unfolds to the original sum. route: mathlib trace_fin_two.
+Patterns.step_det	Patterns.step_det	EQUIV	high	Original: bare (1+ka)*1 - a*(-(qa)) = 1+ka+qa*a. Port: Matrix.det (stepMatrix k q a) = 1+ka+qa^2; det_fin_two gives exactly the original left side. route: mathlib det_fin_two.
+Patterns.wall_absorbs	Patterns.wall_absorbs	SAME	high	hw: 1+k*w+q*w*w=0 -> q*w^2; same conclusion.
+Patterns.lucas_add_pair	Patterns.lucas_add	DROPPED-OK	high	Conjuncts are lucas_add m n and lucas_add m (n+1) (m+(n+1)+1 = m+n+2); both instances of the ported lucas_add. route: paired induction -> Nat.twoStepInduction.
+Patterns.lucas_add	Patterns.lucas_add	SAME	high	Identical. route: no longer via lucas_add_pair; direct Nat.twoStepInduction.
+Patterns.cassini	Patterns.cassini	SAME	high	U(n+1)*U(n+1) -> U(n+1)^2; same.
+Patterns.cycle_of_lucas_zero	Patterns.cycle_of_lucas_zero	SAME	high	q*a*a -> q*a^2 in hypothesis; same.
+Patterns.lucas_five	Patterns.lucas_five	SAME	high	P*P -> P^2; same.
+Patterns.lucas_five_golden	Patterns.lucas_five_golden	SAME	high	P*P -> P^2; same.
+Patterns.multadd_den_one	Patterns.multAdd_den_one	SAME	high	Renamed only; identical.
+Patterns.multadd_iter	Patterns.multAdd_iter	SAME	high	(iter 1 0 a (n+1)).2 = 1, identical. route: original used iter_lucas + multadd_den_one (Lucas route); port derives it from new iter_multAdd (step_is_law + mpow_succ).
+Patterns.golden_step	Patterns.golden_step	SAME	high	Identical.
+Patterns.ladder_is_step	Patterns.ladder_is_step	SAME	high	Identical; SimpleLaws.ladderStep unchanged in the port (2*p.1+p.2, p.1+p.2).
+Patterns.mirror_num	Patterns.mirror_num	SAME	high	Identical. route: original unfolded wAdd + grind; port cites library lemma MultAdd.wAdd_neg_neg (his own Basic lemma).
+Patterns.mirror_den	Patterns.mirror_den	SAME	high	Identical.
+Patterns.golden_walls	Patterns.golden_walls	SAME	high	w*w -> w^2; same iff.
+Patterns.lucas_fib_pair	Patterns.lucas_fib	DROPPED-OK	high	Conjuncts are lucas_fib n and lucas_fib (n+1), covered by the (generalised) lucas_fib.
+Patterns.lucas_fib	Patterns.lucas_fib	GENERAL	high	ℤ -> any commutative ring; SimpleLaws.fib (ℤ-valued, 0,1,F+F) -> (Nat.fib n : R), same values. route: twoStepInduction.
+Patterns.golden_law_fib	Patterns.golden_law_fib	GENERAL	high	ℤ -> any commutative ring; (fib (n+1), fib (n+2)) as Nat.fib casts; same.
+Patterns.golden_cassini	Patterns.golden_cassini	GENERAL	high	ℤ -> any commutative ring; F(n+1)^2 - F n*F(n+2) = (-1)^n with Nat.fib casts.
+Patterns.disc_square_or_ge_five	Patterns.disc_square_or_ge_five	SAME	high	k*k -> k^2; ∃ s, _ = s*s -> IsSquare _ (definitionally ∃ r, a = r*r). Same hypotheses over ℤ.
+Patterns.no_integer_five_cycle	Patterns.no_integer_five_cycle	SAME	high	Identical (P : ℤ). route: proof rewritten (Int.even_mul_succ_self parity), still elementary.
+Patterns.mfib_lift_pair	Patterns.one_add_mfib	DROPPED-OK	high	Conjuncts are mfib_lift at n and n+1, covered by one_add_mfib.
+Patterns.mfib_lift	Patterns.one_add_mfib	EQUIV	high	nfib -> Nat.fib (same values: 0,1,F+F); Lean.Grind.CommSemiring -> mathlib CommSemiring; otherwise identical. route: twoStepInduction.
+Patterns.mfib_one_one	Patterns.mfib_one_one	EQUIV	high	nfib (n+2) -> Nat.fib (n+2); same.
+def step	Patterns.step	SAME	high	Identical body.
+def iter	Patterns.iter	SAME	high	Recursion -> (step k q a)^[n] (0,1); same values.
+def lucas	Patterns.lucas	SAME	high	Identical.
+def nfib	Nat.fib	SAME	high	Same values (mathlib Nat.fib 0=0, 1=1, fib (n+2) = fib n + fib (n+1)).
+def mfib	Patterns.mfib	SAME	high	Identical (multAdd -> ✳).

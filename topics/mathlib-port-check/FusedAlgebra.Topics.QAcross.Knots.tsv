@@ -1,0 +1,27 @@
+original	new_name	verdict	confidence	reason
+QKnots.kink_bracket	QKnots.kink_bracket	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.unknot_f	QKnots.unknot_f	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.trefoilL_bracket	QKnots.trefoilL_bracket	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.trefoilL_f	QKnots.trefoilL_f	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.trefoilR_f	QKnots.trefoilR_f	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.trefoil_mirror	QKnots.trefoil_mirror	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.trefoil_chiral	QKnots.trefoil_chiral	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.figEight_f	QKnots.figEight_f	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.figEight_amphichiral	QKnots.figEight_amphichiral	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.hopf_f	QKnots.hopf_f	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.cinquefoilL_f	QKnots.cinquefoilL_f	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.jones_at_one	QKnots.jones_at_one	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.jones_at_neg_one	QKnots.jones_at_neg_one	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.trefoilL_cube	QKnots.trefoilL_cube	SAME	high	Identical statement; every PD code, n, m, writhe and coefficient list compared and identical; decide +kernel in both; underlying defs compute the same values (see def rows).
+QKnots.state_layers	QKnots.state_layers	GENERAL	high	Original: decide for n,k<6 with filter-length = Cube.layer n k. Port: all n,k, countP = n.choose k. Cube.layer has exactly choose's Pascal recursion. route: finite decide replaced by an induction proof.
+QKnots.loop_value_q	QKnots.loop_value_q	SAME	high	A*A -> A^2, A*A*A*A -> A^4; QDial.qnum q 2 is 1+q in both (port qnum is a geometric sum, same value). Lean.Grind.CommRing -> mathlib CommRing. route: grind -> linear_combination.
+QKnots.reidemeister_one	QKnots.reidemeister_one	SAME	high	Powers instead of repeated products; same hypothesis A*Ai=1 and same identity.
+QKnots.reidemeister_two	QKnots.reidemeister_two	SAME	high	Powers instead of repeated products; same identity.
+QKnots.writhe_cancels	QKnots.writhe_cancels	SAME	high	(-(A*A*A))*(-(Ai*Ai*Ai))=1 written as -A^3 * -Ai^3 = 1; same.
+def pzeros	QKnots.pzeros	SAME	high	Recursive cons of 0 vs List.replicate k 0 ++ p: same function.
+def trim	QKnots.trim	SAME	high	reverse/dropWhile/reverse vs List.rdropWhile (· == 0), which is defined as exactly that.
+def negOnePow	(-1 : ℤ) ^ n	SAME	high	Same values for n : ℕ; used only in stateTerm.
+def numA/numB	QKnots.numA/numB	SAME	high	filter-length vs List.count false/true: same values.
+def evalOne	QKnots.evalOne	SAME	high	foldl (+) 0 vs List.sum: same value on ℤ.
+def padd/pscale/pmul/ppow/smooth/relabel/countLoops/allStates/statePairs/stateTerm/bracketP/dropLead/normLP/kauffmanF/mirrorLP/evalTnegAux/evalTneg	same names	SAME	high	Read line by line: bodies identical apart from Int->ℤ, fun-> ·.
+def kinkUnknot/trefoilL/trefoilR/figEight/hopf/cinquefoilL	same names	SAME	high	All PD codes identical tuple by tuple.

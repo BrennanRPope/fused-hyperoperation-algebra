@@ -1,0 +1,36 @@
+original	new_name	verdict	confidence	reason
+val (def)	multiplicity	EQUIV	high	agree everywhere: p>=2,x>0 exact valuation; x=0 or p=1 both 0 (not finite -> 0); p=0 both 0
+dsum (def)	(p.digits x).sum	EQUIV	high	agree for p>=2 (digits_def'); differ for p<2 but every theorem assumes p>=2 or prime
+carries (def)	MultAdd.Cube.carries	SAME	high	identical recursive definition
+Val (def)	multiplicity p x = e	EQUIV	high	p^e|x ∧ ¬p^(e+1)|x is what kummer still writes out; equals multiplicity=e when finite
+S (def)	MultAdd.Cube.signedSum	GENERAL	high	same sum over range(n+1) of (-1)^k C(n,k) f k; Z -> any CommRing
+MultAdd.Cube.dsum_eq	MultAdd.Cube.sum_digits_eq	SAME	high	renamed
+MultAdd.Cube.dsum_zero	Nat.digits_zero	MATHLIB	high	digits b 0 = [] for all b, sum 0; same
+MultAdd.Cube.val_of_mod_ne	multiplicity_eq_zero_of_not_dvd	MATHLIB	high	¬p|x <-> x%p≠0 for all p; same
+MultAdd.Cube.val_of_mod_eq	MultAdd.Cube.multiplicity_mul_self_left	EQUIV	high	restated with x=p*m: multiplicity p (p*m) = multiplicity p m + 1 (2<=p, 0<m); equivalent to x%p=0, x>0 form
+MultAdd.Cube.carries_eq	MultAdd.Cube.carries_eq	SAME	high	identical
+MultAdd.Cube.carries_zero	MultAdd.Cube.carries_zero	SAME	high	p explicit, simp
+MultAdd.Cube.carries_dsum	MultAdd.Cube.sub_one_mul_carries_add_sum_digits	EQUIV	high	auxiliary s with a+b=s removed (it was only the induction measure); any base p>=2 kept; own proof ported
+MultAdd.Cube.dsum_succ	MultAdd.Cube.sum_digits_succ	SAME	high	renamed; any p>=2; own proof ported
+MultAdd.Cube.val_spec	pow_multiplicity_dvd	MATHLIB	high	with FiniteMultiplicity.not_pow_dvd_of_multiplicity_lt and Nat.finiteMultiplicity_iff (p≠1, 0<x); covers both halves
+MultAdd.Cube.Val.unique	multiplicity_eq_of_dvd_of_not_dvd	MATHLIB	high	both exponents equal multiplicity p x; same
+MultAdd.Cube.euclid	Nat.Prime.dvd_mul	MATHLIB	high	(hp.dvd_mul.1 h).resolve_left ha; same
+MultAdd.Cube.Val.mul	Nat.multiplicity_mul (as named)	MATHLIB	low	content is mathlib's multiplicity_mul (hp : Prime p) (FiniteMultiplicity p (a*b)); unsure Nat.multiplicity_mul exists under that name; unused in the port
+MultAdd.Cube.layer_pos	Nat.choose_pos	MATHLIB	high	k<=n -> 0 < n.choose k; same
+MultAdd.Cube.layer_val_dsum	MultAdd.Cube.sub_one_mul_multiplicity_choose_add_sum_digits	SAME	high	same equation (no truncated subtraction); route: original from absorption + val_spec + dsum_succ, port from mathlib sub_one_mul_multiplicity_choose_eq_sub_sum_digits'
+MultAdd.Cube.kummer	MultAdd.Cube.kummer	SAME	high	identical statement; route: now via mathlib Kummer (digit form) + own carries identity, not the own absorption proof
+MultAdd.Cube.S_add	MultAdd.Cube.signedSum_add	GENERAL	high	any CommRing
+MultAdd.Cube.S_mul	MultAdd.Cube.signedSum_mul	GENERAL	high	any CommRing
+MultAdd.Cube.S_zero	MultAdd.Cube.signedSum_zero	GENERAL	high	any CommRing
+MultAdd.Cube.S_sub	MultAdd.Cube.signedSum_sub	GENERAL	high	any CommRing
+MultAdd.Cube.S_bsum	MultAdd.Cube.signedSum_sum	GENERAL	high	bsum -> Finset sum over range m; any CommRing
+MultAdd.Cube.S_succ	MultAdd.Cube.signedSum_succ	GENERAL	high	any CommRing; own Pascal argument re-proved
+MultAdd.Cube.layer_succ_self	Nat.choose_succ_self_right	MATHLIB	high	(n+1).choose n = n+1; same
+MultAdd.Cube.S_pow	MultAdd.Cube.signedSum_pow	GENERAL	high	c:Z -> c in any CommRing, k cast; route: original own induction via binomial, port via mathlib fwdDiff_iter_eq_factorial / _pow_eq_zero_of_lt
+MultAdd.Cube.bsum_meq	Int.ModEq.sum	MATHLIB	medium	sum of termwise congruences; believe Int.ModEq.sum exists with (h : ∀ i ∈ s, f i ≡ g i [ZMOD n]); unused in the port
+MultAdd.Cube.bsum_one	Finset.sum_const	MATHLIB	high	with card_range, smul_eq_mul: sum k<m 1 = m
+MultAdd.Cube.alt_layer	MultAdd.Cube.neg_one_pow_mul_choose_pred_prime	SAME	high	same congruence and hypothesis k<=p-1; own induction kept (in ZMod)
+MultAdd.Cube.fermat_unit	Int.ModEq.pow_card_sub_one_eq_one	MATHLIB	high	mathlib: IsCoprime n p -> n^(p-1) ≡ 1 [ZMOD p] for n:Z; implies original (a:N, ¬p|a gives coprime)
+MultAdd.Cube.wilson	MultAdd.Cube.wilson	SAME	high	identical congruence; route: original cube proof (S_pow + alt_layer + fermat_unit) is NOT the proof any more; port is ZMod.wilsons_lemma
+MultAdd.Cube.dvd_fact	Nat.dvd_factorial	MATHLIB	high	0<m -> m<=n -> m | n!; same
+MultAdd.Cube.wilson_iff	MultAdd.Cube.wilson_iff	SAME	high	identical; route: original own converse via dvd_fact + own wilson, port is Nat.prime_iff_fac_equiv_neg_one

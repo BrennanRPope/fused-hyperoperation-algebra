@@ -1,0 +1,79 @@
+original	new_name	verdict	confidence	reason
+MAFound.FusedPeano.ind	MAFound.FusedPeano.ind	SAME	high	class axiom I, identical
+MAFound.FusedPeano.madd_succ	MAFound.FusedPeano.madd_succ	SAME	high	class axiom R2, identical
+MAFound.FusedPeano.madd_zero	MAFound.FusedPeano.madd_zero	SAME	high	class axiom R2, identical
+MAFound.FusedPeano.sadd_succ	MAFound.FusedPeano.sadd_succ	SAME	high	class axiom R1, identical
+MAFound.FusedPeano.sadd_zero	MAFound.FusedPeano.sadd_zero	SAME	high	class axiom R1, identical
+MAFound.FusedPeano.succ_inj	MAFound.FusedPeano.succ_inj	SAME	high	class axiom P2, identical
+MAFound.FusedPeano.succ_ne_zero	MAFound.FusedPeano.succ_ne_zero	SAME	high	class axiom P1, identical
+MAFound.FusedPeano.succ_sadd	MAFound.FusedPeano.succ_sadd	SAME	high	identical, proof kept verbatim
+MAFound.FusedPeano.zero_sadd	MAFound.FusedPeano.zero_sadd	SAME	high	identical, proof kept
+MAFound.FusedPeano.sadd_comm	MAFound.FusedPeano.sadd_comm	SAME	high	identical, proof kept
+MAFound.FusedPeano.sadd_assoc	MAFound.FusedPeano.sadd_assoc	SAME	high	identical, proof kept
+MAFound.FusedPeano.sadd_right_cancel	MAFound.FusedPeano.sadd_right_cancel	SAME	high	identical, proof kept
+MAFound.FusedPeano.sadd_ne_zero	MAFound.FusedPeano.sadd_ne_zero	SAME	high	identical, proof kept
+MAFound.FusedPeano.zero_madd	MAFound.FusedPeano.zero_madd	SAME	high	identical, proof kept
+MAFound.FusedPeano.succ_madd	MAFound.FusedPeano.succ_madd	SAME	high	identical, proof kept
+MAFound.FusedPeano.madd_comm	MAFound.FusedPeano.madd_comm	SAME	high	identical, proof kept
+MAFound.FusedPeano.madd_sadd	MAFound.FusedPeano.madd_sadd	SAME	high	identical, proof kept
+MAFound.FusedPeano.madd_assoc	MAFound.FusedPeano.madd_assoc	SAME	high	identical, proof kept
+MAFound.FusedPeano.sadd_is_succ	MAFound.FusedPeano.succ_add_eq_sadd	DROPPED-OK	high	∃ z, succ z = sadd x y is witnessed by z = x + y in succ_add_eq_sadd
+MAFound.FusedPeano.succ_add_eq	MAFound.FusedPeano.succ_add_eq_sadd	EQUIV	high	succ (x + y) = sadd x y; port + is transported from ℕ, and this theorem (with succ_inj) is what makes it equal to the original choice-defined add
+MAFound.FusedPeano.add_zero'	add_zero	MATHLIB	high	x + 0 = x with zero_eq : (0:N) = zero. route: now from the transported semiring, not derived from the fused axioms
+MAFound.FusedPeano.add_succ'	add_assoc + succ_eq_add_one	MATHLIB	high	x + succ y = succ (x + y) after succ_eq_add_one. route: transported, not derived from axioms
+MAFound.FusedPeano.zero_add'	zero_add	MATHLIB	high	with zero_eq. route: transported
+MAFound.FusedPeano.add_comm'	add_comm	MATHLIB	high	route: transported, not from sadd_comm
+MAFound.FusedPeano.succ_add'	add_right_comm + succ_eq_add_one	MATHLIB	high	succ x + y = succ (x + y). route: transported
+MAFound.FusedPeano.add_assoc'	add_assoc	MATHLIB	high	route: transported, not from sadd_assoc
+MAFound.FusedPeano.add_right_cancel'	add_right_cancel (claimed)	MISSING	high	mathlib add_right_cancel needs IsRightCancelAdd N, which a bare CommSemiring does not give; no instance and no port lemma states a + c = b + c → a = b on N. Two lines from ringEquivNat.injective
+MAFound.FusedPeano.madd_is	MAFound.FusedPeano.madd_eq	DROPPED-OK	high	∃ z, madd x y = (x + y) + z is witnessed by z = x * y in madd_eq
+MAFound.FusedPeano.madd_eq'	MAFound.FusedPeano.madd_eq	EQUIV	high	madd x y = x + y + x*y; port + and * are transported, and this theorem pins * to the original choice-defined mul (N cancellative)
+MAFound.FusedPeano.mul_zero'	mul_zero	MATHLIB	high	with zero_eq. route: transported
+MAFound.FusedPeano.mul_succ'	mul_add_one + succ_eq_add_one	MATHLIB	high	x * succ y = x*y + x. route: transported, original derived it from madd_succ
+MAFound.FusedPeano.toN_injective	MAFound.FusedPeano.toN_injective	SAME	high	Function.Injective toN unfolds to the original; proof kept
+MAFound.FusedPeano.toN_surjective	MAFound.FusedPeano.toN_surjective	SAME	high	Function.Surjective toN; proof kept (induction)
+MAFound.FusedPeano.toN_bijective	MAFound.FusedPeano.toN_bijective	EQUIV	high	the original conjunction is literally Function.Bijective toN; plus equivNat : N ≃ ℕ
+MAFound.FusedPeano.toN_sadd	MAFound.FusedPeano.toN_sadd	SAME	high	toN (MultAdd.sadd a b) with sadd a b := a + b + 1 is the original toN (a + b + 1)
+MAFound.FusedPeano.toN_madd	MAFound.FusedPeano.toN_madd	SAME	high	toN (a ✳ b), ✳ on ℕ is a + b + a*b. route: induction now goes through MultAdd.multAdd_succ
+MAFound.FusedPeano.toN_add	MAFound.FusedPeano.toN_add	EQUIV	medium	same text, but port + on N is defined by transport along toN, so this is true by construction (map_add); the original content now sits in sadd_eq / succ_add_eq_sadd
+MAFound.FusedPeano.toN_mul	MAFound.FusedPeano.toN_mul	EQUIV	medium	same text, true by construction (map_mul of transported structure); original content (choice-defined mul matches ℕ) now in madd_eq via toN_madd
+MAFound.FusedPeano.toN_fromN	MAFound.FusedPeano.toN_equivNat	SAME	high	fromN is now equivNat (the inverse of toN, unique); toN (equivNat n) = n
+MAFound.FusedPeano.fromN_toN	MAFound.FusedPeano.equivNat_toN	SAME	high	equivNat (toN k) = k
+MAFound.FusedPeano.recN_zero	MAFound.FusedPeano.recN_zero	SAME	high	identical (target universe generalised)
+MAFound.FusedPeano.recN_succ	MAFound.FusedPeano.recN_succ	SAME	high	identical
+MAFound.FusedPeano.hyp_one	hyperoperation_ge_two_eq_self	MATHLIB	high	hyperoperation (n+2) m 1 = m; original hyp equals mathlib hyperoperation (checked bases: n=1 →a, n=2 →0, n≥3 →1, same recursion)
+MAFound.FusedPeano.hyp_add	hyperoperation_one	MATHLIB	high	hyperoperation 1 = (· + ·)
+MAFound.FusedPeano.hyp_mul	hyperoperation_two	MATHLIB	high	hyperoperation 2 = (· * ·)
+MAFound.FusedPeano.hyp_pow	hyperoperation_three	MATHLIB	high	hyperoperation 3 = (· ^ ·)
+MAFound.FusedPeano.lad_lift	MultAdd.rung_add_one (+ rung schema lemmas)	DROPPED-OK	medium	rung is defined as hyp-1, so rung_add_one is only positivity; the content (schema ladder = conjugated hyperoperation) is rung_zero, rung_one_zero_right, rung_add_two_zero_right, rung_succ_succ, which force rung = lad for all n, a, b
+MAFound.FusedPeano.lad_one	MultAdd.rung_one	DROPPED-OK	high	rung 1 a b = sadd a b = a + b + 1; lad = rung as above
+MAFound.FusedPeano.lad_two	MultAdd.rung_two	DROPPED-OK	high	rung 2 a b = a ✳ b = a + b + a*b
+MAFound.FusedPeano.lad_three	MultAdd.rung_three + MultAdd.fexp_add_one	DROPPED-OK	high	rung 3 a b + 1 = (a+1)^(b+1)
+MAFound.FusedPeano.ladN_zero_right	MAFound.FusedPeano.ladN_zero_right	SAME	high	identical
+MAFound.FusedPeano.ladN_succ	MAFound.FusedPeano.ladN_succ	SAME	high	identical
+MAFound.FusedPeano.ladN_one	MAFound.FusedPeano.ladN_one	SAME	high	identical, proof kept
+MAFound.FusedPeano.ladN_two	MAFound.FusedPeano.ladN_two	SAME	high	identical, proof kept
+MAFound.FusedPeano.toN_lad	MAFound.FusedPeano.toN_rung	EQUIV	high	lad replaced by MultAdd.rung, which equals lad for every n, a, b (same base values and same iteration law)
+MAFound.FusedPeano.add_toN_fromN	Equiv.add_def	MATHLIB	medium	x + y = equivNat.symm (equivNat x + equivNat y) is the definition of the transported +; Equiv.add_def states it (up to instance unfolding)
+MAFound.FusedPeano.transfer2	Function.Surjective.forall₂	MATHLIB	high	applied to toN_surjective gives the same transfer principle
+MAFound.FusedPeano.transfer3	Function.Surjective.forall₃	MATHLIB	high	same, three variables
+MAFound.FusedPeano.mul_comm'	mul_comm	MATHLIB	high	route: transported; original transferred from Nat.mul_comm via toN_mul (similar in spirit)
+MAFound.FusedPeano.mul_assoc'	mul_assoc	MATHLIB	high	route: transported
+MAFound.FusedPeano.mul_add'	mul_add	MATHLIB	high	route: transported
+MAFound.FusedPeano.mul_one'	mul_one + toN_one	MATHLIB	high	mul x (toN 1) = x via toN_one : toN 1 = 1
+MAFound.FusedPeano.multAdd_eq	MAFound.FusedPeano.multAdd_eq	EQUIV	high	x ✳ y = madd x y, ✳ unfolding to x + y + x*y in the (transported) semiring; same meaning given succ_add_eq_sadd and madd_eq
+MAFound.FusedPeano.mul_definable	MAFound.FusedPeano.mul_definable	SAME	high	ma m' n' replaced by m' ✳ n' (same on ℕ); rest identical
+MAFound.FusedPeano.add_definable	MAFound.FusedPeano.add_definable	SAME	high	identical
+def FusedPeano	MAFound.FusedPeano	SAME	high	same fields and axioms; Type → Type*
+def add	instCommSemiring (+)	EQUIV	high	was predecessor of sadd by choice; now ℕ's + transported along equivNat; equal pointwise by succ_add_eq_sadd and succ_inj
+def mul	instCommSemiring (*)	EQUIV	high	was choice from madd_is; now transported; equal by madd_eq and cancellation in N
+def toN	MAFound.FusedPeano.toN	SAME	high	identical recursion
+def fromN	MAFound.FusedPeano.equivNat	EQUIV	high	forward map of (Equiv.ofBijective toN).symm, the unique inverse of toN, as fromN was
+def recN	MAFound.FusedPeano.recN	SAME	high	same Nat.rec on equivNat n (was fromN n)
+def ladBase	rung_one_zero_right, rung_add_two_zero_right	DROPPED-OK	high	base values a+1 (rung 1) and a (rung ≥2) are these lemmas, checked against hyperoperation
+def lad	MultAdd.rung	DROPPED-OK	high	rung n a b = hyperoperation n (a+1) (b+1) - 1 agrees with lad for all n, a, b: rung 0 = b+1, same bases, rung_succ_succ is lad's recursion
+def hypBase / hyp	hyperoperation	MATHLIB	high	bases a, 0, 1 at n = 1, 2, ≥3 and successor at n = 0 match mathlib's hyperoperation exactly
+def ladN	MAFound.FusedPeano.ladN	SAME	high	identical
+def npow'	Monoid.npow	MATHLIB	high	transported power; same values
+def ma	MultAdd.multAdd	MATHLIB	high	✳ on ℕ, same formula
+def instCommSemiring	MAFound.FusedPeano.instCommSemiring	GENERAL	high	mathlib CommSemiring plus N ≃+* ℕ (stronger); route: transported from ℕ instead of laws proved for the choice-defined + and *

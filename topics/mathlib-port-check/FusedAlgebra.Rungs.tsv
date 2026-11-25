@@ -1,0 +1,43 @@
+original	new_name	verdict	confidence	reason
+MultAdd.pow_pos'	Nat.pow_pos	MATHLIB	high	core Nat.pow_pos (0 < b → 0 < b^n); 0 < x is definitionally 1 ≤ x on ℕ; the original's own proof was this lemma
+MultAdd.lift_inj	Nat.add_right_cancel	MATHLIB	high	core Nat.add_right_cancel: n + m = k + m → n = k
+MultAdd.sadd_lift	MultAdd.sadd_add_one	SAME	high	renamed; identical. route: via rung_one and hyperoperation_one instead of omega
+MultAdd.fexp_lift	MultAdd.fexp_add_one	SAME	high	renamed; identical. route: via rung_three and rung_add_one
+MultAdd.tet_pos	MultAdd.tet_pos	EQUIV	high	1 ≤ tet (a+1) n became 0 < tet (a+1) n, the same proposition on ℕ
+MultAdd.ftet_lift	MultAdd.ftet_add_one	SAME	high	renamed; identical; instance of rung_add_one 4
+MultAdd.fexp_zero_right	MultAdd.fexp_zero_right	SAME	high	identical
+MultAdd.fexp_zero_left	MultAdd.fexp_zero_left	SAME	high	identical
+MultAdd.fexp_carries_multAdd	MultAdd.fexp_eq_multAdd	SAME	high	renamed; fexp a b = a ✳ ((a+1)^b - 1), same natural subtraction
+MultAdd.fexp_multAdd_right	MultAdd.fexp_multAdd_left	SAME	high	renamed only; fexp (a ✳ b) c = fexp a c ✳ fexp b c
+MultAdd.fexp_tower	MultAdd.fexp_fexp	SAME	high	renamed; fexp (fexp a b) c = fexp a (b ✳ c)
+MultAdd.fexp_sadd	MultAdd.fexp_sadd	SAME	high	identical
+MultAdd.fexp_not_assoc	MultAdd.fexp_not_assoc	SAME	high	same numbers (63 vs 511), decide
+MultAdd.fexp_not_comm	MultAdd.fexp_not_comm	SAME	high	same numbers (7 vs 8), decide
+MultAdd.fexp_example	MultAdd.fexp_example	SAME	high	same values 63 and 511, decide
+MultAdd.multAdd_iter	MultAdd.multAdd_succ	SAME	high	renamed; a ✳ (b+1) = sadd a (a ✳ b). route: instance of general rung_succ_succ instead of a direct lift computation
+MultAdd.fexp_iter	MultAdd.fexp_succ	SAME	high	renamed; identical. route: instance of rung_succ_succ
+MultAdd.ftet_iter	MultAdd.ftet_succ	SAME	high	renamed; identical. route: instance of rung_succ_succ
+MultAdd.fexp_base_iter	MultAdd.iterate_fexp_add_one	EQUIV	high	Nat.repeat f n a replaced by f^[n] a (equal for all n); RHS (a+1)^(c+1)^n is (a+1)^((c+1)^n) since ^ is right-associative
+MultAdd.pent_pos	MultAdd.pent_pos	EQUIV	high	1 ≤ _ became 0 < _, same proposition on ℕ
+MultAdd.fpent_lift	MultAdd.fpent_add_one	SAME	high	renamed; identical; instance of rung_add_one 5
+MultAdd.tet_one	MultAdd.tet_one	SAME	high	identical
+MultAdd.ftet_zero_right	MultAdd.ftet_zero_right	SAME	high	identical
+MultAdd.ftet_zero_left	MultAdd.ftet_zero_left	SAME	high	identical
+MultAdd.fpent_zero_right	MultAdd.fpent_zero_right	SAME	high	identical
+MultAdd.tet_one_base	MultAdd.one_tet	SAME	high	renamed; tet 1 n = 1 for all n. route: mathlib hyperoperation_ge_three_one instead of own case split
+MultAdd.pent_one_base	MultAdd.one_pent	SAME	high	renamed; pent 1 n = 1. route: mathlib hyperoperation_ge_three_one
+MultAdd.fpent_zero_left	MultAdd.fpent_zero_left	SAME	high	identical
+MultAdd.fpent_iter	MultAdd.fpent_succ	SAME	high	renamed; identical. route: instance of rung_succ_succ
+MultAdd.ftet_values	MultAdd.ftet_values	SAME	high	same five values 3, 15, 26, 255, 65535 (rechecked by hand); simp evaluation instead of decide
+MultAdd.fpent_values	MultAdd.fpent_values	SAME	high	same values 3 and 65535; simp instead of decide
+MultAdd.ftet_not_assoc	MultAdd.ftet_not_assoc	SAME	high	identical (255 vs 65535)
+MultAdd.ftet_not_comm	MultAdd.ftet_not_comm	SAME	high	identical (15 vs 26)
+MultAdd.ftet_no_multAdd_dist	MultAdd.ftet_multAdd_left_ne	SAME	high	renamed; identical (255 vs 15)
+MultAdd.ftet_no_tower	MultAdd.ftet_ftet_ne	SAME	high	renamed; identical
+MultAdd.ftet_no_sum	MultAdd.ftet_sadd_ne	SAME	high	renamed; identical
+def sadd	MultAdd.sadd	SAME	high	a + b + 1; equals rung 1 (rung_one)
+def fexp	MultAdd.fexp	SAME	high	(a+1)^(b+1) - 1; equals rung 3
+def tet	MultAdd.tet	EQUIV	high	now hyperoperation 4 x n; mathlib gives hyp 4 x 0 = 1 and hyp 4 x (n+1) = x^(hyp 4 x n), the original recursion for every x (incl. 0) and n
+def ftet	MultAdd.ftet	SAME	high	tet (a+1) (b+1) - 1; rung 4 by rfl
+def pent	MultAdd.pent	EQUIV	high	now hyperoperation 5; hyp 5 x 0 = 1, hyp 5 x (n+1) = tet x (pent x n), same recursion for all x, n
+def fpent	MultAdd.fpent	SAME	high	pent (a+1) (b+1) - 1; rung 5 by rfl

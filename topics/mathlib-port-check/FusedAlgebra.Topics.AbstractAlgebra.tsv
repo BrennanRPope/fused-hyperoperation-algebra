@@ -1,0 +1,75 @@
+original	new_name	verdict	confidence	reason
+CommMonoidLaws	CommMonoid	MATHLIB	high	def: record (comm, assoc, right identity) replaced by CommMonoid class; same laws (mathlib also has left identity, derivable)
+CommGroupLaws	CommGroup	MATHLIB	high	def: record plus existence of right inverse; CommGroup gives an explicit inverse, which implies it
+OpIso	MulEquiv	MATHLIB	high	def: bijection with two-sided inverse carrying op and identity; ≃* has same data, map_one automatic
+tateSetoid	AbstractAlgebra.tateCon	EQUIV	high	def: setoid on R by tateRel upgraded to Con on PreQuasiregular R with r x y := tateRel q x.val y.val; same relation via equiv
+TateQ	AbstractAlgebra.TateQ	EQUIV	high	def: Quotient (tateSetoid q) became (tateCon q).Quotient; same quotient up to PreQuasiregular R ≃ R
+TateQ.op	Con.hasMul	MATHLIB	high	def: lift of multAdd to the quotient = induced mult of PreQuasiregular (val_mul_eq_multAdd)
+TateQ.zero	Con.one	MATHLIB	high	def: class of 0 = class of 1 in PreQuasiregular R
+geom	Finset.sum	MATHLIB	high	def: geom x m (0, then +x^m) equals ∑ i ∈ range m, x ^ i
+fadd	AbstractAlgebra.fadd	SAME	high	def: a + b + 1; CommRing
+tateRel	AbstractAlgebra.tateRel	SAME	high	def: identical
+shiftIso	MultAdd.oneAddEquiv	DROPPED-OK	high	def: x ↦ 1 + x as PreQuasiregular R ≃* R; any Ring (original CommRing)
+scaleIso	AbstractAlgebra.Weighted.scaleEquiv	EQUIV	high	def: x ↦ k*x, inverse y/k, as Weighted k ≃* PreQuasiregular K
+OpIso.self_op	map_mul / map_one	MATHLIB	high	f(a op a)=f a op f a and f e = e; used exactly this way in zmod4_not_mulEquiv_add
+multAdd_commMonoid	PreQuasiregular.instCommMonoid	DROPPED-OK	high	(R,✳,0) comm monoid; instance in Basic for NonUnitalCommSemiring; val_mul_eq_multAdd ties its * to ✳
+wAdd_commMonoid	AbstractAlgebra.Weighted.instCommMonoid	EQUIV	high	CommMonoid instance on type copy Weighted k with mul wAdd k, one 0; fields are wAdd_comm/assoc/zero
+mul_commMonoid	CommSemiring.toCommMonoid	MATHLIB	high	(R,*,1) is a commutative monoid
+shift_wall	AbstractAlgebra.shift_wall	GENERAL	high	oneAddEquiv (equiv (-1)) = 0; any Ring instead of CommRing
+multAdd_unit_iff	AbstractAlgebra.multAdd_unit_iff	EQUIV	high	∃ c, (1+a)*c = 1 written IsUnit (1+a); equivalent in a comm ring (isUnit_iff_exists_inv). route: hand proof kept, linear_combination
+wAdd_unit_iff	AbstractAlgebra.isUnit_one_add_mul_of_wAdd_eq_zero	EQUIV	high	original was an implication (name said iff); same implication with IsUnit conclusion
+int_multAdd_units	AbstractAlgebra.int_multAdd_units	SAME	high	route: original natAbs argument by hand; port uses Int.isUnit_iff + lia
+neg_two_self_inverse	AbstractAlgebra.neg_two_self_inverse	SAME	high	decide
+int_not_group	AbstractAlgebra.int_not_group	SAME	high	
+field_unit	AbstractAlgebra.field_unit	SAME	high	mathlib Field instead of Lean.Grind.Field
+scale_wall	AbstractAlgebra.Weighted.scale_wall	EQUIV	high	scaleEquiv k hk ⟨-1/k⟩ = equiv (-1): same as k*(-1/k) = -1 through wrappers
+int_scale_hom	AbstractAlgebra.Weighted.scaleHom (MultAdd.mul_wAdd)	GENERAL	high	identity k*wAdd k a b = (k*a)✳(k*b) is MultAdd.mul_wAdd for any comm semiring; also map_mul of scaleHom
+int_scale_inj	AbstractAlgebra.Weighted.scaleHom_injective	GENERAL	high	injectivity of x ↦ k*x for k≠0 under IsLeftCancelMulZero (holds for ℤ)
+int_weight_units	AbstractAlgebra.int_weight_units	SAME	high	decide
+parity_is_xor	AbstractAlgebra.parity_is_xor	SAME	high	
+geom_mul	mul_neg_geom_sum	MATHLIB	high	(1 - x) * ∑ i ∈ range m, x^i = 1 - x^m. route: original induction proof replaced by mathlib lemma
+nilpotent_weight_inverse	AbstractAlgebra.nilpotent_weight_inverse	SAME	high	geom written as Finset sum (same value). route: now uses mathlib mul_neg_geom_sum
+nilpotent_weight_group	AbstractAlgebra.Weighted.commGroupOfPowEqZero	EQUIV	high	CommGroupLaws (wAdd k) 0 became a CommGroup structure on Weighted k with explicit inverse
+fin12_group_criterion	AbstractAlgebra.zmod12_group_criterion	SAME	high	Fin 12 → ZMod 12 (definitionally Fin 12, same ring ops, val same); 6 kept
+fin8_group_criterion	AbstractAlgebra.zmod8_group_criterion	SAME	high	Fin 8 → ZMod 8; 2 kept
+fin9_group_criterion	AbstractAlgebra.zmod9_group_criterion	SAME	high	Fin 9 → ZMod 9; 3 kept
+fin12_units	AbstractAlgebra.zmod12_units	SAME	high	0, 4, 6, 10 kept
+fin12_wall	AbstractAlgebra.zmod12_wall	SAME	high	11 kept
+fin4_klein	AbstractAlgebra.zmod4_klein	SAME	high	
+fin4_not_iso_add	AbstractAlgebra.zmod4_not_mulEquiv_add	EQUIV	high	OpIso (wAdd 2) 0 (+) 0 → False became IsEmpty (Weighted 2 ≃* Multiplicative (ZMod 4)); same data, map_id automatic
+fin9_cyclic	AbstractAlgebra.zmod9_cyclic	SAME	high	j still ranges over Fin 9; numbers 3, 1, 9 kept
+fin8_weight4_cyclic	AbstractAlgebra.zmod8_weight4_cyclic	SAME	high	numbers kept
+fin8_weight2_not_cyclic	AbstractAlgebra.zmod8_weight2_not_cyclic	SAME	high	numbers kept
+fadd_lift	AbstractAlgebra.one_add_fadd	SAME	high	1 + a + (1 + b) parses as (1+a)+(1+b)
+fadd_group	AbstractAlgebra.Fused.instCommRing	EQUIV	medium	group laws of fadd with zero -1 come from the additive group of Fused R via Fused.val_add/val_zero/val_neg; not stated directly on fadd
+multAdd_fadd_distrib	AbstractAlgebra.multAdd_fadd	SAME	high	
+fused_zero_absorbs	MultAdd.multAdd_neg_one	DROPPED-OK	high	a ✳ -1 = -1 in Basic (any Ring)
+shift_ring_hom	AbstractAlgebra.Fused.shiftRingEquiv	EQUIV	high	4-part conjunction: parts 1-2 are one_add_fadd, one_add_multAdd; parts 3-4 are trivial ring facts; RingEquiv packages them
+multAdd_not_distrib_add	AbstractAlgebra.multAdd_not_distrib_add	SAME	high	
+mpow_multAdd	AbstractAlgebra.mpow_multAdd	GENERAL	high	non-unital comm semiring; port mpow = power in PreQuasiregular, same recursion (mpow_zero/mpow_succ). route: was induction, now mul_pow
+mpow_mul	MultAdd.mpow_mul	DROPPED-OK	high	Basic: mpow a (m*n) = mpow (mpow a m) n (sides swapped). route: Basic proves it by pow_mul
+mpow_one	MultAdd.mpow_one	DROPPED-OK	high	Basic, simp lemma
+mpow_zero_base	AbstractAlgebra.zero_mpow	GENERAL	high	non-unital comm semiring; route: one_pow in PreQuasiregular instead of induction
+tateRel_refl	AbstractAlgebra.tateRel_refl	SAME	high	
+tateRel_symm	AbstractAlgebra.tateRel_symm	SAME	high	
+tateRel_trans	AbstractAlgebra.tateRel_trans	SAME	high	same witnesses m+r, s+n
+tate_glue	AbstractAlgebra.tate_glue	SAME	high	
+tateRel_multAdd	AbstractAlgebra.tateRel_multAdd	SAME	high	
+tateQ_commMonoid	Con.commMonoid	MATHLIB	high	quotient of a comm monoid by a Con is a comm monoid; ✳ and 0 become * and 1 of the quotient
+tateQ_glued	AbstractAlgebra.tateQ_glued	EQUIV	high	class of equiv a is 1 (= class of 0) when 1 + a = q
+tateQ_inverse	AbstractAlgebra.tateQ_inverse	EQUIV	high	class a * class (multAddInv a) = 1 in the quotient monoid, 1 + a ≠ 0
+slope_walls_mod5	AbstractAlgebra.slope_walls_mod5	SAME	high	a*a → a^2, Fin → ZMod; roots 2, 3 kept
+slope_walls_mod13	AbstractAlgebra.slope_walls_mod13	SAME	high	roots 5, 8 kept
+slope_no_walls_mod3	AbstractAlgebra.slope_no_walls_mod3	SAME	high	
+slope_no_walls_mod7	AbstractAlgebra.slope_no_walls_mod7	SAME	high	
+slope_no_walls_mod11	AbstractAlgebra.slope_no_walls_mod11	SAME	high	
+multAdd_one_wall_mod7	AbstractAlgebra.multAdd_one_wall_mod7	SAME	high	6 kept
+CommMonoidLaws.comm	mul_comm	MATHLIB	high	record field = CommMonoid axiom
+CommMonoidLaws.assoc	mul_assoc	MATHLIB	high	record field = Monoid axiom
+CommMonoidLaws.ident	mul_one	MATHLIB	high	record field = Monoid axiom
+CommGroupLaws.inv	mul_inv_cancel	MATHLIB	high	a * a⁻¹ = 1 gives ∃ b, a * b = 1
+CommGroupLaws.toCommMonoidLaws	CommGroup.toCommMonoid	MATHLIB	high	parent projection
+OpIso.left	MulEquiv.symm_apply_apply	MATHLIB	high	field
+OpIso.right	MulEquiv.apply_symm_apply	MATHLIB	high	field
+OpIso.map_op	map_mul	MATHLIB	high	field
+OpIso.map_id	map_one	MATHLIB	high	field; automatic for monoid equivalences

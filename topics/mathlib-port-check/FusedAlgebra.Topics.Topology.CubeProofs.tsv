@@ -1,0 +1,30 @@
+original	new_name	verdict	confidence	reason
+IsPrime (def)	Nat.Prime	EQUIV	high	Nat.prime_def_lt'': p.Prime <-> 2<=p and every divisor is 1 or p; exactly the original def
+MEq (def)	Int.ModEq	EQUIV	high	MEq p x y = p | x-y; x ≡ y [ZMOD p] <-> p | y-x; same relation (symmetric), orientation of the unfolding flipped as the notes say
+bsum (def)	Finset.sum over range	EQUIV	high	bsum f m = sum k<m f k; same recursion as Finset.sum_range_succ
+blockCount (def)	inline in lucas_step	DROPPED-OK	high	product (n/p).choose(k/p) * (n%p).choose(k%p) written inline, same expression
+digitProd (def)	Finset.prod over range f	EQUIV	high	digitProd p f n k = prod i<f C(n/p^i %p, k/p^i %p) by unfolding (n/p)/p^i = n/p^(i+1)
+cubeSum (def)	inline in binomial	DROPPED-OK	high	sum k<n+1 C(n,k) x^k written inline
+MultAdd.Cube.coprime_of_lt	Nat.coprime_of_lt_prime	MATHLIB	high	mathlib: 0<n (or n≠0) -> n<p -> p.Prime -> Coprime p n; same statement, args reordered
+MultAdd.Cube.prime_dvd_middle	MultAdd.Cube.prime_dvd_middle	SAME	high	layer=Nat.choose; route: original via absorb + coprime_of_lt, port is Nat.Prime.dvd_choose_self
+MultAdd.Cube.MEq.refl	Int.ModEq.refl	MATHLIB	high	same
+MultAdd.Cube.MEq.symm	Int.ModEq.symm	MATHLIB	high	same
+MultAdd.Cube.MEq.trans	Int.ModEq.trans	MATHLIB	high	same
+MultAdd.Cube.MEq.add	Int.ModEq.add	MATHLIB	high	a≡b -> c≡d -> a+c≡b+d; same
+MultAdd.Cube.MEq.mul	Int.ModEq.mul	MATHLIB	high	same
+MultAdd.Cube.MEq.zero_of_dvd	Int.modEq_zero_iff_dvd	MATHLIB	high	.mpr: n | a -> a ≡ 0 [ZMOD n]; same
+MultAdd.Cube.divmod_of_eq	Nat.mul_add_div / Nat.mul_add_mod	MATHLIB	medium	no single lemma; combination of Nat.mul_add_div, Nat.mul_add_mod, Nat.div_eq_of_lt, Nat.mod_eq_of_lt gives both halves
+MultAdd.Cube.blockCount_eq	(none; table says lucas_step)	DROPPED-OK	medium	helper of the hand Lucas proof; lucas_step does not state it (table claim loose), but its content is the divmod lemmas above; route: hand Lucas gone
+MultAdd.Cube.layer_zero_left	Nat.choose_zero_succ	MATHLIB	high	with Nat.choose_zero_right covers both branches of the if
+MultAdd.Cube.lucas_step	MultAdd.Cube.lucas_step	SAME	high	Int.ModEq, blockCount inline; route: original hand induction on Pascal's rule, port is mathlib Choose.choose_modEq_choose_mod_mul_choose_div
+MultAdd.Cube.lucas	MultAdd.Cube.lucas	EQUIV	high	digitProd -> Finset product of digit choose (equal by unfolding); route: original induction on digits from lucas_step, port is Choose.lucas_theorem
+MultAdd.Cube.exists_prime_factor	Nat.exists_prime_and_dvd	MATHLIB	high	mathlib hypothesis n≠1 is weaker than 2<=n, so it covers the original
+MultAdd.Cube.aks_middle	MultAdd.Cube.aks_middle	SAME	high	same iff; forward half still proved here (absorption + Lucas step), converse from Nat.Prime.dvd_choose_self
+MultAdd.Cube.bsum_add	Finset.sum_add_distrib	MATHLIB	high	same
+MultAdd.Cube.bsum_mul	Finset.mul_sum	MATHLIB	high	c * sum f = sum c*f; same
+MultAdd.Cube.bsum_shift	Finset.sum_range_succ'	MATHLIB	high	sum over range(m+1) = sum f(k+1) + f 0; same up to order of summands
+MultAdd.Cube.bsum_congr	Finset.sum_congr	MATHLIB	high	with mem_range; same
+MultAdd.Cube.bsum_dvd	Finset.dvd_sum	MATHLIB	high	same
+MultAdd.Cube.binomial	MultAdd.Cube.binomial	GENERAL	high	Z -> any CommSemiring; route: original hand induction via bsum_shift, port is add_pow (through one_add_mpow_eq_sum_choose)
+MultAdd.Cube.frobenius	MultAdd.Cube.frobenius	SAME	high	(1+x)^p ≡ 1+x^p [ZMOD p]; route: original from binomial + prime_dvd_middle (cube), port is add_pow_char in ZMod p
+MultAdd.Cube.fermat	MultAdd.Cube.fermat	GENERAL	high	a:N cast to Z -> any a:Z; route: original induction a->a+1 through frobenius (mult-add step), port is ZMod.pow_card

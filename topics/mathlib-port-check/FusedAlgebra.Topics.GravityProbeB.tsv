@@ -1,0 +1,18 @@
+original	new_name	verdict	confidence	reason
+v2	GravityProbeB.v2	GENERAL	high	def: x/(1-2x), any field
+gamma_sq	GravityProbeB.gamma_sq	GENERAL	high	any field; h3 (1-3x≠0) dropped; checked true without it (one_div_div, both sides 0)
+factors_multiply	GravityProbeB.factors_multiply	GENERAL	high	any field
+fractions_fuse	GravityProbeB.fractions_fuse	GENERAL	high	any comm ring; -a ✳ -b parses as (-a) ✳ (-b)
+fuse_factors	GravityProbeB.fuse_factors	GENERAL	high	any comm ring
+fuse_weight_minus_one	GravityProbeB.fuse_weight_minus_one	GENERAL	high	any comm ring
+weak_split	GravityProbeB.weak_split	GENERAL	high	[CharZero K], automatic over ℚ
+corner_is_second_order	GravityProbeB.corner_is_second_order	GENERAL	high	any comm ring
+ppn_geodetic	GravityProbeB.ppn_geodetic	GENERAL	high	[CharZero K]
+thirds	GravityProbeB.thirds	GENERAL	high	[CharZero K]; 1/3 and 2/3 kept
+geodetic_within_error	GravityProbeB.geodetic_within_error	SAME	high	still ℚ; 66039/10, 66018/10, 183/10 identical. route: grind → norm_num
+geodetic_parts	GravityProbeB.geodetic_parts	SAME	high	44026/10 + 22013/10 = 66039/10 identical
+parts_alone_ruled_out	GravityProbeB.parts_alone_ruled_out	SAME	high	100*(183/10), 66018/10, 22013/10, 44026/10 identical
+frame_dragging_within_error	GravityProbeB.frame_dragging_within_error	SAME	high	408/10 - 372/10 < 72/10 identical
+polar_average_four	GravityProbeB.polar_average_four	GENERAL	high	[CharZero K]; same numerals
+polar_average_eight	GravityProbeB.polar_average_eight	GENERAL	high	[CharZero K]; same numerals
+polar_average_pair	GravityProbeB.polar_average_pair	GENERAL	high	[CharZero K]

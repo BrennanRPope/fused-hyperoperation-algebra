@@ -1,0 +1,71 @@
+original	new_name	verdict	confidence	reason
+MultAdd.JetFields.WDual (def)	MultAdd.JetFields.WDual	SAME	high	def: pair (re, du); weight k moved into the type (WDual k); statements that fixed k in wmul k now fix it in the type; same content
+MultAdd.JetFields.wmul (def)	WDual Mul instance	SAME	high	def: ⟨x.re*y.re, x.re*y.du + x.du*y.re + k*x.du*y.du⟩, identical formula
+MultAdd.JetFields.twoPt (def)	MultAdd.JetFields.WDual.twoPt	SAME	high	def: x ↦ (x.re, x.re + k*x.du), now bundled as a RingHom
+MultAdd.JetFields.ofTwoPt (def)	MultAdd.JetFields.WDual.ofTwoPt	SAME	high	def unchanged
+MultAdd.JetFields.Jet2 (def)	MultAdd.JetFields.Jet2	SAME	high	def: triple (c0,c1,c2); new CommRing instance
+MultAdd.JetFields.jmul (def)	Jet2 Mul instance	SAME	high	def: identical truncated product
+MultAdd.JetFields.jma (def)	MultAdd.multAdd	MATHLIB	high	def: componentwise x+y+x*y = multAdd in the ring Jet2 R (table says mathlib; it is Basic's multAdd)
+MultAdd.JetFields.M3 (def)	Matrix (Fin 3) (Fin 3) R	MATHLIB	high	def: mij -> M (i-1) (j-1); checked in every statement below
+MultAdd.JetFields.M3.step (def)	1 + h • X	MATHLIB	high	def: ⟨1+h*m11, h*m12, ...⟩ = 1 + h • X
+MultAdd.JetFields.det9 / M3.det (def)	Matrix.det	MATHLIB	high	def: row-1 cofactor expansion = det_fin_three, same signs
+MultAdd.JetFields.M3.e2 (def)	LinearAlgebraMA.e2	SAME	high	def: same three principal minors, index shift correct
+MultAdd.JetFields.diag3 (def)	Matrix.diagonal	MATHLIB	high	def: diag record = diagonal ![a,b,c]
+MultAdd.JetFields.M3.vort (def)	MultAdd.JetFields.vort	SAME	high	def: (m32-m23, m13-m31, m21-m12) -> ![X 2 1 - X 1 2, X 0 2 - X 2 0, X 1 0 - X 0 1]
+MultAdd.JetFields.M3.symm2 (def)	X + Xᵀ	MATHLIB	high	def: entries 2*mii and mij+mji = (X + Xᵀ) i j
+MultAdd.JetFields.vsq (def)	dotProduct	MATHLIB	high	def: sum of three squares = w ⬝ᵥ w
+MultAdd.JetFields.M3.fsq (def)	MultAdd.JetFields.fsq	SAME	high	def: sum of nine squares = trace (X * Xᵀ) = Σ i j, X i j * X i j
+MultAdd.JetFields.quad (def)	dotProduct / mulVec	MATHLIB	high	def: Σ wi (Σ Xij wj) = w ⬝ᵥ (X *ᵥ w); ⬝ᵥ (72) binds looser than *ᵥ (73), so the port parses as intended
+MultAdd.JetFields.dE2 (def)	MultAdd.JetFields.dE2	SAME	high	def: written-out pair sum -> trace X * trace Y - trace (X*Y); expanded by hand: diagonal terms cancel, i≠j terms match the original's six pairs exactly
+MultAdd.JetFields.dDet (def)	MultAdd.JetFields.dDet	SAME	high	def: three det9 with one row from Y -> Σ i, det (X.updateRow i (Y i)); same
+MultAdd.JetFields.M3.addS (def)	X + t • Y	MATHLIB	high	def: entrywise X + t*Y
+MultAdd.JetFields.reStep (def)	MultAdd.JetFields.reStep	SAME	high	def: -3*X2 entries + tr X2 on diagonal = (-3) • (X*X) + trace (X*X) • 1
+MultAdd.JetFields.M2 (def)	Matrix (Fin 2) (Fin 2) R	MATHLIB	high	def: ⟨m11,m12,m21,m22⟩ -> M 0 0, M 0 1, M 1 0, M 1 1
+MultAdd.JetFields.d1 / d2 (def)	MultAdd.JetFields.d1 / d2	SAME	high	def unchanged; d1_eq_fwdDiff/d2_eq_fwdDiff (new) are rfl links to fwdDiff 1, forward direction, step 1
+MultAdd.JetFields.sumTo (def)	Finset.sum	MATHLIB	high	def: sumTo f n = ∑ k in range n, f k
+MultAdd.JetFields.wmul_comm	mul_comm	MATHLIB	high	field of the port's CommRing (WDual k) instance, proved there by ext/ring
+MultAdd.JetFields.wmul_assoc	mul_assoc	MATHLIB	high	field of the CommRing (WDual k) instance, proved there by ext/ring
+MultAdd.JetFields.eps_sq	MultAdd.JetFields.WDual.eps_mul_eps	SAME	high	renamed; ε*ε = ⟨0,k⟩ in WDual k
+MultAdd.JetFields.units_wAdd	MultAdd.JetFields.WDual.mk_one_mul_mk_one	SAME	high	renamed; ⟨1,a⟩*⟨1,b⟩ = ⟨1, wAdd k a b⟩
+MultAdd.JetFields.units_multAdd	MultAdd.JetFields.WDual.units_multAdd	SAME	high	weight 1 in the type
+MultAdd.JetFields.dual_units_add	MultAdd.JetFields.WDual.dual_units_add	SAME	high	weight 0 in the type
+MultAdd.JetFields.twoPt_mul	map_mul	MATHLIB	high	map_mul twoPt x y : twoPt (x*y) = twoPt x * twoPt y; product in R×R is componentwise, = original right side; content is the map_mul' proof in WDual.twoPt
+MultAdd.JetFields.twoPt_weight_zero	MultAdd.JetFields.WDual.twoPt_weight_zero	SAME	high	same
+MultAdd.JetFields.diff_leibniz	MultAdd.JetFields.WDual.diff_leibniz	SAME	high	same
+MultAdd.JetFields.dual_inverse	MultAdd.JetFields.WDual.dual_inverse	SAME	high	right side ⟨1,0⟩ written 1 (the One instance is ⟨1,0⟩)
+MultAdd.JetFields.twoPt_ofTwoPt	MultAdd.JetFields.WDual.twoPt_ofTwoPt	SAME	high	k implicit; hyp k≠0 kept; Lean.Grind.Field -> Field
+MultAdd.JetFields.ofTwoPt_twoPt	MultAdd.JetFields.WDual.ofTwoPt_twoPt	SAME	high	k implicit; hyp k≠0 kept
+MultAdd.JetFields.wall_no_inverse	MultAdd.JetFields.WDual.wall_no_inverse	SAME	high	≠ ⟨1,0⟩ written ≠ 1; same hyp 1+k*a=0, all y
+MultAdd.JetFields.off_wall_inverse	MultAdd.JetFields.WDual.off_wall_inverse	SAME	high	right side written 1
+MultAdd.JetFields.leibniz2	MultAdd.JetFields.Jet2.leibniz2	SAME	high	jmul -> *
+MultAdd.JetFields.jma_lift	MultAdd.one_add_multAdd	GENERAL	high	with the Jet2 ring, ⟨1+x.c0,x.c1,x.c2⟩ = 1 + x and the statement is Basic's general lift (1+x)*(1+y) = 1 + x✳y
+MultAdd.JetFields.cube_depth_two	MultAdd.JetFields.Jet2.cube_depth_two	SAME	high	jma -> ✳; same nesting a ✳ (b ✳ c)
+MultAdd.JetFields.cube_depth_one	MultAdd.JetFields.WDual.cube_depth_one	SAME	high	wmul 0 (wmul 0 ..) .. -> left-assoc product in WDual 0
+MultAdd.JetFields.nilpotent_inverse	MultAdd.JetFields.Jet2.nilpotent_inverse	SAME	high	a*a -> a^2; ⟨0,0,0⟩ -> 0
+MultAdd.JetFields.det_one_add_smul	LinearAlgebraMA.det_one_add_smul_fin_three	DROPPED-OK	high	det (1 + h•X) = 1 + h tr + h^2 e2 + h^3 det, identical statement in LinearAlgebra
+MultAdd.JetFields.det_diag_cube	MultAdd.JetFields.det_diag_cube	SAME	high	diag3 -> diagonal ![a,b,c]; (ha ✳ hb) ✳ hc left-assoc
+MultAdd.JetFields.diag_layers	MultAdd.JetFields.diag_layers	SAME	high	same three conjuncts
+MultAdd.JetFields.cayley_hamilton	MultAdd.JetFields.cayley_hamilton	EQUIV	high	nine entrywise equations (with X3 = X*(X*X), -det on the diagonal only) = entries of X^3 - trace X • X^2 + e2 X • X - det X • 1 = 0; still proved by expansion
+MultAdd.JetFields.tr_sq_traceless	MultAdd.JetFields.tr_sq_traceless	SAME	high	same. route: now a corollary of new general trace_mul_self_fin_three (still by expansion)
+MultAdd.JetFields.tr_cube_traceless	MultAdd.JetFields.tr_cube_traceless	SAME	high	same. route: corollary of new trace_mul_mul_self_fin_three
+MultAdd.JetFields.e2_vorticity_strain	MultAdd.JetFields.e2_vorticity_strain	SAME	high	8 e2 = 2 vort⬝vort - fsq (X+Xᵀ), hyp trace X = 0. route: corollary of new e2_vorticity_strain_add
+MultAdd.JetFields.det_vorticity_strain	MultAdd.JetFields.det_vorticity_strain	SAME	high	8 det X = det (X+Xᵀ) + vort ⬝ᵥ (X+Xᵀ) *ᵥ vort; same
+MultAdd.JetFields.sym_tr_cube	MultAdd.JetFields.sym_tr_cube	SAME	high	let S written out as !![a,b,c;b,e,f;c,f,-a-e]. route: from tr_cube_traceless instead of own expansion
+MultAdd.JetFields.sym_e2_sumsq	MultAdd.JetFields.sym_e2_sumsq	SAME	high	let written out; same
+MultAdd.JetFields.sq_nonneg_int	mul_self_nonneg	MATHLIB	high	0 ≤ a * a; user's hand proof replaced
+MultAdd.JetFields.sym_e2_nonpos	MultAdd.JetFields.sym_e2_nonpos	GENERAL	high	ℤ -> linearly ordered strict ordered comm ring. route: nlinarith instead of user's sum-of-squares argument via sym_e2_sumsq
+MultAdd.JetFields.e2_expand	MultAdd.JetFields.e2_expand	SAME	high	addS -> X + t•Y; same
+MultAdd.JetFields.det_expand	MultAdd.JetFields.det_expand	SAME	high	same
+MultAdd.JetFields.re_traceless	MultAdd.JetFields.re_traceless	SAME	high	same
+MultAdd.JetFields.re_dQ	MultAdd.JetFields.re_dQ	SAME	high	same; dE2 def checked equal
+MultAdd.JetFields.re_dR	MultAdd.JetFields.re_dR	SAME	high	same
+MultAdd.JetFields.re_conserved	MultAdd.JetFields.re_conserved	SAME	high	same
+MultAdd.JetFields.det2_step	LinearAlgebraMA.det_one_add_smul_fin_two	DROPPED-OK	high	det (1 + h•X) unfolds by det_fin_two to the original's written-out (1+h m11)(1+h m22) - (h m12)(h m21); same right side
+MultAdd.JetFields.tr_cube_2d	MultAdd.JetFields.tr_cube_2d	SAME	high	⟨a,b,c,-a⟩ -> !![a,b;c,-a]
+MultAdd.JetFields.re2_frozen	MultAdd.JetFields.re2_frozen	EQUIV	high	four entrywise equations = entries of (-2)•(X*X) + trace(X*X)•1 = 0
+MultAdd.JetFields.shift_is_corner	MultAdd.JetFields.shift_is_corner	SAME	high	same
+MultAdd.JetFields.minor_is_divergence	MultAdd.JetFields.minor_is_divergence	SAME	high	same
+MultAdd.JetFields.sumTo_sub	Finset.sum_sub_distrib	MATHLIB	high	∑ (f - g) = ∑ f - ∑ g
+MultAdd.JetFields.sumTo_telescope	Finset.sum_range_sub	MATHLIB	high	∑ i in range n, (G (i+1) - G i) = G n - G 0
+MultAdd.JetFields.sumTo_congr	Finset.sum_congr	MATHLIB	high	more general (membership-restricted congruence)
+MultAdd.JetFields.box_minor_zero	MultAdd.JetFields.box_minor_zero	SAME	high	sumTo -> ∑ over range n; same four periodicity hyps. route: same telescoping plan, using mathlib sum lemmas

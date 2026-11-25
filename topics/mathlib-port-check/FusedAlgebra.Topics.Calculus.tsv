@@ -1,0 +1,37 @@
+original	new_name	verdict	confidence	reason
+MultAdd.Calculus.mint (def)	MultAdd.Calculus.mint	SAME	high	def: recursion mint(n+1)=mint n ✳ d n -> (∏ k in range n, equiv (d k)).val in PreQuasiregular; mint_zero/mint_succ give the same recursion
+MultAdd.Calculus.liftProd (def)	Finset.prod	MATHLIB	high	def: liftProd d n = ∏ k in range n, (1 + d k)
+MultAdd.Calculus.mint_lift	MultAdd.Calculus.one_add_mint	SAME	high	renamed; liftProd written as the Finset product. route: map_prod of oneAddHom instead of induction
+MultAdd.Calculus.ftc_step	MultAdd.Calculus.mint_succ	SAME	high	renamed; was rfl, now a lemma
+MultAdd.Calculus.ftc	MultAdd.Calculus.ftc	SAME	high	same hypothesis and conclusion
+MultAdd.Calculus.ftc_box	MultAdd.Calculus.ftc_box	SAME	high	liftProd -> ∏ k in range n, (1 + d k)
+MultAdd.Calculus.mint_const	MultAdd.Calculus.mint_const	SAME	high	same
+MultAdd.Calculus.mint_add	MultAdd.Calculus.mint_add	SAME	high	same (d (a + j) shift kept)
+MultAdd.Calculus.product_rule_step	MultAdd.Calculus.product_rule_step	SAME	high	(f k ✳ g k) ✳ (d k ✳ e k) written left-assoc; same
+MultAdd.Calculus.mint_multAdd	MultAdd.Calculus.mint_multAdd	SAME	high	same
+MultAdd.Calculus.mpow_mul	MultAdd.mpow_mul	DROPPED-OK	high	Basic's mpow_mul: mpow a (m*n) = mpow (mpow a m) n, same statement on a more general type. route: monoid pow_mul instead of user's induction
+MultAdd.Calculus.rate_product	MultAdd.Calculus.rate_product	EQUIV	high	hypotheses F'=F*(1+h*p), G'=G*(1+h*q) substituted into the conclusion; original follows by rewriting
+MultAdd.Calculus.rate_product_limit	MultAdd.wAdd_weight_zero	DROPPED-OK	high	wAdd 0 p q = p + q, identical statement in Basic
+MultAdd.Calculus.ts_exp	MultAdd.one_add_mul_wpow	DROPPED-OK	high	1 + h * wpow h p n = (1 + h*p)^n, identical statement in Basic
+MultAdd.Calculus.ts_exp_mul	MultAdd.Calculus.ts_exp_mul	SAME	high	same
+MultAdd.Calculus.diff (def)	fwdDiff	MATHLIB	high	def: diff f k = f (k+1) - f k = Δ_[1] f k (mathlib fwdDiff h f x = f (x + h) - f x); same step 1 and forward direction
+MultAdd.Calculus.step_iff	MultAdd.Calculus.step_iff	SAME	high	diff -> Δ_[1]
+MultAdd.Calculus.leibniz_corner	MultAdd.Calculus.leibniz_corner	SAME	high	diff -> Δ_[1]; same three terms
+MultAdd.Calculus.diff_multAdd	MultAdd.Calculus.fwdDiff_multAdd	SAME	high	renamed; diff -> Δ_[1]
+MultAdd.Calculus.diff_pow	MultAdd.Calculus.fwdDiff_one_add_pow	SAME	high	renamed; diff -> Δ_[1]
+MultAdd.Calculus.sumTo (def)	Finset.sum	MATHLIB	high	def: sumTo g n = ∑ k in range n, g k
+MultAdd.Calculus.ftc_add	MultAdd.Calculus.ftc_add	GENERAL	high	CommRing -> AddCommGroup; sumTo -> Finset sum. route: one line from mathlib Finset.sum_range_sub instead of user's induction
+MultAdd.Calculus.jackson_gap	MultAdd.Calculus.jackson_gap	SAME	high	same
+MultAdd.Calculus.mslope (def)	MultAdd.Calculus.mslope	SAME	high	def unchanged
+MultAdd.Calculus.mslope_step	MultAdd.Calculus.mslope_step	SAME	high	same
+MultAdd.Calculus.ftc_mslope	MultAdd.Calculus.ftc_mslope	SAME	high	same
+MultAdd.Calculus.ts_inverse	MultAdd.Calculus.ts_inverse	SAME	high	same
+MultAdd.Calculus.dif (def)	fwdDiff iterate	MATHLIB	high	def: dif (k+1) f = fun j => dif k f (j+1) - dif k f j = Δ_[1] (Δ_[1]^[k] f) = (Δ_[1])^[k+1] f (iterate_succ'); same
+MultAdd.Calculus.dif_shift	fwdDiff_iter_comp_add	MATHLIB	medium	mathlib's Δ_[h]^[n] (fun x => f (x + m)) y = Δ_[h]^[n] f (y + m) states it with m=1 (and more general); not used by name in the port
+MultAdd.Calculus.dif_one	Function.iterate_succ_apply'	DROPPED-OK	medium	no port statement; Δ^[k] f 1 = Δ^[k] f 0 + Δ^[k+1] f 0 follows from iterate_succ_apply' plus unfolding fwdDiff; only the hand proof of newton used it
+MultAdd.Calculus.isum (def)	Finset.sum	MATHLIB	high	def: isum g n = ∑ k in range n, g k
+MultAdd.Calculus.isum_add	Finset.sum_add_distrib	MATHLIB	high	sum_add_distrib states ∑ (f+g) = ∑ f + ∑ g; covers it
+MultAdd.Calculus.isum_congr	Finset.sum_congr	MATHLIB	high	sum_congr (s1 = s2) (∀ x ∈ s2, f x = g x) is more general; covers it
+MultAdd.Calculus.pascal_sum	MultAdd.Calculus.pascal_sum	GENERAL	high	ℤ -> any Ring; layer -> Nat.choose; isum (m+1)/isum m -> range (m+1)/range m; same three sums
+MultAdd.Calculus.newton	MultAdd.Calculus.newton	GENERAL	high	ℤ -> any Ring; layer -> choose; dif k f 0 -> (Δ_[1])^[k] f 0; range (n+1). route: user's hand proof (dif_shift, dif_one, pascal_sum) replaced by mathlib shift_eq_sum_fwdDiff_iter
+MultAdd.Calculus.cubes_example	MultAdd.Calculus.cubes_example	SAME	high	same numbers: 3rd difference of j^3 at 0 is 6, 4th is 0, over ℤ; route: decide -> simp

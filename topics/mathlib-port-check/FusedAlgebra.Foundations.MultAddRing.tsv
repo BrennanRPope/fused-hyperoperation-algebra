@@ -1,0 +1,61 @@
+original	new_name	verdict	confidence	reason
+MAFound.MAField.add_wall_ne	MAFound.MAField.add_wall_ne	SAME	high	identical
+MAFound.MAField.inv_inv'	inv_inv	MATHLIB	high	inv of the Field instance is MAField.inv; inv_inv holds in any DivisionRing. route: own proof was only a step toward Lean.Grind zpow laws
+MAFound.MAField.inv_ne_zero	inv_ne_zero	MATHLIB	high	a ≠ 0 → a⁻¹ ≠ 0 in a GroupWithZero; a⁻¹ is MAField.inv a
+MAFound.MAField.inv_one'	inv_one	MATHLIB	high	inv 1 = 1 from the Field instance
+MAFound.MAField.inv_zero'	MAFound.MAField.inv_zero	SAME	high	renamed; identical
+MAFound.MAField.mul_inv	MAFound.MAField.mul_inv	SAME	high	identical (a * inv a = 1 for a ≠ 0); same construction from way_back
+MAFound.MAField.way_back	MAFound.MAField.way_back	SAME	high	class axiom F2, zero now 0 of the group
+MAFound.MAField.way_back_formula	MAFound.MAField.way_back_formula	EQUIV	high	multAddInv u = -u / (1+u) = -u * (1+u)⁻¹ = -u * inv (1+u); same hypothesis. route: now via Basic.multAdd_multAddInv (field_simp) instead of mul_inv
+MAFound.MAField.zero_ne_one'	MAFound.MAField.zero_ne_one	SAME	high	renamed, protected; identical
+MAFound.MAField.zero_ne_wall	MAFound.MAField.zero_ne_wall	SAME	high	class axiom F1
+MAFound.MARing.add_assoc	add_assoc	MATHLIB	high	axiom A1, now an AddCommGroup field
+MAFound.MARing.add_comm	add_comm	MATHLIB	high	axiom A2, AddCommGroup field
+MAFound.MARing.add_zero	add_zero	MATHLIB	high	axiom A3, AddCommGroup field
+MAFound.MARing.neg_add	neg_add_cancel	MATHLIB	high	axiom A4: -a + a = 0
+MAFound.MARing.add_left_cancel	add_left_cancel	MATHLIB	high	AddCommGroup is cancellative
+MAFound.MARing.add_left_comm	add_left_comm	MATHLIB	high	identical
+MAFound.MARing.add_neg	add_neg_cancel	MATHLIB	high	a + -a = 0
+MAFound.MARing.add_right_cancel	add_right_cancel	MATHLIB	high	AddCommGroup is cancellative
+MAFound.MARing.neg_neg	neg_neg	MATHLIB	high	identical
+MAFound.MARing.neg_unique	eq_neg_of_add_eq_zero_right	MATHLIB	high	a + b = 0 → b = -a
+MAFound.MARing.neg_zero	neg_zero	MATHLIB	high	identical
+MAFound.MARing.neg_add_distrib	neg_add	MATHLIB	high	-(a + b) = -a + -b in a commutative group
+MAFound.MARing.zero_add	zero_add	MATHLIB	high	identical
+MAFound.MARing.instAssociativeAdd	AddCommGroup instance	DROPPED-OK	high	instance only served ac_rfl; proofs now use abel
+MAFound.MARing.instCommutativeAdd	AddCommGroup instance	DROPPED-OK	high	instance only served ac_rfl
+MAFound.MARing.add_mul	MAFound.MARing.add_mul	SAME	high	identical, protected
+MAFound.MARing.intCast_neg'	Int.cast_neg	MATHLIB	high	((-i : ℤ) : R) = -(i : R); default Int.cast agrees with the original intCast
+MAFound.MARing.madd_add	MAFound.MARing.madd_add	EQUIV	high	axiom M4: (madd a b + madd a c) + -a now written madd a b + madd a c - a; equal by sub_eq_add_neg
+MAFound.MARing.madd_assoc	MAFound.MARing.madd_assoc	SAME	high	axiom M2
+MAFound.MARing.madd_comm	MAFound.MARing.madd_comm	SAME	high	axiom M1
+MAFound.MARing.madd_wall	MAFound.MARing.madd_wall	SAME	high	axiom M3
+MAFound.MARing.madd_eq	MAFound.MARing.madd_eq	SAME	high	madd a b = a + b + a*b
+MAFound.MARing.madd_zero	MAFound.MARing.madd_zero	SAME	high	identical; still derived from M4 alone. route: abel/left_eq_add instead of hand cancellation
+MAFound.MARing.mul_add	MAFound.MARing.mul_add	SAME	high	identical, from M4
+MAFound.MARing.mul_assoc	MAFound.MARing.mul_assoc	SAME	high	identical, still from M2 and M4. route: abel replaces the ac_rfl rearrangement
+MAFound.MARing.mul_comm	MAFound.MARing.mul_comm	SAME	high	identical
+MAFound.MARing.mul_neg	MAFound.MARing.mul_neg	SAME	high	identical
+MAFound.MARing.mul_one	MAFound.MARing.mul_one	SAME	high	identical, 1 = -wall
+MAFound.MARing.mul_wall	MAFound.MARing.mul_wall	SAME	high	identical
+MAFound.MARing.mul_zero	MAFound.MARing.mul_zero	SAME	high	identical
+MAFound.MARing.multAdd_eq	MAFound.MARing.multAdd_eq	SAME	high	a ✳ b = madd a b, ✳ being a + b + a*b of the derived ring
+MAFound.MARing.natCast_succ	Nat.cast_succ	MATHLIB	high	default Nat.unaryCast gives the same values as the original natCast (0, -wall, +1 each step)
+MAFound.MARing.one_eq	MAFound.MARing.one_eq_neg_wall	SAME	high	renamed; (1:R) = -wall
+MAFound.MARing.wall_eq	MAFound.MARing.wall_eq_neg_one	SAME	high	renamed; wall = -1
+MAFound.MARing.wall_unique	MAFound.MARing.wall_unique	SAME	high	identical
+MAFound.MARing.zero_eq	(rfl)	DROPPED-OK	high	zero is now literally 0 of the group, nothing to state
+MAFound.MARing.zero_madd	MAFound.MARing.zero_madd	SAME	high	identical
+MAFound.MARing.zero_mul	MAFound.MARing.zero_mul	SAME	high	identical
+MAFound.roundtrip_madd	MAFound.roundtrip_madd	SAME	high	identical; strengthened by ofCommRing_instCommRing (whole structure)
+MAFound.roundtrip_mul	MAFound.roundtrip_mul	SAME	high	(ofCommRing R).instMul.mul a b = a*b is the original @MARing.mul R (ofCommRing R) a b = a*b; strengthened by instCommRing_ofCommRing
+MAFound.roundtrip_wall	MAFound.roundtrip_wall	SAME	high	identical
+def MARing	MAFound.MARing	EQUIV	high	extends AddCommGroup instead of raw zero/add/neg + A1-A4; extra data sub/nsmul/zsmul are forced by their laws, so the structures correspond one to one
+def mul / one	instMul / instOne	EQUIV	high	madd a b - a - b (= (madd a b + -a) + -b) and -wall
+def natCast / intCast / npow	Nat.cast / Int.cast / Monoid.npow defaults	MATHLIB	high	same values as the original recursions
+def ofCommRing	MAFound.ofCommRing	EQUIV	high	from mathlib CommRing (was Lean.Grind.CommRing); madd = ✳, wall = -1
+def MAField	MAFound.MAField	SAME	high	same two axioms F1, F2
+def inv	MAFound.MAField.inv	SAME	high	same choice construction
+def zpow	DivInvMonoid.zpow (zpowRec)	MATHLIB	high	same: a^n for ofNat, (a^(n+1))⁻¹ for negSucc
+def instCommRing	MAFound.MARing.instCommRing	GENERAL	high	mathlib CommRing (was Lean.Grind.CommRing) with the same + , * and 1; plus equivCommRing : MARing R ≃ CommRing R
+def instField	MAFound.MAField.instField	GENERAL	high	mathlib Field (was Lean.Grind.Field), inv = MAField.inv

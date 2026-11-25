@@ -1,0 +1,74 @@
+original	new_name	verdict	confidence	reason
+sq_nonneg'	mul_self_nonneg	MATHLIB	high	0 ≤ s*s
+outer (def)	ThermoFused.outer	EQUIV	high	recursion → xs.flatMap (fun x ↦ ys.map (x * ·)); outer_nil/outer_cons recover the equations by rfl; same list, same order
+sumL_map_mul	List.sum_map_mul_left	MATHLIB	high	(L.map (b * f ·)).sum = b * (L.map f).sum with f = id; port proves it inline in sum_outer
+outer_sum	ThermoFused.sum_outer	GENERAL	high	ℚ → NonUnitalNonAssocSemiring; sumL = List.sum
+partition_square	ThermoFused.partition_square	GENERAL	high	ℚ → comm ring
+partition_multiplies	ThermoFused.partition_multiplies	GENERAL	high	ℚ → comm ring
+partition_excess	ThermoFused.partition_excess	GENERAL	high	ℚ → comm ring
+free_energy_adds	ThermoFused.free_energy_adds	GENERAL	high	ℚ → comm ring; G : Type → Type*; hypothesis form kept
+third_law_identity	ThermoFused.third_law_identity	GENERAL	high	ℚ → comm ring
+residual_degeneracy	ThermoFused.residual_degeneracy	GENERAL	high	ℚ → comm ring
+pauling_ice	ThermoFused.pauling_ice	GENERAL	high	ℚ → field with CharZero (automatic for ℚ; statement false in char 2)
+landauer_states	ThermoFused.landauer_states	GENERAL	high	ℚ → comm ring
+cooling_step_pos	ThermoFused.cooling_step_pos	GENERAL	high	ℚ → lin. ord. comm ring
+unattainable	ThermoFused.unattainable	GENERAL	high	foldMA → multAddList (same value: both fold ⊞ from 0); ℚ → lin. ord. ring. route: own induction → one_add_multAddList + mathlib List.prod_pos
+never_the_wall	ThermoFused.never_the_wall	GENERAL	high	same; ℚ → lin. ord. ring
+equipartition	ThermoFused.equipartition	GENERAL	high	ℚ → comm ring; hypothesis s*s = r kept
+fermion_lift	ThermoFused.fermion_lift	GENERAL	high	prodL (map (1+·)) = List.prod; restates Basic one_add_multAddList. route: Basic proves it via monoid hom map_list_prod, not Base's induction
+fermion_cube	ThermoFused.fermion_cube	GENERAL	high	groups l has the exact recursion of List.sublists' (sublists'_cons), so the lists coincide; prodL = List.prod; sumL = List.sum
+boson_mode	ThermoFused.boson_mode	GENERAL	high	ℚ → field; hyp 1 - z ≠ 0 ⇔ 1 + -z ≠ 0 (sub_eq_add_neg)
+boson_fermion_dual	ThermoFused.boson_fermion_dual	GENERAL	high	ℚ → field; same hyp rewrite
+fermi_velocity_num	ThermoFused.fermi_velocity_num	GENERAL	high	ℚ → comm ring
+fermi_velocity_den	ThermoFused.fermi_velocity_den	GENERAL	high	ℚ → comm ring
+vel (def)	ThermoFused.vel	GENERAL	high	(u+v)/(1+uv); ℚ → field
+vel_wall_pos	ThermoFused.vel_wall_pos	GENERAL	high	ℚ → field
+vel_wall_neg	ThermoFused.vel_wall_neg	GENERAL	high	ℚ → field
+vel_identity	ThermoFused.vel_identity	GENERAL	high	ℚ → field; @[simp]
+engine_cascade	ThermoFused.engine_cascade	GENERAL	high	ℚ → comm ring
+carnot_series	ThermoFused.carnot_series	GENERAL	high	ℚ → field and hyp h ≠ 0 removed; checked: at h = 0 both sides are 1 (x/0 = 0), so the stronger claim is true
+perfect_stage	ThermoFused.perfect_stage	GENERAL	high	ℚ → comm ring
+fridge_cascade	ThermoFused.fridge_cascade	GENERAL	high	ℚ → comm ring
+reverse_is_inverse	ThermoFused.reverse_is_inverse	GENERAL	high	ℚ → field, hyp 1 - eta ≠ 0 removed; checked: multAddInv(-eta) = eta/(1 + -eta) is the same expression unconditionally
+fridge_lift	ThermoFused.fridge_lift	GENERAL	high	ℚ → field
+carnot_fridge	ThermoFused.carnot_fridge	GENERAL	high	ℚ → field
+curzon_ahlborn_half	ThermoFused.curzon_ahlborn_half	GENERAL	high	ℚ → comm ring
+ratio_series	ThermoFused.ratio_series	GENERAL	high	ℚ → comm ring
+second_law_composes	ThermoFused.second_law_composes	GENERAL	high	ℚ → lin. ord. comm ring; same hyps
+map_mul_map	ThermoFused.map_outer	DROPPED-OK	high	helper; its content is done by simp (map_map, map_mul) inside map_outer, not exported
+outer_map	ThermoFused.map_outer	GENERAL	high	f : ℚ→ℚ with ∀u v, f(uv) = f u f v → any MulHomClass map; original follows via the MulHom ⟨f, hf⟩
+power_sum_multiplies	ThermoFused.power_sum_multiplies	GENERAL	high	same generalisation of f; target any comm ring
+tsallis_composes	ThermoFused.tsallis_composes	GENERAL	high	ℚ → comm ring with IsDomain (ℚ is one); same hyps incl. k ≠ 0
+qlog_qsum	ThermoFused.qlog_wAdd	GENERAL	high	renamed; f MulHomClass M → K field; k ≠ 0 kept
+renyi_adds	ThermoFused.renyi_adds	GENERAL	high	ℚ → comm ring; L hypothesis form kept
+decimation_num	ThermoFused.decimation_num	GENERAL	high	ℚ → comm ring
+decimation_den	ThermoFused.decimation_den	GENERAL	high	ℚ → comm ring
+ising_series	ThermoFused.ising_series	GENERAL	high	ℚ → comm ring
+lens (def)	ThermoFused.lens	GENERAL	high	(1-t)/(1+t); ℚ → field
+lens_num	ThermoFused.lens_num	GENERAL	high	ℚ → comm ring
+lens_den	ThermoFused.lens_den	GENERAL	high	ℚ → comm ring
+lens_vel	ThermoFused.lens_vel	GENERAL	high	ℚ → field; same three hyps
+lens_involution	ThermoFused.lens_involution	GENERAL	high	ℚ → field with NeZero 2 (automatic in ℚ)
+lens_fixed_point	ThermoFused.lens_fixed_point	GENERAL	high	ℚ → field
+doppler_is_lens	ThermoFused.doppler_is_lens	GENERAL	high	ℚ → field
+stokes (def)	ThermoFused.stokes	GENERAL	high	same formula; ℚ → field
+stokes_identity	ThermoFused.stokes_identity	GENERAL	high	ℚ → field
+stokes_wall	ThermoFused.stokes_wall	GENERAL	high	ℚ → field
+stokes_num	ThermoFused.stokes_num	GENERAL	high	ℚ → comm ring
+stokes_den	ThermoFused.stokes_den	GENERAL	high	ℚ → comm ring
+stokes_additive	ThermoFused.stokes_additive	GENERAL	high	ℚ → field; same hyps
+stokes_double_wall	ThermoFused.stokes_double_wall	GENERAL	high	ℚ → comm ring
+stokes_on_border	ThermoFused.stokes_on_border	GENERAL	high	(-2)(-2) - 4·1 = 0, same numbers; comm ring
+shields	ThermoFused.shields	GENERAL	high	ℚ → field, hyp 1 - r ≠ 0 removed; checked: at r = 1 both sides are 0 (x/0 = 0)
+bond_infinite_T	ThermoFused.bond_infinite_T	GENERAL	high	ℚ → comm ring
+bond_zero_T	ThermoFused.bond_zero_T	GENERAL	high	ℚ → comm ring
+two_spin_no_real_zero	ThermoFused.two_spin_no_real_zero	GENERAL	high	ℚ → lin. ord. comm ring. route: hand sq_nonneg' argument → nlinarith
+chain3 (def)	ThermoFused.chain3	GENERAL	high	same polynomial
+chain3_multAdd	ThermoFused.chain3_multAdd	GENERAL	high	ℚ → comm ring
+chain3_factor	ThermoFused.chain3_factor	GENERAL	high	ℚ → comm ring
+chain3_ferro_bound	ThermoFused.chain3_ferro_bound	GENERAL	high	ℚ → lin. ord. comm ring; both conjuncts
+chain3_disc	ThermoFused.chain3_disc	GENERAL	high	ℚ → lin. ord. comm ring
+wick_num	ThermoFused.wick_num	GENERAL	high	ℚ → comm ring, hyp i*i = -1 removed; checked: both sides are ia + ib + k i² ab for every i
+wick_den	ThermoFused.wick_den	GENERAL	high	ℚ → comm ring; hyp i*i = -1 kept (needed)
+jarzynski_composes	ThermoFused.jarzynski_composes	GENERAL	high	ℚ → comm ring
+hess	ThermoFused.hess	GENERAL	high	ℚ → comm ring

@@ -1,0 +1,39 @@
+original	new_name	verdict	confidence	reason
+dop	Relativity.dop	GENERAL	high	def: 2u/(1-u), ℚ → any field
+velC	Relativity.velC	GENERAL	high	def: same formula, any field
+kicks	Relativity.kicks	EQUIV	high	def: (vel · u)^[n] 0; kicks_zero/kicks_succ give the original recursion (iterate_succ_apply'); unused by any original theorem
+kN	Relativity.kN	EQUIV	high	def: (boost u ^ n) 0 1; kN_zero = 0, kN_succ = kN + u kD (checked by hand), matches mutual recursion
+kD	Relativity.kD	EQUIV	high	def: (boost u ^ n) 0 0; kD_zero = 1, kD_succ = kD + u kN, matches
+B2	Matrix (Fin 2) (Fin 2) R	MATHLIB	high	def: four rationals = 2×2 matrix
+boost	Relativity.boost	GENERAL	high	def: !![1,u;u,1] over any comm ring
+B2.mul	HMul.hMul	MATHLIB	high	def: same formula (mul_fin_two)
+dop_lift	Relativity.one_add_dop	GENERAL	high	any field
+dop_vel	Relativity.dop_vel	GENERAL	high	any field; same three hypotheses
+dop_back	Relativity.dop_back	GENERAL	high	any field with [NeZero 2]; automatic over ℚ, and needed (false in char 2)
+velC_units	Relativity.velC_units	GENERAL	high	any field; c ≠ 0 dropped; checked true at c = 0 (both sides 0 with x/0 = 0)
+dop_wall	Relativity.dop_wall	GENERAL	high	[NeZero 2], automatic over ℚ
+gap_to_light	Relativity.gap_to_light	GENERAL	high	any field
+under_light	Relativity.under_light	GENERAL	high	any linearly ordered field; same hypotheses
+kicks_plus	Relativity.kD_add_kN	GENERAL	high	any comm ring; kD/kN redefined but same values
+kicks_minus	Relativity.kD_sub_kN	GENERAL	high	any comm ring
+kick_step	Relativity.kick_step	GENERAL	high	any field; hypothesis kD + u kN ≠ 0 dropped; checked true without it (x/0 = 0 on both sides)
+kicks_lift	Relativity.kicks_lift	GENERAL	high	any comm ring
+boost_mul	Relativity.boost_mul	GENERAL	high	matrix product !![1+uv,u+v;u+v,1+uv], same entries; any comm ring
+boost_mul_vel	Relativity.boost_mul_vel	GENERAL	high	any field
+squeeze_plus	Relativity.squeeze_plus	GENERAL	high	any comm ring
+squeeze_minus	Relativity.squeeze_minus	GENERAL	high	any comm ring
+squeeze_ratio	Relativity.squeeze_ratio	GENERAL	high	any field
+hyperbola	Relativity.hyperbola	GENERAL	high	any comm ring
+hyperbola_cone	Relativity.hyperbola_cone	GENERAL	high	any comm ring
+cone_fixed	Relativity.cone_fixed	GENERAL	high	any comm ring
+cone_fixed'	Relativity.cone_fixed_neg	GENERAL	high	any comm ring
+landscape_point	Relativity.landscape_point	GENERAL	high	any field
+landscape_walls	Relativity.landscape_walls	GENERAL	high	c ≠ 0 dropped; at c = 0 both sides are 1, so true
+corner_tax	Relativity.corner_tax	GENERAL	high	any field
+rung_natural_k	Relativity.rung_natural_k	GENERAL	high	any field
+rung_natural_q	Relativity.rung_natural_q	GENERAL	high	[NeZero 2], automatic over ℚ
+rung_parabola	Relativity.rung_parabola	GENERAL	high	[NeZero 2], automatic over ℚ
+rung_walls	Relativity.rung_walls	GENERAL	high	any comm ring
+rung_zero_is_velocity	Relativity.rung_zero_is_velocity	GENERAL	high	any comm ring
+rung_one_is_multadd	Relativity.rung_one_is_multAdd	GENERAL	high	any comm ring
+rung_raw_walls	Relativity.rung_raw_walls	GENERAL	high	[NeZero 2], automatic over ℚ

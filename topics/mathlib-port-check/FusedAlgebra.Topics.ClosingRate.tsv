@@ -1,0 +1,9 @@
+original	new_name	verdict	confidence	reason
+iter	Nat.iterate (s^[n])	MATHLIB	high	Original iter s (n+1) x = iter s n (s x) is exactly Function.iterate's recursion (iterate_succ_apply); iter s 0 x = x matches.
+FusedRate.ladder	FusedRate.ladder	GENERAL	high	Same hypotheses and conclusion with s^[j] for iter s j; α : Type widened to Type*; ∀ j x moved to explicit binders.
+FusedRate.grow	FusedRate.grow	GENERAL	high	ℕ → ordered comm semiring; new hyps 0 ≤ p, 0 ≤ q are automatic on ℕ (Nat.zero_le). Proof is the same calc as the original.
+FusedRate.two_lt	FusedRate.two_lt	SAME	high	Same numbers 2*1000^700 < 1001^700 (defaults to ℕ). route: decide (kernel) → norm_num.
+FusedRate.e_pow_lt	FusedRate.e_pow_lt	SAME	high	Same numbers 27182819^69 < 2^100*10^483. route: decide → norm_num.
+FusedRate.sq_bound	FusedRate.sq_bound	SAME	high	Same numbers 2*70*70 < 100*100. route: decide → norm_num.
+FusedRate.inv_lo	FusedRate.inv_lo	SAME	high	Same numbers 714*14 < 10000. route: decide → norm_num.
+FusedRate.inv_hi	FusedRate.inv_hi	SAME	high	Same numbers 1000000 < 7247*138. route: decide → norm_num.

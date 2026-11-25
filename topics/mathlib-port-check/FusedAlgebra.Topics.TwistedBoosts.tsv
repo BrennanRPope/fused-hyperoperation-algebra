@@ -1,0 +1,59 @@
+original	new_name	verdict	confidence	reason
+C	Complex	MATHLIB	high	def: pairs of ℚ → ℂ (pairs of ℝ); C.mul, conj, smul, nsq checked equal to ℂ's *, conj, real •, normSq
+C.one	1	MATHLIB	high	def
+C.add	HAdd.hAdd	MATHLIB	high	def
+C.mul	HMul.hMul	MATHLIB	high	def: (ac - bd, ad + bc) = complex product
+C.conj	starRingEnd ℂ	MATHLIB	high	def
+C.smul	HSMul.hSMul (real)	MATHLIB	high	def: r•z
+C.nsq	Complex.normSq	MATHLIB	high	def: re^2 + im^2
+dot	TwistedBoosts.dot	GENERAL	high	def: same formula, real-valued
+cross	TwistedBoosts.cross	GENERAL	high	def: same formula
+area2	TwistedBoosts.area2	GENERAL	high	def: same shoelace formula
+M	Matrix (Fin 2) (Fin 2) ℂ	MATHLIB	high	def: four-field structure = 2×2 matrix
+M.mul	HMul.hMul	MATHLIB	high	def: same formula
+boost	TwistedBoosts.boost	GENERAL	high	def: ⟨1,u,(-q)•conj u,1⟩ = !![1,u;-q*conj u,1]
+tX	TwistedBoosts.tX	GENERAL	high	def: 1 - q dot
+tY	TwistedBoosts.tY	GENERAL	high	def: q cross
+cosT	TwistedBoosts.cosT	GENERAL	high	def: same rational function, real division
+sinT	TwistedBoosts.sinT	GENERAL	high	def: same
+den	TwistedBoosts.den	GENERAL	high	def: ⟨tX, -tY⟩
+oplus	TwistedBoosts.oplus	EQUIV	high	def: now (u+v)/den; oplus_eq_smul proves = original (1/nsq den)•((u+v)*conj den) unconditionally (both 0 when den=0)
+twist	TwistedBoosts.twist	EQUIV	high	def: now conj den / den; twist_eq_smul proves = original division-free formula unconditionally
+shape	TwistedBoosts.shape	GENERAL	high	def: !![α,β;-q*conj β,conj α]
+sdet	TwistedBoosts.sdet	GENERAL	high	def: normSq α + q normSq β
+star_def	MultAdd.multAdd_def	DROPPED-OK	high	a ✳ b = a + b + a*b, general in Basic
+C.ext'	Complex.ext	MATHLIB	high	
+C.ext'_iff	Complex.ext_iff	MATHLIB	high	
+M.ext'	Matrix.ext	MATHLIB	high	entrywise ext; four entries via Fin 2
+M.ext'_iff	Matrix.ext_iff	MATHLIB	high	
+corner_split	TwistedBoosts.corner_split	GENERAL	medium	conj u * v = ⟨dot, cross⟩ (checked by hand). ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+corner_swap	TwistedBoosts.corner_swap	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+cross_anti	TwistedBoosts.cross_anti	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+dot_symm	TwistedBoosts.dot_comm	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+cross_is_area	TwistedBoosts.cross_is_area	GENERAL	medium	area2 0 u v with 0 = ⟨0,0⟩. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+cross_collinear	TwistedBoosts.cross_collinear	GENERAL	medium	a, c real, ↑a = ⟨a,0⟩. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+boost_real	TwistedBoosts.boost_real	GENERAL	medium	-(-1)*conj ↑u = ↑u. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+boost_mul	TwistedBoosts.boost_mul	GENERAL	medium	entries checked by hand: 1 - q u conj v = X + iY etc. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+entry_tl	TwistedBoosts.entry_tl	GENERAL	medium	1 + (-q)•z written 1 - q*z. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+entry_br	TwistedBoosts.entry_br	GENERAL	medium	as entry_tl. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+diag_conj	TwistedBoosts.diag_conj	GENERAL	medium	fields .a/.d → entries 0 0 / 1 1. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+boost_mul_real	TwistedBoosts.boost_mul_real	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+twist_trivial_iff	TwistedBoosts.twist_trivial_iff	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+collinear_no_twist	TwistedBoosts.collinear_no_twist	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+galilean_no_twist	TwistedBoosts.galilean_no_twist	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+twist_on_circle	TwistedBoosts.twist_on_circle	GENERAL	medium	same hypothesis. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+twist_turns	TwistedBoosts.twist_turns	GENERAL	medium	same hypothesis. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+twist_half_angle	TwistedBoosts.twist_half_angle	GENERAL	medium	hyp X²+Y² ≠ 0 dropped; follows from X ≠ 0 in an ordered field (also over ℚ). ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+den_swap	TwistedBoosts.den_swap	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+twist_eq	TwistedBoosts.twist_eq	GENERAL	medium	twist redefined but equal (twist_eq_smul). ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+order_swap	TwistedBoosts.order_swap	GENERAL	medium	oplus/twist redefined but equal. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+boost_shape	TwistedBoosts.boost_shape	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+shape_mul	TwistedBoosts.shape_mul	GENERAL	medium	product entries checked by hand. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+sdet_mul	TwistedBoosts.sdet_mul	GENERAL	medium	route: original expanded by grind; port derives it from Matrix.det_mul via det_shape. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+boost_det	TwistedBoosts.boost_det	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+light_wall_2d	TwistedBoosts.light_wall_2d	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+under_light_2d	TwistedBoosts.under_light_2d	GENERAL	medium	inequality transfers via order-preserving Rat cast. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+sphere_no_wall	TwistedBoosts.sphere_no_wall	GENERAL	medium	route: hand case split → Complex.normSq_nonneg. ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)
+half_kick	TwistedBoosts.half_kick	GENERAL	high	ℚ → any field
+half_kick_ruler	TwistedBoosts.half_kick_ruler	GENERAL	high	ℚ → any field; still dop_vel t t
+twist_from_corner	TwistedBoosts.twist_from_corner	GENERAL	medium	ℚ-pairs → ℂ, q : ℚ → ℝ; ops agree (C.mul = complex mult etc.), original is the rational-coordinate case via Rat cast (no bridge lemma in port)

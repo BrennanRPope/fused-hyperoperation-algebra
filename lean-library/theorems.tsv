@@ -801,6 +801,24 @@ FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.var_from_fact2	propext
 FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.var_superpose	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.wall_absorbs	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.wall_mode_fills	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.bose_exponents	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.cyclotomic_z2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.cyclotomic_z3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.exponent_ruler	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.fall_full	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.fall_vanish	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.fct_succ	
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.fermi_exponents	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.kRise_bose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.kRise_fermi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.kRise_parafermi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.kRise_poisson	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.kRise_succ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.necklace_whole	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.odds_complement	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.odds_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.units_change_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialSurvey	MultAdd.DialSurvey.weight_to_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.boost_walls	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.cayley_weighted	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialSweep	DialSweep.det_charpoly2	propext, Classical.choice, Quot.sound

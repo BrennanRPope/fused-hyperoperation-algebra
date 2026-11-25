@@ -1,0 +1,19 @@
+original	new_name	verdict	confidence	reason
+QPartitions.pentagonal_30	QPartitions.pentagonal_30	SAME	high	eulerProd 30 = (range 30).map pentCoeff; truncation 30 same; pentCoeff same function (negOnePow -> (-1)^k, Bool tests -> decidable Props, same ℕ subtraction).
+QPartitions.eulerProd_30_explicit	QPartitions.eulerProd_30_explicit	SAME	high	All 30 coefficients compared: identical.
+QPartitions.euler_is_multAdd_30	QPartitions.euler_is_multAdd_30	SAME	high	trim (padd [1] (eulerMA 30)) = trim (eulerProd 30), identical; tma/eulerMA bodies identical.
+QPartitions.partitions_to_50	QPartitions.partitions_to_50	SAME	high	partGen 51 = partList; all 51 partition numbers compared, identical.
+QPartitions.euler_inverse_30	QPartitions.euler_inverse_30	SAME	high	tmul 30 (eulerProd 30) (partGen 30) = one 30, identical.
+QPartitions.ramanujan_5	QPartitions.ramanujan_5	SAME	high	∀ n : Fin 10, partList.getD (5n+4) 0 % 5 = 0; identical.
+QPartitions.ramanujan_7	QPartitions.ramanujan_7	SAME	high	∀ n : Fin 7, getD (7n+5) % 7 = 0; identical.
+QPartitions.ramanujan_11	QPartitions.ramanujan_11	SAME	high	∀ n : Fin 5, getD (11n+6) % 11 = 0; identical.
+QPartitions.no_ramanujan_13	QPartitions.no_ramanujan_13	SAME	high	∀ r : Fin 13, ∃ n : Fin 3, ... % 13 ≠ 0; identical.
+QPartitions.triple_product_30	QPartitions.triple_product_30	SAME	high	tripleProd 30 = theta 30; tripleProd identical; theta uses IsSquare (∃ r, i = r*r) instead of isSq (∃ j ≤ i, j*j = i): same on ℕ.
+QPartitions.jacobi_four_squares_30	QPartitions.jacobi_four_squares_30	SAME	high	θ^4 mod q^30 = (range 30).map r4, identical; sigmaStar as Finset sum over divisors with ¬4∣d equals the list version for every n (both 0 at n=0).
+QPartitions.four_squares_primes	QPartitions.four_squares_primes	SAME	high	Same ten primes and values (24,32,48,64,96,112,144,160,192,240). New general r4_prime added alongside.
+QPartitions.lagrange_below_30	QPartitions.lagrange_below_30	SAME	high	Identical statement. route: decide +kernel replaced by a corollary of the new general r4_pos.
+def pentCoeff	QPartitions.pentCoeff	SAME	high	Same loop; negOnePow k -> (-1)^k (same values), == / && -> = / ∧ (decide).
+def isSq / theta	IsSquare / QPartitions.theta	SAME	high	isSq i ↔ IsSquare i on ℕ; theta otherwise identical.
+def sigmaStar	QPartitions.sigmaStar	SAME	high	List filter over [1..n] with n%d=0, 4∤d vs ∑ d ∈ n.divisors with ¬4∣d: same for all n (n=0: both empty sum).
+def r4	QPartitions.r4	SAME	high	Identical (== -> =).
+def one/tmul/oneMinus/onePlus/divAux/divOneMinus/eulerProd/tma/eulerMA/partGen/partList/tripleProd	same names	SAME	high	Bodies identical, read line by line.

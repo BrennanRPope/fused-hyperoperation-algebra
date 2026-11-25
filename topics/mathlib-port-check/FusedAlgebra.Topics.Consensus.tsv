@@ -1,0 +1,30 @@
+original	new_name	verdict	confidence	reason
+ConsensusFused.either	ConsensusFused.either	GENERAL	high	ℚ → CommRing; term wAdd_neg_one (orig term wAdd_either)
+ConsensusFused.mpow_lift	MultAdd.one_add_mul_wpow	DROPPED-OK	high	1 + k*wpow k a n = (1+k*a)^n in Basic for any CommSemiring; orig had pw, which is ^. route: his local induction proof dropped
+ConsensusFused.mpow_lift1	MultAdd.one_add_mpow + MultAdd.wpow_one	DROPPED-OK	high	wpow 1 a n = mpow a n and 1 + mpow a n = (1+a)^n compose to the statement
+ConsensusFused.step_formula	ConsensusFused.step_formula	GENERAL	high	ℚ → Field; same hypothesis q ≠ 1
+ConsensusFused.half_is_identity	ConsensusFused.half_is_identity	GENERAL	high	ℚ → Field with NeZero 2 (needed, automatic in ℚ)
+ConsensusFused.depth_useless	ConsensusFused.depth_useless	GENERAL	high	strengthened: wpow k 0 n = 0 for every weight k (orig k = 1), any CommSemiring
+ConsensusFused.quarter_six	ConsensusFused.quarter_six	SAME	high	ℚ, same numbers (-2/3, 6, 1/729). route: via wpow_one, one_add_mpow, norm_num
+ConsensusFused.bft_safe	ConsensusFused.bft_safe	SAME	high	ℕ, same truncated subtraction
+ConsensusFused.bft_unsafe	ConsensusFused.bft_unsafe	SAME	high	ℕ
+ConsensusFused.three_quorums	ConsensusFused.three_quorums	SAME	high	ℕ
+ConsensusFused.one_quorum	ConsensusFused.one_quorum	SAME	high	ℕ
+ConsensusFused.layers_sum	ConsensusFused.layers_sum	GENERAL	high	ℚ → any CommRing
+ConsensusFused.maj3_closed	ConsensusFused.maj3_closed	GENERAL	high	ℚ → any CommRing
+ConsensusFused.maj3_half	ConsensusFused.maj3_half	GENERAL	high	ℚ → Field with NeZero 2 (automatic in ℚ)
+ConsensusFused.maj3_mirror	ConsensusFused.maj3_mirror	GENERAL	high	ℚ → any CommRing
+ConsensusFused.maj3_drift	ConsensusFused.maj3_drift	GENERAL	high	ℚ → any CommRing
+ConsensusFused.maj3_shrinks	ConsensusFused.maj3_shrinks	GENERAL	high	ℚ → linearly ordered field; same hypotheses 0<p<1/2
+ConsensusFused.sybil_corner	ConsensusFused.sybil_corner	GENERAL	high	ℚ → any CommRing
+ConsensusFused.sybil_gain	ConsensusFused.sybil_gain	GENERAL	high	ℚ → ordered comm ring; same nonneg hypotheses
+ConsensusFused.additive_split	ConsensusFused.additive_split	GENERAL	high	f : ℚ → ℚ → f : R → S (NonAssocSemiring to NonAssocRing), n moved before colon. route: map_nsmul instead of his induction
+ConsensusFused.coin_age_flip	ConsensusFused.coin_age_flip	SAME	high	ℚ, same numbers
+ConsensusFused.fused_age_flip	ConsensusFused.fused_age_flip	SAME	high	ℚ, pw → ^, same numbers (exponents 1+1, 1+10)
+ConsensusFused.linear_keeps	ConsensusFused.linear_keeps	SAME	high	ℚ
+ConsensusFused.caught	ConsensusFused.caught	GENERAL	high	ℚ → CommRing; term wpow_neg_one (Base) instead of local proof
+ConsensusFused.dbl_lift	ConsensusFused.one_add_dbl	GENERAL	high	renamed; ℚ → Semiring; pw (1+a) (2^n) as (1+a)^2^n = (1+a)^(2^n)
+ConsensusFused.pietrzak_halves	ConsensusFused.pietrzak_halves	GENERAL	high	ℚ → Monoid; pw → ^. route: pow_mul/pow_add instead of his pw_mul
+ConsensusFused.merge_cut	ConsensusFused.merge_cut	SAME	high	ℚ, same numbers
+def maj3	ConsensusFused.maj3	EQUIV	high	p^3 + 3p^2(1-p), CommRing
+def dbl	ConsensusFused.dbl	EQUIV	high	(fun x ↦ x ✳ x)^[n] a; dbl_succ via iterate_succ_apply' gives dbl n a ✳ dbl n a, the orig recursion

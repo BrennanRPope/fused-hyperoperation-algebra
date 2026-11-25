@@ -1,0 +1,11 @@
+original	new_name	verdict	confidence	reason
+small_of_mul	Int.natAbs_le_of_dvd_ne_zero	DROPPED-OK	high	helper: a*b=c, c≠0 ⇒ |a| ≤ |c|; mathlib: s ∣ t → t ≠ 0 → natAbs s ≤ natAbs t, same content
+beraha5_not_int	LeeYangCluster.beraha5_not_int	SAME	high	k*k → k^2. route: own small_of_mul → mathlib lemma + interval_cases
+beraha7_not_int	LeeYangCluster.beraha7_not_int	SAME	high	k^3 - 2k^2 - k + 1 kept
+beraha8_not_int	LeeYangCluster.beraha8_not_int	SAME	high	
+beraha9_not_int	LeeYangCluster.beraha9_not_int	SAME	high	k^3 - 3k^2 + 3 kept
+beraha10_not_int	LeeYangCluster.beraha10_not_int	SAME	high	
+beraha12_not_int	LeeYangCluster.beraha12_not_int	SAME	high	
+wAdd_units	LeeYangCluster.wAdd_units	GENERAL	high	comm ring → comm semiring
+leverage_is_compounding	LeeYangCluster.leverage_is_compounding	GENERAL	high	wAdd 1 (2a)(2b) written (2a)✳(2b) (equal by wAdd_one); comm semiring
+units_bend	LeeYangCluster.units_bend	SAME	high	lam*lam → l^2

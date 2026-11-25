@@ -1,0 +1,12 @@
+original	new_name	verdict	confidence	reason
+ChemConservation.mass2 (def)	ChemConservation.mass2	SAME	high	def: m1*m1+m2*m2+2*m1*m2*c over ℚ -> m1^2+m2^2+2*m1*m2*c over CommRing; same polynomial
+ChemConservation.lavoisier	ChemConservation.lavoisier	GENERAL	high	ℚ -> CommRing; x*x written x^2
+ChemConservation.deficit	ChemConservation.deficit	GENERAL	high	ℚ -> CommRing; same identity
+ChemConservation.binding_exact	ChemConservation.binding_exact	GENERAL	high	ℚ -> CommRing; same hypothesis and conclusion
+ChemConservation.bound_lighter	ChemConservation.bound_lighter	GENERAL	high	ℚ -> linearly ordered strict ordered comm ring (ℚ is one); same hyps 0<m1,0<m2,c<1
+ChemConservation.free_heavier	ChemConservation.free_heavier	GENERAL	high	ℚ -> linearly ordered strict ordered comm ring; same hyps
+ChemConservation.cosine_extra	ChemConservation.cosine_extra	GENERAL	high	ℚ -> CommRing; same identity
+ChemConservation.small_angle	ChemConservation.small_angle	GENERAL	high	restated with s for t/2: (m1+m2)^2-mass2 m1 m2 (1-s)=m1*m2*(2*s) over CommRing; original is s=t/2 over ℚ (2*(t/2)=t)
+ChemConservation.fugacity_multAdd	ChemConservation.fugacity_multAdd	SAME	high	pw z n -> z^n; Lean.Grind.CommRing -> mathlib CommRing; same statement
+ChemConservation.neutral_identity	ChemConservation.neutral_identity	SAME	high	pw z 0 - 1 = 0 -> z^0 - 1 = 0
+ChemConservation.circle_closed	ChemConservation.circle_closed	GENERAL	high	ℚ -> CommRing; same hyps/conclusion with squares

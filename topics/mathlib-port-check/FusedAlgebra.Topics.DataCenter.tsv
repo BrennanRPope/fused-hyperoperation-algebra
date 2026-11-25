@@ -1,0 +1,18 @@
+original	new_name	verdict	confidence	reason
+DataCenterFused.foldMA_lift_nat	DataCenterFused.multAddList_add_one	GENERAL	high	ℕ → Semiring; lifts rs = (rs.map (·+1)).prod (same right fold)
+DataCenterFused.lifts_append	List.prod_append (+ List.map_append)	MATHLIB	high	prod (l1++l2) = prod l1 * prod l2 after map_append; exactly the statement
+DataCenterFused.foldMA_swap	DataCenterFused.multAddList_swap	GENERAL	high	ℕ → CommSemiring. route: via multAddList_perm instead of his lifts/omega argument
+DataCenterFused.foldMA_split	DataCenterFused.multAddList_split	GENERAL	high	ℕ → CommSemiring; term multAddList_append
+DataCenterFused.scale_anywhere	DataCenterFused.scale_anywhere	GENERAL	high	lifts xs, lifts ys replaced by arbitrary x, y in a CommSemiring; orig is the instance x = lifts xs, y = lifts ys
+DataCenterFused.pue_corner	DataCenterFused.pue_corner	GENERAL	high	ℕ → CommSemiring
+DataCenterFused.additive_books_corner	DataCenterFused.additive_books_corner	GENERAL	high	ℕ → CommSemiring
+DataCenterFused.loss_costs_one_plus_c	DataCenterFused.loss_costs_one_add	GENERAL	high	renamed; ℕ → CommSemiring
+DataCenterFused.unit_gap	DataCenterFused.unit_gap	GENERAL	high	ℤ → CommRing
+DataCenterFused.add_unit_iff	DataCenterFused.add_unit_iff	GENERAL	high	ℤ → ordered comm ring; same iff. route: sub_pos + unit_gap instead of omega
+DataCenterFused.equal_share	DataCenterFused.equal_share	GENERAL	high	ℤ → CommRing
+DataCenterFused.cube_layers	DataCenterFused.cube_layers	GENERAL	high	ℤ → CommSemiring
+DataCenterFused.spread	DataCenterFused.spread	GENERAL	high	ℕ → CommSemiring
+DataCenterFused.spare_fan	DataCenterFused.spare_fan	GENERAL	high	ℕ → CommSemiring
+DataCenterFused.spare_fan_helps	DataCenterFused.spare_fan_helps	GENERAL	high	ℕ → strictly ordered comm semiring; same hypothesis 0 < N; N implicit
+DataCenterFused.stack	DataCenterFused.stack	GENERAL	high	ℤ → CommRing
+def lifts	(rs.map (· + 1)).prod	MATHLIB	high	lifts (r::rs) = (r+1) * lifts rs, lifts [] = 1: same as List.prod of the map

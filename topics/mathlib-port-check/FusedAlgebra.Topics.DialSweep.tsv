@@ -1,0 +1,35 @@
+original	new_name	verdict	confidence	reason
+charpoly2	Matrix.charpoly (eval)	MATHLIB	high	def: t*t - tr*t + det = charpoly.eval t; DialSweep.eval_charpoly_fin_two proves this form
+charpoly3	Matrix.charpoly (eval)	MATHLIB	high	def: t^3 - tr t^2 + e2 t - det; eval_charpoly_fin_three proves it, port e2 = original e2
+dialU	DialSweep.dialU	SAME	high	def: ⟨0,-q,1,k⟩ = !![0,-q;1,k]
+unitU	DialSweep.unitU	SAME	high	def: !![0,κ;1,0]
+kmadd	DialSweep.kmadd	GENERAL	high	def: x + y + x*K*y, any semiring (was M2 records)
+outer3	Matrix.vecMulVec	MATHLIB	high	def: entries u_i v_j
+scale2	DialSweep.smul_wmadd	GENERAL	high	k•wmadd k x y = (k•x)✳(k•y) for any R-algebra; wmadd and ✳ match M2.wmadd/M2.madd
+scale3	DialSweep.smul_wmadd	GENERAL	high	same theorem covers 3×3
+det_one_sub_2	DialSweep.det_one_add_neg_one_smul	GENERAL	high	det(1 + (-1)•A) = charpoly.eval 1, any n
+det_one_sub_3	DialSweep.det_one_add_neg_one_smul	GENERAL	high	same theorem for n = 3
+det_top	DialSweep.det_top	SAME	high	k*k*k → k^3
+orth_neg_one	DialSweep.transpose_one_sub_mul	GENERAL	high	(1-X)ᵀ(1-X) = 1 - wmadd (-1) Xᵀ X, any n; (-1)•Y written -Y
+dialU_sq	DialSweep.dialU_mul_self	SAME	high	
+dial_product	DialSweep.dial_product	SAME	high	
+dial_det	DialSweep.dial_det	SAME	high	q*a*a → q*a^2
+dial_det_eigen	DialSweep.dial_det_eigen	SAME	high	
+dial_discriminant	DialSweep.dial_discriminant	SAME	high	
+or_line	DialSweep.or_line	SAME	high	
+unitU_sq	DialSweep.unitU_mul_self	SAME	high	
+unit_product	DialSweep.unit_product	SAME	high	
+boost_walls	DialSweep.boost_walls	SAME	high	
+rotation_no_wall	DialSweep.rotation_no_wall	SAME	high	
+shear_is_add	DialSweep.shear_is_add	SAME	high	
+kmadd_lift	DialSweep.one_add_kmadd_mul	GENERAL	high	any semiring instead of 2×2 records
+sylvester2	Matrix.det_one_add_mul_comm	MATHLIB	high	det(1 + A*B) = det(1 + B*A). route: original explicit expansion now cited from mathlib
+sylvester3	Matrix.det_one_add_mul_comm	MATHLIB	high	same; route: original 3×3 grind expansion (2M heartbeats) replaced by mathlib
+rank_one3	DialSweep.det_one_add_vecMulVec	GENERAL	high	det(1 + u vᵀ) = 1 + v⬝u, any n. route: via mathlib det_one_add_replicateCol_mul_replicateRow
+rank_one_dial3	DialSweep.det_one_add_mul_vecMulVec	GENERAL	high	1 + v ⬝ᵥ (A *ᵥ u) matches the explicit triple sum; any n. route: mathlib matrix determinant lemma
+det_charpoly2	DialSweep.det_one_add_smul_eq_charpoly	GENERAL	high	(-k)^card n * charpoly.eval(-1/k); n=2 gives k*k; with eval_charpoly_fin_two recovers charpoly2
+det_charpoly3	DialSweep.det_one_add_smul_eq_charpoly	GENERAL	high	n=3: (-k)^3 = -(k*k*k)
+wall_iff_eigen2	DialSweep.wall_iff_isRoot_charpoly	GENERAL	high	any n; IsRoot (-1/k) = charpoly.eval (-1/k) = 0
+dial_lens	DialSweep.dial_lens	SAME	high	
+cayley_weighted	DialSweep.cayley_weighted	EQUIV	high	M2.inv (adj/det, 0 if singular) → mathlib matrix ⁻¹ (same, Ring.inverse); cayley defined via the same inverse in each, statement identical
+winv	DialSweep.wAdd_neg_div	SAME	high	

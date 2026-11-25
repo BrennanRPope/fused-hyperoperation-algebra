@@ -1,0 +1,16 @@
+original	new_name	verdict	confidence	reason
+QCounting.peval_padd	QCounting.peval_padd	SAME	high	Identical statement. route: original by direct list induction (omega/grind); port goes through toPolynomial and Polynomial.eval (peval_eq_eval).
+QCounting.peval_pzeros	QCounting.peval_pzeros	SAME	high	pw x k -> x ^ k (pw_eq_pow in the original). route: original by induction; port through toPolynomial_pzeros.
+QCounting.gauss_at_one	QCounting.gauss_at_one	EQUIV	high	(Cube.layer n k : ℤ) -> (n.choose k : ℤ); Cube.layer has exactly choose's Pascal recursion. Every n, k in both.
+QCounting.gauss_4_2	QCounting.gauss_4_2	SAME	high	Same list [1,1,2,1,1] and values 6, 35, 1, 2 at q = 1, 2, 0, -1; decide +kernel.
+QCounting.gauss_at_neg_one	QCounting.gauss_at_neg_one	EQUIV	high	Same Fin 9 × Fin 9 range, k ≤ n; Bool test -> Prop; Cube.layer (n/2) (k/2) -> (n/2).choose (k/2), same values.
+QCounting.q_binomial_theorem	QCounting.q_binomial_theorem	SAME	high	∀ n : Fin 7, identical; padd2/mulLin/qbinLHS/qbinRHS bodies identical (k*(k-1)/2 same ℕ subtraction).
+QCounting.uq_sl2_commutator	QCounting.uq_sl2_commutator	SAME	high	Identical ring identity; Lean.Grind.CommRing -> CommRing; grind -> ring.
+QCounting.uq_sl2_weight	mul_assoc	MATHLIB	high	q * q * x = q * (q * x) is exactly mul_assoc q q x. Not restated in the port.
+QCounting.sl2_classical	QCounting.sl2_classical	GENERAL	high	ℤ -> any commutative ring; same identity.
+QCounting.quantum_dim_is_loop	QCounting.quantum_dim_is_loop	SAME	high	A*A -> A^2; same identity.
+QCounting.ising_eigen	QCounting.ising_eigen	SAME	high	pw (1±u) n -> (1±u)^n; ising now (isingStep u)^[n] (1,0), same values (ising_succ). Both conjuncts kept.
+QCounting.ising_trace	QCounting.ising_trace	SAME	high	2 * a = (1+u)^n + (1-u)^n; identical up to pw -> ^.
+QCounting.ising_multAdd	QCounting.ising_multAdd	SAME	high	2 * a = 2 + mpow u n + mpow (-u) n identical. route: original used mpow_lift; port uses mpow_eq (same fact).
+def gauss/peval/padd2/mulLin/qbinLHS/qbinRHS/isingStep	same names	SAME	high	Bodies identical.
+def ising	QCounting.ising	SAME	high	Recursion -> Function.iterate of isingStep from (1,0); same values (ising_zero, ising_succ).

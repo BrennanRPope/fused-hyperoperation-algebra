@@ -1,0 +1,42 @@
+PASS k: k*(a *_k b) = (ka) *_1 (kb)
+PASS k: in units lambda times bigger the weight is k*lambda (only sign(k) survives)
+PASS element dial t is odds: 1-P(in A or B) = (1-p_t)(1-p_s) iff dial t*s
+PASS complement turns odds t into 1/t
+PASS alpha(t*s) = alpha(t)+alpha(s) for t=1/3, s=2/5
+PASS alpha(t*s) = alpha(t)+alpha(s) for t=1, s=1
+PASS alpha(t*s) = alpha(t)+alpha(s) for t=3/7, s=1/9
+PASS f_k coefficients = prod(1+jk)/e!  at k=-1
+PASS f_k coefficients = prod(1+jk)/e!  at k=-1/2
+PASS f_k coefficients = prod(1+jk)/e!  at k=-1/3
+PASS f_k coefficients = prod(1+jk)/e!  at k=1/2
+PASS f_k coefficients = prod(1+jk)/e!  at k=1
+PASS f_k coefficients = prod(1+jk)/e!  at k=2
+PASS k=-1: no element twice (coef 0 from e=2)
+PASS k=+1: multisets (coef 1/e! * e! = 1 as Dirichlet weight)
+PASS k=-1/m: at most m copies (coef 0 beyond e=m), m=2,3,5
+PASS cyclotomic identity to z^8 at k=-1
+PASS cyclotomic identity to z^8 at k=-1/2
+PASS cyclotomic identity to z^8 at k=1/2
+PASS cyclotomic identity to z^8 at k=2
+PASS cyclotomic identity to z^8 at k=3
+PASS M(k,N) whole numbers for integer k (aperiodic necklaces), k=2..5, N<=12
+PASS k=-1: exponents M/k = 1, -1, 0, 0, ... -> zeta(s)/zeta(2s)
+PASS k=+1: exponents 1, 0, 0, ... -> zeta(s)
+PASS Z_k(2): Euler product = prod zeta(2N)^(M/k) at k=-1  [1.51981718 vs 1.51981775]
+PASS Z_k(2): Euler product = prod zeta(2N)^(M/k) at k=-0.5  [1.54389062 vs 1.54389120]
+PASS Z_k(2): Euler product = prod zeta(2N)^(M/k) at k=0.5  [1.60489544 vs 1.60489605]
+PASS Z_k(2): Euler product = prod zeta(2N)^(M/k) at k=1  [1.64493344 vs 1.64493407]
+PASS Z_k(2): Euler product = prod zeta(2N)^(M/k) at k=1.5  [1.69500792 vs 1.69500857]
+PASS Z_-1(2) = 15/pi^2
+PASS C_-1 = 6/pi^2 (squarefree density)  [0.607927]
+PASS C_1 = 1
+PASS C_0 = e^(M - gamma) (Meissel-Mertens minus Euler)  [0.729265 vs 0.729265]
+PASS count of k-weighted integers up to 300000 matches C_k at k=-0.5  [0.65953 vs 0.65952]
+PASS count of k-weighted integers up to 300000 matches C_k at k=0.5  [0.83103 vs 0.83100]
+PASS k=3: factor at p=2 hits its wall at s=log2 k=1.5850 > 1
+PASS k=4: factor at p=2 hits its wall at s=log2 k=2.0000 > 1
+PASS k=6: factor at p=2 hits its wall at s=log2 k=2.5850 > 1
+PASS |k| < 2: every factor finite at s = 1
+PASS twist: none iff q*cross = 0 (200 random rational pairs)
+
+40 of 40 pass

@@ -1,0 +1,20 @@
+original	new_name	verdict	confidence	reason
+EllipticS3.lift_11	EllipticS3.one_add_smul_gen_mul	EQUIV	high	entry (0,0) of (1+aG)(1+bG) = (1-qab)•1 + wAdd k a b•G with G=!![k,1;-q,0]; checked entry equals (1+ka)(1+kb)-qab = D+kN; wAdd k a b = a+b+kab
+EllipticS3.lift_12	EllipticS3.one_add_smul_gen_mul	EQUIV	high	entry (0,1): (1+ka)b+a = N, contained in the matrix identity
+EllipticS3.lift_21	EllipticS3.one_add_smul_gen_mul	EQUIV	high	entry (1,0): -qa(1+kb)-qb = -qN, contained in the matrix identity
+EllipticS3.lift_22	EllipticS3.one_add_smul_gen_mul	EQUIV	high	entry (1,1): -qab+1 = D, contained in the matrix identity
+EllipticS3.cayley_hamilton	EllipticS3.gen_mul_self	EQUIV	high	four entry identities of G^2 = kG - qI become one Matrix identity gen*gen = k•gen - q•1; same G; any CommRing
+EllipticS3.multAdd_is_1x1	MultAdd.one_add_multAdd	DROPPED-OK	high	original was (multAdd_lift a b).symm over ℤ; MultAdd.one_add_multAdd : 1 + (a ✳ b) = (1+a)*(1+b) exists in Basic, same up to symm
+EllipticS3.sq_nonneg_rat	mul_self_nonneg	MATHLIB	high	mathlib mul_self_nonneg : 0 ≤ a*a in a linearly ordered ring, covers ℚ. route: original hand proof by cases on sign dropped
+EllipticS3.turning_no_wall	EllipticS3.turning_no_wall	GENERAL	high	ℚ -> LinearOrder+IsStrictOrderedRing; same hypothesis k^2<4q and conclusion l^2-kl+q≠0. route: nlinarith in place of the explicit completing-the-square identity
+EllipticS3.nonsplit_frob_is_inverse	EllipticS3.nonsplit_frob_is_inverse	GENERAL	high	same hypothesis v*u=1, same conclusion; ℤ -> any CommRing
+EllipticS3.split_frob_fixes	EllipticS3.split_frob_fixes	GENERAL	high	same; ℤ -> any CommRing
+EllipticS3.lefschetz_count	EllipticS3.lefschetz_count	GENERAL	high	same identity; any CommRing
+EllipticS3.quat_det_re	EllipticS3.det_quatMatrix	GENERAL	high	quatMatrix q = [[w+ix, y+iz],[-y+iz, w-ix]] matches the original U; det = normSq (= w^2+x^2+y^2+z^2 by normSq_def'); ℤ coords -> ℝ, ℤ case follows by casting
+EllipticS3.quat_det_im	EllipticS3.det_quatMatrix	GENERAL	high	det equals a real-cast complex number, so imaginary part 0; real/imag split merged into one complex equation
+EllipticS3.quat_discriminant	EllipticS3.quat_discriminant	GENERAL	high	(2w)^2 - 4 normSq = -4(x^2+y^2+z^2); ℤ -> ℝ via ℍ[ℝ] components
+EllipticS3.walks	EllipticS3.walks	SAME	high	definition unchanged
+EllipticS3.dyck	EllipticS3.dyck	SAME	high	definition unchanged
+EllipticS3.circle_moments	EllipticS3.circle_moments	EQUIV	high	∀ n<5, walks (2n) 0 = centralBinom n: centralBinom 1..4 = 2,6,20,70 as original, plus n=0 (1=1)
+EllipticS3.sphere_moments	EllipticS3.sphere_moments	EQUIV	high	∀ n<5, dyck (2n) 0 = catalan n: catalan 1..4 = 1,2,5,14 as original, plus n=0
+EllipticS3.middle_minus_neighbour	EllipticS3.middle_minus_neighbour	SAME	high	20,15,70,56 written as choose 6 3, 6 2, 8 4, 8 3 (values correct)

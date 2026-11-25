@@ -1,0 +1,10 @@
+original	new_name	verdict	confidence	reason
+Fermat4.sq_inj	Nat.pow_left_injective	MATHLIB	high	Nat.pow_left_injective two_ne_zero : Injective (· ^ 2) on ℕ, exactly a^2=b^2 → a=b. route: hand proof dropped
+Fermat4.sq_mod_four	Fermat4.sq_mod_four	SAME	high	same statement over ℕ
+Fermat4.dvd_sq_self	dvd_pow_self	MATHLIB	high	dvd_pow_self n two_ne_zero : n ∣ n^2
+Fermat4.sq_of_coprime_mul	exists_eq_pow_of_mul_eq_pow	MATHLIB	high	GCDMonoid lemma: IsUnit (gcd a b) → a*b = c^k → ∃ d, a = d^k; ℕ has unique units, Coprime gives IsUnit gcd. route: original's factorization-free proof dropped
+Fermat4.pyth_param	Fermat4.pyth_param	SAME	high	same hypotheses and conclusion over ℕ. route: proof now from PythagoreanTriple.coprime_classification' instead of the original's own derivation
+Fermat4.descent_step	not_fermat_42	DROPPED-OK	high	statement has hypotheses x odd (so x≠0), y≠0, x^4+y^4=z^2, contradictory by not_fermat_42, so it holds ex falso. route: Fermat's descent step itself (the user's proof) is gone
+no_x4_y4_z2	no_x4_y4_z2	SAME	high	same statement, root namespace. route: one-line corollary of mathlib not_fermat_42; the original's strong-induction descent is not ported
+fermat4	fermat4	SAME	high	same statement over ℕ (x,y≠0, z arbitrary); derived from no_x4_y4_z2 as in the original
+fourth_power_ne_mpow_four	fourth_power_ne_mpow_four	SAME	high	same statement over ℚ. route: via fermatLastTheoremFor_iff_rat + fermatLastTheoremFour instead of clearing denominators by hand down to fermat4

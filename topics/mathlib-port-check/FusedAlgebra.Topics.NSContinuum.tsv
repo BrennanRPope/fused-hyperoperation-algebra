@@ -1,0 +1,25 @@
+original	new_name	verdict	confidence	reason
+MultAdd.NSContinuum.mpow_one_nat	MultAdd.Cube.mpow_one_add_one	DROPPED-OK	high	Cube.mpow_one_add_one : mpow 1 n + 1 = 2^n with numerals defaulting to ℕ; same statement. route: port proves it via one_add_mpow, original by its own induction
+MultAdd.NSContinuum.box_doubles	MultAdd.NSContinuum.box_doubles	SAME	high	same, on ℕ
+MultAdd.NSContinuum.annulus_cells	MultAdd.NSContinuum.annulus_cells	SAME	high	same, on ℕ with truncated subtraction as in original
+MultAdd.NSContinuum.annulus_graded	MultAdd.NSContinuum.annulus_graded	EQUIV	high	bsum f n = ∑ k<n f k; layer = Nat.choose; factor 1^(k+1) dropped (=1). route: original used hand-made binomial theorem (CubeProofs.binomial); port uses mpow_eq_sum_choose, i.e. mathlib add_pow
+MultAdd.NSContinuum.onRay (def)	MultAdd.NSContinuum.onRay	SAME	high	def: same equation, ℤ -> CommRing; Decidable instance added on ℤ
+MultAdd.NSContinuum.onRay_refl	MultAdd.NSContinuum.onRay_refl	GENERAL	high	ℤ -> CommRing
+MultAdd.NSContinuum.onRay_symm	MultAdd.NSContinuum.onRay_symm	GENERAL	high	ℤ -> CommRing
+MultAdd.NSContinuum.onRay_trans	MultAdd.NSContinuum.onRay_trans	GENERAL	high	ℤ -> CommRing with IsDomain (automatic for ℤ); same hyp n'+2≠0
+MultAdd.NSContinuum.lions_on_2d_ray	MultAdd.NSContinuum.lions_on_2d_ray	SAME	high	onRay (3:ℤ) 25 2 20; same numbers
+MultAdd.NSContinuum.ns3d_on_ray_of_2d_four_fifths	MultAdd.NSContinuum.ns3d_on_ray_of_2d_four_fifths	SAME	high	onRay (3:ℤ) 20 2 16; same numbers
+MultAdd.NSContinuum.ns3d_supercritical	MultAdd.NSContinuum.ns3d_supercritical	SAME	high	¬ onRay (3:ℤ) 20 3 25; same numbers
+MultAdd.NSContinuum.fan_pivot	MultAdd.NSContinuum.fan_pivot	SAME	high	same three equations over ℤ
+MultAdd.NSContinuum.ns3d_on_bmr_line	MultAdd.NSContinuum.ns3d_on_bmr_line	SAME	high	20 = 4*(3+2) over ℤ
+MultAdd.NSContinuum.k41Margin (def)	MultAdd.NSContinuum.k41Margin	SAME	high	def unchanged
+MultAdd.NSContinuum.k41_edge_at_four	MultAdd.NSContinuum.k41_edge_at_four	SAME	high	same
+MultAdd.NSContinuum.k41_3d_positive	MultAdd.NSContinuum.k41_3d_positive	SAME	high	same
+MultAdd.NSContinuum.k41_5d_negative	MultAdd.NSContinuum.k41_5d_negative	SAME	high	same
+MultAdd.NSContinuum.ssum (def)	Finset.sum	MATHLIB	high	def: ssum f m = ∑ j in range m, f j (same recursion order)
+MultAdd.NSContinuum.flux (def)	MultAdd.NSContinuum.flux	SAME	high	def: same, ℤ -> CommRing
+MultAdd.NSContinuum.gain (def)	MultAdd.NSContinuum.gain	SAME	high	def: same recursion, ℤ -> CommRing
+MultAdd.NSContinuum.gain_is_model	MultAdd.NSContinuum.gain_is_model	GENERAL	high	ℤ -> CommRing; same identity
+MultAdd.NSContinuum.energy_telescopes	MultAdd.NSContinuum.energy_telescopes	GENERAL	high	ℤ -> CommRing; ssum (N+1) -> ∑ j in range (N+1); same
+MultAdd.NSContinuum.stretch (def)	Matrix.mulVec	MATHLIB	high	def: G i 0*ω 0+G i 1*ω 1+G i 2*ω 2 = (G *ᵥ ω) i (Fin 3 sum, same index convention G i j)
+MultAdd.NSContinuum.planar_stretching_zero	MultAdd.NSContinuum.planar_stretching_zero	GENERAL	high	pointwise ∀ i -> function equality G *ᵥ Pi.single 2 w = 0 (Pi.single 2 w k = if k=2 then w else 0); ℤ -> CommRing; same hyp G i 2 = 0

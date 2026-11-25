@@ -1,0 +1,20 @@
+original	new_name	verdict	confidence	reason
+twist_rung1	RungShape.twist_rung1	SAME	high	CommRing in both
+twist_dial	RungShape.twist_dial	SAME	high	CommRing in both
+ruled_rung1	RungShape.ruled_rung1	SAME	high	
+ruled_rung1'	RungShape.ruled_rung1'	SAME	high	
+axis_rung1	RungShape.axis_rung1	SAME	high	
+flow_heights_add	RungShape.flow_heights_add	SAME	high	same hypotheses and conclusion. route: linear_combination with explicit coefficients
+flow_zero	RungShape.flow_zero	SAME	high	
+sheet_rung0	add_sub_cancel	MATHLIB	high	mathlib add_sub_cancel : a + (b - a) = b (post-2024 naming), for any AddCommGroup; orig over Field
+sheet_rung1	RungShape.sheet_rung1	SAME	high	Field, same hypothesis 1 + a ≠ 0. route: from msub_multAdd (Base lemma) instead of grind
+sheet_dial	RungShape.sheet_dial	SAME	high	
+sheet_edges	RungShape.sheet_edges	SAME	high	term ⟨multAdd_zero, zero_multAdd⟩
+flow_closed	RungShape.flow_closed	SAME	high	term div_mul_cancel₀
+addPow_eq	smul_eq_mul	MATHLIB	medium	addPow a d (d copies of a added) is d • a on ℕ; smul_eq_mul gives d • a = d * a (nsmul_eq_mul is the more apt name). route: his induction proof is gone; the content is now nsmul's definition
+cube_count	RungShape.cube_count	SAME	high	1 + mpow (1:ℕ) d = 2^d, same
+sheet_iff_line	RungShape.sheet_iff_line	EQUIV	high	∀ u, ψ (φ u) = u written Function.LeftInverse ψ φ (same unfolding); φ ψ implicit; Type → Type*
+sheet_diagonal	RungShape.sheet_diagonal	EQUIV	high	same as sheet_iff_line
+sheet_rung1_lens	RungShape.sheet_rung1_lens	SAME	high	
+def addPow	HSMul.hSMul (nsmul)	MATHLIB	medium	addPow a (n+1) = addPow a n + a matches succ_nsmul; ℕ nsmul is n * a
+def lensOp	RungShape.lensOp	SAME	high	φ (ψ a + ψ b)

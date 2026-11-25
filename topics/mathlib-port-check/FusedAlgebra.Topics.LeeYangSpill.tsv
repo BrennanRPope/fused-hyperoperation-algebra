@@ -1,0 +1,11 @@
+original	new_name	verdict	confidence	reason
+step_disc	LeeYangSpill.step_disc	SAME	high	products as squares
+step_gap	LeeYangSpill.step_gap	SAME	high	
+wall_square	LeeYangSpill.wall_square	SAME	high	
+walls_factor	LeeYangSpill.walls_factor	SAME	high	
+border_orbit	LeeYangSpill.border_orbit	SAME	high	
+sq_nonneg'	mul_self_nonneg	MATHLIB	high	helper 0 ≤ a*a
+slowest_step	LeeYangSpill.slowest_step	GENERAL	high	ℤ → linearly ordered comm ring; ≥ written ≤
+turning_never_stalls	LeeYangSpill.turning_never_stalls	GENERAL	high	ℤ → linearly ordered comm ring; same hypotheses
+tan_square	LeeYangSpill.tan_square	EQUIV	high	original: the four entry sums of !![1,1;-1,1]^2 as ℤ facts; port: the matrix identity whose entries are exactly those sums (0,2,-2,0)
+tan_fourth	LeeYangSpill.tan_fourth	EQUIV	high	original: four entry sums of the square of !![0,2;-2,0]; port: M^4 = (-4)•1; entries -4,0,0,-4 match

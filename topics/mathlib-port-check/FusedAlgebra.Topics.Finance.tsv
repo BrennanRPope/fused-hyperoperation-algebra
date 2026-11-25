@@ -1,0 +1,20 @@
+original	new_name	verdict	confidence	reason
+FinanceMultAdd.fisher	FinanceMultAdd.fisher	GENERAL	high	ℚ → any field; msub is the same (a-b)/(1+b); same hypothesis 1+b ≠ 0.
+FinanceMultAdd.drag	FinanceMultAdd.drag	GENERAL	high	ℚ → any field; identical identity. route: grind → ring.
+gsum	FinanceMultAdd.gsum	EQUIV	high	Recursive gsum q (n+1) = gsum q n + q^(n+1), 0 at 0, equals ∑ n ∈ range N, q^(n+1) = q+..+q^N; indices line up with no off-by-one.
+FinanceMultAdd.gordon	FinanceMultAdd.gordon	GENERAL	high	ℚ → any field; same hypothesis q*(1+j)=1 and conclusion for all N.
+FinanceMultAdd.sq_nonneg'	mul_self_nonneg	MATHLIB	high	mul_self_nonneg a : 0 ≤ a * a is exactly the statement.
+FinanceMultAdd.pow_nonneg'	pow_nonneg	MATHLIB	high	pow_nonneg (H : 0 ≤ a) (n) : 0 ≤ a ^ n.
+FinanceMultAdd.one_le_pow	one_le_pow₀	MATHLIB	high	one_le_pow₀ (H : 1 ≤ a) : 1 ≤ a ^ n.
+FinanceMultAdd.pow_le_pow'	pow_le_pow_left₀	MATHLIB	high	pow_le_pow_left₀ (ha : 0 ≤ a) (hab : a ≤ b) (n) : a^n ≤ b^n; same hypotheses (0 ≤ y, y ≤ x).
+FinanceMultAdd.cheb	FinanceMultAdd.pow_sub_pow_mul_sub_nonneg	GENERAL	high	Renamed; ℚ → linearly ordered field; same hypotheses and conclusion.
+FinanceMultAdd.power_mean	FinanceMultAdd.arith_mean_pow_le	GENERAL	high	Renamed; ℚ → linearly ordered field; ((x+y)/2)^n ≤ (x^n+y^n)/2 with 0 ≤ x, y.
+FinanceMultAdd.drag_le	FinanceMultAdd.drag_le	GENERAL	high	ℚ → linearly ordered field; identical.
+FinanceMultAdd.am_hm	FinanceMultAdd.inv_arith_mean_le_arith_mean_inv	EQUIV	high	Uses u⁻¹, v⁻¹, ((u+v)/2)⁻¹ for x, y, c; since u, v > 0 the hypotheses force exactly these values. Also ℚ → ordered field. route: hand proof → field_simp+positivity.
+FinanceMultAdd.average_factors	FinanceMultAdd.average_factors	EQUIV	high	Uses ⁻¹ for x, y, d; d*((u+v)/2)^n=1 forces d = (((u+v)/2)^n)⁻¹. Same chain AM-HM, then pow mono, then power mean.
+mall	MultAdd.multAddList	MATHLIB	high	mall (r::rs) = multAdd r (mall rs), mall [] = 0; matches multAddList_cons/nil.
+growth	List.prod (rs.map (1 + ·))	MATHLIB	high	growth (r::rs) = (1+r)*growth rs, growth [] = 1; this is the product of the mapped list.
+FinanceMultAdd.mall_growth	FinanceMultAdd.multAddList_eq_growth	GENERAL	high	ℚ → any field (only needs a ring). route: one line from his Base lemma one_add_multAddList rather than its own induction.
+FinanceMultAdd.gsum_le	FinanceMultAdd.gsum_le	GENERAL	high	ℚ → linearly ordered field; same hypotheses.
+FinanceMultAdd.gsum_pole	FinanceMultAdd.gsum_pole	GENERAL	high	ℚ → linearly ordered field. route: induction → sum_le_sum with one_le_pow₀.
+FinanceMultAdd.lowest_rate_wins	FinanceMultAdd.lowest_rate_wins	GENERAL	high	ℚ → linearly ordered field; identical conjunction.

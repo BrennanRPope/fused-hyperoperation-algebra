@@ -1,0 +1,27 @@
+original	new_name	verdict	confidence	reason
+fall (def)	SimpleLaws.fall	SAME	high	identical
+fallen (def)	SimpleLaws.fallen	EQUIV	high	sum i<n fall(i+1); same recursion
+SimpleLaws.rectangle_corner	SimpleLaws.rectangle_corner	GENERAL	high	Z -> CommSemiring
+SimpleLaws.gnomon	SimpleLaws.gnomon	GENERAL	high	Z -> CommSemiring; a*a as a^2
+SimpleLaws.euclid_II_4	SimpleLaws.euclid_II_4	GENERAL	high	Z -> CommSemiring; it is add_sq
+SimpleLaws.cube_layers	SimpleLaws.cube_layers	GENERAL	high	a ✳ a ✳ a parses as (a✳a)✳a as in the original; CommSemiring
+SimpleLaws.box_corners	SimpleLaws.box_corners	GENERAL	high	CommSemiring
+SimpleLaws.square_cube	SimpleLaws.square_cube	GENERAL	high	CommSemiring; one_add_multAdd
+SimpleLaws.fall_is_gnomon	SimpleLaws.fall_is_gnomon	SAME	high	over N; squares as ^2
+SimpleLaws.fallen_square	SimpleLaws.fallen_square	SAME	high	over N; n*n as n^2
+SimpleLaws.gnomon_lift	SimpleLaws.gnomon_lift	SAME	high	over N; same
+SimpleLaws.pythagoras_from_areas	SimpleLaws.pythagoras_from_areas	GENERAL	high	Z -> CommRing; hypothesis is the same identity
+SimpleLaws.triangles_compose	SimpleLaws.triangles_compose	GENERAL	high	CommRing
+SimpleLaws.triangles_compose_norm	SimpleLaws.triangles_compose_norm	GENERAL	high	CommRing
+SimpleLaws.euclid_triple_parts	SimpleLaws.euclid_triple_parts	GENERAL	high	CommRing
+SimpleLaws.euclid_triple	SimpleLaws.euclid_triple	GENERAL	high	CommRing
+SimpleLaws.angle_addition	SimpleLaws.angle_addition	GENERAL	high	CommRing
+SimpleLaws.unit_circle_closed	SimpleLaws.unit_circle_closed	GENERAL	high	CommRing; route: linear_combination instead of via norm_mul
+SimpleLaws.tangent_addition	SimpleLaws.tangent_addition	GENERAL	high	CommRing
+SimpleLaws.double_angle	SimpleLaws.double_angle	GENERAL	high	CommRing
+SimpleLaws.triple_angle	SimpleLaws.triple_angle	GENERAL	high	CommRing; 3*(x*x) as 3*x^2, x*x*x as x^3
+SimpleLaws.law_of_cosines_norm	SimpleLaws.law_of_cosines_norm	GENERAL	high	CommRing
+SimpleLaws.law_of_cosines_right_angle	SimpleLaws.law_of_cosines_right_angle	GENERAL	high	CommRing
+SimpleLaws.flat_triangle_open	SimpleLaws.flat_triangle_open	GENERAL	high	CommRing
+SimpleLaws.flat_triangle_shut	SimpleLaws.flat_triangle_shut	GENERAL	high	CommRing
+SimpleLaws.triangle_lengths_real	SimpleLaws.triangle_lengths_real	GENERAL	high	Z -> linearly ordered comm ring; k*k<=4 as k^2<=4

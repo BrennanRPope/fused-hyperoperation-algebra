@@ -1,0 +1,15 @@
+original	new_name	verdict	confidence	reason
+MAFound.Independence.Mat.ext'	Matrix.ext	MATHLIB	high	entrywise equality gives equality; matrix replaces the 4-field record
+MAFound.Independence.Tri.ext'	Prod.ext	MATHLIB	high	Tri is now ℤ × ℤ × ℤ; Prod.ext (nested) is componentwise equality
+MAFound.Independence.int_group	Int.instAddCommGroup	MATHLIB	high	A1-A4 for ℤ with +, -, 0 are the AddCommGroup laws
+MAFound.Independence.no_M1	MAFound.Independence.no_M1	EQUIV	high	same model (2x2 integer matrices, A ✳ B, wall -1 = -I, same counterexample E12, E21); A1-A4 now the AddCommGroup instance. route: M2-M4 from general m2/m3/m4_multAdd
+MAFound.Independence.no_M2	MAFound.Independence.no_M2	EQUIV	high	Tri.mul identical componentwise, wall (-1,0,0), same counterexample x, x, y; A1-A4 now the Prod instance
+MAFound.Independence.no_M3	MAFound.Independence.no_M3	EQUIV	high	wAdd 2 a b = a + b + 2*a*b exactly; still for every w; A1-A4 by instance. route: M1, M2, M4 from general wAdd_axioms
+MAFound.Independence.no_M4	MAFound.Independence.no_M4	EQUIV	high	same model (ℤ, a*b, wall 0), same counterexample 1 0 0; A1-A4 by instance
+def Ops	AddCommGroup + (m, w)	DROPPED-OK	high	group part is AddCommGroup on the model; operation and wall passed directly
+def A1-A4	add_assoc, add_comm, add_zero, neg_add_cancel	MATHLIB	high	exactly the AddCommGroup axioms
+def M1, M2, M3	MAFound.Independence.M1/M2/M3	SAME	high	same predicates on the operation (and wall)
+def M4	MAFound.Independence.M4	EQUIV	high	(m a b + m a c) + -a written as m a b + m a c - a, equal by sub_eq_add_neg; matches MARing.madd_add
+def matOps	multAdd on Matrix (Fin 2) (Fin 2) ℤ, wall -1	EQUIV	high	Mat.mul is ordinary 2x2 matrix product; -1 is -I = ⟨-1,0,0,-1⟩
+def Tri.mul	MAFound.Independence.Tri.mul	SAME	high	components p, q, r ↦ .1, .2.1, .2.2; formulas identical
+def triOps	MAFound.Independence.Tri.madd	EQUIV	high	u + v + Tri.mul u v with the Prod group; wall (-1,0,0) given in no_M2

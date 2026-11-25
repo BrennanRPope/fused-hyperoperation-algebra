@@ -1,0 +1,71 @@
+original	new_name	verdict	confidence	reason
+LinearAlgebraMA.M2 (def)	Matrix (Fin 2) (Fin 2) R	MATHLIB	high	def: record ⟨a,b,c,d⟩ = [[a,b],[c,d]] -> a=M 0 0, b=M 0 1, c=M 1 0, d=M 1 1; checked against every literal below
+LinearAlgebraMA.M3 (def)	Matrix (Fin 3) (Fin 3) R	MATHLIB	high	def: aij -> M (i-1) (j-1); checked against every literal and hypothesis below
+LinearAlgebraMA.M2.mul / M3.mul (def)	Matrix mul	MATHLIB	high	def: record products are row-by-column (x.a*y.a+x.b*y.c, ...), same as Matrix product in the same order
+LinearAlgebraMA.M2.transpose / M3.transpose (def)	Matrix.transpose	MATHLIB	high	def: ⟨a,c,b,d⟩ and the 3x3 swap are Aᵀ
+LinearAlgebraMA.M2.tr / M3.tr (def)	Matrix.trace	MATHLIB	high	def: a+d and a11+a22+a33 = trace (trace_fin_two/three)
+LinearAlgebraMA.M2.det (def)	Matrix.det	MATHLIB	high	def: a*d-b*c = det_fin_two (M00*M11-M01*M10); sign and order agree
+LinearAlgebraMA.M3.det (def)	Matrix.det	MATHLIB	high	def: cofactor expansion along row 1 expands to the six terms of det_fin_three with the same signs
+LinearAlgebraMA.M3.e2 (def)	LinearAlgebraMA.e2	SAME	high	def: same three principal 2x2 minors with indices shifted by one
+LinearAlgebraMA.M2.madd / M3.madd (def)	MultAdd.multAdd	MATHLIB	high	def: add (add x y) (mul x y) = x + y + x*y on the matrix semiring (table says mathlib; it is Basic's multAdd)
+LinearAlgebraMA.M2.wmadd / M3.wmadd (def)	LinearAlgebraMA.wmadd	SAME	high	def: x + y + k • (x*y); smul entrywise as in the record
+LinearAlgebraMA.M2.Dk (def)	LinearAlgebraMA.dialTwo	SAME	high	def: tr + k*det
+LinearAlgebraMA.M3.Dk (def)	LinearAlgebraMA.dialThree	SAME	high	def: tr + k*e2 + k*k*det -> trace + k*e2 + k^2*det
+LinearAlgebraMA.M2.inv (def)	Matrix.inv	MATHLIB	high	def: ⟨d/det,-b/det,-c/det,a/det⟩ vs Ring.inverse det • adjugate (adjugate_fin_two = !![d,-b;-c,a]); equal in a field (both 0 when det=0)
+LinearAlgebraMA.M2.msubM (def)	LinearAlgebraMA.msubM	SAME	high	def: (X - A) * (1 + A)⁻¹, same order; any n
+LinearAlgebraMA.M2.skew (def)	LinearAlgebraMA.skew	SAME	high	def: ⟨0,-s,s,0⟩ -> !![0,-s;s,0]
+LinearAlgebraMA.M2.cayley (def)	LinearAlgebraMA.cayley	SAME	high	def: (1 + skew s)⁻¹ * (1 - skew s), same order
+LinearAlgebraMA.fl1 / fl2 (def)	LinearAlgebraMA.fl	SAME	high	def: -1 + (a(1+v1)+b(1+v2)) and the c,d row = coordinates 0 and 1 of M *ᵥ (1+v) - 1
+LinearAlgebraMA.sadd (def)	LinearAlgebraMA.sadd	SAME	high	def: u+v+1, now for any type with + and 1 (pointwise on vectors)
+LinearAlgebraMA.mono (def)	LinearAlgebraMA.mono	SAME	high	def unchanged
+LinearAlgebraMA.M2.ext'	Matrix.ext	MATHLIB	high	Matrix.ext: (∀ i j, M i j = N i j) → M = N covers the four-entry extensionality
+LinearAlgebraMA.M3.ext'	Matrix.ext	MATHLIB	high	same, nine entries
+LinearAlgebraMA.M2.lift	MultAdd.one_add_multAdd	GENERAL	high	Basic's one_add_multAdd in any Semiring applies to Matrix (Fin 2) (Fin 2) R; table status 'mathlib' is a mislabel (it is the port's own Basic lemma)
+LinearAlgebraMA.M2.wlift	LinearAlgebraMA.one_add_smul_wmadd	GENERAL	high	any R-algebra; record smul/add/mul = Matrix smul/add/mul
+LinearAlgebraMA.M2.madd_assoc	MultAdd.multAdd_assoc	GENERAL	high	Basic, any NonUnitalSemiring; covers 2x2 matrices
+LinearAlgebraMA.M2.madd_zero	MultAdd.multAdd_zero	GENERAL	high	Basic; covers matrices
+LinearAlgebraMA.M2.zero_madd	MultAdd.zero_multAdd	GENERAL	high	Basic; covers matrices
+LinearAlgebraMA.M2.wmadd_zero_weight	LinearAlgebraMA.wmadd_zero_weight	GENERAL	high	any algebra
+LinearAlgebraMA.M2.det_one_add_smul	LinearAlgebraMA.det_one_add_smul_fin_two	SAME	high	k*k -> k^2; same layers 1 + k tr + k^2 det
+LinearAlgebraMA.M2.det_mul	Matrix.det_mul	MATHLIB	high	det (M*N) = det M * det N. route: hand expansion (grind) replaced by mathlib
+LinearAlgebraMA.M2.tr_add	Matrix.trace_add	MATHLIB	high	trace (A+B) = trace A + trace B
+LinearAlgebraMA.M2.Dk_hom	LinearAlgebraMA.dialTwo_wmadd	SAME	high	renamed; same statement
+LinearAlgebraMA.M2.shifted_det_hom	LinearAlgebraMA.shifted_det_hom	GENERAL	high	2x2 -> Matrix n n R any finite n; same equation. route: uses mathlib det_mul (original used its own record det_mul)
+LinearAlgebraMA.M2.coupling_sets_weight	LinearAlgebraMA.coupling_sets_weight	SAME	high	hyp m.b*m.c=(1-w)*m.a*m.d -> M 0 1*M 1 0=(1-w)*M 0 0*M 1 1; conclusion same
+LinearAlgebraMA.M2.diagonal_is_multAdd	LinearAlgebraMA.diagonal_is_multAdd	SAME	high	⟨p,0,0,q⟩ -> !![p,0;0,q]
+LinearAlgebraMA.M2.rank_one_is_add	LinearAlgebraMA.rank_one_is_add	EQUIV	high	hyp b*c=a*d restated as det = 0 (det = ad-bc); conclusion a+d as trace
+LinearAlgebraMA.M2.madd_not_comm	LinearAlgebraMA.multAdd_not_comm	SAME	high	renamed; ⟨0,1,0,0⟩=!![0,1;0,0], ⟨0,0,1,0⟩=!![0,0;1,0] over ℤ; same order on each side
+LinearAlgebraMA.M2.orth_lift	LinearAlgebraMA.transpose_one_add_smul_mul	GENERAL	high	any finite n; (1+kX)ᵀ(1+kX) = 1 + k•wmadd k Xᵀ X, same order
+LinearAlgebraMA.M2.rotation_condition	LinearAlgebraMA.rotation_condition	SAME	high	⟨x,-y,y,x⟩ -> !![x,-y;y,x]; x*x -> x^2
+LinearAlgebraMA.M2.rotation_condition_flat	LinearAlgebraMA.wmadd_zero_transpose	GENERAL	high	renamed; any finite n
+LinearAlgebraMA.M3.lift	MultAdd.one_add_multAdd	GENERAL	high	Basic, any Semiring; covers 3x3 matrices
+LinearAlgebraMA.M3.wlift	LinearAlgebraMA.one_add_smul_wmadd	GENERAL	high	same theorem as the 2x2 case
+LinearAlgebraMA.M3.madd_assoc	MultAdd.multAdd_assoc	GENERAL	high	Basic; covers matrices
+LinearAlgebraMA.M3.madd_zero	MultAdd.multAdd_zero	GENERAL	high	Basic; covers matrices
+LinearAlgebraMA.M3.det_one_add_smul	LinearAlgebraMA.det_one_add_smul_fin_three	SAME	high	k*k, k*k*k -> k^2, k^3; e2 same
+LinearAlgebraMA.M3.det_one_add	LinearAlgebraMA.det_one_add_fin_three	SAME	high	renamed; same
+LinearAlgebraMA.M3.det_mul	Matrix.det_mul	MATHLIB	high	route: hand expansion with raised heartbeats replaced by mathlib det_mul
+LinearAlgebraMA.M3.box_cube	LinearAlgebraMA.box_cube	SAME	high	diagonal record -> !![a,0,0;0,b,0;0,0,c]
+LinearAlgebraMA.M3.triangular_eigen	LinearAlgebraMA.triangular_eigen	SAME	high	hyps a21,a31,a32=0 -> A 1 0, A 2 0, A 2 1 = 0 (index shift correct); foldMA -> multAddList
+LinearAlgebraMA.M3.tr_add	Matrix.trace_add	MATHLIB	high	covers 3x3
+LinearAlgebraMA.M3.orth_lift	LinearAlgebraMA.transpose_one_add_smul_mul	GENERAL	high	any finite n
+LinearAlgebraMA.M3.Dk_hom	LinearAlgebraMA.dialThree_wmadd	GENERAL	high	field -> any CommRing; same statement. route: original case split k=0 / divide by k via det_one_add_smul and det_mul; port expands with ring
+LinearAlgebraMA.M2.mul_inv	Matrix.mul_nonsing_inv	MATHLIB	high	A * A⁻¹ = 1 given IsUnit A.det; in a field IsUnit ⇔ det ≠ 0, and Matrix.inv = record inv there
+LinearAlgebraMA.M2.add_one_eq_one	add_eq_left	MATHLIB	high	add_eq_left : a + b = a ↔ b = 0 covers 1 + w = 1 → w = 0
+LinearAlgebraMA.M2.madd_inverse	LinearAlgebraMA.multAdd_inv_sub_one	GENERAL	high	field, det(1+A)≠0 -> CommRing, IsUnit (1+A).det (equivalent in a field), any n; same conclusion. route: via mathlib mul_nonsing_inv
+LinearAlgebraMA.M2.msub_undo_W	LinearAlgebraMA.msubM_multAdd	DROPPED-OK	high	is msubM_multAdd at A = w - 1 (1 + (w - 1) = w); helper only
+LinearAlgebraMA.M2.msub_undo	LinearAlgebraMA.msubM_multAdd	GENERAL	high	field -> CommRing with IsUnit det, any n; (X ⊟ A) ✳ A = X. route: via mathlib nonsing_inv_mul
+LinearAlgebraMA.M2.det_one_add_skew	LinearAlgebraMA.det_one_add_skew	GENERAL	high	field -> CommRing; s*s -> s^2
+LinearAlgebraMA.M2.cayley_eq	LinearAlgebraMA.cayley_eq	SAME	high	same entries, same positions (q at (0,1), -q at (1,0)); hyp 1+s^2≠0
+LinearAlgebraMA.M2.cayley_is_msub	LinearAlgebraMA.cayley_eq_one_add_msubM	SAME	high	renamed; cayley s = 1 + msubM (skew s)ᵀ (skew s)
+LinearAlgebraMA.M2.cayley_on_circle	LinearAlgebraMA.cayley_on_circle	SAME	high	squares as ^2
+LinearAlgebraMA.M2.cayley_on_wall_circle	LinearAlgebraMA.cayley_on_wall_circle	SAME	high	squares as ^2
+LinearAlgebraMA.rotation_circle	LinearAlgebraMA.rotation_circle	SAME	high	squares as ^2; hyp k≠0
+LinearAlgebraMA.kdv_two_soliton	LinearAlgebraMA.kdv_two_soliton	SAME	high	⟨E1,m,m,E2⟩ -> !![E1,m;m,E2]; squares as ^2; same hyps
+LinearAlgebraMA.fl_fixes_wall	LinearAlgebraMA.fl_neg_one	GENERAL	high	two coordinates of a 2x2 map -> vector equation fl M (-1) = -1 for any n, any Ring
+LinearAlgebraMA.fl_sadd	LinearAlgebraMA.fl_sadd	GENERAL	high	conjunction over 2 coordinates -> vector equation, any n, any Ring; sadd pointwise
+LinearAlgebraMA.fl_scale	LinearAlgebraMA.fl_multAdd	GENERAL	high	renamed; vector form with c ✳ applied entrywise, any n
+LinearAlgebraMA.multAdd_is_zoom	LinearAlgebraMA.multAdd_is_zoom	GENERAL	high	CommRing -> any Ring
+LinearAlgebraMA.pow_mul''	pow_mul	MATHLIB	high	(pow_mul a m n).symm : (a^m)^n = a^(m*n). route: user's induction replaced by mathlib
+LinearAlgebraMA.mono_hom	LinearAlgebraMA.mono_multAdd	SAME	high	renamed; same
+LinearAlgebraMA.mono_compose	LinearAlgebraMA.mono_compose	GENERAL	high	CommRing -> any CommMonoid; same exponents a*c+d*f, b*c+e*f

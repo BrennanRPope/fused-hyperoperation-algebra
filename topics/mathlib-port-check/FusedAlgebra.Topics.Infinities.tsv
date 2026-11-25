@@ -1,0 +1,20 @@
+original	new_name	verdict	confidence	reason
+sumOnes	Finset.sum (∑ _i ∈ range n, 1)	MATHLIB	high	sumOnes n = sumOnes (n-1) + 1, sumOnes 0 = 0, i.e. the sum of n ones; the range-n sum is the same thing.
+maddOnes	MultAdd.mpow 1 n (ℕ)	MATHLIB	high	maddOnes (n+1) = multAdd (maddOnes n) 1, matches mpow_succ: mpow a (n+1) = mpow a n ✳ a with a = 1; both are 0 at n = 0.
+Infinities.sumOnes_eq	Infinities.sumOnes_eq	EQUIV	high	∑ _i ∈ range n, 1 = n with the sum standing in for sumOnes n. route: own induction → simp (sum_const, card_range).
+Infinities.maddOnes_succ	Infinities.maddOnes_succ	SAME	high	mpow 1 n + 1 = 2^n over ℕ (numerals default to ℕ). route: own induction → his Base lemma one_add_mpow (mpow_lift).
+addL	(dropped)	DROPPED-OK	medium	Padded list addition, used only to build layers; layers is now Nat.choose, so it is not needed. The named Finset.sum_add_distrib is not a literal replacement.
+evalL	Finset.sum (∑ c k * t^k)	MATHLIB	high	evalL t [c0,c1,..] = c0 + t*(c1 + t*(..)) = Σ c_k t^k (Horner form).
+Infinities.evalL_addL	(dropped) Finset.sum_add_distrib	DROPPED-OK	medium	A helper for layers_eval about padded list sums. It is not needed once layers is Nat.choose. The true analogue is Polynomial.eval_add; the named sum_add_distrib only covers equal-length sums.
+layers	Nat.choose	MATHLIB	high	layers (n+1) = addL (layers n) (0 :: layers n) is Pascal's rule, so the length-(n+1) row is [n.choose k]. The port never proves this link; it substitutes the definition.
+Infinities.layers_eval	Infinities.layers_eval	GENERAL	medium	t : ℕ → any comm semiring; Σ_{k≤n} n.choose k * t^k = (1+t)^n. Means the same only via layers n = choose row (true, not proved). route: own Pascal induction → mathlib add_pow.
+wOnes	MultAdd.wpow t 1 n	MATHLIB	high	wOnes t (n+1) = wAdd t (wOnes t n) 1 is wpow_succ with a = 1; both are 0 at n = 0.
+Infinities.wkey	(dropped) ring	DROPPED-OK	high	A one-line ℕ ring identity used only as a helper for wOnes_spec; ring covers it.
+Infinities.wOnes_spec	Infinities.wOnes_spec	GENERAL	high	ℕ → comm semiring: t * wpow t 1 n + 1 = (1+t)^n. route: from his Base wpow_lift (one_add_mul_wpow) rather than its own induction.
+Infinities.wOnes_zero	Infinities.wOnes_zero	GENERAL	high	wpow (0:R) 1 n = (n:R) in any comm semiring; the original is the ℕ case.
+Infinities.cantor	Infinities.cantor	SAME	high	Identical statement; Type → Type*.
+single	Infinities.single	SAME	high	Identical definition fun k => k == n.
+Infinities.single_inj	Infinities.single_inj	EQUIV	high	Function.Injective single unfolds to ∀ m n, single m = single n → m = n.
+Infinities.half_iter_upper	Infinities.half_iter_upper	GENERAL	high	ℕ → any preorder; Monotone h is the same as ∀ a b, a ≤ b → h a ≤ h b.
+Infinities.half_iter_lower	Infinities.half_iter_lower	GENERAL	high	ℕ → any preorder; Monotone f is the same as the original hypothesis.
+Infinities.half_not_poly	Infinities.half_not_poly	SAME	high	Identical hypotheses and conclusion over ℕ.

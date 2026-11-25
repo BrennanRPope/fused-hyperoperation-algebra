@@ -1,0 +1,46 @@
+original	new_name	verdict	confidence	reason
+fall	Nat.descFactorial	MATHLIB	high	fall n (k+1) = fall n k * (n-k), fall n 0 = 1; descFactorial n (k+1) = (n-k) * descFactorial n k. Same argument order (n, k), same function.
+tri	Nat.choose k 2	MATHLIB	high	tri (k+1) = tri k + k, tri 0 = 0; (k+1).choose 2 = k.choose 2 + k (the port proves exactly this as hT in collisions).
+layer / fact (from Cube)	Nat.choose / Nat.factorial	MATHLIB	high	Cube's layer is Pascal's recursion with the same boundary values as choose; fact is the factorial.
+MultAdd.E.layer_mul_fact	Nat.descFactorial_eq_factorial_mul_choose	MATHLIB	high	n.descFactorial k = k ! * n.choose k is the original with the factors swapped.
+MultAdd.E.fall_le_pow	Nat.descFactorial_le_pow	MATHLIB	high	n.descFactorial k ≤ n ^ k.
+MultAdd.E.layer_fact_le	MultAdd.E.choose_mul_factorial_le_pow	SAME	high	n.choose k * k ! ≤ n ^ k. route: from mathlib's descFactorial lemmas instead of his layer_mul_fact induction.
+MultAdd.E.collisions	MultAdd.E.collisions	SAME	high	Same inequality with descFactorial and k.choose 2 for fall and tri; same hypothesis k ≤ n. Still his own induction.
+MultAdd.E.pow2_le_fact	Nat.factorial_mul_pow_le_factorial (m := 1)	MATHLIB	high	m ! * (m+1)^n ≤ (m+n)!; at m = 1 this is 2^N ≤ (1+N)!. The port uses it exactly this way in s_bound.
+MultAdd.E.tri_mono	Nat.choose_le_choose	MATHLIB	high	a ≤ b → a.choose c ≤ b.choose c, with c = 2.
+MultAdd.E.bernoulli	MultAdd.E.bernoulli	SAME	high	Identical statement over ℕ.
+MultAdd.E.bernoulli_strict	MultAdd.E.bernoulli_strict	SAME	high	Identical statement over ℕ.
+MultAdd.E.stair_nat_lt	MultAdd.E.stair_nat_lt	SAME	high	Identical statement over ℕ; same proof skeleton.
+rsum	Finset.sum over range m	MATHLIB	high	rsum f (m+1) = rsum f m + f m, 0 at 0, equals ∑ k ∈ range m, f k. Indices 0..m-1 match; no off-by-one in s (range (N+1)) or stair_eq_cube (range (n+1)).
+MultAdd.E.rsum_add	Finset.sum_add_distrib	MATHLIB	high	Sum of f+g is the sum of f plus the sum of g.
+MultAdd.E.rsum_mul	Finset.mul_sum	MATHLIB	high	c * ∑ f = ∑ c * f.
+MultAdd.E.rsum_shift	Finset.sum_range_succ'	MATHLIB	high	∑ range (m+1) f = ∑ range m f (i+1) + f 0 (summands commuted).
+MultAdd.E.rsum_le	Finset.sum_le_sum	MATHLIB	high	Pointwise ≤ on i ∈ range m (that is, i < m) gives ≤ of the sums.
+MultAdd.E.rsum_nonneg	Finset.sum_nonneg	MATHLIB	high	Nonneg terms on range m give a nonneg sum.
+MultAdd.E.rsum_mono	Finset.sum_le_sum_of_subset_of_nonneg + range_mono	MATHLIB	high	Nonneg f and m ≤ m' give a sum over range m ≤ the sum over range m'.
+MultAdd.E.binomial	MultAdd.E.binomial	GENERAL	high	ℚ → any comm semiring; sum over range (n+1) of choose * x^k. route: his own Pascal induction → mathlib add_pow (via Cube.one_add_mpow_eq_sum_choose).
+MultAdd.E.le_div_of_mul_le	le_div_iff₀	MATHLIB	high	0 < c → (a ≤ b / c ↔ a * c ≤ b); the original is the ← direction.
+MultAdd.E.one_div_nonneg	one_div_nonneg	MATHLIB	high	Mathlib gives 0 ≤ 1/a ↔ 0 ≤ a; the original is the ← direction.
+MultAdd.E.one_div_le_one_div	one_div_le_one_div_of_le	MATHLIB	high	(ha : 0 < a) (h : a ≤ b) : 1/b ≤ 1/a, the same as the original up to variable names.
+MultAdd.E.natcast_ne	Nat.cast_ne_zero	MATHLIB	high	(n : R) ≠ 0 ↔ n ≠ 0.
+MultAdd.E.fact_cast_pos	Nat.factorial_pos + Nat.cast_pos	MATHLIB	high	0 < (k ! : K); the port uses positivity throughout.
+MultAdd.E.inv_pow_mul	one_div_pow + one_div_mul_cancel	MATHLIB	high	(1/N)^k * N^k = 1 for N ≠ 0 follows in two rewrites.
+stair	MultAdd.E.stair	GENERAL	high	Same (1 + 1/n)^n; ℚ → any field K (explicit argument).
+wt	MultAdd.E.wt	GENERAL	high	Same choose n k * (1/n)^k; ℚ → any field.
+s	MultAdd.E.s	GENERAL	high	∑ k ∈ range (N+1), 1/k!; same terms 0..N as rsum (·) (N+1).
+u	MultAdd.E.u	GENERAL	high	Same s N + 1/(N! * N).
+MultAdd.E.stair_eq_mpow	MultAdd.E.stair_eq_mpow	GENERAL	high	ℚ → any field; same statement.
+MultAdd.E.stair_eq_cube	MultAdd.E.stair_eq_cube	GENERAL	high	ℚ → any field; Finset sum with the same index range.
+MultAdd.E.wt_nonneg	MultAdd.E.wt_nonneg	GENERAL	high	ℚ → linearly ordered field.
+MultAdd.E.wt_le	MultAdd.E.wt_le	GENERAL	high	ℚ → linearly ordered field; same hypothesis 1 ≤ n. route: his layer_fact_le chain → mathlib Nat.choose_le_pow_div.
+MultAdd.E.wt_ge	MultAdd.E.wt_ge	GENERAL	high	ℚ → linearly ordered field; tri k → k.choose 2; same hypotheses 1 ≤ n, k ≤ n. Still built on his collisions.
+MultAdd.E.stair_le_s	MultAdd.E.stair_le_s	GENERAL	high	ℚ → linearly ordered field; same.
+MultAdd.E.s_bound	MultAdd.E.s_bound	GENERAL	high	ℚ → linearly ordered field; same 3 - 2/2^N. route: pow2_le_fact → mathlib factorial_mul_pow_le_factorial.
+MultAdd.E.s_lt_three	MultAdd.E.s_lt_three	GENERAL	high	ℚ → linearly ordered field.
+MultAdd.E.s_mono	MultAdd.E.s_mono	GENERAL	high	Monotone (s K) is ∀ N M, N ≤ M → s N ≤ s M; ℚ → ordered field.
+MultAdd.E.s_le_u	MultAdd.E.s_le_u	GENERAL	high	ℚ → linearly ordered field.
+MultAdd.E.u_step	MultAdd.E.u_step	GENERAL	high	ℚ → linearly ordered field; same hypothesis 1 ≤ N.
+MultAdd.E.u_anti	MultAdd.E.u_anti	GENERAL	high	ℚ → linearly ordered field; same hypotheses.
+MultAdd.E.stair_le_u	MultAdd.E.stair_le_u	GENERAL	high	ℚ → linearly ordered field; same hypotheses; same case split.
+MultAdd.E.s_le_stair	MultAdd.E.s_le_stair	GENERAL	high	ℚ → linearly ordered field; tri N → N.choose 2; same 3*·/n bound and hypotheses.
+MultAdd.E.stair_lt_succ	MultAdd.E.stair_lt_succ	GENERAL	high	ℚ → linearly ordered field; same; still from his stair_nat_lt.

@@ -1,0 +1,11 @@
+original	new_name	verdict	confidence	reason
+ChemQuantum.fragments_multAdd	ChemQuantum.fragments_multAdd	SAME	high	Lean.Grind.CommRing -> CommRing; route: one line from Basic's one_add_multAdd instead of unfolding (trivial)
+ChemQuantum.cisd_drops_corner	ChemQuantum.cisd_drops_corner	SAME	high	same
+ChemQuantum.three_fragments	ChemQuantum.three_fragments	SAME	high	(a✳b)✳c written a✳b✳c (left assoc); same
+ChemQuantum.cisd_drops_three	ChemQuantum.cisd_drops_three	SAME	high	same
+ChemQuantum.secular (def)	ChemQuantum.Secular	SAME	high	def renamed Secular; ℚ -> CommRing; N*g*g -> N*g^2
+ChemQuantum.cisd_gap	ChemQuantum.cisd_gap	GENERAL	high	ℚ -> CommRing; e*e -> e^2, g*g -> g^2
+ChemQuantum.cisd_not_extensive	ChemQuantum.cisd_not_extensive	GENERAL	high	ℚ -> CommRing with [NoZeroDivisors]; that hypothesis is automatic for ℚ (a field) and needed in general; other hyps identical
+ChemQuantum.spin_multiplicity	ChemQuantum.spin_multiplicity	GENERAL	high	ℕ -> any Semiring; route: one line from Basic's multAdd_add_one
+ChemQuantum.oddSum (def)	Finset.sum	MATHLIB	high	def: recursion -> ∑ S in range (n+1), (2S+1); same values
+ChemQuantum.clebsch_gordan_square	ChemQuantum.clebsch_gordan_square	SAME	high	stated with the Finset sum in place of oddSum and (n+1)^2; same

@@ -1,0 +1,25 @@
+original	new_name	verdict	confidence	reason
+SimpleLaws.nonempty_subsets	SimpleLaws.nonempty_subsets	GENERAL	high	ℤ -> CommRing; same identity
+SimpleLaws.product_error	SimpleLaws.product_error	GENERAL	high	ℤ -> CommRing
+SimpleLaws.product_error_corner	SimpleLaws.product_error_corner	GENERAL	high	ℤ -> CommRing
+SimpleLaws.constant_product	SimpleLaws.constant_product	GENERAL	high	ℤ -> CommRing with NoZeroDivisors (automatic for ℤ); same hyp P*V≠0 and iff
+SimpleLaws.boyle_partner	SimpleLaws.boyle_partner	SAME	high	Lean.Grind.Field -> mathlib Field; same hyps and conclusion b = multAddInv a
+SimpleLaws.boyle_gain_loss	SimpleLaws.boyle_gain_loss	GENERAL	high	ℤ -> CommRing; same
+SimpleLaws.kepler_third	SimpleLaws.kepler_third	GENERAL	high	ℤ -> CommRing; products written ^2, ^3; (α✳α)✳α written α✳α✳α (left assoc)
+SimpleLaws.inverse_square	SimpleLaws.inverse_square	SAME	high	Lean.Grind.Field -> Field; (1+ρ)*(1+ρ) -> (1+ρ)^2
+SimpleLaws.cooling	SimpleLaws.cooling	GENERAL	high	ℤ -> CommRing; still one line from wpow_neg_one
+SimpleLaws.Ray (def)	Matrix (Fin 2) (Fin 2) R	MATHLIB	high	def: record ⟨A,B,C,D⟩ -> 2x2 matrix with A=M 0 0, B=M 0 1, C=M 1 0, D=M 1 1
+SimpleLaws.Ray.mul (def)	Matrix mul	MATHLIB	high	def: Ray.mul's C = M.C*N.A+M.D*N.C = (M*N) 1 0; all four entries match row-by-column product, same order M*N
+SimpleLaws.lens (def)	SimpleLaws.lens	SAME	high	def: ⟨1,0,-P,1⟩ -> !![1,0;-P,1]; C=-P at (1,0)
+SimpleLaws.gap (def)	SimpleLaws.gap	SAME	high	def: ⟨1,d,0,1⟩ -> !![1,d;0,1]
+SimpleLaws.lenses_in_contact	SimpleLaws.lenses_in_contact	GENERAL	high	(lens P2).mul (lens P1) .C -> (lens P2 * lens P1) 1 0; same order and entry; ℤ -> CommRing
+SimpleLaws.lenses_apart	SimpleLaws.lenses_apart	GENERAL	high	same product order lens P2 * (gap d * lens P1), entry (1,0); ℤ -> CommRing
+SimpleLaws.squeeze_multiplies	SimpleLaws.squeeze_multiplies	GENERAL	high	ℤ -> CommRing
+SimpleLaws.field_lens	SimpleLaws.field_lens	GENERAL	high	ℤ -> CommRing; same hyp d*P1=1
+SimpleLaws.parallel_is_inverted_addition	SimpleLaws.parallel_is_inverted_addition	SAME	high	Lean.Grind.Field -> Field; same hyps
+SimpleLaws.ladderStep (def)	SimpleLaws.ladderStep	SAME	high	def unchanged
+SimpleLaws.ladder (def)	SimpleLaws.ladder	SAME	high	def: recursion -> ladderStep^[n] (0,1); ladder_succ shows same recursion
+SimpleLaws.fib (def)	Nat.fib	MATHLIB	high	def: hand fib : ℕ → ℤ = cast of Nat.fib (same seeds 0,1 and recurrence)
+SimpleLaws.ladder_fib	SimpleLaws.ladder_fib	SAME	high	fib k -> (Nat.fib k : ℤ); same indices 2n+2, 2n+1
+SimpleLaws.ladder_walls	SimpleLaws.ladder_walls	GENERAL	high	ℤ -> CommRing; squares written ^2
+SimpleLaws.ladder_hyperbola	SimpleLaws.ladder_hyperbola	SAME	high	squares written ^2; ladder over ℤ×ℤ as before
