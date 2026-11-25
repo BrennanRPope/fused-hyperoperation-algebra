@@ -1,0 +1,27 @@
+PASS 1a all five sets have dimension exactly 1/2 (square roots of their ratios add to 1)
+PASS 1b numeric Moran solve agrees: d = 0.5 for all
+PASS 1c pieces never overlap and span [0,1] (so the dimension is the Moran value)
+PASS 2a A, B, C, E are lattice (one ratio); D is non-lattice (log 0.09 / log 0.49 irrational, = log0.3/log0.7)
+PASS 2b equal-ratio sets: N r^s = 1 at s = 1/2 + 2 pi i n / log(1/r) (complex dimensions), spacing differs by set  | A: 4.532, B: 2.860, C: 2.860, E: 2.266
+PASS 2c non-lattice D: no complex dimension on Re s = 1/2 except 1/2 itself (|r1^s+r2^s| < 1 for 1 <= y <= 400)  | closest approach 1.00000 (quasi-periodic near-misses)
+PASS 3a lattice sets: Minkowski ratio |K_eps|/eps^(1/2) keeps oscillating (no Minkowski content)  | A: 0.059, B: 0.147, C: 0.102, E: 0.227
+PASS 3b non-lattice D: the oscillation shrinks with scale (Minkowski content exists, Lapidus-van Frankenhuijsen)  | relative wobble 0.014 at 1e-2..1e-4 -> 0.003 at 1e-6..1e-8; content ~ 3.0007
+PASS 3c same dimension, different average Minkowski content (the size prefactor is a separate dial)  | A: 2.887, B: 2.966, C: 2.776, D: 3.001, E: 3.096
+PASS 3d B and C differ only in where the middle piece sits: same ratios, different content
+PASS 4a gliding-box lacunarity differs between sets of the same dimension  | A: 4.01, B: 3.78, C: 4.13, D: 3.76, E: 3.59
+PASS 5a fair weights on A: D_q = 1/2 for every q (monofractal)
+PASS 5b any weights: D_0 = 1/2 (the support), D_q = Renyi entropy of the weights / log 4
+PASS 5c weight p = t/(1+t) is the per-element dial t read as odds (p = 0.3 <-> t = 3/7)
+PASS 5d unfair weights spread the local dimensions alpha over an interval; fair weights give the single value 1/2  | {'0.3': [0.25728658641487917, 0.8684827970831032], '0.1': [0.07600154672252499, 1.660964047443681]}
+PASS 6a binary branching + equal ratios + dimension 1/2 forces ratio 1/4 (set A); binary dimension 1 forces 1/2
+PASS 6b half box x half box is the binary full box as a tree: distance / tree distance stays in a fixed band at every depth  | depth 2: 0.562..1.912, depth 3: 0.516..2.024, depth 4: 0.504..2.052
+PASS 6c the stick is that tree glued: binary digits of [0,1] identify only dyadic pairs (0.0111... = 0.1000...)
+PASS 7a all five half boxes are dust that splits forever: topologically one Cantor set (connectivity is not a dial below d = 1)
+PASS 7b dimension log3/log2 both ways: 3 at 1/2 and 9 at 1/4 (9 = 3^2, 4 = 2^2)
+PASS 7c gasket: 3^n triangles share (3^(n+1)-3)/2 corner points (finitely ramified, connected); the 9-at-1/4 dust shares none
+PASS 8a joining two self-similar trees gives a self-similar tree (branching multiplies)
+PASS 8b the power set of a binary tree (counts 2^(2^n)) is no self-similar tree c*b^n
+PASS 8c power-set tree branching per level: 2, 4, 16, 256, 65536 (doubly exponential)
+PASS 8d an increasing half step h exists on counts >= 2 and sits strictly between N and 2^N
+
+25 of 25 pass

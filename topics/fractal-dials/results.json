@@ -1,0 +1,91 @@
+{
+ "A": {
+  "name": "two pieces at 1/4",
+  "pieces": 2,
+  "ratios": [
+   "1/4",
+   "1/4"
+  ],
+  "dim": 0.5,
+  "lattice": true,
+  "complex_dim_spacing": 4.532360141827194,
+  "minkowski_min": 2.828428457681362,
+  "minkowski_max": 2.999785081513554,
+  "minkowski_avg": 2.8866953104496713,
+  "lacunarity": 4.014438675434012
+ },
+ "B": {
+  "name": "three at 1/9, evenly spaced",
+  "pieces": 3,
+  "ratios": [
+   "1/9",
+   "1/9",
+   "1/9"
+  ],
+  "dim": 0.5,
+  "lattice": true,
+  "complex_dim_spacing": 2.8596008673801268,
+  "minkowski_min": 2.828430457365566,
+  "minkowski_max": 3.264791105513283,
+  "minkowski_avg": 2.966214780023967,
+  "lacunarity": 3.7828392816795784
+ },
+ "C": {
+  "name": "three at 1/9, middle off-centre",
+  "pieces": 3,
+  "ratios": [
+   "1/9",
+   "1/9",
+   "1/9"
+  ],
+  "dim": 0.5,
+  "lattice": true,
+  "complex_dim_spacing": 2.8596008673801268,
+  "minkowski_min": 2.6666670326329025,
+  "minkowski_max": 2.9490297717716367,
+  "minkowski_avg": 2.7763411040807635,
+  "lacunarity": 4.131339478867893
+ },
+ "D": {
+  "name": "uneven: 0.09 and 0.49",
+  "pieces": 2,
+  "ratios": [
+   "9/100",
+   "49/100"
+  ],
+  "dim": 0.5,
+  "lattice": false,
+  "complex_dim_spacing": null,
+  "minkowski_min": 2.9950508739022945,
+  "minkowski_max": 3.0130298812470664,
+  "minkowski_avg": 3.0007999735542055,
+  "lacunarity": 3.761291490855797
+ },
+ "E": {
+  "name": "four at 1/16",
+  "pieces": 4,
+  "ratios": [
+   "1/16",
+   "1/16",
+   "1/16",
+   "1/16"
+  ],
+  "dim": 0.5,
+  "lattice": true,
+  "complex_dim_spacing": 2.266180070913597,
+  "minkowski_min": 2.828428457681362,
+  "minkowski_max": 3.5325657982717105,
+  "minkowski_avg": 3.0964185279558416,
+  "lacunarity": 3.5943920302874073
+ },
+ "multifractal": {
+  "0.3": [
+   0.25728658641487917,
+   0.8684827970831032
+  ],
+  "0.1": [
+   0.07600154672252499,
+   1.660964047443681
+  ]
+ }
+}
