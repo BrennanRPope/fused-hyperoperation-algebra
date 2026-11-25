@@ -59,11 +59,11 @@ check("T3 p_L^2 - p_R^2 = 2 n w for every radius: the radius never changes the L
 t = np.log(1.9/0.6); B = np.array([[np.cosh(t), -np.sinh(t)], [-np.sinh(t), np.cosh(t)]])
 ok = all(np.allclose(B @ np.array(pLR(nn, w, 0.6)), np.array(pLR(nn, w, 1.9))) for nn, w in itertools.product(range(-3, 4), repeat=2))
 check("T4 changing the radius is a Lorentz boost of the (p_L, p_R) lattice with rapidity log(R2/R1) (Narain's O(1,1))", ok, f"rapidity {t:.4f}")
-# mult-add at k = 1 with 1 + a = R/sqrt(alpha')
+# the circle operation at k = 1 with 1 + a = R/sqrt(alpha')
 ma = lambda a, b, k=1.0: a + b + k*a*b
 inv = lambda a, k=1.0: -a/(1 + k*a)
 a = rng.uniform(-0.9, 5, 50)
-check("T5 ours: with 1 + a = R/sqrt(alpha'), T-duality is the mult-add (k = 1) inverse: 1 + inv(a) = 1/(1 + a), and a o inv(a) = 0 (the self-dual radius)",
+check("T5 ours: with 1 + a = R/sqrt(alpha'), T-duality is the circle operation (k = 1) inverse: 1 + inv(a) = 1/(1 + a), and a o inv(a) = 0 (the self-dual radius)",
       np.allclose(1 + inv(a), 1/(1 + a)) and np.allclose(ma(a, inv(a)), 0))
 u = np.log(1 + a)
 check("T6 ours: in the flat coordinate u = log(1 + a) = log(R/sqrt(alpha')), the rapidity of T4, T-duality is the reflection u -> -u; the wall a = -1 is R = 0, sent to R = infinity",

@@ -70,7 +70,7 @@
   "extra": ""
  },
  {
-  "name": "mult-add inverse sends infinity to the wall: -v/(1+v) -> -1",
+  "name": "Circle inverse sends infinity to the wall: -v/(1+v) -> -1",
   "ok": true,
   "extra": ""
  },

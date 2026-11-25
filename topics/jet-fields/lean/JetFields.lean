@@ -1,26 +1,26 @@
 /-
-  JetFields: fields of jets, mult-add, and the Navier–Stokes velocity gradient
+  JetFields: fields of jets, the circle operation (called mult-add before 1.0), and the Navier–Stokes velocity gradient
   ===========================================================================
 
   Core Lean 4.37, no mathlib, no `sorry`. Imports the shared base.
-  Written Nov 25, 2026 for the page "Fields of jets in mult-add".
+  Written Nov 25, 2026 for the page "Fields of jets in the circle operation".
 
   The picture.
 
   * A jet is a point of a truncated ring. The 1-jet of f at x lives in
     R[ε]/(ε² − kε). With k = 0 these are the dual numbers (the derivative);
     with k = h they hold the values at two points h apart (the forward
-    difference). Units 1 + aε multiply by the weighted mult-add:
-    (1 + aε)(1 + bε) = 1 + (a ⊞ₖ b)ε (`units_wAdd`). So the corner weight k
+    difference). Units 1 + aε multiply by the circle operation:
+    (1 + aε)(1 + bε) = 1 + (a ◯[k] b)ε (`units_circK`). So the corner weight k
     is the gap between two sample points, and k → 0 merges them into a
     tangent vector (`twoPt_mul`, `twoPt_weight_zero`). The wall 1 + ka = 0 is
     where the unit vanishes at the second point (`wall_no_inverse`); the dual
     numbers have no wall (`dual_inverse`).
-  * In the 2-jet ring the relative jets ν (no constant term) mult-add with
+  * In the 2-jet ring the relative jets ν (no constant term) combine by the circle operation with
     the cube cut after layer 2: the triple corner is gone (`cube_depth_two`),
     and the way back is a finite sum (`nilpotent_inverse`).
   * The Lagrangian step x ↦ x + h·u(x) has volume change det(I + h∇u). Its
-    expansion in h is the mult-add cube of the gradient's eigen-rates:
+    expansion in h is the circle-operation cube of the gradient's eigen-rates:
     1 + hP + h²Q + h³R (`det_one_add_smul`, `det_diag_cube`), where
     P = trace (divergence), Q = sum of principal 2×2 minors, R = det.
     These are the P, Q, R invariants that turbulence research plots.
@@ -51,9 +51,9 @@
 -/
 import FusedAlgebra.Base
 
-namespace MultAdd.JetFields
+namespace CircleOp.JetFields
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -85,18 +85,18 @@ theorem wmul_assoc (k : R) (x y z : WDual R) :
 theorem eps_sq (k : R) : wmul k ⟨0, 1⟩ ⟨0, 1⟩ = ⟨0, k⟩ := by
   simp only [wmul, WDual.mk.injEq]; constructor <;> grind
 
-/-- **Units multiply by weighted mult-add**: (1 + aε)(1 + bε) = 1 + (a ⊞ₖ b)ε. -/
-theorem units_wAdd (k a b : R) : wmul k ⟨1, a⟩ ⟨1, b⟩ = ⟨1, wAdd k a b⟩ := by
-  simp only [wmul, wAdd, WDual.mk.injEq]; constructor <;> grind
+/-- **Units multiply by the circle operation**: (1 + aε)(1 + bε) = 1 + (a ◯[k] b)ε. -/
+theorem units_circK (k a b : R) : wmul k ⟨1, a⟩ ⟨1, b⟩ = ⟨1, circK k a b⟩ := by
+  simp only [wmul, circK, WDual.mk.injEq]; constructor <;> grind
 
-/-- With weight 1 the units multiply by plain mult-add. -/
-theorem units_multAdd (a b : R) : wmul 1 ⟨1, a⟩ ⟨1, b⟩ = ⟨1, multAdd a b⟩ := by
-  rw [units_wAdd, wAdd_one]
+/-- With weight 1 the units multiply by the plain circle operation. -/
+theorem units_circ (a b : R) : wmul 1 ⟨1, a⟩ ⟨1, b⟩ = ⟨1, circ a b⟩ := by
+  rw [units_circK, circK_one]
 
 /-- With weight 0 (dual numbers, 1-jets) the corner is dropped: relative
     slopes add. This is the logarithmic derivative of a product. -/
 theorem dual_units_add (a b : R) : wmul 0 ⟨1, a⟩ ⟨1, b⟩ = ⟨1, a + b⟩ := by
-  rw [units_wAdd, wAdd_weight_zero]
+  rw [units_circK, circK_weight_zero]
 
 /-- The two-point reading: value at x and value at x + k (slope · gap added). -/
 def twoPt (k : R) (x : WDual R) : R × R := (x.re, x.re + k * x.du)
@@ -155,7 +155,7 @@ theorem wall_no_inverse (k a : K) (hw : 1 + k * a = 0) (y : WDual K) :
   rw [e, hw] at h2
   grind
 
-/-- Off the wall, the inverse is the weighted mult-add way back −a/(1 + ka). -/
+/-- Off the wall, the inverse under the circle operation with dial k is −a/(1 + ka). -/
 theorem off_wall_inverse (k a : K) (hw : 1 + k * a ≠ 0) :
     wmul k ⟨1, a⟩ ⟨1, -a / (1 + k * a)⟩ = ⟨1, 0⟩ := by
   simp only [wmul, WDual.mk.injEq]
@@ -178,7 +178,7 @@ variable {R : Type} [CommRing R]
 def jmul (x y : Jet2 R) : Jet2 R :=
   ⟨x.c0 * y.c0, x.c0 * y.c1 + x.c1 * y.c0, x.c0 * y.c2 + x.c1 * y.c1 + x.c2 * y.c0⟩
 
-/-- Mult-add in R[ε]/(ε³): x + y + xy. -/
+/-- The circle operation in R[ε]/(ε³): x + y + xy. -/
 def jma (x y : Jet2 R) : Jet2 R :=
   ⟨x.c0 + y.c0 + x.c0 * y.c0, x.c1 + y.c1 + (x.c0 * y.c1 + x.c1 * y.c0),
    x.c2 + y.c2 + (x.c0 * y.c2 + x.c1 * y.c1 + x.c2 * y.c0)⟩
@@ -189,7 +189,7 @@ theorem leibniz2 (x y : Jet2 R) :
     2 * (jmul x y).c2 = x.c0 * (2 * y.c2) + 2 * (x.c1 * y.c1) + (2 * x.c2) * y.c0 := by
   simp only [jmul]; grind
 
-/-- Mult-add of jets is multiplication through 1 + x, as everywhere else. -/
+/-- The circle operation of jets is multiplication through 1 + x, as everywhere else. -/
 theorem jma_lift (x y : Jet2 R) :
     jmul ⟨1 + x.c0, x.c1, x.c2⟩ ⟨1 + y.c0, y.c1, y.c2⟩
       = ⟨1 + (jma x y).c0, (jma x y).c1, (jma x y).c2⟩ := by
@@ -197,7 +197,7 @@ theorem jma_lift (x y : Jet2 R) :
   simp only [jmul, jma, Jet2.mk.injEq]; refine ⟨?_, ?_, ?_⟩ <;> grind
 
 /-- **Jet order = cube depth.** Three relative 2-jets (no constant term)
-    mult-add to their sum plus the three pair corners; the triple corner, which
+    the circle operation to their sum plus the three pair corners; the triple corner, which
     would sit at ε³, is gone. -/
 theorem cube_depth_two (a₁ b₁ a₂ b₂ a₃ b₃ : R) :
     jma ⟨0, a₁, b₁⟩ (jma ⟨0, a₂, b₂⟩ ⟨0, a₃, b₃⟩)
@@ -216,7 +216,7 @@ theorem nilpotent_inverse (a b : R) : jma ⟨0, a, b⟩ ⟨0, -a, -b + a * a⟩ 
 
 end Jet2Ring
 
-/-! ## 3. The velocity gradient: the mult-add cube of the step x ↦ x + h·u -/
+/-! ## 3. The velocity gradient: the circle-operation cube of the step x ↦ x + h·u -/
 
 /-- A 3×3 matrix, entry mᵢⱼ. For the velocity gradient, mᵢⱼ = ∂uᵢ/∂xⱼ. -/
 structure M3 (R : Type) where
@@ -251,7 +251,7 @@ def det9 (a b c d e f g h i : R) : R := a*(e*i - f*h) - b*(d*i - f*g) + c*(d*h -
 def M3.det (X : M3 R) : R :=
   det9 X.m11 X.m12 X.m13 X.m21 X.m22 X.m23 X.m31 X.m32 X.m33
 
-/-- **The volume change of a step is the mult-add cube.**
+/-- **The volume change of a step is the circle-operation cube.**
     det(I + h∇u) = 1 + h·P + h²·Q + h³·R. -/
 theorem det_one_add_smul (h : R) (X : M3 R) :
     (X.step h).det = 1 + h * X.tr + h^2 * X.e2 + h^3 * X.det := by
@@ -261,11 +261,11 @@ theorem det_one_add_smul (h : R) (X : M3 R) :
 /-- A diagonal gradient (principal axes): stretch rates a, b, c. -/
 def diag3 (a b c : R) : M3 R := ⟨a, 0, 0, 0, b, 0, 0, 0, c⟩
 
-/-- **In principal axes the step's volume change is literally mult-add:**
-    det(I + h·diag(a,b,c)) = 1 + (ha ⊞ hb ⊞ hc). -/
+/-- **In principal axes the step's volume change is literally the circle operation:**
+    det(I + h·diag(a,b,c)) = 1 + (ha ◯ hb ◯ hc). -/
 theorem det_diag_cube (h a b c : R) :
-    ((diag3 a b c).step h).det = 1 + multAdd (multAdd (h * a) (h * b)) (h * c) := by
-  simp only [diag3, M3.step, M3.det, det9, multAdd]; grind
+    ((diag3 a b c).step h).det = 1 + circ (circ (h * a) (h * b)) (h * c) := by
+  simp only [diag3, M3.step, M3.det, det9, circ]; grind
 
 /-- The layers of a diagonal gradient are the cube's layers of (a, b, c). -/
 theorem diag_layers (a b c : R) :
@@ -566,4 +566,4 @@ theorem box_minor_zero (u v : Nat → Nat → R) (n : Nat)
 
 end Grid
 
-end MultAdd.JetFields
+end CircleOp.JetFields

@@ -40,41 +40,41 @@ el.innerHTML=t};const ro2=new ResizeObserver(draw);ro2.observe(el);draw();}
 sections = [
  dict(id="corner", nav="The corner", h="Two molecules that ignore each other: their wavefunctions multiply",
   body=f"""<p>Write a molecule's wavefunction as the reference determinant times 1 + c, where c holds every excited configuration (intermediate normalisation). For two molecules too far apart to interact, the exact wavefunction is the product, so</p>
-<div class="eq">1 + c<sub>AB</sub> = (1 + c<sub>A</sub>)(1 + c<sub>B</sub>) &nbsp; ⟹ &nbsp; c<sub>AB</sub> = c<sub>A</sub> ✳ c<sub>B</sub> = c<sub>A</sub> + c<sub>B</sub> + c<sub>A</sub>c<sub>B</sub></div>
+<div class="eq">1 + c<sub>AB</sub> = (1 + c<sub>A</sub>)(1 + c<sub>B</sub>) &nbsp; ⟹ &nbsp; c<sub>AB</sub> = c<sub>A</sub> ∘₁ c<sub>B</sub> = c<sub>A</sub> + c<sub>B</sub> + c<sub>A</sub>c<sub>B</sub></div>
 <p>The corner c<sub>A</sub>c<sub>B</sub> is "both molecules excited at the same time". For two two-electron molecules that is a quadruple excitation of the pair.</p>
-<p>Truncated configuration interaction with singles and doubles (CISD) keeps only excitations up to two electrons, so it keeps c<sub>A</sub> + c<sub>B</sub> and throws the corner away. It is the weighted law at k = 0. That is the whole reason CISD is not size-consistent. Coupled cluster writes 1 + c = e<sup>T</sup>: T is the log of the lift, so T adds and the corner comes back by itself. In mult-add terms, coupled cluster is the ruler that turns ✳ into +.</p>""",
-  fig=True, figcls="", cap="Three fragments A, B, C on the mult-add cube. CISD keeps the red edges out of the reference corner (one fragment excited at a time). Every blue corner is a product of fragment excitations that only the full ✳ keeps.", js=cube_js),
+<p>Truncated configuration interaction with singles and doubles (CISD) keeps only excitations up to two electrons, so it keeps c<sub>A</sub> + c<sub>B</sub> and throws the corner away. It is the weighted law at k = 0. That is the whole reason CISD is not size-consistent. Coupled cluster writes 1 + c = e<sup>T</sup>: T is the log of the lift, so T adds and the corner comes back by itself. In circle-operation terms, coupled cluster is the ruler that turns ∘₁ into +.</p>""",
+  fig=True, figcls="", cap="Three fragments A, B, C on the circle-operation cube. CISD keeps the red edges out of the reference corner (one fragment excited at a time). Every blue corner is a product of fragment excitations that only the full ∘₁ keeps.", js=cube_js),
  dict(id="model", nav="N molecules", h="With N molecules, CISD keeps a share that falls like 1/√N",
   body=f"""<p>The checks file solves a model exactly: N identical molecules, each with a reference state and one doubly excited state 2Δ above it, coupled by g (Δ = 1, g = 0.3). The exact energy is N times one molecule. CISD's energy is Δ − √(Δ² + N g²), so its share of the correlation falls like 1/√N: 98% for two molecules, 86% for ten, under 7% for ten thousand.</p>
-<p>A wavefunction that keeps the corner with weight k (every m-fold product scaled by k<sup>m−1</sup>) is exact only at k = 1. Half a corner is better than none but still loses ground as N grows. Size-consistency is not a matter of degree: only the full mult-add composes correctly.</p>
+<p>A wavefunction that keeps the corner with weight k (every m-fold product scaled by k<sup>m−1</sup>) is exact only at k = 1. Half a corner is better than none but still loses ground as N grows. Size-consistency is not a matter of degree: only the full circle operation composes correctly.</p>
 <p>Lean proves the model's key step: if e₁ solves one molecule, then N·e₁ misses the N-molecule CISD equation by exactly N(N − 1)e₁², the count of molecule pairs times the corner (<code>cisd_gap</code>, <code>cisd_not_extensive</code>).</p>"""),
  dict(id="real", nav="Real molecules", h="Real molecules show the same loss: 0.7 kcal/mol for two H₂, 5.9 for two waters",
   body=f"""<p>I ran PySCF on real molecules 100 Å apart, where they cannot interact.</p>
 <ul><li><b>Two H₂ (cc-pVDZ):</b> CCSD gives exactly twice one molecule ({2*ph['cc1']:.6f} Eh). CISD gives {ph['ci2']:.6f} Eh against {2*ph['ci1']:.6f}: it loses {ph['missing_kcal']:.2f} kcal/mol, though for a single H₂ CISD and CCSD agree exactly (two electrons leave no room for a corner).</li>
 <li><b>Two waters (6-31G):</b> CCSD is exactly twice one water; CISD keeps {100*pw['ci2']/(2*pw['ci1']):.1f}% and loses {abs(2*pw['ci1']-pw['ci2'])*627.5:.1f} kcal/mol, more than a hydrogen bond's worth of error from two molecules that are not even touching.</li></ul>
-<p>The same counting runs through spin coupling: multiplicities multiply, (2s₁ + 1)(2s₂ + 1), so 2s mult-adds, and the Clebsch–Gordan series fills the product exactly (36 cases checked, and in Lean).</p>"""),
+<p>The same counting runs through spin coupling: multiplicities multiply, (2s₁ + 1)(2s₂ + 1), so 2s combines by the circle operation, and the Clebsch–Gordan series fills the product exactly (36 cases checked, and in Lean).</p>"""),
 ]
 claims = [
- ("Independent fragments: c<sub>AB</sub> = c<sub>A</sub> ✳ c<sub>B</sub>", "tidy reading", "200 random pairs; Lean <code>fragments_multAdd</code>"),
+ ("Independent fragments: c<sub>AB</sub> = c<sub>A</sub> ∘₁ c<sub>B</sub>", "tidy reading", "200 random pairs; Lean <code>fragments_circ</code>"),
  ("CISD drops exactly the corner, so it is the k = 0 law", "tidy reading", "Lean <code>cisd_drops_corner</code>, <code>cisd_drops_three</code>"),
  ("Coupled cluster's exponential is the log of the lift, so it is size-consistent", "known", "PySCF: 2 H₂ and 2 H₂O, CCSD = 2× to 1e-6 Eh"),
  ("N-molecule CISD keeps a share falling like 1/√N", "known", "exact diagonalisation N ≤ 10; closed form to N = 160,000"),
  ("N·e₁ misses CISD by N(N−1)e₁², the molecule pairs", "tidy reading", "Lean <code>cisd_gap</code>"),
  ("Only corner weight k = 1 is size-consistent; k = ½ still drifts", "new here", "variational scan, N = 1 to 16"),
  ("Real CISD loses 0.71 kcal/mol (2 H₂) and 5.9 kcal/mol (2 H₂O)", "known", "PySCF runs in checks.py"),
- ("Spin multiplicities multiply, 2s mult-adds", "tidy reading", "36 cases; Lean <code>spin_multiplicity</code>"),
+ ("Spin multiplicities multiply, 2s combines by the circle operation", "tidy reading", "36 cases; Lean <code>spin_multiplicity</code>"),
 ]
-lean = [("fragments_multAdd","(1 + c<sub>A</sub>)(1 + c<sub>B</sub>) = 1 + c<sub>A</sub> ✳ c<sub>B</sub>"),("cisd_drops_corner","what CISD drops is c<sub>A</sub>c<sub>B</sub>"),
+lean = [("fragments_circ","(1 + c<sub>A</sub>)(1 + c<sub>B</sub>) = 1 + c<sub>A</sub> ∘₁ c<sub>B</sub>"),("cisd_drops_corner","what CISD drops is c<sub>A</sub>c<sub>B</sub>"),
  ("cisd_is_weight_zero, exact_is_weight_one","the two ends of the dial"),("n_fragments","1 + c<sub>N</sub> = (1 + c)<sup>N</sup>"),("fragments_assoc","joining N then M is joining N + M"),
  ("three_fragments, cisd_drops_three","the three-fragment corner expansion and what CISD loses"),("cisd_gap","the N(N − 1)e₁² gap"),("cisd_not_extensive","CISD is not size-extensive for N ≥ 2"),
- ("spin_multiplicity","(s₁+1)(s₂+1) = s₁ ✳ s₂ + 1"),("clebsch_gordan_square","the odd multiplicities of j ⊗ j fill a square")]
-n = build("index.html", title="Quantum chemistry and mult-add", tile=("1","Ψ","Quantum chemistry"),
- h1="Size-consistency is mult-add: CISD fails because it drops the corner",
- lead="Two molecules that don't interact have a wavefunction equal to the product of theirs, so their excited parts compose by mult-add. Truncated CI keeps only the edges and loses the corner; coupled cluster keeps it by working in the log of the lift.",
+ ("spin_multiplicity","(s₁+1)(s₂+1) = s₁ ∘₁ s₂ + 1"),("clebsch_gordan_square","the odd multiplicities of j ⊗ j fill a square")]
+n = build("index.html", title="Quantum chemistry and the circle operation", tile=("1","Ψ","Quantum chemistry"),
+ h1="Size-consistency is the circle operation: CISD fails because it drops the corner",
+ lead="Two molecules that don't interact have a wavefunction equal to the product of theirs, so their excited parts compose by the circle operation. Truncated CI keeps only the edges and loses the corner; coupled cluster keeps it by working in the log of the lift.",
  figs=[("25 / 25","numeric checks pass"),("12","Lean theorems, compiled"),("5.9 kcal/mol","CISD's error on two far-apart waters"),("k = 1","the only size-consistent corner weight")],
  picture=picture, caption="Share of the true correlation energy kept as identical molecules are added, for corner weight k = 0 (CISD), ½ and 1 (coupled cluster). Model: Δ = 1, g = 0.3, solved exactly in checks.py.",
  verdict_h="Lead check: not a lead",
- verdict="Size-consistency is fully understood in quantum chemistry: it is why coupled cluster replaced truncated CI decades ago. Mult-add explains it in one line, which makes this the clearest teaching picture of the failure, but it adds no prediction. The one small new fact, that a partial corner weight still fails, follows directly from the algebra.",
+ verdict="Size-consistency is fully understood in quantum chemistry: it is why coupled cluster replaced truncated CI decades ago. The circle operation explains it in one line, which makes this the clearest teaching picture of the failure, but it adds no prediction. The one small new fact, that a partial corner weight still fails, follows directly from the algebra.",
  sections=sections, claims=claims, lean_file="chemistry/01-quantum/lean/ChemQuantum.lean", lean_items=lean,
  files="In the project folder under math-theory/chemistry/01-quantum/: <code>checks.py</code> (25 checks, numpy and PySCF), <code>checks_output.txt</code>, <code>results.json</code>, <code>lean/ChemQuantum.lean</code>, <code>make_page.py</code>.",
  sources="Sources: Szabo and Ostlund, <i>Modern Quantum Chemistry</i> (1982), ch. 4 on size-consistency of truncated CI; Bartlett and Musiał, Rev. Mod. Phys. 79, 291 (2007), on coupled cluster; PySCF (Sun et al., WIREs Comput. Mol. Sci. 2018).",

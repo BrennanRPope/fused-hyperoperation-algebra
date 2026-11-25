@@ -2,29 +2,29 @@
   Axioms.Independence: none of M1–M4 follows from the others
   ===========================================================
 
-  For each mult-add axiom we give a structure where every other axiom holds
-  and that one fails. So the list in `Axioms.MultAddRing` has no spare part
+  For each circle-operation axiom (called mult-add axiom before 1.0) we give a structure where every other axiom holds
+  and that one fails. So the list in `Foundations.CircleRing` has no spare part
   among M1–M4. (A1–A4 are the usual abelian-group axioms; their independence
   is classical and not redone here.)
 
-  * no M1 (turning the box): 2×2 integer matrices, A ⊕ B = A + B + AB.
+  * no M1 (turning the box): 2×2 integer matrices, A ◯ B = A + B + AB.
   * no M2 (building a 3-D box two ways): a 3-number algebra with x·x = y,
-    y·y = x, x·y = 0, A ⊕ B = A + B + A·B.
-  * no M3 (the wall): whole numbers with a ⊕ b = a + b + 2ab, the weighted
+    y·y = x, x·y = 0, A ◯ B = A + B + A·B.
+  * no M3 (the wall): whole numbers with a ◯ b = a + b + 2ab, the weighted
     family at k = 2. Its wall would be −1/2, which is not a whole number.
-  * no M4 (cutting a box in two): whole numbers with a ⊕ b = a·b.
+  * no M4 (cutting a box in two): whole numbers with a ◯ b = a·b.
 
   LIBRARY NOTE: copied from axioms/lean/Axioms/Independence.lean (Nov 25) as Foundations/Independence.
 -/
 
-namespace MAFound.Independence
+namespace CircFound.Independence
 
 /-- The eight axioms, as statements about given operations. -/
 structure Ops (R : Type) where
   zero : R
   add : R → R → R
   neg : R → R
-  madd : R → R → R
+  circ : R → R → R
   wall : R
 
 variable {R : Type}
@@ -32,11 +32,11 @@ def A1 (o : Ops R) : Prop := ∀ a b c, o.add (o.add a b) c = o.add a (o.add b c
 def A2 (o : Ops R) : Prop := ∀ a b, o.add a b = o.add b a
 def A3 (o : Ops R) : Prop := ∀ a, o.add a o.zero = a
 def A4 (o : Ops R) : Prop := ∀ a, o.add (o.neg a) a = o.zero
-def M1 (o : Ops R) : Prop := ∀ a b, o.madd a b = o.madd b a
-def M2 (o : Ops R) : Prop := ∀ a b c, o.madd (o.madd a b) c = o.madd a (o.madd b c)
-def M3 (o : Ops R) : Prop := ∀ a, o.madd a o.wall = o.wall
+def M1 (o : Ops R) : Prop := ∀ a b, o.circ a b = o.circ b a
+def M2 (o : Ops R) : Prop := ∀ a b c, o.circ (o.circ a b) c = o.circ a (o.circ b c)
+def M3 (o : Ops R) : Prop := ∀ a, o.circ a o.wall = o.wall
 def M4 (o : Ops R) : Prop :=
-  ∀ a b c, o.madd a (o.add b c) = o.add (o.add (o.madd a b) (o.madd a c)) (o.neg a)
+  ∀ a b c, o.circ a (o.add b c) = o.add (o.add (o.circ a b) (o.circ a c)) (o.neg a)
 
 /-- The group part holds for whole numbers with ordinary +. -/
 def intOps (m : Int → Int → Int) (w : Int) : Ops Int := ⟨0, (· + ·), (- ·), m, w⟩
@@ -44,7 +44,7 @@ theorem int_group (m : Int → Int → Int) (w : Int) :
     A1 (intOps m w) ∧ A2 (intOps m w) ∧ A3 (intOps m w) ∧ A4 (intOps m w) := by
   refine ⟨?_, ?_, ?_, ?_⟩ <;> simp only [A1, A2, A3, A4, intOps] <;> intros <;> omega
 
-/-! ## No M4: a ⊕ b = a·b -/
+/-! ## No M4: a ◯ b = a·b -/
 
 theorem no_M4 :
     let o := intOps (· * ·) 0
@@ -136,4 +136,4 @@ theorem no_M2 :
   · intro x; apply Tri.ext' <;> simp only [triOps, Tri.add, Tri.mul] <;> grind
   · intro x y z; apply Tri.ext' <;> simp only [triOps, Tri.add, Tri.mul, Tri.neg] <;> grind
 
-end MAFound.Independence
+end CircFound.Independence

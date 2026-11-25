@@ -21,8 +21,8 @@ def disk(ax, title):
 
 # Figure 1: the 2D grid (6x6 torus) zeros in zeta = k^2 z across the dial
 Z = pickle.load(open("torus_zeros.pkl", "rb"))
-ks = [(4, "k = 4  (q = 5)"), (2, "k = 2  (q = 3)"), (1.0001, "k = 1  (q = 2)"), (0.5, "k = 0.5  (q = 1.5)"),
-      (0.1, "k = 0.1  (q = 1.1)"), (-1, "k = −1  (q = 0)"), (-2, "k = −2  (q = −1)")]
+ks = [(4, "k = 4"), (2, "k = 2"), (1.0001, "k = 1"), (0.5, "k = 0.5"),
+      (0.1, "k = 0.1"), (-1, "k = −1"), (-2, "k = −2")]
 fig, axs = plt.subplots(1, 7, figsize=(16, 2.9))
 for ax, (k, lab) in zip(axs, ks):
     disk(ax, lab)
@@ -46,7 +46,7 @@ for L, n in ((1, 40), (2, 20), (3, 14), (4, 10)):
     zs = [z - 1 for z in P[(L, n)]]
     c, m, s, lab = sty[L]
     ax.scatter([z.real for z in zs], [z.imag for z in zs], s=s, color=c, marker=m, label=lab, zorder=4, lw=0)
-for kv, name in ((-2, "k = −2\nparity"), (-1, "k = −1\nor"), (0, "k = 0\naddition"), (1, "k = 1\nmult-add")):
+for kv, name in ((-2, "k = −2\nparity"), (-1, "k = −1\nor"), (0, "k = 0\naddition"), (1, "k = 1\ncircle operation")):
     ax.axvline(kv, color=ORANGE if kv > -2 else "#bbbbbb", lw=1, ls=":", zorder=1)
     ax.text(kv, -2.25, name, ha="center", va="top", fontsize=9, color=INK)
 ax.set_xlim(-3.2, 3.6); ax.set_ylim(-2.0, 2.0); ax.axhline(0, color="#cccccc", lw=0.8)

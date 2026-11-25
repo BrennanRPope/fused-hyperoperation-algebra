@@ -12,8 +12,8 @@ Page: published as an artifact (see PAGES-INDEX.md, "power set dials"); source i
 - index.html: the page.
 
 ## Findings
-1. Count: sum over subsets of prod of dials = prod(1+t) = 1 + (t1 ✳ ... ✳ tn).
-2. Merging (OR-convolution, A∪B) mult-adds dials elementwise (Lean conv_W). Respecting disjoint union forces one dial per element. Unique nonneg square root of P(S): dial sqrt2-1 per element. P^alpha = dial 2^alpha - 1, P^a join P^b = P^(a+b).
+1. Count: sum over subsets of prod of dials = prod(1+t) = 1 + (t1 ∘₁ ... ∘₁ tn).
+2. Merging (OR-convolution, A∪B) combines dials elementwise by the circle operation ∘₁ (called mult-add before 1.0) (Lean conv_W). Respecting disjoint union forces one dial per element. Unique nonneg square root of P(S): dial sqrt2-1 per element. P^alpha = dial 2^alpha - 1, P^a join P^b = P^(a+b).
 3. Halves form a box; partner(t) = (1-t)/(1+t), corners = splits P(A)xP(S\A), centre sqrt2-1. Angle t = tan(theta): halves add to 45 deg (halves only; thirds don't).
 4. Complement A -> S\A turns t into 1/t, swaps union-merge and intersection-merge, fixes only t=1 (full P(S)). Union half sqrt2-1 vs intersection half sqrt2+1 (probabilities 0.293/0.707). No p is a half both ways.
 5. Primes: prod(1+p^-s) = zeta(s)/zeta(2s) (s>1). Participation c_p with average alpha gives counts ~ X (log X)^(alpha-1) (Selberg-Delange). Corner (p=1 mod 4), plain 1/2, merging half all measure alpha = 1/2. Tiny dials linearise, so halves agree; participation complement fixes 1/2 = merging half.

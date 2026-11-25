@@ -44,7 +44,7 @@ html{scroll-padding-top:72px}
 <h1>Can the dimension continuum reach 3D?</h1>
 <p class="lead"><b>No road opens.</b> Sliding the dimension from 2 to 3 is the same dial as turning the dissipation down from 5/4 to 1: every scaling threshold is a ray from one pivot point, so moving along dimension crosses exactly the rays that moving along dissipation does.</p>
 <p>2D is smooth for a different reason, one scaling can't see: its vortex-stretching corner is empty. In the shell-model toy that corner doesn't fade in. Any amount of it lets the cascade through; the amount only sets how fast.</p>
-<p>What mult-add does give is an exact ruler. The whole gap between what's proved and 3D Navier–Stokes is <a href="#rung">one full rung of mult-add's flow</a>, and every Osgood-type proof is stuck on the bottom rung.</p>
+<p>What the circle operation ∘₁ (called mult-add before 1.0) does give is an exact ruler. The whole gap between what's proved and 3D Navier–Stokes is <a href="#rung">one full rung of the circle operation's flow</a>, and every Osgood-type proof is stuck on the bottom rung.</p>
 <p class="soft">Nothing here is as promising as the soliton lead, and nothing here touches the Millennium problem. Each claim is tagged: <span class="tag t">proved here</span> <span class="tag k">known, restated</span> <span class="tag n">numerical evidence</span> <span class="tag s">speculation</span>.</p>
 </div>
 <figure style="margin:0"><img src="figures/f1_fan.png" alt="The (dimension, dissipation) plane with three scaling rays from the pivot (−2, 0) and the 2D column"><figcaption>The (n, α) plane. Green: Lions' critical ray, smooth on and above. Purple: the 2D column, smooth all the way down to α = 0. Orange: the fractional-dimension path at α = 1.</figcaption></figure>
@@ -66,15 +66,15 @@ html{scroll-padding-top:72px}
 </section>
 
 <section class="band" id="cube">
-<h2>The shell is the mult-add cube</h2>
+<h2>The shell is the circle-operation cube</h2>
 <div class="two">
 <div>
-<p>Where does the n in α = (n+2)/4 come from? From counting cells. Doubling an n-dimensional box of side 2<sup>j</sup> adds 2<sup>nj</sup>·(2<sup>n</sup> − 1) new cells, and 2<sup>n</sup> − 1 is exactly 1 mult-added to itself n times: 1 ⊕ 1 ⊕ … ⊕ 1. <span class="tag t">proved here (Lean, unchecked)</span></p>
+<p>Where does the n in α = (n+2)/4 come from? From counting cells. Doubling an n-dimensional box of side 2<sup>j</sup> adds 2<sup>nj</sup>·(2<sup>n</sup> − 1) new cells, and 2<sup>n</sup> − 1 is exactly 1 combined by the circle operation with itself n times: 1 ∘₁ 1 ∘₁ … ∘₁ 1. <span class="tag t">proved here (Lean, unchecked)</span></p>
 <p>The new cells come graded by the cube's layers: C(n, k) pieces where k of the n coordinates landed in the upper half. In 2D that's two strips and one corner. <span class="tag t">proved here (Lean, unchecked)</span></p>
 <p>The nonlinearity's strength in a shell goes like one derivative times the square root of the shell's cell count (Bernstein's inequality, as in Katz–Pavlović). That gives a growth factor 2<sup>1+n/2</sup> per shell against the dissipation's 2<sup>2α</sup>, and the critical line is 2α = 1 + n/2. <span class="tag k">known, restated</span></p>
-<p>The pivot n = −2 is where the coupling's growth factor is 1: its mult-add count is 0, the identity. That's the one geometric fact the fan has, and it is bookkeeping, not a new mechanism.</p>
+<p>The pivot n = −2 is where the coupling's growth factor is 1: its circle-operation count is 0, the identity. That's the one geometric fact the fan has, and it is bookkeeping, not a new mechanism.</p>
 </div>
-<figure style="margin:0"><img src="figures/f5_annulus.png" alt="Left: an 8 by 8 grid with the 4 by 4 corner pale, two strips mid-blue and one corner dark. Right: stacked bars of binomial layers for n = 1 to 5."><figcaption>Left: the 48 new cells of a doubled 4×4 box are 16 copies of 1 ⊕ 1 = 3: two strips and a corner. Right: the same split in dimensions 1 to 5.</figcaption></figure>
+<figure style="margin:0"><img src="figures/f5_annulus.png" alt="Left: an 8 by 8 grid with the 4 by 4 corner pale, two strips mid-blue and one corner dark. Right: stacked bars of binomial layers for n = 1 to 5."><figcaption>Left: the 48 new cells of a doubled 4×4 box are 16 copies of 1 ∘₁ 1 = 3: two strips and a corner. Right: the same split in dimensions 1 to 5.</figcaption></figure>
 </div>
 </section>
 
@@ -87,14 +87,14 @@ html{scroll-padding-top:72px}
 <li>True 3D Navier–Stokes needs D = s<sup>1/2</sup>.</li>
 </ul>
 <p>Both tests are Osgood tests, the same test that sorted the rung flows on the earlier page: a growth law lives forever exactly when its Osgood integral diverges. Here it sorts dissipations instead of growth laws.</p>
-<p>Now measure each D by how many rungs of mult-add's flow E<sup>t</sup> (E(x) = e<sup>x</sup> − 1) it sits above log s. Powers of log s are height 0. s<sup>1/2</sup> − 1 = E(½ log s) is height 1. That height is a known idea (the "exponentiality" of a function in Hardy-field and transseries theory), so the ruler is standard. Putting the Navier–Stokes gap on it gives a clean picture:</p>
+<p>Now measure each D by how many rungs of the circle operation's flow E<sup>t</sup> (E(x) = e<sup>x</sup> − 1) it sits above log s. Powers of log s are height 0. s<sup>1/2</sup> − 1 = E(½ log s) is height 1. That height is a known idea (the "exponentiality" of a function in Hardy-field and transseries theory), so the ruler is standard. Putting the Navier–Stokes gap on it gives a clean picture:</p>
 <div class="box green"><b>Everything proved or conjectured sits at height 0. 3D Navier–Stokes sits at height 1. No Osgood-type test can leave height 0</b>: any D that beats every power of log s makes ∫ d(log s)/D<sup>p</sup> converge, for any fixed p. <span class="tag t">proved here (on paper)</span></div>
 <p>The fractional rungs fill the gap with one ordered family, D<sub>t</sub>(s) = E<sup>t</sup>(½ log s). At t = 0 it's ½ log s, and at t = 1 it's s<sup>1/2</sup> − 1, which is exactly 3D Navier–Stokes. Each D<sub>t</sub> with 0 &lt; t &lt; 1 grows faster than every power of log s and slower than every power of s, so all of them sit strictly inside the gap. The classical in-between family exp((log s)<sup>β</sup>) all sit at height 1, as high as Navier–Stokes itself by this ruler. <span class="tag k">known, restated</span> (half-exponential bounds) <span class="tag n">checked numerically to s = 10<sup>300</sup></span></p>
 <div class="two">
 <figure><img src="figures/f2_rung_height.png" alt="Deficiency against frequency: Tao's edges flat near the bottom, rungs 0.25, 0.5, 0.75 rising, 3D NS steep"><figcaption>The deficiency D against frequency. Green: what's proved and conjectured. Blue: the fractional rungs. Red: 3D Navier–Stokes.</figcaption></figure>
 <figure><img src="figures/f3_osgood.png" alt="Osgood integrals: Tao's edge keeps growing, every positive rung levels off"><figcaption>Tao's test ∫ d(log s)/D⁴. Only the bottom rung keeps growing; every positive rung levels off almost at once.</figcaption></figure>
 </div>
-<p><b>What this does and doesn't buy.</b> It turns "close the gap" into a ladder of intermediate problems: is Navier–Stokes with deficiency E<sup>1/2</sup>(½ log s) smooth? A proof at any positive height would be a supercritical result beyond every known log improvement. Nothing here gives one, and I see no mult-add mechanism that would. <span class="tag s">speculation</span> One caveat from the checks: the asymptotic order between exp((log s)<sup>1/2</sup>) and the half rung only shows past s = 10<sup>300</sup>, so the heights are an asymptotic statement, not a visible one. 14 of 14 checks pass (<code>rung_height.py</code>).</p>
+<p><b>What this does and doesn't buy.</b> It turns "close the gap" into a ladder of intermediate problems: is Navier–Stokes with deficiency E<sup>1/2</sup>(½ log s) smooth? A proof at any positive height would be a supercritical result beyond every known log improvement. Nothing here gives one, and I see no circle-operation mechanism that would. <span class="tag s">speculation</span> One caveat from the checks: the asymptotic order between exp((log s)<sup>1/2</sup>) and the half rung only shows past s = 10<sup>300</sup>, so the heights are an asymptotic statement, not a visible one. 14 of 14 checks pass (<code>rung_height.py</code>).</p>
 </section>
 
 <section class="band" id="dyadic">
@@ -141,7 +141,7 @@ html{scroll-padding-top:72px}
 <tr><td>Critical line α = (n+2)/4; smooth on and above</td><td class="k">known</td><td>Lions 1969</td></tr>
 <tr><td>2D smooth for every α ≥ 0 (stretching vanishes)</td><td class="k">known</td><td>Wolibner, Yudovich</td></tr>
 <tr><td>All scaling thresholds are rays from (−2, 0); 3D NS shares a ray with 2D at α = 4/5</td><td class="t">proved here (arithmetic)</td><td>new framing of known scaling</td></tr>
-<tr><td>Dyadic shell count = n-fold mult-add of 1, graded by the cube's layers</td><td class="t">proved here (Lean, unchecked)</td><td>restatement of the binomial theorem</td></tr>
+<tr><td>Dyadic shell count = n-fold circle operation of 1, graded by the cube's layers</td><td class="t">proved here (Lean, unchecked)</td><td>restatement of the binomial theorem</td></tr>
 <tr><td>Tao's log room, (log s)<sup>1/4</sup>; conjectured (log s)<sup>1/2</sup>, proved for dyadic</td><td class="k">known</td><td>Tao 2009; Barbato–Morandin–Romito 2014</td></tr>
 <tr><td>Proved room is height 0, NS is height 1; Osgood tests can't leave height 0</td><td class="t">proved here (on paper)</td><td>new framing; heights are known (exponentiality)</td></tr>
 <tr><td>Fractional rungs E<sup>t</sup>(½ log s) form an ordered family strictly inside the gap</td><td class="k">known math</td><td>half-exponential bounds; checked to 10<sup>300</sup></td></tr>
@@ -155,7 +155,7 @@ html{scroll-padding-top:72px}
 <h2>Lean</h2>
 <p><code>lean/NSContinuum.lean</code>, core Lean 4.37.0-rc1 in the shared library's style, no <code>sorry</code>. <b>Not compiled:</b> no Lean toolchain was available here, and installing one needs your yes. It states:</p>
 <ul>
-<li><code>mpow_one_nat</code>, <code>annulus_cells</code>: doubling a box adds 2<sup>nj</sup>·1<sup>⊕n</sup> cells.</li>
+<li><code>mpow_one_nat</code>, <code>annulus_cells</code>: doubling a box adds 2<sup>nj</sup>·1<sup>∘₁n</sup> cells.</li>
 <li><code>annulus_graded</code>: 2<sup>n</sup> − 1 is the sum of the cube's layers 1 to n (uses the library's <code>binomial</code>).</li>
 <li><code>onRay</code> is reflexive, symmetric and transitive; <code>lions_on_2d_ray</code>, <code>ns3d_on_ray_of_2d_four_fifths</code>, <code>ns3d_supercritical</code>, <code>fan_pivot</code>, <code>ns3d_on_bmr_line</code>.</li>
 <li><code>k41_edge_at_four</code>: the constant-flux margin vanishes at n = 4.</li>

@@ -1,6 +1,6 @@
 """degree.py: the dimension of a statement, read from its algebra.
 
-The dimension of a mult-add picture is the number of rods multiplied together
+The dimension of a circle-operation picture is the number of rods multiplied together
 in its biggest piece: a + b is a rod (1), a + b + ab a rectangle (2),
 (1+a)(1+b)(1+c) a box (3), (1+a)^n a cube of any size (N). So we parse each
 Lean statement and take its polynomial degree in the variables, expanding the

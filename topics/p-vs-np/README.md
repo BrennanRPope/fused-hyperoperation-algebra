@@ -1,4 +1,4 @@
-# P vs NP: what can't work, and where mult-add touches it
+# P vs NP: what can't work, and where the circle operation touches it
 
 Nov 25, 2026. Lean module: `lean-library/FusedAlgebra/Topics/PvsNP.lean` (20 theorems,
 core Lean 4.37, no mathlib, no `sorry`, standard axioms only; library now 108 modules,
@@ -6,8 +6,8 @@ core Lean 4.37, no mathlib, no `sorry`, standard axioms only; library now 108 mo
 
 ## The result in two sentences
 
-Mult-add can't change P vs NP: on the shifted ruler it is ordinary multiplication, and
-Lean now proves that any circuit built from ⊞ and shifted add turns into an ordinary circuit
+The circle operation ∘₁ (called mult-add before 1.0) can't change P vs NP: on the shifted ruler it is ordinary multiplication, and
+Lean now proves that any circuit built from ∘₁ and shifted add turns into an ordinary circuit
 of exactly the same size, and back. Where it does say something real is the dial: folded
 over a problem's witnesses, k = −1 asks "is there one?" (NP), k = 0 asks "how many?" (#P),
 and k = −2 asks "odd or even?" (⊕P), which is a clean picture of known classes and a good
@@ -75,36 +75,36 @@ This is the counterexample-map spirit from the Fermat work: what can't work.
   would not imply P = NP. Raz and Tal (2018) found an oracle where BQP is not inside the
   polynomial hierarchy, so quantum and classical classes sit sideways to each other.
 
-## 4. Where mult-add touches the question, judged on its own merits
+## 4. Where the circle operation touches the question, judged on its own merits
 
 ### 4.1 The shifted ruler: no new power (proved)
 
-With shifted add a ⊕ b = a + b + 1 and mult-add a ⊞ b = a + b + ab, the map x ↦ 1 + x turns
-⊕ into + and ⊞ into ×, gate for gate. Lean (`evalS_lift`, `eval_from_shift`, `size_mapC`):
-every ⊕/⊞ circuit is a +/× circuit with the same wiring and size, and every +/× circuit is a
-⊕/⊞ circuit with the same wiring and size. So circuit size, VP vs VNP, and every algebraic
+With shifted add sadd(a, b) = a + b + 1 and the circle operation a ∘₁ b = a + b + ab, the map x ↦ 1 + x turns
+sadd into + and ∘₁ into ×, gate for gate. Lean (`evalS_lift`, `eval_from_shift`, `size_mapC`):
+every sadd/∘₁ circuit is a +/× circuit with the same wiring and size, and every +/× circuit is a
+sadd/∘₁ circuit with the same wiring and size. So circuit size, VP vs VNP, and every algebraic
 lower-bound question are identical in both worlds. **Not a lead.** This is the honest answer
 to "does anything change?": nothing does, and that's now a theorem rather than a hunch.
 
-The weighted family a + b + k·ab is the same story for every k ≠ 0 (it's ⊞ seen through
-x ↦ kx, `MultAdd.wAdd_scale`). At k = 0 it becomes plain addition. That's a contraction, not
+The circle operation a + b + k·ab is the same story for every k ≠ 0 (it's ∘₁ seen through
+x ↦ kx, `CircleOp.circK_scale`). At k = 0 it becomes plain addition. That's a contraction, not
 a tropical limit: the dial doesn't turn + into min.
 
 ### 4.2 The dial over witnesses: NP, #P, ⊕P and ModₚP at different settings (proved)
 
 Fold the dial over a list of yes/no witnesses and you get the q-integer of the number of yes
-answers, with q = k + 1 (`witness_fold`):
+answers, in base k + 1 (`witness_fold`):
 
-| Dial | q | The fold gives | The class |
+| Dial | k + 1 | The fold gives | The class |
 |---|---|---|---|
 | k = −1 | 0 | 1 if any witness, else 0 | NP ("is there one?"), `np_point` |
 | k = 0 | 1 | the number of witnesses | #P ("how many?"), `sharpP_point` |
 | k = −2 | −1 | 1 if odd, 0 if even | ⊕P ("odd or even?"), `parityP_point` |
-| qᵖ = 1 | p-th root of unity | the count mod p | ModₚP, `modp_period` |
+| (k + 1)ᵖ = 1 | p-th root of unity | the count mod p | ModₚP, `modp_period` |
 | k = 1 | 2 | 2ᵐ − 1, the whole count | #P again, `qnum_two_strictMono` |
 
 The picture is correct and tidy: NP is the one point on the dial that throws information away
-(`np_point_forgets`: one witness and five look the same at q = 0), and almost every other
+(`np_point_forgets`: one witness and five look the same at k = −1), and almost every other
 point keeps the count. It fits your theme of operations that keep information, with a twist:
 keeping information makes problems harder, not easier. Toda's theorem says counting (#P) is
 at least as strong as the whole polynomial hierarchy.
@@ -116,27 +116,27 @@ page for the project, because it puts NP, ⊕P, ModₚP and #P on one line as se
 same operation, and the known hardness jumps (permanent easy mod 2, hard mod 3; Valiant 1979)
 become places where the landscape changes character.
 
-### 4.3 Over the two-element field, mult-add is the OR gate (proved)
+### 4.3 Over the two-element field, the circle operation is the OR gate (proved)
 
 Over GF(2), a + b + ab is a OR b, and x ↦ 1 + x is NOT, so the lift
-1 + (a ⊞ b) = (1 + a)(1 + b) is De Morgan's law (`gf2_multAdd_is_or`,
+1 + (a ∘₁ b) = (1 + a)(1 + b) is De Morgan's law (`gf2_circ_is_or`,
 `gf2_lift_de_morgan`). Over the integers, the k = −1 version a + b − ab is the standard
 arithmetized OR.
 
-**Judgment:** this is where mult-add lives most naturally in complexity theory, and it's the
+**Judgment:** this is where the circle operation lives most naturally in complexity theory, and it's the
 most instructive negative finding here. The arithmetized OR is exactly what drives
 IP = PSPACE and the Razborov–Smolensky lower bounds, and those two families are precisely
 what the algebrization and natural-proofs barriers cover. So any P ≠ NP argument built mainly
-from mult-add's algebra on yes/no values sits inside known barrier territory. **Not a lead for
+from the circle operation's algebra on yes/no values sits inside known barrier territory. **Not a lead for
 P vs NP**, but a useful "what can't work" entry.
 
 ### 4.4 Easy because it factors (proved)
 
-The fold 1 ⊞ 1 ⊞ … ⊞ 1 over n inputs has 2ⁿ − 1 monomials but takes n − 1 gates
-(`foldMA_ones`), because 1 + (fold) = (1 + x₁)⋯(1 + xₙ) factors. The hard counting problems
+The fold 1 ∘₁ 1 ∘₁ … ∘₁ 1 over n inputs has 2ⁿ − 1 monomials but takes n − 1 gates
+(`foldCirc_ones`), because 1 + (fold) = (1 + x₁)⋯(1 + xₙ) factors. The hard counting problems
 (the permanent, #SAT) are hard because their sums don't factor: the constraints tie the
-variables together. Mult-add is the independent case. **Not a lead**; it explains why
-mult-add circuits are always easy.
+variables together. The circle operation is the independent case. **Not a lead**; it explains why
+circle-operation circuits are always easy.
 
 ### 4.5 The min-plus end
 
@@ -151,24 +151,24 @@ to general algorithms.
 
 ## 5. Leads worth following
 
-- **For P vs NP itself:** none from mult-add. The shifted ruler is provably the same
+- **For P vs NP itself:** none from the circle operation. The shifted ruler is provably the same
   computation, and the dial's natural home (arithmetized OR, counting) is covered by known
   barriers. Saying so plainly is the useful result.
 - **For the project:** one, the dial landscape of counting classes (4.2), drawn as a page:
-  NP at q = 0, ⊕P at q = −1, ModₚP at roots of unity, #P everywhere else, with the
+  NP at k = −1, ⊕P at k = −2, ModₚP at roots of unity, #P everywhere else, with the
   permanent's known jumps marked. It's a real organising picture of known math, not a new
   prediction.
 
 ## 6. The Lean theorems (FusedAlgebra/Topics/PvsNP.lean)
 
 - `size_mapC`, `evalS_lift`, `eval_from_shift`: circuits transport across the shifted ruler at equal size
-- `sAdd_lift`, `multAdd_sAdd_distrib`, `shifted_identities`: the shifted semiring (zero −1, one 0, −1 absorbs)
+- `sAdd_lift`, `circ_sAdd_distrib`, `shifted_identities`: the shifted semiring (zero −1, one 0, −1 absorbs)
 - `witness_fold`: the dial over witnesses is the q-integer of the witness count
 - `np_point`, `sharpP_point`, `parityP_point`: exists, count and parity at k = −1, 0, −2
 - `modp_period`: at a p-th root of unity only the count mod p matters
-- `np_point_forgets`, `qnum_two_nonneg`, `qnum_two_strictMono`: q = 0 forgets, q = 2 keeps the count
-- `gf2_multAdd_is_or`, `gf2_shift_is_not`, `gf2_lift_de_morgan`: over GF(2) mult-add is OR, the lift is De Morgan
-- `foldMA_ones`: n gates, 2ⁿ − 1 monomials
+- `np_point_forgets`, `qnum_two_nonneg`, `qnum_two_strictMono`: k = −1 forgets, k = 1 keeps the count
+- `gf2_circ_is_or`, `gf2_shift_is_not`, `gf2_lift_de_morgan`: over GF(2) circle operation is OR, the lift is De Morgan
+- `foldCirc_ones`: n gates, 2ⁿ − 1 monomials
 - `minplus_distrib`, `minplus_assoc`: min-plus semiring laws
 
 ## Sources

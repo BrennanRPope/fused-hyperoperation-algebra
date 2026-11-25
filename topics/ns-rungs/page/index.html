@@ -43,7 +43,7 @@ html{scroll-padding-top:72px}
 <section class="band plate">
 <div>
 <h1>Navier–Stokes, rung by rung</h1>
-<p class="lead">Each rung of Fused Hyperoperation Algebra gives the fluid equations one honest tool and hits one wall. Mult-add is the log that flattens all motion without spin. The fused exponent turns out to be exactly the double-exponential growth law that 2D flow is proved to obey, so in its coordinates the edge of safety is a straight line.</p>
+<p class="lead">Each rung of Fused Hyperoperation Algebra gives the fluid equations one honest tool and hits one wall. The circle operation ∘₁ (called mult-add before 1.0) is the log that flattens all motion without spin. The fused exponent turns out to be exactly the double-exponential growth law that 2D flow is proved to obey, so in its coordinates the edge of safety is a straight line.</p>
 <p>3D vortex stretching is a different animal: a self-feeding square that leaves the ladder altogether. In a helical shell-model toy, switching on any amount of right-meets-left coupling broke smoothness in finite time, later as the dial went down (blow-up time roughly ε<sup>−1.8</sup>). With the coupling off, nothing broke, and that part can be proved.</p>
 <p>Climbing higher doesn't help: tetration and pentation outgrow everything but never become infinite, so <a href="#higher">no rung matches stretching</a>.</p>
 <p class="soft">Nothing here solves the Millennium problem; this is how it looks through your lens. Every formula was checked in Python, the algebra was proved in core Lean, and the known/new line is near the end.</p>
@@ -57,7 +57,7 @@ html{scroll-padding-top:72px}
     <text x="52" y="398" font-weight="600">Rung 1 · a + b + 1</text>
     <text x="52" y="436" font-size="12.5">flow Y′ = 1 · heat, viscosity, pressure</text>
     <line x1="40" y1="305" x2="330" y2="305" stroke="var(--blue)" stroke-width="6"/>
-    <text x="52" y="293" font-weight="600">Rung 2 · mult-add a+b+ab</text>
+    <text x="52" y="293" font-weight="600">Rung 2 · circle operation a+b+ab</text>
     <text x="52" y="331" font-size="12.5">flow Y′ = Y · log flattens Burgers</text>
     <line x1="40" y1="200" x2="330" y2="200" stroke="var(--blue)" stroke-width="6"/>
     <text x="52" y="188" font-weight="600">Rung 3 · (1+a)<tspan dy="-6" font-size="10">1+b</tspan><tspan dy="6"> − 1</tspan></text>
@@ -86,22 +86,22 @@ html{scroll-padding-top:72px}
 
 <section class="band" id="rungs">
 <h2>The rungs, defined one way and checked</h2>
-<p>I used one rule for every rung: take the ordinary hyperoperation and look at it through x ↦ 1 + x. So <b>rung n</b> is a ⊛<sub>n</sub> b = H<sub>n</sub>(1+a, 1+b) − 1. On this numbering your "fused add" (mult-add) is rung 2, because it is multiplication seen through the shift; rung 1, a + b + 1, is plain addition with the zero moved.</p>
+<p>I used one rule for every rung: take the ordinary hyperoperation and look at it through x ↦ 1 + x. So <b>rung n</b> is the operation (a, b) ↦ H<sub>n</sub>(1+a, 1+b) − 1. On this numbering your "fused add" (the circle operation) is rung 2, because it is multiplication seen through the shift; rung 1, a + b + 1, is plain addition with the zero moved.</p>
 <div class="scroll"><table class="stack">
 <thead><tr><th>Rung</th><th>Operation</th><th>What straightens it</th><th>Flow from a fixed step</th></tr></thead>
 <tbody>
 <tr><td>1</td><td>a + b + 1</td><td>nothing needed</td><td>Y′ = λ (a line)</td></tr>
 <tr><td>2</td><td>a + b + ab = (1+a)(1+b) − 1</td><td>one log: L(a) = log(1+a)</td><td>Y′ = λY (exponential)</td></tr>
-<tr><td>3</td><td>(1+a)<sup>1+b</sup> − 1</td><td>two logs: LL(a ⊛ b) = LL(a) + L(b)</td><td>Y′ = λ Y log Y (double exponential)</td></tr>
+<tr><td>3</td><td>(1+a)<sup>1+b</sup> − 1</td><td>two logs: LL(fexp(a, b)) = LL(a) + L(b)</td><td>Y′ = λ Y log Y (double exponential)</td></tr>
 <tr><td>4</td><td>(1+a)↑↑(1+b) − 1</td><td>an Abel function (slowly)</td><td>Y′ ≈ Y log Y loglog Y</td></tr>
 </tbody></table></div>
-<p>Each rung is the rung below repeated: mult-add repeats shifted add, the fused exponent repeats mult-add, and fused tetration repeats the fused exponent on the exponent side. All three were proved in Lean.</p>
+<p>Each rung is the rung below repeated: the circle operation repeats shifted add, the fused exponent repeats the circle operation, and fused tetration repeats the fused exponent on the exponent side. All three were proved in Lean.</p>
 <h3>How the fused exponent behaves</h3>
 <ul>
-<li><b>Identity:</b> 0 is a right identity (a ⊛ 0 = a). There is no left identity: 0 is a left absorber (0 ⊛ b = 0), and the left element that would work depends on b.</li>
-<li><b>Not associative, not commutative:</b> (1 ⊛ 2) ⊛ 1 = 63 but 1 ⊛ (2 ⊛ 1) = 511; 1 ⊛ 2 = 7 but 2 ⊛ 1 = 8.</li>
-<li><b>It carries mult-add inside:</b> a ⊛ b = a ⊕ ((1+a)<sup>b</sup> − 1).</li>
-<li><b>Three clean laws</b>, the shifted forms of the exponent rules: right-distributes over mult-add, (a ⊕ b) ⊛ c = (a ⊛ c) ⊕ (b ⊛ c); tower law, (a ⊛ b) ⊛ c = a ⊛ (b ⊕ c); sum law, a ⊛ (b ⊞ c) = (a ⊛ b) ⊕ (a ⊛ c).</li>
+<li><b>Identity:</b> 0 is a right identity (fexp(a, 0) = a). There is no left identity: 0 is a left absorber (fexp(0, b) = 0), and the left element that would work depends on b.</li>
+<li><b>Not associative, not commutative:</b> fexp(fexp(1, 2), 1) = 63 but fexp(1, fexp(2, 1)) = 511; fexp(1, 2) = 7 but fexp(2, 1) = 8.</li>
+<li><b>It carries the circle operation inside:</b> fexp(a, b) = a ∘₁ ((1+a)<sup>b</sup> − 1).</li>
+<li><b>Three clean laws</b>, the shifted forms of the exponent rules: right-distributes over the circle operation, fexp(a ∘₁ b, c) = fexp(a, c) ∘₁ fexp(b, c); tower law, fexp(fexp(a, b), c) = fexp(a, b ∘₁ c); sum law, fexp(a, sadd(b, c)) = fexp(a, b) ∘₁ fexp(a, c).</li>
 <li><b>Two inverses:</b> a root, c = (1+a)<sup>1/(1+b)</sup> − 1, and a log, b = L(a)/L(c) − 1.</li>
 </ul>
 <p class="soft">19 of 19 numeric checks pass (<code>algebra_checks.py</code>).</p>
@@ -109,8 +109,8 @@ html{scroll-padding-top:72px}
 
 <section class="band" id="burgers">
 <h2>Rung 2 on Burgers: the empty corner is why shocks fuse</h2>
-<p>The mult-add log is Cole–Hopf: write u = −2ν ∂<sub>x</sub> log φ and Burgers becomes the heat equation for φ. Two waves sit on a square of terms: 1, e<sub>1</sub>, e<sub>2</sub> and the top corner e<sub>1</sub>e<sub>2</sub>. For Burgers that top corner must be <b>empty</b>. Each term solves the heat equation only if its rate equals ν·slope², and the corner misses by exactly −2ν a<sub>1</sub>a<sub>2</sub> (proved in Lean). With the corner empty, the two shocks meet at t = 8 and fuse into one, and the middle plateau is gone. That is information lost, the thing you dislike about 0 × 4 = 0.</p>
-<p>KdV is the same square with the corner <b>filled</b> by Hirota's weight A = ((k<sub>1</sub>−k<sub>2</sub>)/(k<sub>1</sub>+k<sub>2</sub>))². Then both solitons survive the collision with their heights kept, each shifted by log A. The PDE residual is 6×10<sup>−4</sup> with the right corner against 0.31 with plain mult-add (corner 1).</p>
+<p>The circle-operation log is Cole–Hopf: write u = −2ν ∂<sub>x</sub> log φ and Burgers becomes the heat equation for φ. Two waves sit on a square of terms: 1, e<sub>1</sub>, e<sub>2</sub> and the top corner e<sub>1</sub>e<sub>2</sub>. For Burgers that top corner must be <b>empty</b>. Each term solves the heat equation only if its rate equals ν·slope², and the corner misses by exactly −2ν a<sub>1</sub>a<sub>2</sub> (proved in Lean). With the corner empty, the two shocks meet at t = 8 and fuse into one, and the middle plateau is gone. That is information lost, the thing you dislike about 0 × 4 = 0.</p>
+<p>KdV is the same square with the corner <b>filled</b> by Hirota's weight A = ((k<sub>1</sub>−k<sub>2</sub>)/(k<sub>1</sub>+k<sub>2</sub>))². Then both solitons survive the collision with their heights kept, each shifted by log A. The PDE residual is 6×10<sup>−4</sup> with the right corner against 0.31 with the plain circle operation (corner 1).</p>
 <figure><img src="figures/n2_cube_waves.png" alt="Burgers shocks fusing and KdV solitons crossing, with their two-wave squares"><figcaption>Left: the two-wave square. Middle: u(x, t). Right: snapshots. Burgers loses a plateau; KdV keeps both waves.</figcaption></figure>
 <p>For Navier–Stokes, the same log flattens the gradient ("landscape") part of the flow, which the pressure soaks up. What is left is spin, as in the <a href="https://claude.ai/artifact/SkJga4ih1vuxS5ozxeZefF">earlier Navier–Stokes write-up</a>. Rung 2 cannot touch spin, because vorticity is not a gradient of anything.</p>
 </section>
@@ -150,8 +150,8 @@ html{scroll-padding-top:72px}
 <h2>Climbing higher: tetration and pentation don't match stretching</h2>
 <p class="lead">Short answer: no rung matches vortex stretching, however high. Tetration and pentation grow unimaginably fast but never become infinite, while stretching becomes infinite in finite time. What blow-up does match is plain rung-2 growth on a clock that counts the log of time left. That is the known self-similar picture, so this part renames known growth.</p>
 <h3>The two new rungs</h3>
-<p>Defined the same way: a ⊛<sub>4</sub> b = (1+a)↑↑(1+b) − 1 and a ⊛<sub>5</sub> b = (1+a)↑↑↑(1+b) − 1, for whole-number b. Both keep 0 as a right identity and as a left absorber. Each is the rung below repeated on the exponent side (proved in Lean). Neither is associative nor commutative: (1 ⊛<sub>4</sub> 1) ⊛<sub>4</sub> 1 = 255 but 1 ⊛<sub>4</sub> (1 ⊛<sub>4</sub> 1) = 65 535.</p>
-<p><b>The clean laws stop at rung 3.</b> Distributivity over mult-add, the tower law and the sum law all fail at rung 4, each with a small counterexample checked in Lean. Rung 2 was straightened by one log and rung 3 by two. No fixed stack of logs straightens rung 4: taking logs of a tower just leaves a shorter tower. It needs the super-logarithm (log*), which for in-between heights isn't even uniquely defined. So above rung 3 there is no algebra left to work with, only speed.</p>
+<p>Defined the same way: ftet(a, b) = (1+a)↑↑(1+b) − 1 and fpent(a, b) = (1+a)↑↑↑(1+b) − 1, for whole-number b. Both keep 0 as a right identity and as a left absorber. Each is the rung below repeated on the exponent side (proved in Lean). Neither is associative nor commutative: ftet(ftet(1, 1), 1) = 255 but ftet(1, ftet(1, 1)) = 65 535.</p>
+<p><b>The clean laws stop at rung 3.</b> Distributivity over the circle operation, the tower law and the sum law all fail at rung 4, each with a small counterexample checked in Lean. Rung 2 was straightened by one log and rung 3 by two. No fixed stack of logs straightens rung 4: taking logs of a tower just leaves a shorter tower. It needs the super-logarithm (log*), which for in-between heights isn't even uniquely defined. So above rung 3 there is no algebra left to work with, only speed.</p>
 <h3>Their growth, and the test</h3>
 <p>Repeating rung 4 with a fixed step stacks one more exponential per step. Its speed is Y · log Y · loglog Y ⋯, and the time to climb to height X is log* X. That never runs out, so it is still on the safe side of Osgood's line, and the same holds for pentation and every rung above. A self-feeding pole is different in kind: Y′ = Y² reaches infinity at a fixed time.</p>
 <p>The two leave different fingerprints in a cascade. Under a pole, each smaller shell takes a fixed fraction of the time the last one took. Under rung 3 or rung 4 growth, the steps shrink only like 1/n or 1/(n log n), so the ratio creeps toward 1.</p>
@@ -169,7 +169,7 @@ html{scroll-padding-top:72px}
 <div class="scroll"><table class="stack">
 <thead><tr><th>Piece</th><th>Status</th><th>Source</th></tr></thead>
 <tbody>
-<tr><td>Mult-add = shifted multiplication, linearized by log(1+x)</td><td><span class="tag k">known</span></td><td>multiplicative formal group law</td></tr>
+<tr><td>The circle operation = shifted multiplication, linearized by log(1+x)</td><td><span class="tag k">known</span></td><td>multiplicative formal group law</td></tr>
 <tr><td>Cole–Hopf (rung 2 on Burgers); the empty corner makes shocks merge</td><td><span class="tag k">known</span></td><td>Hopf 1950, Cole 1951</td></tr>
 <tr><td>Hirota's filled corner for KdV</td><td><span class="tag k">known</span></td><td>Hirota 1971</td></tr>
 <tr><td>Osgood's test; Y log Y as the borderline</td><td><span class="tag k">known</span></td><td>Osgood 1898</td></tr>
@@ -190,8 +190,8 @@ html{scroll-padding-top:72px}
 <h2>What Lean checked, and what it didn't</h2>
 <p><code>lean/FusedRungs.lean</code>, core Lean 4.37 (mathlib's download is blocked here), compiles clean with no <code>sorry</code>, standard axioms only. Proved, on whole numbers through x ↦ 1 + x:</p>
 <ul>
-<li>The lift of each rung; mult-add is commutative and associative with identity 0.</li>
-<li>Fused exponent: right identity, left absorber, carries mult-add, right distributivity, tower law, sum law, non-associativity (63 vs 511), non-commutativity.</li>
+<li>The lift of each rung; the circle operation is commutative and associative with identity 0.</li>
+<li>Fused exponent: right identity, left absorber, carries the circle operation, right distributivity, tower law, sum law, non-associativity (63 vs 511), non-commutativity.</li>
 <li>Each rung is the rung below repeated (rungs 2, 3 and 4); the base-side repeat of rung 3 is a double exponential.</li>
 <li>The Burgers corner defect −2ν a<sub>1</sub>a<sub>2</sub>, and that it vanishes only when one wave is flat.</li>
 <li>Rungs 4 and 5: lifts, right identity, left absorber, rung 5 = rung 4 repeated, small values, non-associativity, non-commutativity, and counterexamples showing distributivity, the tower law and the sum law all fail at rung 4.</li>

@@ -1,4 +1,4 @@
-"""Metabolism (as biology) through mult-add: checks. Run: python3 -I checks.py"""
+"""Metabolism (as biology) through the circle operation: checks. Run: python3 -I checks.py"""
 import numpy as np, math
 rng=np.random.default_rng(2); ok=tot=0
 def check(n,c,d=""):
@@ -31,7 +31,7 @@ for _ in range(300):
     V=k2*k4/(k2+k4); Ka=k4*(km1+k2)/(k1*(k2+k4)); Kb=k2*(km3+k4)/(k3*(k2+k4))
     v=pingpong_rate(k1,km1,k2,k3,km3,k4,1.0,A,B)
     emax2=max(emax2,abs(V/v-(1+wadd(0,Ka/A,Kb/B)))/(V/v))
-check("ordered mechanism, solved at steady state: V/v = 1 + (u_A ✳_k u_B), k = Kia/Ka (300 random rate sets)",emax<1e-10,f"{emax:.1e}")
+check("ordered mechanism, solved at steady state: V/v = 1 + (u_A ∘ₖ u_B), k = Kia/Ka (300 random rate sets)",emax<1e-10,f"{emax:.1e}")
 check("ping-pong mechanism, solved at steady state: V/v = 1 + u_A + u_B, dial k = 0 (300 sets)",emax2<1e-10,f"{emax2:.1e}")
 # random rapid-equilibrium with independent binding: k = 1
 KA,KB=0.3,2.0
@@ -58,24 +58,24 @@ for _ in range(100):
     u1,u2=10**rng.uniform(-2,2,2)
     mult=theta(u1)*theta(u2); assert abs(1/mult-(1+wadd(1,u1,u2)))<1e-9*(1/mult)
     add=1/(1+u1+u2); assert abs(1/add-(1+wadd(0,u1,u2)))<1e-12*(1/add)
-check("multiplicative two-nutrient Monod: 1/θ = 1 + (u1 ✳ u2) (100 cases)",True)
+check("multiplicative two-nutrient Monod: 1/θ = 1 + (u1 ∘₁ u2) (100 cases)",True)
 check("additive-resistance form: 1/θ = 1 + u1 + u2, dial 0 (100 cases)",True)
 # limitation 'or' law: 1 - θ1θ2 = λ1 (+)_-1 λ2 with λ = 1-θ
 u1,u2=0.7,2.4; l1,l2=1-theta(u1),1-theta(u2)
-check("total limitation 1 - θ1θ2 = λ1 ✳_(-1) λ2: limitations combine by the 'or' law",abs((1-theta(u1)*theta(u2))-wadd(-1,l1,l2))<1e-14)
+check("total limitation 1 - θ1θ2 = λ1 ∘₋₁ λ2: limitations combine by the 'or' law",abs((1-theta(u1)*theta(u2))-wadd(-1,l1,l2))<1e-14)
 # Liebig's minimum is not on the dial: compare max-error to best dial
 grid=np.logspace(-2,2,60); U1,U2=np.meshgrid(grid,grid)
 lieb=1/(1+np.maximum(U1,U2))
 best=min(((k,np.max(np.abs(1/(1+wadd(k,U1,U2))-lieb))) for k in np.linspace(-0.5,2,251)),key=lambda t:t[1])
 check("Liebig's minimum is not a dial setting: the best single k misses it by >5% somewhere",best[1]>0.05,f"best k={best[0]:.2f}, worst miss {best[1]:.3f}")
 
-# ---- 3. Saturation is the mult-add inverse
+# ---- 3. Saturation is the circle inverse
 inv=lambda u:-u/(1+u)
 for u in (0.1,1,9):
     check(f"free (unbound) fraction u/(1+u) = -inv(u) at u = {u}",abs(u/(1+u)+inv(u))<1e-15)
 check("bound fraction θ = 1 + inv(u): saturation is the lift of the inverse",abs(theta(3.0)-(1+inv(3.0)))<1e-15)
 
-# ---- 4. Kleiber 3/4: a mult-add power with fractional exponent, nothing more
+# ---- 4. Kleiber 3/4: a circle power with fractional exponent, nothing more
 mp=lambda a,n:(1+a)**n-1
 check("doubling body mass raises basal rate by mpow(1, 3/4) = 2^(3/4) - 1 = 68%",abs(mp(1,0.75)-(2**0.75-1))<1e-15,f"{mp(1,.75):.3f}")
 check("mass-specific rate falls by the inverse: 1 + inv(...) per doubling",abs((1+mp(1,0.75))/2-2**-0.25)<1e-15)

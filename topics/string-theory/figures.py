@@ -80,9 +80,9 @@ fig, ax = plt.subplots(figsize=(11, 5)); u = np.linspace(-2, 2, 400); R = np.exp
 for nn, w, col, lab in [(1, 0, BLUE, "momentum mode n=1 (mass 1/R)"), (0, 1, GREEN, "winding mode w=1 (mass R/alpha')"), (2, 0, BLUE, None), (0, 2, GREEN, None)]:
     ax.plot(u, np.sqrt((nn/R)**2 + (w*R)**2), color=col, lw=2 if nn + w == 1 else 1, ls="-" if nn + w == 1 else "--", label=lab)
 m = np.sqrt(np.maximum((1/R)**2 + R**2 - 2, 0)); ax.plot(u, m, color=RED, lw=2, label="n = w = 1 with N = 1, Ntilde = 0: massless only at R = sqrt(alpha')")
-ax.axvline(0, color=GRAY, ls=":"); ax.text(0.05, 6.3, "self-dual radius\nR = sqrt(alpha')\n= mult-add identity a = 0", fontsize=9)
+ax.axvline(0, color=GRAY, ls=":"); ax.text(0.05, 6.3, "self-dual radius\nR = sqrt(alpha')\n= circle-operation identity a = 0", fontsize=9)
 ax.annotate("", (1.5, 5.8), (-1.5, 5.8), arrowprops=dict(arrowstyle="<->", color=GRAY)); ax.text(-0.9, 6.0, "T-duality: u -> -u (mirror)", fontsize=9)
-ax.set_ylim(0, 7.5); ax.set_xlabel("u = log(R / sqrt(alpha'))  = log(1 + a), the mult-add flat coordinate at k = 1")
+ax.set_ylim(0, 7.5); ax.set_xlabel("u = log(R / sqrt(alpha'))  = log(1 + a), the circle-operation flat coordinate at k = 1")
 ax.set_ylabel("mass (units of 1/sqrt(alpha'))"); ax.set_title("T-duality: the spectrum is the same at R and alpha'/R (checks T1, T2, T5, T6)"); ax.legend(fontsize=9, loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=2)
 save(fig, "b1-t-duality-mirror.png")
 
@@ -207,7 +207,7 @@ ax.set_title("The genus dial: g_s counts joinings and splittings; 1/N^2 does the
 save(fig, "b8-genus-dial.png")
 
 # b9: borrow scorecard
-rows = [("T-duality R <-> alpha'/R", "shape matches: mult-add (k=1) inverse, u -> -u", "borrowable framing", GREEN),
+rows = [("T-duality R <-> alpha'/R", "shape matches: the circle operation (k=1) inverse, u -> -u", "borrowable framing", GREEN),
         ("Radius modulus", "rapidity of an O(1,1) boost = flat coordinate", "borrowable framing", GREEN),
         ("S-duality, SL(2,Z)", "dial group = Borel part; S itself is outside", "needs full SL(2) + lattice", AMBER),
         ("Modular invariance", "integrate over H/SL(2,Z): UV cut off", "needs the lattice (same gap as path-integral page)", AMBER),

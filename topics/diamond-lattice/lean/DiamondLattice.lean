@@ -31,10 +31,10 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Statistics
 
 namespace DiamondLattice
-open MultAdd
+open CircleOp
 open StatFused (lens)
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -279,7 +279,7 @@ theorem mirror_only_three (y : Rat) (h : (y - 1) ^ 2 * (y + 1) = y + 1) :
   have : (y + 1) * (y * (y - 2)) = 0 := by grind
   grind
 
-/-- The mult-add tie: parallel joins bond weights by mult-add, so the lift 1 + v multiplies. -/
-theorem parallel_weights (v w : Rat) : 1 + (v ✳ w) = (1 + v) * (1 + w) := multAdd_lift v w
+/-- The circle-operation tie (called mult-add tie before 1.0): parallel joins bond weights by the circle operation, so the lift 1 + v multiplies. -/
+theorem parallel_weights (v w : Rat) : 1 + (v ◯ w) = (1 + v) * (1 + w) := circ_lift v w
 
 end DiamondLattice

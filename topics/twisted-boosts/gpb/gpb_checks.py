@@ -1,7 +1,7 @@
 # Gravity Probe B through "twist = curvature x area".
-# Geodetic precession = velocity-space twist (Thomas-type, q = -1/c^2) + space-curvature holonomy.
+# Geodetic precession = velocity-space twist (Thomas-type, d = -1/c^2) + space-curvature holonomy.
 # Checks: exact Schwarzschild parallel transport (numeric ODE), Flamm-surface holonomy and curvature integral,
-# the mult-add combination of the two factors, GP-B numbers, frame dragging as a gravitomagnetic flux.
+# the circle-operation combination of the two factors, GP-B numbers, frame dragging as a gravitomagnetic flux.
 import numpy as np, sympy as sp, math
 ok=0; tot=0
 def check(name, cond):
@@ -71,7 +71,7 @@ for r in (4.0, 10.0, 50.0):
     # vector vs radial ends at -2π√(1-2/r); report mod 2π
     check(f"space slice r={r}M: carried vector comes back turned by 2π(1-√(1-2M/r)) = {want:.6f}", abs(((got - (-2*math.pi*math.sqrt(1-2/r)))+math.pi)%(2*math.pi)-math.pi) < 1e-8)
 
-# ---------- 3. the two factors fuse by mult-add ----------
+# ---------- 3. the two factors fuse by the circle operation ----------
 x = sp.symbols('x', positive=True)            # x = M/r
 s = sp.sqrt(1-2*x)                           # space factor (Flamm)
 v2 = x/(1-2*x)                               # local orbital speed² vs static observers
@@ -79,7 +79,7 @@ gam = 1/sp.sqrt(1-v2)
 check("local orbital speed: v² = M/(r-2M), so γ = √((r-2M)/(r-3M))", sp.simplify(gam**2 - (1-2*x)/(1-3*x)) == 0)
 check("exact factorization: √(1-3M/r) = √(1-2M/r) · (1/γ)  (squared exactly; and numerically on x in (0,1/3))", sp.simplify((1-3*x) - (1-2*x)*(1-v2)) == 0 and max(abs(float((sp.sqrt(1-3*x) - s/gam).subs(x,xx))) for xx in [0.001,0.05,0.1,0.2,0.3,0.33]) < 1e-14)
 ps = 1 - s; pv = 1 - 1/gam; ptot = 1 - sp.sqrt(1-3*x)
-check("precession fractions fuse: -p = (-p_space) ✳ (-p_velocity)  (since 1-p = (1-p_s)(1-p_v))", max(abs(float((-ptot - ((-ps)+(-pv)+(-ps)*(-pv))).subs(x,xx))) for xx in [0.001,0.05,0.1,0.2,0.3,0.33]) < 1e-14)
+check("precession fractions fuse: -p = (-p_space) ∘₁ (-p_velocity)  (since 1-p = (1-p_s)(1-p_v))", max(abs(float((-ptot - ((-ps)+(-pv)+(-ps)*(-pv))).subs(x,xx))) for xx in [0.001,0.05,0.1,0.2,0.3,0.33]) < 1e-14)
 check("first order: p_space ≈ M/r, p_velocity ≈ M/(2r), total ≈ 3M/(2r)",
       sp.series(ps,x,0,2).removeO()==x and sp.series(pv,x,0,2).removeO()==x/2 and sp.series(ptot,x,0,2).removeO()==sp.Rational(3,2)*x)
 check("velocity part to first order = Thomas: (γ-1) and (1-1/γ) both ≈ v²/2 = M/(2r)",

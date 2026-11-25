@@ -1,18 +1,18 @@
 PASS n-fold sum = a·U(n)/(U(n) − Q·U(n−1)) for all 16 map laws + 40 random laws  [2446 exact cases]
 PASS Lucas addition U(m+n+1) = U(m+1)U(n+1) − Q·U(m)U(n)
 PASS Cassini: U(n+1)² − U(n)U(n+2) = Qⁿ (determinant of the n-step)
-PASS mult-add: denominator U(n) − (1+a)U(n−1) = 1, so a^(⊕n) = (1+a)ⁿ − 1
+PASS The circle operation: denominator U(n) − (1+a)U(n−1) = 1, so a^(∘₁n) = (1+a)ⁿ − 1
 PASS law (a + b − ab)/(1 + ab): 1 ⊕ 1 ⊕ … (n times) = F(n)/F(n+1)  [1, 1/2, 2/3, 3/5, 5/8, …]
 PASS its walls are the roots of 1 − a − a² = 0: 1/φ and −φ
 PASS the counting marches into the wall 1/φ
-PASS the resistor ladder step is z ⊕ 1 in the mirror law (k, q) = (1, −1)
-PASS mirror: −((−a) ⊕ (−b)) at (k, q) is a ⊕ b at (−k, q)
+PASS the resistor ladder step is z ⊕ 1 in the mirror law (k, d) = (1, −1)
+PASS mirror: −((−a) ⊕ (−b)) at (k, d) is a ⊕ b at (−k, d)
 PASS smallest non-square wall discriminant of an integer law is 5 (the golden walls)  [next: [8, 12, 13, 17]]
 PASS slope addition at a = tan(π/n) has period n and turn number 4cos²(π/n)  [n = 3..12]
 PASS period 5 ⇔ turn number φ² = 2.618 or 1/φ² = 0.382 (golden)
 PASS U5 = (P² − Q)² − Q·P²: with Q = 1 it is (P² − P − 1)(P² + P − 1), golden roots
 PASS integer laws only ever cycle with period 1, 2, 3, 4 or 6 (never 5)  [periods seen: {2: 50, 3: 4, 4: 4}]
-PASS mult-add Fibonacci from 1, 1 is 2^F(n) − 1: 1, 1, 3, 7, 31, 255, 8191, …
+PASS Circle-operation Fibonacci from 1, 1 is 2^F(n) − 1: 1, 1, 3, 7, 31, 255, 8191, …
 PASS strong divisibility: gcd(x_m, x_n) = x_gcd (inherits Fibonacci's)
 PASS general start: 1 + x(n) = (1 + x0)^F(n−1) · (1 + x1)^F(n)
 PASS golden law's walls exist mod p exactly when p ≡ ±1 (mod 5): quadratic reciprocity for √5

@@ -1,6 +1,6 @@
 # Why does quantum mechanics need i? The twist, path integrals, and what existing work says (Nov 25, 2026)
 
-**Path integrals, first (Brennan's naming question).** "Path integrals are a special case of the weighted circle operation" is **true in a weaker, precise sense, and false as a blanket claim.** True: chaining the weighted circle operation over many short steps, with order kept, *is* the product integral (Volterra 1887), the time-ordered exponential behind every path integral; expanding that chain is literally a sum over paths; the slicing error is led by the twist; and a path's accumulated twist is its signed area, which becomes Feynman's p·dq phase once size is kept. Set the dial to k = −i/ħ and the chain of energy-times-time steps converges to the quantum propagator; set it real and you get the heat kernel (Feynman–Kac). Not supplied by the framework: the Hamiltonian or action, the size of ħ, and a rigorous measure on paths in real time. So the honest headline is "both are whole-chain compositions; Feynman's path integral is the weighted circle chain at an imaginary dial, with the dynamics put in" (section 5). Every piece is known; the dial reading is ours.
+**Path integrals, first (Brennan's naming question).** "Path integrals are a special case of the weighted circle operation" is **true in a weaker, precise sense, and false as a blanket claim.** True: chaining the weighted circle operation (called mult-add before 1.0) over many short steps, with order kept, *is* the product integral (Volterra 1887), the time-ordered exponential behind every path integral; expanding that chain is literally a sum over paths; the slicing error is led by the twist; and a path's accumulated twist is its signed area, which becomes Feynman's p·dq phase once size is kept. Set the dial to k = −i/ħ and the chain of energy-times-time steps converges to the quantum propagator; set it real and you get the heat kernel (Feynman–Kac). Not supplied by the framework: the Hamiltonian or action, the size of ħ, and a rigorous measure on paths in real time. So the honest headline is "both are whole-chain compositions; Feynman's path integral is the weighted circle chain at an imaginary dial, with the dynamics put in" (section 5). Every piece is known; the dial reading is ours.
 
 
 **Result.** Brennan's hunch, that the twist (the orientation of the order-cost area) is why i is required, matches a well-established idea: i can be read as an oriented area turned into an action, a quarter turn whose square is −1, and the sign of the twist is exactly the choice between i and −i. That part is known. What the literature adds is a caution: **orientation alone never gives i**. Every known road needs one more ingredient besides the twist: a length, or the rule that composing never changes total size, or carrying a state round a loop. None of the roads gives the size of ħ, and none settles why complex numbers rather than real numbers or quaternions; that is decided by how composite systems combine, and it is still argued in 2026.
@@ -8,7 +8,7 @@
 **What is ours.** Two small, honest connections, from known group theory read through the order dial:
 
 1. The order dial's stretch-and-shift group **is** the hyperbolic upper half-plane. Each map x ↦ λx + s is the point s + iλ; doing nothing is the point i; each dial k is a straight line through i that ends at its centre −1/k on the edge. The group's own length and its own twist give J = multiplication by i.
-2. **The wall −1/k is where mult-add maps start flipping i.** Mult-add elements before the wall keep the sign of every frequency; past the wall (1 + ka < 0) they flip it, exactly as swapping i for −i does.
+2. **The wall −1/k is where circle-operation maps start flipping i.** Circle-operation elements before the wall keep the sign of every frequency; past the wall (1 + ka < 0) they flip it, exactly as swapping i for −i does.
 
 **Lead worth following:** Klauder's *affine quantization* is built on this very group, with [Q, D] = iħQ in place of [Q, P] = iħ. It is the closest existing bridge from our affine twist to quantum mechanics, and it is where the order dial's i would enter. Next step: see whether the dial k (and its centre −1/k) has a natural meaning there.
 
@@ -22,7 +22,7 @@ Method (Brennan, Nov 25): build from existing published work, not new inventions
 
 ![Two parallelograms: A then B encloses + area counter-clockwise; B then A encloses − area clockwise](figures/fig1-the-twist.png)
 
-From [order-dial](../order-dial/): with (a, c) the map x ↦ (1 + a)x + c, the two orders differ by a pure shift a·d − b·c, an oriented area (check A1). Swap the order and the area flips sign (A2). Two mult-add elements with the same dial never twist (A3); with different dials k, k₂ the twist is (k − k₂)·a·b (A4).
+From [order-dial](../order-dial/): with (a, c) the map x ↦ (1 + a)x + c, the two orders differ by a pure shift a·d − b·c, an oriented area (check A1). Swap the order and the area flips sign (A2). Two circle-operation elements with the same dial never twist (A3); with different dials k, k₂ the twist is (k − k₂)·a·b (A4).
 
 ## 2. Six known roads from the twist to i
 
@@ -56,7 +56,7 @@ Carry a state round a closed loop of oriented area A and it comes back multiplie
 
 ### Road 5. Clifford algebra: a unit oriented plane squares to −1 (Hestenes)
 
-In geometric algebra the unit plane e₁e₂ is an oriented area element, and (e₁e₂)² = −1. Hestenes (1967 onward) rewrote the Dirac equation over the reals with the i replaced by the bivector of the electron's spin plane, so "iħ" reads as "spin plane times its size". This is the closest existing statement of Brennan's hunch, and the project's [Clifford page](../clifford/) already has the mult-add side: x✳y − y✳x = 2 x∧y.
+In geometric algebra the unit plane e₁e₂ is an oriented area element, and (e₁e₂)² = −1. Hestenes (1967 onward) rewrote the Dirac equation over the reals with the i replaced by the bivector of the electron's spin plane, so "iħ" reads as "spin plane times its size". This is the closest existing statement of Brennan's hunch, and the project's [Clifford page](../clifford/) already has the circle-operation side: x∘₁y − y∘₁x = 2 x∧y.
 
 ### Road 6. Real observables: the order cost is antisymmetric, so it needs a J (Stueckelberg 1960)
 
@@ -83,14 +83,14 @@ A J with J² = −1 can also come from quaternions, which have three of them (E4
 
 ### The wall flips i
 
-![Frequency spectra: start wave all positive; after a mult-add map before the wall still positive; past the wall all negative; complex conjugate also all negative](figures/fig7-the-wall-flips-i.png)
+![Frequency spectra: start wave all positive; after a circle-operation map before the wall still positive; past the wall all negative; complex conjugate also all negative](figures/fig7-the-wall-flips-i.png)
 
-Gelfand and Naimark (1947) showed the orientation-keeping stretch-and-shift group has exactly two big unitary representations, on positive-frequency and on negative-frequency waves (the same split behind wavelets: Grossmann, Morlet, Paul 1985). Orientation-keeping maps never mix them (G1). A mirror sends one to the other (G2), and so does i → −i (G3). For mult-add the mirror is built in: element a has stretch 1 + ka, which turns negative past the wall a = −1/k. Before the wall, mult-add maps keep each frequency's sign; past it they flip it (G4). **So the wall is where the twist reverses and i becomes −i.** Known group theory; the reading of the wall is ours.
+Gelfand and Naimark (1947) showed the orientation-keeping stretch-and-shift group has exactly two big unitary representations, on positive-frequency and on negative-frequency waves (the same split behind wavelets: Grossmann, Morlet, Paul 1985). Orientation-keeping maps never mix them (G1). A mirror sends one to the other (G2), and so does i → −i (G3). For the circle operation the mirror is built in: element a has stretch 1 + ka, which turns negative past the wall a = −1/k. Before the wall, circle-operation maps keep each frequency's sign; past it they flip it (G4). **So the wall is where the twist reverses and i becomes −i.** Known group theory; the reading of the wall is ours.
 
 ## 4. Verdict, lead by lead
 
 - **The twist hunch: right, and known.** The orientation of the order-cost area is the sign of i (Roads 2, 4, 5, 6). The precise version is: *twist + one more ingredient = i*. Stated alone, "the twist forces i" is not true, because an oriented area with nothing else allows infinitely many i's (Road 1) or none (the affine bracket by itself only stretches).
-- **Worth following: affine quantization (Klauder).** It quantizes exactly our stretch-and-shift group, with dilation D = (PQ + QP)/2 and [Q, D] = iħQ, and its irreducible pieces are Q > 0, Q < 0 and Q = 0, which look like the two sides of the wall and the wall itself (a resemblance, not yet checked). Concrete next step: rewrite [Q, D] = iħQ with Q shifted by the centre 1/k (so the dial picks where Q = 0 sits) and check whether mult-add composition becomes the affine coherent-state product. If it does, the order dial has a known quantum home where i enters by the size-keeping rule. No new prediction expected; the value is the bridge.
+- **Worth following: affine quantization (Klauder).** It quantizes exactly our stretch-and-shift group, with dilation D = (PQ + QP)/2 and [Q, D] = iħQ, and its irreducible pieces are Q > 0, Q < 0 and Q = 0, which look like the two sides of the wall and the wall itself (a resemblance, not yet checked). Concrete next step: rewrite [Q, D] = iħQ with Q shifted by the centre 1/k (so the dial picks where Q = 0 sits) and check whether circle-operation composition becomes the affine coherent-state product. If it does, the order dial has a known quantum home where i enters by the size-keeping rule. No new prediction expected; the value is the bridge.
 - **Worth keeping, small: the half-plane picture of the dials and the wall-flips-i reading.** Both are new framings of known facts, good for the README's "Where it unifies", not discoveries.
 - **Not answered by this route:** the size of ħ; why complex rather than real or quaternionic (composite systems decide, still disputed); dynamics.
 

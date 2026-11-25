@@ -8,7 +8,7 @@ def ok(name, cond):
     global n_ok
     assert cond, name; n_ok += 1; print("PASS", name)
 
-# 1. one edge = lift of weighted mult-add
+# 1. one edge = lift of the circle operation with dial k
 for k in (F(3), F(-2), F(1, 2)):
     x, y = F(2, 3), F(-5, 7)
     ok(f"edge gas k={k}", 1 + x + y + k * x * y == 1 + (x + y + k * x * y))

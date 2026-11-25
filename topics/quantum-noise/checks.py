@@ -1,4 +1,4 @@
-"""Quantum noise through the mult-add cube: numerical checks.
+"""Quantum noise through the circle-operation cube: numerical checks.
 Density-matrix simulations in plain numpy (no quantum library)."""
 import numpy as np, itertools
 rng = np.random.default_rng(7)
@@ -32,13 +32,13 @@ say(f"phase-flip p+q-2pq: max PTM error {fit('pf', phaseflip, lambda p,q: p+q-2*
 say(f"depolarizing p+q-(4/3)pq: max PTM error {fit('dp', depol, lambda p,q: p+q-4/3*p*q, (p,q)):.2e}")
 say(f"amplitude damping g+h-gh: max PTM error {fit('ad', ampdamp, lambda p,q: p+q-p*q, (p,q)):.2e}   <- the call's rule fits here (T1 decay)")
 
-say("\n== 2. Every rule is mult-add with a weight k: a + b + k*a*b, and (1 + k*a) multiplies ==")
+say("\n== 2. Every rule is the circle operation with a weight k: a + b + k*a*b, and (1 + k*a) multiplies ==")
 for name, k, chan in [("amplitude damping", -1, ampdamp), ("bit-flip", -2, bitflip), ("depolarizing", -4/3, depol)]:
     n = 6; pp = 0.05
     K = chan(pp)
     for _ in range(n-1): K = compose(K, chan(pp))
     R = ptm(K)
-    pred = (1 - (1 + k*pp)**n) / (-k)   # n-fold weighted mult-add
+    pred = (1 - (1 + k*pp)**n) / (-k)   # n-fold circle operation with dial k
     if name == "amplitude damping": got = 1 - R[1,1]**2   # R_xx = sqrt(1-g)
     elif name == "bit-flip": got = (1 - R[3,3]) / 2
     else: got = (1 - R[1,1]) * 3/4

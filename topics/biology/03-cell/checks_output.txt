@@ -1,4 +1,4 @@
-PASS Bliss independence (survivals multiply) = plain ✳ on effect odds o = E/(1-E) | 1.9e-14
+PASS Bliss independence (survivals multiply) = plain ∘₁ on effect odds o = E/(1-E) | 1.9e-14
 PASS Bliss in effect terms is the 'or' law, dial -1
 PASS Chou–Talalay with α = -1 gives the Highest Single Agent model exactly (300 cases)
 PASS α = 0 is Loewe; with slopes 1 the effect odds simply add (dial 0 on odds)

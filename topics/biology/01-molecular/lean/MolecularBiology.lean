@@ -7,26 +7,25 @@
   1. Helix–coil (Zimm–Bragg) is the dial gas: with the two states relabelled, its transfer
      matrix is the Lee–Yang ring matrix with dial k = 1/σ and fugacity z = σ·s. So every odd
      ring of a helix–coil chain vanishes at s = −1, the wall, for every σ.
-  2. Two binding sites: Z = 1 + a + b + ω·ab = 1 + (a ✳_ω b). The cooperativity ω is the dial.
-  3. MWC allostery is a sum of two mult-add powers, dial 1 (R state) and dial c (T state).
+  2. Two binding sites: Z = 1 + a + b + ω·ab = 1 + (a ◯_ω b). The cooperativity ω is the dial.
+  3. MWC allostery is a sum of two circle powers (called mult-add powers before 1.0), dial 1 (R state) and dial c (T state).
   4. Copying fidelity: catches combine by the "or" law (dial −1); Eigen's error threshold is
-     where the fitness advantage is the mult-add inverse of the copy loss.
+     where the fitness advantage is the circle inverse of the copy loss.
 -/
 import FusedAlgebra.Base
 import FusedAlgebra.Topics.LeeYang
 
 namespace MolecularBiology
-open MultAdd LeeYang LeeYang.Mat2
+open CircleOp LeeYang LeeYang.Mat2
 
 set_option linter.unusedSectionVars false
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
 
-theorem star_def (a b : R) : a ✳ b = a + b + a * b := rfl
+theorem star_def (a b : R) : a ◯ b = a + b + a * b := rfl
 
 /-! ## 1. Helix–coil is the dial gas -/
 
@@ -84,15 +83,15 @@ theorem zb_free (s : R) : det (zb 1 s) = 0 := by rw [zb_det]; grind
 /-- The two-site binding polynomial. -/
 def bind2 (ω a b : R) : R := 1 + a + b + ω * a * b
 
-theorem bind2_is_wAdd (ω a b : R) : bind2 ω a b = 1 + wAdd ω a b := by
-  unfold bind2 wAdd; grind
+theorem bind2_is_circK (ω a b : R) : bind2 ω a b = 1 + circK ω a b := by
+  unfold bind2 circK; grind
 
-/-- Independent sites (ω = 1): the polynomial factors, plain mult-add. -/
+/-- Independent sites (ω = 1): the polynomial factors, the plain circle operation. -/
 theorem bind2_independent (a b : R) : bind2 1 a b = (1 + a) * (1 + b) := by
   unfold bind2; grind
 
-theorem bind2_independent' (a b : R) : bind2 1 a b = 1 + (a ✳ b) := by
-  unfold bind2 multAdd; grind
+theorem bind2_independent' (a b : R) : bind2 1 a b = 1 + (a ◯ b) := by
+  unfold bind2 circ; grind
 
 /-- Exclusive sites (ω = 0): only one can be filled, plain addition. -/
 theorem bind2_exclusive (a b : R) : bind2 0 a b = 1 + a + b := by
@@ -107,15 +106,15 @@ theorem bind2_excess (ω a b : R) : bind2 ω a b - (1 + a) * (1 + b) = (ω - 1) 
 theorem bind2_half (ω x : R) : 2 * (x + ω * x * x) - bind2 ω x x = ω * x * x - 1 := by
   unfold bind2; grind
 
-/-! ## 3. MWC allostery: two mult-add powers -/
+/-! ## 3. MWC allostery: two circle powers -/
 
-/-- R state: the plain mult-add power, lifted. -/
+/-- R state: the plain circle power, lifted. -/
 theorem mwc_R (a : R) (n : Nat) : (1 + a) ^ n = 1 + mpow a n := (mpow_lift a n).symm
 
 /-- T state: the weighted power at dial c, lifted. -/
 theorem mwc_T (c a : R) (n : Nat) : (1 + c * a) ^ n = 1 + c * wpow c a n := (wpow_lift c a n).symm
 
-/-- The MWC binding polynomial (1 + a)ⁿ + L(1 + c·a)ⁿ written as two mult-add powers. -/
+/-- The MWC binding polynomial (1 + a)ⁿ + L(1 + c·a)ⁿ written as two circle powers. -/
 theorem mwc_poly (L c a : R) (n : Nat) :
     (1 + a) ^ n + L * (1 + c * a) ^ n = (1 + mpow a n) + L * (1 + c * wpow c a n) := by
   rw [mwc_R, mwc_T]
@@ -129,41 +128,41 @@ theorem mwc_c_one (L a : R) (n : Nat) :
 /-! ## 4. Copying fidelity -/
 
 /-- A mistake survives two checks only if both miss: catches combine by the "or" law. -/
-theorem catch_two (c₁ c₂ : R) : 1 - wAdd (-1) c₁ c₂ = (1 - c₁) * (1 - c₂) := by
-  unfold wAdd; grind
+theorem catch_two (c₁ c₂ : R) : 1 - circK (-1) c₁ c₂ = (1 - c₁) * (1 - c₂) := by
+  unfold circK; grind
 
 theorem catch_three (c₁ c₂ c₃ : R) :
-    1 - wAdd (-1) (wAdd (-1) c₁ c₂) c₃ = (1 - c₁) * (1 - c₂) * (1 - c₃) := by
-  unfold wAdd; grind
+    1 - circK (-1) (circK (-1) c₁ c₂) c₃ = (1 - c₁) * (1 - c₂) * (1 - c₃) := by
+  unfold circK; grind
 
 /-- Copying a genome of L bases with error μ per base keeps the master with chance
-    (1 − μ)^L = 1 + mpow(−μ, L): the copy loss is a mult-add power. -/
+    (1 − μ)^L = 1 + mpow(−μ, L): the copy loss is a circle power. -/
 theorem copy_loss (μ : R) (L : Nat) : (1 - μ) ^ L = 1 + mpow (-μ) L := by
   rw [mpow_lift]
   have : (1 : R) - μ = 1 + -μ := by grind
   rw [this]
 
-/-- Eigen: the master's growth factor σ·(1 + l) minus 1 is the mult-add of the advantage
+/-- Eigen: the master's growth factor σ·(1 + l) minus 1 is the circle operation of the advantage
     s = σ − 1 and the copy loss l. -/
-theorem eigen_excess (s l : R) : (1 + s) * (1 + l) - 1 = s ✳ l := by
-  unfold multAdd; grind
+theorem eigen_excess (s l : R) : (1 + s) * (1 + l) - 1 = s ◯ l := by
+  unfold circ; grind
 
 end Ring
 
 section Field
 variable {K : Type} [Lean.Grind.Field K]
 
-/-- **Eigen's error threshold is the mult-add inverse.** Away from the wall (1 + l ≠ 0), the
-    master just holds its own (s ✳ l = 0) exactly when s is the mult-add inverse of l. -/
-theorem eigen_threshold (s l : K) (h : 1 + l ≠ 0) : s ✳ l = 0 ↔ s = multAddInv l := by
-  unfold multAdd multAddInv
+/-- **Eigen's error threshold is the circle inverse.** Away from the wall (1 + l ≠ 0), the
+    master just holds its own (s ◯ l = 0) exactly when s is the circle inverse of l. -/
+theorem eigen_threshold (s l : K) (h : 1 + l ≠ 0) : s ◯ l = 0 ↔ s = circInv l := by
+  unfold circ circInv
   constructor
   · intro e; grind
   · intro e; rw [e]; grind
 
 /-- A site sitting at the wall −1/ω makes the binding polynomial forget the other site. -/
 theorem bind2_wall (ω a : K) (hω : ω ≠ 0) : bind2 ω a (-1 / ω) = 1 - 1 / ω := by
-  rw [bind2_is_wAdd, wAdd_wall ω a hω]; grind
+  rw [bind2_is_circK, circK_wall ω a hω]; grind
 
 end Field
 

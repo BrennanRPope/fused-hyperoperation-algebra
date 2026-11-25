@@ -40,7 +40,7 @@ Four questions for each candidate:
 - **Stable end:** does the dial have an endpoint that is a consistent theory in its own right?
 - **Form forced:** is the deformation away from that end unique?
 - **Size fixed:** does anything fix the dial's value?
-- **Fits our dial:** does it compose by our weighted circle operation (mult-add, wall at −1/k) or sit on the dial map?
+- **Fits our dial:** does it compose by our weighted circle operation (called mult-add before 1.0; wall at −1/k) or sit on the dial map?
 
 The first three rows meet in one number (section 4).
 
@@ -102,7 +102,7 @@ These are three routes to one number. That is the main result of this search.
 
 - Schwarzschild's g_tt = 1 + kx with x = M/r and k = −2G/c². **Reading ours:** the horizon is the wall −1/k of this lift, and past it the lift goes negative, where time and radius trade roles (W1).
 - The slope at the wall is the surface gravity c⁴/(4GM). With the 2π period it gives Hawking's temperature, 6.17 × 10⁻⁸ K for a solar mass (W2, same as e-i-pi C23).
-- Limit: redshift factors between shells do compose by mult-add, but their dial is 1/c², not G. Masses do not compose this way (W3; dial-map G1–G2). So this places G in the picture without making it a dial.
+- Limit: redshift factors between shells do compose by the circle operation, but their dial is 1/c², not G. Masses do not compose this way (W3; dial-map G1–G2). So this places G in the picture without making it a dial.
 
 ## 7. Running G
 
@@ -113,7 +113,7 @@ Asymptotic safety lets the dimensionless g = Gk² run from a Gaussian point (ord
 ## 8. The rest, briefly
 
 - **κ-Poincaré (known, already matched).** Massless momenta compose as a + b + k·ab with k = −1/E_P (K1, from [kappa-poincare](../../kappa-poincare/)). Relative locality isolates E_P by sending ħ, G → 0 with ħ/G fixed (R1). That is a dial on E_P, where G enters only through ħ/G.
-- **Jacobson (known).** Einstein's equations follow from δQ = T dS with entropy per area η = c³/(4Għ), so G = c³/(4ħη) (J1). G → 0 means infinitely many states per area. **Reading ours:** state counts multiply, so N − 1 composes by mult-add at dial 1 and log N is the flat coordinate (J2). The general version is Tsallis composition, which leaves the local equations unchanged (gr-bridges J5). It moves the question to a state count; it does not dial G.
+- **Jacobson (known).** Einstein's equations follow from δQ = T dS with entropy per area η = c³/(4Għ), so G = c³/(4ħη) (J1). G → 0 means infinitely many states per area. **Reading ours:** state counts multiply, so N − 1 composes by the circle operation at dial 1 and log N is the flat coordinate (J2). The general version is Tsallis composition, which leaves the local equations unchanged (gr-bridges J5). It moves the question to a state count; it does not dial G.
 - **Generalized uncertainty (known).** [x, p] = iħ(1 + βp²) gives Δx_min = ħ√β (U1). β ~ ℓ_P²/ħ² inherits G through ℓ_P. It is the ℓ of section 3 seen from one side.
 - **Newton–Cartan / Carroll (known).** Ehlers' frame theory dials λ = 1/c² with G held fixed, and G survives the Newtonian end (E1). These are dials on c.
 - **Teleparallel (known).** It dials combinations of torsion, not G. Covered in gr-bridges.
@@ -143,7 +143,7 @@ Asymptotic safety lets the dimensionless g = Gk² run from a Gaussian point (ord
 | γ² = 1 UV fixed point in Euclidean signature | Known (Benedetti–Speziale 2011) |
 | γ values from state counting | Known (Meissner; Ghosh–Mitra; ABCK) |
 | Horizon as the wall of g_tt = 1 + kx | **Ours** (reading) |
-| Horizon state counts compose by mult-add | **Ours** (reading); Tsallis version known |
+| Horizon state counts compose by the circle operation | **Ours** (reading); Tsallis version known |
 | Affine flow maps in 1/g | **Ours** (weak fit) |
 | Jacobson, κ-Poincaré, relative locality, GUP, Ehlers, teleparallel | Known |
 

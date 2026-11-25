@@ -1,8 +1,8 @@
 /-
-  Kummer and Wilson on the mult-add cube
+  Kummer and Wilson on the circle-operation cube (called mult-add cube before 1.0)
   ======================================
 
-  Part of Fused Mult-Add Algebra. Builds on CubeProofs.lean (the cube's
+  Part of Fused Hyperoperation Algebra. Builds on CubeProofs.lean (the cube's
   layer counts, primes, Fermat). Pictures: ../fig_kummer_wilson.py.
 
   STATUS: core Lean 4 only (no mathlib), no `sorry`, only Lean's standard
@@ -27,13 +27,13 @@
   * wilson_iff:   for n ≥ 2, (n−1)! ≡ −1 (mod n) exactly when n is prime.
 
   Both theorems are classical. What is new here is only the formal check
-  in core Lean and the reading on the cube and the mult-add circle.
+  in core Lean and the reading on the cube and the circle-operation circle.
 
   LIBRARY NOTE: imports the topology CubeProofs module; fact now comes from FusedAlgebra.Cube.
 -/
 import FusedAlgebra.Topics.Topology.CubeProofs
 
-namespace MultAdd.Cube
+namespace CircleOp.Cube
 
 /-! ## Kummer: carries -/
 
@@ -496,4 +496,4 @@ theorem wilson_iff (n : Nat) (hn : 2 ≤ n) : MEq n (fact (n - 1)) (-1) ↔ IsPr
 example : fact 6 = 720 ∧ 720 % 7 = 6 := by decide
 example : carries 3 5 4 0 = 2 ∧ layer 9 4 = 126 ∧ val 3 126 = 2 := by decide +kernel
 
-end MultAdd.Cube
+end CircleOp.Cube

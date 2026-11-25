@@ -2,7 +2,7 @@
  "nodes": [
   {
    "id": "MA",
-   "label": "mult-add a+b+kab lift 1+k(a*b)=(1+ka)(1+kb)",
+   "label": "the circle operation a+b+kab lift 1+k(a*b)=(1+ka)(1+kb)",
    "layer": 0
   },
   {
@@ -67,7 +67,7 @@
   },
   {
    "id": "EM",
-   "label": "EM fixes q = -1/c^2",
+   "label": "EM fixes d = -1/c^2",
    "layer": 2
   },
   {
@@ -212,7 +212,7 @@
    "source": "MA",
    "target": "CH",
    "kind": "proved in Lean",
-   "note": "chain_two, chain_three (WhyI); foldMA_lift (Base)"
+   "note": "chain_two, chain_three (WhyI); foldCirc_lift (Base)"
   },
   {
    "source": "MA",

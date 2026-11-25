@@ -1,6 +1,6 @@
 PASS A1 n copies of x/n under o_k equal ((1 + kx/n)^n - 1)/k (the lift multiplies)
 PASS A2 real dial: chain of 1/n steps -> e - 1, error ~ 1/n (e is the lift of one whole unit)  | errors 1.2e-01, 1.3e-02, 1.4e-03, 1.4e-04
-PASS A3 every dial is mult-add after scaling the inputs by k: k(a o_k b) = (ka) o_1 (kb)  | so 'which dial' over the complex numbers = 'which direction the inputs point'
+PASS A3 every dial is the circle operation after scaling the inputs by k: k(a o_k b) = (ka) o_1 (kb)  | so 'which dial' over the complex numbers = 'which direction the inputs point'
 PASS A4 the lift keeps size 1 for every x exactly when k is purely imaginary (i is the size-keeping dial)  | k=0.7i: 4.4e-16;  k=0.05+0.7i: 0.65
 PASS A5 one short step: |1 + k*eps| = 1 + Re(k)*eps + O(eps^2), so size-keeping forces Re k = 0
 PASS A6 at k = i the flow first returns to 0 at x = 2*pi (pi is half the turn)  | x0 = 6.283190
@@ -9,7 +9,7 @@ PASS A8 Euler by pure chaining: 400,000 steps of pi/400000 at k = i land within 
 PASS A9 discrete Euler over Gaussian integers (k = 1): q = -1+i (lift i); q o q = -2; four copies = 0
 PASS A10 flat coordinate log(1+kx)/k turns o_k into + (up to whole turns 2*pi*i/k)
 PASS A11 k = -i walks the same circle the other way: flow(-i, x) = conj(flow(i, x)) for real x
-PASS B1 Hardy's K_AB = K_A K_B is mult-add of parameter counts: (K_A-1) o_1 (K_B-1) = K_AB - 1 (any K = N^r)
+PASS B1 Hardy's K_AB = K_A K_B is the circle operation of parameter counts: (K_A-1) o_1 (K_B-1) = K_AB - 1 (any K = N^r)
 PASS B2 complex: products of local Hermitian 2x2 span all 16 Hermitian 4x4; two-qubit 15 = 3 + 3 + 3*3 = 3 o 3
 PASS B3 real: local products give 9 of the 10 real symmetric 4x4 directions; 2 o 2 = 8 but K_AB - 1 = 9 (one hidden)  | the hidden one is sigma_y (x) sigma_y
 PASS B4 that hidden joint parameter is J (x) J, two local quarter turns (J = -i sigma_y): J(x)J = -sigma_y(x)sigma_y

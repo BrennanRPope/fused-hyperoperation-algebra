@@ -8,7 +8,7 @@
   Intended module path: FusedAlgebra/Topics/DiamondLattice.lean (builds after Topics/Statistics).
 
 Main theorems: dmap_formula, dmap_even, quotient_rule, wall_one, wall_colour, colour_wall_doubles, lift_mul, lift_weight,
-lift_dmap (one step = square in t, then square in the lift), disc_square (p^2 - 4q = Q^2), wall_gap, bend_recip, fixed_factor,
+lift_dmap (one step = square in t, then square in the lift), disc_square (p^2 - 4d = Q^2), wall_gap, bend_recip, fixed_factor,
 param_cubic, param_fixed, dmap_fixed_param (t = 1/y fixed when Q = (y-1)^2(y+1)), crs_cubic, dden_at_fixed,
 slope_at_fixed (slope 4/(1+t)^2 at every nontrivial fixed point), slope_in_y, three/sixteen/fortyfive fixed and slope,
 golden_slope, ising_slope, fold_identity (32/27 - Q(y) = (y+1/3)^2(5/3-y)), fold_ferro_fixed/slope, fold_neutral,

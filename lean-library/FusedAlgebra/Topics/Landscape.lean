@@ -5,8 +5,8 @@
   Every identity below was also checked symbolically with sympy (../algebra_checks.py).
 
   LIBRARY NOTE: copied from landscape/lean/LandscapeMap.lean (Nov 25) and compiled here for the
-  first time with core Lean 4.37.0-rc1. The numerator is the base's weighted mult-add
-  (num p = wAdd p), so commutativity, the identity and the dial come from FusedAlgebra.Base;
+  first time with core Lean 4.37.0-rc1. The numerator is the base's circle operation (called weighted
+  mult-add before 1.0) (num p = circK p), so commutativity, the identity and the dial come from FusedAlgebra.Base;
   their landscape names stay as one-line readings of the base laws.
 
   The map's plane: a point (p, q) is the law
@@ -18,20 +18,20 @@
 import FusedAlgebra.Base
 
 namespace LandscapeMap
-open MultAdd
+open CircleOp
 
 /-- numerator and denominator of F_{p,q}(a, b) -/
-def num (p a b : Int) : Int := wAdd p a b
+def num (p a b : Int) : Int := circK p a b
 def den (q a b : Int) : Int := 1 - q * a * b
 
 /-! ### 1. Every point of the plane is a group law -/
 
 /-- commutativity, numerator and denominator separately -/
-theorem num_comm (p a b : Int) : num p a b = num p b a := wAdd_comm p a b
+theorem num_comm (p a b : Int) : num p a b = num p b a := circK_comm p a b
 theorem den_comm (q a b : Int) : den q a b = den q b a := by unfold den; grind
 
 /-- identity: F(a, 0) = a / 1 -/
-theorem num_zero (p a : Int) : num p a 0 = a := wAdd_zero p a
+theorem num_zero (p a : Int) : num p a 0 = a := circK_zero p a
 theorem den_zero (q a : Int) : den q a 0 = 1 := by unfold den; grind
 
 /-- Associativity, projective form. Composing (a ⊕ b) ⊕ c with fractions N/D gives
@@ -40,11 +40,11 @@ theorem den_zero (q a : Int) : den q a 0 = 1 := by unfold den; grind
 theorem assoc_num (p q a b c : Int) :
     num p a b + c * den q a b + p * num p a b * c
       = a * den q b c + num p b c + p * a * num p b c := by
-  unfold num den wAdd; grind
+  unfold num den circK; grind
 
 theorem assoc_den (p q a b c : Int) :
     den q a b - q * num p a b * c = den q b c - q * a * num p b c := by
-  unfold num den wAdd; grind
+  unfold num den circK; grind
 
 /-- inverse: F(a, −a/(1 + p a)) = 0, cross-multiplied: the numerator vanishes -/
 theorem inverse_num (p a : Int) : a * (1 + p * a) + (-a) + p * a * (-a) = 0 := by grind
@@ -63,24 +63,24 @@ theorem rate_factors (u v a : Int) : 1 + (-(u + v)) * a + (u * v) * a * a = (1 -
 theorem lens_lift (u v a b : Int) :
     (den (u * v) a b - u * num (-(u + v)) a b) * ((1 - v * a) * (1 - v * b))
       = (den (u * v) a b - v * num (-(u + v)) a b) * ((1 - u * a) * (1 - u * b)) := by
-  unfold num den wAdd; grind
+  unfold num den circK; grind
 
 /-- the lift actually factors: D − u N = (1 − u a)(1 − u b), and the same with v -/
 theorem lens_factor_u (u v a b : Int) :
     den (u * v) a b - u * num (-(u + v)) a b = (1 - u * a) * (1 - u * b) := by
-  unfold num den wAdd; grind
+  unfold num den circK; grind
 
 theorem lens_factor_v (u v a b : Int) :
     den (u * v) a b - v * num (-(u + v)) a b = (1 - v * a) * (1 - v * b) := by
-  unfold num den wAdd; grind
+  unfold num den circK; grind
 
-/-- mult-add is the point u = −1, v = 0: walls at −1 and at infinity -/
-theorem multadd_point (a b : Int) : num (-((-1) + 0)) a b = multAdd a b ∧ den ((-1) * 0) a b = 1 := by
-  unfold num den wAdd multAdd; constructor <;> grind
+/-- the circle operation is the point u = −1, v = 0: walls at −1 and at infinity -/
+theorem multadd_point (a b : Int) : num (-((-1) + 0)) a b = circ a b ∧ den ((-1) * 0) a b = 1 := by
+  unfold num den circK circ; constructor <;> grind
 
 /-- velocity addition is u = 1, v = −1: walls at +1 and −1 (the speed of light) -/
 theorem velocity_point (a b : Int) : num (-(1 + (-1))) a b = a + b ∧ den (1 * (-1)) a b = 1 + a * b := by
-  unfold num den wAdd; constructor <;> grind
+  unfold num den circK; constructor <;> grind
 
 /-- the parabola: the discriminant of the walls is (u − v)² -/
 theorem discriminant (u v : Int) : (-(u + v)) * (-(u + v)) - 4 * (u * v) = (u - v) * (u - v) := by grind
@@ -89,26 +89,26 @@ theorem discriminant (u v : Int) : (-(u + v)) * (-(u + v)) - 4 * (u * v) = (u - 
     Cross-multiplied: N·(1 − u a)(1 − u b) = (a(1 − u b) + b(1 − u a))·(D − u N), with D − u N = (1 − u a)(1 − u b). -/
 theorem parabola_additive (u a b : Int) :
     num (-(u + u)) a b = a * (1 - u * b) + b * (1 - u * a) := by
-  unfold num wAdd; grind
+  unfold num circK; grind
 
 theorem parabola_den (u a b : Int) :
     den (u * u) a b - u * num (-(u + u)) a b = (1 - u * a) * (1 - u * b) := by
-  unfold num den wAdd; grind
+  unfold num den circK; grind
 
 /-! ### 4. Units -/
 
 /-- rescaling by λ moves a point along a parabola through the origin: (p, q) ↦ (λ p, λ² q) -/
 theorem units_num (p lam a b : Int) : num p (lam * a) (lam * b) = lam * num (lam * p) a b := by
-  unfold num wAdd; grind
+  unfold num circK; grind
 theorem units_den (q lam a b : Int) : den q (lam * a) (lam * b) = den (lam * lam * q) a b := by
   unfold den; grind
 
-/-- the dial: k·(a ⊕ₖ b) = (k a) ⊕ (k b); every k ≠ 0 on the straight line is mult-add in other units -/
-theorem dial_is_multadd (k a b : Int) : k * wAdd k a b = multAdd (k * a) (k * b) := wAdd_scale k a b
+/-- the dial: k·(a ◯[k] b) = (k a) ◯ (k b); every k ≠ 0 on the straight line is the circle operation in other units -/
+theorem dial_is_multadd (k a b : Int) : k * circK k a b = circ (k * a) (k * b) := circK_scale k a b
 
-/-- the KdV soliton corner: A(f − 1) with f − 1 = e₁ + e₂ + A e₁e₂ is plain mult-add of A e₁ and A e₂
+/-- the KdV soliton corner: A(f − 1) with f − 1 = e₁ + e₂ + A e₁e₂ is the plain circle operation of A e₁ and A e₂
     (each wave moved by its phase shift log A) -/
-theorem kdv_phase_shift (A e1 e2 : Int) : A * wAdd A e1 e2 = multAdd (A * e1) (A * e2) := wAdd_scale A e1 e2
+theorem kdv_phase_shift (A e1 e2 : Int) : A * circK A e1 e2 = circ (A * e1) (A * e2) := circK_scale A e1 e2
 
 /-! ### 5. Hirzebruch's χ_y line: (u + v + (1 − y)uv)/(1 + y uv) sits at (1 − y, −y), on c₂ = c₁ − 1;
     its discriminant (1 − y)² + 4y = (1 + y)² vanishes only at y = −1, the Euler characteristic. -/

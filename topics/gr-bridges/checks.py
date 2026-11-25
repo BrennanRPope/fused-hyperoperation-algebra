@@ -1,7 +1,7 @@
-"""Can mult-add build curved geometry, and do the four known bridges to Einstein's equations go through?
+"""Can the circle operation build curved geometry, and do the four known bridges to Einstein's equations go through?
 
 Run: python3 checks.py  (writes checks_output.txt and results.json).  Units G = c = hbar = 1 unless stated.
-Part S: pure geometry (mult-add's own rules, a place dial, a direction dial, a Clifford-number dial).
+Part S: pure geometry (the circle operation's own rules, a place dial, a direction dial, a Clifford-number dial).
 Part J: Jacobson (heat and horizon area).  Part T: teleparallel (torsion).  Part L: Lovelock.  Part D: Deser and
 scalar-tensor (Brans-Dicke, Cassini, the sombrero).
 """
@@ -42,8 +42,8 @@ def zero(e):
 t, x, y, z, r, th, ph = sp.symbols('t x y z r theta phi', real=True)
 lam = sp.symbols('lambda', real=True)
 # ===========================================================================================
-section("S1. Mult-add's own rule in one direction: velocity composition in the Clifford plane Cl(1,1)")
-# Cl with e0^2 = -1 (time, dial q < 0) and e1^2 = +1; sigma = e1 e0 squares to +1 (a boost generator).
+section("S1. The circle operation's own rule in one direction: velocity composition in the Clifford plane Cl(1,1)")
+# Cl with e0^2 = -1 (time, dial d < 0) and e1^2 = +1; sigma = e1 e0 squares to +1 (a boost generator).
 G2 = GA([-1, 1])
 sig = G2.e(1, 0)
 check("sigma = e1 e0 squares to +1 (a boost: hyperbolic, not a rotation)", G2.equal(G2.mul(sig, sig), G2.scalar(1)))
@@ -54,12 +54,12 @@ check("(1 + b1 sigma)(1 + b2 sigma) = (1 + b1 b2)(1 + beta sigma) with beta = (b
       zero(s1 / s0 - (b1 + b2) / (1 + b1 * b2)))
 D2 = lambda b: (1 + b) / (1 - b)
 bc = (b1 + b2) / (1 + b1 * b2)
-check("Doppler-squared D^2 = (1+beta)/(1-beta) multiplies, so D^2 - 1 composes by mult-add",
+check("Doppler-squared D^2 = (1+beta)/(1-beta) multiplies, so D^2 - 1 composes by the circle operation",
       zero((D2(bc) - 1) - ((D2(b1) - 1) + (D2(b2) - 1) + (D2(b1) - 1) * (D2(b2) - 1))))
 Nrm = G2.mul(G2.add(G2.scalar(1), G2.scale(b1, sig)), G2.add(G2.scalar(1), G2.scale(-b1, sig)))
-check("the wall: 1 + beta sigma has norm 1 - beta^2, which is zero exactly at light speed (mult-add's -1)",
+check("the wall: 1 + beta sigma has norm 1 - beta^2, which is zero exactly at light speed (the circle operation's -1)",
       G2.equal(Nrm, G2.scalar(1 - b1 ** 2)))
-RES["S1"] = "In Cl(1,1), boosts are 1 + beta*sigma with sigma^2 = +1; products give Einstein addition, D^2 - 1 mult-adds, and the wall is the light cone."
+RES["S1"] = "In Cl(1,1), boosts are 1 + beta*sigma with sigma^2 = +1; products give Einstein addition, D^2 - 1 combines by the circle operation, and the wall is the light cone."
 
 # ===========================================================================================
 section("S2. Twist from the Clifford square rule: boosts in two directions close on a rotation, weighted by the dial")
@@ -73,10 +73,10 @@ check("[e1e2, e2e3] = +2 k2 e1e3 (any two planes sharing a direction close on th
       G4.equal(G4.comm(B12, G4.e(2, 3)), G4.scale(2 * k2, G4.e(1, 3))))
 check("k0 = 0 (Galilean dial): the boosts commute, no twist", G4.equal(G4.comm(B01, B02).copy() if False else
       GA([0, k1, k2, k3]).comm(GA([0, k1, k2, k3]).e(0, 1), GA([0, k1, k2, k3]).e(0, 2)), {}))
-RES["S2"] = "The twisted-boost law [K_x,K_y] = -q J is the Clifford commutator [e0e1,e0e2] = -2 k0 e1e2: q is the square of the shared direction."
+RES["S2"] = "The twisted-boost law [K_x,K_y] = -d J is the Clifford commutator [e0e1,e0e2] = -2 k0 e1e2: d is the square of the shared direction."
 
 # ===========================================================================================
-section("S3. Mult-add's own rules give one constant curvature: velocity space and its twist (Thomas-Wigner = area x curvature)")
+section("S3. The circle operation's own rules give one constant curvature: velocity space and its twist (Thomas-Wigner = area x curvature)")
 def boost(v):
     v = np.asarray(v, float); s = np.linalg.norm(v); g = 1 / math.sqrt(1 - s * s)
     L = np.eye(4); L[0, 0] = g; L[0, 1:] = L[1:, 0] = g * v
@@ -104,12 +104,12 @@ check("Thomas-Wigner rotation angle = angle defect (= area x curvature, Gauss-Bo
 RES["S3"] = "Velocity space is a hyperbolic space of one fixed curvature (set by the dial); the twist of a velocity loop is its area times that curvature."
 
 # ===========================================================================================
-section("S4. A dial that varies from place to place, in 2 dimensions: any curvature q(x, y) is reachable")
+section("S4. A dial that varies from place to place, in 2 dimensions: any curvature d(x, y) is reachable")
 u = sp.Function('u')(x, y)
 g2 = sp.diag(sp.exp(2 * u), sp.exp(2 * u))
 Gm, gi = christoffel(g2, [x, y]); Rm = riemann(Gm, [x, y])
 K = sp.simplify(Rm[0][1][0][1] / g2[1, 1])
-check("conformal metric e^{2u}(dx^2 + dy^2) has curvature q = -e^{-2u} (u_xx + u_yy) (Liouville)",
+check("conformal metric e^{2u}(dx^2 + dy^2) has curvature d = -e^{-2u} (u_xx + u_yy) (Liouville)",
       zero(K + sp.exp(-2 * u) * (sp.diff(u, x, 2) + sp.diff(u, y, 2))))
 # Holonomy: transport a vector around a small square; rotation angle / area = local curvature, which varies.
 def holonomy2d(ufun, x0, y0, h, n=4000):
@@ -144,17 +144,17 @@ for (x0, y0) in [(0.0, 0.0), (1.0, 0.5), (-0.7, 1.2)]:
     vals.append((Kfun(x0 + h / 2, y0 + h / 2), est))
 rel = max(abs(a - b) / abs(a) for a, b in vals)
 check("twist of a small loop / its area = the local curvature, at three places with three different curvatures",
-      rel < 0.02, "; ".join(f"q={a:.4f} vs {b:.4f}" for a, b in vals))
-RES["S4"] = "In 2D a dial that varies by place is the whole story: q(x,y) = Gaussian curvature, twist = q x area, any q realized locally."
+      rel < 0.02, "; ".join(f"d={a:.4f} vs {b:.4f}" for a, b in vals))
+RES["S4"] = "In 2D a dial that varies by place is the whole story: d(x,y) = Gaussian curvature, twist = d x area, any d realized locally."
 
 # ===========================================================================================
 section("S5. In 3 or more dimensions a place-only dial is forced to be constant (Schur's theorem)")
 n_ = sp.symbols('n', positive=True)
-# isotropic curvature R_abcd = q (g_ac g_bd - g_ad g_bc): Ric = (n-1) q g, R = n(n-1) q, G = -(n-1)(n-2)/2 q g
+# isotropic curvature R_abcd = d (g_ac g_bd - g_ad g_bc): Ric = (n-1) d g, R = n(n-1) d, G = -(n-1)(n-2)/2 d g
 Gcoef = (n_ - 1) - sp.Rational(1, 2) * n_ * (n_ - 1)
-check("isotropic curvature gives G_ab = -(n-1)(n-2)/2 q g_ab, so the Bianchi identity forces (n-1)(n-2)/2 dq = 0",
+check("isotropic curvature gives G_ab = -(n-1)(n-2)/2 d g_ab, so the Bianchi identity forces (n-1)(n-2)/2 ∇d = 0",
       zero(Gcoef + (n_ - 1) * (n_ - 2) / 2))
-check("n = 2: the factor is 0, so q is free; n = 3, 4: the factor is 1 and 3, so q must be constant",
+check("n = 2: the factor is 0, so d is free; n = 3, 4: the factor is 1 and 3, so d must be constant",
       [((n_ - 1) * (n_ - 2) / 2).subs(n_, k) for k in (2, 3, 4)] == [0, 1, 3])
 # Explicit: 3D metric e^{2w(x)} (dx^2+dy^2+dz^2); sectional curvatures of the three coordinate planes
 w = sp.Function('w')(x)
@@ -172,7 +172,7 @@ check("making all three planes agree (w'' = w'^2) forces a solution whose curvat
 RES["S5"] = "Schur: if the twist per area is the same in every plane at each point (a scalar dial), the dial is constant in 3+ dimensions."
 
 # ===========================================================================================
-section("S6. k as a Clifford number: mult-add with a multivector weight")
+section("S6. k as a Clifford number: the circle operation with a multivector weight")
 G3a = GA([1, 1, 1])                       # Cl(3,0)
 A_, B_, C_, Kw = G3a.general('a'), G3a.general('b'), G3a.general('c'), G3a.general('k')
 one = G3a.scalar(1)
@@ -202,7 +202,7 @@ check("so a constant invertible k adds nothing: a -> 1 + k a turns a + b + a k b
 vnull = G13.vector([1, 1, 0, 0])
 check("in Cl(1,3) a null vector squares to 0: the light cone is where 1 + k a stops being invertible in the Lorentzian slots",
       G13.mul(vnull, vnull) == {})
-RES["S6"] = ("Multivector mult-add must be a + b + a k b (associative for every k, exact lift 1 + k(a*b) = (1+ka)(1+kb)); "
+RES["S6"] = ("The multivector circle operation must be a + b + a k b (associative for every k, exact lift 1 + k(a*b) = (1+ka)(1+kb)); "
              "a + b + k a b works only for central k (scalars, plus I in Cl(3,0)). A constant invertible k is a change of coordinates.")
 
 # ===========================================================================================
@@ -275,10 +275,10 @@ check("dial-only (gamma = 0) focuses light where no energy crosses: it breaks th
 RES["S9"] = "The direction dial is not fixed by geometry; demanding 'no focusing without energy flux' in every null direction gives gamma = 1."
 
 # ===========================================================================================
-section("J1. Jacobson's area bookkeeping is mult-add: Raychaudhuri focusing is the 'ab' term of two transverse stretches")
+section("J1. Jacobson's area bookkeeping is the circle operation: Raychaudhuri focusing is the 'ab' term of two transverse stretches")
 a = sp.Function('a')(lam); b = sp.Function('b')(lam)
 Aarea = (1 + a) * (1 + b)                       # cross-section area of a thin null bundle (no rotation)
-check("area of the bundle's cross-section: (1+a)(1+b) = 1 + (a mult-add b)", zero(Aarea - (1 + (a + b + a * b))))
+check("area of the bundle's cross-section: (1+a)(1+b) = 1 + (a ∘₁ b)", zero(Aarea - (1 + (a + b + a * b))))
 th1, th2 = sp.diff(a, lam) / (1 + a), sp.diff(b, lam) / (1 + b)
 theta = sp.simplify(sp.diff(Aarea, lam) / Aarea)
 sigma2 = (th1 - th2) ** 2 / 2                   # shear squared sigma_ab sigma^ab for two transverse directions
@@ -288,13 +288,13 @@ check("Raychaudhuri, exactly: dtheta/dlam + theta^2/2 + sigma^2 = a''/(1+a) + b'
 al, be = sp.symbols('alpha beta', real=True)
 flat = {a: al * lam, b: be * lam}
 A_flat = sp.expand(Aarea.subs(flat))
-check("no curvature (a, b linear): the area's second derivative is 2 alpha beta, the mult-add cross term, and that alone makes the focusing",
+check("no curvature (a, b linear): the area's second derivative is 2 alpha beta, the circle-operation cross term, and that alone makes the focusing",
       zero(sp.diff(A_flat, lam, 2) - 2 * al * be))
-RES["J1"] = ("Area of a thin light bundle = 1 + (a mult-add b) for its two transverse stretches. Raychaudhuri's equation is this "
+RES["J1"] = ("Area of a thin light bundle = 1 + (a ∘₁ b) for its two transverse stretches. Raychaudhuri's equation is this "
              "plus geodesic deviation: focusing theta^2/2 + sigma^2 comes from the ab term, curvature R_kk from a'', b''.")
 
 # ===========================================================================================
-section("J2. Unruh temperature: the mult-add flow (Doppler factor growing as e^{a tau}) gives a Planck spectrum with T = a/2pi")
+section("J2. Unruh temperature: the circle-operation flow (Doppler factor growing as e^{a tau}) gives a Planck spectrum with T = a/2pi")
 mp.mp.dps = 30
 def bogoliubov_ratio(Om, w, acc):
     # phase seen by a uniformly accelerated observer: exp(-i (w/a) e^{-a tau}); Fourier coefficient at frequency Om
@@ -314,7 +314,7 @@ X_, tau, A_ = sp.symbols('X tau a', positive=True)
 circ = sp.integrate(A_ * X_, (tau, 0, 2 * sp.pi / A_))      # circumference of the circle X = const in X^2 a^2 dtau^2 + dX^2
 check("dial flip: Rindler -a^2 X^2 dt^2 + dX^2 with t = -i tau is a plane in polar form; no cone tip only if tau has period 2pi/a",
       zero(circ / X_ - 2 * sp.pi), "circumference / radius = 2 pi exactly when the period is 2 pi / a, so T = a / 2 pi")
-RES["J2"] = ("Constant acceleration = rapidity growing linearly = the Doppler factor running the mult-add flow e^{a tau}. Its Fourier "
+RES["J2"] = ("Constant acceleration = rapidity growing linearly = the Doppler factor running the circle-operation flow e^{a tau}. Its Fourier "
              "transform is thermal with T = a/2pi; the 2pi is the rotation period after flipping the dial's sign.")
 
 # ===========================================================================================
@@ -334,7 +334,7 @@ check("solving X(k,k) = 0 over light-like directions leaves only X = phi * eta (
 RES["J3"] = "Heat flux and focusing agree in every light-like direction only if R_ab - 8 pi T_ab = phi g_ab; Bianchi then fixes phi = R/2 - Lambda."
 
 # ===========================================================================================
-section("J4. Our river's mult-add inverse is Jacobson's 'no radial energy flux' condition")
+section("J4. Our river's circle inverse is Jacobson's 'no radial energy flux' condition")
 f = sp.Function('f')(r); h = sp.Function('h')(r)
 gfh = sp.diag(-f, 1 / h, r ** 2, r ** 2 * sp.sin(th) ** 2)
 Gf, gif = christoffel(gfh, [t, r, th, ph]); Rf = riemann(Gf, [t, r, th, ph]); Ricf = ricci(Rf, 4)
@@ -343,15 +343,15 @@ Rkk_r = sp.simplify(sum(Ricf[i, j] * kr[i] * kr[j] for i in range(4) for j in ra
 check("for -f dt^2 + dr^2/h + r^2 dOmega^2: R_kk (radial light ray) is proportional to (f/h)', so it vanishes iff f = h, i.e. g_tt g_rr = -1",
       zero(Rkk_r - (h / f) * sp.diff(f / h, r) / r * 1) or zero(Rkk_r * f / (r * h * sp.diff(f / h, r)) - 1) or
       zero(sp.simplify(Rkk_r.subs(h, f))), f"R_kk = {sp.factor(Rkk_r)}")
-check("and g_tt g_rr = -1 is exactly our earlier result that the clock deficit and ruler deficit are mult-add inverses",
+check("and g_tt g_rr = -1 is exactly our earlier result that the clock deficit and ruler deficit are circle inverses",
       zero(((f - 1) + (1 / f - 1) + (f - 1) * (1 / f - 1))))
-RES["J4"] = "The river's (−g_tt − 1) mult-add (g_rr − 1) = 0 is the same statement as Jacobson's radial null condition T_kk = 0 (Jacobson 2007)."
+RES["J4"] = "The river's (−g_tt − 1) ∘₁ (g_rr − 1) = 0 is the same statement as Jacobson's radial null condition T_kk = 0 (Jacobson 2007)."
 
 # ===========================================================================================
-section("J5. If horizon entropy itself combines by weighted mult-add (Tsallis), the local equations do not change")
+section("J5. If horizon entropy itself combines by the circle operation with dial k (Tsallis), the local equations do not change")
 kq, eta_, Ar, Nn = sp.symbols('k eta A N', positive=True)
 Stot = ((1 + kq * eta_ * Ar / Nn) ** Nn - 1) / kq
-check("mult-adding N equal patches of entropy eta*A/N, N -> infinity: total = (e^{k eta A} - 1)/k (the mult-add flow again)",
+check("combining N equal patches of entropy by the circle operation, eta*A/N, N -> infinity: total = (e^{k eta A} - 1)/k (the circle-operation flow again)",
       zero(sp.limit(Stot, Nn, sp.oo) - (sp.exp(kq * eta_ * Ar) - 1) / kq))
 Sk = sp.symbols('S_k', positive=True)
 Sadd = sp.log(1 + kq * Sk) / kq
@@ -364,7 +364,7 @@ CR = sp.simplify(1 / sp.diff(TR, Mm))
 Mc = sp.solve(sp.diff(TR, Mm), Mm)
 check("globally it does change black holes: Renyi temperature (1 + 4 pi lambda M^2)/(8 pi M), heat capacity changes sign at M = 1/sqrt(4 pi lambda)",
       zero(TR - (1 + 4 * sp.pi * lr * Mm ** 2) / (8 * sp.pi * Mm)) and any(zero(m - 1 / sp.sqrt(4 * sp.pi * lr)) for m in Mc))
-RES["J5"] = ("Weighted mult-add of patch entropies = Tsallis composition; the additive entropy is Renyi. Jacobson's local derivation "
+RES["J5"] = ("The circle operation with dial k of patch entropies = Tsallis composition; the additive entropy is Renyi. Jacobson's local derivation "
              "is blind to k (small patches), so Einstein's equations stand; black-hole thermodynamics changes globally (Biro-Czinner).")
 
 # ===========================================================================================
@@ -399,7 +399,7 @@ check("the Weitzenbock connection e^-1 de has zero curvature: in the teleparalle
 RES["T1"] = "River frame: e^0 = dt, e^i = dx^i + v^i dt. Teleparallel connection is flat (no twist); torsion T^i_jt = d_j v^i (the river's gradient)."
 
 # ===========================================================================================
-section("T2. Einstein's equations on any river (not only spherical): energy = the mult-add cross terms of the river's strain")
+section("T2. Einstein's equations on any river (not only spherical): energy = the circle-operation cross terms of the river's strain")
 GR_, giR = christoffel(gR, X)
 RR = riemann(GR_, X)
 RicR = ricci(RR, 4)
@@ -412,7 +412,7 @@ e2 = lambda Mx: (Mx.trace() ** 2 - (Mx * Mx).trace()) / 2
 check("G_nn = e2(K), the sum of products of pairs of principal strain rates of the river: Hamiltonian constraint e2(K) = 8 pi rho",
       zero(Gnn - e2(Kij)))
 cube = sp.symbols('k1 k2 k3')
-check("e2 is the 'ab' layer of the three-way mult-add: (1+k1)(1+k2)(1+k3) = 1 + e1 + e2 + e3",
+check("e2 is the 'ab' layer of the three-way the circle operation: (1+k1)(1+k2)(1+k3) = 1 + e1 + e2 + e3",
       zero(sp.expand((1 + cube[0]) * (1 + cube[1]) * (1 + cube[2])) - 1 - sum(cube) - (cube[0] * cube[1] + cube[1] * cube[2] + cube[0] * cube[2]) - cube[0] * cube[1] * cube[2]))
 Gnj = [sp.simplify(sum(nup[m] * Gdn[m, j + 1] for m in range(4))) for j in range(3)]
 mom = [sum(sp.diff(Kij[i, j] - (Kij.trace() if i == j else 0), X[i + 1]) for i in range(3)) for j in range(3)]
@@ -432,7 +432,7 @@ vr = sp.Function('v')(r)
 check("spherical river: e2(v', v/r, v/r) = (r v^2)'/r^2, so e2 = 8 pi rho is Newton's shell law v^2 = 2 m(r)/r",
       zero(2 * sp.diff(vr, r) * vr / r + (vr / r) ** 2 - sp.diff(r * vr ** 2, r) / r ** 2))
 RES["T2"] = ("On any river: energy constraint e2(K) = 8 pi rho (pairwise products of strain rates: the cross-term layer of a 3-way "
-             "mult-add), momentum constraint curl curl v = -16 pi j. Bulk action lives in the swirl: e2(K) = div - |curl v|^2/4.")
+             "the circle operation), momentum constraint curl curl v = -16 pi j. Bulk action lives in the swirl: e2(K) = div - |curl v|^2/4.")
 
 # ===========================================================================================
 section("T3. The teleparallel equivalent of GR: torsion scalar = -(Ricci scalar) + divergence, on every river")
@@ -524,7 +524,7 @@ RsL = sp.simplify(sum(giL[m, n] * RicL[m, n] for m in range(4) for n in range(4)
 GmixL = (giL * RicL - RsL / 2 * sp.eye(4)).applyfunc(sp.simplify)
 check("river v^2 = 2M/r + Lambda r^2/3 gives G^a_b = -Lambda delta^a_b exactly (Schwarzschild-de Sitter)",
       GmixL + Lm * sp.eye(4) == sp.zeros(4, 4))
-RES["L3"] = "Lambda enters the river as an extra escape-speed term Lambda r^2/3; nothing in mult-add fixes its value."
+RES["L3"] = "Lambda enters the river as an extra escape-speed term Lambda r^2/3; nothing in the circle operation fixes its value."
 
 # ===========================================================================================
 section("D1. Deser's bootstrap needs a massless spin-2 field; the river (a vector) and the place dial (a scalar) have none")

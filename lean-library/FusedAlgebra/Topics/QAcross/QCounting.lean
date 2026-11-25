@@ -8,24 +8,24 @@
   (core Lean's ring class; the bare name doesn't resolve without `open Lean.Grind`). No statement changed.
 
   1. Gaussian binomials [n, k]_q (standard): q-Pascal, and the GENERAL theorem that at q = 1
-     they are the layers of the mult-add cube (gauss_at_one, every n and k). At q = 2 they count
+     they are the layers of the circle-operation cube (called mult-add cube before 1.0) (gauss_at_one, every n and k). At q = 2 they count
      subspaces over the two-element field, at q = −1 they fold Pascal in half.
   2. The q-binomial theorem (standard, Cauchy/Gauss): (1 + t)(1 + qt)⋯(1 + q^(n−1) t), i.e.
-     1 + (t ⊞ qt ⊞ … ⊞ q^(n−1) t), has layer k equal to q^(k(k−1)/2)·[n, k]_q. Checked n ≤ 6.
+     1 + (t ◯ qt ◯ … ◯ q^(n−1) t), has layer k equal to q^(k(k−1)/2)·[n, k]_q. Checked n ≤ 6.
      Geometrically: the corners of the cube with k switches on, weighted by q^(sum of their
      positions), are the lattice paths in a k × (n − k) box weighted by the area under them.
   3. U_q(sl₂) (standard, Drinfeld–Jimbo): the relation [E, F] = (K − K⁻¹)/(q − q⁻¹) holds on
      every irreducible representation because of one ring identity, proved here for any
      commutative ring.
   4. The Ising ring (standard transfer matrix): with T = [[1, u], [u, 1]], the trace of Tⁿ is
-     (1 + u)ⁿ + (1 − u)ⁿ = 2 + u^(⊞n) + (−u)^(⊞n), every n, any commutative ring.
+     (1 + u)ⁿ + (1 − u)ⁿ = 2 + u^(◯n) + (−u)^(◯n), every n, any commutative ring.
 -/
 import FusedAlgebra.Base
 import FusedAlgebra.Cube
 import FusedAlgebra.Topics.QAcross.Knots
 
 namespace QCounting
-open MultAdd
+open CircleOp
 open QKnots (Poly padd pzeros trim)
 
 /-! ## 1. Gaussian binomials -/
@@ -62,18 +62,18 @@ theorem peval_pzeros (x : Int) : ∀ (k : Nat) (p : Poly), peval x (pzeros k p) 
     rw [peval_pzeros x k p]
     grind
 
-/-- At q = 1 the Gaussian binomial is the binomial coefficient: the layer of the mult-add cube.
+/-- At q = 1 the Gaussian binomial is the binomial coefficient: the layer of the circle-operation cube.
     (Every n and k, not a finite check.) -/
-theorem gauss_at_one : ∀ n k : Nat, peval 1 (gauss n k) = (MultAdd.Cube.layer n k : Int)
+theorem gauss_at_one : ∀ n k : Nat, peval 1 (gauss n k) = (CircleOp.Cube.layer n k : Int)
   | n, 0 => by
-    rw [MultAdd.Cube.layer_zero_right]
+    rw [CircleOp.Cube.layer_zero_right]
     simp only [gauss, peval] <;> decide
   | 0, k + 1 => by
-    simp only [gauss, peval, MultAdd.Cube.layer] <;> decide
+    simp only [gauss, peval, CircleOp.Cube.layer] <;> decide
   | n + 1, k + 1 => by
     simp only [gauss]
     rw [peval_padd, peval_pzeros, gauss_at_one n k, gauss_at_one n (k + 1),
-      MultAdd.Cube.layer_succ_succ, pw_one]
+      CircleOp.Cube.layer_succ_succ, pw_one]
     omega
 
 /-- The four points of the dial on [4, 2]_q = 1 + q + 2q² + q³ + q⁴:
@@ -89,10 +89,10 @@ theorem gauss_at_neg_one :
     ∀ n : Fin 9, ∀ k : Fin 9, k.val ≤ n.val →
       peval (-1) (gauss n.val k.val) =
         (if n.val % 2 == 0 && k.val % 2 == 1 then 0
-         else (MultAdd.Cube.layer (n.val / 2) (k.val / 2) : Int)) := by
+         else (CircleOp.Cube.layer (n.val / 2) (k.val / 2) : Int)) := by
   decide +kernel
 
-/-! ## 2. The q-binomial theorem is a mult-add fold -/
+/-! ## 2. The q-binomial theorem is a circle-operation fold -/
 
 /-- Polynomials in t whose coefficients are polynomials in q. -/
 def padd2 : List Poly → List Poly → List Poly
@@ -103,7 +103,7 @@ def padd2 : List Poly → List Poly → List Poly
 /-- Multiply by (1 + qⁱ·t). -/
 def mulLin (i : Nat) (P : List Poly) : List Poly := padd2 P ([] :: P.map (pzeros i))
 
-/-- (1 + t)(1 + qt)⋯(1 + q^(n−1) t) = 1 + (t ⊞ qt ⊞ … ⊞ q^(n−1) t). -/
+/-- (1 + t)(1 + qt)⋯(1 + q^(n−1) t) = 1 + (t ◯ qt ◯ … ◯ q^(n−1) t). -/
 def qbinLHS (n : Nat) : List Poly := (List.range n).foldl (fun P i => mulLin i P) [[1]]
 
 /-- Σₖ q^(k(k−1)/2)·[n, k]_q·tᵏ. -/
@@ -167,9 +167,9 @@ theorem ising_trace (u : R) (n : Nat) : 2 * (ising u n).1 = pw (1 + u) n + pw (1
   obtain ⟨h1, h2⟩ := ising_eigen u n
   grind
 
-/-- ... and in mult-add terms: Z = 2 + u^(⊞n) + (−u)^(⊞n). Only the even layers of the cube
+/-- ... and in circle-operation terms: Z = 2 + u^(◯n) + (−u)^(◯n). Only the even layers of the cube
     survive (a ring has an even number of domain walls). -/
-theorem ising_multAdd (u : R) (n : Nat) : 2 * (ising u n).1 = 2 + mpow u n + mpow (-u) n := by
+theorem ising_circ (u : R) (n : Nat) : 2 * (ising u n).1 = 2 + mpow u n + mpow (-u) n := by
   have h := ising_trace u n
   rw [pw_eq_pow, pw_eq_pow] at h
   have a := mpow_lift u n

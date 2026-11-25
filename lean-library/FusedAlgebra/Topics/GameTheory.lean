@@ -1,17 +1,17 @@
 /-
-  Game theory through mult-add
+  Game theory through the circle operation (called mult-add before 1.0)
   ============================
 
   Part of Fused Hyperoperation Algebra. Page and checks: ../ (game-theory).
   Core Lean 4 only (no mathlib), no `sorry`. Checked with Lean 4.37.0-rc1.
 
-  The dial fold x₁ ✳ₖ x₂ ✳ₖ … ✳ₖ xₙ lifts to the product of the (1 + k·xᵢ). Proved:
+  The dial fold x₁ ◯ₖ x₂ ◯ₖ … ◯ₖ xₙ lifts to the product of the (1 + k·xᵢ). Proved:
   * Kelly: bets at fraction f compose by the dial with k = f; ruin is the dial's wall; Kelly's
     fraction makes the lifted wealth p/π on a win and q/(1 − π) on a loss.
   * Multiplicative weights (two experts): the total weight is 2·∏(1 + ε rₜ), each expert's weight
     is ∏(1 + ε gₜ), so the best expert's lifted gain is at most twice the algorithm's (the lifted
     regret bound, before logs).
-  * Elo / Bradley–Terry: odds − 1 mult-adds; the edge (O − 1)/(O + 1) composes like relativistic
+  * Elo / Bradley–Terry: odds − 1 combines by the circle operation; the edge (O − 1)/(O + 1) composes like relativistic
     velocities; the odds are the edge's Doppler lift; win chances compose by p₁p₂/(p₁p₂ + q₁q₂).
   * The dial game v(S) = dial fold of the members' values: Sugeno's rule, marginal values,
     Shapley values for 2 and 3 players in closed form (Harsanyi dividends = cube corners, split
@@ -23,8 +23,8 @@ import FusedAlgebra.Base
 
 namespace GameTheory
 
-open MultAdd
-local infixl:65 " ✳ " => multAdd
+open CircleOp
+open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -33,40 +33,40 @@ set_option linter.unusedSectionVars false
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- x₁ ✳ₖ x₂ ✳ₖ … ✳ₖ xₙ. -/
+/-- x₁ ◯ₖ x₂ ◯ₖ … ◯ₖ xₙ. -/
 def dfold (k : R) : List R → R
   | [] => 0
-  | a :: l => wAdd k a (dfold k l)
+  | a :: l => circK k a (dfold k l)
 
 theorem dfold_lift (k : R) (l : List R) :
     1 + k * dfold k l = prodL (l.map (fun x => 1 + k * x)) := by
   induction l with
   | nil => simp only [dfold, List.map, prodL]; grind
-  | cons a l ih => simp only [dfold, List.map, prodL]; rw [wAdd_lift, ih]
+  | cons a l ih => simp only [dfold, List.map, prodL]; rw [circK_lift, ih]
 
 theorem dfold_append (k : R) (S T : List R) :
-    dfold k (S ++ T) = wAdd k (dfold k S) (dfold k T) := by
+    dfold k (S ++ T) = circK k (dfold k S) (dfold k T) := by
   induction S with
-  | nil => simp only [List.nil_append, dfold]; unfold wAdd; grind
-  | cons a S ih => simp only [List.cons_append, dfold]; rw [ih, wAdd_assoc]
+  | nil => simp only [List.nil_append, dfold]; unfold circK; grind
+  | cons a S ih => simp only [List.cons_append, dfold]; rw [ih, circK_assoc]
 
-theorem dfold_one (l : List R) : dfold 1 l = foldMA l := by
+theorem dfold_one (l : List R) : dfold 1 l = foldCirc l := by
   induction l with
   | nil => rfl
-  | cons a l ih => simp only [dfold, foldMA]; rw [ih, wAdd_one]
+  | cons a l ih => simp only [dfold, foldCirc]; rw [ih, circK_one]
 
 /-! ## 2. Kelly betting -/
 
 /-- Two bets at fraction f: the returns combine by the dial with k = f. -/
 theorem kelly_compose (f r₁ r₂ : R) :
-    (1 + f * r₁) * (1 + f * r₂) = 1 + f * wAdd f r₁ r₂ := (wAdd_lift f r₁ r₂).symm
+    (1 + f * r₁) * (1 + f * r₂) = 1 + f * circK f r₁ r₂ := (circK_lift f r₁ r₂).symm
 
-/-- Many bets: wealth is 1 + f·(r₁ ✳_f r₂ ✳_f … ✳_f rₙ). -/
+/-- Many bets: wealth is 1 + f·(r₁ ◯_f r₂ ◯_f … ◯_f rₙ). -/
 theorem kelly_many (f : R) (rs : List R) :
     prodL (rs.map (fun r => 1 + f * r)) = 1 + f * dfold f rs := (dfold_lift f rs).symm
 
-/-- In money terms the stakes' returns f·r mult-add plainly. -/
-theorem kelly_stake (f r₁ r₂ : R) : f * wAdd f r₁ r₂ = (f * r₁) ✳ (f * r₂) := wAdd_scale f r₁ r₂
+/-- In money terms the stakes' returns f·r combine by the circle operation plainly. -/
+theorem kelly_stake (f r₁ r₂ : R) : f * circK f r₁ r₂ = (f * r₁) ◯ (f * r₂) := circK_scale f r₁ r₂
 
 /-- Ruin is the wall: one outcome with f·r = −1 leaves nothing, whatever follows. -/
 theorem kelly_ruin (f r : R) (h : f * r = -1) (rs : List R) : 1 + f * dfold f (r :: rs) = 0 := by
@@ -85,29 +85,29 @@ theorem hedge_step (ε u v g h : R) :
 /-- Sugeno's rule: disjoint coalitions combine by the dial. The excess over adding is the corner. -/
 theorem dial_game_union (k : R) (S T : List R) :
     dfold k (S ++ T) - dfold k S - dfold k T = k * dfold k S * dfold k T := by
-  rw [dfold_append]; unfold wAdd; grind
+  rw [dfold_append]; unfold circK; grind
 
 /-- Joining coalition S is worth x·(1 + k·v(S)). -/
 theorem marginal (k x : R) (S : List R) : dfold k (x :: S) - dfold k S = x * (1 + k * dfold k S) := by
-  simp only [dfold]; unfold wAdd; grind
+  simp only [dfold]; unfold circK; grind
 
 /-- The three-player worth expanded over the cube: corners weighted by k^(size − 1). -/
 theorem corners3 (k x y z : R) :
     dfold k [x, y, z] = (x + y + z) + k * (x * y + x * z + y * z) + k * k * (x * y * z) := by
-  simp only [dfold]; unfold wAdd; grind
+  simp only [dfold]; unfold circK; grind
 
 /-- Owen's multilinear extension, two players: everyone present with chance t gives the
     dial fold of t·x. -/
 theorem multilinear2 (k t x y : R) :
-    (1 - t) * t * x + t * (1 - t) * y + t * t * wAdd k x y = wAdd k (t * x) (t * y) := by
-  unfold wAdd; grind
+    (1 - t) * t * x + t * (1 - t) * y + t * t * circK k x y = circK k (t * x) (t * y) := by
+  unfold circK; grind
 
 /-- Three players. -/
 theorem multilinear3 (k t x y z : R) :
     (1 - t) * (1 - t) * t * (x + y + z)
       + (1 - t) * t * t * (dfold k [x, y] + dfold k [x, z] + dfold k [y, z])
       + t * t * t * dfold k [x, y, z] = dfold k [t * x, t * y, t * z] := by
-  simp only [dfold]; unfold wAdd; grind
+  simp only [dfold]; unfold circK; grind
 
 end Ring
 
@@ -138,9 +138,9 @@ theorem kelly_foc (p b : K) (hb : b ≠ 0) (h1 : 1 + b ≠ 0) (hp : p ≠ 0) (hq
   have e2 : (1 - p) / ((1 - p) * (1 + b) / b) = b / (1 + b) := by grind
   rw [e1, e2]; grind
 
-/-- Odds multiply along a chain, so odds − 1 mult-adds. -/
-theorem odds_multAdd (O₁ O₂ : K) : (O₁ - 1) ✳ (O₂ - 1) = O₁ * O₂ - 1 := by
-  unfold multAdd; grind
+/-- Odds multiply along a chain, so odds − 1 combines by the circle operation. -/
+theorem odds_circ (O₁ O₂ : K) : (O₁ - 1) ◯ (O₂ - 1) = O₁ * O₂ - 1 := by
+  unfold circ; grind
 
 /-- The edge 2P − 1 written in odds. -/
 def edge (O : K) : K := (O - 1) / (O + 1)
@@ -189,10 +189,10 @@ theorem prob_compose (O₁ O₂ : K) (h1 : 1 + O₁ ≠ 0) (h2 : 1 + O₂ ≠ 0)
 def shapley2 (k x y : K) : K := ((dfold k [x] - 0) + (dfold k [x, y] - dfold k [y])) / 2
 
 theorem shapley2_eq (k x y : K) : shapley2 k x y = x + k * x * y / 2 := by
-  unfold shapley2; simp only [dfold]; unfold wAdd; grind
+  unfold shapley2; simp only [dfold]; unfold circK; grind
 
 theorem shapley2_efficient (k x y : K) : shapley2 k x y + shapley2 k y x = dfold k [x, y] := by
-  rw [shapley2_eq, shapley2_eq]; simp only [dfold]; unfold wAdd; grind
+  rw [shapley2_eq, shapley2_eq]; simp only [dfold]; unfold circK; grind
 
 /-- k = −1, "some cause strikes": each cause keeps its own chance minus half the overlap
     (the actuarial UDD split). -/
@@ -207,11 +207,11 @@ def shapley3 (k x y z : K) : K :=
 /-- Closed form: x·(1 + k·e₁/2 + k²·e₂/3) over the other two: each corner shared equally. -/
 theorem shapley3_eq (k x y z : K) :
     shapley3 k x y z = x * (1 + k * (y + z) / 2 + k * k * (y * z) / 3) := by
-  unfold shapley3; simp only [dfold]; unfold wAdd; grind
+  unfold shapley3; simp only [dfold]; unfold circK; grind
 
 theorem shapley3_efficient (k x y z : K) :
     shapley3 k x y z + shapley3 k y x z + shapley3 k z x y = dfold k [x, y, z] := by
-  rw [shapley3_eq, shapley3_eq, shapley3_eq]; simp only [dfold]; unfold wAdd; grind
+  rw [shapley3_eq, shapley3_eq, shapley3_eq]; simp only [dfold]; unfold circK; grind
 
 /-- Corner by corner: singletons whole, each pair corner k·xy halved, the triple k²xyz in thirds. -/
 theorem shapley3_corners (k x y z : K) :
@@ -229,7 +229,7 @@ def banzhaf3 (k x y z : K) : K :=
     + (dfold k [x, y, z] - dfold k [y, z])) / 4
 
 theorem banzhaf3_eq (k x y z : K) : banzhaf3 k x y z = x * (1 + k * y / 2) * (1 + k * z / 2) := by
-  unfold banzhaf3; simp only [dfold]; unfold wAdd; grind
+  unfold banzhaf3; simp only [dfold]; unfold circK; grind
 
 end Field
 

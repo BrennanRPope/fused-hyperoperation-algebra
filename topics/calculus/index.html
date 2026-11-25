@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Calculus from mult-add</title>
+<title>Calculus from the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -50,8 +50,8 @@ html{scroll-padding-top:20px}
 </style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
 
 <div class="band">
-<h1>Calculus is mult-add with the corner dropped</h1>
-<p class="lede">Grow a box by a small step and it gains two strips and one corner square. Mult-add keeps the corner. Calculus is what is left when the step shrinks to nothing and the corner goes with it.</p>
+<h1>Calculus is the circle operation with the corner dropped</h1>
+<p class="lede">Grow a box by a small step and it gains two strips and one corner square. The circle operation ∘₁ (called mult-add before 1.0) keeps the corner. Calculus is what is left when the step shrinks to nothing and the corner goes with it.</p>
 <div class="hero">
   <div>
     <div class="fig" id="boxfig" role="img" aria-label="A box F by G growing by two strips and a yellow corner square"><svg id="box"></svg></div>
@@ -68,7 +68,7 @@ html{scroll-padding-top:20px}
       <span>Corner's share of the growth</span><b id="s4"></b>
     </div>
     <p style="margin-top:14px">Divide by h and slide h toward 0: the strips become Leibniz's rule (FG)′ = F′G + FG′, and the corner shrinks like h² and disappears. That one disappearance is the only place a limit enters.</p>
-    <p class="mute">Relative growth says the same thing. Rates p and q over a step of size h give the product the rate p + q + h·p·q, your weighted mult-add with the step size as the corner weight.</p>
+    <p class="mute">Relative growth says the same thing. Rates p and q over a step of size h give the product the rate p + q + h·p·q, your circle operation with the step size as the corner weight.</p>
   </div>
 </div>
 </div>
@@ -79,21 +79,21 @@ html{scroll-padding-top:20px}
 
 <div class="band" id="dictionary">
 <h2>The dictionary, rule by rule</h2>
-<p>Write a step as f(k+1) = f(k) ⊞ d(k). Then d is the mult-add slope, and through the lift 1 + x every step multiplies a box by (1 + d).</p>
-<table class="stack"><thead><tr><th>Calculus idea</th><th>Mult-add form</th><th>Lowest rung</th><th>Limit?</th><th>Status</th></tr></thead><tbody id="dict"></tbody></table>
-<p class="mute" style="margin-top:10px">Rung 2 is mult-add, rung 3 is the mult-add power. "Proved" means checked in core Lean with no sorry. "Checked" means checked symbolically or numerically in Python (12 of 12 pass).</p>
+<p>Write a step as f(k+1) = f(k) ∘₁ d(k). Then d is the circle-operation slope, and through the lift 1 + x every step multiplies a box by (1 + d).</p>
+<table class="stack"><thead><tr><th>Calculus idea</th><th>Circle-operation form</th><th>Lowest rung</th><th>Limit?</th><th>Status</th></tr></thead><tbody id="dict"></tbody></table>
+<p class="mute" style="margin-top:10px">Rung 2 is the circle operation, rung 3 is the circle power. "Proved" means checked in core Lean with no sorry. "Checked" means checked symbolically or numerically in Python (12 of 12 pass).</p>
 </div>
 
 <div class="band" id="ftc">
 <div class="two">
 <div>
 <h2>The fundamental theorem is the cube's lift</h2>
-<p>Mult-add the slopes back together and you get the whole climb: f(n) = f(0) ⊞ (d₀ ⊞ d₁ ⊞ … ⊞ dₙ₋₁). Through the lift it says the end box is the start box times every step's factor. That is Volterra's product integral (1887), exact at every step size, and proved in Lean.</p>
-<p>A constant slope a gives a ⊞ a ⊞ … ⊞ a, the mult-add power. So the straight lines of mult-add calculus are exponentials. Slice a total rate x into n steps of x/n and the staircase closes on eˣ − 1, which the drawing shows for x = 1.</p>
-<p class="mute">The ordinary version is the same telescope with + in place of ⊞: the differences add back to f(n) − f(0). Also proved.</p>
+<p>Combine the slopes back together by the circle operation and you get the whole climb: f(n) = f(0) ∘₁ (d₀ ∘₁ d₁ ∘₁ … ∘₁ dₙ₋₁). Through the lift it says the end box is the start box times every step's factor. That is Volterra's product integral (1887), exact at every step size, and proved in Lean.</p>
+<p>A constant slope a gives a ∘₁ a ∘₁ … ∘₁ a, the circle power. So the straight lines of circle-operation calculus are exponentials. Slice a total rate x into n steps of x/n and the staircase closes on eˣ − 1, which the drawing shows for x = 1.</p>
+<p class="mute">The ordinary version is the same telescope with + in place of ∘₁: the differences add back to f(n) − f(0). Also proved.</p>
 </div>
-<div><div class="fig2" role="img" aria-label="Staircases of n mult-add steps closing on e to the x minus 1"><svg id="stairs"></svg></div>
-<p class="mute" style="margin-top:8px">Black curve: eˣ − 1. Grey stairs: 2, 4 and 16 mult-add steps of size x/n.</p></div>
+<div><div class="fig2" role="img" aria-label="Staircases of n circle-operation steps closing on e to the x minus 1"><svg id="stairs"></svg></div>
+<p class="mute" style="margin-top:8px">Black curve: eˣ − 1. Grey stairs: 2, 4 and 16 circle-operation steps of size x/n.</p></div>
 </div>
 </div>
 
@@ -103,10 +103,10 @@ html{scroll-padding-top:20px}
 <table class="stack"><thead><tr><th>Lifted side</th><th>Step</th><th>Derivative it gives</th><th>Known as</th></tr></thead><tbody>
 <tr><td>Neither</td><td class="f">(f(x+h) − f(x)) / h</td><td class="f">f′</td><td>Newton–Leibniz</td></tr>
 <tr><td>Output</td><td class="f">(f(x+h) ⊟ f(x)) / h</td><td class="f">f′ / (1 + f)</td><td>Geometric calculus (Grossman–Katz, 1972); its exponential form is Volterra's</td></tr>
-<tr><td>Input</td><td class="f">(f(x ⊞ h) − f(x)) / (x ⊞ h − x)</td><td class="f">Jackson's q-derivative, q = 1 + h</td><td>q-calculus (Jackson, 1908)</td></tr>
-<tr><td>Both</td><td class="f">(f(x ⊞ h) ⊟ f(x)) / h</td><td class="f">(1 + x) f′ / (1 + f)</td><td>Bigeometric calculus (Grossman–Katz)</td></tr>
+<tr><td>Input</td><td class="f">(f(x ∘₁ h) − f(x)) / (x ∘₁ h − x)</td><td class="f">Jackson's q-derivative, q = 1 + h</td><td>q-calculus (Jackson, 1908)</td></tr>
+<tr><td>Both</td><td class="f">(f(x ∘₁ h) ⊟ f(x)) / h</td><td class="f">(1 + x) f′ / (1 + f)</td><td>Bigeometric calculus (Grossman–Katz)</td></tr>
 </tbody></table>
-<p style="margin-top:12px">The q-derivative does appear, as you asked to check: stepping the input by mult-add moves it by h(1 + x), which is Jackson's gap with q = 1 + h. In the output-lifted calculus the product rule is just the sum rule, D(f ⊞ g) = Df + Dg, and the chain rule is D(f∘g) = (Df)(g)·g′. In exponential form that chain rule raises to the power g′, so it needs rung 3.</p>
+<p style="margin-top:12px">The q-derivative does appear, as you asked to check: stepping the input by the circle operation moves it by h(1 + x), which is Jackson's gap with q = 1 + h. In the output-lifted calculus the product rule is just the sum rule, D(f ∘₁ g) = Df + Dg, and the chain rule is D(f∘g) = (Df)(g)·g′. In exponential form that chain rule raises to the power g′, so it needs rung 3.</p>
 </div>
 
 <div class="band" id="newton">
@@ -118,35 +118,35 @@ html{scroll-padding-top:20px}
 <div class="band" id="timescales">
 <h2>The strongest lead: time-scale calculus</h2>
 <div class="flag">
-<p><b>Time-scale calculus is weighted mult-add calculus, with the corner weight equal to the step size.</b> Hilger (1988) and Bohner and Peterson (2001) built one calculus that covers both sums and integrals. Its ⊕ is p ⊕ q = p + q + μpq, where μ is the step size. Its inverse is ⊖p = −p/(1 + μp). It works only off the wall 1 + μp = 0, and its exponentials obey e_p·e_q = e_(p⊕q).</p>
-<p>That is your weighted family a + b + k·ab, with k = μ, your wall at −1/k and your lift. Step size 0 gives plain + and ordinary calculus. Step size 1 gives plain mult-add and difference equations. The field is established, so this is solid ground for "calculus falls out", not new math. It is nowhere near as surprising as the soliton cube.</p>
+<p><b>Time-scale calculus is the circle-operation calculus with dial k, with the corner weight equal to the step size.</b> Hilger (1988) and Bohner and Peterson (2001) built one calculus that covers both sums and integrals. Its ⊕ is p ⊕ q = p + q + μpq, where μ is the step size. Its inverse is ⊖p = −p/(1 + μp). It works only off the wall 1 + μp = 0, and its exponentials obey e_p·e_q = e_(p⊕q).</p>
+<p>That is your circle operation a + b + k·ab, with k = μ, your wall at −1/k and your lift. Step size 0 gives plain + and ordinary calculus. Step size 1 gives the plain circle operation and difference equations. The field is established, so this is solid ground for "calculus falls out", not new math. It is nowhere near as surprising as the soliton cube.</p>
 </div>
 </div>
 
 <div class="band" id="known">
 <h2>Known and new</h2>
 <p><b>Known:</b> every rule on this page. Product integrals (Volterra 1887), geometric and bigeometric calculus (Grossman and Katz 1972), the q-derivative (Jackson 1908), Newton's forward formula and time scales (Hilger 1988). The corner-square picture of the discrete product rule is textbook too.</p>
-<p><b>New here:</b> one picture that holds all of them. The four calculi are the four places to put x ↦ 1 + x. Discrete and continuous calculus are two slices of one weighted mult-add family, where the step size is the corner weight. And the limit enters calculus at one place only: when the corner weight goes to 0.</p>
+<p><b>New here:</b> one picture that holds all of them. The four calculi are the four places to put x ↦ 1 + x. Discrete and continuous calculus are two slices of one circle-operation family with dial k, where the step size is the corner weight. And the limit enters calculus at one place only: when the corner weight goes to 0.</p>
 <p><b>Inferred, not proved:</b> that nothing else in single-variable calculus needs more than rungs 2 and 3 plus that one limit. It held for every rule I tried.</p>
 </div>
 
 <div class="band" id="lean">
 <h2>What Lean checked</h2>
-<p>29 theorems in core Lean 4.37, no mathlib, no sorry, standard axioms only, in <code>math-theory/calculus/lean/FusedCalculus.lean</code>. They cover the fundamental theorem in mult-add, box and ordinary forms, constant slope as a power, the product rule as a sum rule, Leibniz with the corner, the block chain rule (a power of a power), time-scale ⊕ with its exponential law and inverse, Jackson's gap and Newton's forward formula. Limits are not in core Lean, so h → 0, Taylor and eˣ are checked in <code>checks.py</code> instead.</p>
+<p>29 theorems in core Lean 4.37, no mathlib, no sorry, standard axioms only, in <code>math-theory/calculus/lean/FusedCalculus.lean</code>. They cover the fundamental theorem in the circle operation, box and ordinary forms, constant slope as a power, the product rule as a sum rule, Leibniz with the corner, the block chain rule (a power of a power), time-scale ⊕ with its exponential law and inverse, Jackson's gap and Newton's forward formula. Limits are not in core Lean, so h → 0, Taylor and eˣ are checked in <code>checks.py</code> instead.</p>
 </div>
 
 <script>
 {
 const rows=[
- ["Derivative","Mult-add slope d = (f(k+1) − f(k)) / (1 + f(k)); continuous form f′/(1 + f)","2","For the continuous form","Proved (discrete), checked"],
- ["Integral","d₀ ⊞ d₁ ⊞ … ⊞ dₙ₋₁, a product of the factors (1 + dₖ)","2","For the continuous form","Proved (discrete), checked"],
- ["Fundamental theorem","f(n) = f(0) ⊞ ∫d","2","No","Proved"],
- ["Exponential","Constant slope a gives a^(⊞n); slope x/n gives eˣ − 1","3","Yes, for eˣ","Proved (discrete), checked"],
- ["Product rule","Steps of f ⊞ g are d ⊞ e; ordinary form keeps the corner","2","Yes, to drop the corner","Proved"],
- ["Rates of a product","p ⊞ₕ q = p + q + h·p·q (weight = step size)","2","h → 0 gives p + q","Proved"],
+ ["Derivative","Circle-operation slope d = (f(k+1) − f(k)) / (1 + f(k)); continuous form f′/(1 + f)","2","For the continuous form","Proved (discrete), checked"],
+ ["Integral","d₀ ∘₁ d₁ ∘₁ … ∘₁ dₙ₋₁, a product of the factors (1 + dₖ)","2","For the continuous form","Proved (discrete), checked"],
+ ["Fundamental theorem","f(n) = f(0) ∘₁ ∫d","2","No","Proved"],
+ ["Exponential","Constant slope a gives a^(∘₁n); slope x/n gives eˣ − 1","3","Yes, for eˣ","Proved (discrete), checked"],
+ ["Product rule","Steps of f ∘₁ g are d ∘₁ e; ordinary form keeps the corner","2","Yes, to drop the corner","Proved"],
+ ["Rates of a product","p ∘ₕ q = p + q + h·p·q (weight = step size)","2","h → 0 gives p + q","Proved"],
  ["Chain rule","Blocks: power of a power; rates: (Df)(g)·g′","3","Yes, for real exponents","Proved (blocks), checked"],
  ["nth derivative","Newton: f(n) = Σ C(n,k)·Δᵏf(0), the cube's layers","2","Yes, to reach Taylor","Proved (Newton), checked"],
- ["q-derivative","Input step x ⊞ h − x = h(1 + x), q = 1 + h","2","For the q → 1 limit","Proved"]];
+ ["q-derivative","Input step x ∘₁ h − x = h(1 + x), q = 1 + h","2","For the q → 1 limit","Proved"]];
 const tb=document.getElementById('dict');
 const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 tb.innerHTML=rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>Rung ${esc(r[2])}</td><td>${esc(r[3])}</td><td><span class="tag${r[4]==='Proved'?' p':''}">${esc(r[4])}</span></td></tr>`).join('');

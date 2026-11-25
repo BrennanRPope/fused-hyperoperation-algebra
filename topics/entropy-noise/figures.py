@@ -95,15 +95,15 @@ fig, ax = plt.subplots(figsize=(8.5, 4.6))
 tt = np.logspace(-0.7, 2, 400)
 ax.plot(tt, 1 - 1 / tt, color=INK, lw=2.2)
 ax.axhline(1, color=CUBE, ls=":", lw=1); ax.axhline(0, color=CUBE, ls=":", lw=1); ax.axhline(-1, color=CUBE, ls=":", lw=1)
-marks = [(1, 0, "T = T₀: Shannon, k = 0 (addition)"), (0.5, -1, "T = T₀/2: Tsallis q = 2, k = −1 (union rule;\nlinear entropy, the sphere)"),
-         (60, 1 - 1 / 60, "T → ∞: q → 0, k → 1 (plain mult-add;\ncounting states, Hartley)")]
+marks = [(1, 0, "T = T₀: Shannon, k = 0 (addition)"), (0.5, -1, "T = T₀/2: Tsallis q_T = 2, k = −1 (union rule;\nlinear entropy, the sphere)"),
+         (60, 1 - 1 / 60, "T → ∞: q_T → 0, k → 1 (the plain circle operation;\ncounting states, Hartley)")]
 for x0, y0, lab in marks:
     ax.scatter([x0], [y0], color=GOLD, s=60, edgecolor=INK, zorder=5)
 ax.annotate(marks[0][2], (1, 0), (2.2, -0.45), arrowprops=dict(arrowstyle="-", color=INK), fontsize=10)
 ax.annotate(marks[1][2], (0.5, -1), (1.2, -1.35), arrowprops=dict(arrowstyle="-", color=INK), fontsize=10)
 ax.annotate(marks[2][2], (60, 1 - 1 / 60), (4, 0.55), arrowprops=dict(arrowstyle="-", color=INK), fontsize=10)
 ax.set_xscale("log"); ax.set_ylim(-1.6, 1.25)
-ax.set_xlabel("temperature T, in units of the state's own temperature T₀  (Tsallis q = T₀/T)")
+ax.set_xlabel("temperature T, in units of the state's own temperature T₀  (Tsallis q_T = T₀/T)")
 ax.set_ylabel("weight k = 1 − T₀/T")
 ax.set_title("The Tsallis weight is Carnot's efficiency between T and T₀, so it cascades by the union rule", fontsize=11)
 fig.tight_layout(); fig.savefig(os.path.join(OUT, "e3_temperature_dial.png"), dpi=150); plt.close(fig)

@@ -15,12 +15,12 @@ PASS  lift of the parallel law: 1+v = (1+(Q-1)t)/(1-t), so it multiplies
 PASS  wall 1: a perfect bond t = 1 absorbs: F(a, 1) = 1
 PASS  wall 2: t = -1/(Q-1) absorbs, and it is v = -1 (proper colouring)
 PASS  Potts parallel = union under Ali-Mikhail-Haq dependence, theta = 1 - Q
-PASS  Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4q
-PASS  the or line q = -1 - k touches the border parabola q = k^2/4 only at k = -2, q = 1 (Q = 0)
+PASS  Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4d
+PASS  the or line d = -1 - k touches the border parabola d = k^2/4 only at k = -2, d = 1 (Q = 0)
 PASS  the parallel law is associative for every Q (symbolic)
 PASS  40 random series-parallel networks: brute-force reliability = (x, *_{-1}) reduction
 PASS  failure side: series fails = (1-p1) *_{-1} (1-p2), parallel fails = (1-p1)(1-p2)
-PASS  odds against u = 1/p - 1: series is plain mult-add, u(p1 p2) = u1 * u2
+PASS  odds against u = 1/p - 1: series is the plain circle operation, u(p1 p2) = u1 * u2
 PASS  Wheatstone bridge reliability = 2p^2 + 2p^3 - 5p^4 + 2p^5 (brute force)
 PASS  bridge by pivoting on the middle edge: p*(p*p)^2 [contracted] + (1-p)*(p^2 *_{-1} p^2) [deleted]
 PASS  the bridge has no series or parallel pair: the dial pair alone cannot reduce it
@@ -39,10 +39,10 @@ PASS  P3 strong P3 has 20 edges: 12 Cartesian (k = 0 part) + 8 diagonal (the cor
 PASS  strong product edges = n1 m2 + n2 m1 + 2 m1 m2 (36 pairs of small graphs)
 PASS  lifted count 2m + n multiplies: (2m+n)(G strong H) = (2m1+n1)(2m2+n2)
 PASS  closed degrees multiply: deg = d1 * d2 = d1 + d2 + d1 d2
-PASS  adjacency: strong = A(x)I + I(x)B + A(x)B (Kronecker mult-add); Cartesian = k = 0 part; tensor = the corner
+PASS  adjacency: strong = A(x)I + I(x)B + A(x)B (The kronecker circle operation); Cartesian = k = 0 part; tensor = the corner
 PASS  eigenvalues of the strong product are lambda * mu (lambda+mu+lambda mu)
 PASS  OR (co-normal) product: J - A_or = (J - A)(x)(J - B), the k = -1 dial with J in place of I
-PASS  disjoint union: I(G u H) - 1 = (I(G)-1) * (I(H)-1) (mult-add)
+PASS  disjoint union: I(G u H) - 1 = (I(G)-1) * (I(H)-1) (the circle operation)
 PASS  join: I(G + H) - 1 = (I(G)-1) + (I(H)-1) (plain addition, k = 0)
 PASS  C4 = join of two non-edges: I = 1 + 4x + 2x^2
 PASS  the Lee-Yang dial gas at k = 0 is the independence polynomial (Petersen, C5)

@@ -1,6 +1,6 @@
 PASS A1 order gap of (a,c),(b,d) is the wedge a*d - b*c  | a*d - b*c
 PASS A2 the twist is antisymmetric: swapping the order flips its sign
-PASS A3 two mult-add elements with the same dial k have zero twist (shared centre)
+PASS A3 two circle-operation elements with the same dial k have zero twist (shared centre)
 PASS A4 different dials k, k2: twist = (k - k2)*a*b  | a*b*(k - k2)
 PASS B1 every J in the Siegel family squares to -1
 PASS B2 ... keeps the oriented area: omega(Ju,Jv) = omega(u,v)
@@ -31,7 +31,7 @@ NOTE F2 (proved in order-dial J5, J6): the affine twist lands on Y, which is not
 PASS G1 stretch-and-shift with lam > 0 keeps a positive-frequency wave positive (the irrep pi+)  | neg-frequency weight after maps: ['3.2e-07', '6.5e-07', '3.9e-07']
 PASS G2 an orientation flip (x -> -x, lam < 0) sends it to negative frequency (pi-)
 PASS G3 complex conjugation (i -> -i) does the same: the twist's sign and i's sign are one choice
-PASS G4 mult-add elements before the wall (1 + k a > 0) keep the wave's frequency sign; past the wall (1 + k a < 0) they flip it  | before ['2.0e-18', '1.5e-07', '1.6e-07'], past ['1.0000', '1.0000', '1.0000']
+PASS G4 circle-operation elements before the wall (1 + k a > 0) keep the wave's frequency sign; past the wall (1 + k a < 0) they flip it  | before ['2.0e-18', '1.5e-07', '1.6e-07'], past ['1.0000', '1.0000', '1.0000']
 PASS H1 going round a loop of oriented area A multiplies by e^(iA)
 PASS H2 going round the other way gives e^(-iA): reversing the twist conjugates i
 PASS P1 a chain of weighted circle steps is a product: 1 + k*(a_N o ... o a_1) = (1 + k a_N)...(1 + k a_1), order kept

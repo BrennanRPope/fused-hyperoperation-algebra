@@ -1,9 +1,9 @@
 # Fused Hyperoperation Algebra: the shared Lean library
 
 One library for every Lean proof in the project, all built on one base of
-mult-add laws, so each new proof starts from the same foundation.
+circle-operation laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 128 modules compile with core Lean 4.37.0-rc1
+**Status (Nov 25, 2026):** all 129 modules compile with core Lean 4.37.0-rc1
 (no mathlib). 3125 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
@@ -20,24 +20,28 @@ here). `python3 tools/theorems_md.py` turns that list into `THEOREMS.md`.
 A `lakefile.toml` and `lean-toolchain` are included for `lake build` too.
 
 To use the library in a new proof, put the file under `FusedAlgebra/Topics/`,
-start it with `import FusedAlgebra.Base` and `open MultAdd`, add it to
+start it with `import FusedAlgebra.Base` and `open CircleOp`, add it to
 `build.sh` and `FusedAlgebra.lean`, and run `./build.sh`.
 
 ## Layout
 
 Foundation (imported by the topics):
 
-- `FusedAlgebra/Base.lean`: mult-add a ⊞ b = a + b + ab on any commutative
-  semiring (so Nat, Int and Rat at once): the lift 1 + (a ⊞ b) = (1+a)(1+b),
-  commutative, associative, identity 0, the wall −1, the weighted family
-  a + b + k·ab with its lift, scaling, flip and wall, the mult-add power and
+- `FusedAlgebra/Base.lean`: the circle operation a ◯ b = a + b + ab on any commutative
+  semiring (so Nat, Int and Rat at once): the lift 1 + (a ◯ b) = (1+a)(1+b),
+  commutative, associative, identity 0, the wall −1, the circle operation
+  a + b + k·ab with its lift, scaling, flip and wall, the circle power and
   weighted power, list folds with the corner expansion, the inverse
-  −u/(1+u) and mult-add subtraction on fields, and a few power laws.
-- `FusedAlgebra/Rungs.lean`: the fused ladder on Nat (shifted add, mult-add,
+  −u/(1+u) and circle-operation subtraction on fields, and a few power laws.
+- `FusedAlgebra/Rungs.lean`: the fused ladder on Nat (shifted add, the circle operation ∘₁ (called mult-add before 1.0),
   fused exponent, fused tetration, fused pentation), each rung as the rung
   below iterated, the laws that hold at rung 3 and fail at rung 4.
-- `FusedAlgebra/Cube.lean`: the layers of the mult-add cube (Pascal),
+- `FusedAlgebra/Cube.lean`: the layers of the circle-operation cube (Pascal),
   absorption, factorial.
+- `FusedAlgebra/Deprecated.lean`: built after every topic, it keeps each pre-1.0 name
+  (`MultAdd.multAdd`, `wAdd`, `MAFound.MARing`, ...) as a deprecated alias of its 1.0
+  name (`CircleOp.circ`, `circK`, `CircFound.CircRing`, ...) for one minor release.
+  The aliases have no source range, so `Check.lean` does not count them.
 
 Topics (each imports the foundation):
 
@@ -68,7 +72,7 @@ Topics (each imports the foundation):
 | `Topics/Fermat/FreyPieces` | fermat/lean/FreyPieces.lean | |
 | `Topics/Fermat/FermatRoute` | fermat/lean/FermatRoute.lean | imports the three above |
 | `Topics/Fermat/CounterexampleMap` | fermat-counterexample-map/lean/CounterexampleMap.lean | first compiled here; one proof reworked |
-| `Foundations/MultAddRing` | axioms/lean/Axioms/MultAddRing.lean | standalone; does not import Base |
+| `Foundations/CircleRing` | axioms/lean/Axioms/MultAddRing.lean | standalone; does not import Base |
 | `Foundations/Independence` | axioms/lean/Axioms/Independence.lean | standalone |
 | `Foundations/FusedPeano` | axioms/lean/Axioms/FusedPeano.lean | standalone |
 | `Topics/Pi` | pi/lean/PiFromMultAdd.lean | |
@@ -145,19 +149,19 @@ Topics (each imports the foundation):
 | `Topics/DialWall` | dial-survey/wall/DialWall.lean | first compile, Nov 25: necklace exponents behind the wall at Re s = 0, k = ±1 special, the k = −1/2 cancellation |
 | `Topics/DialPotential` | dial-potential/lean/DialPotential.lean | 24 theorems, first compile Nov 25: dial flip and rescaling, even and power-law potentials, the mirror well, exponential fixed point, Coleman-Weinberg and Veltman checks, conformal γ = 5/7 |
 | `Topics/FractalBoxes` | fractal-boxes/lean/FractalBoxes.lean | 15 theorems, first compile Nov 25: signed corner layers of a half box (Newton's C(½,k)), two halves join to a stick, Cantor codes one to one in any base, no linear-size rule is a half of 2^d |
-| `Topics/FractalDials` | fractal-dials/lean/FractalDials.lean | 14 theorems, first compile Nov 25: five half-dimension sets certified exactly, Moran's equation as the mult-add identity, the uneven set is non-lattice (no Minkowski wobble), weights are the dial t, joining keeps shapes self-similar, gasket touches where dust never does, the power set fits no shape class |
+| `Topics/FractalDials` | fractal-dials/lean/FractalDials.lean | 14 theorems, first compile Nov 25: five half-dimension sets certified exactly, Moran's equation as the circle-operation identity, the uneven set is non-lattice (no Minkowski wobble), weights are the dial t, joining keeps shapes self-similar, gasket touches where dust never does, the power set fits no shape class |
 | `Topics/RepetitionDial` | repetition-dial/lean/RepetitionDial.lean | 22 theorems, first compile Nov 25: 1/k cells per element, at most m copies at k = 1/m, coefficients polynomial in k, k read off average copies, negative counts between the k = 1/m values |
 | `Topics/ZoomDial` | zoom-dial/lean/ZoomDial.lean | 10 theorems, first compile Nov 25: zoom weight is a twist, zooms compose, words of depth n weigh x(s)ⁿ, the word series, dimension at the wall x(d) = 1 (Moran), half boxes hit the wall |
-| `Topics/OrderDial` | order-dial/lean/OrderDial.lean | 33 theorems, first compile Nov 25: mult-add as composition of maps sharing the wall, stretch-and-shift composition, the order gap a·d − b·c, commuting iff shared centre, compounding corner, mutation algebras, quantum plane counts, anticommuting forces no repeats, no functor half power set |
+| `Topics/OrderDial` | order-dial/lean/OrderDial.lean | 33 theorems, first compile Nov 25: the circle operation as composition of maps sharing the wall, stretch-and-shift composition, the order gap a·d − b·c, commuting iff shared centre, compounding corner, mutation algebras, quantum plane counts, anticommuting forces no repeats, no functor half power set |
 | `Topics/WhyI` | why-i/lean/WhyI.lean | 21 theorems, first compile Nov 25: the twist (order gap) is antisymmetric and equals (k − k₂)·a·b between two dials, dial-k elements on the line λ = 1 + k·s, the quarter turn J squares to −1 and turns the dot product into the area form, a mirror flips J to −J, symmetric matrices have antisymmetric commutators, weighted-circle chains multiply as ∏(1 + k·aⱼ), a path's accumulated twist is its shoelace area |
 | `Topics/Checkerboard` | why-i/checkerboard/lean/Checkerboard.lean | 4 theorems, first compile Nov 25 (one type annotation fixed): on non-commuting 2×2 integer matrices 1 + k(x ∘ₖ y) = (1 + kx)(1 + ky), three steps expand into the 7 ordered sub-chains, the swap and a diagonal move do not commute, checkerboard path counts match the Feynman–Hibbs formula at N = 5 |
 | `Topics/CheckerboardPotential` | why-i/checkerboard-potential/lean/CheckerboardPotential.lean | 3 theorems, first compile Nov 25: a scalar potential commutes with every turn element so each tick factors, and summing k^|S|∏v over every subset of ticks gives ∏(1 + k·vⱼ) |
-| `Topics/EIPi` | why-i/e-i-pi/lean/EIPi.lean | 17 theorems, first compile Nov 25: the lift 1 + k(a ∘ₖ b) = (1 + ka)(1 + kb) for two and three steps, a dial is a direction (k(a ∘ₖ b) = ka ∘₁ kb), a discrete Euler on the Gaussian integers (q = −1 + i lifts to i, four copies lift to 1), local tomography as mult-add of parameter counts: true for complex counts, false for real and quaternionic |
+| `Topics/EIPi` | why-i/e-i-pi/lean/EIPi.lean | 17 theorems, first compile Nov 25: the lift 1 + k(a ∘ₖ b) = (1 + ka)(1 + kb) for two and three steps, a dial is a direction (k(a ∘ₖ b) = ka ∘₁ kb), a discrete Euler on the Gaussian integers (q = −1 + i lifts to i, four copies lift to 1), local tomography as the circle operation of parameter counts: true for complex counts, false for real and quaternionic |
 | `Topics/Conventions` | names-review/lean/Conventions.lean | 7 theorems, first compile Nov 25: the weight-to-probability sign flip, both ring-theory circle conventions on the dial, (weights compose by k, probabilities by −k) and related notation facts; recommendations only, nothing renamed |
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |
-| `Topics/GRBridges` | gr-bridges/lean/GRBridges.lean | 22 theorems: Clifford boosts, sandwich mult-add for matrix weights, Schur factor, Raychaudhuri area terms, river constraint, Brans-Dicke; first compile, one witness fixed |
-| `Topics/Electromagnetism` | electromagnetism/lean/Electromagnetism.lean | 41 theorems, first compile Nov 25: the wave equation sets the dial q = −1/c², light-cone parts of E and B scale by D and 1/D, D² − 1 composes by mult-add, invariants and null fields, unit phases as a ✳ ā = 0, plaquettes and discrete Stokes, Born–Infeld cap |
+| `Topics/GRBridges` | gr-bridges/lean/GRBridges.lean | 22 theorems: Clifford boosts, sandwich the circle operation for matrix weights, Schur factor, Raychaudhuri area terms, river constraint, Brans-Dicke; first compile, one witness fixed |
+| `Topics/Electromagnetism` | electromagnetism/lean/Electromagnetism.lean | 41 theorems, first compile Nov 25: the wave equation sets the dial d = −1/c², light-cone parts of E and B scale by D and 1/D, D² − 1 composes by the circle operation, invariants and null fields, unit phases as a ✳ ā = 0, plaquettes and discrete Stokes, Born–Infeld cap |
 | `Topics/NavierStokes` | ns-rungs/lean/FusedRungs.lean (Burgers, shell model) | |
 | `Topics/QuantumNoise` | quantum-noise/QuantumNoise.lean | |
 | `Topics/Rulecraft` | rulecraft/lean/RulecraftFused.lean | first compile, one step fixed |
@@ -165,7 +169,7 @@ Topics (each imports the foundation):
 | `Topics/Toric/ProjectivePlane` | tesseract/ProjectivePlane.lean | |
 | `Topics/Topology/CubeProofs` | topology/lean/CubeProofs.lean | |
 | `Topics/Topology/KummerWilson` | topology/lean/KummerWilson.lean | |
-| `Topics/Topology/HopfInvariantOne` | topology/lean/HopfInvariantOne.lean | keeps its own mult-add on truncated series |
+| `Topics/Topology/HopfInvariantOne` | topology/lean/HopfInvariantOne.lean | keeps its own circle operation on truncated series |
 
 Infinities, InformationTheory and FractionalRungs were re-copied from their
 finished files on Nov 25 (only InfoFused had changed: two proofs, now matched).
@@ -209,7 +213,7 @@ SolitonsRungs (26) had never been compiled; it built on the first try with no
 changes and has no twins. Relativity came with 34 theorems; four stated exactly
 what a library theorem already states and were removed, with a comment naming the
 library theorem: lift_num (ThermoFused.lens_den), lift_den (ThermoFused.lens_num),
-light_absorbs (ThermoFused.vel_wall_pos) and multAdd_wall (MultAdd.neg_one_absorbs).
+light_absorbs (ThermoFused.vel_wall_pos) and circ_wall (CircleOp.neg_one_absorbs).
 The other 30 compiled unchanged. Relativity builds right after Thermodynamics.
 LeeYang (39) compiled unchanged after Relativity; none of its theorems is an
 exact twin of a library theorem.
@@ -217,7 +221,7 @@ TwistedBoosts (32 theorems, 36 by the check's count with its two @[ext] lemma
 pairs) had never been compiled. One proof step changed, no statement: in
 sphere_no_wall, two `Rat.le_total 0 x` calls became `(Rat.le_total : (0 : Rat) ≤ x ∨ x ≤ 0)`.
 LeeYangCluster (10) compiled unchanged after LeeYang. It has no exact twins; its
-ring-general `wAdd_units` is kept beside the Int-only Landscape.units_num.
+ring-general `circK_units` is kept beside the Int-only Landscape.units_num.
 GravityProbeB (16) had never been compiled; it compiled unchanged after
 TwistedBoosts, every `grind` step closing, with no exact twins.
 LeeYangSpill (10) compiled unchanged after LeeYangCluster; its Int helper
@@ -225,7 +229,7 @@ LeeYangSpill (10) compiled unchanged after LeeYangCluster; its Int helper
 The first three chemistry subjects go under Topics/Chemistry. All compiled as
 sent. ChemPeriodic (12) is unchanged. Five theorems were exact twins of Base
 and were removed with a comment naming the Base theorem: in ChemQuantum,
-cisd_is_weight_zero (wAdd_weight_zero), exact_is_weight_one (wAdd_one),
+cisd_is_weight_zero (circK_weight_zero), exact_is_weight_one (circK_one),
 n_fragments (mpow_lift) and fragments_assoc (mpow_add); in ChemConservation,
 fugacity_mul (pw_add). That leaves ChemQuantum 8 and ChemConservation 10.
 Patterns (32) had never been compiled and builds right after EarlyScience. Three
@@ -233,8 +237,8 @@ proof steps changed, no statement: step_is_law splits the pair before `grind`, a
 the two parity proofs take their split from `omega` because `Int.emod_add_ediv` and
 `Int.emod_two_eq_zero_or_one` are not in core Lean 4.37. No exact twins.
 ShapeDirections (36) had never been compiled; it compiled unchanged with no exact
-twins. Its Int star_def and weight_is_units sit beside the general multAdd_def and
-LeeYangCluster.wAdd_units.
+twins. Its Int star_def and weight_is_units sit beside the general circ_def and
+LeeYangCluster.circK_units.
 BinaryPulsar (10) compiled unchanged after GravityProbeB, with no exact twins.
 The 14-branch pass added 14 modules (513 theorems as sent), built after the Fermat
 modules so that their imports (Statistics, InformationTheory, the QAcross files) come
@@ -242,10 +246,10 @@ first. All compiled as sent. Twins were found by comparing every new theorem's
 elaborated statement with every library theorem's, so a match is the same statement
 up to variable names. Twelve exact twins were removed, each with a comment naming the
 theorem that stays: GroupsLie scale_disc and shift_disc (ShapeDirections), GraphTheory
-parallel_rel, or_line, union_multAdd and series_fails, DiffGeometry halfplane_dilation,
-KnotTheory qnum_at_one, Dynamics chain_multAdd, InformationFull joint_mass and
+parallel_rel, or_line, union_circ and series_fails, DiffGeometry halfplane_dilation,
+KnotTheory qnum_at_one, Dynamics chain_circ, InformationFull joint_mass and
 shannon_engine, and GameTheory hedge_expert (a twin of kelly_many in the same file).
-Numerical keeps multAdd_bound, the same statement as ComplexAnalysis.corner_bound,
+Numerical keeps circ_bound, the same statement as ComplexAnalysis.corner_bound,
 because a later proof there uses it and the file does not import ComplexAnalysis; its
 Rat helpers sq_nonneg_rat and pow_nonneg_rat stay local as under Small leftovers.
 Chemistry subjects 4 to 6 compiled as sent. ChemBonding (23) is unchanged. ChemStoichiometry
@@ -274,14 +278,14 @@ Biology, eleven files with 164 theorems, compiled with no proof changes and buil
 RuleBreakers; MolecularBiology also imports LeeYang. 36 theorems were exact twins and are
 removed with a comment naming the survivor, leaving 128. Every file restated the ✳
 definition as star_def, so the copy in MolecularBiology stays and the other ten go. The rest
-mostly restate Metabolism.limitation_pow (the "or" power), ChemQuantum.fragments_multAdd,
+mostly restate Metabolism.limitation_pow (the "or" power), ChemQuantum.fragments_circ,
 CellBiology.bliss_or and MolecularBiology.mwc_R. Development keeps pow_mul', a twin of
 Dynamics.pow_mul_R, because its later proofs use it and it does not import Dynamics.
 FractionalPowerset (11) was written without a toolchain and compiled unchanged, with no
 imports and no exact twins; it builds after the biology files.
 GeneralRelativity (28) imports only Base and builds last. Written and compiled in the same
 session: the dial's boosts close on −q·rotation, PPN fractions for dial-only theories, the river
-facts (deficits are mult-add inverses, horizon at the wall, β = γ = 1 remainders, Friedmann as
+facts (deficits are circle inverses, horizon at the wall, β = γ = 1 remainders, Friedmann as
 Newton, Gravity Probe B's factor), and the b = −a/2 step behind G = R − ½Rg.
 CounterexampleMap (24 theorems) was written without a toolchain and builds after
 FermatRoute. One proof changed: germain_residues used decide on a nested bounded ∀, which
@@ -292,7 +296,7 @@ dim_eq_genus) are Props. They are named hypotheses, not proofs: flt_of_deep_arro
 Fermat's Last Theorem only from them.
 EllipticCounting (19) had never been compiled and builds after Patterns. Proof fixes:
 lucas_shift_one's step case gives grind the two recurrence steps, lucas_eds_unit uses
-MultAdd.one_pow', and disc needed a `;` after its `let b8` line, because the next line's
+CircleOp.one_pow', and disc needed a `;` after its `let b8` line, because the next line's
 leading minus was read as part of b8. One statement was false as written and was corrected
 to match its own docstring: order_five_point's last conjunct had w3 * (w3 * w3 * w3), which
 is W3⁴ and evaluates to −2; it now has w3 * w3 * w3 (W3³), and the conjunct is 0 as claimed.
@@ -300,8 +304,8 @@ is W3⁴ and evaluates to −2; it now has w3 * w3 * w3 (W3³), and the conjunct
 ## What was merged
 
 The 19 source files held 449 theorems that compile. About 100 of them were
-the same few laws proved again in each file (the mult-add lift, commutative,
-associative and identity laws, the weighted family, powers, the inverse, the
+the same few laws proved again in each file (the circle-operation lift, commutative,
+associative and identity laws, the circle operation with dial k, powers, the inverse, the
 cube layers, `pw`, a few power helpers). Each of those now exists once, in
 Base, Rungs or Cube. Where a topic gave a law a real-world name (Fisher's
 rule, the MOND inverse, the union rule), the name stays as a one-line reading

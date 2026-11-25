@@ -16,7 +16,7 @@
        triangle with a lone or pendant wave, and every smaller graph obey the rule for all
        weights. The 4-cycle gives rule4 = ∏ (w − 1)²: it breaks the rule unless one of its
        weights is 1. The 4-cycle with a diagonal breaks it unless k = 0.
-    B. One weight k on every pair (a single mult-add weight shared by all waves):
+    B. One weight k on every pair (a single circle-operation weight shared by all waves):
        rule4 k k k k k k = −k³ (k − 1)⁸ (k + 2), so four waves carry it only at k = −2
        (besides the trivial 0 and 1). Three waves carry any k: the third wave sits at a root
        of t² − (k + 1)t + 1 (the identity below). Four waves force the two roots to be the

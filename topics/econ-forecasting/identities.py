@@ -1,4 +1,4 @@
-"""Finance identities as mult-add, checked on Shiller's S&P data (1871-2022).
+"""Finance identities as the circle operation, checked on Shiller's S&P data (1871-2022).
 a (+) b = a + b + ab = (1+a)(1+b) - 1;  a (-) b = (a - b)/(1 + b) is its inverse."""
 import numpy as np, itertools, load
 madd = lambda a, b: a + b + a * b
@@ -33,7 +33,7 @@ m, s = 0.07, 0.20
 say(f" up {100*(m+s):.0f}% then down {100*(s-m):.0f}%: (1+m+s)(1+m-s) = (1+m)^2 - s^2 = {(1+m+s)*(1+m-s):.4f} = {(1+m)**2:.4f} - {s*s:.4f}")
 Rall = A.R_real.dropna().values
 am, gm = Rall.mean(), np.exp(np.log1p(Rall).mean()) - 1
-say(f" S&P real 1871-2022: arithmetic mean {100*am:.2f}%, geometric (mult-add) mean {100*gm:.2f}%, drag {100*(am-gm):.2f} pts; variance/2 = {100*Rall.var()/2:.2f} pts; variance/(2(1+m)) = {100*Rall.var()/(2*(1+am)):.2f}")
+say(f" S&P real 1871-2022: arithmetic mean {100*am:.2f}%, geometric (the circle operation) mean {100*gm:.2f}%, drag {100*(am-gm):.2f} pts; variance/2 = {100*Rall.var()/2:.2f} pts; variance/(2(1+m)) = {100*Rall.var()/(2*(1+am)):.2f}")
 
 say("\n== 4. Perpetuities and the pole ==")
 for i in [0.02, 0.05]:
@@ -43,7 +43,7 @@ P_gordon = D0 * (1 + g) / (r - g)
 P_perp = D0 / msub(r, g)
 N = 4000; P_sum = sum(D0 * ((1 + g) / (1 + r)) ** k for k in range(1, N + 1))
 say(f" Gordon: D0(1+g)/(r-g) = {P_gordon:.4f}; perpetuity at r (-) g = {msub(r,g):.6f}: D0/(r(-)g) = {P_perp:.4f}; summed {N} years = {P_sum:.4f}")
-say(" so a growing stream is a flat perpetuity at the mult-add difference of the rates; it blows up at g = r (a pole of order 1)")
+say(" so a growing stream is a flat perpetuity at the circle-operation difference of the rates; it blows up at g = r (a pole of order 1)")
 m_ = load.shiller_monthly()
 for y in ["1921-01", "1950-01", "1982-01", "2000-01", "2009-03", "2022-12"]:
     row = m_.loc[y].iloc[0]

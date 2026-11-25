@@ -11,9 +11,9 @@ PASS: the second wall 1/(1-Q) is the colouring bond v = -1
 PASS: lift phi(t) = (1-t)/(1+(Q-1)t) turns parallel into multiplication
 PASS: phi(t) = 1/(1+v) = e^{-K}: parallel multiplies e^K
 PASS: so T = phi^-1(phi(t^2)^2): square in t, then square in e^{-K}
-PASS: discriminant p^2 - 4q = (Q-2)^2 + 4(Q-1) = Q^2
-PASS: wall gap squared (1 - 1/(1-Q))^2 = (p^2-4q)/q^2
-PASS: bend q = 1 - Q is the reciprocal of the second wall
+PASS: discriminant p^2 - 4d = (Q-2)^2 + 4(Q-1) = Q^2
+PASS: wall gap squared (1 - 1/(1-Q))^2 = (p^2-4d)/d^2
+PASS: bend d = 1 - Q is the reciprocal of the second wall
 PASS: T'(t) = 4t(1-t^2)(1+(Q-1)t^2)/(1+(Q-1)t^4)^2
 PASS: critical points 0, +-1, +-sqrt(1/(1-Q)) (and infinity, the series wall)
 PASS: the parallel law doubles its own wall: F(w, w) = w for w = 1/(1-Q), so T(+-sqrt w) = w

@@ -1,4 +1,4 @@
-"""Rung 2 (mult-add) warm-up: the two-wave cube  tau = 1 + e1 + e2 + A*e1*e2.
+"""Rung 2 (the circle operation) warm-up: the two-wave cube  tau = 1 + e1 + e2 + A*e1*e2.
 Every term is w*exp(a x + b t). With softmax weights p_j over the terms:
   (log tau)_x = sum p_j a_j ,  (log tau)_xx = sum p_j a_j^2 - (sum p_j a_j)^2   (exact)
 Burgers (Cole-Hopf, u = -2 nu (log phi)_x): phi must solve phi_t = nu phi_xx. A term solves it
@@ -46,7 +46,7 @@ def kdv_res(A='hirota',t=8.0,h=1e-4):
     return np.max(np.abs(ut+6*u*ux+uxxx)[20:-20])/np.max(np.abs(ut))
 A12=((k1-k2)/(k1+k2))**2
 pr(f"\nKdV, k1={k1}, k2={k2}: Hirota corner weight A12=((k1-k2)/(k1+k2))^2 = {A12:.4f}")
-pr(f"  relative PDE residual mid-collision (t=8): corner A12: {kdv_res():.1e}   corner 1 (plain mult-add): {kdv_res(1.0):.1e}   corner 0: {kdv_res(0.0):.1e}")
+pr(f"  relative PDE residual mid-collision (t=8): corner A12: {kdv_res():.1e}   corner 1 (the plain circle operation): {kdv_res(1.0):.1e}   corner 0: {kdv_res(0.0):.1e}")
 def peaks(u):
     i=np.where((u[1:-1]>u[:-2])&(u[1:-1]>=u[2:])&(u[1:-1]>0.05))[0]+1
     return [(round(float(x[j]),2),round(float(u[j]),3)) for j in i]

@@ -2,8 +2,8 @@
 
 Every claim on the page is checked here. Output: checks_output.txt, results.json.
 Conventions: KdV  u_t + 6 u u_x + u_xxx = 0,  u = 2 d^2/dx^2 log tau  (Hirota 1971).
-Rung s law  B_s(a,b) = E^s(E^-s(a) + E^-s(b)),  E(x) = e^x - 1  (s=0 add, s=1 mult-add).
-Weighted mult-add  a + b + k ab.   Theta  Th(w;q) = sum_n q^{n(n-1)/2} w^n.
+Rung s law  B_s(a,b) = E^s(E^-s(a) + E^-s(b)),  E(x) = e^x - 1  (s=0 add, s=1 circle operation).
+The circle operation  a + b + k ab.   Theta  Th(w;q) = sum_n q^{n(n-1)/2} w^n.
 """
 import sys, json, math, warnings
 warnings.filterwarnings("ignore")
@@ -64,13 +64,13 @@ rep("1b the three-body term s(s-1)/2 vanishes only at rungs 0 and 1",
 k = sp.symbols("k")
 W = lambda p, q_: p + q_ + k*p*q_
 wabc = sp.Poly(sp.expand(W(W(a, b), c)), a, b, c).coeff_monomial(a*b*c)
-rep("1c weighted mult-add a+b+k ab has triple corner k^2: no three-body term for any k",
+rep("1c the circle operation a+b+k ab has triple corner k^2: no three-body term for any k",
     sp.simplify(wabc - k**2) == 0)
 # the KdV 3-soliton tau has triple corner A12 A13 A23 (product of the pairs)
 A12, A13, A23 = sp.symbols("A12 A13 A23")
 tau3 = 1 + a + b + c + A12*a*b + A13*a*c + A23*b*c + A12*A13*A23*a*b*c
 tau3k = sp.Poly(sp.expand(tau3.subs({A12: k, A13: k, A23: k})), a, b, c).coeff_monomial(a*b*c)
-rep("1d KdV corners multiply over PAIRS: equal weights A give triple corner A^3, not weighted mult-add's A^2",
+rep("1d KdV corners multiply over PAIRS: equal weights A give triple corner A^3, not the A^2 of the circle operation with dial k",
     sp.simplify(tau3k - k**3) == 0)
 # corners of the cube for n inputs: rung s gives n! [y^n] E^s(y); solitons give A^C(n,2)
 y = sp.symbols("y")
@@ -199,7 +199,7 @@ for q in [mp.mpf("0.05"), mp.mpf("0.3"), mp.mpf("0.6")]:
         errs.append(abs(Th(w, q) - triple(w, q)) / abs(Th(w, q)))
 rep("4a Jacobi triple product: Th(w;q) = (q;q) (1+w) prod_m (1+w q^m)(1+q^m/w)", max(errs) < 1e-25,
     f"max rel err {float(max(errs)):.1e}")
-# so Th/(q;q) - 1 = mult-add of the whole q-orbit {w q^m} U {q^m / w}
+# so Th/(q;q) - 1 = the circle operation of the whole q-orbit {w q^m} U {q^m / w}
 q = mp.mpf("0.3"); w = mp.mpf("0.8")
 orbit = [w*q**m for m in range(0, 300)] + [q**m/w for m in range(1, 300)]
 ma = mp.mpf(0)
@@ -207,7 +207,7 @@ for y in orbit: ma = ma + y + ma*y
 qq = mp.mpf(1)
 for m in range(1, 400): qq *= (1 - q**m)
 e = abs((Th(w, q)/qq - 1) - ma)
-rep("4b Th/(q;q)_inf - 1 is the mult-add of every point of w's q-orbit", e < 1e-25, f"err {float(e):.1e}")
+rep("4b Th/(q;q)_inf - 1 is the circle operation of every point of w's q-orbit", e < 1e-25, f"err {float(e):.1e}")
 def g_theta(eta, q):  # 2 d^2/deta^2 log Th(e^eta; q)
     return 2*mp.diff(lambda z: mp.log(Th(mp.e**z, q)), eta, 2)
 def g_sum(eta, q, M=200):
@@ -261,7 +261,7 @@ for qv in [0.9, 0.97]:
 # gluing is a rung-1 step: w q - 1 = (w-1) (+) (q-1),  and q - 1 = E(log q)
 wq = 0.73; qv = 0.21
 lhs = wq*qv - 1; rhs_ = (wq - 1) + (qv - 1) + (wq - 1)*(qv - 1)
-rep("4g gluing w -> w q is mult-add by q-1 in the 1+x picture, and q-1 = E(log q)",
+rep("4g gluing w -> w q is the circle operation by q-1 in the 1+x picture, and q-1 = E(log q)",
     abs(lhs - rhs_) < 1e-15 and abs(np.expm1(np.log(qv)) - (qv - 1)) < 1e-15)
 
 # ---------------------------------------------------------------------------
@@ -280,7 +280,7 @@ for qv in ["1e-3", "1e-4", "1e-5", "1e-6"]:
     qm = mp.mpf(qv)
     face.append((qv, float(abs(Th2(w1, w2, qm, qm, Aw) - cube) / qm)))
 note("error / q as q -> 0: " + ", ".join(f"{a_}: {b_:.4f}" for a_, b_ in face))
-rep("5a genus-2 theta -> 1 + w1 + w2 + A w1 w2 (the weighted mult-add cube), error proportional to q",
+rep("5a genus-2 theta -> 1 + w1 + w2 + A w1 w2 (the circle-operation cube with dial k), error proportional to q",
     abs(face[-1][1] - face[-2][1]) / face[-1][1] < 0.01)
 rep("5b with A = 1 the two-wave theta splits into two one-wave thetas (no interaction)",
     abs(Th2(w1, w2, mp.mpf("0.3"), mp.mpf("0.4"), 1) - Th(w1, mp.mpf("0.3"))*Th(w2, mp.mpf("0.4"))) < 1e-25)

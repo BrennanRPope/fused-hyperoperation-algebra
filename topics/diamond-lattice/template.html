@@ -72,15 +72,15 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <div>
 <h2>One step is two squarings in two coordinates</h2>
 <div class="eq">T(t) = F<sub>Q−2,1−Q</sub>(t², t²) = (2t² + (Q−2)t⁴) / (1 + (Q−1)t⁴)</div>
-<p>Series: two bonds in a row multiply transmissivity, t₁t₂. Parallel: couplings add, so 1 + v multiplies (mult-add on v), and in t that is the landscape law F<sub>Q−2,1−Q</sub>. Its lift is φ(t) = (1 − t)/(1 + (Q − 1)t), which is exactly 1/(1 + v) = e<sup>−K</sup>. So</p>
+<p>Series: two bonds in a row multiply transmissivity, t₁t₂. Parallel: couplings add, so 1 + v multiplies (the circle operation ∘₁ (called mult-add before 1.0) on v), and in t that is the landscape law F<sub>Q−2,1−Q</sub>. Its lift is φ(t) = (1 − t)/(1 + (Q − 1)t), which is exactly 1/(1 + v) = e<sup>−K</sup>. So</p>
 <div class="eq">φ(T(t)) = φ(t²)²</div>
 <p>square in t, then square in φ. Swap t = (x − 1)/(x + Q − 1) and this is the classical map x ↦ ((x² + Q − 1)/(2x + Q − 2))² of Berker and Ostlund, x = e<sup>K</sup>. Brute-force sums over all colourings of the 4-bond and 16-bond diamonds confirm it.</p>
 </div>
 <div>
-<h2>The bend's sign never flips, because p² − 4q = Q²</h2>
-<p>On the landscape, a law is a "line group" when its two walls are real and apart, a "circle group" when they are complex, and on the border when they touch. For the Potts parallel law p = Q − 2 and q = 1 − Q, so</p>
-<div class="eq">p² − 4q = (Q − 2)² + 4(Q − 1) = Q²</div>
-<p>a perfect square. The walls are 1 and 1/(1 − Q), always real, and they meet only at Q = 0. So for real Q the circle type never happens and the sign tells the dynamics nothing. What matters is the zero: at Q = 0 the cold fixed point t = 1 stops being superattracting (slope 0) and turns parabolic (slope 1), T(t) − t = −t(t − 1)²/(1 + t²). The bend has one other job: q = 1 − Q is the reciprocal of the moving wall.</p>
+<h2>The bend's sign never flips, because p² − 4d = Q²</h2>
+<p>On the landscape, a law is a "line group" when its two walls are real and apart, a "circle group" when they are complex, and on the border when they touch. For the Potts parallel law p = Q − 2 and d = 1 − Q, so</p>
+<div class="eq">p² − 4d = (Q − 2)² + 4(Q − 1) = Q²</div>
+<p>a perfect square. The walls are 1 and 1/(1 − Q), always real, and they meet only at Q = 0. So for real Q the circle type never happens and the sign tells the dynamics nothing. What matters is the zero: at Q = 0 the cold fixed point t = 1 stops being superattracting (slope 0) and turns parabolic (slope 1), T(t) − t = −t(t − 1)²/(1 + t²). The bend has one other job: d = 1 − Q is the reciprocal of the moving wall.</p>
 </div>
 </div>
 </section>
@@ -137,7 +137,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <table class="ledger"><tbody>
 <tr><td>Known</td><td>The diamond recursion: Berker and Ostlund 1979. Transmissivity t = v/(Q + v): Tsallis and Levy 1981. Julia sets of zeros: Derrida, De Seze and Itzykson 1983; Bleher and Lyubich 1991.</td></tr>
 <tr><td>Known</td><td>Fixed-point cubic q² + 2qv = v³, the fold at 32/27, real crossings 3, q₁ = 1.6389 (root of q³ − 5q² + 11q − 9) and a run down to 32/27, closed forms at Q = 1, 3, 16: Chang, Roeder and Shrock 2020. Chromatic zeros fill a dimension-2 set: Chio and Roeder 2021.</td></tr>
-<tr><td>Ours</td><td>The landscape reading: series and parallel as two multiplications, four walls, the moving wall at the reciprocal of the bend, p² − 4q = Q².</td></tr>
+<tr><td>Ours</td><td>The landscape reading: series and parallel as two multiplications, four walls, the moving wall at the reciprocal of the bend, p² − 4d = Q².</td></tr>
 <tr><td>Ours</td><td>The parametrisation Q = (y − 1)²(y + 1), t* = 1/y, and the slope 4/(1 + t*)² at every fixed point (elementary; we did not find it written down). The mirror reason for Q = 3. The Beraha test.</td></tr>
 </tbody></table>
 </div>
@@ -176,7 +176,7 @@ function drawWalls(Q) {
   const dot = (x, c, lab, up) => { el(s, 'circle', { cx: x, cy: y0, r: 7, fill: c }); el(s, 'text', { x: x, y: y0 + (up ? -16 : 38), 'text-anchor': 'middle' }, lab); };
   dot(X(0), css('--cold'), 'series 0', true); dot(R, css('--cold'), 'series ∞', true); dot(X(1), css('--hot'), 'parallel 1', false);
   const wv = Math.abs(1 - Q) < 1e-9 ? 1e9 : 1 / (1 - Q); dot(wv > 1e6 ? R : X(wv), css('--wall'), 'moving wall', Math.abs(wv - 1) < 0.6 || wv > 1e6 ? true : false);
-  el(s, 'text', { x: L, y: 18 }, 'Q = ' + D.julia[k].name + ', bend q = 1 − Q = ' + fmt(1 - Q));
+  el(s, 'text', { x: L, y: 18 }, 'Q = ' + D.julia[k].name + ', bend d = 1 − Q = ' + fmt(1 - Q));
 }
 function drawCubic(Q) {
   const [s, w, h] = stage('cubic'); const m = 36, y0 = -1.3, y1 = 3.2, q0 = -0.5, q1 = Math.max(5, Q + 1);

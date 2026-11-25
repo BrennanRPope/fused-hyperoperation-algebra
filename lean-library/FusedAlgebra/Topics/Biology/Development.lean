@@ -4,11 +4,11 @@
   Intended library path: FusedAlgebra/Topics/Biology/Development.lean
 
   1. The Richards family of growth curves: size/asymptote = 1 + mpow(x, p) with the excess x
-     decaying exponentially. Logistic growth is p = −1, the mult-add inverse (saturation);
+     decaying exponentially. Logistic growth is p = −1, the circle inverse (called mult-add inverse before 1.0) (saturation);
      von Bertalanffy is p = 3.
-  2. Gompertz in discrete time iterates one mult-add power; powers compose by multiplying
+  2. Gompertz in discrete time iterates one circle power; powers compose by multiplying
      exponents, so n steps are a single power.
-  3. Allometry y ∝ xᵃ: the growth of y is the mult-add power of the growth of x.
+  3. Allometry y ∝ xᵃ: the growth of y is the circle power of the growth of x.
   LIBRARY NOTE: first compiled in the shared library. 3 exact twins removed (star_def,
   mpow_mpow, logistic); each is marked where it stood. pow_mul' is a twin of
   Dynamics.pow_mul_R but stays, because later proofs here use it. No proof step or
@@ -17,12 +17,11 @@
 import FusedAlgebra.Base
 
 namespace Development
-open MultAdd Lean.Grind
+open CircleOp Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
@@ -37,7 +36,7 @@ theorem pow_mul' (a : R) (m n : Nat) : a ^ (m * n) = (a ^ m) ^ n := by
 
 -- LIBRARY: mpow_mpow (**Powers compose.** mpow(mpow(x, a), b) = mpow(x, a·b)) was an exact twin of Dynamics.mpow_mpow and is removed.
 
-/-- Iterating one mult-add power n times. -/
+/-- Iterating one circle power n times. -/
 def iter (l : Nat) : Nat → R → R
   | 0, x => x
   | n + 1, x => mpow (iter l n x) l
@@ -66,8 +65,8 @@ variable {K : Type} [Lean.Grind.Field K]
 -- LIBRARY: logistic (**Logistic growth is saturation by the inverse.** With excess x = Q·e^(−rt), size/asymptote = 1/(1 + x) = 1 + inv(x), the Michaelis–Menten form again) was an exact twin of Metabolism.saturation and is removed.
 
 /-- The logistic shortfall below the asymptote is −inv(x) = x/(1 + x). -/
-theorem logistic_shortfall (x : K) (_h : 1 + x ≠ 0) : 1 - 1 / (1 + x) = -multAddInv x := by
-  unfold multAddInv; grind
+theorem logistic_shortfall (x : K) (_h : 1 + x ≠ 0) : 1 - 1 / (1 + x) = -circInv x := by
+  unfold circInv; grind
 
 end Field
 

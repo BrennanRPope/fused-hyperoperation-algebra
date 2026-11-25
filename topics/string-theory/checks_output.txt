@@ -9,7 +9,7 @@ PASS T1 closed-string spectrum on a circle is unchanged by R -> alpha'/R with mo
 PASS T2 at the self-dual radius R = sqrt(alpha') extra states (n, w = +-1) become massless (the SU(2) x SU(2) enhancement)  | 4 extra massless (n,w,N,Nt): [(-1, -1, 1, 0), (-1, 1, 0, 1), (1, -1, 0, 1), (1, 1, 1, 0)]
 PASS T3 p_L^2 - p_R^2 = 2 n w for every radius: the radius never changes the Lorentzian length of a lattice point
 PASS T4 changing the radius is a Lorentz boost of the (p_L, p_R) lattice with rapidity log(R2/R1) (Narain's O(1,1))  | rapidity 1.1527
-PASS T5 ours: with 1 + a = R/sqrt(alpha'), T-duality is the mult-add (k = 1) inverse: 1 + inv(a) = 1/(1 + a), and a o inv(a) = 0 (the self-dual radius)
+PASS T5 ours: with 1 + a = R/sqrt(alpha'), T-duality is the circle operation (k = 1) inverse: 1 + inv(a) = 1/(1 + a), and a o inv(a) = 0 (the self-dual radius)
 PASS T6 ours: in the flat coordinate u = log(1 + a) = log(R/sqrt(alpha')), the rapidity of T4, T-duality is the reflection u -> -u; the wall a = -1 is R = 0, sent to R = infinity
 PASS T7 2-torus with a B-field: T-duality E -> E^{-1} (E = G + B) swaps momentum and winding in the mass matrix, H(E^-1) = P H(E) P (Giveon-Porrati-Rabinovici)
 PASS S1 the order dial's stretch-and-shift maps tau -> lam*tau + s are exactly the upper-triangular (Borel) part of SL(2,R) acting on the half-plane

@@ -42,7 +42,7 @@ structure Side where
 structure Box where
   sides   : Array Side
   weights : Array (Nat × String) := #[]   -- (mask, weight as text, e.g. "A12")
-  cut     : String := ""                  -- bracketing, e.g. "((0 1) 2)" = slabs (a⊕b)⊕c
+  cut     : String := ""                  -- bracketing, e.g. "((0 1) 2)" = slabs (a◯b)◯c
   dropUnit : Bool := true                 -- draw the unit cube dashed (removed)
   deriving ToJson, Inhabited
 
@@ -69,7 +69,7 @@ def asLifted? (e : Expr) : Option Expr :=
   | _ => none
 
 /-- Split a product into its factors, remembering how it was bracketed, e.g. "((0 1) 2)"
-    for slabs (a⊕b)⊕c and "(0 (1 2))" for columns a⊕(b⊕c). -/
+    for slabs (a◯b)◯c and "(0 (1 2))" for columns a◯(b◯c). -/
 partial def factorsAux (e : Expr) (off : Nat) : Array Expr × String :=
   match e.getAppFnArgs with
   | (``HMul.hMul, #[_, _, _, _, l, r]) =>
@@ -144,7 +144,7 @@ def showGoal (stx : Syntax) (move : String) : TacticM Unit := do
   Each move is an ordinary rewrite with a library lemma. The table is on the engine side.
 
     move       lemma (library or core)     what the picture does
-    lift       lift_inj, madd_lift         attach the unit; a ⊕ b becomes a rectangle / box
+    lift       lift_inj, circ_lift         attach the unit; a ◯ b becomes a rectangle / box
     swap       Nat.mul_comm                reflect the box across a diagonal
     regroup    Nat.mul_assoc               same box, cut as slabs instead of columns
     collapse   Nat.mul_one, Nat.add_zero   a zero-length rod flattens a dimension
@@ -159,7 +159,7 @@ syntax (name := regroupTac) "regroup" : tactic
 syntax (name := swapTac) "swap" : tactic
 
 /- `lift` and the others name lemmas that live in the shared library. In this sketch the
-   library's `lift_inj` and `madd_lift` are the ones in ns-rungs/lean/FusedRungs.lean. -/
+   library's `lift_inj` and `circ_lift` are the ones in ns-rungs/lean/FusedRungs.lean. -/
 
 @[tactic regroupTac] def evalRegroup : Tactic := fun stx => do
   evalTactic (← `(tactic| rw [Nat.mul_assoc]))
@@ -173,15 +173,15 @@ end FusedPictures
 
 /-! ## Worked example as it would read with the engine
 
-  theorem madd_assoc' (a b c : Nat) : madd (madd a b) c = madd a (madd b c) := by
+  theorem circ_assoc' (a b c : Nat) : circ (circ a b) c = circ a (circ b c) := by
     apply lift_inj            -- attach the unit cube to both sides
-    rw [madd_lift]            -- left: rod 1+(a⊕b) by rod 1+c, a rectangle
-    rw [madd_lift]            -- left: the rod opens into (1+a)(1+b): a box of slabs
-    rw [madd_lift, madd_lift] -- right: (1+a) by the (1+b)(1+c) face: a box of columns
+    rw [circ_lift]            -- left: rod 1+(a◯b) by rod 1+c, a rectangle
+    rw [circ_lift]            -- left: the rod opens into (1+a)(1+b): a box of slabs
+    rw [circ_lift, circ_lift] -- right: (1+a) by the (1+b)(1+c) face: a box of columns
     regroup                   -- Nat.mul_assoc: the slabs and the columns are one box
 
   Plain-Lean version of the same proof (each lemma it uses is checked in FusedRungs.lean;
   this exact chain of rewrites has not been compiled):
 
-    apply lift_inj; rw [madd_lift, madd_lift, madd_lift, madd_lift, Nat.mul_assoc]
+    apply lift_inj; rw [circ_lift, circ_lift, circ_lift, circ_lift, Nat.mul_assoc]
 -/

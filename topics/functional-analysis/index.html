@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Functional Analysis Through Mult-add</title>
+<title>Functional Analysis Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -57,7 +57,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <section class="band">
 <div class="wrap">
 <h1>An operator meets the wall when one of its eigenvalues lands on −1</h1>
-<p class="lede">For operators, A ✳ B = A + B + AB = (I + A)(I + B) − I. The way back exists exactly when −1 is not in the spectrum, and Fredholm's determinant det(I + K) − 1 is the mult-add of all the eigenvalues of K. For the vibrating string that determinant is the sine product, and it vanishes each time one eigenvalue slides onto the wall.</p>
+<p class="lede">For operators, A ∘₁ B = A + B + AB = (I + A)(I + B) − I. The way back exists exactly when −1 is not in the spectrum, and Fredholm's determinant det(I + K) − 1 is the circle operation ∘₁ (called mult-add before 1.0) of all the eigenvalues of K. For the vibrating string that determinant is the sine product, and it vanishes each time one eigenvalue slides onto the wall.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hero"></div>
@@ -77,13 +77,13 @@ code{font-size:14px;overflow-wrap:anywhere}
 <section class="band alt">
 <div class="wrap side">
 <div>
-<h2>Perlis's quasi-inverse is mult-add's way back</h2>
-<p>In 1942 Sam Perlis called an element r of an algebra quasi-regular when some s solves r + s + rs = 0. That is literally r ✳ s = 0: the quasi-inverse is the mult-add inverse, (I + r)⁻¹ − I. Jacobson (1945) wrote the same idea as the circle a + b − ab, which is the k = −1 dial: a + b − ab = −((−a) ✳ (−b)).</p>
-<div class="eq">A′ = (I + A)⁻¹ − I = −A(I + A)⁻¹,&nbsp;&nbsp; (A ✳ B)′ = B′ ✳ A′</div>
-<p>Left and right quasi-inverses agree, and the inverse of a mult-add reverses the order, as with socks and shoes. Hilbert's resolvent identity, R(λ) − R(μ) = (λ − μ)R(λ)R(μ), is the mult-add statement A′ − B′ = (I + A′)(B − A)(I + B′) after rescaling, since the resolvent (T − z)⁻¹ is −(1/z)(I + (−T/z)′).</p>
-<p>When ‖A‖ &lt; 1 the way back is Neumann's series, A′ = −A + A² − A³ + ⋯. Each partial sum misses by exactly the next term: A ✳ (−A + ⋯ ± Aⁿ) = −(−A)ⁿ⁺¹ (proved in Lean for any ring). So a nilpotent operator has a finite quasi-inverse.</p>
+<h2>Perlis's quasi-inverse is the circle operation's way back</h2>
+<p>In 1942 Sam Perlis called an element r of an algebra quasi-regular when some s solves r + s + rs = 0. That is literally r ∘₁ s = 0: the quasi-inverse is the circle inverse, (I + r)⁻¹ − I. Jacobson (1945) wrote the same idea as the circle a + b − ab, which is the k = −1 dial: a + b − ab = −((−a) ∘₁ (−b)).</p>
+<div class="eq">A′ = (I + A)⁻¹ − I = −A(I + A)⁻¹,&nbsp;&nbsp; (A ∘₁ B)′ = B′ ∘₁ A′</div>
+<p>Left and right quasi-inverses agree, and the inverse of a circle operation reverses the order, as with socks and shoes. Hilbert's resolvent identity, R(λ) − R(μ) = (λ − μ)R(λ)R(μ), is the circle-operation statement A′ − B′ = (I + A′)(B − A)(I + B′) after rescaling, since the resolvent (T − z)⁻¹ is −(1/z)(I + (−T/z)′).</p>
+<p>When ‖A‖ &lt; 1 the way back is Neumann's series, A′ = −A + A² − A³ + ⋯. Each partial sum misses by exactly the next term: A ∘₁ (−A + ⋯ ± Aⁿ) = −(−A)ⁿ⁺¹ (proved in Lean for any ring). So a nilpotent operator has a finite quasi-inverse.</p>
 </div>
-<div class="panel"><div class="fig2" id="neu"></div><p class="small">How far A ✳ sₙ is from 0 for a 6×6 matrix with ‖A‖ = 0.8 (dots), against the bound 0.8ⁿ⁺¹ (line). Log scale.</p></div>
+<div class="panel"><div class="fig2" id="neu"></div><p class="small">How far A ∘₁ sₙ is from 0 for a 6×6 matrix with ‖A‖ = 0.8 (dots), against the bound 0.8ⁿ⁺¹ (line). Log scale.</p></div>
 </div>
 </section>
 
@@ -92,7 +92,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <div class="panel"><div class="fig2" id="vol"></div><p class="small">‖Vⁿ‖^(1/n) for Volterra integration V (dots, from a 400-point discretisation) against the bound (1/n!)^(1/n) (line). Both fall to 0: the spectrum is just {0}.</p></div>
 <div>
 <h2>The wall in the spectrum, and an operator that never gets near it</h2>
-<p>The spectrum of I + A is 1 + the spectrum of A, so A has a quasi-inverse exactly when −1 is not in its spectrum. The ball ‖A‖ &lt; 1 around 0 is always safe, because the wall −I sits at distance exactly 1. It is not the whole safe ground: 2I is far outside the ball and perfectly invertible under ✳.</p>
+<p>The spectrum of I + A is 1 + the spectrum of A, so A has a quasi-inverse exactly when −1 is not in its spectrum. The ball ‖A‖ &lt; 1 around 0 is always safe, because the wall −I sits at distance exactly 1. It is not the whole safe ground: 2I is far outside the ball and perfectly invertible under ∘₁.</p>
 <p>Volterra integration, Vf(x) = ∫₀ˣ f, has ‖V‖ = 2/π but ‖Vⁿ‖ ≤ 1/n!, so its spectral radius is 0. Then no multiple λV ever reaches the wall: I + λV is invertible for every λ, and the quasi-inverse of λV is the kernel −λe^(−λ(x − t)) for t &lt; x, the sum of the whole Neumann series. In the algebra that V generates every element shares this property, which makes it a radical algebra in Jacobson's sense: nothing in it can be pushed onto the wall.</p>
 </div>
 </div>
@@ -102,13 +102,13 @@ code{font-size:14px;overflow-wrap:anywhere}
 <div class="wrap side">
 <div>
 <h2>Order matters for the operators, never for the determinant</h2>
-<p>If A and B commute, their eigenvalues pair up and the eigenvalues of A ✳ B are the plain mult-adds aᵢ ✳ bᵢ. Characters do the same: on circulant matrices each Fourier mode carries ✳ to ✳.</p>
-<p>Without commuting, the spectrum of A ✳ B is not fixed by the two spectra. Take N = [[0, 1], [0, 0]] and t·N′ = [[0, 0], [−t, 0]]: both have spectrum {0}, yet N ✳ tN′ has trace −t and its eigenvalues travel round the circle |1 + z| = 1 as t grows, the same circle as the mult-add roots of 0. At t = 1 they are e^(±2πi/3), and N ✳ N′ is a sixth mult-add root of 0.</p>
-<p>What never changes is det(I + A ✳ B) = det(I + A)·det(I + B), in either order. Here that is 1·1, so the lifts of the two eigenvalues always multiply to 1 and the wall is never reached: past t = 4 one eigenvalue creeps toward −1 from the left and never arrives. Determinants and traces cannot see the order; this is why the Fredholm determinant is a mult-add homomorphism even for operators that do not commute.</p>
+<p>If A and B commute, their eigenvalues pair up and the eigenvalues of A ∘₁ B are the plain combines by the circle operation aᵢ ∘₁ bᵢ. Characters do the same: on circulant matrices each Fourier mode carries ∘₁ to ∘₁.</p>
+<p>Without commuting, the spectrum of A ∘₁ B is not fixed by the two spectra. Take N = [[0, 1], [0, 0]] and t·N′ = [[0, 0], [−t, 0]]: both have spectrum {0}, yet N ∘₁ tN′ has trace −t and its eigenvalues travel round the circle |1 + z| = 1 as t grows, the same circle as the circle roots of 0. At t = 1 they are e^(±2πi/3), and N ∘₁ N′ is a sixth circle root of 0.</p>
+<p>What never changes is det(I + A ∘₁ B) = det(I + A)·det(I + B), in either order. Here that is 1·1, so the lifts of the two eigenvalues always multiply to 1 and the wall is never reached: past t = 4 one eigenvalue creeps toward −1 from the left and never arrives. Determinants and traces cannot see the order; this is why the Fredholm determinant is a circle-operation homomorphism even for operators that do not commute.</p>
 </div>
 <div class="panel"><div class="fig2" id="nil" style="min-height:340px"></div>
 <div class="ctl"><label for="nt">t</label><input id="nt" type="range" min="0" max="8" step="0.01" value="1"><output id="nto"></output></div>
-<p class="small">Violet: the two eigenvalues of N ✳ tN′. Teal: the circle |1 + z| = 1 through 0 around the wall. Up to t = 4 they ride the circle from 0 to −2; after that one heads toward the wall and never reaches it, the other runs off to the left.</p></div>
+<p class="small">Violet: the two eigenvalues of N ∘₁ tN′. Teal: the circle |1 + z| = 1 through 0 around the wall. Up to t = 4 they ride the circle from 0 to −2; after that one heads toward the wall and never reaches it, the other runs off to the left.</p></div>
 </div>
 </section>
 
@@ -118,7 +118,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <div>
 <h2>At k = −1 the same fold is the chance of seeing a point</h2>
 <p>For eigenvalues of random matrices, and for fermions, the chance that a region holds no point is det(I − K), with K the process's kernel cut to the region (Gaudin and Mehta). Its eigenvalues λᵢ lie between 0 and 1, so</p>
-<div class="eq">P(at least one point) = 1 − ∏(1 − λᵢ) = λ₁ ✳₋₁ λ₂ ✳₋₁ λ₃ ✳₋₁ ⋯</div>
+<div class="eq">P(at least one point) = 1 − ∏(1 − λᵢ) = λ₁ ∘₋₁ λ₂ ∘₋₁ λ₃ ∘₋₁ ⋯</div>
 <p>which is the failure-union dial exactly. Better still, the number of points in the region behaves like independent coin flips with chances λᵢ (Hough, Krishnapur, Peres and Virág, 2006). The Monte Carlo bars match to three standard errors.</p>
 <p>The rest of the dial is there too. Shirai and Takahashi (2003) give the void chance of their α-processes as ∏(1 + αλᵢ)^(−1/α): α = −1 is fermions (0.028 here), α → 0 is Poisson with no repulsion (0.217), α = +1 is bosons (0.316). In dial words the void chance is (1 + k·Fₖ)^(−1/k), with Fₖ the k-dial fold of the eigenvalues.</p>
 </div>
@@ -144,8 +144,8 @@ code{font-size:14px;overflow-wrap:anywhere}
 </div>
 <div>
 <h2>Lead worth following?</h2>
-<p><b>Yes, one: point processes on the dial.</b> Everything else here is classical functional analysis seen through the lift; Perlis's definition already was mult-add. But determinantal and permanental point processes use the whole dial at once, with a physical meaning at each named value: k = −1 is fermions and gap probabilities (the failure union), k = 0 is Poisson, k = +1 is bosons. The counting statistics are concrete and testable, as the coin-flip check shows.</p>
-<p>That makes it a place to ask questions the framework can actually answer: what do the landscape's other laws (the bend q) mean for a point process, and do the rungs give new processes between the named ones? Those are open to us and checkable by simulation.</p>
+<p><b>Yes, one: point processes on the dial.</b> Everything else here is classical functional analysis seen through the lift; Perlis's definition already was the circle operation. But determinantal and permanental point processes use the whole dial at once, with a physical meaning at each named value: k = −1 is fermions and gap probabilities (the failure union), k = 0 is Poisson, k = +1 is bosons. The counting statistics are concrete and testable, as the coin-flip check shows.</p>
+<p>That makes it a place to ask questions the framework can actually answer: what do the landscape's other laws (the bend d) mean for a point process, and do the rungs give new processes between the named ones? Those are open to us and checkable by simulation.</p>
 </div>
 </div>
 </section>
@@ -200,7 +200,7 @@ const neu=logChart('neu','Neumann partial sums miss by one term',[0.446,0.235,0.
 let fact=n=>n<2?1:n*fact(n-1);
 const vol=logChart('vol','Volterra spectral radius falls to zero',[0.6366,0.5333,0.4495,0.3861,0.3376,0.2997,0.2694,0.2446,0.224,0.2066,0.1917,0.1788],n=>Math.pow(1/fact(n),1/n),-1,0,13,'power n');
 // nilpotent pair
-const sn=mk('nil','Eigenvalues of N mult-add tN prime on the circle about the wall');
+const sn=mk('nil','Eigenvalues of N circle operation tN prime on the circle about the wall');
 function nil(){
   const t=+$('nt').value; $('nto').textContent=t.toFixed(2);
   const W=sn.clientWidth,H=sn.clientHeight,x0=-4.2,x1=0.6,y0=-1.5,y1=1.5,s=Math.min((W-20)/(x1-x0),(H-20)/(y1-y0));

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mult-add for actuaries</title>
+<title>The circle operation for actuaries</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE a careful reading document in the same series as the toric, Fermat and topology pages, honest about known vs new
-   IDEA a plate from a geometry atlas laid over an actuary's ledger: ink drawings, ultramarine for mult-add, vermilion for where things blow up
+   IDEA a plate from a geometry atlas laid over an actuary's ledger: ink drawings, ultramarine for the circle operation, vermilion for where things blow up
    PICTURE the dimension line for claim-count models: which dimensions exist, read off where the generating function goes infinite
    COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
    TYPE Newsreader for titles, Inter for text
@@ -58,9 +58,9 @@ footer{border-top:1px solid var(--rule)}
 <header class="band top">
 <div class="wrap two">
 <div>
-<h1>Mult-add as an actuary's toolkit, and infinities that measure dimension</h1>
+<h1>The circle operation as an actuary's toolkit, and infinities that measure dimension</h1>
 <p class="lede">How I read your idea: in a risk model, find the place where something goes infinite (a moment, a generating function, a force of mortality), and read the <b>order</b> of that infinity as a dimension. That is a real principle in mathematics, and actuarial models obey it.</p>
-<p>The cleanest result: every standard claim-count model is one mult-add power, <span class="b">P(z) = (1 + c(z − 1))ⁿ</span>. Its dimension n can be any negative number, but above 1 only whole numbers exist. Between them the model would need negative probabilities. Like your 1, 3, 7 spheres, only certain dimensions survive.</p>
+<p>The cleanest result: every standard claim-count model is one circle power, <span class="b">P(z) = (1 + c(z − 1))ⁿ</span>. Its dimension n can be any negative number, but above 1 only whole numbers exist. Between them the model would need negative probabilities. Like your 1, 3, 7 spheres, only certain dimensions survive.</p>
 <p class="mute">Every number below was checked in Python on real data: 2,167 Danish fire insurance losses (1980 to 1990), the US Social Security life table for 2007, and the Society of Actuaries' illustrative life table.</p>
 </div>
 <figure style="margin:0">
@@ -77,15 +77,15 @@ footer{border-top:1px solid var(--rule)}
 <section class="band" id="ranking">
 <div class="wrap">
 <h2>Ranked by how real the fit is</h2>
-<p>"Direct hit" means the actuarial tool is mult-add itself. "Strong" means the infinity test does real work there.</p>
+<p>"Direct hit" means the actuarial tool is the circle operation ∘₁ (called mult-add before 1.0) itself. "Strong" means the infinity test does real work there.</p>
 <div class="scroll">
 <table class="stack">
-<thead><tr><th>Tool</th><th>Fit</th><th>What mult-add or the infinity test does</th><th>Known since</th></tr></thead>
+<thead><tr><th>Tool</th><th>Fit</th><th>What the circle operation or the infinity test does</th><th>Known since</th></tr></thead>
 <tbody>
-<tr><td>Claim-count models</td><td class="fit f5">Direct hit</td><td>Binomial, Poisson and negative binomial are one mult-add power with dimension n. Above 1 only whole numbers exist; a portfolio of m policies splits into k equal independent pieces only if k divides m.</td><td>Panjer 1981; Sundt and Jewell 1981; Willmot 1988</td></tr>
-<tr><td>Multiple decrements</td><td class="fit f5">Direct hit, new-looking picture</td><td>The total rate is a mult-add. A timing assumption is a path through the cube; the standard one (UDD) gives the Shapley value, the other (constant force) is the same path in mult-add log coordinates.</td><td>Formulas: Bowers et al. 1986. The path reading: not found</td></tr>
-<tr><td>Independent risks, cumulants</td><td class="fit f5">Direct hit</td><td>For independent risks, M − 1 combines by mult-add, so n risks form an n-cube; cumulants are the mult-add log.</td><td>Thiele 1889; classical</td></tr>
-<tr><td>Interest and discount</td><td class="fit f5">Direct hit</td><td>Rates compound by mult-add, force of interest is log(1 + i), the discount rate is the negated mult-add inverse, and annuities are cube layers.</td><td>Classical</td></tr>
+<tr><td>Claim-count models</td><td class="fit f5">Direct hit</td><td>Binomial, Poisson and negative binomial are one circle power with dimension n. Above 1 only whole numbers exist; a portfolio of m policies splits into k equal independent pieces only if k divides m.</td><td>Panjer 1981; Sundt and Jewell 1981; Willmot 1988</td></tr>
+<tr><td>Multiple decrements</td><td class="fit f5">Direct hit, new-looking picture</td><td>The total rate is a circle operation. A timing assumption is a path through the cube; the standard one (UDD) gives the Shapley value, the other (constant force) is the same path in circle-operation log coordinates.</td><td>Formulas: Bowers et al. 1986. The path reading: not found</td></tr>
+<tr><td>Independent risks, cumulants</td><td class="fit f5">Direct hit</td><td>For independent risks, M − 1 combines by the circle operation, so n risks form an n-cube; cumulants are the circle-operation log.</td><td>Thiele 1889; classical</td></tr>
+<tr><td>Interest and discount</td><td class="fit f5">Direct hit</td><td>Rates compound by the circle operation, force of interest is log(1 + i), the discount rate is the negated circle inverse, and annuities are cube layers.</td><td>Classical</td></tr>
 <tr><td>Heavy tails</td><td class="fit f4">Strong</td><td>The k-th moment goes infinite exactly when the tail dimension α reaches k. Danish fire losses measure about 1.4: the mean exists, the variance does not.</td><td>Hill 1975; Mandelbrot 1960s</td></tr>
 <tr><td>Ruin theory</td><td class="fit f4">Strong</td><td>Lundberg's safety exponent must sit before the first infinity of the claim transform. No infinity-free room means no exponent, and ruin falls only like a power.</td><td>Lundberg 1903; Cramér 1930; Embrechts and Veraverbeke 1982</td></tr>
 <tr><td>Force of mortality</td><td class="fit f3">Good</td><td>Hazard = boundary ÷ volume. A hard maximum age is a pole whose order is a dimension; Gompertz mortality has no pole. Real tables don't settle which.</td><td>de Moivre 1725; Gompertz 1825</td></tr>
@@ -118,8 +118,8 @@ footer{border-top:1px solid var(--rule)}
 <div class="wrap two">
 <div>
 <h2>Claim counts: which dimensions exist</h2>
-<p>An insurer models the number of claims N with a probability generating function P(z) = Σ P(N = k) zᵏ. The three standard models are all one mult-add power:</p>
-<div class="eq">P(z) − 1 = n-th mult-add power of c(z − 1)</div>
+<p>An insurer models the number of claims N with a probability generating function P(z) = Σ P(N = k) zᵏ. The three standard models are all one circle power:</p>
+<div class="eq">P(z) − 1 = n-th circle power of c(z − 1)</div>
 <ul>
 <li><b>Binomial</b> (m policies, each claims at most once with chance q): n = m, c = q. This is your cube: each corner is a set of policies that claim, and layer k is P(N = k).</li>
 <li><b>Negative binomial</b>: n = −r, c = −β. Integer r counts lattice points in an r-dimensional orthant, where each source can claim any number of times. The orthant never ends, so P(z) has a pole at z = 1 + 1/β of order r: the infinity measures the dimension.</li>
@@ -130,8 +130,8 @@ footer{border-top:1px solid var(--rule)}
 <div>
 <h3>The obstruction, like 1, 3, 7</h3>
 <p>Try n = 2.5. The series (0.7 + 0.3z)<sup>2.5</sup> gives P(N = 4) = −0.00054. Every positive fractional dimension I tried (0.5, 1.5, 2.5, 3.3) fails the same way, two steps past its whole part. So:</p>
-<div class="box"><b>Theorem (Sundt and Jewell 1981, Willmot 1988, read as dimensions).</b> A count model of this family exists at dimension n exactly when n is negative or a whole number. If the zero count is removed, 0 < n < 1 opens up too, and n = 0 becomes the logarithmic model, whose generating function is the mult-add log. Nothing else exists.</div>
-<p>A second obstruction is pure divisibility. A binomial portfolio of m policies splits into k identical independent sub-portfolios only if k divides m: the k-th mult-add root of P must have no negative coefficients. Checked: m = 6 splits for k = 2, 3, 6; m = 7 only for k = 7. (The proof is one line: the pieces must be polynomials, and degrees add.)</p>
+<div class="box"><b>Theorem (Sundt and Jewell 1981, Willmot 1988, read as dimensions).</b> A count model of this family exists at dimension n exactly when n is negative or a whole number. If the zero count is removed, 0 < n < 1 opens up too, and n = 0 becomes the logarithmic model, whose generating function is the circle-operation log. Nothing else exists.</div>
+<p>A second obstruction is pure divisibility. A binomial portfolio of m policies splits into k identical independent sub-portfolios only if k divides m: the k-th circle root of P must have no negative coefficients. Checked: m = 6 splits for k = 2, 3, 6; m = 7 only for k = 7. (The proof is one line: the pieces must be polynomials, and degrees add.)</p>
 <h3>On real data</h3>
 <p>Weekly claim counts in the Danish fire data (573 weeks): mean 3.77, variance 4.97. The extra spread points to the negative binomial, with dimension n ≈ −12 and a pole at z ≈ 4.2. It beats Poisson on likelihood (−1247 vs −1259) and on busy weeks (15 weeks with 9+ claims; Poisson expects 9). Some of that spread is a rising trend over the decade, not pure randomness.</p>
 </div>
@@ -140,15 +140,15 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band top" id="risks">
 <div class="wrap">
-<h2>Independent risks form a cube; cumulants are the mult-add log</h2>
+<h2>Independent risks form a cube; cumulants are the circle-operation log</h2>
 <div class="two">
 <div>
-<p>For a loss X, the moment generating function is M(s) = E[e<sup>sX</sup>]. For independent losses, M multiplies, so <b>M − 1 mult-adds</b>:</p>
-<div class="eq">M<sub>X+Y</sub> − 1 = (M<sub>X</sub> − 1) ⊕ (M<sub>Y</sub> − 1)</div>
+<p>For a loss X, the moment generating function is M(s) = E[e<sup>sX</sup>]. For independent losses, M multiplies, so <b>M − 1 combines by the circle operation</b>:</p>
+<div class="eq">M<sub>X+Y</sub> − 1 = (M<sub>X</sub> − 1) ∘₁ (M<sub>Y</sub> − 1)</div>
 <p>With n independent risks, M<sub>total</sub> − 1 is a sum over the corners of an n-cube: each corner is a group of risks acting together. Taking log(1 + ·) turns this into plain addition. That log is the cumulant generating function, which actuaries already use because it adds across independent risks.</p>
 </div>
 <div>
-<p>Checked with three different risks (an exponential, a gamma and a compound Poisson) at s = 0.3: the product gives 1.0902179827, the mult-add gives 1.0902179827, and the sum over cube corners gives 1.0902179827. Two million simulated portfolios give 1.0893.</p>
+<p>Checked with three different risks (an exponential, a gamma and a compound Poisson) at s = 0.3: the product gives 1.0902179827, the circle operation gives 1.0902179827, and the sum over cube corners gives 1.0902179827. Two million simulated portfolios give 1.0893.</p>
 <p class="mute">This is the formal group law of your operation doing actuarial work: a "number" here is the whole curve M(s) − 1, and its log coordinate is the cumulant.</p>
 </div>
 </div>
@@ -158,10 +158,10 @@ footer{border-top:1px solid var(--rule)}
 <section class="band" id="tails">
 <div class="wrap two">
 <div>
-<h2>Heavy tails: the tail dimension is a mult-add power</h2>
+<h2>Heavy tails: the tail dimension is a circle power</h2>
 <p>The standard heavy-tailed loss in insurance is the Lomax (Pareto II) distribution. Its survival function is</p>
 <div class="eq">P(X > x) = (1 + x/σ)<sup>−α</sup></div>
-<p>which is a mult-add power with n = −α, the same shape as the negative binomial's generating function. Its moments are finite only below α (left plate above), so the negative dimension of the power is literally the moment cutoff.</p>
+<p>which is a circle power with n = −α, the same shape as the negative binomial's generating function. Its moments are finite only below α (left plate above), so the negative dimension of the power is literally the moment cutoff.</p>
 <p>What each cutoff means for an insurer:</p>
 <ul>
 <li>α ≤ 1: the average claim is infinite. No premium based on the average makes sense.</li>
@@ -211,7 +211,7 @@ footer{border-top:1px solid var(--rule)}
 <p>(μ is the mean claim). Geometrically, R is where the convex curve M(s) crosses the premium line. That crossing must happen before M(s) goes infinite.</p>
 <ul>
 <li><b>Exponential claims:</b> a pole of order 1 at s = 1. With θ = 20%, R = 1/6 exactly, and ruin is e<sup>−u/6</sup> ÷ 1.2. Simulation (400,000 runs) agrees: 0.364 vs 0.362 at u = 5, 0.0011 at u = 40.</li>
-<li><b>Gamma claims of shape k:</b> a pole of order k, and M(s) = (1 − s/k)<sup>−k</sup> is again a mult-add power. R = 0.227, 0.258, 0.289 for k = 2, 3, 5: the higher the dimension of the pole, the more room before it.</li>
+<li><b>Gamma claims of shape k:</b> a pole of order k, and M(s) = (1 − s/k)<sup>−k</sup> is again a circle power. R = 0.227, 0.258, 0.289 for k = 2, 3, 5: the higher the dimension of the pole, the more room before it.</li>
 <li><b>Lomax claims:</b> M(s) is infinite for every s > 0. The wall is at zero, so no R exists. Ruin falls only like u<sup>−(α−1)</sup>, one dimension below the tail. With α = 2.5 the simulation gives 0.0069 at u = 100 against the asymptote's 0.0049, and 0.00106 vs 0.00096 at u = 300.</li>
 </ul>
 </div>
@@ -230,8 +230,8 @@ footer{border-top:1px solid var(--rule)}
 <h2>Multiple decrements: a timing assumption is a path through the cube</h2>
 <div class="two">
 <div>
-<p>A policy can end several ways in a year: death, lapse, disability. Each has an <b>absolute rate</b> q′ (what would happen if it were the only cause). The chance the policy ends at all is a mult-add:</p>
-<div class="eq">−q<sup>(τ)</sup> = (−q′<sub>death</sub>) ⊕ (−q′<sub>lapse</sub>) ⊕ (−q′<sub>disability</sub>)</div>
+<p>A policy can end several ways in a year: death, lapse, disability. Each has an <b>absolute rate</b> q′ (what would happen if it were the only cause). The chance the policy ends at all is a circle operation:</p>
+<div class="eq">−q<sup>(τ)</sup> = (−q′<sub>death</sub>) ∘₁ (−q′<sub>lapse</sub>) ∘₁ (−q′<sub>disability</sub>)</div>
 <p>With death from the SOA table at age 45 (0.40%), lapse 6% and disability 0.4% (both illustrative), the total is 6.7502%. Adding the rates gives 6.7997%; the extra 0.0495% is the cube's faces, years where two causes would both have struck.</p>
 <p>Actuaries then need the <b>dependent rates</b>: how many policies end by each cause. That depends on when in the year each cause strikes, and textbooks offer two assumptions. Here is what they are geometrically:</p>
 <ul>
@@ -250,7 +250,7 @@ footer{border-top:1px solid var(--rule)}
 <h3>The two textbook assumptions are one rule in two coordinate systems</h3>
 <ul>
 <li><b>Uniform within the year (UDD):</b> the straight path in the cube. Its split gives each corner of the cube, a set of causes that would collide, to its members in equal shares. That is exactly the <b>Shapley value</b> of the game "chance some cause in this group strikes". The year's clock t is the variable in Owen's diagonal formula for the Shapley value.</li>
-<li><b>Constant force:</b> the straight path in mult-add log coordinates, log(1 − q′). Its split is proportional to the logs, which is the same diagonal rule (Aumann–Shapley) applied after the log turns the cube into plain addition.</li>
+<li><b>Constant force:</b> the straight path in circle-operation log coordinates, log(1 − q′). Its split is proportional to the logs, which is the same diagonal rule (Aumann–Shapley) applied after the log turns the cube into plain addition.</li>
 </ul>
 </div>
 <div>
@@ -273,12 +273,12 @@ footer{border-top:1px solid var(--rule)}
 <section class="band" id="interest">
 <div class="wrap two">
 <div>
-<h2>Interest is mult-add, and annuities are cube layers</h2>
-<p>A year at 3% then a year at 5% gives 3% ⊕ 5% = 8.15%. The rest of the interest toolkit follows:</p>
+<h2>Interest is the circle operation, and annuities are cube layers</h2>
+<p>A year at 3% then a year at 5% gives 3% ∘₁ 5% = 8.15%. The rest of the interest toolkit follows:</p>
 <ul>
-<li><b>Force of interest</b> δ = log(1 + i): the mult-add log, so rates add in δ.</li>
-<li><b>Discount rate</b> d = i ÷ (1 + i) = minus the mult-add inverse of i. At 5% both give 0.047619.</li>
-<li><b>Monthly nominal rate</b> = 12 × the 12th mult-add root of i: 4.8889% for 5% a year.</li>
+<li><b>Force of interest</b> δ = log(1 + i): the circle-operation log, so rates add in δ.</li>
+<li><b>Discount rate</b> d = i ÷ (1 + i) = minus the circle inverse of i. At 5% both give 0.047619.</li>
+<li><b>Monthly nominal rate</b> = 12 × the 12th circle root of i: 4.8889% for 5% a year.</li>
 <li><b>Accumulated annuity</b> s<sub>n</sub> = ((1 + i)ⁿ − 1) ÷ i = sum over the n-cube's layers. At 5% over 10 years: 12.5779 three ways (closed form, layers, corners). Layer 1 gives 10, simple interest; layers 2 to 10 give the other 2.5779, interest on interest.</li>
 </ul>
 <p class="mute">All classical. The cube adds a picture: each corner is a set of years whose interest compounds together.</p>
@@ -294,7 +294,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="wrap two">
 <div>
 <h2>Mortality: hazard is boundary over volume</h2>
-<p>Survival over the year is also a mult-add: the 3-year death chance at 45 from the SOA table, 1.291699%, equals −((−q₄₅) ⊕ (−q₄₆) ⊕ (−q₄₇)) to all digits. The force of mortality μ = −log(1 − q) is its mult-add log.</p>
+<p>Survival over the year is also a circle operation: the 3-year death chance at 45 from the SOA table, 1.291699%, equals −((−q₄₅) ∘₁ (−q₄₆) ∘₁ (−q₄₇)) to all digits. The force of mortality μ = −log(1 − q) is its circle-operation log.</p>
 <p>Now the geometric version. If survival to age x is the volume of a shrinking k-dimensional cube with side (1 − x/ω), then</p>
 <div class="eq">μ(x) = k ÷ (ω − x) = surface ÷ volume</div>
 <p>That has a pole at the end age ω, and the order of the pole is the dimension k. On a plot of 1/μ, it shows as a straight line hitting zero with slope 1/k. That is the infinity test for "is there a maximum human lifespan?"</p>
@@ -318,7 +318,7 @@ footer{border-top:1px solid var(--rule)}
 <p><b>Known:</b> every formula on this page. The Panjer family and its classification (Panjer 1981, Sundt and Jewell 1981, Willmot 1988), cumulants, interest theory, the multiple-decrement formulas (Bowers and others, <i>Actuarial Mathematics</i>), Hill's estimator, Lundberg–Cramér ruin and its heavy-tail version, Gompertz and de Moivre, Hilbert–Serre, and Owen's and Aumann–Shapley's values.</p>
 <p><b>Possibly new, as pictures:</b></p>
 <ul>
-<li><b>Decrement timing as a path through the cube</b>, with UDD equal to the Shapley value and constant force equal to the same diagonal rule in mult-add log coordinates. The proof is a few lines (Owen's diagonal formula with t as the clock), and I did not find it stated. It is a tidy unification, not a breakthrough. It does connect actuarial science to the economics of cost sharing, where "path methods" are a known family (Friedman and Moulin 1999).</li>
+<li><b>Decrement timing as a path through the cube</b>, with UDD equal to the Shapley value and constant force equal to the same diagonal rule in circle-operation log coordinates. The proof is a few lines (Owen's diagonal formula with t as the clock), and I did not find it stated. It is a tidy unification, not a breakthrough. It does connect actuarial science to the economics of cost sharing, where "path methods" are a known family (Friedman and Moulin 1999).</li>
 <li><b>The dimension line:</b> reading the three count models as cube, orthant and limit, with the pole order as dimension and the positivity obstruction as "only whole numbers above 1". Each piece is standard; I haven't seen it told as one geometric story.</li>
 </ul>
 <p>Nothing here is as strong a lead as the solitons. The decrement-path picture is the one worth pushing.</p>
@@ -336,7 +336,7 @@ footer{border-top:1px solid var(--rule)}
 </section>
 
 <footer class="band">
-<div class="wrap"><p class="mute">Part of the Fused Mult-Add Algebra notes. Mult-add: a ⊕ b = a + b + ab = (1 + a)(1 + b) − 1.</p></div>
+<div class="wrap"><p class="mute">Part of the Fused Hyperoperation Algebra notes. The circle operation: a ∘₁ b = a + b + ab = (1 + a)(1 + b) − 1.</p></div>
 </footer>
 </body>
 </html>

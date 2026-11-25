@@ -1,41 +1,41 @@
-PASS product entries: [[1 - q·u·v̄, u+v], [-q(ū+v̄), 1 - q·ū·v]]
+PASS product entries: [[1 - d·u·v̄, u+v], [-q(ū+v̄), 1 - d·ū·v]]
 PASS the two diagonal entries are conjugates
 PASS corner ū·v = dot + i·cross
 PASS cross = twice the signed area of the triangle 0,u,v (shoelace)
-PASS B(u)B(v) = (1 - q·ū·v) · B(u⊕v) · diag(twist, 1), u⊕v = (u+v)/(1 - q·ū·v)
+PASS B(u)B(v) = (1 - d·ū·v) · B(u⊕v) · diag(twist, 1), u⊕v = (u+v)/(1 - d·ū·v)
 PASS |twist| = 1
-PASS collinear (b=d=0): no twist, and q=-1 gives (1+uv)·B(u⊕v)
-PASS q=0 (Galilean): twist = 1 for all directions
-PASS twist = 1  <=>  q·cross = 0  (numerator of twist-1 is 2i·q·cross)
-PASS twist = (X + iY)²/(X²+Y²), X = 1 - q·dot, Y = q·cross
-PASS so tan(ω/2) = q·cross / (1 - q·dot)
+PASS collinear (Im u = Im v = 0): no twist, and d=-1 gives (1+uv)·B(u⊕v)
+PASS d=0 (Galilean): twist = 1 for all directions
+PASS twist = 1  <=>  d·cross = 0  (numerator of twist-1 is 2i·d·cross)
+PASS twist = (X + iY)²/(X²+Y²), X = 1 - d·dot, Y = d·cross
+PASS so tan(ω/2) = d·cross / (1 - d·dot)
 PASS order swap: u⊕v = twist · (v⊕u)
-PASS light wall (q=-1): |1+ūv|² - |u+v|² = (1-|u|²)(1-|v|²)
-PASS general q: |1-qūv|² + q|u+v|² = (1+q|u|²)(1+q|v|²)  (det multiplies)
-PASS shape [[α,β],[-qβ̄,ᾱ]] is closed under products (one group per q)
-PASS 1-D: 1 - q·u·v is the relativity denominator 1 + uv at q=-1 (corner real)
+PASS light wall (d=-1): |1+ūv|² - |u+v|² = (1-|u|²)(1-|v|²)
+PASS general d: |1-dūv|² + d|u+v|² = (1+d|u|²)(1+d|v|²)  (det multiplies)
+PASS shape [[α,β],[-dβ̄,ᾱ]] is closed under products (one group per d)
+PASS 1-D: 1 - d·u·v is the relativity denominator 1 + uv at d=-1 (corner real)
 PASS Lorentz 4x4: B(u)B(v) = B(w)·R with R a pure rotation (2000 random pairs)
 PASS Lorentz 4x4: composed velocity = Möbius sum (u+v)/(1+ūv) on half-velocities
 PASS Lorentz 4x4: Wigner angle = arg of twist (1+u·v̄)/(1+ū·v)
    max errors 4.615596045860318e-13 5.707939355249843e-15 2.886579864025407e-14
 PASS |Wigner angle| = area of the velocity triangle (rest, u, u⊕v) in rapidity units
-PASS sign: the twist turns opposite to the turn from u to v (q<0: defect)
+PASS sign: the twist turns opposite to the turn from u to v (d<0: defect)
    max |ω|-area error 1.180393420845366e-11
 PASS tan(ω/2) = -tanh(φ₁/2)tanh(φ₂/2) sin θ / (1 + tanh(φ₁/2)tanh(φ₂/2) cos θ)
-PASS slow limit c=10: ω / (q·flat area) → 1  (got 1.067796)
-PASS slow limit c=100: ω / (q·flat area) → 1  (got 1.000625)
+PASS slow limit c=10: ω / (d·flat area) → 1  (got 1.067796)
+PASS slow limit c=100: ω / (d·flat area) → 1  (got 1.000625)
 PASS Thomas per lap β=0.3: rotation 0.303383 = 2π(γ-1) mod 2π = 0.303383
 PASS Thomas per lap β=0.6: rotation 1.570796 = 2π(γ-1) mod 2π = 1.570796
 PASS Thomas per lap β=0.9: rotation 1.848245 = 2π(γ-1) mod 2π = 1.848245
-PASS sphere (q=+1): composing two pole-moving rotations = move + spin; spin = arg of (1-u·v̄)/(1-ū·v)
+PASS sphere (d=+1): composing two pole-moving rotations = move + spin; spin = arg of (1-u·v̄)/(1-ū·v)
 PASS sphere: |spin| = spherical excess (area) of triangle (pole, u, u⊕v), mod 2π
 PASS sphere: composed point = (u+v)/(1-ū·v) (tangent addition in the plane)
-PASS one law across the dial: twist angle = q × signed area (K = q), q ∈ {-1,-¼,½,1}
+PASS one law across the dial: twist angle = d × signed area (K = d), d ∈ {-1,-¼,½,1}
    max error 1.1278075828791145e-07
-PASS 1-D law (a+b)/(1 - q·ab): q=-1/c² relativity, q=0 Galilean, q=+1 tangent addition
-PASS metric 2|dz|/(1+q|z|²) has Gaussian curvature q (symbolic)
+PASS 1-D law (a+b)/(1 - d·ab): d=-1/c² relativity, d=0 Galilean, d=+1 tangent addition
+PASS metric 2|dz|/(1+d|z|²) has Gaussian curvature d (symbolic)
 PASS half-velocity is half a kick: t ⊕ t = 2t/(1+t²) = β, and t = β/(1+√(1-β²))
-PASS on the mult-add ruler: d(t⊕t) = d(t) ✳ d(t)
+PASS on the circle-operation ruler: d(t⊕t) = d(t) ∘₁ d(t)
 PASS hyperbolic disk area 4πt²/(1-t²) = 2π(cosh φ - 1) with t = tanh(φ/2)
 
 36/36 checks pass

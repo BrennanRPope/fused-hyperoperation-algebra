@@ -1,5 +1,5 @@
 /-
-  Fused Hyperoperation Algebra: pi from mult-add.
+  Fused Hyperoperation Algebra: pi from the circle operation (called mult-add before 1.0).
   ===============================================
 
   Core Lean 4 only (no mathlib), no `sorry`, only Lean's standard axioms.
@@ -8,28 +8,28 @@
   To fold into the library: copy to lean-library/FusedAlgebra/Topics/Pi.lean,
   add `FusedAlgebra.Topics.Pi` to build.sh and FusedAlgebra.lean, run ./build.sh.
 
-  The picture. Mult-add a ⊞ b = a + b + ab = (1+a)(1+b) − 1, over the Gaussian
+  The picture. The circle operation a ◯ b = a + b + ab = (1+a)(1+b) − 1, over the Gaussian
   numbers. The turning law (landscape point p = 0, q = 1) is slope addition
   x ⊕ y = (x + y)/(1 − xy). The lens 1 + a = (1 + ix)/(1 − ix) turns the turning
-  law into mult-add, and it puts every real slope on the circle |1 + a| = 1:
+  law into the circle operation, and it puts every real slope on the circle |1 + a| = 1:
   the circle of radius 1 around the wall −1. That circle meets the real line at
   exactly two points: 0 (the identity) and −2 (the parity point, slope = ∞).
   pi is how far the turning flow runs from 0 to −2, measured in the law's own
-  units (half of mult-add's period 2πi).
+  units (half of the circle operation's period 2πi).
 
   Proved here (all exact, no analysis):
-  * Gaussian mult-add: lift, commutative, associative, identity 0.
+  * The gaussian circle operation: lift, commutative, associative, identity 0.
   * The lens: slope addition on pairs (num, den) IS multiplication of den + i·num;
     the conjugate lift multiplies too, so 1 + a(x ⊕ y) = (1 + a(x))(1 + a(y)).
-  * The circle |1 + a| = 1 is closed under mult-add (norms multiply).
+  * The circle |1 + a| = 1 is closed under the circle operation (norms multiply).
   * On the real line, the circle is exactly {0, −2}; and the slope ∞ lands on −2.
-  * The quarter step a = −1 + i: a ⊞ a = −2 and four copies make 0
+  * The quarter step a = −1 + i: a ◯ a = −2 and four copies make 0
     (slope 1 ⊕ 1 = 2/0 = ∞, four slope-1 steps come back to 0).
   * Machin (1706) and the other three two-term identities Størmer (1899) proved are
-    the only ones, as exact Gaussian mult-add identities: four steps of i/5 and one
+    the only ones, as exact Gaussian circle-operation identities: four steps of i/5 and one
     step back of i/239 land exactly on the 45° ray.
-  * Step counting: 32 mult-add steps of i/10 pass the far side (−2 side), 31 do not;
-    315 steps of i/100. So the counts 3.2, 3.15 head for pi from mult-add alone.
+  * Step counting: 32 circle-operation steps of i/10 pass the far side (−2 side), 31 do not;
+    315 steps of i/100. So the counts 3.2, 3.15 head for pi from the circle operation alone.
   * Gregory sums nest: for 0 ≤ x ≤ 1, the even partial sums climb, the odd ones
     fall, and each odd one sits above each even one (nested intervals).
   * Kernel check: the Machin combination of Gregory sums traps a number between
@@ -43,10 +43,10 @@
 -/
 import FusedAlgebra.Base
 
-namespace PiMultAdd
-open MultAdd
+namespace PiCircle
+open CircleOp
 
-/-! ## 1. Gaussian integers and mult-add on them -/
+/-! ## 1. Gaussian integers and the circle operation on them -/
 
 /-- a Gaussian integer re + i·im -/
 structure G where
@@ -65,10 +65,10 @@ def G.conj (a : G) : G := ⟨a.re, -a.im⟩
 /-- squared length |a|² -/
 def G.norm (a : G) : Int := a.re * a.re + a.im * a.im
 
-/-- Gaussian mult-add a ⊞ b = a + b + ab -/
+/-- The gaussian circle operation a ◯ b = a + b + ab -/
 def gma (a b : G) : G := G.add (G.add a b) (G.mul a b)
 
-/-- mult-add power: n copies of a mult-added together -/
+/-- circle power: n copies of a combined together by the circle operation -/
 def gpow (a : G) : Nat → G
   | 0 => G.zero
   | n + 1 => gma (gpow a n) a
@@ -93,7 +93,7 @@ theorem gma_zero (a : G) : gma a G.zero = a := by
 theorem mul_assoc' (a b c : G) : G.mul (G.mul a b) c = G.mul a (G.mul b c) := by
   ext <;> simp [G.mul] <;> grind
 
-/-- the lift of a mult-add power is an ordinary power: 1 + a^(⊞n) = (1 + a)ⁿ -/
+/-- the lift of a circle power is an ordinary power: 1 + a^(◯n) = (1 + a)ⁿ -/
 theorem gpow_lift (a : G) (n : Nat) : G.add G.one (gpow a n) = G.pow (G.add G.one a) n := by
   induction n with
   | zero => ext <;> simp [gpow, G.pow, G.add, G.one, G.zero]
@@ -108,7 +108,7 @@ theorem norm_mul (a b : G) : G.norm (G.mul a b) = G.norm a * G.norm b := by
 theorem norm_conj (a : G) : G.norm (G.conj a) = G.norm a := by
   simp [G.norm, G.conj]; grind
 
-/-- the circle |1 + a| = 1 (centre: the wall −1, radius 1) is closed under mult-add -/
+/-- the circle |1 + a| = 1 (centre: the wall −1, radius 1) is closed under the circle operation -/
 theorem circle_closed (a b : G) (ha : G.norm (G.add G.one a) = 1) (hb : G.norm (G.add G.one b) = 1) :
     G.norm (G.add G.one (gma a b)) = 1 := by
   rw [gma_lift, norm_mul, ha, hb]; rfl
@@ -123,11 +123,11 @@ theorem circle_real_points (x : Rat) : (1 + x) * (1 + x) = 1 ↔ x = 0 ∨ x = -
     · exact Or.inr (by grind)
   · rintro (h | h) <;> subst h <;> decide +kernel
 
-/-- in mult-add units: x ⊞ x = 0 (a half turn twice is a full turn) exactly at 0 and −2 -/
-theorem multAdd_self_zero (x : Rat) : multAdd x x = 0 ↔ x = 0 ∨ x = -2 := by
-  rw [← circle_real_points]; unfold multAdd; constructor <;> intro h <;> grind
+/-- in circle-operation units: x ◯ x = 0 (a half turn twice is a full turn) exactly at 0 and −2 -/
+theorem circ_self_zero (x : Rat) : circ x x = 0 ↔ x = 0 ∨ x = -2 := by
+  rw [← circle_real_points]; unfold circ; constructor <;> intro h <;> grind
 
-/-! ## 3. The lens: the turning law is mult-add
+/-! ## 3. The lens: the turning law is the circle operation
 
   A slope x = num/den is kept as a pair, so ∞ = (n, 0) is an ordinary pair.
   Slope addition (x + y)/(1 − xy) on pairs: (p, q) ⊕ (r, s) = (ps + rq, qs − pr). -/
@@ -147,7 +147,7 @@ theorem lens (x y : Slope) : toG (tl x y) = G.mul (toG x) (toG y) := by
   ext <;> simp [toG, tl, G.mul] <;> grind
 
 /-- and the conjugates multiply the same way, so the lift W/W̄ of a sum is the product of
-    the lifts: 1 + a(x ⊕ y) = (1 + a(x))·(1 + a(y)), i.e. a(x ⊕ y) = a(x) ⊞ a(y). -/
+    the lifts: 1 + a(x ⊕ y) = (1 + a(x))·(1 + a(y)), i.e. a(x ⊕ y) = a(x) ◯ a(y). -/
 theorem lens_conj (x y : Slope) : G.conj (toG (tl x y)) = G.mul (G.conj (toG x)) (G.conj (toG y)) := by
   ext <;> simp [toG, tl, G.mul, G.conj] <;> grind
 
@@ -173,12 +173,12 @@ theorem quarter_on_circle : G.norm (G.add G.one q4) = 1 := by decide
 /-- the same in slopes: 1 ⊕ 1 = 2/0 = ∞, and four steps of slope 1 come back to slope 0 -/
 theorem slope_one_twice : tl ⟨1, 1⟩ ⟨1, 1⟩ = ⟨2, 0⟩ := by decide
 theorem slope_one_four : tl (tl (tl ⟨1, 1⟩ ⟨1, 1⟩) ⟨1, 1⟩) ⟨1, 1⟩ = ⟨0, -4⟩ := by decide
-/-- the parity point is its own way back: (−2) ⊞ (−2) = 0 -/
-theorem parity_twice : multAdd (-2 : Rat) (-2) = 0 := by decide +kernel
+/-- the parity point is its own way back: (−2) ◯ (−2) = 0 -/
+theorem parity_twice : circ (-2 : Rat) (-2) = 0 := by decide +kernel
 
 /-! ## 5. Steps that land exactly on the eighth turn (the 45° ray, slope 1)
 
-  Mult-add steps of i/m are, after scaling by m, the Gaussian numbers m + i.
+  Circle-operation steps of i/m are, after scaling by m, the Gaussian numbers m + i.
   A mix of steps lands on the 45° ray when the product is k·(1 + i), k > 0. -/
 
 /-- Machin (1706): four steps of i/5, one step back of i/239 -/
@@ -197,7 +197,7 @@ theorem machin_slopes :
 /-! ## 6. Counting tiny turning steps until we pass the far side
 
   (1 + i/n)^m = (n + i)^m / n^m, so the sign of the imaginary part of (n + i)^m tells
-  which side of the real line m mult-add steps of i/n have reached. -/
+  which side of the real line m circle-operation steps of i/n have reached. -/
 
 /-- the first m ≤ fuel at which (n + i)^m has negative imaginary part (0 if none) -/
 def firstCross (n : Int) : Nat → Nat → G → Nat
@@ -213,9 +213,9 @@ theorem cross_100 : firstCross 100 1000 0 G.one = 315 := by decide +kernel
 /-- 3142 steps of i/1000 -/
 theorem cross_1000 : firstCross 1000 4000 0 G.one = 3142 := by decide +kernel
 
-/-! ## 7. Mult-add's logarithm, Gregory's sums, and nested intervals
+/-! ## 7. The circle operation's logarithm, Gregory's sums, and nested intervals
 
-  The way back from mult-add to addition is L(a) = a − a²/2 + a³/3 − …  At a = i·x its
+  The way back from the circle operation to addition is L(a) = a − a²/2 + a³/3 − …  At a = i·x its
   imaginary part is x − x³/3 + x⁵/5 − … (Gregory's series). -/
 
 /-- Gregory's k-th term x^(2k+1)/(2k+1) -/
@@ -372,4 +372,4 @@ theorem machin_50_digits :
     machinHi 22 < (314159265358979323846264338327950288419716939937511 / 10 ^ 50 : Rat) := by
   decide +kernel
 
-end PiMultAdd
+end PiCircle

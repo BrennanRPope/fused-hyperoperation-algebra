@@ -54,10 +54,10 @@ code{font-size:14px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h1>Weight, bend and rung change the ruler. The nome is the one direction that changes the shape.</h1>
-<p class="lede">For a one-input law like mult-add there are exactly three global shapes, told apart by how many periods the law's log has: none (addition), one (mult-add), two (a torus). The only continuous dial left after that is the torus's proportions, the nome q. Weight is the size of the measuring stick, the landscape bend is a switch between line and circle, and rung height is a route through rulers that matches the bend to third order and leaves it at the fourth. New directions do appear, but only when there are two or more waves (pair weights) or when you insist on whole numbers (the weight's primes). Followed further: each pair of waves adds one number, and from four waves on those numbers outrun the points that make waves.</p>
+<p class="lede">For a one-input law like the circle operation ∘₁ (called mult-add before 1.0) there are exactly three global shapes, told apart by how many periods the law's log has: none (addition), one (the circle operation), two (a torus). The only continuous dial left after that is the torus's proportions, the nome q. Weight is the size of the measuring stick, the landscape bend is a switch between line and circle, and rung height is a route through rulers that matches the bend to third order and leaves it at the fourth. New directions do appear, but only when there are two or more waves (pair weights) or when you insist on whole numbers (the weight's primes). Followed further: each pair of waves adds one number, and from four waves on those numbers outrun the points that make waves.</p>
 <div class="first">
  <div class="panel">
-  <div class="fig"><svg id="plane" role="img" aria-label="The landscape plane: corner p across, bend q up, with the parabolas of constant discriminant and the rung route"></svg></div>
+  <div class="fig"><svg id="plane" role="img" aria-label="The landscape plane: corner p across, bend d up, with the parabolas of constant discriminant and the rung route"></svg></div>
   <div class="strip"><svg id="gap" role="img" aria-label="How far the rung route leaves the plane at fourth order, against rung height"></svg></div>
  </div>
  <div class="panel">
@@ -70,7 +70,7 @@ code{font-size:14px;overflow-wrap:anywhere}
    <dt>Real points form</dt><dd id="form"></dd>
    <dt>Fourth-order gap</dt><dd id="r3"></dd>
   </dl>
-  <p class="small">Each thin parabola is one shape seen through different rulers: the ruler x ↦ x/(1+cx) slides a law along its parabola and keeps its discriminant D = p² − 4q. Zooming the units multiplies D by λ², so after units only the sign of D is left: blue below the red border (two real walls, a line), amber above it (complex walls, a circle). The rung route lands on the parabola D = s, so to third order rung height is the bend's D. Below, its fourth-order coefficient −s(s−1)/12 is a height no point of the plane has; it crosses the plane only at rungs 0 and 1.</p>
+  <p class="small">Each thin parabola is one shape seen through different rulers: the ruler x ↦ x/(1+cx) slides a law along its parabola and keeps its discriminant D = p² − 4d. Zooming the units multiplies D by λ², so after units only the sign of D is left: blue below the red border (two real walls, a line), amber above it (complex walls, a circle). The rung route lands on the parabola D = s, so to third order rung height is the bend's D. Below, its fourth-order coefficient −s(s−1)/12 is a height no point of the plane has; it crosses the plane only at rungs 0 and 1.</p>
  </div>
 </div>
 </div></section>
@@ -80,13 +80,13 @@ code{font-size:14px;overflow-wrap:anywhere}
 <p>Every one-input law is plain addition seen through its log. What cannot be removed by any ruler is the set of periods of that log: the steps that bring you back to the start. That set is a lattice of rank 0, 1 or 2 (a classical theorem: the connected one-dimensional complex groups are ℂ, ℂ* and the tori). Counting the points that return to the start in n equal steps tells them apart: 1, n, n². Checked with division polynomials for n = 3 and 5 on the cusp, the node and the Tate torus at q = 0.1.</p>
 <div class="three">
  <div class="panel"><h3>No period: addition</h3><div class="mini"><svg id="l0"></svg></div><p class="small">k = 0, the cusp y² = x³. Three steps back to the start: 1 point.</p></div>
- <div class="panel"><h3>One period: mult-add</h3><div class="mini"><svg id="l1"></svg></div><p class="small">Period 2πi/k. Every k ≠ 0 is the same shape after a zoom, so the weight is a size, not a direction. Three steps back: 3 points.</p></div>
+ <div class="panel"><h3>One period: the circle operation</h3><div class="mini"><svg id="l1"></svg></div><p class="small">Period 2πi/k. Every k ≠ 0 is the same shape after a zoom, so the weight is a size, not a direction. Three steps back: 3 points.</p></div>
  <div class="panel"><h3>Two periods: a torus</h3><div class="mini"><svg id="l2"></svg></div>
   <div class="ctl"><label for="t">Torus length</label><input id="t" type="range" min="1" max="3" step="0.02" value="1.3"><output id="to"></output></div>
   <div class="ctl"><label for="x">Shear</label><input id="x" type="range" min="-0.5" max="0.5" step="0.01" value="0"><output id="xo"></output></div>
   <p class="small" id="nome"></p></div>
 </div>
-<p class="small">The torus's shape is the ratio τ of its two periods; the nome is q = e^{2πiτ}. Stretching the torus (q → 0) pinches it into mult-add's cylinder, which is the soliton edge of the theta lattice. The gluing a ↦ a ✳ (q − 1) commutes with the law for every q, so nothing near 0 can see the nome; only the whole torus can, through j.</p>
+<p class="small">The torus's shape is the ratio τ of its two periods; the nome is q = e^{2πiτ}. Stretching the torus (q → 0) pinches it into the circle operation's cylinder, which is the soliton edge of the theta lattice. The gluing a ↦ a ∘₁ (q − 1) commutes with the law for every q, so nothing near 0 can see the nome; only the whole torus can, through j.</p>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap">
@@ -104,7 +104,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 </div>
 <div>
 <h3>Whole numbers</h3>
-<p>Over the integers the weight is no longer just a size. The p-fold power of a + b + k·ab is 0 mod p when p divides k (the law looks like addition at p) and x^p mod p otherwise (it looks like mult-add). So k carries its set of primes. This is Sekiguchi, Oort and Suwa's bridge from multiplication to addition.</p>
+<p>Over the integers the weight is no longer just a size. The p-fold power of a + b + k·ab is 0 mod p when p divides k (the law looks like addition at p) and x^p mod p otherwise (it looks like the circle operation). So k carries its set of primes. This is Sekiguchi, Oort and Suwa's bridge from multiplication to addition.</p>
 <div class="panel scroll"><table><thead><tr><th>k</th><th>p = 2</th><th>p = 3</th><th>p = 5</th><th>p = 7</th></tr></thead><tbody id="pt"></tbody></table></div>
 <h3 style="margin-top:16px">On a graph</h3>
 <p>The same holds when one weight sits on many bonds at once: on three sites in a row, Z = 1 + 3z + (2k+1)z² + k²z³, and no rescaling of the sites changes k (proved). That is why the Potts colour count is physical even though a single law's weight is not.</p>
@@ -120,7 +120,7 @@ code{font-size:14px;overflow-wrap:anywhere}
  <div class="ctl"><label for="wsp">Spread</label><input id="wsp" type="range" min="0.3" max="4" step="0.05" value="1"><output id="wspo">1</output></div>
 </div>
 <div class="panel">
- <p>With KP, the wave equation one dimension up from KdV, each wave is a pair of points (p, q) on a line, and Hirota's equation forces the weight between two waves to be their cross ratio (proved). Drag Spread up and every weight tends to 1: the waves stop interacting and the whole thing is g separate mult-adds. Two waves that share an end have weight 0: resonance. A weight is exactly 1 only when a wave is trivial (proved), so two real waves always interact.</p>
+ <p>With KP, the wave equation one dimension up from KdV, each wave is a pair of points (p, q) on a line, and Hirota's equation forces the weight between two waves to be their cross ratio (proved). Drag Spread up and every weight tends to 1: the waves stop interacting and the whole thing is g separate circle operations. Two waves that share an end have weight 0: resonance. A weight is exactly 1 only when a wave is trivial (proved), so two real waves always interact.</p>
  <div class="big" id="wbig" style="font-size:40px">6 weights, 5 numbers</div>
  <p class="small" id="wread"></p>
  <p class="small">The cross ratio does not change when the whole line is shifted, stretched or inverted (proved), so 2g points carry only 2g − 3 numbers, while g waves have g(g − 1)/2 weights. Up to three waves every array of weights comes from points (rank checked exactly up to eight waves). At four waves the six weights obey one rule, a polynomial of degree two in each weight: five weights fix the sixth up to two values.</p>
@@ -136,7 +136,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 </div>
 <div>
 <h2>One weight shared by every pair fits at most four waves</h2>
-<p>Give every pair the same mult-add weight k. Two waves carry any k. Three waves carry any k other than 0 and 1, because the third wave sits at a root of t² − (k + 1)t + 1 (proved). Real points need k &gt; 1 or k ≤ −3. Four waves need both roots, and that forces them to be the cube roots of unity, so k = −2: the rule at weight k is −k³(k − 1)⁸(k + 2) (proved). A fifth wave has no root left. So a single shared weight stops being something points can carry after four waves.</p>
+<p>Give every pair the same circle-operation weight k. Two waves carry any k. Three waves carry any k other than 0 and 1, because the third wave sits at a root of t² − (k + 1)t + 1 (proved). Real points need k &gt; 1 or k ≤ −3. Four waves need both roots, and that forces them to be the cube roots of unity, so k = −2: the rule at weight k is −k³(k − 1)⁸(k + 2) (proved). A fifth wave has no root left. So a single shared weight stops being something points can carry after four waves.</p>
 <div class="panel"><div class="mini" style="min-height:240px"><svg id="tet" viewBox="0 0 320 240" role="img" aria-label="A regular tetrahedron inside a sphere, each vertex joined to its antipode"></svg></div>
 <p class="small">The k = −2 waves exist, with complex points: each is a vertex of a regular tetrahedron on the sphere paired with its opposite point (checked exactly in ℚ(ω)). No real configuration does it.</p></div>
 </div>
@@ -148,7 +148,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <ul>
 <li><b>Several waves: followed to the end of what points can do.</b> Each pair of waves adds one number; from four waves on the numbers outrun the points, and four waves obey one rule. The arrays that break it are the ones with a closed loop of four interacting pairs, and a single shared weight fits at most four waves (only at −2, the tetrahedron). Past this, the rule-breakers are the degenerate face of Schottky’s problem, which is known ground; no further step here is fairly promising on its own merits.</li>
 <li><b>Rung height: not as a new direction.</b> The third-order match D = s and the exact fourth-order gap −s(s−1)/12 are clean, but every rung is addition in its own ruler, so this route can never produce a new shape. It is worth following only if the question is about the ladder itself.</li>
-<li><b>Whole numbers: a modest yes</b> if you want the 2ⁿ − 1 counts and the integer side of mult-add in the same picture. Known (Sekiguchi–Oort–Suwa), and it adds one discrete layer, not a dial.</li>
+<li><b>Whole numbers: a modest yes</b> if you want the 2ⁿ − 1 counts and the integer side of the circle operation in the same picture. Known (Sekiguchi–Oort–Suwa), and it adds one discrete layer, not a dial.</li>
 <li><b>Another dial for one-input laws: no.</b> The classification is complete. A fourth shape would need a return count other than 1, n or n², which a one-dimensional group cannot have.</li>
 </ul>
 </div>
@@ -160,7 +160,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <li>For non-commuting laws in three or more dimensions without rotational symmetry: Bianchi's classification has families with a free parameter, so a law that needs a direction-dependent twist would bring a genuine new dial. In the plane with rotational symmetry the twist adds nothing: it is curvature × area, one number.</li>
 </ul>
 <h3>Proofs</h3>
-<p class="small">36 Lean theorems in <code>shape-directions/lean/ShapeDirections.lean</code> (core Lean, no mathlib, no sorry, ✳ notation): weight_is_units, graph_weight_survives, ruler_num, ruler_den, ruler_keeps_disc, zoom_disc, ladder_forces_c3, ladder_forces_c4, rung_rate_inverts, rung_disc_is_height, rung_crossings, jet_rank, glue_commutes, glue_descends, cusp_psi3, node_psi3, pair_weight_survives, periods_outnumber_curves, additive_at_three, mult_at_three and more. Every statement was checked in sympy first. Numerical checks: 29 of 29 pass in <code>checks.py</code>.</p>
+<p class="small">36 Lean theorems in <code>shape-directions/lean/ShapeDirections.lean</code> (core Lean, no mathlib, no sorry, ∘₁ notation): weight_is_units, graph_weight_survives, ruler_num, ruler_den, ruler_keeps_disc, zoom_disc, ladder_forces_c3, ladder_forces_c4, rung_rate_inverts, rung_disc_is_height, rung_crossings, jet_rank, glue_commutes, glue_descends, cusp_psi3, node_psi3, pair_weight_survives, periods_outnumber_curves, additive_at_three, mult_at_three and more. Every statement was checked in sympy first. Numerical checks: 29 of 29 pass in <code>checks.py</code>.</p>
 <p class="small">Several waves: 23 more Lean theorems in <code>shape-directions/lean/SeveralWaves.lean</code>: tau4_free, tau4_splits, tau4_exclusion, kp_dispersion, kp_pair_weight, free_iff_trivial, resonance_iff, cross_ratio_affine, cross_ratio_inversion, excess_points, excess_curves, excess_agree, excess_from_four, the four-wave rule on two configurations, rule4_all_two. Both files compile cleanly in the shared library. Checks in <code>shape-directions/waves/</code>.</p>
 <p class="small">Rule breakers: 14 Lean theorems in <code>shape-directions/lean/RuleBreakers.lean</code>: path_obeys, star_obeys, triangle_obeys, paw_obeys, cycle_rule, diamond_rule, uniform_rule, third_wave, fourth_wave_forces, tetrahedral_waves and the sample values.</p>
 <p class="small">Known pieces: the classification of one-dimensional complex groups, Tate's curve, Bennett's commutative hyperoperations (the rung sheet), Sekiguchi–Oort–Suwa, Riemann's period matrices, Shiota's theorem, Helmholtz–Lie. What is ours: the sorting of the project's dials against them, the third-order identity D = s, and the fourth-order gap.</p>
@@ -191,12 +191,12 @@ function plane(){
  h+=el('path',{d,fill:'none',stroke:'var(--ink)','stroke-width':3});
  h+='</g>';
  for(const r of [-1,0,1,2,3]){h+=el('circle',{cx:X(r),cy:Y(r*(r-1)/4),r:3.5,fill:'var(--ink)'});if(!narrow||r%2)h+=el('text',{x:X(r)+7,y:Y(r*(r-1)/4)-7},'rung '+r)}
- const dots=[[1,0,'mult-add'],[-1,0,'or'],[-2,0,'parity'],[0,-1,'velocity'],[0,1,'slope']];
+ const dots=[[1,0,'The circle operation'],[-1,0,'or'],[-2,0,'parity'],[0,-1,'velocity'],[0,1,'slope']];
  for(const [p,q,n] of dots){h+=el('circle',{cx:X(p),cy:Y(q),r:4.5,fill:'var(--panel)',stroke:'var(--ink)','stroke-width':1.5});h+=el('text',{x:X(p)+7,y:Y(q)+15},n)}
  h+=el('circle',{cx:X(s),cy:Y(s*(s-1)/4),r:7,fill:'var(--red)',stroke:'var(--panel)','stroke-width':2});
- h+=el('text',{x:X(P[1])-6,y:Y(0)-8,'text-anchor':'end'},narrow?'weight line':'weight line: every k ≠ 0 is mult-add');
+ h+=el('text',{x:X(P[1])-6,y:Y(0)-8,'text-anchor':'end'},narrow?'weight line':'weight line: every k ≠ 0 is the circle operation');
  h+=el('text',{x:X(-2.9),y:Y(2.25)},'circle-shaped (D < 0)');h+=el('text',{x:X(-2.9),y:Y(-1.5)},'line-shaped (D > 0)');
- h+=el('text',{x:W-m.r,y:H-8,'text-anchor':'end'},'corner p →');h+=el('text',{x:4,y:m.t+12},'bend q');
+ h+=el('text',{x:W-m.r,y:H-8,'text-anchor':'end'},'corner p →');h+=el('text',{x:4,y:m.t+12},'bend d');
  sv.innerHTML=h;
 }
 function gap(){
@@ -216,7 +216,7 @@ function readout(){
  const s=+sIn.value,fmt=v=>(Math.abs(v)<5e-4?0:v).toFixed(3).replace(/\.?0+$/,'')||'0';
  document.getElementById('so').textContent=fmt(s);
  document.getElementById('dbig').textContent='D = '+fmt(s);
- document.getElementById('pq').textContent=`p = ${fmt(s)}, q = ${fmt(s*(s-1)/4)}`;
+ document.getElementById('pq').textContent=`p = ${fmt(s)}, d = ${fmt(s*(s-1)/4)}`;
  const per=Math.abs(s)<1e-9?'none (infinitely long)':s>0?`2πi/√${fmt(s)} = ${(2*Math.PI/Math.sqrt(s)).toFixed(3)} i`:`2π/√${fmt(-s)} = ${(2*Math.PI/Math.sqrt(-s)).toFixed(3)}, real`;
  document.getElementById('per').textContent=per;
  document.getElementById('form').textContent=Math.abs(s)<1e-9?'neither: one double wall, plain addition':s>0?'a line (two real walls)':'a circle (complex walls)';
@@ -249,8 +249,8 @@ function lattices(){
   document.getElementById('nome').textContent=`Nome |q| = ${qa.toExponential(2)}. j = ${Math.abs(j[1])<1e-6*jm?j[0].toPrecision(6):j[0].toPrecision(4)+(j[1]<0?' − ':' + ')+Math.abs(j[1]).toPrecision(4)+'i'}. Nine points return in three steps. At length 1 and no shear (the square torus) j = 1728.`}
 }
 const rows=[
-['Weight k','a + b + k·ab; also the q of q-integers and Potts colours (q = k + 1)','collapses: every k ≠ 0 is mult-add','collapses','one period, 2πi/k: only its size','<span class="tag t-lens">units</span> (but real on graphs and over whole numbers)'],
-['Landscape bend q','(a + b + p·ab)/(1 − q·ab); the boosts\' curvature','one number p²/D','only the sign of D','period imaginary (line) or real (circle)','<span class="tag t-switch">a switch</span> line or circle'],
+['Weight k','a + b + k·ab; k + 1 is the base of q-integers and the Potts colour count','collapses: every k ≠ 0 is the circle operation','collapses','one period, 2πi/k: only its size','<span class="tag t-lens">units</span> (but real on graphs and over whole numbers)'],
+['Landscape bend d','(a + b + p·ab)/(1 − d·ab); the boosts\' curvature','one number p²/D','only the sign of D','period imaginary (line) or real (circle)','<span class="tag t-switch">a switch</span> line or circle'],
 ['Rung height s','E^s(E^{−s}a + E^{−s}b), the rung sheet','survives (the ladder fixes its own units)','collapses: each rung is addition in its ruler','no new shape (fractional rungs are not even analytic)','<span class="tag t-lens">a route through rulers</span> equals the bend\'s D to third order'],
 ['Nome q','the torus ℂ*/q^ℤ: theta lattice, Tate gluing','survives','invisible near 0 for every q','second period; j tells tori apart','<span class="tag t-true">the one true direction</span>'],
 ['Doppler rapidity','the coordinate in which velocity addition is addition','','','','<span class="tag t-lens">a position</span> on one law, not a dial'],
@@ -259,7 +259,7 @@ const rows=[
 ['Weight\'s primes','which primes divide k, over the integers','','','additive at p ∣ k, multiplicative elsewhere','<span class="tag t-more">a discrete layer</span>']];
 document.getElementById('tab').innerHTML=rows.map(r=>'<tr>'+r.map((c,i)=>`<td${i==5?' class="v"':''}>${c}</td>`).join('')+'</tr>').join('');
 document.getElementById('gt').innerHTML=[2,3,4,5,6,7].map(g=>{const w=g*(g-1)/2,pt=2*g-3,a=g*(g+1)/2,c=3*g-3;return `<tr><td>${g}</td><td class="num">${w}</td><td class="num">${pt}</td><td class="num">${a}</td><td class="num">${c}</td><td class="num">${w-pt} = ${a-c}</td></tr>`}).join('');
-const pr=[2,3,5,7];document.getElementById('pt').innerHTML=[1,2,3,6,10,15].map(k=>'<tr><td>'+k+'</td>'+pr.map(p=>`<td>${k%p?'mult-add (x^'+p+')':'addition (0)'}</td>`).join('')+'</tr>').join('');
+const pr=[2,3,5,7];document.getElementById('pt').innerHTML=[1,2,3,6,10,15].map(k=>'<tr><td>'+k+'</td>'+pr.map(p=>`<td>${k%p?'the circle operation (x^'+p+')':'addition (0)'}</td>`).join('')+'</tr>').join('');
 
 const wgIn=document.getElementById('wg'),wspIn=document.getElementById('wsp');
 const WC=[-3.2,-0.9,1.1,3.3,5.4],WW=[1.6,0.9,1.9,1.2,1.5],WOFF=[0,0.35,-0.1,0.2,-0.4];

@@ -1,4 +1,4 @@
-"""Checks for 'Linear algebra from mult-add'. Run: python3 checks.py
+"""Checks for 'Linear algebra from the circle operation'. Run: python3 checks.py
 Every identity the page and the Lean file state is checked here symbolically
 (sympy) or, where noted, numerically (numpy)."""
 import itertools, math
@@ -30,12 +30,12 @@ def esym(A):
             if j else 1 for j in range(n + 1)]
 
 # 1. matrix lift and closure
-check("lift 2x2: I+(A⊞B) = (I+A)(I+B)", Z(I2 + madd(A2, B2) - (I2 + A2) * (I2 + B2)))
+check("lift 2x2: I+(A∘₁B) = (I+A)(I+B)", Z(I2 + madd(A2, B2) - (I2 + A2) * (I2 + B2)))
 check("lift 3x3", Z(I3 + madd(A3, B3) - (I3 + A3) * (I3 + B3)))
-check("weighted lift 3x3: I+k(A⊞kB) = (I+kA)(I+kB)", Z(I3 + k * madd(A3, B3, k) - (I3 + k * A3) * (I3 + k * B3)))
+check("weighted lift 3x3: I+k(A∘ₖB) = (I+kA)(I+kB)", Z(I3 + k * madd(A3, B3, k) - (I3 + k * A3) * (I3 + k * B3)))
 C3 = mat(3, 'c')
-check("matrix ⊞ associative 3x3", Z(madd(madd(A3, B3), C3) - madd(A3, madd(B3, C3))))
-check("matrix ⊞ not commutative in general", sp.expand(madd(A2, B2) - madd(B2, A2)) != sp.zeros(2))
+check("matrix ∘₁ associative 3x3", Z(madd(madd(A3, B3), C3) - madd(A3, madd(B3, C3))))
+check("matrix ∘₁ not commutative in general", sp.expand(madd(A2, B2) - madd(B2, A2)) != sp.zeros(2))
 
 # 2. det(I+A) = 1 + e1 + e2 + e3 (principal minors; counts 1,3,3,1)
 e = esym(A3)
@@ -45,9 +45,9 @@ check("minor counts are 1,3,3,1", [math.comb(3, j) for j in range(4)] == [1, 3, 
 e2 = esym(A2)
 check("det(I+kA) 2x2 = 1 + k tr + k^2 det", Z((I2 + k * A2).det() - (1 + k * A2.trace() + k**2 * A2.det())))
 a, b, c = sp.symbols('a b c')
-check("diagonal: det(I+diag)-1 = a⊞b⊞c", Z((I3 + sp.diag(a, b, c)).det() - 1 - (lambda x, y: x + y + x * y)((lambda x, y: x + y + x * y)(a, b), c)))
+check("diagonal: det(I+diag)-1 = a∘₁b∘₁c", Z((I3 + sp.diag(a, b, c)).det() - 1 - (lambda x, y: x + y + x * y)((lambda x, y: x + y + x * y)(a, b), c)))
 
-# 3. the dial homomorphism D_k(A ⊞k B) = D_k(A) ⊞k D_k(B)
+# 3. the dial homomorphism D_k(A ∘ₖ B) = D_k(A) ∘ₖ D_k(B)
 def D2(A, w): return A.trace() + w * A.det()
 def D3(A, w):
     ee = esym(A); return ee[1] + w * ee[2] + w**2 * ee[3]
@@ -60,17 +60,17 @@ check("det multiplicative 3x3", Z((A3 * B3).det() - A3.det() * B3.det()))
 # 4. 2x2: off-diagonal coupling sets the dial weight
 m11, m12, m21, m22, w = sp.symbols('m11 m12 m21 m22 w')
 M = sp.Matrix([[m11, m12], [m21, m22]])
-check("det(I+M)-1 = m11 ⊞_w m22 when m12 m21 = (1-w) m11 m22",
+check("det(I+M)-1 = m11 ∘_w m22 when m12 m21 = (1-w) m11 m22",
       Z(((I2 + M).det() - 1 - wadd(w, m11, m22)).subs(m12, (1 - w) * m11 * m22 / m21)))
 
-# 5. orthogonal group as Xᵀ ⊞k X = 0, circle picture
+# 5. orthogonal group as Xᵀ ∘ₖ X = 0, circle picture
 x, y = sp.symbols('x y')
 X = sp.Matrix([[x, -y], [y, x]])
 cond = sp.expand((X.T + X + k * X.T * X)[0, 0])
-check("2x2 rotation-type: Xᵀ⊞kX=0 ⇔ 2x + k(x²+y²) = 0", Z(cond - (2 * x + k * (x**2 + y**2))) and Z((X.T + X + k * X.T * X)[0, 1]))
+check("2x2 rotation-type: Xᵀ∘ₖX=0 ⇔ 2x + k(x²+y²) = 0", Z(cond - (2 * x + k * (x**2 + y**2))) and Z((X.T + X + k * X.T * X)[0, 1]))
 check("circle: (x+1/k)² + y² = 1/k² same equation", Z(sp.expand(k * ((x + 1 / k)**2 + y**2 - 1 / k**2)) - (2 * x + k * (x**2 + y**2))))
 Q = (I3 + k * A3)
-check("I+kX orthogonal ⇔ Xᵀ ⊞k X = 0 (identity)", Z(Q.T * Q - I3 - k * (A3.T + A3 + k * A3.T * A3)))
+check("I+kX orthogonal ⇔ Xᵀ ∘ₖ X = 0 (identity)", Z(Q.T * Q - I3 - k * (A3.T + A3 + k * A3.T * A3)))
 
 # 6. Cayley transform = Aᵀ ⊟ A  (numeric, skew A)
 rng = np.random.default_rng(1)
@@ -78,17 +78,17 @@ S = rng.normal(size=(4, 4)); S = S - S.T
 In = np.eye(4)
 cay = np.linalg.solve(In + S, In - S)          # (I+S)^{-1}(I-S)
 msub = (S.T - S) @ np.linalg.inv(In + S)         # (Aᵀ - A)(I+A)^{-1}, right-division form
-# mult-add subtraction X ⊟ A with X ⊟ A ⊞ A = X:  X ⊟ A = (X - A)(I+A)^{-1}
+# Circle-operation subtraction X ⊟ A with X ⊟ A ∘₁ A = X:  X ⊟ A = (X - A)(I+A)^{-1}
 check("Cayley (I+S)^-1(I-S) = I + (Sᵀ ⊟ S)", np.allclose(cay, In + msub))
 check("Cayley is orthogonal", np.allclose(cay.T @ cay, In))
-check("⊟ undoes ⊞: (X⊟A)⊞A = X", np.allclose((msub) + S + msub @ S, S.T))
+check("⊟ undoes ∘₁: (X⊟A)∘₁A = X", np.allclose((msub) + S + msub @ S, S.T))
 
-# 7. eigenvalues: det(I+A)-1 = ⊞ of eigenvalues ; log det = tr log
+# 7. eigenvalues: det(I+A)-1 = ∘₁ of eigenvalues ; log det = tr log
 G = rng.normal(size=(5, 5)) * 0.12
 lam = np.linalg.eigvals(G)
 fold = 0
 for l in lam: fold = fold + l + fold * l
-check("det(I+A)-1 = λ1⊞…⊞λn", np.isclose(np.linalg.det(np.eye(5) + G) - 1, fold))
+check("det(I+A)-1 = λ1∘₁…∘₁λn", np.isclose(np.linalg.det(np.eye(5) + G) - 1, fold))
 from numpy.linalg import det
 def logm_series(A, n=200):
     out, P = np.zeros_like(A), np.eye(len(A))

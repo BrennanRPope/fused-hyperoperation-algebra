@@ -7,7 +7,7 @@
 
   Hydrogen's shell n has subshells l = 0 … n − 1 with 2l + 1 orbitals each.
   They are the L-shaped gnomons of an n × n square, so the shell holds n²
-  orbitals: n² = 1 + (n − 1) ✳ (n − 1). The square is SO(4) = SU(2) × SU(2):
+  orbitals: n² = 1 + (n − 1) ◯ (n − 1). The square is SO(4) = SU(2) × SU(2):
   two equal spins j with 2j = n − 1, multiplicities multiplying.
 
   Madelung fills subshells along the diagonals n + l = s. Diagonal s holds
@@ -15,21 +15,21 @@
   left-step periods; the usual table merges the first two, giving
   2, 8, 8, 18, 18, 32, 32 and noble gases at 2, 10, 18, 36, 54, 86, 118.
 
-  The dial: the q-integer [n]_q is n copies of 1 under weighted mult-add
+  The dial: the q-integer [n]_q is n copies of 1 under the circle operation (called weighted mult-add before 1.0)
   with k = q − 1, so a q-deformed shell would hold [n]_q² orbitals.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
 -/
 import FusedAlgebra.Base
 
 namespace ChemPeriodic
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
-/-- The shell square: (m + 1)² = 1 + m ✳ m, with m = n − 1. -/
-theorem shell_square (m : Nat) : (m + 1) * (m + 1) = 1 + (m ✳ m) := by
-  unfold multAdd; grind
+/-- The shell square: (m + 1)² = 1 + m ◯ m, with m = n − 1. -/
+theorem shell_square (m : Nat) : (m + 1) * (m + 1) = 1 + (m ◯ m) := by
+  unfold circ; grind
 
 /-- Orbitals in subshells l = 0 … m. -/
 def shellOrbitals : Nat → Nat
@@ -52,9 +52,9 @@ theorem shell_capacity (m : Nat) : 2 * shellOrbitals m = 2 * ((m + 1) * (m + 1))
   rw [gnomons_fill]
 
 /-- SO(4): two independent spins with multiplicity n each give n · n states,
-    and (n − 1) mult-adds with itself. -/
-theorem two_spins (a b : Nat) : (a + 1) * (b + 1) = 1 + (a ✳ b) := by
-  unfold multAdd; grind
+    and (n − 1) combines by the circle operation with itself. -/
+theorem two_spins (a b : Nat) : (a + 1) * (b + 1) = 1 + (a ◯ b) := by
+  unfold circ; grind
 
 /-! ## Madelung diagonals and the periods -/
 
@@ -96,7 +96,7 @@ theorem period_is_diagonal (k : Nat) : periodLen (2 * k + 1) = diagCap (2 * k + 
 section Dial
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- n copies of 1 under ⊞ₖ lift to (1 + k)ⁿ: with q = k + 1, that is qⁿ,
+/-- n copies of 1 under ◯[k] lift to (1 + k)ⁿ: with q = k + 1, that is qⁿ,
     so the weighted power is the q-integer (qⁿ − 1)/(q − 1). -/
 theorem q_integer (k : R) (n : Nat) : 1 + k * wpow k 1 n = (1 + k) ^ n := by
   have := wpow_lift k 1 n
@@ -109,6 +109,6 @@ end Dial
 theorem q_integer_classical (n : Nat) : wpow (0 : Rat) 1 n = (n : Rat) := by
   induction n with
   | zero => simp only [wpow]; grind
-  | succ n ih => simp only [wpow, wAdd, ih]; grind
+  | succ n ih => simp only [wpow, circK, ih]; grind
 
 end ChemPeriodic

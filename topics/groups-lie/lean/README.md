@@ -18,5 +18,5 @@ Compile:
 Sections: (1) landscape law as a Möbius product, mob a = I + aX, X² = pX − qI;
 (2) the θ-lift (1 + aθ)(1 + bθ), multiplicative norm, rate law, invariant ruler;
 (3) Lie's fields α + βx + γx²: bracket, Jacobi, ad-invariant form β² − 4αγ;
-(4) chart changes keep p² − 4q; (5) the dial in the ax+b group; (6) matrix mult-add commutator
+(4) chart changes keep p² − 4d; (5) the dial in the ax+b group; (6) the matrix circle-operation commutator
 = bracket; (7) finite clocks mod 5, 7, 11, 13 by `decide`, Mersenne powers, circle counts.

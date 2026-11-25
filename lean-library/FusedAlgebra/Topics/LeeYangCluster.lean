@@ -3,7 +3,7 @@
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports FusedAlgebra.Base.
   Intended library path: FusedAlgebra/Topics/LeeYangCluster.lean (after LeeYang).
   LIBRARY NOTE: copied unchanged from lee-yang/lean/LeeYangCluster.lean. No exact twins in the
-  library. `wAdd_units` is the ring-general relative of Landscape.units_num (Int, stated on num).
+  library. `circK_units` is the ring-general relative of Landscape.units_num (Int, stated on num).
 
   The colour-count reading of the dial (k = Q − 1) predicts special dial values
   k_n = 1 + 2·cos(2π/n): 1.618, 2, 2.247, 2.414, 2.532, 2.618, ..., 2.732 for n = 5..12.
@@ -19,7 +19,7 @@
 import FusedAlgebra.Base
 
 namespace LeeYangCluster
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -86,14 +86,14 @@ theorem beraha12_not_int (k : Int) : k * k ≠ 2 * k + 2 := by
   rcases this with rfl | rfl | rfl | rfl | rfl <;> simp at h
 
 /-- Units: rescaling the variable by λ turns weight λ·k into weight k. -/
-theorem wAdd_units {R : Type} [Lean.Grind.CommRing R] (lam k a b : R) :
-    lam * wAdd (lam * k) a b = wAdd k (lam * a) (lam * b) := by
-  unfold wAdd; grind
+theorem circK_units {R : Type} [Lean.Grind.CommRing R] (lam k a b : R) :
+    lam * circK (lam * k) a b = circK k (lam * a) (lam * b) := by
+  unfold circK; grind
 
-/-- 2× leverage: weight 2 on unlevered returns is plain mult-add on levered returns. -/
+/-- 2× leverage: weight 2 on unlevered returns is the plain circle operation (called mult-add before 1.0) on levered returns. -/
 theorem leverage_is_compounding {R : Type} [Lean.Grind.CommRing R] (a b : R) :
-    2 * wAdd 2 a b = wAdd 1 (2 * a) (2 * b) := by
-  have h := wAdd_units (2 : R) 1 a b
+    2 * circK 2 a b = circK 1 (2 * a) (2 * b) := by
+  have h := circK_units (2 : R) 1 a b
   rw [show (2 : R) * 1 = 2 by grind] at h
   exact h
 

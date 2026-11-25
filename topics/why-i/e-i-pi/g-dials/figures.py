@@ -135,7 +135,7 @@ ax.hline(0, color=DARK, width=1); ax.plot(xs[xs <= 1], gtt[xs <= 1], color=BLUE,
 ax.vline(1, color=DARK, width=1.5, dash="5,4"); ax.dot(1, 0, 6, DARK)
 ax.text(0.3, 0.9, "outside: time is time", size=13, color=BLUE); ax.text(1.03, -0.35, "inside: time and", size=13, color=RED); ax.text(1.03, -0.45, "radius trade roles", size=13, color=RED)
 ax.text(0.03, 0.15, "slope at the wall → surface gravity c⁴/4GM", size=12); ax.text(0.03, 0.06, "→ with the 2π period, Hawking's T", size=12)
-f.lines(730, 120, "Reading (ours): G/c² is the dial that turns mass\ninto length, and the horizon is where the lift\n1 + kx reaches its wall −1/k.\n\nPast the wall the lift goes negative, the same\nflip as mult-add past its wall (why-i, part 2).\n\nLimit: masses do not compose by mult-add\n(dial-map G1–G2), and redshift factors that do\ncompose that way have dial 1/c², not G.\nSo this places G; it does not dial it.", size=13)
+f.lines(730, 120, "Reading (ours): G/c² is the dial that turns mass\ninto length, and the horizon is where the lift\n1 + kx reaches its wall −1/k.\n\nPast the wall the lift goes negative, the same\nflip as the circle operation past its wall (why-i, part 2).\n\nLimit: masses do not compose by the circle operation\n(dial-map G1–G2), and redshift factors that do\ncompose that way have dial 1/c², not G.\nSo this places G; it does not dial it.", size=13)
 f.text(90, 495, "Checks W1–W3.", size=12, color=GRAY)
 f.save(P("g7-horizon-is-a-wall.svg"))
 

@@ -6,7 +6,7 @@
 <style>
 /* VOICE: audit report, plain and exact; every lead gets a verdict
    IDEA: an energy audit sheet: the meter reading first, then line items
-   PICTURE: the PUE square, mult-add drawn as area, with the corner lit
+   PICTURE: the PUE square, the circle operation drawn as area, with the corner lit
    COLOUR and TYPE: white, ink #101418, one yellow slab behind the key figure, slate; Manrope
    LAYOUT: figure first, finding under it, leads as numbered line items, proofs and sources last */
 :root{color-scheme:light dark;--bg:light-dark(#ffffff,#101418);--ink:light-dark(#101418,#e9edf1);--slate:light-dark(#55606b,#a3adb7);--rule:light-dark(#d9dee3,#2a323a);--panel:light-dark(#f4f6f8,#171d23);--yel:#ffd84a;--org:#e08a2e;--grn:#4a9a5b;--red:#c0504d;--blu:light-dark(#dfe8f5,#24344a)}
@@ -42,7 +42,7 @@ a{color:inherit;text-underline-offset:3px}
 </style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
 
 <section class="band"><div class="wrap hero">
-<svg class="sq" viewBox="0 0 520 470" role="img" aria-label="PUE 1.56 drawn as a mult-add square: IT power, a strip for power chain losses, a strip for cooling, and a red corner where cooling removes the power chain's own heat">
+<svg class="sq" viewBox="0 0 520 470" role="img" aria-label="PUE 1.56 drawn as a circle-operation square: IT power, a strip for power chain losses, a strip for cooling, and a red corner where cooling removes the power chain's own heat">
   <rect x="20" y="150" width="380" height="300" fill="var(--blu)" stroke="#3b6fb6" stroke-width="2"/>
   <text x="210" y="290" text-anchor="middle" font-size="22" font-weight="700">IT power</text>
   <text x="210" y="318" text-anchor="middle" font-size="16">1</text>
@@ -60,7 +60,7 @@ a{color:inherit;text-underline-offset:3px}
 <div>
 <p class="muted">Fused Hyperoperation Algebra · data center energy · Nov 25, 2026</p>
 <h1>No new physics in the data center, but three real levers get an exact geometry</h1>
-<p>A typical facility (PUE 1.56) is one mult-add square: (1 + p)(1 + c) = 1 + p + c + p·c. Every stage of power and cooling composes the same way, which turns three known savings into one picture each and lets them stack exactly.</p>
+<p>A typical facility (PUE 1.56) is one circle-operation square: (1 + p)(1 + c) = 1 + p + c + p·c. Every stage of power and cooling composes the same way, which turns three known savings into one picture each and lets them stack exactly.</p>
 <div class="kpis">
 <div class="kpi"><b>1.825 W</b><span>drawn at the meter per watt reaching the chips, average facility</span></div>
 <div class="kpi"><b>5.6%</b><span>of all overhead is cooling the power chain's own heat (the corner)</span></div>
@@ -78,14 +78,14 @@ a{color:inherit;text-underline-offset:3px}
 <tr><td>1 Power chain</td><td>Staircase of rectangles</td><td class="r">20% lost before the chips</td><td><span class="verdict v-book">Clean bookkeeping</span></td></tr>
 <tr><td>2 The corner</td><td>Corner of the PUE square</td><td class="r">5.6 to 9.6% of overhead</td><td><span class="verdict v-test">Testable on meters</span></td></tr>
 <tr><td>3 Unit rule</td><td>Square side = √(rectangle)</td><td class="r">4 to 6.5% of server input</td><td><span class="verdict v-known">Known, now unified</span></td></tr>
-<tr><td>4 Fans</td><td>Mult-add cube</td><td class="r">32 to 36% of fan energy</td><td><span class="verdict v-known">Known</span></td></tr>
+<tr><td>4 Fans</td><td>Circle-operation cube</td><td class="r">32 to 36% of fan energy</td><td><span class="verdict v-known">Known</span></td></tr>
 <tr><td>5 Setpoint</td><td>Cube power, degree by degree</td><td class="r">trims 1.5 to 8 points of hype</td><td><span class="verdict v-book">Clean bookkeeping</span></td></tr>
 </tbody></table>
 </div>
 
 <article class="lead" id="lead1"><div>
-<span class="num">LEAD 1</span><h2>The power chain is a mult-add fold</h2>
-<p>Write each stage as overhead odds r = 1/η − 1. Then the whole chain's odds are the mult-add of the stages, exactly, in any order. Geometrically each stage stretches a rectangle by (1 + r), so the chain is a staircase whose total area is the product.</p>
+<span class="num">LEAD 1</span><h2>The power chain is a circle-operation fold</h2>
+<p>Write each stage as overhead odds r = 1/η − 1. Then the whole chain's odds are the circle operation ∘₁ (called mult-add before 1.0) of the stages, exactly, in any order. Geometrically each stage stretches a rectangle by (1 + r), so the chain is a staircase whose total area is the product.</p>
 <table><thead><tr><th>Stage (published mid-range)</th><th class="r">η</th><th class="r">odds</th></tr></thead><tbody>
 <tr><td>Distribution and transformers</td><td class="r">97.5%</td><td class="r">0.026</td></tr>
 <tr><td>UPS, double conversion</td><td class="r">96%</td><td class="r">0.042</td></tr>
@@ -115,14 +115,14 @@ a{color:inherit;text-underline-offset:3px}
 
 <article class="lead" id="lead3"><div>
 <span class="num">LEAD 3</span><h2>The unit rule: add a unit at the geometric mean</h2>
-<p>Each power stage loses a fixed part (rung 1, shifted add), a proportional part (rung 2, mult-add) and a square part from resistance (the I²R area). k units sharing load X lose k·a + c·X²/k. Each unit is happiest at the sweet spot x* = √(a/c), where its fixed loss equals its square loss. The proof gives the switch point exactly: go from k to k+1 units when X passes x*·√(k(k+1)). Geometrically, that's Euclid's square equal in area to a k by k+1 rectangle.</p>
+<p>Each power stage loses a fixed part (rung 1, shifted add), a proportional part (rung 2, the circle operation) and a square part from resistance (the I²R area). k units sharing load X lose k·a + c·X²/k. Each unit is happiest at the sweet spot x* = √(a/c), where its fixed loss equals its square loss. The proof gives the switch point exactly: go from k to k+1 units when X passes x*·√(k(k+1)). Geometrically, that's Euclid's square equal in area to a k by k+1 rectangle.</p>
 <p>Fitting the 80 PLUS Titanium minimums puts x* at 35% of rating. So two redundant supplies that share a server drawing 20% of one supply's rating lose about <b>6.5% more input</b> than one carrying it alone with the other on cold standby. A vendor worked example (two 1000 W Platinum units at 500 W) shows 556 W versus 532 W: <b>4.3% less</b>. By lead 1, that 4.3% comes off the whole facility's share for those servers.</p>
 <p><b>Verdict:</b> known practice under many names (transformer economic loading, phase shedding in voltage regulators, cold redundancy in servers). The fused view proves one rule for all of them. It's the most actionable lever here, because most servers run lightly loaded on paired supplies. One caution from the vendor: cold standby is risky on grid power without a UPS.</p>
 </div><div><img src="figures/d3_unit_rule.png" alt="Loss curves for one, two and three units sharing load, crossing at 0.49 and 0.85 of one unit's rating"></div></article>
 
 <article class="lead" id="lead4"><div>
-<span class="num">LEAD 4</span><h2>Fans live on the mult-add cube</h2>
-<p>Fan power goes with the cube of speed, so a speed change d gives (1 + d)³ − 1 = 3d + 3d² + d³: the edges, faces and corner of the mult-add cube, layers 1, 3, 3, 1. In rung terms that is the fused exponent d ⊛ 2. A 20% slowdown cuts power 49%.</p>
+<span class="num">LEAD 4</span><h2>Fans live on the circle-operation cube</h2>
+<p>Fan power goes with the cube of speed, so a speed change d gives (1 + d)³ − 1 = 3d + 3d² + d³: the edges, faces and corner of the circle-operation cube, layers 1, 3, 3, 1. In rung terms that is the fused exponent fexp(d, 2). A 20% slowdown cuts power 49%.</p>
 <p>The cube also says to <b>run the spare</b>. If N units can carry the air, running N + 1 at N/(N+1) speed uses N²/(N+1)² of the power. With N = 4 that saves 36% of fan energy, or 32% in a real turbulent duct where pressure drop grows as flow to the 1.75 power. Slowing fans to cut excess airflow beats switching units off: 30% less air saves 66% of fan energy by slowing, 30% by switching off. Upsite's 2013 audits found cooling running at 3.9 times the IT load, against a target of 1.2, so the room is there.</p>
 <p><b>Verdict:</b> known (affinity laws), and widely practiced by the best operators. Real savings are smaller where motors and drives have fixed losses or where static pressure dominates.</p>
 </div><div><img src="figures/d4_fans.png" alt="Left: fan power change versus speed change with cube layers. Right: energy saved by running a spare unit, by number of units"></div></article>
@@ -131,7 +131,7 @@ a{color:inherit;text-underline-offset:3px}
 <span class="num">LEAD 5</span><h2>Setpoint savings compound degree by degree</h2>
 <p>ENERGY STAR quotes 4 to 5% saved per °F of higher server inlet temperature. Each degree multiplies what's left, so n degrees give 1 − (1 − s)ⁿ, a rung-3 power, not s·n. At 5%, 5°F saves 22.6%, not 25%; 9°F saves 37%, not 45%.</p>
 <p><b>Verdict:</b> bookkeeping. It doesn't save energy by itself, but it stops a business case from promising 8 points more than it can deliver. Server fans speed up when inlets get too hot, which caps the gain.</p>
-</div><div class="panel"><h3 style="margin-top:0">Stacking the levers</h3><p>Savings stack on what's kept, so they compose by mult-add: 1 − (1 − 0.025)(1 − 0.03)(1 − 0.03) = <b>8.26%</b>, not the naive 8.5%. Those three are UPS eco mode, cold-redundant supplies and fan sharing. Applied to all 176 TWh of US data centers, that's about 14.5 TWh a year. Treat it as a ceiling: many sites already do some of this, and the best fleets run at PUE 1.09.</p></div></article>
+</div><div class="panel"><h3 style="margin-top:0">Stacking the levers</h3><p>Savings stack on what's kept, so they compose by the circle operation: 1 − (1 − 0.025)(1 − 0.03)(1 − 0.03) = <b>8.26%</b>, not the naive 8.5%. Those three are UPS eco mode, cold-redundant supplies and fan sharing. Applied to all 176 TWh of US data centers, that's about 14.5 TWh a year. Treat it as a ceiling: many sites already do some of this, and the best fleets run at PUE 1.09.</p></div></article>
 
 <div class="panel" id="nofit"><h2>What didn't fit</h2>
 <ul>
@@ -143,12 +143,12 @@ a{color:inherit;text-underline-offset:3px}
 <div id="proofs" style="margin-top:30px"><h2>Proofs</h2>
 <p>All in core Lean 4.24, no mathlib, no <code>sorry</code>, standard axioms only: file <code>math-theory/datacenter-energy/lean/DataCenterFused.lean</code> (19 theorems).</p>
 <ul>
-<li><code>chain_lift</code>, <code>chain_split</code>, <code>chain_swap</code>: a chain's overhead is the mult-add fold of its stages, splits at any meter (TUE = ITUE × PUE), and doesn't care about order.</li>
+<li><code>chain_lift</code>, <code>chain_split</code>, <code>chain_swap</code>: a chain's overhead is the circle-operation fold of its stages, splits at any meter (TUE = ITUE × PUE), and doesn't care about order.</li>
 <li><code>scale_anywhere</code>: improving one stage by a factor improves the total by the same factor, wherever the stage sits.</li>
 <li><code>pue_corner</code>, <code>additive_books_corner</code>, <code>loss_costs_one_plus_c</code>: the corner, where the additive breakdown hides it, and the 1 + c watts each lost watt costs.</li>
 <li><code>unit_gap</code>, <code>add_unit_iff</code>, <code>equal_share</code>: the exact gap between k and k+1 units, the √(k(k+1)) switch point, and why equal sharing is best for a square loss.</li>
 <li><code>cube_layers</code>, <code>spread</code>, <code>spare_fan</code>, <code>spare_fan_helps</code>: the 1, 3, 3, 1 layers, total fan power Q³/k², and the N²/(N+1)² spare-unit ratio.</li>
-<li><code>stack</code>: savings stack by mult-add on what's kept.</li>
+<li><code>stack</code>: savings stack by the circle operation on what's kept.</li>
 </ul>
 <p class="muted">Numbers: <code>checks.py</code> and <code>checks_output.txt</code>; figures: <code>figures.py</code>; all in the same folder. The power supply fit uses spec minimums, so its sweet spot (35% of rating) is a little low compared with real units, which usually peak near half load.</p>
 </div>

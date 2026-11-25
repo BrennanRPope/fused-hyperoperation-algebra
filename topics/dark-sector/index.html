@@ -10,7 +10,7 @@
 /* VOICE a careful reading document in the same series as the e, topology and toric pages; honest about known vs new
    IDEA an observatory plate book: white data plates mounted on a night-sky page
    PICTURE the radial acceleration plot, where the missing pull lives, with the fused curve going the wrong way
-   COLOUR one night palette in both themes: deep ink ground, starlight text, ultramarine for mult-add, vermilion for the data verdicts
+   COLOUR one night palette in both themes: deep ink ground, starlight text, ultramarine for the circle operation, vermilion for the data verdicts
    TYPE Newsreader for titles, Inter for text
    LAYOUT finding and lead plate in the first screen; sections with plates beside text; phone stacks */
 :root{color-scheme:dark;--bg:#0c1022;--ink:#ecebf4;--mute:#a9a8bd;--blue:#93a0ff;--red:#ff8a6b;--wash:#131837;--rule:#2b3052;--panel:#151a36}
@@ -62,17 +62,17 @@ footer{border-top:1px solid var(--rule)}
 <div class="wrap two">
 <div>
 <h1>The algebra redraws dark matter and dark energy cleanly, but it does not explain either away</h1>
-<p class="lede">Combining gravity by <span class="b">mult-add</span> boosts the pull where it is already strong, but the missing pull in galaxies shows up where gravity is <span class="r">weak</span>. And every fused expansion law that drops the cosmological constant is ruled out once supernovae and the DESI acoustic rulers are fit together.</p>
-<p>What the algebra does give is an exact geometric picture: redshifts compose by mult-add, the standard model's expansion is a weighted mult-add cube, a cosmological constant is "growth that composes by mult-add", and the next rung up cannot carry expansion at all. Nineteen of these statements are proved in core Lean.</p>
+<p class="lede">Combining gravity by <span class="b">the circle operation ∘₁ (called mult-add before 1.0)</span> boosts the pull where it is already strong, but the missing pull in galaxies shows up where gravity is <span class="r">weak</span>. And every fused expansion law that drops the cosmological constant is ruled out once supernovae and the DESI acoustic rulers are fit together.</p>
+<p>What the algebra does give is an exact geometric picture: redshifts compose by the circle operation, the standard model's expansion is a circle-operation cube with dial k, a cosmological constant is "growth that composes by the circle operation", and the next rung up cannot carry expansion at all. Nineteen of these statements are proved in core Lean.</p>
 <div class="figs">
-<div><b class="r">1 to 5%</b><span>of the galaxy gap closed by mult-add gravity (MOND: 92%)</span></div>
+<div><b class="r">1 to 5%</b><span>of the galaxy gap closed by circle-operation gravity (MOND: 92%)</span></div>
 <div><b class="r">Δχ² ≥ 83</b><span>worse than ΛCDM for every fused law without dark energy</span></div>
 <div><b class="b">19 proofs</b><span>core Lean, no sorry, standard axioms only</span></div>
 </div>
 </div>
 <div>
-<div class="plate"><img src="figures/d1_rar.png" alt="Observed versus Newtonian acceleration for 3,168 points in 153 galaxies, with Newton, MOND and mult-add curves"></div>
-<p class="cap">Each grey dot is one point on one galaxy's rotation curve. Below about 1.2e-10 m/s² the dots leave Newton's dashed line. The blue MOND curve follows them with one constant. The orange mult-add curve can only bend <em>up at the strong end</em>.</p>
+<div class="plate"><img src="figures/d1_rar.png" alt="Observed versus Newtonian acceleration for 3,168 points in 153 galaxies, with Newton, MOND and circle-operation curves"></div>
+<p class="cap">Each grey dot is one point on one galaxy's rotation curve. Below about 1.2e-10 m/s² the dots leave Newton's dashed line. The blue MOND curve follows them with one constant. The orange circle-operation curve can only bend <em>up at the strong end</em>.</p>
 </div>
 </div>
 </header>
@@ -108,38 +108,38 @@ footer{border-top:1px solid var(--rule)}
 </div>
 </div>
 <div class="plate"><img src="figures/d2_curves.png" alt="Rotation curves of NGC2403, DDO154, NGC3198 and NGC7814 with model curves"></div>
-<p class="cap">Four SPARC galaxies. Dashed: what the visible matter predicts. Orange: mult-add gravity at its best-fit scale, which overshoots in the bright bulge of NGC7814 and changes nothing in the faint outskirts. Blue: MOND with one constant for all galaxies. Violet: a dark-matter halo with two numbers per galaxy.</p>
+<p class="cap">Four SPARC galaxies. Dashed: what the visible matter predicts. Orange: circle-operation gravity at its best-fit scale, which overshoots in the bright bulge of NGC7814 and changes nothing in the faint outskirts. Blue: MOND with one constant for all galaxies. Violet: a dark-matter halo with two numbers per galaxy.</p>
 </div>
 </section>
 
 <section class="band" id="dm">
 <div class="wrap">
-<h2>Dark matter: four ways to put mult-add into gravity</h2>
-<p>To mult-add two pulls you need a scale s to make them dimensionless: g₁ ⊕ g₂ = g₁ + g₂ + g₁g₂/s. Everything below was fit to the same 153 SPARC galaxies (quality flags 1 to 2, inclination at least 30°, 3,168 points), with stellar mass-to-light fixed at the standard 0.5 (disk) and 0.7 (bulge).</p>
-<div class="eq">mult-add of many small mass pieces → s·(e<sup>g<sub>N</sub>/s</sup> − 1)  (the exponential map of the formal group)</div>
+<h2>Dark matter: four ways to put the circle operation into gravity</h2>
+<p>To combine two pulls by the circle operation you need a scale s to make them dimensionless: g₁ ∘ₖ g₂ = g₁ + g₂ + g₁g₂/s, dial k = 1/s. Everything below was fit to the same 153 SPARC galaxies (quality flags 1 to 2, inclination at least 30°, 3,168 points), with stellar mass-to-light fixed at the standard 0.5 (disk) and 0.7 (bulge).</p>
+<div class="eq">The circle operation of many small mass pieces → s·(e<sup>g<sub>N</sub>/s</sup> − 1)  (the exponential map of the formal group)</div>
 <ol>
-<li><b>Mult-add of the mass pieces.</b> Cut a galaxy into pieces and mult-add their pulls. Cutting finer turns the product into an exponential (the same limit that gives e on the e page). It adds pull only where g<sub>N</sub> is near s or bigger. Best scale: s = 2.1e-9 m/s², closing 1.1% of the gap. Free mass-to-light pushes s to the Newton limit.</li>
-<li><b>Mult-add of the named pieces</b> (gas ⊕ disk ⊕ bulge). Closes 4.7%. Its best scale lands on 1.17e-10 m/s², right at MOND's a0. That isn't a discovery: the data contain one acceleration scale, where Newton stops working, and any one-scale model puts its scale there. It also depends on how you label the mass, which no physical law can.</li>
-<li><b>Mult-add with a constant background</b> (the local pull ⊕ a cosmic constant). Closes 85%, but it predicts 1.5 times Newton's G in the solar system and rotation curves that rise forever.</li>
-<li><b>MOND written in fused language.</b> MOND's "simple" interpolation μ(x) = x/(1+x) is exactly minus the mult-add inverse of x, and the deep-MOND law g² = g<sub>N</sub>·a0 says the square on the observed pull equals the rectangle g<sub>N</sub> × a0. That fits (92%), but it is MOND, re-dressed: the algebra does not choose this function or a0.</li>
+<li><b>The circle operation of the mass pieces.</b> Cut a galaxy into pieces and the circle operation their pulls. Cutting finer turns the product into an exponential (the same limit that gives e on the e page). It adds pull only where g<sub>N</sub> is near s or bigger. Best scale: s = 2.1e-9 m/s², closing 1.1% of the gap. Free mass-to-light pushes s to the Newton limit.</li>
+<li><b>The circle operation of the named pieces</b> (gas ∘ₖ disk ∘ₖ bulge). Closes 4.7%. Its best scale lands on 1.17e-10 m/s², right at MOND's a0. That isn't a discovery: the data contain one acceleration scale, where Newton stops working, and any one-scale model puts its scale there. It also depends on how you label the mass, which no physical law can.</li>
+<li><b>The circle operation with a constant background</b> (the local pull ∘ₖ a cosmic constant). Closes 85%, but it predicts 1.5 times Newton's G in the solar system and rotation curves that rise forever.</li>
+<li><b>MOND written in fused language.</b> MOND's "simple" interpolation μ(x) = x/(1+x) is exactly minus the circle inverse of x, and the deep-MOND law g² = g<sub>N</sub>·a0 says the square on the observed pull equals the rectangle g<sub>N</sub> × a0. That fits (92%), but it is MOND, re-dressed: the algebra does not choose this function or a0.</li>
 </ol>
 <div class="scroll">
 <table class="stack">
 <thead><tr><th>Model (fixed mass-to-light)</th><th class="n">χ²</th><th class="n">numbers fit</th><th class="n">gap closed</th><th>best scale</th></tr></thead>
 <tbody>
 <tr class="out"><td>Newton, visible matter only</td><td class="n">1,952,253</td><td class="n">0</td><td class="n">0%</td><td></td></tr>
-<tr><td>Mult-add of many small pieces (exp map)</td><td class="n">1,930,598</td><td class="n">1</td><td class="n">1.1%</td><td>s = 2.1e-9</td></tr>
-<tr><td>Mult-add of gas, disk, bulge</td><td class="n">1,859,864</td><td class="n">1</td><td class="n">4.7%</td><td>s = 1.17e-10</td></tr>
-<tr><td>Mult-add with a constant background</td><td class="n">284,221</td><td class="n">2</td><td class="n">85.4%</td><td>k = 0.50, s = 3.9e-11</td></tr>
-<tr class="win"><td>MOND simple μ (= minus mult-add inverse)</td><td class="n">162,678</td><td class="n">1</td><td class="n">91.7%</td><td>a0 = 1.17e-10</td></tr>
+<tr><td>The circle operation of many small pieces (exp map)</td><td class="n">1,930,598</td><td class="n">1</td><td class="n">1.1%</td><td>s = 2.1e-9</td></tr>
+<tr><td>The circle operation of gas, disk, bulge</td><td class="n">1,859,864</td><td class="n">1</td><td class="n">4.7%</td><td>s = 1.17e-10</td></tr>
+<tr><td>The circle operation with a constant background</td><td class="n">284,221</td><td class="n">2</td><td class="n">85.4%</td><td>k = 0.50, s = 3.9e-11</td></tr>
+<tr class="win"><td>MOND simple μ (= minus circle inverse)</td><td class="n">162,678</td><td class="n">1</td><td class="n">91.7%</td><td>a0 = 1.17e-10</td></tr>
 <tr class="win"><td>MOND / RAR (McGaugh 2016)</td><td class="n">163,039</td><td class="n">1</td><td class="n">91.6%</td><td>a0 = 1.21e-10</td></tr>
 <tr class="win"><td>Dark-matter halo (NFW)</td><td class="n">19,338</td><td class="n">306</td><td class="n">99.0%</td><td>2 per galaxy</td></tr>
 </tbody>
 </table>
 </div>
-<p class="cap">Gap closed = drop in χ² relative to Newton. Raw χ² are large for every model because the quoted speed errors leave out distance and inclination uncertainties; compare rows, not absolute values. With mass-to-light free per galaxy: Newton 685,295; mult-add 685,295 (it falls back to Newton); MOND 37,633 at median 0.41; NFW 10,774. On χ² alone halos win, even after the BIC penalty for 2 to 3 numbers per galaxy; MOND's case is that one constant does almost as well.</p>
+<p class="cap">Gap closed = drop in χ² relative to Newton. Raw χ² are large for every model because the quoted speed errors leave out distance and inclination uncertainties; compare rows, not absolute values. With mass-to-light free per galaxy: Newton 685,295; the circle operation 685,295 (it falls back to Newton); MOND 37,633 at median 0.41; NFW 10,774. On χ² alone halos win, even after the BIC penalty for 2 to 3 numbers per galaxy; MOND's case is that one constant does almost as well.</p>
 <div class="box">
-<p><b>Why mult-add points the wrong way, as geometry.</b> Pulls a and b mult-added make the rectangle (1+a)(1+b): the plain sum plus a corner ab. The corner is never bigger than a quarter of the square on the sum (4ab ≤ (a+b)², proved). So as pulls get weaker the corner shrinks faster than the pulls do. Dark matter needs the opposite: the extra is biggest exactly where pulls are weakest.</p>
+<p><b>Why circle-operation points the wrong way, as geometry.</b> Pulls a and b combined by the circle operation make the rectangle (1+a)(1+b): the plain sum plus a corner ab. The corner is never bigger than a quarter of the square on the sum (4ab ≤ (a+b)², proved). So as pulls get weaker the corner shrinks faster than the pulls do. Dark matter needs the opposite: the extra is biggest exactly where pulls are weakest.</p>
 <p class="mute" style="margin:0">Solar-system check: the exp map adds a fraction g/(2s) to the pull. Planetary ranging pins down the Sun's pull to better than one part in a billion, the same for every planet. Taking one part in a billion at Mercury forces s above about 2e7 m/s², around 10<sup>17</sup> times larger than the galaxy scale. So the corner term cannot be at galaxy scale and also leave the planets alone.</p>
 </div>
 </div>
@@ -151,17 +151,17 @@ footer{border-top:1px solid var(--rule)}
 <div class="plate"><img src="figures/d3_geometry.png" alt="Three diagrams: redshift rectangle, weighted cube, square equal to rectangle"></div>
 <div class="two" style="margin-top:14px">
 <div>
-<h3>1. Redshifts compose by mult-add</h3>
-<p>Light stretched by 1+z₁ and then by 1+z₂ is stretched by their product. So the total redshift is z₁ ⊕ z₂, and n equal stretches give the mult-add power. ln(1+z) is the linear variable: it counts e-folds of expansion. This is exact and needs no model. (Relativistic speeds are a sibling: (u+v)/(1+uv), straightened by rapidity.)</p>
-<h3>2. ΛCDM is a weighted mult-add cube</h3>
-<div class="eq">H²/H₀² = Ωm(1+z)³ + (1−Ωm) = 1 + Ωm·(z ⊕ z ⊕ z)</div>
+<h3>1. Redshifts compose by the circle operation</h3>
+<p>Light stretched by 1+z₁ and then by 1+z₂ is stretched by their product. So the total redshift is z₁ ∘₁ z₂, and n equal stretches give the circle power. ln(1+z) is the linear variable: it counts e-folds of expansion. This is exact and needs no model. (Relativistic speeds are a sibling: (u+v)/(1+uv), straightened by rapidity.)</p>
+<h3>2. ΛCDM is a circle-operation cube with dial k</h3>
+<div class="eq">H²/H₀² = Ωm(1+z)³ + (1−Ωm) = 1 + Ωm·(z ∘₁ z ∘₁ z)</div>
 <p>Matter thins out with volume, so it rides on the (1+z) cube: one unit cube, 3 slabs, 3 bars and one small cube (Pascal 1, 3, 3, 1). Λ is the unit cube that never grows. Matter is the shell around it, every layer weighted by the same Ωm.</p>
 </div>
 <div>
-<h3>3. A cosmological constant is mult-add growth</h3>
-<p>If the fractional growth over t + s equals the growth over t mult-added to the growth over s, the scale factor is exponential: 1 + A(t) = (1 + A(1))<sup>t</sup>. That is constant-rate (de Sitter) expansion. So in this language, dark energy is defined as the part of expansion whose growth fractions compose by mult-add on rung 2.</p>
+<h3>3. A cosmological constant is circle-operation growth</h3>
+<p>If the fractional growth over t + s equals the growth over t combined by the circle operation with the growth over s, the scale factor is exponential: 1 + A(t) = (1 + A(1))<sup>t</sup>. That is constant-rate (de Sitter) expansion. So in this language, dark energy is defined as the part of expansion whose growth fractions compose by the circle operation on rung 2.</p>
 <h3>4. The ladder stops there for expansion</h3>
-<p>Try one rung up: growth over t + s is A(t) ⊛ A(s), the fused exponent, in either order. If nothing has grown at time 0, nothing ever grows (proved, three lines). Exponentiation is not symmetric, but time is. So the cosmological constant is the highest rung that can carry expansion. This is a clean structural fact, not evidence for or against Λ.</p>
+<p>Try one rung up: growth over t + s is fexp(A(t), A(s)), the fused exponent, in either order. If nothing has grown at time 0, nothing ever grows (proved, three lines). Exponentiation is not symmetric, but time is. So the cosmological constant is the highest rung that can carry expansion. This is a clean structural fact, not evidence for or against Λ.</p>
 </div>
 </div>
 </div>
@@ -181,7 +181,7 @@ footer{border-top:1px solid var(--rule)}
 <tr><td>Cube of scaled redshift</td><td>(1 + λz)³, one number</td><td class="n">1</td><td class="n">1405.1</td><td class="n">40.3</td><td class="n">1499.5</td><td class="n">+83</td></tr>
 <tr><td>Fused power law</td><td>distance = ((1+z)<sup>β</sup> − 1)/β</td><td class="n">1</td><td class="n">1411.3</td><td class="n">97.0</td><td class="n">1661.2</td><td class="n">+245</td></tr>
 <tr><td>Flat coasting</td><td>distance = ln(1+z), the linear variable</td><td class="n">0</td><td class="n">1508.4</td><td class="n">187.1</td><td class="n">1695.5</td><td class="n">+279</td></tr>
-<tr class="out"><td>Empty universe (Milne)</td><td>distance ∝ (z ⊕ z)/2</td><td class="n">0</td><td class="n">1451.4</td><td class="n">568.6</td><td class="n">2020.0</td><td class="n">+604</td></tr>
+<tr class="out"><td>Empty universe (Milne)</td><td>distance ∝ (z ∘₁ z)/2</td><td class="n">0</td><td class="n">1451.4</td><td class="n">568.6</td><td class="n">2020.0</td><td class="n">+604</td></tr>
 <tr class="out"><td>Matter only, no dark energy</td><td>shell with no unit cube</td><td class="n">0</td><td class="n">2101.1</td><td class="n">1420.2</td><td class="n">3521.3</td><td class="n">+2105</td></tr>
 </tbody>
 </table>
@@ -207,14 +207,14 @@ footer{border-top:1px solid var(--rule)}
 <table class="stack">
 <thead><tr><th>Theorem</th><th>What it says</th></tr></thead>
 <tbody>
-<tr><td><code>redshift_compose</code>, <code>redshift_power</code>, <code>_int</code></td><td>(1+z₁)(1+z₂) = 1 + z₁⊕z₂; (1+z)ⁿ = 1 + n-fold mult-add power; blueshifts too</td></tr>
-<tr><td><code>cube_layers</code>, <code>cube_is_mpow3</code></td><td>(1+z)³ = 1 + 3z + 3z² + z³ = 1 + z⊕z⊕z</td></tr>
+<tr><td><code>redshift_compose</code>, <code>redshift_power</code>, <code>_int</code></td><td>(1+z₁)(1+z₂) = 1 + z₁∘₁z₂; (1+z)ⁿ = 1 + n-fold circle power; blueshifts too</td></tr>
+<tr><td><code>cube_layers</code>, <code>cube_is_mpow3</code></td><td>(1+z)³ = 1 + 3z + 3z² + z³ = 1 + z∘₁z∘₁z</td></tr>
 <tr><td><code>lcdm_is_weighted_cube</code></td><td>Ωm(1+z)³ + (1−Ωm) = 1 + Ωm·(3z + 3z² + z³), over the rationals</td></tr>
-<tr><td><code>madd_growth_is_exponential</code></td><td>growth that composes by mult-add over time is exponential (constant H)</td></tr>
+<tr><td><code>madd_growth_is_exponential</code></td><td>growth that composes by the circle operation over time is exponential (constant H)</td></tr>
 <tr><td><code>fexp_growth_trivial</code>, <code>'</code>, <code>pow_growth_trivial</code></td><td>rung-3 composition, either order, with no growth at t = 0 forces no growth ever</td></tr>
-<tr><td><code>madd_ge_add</code>, <code>mfold_ge_sum</code>, <code>madd_excess</code></td><td>mult-add of non-negative pulls is at least their sum; the extra is the corner ab</td></tr>
+<tr><td><code>madd_ge_add</code>, <code>mfold_ge_sum</code>, <code>madd_excess</code></td><td>The circle operation of non-negative pulls is at least their sum; the extra is the corner ab</td></tr>
 <tr><td><code>corner_le_quarter</code></td><td>4ab ≤ (a+b)²: the corner fades as pulls weaken</td></tr>
-<tr><td><code>minv_lift</code>, <code>mu_is_neg_minv</code></td><td>x ⊕ y = 0 gives (1+x)(1+y) = 1 and (1+x)(−y) = x: MOND's simple μ is minus the mult-add inverse</td></tr>
+<tr><td><code>minv_lift</code>, <code>mu_is_neg_minv</code></td><td>x ∘₁ y = 0 gives (1+x)(1+y) = 1 and (1+x)(−y) = x: MOND's simple μ is minus the circle inverse</td></tr>
 <tr><td><code>simple_mond_square</code>, <code>deep_mond_square</code></td><td>simple MOND as square = two rectangles; deep MOND as square = rectangle g<sub>N</sub> × a0</td></tr>
 </tbody>
 </table>
@@ -226,10 +226,10 @@ footer{border-top:1px solid var(--rule)}
 <div class="wrap">
 <h2>Verdict</h2>
 <ul>
-<li><b>Dark matter: not explained.</b> Mult-add gravity adds pull where fields are strong; the missing pull is where fields are weak. Its honest fits close 1 to 5% of the gap, and the solar system forbids the scale it would need. The fused versions that do fit are MOND in new notation, and MOND itself still fails clusters, the Bullet Cluster and the CMB's third peak. None of the fused variants touches those three.</li>
-<li><b>Dark energy: redescribed, not removed.</b> The algebra gives the cleanest picture I know of: Λ is the unit cube of the redshift cube, and constant-rate expansion is mult-add growth, the top rung expansion can reach. But every fused law that replaces Λ fails supernovae plus BAO by Δχ² of 83 or more.</li>
+<li><b>Dark matter: not explained.</b> Circle-operation gravity adds pull where fields are strong; the missing pull is where fields are weak. Its honest fits close 1 to 5% of the gap, and the solar system forbids the scale it would need. The fused versions that do fit are MOND in new notation, and MOND itself still fails clusters, the Bullet Cluster and the CMB's third peak. None of the fused variants touches those three.</li>
+<li><b>Dark energy: redescribed, not removed.</b> The algebra gives the cleanest picture I know of: Λ is the unit cube of the redshift cube, and constant-rate expansion is circle-operation growth, the top rung expansion can reach. But every fused law that replaces Λ fails supernovae plus BAO by Δχ² of 83 or more.</li>
 <li><b>Genuinely new testable prediction: none.</b> Each fused statement here is exact but matches known physics. The layer-weight test is a fused way to pose the live "is dark energy constant?" question, with a mild 1.7σ-level hint that matches DESI's.</li>
-<li><b>Your hunch, fairly put.</b> The gaps could still be a misunderstanding of gravity or of the universe; serious physicists pursue that (MOND, emergent gravity, timescape cosmology). This test only shows that combining effects by mult-add is not that misunderstanding. A rival would have to make extra pull grow as fields weaken, keep the planets untouched, and leave lensing mass where the Bullet Cluster puts it.</li>
+<li><b>Your hunch, fairly put.</b> The gaps could still be a misunderstanding of gravity or of the universe; serious physicists pursue that (MOND, emergent gravity, timescape cosmology). This test only shows that combining effects by the circle operation is not that misunderstanding. A rival would have to make extra pull grow as fields weaken, keep the planets untouched, and leave lensing mass where the Bullet Cluster puts it.</li>
 </ul>
 </div>
 </section>

@@ -9,7 +9,7 @@
   Eisenstein records `Eis R` with ω² = −1 − ω; Möbius maps are 2×2 records `Mob R`.
 
 Sections: spin and stretch about the wall (ma_lift, spin_about_wall, step_is_turned_w, wall_distance_mul, circle_closed,
-circle_equation); affine maps fixing −1 (affine_fixing_wall); mult-add roots of 0 (mroot_of_unity, gauss_root_four,
+circle_equation); affine maps fixing −1 (affine_fixing_wall); circle roots of 0 (mroot_of_unity, gauss_root_four,
 eis_root_three, totals); Möbius landscape (fixed_points_are_walls, trans_compose, trans_det, trans_type, two_walls_lift,
 cayley_tan, double_wall_adds); products (fold_wall_iff_int, corner_bound, fold_bound); Tate gluing (tate_glue).
 Not in Lean (no reals or exp in core): log branch and winding, e^z − 1 petals and the ripple a1, sine and Gamma products,

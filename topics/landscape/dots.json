@@ -40,7 +40,7 @@
   "source": "datacenter-energy"
  },
  {
-  "name": "Tsallis q = 0 (outcomes minus one), Campbell cost",
+  "name": "Tsallis q_T = 0 (outcomes minus one), Campbell cost",
   "domain": "information",
   "c1": 1,
   "c2": 0,
@@ -80,7 +80,7 @@
   "source": "quantum-noise"
  },
  {
-  "name": "Gini-Simpson (Tsallis q = 2), Kraft slack, erasures",
+  "name": "Gini-Simpson (Tsallis q_T = 2), Kraft slack, erasures",
   "domain": "information",
   "c1": -1,
   "c2": 0,

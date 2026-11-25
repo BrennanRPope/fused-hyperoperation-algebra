@@ -28,7 +28,7 @@ check("A2 real dial: chain of 1/n steps -> e - 1, error ~ 1/n (e is the lift of 
       errs[-1] < 2e-4 and all(errs[i+1] < errs[i]/5 for i in range(3)), "errors " + ", ".join(f"{e:.1e}" for e in errs))
 
 ok = all(abs(k*circ(a, b, k) - circ(k*a, k*b, 1)) < 1e-12 for k in [2, 1j, 0.3-0.8j] for a, b in [(0.4, -1.1), (0.2+0.5j, 1.7)])
-check("A3 every dial is mult-add after scaling the inputs by k: k(a o_k b) = (ka) o_1 (kb)", ok,
+check("A3 every dial is the circle operation after scaling the inputs by k: k(a o_k b) = (ka) o_1 (kb)", ok,
       "so 'which dial' over the complex numbers = 'which direction the inputs point'")
 
 xs = np.linspace(0, 10, 2001)
@@ -52,7 +52,7 @@ c400 = chain(np.pi, 400000, 1j)
 check("A8 Euler by pure chaining: 400,000 steps of pi/400000 at k = i land within 2e-5 of 2i",
       abs(c400 - 2j) < 2e-5, f"{c400:.7f}")
 
-q = complex(-1, 1)                 # mult-add element whose lift is i (a quarter turn about the wall -1)
+q = complex(-1, 1)                 # circle-operation element whose lift is i (a quarter turn about the wall -1)
 check("A9 discrete Euler over Gaussian integers (k = 1): q = -1+i (lift i); q o q = -2; four copies = 0",
       circ(q, q, 1) == -2 and circ(circ(circ(q, q, 1), q, 1), q, 1) == 0)
 
@@ -69,7 +69,7 @@ check("A11 k = -i walks the same circle the other way: flow(-i, x) = conj(flow(i
 
 # ====================================================== B. axioms that derive complex numbers
 ok = all((N**r - 1) + (M**r - 1) + (N**r - 1)*(M**r - 1) == (N*M)**r - 1 for N in range(1, 7) for M in range(1, 7) for r in [1, 2, 3])
-check("B1 Hardy's K_AB = K_A K_B is mult-add of parameter counts: (K_A-1) o_1 (K_B-1) = K_AB - 1 (any K = N^r)", ok)
+check("B1 Hardy's K_AB = K_A K_B is the circle operation of parameter counts: (K_A-1) o_1 (K_B-1) = K_AB - 1 (any K = N^r)", ok)
 
 s0 = np.eye(2); s1 = np.array([[0, 1], [1, 0]]); s2 = np.array([[0, -1j], [1j, 0]]); s3 = np.array([[1, 0], [0, -1]])
 paulis = [s0, s1, s2, s3]

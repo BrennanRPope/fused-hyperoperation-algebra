@@ -11,6 +11,6 @@ PASS Hydrogen atom (p + e): θ = √(2B/μ) to leading order  θ = 7.297e-03 rad
 PASS Deuteron (p + n): θ = √(2B/μ) to leading order  θ = 9.736e-02 rad, mass defect 1.18e-03 of the total
 PASS chemistry sits ~50× closer to the border than the hydrogen atom, nuclei ~10× farther
 PASS burning hydrogen: mass lost is ~1.8e-10 of the water made (Lavoisier's balances: ~1e-4 at best)  1.77e-10
-PASS charge: excess phase e^{iQφ}−1 mult-adds as charges add (300 cases); |1+w| = 1 is the turning country's circle
+PASS charge: excess phase e^{iQφ}−1 combines by the circle operation as charges add (300 cases); |1+w| = 1 is the turning country's circle
 PASS permanganate–iron(II): atoms and charge both balance (charge +17 each side)
 15/15 checks pass

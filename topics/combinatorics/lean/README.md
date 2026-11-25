@@ -8,7 +8,7 @@
 - Imports FusedAlgebra.Base and FusedAlgebra.Cube. Intended module path: FusedAlgebra/Topics/Combinatorics.lean.
 
 Main theorems: groups_length, painted_subsets, nonempty_subsets, alternating_corners, parity_corners,
-wfold_lift, wall_entry_absorbs, ffold_fact (n! − 1 = 1 ✳ 2 ✳ ⋯), kfold_lift, sign_balance,
+wfold_lift, wall_entry_absorbs, ffold_fact (n! − 1 = 1 ∘₁ 2 ∘₁ ⋯), kfold_lift, sign_balance,
 cube_is_stirling, derangements_incl_excl, bell_is_E_twice, rung_three, graphs_from_connected,
 arrangements, flow_order2/3/4 (group law of Eᵗ to order 4), flow_at_one/two/three/minus_one,
 half_rung_x4, quarter_rung_negative, S2_rows_bell, dial_blocks_minus_one, compositions_cube.

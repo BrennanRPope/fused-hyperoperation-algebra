@@ -28,7 +28,7 @@ page=f"""<!DOCTYPE html>
 /* VOICE a careful reading document in the biology series, honest about what is known and what might be new
    IDEA a naturalist's field plate pinned over a proof notebook: one living system, one dial, the corner cell in view
    PICTURE the lead plate in the first screen, then one plate per finding, a verdict table and the Lean list
-   COLOUR white ground, near-black ink, leaf green for the living thing and the lead, ultramarine for mult-add, vermilion for warnings; night is deep ink with plates kept white
+   COLOUR white ground, near-black ink, leaf green for the living thing and the lead, ultramarine for the circle operation, vermilion for warnings; night is deep ink with plates kept white
    TYPE Newsreader for titles, Inter for text
    LAYOUT finding and lead plate first; known/new and lead-verdict boxes; one band per finding; verdict table; Lean; sources */
 :root{{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1414);--ink:light-dark(#15171a,#e8eeea);--mute:light-dark(#5b615d,#a6b2ab);--green:light-dark(#1d6b3c,#7fd6a0);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#c2361c,#ff8a6b);--wash:light-dark(#eef6f0,#16241c);--rule:light-dark(#d8ddd9,#2a3a31)}}
@@ -59,17 +59,17 @@ table{{border-collapse:collapse;width:100%;font-size:15px}}th,td{{text-align:lef
 @media(max-width:600px){{table{{font-size:13px}}.stack thead{{display:none}}.stack tr{{display:grid;padding-block:10px}}.stack td{{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}}.stack td::before{{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}}.stack td:empty{{display:none}}}}
 </style><script>new MutationObserver(()=>{{for(const c of document.querySelectorAll('.stack td:not([data-l])')){{let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}}}).observe(document,{{childList:true,subtree:true}})</script></head><body>
 <header class="band"><div class="wrap hero"><div>
-<p class="kicker">{S.get('kicker','Biology through mult-add')}</p>
+<p class="kicker">{S.get('kicker','Biology through the circle operation')}</p>
 <h1>{S['h1']}</h1><p class="lede">{S['lede']}</p><ul class="stats">{stats}</ul></div>
 {fig(S['hero_fig'],S['hero_cap'],S.get('hero_alt',S['hero_cap']))}
 </div></header>
 <nav class="scroll">{nav}</nav>
 <section class="band"><div class="wrap"><div class="box"><p><b>Known or new.</b> {S['known']}</p></div><div class="box lead"><p><b>Is there a lead worth following?</b> {S['lead']}</p></div></div></section>
 {secs}
-<section class="band" id="table"><div class="wrap"><h2>{S.get('table_h2','Where mult-add shows up, and how much it gives')}</h2>
-<table class="stack"><thead><tr><th>Place</th><th>What mult-add does there</th><th>Known since</th><th>Verdict</th></tr></thead><tbody>{rows}</tbody></table></div></section>
+<section class="band" id="table"><div class="wrap"><h2>{S.get('table_h2','Where the circle operation shows up, and how much it gives')}</h2>
+<table class="stack"><thead><tr><th>Place</th><th>What the circle operation does there</th><th>Known since</th><th>Verdict</th></tr></thead><tbody>{rows}</tbody></table></div></section>
 <section class="band" id="lean"><div class="wrap"><h2>Lean: {len(names)} theorems, compiled, no sorry</h2>
-<p>File <code>{S['lean_file']}</code>, core Lean 4.37 with no mathlib, built on the shared library's base and using ✳ for mult-add. Every theorem uses only Lean's standard axioms. It goes into the shared proof library as <code>FusedAlgebra/Topics/Biology/{os.path.basename(S['lean_file'])}</code>.</p>
+<p>File <code>{S['lean_file']}</code>, core Lean 4.37 with no mathlib, built on the shared library's base and using ∘₁ for the circle operation. Every theorem uses only Lean's standard axioms. It goes into the shared proof library as <code>FusedAlgebra/Topics/Biology/{os.path.basename(S['lean_file'])}</code>.</p>
 <p class="scroll" style="font-size:14px">{leanlist}</p>
 <p>Numeric checks: {S['checks']}, from <code>checks.py</code> beside this page.</p></div></section>
 <section class="band" id="sources"><div class="wrap"><h2>Sources</h2><ul>{src}</ul>

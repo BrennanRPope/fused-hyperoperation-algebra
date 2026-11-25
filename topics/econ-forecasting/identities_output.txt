@@ -17,13 +17,13 @@
 
 == 3. Volatility drag is the square cut out of the corner ==
  up 27% then down 13%: (1+m+s)(1+m-s) = (1+m)^2 - s^2 = 1.1049 = 1.1449 - 0.0400
- S&P real 1871-2022: arithmetic mean 8.15%, geometric (mult-add) mean 6.68%, drag 1.47 pts; variance/2 = 1.52 pts; variance/(2(1+m)) = 1.41
+ S&P real 1871-2022: arithmetic mean 8.15%, geometric (the circle operation) mean 6.68%, drag 1.47 pts; variance/2 = 1.52 pts; variance/(2(1+m)) = 1.41
 
 == 4. Perpetuities and the pole ==
  perpetuity at 2%: price 1/i = 50.0; duration (1+i)/i = 51.0 = 1/d with d = -( (-)i ) = 0.01961
  perpetuity at 5%: price 1/i = 20.0; duration (1+i)/i = 21.0 = 1/d with d = -( (-)i ) = 0.04762
  Gordon: D0(1+g)/(r-g) = 34.6667; perpetuity at r (-) g = 0.028846: D0/(r(-)g) = 34.6667; summed 4000 years = 34.6667
- so a growing stream is a flat perpetuity at the mult-add difference of the rates; it blows up at g = r (a pole of order 1)
+ so a growing stream is a flat perpetuity at the circle-operation difference of the rates; it blows up at g = r (a pole of order 1)
   1921-01: dividend yield 7.11% = implied r (-) g; duration 1 + P/D = 15 years
   1950-01: dividend yield 6.81% = implied r (-) g; duration 1 + P/D = 16 years
   1982-01: dividend yield 5.68% = implied r (-) g; duration 1 + P/D = 19 years

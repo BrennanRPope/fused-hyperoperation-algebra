@@ -5,7 +5,7 @@ PASS 1d half box joined with half box = stick: layers 1,1,0,0,... exactly
 PASS 1e 4^k C(1/2,k) = 1, then (-1)^(k-1) * 2 * Catalan(k-1)  | [1, 2, -2, 4, -10, 28, -84, 264]
 PASS 1f third box joined three times = stick
 PASS 2a (1+1)^(1/2) = 1 + (sqrt2 - 1): half dimension at side 2 = one stick with dial sqrt2-1
-PASS 2b mult-add half power a^(*1/2) = sqrt(1+a)-1 joins back to a
+PASS 2b circle-operation half power a^(*1/2) = sqrt(1+a)-1 joins back to a
 PASS 2c dyadic halves forced: f(1/2)=sqrt2, f(1/4)=2^(1/4) (positive roots)
 PASS 3a C_1/4 level m: 2^m pieces of length 4^-m
 PASS 3b dimension of C_1/4 = log2/log4 = 1/2
@@ -16,7 +16,7 @@ PASS 3f the squared half box is dust: level-m pieces are separated by gaps (no s
 PASS 3g its shadow on the x-axis has length (1/2)^m -> 0 (a stick's shadow stays 1)
 PASS 4a three pieces at scale 1/9 also has dimension 1/2 (log3/log9)
 PASS 4b same dimension, different counts at the same scale  | C_1/4: 127, three-at-1/9: 140, sqrt(1/eps) = 64
-PASS 4c uneven pieces (0.09, 0.49) also solve the Moran equation for d = 1/2  | r2 = 0.4900
+PASS 4c uneven pieces (0.09, 0.49) also solve the Moran equation for D = 1/2  | r2 = 0.4900
 PASS 4d C_1/4 x three-at-1/9 (a different half squared against C_1/4) box-counts at dimension ~1  | slopes 0.968, 1.070, 1.062
 PASS 5a level m=1,2,3 of C_1/4: N points give 2^N - 1 subsets, pairwise as far apart as the points  | N = 2, 4, 8 -> 3, 15, 255 separated subsets (asserted above)
 PASS 5b subsets of an eps-net are an eps-net of the hyperspace (1500 random pieces of level 6 vs the 8-point net)  | eps = 63/4096, worst Hausdorff distance = 63/4096

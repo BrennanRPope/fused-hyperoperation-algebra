@@ -32,12 +32,12 @@ def caption(cv, s, y=None, size=14):
 def hero():
     cv = Canvas(760, 330)
     draw_rect(cv, 40, 250, "a", "b", S=78)
-    cv.text(150, 290, "a ⊕ b  =  a + b + ab", 16)
+    cv.text(150, 290, "a ∘₁ b  =  a + b + ab", 16)
     cv.text(150, 312, "the rectangle (1+a)(1+b), unit square removed", 12, "#555")
     cv.line(285, 160, 345, 160, arrow=True)
     cv.text(315, 142, "one more side", 12, "#555")
     draw_box(cv, 380, 262, ("a", "b", "c"), S=86, explode=("a", "b", "c"), gap=0.12)
-    cv.text(560, 300, "(a ⊕ b) ⊕ c = box (1+a)(1+b)(1+c) minus the unit cube", 13)
+    cv.text(560, 300, "(a ∘₁ b) ∘₁ c = box (1+a)(1+b)(1+c) minus the unit cube", 13)
     cv.text(565, 320, "its 7 pieces: a, b, c, ab, ac, bc, abc  (layers 3, 3, 1)", 12, "#555")
     save("hero", cv, {"kind": "box", "names": "abc", "explode": "abc"})
 
@@ -51,15 +51,15 @@ def v_lift():
     cv.text(190, 84, "lift  x ↦ 1 + x", 13, anchor="start")
     end = draw_rod(cv, 60, 118, [("1", 1.0), ("a", A)], S=70, brace="1 + a")
     caption(cv, "Lift: each number becomes a rod plus the unit", 185, 13)
-    caption(cv, "madd_lift:  a ⊕ b + 1 = (a+1)(b+1)", 208, 12)
+    caption(cv, "madd_lift:  a ∘₁ b + 1 = (a+1)(b+1)", 208, 12)
     save("v_lift", cv, {"kind": "rod", "parts": [["1", 1.0], ["a", A]]})
 
 
 def v_rect():
     cv = Canvas(360, 250)
     draw_rect(cv, 60, 195, "a", "b", S=70)
-    caption(cv, "Mult-add: two rods make a rectangle; drop the unit", 218, 13)
-    caption(cv, "a ⊕ b = a + b + ab", 238, 13)
+    caption(cv, "The circle operation: two rods make a rectangle; drop the unit", 218, 13)
+    caption(cv, "a ∘₁ b = a + b + ab", 238, 13)
     save("v_rect", cv, {"kind": "rect", "xv": "a", "yv": "b", "unit": "dashed"})
 
 
@@ -71,7 +71,7 @@ def v_swap():
     cv.path("M150,110 C170,95 185,95 198,110", arrow=True)
     cv.text(175, 86, "flip on the diagonal", 12, "#555")
     caption(cv, "Swap (commutativity): the same pieces, reflected", 214, 13)
-    caption(cv, "a ⊕ b = b ⊕ a   ·  Nat.mul_comm", 236, 12)
+    caption(cv, "a ∘₁ b = b ∘₁ a   ·  Nat.mul_comm", 236, 12)
     save("v_swap", cv)
 
 
@@ -82,7 +82,7 @@ def v_collapse():
     cv.text(200, 124, "b → 0", 12, "#555")
     draw_rect(cv, 225, 190, "a", "b", S=55, ylen=0.0, xlen=A * 0.8)
     caption(cv, "Collapse (identity): a zero rod flattens the box", 214, 13)
-    caption(cv, "a ⊕ 0 = a   ·  Nat.mul_one", 236, 12)
+    caption(cv, "a ∘₁ 0 = a   ·  Nat.mul_one", 236, 12)
     save("v_collapse", cv)
 
 
@@ -118,18 +118,18 @@ def v_squash():
     cv.text(ox + 3.0 * S, 136, "a rod of length 0", 12, "#555")
     cv.text(ox + 3.0 * S, 152, "can't be rescaled", 12, "#555")
     caption(cv, "Squash (inverse): rescale until the area is exactly 1", 238, 13)
-    caption(cv, "a ⊕ ā = 0 with ā = −a/(1+a): gain and mirror cancel", 258, 12)
+    caption(cv, "a ∘₁ ā = 0 with ā = −a/(1+a): gain and mirror cancel", 258, 12)
     save("v_squash", cv)
 
 
 def v_dial():
     cv = Canvas(360, 250)
-    for i, (k, lab) in enumerate([(0.0, "k = 0  plain add"), (0.45, "k = A  soliton"), (1.0, "k = 1  mult-add")]):
+    for i, (k, lab) in enumerate([(0.0, "k = 0  plain add"), (0.45, "k = A  soliton"), (1.0, "k = 1  circle operation")]):
         ox = 14 + i * 116
         draw_rect(cv, ox, 170, "a", "b", S=40, k=k, labels=False)
         cv.text(ox + 40 + A * 20, 188, lab, 11)
     caption(cv, "Dial (the weighted k-family): the corner holds k·ab", 214, 13)
-    caption(cv, "a ⊕ₖ b = a + b + k·ab;  1 + k(a ⊕ₖ b) = (1+ka)(1+kb)", 236, 12)
+    caption(cv, "a ∘ₖ b = a + b + k·ab;  1 + k(a ∘ₖ b) = (1+ka)(1+kb)", 236, 12)
     save("v_dial", cv)
 
 
@@ -145,9 +145,9 @@ def v_flatten():
     cv.text(200 + S * la / 2, 132, "L(a)", 12, italic=True)
     cv.text(200 + S * la + S * lb / 2, 132, "L(b)", 12, italic=True)
     cv.path(f"M200,90 v-5 H{200 + S * (la + lb):.1f} v5", sw=1)
-    cv.text(200 + S * (la + lb) / 2, 74, "L(a ⊕ b)", 12, italic=True)
+    cv.text(200 + S * (la + lb) / 2, 74, "L(a ∘₁ b)", 12, italic=True)
     caption(cv, "Flatten (log): L(x) = log(1+x) turns area into length", 214, 13)
-    caption(cv, "L(a ⊕ b) = L(a) + L(b); on whole numbers: pow_add", 236, 12)
+    caption(cv, "L(a ∘₁ b) = L(a) + L(b); on whole numbers: pow_add", 236, 12)
     save("v_flatten", cv)
 
 
@@ -162,24 +162,24 @@ def v_extrude():
     draw_rect(cv, 210, 170, "a", "b", S=40, labels=False)
     cv.text(260, 196, "rung 2: area", 13)
     cv.text(260, 214, "(1+a)(1+b) − 1", 11, "#555")
-    # rung 3: cube (1+a)^3, i.e. a fused-power a ⊛ 2
+    # rung 3: cube (1+a)^3, i.e. a fused power fexp(a, 2)
     km = lambda S_: {0: "", 1: "a", 2: "ab", 3: "abc"}[len(S_)]
     draw_box(cv, 380, 175, ("x", "y", "z"), S=46, values={"x": A, "y": A, "z": A},
              labels=False, keymap=km, explode=("x", "y", "z"), gap=0.08)
     cv.text(460, 196, "rung 3: volume", 13)
-    cv.text(460, 214, "(1+a)³ − 1 = a ⊛ 2", 11, "#555")
+    cv.text(460, 214, "(1+a)³ − 1 = fexp(a, 2)", 11, "#555")
     caption(cv, "Extrude (fused rungs): each rung adds a dimension; rung n+1 iterates rung n", 244, 13)
-    caption(cv, "cube pieces by layer 3, 3, 1 (Pascal)  ·  fexp_iter: a ⊛ (b+1) = a ⊕ (a ⊛ b)", 262, 12)
+    caption(cv, "cube pieces by layer 3, 3, 1 (Pascal)  ·  fexp_iter: fexp(a, b+1) = a ∘₁ fexp(a, b)", 262, 12)
     save("v_extrude", cv)
 
 
 def v_regroup():
     cv = Canvas(560, 270)
     draw_box(cv, 40, 190, ("a", "b", "c"), S=58, explode=("c",), gap=0.3)
-    cv.text(140, 222, "slabs: (a ⊕ b) ⊕ c", 13)
+    cv.text(140, 222, "slabs: (a ∘₁ b) ∘₁ c", 13)
     cv.text(280, 120, "=", 26)
     draw_box(cv, 330, 190, ("a", "b", "c"), S=58, explode=("a",), gap=0.3)
-    cv.text(430, 222, "columns: a ⊕ (b ⊕ c)", 13)
+    cv.text(430, 222, "columns: a ∘₁ (b ∘₁ c)", 13)
     caption(cv, "Regroup (associativity): one box, cut two ways  ·  Nat.mul_assoc", 252, 13)
     save("v_regroup", cv)
 
@@ -201,7 +201,7 @@ def soliton():
     save("soliton", cv)
 
 
-# ------------------------------------------------------------------ worked example: madd_assoc
+# ------------------------------------------------------------------ worked example: circ_assoc
 def step_canvas():
     return Canvas(620, 250)
 
@@ -233,18 +233,18 @@ def worked():
 
     # step 0: the goal
     cv = step_canvas()
-    rod_with_label(cv, 20, 110, lhs / 2, "(a ⊕ b) ⊕ c", S)
+    rod_with_label(cv, 20, 110, lhs / 2, "(a ∘₁ b) ∘₁ c", S)
     eqsign(cv, 310, 119)
-    rod_with_label(cv, 340, 110, rhs / 2, "a ⊕ (b ⊕ c)", S)
+    rod_with_label(cv, 340, 110, rhs / 2, "a ∘₁ (b ∘₁ c)", S)
     caption(cv, "Two rods, built in different orders. Why are they the same length?", 200, 13)
     caption(cv, "(half scale)", 222, 11)
     save("w0_goal", cv)
 
     # step 1: apply lift_inj
     cv = step_canvas()
-    rod_with_label(cv, 20, 110, lhs / 2, "(a ⊕ b) ⊕ c", S, unit=True)
+    rod_with_label(cv, 20, 110, lhs / 2, "(a ∘₁ b) ∘₁ c", S, unit=True)
     eqsign(cv, 336, 119)
-    rod_with_label(cv, 360, 110, rhs / 2, "a ⊕ (b ⊕ c)", S, unit=True)
+    rod_with_label(cv, 360, 110, rhs / 2, "a ∘₁ (b ∘₁ c)", S, unit=True)
     caption(cv, "Attach the unit to both sides (it is safe to take off again).", 200, 13)
     caption(cv, "(half scale)", 222, 11)
     save("w1_lift", cv)
@@ -255,15 +255,15 @@ def worked():
     ox, oy = 20, 175
     cv.rect(ox, oy - s2, s2, s2, UNIT)
     cv.rect(ox + s2, oy - s2, ab * s2, s2, "#5a5a66")
-    cv.text(ox + s2 + ab * s2 / 2, oy - s2 / 2, "a ⊕ b", 12, "#fff", italic=True)
+    cv.text(ox + s2 + ab * s2 / 2, oy - s2 / 2, "a ∘₁ b", 12, "#fff", italic=True)
     cv.rect(ox, oy - s2 - C * s2, s2, C * s2, colour("c"))
     cv.rect(ox + s2, oy - s2 - C * s2, ab * s2, C * s2, "#9b8f74")
-    cv.text(ox + s2 + ab * s2 / 2, oy - s2 - C * s2 / 2, "(a ⊕ b)·c", 11, "#fff", italic=True)
-    cv.text(ox + (1 + ab) * s2 / 2, oy + 16, "1 + (a ⊕ b)", 12)
+    cv.text(ox + s2 + ab * s2 / 2, oy - s2 - C * s2 / 2, "(a ∘₁ b)·c", 11, "#fff", italic=True)
+    cv.text(ox + (1 + ab) * s2 / 2, oy + 16, "1 + (a ∘₁ b)", 12)
     cv.text(ox - 4, oy - s2 - C * s2 / 2, "c", 12, anchor="end", italic=True)
     eqsign(cv, 336, 119)
-    rod_with_label(cv, 360, 110, rhs / 2, "a ⊕ (b ⊕ c)", S, unit=True)
-    caption(cv, "Left side: the outer ⊕ becomes a rectangle, rod 1+(a ⊕ b) by rod 1+c.", 222, 13)
+    rod_with_label(cv, 360, 110, rhs / 2, "a ∘₁ (b ∘₁ c)", S, unit=True)
+    caption(cv, "Left side: the outer ∘₁ becomes a rectangle, rod 1+(a ∘₁ b) by rod 1+c.", 222, 13)
     save("w2_left_outer", cv)
 
     # step 3: rw [madd_lift]  -- left inner -> box (slabs)
@@ -271,8 +271,8 @@ def worked():
     draw_box(cv, 40, 185, ("a", "b", "c"), S=56, explode=("c",), gap=0.32)
     cv.text(140, 212, "(1+a)(1+b) · (1+c): a slab of height c", 12)
     eqsign(cv, 336, 119)
-    rod_with_label(cv, 360, 110, rhs / 2, "a ⊕ (b ⊕ c)", S, unit=True)
-    caption(cv, "The rod 1+(a ⊕ b) opens into its own rectangle: the left side is a box.", 236, 13)
+    rod_with_label(cv, 360, 110, rhs / 2, "a ∘₁ (b ∘₁ c)", S, unit=True)
+    caption(cv, "The rod 1+(a ∘₁ b) opens into its own rectangle: the left side is a box.", 236, 13)
     save("w3_left_box", cv)
 
     # step 4: rw [madd_lift, madd_lift] -- right side -> box (columns)

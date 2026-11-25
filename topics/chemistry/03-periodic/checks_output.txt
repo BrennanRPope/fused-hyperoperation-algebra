@@ -1,4 +1,4 @@
-PASS shell n holds n² orbitals = 1 + (n−1)✳(n−1); its subshells are the square's L-shaped gnomons (n ≤ 29)
+PASS shell n holds n² orbitals = 1 + (n−1)∘₁(n−1); its subshells are the square's L-shaped gnomons (n ≤ 29)
 PASS SO(4): shell n = spin j ⊗ spin j with 2j = n−1; the Clebsch–Gordan series is exactly l = 0…n−1
 PASS Madelung order begins 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f 5d 6p 7s 5f 6d 7p
 PASS noble gases fall at Z = 2, 10, 18, 36, 54, 86, 118
@@ -9,5 +9,5 @@ PASS every exception moves only 1 or 2 electrons  largest move 2
 PASS every exception moves electrons between subshells at most one Madelung diagonal apart (|Δ(n+l)| ≤ 1)  spans [0, 1]
 PASS no exception involves a p subshell except lawrencium's 6d→7p (same diagonal, n+l = 8)
 PASS the exceptions on one diagonal (d↔f or d↔p swaps) are La, Ce, Gd, Ac, Th, Pa, U, Np, Cm, Lr  [57, 58, 64, 89, 90, 91, 92, 93, 96, 103]
-PASS q-integers [n]_q = n copies of 1 under the weighted mult-add with k = q − 1 (the dial q = k + 1)
+PASS q-integers [n]_q = n copies of 1 under the circle operation with k = q − 1
 12/12 checks pass

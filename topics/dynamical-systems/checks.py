@@ -1,4 +1,4 @@
-# Dynamical systems through mult-add: every claim on the page, checked.
+# Dynamical systems through the circle operation: every claim on the page, checked.
 import sympy as sp, numpy as np, math, cmath, mpmath as mp, json
 ok = 0; tot = 0
 def check(name, cond):
@@ -11,24 +11,24 @@ wa = lambda kk, p, q: p + q + kk*p*q
 msq = lambda v: ma(v, v)
 inv = lambda v: -v/(1 + v)
 
-print("--- 1. The lift is a change of coordinates: mult-add powers are z^n ---")
-check("x ✳ x = (1+x)² − 1: the lift z = 1 + x conjugates it to z ↦ z²", z(1 + msq(x) - (1 + x)**2))
-check("x ↦ x^(✳n) = (1+x)^n − 1 is conjugate to z ↦ z^n, n = 2..6, and composes: (x^(✳m))^(✳n) = x^(✳mn)",
+print("--- 1. The lift is a change of coordinates: circle powers are z^n ---")
+check("x ∘₁ x = (1+x)² − 1: the lift z = 1 + x conjugates it to z ↦ z²", z(1 + msq(x) - (1 + x)**2))
+check("x ↦ x^(∘₁n) = (1+x)^n − 1 is conjugate to z ↦ z^n, n = 2..6, and composes: (x^(∘₁m))^(∘₁n) = x^(∘₁mn)",
       all(z(((1 + ((1 + x)**m - 1))**n - 1) - ((1 + x)**(m*n) - 1)) for m in range(2, 5) for n in range(2, 5)))
 f = msq(x); itn = x
 for n in range(1, 5): itn = sp.expand(msq(itn))
-check("4 steps of x ✳ x: 1 + f⁴(x) = (1+x)^16", z(1 + itn - (1 + x)**16))
-check("every dial square x ✳_k x is mult-add square in other units: k·(x ✳_k x) = (kx) ✳ (kx)", z(k*wa(k, x, x) - msq(k*x)))
-check("so x ✳_k x (k ≠ 0) are all one map up to rescaling; k = 0 gives the linear map x ↦ 2x", z(wa(0, x, x) - 2*x))
-check("k = −2 (parity): x ✳ x = 2x(1 − x), the logistic map at r = 2", z(wa(-2, x, x) - 2*x*(1 - x)))
-check("k = −1 (failure union): x ✳ x = 1 − (1 − x)²", z(wa(-1, x, x) - (1 - (1 - x)**2)))
+check("4 steps of x ∘₁ x: 1 + f⁴(x) = (1+x)^16", z(1 + itn - (1 + x)**16))
+check("every dial square x ∘ₖ x is circle-operation square in other units: k·(x ∘ₖ x) = (kx) ∘₁ (kx)", z(k*wa(k, x, x) - msq(k*x)))
+check("so x ∘ₖ x (k ≠ 0) are all one map up to rescaling; k = 0 gives the linear map x ↦ 2x", z(wa(0, x, x) - 2*x))
+check("k = −2 (parity): x ∘₁ x = 2x(1 − x), the logistic map at r = 2", z(wa(-2, x, x) - 2*x*(1 - x)))
+check("k = −1 (failure union): x ∘₁ x = 1 − (1 − x)²", z(wa(-1, x, x) - (1 - (1 - x)**2)))
 
 print("--- 2. Fixed points: the wall is superattracting, the identity repels ---")
-check("wall: (−1 + h) ✳ (−1 + h) = −1 + h²  (multiplier 0: superattracting)", z(msq(-1 + h) - (-1 + h**2)))
-check("identity: h ✳ h = 2h + h²  (multiplier 2: repelling)", z(msq(h) - (2*h + h**2)))
-check("dial wall −1/k: (−1/k + h) ✳_k (−1/k + h) = −1/k + k·h²", z(wa(k, -1/k + h, -1/k + h) - (-1/k + k*h**2)))
+check("wall: (−1 + h) ∘₁ (−1 + h) = −1 + h²  (multiplier 0: superattracting)", z(msq(-1 + h) - (-1 + h**2)))
+check("identity: h ∘₁ h = 2h + h²  (multiplier 2: repelling)", z(msq(h) - (2*h + h**2)))
+check("dial wall −1/k: (−1/k + h) ∘ₖ (−1/k + h) = −1/k + k·h²", z(wa(k, -1/k + h, -1/k + h) - (-1/k + k*h**2)))
 check("logistic r = 2 has its superstable point at 1/2 = −1/k for k = −2", z(sp.diff(2*x*(1 - x), x).subs(x, sp.Rational(1, 2))))
-check("x^(✳n): multiplier n at 0, multiplier 0 at the wall (n = 2..6)",
+check("x^(∘₁n): multiplier n at 0, multiplier 0 at the wall (n = 2..6)",
       all(sp.diff((1 + x)**n - 1, x).subs(x, 0) == n and sp.diff((1 + x)**n - 1, x).subs(x, -1) == 0 for n in range(2, 7)))
 cnt = []
 for n in range(1, 6):
@@ -46,22 +46,22 @@ for _ in range(300):
 check("inside the circle |1+x| = 1 orbits fall into the wall −1; outside they escape (300 random starts)", good)
 v = cmath.exp(0.7j) - 1; mx = 0
 for _ in range(40): v = v + v + v*v; v = (v + 1)/abs(v + 1) - 1; mx = max(mx, abs(abs(v + 1) - 1))
-check("on the circle (the Julia set) the map is angle doubling: arg(1 + x✳x) = 2·arg(1 + x)",
+check("on the circle (the Julia set) the map is angle doubling: arg(1 + x∘₁x) = 2·arg(1 + x)",
       all(abs(cmath.phase((1 + msq(cmath.exp(1j*q) - 1))/(cmath.exp(1j*q))**2)) < 1e-12 for q in np.linspace(0, 6, 25)))
 
 print("--- 3. Two rulers: Koenigs (multiplier 2) and Fatou (multiplier 1) ---")
-check("Koenigs coordinate of x ✳ x at 0 is the log ruler: log(1 + x✳x) = 2·log(1 + x)", z(sp.expand_log(sp.log((1 + x)**2), force=True) - 2*sp.log(1 + x)))
+check("Koenigs coordinate of x ∘₁ x at 0 is the log ruler: log(1 + x∘₁x) = 2·log(1 + x)", z(sp.expand_log(sp.log((1 + x)**2), force=True) - 2*sp.log(1 + x)))
 mp.mp.dps = 40
 def koenigs_limit(x0, n=60):
     v = mp.mpf(x0)
-    for _ in range(n): v = mp.sqrt(1 + v) - 1          # inverse branch of x ✳ x
+    for _ in range(n): v = mp.sqrt(1 + v) - 1          # inverse branch of x ∘₁ x
     return v*2**n
 check("Koenigs's limit 2ⁿ·f⁻ⁿ(x) → log(1+x) (x = 0.5, 3, −0.6)", all(abs(koenigs_limit(x0) - mp.log(1 + x0)) < 1e-15 for x0 in (0.5, 3, -0.6)))
-check("x^(✳n) for every n shares the same ruler: log(1 + x^(✳n)) = n·log(1+x)", all(z(sp.expand_log(sp.log((1 + x)**n), force=True) - n*sp.log(1 + x)) for n in range(2, 7)))
+check("x^(∘₁n) for every n shares the same ruler: log(1 + x^(∘₁n)) = n·log(1+x)", all(z(sp.expand_log(sp.log((1 + x)**n), force=True) - n*sp.log(1 + x)) for n in range(2, 7)))
 check("E(x) = e^x − 1 has multiplier 1 at 0 (parabolic)", sp.diff(sp.exp(x) - 1, x).subs(x, 0) == 1)
 check("no Koenigs ruler for E: φ(E(x)) = φ(x) with φ = x + c₂x² + … fails at order x² (coefficient 1/2)",
       sp.expand(sp.series((lambda F: F.subs(x, sp.exp(x) - 1) - F)(x + sp.Symbol('c2')*x**2 + sp.Symbol('c3')*x**3), x, 0, 3).removeO()).coeff(x, 2) == sp.Rational(1, 2))
-check("E turns + into ✳: E(a + b) = E(a) ✳ E(b), so x ✳ x = E(2·E⁻¹(x)): mult-add squaring is doubling seen through E",
+check("E turns + into ∘₁: E(a + b) = E(a) ∘₁ E(b), so x ∘₁ x = E(2·E⁻¹(x)): circle squaring is doubling seen through E",
       z(sp.exp(a + b) - 1 - ma(sp.exp(a) - 1, sp.exp(b) - 1)) and z(sp.exp(2*sp.log(1 + x)) - 1 - msq(x)))
 
 print("--- 4. The rung flow: a vector field, a parabolic point, the Abel ruler ---")
@@ -102,12 +102,12 @@ fl = lambda tt, xx: xx/(1 - tt*xx/2)
 check("near 0 the rung flow is the Möbius flow x/(1 − t·x/2) of x′ = x²/2 (first term of v), ruler −2/x adds t",
       z(fl(s, fl(t, x)) - fl(s + t, x)) and z(-2/fl(t, x) - (-2/x + t)))
 
-print("--- 5. The logistic map is mult-add squaring folded by the mult-add inverse ---")
+print("--- 5. The logistic map is circle squaring folded by the circle inverse ---")
 fold = lambda v: v*inv(v)/4
-check("fold: X(w) = w·ι(w)/4 with ι(w) = −w/(1+w) the mult-add inverse; X(w) = −w²/(4(1+w))", z(fold(w) + w**2/(4*(1 + w))))
-check("w ✳ ι(w) = 0, so w + ι(w) = −w·ι(w): X = −(w + ι(w))/4", z(ma(w, inv(w))) and z(fold(w) + (w + inv(w))/4))
+check("fold: X(w) = w·ι(w)/4 with ι(w) = −w/(1+w) the circle inverse; X(w) = −w²/(4(1+w))", z(fold(w) + w**2/(4*(1 + w))))
+check("w ∘₁ ι(w) = 0, so w + ι(w) = −w·ι(w): X = −(w + ι(w))/4", z(ma(w, inv(w))) and z(fold(w) + (w + inv(w))/4))
 check("2-to-1: X(ι(w)) = X(w)", z(fold(inv(w)) - fold(w)))
-check("conjugacy: 4X(1 − X) = X(w ✳ w)  (logistic r = 4 is mult-add squaring folded)", z(4*fold(w)*(1 - fold(w)) - fold(msq(w))))
+check("conjugacy: 4X(1 − X) = X(w ∘₁ w)  (logistic r = 4 is circle squaring folded)", z(4*fold(w)*(1 - fold(w)) - fold(msq(w))))
 check("the Julia circle w = e^(iθ) − 1 folds onto [0, 1]: X = sin²(θ/2)",
       all(abs(complex(fold(sp.exp(sp.I*q) - 1).evalf()) - math.sin(q/2)**2) < 1e-12 for q in np.linspace(0.1, 6.2, 9)))
 check("points off the circle and off the real line fold off the real line (sampled inside and outside)",
@@ -117,7 +117,7 @@ check("the tent map is angle doubling folded: with X = sin²(πθ/2), θ ↦ 2θ
 rng = np.random.default_rng(7); xs = rng.uniform(0.01, 0.99, 2000); lyap = 0.0; xv = 0.3141; n_ = 200000
 for _ in range(n_): lyap += math.log(abs(4 - 8*xv)); xv = 4*xv*(1 - xv)
 check("Lyapunov exponent of the logistic map at r = 4 is log 2 (orbit average, 200 000 steps)", abs(lyap/n_ - math.log(2)) < 0.01)
-check("Lyapunov exponent of x ✳ x on its Julia circle is log 2 exactly: |f′(x)| = 2|1 + x| = 2", all(abs(abs(2*(1 + (cmath.exp(1j*q) - 1))) - 2) < 1e-12 for q in np.linspace(0, 6, 13)))
+check("Lyapunov exponent of x ∘₁ x on its Julia circle is log 2 exactly: |f′(x)| = 2|1 + x| = 2", all(abs(abs(2*(1 + (cmath.exp(1j*q) - 1))) - 2) < 1e-12 for q in np.linspace(0, 6, 13)))
 hist, edges = np.histogram([4*math.sin(q)**2*0 + math.sin(q)**2 for q in rng.uniform(0, math.pi, 400000)], bins=20, range=(0, 1), density=True)
 dens = [1/(math.pi*math.sqrt(m*(1 - m))) for m in (edges[:-1] + edges[1:])/2]
 check("uniform angles on the circle fold to the logistic invariant density 1/(π√(x(1−x)))", max(abs(hh/dd - 1) for hh, dd in zip(hist[2:-2], dens[2:-2])) < 0.03)
@@ -129,22 +129,22 @@ check("T_n(cos θ) = cos nθ, n ≤ 8", all(abs(float(T[n].subs(u, math.cos(0.37
 check("2·T_n((z + 1/z)/2) = zⁿ + z⁻ⁿ  (Chebyshev is zⁿ seen through Joukowski)", all(z(2*T[n].subs(u, (zz + 1/zz)/2) - zz**n - zz**-n) for n in range(9)))
 check("T_m ∘ T_n = T_mn (m, n ≤ 4)", all(z(T[m].subs(u, T[n]) - T[m*n]) for m in range(1, 5) for n in range(1, 5) if m*n <= 8))
 check("logistic r = 4 in u = 1 − 2x is T₂: 1 − 2·4x(1−x) = T₂(1 − 2x)", z(1 - 2*4*x*(1 - x) - T[2].subs(u, 1 - 2*x)))
-check("Joukowski in mult-add terms: (z + 1/z)/2 = 1 + (w + ι(w))/2 with z = 1 + w", z((1 + w + 1/(1 + w))/2 - (1 + (w + inv(w))/2)))
-check("chain rule as mult-add: (f∘g)′ − 1 = (f′(g) − 1) ✳ (g′ − 1)  (a relabelling of the product rule)",
+check("Joukowski in circle-operation terms: (z + 1/z)/2 = 1 + (w + ι(w))/2 with z = 1 + w", z((1 + w + 1/(1 + w))/2 - (1 + (w + inv(w))/2)))
+check("chain rule as the circle operation: (f∘g)′ − 1 = (f′(g) − 1) ∘₁ (g′ − 1)  (a relabelling of the product rule)",
       z((sp.diff(sp.sin(sp.exp(x)), x) - 1) - ma(sp.cos(sp.exp(x)) - 1, sp.exp(x) - 1)))
 
-print("--- 7. Flows: mult-add is 'run for time a, then time b' of y′ = 1 + y ---")
+print("--- 7. Flows: the circle operation is 'run for time a, then time b' of y′ = 1 + y ---")
 ysol = (1 + a)*sp.exp(t) - 1
-check("y′ = 1 + y from y(0) = a gives y(t) = a ✳ E(t); the wall −1 is the equilibrium", z(sp.diff(ysol, t) - (1 + ysol)) and z(ysol - ma(a, sp.exp(t) - 1)))
+check("y′ = 1 + y from y(0) = a gives y(t) = a ∘₁ E(t); the wall −1 is the equilibrium", z(sp.diff(ysol, t) - (1 + ysol)) and z(ysol - ma(a, sp.exp(t) - 1)))
 yk = a + (sp.exp(k*t) - 1)/k + k*a*(sp.exp(k*t) - 1)/k
-check("dial: y′ = 1 + k·y gives y(t) = a ✳_k (e^(kt) − 1)/k, equilibrium at the wall −1/k", z(sp.diff(yk, t) - (1 + k*yk)) and z(yk.subs(t, 0) - a))
-# Riccati y' = 1 + p y + q y^2 from 0, numerically: compose times
+check("dial: y′ = 1 + k·y gives y(t) = a ∘ₖ (e^(kt) − 1)/k, equilibrium at the wall −1/k", z(sp.diff(yk, t) - (1 + k*yk)) and z(yk.subs(t, 0) - a))
+# Riccati y' = 1 + p y + d y^2 from 0, numerically: compose times
 def riccati(t_end, y0, p, q):
     from scipy.integrate import solve_ivp
     r = solve_ivp(lambda tt, yy: [1 + p*yy[0] + q*yy[0]**2], (0, t_end), [y0], rtol=1e-12, atol=1e-14); return r.y[0, -1]
 pf, qf = 0.4, -0.3
 Ya, Yb, Yab = riccati(0.7, 0, pf, qf), riccati(0.5, 0, pf, qf), riccati(1.2, 0, pf, qf)
-check("landscape law F_{p,q} is the time law of y′ = 1 + p·y + q·y² (p = 0.4, q = −0.3: Y(0.7 + 0.5) = F(Y(0.7), Y(0.5)))",
+check("landscape law F_{p,d} is the time law of y′ = 1 + p·y + d·y² (p = 0.4, d = −0.3: Y(0.7 + 0.5) = F(Y(0.7), Y(0.5)))",
       abs(Yab - (Ya + Yb + pf*Ya*Yb)/(1 - qf*Ya*Yb)) < 1e-9)
 
 print("--- 8. The two half-rulers disagree by a periodic wobble (Ecalle's horn map) ---")

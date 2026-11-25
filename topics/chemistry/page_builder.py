@@ -5,7 +5,7 @@ import html, json
 CSS = r"""
 /* VOICE work: a technical write-up read by one curious person, often on a phone
    IDEA a page from a chemistry handbook: each subject opens with its element-style tile and one finding
-   PICTURE one large drawn chart or diagram per page, carrying the subject's mult-add finding
+   PICTURE one large drawn chart or diagram per page, carrying the subject's circle-operation finding
    COLOUR white ground, near-black ink, sodium-flame yellow slab behind the verdict, copper-blue marks, flame red accent
    TYPE Archivo 800 titles + Source Sans 3 text
    LAYOUT title and tile across the top, picture full width beneath, figures in a row; phone: stacked */
@@ -132,7 +132,7 @@ def build(path, *, title, tile, h1, lead, figs, picture, caption, verdict_h, ver
 <section class="verdict"><div class="wrap"><h2>{verdict_h}</h2><p>{verdict}</p></div></section>
 {sec_html}
 <section class="band sec" id="claims"><div class="wrap"><h2>Every claim, what it is, and how it was checked</h2>
-<p>Status: <b>known</b> is standard science restated; <b>tidy reading</b> is a known fact read in mult-add terms; <b>new here</b> is new as far as I could find.</p>{table(claims)}</div></section>
+<p>Status: <b>known</b> is standard science restated; <b>tidy reading</b> is a known fact read in circle-operation terms; <b>new here</b> is new as far as I could find.</p>{table(claims)}</div></section>
 <section class="band sec" id="lean"><div class="wrap"><h2>Proved in Lean</h2>
 <p><code>{html.escape(lean_file)}</code>: core Lean 4.37.0-rc1, no mathlib, no <code>sorry</code>, compiled against the shared library; every theorem uses only Lean's standard axioms.</p>
 <ul class="lean">{lean_html}</ul></div></section>

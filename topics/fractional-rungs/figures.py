@@ -17,7 +17,7 @@ def col(s):
 
 # ---- F1: the bend is the rung (level lines near and far) ----
 S = [-1, -0.5, 0, 0.5, 1, 2]
-names = {-1: "s = −1\nlog(eᵃ+eᵇ−1)", -0.5: "s = −½", 0: "s = 0\naddition", 0.5: "s = ½\nhalf rung", 1: "s = 1\nmult-add", 2: "s = 2"}
+names = {-1: "s = −1\nlog(eᵃ+eᵇ−1)", -0.5: "s = −½", 0: "s = 0\naddition", 0.5: "s = ½\nhalf rung", 1: "s = 1\ncircle operation", 2: "s = 2"}
 fig, axes = plt.subplots(2, 6, figsize=(16, 6.2))
 for row, (lim, levels) in enumerate([(3, np.arange(0.5, 6.01, 0.5)), (40, np.arange(5, 60.1, 5))]):
     g = np.linspace(lim/400, lim, 170)
@@ -52,7 +52,7 @@ ax.plot(ss, ss, color=BLUE, lw=2, label="corner weight = s (a straight line)")
 ax.plot(ss, ss*(ss - 1)/4, color=RED, lw=2, label="bend = s(s−1)/4 (a parabola)")
 ax.axhline(0, color=SOFT, lw=.8)
 for s in [0, 1]: ax.plot([s], [0], "o", color=INK, ms=5)
-ax.annotate("addition and mult-add:\nthe only flat ones", (0.5, 0), xytext=(-0.6, 1.4), fontsize=9, arrowprops=dict(arrowstyle="->", color=SOFT))
+ax.annotate("addition and the circle operation:\nthe only flat ones", (0.5, 0), xytext=(-0.6, 1.4), fontsize=9, arrowprops=dict(arrowstyle="->", color=SOFT))
 ax.set_xlabel("rung height s"); ax.legend(fontsize=9, loc="upper left"); ax.set_ylim(-1.5, 3.0)
 ax.set_title("Its shape near 0: a ∘ b = a + b + s·ab + bend·(a²b + ab²) + …", fontsize=10.5)
 ax = axes[2]
@@ -76,9 +76,9 @@ ax = axes[0]
 r = np.logspace(-2, 2, 400); Akdv = ((r - 1)/(r + 1))**2
 ax.semilogx(r, Akdv, color=BLUE, lw=2)
 ax.axhline(1, color=SOFT, lw=.8, ls="--"); ax.axhline(0, color=SOFT, lw=.8, ls="--")
-ax.text(0.012, 0.92, "corner full: mult-add", fontsize=9, color=SOFT); ax.text(0.6, 0.04, "corner empty: addition", fontsize=9, color=SOFT)
+ax.text(0.012, 0.92, "corner full: the circle operation", fontsize=9, color=SOFT); ax.text(0.6, 0.04, "corner empty: addition", fontsize=9, color=SOFT)
 ax.set_xlabel("speed ratio of the two solitons, k₂/k₁"); ax.set_ylabel("corner weight A")
-ax.set_title("KdV collisions live between addition and mult-add")
+ax.set_title("KdV collisions live between addition and the circle operation")
 ax = axes[1]
 g = np.linspace(0, 1, 200); A_, B_ = np.meshgrid(g, g)
 for kd, c_, ls in [(-1, RED, "-"), (0, INK, "-"), (0.5, BLUE, "--"), (1, BLUE, "-")]:

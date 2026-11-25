@@ -2,7 +2,7 @@ half-rung machinery: E^1(1) - (e-1) = -4.29e-127, E^1/2(E^1/2(1)) - (e-1) = -1.0
   trusted digits ~ 120
 E^(1/2)(1)      = 1.271027413889951521424651876672280687954420997211029019213648699179019
 B_(1/2)(1,1)    = 2.407171059016584133873092350661481563477956626143569213556573218135485   (half-way between 1+1 = 2 and 1 (+) 1 = 3)
-Feigenbaum road (c = 0 mult-add doubling -> c = -2 turning doubling): superstable c_12 = -1.40115518823671, delta estimate 4.66920159554 (known 4.66920160910)
+Feigenbaum road (c = 0 circle doubling -> c = -2 turning doubling): superstable c_12 = -1.40115518823671, delta estimate 4.66920159554 (known 4.66920160910)
 
 E_half_at_1 = 1.27102741388995152142465187667
    X: no relation with coefficients up to 10^4

@@ -1,4 +1,4 @@
-"""Graph theory through mult-add: every claim on index.html, checked.
+"""Graph theory through the circle operation: every claim on index.html, checked.
 Run: python3 checks.py > checks_output.txt"""
 import itertools, math, random
 import numpy as np
@@ -29,7 +29,7 @@ def Z(n, E, ws, Qs=Q):
         tot += Qs**comps(n, A) * sp.prod([ws[i] for i in range(len(E)) if mask >> i & 1])
     return sp.expand(tot)
 
-# 1. parallel reduction: two parallel edges = one edge of weight v1 * v2 (mult-add)
+# 1. parallel reduction: two parallel edges = one edge of weight v1 * v2 (the circle operation)
 E2 = [(0, 1), (0, 1), (1, 2), (2, 0)]
 lhs = Z(3, E2, [v1, v2, v3, v3]); rhs = Z(3, [(0, 1), (1, 2), (2, 0)], [ma(v1, v2), v3, v3])
 check('parallel edges: Z(G) = Z(G with one edge of weight v1 * v2 = v1+v2+v1v2), triangle', sp.expand(lhs - rhs) == 0)
@@ -74,9 +74,9 @@ check('wall 2: t = -1/(Q-1) absorbs, and it is v = -1 (proper colouring)', sp.si
 th = sp.symbols('theta')
 amh = lambda th, u, vv: u * vv / (1 - th * (1 - u) * (1 - vv))
 check('Potts parallel = union under Ali-Mikhail-Haq dependence, theta = 1 - Q', sp.simplify(1 - amh(1 - Q, 1 - a, 1 - b) - lens(Q - 2, 1 - Q, a, b)) == 0)
-check('Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4q', sp.simplify(lens(-2, 1, a, b) - (a + b - 2*a*b) / (1 - a*b)) == 0 and (-2)**2 == 4 * 1)
+check('Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4d', sp.simplify(lens(-2, 1, a, b) - (a + b - 2*a*b) / (1 - a*b)) == 0 and (-2)**2 == 4 * 1)
 kk_ = sp.symbols('kk')
-check('the or line q = -1 - k touches the border parabola q = k^2/4 only at k = -2, q = 1 (Q = 0)', sp.solve(sp.Eq(-1 - kk_, kk_**2 / 4), kk_) == [-2])
+check('the or line d = -1 - k touches the border parabola d = k^2/4 only at k = -2, d = 1 (Q = 0)', sp.solve(sp.Eq(-1 - kk_, kk_**2 / 4), kk_) == [-2])
 check('the parallel law is associative for every Q (symbolic)', sp.simplify(lens(Q-2, 1-Q, lens(Q-2, 1-Q, a, b), x) - lens(Q-2, 1-Q, a, lens(Q-2, 1-Q, b, x))) == 0)
 
 # ---------- 6. two-terminal reliability: series-parallel = (x, *_{-1}) ----------
@@ -116,7 +116,7 @@ check('40 random series-parallel networks: brute-force reliability = (x, *_{-1})
 pp = 0.73
 check('failure side: series fails = (1-p1) *_{-1} (1-p2), parallel fails = (1-p1)(1-p2)', sp.expand(1 - a*b - fu(1 - a, 1 - b)) == 0 and sp.expand(1 - fu(a, b) - (1 - a)*(1 - b)) == 0)
 u = lambda q: 1 / q - 1
-check('odds against u = 1/p - 1: series is plain mult-add, u(p1 p2) = u1 * u2', sp.simplify(u(a * b) - ma(u(a), u(b))) == 0)
+check('odds against u = 1/p - 1: series is the plain circle operation, u(p1 p2) = u1 * u2', sp.simplify(u(a * b) - ma(u(a), u(b))) == 0)
 bridgeE = [(0, 2), (0, 3), (2, 3), (2, 1), (3, 1)]
 Rb = sum((p if st[i] else 1 - p) for i in range(0)) if False else None
 Rbr = 0
@@ -207,7 +207,7 @@ check('exactly one fixed point t*(Q) strictly inside (0,1) for Q = 0.5,1,2,3,4: 
 check('Q = 3: the diamond fixed point is exactly 1/2', sp.simplify(diaQ(sp.Rational(1, 2), 3) - sp.Rational(1, 2)) == 0)
 check('t*(Q) decreases as Q grows (0.5 to 4)', all(fixed[a_] > fixed[b_] for a_, b_ in zip(list(fixed)[:-1], list(fixed)[1:])))
 
-# ---------- 8. graph products: the strong product is the Kronecker mult-add ----------
+# ---------- 8. graph products: the strong product is the Kronecker circle operation ----------
 def conormal(G, H):
     P = nx.Graph(); P.add_nodes_from(itertools.product(G.nodes(), H.nodes()))
     for (g1, h1), (g2, h2) in itertools.combinations(P.nodes(), 2):
@@ -236,11 +236,11 @@ check('P3 strong P3 has 20 edges: 12 Cartesian (k = 0 part) + 8 diagonal (the co
 check('strong product edges = n1 m2 + n2 m1 + 2 m1 m2 (36 pairs of small graphs)', ok1)
 check('lifted count 2m + n multiplies: (2m+n)(G strong H) = (2m1+n1)(2m2+n2)', ok2)
 check('closed degrees multiply: deg = d1 * d2 = d1 + d2 + d1 d2', ok3)
-check('adjacency: strong = A(x)I + I(x)B + A(x)B (Kronecker mult-add); Cartesian = k = 0 part; tensor = the corner', ok4)
+check('adjacency: strong = A(x)I + I(x)B + A(x)B (The kronecker circle operation); Cartesian = k = 0 part; tensor = the corner', ok4)
 check('eigenvalues of the strong product are lambda * mu (lambda+mu+lambda mu)', ok5)
 check('OR (co-normal) product: J - A_or = (J - A)(x)(J - B), the k = -1 dial with J in place of I', ok6)
 
-# ---------- 9. independence polynomial: union mult-adds, join adds ----------
+# ---------- 9. independence polynomial: union combines by the circle operation, join adds ----------
 def indep(G):
     nl = list(G.nodes()); c = [0] * (len(nl) + 1)
     for r in range(len(nl) + 1):
@@ -253,7 +253,7 @@ for G, H in itertools.product(gs[:4] + [nx.path_graph(4)], repeat=2):
     U = nx.disjoint_union(G, H); Jn = nx.complement(nx.disjoint_union(nx.complement(G), nx.complement(H)))
     ok_u &= sp.expand(indep(U) - 1 - ma(IG - 1, IH - 1)) == 0
     ok_j &= sp.expand(indep(Jn) - 1 - ((IG - 1) + (IH - 1))) == 0
-check('disjoint union: I(G u H) - 1 = (I(G)-1) * (I(H)-1) (mult-add)', ok_u)
+check('disjoint union: I(G u H) - 1 = (I(G)-1) * (I(H)-1) (the circle operation)', ok_u)
 check('join: I(G + H) - 1 = (I(G)-1) + (I(H)-1) (plain addition, k = 0)', ok_j)
 check('C4 = join of two non-edges: I = 1 + 4x + 2x^2', sp.expand(indep(nx.cycle_graph(4)) - (1 + 4*x + 2*x**2)) == 0)
 kz = sp.symbols('k')

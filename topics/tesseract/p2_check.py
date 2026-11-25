@@ -58,7 +58,7 @@ def checks(p):
             h = hits[chart(c, v)]
             if d in h and e in h:
                 assert trans(d, e, trans(c, d, v)) == trans(c, e, v)
-    # mult-add form of c0 -> c1: (1+u, 1+w) -> (1+u~, 1+(w (+) u~)), u~ = -u/(1+u)
+    # Circle-operation form of c0 -> c1: (1+u, 1+w) -> (1+u~, 1+(w (+) u~)), u~ = -u/(1+u)
     for u, w in V:
         if (1 + u) % p == 0: continue
         ui = (-u) * inv(1 + u) % p

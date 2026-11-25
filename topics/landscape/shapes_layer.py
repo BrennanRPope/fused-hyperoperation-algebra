@@ -4,7 +4,7 @@ Each settlement (numbered dot) on the landscape is linked to the library theorem
 state its law, by name and statement (the LINKS table below: that link is the only
 choice made by hand). Each theorem's shape family comes from the gallery's rules
 (../proof-gallery/gallery.json), never from this file. The region comes from the dot's
-position: below the parabola q = k²/4 two real walls, on it a double wall, above it none.
+position: below the parabola d = k²/4 two real walls, on it a double wall, above it none.
 Output: shapes.json (used by index.html).
 """
 import json, pathlib
@@ -19,7 +19,7 @@ fam = {g["id"]: g for g in G["groups"]}
 
 # dot number, (x, y) as on the map, title, [(module suffix or "", theorem short name)]
 LINKS = [
- (1, 1, 0, "Mult-add", [("Base", "multAdd_lift"), ("Base", "multAdd_comm"), ("Base", "multAdd_assoc"),
+ (1, 1, 0, "The circle operation", [("Base", "multAdd_lift"), ("Base", "multAdd_comm"), ("Base", "multAdd_assoc"),
     ("DarkSector", "redshift_compose"), ("DarkSector", "redshift_power"), ("DataCenter", "pue_corner"),
     ("DataCenter", "additive_books_corner"), ("DataCenter", "foldMA_split"), ("Finance", "fisher"),
     ("InformationTheory", "uniform_tsallis_is_fused_power"), ("InformationTheory", "campbell"),
@@ -63,7 +63,7 @@ STRETCHES = [
  ("KdV corner, dimension dial", "the straight line between k = 0 and k = 1", "line",
   [("Landscape", "dial_is_multadd"), ("Landscape", "kdv_phase_shift"), ("FractionalRungs", "kdv_weight"),
    ("FractionalRungs", "dial_or"), ("FractionalRungs", "dial_three"), ("Base", "wAdd_scale")]),
- ("The border (double wall)", "the parabola q = k²/4", "border",
+ ("The border (double wall)", "the parabola d = k²/4", "border",
   [("Landscape", "parabola_additive"), ("Landscape", "parabola_den"), ("Landscape", "discriminant"), ("DialSweep", "dial_discriminant")]),
  ("Every law at once", "the whole map: F(a, b) = N/D", "all",
   [("Landscape", "num_comm"), ("Landscape", "den_comm"), ("Landscape", "assoc_num"), ("Landscape", "assoc_den"),

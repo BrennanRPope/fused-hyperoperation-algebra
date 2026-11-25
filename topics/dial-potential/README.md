@@ -1,6 +1,6 @@
 # The dial's potential
 
-Question: if the mult-add dial k (a ⊞ b = a + b + k·ab) behaves like a Higgs field, with a hump at k = 0 and dips at ±k0, what fixes its potential and its coupling? Approach (Brennan's): make 20 guesses, keep the closest, iterate.
+Question: if the circle-operation dial k (a ∘₁ b = a + b + k·ab) behaves like a Higgs field, with a hump at k = 0 and dips at ±k0, what fixes its potential and its coupling? Approach (Brennan's): make 20 guesses, keep the closest, iterate.
 
 Page: https://claude.ai/artifact/WpQzqeezDjmRmUcbgTA7RT
 

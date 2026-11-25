@@ -1,5 +1,5 @@
 /-
-  Entropy and quantum noise on the mult-add cube
+  Entropy and quantum noise on the circle-operation cube (called mult-add cube before 1.0)
   ==============================================
 
   Part of Fused Hyperoperation Algebra. Companion page: index.html.
@@ -18,7 +18,7 @@
   and decimation (QuantumNoise.bit_flip). Nothing else changed.
 
   What this file proves, by part:
-   1. The entropy weight.  Certainty absorbs under a ⊕ₖ b exactly when k = −1,
+   1. The entropy weight.  Certainty absorbs under a ◯[k] b exactly when k = −1,
       so Tsallis' line (k = 1 − q) meets the "or" line only at q = 2.  The
       weight k = 1 − q composes by the union rule along a chain of escorts,
       the same law as Carnot efficiencies, k = 1 − T₀/T.  Escorts of escorts
@@ -51,7 +51,7 @@ import FusedAlgebra.Topics.InformationTheory
 
 namespace EntropyNoise
 
-open MultAdd
+open CircleOp
 
 /-! ## Small order facts on Rat (core has no `nlinarith`) -/
 
@@ -95,13 +95,13 @@ theorem mul_bound (a b u : Rat) (h1 : a ≤ u) (h2 : -a ≤ u) (hb1 : b ≤ 1) (
 
 /-! ## 1. The entropy weight -/
 
-/-- Certainty swallows everything, a ⊕ₖ 1 = 1 for every a, exactly when k = −1.
+/-- Certainty swallows everything, a ◯[k] 1 = 1 for every a, exactly when k = −1.
     The statistics page's "or" laws are the line k + q_L = −1 of lens laws; the
     Tsallis laws have no denominator (q_L = 0), so they meet it only here. -/
-theorem certainty_absorbs_iff (k : Rat) : (∀ a : Rat, wAdd k a 1 = 1) ↔ k = -1 := by
+theorem certainty_absorbs_iff (k : Rat) : (∀ a : Rat, circK k a 1 = 1) ↔ k = -1 := by
   constructor
-  · intro h; have := h 1; unfold wAdd at this; grind
-  · intro hk a; subst hk; unfold wAdd; grind
+  · intro h; have := h 1; unfold circK at this; grind
+  · intro hk a; subst hk; unfold circK; grind
 
 /- Tsallis' index q = 2 is that point: Gini–Simpson (linear entropy) follows the
    union rule, because its lift is the collision sum. Library: InfoFused.gini_simpson
@@ -300,7 +300,7 @@ theorem bit_collision (p : Rat) : (1 - p) * (1 - p) + p * p = (1 + (1 - 2*p) * (
   grind
 
 /-- The n-fold fault pattern (a corner of the n-cube) has collision sum cⁿ, so its
-    linear entropy climbs at weight −1: 1 − cⁿ = (1 − c)^{⊕₋₁ n}. -/
+    linear entropy climbs at weight −1: 1 − cⁿ = (1 − c)^{◯[−1] n}. -/
 theorem pattern_linear_entropy (c : Rat) (n : Nat) : 1 - c ^ n = wpow (-1) (1 - c) n := by
   rw [wpow_neg_one]; grind
 

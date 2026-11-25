@@ -53,8 +53,8 @@ rows = [  # label, measure, [(share, kind)], note
 col = {"e": BLUE, "r": ORANGE, "c": PURPLE, "x": GRAY}
 W2, rowh, top, lab_w, bar_w = 900, 34, 84, 400, 300
 H2 = top + rowh*len(rows) + 50
-s = [f'<svg viewBox="0 0 {W2} {H2}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f2t"><title id="f2t">For each set, the share that mult-add with dials explains (blue) and what is left over: repetition (orange), the class group (purple), or no foothold at all (grey).</title>']
-legend = [("explained by mult-add", BLUE), ("repetition: the set again at double size", ORANGE), ("class group (sign dial)", PURPLE), ("out of reach", GRAY)]
+s = [f'<svg viewBox="0 0 {W2} {H2}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f2t"><title id="f2t">For each set, the share that the circle operation with dials explains (blue) and what is left over: repetition (orange), the class group (purple), or no foothold at all (grey).</title>']
+legend = [("explained by the circle operation", BLUE), ("repetition: the set again at double size", ORANGE), ("class group (sign dial)", PURPLE), ("out of reach", GRAY)]
 for j, (t_, c) in enumerate(legend):
     lx = 10 + (j % 2)*420; ly = 14 + (j // 2)*24
     s.append(f'<rect x="{lx}" y="{ly}" width="14" height="14" fill="{c}"/><text x="{lx+20}" y="{ly+12}" {FONT} font-size="13" fill="{INK}">{t_}</text>')
@@ -89,7 +89,7 @@ for r_, (beta, lab) in enumerate([(1, "dimension 1 (naturals by size)"), (2, "di
             s.append(f'<text x="{xx+8:.1f}" y="{y0+20}" {FONT} font-size="13" font-weight="600" fill="{"#fff" if j<3 else INK}">size ×{2**j}</text>'
                      f'<text x="{xx+8:.1f}" y="{y0+37}" {FONT} font-size="13" fill="{"#fff" if j<3 else INK}">{piece*100:.1f}%</text>')
         xx += wpx; rem -= piece; j += 1
-    s.append(f'<text x="10" y="{y0+66}" {FONT} font-size="13" fill="{SUB}">each rung is mult-add on dials t, t², t⁴, …; the first rung alone explains 1 − 1/{2**beta} = {(1-2**-beta)*100:.1f}%</text>')
+    s.append(f'<text x="10" y="{y0+66}" {FONT} font-size="13" fill="{SUB}">each rung is the circle operation on dials t, t², t⁴, …; the first rung alone explains 1 − 1/{2**beta} = {(1-2**-beta)*100:.1f}%</text>')
 s.append('</svg>')
 open("fig3-doubling-ladder.svg", "w").write("\n".join(s))
 print("wrote 3 figures")

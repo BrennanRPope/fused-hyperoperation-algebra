@@ -8,7 +8,7 @@ own text, their checks and the Lean library; see README.md for sources."""
 PREREQS = [
  # id, group, name, corner, status, what we have (our results), what it rests on, literature
  ("L1","Limits","Special relativity","c","met",
-  "velocity addition = mult-add; Thomas-Wigner twist = curvature x area; EM fixes q = -1/c^2",
+  "velocity addition = the circle operation; Thomas-Wigner twist = curvature x area; EM fixes d = -1/c^2",
   "Lean: Relativity (30), TwistedBoosts (36), Electromagnetism (41); 4x4 Lorentz checks",
   "Einstein 1905; Levy-Leblond 1976"),
  ("L2","Limits","Quantum mechanics","h","input",
@@ -48,7 +48,7 @@ PREREQS = [
   "nearest fit: Hojman-Kuchar-Teitelboim, mentioned on the GR page but not worked",
   "Hojman, Kuchar, Teitelboim 1976"),
  ("Q1","Quantum gravity","Black-hole entropy S = A/(4 G hbar)","cGh","gap",
-  "Jacobson's route: area bookkeeping, focusing and Unruh T are all mult-add; the entropy per area is not",
+  "Jacobson's route: area bookkeeping, focusing and Unruh T are all circle-operation steps; the entropy per area is not",
   "gr-bridges Part J names 1/(4 G hbar) as the one outside input",
   "Bekenstein 1973; Hawking 1975; Jacobson 1995; Strominger-Vafa 1996"),
  ("Q2","Quantum gravity","Hawking temperature","cGh","met",
@@ -131,7 +131,7 @@ YARD_STATUS = [  # per row, per column: met / input / gap
 # C = cited published theorem (not proved here), P = prose argument or reading only
 NODES = {
  # id: (label, layer, y, folder)
- "MA":   ("mult-add a+b+kab\nlift 1+k(a*b)=(1+ka)(1+kb)", 0, 7.0, "lean Base"),
+ "MA":   ("the circle operation a+b+kab\nlift 1+k(a*b)=(1+ka)(1+kb)", 0, 7.0, "lean Base"),
  "AFF":  ("stretch-and-shift\n(order dial)", 0, 5.0, "order-dial"),
  "TW":   ("the twist =\noriented area", 0, 3.0, "order-dial, why-i"),
  "CH":   ("chain = product integral\n= ordered sub-chains", 0, 1.0, "why-i"),
@@ -144,7 +144,7 @@ NODES = {
  "WI":   ("wall -1/k\nflips i", 1, 0.5, "why-i"),
  "SR":   ("special relativity:\nvelocity addition", 2, 9.0, "relativity"),
  "TWB":  ("twisted boosts:\ntwist = q x area", 2, 7.9, "twisted-boosts"),
- "EM":   ("EM fixes\nq = -1/c^2", 2, 6.8, "electromagnetism"),
+ "EM":   ("EM fixes\nd = -1/c^2", 2, 6.8, "electromagnetism"),
  "KP":   ("kappa-Poincare =\naffine chain, k=-1/kappa", 2, 5.7, "kappa-poincare"),
  "I":    ("i = twist +\none more ingredient", 2, 4.4, "why-i"),
  "PI":   ("pi = half turn\nto the wall's mirror", 2, 3.2, "e-i-pi"),
@@ -179,7 +179,7 @@ INPUTS = {
 EDGES = [
  ("MA","AFF","L","k_slice, app_comp (OrderDial); T_comp (GroupsLie)"),
  ("AFF","TW","L","order_gap (OrderDial); wedge_antisymm, dial_twist (WhyI)"),
- ("MA","CH","L","chain_two, chain_three (WhyI); foldMA_lift (Base)"),
+ ("MA","CH","L","chain_two, chain_three (WhyI); foldCirc_lift (Base)"),
  ("AFF","HP","N","why-i C1-C9; Milnor 1976 cited"),
  ("TW","I","C","six published roads; why-i B1-B8, D1-D4, H1-H2"),
  ("HP","I","N","why-i C5"),
@@ -252,8 +252,8 @@ LEAN = {  # module: (theorems, imports)
 }
 ISLAND_NOTES = {
  "WhyI": "own wedge, chain_two\n(Base has the lift)",
- "EIPi": "own madd = Base.wAdd",
+ "EIPi": "own circK = Base.circK",
  "Checkerboard": "own 2x2 matrices",
  "CheckerboardPotential": "own 2x2 matrices again",
- "PathNames": "own circ = Base.wAdd",
+ "PathNames": "own circ = Base.circK",
 }

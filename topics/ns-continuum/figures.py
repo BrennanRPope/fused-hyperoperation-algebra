@@ -43,7 +43,7 @@ ax.plot(log10s, d['fam']['1.0'], color=C['red'], lw=2.5, label='3D NS:  s^½  (r
 ax.plot(log10s, d['fam']['0.0'], color=C['gray'], lw=1.5, ls=':', label='rung 0:  ½ log s')
 ax.set_xlabel('frequency  log₁₀ s'); ax.set_ylabel('deficiency  log₁₀ D(s)   (dissipation = s^{5/2} / D)')
 ax.set_ylim(-0.3, 30); ax.legend(fontsize=8.5, frameon=False, loc='upper left')
-ax.set_title('The gap is one full rung of the mult-add flow wide')
+ax.set_title('The gap is one full rung of the circle-operation flow wide')
 fig.tight_layout(); fig.savefig('figures/f2_rung_height.png', dpi=150); plt.close(fig)
 
 # ---------- F3: Osgood integrals ----------
@@ -77,7 +77,7 @@ for i in range(8):
         col = ['#edf2f7', '#90cdf4', '#2b6cb0'][hi]
         ax.add_patch(Rectangle((i, j), 1, 1, fc=col, ec='white', lw=1))
 ax.set_xlim(0, 8); ax.set_ylim(0, 8); ax.set_aspect('equal'); ax.axis('off')
-ax.set_title('Doubling a 4×4 box: 48 new cells\n= 16 · 1^(⊞2) = 16 · (2 strips + 1 corner)', fontsize=10)
+ax.set_title('Doubling a 4×4 box: 48 new cells\n= 16 · 1^(∘₁2) = 16 · (2 strips + 1 corner)', fontsize=10)
 ax = axs[1]
 dims = [1, 2, 3, 4, 5]
 from math import comb
@@ -88,7 +88,7 @@ for k in range(1, 6):
     ax.bar(dims, vals, bottom=bottom, color=cols[k - 1], label=f'layer {k}')
     bottom += vals
 for nn, b in zip(dims, bottom): ax.text(nn, b + 0.5, f'{int(b)}', ha='center', fontsize=9)
-ax.set_xlabel('dimension n'); ax.set_ylabel('new cells per old cell = 1^(⊞n) = 2ⁿ − 1')
-ax.legend(fontsize=8.5, frameon=False); ax.set_title('The shell is the mult-add cube, graded', fontsize=10)
+ax.set_xlabel('dimension n'); ax.set_ylabel('new cells per old cell = 1^(∘₁n) = 2ⁿ − 1')
+ax.legend(fontsize=8.5, frameon=False); ax.set_title('The shell is the circle-operation cube, graded', fontsize=10)
 fig.tight_layout(); fig.savefig('figures/f5_annulus.png', dpi=150); plt.close(fig)
 print('figures done')

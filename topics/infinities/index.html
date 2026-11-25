@@ -58,14 +58,14 @@ a{color:var(--blue)}
 <h1>Between countable and the continuum</h1>
 <p class="lede">Sizes of infinity come in separate steps, never a smooth line, as long as the axiom of choice holds. Your continuum is real, but it lives one level finer: in fractal size and in how fast the finite stages grow, and the fused rungs walk it smoothly.</p>
 <ol class="key">
-<li><b>In the fused algebra:</b> adding up ones gives the countable infinity. Mult-adding ones gives the continuum: <span class="b">1 + 1 + 1 + … = ℵ₀</span>, <span class="r">1 ⊕ 1 ⊕ 1 ⊕ … = 2<sup>ℵ₀</sup></span>.</li>
+<li><b>In the fused algebra:</b> adding up ones gives the countable infinity. Combining ones by the circle operation ∘₁ (called mult-add before 1.0) gives the continuum: <span class="b">1 + 1 + 1 + … = ℵ₀</span>, <span class="r">1 ∘₁ 1 ∘₁ 1 ∘₁ … = 2<sup>ℵ₀</sup></span>.</li>
 <li><b>Shape decides, not count.</b> The two trees on the right have about the same number of pieces at every level. One ends countable, one ends as the continuum.</li>
-<li><b>The smooth in-between:</b> the zoomed mult-add a + b + t·ab sweeps fractal dimension from 0 to 1, and the fractional rungs give a continuous family of growth rates between n and 2ⁿ.</li>
+<li><b>The smooth in-between:</b> the zoomed circle operation a + b + t·ab sweeps fractal dimension from 0 to 1, and the fractional rungs give a continuous family of growth rates between n and 2ⁿ.</li>
 </ol>
 </div>
 <figure style="margin:0">
 <div class="plate"><img src="figures/f1_same_count.png" alt="Left, a comb tree in which only the spine keeps splitting: countable. Right, a tree in which every branch keeps splitting: the continuum. Both have about the same number of pieces at every level."></div>
-<figcaption class="cap">Same count, different shape. Addition grows by adding dead ends; mult-add grows by splitting every branch.</figcaption>
+<figcaption class="cap">Same count, different shape. Addition grows by adding dead ends; the circle operation grows by splitting every branch.</figcaption>
 </figure>
 </div>
 </header>
@@ -87,20 +87,20 @@ a{color:var(--blue)}
 <div class="wrap two">
 <div>
 <h2>The fused picture: corners of the infinite cube</h2>
-<p>Mult-add n ones and you get every corner of the n-cube except the origin. The corners sort into layers by how many switches are on: 1, 3, 3, 1 for the cube, Pascal's rows in general.</p>
-<div class="eq">1 ⊕ 1 ⊕ ⋯ ⊕ 1 (n times) = (1+1)ⁿ − 1 = 2ⁿ − 1</div>
-<p>Now let n be the countable infinity. Adding ones gives ℵ₀. Mult-adding ones gives every corner of the infinite-dimensional cube, which is the Cantor set, which has the size of the real line.</p>
-<div class="eq r2">1 + 1 + 1 + ⋯ = ℵ₀  &nbsp;&nbsp;  1 ⊕ 1 ⊕ 1 ⊕ ⋯ = 2<sup>ℵ₀</sup> = 𝔠</div>
+<p>Combine n ones by the circle operation and you get every corner of the n-cube except the origin. The corners sort into layers by how many switches are on: 1, 3, 3, 1 for the cube, Pascal's rows in general.</p>
+<div class="eq">1 ∘₁ 1 ∘₁ ⋯ ∘₁ 1 (n times) = (1+1)ⁿ − 1 = 2ⁿ − 1</div>
+<p>Now let n be the countable infinity. Adding ones gives ℵ₀. Combining ones by the circle operation gives every corner of the infinite-dimensional cube, which is the Cantor set, which has the size of the real line.</p>
+<div class="eq r2">1 + 1 + 1 + ⋯ = ℵ₀  &nbsp;&nbsp;  1 ∘₁ 1 ∘₁ 1 ∘₁ ⋯ = 2<sup>ℵ₀</sup> = 𝔠</div>
 <p>Where does the jump come from? Every corner with finitely many switches on is countable, layer by layer. The grade-1 layer is exactly the addition part, n singletons. Only the corners with infinitely many switches on push past countable. So the continuum is made entirely of <b>corner terms of infinite grade</b>, the ab part of a + b + ab carried on forever.</p>
-<p>The same split is a classical theorem about shapes. Any closed set of reals is a countable "dead-end" part plus a part where every branch keeps splitting (Cantor–Bendixson). That second part, if it is there at all, contains a copy of the whole infinite cube. This is why <b>no closed, Borel or analytic set has a size strictly in between</b>: it is either countable or it holds a full mult-add copy of the continuum.</p>
+<p>The same split is a classical theorem about shapes. Any closed set of reals is a countable "dead-end" part plus a part where every branch keeps splitting (Cantor–Bendixson). That second part, if it is there at all, contains a copy of the whole infinite cube. This is why <b>no closed, Borel or analytic set has a size strictly in between</b>: it is either countable or it holds a full circle-operation copy of the continuum.</p>
 </div>
 <div>
 <h3>How the fused ladder sees infinite sizes</h3>
-<p>On infinite cardinals, a + b = a·b = max(a, b), so mult-add collapses to max too. The first rung that can climb is the fused exponent:</p>
+<p>On infinite cardinals, a + b = a·b = max(a, b), so the circle operation collapses to max too. The first rung that can climb is the fused exponent:</p>
 <div class="eq">(1+a)<sup>(1+b)</sup> − 1 &nbsp;with a = 1, b = ℵ₀ &nbsp;gives&nbsp; 2<sup>ℵ₀</sup></div>
-<p>So in cardinal arithmetic, everything at or below mult-add is flat, and one step of the exponent rung jumps straight from ℵ₀ to 𝔠. Nothing in cardinal arithmetic lands in between. That matches the fractional-rungs work: there, lower rungs zoomed out turn into max. Infinite cardinal arithmetic is the fully zoomed-out (tropical) view of the ladder.</p>
+<p>So in cardinal arithmetic, everything at or below the circle operation is flat, and one step of the exponent rung jumps straight from ℵ₀ to 𝔠. Nothing in cardinal arithmetic lands in between. That matches the fractional-rungs work: there, lower rungs zoomed out turn into max. Infinite cardinal arithmetic is the fully zoomed-out (tropical) view of the ladder.</p>
 <h3>Proved in core Lean (uncompiled)</h3>
-<p>n ones added make n; n ones mult-added make 2ⁿ − 1; the layers 1, 3, 3, 1, weighted by t, fill (1+t)ⁿ; and Cantor's diagonal: no list of 0/1 sequences indexed by its own positions holds them all, so the infinite cube has more corners than axes.</p>
+<p>n ones added make n; n ones combined by the circle operation make 2ⁿ − 1; the layers 1, 3, 3, 1, weighted by t, fill (1+t)ⁿ; and Cantor's diagonal: no list of 0/1 sequences indexed by its own positions holds them all, so the infinite cube has more corners than axes.</p>
 </div>
 </div>
 </section>
@@ -135,11 +135,11 @@ a{color:var(--blue)}
 <section class="band" id="smooth" style="background:var(--panel)">
 <div class="wrap two">
 <div>
-<h2>Smooth size: the zoomed mult-add sweeps dimension</h2>
-<p>Weight each switch by t and the cube's layers become C(n,k)·tᵏ, which add up to (1+t)ⁿ. That is the n-fold of the zoomed mult-add a + b + t·ab, and it is ordinary mult-add seen at scale t: t·(a ⊕<sub>t</sub> b) = ta ⊕ tb. At t = 0 it is addition; at t = 1 it is mult-add.</p>
+<h2>Smooth size: the zoomed circle-operation sweeps dimension</h2>
+<p>Weight each switch by t and the cube's layers become C(n,k)·tᵏ, which add up to (1+t)ⁿ. That is the n-fold of the zoomed circle operation a + b + t·ab, and it is the ordinary circle operation seen at scale t: t·(a ∘<sub>t</sub> b) = ta ∘₁ tb. At t = 0 it is addition; at t = 1 it is the circle operation.</p>
 <p>The heaviest layer sits at the share p = t/(1+t) of switches on. The infinite corners with exactly that share form a set whose fractal dimension is the binary entropy (Besicovitch 1934, Eggleston 1949). Put the two together and the zoom maps straight onto dimension:</p>
 <div class="eq">D(t) = [ ln(1+t) − t·ln t / (1+t) ] / ln 2</div>
-<p>D(0) = 0, D(0.1) ≈ 0.44, D(0.5) ≈ 0.92, D(1) = 1. A smooth bridge from the addition rung to the mult-add rung, and every set on it is built from the layers of the mult-add cube. The first term, ln(1+t), is the log of one weighted mult-add step; the second subtracts the cost of the weight.</p>
+<p>D(0) = 0, D(0.1) ≈ 0.44, D(0.5) ≈ 0.92, D(1) = 1. A smooth bridge from the addition rung to the circle-operation rung, and every set on it is built from the layers of the circle-operation cube. The first term, ln(1+t), is the log of one circle-operation step with dial k; the second subtracts the cost of the weight.</p>
 <p><b>The catch:</b> every set on this bridge already has the size of the continuum. Dimension 0 holds countable sets and also some uncountable ones (sparse corner sets). Dimension measures room taken up, not number of points.</p>
 </div>
 <div>
@@ -155,7 +155,7 @@ a{color:var(--blue)}
 <div class="wrap two">
 <div>
 <h2>Fractional rungs fill the growth gap</h2>
-<p>The parallel fractional-rungs work gives a smooth ladder B<sub>s</sub>: s = 0 is addition, s = 1 is mult-add. Fuse n ones at rung s and count:</p>
+<p>The parallel fractional-rungs work gives a smooth ladder B<sub>s</sub>: s = 0 is addition, s = 1 is the circle operation. Fuse n ones at rung s and count:</p>
 <div class="eq">N<sub>s</sub>(n) = Eˢ( n · E⁻ˢ(1) ),&nbsp; with log(1 + N<sub>s</sub>(n)) = Eˢ⁻¹( n · E⁻ˢ(1) )</div>
 <p>Rung 0 gives n. Rung 1 gives 2ⁿ − 1. Every rung in between eventually outgrows every polynomial and always stays below every exponential, and each rung outgrows the one below. That is a continuous one-parameter family of growth rates, filling exactly the gap between "countable sum" and "continuum corners".</p>
 <p>Why polynomial is impossible, in one line: the half rung squared is the whole rung. If the half rung stayed under nᵏ, the whole rung would stay under n<sup>k·k</sup>, but the whole rung is exponential. This squeeze is written out in core Lean (not yet compiled); the same argument works for any fraction.</p>
@@ -167,7 +167,7 @@ a{color:var(--blue)}
 <p class="cap">Digits in the count against n, up to a million. Polynomials are straight lines here; the fractional rungs bend upward past every one of them, and stay under 2ⁿ.</p>
 <div class="box">
 <h3 style="margin-top:0">So, a continuum in between?</h3>
-<p style="margin:0">In number of points: no, every one of these sets has exactly the size of the continuum, and with choice the sizes between ℵ₀ and 𝔠 are always separate steps. In growth and in geometric size: yes, and the fused rungs and the zoomed mult-add each give a smooth dial across it. 𝔟 and 𝔡 in Cichoń's diagram are precisely the cardinals that measure this growth continuum, which is how the smooth world and the stepped world meet.</p>
+<p style="margin:0">In number of points: no, every one of these sets has exactly the size of the continuum, and with choice the sizes between ℵ₀ and 𝔠 are always separate steps. In growth and in geometric size: yes, and the fused rungs and the zoomed circle operation each give a smooth dial across it. 𝔟 and 𝔡 in Cichoń's diagram are precisely the cardinals that measure this growth continuum, which is how the smooth world and the stepped world meet.</p>
 </div>
 </div>
 </div>
@@ -189,7 +189,7 @@ a{color:var(--blue)}
 <section class="band" id="new">
 <div class="wrap">
 <h2>What is known and what might be new</h2>
-<p>No lead here is on the level of the solitons. Every mathematical fact on this page is classical. What is new is the single picture that ties them together through mult-add.</p>
+<p>No lead here is on the level of the solitons. Every mathematical fact on this page is classical. What is new is the single picture that ties them together through the circle operation.</p>
 <table class="stack">
 <thead><tr><th>Piece</th><th>Status</th><th>Source</th></tr></thead>
 <tbody>
@@ -200,8 +200,8 @@ a{color:var(--blue)}
 <tr><td>Frequency-p sets have dimension H(p)</td><td>Known</td><td>Besicovitch 1934, Eggleston 1949</td></tr>
 <tr><td>Every uncountable compact set has positive size in some gauge</td><td>Known</td><td>Rogers, Hausdorff Measures</td></tr>
 <tr><td>Half-exponential growth sits between all polynomials and all exponentials</td><td>Known</td><td>Regular iteration (Szekeres 1958); standard bounds</td></tr>
-<tr><td>ℵ₀ is the fold of + on ones, 𝔠 the fold of ⊕ on ones; the continuum is the corner terms of infinite grade</td><td>Restatement in fused language</td><td>This page</td></tr>
-<tr><td>Zoom t of mult-add maps to dimension D(t) in closed form</td><td>Repackaging of Eggleston plus the binomial layers; worth keeping as a picture</td><td>This page</td></tr>
+<tr><td>ℵ₀ is the fold of + on ones, 𝔠 the fold of ∘₁ on ones; the continuum is the corner terms of infinite grade</td><td>Restatement in fused language</td><td>This page</td></tr>
+<tr><td>Zoom t of circle-operation maps to dimension D(t) in closed form</td><td>Repackaging of Eggleston plus the binomial layers; worth keeping as a picture</td><td>This page</td></tr>
 <tr><td>Fractional rungs give a smooth chain of gauge sizes and growth rates between n and 2ⁿ</td><td>New framing of known constructions; the cleanest link from a rung parameter to a smooth size</td><td>This page, with the fractional-rungs work</td></tr>
 </tbody>
 </table>
@@ -214,9 +214,9 @@ a{color:var(--blue)}
 <h2>Proofs and checks</h2>
 <p><b>Lean, core only, no sorry, uncompiled.</b> This workspace has no Lean toolchain, so the file hasn't been run through Lean yet. Every identity in it is also checked in Python.</p>
 <ul>
-<li><code>sumOnes_eq</code>, <code>maddOnes_succ</code>: n ones added make n; mult-added make 2ⁿ − 1.</li>
-<li><code>layers_eval</code>: the mult-add cube's layers, weighted by t, fill (1+t)ⁿ; <code>layers 3 = [1,3,3,1]</code>.</li>
-<li><code>wOnes_spec</code>, <code>wOnes_zero</code>: the zoomed mult-add folded n times gives t·Wₙ + 1 = (1+t)ⁿ, and plain n at t = 0.</li>
+<li><code>sumOnes_eq</code>, <code>circOnes_succ</code>: n ones added make n; combined by the circle operation make 2ⁿ − 1.</li>
+<li><code>layers_eval</code>: the circle-operation cube's layers, weighted by t, fill (1+t)ⁿ; <code>layers 3 = [1,3,3,1]</code>.</li>
+<li><code>wOnes_spec</code>, <code>wOnes_zero</code>: the zoomed circle operation folded n times gives t·Wₙ + 1 = (1+t)ⁿ, and plain n at t = 0.</li>
 <li><code>cantor</code>, <code>single_inj</code>: the infinite cube has strictly more corners than axes.</li>
 <li><code>half_iter_upper</code>, <code>half_iter_lower</code>, <code>half_not_poly</code>: the half-rung squeeze.</li>
 </ul>
@@ -229,7 +229,7 @@ a{color:var(--blue)}
 <h3>Open questions worth a next step</h3>
 <ul>
 <li>Does the fractional-rung chain C<sub>s</sub> say anything about 𝔟 or 𝔡, the growth cardinals in Cichoń's diagram?</li>
-<li>Is there a fused operation whose infinite fold lands on a Dedekind-finite set in a choiceless model, a mult-add with the corners only partly there?</li>
+<li>Is there a fused operation whose infinite fold lands on a Dedekind-finite set in a choiceless model, a circle operation with the corners only partly there?</li>
 <li>Compile the Lean file once a toolchain is available.</li>
 </ul>
 <h3>Sources</h3>

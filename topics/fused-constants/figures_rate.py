@@ -16,7 +16,7 @@ fig, axs = plt.subplots(1, 2, figsize=(13, 5.8))
 ax = axs[0]
 y = np.linspace(-0.15, 1.35, 400)
 ax.add_patch(plt.Rectangle((0, 0), 1, 1, fc='#eef4fc', ec=C1, lw=1, zorder=0))
-ax.plot(y, 2 ** y - 1, color=C1, label='y -> 2^y - 1   (1 mult-added to itself y times)')
+ax.plot(y, 2 ** y - 1, color=C1, label='y -> 2^y - 1   (1 combined by the circle operation with itself y times)')
 ax.plot(y, y, color=INK, lw=1.2, ls='--', label='diagonal')
 t = np.linspace(-0.15, 0.5, 10); ax.plot(t, L2 * t, color=C3, lw=1.6, ls=':')
 t = np.linspace(0.75, 1.3, 10); ax.plot(t, 1 + L4 * (t - 1), color=C2, lw=1.6, ls=':')

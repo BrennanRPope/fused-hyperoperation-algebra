@@ -16,7 +16,7 @@
   that gcd(a, b) = 1, a ≡ 3 mod 4, b even, 32 ∣ b^p. Its Frey curve y² = x(x − a^p)(x + b^p).
 
   What is new here (FreyPieces already has the 2-torsion, the minimal model, c4, 256·Δ = (ABC)²,
-  semistability, the node and its mult-add chord law, and v_q(Δ) ≡ 0 mod p for odd q):
+  semistability, the node and its circle-operation chord (called mult-add chord before 1.0) law, and v_q(Δ) ≡ 0 mod p for odd q):
 
   A. c6 of the minimal model, the identity c4³ − c6² = 1728·Δ, and gcd(c4³, Δ) = 1, so the
      j-invariant j = c4³/Δ has exactly Δ as its denominator (every bad prime is a pole of j).
@@ -44,8 +44,8 @@
 import FusedAlgebra.Topics.Fermat.FermatRoute
 
 namespace CounterexampleMap
-open MultAdd
-open MultAdd.Cube (IsPrime)
+open CircleOp
+open CircleOp.Cube (IsPrime)
 open FreyPieces
 
 /-! ## A. c6, the c4³ − c6² = 1728Δ identity, and the j-invariant's denominator -/

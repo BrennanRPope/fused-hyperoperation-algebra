@@ -1,4 +1,4 @@
-"""Quantum chemistry through mult-add: independent fragments, CISD vs coupled cluster.
+"""Quantum chemistry through the circle operation: independent fragments, CISD vs coupled cluster.
 Run: python3 checks.py  (needs numpy, pyscf)."""
 import numpy as np, itertools, json
 out = {}
@@ -13,7 +13,7 @@ for _ in range(200):
     lhs = (1+cA)*(1+cB) - 1
     check_val = cA + cB + cA*cB
     assert abs(lhs-check_val) < 1e-12
-check("product wavefunction: (1+cA)(1+cB)-1 = cA ✳ cB (200 random pairs)", True)
+check("product wavefunction: (1+cA)(1+cB)-1 = cA ∘₁ cB (200 random pairs)", True)
 
 # 2. N-dimer model: each molecule = 2 states (ground, doubly excited at 2Δ), coupling g.
 def exact_one(D, g):
@@ -103,12 +103,12 @@ try:
 except Exception as ex:
     print("pyscf part skipped:", ex)
 
-# 5. Spin coupling: multiplicities multiply, so (multiplicity - 1) mult-adds
+# 5. Spin coupling: multiplicities multiply, so (multiplicity - 1) combines by the circle operation
 for s1 in range(0,6):
     for s2 in range(0,6):
         n1, n2 = s1+1, s2+1   # 2s+1 with 2s = s1
         total = sum(2*S+1 for S in [x/2 for x in range(abs(s1-s2), s1+s2+1, 2)])  # Clebsch-Gordan series in units of 1/2
         assert total == n1*n2 and n1*n2-1 == s1 + s2 + s1*s2
-check("spin coupling: Σ(2S+1) over the Clebsch–Gordan series = (2s1+1)(2s2+1), so 2s mult-adds (36 cases)", True)
+check("spin coupling: Σ(2S+1) over the Clebsch–Gordan series = (2s1+1)(2s2+1), so 2s combines by the circle operation (36 cases)", True)
 json.dump(out, open("results.json","w"), indent=1, default=float)
 print(f"{sum(ok)}/{len(ok)} checks pass")

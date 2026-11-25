@@ -2,9 +2,9 @@
 
 **Verdict.** String theory does give G a dial, but not one our chains can turn: Newton's constant comes out as (coupling)² × (string length)^(D−2), G ∝ g_s² ℓ_s⁸, and the coupling g_s is a weight paid every time the string's surface grows a handle. In holography the same fact reads G = π/(2N²) in AdS units. So a G dial needs two things we don't have: an independent length dial and a dial that counts joinings and splittings. The nearest thing inside our reach is the 1/N of N×N matrix chains, which is a known handle-counting dial ('t Hooft 1974); that is the one lead here worth following toward G.
 
-Two smaller things are worth borrowing as framings, both known math with our placement. **T-duality R ↔ α′/R is exactly the mult-add inverse at k = 1**, with the self-dual radius as the identity and the wall as R = 0. **The order dial's stretch-and-shift group is the "perturbative" (Borel) half of the SL(2) where string dualities live**, with its do-nothing point i as the self-dual coupling g_s = 1. The dualities themselves sit outside our group.
+Two smaller things are worth borrowing as framings, both known math with our placement. **T-duality R ↔ α′/R is exactly the circle-operation inverse at k = 1**, with the self-dual radius as the identity and the wall as R = 0. **The order dial's stretch-and-shift group is the "perturbative" (Borel) half of the SL(2) where string dualities live**, with its do-nothing point i as the self-dual coupling g_s = 1. The dualities themselves sit outside our group.
 
-Everything that makes string theory string theory (a 2D field theory on the worldsheet, the critical dimension, supersymmetry, anomaly cancellation, Einstein's equations from beta functions, branes) is field theory on surfaces, which chains of the weighted circle operation can't express.
+Everything that makes string theory string theory (a 2D field theory on the worldsheet, the critical dimension, supersymmetry, anomaly cancellation, Einstein's equations from beta functions, branes) is field theory on surfaces, which chains of the weighted circle operation (called mult-add before 1.0) can't express.
 
 Checks: `checks.py` → `checks_output.txt`, **36/36 pass** (numpy, sympy, scipy). Figures: `figures.py` → `figures/` (13 labeled PNGs). No Lean file this time: the checkable claims are numerical or symbolic facts about string spectra, not new algebra.
 
@@ -59,12 +59,12 @@ Method (Brennan's rules): built from published work; anything beyond the sources
 
 ![Scorecard: T-duality and the radius modulus are borrowable framings; S-duality, modular invariance, minimum length, Hagedorn, and the dials as dials are partial or analogies; G from g_s and l_s is the lead via 1/N; worldsheet field theory can't be expressed](figures/b9-borrow-scorecard.png)
 
-### 2.1 T-duality is the mult-add inverse (borrowable framing)
+### 2.1 T-duality is the circle-operation inverse (borrowable framing)
 
 ![Masses of momentum and winding modes against u = log(R/sqrt(alpha')): mirror-symmetric about u = 0, with a massless state touching zero only at the self-dual radius](figures/b1-t-duality-mirror.png)
 
 - **Known.** On a circle of radius R, a closed string has momentum n/R and winding wR/α′. The spectrum is unchanged by R ↔ α′/R with n ↔ w (T1; Kikkawa–Yamasaki 1984, Sakai–Senda 1986). At the self-dual radius R = √α′ extra states become massless (T2), giving the SU(2) × SU(2) enhancement.
-- **Ours, a restatement.** Write R/√α′ = 1 + a. Then T-duality is exactly the mult-add inverse at k = 1: 1 + inv(a) = 1/(1 + a), and a ✳ inv(a) = 0 (T5). The self-dual radius is the identity a = 0, and the wall a = −1 is R = 0, which T-duality sends to R = ∞ (T6). In the flat coordinate u = log(1 + a), T-duality is the mirror u → −u.
+- **Ours, a restatement.** Write R/√α′ = 1 + a. Then T-duality is exactly the circle-operation inverse at k = 1: 1 + inv(a) = 1/(1 + a), and a ∘₁ inv(a) = 0 (T5). The self-dual radius is the identity a = 0, and the wall a = −1 is R = 0, which T-duality sends to R = ∞ (T6). In the flat coordinate u = log(1 + a), T-duality is the mirror u → −u.
 
 ![The momentum-winding lattice in the (p_L, p_R) plane at two radii: each point slides along its hyperbola p_L^2 - p_R^2 = 2nw](figures/b2-radius-is-a-boost.png)
 
@@ -146,7 +146,7 @@ Method (Brennan's rules): built from published work; anything beyond the sources
 | D = 26 and D = 10, graviton forced, Einstein from beta functions | Known (1970s–1985) |
 | G ∝ g_s² ℓ_s⁸; ℓ_P = g_s^(1/4) ℓ_s; G = π/(2N²) in AdS units | Known (Polchinski; Maldacena 1997) |
 | T-duality, self-dual enhancement, radius as an O(1,1) boost | Known (Kikkawa–Yamasaki 1984; Narain 1986; GPR 1994) |
-| **T-duality = mult-add inverse at k = 1; u = log(1 + a) is the rapidity** | Ours, a restatement |
+| **T-duality = circle-operation inverse at k = 1; u = log(1 + a) is the rapidity** | Ours, a restatement |
 | S-duality on the half-plane, SL(2,ℤ) | Known (Font et al. 1990; Sen 1994) |
 | **Order dial's group = Borel part of SL(2); i = self-dual coupling; S = group inverse only on the vertical line** | Ours, placement of known group theory |
 | Modular invariance cuts off the UV; Hagedorn T_H | Known (Shapiro 1972; Hagedorn 1965) |

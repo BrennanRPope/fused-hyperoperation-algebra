@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Game Theory Through Mult-add</title>
+<title>Game Theory Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -54,7 +54,7 @@ footer{color:var(--soft);font-size:14px}
 <section class="band">
 <div class="wrap">
 <h1>When winnings multiply, the dial keeps the books</h1>
-<p class="lede">In repeated play, fortunes grow by factors: a learner's trust in an advisor, a bettor's bankroll, the odds between rated players. Each factor is a lift 1 + k·x, so the gains themselves combine by the weighted mult-add x ✳ₖ y = x + y + k·xy. Read that way, the multiplicative weights algorithm, Kelly betting and Elo ratings are one picture, and a family of cooperative games gets a fair split in closed form. Nearly all of it is classical; the page shows it through the lift.</p>
+<p class="lede">In repeated play, fortunes grow by factors: a learner's trust in an advisor, a bettor's bankroll, the odds between rated players. Each factor is a lift 1 + k·x, so the gains themselves combine by the circle operation x ∘ₖ y = x + y + k·xy. Read that way, the multiplicative weights algorithm, Kelly betting and Elo ratings are one picture, and a family of cooperative games gets a fair split in closed form. Nearly all of it is classical; the page shows it through the lift.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hedge"></div>
@@ -77,7 +77,7 @@ footer{color:var(--soft);font-size:14px}
 <div>
 <h2>The learning rate is the dial, and the regret bound is the lift</h2>
 <p>Multiplicative weights (Littlestone and Warmuth 1994; Hedge, Freund and Schapire 1997) multiplies each advisor's weight by 1 + ε·g after a gain g. Advisor i's weight is then a lift of its own dial fold:</p>
-<div class="eq">∏(1 + ε·gₜ) = 1 + ε·(g₁ ✳ε g₂ ✳ε … ✳ε g_T)</div>
+<div class="eq">∏(1 + ε·gₜ) = 1 + ε·(g₁ ∘_ε g₂ ∘_ε … ∘_ε g_T)</div>
 <p>The total weight obeys the same law with the learner's own expected gain rₜ (Lean: <code>hedge_step</code>), so it equals n·∏(1 + ε·rₜ). One advisor's weight is part of the total, so the learner's lifted fortune is at least the leader's divided by n (<code>lifted_regret</code>, proved for two advisors; checked for up to ten). Logs turn that into Σ log(1 + εr) ≥ Σ log(1 + εg) − log n.</p>
 </div>
 <div>
@@ -97,7 +97,7 @@ footer{color:var(--soft);font-size:14px}
 <p class="small" id="kr"></p></div>
 <div>
 <h2>Kelly betting: bets compose by the dial at k = f, and ruin is the wall</h2>
-<p>Stake a fraction f of your bankroll on a bet that returns r. Your wealth multiplies by 1 + f·r, so a run of bets gives 1 + f·(r₁ ✳_f r₂ ✳_f …): the fraction you bet is the dial (<code>kelly_many</code>). The dial's wall is r = −1/f, losing the whole stake, and once you hit it nothing afterwards helps (<code>kelly_ruin</code>). That wall is why the log matters: log(1 + f·r) runs to minus infinity there.</p>
+<p>Stake a fraction f of your bankroll on a bet that returns r. Your wealth multiplies by 1 + f·r, so a run of bets gives 1 + f·(r₁ ∘_f r₂ ∘_f …): the fraction you bet is the dial (<code>kelly_many</code>). The dial's wall is r = −1/f, losing the whole stake, and once you hit it nothing afterwards helps (<code>kelly_ruin</code>). That wall is why the log matters: log(1 + f·r) runs to minus infinity there.</p>
 <p>Kelly (1956) maximised the growth rate E log(1 + f·r). For a bet paying b to 1 that you win with chance p, the best fraction is f* = p − (1 − p)/b. At f* the lift has a clean meaning: a win multiplies your wealth by p/π and a loss by (1 − p)/(1 − π), where π = 1/(1 + b) is the bookmaker's implied chance (<code>kelly_ratio</code>). You grow by betting your beliefs against theirs, and the growth rate is the relative entropy between them. Bet twice Kelly and the growth falls to about zero; past that it turns negative and you shrink, even with the odds on your side.</p>
 </div>
 </div>
@@ -107,7 +107,7 @@ footer{color:var(--soft);font-size:14px}
 <div class="wrap cols">
 <div>
 <h2>Elo: a rating gap is a rapidity</h2>
-<p>Elo's model (Elo 1978, the logistic form of Bradley and Terry 1952, first in Zermelo 1929) gives a player rated d points higher odds of 10^(d/400). Gaps add along a chain, so odds multiply, and odds − 1 mult-adds (<code>odds_multAdd</code>). The interesting ruler is the edge s = 2P − 1, the win chance measured from a coin flip. It composes exactly like relativistic speeds (<code>edge_compose</code>):</p>
+<p>Elo's model (Elo 1978, the logistic form of Bradley and Terry 1952, first in Zermelo 1929) gives a player rated d points higher odds of 10^(d/400). Gaps add along a chain, so odds multiply, and odds − 1 combines by the circle operation ∘₁ (called mult-add before 1.0) (<code>odds_circ</code>). The interesting ruler is the edge s = 2P − 1, the win chance measured from a coin flip. It composes exactly like relativistic speeds (<code>edge_compose</code>):</p>
 <div class="eq">s(A over C) = (s₁ + s₂) / (1 + s₁·s₂)</div>
 <p>That is the landscape point (0, −1). The dictionary is complete: the rating gap is rapidity (s = tanh(gap · ln 10 / 800)), the odds are the Doppler lift (1 + s)/(1 − s) (<code>odds_is_lift</code>), and certainty is the speed of light. A 200-point favourite wins 76%, an edge of 0.52. Two such gaps compose to an edge of 0.82, a 91% favourite; simply adding the edges would claim 1.04, a 102% chance. A 2000-point favourite still loses about once in 100,000 games.</p>
 </div>
@@ -232,7 +232,7 @@ function drawElo(){
   s+=T(ml+6,Y(1)+16,'certainty: the wall','start','var(--wine)')+T(W-mr,H-mb-6,'rating gap','end','var(--soft)');
   S3.innerHTML=s;
   const O=x=>Math.pow(10,x/400),sE=x=>2*Pg(x)-1;
-  const rows=[['Gap (adds)',d1,d2,d,0],['Win chance',Pg(d1),Pg(d2),Pg(d),3],['Odds (multiply)',O(d1),O(d2),O(d),3],['Odds − 1 (mult-adds)',O(d1)-1,O(d2)-1,O(d)-1,3],['Edge (like velocity)',sE(d1),sE(d2),sE(d),3]];
+  const rows=[['Gap (adds)',d1,d2,d,0],['Win chance',Pg(d1),Pg(d2),Pg(d),3],['Odds (multiply)',O(d1),O(d2),O(d),3],['Odds − 1 (combines by the circle operation)',O(d1)-1,O(d2)-1,O(d)-1,3],['Edge (like velocity)',sE(d1),sE(d2),sE(d),3]];
   $('et').innerHTML=rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+f(r[1],r[4])+'</td><td>'+f(r[2],r[4])+'</td><td><b>'+f(r[3],r[4])+'</b></td></tr>').join('');
 }
 function drawCube(){

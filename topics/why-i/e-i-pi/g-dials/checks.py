@@ -145,7 +145,7 @@ rs = 2*G*Msun/c**2; S_sun = eta*4*np.pi*rs**2
 check("J1 Jacobson: entropy per area eta = c^3/(4 G hbar), so G = c^3/(4 hbar eta): G -> 0 means infinitely many states per area (stiff spacetime). Solar-mass hole: S ~ 1.05e77 k_B",
       np.isclose(c**3/(4*hbar*eta), G) and 1.0e77 < S_sun < 1.1e77, f"S = {S_sun:.3e} k_B")
 NA, NB = 37.0, 112.0
-check("J2 state counts of two horizon patches multiply, so (N - 1) composes by mult-add at dial 1 and entropy log N = log(1 + (N-1)) is its flat coordinate (reading ours; Tsallis's rule is the general dial, gr-bridges J5)",
+check("J2 state counts of two horizon patches multiply, so (N - 1) composes by the circle operation at dial 1 and entropy log N = log(1 + (N-1)) is its flat coordinate (reading ours; Tsallis's rule is the general dial, gr-bridges J5)",
       np.isclose(NA*NB - 1, (NA - 1) + (NB - 1) + (NA - 1)*(NB - 1)) and np.isclose(np.log(NA*NB), np.log(NA) + np.log(NB)))
 
 # ---------------- W: the horizon as a wall ----------------
@@ -158,7 +158,7 @@ check("W2 the slope of g_tt at the wall is the surface gravity c^4/(4GM); with t
       np.isclose(kap, c**4/(4*G*Msun)) and abs(TH - 6.170e-8) < 2e-10, f"T = {TH:.4e} K")
 N = lambda r: np.sqrt(1 - rs/r); r1, r2, r3 = 3*rs, 7*rs, 40*rs
 n12, n23 = N(r1)/N(r2), N(r2)/N(r3)
-check("W3 redshift factors between shells multiply, so (factor - 1) composes by mult-add at dial 1, but that dial is set by c (1/c^2 in the potential), not by G: masses themselves do not compose this way (dial-map G1-G2)",
+check("W3 redshift factors between shells multiply, so (factor - 1) composes by the circle operation at dial 1, but that dial is set by c (1/c^2 in the potential), not by G: masses themselves do not compose this way (dial-map G1-G2)",
       np.isclose(N(r1)/N(r3) - 1, (n12 - 1) + (n23 - 1) + (n12 - 1)*(n23 - 1)))
 
 # ---------------- other candidates ----------------

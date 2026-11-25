@@ -69,7 +69,7 @@ li{margin-bottom:6px}
 <header class="band top"><div class="wrap">
 <div>
 <h1>The rung sheet is the smooth shape through every rung</h1>
-<p class="lead">Stack each rung's "unit curve" (all pairs a, b with a ⊕ₛ b = 1) at its height s, and you get one smooth sheet. It runs from the square's outer corner at the bottom, through the straight line (addition) and the hyperbola (mult-add), and falls onto the axes at the top. My confidence it's the shape you're after: <b>80%</b>.</p>
+<p class="lead">Stack each rung's "unit curve" (all pairs a, b with a ⊕ₛ b = 1) at its height s, and you get one smooth sheet. It runs from the square's outer corner at the bottom, through the straight line (addition) and the hyperbola (the circle operation ∘₁ (called mult-add before 1.0)), and falls onto the axes at the top. My confidence it's the shape you're after: <b>80%</b>.</p>
 <div class="figs">
 <div><b>80%</b><span>confidence in the pick</span></div>
 <div><b>29/29</b><span>numeric checks pass</span></div>
@@ -82,18 +82,18 @@ li{margin-bottom:6px}
 
 <section class="band"><div class="wrap">
 <h2>Eight candidates, ranked</h2>
-<p>Nine shapes were tested; the flow surface turned out to be the pick itself, so it's merged into first place. Each shape was defined from mult-add, then tested three ways: does it hit every whole rung exactly, is it smooth between them, and is it forced by mult-add rather than chosen by me? The percentage is my confidence that it's the single shape you're feeling for.</p>
+<p>Nine shapes were tested; the flow surface turned out to be the pick itself, so it's merged into first place. Each shape was defined from the circle operation, then tested three ways: does it hit every whole rung exactly, is it smooth between them, and is it forced by the circle operation rather than chosen by me? The percentage is my confidence that it's the single shape you're feeling for.</p>
 <div class="rank" id="rank"></div>
 </div></section>
 
 <section class="band sec"><div class="wrap two">
 <div>
 <h2>How the sheet is made</h2>
-<p>Every rung is plain addition seen through a lens: rung s is <i>a ⊕ₛ b = Eˢ(E⁻ˢ(a) + E⁻ˢ(b))</i>, where E(x) = eˣ − 1 is mult-add's own exponential and Eˢ is E run s times, s any real. So the unit curve at height s has a closed form:</p>
+<p>Every rung is plain addition seen through a lens: rung s is <i>a ⊕ₛ b = Eˢ(E⁻ˢ(a) + E⁻ˢ(b))</i>, where E(x) = eˣ − 1 is the circle operation's own exponential and Eˢ is E run s times, s any real. So the unit curve at height s has a closed form:</p>
 <div class="formula">b = Eˢ( E⁻ˢ(1) − E⁻ˢ(a) )</div>
 <p>At s = 0 it's the line a + b = 1. At s = 1 it's the hyperbola (1 + a)(1 + b) = 2. At s = −1 it's log(eᵃ + eᵇ − 1) = 1, and at s = 2 it matches rung 2's closed form, all to about 10⁻¹².</p>
 <p>The sheet has no crease at any whole rung: its bend measured from just below and just above each rung agrees. Every slice keeps the same two fixed edges, (1, 0) and (0, 1), because 0 is the identity at every height.</p>
-<p>The area under the slice inside the unit square is a natural height gauge: 1 at the bottom, exactly ½ at addition, exactly 2 ln 2 − 1 ≈ 0.386 at mult-add, and it keeps falling toward 0. It's the "how full is the corner" reading from the fractional-rungs page, now as a property of one surface.</p>
+<p>The area under the slice inside the unit square is a natural height gauge: 1 at the bottom, exactly ½ at addition, exactly 2 ln 2 − 1 ≈ 0.386 at the circle operation, and it keeps falling toward 0. It's the "how full is the corner" reading from the fractional-rungs page, now as a property of one surface.</p>
 </div>
 <div class="panel">
 <div class="ctl"><label for="sl">Height s</label><input id="sl" type="range" min="0" max="56" step="1" value="28"><span class="read" id="slr"></span></div>
@@ -107,7 +107,7 @@ li{margin-bottom:6px}
 <h2>Why this sheet and not another</h2>
 <p>Any way of filling in the rungs between whole numbers gives some sheet through the same orange curves. I tested that directly: I bent the in-between with a wobble (the Abel coordinate plus 0.08·sin 2π of itself). The whole rungs stay exact, to 10⁻¹³.</p>
 <p>But the wobbly half rung loses its slope at the identity: near 0 it swings between 0.33 and 3.03 forever, so the sheet gets a crease along its edges. The regular choice settles to slope 1. A short argument shows this happens for every periodic wobble, so only one filling stays smooth at 0.</p>
-<p>That's the reason for the 80%: smoothness at mult-add's identity picks the shape for you. It's a known result for functions like eˣ − 1 (Szekeres 1958, Écalle), not new, but it means the sheet isn't my taste.</p>
+<p>That's the reason for the 80%: smoothness at the circle operation's identity picks the shape for you. It's a known result for functions like eˣ − 1 (Szekeres 1958, Écalle), not new, but it means the sheet isn't my taste.</p>
 </div>
 <div class="fig"><div id="uniq"></div></div>
 </div></section>
@@ -142,7 +142,7 @@ li{margin-bottom:6px}
 <section class="band sec"><div class="wrap two">
 <div>
 <h2>The growing cube is a second dial</h2>
-<p>The cube whose dimension is a dial is real, but it turns a different knob. Mult-adding 1 to itself d times gives 2ᵈ − 1, the corners of a d-cube, for any real d. That's a count, not a rung: the cube's dimension doesn't move you up the ladder.</p>
+<p>The cube whose dimension is a dial is real, but it turns a different knob. Combining 1 with itself d times by the circle operation gives 2ᵈ − 1, the corners of a d-cube, for any real d. That's a count, not a rung: the cube's dimension doesn't move you up the ladder.</p>
 <p>Both dials live on one surface: Eˢ(d·E⁻ˢ(a)). Its rung-1 slice is the cube 2ᵈ − 1, its rung-0 slice is the line d, and at whole d it's d copies combined by rung s. Rung ½ run n times grows faster than every power of n and slower than every exponential (right chart, log scale).</p>
 </div>
 <div><div class="fig" style="min-height:340px"><div id="dial3d"></div></div><div class="fig" style="min-height:260px"><div id="growth"></div></div></div>
@@ -152,7 +152,7 @@ li{margin-bottom:6px}
 <div>
 <h2>The saddle and the helix</h2>
 <h3>Saddle (20%)</h3>
-<p>Mult-add's graph z = a + b + ab is exactly a saddle, ruled by straight lines both ways. At the identity, rung s's graph is flat along the axes with twist s, so its curvature there is −s²/9. Only rungs 0 and 1 have straight rulings. Curvature can't tell s from −s; the mirror image does, which echoes your negatives-as-mirror idea. A reading of the sheet, not the sheet.</p>
+<p>The circle operation's graph z = a + b + ab is exactly a saddle, ruled by straight lines both ways. At the identity, rung s's graph is flat along the axes with twist s, so its curvature there is −s²/9. Only rungs 0 and 1 have straight rulings. Curvature can't tell s from −s; the mirror image does, which echoes your negatives-as-mirror idea. A reading of the sheet, not the sheet.</p>
 <h3>Helix (10%)</h3>
 <p>A complex number near 0 rides the rungs around a near-perfect circle that kisses 0 (2% off, from the x²/2 term of eˣ − 1). The whole ladder, from −∞ to +∞, is exactly one turn, then it's back at 0. So it's a single loop, not a repeating helix, and it never passes through the real rungs as curves. Lovely, but not the shape.</p>
 </div>
@@ -176,7 +176,7 @@ li{margin-bottom:6px}
 <h2>Known, new, and proofs</h2>
 <ul>
 <li><b>Known:</b> the smooth in-between rungs are the regular iteration of eˣ − 1 (Szekeres 1958, Écalle); the in-between ladder of "commutative hyperoperations" goes back to Bennett (1915); the tropical floor is Maslov's limit.</li>
-<li><b>Possibly new, small:</b> drawing every rung as one sheet with an exact area gauge (½ at addition, 2 ln 2 − 1 at mult-add), and the two-dial surface joining the cube count to the rung height. I found no lead as promising as the solitons.</li>
+<li><b>Possibly new, small:</b> drawing every rung as one sheet with an exact area gauge (½ at addition, 2 ln 2 − 1 at the circle operation), and the two-dial surface joining the cube count to the rung height. I found no lead as promising as the solitons.</li>
 <li><b>Proofs:</b> <code>RungShape.lean</code> has 17 core-Lean theorems (twist = corner area, double ruling, exact unit curves at rungs 0 and 1, the near-identity flow's heights adding, the cube count 2ᵈ, and the sheet as the flow's pull-back of a straight line for any lens). No Lean here, so it is not compiled; the algebraic ones are also checked as exact sympy identities (20 of 20 pass).</li>
 </ul>
 </div>
@@ -212,7 +212,7 @@ const base = c => ({ paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0
 const ax = (c, t, extra) => Object.assign({ title: { text: t }, gridcolor: c.rule, zerolinecolor: c.rule, linecolor: c.rule }, extra || {});
 const sc = (c, t) => ({ title: { text: t }, gridcolor: c.rule, backgroundcolor: "rgba(0,0,0,0)", showbackground: false, zerolinecolor: c.rule, color: c.ink });
 const blues = c => [[0, "#0b3c66"], [0.5, "#4fb3e8"], [1, "#d8f0fc"]];
-const rungLabel = s => s == 0 ? "rung 0 (addition)" : s == 1 ? "rung 1 (mult-add)" : "rung " + s;
+const rungLabel = s => s == 0 ? "rung 0 (addition)" : s == 1 ? "rung 1 (the circle operation)" : "rung " + s;
 
 function draw3dSheet(c) {
   const S = D.sheet.s, A = D.sheet.a;
@@ -236,7 +236,7 @@ function drawSlice(c) {
   Plotly.react("slice", tr, L, cfg);
   const A = D.area;
   const tr2 = [{ x: A.s, y: A.area, mode: "lines", line: { color: c.blue, width: 3 }, hovertemplate: "s %{x:.2f}: area %{y:.3f}<extra></extra>" },
-    { x: [0, 1], y: [0.5, 2 * Math.log(2) - 1], mode: "markers+text", marker: { color: c.hot, size: 9 }, text: ["½ at addition", "2 ln 2 − 1 at mult-add"], textposition: ["top right", "top right"], textfont: { size: 12 }, hoverinfo: "skip" }];
+    { x: [0, 1], y: [0.5, 2 * Math.log(2) - 1], mode: "markers+text", marker: { color: c.hot, size: 9 }, text: ["½ at addition", "2 ln 2 − 1 at the circle operation"], textposition: ["top right", "top right"], textfont: { size: 12 }, hoverinfo: "skip" }];
   if (ai >= 0) tr2.push({ x: [s], y: [A.area[ai]], mode: "markers", marker: { color: c.ink, size: 8, symbol: "circle-open", line: { width: 2 } }, hoverinfo: "skip" });
   Plotly.react("area", tr2, Object.assign(base(c), { xaxis: ax(c, "height s"), yaxis: ax(c, "area under slice", { range: [0, 1.05] }), margin: { l: 52, r: 10, t: 10, b: 40 } }), cfg);
 }

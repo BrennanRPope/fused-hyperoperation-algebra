@@ -1,12 +1,12 @@
-# General relativity through mult-add (Nov 25, 2026)
+# General relativity through the circle operation (Nov 25, 2026)
 Page: https://claude.ai/artifact/SHrK88RpTBLLfTaeAxgi37 (source index.html)
 
-Question (Brennan, Nov 25): special relativity's velocity addition is mult-add; can we get from the
-mult-add geometry to Einstein's field equations G = 8πG T, or find the exact step where it fails?
+Question (Brennan, Nov 25): special relativity's velocity addition is the circle operation ∘₁ (called mult-add before 1.0); can we get from the
+circle-operation geometry to Einstein's field equations G = 8πG T, or find the exact step where it fails?
 
 ## Answer
 
-Not from mult-add alone. Mult-add gives the local rules of motion (the dial q sets the signature and
+Not from the circle operation alone. The circle operation gives the local rules of motion (the dial d sets the signature and
 the speed of light, and twist = curvature × area). Einstein's equations need a rule for how matter
 bends spacetime, and every route tested has to supply that rule from outside. What we found is the
 exact place each route needs it, and one route that comes close in a picture that is ours to use.
@@ -31,9 +31,9 @@ exact place each route needs it, and one route that comes close in a picture tha
 
 ## Route (c): the river (weak field and beyond)
 
-Two postulates, both stated in mult-add language:
+Two postulates, both stated in circle-operation language:
 1. At each event there is a free-fall frame (the river) in which space is flat and special relativity
-   holds, so speeds compose by mult-add on the Doppler-squared ruler.
+   holds, so speeds compose by the circle operation on the Doppler-squared ruler.
 2. The river flows past static observers at Newton's escape speed, v² = 2m/r (r = areal radius).
 
 Results (checks.py, sections C to C3; all exact, sympy):
@@ -41,7 +41,7 @@ Results (checks.py, sections C to C3; all exact, sympy):
   after the clock change t_S = t − ∫ v/(1 − v²) dr. River observers fall freely and are at rest at infinity.
 - Static clocks and static radial rulers are boosted through the river, and one boost gives both: clock
   factor 1 − v² = −g_tt, ruler factor 1/(1 − v²) = g_rr. So the time deficit and the radial-space deficit
-  are mult-add inverses, (−g_tt − 1) ✳ (g_rr − 1) = 0. This is why γ = 1 and why light bends twice the
+  are circle inverses, (−g_tt − 1) ∘₁ (g_rr − 1) = 0. This is why γ = 1 and why light bends twice the
   Newtonian amount: half from clocks, half from rulers, because a boost dilates time and contracts length
   by the same γ.
 - Weak field: −g_tt = 1 − 2U + 2U² (β = 1), g_ij = (1 + 2U)δ_ij (γ = 1). So light bending 1.751″,
@@ -52,7 +52,7 @@ Results (checks.py, sections C to C3; all exact, sympy):
   nothing new. The Hubble river v = −Hr gives Friedmann's equations (H² = 8πρ/3 is Newton's escape speed
   for a uniform ball).
 - Gravity Probe B's exact factor √(1 − 3M/r) is 1/γ of the gyroscope's speed through the river (river
-  radial, orbit tangential, composed at right angles): −w² = (−v_r²) ✳ (−v_o²). This replaces the earlier
+  radial, orbit tangential, composed at right angles): −w² = (−v_r²) ∘₁ (−v_o²). This replaces the earlier
   twisted-boosts bookkeeping, which took Schwarzschild's space curvature as an input; the river supplies it.
 - Known: Painlevé 1921, Gullstrand 1922, Milne–McCrea 1934, Hamilton & Lisle 2008 ("river model").
 
@@ -65,15 +65,15 @@ decay 0.9983 ± 0.0016 of GR's prediction; LIGO). Pressure was not tested here.
 
 - A small loop in the t–r plane outside a mass returns a vector boosted, with rapidity (2M/r³) × area
   (numerical parallel transport, 0.5% at the loop size used). Curvature in a plane that contains time
-  gives a boost; that is the twisted-boosts law with q < 0.
+  gives a boost; that is the twisted-boosts law with d < 0.
 - The Bianchi identity ∇·G = 0 holds automatically (checked on every river v(t, r)). The contracted
   Bianchi ∇·Ric = ½ dR forces the left side to be R − ½Rg (b = −a/2). Lovelock (1971): in four dimensions
   that, plus Λg, is the only choice for a second-order local law. A metric field and "second order,
   local" are inputs put in by hand.
-- Section A: the dial's boosts close on −q × a rotation and commute at q = 0. Hojman, Kuchař and
+- Section A: the dial's boosts close on −d × a rotation and commute at d = 0. Hojman, Kuchař and
   Teitelboim (1976) showed that if these boosts are made local (a lapse that varies from place to place)
   and must compose the same way whichever path is taken, the only second-order dynamics for a spatial
-  metric is Einstein's, with G and Λ left free. The coefficient in their bracket is ε = sign(q). This is
+  metric is Einstein's, with G and Λ left free. The coefficient in their bracket is ε = sign(d). This is
   the closest thing to a derivation from the composition law: the twist rule, made local, plus a metric.
 
 ## Leads, judged on their own merits
@@ -82,7 +82,7 @@ decay 0.9983 ± 0.0016 of GR's prediction; LIGO). Pressure was not tested here.
   → HKT → Einstein's equations. Every link is proved, ours or known; the result is GR exactly.
 - **No new prediction.** Every route either reproduces GR or is ruled out by data. GW170817 also says the
   speed of gravity equals the speed of light to about 10⁻¹⁵, so light and gravity share one dial.
-- **The one place a varying dial goes beyond GR:** letting q vary inside the HKT bracket ("deformed
+- **The one place a varying dial goes beyond GR:** letting d vary inside the HKT bracket ("deformed
   general covariance"). This is active research: in loop quantum cosmology the bracket's coefficient turns
   negative above half the critical density, which reads as a switch from Lorentzian to Euclidean
   signature (Mielczarek, arXiv:1304.2208; arXiv:1606.03271; disputed with self-dual variables,

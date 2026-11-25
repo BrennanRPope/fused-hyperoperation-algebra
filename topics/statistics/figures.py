@@ -44,7 +44,7 @@ ax.plot(t, G(t), color=BLUE, lw=2.6)
 marks = [(-1, RED, "t = −1, k = −2\nP(even) − P(odd)\nparity, piling-up"),
          (0, GOLD, "t = 0, k = −1\nP(no heads)\nthe union rule's survival"),
          (1, GREEN, "t = 1, k = 0\ntotal = 1, slope = mean\naddition"),
-         (2, INK, "t = 2, k = 1\nE[2^X]\nplain mult-add")]
+         (2, INK, "t = 2, k = 1\nE[2^X]\nplain the circle operation")]
 for tt, c, lab in marks:
     y = float(G(np.array(tt)))
     ax.plot([tt], [y], "o", color=c, ms=9, zorder=5)
@@ -116,12 +116,12 @@ pts = [(1, 0, BLUE, "k = 1: generating functions − 1,\nodds − 1 (Bayes), mom
 for k, qv, c, lab, (tx, ty) in pts:
     ax.plot(k, qv, "o", color=c, ms=10, zorder=5, mec="white")
     ax.annotate(lab, (k, qv), (tx, ty), fontsize=9.3, color=c, arrowprops=dict(arrowstyle="-", color=c, lw=.7))
-ax.text(-1.5, 0.82, "dependence line k + q = −1\n(AMH copulas, θ from −1 to 1)", color=RED, fontsize=9.5, rotation=-28, ha="center")
+ax.text(-1.5, 0.82, "dependence line k + d = −1\n(AMH copulas, θ from −1 to 1)", color=RED, fontsize=9.5, rotation=-28, ha="center")
 ax.text(1.1, 1.7, "no real wall\n(turning)", color="#6b4fb3", fontsize=9.5, ha="center")
 ax.text(1.25, -1.15, "two real walls\n(saturating)", color=GREEN, fontsize=9.5, ha="center")
 ax.set_xlim(-3, 1.8); ax.set_ylim(-1.6, 2.0)
-ax.set_xlabel("k: how full the corner cell is"); ax.set_ylabel("q: how much the next layer bends")
-ax.set_title("Statistics on the landscape plane: the laws (a + b + k·ab)/(1 − q·ab)", color=INK)
+ax.set_xlabel("k: how full the corner cell is"); ax.set_ylabel("d: how much the next layer bends")
+ax.set_title("Statistics on the landscape plane: the laws (a + b + k·ab)/(1 − d·ab)", color=INK)
 for s in ["top", "right"]: ax.spines[s].set_visible(False)
 save(fig, "f5_landscape_statistics.png")
 print("figures written")

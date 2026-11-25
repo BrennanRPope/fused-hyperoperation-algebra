@@ -22,12 +22,12 @@
                           and "a coprime product that is a cube is a unit times a cube".
   * `step`, `no_sol`    : Euler's infinite descent on |xyz| for x³ + y³ + z³ = 0.
 
-  The mult-add angle (a ⊞ b = a + b + ab, mpow s n = (1 + s)ⁿ − 1, from FusedAlgebra.Base):
-  * `flt3_multAdd_iff` : over ℚ, with x ≠ 0, x³ + y³ = z³ iff (y/x)³ = mpow (z/x − 1) 3.
-  * `flt3_multAdd`     : so for nonzero integers, (y/x)³ is never the mult-add cube of z/x − 1.
+  The circle-operation angle (called mult-add angle before 1.0) (a ◯ b = a + b + ab, mpow s n = (1 + s)ⁿ − 1, from FusedAlgebra.Base):
+  * `flt3_circ_iff` : over ℚ, with x ≠ 0, x³ + y³ = z³ iff (y/x)³ = mpow (z/x − 1) 3.
+  * `flt3_circ`     : so for nonzero integers, (y/x)³ is never the circle-operation cube of z/x − 1.
   * `mpow_three`       : mpow s 3 = s³ + 3(s + s²): the middle layers of the cube
                          (Pascal 1, 3, 3, 1) carry the factor 3,
-  * `mpow_three_mod3`  : so mult-add cubes and plain cubes agree mod 3 (both ≡ s),
+  * `mpow_three_mod3`  : so circle-operation cubes and plain cubes agree mod 3 (both ≡ s),
   * `sum_mod3`         : which is why every solution has x + y ≡ z (mod 3).
 
   Route of the proof of `flt3`: reduce to gcd(x, y) = 1; write the equation as
@@ -41,7 +41,7 @@
   `#print axioms` lines at the end check this.
 -/
 import FusedAlgebra.Base
-open MultAdd
+open CircleOp
 
 namespace Fermat3
 
@@ -74,12 +74,12 @@ theorem case1 (x y z : Int) (h : ¬ (3 : Int) ∣ x * y * z) : x^3 + y^3 ≠ z^3
   generalize z^3 = Z at *
   omega
 
-/-- The mult-add cube: mpow s 3 = s³ + 3(s + s²); the middle layers carry the 3. -/
+/-- The circle-operation cube: mpow s 3 = s³ + 3(s + s²); the middle layers carry the 3. -/
 theorem mpow_three (s : Int) : mpow s 3 = s^3 + 3*(s + s^2) := by
   rw [mpow_eq]; grind
 
-/-- Over ℚ with x ≠ 0: x³ + y³ = z³ iff (y/x)³ is the mult-add cube of z/x − 1. -/
-theorem flt3_multAdd_iff (x y z : Rat) (hx : x ≠ 0) :
+/-- Over ℚ with x ≠ 0: x³ + y³ = z³ iff (y/x)³ is the circle-operation cube of z/x − 1. -/
+theorem flt3_circ_iff (x y z : Rat) (hx : x ≠ 0) :
     x^3 + y^3 = z^3 ↔ (y/x)^3 = mpow (z/x - 1) 3 := by
   rw [mpow_eq]
   constructor
@@ -966,12 +966,12 @@ theorem flt3_nat (x y z : Nat) (hx : x ≠ 0) (hy : y ≠ 0) : x^3 + y^3 ≠ z^3
     grind
   exact flt3 x y z (by omega) (by omega) hz h'
 
-/-- In the mult-add picture: for integers x, y, z ≠ 0, (y/x)³ is never the mult-add cube of z/x − 1. -/
-theorem flt3_multAdd (x y z : Int) (hx : x ≠ 0) (hy : y ≠ 0) (hz : z ≠ 0) :
+/-- In the circle-operation picture: for integers x, y, z ≠ 0, (y/x)³ is never the circle-operation cube of z/x − 1. -/
+theorem flt3_circ (x y z : Int) (hx : x ≠ 0) (hy : y ≠ 0) (hz : z ≠ 0) :
     ((y : Rat) / x)^3 ≠ mpow ((z : Rat) / x - 1) 3 := by
   intro h
   have hx' : (x : Rat) ≠ 0 := by exact_mod_cast hx
-  have := (flt3_multAdd_iff (x : Rat) y z hx').2 h
+  have := (flt3_circ_iff (x : Rat) y z hx').2 h
   exact flt3 x y z hx hy hz (by exact_mod_cast this)
 
 /-! ## Supporting lemmas -/
@@ -1036,7 +1036,7 @@ theorem exactly_one_three {x y z : Int} (h : x^3 + y^3 = z^3) (hxy : Int.gcd x y
   · exact Or.inr (Or.inr ⟨fun hx => no2 x (-z) hxz hx (zn h1),
       fun hy => no2 y (-z) hyz hy (zn h1), h1⟩)
 
-/-- Mult-add cubes and plain cubes agree mod 3: (1+s)³ − 1 ≡ s³ ≡ s. -/
+/-- Circle-operation cubes and plain cubes agree mod 3: (1+s)³ − 1 ≡ s³ ≡ s. -/
 theorem mpow_three_mod3 (s : Int) : (3 : Int) ∣ mpow s 3 - s := by
   rw [mpow_three]
   have := cube_mod3 s
@@ -1048,7 +1048,7 @@ end Fermat3
 /-! ## Axiom check: only propext, Classical.choice, Quot.sound may appear. -/
 
 #print axioms Fermat3.case1
-#print axioms Fermat3.flt3_multAdd_iff
+#print axioms Fermat3.flt3_circ_iff
 #print axioms Fermat3.sum_mod3
 #print axioms Fermat3.mpow_three_mod3
 #print axioms Fermat3.cube_of_mul_cop
@@ -1064,4 +1064,4 @@ end Fermat3
 #print axioms Fermat3.exactly_one_three
 #print axioms Fermat3.flt3
 #print axioms Fermat3.flt3_nat
-#print axioms Fermat3.flt3_multAdd
+#print axioms Fermat3.flt3_circ

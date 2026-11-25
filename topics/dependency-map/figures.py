@@ -264,7 +264,7 @@ def d7():
     import numpy as np
     ax = axs[0]
     x = np.linspace(-0.6, 3, 300)
-    for k, c, lab in [(1, "#2471a3", "mult-add k=1"), (-0.5, "#1e8449", "kappa-Poincare (k=-1/kappa)"),
+    for k, c, lab in [(1, "#2471a3", "the circle operation k=1"), (-0.5, "#1e8449", "kappa-Poincare (k=-1/kappa)"),
                       (-0.25, "#d35400", "Newton binding (k=-G/rc^2)")]:
         xx = x[1 + k * x > 0.02]
         ax.plot(xx, np.log(1 + k * xx) / k, color=c, lw=2.4, label=lab)

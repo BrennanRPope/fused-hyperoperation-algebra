@@ -14,18 +14,18 @@
   ionisation energy.
 
   Charge: charges add (k = 0), and the fugacity z^Q multiplies, so its
-  excess z^Q − 1 mult-adds. Every additive conservation law is the log of a
-  mult-add lift.
+  excess z^Q − 1 combines by the circle operation (called mult-add before 1.0). Every additive conservation law is the log of a
+  circle-operation lift.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
-  Merged at Topics/Chemistry/ChemConservation; the local infix stays. One exact twin removed.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
+  Merged at Topics/Chemistry/ChemConservation; it now uses Base's ◯. One exact twin removed.
 -/
 import FusedAlgebra.Base
 
 namespace ChemConservation
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-- Invariant mass squared of two parts with "cosine" c. -/
 def mass2 (m1 m2 c : Rat) : Rat := m1 * m1 + m2 * m2 + 2 * m1 * m2 * c
@@ -60,7 +60,7 @@ theorem free_heavier (m1 m2 c : Rat) (h1 : 0 < m1) (h2 : 0 < m2) (hc : 1 < c) :
   have := deficit m1 m2 c
   grind
 
-/-- The cosine law reads as a weighted mult-add in the masses' squares: with
+/-- The cosine law reads as the circle operation with dial k in the masses' squares: with
     a = m₁², b = m₂² and the corner taken through √(ab) = m₁m₂, the extra
     piece beyond plain addition is 2c·m₁m₂. At c = 1 it is the perfect square. -/
 theorem cosine_extra (m1 m2 c : Rat) : mass2 m1 m2 c - (m1 * m1 + m2 * m2) = 2 * c * (m1 * m2) := by
@@ -77,14 +77,14 @@ section Charge
 variable {R : Type} [Lean.Grind.CommRing R]
 
 -- LIBRARY: fugacity_mul (fugacities multiply as charges add) was an exact twin of
---   MultAdd.pw_add and is removed.
+--   CircleOp.pw_add and is removed.
 
-/-- So the excess z^Q − 1 mult-adds. -/
-theorem fugacity_multAdd (z : R) (Q1 Q2 : Nat) :
-    pw z (Q1 + Q2) - 1 = (pw z Q1 - 1) ✳ (pw z Q2 - 1) := by
-  rw [pw_add]; unfold multAdd; grind
+/-- So the excess z^Q − 1 combines by the circle operation. -/
+theorem fugacity_circ (z : R) (Q1 Q2 : Nat) :
+    pw z (Q1 + Q2) - 1 = (pw z Q1 - 1) ◯ (pw z Q2 - 1) := by
+  rw [pw_add]; unfold circ; grind
 
-/-- A neutral system (charge 0) has fugacity 1: excess 0, mult-add's identity. -/
+/-- A neutral system (charge 0) has fugacity 1: excess 0, the circle operation's identity. -/
 theorem neutral_identity (z : R) : pw z 0 - 1 = 0 := by simp only [pw]; grind
 
 end Charge

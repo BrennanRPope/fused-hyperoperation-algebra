@@ -1,5 +1,5 @@
 /-
-  Finance as mult-add
+  Finance as the circle operation (called mult-add before 1.0)
   ===================
 
   Part of Fused Hyperoperation Algebra. Companion page and checks: ../ (econ-forecasting).
@@ -7,12 +7,12 @@
   STATUS: core Lean 4 only (no mathlib), no `sorry`. Run it with
   `lean FinanceMultAdd.lean`. Checked with Lean 4.37.0-rc1.
 
-  Mult-add is a ⊕ b = a + b + ab = (1+a)(1+b) − 1, and a ⊖ b = (a − b)/(1 + b) undoes it.
+  The circle operation is a ◯ b = a + b + ab = (1+a)(1+b) − 1, and a ⊖ b = (a − b)/(1 + b) undoes it.
 
   Proved:
-  * fisher:       (nominal ⊖ inflation) ⊕ inflation = nominal. The real rate is the
-                  mult-add difference, not the plain difference.
-  * mall_growth:  mult-adding a list of yearly returns gives the total growth minus 1
+  * fisher:       (nominal ⊖ inflation) ◯ inflation = nominal. The real rate is the
+                  circle-operation difference, not the plain difference.
+  * mall_growth:  combining a list of yearly returns by the circle operation gives the total growth minus 1
                   (the n-cube of returns, all its corners together).
   * drag, drag_le: up s then down s around a mean m: (1+m+s)(1+m−s) = (1+m)² − s².
                   Volatility drag is the s×s square cut out of the corner.
@@ -27,16 +27,16 @@
   * lowest_rate_wins: the averaged factor is at least half the factor of the lowest rate,
                   so over long horizons the lowest-rate corner sets the rate.
 
-  LIBRARY NOTE: mult-add and mult-add subtraction (msub, Fisher's rule) come from FusedAlgebra.Base; wrapped in namespace FinanceMultAdd.
+  LIBRARY NOTE: the circle operation and circle-operation subtraction (msub, Fisher's rule) come from FusedAlgebra.Base; wrapped in namespace FinanceCircle.
 -/
 import FusedAlgebra.Base
 
-namespace FinanceMultAdd
+namespace FinanceCircle
 
-open MultAdd
+open CircleOp
 
-/-- Fisher's rule: real rate ⊞ inflation = nominal rate (msub and the proof live in Base). -/
-theorem fisher (a b : Rat) (h : 1 + b ≠ 0) : multAdd (msub a b) b = a := msub_multAdd a b h
+/-- Fisher's rule: real rate ◯ inflation = nominal rate (msub and the proof live in Base). -/
+theorem fisher (a b : Rat) (h : 1 + b ≠ 0) : circ (msub a b) b = a := msub_circ a b h
 
 theorem drag (m s : Rat) : (1 + m + s) * (1 + m - s) = (1 + m) ^ 2 - s ^ 2 := by grind
 
@@ -159,7 +159,7 @@ theorem average_factors {u v x y d : Rat} (hu : 0 < u) (hv : 0 < v) (hx : x * u 
 
 def mall : List Rat → Rat
   | [] => 0
-  | r :: rs => multAdd r (mall rs)
+  | r :: rs => circ r (mall rs)
 
 def growth : List Rat → Rat
   | [] => 1
@@ -167,7 +167,7 @@ def growth : List Rat → Rat
 
 theorem mall_growth : ∀ rs : List Rat, mall rs = growth rs - 1
   | [] => by simp [mall, growth]; exact Rat.sub_self.symm
-  | r :: rs => by simp only [mall, growth, multAdd]; rw [mall_growth rs]; grind
+  | r :: rs => by simp only [mall, growth, circ]; rw [mall_growth rs]; grind
 
 theorem gsum_le (q j : Rat) (h : q * (1 + j) = 1) (hq : 0 ≤ q) (N : Nat) : j * gsum q N ≤ 1 := by
   rw [gordon q j h N]; have := pow_nonneg' hq N; grind
@@ -188,4 +188,4 @@ theorem lowest_rate_wins {x y : Rat} (hy : 0 ≤ y) (hxy : y ≤ x) (n : Nat) :
   constructor <;> grind
 
 
-end FinanceMultAdd
+end FinanceCircle

@@ -20,12 +20,11 @@
 import FusedAlgebra.Base
 
 namespace NeuroScience
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
@@ -75,8 +74,8 @@ theorem div_mul_cancel' (x y : K) (hy : y ≠ 0) : x / y * y = x := by
 def lens (k q a b : K) : K := (a + b + k * a * b) / (1 - q * a * b)
 
 /-- With q = 0 the lens law is the dial: Hao et al.'s bilinear rule. -/
-theorem lens_dial (k a b : K) : lens k 0 a b = wAdd k a b := by
-  unfold lens wAdd; grind
+theorem lens_dial (k a b : K) : lens k 0 a b = circK k a b := by
+  unfold lens circK; grind
 
 /-- Steady-state voltage of one compartment (leak 1, reversal 1) with conductance g. -/
 def vss (g : K) : K := g / (1 + g)

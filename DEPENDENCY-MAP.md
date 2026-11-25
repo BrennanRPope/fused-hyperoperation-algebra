@@ -2,7 +2,7 @@
 
 # Prerequisites for a G dial, and how our results depend on each other
 
-**Verdict.** Of 22 things any quantum-gravity answer (or a dial for G) has to meet, our results meet 4 outright, meet 7 more only with an input put in by hand, and leave 7 unmet. The biggest missing prerequisite is the **black-hole area law S = A/(4Għ)**. On Jacobson's route to Einstein's equations, mult-add supplies the area bookkeeping, the focusing and the Unruh temperature, and the entropy per area is the one piece put in from outside. A G dial that cannot produce that number has not done the job. The other unmet ones are structural: no quantum fields, no massless spin-2 carrier, nothing on the ultraviolet (Goroff–Sagnotti), no background independence.
+**Verdict.** Of 22 things any quantum-gravity answer (or a dial for G) has to meet, our results meet 4 outright, meet 7 more only with an input put in by hand, and leave 7 unmet. The biggest missing prerequisite is the **black-hole area law S = A/(4Għ)**. On Jacobson's route to Einstein's equations, the circle operation (called mult-add before 1.0) supplies the area bookkeeping, the focusing and the Unruh temperature, and the entropy per area is the one piece put in from outside. A G dial that cannot produce that number has not done the job. The other unmet ones are structural: no quantum fields, no massless spin-2 carrier, nothing on the ultraviolet (Goroff–Sagnotti), no background independence.
 
 - **Met:** special relativity (Lean-backed), the Hawking and Unruh temperatures (formula level, known physics), gravity-wave speed = c.
 - **Met with an input:** quantum mechanics (needs a Hamiltonian and the size of ħ), Newton and GR (need Newton's escape speed, a metric, second-order equations), equivalence principle (assumed), Planck scale (κ = Planck energy is assumed), small Λ.
@@ -27,7 +27,7 @@ Each corner of the cube switches on a different set of constants (c, G, ħ). The
 
 | | Prerequisite | Verdict | What our results do | What that rests on | Literature |
 |---|---|---|---|---|---|
-| L1 | Special relativity | **Met** | velocity addition = mult-add; Thomas-Wigner twist = curvature x area; EM fixes q = -1/c^2 | Lean: Relativity (30), TwistedBoosts (36), Electromagnetism (41); 4x4 Lorentz checks | Einstein 1905; Levy-Leblond 1976 |
+| L1 | Special relativity | **Met** | velocity addition = the circle operation; Thomas-Wigner twist = curvature x area; EM fixes d = -1/c^2 | Lean: Relativity (30), TwistedBoosts (36), Electromagnetism (41); 4x4 Lorentz checks | Einstein 1905; Levy-Leblond 1976 |
 | L2 | Quantum mechanics | **Met only with an outside input** | chain at k = -i/hbar -> propagator; checkerboard -> Dirac; + potential -> Schrodinger; direction of the dial forced | numeric checks (why-i P1-P9, checkerboard 24, potential 17, chain-resolves 18); inputs: the Hamiltonian and the size of hbar | Feynman 1948; Chernoff 1968; Feynman-Hibbs 1965 |
 | L3 | Newtonian gravity | **Met only with an outside input** | river with escape speed v^2 = 2GM/r gives Newton's shell theorem and Friedmann; binding = k = -G/(rc^2) to first order | sympy (general-relativity C); G and Newton's law are put in by the river postulate | Newton; Ehlers 1981 (c -> infinity limit of GR) |
 | L4 | General relativity (c, G) | **Met only with an outside input** | river = Schwarzschild exactly; Gravity Probe B and double-pulsar precession matched; direction dial = metric; Lovelock then forces Einstein + Lambda | sympy, data; inputs: a metric (Schur forces it), second-order equations, the source coupling 8 pi G | Lovelock 1971; Deser 1970; Hamilton-Lisle 2008 |
@@ -37,7 +37,7 @@ Each corner of the cube switches on a different set of constants (c, G, ħ). The
 | F2 | Massless spin-2 carrier, 2 polarizations | **Out of reach of chains** | the river can't carry waves; the direction dial's TT part has two polarizations, but only as the metric itself | dial-map: chains of weighted circle operations can't express a two-index field on spacetime | Gupta 1954; Deser 1970; Boulware-Deser 1975 |
 | F3 | Uniqueness: Einstein + Lambda forced | **Met only with an outside input** | Lovelock's hypotheses checked one by one: 4D yes, conserved source yes, metric yes (direction dial) | second order is put in by hand; G and Lambda stay free | Lovelock 1971 |
 | F4 | Background independence (diffeomorphisms) | **Not met** | not addressed; chains compose on fixed groups (Poincare, de Sitter) | nearest fit: Hojman-Kuchar-Teitelboim, mentioned on the GR page but not worked | Hojman, Kuchar, Teitelboim 1976 |
-| Q1 | Black-hole entropy S = A/(4 G hbar) | **Not met** | Jacobson's route: area bookkeeping, focusing and Unruh T are all mult-add; the entropy per area is not | gr-bridges Part J names 1/(4 G hbar) as the one outside input | Bekenstein 1973; Hawking 1975; Jacobson 1995; Strominger-Vafa 1996 |
+| Q1 | Black-hole entropy S = A/(4 G hbar) | **Not met** | Jacobson's route: area bookkeeping, focusing and Unruh T are all circle-operation steps; the entropy per area is not | gr-bridges Part J names 1/(4 G hbar) as the one outside input | Bekenstein 1973; Hawking 1975; Jacobson 1995; Strominger-Vafa 1996 |
 | Q2 | Hawking temperature | **Met** | same as L6; the 2 pi is forced by a smooth Euclidean horizon | numeric; known physics, reproduced | Hawking 1975; Gibbons-Hawking 1977 |
 | Q3 | Unitarity / no information loss | **Not met** | steps that lose nothing force the imaginary dial (chain-resolves); black-hole evaporation not touched | numeric on the checkerboard and Gaussian actions only | Hawking 1976; Page 1993; Penington 2019; Almheiri et al. 2019 |
 | Q4 | UV completion (GR is non-renormalizable) | **Not met** | nothing in the repo about loops, divergences or the running of G | - | 't Hooft-Veltman 1974; Goroff-Sagnotti 1986; Weinberg 1979 / Reuter 1998 (asymptotic safety) |
@@ -79,8 +79,8 @@ Lean backing is strong at the foundation and thins out as the claims get physica
 ### Cycles, orphans and weak links
 
 - **Cycles:** none in the graph. One soft risk: "keep size ⇒ Re k = 0" presupposes a complex modulus, which would beg the question of where i comes from. It is not circular if stated in real 2×2 rotation form, and the write-ups should say so.
-- **Orphans:** none. Every result traces back to mult-add.
-- **Held up only by prose or cited theorems** (not reachable from mult-add through Lean or checked links):
+- **Orphans:** none. Every result traces back to the circle operation.
+- **Held up only by prose or cited theorems** (not reachable from the circle operation through Lean or checked links):
   - the wall −1/k flips i (cited Fourier facts);
   - c, ħ, Λ are rigid deformations (the H² numbers are checked here; rigidity itself is cited);
   - Newton binding k = −G/(rc²) (a first-order reading);
@@ -92,7 +92,7 @@ Lean backing is strong at the foundation and thins out as the claims get physica
 
 Three links read as stronger than they are:
 
-- **(a) One-number matches carry no evidence.** Every one-parameter law becomes plain addition after the ruler change log(1+kx)/k. So velocity addition, collinear κ-Poincaré, Newton binding and Magueijo–Smolin matching mult-add is automatic. Only the matrix (non-commuting) matches count.
+- **(a) One-number matches carry no evidence.** Every one-parameter law becomes plain addition after the ruler change log(1+kx)/k. So velocity addition, collinear κ-Poincaré, Newton binding and Magueijo–Smolin matching the circle operation is automatic. Only the matrix (non-commuting) matches count.
 - **(b) "Turning the dial to i" is three different moves:** k = −i/ħ on the action (forced by lossless steps), k → ik on a Cayley–Klein label (Wick rotation of signature), and a → im on the checkerboard (a continuation in mass). They are related (Nelson 1964; Gaveau–Jacobson–Kac–Schulman 1984) but not the same. The ledger's "c: Wick flips the dial" and "ħ: direction forced" lean on reading them as one.
 - **(c) "G has no dial" was tested on a narrow class.** Deformed GR (Bojowald–Paily 2012–13) bends the hypersurface-deformation algebroid by a function β of density in Planck units and can flip the signature, which is a G-and-ħ-dependent deformation of exactly the kind we said doesn't exist. It is a lead for the G-dial work, with a caveat: Balek and Lecian question whether the signature change is physical.
 
@@ -105,7 +105,7 @@ Two smaller things:
 
 ![lean](topics/dependency-map/figures/d5-lean-islands.png)
 
-Fifteen modules hang off Base. The five newest (WhyI, EIPi, Checkerboard, CheckerboardPotential, PathNames) import nothing and re-define what Base already proves: their own mult-add, wedge and 2×2 matrices. Their theorems are true, but the library doesn't know they are about the same operation as Base's. Every path theorem is an identity over Int, Rat or Gaussian integers. None states a limit, a convergence, a measure or a complex exponential, so e, π and every continuum step are backed by numerics, not Lean. The shared build folder holds no compiled file for OrderDial or PathNames; the README records their first compiles, and there's no Lean here to recheck.
+Fifteen modules hang off Base. The five newest (WhyI, EIPi, Checkerboard, CheckerboardPotential, PathNames) import nothing and re-define what Base already proves: their own circle operation, wedge and 2×2 matrices. Their theorems are true, but the library doesn't know they are about the same operation as Base's. Every path theorem is an identity over Int, Rat or Gaussian integers. None states a limit, a convergence, a measure or a complex exponential, so e, π and every continuum step are backed by numerics, not Lean. The shared build folder holds no compiled file for OrderDial or PathNames; the README records their first compiles, and there's no Lean here to recheck.
 
 ## 5. What each write-up assumes
 

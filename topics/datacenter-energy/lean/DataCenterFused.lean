@@ -4,30 +4,30 @@
   so Nat/Int stand in for the real numbers; every statement is a polynomial identity or
   inequality, so it holds for the reals by the same algebra.
 
-  Mult-add (rung 2):  a ⊕ b = a + b + a*b,  and  (a ⊕ b) + 1 = (a+1)(b+1).
+  The circle operation (called mult-add before 1.0) (rung 2):  a ◯ b = a + b + a*b,  and  (a ◯ b) + 1 = (a+1)(b+1).
   A stage's overhead odds r = (input - output)/output, so input = output * (1 + r).
 -/
 namespace DataCenterFused
 
-def madd (a b : Nat) : Nat := a + b + a * b
-theorem madd_lift (a b : Nat) : madd a b + 1 = (a + 1) * (b + 1) := by unfold madd; grind
-theorem madd_comm (a b : Nat) : madd a b = madd b a := by unfold madd; grind
-theorem madd_assoc (a b c : Nat) : madd (madd a b) c = madd a (madd b c) := by unfold madd; grind
+def circ (a b : Nat) : Nat := a + b + a * b
+theorem circ_lift (a b : Nat) : circ a b + 1 = (a + 1) * (b + 1) := by unfold circ; grind
+theorem circ_comm (a b : Nat) : circ a b = circ b a := by unfold circ; grind
+theorem circ_assoc (a b c : Nat) : circ (circ a b) c = circ a (circ b c) := by unfold circ; grind
 
-/-- Fold a power chain of stage odds with mult-add. -/
+/-- Fold a power chain of stage odds with the circle operation. -/
 def chain : List Nat → Nat
   | [] => 0
-  | r :: rs => madd r (chain rs)
+  | r :: rs => circ r (chain rs)
 /-- Product of (1 + r) over the stages. -/
 def lifts : List Nat → Nat
   | [] => 1
   | r :: rs => (r + 1) * lifts rs
 
-/-! ### Lead 1. A power chain's overhead is the mult-add of its stages, in any order. -/
+/-! ### Lead 1. A power chain's overhead is the circle operation of its stages, in any order. -/
 theorem chain_lift (rs : List Nat) : chain rs + 1 = lifts rs := by
   induction rs with
   | nil => rfl
-  | cons r rs ih => simp only [chain, lifts]; rw [madd_lift, ih]
+  | cons r rs ih => simp only [chain, lifts]; rw [circ_lift, ih]
 
 theorem lifts_append (xs ys : List Nat) : lifts (xs ++ ys) = lifts xs * lifts ys := by
   induction xs with
@@ -43,10 +43,10 @@ theorem chain_swap (xs ys : List Nat) (a b : Nat) :
   have h2 := chain_lift (xs ++ b :: a :: ys)
   omega
 
-/-- Splitting the chain at the IT meter: (outside ⊕ inside) is the whole chain (TUE = PUE·ITUE). -/
-theorem chain_split (xs ys : List Nat) : chain (xs ++ ys) = madd (chain xs) (chain ys) := by
+/-- Splitting the chain at the IT meter: (outside ◯ inside) is the whole chain (TUE = PUE·ITUE). -/
+theorem chain_split (xs ys : List Nat) : chain (xs ++ ys) = circ (chain xs) (chain ys) := by
   have h := chain_lift (xs ++ ys)
-  rw [lifts_append, ← chain_lift xs, ← chain_lift ys, ← madd_lift] at h
+  rw [lifts_append, ← chain_lift xs, ← chain_lift ys, ← circ_lift] at h
   omega
 
 /-- Position independence: scaling one stage's factor scales the facility total by the same
@@ -54,7 +54,7 @@ theorem chain_split (xs ys : List Nat) : chain (xs ++ ys) = madd (chain xs) (cha
 theorem scale_anywhere (xs ys : List Nat) (f k : Nat) :
     lifts xs * (f * k) * lifts ys = k * (lifts xs * f * lifts ys) := by grind
 
-/-! ### Lead 2. PUE overhead = electrical ⊕ cooling. The corner p*c is cooling the losses. -/
+/-! ### Lead 2. PUE overhead = electrical ◯ cooling. The corner p*c is cooling the losses. -/
 theorem pue_corner (p c : Nat) : (1 + p) * (1 + c) = 1 + p + c + p * c := by grind
 /-- The additive breakdown PUE = 1 + PLF + CLF books the corner as cooling: CLF = c + p*c. -/
 theorem additive_books_corner (it p c : Nat) :
@@ -84,7 +84,7 @@ theorem equal_share (y d : Int) : (y + d) ^ 2 + (y - d) ^ 2 = 2 * y ^ 2 + 2 * d 
 example : (1 * 2 * 2 * 2 + 1 * 1 * 3 ^ 2 : Int) < 1 * 1 * 2 * 2 + 2 * 1 * 3 ^ 2 := by decide
 example : ¬ ((1 * 2 * 2 * 2 + 1 * 1 * 1 ^ 2 : Int) < 1 * 1 * 2 * 2 + 2 * 1 * 1 ^ 2) := by decide
 
-/-! ### Lead 4. Fans: power ∝ flow³ (affinity law). The mult-add cube. -/
+/-! ### Lead 4. Fans: power ∝ flow³ (affinity law). The circle-operation cube. -/
 /-- Layers 1, 3, 3, 1 of the fused cube (1+d)³ − 1 = 3d + 3d² + d³. -/
 theorem cube_layers (d : Int) : (1 + d) ^ 3 = 1 + 3 * d + 3 * d ^ 2 + d ^ 3 := by grind
 /-- k fans each moving q: k·q³·k² = (k·q)³, i.e. total power = Q³/k² for total flow Q = k q. -/
@@ -101,7 +101,7 @@ theorem spare_fan_helps (N : Nat) (h : 0 < N) : (N + 1) * N ^ 3 < N * (N + 1) ^ 
   rw [‹(N + 1) * N ^ 3 = _›, ‹N * (N + 1) ^ 3 = _›]
   exact Nat.mul_lt_mul_of_pos_left h1 hp
 
-/-! ### Stacking savings: kept fractions multiply, so savings compose by mult-add of the
+/-! ### Stacking savings: kept fractions multiply, so savings compose by the circle operation of the
     (negative) odds; in whole numbers, keep k1 of K and k2 of K: kept = k1*k2 of K². -/
 theorem stack (K s1 s2 : Int) :
     (K - s1) * (K - s2) = K * K - (s1 * K + s2 * K - s1 * s2) := by grind

@@ -16,10 +16,10 @@ PASS I5 black-hole state counting fixes gamma: sum_j 2 exp(-2 pi gamma sqrt(j(j+
 PASS I6 counting each puncture with its 2j+1 states instead gives 0.274 (Ghosh-Mitra); spin 1/2 only gives ln2/(pi sqrt3) = 0.127 (ABCK 1998)  | 0.27407, 0.12738
 PASS I7 gamma multiplies G in the area gap, A_min = 4 sqrt3 pi gamma hbar G/c^3: gamma rescales G's quantum of area but is not a dial on G itself  | A_min = 1.351e-69 m^2
 PASS J1 Jacobson: entropy per area eta = c^3/(4 G hbar), so G = c^3/(4 hbar eta): G -> 0 means infinitely many states per area (stiff spacetime). Solar-mass hole: S ~ 1.05e77 k_B  | S = 1.049e+77 k_B
-PASS J2 state counts of two horizon patches multiply, so (N - 1) composes by mult-add at dial 1 and entropy log N = log(1 + (N-1)) is its flat coordinate (reading ours; Tsallis's rule is the general dial, gr-bridges J5)
+PASS J2 state counts of two horizon patches multiply, so (N - 1) composes by the circle operation at dial 1 and entropy log N = log(1 + (N-1)) is its flat coordinate (reading ours; Tsallis's rule is the general dial, gr-bridges J5)
 PASS W1 Schwarzschild g_tt = 1 + k x with x = M/r and k = -2G/c^2: the lift hits 0 at the horizon r = 2GM/c^2 (the wall -1/k) and is negative inside, where time and radius trade roles (reading ours)
 PASS W2 the slope of g_tt at the wall is the surface gravity c^4/(4GM); with the 2 pi period it gives Hawking's 6.17e-8 K (same as e-i-pi C23)  | T = 6.1701e-08 K
-PASS W3 redshift factors between shells multiply, so (factor - 1) composes by mult-add at dial 1, but that dial is set by c (1/c^2 in the potential), not by G: masses themselves do not compose this way (dial-map G1-G2)
+PASS W3 redshift factors between shells multiply, so (factor - 1) composes by the circle operation at dial 1, but that dial is set by c (1/c^2 in the potential), not by G: masses themselves do not compose this way (dial-map G1-G2)
 PASS E1 Ehlers' frame theory dials lambda = 1/c^2 with G held fixed: c^2 (sqrt(g_tt) - 1) -> -GM/r as c -> infinity, so G survives the Newton-Cartan end; it is a c dial, not a G dial
 PASS R1 relative locality (Amelino-Camelia, Freidel, Kowalski-Glikman, Smolin 2011): hbar, G -> 0 with hbar/G fixed keeps the Planck energy and sends the Planck length to 0, isolating E_P as a dial
 PASS K1 kappa-Poincare: massless momenta moving together compose as a + b + k ab with k = -1/E_P (why-i/kappa-poincare K1, re-run)

@@ -39,7 +39,7 @@ bx.text(-2.05, -1.8, "sign of Im k = which way round", size=12, color=GRAY); bx.
 f.save(P("f1-one-dial-three-constants.svg"))
 
 # ---------------------------------------------------------------- f2 Euler by chaining
-f = Fig(1100, 520); f.title("Chaining small steps: e on the real line, π and −1 round the wall (mult-add, wall at −1)")
+f = Fig(1100, 520); f.title("Chaining small steps: e on the real line, π and −1 round the wall (the circle operation, wall at −1)")
 ax = Axes(f, 70, 60, 600, 400, (-3.0, 2.0), (-0.5, 2.0))
 ax.frame(xticks=[-3, -2, -1, 0, 1, (np.e - 1, "e−1")], yticks=[0, 1, 2], xlabel="real part", ylabel="imaginary part")
 ax.hline(0, color="#ccc", width=1)
@@ -148,8 +148,8 @@ f.text(780, 440, "Flip the sign of i and the 'future' half-plane flips:", size=1
 f.text(780, 458, "the same recipe then returns −Re χ (check C17).", size=12, color=GRAY)
 f.save(P("f5-causality-kramers-kronig.svg"))
 
-# ---------------------------------------------------------------- f6 local tomography as mult-add
-f = Fig(1180, 520); f.title("Local tomography is mult-add of parameter counts: K_AB − 1 = a + b + ab, with a = K_A − 1")
+# ---------------------------------------------------------------- f6 local tomography as the circle operation
+f = Fig(1180, 520); f.title("Local tomography is the circle operation of parameter counts: K_AB − 1 = a + b + ab, with a = K_A − 1")
 def grid(x0, y0, a, b, cell, hidden=0, missing=0, label="", sub=""):
     for i in range(b + 1):
         for j in range(a + 1):
@@ -174,7 +174,7 @@ yl = 420
 for col, s, xx in [("#cccccc", "normalization (the 1)", 50), (BLUE, "A's own parameters (a)", 260), (ORANGE, "B's own parameters (b)", 480), (PURPLE, "correlations (a·b)", 700)]:
     f.rect(xx, yl, 18, 18, color="white", fill=col); f.text(xx + 26, yl + 14, s, size=13)
 f.text(50, 470, "Hardy (2001), Wootters (1990): K_AB = K_A·K_B. Read as (1 + a)(1 + b) = 1 + (a + b + ab), it is the weighted circle operation at k = 1 on parameter counts.", size=13)
-f.text(50, 492, "The grid is the known Fano/Bloch split of a two-qubit state (15 = 3 + 3 + 9). Only the reading as mult-add is ours.", size=13, color=GRAY)
+f.text(50, 492, "The grid is the known Fano/Bloch split of a two-qubit state (15 = 3 + 3 + 9). Only the reading as the circle operation is ours.", size=13, color=GRAY)
 f.save(P("f6-local-tomography-is-mult-add.svg"))
 
 # ---------------------------------------------------------------- f7 axiom scorecard

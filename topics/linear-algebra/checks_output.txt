@@ -1,25 +1,25 @@
-PASS lift 2x2: I+(A⊞B) = (I+A)(I+B)
+PASS lift 2x2: I+(A∘₁B) = (I+A)(I+B)
 PASS lift 3x3
-PASS weighted lift 3x3: I+k(A⊞kB) = (I+kA)(I+kB)
-PASS matrix ⊞ associative 3x3
-PASS matrix ⊞ not commutative in general
+PASS weighted lift 3x3: I+k(A∘ₖB) = (I+kA)(I+kB)
+PASS matrix ∘₁ associative 3x3
+PASS matrix ∘₁ not commutative in general
 PASS det(I+A) 3x3 = 1+e1+e2+e3
 PASS det(I+kA) 3x3 = 1+k e1+k^2 e2+k^3 e3
 PASS minor counts are 1,3,3,1
 PASS det(I+kA) 2x2 = 1 + k tr + k^2 det
-PASS diagonal: det(I+diag)-1 = a⊞b⊞c
+PASS diagonal: det(I+diag)-1 = a∘₁b∘₁c
 PASS D_k homomorphism 2x2 (all k)
 PASS D_k homomorphism 3x3 (all k)
 PASS k=0 case is trace additivity
 PASS det multiplicative 3x3
-PASS det(I+M)-1 = m11 ⊞_w m22 when m12 m21 = (1-w) m11 m22
-PASS 2x2 rotation-type: Xᵀ⊞kX=0 ⇔ 2x + k(x²+y²) = 0
+PASS det(I+M)-1 = m11 ∘_w m22 when m12 m21 = (1-w) m11 m22
+PASS 2x2 rotation-type: Xᵀ∘ₖX=0 ⇔ 2x + k(x²+y²) = 0
 PASS circle: (x+1/k)² + y² = 1/k² same equation
-PASS I+kX orthogonal ⇔ Xᵀ ⊞k X = 0 (identity)
+PASS I+kX orthogonal ⇔ Xᵀ ∘ₖ X = 0 (identity)
 PASS Cayley (I+S)^-1(I-S) = I + (Sᵀ ⊟ S)
 PASS Cayley is orthogonal
-PASS ⊟ undoes ⊞: (X⊟A)⊞A = X
-PASS det(I+A)-1 = λ1⊞…⊞λn
+PASS ⊟ undoes ∘₁: (X⊟A)∘₁A = X
+PASS det(I+A)-1 = λ1∘₁…∘₁λn
 PASS log det(I+A) = tr log(I+A)
 PASS det(exp Y) = exp(tr Y)
 PASS Σ tr Λ^j A = det(I+A)

@@ -21,7 +21,7 @@ p = lambda x: x/(1+x)
 check("element dial t is odds: 1-P(in A or B) = (1-p_t)(1-p_s) iff dial t*s",
       sp.simplify((1-p(w(1,t,s))) - (1-p(t))*(1-p(s))) == 0)
 check("complement turns odds t into 1/t", sp.simplify((1-p(t)) - p(1/t)) == 0)
-# uniform dial t <-> exponent alpha = log2(1+t): count (1+t)^n = 2^(alpha n), and alpha adds when dials mult-add
+# uniform dial t <-> exponent alpha = log2(1+t): count (1+t)^n = 2^(alpha n), and alpha adds when dials combine by the circle operation
 for (x, y) in [(F(1,3), F(2,5)), (F(1), F(1)), (F(3,7), F(1,9))]:
     al = lambda u: math.log2(1+float(u))
     check(f"alpha(t*s) = alpha(t)+alpha(s) for t={x}, s={y}", abs(al(x+y+x*y) - al(x) - al(y)) < 1e-12)
@@ -126,7 +126,7 @@ for kk in [3, 4, 6]:
     check(f"k={kk}: factor at p=2 hits its wall at s=log2 k={s0:.4f} > 1", abs(1 - kk*2**(-s0)) < 1e-12 and s0 > 1)
 check("|k| < 2: every factor finite at s = 1", all(1 - kk/2 > 0 for kk in [-1.9, -1, 0.5, 1.9]))
 
-# ---------- Dial 2: the twist is q times area (from twisted boosts), re-checked ----------
+# ---------- Dial 2: the twist is d times area (from twisted boosts), re-checked ----------
 import random
 random.seed(1)
 okt = True
@@ -135,9 +135,9 @@ for _ in range(200):
     u = (F(random.randint(-5,5),11), F(random.randint(-5,5),11)); v = (F(random.randint(-5,5),11), F(random.randint(-5,5),11))
     dot = u[0]*v[0]+u[1]*v[1]; cross = u[0]*v[1]-u[1]*v[0]
     X_, Y_ = 1 - q*dot, q*cross
-    # twist trivial iff q*cross == 0 (given X != 0)
+    # twist trivial iff d*cross == 0 (given X != 0)
     if X_ != 0 and ((Y_ == 0) != (q == 0 or cross == 0)): okt = False
-check("twist: none iff q*cross = 0 (200 random rational pairs)", okt)
+check("twist: none iff d*cross = 0 (200 random rational pairs)", okt)
 
 # ---------- Dial 5: choice grades are a partial order, not a number line (literature facts, not computed) ----------
 res["choice_note"] = "BPI and DC are independent over ZF (Howard-Rubin); grades do not form a line."

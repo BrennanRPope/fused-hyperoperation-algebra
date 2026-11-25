@@ -26,10 +26,10 @@ def draw(ax, rs, gaps, title, d):
                 new.append((pos, r*L, w*r**d)); pos += r*L
         level = new
         ax.text(-0.04, y + 0.12, f"depth {depth}", ha="right", fontsize=8)
-    ax.text(0.5, -0.4, "every depth's weights add to 1, which is what makes d the dimension", ha="center", fontsize=9, style="italic")
+    ax.text(0.5, -0.4, "every depth's weights add to 1, which is what makes D the dimension", ha="center", fontsize=9, style="italic")
 draw(axes[0], [0.25, 0.25], [0, 0.5], "Half box A: two pieces at zoom 1/4\neach carries weight (1/4)^(1/2) = 1/2", 0.5)
 draw(axes[1], [0.09, 0.49], [0, 0.42], "Uneven half box D: zooms 9/100 and 49/100\nweights 3/10 and 7/10", 0.5)
-fig.suptitle("Figure 1. A zoom becomes a weight: a piece shrunk by r carries r^d", fontsize=13, weight="bold", y=1.0)
+fig.suptitle("Figure 1. A zoom becomes a weight: a piece shrunk by r carries r^D", fontsize=13, weight="bold", y=1.0)
 fig.tight_layout(); fig.savefig(os.path.join(HERE, "fig1-zoom-is-weight.png"), dpi=130, bbox_inches="tight"); plt.close(fig)
 
 # ---------- Fig 2: dimension is where the zoom sum hits the wall
@@ -48,7 +48,7 @@ for name, rs, c in SETS:
     for _ in range(100):
         mid = (lo + hi)/2; lo, hi = (mid, hi) if sum(r**mid for r in rs) > 1 else (lo, mid)
     ax.plot([lo], [1], "o", color=c, ms=7, zorder=5)
-ax.annotate("four different half boxes,\none crossing: d = 1/2", xy=(0.5, 1), xytext=(0.12, 2.3), arrowprops=dict(arrowstyle="->"), fontsize=9.5)
+ax.annotate("four different half boxes,\none crossing: D = 1/2", xy=(0.5, 1), xytext=(0.12, 2.3), arrowprops=dict(arrowstyle="->"), fontsize=9.5)
 ax.set_ylim(0, 3.5); ax.set_xlabel("exponent s"); ax.set_ylabel("zoom sum  x(s) = Σ rᵢˢ")
 ax.set_title("Figure 2. Dimension is an output: where the zoom sum hits the wall x = 1", weight="bold")
 ax.legend(frameon=False, fontsize=9, loc="upper left", bbox_to_anchor=(0.66, 0.78))
@@ -76,9 +76,9 @@ fig.tight_layout(); fig.savefig(os.path.join(HERE, "fig3-complex-dimensions.png"
 
 # ---------- Fig 4: how the zoom dial plugs into what the framework already has
 fig, ax = plt.subplots(figsize=(12, 3.9)); ax.axis("off"); ax.set_xlim(0, 12); ax.set_ylim(0, 4)
-boxes = [(0.2, "zoom r on a piece", "new input"), (2.6, "weight r^s\n(a zoom is a twist,\nk = r^d)", "weight = twist (Base)"),
+boxes = [(0.2, "zoom r on a piece", "new input"), (2.6, "weight r^s\n(a zoom is a twist,\nk = r^D)", "weight = twist (Base)"),
          (5.0, "pieces side by side\nadd: x(s) = Σ rᵢˢ", "k = 0 (plain add)"), (7.4, "zoom again and again:\nall words = 1/(1 − x)", "k = −1 (any number\nof times)"),
-         (9.8, "dimension d: the wall\nx(d) = 1; wobble:\ncomplex wall points", "output")]
+         (9.8, "dimension D: the wall\nx(D) = 1; wobble:\ncomplex wall points", "output")]
 for xb, txt, tag in boxes:
     ax.add_patch(FancyBboxPatch((xb, 1.3), 2.0, 1.7, boxstyle="round,pad=0.05", fc="#eaf2f8", ec="#1b4f72"))
     ax.text(xb + 1.0, 2.15, txt, ha="center", va="center", fontsize=9.5)

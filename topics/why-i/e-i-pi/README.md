@@ -28,7 +28,7 @@ Method (Brennan, Nov 25): build from published work. Anything beyond the sources
 
 ![The dial plane: the real axis gives e (growth), the imaginary axis gives the circle of i (size kept), the half turn π lands on the wall's mirror point where the lift is −1](figures/f1-one-dial-three-constants.png)
 
-Mult-add at dial k is a ∘ₖ b = a + b + k·ab. Its lift 1 + kx turns it into multiplication (check A1). Chaining n copies of x/n gives ((1 + kx/n)ⁿ − 1)/k, which tends to (e^{kx} − 1)/k:
+The circle operation (called mult-add before 1.0) at dial k is a ∘ₖ b = a + b + k·ab. Its lift 1 + kx turns it into multiplication (check A1). Chaining n copies of x/n gives ((1 + kx/n)ⁿ − 1)/k, which tends to (e^{kx} − 1)/k:
 
 - **e:** at k = 1 and x = 1, the chain tends to e − 1. The error falls like 1/n (A2). So e is the lift of one whole unit, chained finely.
 - **A dial is a direction:** k·(a ∘ₖ b) = (ka) ∘₁ (kb) (A3). Over the complex numbers, choosing a dial is the same as choosing which way the inputs point.
@@ -48,9 +48,9 @@ The flat coordinate log(1 + kx)/k turns ∘ₖ into +, up to whole turns 2πi/k 
 
 ## 2. Why complex, not real or quaternion: the axiom check
 
-![Local tomography as mult-add: complex counts fill all 15 = 3 + 3 + 9 cells; real counts leave one joint cell hidden (σy⊗σy, a joint quarter turn); quaternionic counts need 35 cells but only 27 exist](figures/f6-local-tomography-is-mult-add.png)
+![Local tomography as the circle operation: complex counts fill all 15 = 3 + 3 + 9 cells; real counts leave one joint cell hidden (σy⊗σy, a joint quarter turn); quaternionic counts need 35 cells but only 27 exist](figures/f6-local-tomography-is-mult-add.png)
 
-Hardy's local-tomography rule says the parameter count of a joint system is the product of the parts' counts, K_AB = K_A·K_B. In the dial's terms that is exactly mult-add of the counts minus one: (K_A − 1) ∘₁ (K_B − 1) = K_AB − 1 (B1; Lean §4).
+Hardy's local-tomography rule says the parameter count of a joint system is the product of the parts' counts, K_AB = K_A·K_B. In the dial's terms that is exactly the circle operation of the counts minus one: (K_A − 1) ∘₁ (K_B − 1) = K_AB − 1 (B1; Lean §4).
 
 - **Complex:** 15 = 3 + 3 + 3·3 = 3 ∘ 3. Products of local 2×2 observables span all 16 two-qubit directions (B2).
 - **Real:** 2 ∘ 2 = 8, but there are 9 joint parameters. The hidden one is σy⊗σy = −J⊗J, a quarter turn done jointly on both sides that no local measurement sees (B3, B4).
@@ -62,7 +62,7 @@ Masanes–Müller's bit-ball dimension is d = 2 (real), 3 (complex) or 5 (quater
 
 | Axiom (source) | The dial framework |
 |---|---|
-| Hardy 4: K_AB = K_A K_B | **expresses it exactly** (mult-add of counts) |
+| Hardy 4: K_AB = K_A K_B | **expresses it exactly** (the circle operation of counts) |
 | Hardy 5: continuous reversible paths between pure states | **supplies the turning** it needs (the size-keeping dial; B7) |
 | Hardy 1–3 (probabilities, simplicity, subspaces) | does not address |
 | Masanes–Müller 2: local tomography | **expresses it exactly** |
@@ -73,7 +73,7 @@ Masanes–Müller's bit-ball dimension is d = 2 (real), 3 (complex) or 5 (quater
 
 **No axiom is violated.** The honest summary is that the dial explains the step that picks complex numbers (counting) and supplies the continuous turning. The rest of the reconstruction comes from the published axioms, not from us.
 
-*Known:* the axioms and the 15 = 3 + 3 + 9 split (Bloch / Fano). *Ours:* reading K_AB = K_A K_B as mult-add, and naming the hidden real parameter as a joint quarter turn J⊗J.
+*Known:* the axioms and the 15 = 3 + 3 + 9 split (Bloch / Fano). *Ours:* reading K_AB = K_A K_B as the circle operation, and naming the hidden real parameter as a joint quarter turn J⊗J.
 
 ## 3. i across physics: removable or essential?
 
@@ -148,7 +148,7 @@ Short answer:
 | Known (published) | Ours |
 |---|---|
 | Euler; (1 + z/n)ⁿ → eᶻ; product integrals | e, i, π as real dial, size-keeping direction, half turn to the wall's mirror point |
-| Local tomography picks ℂ (Hardy, Masanes–Müller, CDP, Wootters) | K_AB = K_A K_B read as mult-add; the hidden real parameter named as J⊗J |
+| Local tomography picks ℂ (Hardy, Masanes–Müller, CDP, Wootters) | K_AB = K_A K_B read as the circle operation; the hidden real parameter named as J⊗J |
 | Each row of the i-across-physics table | the four-way sorting (turn, area, signature, causality), each as a dial direction |
 | Hawking, Unruh, KMS, Bisognano–Wichmann, Gibbons–Hawking | the ledger of which constant has a dial; the conformal-factor/caustic parallel (untested) |
 | Real QM ruled out experimentally (Renou 2021; 2022 experiments) | nothing |

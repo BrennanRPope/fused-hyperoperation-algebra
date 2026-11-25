@@ -1,7 +1,7 @@
 PASS  rung2 = conj of multiply
 PASS  rung3 right identity 0: a (3) 0 = a
 PASS  rung3 left absorber 0: 0 (3) b = 0
-PASS  rung3 carries mult-add: a (3) b = a (+) ((1+a)^b - 1)
+PASS  rung3 carries the circle operation: a (3) b = a (+) ((1+a)^b - 1)
 PASS  rung3 right-distributes over rung2: (a(+)b)(3)c = (a(3)c)(+)(b(3)c)
 PASS  rung3 tower law: (a(3)b)(3)c = a(3)(b(+)c)
 PASS  rung3 sum law: a(3)(b(1)c) = (a(3)b)(+)(a(3)c)

@@ -1,4 +1,4 @@
-# Game theory through mult-add (Nov 25, 2026)
+# Game theory through the circle operation (Nov 25, 2026)
 
 ## Files
 - index.html: the page (self-contained, four live SVG figures: multiplicative weights, Kelly growth,
@@ -8,13 +8,13 @@
 
 ## Findings
 1. Multiplicative weights (Littlestone-Warmuth 1994, Hedge 1997): each expert's weight is
-   1 + ε·(g1 ✳ε g2 ✳ε …), the total is n·∏(1 + ε r_t), so the learner's lifted fortune is at least the
+   1 + ε·(g1 ∘_ε g2 ∘_ε …), the total is n·∏(1 + ε r_t), so the learner's lifted fortune is at least the
    leader's over n. Logs give the lifted regret bound; the corner (εg)² is the only cost of returning
    to plain gains, giving regret ≤ log n/ε + εT. Known; the dial reading is ours.
 2. Kelly (1956): bets at fraction f compose by the dial with k = f; ruin is the dial's wall r = −1/f.
    At f* = p − q/b the lift is p/π on a win and q/(1 − π) on a loss (π the bookmaker's chance), growth =
    KL(p‖π). Known.
-3. Elo/Bradley-Terry: odds − 1 mult-adds; the edge 2P − 1 composes like relativistic velocity
+3. Elo/Bradley-Terry: odds − 1 combines by the circle operation ∘₁ (called mult-add before 1.0); the edge 2P − 1 composes like relativistic velocity
    (landscape point (0, −1)); rating gap = rapidity, odds = Doppler lift (1 + s)/(1 − s). The identity is
    the classical tanh law; the dictionary is ours as stated.
 4. The dial game v(S) = (∏(1 + k x_i) − 1)/k (Sugeno's λ-measure, 1974): Harsanyi dividends are the cube's

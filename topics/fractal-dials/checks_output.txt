@@ -1,5 +1,5 @@
 PASS 1a all five sets have dimension exactly 1/2 (square roots of their ratios add to 1)
-PASS 1b numeric Moran solve agrees: d = 0.5 for all
+PASS 1b numeric Moran solve agrees: D = 0.5 for all
 PASS 1c pieces never overlap and span [0,1] (so the dimension is the Moran value)
 PASS 2a A, B, C, E are lattice (one ratio); D is non-lattice (log 0.09 / log 0.49 irrational, = log0.3/log0.7)
 PASS 2b equal-ratio sets: N r^s = 1 at s = 1/2 + 2 pi i n / log(1/r) (complex dimensions), spacing differs by set  | A: 4.532, B: 2.860, C: 2.860, E: 2.266
@@ -16,7 +16,7 @@ PASS 5d unfair weights spread the local dimensions alpha over an interval; fair 
 PASS 6a binary branching + equal ratios + dimension 1/2 forces ratio 1/4 (set A); binary dimension 1 forces 1/2
 PASS 6b half box x half box is the binary full box as a tree: distance / tree distance stays in a fixed band at every depth  | depth 2: 0.562..1.912, depth 3: 0.516..2.024, depth 4: 0.504..2.052
 PASS 6c the stick is that tree glued: binary digits of [0,1] identify only dyadic pairs (0.0111... = 0.1000...)
-PASS 7a all five half boxes are dust that splits forever: topologically one Cantor set (connectivity is not a dial below d = 1)
+PASS 7a all five half boxes are dust that splits forever: topologically one Cantor set (connectivity is not a dial below D = 1)
 PASS 7b dimension log3/log2 both ways: 3 at 1/2 and 9 at 1/4 (9 = 3^2, 4 = 2^2)
 PASS 7c gasket: 3^n triangles share (3^(n+1)-3)/2 corner points (finitely ramified, connected); the 9-at-1/4 dust shares none
 PASS 8a joining two self-similar trees gives a self-similar tree (branching multiplies)

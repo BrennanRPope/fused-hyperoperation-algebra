@@ -18,7 +18,7 @@ for c in corners:
     lab={0:'1',1:'1/3',2:'1/9',3:'1/27'}[k]
     ax.text(c[0]+0.07,c[1]+0.07,c[2]+0.09,lab,color=LAY[k],fontsize=12,weight='bold')
 ax.set_axis_off(); ax.view_init(20,-62)
-ax.set_title('Mult-add 1/3 three times: the 3-cube\nevery corner weighs (1/3)^(switches on)',fontsize=12)
+ax.set_title('The circle operation 1/3 three times: the 3-cube\nevery corner weighs (1/3)^(switches on)',fontsize=12)
 ax2=fig.add_subplot(122)
 n=3; ks=np.arange(4)
 lay=[comb(n,k)/n**k for k in ks]; inv=[1/factorial(k) for k in ks]
@@ -75,7 +75,7 @@ for k in (2,3):
     ax.axhline(sN[k],color=G,lw=1); ax.text(40.5,sN[k],f's{k}',color=G,va='center',fontsize=10)
 ax.axhline(uN[2],color=R,lw=1,ls='--'); ax.text(40.5,uN[2],'u2',color=R,va='center',fontsize=10)
 ax.axhline(e,color=K,lw=1.6); ax.text(1.5,e+0.012,'e = 2.71828…',color=K)
-ax.set_ylim(1.95,2.85); ax.set_xlim(1,42.5); ax.set_xlabel('n (number of mult-add steps)')
+ax.set_ylim(1.95,2.85); ax.set_xlim(1,42.5); ax.set_xlabel('n (number of circle-operation steps)')
 ax.set_title('The staircase only climbs',fontsize=12)
 ax.legend(loc='lower right',frameon=False); ax.spines[['top','right']].set_visible(False)
 ax=axs[1]; N=np.unique(np.logspace(0,5,400).astype(int)); st=(1+1/N)**N
@@ -105,7 +105,7 @@ ax.plot(a,a,color=M,lw=1,ls='--',label='slope 1 line')
 for n,c in [(1,R),(2,G),(5,K)]:
     ax.scatter([1/n],[np.log1p(1/n)],color=c,zorder=5)
     ax.text(1/n-0.6 if n==1 else 1/n+0.03,np.log1p(1/n)-0.14,f'n={n}: n·L(1/n) = {n*np.log1p(1/n):.3f}',color=c,fontsize=10)
-ax.set_title('L turns ⊕ into +:  L(a ⊕ b) = L(a) + L(b)\nn steps of 1/n weigh n·L(1/n) → 1',fontsize=11)
+ax.set_title('L turns ∘₁ into +:  L(a ∘₁ b) = L(a) + L(b)\nn steps of 1/n weigh n·L(1/n) → 1',fontsize=11)
 ax.legend(frameon=False,loc='upper left'); ax.spines[['top','right']].set_visible(False)
 ax=axs[2]
 for n,c in [(8,G),(16,B),(64,K)]:
@@ -119,7 +119,7 @@ ax.plot(np.real(z),np.zeros(7),'-o',color=B,ms=4,lw=1.4)
 ax.annotate('real steps 1/n: out to e',(np.real(z[-1]),0),(1.35,-0.5),arrowprops=dict(arrowstyle='->',color=B),color=B,fontsize=10)
 ax.text(-1.9,1.7,'imaginary steps iπ/n: round to −1',color=K,fontsize=10)
 ax.set_aspect('equal'); ax.set_xlim(-2.0,2.9); ax.set_ylim(-0.8,1.95)
-ax.set_title('Same mult-add, two directions:\n(1+1/n)ⁿ → e  and  (1+iπ/n)ⁿ → −1',fontsize=11)
+ax.set_title('Same the circle operation, two directions:\n(1+1/n)ⁿ → e  and  (1+iπ/n)ⁿ → −1',fontsize=11)
 ax.legend(frameon=False,loc='lower left',fontsize=9); ax.spines[['top','right']].set_visible(False)
 plt.savefig(out+'e5_natural_base.png'); plt.close()
 print('ok')

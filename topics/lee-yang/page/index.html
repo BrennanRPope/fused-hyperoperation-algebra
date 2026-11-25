@@ -39,8 +39,8 @@ code{overflow-wrap:anywhere;font-size:14px}
 
 <section class="band">
 <h1>The dial's wall is where the zeros start, not where phases change</h1>
-<p class="lede">Build a partition function from the dial and its zeros always begin at the wall 1 + k·z = 0. A phase change needs the zeros to reach the opposite point, zero field. In the dial gas only q = 2 and q = 1 change the picture; real phase changes happen at q ≈ 6.83 and 1.17. Count colours instead (the Potts model, where the dial is k = Q − 1) and q = 0, 1, 2 do act as walls, while the parity point q = −1 never does. That reading predicted more special dial values; the laws on the landscape do not sit at them, so the lead is closed. A second test asked whether phase changes fill like a cup and then spill, as the rungs might: the rungs never do, and the landscape's border does, but by a different mechanism from latent heat.</p>
-<p class="mute">Dial k, with q = k + 1. 190 numerical checks pass, plus a cluster test over 85 placed laws and a fill-then-spill test; 59 Lean theorems compile in core Lean with no sorry. Nothing here is a new theorem of physics; the readings marked new are new to this project.</p>
+<p class="lede">Build a partition function from the dial and its zeros always begin at the wall 1 + k·z = 0. A phase change needs the zeros to reach the opposite point, zero field. In the dial gas only k = 1 and k = 0 change the picture; real phase changes happen at k ≈ 5.83 and 0.17. Count colours instead (the Potts model with Q colours, where the dial is k = Q − 1) and k = −1, 0, 1 do act as walls, while the parity point k = −2 never does. That reading predicted more special dial values; the laws on the landscape do not sit at them, so the lead is closed. A second test asked whether phase changes fill like a cup and then spill, as the rungs might: the rungs never do, and the landscape's border does, but by a different mechanism from latent heat.</p>
+<p class="mute">Dial k; in the Potts reading k + 1 is the number of colours. 190 numerical checks pass, plus a cluster test over 85 placed laws and a fill-then-spill test; 59 Lean theorems compile in core Lean with no sorry. Nothing here is a new theorem of physics; the readings marked new are new to this project.</p>
 
 <div class="scope">
  <div class="card">
@@ -49,19 +49,19 @@ code{overflow-wrap:anywhere;font-size:14px}
  </div>
  <div>
   <h2>Turn the dial</h2>
-  <p>One edge of the dial gas is the weighted lift itself: 1 + (x ⊞ₖ y) = 1 + x + y + k·xy is two sites with fugacities x, y and pair weight k. Chain n edges into a ring and the zeros come out in closed form: ζ + 1/ζ runs from −2 (the wall) to 2 − 4/k.</p>
-  <div class="read" id="kread">k = 3.00 <small>q = 4.00</small></div>
+  <p>One edge of the dial gas is the weighted lift itself: 1 + (x ∘ₖ y) = 1 + x + y + k·xy is two sites with fugacities x, y and pair weight k. Chain n edges into a ring and the zeros come out in closed form: ζ + 1/ζ runs from −2 (the wall) to 2 − 4/k.</p>
+  <div class="read" id="kread">k = 3.00 <small>Q = 4.00 colours</small></div>
   <label for="k" class="mute">dial k</label>
   <input id="k" type="range" min="-3" max="6" step="0.05" value="3">
   <div class="ctl" role="group" aria-label="ring size"><span class="mute">ring size</span>
    <button data-n="7" aria-pressed="false">7</button><button data-n="25" aria-pressed="true">25</button><button data-n="101" aria-pressed="false">101</button>
-   <button id="snap" title="jump between special values">next special q</button></div>
+   <button id="snap" title="jump between special values">next special k</button></div>
   <p id="say" aria-live="polite"></p>
   <div class="strip" id="strip">
-   <div data-r="neg"><b>k &lt; 0</b> (q &lt; 1)<br>full circle, then out along the positive line: zeros pass zero field</div>
+   <div data-r="neg"><b>k &lt; 0</b><br>full circle, then out along the positive line: zeros pass zero field</div>
    <div data-r="rep"><b>0 &lt; k &lt; 1</b><br>on the negative line, both sides of the wall</div>
-   <div data-r="one"><b>k = 1</b> (q = 2)<br>every zero on the wall</div>
-   <div data-r="att"><b>k &gt; 1</b> (q &gt; 2)<br>arc of the unit circle, gap at zero field</div>
+   <div data-r="one"><b>k = 1</b><br>every zero on the wall</div>
+   <div data-r="att"><b>k &gt; 1</b><br>arc of the unit circle, gap at zero field</div>
   </div>
  </div>
 </div>
@@ -76,7 +76,7 @@ code{overflow-wrap:anywhere;font-size:14px}
 </div>
 <div>
 <p><b>The zeros fill one segment.</b> In s = ζ + 1/ζ the ring's zeros run from s = −2 to s = 2 − 4/k. A phase change needs them to reach s = 2 (zero field). That happens only for k &lt; 0, or as k → ∞; a real ring with k &gt; 0 never changes phase, as physics expects. <span class="tag">new reading</span></p>
-<p><b>Two of the four special values matter here.</b> At q = 2 the segment shrinks onto the wall (the gas is free). At q = 1 the far end 2 − 4/k passes through infinity and the zeros switch sides. At q = 0 and q = −1 nothing changes shape. <span class="tag">new reading</span></p>
+<p><b>Two of the four special values matter here.</b> At k = 1 the segment shrinks onto the wall (the gas is free). At k = 0 the far end 2 − 4/k passes through infinity and the zeros switch sides. At k = −1 and k = −2 nothing changes shape. <span class="tag">new reading</span></p>
 </div>
 </div>
 </section>
@@ -85,19 +85,19 @@ code{overflow-wrap:anywhere;font-size:14px}
 <h2>On a flat grid the phase changes sit elsewhere</h2>
 <p>The same gas on 5×5 and 6×6 grids (wrapped into a torus). For k &gt; 1 every zero sits on one circle, as Lee and Yang proved; the gap at zero field closes as the grid grows only past k = 3 + 2√2. Below k = 1 the zeros leave the circle. For negative k they crowd onto zero field.</p>
 <div class="img"><img src="figures/f1_grid_zeros.png" alt="Seven disks, one per dial value from k = 4 down to k = −2. At k = 4 and 2 the zeros sit on the unit circle with a gap at zero field. At k = 1 they all sit on the wall. At k = 0.5 and 0.1 they lie along the negative line and scatter. At k = −1 and −2 they spread out and gather near zero field."></div>
-<p style="margin-top:16px">Hold the field at zero and solve for the dial instead (Fisher zeros). The zeros close in on k = 3 + 2√2 ≈ 5.83 (the magnet orders, q ≈ 6.83) and k = 3 − 2√2 ≈ 0.17 (sites fill like a chessboard, q ≈ 1.17). None comes within 0.2 of k = −2, −1, 0 or 1.</p>
+<p style="margin-top:16px">Hold the field at zero and solve for the dial instead (Fisher zeros). The zeros close in on k = 3 + 2√2 ≈ 5.83 (the magnet orders) and k = 3 − 2√2 ≈ 0.17 (sites fill like a chessboard). None comes within 0.2 of k = −2, −1, 0 or 1.</p>
 <div class="img"><img src="figures/f3_fisher_zeros.png" alt="Fisher zeros of 4×4, 5×5 and 6×6 grids in the complex dial plane. They form two loops, one closing on k = 3 + 2√2 and a small one closing on k = 3 − 2√2. The special dial values k = −2, −1, 0, 1 are marked and no zero sits on them."></div>
 </section>
 
 <section class="band">
 <h2>Count colours and the special values become walls</h2>
-<p>For the Potts model with Q colours the edge matrix, scaled, has trace 1 + (Q − 1)·t with t = v/(Q + v). So the dial here is k = Q − 1, and your q is exactly the number of colours. A Potts ring is (Q + v)ⁿ·(1 + k·tⁿ), the weighted lift of tⁿ, and two separate rings combine by ⊞ₖ. Proper colourings are t = −1/k: the wall.</p>
+<p>For the Potts model with Q colours the edge matrix, scaled, has trace 1 + (Q − 1)·t with t = v/(Q + v). So the dial here is k = Q − 1: k + 1 is exactly the number of colours. A Potts ring is (Q + v)ⁿ·(1 + k·tⁿ), the weighted lift of tⁿ, and two separate rings combine by ∘ₖ. Proper colourings are t = −1/k: the wall.</p>
 <div class="img"><img src="figures/f2_colour_zeros.png" alt="Zeros of the colour-count polynomials of a 40-site ring and of square-lattice strips of width 2, 3 and 4, plotted against the dial k = Q − 1. Real zeros sit at k = −1 and k = 0, and pile up at k = 1. Nothing lies left of k = −1, so k = −2 has none."></div>
 <table class="stack" style="margin-top:16px"><thead><tr><th>Special value</th><th>Colour count there</th><th>Status</th></tr></thead><tbody>
-<tr><td>q = 0, or (k = −1)</td><td>zero for every graph with an edge</td><td><span class="tag">known</span> ring case in Lean</td></tr>
-<tr><td>q = 1, addition (k = 0)</td><td>zero for every graph with an edge</td><td><span class="tag">known</span> ring case in Lean</td></tr>
-<tr><td>q = 2, mult-add (k = 1)</td><td>zero exactly when the graph has an odd loop; even strips pile zeros onto it (distance 0.00002 at 3×14)</td><td><span class="tag">known</span> ring case in Lean</td></tr>
-<tr><td>q = −1, parity (k = −2)</td><td>never zero: the count is ± the number of acyclic orientations (2ⁿ − 2 on a ring)</td><td><span class="tag">known</span> ring case in Lean</td></tr>
+<tr><td>k = −1 (Q = 0)</td><td>zero for every graph with an edge</td><td><span class="tag">known</span> ring case in Lean</td></tr>
+<tr><td>k = 0, addition (Q = 1)</td><td>zero for every graph with an edge</td><td><span class="tag">known</span> ring case in Lean</td></tr>
+<tr><td>k = 1, the circle operation ∘₁ (called mult-add before 1.0) (Q = 2)</td><td>zero exactly when the graph has an odd loop; even strips pile zeros onto it (distance 0.00002 at 3×14)</td><td><span class="tag">known</span> ring case in Lean</td></tr>
+<tr><td>k = −2, parity (Q = −1)</td><td>never zero: the count is ± the number of acyclic orientations (2ⁿ − 2 on a ring)</td><td><span class="tag">known</span> ring case in Lean</td></tr>
 </tbody></table>
 <p class="mute" style="margin-top:10px">These are the first Beraha numbers, Q = 4cos²(π/n), where colour zeros of planar lattices pile up (Beraha, Kahane and Weiss; Tutte; Jackson for the zero-free gap up to 32/27). On the dial they are k = 1 + 2cos(2π/n): −1, 0, 1, then 1.618, 2, 2.247 … up to 3. Parity is not in the list.</p>
 </section>
@@ -111,10 +111,10 @@ code{overflow-wrap:anywhere;font-size:14px}
 <tr><td>Fair null 1: eight random values in the same span</td><td>Hit at least that well 9.9% of the time</td><td>Not distinguishable from chance</td></tr>
 <tr><td>Fair null 2: eight “simple” numbers (fractions with denominator up to 4)</td><td>Hit at least that well 80% of the time</td><td>Simple numbers explain the hit as well as the prediction does</td></tr>
 <tr><td>Whole dial, five values each: predicted −1, 0, 1, 1.618, 2 against the whole numbers −2 to 2</td><td>76 laws against 80; the whole numbers win on likelihood (128 vs 150)</td><td>The missing four are at k = −2, the parity point</td></tr>
-<tr><td>Change of units, a ↦ λa</td><td>Turns dial value λk into k; the three laws at k = 2 all sit at k = 1 in units of 2</td><td>On the q = 0 axis a positive dial value is a choice of units, not a property of a law</td></tr>
+<tr><td>Change of units, a ↦ λa</td><td>Turns dial value λk into k; the three laws at k = 2 all sit at k = 1 in units of 2</td><td>On the d = 0 axis a positive dial value is a choice of units, not a property of a law</td></tr>
 </tbody></table>
 <p style="margin-top:12px">The sharpest point is k = −2. It holds four laws (parity and bit flips, bit-flip noise, Ising bonds in series, Stokes' pile of plates), more than k = 2 does, and it is exactly the colour count Q = −1 where no ring's count ever vanishes. The landscape clusters where the colour-count reading says nothing happens.</p>
-<p class="mute">The predicted values are tied to a scale because a Potts edge has the fixed form 1 + (Q − 1)·t. A law on the landscape carries its own units, so its dial value is only fixed up to that rescaling; off the axis the unit-free number is k²/q. Census: <code>cluster/landscape_census.csv</code>; test: <code>cluster_test.py</code>, output in <code>cluster/cluster_output.txt</code>.</p>
+<p class="mute">The predicted values are tied to a scale because a Potts edge has the fixed form 1 + (Q − 1)·t. A law on the landscape carries its own units, so its dial value is only fixed up to that rescaling; off the axis the unit-free number is k²/d. Census: <code>cluster/landscape_census.csv</code>; test: <code>cluster_test.py</code>, output in <code>cluster/cluster_output.txt</code>.</p>
 </section>
 
 <section class="band" id="fill-spill">
@@ -123,7 +123,7 @@ code{overflow-wrap:anywhere;font-size:14px}
 <div class="img"><img src="figures/f5_fillspill.png" alt="Four panels. Top left: the speed of the flow between rungs rises smoothly with no dips at whole rungs, unlike a dashed staircase drawn for comparison. Top right: repeating a law just past the border, the value climbs to the ghost of the double wall at −2, sits there for about twelve thousand steps, then runs off; just inside the two-walls country it settles and stays. Bottom left: the time spent lingering grows as one over the square root of the distance past the border, on a straight line of slope −1/2. Bottom right: the exact latent heat of the colour-count model is zero up to k = 3 and rises after, with simulation points at k = 7 and 9 on the curve."></div>
 <table class="stack" style="margin-top:16px"><thead><tr><th>Where</th><th>What I found</th><th>Reading</th></tr></thead><tbody>
 <tr><td>Between the rungs</td><td>The rung curve is (s, s(s − 1)/4), and its unit-free shape number is exactly s, so it moves at a constant pace. The standard flow E^s(x) speeds up steadily; its rung-locked wobble is 0.00001, against ±0.1 for other valid interpolations and −1.2 for a staircase drawn on purpose.</td><td>No fill, no spill. A pause at each rung would have to be put in by hand.</td></tr>
-<tr><td>The landscape's border</td><td>Repeat a law with a small step. In the two-walls country the value settles into a wall and stays. Just past the border it climbs to where the double wall used to be, lingers, then spills through infinity and comes round. The linger grows as (4q − k²)^(−1/2), and twelve random laws at the same distance take the same time to 2%.</td><td>A real fill, linger, spill. It is the standard bottleneck of any fold: ten random smooth folds give the same −1/2.</td></tr>
+<tr><td>The landscape's border</td><td>Repeat a law with a small step. In the two-walls country the value settles into a wall and stays. Just past the border it climbs to where the double wall used to be, lingers, then spills through infinity and comes round. The linger grows as (4d − k²)^(−1/2), and twelve random laws at the same distance take the same time to 2%.</td><td>A real fill, linger, spill. It is the standard bottleneck of any fold: ten random smooth folds give the same −1/2.</td></tr>
 <tr><td>Colour counts (k = colours − 1)</td><td>The exact latent heat (Baxter 1973) is zero up to k = 3 and opens past it: 0.053 at k = 4, 0.696 at k = 9. A 64 × 64 simulation gives 0.695 at k = 9.</td><td>A true heat plateau, on the dial past k = 3.</td></tr>
 <tr><td>The dial gas</td><td>Exact counts on 4×4 to 6×6 tori: the fugacity needed to add a particle goes flat across the middle densities once the pair weight is large enough, and that threshold climbs with size (3.06, 3.41, 3.69) toward k = 3 + 2√2 ≈ 5.83.</td><td>A true filling plateau in density, past k ≈ 5.83.</td></tr>
 </tbody></table>
@@ -135,25 +135,25 @@ code{overflow-wrap:anywhere;font-size:14px}
 <h2>Proofs</h2>
 <p>Files <code>math-theory/lee-yang/lean/LeeYang.lean</code> (39 theorems, merged into the shared library) , <code>LeeYangCluster.lean</code> (10 theorems, merged) and <code>LeeYangSpill.lean</code> (10 theorems, sent to the library), core Lean 4.37, no sorry, standard axioms only. The main ones:</p>
 <table class="stack"><thead><tr><th>Theorem</th><th>Says</th></tr></thead><tbody>
-<tr><td><code>edge_gas</code></td><td>one edge of the gas is 1 + (x ⊞ₖ y)</td></tr>
+<tr><td><code>edge_gas</code></td><td>one edge of the gas is 1 + (x ∘ₖ y)</td></tr>
 <tr><td><code>ringT_tr</code></td><td>the ring's transfer matrix has trace 1 + k·z</td></tr>
 <tr><td><code>odd_ring_vanishes_on_wall</code></td><td>every odd ring is 0 on the wall, for every k</td></tr>
 <tr><td><code>even_ring_on_wall</code></td><td>an even ring on the wall is 2(z(1 − k))^m</td></tr>
 <tr><td><code>triangle_factor</code>, <code>triangle_disc_nonpos</code></td><td>the triangle is (1 + kz)·(quadratic), and for k ≥ 1 the quadratic's zeros are a conjugate pair on |z| = 1/k</td></tr>
 <tr><td><code>ring_zero_family</code>, <code>ring_family_zeta</code></td><td>the closed form of the ring's zeros, from the wall (c = 0) to the edge (c = 4)</td></tr>
-<tr><td><code>pottsRing_lift</code>, <code>two_rings</code></td><td>a Potts ring is the weighted lift of tⁿ; two rings combine by ⊞ₖ with k = Q − 1</td></tr>
+<tr><td><code>pottsRing_lift</code>, <code>two_rings</code></td><td>a Potts ring is the weighted lift of tⁿ; two rings combine by ∘ₖ with k = Q − 1</td></tr>
 <tr><td><code>ising_ring_transfer</code></td><td>the Q = 2 formula equals the transfer-matrix trace</td></tr>
-<tr><td><code>ring_zero_at_q0</code>, <code>_q1</code>, <code>_q2_odd</code>, <code>parity_never_zero</code></td><td>colour counts on rings: zero at q = 0, 1, at 2 when odd, never at −1</td></tr>
+<tr><td><code>ring_zero_at_q0</code>, <code>_q1</code>, <code>_q2_odd</code>, <code>parity_never_zero</code></td><td>colour counts on rings: zero at k = −1, 0, at k = 1 when odd, never at k = −2</td></tr>
 <tr><td><code>beraha5_not_int</code> … <code>beraha12_not_int</code></td><td>each predicted value for n = 5, 7, 8, 9, 10, 12 is a root of an integer polynomial with no whole-number root, so a law at a whole-number dial value can only hit k = 2</td></tr>
-<tr><td><code>wAdd_units</code>, <code>leverage_is_compounding</code>, <code>units_bend</code></td><td>rescaling by λ turns weight λk into k (and bend λ²q into q); 2× leverage at k = 2 is plain compounding at k = 1</td></tr>
-<tr><td><code>step_disc</code>, <code>wall_square</code>, <code>slowest_step</code>, <code>turning_never_stalls</code></td><td>repeating a law is a Möbius step with discriminant x²(k² − 4q); its slowest move is set by the distance past the border, and on the turning side it never stops</td></tr>
+<tr><td><code>circK_units</code>, <code>leverage_is_compounding</code>, <code>units_bend</code></td><td>rescaling by λ turns weight λk into k (and bend λ²d into d); 2× leverage at k = 2 is plain compounding at k = 1</td></tr>
+<tr><td><code>step_disc</code>, <code>wall_square</code>, <code>slowest_step</code>, <code>turning_never_stalls</code></td><td>repeating a law is a Möbius step with discriminant x²(k² − 4d); its slowest move is set by the distance past the border, and on the turning side it never stops</td></tr>
 <tr><td><code>walls_factor</code>, <code>border_orbit</code>, <code>tan_fourth</code></td><td>two walls stop the orbit; on the border n steps land at nx/(1 − (n − 1)ux), filling toward the double wall forever; tangent addition comes round in exactly four steps</td></tr>
 </tbody></table>
 </section>
 
 <section class="band verdict">
 <h2>Is it a lead worth following?</h2>
-<p>No, on either test. The colour-count reading explains why q = 0, 1, 2 are special, but those are theorems others already proved, and its new predictions fail: no law sits at a non-whole predicted value, and the biggest cluster it misses, k = −2, is the point it says should be quiet.</p>
+<p>No, on either test. The colour-count reading explains why k = −1, 0, 1 are special, but those are theorems others already proved, and its new predictions fail: no law sits at a non-whole predicted value, and the biggest cluster it misses, k = −2, is the point it says should be quiet.</p>
 <p>The fill-then-spill idea does not hold together either. The rungs never fill and spill. The landscape's border does, but that is the bottleneck every fold has, with the textbook exponent. Real latent heat does appear on the dial past k = 3, but it shrinks where the border linger grows, and it happens while the law stays well inside the two-walls country. The picture is apt in two places; the mechanism is not shared, so there is nothing further to chase.</p>
 <p>What stands is a set of exact facts, all proved in Lean: odd rings vanish on the wall, colour counts are the weighted lift, values above zero are a choice of units, and repeating a law turns past the border with a linger set by the distance to it.</p>
 </section>
@@ -190,7 +190,7 @@ function draw(){const k=+kin.value,W=400,R=180,cx=200,cy=200,P=([x,y])=>[cx+R*x,
   `<rect x="${cx+R/2-9}" y="${cy-9}" width="18" height="18" fill="none" stroke="var(--zf)" stroke-width="3"/>`+
   `<text x="${cx-R/2}" y="${cy+32}" text-anchor="middle" font-size="14" fill="var(--ink)">wall</text>`+
   `<text x="${cx+R/2}" y="${cy+32}" text-anchor="middle" font-size="14" fill="var(--ink)">zero field</text>`;
- kread.innerHTML=`k = ${k.toFixed(2)} <small>q = ${(k+1).toFixed(2)}</small>`;
+ kread.innerHTML=`k = ${k.toFixed(2)} <small>Q = ${(k+1).toFixed(2)} colours</small>`;
  say.textContent=words(k);
  for(const d of document.querySelectorAll('#strip div'))d.classList.toggle('on',d.dataset.r===regime(k));}
 kin.addEventListener('input',draw);

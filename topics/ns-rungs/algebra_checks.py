@@ -1,7 +1,7 @@
 """Fused Hyperoperation Algebra: numeric checks of the rung identities.
 Rung n operation = ordinary hyperoperation H_n conjugated by x -> 1+x:
   a (n) b = H_n(1+a, 1+b) - 1
-  rung 1: a+b+1   rung 2: a+b+ab (mult-add)   rung 3: (1+a)^(1+b)-1   rung 4: (1+a)^^(1+b)-1
+  rung 1: a+b+1   rung 2: a+b+ab (the circle operation)   rung 3: (1+a)^(1+b)-1   rung 4: (1+a)^^(1+b)-1
 """
 import numpy as np, math, itertools
 np.seterr(over="ignore")
@@ -17,7 +17,7 @@ A = rng.uniform(0.1,3,1000); B = rng.uniform(0.1,3,1000); C = rng.uniform(0.1,3,
 check("rung2 = conj of multiply", np.allclose(r2(A,B), (1+A)*(1+B)-1))
 check("rung3 right identity 0: a (3) 0 = a", np.allclose(r3(A,0*A), A))
 check("rung3 left absorber 0: 0 (3) b = 0", np.allclose(r3(0*A,B), 0))
-check("rung3 carries mult-add: a (3) b = a (+) ((1+a)^b - 1)", np.allclose(r3(A,B), r2(A,(1+A)**B-1)))
+check("rung3 carries the circle operation: a (3) b = a (+) ((1+a)^b - 1)", np.allclose(r3(A,B), r2(A,(1+A)**B-1)))
 check("rung3 right-distributes over rung2: (a(+)b)(3)c = (a(3)c)(+)(b(3)c)", np.allclose(r3(r2(A,B),C), r2(r3(A,C),r3(B,C))))
 check("rung3 tower law: (a(3)b)(3)c = a(3)(b(+)c)", np.allclose(r3(r3(A,B),C), r3(A,r2(B,C))))
 check("rung3 sum law: a(3)(b(1)c) = (a(3)b)(+)(a(3)c)", np.allclose(r3(A,r1(B,C)), r2(r3(A,B),r3(A,C))))

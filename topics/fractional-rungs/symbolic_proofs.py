@@ -4,11 +4,11 @@ Every check here is an exact algebraic identity verified by sympy (expand/simpli
 so each PASS is a proof of that identity, not a numeric sample.
 
 Notation
-  E(x) = e^x - 1   (mult-add's exponential: E(a+b) = E(a) (+) E(b))
-  L(x) = log(1+x)  (its inverse, mult-add's logarithm)
+  E(x) = e^x - 1   (the circle operation's exponential: E(a+b) = E(a) (+) E(b))
+  L(x) = log(1+x)  (its inverse, the circle operation's logarithm)
   dial:  a (+)_k b = a + b + k ab
   s-ladder: B_s(a,b) = E^s( E^-s(a) + E^-s(b) ),  E^s = s-th iterate of E
-            B_0 = +, B_1 = mult-add, B_-1 = log(e^a + e^b - 1)
+            B_0 = +, B_1 = the circle operation, B_-1 = log(e^a + e^b - 1)
 """
 import sympy as sp
 
@@ -29,7 +29,7 @@ check("dial commutative", dial(a, b) - dial(b, a))
 check("dial associative", dial(dial(a, b), c) - dial(a, dial(b, c)))
 check("dial identity 0", dial(a, 0) - a)
 check("dial inverse -a/(1+ka)", sp.together(dial(a, -a/(1 + k*a))))
-check("dial = mult-add rescaled: k (a (+)_k b) = (ka)(+)(kb)", k*dial(a, b) - madd(k*a, k*b))
+check("dial = the circle operation rescaled: k (a (+)_k b) = (ka)(+)(kb)", k*dial(a, b) - madd(k*a, k*b))
 check("dial lift: 1 + k(a (+)_k b) = (1+ka)(1+kb)", 1 + k*dial(a, b) - (1 + k*a)*(1 + k*b))
 check("mirror: -((-a)(+)_k(-b)) = a (+)_{-k} b", -dial(-a, -b) - dial(a, b, -k))
 check("k=-1 is probabilistic OR: 1-(1-a)(1-b)", dial(a, b, -1) - (1 - (1 - a)*(1 - b)))
@@ -87,7 +87,7 @@ cubic = sp.factor(sp.Poly(trunc(Bs, 3) - trunc(Bs, 2), a, b).coeff_monomial(a**2
 print("cubic coefficient of a^2 b in B_s:", cubic)
 check("cubic bend of B_s is s(s-1)/4 * (a^2 b + a b^2): zero only at s = 0 and s = 1",
       trunc(Bs, 3) - trunc(Bs, 2) - (s*(s - 1)/4)*(a**2*b + a*b**2))
-check("B_1 (mult-add) has no terms beyond ab (to degree 4)", B4.subs(s, 1) - madd(a, b))
+check("B_1 (the circle operation) has no terms beyond ab (to degree 4)", B4.subs(s, 1) - madd(a, b))
 check("B_0 is plain addition (to degree 4)", B4.subs(s, 0) - (a + b))
 check("B_s commutative (to degree 4)", B4 - B4.subs({a: b, b: a}, simultaneous=True))
 # associativity of the truncated law, degree 4
@@ -115,17 +115,17 @@ succ = lambda p, q: q + 1
 check("fused successor = successor", fuse(succ)(a, b) - succ(a, b))
 check("fused log-sum-exp = log-sum-exp", sp.simplify(sp.exp(fuse(lse)(a, b)) - sp.exp(lse(a, b))))
 check("fused addition = a + b + 1 (the first rung the shift touches)", fuse(lambda p, q: p + q)(a, b) - (a + b + 1))
-check("fused multiplication = mult-add", fuse(lambda p, q: p*q)(a, b) - madd(a, b))
+check("fused multiplication = the circle operation", fuse(lambda p, q: p*q)(a, b) - madd(a, b))
 # general reason: op(a+c, b+c) = op(a,b) + c  =>  fused op = op. Shown for max via cases in Lean.
 
 # ---------- 6. Negative and fractional right inputs of the fused exponent ----------
 fexp = lambda p, q: (1 + p)**(1 + q) - 1
 check("a (*)3 (-1) = 0 (identity)", sp.simplify(fexp(a, -1)))
-check("a (*)3 (-2) = mult-add inverse of a", sp.simplify(madd(a, fexp(a, -2))))
+check("a (*)3 (-2) = circle inverse of a", sp.simplify(madd(a, fexp(a, -2))))
 r = fexp(a, sp.Rational(-1, 2))
-check("a (*)3 (-1/2) is the mult-add square root: r (+) r = a", sp.simplify(madd(r, r) - a))
+check("a (*)3 (-1/2) is the circle-operation square root: r (+) r = a", sp.simplify(madd(r, r) - a))
 r3 = fexp(a, sp.Rational(-2, 3))
-check("a (*)3 (-2/3) is the mult-add cube root", sp.simplify(madd(madd(r3, r3), r3) - a))
+check("a (*)3 (-2/3) is the circle-operation cube root", sp.simplify(madd(madd(r3, r3), r3) - a))
 ap, bp, cp = sp.symbols('ap bp cp', positive=True)
 check("dimension law: (a (*)3 b) (*)3 c = a (*)3 (b (+) c)  [tower law; dimensions multiply]",
       sp.powsimp(sp.expand(fexp(fexp(ap, bp), cp) - fexp(ap, madd(bp, cp))), force=True))
@@ -139,7 +139,7 @@ check("KdV tau function f - 1 = e1 (+)_A e2  (dial with k = A)", (f - 1) - dial(
 fx = lambda g, n=1: sp.diff(g, X, n)
 bil = (f*sp.diff(f, X, T) - fx(f)*sp.diff(f, T)) + (f*fx(f, 4) - 4*fx(f)*fx(f, 3) + 3*fx(f, 2)**2)
 check("Hirota bilinear KdV (DxDt + Dx^4) f.f = 0 with that corner", sp.simplify(sp.expand(bil)))
-for kk_name, kk in [("A = 0 (corner empty)", 0), ("A = 1 (full mult-add)", 1)]:
+for kk_name, kk in [("A = 0 (corner empty)", 0), ("A = 1 (the full circle operation)", 1)]:
     g = 1 + e1 + e2 + kk*e1*e2
     bad = (g*sp.diff(g, X, T) - fx(g)*sp.diff(g, T)) + (g*fx(g, 4) - 4*fx(g)*fx(g, 3) + 3*fx(g, 2)**2)
     nz = sp.simplify(sp.expand(bad)) != 0

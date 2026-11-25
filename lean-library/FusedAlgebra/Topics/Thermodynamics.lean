@@ -15,8 +15,8 @@
   LIBRARY NOTE: copied from thermodynamics/lean/ThermoFused.lean (Nov 25) as
   Topics/Thermodynamics and compiled here with core Lean 4.37.0-rc1.
 
-  Mult-add a ⊞ b = a + b + ab, its lift 1 + (a ⊞ b) = (1 + a)(1 + b), the
-  weighted family wAdd k a b = a + b + k·ab with 1 + k(a ⊞ₖ b) = (1+ka)(1+kb),
+  The circle operation (called mult-add before 1.0) a ◯ b = a + b + ab, its lift 1 + (a ◯ b) = (1 + a)(1 + b), the
+  weighted family circK k a b = a + b + k·ab with 1 + k(a ◯[k] b) = (1+ka)(1+kb),
   the inverse −u/(1+u), list folds and the cube's corners all come from Base.
 
   What Lean does not check here: anything needing real exp, log, sqrt or
@@ -30,7 +30,7 @@ import FusedAlgebra.Base
 
 namespace ThermoFused
 
-open MultAdd
+open CircleOp
 
 /-! ## 0. Two small helpers -/
 
@@ -60,9 +60,9 @@ theorem outer_sum (xs ys : List Rat) : sumL (outer xs ys) = sumL xs * sumL ys :=
 
 /-! ## 1. Partition functions: the corner is "both excited" -/
 
-/-- Independent systems: Z_AB = Z_A · Z_B, so Z − 1 composes by mult-add. -/
-theorem partition_square (ZA ZB : Rat) : ZA * ZB - 1 = multAdd (ZA - 1) (ZB - 1) := by
-  unfold multAdd; grind
+/-- Independent systems: Z_AB = Z_A · Z_B, so Z − 1 composes by the circle operation. -/
+theorem partition_square (ZA ZB : Rat) : ZA * ZB - 1 = circ (ZA - 1) (ZB - 1) := by
+  unfold circ; grind
 
 /-- The joint partition function of two systems is the product of theirs
     (the weights of joint states are products of weights). -/
@@ -70,36 +70,36 @@ theorem partition_multiplies (wA wB : List Rat) :
     sumL (outer wA wB) = sumL wA * sumL wB := outer_sum wA wB
 
 /-- Put each ground state first with weight 1 (energies measured from it).
-    Then the joint partition function is 1 + (zA ⊞ zB), where z is the sum of
+    Then the joint partition function is 1 + (zA ◯ zB), where z is the sum of
     the excited weights: zA is "A excited, B in its ground state", zB the
     reverse, and the corner zA·zB is "both excited". -/
 theorem partition_excess (xs ys : List Rat) :
-    sumL (outer (1 :: xs) (1 :: ys)) = 1 + multAdd (sumL xs) (sumL ys) := by
-  rw [outer_sum]; simp only [sumL]; rw [multAdd_lift]
+    sumL (outer (1 :: xs) (1 :: ys)) = 1 + circ (sumL xs) (sumL ys) := by
+  rw [outer_sum]; simp only [sumL]; rw [circ_lift]
 
 /-- Free energy (and any log) is the linear coordinate: it adds. -/
 theorem free_energy_adds {G : Type} [Add G] (L : Rat → G)
     (hL : ∀ x y, L (x * y) = L x + L y) (zA zB : Rat) :
-    L (1 + multAdd zA zB) = L (1 + zA) + L (1 + zB) := by
-  rw [multAdd_lift, hL]
+    L (1 + circ zA zB) = L (1 + zA) + L (1 + zB) := by
+  rw [circ_lift, hL]
 
 /-! ## 2. The third law: the identity, and the wall you can't reach -/
 
 /-- As T → 0 every excess goes to 0, the identity, and the identity composes
     to the identity: a composite's entropy also goes to 0. -/
-theorem third_law_identity : multAdd (0 : Rat) 0 = 0 := multAdd_zero 0
+theorem third_law_identity : circ (0 : Rat) 0 = 0 := circ_zero 0
 
-/-- Residual entropy: ground-state degeneracies compose by mult-add of g − 1. -/
-theorem residual_degeneracy (g1 g2 : Rat) : g1 * g2 - 1 = multAdd (g1 - 1) (g2 - 1) :=
+/-- Residual entropy: ground-state degeneracies compose by the circle operation of g − 1. -/
+theorem residual_degeneracy (g1 g2 : Rat) : g1 * g2 - 1 = circ (g1 - 1) (g2 - 1) :=
   partition_square g1 g2
 
-/-- Pauling's ice: W = (3/2)^N, so W − 1 is the mult-add power (1/2)^(⊞N). -/
+/-- Pauling's ice: W = (3/2)^N, so W − 1 is the circle power (1/2)^(◯N). -/
 theorem pauling_ice (n : Nat) : 1 + mpow (1/2 : Rat) n = (3/2) ^ n := by
   rw [mpow_lift]
   have e : (1 + 1/2 : Rat) = 3/2 := by grind
   rw [e]
 
-/-- Landauer: n bits have 2^n states, 2^n − 1 = 1^(⊞n). -/
+/-- Landauer: n bits have 2^n states, 2^n − 1 = 1^(◯n). -/
 theorem landauer_states (n : Nat) : 1 + mpow (1 : Rat) n = 2 ^ n := by
   rw [mpow_lift]
   have e : (1 + 1 : Rat) = 2 := by grind
@@ -108,28 +108,28 @@ theorem landauer_states (n : Nat) : 1 + mpow (1 : Rat) n = 2 ^ n := by
 /-- One cooling step that keeps T above 0 (ratio 1 + a > 0), followed by
     another, still keeps T above 0. -/
 theorem cooling_step_pos (a b : Rat) (ha : 0 < 1 + a) (hb : 0 < 1 + b) :
-    0 < 1 + multAdd a b := by
-  rw [multAdd_lift]; exact Rat.mul_pos ha hb
+    0 < 1 + circ a b := by
+  rw [circ_lift]; exact Rat.mul_pos ha hb
 
 /-- Unattainability: any finite list of cooling steps, each short of the wall,
-    stays short of it. T = 0 is the wall −1, and mult-add only reaches the
+    stays short of it. T = 0 is the wall −1, and the circle operation only reaches the
     wall if some step is already on it. -/
-theorem unattainable (l : List Rat) (h : ∀ x ∈ l, 0 < 1 + x) : 0 < 1 + foldMA l := by
+theorem unattainable (l : List Rat) (h : ∀ x ∈ l, 0 < 1 + x) : 0 < 1 + foldCirc l := by
   induction l with
-  | nil => simp only [foldMA]; grind
+  | nil => simp only [foldCirc]; grind
   | cons a l ih =>
-    simp only [foldMA]
-    rw [multAdd_lift]
+    simp only [foldCirc]
+    rw [circ_lift]
     exact Rat.mul_pos (h a (by simp)) (ih (fun x hx => h x (by simp [hx])))
 
-theorem never_the_wall (l : List Rat) (h : ∀ x ∈ l, 0 < 1 + x) : foldMA l ≠ -1 := by
+theorem never_the_wall (l : List Rat) (h : ∀ x ∈ l, 0 < 1 + x) : foldCirc l ≠ -1 := by
   intro heq
   have := unattainable l h
   rw [heq] at this
   grind
 
 /-- Equipartition: n quadratic degrees of freedom are n half-steps of T.
-    If s·s = T/T₀ then 1 + (s − 1)^(⊞2m) = (T/T₀)^m. -/
+    If s·s = T/T₀ then 1 + (s − 1)^(◯2m) = (T/T₀)^m. -/
 theorem equipartition (s r : Rat) (hs : s * s = r) (m : Nat) :
     1 + mpow (s - 1) (2 * m) = r ^ m := by
   rw [mpow_lift]
@@ -143,23 +143,23 @@ theorem equipartition (s r : Rat) (hs : s * s = r) (m : Nat) :
 /-! ## 3. Fermions are the cube; bosons are the way back -/
 
 /-- Fermion grand partition function: each mode empty or full (Pauli), so
-    Ξ = Π(1 + zᵢ) = 1 + (z₁ ⊞ … ⊞ zₙ). -/
-theorem fermion_lift (l : List Rat) : 1 + foldMA l = prodL (l.map (fun x => 1 + x)) :=
-  foldMA_lift l
+    Ξ = Π(1 + zᵢ) = 1 + (z₁ ◯ … ◯ zₙ). -/
+theorem fermion_lift (l : List Rat) : 1 + foldCirc l = prodL (l.map (fun x => 1 + x)) :=
+  foldCirc_lift l
 
 /-- …and that is the sum over every corner of the cube: every many-fermion
     state is one corner (one subset of occupied modes). -/
-theorem fermion_cube (l : List Rat) : 1 + foldMA l = sumL ((groups l).map prodL) :=
-  one_add_foldMA_eq_corners l
+theorem fermion_cube (l : List Rat) : 1 + foldCirc l = sumL ((groups l).map prodL) :=
+  one_add_foldCirc_eq_corners l
 
-/-- A boson mode: Ξ_B = 1/(1 − z) = 1 + multAddInv(−z). The excess z/(1 − z)
+/-- A boson mode: Ξ_B = 1/(1 − z) = 1 + circInv(−z). The excess z/(1 − z)
     is the way back from a negative fermion. -/
-theorem boson_mode (z : Rat) (h : 1 + -z ≠ 0) : (1 + multAddInv (-z)) * (1 - z) = 1 := by
-  unfold multAddInv; grind
+theorem boson_mode (z : Rat) (h : 1 + -z ≠ 0) : (1 + circInv (-z)) * (1 - z) = 1 := by
+  unfold circInv; grind
 
 /-- Boson–fermion duality, one mode: Ξ_B(z) · Ξ_F(−z) = 1. -/
 theorem boson_fermion_dual (z : Rat) (h : 1 + -z ≠ 0) :
-    multAdd (multAddInv (-z)) (-z) = 0 := multAddInv_multAdd (-z) h
+    circ (circInv (-z)) (-z) = 0 := circInv_circ (-z) h
 
 /-- Fermi function: with Boltzmann odds E = e^x the occupation is 1/(1 + E)
     and t = 1 − 2n = (E − 1)/(E + 1).  Adding energies multiplies odds, and
@@ -188,31 +188,31 @@ theorem vel_identity (v : Rat) : vel 0 v = v := by
 /-! ## 4. Engines, fridges, heat pumps -/
 
 /-- Two engines in series, the second running on the first's waste heat:
-    total work / heat in = η₁ ⊞₋₁ η₂ (the failure-union rule). -/
+    total work / heat in = η₁ ◯[−1] η₂ (the failure-union rule). -/
 theorem engine_cascade (Qh e1 e2 : Rat) :
-    e1 * Qh + e2 * (Qh - e1 * Qh) = wAdd (-1) e1 e2 * Qh := by
-  unfold wAdd; grind
+    e1 * Qh + e2 * (Qh - e1 * Qh) = circK (-1) e1 e2 * Qh := by
+  unfold circK; grind
 
-/-- Carnot: η(Th,Tc) = η(Th,Tm) ⊞₋₁ η(Tm,Tc); the lift 1 − η is Tc/Th. -/
+/-- Carnot: η(Th,Tc) = η(Th,Tm) ◯[−1] η(Tm,Tc); the lift 1 − η is Tc/Th. -/
 theorem carnot_series (h m c : Rat) (hh : h ≠ 0) (hm : m ≠ 0) :
-    1 - c / h = wAdd (-1) (1 - m / h) (1 - c / m) := by
-  unfold wAdd; grind
+    1 - c / h = circK (-1) (1 - m / h) (1 - c / m) := by
+  unfold circK; grind
 
 /-- The k = −1 wall is the perfect engine: one perfect stage makes all perfect. -/
-theorem perfect_stage (e : Rat) : wAdd (-1) 1 e = 1 := by
-  unfold wAdd; grind
+theorem perfect_stage (e : Rat) : circK (-1) 1 e = 1 := by
+  unfold circK; grind
 
 /-- Two fridges in cascade (the second pumps the first's rejected heat):
-    work per unit of cold heat u = W/Qc composes by plain mult-add. -/
+    work per unit of cold heat u = W/Qc composes by the plain circle operation. -/
 theorem fridge_cascade (Qc u1 u2 : Rat) :
-    u1 * Qc + u2 * (Qc + u1 * Qc) = multAdd u1 u2 * Qc := by
-  unfold multAdd; grind
+    u1 * Qc + u2 * (Qc + u1 * Qc) = circ u1 u2 * Qc := by
+  unfold circ; grind
 
-/-- Running an engine backwards is the mult-add inverse:
-    u = η/(1 − η) = multAddInv(−η). -/
+/-- Running an engine backwards is the circle inverse:
+    u = η/(1 − η) = circInv(−η). -/
 theorem reverse_is_inverse (eta : Rat) (h : 1 - eta ≠ 0) :
-    eta / (1 - eta) = multAddInv (-eta) := by
-  unfold multAddInv; grind
+    eta / (1 - eta) = circInv (-eta) := by
+  unfold circInv; grind
 
 /-- …so 1 + u is the reciprocal of the engine's lift 1 − η. -/
 theorem fridge_lift (eta : Rat) (h : 1 - eta ≠ 0) :
@@ -223,24 +223,24 @@ theorem carnot_fridge (h c : Rat) (hc : c ≠ 0) : 1 + (h - c) / c = h / c := by
 
 /-- Curzon–Ahlborn (efficiency at maximum power): with s·s = Tc/Th,
     η_CA = 1 − s and η_C = 1 − s·s.  Two CA steps make one Carnot step:
-    η_C = η_CA ⊞₋₁ η_CA.  CA is the half-step of the k = −1 climb. -/
-theorem curzon_ahlborn_half (s : Rat) : wAdd (-1) (1 - s) (1 - s) = 1 - s * s := by
-  unfold wAdd; grind
+    η_C = η_CA ◯[−1] η_CA.  CA is the half-step of the k = −1 climb. -/
+theorem curzon_ahlborn_half (s : Rat) : circK (-1) (1 - s) (1 - s) = 1 - s * s := by
+  unfold circK; grind
 
-/-- CA engines in series also compose by ⊞₋₁ (and so do Otto cycles, whose
+/-- CA engines in series also compose by ◯[−1] (and so do Otto cycles, whose
     1 − η = r^(1−γ) multiplies with the compression ratios). -/
-theorem ratio_series (s1 s2 : Rat) : 1 - s1 * s2 = wAdd (-1) (1 - s1) (1 - s2) := by
-  unfold wAdd; grind
+theorem ratio_series (s1 s2 : Rat) : 1 - s1 * s2 = circK (-1) (1 - s1) (1 - s2) := by
+  unfold circK; grind
 
 /-- The second law composes: stages below their Carnot bounds (1 − ηᵢ ≥ rᵢ,
     rᵢ = T_out/T_in ≥ 0) make a cascade below the overall bound 1 − r₁r₂. -/
 theorem second_law_composes (e1 e2 r1 r2 : Rat) (h1 : 0 ≤ r1) (h2 : 0 ≤ r2)
-    (b1 : r1 ≤ 1 - e1) (b2 : r2 ≤ 1 - e2) : wAdd (-1) e1 e2 ≤ 1 - r1 * r2 := by
+    (b1 : r1 ≤ 1 - e1) (b2 : r2 ≤ 1 - e2) : circK (-1) e1 e2 ≤ 1 - r1 * r2 := by
   have hA := Rat.mul_nonneg (show (0 : Rat) ≤ 1 - e1 - r1 by grind) (show (0 : Rat) ≤ 1 - e2 by grind)
   have hB := Rat.mul_nonneg h1 (show (0 : Rat) ≤ 1 - e2 - r2 by grind)
-  unfold wAdd; grind
+  unfold circK; grind
 
-/-! ## 5. Tsallis: the q-sum is weighted mult-add with k = 1 − q -/
+/-! ## 5. Tsallis: the q-sum is the circle operation with k = 1 − q -/
 
 theorem map_mul_map (f : Rat → Rat) (hf : ∀ u v, f (u * v) = f u * f v) (x : Rat)
     (ys : List Rat) :
@@ -262,25 +262,25 @@ theorem power_sum_multiplies (f : Rat → Rat) (hf : ∀ u v, f (u * v) = f u * 
   rw [outer_map f hf, outer_sum]
 
 /-- Tsallis pseudo-additivity: if 1 + k·S is the power sum for A, for B and for
-    the pair (whose power sum is the product), then S_AB = S_A ⊞ₖ S_B. -/
+    the pair (whose power sum is the product), then S_AB = S_A ◯[k] S_B. -/
 theorem tsallis_composes (k SA SB SAB PA PB : Rat) (hk : k ≠ 0)
     (hA : 1 + k * SA = PA) (hB : 1 + k * SB = PB) (hAB : 1 + k * SAB = PA * PB) :
-    SAB = wAdd k SA SB := by
-  have := wAdd_lift k SA SB
-  have e : k * SAB = k * wAdd k SA SB := by grind
+    SAB = circK k SA SB := by
+  have := circK_lift k SA SB
+  have e : k * SAB = k * circK k SA SB := by grind
   have e2 : SAB = (k * SAB) / k := by grind
   rw [e2, e]; grind
 
-/-- The q-logarithm ln_q u = (u^k − 1)/k obeys ln_q(uv) = ln_q u ⊞ₖ ln_q v. -/
+/-- The q-logarithm ln_q u = (u^k − 1)/k obeys ln_q(uv) = ln_q u ◯[k] ln_q v. -/
 theorem qlog_qsum (f : Rat → Rat) (hf : ∀ u v, f (u * v) = f u * f v) (k u v : Rat)
     (hk : k ≠ 0) :
-    (f (u * v) - 1) / k = wAdd k ((f u - 1) / k) ((f v - 1) / k) := by
-  rw [hf]; unfold wAdd; grind
+    (f (u * v) - 1) / k = circK k ((f u - 1) / k) ((f v - 1) / k) := by
+  rw [hf]; unfold circK; grind
 
 /-- Rényi entropy log(1 + k·S)/k adds: the log of the lift. -/
 theorem renyi_adds {G : Type} [Add G] (L : Rat → G) (hL : ∀ x y, L (x * y) = L x + L y)
-    (k SA SB : Rat) : L (1 + k * wAdd k SA SB) = L (1 + k * SA) + L (1 + k * SB) := by
-  rw [wAdd_lift, hL]
+    (k SA SB : Rat) : L (1 + k * circK k SA SB) = L (1 + k * SA) + L (1 + k * SB) := by
+  rw [circK_lift, hL]
 
 /-! ## 6. The Ising chain: series is parity, parallel is velocity, duality is the lens -/
 
@@ -295,8 +295,8 @@ theorem decimation_den (X1 X2 : Rat) : (X1 * X2 + 1) + (X1 + X2) = (X1 + 1) * (X
 
 /-- In the chance p that two linked spins disagree (tanh K = 1 − 2p), bonds in
     series compose at k = −2, the parity weight (Matsui's piling-up rule). -/
-theorem ising_series (p1 p2 : Rat) : 1 - 2 * wAdd (-2) p1 p2 = (1 - 2 * p1) * (1 - 2 * p2) := by
-  unfold wAdd; grind
+theorem ising_series (p1 p2 : Rat) : 1 - 2 * circK (-2) p1 p2 = (1 - 2 * p1) * (1 - 2 * p2) := by
+  unfold circK; grind
 
 /-- The lens of velocity addition, M(t) = (1 − t)/(1 + t). -/
 def lens (t : Rat) : Rat := (1 - t) / (1 + t)
@@ -368,12 +368,12 @@ theorem shields (n r : Rat) (h1 : 1 - r ≠ 0) (h2 : 1 + (n - 1) * r ≠ 0) :
   have e : 1 - n * r / (1 + (n - 1) * r) = (1 - r) / (1 + (n - 1) * r) := by grind
   rw [e]; grind
 
-/-! ## 8. Lee–Yang: bonds are weighted mult-add squares -/
+/-! ## 8. Lee–Yang: bonds are circle-operation squares with dial k -/
 
 /-- At infinite temperature (a = 1) a bond's Lee–Yang square is the plain
-    mult-add square. -/
-theorem bond_infinite_T (x y : Rat) : 1 + 1 * x + 1 * y + x * y = 1 + multAdd x y := by
-  unfold multAdd; grind
+    circle-operation square. -/
+theorem bond_infinite_T (x y : Rat) : 1 + 1 * x + 1 * y + x * y = 1 + circ x y := by
+  unfold circ; grind
 
 /-- At zero temperature (a = 0) only the diagonal corners survive. -/
 theorem bond_zero_T (x y : Rat) : 1 + 0 * x + 0 * y + x * y = 1 + x * y := by grind
@@ -386,36 +386,36 @@ theorem two_spin_no_real_zero (a z : Rat) (h0 : 0 ≤ a) (h1 : a < 1) :
   grind
 
 /-- Three spins in a chain with bond weights a, b (a = e^{−2βJ}), summed state
-    by state (z counts up-spins).  The middle coefficients are a ⊞ b. -/
+    by state (z counts up-spins).  The middle coefficients are a ◯ b. -/
 def chain3 (a b z : Rat) : Rat :=
   1                                       -- no spin up
   + (a + a * b + b) * z                   -- {1}, {2}, {3}
   + (b + a + a * b) * (z * z)             -- {1,2}, {2,3}, {1,3}
   + z * z * z                             -- all up
 
-theorem chain3_multAdd (a b z : Rat) :
-    chain3 a b z = 1 + multAdd a b * z + multAdd a b * (z * z) + z * z * z := by
-  unfold chain3 multAdd; grind
+theorem chain3_circ (a b z : Rat) :
+    chain3 a b z = 1 + circ a b * z + circ a b * (z * z) + z * z * z := by
+  unfold chain3 circ; grind
 
-/-- It factors as (1 + z)(1 + (m − 1)z + z²) with m = a ⊞ b. -/
+/-- It factors as (1 + z)(1 + (m − 1)z + z²) with m = a ◯ b. -/
 theorem chain3_factor (m z : Rat) :
     1 + m * z + m * (z * z) + z * z * z = (1 + z) * (1 + (m - 1) * z + z * z) := by grind
 
-/-- Ferromagnetic bonds (0 ≤ a, b ≤ 1) give 0 ≤ a ⊞ b ≤ 3, so the quadratic's
+/-- Ferromagnetic bonds (0 ≤ a, b ≤ 1) give 0 ≤ a ◯ b ≤ 3, so the quadratic's
     discriminant (m − 1)² − 4 = (m − 3)(m + 1) ≤ 0: its zeros lie on the unit
     circle (the turning country), as Lee–Yang says. -/
 theorem chain3_ferro_bound (a b : Rat) (ha0 : 0 ≤ a) (ha1 : a ≤ 1) (hb0 : 0 ≤ b) (hb1 : b ≤ 1) :
-    0 ≤ multAdd a b ∧ multAdd a b ≤ 3 := by
+    0 ≤ circ a b ∧ circ a b ≤ 3 := by
   have h1 := Rat.mul_nonneg ha0 hb0
   have h2 := Rat.mul_nonneg (show (0 : Rat) ≤ 1 - a by grind) (show (0 : Rat) ≤ 1 + b by grind)
-  unfold multAdd
+  unfold circ
   constructor <;> grind
 
 theorem chain3_disc (a b : Rat) (ha0 : 0 ≤ a) (ha1 : a ≤ 1) (hb0 : 0 ≤ b) (hb1 : b ≤ 1) :
-    (multAdd a b - 1) * (multAdd a b - 1) - 4 ≤ 0 := by
+    (circ a b - 1) * (circ a b - 1) - 4 ≤ 0 := by
   obtain ⟨l, u⟩ := chain3_ferro_bound a b ha0 ha1 hb0 hb1
-  have h := Rat.mul_nonneg (show (0 : Rat) ≤ 3 - multAdd a b by grind)
-    (show (0 : Rat) ≤ multAdd a b + 1 by grind)
+  have h := Rat.mul_nonneg (show (0 : Rat) ≤ 3 - circ a b by grind)
+    (show (0 : Rat) ≤ circ a b + 1 by grind)
   grind
 
 /-! ## 9. Wick rotation is a change of units by i -/
@@ -433,12 +433,12 @@ theorem wick_den (i q a b : Rat) (hi : i * i = -1) :
 /-! ## 10. Fluctuation theorems and chemistry -/
 
 /-- Jarzynski: for independent processes the averages ⟨e^{−βW}⟩ multiply
-    (weights times probabilities form a grid), so ⟨e^{−βW}⟩ − 1 mult-adds. -/
+    (weights times probabilities form a grid), so ⟨e^{−βW}⟩ − 1 combines by the circle operation. -/
 theorem jarzynski_composes (xs ys : List Rat) :
-    sumL (outer xs ys) - 1 = multAdd (sumL xs - 1) (sumL ys - 1) := by
-  rw [outer_sum]; unfold multAdd; grind
+    sumL (outer xs ys) - 1 = circ (sumL xs - 1) (sumL ys - 1) := by
+  rw [outer_sum]; unfold circ; grind
 
 /-- Hess's law: coupled reactions multiply equilibrium constants. -/
-theorem hess (K1 K2 : Rat) : K1 * K2 - 1 = multAdd (K1 - 1) (K2 - 1) := partition_square K1 K2
+theorem hess (K1 K2 : Rat) : K1 * K2 - 1 = circ (K1 - 1) (K2 - 1) := partition_square K1 K2
 
 end ThermoFused

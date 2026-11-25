@@ -5,12 +5,12 @@
 
   LIBRARY NOTE: copied from lee-yang/lean/LeeYang.lean (Nov 25), unchanged apart from this
   note. No theorem states exactly what a library theorem states; the closest are
-  edge_gas_hardcore and edge_gas_free, which add 1 to MultAdd.wAdd_weight_zero and
-  MultAdd.wAdd_one.
+  edge_gas_hardcore and edge_gas_free, which add 1 to CircleOp.circK_weight_zero and
+  CircleOp.circK_one.
 
   Two ways to build a partition function from the dial k (with q = k + 1):
 
-  A. The dial gas. One edge: 1 + (x ⊞ₖ y) = 1 + x + y + k·xy is the two-site lattice gas
+  A. The dial gas. One edge: 1 + (x ◯[k] y) = 1 + x + y + k·xy is the two-site lattice gas
      with pair weight k (k = 1 free, k = 0 hard core). On a ring of n sites the transfer
      matrix is T = [[1, z], [1, k·z]], whose trace is the weighted lift 1 + k·z.
      When the trace is 0 (z on the wall −1/k), T² = −det(T)·I, so every odd power of T has
@@ -23,7 +23,7 @@
 import FusedAlgebra.Base
 
 namespace LeeYang
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -61,17 +61,17 @@ open Mat2
 /-! ## A. The dial gas -/
 
 /-- One edge of the dial gas: the two-site lattice gas with pair weight k is the lift of
-    the weighted mult-add of the two fugacities. -/
-theorem edge_gas (k x y : R) : 1 + wAdd k x y = 1 + x + y + k * x * y := by
-  unfold wAdd; grind
+    the two fugacities combined by the circle operation (called weighted mult-add before 1.0) with dial k. -/
+theorem edge_gas (k x y : R) : 1 + circK k x y = 1 + x + y + k * x * y := by
+  unfold circK; grind
 
 /-- At k = 1 (q = 2) the two sites are independent: the gas factors. -/
-theorem edge_gas_free (x y : R) : 1 + wAdd 1 x y = (1 + x) * (1 + y) := by
-  unfold wAdd; grind
+theorem edge_gas_free (x y : R) : 1 + circK 1 x y = (1 + x) * (1 + y) := by
+  unfold circK; grind
 
 /-- At k = 0 (q = 1) the two sites exclude each other: hard core. -/
-theorem edge_gas_hardcore (x y : R) : 1 + wAdd 0 x y = 1 + x + y := by
-  unfold wAdd; grind
+theorem edge_gas_hardcore (x y : R) : 1 + circK 0 x y = 1 + x + y := by
+  unfold circK; grind
 
 /-- The ring transfer matrix: from an empty site the next site weighs 1 (empty) or z
     (occupied); from an occupied site, 1 or k·z. -/
@@ -261,12 +261,12 @@ theorem pottsRing_lift {K : Type} [Lean.Grind.Field K] (Q v t : K) (n : Nat)
     | succ m ih => grind
   rw [hp]; grind
 
-/-- Two separate rings together: their weights multiply, which in the lift is the weighted
-    mult-add of the two tⁿ, at the dial k = Q − 1. -/
+/-- Two separate rings together: their weights multiply, which in the lift is the circle
+    operation of the two tⁿ, at the dial k = Q − 1. -/
 theorem two_rings (Q t A B : R) (n m : Nat) :
     (A * (1 + (Q - 1) * t ^ n)) * (B * (1 + (Q - 1) * t ^ m))
-      = (A * B) * (1 + (Q - 1) * wAdd (Q - 1) (t ^ n) (t ^ m)) := by
-  have h := wAdd_lift (Q - 1) (t ^ n) (t ^ m)
+      = (A * B) * (1 + (Q - 1) * circK (Q - 1) (t ^ n) (t ^ m)) := by
+  have h := circK_lift (Q - 1) (t ^ n) (t ^ m)
   rw [h]; grind
 
 /-- Proper colourings: v = −1. The chromatic polynomial of the n-cycle. -/
@@ -304,7 +304,7 @@ theorem one_pow' (n : Nat) : (1 : R) ^ n = 1 := by
     have : (1 : R) ^ (n + 1) = 1 ^ n * 1 := by grind
     rw [this, ih]; grind
 
-/-- q = 2 (mult-add, k = 1) is a zero exactly for odd rings. -/
+/-- q = 2 (the circle operation, k = 1) is a zero exactly for odd rings. -/
 theorem ring_zero_at_q2_odd (m : Nat) : pottsRing (2 : R) (-1) (2 * m + 1) = 0 := by
   unfold pottsRing
   have h1 : ((2 : R) + -1) = 1 := by grind

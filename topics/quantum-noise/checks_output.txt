@@ -5,7 +5,7 @@ phase-flip p+q-2pq: max PTM error 1.11e-16
 depolarizing p+q-(4/3)pq: max PTM error 1.11e-16
 amplitude damping g+h-gh: max PTM error 1.11e-16   <- the call's rule fits here (T1 decay)
 
-== 2. Every rule is mult-add with a weight k: a + b + k*a*b, and (1 + k*a) multiplies ==
+== 2. Every rule is the circle operation with a weight k: a + b + k*a*b, and (1 + k*a) multiplies ==
 amplitude damping  k=-1.000: 6 stacked at 0.05 -> predicted 0.264908, density matrix 0.264908, wall at p*=-1/k=1.000
 bit-flip           k=-2.000: 6 stacked at 0.05 -> predicted 0.234279, density matrix 0.234280, wall at p*=-1/k=0.500
 depolarizing       k=-1.333: 6 stacked at 0.05 -> predicted 0.254228, density matrix 0.254228, wall at p*=-1/k=0.750

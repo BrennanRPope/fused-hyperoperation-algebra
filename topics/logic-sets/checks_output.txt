@@ -5,7 +5,7 @@ PASS - on the integers, 1 (+)k 1 in {0,1} only for k in {-2,-1} (k from -50 to 5
 PASS - k=-1 on bits is OR
 PASS - k=-2 on bits is XOR
 PASS - product on bits is AND
-PASS - n trues under (+)k give the q-number [n]_q with q = k+1 (k in -3..3, n<12)
+PASS - n trues under (+)k give the q-number [n]_q with k = q - 1 (k in -3..3, n<12)
 PASS - OR folds n>=1 trues to 1 ([n]_0 = 1)
 PASS - XOR folds n trues to n mod 2 ([n]_-1)
 PASS - distributivity defect a(b(+)k c) - (ab (+)k ac) = k abc (1-a)
@@ -30,18 +30,18 @@ PASS - finite sizes are >= 0: no set has the wall's size -1 or an inverse size -
 PASS - open interval has Euler characteristic -1 (Schanuel's negative set)
 PASS - half-open interval [0,1) = point + open interval has Euler characteristic 0 (the lift of the wall)
 PASS - wall: chi(I + B + IxB) = -1 for finite B of size 0..9 and for B = I, B = square
-PASS - two open intervals X: chi(X + X + XxX) = 0, so X is its own mult-add inverse at the level of chi
+PASS - two open intervals X: chi(X + X + XxX) = 0, so X is its own circle inverse at the level of chi
 PASS - chi of products multiplies and so chi(A + B + AxB) = chi A (+) chi B (random cell lists)
-PASS - Hamacher t-conorm is the landscape law at p = gamma - 2, q = 1 - gamma
-PASS - those points lie on the line p + q = -1
+PASS - Hamacher t-conorm is the landscape law at p = gamma - 2, d = 1 - gamma
+PASS - those points lie on the line p + d = -1
 PASS - gamma = 1 is the probabilistic sum (dial k = -1)
 PASS - gamma = 2 is the Einstein sum (a+b)/(1+ab), relativity's point (0,-1)
-PASS - gamma = 0 is (a+b-2ab)/(1-ab) at (-2,1), on the border parabola p^2 = 4q
+PASS - gamma = 0 is (a+b-2ab)/(1-ab) at (-2,1), on the border parabola p^2 = 4d
 PASS - miss: 1 - S = (1-a)(1-b)/(1+(gamma-1)ab), independent of gamma in the numerator
 PASS - Hamacher is the dial on odds: odds(S) = odds a (+)gamma odds b
 PASS - Hamacher t-norm is the De Morgan mirror: T(a,b) = 1 - S(1-a,1-b)
 PASS - the t-norm is the dial on odds-against (1-x)/x
-PASS - gamma = 0 adds odds (dial k = 0), gamma = 1 mult-adds odds (k = 1)
+PASS - gamma = 0 adds odds (dial k = 0), gamma = 1 combines by the circle operation odds (k = 1)
 PASS - Hamacher's additive generator log(1 + gamma*odds(x)) is the log of the dial's lift on odds
 PASS - odds wall of dial gamma is o = -1/gamma, i.e. x = 1/(1-gamma); gamma = 2 gives x = -1 (light)
 PASS - on truth values every Hamacher t-conorm with gamma != 0 is OR
@@ -60,7 +60,7 @@ PASS - Aczel-Alsina (lambda=1) is the probabilistic sum
    miss Dombi lambda=2 0.682
    miss Aczel-Alsina lambda=2 14.1
 PASS - Frank, Yager, Schweizer-Sklar, Dombi, Aczel-Alsina (other parameters) leave the landscape (miss > 1e-4)
-PASS - Frank's family hugs the line p + q = -1 without lying on it (fitted p + q within 0.05 of -1 for s = 0.5, 2)
+PASS - Frank's family hugs the line p + d = -1 without lying on it (fitted p + d within 0.05 of -1 for s = 0.5, 2)
 PASS - Frank's equation T + S = a + b holds in Hamacher's family only at gamma = 1 (the product)
 PASS - Frank s -> 1 gives the probabilistic sum (s = 1 + 1e-12 within 1e-9)
 PASS - the dial on another coordinate (log-odds) is again associative (conjugation keeps associativity)
@@ -71,6 +71,6 @@ PASS - sum law (x * a) (+) (x * b) = x * (a + b + 1) (x,a,b < 7)
 PASS - definability: b (+) c = d  iff  for all x, (x*b)*c = x*d  (b,c,d < 7, x < 6)
 PASS - definability: b + c + 1 = d  iff  for all x, (x*b)(+)(x*c) = x*d
 PASS - zero is the only right identity of the fused exponent (y < 20)
-PASS - mult-add alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives
+PASS - The circle operation alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives
 
 67/67 checks passed

@@ -1,4 +1,4 @@
-"""Worked checks: topology tools that fit mult-add  a(+)b = a+b+ab."""
+"""Worked checks: topology tools that fit the circle operation  a(+)b = a+b+ab."""
 import itertools, math
 import numpy as np
 import sympy as sp
@@ -9,7 +9,7 @@ def trunc(e, n):  # work in Z[x]/(x^(n+1))
     p = sp.Poly(sp.expand(e), x)
     return sp.expand(sum(c*x**m for (m,), c in p.terms() if m <= n))
 
-print("== 1. K-theory: Adams operations are mult-add powers ==")
+print("== 1. K-theory: Adams operations are circle powers ==")
 n = 6
 psi = lambda k, e: trunc(e.subs(x, (1+x)**k - 1), n)   # psi^k(L)=L^k, x=L-1
 for j, k in [(2,3),(3,5),(2,7)]:
@@ -18,7 +18,7 @@ for j, k in [(2,3),(3,5),(2,7)]:
 for p in [2,3,5,7]:
     d = sp.Poly(trunc((1+x)**p - 1 - x**p, n), x)
     print(f" psi^{p}(x) - x^{p} has every coefficient divisible by {p}:", all(c % p == 0 for c in d.coeffs()))
-# Chern character: ch(x)=e^t-1, and ch takes mult-add to + via log
+# Chern character: ch(x)=e^t-1, and ch takes the circle operation to + via log
 u, v = sp.symbols('u v', real=True); X, Y = sp.exp(u)-1, sp.exp(v)-1     # ch of two line-bundle classes
 print(" log(1 + ch(x) (+) ch(y)) = u + v :", sp.simplify(sp.log(1 + X + Y + X*Y) - (u+v)) == 0)
 
@@ -71,9 +71,9 @@ for d in [1,2,3,4]:
     print(f" T^{d}: cells {c}, Betti {b}, Pascal {[comb(d,k) for k in range(d+1)]}, Euler {sum((-1)**k*bb for k,bb in enumerate(b))}")
 a = sp.symbols('a')
 for name, cnt in [("P^1", a+2), ("P^2", a**2+3*a+3), ("P^1xP^1", (a+2)**2), ("torus T^2", a**2), ("P^3", sp.expand(((1+a)**4-1)/a))]:
-    print(f" {name}: count in mult-add coords {sp.expand(cnt)}  -> Euler characteristic = value at a=0 = {cnt.subs(a,0)}")
+    print(f" {name}: count in circle-operation coords {sp.expand(cnt)}  -> Euler characteristic = value at a=0 = {cnt.subs(a,0)}")
 
-print("\n== 4. Winding and Chern numbers by mult-add walks ==")
+print("\n== 4. Winding and Chern numbers by circle-operation walks ==")
 def qwz(kx, ky, m):
     d = np.array([np.sin(kx), np.sin(ky), m + np.cos(kx) + np.cos(ky)])
     H = np.array([[d[2], d[0]-1j*d[1]], [d[0]+1j*d[1], -d[2]]])
@@ -90,16 +90,16 @@ def chern(m, N=40):
     return C/(2*np.pi), F
 for m in [-3, -1.5, -0.5, 0.5, 1.5, 3]:
     print(f" QWZ model m={m:+}: Chern number {chern(m)[0]:+.6f}")
-# winding of a loop as a mult-add walk
+# winding of a loop as a circle-operation walk
 z = np.exp(1j*np.linspace(0, 2*np.pi, 400))
 f = (z**3)*(1+0.4*z**-5)        # degree 3 map with a wiggle
-steps = f[1:]/f[:-1] - 1          # mult-add steps a_k with f_{k+1} = f_k (1+a_k)
+steps = f[1:]/f[:-1] - 1          # circle-operation steps a_k with f_{k+1} = f_k (1+a_k)
 print(" winding of f = sum log(1+a_k) / 2 pi i =", round((np.sum(np.log1p(steps))/(2j*np.pi)).real, 6))
 
 print("\n== 5. Torus knots ==")
 def alex(p, q):
     T = sp.symbols('T'); A = sp.symbols('A')
-    mp = lambda k: (1+A)**k - 1                      # mult-add power, A = T-1
+    mp = lambda k: (1+A)**k - 1                      # circle power, A = T-1
     D = sp.cancel(mp(p*q)*mp(1)/(mp(p)*mp(q)))
     return sp.expand(D.subs(A, T-1)), D
 for p, q in [(2,3),(2,5),(3,4),(3,5)]:
@@ -117,7 +117,7 @@ for k in [1, 2, 3]:
     c1 = tor(k*s, s); c2 = tor(k*s + np.pi, s)   # two strands of the (2,2k) torus link
     print(f" two helices wound {k} times around each other on the torus: Gauss linking number {gauss_link(c1, c2):+.4f}")
 
-print("\n== 6. Lefschetz: fixed points of the k-th mult-add power ==")
+print("\n== 6. Lefschetz: fixed points of the k-th circle power ==")
 for k in [2,3,5]:
     for dim in [1,2,3]:
         fixed = (k-1)**dim

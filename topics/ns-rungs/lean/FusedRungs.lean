@@ -4,14 +4,14 @@
 
   Rung n = ordinary hyperoperation conjugated by x ↦ 1 + x, worked on Nat (so 1 + x ≥ 1):
     rung 1  sadd a b = a + b + 1          = (a+1) + (b+1) - 1
-    rung 2  madd a b = a + b + a*b        = (a+1) * (b+1) - 1     (mult-add)
+    rung 2  circ a b = a + b + a*b        = (a+1) * (b+1) - 1     (the circle operation (called mult-add before 1.0))
     rung 3  fexp a b = (a+1)^(b+1) - 1                             (fused exponent)
     rung 4  ftet a b = (a+1)↑↑(b+1) - 1                            (fused tetration)
 -/
 namespace FusedRungs
 
 def sadd (a b : Nat) : Nat := a + b + 1
-def madd (a b : Nat) : Nat := a + b + a * b
+def circ (a b : Nat) : Nat := a + b + a * b
 def fexp (a b : Nat) : Nat := (a + 1) ^ (b + 1) - 1
 def tet (x : Nat) : Nat → Nat
   | 0 => 1
@@ -20,7 +20,7 @@ def ftet (a b : Nat) : Nat := tet (a + 1) (b + 1) - 1
 
 /-! ### Lifting: every rung is the plain operation seen through x ↦ 1 + x -/
 theorem sadd_lift (a b : Nat) : sadd a b + 1 = (a + 1) + (b + 1) := by unfold sadd; omega
-theorem madd_lift (a b : Nat) : madd a b + 1 = (a + 1) * (b + 1) := by unfold madd; grind
+theorem circ_lift (a b : Nat) : circ a b + 1 = (a + 1) * (b + 1) := by unfold circ; grind
 theorem pow_pos' (a n : Nat) : 1 ≤ (a + 1) ^ n := Nat.pow_pos (Nat.succ_pos a)
 theorem fexp_lift (a b : Nat) : fexp a b + 1 = (a + 1) ^ (b + 1) := by
   unfold fexp; have := pow_pos' a (b + 1); omega
@@ -32,42 +32,42 @@ theorem ftet_lift (a b : Nat) : ftet a b + 1 = tet (a + 1) (b + 1) := by
   unfold ftet; have := tet_pos a (b + 1); omega
 theorem lift_inj {x y : Nat} (h : x + 1 = y + 1) : x = y := by omega
 
-/-! ### Rung 2 (mult-add): a commutative monoid with identity 0 -/
-theorem madd_comm (a b : Nat) : madd a b = madd b a := by unfold madd; grind
-theorem madd_assoc (a b c : Nat) : madd (madd a b) c = madd a (madd b c) := by unfold madd; grind
-theorem madd_zero (a : Nat) : madd a 0 = a := by unfold madd; simp
+/-! ### Rung 2 (the circle operation): a commutative monoid with identity 0 -/
+theorem circ_comm (a b : Nat) : circ a b = circ b a := by unfold circ; grind
+theorem circ_assoc (a b c : Nat) : circ (circ a b) c = circ a (circ b c) := by unfold circ; grind
+theorem circ_zero (a : Nat) : circ a 0 = a := by unfold circ; simp
 
 /-! ### Rung 3 (fused exponent) -/
 theorem fexp_zero_right (a : Nat) : fexp a 0 = a := by unfold fexp; simp
 /-- 0 is a left absorber, so there is no left identity of the form 0. -/
 theorem fexp_zero_left (b : Nat) : fexp 0 b = 0 := by unfold fexp; simp
-/-- The fused exponent carries mult-add inside it. -/
-theorem fexp_carries_madd (a b : Nat) : fexp a b = madd a ((a + 1) ^ b - 1) := by
+/-- The fused exponent carries the circle operation inside it. -/
+theorem fexp_carries_circ (a b : Nat) : fexp a b = circ a ((a + 1) ^ b - 1) := by
   apply lift_inj
-  rw [fexp_lift, madd_lift]
+  rw [fexp_lift, circ_lift]
   have := pow_pos' a b
   rw [Nat.sub_add_cancel this, Nat.pow_succ, Nat.mul_comm]
-/-- Right distributivity over mult-add:  (a ⊕ b) ⊛ c = (a ⊛ c) ⊕ (b ⊛ c). -/
-theorem fexp_madd_right (a b c : Nat) : fexp (madd a b) c = madd (fexp a c) (fexp b c) := by
+/-- Right distributivity over the circle operation:  fexp (a ◯ b) c = fexp a c ◯ fexp b c. -/
+theorem fexp_circ_right (a b c : Nat) : fexp (circ a b) c = circ (fexp a c) (fexp b c) := by
   apply lift_inj
-  rw [fexp_lift, madd_lift, madd_lift, fexp_lift, fexp_lift, Nat.mul_pow]
-/-- Tower law:  (a ⊛ b) ⊛ c = a ⊛ (b ⊕ c). -/
-theorem fexp_tower (a b c : Nat) : fexp (fexp a b) c = fexp a (madd b c) := by
+  rw [fexp_lift, circ_lift, circ_lift, fexp_lift, fexp_lift, Nat.mul_pow]
+/-- Tower law:  fexp (fexp a b) c = fexp a (b ◯ c). -/
+theorem fexp_tower (a b c : Nat) : fexp (fexp a b) c = fexp a (circ b c) := by
   apply lift_inj
-  rw [fexp_lift, fexp_lift, fexp_lift, madd_lift, Nat.pow_mul]
-/-- Sum law:  a ⊛ (b ⊞ c) = (a ⊛ b) ⊕ (a ⊛ c), with ⊞ the rung-1 shifted add. -/
-theorem fexp_sadd (a b c : Nat) : fexp a (sadd b c) = madd (fexp a b) (fexp a c) := by
+  rw [fexp_lift, fexp_lift, fexp_lift, circ_lift, Nat.pow_mul]
+/-- Sum law:  fexp a (sadd b c) = fexp a b ◯ fexp a c, with sadd the rung-1 shifted add. -/
+theorem fexp_sadd (a b c : Nat) : fexp a (sadd b c) = circ (fexp a b) (fexp a c) := by
   apply lift_inj
-  rw [fexp_lift, madd_lift, fexp_lift, fexp_lift, sadd_lift, ← Nat.pow_add]
+  rw [fexp_lift, circ_lift, fexp_lift, fexp_lift, sadd_lift, ← Nat.pow_add]
 theorem fexp_not_assoc : fexp (fexp 1 2) 1 ≠ fexp 1 (fexp 2 1) := by decide
 theorem fexp_not_comm : fexp 1 2 ≠ fexp 2 1 := by decide
 theorem fexp_example : fexp (fexp 1 2) 1 = 63 ∧ fexp 1 (fexp 2 1) = 511 := by decide
 
 /-! ### Each rung is the rung below, iterated -/
-theorem madd_iter (a b : Nat) : madd a (b + 1) = sadd a (madd a b) := by
-  apply lift_inj; rw [madd_lift, sadd_lift, madd_lift]; grind
-theorem fexp_iter (a b : Nat) : fexp a (b + 1) = madd a (fexp a b) := by
-  apply lift_inj; rw [fexp_lift, madd_lift, fexp_lift, Nat.pow_succ, Nat.mul_comm]
+theorem circ_iter (a b : Nat) : circ a (b + 1) = sadd a (circ a b) := by
+  apply lift_inj; rw [circ_lift, sadd_lift, circ_lift]; grind
+theorem fexp_iter (a b : Nat) : fexp a (b + 1) = circ a (fexp a b) := by
+  apply lift_inj; rw [fexp_lift, circ_lift, fexp_lift, Nat.pow_succ, Nat.mul_comm]
 /-- Rung 4 is rung 3 iterated on the exponent side. -/
 theorem ftet_iter (a b : Nat) : ftet a (b + 1) = fexp a (ftet a b) := by
   apply lift_inj; rw [ftet_lift, fexp_lift, ftet_lift]; rfl
@@ -156,8 +156,8 @@ theorem ftet_values : ftet 1 1 = 3 ∧ ftet 1 2 = 15 ∧ ftet 2 1 = 26 ∧ ftet 
 theorem fpent_values : fpent 1 1 = 3 ∧ fpent 1 2 = 65535 := by decide
 theorem ftet_not_assoc : ftet (ftet 1 1) 1 ≠ ftet 1 (ftet 1 1) := by decide
 theorem ftet_not_comm : ftet 1 2 ≠ ftet 2 1 := by decide
-/-- The rung-3 laws stop at rung 4: distributivity over mult-add fails ... -/
-theorem ftet_no_madd_dist : ftet (madd 1 1) 1 ≠ madd (ftet 1 1) (ftet 1 1) := by decide
+/-- The rung-3 laws stop at rung 4: distributivity over the circle operation fails ... -/
+theorem ftet_no_circ_dist : ftet (circ 1 1) 1 ≠ circ (ftet 1 1) (ftet 1 1) := by decide
 /-- ... the tower law fails ... -/
 theorem ftet_no_tower : ftet (ftet 1 1) 1 ≠ ftet 1 (fexp 1 1) := by decide
 /-- ... and the sum law fails. -/

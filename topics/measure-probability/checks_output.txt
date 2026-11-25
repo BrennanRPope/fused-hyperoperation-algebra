@@ -1,52 +1,52 @@
 == 1. The Sugeno lambda-measure is the dial with k = lambda
-PASS  symbolic: disjoint union a ✳λ b is associative and commutative
-PASS  symbolic: lift 1+λ(a✳λb) = (1+λa)(1+λb)
+PASS  symbolic: disjoint union a ∘_λ b is associative and commutative
+PASS  symbolic: lift 1+λ(a∘_λb) = (1+λa)(1+λb)
 PASS  300 random spaces: μ(A∪B) = μ(A)+μ(B)+λμ(A)μ(B) for every disjoint pair, μ(Ω)=1
 == 2. The normalization equation ∏(1+λg_i) = 1+λ
 PASS  400 random densities: exactly one nonzero root λ > −1
 PASS  λ > 0 exactly when the densities sum below 1 (λ < 0 when above)
 PASS  two atoms: λ = (1 − g1 − g2)/(g1 g2) solves it
-== 3. Möbius masses are the corners of the mult-add cube
+== 3. Möbius masses are the corners of the circle-operation cube
 PASS  200 spaces: μ(A) = Σ over corners S ⊆ A of λ^(|S|−1)·∏g_S
 PASS  λ ≥ 0: every Möbius mass ≥ 0, so μ is a belief function
 PASS  −1 < λ < 0: the dual 1 − μ(Aᶜ) has masses ≥ 0 (μ is a plausibility)
 == 4. The lift to an ordinary probability; μ is a q-number of P
 PASS  P(A) = log(1+λμ(A))/log(1+λ) is additive with P(Ω) = 1
-PASS  μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ = k + 1
+PASS  μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ, so k = q − 1
 PASS  m equal atoms of size g: μ = g·[m]_q with q = 1 + λg (a q-number)
 == 5. Inclusion–exclusion becomes multiplication
 PASS  (1+λμ(A∪B))(1+λμ(A∩B)) = (1+λμ(A))(1+λμ(B))
 PASS  three sets: 1+λμ(∪) = ∏ over corners of (1+λμ(∩))^(±1)
-== 6. Duality: the dual weight is mult-add's inverse
+== 6. Duality: the dual weight is the circle operation's inverse
 PASS  200 spaces: μ*(A) = 1 − μ(Aᶜ) is a λ*-measure with λ* = −λ/(1+λ)
-PASS  symbolic: λ* = mult-add inverse of λ, (λ*)* = λ, 1+λ* = 1/(1+λ)
+PASS  symbolic: λ* = circle inverse of λ, (λ*)* = λ, 1+λ* = 1/(1+λ)
 == 7. What the weight means: firing atoms and compounding
 PASS  −1<λ<0: μ(A) = P(some atom of A fires)/P(any fires), atoms fire independently w.p. −λg_i
 PASS  λ>0: μ(A) = (compound growth of A's atoms)/(growth of all), atom rates λg_i
 == 8. The wall must stay outside [0, 1]
 PASS  k ≤ −1: atoms below the wall never reach 1 (no normalized measure)
 PASS  k = −1: 1 − ∏(1 − g_i) = 1 forces some g_i = 1 (exact fractions)
-PASS  landscape: L(1) = ∫₀¹dt/(1+pt+qt²) finite exactly when 1+pt+qt² > 0 on [0,1]
-PASS  the 'or' line k+q = −1 (statistics page) lies on the edge: 1+p+q = 0 there
-PASS  normalizable region = above the line q = −1−p (p ≥ −2) and above the parabola q = p²/4 (p < −2)
+PASS  landscape: L(1) = ∫₀¹dt/(1+pt+dt²) finite exactly when 1+pt+dt² > 0 on [0,1]
+PASS  the 'or' line k+d = −1 (statistics page) lies on the edge: 1+p+d = 0 there
+PASS  normalizable region = above the line d = −1−p (p ≥ −2) and above the parabola d = p²/4 (p < −2)
 PASS  the line meets the border parabola tangentially at the cusp (−2, 1)
 PASS  tangent measure μ = tan(πP/4): (μA+μB)/(1−μAμB) on disjoint sets, μ(Ω)=1
 PASS  dial line: the additive coordinate log(1+kx)/k adds over atoms
-== 9. Odds of an 'or' mult-add
-PASS  independent A, B: odds(A∪B) = odds A ✳ odds B; odds-against(A∩B) = against A ✳ against B; 3 events
-PASS  odds of an 'and' do NOT mult-add (dropped claim): fails on 200 of 200 random pairs
-PASS  simulation (400,000 draws): odds of A∪B matches 0.4286 ✳ 0.8182 = 1.5974   [1.6046]
+== 9. Odds of an 'or' combine by the circle operation
+PASS  independent A, B: odds(A∪B) = odds A ∘₁ odds B; odds-against(A∩B) = against A ∘₁ against B; 3 events
+PASS  odds of an 'and' do NOT the circle operation (dropped claim): fails on 200 of 200 random pairs
+PASS  simulation (400,000 draws): odds of A∪B matches 0.4286 ∘₁ 0.8182 = 1.5974   [1.6046]
 == 10. Expectation passes through the dial when variables are independent
-PASS  300 random independent pairs: E[X ✳ₖ Y] = E X ✳ₖ E Y
+PASS  300 random independent pairs: E[X ∘ₖ Y] = E X ∘ₖ E Y
 PASS  dependent pairs: the gap is exactly k·Cov(X, Y) (the corner's excess)
-PASS  martingale: six fair ±50% bets, E[r₁ ✳ … ✳ r₆] = 0 exactly
+PASS  martingale: six fair ±50% bets, E[r₁ ∘₁ … ∘₁ r₆] = 0 exactly
 PASS  yet the typical path loses: median wealth change = 0.75³ − 1 = −0.578
 PASS  volatility drag: E log(1+r) = ½log(0.75) < 0 = log(1 + E r)
-== 11. Yor's formula: stochastic exponentials multiply by mult-add, step by step
-PASS  ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ✳ Δy = Δx+Δy+ΔxΔy
+== 11. Yor's formula: stochastic exponentials multiply by the circle operation, step by step
+PASS  ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ∘₁ Δy = Δx+Δy+ΔxΔy
 PASS  Brownian (20 paths each): ∏(1+σΔW) → exp(σW − σ²T/2), mean error falls with finer steps   [0.0264, 0.0121, 0.0038, 0.0015]
 PASS  the summed self-corners ΣΔW² → T (the Itô drag is half of them)   [0.0938, 0.0282, 0.0132, 0.0040]
 == 12. Discrete hazards (already on the information page; restated)
-PASS  failure by step n = h₁ ✳₋₁ … ✳₋₁ hₙ = 1 − ∏(1 − hᵢ)
+PASS  failure by step n = h₁ ∘₋₁ … ∘₋₁ hₙ = 1 − ∏(1 − hᵢ)
 
 38/38 checks pass

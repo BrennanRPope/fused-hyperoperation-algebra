@@ -1,4 +1,4 @@
-# Knot theory through mult-add: every claim on the page, checked (sympy, exact where possible).
+# Knot theory through the circle operation: every claim on the page, checked (sympy, exact where possible).
 # Uses tangles.py: tangle diagrams (state sum over the cube) and the (f, g) tangle algebra.
 import sympy as sp, cmath, math, random, itertools
 from tangles import *
@@ -37,7 +37,7 @@ S, T, U = (f1, g1), (f2, g2), (f3, g3)
 tsg = lambda S, T: (S[0]*T[0], S[0]*T[1] + S[1]*T[0] + dd*S[1]*T[1])
 check("sum formula: (f1,g1)+(f2,g2) = (f1f2, f1g2 + g1f2 + d·g1g2)",
       all(z(sp.expand(ts((f1, g1), (f2, g2))[i]) - [f1*f2, f1*g2 + g1*f2 + d*g1*g2][i]) for i in range(2)))
-check("in x = g/f: x(S+T) = x(S) ✳_d x(T)  (weighted mult-add, weight d)",
+check("in x = g/f: x(S+T) = x(S) ∘_d x(T)  (the circle operation, weight d)",
       z(tsg(S, T)[1]/tsg(S, T)[0] - wadd(dd, g1/f1, g2/f2)))
 check("sum is commutative and associative, [0] = (1, 0) is the identity",
       all(z(tsg(S, T)[i] - tsg(T, S)[i]) and z(tsg(tsg(S, T), U)[i] - tsg(S, tsg(T, U))[i]) for i in range(2))
@@ -56,14 +56,14 @@ check("stacking is the same dial in z = f/g = 1/x, and ⟨N⟩ is its lift: ⟨N
 s1, s2 = build(cf_word([2, 2]))[0], build(cf_word([1, 1, 1]))[0]
 V1, V2, V12 = jones(closeD(s1)), jones(closeD(s2)), jones(closeD(hsum(s1, s2)))
 check("diagram check: V(D(S+T)) = V(D(S))·V(D(T)) (figure-eight # trefoil)", z(V12 - V1*V2))
-check("'mult-add value' P − 1 turns # into ✳ exactly (a relabelling of P(K#L) = P(K)P(L))",
+check("'circle-operation value' P − 1 turns # into ∘₁ exactly (a relabelling of P(K#L) = P(K)P(L))",
       z((V12 - 1) - wadd(1, V1 - 1, V2 - 1)))
 t_ = sp.symbols('t_', positive=True)
 check("disjoint union multiplies the Jones polynomial by d = −(t^½ + t^−½) (unlink of 2)",
       z(sp.expand(d.subs(A, t_**sp.Rational(-1, 4))) + t_**sp.Rational(1, 2) + t_**sp.Rational(-1, 2)))
 
 print("--- 3. Twisting is the q-dial step y -> q·y + 1, with q = -A^-4 = -t ---")
-check("y = A²·g/f: the sum becomes y ✳_k y' with k = d·A⁻² = q − 1",
+check("y = A²·g/f: the sum becomes y ∘ₖ y' with k = d·A⁻² = q − 1",
       z(A**2*wadd(d, x, y) - wadd(d*A**-2, A**2*x, A**2*y)) and z(d*A**-2 - (q - 1)))
 qn = lambda qv, n: sum(qv**i for i in range(n))
 P = Z0; good = True; good2 = True
@@ -72,10 +72,10 @@ for n in range(1, 13):
     good &= z(P[0] - A**n) and z(P[1] - A**(n - 2)*qn(q, n))
     good2 &= z(cD(P) - (-A**-3)**n) and z(A**2*P[1]/P[0] - qn(q, n))
 check("n twists [n] = A^n·[0] + A^(n−2)·[n]_q·[∞], n = 1..12", good)
-check("y([n]) = [n]_q = n copies of 1 under ✳_(q−1); closing gives n kinks (−A⁻³)^n", good2)
+check("y([n]) = [n]_q = n copies of 1 under ∘_(q−1); closing gives n kinks (−A⁻³)^n", good2)
 yP = lambda P: sp.simplify(A**2*P[1]/P[0])
 P0 = (f1, g1); y0 = A**2*g1/f1
-check("adding one crossing: y ↦ q·y + 1 = y ✳_(q−1) 1", z(yP(ts(P0, XP)) - (q*y0 + 1)) and z(q*y0 + 1 - wadd(q - 1, y0, 1)))
+check("adding one crossing: y ↦ q·y + 1 = y ∘_(q−1) 1", z(yP(ts(P0, XP)) - (q*y0 + 1)) and z(q*y0 + 1 - wadd(q - 1, y0, 1)))
 check("stacking one crossing: y ↦ q·y/(q·y + 1), i.e. 1/y ↦ q⁻¹·(1/y) + 1 (the same step at 1/q, seen through 1/y)",
       z(yP(vs(P0, XP)) - q*y0/(q*y0 + 1)) and z(1/(q*y0/(q*y0 + 1)) - (1/(q*y0) + 1)))
 check("mirror A ↦ A⁻¹ sends q to 1/q", z(q.subs(A, 1/A) - 1/q))
@@ -164,13 +164,13 @@ check("[r/s]_q from the tangle → r/s at q = 1 (A = e^(iπ/4)) for all seven",
 print("--- 5. The landscape: Möbius steps, but no bend ---")
 F = lambda p, qb, aa, bb: (aa + bb + p*aa*bb)/(1 - qb*aa*bb)
 mob = sp.Matrix([[1 + a*k, a], [u*a, 1]])  # (1+pa)b + a over (-q a) b + 1, with p=k, -q=u
-check("every landscape law, 'add a' is a Möbius map of b: F(a,b) = ((1+pa)b + a)/(−qa·b + 1)",
+check("every landscape law, 'add a' is a Möbius map of b: F(a,b) = ((1+pa)b + a)/(−da·b + 1)",
       z(F(k, -u, a, b) - (mob[0, 0]*b + mob[0, 1])/(mob[1, 0]*b + mob[1, 1])))
 check("tangle sums sit on the dial line (bend 0): x(S+T) = F_{d,0}(x(S), x(T))", z(F(dd, 0, x, y) - wadd(dd, x, y)))
 wv = lambda y1, y2: 1/wadd(1/qy - 1, 1/y1, 1/y2)
 check("the stacked law in y has identity ∞ (y ⋆ ∞ = y), so it is the dial seen through 1/y, not a landscape point",
       z(sp.limit(wv(x, w), w, sp.oo) - x))
-check("vertical sum in y: 1/y = 1/y1 ✳_(1/q−1) 1/y2 (general pair, q = −A⁻⁴)",
+check("vertical sum in y: 1/y = 1/y1 ∘_(1/q−1) 1/y2 (general pair, q = −A⁻⁴)",
       z(1/yP(vs(S, T)) - wadd(1/q - 1, 1/(A**2*g1/f1), 1/(A**2*g2/f2))))
 
 print("--- 6. Torus knots: Alexander polynomials are ratios of q-numbers with q = t ---")

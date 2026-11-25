@@ -1,7 +1,7 @@
 """Dial gas: the lattice gas whose two-site partition function is 1 + (x (+)_k y).
 
 Z_G(z, k) = sum over occupied sets S of z^|S| * k^(edges inside S).
-For one edge: 1 + x + y + k x y = 1 + wAdd(k, x, y).
+For one edge: 1 + x + y + k x y = 1 + circK(k, x, y).
 counts(G)[m][e] = number of sets with m sites and e internal edges (exact integers).
 """
 import numpy as np

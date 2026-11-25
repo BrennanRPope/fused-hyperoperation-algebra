@@ -1,8 +1,8 @@
 /-
-  Three classical proofs on the mult-add cube
+  Three classical proofs on the circle-operation cube (called mult-add cube before 1.0)
   ==========================================
 
-  Part of Fused Mult-Add Algebra. Companion to HopfInvariantOne.lean and
+  Part of Fused Hyperoperation Algebra. Companion to HopfInvariantOne.lean and
   the topology page. Pictures: ../fig_cube_proofs.py.
 
   STATUS: core Lean 4 only (no mathlib), no `sorry`, only Lean's standard
@@ -10,7 +10,7 @@
   everything is built here from the cube's layer counts.
 
   `layer n k` is the number of corners of the n-cube with k switches on.
-  It is defined by Pascal's rule, which is one mult-add step: multiplying
+  It is defined by Pascal's rule, which is one circle-operation step: multiplying
   by (1 + x) adds an axis, and every old corner appears twice, once with
   the new switch off and once with it on.
 
@@ -26,7 +26,7 @@
                   base-p digits (Lucas 1878). Split the axes into blocks
                   of p; mod p, only corners whose blocks are all-off or
                   all-on count.
-  * frobenius:    (1 + x)ᵖ ≡ 1 + xᵖ mod p: the mult-add p-th power is the
+  * frobenius:    (1 + x)ᵖ ≡ 1 + xᵖ mod p: the circle p-th power is the
                   plain p-th power mod p.
   * fermat:       aᵖ ≡ a mod p for every natural number a (Fermat 1640).
 
@@ -38,7 +38,7 @@
 import FusedAlgebra.Base
 import FusedAlgebra.Cube
 
-namespace MultAdd.Cube
+namespace CircleOp.Cube
 
 /-! ## Primes -/
 
@@ -229,7 +229,7 @@ theorem exists_prime_factor : ∀ n, 2 ≤ n → ∃ p, IsPrime p ∧ p ∣ n :=
 
 /-- **The AKS identity on the cube.** For n ≥ 2: every middle layer of the
     n-cube has a multiple of n corners exactly when n is prime.
-    (Equivalently (1 + x)ⁿ ≡ 1 + xⁿ mod n: the mult-add n-th power equals
+    (Equivalently (1 + x)ⁿ ≡ 1 + xⁿ mod n: the circle n-th power equals
     the plain n-th power, which is the identity behind the AKS test.) -/
 theorem aks_middle (n : Nat) (hn : 2 ≤ n) :
     (∀ k, 0 < k → k < n → n ∣ layer n k) ↔ IsPrime n := by
@@ -331,7 +331,7 @@ theorem binomial : ∀ n x, (1 + x) ^ n = cubeSum n x := by
 
 /-! ## Fermat's little theorem -/
 
-/-- **Mult-add powers are plain powers mod p.** (1 + x)ᵖ ≡ 1 + xᵖ: in the
+/-- **Circle powers are plain powers mod p.** (1 + x)ᵖ ≡ 1 + xᵖ: in the
     p-cube only the two end corners survive mod p. -/
 theorem frobenius {p : Nat} (hp : IsPrime p) (x : Int) : MEq p ((1 + x) ^ p) (1 + x ^ p) := by
   obtain ⟨q, hq⟩ : ∃ q, p = q + 1 := ⟨p - 1, by have := hp.1; omega⟩
@@ -354,7 +354,7 @@ theorem frobenius {p : Nat} (hp : IsPrime p) (x : Int) : MEq p ((1 + x) ^ p) (1 
   omega
 
 /-- **Fermat's little theorem.** aᵖ ≡ a (mod p) for every natural number a.
-    Each step a → a + 1 adds one mult-add unit, and frobenius says the p-th
+    Each step a → a + 1 adds one circle-operation unit, and frobenius says the p-th
     power passes straight through it mod p. -/
 theorem fermat {p : Nat} (hp : IsPrime p) : ∀ a : Nat, MEq p ((a : Int) ^ p) a := by
   have hp1 : 1 ≤ p := by have := hp.1; omega
@@ -376,4 +376,4 @@ example : layer 9 3 = 84 ∧ ¬ (9 ∣ 84) := by decide
 /-- Lucas in base 7: C(10,4) = 210, and 10 = 13₇, 4 = 04₇ gives C(1,0)·C(3,4) = 0 ≡ 210. -/
 example : layer 10 4 = 210 ∧ digitProd 7 2 10 4 = 0 ∧ 210 % 7 = 0 := by decide
 
-end MultAdd.Cube
+end CircleOp.Cube

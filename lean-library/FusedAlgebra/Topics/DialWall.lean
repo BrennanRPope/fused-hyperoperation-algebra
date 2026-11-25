@@ -16,7 +16,7 @@
 -/
 import FusedAlgebra.Topics.DialSurvey
 
-namespace MultAdd
+namespace CircleOp
 namespace DialWall
 open DialSurvey
 
@@ -132,4 +132,4 @@ theorem one_contributor (N N' : Nat) (hN : 0 < N) :
   exact Rat.natCast_inj.mp this
 
 end DialWall
-end MultAdd
+end CircleOp

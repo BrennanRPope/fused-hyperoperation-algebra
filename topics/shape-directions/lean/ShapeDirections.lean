@@ -13,7 +13,7 @@
     global (the whole group: how many periods its log has).
 
   What the file proves:
-    A. The weight is units: λ·(a ⊞_{λk} b) = (λa) ⊞_k (λb). The q of the q-integers is k + 1,
+    A. The weight is units: λ·(a ◯[λk] b) = (λa) ◯[k] (λb). The q of the q-integers is k + 1,
        the same dial. On a graph (three sites in a row) the weight can no longer be scaled away.
     B. The landscape bend: a projective ruler x ↦ x/(1+cx) slides (p, q) along the parabola of
        constant discriminant D = p² − 4q; units multiply D by λ². So after units and rulers only
@@ -23,35 +23,34 @@
        bend q = s(s−1)/4, so D = s (rung height = the bend's discriminant through third order),
        and a fourth-order coefficient −s(s−1)/12 that no point of the landscape plane has
        (zero only at rungs 0 and 1). In jet space the rung adds a direction; the weight does not.
-    D. The nome: gluing a ↦ a ✳ (q − 1) commutes with the law for every q and the law descends
+    D. The nome: gluing a ↦ a ◯ (q − 1) commutes with the law for every q and the law descends
        to every quotient, so nothing near 0 can see q. Torsion through the 3-division polynomial:
-       the cusp (addition) has no 3-step loop, the node (mult-add) has two plus the start.
+       the cusp (addition) has no 3-step loop, the node (the circle operation (called mult-add before 1.0)) has two plus the start.
     E. Several waves: a pair weight survives every separate rescaling of the waves. Riemann's
        period matrices (g(g+1)/2 numbers) outnumber curves (3g − 3) exactly from four waves on.
-    F. Whole numbers: the p-fold mult-add power of a + b + k·ab is ≡ 0 mod p when p ∣ k
+    F. Whole numbers: the p-fold circle power of a + b + k·ab is ≡ 0 mod p when p ∣ k
        (additive there) and ≡ x^p otherwise (multiplicative), shown for p = 2, 3, 5.
 -/
 import FusedAlgebra.Base
 
 namespace ShapeDirections
-open MultAdd
+open CircleOp
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
-theorem star_def (a b : Int) : a ✳ b = a + b + a * b := rfl
+theorem star_def (a b : Int) : a ◯ b = a + b + a * b := rfl
 
 /-! ## A. The weight is the size of the measuring stick -/
 
 /-- Zooming the inputs by λ and the weight by 1/λ gives the same law: the weight is units. -/
-theorem weight_is_units (k l a b : Int) : l * wAdd (l * k) a b = wAdd k (l * a) (l * b) := by
-  unfold wAdd; grind
+theorem weight_is_units (k l a b : Int) : l * circK (l * k) a b = circK k (l * a) (l * b) := by
+  unfold circK; grind
 
-/- (Every nonzero weight is mult-add after a zoom: that is the base's `wAdd_scale`.) -/
+/- (Every nonzero weight is the circle operation after a zoom: that is the base's `circK_scale`.) -/
 
 /-- The q of the q-integers (and of the Potts colours) is the weight plus one. -/
-theorem qcount_is_weight (q a b : Int) : wAdd (q - 1) a b = a + b + q * a * b - a * b := by
-  unfold wAdd; grind
+theorem qcount_is_weight (q a b : Int) : circK (q - 1) a b = a + b + q * a * b - a * b := by
+  unfold circK; grind
 
 /-- Three sites in a row, each site with fugacity z and each occupied bond with weight k:
     Z = 1 + 3z + (2k+1)z² + k²z³. -/
@@ -78,15 +77,15 @@ theorem graph_weight_survives (k k' l m : Rat)
 /-- Cross-multiplied numerator of F_{p,q}(N a, N b) with N(x) = x/(1+cx): it is the numerator
     of F_{p+2c, ·}(a, b). -/
 theorem ruler_num (p c a b : Int) :
-    a * (1 + c * b) + b * (1 + c * a) + p * a * b = wAdd (p + 2 * c) a b := by
-  unfold wAdd; grind
+    a * (1 + c * b) + b * (1 + c * a) + p * a * b = circK (p + 2 * c) a b := by
+  unfold circK; grind
 
 /-- Cross-multiplied denominator: (1+ca)(1+cb) − q·ab is the denominator of N applied to
     F_{p+2c, q+pc+c²}(a, b). Together with ruler_num: N⁻¹(F_{p,q}(N a, N b)) = F_{p+2c, q+pc+c²}(a,b). -/
 theorem ruler_den (p q c a b : Int) :
     (1 + c * a) * (1 + c * b) - q * a * b
-      = (1 - (q + p * c + c * c) * a * b) + c * wAdd (p + 2 * c) a b := by
-  unfold wAdd; grind
+      = (1 - (q + p * c + c * c) * a * b) + c * circK (p + 2 * c) a b := by
+  unfold circK; grind
 
 /-- The ruler keeps the discriminant: (p+2c)² − 4(q+pc+c²) = p² − 4q. The ruler's orbits are
     the parabolas q = (p² − D)/4, one for each D. -/
@@ -157,7 +156,7 @@ theorem lens_jets_at_minus (s : Rat) :
 
 /-- Through third order the rung's discriminant is its height: r₁² − 4r₂ = s.
     So rung s looks, to third order, like the law with one period 2πi/√s
-    (rung 1: 2πi, mult-add; rung 0: no period; rung −1: real period 2π, a circle). -/
+    (rung 1: 2πi, the circle operation; rung 0: no period; rung −1: real period 2π, a circle). -/
 theorem rung_disc_is_height (s : Rat) : s * s - 4 * (s * (s - 1) / 4) = s := by grind
 
 /-- Every point of the landscape plane has rate 1 + p a + q a² exactly, so r₃ = 0 there;
@@ -174,7 +173,7 @@ theorem rung_crossings :
     -(2 * (0 : Rat) - 1) / 12 = 1/12 ∧ -(2 * (1 : Rat) - 1) / 12 = -1/12 := by
   refine ⟨?_, ?_, ?_, ?_⟩ <;> decide +kernel
 
-/-- Jet-space rank at mult-add, coordinates (r₁, r₂, r₃), scaled by 12:
+/-- Jet-space rank at the circle operation, coordinates (r₁, r₂, r₃), scaled by 12:
     zoom (12, 0, 0), weight (12, 0, 0), bend (0, 12, 0), rung (12, 3, −1).
     The weight is the zoom (no new direction); zoom, bend, rung have determinant −144 ≠ 0. -/
 def det3 (a1 a2 a3 b1 b2 b3 c1 c2 c3 : Int) : Int :=
@@ -185,18 +184,18 @@ theorem jet_rank :
 
 /-! ## D. The nome: a gluing the law never sees -/
 
-/-- Gluing a ↦ a ✳ (q − 1) commutes with the law, for every q. -/
-theorem glue_commutes (q a b : Int) : (a ✳ (q - 1)) ✳ b = (a ✳ b) ✳ (q - 1) := by
-  unfold multAdd; grind
+/-- Gluing a ↦ a ◯ (q − 1) commutes with the law, for every q. -/
+theorem glue_commutes (q a b : Int) : (a ◯ (q - 1)) ◯ b = (a ◯ b) ◯ (q - 1) := by
+  unfold circ; grind
 
-/-- Two gluings are one gluing by the product: the gluings form the group q^ℤ (in mult-add form). -/
-theorem glue_twice (q q' a : Int) : (a ✳ (q - 1)) ✳ (q' - 1) = a ✳ (q * q' - 1) := by
-  unfold multAdd; grind
+/-- Two gluings are one gluing by the product: the gluings form the group q^ℤ (in circle-operation form). -/
+theorem glue_twice (q q' a : Int) : (a ◯ (q - 1)) ◯ (q' - 1) = a ◯ (q * q' - 1) := by
+  unfold circ; grind
 
 /-- The law descends to the quotient: glued inputs give a glued output, whatever the gluings.
-    So the torus ℂ*/q^ℤ carries mult-add for every nome, and the nome is invisible near 0. -/
-theorem glue_descends (x y a b : Int) : (a ✳ (x - 1)) ✳ (b ✳ (y - 1)) = (a ✳ b) ✳ (x * y - 1) := by
-  unfold multAdd; grind
+    So the torus ℂ*/q^ℤ carries the circle operation for every nome, and the nome is invisible near 0. -/
+theorem glue_descends (x y a b : Int) : (a ◯ (x - 1)) ◯ (b ◯ (y - 1)) = (a ◯ b) ◯ (x * y - 1) := by
+  unfold circ; grind
 
 /-- The 3-division polynomial of y² + a₁xy = x³ + a₂x² (a₃ = a₄ = a₆ = 0):
     ψ₃ = 3x⁴ + b₂x³ with b₂ = a₁² + 4a₂ (b₄ = b₆ = b₈ = 0). -/
@@ -206,11 +205,11 @@ def psi3 (a1 a2 x : Rat) : Rat := 3 * x ^ 4 + (a1 * a1 + 4 * a2) * x ^ 3
     the start comes back in three steps. -/
 theorem cusp_psi3 (x : Rat) : psi3 0 0 x = 3 * x ^ 4 := by unfold psi3; grind
 
-/-- Node y² + xy = x³ (mult-add): ψ₃ = x³(3x + 1). Besides the node (x = 0) the root x = −1/3. -/
+/-- Node y² + xy = x³ (the circle operation): ψ₃ = x³(3x + 1). Besides the node (x = 0) the root x = −1/3. -/
 theorem node_psi3 (x : Rat) : psi3 1 0 x = x ^ 3 * (3 * x + 1) := by unfold psi3; grind
 
 /-- At x = −1/3 the node's equation y² + xy − x³ = 0 reads y² − y/3 + 1/27 = 0, whose
-    discriminant 1/9 − 4/27 = −1/27 is not 0: two points. With the start, three: mult-add's
+    discriminant 1/9 − 4/27 = −1/27 is not 0: two points. With the start, three: the circle operation's
     three cube roots of 1. (The Tate torus has nine: see checks.py, 5a.) -/
 theorem node_three_points : (-1/3 : Rat) * (-1/3) - 4 * (-(-1/3 : Rat) ^ 3) = -1/27 ∧ (-1/27 : Rat) ≠ 0 := by
   constructor <;> decide +kernel
@@ -241,16 +240,16 @@ theorem periods_outnumber_curves :
 /-! ## F. Whole numbers: the weight keeps its primes -/
 
 theorem pseries_two (k x : Int) : wpow k x 2 = 2 * x + k * x * x := by
-  rw [show wpow k x 2 = wAdd k (wAdd k 0 x) x from rfl]; unfold wAdd; grind
+  rw [show wpow k x 2 = circK k (circK k 0 x) x from rfl]; unfold circK; grind
 
 theorem pseries_three (k x : Int) : wpow k x 3 = 3 * x + 3 * k * x * x + k * k * x * x * x := by
-  rw [show wpow k x 3 = wAdd k (wAdd k (wAdd k 0 x) x) x from rfl]; unfold wAdd; grind
+  rw [show wpow k x 3 = circK k (circK k (circK k 0 x) x) x from rfl]; unfold circK; grind
 
 theorem pseries_five (k x : Int) :
     wpow k x 5 = 5 * x + 10 * k * x * x + 10 * k * k * x * x * x + 5 * k * k * k * x * x * x * x
       + k * k * k * k * x * x * x * x * x := by
-  rw [show wpow k x 5 = wAdd k (wAdd k (wAdd k (wAdd k (wAdd k 0 x) x) x) x) x from rfl]
-  unfold wAdd; grind
+  rw [show wpow k x 5 = circK k (circK k (circK k (circK k (circK k 0 x) x) x) x) x from rfl]
+  unfold circK; grind
 
 /-- p ∣ k: the p-fold power is p times a whole number (the law is additive at p). -/
 theorem additive_at_two (m x : Int) : wpow (2 * m) x 2 = 2 * (x + m * x * x) := by

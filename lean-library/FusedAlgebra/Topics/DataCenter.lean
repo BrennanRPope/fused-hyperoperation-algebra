@@ -4,16 +4,16 @@
   so Nat/Int stand in for the real numbers; every statement is a polynomial identity or
   inequality, so it holds for the reals by the same algebra.
 
-  Mult-add (rung 2):  a ⊕ b = a + b + a*b,  and  (a ⊕ b) + 1 = (a+1)(b+1).
+  The circle operation (called mult-add before 1.0) (rung 2):  a ◯ b = a + b + a*b,  and  (a ◯ b) + 1 = (a+1)(b+1).
   A stage's overhead odds r = (input - output)/output, so input = output * (1 + r).
 
-  LIBRARY NOTE: mult-add and the list fold (foldMA, the power chain) come from FusedAlgebra.Base; the local copies were removed.
+  LIBRARY NOTE: the circle operation and the list fold (foldCirc, the power chain) come from FusedAlgebra.Base; the local copies were removed.
 -/
 import FusedAlgebra.Base
 
 namespace DataCenterFused
 
-open MultAdd
+open CircleOp
 
 
 /-- Product of (1 + r) over the stages. -/
@@ -21,11 +21,11 @@ def lifts : List Nat → Nat
   | [] => 1
   | r :: rs => (r + 1) * lifts rs
 
-/-! ### Lead 1. A power chain's overhead is the mult-add of its stages, in any order. -/
-theorem foldMA_lift_nat (rs : List Nat) : foldMA rs + 1 = lifts rs := by
+/-! ### Lead 1. A power chain's overhead is the circle operation of its stages, in any order. -/
+theorem foldCirc_lift_nat (rs : List Nat) : foldCirc rs + 1 = lifts rs := by
   induction rs with
   | nil => rfl
-  | cons r rs ih => simp only [foldMA, lifts]; rw [multAdd_lift', ih]
+  | cons r rs ih => simp only [foldCirc, lifts]; rw [circ_lift', ih]
 
 theorem lifts_append (xs ys : List Nat) : lifts (xs ++ ys) = lifts xs * lifts ys := by
   induction xs with
@@ -33,18 +33,18 @@ theorem lifts_append (xs ys : List Nat) : lifts (xs ++ ys) = lifts xs * lifts ys
   | cons x xs ih => simp only [List.cons_append, lifts]; rw [ih, Nat.mul_assoc]
 
 /-- Swapping two neighbouring stages never changes the total: blame by position is not physical. -/
-theorem foldMA_swap (xs ys : List Nat) (a b : Nat) :
-    foldMA (xs ++ a :: b :: ys) = foldMA (xs ++ b :: a :: ys) := by
+theorem foldCirc_swap (xs ys : List Nat) (a b : Nat) :
+    foldCirc (xs ++ a :: b :: ys) = foldCirc (xs ++ b :: a :: ys) := by
   have h : lifts (xs ++ a :: b :: ys) = lifts (xs ++ b :: a :: ys) := by
     rw [lifts_append, lifts_append]; simp only [lifts]; grind
-  have h1 := foldMA_lift_nat (xs ++ a :: b :: ys)
-  have h2 := foldMA_lift_nat (xs ++ b :: a :: ys)
+  have h1 := foldCirc_lift_nat (xs ++ a :: b :: ys)
+  have h2 := foldCirc_lift_nat (xs ++ b :: a :: ys)
   omega
 
-/-- Splitting the foldMA at the IT meter: (outside ⊕ inside) is the whole foldMA (TUE = PUE·ITUE). -/
-theorem foldMA_split (xs ys : List Nat) : foldMA (xs ++ ys) = multAdd (foldMA xs) (foldMA ys) := by
-  have h := foldMA_lift_nat (xs ++ ys)
-  rw [lifts_append, ← foldMA_lift_nat xs, ← foldMA_lift_nat ys, ← multAdd_lift'] at h
+/-- Splitting the foldCirc at the IT meter: (outside ◯ inside) is the whole foldCirc (TUE = PUE·ITUE). -/
+theorem foldCirc_split (xs ys : List Nat) : foldCirc (xs ++ ys) = circ (foldCirc xs) (foldCirc ys) := by
+  have h := foldCirc_lift_nat (xs ++ ys)
+  rw [lifts_append, ← foldCirc_lift_nat xs, ← foldCirc_lift_nat ys, ← circ_lift'] at h
   omega
 
 /-- Position independence: scaling one stage's factor scales the facility total by the same
@@ -52,7 +52,7 @@ theorem foldMA_split (xs ys : List Nat) : foldMA (xs ++ ys) = multAdd (foldMA xs
 theorem scale_anywhere (xs ys : List Nat) (f k : Nat) :
     lifts xs * (f * k) * lifts ys = k * (lifts xs * f * lifts ys) := by grind
 
-/-! ### Lead 2. PUE overhead = electrical ⊕ cooling. The corner p*c is cooling the losses. -/
+/-! ### Lead 2. PUE overhead = electrical ◯ cooling. The corner p*c is cooling the losses. -/
 theorem pue_corner (p c : Nat) : (1 + p) * (1 + c) = 1 + p + c + p * c := by grind
 /-- The additive breakdown PUE = 1 + PLF + CLF books the corner as cooling: CLF = c + p*c. -/
 theorem additive_books_corner (it p c : Nat) :
@@ -82,7 +82,7 @@ theorem equal_share (y d : Int) : (y + d) ^ 2 + (y - d) ^ 2 = 2 * y ^ 2 + 2 * d 
 example : (1 * 2 * 2 * 2 + 1 * 1 * 3 ^ 2 : Int) < 1 * 1 * 2 * 2 + 2 * 1 * 3 ^ 2 := by decide
 example : ¬ ((1 * 2 * 2 * 2 + 1 * 1 * 1 ^ 2 : Int) < 1 * 1 * 2 * 2 + 2 * 1 * 1 ^ 2) := by decide
 
-/-! ### Lead 4. Fans: power ∝ flow³ (affinity law). The mult-add cube. -/
+/-! ### Lead 4. Fans: power ∝ flow³ (affinity law). The circle-operation cube. -/
 /-- Layers 1, 3, 3, 1 of the fused cube (1+d)³ − 1 = 3d + 3d² + d³. -/
 theorem cube_layers (d : Int) : (1 + d) ^ 3 = 1 + 3 * d + 3 * d ^ 2 + d ^ 3 := by grind
 /-- k fans each moving q: k·q³·k² = (k·q)³, i.e. total power = Q³/k² for total flow Q = k q. -/
@@ -99,7 +99,7 @@ theorem spare_fan_helps (N : Nat) (h : 0 < N) : (N + 1) * N ^ 3 < N * (N + 1) ^ 
   rw [‹(N + 1) * N ^ 3 = _›, ‹N * (N + 1) ^ 3 = _›]
   exact Nat.mul_lt_mul_of_pos_left h1 hp
 
-/-! ### Stacking savings: kept fractions multiply, so savings compose by mult-add of the
+/-! ### Stacking savings: kept fractions multiply, so savings compose by the circle operation of the
     (negative) odds; in whole numbers, keep k1 of K and k2 of K: kept = k1*k2 of K². -/
 theorem stack (K s1 s2 : Int) :
     (K - s1) * (K - s2) = K * K - (s1 * K + s2 * K - s1 * s2) := by grind

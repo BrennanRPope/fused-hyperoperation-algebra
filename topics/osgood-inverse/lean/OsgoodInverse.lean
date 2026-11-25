@@ -18,18 +18,18 @@
   statements here are the exact algebraic and discrete forms of that picture:
 
   1. The Riccati climb y' = (1+y)²: its solution t/(1−t) obeys the exact
-     difference law Δy = h·(1+y(t))(1+y(t+h)) = h·(1 + y(t) ⊞ y(t+h)), and it
+     difference law Δy = h·(1+y(t))(1+y(t+h)) = h·(1 + y(t) ◯ y(t+h)), and it
      passes every height before t = 1.
   2. The discrete climb with that law hits the wall: its clock 1/(1+y) falls by
      exactly h per step, so it reaches 0 (y = ∞) after 1/h steps. The rung-1
-     climb y ↦ y ⊞ h never does. Through the mult-add inverse −u/(1+u) the
+     climb y ↦ y ◯ h never does. Through the circle inverse (called mult-add inverse before 1.0) −u/(1+u) the
      blow-up is a walk at constant speed into the wall −1: blow-up at infinity
      and leaving the wall are one question.
   3. Non-uniqueness: the trapezoid scheme of x' = 2√x has a whole fan of
      solutions out of 0 (one for every start time c); the same scheme for the
      Lipschitz x' = x has only the zero solution.
   4. The test moves down one rung exactly: Cauchy condensation. The blocks
-     [2ʲ, 2ʲ⁺¹) start at 1 + 1^(⊞j), have length 2ʲ (the lift factor), and
+     [2ʲ, 2ʲ⁺¹) start at 1 + 1^(◯j), have length 2ʲ (the lift factor), and
      the dyadic partial sums are squeezed by the condensed sums both ways, so
      the test for a passes iff the test for j ↦ 2ʲ·a(2ʲ) passes.
      Instances: 1/k (rung 0) grows at least like n/2; 1/k² stays below 2.
@@ -46,9 +46,9 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Pi
 import FusedAlgebra.Topics.NSContinuum
 
-namespace MultAdd.OsgoodInverse
+namespace CircleOp.OsgoodInverse
 
-open MultAdd Lean.Grind
+open CircleOp Lean.Grind
 
 set_option linter.unusedSectionVars false
 
@@ -76,10 +76,10 @@ theorem ric_step (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
     ric (t + h) - ric t = h * (1 + ric t) * (1 + ric (t + h)) := by
   unfold ric; grind
 
-/-- The same law in mult-add: the step is h times the lift of y(t) ⊞ y(t+h). -/
-theorem ric_step_multAdd (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
-    ric (t + h) - ric t = h * (1 + multAdd (ric t) (ric (t + h))) := by
-  rw [ric_step t h h1 h2, multAdd_lift]; grind
+/-- The same law in the circle operation: the step is h times the lift of y(t) ◯ y(t+h). -/
+theorem ric_step_circ (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
+    ric (t + h) - ric t = h * (1 + circ (ric t) (ric (t + h))) := by
+  rw [ric_step t h h1 h2, circ_lift]; grind
 
 /-- Read in the clock coordinate, the climb is uniform: one step of the law
     lowers 1/(1+y) by exactly h. -/
@@ -128,41 +128,41 @@ theorem riccati_hits_wall (y : Nat → K) (h : K) (m : Nat)
   rw [hz] at hone
   grind
 
-/-- **The mirror.** Through the mult-add inverse v = −u/(1+u), a Riccati step
+/-- **The mirror.** Through the circle inverse v = −u/(1+u), a Riccati step
     is a step of exactly −h: the climb to infinity is a walk at constant speed
     into the wall −1. Blow-up at infinity and leaving the wall are one question,
-    swapped by the mult-add inverse. -/
+    swapped by the circle inverse. -/
 theorem mirror_step (a b h : K) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0)
-    (hs : b - a = h * (1 + a) * (1 + b)) : multAddInv b - multAddInv a = -h := by
+    (hs : b - a = h * (1 + a) * (1 + b)) : circInv b - circInv a = -h := by
   have hc := riccati_clock_step a b h ha hb hs
-  unfold multAddInv
+  unfold circInv
   grind
 
 /-- The mirrored walk reaches the wall exactly when the climb blows up:
     1 + (−u/(1+u)) = 1/(1+u). -/
-theorem mirror_lift (u : K) (hu : 1 + u ≠ 0) : 1 + multAddInv u = 1 / (1 + u) := by
-  unfold multAddInv; grind
+theorem mirror_lift (u : K) (hu : 1 + u ≠ 0) : 1 + circInv u = 1 / (1 + u) := by
+  unfold circInv; grind
 
-/-- **The rung-1 climb never reaches the wall.** If yₙ₊₁ = yₙ ⊞ h then
+/-- **The rung-1 climb never reaches the wall.** If yₙ₊₁ = yₙ ◯ h then
     1 + yₙ = (1 + y₀)(1 + h)ⁿ: the clock log₁₊ y advances by log(1+h) per step
     forever (continuous form: ∫ ds/(1+s) = log(1+s) → ∞). -/
-theorem rung1_lift (y : Nat → K) (h : K) (hs : ∀ n, y (n + 1) = multAdd (y n) h) :
+theorem rung1_lift (y : Nat → K) (h : K) (hs : ∀ n, y (n + 1) = circ (y n) h) :
     ∀ n, 1 + y n = (1 + y 0) * (1 + h) ^ n := by
   intro n
   induction n with
   | zero => rw [Semiring.pow_zero]; grind
-  | succ n ih => rw [Semiring.pow_succ, hs n, multAdd_lift, ih]; grind
+  | succ n ih => rw [Semiring.pow_succ, hs n, circ_lift, ih]; grind
 
 end Field
 
 /-- On the rationals the rung-1 climb stays on the safe side of the wall forever. -/
 theorem rung1_never_wall (y : Nat → Rat) (h : Rat) (hh : 0 < 1 + h) (h0 : 0 < 1 + y 0)
-    (hs : ∀ n, y (n + 1) = multAdd (y n) h) : ∀ n, 0 < 1 + y n := by
+    (hs : ∀ n, y (n + 1) = circ (y n) h) : ∀ n, 0 < 1 + y n := by
   intro n
   induction n with
   | zero => exact h0
   | succ n ih =>
-    have e : 1 + y (n + 1) = (1 + y n) * (1 + h) := by rw [hs n, multAdd_lift]
+    have e : 1 + y (n + 1) = (1 + y n) * (1 + h) := by rw [hs n, circ_lift]
     rw [e]
     have := Rat.mul_lt_mul_of_pos_left hh ih
     grind
@@ -263,7 +263,7 @@ theorem lipschitz_unique (x : Nat → Rat) (h : Rat) (hh : 2 - h ≠ 0) (h0 : x 
   The substitution s = E(x) (1 + s = eˣ) turns ∫ ds/((1+s)g(s)) into
   ∫ dx/g(E(x)): the test for f = (1+s)·g is the test for g∘E, one rung down.
   The discrete form is Cauchy condensation: sample at the points
-  1 + 1^(⊞j) = 2ʲ, weight each sample by the block length 2ʲ (the lift
+  1 + 1^(◯j) = 2ʲ, weight each sample by the block length 2ʲ (the lift
   factor). -/
 
 /-- Σ_{i<len} a(s + i). -/
@@ -313,10 +313,10 @@ theorem const_block (c : Rat) (j : Nat) : ∀ s, fsum (fun _ => c) s (2 ^ j) = (
     rw [pow2_succ, fsum_append, ih s, ih (s + 2 ^ j), Rat.pow_succ]
     grind
 
-/-- **The blocks are the mult-add lattice.** The j-th block starts at
-    2ʲ = 1 + 1^(⊞j), the lift of the j-fold mult-add of 1. -/
+/-- **The blocks are the circle-operation lattice.** The j-th block starts at
+    2ʲ = 1 + 1^(◯j), the lift of the j-fold circle operation of 1. -/
 theorem block_start (j : Nat) : 2 ^ j = mpow (1 : Nat) j + 1 :=
-  (MultAdd.NSContinuum.mpow_one_nat j).symm
+  (CircleOp.NSContinuum.mpow_one_nat j).symm
 
 /-- The j-th block [2ʲ, 2ʲ⁺¹). -/
 def blk (a : Nat → Rat) (j : Nat) : Rat := fsum a (2 ^ j) (2 ^ j)
@@ -471,7 +471,7 @@ theorem harm_nonneg (k : Nat) : 0 ≤ harm k := by
 theorem harm_anti : Antitone1 harm := by
   intro i k hi hik
   unfold harm
-  exact PiMultAdd.div_le_div_of (nr_pos i hi) (nr_mono i k hik)
+  exact PiCircle.div_le_div_of (nr_pos i hi) (nr_mono i k hik)
     (by decide +kernel : (0 : Rat) ≤ 1) (Rat.le_refl)
 
 /-- One rung down, the harmonic terms become all ones: 2ʲ · (1/2ʲ) = 1. -/
@@ -507,7 +507,7 @@ theorem isq_anti : Antitone1 isq := by
   have hpp : 0 < nr i * nr i := by
     have := Rat.mul_lt_mul_of_pos_left hp hp; grind
   have hle : nr i * nr i ≤ nr k * nr k := by grind
-  exact PiMultAdd.div_le_div_of hpp hle (by decide +kernel : (0 : Rat) ≤ 1) (Rat.le_refl)
+  exact PiCircle.div_le_div_of hpp hle (by decide +kernel : (0 : Rat) ≤ 1) (Rat.le_refl)
 
 /-- One rung down, the inverse squares become a geometric series:
     Σ_{j<n} 2ʲ/4ʲ = 2 − 2/2ⁿ. -/
@@ -557,4 +557,4 @@ theorem rot_perp (x y : Int) : x * rot1 x y + y * rot2 x y = 0 := by
 theorem rad_out (x y : Int) : x * rad1 x y + y * rad2 x y = (x ^ 2 + y ^ 2) ^ 2 := by
   unfold rad1 rad2; grind
 
-end MultAdd.OsgoodInverse
+end CircleOp.OsgoodInverse

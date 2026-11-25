@@ -10,7 +10,7 @@
 
 **What is ours, and it is exact:**
 
-- In the variable 1/g, the flow of G (one-loop shape) is our weighted circle operation with dial k = −g*. The wall is the UV fixed point, and the dial strength is d − 2, which is G's units.
+- In the variable 1/g, the flow of G (one-loop shape) is our weighted circle operation (called mult-add before 1.0) with dial k = −g*. The wall is the UV fixed point, and the dial strength is d − 2, which is G's units.
 - The fixed point is approached by shrinking and turning together: e^{−θt} with θ = 1.475 ± 3.043i, which is e and i together.
 - Three published dimension-flow curves (asymptotic safety, CDT, Calcagni) are exact two-wall curves. Moving the scale composes them by relativistic velocity addition, with the two dimensions as the walls.
 
@@ -40,7 +40,7 @@
 
 ## 3. The flow of G is our weighted circle operation (ours)
 
-![The flow is mult-add](figures/a3-flow-is-mult-add.png)
+![The flow is the circle operation](figures/a3-flow-is-mult-add.png)
 
 Take the one-loop shape dg/dt = (d − 2)g − wg² (Weinberg 1979; Reuter 1998). Put u = 1/g. Then du/dt = −(d − 2)u + w, and:
 
@@ -114,7 +114,7 @@ Calcagni's complex dimensions (log-oscillations from discrete scale invariance, 
 ## Assumptions
 
 - The UV fixed point of asymptotic safety exists. Evidence comes from truncated flows (here Einstein–Hilbert); it is not proven, and all fixed-point numbers depend on the scheme.
-- The one-loop flow β = (d − 2)g − wg² is a toy for the shape. The exact mult-add result (section 3) holds for that shape only.
+- The one-loop flow β = (d − 2)g − wg² is a toy for the shape. The exact the circle operation result (section 3) holds for that shape only.
 - d_s = 2d/(2 − η) is derived from a propagator 1/p^(2−η) and the heat-kernel return probability; the η = −2 case matches Lauscher–Reuter.
 - A9 shows the constant gλ plateau on Λ < 0 trajectories, which need no tuning. Λ > 0 trajectories need tuning close to the separatrix, as Reuter–Weyer discuss; I did not integrate one to 10⁻¹²².
 - Λ = 1.1056 × 10⁻⁵² m⁻², CODATA G, ħ, c. γ = 0.2375 for ρ_c.

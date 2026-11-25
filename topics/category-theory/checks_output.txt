@@ -16,7 +16,7 @@ PASS - the empty set is a zero object in Par: one partial map into it, one out o
 PASS - disjoint union is the coproduct in Par too (counts: partial maps out of A+B = product of partial maps out of each)
 PASS - align: length max(n,m), both lists come back, zip is the both-part, zip_longest is align with defaults
 PASS - full outer join by key: each row is a These (left only, right only, both); row count = |keys A union keys B|
-PASS - cell polynomials multiply under products, so P - 1 mult-adds, as polynomials in t (random complexes)
+PASS - cell polynomials multiply under products, so P - 1 combines by the circle operation, as polynomials in t (random complexes)
 PASS - spheres: reduced Euler characteristic of S^n is (-1)^n (n < 8)
 PASS - circle is the wall: reduced chi of S^1 x Y is -1 for Y = S^0..S^5 and torus
 PASS - torus S^1 x S^1 has cells 1, 2, 1; S^2 x S^2 has reduced chi 1 (+) 1 = 3

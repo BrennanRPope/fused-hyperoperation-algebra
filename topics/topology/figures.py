@@ -10,7 +10,7 @@ out='figures/'
 fig=plt.figure(figsize=(7,6)); ax=fig.add_subplot(111,projection='3d')
 s=np.linspace(-0.2,3.2*2*np.pi,1200)
 ax.plot(np.cos(s),np.sin(s),s/(2*np.pi),color=B,lw=2.4,label='helix: the log, unrolled')
-c=np.linspace(0,2*np.pi,300); ax.plot(np.cos(c),np.sin(c),-0.9*np.ones_like(c),color=K,lw=2.4,label='mult-add circle |1+a| = 1')
+c=np.linspace(0,2*np.pi,300); ax.plot(np.cos(c),np.sin(c),-0.9*np.ones_like(c),color=K,lw=2.4,label='Circle-operation circle |1+a| = 1')
 for k in range(4):
     th=0.9; ax.scatter([np.cos(th)],[np.sin(th)],[th/(2*np.pi)+k],color=R,s=40,zorder=5)
     ax.plot([np.cos(th)]*2,[np.sin(th)]*2,[th/(2*np.pi)+k,-0.9],color=R,lw=0.8,ls=':')
@@ -83,10 +83,10 @@ ax.scatter(ok,[v[k-1] for k in ok],color=R,s=90,zorder=4,label='enough: n = 1, 2
 for k in ok: ax.annotate({1:'complex numbers\nS¹',2:'quaternions\nS³',4:'octonions\nS⁷'}[k],(k,v[k-1]),xytext=({1:11,2:13,4:15}[k],{1:7.6,2:10.6,4:13.6}[k]),color=R,fontsize=10,arrowprops=dict(arrowstyle='-',color=R,lw=0.8))
 ax.set_xlabel('n'); ax.set_ylim(0,20); ax.legend(frameon=False,loc='upper right')
 for sp_ in ['top','right']: ax.spines[sp_].set_visible(False)
-ax.set_title('Mult-add powers ψ² and ψ³ must commute, and that forces 2ⁿ | 3ⁿ − 1',fontsize=11)
+ax.set_title('Circle powers ψ² and ψ³ must commute, and that forces 2ⁿ | 3ⁿ − 1',fontsize=11)
 plt.savefig(out+'t4_hopf_invariant.png'); plt.close()
 
-# T5 trefoil = (2,3) mult-add powers on the torus
+# T5 trefoil = (2,3) circle powers on the torus
 fig=plt.figure(figsize=(6.4,5.2)); ax=fig.add_subplot(111,projection='3d')
 ax.plot_surface(X,Y,Z,color='#c9ccf5',alpha=0.22,linewidth=0)
 s=np.linspace(0,2*np.pi,800); p,q=2,3
@@ -106,6 +106,6 @@ for i in range(N):
         ax.text(j,i,str(tab[i,j]),ha='center',va='center',fontsize=10,color='white' if np.log(tab[i,j])>np.log(tab).max()*0.6 else K)
 ax.set_xticks(range(KK+1)); ax.set_yticks(range(N)); ax.set_yticklabels([f'CP{"¹²³⁴⁵⁶⁷"[i]}' for i in range(N)])
 ax.set_xlabel('twist k of the line bundle O(k)')
-ax.set_title('χ(O(k)) from the mult-add log (Todd class) = Pascal C(n+k, n)',fontsize=11)
+ax.set_title('χ(O(k)) from the circle-operation log (Todd class) = Pascal C(n+k, n)',fontsize=11)
 plt.savefig(out+'t6_riemann_roch.png'); plt.close()
 print('done')

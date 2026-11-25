@@ -1,29 +1,29 @@
 
-== S1. Mult-add's own rule in one direction: velocity composition in the Clifford plane Cl(1,1)
+== S1. The circle operation's own rule in one direction: velocity composition in the Clifford plane Cl(1,1)
 [PASS] sigma = e1 e0 squares to +1 (a boost: hyperbolic, not a rotation)
 [PASS] (1 + b1 sigma)(1 + b2 sigma) = (1 + b1 b2)(1 + beta sigma) with beta = (b1 + b2)/(1 + b1 b2), Einstein's addition
-[PASS] Doppler-squared D^2 = (1+beta)/(1-beta) multiplies, so D^2 - 1 composes by mult-add
-[PASS] the wall: 1 + beta sigma has norm 1 - beta^2, which is zero exactly at light speed (mult-add's -1)
+[PASS] Doppler-squared D^2 = (1+beta)/(1-beta) multiplies, so D^2 - 1 composes by the circle operation
+[PASS] the wall: 1 + beta sigma has norm 1 - beta^2, which is zero exactly at light speed (the circle operation's -1)
 
 == S2. Twist from the Clifford square rule: boosts in two directions close on a rotation, weighted by the dial
 [PASS] [e0e1, e0e2] = -2 k0 e1e2: two 'boosts' close on a rotation in the 1-2 plane, coefficient = the dial of the shared direction
 [PASS] [e1e2, e2e3] = +2 k2 e1e3 (any two planes sharing a direction close on the third plane, weighted by that direction's square)
 [PASS] k0 = 0 (Galilean dial): the boosts commute, no twist
 
-== S3. Mult-add's own rules give one constant curvature: velocity space and its twist (Thomas-Wigner = area x curvature)
+== S3. The circle operation's own rules give one constant curvature: velocity space and its twist (Thomas-Wigner = area x curvature)
 [PASS] Thomas-Wigner rotation angle = angle defect (= area x curvature, Gauss-Bonnet with curvature -1) of the velocity triangle  (worst mismatch 2.5e-15 over 4 triangles)
 
-== S4. A dial that varies from place to place, in 2 dimensions: any curvature q(x, y) is reachable
-[PASS] conformal metric e^{2u}(dx^2 + dy^2) has curvature q = -e^{-2u} (u_xx + u_yy) (Liouville)
-[PASS] twist of a small loop / its area = the local curvature, at three places with three different curvatures  (q=-0.1892 vs -0.1892; q=0.1661 vs 0.1661; q=0.2087 vs 0.2087)
+== S4. A dial that varies from place to place, in 2 dimensions: any curvature d(x, y) is reachable
+[PASS] conformal metric e^{2u}(dx^2 + dy^2) has curvature d = -e^{-2u} (u_xx + u_yy) (Liouville)
+[PASS] twist of a small loop / its area = the local curvature, at three places with three different curvatures  (d=-0.1892 vs -0.1892; d=0.1661 vs 0.1661; d=0.2087 vs 0.2087)
 
 == S5. In 3 or more dimensions a place-only dial is forced to be constant (Schur's theorem)
-[PASS] isotropic curvature gives G_ab = -(n-1)(n-2)/2 q g_ab, so the Bianchi identity forces (n-1)(n-2)/2 dq = 0
-[PASS] n = 2: the factor is 0, so q is free; n = 3, 4: the factor is 1 and 3, so q must be constant
+[PASS] isotropic curvature gives G_ab = -(n-1)(n-2)/2 d g_ab, so the Bianchi identity forces (n-1)(n-2)/2 ∇d = 0
+[PASS] n = 2: the factor is 0, so d is free; n = 3, 4: the factor is 1 and 3, so d must be constant
 [PASS] place-only dial e^{2w(x)} in 3D: the x-y and x-z planes agree, but the y-z plane differs (the dial picks up a direction)  (K_xy = -exp(-2*w(x))*Derivative(w(x), (x, 2)), K_yz = -exp(-2*w(x))*Derivative(w(x), x)**2)
 [PASS] making all three planes agree (w'' = w'^2) forces a solution whose curvature is a constant: Schur again  (K = -exp(-2*C1))
 
-== S6. k as a Clifford number: mult-add with a multivector weight
+== S6. k as a Clifford number: the circle operation with a multivector weight
 [PASS] sandwich law a + b + a k b, with ANY multivector k in Cl(3,0): lift 1 + k(a * b) = (1 + k a)(1 + k b), all 8 parts
 [PASS] the sandwich law is associative for every multivector k (general symbolic a, b, c, k)
 [PASS] the front-loaded law a + b + k a b fails associativity when k is not central (k = 2 + e1e2)
@@ -43,12 +43,12 @@
 [PASS] weak static field: in vacuum, light rays focus (R_kk != 0) in some direction unless gamma = 1  (R_kk(vacuum) = -(gamma - 1)*(2*n_x**2*Derivative(U(x, y, z), (x, 2)) + n_x**2*Derivative(U(x, y, z), (y, 2)) + 2*n_x*n_y*Derivative(U(x, y, z), x, y) + 2*n_x*n_z*Derivative(U(x, y, z), x, z) + n_y**2*Derivative(U(x, y, z), (x, 2)) + 2*n_y**2*Derivative(U(x, y, z), (y, 2)) + 2*n_y*n_z*Derivative(U(x, y, z), y, z) - Derivative(U(x, y, z), (x, 2)) - Derivative(U(x, y, z), (y, 2))))
 [PASS] dial-only (gamma = 0) focuses light where no energy crosses: it breaks the Clausius rule that Jacobson's bridge needs
 
-== J1. Jacobson's area bookkeeping is mult-add: Raychaudhuri focusing is the 'ab' term of two transverse stretches
-[PASS] area of the bundle's cross-section: (1+a)(1+b) = 1 + (a mult-add b)
+== J1. Jacobson's area bookkeeping is the circle operation: Raychaudhuri focusing is the 'ab' term of two transverse stretches
+[PASS] area of the bundle's cross-section: (1+a)(1+b) = 1 + (a ∘₁ b)
 [PASS] Raychaudhuri, exactly: dtheta/dlam + theta^2/2 + sigma^2 = a''/(1+a) + b''/(1+b), which geodesic deviation (a'' = -R_1k1k (1+a)) makes -R_kk
-[PASS] no curvature (a, b linear): the area's second derivative is 2 alpha beta, the mult-add cross term, and that alone makes the focusing
+[PASS] no curvature (a, b linear): the area's second derivative is 2 alpha beta, the circle-operation cross term, and that alone makes the focusing
 
-== J2. Unruh temperature: the mult-add flow (Doppler factor growing as e^{a tau}) gives a Planck spectrum with T = a/2pi
+== J2. Unruh temperature: the circle-operation flow (Doppler factor growing as e^{a tau}) gives a Planck spectrum with T = a/2pi
 [PASS] |beta/alpha|^2 = exp(-2 pi Omega / a) for every frequency: a thermal (Planck) spectrum at T = a / 2pi
 [PASS] the integral formula behind it, int s^(z-1) e^(-p s) ds = Gamma(z) p^(-z), checked numerically  (rel err 5.5e-17)
 [PASS] dial flip: Rindler -a^2 X^2 dt^2 + dX^2 with t = -i tau is a plane in polar form; no cone tip only if tau has period 2pi/a  (circumference / radius = 2 pi exactly when the period is 2 pi / a, so T = a / 2 pi)
@@ -56,12 +56,12 @@
 == J3. The algebra that turns heat flow into Einstein's equation: X(k, k) = 0 for every light-like k forces X = phi g
 [PASS] solving X(k,k) = 0 over light-like directions leaves only X = phi * eta (one free number per point)
 
-== J4. Our river's mult-add inverse is Jacobson's 'no radial energy flux' condition
+== J4. Our river's circle inverse is Jacobson's 'no radial energy flux' condition
 [PASS] for -f dt^2 + dr^2/h + r^2 dOmega^2: R_kk (radial light ray) is proportional to (f/h)', so it vanishes iff f = h, i.e. g_tt g_rr = -1  (R_kk = (-f(r)*Derivative(h(r), r) + h(r)*Derivative(f(r), r))/(r*f(r)))
-[PASS] and g_tt g_rr = -1 is exactly our earlier result that the clock deficit and ruler deficit are mult-add inverses
+[PASS] and g_tt g_rr = -1 is exactly our earlier result that the clock deficit and ruler deficit are circle inverses
 
-== J5. If horizon entropy itself combines by weighted mult-add (Tsallis), the local equations do not change
-[PASS] mult-adding N equal patches of entropy eta*A/N, N -> infinity: total = (e^{k eta A} - 1)/k (the mult-add flow again)
+== J5. If horizon entropy itself combines by the circle operation with dial k (Tsallis), the local equations do not change
+[PASS] combining N equal patches of entropy by the circle operation, eta*A/N, N -> infinity: total = (e^{k eta A} - 1)/k (the circle-operation flow again)
 [PASS] the entropy that adds is log(1 + k S)/k (Renyi); dS_add = dS_k/(1 + k S_k) -> 1 as the patch shrinks, so Clausius on a small patch is unchanged
 [PASS] globally it does change black holes: Renyi temperature (1 + 4 pi lambda M^2)/(8 pi M), heat capacity changes sign at M = 1/sqrt(4 pi lambda)
 
@@ -73,9 +73,9 @@
 [PASS] Weitzenbock torsion T^i_{j t} = d_j v^i, every other component zero: torsion IS the river's velocity gradient
 [PASS] the Weitzenbock connection e^-1 de has zero curvature: in the teleparallel picture there is no twist at all
 
-== T2. Einstein's equations on any river (not only spherical): energy = the mult-add cross terms of the river's strain
+== T2. Einstein's equations on any river (not only spherical): energy = the circle-operation cross terms of the river's strain
 [PASS] G_nn = e2(K), the sum of products of pairs of principal strain rates of the river: Hamiltonian constraint e2(K) = 8 pi rho
-[PASS] e2 is the 'ab' layer of the three-way mult-add: (1+k1)(1+k2)(1+k3) = 1 + e1 + e2 + e3
+[PASS] e2 is the 'ab' layer of the three-way the circle operation: (1+k1)(1+k2)(1+k3) = 1 + e1 + e2 + e3
 [PASS] momentum constraint: G_nj = +/- d_i (K_ij - delta_ij K) for every river
 [PASS] and d_i(K_ij - delta_ij K) = -(1/2) curl curl v: the river's swirl is sourced by moving mass (gravitomagnetic Ampere law, exact)
 [PASS] e2 of the full gradient is a pure divergence, so e2(K) = divergence - |curl v|^2 / 4: only the swirl carries bulk action

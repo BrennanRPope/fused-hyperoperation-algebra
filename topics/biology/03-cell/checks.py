@@ -6,11 +6,11 @@ def check(name,ok,info=""):
     res.append(ok); print(("PASS " if ok else "FAIL ")+name+(" | "+info if info else ""))
 wadd=lambda k,a,b:a+b+k*a*b
 
-# A. Bliss independence is mult-add on effect odds, exactly
+# A. Bliss independence is the circle operation on effect odds, exactly
 E1=rng.uniform(0,0.99,500); E2=rng.uniform(0,0.99,500)
 Eb=1-(1-E1)*(1-E2); odds=lambda E:E/(1-E)
 err=np.max(np.abs(odds(Eb)-wadd(1,odds(E1),odds(E2)))/(1+odds(Eb)))
-check("Bliss independence (survivals multiply) = plain ✳ on effect odds o = E/(1-E)",err<1e-12,f"{err:.1e}")
+check("Bliss independence (survivals multiply) = plain ∘₁ on effect odds o = E/(1-E)",err<1e-12,f"{err:.1e}")
 check("Bliss in effect terms is the 'or' law, dial -1",np.allclose(Eb,wadd(-1,E1,E2)))
 
 # B. Chou–Talalay dial alpha: alpha = -1 is Highest Single Agent

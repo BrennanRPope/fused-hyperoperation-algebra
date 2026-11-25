@@ -14,7 +14,7 @@ ax.add_patch(Rectangle((1, 0), p, 1, fc=OR, ec="k", alpha=.8)); ax.text(1+p/2, .
 ax.add_patch(Rectangle((0, 1), 1, c, fc="#9fd0aa", ec="k")); ax.text(.5, 1+c/2, f"cooling the IT heat  c = {c:.3f}", ha="center", va="center")
 ax.add_patch(Rectangle((1, 1), p, c, fc=RD, ec="k")); ax.annotate(f"corner p·c = {p*c:.3f}\ncooling the power chain's own heat\n(5.6% of all overhead)", xy=(1+p/2, 1+c/2), xytext=(1.18, 1.25), arrowprops=dict(arrowstyle="->"), fontsize=9)
 ax.set_xlim(-.05, 1.75); ax.set_ylim(-.05, 1.55); ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("PUE 1.56 as a mult-add square: (1+p)(1+c) = 1 + p + c + p·c")
+ax.set_title("PUE 1.56 as a circle-operation square: (1+p)(1+c) = 1 + p + c + p·c")
 fig.tight_layout(); fig.savefig(D+"d1_pue_square.png", dpi=150); plt.close(fig)
 
 # d2: neper shares (order-free) of the full chip-to-meter overhead
@@ -55,7 +55,7 @@ axs[0].plot(100*d, 100*3*d, color=BL, ls="--", label="3d (edges only)")
 axs[0].plot(100*d, 100*(3*d+3*d*d), color=OR, ls=":", label="3d + 3d² (edges + faces)")
 axs[0].axhline(0, color=GY, lw=.6); axs[0].axvline(-20, color=GY, ls=":"); axs[0].text(-39, 10, "−20% speed → −49% power", fontsize=9)
 axs[0].set_xlabel("fan speed change d (%)"); axs[0].set_ylabel("fan power change (%)"); axs[0].legend(frameon=False, fontsize=8.5)
-axs[0].set_title("The mult-add cube: layers 3d, 3d², d³")
+axs[0].set_title("The circle-operation cube: layers 3d, 3d², d³")
 N = np.arange(1, 13)
 for m, lab, col in [(3, "cube law", "k"), (2.75, "turbulent duct, Δp∝Q^1.75", RD), (2, "laminar, Δp∝Q", BL)]:
     axs[1].plot(N, 100*(1-(N/(N+1))**(m-1)), "o-", color=col, ms=4, label=lab)

@@ -25,8 +25,8 @@ import FusedAlgebra.Topics.Fermat.Fermat3
 import FusedAlgebra.Topics.Fermat.Fermat4
 import FusedAlgebra.Topics.Fermat.FreyPieces
 
-open MultAdd
-open MultAdd.Cube (IsPrime)
+open CircleOp
+open CircleOp.Cube (IsPrime)
 open FreyPieces
 
 namespace FermatRoute
@@ -55,7 +55,7 @@ theorem gcd_one_of_no_prime {a c : Int} (ha : a ≠ 0)
   have hpos : 0 < Int.gcd a c := Int.gcd_pos_of_ne_zero_left c ha
   by_cases h1 : Int.gcd a c = 1
   · exact h1
-  · obtain ⟨q, hq, hqd⟩ := MultAdd.Cube.exists_prime_factor (Int.gcd a c) (by omega)
+  · obtain ⟨q, hq, hqd⟩ := CircleOp.Cube.exists_prime_factor (Int.gcd a c) (by omega)
     exfalso
     apply H q hq
     · exact Int.ofNat_dvd_left.mpr (Nat.dvd_trans hqd (Nat.gcd_dvd_left _ _))

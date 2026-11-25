@@ -64,7 +64,7 @@ f.lines(850, 110, ["Known (Lauscher–Reuter 2005):", "at the fixed point the gr
 f.text(110, 735, "Toy β(g) = 2g − 2g²/g*, g* = 0.707 (the Einstein–Hilbert value, check A6); d_s = 2d/(2 − η_N) (check R3). Checks A1, A7, D1, D6.", size=12, color=GRAY)
 f.save(P("a2-units-change-with-scale.svg"))
 
-# ---------- a3: the flow is mult-add ----------
+# ---------- a3: the flow is the circle operation ----------
 f = Fig(1180, 560); f.title("In the variable 1/g, running G is our weighted circle operation: equal RG steps, a wall at the fixed point", size=17)
 ax = Axes(f, 80, 110, 1020, 80, (0, 12), (0, 1))
 f.text(80, 95, "Gravity (G has units): u = 1/g, step u → u ∘ₖ s with k = −g*", size=14, weight="bold", color=PURPLE)
@@ -105,7 +105,7 @@ for ee, col, yl in [(2, RED, 0.62), (1, ORANGE, 0.45), (0.3, PURPLE, 0.28)]:
     tt = np.linspace(-2, 14, 300); gg = 1/(1 + 999*np.exp(-ee*(tt + 2)))
     ax2.plot(tt, gg, color=col, width=2.5); ax2.text(13.8, yl if ee != 2 else 1.03, f"d − 2 = {ee:g}", size=12, anchor="end", color=col)
 ax2.hline(1, color=GRAY, dash="4,4")
-f.text(100, 470, "Known: Weinberg's 2 + ε fixed point has g* = O(ε) (1979). Reading (ours): ε = d − 2 is the strength of the mult-add dial on G's flow, and the", size=13, color=GRAY)
+f.text(100, 470, "Known: Weinberg's 2 + ε fixed point has g* = O(ε) (1979). Reading (ours): ε = d − 2 is the strength of the circle-operation dial on G's flow, and the", size=13, color=GRAY)
 f.text(100, 492, "UV fixed point's η_N = 2 − d is the flow undoing exactly that much dimension: at the fixed point gravity behaves as if d were 2. Check A5.", size=13, color=GRAY)
 f.save(P("a4-dimension-is-the-dial.svg"))
 
@@ -208,7 +208,7 @@ rows = [("Units form a lattice; natural units collapse it", "known", GREEN),
         ("G (with Λ) labels the trajectory that flows from that spacetime to 4D GR", "known RG reading", GREEN),
         ("The label is one pure number, GħΛ/c³, the same as in g-dials", "known in substance; link ours", ORANGE),
         ("That flow is a deformation in the Inönü–Wigner / rigidity sense", "a stretch: no algebra, no H² test", RED),
-        ("In 1/g the one-loop flow is exactly mult-add; the wall is the fixed point", "ours, exact for that shape", PURPLE),
+        ("In 1/g the one-loop flow is exactly the circle operation; the wall is the fixed point", "ours, exact for that shape", PURPLE),
         ("Dimension flows (AS, CDT, Calcagni) are exact two-wall rapidity curves", "ours, exact for the published forms", PURPLE),
         ("Deformed covariance bends a G-dependent structure", "known; but its dial is the signature", ORANGE),
         ("Either supplies the area law's 1/4", "no", RED)]

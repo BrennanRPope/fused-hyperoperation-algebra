@@ -1,5 +1,5 @@
 """
-Hunting other transcendental constants that mult-add produces.
+Hunting other transcendental constants that the circle operation produces.
 Fused Hyperoperation Algebra, Nov 25 2026.
 
 For each candidate: compute to high precision, then run integer-relation searches (PSLQ)
@@ -25,7 +25,7 @@ def say(s):
 #    E has a parabolic fixed point at 0. Abel (Fatou) coordinate: alpha(E(x)) = alpha(x) + 1,
 #    alpha(x) = -2/x + (1/3) log x + sum_k c_k x^k  (asymptotic series; Szekeres 1958, Ecalle).
 #    E^s(x) = alpha^{-1}(alpha(x) + s). Then B_s(a,b) = E^s(E^-s(a) + E^-s(b)) is the fused
-#    operation at height s: B_0 = +, B_1 = mult-add.
+#    operation at height s: B_0 = +, B_1 = the circle operation.
 # --------------------------------------------------------------------------------------------
 NC = 60    # series terms
 
@@ -163,7 +163,7 @@ cands = {
 }
 OUT['values'] = {k: mp.nstr(v, 80) for k, v in cands.items()}
 
-# Feigenbaum delta: on the road from mult-add's doubling (z -> z^2, c = 0) to the turning law's doubling
+# Feigenbaum delta: on the road from the circle operation's doubling (z -> z^2, c = 0) to the turning law's doubling
 # (z -> z^2 - 2, c = -2). Computed here from superstable parameters of z^2 + c (period 2^n).
 mp.mp.dps = 40
 
@@ -191,7 +191,7 @@ for n in range(2, 15):
     cs.append(superstable(n, guess))
     if len(cs) > 3:
         deltas.append((cs[-2] - cs[-3]) / (cs[-1] - cs[-2]))
-say(f"Feigenbaum road (c = 0 mult-add doubling -> c = -2 turning doubling): superstable c_12 = {mp.nstr(cs[-1], 15)}, delta estimate {mp.nstr(deltas[-1], 12)} (known 4.66920160910)")
+say(f"Feigenbaum road (c = 0 circle doubling -> c = -2 turning doubling): superstable c_12 = {mp.nstr(cs[-1], 15)}, delta estimate {mp.nstr(deltas[-1], 12)} (known 4.66920160910)")
 OUT['feigenbaum'] = {'c_superstable': [mp.nstr(c, 20) for c in cs], 'delta_estimates': [mp.nstr(d, 15) for d in deltas]}
 mp.mp.dps = DPS
 

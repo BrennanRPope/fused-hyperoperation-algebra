@@ -3,9 +3,9 @@
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library's Base.
   Intended library path: FusedAlgebra/Topics/OrderDial.lean (imports only FusedAlgebra.Base).
 
-  1. Where mult-add sits on the cube of laws: its only idempotents are 0 and the wall.
-  2. Composition first: one compounding period x ↦ (1 + r)x + d. In mult-add coordinates the
-     stretches compose by ✳ and the shifts pick up order; the order gap is the wedge
+  1. Where the circle operation (called mult-add before 1.0) sits on the cube of laws: its only idempotents are 0 and the wall.
+  2. Composition first: one compounding period x ↦ (1 + r)x + d. In circle-operation coordinates the
+     stretches compose by ◯ and the shifts pick up order; the order gap is the wedge
      r₁d₂ − r₂d₁; maps commute exactly when the wedge is 0; the k-family is one such slice.
   3. Order inside the formula: a + b + αab + βba. Its commutator is (α − β)[a, b]; on
      2×2 matrices its grouping error is αβ times a fixed nonzero matrix, so it is
@@ -21,17 +21,17 @@
 import FusedAlgebra.Base
 
 namespace OrderDial
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
-/-! ## 1. Mult-add on the cube of laws -/
+/-! ## 1. The circle operation on the cube of laws -/
 
-/-- The grouping-free, order-free, but repetition-counting corner: a ✳ₖ a = a only at 0 and the wall. -/
-theorem wAdd_idem_iff (k a : Int) : wAdd k a a = a ↔ a = 0 ∨ 1 + k * a = 0 := by
-  have e : wAdd k a a - a = a * (1 + k * a) := by simp only [wAdd]; grind
+/-- The grouping-free, order-free, but repetition-counting corner: a ◯ₖ a = a only at 0 and the wall. -/
+theorem circK_idem_iff (k a : Int) : circK k a a = a ↔ a = 0 ∨ 1 + k * a = 0 := by
+  have e : circK k a a - a = a * (1 + k * a) := by simp only [circK]; grind
   constructor
   · intro h
     have : a * (1 + k * a) = 0 := by rw [← e, h]; grind
@@ -41,32 +41,32 @@ theorem wAdd_idem_iff (k a : Int) : wAdd k a a = a ↔ a = 0 ∨ 1 + k * a = 0 :
       rcases h with h | h <;> simp [h]
     grind
 
-/-- So mult-add counts repeats: 1 ✳ 1 = 3. -/
-theorem one_multAdd_one : (1 : Int) ✳ 1 = 3 := by decide
+/-- So the circle operation counts repeats: 1 ◯ 1 = 3. -/
+theorem one_circ_one : (1 : Int) ◯ 1 = 3 := by decide
 
-/-- The wall −1 absorbs everything (mult-add's zero, not its unit). -/
-theorem wall_absorbs (b : Int) : (-1 : Int) ✳ b = -1 := by simp only [multAdd]; grind
+/-- The wall −1 absorbs everything (the circle operation's zero, not its unit). -/
+theorem wall_absorbs (b : Int) : (-1 : Int) ◯ b = -1 := by simp only [circ]; grind
 
 /-! ## 2. Composition first: stretch-and-shift maps -/
 
-/-- A stretch-and-shift in mult-add coordinates: (a, c) is x ↦ (1 + a)x + c. -/
+/-- A stretch-and-shift in circle-operation coordinates: (a, c) is x ↦ (1 + a)x + c. -/
 def app (p : Int × Int) (x : Int) : Int := (1 + p.1) * x + p.2
 
-/-- Composition of two stretch-and-shifts: stretches mult-add, shifts pick up order. -/
-def comp (p q : Int × Int) : Int × Int := (p.1 ✳ q.1, p.2 + (1 + p.1) * q.2)
+/-- Composition of two stretch-and-shifts: stretches combine by the circle operation, shifts pick up order. -/
+def comp (p q : Int × Int) : Int × Int := (p.1 ◯ q.1, p.2 + (1 + p.1) * q.2)
 
 /-- `comp` really is composition (functoriality of the one-object category). -/
 theorem app_comp (p q : Int × Int) (x : Int) : app (comp p q) x = app p (app q x) := by
-  simp only [app, comp, multAdd]; grind
+  simp only [app, comp, circ]; grind
 
 theorem comp_id (p : Int × Int) : comp p (0, 0) = p ∧ comp (0, 0) p = p := by
-  simp only [comp, multAdd]; constructor <;> (apply Prod.ext <;> simp <;> grind)
+  simp only [comp, circ]; constructor <;> (apply Prod.ext <;> simp <;> grind)
 
 theorem comp_assoc (p q r : Int × Int) : comp (comp p q) r = comp p (comp q r) := by
-  simp only [comp, multAdd]; apply Prod.ext <;> simp <;> grind
+  simp only [comp, circ]; apply Prod.ext <;> simp <;> grind
 
 /-- The stretch parts never care about order. -/
-theorem stretch_order_free (p q : Int × Int) : (comp p q).1 = (comp q p).1 := multAdd_comm _ _
+theorem stretch_order_free (p q : Int × Int) : (comp p q).1 = (comp q p).1 := circ_comm _ _
 
 /-- The order gap is a pure shift, equal to the wedge a·d − b·c. -/
 theorem order_gap (p q : Int × Int) : (comp p q).2 - (comp q p).2 = p.1 * q.2 - q.1 * p.2 := by
@@ -80,9 +80,9 @@ theorem commute_iff (p q : Int × Int) : comp p q = comp q p ↔ p.1 * q.2 = q.1
     · exact stretch_order_free p q
     · have := order_gap p q; grind
 
-/-- The k-family (stretch k·a, shift a; all about the wall −1/k) is a commuting slice, and it is ✳ₖ. -/
-theorem k_slice (k a b : Int) : comp (k * a, a) (k * b, b) = (k * wAdd k a b, wAdd k a b) := by
-  simp only [comp, multAdd, wAdd]; apply Prod.ext <;> simp <;> grind
+/-- The k-family (stretch k·a, shift a; all about the wall −1/k) is a commuting slice, and it is ◯ₖ. -/
+theorem k_slice (k a b : Int) : comp (k * a, a) (k * b, b) = (k * circK k a b, circK k a b) := by
+  simp only [comp, circ, circK]; apply Prod.ext <;> simp <;> grind
 
 theorem k_slice_commutes (k a b : Int) : comp (k * a, a) (k * b, b) = comp (k * b, b) (k * a, a) := by
   rw [commute_iff]; simp; grind
@@ -119,7 +119,7 @@ theorem ext' {x y : M2} (h1 : x.a = y.a) (h2 : x.b = y.b) (h3 : x.c = y.c) (h4 :
 end M2
 
 open M2 in
-/-- Order-weighted mult-add: a + b + α·ab + β·ba. -/
+/-- The order-weighted circle operation: a + b + α·ab + β·ba. -/
 def mutAdd (al be : Int) (x y : M2) : M2 := add (add x y) (add (smul al (mul x y)) (smul be (mul y x)))
 
 open M2 in
@@ -129,7 +129,7 @@ theorem mut_comm (al be : Int) (x y : M2) :
   apply ext' <;> simp only [mutAdd, add, sub, smul, mul] <;> grind
 
 open M2 in
-/-- Every weighting stays flexible: (a ✳ b) ✳ a = a ✳ (b ✳ a). -/
+/-- Every weighting stays flexible: (a ◯ b) ◯ a = a ◯ (b ◯ a). -/
 theorem mut_flexible (al be : Int) (x y : M2) :
     mutAdd al be (mutAdd al be x y) x = mutAdd al be x (mutAdd al be y x) := by
   apply ext' <;> simp only [mutAdd, add, smul, mul] <;> grind
@@ -200,18 +200,18 @@ theorem weyl (a : Nat) (l : Int) (f : Nat → Int) (n : Nat) :
 /-! ## 6. Kleisli composition and the k-sum -/
 
 /-- The k-sum distributes only where k·c·(c − 1)·a·b = 0. -/
-theorem ksum_distrib_gap (k a b c : Int) : wAdd k (c * a) (c * b) - c * wAdd k a b = k * a * b * c * (c - 1) := by
-  simp only [wAdd]; grind
+theorem ksum_distrib_gap (k a b c : Int) : circK k (c * a) (c * b) - c * circK k a b = k * a * b * c * (c - 1) := by
+  simp only [circK]; grind
 
 /-- At k = 0 the k-sum is plain addition (bags: count paths). -/
-theorem ksum_zero (a b : Int) : wAdd 0 a b = a + b := by simp only [wAdd]; grind
+theorem ksum_zero (a b : Int) : circK 0 a b = a + b := by simp only [circK]; grind
 
 /-- At k = −1 on 0/1 values the k-sum is OR (relations: is there a path). -/
-theorem ksum_or (a b : Int) (ha : a = 0 ∨ a = 1) (hb : b = 0 ∨ b = 1) : wAdd (-1) a b = max a b := by
+theorem ksum_or (a b : Int) (ha : a = 0 ∨ a = 1) (hb : b = 0 ∨ b = 1) : circK (-1) a b = max a b := by
   rcases ha with rfl | rfl <;> rcases hb with rfl | rfl <;> decide
 
 /-- Off 0/1 the k = −1 sum fails to distribute: c = 2, a = b = 1. -/
-theorem ksum_not_distrib : wAdd (-1 : Int) (2 * 1) (2 * 1) ≠ 2 * wAdd (-1) 1 1 := by decide
+theorem ksum_not_distrib : circK (-1 : Int) (2 * 1) (2 * 1) ≠ 2 * circK (-1) 1 1 := by decide
 
 /-! ## 7. Dictionary merge -/
 

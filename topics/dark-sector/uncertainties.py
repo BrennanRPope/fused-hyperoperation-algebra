@@ -14,14 +14,14 @@ def hess(f, p, h=2e-3):
     return H
 out = {}
 for key, which in (("Flat LCDM (cosmological constant)", "sn"), ("Flat LCDM (cosmological constant)", "sn+bao"),
-                   ("Mult-add cube, free weight per layer", "sn+bao"), ("Flat wCDM (dark energy with w free)", "sn+bao")):
+                   ("Circle-operation cube, free weight per layer", "sn+bao"), ("Flat wCDM (dark energy with w free)", "sn+bao")):
     model = X.MODELS[key][0]; p = R["fits"][key][which]["params"]
     f = (lambda q: X.sn_chi2(model, q)) if which == "sn" else (lambda q: joint(model, q))
     C = np.linalg.inv(hess(f, p) / 2)
     out[f"{key} [{which}]"] = dict(params=p, sigma=np.sqrt(np.diag(C)).tolist(), cov=C.tolist())
     print(key, which, np.round(p, 3), "+/-", np.round(np.sqrt(np.diag(C)), 3))
 # test equal layer weights (LCDM) inside the cube model
-key = "Mult-add cube, free weight per layer"; p = np.array(out[f"{key} [sn+bao]"]["params"]); C = np.array(out[f"{key} [sn+bao]"]["cov"])
+key = "Circle-operation cube, free weight per layer"; p = np.array(out[f"{key} [sn+bao]"]["params"]); C = np.array(out[f"{key} [sn+bao]"]["cov"])
 d = np.array([p[0] - p[1], p[1] - p[2]]); J = np.array([[1, -1, 0], [0, 1, -1]]); Cd = J @ C @ J.T
 out["equal_weights_test"] = dict(diffs=d.tolist(), chi2=float(d @ np.linalg.inv(Cd) @ d), dof=2)
 print("equal-weights test chi2 =", out["equal_weights_test"]["chi2"], "for 2 dof")

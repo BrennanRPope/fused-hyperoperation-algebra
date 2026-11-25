@@ -1,4 +1,4 @@
-"""Measure theory and probability through mult-add: every claim on index.html, checked.
+"""Measure theory and probability through the circle operation: every claim on index.html, checked.
 Run: python3 checks.py > checks_output.txt"""
 import itertools, math
 import numpy as np, sympy as sp
@@ -32,9 +32,9 @@ def sugeno_lambda(g):
 
 print("== 1. The Sugeno lambda-measure is the dial with k = lambda")
 x, y, z, l = sp.symbols('x y z l')
-check("symbolic: disjoint union a ✳λ b is associative and commutative",
+check("symbolic: disjoint union a ∘_λ b is associative and commutative",
       sp.expand(dial(l, dial(l, x, y), z) - dial(l, x, dial(l, y, z))) == 0 and sp.expand(dial(l, x, y) - dial(l, y, x)) == 0)
-check("symbolic: lift 1+λ(a✳λb) = (1+λa)(1+λb)", sp.expand(1 + l*dial(l, x, y) - (1+l*x)*(1+l*y)) == 0)
+check("symbolic: lift 1+λ(a∘_λb) = (1+λa)(1+λb)", sp.expand(1 + l*dial(l, x, y) - (1+l*x)*(1+l*y)) == 0)
 ok = True
 for _ in range(300):
     n = rng.integers(2, 7); g = rng.uniform(0.02, 0.8, n); lam = sugeno_lambda(g)
@@ -65,7 +65,7 @@ g1, g2 = sp.symbols('g1 g2', positive=True)
 l2 = (1 - g1 - g2)/(g1*g2)
 check("two atoms: λ = (1 − g1 − g2)/(g1 g2) solves it", sp.simplify((1+l2*g1)*(1+l2*g2) - (1+l2)) == 0)
 
-print("== 3. Möbius masses are the corners of the mult-add cube")
+print("== 3. Möbius masses are the corners of the circle-operation cube")
 ok = ok_bel = ok_dualbel = True
 for _ in range(200):
     n = rng.integers(2, 6); g = rng.uniform(0.05, 0.8, n); lam = sugeno_lambda(g)
@@ -95,7 +95,7 @@ for _ in range(200):
     for S in subsets(n):
         ok_q &= abs(lam_measure(lam, [g[i] for i in S]) - (q**P(S) - 1)/(q - 1)) < 1e-9
 check("P(A) = log(1+λμ(A))/log(1+λ) is additive with P(Ω) = 1", ok_add)
-check("μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ = k + 1", ok_q)
+check("μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ, so k = q − 1", ok_q)
 ok = True
 for m_ in range(1, 9):
     for (lam, g) in [(0.7, 0.2), (-0.4, 0.3), (2.0, 0.05)]:
@@ -121,7 +121,7 @@ for _ in range(200):
 check("(1+λμ(A∪B))(1+λμ(A∩B)) = (1+λμ(A))(1+λμ(B))", ok2)
 check("three sets: 1+λμ(∪) = ∏ over corners of (1+λμ(∩))^(±1)", okn)
 
-print("== 6. Duality: the dual weight is mult-add's inverse")
+print("== 6. Duality: the dual weight is the circle operation's inverse")
 ok = True
 for _ in range(200):
     n = rng.integers(2, 6); g = rng.uniform(0.05, 0.8, n); lam = sugeno_lambda(g)
@@ -133,7 +133,7 @@ for _ in range(200):
             if set(A) & set(B): continue
             ok &= abs(dual(sorted(set(A)|set(B))) - dial(ld, dual(A), dual(B))) < 1e-9
 check("200 spaces: μ*(A) = 1 − μ(Aᶜ) is a λ*-measure with λ* = −λ/(1+λ)", ok)
-check("symbolic: λ* = mult-add inverse of λ, (λ*)* = λ, 1+λ* = 1/(1+λ)",
+check("symbolic: λ* = circle inverse of λ, (λ*)* = λ, 1+λ* = 1/(1+λ)",
       sp.simplify(dial(1, l, -l/(1+l))) == 0 and sp.simplify(-(-l/(1+l))/(1-l/(1+l)) - l) == 0 and sp.simplify(1 - l/(1+l) - 1/(1+l)) == 0)
 
 print("== 7. What the weight means: firing atoms and compounding")
@@ -169,7 +169,7 @@ from fractions import Fraction as Fr
 check("k = −1: 1 − ∏(1 − g_i) = 1 forces some g_i = 1 (exact fractions)",
       lam_measure(-1, [Fr(3,10), Fr(1), Fr(1,2)]) == 1 and lam_measure(-1, [Fr(999,1000)]*50) < 1)
 def lens(p, q, a, b): return (a + b + p*a*b)/(1 - q*a*b)
-def L1(p, q):   # additive coordinate at 1: ∫0^1 dt/(1+pt+qt²)
+def L1(p, q):   # additive coordinate at 1: ∫0^1 dt/(1+pt+dt²)
     f = lambda t: 1/(1 + p*t + q*t*t)
     ts = np.linspace(0, 1, 2001)
     if np.min(1 + p*ts + q*ts*ts) <= 1e-9: return math.inf
@@ -181,9 +181,9 @@ for _ in range(400):
     p, q = rng.uniform(-3, 3, 2)
     if abs(np.min(1 + p*np.linspace(0,1,4001) + q*np.linspace(0,1,4001)**2)) < 1e-3: continue
     ok &= (math.isfinite(L1(p, q)) == normalizable(p, q))
-check("landscape: L(1) = ∫₀¹dt/(1+pt+qt²) finite exactly when 1+pt+qt² > 0 on [0,1]", ok)
+check("landscape: L(1) = ∫₀¹dt/(1+pt+dt²) finite exactly when 1+pt+dt² > 0 on [0,1]", ok)
 th = np.linspace(-0.99, 0.99, 50)
-check("the 'or' line k+q = −1 (statistics page) lies on the edge: 1+p+q = 0 there",
+check("the 'or' line k+d = −1 (statistics page) lies on the edge: 1+p+d = 0 there",
       all(abs(1 + (-(1+t)) + t) < 1e-15 for t in th))
 def region(p, q): return (q > -1 - p) if p >= -2 else (q > p*p/4)
 ok = True
@@ -192,7 +192,7 @@ for _ in range(2000):
     ts = np.linspace(0, 1, 20001); mn = np.min(1 + p*ts + q*ts*ts)
     if abs(mn) < 1e-3: continue
     ok &= ((mn > 0) == region(p, q))
-check("normalizable region = above the line q = −1−p (p ≥ −2) and above the parabola q = p²/4 (p < −2)", ok)
+check("normalizable region = above the line d = −1−p (p ≥ −2) and above the parabola d = p²/4 (p < −2)", ok)
 pp = sp.symbols('p')
 check("the line meets the border parabola tangentially at the cusp (−2, 1)",
       sp.solve(sp.Eq(-1 - pp, pp**2/4), pp) == [-2] and sp.diff(pp**2/4, pp).subs(pp, -2) == -1)
@@ -212,7 +212,7 @@ for k in [-0.9, -0.5, 0.5, 3.0]:
     ok &= abs(Lk(m) - sum(Lk(gi) for gi in gs)) < 1e-12
 check("dial line: the additive coordinate log(1+kx)/k adds over atoms", ok)
 
-print("== 9. Odds of an 'or' mult-add")
+print("== 9. Odds of an 'or' combine by the circle operation")
 ok = True
 odds = lambda p: p/(1-p); against = lambda p: (1-p)/p
 for _ in range(500):
@@ -220,13 +220,13 @@ for _ in range(500):
     ok &= abs(odds(dial(-1, p, q)) - dial(1, odds(p), odds(q))) < 1e-8*max(1, odds(dial(-1,p,q)))
     ok &= abs(against(p*q) - dial(1, against(p), against(q))) < 1e-8*max(1, against(p*q))
     ok &= abs(odds(dial(-1, dial(-1, p, q), r)) - dial(1, dial(1, odds(p), odds(q)), odds(r))) < 1e-7*max(1, odds(dial(-1,dial(-1,p,q),r)))
-check("independent A, B: odds(A∪B) = odds A ✳ odds B; odds-against(A∩B) = against A ✳ against B; 3 events", ok)
+check("independent A, B: odds(A∪B) = odds A ∘₁ odds B; odds-against(A∩B) = against A ∘₁ against B; 3 events", ok)
 bad = sum(abs(odds(p*q) - dial(1, odds(p), odds(q))) > 1e-6 for p, q in rng.uniform(0.05, 0.95, (200, 2)))
-check("odds of an 'and' do NOT mult-add (dropped claim): fails on 200 of 200 random pairs", bad == 200)
+check("odds of an 'and' do NOT the circle operation (dropped claim): fails on 200 of 200 random pairs", bad == 200)
 # Monte Carlo
 N = 400000; A = rng.random(N) < .3; B = rng.random(N) < .45
 pe = (A|B).mean()
-check("simulation (400,000 draws): odds of A∪B matches 0.4286 ✳ 0.8182 = 1.5974",
+check("simulation (400,000 draws): odds of A∪B matches 0.4286 ∘₁ 0.8182 = 1.5974",
       abs(pe/(1-pe) - dial(1, odds(.3), odds(.45))) < 0.02, f"{pe/(1-pe):.4f}")
 
 print("== 10. Expectation passes through the dial when variables are independent")
@@ -241,23 +241,23 @@ for _ in range(300):
     EX = (J.sum(1))@xs; EY = (J.sum(0))@ys; EXY = xs@J@ys
     E2 = sum(J[i, j]*dial(k, xs[i], ys[j]) for i in range(5) for j in range(4))
     okcov &= abs(E2 - dial(k, EX, EY) - k*(EXY - EX*EY)) < 1e-10
-check("300 random independent pairs: E[X ✳ₖ Y] = E X ✳ₖ E Y", ok)
+check("300 random independent pairs: E[X ∘ₖ Y] = E X ∘ₖ E Y", ok)
 check("dependent pairs: the gap is exactly k·Cov(X, Y) (the corner's excess)", okcov)
 r = [(-0.5, 0.5), (0.5, 0.5)]           # fair ±50% bet
 vals = list(itertools.product(*[[v for v, _ in r]]*6))
 EW = sum(np.prod([0.5]*6) * (np.prod([1+v for v in path]) - 1) for path in vals)
 med = np.median([np.prod([1+v for v in path]) - 1 for path in vals])
-check("martingale: six fair ±50% bets, E[r₁ ✳ … ✳ r₆] = 0 exactly", abs(EW) < 1e-12)
+check("martingale: six fair ±50% bets, E[r₁ ∘₁ … ∘₁ r₆] = 0 exactly", abs(EW) < 1e-12)
 check("yet the typical path loses: median wealth change = 0.75³ − 1 = −0.578", abs(med - (0.75**3 - 1)) < 1e-12)
 check("volatility drag: E log(1+r) = ½log(0.75) < 0 = log(1 + E r)", 0.5*math.log(1.5)+0.5*math.log(0.5) < 0)
 
-print("== 11. Yor's formula: stochastic exponentials multiply by mult-add, step by step")
+print("== 11. Yor's formula: stochastic exponentials multiply by the circle operation, step by step")
 ok = True
 for _ in range(200):
     n = rng.integers(1, 30); dx, dy = rng.normal(0, .1, n), rng.normal(0, .1, n)
     lhs = (np.prod(1+dx) - 1); rhs = (np.prod(1+dy) - 1)
     ok &= abs(dial(1, lhs, rhs) - (np.prod(1 + dial(1, dx, dy)) - 1)) < 1e-10
-check("ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ✳ Δy = Δx+Δy+ΔxΔy", ok)
+check("ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ∘₁ Δy = Δx+Δy+ΔxΔy", ok)
 T, sig = 1.0, 0.8; errs = []; qv = []
 for n in [100, 1000, 10000, 100000]:
     e1 = e2 = 0.0
@@ -271,6 +271,6 @@ check("the summed self-corners ΣΔW² → T (the Itô drag is half of them)", q
 
 print("== 12. Discrete hazards (already on the information page; restated)")
 h = rng.uniform(0, .2, 12); F = lam_measure(-1, h)
-check("failure by step n = h₁ ✳₋₁ … ✳₋₁ hₙ = 1 − ∏(1 − hᵢ)", abs(F - (1 - np.prod(1-h))) < 1e-14)
+check("failure by step n = h₁ ∘₋₁ … ∘₋₁ hₙ = 1 − ∏(1 − hᵢ)", abs(F - (1 - np.prod(1-h))) < 1e-14)
 
 print(f"\n{sum(results)}/{len(results)} checks pass")

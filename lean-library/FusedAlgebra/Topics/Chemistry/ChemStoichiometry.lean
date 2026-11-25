@@ -5,31 +5,31 @@
   Companion page and checks: ../index.html, ../checks.py (14 checks).
   Core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 
-  Yields multiply, so losses combine by the weighted mult-add at k = −1
-  (the library's `wAdd (-1)`, failure-union). n equal steps lose
+  Yields multiply, so losses combine by the circle operation (called weighted mult-add before 1.0) at k = −1
+  (the library's `circK (-1)`, failure-union). n equal steps lose
   `wpow (-1) ℓ n = 1 − (1 − ℓ)^n`. A synthesis tree's yield along any path
   depends only on how many couplings that path passes through.
 
   Isotope patterns are generating functions: a molecule's pattern is the
-  product of its atoms' polynomials, which is the mult-add lift.
+  product of its atoms' polynomials, which is the circle-operation lift.
 
   Proportions: combining two compounds adds their atom counts, so the
   combined formula is the mediant of the parents' ratios and lies between.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
-  Merged at Topics/Chemistry/ChemStoichiometry; the local infix stays. Two exact twins removed
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
+  Merged at Topics/Chemistry/ChemStoichiometry; it now uses Base's ◯. Two exact twins removed
   (see the LIBRARY comments).
 -/
 import FusedAlgebra.Base
 
 namespace ChemStoichiometry
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
-/-- Two steps: overall loss is the k = −1 mult-add of the step losses. -/
-theorem loss_two (l1 l2 : Rat) : 1 - (1 - l1) * (1 - l2) = wAdd (-1) l1 l2 := by
-  rw [wAdd_either]
+/-- Two steps: overall loss is the k = −1 circle operation of the step losses. -/
+theorem loss_two (l1 l2 : Rat) : 1 - (1 - l1) * (1 - l2) = circK (-1) l1 l2 := by
+  rw [circK_either]
 
 /-- n equal steps: overall loss 1 − (1 − ℓ)^n is the k = −1 power. -/
 theorem loss_n (l : Rat) (n : Nat) : 1 - (1 - l) ^ n = wpow (-1) l n := by
@@ -38,8 +38,8 @@ theorem loss_n (l : Rat) (n : Nat) : 1 - (1 - l) ^ n = wpow (-1) l n := by
 -- LIBRARY: yield_lift (The lift: yields are 1 − loss and multiply) was an exact twin of StatFused.de_morgan (also InfoFused.survival) and is removed.
 
 /-- Losses compose in any grouping (associativity of the fold). -/
-theorem loss_assoc (a b c : Rat) : wAdd (-1) (wAdd (-1) a b) c = wAdd (-1) a (wAdd (-1) b c) :=
-  wAdd_assoc (-1) a b c
+theorem loss_assoc (a b c : Rat) : circK (-1) (circK (-1) a b) c = circK (-1) a (circK (-1) b c) :=
+  circK_assoc (-1) a b c
 
 /-- Ten steps at 90%: (9/10)^10 overall, so 1 − (9/10)^10 is lost. -/
 theorem ten_steps : wpow (-1) (1/10 : Rat) 10 = 1 - (9/10) ^ 10 := by

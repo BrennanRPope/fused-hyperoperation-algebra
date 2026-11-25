@@ -10,6 +10,26 @@ uses.
 
 Last checked: 2026-11-25, against the repo at commit efa8013 and a fresh copy of mathlib4.
 
+## What changed for 1.0 (decided Nov 25, 2026)
+
+Brennan chose to follow the literature. Pages and the Lean library now use the names on the right. Version 0.1.0 and
+its release notes keep the old names, so both columns stay here.
+
+| Old (v0.1.0) | 1.0 | Why |
+|---|---|---|
+| mult-add, written ⊞, ✳ or ⊕ | the circle operation, ∘₁ on the page, ◯ in Lean (`circ`) | ring theory's name for a + b + ab (Perlis 1942, Jacobson 1945; mathlib `PreQuasiregular`) |
+| weighted mult-add a ⊞ₖ b | the circle operation with dial k, ∘ₖ on the page, ◯[k] in Lean (`circK`) | k = 1 and k = −1 are the two ring-theory sign conventions; k = 0 is addition |
+| ⊞ for the shifted add a + b + 1 | `sadd`, by name | one glyph, one meaning |
+| ⊛ for rung 3 | `fexp`, by name | one glyph, one meaning |
+| ⊛ for the operator circle operation | ◯ₒ in Lean (`opCirc`) | one glyph, one meaning |
+| ⊕ for the two-dial law | ∘ₖ,d on the landscape pages; ⊕ kept only for relativistic velocity addition, which is physics' own symbol | ⊕ is a direct sum in mathematics and `Sum` in Lean |
+| q, the plane's second dial | d | Coleman and McGuinness 1991 |
+| q = k + 1 | retired; Tsallis's index is written q_T = 1 − k | it clashed with the other q and with Tsallis |
+| d in the zoom dial | s for the exponent (Σ rᵢ^s = 1), D for the dimension | Falconer and Hutchinson; Lapidus and van Frankenhuijsen; frees d for the plane |
+| Lean `multAdd`, `wAdd`, `multAddInv`, `foldMA`, namespace `MultAdd`, module `MultAddRing` | `circ`, `circK`, `circInv`, `foldCirc`, namespace `CircleOp`, module `CircleRing` | the old names still work for one minor release as deprecated aliases (`Deprecated.lean`) |
+
+The rows below describe the v0.1.0 names.
+
 ## Symbols
 
 | Symbol | What it means here | What it means elsewhere | Where it appears here | Since |

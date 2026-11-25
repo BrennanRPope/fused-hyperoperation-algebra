@@ -6,9 +6,9 @@ Every claim on the page that has a number comes from here.  Run:
 Seeds are fixed, so the output is repeatable.
 
 Notation
-    mult-add        a (+) b = a + b + a*b,       1 + (a (+) b) = (1+a)(1+b)
+    the circle operation        a (+) b = a + b + a*b,       1 + (a (+) b) = (1+a)(1+b)
     weighted        a (+)k b = a + b + k*a*b     k = -1 is "either one happens"
-    mult-add power  a^(+n) = (1+a)^n - 1
+    circle power  a^(+n) = (1+a)^n - 1
 """
 import math
 import numpy as np
@@ -21,7 +21,7 @@ def madd(a, b, k=1.0):
 
 
 def mpow(a, n, k=1.0):
-    """n-fold weighted mult-add of a with itself."""
+    """n-fold circle operation with dial k of a with itself."""
     x = 0.0
     for _ in range(n):
         x = madd(x, a, k)
@@ -36,11 +36,11 @@ def hdr(s):
 
 
 # ----------------------------------------------------------------------------
-hdr("C1  Proof of work: catching up z blocks is a mult-add power")
+hdr("C1  Proof of work: catching up z blocks is a circle power")
 # Gambler's ruin: attacker with share q, honest p = 1-q, starting z behind,
 # ever catches up with probability (q/p)^z when q < p, else 1.
 # Write r = q/p and a = r - 1.  Then r^z = 1 + a^(+z): the depth is a
-# mult-add power of a, and q = 1/2 makes a = 0, the mult-add identity.
+# Circle power of a, and q = 1/2 makes a = 0, the circle-operation identity.
 print("q      r=q/p   a=r-1    r^10 (gambler)   1 + mpow(a,10)")
 for q in [0.10, 0.25, 0.40, 0.45, 0.49, 0.50]:
     p = 1 - q
@@ -113,7 +113,7 @@ print("k quorums must share an honest node: tolerable fraction 1/(k+1)")
 for k in [1, 2, 3, 4]:
     print(f"  k={k}: f < 1/{k + 1} = {1 / (k + 1):.4f}")
 # Random quorums: overlap of two random fraction-q subsets is q*q (product),
-# their union is q (+)_{-1} q = 2q - q^2: the k = -1 mult-add.
+# their union is q (+)_{-1} q = 2q - q^2: the k = -1 circle operation.
 for q in [0.5, 0.67, 0.8]:
     print(f"random quorums of fraction {q}: union {madd(q, q, -1):.4f}, overlap {q * q:.4f}, worst-case overlap {max(0, 2 * q - 1):.4f}")
 
@@ -257,7 +257,7 @@ for att in [0.10, 0.20, 0.30]:
         print(f"{att:.2f}             {name:22s} {np.mean(shares):.3f}                       {np.mean(blocks):.3f}")
 
 # ----------------------------------------------------------------------------
-hdr("C6  Candidate B: weigh stake by log(1+s), additive under mult-add")
+hdr("C6  Candidate B: weigh stake by log(1+s), additive under the circle operation")
 # w(a (+) b) = w(a) + w(b) for w = log(1+s).  But real stake adds with +,
 # so splitting s = s1 + s2 into two accounts changes the weight:
 #   (1+s1)(1+s2) = 1 + s1 + s2 + s1*s2  ->  the gain is exactly the corner s1*s2.
@@ -272,7 +272,7 @@ for name, w in [("linear s", lambda s: s), ("sqrt s", math.sqrt), ("s^2", lambda
     print(f"  {name:10s} weight ratio split/whole = {10 * w(0.03) / w(0.30):.3f}")
 
 # ----------------------------------------------------------------------------
-hdr("C7  Nothing at stake and slashing: detection is a k = -1 mult-add power")
+hdr("C7  Nothing at stake and slashing: detection is a k = -1 circle power")
 # m independent watchers each catch a double vote with probability d.
 # Caught = d (+)_{-1} d (+)_{-1} ... = 1 - (1-d)^m.
 for d in [0.05, 0.2]:
@@ -327,9 +327,9 @@ print(f"  proportional churn (k=-1 power): {t_mult:,.0f} epochs = {t_mult * epoc
 print("  (Ethereum's own weak-subjectivity rule is stricter; this is the upper bound of the idea, not their number)")
 
 # ----------------------------------------------------------------------------
-hdr("C9  Verifiable delay functions: repeated mult-add doubling")
+hdr("C9  Verifiable delay functions: repeated circle doubling")
 # Wesolowski / Pietrzak VDFs compute y = x^(2^T): T squarings in a row.
-# In mult-add coordinates squaring is a (+) a, so T doublings climb a cube of
+# In circle-operation coordinates squaring is a (+) a, so T doublings climb a cube of
 # dimension 2^T.  Pietrzak's proof splits T in half: x^(2^T) = (x^(2^(T/2)))^(2^(T/2)).
 a = 0.001
 x = a

@@ -6,11 +6,11 @@ PASS helix-fraction slope at s=1 is 1/(4 sqrt sigma), sigma=0.01 | 2.50 vs 2.50
 PASS helix-fraction slope at s=1 is 1/(4 sqrt sigma), sigma=0.001 | 7.91 vs 7.91
 PASS helix-fraction slope at s=1 is 1/(4 sqrt sigma), sigma=0.0001 | 25.00 vs 25.00
  measured-scale dial values: sigma 1e-2..1e-4 -> k = 1/sigma = 100..10000
-PASS two-site binding polynomial = 1 + wAdd(w,a,b), w=0
-PASS two-site binding polynomial = 1 + wAdd(w,a,b), w=0.5
-PASS two-site binding polynomial = 1 + wAdd(w,a,b), w=1
-PASS two-site binding polynomial = 1 + wAdd(w,a,b), w=4
-PASS two-site binding polynomial = 1 + wAdd(w,a,b), w=25
+PASS two-site binding polynomial = 1 + circK(w,a,b), w=0
+PASS two-site binding polynomial = 1 + circK(w,a,b), w=0.5
+PASS two-site binding polynomial = 1 + circK(w,a,b), w=1
+PASS two-site binding polynomial = 1 + circK(w,a,b), w=4
+PASS two-site binding polynomial = 1 + circK(w,a,b), w=25
 PASS w=1 (independent sites): Z factorises (1+a)(1+b)
 PASS w=0 (exclusive sites): Z = 1+a+b, plain addition
 PASS two-site Hill coefficient = 2 sqrt(w)/(1+sqrt(w)), w=0.25 | nH=0.6667, x50=2.0000=1/sqrt(w)
@@ -19,14 +19,14 @@ PASS two-site Hill coefficient = 2 sqrt(w)/(1+sqrt(w)), w=4 | nH=1.3333, x50=0.5
 PASS two-site Hill coefficient = 2 sqrt(w)/(1+sqrt(w)), w=100 | nH=1.8182, x50=0.1000=1/sqrt(w)
 PASS a site at the wall -1/w makes Z independent of the other site
 PASS (1+c a)^4 = 1 + c*wpow(c,a,4): T state is the weighted power at dial c
-PASS (1+a)^4 = 1 + mpow(a,4): R state is the plain mult-add power
+PASS (1+a)^4 = 1 + mpow(a,4): R state is the plain circle power
 PASS MWC (L=9000,c=0.014,K_R=2.8 torr) gives P50 near human 26-27 torr | P50=27.7 torr
 PASS MWC gives Hill coefficient near the fitted 2.8 | nH=2.85
 PASS one dial alone (L=1e-09) has Hill coefficient 1: cooperativity needs two dials mixed | nH=1.0000
 PASS one dial alone (L=1e+12) has Hill coefficient 1: cooperativity needs two dials mixed | nH=1.0000
 PASS three fidelity stages: total catch = c1 (+)_-1 c2 (+)_-1 c3, error 1e-10 | error 1.00e-10 (exact rational)
 PASS Eigen: master's excess growth = s (*) l with l = mpow(-mu, L) (500 cases)
-PASS threshold advantage is the mult-add inverse of the copy loss | l=-0.6321, s*=1.7184
+PASS threshold advantage is the circle inverse of the copy loss | l=-0.6321, s*=1.7184
    DNA microbes (Drake ~0.003/genome): copy loss l=-0.0030, needs advantage s > 0.0030 (sigma > 1.003)
    lytic RNA viruses (~1/genome): copy loss l=-0.6321, needs advantage s > 1.7183 (sigma > 2.718)
 PASS Drake: DNA microbes sit far from the wall (need sigma>1.003)

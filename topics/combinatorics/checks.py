@@ -1,4 +1,4 @@
-"""Combinatorics through mult-add: every claim on index.html, checked.
+"""Combinatorics through the circle operation: every claim on index.html, checked.
 Run: python3 checks.py > checks_output.txt"""
 import itertools, math
 from fractions import Fraction as F
@@ -19,10 +19,10 @@ for n in range(1, 6):
     lhs = sp.expand(sp.prod([1 + xi for xi in xs]) - 1)
     rhs = sum(sp.prod(S) for r in range(1, n + 1) for S in itertools.combinations(xs, r))
     check(f'cube: prod(1+x_i)-1 = sum over nonempty subsets, n={n}', sp.expand(lhs - rhs) == 0)
-    # fold of mult-add equals the same
+    # fold of the circle operation equals the same
     acc = 0
     for xi in xs: acc = acc + xi + acc * xi
-    check(f'fold x1 * x2 * ... (mult-add) = cube, n={n}', sp.expand(acc - lhs) == 0)
+    check(f'fold x1 * x2 * ... (the circle operation) = cube, n={n}', sp.expand(acc - lhs) == 0)
 check('at x_i = 1: 2^n - 1 nonempty subsets, n=1..10',
       all(sum(1 for r in range(1, n + 1) for _ in itertools.combinations(range(n), r)) == 2**n - 1 for n in range(1, 11)))
 
@@ -48,14 +48,14 @@ Dvals = [sum((-1)**j * C(n, j) * fact(n - j) for j in range(n + 1)) for n in ran
 check('derangements = sum_j (-1)^j C(n,j)(n-j)!  (brute force n<=7)', all(Dvals[n] == derange_bf(n) for n in range(8)))
 check('derangements 1,0,1,2,9,44,265,1854,14833', Dvals == [1, 0, 1, 2, 9, 44, 265, 1854, 14833])
 
-# ---------- 3. n! as a mult-add fold; layers are Stirling cycle numbers ----------
+# ---------- 3. n! as a circle-operation fold; layers are Stirling cycle numbers ----------
 ma = lambda a, b: a + b + a * b
 ok = True
 for n in range(2, 13):
     acc = 0
     for i in range(1, n): acc = ma(acc, i)
     ok &= (acc == fact(n) - 1)
-check('1 * 2 * ... * (n-1) = n! - 1 under mult-add (n=2..12)', ok)
+check('1 * 2 * ... * (n-1) = n! - 1 under the circle operation (n=2..12)', ok)
 def cycles(p):
     seen = set(); c = 0
     for i in range(len(p)):
@@ -97,7 +97,7 @@ for n in range(1, 7):
         S1 = [i for i in range(n) if mask >> i & 1]; S2 = [i for i in range(n) if not mask >> i & 1]
         cnt += fact(len(S1)) * 1  # S1: empty or an order; S2: empty or a set (one way)
     ok &= (cnt == cf[n])
-check('EGF mult-add (1+A)(1+B)-1 counts splits into optional A-part and B-part (n<=6)', ok)
+check('EGF the circle operation (1+A)(1+B)-1 counts splits into optional A-part and B-part (n<=6)', ok)
 check('two-colourings: (e^x-1) * (e^x-1) = e^{2x}-1, counts 2^n', all(c == 2**n for n, c in enumerate(coeffs(sp.exp(2*x)-1)) if n >= 1)
       and sp.simplify((sp.exp(x)) * (sp.exp(x)) - 1 - (sp.exp(2*x) - 1)) == 0)
 
@@ -228,7 +228,7 @@ cc = sp.symbols('c')
 lim = sp.limit(((1 + k * cc / nn)**nn - 1) / k, nn, sp.oo)
 check('n copies of C/n under the k-dial -> (e^{kC} - 1)/k as n -> oo', sp.simplify(lim - (sp.exp(k * cc) - 1) / k) == 0)
 lim1 = sp.limit((1 + cc / nn)**nn - 1, nn, sp.oo)
-check('k = 1: n copies of C/n mult-added -> E(C) = e^C - 1 (the e staircase)', sp.simplify(lim1 - (sp.exp(cc) - 1)) == 0)
+check('k = 1: n copies of C/n combined by the circle operation -> E(C) = e^C - 1 (the e staircase)', sp.simplify(lim1 - (sp.exp(cc) - 1)) == 0)
 dialE = sp.series((sp.exp(k * (sp.exp(x) - 1)) - 1) / k, x, 0, 8).removeO()
 ok = True
 for n in range(1, 8):
@@ -260,7 +260,7 @@ for m in range(1, 5):
         bf = sum(1 for w in itertools.product(range(n + 1), repeat=m) if sum(w) == n)
         layers = sum(C(m, j) * C(n - 1, j - 1) for j in range(1, m + 1))
         ok &= (sp.expand(f).coeff(x, n) == bf == layers == C(n + m - 1, m - 1))
-check('m parts, each "a positive part" mult-added: weak compositions C(n+m-1,m-1) = sum_j C(m,j)C(n-1,j-1) (m<=4,n<=9)', ok)
+check('m parts, each "a positive part" combined by the circle operation: weak compositions C(n+m-1,m-1) = sum_j C(m,j)C(n-1,j-1) (m<=4,n<=9)', ok)
 check('two parts: pairs (a,b), either or both nonzero, a+b=n: n+1', all(sum(1 for a in range(n + 1) for b in range(n + 1) if a + b == n) == n + 1 for n in range(1, 12)))
 
 print(f'\n{sum(R)} of {len(R)} checks pass')

@@ -4,7 +4,7 @@
   Library path: FusedAlgebra/Topics/WhyI.lean (compiled, 21 theorems, standard axioms only).
 
   Everything here is a small integer identity behind a picture on the page:
-  1. the twist (order gap) is antisymmetric, and between two mult-add dials it is (k − k₂)·a·b;
+  1. the twist (order gap) is antisymmetric, and between two circle-operation dials it is (k − k₂)·a·b;
   2. the dial-k elements stay on the line λ = 1 + k·s through the identity (the half-plane picture);
   3. a quarter turn J squares to −1, keeps length, and turns the dot product into the area form;
   4. a mirror flips the area form and turns J into −J (the twist's sign is i's sign);
@@ -26,7 +26,7 @@ theorem wedge_antisymm (a c b d : Int) : wedge a c b d = - wedge b d a c := by
 theorem wedge_self (a c : Int) : wedge a c a c = 0 := by
   unfold wedge; grind
 
-/-- Mult-add element a at dial k is the pair (k·a, a). Two dials twist by (k − k₂)·a·b. -/
+/-- Circle-operation element a at dial k is the pair (k·a, a). Two dials twist by (k − k₂)·a·b. -/
 theorem dial_twist (k k₂ a b : Int) : wedge (k * a) a (k₂ * b) b = (k - k₂) * a * b := by
   unfold wedge; grind
 
@@ -40,8 +40,8 @@ theorem dial_line_closed (k a b : Int) :
     (1 + k * a) * (1 + k * b) = 1 + k * ((1 + k * a) * b + a) := by
   grind
 
-/-- ... and the shift part of the composite is mult-add. -/
-theorem dial_line_multAdd (k a b : Int) : (1 + k * a) * b + a = a + b + k * a * b := by
+/-- ... and the shift part of the composite is the circle operation. -/
+theorem dial_line_circ (k a b : Int) : (1 + k * a) * b + a = a + b + k * a * b := by
   grind
 
 /-! ## 3. Twist plus length gives a quarter turn J with J² = −1 -/

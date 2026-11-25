@@ -5,7 +5,7 @@ H = os.path.dirname(os.path.abspath(__file__))
 P = os.path.dirname(H)
 lean_status = sys.argv[1] if len(sys.argv) > 1 else "sent to the shared library to compile"
 lean_note = sys.argv[2] if len(sys.argv) > 2 else (
-    "These are written on the shared mult-add base and sent to the shared library; they were not compiled in this session.")
+    "These are written on the shared circle-operation base and sent to the shared library; they were not compiled in this session.")
 
 c4 = json.load(open(os.path.join(P, "census_sig4.json")))
 c6 = json.load(open(os.path.join(P, "census_sig6.json")))

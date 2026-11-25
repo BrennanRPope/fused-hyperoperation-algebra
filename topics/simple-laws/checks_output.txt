@@ -1,11 +1,11 @@
 PASS number system slope = landscape law
 PASS norm multiplies
 PASS region addition = border
-PASS region mult-add = two walls
+PASS region the circle operation = two walls
 PASS region union of failures / cooling = two walls
 PASS region tangent / Pythagoras = turning
 PASS region velocity addition (Einstein) = two walls
-PASS region lens pair d=0.1 m = two walls
+PASS region lens pair ℓ=0.1 m = two walls
 PASS region rung 2 = two walls
 PASS region law of cosines C=60deg = turning
 PASS region law of cosines C=90deg = turning
@@ -32,14 +32,14 @@ PASS Kepler III Venus: t(+)t vs al(+)al(+)al within 0.5%
 PASS Kepler III Mars: t(+)t vs al(+)al(+)al within 0.5%
 PASS Kepler III Jupiter: t(+)t vs al(+)al(+)al within 0.5%
 PASS Kepler III Saturn: t(+)t vs al(+)al(+)al within 0.5%
-PASS two lenses apart P=5.0,3.0 d=0.1
-PASS two lenses apart P=10.0,-4.0 d=0.05
-PASS two lenses apart P=2.0,7.0 d=0.5
-PASS field lens: P1 d = 1 leaves total power = P1
-PASS Boyle partner of 0.5 is its mult-add inverse
-PASS Boyle partner of 1.0 is its mult-add inverse
-PASS Boyle partner of 3.0 is its mult-add inverse
-PASS Boyle partner of -0.5 is its mult-add inverse
+PASS two lenses apart P=5.0,3.0 ℓ=0.1
+PASS two lenses apart P=10.0,-4.0 ℓ=0.05
+PASS two lenses apart P=2.0,7.0 ℓ=0.5
+PASS field lens: P1 ℓ = 1 leaves total power = P1
+PASS Boyle partner of 0.5 is its circle inverse
+PASS Boyle partner of 1.0 is its circle inverse
+PASS Boyle partner of 3.0 is its circle inverse
+PASS Boyle partner of -0.5 is its circle inverse
 PASS Boyle hyperbola: b -> -1 as a -> infinity (the wall)
 PASS ladder invariant after 12 sections
 PASS ladder -> golden ratio

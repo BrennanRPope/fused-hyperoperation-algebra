@@ -2,7 +2,7 @@
   Gluing tesseract charts into P¹ × P¹
   ====================================
 
-  Part of Fused Mult-Add Algebra. Companion to TesseractCoords.lean (same folder). Python check: gluing_check.py.
+  Part of Fused Hyperoperation Algebra. Companion to TesseractCoords.lean (same folder). Python check: gluing_check.py.
 
   STATUS: CHECKED. This file uses core Lean 4 only (no mathlib) and was
   compiled with Lean 4.37.0-rc1 with no errors and no `sorry`. Run it with
@@ -16,8 +16,8 @@
     on) is the set of nonzero coordinates. Scaling by the torus never
     changes the corner, so corners label the torus orbits.
 
-  * The projective line P¹ is two charts glued by x ↦ 1/x. In mult-add
-    coordinates (x = 1 + u) that gluing map is exactly the mult-add
+  * The projective line P¹ is two charts glued by x ↦ 1/x. In circle-operation
+    coordinates (called mult-add coordinates before 1.0) (x = 1 + u) that gluing map is exactly the circle
     inverse u ↦ -u/(1+u). The one point the inverse can't reach, u = -1
     (x = 0), is the point the other chart sees as infinity. The 1/x wall
     is where you change charts.
@@ -37,7 +37,7 @@
   scheme or variety, which would need mathlib.
 -/
 
-namespace MultAdd.Toric
+namespace CircleOp.Toric
 
 open Lean.Grind
 
@@ -45,25 +45,25 @@ set_option linter.unusedSectionVars false
 
 variable {K : Type} [Field K] [DecidableEq K]
 
-/-! ## 1. Mult-add and its inverse: the gluing map -/
+/-! ## 1. The circle operation and its inverse: the gluing map -/
 
-/-- Mult-add: a ⊞ b = a + b + a·b = (1 + a)(1 + b) - 1. -/
-def multAdd (a b : K) : K := a + b + a * b
+/-- The circle operation: a ◯ b = a + b + a·b = (1 + a)(1 + b) - 1. -/
+def circ (a b : K) : K := a + b + a * b
 
-/-- The mult-add inverse: the u' with u ⊞ u' = 0. -/
-def multAddInv (u : K) : K := -u / (1 + u)
+/-- The circle inverse: the u' with u ◯ u' = 0. -/
+def circInv (u : K) : K := -u / (1 + u)
 
-theorem multAdd_multAddInv (u : K) (h : 1 + u ≠ 0) : multAdd u (multAddInv u) = 0 := by
-  unfold multAdd multAddInv; grind
+theorem circ_circInv (u : K) (h : 1 + u ≠ 0) : circ u (circInv u) = 0 := by
+  unfold circ circInv; grind
 
-/-- Gluing x ↦ 1/x, written in mult-add coordinates x = 1 + u, is the
-mult-add inverse. -/
-theorem inv_one_add (u : K) (h : 1 + u ≠ 0) : (1 + u)⁻¹ = 1 + multAddInv u := by
-  unfold multAddInv; grind
+/-- Gluing x ↦ 1/x, written in circle-operation coordinates x = 1 + u, is the
+circle inverse. -/
+theorem inv_one_add (u : K) (h : 1 + u ≠ 0) : (1 + u)⁻¹ = 1 + circInv u := by
+  unfold circInv; grind
 
-/-- The wall: u = -1 (x = 0) has no mult-add inverse at all. -/
-theorem no_multAddInv_at_wall (v : K) : multAdd (-1) v ≠ 0 := by
-  unfold multAdd; grind
+/-- The wall: u = -1 (x = 0) has no circle inverse at all. -/
+theorem no_circInv_at_wall (v : K) : circ (-1) v ≠ 0 := by
+  unfold circ; grind
 
 /-! ## 2. A chart is n-space; its tesseract corner is the set of nonzero coordinates -/
 
@@ -216,4 +216,4 @@ theorem trans2_cocycle (c d e : Bool × Bool) (v : K × K) :
 (a each), four fixed points. In ordinary coordinates it is (q + 1)². -/
 theorem fan_count (a : Nat) : a ^ 2 + 4 * a + 4 = (a + 2) ^ 2 := by grind
 
-end MultAdd.Toric
+end CircleOp.Toric

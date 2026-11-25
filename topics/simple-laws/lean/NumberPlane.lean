@@ -1,9 +1,9 @@
 /-
-  Fused Hyperoperation Algebra: every point of the landscape is mult-add in a number system.
+  Fused Hyperoperation Algebra: every point of the landscape is the circle operation (called mult-add before 1.0) in a number system.
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports the shared library.
 
   Pick a new unit u with u² = k·u − q (so u + ū = k and u·ū = q). Numbers are a + b·u.
-  Mult-add the two "tilted ones" 1 + x·u and 1 + y·u:
+  Combine the two "tilted ones" 1 + x·u and 1 + y·u by the circle operation:
       (1 + x u)(1 + y u) = (1 − q x y) + (x + y + k x y)·u
   Read the result as a slope (u-part over real part) and you get exactly the landscape law
   at (k, q):  (x + y + k x y) / (1 − q x y).
@@ -17,7 +17,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Landscape
 
 namespace SimpleLaws
-open MultAdd
+open CircleOp
 
 /-! ### 1. The number system at (k, q): a + b·u with u² = k·u − q -/
 
@@ -44,20 +44,20 @@ theorem mul_assoc_u (k q a b c d e f : Int) :
     mu k (mre q a b c d) (mu k a b c d) e f = mu k a b (mre q c d e f) (mu k c d e f) := by
   unfold mre mu; grind
 
-/-! ### 2. The main fact: mult-add of tilted ones is the landscape law -/
+/-! ### 2. The main fact: the circle operation of tilted ones is the landscape law -/
 
 /-- (1 + x u)(1 + y u): its real part is the landscape denominator -/
 theorem tilted_re (q x y : Int) : mre q 1 x 1 y = LandscapeMap.den q x y := by
   unfold mre LandscapeMap.den; grind
 
-/-- ... and its u-part is the landscape numerator, the weighted mult-add of x and y -/
+/-- ... and its u-part is the landscape numerator, x and y combined by the circle operation with dial k -/
 theorem tilted_u (k x y : Int) : mu k 1 x 1 y = LandscapeMap.num k x y := by
-  unfold mu LandscapeMap.num wAdd; grind
+  unfold mu LandscapeMap.num circK; grind
 
-/-- at mult-add's own point (k, q) = (1, 0) the unit is idempotent (u² = u) and the
-    u-part is plain mult-add, with real part 1: nothing to divide by -/
-theorem multadd_point_u (x y : Int) : mu 1 1 x 1 y = multAdd x y := by
-  unfold mu multAdd; grind
+/-- at the circle operation's own point (k, q) = (1, 0) the unit is idempotent (u² = u) and the
+    u-part is the plain circle operation, with real part 1: nothing to divide by -/
+theorem multadd_point_u (x y : Int) : mu 1 1 x 1 y = circ x y := by
+  unfold mu circ; grind
 theorem multadd_point_re (x y : Int) : mre 0 1 x 1 y = 1 := by unfold mre; grind
 
 /-- the complex corner (0, 1), u = i: slopes add like tangents, (x + y)/(1 − x y) -/
@@ -123,22 +123,22 @@ theorem norm_split (a b : Int) : norm 0 (-1) a b = a * a - b * b := by unfold no
 /-- Galileo at the dual corner: only a² survives -/
 theorem norm_dual (a b : Int) : norm 0 0 a b = a * a := by unfold norm; grind
 
-/-! ### 4. Mult-add's own geometry: its unit circle is Boyle's hyperbola -/
+/-! ### 4. The circle operation's own geometry: its unit circle is Boyle's hyperbola -/
 
 /-- at (1, 0) the norm is a·(a + b): in the coordinates X = a, Y = a + b it is X·Y -/
 theorem norm_multadd (a b : Int) : norm 1 0 a b = a * (a + b) := by unfold norm; grind
 
-/-- the tilted one 1 + x u at mult-add's point has norm 1·(1 + x): its lift -/
+/-- the tilted one 1 + x u at the circle operation's point has norm 1·(1 + x): its lift -/
 theorem norm_multadd_tilted (x : Int) : norm 1 0 1 x = 1 + x := by unfold norm; grind
 
-/-- the product of two tilted ones has norm (1 + x)(1 + y) = 1 + (x ⊞ y) -/
+/-- the product of two tilted ones has norm (1 + x)(1 + y) = 1 + (x ◯ y) -/
 theorem norm_multadd_lift (x y : Int) :
-    norm 1 0 (mre 0 1 x 1 y) (mu 1 1 x 1 y) = 1 + multAdd x y := by
-  unfold norm mre mu multAdd; grind
+    norm 1 0 (mre 0 1 x 1 y) (mu 1 1 x 1 y) = 1 + circ x y := by
+  unfold norm mre mu circ; grind
 
-/-- the unit circle N = 1 at mult-add's point is the curve x ⊞ y = 0, i.e. (1 + x)(1 + y) = 1:
+/-- the unit circle N = 1 at the circle operation's point is the curve x ◯ y = 0, i.e. (1 + x)(1 + y) = 1:
     a hyperbola whose asymptotes are the walls x = −1 and y = −1 -/
-theorem unit_circle_is_hyperbola (x y : Int) : multAdd x y = 0 ↔ (1 + x) * (1 + y) = 1 := by
-  rw [← multAdd_lift]; omega
+theorem unit_circle_is_hyperbola (x y : Int) : circ x y = 0 ↔ (1 + x) * (1 + y) = 1 := by
+  rw [← circ_lift]; omega
 
 end SimpleLaws

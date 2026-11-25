@@ -82,7 +82,7 @@ def chord_svg():
     g=f'<line x1="{x0}" y1="{y0}" x2="{x1}" y2="{y0}" class="ax"/>'
     g+=f'<path d="{arc}" class="arc"/>'
     g+=f'<line x1="{X(0)}" y1="{y0}" x2="{X(1)}" y2="{y0}" class="chord"/>'
-    for s,lab,cl,dx in [(0,'rung 0: addition','tll',-4),(1,'rung 1: mult-add','tlr',4)]:
+    for s,lab,cl,dx in [(0,'rung 0: addition','tll',-4),(1,'rung 1: the circle operation','tlr',4)]:
         g+=f'<circle cx="{X(s)}" cy="{y0}" r="6" class="dot"/><text x="{X(s)+dx}" y="{y0+24}" class="{cl}">{lab}</text>'
     g+=f'<circle cx="{X(.5)}" cy="{Y(-1/16)}" r="5" class="dot2"/><text x="{X(.5)}" y="{Y(-1/16)+24}" class="tl">half rung: −1/16</text>'
     g+=f'<text x="{X(.5)}" y="{y0-12}" class="tlc">q dial: a + b + k·ab, no cubic term</text>'
@@ -166,7 +166,7 @@ def dial_svg():
     W,H=560,190; x0,x1,y=50,510,92
     X=lambda q:x0+(x1-x0)*(q+1.5)/4
     g=f'<line x1="{x0}" y1="{y}" x2="{x1}" y2="{y}" class="ax"/>'
-    pts=[(-1,'−2','parity','1,0,1,0,…'),(0,'−1','failure union','1,1,1,…'),(1,'0','counting','1,2,3,…'),(2,'1','mult-add','1,3,7,15,…')]
+    pts=[(-1,'−2','parity','1,0,1,0,…'),(0,'−1','failure union','1,1,1,…'),(1,'0','counting','1,2,3,…'),(2,'1','The circle operation','1,3,7,15,…')]
     for q,k,name,seq in pts:
         g+=f'<circle cx="{X(q)}" cy="{y}" r="8" class="dot"/>'
         g+=f'<text x="{X(q)}" y="{y-40}" class="th">{name}</text>'

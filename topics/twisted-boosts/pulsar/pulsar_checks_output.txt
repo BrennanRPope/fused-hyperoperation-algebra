@@ -13,7 +13,7 @@ PASS measured (Breton et al. 2008): 4.77 +0.66 −0.65 °/yr: within 1σ
 PASS without the companion's drag twist: 2.26 °/yr, off by 3.9σ (needed)
 PASS without the velocity twist: 4.32 °/yr, still within 1σ (pulsar can't isolate it)
    separation a = 878831 km, M/r = 4.35e-06 (Gravity Probe B: 6.31e-10)
-PASS field strength M/r ≈ 4e-6: 10,000× Earth orbit's, but the ✳ corner (second order) is still ~1e-6 of the twist
+PASS field strength M/r ≈ 4e-6: 10,000× Earth orbit's, but the ∘₁ corner (second order) is still ~1e-6 of the twist
 PASS so the exact fusion's corner is far below the 14% measurement error: not testable here
    Hulse–Taylor predicted 1.215 deg/yr
 PASS Hulse–Taylor pulsar: same bookkeeping predicts ≈ 1.21 °/yr (profile changes observed, consistent)

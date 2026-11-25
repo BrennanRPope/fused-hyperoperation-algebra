@@ -1,5 +1,5 @@
 """Data center energy through Fused Hyperoperation Algebra.
-All inputs are published figures (see SOURCES.md). Mult-add: a(+)b = a+b+ab = (1+a)(1+b)-1.
+All inputs are published figures (see SOURCES.md). The circle operation: a(+)b = a+b+ab = (1+a)(1+b)-1.
 A stage with efficiency eta has overhead odds r = 1/eta - 1 (input watts per output watt, minus 1)."""
 import numpy as np, itertools, math
 madd = lambda a, b: a + b + a*b
@@ -12,7 +12,7 @@ out = []
 def p(*a):
     s = " ".join(str(x) for x in a); print(s); out.append(s)
 
-p("=== Lead 1: the power chain composes by mult-add ===")
+p("=== Lead 1: the power chain composes by the circle operation ===")
 # mid-range losses: MV/LV distribution 2-3%, online UPS 2-4% (DCD: 94-97% eff), PSU 4-6%, VRM 8-12% (arXiv 2610.09060)
 chain = [("Distribution and transformers", 0.975), ("UPS, double conversion", 0.96), ("Server PSU", 0.95), ("Board VRM", 0.90)]
 rs = [odds(e) for _, e in chain]
@@ -79,7 +79,7 @@ for s in [0.04, 0.05]:
     for n in [3, 5, 9]:
         p(f"   {s:.0%}/°F, {n}°F: compounded {1-(1-s)**n:.1%} vs naive {s*n:.0%}")
 
-p("\n=== Stacking independent savings composes by mult-add on the kept fraction ===")
+p("\n=== Stacking independent savings composes by the circle operation on the kept fraction ===")
 sv = [0.025, 0.03, 0.03]
 p("UPS eco 2.5%, cold-redundant PSUs 3%, fan sharing 3% ->", f"{1-np.prod([1-s for s in sv]):.2%}", "(naive", f"{sum(sv):.1%})", f"US-scale {US*(1-np.prod([1-s for s in sv])):.1f} TWh/yr")
 open("/mnt/project-files/math-theory/datacenter-energy/checks_output.txt", "w").write("\n".join(out) + "\n")

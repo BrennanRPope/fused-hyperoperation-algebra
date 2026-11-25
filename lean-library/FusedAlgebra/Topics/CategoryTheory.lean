@@ -1,40 +1,40 @@
 /-
-  Category theory through mult-add
+  Category theory through the circle operation (called mult-add before 1.0)
   ================================
 
   Companion page and checks: ../index.html, ../checks.py.
   Core Lean 4.37 only (no mathlib), no `sorry`. Imports only FusedAlgebra.Base.
   Intended module path: FusedAlgebra/Topics/CategoryTheory.lean.
 
-  A ✳ B := A + B + A×B is the type `These A B` (Haskell's `These`, Rust's `EitherOrBoth`).
+  A ◯ B := A + B + A×B is the type `These A B` (Haskell's `These`, Rust's `EitherOrBoth`).
 
-    1. Option turns ✳ into ×: Option (These A B) ≃ Option A × Option B, naturally.
-       Unit (These Empty B ≃ B), symmetry and associativity: (FinSet, ✳, ∅) is symmetric monoidal.
-       The dial with k tags: 1 + K×(A ✳ₖ B) ≃ (1 + K×A) × (1 + K×B).
-    2. ✳ is the categorical product in Par, the category of sets and partial functions
+    1. Option turns ◯ into ×: Option (These A B) ≃ Option A × Option B, naturally.
+       Unit (These Empty B ≃ B), symmetry and associativity: (FinSet, ◯, ∅) is symmetric monoidal.
+       The dial with k tags: 1 + K×(A ◯ₖ B) ≃ (1 + K×A) × (1 + K×B).
+    2. ◯ is the categorical product in Par, the category of sets and partial functions
        (functions X → Option Y): projections, pairing, and uniqueness of the pairing.
        Empty is a zero object there.
-    3. Counting: the list of all values of These has length a ✳ b; pointed product
+    3. Counting: the list of all values of These has length a ◯ b; pointed product
        = wedge (a + b) + smash (ab).
     4. align / zipLongest: pairing two lists into These loses nothing; both inputs come back,
        the length is the max, and the zip is the `both` part.
     5. Decategorification: cell counts of CW complexes multiply under products (as polynomials
-       in t); the reduced count P − 1 mult-adds, at every t. At t = −1 this is the reduced Euler
+       in t); the reduced count P − 1 combines by the circle operation, at every t. At t = −1 this is the reduced Euler
        characteristic; the circle (χ̃ = −1) is the wall, spheres sit at ±1, suspension multiplies by t.
   LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/CategoryTheory.lean; merged unchanged; no exact twins.
 -/
 import FusedAlgebra.Base
 
 namespace CategoryTheory
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
-/-! ## 1. The type A ✳ B and Option -/
+/-! ## 1. The type A ◯ B and Option -/
 
-/-- A ✳ B = A + B + A×B: left only, right only, or both. -/
+/-- A ◯ B = A + B + A×B: left only, right only, or both. -/
 inductive These (α β : Type) where
   | this : α → These α β
   | that : β → These α β
@@ -71,7 +71,7 @@ theorem ofPair_toPair (x : Option (These α β)) : ofPair (toPair x) = x := by
 theorem toPair_ofPair (p : Option α × Option β) : toPair (ofPair p) = p := by
   rcases p with ⟨_ | a, _ | b⟩ <;> rfl
 
-/-- **Option turns ✳ into ×**: Option (A ✳ B) ≅ Option A × Option B. -/
+/-- **Option turns ◯ into ×**: Option (A ◯ B) ≅ Option A × Option B. -/
 def optionThese : Iso (Option (These α β)) (Option α × Option β) :=
   ⟨toPair, ofPair, ofPair_toPair, toPair_ofPair⟩
 
@@ -99,7 +99,7 @@ theorem toPair_natural (f : α → γ) (g : β → δ) (x : Option (These α β)
     toPair (x.map (These.map f g)) = ((toPair x).1.map f, (toPair x).2.map g) := by
   rcases x with _ | (a | b | ⟨a, b⟩) <;> rfl
 
-/-- Unit: ∅ ✳ B ≅ B. -/
+/-- Unit: ∅ ◯ B ≅ B. -/
 def unitL : Iso (These Empty β) β where
   to := fun t => match t with
     | this e => nomatch e
@@ -109,7 +109,7 @@ def unitL : Iso (These Empty β) β where
   left := by intro t; rcases t with e | b | ⟨e, _⟩ <;> first | exact nomatch e | rfl
   right := by intro b; rfl
 
-/-- Symmetry: A ✳ B ≅ B ✳ A. -/
+/-- Symmetry: A ◯ B ≅ B ◯ A. -/
 def swap : These α β → These β α
   | this a => that a
   | that b => this b
@@ -118,7 +118,7 @@ def swap : These α β → These β α
 theorem swap_swap (t : These α β) : swap (swap t) = t := by
   rcases t with a | b | ⟨a, b⟩ <;> rfl
 
-/-- Associativity, left to right: (A ✳ B) ✳ C → A ✳ (B ✳ C). Seven corners each side. -/
+/-- Associativity, left to right: (A ◯ B) ◯ C → A ◯ (B ◯ C). Seven corners each side. -/
 def assocTo : These (These α β) γ → These α (These β γ)
   | this (this a) => this a
   | this (that b) => that (this b)
@@ -137,7 +137,7 @@ def assocInv : These α (These β γ) → These (These α β) γ
   | both a (that c) => both (this a) c
   | both a (both b c) => both (both a b) c
 
-/-- **Associativity**: (A ✳ B) ✳ C ≅ A ✳ (B ✳ C), the mult-add cube's seven corners. -/
+/-- **Associativity**: (A ◯ B) ◯ C ≅ A ◯ (B ◯ C), the circle-operation cube's seven corners. -/
 def assoc : Iso (These (These α β) γ) (These α (These β γ)) where
   to := assocTo
   inv := assocInv
@@ -145,7 +145,7 @@ def assoc : Iso (These (These α β) γ) (These α (These β γ)) where
   right := by intro t; rcases t with a | (b | c | ⟨b, c⟩) | ⟨a, (b | c | ⟨b, c⟩)⟩ <;> rfl
 
 
-/-! ## 1b. The dial with k tags: A ✳ₖ B = A + B + K×A×B -/
+/-! ## 1b. The dial with k tags: A ◯ₖ B = A + B + K×A×B -/
 
 /-- The dial for a set K of k tags: the `both` corner carries a tag. -/
 inductive TheseK (κ α β : Type) where
@@ -172,18 +172,18 @@ theorem ofPairK_toPairK {κ : Type} (x : Option (κ × TheseK κ α β)) : ofPai
 theorem toPairK_ofPairK {κ : Type} (p : Option (κ × α) × Option (κ × β)) : toPairK (ofPairK p) = p := by
   rcases p with ⟨_ | ⟨i, a⟩, _ | ⟨j, b⟩⟩ <;> rfl
 
-/-- **The dial categorified**: 1 + K(A ✳ₖ B) ≅ (1 + KA) × (1 + KB), the lift 1 + k·x on sets. -/
+/-- **The dial categorified**: 1 + K(A ◯ₖ B) ≅ (1 + KA) × (1 + KB), the lift 1 + k·x on sets. -/
 def optionTheseK {κ : Type} : Iso (Option (κ × TheseK κ α β)) (Option (κ × α) × Option (κ × β)) :=
   ⟨toPairK, ofPairK, ofPairK_toPairK, toPairK_ofPairK⟩
 
-/- The count 1 + k(a + b + k·ab) = (1 + ka)(1 + kb) is the library's `wAdd_lift`, on Nat. -/
+/- The count 1 + k(a + b + k·ab) = (1 + ka)(1 + kb) is the library's `circK_lift`, on Nat. -/
 
-/-! ## 2. ✳ is the product in Par (sets and partial functions) -/
+/-! ## 2. ◯ is the product in Par (sets and partial functions) -/
 
 /-- Composition of partial functions (Kleisli composition for Option). -/
 def kc {X Y Z : Type} (h : X → Option Y) (k : Y → Option Z) : X → Option Z := fun x => (h x).bind k
 
-/-- The two projections out of A ✳ B: partial, defined where that side is present. -/
+/-- The two projections out of A ◯ B: partial, defined where that side is present. -/
 def fst : These α β → Option α
   | this a => some a
   | that _ => none
@@ -209,7 +209,7 @@ theorem snd_pair {X : Type} (f : X → Option α) (g : X → Option β) :
   cases f x <;> cases g x <;> rfl
 
 /-- **Uniqueness**: any partial map whose projections are f and g is the pairing.
-    So A ✳ B is the categorical product of A and B in Par. -/
+    So A ◯ B is the categorical product of A and B in Par. -/
 theorem pair_unique {X : Type} (f : X → Option α) (g : X → Option β) (h : X → Option (These α β))
     (h1 : kc h fst = f) (h2 : kc h snd = g) : h = pair f g := by
   funext x
@@ -227,7 +227,7 @@ theorem empty_terminal {X : Type} (h : X → Option Empty) : h = fun _ => none :
 theorem empty_initial {X : Type} (h k : Empty → Option X) : h = k := by
   funext e; exact nomatch e
 
-/-- The terminal object is the unit of ✳ (checked above: `unitL`), as it must be for a product. -/
+/-- The terminal object is the unit of ◯ (checked above: `unitL`), as it must be for a product. -/
 theorem empty_pair {X : Type} (g : X → Option β) :
     kc (pair (fun _ => (none : Option Empty)) g) snd = g := snd_pair _ g
 
@@ -237,7 +237,7 @@ def bothL : List α → List β → List (These α β)
   | [], _ => []
   | a :: as, bs => bs.map (both a) ++ bothL as bs
 
-/-- Every value of A ✳ B, listed from lists of A and of B. -/
+/-- Every value of A ◯ B, listed from lists of A and of B. -/
 def allThese (la : List α) (lb : List β) : List (These α β) :=
   la.map this ++ lb.map that ++ bothL la lb
 
@@ -246,10 +246,10 @@ theorem bothL_length (la : List α) (lb : List β) : (bothL la lb).length = la.l
   | nil => simp [bothL]
   | cons a as ih => simp [bothL, ih, Nat.succ_mul]; omega
 
-/-- **The count**: |A ✳ B| = |A| ✳ |B|. -/
+/-- **The count**: |A ◯ B| = |A| ◯ |B|. -/
 theorem allThese_length (la : List α) (lb : List β) :
-    (allThese la lb).length = la.length ✳ lb.length := by
-  simp [allThese, bothL_length, multAdd]; omega
+    (allThese la lb).length = la.length ◯ lb.length := by
+  simp [allThese, bothL_length, circ]; omega
 
 theorem bothL_complete (la : List α) (lb : List β) (a : α) (b : β) (ha : a ∈ la) (hb : b ∈ lb) :
     both a b ∈ bothL la lb := by
@@ -272,8 +272,8 @@ theorem allThese_complete (la : List α) (lb : List β) (t : These α β)
 
 /-- Pointed sets: the product of A₊ and B₊ has (a+1)(b+1) points; take away the base point and
     what is left is the wedge (a + b) plus the smash (ab). -/
-theorem wedge_smash (a b : Nat) : (a + 1) * (b + 1) = 1 + (a + b) + a * b ∧ (a + 1) * (b + 1) = (a ✳ b) + 1 := by
-  refine ⟨by simp [Nat.add_mul, Nat.mul_add]; omega, (multAdd_lift' a b).symm⟩
+theorem wedge_smash (a b : Nat) : (a + 1) * (b + 1) = 1 + (a + b) + a * b ∧ (a + 1) * (b + 1) = (a ◯ b) + 1 := by
+  refine ⟨by simp [Nat.add_mul, Nat.mul_add]; omega, (circ_lift' a b).symm⟩
 
 /-! ## 4. align and zipLongest: the software pattern -/
 
@@ -369,11 +369,11 @@ theorem ev_pmul (t : Int) (xs ys : List Int) : ev t (pmul xs ys) = ev t xs * ev 
   | nil => simp [pmul, ev]
   | cons x xs ih => simp only [pmul, ev_padd, ev_smul, ev, ih]; grind
 
-/-- **The reduced count mult-adds**: P(X×Y) − 1 = (P(X) − 1) ✳ (P(Y) − 1), at every t.
-    At t = 1: non-base cells of a pointed product = wedge + smash. At t = −1: χ̃(X×Y) = χ̃X ✳ χ̃Y. -/
+/-- **The reduced count combines by the circle operation**: P(X×Y) − 1 = (P(X) − 1) ◯ (P(Y) − 1), at every t.
+    At t = 1: non-base cells of a pointed product = wedge + smash. At t = −1: χ̃(X×Y) = χ̃X ◯ χ̃Y. -/
 theorem reduced_product (t : Int) (xs ys : List Int) :
-    ev t (pmul xs ys) - 1 = (ev t xs - 1) ✳ (ev t ys - 1) := by
-  rw [ev_pmul]; unfold multAdd; grind
+    ev t (pmul xs ys) - 1 = (ev t xs - 1) ◯ (ev t ys - 1) := by
+  rw [ev_pmul]; unfold circ; grind
 
 /-- The sphere Sⁿ: a base point and one n-cell (S⁰ is two points). -/
 def sphere : Nat → List Int
@@ -400,13 +400,13 @@ theorem circle_wall (ys : List Int) : ev (-1) (pmul (sphere 1) ys) - 1 = -1 := b
 /-- The torus S¹ × S¹: one 0-cell, two 1-cells, one 2-cell. -/
 theorem torus_cells : pmul (sphere 1) (sphere 1) = [1, 2, 1] := by decide
 
-/-- Even spheres sit at mult-add's 1: χ̃(S² × S²) = 1 ✳ 1 = 3. -/
+/-- Even spheres sit at the circle operation's 1: χ̃(S² × S²) = 1 ◯ 1 = 3. -/
 theorem s2_s2 : ev (-1) (pmul (sphere 2) (sphere 2)) - 1 = 3 := by decide
 
 /-- Suspension multiplies the reduced count by t, so the splitting
-    Σ(X×Y) ≃ ΣX ∨ ΣY ∨ Σ(X∧Y) has the count t·(a ✳ b) = ta + tb + t·ab. -/
+    Σ(X×Y) ≃ ΣX ∨ ΣY ∨ Σ(X∧Y) has the count t·(a ◯ b) = ta + tb + t·ab. -/
 theorem suspension_split (t : Int) (xs ys : List Int) :
     t * (ev t (pmul xs ys) - 1) = t * (ev t xs - 1) + t * (ev t ys - 1) + t * ((ev t xs - 1) * (ev t ys - 1)) := by
-  rw [reduced_product]; unfold multAdd; grind
+  rw [reduced_product]; unfold circ; grind
 
 end CategoryTheory

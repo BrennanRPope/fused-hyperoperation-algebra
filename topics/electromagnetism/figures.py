@@ -56,7 +56,7 @@ b = []
 W, H = 1040, 330
 xs = [150, 520, 890]
 names = ["1865 Maxwell", "1905 Einstein (special)", "1915 Einstein (general)"]
-subs = [["waves move at", "c = 1/√(ε₀μ₀)"], ["boosts compose by", "mult-add (Doppler² lift)"], ["the twist rule made local:", "loop turn = curvature × area"]]
+subs = [["waves move at", "c = 1/√(ε₀μ₀)"], ["boosts compose by", "The circle operation (Doppler² lift)"], ["the twist rule made local:", "loop turn = curvature × area"]]
 for i, (xc, nm, sb) in enumerate(zip(xs, names, subs)):
     b.append(R(xc - 140, 40, 280, 150, SKY, SKY, 16, 1.5, 0.10))
     b.append(T(xc, 70, nm, 17, weight=700))
@@ -73,7 +73,7 @@ for k in range(41):
     pts.append((xs[2] + 34 * math.cos(a), 110 + 22 * math.sin(a)))
 b.append(P(pts, SKY, 2.2, arrow=True))
 b.append(T(xs[2] + 52, 100, "turned", 12, fill=SKY, anchor="start"))
-for i, lab in enumerate(["sets the dial q = −1/c²", "made local, plus a metric"]):
+for i, lab in enumerate(["sets the dial d = −1/c²", "made local, plus a metric"]):
     x1, x2 = xs[i] + 145, xs[i + 1] - 145
     b.append(L(x1, 115, x2, 115, "currentColor", 1.6, arrow=True))
     b.append(T((x1 + x2) / 2, 105, lab.split(",")[0], 12, fill=SOFT))
@@ -84,7 +84,7 @@ b.append(R(10, 225, 1020, 82, AMB, AMB, 14, 1.2, 0.08))
 b.append(T(520, 252, "shared by electromagnetism and gravity (both are gauge fields)", 14, weight=700, fill=AMB))
 b.append(T(275, 284, "EM: phase around a loop = charge × flux", 14))
 b.append(T(780, 284, "gravity: boost around a loop = curvature × area", 14))
-figs["history"] = save("history", W, H, "Electromagnetism set the dial, special relativity composed boosts by mult-add, general relativity made the twist local", b)
+figs["history"] = save("history", W, H, "Electromagnetism set the dial, special relativity composed boosts by the circle operation, general relativity made the twist local", b)
 
 # ---------------------------------------------------------------- 2. the dial: Galilean vs Lorentz
 b = []
@@ -103,7 +103,7 @@ def panel_axes(cx, cy, s, title, col):
 
 s = 150
 cxL, cyL = 270, 225
-b += panel_axes(cxL, cyL, s, "Galilean boost (q = 0)", PINK)
+b += panel_axes(cxL, cyL, s, "Galilean boost (d = 0)", PINK)
 v = 0.45
 # Galilean: x' = x - v t. A light ray x = t (slope 1) becomes x' = (1 - v) t: draw new rays in boosted frame coordinates
 for sgn, lab in ((1, "speed c − v"), (-1, "speed c + v")):
@@ -115,7 +115,7 @@ for sgn, lab in ((1, "speed c − v"), (-1, "speed c + v")):
     b.append(T(x2 + (8 if sgn > 0 else -8), y2 - 6, lab, 13, anchor="start" if sgn > 0 else "end", fill=PINK))
 b.append(T(cxL, 400, "light lines tilt unevenly: the wave equation gains a cross term", 13, fill=SOFT))
 cxR, cyR = 770, 225
-b += panel_axes(cxR, cyR, s, "Lorentz boost (q = −1/c²)", SKY)
+b += panel_axes(cxR, cyR, s, "Lorentz boost (d = −1/c²)", SKY)
 Dd = 1.7
 # unit square on light-cone axes, then squeezed
 u = 58
@@ -135,7 +135,7 @@ fx, fy = lc(cxR, cyR, u * Dd + 26, 0)
 b.append(T(fx + 14, fy + 14, "× D", 15, anchor="start", weight=700, fill=SKY))
 bx_, by_ = lc(cxR, cyR, 0, u / Dd + 34)
 b.append(T(bx_ - 4, by_, "× 1/D", 15, anchor="end", weight=700, fill=SKY))
-b.append(T(cxR, 400, "light lines stay put; areas are kept; D² = (1+v)/(1−v) is the mult-add lift", 13, fill=SOFT))
+b.append(T(cxR, 400, "light lines stay put; areas are kept; D² = (1+v)/(1−v) is the circle-operation lift", 13, fill=SOFT))
 figs["dial"] = save("dial", W, H, "A Galilean boost tilts the light lines unevenly; a Lorentz boost squeezes along them and keeps them", b)
 
 # ---------------------------------------------------------------- 3. the field on the light cone
@@ -174,7 +174,7 @@ for d_, lab, op in ((3.2, "wave", 1), (3.2 / 1.7, "÷ D", 1), (3.2 / 1.7 ** 2, "
 # side text
 tx = 650
 rows = [("E_y + B_z", "× 1/D"), ("E_y − B_z", "× D"), ("their ratio", "× D² = 1 + d(v)"), ("their product", "unchanged"),
-        ("two boosts", "D₁ D₂ (so d's mult-add)")]
+        ("two boosts", "D₁ D₂ (so d's the circle operation)")]
 b.append(T(tx, 70, "One boost along x does this:", 16, anchor="start", weight=700))
 for i, (l1, l2) in enumerate(rows):
     yy = 110 + i * 44
@@ -183,14 +183,14 @@ for i, (l1, l2) in enumerate(rows):
 b.append(T(tx, 350, "A light wave lives on one light line", 14, anchor="start", fill=PINK, weight=700))
 b.append(T(tx, 372, "(null field: E² = B² and E·B = 0). Moving with it,", 13, anchor="start", fill=SOFT))
 b.append(T(tx, 392, "its amplitude falls by 1/D and its energy", 13, anchor="start", fill=SOFT))
-b.append(T(tx, 412, "density by 1/D², the inverse mult-add lift.", 13, anchor="start", fill=SOFT))
+b.append(T(tx, 412, "density by 1/D², the inverse circle-operation lift.", 13, anchor="start", fill=SOFT))
 figs["field"] = save("field", W, H, "Under a boost the light-cone parts of the field scale by D and 1/D; the field slides along a hyperbola; a light wave sits on a light line", b)
 
 # ---------------------------------------------------------------- 4. circle and hyperbola
 b = []
 W, H = 1040, 430
 cx, cy, r = 260, 225, 120
-b.append(T(cx, 36, "Gauge phase (q = +1, circle)", 16, weight=700, fill=SKY))
+b.append(T(cx, 36, "Gauge phase (d = +1, circle)", 16, weight=700, fill=SKY))
 b.append(L(cx - 180, cy, cx + 180, cy, "currentColor", 1, op=.5)); b.append(L(cx, cy + 170, cx, cy - 170, "currentColor", 1, op=.5))
 b.append(C(cx, cy, r, SKY, w=2.2))
 th = 1.0
@@ -201,9 +201,9 @@ b.append(L(cx + r, cy, qx, qy, AMB, 1.6, "5 4", arrow=True)); b.append(T((cx + r
 b.append(C(px, py, 5, SKY, SKY)); b.append(T(px + 8, py - 8, "1 + a = e^(iθ)", 13, anchor="start"))
 b.append(C(cx + r, cy, 4, "currentColor", "currentColor")); b.append(T(cx + r + 8, cy + 18, "1", 13, anchor="start"))
 b.append(C(cx, cy, 5, PINK, PINK)); b.append(T(cx - 8, cy + 20, "wall: 1 + a = 0", 13, anchor="end", fill=PINK))
-b.append(T(cx, 380, "a ✳ ā = 0 on the whole circle; it wraps around and never meets the wall", 13, fill=SOFT))
+b.append(T(cx, 380, "a ∘₁ ā = 0 on the whole circle; it wraps around and never meets the wall", 13, fill=SOFT))
 cx2 = 780
-b.append(T(cx2, 36, "Boost (q = −1, hyperbola)", 16, weight=700, fill=SKY))
+b.append(T(cx2, 36, "Boost (d = −1, hyperbola)", 16, weight=700, fill=SKY))
 b.append(L(cx2 - 180, cy, cx2 + 180, cy, "currentColor", 1, op=.5)); b.append(L(cx2, cy + 170, cx2, cy - 170, "currentColor", 1, op=.5))
 b.append(L(cx2 - 160, cy + 160, cx2 + 160, cy - 160, PINK, 1.5, "6 4")); b.append(L(cx2 - 160, cy - 160, cx2 + 160, cy + 160, PINK, 1.5, "6 4"))
 b.append(T(cx2 + 150, cy - 165, "wall (light)", 13, anchor="start", fill=PINK))
@@ -215,15 +215,15 @@ qx, qy = cx2 + r * math.cosh(ph), cy + r * math.sinh(ph)
 b.append(L(cx2 + r, cy, px, py, AMB, 2.2, arrow=True)); b.append(T((cx2 + r + px) / 2 - 12, (cy + py) / 2 - 4, "a", 15, anchor="end", weight=700, fill=AMB))
 b.append(L(cx2 + r, cy, qx, qy, AMB, 1.6, "5 4", arrow=True)); b.append(T((cx2 + r + qx) / 2 - 12, (cy + qy) / 2 + 12, "ā", 15, anchor="end", weight=700, fill=AMB))
 b.append(C(px, py, 5, SKY, SKY)); b.append(T(px - 10, py - 12, "1 + a = cosh φ + j sinh φ", 13, anchor="end"))
-b.append(T(cx2, 380, "same rule a ✳ ā = 0 (with j² = +1); the arms run up to the light walls", 13, fill=SOFT))
-figs["circle"] = save("circle", W, H, "The U(1) phase lives on a circle, the boost on a hyperbola; both obey a ✳ ā = 0, with the mirror sign of the dial", b)
+b.append(T(cx2, 380, "same rule a ∘₁ ā = 0 (with j² = +1); the arms run up to the light walls", 13, fill=SOFT))
+figs["circle"] = save("circle", W, H, "The U(1) phase lives on a circle, the boost on a hyperbola; both obey a ∘₁ ā = 0, with the mirror sign of the dial", b)
 
 # ---------------------------------------------------------------- 5. holonomy: plaquettes, solenoid, gravity loop
 b = []
 W, H = 1040, 400
 # lattice: two plaquettes
 x0, y0, e = 60, 110, 120
-b.append(T(x0 + e, 40, "Lattice: plaquettes mult-add", 15, weight=700, fill=SKY))
+b.append(T(x0 + e, 40, "Lattice: plaquettes combine by the circle operation", 15, weight=700, fill=SKY))
 def arrow_seg(p, q, col, w=2.0, off=0):
     (x1, y1), (x2, y2) = p, q
     dx, dy = x2 - x1, y2 - y1
@@ -238,7 +238,7 @@ for p, q in ((B_, E_), (E_, F_), (F_, Cc), (Cc, B_)):
 b.append(T(x0 + e / 2, y0 + e / 2 + 5, "a₁", 16, weight=700, fill=SKY))
 b.append(T(x0 + 1.5 * e, y0 + e / 2 + 5, "a₂", 16, weight=700, fill=AMB))
 b.append(T(x0 + e, y0 + e + 34, "shared link runs both ways: cancels", 12, fill=SOFT))
-b.append(T(x0 + e, y0 + e + 56, "big loop = a₁ ✳ a₂ (Stokes)", 14, weight=700))
+b.append(T(x0 + e, y0 + e + 56, "big loop = a₁ ∘₁ a₂ (Stokes)", 14, weight=700))
 b.append(T(x0 + e, y0 + e + 80, "each plaquette = e^(i ε² F) − 1", 12, fill=SOFT))
 # solenoid
 cx, cy = 520, 200
@@ -260,7 +260,7 @@ b.append(T(gx - 20, gy + 40, "returns boosted", 12, anchor="start", fill=AMB))
 b.append(T(gx, gy + 120, "loop in the t–r plane:", 13, fill=SOFT))
 b.append(T(gx, gy + 140, "rapidity = curvature × area", 14, weight=700))
 b.append(T(gx, gy + 160, "(2M/r³) × area", 12, fill=SOFT))
-figs["holonomy"] = save("holonomy", W, H, "Plaquettes compose by mult-add, the Aharonov-Bohm phase is charge times flux, and a gravity loop returns boosted by curvature times area", b)
+figs["holonomy"] = save("holonomy", W, H, "Plaquettes compose by the circle operation, the Aharonov-Bohm phase is charge times flux, and a gravity loop returns boosted by curvature times area", b)
 
 # ---------------------------------------------------------------- 6. the corner: a b = a.b + a^b ; nabla A = nabla.A + F
 b = []
@@ -289,7 +289,7 @@ b.append(R(bx0 + 280, 150, 200, 100, SKY, SKY, 12, 1.4, .12))
 b.append(T(bx0 + 380, 185, "∇∧A = F", 18, weight=700, fill=SKY))
 b.append(T(bx0 + 380, 210, "the field: E and B", 13, fill=SOFT))
 b.append(T(bx0 + 380, 230, "in one oriented-area object", 12, fill=SOFT))
-b.append(T(bx0 + 250, 300, "the order gap of the multivector mult-add is 2 a∧b (Clifford page);", 13, fill=SOFT))
+b.append(T(bx0 + 250, 300, "the order gap of the multivector circle operation is 2 a∧b (Clifford page);", 13, fill=SOFT))
 b.append(T(bx0 + 250, 322, "here the wedge part is exactly the field strength", 13, fill=SOFT))
 figs["corner"] = save("corner", W, H, "The corner of the lift square splits into a dot part and a wedge part; for the derivative and the potential the wedge part is the field F", b)
 
@@ -336,7 +336,7 @@ def loop_fig(cx, cy, title, col, closes, note1, note2):
     return o
 
 
-b += loop_fig(270, 150, "U(1): phases commute (mult-add)", SKY, True, "constant potential: no field", "F = ∇∧A, field carries no charge: linear")
+b += loop_fig(270, 150, "U(1): phases commute (the circle operation)", SKY, True, "constant potential: no field", "F = ∇∧A, field carries no charge: linear")
 b += loop_fig(780, 150, "Boosts or Yang–Mills: they don't", PINK, False, "constant potentials still turn the loop", "field gains A∧A, carries charge: nonlinear")
 figs["commute"] = save("commute", W, H, "With commuting phases a loop of constant potentials closes; with non-commuting ones it leaves a gap equal to the commutator", b)
 
@@ -354,7 +354,7 @@ b.append(T(ox - 10, oy - sy / 2, "v or E/b", 13, anchor="end"))
 b.append(T(ox + 3.6 * sx, oy - 0.83 * sy, "v = p/√(1+p²)  and  E = D/√(1+D²/b²)", 13, fill=SKY))
 tx = 640
 b.append(T(tx, 70, "Same wall shape, different rule for adding", 15, anchor="start", weight=700))
-b.append(T(tx, 104, "Velocities compose by Einstein's rule (mult-add).", 13, anchor="start", fill=SOFT))
+b.append(T(tx, 104, "Velocities compose by Einstein's rule (the circle operation).", 13, anchor="start", fill=SOFT))
 b.append(T(tx, 126, "Born–Infeld fields compose by adding D (Gauss).", 13, anchor="start", fill=SOFT))
 b.append(T(tx, 162, "Example, D₁ = 0.8, D₂ = 1.3 (b = 1):", 13, anchor="start"))
 for i, (lab, val, col) in enumerate((("E(D₁ + D₂)", 0.9029, SKY), ("E₁ ⊕ E₂", 0.9479, AMB))):

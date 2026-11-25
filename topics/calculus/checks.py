@@ -1,4 +1,4 @@
-"""Checks for 'Calculus from mult-add' (continuous claims; the discrete ones are in Lean)."""
+"""Checks for 'Calculus from the circle operation' (continuous claims; the discrete ones are in Lean)."""
 import sympy as sp, math
 x,h,c=sp.symbols('x h c'); n=sp.symbols('n',positive=True,integer=True)
 f=sp.Function('f'); g=sp.Function('g')
@@ -9,7 +9,7 @@ def chk(name,cond): ok.append((name,bool(cond))); print(('PASS ' if cond else 'F
 # test functions
 F=sp.sin(x)+x**2/3; G=sp.exp(x/2)-sp.Rational(1,3)
 def lim(e): return sp.simplify(sp.limit(e,h,0))
-# 1 mult-add derivative = f'/(1+f) = (ln(1+f))'
+# 1 circle-operation derivative = f'/(1+f) = (ln(1+f))'
 chk("D+ f = f'/(1+f)", sp.simplify(lim(ms(F.subs(x,x+h),F)/h) - sp.diff(F,x)/(1+F))==0)
 # 2 geometric (product) derivative, shifted by 1
 e=((1+F.subs(x,x+h))/(1+F))**(1/h)
@@ -17,18 +17,18 @@ val=sp.N(sp.limit(e.subs(x,sp.Rational(1,2)),h,0)); tgt=sp.N(sp.exp((sp.diff(F,x
 chk("geometric derivative = exp(f'/(1+f))", abs(val-tgt)<1e-12)
 # 3 both sides lifted (bigeometric shifted): (1+x) f'/(1+f)
 chk("bigeometric = (1+x)f'/(1+f)", sp.simplify(lim(ms(F.subs(x,ma(x,h)),F)/h) - (1+x)*sp.diff(F,x)/(1+F))==0)
-# 4 Jackson: input stepped by mult-add, gap h(1+x); in X=1+x it is D_q with q=1+h
+# 4 Jackson: input stepped by the circle operation, gap h(1+x); in X=1+x it is D_q with q=1+h
 X,q=sp.symbols('X q',positive=True); Fx=sp.Function('Phi')
 jack=(Fx(X*q)-Fx(X))/((q-1)*X); ours=(Fx((ma(X-1,h))+1)-Fx(X))/(ma(X-1,h)-(X-1))
-chk("input mult-add step = Jackson q-derivative, q=1+h", sp.simplify(jack.subs(q,1+h)-ours)==0)
-# 5 product rule: D+(f (+) g) = D+f (+0) D+g i.e. rates add in the limit; exact step uses weighted mult-add with weight h
+chk("input circle-operation step = Jackson q-derivative, q=1+h", sp.simplify(jack.subs(q,1+h)-ours)==0)
+# 5 product rule: D+(f (+) g) = D+f (+0) D+g i.e. rates add in the limit; exact step uses the circle operation with weight h
 p,qq=sp.symbols('p qq')
 chk("time-scale product: (1+hp)(1+hq) = 1+h(p+q+h p q)", sp.expand((1+h*p)*(1+h*qq)-(1+h*(p+qq+h*p*qq)))==0)
 chk("D+(f(+)g) = D+f + D+g", sp.simplify(sp.diff(ma(F,G),x)/(1+ma(F,G)) - (sp.diff(F,x)/(1+F)+sp.diff(G,x)/(1+G)))==0)
 # 6 chain rule: D+(f o g) = (D+f)(g) * g'
 inner=x**2+x
 chk("chain: D+(F o g) = D+F(g)*g'", sp.simplify(sp.diff(F.subs(x,inner),x)/(1+F.subs(x,inner)) - (sp.diff(F,x)/(1+F)).subs(x,inner)*sp.diff(inner,x))==0)
-# 7 product integral: mult-add n slices of r(x_i)dx -> exp(int r)-1
+# 7 product integral: the circle operation n slices of r(x_i)dx -> exp(int r)-1
 r=lambda t: math.cos(t)+0.3*t
 for N in (10,100,1000,10000):
     acc=0.0; dx=1.0/N
@@ -36,8 +36,8 @@ for N in (10,100,1000,10000):
     last=acc
 exact=math.exp(math.sin(1)+0.15)-1
 chk("product integral of r over [0,1] -> exp(int r)-1 (N=10^4 err %.1e)"%abs(last-exact), abs(last-exact)<1e-3)
-# 8 constant slope a/N mult-added N times -> e^a - 1
-a=0.7; N=10**6; chk("(a/N)^(mult-add N) -> e^a - 1", abs(((1+a/N)**N-1)-(math.exp(a)-1))<1e-5)
+# 8 constant slope a/N combined by the circle operation N times -> e^a - 1
+a=0.7; N=10**6; chk("(a/N)^(the circle operation N) -> e^a - 1", abs(((1+a/N)**N-1)-(math.exp(a)-1))<1e-5)
 # 9 Newton forward with step x/N -> Taylor (sin at x=1.3)
 def newton(fun,xv,N):
     hh=xv/N; vals=[fun(k*hh) for k in range(N+1)]; tot=0.0; d=vals[:]; Cnk=1

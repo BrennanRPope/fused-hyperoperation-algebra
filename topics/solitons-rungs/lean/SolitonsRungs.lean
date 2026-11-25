@@ -13,17 +13,17 @@
 import FusedAlgebra.Base
 
 namespace SolitonsRungs
-open MultAdd
+open CircleOp
 
-/-! ### 1. Two solitons: the tau function is weighted mult-add -/
+/-! ### 1. Two solitons: the tau function is the circle operation (called weighted mult-add before 1.0) with dial k -/
 
 /-- the two-soliton tau function 1 + a + b + A·ab -/
 def tau2 (A a b : Int) : Int := 1 + a + b + A * a * b
 
-theorem tau2_is_wAdd (A a b : Int) : tau2 A a b = 1 + wAdd A a b := by
-  unfold tau2 wAdd; grind
+theorem tau2_is_circK (A a b : Int) : tau2 A a b = 1 + circK A a b := by
+  unfold tau2 circK; grind
 
-/-- weight 1: no interaction, the tau function is the plain mult-add lift (1+a)(1+b) -/
+/-- weight 1: no interaction, the tau function is the plain circle-operation lift (1+a)(1+b) -/
 theorem tau2_free (a b : Int) : tau2 1 a b = (1 + a) * (1 + b) := by
   unfold tau2; grind
 
@@ -31,13 +31,13 @@ theorem tau2_free (a b : Int) : tau2 1 a b = (1 + a) * (1 + b) := by
 theorem tau2_merge (a b : Int) : tau2 0 a b = 1 + (a + b) := by
   unfold tau2; grind
 
-/-- for two solitons the law is rung 1 in a rescaled coordinate: A·(τ − 1) = (A a) ⊞ (A b) -/
-theorem tau2_scaled (A a b : Int) : A * (tau2 A a b - 1) = multAdd (A * a) (A * b) := by
-  unfold tau2 multAdd; grind
+/-- for two solitons the law is rung 1 in a rescaled coordinate: A·(τ − 1) = (A a) ◯ (A b) -/
+theorem tau2_scaled (A a b : Int) : A * (tau2 A a b - 1) = circ (A * a) (A * b) := by
+  unfold tau2 circ; grind
 
-/-- read in the 1+x picture, the weight is mult-add plus an excess (A − 1) per pair -/
-theorem tau2_excess (A a b : Int) : tau2 A a b = 1 + multAdd a b + (A - 1) * a * b := by
-  unfold tau2 multAdd; grind
+/-- read in the 1+x picture, the weight is the circle operation plus an excess (A − 1) per pair -/
+theorem tau2_excess (A a b : Int) : tau2 A a b = 1 + circ a b + (A - 1) * a * b := by
+  unfold tau2 circ; grind
 
 /-! ### 2. Three solitons: corners multiply over pairs -/
 
@@ -57,14 +57,14 @@ theorem tau3_equal_corner (k a b c : Int) :
     tau3 k k k a b c = 1 + a + b + c + k * (a * b + a * c + b * c) + (k * k * k) * (a * b * c) := by
   unfold tau3; grind
 
-/-- weighted mult-add of three has triple corner k², not k³: it is mult-add rescaled,
+/-- the circle operation with dial k, applied to three numbers, has triple corner k², not k³: it is the circle operation rescaled,
     while solitons weight every pair -/
-theorem wAdd_three_corner (k a b c : Int) :
-    wAdd k (wAdd k a b) c = a + b + c + k * (a * b + a * c + b * c) + (k * k) * (a * b * c) := by
-  unfold wAdd; grind
+theorem circK_three_corner (k a b c : Int) :
+    circK k (circK k a b) c = a + b + c + k * (a * b + a * c + b * c) + (k * k) * (a * b * c) := by
+  unfold circK; grind
 
 /-- the two agree exactly when k³ = k², i.e. k = 0 or k = 1 (rung 0 or rung 1) -/
-theorem soliton_vs_wAdd_corner (k : Int) : k * k * k = k * k ↔ k = 0 ∨ k = 1 := by
+theorem soliton_vs_circK_corner (k : Int) : k * k * k = k * k ↔ k = 0 ∨ k = 1 := by
   have h : k * k * k - k * k = (k * k) * (k - 1) := by grind
   constructor
   · intro e
@@ -117,7 +117,7 @@ theorem four_body_roads (s : Int) :
     so the three-body meeting at s = ½ does not survive to four bodies -/
 theorem four_body_half : 2 * 1 + 4 * 1 + 8 * 1 - 32 * 1 + 16 = (-2 : Int) := by decide
 
-/-! ### 4. The theta lattice: only the mult-add cube survives at q = 0 -/
+/-! ### 4. The theta lattice: only the circle-operation cube survives at q = 0 -/
 
 theorem tri_nonneg (n : Int) : 0 ≤ n * (n - 1) := by
   by_cases h : 1 ≤ n
@@ -130,7 +130,7 @@ theorem tri_nonneg (n : Int) : 0 ≤ n * (n - 1) := by
 theorem tri_zero_iff (n : Int) : n * (n - 1) = 0 ↔ n = 0 ∨ n = 1 := rung_three_body_zero n
 
 /-- two waves: the exponent n₁(n₁−1) + n₂(n₂−1) vanishes exactly on the unit square {0,1}²,
-    the corners of the mult-add cube -/
+    the corners of the circle-operation cube -/
 theorem face_iff (n1 n2 : Int) :
     n1 * (n1 - 1) + n2 * (n2 - 1) = 0 ↔ (n1 = 0 ∨ n1 = 1) ∧ (n2 = 0 ∨ n2 = 1) := by
   have h1 := tri_nonneg n1
@@ -155,25 +155,25 @@ def theta2 (q1 q2 A w1 w2 : Int) : Int :=
     r q2 2 * A ^ (n1 * 2) * w2 ^ 2 + r q2 3 * A ^ (n1 * 3) * w2 ^ 3
   r q1 0 * w1 ^ 0 * row 0 + r q1 1 * w1 ^ 1 * row 1 + r q1 2 * w1 ^ 2 * row 2 + r q1 3 * w1 ^ 3 * row 3
 
-/-- at q₁ = q₂ = 0 the theta series is the weighted mult-add cube 1 + (w₁ ⊞_A w₂) -/
-theorem theta2_face (A w1 w2 : Int) : theta2 0 0 A w1 w2 = 1 + wAdd A w1 w2 := by
-  unfold theta2 wAdd; simp <;> grind
+/-- at q₁ = q₂ = 0 the theta series is the circle-operation cube 1 + (w₁ ◯[A] w₂) -/
+theorem theta2_face (A w1 w2 : Int) : theta2 0 0 A w1 w2 = 1 + circK A w1 w2 := by
+  unfold theta2 circK; simp <;> grind
 
 /-- with A = 1 the two-wave theta splits into two one-wave pieces (no interaction) -/
 theorem theta2_free_face (w1 w2 : Int) : theta2 0 0 1 w1 w2 = (1 + w1) * (1 + w2) := by
-  rw [theta2_face]; unfold wAdd; grind
+  rw [theta2_face]; unfold circK; grind
 
 /-! ### 5. Gluing is a rung-1 move -/
 
-/-- multiplying by q in the w picture is mult-add by q − 1 in the 1+x picture -/
-theorem glue_is_multAdd (w q : Int) : w * q - 1 = multAdd (w - 1) (q - 1) := by
-  unfold multAdd; grind
+/-- multiplying by q in the w picture is the circle operation by q − 1 in the 1+x picture -/
+theorem glue_is_circ (w q : Int) : w * q - 1 = circ (w - 1) (q - 1) := by
+  unfold circ; grind
 
-/-- a truncated theta product: (1+w)(1+wq)(1+vq), v standing for 1/w, is 1 + the mult-add of
+/-- a truncated theta product: (1+w)(1+wq)(1+vq), v standing for 1/w, is 1 + the circle operation of
     three points of w's q-orbit -/
 theorem orbit_product (w v q : Int) :
-    (1 + w) * (1 + w * q) * (1 + v * q) = 1 + multAdd w (multAdd (w * q) (v * q)) := by
-  unfold multAdd; grind
+    (1 + w) * (1 + w * q) * (1 + v * q) = 1 + circ w (circ (w * q) (v * q)) := by
+  unfold circ; grind
 
 /-- and at q = 0 only the soliton factor 1 + w is left -/
 theorem orbit_product_q0 (w v : Int) : (1 + w) * (1 + w * 0) * (1 + v * 0) = 1 + w := by

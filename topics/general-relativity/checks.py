@@ -1,7 +1,7 @@
-"""General relativity through mult-add: the three routes, checked.
+"""General relativity through the circle operation: the three routes, checked.
 
 Run: python3 checks.py  (writes checks_output.txt and results.json)
-Units G = c = 1 unless stated.  ✳ is mult-add a + b + ab.
+Units G = c = 1 unless stated.  ∘₁ is the circle operation a + b + ab.
 """
 import json, math, sys, os
 import sympy as sp
@@ -31,25 +31,25 @@ def section(title):
     LINES.append("\n== " + title)
 
 
-ma = lambda a, b: a + b + a * b   # mult-add
+ma = lambda a, b: a + b + a * b   # circle operation
 
 t, x, y, z, r, th, ph = sp.symbols('t x y z r theta phi', real=True)
 M, q = sp.symbols('M q', real=True)
 
 # ---------------------------------------------------------------------------
-section("A. The dial's boosts made local: q is the signature coefficient")
-# Dial boost generators on (t, x, y, z): K_i = -q x_i d_t + t d_i  (q = -1/c^2 Lorentz, 0 Galilean, +1 rotations)
+section("A. The dial's boosts made local: d is the signature coefficient")
+# Dial boost generators on (t, x, y, z): K_i = -d x_i ∂_t + t ∂_i  (d = -1/c^2 Lorentz, 0 Galilean, +1 rotations)
 f = sp.Function('f')(t, x, y, z)
 X4 = [t, x, y, z]
 def K(i):
     xi = X4[i]
     return lambda F: -q * xi * sp.diff(F, t) + t * sp.diff(F, xi)
-def J(i, j):  # rotation x_i d_j - x_j d_i
+def J(i, j):  # rotation x_i ∂_j - x_j ∂_i
     return lambda F: X4[i] * sp.diff(F, X4[j]) - X4[j] * sp.diff(F, X4[i])
 comm = sp.simplify(K(1)(K(2)(f)) - K(2)(K(1)(f)))
-check("[K_x, K_y] = -q (x d_y - y d_x): two boosts close on q times a rotation",
+check("[K_x, K_y] = -d (x ∂_y - y ∂_x): two boosts close on d times a rotation",
       sp.simplify(comm + q * J(1, 2)(f)) == 0)
-check("q = 0 (Galilean dial): boosts commute, no twist", sp.simplify(comm.subs(q, 0)) == 0)
+check("d = 0 (Galilean dial): boosts commute, no twist", sp.simplify(comm.subs(q, 0)) == 0)
 # Hypersurface deformation bracket for linear lapses N = b.x, M = c.x on the flat slice:
 b1, b2, b3, c1, c2, c3 = sp.symbols('b1 b2 b3 c1 c2 c3')
 N = b1 * x + b2 * y + b3 * z
@@ -60,7 +60,7 @@ bc = sp.Matrix([b1, b2, b3]).cross(sp.Matrix([c1, c2, c3]))
 rot = sp.Matrix([x, y, z]).cross(bc) * -1
 check("HKT bracket with linear lapses: N grad M - M grad N is a rigid rotation (the twist)",
       all(sp.expand(shift[i] - rot[i]) == 0 for i in range(3)))
-RES["A"] = "two dial boosts close on q x rotation; the HKT bracket {H(N),H(M)} = eps D(N grad M - M grad N) carries the same coefficient, eps = sign(q)"
+RES["A"] = "two dial boosts close on d x rotation; the HKT bracket {H(N),H(M)} = eps D(N grad M - M grad N) carries the same coefficient, eps = sign(d)"
 
 # ---------------------------------------------------------------------------
 section("B. Route (a): the dial alone as a field = scalar gravity")
@@ -122,7 +122,7 @@ RES["B"] = {k: {"bending_arcsec": v[0], "perihelion_arcsec_per_century": v[1], "
 RES["B_cassini_sigma_gamma0"] = sig_dial
 
 # ---------------------------------------------------------------------------
-section("C. Route (c): the river. Flat space + local mult-add velocity addition + Newton's escape speed")
+section("C. Route (c): the river. Flat space + local circle-operation velocity addition + Newton's escape speed")
 X = [t, r, th, ph]
 def river_metric(v):
     # ds^2 = -dt^2 + (dr + v dt)^2 + r^2 dOmega^2   (river flows inward at speed v)
@@ -152,8 +152,8 @@ check("River observers fall freely (geodesics) and are at rest at infinity", all
 # Static observers move through the river at v: one boost gives both factors
 check("Static clock rate = 1/gamma_river: 1 - v^2 = 1 - 2M/r = -g_tt", sp.simplify((1 - v**2) - (1 - 2 * M / r)) == 0)
 check("Static radial ruler = gamma_river: 1/(1 - v^2) = g_rr (Lorentz contraction)", sp.simplify(1 / (1 - v**2) - new_rr) == 0)
-# Mult-add inverse: (-g_tt - 1) and (g_rr - 1) are mult-add inverses
-check("Time deficit and radial-space deficit are mult-add inverses: (-g_tt-1) ✳ (g_rr-1) = 0",
+# Circle inverse: (-g_tt - 1) and (g_rr - 1) are circle inverses
+check("Time deficit and radial-space deficit are circle inverses: (-g_tt-1) ∘₁ (g_rr-1) = 0",
       sp.simplify(ma(-gtt - 1, new_rr - 1)) == 0)
 # Horizon = the dial's wall: river speed reaches c
 check("Horizon r = 2M is where the river reaches light speed (the velocity wall)",
@@ -279,16 +279,16 @@ check("Small loop in the t-r plane returns a boosted vector: rapidity = (2M/r^3)
 RES["E"] = {"loop_rapidity": eta, "curvature_times_area": Rtrtr * area}
 
 # ---------------------------------------------------------------------------
-section("F. Exact mult-add facts the river gives")
+section("F. The exact circle-operation facts the river gives")
 xx = sp.symbols('x', positive=True)   # x = M/r
 vr2, vo2 = 2 * xx, xx / (1 - 2 * xx)
 w2 = vr2 + vo2 * (1 - vr2)            # perpendicular composition
 check("Orbit speed seen from the river (perpendicular composition): 1 - w^2 = (1-2x)(1 - v_o^2) = 1 - 3x",
       sp.simplify(1 - w2 - (1 - 3 * xx)) == 0)
-check("so Gravity Probe B's factor sqrt(1-3M/r) is 1/gamma of the gyroscope's speed through the river; -w^2 = (-v_r^2) ✳ (-v_o^2)",
+check("so Gravity Probe B's factor sqrt(1-3M/r) is 1/gamma of the gyroscope's speed through the river; -w^2 = (-v_r^2) ∘₁ (-v_o^2)",
       sp.simplify(-w2 - ma(-vr2, -vo2)) == 0)
 z1, z2 = sp.symbols('z1 z2')
-check("Redshifts chain by multiplying (1+z) factors, so redshifts mult-add: z = z1 ✳ z2",
+check("Redshifts chain by multiplying (1+z) factors, so redshifts combine by the circle operation: z = z1 ∘₁ z2",
       sp.expand((1 + ma(z1, z2)) - (1 + z1) * (1 + z2)) == 0)
 vv = sp.symbols('v', positive=True)
 check("Infalling light seen by the river: blueshift gamma times Doppler sqrt((1-v)/(1+v)) = 1/(1+v)",

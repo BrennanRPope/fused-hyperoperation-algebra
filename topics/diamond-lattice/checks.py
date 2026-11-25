@@ -49,9 +49,9 @@ check('lift phi(t) = (1-t)/(1+(Q-1)t) turns parallel into multiplication', z(phi
 check('phi(t) = 1/(1+v) = e^{-K}: parallel multiplies e^K', z(phi(v/(Q + v)) - 1/(1 + v)))
 check('so T = phi^-1(phi(t^2)^2): square in t, then square in e^{-K}', z(phi(T) - phi(t**2)**2))
 p_, q_ = Q - 2, 1 - Q
-check('discriminant p^2 - 4q = (Q-2)^2 + 4(Q-1) = Q^2', z(p_**2 - 4*q_ - Q**2))
-check('wall gap squared (1 - 1/(1-Q))^2 = (p^2-4q)/q^2', z((1 - 1/(1 - Q))**2 - (p_**2 - 4*q_)/q_**2))
-check('bend q = 1 - Q is the reciprocal of the second wall', z(q_ - 1/(1/(1 - Q))))
+check('discriminant p^2 - 4d = (Q-2)^2 + 4(Q-1) = Q^2', z(p_**2 - 4*q_ - Q**2))
+check('wall gap squared (1 - 1/(1-Q))^2 = (p^2-4d)/d^2', z((1 - 1/(1 - Q))**2 - (p_**2 - 4*q_)/q_**2))
+check('bend d = 1 - Q is the reciprocal of the second wall', z(q_ - 1/(1/(1 - Q))))
 Tp = sp.together(sp.diff(T, t))
 check("T'(t) = 4t(1-t^2)(1+(Q-1)t^2)/(1+(Q-1)t^4)^2", z(Tp - 4*t*(1 - t**2)*(1 + (Q - 1)*t**2)/(1 + (Q - 1)*t**4)**2))
 check("critical points 0, +-1, +-sqrt(1/(1-Q)) (and infinity, the series wall)", z(sp.limit(Tp.subs(Q, 3)*1, t, sp.oo)) )

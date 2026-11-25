@@ -1,13 +1,13 @@
-== 1. Interest is mult-add ==
+== 1. Interest is the circle operation ==
  3% then 5%: (+) gives 0.081500; (1.03)(1.05)-1 = 0.081500
  force of interest delta = log(1+i) at 5%: 0.048790; logs add: True
- discount rate d = i/(1+i) = 0.047619; minus the mult-add inverse of i = 0.047619: True
- nominal monthly rate i(12) = 12 x (12th mult-add root of 5%) = 0.048889
+ discount rate d = i/(1+i) = 0.047619; minus the circle inverse of i = 0.047619: True
+ nominal monthly rate i(12) = 12 x (12th circle root of 5%) = 0.048889
  10-year accumulation s_10 at 5%: closed 12.577893, layer sum 12.577893, corner sum 12.577893
   layer 1 (simple interest) = 10; layers 2..10 (interest on interest) = 2.577893
   share of (1.05^10 - 1) in each cube layer: [0.795, 0.1789, 0.0239, 0.0021, 0.0001] ...
 
-== 2. Survival is mult-add of negated death rates ==
+== 2. Survival is the circle operation of negated death rates ==
  SOA Illustrative Life Table, ages 45-47: q = [0.003997 0.004314 0.004662]
  3q45 from the table 0.01291699; -((-q45)(+)(-q46)(+)(-q47)) = 0.01291699; cube (inclusion-exclusion) = 0.01291699
  force of mortality = -log(1 + (-q)) adds: True
@@ -21,18 +21,18 @@
   UDD = equal corner split = Shapley: True
  constant force rates      [0.0038679  0.05976273 0.00387117] sum 0.067501802
  diagonal path in log coords [0.0038679  0.05976273 0.00387117]
-  constant force = straight path in mult-add log coordinates: True
+  constant force = straight path in circle-operation log coordinates: True
  deaths-early path         [0.00393276 0.05970059 0.00386845] sum 0.067501802
   totals agree on all three paths (path-independent): True
  simulation (4 million lives), UDD: [0.0039  0.05971 0.00388]  constant force: [0.00386 0.05978 0.00382]
   within 3 standard errors: True
 
-== 4. Independent risks: (M - 1) mult-adds, cumulants are the mult-add log ==
+== 4. Independent risks: (M - 1) combines by the circle operation, cumulants are the circle-operation log ==
  at s = 0.3: M_sum - 1 = 1.0902179827; (+) of (M_k - 1) = 1.0902179827; cube corners = 1.0902179827
  simulated E[exp(s X_sum)] - 1 = 1.0893 (2 million draws)
  logs add (cumulant generating functions): True
 
-== 5. Claim counts: one mult-add power (1 + c(z - 1))^n ==
+== 5. Claim counts: one circle power (1 + c(z - 1))^n ==
  binomial m=5, q=0.3: sum p = 1.000000, fitted a = -0.428571, b = 2.571429, dimension -1 - b/a = 5.000000
  neg. binomial r=2.5, beta=0.8: sum p = 1.000000, fitted a = 0.444444, b = 0.666667, dimension -1 - b/a = -2.500000
  neg. binomial r=0.7, beta=3: sum p = 0.999927, fitted a = 0.750000, b = -0.225000, dimension -1 - b/a = -0.700000
@@ -43,8 +43,8 @@
  dimension 0.5: first negative coefficient at k = 2  (p_k = -1.92e-02)
  count models allowed at dimension n:           {-3: True, -1.2: True, -0.4: True, 0.25: False, 0.5: False, 0.9: False, 1.0: True, 1.4: False, 2.0: True, 2.6: False, 3.0: True, 4.5: False}
  allowed once the zero count is removed:         {-3: True, -1.2: True, -0.4: True, 0.25: True, 0.5: True, 0.9: True, 1.0: True, 1.4: False, 2.0: True, 2.6: False, 3.0: True, 4.5: False}
- binomial m=6: k-th mult-add root has no negative coefficient for k = [2, 3, 6]
- binomial m=7: k-th mult-add root has no negative coefficient for k = [7]
+ binomial m=6: k-th circle root has no negative coefficient for k = [2, 3, 6]
+ binomial m=7: k-th circle root has no negative coefficient for k = [7]
  Danish fire claims per week: 573 weeks, mean 3.7731, variance 4.9659
   overdispersed, so negative binomial: r = 11.935, beta = 0.3161; dimension n = -r = -11.935; pole of the PGF at z = 1 + 1/beta = 4.163
   log-likelihood Poisson -1258.7, negative binomial -1247.0 (moment fit)
@@ -58,7 +58,7 @@
  1/distance to a random point in a 3-ball: Hill tail index (k=4000) = 2.982
  1/distance to a random point in a 4-ball: Hill tail index (k=4000) = 3.938
  Lomax E[X^3] near its poles: {3.01: np.float64(295.55), 3.5: np.float64(3.2), 2.99: np.float64(-304.55), 2.01: np.float64(-600.06), 1.01: np.float64(304.55)}
- Lomax alpha=2.5: survival (1 + x)^-alpha is a mult-add power with n = -alpha; sample mean 0.6657 vs exact 0.6667; E[X^2] exact 2.6667; E[X^3] infinite
+ Lomax alpha=2.5: survival (1 + x)^-alpha is a circle power with n = -alpha; sample mean 0.6657 vs exact 0.6667; E[X^2] exact 2.6667; E[X^3] infinite
  Danish fire, 2167 losses (million DKK, 1985 values): mean 3.385, max 263.25
   Hill tail index with top 50: 1.865
   Hill tail index with top 100: 1.601

@@ -65,7 +65,7 @@ html{scroll-padding-top:20px}
 <h1>Twisting the oxygen clock</h1>
 <p class="lede">Reversing the clock gives a real, different reaction: respiration's oxygen-eating enzyme runs the same four-step square the other way. Undoing the clock in time is forbidden, and every other twist lands on chemistry that already exists.</p>
 <div class="verdict"><p><strong>Lead check:</strong> nothing here is as promising as the soliton cube. The one twist nobody has made work is a clock that runs both ways at no cost, and the reason is a geometric one: the four quarter turns can't be made equal.</p></div>
-<p class="cap">Fused Hyperoperation Algebra, rung 1: x ⊕ y = x + y + xy. The clock's flash step is the point 1 + x = λ in the complex plane, and n flashes are the n-fold mult-add, λⁿ. Numbers from <code>twists.py</code> beside this page.</p>
+<p class="cap">Fused Hyperoperation Algebra, rung 1: x ∘₁ y = x + y + xy. The clock's flash step is the point 1 + x = λ in the complex plane, and n flashes are the n-fold circle operation ∘₁ (called mult-add before 1.0), λⁿ. Numbers from <code>twists.py</code> beside this page.</p>
 </div>
 <div><div class="fig sq" id="f1"></div><p class="cap">Where each twist sends the clock's point λ = 0.056 + 0.888i (Shinkarev's fit to spinach). A clock made of probabilities must stay inside the circle.</p></div>
 </div>
@@ -79,7 +79,7 @@ html{scroll-padding-top:20px}
 <tbody>
 <tr><td>Reverse the direction</td><td>Mirror λ across the real axis</td><td>Cytochrome c oxidase: O₂ + 4e⁻ → 2H₂O in four single-electron steps (respiration)</td><td><span class="tag ok">Real</span></td></tr>
 <tr><td>Flip the energy's sign</td><td>Run the whole loop downhill</td><td>Respiration and burning: glucose + 6O₂ → 6CO₂ + 6H₂O, −2870 kJ</td><td><span class="tag ok">Real</span></td></tr>
-<tr><td>Undo flashes in time</td><td>Mult-add inverse, λ → 1/λ</td><td>None: populations go negative after one step back</td><td><span class="tag no">Forbidden</span></td></tr>
+<tr><td>Undo flashes in time</td><td>Circle inverse, λ → 1/λ</td><td>None: populations go negative after one step back</td><td><span class="tag no">Forbidden</span></td></tr>
 <tr><td>Mirror the sugar</td><td>Every helix turns the other way</td><td>L-glucose has the same energy; no organism makes it; one soil bacterium eats it</td><td><span class="tag open">Allowed, not made</span></td></tr>
 <tr><td>Mirror the electron chain</td><td>Swap the two branches</td><td>Bacterial reaction centres have two near-twin branches; only one carries electrons; mutants force the other</td><td><span class="tag ok">Real, weak</span></td></tr>
 <tr><td>Mirror the light</td><td>Flip the sign of the twist in reflected light</td><td>Leaves reflect slightly circular light; mirror plants would flip its sign</td><td><span class="tag ok">Real</span></td></tr>
@@ -108,7 +108,7 @@ html{scroll-padding-top:20px}
 <h2>Flipping the sign: one version is respiration, the other is forbidden</h2>
 <p>"Switch the sign" splits into two different moves.</p>
 <p><strong>Flip the energy's sign.</strong> Run the whole reaction downhill: sugar and oxygen back to carbon dioxide and water, releasing the 2870 kJ per glucose that light stored. That is respiration, or a fire. Real, and the reverse enzyme above is its last step.</p>
-<p><strong>Flip the step's sign.</strong> In mult-add the inverse of x is −x / (1 + x), the value that undoes it: (1 + x)(1 + y) = 1. Applied to the clock, that would un-flash it, running the probabilities backwards in time. The point moves from λ, inside the circle, to 1/λ, outside it at distance 1.124. Starting from a clock that is surely in S1, one step back already needs a population of −0.108, and after five steps one state is at −0.916. No real mixture has negative amounts.</p>
+<p><strong>Flip the step's sign.</strong> In the circle operation the inverse of x is −x / (1 + x), the value that undoes it: (1 + x)(1 + y) = 1. Applied to the clock, that would un-flash it, running the probabilities backwards in time. The point moves from λ, inside the circle, to 1/λ, outside it at distance 1.124. Starting from a clock that is surely in S1, one step back already needs a population of −0.108, and after five steps one state is at −0.916. No real mixture has negative amounts.</p>
 <p>This is the second law in the picture. A clock made of chances can only shrink toward the steady state, so its points stay inside the unit circle. The inverse sends them outside, where only growth lives. The reverse chemistry is fine; reversing the forgetting is not.</p>
 </div>
 <div><div class="fig" id="f3" style="min-height:360px"></div><p class="cap">Un-flashing a clock that starts surely in S1. Bars below the line are negative amounts, which no sample can hold.</p></div>
@@ -208,7 +208,7 @@ html{scroll-padding-top:20px}
 <tbody>
 <tr><td>Reversed clock = cytochrome c oxidase</td><td>Known chemistry; the shared square picture of the two enzymes is a clean framing</td><td>Best match</td></tr>
 <tr><td>Direction invisible in the flash pattern</td><td>Follows from complex conjugation; checked numerically</td><td>Small, true</td></tr>
-<tr><td>Mult-add inverse is forbidden</td><td>Known: stochastic matrices contract (Perron–Frobenius), the second law</td><td>Clean geometric reason</td></tr>
+<tr><td>Circle inverse is forbidden</td><td>Known: stochastic matrices contract (Perron–Frobenius), the second law</td><td>Clean geometric reason</td></tr>
 <tr><td>Polygon family 1, 2, 4, 8</td><td>Each cycle known; one formula for all is the lens</td><td>Tidy</td></tr>
 <tr><td>Mirror sugar, branch, light</td><td>Known; mirror life deliberately not pursued</td><td>No new chemistry</td></tr>
 <tr><td>Uneven quarter turns of water oxidation</td><td>Known: the scaling relation, the symmetry index (2018) and the bifunctional index (2016); tested here, restates them</td><td>Faithful drawing, no new prediction</td></tr>

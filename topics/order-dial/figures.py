@@ -40,7 +40,7 @@ for key, (name, sub) in labels.items():
         ax.text(x_ + 0.012, y_ - 0.012, sub, fontsize=8.5, va='top', color='#333', transform=ax.transAxes)
 mx, my = P(1,1,0)
 ax.plot(mx, my, 'o', ms=22, mfc='none', mec=ORANGE, mew=3, transform=ax.transAxes, zorder=4)
-ax.annotate('mult-add sits here:\nassociative and commutative,\nbut 1 ✳ 1 = 3, not 1.\nIts only idempotents are\n0 and the wall −1/k',
+ax.annotate('The circle operation sits here:\nassociative and commutative,\nbut 1 ∘₁ 1 = 3, not 1.\nIts only idempotents are\n0 and the wall −1/k',
             xy=(mx, my), xytext=(0.30, 0.86), textcoords='axes fraction', xycoords='axes fraction',
             fontsize=10, color=ORANGE, arrowprops=dict(arrowstyle='->', color=ORANGE, lw=1.8))
 a0 = P(0,0,0)
@@ -56,7 +56,7 @@ fig, ax = plt.subplots(figsize=(10.5, 5.6)); ax.set_axis_off(); ax.set_xlim(0, 1
 rows = [
  ('Set', 'key → yes/no', ['apple: 1', 'pear: 0', 'fig: 1'], 'join = OR', 'k = 1 corner\n(each at most once)', BLUE),
  ('Bag', 'key → count', ['apple: 2', 'pear: 0', 'fig: 1'], 'join = add counts', 'k = −1\n(any number)', GREEN),
- ('Random set', 'key → chance', ['apple: .3', 'pear: .5', 'fig: .9'], 'join = p + q − pq', 'this IS mult-add\nat k = −1', ORANGE),
+ ('Random set', 'key → chance', ['apple: .3', 'pear: .5', 'fig: .9'], 'join = p + q − pq', 'this IS the circle operation\nat k = −1', ORANGE),
  ('Dictionary', 'key → value', ['apple: red', 'pear: green', 'fig: ?'], 'merge = last write wins', 'order matters only\non shared keys', PURPLE),
  ('List / array', 'position → value', ['0: fig', '1: apple', '2: apple'], 'join = append', 'order lives in\nthe keys 0, 1, 2', RED),
 ]
@@ -112,12 +112,12 @@ assoc = [np.abs(mm(mm(X,Y,l),Z,l) - mm(X,mm(Y,Z,l),l)).max() for l in lams]
 flex = [np.abs(mm(mm(X,Y,l),X,l) - mm(X,mm(Y,X,l),l)).max() for l in lams]
 comm = [np.abs(mm(X,Y,l) - mm(Y,X,l)).max() for l in lams]
 fig, ax = plt.subplots(figsize=(9.5, 5.2))
-ax.plot(lams, np.array(assoc)/max(assoc), color=RED, lw=3, label='grouping error (a✳b)✳c − a✳(b✳c)')
-ax.plot(lams, np.array(comm)/max(comm), color=BLUE, lw=3, label='order error a✳b − b✳a')
-ax.plot(lams, np.array(flex)/max(assoc), color=GREEN, lw=3, ls='--', label='flexibility error (a✳b)✳a − a✳(b✳a): always 0')
+ax.plot(lams, np.array(assoc)/max(assoc), color=RED, lw=3, label='grouping error (a∘₁b)∘₁c − a∘₁(b∘₁c)')
+ax.plot(lams, np.array(comm)/max(comm), color=BLUE, lw=3, label='order error a∘₁b − b∘₁a')
+ax.plot(lams, np.array(flex)/max(assoc), color=GREEN, lw=3, ls='--', label='flexibility error (a∘₁b)∘₁a − a∘₁(b∘₁a): always 0')
 for xv, txt in [(0, 'λ = 0\nb·a only\n(associative)'), (0.5, 'λ = ½: Jordan\n(commutative,\nnot associative)'), (1, 'λ = 1\na·b only\n(associative)')]:
     ax.axvline(xv, color=GREY, lw=1, ls=':'); ax.text(xv, 1.08, txt, ha='center', fontsize=9)
-ax.set_xlabel('λ in  a ✳ b = a + b + λ·ab + (1 − λ)·ba   (3×3 matrices)'); ax.set_ylabel('size of error (scaled)')
+ax.set_xlabel('λ in  a ∘₁ b = a + b + λ·ab + (1 − λ)·ba   (3×3 matrices)'); ax.set_ylabel('size of error (scaled)')
 ax.set_ylim(-0.05, 1.32); ax.legend(loc='center left', bbox_to_anchor=(0.0, 0.55), fontsize=9); ax.grid(alpha=0.3)
 ax.set_title('Putting an order dial into the formula breaks grouping in between.\nThe grouping error is λ(1 − λ) × fixed matrices, so only the two ends are associative. (Known: quasi-associative / mutation algebras.)', fontsize=10.5)
 fig.savefig(OUT + 'fig4-order-in-the-formula.png', bbox_inches='tight'); plt.close(fig)
@@ -134,8 +134,8 @@ for i in range(5):
     ax.text(-0.1, 4-i+0.45, f'{algs[i]} (dim {2**i})', ha='right', va='center', fontsize=11)
 for j in range(5): ax.text(j+0.475, 5.05, laws[j], ha='center', va='bottom', fontsize=10)
 ax.set_xlim(-2.6, 7.6); ax.set_ylim(-0.1, 5.8); ax.set_axis_off()
-ax.text(5.25, 3.0, 'Mult-add over each one,\na ✳ b = a + b + ab,\nhas exactly the same\nrow of yes and no.\n\nThe shift x ↦ 1 + x turns\n✳ into the product, so\nevery law moves across.\nSedenion zero divisors\nbecome extra walls.', fontsize=10, va='center', color=ORANGE)
-ax.set_title('Each step up the Cayley–Dickson ladder drops one law. Mult-add copies its inputs\' laws exactly. (Checked numerically; the shift argument is elementary.)', fontsize=11)
+ax.text(5.25, 3.0, 'The circle operation over each one,\na ∘₁ b = a + b + ab,\nhas exactly the same\nrow of yes and no.\n\nThe shift x ↦ 1 + x turns\n∘₁ into the product, so\nevery law moves across.\nSedenion zero divisors\nbecome extra walls.', fontsize=10, va='center', color=ORANGE)
+ax.set_title('Each step up the Cayley–Dickson ladder drops one law. The circle operation copies its inputs\' laws exactly. (Checked numerically; the shift argument is elementary.)', fontsize=11)
 fig.savefig(OUT + 'fig5-cayley-dickson-ladder.png', bbox_inches='tight'); plt.close(fig)
 
 # ---------- fig6: compounding order ----------
@@ -153,7 +153,7 @@ for ax, title, dep_first in [(a1, 'Grow, then deposit\n(end-of-period deposit)',
         ax.text(0.7, Bv+d+0.12, 'B(1 + r) + d = B + rB + d', ha='center', fontsize=10)
     ax.set_xlim(-0.1, 1.6); ax.set_ylim(-0.1, 1.9); ax.set_aspect('equal'); ax.set_axis_off(); ax.set_title(title)
     ax.annotate('', (1+r, -0.05), (0, -0.05), arrowprops=dict(arrowstyle='<->')); ax.text((1+r)/2, -0.09, 'stretch 1 + r', ha='center', va='top', fontsize=9)
-fig.suptitle('Order changes a compounding result by exactly the corner r·d: the mult-add box\'s corner piece is the price of swapping "add" and "multiply".', fontsize=11, y=1.04)
+fig.suptitle('Order changes a compounding result by exactly the corner r·d: the circle-operation box\'s corner piece is the price of swapping "add" and "multiply".', fontsize=11, y=1.04)
 fig.savefig(OUT + 'fig6-compounding-order.png', bbox_inches='tight'); plt.close(fig)
 
 # ---------- fig7: stretches about centres (the fan) ----------
@@ -163,9 +163,9 @@ for s, col in zip([-0.8, -0.4, 0.3, 0.8, 1.5], ['#9ecae1', '#6baed6', '#4292c6',
     a1.plot(xs, (1+k*s)*xs + s, color=col, lw=2, label=f'a = {s}: x ↦ (1 + {s})x + {s}')
 a1.plot(xs, xs, color=GREY, ls=':', lw=1)
 a1.plot([c], [c], 'o', color=ORANGE, ms=12, zorder=5)
-a1.annotate('every map in the family fixes\nthe wall −1/k (here −1).\nOne shared centre ⇒ any order\ngives the same result: a ✳ b = b ✳ a', (c, c), (-2.9, 1.3), fontsize=10, color=ORANGE, arrowprops=dict(arrowstyle='->', color=ORANGE))
+a1.annotate('every map in the family fixes\nthe wall −1/k (here −1).\nOne shared centre ⇒ any order\ngives the same result: a ∘₁ b = b ∘₁ a', (c, c), (-2.9, 1.3), fontsize=10, color=ORANGE, arrowprops=dict(arrowstyle='->', color=ORANGE))
 a1.set_xlim(-3, 2); a1.set_ylim(-4, 3.5); a1.grid(alpha=0.3); a1.legend(fontsize=7.5, loc='lower right')
-a1.set_title('Mult-add = composing stretches about one centre\n(T_comp in Lean: T(a) after T(b) = T(a ✳ b))'); a1.set_xlabel('x'); a1.set_ylabel('image of x')
+a1.set_title('The circle operation = composing stretches about one centre\n(T_comp in Lean: T(a) after T(b) = T(a ∘₁ b))'); a1.set_xlabel('x'); a1.set_ylabel('image of x')
 # right: two centres
 f = lambda x: 2*(x - 0) + 0      # stretch x2 about 0 (grow by r=1)
 g = lambda x: 2*(x - 1) + 1      # stretch x2 about 1
@@ -178,7 +178,7 @@ a2.annotate('', (-1.5, f(g(-1.5))), (-1.5, g(f(-1.5))), arrowprops=dict(arrowsty
 a2.text(-1.45, (f(g(-1.5))+g(f(-1.5)))/2, '  gap = a·d − b·c = 1·(−1) − 1·0\n  the same everywhere: a pure shift', fontsize=9, va='center')
 a2.set_xlim(-3, 2); a2.set_ylim(-9, 6); a2.grid(alpha=0.3); a2.legend(fontsize=9, loc='lower right'); a2.set_xlabel('x')
 a2.set_title('Different centres ⇒ order matters.\nThe gap is the wedge of (stretch, shift) pairs.')
-fig.suptitle('Composition is the home: the commuting slice through the wall is mult-add; the full stretch-and-shift (affine) group is where order begins.\n(Known group; mult-add reading ours.)', fontsize=11, y=1.06)
+fig.suptitle('Composition is the home: the commuting slice through the wall is the circle operation; the full stretch-and-shift (affine) group is where order begins.\n(Known group; circle-operation reading ours.)', fontsize=11, y=1.06)
 fig.savefig(OUT + 'fig7-centres-and-order.png', bbox_inches='tight'); plt.close(fig)
 
 # ---------- fig8: route to quantum ----------
@@ -189,7 +189,7 @@ a1.add_patch(Rectangle((1, 0), a_-1+0.0, 1, color=BLUE, alpha=0.35)); a1.text(1+
 a1.add_patch(Rectangle((0, 1), 1, b_*0.6, color=GREEN, alpha=0.4)); a1.text(0.5, 1+0.3, 'b', ha='center', va='center', fontsize=13)
 a1.add_patch(Rectangle((1, 1), a_-1, b_*0.6, color=ORANGE, alpha=0.9)); a1.text(1+(a_-1)/2, 1.3, 'ab', ha='center', va='center', fontsize=13, weight='bold')
 a1.set_xlim(-0.1, 2.0); a1.set_ylim(-0.1, 2.0); a1.set_aspect('equal'); a1.set_axis_off()
-a1.set_title('Commutative mult-add: the corner ab\nis kept as extra area (a ✳ b = a + b + ab)')
+a1.set_title('Commutative the circle operation: the corner ab\nis kept as extra area (a ∘₁ b = a + b + ab)')
 # phase plane loop
 a2.add_patch(Rectangle((0, 0), a_, b_, color=ORANGE, alpha=0.35))
 arrow(a2, (0, 0), (a_, 0), color=BLUE, lw=2.5); a2.text(a_/2, -0.15, 'shift position by a', ha='center', va='top', color=BLUE)
@@ -204,7 +204,7 @@ fig.savefig(OUT + 'fig8-route-to-quantum.png', bbox_inches='tight'); plt.close(f
 
 # ---------- fig9: one wedge, three places ----------
 fig, axs = plt.subplots(1, 3, figsize=(12.5, 4.3))
-specs = [('Clifford (vectors)', 'x ✳ y − y ✳ x = 2 x∧y', 'x', 'y', BLUE),
+specs = [('Clifford (vectors)', 'x ∘₁ y − y ∘₁ x = 2 x∧y', 'x', 'y', BLUE),
          ('Affine maps (stretch, shift)', 'f∘g − g∘f shift = a·d − b·c', '(a, c)', '(b, d)', PURPLE),
          ('Heisenberg (shift, boost)', 'phase = (a₁b₂ − a₂b₁)/2ħ', '(a₁, b₁)', '(a₂, b₂)', ORANGE)]
 for ax, (t, form, l1, l2, col) in zip(axs, specs):

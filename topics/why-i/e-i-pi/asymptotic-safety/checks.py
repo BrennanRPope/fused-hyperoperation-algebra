@@ -85,7 +85,7 @@ s_t = (1 - np.exp(-eps*t))/gs
 check("A2 (ours) in u = 1/g the flow is EXACTLY our weighted circle operation: u(t) = u(0) o_k s(t) = u0 + s + k u0 s with dial k = -g* and step s(t) = (1 - e^{-(d-2)t})/g*",
       np.allclose(u, ma(u[0], s_t, k), rtol=1e-9))
 i, j = 300, 700
-check("A3 (ours) steps compose by the same operation, s(t1) o_k s(t2) = s(t1 + t2) (the flow is a one-parameter group inside mult-add), and the wall -1/k = 1/g* is the UV fixed point: no step crosses it",
+check("A3 (ours) steps compose by the same operation, s(t1) o_k s(t2) = s(t1 + t2) (the flow is a one-parameter group inside the circle operation), and the wall -1/k = 1/g* is the UV fixed point: no step crosses it",
       abs(ma(s_t[i], s_t[j], k) - s_t[i + j]) < 1e-12 and np.all(u > 1/gs))
 flat = np.log(np.abs(1 + k*u))/k
 check("A4 (ours) the flow lives just past the wall (1 + k u = 1 - g*/g < 0, the lift's flipped side) and the flat coordinate log|1 + k u|/k runs linearly in RG time with slope (d-2)/g*: RG time is the flat coordinate of this dial",

@@ -2,7 +2,7 @@
 Rulecraft x Fused Hyperoperation Algebra: every number on the page.
 
 Run:  python3 checks.py > checks_output.txt
-Mult-add:  a (+) b = a + b + ab = (1+a)(1+b) - 1
+the circle operation:  a (+) b = a + b + ab = (1+a)(1+b) - 1
 Weighted:  a (+)_A b = a + b + A*ab      (A = coupling weight of the corner)
 Inverse:   (-)a = -a/(1+a)               (undefined only at a = -1)
 """
@@ -38,7 +38,7 @@ for name, val in checks.items():
     print(f"  {'OK ' if val == 0 else 'FAIL'} {name}")
 
 print()
-print("Boundary theorem: mult-add over S++T = X_S (+) X_T, cross term = straddling corners")
+print("Boundary theorem: the circle operation over S++T = X_S (+) X_T, cross term = straddling corners")
 xs = sp.symbols('x1:6')
 for split in (1, 2, 3):
     S, T = xs[:split], xs[split:]
@@ -139,7 +139,7 @@ n = 30
 tot = (1+rg)**n - 1
 layers = [comb(n,j)*rg**j for j in range(1, n+1)]
 print(f"    30 years, no surplus: debt ratio x{float(1+tot):.4f} -> {float(100*(1+tot)):.1f}% of GDP")
-print("    the 30-fold mult-add on the cube, by layer: " +
+print("    the 30-fold circle operation on the cube, by layer: " +
       ", ".join(f"L{j+1} {float(100*layers[j]):.2f}" for j in range(5)) +
       f", rest {float(100*sum(layers[5:])):.3f}")
 print(f"    linear layer {float(100*layers[0]):.2f} points; compounding layers (2 and up) {float(100*sum(layers[1:])):.2f} points")
@@ -149,7 +149,7 @@ print(f"    layer 2 overtakes layer 1 after n = 1 + 2/x = {float(nstar):.0f} yea
 print()
 print("="*70)
 print("4. QUICK MATCHES")
-print("  Order of reforms: mult-add commutes, so percent reforms on one quantity are order-free:",
+print("  Order of reforms: the circle operation commutes, so percent reforms on one quantity are order-free:",
       ma(F(1,10), F(1,5)) == ma(F(1,5), F(1,10)))
 print("  Fused exponent rung (1+a)^(1+b)-1 does not commute: a=1,b=2 ->", 2**3-1, "; a=2,b=1 ->", 3**2-1)
 print(f"    with a=10%, b=20%: {1.1**1.2-1:.4%} vs {1.2**1.1-1:.4%}")

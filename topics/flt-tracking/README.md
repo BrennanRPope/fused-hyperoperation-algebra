@@ -5,7 +5,7 @@ Checked Nov 25, 2026. Read-only survey: nothing was posted, filed or proposed on
 **Short answer.** Buzzard's FLT project still rests on one big open step (the "B4" boss: the Frey
 curve's p-torsion is reducible), and almost everything our Fermat files prove is already in
 mathlib or in their repo. The live leads are small and concrete: borrow their minimality criterion
-to close the one honest gap in our mathlib port, use their reduction theory to place our mult-add
+to close the one honest gap in our mathlib port, use their reduction theory to place our circle-operation
 node law exactly inside FLT (split multiplicative reduction and the Tate curve), and, if Brennan
 wants a public foothold, a few elementary open lemmas upstream. A second, much larger
 AI-agent-run fork (futarchy-fi/FLT) is where most of the new work is happening, and it already
@@ -87,7 +87,7 @@ Our files: `lean-library/FusedAlgebra/Topics/Fermat/{Fermat3,Fermat4,FreyPieces,
 So there is no open item in FLT that our existing files fill. "Plug our proof into theirs" does
 not apply: their spine already contains our reductions, and the open part (B4) is far from
 anything we have. What is ours alone is the presentation: self-contained core-Lean proofs
-(ℤ[ω] built from scratch) and the mult-add restatements.
+(ℤ[ω] built from scratch) and the circle-operation restatements.
 
 Can we help with an open item? Judged one by one:
 
@@ -125,10 +125,10 @@ Paths are in the upstream repo unless marked.
 3. **Split versus nonsplit node**: upstream `FLT/Mathlib/AlgebraicGeometry/EllipticCurve/Reduction.lean`
    (`nodePoly`, `nodePoly_map_splits_iff_isSquare`, `…_of_two_eq_zero`) and
    `FLT/KnownIn1980s/EllipticCurves/QuadraticTwists/SplitMultiplicativeReduction.lean`. Our
-   `node_chord_multAdd` assumes the two tangent slopes m₁, m₂ are rational, which is exactly
+   `node_chord_circ` assumes the two tangent slopes m₁, m₂ are rational, which is exactly
    split multiplicative reduction, where the smooth points form the multiplicative group and the
-   chord law is mult-add. Their criterion says when that holds at a given prime; nonsplit is the
-   twisted (norm-one) version. **Worth following** as a geometric bolt-in: it puts mult-add at a
+   chord law is the circle operation ∘₁ (called mult-add before 1.0). Their criterion says when that holds at a given prime; nonsplit is the
+   twisted (norm-one) version. **Worth following** as a geometric bolt-in: it puts the circle operation at a
    precise place in the FLT machinery. It is known math, so it is placement, not discovery.
 4. **Tate curve**: `FLT/KnownIn1980s/EllipticCurves/TateCurve*.lean`, `TateParameter.lean`.
    E(K) ≅ K^×/q^ℤ: the Tate curve is a q-deformation of the multiplicative group, and our node

@@ -69,7 +69,7 @@ ax.fill_between([-6, 6], 0, 4.2, color='#f3f6fb')
 for cc in np.linspace(-6, 6, 13):
     for rr in [1, 2.5]:
         t = np.linspace(0, np.pi, 100); ax.plot(cc + rr*np.cos(t), rr*np.sin(t), color='#dde3ee', lw=.8)
-dials = [(0, GREEN, 'k = 0: plain addition\n(horizontal: a horocycle)'), (1, BLUE, 'k = 1: mult-add'), (.4, PURPLE, 'k = 0.4'),
+dials = [(0, GREEN, 'k = 0: plain addition\n(horizontal: a horocycle)'), (1, BLUE, 'k = 1: the circle operation'), (.4, PURPLE, 'k = 0.4'),
          (-1, ORANGE, 'k = −1: probability join'), (-.4, RED, 'k = −0.4')]
 for kk, col, lab in dials:
     if kk == 0:
@@ -131,7 +131,7 @@ N, Lb = 4096, 400.; xs = np.linspace(-Lb/2, Lb/2, N, endpoint=False); dx = xs[1]
 seed = np.exp(-xs**2/30.)*np.exp(1j*1.5*xs); F = np.fft.fft(seed); psi = np.fft.ifft(np.where(xi > 0, F, 0))
 def U(lam, s, p):
     return (np.interp((xs-s)/lam, xs, p.real, left=0, right=0) + 1j*np.interp((xs-s)/lam, xs, p.imag, left=0, right=0))/np.sqrt(abs(lam))
-cases = [('starting wave (only + frequencies)', psi, BLUE), ('after mult-add element a = −0.5, k = 1\n(1 + ka = 0.5 > 0, before the wall)', U(.5, -.5, psi), GREEN),
+cases = [('starting wave (only + frequencies)', psi, BLUE), ('after circle-operation element a = −0.5, k = 1\n(1 + ka = 0.5 > 0, before the wall)', U(.5, -.5, psi), GREEN),
          ('after a = −2, k = 1\n(1 + ka = −1 < 0, past the wall)', U(-1, -2, psi), RED), ('complex conjugate of the start\n(i → −i)', np.conj(psi), PURPLE)]
 fig, axs = plt.subplots(1, 4, figsize=(14, 3.8), sharey=True)
 order = np.argsort(xi)
@@ -141,7 +141,7 @@ for ax, (lab, p, col) in zip(axs, cases):
     ax.set_xlim(-6, 6); ax.set_title(lab, fontsize=9.5); ax.set_xlabel('frequency (− | +)')
 axs[0].set_ylabel('strength')
 fig.suptitle('7. Known group theory (Gelfand–Naimark 1947), new reading: stretch-and-shift maps that keep orientation keep the sign of every frequency.\n'
-             'Mult-add maps past the wall −1/k flip orientation, and they flip the frequency sign exactly as swapping i for −i does.', fontsize=11)
+             'The circle operation maps past the wall −1/k flip orientation, and they flip the frequency sign exactly as swapping i for −i does.', fontsize=11)
 fig.tight_layout(); fig.savefig(OUT + 'fig7-the-wall-flips-i.png', bbox_inches='tight'); plt.close(fig)
 
 # ---------- fig8: holonomy ----------
@@ -175,7 +175,7 @@ routes = [
  (0.2, 6.0, '+ a LENGTH\n→ J with J² = −1\n(compatible triples, Kähler)', '#d8ecd8', 'fig 2, 4: the order dial\'s group is the\nhyperbolic half-plane; its own length gives J'),
  (4.9, 6.15, '+ KEEP SIZE when composing\n→ twist acts by e^(iθ)\n(unitarity, Stone–von Neumann)', '#d8ecd8', 'fig 5'),
  (9.6, 6.0, '+ CARRY ROUND A LOOP\n→ holonomy e^(iA)\n(Kostant–Souriau, Aharonov–Bohm, Berry)', '#d8ecd8', 'fig 8'),
- (0.2, 0.55, 'CLIFFORD ALGEBRA\nunit oriented plane e₁e₂ squares to −1\n(Hestenes: i = spin plane)', '#dfe6f7', 'project Clifford page:\nx✳y − y✳x = 2 x∧y'),
+ (0.2, 0.55, 'CLIFFORD ALGEBRA\nunit oriented plane e₁e₂ squares to −1\n(Hestenes: i = spin plane)', '#dfe6f7', 'project Clifford page:\nx∘₁y − y∘₁x = 2 x∧y'),
  (4.9, 0.4, 'REAL OBSERVABLES\nAB − BA is antisymmetric, needs a J\n(Stueckelberg 1960)', '#dfe6f7', 'fig 6'),
  (9.6, 0.55, 'WHY C, NOT R OR H?\ncomposite systems decide\n(Hardy, Wootters, Renou 2021;\nstill argued in 2026)', '#f6dede', 'not settled by the twist'),
 ]

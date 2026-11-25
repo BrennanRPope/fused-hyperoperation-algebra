@@ -39,7 +39,7 @@ ax.set_title('Fused rung 3: the tower test', fontsize=12); ax.legend(frameon=Fal
 ax = axs[1]
 u = np.linspace(-1.2, 1.3, 400)
 ax.plot(u, np.exp(u) - 1, color=C1, label='e^u - 1  (the rung-3 kiss, shrunk by e and slid)')
-ax.plot(u, np.log1p(np.clip(u, -0.999, None)), color=C6, label='ln(1+u)  (mult-add\'s own log)')
+ax.plot(u, np.log1p(np.clip(u, -0.999, None)), color=C6, label='ln(1+u)  (the circle operation\'s own log)')
 ax.plot(u, u, color=INK, lw=1.2, ls='--', label='diagonal')
 ax.plot([0], [0], 'o', ms=10, color=C1, mec='white', mew=2, zorder=5)
 ax.annotate("e's slope-one test:\nslope 1 at the unit corner", (0, 0), (0.25, -0.9), fontsize=11, arrowprops=dict(arrowstyle='->', color=INK2))
@@ -88,7 +88,7 @@ ax.plot(ks, vals, '-', color=C1, lw=1.5, alpha=0.5)
 ax.plot(ks[:3], vals[:3], 'o', ms=9, color=C1, mec='white', mew=1.5, label='exact: -1, 0, e^(1/e) - 1')
 ax.plot(ks[3:], vals[3:], 'o', ms=8, color=C2, mec='white', mew=1.5, label='linear real-height extension')
 ax.plot([4], [NU - 1], 'D', ms=9, color=C6, mec='white', mew=1.5, label='rung 4, analytic extension: 0.6353')
-for k, lab in [(1, 'add: -1'), (2, 'mult-add: 0'), (3, '0.4447'), (5, '0.7570'), (8, '0.9199')]:
+for k, lab in [(1, 'add: -1'), (2, 'The circle operation: 0'), (3, '0.4447'), (5, '0.7570'), (8, '0.9199')]:
     ax.annotate(lab, (k, vals[k - 1]), (k + 0.4, vals[k - 1] - 0.14), fontsize=10, color=INK2)
 ax.set_xticks(ks); ax.set_xlabel('rung k  (the map x -> c (k) x; its tower lives on rung k+1)')
 ax.set_ylabel('fused natural constant c_k'); ax.set_ylim(-1.15, 1.15)

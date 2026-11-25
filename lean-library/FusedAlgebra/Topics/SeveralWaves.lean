@@ -1,5 +1,5 @@
 /-
-  Several waves: where mult-add sits, and the new directions each pair of waves adds
+  Several waves: where the circle operation (called mult-add before 1.0) sits, and the new directions each pair of waves adds
   ===================================================================================
   Companion checks: ../waves/ (rank.py, kp.py, mirror_check.py, relation4c.py).
   Core Lean 4 only (no mathlib), no `sorry`. Imports only FusedAlgebra.Base.
@@ -7,15 +7,15 @@
   Not compiled in the session that wrote it (no Lean there); written in the library's
   `unfold …; grind` style for its first compile. Every identity was checked with sympy.
 
-  Picture. One wave is mult-add: its tau function is 1 + x, and (1 + a)(1 + b) = 1 + a ✳ b
-  (Base's multAdd_lift). Two and three waves are SolitonsRungs' tau2 and tau3.
+  Picture. One wave is the circle operation: its tau function is 1 + x, and (1 + a)(1 + b) = 1 + a ◯ b
+  (Base's circ_lift). Two and three waves are SolitonsRungs' tau2 and tau3.
   With g waves the tau function is a sum over the subsets S of the waves of
     ∏_{i ∈ S} x_i · ∏_{i < j in S} A_ij,
   so each pair of waves carries one number, the pair weight A_ij. A_ij = 1 for every pair is
-  g separate copies of mult-add; A_ij = 0 is exclusion (the two waves cannot both be on).
+  g separate copies of the circle operation; A_ij = 0 is exclusion (the two waves cannot both be on).
 
   What the file proves:
-    A. Four waves with every pair weight 1 is four separate mult-adds; a wave whose weights
+    A. Four waves with every pair weight 1 is four separate circle operations; a wave whose weights
        to the others are all 1 splits off as its own factor.
     B. KP (the 2+1-dimensional wave equation) fixes each wave by two points p, q on a line:
        the dispersion relation holds for every p, q, and Hirota's two-wave condition forces
@@ -37,10 +37,9 @@
 import FusedAlgebra.Base
 
 namespace SeveralWaves
-open MultAdd
+open CircleOp
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## A. Waves with pair weights -/
 
@@ -52,12 +51,12 @@ def tau4 (A12 A13 A14 A23 A24 A34 a b c d : Int) : Int :=
   + A13 * A14 * A34 * a * c * d + A23 * A24 * A34 * b * c * d
   + A12 * A13 * A14 * A23 * A24 * A34 * a * b * c * d
 
-/-- every pair weight 1: four separate mult-adds -/
+/-- every pair weight 1: four separate circle operations -/
 theorem tau4_free (a b c d : Int) :
     tau4 1 1 1 1 1 1 a b c d = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
   unfold tau4; grind
 
-/-- a fourth wave with weight 1 to the others splits off as its own mult-add factor -/
+/-- a fourth wave with weight 1 to the others splits off as its own circle-operation factor -/
 theorem tau4_splits (A12 A13 A23 a b c d : Int) :
     tau4 A12 A13 1 A23 1 1 a b c d
       = (1 + a + b + c + A12 * a * b + A13 * a * c + A23 * b * c

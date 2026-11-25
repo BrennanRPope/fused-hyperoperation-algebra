@@ -16,8 +16,8 @@ Page: published as an artifact (see PAGES-INDEX.md, "fractional power set"); sou
 4. Without choice: obstruction gone (Jech–Sochor; Karagila 2014 with DC_k). No result found either way: open.
 5. Natural constructions blocked: half iterate of e^x - 1 = x + x^2/4 + x^3/48 + 0 + x^5/3840 - 7x^6/92160 (Baker 1958, OEIS A052104); n!*coef = 1/2 at n=2, negative at n=6.
 6. Mostowski model: subsets of atoms with least support of size n number 2*3^n; power set turns orbit growth o(n) into ~2^{o(n)} per support (pairs: 2^{2n^2}). Heuristic: a half step needs a symmetry group with orbit growth between polynomial and exponential (e.g. S_inf wr S_inf, partition numbers ~ e^{c sqrt n}); Macpherson/Simon gaps constrain.
-7. Choice grades by "which rung is flat on infinite sizes": successor flat (m+1=m) <=> every infinite set D-infinite; addition flat (2m=m) strictly between; multiplication flat (m^2=m) <=> AC (Tarski 1924), mult-add flat <=> AC; exponent never flat (Cantor). Landscape is a partial order (BPI vs DC incomparable).
-8. Levers: rung (real, 3 steps); symmetry group (real, landscape); DC height (real ladder, doesn't touch the dial); q (two-way switch: k=0 add rung, k>=1 mult rung); twist (no work, size arithmetic commutes); flow t (lives on growth rates).
+7. Choice grades by "which rung is flat on infinite sizes": successor flat (m+1=m) <=> every infinite set D-infinite; addition flat (2m=m) strictly between; multiplication flat (m^2=m) <=> AC (Tarski 1924), the circle operation ∘₁ (called mult-add before 1.0) flat <=> AC; exponent never flat (Cantor). Landscape is a partial order (BPI vs DC incomparable).
+8. Levers: rung (real, 3 steps); symmetry group (real, landscape); DC height (real ladder, doesn't touch the dial); k (two-way switch: k=0 add rung, k>=1 mult rung); twist (no work, size arithmetic commutes); flow t (lives on growth rates).
 
 ## Verdicts
 - Fractional power set: lead worth following (open in ZF; next step: permutation model from a group with e^{c sqrt n} orbit growth).

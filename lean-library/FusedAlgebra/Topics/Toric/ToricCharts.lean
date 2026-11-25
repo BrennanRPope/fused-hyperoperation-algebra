@@ -2,7 +2,7 @@
   Gluing tesseract charts into P¹ × P¹
   ====================================
 
-  Part of Fused Mult-Add Algebra. Companion to TesseractCoords.lean (same folder). Python check: gluing_check.py.
+  Part of Fused Hyperoperation Algebra. Companion to TesseractCoords.lean (same folder). Python check: gluing_check.py.
 
   STATUS: CHECKED. This file uses core Lean 4 only (no mathlib) and was
   compiled with Lean 4.37.0-rc1 with no errors and no `sorry`. Run it with
@@ -16,8 +16,8 @@
     on) is the set of nonzero coordinates. Scaling by the torus never
     changes the corner, so corners label the torus orbits.
 
-  * The projective line P¹ is two charts glued by x ↦ 1/x. In mult-add
-    coordinates (x = 1 + u) that gluing map is exactly the mult-add
+  * The projective line P¹ is two charts glued by x ↦ 1/x. In circle-operation
+    coordinates (called mult-add coordinates before 1.0) (x = 1 + u) that gluing map is exactly the circle
     inverse u ↦ -u/(1+u). The one point the inverse can't reach, u = -1
     (x = 0), is the point the other chart sees as infinity. The 1/x wall
     is where you change charts.
@@ -36,11 +36,11 @@
   cover, with transition maps). It is not a construction of P¹ × P¹ as a
   scheme or variety, which would need mathlib.
 
-  LIBRARY NOTE: mult-add, its inverse and the wall now come from FusedAlgebra.Base.
+  LIBRARY NOTE: the circle operation, its inverse and the wall now come from FusedAlgebra.Base.
 -/
 import FusedAlgebra.Base
 
-namespace MultAdd.Toric
+namespace CircleOp.Toric
 
 open Lean.Grind
 
@@ -48,8 +48,8 @@ set_option linter.unusedSectionVars false
 
 variable {K : Type} [Field K] [DecidableEq K]
 
-/-! ## 1. Mult-add and its inverse: the gluing map
-  (multAdd, multAddInv, multAdd_multAddInv, inv_one_add and no_multAddInv_at_wall
+/-! ## 1. The circle operation and its inverse: the gluing map
+  (circ, circInv, circ_circInv, inv_one_add and no_circInv_at_wall
   are proved once in FusedAlgebra.Base) -/
 
 
@@ -204,4 +204,4 @@ theorem trans2_cocycle (c d e : Bool × Bool) (v : K × K) :
 (a each), four fixed points. In ordinary coordinates it is (q + 1)². -/
 theorem fan_count (a : Nat) : a ^ 2 + 4 * a + 4 = (a + 2) ^ 2 := by grind
 
-end MultAdd.Toric
+end CircleOp.Toric

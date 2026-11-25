@@ -34,7 +34,7 @@ figcaption{font-size:14px;color:var(--mute);margin-top:8px}
 pre,.scroll{overflow-x:auto}
 @media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
 </style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
-<header><h1>P vs NP: what can't work, and where mult-add touches it</h1><p>Fused Hyperoperation Algebra · Nov 25, 2026 · 20 new Lean theorems</p></header>
+<header><h1>P vs NP: what can't work, and where the circle operation touches it</h1><p>Fused Hyperoperation Algebra · Nov 25, 2026 · 20 new Lean theorems</p></header>
 <main>
 
 <p>Nov 25, 2026. Lean module:
@@ -42,8 +42,8 @@ pre,.scroll{overflow-x:auto}
 core Lean 4.37, no mathlib, no <code>sorry</code>, standard axioms only;
 library now 108 modules, 2,735 theorems).</p>
 <h2 id="the-result-in-two-sentences">The result in two sentences</h2>
-<p>Mult-add can't change P vs NP: on the shifted ruler it is ordinary
-multiplication, and Lean now proves that any circuit built from ⊞ and
+<p>The circle operation ∘₁ (called mult-add before 1.0) can't change P vs NP: on the shifted ruler it is ordinary
+multiplication, and Lean now proves that any circuit built from ∘₁ and
 shifted add turns into an ordinary circuit of exactly the same size, and
 back. Where it does say something real is the dial: folded over a
 problem's witnesses, k = −1 asks "is there one?" (NP), k = 0 asks "how
@@ -55,15 +55,15 @@ you're right that there's no easy counterexample to look for. A
 counterexample would be an algorithm, and the map below is mostly a list
 of whole families of algorithms and whole families of proofs that are
 already known to fail.</p>
-<figure class="dial"><svg viewBox="0 0 760 190" role="img" aria-label="The dial line: q equals minus one is parity, zero is NP, one and two are counting">
+<figure class="dial"><svg viewBox="0 0 760 190" role="img" aria-label="The dial line: k equals minus two is parity, minus one is NP, zero and one are counting">
 <line x1="40" y1="96" x2="720" y2="96" class="axis"/>
 <g class="tick"><line x1="110" y1="84" x2="110" y2="108"/><line x1="290" y1="84" x2="290" y2="108"/><line x1="470" y1="84" x2="470" y2="108"/><line x1="650" y1="84" x2="650" y2="108"/></g>
 <circle cx="110" cy="96" r="11" class="pt alt"/><circle cx="290" cy="96" r="14" class="pt hot"/><circle cx="470" cy="96" r="11" class="pt"/><circle cx="650" cy="96" r="11" class="pt"/>
 <text x="110" y="62" class="big">⊕P</text><text x="290" y="58" class="big hotT">NP</text><text x="470" y="62" class="big">#P</text><text x="650" y="62" class="big">#P</text>
-<text x="110" y="134" class="lab">q = −1, k = −2</text><text x="290" y="134" class="lab">q = 0, k = −1</text><text x="470" y="134" class="lab">q = 1, k = 0</text><text x="650" y="134" class="lab">q = 2, k = 1</text>
+<text x="110" y="134" class="lab">k = −2</text><text x="290" y="134" class="lab">k = −1</text><text x="470" y="134" class="lab">k = 0</text><text x="650" y="134" class="lab">k = 1</text>
 <text x="110" y="156" class="sm">odd or even?</text><text x="290" y="156" class="sm">is there one?</text><text x="470" y="156" class="sm">how many?</text><text x="650" y="156" class="sm">2ᵐ − 1, whole count</text>
 <text x="290" y="178" class="sm hotT">the one point that forgets</text>
-</svg><figcaption>The dial a + b + k·ab folded over a problem's yes/no witnesses gives the q-integer of the count (q = k + 1). At a p-th root of unity it gives the count mod p (ModₚP). Proved in Lean: <code>witness_fold</code>, <code>np_point</code>, <code>parityP_point</code>, <code>sharpP_point</code>, <code>modp_period</code>.</figcaption></figure>
+</svg><figcaption>The dial a + b + k·ab folded over a problem's yes/no witnesses gives the q-integer of the count, in base k + 1. At a p-th root of unity it gives the count mod p (ModₚP). Proved in Lean: <code>witness_fold</code>, <code>np_point</code>, <code>parityP_point</code>, <code>sharpP_point</code>, <code>modp_period</code>.</figcaption></figure>
 <hr />
 <h2 id="1-methods-known-not-to-prove-p--np">1. Methods known not to
 prove P ≠ NP</h2>
@@ -205,20 +205,20 @@ other.</li>
 </ul>
 <h2
 id="4-where-mult-add-touches-the-question-judged-on-its-own-merits">4.
-Where mult-add touches the question, judged on its own merits</h2>
+Where the circle operation touches the question, judged on its own merits</h2>
 <h3 id="41-the-shifted-ruler-no-new-power-proved">4.1 The shifted ruler:
 no new power (proved)</h3>
-<p>With shifted add a ⊕ b = a + b + 1 and mult-add a ⊞ b = a + b + ab,
-the map x ↦ 1 + x turns ⊕ into + and ⊞ into ×, gate for gate. Lean
+<p>With shifted add sadd(a, b) = a + b + 1 and the circle operation a ∘₁ b = a + b + ab,
+the map x ↦ 1 + x turns sadd into + and ∘₁ into ×, gate for gate. Lean
 (<code>evalS_lift</code>, <code>eval_from_shift</code>,
-<code>size_mapC</code>): every ⊕/⊞ circuit is a +/× circuit with the
-same wiring and size, and every +/× circuit is a ⊕/⊞ circuit with the
+<code>size_mapC</code>): every sadd/∘₁ circuit is a +/× circuit with the
+same wiring and size, and every +/× circuit is a sadd/∘₁ circuit with the
 same wiring and size. So circuit size, VP vs VNP, and every algebraic
 lower-bound question are identical in both worlds. <strong>Not a
 lead.</strong> This is the honest answer to "does anything change?":
 nothing does, and that's now a theorem rather than a hunch.</p>
-<p>The weighted family a + b + k·ab is the same story for every k ≠ 0
-(it's ⊞ seen through x ↦ kx, <code>MultAdd.wAdd_scale</code>). At k = 0
+<p>The circle operation a + b + k·ab is the same story for every k ≠ 0
+(it's ∘₁ seen through x ↦ kx, <code>CircleOp.circK_scale</code>). At k = 0
 it becomes plain addition. That's a contraction, not a tropical limit:
 the dial doesn't turn + into min.</p>
 <h3
@@ -226,13 +226,13 @@ id="42-the-dial-over-witnesses-np-p-p-and-modₚp-at-different-settings-proved">
 The dial over witnesses: NP, #P, ⊕P and ModₚP at different settings
 (proved)</h3>
 <p>Fold the dial over a list of yes/no witnesses and you get the
-q-integer of the number of yes answers, with q = k + 1
+q-integer of the number of yes answers, in base k + 1
 (<code>witness_fold</code>):</p>
 <table class="stack">
 <thead>
 <tr class="header">
 <th>Dial</th>
-<th>q</th>
+<th>k + 1</th>
 <th>The fold gives</th>
 <th>The class</th>
 </tr>
@@ -257,7 +257,7 @@ q-integer of the number of yes answers, with q = k + 1
 <td>⊕P ("odd or even?"), <code>parityP_point</code></td>
 </tr>
 <tr class="even">
-<td>qᵖ = 1</td>
+<td>(k + 1)ᵖ = 1</td>
 <td>p-th root of unity</td>
 <td>the count mod p</td>
 <td>ModₚP, <code>modp_period</code></td>
@@ -272,7 +272,7 @@ q-integer of the number of yes answers, with q = k + 1
 </table>
 <p>The picture is correct and tidy: NP is the one point on the dial that
 throws information away (<code>np_point_forgets</code>: one witness and
-five look the same at q = 0), and almost every other point keeps the
+five look the same at k = −1), and almost every other point keeps the
 count. It fits your theme of operations that keep information, with a
 twist: keeping information makes problems harder, not easier. Toda's
 theorem says counting (#P) is at least as strong as the whole polynomial
@@ -287,28 +287,28 @@ jumps (permanent easy mod 2, hard mod 3; Valiant 1979) become places
 where the landscape changes character.</p>
 <h3
 id="43-over-the-two-element-field-mult-add-is-the-or-gate-proved">4.3
-Over the two-element field, mult-add is the OR gate (proved)</h3>
+Over the two-element field, the circle operation is the OR gate (proved)</h3>
 <p>Over GF(2), a + b + ab is a OR b, and x ↦ 1 + x is NOT, so the lift 1
-+ (a ⊞ b) = (1 + a)(1 + b) is De Morgan's law
-(<code>gf2_multAdd_is_or</code>, <code>gf2_lift_de_morgan</code>). Over
++ (a ∘₁ b) = (1 + a)(1 + b) is De Morgan's law
+(<code>gf2_circ_is_or</code>, <code>gf2_lift_de_morgan</code>). Over
 the integers, the k = −1 version a + b − ab is the standard arithmetized
 OR.</p>
-<p><strong>Judgment:</strong> this is where mult-add lives most
+<p><strong>Judgment:</strong> this is where the circle operation lives most
 naturally in complexity theory, and it's the most instructive negative
 finding here. The arithmetized OR is exactly what drives IP = PSPACE and
 the Razborov–Smolensky lower bounds, and those two families are
 precisely what the algebrization and natural-proofs barriers cover. So
-any P ≠ NP argument built mainly from mult-add's algebra on yes/no
+any P ≠ NP argument built mainly from the circle operation's algebra on yes/no
 values sits inside known barrier territory. <strong>Not a lead for P vs
 NP</strong>, but a useful "what can't work" entry.</p>
 <h3 id="44-easy-because-it-factors-proved">4.4 Easy because it factors
 (proved)</h3>
-<p>The fold 1 ⊞ 1 ⊞ … ⊞ 1 over n inputs has 2ⁿ − 1 monomials but takes n
-− 1 gates (<code>foldMA_ones</code>), because 1 + (fold) = (1 + x₁)⋯(1 +
+<p>The fold 1 ∘₁ 1 ∘₁ … ∘₁ 1 over n inputs has 2ⁿ − 1 monomials but takes n
+− 1 gates (<code>foldCirc_ones</code>), because 1 + (fold) = (1 + x₁)⋯(1 +
 xₙ) factors. The hard counting problems (the permanent, #SAT) are hard
 because their sums don't factor: the constraints tie the variables
-together. Mult-add is the independent case. <strong>Not a lead</strong>;
-it explains why mult-add circuits are always easy.</p>
+together. The circle operation is the independent case. <strong>Not a lead</strong>;
+it explains why circle-operation circuits are always easy.</p>
 <h3 id="45-the-min-plus-end">4.5 The min-plus end</h3>
 <p>The dynamic-programming algebra (min, +) is a semiring
 (<code>minplus_distrib</code>), and the same polynomial changes
@@ -323,12 +323,12 @@ reach P vs NP, because, like monotone bounds, they don't transfer to
 general algorithms.</p>
 <h2 id="5-leads-worth-following">5. Leads worth following</h2>
 <ul>
-<li><strong>For P vs NP itself:</strong> none from mult-add. The shifted
+<li><strong>For P vs NP itself:</strong> none from the circle operation. The shifted
 ruler is provably the same computation, and the dial's natural home
 (arithmetized OR, counting) is covered by known barriers. Saying so
 plainly is the useful result.</li>
 <li><strong>For the project:</strong> one, the dial landscape of
-counting classes (4.2), drawn as a page: NP at q = 0, ⊕P at q = −1,
+counting classes (4.2), drawn as a page: NP at k = −1, ⊕P at k = −2,
 ModₚP at roots of unity, #P everywhere else, with the permanent's known
 jumps marked. It's a real organising picture of known math, not a new
 prediction.</li>
@@ -339,7 +339,7 @@ theorems (FusedAlgebra/Topics/PvsNP.lean)</h2>
 <li><code>size_mapC</code>, <code>evalS_lift</code>,
 <code>eval_from_shift</code>: circuits transport across the shifted
 ruler at equal size</li>
-<li><code>sAdd_lift</code>, <code>multAdd_sAdd_distrib</code>,
+<li><code>sAdd_lift</code>, <code>circ_sAdd_distrib</code>,
 <code>shifted_identities</code>: the shifted semiring (zero −1, one 0,
 −1 absorbs)</li>
 <li><code>witness_fold</code>: the dial over witnesses is the q-integer
@@ -350,12 +350,12 @@ of the witness count</li>
 <li><code>modp_period</code>: at a p-th root of unity only the count mod
 p matters</li>
 <li><code>np_point_forgets</code>, <code>qnum_two_nonneg</code>,
-<code>qnum_two_strictMono</code>: q = 0 forgets, q = 2 keeps the
+<code>qnum_two_strictMono</code>: k = −1 forgets, k = 1 keeps the
 count</li>
-<li><code>gf2_multAdd_is_or</code>, <code>gf2_shift_is_not</code>,
-<code>gf2_lift_de_morgan</code>: over GF(2) mult-add is OR, the lift is
+<li><code>gf2_circ_is_or</code>, <code>gf2_shift_is_not</code>,
+<code>gf2_lift_de_morgan</code>: over GF(2) circle operation is OR, the lift is
 De Morgan</li>
-<li><code>foldMA_ones</code>: n gates, 2ⁿ − 1 monomials</li>
+<li><code>foldCirc_ones</code>: n gates, 2ⁿ − 1 monomials</li>
 <li><code>minplus_distrib</code>, <code>minplus_assoc</code>: min-plus
 semiring laws</li>
 </ul>

@@ -1,31 +1,31 @@
-PASS F_{p,q} commutative
-PASS F_{p,q} associative
-PASS F_{p,q} identity 0
-PASS F_{p,q} inverse  -a/(1+pa)
-PASS third-order jet of F_{p,q} is (corner, bend) = (p, q)
+PASS F_{p,d} commutative
+PASS F_{p,d} associative
+PASS F_{p,d} identity 0
+PASS F_{p,d} inverse  -a/(1+pa)
+PASS third-order jet of F_{p,d} is (corner, bend) = (p, d)
 PASS associativity holds numerator-by-numerator, denominator-by-denominator
-PASS d/db F(a,b) at b=0 is 1 + p a + q a^2 (the Riccati rate)
+PASS d/db F(a,b) at b=0 is 1 + p a + d a^2 (the Riccati rate)
 PASS lift: M(a (+) b) = M(a) M(b) with M(x) = (1-ux)/(1-vx)
-PASS mult-add is the case u = -1, v = 0 (wall at -1, other wall at infinity)
+PASS The circle operation is the case u = -1, v = 0 (wall at -1, other wall at infinity)
 PASS velocity addition is u = 1, v = -1 (walls at +1 and -1)
-PASS tangent addition is p = 0, q = 1 (walls at +i, -i)
-PASS discriminant p^2 - 4q = (u - v)^2
+PASS tangent addition is p = 0, d = 1 (walls at +i, -i)
+PASS discriminant p^2 - 4d = (u - v)^2
 PASS double wall (on the parabola): N(a (+) b) = N(a) + N(b), N(x) = x/(1-ux)
 PASS complex walls: M(a (+) b) = M(a) M(b) and |M| = 1 on reals (a turn of a circle)
-PASS units: F_{p,q}(lam a, lam b) = lam F_{lam p, lam^2 q}(a, b)
-PASS dial: k (a (+)_k b) = (k a) (+) (k b)  [every k != 0 on the line is mult-add in other units]
+PASS units: F_{p,d}(lam a, lam b) = lam F_{lam p, lam^2 d}(a, b)
+PASS dial: k (a (+)_k b) = (k a) (+) (k b)  [every k != 0 on the line is the circle operation in other units]
 PASS s_eq = ((u+v)/(u-v))^2 is unchanged by units (u,v -> u/lam, v/lam)
 PASS formal group of the cubic y^2 + a1 xy = x^3 + a2 x^2 is exactly F_{-a1,-a2} in z = -x/y
-PASS tangent slopes at the double point have discriminant a1^2 + 4 a2 = p^2 - 4q
+PASS tangent slopes at the double point have discriminant a1^2 + 4 a2 = p^2 - 4d
 PASS chi_y genus law sits at (1-y, -y): the line c2 = c1 - 1
-PASS Todd genus (y = 0) is mult-add, signature (y = 1) is velocity addition
+PASS Todd genus (y = 0) is the circle operation, signature (y = 1) is velocity addition
 PASS chi_y line touches the parabola only at y = -1 (Euler characteristic, a cusp)
 PASS sine addition sits at (0, -1/2)
 PASS elliptic curve (a1=3/7, a2=-5/4, a3, a4, a6 nonzero): group law = z1+z2 - a1 z1z2 - a2(z1^2 z2 + z1 z2^2) + O(h^4); gap/h^4 = ['0.04473', '0.04395', '0.04388']
 PASS rung s sits at (s, s(s-1)/4) on the map
-PASS rung s has rung-equivalent height s: p^2/(p^2-4q) = s
+PASS rung s has rung-equivalent height s: p^2/(p^2-4d) = s
 PASS rung s osculates two real walls for s > 0 (discriminant = s)
 PASS Hirota weight A = ((k1-k2)/(k1+k2))^2 = M(k2/k1)^2 for velocity addition's lens M(x) = (1-x)/(1+x)
-PASS KdV phase shift: A(f - 1) = (A e1) (+) (A e2), plain mult-add after moving each wave by log A
+PASS KdV phase shift: A(f - 1) = (A e1) (+) (A e2), the plain circle operation after moving each wave by log A
 
 29 of 29 exact checks pass

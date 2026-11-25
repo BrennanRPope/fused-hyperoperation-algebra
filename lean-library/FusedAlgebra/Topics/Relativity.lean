@@ -11,23 +11,23 @@
   theorems stated exactly what a library theorem already states, so they were
   removed and a comment names the library theorem in each place: lift_num
   (ThermoFused.lens_den), lift_den (ThermoFused.lens_num), light_absorbs
-  (ThermoFused.vel_wall_pos) and multAdd_wall (MultAdd.neg_one_absorbs). Nothing
+  (ThermoFused.vel_wall_pos) and circ_wall (CircleOp.neg_one_absorbs). Nothing
   else changed.
 
   Speeds are in units of light (c = 1); `velC` keeps c and shows that is only
   a change of units. Velocity addition u ⊕ v = (u + v)/(1 + uv).
 
-    1. Mult-add in disguise: with d(u) = 2u/(1 − u) (Doppler factor squared,
-       minus 1), d(u ⊕ v) = d(u) ⊞ d(v). The lift 1 + d is (1 + u)/(1 − u).
-    2. Light is the wall: 1 ⊕ v = 1, and d sends −1 to mult-add's wall −1.
+    1. The circle operation (called mult-add before 1.0) in disguise: with d(u) = 2u/(1 − u) (Doppler factor squared,
+       minus 1), d(u ⊕ v) = d(u) ◯ d(v). The lift 1 + d is (1 + u)/(1 − u).
+    2. Light is the wall: 1 ⊕ v = 1, and d sends −1 to the circle operation's wall −1.
        Below light stays below light.
-    3. n equal kicks: 1 + d(u ⊕ … ⊕ u) = (1 + d(u))ⁿ, the mult-add power.
+    3. n equal kicks: 1 + d(u ⊕ … ⊕ u) = (1 + d(u))ⁿ, the circle power.
     4. The geometry: a boost [[1, u], [u, 1]] multiplies as boosts add; on the
        light-cone axes it is the squeeze (1 + u, 1 − u), whose ratio is the lift;
        it keeps the hyperbola T² − X² up to the factor 1 − u².
     5. The landscape: no corner (k = 0), third layer −1/c² (q), walls ±c.
     6. The rungs in natural units: rung s = t² sits at (2t, t² − 1), the
-       parabola from velocity addition (t = 0) to mult-add at k = 2 (t = 1).
+       parabola from velocity addition (t = 0) to the circle operation at k = 2 (t = 1).
 
   What Lean does not check: tanh, artanh and exp (rapidity). Rapidity enters
   as "the ruler that turns the lift's multiplication into addition"; the real
@@ -37,11 +37,11 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Thermodynamics
 
 namespace Relativity
-open MultAdd ThermoFused
+open CircleOp ThermoFused
 
-/-! ## 1. Mult-add in disguise -/
+/-! ## 1. The circle operation in disguise -/
 
-/-- The mult-add variable of a speed: Doppler factor squared minus 1. -/
+/-- The circle-operation variable of a speed: Doppler factor squared minus 1. -/
 def dop (u : Rat) : Rat := 2 * u / (1 - u)
 
 /-- Its lift is the Doppler factor squared (Bondi's k²). -/
@@ -52,10 +52,10 @@ theorem dop_lift (u : Rat) (h : 1 - u ≠ 0) : 1 + dop u = (1 + u) / (1 - u) := 
    (was lift_num), and (1 + uv) − (u + v) = (1 − u)(1 − v) is ThermoFused.lens_num
    (was lift_den). -/
 
-/-- **Velocity addition is mult-add in disguise**: d(u ⊕ v) = d(u) ⊞ d(v). -/
+/-- **Velocity addition is the circle operation in disguise**: d(u ⊕ v) = d(u) ◯ d(v). -/
 theorem dop_vel (u v : Rat) (hu : 1 - u ≠ 0) (hv : 1 - v ≠ 0) (huv : 1 + u * v ≠ 0) :
-    dop (vel u v) = multAdd (dop u) (dop v) := by
-  unfold dop vel multAdd
+    dop (vel u v) = circ (dop u) (dop v) := by
+  unfold dop vel circ
   have e : 1 - (u + v) / (1 + u * v) = (1 - u) * (1 - v) / (1 + u * v) := by grind
   rw [e]
   have h1 : (1 - u) * (1 - v) ≠ 0 := by
@@ -79,11 +79,11 @@ theorem velC_units (c u v : Rat) (hc : c ≠ 0) :
 
 /-! ## 2. Light is the wall -/
 
-/- Light absorbs, as −1 does in mult-add: 1 ⊕ v = 1 is ThermoFused.vel_wall_pos
-   (was light_absorbs), and −1 ⊞ b = −1 is MultAdd.neg_one_absorbs (was
-   multAdd_wall). -/
+/- Light absorbs, as −1 does in the circle operation: 1 ⊕ v = 1 is ThermoFused.vel_wall_pos
+   (was light_absorbs), and −1 ◯ b = −1 is CircleOp.neg_one_absorbs (was
+   circ_wall). -/
 
-/-- d carries the light wall −1 onto mult-add's wall −1. -/
+/-- d carries the light wall −1 onto the circle operation's wall −1. -/
 theorem dop_wall : dop (-1) = -1 := by unfold dop; grind
 
 /-- How far below light: 1 − u ⊕ v = (1 − u)(1 − v)/(1 + uv). -/
@@ -100,7 +100,7 @@ theorem under_light (u v : Rat) (hu0 : 0 ≤ u) (hu : u < 1) (hv0 : 0 ≤ v) (hv
   unfold vel
   exact (Rat.div_lt_iff hd).mpr (by grind)
 
-/-! ## 3. n equal kicks: the mult-add power -/
+/-! ## 3. n equal kicks: the circle power -/
 
 /-- Kick n times with speed u. -/
 def kicks : Nat → Rat → Rat
@@ -137,7 +137,7 @@ theorem kick_step (n : Nat) (u : Rat) (hD : kD n u ≠ 0) (h2 : kD n u + u * kN 
   rw [e1, e2]
   grind
 
-/-- **n kicks lift to the mult-add power**: (D + N)/(D − N) = ((1 + u)/(1 − u))ⁿ. -/
+/-- **n kicks lift to the circle power**: (D + N)/(D − N) = ((1 + u)/(1 − u))ⁿ. -/
 theorem kicks_lift (n : Nat) (u : Rat) :
     (kD n u + kN n u) * (1 - u) ^ n = (kD n u - kN n u) * (1 + u) ^ n := by
   rw [kicks_plus, kicks_minus]; grind
@@ -221,7 +221,7 @@ theorem rung_walls (t a : Rat) :
 theorem rung_zero_is_velocity (a : Rat) :
     1 + 2 * 0 * a + (0 * 0 - 1) * a * a = (1 + a) * (1 - a) := by grind
 
-/-- t = 1: one wall at −1/2, the other at infinity: mult-add at weight 2. -/
+/-- t = 1: one wall at −1/2, the other at infinity: the circle operation at weight 2. -/
 theorem rung_one_is_multadd (a : Rat) :
     1 + 2 * 1 * a + (1 * 1 - 1) * a * a = 1 + 2 * a := by grind
 

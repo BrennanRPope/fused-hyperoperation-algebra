@@ -2,7 +2,7 @@
 
 Run:  python3 -I search.py      (writes results.json and search_output.txt; about two minutes)
 
-Question (Brennan, Nov 25 2026): if the mult-add dial k (a + b + k·ab) behaves like the Higgs field, with a
+Question (Brennan, Nov 25 2026): if the circle-operation dial k (a + b + k·ab) behaves like the Higgs field, with a
 hump at k = 0 and dips at ±k0, what is its potential and what does it couple to?  Make 20 guesses, score
 them against measured numbers, keep the closest, iterate.
 
@@ -287,8 +287,8 @@ def round1():
     g = add("P1", "tree_lam", "Quartic sombrero, height free", "V = (λ/4)(k² − k0²)²", "k = Higgs magnitude, k0 = v",
             "flip symmetry k → −k (proved) makes V even; a quartic is the simplest even well", "B", n_free=1)
     g.fitted = ["mH/v"]
-    g = add("P2", "tree_lam", "Lift-normalised well", "V = (k ✳ (−k) + k0²)² = (k0² − k²)²",
-            "k = Higgs magnitude", "k ✳ (−k) = −k² (proved): the well is the lift of a dial against its mirror, coefficient 1",
+    g = add("P2", "tree_lam", "Lift-normalised well", "V = (k ∘₁ (−k) + k0²)² = (k0² − k²)²",
+            "k = Higgs magnitude", "k ∘₁ (−k) = −k² (proved): the well is the lift of a dial against its mirror, coefficient 1",
             "B", meta={"lam": 4.0})
     g.preds["mH/v"] = (math.sqrt(2 * 4.0), TREE)
     g = add("P3", "tree_lam", "Higgs at half the vev", "V = (1/32)(k² − k0²)²  (λ = 1/8)", "k = Higgs magnitude",
@@ -297,7 +297,7 @@ def round1():
     fd = flat_dial_prediction("MPl")
     g = add("P4", "flat", "Dial flat at the Planck scale", "λ(M_Pl) = 0: the well vanishes at the top scale",
             "k = Higgs magnitude, Standard Model running",
-            "at k's symmetric point mult-add is plain addition; 'flat at the top' = no hump left at M_Pl", "B",
+            "at k's symmetric point the circle operation is plain addition; 'flat at the top' = no hump left at M_Pl", "B",
             meta={"scale": "MPl", "beta": False, "own_rge_mh": fd["mh_own_rge"]})
     g.preds["mH/v"] = (fd["mh"] / v, fd["mh_err"] / fd["mh"])
     fdb = flat_dial_prediction("MPl", with_beta=True)
@@ -339,7 +339,7 @@ def round1():
             "a varying dial changes clock rates (relativity pass)", "A")
     g.preds["gamma"] = ("lin", 0.0, GAMMA, sGAMMA, 3.0)
     g = add("C2", "gravity", "Dial boosts plus the river (= general relativity)", "local boosts by the dial, river at escape speed",
-            "k couples to clocks and rulers equally", "time and space deficits are mult-add inverses (proved)", "A")
+            "k couples to clocks and rulers equally", "time and space deficits are circle inverses (proved)", "A")
     g.preds["gamma"] = ("lin", 1.0, GAMMA, sGAMMA, 3.0)
     g = add("C3", "lightdial", "Light's dial rolling as dark energy", "exponential V, λ = √(2/3), α ∝ √k",
             "k = 1/c² couples to light", "the same k sets c and the potential", "B", meta={"lam": math.sqrt(2 / 3)})

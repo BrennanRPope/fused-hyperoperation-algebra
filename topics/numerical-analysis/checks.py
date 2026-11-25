@@ -1,5 +1,5 @@
-"""Numerical analysis through mult-add: every claim on the page, checked in real float64.
-a ✳ b = a + b + ab = (1+a)(1+b) - 1.  Exact references use Fractions (float(Fraction) rounds
+"""Numerical analysis through the circle operation: every claim on the page, checked in real float64.
+a ∘₁ b = a + b + ab = (1+a)(1+b) - 1.  Exact references use Fractions (float(Fraction) rounds
 correctly, so it is the true correctly rounded answer) or mpmath at 60 digits.
 Writes figure data to page_data.json."""
 import math, random, json
@@ -73,18 +73,18 @@ for a in [F(k, 64) for k in range(-32, 65) if k != 0]:
     okb &= (min(-2*a, -a/2) <= inv <= max(-2*a, -a/2))
 check("exact: whenever 1/2 <= 1+a <= 2, the inverse lies between -2a and -a/2 (Sterbenz's window)", okb)
 
-print("== 3. log1p and expm1: the chart that turns mult-add into adding, tangent to the identity at 0")
+print("== 3. log1p and expm1: the chart that turns the circle operation into adding, tangent to the identity at 0")
 okl = True
 for _ in range(50):
     a, b = mpf(random.uniform(-.9, 3)), mpf(random.uniform(-.9, 3))
     okl &= abs(mp.log1p(a + b + a*b) - mp.log1p(a) - mp.log1p(b)) < mpf(10)**-50
-check("log1p(a ✳ b) = log1p(a) + log1p(b) (60 digits, 50 random pairs)", okl)
+check("log1p(a ∘₁ b) = log1p(a) + log1p(b) (60 digits, 50 random pairs)", okl)
 okt = True
 for _ in range(50):
     a, s, t = mpf(random.uniform(-.9, 3)), mpf(random.uniform(-2, 2)), mpf(random.uniform(-2, 2))
     P = lambda t: mp.expm1(t * mp.log1p(a))
     okt &= abs(P(s) + P(t) + P(s)*P(t) - P(s + t)) < mpf(10)**-45
-check("fractional mult-add powers a^(✳t) = expm1(t·log1p a) add their exponents", okt)
+check("fractional circle powers a^(∘₁t) = expm1(t·log1p a) add their exponents", okt)
 x = 1e-10
 naive_log = math.log(1 + x); good = math.log1p(x); exl = mp.log1p(mpf(x))
 check("log(1+x) at x = 1e-10 loses about 7 digits; log1p keeps them",
@@ -126,10 +126,10 @@ er = lambda x: float(abs((mpf(x) - exP) / exP))
 print("   naive %.1e   fma fold %.1e   expm1(fsum log1p) %.1e" % (er(naive), er(fold_fma), er(via_log)))
 data["longprod"] = [er(naive), er(fold_fma), er(via_log)]
 check("200,000 returns of size 1e-7: naive product-minus-1 loses over 6 digits", er(naive) > 1e-10)
-check("the fused fold acc ✳ r keeps at least 12 digits", er(fold_fma) < 1e-12)
+check("the fused fold acc ∘₁ r keeps at least 12 digits", er(fold_fma) < 1e-12)
 check("expm1(sum of log1p) keeps at least 14 digits", er(via_log) < 1e-14)
 
-# any dial value k: x1 ✳k x2 ✳k ... = expm1(sum log1p(k x)) / k ; k = -1 is "at least one"
+# any dial value k: x1 ∘ₖ x2 ∘ₖ ... = expm1(sum log1p(k x)) / k ; k = -1 is "at least one"
 M = 100000; pr = [random.uniform(0.5, 1.5) * 1e-12 for _ in range(M)]
 exU = 1 - mp.fprod([1 - mpf(q) for q in pr])
 naiveU = 1.0
@@ -148,9 +148,9 @@ for k in [-2.0, -1.0, -0.5, 0.7, 3.0]:
     for x in xs: acc = acc + x + k * acc * x
     via = math.expm1(math.fsum(math.log1p(k * x) for x in xs)) / k
     okd &= abs((mpf(via) - acc) / acc) < 1e-14
-check("one routine for every dial k: x1 ✳k ... ✳k xn = expm1(sum log1p(k·x))/k (k = -2, -1, -0.5, 0.7, 3)", okd)
+check("one routine for every dial k: x1 ∘ₖ ... ∘ₖ xn = expm1(sum log1p(k·x))/k (k = -2, -1, -0.5, 0.7, 3)", okd)
 
-print("== 6. Rounding errors are mult-add numbers (Higham's theta_n)")
+print("== 6. Rounding errors are circle-operation numbers (Higham's theta_n)")
 okh = True; okexact = True; th = []
 for n in [10, 100, 300, 1000]:
     xs = [math.exp(random.gauss(0, 0.05)) for _ in range(n)]
@@ -166,11 +166,11 @@ for n in [10, 100, 300, 1000]:
     okh &= abs(theta) <= bound <= gam
     th.append([n, float(abs(theta)), float(bound)])
 data["theta"] = th
-check("the total relative error of a float product equals the exact mult-add fold of the step errors", okexact)
+check("the total relative error of a float product equals the exact circle-operation fold of the step errors", okexact)
 check("|theta_n| <= (1+u)^n - 1 <= n·u/(1 - n·u) for n = 10..1000", okh)
 x, y, d1, d2 = F(3, 7), F(-5, 11), F(1, 1000), F(-3, 2000)
-check("product of perturbed values: relative error d1 ✳ d2 (exact)", (x*(1+d1))*(y*(1+d2)) == x*y*(1 + d1 + d2 + d1*d2))
-check("quotient of perturbed values: relative error (d1 - d2)/(1 + d2), mult-add subtraction (exact)",
+check("product of perturbed values: relative error d1 ∘₁ d2 (exact)", (x*(1+d1))*(y*(1+d2)) == x*y*(1 + d1 + d2 + d1*d2))
+check("quotient of perturbed values: relative error (d1 - d2)/(1 + d2), circle-operation subtraction (exact)",
       (x*(1+d1))/(y*(1+d2)) == (x/y)*(1 + (d1 - d2)/(1 + d2)))
 
 print("== 7. Conditioning: two danger points, the identity (way back) and the wall (way in)")
@@ -186,17 +186,17 @@ for u in [-0.5, -0.9, -0.99, -0.999]:
 check("relative condition of the inverse -u/(1+u) is 1/|1+u|: it blows up only at the wall", okk)
 kl = [abs(u / ((1 + u) * math.log1p(u))) for u in [-0.9, -0.99, -0.999, -0.9999]]
 check("relative condition of log1p near the wall grows without bound", all(kl[i+1] > 5 * kl[i] for i in range(3)), " ".join("%.0f" % k for k in kl))
-check("exact: (a+h) ✳ b - a ✳ b = h(1+b), so a ✳ b has relative condition |a(1+b)/(a ✳ b)|",
+check("exact: (a+h) ∘₁ b - a ∘₁ b = h(1+b), so a ∘₁ b has relative condition |a(1+b)/(a ∘₁ b)|",
       all((F(a)+h) + F(b) + (F(a)+h)*F(b) - ex_ma(a, b) == h*(1+F(b)) for a, b, h in [(0.3, -0.2, F(1, 99)), (2.5, 7.0, F(-3, 7))]))
 
-print("== 8. Newton's method for the inverse: v <- v ✳ (-(u ✳ v)); the residual squares")
+print("== 8. Newton's method for the inverse: v <- v ∘₁ (-(u ∘₁ v)); the residual squares")
 okn = True
 for u, v0 in [(F(3), F(-1, 2)), (F(-1, 3), F(1, 3)), (F(9), F(-4, 5))]:
     v = v0; e = u + v + u*v
     for _ in range(5):
         v = v + (-e) + v*(-e); e2 = u + v + u*v
         okn &= (e2 == -e*e); e = e2
-check("exact: each Newton step maps the residual e = u ✳ v to -e² (three starts, five steps)", okn)
+check("exact: each Newton step maps the residual e = u ∘₁ v to -e² (three starts, five steps)", okn)
 u = 3.0; v = -0.6; dg = []
 for _ in range(7):
     e = math.fma(u, v, u + v); v = math.fma(v, -e, v - e); dg.append(digits(abs((F(v) - F(-3, 4)) / F(-3, 4))))
@@ -210,14 +210,14 @@ def newton_runs(u, v0, steps=60):
     return abs(u + v + u*v) < 1e-12
 okb2 = all(newton_runs(3.0, (lift / 4.0) - 1) for lift in [0.05, 0.5, 1.5, 1.95]) and \
        not any(newton_runs(3.0, (lift / 4.0) - 1) for lift in [-0.3, 2.05, 3.0])
-check("the basin is |u ✳ v0| < 1, i.e. 0 < (1+u)(1+v0) < 2: starts inside converge, starts outside fail", okb2)
+check("the basin is |u ∘₁ v0| < 1, i.e. 0 < (1+u)(1+v0) < 2: starts inside converge, starts outside fail", okb2)
 okg = True
 for e in [F(1, 3), F(-2, 5), F(7, 9)]:
     acc = -e
     for k in range(6):
         acc = acc + e**(2**k) + acc * e**(2**k)
         okg &= (acc == -e**(2**(k+1)))
-check("exact: Goldschmidt's factors fold to (-e) ✳ e ✳ e² ✳ e⁴ ✳ ... = -e^(2^n)", okg)
+check("exact: Goldschmidt's factors fold to (-e) ∘₁ e ∘₁ e² ∘₁ e⁴ ∘₁ ... = -e^(2^n)", okg)
 gw = 0
 for _ in range(2000):
     dd = random.uniform(0.5, 1.0); e = 1 - dd; q = 1.0; den = dd; t = e
@@ -239,13 +239,13 @@ for n in [3, 6, 9]:
             if mask >> i & 1: p *= bs[i]
         corners += p
     okh2 &= (acc == corners)
-check("a chain of mult-adds, each one Horner step acc·(1+b)+b, sums all 2^n - 1 corners of the cube in n steps", okh2)
+check("a chain of circle operations, each one Horner step acc·(1+b)+b, sums all 2^n - 1 corners of the cube in n steps", okh2)
 check("the three fma shapes agree exactly: a·b+(a+b) = a·(1+b)+b = b·(1+a)+a",
       all(F(a)*F(b) + F(a)+F(b) == F(a)*(1+F(b)) + F(b) == F(b)*(1+F(a)) + F(a) for a, b in [(0.1, 0.2), (-0.7, 3.0)]))
 okp = all(((1+F(a))**(2*n) - 1) == (lambda m: m + m + m*m)((1+F(a))**n - 1) for a in [0.03, -0.4] for n in [1, 5, 20])
-check("mult-add powers by squaring: a^(✳2n) = a^(✳n) ✳ a^(✳n)", okp)
+check("Circle powers by squaring: a^(∘₁2n) = a^(∘₁n) ∘₁ a^(∘₁n)", okp)
 okbern = all((1+F(a))**n - 1 >= n*F(a) for a in [F(-1), F(-1, 2), F(1, 10), F(3)] for n in range(0, 30))
-check("Bernoulli: a^(✳n) >= n·a for a >= -1 (compounding never loses to simple interest)", okbern)
+check("Bernoulli: a^(∘₁n) >= n·a for a >= -1 (compounding never loses to simple interest)", okbern)
 
 json.dump(data, open(__file__.replace("checks.py", "page_data.json"), "w"))
 print("\n%d/%d checks pass" % tuple(OK))

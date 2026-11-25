@@ -34,8 +34,8 @@ el.innerHTML=s};const ro3=new ResizeObserver(draw);ro3.observe(el);draw();}
 sections = [
  dict(id="square", nav="Shells are squares", h="Each shell is a square, and its subshells are the square's gnomons",
   body="""<p>Hydrogen's shell n holds subshells l = 0 to n − 1 with 2l + 1 orbitals each: 1, 3, 5, 7. Those are the L-shaped gnomons that build an n × n square, corner plus two edges each time, so the shell holds n² orbitals:</p>
-<div class="eq">n² = 1 + (n − 1) ✳ (n − 1)</div>
-<p>The square is not a coincidence. Hydrogen's hidden symmetry is SO(4), which splits into two independent spins of the same size j, with 2j = n − 1. Each spin has n states, the two multiply to n · n, and decomposing j ⊗ j by the Clebsch–Gordan rule gives exactly l = 0 to n − 1. So each shell is the lift of a mult-add of two equal spins, with a geometric underpinning we can be sure of (Fock, 1935).</p>""",
+<div class="eq">n² = 1 + (n − 1) ∘₁ (n − 1)</div>
+<p>The square is not a coincidence. Hydrogen's hidden symmetry is SO(4), which splits into two independent spins of the same size j, with 2j = n − 1. Each spin has n states, the two multiply to n · n, and decomposing j ⊗ j by the Clebsch–Gordan rule gives exactly l = 0 to n − 1. So each shell is the lift of a circle operation ∘₁ (called mult-add before 1.0) of two equal spins, with a geometric underpinning we can be sure of (Fock, 1935).</p>""",
   fig=True, figcls="", cap="Shells n = 1 to 4 as squares of orbitals; colour marks the subshell (s, p, d, f), each an L-shaped gnomon one wider than the last.", js=square_js),
  dict(id="periods", nav="Periods", h="The periods are the Madelung diagonals, and each holds a doubled square",
   body="""<p>Atoms fill subshells in order of n + l, then n (the Madelung rule). Each diagonal n + l = s holds 2 · ⌈s/2⌉² electrons: 2, 2, 8, 8, 18, 18, 32, 32. Those are the periods of Janet's left-step table exactly. The usual table merges the first two diagonals, giving periods 2, 8, 8, 18, 18, 32, 32 and noble gases at 2, 10, 18, 36, 54, 86, 118. Lean computes all three lists and proves that period 2k + 1 has the length of diagonal 2k + 2.</p>
@@ -44,23 +44,23 @@ sections = [
   body="""<p>Twenty elements have ground states that break the Madelung order (Wikipedia's Aufbau table: Cr, Cu, Nb, Mo, Ru, Rh, Pd, Ag, La, Ce, Gd, Pt, Au, Ac, Th, Pa, U, Np, Cm, Lr). I compared each with the rule. Every one moves only one or two electrons, and always between subshells at most one diagonal apart. Ten of them never leave their diagonal at all: La, Ce, Gd, Ac, Th, Pa, U, Np and Cm swap between d and f on one diagonal, and lawrencium swaps 6d for 7p on diagonal 8. The other ten move an electron from an s subshell up one diagonal into d. No exception touches a p subshell except lawrencium's.</p>
 <p>So the diagonals are sturdy and the exceptions are near-ties between neighbours, which matches the usual explanation (subshells on adjacent diagonals have nearly equal energies in heavy atoms). The red badges on the picture count how many exceptions touch each subshell.</p>"""),
  dict(id="dial", nav="The dial", h="The dial gives q-deformed shells, but I found no chemistry that uses them",
-  body="""<p>The q-integer [n]<sub>q</sub> = 1 + q + … + q<sup>n−1</sup> is exactly n copies of 1 under the weighted mult-add with k = q − 1, Brennan's dial q = k + 1. A q-deformed shell would hold [n]<sub>q</sub>² orbitals, and Negadi and Kibler built a q-deformed periodic table this way in the 1990s. Nothing in real atomic data asks for q ≠ 1: the shells are exact squares. This is a placement on the dial, not a finding.</p>"""),
+  body="""<p>The q-integer [n]<sub>q</sub> = 1 + q + … + q<sup>n−1</sup> is exactly n copies of 1 under the circle operation with k = q − 1. A q-deformed shell would hold [n]<sub>q</sub>² orbitals, and Negadi and Kibler built a q-deformed periodic table this way in the 1990s. Nothing in real atomic data asks for q ≠ 1: the shells are exact squares. This is a placement on the dial, not a finding.</p>"""),
 ]
 claims = [
- ("Shell n holds n² = 1 + (n−1) ✳ (n−1) orbitals, built from gnomons", "tidy reading", "n ≤ 29; Lean <code>shell_square</code>, <code>gnomons_fill</code>"),
+ ("Shell n holds n² = 1 + (n−1) ∘₁ (n−1) orbitals, built from gnomons", "tidy reading", "n ≤ 29; Lean <code>shell_square</code>, <code>gnomons_fill</code>"),
  ("The square is SO(4): two spins j with 2j = n − 1", "known", "Clebsch–Gordan series, n ≤ 19"),
  ("Madelung diagonals hold 2, 2, 8, 8, 18, 18, 32, 32 (Janet's periods)", "known", "Python; Lean <code>diagonals</code>, <code>diagCap_closed</code>"),
  ("Periods 2, 8, 8, 18, 18, 32, 32; noble gases at 2 … 118", "known", "Python; Lean <code>periods</code>, <code>noble_gases</code>"),
  ("Every one of the 20 exceptions moves ≤ 2 electrons across ≤ 1 diagonal", "new here", "checks.py against the 20 experimental configurations"),
  ("Ten exceptions stay on one diagonal; only Lr touches p", "new here", "checks.py"),
- ("q-integers are weighted mult-add powers with k = q − 1", "tidy reading", "Python; Lean <code>q_integer</code>"),
+ ("q-integers are circle powers with k = q − 1", "tidy reading", "Python; Lean <code>q_integer</code>"),
 ]
-lean = [("shell_square","(m+1)² = 1 + m ✳ m"),("gnomons_fill","the subshells fill the square"),("gnomon","each gnomon is corner + two edges"),("shell_capacity","2n² electrons"),
- ("two_spins","(a+1)(b+1) = 1 + a ✳ b"),("diagonals","the eight Madelung diagonals' capacities"),("diagCap_closed","diagonal s holds 2⌈s/2⌉²"),
+lean = [("shell_square","(m+1)² = 1 + m ∘₁ m"),("gnomons_fill","the subshells fill the square"),("gnomon","each gnomon is corner + two edges"),("shell_capacity","2n² electrons"),
+ ("two_spins","(a+1)(b+1) = 1 + a ∘₁ b"),("diagonals","the eight Madelung diagonals' capacities"),("diagCap_closed","diagonal s holds 2⌈s/2⌉²"),
  ("periods, noble_gases","the seven periods and noble-gas numbers"),("period_is_diagonal","period 2k+1 = diagonal 2k+2"),("q_integer, q_integer_classical","the dial gives q-integers; k = 0 gives n")]
 n = build("index.html", title="The periodic law", tile=("3","Pt","Periodic law"),
  h1="Shells are squares, periods are diagonals, and every exception is a near-tie with a neighbour",
- lead="Each shell holds n² = 1 + (n − 1) ✳ (n − 1) orbitals because hydrogen's symmetry is two equal spins multiplied. The periods run along the Madelung diagonals, each holding a doubled square, and all twenty exceptions move one or two electrons at most one diagonal over.",
+ lead="Each shell holds n² = 1 + (n − 1) ∘₁ (n − 1) orbitals because hydrogen's symmetry is two equal spins multiplied. The periods run along the Madelung diagonals, each holding a doubled square, and all twenty exceptions move one or two electrons at most one diagonal over.",
  figs=[("12 / 12","checks pass"),("12","Lean theorems, compiled"),("20 / 20","exceptions within one diagonal"),("2·⌈s/2⌉²","electrons on diagonal s")],
  picture=picture, caption="Subshells by n (rows) and l (columns), shaded by Madelung diagonal n + l; small numbers give the filling order. Red badges count the experimental exceptions that move electrons into or out of each subshell.",
  verdict_h="Lead check: not a lead",

@@ -5,7 +5,7 @@
 import FusedAlgebra.Base
 import FusedAlgebra.Rungs
 import FusedAlgebra.Cube
-import FusedAlgebra.Foundations.MultAddRing
+import FusedAlgebra.Foundations.CircleRing
 import FusedAlgebra.Foundations.Independence
 import FusedAlgebra.Foundations.FusedPeano
 import FusedAlgebra.Topics.ClosingRate
@@ -128,3 +128,4 @@ import FusedAlgebra.Topics.WhyI
 import FusedAlgebra.Topics.Checkerboard
 import FusedAlgebra.Topics.CheckerboardPotential
 import FusedAlgebra.Topics.EIPi
+import FusedAlgebra.Deprecated

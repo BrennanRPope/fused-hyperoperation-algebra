@@ -1,10 +1,10 @@
 """Which smooth shape passes through every rung of the s-ladder?
 
 Rung s:  B_s(a,b) = E^s( E^-s(a) + E^-s(b) ),  E(x) = e^x - 1 (fused exponential).
-s = 0 addition, s = 1 mult-add, s = 2 (1+a)(1+b)e^{L(a)L(b)} - 1, s = -1 log(e^a + e^b - 1).
+s = 0 addition, s = 1 circle operation, s = 2 (1+a)(1+b)e^{L(a)L(b)} - 1, s = -1 log(e^a + e^b - 1).
 E^s is the regular (Szekeres/Ecalle) iterate, computed in ../fractional-rungs/regular_iteration.py.
 
-Candidates tested here (each defined from mult-add, each checked at whole rungs,
+Candidates tested here (each defined from the circle operation, each checked at whole rungs,
 for smoothness, and for what it says about infinities):
   A  the rung sheet: level curves B_s(a,b) = c stacked over height s
   B  the flow (ruler) surface z = E^s(x): rung s is plain addition in the coordinate E^-s

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Differential Geometry Through Mult-add</title>
+<title>Differential Geometry Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -54,7 +54,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <section class="band">
 <div class="wrap">
 <h1>The bend is curvature: every landscape law slides along a line of a sphere, a flat plane or a hyperbolic plane</h1>
-<p class="lede">Turn the curve t² + Kx² = 1 about its centre and watch where the rays cross the line t = 1. Those crossing points combine by (r₁ + r₂)/(1 − K·r₁r₂), the landscape law with bend q = K. A circle gives tangent addition, a hyperbola gives Einstein's velocity addition, and in between, at K = 0, plain addition.</p>
+<p class="lede">Turn the curve t² + Kx² = 1 about its centre and watch where the rays cross the line t = 1. Those crossing points combine by (r₁ + r₂)/(1 − K·r₁r₂), the landscape law with bend d = K. A circle gives tangent addition, a hyperbola gives Einstein's velocity addition, and in between, at K = 0, plain addition.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="con"></div>
@@ -68,7 +68,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <div class="big" id="geo"></div>
 <p class="small" id="rad"></p>
 <div class="scroll"><table><tbody id="tb"></tbody></table></div>
-<p class="small">r₁ and r₂ are where each turn alone meets the chart. The last two rows agree for every K: the chart composes by the landscape law at p = 0, q = K. Distance from the centre along the chart is the law's ruler, ds = dr/(1 + K r²).</p>
+<p class="small">r₁ and r₂ are where each turn alone meets the chart. The last two rows agree for every K: the chart composes by the landscape law at p = 0, d = K. Distance from the centre along the chart is the law's ruler, ds = dr/(1 + K r²).</p>
 </div>
 </div>
 </div>
@@ -89,24 +89,24 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <section class="band">
 <div class="wrap side">
 <div>
-<h2>Mult-add lives in the upper half plane, with −1 on the horizon</h2>
-<p>Read the lift 1 + x as a height y above a horizon. Mult-add by a is y ↦ (1 + a)·y, a dilation of the upper half plane, and dilations are rigid motions of the hyperbolic metric (dx² + dy²)/y², which has curvature −1. They slide points along the vertical geodesic. The distance from height 1 to height 1 + x is log(1 + x), mult-add's ruler.</p>
+<h2>The circle operation lives in the upper half plane, with −1 on the horizon</h2>
+<p>Read the lift 1 + x as a height y above a horizon. The circle operation ∘₁ (called mult-add before 1.0) by a is y ↦ (1 + a)·y, a dilation of the upper half plane, and dilations are rigid motions of the hyperbolic metric (dx² + dy²)/y², which has curvature −1. They slide points along the vertical geodesic. The distance from height 1 to height 1 + x is log(1 + x), the circle operation's ruler.</p>
 <p>The wall −1 is height 0: the horizon, infinitely far down. Its other wall sits at x = ∞, infinitely far up. Every dial k ≠ 0 is the same picture shrunk: curvature −k², radius 1/|k|. As k → 0 the radius grows without bound and the plane goes flat: plain addition.</p>
 </div>
 <div class="panel"><div class="fig2" id="hp"></div>
-<p class="small">Grey arcs: other geodesics of the half plane. Dots: heights 1 + x for x = mult-add powers of 1 and of its inverse, equally spaced in distance. Red: the horizon, the wall x = −1.</p></div>
+<p class="small">Grey arcs: other geodesics of the half plane. Dots: heights 1 + x for x = circle powers of 1 and of its inverse, equally spaced in distance. Red: the horizon, the wall x = −1.</p></div>
 </div>
 </section>
 
 <section class="band alt">
 <div class="wrap side">
 <div>
-<h2>Every landscape point has a curvature, set by 4q − p²</h2>
-<p>A change of coordinate on the line, x ↦ x/(1 − cx), moves (p, q) along a parabola and keeps 4q − p² fixed. So every landscape point carries one number, and it is a curvature. In straight-line charts K = q − p²/4. In angle-true charts (Poincaré, stereographic, the half plane) the same law sits at K = 4q − p², four times as much, because those charts measure the point at half the distance. The bridge between them is doubling, a ⊕ a = 2a/(1 − qa²), which is exactly how the Poincaré radius becomes the Klein radius.</p>
-<p>A line on its own has no curvature: it can always be laid flat. The number belongs to the plane the line sits in. Its sign is the groups page's trichotomy: line-type laws (two real walls) are hyperbolic, circle-type laws are spherical, the border parabola is flat. The whole dial line is hyperbolic (K = −k²/4), and so is relativity: velocity addition at q = −1/c² has K = −1/c², the known fact that the space of velocities is a hyperbolic space of radius c (Varićak 1910).</p>
+<h2>Every landscape point has a curvature, set by 4d − p²</h2>
+<p>A change of coordinate on the line, x ↦ x/(1 − cx), moves (p, d) along a parabola and keeps 4d − p² fixed. So every landscape point carries one number, and it is a curvature. In straight-line charts K = d − p²/4. In angle-true charts (Poincaré, stereographic, the half plane) the same law sits at K = 4d − p², four times as much, because those charts measure the point at half the distance. The bridge between them is doubling, a ⊕ a = 2a/(1 − da²), which is exactly how the Poincaré radius becomes the Klein radius.</p>
+<p>A line on its own has no curvature: it can always be laid flat. The number belongs to the plane the line sits in. Its sign is the groups page's trichotomy: line-type laws (two real walls) are hyperbolic, circle-type laws are spherical, the border parabola is flat. The whole dial line is hyperbolic (K = −k²/4), and so is relativity: velocity addition at d = −1/c² has K = −1/c², the known fact that the space of velocities is a hyperbolic space of radius c (Varićak 1910).</p>
 </div>
 <div class="panel"><div class="fig2" id="map"></div>
-<p class="small">Blue: spherical laws. Terracotta: hyperbolic laws. Grey parabola: flat. Dashed: curves of equal curvature K = q − p²/4, which a chart change slides a law along.</p></div>
+<p class="small">Blue: spherical laws. Terracotta: hyperbolic laws. Grey parabola: flat. Dashed: curves of equal curvature K = d − p²/4, which a chart change slides a law along.</p></div>
 </div>
 </section>
 
@@ -138,7 +138,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <tr><td>Einstein addition in the Klein ball, Möbius addition in the Poincaré ball</td><td>Ungar, 2000s</td></tr>
 <tr><td>Angle defect equals curvature times area</td><td>Gauss 1827, Bonnet 1848</td></tr>
 <tr><td>Rotating t² + Kx² = 1 gives (r₁ + r₂)/(1 − K r₁r₂) on the central chart</td><td>Classical (Cayley–Klein; Yaglom's nine geometries)</td></tr>
-<tr><td>Curvature of any landscape point: q − p²/4 (straight charts), 4q − p² (angle-true charts); mult-add as the half plane with its wall on the horizon</td><td>Ours as a placement, from standard pieces</td></tr>
+<tr><td>Curvature of any landscape point: d − p²/4 (straight charts), 4d − p² (angle-true charts); the circle operation as the half plane with its wall on the horizon</td><td>Ours as a placement, from standard pieces</td></tr>
 </tbody></table>
 </div>
 </div>
@@ -148,7 +148,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <div class="wrap cols">
 <div>
 <h2>Lead worth following? No independent one.</h2>
-<p>The geometry is sure and it is classical: the bend q, corrected by p, is the curvature of the plane the law lives in, the walls are that plane's horizon, and the ruler is distance. That gives every point of the landscape a picture, and it gives mult-add a home, the hyperbolic half plane with −1 on the horizon. It does not predict anything new, because in one dimension curvature has no effect you could measure.</p>
+<p>The geometry is sure and it is classical: the bend d, corrected by p, is the curvature of the plane the law lives in, the walls are that plane's horizon, and the ruler is distance. That gives every point of the landscape a picture, and it gives the circle operation a home, the hyperbolic half plane with −1 on the horizon. It does not predict anything new, because in one dimension curvature has no effect you could measure.</p>
 <p>The only place curvature acts is in two or more directions, as the turn left behind by a closed loop. That is exactly what the twisted boosts work is following, so this branch adds no separate lead.</p>
 </div>
 <div>
@@ -231,9 +231,9 @@ function drawMap(){
   [-1,-0.25,1,2].forEach(k=>{let d='';for(let i=0;i<=80;i++){const x=p0+(p1-p0)*i/80,y=x*x/4+k;if(y<q0||y>q1)continue;d+=(d?'L':'M')+X(x)+' '+Y(y);}s+='<path d="'+d+'" fill="none" stroke="'+kcol(k)+'" stroke-dasharray="5 5" stroke-width="1.2"/>';});
   s+='<path d="'+par+'" fill="none" stroke="var(--flat)" stroke-width="2.5"/><line x1="'+X(p0)+'" y1="'+Y(0)+'" x2="'+X(p1)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+Y(q0)+'" x2="'+X(0)+'" y2="'+Y(q1)+'" stroke="var(--rule)"/>';
   const pt=(x,y,lab,anc,dx,dy)=>'<circle cx="'+X(x)+'" cy="'+Y(y)+'" r="5" fill="var(--ink)"/><text x="'+(X(x)+dx)+'" y="'+(Y(y)+dy)+'" text-anchor="'+anc+'">'+lab+'</text>';
-  s+=pt(1,0,'mult-add, K = −1/4','start',6,16)+pt(0,-1,'velocity, K = −1','start',8,4)+pt(0,1,'tangent, K = 1','start',8,4);
+  s+=pt(1,0,'The circle operation, K = −1/4','start',6,16)+pt(0,-1,'velocity, K = −1','start',8,4)+pt(0,1,'tangent, K = 1','start',8,4);
   s+='<circle cx="'+X(0)+'" cy="'+Y(Math.max(q0,Math.min(q1,K)))+'" r="7" fill="'+kcol(K)+'" stroke="var(--panel)" stroke-width="2"/>';
-  s+='<text x="'+(X(p1)-2)+'" y="'+(Y(0)-6)+'" text-anchor="end">p</text><text x="'+(X(0)-6)+'" y="'+(Y(q1)+12)+'" text-anchor="end">q</text>';
+  s+='<text x="'+(X(p1)-2)+'" y="'+(Y(0)-6)+'" text-anchor="end">p</text><text x="'+(X(0)-6)+'" y="'+(Y(q1)+12)+'" text-anchor="end">d</text>';
   S4.innerHTML=s;
 }
 function drawDsk(){

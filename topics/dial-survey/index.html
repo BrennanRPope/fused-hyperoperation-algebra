@@ -45,20 +45,20 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <div class="band" style="padding-top:0">
 <nav class="scroll"><a href="#k">1. k</a><a href="#twist">2. Twist</a><a href="#elem">3. Per element</a><a href="#prime">4. Primes</a><a href="#choice">5. Choice</a><a href="#two">k on elements</a><a href="#wall">Wall and Lee–Yang</a><a href="#same">Same dial</a><a href="#proofs">Proofs</a></nav>
 
-<h2 id="k">1. The k dial (q = k + 1)</h2>
-<p><b>What it is.</b> a ✳ₖ b = a + b + k·ab, with 1 + k(a ✳ₖ b) = (1 + ka)(1 + kb). In units λ times bigger, weight k reads as k·λ, so on bare numbers only the sign of k survives: k &gt; 0 is mult-add, k = 0 is addition, k &lt; 0 is "union of chances".</p>
-<p><b>Connects to.</b> Already found across the project: q-counting and knots (q = k + 1), Potts colours, Sugeno's λ-measures, fermion/Poisson/boson point processes (k = −1, 0, +1). It is also Tsallis's q-algebra from statistical physics, with k = 1 − q<sub>Tsallis</sub>.</p>
+<h2 id="k">1. The k dial</h2>
+<p><b>What it is.</b> a ∘ₖ b = a + b + k·ab, with 1 + k(a ∘ₖ b) = (1 + ka)(1 + kb). In units λ times bigger, weight k reads as k·λ, so on bare numbers only the sign of k survives: k &gt; 0 is the circle operation ∘₁ (called mult-add before 1.0), k = 0 is addition, k &lt; 0 is "union of chances".</p>
+<p><b>Connects to.</b> Already found across the project: q-counting and knots (base k + 1), Potts colours, Sugeno's λ-measures, fermion/Poisson/boson point processes (k = −1, 0, +1). It is also Tsallis's q-algebra from statistical physics, with k = 1 − q<sub>T</sub>, where q<sub>T</sub> is the Tsallis index.</p>
 <p><b>What following it gives.</b> On its own, nothing more: a one-parameter family whose only invariant is a sign is fully classified. Its size starts to matter only once elements carry their own dials, because then the dial values fix the units (section "k on elements").</p>
 <p class="verdict"><b>Not a lead by itself.</b> It's the axis the other dials are measured against. The separate search for a potential on k is the place where its size could get a physical meaning.</p>
 
 <h2 id="twist">2. The twist</h2>
-<p><b>What it is.</b> Composing two boosts in different directions leaves a turn e<sup>iω</sup> with tan(ω/2) = q(u×v)/(1 − q·u·v). That's q times the signed area of the velocity triangle: Gauss–Bonnet with curvature q.</p>
+<p><b>What it is.</b> Composing two boosts in different directions leaves a turn e<sup>iω</sup> with tan(ω/2) = q(u×v)/(1 − d·u·v). That's d times the signed area of the velocity triangle: Gauss–Bonnet with curvature d.</p>
 <p><b>Connects to.</b> Thomas precession (1926), Wigner rotation (1939). Already matched data on the twisted-boosts page: Gravity Probe B's 6.6 arcsec/yr and the double pulsar's spin precession.</p>
-<p><b>What following it gives.</b> The project's firmest geometric underpinning: q is curvature, and the twist is how curvature shows up. But the twist has no setting of its own. It vanishes exactly when q·(u×v) = 0, so it's fixed by q and the directions. And the exact fusion inside it (−p = (−p<sub>space</sub>) ✳ (−p<sub>velocity</sub>)) is an identity of general relativity, so no measurement can split the two.</p>
+<p><b>What following it gives.</b> The project's firmest geometric underpinning: d is curvature, and the twist is how curvature shows up. But the twist has no setting of its own. It vanishes exactly when d·(u×v) = 0, so it's fixed by d and the directions. And the exact fusion inside it (−p = (−p<sub>space</sub>) ∘₁ (−p<sub>velocity</sub>)) is an identity of general relativity, so no measurement can split the two.</p>
 <p class="verdict"><b>Not a separate dial, and no new prediction.</b> Worth keeping as the geometric anchor your rule asks for, not as a path to follow further.</p>
 
 <h2 id="elem">3. One dial per element</h2>
-<p><b>What it is.</b> Each element x gets t<sub>x</sub>; a subset weighs the product of its members' dials, and the total is ∏(1 + t<sub>x</sub>). Exactly: <b>t is odds</b>, p = t/(1 + t). "In A or in B" for independent random subsets has odds t ✳ s, and complement turns odds t into 1/t. A uniform dial t = 2<sup>α</sup> − 1 gives counts 2<sup>αn</sup>, and dials mult-add exactly when exponents add, so this dial and the fractional power set's exponent are one dial read through the mult-add ruler.</p>
+<p><b>What it is.</b> Each element x gets t<sub>x</sub>; a subset weighs the product of its members' dials, and the total is ∏(1 + t<sub>x</sub>). Exactly: <b>t is odds</b>, p = t/(1 + t). "In A or in B" for independent random subsets has odds t ∘₁ s, and complement turns odds t into 1/t. A uniform dial t = 2<sup>α</sup> − 1 gives counts 2<sup>αn</sup>, and dials combine by the circle operation exactly when exponents add, so this dial and the fractional power set's exponent are one dial read through the circle-operation ruler.</p>
 <p><b>Connects to.</b> Bernoulli product measures; a lattice gas with fugacity t on each site (partition function ∏(1 + t)); Lee–Yang zeros.</p>
 <p><b>What following it gives.</b> A half power set that exists in weighted form (every dial √2 − 1), where the set-theoretic half is blocked by choice. Weights aren't sizes, though, so it doesn't settle the ZF question. The merging and complement rules are worked out on <a href="https://claude.ai/artifact/27MDnoDnLAMxUUmWGADYk9">Power set dials</a>.</p>
 <p class="verdict lead"><b>A lead, but only paired with k.</b> On its own it's the measure-theory shadow of the fractional power set. With k acting on it, it produces new structure (below).</p>
@@ -72,7 +72,7 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <h2 id="choice">5. The choice dial</h2>
 <p><b>What it is.</b> How much of the axiom of choice holds. The earlier pass found a short ladder, by which rung goes flat on infinite sizes: successor flat is weak, addition flat is stronger, multiplication flat is full choice (Tarski 1924), and the exponent is never flat.</p>
 <p><b>Connects to.</b> The Howard–Rubin map of choice principles. That map branches: the Boolean prime ideal theorem and dependent choice are independent of each other, so choice grades form a partial order, not a number line.</p>
-<p><b>What following it gives.</b> The setting where a true fractional power set might exist: without choice, sizes can fall forever, so the halving obstruction goes away. q only switches between rungs there, and the twist does nothing, because size arithmetic commutes.</p>
+<p><b>What following it gives.</b> The setting where a true fractional power set might exist: without choice, sizes can fall forever, so the halving obstruction goes away. k only switches between rungs there, and the twist does nothing, because size arithmetic commutes.</p>
 <p class="verdict lead"><b>Not a dial, but the path through it is a lead.</b> The open question is the fractional power set in ZF; the next step stays a permutation model whose orbit counts grow like e<sup>c√n</sup>.</p>
 
 <h2 id="two">k acting on per-element dials</h2>
@@ -112,10 +112,10 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 
 <h2 id="same">Same dial in disguise</h2>
 <ul>
-<li><b>q and k:</b> q = k + 1, the same dial shifted. Also the Potts colour count and the knot gluing number.</li>
-<li><b>Twist and k:</b> the twist is q × area, fixed by k and the directions.</li>
+<li><b>Colour count and k:</b> the Potts colour count and the knot gluing number are k + 1, the same dial shifted.</li>
+<li><b>Twist and d:</b> the twist is d × area, fixed by the curvature d and the directions.</li>
 <li><b>Prime dial and per-element dial:</b> the slice t<sub>p</sub> = p<sup>−s</sup> on the primes.</li>
-<li><b>Per-element dial and fractional exponent:</b> t = 2<sup>α</sup> − 1; dials mult-add when exponents add.</li>
+<li><b>Per-element dial and fractional exponent:</b> t = 2<sup>α</sup> − 1; dials combine by the circle operation when exponents add.</li>
 <li><b>k on elements and point processes:</b> "copies allowed" is the fermion/Poisson/boson dial already found in point processes.</li>
 <li><b>Choice:</b> independent of all of them, and not numeric.</li>
 </ul>
@@ -131,14 +131,14 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 const C = [[-1.0, 0.60793], [-0.95, 0.61249], [-0.9, 0.61717], [-0.85, 0.62197], [-0.8, 0.6269], [-0.75, 0.63197], [-0.7, 0.63717], [-0.65, 0.64252], [-0.6, 0.64802], [-0.55, 0.65369], [-0.5, 0.65952], [-0.45, 0.66552], [-0.4, 0.67172], [-0.35, 0.6781], [-0.3, 0.6847], [-0.25, 0.69151], [-0.2, 0.69854], [-0.15, 0.70583], [-0.1, 0.71336], [-0.05, 0.72117], [0.0, 0.72926], [0.05, 0.73767], [0.1, 0.74639], [0.15, 0.75547], [0.2, 0.76491], [0.25, 0.77475], [0.3, 0.78501], [0.35, 0.79574], [0.4, 0.80695], [0.45, 0.81869], [0.5, 0.831], [0.55, 0.84393], [0.6, 0.85754], [0.65, 0.87188], [0.7, 0.88702], [0.75, 0.90304], [0.8, 0.92003], [0.85, 0.9381], [0.9, 0.95735], [0.95, 0.97793], [1.0, 1.0], [1.05, 1.02374], [1.1, 1.04939], [1.15, 1.07721], [1.2, 1.10753], [1.25, 1.14075], [1.3, 1.17737], [1.35, 1.21802], [1.4, 1.26352], [1.45, 1.31492], [1.5, 1.37365], [1.55, 1.44165], [1.6, 1.52171], [1.65, 1.61796], [1.7, 1.73684], [1.75, 1.88909], [1.8, 2.09438], [1.85, 2.39385], [1.9, 2.89428], [1.95, 4.02151]];
 const ms = document.getElementById('ms'), cs = document.getElementById('cs');
 const nodes = [
- {id:'k', t:'1. k (q = k+1)', s:'weight on ab', x:.5, y:.16, lead:false},
- {id:'tw', t:'2. Twist', s:'= q × area', x:.14, y:.5, lead:false},
+ {id:'k', t:'1. k', s:'weight on ab', x:.5, y:.16, lead:false},
+ {id:'tw', t:'2. Twist', s:'= d × area', x:.14, y:.5, lead:false},
  {id:'el', t:'3. Per element t', s:'t = odds', x:.5, y:.56, lead:true},
  {id:'pr', t:'4. Primes', s:'t = p^-s', x:.86, y:.56, lead:false},
  {id:'ch', t:'5. Choice', s:'a setting', x:.86, y:.14, lead:true},
  {id:'al', t:'Exponent α', s:'t = 2^α − 1', x:.18, y:.88, lead:false}
 ];
-const links = [['k','tw','q is curvature'],['k','el','copies allowed'],['el','pr','slice'],['el','al','mult-add ruler']];
+const links = [['k','tw','d is curvature'],['k','el','copies allowed'],['el','pr','slice'],['el','al','Circle-operation ruler']];
 const drawMap = () => {
   const W = ms.clientWidth, H = ms.clientHeight, narrow = W < 520;
   const bw = narrow ? 128 : 170, bh = narrow ? 50 : 56;

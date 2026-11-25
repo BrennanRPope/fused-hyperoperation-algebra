@@ -1,10 +1,10 @@
 """
-pi from mult-add: numeric and exact checks.
+pi from the circle operation: numeric and exact checks.
 Fused Hyperoperation Algebra, Nov 25 2026.
 
-Mult-add: a (+) b = a + b + ab = (1+a)(1+b) - 1. Over the complex numbers.
-The turning law (landscape point p=0, q=1): x (+)t y = (x+y)/(1-xy)  (slope / tangent addition).
-Lens (Cayley): 1 + a = (1 + i x)/(1 - i x). It turns the turning law into mult-add.
+The circle operation: a (+) b = a + b + ab = (1+a)(1+b) - 1. Over the complex numbers.
+The turning law (landscape point p=0, d=1): x (+)t y = (x+y)/(1-xy)  (slope / tangent addition).
+Lens (Cayley): 1 + a = (1 + i x)/(1 - i x). It turns the turning law into the circle operation.
 
 Writes pi_results.json and prints a PASS/FAIL log (pi_checks_output.txt).
 """
@@ -41,8 +41,8 @@ M = lambda t: (1 + I * t) / (1 - I * t)
 T = (x + y) / (1 - x * y)
 check("lens: M(x (+)t y) = M(x) M(y)  (turning law becomes multiplication of lifts)",
       sp.simplify(M(T) - M(x) * M(y)) == 0)
-a_of = lambda t: M(t) - 1              # the mult-add coordinate
-check("lens in mult-add units: a(x (+)t y) = a(x) (+) a(y)",
+a_of = lambda t: M(t) - 1              # the circle-operation coordinate
+check("lens in circle-operation units: a(x (+)t y) = a(x) (+) a(y)",
       sp.simplify(a_of(T) - ma(a_of(x), a_of(y))) == 0)
 check("a(x) = 2ix/(1-ix)", sp.simplify(a_of(x) - 2 * I * x / (1 - I * x)) == 0)
 # the real line lands on the circle |1+a| = 1 (centre: the wall -1, radius 1)
@@ -52,8 +52,8 @@ check("every real slope x lands on the circle |1+a| = 1 around the wall",
 check("x = 0 lands on a = 0 (identity)", a_of(0) == 0)
 check("x -> infinity lands on a = -2 (the parity point)", sp.limit(a_of(x), x, sp.oo) == -2)
 check("x = 1 lands on a = -1 + i (a quarter of the way round)", sp.simplify(a_of(1) - (-1 + I)) == 0)
-# circle closed under mult-add: |1+(a(+)b)| = |1+a||1+b|
-check("the circle is closed under mult-add (|1+(a(+)b)| = |1+a| |1+b|)", True,
+# circle closed under the circle operation: |1+(a(+)b)| = |1+a||1+b|
+check("the circle is closed under the circle operation (|1+(a(+)b)| = |1+a| |1+b|)", True,
       "(norm of a product = product of norms)")
 
 # ------------------------------------------------- 2. the quarter / eighth steps
@@ -74,33 +74,33 @@ check("turning law: 1 (+)t 1 = 2/0 = infinity, four steps of 1 come back to 0",
 OUT['eighth_turn'] = {'multadd': [str(z) for z in seq], 'slope_pairs': path}
 
 # ------------------------------------------------- 3. the period of every turning law
-# law (a+b+p ab)/(1-q ab); rate y' = 1 + p y + q y^2. Turning country: p^2 < 4q.
-# Period = time for the flow to run from -inf to +inf = integral dy/(1+py+qy^2) = 2 pi / sqrt(4q - p^2).
+# law (a+b+p ab)/(1-d ab); rate y' = 1 + p y + d y^2. Turning country: p^2 < 4d.
+# Period = time for the flow to run from -inf to +inf = integral dy/(1+py+dy^2) = 2 pi / sqrt(4d - p^2).
 per = []
 for (p, q) in [(0, 1), (1, 1), (-1, 2), (0.5, 3), (2, 1.25), (-3, 2.5)]:
     T_num = mp.quad(lambda t: 1 / (1 + p * t + q * t * t), [-mp.inf, 0, mp.inf])
     T_th = 2 * mp.pi / mp.sqrt(4 * q - p * p)
     per.append({'p': p, 'q': q, 'period_numeric': mp.nstr(T_num, 25), 'formula': mp.nstr(T_th, 25)})
-    check(f"turning law (p,q)=({p},{q}) has period 2pi/sqrt(4q-p^2)", abs(T_num - T_th) < mp.mpf(10) ** -40,
+    check(f"turning law (p,d)=({p},{q}) has period 2pi/sqrt(4d-p^2)", abs(T_num - T_th) < mp.mpf(10) ** -40,
           f"{mp.nstr(T_num, 18)}")
 OUT['turning_periods'] = per
-# mult-add itself (p=1, q=0): one wall at -1. Its logarithm log(1+a) gains 2 pi i per loop round the wall.
+# The circle operation itself (p=1, d=0): one wall at -1. Its logarithm log(1+a) gains 2 pi i per loop round the wall.
 loop = mp.quad(lambda t: (1j * mp.exp(1j * t)) / (mp.exp(1j * t)), [0, 2 * mp.pi])  # d(1+a)/(1+a) on |1+a|=1
-check("mult-add's own logarithm gains 2 pi i once round the wall (period of log(1+a))",
+check("The circle operation's own logarithm gains 2 pi i once round the wall (period of log(1+a))",
       abs(loop - 2j * mp.pi) < mp.mpf(10) ** -40, mp.nstr(loop, 20))
 
 # ------------------------------------------------- 4. the Euler limit: n copies of i pi/n -> -2
 eul = []
 for n in [10, 100, 1000, 10 ** 6]:
     z = mp.mpc(0, mp.pi / n)
-    w = (1 + z) ** n - 1          # n-fold mult-add power (mpow)
+    w = (1 + z) ** n - 1          # n-fold circle power (mpow)
     eul.append({'n': n, 'value': mp.nstr(w, 12), 'dist_to_minus2': float(abs(w + 2))})
 OUT['euler_limit'] = eul
-check("n copies of i*pi/n mult-added head for -2 (distance ~ pi^2/n)", eul[-1]['dist_to_minus2'] < 1e-5,
+check("n copies of i*pi/n combined by the circle operation head for -2 (distance ~ pi^2/n)", eul[-1]['dist_to_minus2'] < 1e-5,
       str([(d['n'], d['value']) for d in eul]))
 
 # ------------------------------------------------- 5. step count: tiny turning steps until we pass -2
-# Mult-add i/n to itself m times: 1 + a_m = (1 + i/n)^m = (n + i)^m / n^m. Count the steps until
+# Combine i/n with itself m times by the circle operation: 1 + a_m = (1 + i/n)^m = (n + i)^m / n^m. Count the steps until
 # the imaginary part turns negative (we have gone past the far side, a = -2 side).
 def first_crossing_exact(n):
     re, im = 1, 0     # (n+i)^0
@@ -128,7 +128,7 @@ check("n=10: 32 steps of i/10 pass -2 (31 do not)", first_crossing_exact(10) == 
 check("n=100: 315 steps of i/100 pass -2", first_crossing_exact(100) == 315)
 
 # ------------------------------------------------- 6. halving the trip 0 -> -2 (Archimedes)
-# Split the trip from 0 to -2 into N equal mult-add steps a: (1+a)^N = -1, a on the upper arc.
+# Split the trip from 0 to -2 into N equal circle-operation steps a: (1+a)^N = -1, a on the upper arc.
 # Euclidean length of all steps: N |a| (chords, below pi); the turning-law length N * 2 tan(pi/2N) (above pi).
 arch = []
 def trip(N):
@@ -143,7 +143,7 @@ for _ in range(8):
     t = mp.im(u) / (1 + mp.re(u))               # half-angle slope of the step: x with M(x) = u, i.e. tan(theta/2)
     tang = N * 2 * t
     arch.append({'steps': N, 'polygon_sides': 2 * N, 'lower': mp.nstr(chord, 20), 'upper': mp.nstr(tang, 20)})
-    u = mp.sqrt(u)                              # mult-add half-step: (1+b)^2 = 1+a
+    u = mp.sqrt(u)                              # circle operation half-step: (1+b)^2 = 1+a
     N *= 2
 OUT['halving'] = arch
 row48 = [r for r in arch if r['steps'] == 48][0]
@@ -152,7 +152,7 @@ check("48 equal steps from 0 to -2 = Archimedes' 96-gon: 3.14103 < pi < 3.14271"
       mp.mpf(row48['lower']) > mp.mpf(223) / 71 and mp.mpf(row48['upper']) < mp.mpf(22) / 7,
       f"{row48['lower'][:9]} < pi < {row48['upper'][:9]}; Archimedes: 223/71 = 3.140845, 22/7 = 3.142857")
 
-# ------------------------------------------------- 7. Machin as a mult-add identity, digits from mult-add's logarithm
+# ------------------------------------------------- 7. Machin as a circle-operation identity, digits from the circle operation's logarithm
 mach = (5 + 1j) ** 4 * (239 - 1j)
 # exact Gaussian integer
 def gmul(p, q):
@@ -162,12 +162,12 @@ for _ in range(4):
     g = gmul(g, (5, 1))
 g = gmul(g, (239, -1))
 check("Machin: (5+i)^4 (239-i) = 114244 (1+i)", g == (114244, 114244), str(g))
-# so in mult-add: four steps of i/5 then one step of -i/239 land exactly on the 45 degree ray (an eighth turn)
+# so in the circle operation: four steps of i/5 then one step of -i/239 land exactly on the 45 degree ray (an eighth turn)
 
 
 def multadd_log_im(num, den, digits):
-    """Im of mult-add's logarithm L(ix) = Im log(1+ix) = x - x^3/3 + x^5/5 - ..., x = num/den,
-    in fixed-point integers (scale 10^(digits+10)). L turns mult-add back into addition."""
+    """Im of the circle operation's logarithm L(ix) = Im log(1+ix) = x - x^3/3 + x^5/5 - ..., x = num/den,
+    in fixed-point integers (scale 10^(digits+10)). L turns the circle operation back into addition."""
     scale = 10 ** (digits + 10)
     total = 0
     term = scale * num // den      # x^(2k+1) * scale
@@ -194,7 +194,7 @@ for c1, c2 in zip(pi_str, true_pi):
     if c1 != c2:
         break
     agree += 1
-check(f"1000 digits of pi from mult-add's logarithm (Machin), terms used {k5} + {k239}",
+check(f"1000 digits of pi from the circle operation's logarithm (Machin), terms used {k5} + {k239}",
       agree >= D, f"{agree - 2} decimals agree")
 OUT['digits_1000'] = pi_str
 OUT['machin_terms'] = [k5, k239]

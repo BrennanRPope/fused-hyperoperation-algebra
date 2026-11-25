@@ -11,7 +11,7 @@ def check(name, ok):
 
 a, b, c, k, g, x, y = sp.symbols('a b c k gamma x y')
 w = lambda k_, u, v: u + v + k_*u*v          # the dial
-ma = lambda u, v: u + v + u*v                # mult-add
+ma = lambda u, v: u + v + u*v                # circle operation
 
 # ---------- 1. Boolean logic on the dial ----------
 check("dial table on 0,1: 0,1,1 and 1 (+)k 1 = 2 + k",
@@ -36,7 +36,7 @@ def fold(kk, n):
     for _ in range(n): s = w(kk, s, 1)
     return s
 qnum = lambda q, n: sum(q**i for i in range(n))
-check("n trues under (+)k give the q-number [n]_q with q = k+1 (k in -3..3, n<12)",
+check("n trues under (+)k give the q-number [n]_q with k = q - 1 (k in -3..3, n<12)",
       all(fold(kk, n) == qnum(kk+1, n) for kk in range(-3, 4) for n in range(12)))
 check("OR folds n>=1 trues to 1 ([n]_0 = 1)", all(fold(-1, n) == 1 for n in range(1, 30)))
 check("XOR folds n trues to n mod 2 ([n]_-1)", all(fold(-2, n) == n % 2 for n in range(30)))
@@ -123,7 +123,7 @@ check("wall: chi(I + B + IxB) = -1 for finite B of size 0..9 and for B = I, B = 
       all(chi(cadd(I, [nb], cprod(I,[nb]))) == -1 for nb in range(10)) and
       chi(cadd(I, I, cprod(I, I))) == -1 and chi(cadd(I, cprod(I,I), cprod(I,cprod(I,I)))) == -1)
 X2 = [0, 2]             # two open intervals, chi = -2
-check("two open intervals X: chi(X + X + XxX) = 0, so X is its own mult-add inverse at the level of chi",
+check("two open intervals X: chi(X + X + XxX) = 0, so X is its own circle inverse at the level of chi",
       chi(X2) == -2 and chi(cadd(X2, X2, cprod(X2, X2))) == 0 and ma(-2, -2) == 0)
 check("chi of products multiplies and so chi(A + B + AxB) = chi A (+) chi B (random cell lists)",
       all(chi(cadd(P, Q, cprod(P, Q))) == ma(chi(P), chi(Q))
@@ -135,11 +135,11 @@ S = (a + b + (g-2)*a*b)/(1 + (g-1)*a*b)
 T = a*b/(g + (1-g)*(a + b - a*b))
 lens = lambda p, q, u, v: (u + v + p*u*v)/(1 - q*u*v)
 odds = lambda t: t/(1-t)
-check("Hamacher t-conorm is the landscape law at p = gamma - 2, q = 1 - gamma", sp.simplify(S - lens(g-2, 1-g, a, b)) == 0)
-check("those points lie on the line p + q = -1", sp.expand((g-2) + (1-g)) == -1)
+check("Hamacher t-conorm is the landscape law at p = gamma - 2, d = 1 - gamma", sp.simplify(S - lens(g-2, 1-g, a, b)) == 0)
+check("those points lie on the line p + d = -1", sp.expand((g-2) + (1-g)) == -1)
 check("gamma = 1 is the probabilistic sum (dial k = -1)", sp.simplify(S.subs(g,1) - w(-1,a,b)) == 0)
 check("gamma = 2 is the Einstein sum (a+b)/(1+ab), relativity's point (0,-1)", sp.simplify(S.subs(g,2) - lens(0,-1,a,b)) == 0)
-check("gamma = 0 is (a+b-2ab)/(1-ab) at (-2,1), on the border parabola p^2 = 4q",
+check("gamma = 0 is (a+b-2ab)/(1-ab) at (-2,1), on the border parabola p^2 = 4d",
       sp.simplify(S.subs(g,0) - lens(-2,1,a,b)) == 0 and (-2)**2 == 4*1)
 check("miss: 1 - S = (1-a)(1-b)/(1+(gamma-1)ab), independent of gamma in the numerator",
       sp.simplify(1 - S - (1-a)*(1-b)/(1 + (g-1)*a*b)) == 0)
@@ -148,7 +148,7 @@ check("Hamacher t-norm is the De Morgan mirror: T(a,b) = 1 - S(1-a,1-b)",
       sp.simplify(T - (1 - S.subs({a:1-a, b:1-b}, simultaneous=True))) == 0)
 check("the t-norm is the dial on odds-against (1-x)/x",
       sp.simplify((1-T)/T - w(g, (1-a)/a, (1-b)/b)) == 0)
-check("gamma = 0 adds odds (dial k = 0), gamma = 1 mult-adds odds (k = 1)",
+check("gamma = 0 adds odds (dial k = 0), gamma = 1 combines by the circle operation odds (k = 1)",
       sp.simplify(odds(S.subs(g,0)) - odds(a) - odds(b)) == 0 and sp.simplify(odds(S.subs(g,1)) - ma(odds(a), odds(b))) == 0)
 check("Hamacher's additive generator log(1 + gamma*odds(x)) is the log of the dial's lift on odds",
       all(abs(mp.log(1+gg*odds(mp.mpf(u)+0)) + mp.log(1+gg*odds(mp.mpf(v))) -
@@ -194,7 +194,7 @@ check("statistics page's AMH theta is 1 - gamma (same line, same points)",
 mpf = mp.mpf
 def off_plane(f):
     pts = [(mpf('0.2'), mpf('0.3')), (mpf('0.5'), mpf('0.6')), (mpf('0.7'), mpf('0.15')), (mpf('0.35'), mpf('0.8'))]
-    # solve p,q exactly from the first two points, measure the miss at the others
+    # solve p,d exactly from the first two points, measure the miss at the others
     M = mp.matrix([[u*v, f(u,v)*u*v] for u,v in pts[:2]]); r = mp.matrix([f(u,v)-u-v for u,v in pts[:2]])
     p, q = mp.lu_solve(M, r)
     return max(abs(f(u,v) - (u+v+p*u*v)/(1-q*u*v)) for u,v in pts[2:])
@@ -213,7 +213,7 @@ misses = {kname: off_plane(f) for kname, f in offs.items()}
 for kname, mv in misses.items(): print("   miss", kname, mp.nstr(mv, 3))
 check("Frank, Yager, Schweizer-Sklar, Dombi, Aczel-Alsina (other parameters) leave the landscape (miss > 1e-4)",
       all(mv > mpf('1e-4') for mv in misses.values()))
-check("Frank's family hugs the line p + q = -1 without lying on it (fitted p + q within 0.05 of -1 for s = 0.5, 2)",
+check("Frank's family hugs the line p + d = -1 without lying on it (fitted p + d within 0.05 of -1 for s = 0.5, 2)",
       all(abs(sum(mp.lu_solve(mp.matrix([[u*v, frank(s)(u,v)*u*v] for u,v in [(mpf('0.2'),mpf('0.3')),(mpf('0.5'),mpf('0.6'))]]),
                               mp.matrix([frank(s)(u,v)-u-v for u,v in [(mpf('0.2'),mpf('0.3')),(mpf('0.5'),mpf('0.6'))]]))) + 1) < .05
           for s in [mpf('0.5'), mpf(2)]))
@@ -247,7 +247,7 @@ check("definability: b + c + 1 = d  iff  for all x, (x*b)(+)(x*c) = x*d",
       all((sadd(bb,cc) == dd) == all(ma(fexp(xx,bb),fexp(xx,cc)) == fexp(xx,dd) for xx in range(6)) for bb in N for cc in N for dd in range(20)))
 check("zero is the only right identity of the fused exponent (y < 20)",
       [yy for yy in range(20) if all(fexp(xx,yy) == xx for xx in range(6))] == [0])
-check("mult-add alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives",
+check("The circle operation alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives",
       all(ma(aa_,bb)+1 == (aa_+1)*(bb+1) for aa_ in range(30) for bb in range(30)))
 
 n_pass = sum(ok for _, ok in results)

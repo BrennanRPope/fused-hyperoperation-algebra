@@ -32,9 +32,9 @@ What Lean cannot see: each theorem's own hypotheses (such as k ≠ 0 or x > −1
 |---|---|---|
 | `FusedAlgebra.Base` | 46 | 4 |
 | `FusedAlgebra.Cube` | 7 | 2 |
+| `FusedAlgebra.Foundations.CircleRing` | 51 | 31 |
 | `FusedAlgebra.Foundations.FusedPeano` | 65 | 24 |
 | `FusedAlgebra.Foundations.Independence` | 7 | 0 |
-| `FusedAlgebra.Foundations.MultAddRing` | 51 | 31 |
 | `FusedAlgebra.Rungs` | 36 | 10 |
 | `FusedAlgebra.Topics.AbstractAlgebra` | 62 | 13 |
 | `FusedAlgebra.Topics.BinaryPulsar` | 10 | 0 |

@@ -1,5 +1,5 @@
 /-
-  Chemistry 1, quantum chemistry: independent fragments compose by mult-add
+  Chemistry 1, quantum chemistry: independent fragments compose by the circle operation (called mult-add before 1.0)
   ==========================================================================
 
   Companion page and checks: ../index.html, ../checks.py (25 checks).
@@ -9,7 +9,7 @@
   where c is everything beyond the reference determinant. Two molecules that
   do not interact have Ψ_AB = Ψ_A Ψ_B, so
 
-      1 + c_AB = (1 + c_A)(1 + c_B),   c_AB = c_A ✳ c_B.
+      1 + c_AB = (1 + c_A)(1 + c_B),   c_AB = c_A ◯ c_B.
 
   The corner c_A·c_B is "both molecules excited at once". Truncated CI (CISD)
   keeps only c_A + c_B: it is the k = 0 law, and its size-consistency error is
@@ -20,44 +20,43 @@
   doubly excited state 2Δ above it, coupled by g. CISD's energy E solves
   E(E − 2Δ) = N g² (its 2-level secular equation); the exact energy is N e₁.
 
-  LIBRARY NOTE: this file declares `local infixl " ✳ "` for multAdd. If Base
-  now declares ✳ itself, delete that line.
-  Merged at Topics/Chemistry/ChemQuantum; Base does not declare ✳, so the local infix stays.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
+  Merged at Topics/Chemistry/ChemQuantum; it now uses Base's ◯.
   Four exact twins of Base removed (see the comment in the Ring section).
 -/
 import FusedAlgebra.Base
 
 namespace ChemQuantum
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- Two independent fragments: the excess amplitude mult-adds. -/
-theorem fragments_multAdd (cA cB : R) : (1 + cA) * (1 + cB) = 1 + (cA ✳ cB) := by
-  unfold multAdd; grind
+/-- Two independent fragments: the excess amplitude combines by the circle operation. -/
+theorem fragments_circ (cA cB : R) : (1 + cA) * (1 + cB) = 1 + (cA ◯ cB) := by
+  unfold circ; grind
 
 /-- What truncated CI drops when two fragments are joined: exactly the corner. -/
-theorem cisd_drops_corner (cA cB : R) : (cA ✳ cB) - (cA + cB) = cA * cB := by
-  unfold multAdd; grind
+theorem cisd_drops_corner (cA cB : R) : (cA ◯ cB) - (cA + cB) = cA * cB := by
+  unfold circ; grind
 
 -- LIBRARY: four exact twins of Base theorems removed; the chemistry reading stays here.
---   cisd_is_weight_zero (k = 0 is CISD)        = MultAdd.wAdd_weight_zero
---   exact_is_weight_one (k = 1 is exact)       = MultAdd.wAdd_one
---   n_fragments (1 + c_N = (1 + c)^N)          = MultAdd.mpow_lift
---   fragments_assoc (join N then M = N + M)    = MultAdd.mpow_add
+--   cisd_is_weight_zero (k = 0 is CISD)        = CircleOp.circK_weight_zero
+--   exact_is_weight_one (k = 1 is exact)       = CircleOp.circK_one
+--   n_fragments (1 + c_N = (1 + c)^N)          = CircleOp.mpow_lift
+--   fragments_assoc (join N then M = N + M)    = CircleOp.mpow_add
 
 /-- Three fragments: the corner expansion has pairs and one triple, nothing else. -/
 theorem three_fragments (a b c : R) :
-    (a ✳ b) ✳ c = a + b + c + (a * b + a * c + b * c) + a * b * c := by
-  unfold multAdd; grind
+    (a ◯ b) ◯ c = a + b + c + (a * b + a * c + b * c) + a * b * c := by
+  unfold circ; grind
 
 /-- What CISD drops from three fragments: every pair and the triple. -/
 theorem cisd_drops_three (a b c : R) :
-    ((a ✳ b) ✳ c) - (a + b + c) = a * b + a * c + b * c + a * b * c := by
-  unfold multAdd; grind
+    ((a ◯ b) ◯ c) - (a + b + c) = a * b + a * c + b * c + a * b * c := by
+  unfold circ; grind
 
 end Ring
 
@@ -86,11 +85,11 @@ theorem cisd_not_extensive (D g e N : Rat) (hN0 : N ≠ 0) (hN1 : N ≠ 1) (he :
     · exact hN1 (by grind)
   · rcases Rat.mul_eq_zero.mp h with h' | h' <;> exact he h'
 
-/-! ## Spin coupling counts states by mult-add -/
+/-! ## Spin coupling counts states by the circle operation -/
 
-/-- Multiplicities multiply, so 2s (multiplicity − 1) mult-adds. -/
-theorem spin_multiplicity (s1 s2 : Nat) : (s1 + 1) * (s2 + 1) = (s1 ✳ s2) + 1 := by
-  unfold multAdd; grind
+/-- Multiplicities multiply, so 2s (multiplicity − 1) combines by the circle operation. -/
+theorem spin_multiplicity (s1 s2 : Nat) : (s1 + 1) * (s2 + 1) = (s1 ◯ s2) + 1 := by
+  unfold circ; grind
 
 /-- The Clebsch–Gordan series for two equal spins j ⊗ j (2j = n): the
     multiplicities 2S+1 for S = 0..n sum to (n+1)². -/

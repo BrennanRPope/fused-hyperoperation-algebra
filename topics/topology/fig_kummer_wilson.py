@@ -1,4 +1,4 @@
-"""Pictures for Kummer's theorem (carries) and Wilson's theorem on the mult-add circle."""
+"""Pictures for Kummer's theorem (carries) and Wilson's theorem on the circle-operation circle."""
 import numpy as np, matplotlib
 from math import comb, factorial
 matplotlib.use('Agg')
@@ -56,7 +56,7 @@ ax.text(0.2,3.6,'Two carries, so 3² is the exact power\nof 3 in C(9,4) = 126 = 
 ax.text(0.2,1.3,'On the cube: corners of the 9-cube with\n4 switches on. Each carry is one more\nfactor of p in the count.',fontsize=12,color='#444')
 plt.savefig('figures/t11_kummer_carries.png'); plt.close()
 
-# Figure 12: Wilson on the mult-add circle, p = 13
+# Figure 12: Wilson on the circle-operation circle, p = 13
 p=13; g=2  # 2 generates the units mod 13
 pos={}
 x=1
@@ -79,9 +79,9 @@ for a,j in pos.items():
     t=th(j); fixed=((1+a)*(1+a)-1)%p==0
     ax.add_patch(plt.Circle((np.cos(t),np.sin(t)),0.07,facecolor=R if fixed else 'white',edgecolor=K,lw=1,zorder=3))
     ax.text(1.2*np.cos(t),1.2*np.sin(t),str(a),ha='center',va='center',fontsize=11,color=R if fixed else K)
-ax.text(0,-1.55,'Mult-add mod 13 turns the circle: each point is a turn.\nBlue chords join each point to its mult-add inverse.\nOnly 0 and 11 (= −2) are their own inverses.\nAdding every point by mult-add lands on 11, the half turn:\n(1+0)(1+1)···(1+11) = 12! ≡ −1, which is Wilson.',ha='center',va='top',fontsize=10.5)
+ax.text(0,-1.55,'The circle operation mod 13 turns the circle: each point is a turn.\nBlue chords join each point to its circle inverse.\nOnly 0 and 11 (= −2) are their own inverses.\nAdding every point by the circle operation lands on 11, the half turn:\n(1+0)(1+1)···(1+11) = 12! ≡ −1, which is Wilson.',ha='center',va='top',fontsize=10.5)
 ax.set_xlim(-1.45,1.45); ax.set_ylim(-2.75,1.4); ax.set_aspect('equal'); ax.axis('off')
-ax.set_title('The mult-add circle for p = 13',fontsize=12)
+ax.set_title('The circle-operation circle for p = 13',fontsize=12)
 ax=axs[1]; p=7; n=p-1
 terms=[(-1)**k*comb(n,k)*(n-k)**n for k in range(n+1)]
 mods=[t%p for t in terms]

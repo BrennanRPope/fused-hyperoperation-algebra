@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Category Theory Through Mult-add</title>
+<title>Category Theory Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -51,8 +51,8 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <body>
 <section class="band">
 <div class="wrap">
-<h1>Give each side a "nothing" and mult-add becomes a plain product</h1>
-<p class="lede">A ✳ B means: something from A only, something from B only, or one of each. That is a + b + ab choices. Add a "nothing" value to each side (Option, Maybe) and pairs of options are exactly those choices plus one empty pair. This is the lift 1 + x, made out of sets, and in the category of partial functions A ✳ B is the honest categorical product.</p>
+<h1>Give each side a "nothing" and the circle operation becomes a plain product</h1>
+<p class="lede">A ∘₁ B means: something from A only, something from B only, or one of each. That is a + b + ab choices. Add a "nothing" value to each side (Option, Maybe) and pairs of options are exactly those choices plus one empty pair. This is the lift 1 + x, made out of sets, and in the category of partial functions A ∘₁ B is the honest categorical product.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="grid"></div>
@@ -64,7 +64,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div class="big" id="tot"></div>
 <p id="split" style="font:500 15px 'JetBrains Mono',monospace;margin:4px 0 10px"></p>
 <p class="key small"><span style="background:var(--nil)"></span>nothing, nothing<span style="background:var(--L)"></span>A only<span style="background:var(--R)"></span>B only<span style="background:var(--B)"></span>both</p>
-<p class="small">The grid is (a + 1) by (b + 1): that is the lift, (1 + a)(1 + b). Strike out the grey corner and what is left is a ✳ b. The coloured edges are the wedge (a + b), the gold block is the smash (ab). Topologists use those two words for exactly these two pieces.</p>
+<p class="small">The grid is (a + 1) by (b + 1): that is the lift, (1 + a)(1 + b). Strike out the grey corner and what is left is a ∘₁ b. The coloured edges are the wedge (a + b), the gold block is the smash (ab). Topologists use those two words for exactly these two pieces.</p>
 </div>
 </div>
 </div>
@@ -74,7 +74,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div class="wrap side">
 <div>
 <h2>In code it is These, align, and the full outer join</h2>
-<p>Haskell calls A ✳ B <code>These a b</code> (the <code>these</code> package); Rust's itertools calls it <code>EitherOrBoth</code>. The Option fact is a two-way conversion that loses nothing, and Lean checks both round trips:</p>
+<p>Haskell calls A ∘₁ B <code>These a b</code> (the <code>these</code> package); Rust's itertools calls it <code>EitherOrBoth</code>. The Option fact is a two-way conversion that loses nothing, and Lean checks both round trips:</p>
 <pre>inductive These (α β : Type) where
   | this : α → These α β        -- A only
   | that : β → These α β        -- B only
@@ -93,12 +93,12 @@ def optionThese :
 <section class="band">
 <div class="wrap side">
 <div class="panel"><div class="fig2" id="cd"></div>
-<p class="small">Any two partial maps f and g out of X factor through A ✳ B in exactly one way. The projections are partial: "fst" has nothing to say about a B-only value.</p></div>
+<p class="small">Any two partial maps f and g out of X factor through A ∘₁ B in exactly one way. The projections are partial: "fst" has nothing to say about a B-only value.</p></div>
 <div>
-<h2>A ✳ B is the product in the category of partial functions</h2>
-<p>A partial function from X to A is a function X → Option A: it may answer "nothing". With these as the arrows (the category is called Par), the product of A and B is not A × B. It is A ✳ B. Given f: X → A and g: X → B, pair them: both answer gives "both", one answer gives "this" or "that", neither gives nothing. Lean proves the projections come out right and that this pairing is the only one.</p>
-<p>The empty set is both the start and the end object of Par (a zero object), and it is the unit of ✳. The coproduct in Par is still plain disjoint union. So Par has + for its sum and ✳ for its product, the way ordinary sets have + and ×. Turning partial maps into total maps by adding a base point (Option) is the textbook equivalence of Par with pointed sets, and it carries ✳ to ×.</p>
-<p><b>The dial, with k tags.</b> Put a tag from a k-element set on the "both" corner: A + B + k·AB. The tagged Option, 1 + k·A, turns that into a product too, 1 + k(A ✳ₖ B) ≅ (1 + kA)(1 + kB). That is the dial's lift 1 + kx made of sets. It works for every k ≥ 0 and for no negative k, since sets can't be negative.</p>
+<h2>A ∘₁ B is the product in the category of partial functions</h2>
+<p>A partial function from X to A is a function X → Option A: it may answer "nothing". With these as the arrows (the category is called Par), the product of A and B is not A × B. It is A ∘₁ B. Given f: X → A and g: X → B, pair them: both answer gives "both", one answer gives "this" or "that", neither gives nothing. Lean proves the projections come out right and that this pairing is the only one.</p>
+<p>The empty set is both the start and the end object of Par (a zero object), and it is the unit of ∘₁. The coproduct in Par is still plain disjoint union. So Par has + for its sum and ∘₁ for its product, the way ordinary sets have + and ×. Turning partial maps into total maps by adding a base point (Option) is the textbook equivalence of Par with pointed sets, and it carries ∘₁ to ×.</p>
+<p><b>The dial, with k tags.</b> Put a tag from a k-element set on the "both" corner: A + B + k·AB. The tagged Option, 1 + k·A, turns that into a product too, 1 + k(A ∘ₖ B) ≅ (1 + kA)(1 + kB). That is the dial's lift 1 + kx made of sets. It works for every k ≥ 0 and for no negative k, since sets can't be negative.</p>
 </div>
 </div>
 </section>
@@ -106,12 +106,12 @@ def optionThese :
 <section class="band alt">
 <div class="wrap side">
 <div>
-<h2>Associativity is the mult-add cube</h2>
-<p>(A ✳ B) ✳ C and A ✳ (B ✳ C) both list the seven non-empty corners of a cube: A, B, C, AB, AC, BC, ABC. Lean writes the re-bracketing out case by case and checks both round trips; the checks confirm the pentagon and hexagon rules. So (finite sets, ✳, ∅) is a symmetric monoidal category, and Option is a strong monoidal functor into (sets, ×, one point): it sends ✳ to ×, and ∅ to the one-point set.</p>
-<p>Counting sizes, the decategorification, sends ✳ to mult-add: |A ✳ B| = |A| ✳ |B|, and |Option A| = 1 + |A| is the lift. Nothing here is new; it is the reason mult-add's algebra is so well behaved. The cube's empty corner is the base point that the lift adds and the subtraction takes away.</p>
+<h2>Associativity is the circle-operation cube</h2>
+<p>(A ∘₁ B) ∘₁ C and A ∘₁ (B ∘₁ C) both list the seven non-empty corners of a cube: A, B, C, AB, AC, BC, ABC. Lean writes the re-bracketing out case by case and checks both round trips; the checks confirm the pentagon and hexagon rules. So (finite sets, ∘₁, ∅) is a symmetric monoidal category, and Option is a strong monoidal functor into (sets, ×, one point): it sends ∘₁ to ×, and ∅ to the one-point set.</p>
+<p>Counting sizes, the decategorification, sends ∘₁ to the circle operation ∘₁ (called mult-add before 1.0): |A ∘₁ B| = |A| ∘₁ |B|, and |Option A| = 1 + |A| is the lift. Nothing here is new; it is the reason the circle operation's algebra is so well behaved. The cube's empty corner is the base point that the lift adds and the subtraction takes away.</p>
 </div>
 <div class="panel"><div class="fig2" id="cube"></div>
-<p class="small">The cube for A, B, C. The hollow corner is "nothing from any of them", the base point. The other seven are A ✳ B ✳ C.</p></div>
+<p class="small">The cube for A, B, C. The hollow corner is "nothing from any of them", the base point. The other seven are A ∘₁ B ∘₁ C.</p></div>
 </div>
 </section>
 
@@ -124,7 +124,7 @@ def optionThese :
 <p>For pointed spaces, the product splits after one suspension (Σ, "stack the space between two poles"):</p>
 <div class="eq">Σ(X × Y) ≃ ΣX ∨ ΣY ∨ Σ(X ∧ Y)</div>
 <p>wedge plus smash, the same a + b + ab, now as shapes. This is a standard fact of homotopy theory. The checks compute the homology of a triangulated torus and its suspension and find exactly the pieces of S² ∨ S² ∨ S³.</p>
-<p>Count each space by its reduced Euler characteristic χ̃ = χ − 1. Products multiply χ, so <b>χ̃(X × Y) = χ̃X ✳ χ̃Y</b>: χ̃ is the mult-add coordinate and χ is its lift. Lean proves this for cell counts at every t, not only t = −1. Spheres sit at ±1, and the circle, at χ̃ = −1, is mult-add's wall: S¹ × Y always has χ̃ = −1. The logic page found the same wall in sets, as the open interval.</p>
+<p>Count each space by its reduced Euler characteristic χ̃ = χ − 1. Products multiply χ, so <b>χ̃(X × Y) = χ̃X ∘₁ χ̃Y</b>: χ̃ is the circle-operation coordinate and χ is its lift. Lean proves this for cell counts at every t, not only t = −1. Spheres sit at ±1, and the circle, at χ̃ = −1, is the circle operation's wall: S¹ × Y always has χ̃ = −1. The logic page found the same wall in sets, as the open interval.</p>
 <p>The topology page already reads the torus's holes as the Pascal cube; this is the same cube with the base point taken out.</p>
 </div>
 </div>
@@ -140,16 +140,16 @@ def optionThese :
 <tr><td><code>These</code>, <code>Align</code>, <code>zip_longest</code>, <code>EitherOrBoth</code></td><td>Haskell these and semialign packages; Rust itertools; Python itertools</td></tr>
 <tr><td>Σ(X×Y) ≃ ΣX ∨ ΣY ∨ Σ(X∧Y)</td><td>Standard homotopy theory</td></tr>
 <tr><td>χ multiplies on products; cardinality as decategorification</td><td>Euler, Poincaré; Baez–Dolan's decategorification</td></tr>
-<tr><td>Symmetric monoidal (FinSet, ✳, ∅); Option strong monoidal</td><td>Follows from the Par product; textbook</td></tr>
-<tr><td>χ̃ as the mult-add coordinate, the circle as the wall, spheres at ±1</td><td>Ours, as a reading; the arithmetic is known</td></tr>
+<tr><td>Symmetric monoidal (FinSet, ∘₁, ∅); Option strong monoidal</td><td>Follows from the Par product; textbook</td></tr>
+<tr><td>χ̃ as the circle-operation coordinate, the circle as the wall, spheres at ±1</td><td>Ours, as a reading; the arithmetic is known</td></tr>
 <tr><td>Tagged Option 1 + kA lifts the dial for k ≥ 0</td><td>Ours, a small exercise; no claim of novelty</td></tr>
 </table>
 </div>
 <div>
 <h2>Lead worth following?</h2>
-<p><b>Not as mathematics; yes as a design tool.</b> Everything here is textbook. Its value for the project is a firm underpinning: mult-add is a genuine categorical product, the lift is a functor, and the wall is the circle. So the framework's algebra rests on structure nobody disputes.</p>
-<p>The useful lead is in software. These is the type of every merge, sync, diff and outer join, and the monoidal laws are exactly what make merges compose: merging three sources in either order gives the same seven cases. Treating "merge" as a function out of A ✳ B, and checking it against the Lean laws here, is a concrete way to keep merge code honest and loosely coupled.</p>
-<p>The one open-ended question: negative dial values (OR at −1, XOR at −2) have no set model, only Euler-characteristic ones. Whether some category of signed or virtual objects has ✳₋₁ as its product is a fair question, but it is probably the known story of Euler characteristic and Mayer–Vietoris in other clothes.</p>
+<p><b>Not as mathematics; yes as a design tool.</b> Everything here is textbook. Its value for the project is a firm underpinning: the circle operation is a genuine categorical product, the lift is a functor, and the wall is the circle. So the framework's algebra rests on structure nobody disputes.</p>
+<p>The useful lead is in software. These is the type of every merge, sync, diff and outer join, and the monoidal laws are exactly what make merges compose: merging three sources in either order gives the same seven cases. Treating "merge" as a function out of A ∘₁ B, and checking it against the Lean laws here, is a concrete way to keep merge code honest and loosely coupled.</p>
+<p>The one open-ended question: negative dial values (OR at −1, XOR at −2) have no set model, only Euler-characteristic ones. Whether some category of signed or virtual objects has ∘₋₁ as its product is a fair question, but it is probably the known story of Euler characteristic and Mayer–Vietoris in other clothes.</p>
 <p class="small">Builds on: <a href="https://claude.ai/artifact/4Nb6GyQBxi8gDNdHbszA26">topology</a>, <a href="https://claude.ai/artifact/DTBbDjwUepJAUmU9AQEAhV">algebra atlas</a>, <a href="https://claude.ai/artifact/YEchSB4Ft97HsNEcV4q3aJ">infinities</a>, <a href="https://claude.ai/artifact/PrF6u5bRhkq6tPBcD5K4i2">axioms</a>.</p>
 </div>
 </div>
@@ -160,7 +160,7 @@ def optionThese :
 {
 const $=id=>document.getElementById(id);
 const mk=(id,l)=>{$(id).innerHTML='<svg role="img" aria-label="'+l+'"></svg>';return $(id).firstChild;};
-const sG=mk('grid','grid of option pairs'),sA=mk('align','aligned lists'),sC=mk('cd','product diagram'),sK=mk('cube','mult-add cube'),sX=mk('chi','reduced Euler characteristic line');
+const sG=mk('grid','grid of option pairs'),sA=mk('align','aligned lists'),sC=mk('cd','product diagram'),sK=mk('cube','Circle-operation cube'),sX=mk('chi','reduced Euler characteristic line');
 const T=(x,y,t,a,c,sz)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c||sz?' style="'+(c?'fill:'+c+';':'')+(sz?'font-size:'+sz+'px':'')+'"':'')+'>'+t+'</text>';
 const L=(x1,y1,x2,y2,c,sw,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(sw||1.5)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
 const R=(x,y,w,h,f,s)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="1.5"':'')+'/>';
@@ -181,7 +181,7 @@ function drawGrid(){
   }
   sG.innerHTML=g;
   $('tot').textContent='('+(a+1)+')('+(b+1)+') = '+((a+1)*(b+1));
-  $('split').textContent='1 + '+a+' + '+b+' + '+(a*b)+'  →  a ✳ b = '+(a+b+a*b);
+  $('split').textContent='1 + '+a+' + '+b+' + '+(a*b)+'  →  a ∘₁ b = '+(a+b+a*b);
 }
 function drawAlign(){
   const W=sA.clientWidth,H=sA.clientHeight,xs=['1','2','3','4'],ys=['"a"','"b"'];
@@ -203,7 +203,7 @@ function drawCD(){
     const mx=(a1[0]+a2[0])/2+side*(-uy)*14,my=(a1[1]+a2[1])/2+side*ux*14;
     return o+T(mx,my+4,lab,'middle',c);};
   let g=arrow(P.X,P.A,'var(--L)','','f',1)+arrow(P.X,P.B,'var(--R)','','g',-1)+arrow(P.X,P.T,'var(--B)','6 4','pair',-1)+arrow(P.T,P.A,'var(--soft)','','fst',-1)+arrow(P.T,P.B,'var(--soft)','','snd',1);
-  g+=T(P.X[0],P.X[1]+5,'X','middle',null,16)+T(P.T[0],P.T[1]+5,'A ✳ B','middle',null,16)+T(P.A[0],P.A[1]+5,'A','middle',null,16)+T(P.B[0],P.B[1]+5,'B','middle',null,16);
+  g+=T(P.X[0],P.X[1]+5,'X','middle',null,16)+T(P.T[0],P.T[1]+5,'A ∘₁ B','middle',null,16)+T(P.A[0],P.A[1]+5,'A','middle',null,16)+T(P.B[0],P.B[1]+5,'B','middle',null,16);
   sC.innerHTML=g;
 }
 function drawCube(){
@@ -226,7 +226,7 @@ function drawChi(){
   g+=L(X(-1),26,X(-1),H-20,'var(--wall)',2,'5 4')+T(X(-1)-6,22,'wall','end','var(--wall)');
   const pts=[[-2,'S¹ ∨ S¹','var(--L)'],[-1,'circle S¹, also S³','var(--wall)'],[-1,'torus S¹×S¹','var(--wall)'],[0,'point (identity)','var(--ink)'],[1,'S², S⁴','var(--R)'],[3,'S²×S²','var(--B)']];
   pts.forEach(([v,lab,c],r)=>{const y=y0+44+r*18,x=X(v),end=v>=3;g+=C(x,y0,6,c)+L(x,y0+8,x,y-4,c,1)+T(x+(end?-5:5),y,lab,end?'end':'start',c);});
-  g+=T(m,H-8,'S²×S²: 1 ✳ 1 = 3.  S¹×Y: −1 ✳ y = −1.','start');
+  g+=T(m,H-8,'S²×S²: 1 ∘₁ 1 = 3.  S¹×Y: −1 ∘₁ y = −1.','start');
   sX.innerHTML=g;
 }
 $('a').addEventListener('input',drawGrid);$('b').addEventListener('input',drawGrid);

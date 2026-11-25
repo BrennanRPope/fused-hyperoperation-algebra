@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Measure and Probability Through Mult-add</title>
+<title>Measure and Probability Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -50,7 +50,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <section class="band">
 <div class="wrap">
 <h1>Sugeno's λ-measure is the dial: probability with a weighted corner</h1>
-<p class="lede">An ordinary measure adds: two parcels that don't overlap weigh a + b. Sugeno's λ-measure (1974) weighs them a + b + λab. That is mult-add's dial with k = λ, and nothing else. So its whole theory, from the normalizing equation to its dual, is the dial's algebra drawn on one rectangle. Below, measure comes first; independence and growth processes follow from it.</p>
+<p class="lede">An ordinary measure adds: two parcels that don't overlap weigh a + b. Sugeno's λ-measure (1974) weighs them a + b + λab. That is the circle operation's dial with k = λ, and nothing else. So its whole theory, from the normalizing equation to its dual, is the dial's algebra drawn on one rectangle. Below, measure comes first; independence and growth processes follow from it.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hero"></div>
@@ -74,8 +74,8 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <section class="band alt">
 <div class="wrap side">
 <div>
-<h2>The masses are the corners of the mult-add cube</h2>
-<p>Give each atom (single point) a density gᵢ. Expanding the lift (1 + λg₁)(1 + λg₂)(1 + λg₃) visits every corner of the cube once, exactly as the mult-add cube does. Divide by λ and the measure of a set A is a sum over the corners S inside A:</p>
+<h2>The masses are the corners of the circle-operation cube</h2>
+<p>Give each atom (single point) a density gᵢ. Expanding the lift (1 + λg₁)(1 + λg₂)(1 + λg₃) visits every corner of the cube once, exactly as the circle-operation cube does. Divide by λ and the measure of a set A is a sum over the corners S inside A:</p>
 <div class="eq">μ(A) = Σ<sub>S ⊆ A</sub> λ<sup>|S|−1</sup>·∏<sub>i∈S</sub> gᵢ</div>
 <p>Those corner amounts are what fuzzy-measure theory calls the Möbius masses: how much weight sits on each group of atoms jointly. Layer one is the atoms, layer two is pairs weighted λ, layer three is the triple weighted λ². When λ ≥ 0 every mass is positive, which makes μ a belief function in the Dempster–Shafer sense. When λ is negative the masses alternate in sign, and the dual measure 1 − μ(Aᶜ) is the belief function instead.</p>
 <p>A small tie to the q-numbers: m equal atoms of size g have μ = g·[m]<sub>q</sub> with q = 1 + λg. Counting atoms under the dial is q-counting.</p>
@@ -105,9 +105,9 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <h2>Take the log and it is ordinary probability; μ is a q-number of P</h2>
 <p>The rung-0 ruler for the dial is log(1 + λx). Rescale it so the whole space is 1:</p>
 <div class="eq">P(A) = log(1 + λμ(A)) / log(1 + λ)</div>
-<p>P adds over disjoint sets: it is an honest probability. Turning it around, μ(A) = (q<sup>P(A)</sup> − 1)/(q − 1) with q = 1 + λ = k + 1, which is the q-number [P]<sub>q</sub> at a real argument. So a λ-measure is a probability measure read through the q-number lens, and q = k + 1 is exactly the project's convention. Distorting a probability this way is known; the q-number name for it is just the project's reading.</p>
+<p>P adds over disjoint sets: it is an honest probability. Turning it around, μ(A) = (q<sup>P(A)</sup> − 1)/(q − 1) with q = 1 + λ, so k = q − 1, which is the q-number [P]<sub>q</sub> at a real argument. So a λ-measure is a probability measure read through the q-number lens, where k = q − 1. Distorting a probability this way is known; the q-number name for it is just the project's reading.</p>
 <p><b>Inclusion–exclusion becomes multiplication.</b> For overlapping sets the lift obeys (1 + λμ(A∪B))(1 + λμ(A∩B)) = (1 + λμ(A))(1 + λμ(B)), and for more sets each corner's lift appears with power ±1. The signs of the classical formula moved into exponents.</p>
-<p><b>The dual weight is mult-add's inverse.</b> The dual measure μ*(A) = 1 − μ(Aᶜ) is again a λ-measure, with weight λ* = −λ/(1 + λ). That is mult-add's way back for λ, so q* = 1/q and the dual of the dual is the original. Lean proves this from the normalizing equation.</p>
+<p><b>The dual weight is the circle operation's inverse.</b> The dual measure μ*(A) = 1 − μ(Aᶜ) is again a λ-measure, with weight λ* = −λ/(1 + λ). That is the circle operation's way back for λ, so q* = 1/q and the dual of the dual is the original. Lean proves this from the normalizing equation.</p>
 </div>
 <div class="panel"><div class="fig2" id="qn"></div>
 <p class="small">μ against P for q = 0.2, 0.5, 2, 5 (λ = q − 1). q = 1 is the diagonal, plain probability. Duals are mirror images through the centre: q and 1/q.</p></div>
@@ -117,11 +117,11 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <section class="band">
 <div class="wrap side">
 <div class="panel"><div class="fig2" id="land"></div>
-<p class="small">The landscape plane, dial p across, bend q up. Shaded: laws that can carry a normalized measure on finitely many atoms. Its edge is the "or" line k + q = −1 from the statistics page, until the cusp (−2, 1), then the border parabola, which the line touches there.</p></div>
+<p class="small">The landscape plane, dial p across, bend d up. Shaded: laws that can carry a normalized measure on finitely many atoms. Its edge is the "or" line k + d = −1 from the statistics page, until the cusp (−2, 1), then the border parabola, which the line touches there.</p></div>
 <div>
 <h2>Why λ must exceed −1: the wall has to stay outside [0, 1]</h2>
 <p>Sugeno's definition requires λ &gt; −1. The dial explains the rule. Its wall sits at −1/λ, and values below a wall stay below it, because positive lifts multiply to positive lifts. When λ ≤ −1 the wall sits inside (0, 1], so no collection of parcels can ever reach measure 1. At exactly λ = −1 the only way to 1 is a sure atom. Lean proves all three steps.</p>
-<p>The same test works on every law of the landscape, F(a, b) = (a + b + p·ab)/(1 − q·ab). Measures that combine by such a law are Weber's decomposable measures (1984). A finite normalized one exists exactly when the additive ruler L(x) = ∫dt/(1 + pt + qt²) stays finite up to 1, which happens exactly when 1 + pt + qt² has no root in [0, 1]. On the map, the edge of that region is the statistics page's "or" line, then the border parabola, meeting tangentially at the cusp. So every law that can serve as "A or B" sits exactly on the edge: certainty is its wall, so it can be approached but not reached from finitely many uncertain parts.</p>
+<p>The same test works on every law of the landscape, F(a, b) = (a + b + p·ab)/(1 − d·ab). Measures that combine by such a law are Weber's decomposable measures (1984). A finite normalized one exists exactly when the additive ruler L(x) = ∫dt/(1 + pt + qt²) stays finite up to 1, which happens exactly when 1 + pt + qt² has no root in [0, 1]. On the map, the edge of that region is the statistics page's "or" line, then the border parabola, meeting tangentially at the cusp. So every law that can serve as "A or B" sits exactly on the edge: certainty is its wall, so it can be approached but not reached from finitely many uncertain parts.</p>
 <p>Inside the region there are bent examples. The tangent law (0, 1) gives μ = tan(πP/4): disjoint sets combine as (μA + μB)/(1 − μA·μB) and the whole space has measure 1.</p>
 </div>
 </div>
@@ -131,15 +131,15 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div class="wrap cols">
 <div>
 <h2>Independence: expectation passes straight through the dial</h2>
-<p>For independent X and Y and any weight k, E[X ✳ₖ Y] = E X ✳ₖ E Y. The reason is the corner: the only cross term is k·XY, and independence makes E[XY] = E X·E Y. For dependent variables the gap is exactly k·Cov(X, Y), the corner's excess. Lean proves both on finite distributions. The statistics page had this for events (the union law with k = −lift); this is the same fact for any random quantity.</p>
-<p><b>Odds of an "or" mult-add.</b> For independent events the lift of the odds is 1 + odds = 1/(1 − p), and misses multiply, so</p>
-<div class="eq">odds(A or B) = odds A ✳ odds B</div>
-<p>and odds against an "and" mult-add the same way. A 30% and a 45% event: odds 0.4286 ✳ 0.8182 = 1.597, matched by 400,000 simulated draws.</p>
+<p>For independent X and Y and any weight k, E[X ∘ₖ Y] = E X ∘ₖ E Y. The reason is the corner: the only cross term is k·XY, and independence makes E[XY] = E X·E Y. For dependent variables the gap is exactly k·Cov(X, Y), the corner's excess. Lean proves both on finite distributions. The statistics page had this for events (the union law with k = −lift); this is the same fact for any random quantity.</p>
+<p><b>Odds of an "or" combine by the circle operation ∘₁ (called mult-add before 1.0).</b> For independent events the lift of the odds is 1 + odds = 1/(1 − p), and misses multiply, so</p>
+<div class="eq">odds(A or B) = odds A ∘₁ odds B</div>
+<p>and odds against an "and" combine by the circle operation the same way. A 30% and a 45% event: odds 0.4286 ∘₁ 0.8182 = 1.597, matched by 400,000 simulated draws.</p>
 </div>
 <div>
 <h2>Growth: martingales and Yor's formula are the cube in time</h2>
-<p>Wealth after returns r₁, r₂, … is r₁ ✳ r₂ ✳ ⋯. With independent fair returns (mean 0) the expected change stays 0 at every step, by the engine above: a multiplicative martingale. Yet six fair ±50% bets leave the typical path down 58%. The mean is a dial of means; the typical path follows the log ruler, where each step loses ½·log(0.75).</p>
-<p>In continuous time this is the stochastic exponential ℰ (Doléans-Dade 1970). Yor's formula ℰ(X)·ℰ(Y) = ℰ(X + Y + [X, Y]) is mult-add one step at a time: each step's increment is Δx ✳ Δy, and the bracket [X, Y] is the running total of corner cells ΔxΔy. For Brownian motion the self-corners ΣΔW² add up to time t, and half of them is the familiar drift correction: ℰ(σW) = exp(σW − σ²t/2).</p>
+<p>Wealth after returns r₁, r₂, … is r₁ ∘₁ r₂ ∘₁ ⋯. With independent fair returns (mean 0) the expected change stays 0 at every step, by the engine above: a multiplicative martingale. Yet six fair ±50% bets leave the typical path down 58%. The mean is a dial of means; the typical path follows the log ruler, where each step loses ½·log(0.75).</p>
+<p>In continuous time this is the stochastic exponential ℰ (Doléans-Dade 1970). Yor's formula ℰ(X)·ℰ(Y) = ℰ(X + Y + [X, Y]) is the circle operation one step at a time: each step's increment is Δx ∘₁ Δy, and the bracket [X, Y] is the running total of corner cells ΔxΔy. For Brownian motion the self-corners ΣΔW² add up to time t, and half of them is the familiar drift correction: ℰ(σW) = exp(σW − σ²t/2).</p>
 <div class="panel"><div class="fig2" id="bm" style="min-height:250px"></div>
 <p class="small">One path, 4,000 steps. Orange: the product ∏(1 + σΔW). Teal dashed: exp(σW − σ²t/2), on top of it. Grey: exp(σW), which forgets the corners and drifts away.</p></div>
 </div>
@@ -156,11 +156,11 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <tr><td>λ-measures are distortions of a probability; multiplicative inclusion–exclusion</td><td>known (fuzzy-measure literature)</td></tr>
 <tr><td>Decomposable measures for any associative "sum"</td><td>Dubois and Prade 1982, Weber 1984</td></tr>
 <tr><td>Stochastic exponential, Yor's formula, multiplicative martingales, the log ruler for growth</td><td>Doléans-Dade 1970, Yor 1976, Kelly 1956</td></tr>
-<tr><td>Möbius masses = mult-add cube corners; μ = [P]<sub>q</sub> with q = k + 1; dual weight = mult-add inverse</td><td>ours as readings; the facts are known</td></tr>
+<tr><td>Möbius masses = circle-operation cube corners; μ = [P]<sub>q</sub> with k = q − 1; dual weight = circle inverse</td><td>ours as readings; the facts are known</td></tr>
 <tr><td>Normalizable region on the landscape: edge = "or" line, then border parabola, tangent at the cusp</td><td>ours as a placement; rests on the known strict/nilpotent split</td></tr>
-<tr><td>Odds of an independent "or" mult-add</td><td>a one-line consequence; I found no source stating it this way</td></tr>
+<tr><td>Odds of an independent "or" combine by the circle operation</td><td>a one-line consequence; I found no source stating it this way</td></tr>
 </tbody></table>
-<p class="small">Already covered elsewhere, so only cited here: the union rule, inclusion–exclusion as signed cube corners, dependence as k = −lift, the generating-function dial, cumulants and the CLT, Bayes odds and the AMH "or" line on the <a href="https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv">statistics page</a>; hazards adding and series systems on the <a href="https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v">information theory page</a>; decrements, claim counts and ruin on the <a href="https://claude.ai/artifact/AYgNMio88Y3VE9gtx11ipR">actuarial page</a>; q-counting on the <a href="https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL">q page</a>. Tested and dropped: Bernoulli convolutions (their only structure is the generic product of characteristic functions), and odds of an "and" (they don't mult-add; odds against do).</p>
+<p class="small">Already covered elsewhere, so only cited here: the union rule, inclusion–exclusion as signed cube corners, dependence as k = −lift, the generating-function dial, cumulants and the CLT, Bayes odds and the AMH "or" line on the <a href="https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv">statistics page</a>; hazards adding and series systems on the <a href="https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v">information theory page</a>; decrements, claim counts and ruin on the <a href="https://claude.ai/artifact/AYgNMio88Y3VE9gtx11ipR">actuarial page</a>; q-counting on the <a href="https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL">q page</a>. Tested and dropped: Bernoulli convolutions (their only structure is the generic product of characteristic functions), and odds of an "and" (they don't the circle operation; odds against do).</p>
 </div>
 <div>
 <h2>Lead worth following?</h2>
@@ -251,7 +251,7 @@ function land(){
   g+='<line x1="'+X(-0.99)+'" y1="'+Y(0)+'" x2="'+X(p1)+'" y2="'+Y(0)+'" stroke="var(--teal)" stroke-width="3.5"/>';
   const dot=(p,q,fill,t,dx,dy,a)=>'<circle cx="'+X(p)+'" cy="'+Y(q)+'" r="5.5" fill="'+fill+'" stroke="var(--ink)" stroke-width="1"/>'+T(X(p)+dx,Y(q)+dy,t,a);
   const nar=W<420;
-  g+=dot(-2,1,'var(--orange)','cusp',-8,-8,'end')+dot(-1,0,'var(--panel)',nar?'union':'union, k = −1',-8,18,'end')+dot(1,0,'var(--ink)','mult-add',4,-10)+dot(0,1,'var(--panel)','tangent',8,-8)+dot(0,-1,'var(--panel)','velocity',8,16);
+  g+=dot(-2,1,'var(--orange)','cusp',-8,-8,'end')+dot(-1,0,'var(--panel)',nar?'union':'union, k = −1',-8,18,'end')+dot(1,0,'var(--ink)','The circle operation',4,-10)+dot(0,1,'var(--panel)','tangent',8,-8)+dot(0,-1,'var(--panel)','velocity',8,16);
   g+=T(X(1.9),Y(0)-8,'Sugeno, λ > −1','middle')+T(X(p1),Y(0)+18,'p','end')+T(X(0)-8,Y(q1)+12,'q','end');
   S5.innerHTML=g;
 }

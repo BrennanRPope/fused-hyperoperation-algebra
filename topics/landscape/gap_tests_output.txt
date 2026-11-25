@@ -1,26 +1,26 @@
 A. Growth laws that live off the straight line (exact Mobius laws)
-PASS logistic, start at 10% of capacity: two runs compose by F_(p,q), p = 0.64, q = -0.0576   err 1.7e-14, s_eq 0.64
+PASS logistic, start at 10% of capacity: two runs compose by F_(p,d), p = 0.64, d = -0.0576   err 1.7e-14, s_eq 0.64
 PASS    unit-free shape s_eq = (1 - 2 Y0/K)^2 for logistic start 10%
-PASS logistic, start at 30% of capacity: two runs compose by F_(p,q), p = 0.32, q = -0.1344   err 7.1e-13, s_eq 0.16
+PASS logistic, start at 30% of capacity: two runs compose by F_(p,d), p = 0.32, d = -0.1344   err 7.1e-13, s_eq 0.16
 PASS    unit-free shape s_eq = (1 - 2 Y0/K)^2 for logistic start 30%
-PASS logistic, start at 50% of capacity: two runs compose by F_(p,q), p = 0, q = -0.16   err 1.4e-13, s_eq 0
+PASS logistic, start at 50% of capacity: two runs compose by F_(p,d), p = 0, d = -0.16   err 1.4e-13, s_eq 0
 PASS    unit-free shape s_eq = (1 - 2 Y0/K)^2 for logistic start 50%
-PASS logistic, start at 80% of capacity: two runs compose by F_(p,q), p = -0.48, q = -0.1024   err 3.6e-13, s_eq 0.36
+PASS logistic, start at 80% of capacity: two runs compose by F_(p,d), p = -0.48, d = -0.1024   err 3.6e-13, s_eq 0.36
 PASS    unit-free shape s_eq = (1 - 2 Y0/K)^2 for logistic start 80%
-PASS logistic, start at 140% of capacity: two runs compose by F_(p,q), p = -1.44, q = 0.3584   err 1.3e-13, s_eq 3.24
+PASS logistic, start at 140% of capacity: two runs compose by F_(p,d), p = -1.44, d = 0.3584   err 1.3e-13, s_eq 3.24
 PASS    unit-free shape s_eq = (1 - 2 Y0/K)^2 for logistic start 140%
-PASS falling body with quadratic drag, from rest (terminal speed = the wall): two runs compose by F_(p,q), p = -0, q = -0.1962   err 1.3e-13, s_eq 0
-PASS falling body shot down faster than terminal speed (both walls on one side): two runs compose by F_(p,q), p = -1.6, q = 0.4438   err 2.4e-14, s_eq 3.262
-PASS Kalman-Bucy filter variance from P0 = 0.0: two runs compose by F_(p,q), p = -0.6, q = -4   err 2.8e-14, s_eq 0.022
-PASS Kalman-Bucy filter variance from P0 = 0.4: two runs compose by F_(p,q), p = -2.2, q = -2.88   err 4.7e-14, s_eq 0.2958
-PASS Kalman-Bucy filter variance from P0 = 3.0: two runs compose by F_(p,q), p = -12.6, q = 35.6   err 4.5e-15, s_eq 9.704
+PASS falling body with quadratic drag, from rest (terminal speed = the wall): two runs compose by F_(p,d), p = -0, d = -0.1962   err 1.3e-13, s_eq 0
+PASS falling body shot down faster than terminal speed (both walls on one side): two runs compose by F_(p,d), p = -1.6, d = 0.4438   err 2.4e-14, s_eq 3.262
+PASS Kalman-Bucy filter variance from P0 = 0.0: two runs compose by F_(p,d), p = -0.6, d = -4   err 2.8e-14, s_eq 0.022
+PASS Kalman-Bucy filter variance from P0 = 0.4: two runs compose by F_(p,d), p = -2.2, d = -2.88   err 4.7e-14, s_eq 0.2958
+PASS Kalman-Bucy filter variance from P0 = 3.0: two runs compose by F_(p,d), p = -12.6, d = 35.6   err 4.5e-15, s_eq 9.704
 
 B. Waves: the log-derivative w = psi'/psi of psi'' = (V - E) psi obeys w' = (V - E) - w^2
-PASS Schrodinger, forbidden region (E < V): two real walls: two runs compose by F_(p,q), p = -0.6, q = -1.41   err 7.5e-15, s_eq 0.06
+PASS Schrodinger, forbidden region (E < V): two real walls: two runs compose by F_(p,d), p = -0.6, d = -1.41   err 7.5e-15, s_eq 0.06
 PASS    region sign = sign(V - E): discriminant +6
-PASS Schrodinger, allowed region (E > V): no real wall, it turns: two runs compose by F_(p,q), p = -0.6, q = 1.59   err 3.3e-16, s_eq -0.06
+PASS Schrodinger, allowed region (E > V): no real wall, it turns: two runs compose by F_(p,d), p = -0.6, d = 1.59   err 3.3e-16, s_eq -0.06
 PASS    region sign = sign(V - E): discriminant -6
-PASS Schrodinger, turning point (E = V): one double wall: two runs compose by F_(p,q), p = -0.6, q = 0.09   err 1.1e-14, s_eq inf
+PASS Schrodinger, turning point (E = V): one double wall: two runs compose by F_(p,d), p = -0.6, d = 0.09   err 1.1e-14, s_eq inf
 PASS    region sign = sign(V - E): discriminant +0
 
 C. The straight line: symmetric noise cannot pass the parity wall

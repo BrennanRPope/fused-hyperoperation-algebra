@@ -1,4 +1,4 @@
-"""Conservation of mass and charge through mult-add and the landscape.
+"""Conservation of mass and charge through the circle operation and the landscape.
 Invariant mass is a law of cosines: M^2 = m1^2 + m2^2 + 2 m1 m2 c.
  c = 1: Lavoisier (masses add exactly; the border, a flat triangle)
  c < 1: bound states (turning country, real angle theta)
@@ -77,13 +77,13 @@ rel = dm/(2*18.01528e-3)
 res["water_mass_defect_rel"] = rel
 check("burning hydrogen: mass lost is ~1.8e-10 of the water made (Lavoisier's balances: ~1e-4 at best)", 1.5e-10 < rel < 2e-10, f"{rel:.2e}")
 
-# 5. charge: Q adds, the phase e^{iQφ} multiplies, so its excess mult-adds (rotation)
+# 5. charge: Q adds, the phase e^{iQφ} multiplies, so its excess combines by the circle operation (rotation)
 good = True
 for _ in range(300):
     Q1, Q2 = rng.integers(-5, 6, 2); phi = rng.uniform(0, 2*np.pi)
     w1, w2 = np.exp(1j*Q1*phi)-1, np.exp(1j*Q2*phi)-1
     good &= abs((w1 + w2 + w1*w2) - (np.exp(1j*(Q1+Q2)*phi)-1)) < 1e-12
-check("charge: excess phase e^{iQφ}−1 mult-adds as charges add (300 cases); |1+w| = 1 is the turning country's circle", good)
+check("charge: excess phase e^{iQφ}−1 combines by the circle operation as charges add (300 cases); |1+w| = 1 is the turning country's circle", good)
 # charge and atom balance of a redox equation: MnO4- + 5Fe2+ + 8H+ -> Mn2+ + 5Fe3+ + 4H2O
 lhs = dict(Mn=1, O=4, Fe=5, H=8, q=-1+10+8); rhs = dict(Mn=1, Fe=5, O=4, H=8, q=2+15)
 check("permanganate–iron(II): atoms and charge both balance (charge +17 each side)", lhs == rhs)

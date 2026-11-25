@@ -48,7 +48,7 @@ check(f"without the velocity twist: {no_vel:.2f} °/yr, still within 1σ (pulsar
 a = (Tsun*Mt*299792458.0*(Pb/(2*math.pi))**2*299792458.0**2)**(1/3)   # GM = Tsun*c³*Mt
 x = Tsun*Mt*299792458.0/a
 print(f"   separation a = {a/1e3:.0f} km, M/r = {x:.2e} (Gravity Probe B: {3.986004418e14/299792458.0**2/7027.4e3:.2e})")
-check("field strength M/r ≈ 4e-6: 10,000× Earth orbit's, but the ✳ corner (second order) is still ~1e-6 of the twist", 3e-6 < x < 6e-6)
+check("field strength M/r ≈ 4e-6: 10,000× Earth orbit's, but the ∘₁ corner (second order) is still ~1e-6 of the twist", 3e-6 < x < 6e-6)
 check("so the exact fusion's corner is far below the 14% measurement error: not testable here", x < 0.14/1000)
 # Hulse–Taylor B1913+16 prediction (no precise measured rate; profile changes seen)
 mp, mc, Pb2, e2 = 1.438, 1.390, 0.322997448918*86400, 0.6171340

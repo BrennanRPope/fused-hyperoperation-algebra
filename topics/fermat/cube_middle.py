@@ -1,4 +1,4 @@
-# Mult-add p-th power vs ordinary p-th power: [p](s) = (1+s)^p - 1, middle of Pascal cube = [p](s) - s^p.
+# Circle p-th power vs ordinary p-th power: [p](s) = (1+s)^p - 1, middle of Pascal cube = [p](s) - s^p.
 # Height 1: middle always divisible by p. Wieferich/Mirimanoff: a case-I Fermat counterexample forces it mod p^2.
 from sympy import primerange
 def agree2(p, s):

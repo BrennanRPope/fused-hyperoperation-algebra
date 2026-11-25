@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fermat through mult-add</title>
+<title>Fermat through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE work: a careful reading document, honest about known vs new
-   IDEA a plate from a geometry atlas: ink drawings, one blue for mult-add, one red for where it breaks
-   PICTURE the two roads to Fermat, with the mult-add territory shaded and the 1/x wall between
-   COLOUR white ground, near-black ink, ultramarine for mult-add, vermilion for failure; night is deep ink
+   IDEA a plate from a geometry atlas: ink drawings, one blue for the circle operation, one red for where it breaks
+   PICTURE the two roads to Fermat, with the circle-operation territory shaded and the 1/x wall between
+   COLOUR white ground, near-black ink, ultramarine for the circle operation, vermilion for failure; night is deep ink
    TYPE Newsreader for titles, Inter for text
    LAYOUT title and finding across the top, route map full width beneath; phone stacks with a vertical map */
 :root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
@@ -71,32 +71,32 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 <body>
 <header class="band top">
 <div class="wrap">
-<h1>Fermat's Last Theorem through mult-add</h1>
-<p class="lede">Mult-add carries Fermat exactly as far as the commutative world reaches. Kummer's 1847 road runs on mult-add the whole way and stalls at primes like 37. Wiles' 1995 road starts on mult-add too, then has to pass the same 1/x wall you hit, into the Möbius geometry where modular forms live.</p>
+<h1>Fermat's Last Theorem through the circle operation</h1>
+<p class="lede">The circle operation ∘₁ (called mult-add before 1.0) carries Fermat exactly as far as the commutative world reaches. Kummer's 1847 road runs on the circle operation the whole way and stalls at primes like 37. Wiles' 1995 road starts on the circle operation too, then has to pass the same 1/x wall you hit, into the Möbius geometry where modular forms live.</p>
 <div class="tally">
 <div><b>All known</b>Every theorem here is established math.</div>
-<div><b>3 restatements</b>Clean mult-add wording of classical facts.</div>
-<div><b>1 lead</b>Toric geometry: a whole field built from mult-add.</div>
+<div><b>3 restatements</b>Clean circle-operation wording of classical facts.</div>
+<div><b>1 lead</b>Toric geometry: a whole field built from the circle operation.</div>
 <div><b>No proof</b>Nothing here claims one.</div>
 </div>
-<div class="fig" id="mapfig" role="img" aria-label="Two roads from Fermat's equation. Kummer's road: roots of unity, split into p factors, class number check, stops at irregular primes. Wiles' road: Frey curve, Tate curve, Ribet's level lowering, then past the 1/x wall into modular forms. The first three stations of each road sit in the shaded mult-add region."><svg id="map"></svg></div>
+<div class="fig" id="mapfig" role="img" aria-label="Two roads from Fermat's equation. Kummer's road: roots of unity, split into p factors, class number check, stops at irregular primes. Wiles' road: Frey curve, Tate curve, Ribet's level lowering, then past the 1/x wall into modular forms. The first three stations of each road sit in the shaded circle-operation region."><svg id="map"></svg></div>
 </div>
 </header>
 <nav class="nav" aria-label="Sections">
-<a href="#powers">Two kinds of power</a><a href="#kummer">Kummer's road</a><a href="#curve">The Fermat curve</a><a href="#wiles">Wiles' road</a><a href="#limits">What mult-add can build</a><a href="#ledger">Known vs new</a>
+<a href="#powers">Two kinds of power</a><a href="#kummer">Kummer's road</a><a href="#curve">The Fermat curve</a><a href="#wiles">Wiles' road</a><a href="#limits">What the circle operation can build</a><a href="#ledger">Known vs new</a>
 </nav>
 
 <section class="band" id="powers"><div class="wrap">
-<h2>Fermat is one ordinary power against one mult-add power</h2>
-<p>Write <b>[p]s</b> for the mult-add p-th power, s ⊕ s ⊕ … ⊕ s, which equals (1+s)ᵖ − 1. Divide xᵖ + yᵖ = zᵖ by xᵖ and set t = y/x and s = z/x − 1. The equation becomes:</p>
+<h2>Fermat is one ordinary power against one circle power</h2>
+<p>Write <b>[p]s</b> for the circle p-th power, s ∘₁ s ∘₁ … ∘₁ s, which equals (1+s)ᵖ − 1. Divide xᵖ + yᵖ = zᵖ by xᵖ and set t = y/x and s = z/x − 1. The equation becomes:</p>
 <div class="eq">tᵖ = [p]s</div>
-<p>So Fermat's Last Theorem says an ordinary p-th power of a fraction never equals a mult-add p-th power of a fraction, except in the trivial cases. This is a restatement, not new content, but it puts the theorem in your language.</p>
+<p>So Fermat's Last Theorem says an ordinary p-th power of a fraction never equals a circle p-th power of a fraction, except in the trivial cases. This is a restatement, not new content, but it puts the theorem in your language.</p>
 <div class="two">
 <div>
 <h3>The middle of the Pascal cube</h3>
-<p>[p]s is your mult-add cube with every corner weight s. Its layers are the Pascal row. For p = 7:</p>
+<p>[p]s is your circle-operation cube with every corner weight s. Its layers are the Pascal row. For p = 7:</p>
 <div class="pascal" aria-label="Pascal row for 7"><span>1</span><span class="mid">7</span><span class="mid">21</span><span class="mid">35</span><span class="mid">35</span><span class="mid">21</span><span class="mid">7</span><span>1</span></div>
-<p>The far corner is sᵖ. Everything between the first and last layer (blue) is divisible by p, for every prime p. That is exactly what "height 1" means: mod p, the mult-add power and the ordinary power agree. It also explains Fermat's first congruence, x + y ≡ z (mod p).</p>
+<p>The far corner is sᵖ. Everything between the first and last layer (blue) is divisible by p, for every prime p. That is exactly what "height 1" means: mod p, the circle power and the ordinary power agree. It also explains Fermat's first congruence, x + y ≡ z (mod p).</p>
 <p>The fight is one digit deeper. Wieferich (1909) and Mirimanoff (1910) proved that a counterexample with p not dividing xyz would make the blue middle divisible by <b>p²</b>. Checked here for p below 20,000:</p>
 <div class="scroll"><table class="small">
 <thead><tr><th>Corner weight s</th><th>Primes where the middle is divisible by p²</th></tr></thead>
@@ -111,23 +111,23 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 <h3>The rotated cube collapses</h3>
 <div class="fig" style="min-height:300px" id="rotfig" role="img" aria-label="Seven points on a circle, each a copy of t rotated by a seventh root of unity."><svg id="rot"></svg></div>
 <p>Now give the cube's corners the rotated copies t, ζt, ζ²t, … where ζ is a p-th root of unity. By rotational symmetry every middle layer sums to zero, and only the far corner survives:</p>
-<div class="eq">t ⊕ ζt ⊕ ζ²t ⊕ … ⊕ ζᵖ⁻¹t = tᵖ</div>
+<div class="eq">t ∘₁ ζt ∘₁ ζ²t ∘₁ … ∘₁ ζᵖ⁻¹t = tᵖ</div>
 <p class="small">Checked numerically for p = 3, 5, 7, 11. This is Kummer's factorization, xᵖ + yᵖ = ∏(x + ζᵏy), drawn as a cube.</p>
 </div>
 </div>
 </div></section>
 
 <section class="band top" id="kummer"><div class="wrap">
-<h2>Kummer's road is pure mult-add, and it breaks at irregular primes</h2>
+<h2>Kummer's road is pure the circle operation, and it breaks at irregular primes</h2>
 <div class="two">
 <div>
-<h3>Kummer's π is a mult-add torsion point</h3>
-<p>Set π = ζ − 1. Then [p]π = (1+π)ᵖ − 1 = ζᵖ − 1 = 0. So the number Kummer built everything on is a point that mult-add sends to zero after p steps. Multiplying the p − 1 nonzero ones gives exactly p (checked for 5, 7, 13). This is the Lubin–Tate picture of cyclotomic fields, standard since 1965.</p>
+<h3>Kummer's π is a circle-operation torsion point</h3>
+<p>Set π = ζ − 1. Then [p]π = (1+π)ᵖ − 1 = ζᵖ − 1 = 0. So the number Kummer built everything on is a point that the circle operation sends to zero after p steps. Multiplying the p − 1 nonzero ones gives exactly p (checked for 5, 7, 13). This is the Lubin–Tate picture of cyclotomic fields, standard since 1965.</p>
 <h3>Where it works</h3>
 <p>Kummer split xᵖ + yᵖ into p factors and wanted each factor to be a p-th power. That needs unique factoring in the ring built from ζ. It fails at p = 23 already, but Kummer only needs the failure to be invisible to p: the class number h must not be divisible by p. Those are the <b>regular</b> primes, and for them Fermat is true.</p>
 <h3>Where Bernoulli numbers come from</h3>
-<p>The mult-add exponential is eˣ − 1. Its reciprocal series, x / (eˣ − 1), has the Bernoulli numbers as coefficients. Kummer's test: p is irregular exactly when p divides the top of one of B₂, B₄, …, B₍ₚ₋₃₎.</p>
-<p>The mult-add version is Coleman's (1979): take the cyclotomic unit [a]π / π, the a-fold mult-add power over the single one. In log coordinates its k-th coefficient is (aᵏ − 1)·Bₖ / k. Checked here up to k = 8.</p>
+<p>The circle-operation exponential is eˣ − 1. Its reciprocal series, x / (eˣ − 1), has the Bernoulli numbers as coefficients. Kummer's test: p is irregular exactly when p divides the top of one of B₂, B₄, …, B₍ₚ₋₃₎.</p>
+<p>The circle-operation version is Coleman's (1979): take the cyclotomic unit [a]π / π, the a-fold circle power over the single one. In log coordinates its k-th coefficient is (aᵏ − 1)·Bₖ / k. Checked here up to k = 8.</p>
 </div>
 <div>
 <h3>Relative class numbers of the ζ-ring</h3>
@@ -135,16 +135,16 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 <div class="bars" id="bars"></div>
 <p class="small">Irregular primes below 200: 37, 59, 67, 101, 103, 131, 149, 157. About 39% of primes are irregular, so Kummer's road can never cover all of them.</p>
 <h3>A geometric picture of the failure</h3>
-<p>Take the mult-add log of the cyclotomic units. They land on a lattice, a crystal in space. The true units form a finer crystal, and the ratio of the two cell volumes is the class number of the real part (Dirichlet, Kummer). An irregular prime is one where the crystal has a p-fold gap that factoring can't see across. That is a fair picture of known theory, not a new one.</p>
+<p>Take the circle-operation log of the cyclotomic units. They land on a lattice, a crystal in space. The true units form a finer crystal, and the ratio of the two cell volumes is the class number of the real part (Dirichlet, Kummer). An irregular prime is one where the crystal has a p-fold gap that factoring can't see across. That is a fair picture of known theory, not a new one.</p>
 </div>
 </div>
 </div></section>
 
 <section class="band" id="curve"><div class="wrap">
-<h2>The Fermat curve is a straight line, pulled back through the mult-add torus</h2>
+<h2>The Fermat curve is a straight line, pulled back through the circle-operation torus</h2>
 <div class="two">
 <div>
-<p>Treat (X, Y) as a point of the mult-add torus, two copies of the multiplicative circle. Inside it sits the line X + Y = 1. The n-fold map (X, Y) → (Xⁿ, Yⁿ) is the torus's own "times n". The Fermat curve xⁿ + yⁿ = 1 is everything that lands on the line:</p>
+<p>Treat (X, Y) as a point of the circle-operation torus, two copies of the multiplicative circle. Inside it sits the line X + Y = 1. The n-fold map (X, Y) → (Xⁿ, Yⁿ) is the torus's own "times n". The Fermat curve xⁿ + yⁿ = 1 is everything that lands on the line:</p>
 <div class="eq">Fermat curve = (times n)⁻¹ of the line X + Y = 1</div>
 <p>The drawing shows the line's amoeba: (log|X|, log|Y|), the shadow the line casts in log coordinates. Its three arms are the three punctures 0, 1 and ∞. The Fermat curve's amoeba is this same shape shrunk by n.</p>
 <p>Counting how the n² sheets wrap around those three punctures (Riemann–Hurwitz) gives the genus, the number of holes: (n − 1)(n − 2)/2.</p>
@@ -155,13 +155,13 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 <div class="scroll"><table class="stack">
 <thead><tr><th>n</th><th class="n">Holes</th><th>Shape</th><th>Rational points</th></tr></thead>
 <tbody>
-<tr><td data-l="n">2</td><td class="n" data-l="Holes">0</td><td data-l="Shape">A circle. It is a mult-add group: multiply two Pythagorean triples as complex numbers and you get a third.</td><td data-l="Rational points">Infinitely many</td></tr>
-<tr><td data-l="n">3</td><td class="n" data-l="Holes">1</td><td data-l="Shape">An elliptic curve, a group of its own kind, not mult-add.</td><td data-l="Rational points">Only trivial ones (Euler)</td></tr>
+<tr><td data-l="n">2</td><td class="n" data-l="Holes">0</td><td data-l="Shape">A circle. It is a circle-operation group: multiply two Pythagorean triples as complex numbers and you get a third.</td><td data-l="Rational points">Infinitely many</td></tr>
+<tr><td data-l="n">3</td><td class="n" data-l="Holes">1</td><td data-l="Shape">An elliptic curve, a group of its own kind, not the circle operation.</td><td data-l="Rational points">Only trivial ones (Euler)</td></tr>
 <tr><td data-l="n">4, 5, 6</td><td class="n" data-l="Holes">3, 6, 10</td><td data-l="Shape">No group law at all.</td><td data-l="Rational points">Finitely many (Faltings 1983), none nontrivial (Wiles 1995)</td></tr>
 </tbody></table></div>
-<p style="margin-top:14px">So Fermat's curve is a mult-add group only at n = 2, which is exactly the case with infinitely many solutions.</p>
+<p style="margin-top:14px">So Fermat's curve is a circle-operation group only at n = 2, which is exactly the case with infinitely many solutions.</p>
 <h3>Holes also set the wobble in point counts</h3>
-<p>Weil (1949) counted points on Fermat curves over finite fields with Jacobi sums: a mult-add character at u times another at 1 − u, the same line-in-the-torus picture. The count can differ from q + 1 by at most 2·(holes)·√q. Checked:</p>
+<p>Weil (1949) counted points on Fermat curves over finite fields with Jacobi sums: a circle-operation character at u times another at 1 − u, the same line-in-the-torus picture. The count can differ from q + 1 by at most 2·(holes)·√q. Checked:</p>
 <div class="scroll"><table>
 <thead><tr><th>n</th><th class="n">Holes</th><th class="n">Field size q</th><th class="n">Points</th><th class="n">Wobble</th><th class="n">Bound</th></tr></thead>
 <tbody>
@@ -172,61 +172,61 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 </div></section>
 
 <section class="band top" id="wiles"><div class="wrap">
-<h2>Wiles' road starts on the mult-add circle and leaves it at the 1/x wall</h2>
+<h2>Wiles' road starts on the circle-operation circle and leaves it at the 1/x wall</h2>
 <div class="two">
 <div class="fig" id="tatefig" role="img" aria-label="A ring between two circles. The outer circle is glued to the inner one by multiplying by q, which makes a torus. Twenty-five dots mark the 5-torsion points; the five on the outer circle are fifth roots of unity."><svg id="tate"></svg></div>
 <div>
-<h3>An elliptic curve is the mult-add plane folded by one number</h3>
-<p>Take the punctured plane, which is the mult-add group, and declare z the same point as q·z for one fixed q with |q| &lt; 1. The ring between |z| = 1 and |z| = |q| gets its two edges glued, and it becomes a torus. Every complex elliptic curve arises this way. Tate (1959) did the same over the p-adic numbers for curves with "multiplicative" bad behaviour: E = G<sub>m</sub> / qᶻ.</p>
+<h3>An elliptic curve is the circle operation plane folded by one number</h3>
+<p>Take the punctured plane, which is the circle-operation group, and declare z the same point as q·z for one fixed q with |q| &lt; 1. The ring between |z| = 1 and |z| = |q| gets its two edges glued, and it becomes a torus. Every complex elliptic curve arises this way. Tate (1959) did the same over the p-adic numbers for curves with "multiplicative" bad behaviour: E = G<sub>m</sub> / qᶻ.</p>
 <h3>Where Kummer and Frey meet</h3>
 <p>The 5-torsion of this torus is 25 points: the five fifth roots of unity on the outer circle (blue, Kummer's roots) and the fifth roots of q spiralling inward. That structure, roots of unity plus roots of q, is the heart of the next step.</p>
 </div>
 </div>
-<h3>The argument, and which parts sit on mult-add</h3>
+<h3>The argument, and which parts sit on the circle operation</h3>
 <div class="scroll"><table class="stack">
-<thead><tr><th>Step</th><th>What happens</th><th>On mult-add?</th></tr></thead>
+<thead><tr><th>Step</th><th>What happens</th><th>On the circle operation?</th></tr></thead>
 <tbody>
-<tr><td data-l="Step">Frey curve</td><td data-l="What happens">A solution aᵖ + bᵖ = cᵖ gives y² = x(x − aᵖ)(x + bᵖ). It is semistable: at every bad prime it is a Tate curve.</td><td data-l="On mult-add?"><span class="tag b">Yes, locally</span></td></tr>
-<tr><td data-l="Step">Its p-torsion</td><td data-l="What happens">At each bad prime it is p-th roots of unity plus p-th roots of q, as in the drawing.</td><td data-l="On mult-add?"><span class="tag b">Yes</span></td></tr>
-<tr><td data-l="Step">Ribet (1990)</td><td data-l="What happens">Because q's size there is a multiple of p, those primes drop out of the level, which falls to 2.</td><td data-l="On mult-add?"><span class="tag b">Mostly</span></td></tr>
-<tr><td data-l="Step">Modularity, Wiles and Taylor (1995)</td><td data-l="What happens">Semistable curves come from modular forms: functions on the upper half-plane unchanged by Möbius maps z → (az + b)/(cz + d).</td><td data-l="On mult-add?"><span class="tag r">No</span></td></tr>
-<tr><td data-l="Step">Contradiction</td><td data-l="What happens">There are no such forms at level 2, so the Frey curve, and the solution, can't exist.</td><td data-l="On mult-add?"><span class="tag r">No</span></td></tr>
+<tr><td data-l="Step">Frey curve</td><td data-l="What happens">A solution aᵖ + bᵖ = cᵖ gives y² = x(x − aᵖ)(x + bᵖ). It is semistable: at every bad prime it is a Tate curve.</td><td data-l="On the circle operation?"><span class="tag b">Yes, locally</span></td></tr>
+<tr><td data-l="Step">Its p-torsion</td><td data-l="What happens">At each bad prime it is p-th roots of unity plus p-th roots of q, as in the drawing.</td><td data-l="On the circle operation?"><span class="tag b">Yes</span></td></tr>
+<tr><td data-l="Step">Ribet (1990)</td><td data-l="What happens">Because q's size there is a multiple of p, those primes drop out of the level, which falls to 2.</td><td data-l="On the circle operation?"><span class="tag b">Mostly</span></td></tr>
+<tr><td data-l="Step">Modularity, Wiles and Taylor (1995)</td><td data-l="What happens">Semistable curves come from modular forms: functions on the upper half-plane unchanged by Möbius maps z → (az + b)/(cz + d).</td><td data-l="On the circle operation?"><span class="tag r">No</span></td></tr>
+<tr><td data-l="Step">Contradiction</td><td data-l="What happens">There are no such forms at level 2, so the Frey curve, and the solution, can't exist.</td><td data-l="On the circle operation?"><span class="tag r">No</span></td></tr>
 </tbody></table></div>
-<p style="margin-top:14px">The dividing line is commutativity. Mult-add is a one-dimensional, commutative symmetry, and its torsion points generate every abelian extension of the rationals (Kronecker–Weber). Fermat needed two-dimensional, non-commutative symmetry, the GL₂ part of the Langlands program.</p>
+<p style="margin-top:14px">The dividing line is commutativity. The circle operation is a one-dimensional, commutative symmetry, and its torsion points generate every abelian extension of the rationals (Kronecker–Weber). Fermat needed two-dimensional, non-commutative symmetry, the GL₂ part of the Langlands program.</p>
 </div></section>
 
 <section class="band" id="limits"><div class="wrap">
-<h2>What geometry mult-add can build, and the honest limit</h2>
+<h2>What geometry the circle operation can build, and the honest limit</h2>
 <div class="two">
 <div>
-<p>One-dimensional formal group laws, the family mult-add belongs to, are classified by a single number called height (Lazard). Each rung reaches different geometry:</p>
+<p>One-dimensional formal group laws, the family the circle operation belongs to, are classified by a single number called height (Lazard). Each rung reaches different geometry:</p>
 <div class="ladder">
 <div><b>Height ∞</b><span>Ordinary addition. Ordinary cohomology of shapes.</span></div>
-<div class="me"><b>Height 1</b><span><b class="b">Mult-add.</b> Roots of unity and all abelian number fields; toric varieties; tropical geometry; every complex elliptic curve as a folded plane; Tate curves; K-theory, where line bundles combine by exactly a + b + ab.</span></div>
-<div><b>Height 2</b><span>Supersingular elliptic curves; elliptic cohomology. Genuinely beyond mult-add.</span></div>
-<div><b>Height h</b><span>Lubin–Tate towers, which carry the local Langlands correspondence for GLₕ (Harris–Taylor 2001). This is the real "generalized mult-add".</span></div>
+<div class="me"><b>Height 1</b><span><b class="b">circle operation.</b> Roots of unity and all abelian number fields; toric varieties; tropical geometry; every complex elliptic curve as a folded plane; Tate curves; K-theory, where line bundles combine by exactly a + b + ab.</span></div>
+<div><b>Height 2</b><span>Supersingular elliptic curves; elliptic cohomology. Genuinely beyond the circle operation.</span></div>
+<div><b>Height h</b><span>Lubin–Tate towers, which carry the local Langlands correspondence for GLₕ (Harris–Taylor 2001). This is the real "generalized the circle operation".</span></div>
 </div>
 </div>
 <div>
 <h3>The limit, plainly</h3>
-<p>Over the real or complex numbers every one-dimensional formal group, mult-add included, becomes plain addition after a change of coordinates: its logarithm. So mult-add alone carries no local shape. Its geometry lives in two places: how pieces are glued globally (folding by q, lattices, fans) and its behaviour mod p (height).</p>
+<p>Over the real or complex numbers every one-dimensional formal group, the circle operation included, becomes plain addition after a change of coordinates: its logarithm. So the circle operation alone carries no local shape. Its geometry lives in two places: how pieces are glued globally (folding by q, lattices, fans) and its behaviour mod p (height).</p>
 <h3>Your 1/x wall is the door to the rest</h3>
-<p>Mult-adding b is an affine map: a ⊕ b = (1 + b)·a + b, a stretch centred at −1. Stretches and shifts together make the affine group. Add one more move, inversion a → 1/a, and you get the full Möbius group. That group runs hyperbolic geometry, every surface with two or more holes, and modular forms.</p>
-<p>So mult-add covers the commutative geometry: tori, toric varieties, genus 0 and genus 1. "Any geometry" needs the step you were already stuck on. This is my framing of standard facts, not a theorem.</p>
+<p>Combining with b by the circle operation is an affine map: a ∘₁ b = (1 + b)·a + b, a stretch centred at −1. Stretches and shifts together make the affine group. Add one more move, inversion a → 1/a, and you get the full Möbius group. That group runs hyperbolic geometry, every surface with two or more holes, and modular forms.</p>
+<p>So the circle operation covers the commutative geometry: tori, toric varieties, genus 0 and genus 1. "Any geometry" needs the step you were already stuck on. This is my framing of standard facts, not a theorem.</p>
 </div>
 </div>
 </div></section>
 
 <section class="band top" id="ledger"><div class="wrap">
 <h2>Known versus new</h2>
-<div class="lead"><b>The lead worth chasing for your aim: toric geometry.</b> A toric variety is a shape built by compactifying the mult-add torus, glued from cones of a polyhedral fan. Projective space, many surfaces and a large class of higher-dimensional shapes arise this way, and taking logs turns them into tropical geometry, where the amoeba above becomes a sharp three-legged graph. It is established math (Fulton's short book is the standard start), so it won't be new, but it is already a rigorous, geometric answer to "derive geometry from mult-add". It is the place to build from, and the place where a new lens might show something.</div>
+<div class="lead"><b>The lead worth chasing for your aim: toric geometry.</b> A toric variety is a shape built by compactifying the circle-operation torus, glued from cones of a polyhedral fan. Projective space, many surfaces and a large class of higher-dimensional shapes arise this way, and taking logs turns them into tropical geometry, where the amoeba above becomes a sharp three-legged graph. It is established math (Fulton's short book is the standard start), so it won't be new, but it is already a rigorous, geometric answer to "derive geometry from the circle operation". It is the place to build from, and the place where a new lens might show something.</div>
 <div class="scroll"><table class="stack">
 <thead><tr><th>Claim on this page</th><th>Status</th></tr></thead>
 <tbody>
 <tr><td data-l="Claim">Fermat as tᵖ = [p]s</td><td data-l="Status"><span class="tag">Restatement</span> trivially equivalent to the original</td></tr>
 <tr><td data-l="Claim">Wieferich and Mirimanoff as "the cube's middle is divisible by p²"</td><td data-l="Status"><span class="tag">Restatement</span> of 1909 to 1988 results</td></tr>
 <tr><td data-l="Claim">Rotated cube collapses to tᵖ</td><td data-l="Status"><span class="tag">Restatement</span> of Kummer's factorization</td></tr>
-<tr><td data-l="Claim">π = ζ − 1 is mult-add p-torsion; Bernoulli numbers from eˣ − 1</td><td data-l="Status"><span class="tag">Known</span> Lubin–Tate 1965, Coleman 1979, Iwasawa</td></tr>
+<tr><td data-l="Claim">π = ζ − 1 is the circle operation p-torsion; Bernoulli numbers from eˣ − 1</td><td data-l="Status"><span class="tag">Known</span> Lubin–Tate 1965, Coleman 1979, Iwasawa</td></tr>
 <tr><td data-l="Claim">Fermat curve as a pulled-back line; genus; point counts</td><td data-l="Status"><span class="tag">Known</span> Weil 1949, standard geometry</td></tr>
 <tr><td data-l="Claim">Tate curve, Frey curve, Ribet, Wiles</td><td data-l="Status"><span class="tag">Known</span> 1959 to 1995</td></tr>
 <tr><td data-l="Claim">The 1/x wall as the Möbius step to modular forms</td><td data-l="Status"><span class="tag b">Framing</span> my reading, not a theorem</td></tr>
@@ -253,7 +253,7 @@ const drawMap=()=>{
  if(W>=640){
   const x0=170,x1=W-80,dx=(x1-x0)/3,ya=H*0.30,yb=H*0.70,wall=x0+dx*2.5;
   s+=`<rect x="${x0-50}" y="18" width="${wall-x0+50}" height="${H-36}" rx="14" fill="var(--bg)" opacity=".75"/>`;
-  s+=`<text x="${x0-36}" y="40" style="fill:${blue}" font-weight="600">Built on mult-add</text>`;
+  s+=`<text x="${x0-36}" y="40" style="fill:${blue}" font-weight="600">Built on the circle operation</text>`;
   s+=`<line x1="${wall}" y1="18" x2="${wall}" y2="${H-18}" stroke="${red}" stroke-width="2" stroke-dasharray="6 5"/>`;
   s+=`<text x="${wall+8}" y="40" style="fill:${red}" font-weight="600">1/x wall</text>`;
   s+=`<circle cx="60" cy="${H/2}" r="7" fill="var(--ink)"/>`+lab(60,H/2+28,["xᵖ + yᵖ = zᵖ"]);
@@ -268,7 +268,7 @@ const drawMap=()=>{
  }else{
   const y0=110,y1=H-60,dy=(y1-y0)/3,xa=W*0.26,xb=W*0.74,wall=y0+dy*2.5;
   s+=`<rect x="10" y="${y0-34}" width="${W-20}" height="${wall-y0+34}" rx="14" fill="var(--bg)" opacity=".75"/>`;
-  s+=`<text x="${W/2}" y="${y0-14}" text-anchor="middle" style="fill:${blue}" font-weight="600">Built on mult-add</text>`;
+  s+=`<text x="${W/2}" y="${y0-14}" text-anchor="middle" style="fill:${blue}" font-weight="600">Built on the circle operation</text>`;
   s+=`<line x1="10" y1="${wall}" x2="${W-10}" y2="${wall}" stroke="${red}" stroke-width="2" stroke-dasharray="6 5"/>`;
   s+=`<text x="${W-14}" y="${wall-6}" text-anchor="end" style="fill:${red}" font-weight="600">1/x wall</text>`;
   s+=`<circle cx="${W/2}" cy="18" r="7" fill="var(--ink)"/>`+lab(W/2,44,["xᵖ + yᵖ = zᵖ"]);

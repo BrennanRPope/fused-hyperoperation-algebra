@@ -1,7 +1,7 @@
 """Why does quantum mechanics need i?  Checks for topics/why-i (Nov 25, 2026).
 
 Conventions follow topics/order-dial: the pair (a, c) is the map x -> (1 + a)x + c,
-mult-add's dial-k element a is the map x -> (1 + k a)x + a (centre -1/k).
+the circle operation's dial-k element a is the map x -> (1 + k a)x + a (centre -1/k).
 Run: python3 checks.py  (needs numpy, sympy)
 """
 import numpy as np, sympy as sp
@@ -20,7 +20,7 @@ check("A2 the twist is antisymmetric: swapping the order flips its sign",
       sp.simplify(gap + sp.expand(f(b, d)(f(a, c)(x)) - f(a, c)(f(b, d)(x)))) == 0)
 k = sp.symbols('k', real=True)
 gk = sp.expand(f(k*a, a)(f(k*b, b)(x)) - f(k*b, b)(f(k*a, a)(x)))
-check("A3 two mult-add elements with the same dial k have zero twist (shared centre)", gk == 0)
+check("A3 two circle-operation elements with the same dial k have zero twist (shared centre)", gk == 0)
 k2 = sp.symbols('k2', real=True)
 gk2 = sp.factor(sp.expand(f(k*a, a)(f(k2*b, b)(x)) - f(k2*b, b)(f(k*a, a)(x))))
 check("A4 different dials k, k2: twist = (k - k2)*a*b", sp.simplify(gk2 - (k - k2)*a*b) == 0, str(gk2))
@@ -77,7 +77,7 @@ for kk in [-2., -.5, .3, 1., 4.]:
     pts = [z_of((1 + kk*ai, ai)) for ai in A]
     ok &= all(np.isclose((p.imag - 1) - kk*p.real, 0) for p in pts)   # on the line lam = 1 + k s through i
     ok &= np.isclose(1 + kk*(-1/kk), 0)                                 # meets the edge lam = 0 at s = -1/k
-    # closure under the group law = mult-add
+    # closure under the group law = the circle operation
     for ai, bi in zip(A[:3], A[3:]):
         g = comp((1 + kk*ai, ai), (1 + kk*bi, bi))
         ok &= np.isclose(g[1], ai + bi + kk*ai*bi) and np.isclose(g[0], 1 + kk*g[1])
@@ -189,7 +189,7 @@ check("G3 complex conjugation (i -> -i) does the same: the twist's sign and i's 
       neg_weight(np.conj(psi)) > 0.999)
 ws_before = [neg_weight(U(1 + kk*aa, aa, psi)) for kk, aa in [(1, -.5), (.5, 1.), (-2, .3)]]   # 1 + k a > 0
 ws_past = [neg_weight(U(1 + kk*aa, aa, psi)) for kk, aa in [(1, -2.), (.5, -3.5), (-2, .8)]]    # 1 + k a < 0
-check("G4 mult-add elements before the wall (1 + k a > 0) keep the wave's frequency sign; past the wall (1 + k a < 0) they flip it",
+check("G4 circle-operation elements before the wall (1 + k a > 0) keep the wave's frequency sign; past the wall (1 + k a < 0) they flip it",
       max(ws_before) < 1e-3 and min(ws_past) > 0.999, f"before {[f'{w:.1e}' for w in ws_before]}, past {[f'{w:.4f}' for w in ws_past]}")
 
 # ------------------------------------------- H. holonomy of a twist = e^(i * area)  (Aharonov-Bohm / Berry / Kostant-Souriau)
@@ -204,7 +204,7 @@ check("H1 going round a loop of oriented area A multiplies by e^(iA)", np.isclos
 check("H2 going round the other way gives e^(-iA): reversing the twist conjugates i", np.isclose(holonomy(sq[::-1]), np.exp(-1j*.96)))
 
 
-# ------------------------------------------- P. path integrals as a whole-chain mult-add fold
+# ------------------------------------------- P. path integrals as a whole-chain circle-operation fold
 from scipy.linalg import expm
 def wstar(a_, b_, kk):                         # weighted circle operation on matrices: "b first, then a"
     return a_ + b_ + kk * (a_ @ b_)

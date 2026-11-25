@@ -1,4 +1,4 @@
-# Knot theory through mult-add (Nov 25, 2026)
+# Knot theory through the circle operation (Nov 25, 2026)
 
 Files
 - tangles.py: tangle diagrams (crossing tiles + joins), Kauffman bracket by the state sum over the
@@ -9,7 +9,7 @@ Files
 - index.html: the page (inline SVG drawn by script).
 
 Findings
-- Tangle sum is the dial: in x = g/f, x(S+T) = x(S) ✳_d x(T) with weight d = −A² − A⁻² (the loop
+- Tangle sum is the dial: in x = g/f, x(S+T) = x(S) ∘_d x(T) with weight d = −A² − A⁻² (the loop
   value). The corner term d·g₁g₂ is the loop trapped when both sides are "down". Lift 1 + d·x =
   ⟨D(T)⟩/f is closing the tangle, and the lift law is ⟨D(S+T)⟩ = ⟨D(S)⟩⟨D(T)⟩ (connected sum).
   Ingredients classical (Kauffman 1987, Goldman–Kauffman 1997); the dial reading is ours.
@@ -19,7 +19,7 @@ Findings
   These two steps are Morier-Genoud–Ovsienko's q-deformed SL(2,Z) (known, 2020).
 - Rational knots 3_1 … 6_3 built from words: Jones matches the Knot Atlas; |V(−1)| = numerator.
 - Landscape bend does not appear: 2-tangles only reach the dial line.
-- Torus knots: Δ_T(p,q) = [q]_(t^p)/[q]_t; T(2,n): [n]_(−t). "Mult-add value" P − 1 under
+- Torus knots: Δ_T(p,q) = [q]_(t^p)/[q]_t; T(2,n): [n]_(−t). "Circle-operation value" P − 1 under
   connected sum is an honest relabelling.
 - Correction to the q page: the twist pins q = −t, so the counting point is t = −1 (determinant).
 

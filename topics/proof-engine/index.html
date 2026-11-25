@@ -9,7 +9,7 @@
 <style>
 /* VOICE work: a technical report on a working engine, for one reader, calm and exact
    IDEA Byrne's 1847 Euclid, where proofs are drawn in coloured shapes instead of letters
-   PICTURE the mult-add rectangle growing into the three-wave box, then every move as a plate
+   PICTURE the circle-operation rectangle growing into the three-wave box, then every move as a plate
    COLOUR white, ink, Byrne blue, red and yellow; corners mix their sides' colours
    TYPE Literata display and text
    LAYOUT title and finding over the hero plate; plates in a grid; steps as picture beside code */
@@ -74,9 +74,9 @@ th{font-weight:600}
 <header class="band">
 <div class="wrap">
 <h1>Every fused proof is one box, cut different ways</h1>
-<p class="lede">A working geometric proof engine for Fused Hyperoperation Algebra. Lift each number by x ↦ 1+x and every mult-add expression becomes a box whose pieces are the corners of a cube. Each proof step is one shape move, a real Lean tactic that rewrites with a library lemma, and the kernel checks every step.</p>
+<p class="lede">A working geometric proof engine for Fused Hyperoperation Algebra. Lift each number by x ↦ 1+x and every circle-operation expression becomes a box whose pieces are the corners of a cube. Each proof step is one shape move, a real Lean tactic that rewrites with a library lemma, and the kernel checks every step.</p>
 <p class="mute">Status: compiled. <code>FusedPictures.lean</code> builds in core Lean 4.37 against the shared library (1,485 theorems), with no <code>sorry</code>. Eight library theorems are re-proved below by moves alone, and every frame of those films is drawn from a shape the engine read off a live goal while the proof ran. The infoview widget compiles, but it hasn't been tried in an editor yet.</p>
-<a class="plate hero" href="figures/hero.svg"><img src="figures/hero.svg" alt="Left: the mult-add rectangle (1+a)(1+b) with the unit square dashed, pieces a, b and ab. Right: the box (1+a)(1+b)(1+c) pulled apart into its eight pieces."></a>
+<a class="plate hero" href="figures/hero.svg"><img src="figures/hero.svg" alt="Left: the circle-operation rectangle (1+a)(1+b) with the unit square dashed, pieces a, b and ab. Right: the box (1+a)(1+b)(1+c) pulled apart into its eight pieces."></a>
 </div>
 </header>
 
@@ -90,10 +90,10 @@ th{font-weight:600}
 <p>Each proof below compiles. Its frames come from the engine's own trace: after each move, the reader looks at the new goal and logs its shape, and <code>film.py</code> draws that shape. When two moves leave the same picture, they share a frame. The last frame is the kernel accepting the proof. <code>#print axioms</code> shows only Lean's three standard axioms.</p>
 
 <div class="proof">
-<h3><code>multAdd a b = multAdd b a</code></h3><p>Commutativity: the rectangle flipped on its diagonal is the same rectangle. <span class="mute">(comm_by_moves)</span></p>
+<h3><code>circ a b = circ b a</code></h3><p>Commutativity: the rectangle flipped on its diagonal is the same rectangle. <span class="mute">(comm_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/comm_by_moves_0.svg"><img loading="lazy" src="figures/film/comm_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
-<figure><a class="plate" href="figures/film/comm_by_moves_1.svg"><img loading="lazy" src="figures/film/comm_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.</figcaption></figure>
+<figure><a class="plate" href="figures/film/comm_by_moves_1.svg"><img loading="lazy" src="figures/film/comm_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation ∘₁ (called mult-add before 1.0): every ∘₁ opens into a product of rods, a box with its unit attached.</figcaption></figure>
 <figure><a class="plate" href="figures/film/comm_by_moves_2.svg"><img loading="lazy" src="figures/film/comm_by_moves_2.svg" alt="Frame: swap. Swap: reflect across the diagonal (CommSemiring.mul_comm)."></a><figcaption>Swap: reflect across the diagonal (CommSemiring.mul_comm).</figcaption></figure>
 </div>
 <pre>by
@@ -102,10 +102,10 @@ th{font-weight:600}
   swap</pre>
 </div>
 <div class="proof">
-<h3><code>multAdd (multAdd a b) c = multAdd a (multAdd b c)</code></h3><p>Associativity: slabs and columns are one box. <span class="mute">(assoc_by_moves)</span></p>
+<h3><code>circ (circ a b) c = circ a (circ b c)</code></h3><p>Associativity: slabs and columns are one box. <span class="mute">(assoc_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/assoc_by_moves_0.svg"><img loading="lazy" src="figures/film/assoc_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
-<figure><a class="plate" href="figures/film/assoc_by_moves_1.svg"><img loading="lazy" src="figures/film/assoc_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.</figcaption></figure>
+<figure><a class="plate" href="figures/film/assoc_by_moves_1.svg"><img loading="lazy" src="figures/film/assoc_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.</figcaption></figure>
 <figure><a class="plate" href="figures/film/assoc_by_moves_2.svg"><img loading="lazy" src="figures/film/assoc_by_moves_2.svg" alt="Frame: regroup. Regroup: re-cut the same box (Semiring.mul_assoc)."></a><figcaption>Regroup: re-cut the same box (Semiring.mul_assoc).</figcaption></figure>
 </div>
 <pre>by
@@ -114,10 +114,10 @@ th{font-weight:600}
   regroup</pre>
 </div>
 <div class="proof">
-<h3><code>multAdd a 0 = a</code></h3><p>Identity: a side of length 0 flattens the rectangle to a strip. <span class="mute">(zero_by_moves)</span></p>
+<h3><code>circ a 0 = a</code></h3><p>Identity: a side of length 0 flattens the rectangle to a strip. <span class="mute">(zero_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/zero_by_moves_0.svg"><img loading="lazy" src="figures/film/zero_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
-<figure><a class="plate" href="figures/film/zero_by_moves_1.svg"><img loading="lazy" src="figures/film/zero_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.</figcaption></figure>
+<figure><a class="plate" href="figures/film/zero_by_moves_1.svg"><img loading="lazy" src="figures/film/zero_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.</figcaption></figure>
 <figure><a class="plate" href="figures/film/zero_by_moves_2.svg"><img loading="lazy" src="figures/film/zero_by_moves_2.svg" alt="Frame: collapse. Collapse: zero lengths and units fall away."></a><figcaption>Collapse: zero lengths and units fall away.</figcaption></figure>
 </div>
 <pre>by
@@ -126,10 +126,10 @@ th{font-weight:600}
   collapse</pre>
 </div>
 <div class="proof">
-<h3><code>multAdd (−1) b = −1</code></h3><p>The wall: a side of length −1 makes the lifted rod 0, and the whole box with it. <span class="mute">(wall_by_moves)</span></p>
+<h3><code>circ (−1) b = −1</code></h3><p>The wall: a side of length −1 makes the lifted rod 0, and the whole box with it. <span class="mute">(wall_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/wall_by_moves_0.svg"><img loading="lazy" src="figures/film/wall_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
-<figure><a class="plate" href="figures/film/wall_by_moves_1.svg"><img loading="lazy" src="figures/film/wall_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.</figcaption></figure>
+<figure><a class="plate" href="figures/film/wall_by_moves_1.svg"><img loading="lazy" src="figures/film/wall_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.</figcaption></figure>
 <figure><a class="plate" href="figures/film/wall_by_moves_2.svg"><img loading="lazy" src="figures/film/wall_by_moves_2.svg" alt="Frame: collapse. Collapse: zero lengths and units fall away."></a><figcaption>Collapse: zero lengths and units fall away.</figcaption></figure>
 </div>
 <pre>by
@@ -138,11 +138,11 @@ th{font-weight:600}
   collapse</pre>
 </div>
 <div class="proof">
-<h3><code>mpow a (m + n) = multAdd (mpow a m) (mpow a n)</code></h3><p>A cube of m + n sides is a cube of m sides times a cube of n. <span class="mute">(mpow_add_by_moves)</span></p>
+<h3><code>mpow a (m + n) = circ (mpow a m) (mpow a n)</code></h3><p>A cube of m + n sides is a cube of m sides times a cube of n. <span class="mute">(mpow_add_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/mpow_add_by_moves_0.svg"><img loading="lazy" src="figures/film/mpow_add_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
 <figure><a class="plate" href="figures/film/mpow_add_by_moves_1.svg"><img loading="lazy" src="figures/film/mpow_add_by_moves_1.svg" alt="Frame: lift. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y.</figcaption></figure>
-<figure><a class="plate" href="figures/film/mpow_add_by_moves_2.svg"><img loading="lazy" src="figures/film/mpow_add_by_moves_2.svg" alt="Frame: multadd. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."></a><figcaption>Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.</figcaption></figure>
+<figure><a class="plate" href="figures/film/mpow_add_by_moves_2.svg"><img loading="lazy" src="figures/film/mpow_add_by_moves_2.svg" alt="Frame: multadd. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."></a><figcaption>The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.</figcaption></figure>
 <figure><a class="plate" href="figures/film/mpow_add_by_moves_3.svg"><img loading="lazy" src="figures/film/mpow_add_by_moves_3.svg" alt="Frame: flatten. Flatten: powers add (pow_add&#x27;)."></a><figcaption>Flatten: powers add (pow_add&#x27;).</figcaption></figure>
 </div>
 <pre>by
@@ -151,12 +151,12 @@ th{font-weight:600}
   flatten</pre>
 </div>
 <div class="proof">
-<h3><code>k · wAdd k a b = k · wAdd k b a</code></h3><p>Dial: scale the weighted corner into a plain box, then flip it. <span class="mute">(wcomm_by_moves)</span></p>
+<h3><code>k · circK k a b = k · circK k b a</code></h3><p>Dial: scale the weighted corner into a plain box, then flip it. <span class="mute">(wcomm_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/wcomm_by_moves_0.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
-<figure><a class="plate" href="figures/film/wcomm_by_moves_1.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_1.svg" alt="Frame: dial. Dial: k times a k-weighted corner is the plain box on k·a and k·b (wAdd_scale)."></a><figcaption>Dial: k times a k-weighted corner is the plain box on k·a and k·b (wAdd_scale).</figcaption></figure>
-<figure><a class="plate" href="figures/film/wcomm_by_moves_2.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_2.svg" alt="Frame: dial. Dial: k times a k-weighted corner is the plain box on k·a and k·b (wAdd_scale)."></a><figcaption>Dial: k times a k-weighted corner is the plain box on k·a and k·b (wAdd_scale).</figcaption></figure>
-<figure><a class="plate" href="figures/film/wcomm_by_moves_3.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_3.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.</figcaption></figure>
+<figure><a class="plate" href="figures/film/wcomm_by_moves_1.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_1.svg" alt="Frame: dial. Dial: k times a k-weighted corner is the plain box on k·a and k·b (circK_scale)."></a><figcaption>Dial: k times a k-weighted corner is the plain box on k·a and k·b (circK_scale).</figcaption></figure>
+<figure><a class="plate" href="figures/film/wcomm_by_moves_2.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_2.svg" alt="Frame: dial. Dial: k times a k-weighted corner is the plain box on k·a and k·b (circK_scale)."></a><figcaption>Dial: k times a k-weighted corner is the plain box on k·a and k·b (circK_scale).</figcaption></figure>
+<figure><a class="plate" href="figures/film/wcomm_by_moves_3.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_3.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.</figcaption></figure>
 <figure><a class="plate" href="figures/film/wcomm_by_moves_4.svg"><img loading="lazy" src="figures/film/wcomm_by_moves_4.svg" alt="Frame: swap. Swap: reflect across the diagonal (CommSemiring.mul_comm)."></a><figcaption>Swap: reflect across the diagonal (CommSemiring.mul_comm).</figcaption></figure>
 </div>
 <pre>by
@@ -167,7 +167,7 @@ th{font-weight:600}
   swap</pre>
 </div>
 <div class="proof">
-<h3><code>fexp a (b + 1) = multAdd a (fexp a b)</code></h3><p>Rung 2 on whole numbers: one more slab extrudes the fused power. <span class="mute">(fexp_iter_by_moves)</span></p>
+<h3><code>fexp a (b + 1) = circ a (fexp a b)</code></h3><p>Rung 2 on whole numbers: one more slab extrudes the fused power. <span class="mute">(fexp_iter_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/fexp_iter_by_moves_0.svg"><img loading="lazy" src="figures/film/fexp_iter_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
 <figure><a class="plate" href="figures/film/fexp_iter_by_moves_1.svg"><img loading="lazy" src="figures/film/fexp_iter_by_moves_1.svg" alt="Frame: lift. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y.</figcaption></figure>
@@ -178,10 +178,10 @@ th{font-weight:600}
   extrude</pre>
 </div>
 <div class="proof">
-<h3><code>multAdd u (multAddInv u) = 0</code></h3><p>Inverse in a field: squash the second side to 1/(1+u); the rectangle has area 1. <span class="mute">(inv_by_moves)</span></p>
+<h3><code>circ u (circInv u) = 0</code></h3><p>Inverse in a field: squash the second side to 1/(1+u); the rectangle has area 1. <span class="mute">(inv_by_moves)</span></p>
 <div class="film">
 <figure><a class="plate" href="figures/film/inv_by_moves_0.svg"><img loading="lazy" src="figures/film/inv_by_moves_0.svg" alt="Frame: goal. The goal, as the engine reads it."></a><figcaption>The goal, as the engine reads it.</figcaption></figure>
-<figure><a class="plate" href="figures/film/inv_by_moves_1.svg"><img loading="lazy" src="figures/film/inv_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.</figcaption></figure>
+<figure><a class="plate" href="figures/film/inv_by_moves_1.svg"><img loading="lazy" src="figures/film/inv_by_moves_1.svg" alt="Frame: lift then multadd. Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."></a><figcaption>Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.</figcaption></figure>
 <figure><a class="plate" href="figures/film/inv_by_moves_2.svg"><img loading="lazy" src="figures/film/inv_by_moves_2.svg" alt="Frame: squash. Squash: (1+u) times 1/(1+u) is 1 (inv_one_add, mul_inv_cancel)."></a><figcaption>Squash: (1+u) times 1/(1+u) is 1 (inv_one_add, mul_inv_cancel).</figcaption></figure>
 <figure><a class="plate" href="figures/film/inv_by_moves_3.svg"><img loading="lazy" src="figures/film/inv_by_moves_3.svg" alt="Frame: collapse. Collapse: zero lengths and units fall away."></a><figcaption>Collapse: zero lengths and units fall away.</figcaption></figure>
 </div>
@@ -215,13 +215,13 @@ th{font-weight:600}
 <p>Each algebraic step gets one move. The move names are the tactic names, and the lemma is what the tactic rewrites with. All nine are built; the plates here are drawn by hand to explain them.</p>
 <div class="grid">
 <div class="card"><a class="plate" href="figures/v_lift.svg"><img src="figures/v_lift.svg" alt="A rod of length a becomes a rod of length 1 plus a"></a><h3>Lift</h3><p>x ↦ 1+x attaches the unit. Every fused rung is the plain one seen through this. <code>lift_back_ring</code>, <code>MultAdd.lift_inj</code></p></div>
-<div class="card"><a class="plate" href="figures/v_rect.svg"><img src="figures/v_rect.svg" alt="Rectangle 1 plus a by 1 plus b with unit square dashed"></a><h3>Mult-add</h3><p>Two rods make a rectangle; drop the unit square. a ⊕ b = a + b + ab. <code>multAdd_lift</code>, <code>mpow_lift</code>, <code>wAdd_lift</code></p></div>
+<div class="card"><a class="plate" href="figures/v_rect.svg"><img src="figures/v_rect.svg" alt="Rectangle 1 plus a by 1 plus b with unit square dashed"></a><h3>The circle operation</h3><p>Two rods make a rectangle; drop the unit square. a ∘₁ b = a + b + ab. <code>circ_lift</code>, <code>mpow_lift</code>, <code>circK_lift</code></p></div>
 <div class="card"><a class="plate" href="figures/v_swap.svg"><img src="figures/v_swap.svg" alt="The rectangle and its mirror image across the diagonal"></a><h3>Swap</h3><p>Commutativity is a reflection across the diagonal. <code>CommSemiring.mul_comm</code></p></div>
 <div class="card"><a class="plate" href="figures/v_regroup.svg"><img src="figures/v_regroup.svg" alt="The same box split into slabs and into columns"></a><h3>Regroup</h3><p>Associativity: the box is the same whether you cut it into slabs or columns. <code>Semiring.mul_assoc</code></p></div>
-<div class="card"><a class="plate" href="figures/v_collapse.svg"><img src="figures/v_collapse.svg" alt="When b goes to zero the rectangle flattens to the a strip"></a><h3>Collapse</h3><p>Identity: a zero-length rod flattens a dimension and its corners vanish. <code>Semiring.mul_one</code>, <code>multAdd_zero</code></p></div>
+<div class="card"><a class="plate" href="figures/v_collapse.svg"><img src="figures/v_collapse.svg" alt="When b goes to zero the rectangle flattens to the a strip"></a><h3>Collapse</h3><p>Identity: a zero-length rod flattens a dimension and its corners vanish. <code>Semiring.mul_one</code>, <code>circ_zero</code></p></div>
 <div class="card"><a class="plate" href="figures/v_squash.svg"><img src="figures/v_squash.svg" alt="Rectangle 1 plus a by 1 over 1 plus a on the hyperbola xy equals 1"></a><h3>Squash</h3><p>Inverse: shrink the other side to 1/(1+a) along the curve xy = 1. The gained strip and its mirror cancel. a = −1 is the wall. Needs a field. <code>inv_one_add</code>, <code>Field.mul_inv_cancel</code></p></div>
-<div class="card"><a class="plate" href="figures/v_dial.svg"><img src="figures/v_dial.svg" alt="Three rectangles with the corner empty, part filled, and full"></a><h3>Dial</h3><p>The weighted k-family: the corner holds k·ab. k = 0 is plain addition (an empty corner, as in Burgers); k = 1 is mult-add; k = A is the soliton weight. <code>wAdd_scale</code>, <code>wAdd_one</code></p></div>
-<div class="card"><a class="plate" href="figures/v_flatten.svg"><img src="figures/v_flatten.svg" alt="A rectangle's area becomes two lengths end to end under log"></a><h3>Flatten</h3><p>L(x) = log(1+x) turns area into length, so mult-add becomes adding. On whole numbers the same move is exponents adding. <code>pow_add'</code>, <code>mpow_add</code></p></div>
+<div class="card"><a class="plate" href="figures/v_dial.svg"><img src="figures/v_dial.svg" alt="Three rectangles with the corner empty, part filled, and full"></a><h3>Dial</h3><p>The weighted k-family: the corner holds k·ab. k = 0 is plain addition (an empty corner, as in Burgers); k = 1 is the circle operation; k = A is the soliton weight. <code>circK_scale</code>, <code>circK_one</code></p></div>
+<div class="card"><a class="plate" href="figures/v_flatten.svg"><img src="figures/v_flatten.svg" alt="A rectangle's area becomes two lengths end to end under log"></a><h3>Flatten</h3><p>L(x) = log(1+x) turns area into length, so the circle operation becomes adding. On whole numbers the same move is exponents adding. <code>pow_add'</code>, <code>mpow_add</code></p></div>
 <div class="card"><a class="plate" href="figures/v_extrude.svg"><img src="figures/v_extrude.svg" alt="Rung 1 as two rods, rung 2 as a rectangle, rung 3 as a cube"></a><h3>Extrude</h3><p>Each rung adds a dimension: length, area, volume. Rung n+1 iterates rung n. <code>fexp_iter</code>, <code>ftet_iter</code></p></div>
 </div>
 <div class="scroll">
@@ -229,13 +229,13 @@ th{font-weight:600}
 <thead><tr><th>Move</th><th>Algebra</th><th>Shape</th><th>Lemma it wraps</th></tr></thead>
 <tbody>
 <tr><td>Lift</td><td>a ↦ 1+a</td><td>attach the unit to a rod</td><td><code>lift_back_ring</code>, <code>MultAdd.lift_inj</code></td></tr>
-<tr><td>Swap</td><td>a ⊕ b = b ⊕ a</td><td>reflect across the diagonal</td><td><code>CommSemiring.mul_comm</code></td></tr>
-<tr><td>Regroup</td><td>(a ⊕ b) ⊕ c = a ⊕ (b ⊕ c)</td><td>slabs ↔ columns of one box</td><td><code>Semiring.mul_assoc</code></td></tr>
-<tr><td>Collapse</td><td>a ⊕ 0 = a</td><td>zero-length side flattens</td><td><code>Semiring.mul_one</code>, <code>multAdd_zero</code></td></tr>
-<tr><td>Squash</td><td>a ⊕ ā = 0</td><td>rescale to area 1 on xy = 1</td><td><code>inv_one_add</code>, <code>Field.mul_inv_cancel</code></td></tr>
-<tr><td>Dial</td><td>a + b + k·ab</td><td>corner filled to weight k</td><td><code>wAdd_scale</code>, <code>wAdd_one</code></td></tr>
-<tr><td>Flatten</td><td>L(a ⊕ b) = L(a) + L(b)</td><td>area becomes length</td><td><code>pow_add'</code>, <code>mpow_add</code></td></tr>
-<tr><td>Extrude</td><td>a ⊛ (b+1) = a ⊕ (a ⊛ b)</td><td>one more dimension</td><td><code>fexp_iter</code>, <code>Semiring.pow_succ</code></td></tr>
+<tr><td>Swap</td><td>a ∘₁ b = b ∘₁ a</td><td>reflect across the diagonal</td><td><code>CommSemiring.mul_comm</code></td></tr>
+<tr><td>Regroup</td><td>(a ∘₁ b) ∘₁ c = a ∘₁ (b ∘₁ c)</td><td>slabs ↔ columns of one box</td><td><code>Semiring.mul_assoc</code></td></tr>
+<tr><td>Collapse</td><td>a ∘₁ 0 = a</td><td>zero-length side flattens</td><td><code>Semiring.mul_one</code>, <code>circ_zero</code></td></tr>
+<tr><td>Squash</td><td>a ∘₁ ā = 0</td><td>rescale to area 1 on xy = 1</td><td><code>inv_one_add</code>, <code>Field.mul_inv_cancel</code></td></tr>
+<tr><td>Dial</td><td>a + b + k·ab</td><td>corner filled to weight k</td><td><code>circK_scale</code>, <code>circK_one</code></td></tr>
+<tr><td>Flatten</td><td>L(a ∘₁ b) = L(a) + L(b)</td><td>area becomes length</td><td><code>pow_add'</code>, <code>mpow_add</code></td></tr>
+<tr><td>Extrude</td><td>fexp(a, b+1) = a ∘₁ fexp(a, b)</td><td>one more dimension</td><td><code>fexp_iter</code>, <code>Semiring.pow_succ</code></td></tr>
 </tbody>
 </table>
 </div>
@@ -244,17 +244,17 @@ th{font-weight:600}
 
 <section class="band" id="example">
 <div class="wrap">
-<h2>Worked example: why (a ⊕ b) ⊕ c = a ⊕ (b ⊕ c)</h2>
-<p>This is <code>multAdd_assoc</code> from the shared library, drawn step by step. The compiled version is <code>assoc_by_moves</code> in the films above: three moves, because <code>multadd</code> opens every ⊕ at once where this walk-through opens them one by one.</p>
+<h2>Worked example: why (a ∘₁ b) ∘₁ c = a ∘₁ (b ∘₁ c)</h2>
+<p>This is <code>circ_assoc</code> from the shared library, drawn step by step. The compiled version is <code>assoc_by_moves</code> in the films above: three moves, because <code>multadd</code> opens every ∘₁ at once where this walk-through opens them one by one.</p>
 
 <div class="step"><a class="plate" href="figures/w0_goal.svg"><img src="figures/w0_goal.svg" alt="Two rods of equal length built in different orders"></a><div><h3>The goal <span>step 0</span></h3><p>Two numbers built in different orders. The drawing shows they match; the proof has to show why.</p><pre>theorem assoc_by_moves (a b c : R) :
-    multAdd (multAdd a b) c = multAdd a (multAdd b c) := by</pre></div></div>
+    circ (circ a b) c = circ a (circ b c) := by</pre></div></div>
 
 <div class="step"><a class="plate" href="figures/w1_lift.svg"><img src="figures/w1_lift.svg" alt="Both rods with a unit attached"></a><div><h3>Lift <span>step 1</span></h3><p>Attach the unit to both sides. It's safe because adding 1 can be undone.</p><pre>  lift        -- refine lift_back_ring ?_</pre></div></div>
 
-<div class="step"><a class="plate" href="figures/w2_left_outer.svg"><img src="figures/w2_left_outer.svg" alt="Left side becomes a rectangle 1 plus a-plus-b by 1 plus c"></a><div><h3>Mult-add, outside <span>step 2</span></h3><p>The outer ⊕ on the left becomes a rectangle: rod 1+(a ⊕ b) by rod 1+c.</p><pre>  multadd     -- multAdd_lift, here and in the next two steps</pre></div></div>
+<div class="step"><a class="plate" href="figures/w2_left_outer.svg"><img src="figures/w2_left_outer.svg" alt="Left side becomes a rectangle 1 plus a-plus-b by 1 plus c"></a><div><h3>The circle operation, outside <span>step 2</span></h3><p>The outer ∘₁ on the left becomes a rectangle: rod 1+(a ∘₁ b) by rod 1+c.</p><pre>  multadd     -- circ_lift, here and in the next two steps</pre></div></div>
 
-<div class="step"><a class="plate" href="figures/w3_left_box.svg"><img src="figures/w3_left_box.svg" alt="Left side becomes a box made of slabs"></a><div><h3>Mult-add, inside <span>step 3</span></h3><p>The rod 1+(a ⊕ b) opens into its own rectangle, so the left side is a box stacked as slabs.</p><pre>  -- (same multadd)</pre></div></div>
+<div class="step"><a class="plate" href="figures/w3_left_box.svg"><img src="figures/w3_left_box.svg" alt="Left side becomes a box made of slabs"></a><div><h3>The circle operation, inside <span>step 3</span></h3><p>The rod 1+(a ∘₁ b) opens into its own rectangle, so the left side is a box stacked as slabs.</p><pre>  -- (same multadd)</pre></div></div>
 
 <div class="step"><a class="plate" href="figures/w4_right_box.svg"><img src="figures/w4_right_box.svg" alt="Both sides are boxes, one as slabs and one as columns"></a><div><h3>The other side <span>step 4</span></h3><p>The same two moves in the other order turn the right side into the same box, built as columns.</p><pre>  -- (same multadd)</pre></div></div>
 
@@ -262,7 +262,7 @@ th{font-weight:600}
 
 <p class="mute" style="margin-top:14px">The whole proof, as compiled in <code>lean/Demo.lean</code>:</p>
 <pre id="proof">theorem assoc_by_moves (a b c : R) :
-    multAdd (multAdd a b) c = multAdd a (multAdd b c) := by
+    circ (circ a b) c = circ a (circ b c) := by
   lift
   multadd
   regroup</pre>
@@ -289,7 +289,7 @@ th{font-weight:600}
 <div class="two">
 <div>
 <h3>Reader and shapes <span class="tag ok">compiled</span></h3>
-<p>A <code>Shape</code> datatype (rods, boxes with a weight, a power or a removed unit, pieces, squashes, flips, towers, sums and relations) and a reader in <code>MetaM</code> that walks a goal and finds the boxes inside it: <code>multAdd</code> trees, <code>wAdd</code>, <code>mpow</code>, <code>wpow</code>, <code>foldMA</code>, inverses and lifted products. Each side gets a colour key, so a piece's colour still tells its product.</p>
+<p>A <code>Shape</code> datatype (rods, boxes with a weight, a power or a removed unit, pieces, squashes, flips, towers, sums and relations) and a reader in <code>MetaM</code> that walks a goal and finds the boxes inside it: <code>circ</code> trees, <code>circK</code>, <code>mpow</code>, <code>wpow</code>, <code>foldCirc</code>, inverses and lifted products. Each side gets a colour key, so a piece's colour still tells its product.</p>
 <h3>Moves <span class="tag ok">compiled</span></h3>
 <p>Nine tactics: <code>lift</code>, <code>multadd</code>, <code>swap</code>, <code>regroup</code>, <code>collapse</code>, <code>squash</code>, <code>dial</code>, <code>flatten</code>, <code>extrude</code>. Each rewrites with library lemmas and then reads the new goal. A move that doesn't apply fails, the way <code>rw</code> does.</p>
 </div>
@@ -313,12 +313,12 @@ th{font-weight:600}
 <section class="band" id="library" style="background:var(--panel)">
 <div class="wrap">
 <h2>The engine sits on the shared library, never inside it</h2>
-<p>The shared library (<code>math-theory/lean-library/</code>) now exists, with one <code>multAdd</code> and one lift lemma per operation, such as <code>multAdd_lift : 1 + multAdd a b = (1 + a) * (1 + b)</code>. The engine imports it and changes nothing in it.</p>
+<p>The shared library (<code>math-theory/lean-library/</code>) now exists, with one <code>circ</code> and one lift lemma per operation, such as <code>circ_lift : 1 + circ a b = (1 + a) * (1 + b)</code>. The engine imports it and changes nothing in it.</p>
 <div class="scroll">
 <table class="stack">
 <thead><tr><th>Layer</th><th>Holds</th><th>Depends on</th></tr></thead>
 <tbody>
-<tr><td>Library core</td><td>madd, rungs, the k-family; one lift lemma each (<code>multAdd_lift</code>, <code>fexp_lift</code>, <code>wAdd_lift</code>)</td><td>core Lean</td></tr>
+<tr><td>Library core</td><td>circ, rungs, the k-family; one lift lemma each (<code>circ_lift</code>, <code>fexp_lift</code>, <code>circK_lift</code>)</td><td>core Lean</td></tr>
 <tr><td>Engine reader</td><td>a table: operation → its lift lemma → how many rods</td><td>library core</td></tr>
 <tr><td>Engine moves</td><td>lift, swap, regroup, collapse, squash, dial, flatten, extrude</td><td>reader, library lemmas</td></tr>
 <tr><td>Engine widget</td><td>JSON shape → SVG; the same format <code>shapes.py</code> renders for pages</td><td>nothing in Lean</td></tr>
@@ -345,7 +345,7 @@ th{font-weight:600}
 <p><b>One vocabulary for a whole algebra.</b> The core laws (commutativity, associativity, identity, distributivity, the tower laws) reduce to "same box, cut differently", plus Squash, Dial, Flatten and Extrude for inverses, weights, logs and higher rungs. Deeper results like Lucas or Wilson would use these moves as steps, not as the whole proof.</p>
 <p><b>Pictures read from the live goal.</b> No theorem is drawn by hand. The reader finds the box in whatever the goal says, and now does it for all 1,485 theorems in the library.</p>
 <p><b>Colour as product.</b> A corner's colour is the mix of its sides, so a piece's colour tells you its product at a glance.</p>
-<p><b>Solitons in the same picture.</b> Weighted corners put the KdV cube and plain mult-add in one language.</p>
+<p><b>Solitons in the same picture.</b> Weighted corners put the KdV cube and the plain circle operation in one language.</p>
 <p class="mute">None of this is new mathematics. It's new tooling for your algebra, and that's where its value is.</p>
 </div>
 </div>
@@ -359,7 +359,7 @@ th{font-weight:600}
 <table class="stack">
 <thead><tr><th>Phase</th><th>What</th><th>Where it stands</th></tr></thead>
 <tbody>
-<tr><td>1</td><td>Shared library with one multAdd, rungs and k-family, lift lemmas in one form</td><td>Done, by the library thread</td></tr>
+<tr><td>1</td><td>Shared library with one circ, rungs and k-family, lift lemmas in one form</td><td>Done, by the library thread</td></tr>
 <tr><td>2</td><td>Reader, shape JSON and the core-Lean widget</td><td>Done and compiled; the widget hasn't been seen in an editor</td></tr>
 <tr><td>3</td><td>All nine moves as tactics; redo fused proofs with them</td><td>Moves done; eight theorems redone. The rest of the library keeps its own proofs</td></tr>
 <tr><td>4</td><td>Weighted corners and the soliton cube; pages generated from the same JSON</td><td>The reader reads weights and <code>dial</code> works. No soliton proof by moves yet. The films are generated pages</td></tr>

@@ -1,4 +1,4 @@
-"""Entropy and quantum noise on the mult-add cube: numeric and symbolic checks.
+"""Entropy and quantum noise on the circle-operation cube: numeric and symbolic checks.
 
 Part of Fused Hyperoperation Algebra. Companion page: index.html.
 Run: python3 checks.py > checks_output.txt
@@ -36,7 +36,7 @@ def wadd(k, a, b):
 
 
 # ---------------------------------------------------------------------------
-print("== 1. Tsallis pseudo-additivity is weighted mult-add with k = 1 - q ==")
+print("== 1. Tsallis pseudo-additivity is the circle operation with k = 1 - q_T ==")
 def tsallis(p, q):
     p = np.asarray(p, float)
     if abs(q - 1) < 1e-12:
@@ -57,16 +57,16 @@ check("S_q(A x B) = S_A + S_B + (1-q) S_A S_B on 1400 random pairs", worst < 1e-
 a = rng.dirichlet(np.ones(4)); b = rng.dirichlet(np.ones(3))
 check("q = 1 (k = 0): Shannon entropy adds", abs(H(np.outer(a, b).ravel()) - H(a) - H(b)) < 1e-12)
 
-# symbolic: Tsallis sits on the landscape line q_L = 0; certainty absorbs only at k = -1
-k, x, qL = sp.symbols("k x q_L")
+# symbolic: Tsallis sits on the landscape line d = 0; certainty absorbs only at k = -1
+k, x, qL = sp.symbols("k x d")
 lens = (x + 1 + k * x * 1) / (1 - qL * x * 1)
 sol = sp.solve(sp.Poly(sp.numer(sp.together(lens - 1)), x).coeffs(), [k, qL], dict=True)
-check("lens law absorbs certainty (a o 1 = 1 for all a) exactly on k + q_L = -1",
+check("lens law absorbs certainty (a o 1 = 1 for all a) exactly on k + d = -1",
       all(sp.simplify(s[k] + s.get(qL, qL) + 1) == 0 for s in sol), str(sol))
-check("Tsallis laws have q_L = 0, so they meet that line only at k = -1, Tsallis q = 2",
+check("Tsallis laws have d = 0, so they meet that line only at k = -1, Tsallis q_T = 2",
       sp.solve(sp.Eq(k + 0, -1), k) == [-1])
-print("   Note: the Tsallis index q and the landscape's q are different letters for different things.")
-print("   Tsallis line: k + q_T = 1.  'Or' line: k + q_L = -1.  They cross only at (k, q_L) = (-1, 0).")
+print("   Note: the Tsallis index q_T and the landscape's curvature d are different things.")
+print("   Tsallis line: k + q_T = 1.  'Or' line: k + d = -1.  They cross only at (k, d) = (-1, 0).")
 
 # quantum version: von Neumann / Tsallis for product states
 def rand_rho(d):
@@ -85,7 +85,7 @@ for _ in range(200):
         SA, SB = (1 - tr_pow(A, q)) / (q - 1), (1 - tr_pow(B, q)) / (q - 1)
         SAB = (1 - tr_pow(np.kron(A, B), q)) / (q - 1)
         worst = max(worst, abs(SAB - wadd(1 - q, SA, SB)))
-check("quantum Tsallis (Tr rho^q) of rho x sigma composes at k = 1 - q", worst < 1e-10, f"max error {worst:.1e}")
+check("quantum Tsallis (Tr rho^q) of rho x sigma composes at k = 1 - q_T", worst < 1e-10, f"max error {worst:.1e}")
 A, B = rand_rho(2), rand_rho(2)
 lin = lambda r: 1 - tr_pow(r, 2)
 check("linear entropy 1 - Tr rho^2 of two independent qubits follows the union rule (k = -1)",
@@ -215,12 +215,12 @@ p = rng.dirichlet(np.ones(5)); a_, b_ = 1.7, 0.6
 esc = lambda p, q: p ** q / (p ** q).sum()
 check("escort of an escort: P_b(P_a(p)) = P_{ab}(p), so q multiplies along a chain", np.allclose(esc(esc(p, a_), b_), esc(p, a_ * b_)))
 k1, k2 = 1 - a_, 1 - b_
-check("hence k = 1 - q composes by the union rule k1 + k2 - k1 k2", abs((1 - a_ * b_) - wadd(-1, k1, k2)) < 1e-15)
+check("hence k = 1 - q_T composes by the union rule k1 + k2 - k1 k2", abs((1 - a_ * b_) - wadd(-1, k1, k2)) < 1e-15)
 Th, Tm, Tc = 900.0, 500.0, 300.0
 eta = lambda h, c: 1 - c / h
 check("k(T, T0) = 1 - T0/T is Carnot's efficiency, and Carnot cascades by the same rule",
       abs(eta(Th, Tc) - wadd(-1, eta(Th, Tm), eta(Tm, Tc))) < 1e-15)
-print("   Landmarks: k = 1 (q = 0) is infinite temperature, every state counted once (Hartley);")
+print("   Landmarks: k = 1 (q_T = 0) is infinite temperature, every state counted once (Hartley);")
 print("   k = 0 is T = T0, Shannon; k -> -inf is T -> 0, only the ground state (min-entropy).")
 
 # ---------------------------------------------------------------------------

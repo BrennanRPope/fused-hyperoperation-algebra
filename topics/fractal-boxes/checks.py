@@ -11,8 +11,8 @@ def check(name, ok, detail=""):
     print(("PASS " if ok else "FAIL ") + name + (("  | " + detail) if detail else ""))
 
 # ---------------------------------------------------------------------------
-# 1. Corner pieces of a box with sides 1+a: layer k has C(d,k) pieces of size a^k.
-#    For whole d this is the subsets picture. For d = 1/2 use Newton's binomial.
+# 1. Corner pieces of a box with sides 1+a: layer k has C(D,k) pieces of size a^k.
+#    For whole D this is the subsets picture. For D = 1/2 use Newton's binomial.
 def gbinom(d, k):
     r = F(1)
     for i in range(k):
@@ -48,17 +48,17 @@ c3 = [sum(th[i]*th[j]*th[k-i-j] for i in range(k+1) for j in range(k+1-i)) for k
 check("1f third box joined three times = stick", c3 == [F(1), F(1)] + [F(0)]*8)
 
 # 2. Fractional dimension = per-element dial in disguise.
-#    box of dimension d, sides 2  ==  box of dimension 1, side 2^d  (dial 2^d - 1)
+#    box of dimension D, sides 2  ==  box of dimension 1, side 2^D  (dial 2^D - 1)
 for d in (0.5, 1/3, 0.25, 1.5):
     pass
 check("2a (1+1)^(1/2) = 1 + (sqrt2 - 1): half dimension at side 2 = one stick with dial sqrt2-1",
       abs((1+1)**0.5 - (1 + (math.sqrt(2)-1))) < 1e-15)
-# mult-add power: a^(*d) = (1+a)^d - 1 ; halves combine back
+# Circle power: a^(*D) = (1+a)^D - 1 ; halves combine back
 def mpow(a, d): return (1+a)**d - 1
 def madd(a, b): return a + b + a*b
 ok = all(abs(madd(mpow(a, .5), mpow(a, .5)) - a) < 1e-12 for a in (0.3, 1, 2.5, 7))
-check("2b mult-add half power a^(*1/2) = sqrt(1+a)-1 joins back to a", ok)
-# continuity pins it down: f(d+e)=f(d)f(e), f(1)=2, continuous -> 2^d; check dyadic values
+check("2b circle-operation half power a^(*1/2) = sqrt(1+a)-1 joins back to a", ok)
+# continuity pins it down: f(D+e)=f(D)f(e), f(1)=2, continuous -> 2^D; check dyadic values
 check("2c dyadic halves forced: f(1/2)=sqrt2, f(1/4)=2^(1/4) (positive roots)",
       abs(math.sqrt(2)**2 - 2) < 1e-15 and abs((2**0.25)**4 - 2) < 1e-14)
 
@@ -128,7 +128,7 @@ cA, cB = count_at(C4(10), e), count_at(T9(7), e)
 check("4b same dimension, different counts at the same scale", cA != cB, f"C_1/4: {cA}, three-at-1/9: {cB}, sqrt(1/eps) = {2**6}")
 # uneven half: 2 pieces of ratios r1,r2 with r1^(1/2)+r2^(1/2)=1 (Moran equation)
 r1 = 0.09; r2 = (1 - r1**0.5)**2
-check("4c uneven pieces (0.09, 0.49) also solve the Moran equation for d = 1/2",
+check("4c uneven pieces (0.09, 0.49) also solve the Moran equation for D = 1/2",
       abs(r1**0.5 + r2**0.5 - 1) < 1e-12, f"r2 = {r2:.4f}")
 # random check of Moran: Hausdorff dims of products add for these self-similar sets
 # grid boxes meeting a product = (boxes meeting A) x (boxes meeting B), so log-counts add

@@ -1,5 +1,5 @@
 /-
-  General relativity through mult-add: the elementary parts
+  General relativity through the circle operation (called mult-add before 1.0): the elementary parts
   ==========================================================
 
   Companion checks: ../checks.py (sympy, mpmath, scipy). Core Lean 4.37.0-rc1, no mathlib,
@@ -13,18 +13,18 @@
      (2+2γ−β)/3 for every dial-only theory (γ = 0) or conformal one (γ = −1), and the
      Cassini bound against them.
   3. Route (c), the river: static clocks and radial rulers carry the same boost factor, so
-     the time and space deficits of Schwarzschild are mult-add inverses; the horizon is the
+     the time and space deficits of Schwarzschild are circle inverses; the horizon is the
      river at light speed; isotropic radius; β = γ = 1 as exact polynomial remainders;
      Friedmann as Newton's escape speed; Gravity Probe B's factor as the gyroscope's speed
-     through the river; redshifts mult-add.
+     through the river; redshifts combine by the circle operation.
   4. Route (b): a R + b R·g is divergence-free only for b = −a/2 (given contracted Bianchi).
 -/
 import FusedAlgebra.Base
 
 namespace GeneralRelativity
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## 1. The dial's boosts on (t, x, y) -/
 
@@ -137,9 +137,9 @@ theorem static_clock (x : Rat) : 1 - riverV2 x = 1 - 2 * x := by unfold riverV2;
 /-- Static radial rulers stretch by γ of the river: 1/(1 − v²) = g_rr. -/
 theorem static_ruler (x : Rat) : 1 / (1 - riverV2 x) = 1 / (1 - 2 * x) := by unfold riverV2; grind
 
-/-- **The two deficits are mult-add inverses**: (−g_tt − 1) ✳ (g_rr − 1) = 0, i.e.
-    (−2x) ✳ (2x/(1 − 2x)) = 0. One boost, the same factor for time and space. -/
-theorem deficits_inverse (x : Rat) (h : 1 - 2 * x ≠ 0) : (-2 * x) ✳ (2 * x / (1 - 2 * x)) = 0 := by
+/-- **The two deficits are circle inverses**: (−g_tt − 1) ◯ (g_rr − 1) = 0, i.e.
+    (−2x) ◯ (2x/(1 − 2x)) = 0. One boost, the same factor for time and space. -/
+theorem deficits_inverse (x : Rat) (h : 1 - 2 * x ≠ 0) : (-2 * x) ◯ (2 * x / (1 - 2 * x)) = 0 := by
   show -2 * x + 2 * x / (1 - 2 * x) + -2 * x * (2 * x / (1 - 2 * x)) = 0
   have e : 2 * x / (1 - 2 * x) * (1 - 2 * x) = 2 * x := by
     rw [Rat.div_mul_cancel h]
@@ -200,14 +200,14 @@ theorem gpb_through_river (x : Rat) (h : 1 - 2 * x ≠ 0) :
   have e : x / (1 - 2 * x) * (1 - 2 * x) = x := Rat.div_mul_cancel h
   grind
 
-/-- Perpendicular speeds compose by mult-add on −v²: −w² = (−u²) ✳ (−v²)
+/-- Perpendicular speeds compose by the circle operation on −v²: −w² = (−u²) ◯ (−v²)
     when w² = u² + v²(1 − u²). -/
-theorem perpendicular_fuse (u2 v2 : Rat) : -(u2 + v2 * (1 - u2)) = (-u2) ✳ (-v2) := by
+theorem perpendicular_fuse (u2 v2 : Rat) : -(u2 + v2 * (1 - u2)) = (-u2) ◯ (-v2) := by
   show -(u2 + v2 * (1 - u2)) = -u2 + -v2 + -u2 * -v2; grind
 
-/-- **Redshifts mult-add**: if 1 + z = (1 + z₁)(1 + z₂) then z = z₁ ✳ z₂ (any chain of
+/-- **Redshifts combine by the circle operation**: if 1 + z = (1 + z₁)(1 + z₂) then z = z₁ ◯ z₂ (any chain of
     gravitational, Doppler and cosmological shifts). -/
-theorem redshifts_fuse (z z1 z2 : Rat) (h : 1 + z = (1 + z1) * (1 + z2)) : z = z1 ✳ z2 := by
+theorem redshifts_fuse (z z1 z2 : Rat) (h : 1 + z = (1 + z1) * (1 + z2)) : z = z1 ◯ z2 := by
   show z = z1 + z2 + z1 * z2; grind
 
 /-- Light falling in from far away, seen by the river: blueshift γ² times Doppler² equals

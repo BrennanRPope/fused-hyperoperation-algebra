@@ -5,12 +5,12 @@ out = {}
 def h_of_k(v, w, k):
     return v + w * np.exp(1j * k)
 
-# 1. Mult-add winding: steps delta_m = h(k_{m+1})/h(k_m) - 1
+# 1. Circle-operation winding: steps delta_m = h(k_{m+1})/h(k_m) - 1
 def multadd_winding(v, w, M):
     ks = 2 * np.pi * np.arange(M + 1) / M
     h = h_of_k(v, w, ks)
-    d = h[1:] / h[:-1] - 1          # the mult-add steps
-    total = np.prod(1 + d) - 1      # the mult-add total of all steps
+    d = h[1:] / h[:-1] - 1          # the circle-operation steps
+    total = np.prod(1 + d) - 1      # the circle-operation total of all steps
     turns = np.sum(np.angle(1 + d)) / (2 * np.pi)
     return total, turns
 

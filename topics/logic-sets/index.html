@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Logic and Sets Through Mult-add</title>
+<title>Logic and Sets Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -58,7 +58,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <section class="band">
 <div class="wrap">
 <h1>Only two notches on the dial keep true and false: OR and XOR</h1>
-<p class="lede">Put 0 for false and 1 for true. The weighted mult-add a + b + k·ab gives 0, 1, 1 on three corners of the truth table for every k. The fourth corner, 1 with 1, lands at 2 + k. It stays a truth value at exactly two settings: k = −1, which is OR, and k = −2, which is XOR. Turn the knob and watch the corner.</p>
+<p class="lede">Put 0 for false and 1 for true. The circle operation a + b + k·ab gives 0, 1, 1 on three corners of the truth table for every k. The fourth corner, 1 with 1, lands at 2 + k. It stays a truth value at exactly two settings: k = −1, which is OR, and k = −2, which is XOR. Turn the knob and watch the corner.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="dial"></div>
@@ -82,14 +82,14 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div>
 <h2>The leak is one parabola, and it works in any ring</h2>
 <p>This is not special to 0 and 1. Take any a and b that equal their own squares (idempotents: on sets they are indicator functions, in a matrix ring they are projections). Then the dial gives back an idempotent up to one leak term:</p>
-<div class="eq">(a ✳ₖ b)² − (a ✳ₖ b) = (k + 1)(k + 2)·ab</div>
-<p>The two roots are OR and XOR. Read with q = k + 1, the roots are q = 0 and q = −1, and n trues folded together give the q-number [n]_q: always 1 for OR, and 1, 0, 1, 0 (parity) for XOR. Every other q leaves 0 and 1 already at n = 2.</p>
+<div class="eq">(a ∘ₖ b)² − (a ∘ₖ b) = (k + 1)(k + 2)·ab</div>
+<p>The two roots are OR and XOR, at k = −1 and k = −2, and n trues folded together give the q-number [n]_q, where k = q − 1: always 1 for OR, and 1, 0, 1, 0 (parity) for XOR. Every other k leaves 0 and 1 already at n = 2.</p>
 <p>The other Boolean laws leak the same way. Distributing AND over the dial misses by k·abc(1 − a); absorption a ∨ (a ∧ b) misses by ab(1 − a). Both vanish exactly when a² = a. So Boolean algebra is the dial with its inputs pinned to 0 and 1, and nothing more.</p>
 </div>
 <div>
 <h2>Each notch has a wall, and the wall is a truth value</h2>
 <div class="fig2" id="walls"></div>
-<p class="small">Lines b ↦ m ✳ₖ b for m = 0, ¼, ½, ¾, 1. Left, OR: every line passes through (1, 1). Right, XOR: every line pivots on (½, ½).</p>
+<p class="small">Lines b ↦ m ∘ₖ b for m = 0, ¼, ½, ¾, 1. Left, OR: every line passes through (1, 1). Right, XOR: every line pivots on (½, ½).</p>
 <p>The dial's wall is −1/k, the value that swallows everything. For OR it is 1: true OR anything is true. For XOR it is ½: a fair coin XOR any bit is a fair coin. That is Shannon's one-time pad (1949). Encrypt a message bit with a fair key bit and the ciphertext is exactly ½, whatever the message, and independent of it.</p>
 </div>
 </div>
@@ -101,9 +101,9 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <h2>Fuzzy logic: Hamacher's family is the dial, read in odds</h2>
 <p>Fuzzy logic lets truth run from 0 to 1 and asks for an "or" that is associative, monotone and has 0 as identity (a t-conorm). Hamacher (1978) found every such rule that is a ratio of polynomials. His family is</p>
 <div class="eq">S_γ(a, b) = (a + b + (γ − 2)ab) / (1 + (γ − 1)ab)</div>
-<p>On the landscape that is the point p = γ − 2, q = 1 − γ, so the whole family is the line p + q = −1. The statistics page found this same line as the unions with certainty as a wall. Measure truth by its odds, o = x/(1 − x), and the bend disappears:</p>
-<div class="eq">odds(S_γ(a, b)) = odds(a) ✳<sub>γ</sub> odds(b)</div>
-<p><b>Hamacher's parameter is the dial, read on odds.</b> γ = 0 adds odds, γ = 1 mult-adds them (the probabilistic sum a + b − ab), γ = 2 is the Einstein sum (a + b)/(1 + ab), relativity's point. The t-norms ("and") are the mirror images under x ↦ 1 − x, De Morgan's law, and are the dial on odds against.</p>
+<p>On the landscape that is the point p = γ − 2, d = 1 − γ, so the whole family is the line p + d = −1. The statistics page found this same line as the unions with certainty as a wall. Measure truth by its odds, o = x/(1 − x), and the bend disappears:</p>
+<div class="eq">odds(S_γ(a, b)) = odds(a) ∘<sub>γ</sub> odds(b)</div>
+<p><b>Hamacher's parameter is the dial, read on odds.</b> γ = 0 adds odds, γ = 1 combines them by the circle operation ∘₁ (called mult-add before 1.0) (the probabilistic sum a + b − ab), γ = 2 is the Einstein sum (a + b)/(1 + ab), relativity's point. The t-norms ("and") are the mirror images under x ↦ 1 − x, De Morgan's law, and are the dial on odds against.</p>
 </div>
 <div class="panel"><div class="fig2" id="land"></div>
 <div class="ctl"><label for="g">γ</label><input id="g" type="range" min="0" max="6" step="0.05" value="1"><output id="go"></output></div>
@@ -118,7 +118,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <h2>The other classical families leave the plane</h2>
 <p>By Hamacher's theorem, no other rational rule exists, so every other family can touch the landscape only where it meets Hamacher's. The checks confirm this numerically:</p>
 <table class="data"><tr><th>Family</th><th>On the landscape?</th></tr>
-<tr><td>Hamacher, γ ≥ 0</td><td>Yes, all of it, on p + q = −1</td></tr>
+<tr><td>Hamacher, γ ≥ 0</td><td>Yes, all of it, on p + d = −1</td></tr>
 <tr><td>Dombi λ = 1, Schweizer–Sklar p = −1</td><td>Yes: both are Hamacher γ = 0</td></tr>
 <tr><td>Aczél–Alsina λ = 1, Frank s → 1</td><td>Yes: the probabilistic sum</td></tr>
 <tr><td>Frank, other s</td><td>No, though it stays close to the line (misses 0.001 to 0.007)</td></tr>
@@ -131,8 +131,8 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div>
 <h2>Sets have no wall, until you allow negative sets</h2>
 <div class="fig2" id="sets"></div>
-<p>For finite sets, |A ⊔ B ⊔ A×B| = a ✳ b, and adding a spare point to each side turns this into a plain product, minus the spare pair. Sizes are never negative, so finite sets have no wall and no inverses.</p>
-<p>Count by Euler characteristic instead (Schanuel 1991): a point counts 1, an open interval counts −1, a product counts the product. Now the open interval <i>is</i> the wall. Glue the spare point to it and you get [0, 1), which counts 0, and 0 times anything is 0. Two open intervals count −2, mult-add's other unit: X ⊔ X ⊔ X×X counts 0.</p>
+<p>For finite sets, |A ⊔ B ⊔ A×B| = a ∘₁ b, and adding a spare point to each side turns this into a plain product, minus the spare pair. Sizes are never negative, so finite sets have no wall and no inverses.</p>
+<p>Count by Euler characteristic instead (Schanuel 1991): a point counts 1, an open interval counts −1, a product counts the product. Now the open interval <i>is</i> the wall. Glue the spare point to it and you get [0, 1), which counts 0, and 0 times anything is 0. Two open intervals count −2, the circle operation's other unit: X ⊔ X ⊔ X×X counts 0.</p>
 </div>
 </div>
 </section>
@@ -141,8 +141,8 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div class="wrap side">
 <div>
 <h2>The logic of the rungs: arithmetic switches on at rung 2</h2>
-<p>The axioms page showed mult-add alone is multiplication in disguise, a decidable theory (Skolem 1930, Mostowski 1952), and that mult-add with the successor carries all of arithmetic. One more step finishes the ladder. The fused exponent x ⊛ a = (x + 1)^(a + 1) − 1 <b>alone</b> defines the rungs below it:</p>
-<div class="eq">b ✳ c = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ⊛ c = x ⊛ d<br>b + c + 1 = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ✳ (x ⊛ c) = x ⊛ d</div>
+<p>The axioms page showed the circle operation alone is multiplication in disguise, a decidable theory (Skolem 1930, Mostowski 1952), and that the circle operation with the successor carries all of arithmetic. One more step finishes the ladder. The fused exponent fexp(x, a) = (x + 1)^(a + 1) − 1 <b>alone</b> defines the rungs below it:</p>
+<div class="eq">b ∘₁ c = d &nbsp;⇔&nbsp; for every x, fexp(fexp(x, b), c) = fexp(x, d)<br>b + c + 1 = d &nbsp;⇔&nbsp; for every x, fexp(x, b) ∘₁ fexp(x, c) = fexp(x, d)</div>
 <p>and 0 is its only right identity, so the successor is b + 0 + 1. With +, × and the successor definable, the first-order theory of rung 2 by itself is undecidable (Gödel, Church). Lean proves the three definitions.</p>
 </div>
 <div class="panel"><div class="fig2" id="ladder"></div>
@@ -191,7 +191,7 @@ const sD=mk('dial','dial and leak'),sW=mk('walls','wall fans'),sL=mk('land','lan
 const T=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c?' style="fill:'+c+'"':'')+'>'+t+'</text>';
 const L=(x1,y1,x2,y2,c,sw,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(sw||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
 const C=(x,y,r,f,s)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="2"':'')+'/>';
-const named={'-2':'XOR (parity)','-1':'OR (failure union)','0':'plain count','1':'mult-add'};
+const named={'-2':'XOR (parity)','-1':'OR (failure union)','0':'plain count','1':'The circle operation'};
 const snaps=$('snaps');[-2,-1,0,1].forEach(v=>{const b=document.createElement('button');b.textContent='k = '+String(v).replace('-','−');b.onclick=()=>{$('k').value=v;drawDial();};snaps.appendChild(b);});
 function drawDial(){
   const k=+$('k').value, W=sD.clientWidth, H=sD.clientHeight, m=34;
@@ -204,7 +204,7 @@ function drawDial(){
   const N=v=>m+(v+1)/4*(W-2*m);
   g+=L(N(-1),yTop,N(3),yTop,'var(--rule)',2);
   [0,1].forEach(v=>{g+=L(N(v),yTop-10,N(v),yTop+10,'var(--xor)',3)+T(N(v),yTop+28,String(v),'middle');});
-  g+=T(N(-1),yTop-14,'1 ✳ₖ 1 = 2 + k lands at');
+  g+=T(N(-1),yTop-14,'1 ∘ₖ 1 = 2 + k lands at');
   const c=2+k, ok=Math.abs(c)<1e-9||Math.abs(c-1)<1e-9;
   g+=C(N(Math.max(-1,Math.min(3,c))),yTop,9,ok?'var(--xor)':'var(--wall)');
   // bottom: leak parabola
@@ -221,7 +221,7 @@ function drawDial(){
   const key=String(Math.round(k*100)/100);
   $('name').textContent=named[key]?'k = '+fm(k,0)+': '+named[key]:(ok?'':'Not a truth value: the corner leaks.');
   let s=0,seq=[];for(let n=1;n<=6;n++){s=w(k,s,1);seq.push(fm(s,Math.abs(s-Math.round(s))<1e-9?0:2));}
-  $('fold').textContent='Fold n trues: '+seq.join(', ')+' (the q-number [n] with q = '+fm(k+1)+').';
+  $('fold').textContent='Fold n trues: '+seq.join(', ')+' (the q-number [n] in base '+fm(k+1)+').';
 }
 function drawWalls(){
   const W=sW.clientWidth,H=sW.clientHeight,gap=18,pw=(W-gap)/2,m=24;
@@ -246,10 +246,10 @@ function drawLand(){
   g+=L(X(-2),Y(1),X(0),Y(-1),'var(--xor)',4)+L(X(0),Y(-1),X(4.2),Y(-5.2),'var(--or)',4);
   [[0,'γ=0'],[1,'γ=1'],[2,'γ=2']].forEach(([gg,t])=>{g+=C(X(gg-2),Y(1-gg),4.5,'var(--ink)')+T(X(gg-2)+8,Y(1-gg)-6,t);});
   g+=C(X(gm-2),Y(1-gm),8,'var(--wall)');
-  g+=T(X(p1),Y(0)-6,'p','end')+T(X(0)+6,Y(q1)+10,'q');
+  g+=T(X(p1),Y(0)-6,'p','end')+T(X(0)+6,Y(q1)+10,'d');
   sL.innerHTML=g;
   const a=0.3,bb=0.6,S=(a+bb+(gm-2)*a*bb)/(1+(gm-1)*a*bb),o=x=>x/(1-x);
-  $('gread').textContent='γ = '+fm(gm)+' sits at (p, q) = ('+fm(gm-2)+', '+fm(1-gm)+'). With a = 0.3, b = 0.6: S = '+S.toFixed(3)+'. In odds: '+o(a).toFixed(3)+' ✳γ '+o(bb).toFixed(3)+' = '+(o(a)+o(bb)+gm*o(a)*o(bb)).toFixed(3)+' = odds of S.';
+  $('gread').textContent='γ = '+fm(gm)+' sits at (p, d) = ('+fm(gm-2)+', '+fm(1-gm)+'). With a = 0.3, b = 0.6: S = '+S.toFixed(3)+'. In odds: '+o(a).toFixed(3)+' ∘_γ '+o(bb).toFixed(3)+' = '+(o(a)+o(bb)+gm*o(a)*o(bb)).toFixed(3)+' = odds of S.';
 }
 function drawSets(){
   const W=sS.clientWidth,H=sS.clientHeight,m=20;
@@ -264,7 +264,7 @@ function drawSets(){
 }
 function drawLadder(){
   const W=sR.clientWidth,H=sR.clientHeight;
-  const rows=[['rung 2 alone (fused exponent)',false,'defines ✳, +1, 0'],['rung 1 + successor',false,'axioms page'],['rung 1 alone (mult-add)',true,'× in disguise: Skolem'],['rung 0 alone (shifted add)',true,'Presburger']];
+  const rows=[['rung 2 alone (fused exponent)',false,'defines ∘₁, +1, 0'],['rung 1 + successor',false,'axioms page'],['rung 1 alone (the circle operation)',true,'× in disguise: Skolem'],['rung 0 alone (shifted add)',true,'Presburger']];
   const bh=(H-20)/rows.length-10;let g='';
   rows.forEach(([t,dec,n],i)=>{const y=10+i*(bh+10);
     g+='<rect x="8" y="'+y+'" width="'+(W-16)+'" height="'+bh+'" rx="5" fill="color-mix(in srgb,'+(dec?'var(--xor)':'var(--wall)')+' 14%,transparent)" stroke="'+(dec?'var(--xor)':'var(--wall)')+'" stroke-width="2"/>';

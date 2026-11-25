@@ -18,7 +18,7 @@ Colours follow Byrne's 1847 Euclid: a = blue, b = red, c = yellow, and a corner
 piece is the mix of the colours of its sides (ab violet, ac green, bc orange,
 abc black). The unit is paper grey. So a piece's colour tells you its product.
 
-Core idea the colours encode: every mult-add expression lifts (x -> 1+x) to a
+Core idea the colours encode: every circle-operation expression lifts (x -> 1+x) to a
 product of rods, and a product of n rods is a box whose 2^n pieces are the
 corners of the n-cube. A fused identity is "the same box, cut another way".
 """

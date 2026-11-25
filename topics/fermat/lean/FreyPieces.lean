@@ -3,7 +3,7 @@
   ============================================================================
 
   Core Lean 4 (4.37.0-rc1), no mathlib, no `sorry`, no new axioms. Built on the shared
-  library (FusedAlgebra.Base for mult-add, CubeProofs for `IsPrime`, Elliptic for the node).
+  library (FusedAlgebra.Base for the circle operation (called mult-add before 1.0), CubeProofs for `IsPrime`, Elliptic for the node).
 
   FLT n says: no x, y ≠ 0 in Nat with x^n + y^n = z^n.
 
@@ -20,9 +20,9 @@
      change of variables to the minimal model Y² + XY = X³ + a2·X² + a4·X, the invariants
      c4 = A² + AB + B² and 256·Δ = (ABC)², semistability (no prime divides both Δ and c4,
      including the node at 2), the reduction mod q | A to the node family, whose chord law
-     is mult-add, and 256·Δ = ((abc)²)^p, so every odd prime's exact exponent in Δ is a
+     is the circle operation, and 256·Δ = ((abc)²)^p, so every odd prime's exact exponent in Δ is a
      multiple of p.
-  4. Mult-add restatement: x^n + y^n = z^n ⇔ (y/x)^n = mpow (z/x − 1) n over Rat.
+  4. Circle-operation restatement: x^n + y^n = z^n ⇔ (y/x)^n = mpow (z/x − 1) n over Rat.
   5. Level 2: the counts μ = 3, ν2 = 1, ν3 = 0, ν∞ = 2 for Γ0(2), which put the genus of
      X0(2) at 0 through the (cited, not proved) genus formula.
 -/
@@ -31,8 +31,8 @@ import FusedAlgebra.Topics.Elliptic
 import FusedAlgebra.Topics.Topology.CubeProofs
 
 namespace FreyPieces
-open MultAdd
-open MultAdd.Cube (IsPrime exists_prime_factor MEq)
+open CircleOp
+open CircleOp.Cube (IsPrime exists_prime_factor MEq)
 
 /-! ## 1. Exponent reduction -/
 
@@ -437,7 +437,7 @@ theorem frey_at_two {A B C a2 a4 : Int} (hC : A + B = C) (hA : A % 2 = 1) (hB : 
     rw [this] at hD
     exact ⟨(A * m * C) ^ 2, by omega⟩
 
-/-! ### 3f. Node shape and the mult-add chord law -/
+/-! ### 3f. Node shape and the circle-operation chord law -/
 
 /-- 3f. For an odd prime q dividing A, q divides a4. -/
 theorem frey_a4_mod_q {A B a4 : Int} (h4 : 16 * a4 = -(A * B)) {q : Nat} (hq : IsPrime q)
@@ -495,21 +495,21 @@ theorem rat_mul_ne_zero {a b : Rat} (ha : a ≠ 0) (hb : b ≠ 0) : a * b ≠ 0 
 theorem one_add_div_mul {b d : Rat} (h : b ≠ 0) : (1 + d / b) * b = b + d := by
   rw [Rat.add_mul, Rat.div_mul_cancel h, Rat.one_mul]
 
-/-- 3f. Link: three points of the node are collinear exactly when s1 ⊞ s2 ⊞ s3 = 0, sᵢ = (m2 − m1)/(tᵢ − m2). -/
-theorem node_chord_multAdd (m1 m2 t1 t2 t3 : Rat) (hm : m1 ≠ m2)
+/-- 3f. Link: three points of the node are collinear exactly when s1 ◯ s2 ◯ s3 = 0, sᵢ = (m2 − m1)/(tᵢ − m2). -/
+theorem node_chord_circ (m1 m2 t1 t2 t3 : Rat) (hm : m1 ≠ m2)
     (h12 : t1 ≠ t2) (h23 : t2 ≠ t3) (h31 : t3 ≠ t1)
     (h1 : t1 ≠ m2) (h2 : t2 ≠ m2) (h3 : t3 ≠ m2) :
     chordDet (nodeX m1 m2 t1) (t1 * nodeX m1 m2 t1) (nodeX m1 m2 t2)
         (t2 * nodeX m1 m2 t2) (nodeX m1 m2 t3) (t3 * nodeX m1 m2 t3) = 0 ↔
-      multAdd (multAdd ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = 0 := by
+      circ (circ ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = 0 := by
   have key := node_chord_identity m1 m2 t1 t2 t3
   have sub_ne : ∀ u v : Rat, u ≠ v → u - v ≠ 0 := fun u v h e => h (by grind)
   have e1 := sub_ne _ _ h1
   have e2 := sub_ne _ _ h2
   have e3 := sub_ne _ _ h3
-  have hlift : (1 + multAdd (multAdd ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)))
+  have hlift : (1 + circ (circ ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)))
       * ((t1 - m2) * (t2 - m2) * (t3 - m2)) = (t1 - m1) * (t2 - m1) * (t3 - m1) := by
-    rw [multAdd_lift, multAdd_lift]
+    rw [circ_lift, circ_lift]
     have f1 := one_add_div_mul (d := m2 - m1) e1
     have f2 := one_add_div_mul (d := m2 - m1) e2
     have f3 := one_add_div_mul (d := m2 - m1) e3
@@ -523,7 +523,7 @@ theorem node_chord_multAdd (m1 m2 t1 t2 t3 : Rat) (hm : m1 ≠ m2)
   have hd : m2 - m1 ≠ 0 := sub_ne _ _ (fun h => hm h.symm)
   generalize chordDet (nodeX m1 m2 t1) (t1 * nodeX m1 m2 t1) (nodeX m1 m2 t2)
         (t2 * nodeX m1 m2 t2) (nodeX m1 m2 t3) (t3 * nodeX m1 m2 t3) = D at key ⊢
-  generalize multAdd (multAdd ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = S at hlift ⊢
+  generalize circ (circ ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = S at hlift ⊢
   generalize (t1 - t2) * (t2 - t3) * (t3 - t1) = V at key hV
   generalize (t1 - m2) * (t2 - m2) * (t3 - m2) = Pb at key hlift hB
   generalize (t1 - m1) * (t2 - m1) * (t3 - m1) = Pa at key hlift
@@ -626,7 +626,7 @@ theorem frey_disc_valuation {a b c Δ : Int} {p : Nat}
     exact Nat.pos_iff_ne_zero.mp (Nat.pow_pos (Nat.pos_of_ne_zero this))
   exact exact_exponent_pth_power p hq hM ((tr e).mp he) (fun h => he1 ((tr (e + 1)).mpr h))
 
-/-! ## 4. Mult-add restatement -/
+/-! ## 4. Circle-operation restatement -/
 
 /-- (y/x)^n · x^n = y^n for x ≠ 0. -/
 theorem rat_div_pow {x : Rat} (y : Rat) (hx : x ≠ 0) (n : Nat) : (y / x) ^ n * x ^ n = y ^ n := by
@@ -638,8 +638,8 @@ theorem rat_div_pow {x : Rat} (y : Rat) (hx : x ≠ 0) (n : Nat) : (y / x) ^ n *
     have e : ∀ W w X : Rat, W * w * (X * x) = (W * X) * (w * x) := by intros; grind
     rw [e, ih, h]
 
-/-- 4. x^n + y^n = z^n exactly when (y/x)^n = mpow (z/x − 1) n: an n-th power equals a mult-add n-th power. -/
-theorem flt_multAdd (x y z : Rat) (hx : x ≠ 0) (n : Nat) :
+/-- 4. x^n + y^n = z^n exactly when (y/x)^n = mpow (z/x − 1) n: an n-th power equals a circle n-th power. -/
+theorem flt_circ (x y z : Rat) (hx : x ≠ 0) (n : Nat) :
     x ^ n + y ^ n = z ^ n ↔ (y / x) ^ n = mpow (z / x - 1) n := by
   rw [mpow_eq]
   have hxn : x ^ n ≠ 0 := by
@@ -709,10 +709,10 @@ end FreyPieces
 #print axioms FreyPieces.frey_reduces_to_node
 #print axioms FreyPieces.node_chord_identity
 #print axioms FreyPieces.node_point
-#print axioms FreyPieces.node_chord_multAdd
+#print axioms FreyPieces.node_chord_circ
 #print axioms FreyPieces.frey_disc_pth_power
 #print axioms FreyPieces.exact_exponent_pth_power
 #print axioms FreyPieces.frey_disc_valuation
-#print axioms FreyPieces.flt_multAdd
+#print axioms FreyPieces.flt_circ
 #print axioms FreyPieces.level2_counts
 #print axioms FreyPieces.genus_X0_2

@@ -37,6 +37,6 @@ PASS k=3: factor at p=2 hits its wall at s=log2 k=1.5850 > 1
 PASS k=4: factor at p=2 hits its wall at s=log2 k=2.0000 > 1
 PASS k=6: factor at p=2 hits its wall at s=log2 k=2.5850 > 1
 PASS |k| < 2: every factor finite at s = 1
-PASS twist: none iff q*cross = 0 (200 random rational pairs)
+PASS twist: none iff d*cross = 0 (200 random rational pairs)
 
 40 of 40 pass

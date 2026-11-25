@@ -1,4 +1,4 @@
-"""Molecular biology through mult-add: checks. Run: python3 -I checks.py"""
+"""Molecular biology through the circle operation: checks. Run: python3 -I checks.py"""
 import numpy as np, itertools, math
 rng=np.random.default_rng(1)
 ok=0; tot=0
@@ -53,7 +53,7 @@ print(" measured-scale dial values: sigma 1e-2..1e-4 -> k = 1/sigma = 100..10000
 for w in (0,0.5,1,4,25):
     a,b=rng.uniform(0,3,2)
     Z=1+a+b+w*a*b
-    check(f"two-site binding polynomial = 1 + wAdd(w,a,b), w={w}",abs(Z-(1+wadd(w,a,b)))<1e-12)
+    check(f"two-site binding polynomial = 1 + circK(w,a,b), w={w}",abs(Z-(1+wadd(w,a,b)))<1e-12)
 check("w=1 (independent sites): Z factorises (1+a)(1+b)",abs(1+wadd(1,.7,1.9)-(1.7*2.9))<1e-12)
 check("w=0 (exclusive sites): Z = 1+a+b, plain addition",abs(1+wadd(0,.7,1.9)-3.6)<1e-12)
 # Hill coefficient at half saturation for identical sites
@@ -69,7 +69,7 @@ for w in (0.25,1,4,100):
 # wall: weight -1/w on one site makes Z forget the other
 check("a site at the wall -1/w makes Z independent of the other site",abs((1+wadd(4,0.3,-0.25))-(1+wadd(4,7.0,-0.25)))<1e-12)
 
-# ---- 3. MWC hemoglobin = sum of two mult-add powers (dial 1 for R, dial c for T)
+# ---- 3. MWC hemoglobin = sum of two circle powers (dial 1 for R, dial c for T)
 L,c,KR,n=9000,0.014,2.8,4   # LibreTexts teaching fit
 def Y(p):
     a=p/KR
@@ -81,7 +81,7 @@ def wpow(k,a,n):
     return x
 a=1.7
 check("(1+c a)^4 = 1 + c*wpow(c,a,4): T state is the weighted power at dial c",abs((1+c*a)**4-(1+c*wpow(c,a,4)))<1e-12)
-check("(1+a)^4 = 1 + mpow(a,4): R state is the plain mult-add power",abs((1+a)**4-(1+mpow(a,4)))<1e-12)
+check("(1+a)^4 = 1 + mpow(a,4): R state is the plain circle power",abs((1+a)**4-(1+mpow(a,4)))<1e-12)
 from scipy.optimize import brentq
 p50=brentq(lambda p:Y(p)-.5,0.1,500)
 h=1e-5; lg=lambda lp: math.log(Y(math.exp(lp))/(1-Y(math.exp(lp))))
@@ -95,7 +95,7 @@ for LL in (1e-9,1e12):
     check(f"one dial alone (L={LL:g}) has Hill coefficient 1: cooperativity needs two dials mixed",abs(nh-1)<1e-3,f"nH={nh:.4f}")
     L=L0
 
-# ---- 4. Fidelity: catches combine by the 'or' law (k=-1); Eigen threshold = mult-add inverse
+# ---- 4. Fidelity: catches combine by the 'or' law (k=-1); Eigen threshold = circle inverse
 from fractions import Fraction as F
 eps=[F(1,10**5),F(1,10**2),F(1,10**3)]   # base selection, proofreading, mismatch repair (textbook orders)
 catch=[1-e for e in eps]; tot_c=catch[0]
@@ -109,7 +109,7 @@ for _ in range(500):
     assert abs(lhs-rhs)<1e-9*max(1,abs(lhs))
 check("Eigen: master's excess growth = s (*) l with l = mpow(-mu, L) (500 cases)",True)
 l=mpow(-1e-4,10000); sth=inv(l)
-check("threshold advantage is the mult-add inverse of the copy loss",abs(ma(sth,l))<1e-12,f"l={l:.4f}, s*={sth:.4f}")
+check("threshold advantage is the circle inverse of the copy loss",abs(ma(sth,l))<1e-12,f"l={l:.4f}, s*={sth:.4f}")
 for name,Ug in (("DNA microbes (Drake ~0.003/genome)",0.003),("lytic RNA viruses (~1/genome)",1.0)):
     l=math.exp(-Ug)-1
     print(f"   {name}: copy loss l={l:.4f}, needs advantage s > {inv(l):.4f} (sigma > {1+inv(l):.3f})")

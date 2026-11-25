@@ -51,7 +51,7 @@ footer{color:var(--soft);font-size:14px}
 <section class="band">
 <div class="wrap">
 <h1>One dial runs fermions to bosons, and its wall decides which can exist</h1>
-<p class="lede">Points that repel (fermions), points that ignore each other (Poisson) and points that clump (bosons) are one family, the α-processes of Shirai and Takahashi. Read α as the dial k. On any region the kernel has eigenvalues μ; fold them with ✳ₖ and the chance the region is empty is the lift of that fold to the power −1/k. The wall −1/k must stay off the eigenvalues, and on the fermion side it must sit on a whole number.</p>
+<p class="lede">Points that repel (fermions), points that ignore each other (Poisson) and points that clump (bosons) are one family, the α-processes of Shirai and Takahashi. Read α as the dial k. On any region the kernel has eigenvalues μ; fold them with ∘ₖ and the chance the region is empty is the lift of that fold to the power −1/k. The wall −1/k must stay off the eigenvalues, and on the fermion side it must sit on a whole number.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hero"></div>
@@ -72,9 +72,9 @@ footer{color:var(--soft);font-size:14px}
 <div>
 <h2>The empty-region chance is the dial fold of the eigenvalues</h2>
 <p>Shirai and Takahashi's generating functional, on a region D with eigenvalues μᵢ of the kernel there:</p>
-<div class="eq">P(no point in D) = det(I + kK)<sup>−1/k</sup> = (1 + k·(μ₁ ✳ₖ μ₂ ✳ₖ ⋯))<sup>−1/k</sup></div>
+<div class="eq">P(no point in D) = det(I + kK)<sup>−1/k</sup> = (1 + k·(μ₁ ∘ₖ μ₂ ∘ₖ ⋯))<sup>−1/k</sup></div>
 <div class="eq">−log P(no point) = Σ ℓₖ(μᵢ),&nbsp;&nbsp; ℓₖ(x) = log(1 + kx)/k</div>
-<p>ℓₖ is the dial's logarithm, the map that turns ✳ₖ into plain +. So for empty regions every process on the dial looks like Poisson with mean Σℓₖ(μ): at k = 0 that is the expected count, at k = −1 it is larger (fermions rarely leave gaps), at k = +1 smaller (bosons leave gaps by clumping elsewhere). At k = −1 the fold itself is the chance of at least one point, the functional-analysis page's 1 − det(I − K).</p>
+<p>ℓₖ is the dial's logarithm, the map that turns ∘ₖ into plain +. So for empty regions every process on the dial looks like Poisson with mean Σℓₖ(μ): at k = 0 that is the expected count, at k = −1 it is larger (fermions rarely leave gaps), at k = +1 smaller (bosons leave gaps by clumping elsewhere). At k = −1 the fold itself is the chance of at least one point, the functional-analysis page's 1 − det(I − K).</p>
 </div>
 <div>
 <h2>Each eigenvalue is its own independent mode</h2>
@@ -110,7 +110,7 @@ footer{color:var(--soft);font-size:14px}
 <h2>Number variance is a straight line in k</h2>
 <div class="eq">Var N = Σ μᵢ(1 + k·μᵢ) = tr K + k·tr K²</div>
 <p>Each mode adds its value times its lift. That product is zero at μ = 0 and again at the wall, the two places a mode's count is certain. Summed, the variance is a straight line in k through the Poisson value: fermions below it (sub-Poisson, repulsion), bosons above (super-Poisson, clumping). The second factorial moment is (Σμ)² + k·Σμ². Known (Shirai–Takahashi; the per-mode variance μ + kμ² is Morris's 1982 quadratic variance function for binomial, Poisson and negative binomial).</p>
-<p><b>Superposition slides along the dial.</b> m independent copies of the process (k, K) are exactly the process (k/m, m·K): the lifted kernel k·K is unchanged and 1/k counts copies. Underneath is the dial identity c·(a ✳ₖ b) = (c·a) ✳<sub>k/c</sub> (c·b), proved in Lean.</p>
+<p><b>Superposition slides along the dial.</b> m independent copies of the process (k, K) are exactly the process (k/m, m·K): the lifted kernel k·K is unchanged and 1/k counts copies. Underneath is the dial identity c·(a ∘ₖ b) = (c·a) ∘<sub>k/c</sub> (c·b), proved in Lean.</p>
 </div>
 </div>
 </section>
@@ -119,13 +119,13 @@ footer{color:var(--soft);font-size:14px}
 <div class="wrap side">
 <div>
 <h2>Tilting a mode puts it on the landscape, always on one parabola</h2>
-<p>Weight a mode's count by t<sup>N</sup> (the standard exponential tilt). Its mean moves, by the rate m′ = m(1 + km). Measure the move in the ruler x = (new mean − μ)/variance. Then tilts compose exactly by the landscape's lens law (a + b + p·ab)/(1 − q·ab) at</p>
-<div class="eq">p = 1 + 2s,&nbsp;&nbsp; q = s(1 + s),&nbsp;&nbsp; s = kμ,&nbsp;&nbsp; so p² − 4q = 1</div>
-<p>Every mode of every dial process lands on that one parabola, inside the two-walled country. Its two walls are the empty mode and the full mode. A rare mode (s near 0) sits at mult-add, the Poisson point. A full fermion mode sits at the union of failures. A half-filled fermion mode is velocity addition with speed limit 2. Bosons climb toward the border parabola (gamma, the clumping limit) and never reach it. The units-free shape is (2F − 1)², F the mode's Fano factor, which is why particles and holes look alike.</p>
+<p>Weight a mode's count by t<sup>N</sup> (the standard exponential tilt). Its mean moves, by the rate m′ = m(1 + km). Measure the move in the ruler x = (new mean − μ)/variance. Then tilts compose exactly by the landscape's lens law (a + b + p·ab)/(1 − d·ab) at</p>
+<div class="eq">p = 1 + 2s,&nbsp;&nbsp; d = s(1 + s),&nbsp;&nbsp; s = kμ,&nbsp;&nbsp; so p² − 4d = 1</div>
+<p>Every mode of every dial process lands on that one parabola, inside the two-walled country. Its two walls are the empty mode and the full mode. A rare mode (s near 0) sits at the circle operation ∘₁ (called mult-add before 1.0), the Poisson point. A full fermion mode sits at the union of failures. A half-filled fermion mode is velocity addition with speed limit 2. Bosons climb toward the border parabola (gamma, the clumping limit) and never reach it. The units-free shape is (2F − 1)², F the mode's Fano factor, which is why particles and holes look alike.</p>
 <p><b>What the bend means here:</b> it is not a free knob. A mode's bend is fixed by its filling kμ, so the bend adds no new processes, and no dial process lives above the border, where slope addition sits. <b>Fractional rungs:</b> we found nothing genuine; a fermion filling can match a rung's shape, but the rung itself is not a lens law (landscape page), so we dropped it.</p>
 </div>
 <div class="panel"><div class="fig2" id="land"></div>
-<p class="small">The landscape (dial k across, bend q up). Grey: the border parabola. Coloured: the count parabola p² − 4q = 1, blue for fermion fillings, amber for bosons.</p></div>
+<p class="small">The landscape (dial k across, bend d up). Grey: the border parabola. Coloured: the count parabola p² − 4d = 1, blue for fermion fillings, amber for bosons.</p></div>
 </div>
 </section>
 
@@ -146,7 +146,7 @@ footer{color:var(--soft);font-size:14px}
 <tr><td>Exists for α &lt; 0 only if −1/α is whole and the spectrum lies in [0, −1/α]; extra kernel condition for α &gt; 0</td><td>Shirai–Takahashi 2003; Maunoury 2016</td></tr>
 <tr><td>Quadratic variance functions μ + kμ²</td><td>Morris 1982</td></tr>
 <tr><td>α as the dial; voids through the dial's logarithm; existence as "wall off the spectrum" next to Sugeno's rule</td><td>Ours: reading</td></tr>
-<tr><td>Tilt law on the landscape: the parabola p² − 4q = 1, shape (2F − 1)²</td><td>Ours: placement (each lens law with real walls is mult-add in other coordinates)</td></tr>
+<tr><td>Tilt law on the landscape: the parabola p² − 4d = 1, shape (2F − 1)²</td><td>Ours: placement (each lens law with real walls is the circle operation in other coordinates)</td></tr>
 </tbody></table>
 </div>
 </div>
@@ -161,7 +161,7 @@ footer{color:var(--soft);font-size:14px}
 <div>
 <h2>Proved and checked</h2>
 <ul>
-<li>Lean: hole lift 1 + k·fold = ∏(1 + kμ), a wall eigenvalue fills the region, Var = Σμ + kΣμ² and its Fano line, sub- and super-Poisson sides, the rescaling identity behind superposition, the tilt ruler and its lens law, the parabola p² − 4q = 1, and the three named points.</li>
+<li>Lean: hole lift 1 + k·fold = ∏(1 + kμ), a wall eigenvalue fills the region, Var = Σμ + kΣμ² and its Fano line, sub- and super-Poisson sides, the rescaling identity behind superposition, the tilt ruler and its lens law, the parabola p² − 4d = 1, and the three named points.</li>
 <li>Python: every number on this page, including Monte Carlo at k = −1, −1/2, −1/3, 0, 1/2, 1, 2.</li>
 </ul>
 </div>
@@ -213,7 +213,7 @@ function hero(){
   g+=T(KX(-1),top+30,'fermions','start','var(--fer)')+T(KX(2),bot-26,'bosons','end','var(--bos)');
   sH.innerHTML=g;
   const F=fold(k), lift=1+k*F, V=S1+k*S2;
-  $('tb').innerHTML=[['fold μ₁ ✳ₖ μ₂ ✳ₖ ⋯',f(F)],['lift 1 + k·fold = det(I + kK)',f(lift)],['chance empty',f(hole(k))],['Σ ℓₖ(μ) (Poisson-like mean)',f(-Math.log(hole(k)))],['mean count',f(S1)],['variance tr K + k tr K²',f(V)],['Fano factor',f(V/S1)]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('');
+  $('tb').innerHTML=[['fold μ₁ ∘ₖ μ₂ ∘ₖ ⋯',f(F)],['lift 1 + k·fold = det(I + kK)',f(lift)],['chance empty',f(hole(k))],['Σ ℓₖ(μ) (Poisson-like mean)',f(-Math.log(hole(k)))],['mean count',f(S1)],['variance tr K + k tr K²',f(V)],['Fano factor',f(V/S1)]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('');
 }
 function strips(){
   const W=sS.clientWidth,H=sS.clientHeight,m=8,rows=[['-1','fermions k = −1'],['0','Poisson k = 0'],['1','bosons k = +1']];
@@ -259,7 +259,7 @@ function land(){
   const seg=(a,b,c)=>{let p='';for(let i=0;i<=60;i++){const s=a+(b-a)*i/60,P=1+2*s,Q=s*(1+s);if(Q>q1||P>k1)continue;p+=(p?' L':'M')+X(P).toFixed(1)+' '+Y(Q).toFixed(1);}return '<path d="'+p+'" fill="none" stroke="'+c+'" stroke-width="4"/>';};
   g+=seg(-1,0,'var(--fer)')+seg(0,1.2,'var(--bos)');
   g+=C(X(1),Y(0),6,'var(--poi)')+C(X(-1),Y(0),6,'var(--fer)')+C(X(0),Y(-0.25),6,'var(--fer)')+C(X(0),Y(1),5,'var(--soft)');
-  g+=T(X(1)+8,Y(0)+18,nar?'mult-add':'mult-add (Poisson)')+T(X(-1),Y(0)-12,nar?'full':'full mode: union','middle');
+  g+=T(X(1)+8,Y(0)+18,nar?'the circle operation':'The circle operation (Poisson)')+T(X(-1),Y(0)-12,nar?'full':'full mode: union','middle');
   g+=T(X(0)+10,Y(-0.25)+18,nar?'half-filled':'half-filled: velocity')+T(X(0)+9,Y(1)+4,'slope addition');
   g+=T(X(2.6),Y(1.95),'border','end','var(--soft)')+T(X(k1),Y(0)-8,'k','end')+T(X(0)-8,Y(q1)+10,'q','end');
   sL.innerHTML=g;

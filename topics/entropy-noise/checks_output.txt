@@ -1,11 +1,11 @@
-== 1. Tsallis pseudo-additivity is weighted mult-add with k = 1 - q ==
+== 1. Tsallis pseudo-additivity is the circle operation with k = 1 - q_T ==
 PASS S_q(A x B) = S_A + S_B + (1-q) S_A S_B on 1400 random pairs  max error 3.6e-15
 PASS q = 1 (k = 0): Shannon entropy adds
-PASS lens law absorbs certainty (a o 1 = 1 for all a) exactly on k + q_L = -1  [{k: -q_L - 1}]
-PASS Tsallis laws have q_L = 0, so they meet that line only at k = -1, Tsallis q = 2
-   Note: the Tsallis index q and the landscape's q are different letters for different things.
-   Tsallis line: k + q_T = 1.  'Or' line: k + q_L = -1.  They cross only at (k, q_L) = (-1, 0).
-PASS quantum Tsallis (Tr rho^q) of rho x sigma composes at k = 1 - q  max error 8.2e-15
+PASS lens law absorbs certainty (a o 1 = 1 for all a) exactly on k + d = -1  [{k: -d - 1}]
+PASS Tsallis laws have d = 0, so they meet that line only at k = -1, Tsallis q_T = 2
+   Note: the Tsallis index q_T and the landscape's curvature d are different things.
+   Tsallis line: k + q_T = 1.  'Or' line: k + d = -1.  They cross only at (k, d) = (-1, 0).
+PASS quantum Tsallis (Tr rho^q) of rho x sigma composes at k = 1 - q_T  max error 8.2e-15
 PASS linear entropy 1 - Tr rho^2 of two independent qubits follows the union rule (k = -1)
 PASS qubit von Neumann entropy = h((1 - r)/2): a radial function on the Bloch ball
 
@@ -33,9 +33,9 @@ PASS composing keeps a channel inside the any cube max|.| <= c (c = 0.6)  1541 t
 PASS Baez: Renyi entropy of order q = -(F(T0/q) - F(T0))/(T0/q - T0) for Gibbs states  max error 2.8e-15
 PASS 1 + k*S_Tsallis = Z(T0/q)/Z(T0)^q, a ratio of partition functions (the thermodynamics page's lift)
 PASS escort of an escort: P_b(P_a(p)) = P_{ab}(p), so q multiplies along a chain
-PASS hence k = 1 - q composes by the union rule k1 + k2 - k1 k2
+PASS hence k = 1 - q_T composes by the union rule k1 + k2 - k1 k2
 PASS k(T, T0) = 1 - T0/T is Carnot's efficiency, and Carnot cascades by the same rule
-   Landmarks: k = 1 (q = 0) is infinite temperature, every state counted once (Hartley);
+   Landmarks: k = 1 (q_T = 0) is infinite temperature, every state counted once (Hartley);
    k = 0 is T = T0, Shannon; k -> -inf is T -> 0, only the ground state (min-entropy).
 
 == 4. Stacking noise: what cancellation hides ==

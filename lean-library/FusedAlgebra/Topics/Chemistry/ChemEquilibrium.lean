@@ -5,28 +5,28 @@
   Companion page and checks: ../index.html, ../checks.py (12 checks).
   Core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 
-  Two binding sites with interaction factor ω: P − 1 = a ⊞_ω b.
+  Two binding sites with interaction factor ω: P − 1 = a ◯[ω] b.
   A symmetric diacid has ω = 4·10^(−ΔpKa).
   For two equal sites the binding polynomial 1 + 2x + ωx² has real zeros
   exactly when ω ≤ 1 (discriminant 4 − 4ω), so positive cooperativity and
-  zeros off the real axis begin together at the mult-add setting ω = 1.
+  zeros off the real axis begin together at the circle-operation setting (called mult-add setting before 1.0) ω = 1.
   Folding the dial over n sites gives 1 + ((1 + kx)^n − 1)/k, the MWC model
   with binding only to the relaxed state and L = k − 1.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
-  Merged unchanged at Topics/Chemistry/ChemEquilibrium; the local infix stays. No exact twins;
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
+  Merged unchanged at Topics/Chemistry/ChemEquilibrium; it now uses Base's ◯. No exact twins;
   the Rat helper sq_nonneg_rat stays local like the other topics' Rat helpers.
 -/
 import FusedAlgebra.Base
 
 namespace ChemEquilibrium
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-- Two-site binding polynomial minus one is the dial. -/
-theorem binding_dial (a b ω : Rat) : (1 + a + b + ω * a * b) - 1 = wAdd ω a b := by
-  rw [wAdd_def]; grind
+theorem binding_dial (a b ω : Rat) : (1 + a + b + ω * a * b) - 1 = circK ω a b := by
+  rw [circK_def]; grind
 
 /-- Symmetric diacid, association form: β₁ = 2K, β₂ = ωK², so β₂·4 = ω·β₁². -/
 theorem diacid_gap (K ω : Rat) : (ω * K * K) * 4 = ω * ((2 * K) * (2 * K)) := by grind

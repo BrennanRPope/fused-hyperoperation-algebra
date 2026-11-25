@@ -1,6 +1,6 @@
 # The diamond hierarchical lattice on the landscape (Nov 25, 2026)
 
-Follow-up of the graph-theory lead: the diamond map t -> F_{Q-2,1-Q}(t^2, t^2) as Q slides along the "or" line k + q = -1.
+Follow-up of the graph-theory lead: the diamond map t -> F_{Q-2,1-Q}(t^2, t^2) as Q slides along the "or" line k + d = -1.
 
 Files
 - index.html: the page (built by build.py from template.html; self-contained, figures as data: URIs, ~240 KB).
@@ -11,9 +11,9 @@ Files
 
 Findings
 1. One diamond step = square in t (series), then square in the lift phi(t) = (1-t)/(1+(Q-1)t) = e^{-K} (parallel). Four walls:
-   series 0, inf; parallel 1 and 1/(1-Q) (the colouring bond v = -1). Q only moves that one wall; the bend q = 1 - Q is its
+   series 0, inf; parallel 1 and 1/(1-Q) (the colouring bond v = -1). Q only moves that one wall; the bend d = 1 - Q is its
    reciprocal. Ours (landscape reading); the map itself is Berker-Ostlund 1979, t = v/(Q+v) is Tsallis-Levy 1981.
-2. p^2 - 4q = Q^2: walls always real, merge only at Q = 0, where the cold point turns parabolic (T'(1) = 1). The bend's sign
+2. p^2 - 4d = Q^2: walls always real, merge only at Q = 0, where the cold point turns parabolic (T'(1) = 1). The bend's sign
    never flips for real Q, so it carries no dynamical information. Ours (elementary).
 3. Fixed points: t = 1/y with Q = (y-1)^2(y+1), e^K = y^2; slope at every one is 4/(1+t)^2 = (2y/(y+1))^2, so
    nu = ln2 / (2 ln(2/(1+t*))). Closed forms: Q = 1 golden (nu 1.6353), Q = 2 tribonacci (1.3383), Q = 32/27 t* = 3/5,

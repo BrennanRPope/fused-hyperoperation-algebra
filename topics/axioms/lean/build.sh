@@ -1,5 +1,5 @@
 #!/bin/bash
-# Compile the mult-add axioms and re-derive the library from them.
+# Compile the circle-operation axioms and re-derive the library from them.
 # Needs `lean` 4.37.0-rc1 on PATH (core Lean only, no mathlib).
 set -e
 cd "$(dirname "$0")"

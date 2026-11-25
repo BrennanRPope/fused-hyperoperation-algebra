@@ -23,11 +23,11 @@ def add(name, folder, checks, lean, assumptions, known, ours, cats):
 
 add("order dial", "order-dial", "71/71", "OrderDial, 33 theorems (Int); centre_fixed assumes r·x = -d",
  [("Maps are x ↦ (1+a)x + c with integer or real coefficients", "K", "implicit"),
-  ("Mult-add is composition of stretches sharing the centre −1/k (T_comp)", "K", "stated"),
+  ("The circle operation is composition of stretches sharing the centre −1/k (T_comp)", "K", "stated"),
   ("The route to quantum mechanics uses the Heisenberg group on functions; i and ħ are put in by hand", "in", "stated"),
   ("Category-theory framing: a monoid is a one-object category", "K", "stated")],
  "affine group, Heisenberg group, Weyl relation, monoids as categories",
- "the order gap read as the cost of order; mult-add as the single-centre slice",
+ "the order gap read as the cost of order; the circle operation as the single-centre slice",
  dict(sec_a="no", sec_k="no", dial="input", key="known", lean="yes"))
 
 add("why i (+ path integrals, weak)", "why-i", "44/44", "WhyI, 21 theorems (Int); stands alone, imports nothing",
@@ -77,7 +77,7 @@ add("e, i, π", "why-i/e-i-pi", "42/42", "EIPi, 17 theorems (Int, Gaussian integ
   ("Picking complex numbers needs Hardy / Masanes–Müller axioms", "in", "stated"),
   ("Physics values from CODATA as floats: formulas checked, not experiments", "K", "stated")],
  "Euler, product integrals, local tomography, KMS, Unruh, Hawking, Bisognano–Wichmann",
- "e, i, π as dial directions; K_AB = K_A K_B as mult-add; the dial ledger; caustic/conformal-factor parallel (untested)",
+ "e, i, π as dial directions; K_AB = K_A K_B as the circle operation; the dial ledger; caustic/conformal-factor parallel (untested)",
  dict(sec_a="yes", sec_k="yes", dial="input", hbar="input", key="ours", lean="yes"))
 
 add("chain resolves", "why-i/e-i-pi/chain-resolves", "18/18", "none",
@@ -121,7 +121,7 @@ add("special relativity", "relativity", "37/37", "Relativity, 30 theorems (Rat);
   ("Collinear motion only", "K", "implicit"),
   ("Hypotheses keep away from the walls (u ≠ 1, uv ≠ −1)", "K", "implicit")],
  "Einstein velocity addition, rapidity, Doppler",
- "velocity addition as mult-add on the Doppler-squared ruler; landscape placement",
+ "velocity addition as the circle operation on the Doppler-squared ruler; landscape placement",
  dict(sec_a="no", sec_k="no", ruler="ours", key="known", lean="yes"))
 
 add("twisted boosts (+ GP-B, pulsar)", "twisted-boosts", "36/36 + 21/21 + 13/13", "TwistedBoosts 36, GravityProbeB 16, BinaryPulsar 10 (Rat)",
@@ -139,7 +139,7 @@ add("general relativity (river)", "general-relativity", "44/44", "GeneralRelativ
   ("Spherical symmetry, dust; pressure not tested", "O", "stated"),
   ("Metric field and 'second order, local' put in by hand (route b)", "in", "stated")],
  "Painlevé–Gullstrand, Hamilton–Lisle river, Lovelock, Hojman–Kuchař–Teitelboim",
- "clock and ruler deficits as mult-add inverses; GP-B factor as river composition",
+ "clock and ruler deficits as circle-operation inverses; GP-B factor as river composition",
  dict(sec_a="no", sec_k="no", grav="input", toy="ours", key="known", lean="yes"))
 
 add("GR bridges", "gr-bridges", "65/65", "GRBridges, 22 theorems (Int, Rat)",
@@ -148,11 +148,11 @@ add("GR bridges", "gr-bridges", "65/65", "GRBridges, 22 theorems (Int, Rat)",
   ("Lovelock: second order is an input; river as gauge, not field", "in", "stated"),
   ("Deser: massless spin-2 needed; traded for the observed fact (LIGO)", "in", "stated")],
  "Jacobson 1995, TEGR, Lovelock, Deser, Brans–Dicke, Einstein–aether, Lasenby–Doran–Gull",
- "Raychaudhuri focusing as the mult-add cross term; ADM constraints as e₂ of strain rates",
+ "Raychaudhuri focusing as the circle-operation cross term; ADM constraints as e₂ of strain rates",
  dict(sec_a="no", sec_k="no", grav="input", key="known", lean="yes"))
 
 add("electromagnetism", "electromagnetism", "49/49", "Electromagnetism, 41 theorems (Rat)",
- [("Wave equation kept under a dial boost only at q = −1/c²", "K", "implicit"),
+ [("Wave equation kept under a dial boost only at d = −1/c²", "K", "implicit"),
   ("Source law ∇F = J taken from outside", "in", "stated"),
   ("Vacuum superposition is plain addition (k = 0)", "K", "stated")],
  "Maxwell, Riemann–Silberstein, Hestenes 1966, Wilson loops",

@@ -21,7 +21,7 @@ ax.annotate('×2',xy=(0.5,-0.1),ha='center',fontsize=11,color='#555')
 ax.annotate('×3',xy=(-0.14,0.5),ha='center',fontsize=11,color='#555')
 ax.annotate('×5',xy=(0.12,0.27),fontsize=11,color='#555')
 ax.set_xlim(-0.35,1.75); ax.set_ylim(-0.35,1.65); ax.set_aspect('equal'); ax.axis('off')
-ax.set_title('Three primes mult-added: the cube.\nEach corner is a combination; layers 1, 3, 3, 1.\nGreen = even layer (+), red = odd layer (−): that sign is μ(n).',fontsize=10.5)
+ax.set_title('Three primes combined by the circle operation: the cube.\nEach corner is a combination; layers 1, 3, 3, 1.\nGreen = even layer (+), red = odd layer (−): that sign is μ(n).',fontsize=10.5)
 # panel 2: 4-cube as layers (Hasse diagram)
 ax=fig.add_subplot(1,3,2)
 pr4=[2,3,5,7]; subs=list(itertools.product([0,1],repeat=4)); pos={}

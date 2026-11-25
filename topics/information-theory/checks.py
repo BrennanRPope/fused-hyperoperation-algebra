@@ -23,11 +23,11 @@ z = lambda e: sp.expand(e) == 0
 
 print("A. Symbolic identities (the Lean file's ring facts)")
 ok("K1 lift", z(1 + k*w(k,a,b) - (1+k*a)*(1+k*b)))
-ok("scale to plain mult-add", z(k*w(k,a,b) - madd(k*a,k*b)))
+ok("scale to the plain circle operation", z(k*w(k,a,b) - madd(k*a,k*b)))
 ok("K3 flip", z(w(k,-a,-b) + w(-k,a,b)))
 ok("assoc", z(w(k,w(k,a,b),c) - w(k,a,w(k,b,c))))
 ok("union rule", z(w(-1,p,q) - (1-(1-p)*(1-q))))
-ok("union = flipped mult-add", z(w(-1,p,q) + madd(-p,-q)))
+ok("union = flipped the circle operation", z(w(-1,p,q) + madd(-p,-q)))
 ok("inclusion-exclusion 3", z(w(-1,w(-1,p,q),r) - (p+q+r-p*q-p*r-q*r+p*q*r)))
 ok("gini-simpson", z(1-P*R - w(-1,1-P,1-R)))
 ok("support count", z(N*M-1 - madd(N-1,M-1)))
@@ -76,7 +76,7 @@ for trial in range(5):
     ok(f"[{trial}] Shannon additive", abs(H(J)-H(A)-H(B))<1e-12)
     for qq in [0.0, 0.5, 2.0, 3.0]:
         kk = 1-qq
-        ok(f"[{trial}] Tsallis q={qq}: S_AB = S_A (+)_k S_B, k={kk}",
+        ok(f"[{trial}] Tsallis q_T={qq}: S_AB = S_A (+)_k S_B, k={kk}",
            abs(tsallis(J,qq) - (tsallis(A,qq)+tsallis(B,qq)+kk*tsallis(A,qq)*tsallis(B,qq)))<1e-10)
         ok(f"[{trial}] Renyi a={qq} additive", abs(renyi(J,qq)-renyi(A,qq)-renyi(B,qq))<1e-10)
         ok(f"[{trial}] Renyi = log2(1+k S_T)/k, q={qq}",
@@ -140,7 +140,7 @@ for trial in range(3):
     ok(f"[{trial}] expected lengths add", abs(np.sum(J*lj)-np.sum(A*la)-np.sum(B*lb))<1e-12)
     t = 0.7
     MA, MB, MJ = np.sum(A*2**(t*la)), np.sum(B*2**(t*lb)), np.sum(J*2**(t*lj))
-    ok(f"[{trial}] Campbell M multiplies, M-1 mult-adds", abs((MJ-1)-((MA-1)+(MB-1)+(MA-1)*(MB-1)))<1e-12)
+    ok(f"[{trial}] Campbell M multiplies, M-1 combines by the circle operation", abs((MJ-1)-((MA-1)+(MB-1)+(MA-1)*(MB-1)))<1e-12)
     al = 1/(1+t)
     ok(f"[{trial}] Campbell cost >= Renyi(1/(1+t)) bound (Campbell 1965)",
        np.log2(MA)/t >= renyi(A,al)-1e-12)

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pi from Mult-Add</title>
+<title>Pi from the Circle Operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE work: a research note read on a call, finding first
-   IDEA a geometry plate: one circle drawn round mult-add's wall, steps walked on it
+   IDEA a geometry plate: one circle drawn round the circle operation's wall, steps walked on it
    PICTURE live circle: tiny turning steps (or halved steps) walking from 0 round to -2
    COLOUR white / ink, red for the wall and the crossing, slate for the steps, pale panels
    TYPE Source Serif 4 display + Inter text
@@ -76,13 +76,13 @@ li{margin:.25em 0}
 <header class="band">
 <div class="wrap">
 <span class="tab">Fused Hyperoperation Algebra · Nov 25, 2026</span>
-<h1>Pi is the length of the trip from 0 to −2 around mult-add's wall</h1>
-<p class="lede">Through the turning law's lens, every real slope sits on one circle of radius 1 drawn around the wall at −1. That circle crosses the number line at just two points: 0, where you start, and −2, the parity point. Pi is how far the turning flow runs to get from one to the other. Mult-add alone then gives you the digits. The hunt for a new transcendental found one number nobody seems to have named, B½(1,1) = 2.40717…, but whether it is transcendental can't be proved with today's math.</p>
+<h1>Pi is the length of the trip from 0 to −2 around the circle operation's wall</h1>
+<p class="lede">Through the turning law's lens, every real slope sits on one circle of radius 1 drawn around the wall at −1. That circle crosses the number line at just two points: 0, where you start, and −2, the parity point. Pi is how far the turning flow runs to get from one to the other. The circle operation ∘₁ (called mult-add before 1.0) alone then gives you the digits. The hunt for a new transcendental found one number nobody seems to have named, B½(1,1) = 2.40717…, but whether it is transcendental can't be proved with today's math.</p>
 <div class="figs">
-<div><b>1,000</b><span>digits of pi from mult-add's logarithm, all correct</span></div>
+<div><b>1,000</b><span>digits of pi from the circle operation's logarithm, all correct</span></div>
 <div><b>43</b><span>Lean theorems, compiled, no sorry</span></div>
 <div><b>25 of 25</b><span>exact and numeric checks pass</span></div>
-<div><b>9</b><span>mult-add constants run through a 110-digit relation search</span></div>
+<div><b>9</b><span>circle-operation constants run through a 110-digit relation search</span></div>
 </div>
 <nav class="scroll" aria-label="Sections"><a href="#where">Where pi lives</a><a href="#digits">The digits</a><a href="#constants">Other constants</a><a href="#lean">What Lean proved</a><a href="#known">Known or new</a><a href="#files">Files</a></nav>
 </div>
@@ -90,7 +90,7 @@ li{margin:.25em 0}
 
 <section class="band" style="padding-top:0">
 <div class="wrap plate">
-<div class="fig" id="plate" role="img" aria-label="Circle of radius 1 around the wall at minus 1, with mult-add steps walking from 0 round to minus 2"><svg id="ps"></svg></div>
+<div class="fig" id="plate" role="img" aria-label="Circle of radius 1 around the wall at minus 1, with circle-operation steps walking from 0 round to minus 2"><svg id="ps"></svg></div>
 <div class="ctl">
 <div class="seg" role="group" aria-label="Kind of step">
 <button id="mTiny" aria-pressed="true">Tiny steps</button>
@@ -102,25 +102,25 @@ li{margin:.25em 0}
 <div class="big" id="bigv">3.2</div>
 <div class="mute" id="readTxt">32 steps of i/10 pass −2; 32/10 = 3.2</div>
 </div>
-<p class="mute" id="modeTxt">Each dot is one more mult-add of the step i/n. The walk spirals a hair outward (each step has length a little over 1/n), so you count steps until it slips past the far side. Steps ÷ n heads for pi as n grows: 315 for n = 100, 3,142 for n = 1,000, 3,141,593 for n = 1,000,000.</p>
+<p class="mute" id="modeTxt">Each dot is one more the circle operation of the step i/n. The walk spirals a hair outward (each step has length a little over 1/n), so you count steps until it slips past the far side. Steps ÷ n heads for pi as n grows: 315 for n = 100, 3,142 for n = 1,000, 3,141,593 for n = 1,000,000.</p>
 </div>
 </div>
 </section>
 
 <section class="band" id="where" style="background:var(--panel)">
 <div class="wrap">
-<h2>Where pi lives: half of mult-add's own period</h2>
+<h2>Where pi lives: half of the circle operation's own period</h2>
 <div class="cols">
 <div>
-<p>The turning law is slope addition, x ⊕ y = (x + y)/(1 − xy), at the landscape point (0, 1). Write each slope as the Gaussian number <b>1 + i·x</b>. Then slope addition is just multiplication: (1 + ix)(1 + iy) = (1 − xy)(1 + i·(x ⊕ y)). The lens 1 + a = (1 + ix)/(1 − ix) makes this exact, so a(x ⊕ y) = a(x) ⊞ a(y). The turning law is mult-add with complex walls.</p>
-<p>The lens puts every real slope on the circle |1 + a| = 1, centred on the wall −1. Mult-add keeps you on that circle, because lengths multiply. Slope 0 lands on a = 0, slope 1 on a = −1 + i, and slope ∞ on <b>a = −2</b>. On the real line the circle is exactly the two points 0 and −2.</p>
-<p>So the turning flow starts at 0, passes through infinity exactly when mult-add reaches −2, and comes back to 0. The distance to −2 in the law's own units is pi; the full loop is 2π. In mult-add's own terms, its logarithm log(1 + a) gains 2πi each time you go once round the wall.</p>
+<p>The turning law is slope addition, x ⊕ y = (x + y)/(1 − xy), at the landscape point (0, 1). Write each slope as the Gaussian number <b>1 + i·x</b>. Then slope addition is just multiplication: (1 + ix)(1 + iy) = (1 − xy)(1 + i·(x ⊕ y)). The lens 1 + a = (1 + ix)/(1 − ix) makes this exact, so a(x ⊕ y) = a(x) ∘₁ a(y). The turning law is the circle operation with complex walls.</p>
+<p>The lens puts every real slope on the circle |1 + a| = 1, centred on the wall −1. The circle operation keeps you on that circle, because lengths multiply. Slope 0 lands on a = 0, slope 1 on a = −1 + i, and slope ∞ on <b>a = −2</b>. On the real line the circle is exactly the two points 0 and −2.</p>
+<p>So the turning flow starts at 0, passes through infinity exactly when the circle operation reaches −2, and comes back to 0. The distance to −2 in the law's own units is pi; the full loop is 2π. In the circle operation's own terms, its logarithm log(1 + a) gains 2πi each time you go once round the wall.</p>
 </div>
 <div>
-<h3>Every turning law has period 2π ÷ √(4q − p²)</h3>
-<p>The law (a + b + p·ab)/(1 − q·ab) grows by y′ = 1 + p·y + q·y². Under the parabola (4q &gt; p²) the flow blows up and comes round, and the time it takes is 2π/√(4q − p²). Pi is the turning country's one constant; the distance from the parabola only sets the scale. On the parabola the period runs off to infinity. Above it, in two-wall country, the same formula gives an imaginary period, which is a logarithm. Pi and log are one quantity seen from either side of the parabola.</p>
+<h3>Every turning law has period 2π ÷ √(4d − p²)</h3>
+<p>The law (a + b + p·ab)/(1 − d·ab) grows by y′ = 1 + p·y + d·y². Under the parabola (4d &gt; p²) the flow blows up and comes round, and the time it takes is 2π/√(4d − p²). Pi is the turning country's one constant; the distance from the parabola only sets the scale. On the parabola the period runs off to infinity. Above it, in two-wall country, the same formula gives an imaginary period, which is a logarithm. Pi and log are one quantity seen from either side of the parabola.</p>
 <div class="scroll"><table>
-<thead><tr><th>Point (p, q)</th><th class="n">Period, by integrating</th><th class="n">2π/√(4q − p²)</th></tr></thead>
+<thead><tr><th>Point (p, d)</th><th class="n">Period, by integrating</th><th class="n">2π/√(4d − p²)</th></tr></thead>
 <tbody id="perBody"></tbody>
 </table></div>
 <p class="mute">Integrated to 25 digits, matching to 40. <span class="tag inf">inferred</span> in Lean's sense: the integral is analysis, which core Lean lacks.</p>
@@ -131,29 +131,29 @@ li{margin:.25em 0}
 
 <section class="band" id="digits">
 <div class="wrap">
-<h2>Three ways to get the digits using mult-add only</h2>
+<h2>Three ways to get the digits using the circle operation only</h2>
 <div class="cols">
 <div>
 <h3>1. Count tiny steps</h3>
-<p>Mult-add i/n to itself until you pass −2. Pure counting, no logarithms, but slow: you get about one digit for each factor of 10 in n.</p>
+<p>Combine i/n with itself by the circle operation until you pass −2. Pure counting, no logarithms, but slow: you get about one digit for each factor of 10 in n.</p>
 <div class="scroll"><table><thead><tr><th class="n">n</th><th class="n">Steps to pass −2</th><th class="n">Steps ÷ n</th></tr></thead><tbody id="stepBody"></tbody></table></div>
 <p class="mute">n ≤ 1,000 counted exactly with Gaussian integers; n = 10, 100 and 1,000 are also checked by Lean's kernel.</p>
 </div>
 <div>
 <h3>2. Halve the trip (Archimedes)</h3>
-<p>Find the step a with 3 copies landing on −2, then halve it again and again (a half-step b solves b ⊞ b = a). The straight lengths of all the steps sit below pi; the same steps measured in slope units sit above it. 48 steps is exactly Archimedes' 96-sided polygon.</p>
+<p>Find the step a with 3 copies landing on −2, then halve it again and again (a half-step b solves b ∘₁ b = a). The straight lengths of all the steps sit below pi; the same steps measured in slope units sit above it. 48 steps is exactly Archimedes' 96-sided polygon.</p>
 <div class="scroll"><table><thead><tr><th class="n">Steps 0 → −2</th><th class="n">Below</th><th class="n">Above</th></tr></thead><tbody id="halfBody"></tbody></table></div>
 </div>
 <div>
 <h3>3. Land on the eighth turn, then take the way back</h3>
-<p>Four steps of i/5 and one step back of i/239 land exactly on the 45° ray, an eighth of the full turn: (5 + i)⁴(239 − i) = 114,244·(1 + i). Then mult-add's logarithm, L(a) = a − a²/2 + a³/3 − …, turns the steps back into addition, and its imaginary part at a = ix is x − x³/3 + x⁵/5 − … So pi = 4·(4·L(i/5) − L(i/239)) in imaginary parts. This is Machin's formula from 1706, written in mult-add.</p>
+<p>Four steps of i/5 and one step back of i/239 land exactly on the 45° ray, an eighth of the full turn: (5 + i)⁴(239 − i) = 114,244·(1 + i). Then the circle operation's logarithm, L(a) = a − a²/2 + a³/3 − …, turns the steps back into addition, and its imaginary part at a = ix is x − x³/3 + x⁵/5 − … So pi = 4·(4·L(i/5) − L(i/239)) in imaginary parts. This is Machin's formula from 1706, written in the circle operation.</p>
 <p>A search over mixes of two step sizes finds exactly the four that land on the eighth turn, the same four Størmer proved are the only ones in 1899: Machin, Euler (i/2 and i/3), Hermann and Hutton.</p>
 </div>
 </div>
 <h3>1,000 digits from route 3 (722 + 212 terms), checked against a reference value</h3>
 <pre class="digits" id="dig"></pre>
 <p><button id="copyD">Copy digits</button> <span class="mute" id="copyMsg"></span></p>
-<p class="mute">The Euler limit is a fourth view of the same thing: n copies of iπ/n mult-added head for −2 (−2.0000049 at n = 1,000,000), because (1 + iπ/n)ⁿ → e^{iπ} = −1. It needs pi to state, so it is a check rather than a route to the digits.</p>
+<p class="mute">The Euler limit is a fourth view of the same thing: n copies of iπ/n combined by the circle operation head for −2 (−2.0000049 at n = 1,000,000), because (1 + iπ/n)ⁿ → e^{iπ} = −1. It needs pi to state, so it is a check rather than a route to the digits.</p>
 </div>
 </section>
 
@@ -162,29 +162,29 @@ li{margin:.25em 0}
 <h2>Hunting another transcendental: one unnamed number, nothing new proved</h2>
 <p>Each constant was computed to 120 trusted digits, then 110 of them were run through PSLQ (an integer-relation search) against 1, π, e, ln 2, ln 3, Euler's γ, ζ(3), Catalan's G, π², √2, √3, Γ(¼), ln π and π√3, for the number, its logarithm, and both together, with coefficients up to 10,000. Each was also tested for being a root of an integer polynomial up to degree 12. The search caught every relation that should exist, which shows it works.</p>
 <div class="scroll"><table class="stack">
-<thead><tr><th>Constant</th><th>Where mult-add makes it</th><th>Value</th><th>Relation search</th><th>Transcendental?</th></tr></thead>
+<thead><tr><th>Constant</th><th>Where the circle operation makes it</th><th>Value</th><th>Relation search</th><th>Transcendental?</th></tr></thead>
 <tbody id="cBody"></tbody>
 </table></div>
 <div class="cols" style="margin-top:28px">
 <div>
-<h3>The new one: halfway between plus and mult-add</h3>
-<p>B_s is the fused operation at height s: B₀ is addition, B₁ is mult-add, and in between it uses the regular half-iterate of eˣ − 1 (unique by Écalle and Szekeres; your fractional-rungs page built it). At 1 and 1, height ½ gives</p>
+<h3>The new one: halfway between plus and the circle operation</h3>
+<p>B_s is the fused operation at height s: B₀ is addition, B₁ is the circle operation, and in between it uses the regular half-iterate of eˣ − 1 (unique by Écalle and Szekeres; your fractional-rungs page built it). At 1 and 1, height ½ gives</p>
 <p class="big" style="font-size:clamp(24px,3.5vw,34px);white-space:normal;overflow-wrap:anywhere">B½(1,1) = 2.4071710590 1658413387 3092350661 4815634779…</p>
 <p>It passes every test for transcendence I can run: no relation with 14 known constants at 110 digits, no polynomial up to degree 12. I found no published value. Proving it transcendental is out of reach: nobody can even prove e + π is irrational, and this number has no exponential form for Lindemann–Weierstrass, Gelfond–Schneider or Baker to grip. <span class="tag op">open</span></p>
 </div>
 <div>
 <div class="hc" id="hc" role="img" aria-label="B_s(1,1) as the height s goes from minus 1 to 2"><svg id="hs"></svg></div>
-<p class="mute">B_s(1,1) from s = −1 to 2: it passes 2 at s = 0 (1 + 1), 3 at s = 1 (1 ⊞ 1) and 5.467 at s = 2.</p>
+<p class="mute">B_s(1,1) from s = −1 to 2: it passes 2 at s = 0 (1 + 1), 3 at s = 1 (1 ∘₁ 1) and 5.467 at s = 2.</p>
 </div>
 </div>
 <div class="cols" style="margin-top:20px">
 <div>
-<h3>Feigenbaum sits on the road from mult-add to the turning law</h3>
-<p>Doubling in mult-add is u ↦ u² on the lift (the map z² + c at c = 0). Doubling in the turning law, read on the circle as z = u + 1/u, is z ↦ z² − 2 (c = −2). These are the only two real quadratic maps that can be solved exactly. Everything between them is the period-doubling cascade, whose rate is Feigenbaum's δ ≈ 4.6692016. Your elliptic curves supply the third solvable kind (Lattès maps). Feigenbaum's constants are believed transcendental but not even proved irrational. <span class="tag inf">known</span></p>
+<h3>Feigenbaum sits on the road from the circle operation to the turning law</h3>
+<p>Doubling in the circle operation is u ↦ u² on the lift (the map z² + c at c = 0). Doubling in the turning law, read on the circle as z = u + 1/u, is z ↦ z² − 2 (c = −2). These are the only two real quadratic maps that can be solved exactly. Everything between them is the period-doubling cascade, whose rate is Feigenbaum's δ ≈ 4.6692016. Your elliptic curves supply the third solvable kind (Lattès maps). Feigenbaum's constants are believed transcendental but not even proved irrational. <span class="tag inf">known</span></p>
 </div>
 <div>
 <canvas id="fg" aria-label="Bifurcation diagram of z squared plus c from c = 0 to c = -2"></canvas>
-<p class="mute">Where z² + c settles, for c from 0 (mult-add doubling, left) to −2 (turning doubling, right). Superstable points computed here give δ = 4.669201596 at period 2¹⁴.</p>
+<p class="mute">Where z² + c settles, for c from 0 (circle doubling, left) to −2 (turning doubling, right). Superstable points computed here give δ = 4.669201596 at period 2¹⁴.</p>
 </div>
 </div>
 </div>
@@ -197,11 +197,11 @@ li{margin:.25em 0}
 <div>
 <p><span class="tag pr">proved</span> in core Lean 4.37, compiled against the library's base, no sorry, standard axioms only (43 theorems):</p>
 <ul>
-<li>Gaussian mult-add: lift, commutative, associative, identity 0, power lift.</li>
-<li>The lens: slope addition on pairs is Gaussian multiplication, and the conjugate multiplies too, so a(x ⊕ y) = a(x) ⊞ a(y).</li>
-<li>The circle round the wall is closed under mult-add; on the real line it is exactly {0, −2}; slope ∞ lands on −2; x ⊞ x = 0 only at 0 and −2.</li>
-<li>The quarter step: (−1 + i) ⊞ (−1 + i) = −2 and four copies give 0; slope 1 ⊕ 1 = 2/0 = ∞.</li>
-<li>Machin, Euler, Hermann and Hutton as exact mult-add identities, and Machin in the turning law itself.</li>
+<li>Gaussian the circle operation: lift, commutative, associative, identity 0, power lift.</li>
+<li>The lens: slope addition on pairs is Gaussian multiplication, and the conjugate multiplies too, so a(x ⊕ y) = a(x) ∘₁ a(y).</li>
+<li>The circle round the wall is closed under the circle operation; on the real line it is exactly {0, −2}; slope ∞ lands on −2; x ∘₁ x = 0 only at 0 and −2.</li>
+<li>The quarter step: (−1 + i) ∘₁ (−1 + i) = −2 and four copies give 0; slope 1 ⊕ 1 = 2/0 = ∞.</li>
+<li>Machin, Euler, Hermann and Hutton as the exact circle-operation identities, and Machin in the turning law itself.</li>
 <li>Step counts: 32 steps of i/10, 315 of i/100, 3,142 of i/1000.</li>
 <li>Gregory sums nest for 0 ≤ x ≤ 1 (every even sum below every odd sum), so the Machin intervals nest, and the kernel traps them between 3.14159265358979323846264338327950288419716939937510 and …511.</li>
 </ul>
@@ -210,7 +210,7 @@ li{margin:.25em 0}
 <p><span class="tag inf">inferred</span> (classical, checked numerically, not in core Lean):</p>
 <ul>
 <li>That the nested intervals close on the half-period of the turning law. That needs the real line and arctan 1 = π/4, which core Lean doesn't have. It's the same last step the e page left open.</li>
-<li>The period formula 2π/√(4q − p²) (an integral).</li>
+<li>The period formula 2π/√(4d − p²) (an integral).</li>
 <li>All transcendence statements (Lindemann 1882, Gelfond–Schneider 1934), and all the relation-search results, which are evidence, not proof.</li>
 </ul>
 <p>For the library thread: copy <code>pi/lean/PiFromMultAdd.lean</code> to <code>FusedAlgebra/Topics/Pi.lean</code>, add it to build.sh and FusedAlgebra.lean. It imports only FusedAlgebra.Base and compiles in about 3 seconds.</p>
@@ -224,7 +224,7 @@ li{margin:.25em 0}
 <h2>Known or new</h2>
 <div class="cols">
 <div>
-<p><b>Known.</b> Every route to pi here is a re-derivation: Archimedes' polygons (about 250 BC), Gregory and Leibniz's series (1670s), Machin (1706), Euler's formula, the Cayley transform, Størmer's list (1899). That mult-add's logarithm has period 2πi is the textbook fact about the multiplicative group. Lindemann and Gelfond–Schneider settle the provable cases. The half-iterate value E½(1) = 1.27102741388995… is published (Finch, 2025, after Morris and Szekeres, 1961).</p>
+<p><b>Known.</b> Every route to pi here is a re-derivation: Archimedes' polygons (about 250 BC), Gregory and Leibniz's series (1670s), Machin (1706), Euler's formula, the Cayley transform, Størmer's list (1899). That the circle operation's logarithm has period 2πi is the textbook fact about the multiplicative group. Lindemann and Gelfond–Schneider settle the provable cases. The half-iterate value E½(1) = 1.27102741388995… is published (Finch, 2025, after Morris and Szekeres, 1961).</p>
 </div>
 <div>
 <p><b>New here.</b> The single picture: the circle round the wall through 0 and −2, with pi as the trip between them; pi and log as one period on either side of the landscape parabola; the Lean checks; and the number B½(1,1) = 2.40717…, which I could not find anywhere. No lead reaches the soliton level: nothing here is a new theorem, and the new number is new as a name, not as a proof.</p>
@@ -307,9 +307,9 @@ function setMode(m){
   $('mTiny').setAttribute('aria-pressed', m === 'tiny');
   $('mHalf').setAttribute('aria-pressed', m === 'half');
   if (m === 'tiny'){ sl.min = 4; sl.max = 40; sl.value = 10;
-    $('modeTxt').textContent = 'Each dot is one more mult-add of the step i/n. The walk spirals a hair outward (each step has length a little over 1/n), so you count steps until it slips past the far side. Steps ÷ n heads for pi as n grows: 315 for n = 100, 3,142 for n = 1,000, 3,141,593 for n = 1,000,000.'; }
+    $('modeTxt').textContent = 'Each dot is one more the circle operation of the step i/n. The walk spirals a hair outward (each step has length a little over 1/n), so you count steps until it slips past the far side. Steps ÷ n heads for pi as n grows: 315 for n = 100, 3,142 for n = 1,000, 3,141,593 for n = 1,000,000.'; }
   else { sl.min = 0; sl.max = 5; sl.value = 0;
-    $('modeTxt').textContent = 'Start with the step whose three copies land on −2, then halve it (b ⊞ b = a) again and again. The straight lengths of the steps add up to just under pi; measured in slope units they add up to just over it. Four halvings reach 48 steps, exactly Archimedes’ 96-gon.'; }
+    $('modeTxt').textContent = 'Start with the step whose three copies land on −2, then halve it (b ∘₁ b = a) again and again. The straight lengths of the steps add up to just under pi; measured in slope units they add up to just over it. Four halvings reach 48 steps, exactly Archimedes’ 96-gon.'; }
   drawPlate();
 }
 $('mTiny').onclick = () => setMode('tiny');
@@ -337,7 +337,7 @@ function drawHalf(){
   for (let y = 1; y <= 6; y++) s += `<line x1="${L}" x2="${W - R}" y1="${Y(y)}" y2="${Y(y)}" stroke="var(--rule)"/><text x="${L - 8}" y="${Y(y) + 4}" text-anchor="end">${y}</text>`;
   for (let x = -1; x <= 2; x += 0.5) if (W > 520 || Number.isInteger(x)) s += `<text x="${X(x)}" y="${H - 12}" text-anchor="middle">${x}</text>`;
   s += `<polyline fill="none" stroke="var(--slate)" stroke-width="2.5" points="${D.half.map(r => X(r[0]).toFixed(1) + ',' + Y(r[1]).toFixed(1)).join(' ')}"/>`;
-  [[0, 2, '1 + 1 = 2'], [1, 3, '1 ⊞ 1 = 3'], [0.5, 2.40717, 'B½ = 2.40717']].forEach(([x, y, t], i) => {
+  [[0, 2, '1 + 1 = 2'], [1, 3, '1 ∘₁ 1 = 3'], [0.5, 2.40717, 'B½ = 2.40717']].forEach(([x, y, t], i) => {
     s += `<circle cx="${X(x)}" cy="${Y(y)}" r="${i === 2 ? 6 : 4.5}" fill="${i === 2 ? 'var(--red)' : 'var(--ink)'}"/>`;
     s += `<text x="${X(x) + (i === 2 ? -10 : 10)}" y="${Y(y) - 10}" text-anchor="${i === 2 ? 'end' : 'start'}">${t}</text>`;
   });
@@ -362,7 +362,7 @@ function drawFeig(){
     for (let i = 0; i < 120; i++){ z = z * z + c; const py = H / 2 - z * (H / 4.4); g.fillRect(px, py, 1, 1); }
   }
   g.globalAlpha = 1; g.font = '13px Inter, sans-serif';
-  g.fillText('c = 0, mult-add doubling', 6, 16);
+  g.fillText('c = 0, circle doubling', 6, 16);
   const t = 'c = −2, turning doubling'; g.fillText(t, W - g.measureText(t).width - 6, 16);
 }
 const ro3 = new ResizeObserver(drawFeig); ro3.observe(cv);

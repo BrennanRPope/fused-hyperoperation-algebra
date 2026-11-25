@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE a careful reading document in the same series as the Fermat page, honest about known vs new
-   IDEA a plate from a geometry atlas: ink drawings, one blue for mult-add, one red for what a shape notices about a prime
-   PICTURE a working dial: the n-th roots of unity on the mult-add circle, with a prime's winding x to x^p drawn as arrows
-   COLOUR white ground, near-black ink, ultramarine for mult-add, vermilion for prime-specific; night is deep ink
+   IDEA a plate from a geometry atlas: ink drawings, one blue for the circle operation, one red for what a shape notices about a prime
+   PICTURE a working dial: the n-th roots of unity on the circle-operation circle, with a prime's winding x to x^p drawn as arrows
+   COLOUR white ground, near-black ink, ultramarine for the circle operation, vermilion for prime-specific; night is deep ink
    TYPE Newsreader for titles, Inter for text
    LAYOUT finding and dial in the first screen; sections below with figures beside text; phone stacks */
 :root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--gold:light-dark(#a86a00,#f2b84b);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
@@ -72,11 +72,11 @@ td.hot{color:var(--red);font-weight:600}
 <header class="band top">
 <div class="wrap">
 <h1>Toric geometry and the primes</h1>
-<p class="lede">Your hunch is half right. Toric geometry, the shapes built from the mult-add torus, makes every prime look exactly the same, which is why mathematicians call it geometry over the "field with one element", below all the primes. The primes show up one level down, in the windings x → xᵖ of the mult-add circle: Riemann's zeta function counts those windings, the primes are the windings that can't be done in stages, and the field-with-one-element program is built on exactly them. Everything here is known math, and nothing here proves anything new.</p>
+<p class="lede">Your hunch is half right. Toric geometry, the shapes built from the circle-operation torus, makes every prime look exactly the same, which is why mathematicians call it geometry over the "field with one element", below all the primes. The primes show up one level down, in the windings x → xᵖ of the circle-operation circle: Riemann's zeta function counts those windings, the primes are the windings that can't be done in stages, and the field-with-one-element program is built on exactly them. Everything here is known math, and nothing here proves anything new.</p>
 <div class="dial">
 <div class="fig" id="dialfig" role="img" aria-label="The n-th roots of unity as dots on a circle, with arrows showing where the winding x to x to the p sends each dot."><svg id="dial"></svg></div>
 <div>
-<p class="lbl">Roots of unity on the mult-add circle, n =</p>
+<p class="lbl">Roots of unity on the circle-operation circle, n =</p>
 <div class="chips" id="nchips"></div>
 <p class="lbl">A prime's winding x → xᵖ, p =</p>
 <div class="chips" id="pchips"></div>
@@ -87,27 +87,27 @@ td.hot{color:var(--red);font-weight:600}
 </div>
 </header>
 <nav class="nav" aria-label="Sections">
-<a href="#leads">Leads first</a><a href="#count">Counting in mult-add</a><a href="#same">Every prime looks alike</a><a href="#f1">Field with one element</a><a href="#windings">Primes as windings</a><a href="#dance">The Frobenius dial</a><a href="#overz">Over the integers</a><a href="#glue">Gluing in Lean</a><a href="#p2">The projective plane</a><a href="#ledger">Known vs new</a>
+<a href="#leads">Leads first</a><a href="#count">Counting in the circle operation</a><a href="#same">Every prime looks alike</a><a href="#f1">Field with one element</a><a href="#windings">Primes as windings</a><a href="#dance">The Frobenius dial</a><a href="#overz">Over the integers</a><a href="#glue">Gluing in Lean</a><a href="#p2">The projective plane</a><a href="#ledger">Known vs new</a>
 </nav>
 
 <section class="band" id="leads"><div class="wrap">
 <h2>Two leads worth your time, both already known</h2>
 <p>I looked for something as strong as the soliton match. Nothing here is new mathematics, but two matches tie your own pieces to the centre of this field as tightly as the soliton cube did.</p>
 <div class="leads">
-<div class="lead"><h3>Your tesseract coordinates are toric charts</h3><p>The 16 corners you name by switches, with grade = dimension, are exactly the torus orbits of 4-space: a corner with k switches on is the set of points where those k coordinates are nonzero, and it holds (q − 1)ᵏ points over a field of size q. This is the orbit–cone correspondence (Section 1). Gluing such charts along a fan gives every toric variety, so the tesseract task and this one are the same object seen twice. That is the most solid road from your coordinates to "derive geometry from mult-add". Section 7 glues four of these charts into P¹ × P¹ and Section 8 glues three into the projective plane, both checked in Lean.</p></div>
-<div class="lead"><h3>Mult-add's own power is the field-with-one-element structure</h3><p>Your Pascal cube's middle vanishes mod p: (1 + a)ᵖ − 1 ≡ aᵖ (mod p). Borger (2009) defines geometry over the field with one element as a family of windings, one per prime, each congruent to the p-th power mod p. Mult-add's p-th powers are that family for the torus. And it pins down primes exactly: the middle vanishes mod n only when n is prime, which is the identity behind the AKS primality test (2002). Section 3.</p></div>
+<div class="lead"><h3>Your tesseract coordinates are toric charts</h3><p>The 16 corners you name by switches, with grade = dimension, are exactly the torus orbits of 4-space: a corner with k switches on is the set of points where those k coordinates are nonzero, and it holds (q − 1)ᵏ points over a field of size q. This is the orbit–cone correspondence (Section 1). Gluing such charts along a fan gives every toric variety, so the tesseract task and this one are the same object seen twice. That is the most solid road from your coordinates to "derive geometry from the circle operation ∘₁ (called mult-add before 1.0)". Section 7 glues four of these charts into P¹ × P¹ and Section 8 glues three into the projective plane, both checked in Lean.</p></div>
+<div class="lead"><h3>The circle operation's own power is the field-with-one-element structure</h3><p>Your Pascal cube's middle vanishes mod p: (1 + a)ᵖ − 1 ≡ aᵖ (mod p). Borger (2009) defines geometry over the field with one element as a family of windings, one per prime, each congruent to the p-th power mod p. The circle operation's p-th powers are that family for the torus. And it pins down primes exactly: the middle vanishes mod n only when n is prime, which is the identity behind the AKS primality test (2002). Section 3.</p></div>
 </div>
 </div></section>
 
 <section class="band top" id="count"><div class="wrap">
-<h2>Over a finite field, points are counted in mult-add coordinates</h2>
+<h2>Over a finite field, points are counted in circle-operation coordinates</h2>
 <div class="two">
 <div>
-<p>Work over a finite field with q elements (q is a prime p or a power of one). The mult-add circle, every nonzero number, has q − 1 points. Call that number <b class="b">a</b>. So a = q − 1 is the mult-add coordinate and q = 1 + a is the ordinary one.</p>
+<p>Work over a finite field with q elements (q is a prime p or a power of one). The circle-operation circle, every nonzero number, has q − 1 points. Call that number <b class="b">a</b>. So a = q − 1 is the circle-operation coordinate and q = 1 + a is the ordinary one.</p>
 <h3>Your cube is 3-space, sorted by which coordinates are zero</h3>
 <p>Group the points of 3-space by which coordinates are nonzero. There are 8 groups, one per corner of your cube, and a corner with k switches on holds aᵏ points. Adding the corners gives 1 + 3a + 3a² + a³ = (1 + a)³ = q³, which is every point. The far corner, a³, is the torus itself.</p>
-<h3>Projective space is a mult-add power divided by a</h3>
-<p>Remove the origin and you have your mult-add power: a ⊕ a ⊕ a = (1 + a)³ − 1. Divide by the circle's scaling and you get the projective plane:</p>
+<h3>Projective space is a circle power divided by a</h3>
+<p>Remove the origin and you have your circle power: a ∘₁ a ∘₁ a = (1 + a)³ − 1. Divide by the circle's scaling and you get the projective plane:</p>
 <div class="eq">((1 + a)³ − 1) / a = a² + 3a + 3 = q² + q + 1</div>
 <p>In the triangle that pictures it, the inside is the torus (a² points), each edge is a circle (a points), and each corner is one point.</p>
 </div>
@@ -131,7 +131,7 @@ td.hot{color:var(--red);font-weight:600}
 <p>Weil's zeta function packages the counts over q, q², q³, … into one function. For a toric shape, rewrite the count in the ordinary coordinate q: the coefficients become its Betti numbers h₀, h₁, … (for P¹ × P¹, (1 + q)² gives 1, 2, 1). Then:</p>
 <div class="eq">Z(T) = 1 / [(1 − T)(1 − qT)²(1 − q²T)]</div>
 <p>Checked against brute force over the fields of size 2, 4 and 8: 9, 25 and 81 points, as the formula says. Weil's Riemann Hypothesis asks that the numbers in those factors have size q<sup>i/2</sup> in the i-th piece. Here they are exactly 1, q, q²: pure powers, no wobble at all. That is what "satisfies the Riemann Hypothesis trivially" means.</p>
-<p>The rewrite from a to q is a known combinatorial move (the f-vector to h-vector transform). In your words: the count in mult-add coordinates lists the cones, and the same count in ordinary coordinates lists the holes.</p>
+<p>The rewrite from a to q is a known combinatorial move (the f-vector to h-vector transform). In your words: the count in circle-operation coordinates lists the cones, and the same count in ordinary coordinates lists the holes.</p>
 </div>
 <div>
 <h3>How much does a shape notice about the prime?</h3>
@@ -140,8 +140,8 @@ td.hot{color:var(--red);font-weight:600}
 </div>
 </div>
 <div class="ladder">
-<div><b>Toric</b><span>One polynomial for every prime. Sees nothing about p.</span><span class="tag b">mult-add</span></div>
-<div><b>Fermat cubic</b><span>q² + q + 1 when p ≡ 2 (mod 3), q² + 7q + 1 when p ≡ 1 (mod 3), checked for every prime to 79. It sees only which way Frobenius winds the cube roots of unity, the dial above with n = 3.</span><span class="tag b">mult-add</span></div>
+<div><b>Toric</b><span>One polynomial for every prime. Sees nothing about p.</span><span class="tag b">The circle operation</span></div>
+<div><b>Fermat cubic</b><span>q² + q + 1 when p ≡ 2 (mod 3), q² + 7q + 1 when p ≡ 1 (mod 3), checked for every prime to 79. It sees only which way Frobenius winds the cube roots of unity, the dial above with n = 3.</span><span class="tag b">The circle operation</span></div>
 <div><b>y² = x³ − x</b><span>Wobble 0 whenever p ≡ 3 (mod 4); otherwise set by how p splits as a sum of two squares. Still a commutative symmetry (the Gaussian integers).</span><span class="tag b">commutative</span></div>
 <div><b>y² = x³ + x + 1</b><span>The wobble wanders inside Hasse's bound ±2√p with no pattern a finite dial explains (Sato–Tate). This needs the non-commutative symmetry past your 1/x wall.</span><span class="tag r">beyond</span></div>
 </div>
@@ -180,9 +180,9 @@ td.hot{color:var(--red);font-weight:600}
 <tr><td data-l="Who">Connes, Consani 2022 to 2024</td><td data-l="What">A Riemann–Roch formula for compactified Spec ℤ, over the "sphere spectrum" as a candidate F₁</td><td data-l="Status"><span class="tag">Program</span></td></tr>
 <tr><td data-l="Who">Anyone</td><td data-l="What">The surface Spec ℤ × Spec ℤ with Weil's positivity, and a proof of the Riemann Hypothesis</td><td data-l="Status"><span class="tag r">Not done</span></td></tr>
 </tbody></table></div>
-<h3>Where mult-add sits</h3>
-<p><b class="b">The torus is the mult-add group</b>, and toric varieties are the canonical shapes over F₁ in every version above.</p>
-<p><b class="b">Borger's windings are mult-add powers.</b> His F₁ structure is a map ψₚ for each prime with ψₚ(a) ≡ aᵖ (mod p), all commuting. On the torus, ψₚ is x → xᵖ, which in your coordinate is a → (1 + a)ᵖ − 1. The congruence is your cube's middle vanishing mod p. For n = 4, 6, 8 and 9 the middle entries mod n include 2, then 3 and 2, then 4 and 6, then 3, so they are never all zero; for every prime up to 199 they are all zero. That fact, n is prime exactly when (1 + a)ⁿ ≡ 1 + aⁿ (mod n), is what Agrawal, Kayal and Saxena turned into the first fast, certain primality test.</p>
+<h3>Where the circle operation sits</h3>
+<p><b class="b">The torus is the circle-operation group</b>, and toric varieties are the canonical shapes over F₁ in every version above.</p>
+<p><b class="b">Borger's windings are circle powers.</b> His F₁ structure is a map ψₚ for each prime with ψₚ(a) ≡ aᵖ (mod p), all commuting. On the torus, ψₚ is x → xᵖ, which in your coordinate is a → (1 + a)ᵖ − 1. The congruence is your cube's middle vanishing mod p. For n = 4, 6, 8 and 9 the middle entries mod n include 2, then 3 and 2, then 4 and 6, then 3, so they are never all zero; for every prime up to 199 they are all zero. That fact, n is prime exactly when (1 + a)ⁿ ≡ 1 + aⁿ (mod n), is what Agrawal, Kayal and Saxena turned into the first fast, certain primality test.</p>
 </div>
 </div>
 </div></section>
@@ -191,9 +191,9 @@ td.hot{color:var(--red);font-weight:600}
 <h2>Primes are the windings of the circle that can't be done in stages</h2>
 <div class="two">
 <div>
-<p>The maps from the mult-add circle to itself are the windings x → xⁿ. Doing n and then m is the winding by nm. A winding by n can be done in stages through any divisor of n, and the stages form a box: for 30, the cube of 1, 2, 3, 5, 6, 10, 15, 30, with each edge a prime winding. A prime is a winding with no stage in between. Unique factorization says every winding breaks into prime stages in one way, up to order.</p>
+<p>The maps from the circle-operation circle to itself are the windings x → xⁿ. Doing n and then m is the winding by nm. A winding by n can be done in stages through any divisor of n, and the stages form a box: for 30, the cube of 1, 2, 3, 5, 6, 10, 15, 30, with each edge a prime winding. A prime is a winding with no stage in between. Unique factorization says every winding breaks into prime stages in one way, up to order.</p>
 <h3>Zeta counts the windings</h3>
-<p>The circle has one winding of each degree, so Σ n<sup>−s</sup> = ζ(s) counts them, and the Euler product says you pick each prime's winding independently. That is the cube from your prime page, ζ(s) − 1 = ⊕ 1/(pˢ − 1), now with a picture behind it.</p>
+<p>The circle has one winding of each degree, so Σ n<sup>−s</sup> = ζ(s) counts them, and the Euler product says you pick each prime's winding independently. That is the cube from your prime page, ζ(s) − 1 = the circle operation of all the 1/(pˢ − 1), one per prime p, now with a picture behind it.</p>
 <h3>Counting over a prime is counting fixed points of a winding</h3>
 <p>Over a field of size q, the points are the fixed points of Frobenius, x → x<sup>q</sup>. Over the complex numbers, the same winding z → z<sup>q</sup> fixes 0, ∞ and the q − 1 roots of unity: q + 1 points, the count of P¹. On every toric shape the q-fold winding's fixed points match the count over the field of size q, orbit by orbit, (q − 1)ᵏ each. This is the Lefschetz fixed-point picture, and it is standard.</p>
 </div>
@@ -208,7 +208,7 @@ td.hot{color:var(--red);font-weight:600}
 </div>
 </div>
 <h3>The primon gas</h3>
-<p>Treat each winding as a state of a gas whose particles are the prime windings, each carrying energy log p. A winding by n is a state with the particles of n's factorization. The partition function at temperature 1/β is Σ n<sup>−β</sup> = ζ(β), and the pole at β = 1 is a phase transition (Julia 1990). Bost and Connes (1995) added the roots of unity, the mult-add circle's torsion, and got a system whose symmetry group is the Galois group of all roots of unity. Connes, Consani and Marcolli read it as an F₁ object. It is the most developed version of "primes as irreducible windings", and it is known.</p>
+<p>Treat each winding as a state of a gas whose particles are the prime windings, each carrying energy log p. A winding by n is a state with the particles of n's factorization. The partition function at temperature 1/β is Σ n<sup>−β</sup> = ζ(β), and the pole at β = 1 is a phase transition (Julia 1990). Bost and Connes (1995) added the roots of unity, the circle-operation circle's torsion, and got a system whose symmetry group is the Galois group of all roots of unity. Connes, Consani and Marcolli read it as an F₁ object. It is the most developed version of "primes as irreducible windings", and it is known.</p>
 </div></section>
 
 <section class="band top" id="dance"><div class="wrap">
@@ -231,7 +231,7 @@ td.hot{color:var(--red);font-weight:600}
 <tbody><tr><td>Primes</td><td class="n">13,063</td><td class="n">13,065</td><td class="n">13,105</td><td class="n">13,069</td><td class="n">13,105</td><td class="n">13,090</td></tr></tbody></table></div>
 <p class="small mute">2 and 3 land on 2 and 3 mod 12, and 7 on 0 mod 7: the folding primes. The tiny lead of the non-squares (Chebyshev's bias) is real and known.</p>
 <h3>Is this "how the primes connect"?</h3>
-<p>It is how they connect to each other through shared symmetry: p and p′ behave the same on the n-dial when p ≡ p′ (mod n). This is the commutative half of the story, and it is all mult-add. What it does not give is where the primes sit on the number line. That lives in the zeta zeros.</p>
+<p>It is how they connect to each other through shared symmetry: p and p′ behave the same on the n-dial when p ≡ p′ (mod n). This is the commutative half of the story, and it is all the circle operation. What it does not give is where the primes sit on the number line. That lives in the zeta zeros.</p>
 </div>
 </div>
 </div></section>
@@ -254,14 +254,14 @@ td.hot{color:var(--red);font-weight:600}
 <div class="two">
 <div>
 <p>P¹ × P¹ is four copies of the plane, one per quadrant of its fan. Each copy is a chart with your corner coordinates: switch i is on when coordinate i is nonzero. Charts are glued by x ↦ 1/x on whichever factor changes.</p>
-<h3>The gluing map is the mult-add inverse</h3>
-<p>Write x = 1 + u. Then 1/x = 1 + u′ with u′ = −u/(1 + u), the u′ that makes u ⊞ u′ = 0. The one point the inverse can't reach, u = −1, is x = 0, and that is exactly the point the other chart sees as infinity.</p>
+<h3>The gluing map is the circle inverse</h3>
+<p>Write x = 1 + u. Then 1/x = 1 + u′ with u′ = −u/(1 + u), the u′ that makes u ∘₁ u′ = 0. The one point the inverse can't reach, u = −1, is x = 0, and that is exactly the point the other chart sees as infinity.</p>
 <div class="eq">(1 + u)⁻¹ = 1 + (−u / (1 + u))</div>
 <p><b>Your 1/x wall is where you change charts.</b> That is standard geometry, not a new theorem, but it puts the wall in a place where nothing breaks.</p>
 <h3>What the Lean file proves</h3>
 <p>For any field (the rationals, or any field in mathlib):</p>
-<p>1. A point's corner never changes under torus scaling, so corners label the orbits.<br>2. Each of the four charts is one-to-one, and together they cover every point.<br>3. Where two charts overlap, the transition carries one chart's coordinates to the other's.<br>4. Going chart c → d → e equals c → e (the cocycle condition), so the gluing is consistent.<br>5. Each chart's origin is a fixed point lying in that chart only; torus points lie in all four.<br>6. The fan count a² + 4a + 4 = (a + 2)², the mult-add form of (q + 1)².</p>
-<p class="small mute">Status: compiled with Lean 4.37 with no errors and no "sorry", using only Lean's standard axioms. It uses core Lean, not mathlib, because mathlib's download server is blocked from this computer. It glues points with charts and transition maps; it does not build P¹ × P¹ as a scheme, which would need mathlib. The earlier TesseractCoords.lean imports mathlib; it was later compiled against mathlib on Brennan's Mac Studio with no errors, after its mult-add symbol changed from ⊞ to ✳.</p>
+<p>1. A point's corner never changes under torus scaling, so corners label the orbits.<br>2. Each of the four charts is one-to-one, and together they cover every point.<br>3. Where two charts overlap, the transition carries one chart's coordinates to the other's.<br>4. Going chart c → d → e equals c → e (the cocycle condition), so the gluing is consistent.<br>5. Each chart's origin is a fixed point lying in that chart only; torus points lie in all four.<br>6. The fan count a² + 4a + 4 = (a + 2)², the circle-operation form of (q + 1)².</p>
+<p class="small mute">Status: compiled with Lean 4.37 with no errors and no "sorry", using only Lean's standard axioms. It uses core Lean, not mathlib, because mathlib's download server is blocked from this computer. It glues points with charts and transition maps; it does not build P¹ × P¹ as a scheme, which would need mathlib. The earlier TesseractCoords.lean imports mathlib; it was later compiled against mathlib on Brennan's Mac Studio with no errors, after it stopped writing the circle operation with mathlib's biproduct symbol ⊞. It now writes it ◯.</p>
 </div>
 <div>
 <div class="fig" id="gluefig" style="min-height:360px" role="img" aria-label="A square standing for P1 times P1. Each corner is the origin of one chart. Four translucent rectangles, one per chart, each cover the square except the two far edges. The inside is covered four times, each edge twice except at its ends, each corner once."><svg id="gluesvg"></svg></div>
@@ -269,7 +269,7 @@ td.hot{color:var(--red);font-weight:600}
 <div class="scroll"><table>
 <thead><tr><th class="n">q</th><th class="n">In 4 charts (torus)</th><th class="n">In 2 (circles)</th><th class="n">In 1 (fixed)</th><th class="n">Total</th></tr></thead>
 <tbody id="gtab"></tbody></table></div>
-<p class="small mute">How many charts hold each point reads off the orbit split: a², 4a and 4, with a = q − 1. The Python script also checked every transition and every triple overlap over these fields, and the mult-add inverse on 2,000 random fractions.</p>
+<p class="small mute">How many charts hold each point reads off the orbit split: a², 4a and 4, with a = q − 1. The Python script also checked every transition and every triple overlap over these fields, and the circle inverse on 2,000 random fractions.</p>
 </div>
 </div>
 </div></section>
@@ -281,10 +281,10 @@ td.hot{color:var(--red);font-weight:600}
 <p>The fan of the projective plane P² has three rays, e₁, e₂ and −e₁ − e₂, and three cones that are not quadrants. So P² is not a product, and changing charts no longer flips one coordinate at a time. The charts see (x/z, y/z), (z/x, y/x) and (z/y, x/y), and going from the first to the second is</p>
 <div class="eq">(a, b) ↦ (1/a, b/a)</div>
 <p>The new coordinate b/a uses both old ones. Every chart change here is a monomial map, a 2×2 matrix of whole numbers acting on the exponents.</p>
-<h3>In mult-add coordinates the gluing is mult-add division</h3>
-<p>Write a = 1 + u and b = 1 + w. The chart change becomes: take the mult-add inverse of u, then mult-add it onto w.</p>
-<div class="eq">(u, w) ↦ (u⁻, w ⊞ u⁻),&nbsp;&nbsp; u⁻ = −u / (1 + u)</div>
-<p>On P¹ × P¹ the gluing was the inverse alone. On P² it is the inverse and then a mult-add, which is mult-add's version of dividing. The 1/x wall u = −1 is again where you change charts.</p>
+<h3>In circle-operation coordinates the gluing is circle-operation division</h3>
+<p>Write a = 1 + u and b = 1 + w. The chart change becomes: take the circle inverse of u, then combine it with w by the circle operation.</p>
+<div class="eq">(u, w) ↦ (u⁻, w ∘₁ u⁻),&nbsp;&nbsp; u⁻ = −u / (1 + u)</div>
+<p>On P¹ × P¹ the gluing was the inverse alone. On P² it is the inverse and then a circle operation, which is the circle operation's version of dividing. The 1/x wall u = −1 is again where you change charts.</p>
 <h3>Windings pass through every chart</h3>
 <p>Winding x ↦ xⁿ commutes with every chart change, because powers commute with monomial maps. So [x : y : z] ↦ [xⁿ : yⁿ : zⁿ] is one map of the whole plane, read the same way in every chart. Over a field with q elements its fixed points number g² + 3g + 3 with g = gcd(n − 1, q − 1). That is the P² count for a field of size g + 1. When n = q the winding is the Frobenius and fixes all q² + q + 1 points.</p>
 <div class="scroll"><table>
@@ -296,12 +296,12 @@ td.hot{color:var(--red);font-weight:600}
 <div class="fig" style="min-height:340px" role="img" aria-label="A triangle standing for the projective plane. Each corner is the origin of one chart. Three translucent triangles, one per chart, each cover the big triangle except the edge opposite its corner. The inside is covered three times, each edge twice except at its ends, each corner once."><svg id="p2svg"></svg></div>
 <h3>What the Lean file proves</h3>
 <p>For any field:</p>
-<p>1. Each of the three charts is one-to-one, and together they cover every point of P².<br>2. A point of one chart lies in another exactly where the transition can divide, and there the transition carries one chart's coordinates to the other's.<br>3. The cocycle condition: going chart c → d → e equals c → e on every triple overlap.<br>4. Each chart's origin lies in that chart only; torus points lie in all three.<br>5. In mult-add coordinates the chart changes are (u, w) ↦ (u⁻, w ⊞ u⁻) and (u, w) ↦ (w⁻, u ⊞ w⁻).<br>6. Windings commute with every chart change and give one well-defined map of P².<br>7. The fan count a² + 3a + 3 = q² + q + 1.</p>
+<p>1. Each of the three charts is one-to-one, and together they cover every point of P².<br>2. A point of one chart lies in another exactly where the transition can divide, and there the transition carries one chart's coordinates to the other's.<br>3. The cocycle condition: going chart c → d → e equals c → e on every triple overlap.<br>4. Each chart's origin lies in that chart only; torus points lie in all three.<br>5. In circle-operation coordinates the chart changes are (u, w) ↦ (u⁻, w ∘₁ u⁻) and (u, w) ↦ (w⁻, u ∘₁ w⁻).<br>6. Windings commute with every chart change and give one well-defined map of P².<br>7. The fan count a² + 3a + 3 = q² + q + 1.</p>
 <h3>Counted by brute force over six fields</h3>
 <div class="scroll"><table>
 <thead><tr><th class="n">q</th><th class="n">In 3 charts (torus)</th><th class="n">In 2 (circles)</th><th class="n">In 1 (fixed)</th><th class="n">Total</th></tr></thead>
 <tbody id="p2tab"></tbody></table></div>
-<p class="small mute">Status: ProjectivePlane.lean compiled with Lean 4.37 with no errors and no "sorry", using only Lean's standard axioms, in core Lean (mathlib's download server is blocked here). It glues points with charts and transitions, not P² as a scheme. The Python script p2_check.py also checked every transition, every triple overlap, the mult-add form and the winding counts over these fields.</p>
+<p class="small mute">Status: ProjectivePlane.lean compiled with Lean 4.37 with no errors and no "sorry", using only Lean's standard axioms, in core Lean (mathlib's download server is blocked here). It glues points with charts and transitions, not P² as a scheme. The Python script p2_check.py also checked every transition, every triple overlap, the circle-operation form and the winding counts over these fields.</p>
 </div>
 </div>
 </div></section>
@@ -311,21 +311,21 @@ td.hot{color:var(--red);font-weight:600}
 <div class="scroll"><table class="stack">
 <thead><tr><th>Claim on this page</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td data-l="Claim">Toric counts are polynomials; mult-add cube = torus orbits of 3-space</td><td data-l="Status"><span class="tag">Known</span> orbit–cone correspondence (Fulton)</td></tr>
+<tr><td data-l="Claim">Toric counts are polynomials; circle-operation cube = torus orbits of 3-space</td><td data-l="Status"><span class="tag">Known</span> orbit–cone correspondence (Fulton)</td></tr>
 <tr><td data-l="Claim">Tesseract corners = toric charts of 4-space</td><td data-l="Status"><span class="tag b">Match</span> known geometry, your coordinates</td></tr>
 <tr><td data-l="Claim">Toric zeta factors; Riemann Hypothesis trivial over finite fields</td><td data-l="Status"><span class="tag">Known</span> Weil, Danilov</td></tr>
 <tr><td data-l="Claim">q → 1 limits, F₁ program</td><td data-l="Status"><span class="tag">Known</span> Tits to Connes–Consani; RH not proved</td></tr>
-<tr><td data-l="Claim">Mult-add p-th power is Borger's Frobenius winding</td><td data-l="Status"><span class="tag b">Match</span> known (Borger 2009, Lubin–Tate)</td></tr>
+<tr><td data-l="Claim">Circle p-th power is Borger's Frobenius winding</td><td data-l="Status"><span class="tag b">Match</span> known (Borger 2009, Lubin–Tate)</td></tr>
 <tr><td data-l="Claim">n prime ⇔ cube middle ≡ 0 mod n</td><td data-l="Status"><span class="tag">Known</span> classical; AKS 2002</td></tr>
 <tr><td data-l="Claim">Primes as irreducible windings; ζ counts windings; primon gas</td><td data-l="Status"><span class="tag">Known</span> Julia 1990, Bost–Connes 1995</td></tr>
 <tr><td data-l="Claim">Torus winding zeta = zeta of Pⁿ⁻¹</td><td data-l="Status"><span class="tag">Known</span> both formulas classical</td></tr>
-<tr><td data-l="Claim">Four corner charts glued into P¹ × P¹; gluing map = mult-add inverse</td><td data-l="Status"><span class="tag b">Checked</span> standard geometry, proved in core Lean</td></tr>
-<tr><td data-l="Claim">Three charts glued into P²; gluing = mult-add division; windings well defined</td><td data-l="Status"><span class="tag b">Checked</span> standard geometry, proved in core Lean</td></tr>
+<tr><td data-l="Claim">Four corner charts glued into P¹ × P¹; gluing map = circle inverse</td><td data-l="Status"><span class="tag b">Checked</span> standard geometry, proved in core Lean</td></tr>
+<tr><td data-l="Claim">Three charts glued into P²; gluing = circle-operation division; windings well defined</td><td data-l="Status"><span class="tag b">Checked</span> standard geometry, proved in core Lean</td></tr>
 <tr><td data-l="Claim">"Count = cones in a, holes in q"</td><td data-l="Status"><span class="tag b">Framing</span> my wording of f- and h-vectors</td></tr>
 <tr><td data-l="Claim">A toric route to the Riemann Hypothesis or to prime positions</td><td data-l="Status"><span class="tag r">None</span> toric zetas copy the problem</td></tr>
 </tbody></table></div>
 <h3>Where this leaves the hunch, and what to do next</h3>
-<p>Toric geometry is the right language for the commutative, mult-add half of the primes: the dials, the windings, the Euler cube, the F₁ limit. It is blind to where the primes sit; that information is the zeta zeros, which no toric shape has. Three next steps fit your rule of a geometric underpinning you can trust:</p>
+<p>Toric geometry is the right language for the commutative, circle-operation half of the primes: the dials, the windings, the Euler cube, the F₁ limit. It is blind to where the primes sit; that information is the zeta zeros, which no toric shape has. Three next steps fit your rule of a geometric underpinning you can trust:</p>
 <p><b>1.</b> Done for P¹ × P¹ (Section 7) and the projective plane (Section 8); the general case is any fan, which is where mathlib would help. <b>2.</b> Draw the Frobenius dial and the Euler cube as one picture of "the commutative primes". <b>3.</b> Try graphs: on a finite graph, primes are the loops that aren't repeats of shorter loops, Ihara's zeta counts them, and its Riemann Hypothesis holds exactly for Ramanujan graphs (Ihara 1966, Sunada). It is the one place where "primes are irreducible windings" and the Riemann Hypothesis are both pictures you can compute.</p>
 <p class="small mute" style="margin-top:16px">Sources: Fulton, Introduction to Toric Varieties; Tits 1957; Soulé, Les variétés sur le corps à un élément (2004); Deitmar, Schemes over F₁ (2005); Connes and Consani, On the notion of geometry over F₁ (2010); Borger, Λ-rings and the field with one element (2009); Lorscheid, The geometry of blueprints (2012); Bost and Connes, Selecta Math. 1 (1995); Julia, Statistical theory of numbers (1990); Lubotzky and Segal, Subgroup Growth (2003); Agrawal, Kayal and Saxena, PRIMES is in P (2004); <a href="https://arxiv.org/abs/2306.00456" style="color:var(--blue)">Connes and Consani, Riemann–Roch for the ring ℤ (2024)</a>. Every count on this page was recomputed in Python; the scripts are in the math-theory/toric folder of this project.</p>
 </div></section>

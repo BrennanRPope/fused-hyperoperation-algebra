@@ -9,36 +9,36 @@
   2. a dial is a direction: k·(a ∘ₖ b) = (k·a) ∘₁ (k·b);
   3. a discrete Euler on the Gaussian integers: q = −1 + i lifts to i, q ∘ q = −2 lifts to −1,
      four copies give 0, which lifts to 1 (check A10);
-  4. local tomography as mult-add of parameter counts: (K_A − 1) ∘₁ (K_B − 1) = K_A·K_B − 1,
+  4. local tomography as the circle operation of parameter counts: (K_A − 1) ∘₁ (K_B − 1) = K_A·K_B − 1,
      true for complex counts (n²), false for real (n(n+1)/2) and quaternionic (n(2n−1))
      counts (checks B1–B4).
 -/
 namespace EIPi
 
-/-! ## 1. The mult-add dial and its lift -/
+/-! ## 1. The circle-operation dial and its lift -/
 
-/-- Mult-add at dial k: a ∘ₖ b = a + b + k·a·b. -/
-def madd (k a b : Int) : Int := a + b + k * a * b
+/-- The circle operation at dial k: a ∘ₖ b = a + b + k·a·b. -/
+def circK (k a b : Int) : Int := a + b + k * a * b
 
 /-- The lift 1 + k·x turns the dial into ordinary multiplication. -/
-theorem lift_two (k a b : Int) : 1 + k * madd k a b = (1 + k * a) * (1 + k * b) := by
-  unfold madd; grind
+theorem lift_two (k a b : Int) : 1 + k * circK k a b = (1 + k * a) * (1 + k * b) := by
+  unfold circK; grind
 
 theorem lift_three (k a b c : Int) :
-    1 + k * madd k (madd k a b) c = (1 + k * a) * (1 + k * b) * (1 + k * c) := by
-  unfold madd; grind
+    1 + k * circK k (circK k a b) c = (1 + k * a) * (1 + k * b) * (1 + k * c) := by
+  unfold circK; grind
 
 /-- Chaining is associative, so "n steps" has one meaning. -/
-theorem madd_assoc (k a b c : Int) : madd k (madd k a b) c = madd k a (madd k b c) := by
-  unfold madd; grind
+theorem circK_assoc (k a b c : Int) : circK k (circK k a b) c = circK k a (circK k b c) := by
+  unfold circK; grind
 
-theorem madd_zero (k a : Int) : madd k a 0 = a := by
-  unfold madd; grind
+theorem circK_zero (k a : Int) : circK k a 0 = a := by
+  unfold circK; grind
 
 /-! ## 2. Choosing a dial is choosing a direction for the inputs -/
 
-theorem dial_is_direction (k a b : Int) : k * madd k a b = madd 1 (k * a) (k * b) := by
-  unfold madd; grind
+theorem dial_is_direction (k a b : Int) : k * circK k a b = circK 1 (k * a) (k * b) := by
+  unfold circK; grind
 
 /-! ## 3. Discrete Euler on the Gaussian integers -/
 
@@ -53,8 +53,8 @@ def G.mul (x y : G) : G := ⟨x.re * y.re - x.im * y.im, x.re * y.im + x.im * y.
 def G.one : G := ⟨1, 0⟩
 def G.i : G := ⟨0, 1⟩
 
-/-- Mult-add at dial 1 on Gaussian integers. -/
-def G.madd (x y : G) : G := G.add (G.add x y) (G.mul x y)
+/-- The circle operation at dial 1 on Gaussian integers. -/
+def G.circ (x y : G) : G := G.add (G.add x y) (G.mul x y)
 
 /-- The lift at dial 1. -/
 def G.lift (x : G) : G := G.add G.one x
@@ -66,25 +66,25 @@ theorem q_lifts_to_i : G.lift q = G.i := by decide
 theorem i_squared : G.mul G.i G.i = ⟨-1, 0⟩ := by decide
 
 /-- Two quarter turns: q ∘ q = −2, the mirror point −2/k at k = 1 ... -/
-theorem two_quarter_turns : G.madd q q = ⟨-2, 0⟩ := by decide
+theorem two_quarter_turns : G.circ q q = ⟨-2, 0⟩ := by decide
 
 /-- ... whose lift is −1: the discrete e^{iπ} = −1. -/
-theorem half_turn_lifts_to_minus_one : G.lift (G.madd q q) = ⟨-1, 0⟩ := by decide
+theorem half_turn_lifts_to_minus_one : G.lift (G.circ q q) = ⟨-1, 0⟩ := by decide
 
 /-- Four quarter turns come back to the identity 0 (lift 1). -/
-theorem four_quarter_turns : G.madd (G.madd q q) (G.madd q q) = ⟨0, 0⟩ := by decide
+theorem four_quarter_turns : G.circ (G.circ q q) (G.circ q q) = ⟨0, 0⟩ := by decide
 
-theorem full_turn_lifts_to_one : G.lift (G.madd (G.madd q q) (G.madd q q)) = G.one := by decide
+theorem full_turn_lifts_to_one : G.lift (G.circ (G.circ q q) (G.circ q q)) = G.one := by decide
 
-/-- The lift turns Gaussian mult-add into Gaussian multiplication. -/
-theorem G_lift_hom (x y : G) : G.lift (G.madd x y) = G.mul (G.lift x) (G.lift y) := by
-  cases x; cases y; simp only [G.lift, G.madd, G.add, G.mul, G.one, G.mk.injEq]; grind
+/-- The lift turns The gaussian circle operation into Gaussian multiplication. -/
+theorem G_lift_hom (x y : G) : G.lift (G.circ x y) = G.mul (G.lift x) (G.lift y) := by
+  cases x; cases y; simp only [G.lift, G.circ, G.add, G.mul, G.one, G.mk.injEq]; grind
 
-/-! ## 4. Local tomography is mult-add of parameter counts -/
+/-! ## 4. Local tomography is the circle operation of parameter counts -/
 
-/-- Hardy's K_AB = K_A·K_B, read as mult-add of the counts minus one. -/
-theorem counts_mult_add (KA KB : Int) : KA * KB - 1 = madd 1 (KA - 1) (KB - 1) := by
-  unfold madd; grind
+/-- Hardy's K_AB = K_A·K_B, read as the circle operation of the counts minus one. -/
+theorem counts_circ (KA KB : Int) : KA * KB - 1 = circK 1 (KA - 1) (KB - 1) := by
+  unfold circK; grind
 
 /-- Complex counts K(n) = n² always satisfy it: (a²)(b²) − 1 = (a² − 1) ∘₁ (b² − 1). -/
 theorem complex_counts (a b : Int) :

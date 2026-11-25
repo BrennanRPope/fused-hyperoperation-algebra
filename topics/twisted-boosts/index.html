@@ -50,7 +50,7 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
 <body>
 <section class="band"><div class="wrap">
 <h1>Two boosts in different directions leave a twist, and the twist is an area</h1>
-<p class="lede">In one direction, relativity's velocity addition is mult-add in disguise and order never matters. Push in two directions and the result is a boost plus a small rotation. In the mult-add picture that rotation comes from one place: the corner ū·v of the fused law turns complex, and its cross part sets the angle. The angle is exactly q times the area of the velocity triangle, where q is the landscape's own number, now read as the curvature of the space of velocities.</p>
+<p class="lede">In one direction, relativity's velocity addition is the circle operation ∘₁ (called mult-add before 1.0) in disguise and order never matters. Push in two directions and the result is a boost plus a small rotation. In the circle-operation picture that rotation comes from one place: the corner ū·v of the fused law turns complex, and its cross part sets the angle. The angle is exactly d times the area of the velocity triangle, where d is the landscape's own number, now read as the curvature of the space of velocities.</p>
 <div class="first">
  <div class="panel"><div class="fig" id="fig"><svg id="disk" role="img" aria-label="Velocity disk with two boosts, the shaded triangle and the gyroscope"></svg></div>
   <div class="key"><span><i style="background:var(--blue)"></i>u, then v</span><span><i style="background:var(--grey)"></i>v, then u</span><span><i style="background:var(--red)"></i>light wall</span><span><i style="background:var(--amber)"></i>gyroscope after the loop</span></div></div>
@@ -58,8 +58,8 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
   <div class="ctl"><label for="s1">First boost</label><input id="s1" type="range" min="0" max="0.9" step="0.01" value="0.55"><output id="o1"></output></div>
   <div class="ctl"><label for="s2">Second boost</label><input id="s2" type="range" min="0" max="0.9" step="0.01" value="0.5"><output id="o2"></output></div>
   <div class="ctl"><label for="th">Angle between</label><input id="th" type="range" min="0" max="180" step="1" value="90"><output id="o3"></output></div>
-  <div class="ctl"><label for="qq">Dial q</label><input id="qq" type="range" min="-1" max="1" step="0.05" value="-1"><output id="o4"></output></div>
-  <p class="small" style="margin:6px 0 14px">Arrows are half-velocities (half a kick, see below). At q = −1 they are relativity: the readout gives the real speeds.</p>
+  <div class="ctl"><label for="qq">Dial d</label><input id="qq" type="range" min="-1" max="1" step="0.05" value="-1"><output id="o4"></output></div>
+  <p class="small" style="margin:6px 0 14px">Arrows are half-velocities (half a kick, see below). At d = −1 they are relativity: the readout gives the real speeds.</p>
   <div class="small">Twist ω</div><div class="big" id="om"></div>
   <table style="margin-top:12px"><tbody id="read"></tbody></table>
  </div>
@@ -69,24 +69,24 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
 <section class="band" style="padding-top:0"><div class="wrap two">
 <div class="panel">
 <h2>Where the twist comes from</h2>
-<p>The relativity page wrote a boost as the matrix [[1, u], [u, 1]] and found B(u)·B(v) = (1 + uv)·B(u⊕v). In the plane a speed is a complex number, and the boost of the dial is [[1, u], [−q·ū, 1]]. Multiply two:</p>
-<div class="eq">B(u)·B(v) = [[1 − q·u·v̄, u + v], [−q·(ū + v̄), 1 − q·ū·v]]</div>
+<p>The relativity page wrote a boost as the matrix [[1, u], [u, 1]] and found B(u)·B(v) = (1 + uv)·B(u⊕v). In the plane a speed is a complex number, and the boost of the dial is [[1, u], [−d·ū, 1]]. Multiply two:</p>
+<div class="eq">B(u)·B(v) = [[1 − d·u·v̄, u + v], [−d·(ū + v̄), 1 − d·ū·v]]</div>
 <p>The two diagonal entries were equal in one dimension. Now they are conjugates, X + iY and X − iY, because the corner splits: ū·v = (u·v) + i(u × v). The dot part is the old corner. The cross part is new, and it is twice the area of the triangle 0, u, v.</p>
 <div class="eq">twist e<sup>iω</sup> = (X + iY)/(X − iY),&nbsp; tan(ω/2) = q(u × v) / (1 − q(u·v))</div>
-<p>It is 1 exactly when q·(u × v) = 0: boosts along one line, or the Galilean dial q = 0. The same twist is all that order changes: u⊕v = twist · (v⊕u), with u⊕v = (u + v)/(1 − q·ū·v).</p>
+<p>It is 1 exactly when d·(u × v) = 0: boosts along one line, or the Galilean dial d = 0. The same twist is all that order changes: u⊕v = twist · (v⊕u), with u⊕v = (u + v)/(1 − d·ū·v).</p>
 </div>
 <div class="panel">
 <h2>Why it is an area</h2>
-<p>Carry a gyroscope around the triangle rest → u → u⊕v → rest, along straight paths in velocity space. It comes back turned by ω. On a curved surface that turning is the curvature times the enclosed area (Gauss–Bonnet), and in the disk picture the curvature is exactly q. So:</p>
-<div class="eq">ω = q × (area of the velocity triangle)</div>
-<p>Relativity has q = −1/c², so velocity space is a saddle and the gyroscope turns backwards. q = 0 is flat: Galilean boosts never twist. q = +1 is a sphere: these "boosts" are rotations, and the turn is the familiar spherical excess. One formula covers all three; only the sign and size of q change.</p>
+<p>Carry a gyroscope around the triangle rest → u → u⊕v → rest, along straight paths in velocity space. It comes back turned by ω. On a curved surface that turning is the curvature times the enclosed area (Gauss–Bonnet), and in the disk picture the curvature is exactly d. So:</p>
+<div class="eq">ω = d × (area of the velocity triangle)</div>
+<p>Relativity has d = −1/c², so velocity space is a saddle and the gyroscope turns backwards. d = 0 is flat: Galilean boosts never twist. d = +1 is a sphere: these "boosts" are rotations, and the turn is the familiar spherical excess. One formula covers all three; only the sign and size of d change.</p>
 <p class="small">For slow speeds the triangle is nearly flat, so ω ≈ −(u × v)/(2c²) in ordinary velocities: tiny, which is why everyday boosts look like they commute.</p>
 </div>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap panel">
 <h2>Same two arrows, three dials</h2>
-<p class="small" style="margin:0">The arrows from the controls above, drawn at q = −1, 0 and +1. Shaded: the triangle whose area sets the twist.</p>
+<p class="small" style="margin:0">The arrows from the controls above, drawn at d = −1, 0 and +1. Shaded: the triangle whose area sets the twist.</p>
 <div class="three" id="three"></div>
 </div></section>
 
@@ -104,16 +104,16 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
 
 <section class="band" style="padding-top:0" id="gravity-probe-b"><div class="wrap panel">
 <h2>Gravity Probe B: two twists, one measurement</h2>
-<p>A gyroscope orbiting Earth picks up two twists each orbit, and both are curvature times area. The <b>velocity twist</b> is the Thomas twist above: relative to observers standing still in Earth's gravity (who are pushed upward), the gyroscope's velocity goes round a circle, and velocity space has curvature q = −1/c². The <b>space twist</b> comes from space itself being curved: carry an arrow round the orbit in the curved space slice and it comes back turned by the curvature it encloses.</p>
+<p>A gyroscope orbiting Earth picks up two twists each orbit, and both are curvature times area. The <b>velocity twist</b> is the Thomas twist above: relative to observers standing still in Earth's gravity (who are pushed upward), the gyroscope's velocity goes round a circle, and velocity space has curvature d = −1/c². The <b>space twist</b> comes from space itself being curved: carry an arrow round the orbit in the curved space slice and it comes back turned by the curvature it encloses.</p>
 <div class="fig" style="min-height:200px"><svg id="gpbbar" role="img" aria-label="Bar: velocity twist plus space twist against the measured precession"></svg></div>
 <table style="margin-top:10px"><thead><tr><th>Gravity Probe B, milliarcseconds per year</th><th>Value</th></tr></thead><tbody>
-<tr><td>Velocity twist (Thomas, q = −1/c²)</td><td>2,201</td></tr>
+<tr><td>Velocity twist (Thomas, d = −1/c²)</td><td>2,201</td></tr>
 <tr><td>Space twist (curved space slice)</td><td>4,403</td></tr>
 <tr><td>Sum, at the orbit radius 7,027.4 km</td><td>6,604</td></tr>
 <tr><td>Measured (Everitt et al. 2011)</td><td>6,601.8 ± 18.3</td></tr>
 <tr><td>Either twist alone</td><td>off by over 100 standard errors</td></tr>
 </tbody></table>
-<p>Exactly, the two twists combine by multiplying their factors: 1 − p = (1 − p<sub>space</sub>)(1 − p<sub>velocity</sub>), with p<sub>space</sub> = 1 − √(1 − 2M/r) and p<sub>velocity</sub> = 1 − 1/γ. In mult-add that is <b>−p = (−p<sub>space</sub>) ✳ (−p<sub>velocity</sub>)</b>, and it reproduces the full general-relativity answer 1 − √(1 − 3M/r) per orbit, checked against a direct numerical parallel transport in the Schwarzschild geometry. The velocity factor matches Thomas's twist to first order, which is all Gravity Probe B can see; the exact factor carries 1/γ rather than γ, so that part of the reading holds only to first order.</p>
+<p>Exactly, the two twists combine by multiplying their factors: 1 − p = (1 − p<sub>space</sub>)(1 − p<sub>velocity</sub>), with p<sub>space</sub> = 1 − √(1 − 2M/r) and p<sub>velocity</sub> = 1 − 1/γ. In the circle operation that is <b>−p = (−p<sub>space</sub>) ∘₁ (−p<sub>velocity</sub>)</b>, and it reproduces the full general-relativity answer 1 − √(1 − 3M/r) per orbit, checked against a direct numerical parallel transport in the Schwarzschild geometry. The velocity factor matches Thomas's twist to first order, which is all Gravity Probe B can see; the exact factor carries 1/γ rather than γ, so that part of the reading holds only to first order.</p>
 <p><b>Frame dragging</b> fits the same picture in another form. Earth's spin gives space a "gravitomagnetic" twist field, and the gyroscope's turn rate is that field's circulation per unit area (Stokes). Averaged over the polar orbit it gives about 41 mas/yr against the measured 37.2 ± 7.2 (the mission's refined figure is 39.2).</p>
 </div></section>
 
@@ -129,12 +129,12 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
 <tr><td>Without the drag twist</td><td>2.26, off by 3.9 standard errors</td></tr>
 <tr><td>Without the velocity twist</td><td>4.32, still within one standard error</td></tr>
 </tbody></table>
-<p>So the pulsar needs the drag twist, but its 14% error cannot single out the velocity twist. And although its field is about 7,000 times Gravity Probe B's (M/r ≈ 4 × 10⁻⁶), the ✳ corner that separates the exact fusion from a plain sum is still about a millionth of the effect, so this test cannot see the exact fusion either. The same bookkeeping gives 1.21°/yr for the Hulse–Taylor pulsar, whose beam is seen to change shape at that slow rate.</p>
+<p>So the pulsar needs the drag twist, but its 14% error cannot single out the velocity twist. And although its field is about 7,000 times Gravity Probe B's (M/r ≈ 4 × 10⁻⁶), the ∘₁ corner that separates the exact fusion from a plain sum is still about a millionth of the effect, so this test cannot see the exact fusion either. The same bookkeeping gives 1.21°/yr for the Hulse–Taylor pulsar, whose beam is seen to change shape at that slow rate.</p>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap panel">
 <h2>Half a kick</h2>
-<p>The disk uses half-velocities: t = tanh(φ/2), the speed that, added to itself, gives the real speed (t ⊕ t = 2t/(1 + t²) = β). On the mult-add ruler of the relativity page that is the mult-add square root: d(t ⊕ t) = d(t) ✳ d(t). Half-velocities are the coordinates in which the corner splits cleanly, so the half kick is the natural unit for the twist.</p>
+<p>The disk uses half-velocities: t = tanh(φ/2), the speed that, added to itself, gives the real speed (t ⊕ t = 2t/(1 + t²) = β). On the circle-operation ruler of the relativity page that is the circle-operation square root: d(t ⊕ t) = d(t) ∘₁ d(t). Half-velocities are the coordinates in which the corner splits cleanly, so the half kick is the natural unit for the twist.</p>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap panel">
@@ -145,21 +145,21 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
 <tr><td>Twist = (1 + u·v̄)/(1 + ū·v) on the disk (Möbius addition, gyration)</td><td>Ungar's gyrogroups, 1988 onward</td></tr>
 <tr><td>One formula for sphere, plane and saddle with a curvature dial</td><td>Known as the κ-stereographic model (geometry, and lately machine learning)</td></tr>
 <tr><td>Geodetic precession = one-third Thomas-type + two-thirds space curvature</td><td>de Sitter 1916, Schiff 1960; measured by Gravity Probe B 2011</td></tr>
-<tr><td>The dial is the landscape's q, the twist is the phase of the split corner ū·v, and the half-velocity is the mult-add square root, and the two geodetic twists fuse by ✳</td><td>Ours: the placement in the fused picture</td></tr>
+<tr><td>The dial is the landscape's d, the twist is the phase of the split corner ū·v, and the half-velocity is the circle-operation square root, and the two geodetic twists fuse by ∘₁</td><td>Ours: the placement in the fused picture</td></tr>
 </tbody></table>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap panel">
 <h2>Is this a lead worth following?</h2>
-<p>Yes, and the Gravity Probe B test made it stronger. Twist = curvature × area, used twice (once in velocity space, once in space), gives 6,604 mas/yr against the measured 6,601.8 ± 18.3, and neither twist alone comes close. The exact answer even comes out as a mult-add of the two twist fractions. That is a real physical number reproduced by the picture, not only a restatement.</p>
-<p>What it is not: new physics. The split into a one-third velocity part and a two-thirds space part is textbook (de Sitter 1916, Schiff 1960). What is ours is the reading: both parts are the same twist law, and they fuse by ✳. The double pulsar then fits too: three twists give 5.07°/yr against the measured 4.77 ± 0.66, and the data needs the companion's drag twist.</p>
-<p>Where it stops: neither test can see the exact ✳ fusion, because the corner is second order and even the double pulsar's field leaves it about a millionth of the effect. Gyroscope data in a much stronger field does not exist yet, so for now the fusion is a correct exact identity, checked against theory, but not yet tested by measurement.</p>
+<p>Yes, and the Gravity Probe B test made it stronger. Twist = curvature × area, used twice (once in velocity space, once in space), gives 6,604 mas/yr against the measured 6,601.8 ± 18.3, and neither twist alone comes close. The exact answer even comes out as a circle operation of the two twist fractions. That is a real physical number reproduced by the picture, not only a restatement.</p>
+<p>What it is not: new physics. The split into a one-third velocity part and a two-thirds space part is textbook (de Sitter 1916, Schiff 1960). What is ours is the reading: both parts are the same twist law, and they fuse by ∘₁. The double pulsar then fits too: three twists give 5.07°/yr against the measured 4.77 ± 0.66, and the data needs the companion's drag twist.</p>
+<p>Where it stops: neither test can see the exact ∘₁ fusion, because the corner is second order and even the double pulsar's field leaves it about a millionth of the effect. Gyroscope data in a much stronger field does not exist yet, so for now the fusion is a correct exact identity, checked against theory, but not yet tested by measurement.</p>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap panel">
 <h2>Proved and checked</h2>
-<p><b>36 of 36 checks pass</b> (sympy and numpy): the matrix product, the split corner, the twist formula, the order swap, the two-dimensional light wall, and against real 4×4 Lorentz matrices on 2,000 random pairs: the composed velocity, the Wigner angle, and the angle equal to the triangle's area to 10⁻¹¹. The sphere end was checked the same way against 3D rotations, and twist = q × area at q = −1, −¼, ½ and 1.</p>
-<p><b>Gravity Probe B: 21 of 21 checks pass</b>, including a direct numerical parallel transport around Schwarzschild orbits, the space slice's curvature integral, and the mission numbers. 16 more Lean theorems cover the factor product, the mult-add fusion and the numbers.</p>
+<p><b>36 of 36 checks pass</b> (sympy and numpy): the matrix product, the split corner, the twist formula, the order swap, the two-dimensional light wall, and against real 4×4 Lorentz matrices on 2,000 random pairs: the composed velocity, the Wigner angle, and the angle equal to the triangle's area to 10⁻¹¹. The sphere end was checked the same way against 3D rotations, and twist = d × area at d = −1, −¼, ½ and 1.</p>
+<p><b>Gravity Probe B: 21 of 21 checks pass</b>, including a direct numerical parallel transport around Schwarzschild orbits, the space slice's curvature integral, and the mission numbers. 16 more Lean theorems cover the factor product, the circle-operation fusion and the numbers.</p>
 <p><b>Binary pulsar: 13 of 13 checks pass</b>: the three-twist coefficient, the test-gyroscope limit, the orbit average 1/(1 − e²), and the double pulsar and Hulse–Taylor numbers. 10 more Lean theorems cover the coefficient, the limit and the comparisons with measurement.</p>
 <p><b>32 Lean theorems</b> (core Lean, no mathlib, no sorry, standard axioms only), compiled into the shared library, which now builds clean at 2,263 theorems: boost_mul, corner_split, twist_trivial_iff, twist_on_circle, twist_half_angle, order_swap, shape_mul, sdet_mul, light_wall_2d, under_light_2d, half_kick_ruler and more. The area and Thomas results need real numbers, so they live in the checks.</p>
 </div></section>
@@ -202,7 +202,7 @@ function draw(svg,u,v,q,small){
  svg.innerHTML=s;return {t,A,w,w2};
 }
 const disk=$('disk'),three=$('three'),thom=$('thom');
-three.innerHTML=[[-1,'q = −1, relativity','saddle: the gyroscope turns back'],[0,'q = 0, Galilean','flat: no twist at all'],[1,'q = +1, rotations','sphere: the turn is the excess']].map(([q,h,p],i)=>`<div><h3>${h}</h3><div class="small">${p}</div><div class="mini"><svg id="m${i}" data-q="${q}" role="img" aria-label="${h}"></svg></div><div class="small" id="mt${i}"></div></div>`).join('');
+three.innerHTML=[[-1,'d = −1, relativity','saddle: the gyroscope turns back'],[0,'d = 0, Galilean','flat: no twist at all'],[1,'d = +1, rotations','sphere: the turn is the excess']].map(([q,h,p],i)=>`<div><h3>${h}</h3><div class="small">${p}</div><div class="mini"><svg id="m${i}" data-d="${q}" role="img" aria-label="${h}"></svg></div><div class="small" id="mt${i}"></div></div>`).join('');
 const fmt=(x,n=3)=>Number.isFinite(x)?x.toFixed(n):'∞';
 function render(){
  const s1=+$('s1').value,s2=+$('s2').value,th=+$('th').value*Math.PI/180,q=+$('qq').value;
@@ -210,10 +210,10 @@ function render(){
  $('o1').textContent=s1.toFixed(2);$('o2').textContent=s2.toFixed(2);$('o3').textContent=$('th').value+'°';$('o4').textContent=q.toFixed(2);
  const r=draw(disk,u,v,q,false);if(!r)return;const {t,A}=r,b=x=>2*x/(1+x*x);
  $('om').textContent=deg(t.om).toFixed(2)+'°';
- const rows=[['Corner ū·v',`${fmt(t.d)} + ${fmt(t.c)}i`],['X = 1 − q(u·v)',fmt(t.X)],['Y = q(u × v)',fmt(t.Y)],['Area of triangle',fmt(A,4)],['q × area',fmt(q*A,4)+' rad'],['Twist from 2·atan(Y/X)',fmt(t.om,4)+' rad']];
+ const rows=[['Corner ū·v',`${fmt(t.d)} + ${fmt(t.c)}i`],['X = 1 − q(u·v)',fmt(t.X)],['Y = q(u × v)',fmt(t.Y)],['Area of triangle',fmt(A,4)],['d × area',fmt(q*A,4)+' rad'],['Twist from 2·atan(Y/X)',fmt(t.om,4)+' rad']];
  if(q===-1)rows.push(['Real speeds',`${b(s1).toFixed(3)}c and ${b(s2).toFixed(3)}c`]);
  $('read').innerHTML=rows.map(([k,x])=>`<tr><td>${k}</td><td>${x}</td></tr>`).join('');
- for(let i=0;i<3;i++){const sv=$('m'+i),qq=+sv.dataset.q,rr=draw(sv,u,v,qq,true);if(rr)$('mt'+i).textContent=`twist ${deg(rr.t.om).toFixed(2)}°, q × area ${deg(qq*rr.A).toFixed(2)}°`}
+ for(let i=0;i<3;i++){const sv=$('m'+i),qq=+sv.dataset.q,rr=draw(sv,u,v,qq,true);if(rr)$('mt'+i).textContent=`twist ${deg(rr.t.om).toFixed(2)}°, d × area ${deg(qq*rr.A).toFixed(2)}°`}
 }
 let th0=0,last=null;const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function drawThomas(){

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Curved space from mult-add</title>
+<title>Curved space from the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 /* VOICE: a careful lab notebook for one person with good intuition; pictures first, claims plain.
    IDEA: an atlas plate: each bridge is a strip on one shared axis toward Einstein's equations.
-   PICTURE: the four-step ladder from mult-add to curved space, then the bridge chart.
-   COLOUR and TYPE: deep sea ground, sky = mult-add supplies it, pink = from outside or fails; Hanken Grotesk.
+   PICTURE: the four-step ladder from the circle operation to curved space, then the bridge chart.
+   COLOUR and TYPE: deep sea ground, sky = the circle operation supplies it, pink = from outside or fails; Hanken Grotesk.
    LAYOUT: one column of strips up to 1100px, figures full width, tables stack on phones. */
 :root{color-scheme:dark;--bg:#0a2540;--ink:#f4f8fb;--soft:#b9cbd9;--sky:#8fd3ff;--pink:#ff5c8a;--line:rgba(255,255,255,.16);--panel:rgba(255,255,255,.04)}
 :root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
@@ -37,55 +37,55 @@ html{scroll-padding-top:72px}
 @media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--soft)}.stack td:empty{display:none}}
 </style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
 <header class="band"><div class="wrap">
-<h1>Mult-add alone gives one fixed curvature; a direction dial gives all of it, and then every bridge reaches Einstein</h1>
-<p class="lede">Nov 25, 2026. Can mult-add's own rules build curved space, and do four known bridges to Einstein's field equations go through? 65 of 65 checks pass; 22 new Lean theorems.</p>
+<h1>The circle operation alone gives one fixed curvature; a direction dial gives all of it, and then every bridge reaches Einstein</h1>
+<p class="lede">Nov 25, 2026. Can the circle operation's own rules build curved space, and do four known bridges to Einstein's field equations go through? 65 of 65 checks pass; 22 new Lean theorems.</p>
 <ul class="answer">
-<li><b>Mult-add's own rules build one fixed curvature.</b> Two boosts close on a twist = q × area. That makes relativity's velocity space, a curved space with a single fixed curvature.</li>
+<li><b>The circle operation's own rules build one fixed curvature.</b> Two boosts close on a twist = d × area. That makes relativity's velocity space, a curved space with a single fixed curvature.</li>
 <li class="no"><b>A dial that varies only by place works in a 2D world and is blocked in 3D and 4D.</b> Schur's theorem: a dial that is the same in every direction at each point must be the same everywhere. This is the exact step where "its own rules" stop.</li>
-<li><b>The dial has to depend on direction, so "add to mult-add" was the right call.</b> The smallest addition is the square rule of a Clifford (geometric) algebra, e<sub>i</sub>e<sub>j</sub> + e<sub>j</sub>e<sub>i</sub> = 2k<sub>ij</sub>. That k<sub>ij</sub> is exactly a metric: a renaming of g<sub>ij</sub>, plus the reason it must be there.</li>
-<li><b>k as a Clifford number works in the sandwich form a + b + a·k·b.</b> It is associative for every k and keeps the lift 1 + k(a✳b) = (1 + ka)(1 + kb). Used alone, a varying k makes no curvature; with a twist field added it is gauge-theory gravity, which is general relativity, and the river is its natural gauge.</li>
-<li><b>Every bridge reaches Einstein's equations once the direction dial is in.</b> Mult-add supplies the most in Jacobson's. None gives a new prediction.</li>
+<li><b>The dial has to depend on direction, so "add to the circle operation ∘₁ (called mult-add before 1.0)" was the right call.</b> The smallest addition is the square rule of a Clifford (geometric) algebra, e<sub>i</sub>e<sub>j</sub> + e<sub>j</sub>e<sub>i</sub> = 2k<sub>ij</sub>. That k<sub>ij</sub> is exactly a metric: a renaming of g<sub>ij</sub>, plus the reason it must be there.</li>
+<li><b>k as a Clifford number works in the sandwich form a + b + a·k·b.</b> It is associative for every k and keeps the lift 1 + k(a∘₁b) = (1 + ka)(1 + kb). Used alone, a varying k makes no curvature; with a twist field added it is gauge-theory gravity, which is general relativity, and the river is its natural gauge.</li>
+<li><b>Every bridge reaches Einstein's equations once the direction dial is in.</b> The circle operation supplies the most in Jacobson's. None gives a new prediction.</li>
 </ul>
 </div></header>
 <nav class="scroll band" style="padding-block:10px" aria-label="Sections"><a href="#ladder">Curved space</a><a href="#clifford">Clifford dial</a><a href="#bridges">The bridges</a><a href="#jacobson">Jacobson</a><a href="#teleparallel">Teleparallel</a><a href="#lovelock">Lovelock</a><a href="#deser">Deser and Brans–Dicke</a><a href="#leads">Leads</a></nav>
 <main>
 <section class="band" id="ladder"><div class="wrap">
-<h2>From mult-add to curved space, in four steps</h2>
-<figure>@@ladder@@<figcaption>Steps 1 and 2 are mult-add's own rules: one fixed curvature. Step 3 (a dial that changes by place) works in 2D, where any curvature q(x, y) can be made, and is blocked in 3D and 4D. Step 4 (a dial for each pair of directions) is a metric and allows any curvature.</figcaption></figure>
+<h2>From the circle operation to curved space, in four steps</h2>
+<figure>@@ladder@@<figcaption>Steps 1 and 2 are the circle operation's own rules: one fixed curvature. Step 3 (a dial that changes by place) works in 2D, where any curvature d(x, y) can be made, and is blocked in 3D and 4D. Step 4 (a dial for each pair of directions) is a metric and allows any curvature.</figcaption></figure>
 <table class="stack"><thead><tr><th>Step</th><th>What was checked</th></tr></thead><tbody>
-<tr><td class="tag">One direction</td><td>In Cl(1,1) boosts are 1 + βσ with σ² = +1. Products give Einstein's addition; the two light-cone parts multiply, so they compose by mult-add; the norm 1 − β² is the wall.</td></tr>
-<tr><td class="tag">Two directions</td><td>[e<sub>0</sub>e<sub>1</sub>, e<sub>0</sub>e<sub>2</sub>] = −2k<sub>0</sub> e<sub>1</sub>e<sub>2</sub>: the twisted-boost law, with q the square of the shared direction. The Thomas–Wigner twist of a velocity loop equals its area × curvature to 10<sup>−15</sup>.</td></tr>
-<tr><td class="tag">Dial by place, 2D</td><td>Curvature q = −e<sup>−2u</sup>Δu; any q reachable. Loop twist ÷ area matched q at three places with three different values.</td></tr>
-<tr><td class="tag">Dial by place, 3D+</td><td>Same twist in every plane gives G = −(n−1)(n−2)/2 · q g, so the Bianchi identity forces q constant once n ≥ 3. In an explicit 3D example, making all planes agree leaves only constant curvature.</td></tr>
+<tr><td class="tag">One direction</td><td>In Cl(1,1) boosts are 1 + βσ with σ² = +1. Products give Einstein's addition; the two light-cone parts multiply, so they compose by the circle operation; the norm 1 − β² is the wall.</td></tr>
+<tr><td class="tag">Two directions</td><td>[e<sub>0</sub>e<sub>1</sub>, e<sub>0</sub>e<sub>2</sub>] = −2k<sub>0</sub> e<sub>1</sub>e<sub>2</sub>: the twisted-boost law, with d the square of the shared direction. The Thomas–Wigner twist of a velocity loop equals its area × curvature to 10<sup>−15</sup>.</td></tr>
+<tr><td class="tag">Dial by place, 2D</td><td>Curvature d = −e<sup>−2u</sup>Δu; any d reachable. Loop twist ÷ area matched d at three places with three different values.</td></tr>
+<tr><td class="tag">Dial by place, 3D+</td><td>Same twist in every plane gives G = −(n−1)(n−2)/2 · d g, so the Bianchi identity forces d constant once n ≥ 3. In an explicit 3D example, making all planes agree leaves only constant curvature.</td></tr>
 <tr><td class="tag">Dial by direction</td><td>k<sub>ij</sub>(x) gives a different twist per plane at one point (0.00325, 0.01138, −0.00345 in the example), confirmed by a numeric loop.</td></tr>
 <tr><td class="tag">Which dial does matter make?</td><td>Weak field: in empty space light focuses in some direction unless γ = 1. "No focusing without energy crossing" (Jacobson's rule) forces γ = 1; the dial-only theory (γ = 0) breaks it.</td></tr>
 </tbody></table>
 </div></section>
 <section class="band" id="clifford"><div class="wrap">
 <h2>k as a Clifford number: what it adds, and what it doesn't</h2>
-<figure>@@clifford@@<figcaption>The geometric product keeps both parts: the dot (weighted by the direction dial) and the wedge (a twist in the plane of a and b). Mult-add with a multivector weight must put k in the middle.</figcaption></figure>
+<figure>@@clifford@@<figcaption>The geometric product keeps both parts: the dot (weighted by the direction dial) and the wedge (a twist in the plane of a and b). The circle operation with a multivector weight must put k in the middle.</figcaption></figure>
 <p>The front-loaded law a + b + k·a·b is associative only when k is central: scalars, plus the volume element in Cl(3,0); scalars only in spacetime's Cl(1,3). The sandwich law works for every k. A constant k is only a change of coordinates, so the information lives in the square rule, which is the metric. A weight that varies by place, used alone, is pure gauge: its curvature is zero identically. Adding an independent twist field gives gauge-theory gravity (Lasenby, Doran and Gull), whose simplest Schwarzschild gauge is our river.</p>
-<p><b>Is it just g<sub>ij</sub> renamed?</b> As an object, yes. It adds the reason a metric must appear (Schur), a Clifford frame (the square root of the metric, needed for spinors and teleparallel gravity), and the twisted-boost law as a commutator. <b>Can k be a fused number?</b> Yes: weights k = 1 + K compose by the same multivector mult-add, so the structure is self-similar, but self-similarity alone makes no curvature.</p>
+<p><b>Is it just g<sub>ij</sub> renamed?</b> As an object, yes. It adds the reason a metric must appear (Schur), a Clifford frame (the square root of the metric, needed for spinors and teleparallel gravity), and the twisted-boost law as a commutator. <b>Can k be a fused number?</b> Yes: weights k = 1 + K compose by the same multivector circle operation, so the structure is self-similar, but self-similarity alone makes no curvature.</p>
 </div></section>
 <section class="band" id="bridges"><div class="wrap">
 <h2>The four bridges at a glance</h2>
-<figure>@@bridges@@<figcaption>Sky: mult-add, the dial or the river supplies it. Dashed pink: needed from outside, or the place a route fails. With the direction dial, every row ends at Einstein's equations plus a free cosmological constant.</figcaption></figure>
+<figure>@@bridges@@<figcaption>Sky: the circle operation, the dial or the river supplies it. Dashed pink: needed from outside, or the place a route fails. With the direction dial, every row ends at Einstein's equations plus a free cosmological constant.</figcaption></figure>
 </div></section>
 <section class="band" id="jacobson"><div class="wrap">
 <h2>Jacobson: heat flowing across small horizons</h2>
-<figure>@@bundle@@<figcaption>A thin beam of light stretched by 1 + a one way and 1 + b the other has area 1 + (a✳b). With straight rays the area's second difference is 2ab, the mult-add cross term, and that term is Raychaudhuri's focusing.</figcaption></figure>
+<figure>@@bundle@@<figcaption>A thin beam of light stretched by 1 + a one way and 1 + b the other has area 1 + (a∘₁b). With straight rays the area's second difference is 2ab, the circle-operation cross term, and that term is Raychaudhuri's focusing.</figcaption></figure>
 <table class="stack"><thead><tr><th>What the bridge needs</th><th>Supplied?</th></tr></thead><tbody>
 <tr><td>Area change of a light beam</td><td class="sky">Yes. θ′ + θ²/2 + σ² = a″/(1+a) + b″/(1+b) = −R<sub>kk</sub>, exactly.</td></tr>
-<tr><td>Unruh temperature a/2π</td><td class="sky">Yes. Constant acceleration runs the Doppler factor along the mult-add flow e<sup>aτ</sup>, which is thermal: |β/α|² = e<sup>−2πΩ/a</sup>. The 2π is the rotation period after flipping the dial's sign.</td></tr>
+<tr><td>Unruh temperature a/2π</td><td class="sky">Yes. Constant acceleration runs the Doppler factor along the circle-operation flow e<sup>aτ</sup>, which is thermal: |β/α|² = e<sup>−2πΩ/a</sup>. The 2π is the rotation period after flipping the dial's sign.</td></tr>
 <tr><td>Heat = focusing in every light direction ⇒ Einstein</td><td>Algebra, checked: it forces R<sub>ab</sub> − 8πT<sub>ab</sub> = φg<sub>ab</sub>, and Bianchi fixes φ.</td></tr>
 <tr><td>Entropy proportional to area (η = 1/4Għ)</td><td class="pink">No. The one outside input.</td></tr>
 </tbody></table>
-<p>Our earlier "clock deficit ✳ ruler deficit = 0" is Jacobson's 2007 condition g<sub>tt</sub>g<sub>rr</sub> = −1: no energy along radial light rays. If horizon patches combine entropy by weighted mult-add (Tsallis's rule), small patches can't see the weight, so the local equations stand; black holes change only globally (Rényi temperature (1 + 4πλM²)/8πM). A sombrero field could set G through its vev, but the Higgs vev would need a coupling of about 10<sup>32</sup>.</p>
+<p>Our earlier "clock deficit ∘₁ ruler deficit = 0" is Jacobson's 2007 condition g<sub>tt</sub>g<sub>rr</sub> = −1: no energy along radial light rays. If horizon patches combine entropy by the circle operation with dial k (Tsallis's rule), small patches can't see the weight, so the local equations stand; black holes change only globally (Rényi temperature (1 + 4πλM²)/8πM). A sombrero field could set G through its vev, but the Higgs vev would need a coupling of about 10<sup>32</sup>.</p>
 </div></section>
 <section class="band" id="teleparallel"><div class="wrap">
 <h2>Teleparallel: the river is a torsion picture already</h2>
 <figure>@@river@@<figcaption>In the river's own frame the connection is flat (no twist at all) and the torsion is the river's speed-up. Twist (rotation defect) and torsion (shift defect) are two halves of one loop defect; teleparallel gravity moves all of it into torsion.</figcaption></figure>
-<p>Checked on every river, with a general flow v(t, x, y, z): the energy rule is <b>e2(K) = 8πρ</b>, where e2 sums the pairwise products of the river's three stretch rates, the cross-term layer of a three-way mult-add. Moving mass makes the river swirl (curl curl v = −16πj, an exact gravitomagnetic Ampère law), and only the swirl carries bulk action. The torsion scalar on the river is exactly 2·e2(K), and it differs from the curvature scalar by a boundary term, so the teleparallel equivalent of GR holds. <span class="pink">A flat-sliced river still can't carry gravitational waves</span>; the general frame can, and that is GR.</p>
+<p>Checked on every river, with a general flow v(t, x, y, z): the energy rule is <b>e2(K) = 8πρ</b>, where e2 sums the pairwise products of the river's three stretch rates, the cross-term layer of a three-way the circle operation. Moving mass makes the river swirl (curl curl v = −16πj, an exact gravitomagnetic Ampère law), and only the swirl carries bulk action. The torsion scalar on the river is exactly 2·e2(K), and it differs from the curvature scalar by a boundary term, so the teleparallel equivalent of GR holds. <span class="pink">A flat-sliced river still can't carry gravitational waves</span>; the general frame can, and that is GR.</p>
 </div></section>
 <section class="band" id="lovelock"><div class="wrap">
 <h2>Lovelock: uniqueness closes the gap, on stated terms</h2>
@@ -93,7 +93,7 @@ html{scroll-padding-top:72px}
 <tr><td>4 dimensions</td><td class="sky">Yes. Gauss–Bonnet's field tensor vanishes identically in 4D; in 5D it doesn't (H<sub>tt</sub> = 6(f−1)f f′/r³).</td></tr>
 <tr><td>Conserved source</td><td class="sky">Yes. Matter carried by the river is conserved.</td></tr>
 <tr><td>Metric only</td><td class="sky">Yes with the direction dial, if the river is a gauge choice. If the river is a real field, the theory is Einstein–aether: exact Schwarzschild needs c<sub>2</sub> = −c<sub>13</sub>, and GW170817 pins c<sub>13</sub> ≲ 10<sup>−15</sup>.</td></tr>
-<tr><td>Second order</td><td class="pink">An assumption, not from mult-add.</td></tr>
+<tr><td>Second order</td><td class="pink">An assumption, not from the circle operation.</td></tr>
 <tr><td>Cosmological constant</td><td>Left free. The river carries it as a second escape term, v² = 2M/r + Λr²/3 (exact).</td></tr>
 </tbody></table>
 </div></section>
@@ -105,8 +105,8 @@ html{scroll-padding-top:72px}
 <section class="band" id="leads"><div class="wrap">
 <h2>Leads, judged on their own merits</h2>
 <ul>
-<li><b>Direction dial = metric, forced by Schur.</b> Worth writing up as pure math: mult-add's twisted-boost rule, made local, needs a direction-dependent dial, and that dial is a metric. True and geometric; not new physics.</li>
-<li><b>Jacobson's chain in mult-add language.</b> Worth following: every geometric piece is ours, and the open piece is the area law for entropy. If mult-add's information-keeping could give entropy proportional to area, that would be a real step; nothing here produces it yet.</li>
+<li><b>Direction dial = metric, forced by Schur.</b> Worth writing up as pure math: the circle operation's twisted-boost rule, made local, needs a direction-dependent dial, and that dial is a metric. True and geometric; not new physics.</li>
+<li><b>Jacobson's chain in circle-operation language.</b> Worth following: every geometric piece is ours, and the open piece is the area law for entropy. If the circle operation's information-keeping could give entropy proportional to area, that would be a real step; nothing here produces it yet.</li>
 <li><b>River = teleparallel frame; energy = stretch cross terms; bulk action = swirl.</b> Exact, and a good picture for spinning black holes (a twisting river). Not a new prediction.</li>
 <li><b>River as a physical field (Einstein–aether).</b> Testable, but existing research, and GW170817 already removes most of the room.</li>
 <li><b>No new prediction anywhere.</b> Every route with the direction dial gives general relativity exactly; every route without it is ruled out by data.</li>

@@ -98,7 +98,7 @@ def plate2():
 # ---------------------------------------------------------------- plate 3: weights are t
 def plate3():
     W, H = 900, 450
-    b = [T(20, 30, "The weight dial is mult-add's per-element t: same set, same dimension, mass shared unevenly", 15, INK, weight=600)]
+    b = [T(20, 30, "The weight dial is the circle operation's per-element t: same set, same dimension, mass shared unevenly", 15, INK, weight=600)]
     rows = [(F(1, 2), "t = 1   (p = ½, fair)", "all Rényi dimensions D_q equal ½"),
             (F(3, 10), "t = 3/7 (p = 0.3)", "spectrum spreads: α from 0.26 to 0.87"),
             (F(1, 10), "t = 1/9 (p = 0.1)", "spreads further: α from 0.08 to 1.66")]
@@ -192,18 +192,18 @@ def plate5():
 # ---------------------------------------------------------------- plate 6: dial map
 def plate6():
     W, H = 900, 560
-    b = [T(20, 30, "Which fractal dials mult-add already has", 15, INK, weight=600)]
+    b = [T(20, 30, "Which fractal dials the circle operation already has", 15, INK, weight=600)]
     rows = [
-        ("dimension d", "fractional mult-add power (1+a)^d", "has it", BLUE),
+        ("dimension D", "fractional circle power (1+a)^D", "has it", BLUE),
         ("weights p : 1−p (multifractal D_q, f(α))", "per-element dial t = p/(1−p)", "has it", BLUE),
         ("branching growth (how fast branching grows)", "rung flow at t = ½ (half-exponential)", "has it, separately", BLUE),
         ("wobble / complex dimensions", "a phase that turns with zoom; like twist or a Clifford rotor", "partial", AMBER),
-        ("zoom ratio r (how much each piece shrinks)", "nothing yet: mult-add has no notion of size", "missing: one candidate", RED),
+        ("zoom ratio r (how much each piece shrinks)", "nothing yet: the circle operation has no notion of size", "missing: one candidate", RED),
         ("placement: lacunarity, Minkowski content", "geometry outside the algebra", "outside", GREY),
-        ("topology: touching, gluing", "silent below d = 1; only matters at d ≥ 1", "outside", GREY),
+        ("topology: touching, gluing", "silent below D = 1; only matters at D ≥ 1", "outside", GREY),
     ]
     y = 64
-    b.append(T(30, y, "fractal dial", 12, MUTE, weight=600)); b.append(T(380, y, "in mult-add", 12, MUTE, weight=600))
+    b.append(T(30, y, "fractal dial", 12, MUTE, weight=600)); b.append(T(380, y, "in the circle operation", 12, MUTE, weight=600))
     b.append(T(740, y, "status", 12, MUTE, weight=600))
     y += 14
     for fd, ma, st, c in rows:
@@ -211,9 +211,9 @@ def plate6():
         b.append(T(36, y + 31, fd, 13, INK, weight=600)); b.append(T(380, y + 31, ma, 12, INK))
         b.append(T(740, y + 31, st, 12, c, weight=700))
         y += 62
-    b.append(T(20, y + 16, "If mult-add adds one dial, it is a zoom (size) dial: then dimension stops being an input and comes out of", 12, MUTE))
-    b.append(T(20, y + 34, "piece count and zoom, d = log(pieces) / log(1/zoom), via Moran's equation. Everything else is covered or is geometry.", 12, MUTE))
-    return svg(W, H, "".join(b), "Map of fractal dials against the dials mult-add already has")
+    b.append(T(20, y + 16, "If the circle operation adds one dial, it is a zoom (size) dial: then dimension stops being an input and comes out of", 12, MUTE))
+    b.append(T(20, y + 34, "piece count and zoom, D = log(pieces) / log(1/zoom), via Moran's equation. Everything else is covered or is geometry.", 12, MUTE))
+    return svg(W, H, "".join(b), "Map of fractal dials against the dials the circle operation already has")
 
 # ---------------------------------------------------------------- plate 7: why shape dials cannot iterate
 def plate7():
@@ -241,7 +241,7 @@ def plate7():
     tx = 690
     for i, s in enumerate(["Shape dials (zoom, placement,", "weights, gluing) all keep counts", "c·bⁿ: straight lines here, and", "joining keeps them straight.",
                            "", "The power set's counts 2^(2ⁿ)", "curve up and fit no line", "(Lean: powerset_not_selfsimilar).", "",
-                           "A half step must bend between", "them: that needs a dial on how", "fast branching grows, which is", "mult-add's rung flow at t = ½.", "", "The dashed curve is one exact half", "step, h(h(n)) = 2ⁿ; there are many."]):
+                           "A half step must bend between", "them: that needs a dial on how", "fast branching grows, which is", "The circle operation's rung flow at t = ½.", "", "The dashed curve is one exact half", "step, h(h(n)) = 2ⁿ; there are many."]):
         b.append(T(tx, 80 + i * 18, s, 12, INK if s and i < 4 else MUTE))
     return svg(W, H, "".join(b), "Self-similar counts are lines; the power set curves up; a half step needs a growth dial")
 

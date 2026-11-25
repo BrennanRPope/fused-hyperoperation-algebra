@@ -31,10 +31,10 @@ ax.scatter(gN[ok], gobs[ok], s=4, color=INK2, alpha=0.25, lw=0, label="SPARC: 15
 x = np.logspace(-12.6, -8.3, 400); z = np.zeros_like(x)
 ax.plot(x, x, color=INK, lw=1.5, ls="--", label="Newton, visible matter only")
 ax.plot(x, S.rar(x, z, z, P["MOND / RAR (McGaugh 2016)"]), color=BLUE, label="MOND / RAR, one constant a0")
-ax.plot(x, S.madd_exp(x, z, z, P["Mult-add of many small pieces (exp map)"]), color=ORANGE,
-        label="Mult-add of the mass pieces (best scale)")
-ax.plot(x, S.madd_background(x, z, z, P["Mult-add with a constant background"]), color=AQUA,
-        label="Mult-add with a constant background")
+ax.plot(x, S.madd_exp(x, z, z, P["The circle operation of many small pieces (exp map)"]), color=ORANGE,
+        label="The circle operation of the mass pieces (best scale)")
+ax.plot(x, S.madd_background(x, z, z, P["The circle operation with a constant background"]), color=AQUA,
+        label="The circle operation with a constant background")
 a0 = 10 ** P["MOND / RAR (McGaugh 2016)"][0]
 ax.axvline(a0, color=BLUE, lw=0.8, ls=":")
 ax.text(a0 * 1.15, 2.2e-13, "a0 = 1.2e-10 m/s²", color=INK2, fontsize=9)
@@ -55,7 +55,7 @@ for ax, nm in zip(axs.flat, names):
     gg, gd, gb = S.pieces(gi)
     V = lambda gm: np.sqrt(np.maximum(gm, 0) * Rf / S.KMS2_PER_KPC)
     ax.errorbar(R, g["V"], yerr=g["eV"], fmt="o", ms=4, color=INK, ecolor=INK2, elinewidth=1, label="measured")
-    ax.plot(Rf, V(S.madd_exp(gg, gd, gb, P["Mult-add of many small pieces (exp map)"])), color=ORANGE, label="mult-add of pieces")
+    ax.plot(Rf, V(S.madd_exp(gg, gd, gb, P["The circle operation of many small pieces (exp map)"])), color=ORANGE, label="The circle operation of pieces")
     ax.plot(Rf, V(S.newton(gg, gd, gb, [])), color=INK, ls="--", lw=1.5, label="visible matter, Newton")
     ax.plot(Rf, V(S.rar(gg, gd, gb, P["MOND / RAR (McGaugh 2016)"])), color=BLUE, label="MOND / RAR")
     c2, q = S.fit_nfw(g)
@@ -75,7 +75,7 @@ ax.add_patch(Rectangle((1, 0), z1, 1, fc="#fde3d4", ec=INK2)); ax.text(1 + z1 / 
 ax.add_patch(Rectangle((0, 1), 1, z2, fc="#ccf1e9", ec=INK2)); ax.text(0.5, 1 + z2 / 2, "z₂", ha="center", va="center")
 ax.add_patch(Rectangle((1, 1), z1, z2, fc="#fbe6b3", ec=INK2)); ax.text(1 + z1 / 2, 1 + z2 / 2, "z₁z₂", ha="center", va="center")
 ax.set_xlim(-0.1, 1.8); ax.set_ylim(-0.1, 1.55); ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("Redshifts compose by mult-add\n(1+z₁)(1+z₂) = 1 + (z₁ ⊕ z₂)", fontsize=10.5, color=INK)
+ax.set_title("Redshifts compose by the circle operation\n(1+z₁)(1+z₂) = 1 + (z₁ ∘₁ z₂)", fontsize=10.5, color=INK)
 
 ax = axs[1]                                     # oblique cube: unit cube (Λ) inside the (1+z) cube (matter shell)
 def box(ax, o, s, fc, ec=INK2, alpha=1.0):
@@ -92,7 +92,7 @@ box(ax, (0, 0), (1, 1, 1), "#dbe9fa")
 ax.text(0.5, 0.45, "unit cube\n= Λ part", ha="center", va="center", fontsize=9)
 ax.text(1.75, 2.05, "shell = 3z + 3z² + z³\nweighted by Ωm", ha="center", fontsize=9)
 ax.set_xlim(-0.1, 2.4); ax.set_ylim(-0.1, 2.5); ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("Flat ΛCDM is a weighted mult-add cube\nH²/H₀² = 1 + Ωm·(z ⊕ z ⊕ z)", fontsize=10.5, color=INK)
+ax.set_title("Flat ΛCDM is a circle-operation cube with dial k\nH²/H₀² = 1 + Ωm·(z ∘₁ z ∘₁ z)", fontsize=10.5, color=INK)
 
 ax = axs[2]; gNv, a0v = 0.35, 1.6; gv = np.sqrt(gNv * a0v)
 ax.add_patch(Rectangle((0, 0), a0v, gNv, fc="#dbe9fa", ec=INK2)); ax.text(a0v / 2, gNv / 2, "g_N × a0", ha="center", va="center", fontsize=9)

@@ -10,7 +10,7 @@
 /* VOICE a careful reading document in the same series as the quantum-noise, topology and actuarial pages, honest about known vs new
    IDEA a plate from a geometry atlas over a proof notebook: one square, its corner counted four ways
    PICTURE the four-panel corner square, then the cube, the ladder, the decoder and the cascade
-   COLOUR white ground, near-black ink, ultramarine for mult-add, vermilion for warnings; night is deep ink with plates kept white
+   COLOUR white ground, near-black ink, ultramarine for the circle operation, vermilion for warnings; night is deep ink with plates kept white
    TYPE Newsreader for titles, Inter for text
    LAYOUT finding and lead plate in the first screen; the kit table; one section per area with plates beside text; phone stacks */
 
@@ -57,11 +57,11 @@ footer{border-top:1px solid var(--rule)}
 <body>
 <header class="band top"><div class="wrap">
 <h1>Information theory is one square, counted four ways</h1>
-<p class="lede">Every composition law I checked in information theory is mult-add with a weight k, a ⊕ₖ b = a + b + k·ab, and the weight only says how the corner cell ab of the mult-add square is counted. Six shared lemmas then prove 44 known laws, from the union rule for failures to Tsallis entropy, Kraft's inequality, channel cascades, Hamming codes and belief-propagation decoding.</p>
-<div class="plate"><img src="figures/f1_corner_square.png" alt="Four squares. First, a mult-add square of side 1+a by 1+b with the unit cell white and cells a, b and ab shaded. Then three unit squares split at p and q: plain addition counts the corner pq twice, the either-one rule shades everything except the both-fine cell, and the exactly-one rule shades only the two off-diagonal cells."></div>
+<p class="lede">Every composition law I checked in information theory is the circle operation ∘ₖ (called mult-add before 1.0) with a weight k, a ∘ₖ b = a + b + k·ab, and the weight only says how the corner cell ab of the circle-operation square is counted. Six shared lemmas then prove 44 known laws, from the union rule for failures to Tsallis entropy, Kraft's inequality, channel cascades, Hamming codes and belief-propagation decoding.</p>
+<div class="plate"><img src="figures/f1_corner_square.png" alt="Four squares. First, a circle-operation square of side 1+a by 1+b with the unit cell white and cells a, b and ab shaded. Then three unit squares split at p and q: plain addition counts the corner pq twice, the either-one rule shades everything except the both-fine cell, and the exactly-one rule shades only the two off-diagonal cells."></div>
 <p class="cap">k = 1 grows a volume, k = 0 ignores the overlap, k = −1 counts the overlap once, k = −2 throws the overlap away. That is the whole story of this page, drawn once.</p>
 <div class="box flag">
-<p><strong>Known or new.</strong> Every law here is known, most of them classical, and that was the aim: proofs of existing laws in one fused language. Tsallis' non-additivity S_A + S_B + (1−q)S_A·S_B is from 1988, and reading entropies through formal group laws is already a research line (Tempesta's "group entropies"). Two readings are tidy rather than new: the channel ladder k = −(1 + c), and belief propagation as plain mult-add in two coordinates of the same bit.</p>
+<p><strong>Known or new.</strong> Every law here is known, most of them classical, and that was the aim: proofs of existing laws in one fused language. Tsallis' non-additivity S_A + S_B + (1−q)S_A·S_B is from 1988, and reading entropies through formal group laws is already a research line (Tempesta's "group entropies"). Two readings are tidy rather than new: the channel ladder k = −(1 + c), and belief propagation as the plain circle operation in two coordinates of the same bit.</p>
 <p style="margin:0"><strong>No lead as strong as the solitons turned up.</strong> What this area adds is breadth: one kit of six lemmas carries the whole field.</p>
 </div>
 <div class="box">
@@ -76,26 +76,26 @@ footer{border-top:1px solid var(--rule)}
 <div class="scroll"><table class="stack">
 <thead><tr><th>Lemma</th><th>Statement</th><th>Geometry</th></tr></thead>
 <tbody>
-<tr><td class="fit">K1 lift</td><td>1 + k·(a ⊕ₖ b) = (1 + k·a)(1 + k·b)</td><td>the square's area multiplies</td></tr>
-<tr><td class="fit">K2 climb</td><td>1 + k·(a ⊕ₖ a ⊕ₖ … ⊕ₖ a) = (1 + k·a)ⁿ</td><td>n copies climb the cube; this is rung 2</td></tr>
-<tr><td class="fit">K3 flip</td><td>(−a) ⊕ₖ (−b) = −(a ⊕₋ₖ b)</td><td>read the square from the other corner</td></tr>
-<tr><td class="fit">K4 linearize</td><td>any L with L(xy) = L(x) + L(y) turns ⊕ₖ into +</td><td>log flattens the square to two lengths</td></tr>
+<tr><td class="fit">K1 lift</td><td>1 + k·(a ∘ₖ b) = (1 + k·a)(1 + k·b)</td><td>the square's area multiplies</td></tr>
+<tr><td class="fit">K2 climb</td><td>1 + k·(a ∘ₖ a ∘ₖ … ∘ₖ a) = (1 + k·a)ⁿ</td><td>n copies climb the cube; this is rung 2</td></tr>
+<tr><td class="fit">K3 flip</td><td>(−a) ∘ₖ (−b) = −(a ∘₋ₖ b)</td><td>read the square from the other corner</td></tr>
+<tr><td class="fit">K4 linearize</td><td>any L with L(xy) = L(x) + L(y) turns ∘ₖ into +</td><td>log flattens the square to two lengths</td></tr>
 <tr><td class="fit">K5 outer sum</td><td>Σᵢⱼ xᵢyⱼ = (Σxᵢ)(Σyⱼ)</td><td>a grid's total is its edges multiplied</td></tr>
 <tr><td class="fit">K6 outer log</td><td>Σᵢⱼ xᵢyⱼ·L(xᵢyⱼ) = (Σy)·Σx·L(x) + (Σx)·Σy·L(y)</td><td>log of a grid splits into its edges</td></tr>
 </tbody></table></div>
-<p class="mute" style="margin-top:10px">Every weight is the same algebra rescaled: k·(a ⊕ₖ b) = (k·a) ⊕ (k·b). So the laws really differ only in which coordinate they're read in.</p>
+<p class="mute" style="margin-top:10px">Every weight is the same algebra rescaled: k·(a ∘ₖ b) = (k·a) ∘₁ (k·b). So the laws really differ only in which coordinate they're read in.</p>
 </div></section>
 
 <section class="band" id="fail" style="background:var(--panel)"><div class="wrap two">
 <div>
 <h2>Failure chances: k = −1</h2>
-<p>Two independent parts failing with chances p and q: at least one fails with chance <strong>p ⊕₋₁ q = p + q − pq</strong>. That's mult-add read on negatives (K3): the "or" rule is mult-add seen from the both-fine corner.</p>
+<p>Two independent parts failing with chances p and q: at least one fails with chance <strong>p ∘₋₁ q = p + q − pq</strong>. That's the circle operation read on negatives (K3): the "or" rule is the circle operation seen from the both-fine corner.</p>
 <ul>
-<li><strong>Survival multiplies</strong> (K1): 1 − (p ⊕₋₁ q) = (1 − p)(1 − q).</li>
+<li><strong>Survival multiplies</strong> (K1): 1 − (p ∘₋₁ q) = (1 − p)(1 − q).</li>
 <li><strong>Hazards add</strong> (K4): −log(1 − p) is the linear coordinate, so cumulative hazard adds.</li>
 <li><strong>Inclusion–exclusion</strong> falls out of associativity: the signed corners of the cube.</li>
 <li><strong>Series systems</strong> (K2): n parts fail with chance 1 − (1 − p)ⁿ.</li>
-<li><strong>Adding a part never helps</strong>: p ≤ p ⊕₋₁ q for 0 ≤ q, p ≤ 1.</li>
+<li><strong>Adding a part never helps</strong>: p ≤ p ∘₋₁ q for 0 ≤ q, p ≤ 1.</li>
 </ul>
 </div>
 <div><div class="plate"><img src="figures/f2_cube_union_parity.png" alt="Two cubes whose corners are the products of p, q and r. Left: all seven non-empty corners shaded, singles plus, pairs minus, the triple plus. Right: only the three single corners and the triple shaded."></div>
@@ -104,32 +104,32 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="entropy"><div class="wrap">
 <h2>Entropy: the Tsallis index is the weight</h2>
-<p>For independent sources, power sums multiply (K5): Σ(pᵢrⱼ)^q = (Σpᵢ^q)(Σrⱼ^q). Tsallis entropy is that power sum minus 1, over k = 1 − q. So by K1 it composes as <strong>S_AB = S_A ⊕ₖ S_B with k = 1 − q</strong>, Tsallis' pseudo-additivity. Applying log (K4) to 1 + k·S gives Rényi entropy, which adds. The family has three landmarks, each a law of its own:</p>
+<p>For independent sources, power sums multiply (K5): Σ(pᵢrⱼ)^q = (Σpᵢ^q)(Σrⱼ^q). Tsallis entropy is that power sum minus 1, over k = 1 − q_T. So by K1 it composes as <strong>S_AB = S_A ∘ₖ S_B with k = 1 − q_T</strong>, Tsallis' pseudo-additivity. Applying log (K4) to 1 + k·S gives Rényi entropy, which adds. The family has three landmarks, each a law of its own:</p>
 <div class="scroll"><table class="stack">
-<thead><tr><th>Tsallis q</th><th class="n">Weight k</th><th>What it counts</th><th>How it composes</th></tr></thead>
+<thead><tr><th>Tsallis q_T</th><th class="n">Weight k</th><th>What it counts</th><th>How it composes</th></tr></thead>
 <tbody>
-<tr><td>q = 0</td><td class="n">1</td><td>outcomes minus one, N − 1</td><td>NM − 1 = (N − 1) ⊕ (M − 1): the grid minus its unit cell</td></tr>
-<tr><td>q = 1</td><td class="n">0</td><td>Shannon entropy H</td><td>H(X,Y) = H(X) + H(Y), proved from K6 for any log</td></tr>
-<tr><td>q = 2</td><td class="n">−1</td><td>Gini–Simpson 1 − Σp², the chance two draws differ</td><td>the union rule: "the pair differs" = "A differs or B differs"</td></tr>
+<tr><td>q_T = 0</td><td class="n">1</td><td>outcomes minus one, N − 1</td><td>NM − 1 = (N − 1) ∘₁ (M − 1): the grid minus its unit cell</td></tr>
+<tr><td>q_T = 1</td><td class="n">0</td><td>Shannon entropy H</td><td>H(X,Y) = H(X) + H(Y), proved from K6 for any log</td></tr>
+<tr><td>q_T = 2</td><td class="n">−1</td><td>Gini–Simpson 1 − Σp², the chance two draws differ</td><td>the union rule: "the pair differs" = "A differs or B differs"</td></tr>
 </tbody></table></div>
 <h3>Where rung 2 shows up</h3>
-<p>For N equally likely outcomes and k = 1 − q a whole number m, 1 + k·S = Nᵐ. So k·S is exactly the fused power (N − 1)^⊕m, the climb up the mult-add cube (K2). Composing two sources uses rung 1; turning a count into an entropy uses rung 2.</p>
+<p>For N equally likely outcomes and k = 1 − q_T a whole number m, 1 + k·S = Nᵐ. So k·S is exactly the fused power (N − 1)^∘₁m, the climb up the circle-operation cube (K2). Composing two sources uses rung 1; turning a count into an entropy uses rung 2.</p>
 <p class="mute">Known: Tsallis (1988); the Rényi–Tsallis link through log(1 + k·S); formal-group entropies (Tempesta, 2011 and 2016). The three-landmark reading is a presentation.</p>
 </div></section>
 
 <section class="band" id="compress" style="background:var(--panel)"><div class="wrap">
 <h2>Compression: Kraft and Campbell are the same grid</h2>
 <ul>
-<li><strong>Kraft sums multiply</strong> when you concatenate two prefix codes (K5), so the product code is still prefix-valid. The slack 1 − K composes like failure chances: 1 − K_A·K_B = (1 − K_A) ⊕₋₁ (1 − K_B).</li>
-<li><strong>Campbell's exponential cost</strong> M = Σp·2^(tℓ) multiplies for independent sources, so M − 1 is plain mult-add, k = 1. Its log is bounded by Rényi entropy of order 1/(1 + t) (Campbell, 1965). Checked numerically on Huffman codes.</li>
+<li><strong>Kraft sums multiply</strong> when you concatenate two prefix codes (K5), so the product code is still prefix-valid. The slack 1 − K composes like failure chances: 1 − K_A·K_B = (1 − K_A) ∘₋₁ (1 − K_B).</li>
+<li><strong>Campbell's exponential cost</strong> M = Σp·2^(tℓ) multiplies for independent sources, so M − 1 is the plain circle operation, k = 1. Its log is bounded by Rényi entropy of order 1/(1 + t) (Campbell, 1965). Checked numerically on Huffman codes.</li>
 <li><strong>Expected length adds</strong>, the k = 0 shadow of Campbell, and Shannon's bound sits there.</li>
 </ul>
 </div></section>
 
 <section class="band" id="channels"><div class="wrap">
 <h2>Channels: the alphabet ladder k = −(1 + c)</h2>
-<div class="plate"><img src="figures/f3_weight_ladder.png" alt="A number line of weights from 1 down to minus 2. At 1: Tsallis q equals 0, Campbell cost, variable node odds. At 0: Shannon, Rényi, code length, LLRs. At minus 1: independent failures, erasure channel, Gini–Simpson, Kraft slack. Between minus 1 and minus 2: minus 4/3 for four letters and minus 3/2 for three letters. At minus 2: binary symmetric channel, parity, check node."></div>
-<p>Send a symbol through two noisy hops in a row. It arrives right if both hops were clean, or if the first hop erred and the second erred back onto the right letter. If c is the chance a second error lands back on the right letter, the error composes as <strong>e₁ ⊕ₖ e₂ with k = −(1 + c)</strong>. For a symmetric channel c = 1/(letters − 1):</p>
+<div class="plate"><img src="figures/f3_weight_ladder.png" alt="A number line of weights from 1 down to minus 2. At 1: Tsallis q_T equals 0, Campbell cost, variable node odds. At 0: Shannon, Rényi, code length, LLRs. At minus 1: independent failures, erasure channel, Gini–Simpson, Kraft slack. Between minus 1 and minus 2: minus 4/3 for four letters and minus 3/2 for three letters. At minus 2: binary symmetric channel, parity, check node."></div>
+<p>Send a symbol through two noisy hops in a row. It arrives right if both hops were clean, or if the first hop erred and the second erred back onto the right letter. If c is the chance a second error lands back on the right letter, the error composes as <strong>e₁ ∘ₖ e₂ with k = −(1 + c)</strong>. For a symmetric channel c = 1/(letters − 1):</p>
 <ul>
 <li><strong>Erasures, or a huge alphabet</strong> (c = 0): k = −1, the union rule, and capacity 1 − e multiplies exactly.</li>
 <li><strong>Two letters</strong> (c = 1): k = −2, the binary symmetric cascade p + q − 2pq. Polarization 1 − 2p multiplies.</li>
@@ -151,7 +151,7 @@ footer{border-top:1px solid var(--rule)}
 <ul>
 <li><strong>Parity of n noisy bits</strong> is the odd layers of the cube: 1 − 2·P(odd) = (1 − 2p)ⁿ (K2 at k = −2). That's Matsui's piling-up lemma: biases combine as 2·ε₁·ε₂.</li>
 <li><strong>Hamming codes are perfect</strong>: with n = 2ʳ − 1, the 2ⁿ⁻ʳ balls of radius 1 (a corner plus its n neighbours, layers 0 and 1 of the cube) tile the whole n-cube exactly.</li>
-<li><strong>Belief propagation is mult-add twice.</strong> A check node (parity of two independent bits) is plain mult-add on −2p, so ρ = 1 − 2p multiplies. A variable node (two independent looks at one bit) multiplies odds, so odds − 1 is plain mult-add. In ρ coordinates that's Einstein's velocity addition, (ρ₁ + ρ₂)/(1 + ρ₁ρ₂), whose corners lift to (1 + a)(1 + b) and (1 − a)(1 − b). Gallager's φ function switches between the two coordinates.</li>
+<li><strong>Belief propagation is the circle operation twice.</strong> A check node (parity of two independent bits) is the plain circle operation on −2p, so ρ = 1 − 2p multiplies. A variable node (two independent looks at one bit) multiplies odds, so odds − 1 is the plain circle operation. In ρ coordinates that's Einstein's velocity addition, (ρ₁ + ρ₂)/(1 + ρ₁ρ₂), whose corners lift to (1 + a)(1 + b) and (1 − a)(1 − b). Gallager's φ function switches between the two coordinates.</li>
 </ul>
 <p class="mute">Known: the tanh rule and φ (Gallager, 1963); piling-up (Matsui, 1993); Hamming (1950). The velocity-addition resemblance has probably been noticed; I didn't find a source, so treat it as known.</p>
 </div>

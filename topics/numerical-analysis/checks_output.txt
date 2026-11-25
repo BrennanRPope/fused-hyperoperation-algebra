@@ -11,9 +11,9 @@ PASS inside the octave, fma(a,b,a+b) is correctly rounded every time  248/248
 PASS inside the octave, plain a+b+ab can lose many digits (worst relative error > 1e-6)  5.0e-06
 PASS outside the octave, fma is not guaranteed (some results not correctly rounded)  572/952
 PASS exact: whenever 1/2 <= 1+a <= 2, the inverse lies between -2a and -a/2 (Sterbenz's window)
-== 3. log1p and expm1: the chart that turns mult-add into adding, tangent to the identity at 0
-PASS log1p(a ✳ b) = log1p(a) + log1p(b) (60 digits, 50 random pairs)
-PASS fractional mult-add powers a^(✳t) = expm1(t·log1p a) add their exponents
+== 3. log1p and expm1: the chart that turns the circle operation into adding, tangent to the identity at 0
+PASS log1p(a ∘₁ b) = log1p(a) + log1p(b) (60 digits, 50 random pairs)
+PASS fractional circle powers a^(∘₁t) = expm1(t·log1p a) add their exponents
 PASS log(1+x) at x = 1e-10 loses about 7 digits; log1p keeps them  8.3e-08 vs 3.4e-17
 PASS Kahan's trick log1p(x) = x·log(w)/(w-1), w = fl(1+x), stays within 5u (Goldberg 1991, Thm 4)  worst 2.32 u
 PASS log1p and expm1 both fix 0 with slope 1, while the lift x -> 1+x moves 0 to 1
@@ -29,32 +29,32 @@ PASS naive compound interest error grows with n (above 1e-9 by n = 1e9)
 == 5. Long products of small returns
    naive 6.7e-10   fma fold 3.6e-15   expm1(fsum log1p) 1.0e-16
 PASS 200,000 returns of size 1e-7: naive product-minus-1 loses over 6 digits
-PASS the fused fold acc ✳ r keeps at least 12 digits
+PASS the fused fold acc ∘₁ r keeps at least 12 digits
 PASS expm1(sum of log1p) keeps at least 14 digits
    at least one of 100,000 events of chance 1e-12: naive 1.6e-07   dial fold via log1p 2.6e-17
 PASS k = -1 (at least one): naive 1 - prod(1-p) loses over 6 digits for tiny chances
 PASS k = -1 via -expm1(sum log1p(-p)) keeps at least 14 digits
-PASS one routine for every dial k: x1 ✳k ... ✳k xn = expm1(sum log1p(k·x))/k (k = -2, -1, -0.5, 0.7, 3)
-== 6. Rounding errors are mult-add numbers (Higham's theta_n)
-PASS the total relative error of a float product equals the exact mult-add fold of the step errors
+PASS one routine for every dial k: x1 ∘ₖ ... ∘ₖ xn = expm1(sum log1p(k·x))/k (k = -2, -1, -0.5, 0.7, 3)
+== 6. Rounding errors are circle-operation numbers (Higham's theta_n)
+PASS the total relative error of a float product equals the exact circle-operation fold of the step errors
 PASS |theta_n| <= (1+u)^n - 1 <= n·u/(1 - n·u) for n = 10..1000
-PASS product of perturbed values: relative error d1 ✳ d2 (exact)
-PASS quotient of perturbed values: relative error (d1 - d2)/(1 + d2), mult-add subtraction (exact)
+PASS product of perturbed values: relative error d1 ∘₁ d2 (exact)
+PASS quotient of perturbed values: relative error (d1 - d2)/(1 + d2), circle-operation subtraction (exact)
 == 7. Conditioning: two danger points, the identity (way back) and the wall (way in)
 PASS exact: the error of fl(1+a)-1 is the lift's rounding times the amplifier (1+a)/a
 PASS relative condition of the inverse -u/(1+u) is 1/|1+u|: it blows up only at the wall
 PASS relative condition of log1p near the wall grows without bound  4 21 145 1086
-PASS exact: (a+h) ✳ b - a ✳ b = h(1+b), so a ✳ b has relative condition |a(1+b)/(a ✳ b)|
-== 8. Newton's method for the inverse: v <- v ✳ (-(u ✳ v)); the residual squares
-PASS exact: each Newton step maps the residual e = u ✳ v to -e² (three starts, five steps)
+PASS exact: (a+h) ∘₁ b - a ∘₁ b = h(1+b), so a ∘₁ b has relative condition |a(1+b)/(a ∘₁ b)|
+== 8. Newton's method for the inverse: v <- v ∘₁ (-(u ∘₁ v)); the residual squares
+PASS exact: each Newton step maps the residual e = u ∘₁ v to -e² (three starts, five steps)
 PASS in float64 the correct digits roughly double each step and reach full precision  0.9 1.4 2.3 4.0 7.6 14.7 16.0
-PASS the basin is |u ✳ v0| < 1, i.e. 0 < (1+u)(1+v0) < 2: starts inside converge, starts outside fail
-PASS exact: Goldschmidt's factors fold to (-e) ✳ e ✳ e² ✳ e⁴ ✳ ... = -e^(2^n)
+PASS the basin is |u ∘₁ v0| < 1, i.e. 0 < (1+u)(1+v0) < 2: starts inside converge, starts outside fail
+PASS exact: Goldschmidt's factors fold to (-e) ∘₁ e ∘₁ e² ∘₁ e⁴ ∘₁ ... = -e^(2^n)
 PASS Goldschmidt division of 1 by d in [1/2,1] reaches about 1e-15 after 6 factors  5.6e-16
 == 9. Horner and the cube
-PASS a chain of mult-adds, each one Horner step acc·(1+b)+b, sums all 2^n - 1 corners of the cube in n steps
+PASS a chain of circle operations, each one Horner step acc·(1+b)+b, sums all 2^n - 1 corners of the cube in n steps
 PASS the three fma shapes agree exactly: a·b+(a+b) = a·(1+b)+b = b·(1+a)+a
-PASS mult-add powers by squaring: a^(✳2n) = a^(✳n) ✳ a^(✳n)
-PASS Bernoulli: a^(✳n) >= n·a for a >= -1 (compounding never loses to simple interest)
+PASS Circle powers by squaring: a^(∘₁2n) = a^(∘₁n) ∘₁ a^(∘₁n)
+PASS Bernoulli: a^(∘₁n) >= n·a for a >= -1 (compounding never loses to simple interest)
 
 41/41 checks pass

@@ -20,31 +20,31 @@ OUT = os.path.join(HERE, "figures", "film")
 os.makedirs(OUT, exist_ok=True)
 S = 46
 DEMOS = [
-    ("comm_by_moves", "multAdd a b = multAdd b a", "Commutativity: the rectangle flipped on its diagonal is the same rectangle."),
-    ("assoc_by_moves", "multAdd (multAdd a b) c = multAdd a (multAdd b c)", "Associativity: slabs and columns are one box."),
-    ("zero_by_moves", "multAdd a 0 = a", "Identity: a side of length 0 flattens the rectangle to a strip."),
-    ("wall_by_moves", "multAdd (−1) b = −1", "The wall: a side of length −1 makes the lifted rod 0, and the whole box with it."),
-    ("mpow_add_by_moves", "mpow a (m + n) = multAdd (mpow a m) (mpow a n)", "A cube of m + n sides is a cube of m sides times a cube of n."),
-    ("wcomm_by_moves", "k · wAdd k a b = k · wAdd k b a", "Dial: scale the weighted corner into a plain box, then flip it."),
-    ("fexp_iter_by_moves", "fexp a (b + 1) = multAdd a (fexp a b)", "Rung 2 on whole numbers: one more slab extrudes the fused power."),
-    ("inv_by_moves", "multAdd u (multAddInv u) = 0", "Inverse in a field: squash the second side to 1/(1+u); the rectangle has area 1."),
+    ("comm_by_moves", "circ a b = circ b a", "Commutativity: the rectangle flipped on its diagonal is the same rectangle."),
+    ("assoc_by_moves", "circ (circ a b) c = circ a (circ b c)", "Associativity: slabs and columns are one box."),
+    ("zero_by_moves", "circ a 0 = a", "Identity: a side of length 0 flattens the rectangle to a strip."),
+    ("wall_by_moves", "circ (−1) b = −1", "The wall: a side of length −1 makes the lifted rod 0, and the whole box with it."),
+    ("mpow_add_by_moves", "mpow a (m + n) = circ (mpow a m) (mpow a n)", "A cube of m + n sides is a cube of m sides times a cube of n."),
+    ("wcomm_by_moves", "k · circK k a b = k · circK k b a", "Dial: scale the weighted corner into a plain box, then flip it."),
+    ("fexp_iter_by_moves", "fexp a (b + 1) = circ a (fexp a b)", "Rung 2 on whole numbers: one more slab extrudes the fused power."),
+    ("inv_by_moves", "circ u (circInv u) = 0", "Inverse in a field: squash the second side to 1/(1+u); the rectangle has area 1."),
 ]
 CAPTION = {
     "goal": "The goal, as the engine reads it.",
     "lift": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y.",
-    "multadd": "Mult-add: every ⊕ opens into a product of rods, a box with its unit attached.",
+    "multadd": "The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.",
     "swap": "Swap: reflect across the diagonal (CommSemiring.mul_comm).",
     "regroup": "Regroup: re-cut the same box (Semiring.mul_assoc).",
     "collapse": "Collapse: zero lengths and units fall away.",
     "flatten": "Flatten: powers add (pow_add').",
-    "dial": "Dial: k times a k-weighted corner is the plain box on k·a and k·b (wAdd_scale).",
+    "dial": "Dial: k times a k-weighted corner is the plain box on k·a and k·b (circK_scale).",
     "extrude": "Extrude: rung n+1 is rung n with one more slab (fexp_iter).",
     "squash": "Squash: (1+u) times 1/(1+u) is 1 (inv_one_add, mul_inv_cancel).",
 }
 MOVE_LEMMA = {
-    "lift": "lift_back_ring / lift_inj", "multadd": "multAdd_lift, mpow_lift, …",
+    "lift": "lift_back_ring / lift_inj", "multadd": "circ_lift, mpow_lift, …",
     "swap": "CommSemiring.mul_comm", "regroup": "Semiring.mul_assoc",
-    "collapse": "mul_one, zero_add, …", "flatten": "pow_add'", "dial": "wAdd_scale",
+    "collapse": "mul_one, zero_add, …", "flatten": "pow_add'", "dial": "circK_scale",
     "extrude": "fexp_iter", "squash": "inv_one_add",
 }
 
@@ -60,14 +60,14 @@ def length(side):
         return float(n)
     except ValueError:
         pass
-    if n.startswith("multAddInv"):
+    if n.startswith("circInv"):
         return "inv"
     return VALUES.get(side["key"], 1.0)
 
 
 def tidy(name):
     import re
-    return name.replace("multAddInv u", "u⁻").replace(" * ", "·")
+    return name.replace("circInv u", "u⁻").replace(" * ", "·")
 
 
 # ------------------------------------------------------------ sizes and drawing

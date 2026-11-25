@@ -1,4 +1,4 @@
-PASS product wavefunction: (1+cA)(1+cB)-1 = cA ✳ cB (200 random pairs)
+PASS product wavefunction: (1+cA)(1+cB)-1 = cA ∘₁ cB (200 random pairs)
 PASS N=1: CISD = Δ-√(Δ²+N g²) closed form
 PASS N=1: full CI = N × one molecule (size-extensive)  CISD keeps 1.000 of the correlation
 PASS N=2: CISD = Δ-√(Δ²+N g²) closed form
@@ -24,5 +24,5 @@ PASS two H2 100 Å apart: CCSD = 2 × one H2
 PASS two H2 100 Å apart: CISD misses energy (size inconsistent)  misses 0.708 kcal/mol
 PASS two waters 100 Å apart: CCSD = 2 × one water  -0.270796 vs -0.270796
 PASS two waters: CISD loses correlation  misses 5.94 kcal/mol; CISD keeps 0.9636
-PASS spin coupling: Σ(2S+1) over the Clebsch–Gordan series = (2s1+1)(2s2+1), so 2s mult-adds (36 cases)
+PASS spin coupling: Σ(2S+1) over the Clebsch–Gordan series = (2s1+1)(2s2+1), so 2s combines by the circle operation (36 cases)
 25/25 checks pass

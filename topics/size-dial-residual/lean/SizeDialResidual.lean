@@ -1,5 +1,5 @@
 /-
-  Size weighting as a dial, and what mult-add leaves unexplained
+  Size weighting as a dial, and what the circle operation (called mult-add before 1.0) leaves unexplained
   ==============================================================
 
   Part of Fused Hyperoperation Algebra. Companion page and checks:
@@ -9,12 +9,12 @@
   What is proved (the elementary identities behind the page):
 
   1. A size weight is a per-element twist. Weighing an element by w and
-     mult-adding equals the twisted (weighted) mult-add at k = w, scaled by w
-     (`weight_is_twist`, Base's wAdd_scale). Union of two weighted dials differs
+     combining by the circle operation equals the twisted (weighted) circle operation at k = w, scaled by w
+     (`weight_is_twist`, Base's circK_scale). Union of two weighted dials differs
      from weighing the union dial by exactly t·s·w·(w − 1) (`weighted_merge_gap`),
      so the two commute when w·w = w, the sharp count (`sharp_weight_commutes`).
      Under a twist k the half dial h, with (1 + kh)² = 1 + k, is a half:
-     k·(h ✳ₖ h) = k (`twisted_half`).
+     k·(h ◯ₖ h) = k (`twisted_half`).
   2. The residual is repetition at doubled size. One element used any number of
      times (1/(1 − x)) is the merge of "at most once" factors at x, x², x⁴, …;
      the base fact is (1 + x)(1 − x) = 1 − x², and over a list of elements the
@@ -37,45 +37,45 @@ import FusedAlgebra.Base
 
 namespace SizeDialResidual
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## 1. Size weight = per-element twist -/
 
 section Weight
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- **A size weight is a twist.** Weighing two dials by w and mult-adding is the
-    twisted mult-add at k = w, scaled by w. -/
-theorem weight_is_twist (w t s : R) : multAdd (w * t) (w * s) = w * wAdd w t s :=
-  (wAdd_scale w t s).symm
+/-- **A size weight is a twist.** Weighing two dials by w and combining by the circle operation is the
+    twisted circle operation at k = w, scaled by w. -/
+theorem weight_is_twist (w t s : R) : circ (w * t) (w * s) = w * circK w t s :=
+  (circK_scale w t s).symm
 
 /-- **Weighing does not commute with merging.** Union of the weighted dials vs the
     weighted union dial: the gap is t·s·w·(w − 1). -/
 theorem weighted_merge_gap (t s w : R) :
-    multAdd (t * w) (s * w) = multAdd t s * w + t * s * w * (w - 1) := by
-  simp only [multAdd]; grind
+    circ (t * w) (s * w) = circ t s * w + t * s * w * (w - 1) := by
+  simp only [circ]; grind
 
 /-- **Only a sharp count commutes.** If w·w = w (w is 0 or 1 in a domain), weighing
     and merging commute. -/
 theorem sharp_weight_commutes (t s w : R) (h : w * w = w) :
-    multAdd (t * w) (s * w) = multAdd t s * w := by
+    circ (t * w) (s * w) = circ t s * w := by
   rw [weighted_merge_gap]
   have : t * s * w * (w - 1) = t * s * (w * w - w) := by grind
   rw [this, h]; grind
 
 /-- Weight 1 is the plain count. -/
-theorem weight_one (t s : R) : multAdd (t * 1) (s * 1) = multAdd t s * 1 :=
+theorem weight_one (t s : R) : circ (t * 1) (s * 1) = circ t s * 1 :=
   sharp_weight_commutes t s 1 (by grind)
 
-/-- **The half under a twist.** If (1 + k·h)² = 1 + k then k·(h ✳ₖ h) = k. -/
+/-- **The half under a twist.** If (1 + k·h)² = 1 + k then k·(h ◯ₖ h) = k. -/
 theorem twisted_half (k h : R) (hh : (1 + k * h) * (1 + k * h) = 1 + k) :
-    k * wAdd k h h = k := by
-  have l := wAdd_lift k h h
+    k * circK k h h = k := by
+  have l := circK_lift k h h
   grind
 
 /-- Dial 1/2 under weight w is the dial w/2: the uniform dial and the weight multiply. -/
@@ -153,7 +153,7 @@ def geo (x : R) : Nat → R
   | 0 => 1
   | m + 1 => geo x m + x ^ (m + 1)
 
-/-- **At most m copies.** (1 − x)(1 + x + … + x^m) = 1 − x^(m+1); m = 1 is mult-add's
+/-- **At most m copies.** (1 − x)(1 + x + … + x^m) = 1 − x^(m+1); m = 1 is the circle operation's
     "at most once", m → ∞ is full repetition. -/
 theorem at_most_m (x : R) (m : Nat) : (1 - x) * geo x m = 1 - x ^ (m + 1) := by
   induction m with
@@ -163,7 +163,7 @@ theorem at_most_m (x : R) (m : Nat) : (1 - x) * geo x m = 1 - x ^ (m + 1) := by
     have e : x ^ (m + 1 + 1) = x ^ (m + 1) * x := Semiring.pow_succ x (m + 1)
     rw [e]; grind
 
-/-- m = 1 is the mult-add factor. -/
+/-- m = 1 is the circle-operation factor. -/
 theorem at_most_one (x : R) : geo x 1 = 1 + x := by
   simp only [geo]; rw [Semiring.pow_succ, Semiring.pow_zero]; grind
 
