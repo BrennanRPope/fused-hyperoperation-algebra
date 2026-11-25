@@ -16,3 +16,4 @@ public import FusedAlgebra.Topics.Finance
 public import FusedAlgebra.Topics.InformationTheory
 public import FusedAlgebra.Topics.Landscape
 public import FusedAlgebra.Topics.LeeYang
+public import FusedAlgebra.Topics.LinearAlgebra
