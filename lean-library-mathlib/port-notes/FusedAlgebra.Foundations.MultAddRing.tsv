@@ -1,0 +1,79 @@
+original	status	new_name	note
+MARing	ported	MAFound.MARing	now `extends AddCommGroup R` (fields zero/add/neg and axioms A1-A4 are mathlib's AddCommGroup); Type generalised to Type*; M4 stated with subtraction
+MARing.zero	mathlib	Zero.zero	0 of the AddCommGroup parent
+MARing.add	mathlib	HAdd.hAdd	+ of the AddCommGroup parent
+MARing.neg	mathlib	Neg.neg	- of the AddCommGroup parent
+MARing.madd	ported	MAFound.MARing.madd	
+MARing.wall	ported	MAFound.MARing.wall	
+MARing.add_assoc	mathlib	add_assoc	axiom A1, now an AddCommGroup field
+MARing.add_comm	mathlib	add_comm	axiom A2, now an AddCommGroup field
+MARing.add_zero	mathlib	add_zero	axiom A3, now an AddCommGroup field
+MARing.neg_add	mathlib	neg_add_cancel	axiom A4, now an AddCommGroup field
+MARing.madd_comm	ported	MAFound.MARing.madd_comm	axiom M1
+MARing.madd_assoc	ported	MAFound.MARing.madd_assoc	axiom M2
+MARing.madd_wall	ported	MAFound.MARing.madd_wall	axiom M3
+MARing.madd_add	ported	MAFound.MARing.madd_add	axiom M4; right side written `madd a b + madd a c - a`
+MARing.instAssociativeAdd	dropped	AddCommGroup instance	only served `ac_rfl`; proofs use `abel`
+MARing.instCommutativeAdd	dropped	AddCommGroup instance	only served `ac_rfl`; proofs use `abel`
+MARing.add_neg	mathlib	add_neg_cancel	
+MARing.zero_add	mathlib	zero_add	
+MARing.add_right_cancel	mathlib	add_right_cancel	
+MARing.add_left_cancel	mathlib	add_left_cancel	
+MARing.add_left_comm	mathlib	add_left_comm	
+MARing.neg_unique	mathlib	eq_neg_of_add_eq_zero_right	
+MARing.neg_neg	mathlib	neg_neg	
+MARing.neg_zero	mathlib	neg_zero	
+MARing.neg_add_distrib	mathlib	neg_add	
+MARing.madd_zero	ported	MAFound.MARing.madd_zero	
+MARing.zero_madd	ported	MAFound.MARing.zero_madd	
+MARing.wall_unique	ported	MAFound.MARing.wall_unique	
+MARing.mul	ported	MAFound.MARing.instMul	now directly the `Mul` instance; unfolding lemma `MAFound.MARing.mul_def`
+MARing.one	ported	MAFound.MARing.instOne	now directly the `One` instance; unfolding lemma `MAFound.MARing.one_eq_neg_wall`
+MARing.madd_eq	ported	MAFound.MARing.madd_eq	
+MARing.mul_comm	ported	MAFound.MARing.mul_comm	protected; afterwards the same statement is mathlib's `mul_comm`
+MARing.mul_zero	ported	MAFound.MARing.mul_zero	protected
+MARing.zero_mul	ported	MAFound.MARing.zero_mul	protected
+MARing.mul_add	ported	MAFound.MARing.mul_add	protected
+MARing.add_mul	ported	MAFound.MARing.add_mul	protected
+MARing.mul_neg	ported	MAFound.MARing.mul_neg	protected
+MARing.mul_assoc	ported	MAFound.MARing.mul_assoc	protected
+MARing.mul_wall	ported	MAFound.MARing.mul_wall	
+MARing.mul_one	ported	MAFound.MARing.mul_one	protected
+MARing.natCast	mathlib	Nat.cast	default `Nat.unaryCast` of the CommRing instance
+MARing.natCast_succ	mathlib	Nat.cast_succ	
+MARing.intCast	mathlib	Int.cast	default `Int.castDef` of the CommRing instance
+MARing.npow	mathlib	Monoid.npow	default `npowRec` of the CommRing instance
+MARing.intCast_neg'	mathlib	Int.cast_neg	
+MARing.instAdd	mathlib	AddCommGroup.toAddCommMonoid	part of the AddCommGroup parent
+MARing.instMul	ported	MAFound.MARing.instMul	
+MARing.instNeg	mathlib	AddCommGroup.toAddGroup	part of the AddCommGroup parent
+MARing.instSub	mathlib	AddCommGroup.toAddGroup	part of the AddCommGroup parent
+MARing.instNatCast	mathlib	CommRing instance	from MAFound.MARing.instCommRing
+MARing.instIntCast	mathlib	CommRing instance	from MAFound.MARing.instCommRing
+MARing.instOfNat	mathlib	instOfNat	numerals come from the CommRing instance
+MARing.instSMulNat	mathlib	AddMonoid.toNSMul	nsmul is the one of the AddCommGroup parent, not `natCast n * a`; they agree by `nsmul_eq_mul`
+MARing.instSMulInt	mathlib	SubNegMonoid.toZSMul	zsmul is the one of the AddCommGroup parent; agrees by `zsmul_eq_mul`
+MARing.instHPowNat	mathlib	Monoid.Pow	
+MARing.instCommRing	ported	MAFound.MARing.instCommRing	now a mathlib `CommRing R` instance instead of `Lean.Grind.CommRing R`
+MARing.multAdd_eq	ported	MAFound.MARing.multAdd_eq	stated with the library's `✳`
+MARing.one_eq	ported	MAFound.MARing.one_eq_neg_wall	renamed
+MARing.wall_eq	ported	MAFound.MARing.wall_eq_neg_one	renamed
+MARing.zero_eq	dropped	rfl	`zero` is now literally `0`, nothing to state
+ofCommRing	ported	MAFound.ofCommRing	takes a mathlib `CommRing`; an `abbrev`, not an instance
+roundtrip_mul	ported	MAFound.roundtrip_mul	strengthened by `MAFound.instCommRing_ofCommRing` (equality of the whole CommRing structure)
+roundtrip_madd	ported	MAFound.roundtrip_madd	strengthened by `MAFound.ofCommRing_instCommRing` (equality of the whole MARing structure)
+roundtrip_wall	ported	MAFound.roundtrip_wall	
+MAField	ported	MAFound.MAField	
+MAField.zero_ne_wall	ported	MAFound.MAField.zero_ne_wall	axiom F1
+MAField.way_back	ported	MAFound.MAField.way_back	axiom F2
+MAField.add_wall_ne	ported	MAFound.MAField.add_wall_ne	
+MAField.zero_ne_one'	ported	MAFound.MAField.zero_ne_one	renamed, protected
+MAField.inv	ported	MAFound.MAField.inv	
+MAField.mul_inv	ported	MAFound.MAField.mul_inv	
+MAField.inv_zero'	ported	MAFound.MAField.inv_zero	renamed
+MAField.inv_ne_zero	mathlib	inv_ne_zero	follows from the Field instance
+MAField.inv_inv'	mathlib	inv_inv	follows from the Field instance; only needed for Lean.Grind's zpow axioms
+MAField.inv_one'	mathlib	inv_one	follows from the Field instance; only needed for Lean.Grind's zpow axioms
+MAField.zpow	mathlib	DivInvMonoid.zpow	default `zpowRec` of the Field instance
+MAField.instField	ported	MAFound.MAField.instField	now a mathlib `Field R` instance instead of `Lean.Grind.Field R`
+MAField.way_back_formula	ported	MAFound.MAField.way_back_formula	stated with `MultAdd.multAddInv u = -u / (1 + u)`
