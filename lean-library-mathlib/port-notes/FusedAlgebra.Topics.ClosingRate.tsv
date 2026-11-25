@@ -1,0 +1,9 @@
+original	status	new_name	note
+iter	mathlib	Nat.iterate	s^[n]; iter s (n + 1) x = iter s n (s x) is Function.iterate_succ_apply
+ladder	ported	FusedRate.ladder	stated with s^[j]; any Type*
+grow	ported	FusedRate.grow	generalised from ℕ to any ordered commutative semiring; needs the new hypotheses 0 ≤ p, 0 ≤ q (automatic on ℕ)
+two_lt	ported	FusedRate.two_lt	norm_num
+e_pow_lt	ported	FusedRate.e_pow_lt	norm_num
+sq_bound	ported	FusedRate.sq_bound	
+inv_lo	ported	FusedRate.inv_lo	
+inv_hi	ported	FusedRate.inv_hi	
