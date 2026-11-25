@@ -30,7 +30,7 @@ sections = [
  dict(id="countries", nav="Three countries", h="Invariant mass is a law of cosines, and Lavoisier sits on the border",
   body="""<p>Two parts with masses m₁ and m₂ make a whole whose mass obeys</p>
 <div class="eq">M² = m₁² + m₂² + 2 m₁ m₂ c</div>
-<p>This is the law of cosines, the line q = 1 on the landscape. The value of c decides the country:</p>
+<p>This is the law of cosines, the line d = 1 on the landscape. The value of c decides the country:</p>
 <ul><li><b>c = 1, the border.</b> M = m₁ + m₂ exactly: Lavoisier's conservation of mass. The triangle is flat.</li>
 <li><b>c = cos θ &lt; 1, turning.</b> A bound state: the whole weighs less than its parts, and θ is a real angle.</li>
 <li><b>c = cosh η &gt; 1, two walls.</b> Two free particles flying apart: the pair weighs more, and η is their relative rapidity, the ruler from the relativity page.</li></ul>

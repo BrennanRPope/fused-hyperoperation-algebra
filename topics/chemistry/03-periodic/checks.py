@@ -83,6 +83,6 @@ for q in [0.5, 0.9, 1.0, 1.1, 2.0]:
     for n in range(1, 10):
         qint = n if q == 1 else (q**n - 1)/(q - 1)
         assert abs(wpow(q-1, 1.0, n) - qint) < 1e-9
-check("q-integers [n]_q = n copies of 1 under the circle operation with k = q − 1 (the dial q = k + 1)", True)
+check("q-integers [n]_q = n copies of 1 under the circle operation with k = q − 1", True)
 json.dump({"order": order, "moves": {str(Z): {f"{n}{L[l]}": v for (n, l), v in d.items()} for Z, d in moves.items()}}, open("results.json", "w"), indent=1)
 print(f"{sum(ok)}/{len(ok)} checks pass")

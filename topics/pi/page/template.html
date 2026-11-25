@@ -117,10 +117,10 @@ li{margin:.25em 0}
 <p>So the turning flow starts at 0, passes through infinity exactly when the circle operation reaches −2, and comes back to 0. The distance to −2 in the law's own units is pi; the full loop is 2π. In the circle operation's own terms, its logarithm log(1 + a) gains 2πi each time you go once round the wall.</p>
 </div>
 <div>
-<h3>Every turning law has period 2π ÷ √(4q − p²)</h3>
-<p>The law (a + b + p·ab)/(1 − q·ab) grows by y′ = 1 + p·y + q·y². Under the parabola (4q &gt; p²) the flow blows up and comes round, and the time it takes is 2π/√(4q − p²). Pi is the turning country's one constant; the distance from the parabola only sets the scale. On the parabola the period runs off to infinity. Above it, in two-wall country, the same formula gives an imaginary period, which is a logarithm. Pi and log are one quantity seen from either side of the parabola.</p>
+<h3>Every turning law has period 2π ÷ √(4d − p²)</h3>
+<p>The law (a + b + p·ab)/(1 − d·ab) grows by y′ = 1 + p·y + d·y². Under the parabola (4d &gt; p²) the flow blows up and comes round, and the time it takes is 2π/√(4d − p²). Pi is the turning country's one constant; the distance from the parabola only sets the scale. On the parabola the period runs off to infinity. Above it, in two-wall country, the same formula gives an imaginary period, which is a logarithm. Pi and log are one quantity seen from either side of the parabola.</p>
 <div class="scroll"><table>
-<thead><tr><th>Point (p, q)</th><th class="n">Period, by integrating</th><th class="n">2π/√(4q − p²)</th></tr></thead>
+<thead><tr><th>Point (p, d)</th><th class="n">Period, by integrating</th><th class="n">2π/√(4d − p²)</th></tr></thead>
 <tbody id="perBody"></tbody>
 </table></div>
 <p class="mute">Integrated to 25 digits, matching to 40. <span class="tag inf">inferred</span> in Lean's sense: the integral is analysis, which core Lean lacks.</p>
@@ -210,7 +210,7 @@ li{margin:.25em 0}
 <p><span class="tag inf">inferred</span> (classical, checked numerically, not in core Lean):</p>
 <ul>
 <li>That the nested intervals close on the half-period of the turning law. That needs the real line and arctan 1 = π/4, which core Lean doesn't have. It's the same last step the e page left open.</li>
-<li>The period formula 2π/√(4q − p²) (an integral).</li>
+<li>The period formula 2π/√(4d − p²) (an integral).</li>
 <li>All transcendence statements (Lindemann 1882, Gelfond–Schneider 1934), and all the relation-search results, which are evidence, not proof.</li>
 </ul>
 <p>For the library thread: copy <code>pi/lean/PiFromMultAdd.lean</code> to <code>FusedAlgebra/Topics/Pi.lean</code>, add it to build.sh and FusedAlgebra.lean. It imports only FusedAlgebra.Base and compiles in about 3 seconds.</p>

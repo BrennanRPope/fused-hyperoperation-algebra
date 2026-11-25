@@ -15,10 +15,10 @@ a, b, k, q = sp.symbols('a b k q')
 G = sp.Matrix([[k, 1], [-q, 0]]); I = sp.eye(2)
 F = (a + b + k*a*b)/(1 - q*a*b)
 lhs = (I + a*G)*(I + b*G); rhs = (1 - q*a*b)*(I + F*G)
-rep("1a (I + aG)(I + bG) = (1 - q ab)(I + F(a,b) G) with G = [[k,1],[-q,0]]: the lens law is the circle operation's lift in 2x2 matrices",
+rep("1a (I + aG)(I + bG) = (1 - d ab)(I + F(a,b) G) with G = [[k,1],[-d,0]]: the lens law is the circle operation's lift in 2x2 matrices",
     sp.simplify(lhs - rhs) == sp.zeros(2))
-rep("1b Cayley-Hamilton G^2 = kG - qI: trace k, determinant q", sp.simplify(G*G - (k*G - q*I)) == sp.zeros(2))
-rep("1c circle operation is the 1x1 case G = [1] (k=1, q=0): (1+a)(1+b) = 1 + (a+b+ab)", sp.expand((1 + a)*(1 + b) - (1 + (a + b + a*b))) == 0)
+rep("1b Cayley-Hamilton G^2 = kG - dI: trace k, determinant d", sp.simplify(G*G - (k*G - q*I)) == sp.zeros(2))
+rep("1c circle operation is the 1x1 case G = [1] (k=1, d=0): (1+a)(1+b) = 1 + (a+b+ab)", sp.expand((1 + a)*(1 + b) - (1 + (a + b + a*b))) == 0)
 
 # 2. primes: G_p is (minus) Frobenius on the torus's two loops
 curves = {"11a1": (0, -1, 1, -10, -20, 11), "37a1": (0, 0, 1, -1, 0, 37), "14a1": (1, 0, 1, 4, -6, 14),

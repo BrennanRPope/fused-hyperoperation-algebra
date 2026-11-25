@@ -54,15 +54,15 @@ for kk in (-1.0, 0.5, 3.0):
 check("k = -1: I - X orthogonal ⇔ X + Xᵀ - XᵀX = 0 (circle centred +1)",
       Z((I3 - A3).T * (I3 - A3) - I3 - (-(A3.T + A3) + A3.T * A3)))
 
-# 3. a matrix on the dial: U with U² = kU - qI gives the whole landscape plane
+# 3. a matrix on the dial: U with U² = kU - dI gives the whole landscape plane
 U = sp.Matrix([[0, -q], [1, k]])
-check("companion U² = kU - qI", Z(U * U - (k * U - q * I2)))
-check("det(I + aU) = 1 + k a + q a²  (the landscape wall polynomial)", Z((I2 + a * U).det() - (1 + k * a + q * a**2)))
-check("(I+aU)(I+bU) = (1 - q ab) I + (a + b + k ab) U", Z((I2 + a * U) * (I2 + b * U) - ((1 - q * a * b) * I2 + (a + b + k * a * b) * U)))
+check("companion U² = kU - dI", Z(U * U - (k * U - q * I2)))
+check("det(I + aU) = 1 + k a + d a²  (the landscape wall polynomial)", Z((I2 + a * U).det() - (1 + k * a + q * a**2)))
+check("(I+aU)(I+bU) = (1 - d ab) I + (a + b + k ab) U", Z((I2 + a * U) * (I2 + b * U) - ((1 - q * a * b) * I2 + (a + b + k * a * b) * U)))
 l1, l2 = sp.symbols('l1 l2')
 check("walls = -1/eigenvalues of U: det(I+aU) = (1+a l1)(1+a l2)", Z(((I2 + a * U).det() - (1 + a * l1) * (1 + a * l2)).subs({k: l1 + l2, q: l1 * l2})))
-check("countries = discriminant of U: k² - 4q = (l1 - l2)²", Z((k**2 - 4 * q - (l1 - l2)**2).subs({k: l1 + l2, q: l1 * l2})))
-check("or line k + q = -1 ⇔ wall at a = 1 ⇔ U has eigenvalue -1", Z((I2 + U).det() - (1 + k + q)))
+check("countries = discriminant of U: k² - 4d = (l1 - l2)²", Z((k**2 - 4 * q - (l1 - l2)**2).subs({k: l1 + l2, q: l1 * l2})))
+check("or line k + d = -1 ⇔ wall at a = 1 ⇔ U has eigenvalue -1", Z((I2 + U).det() - (1 + k + q)))
 Uk = sp.Matrix([[0, kap], [1, 0]])
 check("pure unit U² = κI: κ = -1 rotation, 0 shear, +1 boost", Z(Uk * Uk - kap * I2))
 check("projected law at κ: (a+b)/(1+κab)", Z((I2 + a * Uk) * (I2 + b * Uk) - ((1 + kap * a * b) * I2 + (a + b) * Uk)))
@@ -70,9 +70,9 @@ th1, th2 = 0.4, 0.9
 check("κ = -1 gives tangent addition", np.isclose((math.tan(th1) + math.tan(th2)) / (1 - math.tan(th1) * math.tan(th2)), math.tan(th1 + th2)))
 check("κ = +1 gives velocity addition (tanh), walls at ±1 = light speed", np.isclose((math.tanh(th1) + math.tanh(th2)) / (1 + math.tanh(th1) * math.tanh(th2)), math.tanh(th1 + th2)))
 check("κ = +1: det(I + aU) = (1-a)(1+a)", Z((I2 + a * Uk).det().subs(kap, 1) - (1 - a) * (1 + a)))
-# shape number s = k²/(k²-4q) invariant under units a -> c a (k -> c k, q -> c² q)
+# shape number s = k²/(k²-4d) invariant under units a -> c a (k -> c k, d -> c² d)
 c = sp.Symbol('c')
-check("shape s = k²/(k²-4q) unchanged by units", Z(sp.simplify((c*k)**2 / ((c*k)**2 - 4 * c**2 * q) - k**2 / (k**2 - 4 * q))))
+check("shape s = k²/(k²-4d) unchanged by units", Z(sp.simplify((c*k)**2 / ((c*k)**2 - 4 * c**2 * q) - k**2 / (k**2 - 4 * q))))
 
 # 4. matrix dial K inside the law: A ∘_K B = A + B + AKB ; Sylvester ; rank-one = addition
 K2 = sp.Matrix(2, 2, sp.symbols('k11 k12 k21 k22'))

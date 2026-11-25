@@ -229,14 +229,14 @@ check("I6 the composite of two periods has its own centre, -(d1 + (1+r1) d2)/(r1
 
 # I7 landscape laws are composition of Moebius maps (one-parameter subgroups fixing two points)
 pp, qq2 = sp.symbols('p q')
-def mob(t): return sp.Matrix([[1 + pp*t, t], [-qq2*t, 1]])   # I + t X, X = [[p,1],[-q,0]]
+def mob(t): return sp.Matrix([[1 + pp*t, t], [-qq2*t, 1]])   # I + t X, X = [[p,1],[-d,0]]
 s_, t_ = sp.symbols('s t')
 Mst = (mob(s_)*mob(t_)).applyfunc(sp.expand)
 F = (s_ + t_ + pp*s_*t_)/(1 - qq2*s_*t_)
 lhs = Mst/(1 - qq2*s_*t_)
-check("I7 Moebius composition: mob(s) mob(t) = (1 - q s t) mob(F(s,t)), F the landscape law",
+check("I7 Moebius composition: mob(s) mob(t) = (1 - d s t) mob(F(s,t)), F the landscape law",
       all(sp.simplify(lhs[i] - mob(F)[i]) == 0 for i in range(4)))
-check("I8 circle operation (p=1, q=0) is the affine slice: Moebius maps that fix infinity",
+check("I8 circle operation (p=1, d=0) is the affine slice: Moebius maps that fix infinity",
       mob(t_).subs({pp:1, qq2:0})[1,0] == 0)
 # I9 Lie's vector fields alpha + beta x + gamma x^2 (sl2): bracket of translation and dilation
 X_ = sp.symbols('x')

@@ -138,13 +138,13 @@ ysol = (1 + a)*sp.exp(t) - 1
 check("y′ = 1 + y from y(0) = a gives y(t) = a ∘₁ E(t); the wall −1 is the equilibrium", z(sp.diff(ysol, t) - (1 + ysol)) and z(ysol - ma(a, sp.exp(t) - 1)))
 yk = a + (sp.exp(k*t) - 1)/k + k*a*(sp.exp(k*t) - 1)/k
 check("dial: y′ = 1 + k·y gives y(t) = a ∘ₖ (e^(kt) − 1)/k, equilibrium at the wall −1/k", z(sp.diff(yk, t) - (1 + k*yk)) and z(yk.subs(t, 0) - a))
-# Riccati y' = 1 + p y + q y^2 from 0, numerically: compose times
+# Riccati y' = 1 + p y + d y^2 from 0, numerically: compose times
 def riccati(t_end, y0, p, q):
     from scipy.integrate import solve_ivp
     r = solve_ivp(lambda tt, yy: [1 + p*yy[0] + q*yy[0]**2], (0, t_end), [y0], rtol=1e-12, atol=1e-14); return r.y[0, -1]
 pf, qf = 0.4, -0.3
 Ya, Yb, Yab = riccati(0.7, 0, pf, qf), riccati(0.5, 0, pf, qf), riccati(1.2, 0, pf, qf)
-check("landscape law F_{p,q} is the time law of y′ = 1 + p·y + q·y² (p = 0.4, q = −0.3: Y(0.7 + 0.5) = F(Y(0.7), Y(0.5)))",
+check("landscape law F_{p,d} is the time law of y′ = 1 + p·y + d·y² (p = 0.4, d = −0.3: Y(0.7 + 0.5) = F(Y(0.7), Y(0.5)))",
       abs(Yab - (Ya + Yb + pf*Ya*Yb)/(1 - qf*Ya*Yb)) < 1e-9)
 
 print("--- 8. The two half-rulers disagree by a periodic wobble (Ecalle's horn map) ---")

@@ -7,7 +7,7 @@
   "pass": true,
   "detail": "[1, 0, 0, 0, 0]"
  },
- "1c q_count = k + 1 is a relabelling: a + b + (q-1)ab is the weight law with k = q - 1": {
+ "1c the colour count Q = k + 1 is a relabelling: a + b + (Q-1)ab is the weight law with k = Q - 1": {
   "pass": true,
   "detail": ""
  },
@@ -15,19 +15,19 @@
   "pass": true,
   "detail": ""
  },
- "2a a projective ruler x -> x/(1+cx) moves (p,q) to (p+2c, q+pc+c^2)": {
+ "2a a projective ruler x -> x/(1+cx) moves (p,d) to (p+2c, d+pc+c^2)": {
   "pass": true,
   "detail": ""
  },
- "2b ...and keeps the discriminant D = p^2 - 4q: lens orbits are the parabolas q = (p^2 - D)/4": {
+ "2b ...and keeps the discriminant D = p^2 - 4d: lens orbits are the parabolas d = (p^2 - D)/4": {
   "pass": true,
   "detail": ""
  },
- "2c units move (p,q) to (lam p, lam^2 q): D -> lam^2 D, so only the sign of D survives units": {
+ "2c units move (p,d) to (lam p, lam^2 d): D -> lam^2 D, so only the sign of D survives units": {
   "pass": true,
   "detail": ""
  },
- "2d log of F_{p,q} is log((1-vx)/(1-ux))/(u-v): one period 2 pi i/(u-v) = 2 pi i/sqrt(D)": {
+ "2d log of F_{p,d} is log((1-vx)/(1-ux))/(u-v): one period 2 pi i/(u-v) = 2 pi i/sqrt(D)": {
   "pass": true,
   "detail": ""
  },
@@ -35,7 +35,7 @@
   "pass": true,
   "detail": ""
  },
- "3a rung s third-order point is (p,q) = (s, s(s-1)/4) and its discriminant is D = s": {
+ "3a rung s third-order point is (p,d) = (s, s(s-1)/4) and its discriminant is D = s": {
   "pass": true,
   "detail": ""
  },
@@ -51,9 +51,9 @@
   "pass": true,
   "detail": ""
  },
- "3e any third-order jet (p, q) is reached from plain addition by a ruler x + f2 x^2 + f3 x^3 (L2 collapses everything locally)": {
+ "3e any third-order jet (p, d) is reached from plain addition by a ruler x + f2 x^2 + f3 x^3 (L2 collapses everything locally)": {
   "pass": true,
-  "detail": "{f2: -p/2, f3: (p**2 - q)/3}"
+  "detail": "{f2: -p/2, f3: (p**2 - d)/3}"
  },
  "4a the gluing w -> (1+w)q - 1 commutes with the circle operation for every q: the law near 0 never sees q": {
   "pass": true,

@@ -103,12 +103,12 @@ code{font-size:14px;overflow-wrap:anywhere}
 <div class="wrap side">
 <div>
 <h2>On the landscape and the rungs</h2>
-<p>On the landscape map, velocity addition sits at k = 0, q = −1/c². <b>It has no corner at all.</b> Relativity leaves the ab cell empty and bends only the next layer, a²b and ab². Its walls 1 − a²/c² = (1 − a/c)(1 + a/c) are the light cone, two real walls placed symmetrically, so it lives in the saturating country with a speed limit. Galilean addition is the same point with c → ∞, at the origin.</p>
+<p>On the landscape map, velocity addition sits at k = 0, d = −1/c². <b>It has no corner at all.</b> Relativity leaves the ab cell empty and bends only the next layer, a²b and ab². Its walls 1 − a²/c² = (1 − a/c)(1 + a/c) are the light cone, two real walls placed symmetrically, so it lives in the saturating country with a speed limit. Galilean addition is the same point with c → ∞, at the origin.</p>
 <p>It is not a rung of its own. It is rung 0 (addition) seen through tanh, and rung 1 (the circle operation) seen through the Doppler lens.</p>
 <p>The one placement that is ours: the landscape's shape number for rung s is exactly s, and velocity addition has shape 0. Put the fractional rungs in their natural units (scale so the walls sit near ±1) and rung s = t² lands at (2t, t² − 1). That is the parabola drawn here, running from relativity at t = 0 to the circle operation at t = 1. In raw units the walls of rung s sit at −2/(√s(1 + √s)) and 2/(√s(1 − √s)): just above plain addition a near-symmetric speed limit about 2/√s appears, which goes to infinity at addition itself. This is a third-layer match only; the landscape page showed the fractional rungs are not exact lens laws.</p>
 </div>
 <div class="panel"><div class="fig2" id="ls"></div>
-<p class="small">Landscape in natural units. Grey: the border parabola q = k²/4 (one double wall). Blue: rungs 0 to 1, q = k²/4 − 1. Red dot: velocity addition. Black dot: the circle operation at weight 2. Open dot: tangent addition, the rotation partner.</p></div>
+<p class="small">Landscape in natural units. Grey: the border parabola d = k²/4 (one double wall). Blue: rungs 0 to 1, d = k²/4 − 1. Red dot: velocity addition. Black dot: the circle operation at weight 2. Open dot: tangent addition, the rotation partner.</p></div>
 </div>
 </section>
 
@@ -122,7 +122,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <tr><td>Doppler factors multiply as boosts compose</td><td>Bondi's k-calculus, 1960s</td></tr>
 <tr><td>Boosts as squeezes on light-cone axes</td><td>Standard (light-cone coordinates)</td></tr>
 <tr><td>d = lift − 1 obeys the circle operation exactly</td><td>Immediate from Bondi; not usually written this way</td></tr>
-<tr><td>No corner, only third layer (k = 0, q = −1/c²)</td><td>Ours: placement on the landscape</td></tr>
+<tr><td>No corner, only third layer (k = 0, d = −1/c²)</td><td>Ours: placement on the landscape</td></tr>
 <tr><td>Rungs 0 to 1 in natural units run from relativity's shape to the circle operation's</td><td>Ours, third layer only; no physical prediction</td></tr>
 </tbody></table>
 </div>
@@ -212,7 +212,7 @@ function drawLS(){
   g+='<text x="'+(X(0)+10)+'" y="'+(Y(-1)+5)+'">'+(narrow?'velocity':'velocity addition')+'</text>';
   g+='<text x="'+(X(2)+2)+'" y="'+(Y(0)-12)+'">The circle operation</text>';
   g+='<text x="'+(X(0)+10)+'" y="'+(Y(1)+5)+'">tangent</text>';
-  g+='<text x="'+(X(k1))+'" y="'+(Y(0)+18)+'" text-anchor="end">k</text><text x="'+(X(0)-8)+'" y="'+(Y(q1)+4)+'" text-anchor="end">q</text>';
+  g+='<text x="'+(X(k1))+'" y="'+(Y(0)+18)+'" text-anchor="end">k</text><text x="'+(X(0)-8)+'" y="'+(Y(q1)+4)+'" text-anchor="end">d</text>';
   g+='<text x="'+X(1.05)+'" y="'+(Y(-0.72)+20)+'">rungs 0→1</text>';
   s2.innerHTML=g;
 }

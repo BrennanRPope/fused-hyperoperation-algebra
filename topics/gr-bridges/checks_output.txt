@@ -13,13 +13,13 @@
 == S3. The circle operation's own rules give one constant curvature: velocity space and its twist (Thomas-Wigner = area x curvature)
 [PASS] Thomas-Wigner rotation angle = angle defect (= area x curvature, Gauss-Bonnet with curvature -1) of the velocity triangle  (worst mismatch 2.5e-15 over 4 triangles)
 
-== S4. A dial that varies from place to place, in 2 dimensions: any curvature q(x, y) is reachable
-[PASS] conformal metric e^{2u}(dx^2 + dy^2) has curvature q = -e^{-2u} (u_xx + u_yy) (Liouville)
-[PASS] twist of a small loop / its area = the local curvature, at three places with three different curvatures  (q=-0.1892 vs -0.1892; q=0.1661 vs 0.1661; q=0.2087 vs 0.2087)
+== S4. A dial that varies from place to place, in 2 dimensions: any curvature d(x, y) is reachable
+[PASS] conformal metric e^{2u}(dx^2 + dy^2) has curvature d = -e^{-2u} (u_xx + u_yy) (Liouville)
+[PASS] twist of a small loop / its area = the local curvature, at three places with three different curvatures  (d=-0.1892 vs -0.1892; d=0.1661 vs 0.1661; d=0.2087 vs 0.2087)
 
 == S5. In 3 or more dimensions a place-only dial is forced to be constant (Schur's theorem)
-[PASS] isotropic curvature gives G_ab = -(n-1)(n-2)/2 q g_ab, so the Bianchi identity forces (n-1)(n-2)/2 dq = 0
-[PASS] n = 2: the factor is 0, so q is free; n = 3, 4: the factor is 1 and 3, so q must be constant
+[PASS] isotropic curvature gives G_ab = -(n-1)(n-2)/2 d g_ab, so the Bianchi identity forces (n-1)(n-2)/2 ∇d = 0
+[PASS] n = 2: the factor is 0, so d is free; n = 3, 4: the factor is 1 and 3, so d must be constant
 [PASS] place-only dial e^{2w(x)} in 3D: the x-y and x-z planes agree, but the y-z plane differs (the dial picks up a direction)  (K_xy = -exp(-2*w(x))*Derivative(w(x), (x, 2)), K_yz = -exp(-2*w(x))*Derivative(w(x), x)**2)
 [PASS] making all three planes agree (w'' = w'^2) forces a solution whose curvature is a constant: Schur again  (K = -exp(-2*C1))
 

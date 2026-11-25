@@ -1,6 +1,6 @@
 """checks.py: the map of the shape's directions (Nov 25, 2026).
 
-Candidate directions: weight k (and q_count = k+1), the landscape bend q (curvature),
+Candidate directions: weight k (and its shift k + 1, the colour count), the landscape bend d (curvature),
 rung height s (rung sheet B_s = E^s(E^-s a + E^-s b), E = e^x - 1), the nome q (theta / Tate
 gluing), Doppler rapidity, the boost twist, pair weights between several waves.
 Three levels of "the same law":
@@ -17,9 +17,9 @@ def check(name, ok, detail=""):
 def note(t): out.append("   " + t)
 
 a, b, k, lam, p, q, c, s, x, u, v = sp.symbols('a b k lam p q c s x u v')
-F = lambda A, B, P, Q: (A + B + P*A*B) / (1 - Q*A*B)          # landscape law F_{p,q}
+F = lambda A, B, P, Q: (A + B + P*A*B) / (1 - Q*A*B)          # landscape law F_{p,d}
 
-# ---------------------------------------------------------------- 1. weight and q_count
+# ---------------------------------------------------------------- 1. weight and the colour count k + 1
 W = lambda K, A, B: A + B + K*A*B
 check("1a weight is units: F_{lam k}(a,b) = F_k(lam a, lam b)/lam",
       sp.expand(W(lam*k, a, b) - W(k, lam*a, lam*b)/lam) == 0)
@@ -33,7 +33,7 @@ euler = [1, 0, 0, 0, 0]   # d/dlam of r_n lam^n at lam=1, at the circle-operatio
 tan_w = [sp.diff(r, k).subs(k, 1) for r in rk]
 check("1b the weight's tangent at the circle operation equals the units (zoom) tangent: no new direction",
       [sp.nsimplify(t) for t in tan_w] == euler, str(tan_w))
-check("1c q_count = k + 1 is a relabelling: a + b + (q-1)ab is the weight law with k = q - 1",
+check("1c the colour count Q = k + 1 is a relabelling: a + b + (Q-1)ab is the weight law with k = Q - 1",
       sp.expand(W(q - 1, a, b) - (a + b + (q - 1)*a*b)) == 0)
 # but on a graph the weight is not units: Z = sum_S z^|S| k^e(S); scaling z cannot remove k
 # path on 3 sites: subsets and edges
@@ -54,20 +54,20 @@ check("1d on a graph (3-site path) the weight survives every rescaling of the si
 # ---------------------------------------------------------------- 2. the bend (Moebius plane)
 N = lambda X: X/(1 + c*X); Ni = lambda Y: Y/(1 - c*Y)
 G = sp.simplify(Ni(F(N(a), N(b), p, q)))
-check("2a a projective ruler x -> x/(1+cx) moves (p,q) to (p+2c, q+pc+c^2)",
+check("2a a projective ruler x -> x/(1+cx) moves (p,d) to (p+2c, d+pc+c^2)",
       sp.simplify(G - F(a, b, p + 2*c, q + p*c + c**2)) == 0)
-check("2b ...and keeps the discriminant D = p^2 - 4q: lens orbits are the parabolas q = (p^2 - D)/4",
+check("2b ...and keeps the discriminant D = p^2 - 4d: lens orbits are the parabolas d = (p^2 - D)/4",
       sp.expand((p + 2*c)**2 - 4*(q + p*c + c**2) - (p**2 - 4*q)) == 0)
-check("2c units move (p,q) to (lam p, lam^2 q): D -> lam^2 D, so only the sign of D survives units",
+check("2c units move (p,d) to (lam p, lam^2 d): D -> lam^2 D, so only the sign of D survives units",
       sp.simplify(F(lam*a, lam*b, p, q)/lam - F(a, b, lam*p, lam**2*q)) == 0)
-# the log of F_{p,q}: walls u, v (p = -(u+v), q = uv): l(x) = log((1-vx)/(1-ux))/(u - v)
+# the log of F_{p,d}: walls u, v (p = -(u+v), d = uv): l(x) = log((1-vx)/(1-ux))/(u - v)
 l = sp.log((1 - v*x)/(1 - u*x))/(u - v)
 dl = sp.simplify(sp.diff(l, x) - 1/(1 + (-(u + v))*x + u*v*x**2))
-check("2d log of F_{p,q} is log((1-vx)/(1-ux))/(u-v): one period 2 pi i/(u-v) = 2 pi i/sqrt(D)", dl == 0)
+check("2d log of F_{p,d} is log((1-vx)/(1-ux))/(u-v): one period 2 pi i/(u-v) = 2 pi i/sqrt(D)", dl == 0)
 note("D > 0: period imaginary, real points form a line (two real walls: the circle operation, velocity addition)")
 note("D < 0: period real, real points form a circle (complex walls: slope addition, rotations)")
 note("D = 0: no period (double wall: addition in disguise)")
-# numeric: tangent addition (p=0, q=1, D=-4) returns after one real period pi in its log (arctan)
+# numeric: tangent addition (p=0, d=1, D=-4) returns after one real period pi in its log (arctan)
 t0 = mp.mpf('0.3'); tsum = t0
 steps = 0
 ang = mp.atan(t0)
@@ -80,7 +80,7 @@ J = json.load(open('jets.json'))
 rr = [sp.sympify(t) for t in J["rate"]]           # r0..r6 of rung s
 r1, r2, r3, r4 = rr[1], rr[2], rr[3], rr[4]
 note("rung s rate R_s(a) = 1 + s a + s(s-1)/4 a^2 - s(s-1)/12 a^3 + s(s-1)(s+4)/144 a^4 - ...")
-check("3a rung s third-order point is (p,q) = (s, s(s-1)/4) and its discriminant is D = s",
+check("3a rung s third-order point is (p,d) = (s, s(s-1)/4) and its discriminant is D = s",
       sp.expand(r1 - s) == 0 and sp.expand(r2 - s*(s - 1)/4) == 0 and sp.expand(r1**2 - 4*r2 - s) == 0)
 note("so through third order, rung height = the bend's discriminant in the ladder's own units:")
 note("rung s osculates the law with one period 2 pi i/sqrt(s): rung 1 -> 2 pi i (the circle operation), rung 0 -> none,")
@@ -94,18 +94,18 @@ check("3c the crossings at rungs 0 and 1 are transverse (dr3/ds = +1/12 at 0, -1
 tan_rung = [sp.diff(rr[i], s).subs(s, 1) for i in (1, 2, 3)]
 Mtx = sp.Matrix([[1, 0, 0],                 # units (zoom)
                  [1, 0, 0],                 # weight
-                 [0, 1, 0],                 # bend q (r2)
+                 [0, 1, 0],                 # bend d (r2)
                  tan_rung])                 # rung
 note("tangents at the circle operation in (r1,r2,r3): units (1,0,0), weight (1,0,0), bend (0,1,0), rung " + str(tan_rung))
 check("3d rank of {units, weight, bend, rung} = 3 (weight repeats units; bend and rung are new)",
       Mtx.rank() == 3 and sp.Matrix([[1, 0, 0], [1, 0, 0]]).rank() == 1)
 # every local law is addition through its log: rung s law in coordinate E^-s is addition (by definition)
-# and the log of F_{p,q} exists (2d). The space of rate jets mod rulers is one point:
+# and the log of F_{p,d} exists (2d). The space of rate jets mod rulers is one point:
 f2, f3 = sp.symbols('f2 f3')
 fx = x + f2*x**2 + f3*x**3        # a general ruler; the law a+b pulled back has rate 1/f'(x) jets
 R_pull = sp.series(1/sp.diff(fx, x), x, 0, 3).removeO()
 sol = sp.solve([sp.expand(R_pull).coeff(x, 1) - p, sp.expand(R_pull).coeff(x, 2) - q], [f2, f3], dict=True)
-check("3e any third-order jet (p, q) is reached from plain addition by a ruler x + f2 x^2 + f3 x^3 (L2 collapses everything locally)",
+check("3e any third-order jet (p, d) is reached from plain addition by a ruler x + f2 x^2 + f3 x^3 (L2 collapses everything locally)",
       len(sol) == 1, str(sol[0]))
 
 # ---------------------------------------------------------------- 4. the nome (Tate gluing)
@@ -254,7 +254,7 @@ check("7a rapidity is a position on one law, not a family parameter: tanh(phi1+p
 D1 = lambda V: (1 + V)/(1 - V)
 check("7b Doppler-squared minus 1 is the circle-operation ruler of the same law, e^{2 phi} - 1 = E(2 phi): one rung step between two rulers",
       sp.simplify((D1(sp.tanh(phi1)) - 1).rewrite(sp.exp) - (sp.exp(2*phi1) - 1)) == 0)
-note("boost twist: omega = q x (area of the velocity triangle), q = the bend; by Helmholtz-Lie, an isotropic")
+note("boost twist: omega = d x (area of the velocity triangle), d = the bend; by Helmholtz-Lie, an isotropic")
 note("law in the plane has constant curvature, one number: the twist adds no new direction")
 
 # ---------------------------------------------------------------- 8. whole numbers: the weight's primes

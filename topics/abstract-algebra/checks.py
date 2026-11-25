@@ -165,9 +165,9 @@ p=13; qq=4  # 4 has order 6 mod 13
 sub={pow(qq,e,p) for e in range(12)}
 ok('7 finite shadow: (F_13 minus {-1},∘₁) modulo the ∘₁-powers of q-1=3 has 12/6=2 classes', len({frozenset(((u*s)%p) for s in sub) for u in range(1,p)})==2)
 
-# 8. landscape countries by prime: F_{p,q}(a,b)=(a+b+k ab)/(1-q ab), count group size on P^1(F_p)
+# 8. landscape countries by prime: F_{k,d}(a,b)=(a+b+k ab)/(1-d ab), count group size on P^1(F_p)
 def wall_count(k,qv,p):
-    # walls are roots of 1 + k a + q a^2 in P^1 (a=inf is a root iff q=0)
+    # walls are roots of 1 + k a + d a^2 in P^1 (a=inf is a root iff d=0)
     r=sum(1 for a in range(p) if (1+k*a+qv*a*a)%p==0)
     if qv%p==0: r+=1
     return r

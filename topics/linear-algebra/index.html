@@ -126,7 +126,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div><b>k = −1</b>1 / det(I − A): symmetric powers, bosons</div>
 <div><b>k = −2</b>det(I − 2A)^(−½): the real Gaussian integral</div>
 </div>
-<p>This is Vere-Jones's α-permanent family (1988) with α = −k: the determinant and the permanent are two settings of one dial. Each eigenvalue contributes (1 + kλ)^(1/k), which is the Tsallis q-exponential with q = 1 − k, the same link the thermodynamics page found. The k = −2 setting matching your parity rung is a pattern I noticed, not an established connection.</p>
+<p>This is Vere-Jones's α-permanent family (1988) with α = −k: the determinant and the permanent are two settings of one dial. Each eigenvalue contributes (1 + kλ)^(1/k), which is the Tsallis q-exponential with Tsallis index q_T = 1 − k, the same link the thermodynamics page found. The k = −2 setting matching your parity rung is a pattern I noticed, not an established connection.</p>
 </div></section>
 
 <section class="band" id="solitons"><div class="wrap grid">
@@ -184,11 +184,11 @@ svg text{font-family:Literata,Georgia,serif}
 </div></section>
 
 <section class="band" id="matdial"><div class="wrap grid">
-<div class="fig"><svg id="plane" role="img" aria-label="The landscape plane with the parabola k squared equals 4q and the or line"></svg></div>
+<div class="fig"><svg id="plane" role="img" aria-label="The landscape plane with the parabola k squared equals 4d and the or line"></svg></div>
 <div>
 <h2>A matrix on the dial draws your landscape <span class="tag l">biggest find</span></h2>
-<p class="lead">Put the 2×2 matrix U = [[0, −q], [1, k]] on the dial. Then (I + aU)(I + bU) = (1 − q·ab)I + (a + b + k·ab)U, and the ratio of the two parts is your landscape lens law (a + b + k·ab)/(1 − q·ab).</p>
-<p>Everything on the landscape page reads off U. Its wall polynomial 1 + k·a + q·a² is det(I + aU). The walls sit at −1/eigenvalue, just as the plain dial's wall sits at −1/k. The three countries are the three kinds of 2×2 matrix: two real eigenvalues, one repeated, or a complex pair. The parabola k² = 4q is where the eigenvalues meet, since k² − 4q = (λ₁ − λ₂)². The "or" line k + q = −1 is where U has eigenvalue −1, one direction sitting exactly on the circle operation's wall.</p>
+<p class="lead">Put the 2×2 matrix U = [[0, −d], [1, k]] on the dial. Then (I + aU)(I + bU) = (1 − d·ab)I + (a + b + k·ab)U, and the ratio of the two parts is your landscape lens law (a + b + k·ab)/(1 − d·ab).</p>
+<p>Everything on the landscape page reads off U. Its wall polynomial 1 + k·a + d·a² is det(I + aU). The walls sit at −1/eigenvalue, just as the plain dial's wall sits at −1/k. The three countries are the three kinds of 2×2 matrix: two real eigenvalues, one repeated, or a complex pair. The parabola k² = 4d is where the eigenvalues meet, since k² − 4d = (λ₁ − λ₂)². The "or" line k + d = −1 is where U has eigenvalue −1, one direction sitting exactly on the circle operation's wall.</p>
 </div>
 </div></section>
 
@@ -351,7 +351,7 @@ function planeFig(){
   h+=`<line x1="${X(-2.2)}" y1="${Y(1.2)}" x2="${X(1.4)}" y2="${Y(-2.4)}" stroke="${css('--red')}" stroke-width="2"/>`;
   const pts=[[1,0,'The circle operation'],[0,-1,'velocity'],[0,1,'tangent'],[-1,0,'failure union'],[0,0,'addition']];
   pts.forEach(p=>{h+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="5" fill="${css('--ink')}"/><text x="${X(p[0])+8}" y="${Y(p[1])-7}" font-size="13" fill="${css('--ink')}">${p[2]}</text>`;});
-  h+=`<text x="${X(-2.8)}" y="${Y(2.2)}" font-size="13" fill="${css('--blue')}">complex eigenvalues</text><text x="${X(1.2)}" y="${Y(-1.6)}" font-size="13" fill="${css('--mute')}">two real eigenvalues</text><text x="${X(1.9)}" y="${Y(1.25)}" font-size="13" fill="${css('--blue')}">k² = 4q</text><text x="${X(-2.9)}" y="${Y(-0.7)}" font-size="13" fill="${css('--red')}">or line k + q = −1</text><text x="${W-8}" y="${Y(0)+16}" font-size="12" text-anchor="end" fill="${css('--mute')}">k</text><text x="${X(0)+6}" y="14" font-size="12" fill="${css('--mute')}">q</text>`;
+  h+=`<text x="${X(-2.8)}" y="${Y(2.2)}" font-size="13" fill="${css('--blue')}">complex eigenvalues</text><text x="${X(1.2)}" y="${Y(-1.6)}" font-size="13" fill="${css('--mute')}">two real eigenvalues</text><text x="${X(1.9)}" y="${Y(1.25)}" font-size="13" fill="${css('--blue')}">k² = 4d</text><text x="${X(-2.9)}" y="${Y(-0.7)}" font-size="13" fill="${css('--red')}">or line k + d = −1</text><text x="${W-8}" y="${Y(0)+16}" font-size="12" text-anchor="end" fill="${css('--mute')}">k</text><text x="${X(0)+6}" y="14" font-size="12" fill="${css('--mute')}">d</text>`;
   s.innerHTML=h;}
 function threeFig(){
   const s=document.getElementById('three');const W=s.clientWidth,H=s.clientHeight;const cw=W/3,sc=Math.min(cw/5,H/5.2);let h='';

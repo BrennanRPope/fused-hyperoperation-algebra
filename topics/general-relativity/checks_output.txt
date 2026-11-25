@@ -1,7 +1,7 @@
 
-== A. The dial's boosts made local: q is the signature coefficient
-[PASS] [K_x, K_y] = -q (x d_y - y d_x): two boosts close on q times a rotation
-[PASS] q = 0 (Galilean dial): boosts commute, no twist
+== A. The dial's boosts made local: d is the signature coefficient
+[PASS] [K_x, K_y] = -d (x ∂_y - y ∂_x): two boosts close on d times a rotation
+[PASS] d = 0 (Galilean dial): boosts commute, no twist
 [PASS] HKT bracket with linear lapses: N grad M - M grad N is a rigid rotation (the twist)
 
 == B. Route (a): the dial alone as a field = scalar gravity

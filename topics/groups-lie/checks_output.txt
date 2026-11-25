@@ -1,42 +1,42 @@
-PASS F_{p,q} associative, identity 0, inverse -a/(1+pa)
-PASS mob(a) = [[1+pa, a],[-qa, 1]] = I + a·X
-PASS mob(a)·mob(b) = (1-qab)·mob(F(a,b))  (the law is matrix multiplication up to scale)
+PASS F_{p,d} associative, identity 0, inverse -a/(1+pa)
+PASS mob(a) = [[1+pa, a],[-da, 1]] = I + a·X
+PASS mob(a)·mob(b) = (1-dab)·mob(F(a,b))  (the law is matrix multiplication up to scale)
 PASS Cayley-Hamilton: X² - pX + qI = 0
-PASS char poly of X is t² - p t + q, discriminant p² - 4q
+PASS char poly of X is t² - p t + d, discriminant p² - 4d
 PASS mob(a) acting on b by x ↦ (αx+β)/(γx+δ) gives F(a,b)
 PASS Möbius generator [[α,β],[γ,δ]] moves x at speed β + (α-δ)x - γx²
-PASS the landscape generator X moves x at speed 1 + px + qx² (the Riccati rate)
-PASS (1+aθ)(1+bθ) = (1-qab) + (a+b+pab)θ  when θ² = pθ - q
-PASS p=1,q=0: θ²=θ is an idempotent; 1+xθ ↦ (1+x, 1) recovers the lift 1+x
-PASS p=0,q=-1: θ²=1 (split-complex j), law is (a+b)/(1+ab)
-PASS p=0,q=1: θ²=-1 (i), law is (a+b)/(1-ab), tan addition
-PASS p=q=0: θ²=0 (dual numbers), law is a+b
-PASS norm x²+pxy+qy² is multiplicative; norm(1+aθ) = 1+pa+qa² (the rate)
-PASS rate law: V(a)·V(b) = (1-qab)²·V(F(a,b))
-PASS ∂F/∂b = V(a)/(1-qab)²
+PASS the landscape generator X moves x at speed 1 + px + dx² (the Riccati rate)
+PASS (1+aθ)(1+bθ) = (1-dab) + (a+b+pab)θ  when θ² = pθ - d
+PASS p=1,d=0: θ²=θ is an idempotent; 1+xθ ↦ (1+x, 1) recovers the lift 1+x
+PASS p=0,d=-1: θ²=1 (split-complex j), law is (a+b)/(1+ab)
+PASS p=0,d=1: θ²=-1 (i), law is (a+b)/(1-ab), tan addition
+PASS p=d=0: θ²=0 (dual numbers), law is a+b
+PASS norm x²+pxy+dy² is multiplicative; norm(1+aθ) = 1+pa+da² (the rate)
+PASS rate law: V(a)·V(b) = (1-dab)²·V(F(a,b))
+PASS ∂F/∂b = V(a)/(1-dab)²
 PASS invariant ruler: ∂F/∂b · V(b) = V(F(a,b)), so dx/V(x) is carried by every translation
 PASS closed-form logarithm L(x) = ∫₀ˣ ds/(1+ps+qs²) in all three cases (8 points × 3 x)
 PASS L(F(a,b)) = L(a) + L(b): the logarithm turns every landscape law into addition
 PASS named rulers: circle-operation log(1+x), tanh law artanh x, tan law arctan x
-PASS border (p²=4q): L = x/(1+px/2), and F is plain addition in L
+PASS border (p²=4d): L = x/(1+px/2), and F is plain addition in L
 PASS dial: L = log(1+kx)/k → x as k → 0
-PASS elliptic period: ∫ over all reals of dx/(1+px+qx²) = 2π/√(4q-p²)  (3 points)
-PASS real walls exactly when p² - 4q > 0 (roots of 1+px+qx²)
+PASS elliptic period: ∫ over all reals of dx/(1+px+dx²) = 2π/√(4d-p²)  (3 points)
+PASS real walls exactly when p² - 4d > 0 (roots of 1+px+dx²)
 PASS line case: L runs to ±∞ at the two walls (the circle operation: wall -1)
 PASS circle case: the point ∞ belongs to the group; tan law F(a, ∞) = -1/a
 PASS bracket of fields α+βx+γx² stays in the span: (αβ'-βα') + 2(αγ'-γα')x + (βγ'-γβ')x²
 PASS Jacobi identity for the field bracket
-PASS Killing form of the landscape generator: tr(ad²) = 2(p² - 4q)
+PASS Killing form of the landscape generator: tr(ad²) = 2(p² - 4d)
 PASS Killing form is ad-invariant: B([g,f],h) + B(f,[g,h]) = 0
-PASS matrix form: trace-free part X₀ has tr(X₀²) = (p² - 4q)/2
-PASS rate in the new chart: (1+cy)²·V(y/(1+cy)) = 1 + (p+2c)y + (q+pc+c²)y²
-PASS discriminant unchanged: (p+2c)² - 4(q+pc+c²) = p² - 4q
-PASS conjugation: F_{p+2c, q+pc+c²}(φa, φb) = φ(F_{p,q}(a,b)), φ(x) = x/(1-cx)
+PASS matrix form: trace-free part X₀ has tr(X₀²) = (p² - 4d)/2
+PASS rate in the new chart: (1+cy)²·V(y/(1+cy)) = 1 + (p+2c)y + (d+pc+c²)y²
+PASS discriminant unchanged: (p+2c)² - 4(d+pc+c²) = p² - 4d
+PASS conjugation: F_{p+2c, d+pc+c²}(φa, φb) = φ(F_{p,d}(a,b)), φ(x) = x/(1-cx)
 PASS the circle operation (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)
-PASS parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same parabola p²-4q = 4
-PASS units: scaling x ↦ λx sends (p,q) to (λp, λ²q) and p²-4q to λ²(p²-4q)
-PASS conjugation and scaling never change the sign of p²-4q (random c, λ on 6 points)
-PASS rung s at (s, s(s-1)/4) has p² - 4q = s (landscape placement)
+PASS parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same parabola p²-4d = 4
+PASS units: scaling x ↦ λx sends (p,d) to (λp, λ²d) and p²-4d to λ²(p²-4d)
+PASS conjugation and scaling never change the sign of p²-4d (random c, λ on 6 points)
+PASS rung s at (s, s(s-1)/4) has p² - 4d = s (landscape placement)
 PASS T_a(x) = (1+ka)x + a equals a ∘ₖ x
 PASS T_a ∘ T_b = T_{a ∘ₖ b}
 PASS T_a fixes -1/k (the wall), for every a
@@ -44,14 +44,14 @@ PASS about the wall it is a pure dilation: T_a(y - 1/k) + 1/k = (1+ka)·y
 PASS scaling conjugation: T^k_{λa}(λx) = λ·T^{kλ}_a(x)
 PASS k = 0 is a translation with no fixed point (a ≠ 0)
 PASS generators 1 + kx: [x∂, ∂] = -∂, and [1+kx, 1+k'x] = (k'-k)·1, a translation
-PASS Inönü–Wigner shadow: (a+b)/(1-qab) → a+b as q → 0 (Lorentz → Galilei)
+PASS Inönü–Wigner shadow: (a+b)/(1-dab) → a+b as d → 0 (Lorentz → Galilei)
 PASS (F_p minus the wall, ∘₁) is cyclic of order p-1 for every odd prime p < 60
 PASS 1 ∘₁ 1 ∘₁ ... (n copies) = 2ⁿ - 1 (Mersenne numbers)
 PASS 1 generates (F_p minus wall, ∘₁) exactly when 2 is a primitive root mod p (odd p < 500)
 PASS small cases: generator 1 for p = 5, 11, 13; for p = 7 use 2 (1 has order 3)
 PASS circle x²+y²=1 over F_p has p+1 points when p ≡ 3 mod 4, p-1 when p ≡ 1 mod 4 (p < 60)
 PASS tan law on F_p ∪ {∞} is a cyclic group of order p+1 for every prime p ≡ 3 mod 4 below 40 (the finite circle)
-PASS finite shadows: the landscape group over F_p has p - ((p²-4q)/p) elements: p-1 line, p border, p+1 circle (all p,q mod 5,7,11,13)
+PASS finite shadows: the landscape group over F_p has p - ((p²-4d)/p) elements: p-1 line, p border, p+1 circle (all p,d mod 5,7,11,13)
 PASS the matrix circle operation: lift (I+A)(I+B) = I + A∘₁B, and A∘₁B - B∘₁A = AB - BA exactly
 PASS group commutator (1+tA)(1+tB)(1+tA)⁻¹(1+tB)⁻¹ - 1 = t²[A,B] + O(t³)
 PASS landscape matrices commute (both are I + sX), so the commutator vanishes on the landscape

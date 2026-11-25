@@ -47,7 +47,7 @@ small{color:var(--sub)}
 <div class="figs">
 <div class="fig-n"><b>54.52%</b><span>plain ½ on the naturals by size, exactly</span></div>
 <div class="fig-n"><b>1 − 2<sup>−β</sup></b><span>share of the log-total that subsets explain</span></div>
-<div class="fig-n"><b>q = 1 + 2<sup>−β</sup></b><span>the twist a size measure acts like, for small dials</span></div>
+<div class="fig-n"><b>k = 2<sup>−β</sup></b><span>the twist a size measure acts like, for small dials</span></div>
 <div class="fig-n"><b>33 of 33</b><span>checks pass; 18 new Lean theorems</span></div>
 </div>
 <div class="plate"><svg viewBox="0 0 900 508" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f2t" xmlns:c2pa="http://c2pa.org/manifest"><title id="f2t">For each set, the share that the circle operation with dials explains (blue) and what is left over: repetition (orange), the class group (purple), or no foothold at all (grey).</title>
@@ -145,7 +145,7 @@ small{color:var(--sub)}
 <div class="two">
 <div>
 <p>Weighing an element by w and then applying the circle operation is the twisted circle operation with k = w (Base's <code>circK_scale</code>, restated as <code>weight_is_twist</code>). So counting by size gives every element its own twist kₙ = qⁿ. It is not a new kind of parameter; it is the twist, spread across the elements.</p>
-<p>For small dials the spread acts like one twist exactly: k = 2<sup>−β</sup>, so q = 1 + 2<sup>−β</sup>. The circle operation (q = 2) is the sharp count, β = 0; plain addition (q = 1) is β = ∞. Over the whole range of dials a single twist comes within 0.06 percentage points of the β = 1 curve (k = 0.441), but never exactly. That makes β a geometric reading of q: the twist is the dimension of the size measure.</p>
+<p>For small dials the spread acts like one twist exactly: k = 2<sup>−β</sup>. The circle operation (k = 1) is the sharp count, β = 0; plain addition (k = 0) is β = ∞. Over the whole range of dials a single twist comes within 0.06 percentage points of the β = 1 curve (k = 0.441), but never exactly. That makes β a geometric reading of k: the twist is the dimension of the size measure.</p>
 </div>
 <div>
 <p><b>Merging.</b> Union of two weighted dials is not the weighted union dial. The gap is exactly t·s·w·(w − 1) (<code>weighted_merge_gap</code>), so the two commute only when every weight is 0 or 1: the sharp count.</p>

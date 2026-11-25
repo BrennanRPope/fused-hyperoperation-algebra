@@ -12,7 +12,7 @@ PASS  λ ≥ 0: every Möbius mass ≥ 0, so μ is a belief function
 PASS  −1 < λ < 0: the dual 1 − μ(Aᶜ) has masses ≥ 0 (μ is a plausibility)
 == 4. The lift to an ordinary probability; μ is a q-number of P
 PASS  P(A) = log(1+λμ(A))/log(1+λ) is additive with P(Ω) = 1
-PASS  μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ = k + 1
+PASS  μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ, so k = q − 1
 PASS  m equal atoms of size g: μ = g·[m]_q with q = 1 + λg (a q-number)
 == 5. Inclusion–exclusion becomes multiplication
 PASS  (1+λμ(A∪B))(1+λμ(A∩B)) = (1+λμ(A))(1+λμ(B))
@@ -26,9 +26,9 @@ PASS  λ>0: μ(A) = (compound growth of A's atoms)/(growth of all), atom rates �
 == 8. The wall must stay outside [0, 1]
 PASS  k ≤ −1: atoms below the wall never reach 1 (no normalized measure)
 PASS  k = −1: 1 − ∏(1 − g_i) = 1 forces some g_i = 1 (exact fractions)
-PASS  landscape: L(1) = ∫₀¹dt/(1+pt+qt²) finite exactly when 1+pt+qt² > 0 on [0,1]
-PASS  the 'or' line k+q = −1 (statistics page) lies on the edge: 1+p+q = 0 there
-PASS  normalizable region = above the line q = −1−p (p ≥ −2) and above the parabola q = p²/4 (p < −2)
+PASS  landscape: L(1) = ∫₀¹dt/(1+pt+dt²) finite exactly when 1+pt+dt² > 0 on [0,1]
+PASS  the 'or' line k+d = −1 (statistics page) lies on the edge: 1+p+d = 0 there
+PASS  normalizable region = above the line d = −1−p (p ≥ −2) and above the parabola d = p²/4 (p < −2)
 PASS  the line meets the border parabola tangentially at the cusp (−2, 1)
 PASS  tangent measure μ = tan(πP/4): (μA+μB)/(1−μAμB) on disjoint sets, μ(Ω)=1
 PASS  dial line: the additive coordinate log(1+kx)/k adds over atoms

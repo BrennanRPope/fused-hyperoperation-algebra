@@ -93,18 +93,18 @@ a tropical limit: the dial doesn't turn + into min.
 ### 4.2 The dial over witnesses: NP, #P, ⊕P and ModₚP at different settings (proved)
 
 Fold the dial over a list of yes/no witnesses and you get the q-integer of the number of yes
-answers, with q = k + 1 (`witness_fold`):
+answers, in base k + 1 (`witness_fold`):
 
-| Dial | q | The fold gives | The class |
+| Dial | k + 1 | The fold gives | The class |
 |---|---|---|---|
 | k = −1 | 0 | 1 if any witness, else 0 | NP ("is there one?"), `np_point` |
 | k = 0 | 1 | the number of witnesses | #P ("how many?"), `sharpP_point` |
 | k = −2 | −1 | 1 if odd, 0 if even | ⊕P ("odd or even?"), `parityP_point` |
-| qᵖ = 1 | p-th root of unity | the count mod p | ModₚP, `modp_period` |
+| (k + 1)ᵖ = 1 | p-th root of unity | the count mod p | ModₚP, `modp_period` |
 | k = 1 | 2 | 2ᵐ − 1, the whole count | #P again, `qnum_two_strictMono` |
 
 The picture is correct and tidy: NP is the one point on the dial that throws information away
-(`np_point_forgets`: one witness and five look the same at q = 0), and almost every other
+(`np_point_forgets`: one witness and five look the same at k = −1), and almost every other
 point keeps the count. It fits your theme of operations that keep information, with a twist:
 keeping information makes problems harder, not easier. Toda's theorem says counting (#P) is
 at least as strong as the whole polynomial hierarchy.
@@ -155,7 +155,7 @@ to general algorithms.
   computation, and the dial's natural home (arithmetized OR, counting) is covered by known
   barriers. Saying so plainly is the useful result.
 - **For the project:** one, the dial landscape of counting classes (4.2), drawn as a page:
-  NP at q = 0, ⊕P at q = −1, ModₚP at roots of unity, #P everywhere else, with the
+  NP at k = −1, ⊕P at k = −2, ModₚP at roots of unity, #P everywhere else, with the
   permanent's known jumps marked. It's a real organising picture of known math, not a new
   prediction.
 
@@ -166,7 +166,7 @@ to general algorithms.
 - `witness_fold`: the dial over witnesses is the q-integer of the witness count
 - `np_point`, `sharpP_point`, `parityP_point`: exists, count and parity at k = −1, 0, −2
 - `modp_period`: at a p-th root of unity only the count mod p matters
-- `np_point_forgets`, `qnum_two_nonneg`, `qnum_two_strictMono`: q = 0 forgets, q = 2 keeps the count
+- `np_point_forgets`, `qnum_two_nonneg`, `qnum_two_strictMono`: k = −1 forgets, k = 1 keeps the count
 - `gf2_circ_is_or`, `gf2_shift_is_not`, `gf2_lift_de_morgan`: over GF(2) circle operation is OR, the lift is De Morgan
 - `foldCirc_ones`: n gates, 2ⁿ − 1 monomials
 - `minplus_distrib`, `minplus_assoc`: min-plus semiring laws

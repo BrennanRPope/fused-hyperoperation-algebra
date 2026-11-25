@@ -18,15 +18,15 @@ PASS E(w) = e^w - 1 turns + into the circle operation: E(a+b) = E(a) * E(b)
 PASS E(2 pi i) = 0: one trip round the wall is the period
 PASS E sends each vertical line Re w = s to the circle of radius e^s about the wall
 PASS E sends each horizontal line Im w = t to the ray from the wall at angle t
-PASS fixed points of b -> F_pq(a,b): numerator of F - b is a(1 + p b + q b^2), the walls, for every a
-PASS matrices M(a) = [[1+pa, a], [-qa, 1]] compose: M(a)M(b) = (1 - qab) M(F(a,b))
-PASS det M(a) = 1 + pa + qa^2: the translation by a degenerates exactly at a wall
-PASS tr^2 - 4 det = a^2 (p^2 - 4q): the discriminant alone sets the type of every translation
+PASS fixed points of b -> F_pd(a,b): numerator of F - b is a(1 + p b + d b^2), the walls, for every a
+PASS matrices M(a) = [[1+pa, a], [-da, 1]] compose: M(a)M(b) = (1 - dab) M(F(a,b))
+PASS det M(a) = 1 + pa + da^2: the translation by a degenerates exactly at a wall
+PASS tr^2 - 4 det = a^2 (p^2 - 4d): the discriminant alone sets the type of every translation
 PASS two walls w1, w2: zeta(x) = (1 - x/w1)/(1 - x/w2) turns the law into multiplication
-PASS the same holds for 50 random complex points (p, q) of the landscape
+PASS the same holds for 50 random complex points (p, d) of the landscape
 PASS tan law (0,1): walls +-i, zeta = (1+ix)/(1-ix) = e^{2i arctan x} (Cayley)
 PASS tanh law (0,-1): walls +-1, zeta = (1+x)/(1-x) = e^{2 artanh x} (Doppler factor squared)
-PASS double wall (p^2 = 4q, p = 2c): psi(x) = x/(1+cx) turns the law into plain addition
+PASS double wall (p^2 = 4d, p = 2c): psi(x) = x/(1+cx) turns the law into plain addition
 PASS e^z - 1 fixes 0 with derivative 1 (parabolic) and second derivative 1
 PASS Abel ruler alpha(z) = -2/z + (1/3) log z + ...: the 1/z and log terms are forced (orders z^0, z^1 vanish)
 PASS next coefficients are rational: -1/36, 1/540, 1/7776, -71/435456

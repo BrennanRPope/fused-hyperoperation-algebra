@@ -96,15 +96,15 @@ check("E sends each horizontal line Im w = t to the ray from the wall at angle t
 A_, B_, P, Q = sp.symbols('a b p q')
 F = (A_ + B_ + P * A_ * B_) / (1 - Q * A_ * B_)
 num = sp.factor(sp.numer(sp.together(F - B_)))
-check("fixed points of b -> F_pq(a,b): numerator of F - b is a(1 + p b + q b^2), the walls, for every a",
+check("fixed points of b -> F_pd(a,b): numerator of F - b is a(1 + p b + d b^2), the walls, for every a",
       sp.simplify(num - A_ * (1 + P * B_ + Q * B_ ** 2)) == 0)
 M = lambda x: sp.Matrix([[1 + P * x, x], [-Q * x, 1]])
 Fab = sp.together(F)
-check("matrices M(a) = [[1+pa, a], [-qa, 1]] compose: M(a)M(b) = (1 - qab) M(F(a,b))",
+check("matrices M(a) = [[1+pa, a], [-da, 1]] compose: M(a)M(b) = (1 - dab) M(F(a,b))",
       sp.simplify(M(A_) * M(B_) - (1 - Q * A_ * B_) * M(Fab)) == sp.zeros(2, 2))
-check("det M(a) = 1 + pa + qa^2: the translation by a degenerates exactly at a wall",
+check("det M(a) = 1 + pa + da^2: the translation by a degenerates exactly at a wall",
       sp.expand(M(A_).det() - (1 + P * A_ + Q * A_ ** 2)) == 0)
-check("tr^2 - 4 det = a^2 (p^2 - 4q): the discriminant alone sets the type of every translation",
+check("tr^2 - 4 det = a^2 (p^2 - 4d): the discriminant alone sets the type of every translation",
       sp.expand(M(A_).trace() ** 2 - 4 * M(A_).det() - A_ ** 2 * (P ** 2 - 4 * Q)) == 0)
 W1, W2 = sp.symbols('w1 w2')
 zeta = lambda x: (1 - x / W1) / (1 - x / W2)
@@ -119,7 +119,7 @@ for _ in range(50):
     FF = (aa + bb + p * aa * bb) / (1 - q * aa * bb)
     zt = lambda x: (1 - x / w1) / (1 - x / w2)
     ok &= abs(zt(FF) - zt(aa) * zt(bb)) < 1e-8 * (1 + abs(zt(FF)))
-check("the same holds for 50 random complex points (p, q) of the landscape", ok)
+check("the same holds for 50 random complex points (p, d) of the landscape", ok)
 aa, bb = 0.37, -1.2
 check("tan law (0,1): walls +-i, zeta = (1+ix)/(1-ix) = e^{2i arctan x} (Cayley)",
       abs((1 + 1j * aa) / (1 - 1j * aa) - cmath.exp(2j * math.atan(aa))) < 1e-14)
@@ -128,7 +128,7 @@ check("tanh law (0,-1): walls +-1, zeta = (1+x)/(1-x) = e^{2 artanh x} (Doppler 
 cc = 0.8
 Fd = lambda a, b: (a + b + 2 * cc * a * b) / (1 - cc * cc * a * b)
 psi = lambda x: x / (1 + cc * x)
-check("double wall (p^2 = 4q, p = 2c): psi(x) = x/(1+cx) turns the law into plain addition",
+check("double wall (p^2 = 4d, p = 2c): psi(x) = x/(1+cx) turns the law into plain addition",
       abs(psi(Fd(aa, 0.21)) - psi(aa) - psi(0.21)) < 1e-12)
 
 # ---------------- 5. the rung step e^z - 1: a parabolic fixed point

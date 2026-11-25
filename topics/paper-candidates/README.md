@@ -23,7 +23,7 @@ Nothing is at risk of being lost: the Zenodo DOI (10.5281/zenodo.24539305) alrea
 | 3 | The Lean library (3,003 theorems, no sorry) | New as formalization; statements known | mathlib; Buzzard's FLT project | Contribute the best pieces to mathlib after the port; maybe a short paper at ITP 2027 (call not out yet; CPP 2027's deadline passed in Sept.) |
 | 4 | Diamond hierarchical lattice closed forms (slope (2y/(y+1))², exact ν) | Known in parts, formula not found | Chang, Roeder & Shrock 2020; textbook percolation (golden ratio at Q = 1) | Short note, arXiv cond-mat.stat-mech; or a section of paper 1 |
 | — | Sugeno λ-measure = α-point-process dial = Tsallis q-sum | Known pieces, link not found stated | Sugeno 1974; Shirai & Takahashi 2003; Tsallis 1988 | A section of paper 1 |
-| — | (k, q) landscape map and shape number | Known | Coleman & McGuinness 1991 classify exactly this plane by c² − 4d | A section of paper 1 |
+| — | (k, d) landscape map and shape number | Known | Coleman & McGuinness 1991 classify exactly this plane by c² − 4d | A section of paper 1 |
 | — | Schwarzschild river, (−g_tt − 1) ∘₁ (g_rr − 1) = 0 | Known | Jacobson 2007; Hamilton & Lisle 2008 | A section of paper 1 |
 | — | Fermat counterexample map | Known method | Buzzard's FLT blueprint (top-down, 1980s inputs assumed) | None |
 | — | Signed category with a + b − ab as product | Open question | Schanuel 1991 ("negative sets"); Propp; Baez | A MathOverflow question |
@@ -33,7 +33,7 @@ Nothing is at risk of being lost: the Zenodo DOI (10.5281/zenodo.24539305) alrea
 
 ## Each candidate in a sentence or two
 
-1. **One box, many laws.** The strongest fit for your goal, a shared lens over known math. Caution found today: the (k, q) map is *exactly* the Coleman–McGuinness classification of rational formal group laws, so the paper must cite it up front and present the map as a picture of that theorem, not a new one. A tight story of 6 to 8 rows reads better than all 12.
+1. **One box, many laws.** The strongest fit for your goal, a shared lens over known math. Caution found today: the (k, d) map is *exactly* the Coleman–McGuinness classification of rational formal group laws, so the paper must cite it up front and present the map as a picture of that theorem, not a new one. A tight story of 6 to 8 rows reads better than all 12.
 2. **Fractional power set.** With choice, a monotone half power set must land strictly between κ and 2^κ, and no full dial exists because the halvings would shrink forever. Short and elementary, so a set theorist may call it folklore; that is why asking publicly first makes sense. The choice-free question is genuinely open as far as we could find.
 3. **Lean library.** Formal checks are new; the statements are mostly known. Formalization venues want a technique or a hard theorem, so mathlib contributions (for example Sugeno measures) are the likelier route than a standalone paper.
 4. **Diamond lattice.** The closed slope formula wasn't found written, but it is elementary and the special cases are known. Too slight alone; good as a section.

@@ -83,7 +83,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <h2>The leak is one parabola, and it works in any ring</h2>
 <p>This is not special to 0 and 1. Take any a and b that equal their own squares (idempotents: on sets they are indicator functions, in a matrix ring they are projections). Then the dial gives back an idempotent up to one leak term:</p>
 <div class="eq">(a ∘ₖ b)² − (a ∘ₖ b) = (k + 1)(k + 2)·ab</div>
-<p>The two roots are OR and XOR. Read with q = k + 1, the roots are q = 0 and q = −1, and n trues folded together give the q-number [n]_q: always 1 for OR, and 1, 0, 1, 0 (parity) for XOR. Every other q leaves 0 and 1 already at n = 2.</p>
+<p>The two roots are OR and XOR, at k = −1 and k = −2, and n trues folded together give the q-number [n]_q, where k = q − 1: always 1 for OR, and 1, 0, 1, 0 (parity) for XOR. Every other k leaves 0 and 1 already at n = 2.</p>
 <p>The other Boolean laws leak the same way. Distributing AND over the dial misses by k·abc(1 − a); absorption a ∨ (a ∧ b) misses by ab(1 − a). Both vanish exactly when a² = a. So Boolean algebra is the dial with its inputs pinned to 0 and 1, and nothing more.</p>
 </div>
 <div>
@@ -101,7 +101,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <h2>Fuzzy logic: Hamacher's family is the dial, read in odds</h2>
 <p>Fuzzy logic lets truth run from 0 to 1 and asks for an "or" that is associative, monotone and has 0 as identity (a t-conorm). Hamacher (1978) found every such rule that is a ratio of polynomials. His family is</p>
 <div class="eq">S_γ(a, b) = (a + b + (γ − 2)ab) / (1 + (γ − 1)ab)</div>
-<p>On the landscape that is the point p = γ − 2, q = 1 − γ, so the whole family is the line p + q = −1. The statistics page found this same line as the unions with certainty as a wall. Measure truth by its odds, o = x/(1 − x), and the bend disappears:</p>
+<p>On the landscape that is the point p = γ − 2, d = 1 − γ, so the whole family is the line p + d = −1. The statistics page found this same line as the unions with certainty as a wall. Measure truth by its odds, o = x/(1 − x), and the bend disappears:</p>
 <div class="eq">odds(S_γ(a, b)) = odds(a) ∘<sub>γ</sub> odds(b)</div>
 <p><b>Hamacher's parameter is the dial, read on odds.</b> γ = 0 adds odds, γ = 1 combines them by the circle operation ∘₁ (called mult-add before 1.0) (the probabilistic sum a + b − ab), γ = 2 is the Einstein sum (a + b)/(1 + ab), relativity's point. The t-norms ("and") are the mirror images under x ↦ 1 − x, De Morgan's law, and are the dial on odds against.</p>
 </div>
@@ -118,7 +118,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <h2>The other classical families leave the plane</h2>
 <p>By Hamacher's theorem, no other rational rule exists, so every other family can touch the landscape only where it meets Hamacher's. The checks confirm this numerically:</p>
 <table class="data"><tr><th>Family</th><th>On the landscape?</th></tr>
-<tr><td>Hamacher, γ ≥ 0</td><td>Yes, all of it, on p + q = −1</td></tr>
+<tr><td>Hamacher, γ ≥ 0</td><td>Yes, all of it, on p + d = −1</td></tr>
 <tr><td>Dombi λ = 1, Schweizer–Sklar p = −1</td><td>Yes: both are Hamacher γ = 0</td></tr>
 <tr><td>Aczél–Alsina λ = 1, Frank s → 1</td><td>Yes: the probabilistic sum</td></tr>
 <tr><td>Frank, other s</td><td>No, though it stays close to the line (misses 0.001 to 0.007)</td></tr>
@@ -221,7 +221,7 @@ function drawDial(){
   const key=String(Math.round(k*100)/100);
   $('name').textContent=named[key]?'k = '+fm(k,0)+': '+named[key]:(ok?'':'Not a truth value: the corner leaks.');
   let s=0,seq=[];for(let n=1;n<=6;n++){s=w(k,s,1);seq.push(fm(s,Math.abs(s-Math.round(s))<1e-9?0:2));}
-  $('fold').textContent='Fold n trues: '+seq.join(', ')+' (the q-number [n] with q = '+fm(k+1)+').';
+  $('fold').textContent='Fold n trues: '+seq.join(', ')+' (the q-number [n] in base '+fm(k+1)+').';
 }
 function drawWalls(){
   const W=sW.clientWidth,H=sW.clientHeight,gap=18,pw=(W-gap)/2,m=24;
@@ -246,10 +246,10 @@ function drawLand(){
   g+=L(X(-2),Y(1),X(0),Y(-1),'var(--xor)',4)+L(X(0),Y(-1),X(4.2),Y(-5.2),'var(--or)',4);
   [[0,'γ=0'],[1,'γ=1'],[2,'γ=2']].forEach(([gg,t])=>{g+=C(X(gg-2),Y(1-gg),4.5,'var(--ink)')+T(X(gg-2)+8,Y(1-gg)-6,t);});
   g+=C(X(gm-2),Y(1-gm),8,'var(--wall)');
-  g+=T(X(p1),Y(0)-6,'p','end')+T(X(0)+6,Y(q1)+10,'q');
+  g+=T(X(p1),Y(0)-6,'p','end')+T(X(0)+6,Y(q1)+10,'d');
   sL.innerHTML=g;
   const a=0.3,bb=0.6,S=(a+bb+(gm-2)*a*bb)/(1+(gm-1)*a*bb),o=x=>x/(1-x);
-  $('gread').textContent='γ = '+fm(gm)+' sits at (p, q) = ('+fm(gm-2)+', '+fm(1-gm)+'). With a = 0.3, b = 0.6: S = '+S.toFixed(3)+'. In odds: '+o(a).toFixed(3)+' ∘_γ '+o(bb).toFixed(3)+' = '+(o(a)+o(bb)+gm*o(a)*o(bb)).toFixed(3)+' = odds of S.';
+  $('gread').textContent='γ = '+fm(gm)+' sits at (p, d) = ('+fm(gm-2)+', '+fm(1-gm)+'). With a = 0.3, b = 0.6: S = '+S.toFixed(3)+'. In odds: '+o(a).toFixed(3)+' ∘_γ '+o(bb).toFixed(3)+' = '+(o(a)+o(bb)+gm*o(a)*o(bb)).toFixed(3)+' = odds of S.';
 }
 function drawSets(){
   const W=sS.clientWidth,H=sS.clientHeight,m=20;

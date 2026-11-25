@@ -95,7 +95,7 @@ for _ in range(200):
     for S in subsets(n):
         ok_q &= abs(lam_measure(lam, [g[i] for i in S]) - (q**P(S) - 1)/(q - 1)) < 1e-9
 check("P(A) = log(1+λμ(A))/log(1+λ) is additive with P(Ω) = 1", ok_add)
-check("μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ = k + 1", ok_q)
+check("μ(A) = (q^P(A) − 1)/(q − 1) with q = 1 + λ, so k = q − 1", ok_q)
 ok = True
 for m_ in range(1, 9):
     for (lam, g) in [(0.7, 0.2), (-0.4, 0.3), (2.0, 0.05)]:
@@ -169,7 +169,7 @@ from fractions import Fraction as Fr
 check("k = −1: 1 − ∏(1 − g_i) = 1 forces some g_i = 1 (exact fractions)",
       lam_measure(-1, [Fr(3,10), Fr(1), Fr(1,2)]) == 1 and lam_measure(-1, [Fr(999,1000)]*50) < 1)
 def lens(p, q, a, b): return (a + b + p*a*b)/(1 - q*a*b)
-def L1(p, q):   # additive coordinate at 1: ∫0^1 dt/(1+pt+qt²)
+def L1(p, q):   # additive coordinate at 1: ∫0^1 dt/(1+pt+dt²)
     f = lambda t: 1/(1 + p*t + q*t*t)
     ts = np.linspace(0, 1, 2001)
     if np.min(1 + p*ts + q*ts*ts) <= 1e-9: return math.inf
@@ -181,9 +181,9 @@ for _ in range(400):
     p, q = rng.uniform(-3, 3, 2)
     if abs(np.min(1 + p*np.linspace(0,1,4001) + q*np.linspace(0,1,4001)**2)) < 1e-3: continue
     ok &= (math.isfinite(L1(p, q)) == normalizable(p, q))
-check("landscape: L(1) = ∫₀¹dt/(1+pt+qt²) finite exactly when 1+pt+qt² > 0 on [0,1]", ok)
+check("landscape: L(1) = ∫₀¹dt/(1+pt+dt²) finite exactly when 1+pt+dt² > 0 on [0,1]", ok)
 th = np.linspace(-0.99, 0.99, 50)
-check("the 'or' line k+q = −1 (statistics page) lies on the edge: 1+p+q = 0 there",
+check("the 'or' line k+d = −1 (statistics page) lies on the edge: 1+p+d = 0 there",
       all(abs(1 + (-(1+t)) + t) < 1e-15 for t in th))
 def region(p, q): return (q > -1 - p) if p >= -2 else (q > p*p/4)
 ok = True
@@ -192,7 +192,7 @@ for _ in range(2000):
     ts = np.linspace(0, 1, 20001); mn = np.min(1 + p*ts + q*ts*ts)
     if abs(mn) < 1e-3: continue
     ok &= ((mn > 0) == region(p, q))
-check("normalizable region = above the line q = −1−p (p ≥ −2) and above the parabola q = p²/4 (p < −2)", ok)
+check("normalizable region = above the line d = −1−p (p ≥ −2) and above the parabola d = p²/4 (p < −2)", ok)
 pp = sp.symbols('p')
 check("the line meets the border parabola tangentially at the cusp (−2, 1)",
       sp.solve(sp.Eq(-1 - pp, pp**2/4), pp) == [-2] and sp.diff(pp**2/4, pp).subs(pp, -2) == -1)

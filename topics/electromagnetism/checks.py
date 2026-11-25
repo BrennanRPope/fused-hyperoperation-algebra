@@ -5,8 +5,8 @@ Order follows history: electromagnetism set the dial (A), its fields ride the bo
 its field is the corner of a Clifford product and Maxwell is one equation (D), where the lens stops (E), and the
 bridge to gravity (F).
 
-The circle operation: a * b = a + b + ab, lift 1 + (a * b) = (1 + a)(1 + b).  Weighted: a + b + k ab.  Landscape law with dial q:
-(u + v) / (1 - q u v): q = -1/c^2 is Einstein's velocity addition, q = 0 Galilean, q = +1 the tangent (circle) law.
+The circle operation: a * b = a + b + ab, lift 1 + (a * b) = (1 + a)(1 + b).  Weighted: a + b + k ab.  Landscape law with dial d:
+(u + v) / (1 - d u v): d = -1/c^2 is Einstein's velocity addition, d = 0 Galilean, d = +1 the tangent (circle) law.
 """
 import json, math, sys, os, random, cmath
 import sympy as sp
@@ -58,11 +58,11 @@ check("A1. c^2 eps0 mu0 = 1 (CODATA 2018): the speed in Maxwell's waves is 1/sqr
       abs(prod - 1) < 1e-9, f"c^2 eps0 mu0 = {prod:.12f}")
 RES["A1_c2_eps0_mu0"] = prod
 qdial = -mu0 * eps0
-check("A1b. so the dial of velocity addition is q = -1/c^2 = -eps0 mu0", abs(qdial * c_SI ** 2 + 1) < 1e-9,
-      f"q = {qdial:.6e} s^2/m^2")
+check("A1b. so the dial of velocity addition is d = -1/c^2 = -eps0 mu0", abs(qdial * c_SI ** 2 + 1) < 1e-9,
+      f"d = {qdial:.6e} s^2/m^2")
 RES["A1b_q_SI"] = qdial
 
-# A2: a dial boost x' = g(x - v t), t' = g(t + q v x).  Which q leaves the wave operator d_t^2 - c^2 d_x^2 alone?
+# A2: a dial boost x' = g(x - v t), t' = g(t + d v x).  Which d leaves the wave operator ∂_t^2 - c^2 ∂_x^2 alone?
 v, q, c, g = sp.symbols('v q c g', real=True)
 f = sp.Function('f')
 Xp = g * (x - v * t)
@@ -81,16 +81,16 @@ W = sp.expand(sp.diff((a1 * Xp ** 2 / 2 + a2 * Xp * Tp + a3 * Tp ** 2 / 2), t, 2
               - c ** 2 * sp.diff((a1 * Xp ** 2 / 2 + a2 * Xp * Tp + a3 * Tp ** 2 / 2), x, 2))
 cXX, cXT, cTT = [sp.expand(W).coeff(s) for s in (a1, a2, a3)]
 sol_q = sp.solve(sp.Eq(cXT, 0), q)
-check("A2. the cross term d_X d_T vanishes only for q = -1/c^2 (Galilean q = 0 leaves it)",
-      sol_q == [-1 / c ** 2] and not zero(cXT.subs(q, 0)), f"q = {sol_q}; cross term at q=0: {sp.factor(cXT.subs(q, 0))}")
+check("A2. the cross term ∂_X ∂_T vanishes only for d = -1/c^2 (Galilean d = 0 leaves it)",
+      sol_q == [-1 / c ** 2] and not zero(cXT.subs(q, 0)), f"d = {sol_q}; cross term at d=0: {sp.factor(cXT.subs(q, 0))}")
 ratio = sp.simplify((cTT / cXX).subs({q: -1 / c ** 2, g: 1 / sp.sqrt(1 - v ** 2 / c ** 2)}))
-check("A2b. at q = -1/c^2 the operator keeps its form exactly (same wave speed c in the new frame)",
+check("A2b. at d = -1/c^2 the operator keeps its form exactly (same wave speed c in the new frame)",
       zero(ratio + 1 / c ** 2), f"coefficient ratio TT/XX = {ratio}")
-RES["A2"] = "Maxwell's wave equation is invariant only under dial boosts with q = -1/c^2"
+RES["A2"] = "Maxwell's wave equation is invariant only under dial boosts with d = -1/c^2"
 
 u1, u2 = sp.symbols('u1 u2', real=True)
 law = lambda a, b, qq: (a + b) / (1 - qq * a * b)
-check("A3. composing two dial boosts gives the landscape law (u+v)/(1 - q u v); q = -1 is Einstein's",
+check("A3. composing two dial boosts gives the landscape law (u+v)/(1 - d u v); d = -1 is Einstein's",
       zero(law(u1, u2, -1) - (u1 + u2) / (1 + u1 * u2)))
 dop = lambda u: 2 * u / (1 - u)
 check("A3b. Doppler-squared minus one composes by the circle operation: d(u (+) v) = d(u) * d(v)",
@@ -220,11 +220,11 @@ check("C2. phases compose by the circle operation: (e^{i t1} - 1) * (e^{i t2} - 
 check("C2b. the wall a = -1 fails the phase rule: (-1) * conj(-1) = -1, not 0, so U(1) never reaches the wall",
       ma(-1, -1) == -1)
 tt1, tt2 = sp.tan(th1 / 2), sp.tan(th2 / 2)
-check("C3. in the half-angle chart t = tan(theta/2) phases compose by the landscape law at q = +1: (t1+t2)/(1 - t1 t2)",
+check("C3. in the half-angle chart t = tan(theta/2) phases compose by the landscape law at d = +1: (t1+t2)/(1 - t1 t2)",
       zero(sp.simplify(sp.tan((th1 + th2) / 2) - law(tt1, tt2, 1)).rewrite(sp.tan)) or
       zero(sp.simplify(sp.expand_trig(sp.tan(th1 / 2 + th2 / 2)) - law(tt1, tt2, 1))))
 p1, p2 = sp.symbols('phi1 phi2', real=True)
-check("C3b. boosts in the half-rapidity chart s = tanh(phi/2) compose at the mirror dial q = -1: (s1+s2)/(1 + s1 s2)",
+check("C3b. boosts in the half-rapidity chart s = tanh(phi/2) compose at the mirror dial d = -1: (s1+s2)/(1 + s1 s2)",
       zero(sp.simplify(sp.expand_trig(sp.tanh(p1 / 2 + p2 / 2)) - law(sp.tanh(p1 / 2), sp.tanh(p2 / 2), -1))))
 # split-complex check: boosts as 1 + a with j^2 = +1, a * abar = 0
 ph = sp.symbols('phi', real=True)

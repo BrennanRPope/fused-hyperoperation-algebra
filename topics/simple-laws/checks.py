@@ -12,7 +12,7 @@ def check(name, cond):
 x,y,a,b,c,d,k,q,u,t,P1,P2,D,lam,th,al,be=sp.symbols('x y a b c d k q u t P1 P2 D lam th al be')
 law=lambda K,Q,X,Y:(X+Y+K*X*Y)/(1-Q*X*Y)
 
-# 1. number system: (1+xu)(1+yu) with u^2 = k u - q, read as slope = landscape law
+# 1. number system: (1+xu)(1+yu) with u^2 = k u - d, read as slope = landscape law
 e=sp.expand((1+x*u)*(1+y*u)); e=sp.rem(sp.Poly(e,u),sp.Poly(u**2-k*u+q,u)).as_expr()
 re_=e.coeff(u,0); im_=e.coeff(u,1)
 check('number system slope = landscape law', sp.simplify(im_/re_-law(k,q,x,y))==0)
@@ -25,10 +25,10 @@ def region(K,Q):
     D_=K*K-4*Q
     return 'two walls' if D_>0 else ('border' if D_==0 else 'turning')
 pts={'addition':(0,0),'The circle operation':(1,0),'union of failures / cooling':(-1,0),'tangent / Pythagoras':(0,1),
-     'velocity addition (Einstein)':(0,-1),'lens pair d=0.1 m':(-0.1,0),'rung 2':(2,sp.Rational(1,2)),
+     'velocity addition (Einstein)':(0,-1),'lens pair ℓ=0.1 m':(-0.1,0),'rung 2':(2,sp.Rational(1,2)),
      'law of cosines C=60deg':(-1,1),'law of cosines C=90deg':(0,1),'flat triangle':(2,1)}
 exp={'addition':'border','The circle operation':'two walls','union of failures / cooling':'two walls','tangent / Pythagoras':'turning',
-     'velocity addition (Einstein)':'two walls','lens pair d=0.1 m':'two walls','rung 2':'two walls',
+     'velocity addition (Einstein)':'two walls','lens pair ℓ=0.1 m':'two walls','rung 2':'two walls',
      'law of cosines C=60deg':'turning','law of cosines C=90deg':'turning','flat triangle':'border'}
 for n,(K,Q) in pts.items(): check('region '+n+' = '+exp[n], region(K,Q)==exp[n])
 # 3. rotation seen in a frame tilted to angle theta is the law at (2 cos theta, 1)
@@ -64,9 +64,9 @@ for n,(A,T) in orb.items():
 # 6. lenses: ray trace two thin lenses
 for p1,dd,p2 in [(5.,0.1,3.),(10.,0.05,-4.),(2.,0.5,7.)]:
     M=np.array([[1,0],[-p2,1]])@np.array([[1,dd],[0,1]])@np.array([[1,0],[-p1,1]])
-    check(f'two lenses apart P={p1},{p2} d={dd}', abs(-M[1,0]-(p1+p2-dd*p1*p2))<1e-12)
+    check(f'two lenses apart P={p1},{p2} ℓ={dd}', abs(-M[1,0]-(p1+p2-dd*p1*p2))<1e-12)
 M=np.array([[1,0],[-9.,1]])@np.array([[1,0.2],[0,1]])@np.array([[1,0],[-5.,1]])
-check('field lens: P1 d = 1 leaves total power = P1', abs(-M[1,0]-5.)<1e-12)
+check('field lens: P1 ℓ = 1 leaves total power = P1', abs(-M[1,0]-5.)<1e-12)
 # 7. Boyle: pressure gain a, volume factor 1/(1+a); hyperbola asymptotes at the walls
 for av in [0.5,1.0,3.0,-0.5]:
     bv=-av/(1+av); check(f'Boyle partner of {av} is its circle inverse', abs(av+bv+av*bv)<1e-14)

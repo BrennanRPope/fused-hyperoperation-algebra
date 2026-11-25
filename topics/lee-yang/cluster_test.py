@@ -4,20 +4,20 @@ Beraha numbers B_n = 4cos^2(pi/n) are the colour counts Q where chromatic zeros 
 On the dial k = Q - 1 they are k_n = 1 + 2cos(2pi/n):
   n=2,3,4 -> -1, 0, 1 (these are the inputs the landscape was built on, so not a test)
   n=5..   -> 1.618, 2, 2.247, 2.414, 2.532, 2.618, ... -> 3   (the predictions)
-Census = every law placed at a fixed (k, q) on the project's pages. Parameter families
+Census = every law placed at a fixed (k, d) on the project's pages. Parameter families
 (a whole line or curve of points) can land anywhere, so they are listed but not scored.
 """
 import csv, math, random, itertools
 from fractions import Fraction as F
 
 # ---------------- census ----------------
-# (law, k, q, page)  -- fixed placements only; duplicates across pages folded by name
+# (law, k, d, page)  -- fixed placements only; duplicates across pages folded by name
 C = []
 def add(page, k, q, *names):
     for n in names: C.append((n, float(k), float(q), page))
 
 add('landscape', 1, 0, 'Compound growth, returns, interest', 'Redshifts stacking', 'K-theory, Todd genus',
-    'Claim-count models (PGF)', 'PUE overheads', 'Tsallis q=0 / Campbell cost')
+    'Claim-count models (PGF)', 'PUE overheads', 'Tsallis q_T=0 / Campbell cost')
 add('landscape', 0, 0, 'Shannon and Renyi entropy, hazards, log-returns', 'Burgers shocks')
 add('landscape', -1, 0, 'Union of failures, survival, decrements', 'Amplitude damping (T1)',
     'Gini-Simpson, Kraft slack, erasures', 'Slashing, validator churn')
@@ -73,20 +73,20 @@ for n, k, q, p in C:
     if key in seen: continue
     seen.add(key); laws.append((key, k, q, p))
 
-FAMILIES = [('Tsallis entropy', 'k = 1 - q, the whole line', 'thermodynamics'),
+FAMILIES = [('Tsallis entropy', 'k = 1 - q_T, the whole line', 'thermodynamics'),
             ('Lee-Yang three-spin chain', '(2a, 1)', 'thermodynamics'),
             ('Law of cosines', '(-2cos C, 1)', 'simple-laws'),
             ('Rotation in tilted axes', '(2cos theta, 1)', 'simple-laws'),
             ('Lenses a distance d apart', '(-d, 0)', 'simple-laws'),
-            ('Changing units', '(lam k, lam^2 q)', 'simple-laws'),
+            ('Changing units', '(lam k, lam^2 d)', 'simple-laws'),
             ('Dependent union', '(-lift, 0)', 'statistics'),
-            ('AMH dependence', 'k + q = -1', 'statistics'),
+            ('AMH dependence', 'k + d = -1', 'statistics'),
             ('Elliptic curve over F_p', '(-a_p, p)', 'elliptic'),
             ('Noisy channels, d letters', '(-d/(d-1), 0) and (-d^2/(d^2-1), 0)', 'information'),
             ('Kaniadakis kappa-sum', '(0, kappa^2/2)', 'thermodynamics')]
 
 with open('cluster/landscape_census.csv', 'w', newline='') as f:
-    w = csv.writer(f); w.writerow(['law', 'k', 'q', 'page'])
+    w = csv.writer(f); w.writerow(['law', 'k', 'd', 'page'])
     for r in laws: w.writerow(r)
     for n, pt, p in FAMILIES: w.writerow([n, 'family', pt, p])
 
@@ -166,12 +166,12 @@ PB5 = [beraha_k(n) for n in range(2, 7)]
 say(f'  Same size, 5 values each: Beraha n=2..6 {[round(x,3) for x in PB5]} hits {len(hits(PB5, lawk))} laws; '
     f'integers -2..2 hit {len(hits(Z, lawk))}. Log-likelihoods {loglik(PB5):.1f} vs {loglik(Z):.1f}.')
 
-# Test C: invariance. A change of units a -> lam*a slides (k, q) to (lam k, lam^2 q).
-say('\nTest C (units): on the q = 0 axis every k > 0 is k = 1 in other units, so only sign(k) and k = 0')
-say('  are properties of the law. Off the axis the unit-free number is k^2/q:')
+# Test C: invariance. A change of units a -> lam*a slides (k, d) to (lam k, lam^2 d).
+say('\nTest C (units): on the d = 0 axis every k > 0 is k = 1 in other units, so only sign(k) and k = 0')
+say('  are properties of the law. Off the axis the unit-free number is k^2/d:')
 for n, k, q, _ in laws:
     if abs(k - 2) < 1e-9:
-        inv = 'sign +' if q == 0 else f'k^2/q = {k*k/q:g}'
-        say(f'    {n}: (k, q) = ({k:g}, {q:g}) -> {inv}; same law at ({k/2:g}, {q/4:g}) in units of 2')
+        inv = 'sign +' if q == 0 else f'k^2/d = {k*k/q:g}'
+        say(f'    {n}: (k, d) = ({k:g}, {q:g}) -> {inv}; same law at ({k/2:g}, {q/4:g}) in units of 2')
 say('  The three hits at k = 2 all move to k = 1 under a = 2a\'. None is pinned to 2.')
 open('cluster/cluster_output.txt', 'w').write('\n'.join(out) + '\n')

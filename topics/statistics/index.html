@@ -70,7 +70,7 @@ pre,.scroll{overflow-x:auto}
 <section class="band" id="known"><div class="wrap">
   <div class="box">
     <p><b>Known or new.</b> Every law on this page is known, most of it classical: generating functions (de Moivre, Laplace), cumulants (Thiele, 1889), inclusion–exclusion, Bayes' odds form (Good, Turing), the central limit theorem, the Ali–Mikhail–Haq copula (1978) and Hamacher's rational t-norms (1978). The aim was the same as the information-theory page: derive them in one fused language, and prove the exact parts in Lean.</p>
-    <p><b>The one placement that looks new:</b> on the landscape plane, the laws that can serve as "A or B" are exactly one line, k + q = −1, the lens laws with a wall at certainty. Its valid stretch runs from velocity addition through independence to the cusp, touching the border there. It's a tidy fact, not a soliton-sized lead: it rests on known copula theory. Details in <a href="#line">The dependence line</a>.</p>
+    <p><b>The one placement that looks new:</b> on the landscape plane, the laws that can serve as "A or B" are exactly one line, k + d = −1, the lens laws with a wall at certainty. Its valid stretch runs from velocity addition through independence to the cusp, touching the border there. It's a tidy fact, not a soliton-sized lead: it rests on known copula theory. Details in <a href="#line">The dependence line</a>.</p>
   </div>
 </div></section>
 
@@ -141,14 +141,14 @@ pre,.scroll{overflow-x:auto}
 
 <section class="band" id="entropy"><div class="wrap">
   <h2>Entropy</h2>
-  <p>The information-theory page already proves Shannon additivity (k = 0), Tsallis' pseudo-additivity (k = 1 − q) and the Rényi link, so this page reuses them. Two statistics ties are checked numerically here: at fixed variance the normal has the most entropy (1.419 nats against 1.347 for Laplace and 1.242 for uniform), and the binomial's entropy approaches the normal's ½·log(2πe·npq). The Clayton copula's generator is Tsallis' q-logarithm, so the same weight dial also runs through dependence modelling.</p>
+  <p>The information-theory page already proves Shannon additivity (k = 0), Tsallis' pseudo-additivity (k = 1 − q_T, with Tsallis index q_T) and the Rényi link, so this page reuses them. Two statistics ties are checked numerically here: at fixed variance the normal has the most entropy (1.419 nats against 1.347 for Laplace and 1.242 for uniform), and the binomial's entropy approaches the normal's ½·log(2πe·npq). The Clayton copula's generator is Tsallis' q-logarithm, so the same weight dial also runs through dependence modelling.</p>
 </div></section>
 
 <section class="band" id="line" style="background:var(--panel)"><div class="wrap">
   <h2>The dependence line: lens laws with a wall at certainty</h2>
   <div class="box red">
-    <p><b>The find.</b> An "or" law must let certainty swallow everything: a ⊙ 1 = 1. On the landscape plane's lens laws (a + b + k·ab)/(1 − q·ab), that happens exactly when k + q = −1. Lean proves the "exactly". Equivalently 1 + kx + qx² = (1 − x)(1 − θx): one wall pinned at 1.</p>
-    <p>These are precisely the unions you get when "neither happens" follows the Ali–Mikhail–Haq copula with dependence θ, at k = −(1 + θ), q = θ (proved in Lean). The copula is valid for θ from −1 to 1 (checked on a grid), so the real stretch of the line runs from <b>velocity addition</b> at θ = −1, through <b>independence</b> at θ = 0, to the <b>cusp</b> at θ = 1, where the line touches the parabola: a double wall at certainty.</p>
+    <p><b>The find.</b> An "or" law must let certainty swallow everything: a ⊙ 1 = 1. On the landscape plane's lens laws (a + b + k·ab)/(1 − d·ab), that happens exactly when k + d = −1. Lean proves the "exactly". Equivalently 1 + kx + dx² = (1 − x)(1 − θx): one wall pinned at 1.</p>
+    <p>These are precisely the unions you get when "neither happens" follows the Ali–Mikhail–Haq copula with dependence θ, at k = −(1 + θ), d = θ (proved in Lean). The copula is valid for θ from −1 to 1 (checked on a grid), so the real stretch of the line runs from <b>velocity addition</b> at θ = −1, through <b>independence</b> at θ = 0, to the <b>cusp</b> at θ = 1, where the line touches the parabola: a double wall at certainty.</p>
     <p>Known: the AMH copula (1978) is part of Hamacher's family, which Hamacher (1978) showed are the only t-norms that are rational functions. New, as far as I found: reading them as one line on the landscape map that touches the border at the cusp. It ties pooling opinions (Bayes) and the union rule to the same segment. It isn't as deep as the solitons, because the underlying facts were already in the copula literature.</p>
   </div>
 </div></section>
@@ -156,9 +156,9 @@ pre,.scroll{overflow-x:auto}
 <section class="band" id="map"><div class="wrap">
   <h2>Where each law sits</h2>
   <div class="two">
-    <figure class="plate"><img src="figures/f5_landscape_statistics.png" alt="The landscape plane with k across and q up. A parabola q = k²/4 separates the two-real-walls region below from the no-real-wall region above. Points on the q = 0 axis: k = 1 generating functions and odds, k = 0 means, variances, cumulants and entropy, k = −1 independent union, k = −2 parity. A red segment along k + q = −1 runs from velocity addition at (0, −1) through (−1, 0) to the cusp at (−2, 1), where it touches the parabola."><figcaption>Rung 0 is addition, rung 1 is the circle operation, rung 2 is the climb of n copies. All of statistics sits in the two-walled country or on its border.</figcaption></figure>
+    <figure class="plate"><img src="figures/f5_landscape_statistics.png" alt="The landscape plane with k across and d up. A parabola d = k²/4 separates the two-real-walls region below from the no-real-wall region above. Points on the d = 0 axis: k = 1 generating functions and odds, k = 0 means, variances, cumulants and entropy, k = −1 independent union, k = −2 parity. A red segment along k + d = −1 runs from velocity addition at (0, −1) through (−1, 0) to the cusp at (−2, 1), where it touches the parabola."><figcaption>Rung 0 is addition, rung 1 is the circle operation, rung 2 is the climb of n copies. All of statistics sits in the two-walled country or on its border.</figcaption></figure>
     <table class="stack">
-      <thead><tr><th>Law</th><th>Point (k, q)</th><th>Rung</th><th>Status</th></tr></thead>
+      <thead><tr><th>Law</th><th>Point (k, d)</th><th>Rung</th><th>Status</th></tr></thead>
       <tbody>
         <tr><td>Disjoint events add (Kolmogorov)</td><td>(0, 0)</td><td>0</td><td><span class="tag p">proved</span></td></tr>
         <tr><td>Independent union, survival multiplies</td><td>(−1, 0)</td><td>1</td><td><span class="tag p">proved</span></td></tr>
@@ -175,7 +175,7 @@ pre,.scroll{overflow-x:auto}
         <tr><td>Bayes odds; repeated evidence</td><td>(1, 0) on odds − 1</td><td>1; 2</td><td><span class="tag p">proved</span></td></tr>
         <tr><td>Pooling opinions</td><td>(0, −1)</td><td>lens</td><td><span class="tag p">proved</span></td></tr>
         <tr><td>Log-odds add</td><td>(0, 0)</td><td>0</td><td><span class="tag i">numeric</span></td></tr>
-        <tr><td>AMH dependence</td><td>k + q = −1, θ ∈ [−1, 1]</td><td>lens</td><td><span class="tag p">proved</span> identity; validity <span class="tag i">numeric</span></td></tr>
+        <tr><td>AMH dependence</td><td>k + d = −1, θ ∈ [−1, 1]</td><td>lens</td><td><span class="tag p">proved</span> identity; validity <span class="tag i">numeric</span></td></tr>
         <tr><td>Shannon entropy adds</td><td>(0, 0)</td><td>0</td><td><span class="tag p">proved</span> on the information page</td></tr>
       </tbody>
     </table>
@@ -191,7 +191,7 @@ pre,.scroll{overflow-x:auto}
     <li><b>The dial:</b> generating functions multiply, the k-moment law, coins, unequal-coin union and parity, P(even) − P(odd), lit corners, binomial = Pascal layers.</li>
     <li><b>Moments:</b> Pascal rows to the fourth moment, κ₂ to κ₄ additive, n copies, scaling, the exact 1/n shape decay, coin and binomial statistics.</li>
     <li><b>Bayes:</b> odds form, evidence as the circle operation, repeated evidence as the climb, complement as inverse, pooling as velocity addition.</li>
-    <li><b>The dependence line:</b> AMH union as a lens law, its walls, the absorbing-certainty condition k + q = −1, the three landmarks.</li>
+    <li><b>The dependence line:</b> AMH union as a lens law, its walls, the absorbing-certainty condition k + d = −1, the three landmarks.</li>
   </ol>
   <p class="muted">Not in Lean, because core Lean has no real numbers or limits: logs, e<sup>x</sup>, the normal density, the CLT limit, Poisson, maximum entropy, and that AMH is a valid copula. Those are in <code>checks.py</code> (81 checks, output in <code>checks_output.txt</code>).</p>
   <p class="muted">Files in the project folder, math-theory/statistics/: index.html, lean/Statistics.lean, lean/CheckStatistics.lean, lean/theorems.tsv, checks.py, checks_output.txt, figures.py, figures/. Builds on the <a href="https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v">information-theory page</a> and the landscape page.</p>

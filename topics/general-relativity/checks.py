@@ -37,19 +37,19 @@ t, x, y, z, r, th, ph = sp.symbols('t x y z r theta phi', real=True)
 M, q = sp.symbols('M q', real=True)
 
 # ---------------------------------------------------------------------------
-section("A. The dial's boosts made local: q is the signature coefficient")
-# Dial boost generators on (t, x, y, z): K_i = -q x_i d_t + t d_i  (q = -1/c^2 Lorentz, 0 Galilean, +1 rotations)
+section("A. The dial's boosts made local: d is the signature coefficient")
+# Dial boost generators on (t, x, y, z): K_i = -d x_i ∂_t + t ∂_i  (d = -1/c^2 Lorentz, 0 Galilean, +1 rotations)
 f = sp.Function('f')(t, x, y, z)
 X4 = [t, x, y, z]
 def K(i):
     xi = X4[i]
     return lambda F: -q * xi * sp.diff(F, t) + t * sp.diff(F, xi)
-def J(i, j):  # rotation x_i d_j - x_j d_i
+def J(i, j):  # rotation x_i ∂_j - x_j ∂_i
     return lambda F: X4[i] * sp.diff(F, X4[j]) - X4[j] * sp.diff(F, X4[i])
 comm = sp.simplify(K(1)(K(2)(f)) - K(2)(K(1)(f)))
-check("[K_x, K_y] = -q (x d_y - y d_x): two boosts close on q times a rotation",
+check("[K_x, K_y] = -d (x ∂_y - y ∂_x): two boosts close on d times a rotation",
       sp.simplify(comm + q * J(1, 2)(f)) == 0)
-check("q = 0 (Galilean dial): boosts commute, no twist", sp.simplify(comm.subs(q, 0)) == 0)
+check("d = 0 (Galilean dial): boosts commute, no twist", sp.simplify(comm.subs(q, 0)) == 0)
 # Hypersurface deformation bracket for linear lapses N = b.x, M = c.x on the flat slice:
 b1, b2, b3, c1, c2, c3 = sp.symbols('b1 b2 b3 c1 c2 c3')
 N = b1 * x + b2 * y + b3 * z
@@ -60,7 +60,7 @@ bc = sp.Matrix([b1, b2, b3]).cross(sp.Matrix([c1, c2, c3]))
 rot = sp.Matrix([x, y, z]).cross(bc) * -1
 check("HKT bracket with linear lapses: N grad M - M grad N is a rigid rotation (the twist)",
       all(sp.expand(shift[i] - rot[i]) == 0 for i in range(3)))
-RES["A"] = "two dial boosts close on q x rotation; the HKT bracket {H(N),H(M)} = eps D(N grad M - M grad N) carries the same coefficient, eps = sign(q)"
+RES["A"] = "two dial boosts close on d x rotation; the HKT bracket {H(N),H(M)} = eps D(N grad M - M grad N) carries the same coefficient, eps = sign(d)"
 
 # ---------------------------------------------------------------------------
 section("B. Route (a): the dial alone as a field = scalar gravity")

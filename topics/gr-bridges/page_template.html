@@ -40,7 +40,7 @@ html{scroll-padding-top:72px}
 <h1>The circle operation alone gives one fixed curvature; a direction dial gives all of it, and then every bridge reaches Einstein</h1>
 <p class="lede">Nov 25, 2026. Can the circle operation's own rules build curved space, and do four known bridges to Einstein's field equations go through? 65 of 65 checks pass; 22 new Lean theorems.</p>
 <ul class="answer">
-<li><b>The circle operation's own rules build one fixed curvature.</b> Two boosts close on a twist = q × area. That makes relativity's velocity space, a curved space with a single fixed curvature.</li>
+<li><b>The circle operation's own rules build one fixed curvature.</b> Two boosts close on a twist = d × area. That makes relativity's velocity space, a curved space with a single fixed curvature.</li>
 <li class="no"><b>A dial that varies only by place works in a 2D world and is blocked in 3D and 4D.</b> Schur's theorem: a dial that is the same in every direction at each point must be the same everywhere. This is the exact step where "its own rules" stop.</li>
 <li><b>The dial has to depend on direction, so "add to the circle operation ∘₁ (called mult-add before 1.0)" was the right call.</b> The smallest addition is the square rule of a Clifford (geometric) algebra, e<sub>i</sub>e<sub>j</sub> + e<sub>j</sub>e<sub>i</sub> = 2k<sub>ij</sub>. That k<sub>ij</sub> is exactly a metric: a renaming of g<sub>ij</sub>, plus the reason it must be there.</li>
 <li><b>k as a Clifford number works in the sandwich form a + b + a·k·b.</b> It is associative for every k and keeps the lift 1 + k(a∘₁b) = (1 + ka)(1 + kb). Used alone, a varying k makes no curvature; with a twist field added it is gauge-theory gravity, which is general relativity, and the river is its natural gauge.</li>
@@ -51,12 +51,12 @@ html{scroll-padding-top:72px}
 <main>
 <section class="band" id="ladder"><div class="wrap">
 <h2>From the circle operation to curved space, in four steps</h2>
-<figure>@@ladder@@<figcaption>Steps 1 and 2 are the circle operation's own rules: one fixed curvature. Step 3 (a dial that changes by place) works in 2D, where any curvature q(x, y) can be made, and is blocked in 3D and 4D. Step 4 (a dial for each pair of directions) is a metric and allows any curvature.</figcaption></figure>
+<figure>@@ladder@@<figcaption>Steps 1 and 2 are the circle operation's own rules: one fixed curvature. Step 3 (a dial that changes by place) works in 2D, where any curvature d(x, y) can be made, and is blocked in 3D and 4D. Step 4 (a dial for each pair of directions) is a metric and allows any curvature.</figcaption></figure>
 <table class="stack"><thead><tr><th>Step</th><th>What was checked</th></tr></thead><tbody>
 <tr><td class="tag">One direction</td><td>In Cl(1,1) boosts are 1 + βσ with σ² = +1. Products give Einstein's addition; the two light-cone parts multiply, so they compose by the circle operation; the norm 1 − β² is the wall.</td></tr>
-<tr><td class="tag">Two directions</td><td>[e<sub>0</sub>e<sub>1</sub>, e<sub>0</sub>e<sub>2</sub>] = −2k<sub>0</sub> e<sub>1</sub>e<sub>2</sub>: the twisted-boost law, with q the square of the shared direction. The Thomas–Wigner twist of a velocity loop equals its area × curvature to 10<sup>−15</sup>.</td></tr>
-<tr><td class="tag">Dial by place, 2D</td><td>Curvature q = −e<sup>−2u</sup>Δu; any q reachable. Loop twist ÷ area matched q at three places with three different values.</td></tr>
-<tr><td class="tag">Dial by place, 3D+</td><td>Same twist in every plane gives G = −(n−1)(n−2)/2 · q g, so the Bianchi identity forces q constant once n ≥ 3. In an explicit 3D example, making all planes agree leaves only constant curvature.</td></tr>
+<tr><td class="tag">Two directions</td><td>[e<sub>0</sub>e<sub>1</sub>, e<sub>0</sub>e<sub>2</sub>] = −2k<sub>0</sub> e<sub>1</sub>e<sub>2</sub>: the twisted-boost law, with d the square of the shared direction. The Thomas–Wigner twist of a velocity loop equals its area × curvature to 10<sup>−15</sup>.</td></tr>
+<tr><td class="tag">Dial by place, 2D</td><td>Curvature d = −e<sup>−2u</sup>Δu; any d reachable. Loop twist ÷ area matched d at three places with three different values.</td></tr>
+<tr><td class="tag">Dial by place, 3D+</td><td>Same twist in every plane gives G = −(n−1)(n−2)/2 · d g, so the Bianchi identity forces d constant once n ≥ 3. In an explicit 3D example, making all planes agree leaves only constant curvature.</td></tr>
 <tr><td class="tag">Dial by direction</td><td>k<sub>ij</sub>(x) gives a different twist per plane at one point (0.00325, 0.01138, −0.00345 in the example), confirmed by a numeric loop.</td></tr>
 <tr><td class="tag">Which dial does matter make?</td><td>Weak field: in empty space light focuses in some direction unless γ = 1. "No focusing without energy crossing" (Jacobson's rule) forces γ = 1; the dial-only theory (γ = 0) breaks it.</td></tr>
 </tbody></table>

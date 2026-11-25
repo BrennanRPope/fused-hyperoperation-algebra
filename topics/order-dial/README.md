@@ -17,7 +17,7 @@ A category is just objects plus arrows that compose, with composition always ass
 - **The circle operation is composition.** Read a as the map x ↦ (1 + ka)x + a. Doing b then a gives the map for a ∘ₖ b (the existing `T_comp` in [groups-lie](../groups-lie/), and here `app_comp`, `k_slice`). Every one of those maps fixes the same point, the wall −1/k (left picture). Maps that share a centre commute, which is why the circle operation doesn't care about order.
 - **The full home is the stretch-and-shift (affine) group.** Let the stretch a and the shift c vary separately: (a, c) is x ↦ (1 + a)x + c. Composing gives (a ∘₁ b, c + (1 + a)d): **the stretches still combine by the circle operation, and only the shifts pick up order** (`comp`, `stretch_order_free`).
 - **The cost of order is a wedge.** The two orders differ by a pure shift equal to a·d − b·c, the oriented area spanned by (a, c) and (b, d) (`order_gap`). Two maps commute exactly when that area is zero, which is exactly when they share a centre (`commute_iff`). The circle operation's family is one such commuting slice.
-- **The whole landscape is composition too.** Every law (a + b + p·ab)/(1 − q·ab) is a one-parameter family of Möbius maps x ↦ (αx + β)/(γx + δ) composing (check I7; proved as `mob` products in groups-lie). The circle operation is the slice that fixes infinity (the affine maps). Lie's vector fields α + βx + γx² are the arrows' directions; translation and stretch don't commute ([1, x] = 1, check I9).
+- **The whole landscape is composition too.** Every law (a + b + p·ab)/(1 − d·ab) is a one-parameter family of Möbius maps x ↦ (αx + β)/(γx + δ) composing (check I7; proved as `mob` products in groups-lie). The circle operation is the slice that fixes infinity (the affine maps). Lie's vector fields α + βx + γx² are the arrows' directions; translation and stretch don't commute ([1, x] = 1, check I9).
 
 *Known:* all of it. The affine group, Möbius one-parameter groups (Lie, Klein) and "formal group laws are one-parameter groups" are textbook. *Ours:* reading the circle operation as the commuting slice through the wall, and the order gap as the same wedge seen in Clifford's work (section 5).
 
@@ -28,7 +28,7 @@ A category is just objects plus arrows that compose, with composition always ass
 | Fused rungs: conjugate a rung by x ↦ 1 + x | composing with the shift S on both sides, S⁻¹ ∘ f ∘ S; the shift is an isomorphism of one-object categories, (ℝ, ∘₁) ≅ (ℝ, ×) |
 | Circle powers a^(∘₁n) = (1 + a)ⁿ − 1 | n-fold composition of one stretch |
 | Rung flow and the Abel function | fractional composition powers: "do this map half a time" |
-| The landscape plane (k, q) | one-parameter families of Möbius maps |
+| The landscape plane (k, d) | one-parameter families of Möbius maps |
 | Category theory pass: A ∘₁ B is the product in sets-and-partial-functions | the arrows there compose as partial functions; the lift is a functor |
 | `no_iterate_half` (no f with f(f(n)) = 2ⁿ when f(0) = 1) | the cardinal shadow of "no functor square root of the power set", section 6 |
 

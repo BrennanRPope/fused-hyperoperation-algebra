@@ -93,9 +93,9 @@ plt.tight_layout(); fig.savefig(f"{OUT}/f2_cube_union_parity.png", dpi=150); plt
 fig, ax = plt.subplots(figsize=(11, 4.4))
 ax.axhline(0, color=GRID, lw=2)
 marks = [
-    (1, "k = 1", "Tsallis q = 0 (count − 1)\nCampbell cost M − 1\nvariable node: odds − 1"),
+    (1, "k = 1", "Tsallis q_T = 0 (count − 1)\nCampbell cost M − 1\nvariable node: odds − 1"),
     (0, "k = 0", "Shannon, Rényi\nexpected code length\nLLRs, hazards, bits"),
-    (-1, "k = −1", "independent failures\nerasure channel\nGini–Simpson (Tsallis q = 2)\nKraft slack"),
+    (-1, "k = −1", "independent failures\nerasure channel\nGini–Simpson (Tsallis q_T = 2)\nKraft slack"),
     (-2, "k = −2", "binary symmetric channel\nparity, piling-up\ncheck node"),
 ]
 for x, lab, txt in marks:
@@ -114,7 +114,7 @@ ax.annotate("", xy=(-2.15, 0.85), xytext=(1.15, 0.85),
 ax.text(-0.5, 0.9, "more cancelling in the corner", ha="center", fontsize=10, color=INK2)
 ax.text(-1.85, 0.55, "channels: k = −(1 + c), c = chance a second error\nlands back on the right letter = 1/(letters − 1)",
         ha="center", fontsize=9, color=INK2)
-ax.text(0.6, 0.5, "entropy: k = 1 − q\n(Tsallis index q)", ha="center", fontsize=9, color=INK2)
+ax.text(0.6, 0.5, "entropy: k = 1 − q_T\n(Tsallis index q_T)", ha="center", fontsize=9, color=INK2)
 ax.set_xlim(-2.5, 1.5); ax.set_ylim(-0.75, 1.05); ax.axis("off")
 ax.set_title("The weight ladder: where each information law sits", loc="left", fontsize=13)
 plt.tight_layout(); fig.savefig(f"{OUT}/f3_weight_ladder.png", dpi=150); plt.close(fig)

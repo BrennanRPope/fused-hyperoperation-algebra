@@ -38,17 +38,17 @@ plt.tight_layout(); plt.savefig("figures/f2_tate_pinch.png"); plt.close()
 
 # F3 landscape with rung curve, pendulum segment, Frobenius
 fig, ax = plt.subplots(figsize=(7.4, 5.4))
-kk = np.linspace(-2.6, 2.6, 300); ax.plot(kk, kk**2/4, color=INK, lw=1.5, label="border (cusps): k² = 4q")
+kk = np.linspace(-2.6, 2.6, 300); ax.plot(kk, kk**2/4, color=INK, lw=1.5, label="border (cusps): k² = 4d")
 ss = np.linspace(-1.2, 2.8, 300); ax.plot(ss, ss*(ss - 1)/4, color=BLUE, lw=1.5, label="rung curve (s, s(s-1)/4)")
 ax.plot([0, 0], [-0.5, -1], color=AMBER, lw=4, solid_capstyle="round", label="pendulum / sn law, m from 0 to 1")
 good = [(-a/math.sqrt(p)) for nm in R["frob"] for p, a, b in R["frob"][nm] if not b]
 ax.scatter(good, np.ones(len(good)) + np.random.default_rng(0).uniform(-.03, .03, len(good)), s=3, color=GREEN, alpha=.35, label="good primes: (-a_p/√p, 1), scaled by units")
 ax.scatter([1, -1], [0, 0], s=80, color=RED, zorder=5, label="bad primes: k = +1 non-split, -1 split")
 ax.annotate("The circle operation\n(non-split)", (1, 0), (1.25, -.55), fontsize=9, arrowprops=dict(arrowstyle="-", color=GRAY))
-ax.annotate("Tate curve at q=0\n(split)", (-1, 0), (-2.4, -.55), fontsize=9, arrowprops=dict(arrowstyle="-", color=GRAY))
+ax.annotate("Tate curve at d=0\n(split)", (-1, 0), (-2.4, -.55), fontsize=9, arrowprops=dict(arrowstyle="-", color=GRAY))
 ax.text(-2.5, 1.55, "turning country\n(no real wall)", fontsize=9, color=GRAY); ax.text(1.6, -1.2, "two-wall country", fontsize=9, color=GRAY)
 ax.axhline(0, color=GRAY, lw=.5); ax.axvline(0, color=GRAY, lw=.5)
-ax.set_xlabel("k: corner weight (ab)"); ax.set_ylabel("q: bend (a²b, ab²)"); ax.set_xlim(-2.7, 2.9); ax.set_ylim(-1.4, 1.9)
+ax.set_xlabel("k: corner weight (ab)"); ax.set_ylabel("d: bend (a²b, ab²)"); ax.set_xlim(-2.7, 2.9); ax.set_ylim(-1.4, 1.9)
 ax.legend(fontsize=8, frameon=False, loc="upper right"); plt.tight_layout(); plt.savefig("figures/f3_map.png"); plt.close()
 
 # F4 Sato-Tate

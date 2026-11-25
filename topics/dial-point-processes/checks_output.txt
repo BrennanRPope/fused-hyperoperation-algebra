@@ -101,13 +101,13 @@ PASS 4 independent copies of (k=0.5, K) have the count law of (k=0.125, 4K)
 PASS simulated: two boson copies superposed have Var 4.593 = that of (k=1/2, 2K) 4.603 (within 5%)
 
 # 4. Tilting a mode's count: its mean runs by a lens law on the landscape
-PASS x(t) = (tilted mean - mean)/variance composes exactly by the lens law (a+b+p ab)/(1-q ab), p = 1+2k mu, q = k mu(1+k mu)
+PASS x(t) = (tilted mean - mean)/variance composes exactly by the lens law (a+b+p ab)/(1-d ab), p = 1+2k mu, d = k mu(1+k mu)
 PASS the tilted mean runs by the rate m' = m(1 + k m) (the variance function, Morris 1982)
-PASS every dial count lands on the one parabola p^2 - 4q = 1 (two real walls)
-PASS units-free shape p^2/(p^2-4q) = (2*Fano - 1)^2 for every mode
+PASS every dial count lands on the one parabola p^2 - 4d = 1 (two real walls)
+PASS units-free shape p^2/(p^2-4d) = (2*Fano - 1)^2 for every mode
 PASS fermion modes have shape in [0,1], boson modes shape > 1, none negative (no count lives above the border parabola)
-PASS empty-mode limit s=0: (p,q) = (1,0), the circle operation; full fermion mode s=-1: (-1,0), union of failures
-PASS half-filled fermion mode s=-1/2: (p,q) = (0,-1/4), lens law (a+b)/(1+ab/4) is velocity addition with speed limit 2
+PASS empty-mode limit s=0: (p,d) = (1,0), the circle operation; full fermion mode s=-1: (-1,0), union of failures
+PASS half-filled fermion mode s=-1/2: (p,d) = (0,-1/4), lens law (a+b)/(1+ab/4) is velocity addition with speed limit 2
 PASS particle-hole: at k=-1 eigenvalues mu and 1-mu give the same shape
 
 101 PASS, 0 FAIL, of 101 checks

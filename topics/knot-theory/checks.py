@@ -164,7 +164,7 @@ check("[r/s]_q from the tangle → r/s at q = 1 (A = e^(iπ/4)) for all seven",
 print("--- 5. The landscape: Möbius steps, but no bend ---")
 F = lambda p, qb, aa, bb: (aa + bb + p*aa*bb)/(1 - qb*aa*bb)
 mob = sp.Matrix([[1 + a*k, a], [u*a, 1]])  # (1+pa)b + a over (-q a) b + 1, with p=k, -q=u
-check("every landscape law, 'add a' is a Möbius map of b: F(a,b) = ((1+pa)b + a)/(−qa·b + 1)",
+check("every landscape law, 'add a' is a Möbius map of b: F(a,b) = ((1+pa)b + a)/(−da·b + 1)",
       z(F(k, -u, a, b) - (mob[0, 0]*b + mob[0, 1])/(mob[1, 0]*b + mob[1, 1])))
 check("tangle sums sit on the dial line (bend 0): x(S+T) = F_{d,0}(x(S), x(T))", z(F(dd, 0, x, y) - wadd(dd, x, y)))
 wv = lambda y1, y2: 1/wadd(1/qy - 1, 1/y1, 1/y2)

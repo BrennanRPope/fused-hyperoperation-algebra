@@ -9,7 +9,7 @@
 <style>
 /* VOICE a technical plate for one reader who thinks in pictures; calm, exact, honest about what is old
    IDEA a thermal survey sheet: a heat map of the law plane, hot and cold inks, numbered stations
-   PICTURE the (k, q) landscape with thermodynamics' laws pinned in heat red over the earlier pages in grey
+   PICTURE the (k, d) landscape with thermodynamics' laws pinned in heat red over the earlier pages in grey
    COLOUR white sheet (charcoal at night), heat red for laws found here, cold blue for walls and two-wall country
    TYPE Archivo light for the title, Archivo for text
    LAYOUT verdict and figures on top, map with its legend, then one band per family of laws, status table, files */
@@ -71,9 +71,9 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Where thermodynamics lands on the landscape</h2>
-<p>Each point (k, q) is the law (a + b + k·ab)/(1 − q·ab): k is how full the corner cell ab is, q is how much the cube's next layer bends. Grey rings are the laws from earlier pages. Red stations are thermodynamics. Most of it lies on the straight line q = 0, where the circle operation lives. It also reaches the velocity point, the border parabola and the turning country above it.</p>
+<p>Each point (k, d) is the law (a + b + k·ab)/(1 − d·ab): k is how full the corner cell ab is, d is how much the cube's next layer bends. Grey rings are the laws from earlier pages. Red stations are thermodynamics. Most of it lies on the straight line d = 0, where the circle operation lives. It also reaches the velocity point, the border parabola and the turning country above it.</p>
 <div class="plate">
-<div class="fig"><svg id="map" role="img" aria-label="The k–q plane with the parabola k² = 4q splitting it into a two-walled country below and a turning country above, with thermodynamics laws pinned as numbered red dots"></svg></div>
+<div class="fig"><svg id="map" role="img" aria-label="The k–d plane with the parabola k² = 4d splitting it into a two-walled country below and a turning country above, with thermodynamics laws pinned as numbered red dots"></svg></div>
 <ol class="legend" id="legend"></ol>
 </div>
 </div></section>
@@ -110,7 +110,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Entropy families: the weight is the entropy index</h2>
-<p>Tsallis entropy composes as S_AB = S_A ∘ₖ S_B with k = 1 − q, and Rényi entropy is the log of the lift, so it adds. This circle operation with dial k already has a name in that literature: the <b>q-sum</b>, x ⊕_q y = x + y + (1 − q)xy, with its q-logarithm and q-exponential (Nivanen, Le Méhauté and Wang 2003; Borges 2004). So the whole k-line is Tsallis' q-algebra. <span class="tag k">known</span></p>
+<p>Tsallis entropy composes as S_AB = S_A ∘ₖ S_B with k = 1 − q_T, and Rényi entropy is the log of the lift, so it adds. This circle operation with dial k already has a name in that literature: the <b>q-sum</b>, x ⊕_q y = x + y + (1 − q_T)xy, with its q-logarithm and q-exponential (Nivanen, Le Méhauté and Wang 2003; Borges 2004). So the whole k-line is Tsallis' q-algebra, with Tsallis index q_T = 1 − k. <span class="tag k">known</span></p>
 <p>Kaniadakis' relativistic κ-entropy uses the κ-sum x√(1 + κ²y²) + y√(1 + κ²x²), which is sinh addition. It has no corner term, and its next layer bends upward: it osculates the map at (0, κ²/2), in the turning country, the mirror of sine addition at (0, −½). <span class="tag k">known law</span> <span class="tag s">placement computed here</span></p>
 </div></section>
 
@@ -137,7 +137,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <h2>A law on the border: Stokes' pile of plates</h2>
 <div class="two">
 <div>
-<p>Stack two non-absorbing glass plates, or face two gray surfaces for radiant heat. Summing every bounce gives R = (R₁ + R₂ − 2R₁R₂)/(1 − R₁R₂) (Stokes 1862; the gray-plate rule 1/ε = 1/ε₁ + 1/ε₂ − 1 is the same law). That is (k, q) = (−2, 1), exactly on the border parabola k² = 4q. Its lens N(R) = R/(1 − R) = 1/ε − 1 turns it into plain addition, with one double wall at R = 1, a perfect mirror.</p>
+<p>Stack two non-absorbing glass plates, or face two gray surfaces for radiant heat. Summing every bounce gives R = (R₁ + R₂ − 2R₁R₂)/(1 − R₁R₂) (Stokes 1862; the gray-plate rule 1/ε = 1/ε₁ + 1/ε₂ − 1 is the same law). That is (k, d) = (−2, 1), exactly on the border parabola k² = 4d. Its lens N(R) = R/(1 − R) = 1/ε − 1 turns it into plain addition, with one double wall at R = 1, a perfect mirror.</p>
 <p>Being on the border has a visible consequence. n radiation shields cut heat flow as 1/(n + 1), a power law, while absorbing plates, with two walls, fall exponentially. This law wasn't on the map before (the earlier "stacked reflections" point at (0, −1) is the coherent wave version). <span class="tag k">formula known</span> <span class="tag n">placement new here</span></p>
 </div>
 <div class="shot" style="margin-top:0"><img src="figures/f6_stokes_border.png" alt="Fraction of light transmitted against number of plates. Non-absorbing plates fall slowly like 1/n; plates that absorb 30 percent fall exponentially toward zero."></div>
@@ -146,14 +146,14 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Wick rotation is a change of units by i</h2>
-<p>Read a law in units i·a and it moves from (k, q) to (i·k, −q). On the k = 0 axis that flips q: thermal tanh addition at (0, −1), with two walls, becomes quantum tan addition at (0, +1), a turn. Imaginary time trades saturation for oscillation, and the map shows it as a reflection through the straight line. <span class="tag k">known</span> (Wick 1954) <span class="tag s">placement restated</span> Fluctuation theorems sit at k = +1 too: for independent processes ⟨e^(−βW)⟩ − 1 combines by the circle operation (Jarzynski 1997), and coupled reactions multiply equilibrium constants (Hess).</p>
+<p>Read a law in units i·a and it moves from (k, d) to (i·k, −d). On the k = 0 axis that flips d: thermal tanh addition at (0, −1), with two walls, becomes quantum tan addition at (0, +1), a turn. Imaginary time trades saturation for oscillation, and the map shows it as a reflection through the straight line. <span class="tag k">known</span> (Wick 1954) <span class="tag s">placement restated</span> Fluctuation theorems sit at k = +1 too: for independent processes ⟨e^(−βW)⟩ − 1 combines by the circle operation (Jarzynski 1997), and coupled reactions multiply equilibrium constants (Hess).</p>
 </div></section>
 
 <section class="band"><div class="wrap">
 <h2>Every law, its place and its status</h2>
 <p class="mute">Status: <span class="tag k">known</span> standard physics restated; <span class="tag s">tidy reading</span> a known fact read in circle-operation terms; <span class="tag n">new here</span> new to the literature as far as I found. The Lean column names theorems in <code>lean/ThermoFused.lean</code>.</p>
 <div class="scroll"><table class="stack">
-<thead><tr><th>Law</th><th>Form</th><th>(k, q)</th><th>Status</th><th>Lean</th></tr></thead>
+<thead><tr><th>Law</th><th>Form</th><th>(k, d)</th><th>Status</th><th>Lean</th></tr></thead>
 <tbody id="rows"></tbody>
 </table></div>
 <p class="mute" style="margin-top:12px">Not placed: how temperature transforms under a boost is still argued (Planck–Einstein T/γ, Ott γT, Landsberg invariant), so it is left off the map as unsettled.</p>
@@ -183,8 +183,8 @@ const st=[
  [-2,1,"Stokes' pile of plates, gray-plate radiation","on the border: one double wall"],
  [0,0.5,"Kaniadakis κ-sum (κ = 1)","third-layer match only"],
  [0,1,"Fermi function after Wick rotation","tan addition, a turn"],
- [null,null,"Tsallis entropy, k = 1 − q","the whole straight line"],
- [null,null,"Lee–Yang two-spin zeros, k = 2a, q = 1","ferromagnets in the turning country"]];
+ [null,null,"Tsallis entropy, k = 1 − q_T","the whole straight line"],
+ [null,null,"Lee–Yang two-spin zeros, k = 2a, d = 1","ferromagnets in the turning country"]];
 document.getElementById('legend').innerHTML=st.map((s,i)=>`<li><b>${i+1}</b><span>${s[2]}<small>${s[3]}</small></span></li>`).join('');
 const svg=document.getElementById('map');
 const draw=()=>{
@@ -209,11 +209,11 @@ const draw=()=>{
  if(W>=520){
   g+=`<text x="${X(1.25)}" y="${Y(2.3)}" fill="var(--hot)">no real wall: turning</text>`;
   g+=`<text x="${X(1.15)}" y="${Y(-1.7)}" fill="var(--cold)">two real walls: saturating</text>`;
-  g+=`<text x="${X(-3.1)}" y="${Y(2.38)}" fill="var(--ink)">border k² = 4q</text>`;
+  g+=`<text x="${X(-3.1)}" y="${Y(2.38)}" fill="var(--ink)">border k² = 4d</text>`;
   [-3,-2,-1,0,1,2,3].forEach(k=>g+=`<text x="${X(k)}" y="${H-pad+18}" text-anchor="middle" fill="var(--mute)">${k}</text>`);
   [-2,-1,1,2].forEach(q=>g+=`<text x="${pad-8}" y="${Y(q)+4}" text-anchor="end" fill="var(--mute)">${q}</text>`);
  }
- g+=`<text x="${W-pad}" y="${H-6}" text-anchor="end" fill="var(--mute)">k, corner weight →</text><text x="${pad}" y="${pad-14}" fill="var(--mute)">↑ q, bend</text>`;
+ g+=`<text x="${W-pad}" y="${H-6}" text-anchor="end" fill="var(--mute)">k, corner weight →</text><text x="${pad}" y="${pad-14}" fill="var(--mute)">↑ d, bend</text>`;
  svg.innerHTML=g;};
 const ro=new ResizeObserver(draw);ro.observe(svg);
 const R=[
@@ -233,7 +233,7 @@ const R=[
  ["Curzon–Ahlborn","η_C = η_CA ∘₋₁ η_CA, a half-step","(−1, 0)","tidy reading","curzon_ahlborn_half"],
  ["Otto cycle, heat pumps","ratios multiply","(−1, 0)","known","ratio_series"],
  ["Second law composes","stage bounds give the overall bound","(−1, 0)","known","second_law_composes"],
- ["Tsallis entropy (q-sum)","S_A ∘ₖ S_B, k = 1 − q","(1 − q, 0)","known","tsallis_composes, qlog_qsum"],
+ ["Tsallis entropy (q-sum)","S_A ∘ₖ S_B, k = 1 − q_T","(1 − q_T, 0)","known","tsallis_composes, qlog_qsum"],
  ["Rényi entropy","log of the lift","(0, 0)","known","renyi_adds"],
  ["Kaniadakis κ-sum","sinh addition","(0, κ²/2)","placement computed here","Python only"],
  ["Ising bonds in series","p₁ ∘₋₂ p₂","(−2, 0)","known","ising_series, decimation_num/den"],
@@ -241,7 +241,7 @@ const R=[
  ["Kramers–Wannier duality","the lens M(t); fixed point √2 − 1 = T_c","lens","known","lens_vel, lens_involution, lens_fixed_point"],
  ["Lee–Yang, three-spin chain","coefficients a ∘₁ b, zeros on the circle","(2a, 1)","theorem known, reading new to this project","chain3_circ, chain3_disc, two_spin_no_real_zero"],
  ["Stokes' pile, gray plates","(a + b − 2ab)/(1 − ab)","(−2, 1)","placement new here","stokes_additive, shields, stokes_double_wall"],
- ["Wick rotation","units by i: (k, q) → (ik, −q)","(0, ∓1)","known, restated","wick_num, wick_den"],
+ ["Wick rotation","units by i: (k, d) → (ik, −d)","(0, ∓1)","known, restated","wick_num, wick_den"],
  ["Jarzynski equality","⟨e^(−βW)⟩ − 1 combines by the circle operation","(1, 0)","known","jarzynski_composes"],
  ["Hess's law","K multiplies, ΔG adds","(1, 0)","known","hess"],
  ["Doppler temperature","T ratio = lens of boosts","(0, −1)","known","doppler_is_lens"],

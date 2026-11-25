@@ -1725,7 +1725,7 @@
   },
   {
    "t": "The border (double wall)",
-   "where": "the parabola q = k²/4",
+   "where": "the parabola d = k²/4",
    "region": "border",
    "proofs": [
     {

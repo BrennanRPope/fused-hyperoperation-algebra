@@ -41,80 +41,80 @@ A. Symbolic identities (the Lean file's ring facts)
 B. Laws on numbers
   ok  [0] joint sums to 1
   ok  [0] Shannon additive
-  ok  [0] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [0] Tsallis q_T=0.0: S_AB = S_A (+)_k S_B, k=1.0
   ok  [0] Renyi a=0.0 additive
   ok  [0] Renyi = log2(1+k S_T)/k, q=0.0
-  ok  [0] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [0] Tsallis q_T=0.5: S_AB = S_A (+)_k S_B, k=0.5
   ok  [0] Renyi a=0.5 additive
   ok  [0] Renyi = log2(1+k S_T)/k, q=0.5
-  ok  [0] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [0] Tsallis q_T=2.0: S_AB = S_A (+)_k S_B, k=-1.0
   ok  [0] Renyi a=2.0 additive
   ok  [0] Renyi = log2(1+k S_T)/k, q=2.0
-  ok  [0] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [0] Tsallis q_T=3.0: S_AB = S_A (+)_k S_B, k=-2.0
   ok  [0] Renyi a=3.0 additive
   ok  [0] Renyi = log2(1+k S_T)/k, q=3.0
   ok  [0] Gini-Simpson by union rule
   ok  [0] Gini = chance two draws differ
   ok  [1] joint sums to 1
   ok  [1] Shannon additive
-  ok  [1] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [1] Tsallis q_T=0.0: S_AB = S_A (+)_k S_B, k=1.0
   ok  [1] Renyi a=0.0 additive
   ok  [1] Renyi = log2(1+k S_T)/k, q=0.0
-  ok  [1] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [1] Tsallis q_T=0.5: S_AB = S_A (+)_k S_B, k=0.5
   ok  [1] Renyi a=0.5 additive
   ok  [1] Renyi = log2(1+k S_T)/k, q=0.5
-  ok  [1] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [1] Tsallis q_T=2.0: S_AB = S_A (+)_k S_B, k=-1.0
   ok  [1] Renyi a=2.0 additive
   ok  [1] Renyi = log2(1+k S_T)/k, q=2.0
-  ok  [1] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [1] Tsallis q_T=3.0: S_AB = S_A (+)_k S_B, k=-2.0
   ok  [1] Renyi a=3.0 additive
   ok  [1] Renyi = log2(1+k S_T)/k, q=3.0
   ok  [1] Gini-Simpson by union rule
   ok  [1] Gini = chance two draws differ
   ok  [2] joint sums to 1
   ok  [2] Shannon additive
-  ok  [2] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [2] Tsallis q_T=0.0: S_AB = S_A (+)_k S_B, k=1.0
   ok  [2] Renyi a=0.0 additive
   ok  [2] Renyi = log2(1+k S_T)/k, q=0.0
-  ok  [2] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [2] Tsallis q_T=0.5: S_AB = S_A (+)_k S_B, k=0.5
   ok  [2] Renyi a=0.5 additive
   ok  [2] Renyi = log2(1+k S_T)/k, q=0.5
-  ok  [2] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [2] Tsallis q_T=2.0: S_AB = S_A (+)_k S_B, k=-1.0
   ok  [2] Renyi a=2.0 additive
   ok  [2] Renyi = log2(1+k S_T)/k, q=2.0
-  ok  [2] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [2] Tsallis q_T=3.0: S_AB = S_A (+)_k S_B, k=-2.0
   ok  [2] Renyi a=3.0 additive
   ok  [2] Renyi = log2(1+k S_T)/k, q=3.0
   ok  [2] Gini-Simpson by union rule
   ok  [2] Gini = chance two draws differ
   ok  [3] joint sums to 1
   ok  [3] Shannon additive
-  ok  [3] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [3] Tsallis q_T=0.0: S_AB = S_A (+)_k S_B, k=1.0
   ok  [3] Renyi a=0.0 additive
   ok  [3] Renyi = log2(1+k S_T)/k, q=0.0
-  ok  [3] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [3] Tsallis q_T=0.5: S_AB = S_A (+)_k S_B, k=0.5
   ok  [3] Renyi a=0.5 additive
   ok  [3] Renyi = log2(1+k S_T)/k, q=0.5
-  ok  [3] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [3] Tsallis q_T=2.0: S_AB = S_A (+)_k S_B, k=-1.0
   ok  [3] Renyi a=2.0 additive
   ok  [3] Renyi = log2(1+k S_T)/k, q=2.0
-  ok  [3] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [3] Tsallis q_T=3.0: S_AB = S_A (+)_k S_B, k=-2.0
   ok  [3] Renyi a=3.0 additive
   ok  [3] Renyi = log2(1+k S_T)/k, q=3.0
   ok  [3] Gini-Simpson by union rule
   ok  [3] Gini = chance two draws differ
   ok  [4] joint sums to 1
   ok  [4] Shannon additive
-  ok  [4] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [4] Tsallis q_T=0.0: S_AB = S_A (+)_k S_B, k=1.0
   ok  [4] Renyi a=0.0 additive
   ok  [4] Renyi = log2(1+k S_T)/k, q=0.0
-  ok  [4] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [4] Tsallis q_T=0.5: S_AB = S_A (+)_k S_B, k=0.5
   ok  [4] Renyi a=0.5 additive
   ok  [4] Renyi = log2(1+k S_T)/k, q=0.5
-  ok  [4] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [4] Tsallis q_T=2.0: S_AB = S_A (+)_k S_B, k=-1.0
   ok  [4] Renyi a=2.0 additive
   ok  [4] Renyi = log2(1+k S_T)/k, q=2.0
-  ok  [4] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [4] Tsallis q_T=3.0: S_AB = S_A (+)_k S_B, k=-2.0
   ok  [4] Renyi a=3.0 additive
   ok  [4] Renyi = log2(1+k S_T)/k, q=3.0
   ok  [4] Gini-Simpson by union rule

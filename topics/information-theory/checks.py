@@ -76,7 +76,7 @@ for trial in range(5):
     ok(f"[{trial}] Shannon additive", abs(H(J)-H(A)-H(B))<1e-12)
     for qq in [0.0, 0.5, 2.0, 3.0]:
         kk = 1-qq
-        ok(f"[{trial}] Tsallis q={qq}: S_AB = S_A (+)_k S_B, k={kk}",
+        ok(f"[{trial}] Tsallis q_T={qq}: S_AB = S_A (+)_k S_B, k={kk}",
            abs(tsallis(J,qq) - (tsallis(A,qq)+tsallis(B,qq)+kk*tsallis(A,qq)*tsallis(B,qq)))<1e-10)
         ok(f"[{trial}] Renyi a={qq} additive", abs(renyi(J,qq)-renyi(A,qq)-renyi(B,qq))<1e-10)
         ok(f"[{trial}] Renyi = log2(1+k S_T)/k, q={qq}",

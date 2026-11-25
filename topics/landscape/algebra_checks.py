@@ -3,7 +3,7 @@
 The map's coordinates are the first two layers of the circle-operation cube beyond the sides:
   c1 = weight of the corner cell ab           (the corner weight, the dial k)
   c2 = weight of each next-layer cell a^2 b, a b^2   (the bend)
-Every point (p, q) of the plane is the Mobius law  F_{p,q}(a,b) = (a + b + p ab) / (1 - q ab).
+Every point (p, d) of the plane is the Mobius law  F_{p,d}(a,b) = (a + b + p ab) / (1 - d ab).
 
 Run:  python3 algebra_checks.py   (writes algebra_checks_output.txt)
 """
@@ -37,12 +37,12 @@ def jet(expr, order=4):
 
 
 # --- 1. Every point of the plane is a group law -------------------------------------------
-check("F_{p,q} commutative", sp.simplify(F(a, b) - F(b, a)) == 0)
-check("F_{p,q} associative", sp.simplify(F(F(a, b), c) - F(a, F(b, c))) == 0)
-check("F_{p,q} identity 0", sp.simplify(F(a, 0) - a) == 0)
-check("F_{p,q} inverse  -a/(1+pa)", sp.simplify(F(a, -a / (1 + p * a))) == 0)
+check("F_{p,d} commutative", sp.simplify(F(a, b) - F(b, a)) == 0)
+check("F_{p,d} associative", sp.simplify(F(F(a, b), c) - F(a, F(b, c))) == 0)
+check("F_{p,d} identity 0", sp.simplify(F(a, 0) - a) == 0)
+check("F_{p,d} inverse  -a/(1+pa)", sp.simplify(F(a, -a / (1 + p * a))) == 0)
 J = jet(F(a, b), 4)
-check("third-order jet of F_{p,q} is (corner, bend) = (p, q)",
+check("third-order jet of F_{p,d} is (corner, bend) = (p, d)",
       J.get((1, 1)) == p and J.get((2, 1)) == q and J.get((1, 2)) == q)
 # projective (denominator-free) associativity: numerators and denominators agree exactly
 N = lambda x, y: x + y + p * x * y
@@ -54,9 +54,9 @@ Rd = D(b, c) - q * a * N(b, c)
 check("associativity holds numerator-by-numerator, denominator-by-denominator",
       sp.expand(Ln - Rn) == 0 and sp.expand(Ld - Rd) == 0)
 
-# --- 2. The growth law behind each point: y' = 1 + p y + q y^2 ------------------------------
+# --- 2. The growth law behind each point: y' = 1 + p y + d y^2 ------------------------------
 g = sp.simplify(sp.diff(F(a, b), b).subs(b, 0))
-check("d/db F(a,b) at b=0 is 1 + p a + q a^2 (the Riccati rate)", sp.expand(g - (1 + p * a + q * a ** 2)) == 0)
+check("d/db F(a,b) at b=0 is 1 + p a + d a^2 (the Riccati rate)", sp.expand(g - (1 + p * a + q * a ** 2)) == 0)
 
 # --- 3. The lens: walls u, v (reciprocal wall positions) ------------------------------------
 Fw = F(a, b, p=-(u + v), q=u * v)
@@ -66,9 +66,9 @@ check("The circle operation is the case u = -1, v = 0 (wall at -1, other wall at
       sp.simplify(F(a, b, p=1, q=0) - (a + b + a * b)) == 0)
 check("velocity addition is u = 1, v = -1 (walls at +1 and -1)",
       sp.simplify(F(a, b, p=0, q=-1) - (a + b) / (1 + a * b)) == 0)
-check("tangent addition is p = 0, q = 1 (walls at +i, -i)",
+check("tangent addition is p = 0, d = 1 (walls at +i, -i)",
       sp.simplify(sp.expand_trig(sp.tan(s + t)) - F(sp.tan(s), sp.tan(t), p=0, q=1)) == 0)
-check("discriminant p^2 - 4q = (u - v)^2", sp.expand((u + v) ** 2 - 4 * u * v - (u - v) ** 2) == 0)
+check("discriminant p^2 - 4d = (u - v)^2", sp.expand((u + v) ** 2 - 4 * u * v - (u - v) ** 2) == 0)
 # double wall: additive lens
 Fd = F(a, b, p=-2 * u, q=u ** 2)
 Nd = lambda x: x / (1 - u * x)
@@ -83,11 +83,11 @@ check("complex walls: M(a (+) b) = M(a) M(b) and |M| = 1 on reals (a turn of a c
       sp.simplify(sp.expand(Mc(x1) * sp.conjugate(Mc(x1))) - 1) == 0)
 
 # --- 4. Units: rescaling moves a point along a parabola through the origin ------------------
-check("units: F_{p,q}(lam a, lam b) = lam F_{lam p, lam^2 q}(a, b)",
+check("units: F_{p,d}(lam a, lam b) = lam F_{lam p, lam^2 d}(a, b)",
       sp.simplify(F(lam * a, lam * b) - lam * F(a, b, p=lam * p, q=lam ** 2 * q)) == 0)
 check("dial: k (a (+)_k b) = (k a) (+) (k b)  [every k != 0 on the line is the circle operation in other units]",
       sp.simplify(t * F(a, b, p=t, q=0) - F(t * a, t * b, p=1, q=0)) == 0)
-# the unit-free shape: rung-equivalent height s_eq = p^2/(p^2 - 4q)
+# the unit-free shape: rung-equivalent height s_eq = p^2/(p^2 - 4d)
 seq = (u + v) ** 2 / (u - v) ** 2
 check("s_eq = ((u+v)/(u-v))^2 is unchanged by units (u,v -> u/lam, v/lam)", sp.simplify(seq.subs({u: u / lam, v: v / lam}, simultaneous=True) - seq) == 0)
 
@@ -106,7 +106,7 @@ zsum = sp.simplify(-Xs / Ys)
 zP, zQ = -X1 / Y1, -X2 / Y2           # formal parameter z = -x/y = -1/m
 check("formal group of the cubic y^2 + a1 xy = x^3 + a2 x^2 is exactly F_{-a1,-a2} in z = -x/y",
       sp.simplify(zsum - F(zP, zQ, p=-A1, q=-A2)) == 0)
-check("tangent slopes at the double point have discriminant a1^2 + 4 a2 = p^2 - 4q",
+check("tangent slopes at the double point have discriminant a1^2 + 4 a2 = p^2 - 4d",
       sp.expand(A1 ** 2 + 4 * A2 - ((-A1) ** 2 - 4 * (-A2))) == 0)
 
 # --- 6. The chi_y genus line (Hirzebruch) -----------------------------------------------------
@@ -173,7 +173,7 @@ Ems = lambda x, s: Es(x, -s)    # inverse to third order
 Bs = sp.expand(Es(Ems(a, s) + Ems(b, s), s))
 Jb = jet(Bs, 3)
 check("rung s sits at (s, s(s-1)/4) on the map", sp.simplify(Jb[(1, 1)] - s) == 0 and sp.simplify(Jb[(2, 1)] - s * (s - 1) / 4) == 0)
-check("rung s has rung-equivalent height s: p^2/(p^2-4q) = s", sp.simplify(s ** 2 / (s ** 2 - s * (s - 1)) - s) == 0)
+check("rung s has rung-equivalent height s: p^2/(p^2-4d) = s", sp.simplify(s ** 2 / (s ** 2 - s * (s - 1)) - s) == 0)
 check("rung s osculates two real walls for s > 0 (discriminant = s)", sp.expand(s ** 2 - 4 * s * (s - 1) / 4) == s)
 
 # --- 10. KdV corner = velocity-addition lift of the wavenumber ratio --------------------------

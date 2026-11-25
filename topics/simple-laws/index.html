@@ -109,10 +109,10 @@ code{overflow-wrap:anywhere;font-size:14px}
 <h2>Every point of the map is the circle operation in its own number system</h2>
 <div class="two">
 <div>
-<p>Invent a new unit u with one rule, u² = k·u − q. Numbers are now a + b·u. Combine two "tilted ones" by the circle operation:</p>
-<p><code>(1 + x·u)(1 + y·u) = (1 − q·x·y) + (x + y + k·x·y)·u</code></p>
-<p>Read the answer as a slope, the u part over the plain part, and you get exactly the law at the point (k, q) of the landscape. So every law on the map is the circle operation, done in a different number system and read as a slope.</p>
-<p>Each number system comes with its own Pythagoras. The size a² + k·ab + q·b² multiplies when the numbers multiply, so it is a length. What kind of length depends on the country:</p>
+<p>Invent a new unit u with one rule, u² = k·u − d. Numbers are now a + b·u. Combine two "tilted ones" by the circle operation:</p>
+<p><code>(1 + x·u)(1 + y·u) = (1 − d·x·y) + (x + y + k·x·y)·u</code></p>
+<p>Read the answer as a slope, the u part over the plain part, and you get exactly the law at the point (k, d) of the landscape. So every law on the map is the circle operation, done in a different number system and read as a slope.</p>
+<p>Each number system comes with its own Pythagoras. The size a² + k·ab + d·b² multiplies when the numbers multiply, so it is a length. What kind of length depends on the country:</p>
 </div>
 <div class="pic">
 <svg viewBox="0 0 480 300" role="img" aria-label="Unit circles of the three countries and of the circle operation">
@@ -141,7 +141,7 @@ code{overflow-wrap:anywhere;font-size:14px}
   <div style="--c:var(--sky)"><h3>Two walls: Einstein</h3><p>u splits into two real directions. The length is a² − b², its unit circle is a hyperbola, and the walls are its asymptotes: the light cone.</p></div>
   <div style="--c:var(--gold)"><h3>The circle operation's own point</h3><p>At (1, 0) the unit is u² = u. The length is (1 + x)(1 + y), and its unit circle, (1 + x)(1 + y) = 1, is Boyle's hyperbola PV = constant. Its asymptotes are the walls at −1.</p></div>
 </div>
-<p class="mute" style="margin-top:14px">Proved in Lean: the slope law at every (k, q), the length multiplying, the three ways the length factors, and the unit circle at the circle operation's point (<code>NumberPlane.lean</code>, 26 theorems). Known as Clifford's and Study's number systems; Yaglom's <em>A Simple Non-Euclidean Geometry and Its Physical Basis</em> (1979) tells the Galileo and Einstein story with them. New here is reading the whole landscape plane through them.</p>
+<p class="mute" style="margin-top:14px">Proved in Lean: the slope law at every (k, d), the length multiplying, the three ways the length factors, and the unit circle at the circle operation's point (<code>NumberPlane.lean</code>, 26 theorems). Known as Clifford's and Study's number systems; Yaglom's <em>A Simple Non-Euclidean Geometry and Its Physical Basis</em> (1979) tells the Galileo and Einstein story with them. New here is reading the whole landscape plane through them.</p>
 </div>
 </section>
 
@@ -152,7 +152,7 @@ code{overflow-wrap:anywhere;font-size:14px}
 <h2>Lead check: no new soliton, but the geometry now comes from the circle operation</h2>
 <div class="lead">
 <p><strong>The biggest result on this page is the number-system reading.</strong> It answers your rule that the geometry must be derived from the circle operation: one rule for u gives each point of the map its own length, and the three countries come out as Euclid, Galileo and Einstein, with Boyle's hyperbola as the circle operation's own circle. It is known mathematics (Clifford, Study, Yaglom), so it is a foundation, not a discovery like a new law.</p>
-<p>Nothing in early science sits off the five familiar spots except the law of cosines, which draws a whole line, q = 1. Every real triangle lies inside the turning country on that line, flat triangles sit on the border, and past the border cosine becomes cosh: the triangles of relativity. A rotation seen in axes tilted to angle θ is exactly the law at (2 cos θ, 1) (checked numerically to 10⁻¹⁰).</p>
+<p>Nothing in early science sits off the five familiar spots except the law of cosines, which draws a whole line, d = 1. Every real triangle lies inside the turning country on that line, flat triangles sit on the border, and past the border cosine becomes cosh: the triangles of relativity. A rotation seen in axes tilted to angle θ is exactly the law at (2 cos θ, 1) (checked numerically to 10⁻¹⁰).</p>
 <p class="mute" style="margin:0">Next door worth opening: the same number systems in three or four dimensions (quaternions and their cousins) would put the circle-operation cube's higher layers on the map, which is where the tesseract coordinates could plug in.</p>
 </div>
 </div>
@@ -164,8 +164,8 @@ code{overflow-wrap:anywhere;font-size:14px}
 <div class="scroll"><table>
 <thead><tr><th>File</th><th>What it holds</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td><code>lean/NumberPlane.lean</code></td><td>The circle operation in the number system u² = k·u − q gives the landscape law; the length multiplies; turning, border and two-walls factorings; Boyle's hyperbola as the circle operation's unit circle</td><td>26 theorems, compiled</td></tr>
-<tr><td><code>lean/GeometryTrig.lean</code></td><td>Gnomon (Euclid II.4), cube and box layers, square-cube law, Galileo's odd numbers, Pythagoras by areas and by 1 + x·i, Euclid's triples, angle addition, tangent addition, double and triple angle, law of cosines on the line q = 1</td><td>24 theorems, compiled</td></tr>
+<tr><td><code>lean/NumberPlane.lean</code></td><td>The circle operation in the number system u² = k·u − d gives the landscape law; the length multiplies; turning, border and two-walls factorings; Boyle's hyperbola as the circle operation's unit circle</td><td>26 theorems, compiled</td></tr>
+<tr><td><code>lean/GeometryTrig.lean</code></td><td>Gnomon (Euclid II.4), cube and box layers, square-cube law, Galileo's odd numbers, Pythagoras by areas and by 1 + x·i, Euclid's triples, angle addition, tangent addition, double and triple angle, law of cosines on the line d = 1</td><td>24 theorems, compiled</td></tr>
 <tr><td><code>lean/EarlyScience.lean</code></td><td>Non-empty choices, measurement errors, lever and Boyle, Kepler III, inverse square, cooling, ray matrices for lenses and the field-lens wall, series and parallel, the resistor ladder and its golden walls</td><td>17 theorems, compiled</td></tr>
 <tr><td><code>checks.py</code></td><td>Sympy identities, regions of every point, tilted-frame rotations, real planet orbits, ray traces, transmission line, ladder</td><td>54 of 54 pass</td></tr>
 </tbody></table></div>
@@ -186,7 +186,7 @@ const ERAS=[
    ['Repeated multiplying (powers)','rung','(2, ½) rung 2, the smooth fused exponent','two walls','old','rung curve']]},
  {n:'Measurement and units',w:'Egypt to the 1600s',c:'#a9c3dc',
   intro:'Changing units never moves a law to a new country: it slides the dot along a parabola through the origin. Measurement error is where the circle operation first earns its keep: the textbook rule that relative errors add drops the corner, which the circle operation keeps exactly.',
-  laws:[['Changing units','units','slides (k, q) to (λk, λ²q); the shape k²/(k² − 4q) stays','same country','lean','LandscapeMap.units_num'],
+  laws:[['Changing units','units','slides (k, d) to (λk, λ²d); the shape k²/(k² − 4d) stays','same country','lean','LandscapeMap.units_num'],
    ['Relative error of a product, exact','combination','(1, 0) circle operation','two walls','lean','product_error'],
    ['Relative errors "add" (first order)','combination','(0, 0), the shadow of the circle operation without its corner','border','lean','product_error_corner']]},
  {n:'Geometry',w:'Euclid, about 300 BC',c:'#ffd166',
@@ -198,13 +198,13 @@ const ERAS=[
    ['Euclid’s triples','geometry','(0, 1): square the triangle q + p·i','turning','lean','euclid_triple'],
    ['Similar figures','geometry','Circle powers 2 and 3 of the length change','two walls','lean','square_cube']]},
  {n:'Trigonometry',w:'Hipparchus and Ptolemy to De Moivre',c:'#ff5c8a',
-  intro:'Angle addition is multiplication at the complex corner (0, 1). Slopes combine by tangent addition, the turning law. Cubing 1 + x·i sends the cube’s layers 1, 3, 3, 1 alternately to the two axes: that is the triple-angle formula. The law of cosines is the length on the whole line q = 1.',
+  intro:'Angle addition is multiplication at the complex corner (0, 1). Slopes combine by tangent addition, the turning law. Cubing 1 + x·i sends the cube’s layers 1, 3, 3, 1 alternately to the two axes: that is the triple-angle formula. The law of cosines is the length on the whole line d = 1.',
   pic:'trig',
   laws:[['Tangent addition','combination','(0, 1)','turning','lean','tangent_addition'],
    ['Sine and cosine addition','combination','(0, 1), read on the pair (cos, sin)','turning','lean','angle_addition, unit_circle_closed'],
    ['Sine addition on its own','combination','(0, −½), to the cube’s third layer only','two walls','old','landscape page'],
    ['Double and triple angle','power','powers of 1 + x·i: the cube’s layers with signs','turning','lean','double_angle, triple_angle'],
-   ['Law of cosines','line','the line q = 1, with k = −2 cos C, from (−2, 1) to (2, 1)','turning; border when flat','lean','law_of_cosines_norm, triangle_lengths_real'],
+   ['Law of cosines','line','the line d = 1, with k = −2 cos C, from (−2, 1) to (2, 1)','turning; border when flat','lean','law_of_cosines_norm, triangle_lengths_real'],
    ['Rotation seen in tilted axes','combination','(2 cos θ, 1) for axes at angle θ','turning','chk','checks.py item 3']]},
  {n:'Archimedes',w:'About 250 BC',c:'#8fd3ff',
   intro:'Weights times arms add up (torques add), so balancing is addition. But the balance itself is a product held constant: double the arm and the weight must change by the circle inverse of doubling. That is the same picture as Boyle’s law, two thousand years early.',
@@ -223,10 +223,10 @@ const ERAS=[
    ['Second law, equal areas','combination','(0, 0): areas swept add','border','inf','—'],
    ['Third law, T² ∝ a³','power','Circle powers: the square’s gnomon equals the cube’s layers','two walls','lean','kepler_third; data in checks.py']]},
  {n:'Optics',w:'Snell 1621 to the lens makers',c:'#ff5c8a',
-  intro:'Thin lenses touching add their powers. Pull them apart by d and the total is P₁ + P₂ − d·P₁P₂: the circle operation with k = −d, straight from the ray matrices. Each lens’s squeeze factor 1 − d·P multiplies. The wall is real: a first lens that focuses exactly on the second makes the second lens change nothing. Telescope makers call it a field lens.',
+  intro:'Thin lenses touching add their powers. Pull them apart by a distance ℓ and the total is P₁ + P₂ − ℓ·P₁P₂: the circle operation with k = −ℓ, straight from the ray matrices. Each lens’s squeeze factor 1 − ℓ·P multiplies. The wall is real: a first lens that focuses exactly on the second makes the second lens change nothing. Telescope makers call it a field lens.',
   pic:'lens',
   laws:[['Lenses in contact','combination','(0, 0)','border','lean','lenses_in_contact'],
-   ['Lenses a distance d apart','combination','(−d, 0), wall at power 1/d (the field lens)','two walls','lean','lenses_apart, field_lens'],
+   ['Lenses a distance ℓ apart','combination','(−ℓ, 0), wall at power 1/ℓ (the field lens)','two walls','lean','lenses_apart, field_lens'],
    ['Mirror and thin-lens equation','combination','(0, 0): the reciprocal distances add','border','inf','—'],
    ['Snell’s law, n·sin θ conserved','product law','percent changes by the circle operation','two walls','inf','—']]},
  {n:'Boyle',w:'1662',c:'#ffd166',
@@ -304,8 +304,8 @@ ${T(310,90,'second 1: 1')}${T(310,115,'second 2: 3')}${T(310,140,'second 3: 5')}
 <ellipse cx="110" cy="170" rx="8" ry="70" fill="#8fd3ff" opacity=".4" stroke="#8fd3ff"/><ellipse cx="260" cy="170" rx="8" ry="70" fill="#8fd3ff" opacity=".4" stroke="#8fd3ff"/>
 <line x1="20" y1="110" x2="110" y2="110" stroke="#ffd166" stroke-width="2.5"/><line x1="110" y1="110" x2="260" y2="146" stroke="#ffd166" stroke-width="2.5"/><line x1="260" y1="146" x2="400" y2="190" stroke="#ffd166" stroke-width="2.5"/>
 <line x1="110" y1="110" x2="360" y2="170" stroke="#ff5c8a" stroke-dasharray="4 4"/>
-${T(110,90,'P₁')}${T(260,90,'P₂')}${T(185,200,'d')}${T(250,236,'height after the gap: h·(1 − d·P₁)')}${T(60,100,'h')}
-${T(380,160,'focus of P₁')}</svg><p class="cap">Squeeze factors multiply: 1 − d·P = (1 − d·P₁)(1 − d·P₂). When the dashed focus lands on the second lens the beam height there is zero, and the second lens changes nothing: the wall.</p>`;
+${T(110,90,'P₁')}${T(260,90,'P₂')}${T(185,200,'ℓ')}${T(250,236,'height after the gap: h·(1 − ℓ·P₁)')}${T(60,100,'h')}
+${T(380,160,'focus of P₁')}</svg><p class="cap">Squeeze factors multiply: 1 − ℓ·P = (1 − ℓ·P₁)(1 − ℓ·P₂). When the dashed focus lands on the second lens the beam height there is zero, and the second lens changes nothing: the wall.</p>`;
  if(n==='boyle'){let d='';for(let i=0;i<=60;i++){const v=.35+i*.06;const p=1/v;if(p<4.2)d+=(d?'L':'M')+(50+v*90).toFixed(1)+' '+(220-p*45).toFixed(1)}
   return `<svg viewBox="0 0 440 260" role="img" aria-label="Boyle hyperbola">
 <line x1="50" y1="220" x2="420" y2="220" stroke="#8fd3ff" stroke-dasharray="4 4"/><line x1="50" y1="30" x2="50" y2="220" stroke="#8fd3ff" stroke-dasharray="4 4"/>
@@ -335,9 +335,9 @@ const draw=()=>{const W=s.clientWidth,H=s.clientHeight,m=34,K0=-2.6,K1=2.6,Q0=-1
  if(era>=12)h+=`<line x1="${X(0)+16}" y1="${Y(-1)}" x2="${X(0)+16}" y2="${Y(0)+12}" stroke="#ffd166" stroke-width="2" marker-end="url(#ar)"/>`;
  h+='</g><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ffd166"/></marker></defs>';
  const sm=W<520;
- h+=`<text x="${X(K1)-4}" y="${Y(0)-8}" text-anchor="end">k, the corner</text><text x="${X(0)+8}" y="${m+14}">q, the bend</text>`;
+ h+=`<text x="${X(K1)-4}" y="${Y(0)-8}" text-anchor="end">k, the corner</text><text x="${X(0)+8}" y="${m+14}">d, the bend</text>`;
  if(!sm)h+=`<text x="${X(-2.45)}" y="${Y(1.22)}">Turning</text><text x="${X(-2.45)}" y="${Y(-1.2)}">Two walls</text><text x="${X(1.55)}" y="${Y(.42)}" text-anchor="end">Border</text>`;
- if(era>=3&&!sm)h+=`<text x="${X(-2)}" y="${Y(1)-10}">Law of cosines, q = 1</text>`;
+ if(era>=3&&!sm)h+=`<text x="${X(-2)}" y="${Y(1)-10}">Law of cosines, d = 1</text>`;
  if(era>=12&&!sm)h+=`<text x="${X(0)+24}" y="${Y(-.55)}">Galileo as c → ∞</text>`;
  DOTS.filter(d=>d.e<=era).forEach(d=>{const x=X(d.k),y=Y(d.q),nw=d.e===era;
   h+=`<g class="dot" data-k="${d.k}" data-q="${d.q}" tabindex="0" role="button" aria-label="${esc(d.t)}"><circle cx="${x}" cy="${y}" r="16" fill="transparent"/><circle class="${nw?'pulse':''}" cx="${x}" cy="${y}" r="7" fill="${nw?'#ffd166':'#f3f8ff'}" stroke="#0a2540" stroke-width="2"/>${sm&&d.e<era?'':`<text x="${x+d.lx}" y="${y+d.ly}" text-anchor="${d.a}">${esc(d.t)}</text>`}</g>`});

@@ -62,11 +62,11 @@ html{{scroll-padding-top:72px}}
 <section class="band" id="answer"><div class="wrap">
 <h2>The answer, judged on its own merits</h2>
 <ul class="answer">
-<li><b class="sky">Same structure: electromagnetism sets the dial.</b> The wave equation that comes out of Maxwell's equations survives a dial boost only when q = −1/c², and c² = 1/(ε₀μ₀) (CODATA: c²ε₀μ₀ = 1.000000000000). A Galilean boost (q = 0) breaks it. This is the historical reason relativity grew out of electromagnetism.</li>
+<li><b class="sky">Same structure: electromagnetism sets the dial.</b> The wave equation that comes out of Maxwell's equations survives a dial boost only when d = −1/c², and c² = 1/(ε₀μ₀) (CODATA: c²ε₀μ₀ = 1.000000000000). A Galilean boost (d = 0) breaks it. This is the historical reason relativity grew out of electromagnetism.</li>
 <li><b class="sky">Same structure: the field rides the boost.</b> Split E and B along the two light lines and a boost multiplies one part by the Doppler factor D and the other by 1/D. Their ratio is multiplied by D² = 1 + d(v), the circle operation's lift, and two boosts multiply the D's, so the d's the circle operation. A light wave sits on one light line (the wall) and its energy density falls by exactly that lift.</li>
 <li><b class="sky">Same structure: loop turn = curvature × area.</b> The phase a charge picks up around a loop is charge × enclosed flux, the same rule as gravity's "a loop returns boosted by curvature × area". On a lattice each plaquette is the circle operation of its four links, and neighbouring plaquettes combine by the circle operation into the bigger loop (discrete Stokes).</li>
 <li class="ren"><b class="amb">Renamings, said plainly.</b> Writing a phase as a = e^(iθ) − 1 turns multiplication into the circle operation, but that works for any group of numbers under multiplication, so it adds nothing by itself. Calling F "the ab corner" of ∇A is notation; the content underneath is Clifford's split of a product into a dot part and a wedge part, and ∇F = J is Hestenes's 1966 spacetime algebra.</li>
-<li><b class="sky">A small frame of our own:</b> the gauge phase and the boost are the same rule, a ∘₁ ā = 0, at mirror dials: q = +1 (a circle that wraps and never meets the wall) and q = −1 (a hyperbola that runs up to the light walls). Exact and tidy; a way of seeing, not a prediction.</li>
+<li><b class="sky">A small frame of our own:</b> the gauge phase and the boost are the same rule, a ∘₁ ā = 0, at mirror dials: d = +1 (a circle that wraps and never meets the wall) and d = −1 (a hyperbola that runs up to the light walls). Exact and tidy; a way of seeing, not a prediction.</li>
 <li><b class="sky">Why electromagnetism is linear and gravity isn't:</b> phases commute, so the plain circle operation (which is commutative) is exactly electromagnetism's group law, a constant potential makes no field, and the field carries no charge. Boosts and Yang–Mills phases don't commute; the gap between the two orders is the commutator, which is the field's self-coupling. Known in substance (abelian versus non-abelian gauge theory); the circle-operation reading is ours.</li>
 <li class="no"><b class="pink">Where it stops.</b> The circle operation does not give the field equation itself; the source law ∇F = J comes from outside, as Einstein's equations did on the gravity page. Fields in empty space add by plain addition (the k = 0 rung), not the circle operation. Born–Infeld's field cap has the exact shape of the light-speed wall but does not compose by Einstein's rule.</li>
 <li class="no"><b class="pink">No new prediction and no lead toward new physics here.</b> What is worth keeping is the bridge: electromagnetism is the commuting half of the same loop rule gravity uses, which is why the river picture's swirl turning out to be teleparallel torsion (a gauge field) fits the family.</li>
@@ -76,8 +76,8 @@ html{{scroll-padding-top:72px}}
 
 <section class="band" id="dial"><div class="wrap">
 <h2>1. Electromagnetism sets the dial</h2>
-<p>Take a boost with dial q: x′ = γ(x − vt), t′ = γ(t + q v x). Put it into the wave operator ∂²/∂t² − c²∂²/∂x² that Maxwell's equations give for light. A cross term ∂²/∂x′∂t′ appears with coefficient −2γ²v(1 + c²q). It vanishes only at <b>q = −1/c²</b>, and then the operator comes back with the same wave speed. At q = 0 (Galileo) the cross term is −2γ²v and the wave equation changes form.</p>
-<p>Maxwell's constants fix c: c² ε₀ μ₀ = 1, so in SI units the dial is q = −ε₀μ₀ = −1.1127 × 10⁻¹⁷ s²/m². From there the relativity page takes over: velocities compose by (u + v)/(1 − q u v), and d(u) = 2u/(1 − u) composes by the circle operation.</p>
+<p>Take a boost with dial d: x′ = γ(x − vt), t′ = γ(t + d v x). Put it into the wave operator ∂²/∂t² − c²∂²/∂x² that Maxwell's equations give for light. A cross term ∂²/∂x′∂t′ appears with coefficient −2γ²v(1 + c²d). It vanishes only at <b>d = −1/c²</b>, and then the operator comes back with the same wave speed. At d = 0 (Galileo) the cross term is −2γ²v and the wave equation changes form.</p>
+<p>Maxwell's constants fix c: c² ε₀ μ₀ = 1, so in SI units the dial is d = −ε₀μ₀ = −1.1127 × 10⁻¹⁷ s²/m². From there the relativity page takes over: velocities compose by (u + v)/(1 − d u v), and d(u) = 2u/(1 − u) composes by the circle operation.</p>
 {fig("dial", "Left: a Galilean boost shears the light lines, so light would move at c − v one way and c + v the other. Right: a Lorentz boost squeezes along the light lines by D and 1/D; the light lines stay put and areas are kept.")}
 <p class="small">Known: Lorentz 1904, Einstein 1905. The dial reading is the project's landscape law (relativity page). Checks A1 to A3; Lean <code>wave_cross_zero_iff</code>, <code>galilean_cross</code>, <code>wave_speed_kept</code>.</p>
 </div></section>
@@ -104,7 +104,7 @@ html{{scroll-padding-top:72px}}
 <li>Phases compose by the circle operation: (e^(iθ₁) − 1) ∘₁ (e^(iθ₂) − 1) = e^(i(θ₁+θ₂)) − 1. <span class="amb">This is a renaming of multiplication.</span></li>
 <li>A number is a unit phase exactly when <b>a ∘₁ ā = 0</b>: its complex conjugate is its circle inverse, because a ∘₁ ā = |1 + a|² − 1. Unit phases are closed under ∘₁, and the wall a = −1 is never one.</li>
 <li>A boost, written as a split-complex number 1 + a = cosh φ + j sinh φ with j² = +1, obeys the very same rule a ∘₁ ā = 0.</li>
-<li>In half-angle charts the two compose by the landscape law at mirror dials: tan(θ/2) at <b>q = +1</b>, (t₁ + t₂)/(1 − t₁t₂); tanh(φ/2) at <b>q = −1</b>, (s₁ + s₂)/(1 + s₁s₂).</li>
+<li>In half-angle charts the two compose by the landscape law at mirror dials: tan(θ/2) at <b>d = +1</b>, (t₁ + t₂)/(1 − t₁t₂); tanh(φ/2) at <b>d = −1</b>, (s₁ + s₂)/(1 + s₁s₂).</li>
 </ul>
 {fig("circle", "Left: gauge phases on the unit circle; a and its conjugate are circle inverses; the circle wraps around and never reaches the wall 1 + a = 0. Right: boosts on the unit hyperbola obey the same rule with j² = +1; its arms run up to the light walls.")}
 <p>Gauge invariance itself checks out exactly: shifting the potential by a gradient, A → A + ∇χ and φ → φ − ∂χ/∂t, leaves E and B unchanged.</p>
@@ -174,12 +174,12 @@ html{{scroll-padding-top:72px}}
 <section class="band" id="table"><div class="wrap">
 <h2>Scorecard</h2>
 <table class="stack"><thead><tr><th>Piece of electromagnetism</th><th>Circle-operation reading</th><th>Status</th><th>Known or ours</th></tr></thead><tbody>
-<tr><td>Speed of light from ε₀, μ₀</td><td>sets the dial q = −1/c²; only that q keeps the wave equation</td><td class="tag sky">same structure</td><td>known; dial reading from the relativity page</td></tr>
+<tr><td>Speed of light from ε₀, μ₀</td><td>sets the dial d = −1/c²; only that d keeps the wave equation</td><td class="tag sky">same structure</td><td>known; dial reading from the relativity page</td></tr>
 <tr><td>Velocity and rapidity composition</td><td>d = D² − 1 composes by the circle operation</td><td class="tag sky">same structure</td><td>known; relativity page</td></tr>
 <tr><td>Boosts of E and B</td><td>light-cone parts × D and × 1/D; ratio × lift; D's multiply</td><td class="tag sky">same structure</td><td>known; circle-operation phrasing ours</td></tr>
 <tr><td>Light as a null field</td><td>on the wall; energy density × 1/lift</td><td class="tag sky">same structure</td><td>known; phrasing ours</td></tr>
 <tr><td>U(1) phase composition</td><td>(e^(iθ) − 1) combines by the circle operation</td><td class="tag amb">renaming</td><td>true for any multiplicative group</td></tr>
-<tr><td>Phase and boost together</td><td>a ∘₁ ā = 0 at q = +1 and q = −1</td><td class="tag sky">exact framing</td><td>ours (small)</td></tr>
+<tr><td>Phase and boost together</td><td>a ∘₁ ā = 0 at d = +1 and d = −1</td><td class="tag sky">exact framing</td><td>ours (small)</td></tr>
 <tr><td>Aharonov–Bohm, holonomy</td><td>loop turn = curvature × area, as in gravity</td><td class="tag sky">same structure</td><td>known (Wu–Yang)</td></tr>
 <tr><td>Lattice plaquettes</td><td>The circle operation of four links; neighbours combine by the circle operation (Stokes)</td><td class="tag sky">same structure</td><td>Wilson; circle-operation form ours</td></tr>
 <tr><td>F = ∇∧A</td><td>the wedge (order-gap) part of the corner ∇A</td><td class="tag amb">notation</td><td>content is Clifford's split</td></tr>

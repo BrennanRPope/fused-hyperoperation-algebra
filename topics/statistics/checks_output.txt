@@ -75,11 +75,11 @@ PASS log-odds is twice the rapidity: logit p = 2 artanh(2p-1)
 PASS pool(0.4,0.1): log-odds add (rapidities)
 PASS pool(0.4,0.1): rho = 2p-1 composes by velocity addition
 PASS log-odds is twice the rapidity: logit p = 2 artanh(2p-1)
-PASS union under AMH = lens law at (k, q) = (-(1+theta), theta)
+PASS union under AMH = lens law at (k, d) = (-(1+theta), theta)
 PASS AMH union is associative (the lens turns it into multiplication)
 PASS AMH is a valid copula on the whole segment theta in [-1, 1]
 PASS …and stops being one past the cusp (theta = 1.5)
-PASS theta=-1 gives velocity addition, theta=0 independence, theta=1 the parabola k^2=4q
+PASS theta=-1 gives velocity addition, theta=0 independence, theta=1 the parabola k^2=4d
 PASS normal has the most entropy at fixed variance (vs uniform, Laplace)  1.4189 > 1.3466, 1.2425
 PASS binomial entropy -> normal's 1/2 log(2 pi e n p q)  3.63419 vs 3.63435
 PASS entropy of 3 independent coins = 3 x one coin (k = 0 addition)

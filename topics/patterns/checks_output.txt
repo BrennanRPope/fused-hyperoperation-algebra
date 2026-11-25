@@ -1,12 +1,12 @@
 PASS n-fold sum = a·U(n)/(U(n) − Q·U(n−1)) for all 16 map laws + 40 random laws  [2446 exact cases]
 PASS Lucas addition U(m+n+1) = U(m+1)U(n+1) − Q·U(m)U(n)
 PASS Cassini: U(n+1)² − U(n)U(n+2) = Qⁿ (determinant of the n-step)
-PASS the circle operation: denominator U(n) − (1+a)U(n−1) = 1, so a^(⊕n) = (1+a)ⁿ − 1
+PASS the circle operation: denominator U(n) − (1+a)U(n−1) = 1, so a^(∘₁n) = (1+a)ⁿ − 1
 PASS law (a + b − ab)/(1 + ab): 1 ⊕ 1 ⊕ … (n times) = F(n)/F(n+1)  [1, 1/2, 2/3, 3/5, 5/8, …]
 PASS its walls are the roots of 1 − a − a² = 0: 1/φ and −φ
 PASS the counting marches into the wall 1/φ
-PASS the resistor ladder step is z ⊕ 1 in the mirror law (k, q) = (1, −1)
-PASS mirror: −((−a) ⊕ (−b)) at (k, q) is a ⊕ b at (−k, q)
+PASS the resistor ladder step is z ⊕ 1 in the mirror law (k, d) = (1, −1)
+PASS mirror: −((−a) ⊕ (−b)) at (k, d) is a ⊕ b at (−k, d)
 PASS smallest non-square wall discriminant of an integer law is 5 (the golden walls)  [next: [8, 12, 13, 17]]
 PASS slope addition at a = tan(π/n) has period n and turn number 4cos²(π/n)  [n = 3..12]
 PASS period 5 ⇔ turn number φ² = 2.618 or 1/φ² = 0.382 (golden)

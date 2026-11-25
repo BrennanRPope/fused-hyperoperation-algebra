@@ -9,9 +9,9 @@ Lovelock, Deser (with Brans-Dicke, Cassini and the sombrero).
 ## The answer in plain words
 
 - **The circle operation ∘₁ (called mult-add before 1.0) on its own builds one fixed curvature, not a varying one.** Its two-direction rule (boosts close on a
-  twist = q x area) makes relativity's velocity space, a curved space with one fixed curvature.
+  twist = d x area) makes relativity's velocity space, a curved space with one fixed curvature.
 - **A dial that varies only by place works in a 2D world and is blocked in 3D and 4D.** In 2D any curvature
-  q(x, y) is reachable. From 3D on, Schur's theorem says a dial that is the same in every direction at each point
+  d(x, y) is reachable. From 3D on, Schur's theorem says a dial that is the same in every direction at each point
   must be the same everywhere. That is the exact step where "its own rules" stop.
 - **So the dial has to depend on direction, which confirms the "add to the circle operation" call.** The smallest addition that
   works is a dial on each direction pair: the square rule of a Clifford (geometric) algebra, e_i e_j + e_j e_i = 2 k_ij.
@@ -28,10 +28,10 @@ Lovelock, Deser (with Brans-Dicke, Cassini and the sombrero).
 | Step | What it gives | Check |
 |---|---|---|
 | One direction (S1) | In Cl(1,1), boosts are 1 + βσ (σ² = +1). Products give Einstein's velocity addition; the two light-cone parts multiply, so D² − 1 combines by the circle operation; the norm 1 − β² is the wall (light speed). | sympy, Lean |
-| Two directions (S2) | [e0e1, e0e2] = −2 k0 e1e2: the twisted-boost law is the Clifford commutator, and q is the square of the shared direction. k0 = 0 (Galilean) gives no twist. | sympy |
+| Two directions (S2) | [e0e1, e0e2] = −2 k0 e1e2: the twisted-boost law is the Clifford commutator, and d is the square of the shared direction. k0 = 0 (Galilean) gives no twist. | sympy |
 | The circle operation's own rules (S3) | Velocity space has one fixed curvature; the Thomas–Wigner twist of a velocity loop equals its angle defect (area x curvature) to 1e-15. | numeric |
-| Dial by place, 2D (S4) | Metric e^{2u}: curvature q = −e^{−2u}Δu (Liouville), any q reachable locally; loop twist / area matched q at three places with three values. | sympy, numeric |
-| Dial by place, 3D+ (S5) | Isotropic curvature gives G = −(n−1)(n−2)/2 · q g, so the Bianchi identity forces dq = 0 for n ≥ 3 (Schur). Explicit 3D example: making all planes agree forces a constant curvature. | sympy, Lean |
+| Dial by place, 2D (S4) | Metric e^{2u}: curvature d = −e^{−2u}Δu (Liouville), any d reachable locally; loop twist / area matched d at three places with three values. | sympy, numeric |
+| Dial by place, 3D+ (S5) | Isotropic curvature gives G = −(n−1)(n−2)/2 · d g, so the Bianchi identity forces ∇d = 0 for n ≥ 3 (Schur). Explicit 3D example: making all planes agree forces a constant curvature. | sympy, Lean |
 | Multivector weight (S6) | a + b + a·k·b: exact lift and associativity for any k in Cl(3,0). a + b + k·a·b fails unless k is central (scalars, plus the volume element I in Cl(3,0); scalars only in Cl(1,3)). A constant invertible k is a change of coordinates. | sympy (all 8 parts), Lean (2×2 matrices) |
 | Weight field k(x) (S7) | Changing weight from place to place is the connection A = k⁻¹dk, whose curvature is zero identically. Curvature needs a second field. | sympy |
 | Direction dial (S8) | k_ij(x) in the Clifford square rule is a metric. Sectional curvatures differ by plane at one point (0.00325, 0.01138, −0.00345 in the example), and a numeric loop matches. | sympy, numeric |

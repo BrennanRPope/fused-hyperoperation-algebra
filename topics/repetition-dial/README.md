@@ -16,10 +16,10 @@ Question (Brennan): the framework isn't complete "until we figure out how repeti
 - Open, outside the composition law: crowding between elements (Haldane's g). Adding it later as a new dial would not change any existing definition, notation or theorem name, so under the versioning rule it can come in a 1.x minor release. Whether it belongs before 1.0 is Brennan's call.
 
 ## Known vs new (honest)
-- All the pieces are known: the interpolating formula 1/(e^x + a) is textbook; (1 + x/m)^m as m exclusive states is the binomial theorem; (Z^k − 1)/k is the Box-Cox transform / Tsallis q-logarithm (Box & Cox 1964; Tsallis 1988, with Tsallis q = 1 − k); the fluctuation n(1 ∓ n) is textbook; Haldane 1991 (PRL 67, 937) and Wu 1994 (PRL 73, 922) give the g statistics, and the sparse and crowded limits used here follow from Wu's equation.
+- All the pieces are known: the interpolating formula 1/(e^x + a) is textbook; (1 + x/m)^m as m exclusive states is the binomial theorem; (Z^k − 1)/k is the Box-Cox transform / Tsallis q-logarithm (Box & Cox 1964; Tsallis 1988, with Tsallis q_T = 1 − k); the fluctuation n(1 ∓ n) is textbook; Haldane 1991 (PRL 67, 937) and Wu 1994 (PRL 73, 922) give the g statistics, and the sparse and crowded limits used here follow from Wu's equation.
 - Already in this project, found during the names review (item 4): topics/dial-survey item 4 and lean-library DialSurvey.lean had the per-element copies count first, with the opposite sign (factor (1 − kz)^(−1/k), so k = −1 is subsets and k = −1/m is at most m copies), and proved those cases in Lean (kRise_fermi, kRise_bose, kRise_parafermi, fall_vanish). The pages agree once the sign is read as weight versus probability (names-review/lean/Conventions.lean, weight_prob_flip). This page duplicated that result; it should cite dial-survey.
 - What this page adds on top: atoms compose by the k-rule (atoms_compose), the occupation and fluctuation in the k form, the 1/n − 1/x = k gap, the negative-count check for k = 2/3, and the one-dial test (Haldane's g as a k that slides with crowding). Packaging only, not found stated, not a discovery.
-- Naming hazard for checklist item 4: the project's q = k + 1, but Tsallis's q = 1 − k for the same family.
+- Naming hazard for checklist item 4: Tsallis's index is q_T = 1 − k for the same family.
 
 ## Figures
 - fig1-repetition-dial.png: the dial as cells, and the chance of 0 to 5 copies at the same average for k = 1, 1/2, 0, −1/2, −1.

@@ -57,7 +57,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <p class="lede">For a one-input law like the circle operation ∘₁ (called mult-add before 1.0) there are exactly three global shapes, told apart by how many periods the law's log has: none (addition), one (the circle operation), two (a torus). The only continuous dial left after that is the torus's proportions, the nome q. Weight is the size of the measuring stick, the landscape bend is a switch between line and circle, and rung height is a route through rulers that matches the bend to third order and leaves it at the fourth. New directions do appear, but only when there are two or more waves (pair weights) or when you insist on whole numbers (the weight's primes).</p>
 <div class="first">
  <div class="panel">
-  <div class="fig"><svg id="plane" role="img" aria-label="The landscape plane: corner p across, bend q up, with the parabolas of constant discriminant and the rung route"></svg></div>
+  <div class="fig"><svg id="plane" role="img" aria-label="The landscape plane: corner p across, bend d up, with the parabolas of constant discriminant and the rung route"></svg></div>
   <div class="strip"><svg id="gap" role="img" aria-label="How far the rung route leaves the plane at fourth order, against rung height"></svg></div>
  </div>
  <div class="panel">
@@ -70,7 +70,7 @@ code{font-size:14px;overflow-wrap:anywhere}
    <dt>Real points form</dt><dd id="form"></dd>
    <dt>Fourth-order gap</dt><dd id="r3"></dd>
   </dl>
-  <p class="small">Each thin parabola is one shape seen through different rulers: the ruler x ↦ x/(1+cx) slides a law along its parabola and keeps its discriminant D = p² − 4q. Zooming the units multiplies D by λ², so after units only the sign of D is left: blue below the red border (two real walls, a line), amber above it (complex walls, a circle). The rung route lands on the parabola D = s, so to third order rung height is the bend's D. Below, its fourth-order coefficient −s(s−1)/12 is a height no point of the plane has; it crosses the plane only at rungs 0 and 1.</p>
+  <p class="small">Each thin parabola is one shape seen through different rulers: the ruler x ↦ x/(1+cx) slides a law along its parabola and keeps its discriminant D = p² − 4d. Zooming the units multiplies D by λ², so after units only the sign of D is left: blue below the red border (two real walls, a line), amber above it (complex walls, a circle). The rung route lands on the parabola D = s, so to third order rung height is the bend's D. Below, its fourth-order coefficient −s(s−1)/12 is a height no point of the plane has; it crosses the plane only at rungs 0 and 1.</p>
  </div>
 </div>
 </div></section>
@@ -163,7 +163,7 @@ function plane(){
  h+=el('circle',{cx:X(s),cy:Y(s*(s-1)/4),r:7,fill:'var(--red)',stroke:'var(--panel)','stroke-width':2});
  h+=el('text',{x:X(P[1])-6,y:Y(0)-8,'text-anchor':'end'},narrow?'weight line':'weight line: every k ≠ 0 is the circle operation');
  h+=el('text',{x:X(-2.9),y:Y(2.25)},'circle-shaped (D < 0)');h+=el('text',{x:X(-2.9),y:Y(-1.5)},'line-shaped (D > 0)');
- h+=el('text',{x:W-m.r,y:H-8,'text-anchor':'end'},'corner p →');h+=el('text',{x:4,y:m.t+12},'bend q');
+ h+=el('text',{x:W-m.r,y:H-8,'text-anchor':'end'},'corner p →');h+=el('text',{x:4,y:m.t+12},'bend d');
  sv.innerHTML=h;
 }
 function gap(){
@@ -183,7 +183,7 @@ function readout(){
  const s=+sIn.value,fmt=v=>(Math.abs(v)<5e-4?0:v).toFixed(3).replace(/\.?0+$/,'')||'0';
  document.getElementById('so').textContent=fmt(s);
  document.getElementById('dbig').textContent='D = '+fmt(s);
- document.getElementById('pq').textContent=`p = ${fmt(s)}, q = ${fmt(s*(s-1)/4)}`;
+ document.getElementById('pq').textContent=`p = ${fmt(s)}, d = ${fmt(s*(s-1)/4)}`;
  const per=Math.abs(s)<1e-9?'none (infinitely long)':s>0?`2πi/√${fmt(s)} = ${(2*Math.PI/Math.sqrt(s)).toFixed(3)} i`:`2π/√${fmt(-s)} = ${(2*Math.PI/Math.sqrt(-s)).toFixed(3)}, real`;
  document.getElementById('per').textContent=per;
  document.getElementById('form').textContent=Math.abs(s)<1e-9?'neither: one double wall, plain addition':s>0?'a line (two real walls)':'a circle (complex walls)';
@@ -216,8 +216,8 @@ function lattices(){
   document.getElementById('nome').textContent=`Nome |q| = ${qa.toExponential(2)}. j = ${Math.abs(j[1])<1e-6*jm?j[0].toPrecision(6):j[0].toPrecision(4)+(j[1]<0?' − ':' + ')+Math.abs(j[1]).toPrecision(4)+'i'}. Nine points return in three steps. At length 1 and no shear (the square torus) j = 1728.`}
 }
 const rows=[
-['Weight k','a + b + k·ab; also the q of q-integers and Potts colours (q = k + 1)','collapses: every k ≠ 0 is the circle operation','collapses','one period, 2πi/k: only its size','<span class="tag t-lens">units</span> (but real on graphs and over whole numbers)'],
-['Landscape bend q','(a + b + p·ab)/(1 − q·ab); the boosts\' curvature','one number p²/D','only the sign of D','period imaginary (line) or real (circle)','<span class="tag t-switch">a switch</span> line or circle'],
+['Weight k','a + b + k·ab; k + 1 is the base of q-integers and the Potts colour count','collapses: every k ≠ 0 is the circle operation','collapses','one period, 2πi/k: only its size','<span class="tag t-lens">units</span> (but real on graphs and over whole numbers)'],
+['Landscape bend d','(a + b + p·ab)/(1 − d·ab); the boosts\' curvature','one number p²/D','only the sign of D','period imaginary (line) or real (circle)','<span class="tag t-switch">a switch</span> line or circle'],
 ['Rung height s','E^s(E^{−s}a + E^{−s}b), the rung sheet','survives (the ladder fixes its own units)','collapses: each rung is addition in its ruler','no new shape (fractional rungs are not even analytic)','<span class="tag t-lens">a route through rulers</span> equals the bend\'s D to third order'],
 ['Nome q','the torus ℂ*/q^ℤ: theta lattice, Tate gluing','survives','invisible near 0 for every q','second period; j tells tori apart','<span class="tag t-true">the one true direction</span>'],
 ['Doppler rapidity','the coordinate in which velocity addition is addition','','','','<span class="tag t-lens">a position</span> on one law, not a dial'],

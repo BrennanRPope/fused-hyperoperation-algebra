@@ -1,13 +1,13 @@
 (a) Rung s on the landscape
-  s =    -1: corner k = -1.000000, bend q = 0.500000, s(s-1)/4 = 0.500000, shape k^2/(k^2-4q) = -1.000000
-  s =  -0.5: corner k = -0.500000, bend q = 0.187500, s(s-1)/4 = 0.187500, shape k^2/(k^2-4q) = -0.500000
-  s =     0: corner k = 0.000000, bend q = 0.000000, s(s-1)/4 = 0.000000, shape k^2/(k^2-4q) = border
-  s =  0.25: corner k = 0.250000, bend q = -0.046875, s(s-1)/4 = -0.046875, shape k^2/(k^2-4q) = 0.250000
-  s =   0.5: corner k = 0.500000, bend q = -0.062500, s(s-1)/4 = -0.062500, shape k^2/(k^2-4q) = 0.500000
-  s =     1: corner k = 1.000000, bend q = 0.000000, s(s-1)/4 = 0.000000, shape k^2/(k^2-4q) = 1.000000
-  s =   1.5: corner k = 1.500000, bend q = 0.187500, s(s-1)/4 = 0.187500, shape k^2/(k^2-4q) = 1.500000
-  s =     2: corner k = 2.000000, bend q = 0.500000, s(s-1)/4 = 0.500000, shape k^2/(k^2-4q) = 2.000000
-  s =   2.5: corner k = 2.500000, bend q = 0.937500, s(s-1)/4 = 0.937500, shape k^2/(k^2-4q) = 2.500000
+  s =    -1: corner k = -1.000000, bend d = 0.500000, s(s-1)/4 = 0.500000, shape k^2/(k^2-4d) = -1.000000
+  s =  -0.5: corner k = -0.500000, bend d = 0.187500, s(s-1)/4 = 0.187500, shape k^2/(k^2-4d) = -0.500000
+  s =     0: corner k = 0.000000, bend d = 0.000000, s(s-1)/4 = 0.000000, shape k^2/(k^2-4d) = border
+  s =  0.25: corner k = 0.250000, bend d = -0.046875, s(s-1)/4 = -0.046875, shape k^2/(k^2-4d) = 0.250000
+  s =   0.5: corner k = 0.500000, bend d = -0.062500, s(s-1)/4 = -0.062500, shape k^2/(k^2-4d) = 0.500000
+  s =     1: corner k = 1.000000, bend d = 0.000000, s(s-1)/4 = 0.000000, shape k^2/(k^2-4d) = 1.000000
+  s =   1.5: corner k = 1.500000, bend d = 0.187500, s(s-1)/4 = 0.187500, shape k^2/(k^2-4d) = 1.500000
+  s =     2: corner k = 2.000000, bend d = 0.500000, s(s-1)/4 = 0.500000, shape k^2/(k^2-4d) = 2.000000
+  s =   2.5: corner k = 2.500000, bend d = 0.937500, s(s-1)/4 = 0.937500, shape k^2/(k^2-4d) = 2.500000
   The rung curve is the parabola (s, s(s-1)/4); its shape number is s itself, so it moves at
   constant speed in the unit-free coordinate and crosses the border once, at s = 0, linearly.
 

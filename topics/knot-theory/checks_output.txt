@@ -48,7 +48,7 @@ PASS the q-step pair R_q: y ↦ qy+1, L_q: y ↦ qy/(qy+1) gives [5/2]_q = (1+2q
 PASS and the tangle's own y = A²g/f for 5/2 is exactly that q-rational at q = −A⁻⁴
 PASS [r/s]_q from the tangle → r/s at q = 1 (A = e^(iπ/4)) for all seven
 --- 5. The landscape: Möbius steps, but no bend ---
-PASS every landscape law, 'add a' is a Möbius map of b: F(a,b) = ((1+pa)b + a)/(−qa·b + 1)
+PASS every landscape law, 'add a' is a Möbius map of b: F(a,b) = ((1+pa)b + a)/(−da·b + 1)
 PASS tangle sums sit on the dial line (bend 0): x(S+T) = F_{d,0}(x(S), x(T))
 PASS the stacked law in y has identity ∞ (y ⋆ ∞ = y), so it is the dial seen through 1/y, not a landscape point
 PASS vertical sum in y: 1/y = 1/y1 ∘_(1/q−1) 1/y2 (general pair, q = −A⁻⁴)

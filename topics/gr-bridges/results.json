@@ -3,9 +3,9 @@
  "failed": 0,
  "results": {
   "S1": "In Cl(1,1), boosts are 1 + beta*sigma with sigma^2 = +1; products give Einstein addition, D^2 - 1 combines by the circle operation, and the wall is the light cone.",
-  "S2": "The twisted-boost law [K_x,K_y] = -q J is the Clifford commutator [e0e1,e0e2] = -2 k0 e1e2: q is the square of the shared direction.",
+  "S2": "The twisted-boost law [K_x,K_y] = -d J is the Clifford commutator [e0e1,e0e2] = -2 k0 e1e2: d is the square of the shared direction.",
   "S3": "Velocity space is a hyperbolic space of one fixed curvature (set by the dial); the twist of a velocity loop is its area times that curvature.",
-  "S4": "In 2D a dial that varies by place is the whole story: q(x,y) = Gaussian curvature, twist = q x area, any q realized locally.",
+  "S4": "In 2D a dial that varies by place is the whole story: d(x,y) = Gaussian curvature, twist = d x area, any d realized locally.",
   "S5": "Schur: if the twist per area is the same in every plane at each point (a scalar dial), the dial is constant in 3+ dimensions.",
   "S6": "The multivector circle operation must be a + b + a k b (associative for every k, exact lift 1 + k(a*b) = (1+ka)(1+kb)); a + b + k a b works only for central k (scalars, plus I in Cl(3,0)). A constant invertible k is a change of coordinates.",
   "S7": "k(x) as a weight gives only A = k^-1 dk, a flat connection. Curvature needs a second, independent field: a connection (the twist field).",

@@ -17,7 +17,7 @@ log(1 + z), the fixed point of every landscape Möbius flow, and the place a pro
    polar web about the wall. Classical.
 3. Circle roots of 0 are ζ − 1, a regular n-gon on |1 + z| = 1 through 0; all n of them combine by the circle operation to 0 (n odd) or −2 (n even).
 4. Landscape laws as Möbius maps: translations compose by the law (projective matrices), det = wall polynomial, fixed points =
-   walls, tr² − 4det = a²(p² − 4q). Over C two walls -> conjugate to the circle operation (Cayley for tan, Doppler for tanh); one double
+   walls, tr² − 4det = a²(p² − 4d). Over C two walls -> conjugate to the circle operation (Cayley for tan, Doppler for tanh); one double
    wall -> addition. Textbook one-parameter Möbius groups.
 5. e^z − 1 at 0 is parabolic: Abel ruler α = −2/z + (1/3)log z − z/36 + z²/540 + 1/7776 z³ − 71/435456 z⁴ ...; the attracting and
    repelling rulers differ by a1·e^{2πiw}, a1 ≈ 10.748807 + 63.246298i (|a1| ≈ 64.153), decay rate 2π confirmed. Nonzero

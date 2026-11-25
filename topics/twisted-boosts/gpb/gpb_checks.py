@@ -1,5 +1,5 @@
 # Gravity Probe B through "twist = curvature x area".
-# Geodetic precession = velocity-space twist (Thomas-type, q = -1/c^2) + space-curvature holonomy.
+# Geodetic precession = velocity-space twist (Thomas-type, d = -1/c^2) + space-curvature holonomy.
 # Checks: exact Schwarzschild parallel transport (numeric ODE), Flamm-surface holonomy and curvature integral,
 # the circle-operation combination of the two factors, GP-B numbers, frame dragging as a gravitomagnetic flux.
 import numpy as np, sympy as sp, math

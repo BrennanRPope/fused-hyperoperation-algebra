@@ -29,7 +29,7 @@ zf = lambda X, Y: -X/Y
 z1, z2 = zf(X1, Y1), zf(X2, Y2)
 k, q = -a1, -a2
 F = (z1 + z2 + k*z1*z2)/(1 - q*z1*z2)
-rep("1b chord rule in z = -x/y is exactly the lens law (z1+z2+k z1 z2)/(1-q z1 z2), k=-a1, q=-a2",
+rep("1b chord rule in z = -x/y is exactly the lens law (z1+z2+k z1 z2)/(1-d z1 z2), k=-a1, d=-a2",
     sp.simplify(zf(Xs, Ys) - F) == 0)
 rep("1c z = -1/t, so z -> wall exactly where x(t) = t^2+a1 t-a2 = 0: the node's tangent slopes",
     sp.simplify(z1 + 1/t1) == 0 and sp.expand((t**2*(1 + k*(-1/t) + q/t**2)) - (t**2 + a1*t - a2)) == 0)
@@ -38,7 +38,7 @@ lens = lambda tt: (tt - m1)/(tt - m2)
 sub = {a1: -(m1 + m2), a2: -m1*m2}
 rep("1d lens (t-m1)/(t-m2) of the two branches turns the chord law into multiplication",
     sp.simplify((lens(sp.Symbol('T3')) ).subs(sp.Symbol('T3'), -1/zf(Xs, Ys)).subs(sub) - (lens(t1)*lens(t2)).subs(sub)) == 0)
-rep("1e discriminant of the tangent slopes a1^2+4a2 equals the map's k^2-4q", sp.expand(a1**2 + 4*a2 - (k**2 - 4*q)) == 0)
+rep("1e discriminant of the tangent slopes a1^2+4a2 equals the map's k^2-4d", sp.expand(a1**2 + 4*a2 - (k**2 - 4*q)) == 0)
 # points over F_p
 def count_ns(A1, A2, p):
     n = 1  # infinity
@@ -46,8 +46,8 @@ def count_ns(A1, A2, p):
         for yy in range(p):
             if (yy*yy + A1*xx*yy - xx**3 - A2*xx*xx) % p == 0: n += 1
     return n - 1  # drop the node (0,0)
-cases = [("Circle-operation node y^2-xy=x^3 (k=1,q=0)", -1, 0), ("velocity-addition node y^2=x^3+x^2 (k=0,q=-1)", 0, 1),
-         ("turning node y^2=x^3-x^2 (k=0,q=1)", 0, -1), ("cusp y^2=x^3", 0, 0)]
+cases = [("Circle-operation node y^2-xy=x^3 (k=1,d=0)", -1, 0), ("velocity-addition node y^2=x^3+x^2 (k=0,d=-1)", 0, 1),
+         ("turning node y^2=x^3-x^2 (k=0,d=1)", 0, -1), ("cusp y^2=x^3", 0, 0)]
 ok = True; rows = []
 for name, A1, A2 in cases:
     for p in [5, 7, 11, 13]:
@@ -127,7 +127,7 @@ cn = lambda v: sp.sqrt(1 - v**2); dn = lambda v: sp.sqrt(1 - m_*v**2)
 snadd = (A*cn(B)*dn(B) + B*cn(A)*dn(A))/(1 - m_*A**2*B**2)
 h = sp.symbols('h')
 ser3 = sp.expand(sp.series(snadd.subs({A: h*A, B: h*B}), h, 0, 4).removeO().subs(h, 1))
-rep("3a Jacobi sn addition (pendulum phase law) = a + b - (1+m)/2 (a^2 b + a b^2) + ...: corner 0, bend q = -(1+m)/2",
+rep("3a Jacobi sn addition (pendulum phase law) = a + b - (1+m)/2 (a^2 b + a b^2) + ...: corner 0, bend d = -(1+m)/2",
     sp.expand(ser3 - (A + B - (1 + m_)/2*(A**2*B + A*B**2))) == 0)
 note("so m = 0 (small swings, sine) sits at (0,-1/2) and m = 1 (separatrix) at (0,-1), velocity addition")
 s1 = (A*cn(B)*dn(B) + B*cn(A)*dn(A)).subs(m_, 1); den1 = (1 - A**2*B**2)
@@ -219,7 +219,7 @@ for name, c in curves.items():
     frob[name] = rows
     note(f"{name}: bad primes " + ", ".join(f"p={p}: a_p={a} ({'split, k=-1' if a==1 else 'non-split, k=+1 (the circle operation)' if a==-1 else 'additive'})" for p, a, b in rows if b))
 rep("4a good primes: a_p^2 < 4p for all four curves, p < 4000 (Hasse): Euler factor 1 - a_p T + p T^2 sits in the turning country", ok_h)
-rep("4b bad primes: Euler factor 1 - a_p T lands on the q = 0 line at k = -a_p in {-1, 0, +1}", ok_bad)
+rep("4b bad primes: Euler factor 1 - a_p T lands on the d = 0 line at k = -a_p in {-1, 0, +1}", ok_bad)
 th = [math.acos(a/(2*math.sqrt(p))) for nm in ["11a1", "37a1", "14a1", "15a1"] for p, a, b in frob[nm] if not b]
 hist, edges = np.histogram(th, bins=12, range=(0, math.pi))
 cdf = lambda x: (x - math.sin(x)*math.cos(x))/math.pi

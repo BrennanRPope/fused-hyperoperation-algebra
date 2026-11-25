@@ -8,12 +8,12 @@ PASS x = 1 lands on a = -1 + i (a quarter of the way round)
 PASS the circle is closed under the circle operation (|1+(a(+)b)| = |1+a| |1+b|)   (norm of a product = product of norms)
 PASS a = -1+i: a(+)a = -2, 4 copies = 0 (the loop closes)   [(-1+1j), (-2+0j), (-1-1j), 0j]
 PASS turning law: 1 (+)t 1 = 2/0 = infinity, four steps of 1 come back to 0   [(1, 1), (2, 0), (2, -2), (0, -4)]
-PASS turning law (p,q)=(0,1) has period 2pi/sqrt(4q-p^2)   3.14159265358979324
-PASS turning law (p,q)=(1,1) has period 2pi/sqrt(4q-p^2)   3.6275987284684357
-PASS turning law (p,q)=(-1,2) has period 2pi/sqrt(4q-p^2)   2.3748208234474519
-PASS turning law (p,q)=(0.5,3) has period 2pi/sqrt(4q-p^2)   1.83299354282289275
-PASS turning law (p,q)=(2,1.25) has period 2pi/sqrt(4q-p^2)   6.28318530717958648
-PASS turning law (p,q)=(-3,2.5) has period 2pi/sqrt(4q-p^2)   6.28318530717958648
+PASS turning law (p,d)=(0,1) has period 2pi/sqrt(4d-p^2)   3.14159265358979324
+PASS turning law (p,d)=(1,1) has period 2pi/sqrt(4d-p^2)   3.6275987284684357
+PASS turning law (p,d)=(-1,2) has period 2pi/sqrt(4d-p^2)   2.3748208234474519
+PASS turning law (p,d)=(0.5,3) has period 2pi/sqrt(4d-p^2)   1.83299354282289275
+PASS turning law (p,d)=(2,1.25) has period 2pi/sqrt(4d-p^2)   6.28318530717958648
+PASS turning law (p,d)=(-3,2.5) has period 2pi/sqrt(4d-p^2)   6.28318530717958648
 PASS the circle operation's own logarithm gains 2 pi i once round the wall (period of log(1+a))   (0.0 + 6.2831853071795864769j)
 PASS n copies of i*pi/n combined by the circle operation head for -2 (distance ~ pi^2/n)   [(10, '(-2.59336232527 + 0.156063629873j)'), (100, '(-2.05055978667 + 0.00108515610208j)'), (1000, '(-2.00494697386 + 1.03864931343e-5j)'), (1000000, '(-2.00000493481 + 1.03354765634e-11j)')]
 PASS steps/n closes in on pi (n = 10^6: 3.141593...)   [(1, 5), (2, 7), (3, 10), (5, 16), (10, 32), (30, 95), (100, 315), (300, 943), (1000, 3142), (10000, 31416), (100000, 314160), (1000000, 3141593)]

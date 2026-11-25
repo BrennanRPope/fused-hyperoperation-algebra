@@ -6,7 +6,7 @@ circle-operation geometry to Einstein's field equations G = 8πG T, or find the 
 
 ## Answer
 
-Not from the circle operation alone. The circle operation gives the local rules of motion (the dial q sets the signature and
+Not from the circle operation alone. The circle operation gives the local rules of motion (the dial d sets the signature and
 the speed of light, and twist = curvature × area). Einstein's equations need a rule for how matter
 bends spacetime, and every route tested has to supply that rule from outside. What we found is the
 exact place each route needs it, and one route that comes close in a picture that is ours to use.
@@ -65,15 +65,15 @@ decay 0.9983 ± 0.0016 of GR's prediction; LIGO). Pressure was not tested here.
 
 - A small loop in the t–r plane outside a mass returns a vector boosted, with rapidity (2M/r³) × area
   (numerical parallel transport, 0.5% at the loop size used). Curvature in a plane that contains time
-  gives a boost; that is the twisted-boosts law with q < 0.
+  gives a boost; that is the twisted-boosts law with d < 0.
 - The Bianchi identity ∇·G = 0 holds automatically (checked on every river v(t, r)). The contracted
   Bianchi ∇·Ric = ½ dR forces the left side to be R − ½Rg (b = −a/2). Lovelock (1971): in four dimensions
   that, plus Λg, is the only choice for a second-order local law. A metric field and "second order,
   local" are inputs put in by hand.
-- Section A: the dial's boosts close on −q × a rotation and commute at q = 0. Hojman, Kuchař and
+- Section A: the dial's boosts close on −d × a rotation and commute at d = 0. Hojman, Kuchař and
   Teitelboim (1976) showed that if these boosts are made local (a lapse that varies from place to place)
   and must compose the same way whichever path is taken, the only second-order dynamics for a spatial
-  metric is Einstein's, with G and Λ left free. The coefficient in their bracket is ε = sign(q). This is
+  metric is Einstein's, with G and Λ left free. The coefficient in their bracket is ε = sign(d). This is
   the closest thing to a derivation from the composition law: the twist rule, made local, plus a metric.
 
 ## Leads, judged on their own merits
@@ -82,7 +82,7 @@ decay 0.9983 ± 0.0016 of GR's prediction; LIGO). Pressure was not tested here.
   → HKT → Einstein's equations. Every link is proved, ours or known; the result is GR exactly.
 - **No new prediction.** Every route either reproduces GR or is ruled out by data. GW170817 also says the
   speed of gravity equals the speed of light to about 10⁻¹⁵, so light and gravity share one dial.
-- **The one place a varying dial goes beyond GR:** letting q vary inside the HKT bracket ("deformed
+- **The one place a varying dial goes beyond GR:** letting d vary inside the HKT bracket ("deformed
   general covariance"). This is active research: in loop quantum cosmology the bracket's coefficient turns
   negative above half the critical density, which reads as a switch from Lorentzian to Euclidean
   signature (Mielczarek, arXiv:1304.2208; arXiv:1606.03271; disputed with self-dual variables,

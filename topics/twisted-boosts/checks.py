@@ -11,10 +11,10 @@ def check(name, cond):
 a,b,c,d,q = sp.symbols('a b c d q', real=True)
 u = a + sp.I*b; v = c + sp.I*d
 cj = sp.conjugate
-Bq = lambda z: sp.Matrix([[1, z], [-q*cj(z), 1]])     # dial boost; q=-1 Lorentz, 0 Galilean, +1 rotation
+Bq = lambda z: sp.Matrix([[1, z], [-q*cj(z), 1]])     # dial boost; d=-1 Lorentz, 0 Galilean, +1 rotation
 P = sp.expand(Bq(u)*Bq(v))
 z0 = lambda e: sp.simplify(sp.expand(e)) == 0
-check("product entries: [[1 - q·u·v̄, u+v], [-q(ū+v̄), 1 - q·ū·v]]",
+check("product entries: [[1 - d·u·v̄, u+v], [-q(ū+v̄), 1 - d·ū·v]]",
       z0(P[0,0]-(1-q*u*cj(v))) and z0(P[0,1]-(u+v)) and z0(P[1,0]+q*(cj(u)+cj(v))) and z0(P[1,1]-(1-q*cj(u)*v)))
 check("the two diagonal entries are conjugates", z0(P[0,0]-cj(P[1,1])))
 dot = a*c + b*d; cross = a*d - b*c
@@ -22,28 +22,28 @@ check("corner ū·v = dot + i·cross", z0(cj(u)*v - (dot + sp.I*cross)))
 check("cross = twice the signed area of the triangle 0,u,v (shoelace)", z0(cross - 2*sp.Rational(1,2)*(a*d-b*c)))
 w = (u+v)/(1 - q*cj(u)*v)
 T = (1 - q*u*cj(v))/(1 - q*cj(u)*v)
-# factorization  B(u)B(v) = (1 - q ū v) * B(w) * diag(T,1)  (up to the overall phase convention)
+# factorization  B(u)B(v) = (1 - d ū v) * B(w) * diag(T,1)  (up to the overall phase convention)
 F = (1 - q*cj(u)*v) * Bq(w) * sp.diag(T, 1)
-check("B(u)B(v) = (1 - q·ū·v) · B(u⊕v) · diag(twist, 1), u⊕v = (u+v)/(1 - q·ū·v)", all(z0(sp.simplify(P[i,j]-F[i,j])) for i in range(2) for j in range(2)))
+check("B(u)B(v) = (1 - d·ū·v) · B(u⊕v) · diag(twist, 1), u⊕v = (u+v)/(1 - d·ū·v)", all(z0(sp.simplify(P[i,j]-F[i,j])) for i in range(2) for j in range(2)))
 check("|twist| = 1", z0(sp.simplify(T*cj(T)) - 1))
-check("collinear (b=d=0): no twist, and q=-1 gives (1+uv)·B(u⊕v)", z0(T.subs({b:0,d:0})-1) and z0((P.subs({b:0,d:0,q:-1}) - (1+a*c)*sp.Matrix([[1,(a+c)/(1+a*c)],[(a+c)/(1+a*c),1]])).norm()))
-check("q=0 (Galilean): twist = 1 for all directions", z0(T.subs(q,0)-1))
-check("twist = 1  <=>  q·cross = 0  (numerator of twist-1 is 2i·q·cross)", z0(sp.simplify((1-q*u*cj(v)) - (1-q*cj(u)*v)) - 2*sp.I*q*cross))
+check("collinear (Im u = Im v = 0): no twist, and d=-1 gives (1+uv)·B(u⊕v)", z0(T.subs({b:0,d:0})-1) and z0((P.subs({b:0,d:0,q:-1}) - (1+a*c)*sp.Matrix([[1,(a+c)/(1+a*c)],[(a+c)/(1+a*c),1]])).norm()))
+check("d=0 (Galilean): twist = 1 for all directions", z0(T.subs(q,0)-1))
+check("twist = 1  <=>  d·cross = 0  (numerator of twist-1 is 2i·d·cross)", z0(sp.simplify((1-q*u*cj(v)) - (1-q*cj(u)*v)) - 2*sp.I*q*cross))
 X = 1 - q*dot; Y = q*cross
-check("twist = (X + iY)²/(X²+Y²), X = 1 - q·dot, Y = q·cross", z0(sp.simplify(T - (X+sp.I*Y)**2/(X**2+Y**2))))
-check("so tan(ω/2) = q·cross / (1 - q·dot)", True)  # follows from previous (arg of (X+iY)^2 is 2·atan2(Y,X))
+check("twist = (X + iY)²/(X²+Y²), X = 1 - d·dot, Y = d·cross", z0(sp.simplify(T - (X+sp.I*Y)**2/(X**2+Y**2))))
+check("so tan(ω/2) = d·cross / (1 - d·dot)", True)  # follows from previous (arg of (X+iY)^2 is 2·atan2(Y,X))
 check("order swap: u⊕v = twist · (v⊕u)", z0(sp.simplify(w - T*(v+u)/(1-q*cj(v)*u))))
-check("light wall (q=-1): |1+ūv|² - |u+v|² = (1-|u|²)(1-|v|²)",
+check("light wall (d=-1): |1+ūv|² - |u+v|² = (1-|u|²)(1-|v|²)",
       z0(sp.expand((1+cj(u)*v)*cj(1+cj(u)*v) - (u+v)*cj(u+v) - (1-u*cj(u))*(1-v*cj(v)))))
-check("general q: |1-qūv|² + q|u+v|² = (1+q|u|²)(1+q|v|²)  (det multiplies)",
+check("general d: |1-dūv|² + d|u+v|² = (1+d|u|²)(1+d|v|²)  (det multiplies)",
       z0(sp.expand((1-q*cj(u)*v)*cj(1-q*cj(u)*v) + q*(u+v)*cj(u+v) - (1+q*u*cj(u))*(1+q*v*cj(v)))))
-# shape closure: [[α,β],[-q β̄, ᾱ]] closed under product
+# shape closure: [[α,β],[-d β̄, ᾱ]] closed under product
 al1,be1,al2,be2 = [sp.Symbol(s) for s in ('al1','be1','al2','be2')]
 M = lambda al,be: sp.Matrix([[al, be],[-q*cj(be), cj(al)]])
 PP = sp.expand(M(al1,be1)*M(al2,be2))
-check("shape [[α,β],[-qβ̄,ᾱ]] is closed under products (one group per q)", z0(PP[1,1]-cj(PP[0,0])) and z0(PP[1,0]+q*cj(PP[0,1])))
+check("shape [[α,β],[-dβ̄,ᾱ]] is closed under products (one group per d)", z0(PP[1,1]-cj(PP[0,0])) and z0(PP[1,0]+q*cj(PP[0,1])))
 # 1-D tie-in with relativity page: d-lens
-check("1-D: 1 - q·u·v is the relativity denominator 1 + uv at q=-1 (corner real)", z0((1-q*a*c).subs(q,-1)-(1+a*c)))
+check("1-D: 1 - d·u·v is the relativity denominator 1 + uv at d=-1 (corner real)", z0((1-q*a*c).subs(q,-1)-(1+a*c)))
 
 # ---------- numerics: real Lorentz matrices ----------
 def boost(beta):
@@ -99,7 +99,7 @@ for _ in range(2000):
     cr = bu[0]*bv[1]-bu[1]*bv[0]
     signs.append(np.sign(om) == -np.sign(cr) or abs(cr) < 1e-12)
 check("|Wigner angle| = area of the velocity triangle (rest, u, u⊕v) in rapidity units", max(errs) < 1e-7)
-check("sign: the twist turns opposite to the turn from u to v (q<0: defect)", all(signs))
+check("sign: the twist turns opposite to the turn from u to v (d<0: defect)", all(signs))
 print('   max |ω|-area error', max(errs))
 # closed formula with the familiar quantities
 errs=[]
@@ -117,7 +117,7 @@ for cc in (10.0, 100.0):
     L = boost(U/cc)@boost(V/cc); om = rot_angle_z(np.linalg.inv(boost(vel_of(L)))@L)
     flat_area = 0.5*abs(U[0]*V[1]-U[1]*V[0])
     rel = om/(-(1/cc**2)*flat_area)
-    check(f"slow limit c={cc:g}: ω / (q·flat area) → 1  (got {rel:.6f})", abs(rel-1) < 0.5*(25/cc**2)+1e-6)
+    check(f"slow limit c={cc:g}: ω / (d·flat area) → 1  (got {rel:.6f})", abs(rel-1) < 0.5*(25/cc**2)+1e-6)
 
 # ---------- Thomas precession = area of the velocity circle ----------
 for beta in (0.3, 0.6, 0.9):
@@ -133,7 +133,7 @@ for beta in (0.3, 0.6, 0.9):
     got = (-om) % (2*np.pi)
     check(f"Thomas per lap β={beta}: rotation {got:.6f} = 2π(γ-1) mod 2π = {pred % (2*np.pi):.6f}", abs(got - pred % (2*np.pi)) < 2e-3)
 
-# ---------- the sphere end of the dial: q=+1 (rotations) ----------
+# ---------- the sphere end of the dial: d=+1 (rotations) ----------
 def rotmat(axis, ang):
     axis = axis/np.linalg.norm(axis); K = np.array([[0,-axis[2],axis[1]],[axis[2],0,-axis[0]],[-axis[1],axis[0],0]])
     return np.eye(3)+np.sin(ang)*K+(1-np.cos(ang))*K@K
@@ -157,7 +157,7 @@ for _ in range(2000):
     errs1.append(abs(np.angle(twist(zu,zv,1)) - om + 0) if True else 0)
     errs1[-1] = abs((errs1[-1]+np.pi)%(2*np.pi)-np.pi)
     E = sph_tri_area(Nn,pu,pw); dlt = (abs(om) - E) % (2*np.pi); errs2.append(min(dlt, 2*np.pi-dlt, abs((-abs(om)) % (2*np.pi) - E)))
-check("sphere (q=+1): composing two pole-moving rotations = move + spin; spin = arg of (1-u·v̄)/(1-ū·v)", max(errs1) < 1e-8)
+check("sphere (d=+1): composing two pole-moving rotations = move + spin; spin = arg of (1-u·v̄)/(1-ū·v)", max(errs1) < 1e-8)
 check("sphere: |spin| = spherical excess (area) of triangle (pole, u, u⊕v), mod 2π", max(errs2) < 1e-8)
 # disk sum = composed point on the sphere
 errs=[]
@@ -167,9 +167,9 @@ for _ in range(500):
     errs.append(np.linalg.norm(pw - sph_from_disk(mob(zu,zv,1))))
 check("sphere: composed point = (u+v)/(1-ū·v) (tangent addition in the plane)", max(errs) < 1e-9)
 
-# ---------- one law for all q: twist = q × (signed area), Gauss-Bonnet with K = q ----------
+# ---------- one law for all d: twist = d × (signed area), Gauss-Bonnet with K = d ----------
 def area_q(zu, zv, qq, n=4000):
-    # signed area of the geodesic triangle 0, zu, zu⊕zv in metric 2|dz|/(1+q|z|²), via the closed formula
+    # signed area of the geodesic triangle 0, zu, zu⊕zv in metric 2|dz|/(1+d|z|²), via the closed formula
     zw = mob(zu, zv, qq)
     # integrate area density over triangle by polygon sampling of geodesics (Möbius images of straight rays)
     def geo(z1, z2, m=n):
@@ -177,7 +177,7 @@ def area_q(zu, zv, qq, n=4000):
         w2 = mob(-z1, z2, qq)
         ts = np.linspace(0,1,m); return mob(z1, ts*w2, qq)
     path = np.concatenate([geo(0j,zu), geo(zu,zw), geo(zw,0j)])
-    # area = ∮ of 1-form with d(form) = 4/(1+q r²)² dx∧dy ; use form = f(r)(x dy - y dx), f = 2/(1+q r²)
+    # area = ∮ of 1-form with d(form) = 4/(1+d r²)² dx∧dy ; use form = f(r)(x dy - y dx), f = 2/(1+d r²)
     x, y = path.real, path.imag; r2 = x*x+y*y; f = 2/(1+qq*r2)
     xm, ym, fm = (x[1:]+x[:-1])/2, (y[1:]+y[:-1])/2, (f[1:]+f[:-1])/2
     return np.sum(fm*(xm*np.diff(y)-ym*np.diff(x)))
@@ -189,12 +189,12 @@ for qq in (-1.0, -0.25, 0.5, 1.0):
         if qq < 0 and (abs(zu) >= rmax or abs(zv) >= rmax): continue
         om = np.angle(twist(zu, zv, qq)); A = area_q(zu, zv, qq)
         errs.append(abs(om - qq*A))
-check("one law across the dial: twist angle = q × signed area (K = q), q ∈ {-1,-¼,½,1}", max(errs) < 1e-4)
+check("one law across the dial: twist angle = d × signed area (K = d), d ∈ {-1,-¼,½,1}", max(errs) < 1e-4)
 print('   max error', max(errs))
 
-# ---------- tie to the landscape: the q of the 1-D law is the curvature ----------
-check("1-D law (a+b)/(1 - q·ab): q=-1/c² relativity, q=0 Galilean, q=+1 tangent addition", True)
-check("metric 2|dz|/(1+q|z|²) has Gaussian curvature q (symbolic)",
+# ---------- tie to the landscape: the d of the 1-D law is the curvature ----------
+check("1-D law (a+b)/(1 - d·ab): d=-1/c² relativity, d=0 Galilean, d=+1 tangent addition", True)
+check("metric 2|dz|/(1+d|z|²) has Gaussian curvature d (symbolic)",
       (lambda: (lambda r, Q: sp.simplify(-(1/(2/(1+Q*r**2))**2)*(sp.diff(sp.log(2/(1+Q*r**2)), r, 2) + sp.diff(sp.log(2/(1+Q*r**2)), r)/r)) - Q)(*sp.symbols('r Q', positive=True)) == 0)())
 
 # ---------- half a kick ----------

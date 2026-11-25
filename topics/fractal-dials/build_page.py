@@ -91,7 +91,7 @@ html = f"""<!DOCTYPE html>
 <section class="band" id="map" style="background:var(--panel)"><div class="wrap">
 <h2>Which dials the circle operation already has</h2>
 <div class="plate">{P['p6_dial_map']}</div>
-<p class="cap">Plate 6. Blue: covered. Amber: a resemblance. Red: the one gap. Grey: geometry that does not change counts. The circle operation's numeric dials from the dial survey are k (with q = k + 1) and the per-element t; dimension is the fractional circle power; the rung flow handles growth between rungs.</p>
+<p class="cap">Plate 6. Blue: covered. Amber: a resemblance. Red: the one gap. Grey: geometry that does not change counts. The circle operation's numeric dials from the dial survey are k and the per-element t; dimension is the fractional circle power; the rung flow handles growth between rungs.</p>
 <p>Adding a zoom dial would be small: give each element a size r alongside its value a, so that a fractal's dimension comes out of its piece count and zoom. Whether that earns a place depends on whether other parts of the theory want sizes too; on this page it is only what lets circle-operation talk about fractals directly.</p>
 </div></section>
 

@@ -207,16 +207,16 @@ for k in [-1, -1/2, -1/3, 0.5, 1, 2]:
         pm = mode_pmf(k, x, 400); r = np.arange(400); mm = (r * pm).sum(); fano = ((r * r * pm).sum() - mm ** 2) / mm
         if abs(p * p / (p * p - 4 * q) - (2 * fano - 1) ** 2) > 1e-8: okD = False
         shapes.append((k, x, p * p))
-check("x(t) = (tilted mean - mean)/variance composes exactly by the lens law (a+b+p ab)/(1-q ab), p = 1+2k mu, q = k mu(1+k mu)", okA)
+check("x(t) = (tilted mean - mean)/variance composes exactly by the lens law (a+b+p ab)/(1-d ab), p = 1+2k mu, d = k mu(1+k mu)", okA)
 check("the tilted mean runs by the rate m' = m(1 + k m) (the variance function, Morris 1982)", okB)
-check("every dial count lands on the one parabola p^2 - 4q = 1 (two real walls)", okC)
-check("units-free shape p^2/(p^2-4q) = (2*Fano - 1)^2 for every mode", okD)
+check("every dial count lands on the one parabola p^2 - 4d = 1 (two real walls)", okC)
+check("units-free shape p^2/(p^2-4d) = (2*Fano - 1)^2 for every mode", okD)
 check("fermion modes have shape in [0,1], boson modes shape > 1, none negative (no count lives above the border parabola)",
       all((0 <= sh <= 1) if k < 0 else sh > 1 for k, x, sh in shapes))
-check("empty-mode limit s=0: (p,q) = (1,0), the circle operation; full fermion mode s=-1: (-1,0), union of failures",
+check("empty-mode limit s=0: (p,d) = (1,0), the circle operation; full fermion mode s=-1: (-1,0), union of failures",
       (1 + 2 * 0, 0 * 1) == (1, 0) and (1 + 2 * -1, -1 * 0) == (-1, 0))
 a, b = 0.37, -0.52
-check("half-filled fermion mode s=-1/2: (p,q) = (0,-1/4), lens law (a+b)/(1+ab/4) is velocity addition with speed limit 2",
+check("half-filled fermion mode s=-1/2: (p,d) = (0,-1/4), lens law (a+b)/(1+ab/4) is velocity addition with speed limit 2",
       abs((a + b) / (1 + a * b / 4) - (a + b + 0 * a * b) / (1 - (-0.25) * a * b)) < 1e-15)
 check("particle-hole: at k=-1 eigenvalues mu and 1-mu give the same shape",
       all(abs((1 - 2 * x) ** 2 - (1 - 2 * (1 - x)) ** 2) < 1e-15 for x in np.linspace(0, 1, 11)))

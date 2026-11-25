@@ -2,8 +2,8 @@
 
 For a growth law Y' = g(Y) started at Y0, measure displacement in units of the starting rate,
 a = (Y - Y0)/g(Y0). Two runs of time t1 and t2 then compose by a law F(a, b) with identity 0.
-If g is quadratic the law is exactly the Mobius law F_{p,q}, with
-  p = g'(Y0),  q = g''(Y0) g(Y0) / 2.
+If g is quadratic the law is exactly the Mobius law F_{p,d}, with
+  p = g'(Y0),  d = g''(Y0) g(Y0) / 2.
 This script integrates real growth laws and checks that claim, then tests the other gap claims.
 
 Run:  python3 gap_tests.py   (writes gap_tests_output.txt and dots.json)
@@ -40,7 +40,7 @@ def law_test(name, g, dg, d2g, Y0, t1, t2):
     err = abs(ab - mobius(a, b, p, q))
     disc = p * p - 4 * q
     seq = p * p / disc if disc != 0 else np.inf
-    check(f"{name}: two runs compose by F_(p,q), p = {p:.4g}, q = {q:.4g}", err < 1e-8, f"err {err:.1e}, s_eq {seq:.4g}")
+    check(f"{name}: two runs compose by F_(p,d), p = {p:.4g}, d = {q:.4g}", err < 1e-8, f"err {err:.1e}, s_eq {seq:.4g}")
     return p, q, seq
 
 
@@ -169,12 +169,12 @@ dots = [
     ("K-theory, Todd genus", "topology", 1, 0, "line", "topology"),
     ("Claim-count models (PGF)", "insurance", 1, 0, "line", "actuarial"),
     ("PUE: power and cooling overheads", "engineering", 1, 0, "line", "datacenter-energy"),
-    ("Tsallis q = 0 (outcomes minus one), Campbell cost", "information", 1, 0, "line", "information-theory"),
+    ("Tsallis q_T = 0 (outcomes minus one), Campbell cost", "information", 1, 0, "line", "information-theory"),
     ("Shannon and Renyi entropy, hazards, log-returns", "information", 0, 0, "line", "information-theory"),
     ("Burgers shocks (empty corner)", "fluids", 0, 0, "line", "ns-rungs"),
     ("Union of failures, survival, decrements", "reliability", -1, 0, "line", "information-theory"),
     ("Amplitude damping (T1)", "quantum", -1, 0, "line", "quantum-noise"),
-    ("Gini-Simpson (Tsallis q = 2), Kraft slack, erasures", "information", -1, 0, "line", "information-theory"),
+    ("Gini-Simpson (Tsallis q_T = 2), Kraft slack, erasures", "information", -1, 0, "line", "information-theory"),
     ("Slashing, validator churn", "consensus", -1, 0, "line", "consensus"),
     ("Parity, bit flips, binary channel cascade", "codes", -2, 0, "line", "information-theory"),
     ("Bit-flip and phase-flip noise", "quantum", -2, 0, "line", "quantum-noise"),

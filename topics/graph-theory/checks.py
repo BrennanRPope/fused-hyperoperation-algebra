@@ -74,9 +74,9 @@ check('wall 2: t = -1/(Q-1) absorbs, and it is v = -1 (proper colouring)', sp.si
 th = sp.symbols('theta')
 amh = lambda th, u, vv: u * vv / (1 - th * (1 - u) * (1 - vv))
 check('Potts parallel = union under Ali-Mikhail-Haq dependence, theta = 1 - Q', sp.simplify(1 - amh(1 - Q, 1 - a, 1 - b) - lens(Q - 2, 1 - Q, a, b)) == 0)
-check('Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4q', sp.simplify(lens(-2, 1, a, b) - (a + b - 2*a*b) / (1 - a*b)) == 0 and (-2)**2 == 4 * 1)
+check('Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4d', sp.simplify(lens(-2, 1, a, b) - (a + b - 2*a*b) / (1 - a*b)) == 0 and (-2)**2 == 4 * 1)
 kk_ = sp.symbols('kk')
-check('the or line q = -1 - k touches the border parabola q = k^2/4 only at k = -2, q = 1 (Q = 0)', sp.solve(sp.Eq(-1 - kk_, kk_**2 / 4), kk_) == [-2])
+check('the or line d = -1 - k touches the border parabola d = k^2/4 only at k = -2, d = 1 (Q = 0)', sp.solve(sp.Eq(-1 - kk_, kk_**2 / 4), kk_) == [-2])
 check('the parallel law is associative for every Q (symbolic)', sp.simplify(lens(Q-2, 1-Q, lens(Q-2, 1-Q, a, b), x) - lens(Q-2, 1-Q, a, lens(Q-2, 1-Q, b, x))) == 0)
 
 # ---------- 6. two-terminal reliability: series-parallel = (x, *_{-1}) ----------

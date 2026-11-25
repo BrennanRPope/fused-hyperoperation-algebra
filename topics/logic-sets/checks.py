@@ -36,7 +36,7 @@ def fold(kk, n):
     for _ in range(n): s = w(kk, s, 1)
     return s
 qnum = lambda q, n: sum(q**i for i in range(n))
-check("n trues under (+)k give the q-number [n]_q with q = k+1 (k in -3..3, n<12)",
+check("n trues under (+)k give the q-number [n]_q with k = q - 1 (k in -3..3, n<12)",
       all(fold(kk, n) == qnum(kk+1, n) for kk in range(-3, 4) for n in range(12)))
 check("OR folds n>=1 trues to 1 ([n]_0 = 1)", all(fold(-1, n) == 1 for n in range(1, 30)))
 check("XOR folds n trues to n mod 2 ([n]_-1)", all(fold(-2, n) == n % 2 for n in range(30)))
@@ -135,11 +135,11 @@ S = (a + b + (g-2)*a*b)/(1 + (g-1)*a*b)
 T = a*b/(g + (1-g)*(a + b - a*b))
 lens = lambda p, q, u, v: (u + v + p*u*v)/(1 - q*u*v)
 odds = lambda t: t/(1-t)
-check("Hamacher t-conorm is the landscape law at p = gamma - 2, q = 1 - gamma", sp.simplify(S - lens(g-2, 1-g, a, b)) == 0)
-check("those points lie on the line p + q = -1", sp.expand((g-2) + (1-g)) == -1)
+check("Hamacher t-conorm is the landscape law at p = gamma - 2, d = 1 - gamma", sp.simplify(S - lens(g-2, 1-g, a, b)) == 0)
+check("those points lie on the line p + d = -1", sp.expand((g-2) + (1-g)) == -1)
 check("gamma = 1 is the probabilistic sum (dial k = -1)", sp.simplify(S.subs(g,1) - w(-1,a,b)) == 0)
 check("gamma = 2 is the Einstein sum (a+b)/(1+ab), relativity's point (0,-1)", sp.simplify(S.subs(g,2) - lens(0,-1,a,b)) == 0)
-check("gamma = 0 is (a+b-2ab)/(1-ab) at (-2,1), on the border parabola p^2 = 4q",
+check("gamma = 0 is (a+b-2ab)/(1-ab) at (-2,1), on the border parabola p^2 = 4d",
       sp.simplify(S.subs(g,0) - lens(-2,1,a,b)) == 0 and (-2)**2 == 4*1)
 check("miss: 1 - S = (1-a)(1-b)/(1+(gamma-1)ab), independent of gamma in the numerator",
       sp.simplify(1 - S - (1-a)*(1-b)/(1 + (g-1)*a*b)) == 0)
@@ -194,7 +194,7 @@ check("statistics page's AMH theta is 1 - gamma (same line, same points)",
 mpf = mp.mpf
 def off_plane(f):
     pts = [(mpf('0.2'), mpf('0.3')), (mpf('0.5'), mpf('0.6')), (mpf('0.7'), mpf('0.15')), (mpf('0.35'), mpf('0.8'))]
-    # solve p,q exactly from the first two points, measure the miss at the others
+    # solve p,d exactly from the first two points, measure the miss at the others
     M = mp.matrix([[u*v, f(u,v)*u*v] for u,v in pts[:2]]); r = mp.matrix([f(u,v)-u-v for u,v in pts[:2]])
     p, q = mp.lu_solve(M, r)
     return max(abs(f(u,v) - (u+v+p*u*v)/(1-q*u*v)) for u,v in pts[2:])
@@ -213,7 +213,7 @@ misses = {kname: off_plane(f) for kname, f in offs.items()}
 for kname, mv in misses.items(): print("   miss", kname, mp.nstr(mv, 3))
 check("Frank, Yager, Schweizer-Sklar, Dombi, Aczel-Alsina (other parameters) leave the landscape (miss > 1e-4)",
       all(mv > mpf('1e-4') for mv in misses.values()))
-check("Frank's family hugs the line p + q = -1 without lying on it (fitted p + q within 0.05 of -1 for s = 0.5, 2)",
+check("Frank's family hugs the line p + d = -1 without lying on it (fitted p + d within 0.05 of -1 for s = 0.5, 2)",
       all(abs(sum(mp.lu_solve(mp.matrix([[u*v, frank(s)(u,v)*u*v] for u,v in [(mpf('0.2'),mpf('0.3')),(mpf('0.5'),mpf('0.6'))]]),
                               mp.matrix([frank(s)(u,v)-u-v for u,v in [(mpf('0.2'),mpf('0.3')),(mpf('0.5'),mpf('0.6'))]]))) + 1) < .05
           for s in [mpf('0.5'), mpf(2)]))

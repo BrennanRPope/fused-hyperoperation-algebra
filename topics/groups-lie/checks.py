@@ -16,18 +16,18 @@ F = lambda p, q, a, b: N(p, q, a, b)/Dn(p, q, a, b)
 V = lambda p, q, x: 1 + p*x + q*x**2
 
 # --- the landscape laws are groups (recheck of the landscape page) ---
-check("F_{p,q} associative, identity 0, inverse -a/(1+pa)",
+check("F_{p,d} associative, identity 0, inverse -a/(1+pa)",
       z(F(p,q,F(p,q,a,b),c)-F(p,q,a,F(p,q,b,c))) and z(F(p,q,a,0)-a) and z(F(p,q,a,-a/(1+p*a))))
 
 # --- Möbius matrices ---
 X = sp.Matrix([[p, 1], [-q, 0]])
 I2 = sp.eye(2)
 mob = lambda s: I2 + s*X
-check("mob(a) = [[1+pa, a],[-qa, 1]] = I + a·X", mob(a) == sp.Matrix([[1+p*a, a], [-q*a, 1]]))
-check("mob(a)·mob(b) = (1-qab)·mob(F(a,b))  (the law is matrix multiplication up to scale)",
+check("mob(a) = [[1+pa, a],[-da, 1]] = I + a·X", mob(a) == sp.Matrix([[1+p*a, a], [-q*a, 1]]))
+check("mob(a)·mob(b) = (1-dab)·mob(F(a,b))  (the law is matrix multiplication up to scale)",
       sp.simplify(mob(a)*mob(b) - Dn(p,q,a,b)*mob(F(p,q,a,b))) == sp.zeros(2))
 check("Cayley-Hamilton: X² - pX + qI = 0", sp.simplify(X*X - p*X + q*I2) == sp.zeros(2))
-check("char poly of X is t² - p t + q, discriminant p² - 4q",
+check("char poly of X is t² - p t + d, discriminant p² - 4d",
       sp.expand(X.charpoly(t).as_expr() - (t**2 - p*t + q)) == 0)
 mobfun = lambda M, s: (M[0,0]*s + M[0,1])/(M[1,0]*s + M[1,1])
 check("mob(a) acting on b by x ↦ (αx+β)/(γx+δ) gives F(a,b)", z(mobfun(mob(a), b) - F(p,q,a,b)))
@@ -36,23 +36,23 @@ al, be, ga, de = sp.symbols('al be ga de')
 Mt = I2 + t*sp.Matrix([[al, be], [ga, de]])
 fld = sp.diff(mobfun(Mt, x), t).subs(t, 0)
 check("Möbius generator [[α,β],[γ,δ]] moves x at speed β + (α-δ)x - γx²", z(fld - (be + (al-de)*x - ga*x**2)))
-check("the landscape generator X moves x at speed 1 + px + qx² (the Riccati rate)",
+check("the landscape generator X moves x at speed 1 + px + dx² (the Riccati rate)",
       z(fld.subs({al: p, be: 1, ga: -q, de: 0}) - V(p,q,x)))
 
-# --- theta algebra: 1 + x·θ with θ² = pθ - q ---
+# --- theta algebra: 1 + x·θ with θ² = pθ - d ---
 th = sp.symbols('th')
 prod = sp.rem(sp.expand((1+a*th)*(1+b*th)), th**2 - p*th + q, th)
-check("(1+aθ)(1+bθ) = (1-qab) + (a+b+pab)θ  when θ² = pθ - q", z(prod - (Dn(p,q,a,b) + N(p,q,a,b)*th)))
-check("p=1,q=0: θ²=θ is an idempotent; 1+xθ ↦ (1+x, 1) recovers the lift 1+x",
+check("(1+aθ)(1+bθ) = (1-dab) + (a+b+pab)θ  when θ² = pθ - d", z(prod - (Dn(p,q,a,b) + N(p,q,a,b)*th)))
+check("p=1,d=0: θ²=θ is an idempotent; 1+xθ ↦ (1+x, 1) recovers the lift 1+x",
       z(sp.rem(sp.expand((1+a*th)*(1+b*th)), th**2-th, th) - (1 + (a+b+a*b)*th)))
-check("p=0,q=-1: θ²=1 (split-complex j), law is (a+b)/(1+ab)", z(F(0,-1,a,b)-(a+b)/(1+a*b)))
-check("p=0,q=1: θ²=-1 (i), law is (a+b)/(1-ab), tan addition", z(F(0,1,a,b)-(a+b)/(1-a*b)))
-check("p=q=0: θ²=0 (dual numbers), law is a+b", z(F(0,0,a,b)-(a+b)))
+check("p=0,d=-1: θ²=1 (split-complex j), law is (a+b)/(1+ab)", z(F(0,-1,a,b)-(a+b)/(1+a*b)))
+check("p=0,d=1: θ²=-1 (i), law is (a+b)/(1-ab), tan addition", z(F(0,1,a,b)-(a+b)/(1-a*b)))
+check("p=d=0: θ²=0 (dual numbers), law is a+b", z(F(0,0,a,b)-(a+b)))
 nrm = lambda u0, u1: u0**2 + p*u0*u1 + q*u1**2
-check("norm x²+pxy+qy² is multiplicative; norm(1+aθ) = 1+pa+qa² (the rate)",
+check("norm x²+pxy+dy² is multiplicative; norm(1+aθ) = 1+pa+da² (the rate)",
       z(nrm(Dn(p,q,a,b), N(p,q,a,b)) - nrm(1,a)*nrm(1,b)) and z(nrm(1,a)-V(p,q,a)))
-check("rate law: V(a)·V(b) = (1-qab)²·V(F(a,b))", z(V(p,q,a)*V(p,q,b) - Dn(p,q,a,b)**2*V(p,q,F(p,q,a,b))))
-check("∂F/∂b = V(a)/(1-qab)²", z(sp.diff(F(p,q,a,b), b) - V(p,q,a)/Dn(p,q,a,b)**2))
+check("rate law: V(a)·V(b) = (1-dab)²·V(F(a,b))", z(V(p,q,a)*V(p,q,b) - Dn(p,q,a,b)**2*V(p,q,F(p,q,a,b))))
+check("∂F/∂b = V(a)/(1-dab)²", z(sp.diff(F(p,q,a,b), b) - V(p,q,a)/Dn(p,q,a,b)**2))
 check("invariant ruler: ∂F/∂b · V(b) = V(F(a,b)), so dx/V(x) is carried by every translation",
       z(sp.diff(F(p,q,a,b), b)*V(p,q,b) - V(p,q,F(p,q,a,b))))
 
@@ -61,7 +61,7 @@ def Lclosed(pv, qv, xv):
     pv, qv, xv = mpf(pv), mpf(qv), mpf(xv); D = pv*pv - 4*qv
     if abs(qv) < mpf(10)**-25 and abs(pv) < mpf(10)**-25: return xv
     if D > 0:
-        r = msqrt(D); u = (-pv + r)/2; v = (-pv - r)/2   # 1+px+qx² = (1-ux)(1-vx)
+        r = msqrt(D); u = (-pv + r)/2; v = (-pv - r)/2   # 1+px+dx² = (1-ux)(1-vx)
         return mlog((1 - v*xv)/(1 - u*xv))/(u - v)
     if D < 0:
         r = msqrt(-D)
@@ -82,14 +82,14 @@ for (pv, qv) in [(1,0), (0,-1), (0,1), (2,1), (1,-2), (-0.7,0.3), (0.5,0.0625), 
 check("L(F(a,b)) = L(a) + L(b): the logarithm turns every landscape law into addition", good)
 check("named rulers: circle-operation log(1+x), tanh law artanh x, tan law arctan x",
       abs(Lclosed(1,0,mpf('0.3'))-mlog(mpf('1.3')))<1e-25 and abs(Lclosed(0,-1,mpf('0.3'))-mp.atanh(mpf('0.3')))<1e-25 and abs(Lclosed(0,1,mpf('0.3'))-matan(mpf('0.3')))<1e-25)
-check("border (p²=4q): L = x/(1+px/2), and F is plain addition in L",
+check("border (p²=4d): L = x/(1+px/2), and F is plain addition in L",
       z(sp.diff(x/(1+p*x/2), x) - 1/V(p, p**2/4, x)) and
       z((lambda L: L(F(p,p**2/4,a,b)) - L(a) - L(b))(lambda s: s/(1+p*s/2))))
 check("dial: L = log(1+kx)/k → x as k → 0", sp.limit(sp.log(1+k*x)/k, k, 0) == x)
-check("elliptic period: ∫ over all reals of dx/(1+px+qx²) = 2π/√(4q-p²)  (3 points)",
+check("elliptic period: ∫ over all reals of dx/(1+px+dx²) = 2π/√(4d-p²)  (3 points)",
       all(abs(quad(lambda s: 1/(1+pv*s+qv*s*s), [-inf, inf]) - 2*mp.pi/msqrt(4*qv-pv*pv)) < 1e-20
           for pv, qv in [(0,1), (1,1), (-2,3)]))
-check("real walls exactly when p² - 4q > 0 (roots of 1+px+qx²)",
+check("real walls exactly when p² - 4d > 0 (roots of 1+px+dx²)",
       all(((pv*pv-4*qv) > 0) == all(abs(sp.im(r)) < 1e-12 for r in sp.Poly(qv*x**2+pv*x+1, x).nroots()) for pv, qv in [(1,0.1),(0,-1),(0,1),(2,1.5),(3,2),(-1,2)]))
 check("line case: L runs to ±∞ at the two walls (the circle operation: wall -1)", sp.limit(sp.log(1+x), x, -1, '+') == -sp.oo)
 check("circle case: the point ∞ belongs to the group; tan law F(a, ∞) = -1/a",
@@ -107,32 +107,32 @@ basis = [sp.Integer(1), x, x**2]
 def coords(f): f = sp.Poly(sp.expand(f), x); return [f.coeff_monomial(1), f.coeff_monomial(x), f.coeff_monomial(x**2)]
 def ad(f): return sp.Matrix([coords(br(f, e)) for e in basis]).T
 Pv = 1 + p*x + q*x**2
-check("Killing form of the landscape generator: tr(ad²) = 2(p² - 4q)", z((ad(Pv)*ad(Pv)).trace() - 2*(p**2-4*q)))
+check("Killing form of the landscape generator: tr(ad²) = 2(p² - 4d)", z((ad(Pv)*ad(Pv)).trace() - 2*(p**2-4*q)))
 Bf = lambda u, v: sp.expand((ad(u)*ad(v)).trace())
 check("Killing form is ad-invariant: B([g,f],h) + B(f,[g,h]) = 0", z(Bf(br(P2,P1),P3) + Bf(P1,br(P2,P3))))
 X0 = X - (p/2)*I2
-check("matrix form: trace-free part X₀ has tr(X₀²) = (p² - 4q)/2", z((X0*X0).trace() - (p**2-4*q)/2))
+check("matrix form: trace-free part X₀ has tr(X₀²) = (p² - 4d)/2", z((X0*X0).trace() - (p**2-4*q)/2))
 
-# --- re-coordinatizing the line: x ↦ x/(1-cx) slides along parabolas of fixed p²-4q ---
+# --- re-coordinatizing the line: x ↦ x/(1-cx) slides along parabolas of fixed p²-4d ---
 pp, qq = p + 2*c, q + p*c + c**2
-check("rate in the new chart: (1+cy)²·V(y/(1+cy)) = 1 + (p+2c)y + (q+pc+c²)y²",
+check("rate in the new chart: (1+cy)²·V(y/(1+cy)) = 1 + (p+2c)y + (d+pc+c²)y²",
       z(sp.simplify((1+c*y)**2*V(p,q,y/(1+c*y))) - V(pp,qq,y)))
-check("discriminant unchanged: (p+2c)² - 4(q+pc+c²) = p² - 4q", z(pp**2-4*qq-(p**2-4*q)))
+check("discriminant unchanged: (p+2c)² - 4(d+pc+c²) = p² - 4d", z(pp**2-4*qq-(p**2-4*q)))
 phi = lambda s: s/(1 - c*s)
-check("conjugation: F_{p+2c, q+pc+c²}(φa, φb) = φ(F_{p,q}(a,b)), φ(x) = x/(1-cx)",
+check("conjugation: F_{p+2c, d+pc+c²}(φa, φb) = φ(F_{p,d}(a,b)), φ(x) = x/(1-cx)",
       z(sp.simplify(F(pp,qq,phi(a),phi(b)) - phi(F(p,q,a,b)))))
 check("The circle operation (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)",
       (pp.subs({p:1,q:0,c:sp.Rational(-1,2)}), qq.subs({p:1,q:0,c:sp.Rational(-1,2)})) == (0, sp.Rational(-1,4))
       and z(F(0,sp.Rational(-1,4),2*a,2*b) - 2*F(0,-1,a,b)))
-check("parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same parabola p²-4q = 4",
+check("parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same parabola p²-4d = 4",
       (pp.subs({p:-2,q:0,c:1}), qq.subs({p:-2,q:0,c:1})) == (0, -1) and z(F(-2,0,a,b)-(a+b-2*a*b)))
-check("units: scaling x ↦ λx sends (p,q) to (λp, λ²q) and p²-4q to λ²(p²-4q)",
+check("units: scaling x ↦ λx sends (p,d) to (λp, λ²d) and p²-4d to λ²(p²-4d)",
       z(lam*F(lam*p,lam**2*q,a,b) - F(p,q,lam*a,lam*b)) and z((lam*p)**2-4*lam**2*q - lam**2*(p**2-4*q)))
 pts = [(1,0),(0,-1),(0,1),(2,1),(-3,1),(1,5)]
 cls = lambda pv,qv: (pv*pv-4*qv > 0) - (pv*pv-4*qv < 0)
-check("conjugation and scaling never change the sign of p²-4q (random c, λ on 6 points)",
+check("conjugation and scaling never change the sign of p²-4d (random c, λ on 6 points)",
       all(cls(pv+2*cv, qv+pv*cv+cv*cv) == cls(pv,qv) == cls(l*pv, l*l*qv) for pv,qv in pts for cv in (-1.5,.3,2) for l in (.5,3)))
-check("rung s at (s, s(s-1)/4) has p² - 4q = s (landscape placement)", z((p**2 - 4*(p*(p-1)/4)) - p))
+check("rung s at (s, s(s-1)/4) has p² - 4d = s (landscape placement)", z((p**2 - 4*(p*(p-1)/4)) - p))
 
 # --- the dial inside the ax+b group ---
 T = lambda kk, aa, xx: (1 + kk*aa)*xx + aa
@@ -144,7 +144,7 @@ check("scaling conjugation: T^k_{λa}(λx) = λ·T^{kλ}_a(x)", z(T(k,lam*a,lam*
 check("k = 0 is a translation with no fixed point (a ≠ 0)", sp.solve(sp.Eq(T(0,a,x), x), x) == [] )
 check("generators 1 + kx: [x∂, ∂] = -∂, and [1+kx, 1+k'x] = (k'-k)·1, a translation",
       z(br(x, sp.Integer(1)) + 1) and z(br(1+k*x, 1+c*x) - (c-k)))
-check("Inönü–Wigner shadow: (a+b)/(1-qab) → a+b as q → 0 (Lorentz → Galilei)", sp.limit(F(0,q,a,b), q, 0) == a+b)
+check("Inönü–Wigner shadow: (a+b)/(1-dab) → a+b as d → 0 (Lorentz → Galilei)", sp.limit(F(0,q,a,b), q, 0) == a+b)
 
 # --- finite fields ---
 def primes(n): return [m for m in range(2, n) if all(m % d for d in range(2, int(m**.5)+1))]
@@ -186,13 +186,13 @@ def tanlaw_group(P):
 check("tan law on F_p ∪ {∞} is a cyclic group of order p+1 for every prime p ≡ 3 mod 4 below 40 (the finite circle)",
       all(tanlaw_group(P) == (True, P+1) for P in primes(40) if P % 4 == 3))
 def proj_count(pv, qv, P):
-    # points of the projective line minus the walls (roots of 1 + p x + q x^2, with ∞ a wall when q = 0)
+    # points of the projective line minus the walls (roots of 1 + p x + d x^2, with ∞ a wall when d = 0)
     walls = sum(1 for xx in range(P) if (1 + pv*xx + qv*xx*xx) % P == 0) + (1 if qv % P == 0 else 0)
     return P + 1 - walls
 def leg(d, P):
     d %= P
     return 0 if d == 0 else (1 if pow(d, (P-1)//2, P) == 1 else -1)
-check("finite shadows: the landscape group over F_p has p - ((p²-4q)/p) elements: p-1 line, p border, p+1 circle (all p,q mod 5,7,11,13)",
+check("finite shadows: the landscape group over F_p has p - ((p²-4d)/p) elements: p-1 line, p border, p+1 circle (all p,d mod 5,7,11,13)",
       all(proj_count(pv,qv,P) == P - leg(pv*pv-4*qv, P) for P in (5,7,11,13) for pv in range(P) for qv in range(P)))
 
 # --- the twisting corner: matrices ---

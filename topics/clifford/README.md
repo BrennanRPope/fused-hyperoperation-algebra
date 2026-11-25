@@ -8,24 +8,24 @@ Pictures asked for (Brennan: "if I have more pictures to look at, I can help"): 
 Of 16 pieces of Clifford's work: 12 exact analogs, 2 partial (Clifford–Klein forms, space theory of matter),
 1 transfer only (chain of circles), 1 none (theorem on special divisors). Plus Brennan's own question (k as a
 multivector): the circle operation's dial k is the null (light-cone) element k(1+e)/2 of the split-complex numbers; any
-multivector dial K with plain-number arguments gives the landscape law with p = tr K, q = N K; curvature
-q - p^2/4 = -(non-scalar part of K)^2. A dictionary to known math, no new prediction.
+multivector dial K with plain-number arguments gives the landscape law with p = tr K, d = N K; curvature
+d - p^2/4 = -(non-scalar part of K)^2. A dictionary to known math, no new prediction.
 
 ## Table (piece -> analog -> status)
 | # | Clifford piece | Circle-operation analog | Status |
 |---|---|---|---|
-| 01 | Geometric product, Cl(p,q) | landscape law = geometric product of two lifts in the even Clifford algebra of the rate form x^2+pxy+qy^2 (theta = uv) | exact (new framing of groups-lie theta-lift) |
-| 02 | Three 2D algebras C, split, dual | circle / line / border by sign of p^2-4q; the circle operation ∘₁ (called mult-add before 1.0) = split, theta=(1+e)/2; wall -1 = zero divisor (light cone) | exact |
-| 03 | k as multivector (Brennan's question) | p = tr K, q = N K; the circle operation's k null; Cl(3,0) general K -> complex (p,q) in span(1,I) | exact, new |
+| 01 | Geometric product, Cl(p,q) | landscape law = geometric product of two lifts in the even Clifford algebra of the rate form x^2+pxy+dy^2 (theta = uv) | exact (new framing of groups-lie theta-lift) |
+| 02 | Three 2D algebras C, split, dual | circle / line / border by sign of p^2-4d; the circle operation ∘₁ (called mult-add before 1.0) = split, theta=(1+e)/2; wall -1 = zero divisor (light cone) | exact |
+| 03 | k as multivector (Brennan's question) | p = tr K, d = N K; the circle operation's k null; Cl(3,0) general K -> complex (p,d) in span(1,I) | exact, new |
 | 04 | Grades / multivectors | a1e1 ∘₁ ... ∘₁ anen keeps each subset product on its own blade; the ordinary circle operation = scalar shadow | exact, new |
 | 05 | Reversion, involutions | conjugation theta -> p - theta; X Xbar = norm; chart of conjugate = landscape inverse; rev(X∘_K Y) = rev Y ∘_{rev K} rev X | exact, new |
 | 06 | Rotors, spinors | half-velocities = rotor charts (tan / tanh of half angle); chart forgets R vs -R, lift keeps it | exact (twisted boosts) |
-| 07 | Hamilton's quaternions | q=+1 dial boost = quaternion 1+uj; corner = (1-u·v) + i(u×v) | exact (twisted boosts) |
+| 07 | Hamilton's quaternions | d=+1 dial boost = quaternion 1+uj; corner = (1-u·v) + i(u×v) | exact (twisted boosts) |
 | 08 | Grassmann's wedge | x∘₁y - y∘₁x = 2 x∧y; x∘₁y = x+y+x·y+x∧y | exact, new |
 | 09 | Biquaternions q+ωr (1873), ω^2 = +1/0/-1 | R[ω] = theta-lift at (0,-ω^2), set by curvature sign; circle-operation theta = elliptic projector (1+ω)/2 | exact, new |
 | 10 | Dual numbers | dual args give first jet; border = re-charted dual numbers | exact (known; jets page) |
 | 11 | Clifford parallels / Hopf | corner phase arg(X+iY) = half the velocity-triangle area = Hopf holonomy | exact, new link |
-| 12 | Clifford torus | circle |t| = 1/sqrt|q|: light wall at q=-1, torus base at q=+1 | exact, small link |
+| 12 | Clifford torus | circle |t| = 1/sqrt|d|: light wall at d=-1, torus base at d=+1 | exact, small link |
 | 13 | Clifford–Klein forms, elliptic space | chart = S^3/±1; tan(pi j/n) finite forms; no 2-D ∘₁ torus yet (needs two commuting dials + lattice) | partial |
 | 14 | Space theory of matter | GR page: time dial gives half light bending, space curvature the other half; waves where river stops | partial (cited) |
 | 15 | Bott periodicity | transfers via shift; wall stays a single point only in R, C, H (Cl(0,0),(0,1),(0,2)) | exact (transfer + new wall fact) |

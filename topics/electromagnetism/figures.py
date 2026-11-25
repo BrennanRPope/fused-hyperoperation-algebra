@@ -73,7 +73,7 @@ for k in range(41):
     pts.append((xs[2] + 34 * math.cos(a), 110 + 22 * math.sin(a)))
 b.append(P(pts, SKY, 2.2, arrow=True))
 b.append(T(xs[2] + 52, 100, "turned", 12, fill=SKY, anchor="start"))
-for i, lab in enumerate(["sets the dial q = −1/c²", "made local, plus a metric"]):
+for i, lab in enumerate(["sets the dial d = −1/c²", "made local, plus a metric"]):
     x1, x2 = xs[i] + 145, xs[i + 1] - 145
     b.append(L(x1, 115, x2, 115, "currentColor", 1.6, arrow=True))
     b.append(T((x1 + x2) / 2, 105, lab.split(",")[0], 12, fill=SOFT))
@@ -103,7 +103,7 @@ def panel_axes(cx, cy, s, title, col):
 
 s = 150
 cxL, cyL = 270, 225
-b += panel_axes(cxL, cyL, s, "Galilean boost (q = 0)", PINK)
+b += panel_axes(cxL, cyL, s, "Galilean boost (d = 0)", PINK)
 v = 0.45
 # Galilean: x' = x - v t. A light ray x = t (slope 1) becomes x' = (1 - v) t: draw new rays in boosted frame coordinates
 for sgn, lab in ((1, "speed c − v"), (-1, "speed c + v")):
@@ -115,7 +115,7 @@ for sgn, lab in ((1, "speed c − v"), (-1, "speed c + v")):
     b.append(T(x2 + (8 if sgn > 0 else -8), y2 - 6, lab, 13, anchor="start" if sgn > 0 else "end", fill=PINK))
 b.append(T(cxL, 400, "light lines tilt unevenly: the wave equation gains a cross term", 13, fill=SOFT))
 cxR, cyR = 770, 225
-b += panel_axes(cxR, cyR, s, "Lorentz boost (q = −1/c²)", SKY)
+b += panel_axes(cxR, cyR, s, "Lorentz boost (d = −1/c²)", SKY)
 Dd = 1.7
 # unit square on light-cone axes, then squeezed
 u = 58
@@ -190,7 +190,7 @@ figs["field"] = save("field", W, H, "Under a boost the light-cone parts of the f
 b = []
 W, H = 1040, 430
 cx, cy, r = 260, 225, 120
-b.append(T(cx, 36, "Gauge phase (q = +1, circle)", 16, weight=700, fill=SKY))
+b.append(T(cx, 36, "Gauge phase (d = +1, circle)", 16, weight=700, fill=SKY))
 b.append(L(cx - 180, cy, cx + 180, cy, "currentColor", 1, op=.5)); b.append(L(cx, cy + 170, cx, cy - 170, "currentColor", 1, op=.5))
 b.append(C(cx, cy, r, SKY, w=2.2))
 th = 1.0
@@ -203,7 +203,7 @@ b.append(C(cx + r, cy, 4, "currentColor", "currentColor")); b.append(T(cx + r + 
 b.append(C(cx, cy, 5, PINK, PINK)); b.append(T(cx - 8, cy + 20, "wall: 1 + a = 0", 13, anchor="end", fill=PINK))
 b.append(T(cx, 380, "a ∘₁ ā = 0 on the whole circle; it wraps around and never meets the wall", 13, fill=SOFT))
 cx2 = 780
-b.append(T(cx2, 36, "Boost (q = −1, hyperbola)", 16, weight=700, fill=SKY))
+b.append(T(cx2, 36, "Boost (d = −1, hyperbola)", 16, weight=700, fill=SKY))
 b.append(L(cx2 - 180, cy, cx2 + 180, cy, "currentColor", 1, op=.5)); b.append(L(cx2, cy + 170, cx2, cy - 170, "currentColor", 1, op=.5))
 b.append(L(cx2 - 160, cy + 160, cx2 + 160, cy - 160, PINK, 1.5, "6 4")); b.append(L(cx2 - 160, cy - 160, cx2 + 160, cy + 160, PINK, 1.5, "6 4"))
 b.append(T(cx2 + 150, cy - 165, "wall (light)", 13, anchor="start", fill=PINK))

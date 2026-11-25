@@ -105,7 +105,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <h2>Take the log and it is ordinary probability; μ is a q-number of P</h2>
 <p>The rung-0 ruler for the dial is log(1 + λx). Rescale it so the whole space is 1:</p>
 <div class="eq">P(A) = log(1 + λμ(A)) / log(1 + λ)</div>
-<p>P adds over disjoint sets: it is an honest probability. Turning it around, μ(A) = (q<sup>P(A)</sup> − 1)/(q − 1) with q = 1 + λ = k + 1, which is the q-number [P]<sub>q</sub> at a real argument. So a λ-measure is a probability measure read through the q-number lens, and q = k + 1 is exactly the project's convention. Distorting a probability this way is known; the q-number name for it is just the project's reading.</p>
+<p>P adds over disjoint sets: it is an honest probability. Turning it around, μ(A) = (q<sup>P(A)</sup> − 1)/(q − 1) with q = 1 + λ, so k = q − 1, which is the q-number [P]<sub>q</sub> at a real argument. So a λ-measure is a probability measure read through the q-number lens, where k = q − 1. Distorting a probability this way is known; the q-number name for it is just the project's reading.</p>
 <p><b>Inclusion–exclusion becomes multiplication.</b> For overlapping sets the lift obeys (1 + λμ(A∪B))(1 + λμ(A∩B)) = (1 + λμ(A))(1 + λμ(B)), and for more sets each corner's lift appears with power ±1. The signs of the classical formula moved into exponents.</p>
 <p><b>The dual weight is the circle operation's inverse.</b> The dual measure μ*(A) = 1 − μ(Aᶜ) is again a λ-measure, with weight λ* = −λ/(1 + λ). That is the circle operation's way back for λ, so q* = 1/q and the dual of the dual is the original. Lean proves this from the normalizing equation.</p>
 </div>
@@ -117,11 +117,11 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <section class="band">
 <div class="wrap side">
 <div class="panel"><div class="fig2" id="land"></div>
-<p class="small">The landscape plane, dial p across, bend q up. Shaded: laws that can carry a normalized measure on finitely many atoms. Its edge is the "or" line k + q = −1 from the statistics page, until the cusp (−2, 1), then the border parabola, which the line touches there.</p></div>
+<p class="small">The landscape plane, dial p across, bend d up. Shaded: laws that can carry a normalized measure on finitely many atoms. Its edge is the "or" line k + d = −1 from the statistics page, until the cusp (−2, 1), then the border parabola, which the line touches there.</p></div>
 <div>
 <h2>Why λ must exceed −1: the wall has to stay outside [0, 1]</h2>
 <p>Sugeno's definition requires λ &gt; −1. The dial explains the rule. Its wall sits at −1/λ, and values below a wall stay below it, because positive lifts multiply to positive lifts. When λ ≤ −1 the wall sits inside (0, 1], so no collection of parcels can ever reach measure 1. At exactly λ = −1 the only way to 1 is a sure atom. Lean proves all three steps.</p>
-<p>The same test works on every law of the landscape, F(a, b) = (a + b + p·ab)/(1 − q·ab). Measures that combine by such a law are Weber's decomposable measures (1984). A finite normalized one exists exactly when the additive ruler L(x) = ∫dt/(1 + pt + qt²) stays finite up to 1, which happens exactly when 1 + pt + qt² has no root in [0, 1]. On the map, the edge of that region is the statistics page's "or" line, then the border parabola, meeting tangentially at the cusp. So every law that can serve as "A or B" sits exactly on the edge: certainty is its wall, so it can be approached but not reached from finitely many uncertain parts.</p>
+<p>The same test works on every law of the landscape, F(a, b) = (a + b + p·ab)/(1 − d·ab). Measures that combine by such a law are Weber's decomposable measures (1984). A finite normalized one exists exactly when the additive ruler L(x) = ∫dt/(1 + pt + qt²) stays finite up to 1, which happens exactly when 1 + pt + qt² has no root in [0, 1]. On the map, the edge of that region is the statistics page's "or" line, then the border parabola, meeting tangentially at the cusp. So every law that can serve as "A or B" sits exactly on the edge: certainty is its wall, so it can be approached but not reached from finitely many uncertain parts.</p>
 <p>Inside the region there are bent examples. The tangent law (0, 1) gives μ = tan(πP/4): disjoint sets combine as (μA + μB)/(1 − μA·μB) and the whole space has measure 1.</p>
 </div>
 </div>
@@ -156,7 +156,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <tr><td>λ-measures are distortions of a probability; multiplicative inclusion–exclusion</td><td>known (fuzzy-measure literature)</td></tr>
 <tr><td>Decomposable measures for any associative "sum"</td><td>Dubois and Prade 1982, Weber 1984</td></tr>
 <tr><td>Stochastic exponential, Yor's formula, multiplicative martingales, the log ruler for growth</td><td>Doléans-Dade 1970, Yor 1976, Kelly 1956</td></tr>
-<tr><td>Möbius masses = circle-operation cube corners; μ = [P]<sub>q</sub> with q = k + 1; dual weight = circle inverse</td><td>ours as readings; the facts are known</td></tr>
+<tr><td>Möbius masses = circle-operation cube corners; μ = [P]<sub>q</sub> with k = q − 1; dual weight = circle inverse</td><td>ours as readings; the facts are known</td></tr>
 <tr><td>Normalizable region on the landscape: edge = "or" line, then border parabola, tangent at the cusp</td><td>ours as a placement; rests on the known strict/nilpotent split</td></tr>
 <tr><td>Odds of an independent "or" combine by the circle operation</td><td>a one-line consequence; I found no source stating it this way</td></tr>
 </tbody></table>

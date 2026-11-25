@@ -1,12 +1,12 @@
 PASS 1a every slope t through the double point gives a point (t^2+a1 t-a2, t(...)) on y^2+a1xy=x^3+a2x^2
-PASS 1b chord rule in z = -x/y is exactly the lens law (z1+z2+k z1 z2)/(1-q z1 z2), k=-a1, q=-a2
+PASS 1b chord rule in z = -x/y is exactly the lens law (z1+z2+k z1 z2)/(1-d z1 z2), k=-a1, d=-a2
 PASS 1c z = -1/t, so z -> wall exactly where x(t) = t^2+a1 t-a2 = 0: the node's tangent slopes
 PASS 1d lens (t-m1)/(t-m2) of the two branches turns the chord law into multiplication
-PASS 1e discriminant of the tangent slopes a1^2+4a2 equals the map's k^2-4q
+PASS 1e discriminant of the tangent slopes a1^2+4a2 equals the map's k^2-4d
 PASS 1f smooth points over F_p: p-1 when the walls are in F_p (two walls), p+1 when not (turning), p at the cusp
-   circle-operation node y^2-xy=x^3 (k=1,q=0): p=5 -> 4 points
-   velocity-addition node y^2=x^3+x^2 (k=0,q=-1): p=5 -> 4 points
-   turning node y^2=x^3-x^2 (k=0,q=1): p=5 -> 4 points
+   circle-operation node y^2-xy=x^3 (k=1,d=0): p=5 -> 4 points
+   velocity-addition node y^2=x^3+x^2 (k=0,d=-1): p=5 -> 4 points
+   turning node y^2=x^3-x^2 (k=0,d=1): p=5 -> 4 points
    cusp y^2=x^3: p=5 -> 5 points
 PASS 2a Tate's formula u -> (x(u), y(u)) lands on y^2+xy=x^3+a4(q)x+a6(q)  (q = 0.05, complex u)   err 1.22e-29
 PASS 2b multiplying u is the chord-and-tangent sum: P(u1)+P(u2) = P(u1 u2)   err 2.2e-29
@@ -19,7 +19,7 @@ PASS 2g its discriminant is q - 24 q^2 + ...: the smoothing parameter is q itsel
 PASS 2h q = 0 differential is dz/(1-z) (the flipped the circle operation's log)
    first-order-in-q part of the invariant differential: -z**4*(112*z**3 + 63*z**2 + 30*z + 10)
 PASS 2i q first enters at z^4 of the differential, i.e. the cube's 5th layer of the law (a3 = 0 on Tate's curve)
-PASS 3a Jacobi sn addition (pendulum phase law) = a + b - (1+m)/2 (a^2 b + a b^2) + ...: corner 0, bend q = -(1+m)/2
+PASS 3a Jacobi sn addition (pendulum phase law) = a + b - (1+m)/2 (a^2 b + a b^2) + ...: corner 0, bend d = -(1+m)/2
    so m = 0 (small swings, sine) sits at (0,-1/2) and m = 1 (separatrix) at (0,-1), velocity addition
 PASS 3b at m = 1 the sn law is exactly velocity addition (a+b)/(1+ab): the separatrix is the node
 PASS 3c cnoidal wave 2k^2 m cn^2(k(x-ct)|m) solves KdV (residual at sample points)   2.07e-25
@@ -41,7 +41,7 @@ PASS 3g at every odd bad prime of these Frey-type curves the reduction is a node
    14a1: bad primes p=2: a_p=-1 (non-split, k=+1 (the circle operation)), p=7: a_p=1 (split, k=-1)
    15a1: bad primes p=3: a_p=-1 (non-split, k=+1 (the circle operation)), p=5: a_p=1 (split, k=-1)
 PASS 4a good primes: a_p^2 < 4p for all four curves, p < 4000 (Hasse): Euler factor 1 - a_p T + p T^2 sits in the turning country
-PASS 4b bad primes: Euler factor 1 - a_p T lands on the q = 0 line at k = -a_p in {-1, 0, +1}
+PASS 4b bad primes: Euler factor 1 - a_p T lands on the d = 0 line at k = -a_p in {-1, 0, +1}
 PASS 4c turning angles follow Sato-Tate (2/pi) sin^2: chi-square over 12 bins   chi2 = 4.6 (11 dof), 2194 angles
 
 25 of 25 checks pass

@@ -30,6 +30,6 @@ eigenvalue crosses −1). At k = −1 the same fold is the chance of seeing at l
 ## Verdict
 Yes, one lead: point processes on the dial. Everything else is classical functional analysis seen through the lift. Determinantal
 and permanental processes use the whole dial with physical meaning at each named value and give checkable statistics; open
-questions: what the landscape bend q and the fractional rungs mean as point processes.
+questions: what the landscape bend d and the fractional rungs mean as point processes.
 
 Links used: linear algebra 6MmBPSMK179Q7ZRFTjz3L3. The complex-analysis page (same session, not yet published) is not linked; link it once it has an id.

@@ -3,7 +3,7 @@ pi from the circle operation: numeric and exact checks.
 Fused Hyperoperation Algebra, Nov 25 2026.
 
 The circle operation: a (+) b = a + b + ab = (1+a)(1+b) - 1. Over the complex numbers.
-The turning law (landscape point p=0, q=1): x (+)t y = (x+y)/(1-xy)  (slope / tangent addition).
+The turning law (landscape point p=0, d=1): x (+)t y = (x+y)/(1-xy)  (slope / tangent addition).
 Lens (Cayley): 1 + a = (1 + i x)/(1 - i x). It turns the turning law into the circle operation.
 
 Writes pi_results.json and prints a PASS/FAIL log (pi_checks_output.txt).
@@ -74,17 +74,17 @@ check("turning law: 1 (+)t 1 = 2/0 = infinity, four steps of 1 come back to 0",
 OUT['eighth_turn'] = {'multadd': [str(z) for z in seq], 'slope_pairs': path}
 
 # ------------------------------------------------- 3. the period of every turning law
-# law (a+b+p ab)/(1-q ab); rate y' = 1 + p y + q y^2. Turning country: p^2 < 4q.
-# Period = time for the flow to run from -inf to +inf = integral dy/(1+py+qy^2) = 2 pi / sqrt(4q - p^2).
+# law (a+b+p ab)/(1-d ab); rate y' = 1 + p y + d y^2. Turning country: p^2 < 4d.
+# Period = time for the flow to run from -inf to +inf = integral dy/(1+py+dy^2) = 2 pi / sqrt(4d - p^2).
 per = []
 for (p, q) in [(0, 1), (1, 1), (-1, 2), (0.5, 3), (2, 1.25), (-3, 2.5)]:
     T_num = mp.quad(lambda t: 1 / (1 + p * t + q * t * t), [-mp.inf, 0, mp.inf])
     T_th = 2 * mp.pi / mp.sqrt(4 * q - p * p)
     per.append({'p': p, 'q': q, 'period_numeric': mp.nstr(T_num, 25), 'formula': mp.nstr(T_th, 25)})
-    check(f"turning law (p,q)=({p},{q}) has period 2pi/sqrt(4q-p^2)", abs(T_num - T_th) < mp.mpf(10) ** -40,
+    check(f"turning law (p,d)=({p},{q}) has period 2pi/sqrt(4d-p^2)", abs(T_num - T_th) < mp.mpf(10) ** -40,
           f"{mp.nstr(T_num, 18)}")
 OUT['turning_periods'] = per
-# The circle operation itself (p=1, q=0): one wall at -1. Its logarithm log(1+a) gains 2 pi i per loop round the wall.
+# The circle operation itself (p=1, d=0): one wall at -1. Its logarithm log(1+a) gains 2 pi i per loop round the wall.
 loop = mp.quad(lambda t: (1j * mp.exp(1j * t)) / (mp.exp(1j * t)), [0, 2 * mp.pi])  # d(1+a)/(1+a) on |1+a|=1
 check("The circle operation's own logarithm gains 2 pi i once round the wall (period of log(1+a))",
       abs(loop - 2j * mp.pi) < mp.mpf(10) ** -40, mp.nstr(loop, 20))

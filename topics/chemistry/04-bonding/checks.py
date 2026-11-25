@@ -1,7 +1,7 @@
 """Bonding and valence through the circle operation.
 1. Overlap: |φa+φb|² = a² + b² + 2ab·S is the invariant-mass law with cosine S.
-2. Hückel chains: the transfer recurrence P(n+2) = x P(n+1) − P(n) is the landscape point (k,q) = (x,1);
-   band = turning (|x|<2), band edge = border, gap = two walls. Cassini invariant = q^n.
+2. Hückel chains: the transfer recurrence P(n+2) = x P(n+1) − P(n) is the landscape point (k,d) = (x,1);
+   band = turning (|x|<2), band edge = border, gap = two walls. Cassini invariant = d^n.
 3. Rings: Hückel 4n+2 / Möbius 4n.  4. Bond alternation (polyacetylene) opens a gap = two-walls country.
 5. MO bond orders.  6. Bond-energy ladders and the dial (with nitrogen's triple bond).
 Run: python3 checks.py"""
@@ -52,10 +52,10 @@ for N in range(1, 13):
     allgood &= all(abs(chainP(N, x)) < 1e-9 for x in pred)
 check("chain of N carbons: levels x_j = 2cos(jπ/(N+1)) (in units of β), the roots of P(N+2)=xP(N+1)−P(N)", allgood, "N = 1…12")
 cass = all(abs(chainP(n+1, x)**2 - chainP(n+2, x)*chainP(n, x) - 1) < 1e-8 for n in range(0, 15) for x in np.linspace(-3, 3, 13))
-check("Cassini invariant P(n+1)² − P(n+2)P(n) = 1 for every n: the gluing number q = 1", cass)
+check("Cassini invariant P(n+1)² − P(n+2)P(n) = 1 for every n: the gluing number d = 1", cass)
 casq = all(abs(chainP(n+1, 0, k, q)**2 - chainP(n+2, 0, k, q)*chainP(n, 0, k, q) - q**(n+1)) < 1e-6*max(1, abs(q)**(n+1))
            for n in range(0, 12) for k in (-1.5, 0.3, 2.2) for q in (0.5, 1.0, 1.7))
-check("general recurrence P(n+2) = k P(n+1) − q P(n) has invariant q^(n+1): the landscape point (k, q)", casq)
+check("general recurrence P(n+2) = k P(n+1) − d P(n) has invariant d^(n+1): the landscape point (k, d)", casq)
 # countries of the infinite chain: eigenvalues of transfer matrix [[x,-1],[1,0]]
 def mult(x): return np.linalg.eigvals(np.array([[x, -1.0], [1.0, 0.0]]))
 inband = all(np.allclose(abs(mult(x)), 1) and abs(np.imag(mult(x)[0])) > 0 for x in np.linspace(-1.99, 1.99, 50))

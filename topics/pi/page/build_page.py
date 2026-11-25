@@ -5,7 +5,7 @@ half = json.load(open('/mnt/project-files/math-theory/pi/half_curve.json'))
 v = c['values']
 def short(x, n=22): return x[:n] + '…'
 constants = [
- dict(name='π, and every turning period 2π/√(4q − p²)', where='the trip from 0 to −2 round the wall; period of each turning law', value='3.14159265358979…', search='found X = 2π for the period at rung −1 (detector check)', status='p proved', why='Lindemann, 1882. Known.'),
+ dict(name='π, and every turning period 2π/√(4d − p²)', where='the trip from 0 to −2 round the wall; period of each turning law', value='3.14159265358979…', search='found X = 2π for the period at rung −1 (detector check)', status='p proved', why='Lindemann, 1882. Known.'),
  dict(name='2πi', where="The circle operation's own period: log(1 + a) once round the wall", value='6.28318530717958… i', search='(same as π)', status='p proved', why='Lindemann. Known.'),
  dict(name='e^(−2π)', where='gluing number q of the most symmetric elliptic curve, y² = x³ − x', value=short(v['gluing_q_tau_i']), search='found log q = −2π', status='p proved', why='Gelfond–Schneider, 1934: e^π = (−1)^(−i). Known.'),
  dict(name='−e^(−π√3)', where='gluing number q of y² = x³ + 1, the other symmetric curve', value=short(v['gluing_q_tau_rho']), search='found log|q| = −π√3', status='p proved', why='Gelfond–Schneider: e^(π√3) = (−1)^(−i√3). Known.'),

@@ -36,12 +36,12 @@
    "detail": ""
   },
   {
-   "name": "the resistor ladder step is z \u2295 1 in the mirror law (k, q) = (1, \u22121)",
+   "name": "the resistor ladder step is z \u2295 1 in the mirror law (k, d) = (1, \u22121)",
    "ok": true,
    "detail": ""
   },
   {
-   "name": "mirror: \u2212((\u2212a) \u2295 (\u2212b)) at (k, q) is a \u2295 b at (\u2212k, q)",
+   "name": "mirror: \u2212((\u2212a) \u2295 (\u2212b)) at (k, d) is a \u2295 b at (\u2212k, d)",
    "ok": true,
    "detail": ""
   },

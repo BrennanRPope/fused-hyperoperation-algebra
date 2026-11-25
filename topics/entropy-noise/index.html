@@ -70,22 +70,22 @@ pre,.scroll{overflow-x:auto}
 <section class="band" id="known"><div class="wrap">
   <div class="box">
     <p><b>Known or new.</b> Every fact on this page is known physics or information theory: Tsallis' pseudo-additivity (1988), the hashing bound (Bennett, DiVincenzo, Smolin and Wootters, 1996), King's capacity formula for unital qubit channels (2002), the entanglement-breaking octahedron (Ruskai; Horodecki, Shor and Ruskai, 2003), Rényi entropy as free energy (Baez, 2011), the Nishimori line (1981) and its map to the surface code (Dennis, Kitaev, Landahl and Preskill, 2002).</p>
-    <p><b>What this page adds is the picture.</b> Seen on the noise tetrahedron, three entropies are three norms of the same point λ, their unit shapes kiss at the same six points, and all three are absorbing regions around the circle-operation wall. I didn't find that stated in one place, but each piece is standard, so treat it as a tidy reading, not a discovery. Two other readings are tidy too: the Tsallis weight k = 1 − q is Carnot's efficiency 1 − T₀/T, and the 3-bit code's syndromes are the cube's four body diagonals.</p>
+    <p><b>What this page adds is the picture.</b> Seen on the noise tetrahedron, three entropies are three norms of the same point λ, their unit shapes kiss at the same six points, and all three are absorbing regions around the circle-operation wall. I didn't find that stated in one place, but each piece is standard, so treat it as a tidy reading, not a discovery. Two other readings are tidy too: the Tsallis weight k = 1 − q_T is Carnot's efficiency 1 − T₀/T, and the 3-bit code's syndromes are the cube's four body diagonals.</p>
     <p><b>Lead check.</b> Nothing here is as strong as the KdV solitons. The nearest thing to a door is the half-bit threshold, below.</p>
   </div>
 </div></section>
 
 <section class="band" id="tsallis"><div class="wrap">
-  <h2>Tsallis entropy is the circle operation with dial k, with k = 1 − q</h2>
+  <h2>Tsallis entropy is the circle operation with dial k, with k = 1 − q_T</h2>
   <div class="two">
     <div>
-      <p>Tsallis entropy is S<sub>q</sub> = (1 − Σp<sup>q</sup>)/(q − 1). Its lift is the power sum: 1 + k·S = Σp<sup>q</sup> with k = 1 − q. Power sums multiply for independent systems, so the lift multiplies, and that is exactly the circle operation ∘ₖ (called mult-add before 1.0) with weight k:</p>
+      <p>Tsallis entropy is S<sub>q</sub> = (1 − Σp<sup>q</sup>)/(q − 1). Its lift is the power sum: 1 + k·S = Σp<sup>q</sup> with k = 1 − q_T. Power sums multiply for independent systems, so the lift multiplies, and that is exactly the circle operation ∘ₖ (called mult-add before 1.0) with weight k:</p>
       <p class="formula">S(A + B) = S(A) + S(B) + (1 − q)·S(A)·S(B)</p>
       <p>Checked on 1,400 random pairs of distributions and on random quantum states (Tr ρ<sup>q</sup>), to 10<sup>−14</sup>. This is Tsallis' own 1988 law, and the information-theory page already proved it in Lean; this page reuses that proof.</p>
     </div>
     <div>
-      <p><b>Does it sit on the statistics line k + q = −1? No.</b> The letter q means two different things. On the statistics page q is the landscape's curvature, the q in (a + b + k·ab)/(1 − q·ab). Tsallis laws have no denominator, so on the landscape they all sit at q<sub>L</sub> = 0. Lean proves that certainty swallows everything (a ∘ₖ 1 = 1 for every a) exactly when k = −1, so the Tsallis family meets the "or" line at one point only.</p>
-      <p>That point is Tsallis q = 2, k = −1: the collision entropy 1 − Σp², the chance two draws differ. It is the one entropy that is itself an "or" law ("the pair differs if A differs or B differs"), and it is the entropy that draws the sphere in the next section.</p>
+      <p><b>Does it sit on the statistics line k + d = −1? No.</b> Before 1.0 the letter q meant two different things here. The statistics line uses the landscape's curvature d, the d in (a + b + k·ab)/(1 − d·ab). Tsallis laws have no denominator, so on the landscape they all sit at d = 0. Lean proves that certainty swallows everything (a ∘ₖ 1 = 1 for every a) exactly when k = −1, so the Tsallis family meets the "or" line at one point only.</p>
+      <p>That point is Tsallis q_T = 2, k = −1: the collision entropy 1 − Σp², the chance two draws differ. It is the one entropy that is itself an "or" law ("the pair differs if A differs or B differs"), and it is the entropy that draws the sphere in the next section.</p>
     </div>
   </div>
 </div></section>
@@ -124,11 +124,11 @@ pre,.scroll{overflow-x:auto}
   <div class="two">
     <div>
       <p>For a thermal state at temperature T₀, Rényi entropy of order q is a free-energy difference between T₀ and T = T₀/q (Baez, 2011; checked to 10<sup>−15</sup>). The lift 1 + k·S is a ratio of partition functions, the same lift the thermodynamics page used. So the Tsallis weight reads</p>
-      <p class="formula">k = 1 − q = 1 − T₀/T</p>
+      <p class="formula">k = 1 − q_T = 1 − T₀/T</p>
       <p>That is Carnot's efficiency between T and T₀. Carnot efficiencies cascade by the union rule, k = k₁ + k₂ − k₁k₂, and so do Tsallis weights along a chain of escort distributions (the escort of an escort multiplies the orders; Lean proves it for whole-number orders).</p>
       <p>The landmarks line up with earlier pages. Infinite temperature is k = 1, the plain circle operation, counting states, which is also where the Lee–Yang squares became the plain circle-operation squares. T = T₀ is Shannon, plain addition. T = T₀/2 is the collision entropy and the union rule.</p>
     </div>
-    <figure class="plate"><img src="figures/e3_temperature_dial.png" alt="A curve of the weight k = 1 − T₀/T against temperature on a log scale, rising from below −1.5 to approach 1. Gold dots mark T = T₀/2 at k = −1 (Tsallis q = 2, the union rule), T = T₀ at k = 0 (Shannon) and high temperature near k = 1 (the plain circle operation, counting states)."><figcaption>The k-dial as a thermometer. Status: a tidy reading of known identities.</figcaption></figure>
+    <figure class="plate"><img src="figures/e3_temperature_dial.png" alt="A curve of the weight k = 1 − T₀/T against temperature on a log scale, rising from below −1.5 to approach 1. Gold dots mark T = T₀/2 at k = −1 (Tsallis q_T = 2, the union rule), T = T₀ at k = 0 (Shannon) and high temperature near k = 1 (the plain circle operation, counting states)."><figcaption>The k-dial as a thermometer. Status: a tidy reading of known identities.</figcaption></figure>
   </div>
 </div></section>
 
@@ -174,7 +174,7 @@ pre,.scroll{overflow-x:auto}
   <div class="scroll"><table class="stack">
     <thead><tr><th>Entropy idea</th><th>Quantum noise idea</th><th>Circle-operation form</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td>Tsallis pseudo-additivity</td><td>independent qubits or channels side by side</td><td>k = 1 − q</td><td><span class="tag p">known</span></td></tr>
+      <tr><td>Tsallis pseudo-additivity</td><td>independent qubits or channels side by side</td><td>k = 1 − q_T</td><td><span class="tag p">known</span></td></tr>
       <tr><td>Linear entropy 1 − Tr ρ²</td><td>parallel channels; distance from the centre</td><td>k = −1, the union rule</td><td><span class="tag p">known</span></td></tr>
       <tr><td>Collision entropy</td><td>sphere around total noise; midsphere = hashing dead</td><td>Σp² = (1 + |λ|²)/4</td><td><span class="tag i">reading</span></td></tr>
       <tr><td>Shannon H of faults</td><td>hashing rate 1 − H(p)</td><td>between plane and midsphere</td><td><span class="tag p">known bound</span></td></tr>

@@ -15,5 +15,5 @@ Compile:
 Parts: (1) hole lift 1 + k·fold = ∏(1 + kμ), named dial values, a wall eigenvalue fills the region;
 (2) mode variance μ(1 + kμ), Var = Σμ + kΣμ² (Fano line), sub/super-Poisson, second factorial moment;
 (3) superposition (k, K) × c = (k/c, cK) and its variance; (4) tilt ruler and the lens law at
-p = 1 + 2kμ, q = kμ(1 + kμ), parabola p² − 4q = 1, named points (the circle operation ∘₁ (called mult-add before 1.0), union of failures,
+p = 1 + 2kμ, d = kμ(1 + kμ), parabola p² − 4d = 1, named points (the circle operation ∘₁ (called mult-add before 1.0), union of failures,
 velocity addition with speed limit 2), particle-hole symmetry.

@@ -6,14 +6,14 @@ Files
 - lean/GroupsLie.lean: 52 theorems, compiled clean (see lean/README.md).
 
 Findings
-- Every landscape law F_{p,q} is a one-parameter group of Möbius maps: mob a = I + aX, X = [[p,1],[-q,0]],
-  mob a · mob b = (1 - qab) mob F(a,b). Generator field 1 + px + qx² (the landscape's Riccati rate). Known (Möbius/Lie).
-- The landscape is the plane α = 1 in Lie's sl2 of fields α + βx + γx²; Killing form of the generator = 2(p² - 4q).
+- Every landscape law F_{p,d} is a one-parameter group of Möbius maps: mob a = I + aX, X = [[p,1],[-d,0]],
+  mob a · mob b = (1 - dab) mob F(a,b). Generator field 1 + px + dx² (the landscape's Riccati rate). Known (Möbius/Lie).
+- The landscape is the plane α = 1 in Lie's sl2 of fields α + βx + γx²; Killing form of the generator = 2(p² - 4d).
   Ours as a placement.
-- Chart change x ↦ x/(1 - cx) sends (p,q) to (p+2c, q+pc+c²), keeping p² - 4q; scaling multiplies it by λ².
+- Chart change x ↦ x/(1 - cx) sends (p,d) to (p+2c, d+pc+c²), keeping p² - 4d; scaling multiplies it by λ².
   So three classes: line (two walls), border (one double wall), circle. Classical (hyperbolic/parabolic/elliptic).
   Parity (-2,0) is velocity addition re-charted (c = 1).
-- θ-lift: (1 + aθ)(1 + bθ) = (1 - qab) + (a + b + pab)θ with θ² = pθ - q; norm = rate, so ∂F/∂b · V(b) = V(F)
+- θ-lift: (1 + aθ)(1 + bθ) = (1 - dab) + (a + b + pab)θ with θ² = pθ - d; norm = rate, so ∂F/∂b · V(b) = V(F)
   (invariant differential). Same object as the linear-algebra page's dial matrix U.
 - Closed-form logarithm (ruler) for every point; checked against numerical integration.
 - Dial: T_a(x) = (1 + ka)x + a is a dilation about the wall -1/k in the ax+b group; k → 0 is the Inönü–Wigner

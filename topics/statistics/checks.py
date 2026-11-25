@@ -136,14 +136,14 @@ for _ in range(2000):
     U = lambda x, y: 1 - amh(t, 1-x, 1-y)
     ok &= abs(U(p, q) - lens(-(1+t), t, p, q)) < 1e-12
     okA &= abs(U(U(p, q), r) - U(p, U(q, r))) < 1e-12
-check("union under AMH = lens law at (k, q) = (-(1+theta), theta)", ok)
+check("union under AMH = lens law at (k, d) = (-(1+theta), theta)", ok)
 check("AMH union is associative (the lens turns it into multiplication)", okA)
 def two_increasing(t, N=60):
     g = np.linspace(0, 1, N); C = np.array([[amh(t, u, v) for v in g] for u in g])
     return (np.diff(np.diff(C, axis=0), axis=1) >= -1e-12).all()
 check("AMH is a valid copula on the whole segment theta in [-1, 1]", all(two_increasing(t) for t in np.linspace(-1, 1, 21)))
 check("…and stops being one past the cusp (theta = 1.5)", not two_increasing(1.5))
-check("theta=-1 gives velocity addition, theta=0 independence, theta=1 the parabola k^2=4q",
+check("theta=-1 gives velocity addition, theta=0 independence, theta=1 the parabola k^2=4d",
       abs(lens(0, -1, .3, .4) - (.7/1.12)) < 1e-12 and abs(lens(-1, 0, .3, .4) - wadd(-1, .3, .4)) < 1e-12 and (-2)**2 == 4*1)
 
 # 10. Entropy ties

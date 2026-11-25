@@ -1,10 +1,10 @@
 """Patterns across the results: the counting recurrence behind every law.
 
-Every law on the landscape is a ⊕ b = (a + b + k·ab) / (1 − q·ab).
+Every law on the landscape is a ⊕ b = (a + b + k·ab) / (1 − d·ab).
 Adding a to itself n times is the n-th power of the 2×2 step
-    T(a) = [[1 + k·a, a], [−q·a, 1]],
+    T(a) = [[1 + k·a, a], [−d·a, 1]],
 so it is governed by one Lucas sequence U with
-    P = 2 + k·a (trace),  Q = 1 + k·a + q·a² (determinant),
+    P = 2 + k·a (trace),  Q = 1 + k·a + d·a² (determinant),
     U0 = 0, U1 = 1, U(n+2) = P·U(n+1) − Q·U(n),
     a^(⊕(n+1)) = a·U(n+1) / (U(n+1) − Q·U(n)).
 Fibonacci is the Lucas sequence with P = 1, Q = −1.
@@ -92,9 +92,9 @@ for a in [F(1, 2), F(3), F(-1, 3)]:
     U = lucas(2 + a, 1 + a, 20)
     for n in range(1, 20):
         okm &= U[n] - (1 + a) * U[n - 1] == 1 and a * U[n] == (1 + a) ** n - 1
-check("The circle operation: denominator U(n) − (1+a)U(n−1) = 1, so a^(⊕n) = (1+a)ⁿ − 1", okm)
+check("The circle operation: denominator U(n) − (1+a)U(n−1) = 1, so a^(∘₁n) = (1+a)ⁿ − 1", okm)
 
-# 4. The Fibonacci law: (k, q) = (−1, −1), adding 1 to itself
+# 4. The Fibonacci law: (k, d) = (−1, −1), adding 1 to itself
 fibop = law(F(-1), F(-1))
 fib = lucas(1, -1, 40)
 okf = all(fold(fibop, F(1), n) == F(fib[n], fib[n + 1]) for n in range(1, 30))
@@ -106,16 +106,16 @@ check("its walls are the roots of 1 − a − a² = 0: 1/φ and −φ",
       all(abs(1 - w - w * w) < 1e-12 for w in walls) and abs(walls[1] - 1 / phi) < 1e-12)
 check("the counting marches into the wall 1/φ", abs(float(fold(fibop, F(1), 30)) - 1 / phi) < 1e-12)
 
-# the ladder (simple-laws page): Z -> (1 + 2Z)/(1 + Z) = Z ⊕ 1 for the law at (k, q) = (1, −1)? check mirror
+# the ladder (simple-laws page): Z -> (1 + 2Z)/(1 + Z) = Z ⊕ 1 for the law at (k, d) = (1, −1)? check mirror
 ladder = lambda z: (1 + 2 * z) / (1 + z)
 mirror = law(F(1), F(-1))
 okl = all(mirror(F(n, d), F(1)) == (F(n, d) + 1 + F(n, d)) / (1 + F(n, d)) for n, d in [(1, 2), (3, 7), (5, 3)])
-check("the resistor ladder step is z ⊕ 1 in the mirror law (k, q) = (1, −1)", okl)
+check("the resistor ladder step is z ⊕ 1 in the mirror law (k, d) = (1, −1)", okl)
 okmir = all(-law(F(-1), F(-1))(-a, -b) == law(F(1), F(-1))(a, b)
             for a, b in [(F(1, 3), F(2, 5)), (F(-3, 7), F(1, 9))])
-check("mirror: −((−a) ⊕ (−b)) at (k, q) is a ⊕ b at (−k, q)", okmir)
+check("mirror: −((−a) ⊕ (−b)) at (k, d) is a ⊕ b at (−k, d)", okmir)
 
-# 5. Smallest irrational walls: integer laws with real walls, disc k² − 4q (in 1 + k a + q a²)
+# 5. Smallest irrational walls: integer laws with real walls, disc k² − 4d (in 1 + k a + d a²)
 discs = sorted({k * k - 4 * q for k in range(-20, 21) for q in range(-50, 51) if k * k - 4 * q > 0})
 nonsq = [d for d in discs if int(math.isqrt(d)) ** 2 != d]
 check("smallest non-square wall discriminant of an integer law is 5 (the golden walls)", nonsq[0] == 5,
@@ -150,7 +150,7 @@ for P, Q in [(F(3), F(2)), (F(-1, 2), F(5)), (F(7, 3), F(-2))]:
     okU5 &= lucas(P, Q, 5)[5] == (P * P - Q) ** 2 - Q * P * P
 check("U5 = (P² − Q)² − Q·P²: with Q = 1 it is (P² − P − 1)(P² + P − 1), golden roots", okU5)
 
-# 7. Crystallographic restriction: integer (k, q, a) steps can only cycle with period 1, 2, 3, 4 or 6
+# 7. Crystallographic restriction: integer (k, d, a) steps can only cycle with period 1, 2, 3, 4 or 6
 periods = {}
 for k in range(-6, 7):
     for q in range(-6, 7):

@@ -6,7 +6,7 @@ gr-bridges thread (math-theory/gr-bridges/ga.py), which that thread wrote; nothi
 its section S6 (the sandwich law a + b + a k b), which is cited, not re-run.
 
 Notation.  The circle operation a * b = a + b + ab (written ∘₁ on the pages).  Landscape law
-F_{p,q}(a,b) = (a + b + p ab)/(1 - q ab), rate V(a) = 1 + p a + q a^2.  The circle operation is (p,q) = (1,0).
+F_{p,d}(a,b) = (a + b + p ab)/(1 - d ab), rate V(a) = 1 + p a + d a^2.  The circle operation is (p,d) = (1,0).
 """
 import json, math, os, sys, itertools, random
 import numpy as np
@@ -43,13 +43,13 @@ rng = np.random.default_rng(7)
 
 # =============================================================================================
 section("A. The geometric product: the landscape law is the even Clifford algebra of its own rate form")
-# Clifford algebra of the binary form Q(x,y) = x^2 + p x y + q y^2: generators u, v with
-# u^2 = 1, v^2 = q, uv + vu = p.  Represent by 4x4 matrices built from a basis 1, u, v, uv.
+# Clifford algebra of the binary form Q(x,y) = x^2 + p x y + d y^2: generators u, v with
+# u^2 = 1, v^2 = d, uv + vu = p.  Represent by 4x4 matrices built from a basis 1, u, v, uv.
 # Basis order [1, u, v, uv]; left multiplication tables derived from the relations.
 def cl_binary(p, q):
     # products of basis elements, as coefficient vectors over [1,u,v,uv]
     # vu = p - uv ; uvu = u(p - uv) = p u - v ... (u^2=1): u v u = u (p - u v) = p u - v
-    # vuv = (p - uv) v = p v - u q ; uvuv = u(vuv) = p uv - q
+    # vuv = (p - uv) v = p v - u d ; uvuv = u(vuv) = p uv - d
     T = {}
     one, U, V, UV = range(4)
     e = lambda *cs: sp.Matrix(cs)
@@ -72,31 +72,31 @@ def cl_binary(p, q):
 mulB = cl_binary(p, q)
 syms = sp.symbols("x0:4 y0:4 z0:4")
 X_, Y_, Z_ = sp.Matrix(syms[0:4]), sp.Matrix(syms[4:8]), sp.Matrix(syms[8:12])
-check("Clifford algebra of x^2 + pxy + qy^2 (u^2 = 1, v^2 = q, uv + vu = p) is associative (general elements)",
+check("Clifford algebra of x^2 + pxy + dy^2 (u^2 = 1, v^2 = d, uv + vu = p) is associative (general elements)",
       mulB(mulB(X_, Y_), Z_) == mulB(X_, mulB(Y_, Z_)))
 uvec = sp.Matrix([0, 1, 0, 0]); vvec = sp.Matrix([0, 0, 1, 0]); th = sp.Matrix([0, 0, 0, 1]); I4 = sp.Matrix([1, 0, 0, 0])
-check("vector square = the form: (x u + y v)^2 = x^2 + p x y + q y^2 (scalar)",
+check("vector square = the form: (x u + y v)^2 = x^2 + p x y + d y^2 (scalar)",
       mulB(x * uvec + y * vvec, x * uvec + y * vvec) == sp.Matrix([sp.expand(x**2 + p*x*y + q*y**2), 0, 0, 0]))
-check("theta = uv (a product of two vectors, a bivector) obeys theta^2 = p theta - q: the theta-lift of groups-lie",
+check("theta = uv (a product of two vectors, a bivector) obeys theta^2 = p theta - d: the theta-lift of groups-lie",
       mulB(th, th) == (p * th - q * I4).applyfunc(sp.expand))
 lift = lambda s: I4 + s * th
-check("(1 + a theta)(1 + b theta) = (1 - q a b)(1 + F_{p,q}(a,b) theta): the landscape law is the geometric product of two lifts",
+check("(1 + a theta)(1 + b theta) = (1 - d a b)(1 + F_{p,d}(a,b) theta): the landscape law is the geometric product of two lifts",
       mulB(lift(a), lift(b)) == ((1 - q*a*b) * I4 + (a + b + p*a*b) * th).applyfunc(sp.expand))
-check("Circle-operation point (p,q) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent",
+check("Circle-operation point (p,d) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent",
       mulB(lift(a), lift(b)).subs({p: 1, q: 0}) == (I4 + ma(a, b) * th).applyfunc(sp.expand))
 # the rate form of the circle operation: x^2 + x y = x (x + y), a split form with isotropic lines y = 0? (x=0) and x = -y
 check("The circle operation's rate form is x^2 + xy = x(x + y): two light lines, so circle-operation lifts are hyperbolic rotors (boosts)",
       sp.factor(x**2 + x*y) == x*(x + y))
-RES["A"] = ("The landscape point (p,q) is the binary quadratic form x^2 + pxy + qy^2 (its values at (1,a) are the rate V(a)). "
-            "Its even Clifford algebra is spanned by 1 and theta = uv with theta^2 = p theta - q, which is the theta-lift; "
+RES["A"] = ("The landscape point (p,d) is the binary quadratic form x^2 + pxy + dy^2 (its values at (1,a) are the rate V(a)). "
+            "Its even Clifford algebra is spanned by 1 and theta = uv with theta^2 = p theta - d, which is the theta-lift; "
             "the landscape law is the geometric product of two lifts, read as a ratio. The circle operation's form x(x+y) is split.")
 
 # =============================================================================================
 section("B. The three 2D Clifford algebras are the landscape's three countries")
-# Completing the square: theta' = theta - p/2 squares to p^2/4 - q.
+# Completing the square: theta' = theta - p/2 squares to p^2/4 - d.
 tp = (th - p/2 * I4)
 d = sp.expand(p**2/4 - q)
-check("theta' = theta - p/2 squares to the scalar p^2/4 - q (a quarter of the discriminant)",
+check("theta' = theta - p/2 squares to the scalar p^2/4 - d (a quarter of the discriminant)",
       mulB(tp, tp).applyfunc(sp.expand) == d * I4)
 # Cl(0,1) = C (e^2 = -1), Cl(1,0) = split-complex (e^2 = +1), Cl(0,0,1) = dual (e^2 = 0)
 for name, kv, pq, law in [("circle (complex numbers, Cl(0,1))", -1, (0, 1), "tan addition"),
@@ -107,7 +107,7 @@ for name, kv, pq, law in [("circle (complex numbers, Cl(0,1))", -1, (0, 1), "tan
     B_ = G.add(G.scalar(1), G.scale(b, G.e(0)))
     prod = G.mul(A_, B_)
     s0 = prod.get(0, 0); s1 = prod.get(1, 0)
-    check(f"{name}: (1 + a e)(1 + b e) ratio gives F_{pq} = {law}", Z(s1/s0 - F(a, b, *pq)))
+    check(f"{name}: (1 + a e)(1 + b e) ratio gives F_{pd} = {law}", Z(s1/s0 - F(a, b, *pq)))
 check("The circle operation sits in the split-complex numbers: theta = (1 + e)/2 with e^2 = +1 is idempotent",
       (lambda G: G.equal(G.mul(G.add(G.scalar(sp.Rational(1, 2)), G.scale(sp.Rational(1, 2), G.e(0))),
                                 G.add(G.scalar(sp.Rational(1, 2)), G.scale(sp.Rational(1, 2), G.e(0)))),
@@ -121,19 +121,19 @@ conj = lambda X: sp.Matrix([X[0] + p * X[3], X[1], X[2], -X[3]])  # on the even 
 E1, E2 = sp.Matrix([x, 0, 0, y]), sp.Matrix([a, 0, 0, b])
 check("conjugation theta -> p - theta is multiplicative on the even part",
       (conj(mulB(E1, E2)) - mulB(conj(E1), conj(E2))).applyfunc(sp.expand) == sp.zeros(4, 1))
-check("lift times its conjugate = the rate V(a) = 1 + pa + qa^2 (for the circle operation: 1 + a, the plain lift)",
+check("lift times its conjugate = the rate V(a) = 1 + pa + da^2 (for the circle operation: 1 + a, the plain lift)",
       mulB(lift(a), conj(lift(a))).applyfunc(sp.expand) == sp.Matrix([sp.expand(1 + p*a + q*a**2), 0, 0, 0]))
 # conjugate of a lift, read in the chart, is the landscape inverse
 cl = conj(lift(a))
 chart = sp.simplify(cl[3] / cl[0])
 check("Clifford conjugation read in the chart is the landscape inverse -a/(1+pa) (the circle operation: the inverse -a/(1+a))",
       Z(chart + a/(1 + p*a)) and Z(F(a, chart)))
-RES["B"] = ("Exact match: the sign of p^2 - 4q picks C (circle), split-complex (line) or dual numbers (border). "
+RES["B"] = ("Exact match: the sign of p^2 - 4d picks C (circle), split-complex (line) or dual numbers (border). "
             "the circle operation (1,0) is the split case in the idempotent coordinate theta = (1+e)/2; its wall -1 is the zero divisor 1 - theta "
             "(the light cone); conjugation is the inverse.")
 
 # =============================================================================================
-section("C. Making k a multivector: with scalar arguments, trace and norm of K are the landscape (p, q)")
+section("C. Making k a multivector: with scalar arguments, trace and norm of K are the landscape (p, d)")
 # K = k0 + k1 e, e^2 = kappa.  K^2 = (2k0) K - (k0^2 - kappa k1^2).
 G1 = GA([kap])
 K = G1.add(G1.scalar(k0), G1.scale(k1, G1.e(0)))
@@ -144,11 +144,11 @@ LA = G1.add(G1.scalar(1), G1.scale(a, K)); LB = G1.add(G1.scalar(1), G1.scale(b,
 target = G1.add(G1.scalar(1 - nK*a*b), G1.scale(a + b + trK*a*b, K))
 check("(1 + aK)(1 + bK) = (1 - N ab) + (a + b + tr ab) K: the circle operation with dial K reads as F_{tr K, N K}",
       G1.equal(G1.mul(LA, LB), target))
-check("chart-free curvature: q - p^2/4 = -kappa k1^2, minus the square of K's non-scalar part",
+check("chart-free curvature: d - p^2/4 = -kappa k1^2, minus the square of K's non-scalar part",
       Z((nK - trK**2/4) + kap*k1**2))
 G1p = GA([1])
 Kma = G1p.add(G1p.scalar(k/2), G1p.scale(k/2, G1p.e(0)))
-check("The circle operation's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,q) = (k, 0)",
+check("The circle operation's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,d) = (k, 0)",
       G1p.equal(G1p.mul(Kma, Kma), G1p.scale(k, Kma)))
 check("so the dial k is a light-cone multivector, and the curvature of the circle operation is -k^2/4 (hyperbolic), matching relativity",
       Z(((k0**2 - kap*k1**2) - (2*k0)**2/4).subs({k0: k/2, k1: k/2, kap: 1}) + k**2/4))
@@ -175,7 +175,7 @@ rhs = G3.sub(G3.mul(G3.scale(2, Z0), Kg), G3.sub(G3.mul(Z0, Z0), W2))
 check("so K^2 = tr K * K - N K with tr, N in span(1, I), I^2 = -1: a fully general K gives the landscape over complex numbers",
       G3.equal(lhs, rhs) and G3.equal(G3.mul(I3, I3), G3.scalar(-1)))
 RES["C"] = ("Brennan's 'k as a fused number': with scalar arguments, any multivector dial K that satisfies a quadratic gives a "
-            "landscape law with p = trace(K), q = norm(K). The circle operation's own k is a null (light-cone) multivector k(1+e)/2. "
+            "landscape law with p = trace(K), d = norm(K). The circle operation's own k is a null (light-cone) multivector k(1+e)/2. "
             "Curvature is minus the square of K's non-scalar part. A general K in Cl(3,0) gives the landscape over the complex numbers "
             "1 and I (the volume element).")
 
@@ -322,7 +322,7 @@ RES["F"] = ("Existing analog made exact: twisted boosts' half-velocities are rot
             "by velocity addition. The chart (the law's value) cannot tell R from -R; the lift 1 + a theta keeps the sign.")
 
 # =============================================================================================
-section("G. Hamilton's quaternions and Grassmann's wedge inside the q = +1 dial boost")
+section("G. Hamilton's quaternions and Grassmann's wedge inside the d = +1 dial boost")
 def boost(qq, u):
     return np.array([[1, u], [-qq * np.conj(u), 1]], dtype=complex)
 ok = True
@@ -334,11 +334,11 @@ for _ in range(200):
     is_quat = abs(P[1, 1] - np.conj(P[0, 0])) < 1e-12 and abs(P[1, 0] + np.conj(P[0, 1])) < 1e-12
     X = 1 - (u.real*v.real + u.imag*v.imag); Y = (u.real*v.imag - u.imag*v.real)
     ok &= bool(is_quat and (abs(P[0, 0] - (X + 1j*Y)) < 1e-12 or abs(P[0, 0] - (X - 1j*Y)) < 1e-12))
-check("q = +1 dial boost [[1, u], [-ū, 1]] is the quaternion 1 + u j (SU(2) form); products stay quaternions, diagonal = X ± iY",
+check("d = +1 dial boost [[1, u], [-ū, 1]] is the quaternion 1 + u j (SU(2) form); products stay quaternions, diagonal = X ± iY",
       ok)
 check("so the corner X + iY = (1 - u·v) + i(u×v): Hamilton's scalar part carries the dot, the i part Grassmann's wedge u∧v",
       True, "identity proved symbolically on the twisted-boosts page (corner_split in TwistedBoosts.lean)")
-RES["G"] = ("Existing (twisted boosts): the q=+1 dial boost is a unit-direction quaternion; its product's scalar part is 1 - u·v and its "
+RES["G"] = ("Existing (twisted boosts): the d=+1 dial boost is a unit-direction quaternion; its product's scalar part is 1 - u·v and its "
             "i-part is the wedge u×v. Grassmann's exterior product is the antisymmetric part of the corner (section D: x∘₁y - y∘₁x = 2 x∧y).")
 
 # =============================================================================================
@@ -388,12 +388,12 @@ for _ in range(100):
 check("hyperbolic space, ω^2 = -1 (Hamilton's complex biquaternions = SL(2,C)): unit ones keep t^2 - |x|^2, the Lorentz/hyperbolic motions",
       ok_hyp)
 w = sp.symbols("omega")
-check("Clifford's coefficient ring R[ω], ω^2 = κ, is our theta-lift at (p,q) = (0, -κ): ratio law (a+b)/(1 + κab)",
+check("Clifford's coefficient ring R[ω], ω^2 = κ, is our theta-lift at (p,d) = (0, -κ): ratio law (a+b)/(1 + κab)",
       Z(sp.simplify(((a + b)/(1 + kap*a*b)) - F(a, b, 0, -kap))))
 check("and the circle operation's theta is exactly Clifford's elliptic projector (1 + ω)/2 (idempotent): the circle operation is the left half of an elliptic motion",
       Z(sp.expand(((1 + w)/2)**2).subs(w**2, 1) - (1 + w)/2))
 RES["H"] = ("Exact: Clifford's ω with ω^2 = +1, 0, -1 (elliptic, Euclidean, hyperbolic space) is one of our three 2D algebras, chosen by the "
-            "sign of space curvature, just as the dial's q sets curvature K = q in the twist rule. The circle operation's idempotent theta is Clifford's "
+            "sign of space curvature, just as the dial's d sets curvature K = d in the twist rule. The circle operation's idempotent theta is Clifford's "
             "elliptic projector (1+ω)/2, the piece that splits a motion of S^3 into its left and right parts. Naming caution: the elliptic "
             "case uses the split ring.")
 
@@ -417,7 +417,7 @@ for _ in range(200):
     yq = qmul(qexp_i(al), xq)
     ok_par &= abs(math.acos(max(-1, min(1, float(np.dot(xq, yq))))) - al) < 1e-12
 check("left multiplication by e^{i α} moves every point of S^3 by exactly α: a Clifford translation (all orbits parallel)", ok_par)
-# twist phase = half the area of the velocity triangle on the unit sphere (q = +1)
+# twist phase = half the area of the velocity triangle on the unit sphere (d = +1)
 def stereo_to_sphere(t):
     t = complex(t); r2 = abs(t)**2
     return np.array([2*t.real, 2*t.imag, r2 - 1]) / (1 + r2)  # chart t = tan(theta/2) e^{i phi}, from south pole... (rest at south pole)
@@ -435,7 +435,7 @@ for _ in range(300):
     O = sph_area(stereo_to_sphere(0), stereo_to_sphere(u), stereo_to_sphere(oplus(u, v)))
     err = min(abs(phase - O/2), abs(phase + O/2)); maxerr = max(maxerr, err)
 ok_hopf = maxerr < 1e-9
-check("phase of the corner X + iY (q = +1) = half the solid angle of the velocity triangle: the Hopf holonomy of a Clifford-parallel lift",
+check("phase of the corner X + iY (d = +1) = half the solid angle of the velocity triangle: the Hopf holonomy of a Clifford-parallel lift",
       ok_hopf, f"max error {maxerr:.1e} over 300 triangles")
 # numerically: horizontal lift around the triangle picks up phase = half the solid angle
 def hopf_lift_holonomy(path):
@@ -460,11 +460,11 @@ hol = hopf_lift_holonomy(loop); Om = sph_area(A3, B3, C3)
 check("direct check: the horizontal Hopf lift around a geodesic triangle returns with phase ± half its solid angle",
       min(abs(abs(hol) - abs(Om)/2), 1) < 2e-3, f"holonomy {hol:.5f}, half solid angle {Om/2:.5f}")
 # Clifford torus vs light wall
-check("the circle |t| = 1/sqrt|q|: at q = -1 it is the light wall (1 - |t|^2 = 0); at q = +1 its Hopf preimage |z1| = |z2| is the flat Clifford torus",
+check("the circle |t| = 1/sqrt|d|: at d = -1 it is the light wall (1 - |t|^2 = 0); at d = +1 its Hopf preimage |z1| = |z2| is the flat Clifford torus",
       all(abs(stereo_to_sphere(np.exp(1j*th_))[2]) < 1e-12 for th_ in np.linspace(0, 6, 7)))
-RES["J"] = ("Exact: the twist rule's corner phase arg(X+iY) is half the triangle's area on the q=+1 sphere, which is the holonomy of the Hopf "
-            "fibration, whose fibres are Clifford parallels. The same circle |t| = 1 is the light wall at q = -1 and the base of the Clifford "
-            "torus at q = +1.")
+RES["J"] = ("Exact: the twist rule's corner phase arg(X+iY) is half the triangle's area on the d=+1 sphere, which is the holonomy of the Hopf "
+            "fibration, whose fibres are Clifford parallels. The same circle |t| = 1 is the light wall at d = -1 and the base of the Clifford "
+            "torus at d = +1.")
 
 # =============================================================================================
 section("K. Clifford–Klein forms and elliptic space as the chart's quotient")
@@ -508,7 +508,7 @@ def miquel(L):
 cands, cs = miquel(lines)
 mp_ = [z for z in cands if all(abs(abs(z - c_) - r_) < 1e-7 for c_, r_ in cs)]
 check("4 lines: the four triangle circumcircles meet in one point (Miquel/Clifford, first step of the chain)", len(mp_) >= 1)
-# transport by a complex landscape translation z -> F_{p,q}(z, c), a Möbius map: concurrency kept
+# transport by a complex landscape translation z -> F_{p,d}(z, c), a Möbius map: concurrency kept
 pp_, qq_, cc_ = 0.3, 0.8, 0.25 + 0.1j
 Tm = lambda z: (z + cc_ + pp_*z*cc_) / (1 - qq_*z*cc_)
 ok_tr = True
@@ -516,7 +516,7 @@ for c_, r_ in cs:
     pts = [c_ + r_*np.exp(1j*t) for t in (0.1, 1.7, 3.9, 5.2)]
     img = [Tm(z) for z in pts]
     cc2, rr2 = circ3(*img[:3]); ok_tr &= abs(abs(img[3] - cc2) - rr2) < 1e-8 and abs(abs(Tm(mp_[0]) - cc2) - rr2) < 1e-8
-check("a landscape translation z -> F_{p,q}(z, c) (complex) carries the four circles to circles still meeting at the image Miquel point", ok_tr)
+check("a landscape translation z -> F_{p,d}(z, c) (complex) carries the four circles to circles still meeting at the image Miquel point", ok_tr)
 RES["L"] = ("Holds by transfer only: landscape translations are Möbius maps, so Clifford's chain theorem survives in every chart, with "
             "lines becoming circles through the image of infinity. No circle-operation statement of the chain itself; it would need concurrency "
             "written as a ∘₁ identity (real cross-ratios).")

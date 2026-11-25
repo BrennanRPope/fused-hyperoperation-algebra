@@ -3,12 +3,12 @@ Page: https://claude.ai/artifact/3ozW93quvmikMu5TGaKuw4 (source index.html)
 - checks.py: 36/36 pass (checks_output.txt). Exact sympy algebra; numpy against 4x4 Lorentz matrices (2000 random pairs), SO(3) for the sphere end, triangle areas, Thomas precession by composing 20,000 small boosts.
 - lean/TwistedBoosts.lean: 32 theorems, core Lean, imports Base, Thermodynamics, Relativity. Compiled in the shared library as Topics/TwistedBoosts (clean build 1,616 theorems, 54 modules); one proof step fixed there. Statements checked true on 300 random rational cases.
 Findings:
-- Dial boost B_q(u) = [[1,u],[-q ū,1]] on half-velocities (t = tanh(φ/2)); q is the landscape q (q=-1 relativity, 0 Galilean, +1 rotations).
-- B(u)B(v) diagonal = X ± iY, X = 1 - q(u·v), Y = q(u×v): the corner ū·v splits into dot + i cross. Twist e^{iω} = (X+iY)/(X-iY), tan(ω/2) = q(u×v)/(1-q(u·v)). No twist iff q·cross = 0.
-- u⊕v = (u+v)/(1-q ū v) = twist·(v⊕u). Light wall in 2D: |1+ūv|²-|u+v|² = (1-|u|²)(1-|v|²).
-- ω = q × signed area of the velocity triangle (rest, u, u⊕v): Gauss–Bonnet with curvature K = q. Thomas precession per lap = 2π(γ-1) = area of the velocity circle.
+- Dial boost B_d(u) = [[1,u],[-d ū,1]] on half-velocities (t = tanh(φ/2)); d is the landscape d (d=-1 relativity, 0 Galilean, +1 rotations).
+- B(u)B(v) diagonal = X ± iY, X = 1 - q(u·v), Y = q(u×v): the corner ū·v splits into dot + i cross. Twist e^{iω} = (X+iY)/(X-iY), tan(ω/2) = q(u×v)/(1-q(u·v)). No twist iff d·cross = 0.
+- u⊕v = (u+v)/(1-d ū v) = twist·(v⊕u). Light wall in 2D: |1+ūv|²-|u+v|² = (1-|u|²)(1-|v|²).
+- ω = d × signed area of the velocity triangle (rest, u, u⊕v): Gauss–Bonnet with curvature K = d. Thomas precession per lap = 2π(γ-1) = area of the velocity circle.
 - Half-velocity = half a kick: d(t⊕t) = d(t) ∘₁ d(t).
-Known: Thomas 1926, Wigner 1939, Borel 1913, Ungar gyrogroups, κ-stereographic model. Ours: landscape q = curvature, twist = phase of split corner.
+Known: Thomas 1926, Wigner 1939, Borel 1913, Ungar gyrogroups, κ-stereographic model. Ours: landscape d = curvature, twist = phase of split corner.
 Next lead offered: Gravity Probe B geodetic precession (~6.6 arcsec/yr) with twist = curvature × area bookkeeping on spacetime.
 
 ## Gravity Probe B follow-up (gpb/)

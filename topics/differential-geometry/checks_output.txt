@@ -9,19 +9,19 @@ PASS its radial part is dr²/(1 + K r²)²·... : along a line through the centr
 PASS conformal (Poincaré / stereographic) metric 4|dz|²/(1 + K|z|²)² has curvature K
 PASS conformal radial distance 2·arctan(√K r)/√K: the same tan law in r, with distances doubled
 PASS upper half-plane (dx² + dy²)/y² has curvature -1
-PASS doubling 2a/(1 - qa²) is F(a, a)
+PASS doubling 2a/(1 - da²) is F(a, a)
 PASS doubling respects the law: dbl(F(a,b)) = F(dbl a, dbl b)
 PASS K = -1: Klein radius = 2 r_P/(1 + r_P²) of the Poincaré radius (both give distance artanh r_K = 2 artanh r_P)
 PASS K = +1: gnomonic radius = 2 r_s/(1 - r_s²) of the stereographic radius (tan θ = 2 tan(θ/2)/(1 - tan²(θ/2)))
-PASS re-charting x ↦ x/(1-cx) keeps 4q - p² (so K_proj = q - p²/4 and K_conf = 4q - p² are chart-free)
+PASS re-charting x ↦ x/(1-cx) keeps 4d - p² (so K_proj = d - p²/4 and K_conf = 4d - p² are chart-free)
 PASS the circle operation re-charted (c = -1/2) is F(0, -1/4), and its ruler log(1+x) = 2·artanh(φ(x)/2), φ(x) = x/(1 + x/2)
-PASS so the circle operation is a hyperbolic line: K_proj = q - p²/4 = -1/4 (Klein chart), K_conf = 4q - p² = -1, matching the half plane's curvature -1
+PASS so the circle operation is a hyperbolic line: K_proj = d - p²/4 = -1/4 (Klein chart), K_conf = 4d - p² = -1, matching the half plane's curvature -1
 PASS half plane: lift y = 1 + x; the dilation y ↦ (1+a)y is an isometry and composes as the circle operation
 PASS distance up the vertical geodesic from y = 1 to y = 1 + x is log(1 + x), the circle-operation ruler; the wall x = -1 is the horizon y = 0, infinitely far
-PASS dial line (p = k, q = 0): K_conf = -k² (radius 1/|k|), K_proj = -k²/4 (radius 2/|k|); flat only at k = 0
+PASS dial line (p = k, d = 0): K_conf = -k² (radius 1/|k|), K_proj = -k²/4 (radius 2/|k|); flat only at k = 0
 PASS velocity addition (u+v)/(1+uv/c²) is F(0, -1/c²): K_proj = -1/c², velocity space is hyperbolic with radius c
 PASS failure union (k = -1) and parity (k = -2): K_conf = -1 and -4, both hyperbolic
-PASS ruler = Cayley-Klein distance: L(x) = log CR(0, x; walls)/√(p² - 4q) (5 line-type points)
+PASS ruler = Cayley-Klein distance: L(x) = log CR(0, x; walls)/√(p² - 4d) (5 line-type points)
 PASS the circle operation: walls -1 and ∞, and log CR(0, x; ∞, -1) = log(1 + x)
 PASS Klein disk (K = -1): distance between two points on a chord = ½|log cross-ratio| with the chord's ends on the circle, = length of the straight segment in the Beltrami metric
 PASS circle-type law: whole line has length π/√K_proj, half a great circle (the elliptic plane, antipodes glued)

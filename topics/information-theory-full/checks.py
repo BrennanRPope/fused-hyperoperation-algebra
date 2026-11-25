@@ -15,10 +15,10 @@ def lnq(x, q):  # Tsallis q-logarithm
 def eq(x, q):
     return math.exp(x) if abs(q-1) < 1e-14 else (1 + (1-q)*x)**(1/(1-q))
 
-print("== 1. The q-logarithm turns products into the dial, k = 1 − q")
+print("== 1. The q-logarithm turns products into the dial, k = 1 − q_T")
 x, y, k, q = sp.symbols('x y k q', positive=True)
 L = (x**k - 1)/k; Ly = (y**k - 1)/k; Lxy = ((x*y)**k - 1)/k
-check("symbolic: ln_q(xy) = ln_q x ∘ₖ ln_q y with k = 1 − q", sp.simplify(sp.expand_power_base(Lxy - dial(k, L, Ly), force=True)) == 0)
+check("symbolic: ln_q(xy) = ln_q x ∘ₖ ln_q y with k = 1 − q_T", sp.simplify(sp.expand_power_base(Lxy - dial(k, L, Ly), force=True)) == 0)
 ok = True
 for _ in range(500):
     qq = rng.uniform(-2, 3); a, b = rng.uniform(.05, 5, 2); kk = 1 - qq
@@ -28,9 +28,9 @@ for _ in range(500):
         ok &= abs(eq(dial(kk, u, v), qq) - eq(u, qq)*eq(v, qq)) < 1e-8*max(1, a*b)
         ok &= abs(eq(lnq(a, qq), qq) - a) < 1e-9*max(1, a)
 check("500 random q: ln_q(ab) = dial; e_q(u ∘ₖ v) = e_q(u)·e_q(v); e_q inverts ln_q", ok)
-check("k = −1 (Tsallis q = 2): ln_2 x = 1 − 1/x and (1 − 1/xy) = (1 − 1/x) ∘₋₁ (1 − 1/y)",
+check("k = −1 (Tsallis q_T = 2): ln_2 x = 1 − 1/x and (1 − 1/xy) = (1 − 1/x) ∘₋₁ (1 − 1/y)",
       sp.simplify((1 - 1/(x*y)) - dial(-1, 1 - 1/x, 1 - 1/y)) == 0)
-check("k = 1 (q = 0): ln_0 x = x − 1, the 'count minus one' that combines by the circle operation: 5·7 − 1 = 4 ∘₁ 6",
+check("k = 1 (q_T = 0): ln_0 x = x − 1, the 'count minus one' that combines by the circle operation: 5·7 − 1 = 4 ∘₁ 6",
       abs(lnq(7.0, 0) - 6) < 1e-15 and dial(1, 4, 6) == 5*7 - 1)
 
 print("== 2. Tsallis entropy is the expectation of a q-surprise; the measure engine composes it")
@@ -52,7 +52,7 @@ lhs = sum(J[i, j]*dial(kk, sA[i], sB[j]) for i in range(3) for j in range(4))
 cov = sA@J@sB - (pA@sA)*(pB@sB)
 check("correlated sources: E[s_A ∘₁ s_B] misses S_A ∘₁ S_B by exactly k·Cov(s_A, s_B)", abs(lhs - dial(kk, pA@sA, pB@sB) - kk*cov) < 1e-12)
 
-print("== 3. Two q's: the project's q is Tsallis' dual index 2 − q")
+print("== 3. Two bases: the q-number base k + 1 is Tsallis' dual index 2 − q_T")
 xs = sp.symbols('xs', positive=True); qs = sp.symbols('qs')
 lq = lambda X, Q: (X**(1-Q) - 1)/(1-Q)
 check("ln_{2−q}(x) = −ln_q(1/x)  (the known additive duality q ↔ 2 − q)", sp.simplify(lq(xs, 2-qs) + lq(1/xs, qs)) == 0)

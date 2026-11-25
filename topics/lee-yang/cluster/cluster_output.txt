@@ -18,9 +18,9 @@ Test B (whole dial, not independent of how the landscape was built):
   Log-likelihood, spike-plus-background model: Beraha n=2..12 68.2, integers -2..2 149.7  (difference 81.5 in favour of integers)
   Same size, 5 values each: Beraha n=2..6 [-1.0, 0.0, 1.0, 1.618, 2.0] hits 76 laws; integers -2..2 hit 80. Log-likelihoods 127.7 vs 149.7.
 
-Test C (units): on the q = 0 axis every k > 0 is k = 1 in other units, so only sign(k) and k = 0
-  are properties of the law. Off the axis the unit-free number is k^2/q:
-    Leveraged compounding, 2x: (k, q) = (2, 0) -> sign +; same law at (1, 0) in units of 2
-    Euler characteristic genus (cusp): (k, q) = (2, 1) -> k^2/q = 4; same law at (1, 0.25) in units of 2
-    Rung 2: (k, q) = (2, 0.5) -> k^2/q = 8; same law at (1, 0.125) in units of 2
+Test C (units): on the d = 0 axis every k > 0 is k = 1 in other units, so only sign(k) and k = 0
+  are properties of the law. Off the axis the unit-free number is k^2/d:
+    Leveraged compounding, 2x: (k, d) = (2, 0) -> sign +; same law at (1, 0) in units of 2
+    Euler characteristic genus (cusp): (k, d) = (2, 1) -> k^2/d = 4; same law at (1, 0.25) in units of 2
+    Rung 2: (k, d) = (2, 0.5) -> k^2/d = 8; same law at (1, 0.125) in units of 2
   The three hits at k = 2 all move to k = 1 under a = 2a'. None is pinned to 2.

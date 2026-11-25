@@ -34,7 +34,7 @@ style(a, 'Landscape border: fill, linger, spill')
 a = ax[1, 0]; d = np.array(B['d']); T = np.array(B['T'])
 a.loglog(d, T, 'o', color=BLUE, ms=4, label='steps for one turn')
 a.loglog(d, T[6] * (d / d[6]) ** -0.5, color=MUTE, lw=1, ls=(0, (3, 2)), label='slope −1/2 (any fold)')
-a.set_xlabel('distance past the border, 4q − k²', fontsize=8, color=INK); a.set_ylabel('steps', fontsize=8, color=INK)
+a.set_xlabel('distance past the border, 4d − k²', fontsize=8, color=INK); a.set_ylabel('steps', fontsize=8, color=INK)
 a.legend(fontsize=7, frameon=False)
 style(a, 'The linger grows without limit at the border')
 # 4 latent heat

@@ -32,12 +32,12 @@ PASS Otto cycle: eta(r1 r2) = eta(r1) (+)_-1 eta(r2) (compression ratios multipl
 PASS second law composes: stages under their Carnot bounds give a cascade under the overall bound
 
 == D. Tsallis, Renyi, and the q-sum ==
-PASS Tsallis S_q(A,B) = S_A (+)_k S_B with k = 1 - q; Renyi = log of the lift, adds
-PASS q-logarithm: ln_q(xy) = ln_q x (+)_(1-q) ln_q y (Tsallis' 'q-sum' is this circle operation with dial k)
-PASS q-exponential: e_q(u) e_q(v) = e_q(u (+)_(1-q) v)
+PASS Tsallis S_q(A,B) = S_A (+)_k S_B with k = 1 - q_T; Renyi = log of the lift, adds
+PASS q-logarithm: ln_q(xy) = ln_q x (+)_(1-q_T) ln_q y (Tsallis' 'q-sum' is this circle operation with dial k)
+PASS q-exponential: e_q(u) e_q(v) = e_q(u (+)_(1-q_T) v)
 
 == E. Kaniadakis kappa-sum (relativistic statistics) ==
-PASS kappa-sum osculates the landscape at (k, q) = (0, kappa^2/2): no ab corner, a turning-country bend  [k=0, q=kappa**2/2]
+PASS kappa-sum osculates the landscape at (k, d) = (0, kappa^2/2): no ab corner, a turning-country bend  [k=0, d=kappa**2/2]
 PASS kappa-sum is sinh addition (asinh(kappa x) adds), so it is associative
 PASS cross-check: sine addition sits at (0, -1/2) as the landscape page found
 
@@ -51,20 +51,20 @@ PASS same lens as the KdV soliton weight: sqrt(A) = M(k2/k1) on the landscape pa
 
 == G. Thermal radiation between gray plates, and Stokes' pile of plates ==
 PASS Stokes (1862) pile of plates and gray-plate radiation: R = (R1 + R2 - 2R1R2)/(1 - R1R2), ray by ray
-PASS that law sits at (k, q) = (-2, 1): exactly on the border parabola k^2 = 4q
+PASS that law sits at (k, d) = (-2, 1): exactly on the border parabola k^2 = 4d
 PASS its lens N(R) = R/(1 - R) = 1/eps - 1 turns it into plain addition (double wall at R = 1, a mirror)
 PASS n identical plates: R_n = nR/(1 + (n - 1)R), so shields cut heat as 1/(n + 1), not exponentially
 
 == H. Lee-Yang zeros and the circle-operation square ==
 PASS two spins: Z = 1 + 2a z + z^2 (a = e^(-2bJ)) has zeros on |z| = 1 exactly when ferromagnetic (a <= 1)
-PASS as a landscape point (k, q) = (2a, 1): ferromagnets sit in the turning country, T = infinity touches the border
+PASS as a landscape point (k, d) = (2a, 1): ferromagnets sit in the turning country, T = infinity touches the border
 PASS the bond polynomial at T = infinity (a = 1) is the plain circle-operation square (1 + z_i)(1 + z_j)
 PASS N spins, random ferromagnetic bonds: every zero of Z(z) lies on the unit circle (Lee-Yang 1952)  [worst |z|-1 = 2.2e-15]
 PASS antiferromagnetic counterexample: zeros leave the circle
 PASS Asano contraction: Z is the product of the circle-operation squares with dial k, one per bond, with each spin's copies glued by keeping only the cube's all-0 and all-1 corners
 
 == I. Wick rotation is the landscape's change of units with lambda = i ==
-PASS law(i a, i b)/i = law at (i k, -q): on the k = 0 axis, Wick rotation flips q to -q
+PASS law(i a, i b)/i = law at (i k, -d): on the k = 0 axis, Wick rotation flips d to -d
 PASS so thermal tanh addition (0, -1) becomes quantum tan addition (0, +1): two walls become a turn
 
 == J. Fluctuation theorems and chemistry ==
@@ -75,14 +75,14 @@ PASS Hess's law: coupled reactions multiply K (K - 1 combines by the circle oper
 PASS a blackbody seen head-on from a moving frame: T' = T sqrt((1+b)/(1-b)); boosts add by velocity addition and the temperature ratio is its lens
 
 == L. Landscape placements (jets) ==
-     partition excess z, fridge u, Jarzynski          (k, q) = (1, 0)   k^2 - 4q = 1  -> two walls
-     engine eta, heat pump 1/COP, Carnot, CA, Otto    (k, q) = (-1, 0)   k^2 - 4q = 1  -> two walls
-     Tsallis S_q (q = 1/2 shown)                      (k, q) = (1/2, 0)   k^2 - 4q = 1/4  -> two walls
-     Ising series (disagreement p)                    (k, q) = (-2, 0)   k^2 - 4q = 4  -> two walls
-     Fermi t = 1 - 2n, Ising parallel, Doppler        (k, q) = (0, -1)   k^2 - 4q = 4  -> two walls
-     gray plates / Stokes pile                        (k, q) = (-2, 1)   k^2 - 4q = 0  -> border
-     kappa-sum (kappa = 1)                            (k, q) = (0, 1/2)   k^2 - 4q = -2  -> turning
-     quantum (Wick-rotated Fermi): tan addition       (k, q) = (0, 1)   k^2 - 4q = -4  -> turning
+     partition excess z, fridge u, Jarzynski          (k, d) = (1, 0)   k^2 - 4d = 1  -> two walls
+     engine eta, heat pump 1/COP, Carnot, CA, Otto    (k, d) = (-1, 0)   k^2 - 4d = 1  -> two walls
+     Tsallis S_q (q_T = 1/2 shown)                      (k, d) = (1/2, 0)   k^2 - 4d = 1/4  -> two walls
+     Ising series (disagreement p)                    (k, d) = (-2, 0)   k^2 - 4d = 4  -> two walls
+     Fermi t = 1 - 2n, Ising parallel, Doppler        (k, d) = (0, -1)   k^2 - 4d = 4  -> two walls
+     gray plates / Stokes pile                        (k, d) = (-2, 1)   k^2 - 4d = 0  -> border
+     kappa-sum (kappa = 1)                            (k, d) = (0, 1/2)   k^2 - 4d = -2  -> turning
+     quantum (Wick-rotated Fermi): tan addition       (k, d) = (0, 1)   k^2 - 4d = -4  -> turning
 PASS landscape jets computed for every placed law
 
 55 of 55 checks pass

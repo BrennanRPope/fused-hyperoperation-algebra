@@ -15,8 +15,8 @@ PASS  lift of the parallel law: 1+v = (1+(Q-1)t)/(1-t), so it multiplies
 PASS  wall 1: a perfect bond t = 1 absorbs: F(a, 1) = 1
 PASS  wall 2: t = -1/(Q-1) absorbs, and it is v = -1 (proper colouring)
 PASS  Potts parallel = union under Ali-Mikhail-Haq dependence, theta = 1 - Q
-PASS  Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4q
-PASS  the or line q = -1 - k touches the border parabola q = k^2/4 only at k = -2, q = 1 (Q = 0)
+PASS  Q = 0 (spanning forests): F_{-2,1} = (a+b-2ab)/(1-ab), the double-wall cusp k^2 = 4d
+PASS  the or line d = -1 - k touches the border parabola d = k^2/4 only at k = -2, d = 1 (Q = 0)
 PASS  the parallel law is associative for every Q (symbolic)
 PASS  40 random series-parallel networks: brute-force reliability = (x, *_{-1}) reduction
 PASS  failure side: series fails = (1-p1) *_{-1} (1-p2), parallel fails = (1-p1)(1-p2)

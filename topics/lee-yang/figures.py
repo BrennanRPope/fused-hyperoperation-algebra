@@ -21,8 +21,8 @@ def disk(ax, title):
 
 # Figure 1: the 2D grid (6x6 torus) zeros in zeta = k^2 z across the dial
 Z = pickle.load(open("torus_zeros.pkl", "rb"))
-ks = [(4, "k = 4  (q = 5)"), (2, "k = 2  (q = 3)"), (1.0001, "k = 1  (q = 2)"), (0.5, "k = 0.5  (q = 1.5)"),
-      (0.1, "k = 0.1  (q = 1.1)"), (-1, "k = −1  (q = 0)"), (-2, "k = −2  (q = −1)")]
+ks = [(4, "k = 4"), (2, "k = 2"), (1.0001, "k = 1"), (0.5, "k = 0.5"),
+      (0.1, "k = 0.1"), (-1, "k = −1"), (-2, "k = −2")]
 fig, axs = plt.subplots(1, 7, figsize=(16, 2.9))
 for ax, (k, lab) in zip(axs, ks):
     disk(ax, lab)

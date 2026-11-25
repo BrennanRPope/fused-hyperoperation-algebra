@@ -3,7 +3,7 @@
 Every law below is tested, not assumed. Each check prints PASS or FAIL.
 The circle operation:   a (+) b = a + b + ab = (1+a)(1+b) - 1
 Weighted:   a (+)_k b = a + b + k ab,   1 + k(a (+)_k b) = (1+ka)(1+kb)
-Landscape:  (a + b + k ab) / (1 - q ab)  -> the point (k, q)
+Landscape:  (a + b + k ab) / (1 - d ab)  -> the point (k, d)
 Run: python3 checks.py   (needs sympy, numpy, mpmath)
 """
 import itertools, math, random
@@ -37,8 +37,8 @@ a, b, c, k, q, x, y, z = sp.symbols('a b c k q x y z')
 
 
 def jet(F):
-    """(k, q) of a two-variable law F(a, b) with F(a,0)=a: k = coeff of ab,
-    q = coeff of a^2 b (the landscape's two coordinates)."""
+    """(k, d) of a two-variable law F(a, b) with F(a,0)=a: k = coeff of ab,
+    d = coeff of a^2 b (the landscape's two coordinates)."""
     s = sp.series(sp.series(F, b, 0, 2).removeO(), a, 0, 3).removeO()
     s = sp.expand(s)
     return sp.simplify(s.coeff(a, 1).coeff(b, 1)), sp.simplify(s.coeff(a, 2).coeff(b, 1))
@@ -220,11 +220,11 @@ for qq in (0.3, 0.5, 1.5, 2.0, 3.0):
     ok &= close(S(pr), wa(1 - qq, S(p), S(r)))
     R = lambda P: math.log(np.sum(P ** qq)) / (1 - qq)
     ok &= close(R(pr), R(p) + R(r))
-check("Tsallis S_q(A,B) = S_A (+)_k S_B with k = 1 - q; Renyi = log of the lift, adds", ok)
+check("Tsallis S_q(A,B) = S_A (+)_k S_B with k = 1 - q_T; Renyi = log of the lift, adds", ok)
 qs = sp.symbols('q_s', positive=True)
 xx, yy = sp.symbols('x y', positive=True)
 lnq = lambda u: (u ** (1 - qs) - 1) / (1 - qs)
-check("q-logarithm: ln_q(xy) = ln_q x (+)_(1-q) ln_q y (Tsallis' 'q-sum' is this circle operation with dial k)",
+check("q-logarithm: ln_q(xy) = ln_q x (+)_(1-q_T) ln_q y (Tsallis' 'q-sum' is this circle operation with dial k)",
       sp.simplify(sp.powsimp(lnq(xx * yy) - wa(1 - qs, lnq(xx), lnq(yy)), force=True)) == 0)
 ok = True
 for qq in (0.4, 0.8, 1.3):
@@ -233,14 +233,14 @@ for qq in (0.4, 0.8, 1.3):
     for _ in range(20):
         u, v = random.uniform(0, 2), random.uniform(0, 2)
         ok &= close(eq(u) * eq(v), eq(wa(kk, u, v)))
-check("q-exponential: e_q(u) e_q(v) = e_q(u (+)_(1-q) v)", ok)
+check("q-exponential: e_q(u) e_q(v) = e_q(u (+)_(1-q_T) v)", ok)
 
 print("\n== E. Kaniadakis kappa-sum (relativistic statistics) ==")
 kap = sp.symbols('kappa', positive=True)
 ksum = a * sp.sqrt(1 + kap ** 2 * b ** 2) + b * sp.sqrt(1 + kap ** 2 * a ** 2)
 kk_, qq_ = jet(ksum)
-check("kappa-sum osculates the landscape at (k, q) = (0, kappa^2/2): no ab corner, a turning-country bend",
-      kk_ == 0 and sp.simplify(qq_ - kap ** 2 / 2) == 0, f"k={kk_}, q={qq_}")
+check("kappa-sum osculates the landscape at (k, d) = (0, kappa^2/2): no ab corner, a turning-country bend",
+      kk_ == 0 and sp.simplify(qq_ - kap ** 2 / 2) == 0, f"k={kk_}, d={qq_}")
 ok = True
 for _ in range(30):
     kv = random.uniform(0.1, 1); u, v, w = [random.uniform(-2, 2) for _ in range(3)]
@@ -292,7 +292,7 @@ for _ in range(100):
 check("Stokes (1862) pile of plates and gray-plate radiation: R = (R1 + R2 - 2R1R2)/(1 - R1R2), ray by ray", ok)
 F = (a + b - 2 * a * b) / (1 - a * b)
 kk_, qq_ = jet(F)
-check("that law sits at (k, q) = (-2, 1): exactly on the border parabola k^2 = 4q", (kk_, qq_) == (-2, 1) and kk_ ** 2 == 4 * qq_)
+check("that law sits at (k, d) = (-2, 1): exactly on the border parabola k^2 = 4d", (kk_, qq_) == (-2, 1) and kk_ ** 2 == 4 * qq_)
 Nf = lambda u: u / (1 - u)
 check("its lens N(R) = R/(1 - R) = 1/eps - 1 turns it into plain addition (double wall at R = 1, a mirror)",
       sp.simplify(Nf(F) - Nf(a) - Nf(b)) == 0)
@@ -310,7 +310,7 @@ for aval in np.linspace(0, 1, 11):
 roots = np.roots([1, 2 * 1.5, 1])
 check("two spins: Z = 1 + 2a z + z^2 (a = e^(-2bJ)) has zeros on |z| = 1 exactly when ferromagnetic (a <= 1)",
       ok and not all(abs(abs(rt) - 1) < 1e-6 for rt in roots))
-check("as a landscape point (k, q) = (2a, 1): ferromagnets sit in the turning country, T = infinity touches the border",
+check("as a landscape point (k, d) = (2a, 1): ferromagnets sit in the turning country, T = infinity touches the border",
       all((2 * av_) ** 2 - 4 <= 0 for av_ in np.linspace(0, 1, 11)))
 check("the bond polynomial at T = infinity (a = 1) is the plain circle-operation square (1 + z_i)(1 + z_j)",
       sp.expand((1 + x) * (1 + y)) == sp.expand(1 + 1 * x + 1 * y + x * y))
@@ -401,7 +401,7 @@ lam = sp.I
 L = (a + b + k * a * b) / (1 - q * a * b)
 Lrot = sp.simplify(L.subs({a: lam * a, b: lam * b}, simultaneous=True) / lam)
 target = (a + b + (sp.I * k) * a * b) / (1 - (-q) * a * b)
-check("law(i a, i b)/i = law at (i k, -q): on the k = 0 axis, Wick rotation flips q to -q",
+check("law(i a, i b)/i = law at (i k, -d): on the k = 0 axis, Wick rotation flips d to -d",
       sp.simplify(Lrot - target) == 0)
 check("so thermal tanh addition (0, -1) becomes quantum tan addition (0, +1): two walls become a turn",
       sp.simplify(sp.tanh(sp.I * x) - sp.I * sp.tan(x)) == 0)
@@ -433,7 +433,7 @@ print("\n== L. Landscape placements (jets) ==")
 placements = {
     "partition excess z, fridge u, Jarzynski": ma(a, b),
     "engine eta, heat pump 1/COP, Carnot, CA, Otto": wa(-1, a, b),
-    "Tsallis S_q (q = 1/2 shown)": wa(sp.Rational(1, 2), a, b),
+    "Tsallis S_q (q_T = 1/2 shown)": wa(sp.Rational(1, 2), a, b),
     "Ising series (disagreement p)": wa(-2, a, b),
     "Fermi t = 1 - 2n, Ising parallel, Doppler": (a + b) / (1 + a * b),
     "gray plates / Stokes pile": (a + b - 2 * a * b) / (1 - a * b),
@@ -444,7 +444,7 @@ for name, Fx in placements.items():
     kk_, qq_ = jet(Fx)
     disc = kk_ ** 2 - 4 * qq_
     country = "two walls" if disc > 0 else ("border" if disc == 0 else "turning")
-    print(f"     {name:48s} (k, q) = ({kk_}, {qq_})   k^2 - 4q = {disc}  -> {country}")
+    print(f"     {name:48s} (k, d) = ({kk_}, {qq_})   k^2 - 4d = {disc}  -> {country}")
 check("landscape jets computed for every placed law", True)
 
 npass = sum(ok for _, ok in RESULTS)

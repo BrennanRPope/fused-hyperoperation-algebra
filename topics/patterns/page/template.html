@@ -65,11 +65,11 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 <h2>Verdict on each pattern, fundamental first</h2>
 <ul class="verdict">
 <li><span class="tag t-keep">Keep as the lens</span><div><b>One step, three kinds.</b> Each law is a 2×2 step. Its three countries are the three kinds of 2×2 step: two walls (it stretches toward a wall), the border (it slides), no wall (it turns). This is the classification of Möbius maps, known since the 1800s. It is the shape underneath the 1-D laws, not a new prediction.</div></li>
-<li><span class="tag t-keep">Keep as a tool</span><div><b>Lucas sequences count every law.</b> For any law and any value a, the n-fold sum is a·U(n)/(U(n) − Q·U(n−1)) with P = 2 + k·a and Q = 1 + k·a + q·a². Associativity becomes Lucas's addition rule, Cassini's identity becomes the determinant, and a wall is exactly where the determinant is zero. Known (Lucas 1878); new only as a placement of every law on one recurrence. Proved in Lean.</div></li>
-<li><span class="tag t-no">Not a force</span><div><b>The golden ratio comes from 5, twice.</b> The smallest irrational walls a whole-number law can have are the golden walls (discriminant 5, at k = ±1, q = −1): that is the resistor ladder and the Fibonacci law. And the first cycle a whole-number turn can never make is the 5-cycle, so a 5-cycle forces a golden trace: that is where Lee–Yang's 1.618 came from. Both facts are classical number theory. In the census φ appears at chance level, and every hit was put in by hand.</div></li>
+<li><span class="tag t-keep">Keep as a tool</span><div><b>Lucas sequences count every law.</b> For any law and any value a, the n-fold sum is a·U(n)/(U(n) − Q·U(n−1)) with P = 2 + k·a and Q = 1 + k·a + d·a². Associativity becomes Lucas's addition rule, Cassini's identity becomes the determinant, and a wall is exactly where the determinant is zero. Known (Lucas 1878); new only as a placement of every law on one recurrence. Proved in Lean.</div></li>
+<li><span class="tag t-no">Not a force</span><div><b>The golden ratio comes from 5, twice.</b> The smallest irrational walls a whole-number law can have are the golden walls (discriminant 5, at k = ±1, d = −1): that is the resistor ladder and the Fibonacci law. And the first cycle a whole-number turn can never make is the 5-cycle, so a 5-cycle forces a golden trace: that is where Lee–Yang's 1.618 came from. Both facts are classical number theory. In the census φ appears at chance level, and every hit was put in by hand.</div></li>
 <li><span class="tag t-keep">Explained</span><div><b>e and its family repeat above chance.</b> e, e − 1 and 1/e turn up on 5 to 6 independent pages, far above chance. That is the exponential ruler: the lens that turns the circle operation into multiplication, and rung flow. It confirms that the ruler is the shared object across pages.</div></li>
-<li><span class="tag t-no">Not one force</span><div><b>q names two different numbers.</b> The pages use q for the map's second coordinate (curvature: relativity, twisted boosts) and for the gluing/colour number q = k + 1 (elliptic, solitons, q-counting, Lee–Yang). Parallels hold within each meaning, not across them. How the two meet is the subject of the map-of-directions work, so it is left there.</div></li>
-<li><span class="tag t-next">Worth following</span><div><b>One level up: elliptic laws count with Somos sequences.</b> On the elliptic direction the n-fold sum is governed by elliptic divisibility sequences (Ward 1948), the exact twin of Lucas one level up, and they shrink back to Lucas sequences at q = 0. That would carry today's counting engine across the elliptic and soliton pages. Known math, but it is the natural next placement.</div></li>
+<li><span class="tag t-no">Not one force</span><div><b>Two different numbers once shared the letter q.</b> Before 1.0 the pages used q for the map's second coordinate (now d, the curvature: relativity, twisted boosts) and for the gluing/colour number k + 1 (elliptic, solitons, q-counting, Lee–Yang). Parallels hold within each meaning, not across them. How the two meet is the subject of the map-of-directions work, so it is left there.</div></li>
+<li><span class="tag t-next">Worth following</span><div><b>One level up: elliptic laws count with Somos sequences.</b> On the elliptic direction the n-fold sum is governed by elliptic divisibility sequences (Ward 1948), the exact twin of Lucas one level up, and they shrink back to Lucas sequences at d = 0. That would carry today's counting engine across the elliptic and soliton pages. Known math, but it is the natural next placement.</div></li>
 </ul>
 </div>
 
@@ -77,14 +77,14 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 <h2>The plane of laws, and the step that counts them</h2>
 <div class="grid2">
 <div class="card">
-<div class="fig" id="plane"><svg role="img" aria-label="The plane of laws: weight k across, second coordinate q up, the parabola q = k²/4, and every law as a dot"></svg></div>
-<p class="small mute">Across: weight k. Up: the map's second coordinate q, in a ⊕ b = (a + b + k·ab)/(1 − q·ab). Below the parabola: two walls. On it: the border. Above: turning. Gold rings are the golden walls (±1, −1). Click anywhere to load that law into the counter.</p>
+<div class="fig" id="plane"><svg role="img" aria-label="The plane of laws: weight k across, second coordinate d up, the parabola d = k²/4, and every law as a dot"></svg></div>
+<p class="small mute">Across: weight k. Up: the map's second coordinate d, in a ⊕ b = (a + b + k·ab)/(1 − d·ab). Below the parabola: two walls. On it: the border. Above: turning. Gold rings are the golden walls (±1, −1). Click anywhere to load that law into the counter.</p>
 </div>
 <div class="card">
 <h3 style="margin-top:0">Step counter</h3>
 <div class="presets" id="presets"></div>
 <label for="kk">weight k: <span id="kv"></span></label><input id="kk" type="range" min="-3" max="3" step="0.01">
-<label for="qq">second coordinate q: <span id="qv"></span></label><input id="qq" type="range" min="-3" max="3" step="0.01">
+<label for="qq">second coordinate d: <span id="qv"></span></label><input id="qq" type="range" min="-3" max="3" step="0.01">
 <label for="aa">value added each step a: <span id="av"></span></label><input id="aa" type="range" min="-2" max="2" step="0.001">
 <div class="readout" id="read"></div>
 <div class="fig short" id="steps"><svg role="img" aria-label="The n-fold sums a, a⊕a, … as dots, with the walls as orange lines"></svg></div>
@@ -165,7 +165,7 @@ function drawPlane(){const [box,s]=svgOf('plane');const W=box.clientWidth,H=box.
  g+=`<path d="${fill}" fill="${css('--turn')}" opacity=".08"/><path d="${pa}" fill="none" stroke="${ink}" stroke-width="1.5"/>`;
  g+=`<line x1="${X(-3)}" x2="${X(3)}" y1="${Y(0)}" y2="${Y(0)}" stroke="${line}"/><line y1="${Y(-3)}" y2="${Y(3)}" x1="${X(0)}" x2="${X(0)}" stroke="${line}"/>`;
  if(W>520){g+=`<text x="${X(0)+6}" y="${Y(2.7)}" fill="${css('--turn')}" font-size="13">turning (no wall)</text><text x="${X(-2.9)}" y="${Y(-2.6)}" fill="${css('--wall')}" font-size="13">two walls</text>`;}
- g+=`<text x="${W-m}" y="${H-8}" text-anchor="end" fill="${mute}" font-size="12">k</text><text x="${m-4}" y="${m-10}" fill="${mute}" font-size="12">q</text>`;
+ g+=`<text x="${W-m}" y="${H-8}" text-anchor="end" fill="${mute}" font-size="12">k</text><text x="${m-4}" y="${m-10}" fill="${mute}" font-size="12">d</text>`;
  for(const [k,q] of [[1,-1],[-1,-1]])g+=`<circle cx="${X(k)}" cy="${Y(q)}" r="10" fill="none" stroke="${css('--gold')}" stroke-width="2.5"/>`;
  for(const d of D.dots){g+=`<circle cx="${X(d.x)}" cy="${Y(d.y)}" r="4.5" fill="${ink}"><title>${esc(d.t)} (${d.x}, ${d.y})</title></circle>`;}
  const lab=W>620?D.dots.filter(d=>['The circle operation','Velocity addition','Slope addition','Euler characteristic','Parity','Addition'].includes(d.t)):[];

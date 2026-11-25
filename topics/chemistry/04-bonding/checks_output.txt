@@ -2,8 +2,8 @@ PASS |a φa + b φb|² = a² + b² + 2ab·S, the same law as M² = m1² + m2² +
 PASS S = 1 is the border (orbitals identical, lengths add); |S| < 1 is the turning country
 PASS bonding (α+β)/(1+S), antibonding (α−β)/(1−S): antibonding rises more by exactly (1+S)/(1−S) (β = 1.75 S α)  H2-like: ratio 7.09
 PASS chain of N carbons: levels x_j = 2cos(jπ/(N+1)) (in units of β), the roots of P(N+2)=xP(N+1)−P(N)  N = 1…12
-PASS Cassini invariant P(n+1)² − P(n+2)P(n) = 1 for every n: the gluing number q = 1
-PASS general recurrence P(n+2) = k P(n+1) − q P(n) has invariant q^(n+1): the landscape point (k, q)
+PASS Cassini invariant P(n+1)² − P(n+2)P(n) = 1 for every n: the gluing number d = 1
+PASS general recurrence P(n+2) = k P(n+1) − d P(n) has invariant d^(n+1): the landscape point (k, d)
 PASS |x| < 2: transfer eigenvalues on the unit circle (Bloch waves, turning); |x| > 2: real pair λ, 1/λ (decay, two walls); x = ±2: double root (border)
 PASS in the gap the state decays over 1/arccosh(|x|/2) sites, the two-walls rapidity  x=2.2: 2.25 sites, x=3.0: 1.04 sites, x=4.0: 0.76 sites
 PASS Hückel rings close their bonding shells at 4n+2 electrons; Möbius (one twist) rings at 4n  N = 3…19

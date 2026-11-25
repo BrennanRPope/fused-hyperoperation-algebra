@@ -6,9 +6,9 @@ Builds on math-theory/information-theory/ (page SBsWmduwSNADpPVbeRDq2v, InfoFuse
 
 ## Findings
 - Grafting a D-ary decision tree onto every leaf of another composes question counts by the dial with k = D − 1; leaves are the lift; the depth-n complete tree asks [n]_D questions (q = D). Counts classical; reading ours. Binary case proved on real trees in Lean.
-- Tsallis q-log is the dial's logarithm: ln_q(xy) = ln_q x ∘ₖ ln_q y, k = 1 − q; e_q is its inverse (Tsallis 1988/1994).
+- Tsallis q-log is the dial's logarithm: ln_q(xy) = ln_q x ∘ₖ ln_q y, k = 1 − q_T (Tsallis index q_T); e_q is its inverse (Tsallis 1988/1994).
 - Tsallis' pseudo-additivity = "expectation passes through the dial" applied to q-surprise; one Lean lemma covers Shannon (k = 0) and Tsallis. Correlation adds exactly k·Cov. Proof route ours.
-- Conventions: project q = k + 1 = 2 − q_Tsallis, which is Tsallis' known additive duality q ↔ 2 − q, i.e. the dial's sign flip.
+- Conventions: the q-number base k + 1 = 2 − q_T, which is Tsallis' known additive duality q ↔ 2 − q, i.e. the dial's sign flip.
 - Sharma–Mittal H_{α,β} (1975) = Rényi_α pushed through the dial's exponential, composes by k = 1 − β; Tsallis is β = α, Landsberg–Vedral β = 2 − α.
 - Any binary channel: the crossover sum a + b chains by the union rule (det multiplies); BSC and Z-channel are special cases.
 - Dropped: the q-exponential as a rung flow (half-steps match e^x − 1 through x², fail at x³: 1/8 vs 1/6).

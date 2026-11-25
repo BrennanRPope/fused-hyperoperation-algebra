@@ -104,16 +104,16 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="entropy"><div class="wrap">
 <h2>Entropy: the Tsallis index is the weight</h2>
-<p>For independent sources, power sums multiply (K5): Σ(pᵢrⱼ)^q = (Σpᵢ^q)(Σrⱼ^q). Tsallis entropy is that power sum minus 1, over k = 1 − q. So by K1 it composes as <strong>S_AB = S_A ∘ₖ S_B with k = 1 − q</strong>, Tsallis' pseudo-additivity. Applying log (K4) to 1 + k·S gives Rényi entropy, which adds. The family has three landmarks, each a law of its own:</p>
+<p>For independent sources, power sums multiply (K5): Σ(pᵢrⱼ)^q = (Σpᵢ^q)(Σrⱼ^q). Tsallis entropy is that power sum minus 1, over k = 1 − q_T. So by K1 it composes as <strong>S_AB = S_A ∘ₖ S_B with k = 1 − q_T</strong>, Tsallis' pseudo-additivity. Applying log (K4) to 1 + k·S gives Rényi entropy, which adds. The family has three landmarks, each a law of its own:</p>
 <div class="scroll"><table class="stack">
-<thead><tr><th>Tsallis q</th><th class="n">Weight k</th><th>What it counts</th><th>How it composes</th></tr></thead>
+<thead><tr><th>Tsallis q_T</th><th class="n">Weight k</th><th>What it counts</th><th>How it composes</th></tr></thead>
 <tbody>
-<tr><td>q = 0</td><td class="n">1</td><td>outcomes minus one, N − 1</td><td>NM − 1 = (N − 1) ∘₁ (M − 1): the grid minus its unit cell</td></tr>
-<tr><td>q = 1</td><td class="n">0</td><td>Shannon entropy H</td><td>H(X,Y) = H(X) + H(Y), proved from K6 for any log</td></tr>
-<tr><td>q = 2</td><td class="n">−1</td><td>Gini–Simpson 1 − Σp², the chance two draws differ</td><td>the union rule: "the pair differs" = "A differs or B differs"</td></tr>
+<tr><td>q_T = 0</td><td class="n">1</td><td>outcomes minus one, N − 1</td><td>NM − 1 = (N − 1) ∘₁ (M − 1): the grid minus its unit cell</td></tr>
+<tr><td>q_T = 1</td><td class="n">0</td><td>Shannon entropy H</td><td>H(X,Y) = H(X) + H(Y), proved from K6 for any log</td></tr>
+<tr><td>q_T = 2</td><td class="n">−1</td><td>Gini–Simpson 1 − Σp², the chance two draws differ</td><td>the union rule: "the pair differs" = "A differs or B differs"</td></tr>
 </tbody></table></div>
 <h3>Where rung 2 shows up</h3>
-<p>For N equally likely outcomes and k = 1 − q a whole number m, 1 + k·S = Nᵐ. So k·S is exactly the fused power (N − 1)^∘₁m, the climb up the circle-operation cube (K2). Composing two sources uses rung 1; turning a count into an entropy uses rung 2.</p>
+<p>For N equally likely outcomes and k = 1 − q_T a whole number m, 1 + k·S = Nᵐ. So k·S is exactly the fused power (N − 1)^∘₁m, the climb up the circle-operation cube (K2). Composing two sources uses rung 1; turning a count into an entropy uses rung 2.</p>
 <p class="mute">Known: Tsallis (1988); the Rényi–Tsallis link through log(1 + k·S); formal-group entropies (Tempesta, 2011 and 2016). The three-landmark reading is a presentation.</p>
 </div></section>
 
@@ -128,7 +128,7 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="channels"><div class="wrap">
 <h2>Channels: the alphabet ladder k = −(1 + c)</h2>
-<div class="plate"><img src="figures/f3_weight_ladder.png" alt="A number line of weights from 1 down to minus 2. At 1: Tsallis q equals 0, Campbell cost, variable node odds. At 0: Shannon, Rényi, code length, LLRs. At minus 1: independent failures, erasure channel, Gini–Simpson, Kraft slack. Between minus 1 and minus 2: minus 4/3 for four letters and minus 3/2 for three letters. At minus 2: binary symmetric channel, parity, check node."></div>
+<div class="plate"><img src="figures/f3_weight_ladder.png" alt="A number line of weights from 1 down to minus 2. At 1: Tsallis q_T equals 0, Campbell cost, variable node odds. At 0: Shannon, Rényi, code length, LLRs. At minus 1: independent failures, erasure channel, Gini–Simpson, Kraft slack. Between minus 1 and minus 2: minus 4/3 for four letters and minus 3/2 for three letters. At minus 2: binary symmetric channel, parity, check node."></div>
 <p>Send a symbol through two noisy hops in a row. It arrives right if both hops were clean, or if the first hop erred and the second erred back onto the right letter. If c is the chance a second error lands back on the right letter, the error composes as <strong>e₁ ∘ₖ e₂ with k = −(1 + c)</strong>. For a symmetric channel c = 1/(letters − 1):</p>
 <ul>
 <li><strong>Erasures, or a huge alphabet</strong> (c = 0): k = −1, the union rule, and capacity 1 − e multiplies exactly.</li>

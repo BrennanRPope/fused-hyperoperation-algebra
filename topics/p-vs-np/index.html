@@ -55,15 +55,15 @@ you're right that there's no easy counterexample to look for. A
 counterexample would be an algorithm, and the map below is mostly a list
 of whole families of algorithms and whole families of proofs that are
 already known to fail.</p>
-<figure class="dial"><svg viewBox="0 0 760 190" role="img" aria-label="The dial line: q equals minus one is parity, zero is NP, one and two are counting">
+<figure class="dial"><svg viewBox="0 0 760 190" role="img" aria-label="The dial line: k equals minus two is parity, minus one is NP, zero and one are counting">
 <line x1="40" y1="96" x2="720" y2="96" class="axis"/>
 <g class="tick"><line x1="110" y1="84" x2="110" y2="108"/><line x1="290" y1="84" x2="290" y2="108"/><line x1="470" y1="84" x2="470" y2="108"/><line x1="650" y1="84" x2="650" y2="108"/></g>
 <circle cx="110" cy="96" r="11" class="pt alt"/><circle cx="290" cy="96" r="14" class="pt hot"/><circle cx="470" cy="96" r="11" class="pt"/><circle cx="650" cy="96" r="11" class="pt"/>
 <text x="110" y="62" class="big">⊕P</text><text x="290" y="58" class="big hotT">NP</text><text x="470" y="62" class="big">#P</text><text x="650" y="62" class="big">#P</text>
-<text x="110" y="134" class="lab">q = −1, k = −2</text><text x="290" y="134" class="lab">q = 0, k = −1</text><text x="470" y="134" class="lab">q = 1, k = 0</text><text x="650" y="134" class="lab">q = 2, k = 1</text>
+<text x="110" y="134" class="lab">k = −2</text><text x="290" y="134" class="lab">k = −1</text><text x="470" y="134" class="lab">k = 0</text><text x="650" y="134" class="lab">k = 1</text>
 <text x="110" y="156" class="sm">odd or even?</text><text x="290" y="156" class="sm">is there one?</text><text x="470" y="156" class="sm">how many?</text><text x="650" y="156" class="sm">2ᵐ − 1, whole count</text>
 <text x="290" y="178" class="sm hotT">the one point that forgets</text>
-</svg><figcaption>The dial a + b + k·ab folded over a problem's yes/no witnesses gives the q-integer of the count (q = k + 1). At a p-th root of unity it gives the count mod p (ModₚP). Proved in Lean: <code>witness_fold</code>, <code>np_point</code>, <code>parityP_point</code>, <code>sharpP_point</code>, <code>modp_period</code>.</figcaption></figure>
+</svg><figcaption>The dial a + b + k·ab folded over a problem's yes/no witnesses gives the q-integer of the count, in base k + 1. At a p-th root of unity it gives the count mod p (ModₚP). Proved in Lean: <code>witness_fold</code>, <code>np_point</code>, <code>parityP_point</code>, <code>sharpP_point</code>, <code>modp_period</code>.</figcaption></figure>
 <hr />
 <h2 id="1-methods-known-not-to-prove-p--np">1. Methods known not to
 prove P ≠ NP</h2>
@@ -226,13 +226,13 @@ id="42-the-dial-over-witnesses-np-p-p-and-modₚp-at-different-settings-proved">
 The dial over witnesses: NP, #P, ⊕P and ModₚP at different settings
 (proved)</h3>
 <p>Fold the dial over a list of yes/no witnesses and you get the
-q-integer of the number of yes answers, with q = k + 1
+q-integer of the number of yes answers, in base k + 1
 (<code>witness_fold</code>):</p>
 <table class="stack">
 <thead>
 <tr class="header">
 <th>Dial</th>
-<th>q</th>
+<th>k + 1</th>
 <th>The fold gives</th>
 <th>The class</th>
 </tr>
@@ -257,7 +257,7 @@ q-integer of the number of yes answers, with q = k + 1
 <td>⊕P ("odd or even?"), <code>parityP_point</code></td>
 </tr>
 <tr class="even">
-<td>qᵖ = 1</td>
+<td>(k + 1)ᵖ = 1</td>
 <td>p-th root of unity</td>
 <td>the count mod p</td>
 <td>ModₚP, <code>modp_period</code></td>
@@ -272,7 +272,7 @@ q-integer of the number of yes answers, with q = k + 1
 </table>
 <p>The picture is correct and tidy: NP is the one point on the dial that
 throws information away (<code>np_point_forgets</code>: one witness and
-five look the same at q = 0), and almost every other point keeps the
+five look the same at k = −1), and almost every other point keeps the
 count. It fits your theme of operations that keep information, with a
 twist: keeping information makes problems harder, not easier. Toda's
 theorem says counting (#P) is at least as strong as the whole polynomial
@@ -328,7 +328,7 @@ ruler is provably the same computation, and the dial's natural home
 (arithmetized OR, counting) is covered by known barriers. Saying so
 plainly is the useful result.</li>
 <li><strong>For the project:</strong> one, the dial landscape of
-counting classes (4.2), drawn as a page: NP at q = 0, ⊕P at q = −1,
+counting classes (4.2), drawn as a page: NP at k = −1, ⊕P at k = −2,
 ModₚP at roots of unity, #P everywhere else, with the permanent's known
 jumps marked. It's a real organising picture of known math, not a new
 prediction.</li>
@@ -350,7 +350,7 @@ of the witness count</li>
 <li><code>modp_period</code>: at a p-th root of unity only the count mod
 p matters</li>
 <li><code>np_point_forgets</code>, <code>qnum_two_nonneg</code>,
-<code>qnum_two_strictMono</code>: q = 0 forgets, q = 2 keeps the
+<code>qnum_two_strictMono</code>: k = −1 forgets, k = 1 keeps the
 count</li>
 <li><code>gf2_circ_is_or</code>, <code>gf2_shift_is_not</code>,
 <code>gf2_lift_de_morgan</code>: over GF(2) circle operation is OR, the lift is

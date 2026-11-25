@@ -48,7 +48,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <section class="band">
 <div class="wrap">
 <h1>In information theory the dial's weight is what you count</h1>
-<p class="lede">The earlier information page showed that failure chances, Tsallis entropy, Kraft sums and channel cascades all compose by a + b + k·ab. This full pass asks where k comes from. Grow a decision tree with D answers per question and k = D − 1. Take a Tsallis entropy of index q and k = 1 − q. Chain any two-input channel and k = −1. The q-logarithm turns out to be the dial's own logarithm, so these are one fact read three ways.</p>
+<p class="lede">The earlier information page showed that failure chances, Tsallis entropy, Kraft sums and channel cascades all compose by a + b + k·ab. This full pass asks where k comes from. Grow a decision tree with D answers per question and k = D − 1. Take a Tsallis entropy of index q<sub>T</sub> and k = 1 − q<sub>T</sub>. Chain any two-input channel and k = −1. The q-logarithm turns out to be the dial's own logarithm, so these are one fact read three ways.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hero"></div>
@@ -62,7 +62,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div class="big" id="tot"></div>
 <p class="small" id="parts"></p>
 <div class="eq">I<sub>A∘B</sub> = I<sub>A</sub> + I<sub>B</sub> + (D − 1)·I<sub>A</sub>·I<sub>B</sub></div>
-<p class="small">Leaves are the lift: a full D-ary tree with I questions has 1 + (D − 1)·I leaves, and leaves multiply when you graft. So questions compose by the dial with k = D − 1, and a complete tree of depth n asks [n]<sub>D</sub> = 1 + D + ⋯ + D<sup>n−1</sup> questions, a q-number with q = D = k + 1.</p>
+<p class="small">Leaves are the lift: a full D-ary tree with I questions has 1 + (D − 1)·I leaves, and leaves multiply when you graft. So questions compose by the dial with k = D − 1, and a complete tree of depth n asks [n]<sub>D</sub> = 1 + D + ⋯ + D<sup>n−1</sup> questions, a q-number in base D = k + 1.</p>
 <p class="small" id="kr"></p>
 </div>
 </div>
@@ -78,7 +78,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 </div>
 <div>
 <h2>The q-logarithm is the dial's own logarithm</h2>
-<p>Tsallis' q-logarithm is ln<sub>q</sub>x = (x<sup>1−q</sup> − 1)/(1 − q). Write k = 1 − q and it is (x<sup>k</sup> − 1)/k: raise to the power k, then undo the dial's lift. So it turns products into the dial:</p>
+<p>Tsallis' q-logarithm is ln<sub>q</sub>x = (x<sup>1−q</sup> − 1)/(1 − q). Write k = 1 − q (the Tsallis index, labelled q<sub>T</sub> on the other pages) and it is (x<sup>k</sup> − 1)/k: raise to the power k, then undo the dial's lift. So it turns products into the dial:</p>
 <div class="eq">ln<sub>q</sub>(xy) = ln<sub>q</sub>x ∘<sub>k</sub> ln<sub>q</sub>y,  e<sub>q</sub>(u ∘<sub>k</sub> v) = e<sub>q</sub>(u)·e<sub>q</sub>(v)</div>
 <p>with the q-exponential e<sub>q</sub>(u) = (1 + ku)<sup>1/k</sup> as its inverse. At k = 1 it is x − 1, the count minus one. At k = −1 it is 1 − 1/x, which obeys the union rule. At k = 0 it is the ordinary log. Lean proves the law for every whole-number weight, the k = −1 case, and the inverse.</p>
 </div>
@@ -92,7 +92,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <p>Call s(p) = ln<sub>q</sub>(1/p) the q-surprise of an outcome. Tsallis entropy is its average, Σ p·s(p), and that equals (Σp<sup>q</sup> − 1)/(1 − q). For independent sources the surprise of a joint outcome is s(p) ∘<sub>k</sub> s(r), because the q-log turns the product pr into the dial.</p>
 <p>The measure and probability page of this pass proves that for independent quantities E[X ∘<sub>k</sub> Y] = E X ∘<sub>k</sub> E Y. Apply it to the surprises and Tsallis' 1988 law follows in one line: S(A×B) = S(A) ∘<sub>k</sub> S(B). Lean proves this as one lemma for any surprise that turns products into ∘<sub>k</sub>; at k = 0 it is the earlier page's outer-log lemma for Shannon. For correlated sources the miss is exactly k·Cov of the two surprises.</p>
 <h2>Two q's, honestly</h2>
-<p>The project reads the dial as q-numbers with q = k + 1. Tsallis writes k = 1 − q. So the project's q is 2 − q<sub>Tsallis</sub>. That is not a clash to hide: q ↔ 2 − q is Tsallis statistics' own known "additive duality", ln<sub>2−q</sub>(x) = −ln<sub>q</sub>(1/x), and on the dial it is the sign flip k → −k. Lean proves the dual log composes with weight −k. Read a Tsallis index through the project's eyes by flipping it around 1.</p>
+<p>Before 1.0 the project read the dial as q-numbers in base k + 1, while Tsallis writes k = 1 − q<sub>T</sub>. So the base is 2 − q<sub>T</sub>. That is not a clash to hide: q ↔ 2 − q is Tsallis statistics' own known "additive duality", ln<sub>2−q</sub>(x) = −ln<sub>q</sub>(1/x), and on the dial it is the sign flip k → −k. Lean proves the dual log composes with weight −k. Read a Tsallis index through the project's eyes by flipping it around 1; the pages now state the dial in k and label the Tsallis index q<sub>T</sub>.</p>
 </div>
 <div class="panel"><div class="fig2" id="plane" style="min-height:380px"></div>
 <p class="small">The Sharma–Mittal plane: order α across, dial weight k = 1 − β up. Each horizontal row composes by one dial. Teal: Rényi, k = 0, adds. Amber: Tsallis, k = 1 − α. Dashed: Landsberg–Vedral, k = α − 1, its flip.</p></div>
@@ -137,7 +137,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div>
 <h2>Lead worth following?</h2>
 <p><b>No new lead on its own merits.</b> Every law here is known, and the full pass mostly confirms that the earlier page's picture was complete: wherever information composes, it composes by a dial, and the weight is fixed by what is being counted.</p>
-<p>What the pass adds is a cleaner account of where each weight comes from. The number of answers per question gives k = D − 1, which is exactly the project's q = k + 1 as an alphabet size. The Tsallis index gives k = 1 − q, which is the same q flipped by a known duality. And the general Tsallis law is no longer a separate fact: it is the measure page's "expectation passes through the dial", applied to surprise. That makes information theory a derived branch of the measure picture, which is the order these two pages follow.</p>
+<p>What the pass adds is a cleaner account of where each weight comes from. The number of answers per question gives k = D − 1, so D = k + 1 is the alphabet size. The Tsallis index gives k = 1 − q<sub>T</sub>, which is D flipped around 1 by a known duality. And the general Tsallis law is no longer a separate fact: it is the measure page's "expectation passes through the dial", applied to surprise. That makes information theory a derived branch of the measure picture, which is the order these two pages follow.</p>
 <p>It predicts nothing new, so I would not spend more time here unless a bent landscape law turns out to describe some real coding cost, the way Campbell's exponential cost matches the dial.</p>
 </div>
 </div>

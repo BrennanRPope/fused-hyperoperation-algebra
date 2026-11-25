@@ -43,7 +43,7 @@ t, x, y, z, r, th, ph = sp.symbols('t x y z r theta phi', real=True)
 lam = sp.symbols('lambda', real=True)
 # ===========================================================================================
 section("S1. The circle operation's own rule in one direction: velocity composition in the Clifford plane Cl(1,1)")
-# Cl with e0^2 = -1 (time, dial q < 0) and e1^2 = +1; sigma = e1 e0 squares to +1 (a boost generator).
+# Cl with e0^2 = -1 (time, dial d < 0) and e1^2 = +1; sigma = e1 e0 squares to +1 (a boost generator).
 G2 = GA([-1, 1])
 sig = G2.e(1, 0)
 check("sigma = e1 e0 squares to +1 (a boost: hyperbolic, not a rotation)", G2.equal(G2.mul(sig, sig), G2.scalar(1)))
@@ -73,7 +73,7 @@ check("[e1e2, e2e3] = +2 k2 e1e3 (any two planes sharing a direction close on th
       G4.equal(G4.comm(B12, G4.e(2, 3)), G4.scale(2 * k2, G4.e(1, 3))))
 check("k0 = 0 (Galilean dial): the boosts commute, no twist", G4.equal(G4.comm(B01, B02).copy() if False else
       GA([0, k1, k2, k3]).comm(GA([0, k1, k2, k3]).e(0, 1), GA([0, k1, k2, k3]).e(0, 2)), {}))
-RES["S2"] = "The twisted-boost law [K_x,K_y] = -q J is the Clifford commutator [e0e1,e0e2] = -2 k0 e1e2: q is the square of the shared direction."
+RES["S2"] = "The twisted-boost law [K_x,K_y] = -d J is the Clifford commutator [e0e1,e0e2] = -2 k0 e1e2: d is the square of the shared direction."
 
 # ===========================================================================================
 section("S3. The circle operation's own rules give one constant curvature: velocity space and its twist (Thomas-Wigner = area x curvature)")
@@ -104,12 +104,12 @@ check("Thomas-Wigner rotation angle = angle defect (= area x curvature, Gauss-Bo
 RES["S3"] = "Velocity space is a hyperbolic space of one fixed curvature (set by the dial); the twist of a velocity loop is its area times that curvature."
 
 # ===========================================================================================
-section("S4. A dial that varies from place to place, in 2 dimensions: any curvature q(x, y) is reachable")
+section("S4. A dial that varies from place to place, in 2 dimensions: any curvature d(x, y) is reachable")
 u = sp.Function('u')(x, y)
 g2 = sp.diag(sp.exp(2 * u), sp.exp(2 * u))
 Gm, gi = christoffel(g2, [x, y]); Rm = riemann(Gm, [x, y])
 K = sp.simplify(Rm[0][1][0][1] / g2[1, 1])
-check("conformal metric e^{2u}(dx^2 + dy^2) has curvature q = -e^{-2u} (u_xx + u_yy) (Liouville)",
+check("conformal metric e^{2u}(dx^2 + dy^2) has curvature d = -e^{-2u} (u_xx + u_yy) (Liouville)",
       zero(K + sp.exp(-2 * u) * (sp.diff(u, x, 2) + sp.diff(u, y, 2))))
 # Holonomy: transport a vector around a small square; rotation angle / area = local curvature, which varies.
 def holonomy2d(ufun, x0, y0, h, n=4000):
@@ -144,17 +144,17 @@ for (x0, y0) in [(0.0, 0.0), (1.0, 0.5), (-0.7, 1.2)]:
     vals.append((Kfun(x0 + h / 2, y0 + h / 2), est))
 rel = max(abs(a - b) / abs(a) for a, b in vals)
 check("twist of a small loop / its area = the local curvature, at three places with three different curvatures",
-      rel < 0.02, "; ".join(f"q={a:.4f} vs {b:.4f}" for a, b in vals))
-RES["S4"] = "In 2D a dial that varies by place is the whole story: q(x,y) = Gaussian curvature, twist = q x area, any q realized locally."
+      rel < 0.02, "; ".join(f"d={a:.4f} vs {b:.4f}" for a, b in vals))
+RES["S4"] = "In 2D a dial that varies by place is the whole story: d(x,y) = Gaussian curvature, twist = d x area, any d realized locally."
 
 # ===========================================================================================
 section("S5. In 3 or more dimensions a place-only dial is forced to be constant (Schur's theorem)")
 n_ = sp.symbols('n', positive=True)
-# isotropic curvature R_abcd = q (g_ac g_bd - g_ad g_bc): Ric = (n-1) q g, R = n(n-1) q, G = -(n-1)(n-2)/2 q g
+# isotropic curvature R_abcd = d (g_ac g_bd - g_ad g_bc): Ric = (n-1) d g, R = n(n-1) d, G = -(n-1)(n-2)/2 d g
 Gcoef = (n_ - 1) - sp.Rational(1, 2) * n_ * (n_ - 1)
-check("isotropic curvature gives G_ab = -(n-1)(n-2)/2 q g_ab, so the Bianchi identity forces (n-1)(n-2)/2 dq = 0",
+check("isotropic curvature gives G_ab = -(n-1)(n-2)/2 d g_ab, so the Bianchi identity forces (n-1)(n-2)/2 ∇d = 0",
       zero(Gcoef + (n_ - 1) * (n_ - 2) / 2))
-check("n = 2: the factor is 0, so q is free; n = 3, 4: the factor is 1 and 3, so q must be constant",
+check("n = 2: the factor is 0, so d is free; n = 3, 4: the factor is 1 and 3, so d must be constant",
       [((n_ - 1) * (n_ - 2) / 2).subs(n_, k) for k in (2, 3, 4)] == [0, 1, 3])
 # Explicit: 3D metric e^{2w(x)} (dx^2+dy^2+dz^2); sectional curvatures of the three coordinate planes
 w = sp.Function('w')(x)

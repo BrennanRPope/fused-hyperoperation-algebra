@@ -8,12 +8,12 @@ out = []
 def say(*a):
     s = ' '.join(str(x) for x in a); print(s); out.append(s)
 
-# (a) landscape coordinates of rung s: k = s, q = s(s-1)/4 ; check q from the third coefficient
+# (a) landscape coordinates of rung s: k = s, d = s(s-1)/4 ; check d from the third coefficient
 say('(a) Rung s on the landscape')
 for s in [-1, -0.5, 0, 0.25, 0.5, 1, 1.5, 2, 2.5]:
     c = coeffs_at(s)
     q = -s * s / 2 + 3 * c[3]
-    say(f'  s = {s:5}: corner k = {2*c[2]:.6f}, bend q = {q:.6f}, s(s-1)/4 = {s*(s-1)/4:.6f}, shape k^2/(k^2-4q) = '
+    say(f'  s = {s:5}: corner k = {2*c[2]:.6f}, bend d = {q:.6f}, s(s-1)/4 = {s*(s-1)/4:.6f}, shape k^2/(k^2-4d) = '
         + (f'{(2*c[2])**2/((2*c[2])**2-4*q):.6f}' if abs((2*c[2])**2-4*q) > 1e-12 else 'border'))
 say('  The rung curve is the parabola (s, s(s-1)/4); its shape number is s itself, so it moves at')
 say('  constant speed in the unit-free coordinate and crosses the border once, at s = 0, linearly.')

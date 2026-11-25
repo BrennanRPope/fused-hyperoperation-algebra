@@ -1,28 +1,28 @@
 
 == A. The geometric product: the landscape law is the even Clifford algebra of its own rate form
-[PASS] Clifford algebra of x^2 + pxy + qy^2 (u^2 = 1, v^2 = q, uv + vu = p) is associative (general elements)
-[PASS] vector square = the form: (x u + y v)^2 = x^2 + p x y + q y^2 (scalar)
-[PASS] theta = uv (a product of two vectors, a bivector) obeys theta^2 = p theta - q: the theta-lift of groups-lie
-[PASS] (1 + a theta)(1 + b theta) = (1 - q a b)(1 + F_{p,q}(a,b) theta): the landscape law is the geometric product of two lifts
-[PASS] circle-operation point (p,q) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent
+[PASS] Clifford algebra of x^2 + pxy + dy^2 (u^2 = 1, v^2 = d, uv + vu = p) is associative (general elements)
+[PASS] vector square = the form: (x u + y v)^2 = x^2 + p x y + d y^2 (scalar)
+[PASS] theta = uv (a product of two vectors, a bivector) obeys theta^2 = p theta - d: the theta-lift of groups-lie
+[PASS] (1 + a theta)(1 + b theta) = (1 - d a b)(1 + F_{p,d}(a,b) theta): the landscape law is the geometric product of two lifts
+[PASS] circle-operation point (p,d) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent
 [PASS] the circle operation's rate form is x^2 + xy = x(x + y): two light lines, so circle-operation lifts are hyperbolic rotors (boosts)
 
 == B. The three 2D Clifford algebras are the landscape's three countries
-[PASS] theta' = theta - p/2 squares to the scalar p^2/4 - q (a quarter of the discriminant)
+[PASS] theta' = theta - p/2 squares to the scalar p^2/4 - d (a quarter of the discriminant)
 [PASS] circle (complex numbers, Cl(0,1)): (1 + a e)(1 + b e) ratio gives F_(0, 1) = tan addition
 [PASS] line (split-complex numbers, Cl(1,0)): (1 + a e)(1 + b e) ratio gives F_(0, -1) = velocity addition
 [PASS] border (dual numbers, Cl(0,0,1)): (1 + a e)(1 + b e) ratio gives F_(0, 0) = plain addition
 [PASS] the circle operation sits in the split-complex numbers: theta = (1 + e)/2 with e^2 = +1 is idempotent
 [PASS] the wall a = -1: 1 - theta times theta = 0, so the wall is where the lift hits a zero divisor (the light cone of Cl(1,0))
 [PASS] conjugation theta -> p - theta is multiplicative on the even part
-[PASS] lift times its conjugate = the rate V(a) = 1 + pa + qa^2 (for the circle operation: 1 + a, the plain lift)
+[PASS] lift times its conjugate = the rate V(a) = 1 + pa + da^2 (for the circle operation: 1 + a, the plain lift)
 [PASS] Clifford conjugation read in the chart is the landscape inverse -a/(1+pa) (the circle operation: the inverse -a/(1+a))
 
-== C. Making k a multivector: with scalar arguments, trace and norm of K are the landscape (p, q)
+== C. Making k a multivector: with scalar arguments, trace and norm of K are the landscape (p, d)
 [PASS] every K = k0 + k1 e satisfies K^2 = tr(K) K - N(K) with tr = 2 k0, N = k0^2 - kappa k1^2
 [PASS] (1 + aK)(1 + bK) = (1 - N ab) + (a + b + tr ab) K: the circle operation with dial K reads as F_{tr K, N K}
-[PASS] chart-free curvature: q - p^2/4 = -kappa k1^2, minus the square of K's non-scalar part
-[PASS] the circle operation's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,q) = (k, 0)
+[PASS] chart-free curvature: d - p^2/4 = -kappa k1^2, minus the square of K's non-scalar part
+[PASS] the circle operation's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,d) = (k, 0)
 [PASS] so the dial k is a light-cone multivector, and the curvature of the circle operation is -k^2/4 (hyperbolic), matching relativity
 [PASS] Cl(3,0), K = s + vector: K^2 = 2s K - (s^2 - |v|^2): a line-country law (vectors square positive)
 [PASS] Cl(3,0), K = s + bivector (a quaternion): K^2 = 2s K - (s^2 + |B|^2): a circle-country law (rotations)
@@ -55,15 +55,15 @@
 [PASS] R and -R turn every vector the same way and have the same chart t: the chart lives on rotations, the lift keeps the spinor sign
 [PASS] boost bivector in Cl(1,1) squares to +1; the boost rotor chart tanh(rapidity/2) composes by F_{0,-1}
 
-== G. Hamilton's quaternions and Grassmann's wedge inside the q = +1 dial boost
-[PASS] q = +1 dial boost [[1, u], [-ū, 1]] is the quaternion 1 + u j (SU(2) form); products stay quaternions, diagonal = X ± iY
+== G. Hamilton's quaternions and Grassmann's wedge inside the d = +1 dial boost
+[PASS] d = +1 dial boost [[1, u], [-ū, 1]] is the quaternion 1 + u j (SU(2) form); products stay quaternions, diagonal = X ± iY
 [PASS] so the corner X + iY = (1 - u·v) + i(u×v): Hamilton's scalar part carries the dot, the i part Grassmann's wedge u∧v  (identity proved symbolically on the twisted-boosts page (corner_split in TwistedBoosts.lean))
 
 == H. Clifford's biquaternions (1873): q + ω r with ω^2 = +1, 0, -1, the curvature sign
 [PASS] elliptic space, ω^2 = +1: the idempotents (1±ω)/2 split a biquaternion into (left, right) unit quaternions that multiply separately; x -> l x r̄ moves S^3 rigidly
 [PASS] Euclidean space, ω^2 = 0 (dual quaternions): products compose rigid motions exactly (rotation + translation)
 [PASS] hyperbolic space, ω^2 = -1 (Hamilton's complex biquaternions = SL(2,C)): unit ones keep t^2 - |x|^2, the Lorentz/hyperbolic motions
-[PASS] Clifford's coefficient ring R[ω], ω^2 = κ, is our theta-lift at (p,q) = (0, -κ): ratio law (a+b)/(1 + κab)
+[PASS] Clifford's coefficient ring R[ω], ω^2 = κ, is our theta-lift at (p,d) = (0, -κ): ratio law (a+b)/(1 + κab)
 [PASS] and the circle operation's theta is exactly Clifford's elliptic projector (1 + ω)/2 (idempotent): the circle operation is the left half of an elliptic motion
 
 == I. Dual numbers as jets: the circle operation with ε^2 = 0 is the circle operation plus its derivative
@@ -71,9 +71,9 @@
 
 == J. Clifford parallels, the Hopf fibration, and the twist
 [PASS] left multiplication by e^{i α} moves every point of S^3 by exactly α: a Clifford translation (all orbits parallel)
-[PASS] phase of the corner X + iY (q = +1) = half the solid angle of the velocity triangle: the Hopf holonomy of a Clifford-parallel lift  (max error 4.4e-16 over 300 triangles)
+[PASS] phase of the corner X + iY (d = +1) = half the solid angle of the velocity triangle: the Hopf holonomy of a Clifford-parallel lift  (max error 4.4e-16 over 300 triangles)
 [PASS] direct check: the horizontal Hopf lift around a geodesic triangle returns with phase ± half its solid angle  (holonomy -0.32427, half solid angle -0.32427)
-[PASS] the circle |t| = 1/sqrt|q|: at q = -1 it is the light wall (1 - |t|^2 = 0); at q = +1 its Hopf preimage |z1| = |z2| is the flat Clifford torus
+[PASS] the circle |t| = 1/sqrt|d|: at d = -1 it is the light wall (1 - |t|^2 = 0); at d = +1 its Hopf preimage |z1| = |z2| is the flat Clifford torus
 
 == K. Clifford–Klein forms and elliptic space as the chart's quotient
 [PASS] the chart identifies R and -R; for unit quaternions that is S^3/{±1} = SO(3) = RP^3, Clifford's elliptic space  (follows from F (chart forgets sign) and the standard double cover)
@@ -81,6 +81,6 @@
 
 == L. Clifford's chain of circles (1871): holds in every complex chart of the landscape by Möbius invariance
 [PASS] 4 lines: the four triangle circumcircles meet in one point (Miquel/Clifford, first step of the chain)
-[PASS] a landscape translation z -> F_{p,q}(z, c) (complex) carries the four circles to circles still meeting at the image Miquel point
+[PASS] a landscape translation z -> F_{p,d}(z, c) (complex) carries the four circles to circles still meeting at the image Miquel point
 
 60 pass, 0 fail

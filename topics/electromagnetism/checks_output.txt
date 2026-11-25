@@ -1,10 +1,10 @@
 
 == A. Electromagnetism sets the dial
 [PASS] A1. c^2 eps0 mu0 = 1 (CODATA 2018): the speed in Maxwell's waves is 1/sqrt(eps0 mu0)  (c^2 eps0 mu0 = 1.000000000000)
-[PASS] A1b. so the dial of velocity addition is q = -1/c^2 = -eps0 mu0  (q = -1.112650e-17 s^2/m^2)
-[PASS] A2. the cross term d_X d_T vanishes only for q = -1/c^2 (Galilean q = 0 leaves it)  (q = [-1/c**2]; cross term at q=0: -2*g**2*v)
-[PASS] A2b. at q = -1/c^2 the operator keeps its form exactly (same wave speed c in the new frame)  (coefficient ratio TT/XX = -1/c**2)
-[PASS] A3. composing two dial boosts gives the landscape law (u+v)/(1 - q u v); q = -1 is Einstein's
+[PASS] A1b. so the dial of velocity addition is d = -1/c^2 = -eps0 mu0  (d = -1.112650e-17 s^2/m^2)
+[PASS] A2. the cross term ∂_X ∂_T vanishes only for d = -1/c^2 (Galilean d = 0 leaves it)  (d = [-1/c**2]; cross term at d=0: -2*g**2*v)
+[PASS] A2b. at d = -1/c^2 the operator keeps its form exactly (same wave speed c in the new frame)  (coefficient ratio TT/XX = -1/c**2)
+[PASS] A3. composing two dial boosts gives the landscape law (u+v)/(1 - d u v); d = -1 is Einstein's
 [PASS] A3b. Doppler-squared minus one composes by the circle operation: d(u (+) v) = d(u) * d(v)
 
 == B. The fields ride the boosts: E and B on the light cone
@@ -27,8 +27,8 @@
 [PASS] C1b. in general a * conj(a) = |1 + a|^2 - 1, so 'phase' means exactly 'a * conj(a) = 0'
 [PASS] C2. phases compose by the circle operation: (e^{i t1} - 1) * (e^{i t2} - 1) = e^{i(t1+t2)} - 1 (a renaming of multiplication)
 [PASS] C2b. the wall a = -1 fails the phase rule: (-1) * conj(-1) = -1, not 0, so U(1) never reaches the wall
-[PASS] C3. in the half-angle chart t = tan(theta/2) phases compose by the landscape law at q = +1: (t1+t2)/(1 - t1 t2)
-[PASS] C3b. boosts in the half-rapidity chart s = tanh(phi/2) compose at the mirror dial q = -1: (s1+s2)/(1 + s1 s2)
+[PASS] C3. in the half-angle chart t = tan(theta/2) phases compose by the landscape law at d = +1: (t1+t2)/(1 - t1 t2)
+[PASS] C3b. boosts in the half-rapidity chart s = tanh(phi/2) compose at the mirror dial d = -1: (s1+s2)/(1 + s1 s2)
 [PASS] C4. a Lorentz boost as a split-complex number a = (cosh phi - 1) + j sinh phi also has a * abar = 0 (j^2 = +1): the same rule, mirror sign
 [PASS] C4b. the phase version with i^2 = -1: 2 a0 + a0^2 + a1^2 = 0 for a0 = cos - 1, a1 = sin
 [PASS] C5. gauge invariance: A -> A + grad chi, phi -> phi - d_t chi leaves E and B unchanged
