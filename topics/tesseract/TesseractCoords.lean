@@ -2,13 +2,13 @@
   Tesseract coordinates for Fused Mult-Add Algebra
   ================================================
 
-  STATUS: recompile against mathlib pending. A first compile on Brennan's
-  Mac Studio (Nov 25, 2026) failed only because `⊞`, the mult-add symbol used
-  here before, is mathlib's global notation for biproducts. Mult-add is now
-  written `✳`, which mathlib does not use. To check it, put it in a Lean
-  project that depends on mathlib and run `lake env lean TesseractCoords.lean`.
-  Any error means a proof needs fixing; it does not mean the math is wrong
-  (the Python tests check the same facts by computation).
+  STATUS: checked. Compiled against mathlib v4.37.0-rc1 on Lean 4.37.0-rc1
+  on Brennan's Mac Studio (Nov 25, 2026) with zero errors and no `sorry`.
+  An earlier compile failed only because `⊞`, the mult-add symbol used here
+  before, is mathlib's global notation for biproducts; mult-add is now
+  written `✳`, which mathlib does not use. To recheck, put the file in a
+  Lean project that depends on mathlib and run `lake env lean
+  TesseractCoords.lean`.
 
   Notation: Lean already uses `⊕` for sum types and mathlib uses `⊞` for
   biproducts, so mult-add is written `✳` here, a plus and a times sign laid
