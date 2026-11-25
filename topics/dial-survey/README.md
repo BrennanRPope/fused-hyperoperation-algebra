@@ -17,14 +17,14 @@ Page: https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr (source index.html)
 5. On primes: Z_k(s) = prod_p (1 - k p^-s)^(-1/k) = prod_N zeta(Ns)^(M(k,N)/k), M = aperiodic necklaces (cyclotomic
    identity). k=-1 fermionic primon gas zeta(s)/zeta(2s), k=1 bosonic zeta(s). Densities C_k = prod (1-1/p)(1-k/p)^(-1/k):
    C_-1 = 6/pi^2, C_0 = e^(M - gamma) = 0.7293, C_1 = 1. For k > 2 the critical point moves from s=1 to s=log2 k.
-   Only k = +-1 use finitely many zeta factors; others expected to hit a wall at Re s = 0 (like prime zeta, Landau-Walfisz), not proved.
+   Only k = +-1 use finitely many zeta factors; every other real k has a wall at Re s = 0. Follow-up (wall/README.md): this is a special case of Dahlquist 1952, not new.
 
 ## Verdicts
 - k alone: not a lead. Twist: geometric anchor, no new prediction (the fusion inside it is an identity of GR).
 - Per-element: lead only paired with k. Primes: same dial as per-element, test bed.
 - Choice: not a dial; the fractional power set in ZF stays the open lead.
-- k on elements / primes: small lead, one more step: prove the Re s = 0 wall for k != +-1, and check whether the
-  k = -1/m points line up with the Lee-Yang special values.
+- k on elements / primes: followed up (wall/). The wall at Re s = 0 for k != +-1 is known (Dahlquist 1952), and the
+  k = -1/m points meet the Lee-Yang values only at k = -1 (0 is a limit). Both leads close; nothing for the catalog.
 
 Sources: Julia 1990; Spector 1990; Metropolis-Rota 1983; Landau-Walfisz 1920; Shirai-Takahashi 2003; Tsallis 1988;
 Thomas 1926; Wigner 1939; Tarski 1924; Howard-Rubin 1998.

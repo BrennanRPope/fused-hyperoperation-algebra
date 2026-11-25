@@ -1,0 +1,17 @@
+PASS k=+1: M(1,N) = 0 for 2 <= N <= 40
+PASS k=-1: M(-1,N) = 0 for 3 <= N <= 40
+PASS prime N: M(k,N) = (k^N - k)/N, nonzero for k not in {0,+-1} (k samples, N prime < 100)
+PASS k=-1/m: N*m^N*M(-1/m,N) is an integer = (-1)^N mod m (m=2..7, N<=24)
+PASS sum of m_N M(k,N) over a finite S has degree max S, leading coefficient m/N (300 random S)
+PASS example: k=-1/2 is a root of 3M(k,1)+4M(k,2) (rational k are not covered by the generic argument)
+PASS simple zeros do not rescue rational k: S={1,2,3} cancels at k=-1/2 (M1+M2+M3 vanishes there), so k=-1/m still needs RH  [[((1, 2, 3), 2)]]
+PASS first 400 zeros computed on Re = 1/2
+PASS distance from i*y to nearest rho/N shrinks as N grows (y = 0.5, 1, 2, 5; N = 11, 23, 47, 97)  [{"0.5": [0.7863, 0.1166, 0.0339, 0.0073], "1.0": [0.2886, 0.0887, 0.0239, 0.0127], "2.0": [0.0999, 0.0899, 0.0175, 0.0108], "5.0": [0.1391, 0.0367, 0.0298, 0.0076]}]
+PASS on the critical line, rho/N has real part 1/(2N); another N' gives real part N'/(2N) != 1/2: so under RH each point has one contributor
+PASS k=1/2 at s0 = rho_1/2: exponent C = -1/4 (not an integer: branch point)
+PASS winding of zeta(2s) around rho_1/2 is 1, so Z_{1/2} turns by e^(2 pi i C) = e^(-i pi/2): a true branch point  [winding 1.000000]
+PASS k = -1/m meets a Beraha value only at m = 1 (n = 2); k = 0 (n = 3) is their limit  [[(2, 1)]]
+PASS k = 2/m meets a Beraha value only at m = 1 (k=2, n=6) and m = 2 (k=1, n=4)  [[(4, 2), (6, 1)]]
+PASS no Beraha value lies strictly between -1 and 0 (n >= 3 gives k >= 0)
+
+15 of 15 pass
