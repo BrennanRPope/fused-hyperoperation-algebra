@@ -1,0 +1,25 @@
+original	status	new_name	note
+P2	ported	MultAdd.Toric.P2.Plane	renamed: MultAdd.Toric.P2.P2 trips mathlib's duplicated-namespace linter
+Cone	ported	MultAdd.Toric.P2.Cone	
+chart	ported	MultAdd.Toric.P2.chart	
+inv_inv'	mathlib	inv_inv	
+inv_ne	mathlib	inv_ne_zero	
+chart_injective	ported	MultAdd.Toric.P2.chart_injective	restated as Function.Injective (chart c)
+chart_cover	ported	MultAdd.Toric.P2.chart_cover	
+InChart	ported	MultAdd.Toric.P2.InChart	
+trans	ported	MultAdd.Toric.P2.trans	
+Dom	ported	MultAdd.Toric.P2.Dom	
+chart_trans	ported	MultAdd.Toric.P2.chart_trans	
+inChart_iff	ported	MultAdd.Toric.P2.inChart_iff	
+trans_cocycle	ported	MultAdd.Toric.P2.trans_cocycle	
+origin_in_one_chart	ported	MultAdd.Toric.P2.origin_in_one_chart	
+torus_in_all	ported	MultAdd.Toric.P2.torus_in_all	
+trans01_multAdd	ported	MultAdd.Toric.P2.trans01_multAdd	
+trans02_multAdd	ported	MultAdd.Toric.P2.trans02_multAdd	
+inv_pow'	mathlib	inv_pow	
+pow_succ_eq_zero	mathlib	pow_eq_zero_iff	with n.succ_ne_zero
+pw	mathlib	Prod.pow_mk	pw n v is the pointwise power v ^ n in the monoid K × K
+wind	ported	MultAdd.Toric.P2.wind	
+trans_wind	ported	MultAdd.Toric.P2.trans_wind	stated with v ^ n
+chart_wind	ported	MultAdd.Toric.P2.chart_wind	stated with v ^ n and hypothesis n ≠ 0 in place of the exponent n + 1
+fan_count	ported	MultAdd.Toric.P2.fan_count	any commutative semiring (original over ℕ)
