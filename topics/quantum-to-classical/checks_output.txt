@@ -1,0 +1,55 @@
+
+== A. Along one path: composing phases by o_k is phase addition ==
+PASS A1 chaining 12 segment phases by o_k at k=i/hbar = exp(i*sum(S)/hbar)  | err=1.2e-15
+PASS A1b a = E(k s)/k turns o_k into + on actions (s1 o s2 -> s1 + s2)
+PASS A2 phases in the chart t=2tan(theta/2) compose by the tan law (a+b)/(1-ab/4)
+PASS A2b that chart is o_k at k=i after the slide x/(1+(k/2)x) (Cayley); slid values are real
+PASS A3 real k (any sign) is the line class, discriminant k^2>0; the tan/circle class needs k^2<0
+
+== B. Summing over paths: stationary phase picks Newton's path (quartic, non-Gaussian) ==
+   Newton paths from -0.6 to 0.9 in T=0.8: initial momenta [-11.2389   1.8319   9.6911]; using p0=1.831938, midpoint 0.172122
+   hbar=0.08: stationary point 0.17216 (Newton 0.17212); curvature*hbar=4.5785; window +-3sqrt(hbar) gives 1.028 of the amplitude
+   hbar=0.04: stationary point 0.17213 (Newton 0.17212); curvature*hbar=4.5797; window +-3sqrt(hbar) gives 1.064 of the amplitude
+   hbar=0.02: stationary point 0.17212 (Newton 0.17212); curvature*hbar=4.5799; window +-3sqrt(hbar) gives 1.084 of the amplitude
+   hbar=0.01: stationary point 0.17212 (Newton 0.17212); curvature*hbar=4.5800; window +-3sqrt(hbar) gives 1.092 of the amplitude
+PASS B1 the phase of the summed contributions is stationary at Newton's midpoint (all four hbar)  | max offset 4.0e-05, grid 6.1e-04
+PASS B2 phase curvature grows like 1/hbar (curvature*hbar constant to 3%), so the useful window shrinks like sqrt(hbar)  | curv*hbar = [4.5785 4.5797 4.5799 4.58  ]
+PASS B3 a window of +-3 sqrt(hbar) around Newton's midpoint gives the whole amplitude to within 10% at every hbar  | [1.028 1.064 1.084 1.092]
+PASS B5 cancelling: at hbar=0.01 the strips either side carry contributions ~90% as big as at Newton's point, yet each nets <5% of the amplitude; the middle strip nets ~100%  | {'-1.0..-0.3': (0.034, 0.904), '-0.3..0.65': (1.01, 1.0), '0.65..1.5': (0.034, 0.884)}
+PASS B4 Ehrenfest: packet centre minus Newton's x(t) over t<=2 shrinks like hbar^1 (slope 0.9-1.1)  | max gaps [0.01666 0.0083  0.00414 0.00207], slope 1.003
+
+== C. The dial: classical is |k| -> infinity; k -> 0 is the opposite end (counting) ==
+PASS C1 k=0: every path weighs 1, the path sum just counts paths (6)
+PASS C2 k -> -infinity (real): (1/k) log Z -> min action (least action); gap <= log(6)/|k|  | gaps [1.04366 0.00322 0.      0.     ]
+PASS C3 k -> +infinity: -> max (Viterbi / most-likely path after a sign flip)
+PASS C4 velocities compose by (v1+v2)/(1+v1v2/c^2) (rapidities add); c->inf (dial->0) gives Galilean v1+v2
+PASS C5 window width sqrt(hbar/curv) grows without bound as hbar->inf (k->0): no cancelling, no classical path  | widths [0.047 0.467 4.673]
+
+== D. Path sums as semirings: which aggregations are genuine, and is o_k a dial between them ==
+PASS D1 for every k tried (real and complex) (oplus = a+b+1/k, otimes = o_k) is a commutative semiring; zero is the wall -1/k, one is 0  | {'-2': True, '-1': True, '-0.3': True, '0.7': True, '1': True, '1j': True, '2j': True, '(1+1j)': True}
+PASS D2 the lift 1+k a carries oplus_k to + and o_k to x (so every finite k is (C,+,x) re-charted)
+PASS D3 the union rule o_{-1} as oplus with x as otimes fails distributivity off {0,1} (error = |k|a(1-a)bc), but on {0,1} it is OR/AND, the Boolean semiring  | {-1: 0.032399999999999984, -0.5: 0.016200000000000048, 0.5: 0.016199999999999992, 1: 0.032399999999999984}
+PASS D4 counting, min-plus, max-plus, Viterbi, bottleneck, Boolean and the log semiring all pass every semiring axiom  | {}
+PASS D5 soft-max with soft-min (one dial toward bottleneck) is not distributive at finite softness t; the gap only closes as t -> infinity  | errors [0.356262 0.053466 0.000587 0.      ]
+PASS D6 pulled back to actions by a = E(ks)/k, oplus_k is log-sum-exp at temperature 1/|k| (Maslov's family); k->-inf gives min
+PASS D7 one provenance polynomial, many aggregates: count=4, shortest=2.5, widest=4
+PASS D8 on one graph the dial slides from counting (|k| small: Z~4) to shortest path (|k| large: 2.5)
+
+== E. Zooming out: the height flow is a critical branching population ==
+PASS E1 E^n(-1) = -(survival to generation n) of a critical Poisson(1) Galton-Watson tree, n=1..2000
+PASS E2 Kolmogorov: survival * n -> 2/sigma^2 = 2 (sigma^2=1): the height flow's 'fades like 2/height'  | n*P(survive) at n=2000: 1.9957
+PASS E3 simulation of 40,000 family trees matches -E^n(-1) for n=1..30 within 3 sigma
+PASS E4 E twice counts groupings of a set (Bell numbers 1,2,5,15,52,203,877): 'a set of sets' as an aggregate
+PASS E5 series bonds: t_eff = tanh K1 * tanh K2 (the lift's multiplication)
+PASS E6 parallel bonds: t = (t1+t2)/(1+t1 t2), relativistic velocity addition, exactly
+PASS E7 series-over-parallel does not distribute (different networks): series/parallel bonds are not a semiring  | gap 0.0455
+PASS E8 1-D Ising RG: u=-ln tanh K doubles per 2x zoom (u' = 2u): linear, not marginal like E
+PASS E9 the half-height flow E^(1/2) has coefficients of both signs (1/4, 1/48, 0, 1/3840, -7/92160, ...)  | [1/4, 1/48, 0, 1/3840, -7/92160, 1/645120]
+
+== F. Decoherence: which-path records compose by the union rule ==
+PASS F1 1 - visibility^2 = p1 o_{-1} p2 o_{-1} ... (union rule over the environment), exact
+PASS F2 brute-force reduced density matrix: 2|rho_12| equals prod cos(theta_i) (64-dim environment)
+PASS F3 many weak records: visibility = cos(0.15)^M ~ exp(-M*0.0113) -> 0; at M=128 it is <0.25
+PASS F4 P = |a1|^2+|a2|^2+2V Re(a1 a2*): V=1 is |a1+a2|^2 (amplitudes add), V=0 is P1+P2 (probabilities add)
+
+36 passed, 0 failed
