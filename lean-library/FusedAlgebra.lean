@@ -123,3 +123,4 @@ import FusedAlgebra.Topics.RepetitionDial
 import FusedAlgebra.Topics.ZoomDial
 import FusedAlgebra.Topics.Conventions
 import FusedAlgebra.Topics.OrderDial
+import FusedAlgebra.Deprecated

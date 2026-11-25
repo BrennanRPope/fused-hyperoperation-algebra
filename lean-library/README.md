@@ -38,6 +38,10 @@ Foundation (imported by the topics):
   below iterated, the laws that hold at rung 3 and fail at rung 4.
 - `FusedAlgebra/Cube.lean`: the layers of the mult-add cube (Pascal),
   absorption, factorial.
+- `FusedAlgebra/Deprecated.lean`: built after every topic, it keeps each pre-1.0 name
+  (`MultAdd.multAdd`, `wAdd`, `MAFound.MARing`, ...) as a deprecated alias of its 1.0
+  name (`CircleOp.circ`, `circK`, `CircFound.CircRing`, ...) for one minor release.
+  The aliases have no source range, so `Check.lean` does not count them.
 
 Topics (each imports the foundation):
 
