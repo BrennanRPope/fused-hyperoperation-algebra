@@ -1,0 +1,10 @@
+original	status	new_name	note
+sq_inj	mathlib	Nat.pow_left_injective	squaring is injective on ℕ: `Nat.pow_left_injective two_ne_zero`
+sq_mod_four	ported	Fermat4.sq_mod_four	same statement
+dvd_sq_self	mathlib	dvd_pow_self	`dvd_pow_self n two_ne_zero`
+sq_of_coprime_mul	mathlib	exists_eq_pow_of_mul_eq_pow	with `Nat.isUnit_iff.2 hab` for the coprimality hypothesis (GCD monoid with unique units)
+pyth_param	ported	Fermat4.pyth_param	same statement over ℕ; now a corollary of mathlib's `PythagoreanTriple.coprime_classification'`
+descent_step	dropped	not_fermat_42	descent scaffolding: its hypothesis x^4 + y^4 = z^2 with x, y nonzero is contradictory by mathlib's `not_fermat_42`, so the step has no content once the theorem is taken from mathlib; mathlib's own descent is `Fermat42.exists_pos_odd_minimal` / `Fermat42.not_minimal`
+no_x4_y4_z2	ported	no_x4_y4_z2	same statement (root namespace); corollary of mathlib's `not_fermat_42`
+fermat4	ported	fermat4	same statement (root namespace); known mathematics, mathlib's `fermatLastTheoremFour`
+fourth_power_ne_mpow_four	ported	fourth_power_ne_mpow_four	same statement (root namespace); corollary of `fermatLastTheoremFour` via `fermatLastTheoremFor_iff_rat`
