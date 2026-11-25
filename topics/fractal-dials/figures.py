@@ -194,13 +194,13 @@ def plate6():
     W, H = 900, 560
     b = [T(20, 30, "Which fractal dials the circle operation already has", 15, INK, weight=600)]
     rows = [
-        ("dimension d", "fractional circle power (1+a)^d", "has it", BLUE),
+        ("dimension D", "fractional circle power (1+a)^D", "has it", BLUE),
         ("weights p : 1−p (multifractal D_q, f(α))", "per-element dial t = p/(1−p)", "has it", BLUE),
         ("branching growth (how fast branching grows)", "rung flow at t = ½ (half-exponential)", "has it, separately", BLUE),
         ("wobble / complex dimensions", "a phase that turns with zoom; like twist or a Clifford rotor", "partial", AMBER),
         ("zoom ratio r (how much each piece shrinks)", "nothing yet: the circle operation has no notion of size", "missing: one candidate", RED),
         ("placement: lacunarity, Minkowski content", "geometry outside the algebra", "outside", GREY),
-        ("topology: touching, gluing", "silent below d = 1; only matters at d ≥ 1", "outside", GREY),
+        ("topology: touching, gluing", "silent below D = 1; only matters at D ≥ 1", "outside", GREY),
     ]
     y = 64
     b.append(T(30, y, "fractal dial", 12, MUTE, weight=600)); b.append(T(380, y, "in the circle operation", 12, MUTE, weight=600))
@@ -212,7 +212,7 @@ def plate6():
         b.append(T(740, y + 31, st, 12, c, weight=700))
         y += 62
     b.append(T(20, y + 16, "If the circle operation adds one dial, it is a zoom (size) dial: then dimension stops being an input and comes out of", 12, MUTE))
-    b.append(T(20, y + 34, "piece count and zoom, d = log(pieces) / log(1/zoom), via Moran's equation. Everything else is covered or is geometry.", 12, MUTE))
+    b.append(T(20, y + 34, "piece count and zoom, D = log(pieces) / log(1/zoom), via Moran's equation. Everything else is covered or is geometry.", 12, MUTE))
     return svg(W, H, "".join(b), "Map of fractal dials against the dials the circle operation already has")
 
 # ---------------------------------------------------------------- plate 7: why shape dials cannot iterate

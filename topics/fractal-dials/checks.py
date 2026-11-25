@@ -1,5 +1,5 @@
 """Fractal dials: what tells apart fractals of the same dimension, and does any of it
-give the 2^d corners one definite count or a half step of the power set?
+give the 2^D corners one definite count or a half step of the power set?
 Pure Python. Run: python3 checks.py"""
 import math, cmath, itertools, json, sys, os
 from fractions import Fraction as F
@@ -18,7 +18,7 @@ check("1a all five sets have dimension exactly 1/2 (square roots of their ratios
 for k, v in HALF.items():
     d = dimension(v["maps"])
     table[k] = dict(name=v["name"], pieces=len(v["maps"]), ratios=[str(r) for r, _ in v["maps"]], dim=round(d, 12))
-check("1b numeric Moran solve agrees: d = 0.5 for all", all(abs(table[k]["dim"] - .5) < 1e-9 for k in HALF))
+check("1b numeric Moran solve agrees: D = 0.5 for all", all(abs(table[k]["dim"] - .5) < 1e-9 for k in HALF))
 # non-overlap (open set condition on [0,1])
 def disjoint(maps):
     m = sorted(maps, key=lambda t: t[1])
@@ -31,7 +31,7 @@ for k, v in HALF.items():
     table[k]["lattice"] = is_lattice(v["maps"])
 check("2a A, B, C, E are lattice (one ratio); D is non-lattice (log 0.09 / log 0.49 irrational, = log0.3/log0.7)",
       [table[k]["lattice"] for k in "ABCDE"] == [True, True, True, False, True])
-# complex dimensions of the equal-ratio sets: d + 2 pi i n / log(1/r)
+# complex dimensions of the equal-ratio sets: D + 2 pi i n / log(1/r)
 for k in "ABCE":
     v = HALF[k]["maps"]; N = len(v); r = float(v[0][0])
     per = 2 * math.pi / math.log(1 / r)
@@ -73,7 +73,7 @@ check("3d B and C differ only in where the middle piece sits: same ratios, diffe
 def lacunarity(maps, level, box):
     iv = intervals(maps, level)
     d = .5
-    pts = [(float(a), float(b - a) ** d) for a, b in iv]  # piece start, natural mass r^d per piece
+    pts = [(float(a), float(b - a) ** d) for a, b in iv]  # piece start, natural mass r^D per piece
     step = box / 8
     masses = []
     x = 0.0
@@ -112,8 +112,8 @@ check("5d unfair weights spread the local dimensions alpha over an interval; fai
       table["multifractal"]["0.1"][0] < .5 < table["multifractal"]["0.1"][1], str(table["multifractal"]))
 
 # 6. Natural shape for joining: binary branching + equal ratios + fair weights -> A ------------
-# Among equal-ratio sets with N pieces, dimension d forces r = N^(-1/d); N = 2 (one yes/no choice
-# per element, as for subsets) gives r = 2^(-1/d) = 1/4 at d = 1/2: set A.
+# Among equal-ratio sets with N pieces, dimension D forces r = N^(-1/D); N = 2 (one yes/no choice
+# per element, as for subsets) gives r = 2^(-1/D) = 1/4 at D = 1/2: set A.
 check("6a binary branching + equal ratios + dimension 1/2 forces ratio 1/4 (set A); binary dimension 1 forces 1/2",
       F(1,2)**2 == F(1,4) and 2 * F(1,4) ** F(1,1) != 1)
 # Joining two binary half boxes = four-corner set; regroup levels = binary tree with ratio 1/2.
@@ -146,8 +146,8 @@ ok = True
 for k, v in HALF.items():
     iv = sorted(intervals(v["maps"], 3))
     ok &= all(iv[i][1] < iv[i + 1][0] for i in range(len(iv) - 1)) and len(v["maps"]) >= 2
-check("7a all five half boxes are dust that splits forever: topologically one Cantor set (connectivity is not a dial below d = 1)", ok)
-# At d = log3/log2 the topology dial appears: gasket (3 at 1/2, touching) vs dust (9 at 1/4)
+check("7a all five half boxes are dust that splits forever: topologically one Cantor set (connectivity is not a dial below D = 1)", ok)
+# At D = log3/log2 the topology dial appears: gasket (3 at 1/2, touching) vs dust (9 at 1/4)
 check("7b dimension log3/log2 both ways: 3 at 1/2 and 9 at 1/4 (9 = 3^2, 4 = 2^2)",
       abs(math.log(3) / math.log(2) - math.log(9) / math.log(4)) < 1e-15)
 def gasket_vertices(n):

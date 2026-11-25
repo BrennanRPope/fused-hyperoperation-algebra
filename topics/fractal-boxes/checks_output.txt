@@ -16,7 +16,7 @@ PASS 3f the squared half box is dust: level-m pieces are separated by gaps (no s
 PASS 3g its shadow on the x-axis has length (1/2)^m -> 0 (a stick's shadow stays 1)
 PASS 4a three pieces at scale 1/9 also has dimension 1/2 (log3/log9)
 PASS 4b same dimension, different counts at the same scale  | C_1/4: 127, three-at-1/9: 140, sqrt(1/eps) = 64
-PASS 4c uneven pieces (0.09, 0.49) also solve the Moran equation for d = 1/2  | r2 = 0.4900
+PASS 4c uneven pieces (0.09, 0.49) also solve the Moran equation for D = 1/2  | r2 = 0.4900
 PASS 4d C_1/4 x three-at-1/9 (a different half squared against C_1/4) box-counts at dimension ~1  | slopes 0.968, 1.070, 1.062
 PASS 5a level m=1,2,3 of C_1/4: N points give 2^N - 1 subsets, pairwise as far apart as the points  | N = 2, 4, 8 -> 3, 15, 255 separated subsets (asserted above)
 PASS 5b subsets of an eps-net are an eps-net of the hyperspace (1500 random pieces of level 6 vs the 8-point net)  | eps = 63/4096, worst Hausdorff distance = 63/4096

@@ -5,7 +5,7 @@ Proposal tested: a piece shrunk by zoom r carries weight r^s (s a free exponent)
 - Joining pieces side by side adds their weights: x(s) = sum r_i^s.
 - Zooming in again and again is "any number of times" (the k = -1 element):
   all finite words of pieces have total weight 1/(1 - x(s)).
-- Dimension d is where that element hits its wall, x(d) = 1 (Moran 1946).
+- Dimension D is where that element hits its wall, x(D) = 1 (Moran 1946).
 - Complex s on the wall are the complex dimensions (the wobble).
 """
 import numpy as np, mpmath as mp, itertools
@@ -30,7 +30,7 @@ def moran(rs):
 for name, rs in SETS.items():
     d = moran(rs)
     want = {"gasket three at 1/2": np.log(3)/np.log(2), "middle-third Cantor": np.log(2)/np.log(3)}.get(name, 0.5)
-    check(f"1 {name}: x(d) = 1 at d = {d:.6f} (expected {want:.6f})", abs(d - want) < 1e-9)
+    check(f"1 {name}: x(D) = 1 at D = {d:.6f} (expected {want:.6f})", abs(d - want) < 1e-9)
 
 # 2. word sums: depth-n words carry x(s)^n in total; all depths sum to 1/(1 - x)
 for name in ["A two at 1/4", "D uneven 9/100, 49/100"]:
@@ -47,16 +47,16 @@ for name in ["A two at 1/4", "D uneven 9/100, 49/100"]:
     s = 0.5
     check(f"2c {name}: at the dimension every depth weighs exactly 1 (the wall, series diverges)", abs(x(rs, s) - 1) < 1e-12)
 
-# 3. the natural weights of the pieces are r_i^d, and they sum to 1
+# 3. the natural weights of the pieces are r_i^D, and they sum to 1
 for name, rs in SETS.items():
     d = moran(rs); w = [r**d for r in rs]
-    check(f"3 {name}: natural weights r^d sum to 1", abs(sum(w) - 1) < 1e-9)
+    check(f"3 {name}: natural weights r^D sum to 1", abs(sum(w) - 1) < 1e-9)
 
-# 4. zoom as twist: scaling dial values by w = r^d turns the circle operation into the twisted rule at k = w
+# 4. zoom as twist: scaling dial values by w = r^D turns the circle operation into the twisted rule at k = w
 for r, d in [(0.25, 0.5), (1/3, np.log(2)/np.log(3)), (0.5, 1.0)]:
     w = r**d; t, u = 0.37, 1.9
     lhs = (w*t) + (w*u) + (w*t)*(w*u); rhs = w*(t + u + w*t*u)
-    check(f"4 zoom r={r:.3f}, d={d:.3f}: w t ∘₁ w u = w (t ∘_w u)", abs(lhs - rhs) < 1e-12)
+    check(f"4 zoom r={r:.3f}, D={d:.3f}: w t ∘₁ w u = w (t ∘_w u)", abs(lhs - rhs) < 1e-12)
 # size-dial link: doubling at dimension beta is zoom 1/2, weight 2^-beta
 check("4b size dial: zoom 1/2 at dimension beta gives weight 2^-beta (beta = 1, 2, 3)", all(abs(0.5**b - 2.0**-b) < 1e-15 for b in [1, 2, 3]))
 
@@ -88,7 +88,7 @@ check("5c D: their real parts vary (non-lattice: no single evenly spaced line)",
 np.save("/tmp/zoom_D_roots.npy", np.array(found))
 print("D roots:", found[:8])
 
-# 6. dimension is an output: change one zoom, d moves; same d from different zooms
-check("6a zooms (1/4,1/4) and (9/100,49/100) both give d = 1/2", abs(moran([.25,.25]) - .5) < 1e-9 and abs(moran([.09,.49]) - .5) < 1e-9)
-check("6b d is monotone in the zoom: (0.2,0.2) < (0.25,0.25) < (0.3,0.3)", moran([.2,.2]) < moran([.25,.25]) < moran([.3,.3]))
+# 6. dimension is an output: change one zoom, D moves; same D from different zooms
+check("6a zooms (1/4,1/4) and (9/100,49/100) both give D = 1/2", abs(moran([.25,.25]) - .5) < 1e-9 and abs(moran([.09,.49]) - .5) < 1e-9)
+check("6b D is monotone in the zoom: (0.2,0.2) < (0.25,0.25) < (0.3,0.3)", moran([.2,.2]) < moran([.25,.25]) < moran([.3,.3]))
 print(f"\n{ok}/{total} checks passed")

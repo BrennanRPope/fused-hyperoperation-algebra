@@ -5,8 +5,8 @@ wobble, weights, topology and branching growth. The circle operation ∘₁ (cal
 counting (dimension = fractional circle power; weights = per-element dial t = p/(1−p)), has the
 growth dial separately (rung flow at t = ½), and has a cousin of wobble (complex dimensions act like
 a phase on the zoom, resembling twist or a Clifford rotor). It is missing one clean dial: a zoom
-(size) dial, which would make dimension an output, d = log(pieces)/log(1/zoom). Placement and
-topology are geometry that does not change counts (topology is silent below d = 1: every dust is
+(size) dial, which would make dimension an output, D = log(pieces)/log(1/zoom). Placement and
+topology are geometry that does not change counts (topology is silent below D = 1: every dust is
 the Cantor set). Binary branching + equal zooms + fair weights pin exactly one half box, two pieces
 at 1/4; joined with itself it is the binary tree, and gluing dyadic ends gives the stick. That pins
 the joining half (the dial √2 − 1), not an iterating half. Shape dials keep counts c·bⁿ and joining
@@ -20,13 +20,13 @@ no new lead on the iterating half. All dials here are known math. No line for th
 
 | Fractal dial | In the circle operation | Status |
 |---|---|---|
-| dimension d | fractional power (1+a)^d | has it |
+| dimension D | fractional power (1+a)^D | has it |
 | weights p : 1−p (D_q, f(α)) | per-element t = p/(1−p) | has it |
 | branching growth | rung flow at t = ½ | has it, separately |
 | wobble / complex dimensions | phase on zoom; like twist, Clifford rotor | partial (analogy) |
 | zoom ratio r | none: the circle operation has no size | missing: one candidate |
 | placement (lacunarity, Minkowski content) | geometry | outside |
-| topology (touching, gluing) | silent below d = 1 | outside |
+| topology (touching, gluing) | silent below D = 1 | outside |
 
 ## Numbers (checks.py, 25 of 25 pass)
 

@@ -32,9 +32,9 @@ html = f"""<!DOCTYPE html>
 <div class="box verdict"><strong>Verdict, on its own merits: a small, clean addition; no new lead on the iterating half.</strong>
 <ol class="key">
 <li><strong>All of these dials are known math.</strong> Zoom ratios and Moran's equation (1946), lacunarity (Mandelbrot; Allain and Cloitre 1991), Minkowski content and complex dimensions (Lapidus and van Frankenhuijsen), multifractal spectra (Halsey and others 1986), and topology (Brouwer 1910). None is new here.</li>
-<li><strong>The circle operation already has two.</strong> Dimension is the fractional circle power (1 + a)^d. Unequal weights p : 1 − p are the per-element dial t = p/(1 − p), and the multifractal spectrum is what t does to the counting.</li>
+<li><strong>The circle operation already has two.</strong> Dimension is the fractional circle power (1 + a)^D. Unequal weights p : 1 − p are the per-element dial t = p/(1 − p), and the multifractal spectrum is what t does to the counting.</li>
 <li><strong>One is a cousin.</strong> Lattice fractals wobble forever as you zoom, because their dimension has imaginary partners ½ + i·2πn/ln(1/r). That is a phase turning with zoom, like the circle operation's twist or a Clifford rotor. It is an analogy, not the same thing.</li>
-<li><strong>One is missing: zoom.</strong> The circle operation multiplies sides 1 + a and has no notion of size. A zoom dial would make dimension an output, d = log(pieces) / log(1/zoom), instead of an input. This is the one dial worth adding, and it is modest.</li>
+<li><strong>One is missing: zoom.</strong> The circle operation multiplies sides 1 + a and has no notion of size. A zoom dial would make dimension an output, D = log(pieces) / log(1/zoom), instead of an input. This is the one dial worth adding, and it is modest.</li>
 <li><strong>The rest are geometry.</strong> Placement (lacunarity, Minkowski content) moves no counts. Topology is silent below dimension 1, since every dust is the same Cantor set.</li>
 <li><strong>Which combination pins one half box?</strong> Binary branching, equal zooms and fair weights pin exactly one: two pieces at ¼. Joined with itself it is the binary full box as a tree, and gluing ends gives the stick. That pins the joining half (already the dial √2 − 1), not an iterating half.</li>
 <li><strong>Why no shape dial iterates.</strong> Every shape dial keeps level counts of the form c·bⁿ, and joining keeps that form. The power set's counts 2^(2ⁿ) fit no such form (Lean: <code>powerset_not_selfsimilar</code>). A half step needs a dial on branching growth, which is the circle operation's rung flow at t = ½; it exists but is unique only under extra conditions.</li>
@@ -46,14 +46,14 @@ html = f"""<!DOCTYPE html>
 
 <section class="band" id="table"><div class="wrap">
 <h2>Each dial, and what it does to the corner count</h2>
-<p>A box of dimension d has 2^d corner pieces in the counting sense: each level of the fractal multiplies the count by a fixed factor. The question for each hidden dial is whether it changes or pins down how those pieces are counted.</p>
+<p>A box of dimension D has 2^D corner pieces in the counting sense: each level of the fractal multiplies the count by a fixed factor. The question for each hidden dial is whether it changes or pins down how those pieces are counted.</p>
 <table class="stack"><thead><tr><th>Dial</th><th>Tells apart</th><th>Fixes the count?</th><th>In the circle operation</th></tr></thead><tbody>
-<tr><td>Dimension d</td><td>nothing at fixed d</td><td>Only the number 2^d</td><td>Has it: (1 + a)^d</td></tr>
-<tr><td>Zoom ratios r</td><td>A, B, D, E (2, 3, 2, 4 pieces)</td><td>Fixes piece sizes; with piece count, gives d</td><td>Missing: one candidate</td></tr>
+<tr><td>Dimension D</td><td>nothing at fixed D</td><td>Only the number 2^D</td><td>Has it: (1 + a)^D</td></tr>
+<tr><td>Zoom ratios r</td><td>A, B, D, E (2, 3, 2, 4 pieces)</td><td>Fixes piece sizes; with piece count, gives D</td><td>Missing: one candidate</td></tr>
 <tr><td>Placement (lacunarity, content)</td><td>B from C (same pieces, middle moved)</td><td>No: counts unchanged</td><td>Outside the algebra</td></tr>
 <tr><td>Wobble (complex dimensions)</td><td>lattice A, B, C, E from non-lattice D</td><td>No: a periodic correction on top</td><td>Partial: like twist or a rotor phase</td></tr>
-<tr><td>Weights p : 1 − p</td><td>the same set carrying different mass</td><td>Weights the corners; fair weights give plain 2^d</td><td>Has it: t = p/(1 − p)</td></tr>
-<tr><td>Topology (touching, gluing)</td><td>nothing below d = 1; gasket from dust above</td><td>No</td><td>Outside; only matters at d ≥ 1</td></tr>
+<tr><td>Weights p : 1 − p</td><td>the same set carrying different mass</td><td>Weights the corners; fair weights give plain 2^D</td><td>Has it: t = p/(1 − p)</td></tr>
+<tr><td>Topology (touching, gluing)</td><td>nothing below D = 1; gasket from dust above</td><td>No</td><td>Outside; only matters at D ≥ 1</td></tr>
 <tr><td>Branching growth</td><td>shapes from the power set</td><td>Yes, for iterating</td><td>Has it, separately: rung flow at t = ½</td></tr>
 </tbody></table>
 </div></section>
