@@ -34,6 +34,7 @@ public import FusedAlgebra.Topics.LeeYang
 public import FusedAlgebra.Topics.LeeYangCluster
 public import FusedAlgebra.Topics.LeeYangSpill
 public import FusedAlgebra.Topics.LinearAlgebra
+public import FusedAlgebra.Topics.NavierStokes
 public import FusedAlgebra.Topics.NSContinuum
 public import FusedAlgebra.Topics.NumberPlane
 public import FusedAlgebra.Topics.Patterns
