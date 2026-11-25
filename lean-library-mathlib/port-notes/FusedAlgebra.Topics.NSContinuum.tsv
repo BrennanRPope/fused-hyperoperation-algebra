@@ -1,0 +1,25 @@
+original	status	new_name	note
+mpow_one_nat	dropped	MultAdd.Cube.mpow_one_add_one	same statement, already in FusedAlgebra.Cube
+box_doubles	ported	MultAdd.NSContinuum.box_doubles	
+annulus_cells	ported	MultAdd.NSContinuum.annulus_cells	
+annulus_graded	ported	MultAdd.NSContinuum.annulus_graded	bsum is a Finset sum, layer is Nat.choose; the trivial factor 1 ^ (k + 1) is simplified away; proved from MultAdd.Cube.mpow_eq_sum_choose
+onRay	ported	MultAdd.NSContinuum.onRay	generalised from ℤ to any commutative ring; a Decidable instance on ℤ is added
+onRay_refl	ported	MultAdd.NSContinuum.onRay_refl	any commutative ring
+onRay_symm	ported	MultAdd.NSContinuum.onRay_symm	any commutative ring
+onRay_trans	ported	MultAdd.NSContinuum.onRay_trans	any commutative domain
+lions_on_2d_ray	ported	MultAdd.NSContinuum.lions_on_2d_ray	
+ns3d_on_ray_of_2d_four_fifths	ported	MultAdd.NSContinuum.ns3d_on_ray_of_2d_four_fifths	
+ns3d_supercritical	ported	MultAdd.NSContinuum.ns3d_supercritical	
+fan_pivot	ported	MultAdd.NSContinuum.fan_pivot	
+ns3d_on_bmr_line	ported	MultAdd.NSContinuum.ns3d_on_bmr_line	
+k41Margin	ported	MultAdd.NSContinuum.k41Margin	
+k41_edge_at_four	ported	MultAdd.NSContinuum.k41_edge_at_four	
+k41_3d_positive	ported	MultAdd.NSContinuum.k41_3d_positive	
+k41_5d_negative	ported	MultAdd.NSContinuum.k41_5d_negative	
+ssum	mathlib	Finset.sum	written ∑ j ∈ range m, f j
+flux	ported	MultAdd.NSContinuum.flux	generalised from ℤ to any commutative ring
+gain	ported	MultAdd.NSContinuum.gain	any commutative ring
+gain_is_model	ported	MultAdd.NSContinuum.gain_is_model	any commutative ring
+energy_telescopes	ported	MultAdd.NSContinuum.energy_telescopes	any commutative ring; Finset sum
+stretch	mathlib	Matrix.mulVec	stretch G ω is G *ᵥ ω for G : Matrix (Fin 3) (Fin 3) R
+planar_stretching_zero	ported	MultAdd.NSContinuum.planar_stretching_zero	stated as G *ᵥ Pi.single 2 w = 0 (Pi.single 2 w is fun k ↦ if k = 2 then w else 0); any commutative ring
