@@ -19,3 +19,4 @@ public import FusedAlgebra.Topics.LeeYang
 public import FusedAlgebra.Topics.LinearAlgebra
 public import FusedAlgebra.Topics.NSContinuum
 public import FusedAlgebra.Topics.NumberPlane
+public import FusedAlgebra.Topics.Pi

@@ -1,0 +1,65 @@
+original	status	new_name	note
+G	mathlib	GaussianInt	the hand-made Gaussian integers are ℤ[i] = Zsqrtd (-1)
+G.ext'	mathlib	Zsqrtd.ext	
+G.ext'_iff	mathlib	Zsqrtd.ext_iff	
+G.add	mathlib	Zsqrtd.instAdd	ring addition of GaussianInt
+G.mul	mathlib	Zsqrtd.instMul	ring multiplication of GaussianInt
+G.one	mathlib	Zsqrtd.instOne	
+G.zero	mathlib	Zsqrtd.instZero	
+G.conj	mathlib	Zsqrtd.instStar	written star a
+G.norm	mathlib	Zsqrtd.norm	
+gma	dropped	MultAdd.multAdd	Gaussian mult-add is the general multAdd on GaussianInt
+gpow	dropped	MultAdd.mpow	the general mult-add power on GaussianInt
+G.pow	mathlib	Monoid.npow	written a ^ n
+gma_lift	dropped	MultAdd.one_add_multAdd	instance of the general lift
+gma_comm	dropped	MultAdd.multAdd_comm	
+gma_assoc	dropped	MultAdd.multAdd_assoc	
+gma_zero	dropped	MultAdd.multAdd_zero	
+mul_assoc'	mathlib	mul_assoc	
+gpow_lift	dropped	MultAdd.one_add_mpow	
+norm_mul	mathlib	Zsqrtd.norm_mul	
+norm_conj	mathlib	Zsqrtd.norm_conj	
+circle_closed	ported	PiMultAdd.circle_closed	on GaussianInt
+circle_real_points	ported	PiMultAdd.one_add_mul_self_eq_one_iff	renamed; generalised from ℚ to any ring without zero divisors
+multAdd_self_zero	ported	PiMultAdd.multAdd_self_eq_zero_iff	renamed; any ring without zero divisors
+Slope	ported	PiMultAdd.Slope	
+tl	ported	PiMultAdd.tl	
+toG	ported	PiMultAdd.toG	now valued in GaussianInt
+lens	ported	PiMultAdd.lens	
+lens_conj	ported	PiMultAdd.lens_conj	conjugation is star
+lens_on_circle	ported	PiMultAdd.lens_on_circle	
+lens_zero	ported	PiMultAdd.lens_zero	
+lens_infinity	ported	PiMultAdd.lens_infinity	right side written -star (toG ⟨n, 0⟩) instead of ⟨-1, 0⟩ * conj; same content
+q4	ported	PiMultAdd.q4	
+quarter_twice	ported	PiMultAdd.quarter_twice	
+quarter_four	ported	PiMultAdd.quarter_four	
+quarter_on_circle	ported	PiMultAdd.quarter_on_circle	
+slope_one_twice	ported	PiMultAdd.slope_one_twice	
+slope_one_four	ported	PiMultAdd.slope_one_four	
+parity_twice	ported	PiMultAdd.parity_twice	generalised from ℚ to any ring
+machin	ported	PiMultAdd.machin	analytic form is Real.four_mul_arctan_inv_5_sub_arctan_inv_239
+euler	ported	PiMultAdd.euler	
+hermann	ported	PiMultAdd.hermann	
+hutton	ported	PiMultAdd.hutton	
+machin_slopes	ported	PiMultAdd.machin_slopes	
+firstCross	ported	PiMultAdd.firstCross	on GaussianInt
+cross_10	ported	PiMultAdd.cross_10	still by decide +kernel
+cross_100	ported	PiMultAdd.cross_100	still by decide +kernel
+cross_1000	ported	PiMultAdd.cross_1000	still by decide +kernel
+gt	ported	PiMultAdd.gregTerm	renamed; any field
+greg	ported	PiMultAdd.greg	now a Finset sum over range n; any field; the old recursion is PiMultAdd.greg_succ
+div_le_div_of	mathlib	div_le_div₀	
+neg_one_pow_even	mathlib	Even.neg_one_pow	
+neg_one_pow_odd	mathlib	Odd.neg_one_pow	
+gt_nonneg	ported	PiMultAdd.gregTerm_nonneg	renamed; any linearly ordered field
+term_shrink	ported	PiMultAdd.gregTerm_succ_le	renamed; any linearly ordered field
+greg_two	ported	PiMultAdd.greg_two	any field
+greg_even_up	ported	PiMultAdd.greg_even_up	any linearly ordered field
+greg_odd_above	ported	PiMultAdd.greg_odd_above	any linearly ordered field
+greg_odd_down	ported	PiMultAdd.greg_odd_down	any linearly ordered field
+greg_even_le_odd	ported	PiMultAdd.greg_even_le_odd	any linearly ordered field
+machinLo	ported	PiMultAdd.machinLo	
+machinHi	ported	PiMultAdd.machinHi	
+machin_lo_le_hi	ported	PiMultAdd.machinLo_le_machinHi	renamed
+machin_nested	ported	PiMultAdd.machin_nested	
+machin_50_digits	ported	PiMultAdd.machin_50_digits	still by decide +kernel
