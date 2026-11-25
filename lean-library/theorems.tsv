@@ -2243,6 +2243,39 @@ FusedAlgebra.Topics.Numerical	Numerical.sterbenz_window_neg	propext, Classical.c
 FusedAlgebra.Topics.Numerical	Numerical.sterbenz_window_pos	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Numerical	Numerical.theta_bound	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Numerical	Numerical.theta_is_fold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.M2.ext'	propext
+FusedAlgebra.Topics.OrderDial	OrderDial.anticommute_self_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.app_comp	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.centre_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.commute_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.comp_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.comp_id	propext
+FusedAlgebra.Topics.OrderDial	OrderDial.compounding_corner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.different_centres	propext
+FusedAlgebra.Topics.OrderDial	OrderDial.k_slice	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.k_slice_commutes	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.ksum_distrib_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.ksum_not_distrib	propext
+FusedAlgebra.Topics.OrderDial	OrderDial.ksum_or	propext
+FusedAlgebra.Topics.OrderDial	OrderDial.ksum_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.mut_assoc_error	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.mut_assoc_only_at_ends	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.mut_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.mut_flexible	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.no_functor_half	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.one_multAdd_one	propext
+FusedAlgebra.Topics.OrderDial	OrderDial.order_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.over_assoc	Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.over_idem	propext, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.over_not_comm	
+FusedAlgebra.Topics.OrderDial	OrderDial.over_right_regular	Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.pauli	
+FusedAlgebra.Topics.OrderDial	OrderDial.pow_add'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.stretch_order_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.wAdd_idem_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.wall_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.weyl	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.OrderDial	OrderDial.xxyy_inversions	
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.blk_le	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.block_start	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.condensation	propext, Classical.choice, Quot.sound
