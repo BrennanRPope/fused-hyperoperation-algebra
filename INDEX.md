@@ -43,6 +43,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Dial survey: the five dials, and k acting on per-element dials and on the primes | `topics/dial-survey/` | [page](https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr) |
 | Fractal boxes: does a box of fractional dimension give a fractional power set? | `topics/fractal-boxes/` | [page](https://claude.ai/artifact/NbFUcWVphAGGNvhug8XvwS) |
 | Hidden dials of a half box: mult-add has dimension and weights, lacks only a zoom dial | `topics/fractal-dials/` | page to come |
+| What could become a paper: literature check of every result, ranked | `topics/paper-candidates/` | — |
 | Electromagnetism through mult-add: light sets the dial q = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
 | Size weighting as a dial, and what mult-add leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |
 
