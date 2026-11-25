@@ -16,6 +16,10 @@ Lean 4.37.0-rc1 with mathlib v4.37.0-rc1. The core-Lean library is untouched.
   `../lean-library/theorems.tsv`; `lake env lean tools/CheckNames.lean` checks that all 1,720
   "ported" rows name a declaration that really exists in the port.
 - Nothing is marked "not ported".
+- Also built here since Nov 25: the proof-complexity study (`ProofComplexity/`, 17 proofs of six
+  known results, copied unchanged from `topics/proof-complexity/lean/` on main). It is a separate
+  library in the same package, with its own options matching where it was first compiled, and
+  `Check.lean` checks it the same way. It is not part of the port and has no name table.
 
 These checks alone do not establish that each ported statement says exactly what the original
 said. Where a statement was restated, generalised, strengthened or given an extra hypothesis,
