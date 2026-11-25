@@ -131,4 +131,5 @@ import FusedAlgebra.Topics.EIPi
 import FusedAlgebra.Topics.ShapeDependencies
 import FusedAlgebra.Topics.BooleanLattice
 import FusedAlgebra.Topics.BeyondOneLoop
+import FusedAlgebra.Topics.CornerWeights
 import FusedAlgebra.Deprecated

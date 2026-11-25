@@ -1,0 +1,83 @@
+== A. Corners are principal minors of one matrix ==
+PASS A1 sum over corners of t^|S| det M_S = det(I + tM)  (t=1.0)
+PASS A1 sum over corners of t^|S| det M_S = det(I + tM)  (t=0.7)
+PASS A1 sum over corners of t^|S| det M_S = det(I + tM)  (t=-1.3)
+PASS A1b size-weighted corner sum (k^(m-1) on rank-m minors) = our operation folded over the EIGENVALUES   -0.574109 vs -0.574109  (known: linear-algebra page)
+PASS A2 diagonal M: corners are prod x_i, every pair factor = 1 (our operation, no interaction)
+PASS A3 Cauchy M_ij = 2 p_i x_i/(p_i+p_j): every corner = prod x_i * prod over pairs A_ij (Hirota's KdV weights fall out)
+PASS A3b the size x pair candidate w(S)=k^(|S|-1) prod A_ij is exactly (det(I+kM)-1)/k = our op on eigenvalues of the Cauchy matrix
+PASS A3c the Cauchy matrix's eigenvalues are real and positive ('dressed waves')   bare [0.806 0.869 1.018 1.392] dressed [0.    0.012 0.261 3.812]
+PASS A4 any matrix: pair factor A_ij = 1 - m_ij m_ji/(m_ii m_jj); generic matrix has a 3-body term, Cauchy has none   generic 3-body -0.0251, Cauchy +8.9e-16
+PASS A5a Cauchy-like M = r s^T/(p_i+q_j) solves Sylvester P M + M Q = r s^T (one shared channel, rank 1)
+PASS A5b rank-1 source: corners are pair products for ANY r, s (no 3-body term)   -1.1e-14
+   source r s^T + eps r' s'^T (rank 2):  eps=0.0: 3-body -1.10e-14,  eps=0.01: 3-body -4.69e-02,  eps=0.1: 3-body -3.47e-01,  eps=0.3: 3-body -6.37e-01,  eps=1.0: 3-body -7.95e-01
+PASS A5c a second channel (rank-2 source) creates a 3-body term that grows with its strength
+PASS A5d diagonal source (each wave its own channel) gives a diagonal M: our size-only weights
+PASS A6 two waves at the same speed: pair factor 0 and the matrix loses rank (one dressed eigenvalue -> 0): exclusion   smallest eigenvalue 5.2e-17
+PASS A7a KdV: sqrt(A_ij) = (p_i-p_j)/(p_i+p_j) = relativistic velocity subtraction of u=(p-1)/(p+1) = tanh(theta/2)
+PASS A7b KP: pair factor = 1 - cross-ratio of the four points (p_i, p_j, -q_i, -q_j); equals the Cauchy minor
+
+== B. The size dial k in the soliton world ==
+   KdV bilinear residual with corner weights k^|S| * prod A:  k=1: 8.1e-172, k=3/10: 2.5e-170, k=3: 6.8e-170, k=-1/2: 3.8e-170
+PASS B1 the size dial is a gauge for KdV: k^|S| prod A solves KdV for every k (k>0 slides each wave by -log(k)/p_i; k<0 gives singular solitons)
+PASS B1b corner by corner: k^|S| prod x_i = prod (k x_i), i.e. multiply each wave by k (shift its phase by log k)
+PASS B2 a size weight that is not geometric (g(3) != g(1)g(2)^2/g(1)... here 1,1,2) breaks KdV   residual 2.38e-01
+PASS B3 the diagonal matrix (our op, A=1) is not a KdV solution: separate solitons that do not collide   residual 1.52e+01
+   M(s) = diagonal + s*(Cauchy off-diagonal):  s=0.0: 1.5e+01, s=0.25: 1.4e+01, s=0.5: 1.2e+01, s=0.75: 8.0e+00, s=0.9: 3.8e+00, s=1.0: 8.1e-172
+PASS B4 straight-line blend from our diagonal matrix to the Cauchy matrix solves KdV only at s = 1
+   speed ratio r between neighbours: r=1.5: max coupling 0.960, |dressed-bare| 1.346, r=3: max coupling 0.750, |dressed-bare| 1.088, r=10: max coupling 0.331, |dressed-bare| 0.602, r=30: max coupling 0.125, |dressed-bare| 0.304, r=100: max coupling 0.039, |dressed-bare| 0.126, r=1000: max coupling 0.004, |dressed-bare| 0.016
+PASS B5 the integrable road to our op: as the speeds spread apart, couplings -> 0, all A -> 1, dressed eigenvalues -> bare waves
+
+== C. KP line solitons in different directions ==
+PASS C1a dispersion: eta = (p+q)x + (p^2-q^2)y + (p^3+q^3)t is on the KP shell
+PASS C1b Hirota's KP pair factor -P(w_i-w_j)/P(w_i+w_j) = the Cauchy minor (p_i-p_j)(q_i-q_j)/((p_i+q_j)(p_j+q_i))
+PASS C1c three KP line solitons in three directions: tau = det(I + Cauchy matrix) solves KP exactly   residual 2.0e-171, slopes y-direction/x-direction [ 0.2  1.6 -1.6]
+   three waves, one shared pair factor A:  A=0.1: none, A=0.5: none, A=0.9: none, A=-0.3: none, A=1.2: found (regular), A=1.5: found (regular), A=2.5: found (regular)
+PASS C2 numerical finding: in KP, three line solitons can share one pair factor only when A > 1 (none for A < 1 in 1500 starts each; on a line, KdV, never)
+
+== D. Belinski-Zakharov gravitational solitons ==
+PASS D0 poles solve mu^2 + 2(z - w)mu - rho^2 = 0
+PASS D1 one-channel (static, Weyl-type) solitons: Gamma_kl ~ 1/(rho^2 + mu_k mu_l) is Cauchy; every minor is a pair product, pair factor -rho^2 (mu_k-mu_l)^2/(rho^2+mu_k mu_l)^2
+PASS D2 ...while the metric itself is a product of one-body factors (size-only, our op's 'no pairs' case): g_tt = (-1)^n g0_tt * prod (rho/mu_k)^2 (the sign is BZ's known normalisation)   g_tt 0.879361, one-body product 0.879361
+PASS D3 two-channel (rotating, Kerr-type) solitons: Gamma has a rank-2 source, and three of them carry a genuine 3-body term   3-body -1.176
+PASS D3b with two of them the corner is still just a pair (Kerr = 2 solitons sits inside the pair picture)
+
+== E. Lucas weights: evaluate det(I + tM) at a 2x2 matrix t = N ==
+PASS E1 sum of det M_S N^|S| = 'det(I + tM) at t = N' = sum det M_S (U_m N - d U_(m-1) I)  (Cayley-Hamilton)
+PASS E2 the plane law folded over the eigenvalues = Lucas-weighted corners of principal minors (U_m top, -d U_(m-1) bottom)   -0.292592
+PASS E3 the same value is a ratio of two determinants: (det(I+aM) - det(I+bM))/(a det(I+bM) - b det(I+aM)), a+b=k, ab=d
+PASS E4 one matrix for the plane: our op with dial a-b on the resolvent M(I + bM)^-1, mapped back by y -> y/(1 - b y)
+PASS E5 tangent point (0,1) on the soliton Cauchy matrix: phi = 4 arctan(Lucas-weighted corners) solves sine-Gordon phi_xt = sin phi (3 kinks)   residual 3.2e-173
+PASS E5b ...and phi/4 = sum of arctan(dressed eigenvalue): the field is additive in the matrix's eigenvalues
+PASS E6 velocity point (0,-1) on the same matrix: phi = 4 artanh(...) solves sinh-Gordon phi_xt = sinh phi (where it is finite)   residual 1.3e-172 at 3 points
+PASS E7 parabolic point (2,1), U_m = m: the plane law maps to plain addition of l/(1+l); total = tr M(I+M)^-1 = d/dt log det(I+tM) at t=1
+PASS E8 sample Lucas rows: Fibonacci at (1,-1), U_m = k^(m-1) on d = 0 (our size dial)
+
+== F. The size x pair candidate as a law ==
+   two inputs: a + b + kA ab (our op at dial kA).  three inputs minus iterating that: A**2*a*b*c*k**2*(A - 1)
+PASS F1 with equal A it is NOT an iterated binary law (not a formal group law) unless A = 0 or 1: triple corner k^2 A^3 vs k^2 A^2
+PASS F2 hard core A = 0 gives plain addition; A = 1 gives our op: the pair dial runs between them, the same two ends as k
+   third-order excess (Mayer clusters on 3 sites) = -f*k**3*(-f**2*x1*x2*x3 - 3*f*x1*x2*x3 + x1**2*x2 + x1**2*x3 + x1*x2**2 + x1*x3**2 + x2**2*x3 + x2*x3**2)
+PASS F3 Mayer/cluster reading: A = 1 + f; log tau minus the one-body logs (our flat coordinate) starts with k^2 f sum x_i x_j
+
+== G. Bridge to the cube-weights page: reordering factors (bosons) = one determinant (fermions) ==
+PASS G1 vertex operators (bosons): product of one reordering factor per pair  =  Wick (fermions): det of ONE matrix 1/(z_i - w_j)   -1.991054e-09 vs -1.991054e-09  (Cauchy's determinant: the boson-fermion dictionary)
+PASS G2 with z = p, w = -q the reordering factor is exactly the KP pair factor (and with q = p, KdV's)
+PASS G3 the matrix side needs no infinite operators: a real 4x4 Cauchy matrix gives real pair factors strictly between 0 and 1
+
+== H. Open question: does 'no three-body term in any triple' force 'pairs only' everywhere? ==
+   symmetric 4x4, unit diagonal, every triple free of 3-body terms: 359 solutions, 207 with no 4-body term, 152 WITH one (max 0.139)
+PASS H1 numerical: 'no 3-body term in any triple' does NOT force 'no 4-body term'; pairs-only is a global property (two branches)
+
+== I. Face weights from vertex operators: each wave = (multiply) x (shift); a pair weight is the cost of one shift passing one multiply ==
+   KdV vertex operators, truncated to J modes: worst corner error J=5: 2.4e-02, J=21: 2.1e-06, J=81: 2.2e-16, J=321: 2.2e-16
+PASS I1 KdV vertex operators X(p) = exp(sum 2p^j t_j) exp(-sum (2/(j p^j)) d_j) (odd j): every corner of (1+aX)(1+aX)(1+aX)1 is prod a * prod pairs ((p_i-p_j)/(p_i+p_j))^2
+PASS I1b the one-pair cost is exp(-4 artanh(p'/p)) = ((p-p')/(p+p'))^2: artanh, the flat coordinate of the (0,-1) velocity law
+   two waves closing in on the same speed, pair cost: gap 0.3: 3.11e-02, gap 0.1: 2.77e-03, gap 0.03: 2.32e-04, gap 0.01: 2.53e-05
+PASS I1c equal speeds cost everything (pair weight -> 0): X(p) X(p) = 0, exclusion again
+PASS I2 KP vertex operators X(p,q) = exp(sum (p^j - (-q)^j) t_j) exp(-sum (p^-j - (-q)^-j) d_j / j): corners carry the KP pair factors, three waves   worst error 1.0e-15
+PASS I2b four waves: vertex-operator corners (16 of them) = principal minors of the Cauchy matrix, one by one (face picture = matrix picture)
+PASS I3 make the field interacting (a squared term in the shift) and a 3-body term appears (free field gives pairs only; this one interaction breaks it; the converse is not proved)   3-body +0.327
+PASS I4 gravity, static (Weyl): the potential psi superposes (free field, our 'no pairs' layer) and the conformal factor gamma is built only from pairs: its 3-body part is zero   3-body part of grad gamma 4.7e-11
+
+54 of 54 checks pass

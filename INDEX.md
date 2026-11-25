@@ -17,7 +17,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,164 theorems, 132 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,176 theorems, 133 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
@@ -26,6 +26,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | Mathlib port check: does the Mathlib version prove the same 1,750 theorems? (read side by side) | `topics/mathlib-port-check/` | no page |
 | Common patterns pass | `topics/patterns/` | no page yet |
 | The theory's shape: the Boolean lattice (n-cube); a chain of circle operations sums over its corners | `topics/boolean-lattice/` | — |
+| Corner weights: every corner is a principal minor of one matrix; Cauchy matrices give soliton pair weights (lead; frame ours; parts DRAFT) | `topics/corner-weights/` | — |
 | Do shapes depend on shapes? Proof bodies order yes, whole laws no | `topics/shape-dependencies/` | not yet published |
 | Mathlib port: what it takes to merge (plan; no Mathlib pull request yet) | `topics/mathlib-plan/` | — |
 | Dependency map: prerequisites for a G dial, how results depend on each other, and what each rests on ([DEPENDENCY-MAP.md](DEPENDENCY-MAP.md)) | `topics/dependency-map/` | — |
