@@ -1,0 +1,36 @@
+original	status	new_name	note
+val	mathlib	multiplicity	val p x is multiplicity p x (ℕ-valued; both are 0 when p < 2 or x = 0)
+dsum	mathlib	Nat.digits	dsum p x is (p.digits x).sum; they agree for p ≥ 2 (the original was 0 for p < 2)
+carries	ported	MultAdd.Cube.carries	same recursive definition with the carry-in argument; mathlib only has the count of positions i with p ^ i ≤ k % p ^ i + n % p ^ i, linked by the new MultAdd.Cube.carries_eq_card
+dsum_eq	ported	MultAdd.Cube.sum_digits_eq	renamed; one line from Nat.digits_def'
+dsum_zero	mathlib	Nat.digits_zero	then List.sum_nil
+val_of_mod_ne	mathlib	multiplicity_eq_zero_of_not_dvd	hypothesis is ¬p ∣ x instead of x % p ≠ 0
+val_of_mod_eq	ported	MultAdd.Cube.multiplicity_mul_self_left	restated as multiplicity p (p * m) = multiplicity p m + 1 for 2 ≤ p and 0 < m
+carries_eq	ported	MultAdd.Cube.carries_eq	
+carries_zero	ported	MultAdd.Cube.carries_zero	p is now explicit; tagged simp
+carries_dsum	ported	MultAdd.Cube.sub_one_mul_carries_add_sum_digits	renamed; the auxiliary induction variable s (with a + b = s) is no longer an argument; still any base p ≥ 2
+dsum_succ	ported	MultAdd.Cube.sum_digits_succ	renamed; still any base p ≥ 2
+Val	dropped	multiplicity	Val p x e (p ^ e ∣ x ∧ ¬p ^ (e + 1) ∣ x) is written out where needed (in kummer); it says multiplicity p x = e
+val_spec	mathlib	pow_multiplicity_dvd	with FiniteMultiplicity.not_pow_dvd_of_multiplicity_lt and Nat.finiteMultiplicity_iff for the second half
+Val.unique	mathlib	multiplicity_eq_of_dvd_of_not_dvd	both exponents equal the multiplicity
+euclid	mathlib	Nat.Prime.dvd_mul	(hp.dvd_mul.1 h).resolve_left ha
+Val.mul	mathlib	Nat.multiplicity_mul	multiplicity p (a * b) = multiplicity p a + multiplicity p b for a, b ≠ 0, [Fact p.Prime]
+layer_pos	mathlib	Nat.choose_pos	
+layer_val_dsum	ported	MultAdd.Cube.sub_one_mul_multiplicity_choose_add_sum_digits	renamed; from mathlib's sub_one_mul_multiplicity_choose_eq_sub_sum_digits' (Kummer, digit-sum form), stated without truncated subtraction
+kummer	ported	MultAdd.Cube.kummer	same statement with Nat.choose and Nat.Prime; mathlib's form is multiplicity_choose'; also new MultAdd.Cube.multiplicity_choose_eq_carries
+S	ported	MultAdd.Cube.signedSum	renamed (mathlib naming); a Finset sum; generalised from ℤ to any commutative ring
+S_add	ported	MultAdd.Cube.signedSum_add	
+S_mul	ported	MultAdd.Cube.signedSum_mul	
+S_zero	ported	MultAdd.Cube.signedSum_zero	
+S_sub	ported	MultAdd.Cube.signedSum_sub	
+S_bsum	ported	MultAdd.Cube.signedSum_sum	bsum became a Finset sum
+S_succ	ported	MultAdd.Cube.signedSum_succ	
+layer_succ_self	mathlib	Nat.choose_succ_self_right	
+S_pow	ported	MultAdd.Cube.signedSum_pow	any commutative ring; now a corollary of fwdDiff_iter_eq_sum_shift, fwdDiff_iter_eq_factorial and fwdDiff_iter_pow_eq_zero_of_lt
+bsum_meq	mathlib	Int.ModEq.sum	
+bsum_one	mathlib	Finset.sum_const	with Finset.card_range and smul_eq_mul (simp closes it)
+alt_layer	ported	MultAdd.Cube.neg_one_pow_mul_choose_pred_prime	renamed; Int.ModEq
+fermat_unit	mathlib	Int.ModEq.pow_card_sub_one_eq_one	hypothesis is IsCoprime n p (n : ℤ) instead of ¬p ∣ a (a : ℕ)
+wilson	ported	MultAdd.Cube.wilson	corollary of ZMod.wilsons_lemma, stated with Int.ModEq; the cube proof (signedSum_pow + alt_layer + Fermat) is described in the docstring but is no longer the proof
+dvd_fact	mathlib	Nat.dvd_factorial	
+wilson_iff	ported	MultAdd.Cube.wilson_iff	corollary of Nat.prime_iff_fac_equiv_neg_one

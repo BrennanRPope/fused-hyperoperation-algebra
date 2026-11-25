@@ -23,3 +23,4 @@ public import FusedAlgebra.Topics.Pi
 public import FusedAlgebra.Topics.QuantumNoise
 public import FusedAlgebra.Topics.Thermodynamics
 public import FusedAlgebra.Topics.Topology.CubeProofs
+public import FusedAlgebra.Topics.Topology.KummerWilson
