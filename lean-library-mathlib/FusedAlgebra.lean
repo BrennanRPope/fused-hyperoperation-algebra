@@ -27,6 +27,7 @@ public import FusedAlgebra.Topics.Finance
 public import FusedAlgebra.Topics.FractionalRungs
 public import FusedAlgebra.Topics.FusedConstants
 public import FusedAlgebra.Topics.GeometryTrig
+public import FusedAlgebra.Topics.GravityProbeB
 public import FusedAlgebra.Topics.Infinities
 public import FusedAlgebra.Topics.InformationTheory
 public import FusedAlgebra.Topics.Landscape
