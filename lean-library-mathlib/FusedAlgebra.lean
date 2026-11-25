@@ -13,6 +13,7 @@ public import FusedAlgebra.Topics.Chemistry.ChemQuantum
 public import FusedAlgebra.Topics.ClosingRate
 public import FusedAlgebra.Topics.Consensus
 public import FusedAlgebra.Topics.DarkSector
+public import FusedAlgebra.Topics.DataCenter
 public import FusedAlgebra.Topics.DialSweep
 public import FusedAlgebra.Topics.E
 public import FusedAlgebra.Topics.EarlyScience

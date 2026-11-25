@@ -1,0 +1,18 @@
+original	status	new_name	note
+lifts	mathlib	List.prod	lifts rs is (rs.map (· + 1)).prod
+foldMA_lift_nat	ported	DataCenterFused.multAddList_add_one	renamed; any semiring; from MultAdd.one_add_multAddList
+lifts_append	mathlib	List.prod_append	with List.map_append
+foldMA_swap	ported	DataCenterFused.multAddList_swap	renamed; any commutative semiring; from MultAdd.multAddList_perm
+foldMA_split	ported	DataCenterFused.multAddList_split	renamed; any non-unital semiring result MultAdd.multAddList_append restated
+scale_anywhere	ported	DataCenterFused.scale_anywhere	lifts xs and lifts ys replaced by arbitrary elements x, y of a commutative semiring (strictly more general)
+pue_corner	ported	DataCenterFused.pue_corner	any commutative semiring
+additive_books_corner	ported	DataCenterFused.additive_books_corner	any commutative semiring
+loss_costs_one_plus_c	ported	DataCenterFused.loss_costs_one_add	renamed; any commutative semiring
+unit_gap	ported	DataCenterFused.unit_gap	any commutative ring
+add_unit_iff	ported	DataCenterFused.add_unit_iff	any ordered commutative ring
+equal_share	ported	DataCenterFused.equal_share	any commutative ring
+cube_layers	ported	DataCenterFused.cube_layers	any commutative semiring (original over ℤ)
+spread	ported	DataCenterFused.spread	any commutative semiring
+spare_fan	ported	DataCenterFused.spare_fan	any commutative semiring
+spare_fan_helps	ported	DataCenterFused.spare_fan_helps	any strictly ordered commutative semiring; N now implicit
+stack	ported	DataCenterFused.stack	any commutative ring
