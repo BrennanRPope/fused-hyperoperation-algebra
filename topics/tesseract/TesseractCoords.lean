@@ -2,15 +2,17 @@
   Tesseract coordinates for Fused Mult-Add Algebra
   ================================================
 
-  STATUS: UNCHECKED. This file was written for Lean 4 with mathlib but has
-  NOT been compiled, so no proof here is verified yet. To check it, put it
-  in a Lean project that depends on mathlib and run `lake env lean
-  TesseractCoords.lean`. Any error means a proof needs fixing; it does not
-  mean the math is wrong (the Python tests check the same facts by
-  computation).
+  STATUS: recompile against mathlib pending. A first compile on Brennan's
+  Mac Studio (Nov 25, 2026) failed only because `⊞`, the mult-add symbol used
+  here before, is mathlib's global notation for biproducts. Mult-add is now
+  written `✳`, which mathlib does not use. To check it, put it in a Lean
+  project that depends on mathlib and run `lake env lean TesseractCoords.lean`.
+  Any error means a proof needs fixing; it does not mean the math is wrong
+  (the Python tests check the same facts by computation).
 
-  Notation: Lean already uses `⊕` for something else (sum types), so
-  mult-add is written `⊞` here. a ⊞ b = a + b + a*b.
+  Notation: Lean already uses `⊕` for sum types and mathlib uses `⊞` for
+  biproducts, so mult-add is written `✳` here, a plus and a times sign laid
+  over each other. a ✳ b = a + b + a*b.
 
   The picture. Cut a box with sides 1+a, 1+b, 1+c, 1+d at 1 on every axis.
   It falls into 16 pieces, one per corner of the tesseract. A corner is a
@@ -30,31 +32,31 @@ variable {R : Type*} [CommRing R]
 /-- Mult-add: one operation that adds and multiplies at once. -/
 def multAdd (a b : R) : R := a + b + a * b
 
-@[inherit_doc] infixl:65 " ⊞ " => multAdd
+@[inherit_doc] infixl:65 " ✳ " => multAdd
 
 /-- The geometric heart: mult-add is a box with sides 1 + a and 1 + b,
 minus the unit square. -/
-theorem one_add_multAdd (a b : R) : 1 + (a ⊞ b) = (1 + a) * (1 + b) := by
+theorem one_add_multAdd (a b : R) : 1 + (a ✳ b) = (1 + a) * (1 + b) := by
   unfold multAdd; ring
 
-theorem multAdd_comm (a b : R) : a ⊞ b = b ⊞ a := by
+theorem multAdd_comm (a b : R) : a ✳ b = b ✳ a := by
   unfold multAdd; ring
 
-theorem multAdd_assoc (a b c : R) : (a ⊞ b) ⊞ c = a ⊞ (b ⊞ c) := by
+theorem multAdd_assoc (a b c : R) : (a ✳ b) ✳ c = a ✳ (b ✳ c) := by
   unfold multAdd; ring
 
-theorem multAdd_zero (a : R) : a ⊞ 0 = a := by
+theorem multAdd_zero (a : R) : a ✳ 0 = a := by
   unfold multAdd; ring
 
 /-- Four numbers: the tesseract box with 16 pieces. -/
 theorem one_add_multAdd₄ (a b c d : R) :
-    1 + (a ⊞ b ⊞ c ⊞ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
+    1 + (a ✳ b ✳ c ✳ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
   simp only [multAdd]; ring
 
 /-- Mult-add of a whole list (0 is the identity). -/
 def multAddList : List R → R
   | [] => 0
-  | x :: xs => x ⊞ multAddList xs
+  | x :: xs => x ✳ multAddList xs
 
 theorem one_add_multAddList :
     ∀ l : List R, 1 + multAddList l = (l.map (fun x => 1 + x)).prod
@@ -150,7 +152,7 @@ theorem zeta_ofPoint {n : ℕ} (a : Fin n → R) (T : Corner n) :
 
 /-- In box coordinates, mult-add axis by axis is plain multiplication. -/
 theorem zeta_ofPoint_multAdd {n : ℕ} (a b : Fin n → R) (T : Corner n) :
-    zeta (ofPoint (fun i => a i ⊞ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
+    zeta (ofPoint (fun i => a i ✳ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
   simp only [zeta_ofPoint, one_add_multAdd, Finset.prod_mul_distrib]
 
 /-- With no interaction (every A i j = 1) every soliton weight is 1, so the
