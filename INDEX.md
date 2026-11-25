@@ -38,6 +38,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Statistics from mult-add | `topics/statistics/` | [page](https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv) |
 | Information theory | `topics/information-theory/` | [page](https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v) |
 | Fractional power sets and choice grades | `topics/fractional-powerset/` | [page](https://claude.ai/artifact/94mPKskoy8QKXDumoDjRb7) |
+| Power set dials: one dial per element (merging, complement, primes, other sets) | `topics/fractional-powerset-dials/` | [page](https://claude.ai/artifact/27MDnoDnLAMxUUmWGADYk9) |
 
 ## Fourteen branches of math
 

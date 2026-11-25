@@ -65,3 +65,4 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - Fermat counterexample map G1nEFedgkjtv7X5ehD3ber
 - general relativity (mult-add toward Einstein) SHrK88RpTBLLfTaeAxgi37
 - P vs NP: what can't work FQr7rMChaa6ofsJV2WfDjs
+- power set dials 27MDnoDnLAMxUUmWGADYk9 (one dial per element; merging, complement, primes, other sets)

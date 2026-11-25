@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One dial per element</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* VOICE a careful reading document in the infinities series, honest about known vs open
+   IDEA a plate from a geometry atlas: one dial per element, drawn as a quarter circle
+   PICTURE the dial quarter circle with the two halves and the complement mirror, then the box of halves
+   COLOUR white ground, near-black ink, ultramarine for union and merging, vermilion for the power set
+   TYPE Newsreader for titles, Inter for text; LAYOUT finding and plate first, sections with plates, tables stack on phones */
+
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:70ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:66ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.eq.r2{border-left-color:var(--red)}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+ol.key{padding-left:22px;margin:16px 0 0}ol.key li{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+code{font-size:14px;overflow-wrap:anywhere}
+a{color:var(--blue)}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+
+.plate svg{display:block;width:100%;height:auto}
+.verdict{border-left:3px solid var(--red);padding:4px 0 4px 14px;margin:14px 0}
+
+.plate svg{display:block;width:100%;height:auto}
+.verdict{border-left:3px solid var(--red);padding:4px 0 4px 14px;margin:14px 0}
+.scroll{overflow-x:auto}
+td.n{text-align:right;white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="band top">
+<div class="wrap two">
+<div>
+<h1>One dial per element</h1>
+<p class="lede">Give every element its own dial and a half power set exists, exactly, for every set: dial √2 − 1 on each element, and two independent copies joined together are the whole power set. It is a half under joining, not under doing the power set twice, which dials can never do.</p>
+<p>Merging symmetry forces the many dials and picks that half uniquely. Complement symmetry mirrors it: every half has a twin at √2 + 1, and the two pictures meet only at the full power set. On the primes the twins stop disagreeing. Every sensible half of the primes, by joining, by splitting or by turning each prime's dial to ½, gives the same growth, about X/√(log X) numbers up to X.</p>
+</div>
+<div><div class="plate"><svg viewBox="0 0 760 380" role="img" aria-labelledby="q1t"><title id="q1t">The dial on one element drawn as an angle from 0 to 90 degrees, with dial t = tan of the angle. 0 degrees keeps only the empty set, 45 degrees is the full power set, 90 degrees keeps only the whole set. The union half sits at 22.5 degrees, the intersection half at 67.5 degrees, and complement reflects the picture about 45 degrees.</title><path d="M120 330 L390 330 A270 270 0 0 0 120 60 Z" fill="#eef0ff"/><path d="M390 330 A270 270 0 0 0 120 60" fill="none" stroke="#15131a" stroke-width="2.4"/><line x1="120" y1="330" x2="390.0" y2="330.0" stroke="#5d5a66" stroke-width="2"/><circle cx="390.0" cy="330.0" r="7" fill="#5d5a66"/><text x="404.0" y="335.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#5d5a66">{∅} only,  t = 0</text><line x1="120" y1="330" x2="369.4" y2="226.7" stroke="#1d2bd8" stroke-width="2"/><circle cx="369.4" cy="226.7" r="7" fill="#1d2bd8"/><text x="388.2" y="220.6" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" text-anchor="start" fill="#1d2bd8">union half</text><text x="388.2" y="238.6" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#5d5a66">t = √2 − 1  (22.5°)</text><line x1="120" y1="330" x2="310.9" y2="139.1" stroke="#cf3519" stroke-width="3" stroke-dasharray="6 5"/><circle cx="310.9" cy="139.1" r="7" fill="#cf3519"/><text x="326.2" y="127.8" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" text-anchor="start" fill="#cf3519">full power set</text><text x="326.2" y="145.8" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#5d5a66">t = 1  (45°)</text><line x1="120" y1="330" x2="223.3" y2="80.6" stroke="#0f7b5f" stroke-width="2"/><circle cx="223.3" cy="80.6" r="7" fill="#0f7b5f"/><text x="233.4" y="65.8" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" text-anchor="start" fill="#0f7b5f">intersection half</text><text x="233.4" y="83.8" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#5d5a66">t = √2 + 1  (67.5°)</text><line x1="120" y1="330" x2="120.0" y2="60.0" stroke="#5d5a66" stroke-width="2"/><circle cx="120.0" cy="60.0" r="7" fill="#5d5a66"/><text x="134.0" y="58.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#5d5a66">{S} only,  t = ∞</text><path d="M233.4 330.0 A113.39999999999999 113.39999999999999 0 0 0 224.8 286.6" fill="none" stroke="#1d2bd8" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M224.8 286.6 A113.39999999999999 113.39999999999999 0 0 0 200.2 249.8" fill="none" stroke="#1d2bd8" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M200.2 249.8 A113.39999999999999 113.39999999999999 0 0 0 163.4 225.2" fill="none" stroke="#0f7b5f" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M163.4 225.2 A113.39999999999999 113.39999999999999 0 0 0 120.0 216.6" fill="none" stroke="#0f7b5f" stroke-width="5" stroke-linecap="round" opacity=".55"/><text x="126.0" y="358.0" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#5d5a66">complement mirrors the picture across the 45° line</text><text x="470.0" y="60.0" font-family="Newsreader,Georgia,serif" font-size="18" font-weight="600" text-anchor="start" fill="#1d2bd8">Merging by union</text><text x="470.0" y="82.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">dials mult-add: t ✳ s</text><text x="470.0" y="102.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">two copies of √2 − 1 make 1</text><text x="470.0" y="150.0" font-family="Newsreader,Georgia,serif" font-size="18" font-weight="600" text-anchor="start" fill="#0f7b5f">Merging by intersection</text><text x="470.0" y="172.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">reciprocal dials mult-add</text><text x="470.0" y="192.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">two copies of √2 + 1 make 1</text><text x="470.0" y="240.0" font-family="Newsreader,Georgia,serif" font-size="18" font-weight="600" text-anchor="start" fill="#cf3519">Complement</text><text x="470.0" y="262.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">turns t into 1/t, swaps the two</text><text x="470.0" y="282.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">mergers, and fixes only t = 1</text></svg></div>
+<p class="cap">One element's dial as an angle, t = tan θ. Joining two dials whose angles add to 45° gives the full power set, so the union half sits at 22.5°. Complement reflects across 45°, which sends it to the intersection half at 67.5°. The angle picture is exact for halves only; for thirds the true coordinate is log(1 + t).</p></div>
+</div>
+</header>
+<nav class="nav" aria-label="Sections"><a href="#findings">Findings</a><a href="#count">The count</a><a href="#merge">Merging</a><a href="#complement">Complement</a><a href="#primes">Primes</a><a href="#sets">Other sets</a><a href="#infinite">Infinite sets and choice</a><a href="#known">Known and new</a><a href="#verdict">Verdict</a><a href="#files">Proofs and files</a></nav>
+
+<section class="band" id="findings"><div class="wrap">
+<h2>Seven findings</h2>
+<ol class="key">
+<li><b>The count is a mult-add chain.</b> With dial t<sub>x</sub> on each element, the weighed subsets add up to ∏(1 + t<sub>x</sub>) = 1 + (t<sub>1</sub> ✳ t<sub>2</sub> ✳ … ✳ t<sub>n</sub>). All dials 1 give 2ⁿ, all 0 give 1, all ½ give 1.5ⁿ.</li>
+<li><b>Merging forces the dials and picks the half.</b> Joining two dialled power sets (every pair A, B landing on A ∪ B) mult-adds the dials element by element. Any rule that respects joining is one dial per element, so your many-dials idea is forced, not chosen. The unique half is √2 − 1 on every element: merged with itself it weighs every subset exactly 1.</li>
+<li><b>The halves form a box.</b> A half is any dial setting whose partner completes it, partner(t) = (1 − t)/(1 + t). The corners of that box are the old split P(A) × P(S∖A); the centre is √2 − 1, the only half that is its own partner.</li>
+<li><b>Complement inverts the dials and makes a mirror.</b> Reading every subset from the other side turns dial t into 1/t and swaps joining (mult-add on dials) with intersecting (mult-add on reciprocal dials). Only t = 1, the full power set, is left alone. The union half √2 − 1 and the intersection half √2 + 1 are mirror twins; as probabilities, 0.293 and 0.707, adding to 1. No single half is a half both ways.</li>
+<li><b>On the primes the halves agree.</b> Subsets of primes are squarefree numbers, and dial p<sup>−s</sup> gives ∏(1 + p<sup>−s</sup>) = ζ(s)/ζ(2s). A half of the primes (a density-½ set of primes, every dial at ½, or the merging half) always grows like X/√(log X). Complement of each prime's dial, c ↦ 1 − c, fixes ½, the same point merging picks. The mirror problem from finding 4 disappears.</li>
+<li><b>The common dial is the merging scale.</b> u = log(1 + t), the exponent of the growth, is additive under merging on every set tested. It matches across primes, prime ideals of number fields, integers, rationals and Poisson points on the line.</li>
+<li><b>No dial gives a half step by iteration.</b> The empty set always has one subset of weight 1, which forces f(0) = 1, then f(1) = 1, then f(f(1)) = 1 ≠ 2. This holds for any dials, even ones that change with the set's size.</li>
+</ol>
+</div></section>
+
+<section class="band" id="count"><div class="wrap">
+<h2>The dial and the count</h2>
+<p>A finite set S has 2ⁿ subsets. Give each element x a dial t<sub>x</sub> ≥ 0 and weigh a subset A by the product of its members' dials. The total weight factors element by element, because each element is either in (weight t<sub>x</sub>) or out (weight 1):</p>
+<div class="eq">Σ<sub>A⊆S</sub> ∏<sub>x∈A</sub> t<sub>x</sub> = ∏<sub>x∈S</sub> (1 + t<sub>x</sub>) = 1 + (t<sub>1</sub> ✳ t<sub>2</sub> ✳ … ✳ t<sub>n</sub>)</div>
+<p>The library already had this as the corner expansion of the mult-add cube; here it is restated on bit vectors so the later proofs can use it. In probabilities, dial t is the odds of including the element: p = t/(1 + t). Dial 1 is a fair coin.</p>
+</div></section>
+
+<section class="band" id="merge"><div class="wrap two">
+<div>
+<h2>Merging: the dials are forced, and the half is √2 − 1</h2>
+<p><b>Joining two copies.</b> Take two dialled power sets of the same set and join them: every pair (A, B), weighed by the product, lands on A ∪ B. One element can land "in" three ways (in–out, out–in, in–in), weighing t + s + ts = t ✳ s. So the joined family has dials t<sub>x</sub> ✳ s<sub>x</sub>. Proved for every finite set in Lean (<code>conv_W</code>).</p>
+<p><b>Merging two elements into one block.</b> If a block is present when either member is, the block carries the dial t ✳ s. Same computation.</p>
+<p><b>Why one dial per element is forced.</b> A weighting that respects disjoint union, P(S ⊔ T) = P(S) × P(T), is fixed by what it does on one element, which is a ratio of two weights: a dial. Respecting relabelling makes the dials equal.</p>
+<p><b>The half.</b> Under joining, P(S) is the family with every dial 1. Its square root needs t ✳ t = 1, so (1 + t)² = 2 and t = √2 − 1 ≈ 0.414. Among all non-negative weightings the square root is unique (the subset-sum transform turns joining into multiplication, and positive square roots are unique). For any α ≥ 0 the dial 2<sup>α</sup> − 1 gives P<sup>α</sup>, and P<sup>α</sup> joined with P<sup>β</sup> is P<sup>α+β</sup>. That is the law you asked for, with "join" in place of "do one then the other".</p>
+<p><b>Halving respects merging.</b> On the line u = log(1 + t), merging is addition and halving is u ↦ u/2, so halving commutes with merging (<code>half_of_merge</code>).</p>
+</div>
+<div><div class="plate"><svg viewBox="0 0 760 360" role="img" aria-labelledby="q2t"><title id="q2t">For a two-element set, each half is a pair of points in a square, measured on the merging scale u = log(1 + t). The corners are the classical splits of the set into two parts; the centre is the symmetric half with every dial √2 − 1.</title><rect x="110" y="60" width="240" height="240" fill="#eef0ff" stroke="#15131a" stroke-width="2"/><line x1="110" y1="300" x2="350" y2="60" stroke="#cf3519" stroke-width="1.4" stroke-dasharray="5 5"/><circle cx="110" cy="300" r="7" fill="#5d5a66"/><text x="96.0" y="318.0" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" text-anchor="end" fill="#5d5a66">{∅}</text><circle cx="350" cy="60" r="7" fill="#cf3519"/><text x="364.0" y="54.0" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" text-anchor="start" fill="#cf3519">P(S)</text><circle cx="350" cy="300" r="7" fill="#1d2bd8"/><text x="364.0" y="318.0" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" text-anchor="start" fill="#1d2bd8">P({x})</text><circle cx="110" cy="60" r="7" fill="#1d2bd8"/><text x="96.0" y="54.0" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" text-anchor="end" fill="#1d2bd8">P({y})</text><circle cx="230.0" cy="180.0" r="8" fill="#fff" stroke="#1d2bd8" stroke-width="3"/><text x="244.0" y="204.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="600" text-anchor="start" fill="#1d2bd8">symmetric half</text><text x="244.0" y="222.0" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#5d5a66">both dials √2 − 1</text><text x="230.0" y="330.0" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#5d5a66">u for element x, from 0 to log 2</text><text x="70" y="180.0" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66" text-anchor="middle" transform="rotate(-90 70 180.0)">u for element y</text><text x="430.0" y="90.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="600" text-anchor="start" fill="#15131a">A half is any point H in the box.</text><text x="430.0" y="114.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">Its partner is the opposite point,</text><text x="430.0" y="138.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">reflected through the centre:</text><text x="430.0" y="162.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a">H merged with its partner is P(S).</text><text x="430.0" y="186.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#15131a"></text><text x="430.0" y="210.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#1d2bd8">Corners: P(A) × P(S∖A), the old split.</text><text x="430.0" y="234.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#1d2bd8">Centre: the one half that is its</text><text x="430.0" y="258.0" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#1d2bd8">own partner, √2 − 1 on every element.</text></svg></div>
+<p class="cap">A two-element set, measured on the merging scale. Every point of the square is a half; joined with the opposite point it gives P(S). The corners are the classical splits, the centre is the symmetric half.</p></div>
+</div></section>
+
+<section class="band" id="complement"><div class="wrap">
+<h2>Complement: the two pictures meet at the full power set</h2>
+<p><b>What complement does.</b> Reading every subset as its complement turns the family with dials t into (∏t) times the family with dials 1/t (<code>W_compl</code>). In probabilities, p ↦ 1 − p. The only dial complement fixes is t = 1, the full power set with fair coins. So the balance point of complement is the whole power set, not a half. The suggestion that complement makes ½ the half does not survive on a single set.</p>
+<p><b>It swaps the two ways of merging.</b> Joining mult-adds the dials; intersecting mult-adds the reciprocal dials (the odds against). Complement exchanges them. So mult-add sits on both sides of the mirror, and the mirror is t ↔ 1/t.</p>
+<p><b>Do the pictures match?</b> Yes where they overlap: both put the full power set at the centre (t = 1, 45°). No when you ask for a half: merging by union gives √2 − 1, merging by intersection gives √2 + 1, and complement swaps them. As probabilities 1 − 1/√2 ≈ 0.293 and 1/√2 ≈ 0.707. A half that works both ways would need p ⊕ p = ½ and p² = ½ at once, which is impossible (<code>no_half_both_ways</code>). The half is natural but comes in a left-handed and a right-handed form.</p>
+<p class="mute">The other complement, c ↦ 1 − c on how much each element takes part, does fix ½. On a finite set it clashes with merging (1.5ⁿ against 2<sup>n/2</sup>). On the primes it agrees, below.</p>
+</div></section>
+
+<section class="band" id="primes"><div class="wrap">
+<h2>Primes: where the halves agree</h2>
+<p><b>The dictionary.</b> A finite set of primes is a squarefree number: {2, 3, 7} is 42, the empty set is 1. Dial p<sup>−s</sup> on each prime gives</p>
+<div class="eq">∏<sub>p</sub> (1 + p<sup>−s</sup>) = Σ<sub>n squarefree</sub> n<sup>−s</sup> = ζ(s)/ζ(2s)</div>
+<p>Checked to ten digits at s = 2 (15/π² = 1.51982) and s = 3 with the primes below 10⁷. The chain converges exactly when s &gt; 1. At s = 1 the sum of 1/p diverges (Euler), so s = 1 is the line between "the dialled subset is a squarefree number" and "the dialled subset is an infinite set of primes".</p>
+<p><b>What a half is here.</b> Let each prime take part with weight c<sub>p</sub> between 0 and 1. The numbers up to X built from the primes grow like X(log X)<sup>α−1</sup>, where α is the average of c<sub>p</sub> over the primes (Selberg–Delange; Landau 1908 for sums of two squares). So α is a dial you can read off by counting. A half of the primes is α = ½, growth X/√(log X), whichever way you halve:</p>
+<div class="scroll"><table>
+<thead><tr><th>Half of the primes</th><th>How</th><th class="n">α measured, 10⁶ to 10⁷</th><th class="n">count ÷ (X/√log X) at 10⁷</th></tr></thead>
+<tbody>
+<tr><td>Corner</td><td>only primes ≡ 1 mod 4, each dial 1</td><td class="n">0.518 (slow, known)</td><td class="n">0.307</td></tr>
+<tr><td>Plain participation</td><td>every prime at ½</td><td class="n">0.498</td><td class="n">0.461</td></tr>
+<tr><td>Merging half</td><td>(1 + c/p)² = 1 + 1/p</td><td class="n">0.500</td><td class="n">0.442</td></tr>
+</tbody></table></div>
+<p class="cap">Sieve of the numbers up to 10⁷. All three settle at ½; only the constant in front differs.</p>
+<p><b>Why they agree.</b> The dials that drive the growth belong to large primes, where p<sup>−s</sup> is tiny. For tiny dials mult-add is addition plus a second-order corner: (x/2) ✳ (x/2) = x + x²/4 (<code>tiny_half</code>). So halving by merging and halving by turning the dial to ½ coincide in what counts. The corner half joins in because density ½ of the primes carries half of Σ1/p.</p>
+<p><b>Both symmetries on the primes.</b> Merging adds exponents: two disjoint halves (primes ≡ 1 and ≡ 3 mod 4) merge to all squarefree numbers, α = ½ + ½ = 1. Complement of participation, c ↦ 1 − c, sends α to 1 − α and fixes α = ½. Here the two pictures match: the complement-symmetric half is the merging half. The subset complement A ↦ S∖A still breaks: the complement of a finite set of primes is infinite, so it leaves the squarefree numbers entirely.</p>
+</div></section>
+
+<section class="band" id="sets"><div class="wrap">
+<h2>Other sets: which dials they share</h2>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Set</th><th>Natural dial</th><th>Total</th><th>A half</th><th>Halves agree?</th></tr></thead>
+<tbody>
+<tr><td>Finite set</td><td>same t on each element</td><td>(1 + t)ⁿ</td><td>√2 − 1 each (2<sup>n/2</sup>)</td><td>No: plain ½ gives 1.5ⁿ; complement makes a mirror pair</td></tr>
+<tr><td>Primes</td><td>p<sup>−s</sup></td><td>ζ(s)/ζ(2s)</td><td>density-½ primes, or every dial ½</td><td>Yes, growth X/√(log X)</td></tr>
+<tr><td>Prime ideals of a number field</td><td>N𝔭<sup>−s</sup></td><td>ζ<sub>K</sub>(s)/ζ<sub>K</sub>(2s), checked for ℚ(i)</td><td>primes that split in a quadratic extension (Chebotarev)</td><td>Yes, same as the primes</td></tr>
+<tr><td>Naturals, by size</td><td>qⁿ</td><td>∏(1 + qⁿ): partitions into distinct parts</td><td>odd numbers only, or the merging half: half the log-total (π²/24)</td><td>Corner and merging agree; plain ½ gives 54.5%, the half needs c ≈ 0.455</td></tr>
+<tr><td>Naturals, by divisibility</td><td>prime exponents in binary</td><td>ζ(s), the merge of squarefree layers at p<sup>−s</sup>, p<sup>−2s</sup>, p<sup>−4s</sup>, …</td><td>the squarefree layer is half of ζ in growth</td><td>Yes, in the exponent</td></tr>
+<tr><td>Integers</td><td>q<sup>|n|</sup></td><td>2 × ∏(1 + qⁿ)²</td><td>ℕ, or −ℕ</td><td>Yes, exactly: n ↦ −n pairs equal dials</td></tr>
+<tr><td>Positive rationals</td><td>(num × den)<sup>−s</sup></td><td>ζ(s)²/ζ(2s), α = 2 (checked: 2.5 at s = 2)</td><td>ℕ and the squarefree numbers are complementary halves</td><td>Yes, in the exponent</td></tr>
+<tr><td>Algebraic numbers</td><td>needs degree and height together (Northcott)</td><td>finite for each degree and height bound</td><td>no canonical half found</td><td>Not tested</td></tr>
+<tr><td>Reals</td><td>uniform coin, or Poisson intensity λ</td><td>product measure; Poisson process</td><td>intensity λ/2, or λ on half the line</td><td>Poisson: yes, exactly on totals. Uniform: only √2 − 1</td></tr>
+</tbody></table></div>
+<p><b>The shared dials.</b> Three things are common. The uniform half √2 − 1 works on every set, but ignores the set's structure. The merging scale u = log(1 + t), read as a growth exponent, is additive on every set that has a size, and it lines up the primes, prime ideals, integers, rationals and the line. And wherever the dials that matter are tiny (large primes, prime ideals, Poisson points), the union half, the corner half and plain ½ all coincide, and complement agrees with merging. The finite set and the naturals by size are the two places the plain ½ is off, because their dials are not small where it counts.</p>
+</div></section>
+
+<section class="band" id="infinite"><div class="wrap">
+<h2>Infinite sets and choice</h2>
+<p>On an infinite set the counting total diverges, so use the probability form: include each element independently with p = t/(1 + t). On a countable set this needs no choice. The half becomes a random subset of density 1 − 1/√2 ≈ 0.293; two independent ones joined have density ½ (sampled on 200,000 elements: 0.294 and 0.502). Dials with a finite sum give a finite random subset; the infinite mult-add chain converges exactly then (1/k² gives sinh(π)/π). On the reals, summable dials live on countably many points; the uniform dial exists as a product measure but only answers questions about countably many reals at a time. The usual construction uses a little choice; I did not check whether it can be avoided.</p>
+<p><b>How it sits with the earlier choice results.</b> It neither conflicts with them nor resolves them. The dials interpolate weight, not size: a half on a countable set still has the full continuum of possible subsets. The earlier obstruction was about a size strictly between X and P(X) under iteration. Dials move the question from size to measure, where there is no obstruction, and finding 7 shows they cannot carry the iteration question.</p>
+</div></section>
+
+<section class="band" id="known"><div class="wrap">
+<h2>What is known and what is new</h2>
+<p><b>Known, under other names.</b> Dialled subsets are p-biased product measures; joining is OR-convolution; the semigroup P<sup>α</sup> is superposition of Poisson clocks; the counting identity is the multilinear expansion; the cube as the convex hull of the power set is Kosko's fuzzy cube. ζ(s)/ζ(2s), Fermi–Dirac primes, ζ(s)²/ζ(2s) for coprime pairs, Selberg–Delange growth, Landau's sums of two squares and Meinardus's partition asymptotics are all classical. (1 + tan θ)(1 + tan(45° − θ)) = 2 is an old competition identity.</p>
+<p><b>New here, as framing.</b> Reading these as one picture: the half power set under joining is unique and equals √2 − 1 per element; complement turns it into a mirror pair; and on the primes, prime ideals and Poisson points the mirror closes and every reasonable half has growth exponent ½. I found no source that puts the half power set this way, but each piece is standard.</p>
+<p><b>The geometric rule.</b> The underpinning is the cube [0,1]<sup>S</sup>: its corners are the subsets, each point is the mean of exactly one product measure, and joining becomes vector addition after u = −log(1 − p). That geometry is certain. On the primes the exponent α is analytic (the order of a pole at s = 1), sitting on the same cube.</p>
+</div></section>
+
+<section class="band" id="verdict"><div class="wrap">
+<h2>Verdict</h2>
+<div class="verdict"><p><b>The half power set by joining: settled, not a lead.</b> It exists, it is exact, it is unique, it works on every set and it is geometric. The question is closed, and the mathematics is known.</p></div>
+<div class="verdict"><p><b>The primes as a common dial: a modest lead, worth following as a yardstick.</b> It gives one measurable number, the exponent α, that agrees across primes, number fields, integers, rationals and the line, with halves that agree and both symmetries satisfied. Any proposed fractional power set, including an iteration-sense one in a choiceless world, could be tested by asking what it does to the primes. It predicts nothing beyond Selberg–Delange yet, so it is a tool, not a discovery.</p></div>
+<div class="verdict"><p><b>The iteration-sense half: dials cannot reach it.</b> That question stays where the previous page left it, open without choice.</p></div>
+</div></section>
+
+<section class="band" id="files"><div class="wrap">
+<h2>Proofs and checks</h2>
+<p><b>Lean: 48 theorems</b> in <code>FusedAlgebra/Topics/PowersetDials</code>, core Lean 4.37, no mathlib, no sorry, standard axioms only, compiled into the shared library (now 2,783 theorems in 110 modules). Main ones:</p>
+<ul>
+<li><code>total_W</code>, <code>total_W_chain</code>, <code>total_split</code>: the count, the mult-add chain, the splits.</li>
+<li><code>cell_merge</code>, <code>conv_W</code>: joining two dialled power sets mult-adds the dials, for every finite set.</li>
+<li><code>half_dial</code>, <code>half_squared_family</code>, <code>half_of_merge</code>, <code>mth_root_of_full</code>: the half and the roots.</li>
+<li><code>partner_spec</code>, <code>partner_partner</code>, <code>partner_fixed_iff</code>: the box of halves.</li>
+<li><code>W_compl</code>, <code>compl_swaps_merge</code>, <code>halves_reciprocal</code>, <code>no_half_both_ways</code>, <code>compl_fixed_dial</code>: complement.</li>
+<li><code>euler_squarefree</code>, <code>fermi_dirac</code>, <code>rational_factor</code>, <code>integers_square</code>, <code>tiny_half</code>, <code>participation_fixed</code>, <code>squarefree_from_subsets</code>: the known sets.</li>
+<li><code>no_iterate_half</code>: no dial gives an iteration half step.</li>
+</ul>
+<p><b>Python:</b> 34 of 34 checks pass (checks.py), plus the prime sieve to 10⁷ (primes_check.py) and the set comparisons (sets_check.py).</p>
+<p><b>Not proved in Lean:</b> uniqueness of the square root over the reals, the growth exponents (Selberg–Delange, Landau, Meinardus, Chebotarev), and everything about infinite sets. These are cited or checked numerically.</p>
+<p>Files in <code>math-theory/fractional-powerset-dials/</code>: README.md, checks.py, primes_check.py, sets_check.py with outputs, lean/PowersetDials.lean, this page.</p>
+</div></section>
+</body>
+</html>

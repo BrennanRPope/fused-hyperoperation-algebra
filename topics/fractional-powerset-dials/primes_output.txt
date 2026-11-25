@@ -1,0 +1,20 @@
+primes 664579
+s 2 1.5198177457292996 1.5198177546350666
+s 3 1.181564949009183 1.181564949010257
+1000 {'corner': 0.2944, 'centre': 0.4596, 'unionhalf': 0.4395} sf/X 0.608
+10000 {'corner': 0.3026, 'centre': 0.4607, 'unionhalf': 0.4412} sf/X 0.6083
+100000 {'corner': 0.3048, 'centre': 0.4609, 'unionhalf': 0.4416} sf/X 0.60794
+1000000 {'corner': 0.3059, 'centre': 0.4609, 'unionhalf': 0.4417} sf/X 0.60793
+10000000 {'corner': 0.3068, 'centre': 0.4607, 'unionhalf': 0.4417} sf/X 0.60793
+1000 10000 corner alpha est 0.596
+1000 10000 centre alpha est 0.508
+1000 10000 unionhalf alpha est 0.513
+10000 100000 corner alpha est 0.532
+10000 100000 centre alpha est 0.502
+10000 100000 unionhalf alpha est 0.505
+100000 1000000 corner alpha est 0.521
+100000 1000000 centre alpha est 0.5
+100000 1000000 unionhalf alpha est 0.501
+1000000 10000000 corner alpha est 0.518
+1000000 10000000 centre alpha est 0.498
+1000000 10000000 unionhalf alpha est 0.5

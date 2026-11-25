@@ -2171,6 +2171,54 @@ FusedAlgebra.Topics.Pi	PiMultAdd.quarter_twice
 FusedAlgebra.Topics.Pi	PiMultAdd.slope_one_four	
 FusedAlgebra.Topics.Pi	PiMultAdd.slope_one_twice	
 FusedAlgebra.Topics.Pi	PiMultAdd.term_shrink	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.W_compl	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.W_ones	propext, Classical.choice
+FusedAlgebra.Topics.PowersetDials	PowersetDials.W_replicate_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.cell_compl	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.cell_merge	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.compl_fixed_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.compl_swaps_merge	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.conv_W	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.euler_squarefree	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.fermi_dirac	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.half_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.half_of_merge	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.half_prob_inter	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.half_prob_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.half_squared_family	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.halves_merge_to_whole	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.halves_mirror	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.halves_reciprocal	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.inner_sum	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.integers_square	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.length_vecs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.mth_root_of_full	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.no_half_both_ways	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.no_iterate_half	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.no_iterate_half_rat	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.participation_fixed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.partner_fixed_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.partner_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.partner_partner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.partner_spec	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.partner_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.rational_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.squarefree_from_subsets	
+FusedAlgebra.Topics.PowersetDials	PowersetDials.sumL_map_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.sumL_map_append	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.sumL_map_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.sumL_map_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.sumL_vecs_succ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.summand_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.tiny_half	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.total_W	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.total_W_chain	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.total_empty	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.total_full	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.total_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.total_uniform	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PowersetDials	PowersetDials.zipWith_replicate	
+FusedAlgebra.Topics.PowersetDials	PowersetDials.zipWith_zero	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.PvsNP	PvsNP.Circ.size_mapC	propext
 FusedAlgebra.Topics.PvsNP	PvsNP.evalS_lift	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.PvsNP	PvsNP.eval_from_shift	propext, Classical.choice, Quot.sound

@@ -109,3 +109,4 @@ import FusedAlgebra.Topics.Fermat.FermatRoute
 import FusedAlgebra.Topics.Fermat.CounterexampleMap
 import FusedAlgebra.Topics.GeneralRelativity
 import FusedAlgebra.Topics.PvsNP
+import FusedAlgebra.Topics.PowersetDials

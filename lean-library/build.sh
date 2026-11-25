@@ -25,7 +25,7 @@ mods=(
   FusedAlgebra.Topics.MeasureProbability FusedAlgebra.Topics.ComplexAnalysis FusedAlgebra.Topics.FunctionalAnalysis FusedAlgebra.Topics.DiffGeometry FusedAlgebra.Topics.KnotTheory
   FusedAlgebra.Topics.Dynamics FusedAlgebra.Topics.InformationFull FusedAlgebra.Topics.Numerical FusedAlgebra.Topics.GameTheory FusedAlgebra.Topics.DiamondLattice FusedAlgebra.Topics.DialPointProcesses FusedAlgebra.Topics.SeveralWaves FusedAlgebra.Topics.RuleBreakers \
   FusedAlgebra.Topics.Biology.MolecularBiology FusedAlgebra.Topics.Biology.Metabolism FusedAlgebra.Topics.Biology.CellBiology FusedAlgebra.Topics.Biology.Genetics FusedAlgebra.Topics.Biology.Development FusedAlgebra.Topics.Biology.Physiology FusedAlgebra.Topics.Biology.NeuroScience FusedAlgebra.Topics.Biology.Evolution FusedAlgebra.Topics.Biology.Population FusedAlgebra.Topics.Biology.Ecology FusedAlgebra.Topics.Biology.Behaviour FusedAlgebra.Topics.FractionalPowerset
-  FusedAlgebra.Topics.GeneralRelativity
+  FusedAlgebra.Topics.GeneralRelativity FusedAlgebra.Topics.PowersetDials
   FusedAlgebra Check
 )
 export LEAN_PATH="$PWD/build"
