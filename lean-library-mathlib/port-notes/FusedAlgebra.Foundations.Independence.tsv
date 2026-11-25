@@ -1,0 +1,28 @@
+original	status	new_name	note
+Ops	dropped	AddCommGroup R + (m : R → R → R) (w : R)	the group part of the bundle is mathlib's AddCommGroup; the axioms now take the operation and the wall directly
+A1	mathlib	add_assoc	holds in every AddCommGroup; all models are AddCommGroups by mathlib instances
+A2	mathlib	add_comm	same
+A3	mathlib	add_zero	same
+A4	mathlib	neg_add_cancel	same
+M1	ported	MAFound.Independence.M1	predicate on the operation `m`
+M2	ported	MAFound.Independence.M2	predicate on the operation `m`
+M3	ported	MAFound.Independence.M3	predicate on `m` and the wall `w`
+M4	ported	MAFound.Independence.M4	predicate on `m` in an AddCommGroup; right side written with subtraction
+intOps	dropped	ℤ with its mathlib AddCommGroup	the operation and wall are passed to M1-M4 directly
+int_group	mathlib	Int.instAddCommGroup	A1-A4 for ℤ
+no_M4	ported	MAFound.Independence.no_M4	A1-A4 conjuncts are now the AddCommGroup instance of ℤ; the M-conjuncts are unchanged
+no_M3	ported	MAFound.Independence.no_M3	operation is `MultAdd.wAdd 2`; A1-A4 conjuncts are the instance; M1, M2, M4 come from the new general `wAdd_axioms`
+Mat	mathlib	Matrix (Fin 2) (Fin 2) ℤ	
+Mat.add	mathlib	Matrix.add	
+Mat.mul	mathlib	Matrix.instMul	
+Mat.neg	mathlib	Matrix.neg	
+matOps	dropped	MultAdd.multAdd on Matrix (Fin 2) (Fin 2) ℤ, wall -1	
+Mat.ext'	mathlib	Matrix.ext	
+no_M1	ported	MAFound.Independence.no_M1	on mathlib matrices; M2, M3, M4 come from the new general `m2_multAdd`, `m3_multAdd`, `m4_multAdd` (any ring); A1-A4 are the instance
+Tri	ported	MAFound.Independence.Tri	now an abbrev for ℤ × ℤ × ℤ
+Tri.mul	ported	MAFound.Independence.Tri.mul	
+Tri.add	mathlib	Prod.instAdd	
+Tri.neg	mathlib	Prod.instNeg	
+triOps	ported	MAFound.Independence.Tri.madd	only the mult-add is a definition; zero/add/neg are the product AddCommGroup; the wall (-1, 0, 0) is written in `no_M2`
+Tri.ext'	mathlib	Prod.ext	
+no_M2	ported	MAFound.Independence.no_M2	A1-A4 conjuncts are the AddCommGroup instance of ℤ × ℤ × ℤ
