@@ -85,14 +85,14 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <div class="two">
 <div>
 <h3>Partition functions (k = +1)</h3>
-<p>Measure energies from each ground state, so Z = 1 + z with z the excited weight. For independent systems Z_AB = Z_A·Z_B, so z_AB = z_A ⊞ z_B. The corner z_A·z_B is exactly "both excited". Free energy −kT ln Z is the log of the lift, so it adds, and so does heat capacity. <span class="tag k">known</span></p>
+<p>Measure energies from each ground state, so Z = 1 + z with z the excited weight. For independent systems Z_AB = Z_A·Z_B, so z_AB = z_A ∘₁ z_B. The corner z_A·z_B is exactly "both excited". Free energy −kT ln Z is the log of the lift, so it adds, and so does heat capacity. <span class="tag k">known</span></p>
 <h3>Third law: the identity and the wall</h3>
-<p>As T → 0 every excess z goes to 0, the circle-operation identity, and 0 ⊞ 0 = 0. A degenerate ground state leaves g − 1, which composes as (g₁g₂ − 1) = (g₁ − 1) ⊞ (g₂ − 1). Pauling's ice count W = (3/2)ᴺ is a climb: W − 1 = (½)^(⊞N). Absolute zero is the wall −1. A finite run of cooling steps, each keeping some heat, never lands on it (Lean: <code>unattainable</code>). <span class="tag k">known, restated</span> The cooling-step model is a simplification of Nernst's real argument.</p>
+<p>As T → 0 every excess z goes to 0, the circle-operation identity, and 0 ∘₁ 0 = 0. A degenerate ground state leaves g − 1, which composes as (g₁g₂ − 1) = (g₁ − 1) ∘₁ (g₂ − 1). Pauling's ice count W = (3/2)ᴺ is a climb: W − 1 = (½)^(∘₁N). Absolute zero is the wall −1. A finite run of cooling steps, each keeping some heat, never lands on it (Lean: <code>unattainable</code>). <span class="tag k">known, restated</span> The cooling-step model is a simplification of Nernst's real argument.</p>
 </div>
 <div>
 <h3>Engines and fridges are one square read two ways</h3>
-<p>Run a second engine on the first engine's waste heat. The waste box multiplies, so η = η₁ ⊞₋₁ η₂, the failure-union rule. Carnot fits exactly, η(T_h,T_c) = η(T_h,T_m) ⊞₋₁ η(T_m,T_c), and a perfect stage is the wall. Cascade two fridges and the work per unit of cold heat composes at k = +1. Running an engine backwards is the circle inverse: u = η/(1 − η) = inv(−η). <span class="tag k">known bookkeeping</span> <span class="tag s">tidy reading</span></p>
-<p>Curzon–Ahlborn's efficiency at maximum power, 1 − √(T_c/T_h), is half a step of the k = −1 climb: two of them make one Carnot step, η_C = η_CA ⊞₋₁ η_CA. The Otto cycle composes the same way through its compression ratios. And the second law composes: stages under their Carnot bounds give a cascade under the overall bound (Lean: <code>second_law_composes</code>).</p>
+<p>Run a second engine on the first engine's waste heat. The waste box multiplies, so η = η₁ ∘₋₁ η₂, the failure-union rule. Carnot fits exactly, η(T_h,T_c) = η(T_h,T_m) ∘₋₁ η(T_m,T_c), and a perfect stage is the wall. Cascade two fridges and the work per unit of cold heat composes at k = +1. Running an engine backwards is the circle inverse: u = η/(1 − η) = inv(−η). <span class="tag k">known bookkeeping</span> <span class="tag s">tidy reading</span></p>
+<p>Curzon–Ahlborn's efficiency at maximum power, 1 − √(T_c/T_h), is half a step of the k = −1 climb: two of them make one Carnot step, η_C = η_CA ∘₋₁ η_CA. The Otto cycle composes the same way through its compression ratios. And the second law composes: stages under their Carnot bounds give a cascade under the overall bound (Lean: <code>second_law_composes</code>).</p>
 </div>
 </div>
 </div></section>
@@ -101,7 +101,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <h2>Quantum statistics: fermions are the cube, bosons are the way back</h2>
 <div class="shot"><img src="figures/f2_fermion_cube_boson_stairs.png" alt="Left: a cube whose eight corners are the eight ways to fill three fermion modes, from all empty to all full, shaded by how many are full. Right: a staircase of shrinking squares 1, z, z², z³ and so on, summing to 1/(1 − z)."></div>
 <div class="two">
-<p>Pauli lets each fermion mode be empty or full, so the many-fermion states are the corners of the cube, and the grand partition function is the corner expansion: Ξ = (1 + z₁)⋯(1 + zₙ) = 1 + (z₁ ⊞ ⋯ ⊞ zₙ). A boson mode holds any number, Ξ_B = 1/(1 − z), and its excess z/(1 − z) is the circle inverse of −z. So Ξ_B(z)·Ξ_F(−z) = 1: a boson is a fermion of weight −z run backwards. <span class="tag k">known</span> (the fermion–boson, or Koszul, duality; checked for 4 modes)</p>
+<p>Pauli lets each fermion mode be empty or full, so the many-fermion states are the corners of the cube, and the grand partition function is the corner expansion: Ξ = (1 + z₁)⋯(1 + zₙ) = 1 + (z₁ ∘₁ ⋯ ∘₁ zₙ). A boson mode holds any number, Ξ_B = 1/(1 − z), and its excess z/(1 − z) is the circle inverse of −z. So Ξ_B(z)·Ξ_F(−z) = 1: a boson is a fermion of weight −z run backwards. <span class="tag k">known</span> (the fermion–boson, or Koszul, duality; checked for 4 modes)</p>
 <p>The Fermi function lives between two walls. With t = 1 − 2n = tanh(x/2), adding energies adds t like velocities, (t₁ + t₂)/(1 + t₁t₂), with walls at n = 0 and n = 1. For bosons 1/(1 + 2n) is the same tanh, so 1 + 2n lives outside the walls. <span class="tag k">known</span></p>
 </div>
 <div class="shot"><img src="figures/f3_fermi_walls.png" alt="Left: the curve t = tanh(x/2) running from the lower wall t = −1, labelled full level, to the upper wall t = 1, labelled empty level, through the identity t = 0. Right: a segment from −1 to 1 with T = 0⁻ at the left end, negative temperatures, T = ±∞ in the middle, positive temperatures, and T = 0⁺ at the right end."></div>
@@ -110,7 +110,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Entropy families: the weight is the entropy index</h2>
-<p>Tsallis entropy composes as S_AB = S_A ⊞ₖ S_B with k = 1 − q, and Rényi entropy is the log of the lift, so it adds. This circle operation with dial k already has a name in that literature: the <b>q-sum</b>, x ⊕_q y = x + y + (1 − q)xy, with its q-logarithm and q-exponential (Nivanen, Le Méhauté and Wang 2003; Borges 2004). So the whole k-line is Tsallis' q-algebra. <span class="tag k">known</span></p>
+<p>Tsallis entropy composes as S_AB = S_A ∘ₖ S_B with k = 1 − q, and Rényi entropy is the log of the lift, so it adds. This circle operation with dial k already has a name in that literature: the <b>q-sum</b>, x ⊕_q y = x + y + (1 − q)xy, with its q-logarithm and q-exponential (Nivanen, Le Méhauté and Wang 2003; Borges 2004). So the whole k-line is Tsallis' q-algebra. <span class="tag k">known</span></p>
 <p>Kaniadakis' relativistic κ-entropy uses the κ-sum x√(1 + κ²y²) + y√(1 + κ²x²), which is sinh addition. It has no corner term, and its next layer bends upward: it osculates the map at (0, κ²/2), in the turning country, the mirror of sine addition at (0, −½). <span class="tag k">known law</span> <span class="tag s">placement computed here</span></p>
 </div></section>
 
@@ -128,7 +128,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <div class="shot"><img src="figures/f5_lee_yang.png" alt="Left: zeros of the partition function in the complex field variable. Zeros of 25 random ferromagnets all sit on the unit circle; zeros of antiferromagnets sit on the real axis off the circle. Right: three two-by-two squares with cells 1, a·zᵢ, a·zⱼ and zᵢzⱼ, for a = 1 (the plain circle-operation square), a = 0.45, and a = 0 (only the diagonal cells)."></div>
 <div class="two">
 <p>For any ferromagnetic Ising model, every zero of the partition function in the field variable z lies on the unit circle (Lee and Yang 1952). It is a proved "zeros on a line" theorem, often held up as a model for the Riemann hypothesis. Each bond contributes 1 + a·zᵢ + a·zⱼ + zᵢzⱼ with a = e^(−2βJ). At infinite temperature (a = 1) that is the plain circle-operation square (1 + zᵢ)(1 + zⱼ). Cooling shrinks the edge cells, and at T = 0 only the diagonal is left. Asano's proof (1970) glues these squares spin by spin, keeping only the cube's all-0 and all-1 corners. Checked here against brute force on 15 random graphs, and the circle on 40.</p>
-<p>A three-spin chain shows it in miniature: Z = 1 + (a ⊞ b)z + (a ⊞ b)z² + z³ = (1 + z)(1 + (m − 1)z + z²) with m = a ⊞ b. Ferromagnetic bonds keep 0 ≤ a ⊞ b ≤ 3, so the quadratic's zeros are on the circle (all proved in Lean: <code>chain3_circ</code>, <code>chain3_disc</code>). Read as a law whose walls are those zeros, a ferromagnet sits in the turning country, and infinite temperature touches the border at (2, 1), the Euler-characteristic cusp. <span class="tag k">theorem known</span> <span class="tag s">circle-operation reading new to this project</span></p>
+<p>A three-spin chain shows it in miniature: Z = 1 + (a ∘₁ b)z + (a ∘₁ b)z² + z³ = (1 + z)(1 + (m − 1)z + z²) with m = a ∘₁ b. Ferromagnetic bonds keep 0 ≤ a ∘₁ b ≤ 3, so the quadratic's zeros are on the circle (all proved in Lean: <code>chain3_circ</code>, <code>chain3_disc</code>). Read as a law whose walls are those zeros, a ferromagnet sits in the turning country, and infinite temperature touches the border at (2, 1), the Euler-characteristic cusp. <span class="tag k">theorem known</span> <span class="tag s">circle-operation reading new to this project</span></p>
 </div>
 <div class="lead"><b>Lead check.</b> Nothing here is a discovery on the level of the solitons. Lee–Yang is the door worth opening next: rewrite Asano's contraction as an operation on circle-operation squares and prove the general circle theorem in the library. That needs complex numbers, which core Lean lacks, but Gaussian rationals over Rat would do.</div>
 </div></section>
@@ -217,29 +217,29 @@ const draw=()=>{
  svg.innerHTML=g;};
 const ro=new ResizeObserver(draw);ro.observe(svg);
 const R=[
- ["Partition functions multiply","z_AB = z_A ⊞ z_B, z = Z − 1","(1, 0)","known","partition_excess"],
+ ["Partition functions multiply","z_AB = z_A ∘₁ z_B, z = Z − 1","(1, 0)","known","partition_excess"],
  ["Free energy, heat capacity add","log of the lift","(0, 0)","known","free_energy_adds"],
  ["Third law","excess → 0, the identity","(1, 0)","known, restated","third_law_identity"],
  ["Unattainability","finite steps never reach the wall −1","(1, 0)","tidy reading (simplified model)","unattainable"],
- ["Residual entropy, Pauling's ice","W − 1 = (½)^(⊞N)","(1, 0)","known","pauling_ice"],
- ["Landauer's bound","2ⁿ − 1 = 1^(⊞n)","(1, 0)","known","landauer_states"],
+ ["Residual entropy, Pauling's ice","W − 1 = (½)^(∘₁N)","(1, 0)","known","pauling_ice"],
+ ["Landauer's bound","2ⁿ − 1 = 1^(∘₁n)","(1, 0)","known","landauer_states"],
  ["Equipartition","each quadratic degree a half-step in T","(1, 0)","known, restated","equipartition"],
  ["Fermion grand partition","corner expansion of the cube","(1, 0)","known","fermion_cube"],
  ["Bosons","Ξ_B − 1 = inv(−z)","inverse","known (Koszul duality)","boson_mode"],
  ["Fermi function","t = 1 − 2n, velocity addition","(0, −1)","known","fermi_velocity_num/den"],
  ["Negative temperature","walls are T = 0±, T = ∞ is the identity","(0, −1)","known, restated","vel_identity, vel_wall_pos/neg"],
- ["Engines in series, Carnot","η₁ ⊞₋₁ η₂","(−1, 0)","known","engine_cascade, carnot_series"],
- ["Fridges in cascade; reversal","u₁ ⊞ u₂; u = inv(−η)","(1, 0)","tidy reading","fridge_cascade, reverse_is_inverse"],
- ["Curzon–Ahlborn","η_C = η_CA ⊞₋₁ η_CA, a half-step","(−1, 0)","tidy reading","curzon_ahlborn_half"],
+ ["Engines in series, Carnot","η₁ ∘₋₁ η₂","(−1, 0)","known","engine_cascade, carnot_series"],
+ ["Fridges in cascade; reversal","u₁ ∘₁ u₂; u = inv(−η)","(1, 0)","tidy reading","fridge_cascade, reverse_is_inverse"],
+ ["Curzon–Ahlborn","η_C = η_CA ∘₋₁ η_CA, a half-step","(−1, 0)","tidy reading","curzon_ahlborn_half"],
  ["Otto cycle, heat pumps","ratios multiply","(−1, 0)","known","ratio_series"],
  ["Second law composes","stage bounds give the overall bound","(−1, 0)","known","second_law_composes"],
- ["Tsallis entropy (q-sum)","S_A ⊞ₖ S_B, k = 1 − q","(1 − q, 0)","known","tsallis_composes, qlog_qsum"],
+ ["Tsallis entropy (q-sum)","S_A ∘ₖ S_B, k = 1 − q","(1 − q, 0)","known","tsallis_composes, qlog_qsum"],
  ["Rényi entropy","log of the lift","(0, 0)","known","renyi_adds"],
  ["Kaniadakis κ-sum","sinh addition","(0, κ²/2)","placement computed here","Python only"],
- ["Ising bonds in series","p₁ ⊞₋₂ p₂","(−2, 0)","known","ising_series, decimation_num/den"],
+ ["Ising bonds in series","p₁ ∘₋₂ p₂","(−2, 0)","known","ising_series, decimation_num/den"],
  ["Ising bonds in parallel","velocity addition of tanh K","(0, −1)","known","fermi_velocity_num/den"],
  ["Kramers–Wannier duality","the lens M(t); fixed point √2 − 1 = T_c","lens","known","lens_vel, lens_involution, lens_fixed_point"],
- ["Lee–Yang, three-spin chain","coefficients a ⊞ b, zeros on the circle","(2a, 1)","theorem known, reading new to this project","chain3_circ, chain3_disc, two_spin_no_real_zero"],
+ ["Lee–Yang, three-spin chain","coefficients a ∘₁ b, zeros on the circle","(2a, 1)","theorem known, reading new to this project","chain3_circ, chain3_disc, two_spin_no_real_zero"],
  ["Stokes' pile, gray plates","(a + b − 2ab)/(1 − ab)","(−2, 1)","placement new here","stokes_additive, shields, stokes_double_wall"],
  ["Wick rotation","units by i: (k, q) → (ik, −q)","(0, ∓1)","known, restated","wick_num, wick_den"],
  ["Jarzynski equality","⟨e^(−βW)⟩ − 1 combines by the circle operation","(1, 0)","known","jarzynski_composes"],

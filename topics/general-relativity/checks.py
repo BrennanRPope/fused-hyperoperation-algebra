@@ -1,7 +1,7 @@
 """General relativity through the circle operation: the three routes, checked.
 
 Run: python3 checks.py  (writes checks_output.txt and results.json)
-Units G = c = 1 unless stated.  ✳ is the circle operation a + b + ab.
+Units G = c = 1 unless stated.  ∘₁ is the circle operation a + b + ab.
 """
 import json, math, sys, os
 import sympy as sp
@@ -153,7 +153,7 @@ check("River observers fall freely (geodesics) and are at rest at infinity", all
 check("Static clock rate = 1/gamma_river: 1 - v^2 = 1 - 2M/r = -g_tt", sp.simplify((1 - v**2) - (1 - 2 * M / r)) == 0)
 check("Static radial ruler = gamma_river: 1/(1 - v^2) = g_rr (Lorentz contraction)", sp.simplify(1 / (1 - v**2) - new_rr) == 0)
 # Circle inverse: (-g_tt - 1) and (g_rr - 1) are circle inverses
-check("Time deficit and radial-space deficit are circle inverses: (-g_tt-1) ✳ (g_rr-1) = 0",
+check("Time deficit and radial-space deficit are circle inverses: (-g_tt-1) ∘₁ (g_rr-1) = 0",
       sp.simplify(ma(-gtt - 1, new_rr - 1)) == 0)
 # Horizon = the dial's wall: river speed reaches c
 check("Horizon r = 2M is where the river reaches light speed (the velocity wall)",
@@ -285,10 +285,10 @@ vr2, vo2 = 2 * xx, xx / (1 - 2 * xx)
 w2 = vr2 + vo2 * (1 - vr2)            # perpendicular composition
 check("Orbit speed seen from the river (perpendicular composition): 1 - w^2 = (1-2x)(1 - v_o^2) = 1 - 3x",
       sp.simplify(1 - w2 - (1 - 3 * xx)) == 0)
-check("so Gravity Probe B's factor sqrt(1-3M/r) is 1/gamma of the gyroscope's speed through the river; -w^2 = (-v_r^2) ✳ (-v_o^2)",
+check("so Gravity Probe B's factor sqrt(1-3M/r) is 1/gamma of the gyroscope's speed through the river; -w^2 = (-v_r^2) ∘₁ (-v_o^2)",
       sp.simplify(-w2 - ma(-vr2, -vo2)) == 0)
 z1, z2 = sp.symbols('z1 z2')
-check("Redshifts chain by multiplying (1+z) factors, so redshifts combine by the circle operation: z = z1 ✳ z2",
+check("Redshifts chain by multiplying (1+z) factors, so redshifts combine by the circle operation: z = z1 ∘₁ z2",
       sp.expand((1 + ma(z1, z2)) - (1 + z1) * (1 + z2)) == 0)
 vv = sp.symbols('v', positive=True)
 check("Infalling light seen by the river: blueshift gamma times Doppler sqrt((1-v)/(1+v)) = 1/(1+v)",

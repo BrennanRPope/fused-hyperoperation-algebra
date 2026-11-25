@@ -5,7 +5,7 @@ Exact algebra with sympy; numbers with numpy.  Uses the small Clifford-algebra c
 gr-bridges thread (math-theory/gr-bridges/ga.py), which that thread wrote; nothing here repeats
 its section S6 (the sandwich law a + b + a k b), which is cited, not re-run.
 
-Notation.  The circle operation a * b = a + b + ab (written ✳ on the pages).  Landscape law
+Notation.  The circle operation a * b = a + b + ab (written ∘₁ on the pages).  Landscape law
 F_{p,q}(a,b) = (a + b + p ab)/(1 - q ab), rate V(a) = 1 + p a + q a^2.  The circle operation is (p,q) = (1,0).
 """
 import json, math, os, sys, itertools, random
@@ -187,18 +187,18 @@ sand = lambda X, Y, K: G2.add(X, Y, G2.mul(G2.mul(X, K), Y))
 check("kept: associativity of X + Y + X K Y (Cl(2,0), general symbolic X, Y, W, K) [gr-bridges S6 did Cl(3,0)]",
       G2.equal(sand(sand(Xg, Yg, Kgn), Wg, Kgn), sand(Xg, sand(Yg, Wg, Kgn), Kgn)))
 one2 = G2.scalar(1)
-check("kept: the left lift 1 + K(X ✳ Y) = (1 + KX)(1 + KY) and the right lift (1 + XK)(1 + YK) = 1 + (X ✳ Y)K",
+check("kept: the left lift 1 + K(X ∘₁ Y) = (1 + KX)(1 + KY) and the right lift (1 + XK)(1 + YK) = 1 + (X ∘₁ Y)K",
       G2.equal(G2.add(one2, G2.mul(Kgn, sand(Xg, Yg, Kgn))), G2.mul(G2.add(one2, G2.mul(Kgn, Xg)), G2.add(one2, G2.mul(Kgn, Yg))))
       and G2.equal(G2.add(one2, G2.mul(sand(Xg, Yg, Kgn), Kgn)), G2.mul(G2.add(one2, G2.mul(Xg, Kgn)), G2.add(one2, G2.mul(Yg, Kgn)))))
 comm = G2.sub(sand(Xg, Yg, Kgn), sand(Yg, Xg, Kgn))
-check("lost: commutativity; X ✳ Y - Y ✳ X = X K Y - Y K X exactly",
+check("lost: commutativity; X ∘₁ Y - Y ∘₁ X = X K Y - Y K X exactly",
       G2.equal(comm, G2.sub(G2.mul(G2.mul(Xg, Kgn), Yg), G2.mul(G2.mul(Yg, Kgn), Xg))) and comm != {})
 xv = G2.vector(sp.symbols("x1 x2")); yv = G2.vector(sp.symbols("y1 y2"))
 x1, x2 = sp.symbols("x1 x2"); y1, y2 = sp.symbols("y1 y2")
 cv = G2.sub(sand(xv, yv, one2), sand(yv, xv, one2))
-check("K = 1, vectors x, y: x ✳ y - y ✳ x = 2 x∧y = 2(x1 y2 - x2 y1) e12, twice the oriented area",
+check("K = 1, vectors x, y: x ∘₁ y - y ∘₁ x = 2 x∧y = 2(x1 y2 - x2 y1) e12, twice the oriented area",
       G2.equal(cv, G2.scale(2*(x1*y2 - x2*y1), G2.e(0, 1))))
-check("vectors: x ✳ y = x + y + x·y + x∧y, the corner splits into dot (scalar) + wedge (bivector), as on twisted boosts",
+check("vectors: x ∘₁ y = x + y + x·y + x∧y, the corner splits into dot (scalar) + wedge (bivector), as on twisted boosts",
       G2.equal(sand(xv, yv, one2), G2.add(xv, yv, G2.scalar(x1*y1 + x2*y2), G2.scale(x1*y2 - x2*y1, G2.e(0, 1)))))
 # information: distinct directions keep every subset product on its own blade
 G4 = GA([kap, kap, kap, kap])
@@ -209,17 +209,17 @@ for i in range(1, 4):
     acc = G4.add(acc, G4.scale(aa[i], G4.e(i)), G4.mul(acc, G4.scale(aa[i], G4.e(i))))
 ok_blades = all(sp.simplify(acc.get(sum(1 << j for j in S), 0) - sp.Mul(*[aa[j] for j in S])) == 0
                 for r in range(1, 5) for S in itertools.combinations(range(4), r))
-check("kept information: a1 e1 ✳ a2 e2 ✳ a3 e3 ✳ a4 e4 = sum over the 15 non-empty subsets S of a_S e_S, each on its own blade",
+check("kept information: a1 e1 ∘₁ a2 e2 ∘₁ a3 e3 ∘₁ a4 e4 = sum over the 15 non-empty subsets S of a_S e_S, each on its own blade",
       ok_blades and len(acc) == 15)
 check("... and the result does not depend on the squares kappa (no direction repeats), so no dial is needed for this",
       all(not vv.has(kap) for vv in acc.values()))
 shadow = sum(acc.values())
-check("the scalar shadow (every blade read as 1) is the ordinary circle operation a1 ✳ a2 ✳ a3 ✳ a4 = prod(1 + a_i) - 1, which forgets which subset",
+check("the scalar shadow (every blade read as 1) is the ordinary circle operation a1 ∘₁ a2 ∘₁ a3 ∘₁ a4 = prod(1 + a_i) - 1, which forgets which subset",
       Z(shadow - (sp.Mul(*[1 + t for t in aa]) - 1)))
 # reversion
 def rev(G, X):
     return {A: (-1)**((bin(A).count('1') * (bin(A).count('1') - 1)) // 2) * v for A, v in X.items()}
-check("reversion: (X ✳_K Y)~ = Y~ ✳_(K~) X~ (general Cl(2,0) elements)",
+check("reversion: (X ∘_K Y)~ = Y~ ∘_(K~) X~ (general Cl(2,0) elements)",
       G2.equal(rev(G2, sand(Xg, Yg, Kgn)), sand(rev(G2, Yg), rev(G2, Xg), rev(G2, Kgn))))
 def ginv_num(G, X):
     # numeric inverse via left-multiplication matrix
@@ -339,7 +339,7 @@ check("q = +1 dial boost [[1, u], [-ū, 1]] is the quaternion 1 + u j (SU(2) for
 check("so the corner X + iY = (1 - u·v) + i(u×v): Hamilton's scalar part carries the dot, the i part Grassmann's wedge u∧v",
       True, "identity proved symbolically on the twisted-boosts page (corner_split in TwistedBoosts.lean)")
 RES["G"] = ("Existing (twisted boosts): the q=+1 dial boost is a unit-direction quaternion; its product's scalar part is 1 - u·v and its "
-            "i-part is the wedge u×v. Grassmann's exterior product is the antisymmetric part of the corner (section D: x✳y - y✳x = 2 x∧y).")
+            "i-part is the wedge u×v. Grassmann's exterior product is the antisymmetric part of the corner (section D: x∘₁y - y∘₁x = 2 x∧y).")
 
 # =============================================================================================
 section("H. Clifford's biquaternions (1873): q + ω r with ω^2 = +1, 0, -1, the curvature sign")
@@ -402,7 +402,7 @@ section("I. Dual numbers as jets: the circle operation with ε^2 = 0 is the circ
 a0, a1_, b0, b1 = sp.symbols("a0 a1 b0 b1")
 eps = sp.symbols("epsilon")
 expr = sp.expand(ma(a0 + a1_*eps, b0 + b1*eps)).subs(eps**2, 0)
-check("(a0 + a1 ε) ✳ (b0 + b1 ε) = (a0 ✳ b0) + (a1(1 + b0) + b1(1 + a0)) ε: the ε part is the derivative (chain rule)",
+check("(a0 + a1 ε) ∘₁ (b0 + b1 ε) = (a0 ∘₁ b0) + (a1(1 + b0) + b1(1 + a0)) ε: the ε part is the derivative (chain rule)",
       Z(expr - (ma(a0, b0) + (a1_*(1 + b0) + b1*(1 + a0))*eps)))
 RES["I"] = "Dual-number arguments turn the circle operation into its first jet (cf. the jets page). Border-country laws are re-charted dual numbers."
 
@@ -482,7 +482,7 @@ check("discrete Clifford–Klein form of the circle law: {tan(pi j/12)} plus the
       close)
 RES["K"] = ("Partial: the circle law's group is already a circle (its ruler arctan is periodic), its finite subgroups tan(pi j/n) are "
             "1-D Clifford–Klein forms, and the chart is the quotient S^3 -> elliptic space. No higher-dimensional circle-operation form (flat torus "
-            "built from ✳) yet; it would need two commuting dials (a 2-parameter group) and a lattice in it.")
+            "built from ∘₁) yet; it would need two commuting dials (a 2-parameter group) and a lattice in it.")
 
 # =============================================================================================
 section("L. Clifford's chain of circles (1871): holds in every complex chart of the landscape by Möbius invariance")
@@ -519,7 +519,7 @@ for c_, r_ in cs:
 check("a landscape translation z -> F_{p,q}(z, c) (complex) carries the four circles to circles still meeting at the image Miquel point", ok_tr)
 RES["L"] = ("Holds by transfer only: landscape translations are Möbius maps, so Clifford's chain theorem survives in every chart, with "
             "lines becoming circles through the image of infinity. No circle-operation statement of the chain itself; it would need concurrency "
-            "written as a ✳ identity (real cross-ratios).")
+            "written as a ∘₁ identity (real cross-ratios).")
 
 # =============================================================================================
 with open(os.path.join(HERE, "checks_output.txt"), "w") as f:

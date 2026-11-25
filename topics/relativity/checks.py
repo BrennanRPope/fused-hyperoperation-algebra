@@ -12,11 +12,11 @@ ma=lambda p,q:p+q+p*q
 D=lambda p:(1+p)/(1-p)      # Doppler factor squared (Bondi k^2)
 d=lambda p:D(p)-1           # = 2p/(1-p), the circle-operation variable
 check("lens: D(u+v rel) = D(u)·D(v)", z(D(vel(u,v))-D(u)*D(v)))
-check("The circle operation in disguise: d(u⊕v) = d(u) ⊞ d(v), d = 2u/(1-u)", z(d(vel(u,v))-ma(d(u),d(v))))
+check("The circle operation in disguise: d(u⊕v) = d(u) ∘₁ d(v), d = 2u/(1-u)", z(d(vel(u,v))-ma(d(u),d(v))))
 check("d(u) = 2u/(1-u)", z(d(u)-2*u/(1-u)))
 check("inverse lens: u = d/(2+d)", z(d(u)/(2+d(u))-u))
 check("units: velc(u,v)/c = vel(u/c, v/c)", z(velc(u,v)/c-vel(u/c,v/c)))
-check("light absorbs: 1 ⊕ v = 1 (like -1 ⊞ b = -1)", z(vel(1,v)-1) and z(ma(-1,b)+1))
+check("light absorbs: 1 ⊕ v = 1 (like -1 ∘₁ b = -1)", z(vel(1,v)-1) and z(ma(-1,b)+1))
 check("-1 ⊕ v = -1", z(vel(-1,v)+1))
 check("light wall maps to the circle-operation wall: d(-1) = -1, d(1) = ∞", z(d(sp.Integer(-1))+1) and sp.limit(d(u),u,1,'-')==sp.oo)
 check("speed limit: 1 - u⊕v = (1-u)(1-v)/(1+uv)", z(1-vel(u,v)-(1-u)*(1-v)/(1+u*v)))

@@ -54,7 +54,7 @@ section{border-top:1px solid var(--line)}
   <div>
     <h1>Rulecraft, in fused algebra</h1>
     <p class="lede">Three of Rulecraft's ideas get an exact shape. <b>Scope matches spillover</b> is the corner of the cube that straddles a boundary. <b>Wisdom</b> is the corner of a square, and a mixed panel's wisdom is mostly cross corners. <b>The event horizon</b> is −1, the one value the circle operation ∘₁ (called mult-add before 1.0) can never undo.</p>
-    <p class="note">The circle operation: a ⊞ b = a + b + ab = (1 + a)(1 + b) − 1. A number becomes a box; its pieces are the corners of a cube. Everything here is classical algebra read through Rulecraft. What may be new is the single picture.</p>
+    <p class="note">The circle operation: a ∘₁ b = a + b + ab = (1 + a)(1 + b) − 1. A number becomes a box; its pieces are the corners of a cube. Everything here is classical algebra read through Rulecraft. What may be new is the single picture.</p>
   </div>
   <svg viewBox="0 0 420 380" role="img" aria-label="The boundary square: a unit square, a strip for the inside effect, a strip for the outside effect, and a yellow corner where both change together">
     <rect x="20" y="130" width="230" height="230" fill="var(--plane)" stroke="var(--bg)" stroke-width="4"/>
@@ -142,8 +142,8 @@ section{border-top:1px solid var(--line)}
 
 <section class="band" id="horizon"><div class="wrap">
   <h2>3. The event horizon is −1</h2>
-  <p class="sub">−1 absorbs: (−1) ⊞ b = −1. Everywhere else, the way back is ⊖a = −a/(1 + a)</p>
-  <p>The circle operation has a way back from every change but one. Lose everything (a = −1) and the box's side becomes zero; no later change can rebuild it, because (−1) ⊞ b = −1 for every b. That is Rulecraft's event horizon in one line, and the kernel's job is to forbid steps to −1: abolishing elections, removing a group's rights. Near the horizon the way back grows without limit, which is why the thermostat must warn early.</p>
+  <p class="sub">−1 absorbs: (−1) ∘₁ b = −1. Everywhere else, the way back is ⊖a = −a/(1 + a)</p>
+  <p>The circle operation has a way back from every change but one. Lose everything (a = −1) and the box's side becomes zero; no later change can rebuild it, because (−1) ∘₁ b = −1 for every b. That is Rulecraft's event horizon in one line, and the kernel's job is to forbid steps to −1: abolishing elections, removing a group's rights. Near the horizon the way back grows without limit, which is why the thermostat must warn early.</p>
   <div class="plate">
     <img src="figures/r3_horizon.png" alt="The gain needed to recover rises from 25% after a 20% loss to 900% after a 90% loss and goes to infinity at 100%.">
     <div>
@@ -153,7 +153,7 @@ section{border-top:1px solid var(--line)}
         <tbody><tr><td>20%</td><td class="n">25%</td></tr><tr><td>50%</td><td class="n">100%</td></tr><tr><td>90%</td><td class="n">900%</td></tr><tr><td>99%</td><td class="n">9,900%</td></tr><tr><td>100%</td><td class="n">none exists</td></tr></tbody>
       </table>
       <h3>The thermostat's exact correction</h3>
-      <p class="nums">A KPI drifts up 25%. Pulling it down 25% leaves it 6.25% low, because d ⊞ (−d) = −d², the drift's corner square. The exact correction is −20%. At a 10% drift the additive error is 1%; at 50% it is 25%.</p>
+      <p class="nums">A KPI drifts up 25%. Pulling it down 25% leaves it 6.25% low, because d ∘₁ (−d) = −d², the drift's corner square. The exact correction is −20%. At a 10% drift the additive error is 1%; at 50% it is 25%.</p>
     </div>
   </div>
   <h3>Worked: a debt trap, by cube layer</h3>
@@ -171,7 +171,7 @@ section{border-top:1px solid var(--line)}
   <p class="sub">Real but narrower; each is checked in the files</p>
   <ul>
     <li><b>Tensions held in balance.</b> Two principles sharing 10 units of effort keep the largest corner at 5 and 5 (25). Lopsided by 2 keeps 21; by 4, keeps 9. The loss is always the square of the gap, (s+d)(s−d) = s² − d². "Each fails alone" is the corner being zero at either end. Three-way tensions such as merit, mirror and mandate are a 3-cube with layers 1, 3, 3, 1.</li>
-    <li><b>Benedict's synergy as a sign.</b> In a ⊞_A b = a + b + A·ab the corner carries a weight. A &gt; 0 is a high-synergy society (gains compound), A &lt; 0 is low synergy (one gain is another's loss), A = 0 means nothing spills over. Proved: A·(a ⊞_A b) = (Aa) ⊞ (Ab), so every A is the ordinary circle operation in rescaled units.</li>
+    <li><b>Benedict's synergy as a sign.</b> In a ∘_A b = a + b + A·ab the corner carries a weight. A &gt; 0 is a high-synergy society (gains compound), A &lt; 0 is low synergy (one gain is another's loss), A = 0 means nothing spills over. Proved: A·(a ∘_A b) = (Aa) ∘₁ (Ab), so every A is the ordinary circle operation in rescaled units.</li>
     <li><b>The free floor vote is the 1.</b> Rulecraft gives each citizen a free basic vote and prices extra influence quadratically, k². Pricing total voice V = 1 + k as V² − 1 instead keeps each person's voice proportional to how much they care. With values 1, 2 and 4, plain pricing gives voices 2 : 3 : 5; fused pricing gives 1 : 2 : 4. Plain pricing blends one-person-one-vote with quadratic voting; fused pricing is quadratic voting with the first unit pre-paid. Which the book wants is a values question, not a math one.</li>
     <li><b>Saved influence must never earn a return.</b> If stored votes grew even 5% a period, they would compound like capital (1.63× in 10 periods), turning equal credits into r &gt; g. Rulecraft's "never earned" rule is the right guard.</li>
     <li><b>Order of reforms.</b> The circle operation commutes and associates, so percent changes to one quantity give the same result in any order (proved for any reshuffle). Path dependence needs a higher rung: the fused exponent (1+a)^(1+b) − 1 gives 7 one way and 8 the other.</li>
@@ -194,8 +194,8 @@ section{border-top:1px solid var(--line)}
   <p class="sub">Core Lean 4, no mathlib; every identity also checked with sympy</p>
   <p><b>RulecraftFused.lean is written but not yet compiled.</b> Installing Lean was refused in this session, so the file is unchecked. Every identity it states was checked symbolically in checks.py, so a failure would be a proof-script slip, not a false statement. It proves:</p>
   <ul>
-    <li><code>boundary</code>, <code>foldCirc_append</code>: the whole is inside ⊞ outside, cross term X_S·X_T</li>
-    <li><code>one_add_foldCirc_eq_corners</code>: 1 + (x₁ ⊞ … ⊞ xₙ) is the sum over every group of parties of the product of their effects (the cube's corners)</li>
+    <li><code>boundary</code>, <code>foldCirc_append</code>: the whole is inside ∘₁ outside, cross term X_S·X_T</li>
+    <li><code>one_add_foldCirc_eq_corners</code>: 1 + (x₁ ∘₁ … ∘₁ xₙ) is the sum over every group of parties of the product of their effects (the cube's corners)</li>
     <li><code>foldCirc_perm</code>: any reshuffle of the same effects gives the same total; <code>fexp_not_comm</code>: the fused exponent rung doesn't commute</li>
     <li><code>neg_one_absorbs</code>, <code>no_way_back</code>, <code>way_back</code>, <code>recovery</code>: the event horizon and the exact way back</li>
     <li><code>thermostat_residue</code>, <code>panel_grid</code>, <code>balance</code>, <code>balance_le</code>, <code>weighted_conj</code>, <code>fused_price_step</code></li>

@@ -1,7 +1,7 @@
 SPEC=dict(
 title="Metabolism and the circle operation",
 h1="Two-substrate enzymes sit on the dial, and their plotted lines cross at its wall",
-lede="Write each substrate as u = K/S and the textbook rate law for an ordered two-substrate enzyme is exactly 1 + (u_A ✳_k u_B), with dial k = K_ia/K_a. Ping-pong enzymes are dial 0 and independent random binding is dial 1. The point where every double-reciprocal line crosses, which biochemists use to read off K_ia, is the wall of the dial. Two-nutrient growth laws sit on the same dial; Liebig's minimum does not.",
+lede="Write each substrate as u = K/S and the textbook rate law for an ordered two-substrate enzyme is exactly 1 + (u_A ∘ₖ u_B), with dial k = K_ia/K_a. Ping-pong enzymes are dial 0 and independent random binding is dial 1. The point where every double-reciprocal line crosses, which biochemists use to read off K_ia, is the wall of the dial. Two-nutrient growth laws sit on the same dial; Liebig's minimum does not.",
 stats=[("19 / 19","numeric checks"),("19","Lean theorems, no sorry"),("0","new leads; one useful reading")],
 hero_fig="figures/f1_lines_meet_at_wall.png",
 hero_cap="Reciprocal rate against reciprocal first substrate, one line per level of the second substrate. At dial 0 the lines are parallel; at any other dial they all pass through u_A = −1/k, the wall. The middle panel uses measured constants for rat liver mitochondrial malate dehydrogenase (K_a 72, K_ia 12, K_b 86 µM), which put it at k = 1/6.",
@@ -13,8 +13,8 @@ sections=[
 """<p>An enzyme that joins two substrates A and B has the textbook (Cleland) rate law</p>
 <div class="eq">V / v = 1 + K<sub>a</sub>/A + K<sub>b</sub>/B + K<sub>ia</sub>·K<sub>b</sub> / (A·B)</div>
 <p>Put u<sub>A</sub> = K<sub>a</sub>/A and u<sub>B</sub> = K<sub>b</sub>/B, how far each substrate is below its own half-saturation level. The last term is then k·u<sub>A</sub>·u<sub>B</sub> with k = K<sub>ia</sub>/K<sub>a</sub>, so</p>
-<div class="eq">V / v = 1 + (u<sub>A</sub> ✳<sub>k</sub> u<sub>B</sub>)</div>
-<p>I did not take the textbook formula on trust. I wrote down the elementary steps of each mechanism, solved the steady state exactly for 300 random sets of rate constants, and compared with the dial form: the ordered mechanism matches to 2×10⁻¹² and the ping-pong mechanism to 9×10⁻¹⁴. Ping-pong has no product term at all, dial 0. Random binding to two independent sites factors as (1 + u<sub>A</sub>)(1 + u<sub>B</sub>), dial 1, plain ✳. Lean proves the identity over any field.</p>
+<div class="eq">V / v = 1 + (u<sub>A</sub> ∘<sub>k</sub> u<sub>B</sub>)</div>
+<p>I did not take the textbook formula on trust. I wrote down the elementary steps of each mechanism, solved the steady state exactly for 300 random sets of rate constants, and compared with the dial form: the ordered mechanism matches to 2×10⁻¹² and the ping-pong mechanism to 9×10⁻¹⁴. Ping-pong has no product term at all, dial 0. Random binding to two independent sites factors as (1 + u<sub>A</sub>)(1 + u<sub>B</sub>), dial 1, plain ∘₁. Lean proves the identity over any field.</p>
 <p>A real enzyme: rat liver mitochondrial malate dehydrogenase has K<sub>a</sub> = 72 µM, K<sub>ia</sub> = 12 µM, K<sub>b</sub> = 86 µM, so k = 1/6. It is a sequential enzyme, but nearer the ping-pong end of the dial than the independent end.</p>"""),
 ("wall","The wall","2. The crossing point is the wall",
 """<p>Enzymologists plot 1/v against 1/A, one line for each level of B. Read the rate law as a line in u<sub>A</sub>: its height at zero is 1 + u<sub>B</sub> and its slope is 1 + k·u<sub>B</sub>. Changing B moves the whole line by (change in u<sub>B</sub>) × (1 + k·u<sub>A</sub>). That factor is zero at one place only:</p>
@@ -23,7 +23,7 @@ sections=[
 <p>The crossing point sits at negative 1/A, so it is never a real concentration. Like the helix–coil wall on the previous page, it is a point of the algebra that shows up only by extending lines past the data, and that is how biochemists use it.</p>"""),
 ("nutrients","Nutrients","3. Two scarce nutrients, and saturation",
 """<p>A microbe short of two nutrients grows at some fraction of its maximum. Each nutrient alone gives θ = S/(K + S) = 1/(1 + u). The two common ways to combine them are the same dial:</p>
-<ul><li><b>Multiplicative:</b> growth ∝ θ₁θ₂, so 1/growth = 1 + (u₁ ✳ u₂), dial 1.</li>
+<ul><li><b>Multiplicative:</b> growth ∝ θ₁θ₂, so 1/growth = 1 + (u₁ ∘₁ u₂), dial 1.</li>
 <li><b>Additive resistance:</b> 1/growth = 1/θ₁ + 1/θ₂ − 1 = 1 + u₁ + u₂, dial 0.</li></ul>
 <p>Seen from the other side, the shortfall from full growth, 1 − θ₁θ₂, is the "or" of the two shortfalls, dial −1, the same law as two proofreading checks.</p>
 <p>Liebig's law of the minimum, growth = the smaller θ, is not on the dial. With both nutrients equally scarce, the best single dial is k = 0 and it still misses Liebig by 17% at the worst point; negative dials send growth through a pole. Lean proves the dial forms; the miss is a numerical check.</p>
@@ -33,8 +33,8 @@ sections=[
 ],
 table_h2="Where the circle operation shows up in metabolism",
 table=[
-["Ordered two-substrate enzyme","V/v = 1 + (u<sub>A</sub> ✳<sub>k</sub> u<sub>B</sub>), dial k = K<sub>ia</sub>/K<sub>a</sub>; MDH sits at k = 1/6","Cleland 1963","Exact, known"],
-["Ping-pong / random independent","Dial 0 (parallel lines) and dial 1 (plain ✳)","Cleland 1963","Exact, known"],
+["Ordered two-substrate enzyme","V/v = 1 + (u<sub>A</sub> ∘<sub>k</sub> u<sub>B</sub>), dial k = K<sub>ia</sub>/K<sub>a</sub>; MDH sits at k = 1/6","Cleland 1963","Exact, known"],
+["Ping-pong / random independent","Dial 0 (parallel lines) and dial 1 (plain ∘₁)","Cleland 1963","Exact, known"],
 ["Crossing of double-reciprocal lines","The wall u<sub>A</sub> = −1/k, i.e. 1/A = −1/K<sub>ia</sub>; unique","Standard way to measure K<sub>ia</sub>","Exact, known; wall seen in a lab plot"],
 ["Two-nutrient growth","Multiplicative is dial 1, additive resistance dial 0; shortfalls combine by 'or'","Standard growth models","Exact, known"],
 ["Liebig's minimum","Not on the dial; best k = 0 misses by 17%","Liebig 1840","Negative result"],

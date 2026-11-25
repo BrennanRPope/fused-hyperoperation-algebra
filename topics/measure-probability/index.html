@@ -131,15 +131,15 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div class="wrap cols">
 <div>
 <h2>Independence: expectation passes straight through the dial</h2>
-<p>For independent X and Y and any weight k, E[X ✳ₖ Y] = E X ✳ₖ E Y. The reason is the corner: the only cross term is k·XY, and independence makes E[XY] = E X·E Y. For dependent variables the gap is exactly k·Cov(X, Y), the corner's excess. Lean proves both on finite distributions. The statistics page had this for events (the union law with k = −lift); this is the same fact for any random quantity.</p>
+<p>For independent X and Y and any weight k, E[X ∘ₖ Y] = E X ∘ₖ E Y. The reason is the corner: the only cross term is k·XY, and independence makes E[XY] = E X·E Y. For dependent variables the gap is exactly k·Cov(X, Y), the corner's excess. Lean proves both on finite distributions. The statistics page had this for events (the union law with k = −lift); this is the same fact for any random quantity.</p>
 <p><b>Odds of an "or" combine by the circle operation ∘₁ (called mult-add before 1.0).</b> For independent events the lift of the odds is 1 + odds = 1/(1 − p), and misses multiply, so</p>
-<div class="eq">odds(A or B) = odds A ✳ odds B</div>
-<p>and odds against an "and" combine by the circle operation the same way. A 30% and a 45% event: odds 0.4286 ✳ 0.8182 = 1.597, matched by 400,000 simulated draws.</p>
+<div class="eq">odds(A or B) = odds A ∘₁ odds B</div>
+<p>and odds against an "and" combine by the circle operation the same way. A 30% and a 45% event: odds 0.4286 ∘₁ 0.8182 = 1.597, matched by 400,000 simulated draws.</p>
 </div>
 <div>
 <h2>Growth: martingales and Yor's formula are the cube in time</h2>
-<p>Wealth after returns r₁, r₂, … is r₁ ✳ r₂ ✳ ⋯. With independent fair returns (mean 0) the expected change stays 0 at every step, by the engine above: a multiplicative martingale. Yet six fair ±50% bets leave the typical path down 58%. The mean is a dial of means; the typical path follows the log ruler, where each step loses ½·log(0.75).</p>
-<p>In continuous time this is the stochastic exponential ℰ (Doléans-Dade 1970). Yor's formula ℰ(X)·ℰ(Y) = ℰ(X + Y + [X, Y]) is the circle operation one step at a time: each step's increment is Δx ✳ Δy, and the bracket [X, Y] is the running total of corner cells ΔxΔy. For Brownian motion the self-corners ΣΔW² add up to time t, and half of them is the familiar drift correction: ℰ(σW) = exp(σW − σ²t/2).</p>
+<p>Wealth after returns r₁, r₂, … is r₁ ∘₁ r₂ ∘₁ ⋯. With independent fair returns (mean 0) the expected change stays 0 at every step, by the engine above: a multiplicative martingale. Yet six fair ±50% bets leave the typical path down 58%. The mean is a dial of means; the typical path follows the log ruler, where each step loses ½·log(0.75).</p>
+<p>In continuous time this is the stochastic exponential ℰ (Doléans-Dade 1970). Yor's formula ℰ(X)·ℰ(Y) = ℰ(X + Y + [X, Y]) is the circle operation one step at a time: each step's increment is Δx ∘₁ Δy, and the bracket [X, Y] is the running total of corner cells ΔxΔy. For Brownian motion the self-corners ΣΔW² add up to time t, and half of them is the familiar drift correction: ℰ(σW) = exp(σW − σ²t/2).</p>
 <div class="panel"><div class="fig2" id="bm" style="min-height:250px"></div>
 <p class="small">One path, 4,000 steps. Orange: the product ∏(1 + σΔW). Teal dashed: exp(σW − σ²t/2), on top of it. Grey: exp(σW), which forgets the corners and drifts away.</p></div>
 </div>

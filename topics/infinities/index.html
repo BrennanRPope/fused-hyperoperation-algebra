@@ -58,7 +58,7 @@ a{color:var(--blue)}
 <h1>Between countable and the continuum</h1>
 <p class="lede">Sizes of infinity come in separate steps, never a smooth line, as long as the axiom of choice holds. Your continuum is real, but it lives one level finer: in fractal size and in how fast the finite stages grow, and the fused rungs walk it smoothly.</p>
 <ol class="key">
-<li><b>In the fused algebra:</b> adding up ones gives the countable infinity. Combining ones by the circle operation ∘₁ (called mult-add before 1.0) gives the continuum: <span class="b">1 + 1 + 1 + … = ℵ₀</span>, <span class="r">1 ⊕ 1 ⊕ 1 ⊕ … = 2<sup>ℵ₀</sup></span>.</li>
+<li><b>In the fused algebra:</b> adding up ones gives the countable infinity. Combining ones by the circle operation ∘₁ (called mult-add before 1.0) gives the continuum: <span class="b">1 + 1 + 1 + … = ℵ₀</span>, <span class="r">1 ∘₁ 1 ∘₁ 1 ∘₁ … = 2<sup>ℵ₀</sup></span>.</li>
 <li><b>Shape decides, not count.</b> The two trees on the right have about the same number of pieces at every level. One ends countable, one ends as the continuum.</li>
 <li><b>The smooth in-between:</b> the zoomed circle operation a + b + t·ab sweeps fractal dimension from 0 to 1, and the fractional rungs give a continuous family of growth rates between n and 2ⁿ.</li>
 </ol>
@@ -88,9 +88,9 @@ a{color:var(--blue)}
 <div>
 <h2>The fused picture: corners of the infinite cube</h2>
 <p>Combine n ones by the circle operation and you get every corner of the n-cube except the origin. The corners sort into layers by how many switches are on: 1, 3, 3, 1 for the cube, Pascal's rows in general.</p>
-<div class="eq">1 ⊕ 1 ⊕ ⋯ ⊕ 1 (n times) = (1+1)ⁿ − 1 = 2ⁿ − 1</div>
+<div class="eq">1 ∘₁ 1 ∘₁ ⋯ ∘₁ 1 (n times) = (1+1)ⁿ − 1 = 2ⁿ − 1</div>
 <p>Now let n be the countable infinity. Adding ones gives ℵ₀. Combining ones by the circle operation gives every corner of the infinite-dimensional cube, which is the Cantor set, which has the size of the real line.</p>
-<div class="eq r2">1 + 1 + 1 + ⋯ = ℵ₀  &nbsp;&nbsp;  1 ⊕ 1 ⊕ 1 ⊕ ⋯ = 2<sup>ℵ₀</sup> = 𝔠</div>
+<div class="eq r2">1 + 1 + 1 + ⋯ = ℵ₀  &nbsp;&nbsp;  1 ∘₁ 1 ∘₁ 1 ∘₁ ⋯ = 2<sup>ℵ₀</sup> = 𝔠</div>
 <p>Where does the jump come from? Every corner with finitely many switches on is countable, layer by layer. The grade-1 layer is exactly the addition part, n singletons. Only the corners with infinitely many switches on push past countable. So the continuum is made entirely of <b>corner terms of infinite grade</b>, the ab part of a + b + ab carried on forever.</p>
 <p>The same split is a classical theorem about shapes. Any closed set of reals is a countable "dead-end" part plus a part where every branch keeps splitting (Cantor–Bendixson). That second part, if it is there at all, contains a copy of the whole infinite cube. This is why <b>no closed, Borel or analytic set has a size strictly in between</b>: it is either countable or it holds a full circle-operation copy of the continuum.</p>
 </div>
@@ -136,7 +136,7 @@ a{color:var(--blue)}
 <div class="wrap two">
 <div>
 <h2>Smooth size: the zoomed circle-operation sweeps dimension</h2>
-<p>Weight each switch by t and the cube's layers become C(n,k)·tᵏ, which add up to (1+t)ⁿ. That is the n-fold of the zoomed circle operation a + b + t·ab, and it is the ordinary circle operation seen at scale t: t·(a ⊕<sub>t</sub> b) = ta ⊕ tb. At t = 0 it is addition; at t = 1 it is the circle operation.</p>
+<p>Weight each switch by t and the cube's layers become C(n,k)·tᵏ, which add up to (1+t)ⁿ. That is the n-fold of the zoomed circle operation a + b + t·ab, and it is the ordinary circle operation seen at scale t: t·(a ∘<sub>t</sub> b) = ta ∘₁ tb. At t = 0 it is addition; at t = 1 it is the circle operation.</p>
 <p>The heaviest layer sits at the share p = t/(1+t) of switches on. The infinite corners with exactly that share form a set whose fractal dimension is the binary entropy (Besicovitch 1934, Eggleston 1949). Put the two together and the zoom maps straight onto dimension:</p>
 <div class="eq">D(t) = [ ln(1+t) − t·ln t / (1+t) ] / ln 2</div>
 <p>D(0) = 0, D(0.1) ≈ 0.44, D(0.5) ≈ 0.92, D(1) = 1. A smooth bridge from the addition rung to the circle-operation rung, and every set on it is built from the layers of the circle-operation cube. The first term, ln(1+t), is the log of one circle-operation step with dial k; the second subtracts the cost of the weight.</p>
@@ -200,7 +200,7 @@ a{color:var(--blue)}
 <tr><td>Frequency-p sets have dimension H(p)</td><td>Known</td><td>Besicovitch 1934, Eggleston 1949</td></tr>
 <tr><td>Every uncountable compact set has positive size in some gauge</td><td>Known</td><td>Rogers, Hausdorff Measures</td></tr>
 <tr><td>Half-exponential growth sits between all polynomials and all exponentials</td><td>Known</td><td>Regular iteration (Szekeres 1958); standard bounds</td></tr>
-<tr><td>ℵ₀ is the fold of + on ones, 𝔠 the fold of ⊕ on ones; the continuum is the corner terms of infinite grade</td><td>Restatement in fused language</td><td>This page</td></tr>
+<tr><td>ℵ₀ is the fold of + on ones, 𝔠 the fold of ∘₁ on ones; the continuum is the corner terms of infinite grade</td><td>Restatement in fused language</td><td>This page</td></tr>
 <tr><td>Zoom t of circle-operation maps to dimension D(t) in closed form</td><td>Repackaging of Eggleston plus the binomial layers; worth keeping as a picture</td><td>This page</td></tr>
 <tr><td>Fractional rungs give a smooth chain of gauge sizes and growth rates between n and 2ⁿ</td><td>New framing of known constructions; the cleanest link from a rung parameter to a smooth size</td><td>This page, with the fractional-rungs work</td></tr>
 </tbody>

@@ -61,7 +61,7 @@ code{font-size:14px;overflow-wrap:anywhere;background:var(--panel);padding:1px 5
 <section class="band" style="padding-top:0"><div class="wrap">
 <h2>1. A jet is a truncated product</h2>
 <div class="two"><div>
-<p>The k-jet of a function at x, its value and first k derivatives, is f(x + ε) in the ring R[ε]/(ε<sup>k+1</sup>). Multiplying jets is multiplying functions, which is Leibniz's rule. Write a jet as value × (1 + ν). Then the jet of a product combines the ν's by the circle operation: (1 + ν)(1 + μ) = 1 + (ν ⊞ μ).</p>
+<p>The k-jet of a function at x, its value and first k derivatives, is f(x + ε) in the ring R[ε]/(ε<sup>k+1</sup>). Multiplying jets is multiplying functions, which is Leibniz's rule. Write a jet as value × (1 + ν). Then the jet of a product combines the ν's by the circle operation: (1 + ν)(1 + μ) = 1 + (ν ∘₁ μ).</p>
 <ul>
 <li><b>Jet order is cube depth.</b> In the k-jet every ν is a multiple of ε, so a corner of j factors sits at ε<sup>j</sup>. Layers above k vanish. 1-jets keep layer 1 only (relative slopes just add); 2-jets keep the pair corners and lose the triple corner.</li>
 <li><b>No wall in jet space.</b> Because ν is nilpotent, the way back is a finite sum, 1 − ν + ν², and 1 + ν is never zero.</li>
@@ -69,7 +69,7 @@ code{font-size:14px;overflow-wrap:anywhere;background:var(--panel);padding:1px 5
 </ul>
 </div><div>
 <div class="fig">%%SECANT%%</div>
-<p><b>The corner weight is a gap.</b> In R[ε]/(ε² − kε), (1 + aε)(1 + bε) = 1 + (a ⊞<sub>k</sub> b)ε, and the element is exactly the pair of values at x and at x + k. Shrinking k merges the two points into a tangent: the dual numbers, ε² = 0, the corner dropped. The wall 1 + ka = 0 is just a zero at the second point.</p>
+<p><b>The corner weight is a gap.</b> In R[ε]/(ε² − kε), (1 + aε)(1 + bε) = 1 + (a ∘<sub>k</sub> b)ε, and the element is exactly the pair of values at x and at x + k. Shrinking k merges the two points into a tangent: the dual numbers, ε² = 0, the corner dropped. The wall 1 + ka = 0 is just a zero at the second point.</p>
 </div></div>
 <p class="mute">Known: jets (Ehresmann 1951), Weil algebras (Weil 1953), x + y + xy is the multiplicative formal group law, and R[ε]/(ε² − kε) is the ring of forward differences.</p>
 
@@ -80,7 +80,7 @@ code{font-size:14px;overflow-wrap:anywhere;background:var(--panel);padding:1px 5
 
 <h2>3. What the view measures: the cube of one step</h2>
 <p>The step x ↦ x + h·u(x) has gradient I + h∇u. Its volume change is the drawing at the top:</p>
-<div class="eq">det(I + h∇u) = 1 + h·P + h²·Q + h³·R, &nbsp;&nbsp; and in principal axes &nbsp; = 1 + (ha ⊞ hb ⊞ hc)</div>
+<div class="eq">det(I + h∇u) = 1 + h·P + h²·Q + h³·R, &nbsp;&nbsp; and in principal axes &nbsp; = 1 + (ha ∘₁ hb ∘₁ hc)</div>
 <ul>
 <li><b>P, the slabs</b>, is the divergence. Incompressible flow sets it to 0.</li>
 <li><b>Q, the rods</b>, is ¼|ω|² − ½|S|²: rotation against strain.</li>

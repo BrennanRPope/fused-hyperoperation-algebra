@@ -87,7 +87,7 @@ a{color:var(--pr)}
 <section class="band panel"><div class="wrap">
 <h2>The route in circle-operation geometry: the proof is easy exactly where the curve is the circle operation</h2>
 <ol class="steps">
-<li><div><b>Fermat is a circle power against an ordinary one.</b> Divide aᵖ + bᵖ = cᵖ by aᵖ and set t = b/a, s = c/a − 1. The equation becomes tᵖ = [p]s, where [p]s = s ⊕ s ⊕ … ⊕ s = (1 + s)ᵖ − 1. <span class="tag p p">proved</span></div></li>
+<li><div><b>Fermat is a circle power against an ordinary one.</b> Divide aᵖ + bᵖ = cᵖ by aᵖ and set t = b/a, s = c/a − 1. The equation becomes tᵖ = [p]s, where [p]s = s ∘₁ s ∘₁ … ∘₁ s = (1 + s)ᵖ − 1. <span class="tag p p">proved</span></div></li>
 <li><div><b>Reduce to primes.</b> Every n ≥ 3 is a multiple of 4 or of an odd prime, so exponents 3, 4 and the primes from 5 up are enough. Exponents 3 and 4 are proved here in full, 3 by building the Eisenstein integers from scratch and 4 by Fermat's own descent. <span class="tag p p">proved</span></div></li>
 <li><div><b>Build the Frey curve</b> y² = x(x − aᵖ)(x + bᵖ) from a solution, after normalizing so a ≡ 3 mod 4, b is even and gcd(a, b) = 1. Its three half-way points are 0, aᵖ and −bᵖ. Its discriminant is 16(abc)²ᵖ, and its minimal model has 256·Δ = (abc)²ᵖ: a perfect p-th power. <span class="tag p p">proved</span></div></li>
 <li><div><b>At every bad prime the curve pinches into the circle-operation node, never a cusp.</b> No prime divides both Δ and c₄ = A² + AB + B². At the node, three points lie on one line exactly when their coordinates combine by the circle operation to zero. This is semistability, and it is the circle operation's own shape. <span class="tag p p">proved</span></div></li>
@@ -111,7 +111,7 @@ a{color:var(--pr)}
 <div>
 <h2>On the node, three points on a line multiply to 1</h2>
 <p>Take the pinched curve y² = x²(x + 1). Every line through the node at slope t meets the curve once more, at x = t² − 1. Give that point the coordinate s = −2/(t + 1), so its lift is 1 + s = (t − 1)/(t + 1).</p>
-<p>Three points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0, which under the lift says (1 + s₁)(1 + s₂)(1 + s₃) = 1. The drawing uses t = 1.3 and t = 1.7; the third point is forced to the lift that makes the product 1. Proved in general as <code>node_chord_circ</code>.</p>
+<p>Three points are collinear exactly when s₁ ∘₁ s₂ ∘₁ s₃ = 0, which under the lift says (1 + s₁)(1 + s₂)(1 + s₃) = 1. The drawing uses t = 1.3 and t = 1.7; the third point is forced to the lift that makes the product 1. Proved in general as <code>node_chord_circ</code>.</p>
 <p class="mute" id="chordNums"></p>
 </div>
 </div></section>
@@ -188,7 +188,7 @@ const N=[
 ["p","Minimal model","x = 4X, y = 8Y + 4X gives Y² + XY = X³ + a₂X² + a₄X with integer a₂, a₄.","frey_change_of_vars, frey_minimal_model",""],
 ["p","c₄ and Δ","c₄ = A² + AB + B² and 256·Δ = (ABC)².","frey_c4, frey_disc",""],
 ["p","Semistable","No prime divides both Δ and c₄, including 2: every bad prime gives a node, never a cusp.","frey_semistable, frey_at_two","Every pinch is the circle operation's node or its turning twin."],
-["p","Node chord law is the circle operation","Mod a bad prime the curve is the node family; three of its points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0.","frey_reduces_to_node, node_chord_circ","The group on a node is the circle operation."],
+["p","Node chord law is the circle operation","Mod a bad prime the curve is the node family; three of its points are collinear exactly when s₁ ∘₁ s₂ ∘₁ s₃ = 0.","frey_reduces_to_node, node_chord_circ","The group on a node is the circle operation."],
 ["p","Δ is a p-th power","256·Δ = ((abc)²)ᵖ, so p divides the exponent of every odd prime in Δ.","frey_disc_pth_power, frey_disc_valuation","The Tate gluing q is a p-th power."]]],
 ["F","The mod-p picture",[
 ["k","Tate's curve","Near a bad prime the curve is the circle-operation cylinder glued by u ~ qu (Tate 1959). Checked numerically in the elliptic work.","","The torus is the circle operation with one gluing rule."],

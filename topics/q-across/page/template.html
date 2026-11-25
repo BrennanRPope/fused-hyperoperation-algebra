@@ -48,7 +48,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <div>
 <h1>One <span class="q">q</span>, five worlds</h1>
 <p class="lead">The gluing number <span class="q">q</span> from the elliptic work is the circle-operation dial moved by one: <b>k = q − 1</b>. With that single substitution, the q-integers of quantum algebra, the loop of the Jones polynomial, Euler's partition product and the Ising ring all become circle-operation statements.</p>
-<div class="eq">[m + n]<sub>q</sub> = [m]<sub>q</sub> ⊞<sub>q−1</sub> [n]<sub>q</sub> &nbsp;&nbsp; and &nbsp;&nbsp; (1 + a)·qⁿ = 1 + (a ⊞ (q − 1)·[n]<sub>q</sub>)</div>
+<div class="eq">[m + n]<sub>q</sub> = [m]<sub>q</sub> ∘<sub>q−1</sub> [n]<sub>q</sub> &nbsp;&nbsp; and &nbsp;&nbsp; (1 + a)·qⁿ = 1 + (a ∘₁ (q − 1)·[n]<sub>q</sub>)</div>
 <p>The first line says q-integers add by the circle operation ∘ₖ with dial k (called weighted mult-add before 1.0). The second says that going n times round the torus's q-direction is one circle-operation step of length (q − 1)·[n]<sub>q</sub>. Both are proved in Lean for every n.</p>
 <div class="stats"><div><b>61</b>theorems in 4 Lean files</div><div><b>0</b>new theorems of mathematics</div><div><b>1</b>picture that joins them</div></div>
 <p class="mute" style="margin-top:12px">The Lean files are written but not yet compiled (Lean isn't installed where this was built). Every finite list in them was checked against a line-for-line Python copy.</p>
@@ -59,7 +59,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <section class="band alt" id="dial"><div class="wrap grid">
 <div>
 <h2>The dial is q − 1</h2>
-<p>The q-integer is [n]<sub>q</sub> = 1 + q + q² + … + q<sup>n−1</sup>. Standard algebra gives [m + n] = [m] + qᵐ[n]. Rewritten with k = q − 1 that rule is exactly the circle operation a + b + k·ab, so [n]<sub>q</sub> is n copies of 1 under ⊞<sub>k</sub>.</p>
+<p>The q-integer is [n]<sub>q</sub> = 1 + q + q² + … + q<sup>n−1</sup>. Standard algebra gives [m + n] = [m] + qᵐ[n]. Rewritten with k = q − 1 that rule is exactly the circle operation a + b + k·ab, so [n]<sub>q</sub> is n copies of 1 under ∘<sub>k</sub>.</p>
 <p>Your four dial settings land on the four famous values of q:</p>
 <table class="stack"><thead><tr><th>q</th><th>k</th><th>Your name</th><th>[n]<sub>q</sub></th></tr></thead><tbody>
 <tr><td>1</td><td>0</td><td>addition, counting</td><td>n</td></tr>
@@ -67,16 +67,16 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <tr><td>0</td><td>−1</td><td>failure union, "or"</td><td>1 for every n ≥ 1 (the crystal limit)</td></tr>
 <tr><td>−1</td><td>−2</td><td>parity, "exclusive or"</td><td>1, 0, 1, 0, …</td></tr>
 </tbody></table>
-<p>The elliptic gluing joins in through the lift x ↦ 1 + x: multiplying 1 + a by q is combining with q − 1 by the circle operation, so n trips round the torus combine by the circle operation to (q − 1)·[n]<sub>q</sub>, which is the circle power (q − 1)<sup>⊞n</sup>.</p>
+<p>The elliptic gluing joins in through the lift x ↦ 1 + x: multiplying 1 + a by q is combining with q − 1 by the circle operation, so n trips round the torus combine by the circle operation to (q − 1)·[n]<sub>q</sub>, which is the circle power (q − 1)<sup>∘₁n</sup>.</p>
 </div>
 <div>
 <h3>Proved in Lean, every n (QDial.lean)</h3>
 <table><tbody>
-<tr><td><code>qnum_eq_wpow</code></td><td>[n]<sub>q</sub> = n copies of 1 under ⊞<sub>q−1</sub></td></tr>
-<tr><td><code>qnum_add</code></td><td>[m+n] = [m] ⊞<sub>q−1</sub> [n]</td></tr>
+<tr><td><code>qnum_eq_wpow</code></td><td>[n]<sub>q</sub> = n copies of 1 under ∘<sub>q−1</sub></td></tr>
+<tr><td><code>qnum_add</code></td><td>[m+n] = [m] ∘<sub>q−1</sub> [n]</td></tr>
 <tr><td><code>qnum_lift</code></td><td>1 + (q − 1)[n] = qⁿ</td></tr>
-<tr><td><code>qnum_mpow</code></td><td>(q − 1)[n] = (q − 1)<sup>⊞n</sup></td></tr>
-<tr><td><code>tate_glue_n</code></td><td>(1 + a)qⁿ = 1 + (a ⊞ (q − 1)[n])</td></tr>
+<tr><td><code>qnum_mpow</code></td><td>(q − 1)[n] = (q − 1)<sup>∘₁n</sup></td></tr>
+<tr><td><code>tate_glue_n</code></td><td>(1 + a)qⁿ = 1 + (a ∘₁ (q − 1)[n])</td></tr>
 <tr><td><code>qnum_at_one / two / zero / neg_one</code></td><td>the four dial values above</td></tr>
 <tr><td><code>parity_xor, failure_or</code></td><td>k = −2 is xor, k = −1 is or, on {0, 1}</td></tr>
 </tbody></table>
@@ -131,7 +131,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <section class="band" id="primes"><div class="wrap grid">
 <div>
 <h2>Primes and partitions: Euler's product is a circle operation</h2>
-<p>Euler's product (1 − q)(1 − q²)(1 − q³)⋯ is 1 + (−q ⊞ −q² ⊞ −q³ ⊞ …), by the library's list lift. Its corner expansion is a signed sum over sets of distinct parts. Euler's pentagonal theorem says almost everything cancels:</p>
+<p>Euler's product (1 − q)(1 − q²)(1 − q³)⋯ is 1 + (−q ∘₁ −q² ∘₁ −q³ ∘₁ …), by the library's list lift. Its corner expansion is a signed sum over sets of distinct parts. Euler's pentagonal theorem says almost everything cancels:</p>
 <div class="eq">∏(1 − qⁿ) = 1 − q − q² + q⁵ + q⁷ − q¹² − q¹⁵ + q²² + q²⁶ − …</div>
 <p>Franklin's picture shows why: slide the smallest row of a Ferrers diagram onto its staircase edge (or back). That pairs off partitions with an even and odd number of parts, leaving only the pentagonal shapes unpaired.</p>
 <figure>{{ferrers}}</figure>
@@ -158,7 +158,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <div>
 <h2>Counting and physics</h2>
 <h3>Gaussian binomials: the cube with a q on each corner</h3>
-<p>The q-binomial theorem says (1 + t)(1 + qt)⋯(1 + q<sup>n−1</sup>t), which is 1 + (t ⊞ qt ⊞ … ⊞ q<sup>n−1</sup>t), has layer k equal to q<sup>k(k−1)/2</sup>[n, k]<sub>q</sub>. Geometrically, [n, k]<sub>q</sub> counts lattice paths in a k × (n − k) box by the area under them:</p>
+<p>The q-binomial theorem says (1 + t)(1 + qt)⋯(1 + q<sup>n−1</sup>t), which is 1 + (t ∘₁ qt ∘₁ … ∘₁ q<sup>n−1</sup>t), has layer k equal to q<sup>k(k−1)/2</sup>[n, k]<sub>q</sub>. Geometrically, [n, k]<sub>q</sub> counts lattice paths in a k × (n − k) box by the area under them:</p>
 <figure>{{paths}}</figure>
 <p>That gives [4, 2]<sub>q</sub> = 1 + q + 2q² + q³ + q⁴. At q = 1 it is 6 (Pascal, the circle-operation cube's layer), at q = 2 it is 35 (the planes in a 4-dimensional space over the two-element field), at q = 0 it is 1, and at q = −1 it is 2 (Pascal folded in half). Lean proves the q = 1 case for every n and k (<code>gauss_at_one</code>).</p>
 <h3>The quantum group U<sub>q</sub>(sl₂)</h3>
@@ -168,7 +168,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <h3>The Ising ring</h3>
 <figure style="max-width:300px">{{ising}}</figure>
 <p>Spins on a ring with domain-wall weight u have partition function</p>
-<div class="eq">Z = (1 + u)ⁿ + (1 − u)ⁿ = 2 + u<sup>⊞n</sup> + (−u)<sup>⊞n</sup></div>
+<div class="eq">Z = (1 + u)ⁿ + (1 − u)ⁿ = 2 + u<sup>∘₁n</sup> + (−u)<sup>∘₁n</sup></div>
 <p>The two circle powers cancel every odd layer of the cube, which is the statement that a ring always has an even number of walls. Proved in Lean for every n (<code>ising_eigen</code>, <code>ising_trace</code>, <code>ising_circ</code>). The bridge to knots is standard too: the Potts model's state count Q and the knot loop value satisfy Q = d², through the Temperley–Lieb algebra.</p>
 <h3>Proved in Lean (QCounting.lean)</h3>
 <p class="mute"><code>peval_padd</code>, <code>peval_pzeros</code>, <code>gauss_at_one</code> (general), <code>gauss_4_2</code>, <code>gauss_at_neg_one</code> (n ≤ 8), <code>q_binomial_theorem</code> (n ≤ 6), <code>uq_sl2_commutator</code>, <code>uq_sl2_weight</code>, <code>sl2_classical</code>, <code>quantum_dim_is_loop</code>, <code>ising_eigen</code>, <code>ising_trace</code>, <code>ising_circ</code>. 13 theorems.</p>

@@ -67,17 +67,17 @@ svg text{font-family:Literata,Georgia,serif}
 
 <section class="band" id="weights"><div class="wrap grid">
 <div><h2>The circle operation with dial k is one group, measured in different units</h2>
-<p>For every weight k other than 0, multiplying by k turns a ⊕<sub>k</sub> b = a + b + k·ab into the plain circle operation: k(a ⊕<sub>k</sub> b) = (ka) ⊕ (kb). The wall moves from −1 to −1/k, nothing else changes. So all nonzero weights give the same group, and k = 0 (plain addition) is the only different one: addition has no element that undoes itself, while the circle operation has −2, since (−2) ⊕ (−2) = 0.</p>
-<p>On the whole numbers the units are tiny. Only 0 and −2 can be undone under ⊕, because only ±1 can be undone under ×. Weights ±1 and ±2 are the only ones with a second unit, and weight −2 on {0, 1} is exactly exclusive or, the parity wall from earlier pages. <span class="tag p">proved</span></p>
-<p>Unique factoring carries over too: the positive whole numbers that can't be split as a ⊕ b are exactly p − 1 for primes p: 1, 2, 4, 6, 10, 12, 16. <span class="tag n">checked to 60</span></p></div>
+<p>For every weight k other than 0, multiplying by k turns a ∘<sub>k</sub> b = a + b + k·ab into the plain circle operation: k(a ∘<sub>k</sub> b) = (ka) ∘₁ (kb). The wall moves from −1 to −1/k, nothing else changes. So all nonzero weights give the same group, and k = 0 (plain addition) is the only different one: addition has no element that undoes itself, while the circle operation has −2, since (−2) ∘₁ (−2) = 0.</p>
+<p>On the whole numbers the units are tiny. Only 0 and −2 can be undone under ∘₁, because only ±1 can be undone under ×. Weights ±1 and ±2 are the only ones with a second unit, and weight −2 on {0, 1} is exactly exclusive or, the parity wall from earlier pages. <span class="tag p">proved</span></p>
+<p>Unique factoring carries over too: the positive whole numbers that can't be split as a ∘₁ b are exactly p − 1 for primes p: 1, 2, 4, 6, 10, 12, 16. <span class="tag n">checked to 60</span></p></div>
 <div class="fig" style="min-height:300px" role="img" aria-label="Walls of the circle operation with dial k: for each weight k the wall sits at −1/k, sliding toward zero as k grows and off to infinity at k = 0."><svg id="wallSvg"></svg></div>
 </div></section>
 
 <section class="band" id="clocks"><div class="wrap grid">
 <div><h2>Clock arithmetic: when does the circle operation wrap into a group?</h2>
 <p>On a clock of n numbers, the plain circle operation is never a group, because the wall n − 1 swallows everything. Its units are the clock's ordinary units shifted down by one, φ(n) of them. On a 12-clock they are 0, 4, 6, 10. <span class="tag p">proved</span></p>
-<p>The weighted clock (ℤ/n, ⊕<sub>k</sub>) is a group exactly when every prime of n divides k, because then k is nilpotent and 1 + ka can always be undone (a geometric series that stops). <span class="tag p">proved in general for nilpotent k, exact for n = 8, 9, 12</span> <span class="tag n">checked for every n up to 40</span></p>
-<p>Which group it is follows one rule, the p-adic logarithm: odd p<sup>m</sup> with k = p gives the plain cycle; powers of 2 need k divisible by 4 to be a cycle, and with k = 2 they split, like the Klein four-group (ℤ/4, ⊕₂), which is not (ℤ/4, +). The clock (ℤ/n, ⊕<sub>k</sub>) is exactly the units ≡ 1 mod k in the clock of size kn. <span class="tag p">Klein and cyclic cases proved</span> <span class="tag n">identification checked to n = 30</span></p></div>
+<p>The weighted clock (ℤ/n, ∘<sub>k</sub>) is a group exactly when every prime of n divides k, because then k is nilpotent and 1 + ka can always be undone (a geometric series that stops). <span class="tag p">proved in general for nilpotent k, exact for n = 8, 9, 12</span> <span class="tag n">checked for every n up to 40</span></p>
+<p>Which group it is follows one rule, the p-adic logarithm: odd p<sup>m</sup> with k = p gives the plain cycle; powers of 2 need k divisible by 4 to be a cycle, and with k = 2 they split, like the Klein four-group (ℤ/4, ∘₂), which is not (ℤ/4, +). The clock (ℤ/n, ∘<sub>k</sub>) is exactly the units ≡ 1 mod k in the clock of size kn. <span class="tag p">Klein and cyclic cases proved</span> <span class="tag n">identification checked to n = 30</span></p></div>
 <div><div class="ctl" role="group" aria-label="Choose a clock"><button data-c="9,3">ℤ/9, k = 3</button><button data-c="8,4">ℤ/8, k = 4</button><button data-c="8,2">ℤ/8, k = 2</button><button data-c="4,2">ℤ/4, k = 2</button><button data-c="12,1">ℤ/12, k = 1</button></div>
 <div class="fig" style="min-height:330px" role="img" aria-label="Clock wheel. Arrows show repeated the circle operation of 1 with itself. A single loop through every point means the group is a cycle."><svg id="clockSvg"></svg></div>
 <p class="mute" id="clockNote"></p></div>
@@ -86,8 +86,8 @@ svg text{font-family:Literata,Georgia,serif}
 <section class="band" id="rings"><div class="wrap">
 <h2>Rings: the fused pair is one, rung 3 is a module, rung 4 is nothing</h2>
 <div class="grid"><div>
-<p><b>Rungs 1 and 2 form a ring.</b> Shifted addition a ⊞ b = a + b + 1 and the circle operation obey every ring law, with zero −1 and one 0, and the shift carries them to (+, ×) exactly. The circle operation distributes over shifted addition but not over plain addition. <span class="tag p">proved</span> The axiom thread's MA-ring takes the other pairing (plain + with ⊕) and recovers × from it; the two meet at the same ring.</p>
-<p><b>Rung 3 is a module action, not a product.</b> The fused exponent spreads over the circle operation, (a ⊕ b)⊛s = (a⊛s) ⊕ (b⊛s), and its exponents combine by the fused ring: a⊛(s ⊞ t) = (a⊛s) ⊕ (a⊛t), (a⊛s)⊛t = a⊛(s ⊕ t). That makes (ℝ above −1, ⊕) a vector space whose scalars are the fused ring, the old fact that positive numbers under × are a vector space with powers as scalars. <span class="tag p">proved for whole-number scalars</span> <span class="tag n">checked for fractions</span></p>
+<p><b>Rungs 1 and 2 form a ring.</b> Shifted addition sadd(a, b) = a + b + 1 and the circle operation obey every ring law, with zero −1 and one 0, and the shift carries them to (+, ×) exactly. The circle operation distributes over shifted addition but not over plain addition. <span class="tag p">proved</span> The axiom thread's MA-ring takes the other pairing (plain + with ∘₁) and recovers × from it; the two meet at the same ring.</p>
+<p><b>Rung 3 is a module action, not a product.</b> The fused exponent spreads over the circle operation, fexp(a ∘₁ b, s) = fexp(a, s) ∘₁ fexp(b, s), and its exponents combine by the fused ring: fexp(a, sadd(s, t)) = fexp(a, s) ∘₁ fexp(a, t), fexp(fexp(a, s), t) = fexp(a, s ∘₁ t). That makes (ℝ above −1, ∘₁) a vector space whose scalars are the fused ring, the old fact that positive numbers under × are a vector space with powers as scalars. <span class="tag p">proved for whole-number scalars</span> <span class="tag n">checked for fractions</span></p>
 </div><div>
 <p><b>Rung 4 and up carry no ring structure.</b> The shift keeps every law, so fused tetration fails exactly where tetration fails: not commutative, not associative, and it spreads over neither the circle operation nor the fused exponent. (1, 1, 1 happens to agree, 255 both ways; 1, 2, 1 does not.) <span class="tag p">failures over the circle operation proved in the library</span> <span class="tag n">over the fused exponent checked</span></p>
 <p><b>If you want a ring at every rung, there is a known choice.</b> Bennett (1915) built rungs that stay commutative: c(a, b) = (1 + a)<sup>ln(1+b)</sup> − 1. It is commutative, associative, spreads over the circle operation, and its one is e − 1. Each such rung is the previous pair seen through ln(1 + x). It is a different ladder from your hyperoperation ladder, and it is a copy of (+, ×) at every step. <span class="tag n">checked to 10⁻¹²</span> <span class="tag i">Bennett 1915</span></p>
@@ -95,8 +95,8 @@ svg text{font-family:Literata,Georgia,serif}
 
 <section class="band" id="pascal"><div class="wrap grid">
 <div><h2>Polynomials and Pascal</h2>
-<p>Circle powers are the cube: a<sup>⊕n</sup> = (1 + a)<sup>n</sup> − 1 = Σ C(n, j) a<sup>j</sup>, one layer of Pascal per row of corners. Going back uses Pascal with alternating signs. The two matrices are the shift x ↦ x + 1 and its inverse, and the shift is e raised to differentiation (Taylor's theorem as a matrix).</p>
-<p>The power maps are the endomorphisms of the circle operation: (a ⊕ b)<sup>⊕n</sup> = a<sup>⊕n</sup> ⊕ b<sup>⊕n</sup> and (a<sup>⊕m</sup>)<sup>⊕n</sup> = a<sup>⊕mn</sup>. So the whole numbers act on the circle operation as a ring, and over the p-adic numbers the binomial coefficients C(c, j) for any p-adic c extend it. <span class="tag p">proved</span> <span class="tag i">Mahler, formal groups</span></p>
+<p>Circle powers are the cube: a<sup>∘₁n</sup> = (1 + a)<sup>n</sup> − 1 = Σ C(n, j) a<sup>j</sup>, one layer of Pascal per row of corners. Going back uses Pascal with alternating signs. The two matrices are the shift x ↦ x + 1 and its inverse, and the shift is e raised to differentiation (Taylor's theorem as a matrix).</p>
+<p>The power maps are the endomorphisms of the circle operation: (a ∘₁ b)<sup>∘₁n</sup> = a<sup>∘₁n</sup> ∘₁ b<sup>∘₁n</sup> and (a<sup>∘₁m</sup>)<sup>∘₁n</sup> = a<sup>∘₁mn</sup>. So the whole numbers act on the circle operation as a ring, and over the p-adic numbers the binomial coefficients C(c, j) for any p-adic c extend it. <span class="tag p">proved</span> <span class="tag i">Mahler, formal groups</span></p>
 <p>On power series with no constant term there is no wall at all, so the circle operation is a group there: these are the big Witt vectors. <span class="tag n">checked</span> <span class="tag i">Witt 1937</span></p></div>
 <div class="fig" style="min-height:300px" role="img" aria-label="Pascal's triangle in two colours: the shift matrix, and beside it the signed inverse."><svg id="pascalSvg"></svg></div>
 </div></section>
@@ -119,7 +119,7 @@ svg text{font-family:Literata,Georgia,serif}
 <h2>Known or new</h2>
 <p><b>Known.</b> The circle operation a + b + ab and quasi-regular elements (Perlis 1942, Jacobson 1945); radical rings; the multiplicative formal group and its endomorphisms; principal units of ℤ/n and the p-adic logarithm; Bennett's commutative hyperoperations (1915); the Tate curve (1959); one-dimensional tori and the additive group; Witt vectors. Every structure on this page is one of these, seen through the shift.</p>
 <p><b>Possibly fresh, as presentation only.</b> One table that says, for each weight k and clock n, whether the circle operation wraps into a group and which group; and the reading of a landscape point's country as a Legendre symbol, which ties the turning country to Fermat's two-square primes. Neither is a new theorem.</p>
-<p><b>Inferred, not proved here.</b> The general identification of (ℤ/n, ⊕<sub>k</sub>) with principal units and its cyclic or split form (checked, follows from the p-adic logarithm); the country counts for all primes (checked, classical); Bennett's rung (real logs, outside core Lean).</p>
+<p><b>Inferred, not proved here.</b> The general identification of (ℤ/n, ∘<sub>k</sub>) with principal units and its cyclic or split form (checked, follows from the p-adic logarithm); the country counts for all primes (checked, classical); Bennett's rung (real logs, outside core Lean).</p>
 </div></section>
 
 <section class="band" id="files"><div class="wrap">
@@ -133,18 +133,18 @@ const $=id=>document.getElementById(id);
 const probe=document.createElement('i');probe.style.display='none';document.body.appendChild(probe);
 const css=v=>{probe.style.color=`var(${v})`;return getComputedStyle(probe).color};
 const rows=[
-['Reals','(ℝ∖{−1}, ⊕), −1 absorbs','(ℝ*, ×) via x ↦ 1 + x','p'],
-['Any ring','(R, ⊕) monoid; units = a with 1 + a a unit','(R, ×); quasi-regular elements','p'],
-['Weights k ≠ 0','(R, ⊕ₖ), wall −1/k','The circle operation, via x ↦ kx','p'],
+['Reals','(ℝ∖{−1}, ∘₁), −1 absorbs','(ℝ*, ×) via x ↦ 1 + x','p'],
+['Any ring','(R, ∘₁) monoid; units = a with 1 + a a unit','(R, ×); quasi-regular elements','p'],
+['Weights k ≠ 0','(R, ∘ₖ), wall −1/k','The circle operation, via x ↦ kx','p'],
 ['Integers','units {0, −2}','{±1}','p'],
-['Positive integers','⊕-irreducibles are p − 1','primes','n'],
+['Positive integers','∘₁-irreducibles are p − 1','primes','n'],
 ['Clock ℤ/n','monoid, φ(n) units, wall n − 1','(ℤ/n, ×)','p'],
 ['Clock, weight k','group iff every prime of n divides k','units ≡ 1 mod k of ℤ/kn','pn'],
-['Finite field','(F∖{−1}, ⊕) cyclic of order q − 1','F*','n'],
+['Finite field','(F∖{−1}, ∘₁) cyclic of order q − 1','F*','n'],
 ['Rungs 1 and 2','ring, zero −1, one 0','(ℤ, +, ×) or (ℝ, +, ×)','p'],
 ['Rung 3','module over the fused ring','(ℝ>0, ×) with powers','p'],
 ['Rung 4 and up','no ring laws','tetration','p'],
-['Power series','(xR[[x]], ⊕) group','big Witt vectors','n'],
+['Power series','(xR[[x]], ∘₁) group','big Witt vectors','n'],
 ['Tate gluing','quotient group','ℂ*/q^ℤ, elliptic curve','p'],
 ['Landscape','split, non-split, additive','the three 1-dim groups','n']];
 const tags={p:'<span class="tag p">proved</span>',n:'<span class="tag n">checked</span>',pn:'<span class="tag p">test proved</span> <span class="tag n">copy checked</span>'};
@@ -161,8 +161,8 @@ function hero(){const s=$('heroSvg'),W=s.clientWidth,H=s.clientHeight;const red=
    if(v+1<=hi){const hl=(v==-1||v==0||v==-2);o+=`<line x1="${x(v)}" y1="${y1+8}" x2="${x(v+1)}" y2="${y2-10}" stroke="${v==-1?red:hl?ink:mute}" stroke-width="${hl?2:1}" marker-end="url(#ah${v==-1?'r':'k'})" opacity="${hl?1:.5}"/>`}}
  o+=`<circle cx="${x(-1)}" cy="${y1}" r="7" fill="${red}"/><circle cx="${x(0)}" cy="${y2}" r="7" fill="${red}"/>`;
  if(!small){o+=`<text x="${x(-1)+10}" y="${y1+26}" fill="${red}" font-size="14">wall −1</text><text x="${x(0)+12}" y="${y2-12}" fill="${red}" font-size="14">0 swallows ×</text>`;
- o+=`<text x="${x(1.6)}" y="${(y1+y2)/2}" fill="${ink}" font-size="15">x ↦ 1 + x</text><text x="${x(1.6)}" y="${(y1+y2)/2+20}" fill="${mute}" font-size="14">a ⊕ b ↦ (1+a)(1+b)</text>`;
- o+=`<text x="${x(-3.5)}" y="${(y1+y2)/2}" fill="${mute}" font-size="14">−2 ⊕ −2 = 0 ↔ (−1)(−1) = 1</text>`}
+ o+=`<text x="${x(1.6)}" y="${(y1+y2)/2}" fill="${ink}" font-size="15">x ↦ 1 + x</text><text x="${x(1.6)}" y="${(y1+y2)/2+20}" fill="${mute}" font-size="14">a ∘₁ b ↦ (1+a)(1+b)</text>`;
+ o+=`<text x="${x(-3.5)}" y="${(y1+y2)/2}" fill="${mute}" font-size="14">−2 ∘₁ −2 = 0 ↔ (−1)(−1) = 1</text>`}
  s.innerHTML=`<defs><marker id="ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${ink}"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${red}"/></marker></defs>`+o}
 
 function walls(){const s=$('wallSvg'),W=s.clientWidth,H=s.clientHeight;const red=css('--red'),blue=css('--blue'),ink=css('--ink'),mute=css('--mute');
@@ -185,7 +185,7 @@ function clockDraw(){const s=$('clockSvg'),W=s.clientWidth,H=s.clientHeight;cons
  for(let i=0;i<n;i++){const [px,py]=P(i);const isW=i===wallv;o+=`<circle cx="${px}" cy="${py}" r="15" fill="${isW?red:css('--panel')}" stroke="${isW?red:ink}"/><text x="${px}" y="${py+5}" text-anchor="middle" font-size="14" fill="${isW?'#fff':ink}">${i}</text>`}
  s.innerHTML=`<defs><marker id="ca" viewBox="0 0 10 10" refX="22" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="${blue}"/></marker></defs>`+o;
  let group=true;for(let a=0;a<n;a++){let f=false;for(let b=0;b<n;b++)if(op(a,b)===0)f=true;if(!f)group=false}
- $('clockNote').textContent=`(ℤ/${n}, ⊕${k===1?'':String(k).replace(/./g,d=>'₀₁₂₃₄₅₆₇₈₉'[d])}): ${group?'a group':'not a group'}. `+(group?(bl===n?`Repeating ${best} visits all ${n} points: a single cycle.`:`The longest loop has ${bl} steps out of ${n}: not a single cycle.`):`The wall ${n-1} (red) swallows everything; the loop shown repeats ${best}.`)}
+ $('clockNote').textContent=`(ℤ/${n}, ∘${String(k).replace(/./g,d=>'₀₁₂₃₄₅₆₇₈₉'[d])}): ${group?'a group':'not a group'}. `+(group?(bl===n?`Repeating ${best} visits all ${n} points: a single cycle.`:`The longest loop has ${bl} steps out of ${n}: not a single cycle.`):`The wall ${n-1} (red) swallows everything; the loop shown repeats ${best}.`)}
 document.querySelectorAll('[data-c]').forEach(b=>b.addEventListener('click',()=>{clock=b.dataset.c.split(',').map(Number);document.querySelectorAll('[data-c]').forEach(c=>c.setAttribute('aria-pressed',c===b));clockDraw()}));
 document.querySelector('[data-c]').setAttribute('aria-pressed','true');
 

@@ -171,7 +171,7 @@ check("integer laws only ever cycle with period 1, 2, 3, 4 or 6 (never 5)",
       set(periods) <= {1, 2, 3, 4, 6}, f"periods seen: {dict(sorted(periods.items()))}")
 out["data"]["integer_periods"] = periods
 
-# 8. Fibonacci inside the circle operation itself: x(n+2) = x(n+1) ✳ x(n)
+# 8. Fibonacci inside the circle operation itself: x(n+2) = x(n+1) ∘₁ x(n)
 ma = lambda a, b: a + b + a * b
 xs = [1, 1]
 for _ in range(20):

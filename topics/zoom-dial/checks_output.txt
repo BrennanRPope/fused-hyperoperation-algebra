@@ -22,9 +22,9 @@ PASS 3 D uneven 9/100, 49/100: natural weights r^d sum to 1
 PASS 3 E four at 1/16: natural weights r^d sum to 1
 PASS 3 gasket three at 1/2: natural weights r^d sum to 1
 PASS 3 middle-third Cantor: natural weights r^d sum to 1
-PASS 4 zoom r=0.250, d=0.500: w t ✳ w u = w (t ⊞_w u)
-PASS 4 zoom r=0.333, d=0.631: w t ✳ w u = w (t ⊞_w u)
-PASS 4 zoom r=0.500, d=1.000: w t ✳ w u = w (t ⊞_w u)
+PASS 4 zoom r=0.250, d=0.500: w t ∘₁ w u = w (t ∘_w u)
+PASS 4 zoom r=0.333, d=0.631: w t ∘₁ w u = w (t ∘_w u)
+PASS 4 zoom r=0.500, d=1.000: w t ∘₁ w u = w (t ∘_w u)
 PASS 4b size dial: zoom 1/2 at dimension beta gives weight 2^-beta (beta = 1, 2, 3)
 PASS 5a A: complex roots of N r^s = 1 lie on Re s = 1/2, spacing 4.53 (page: 4.53)
 PASS 5a B: complex roots of N r^s = 1 lie on Re s = 1/2, spacing 2.86 (page: 2.86)

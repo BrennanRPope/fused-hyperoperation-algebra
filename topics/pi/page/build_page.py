@@ -13,7 +13,7 @@ constants = [
  dict(name='e^(1/e)', where='rung-3 kiss (fused-constants page)', value=short(v['kiss_rung3']), search='no relation', status='o open', why='Believed transcendental; no proof I know of. Known number.'),
  dict(name='1.6353244967…', where='rung-4 kiss (Kneser heights, fused-constants page)', value='1.63532449671527…', search='not rerun here (published to 24 digits)', status='o open', why='Known number (Tetration Forum). Status unknown.'),
  dict(name='E½(1)', where='half-rung: the half-iterate of eˣ − 1, at 1', value=short(v['E_half_at_1']), search='no relation; not algebraic up to degree 12', status='o open', why='Known value: Finch 2025, Morris and Szekeres 1961.'),
- dict(name='B½(1,1)', where='halfway between 1 + 1 = 2 and 1 ⊞ 1 = 3', value=short(v['B_half_1_1']), search='no relation; not algebraic up to degree 12', status='o open', why='No published value found. The new one.'),
+ dict(name='B½(1,1)', where='halfway between 1 + 1 = 2 and 1 ∘₁ 1 = 3', value=short(v['B_half_1_1']), search='no relation; not algebraic up to degree 12', status='o open', why='No published value found. The new one.'),
  dict(name='Feigenbaum δ', where='the road from circle doubling (c = 0) to turning doubling (c = −2)', value='4.6692016091…', search='not rerun (known constant)', status='o open', why='Feigenbaum, 1975. Not even proved irrational.'),
 ]
 D = dict(halving=r['halving'], steps=r['step_count'], periods=r['turning_periods'], digits=r['digits_1000'], constants=constants, half=half)

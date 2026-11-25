@@ -2,7 +2,7 @@
 
 - 36 theorems, core Lean 4.37.0-rc1 (no mathlib), no `sorry`, axioms only propext, Classical.choice, Quot.sound.
 - Compiles clean against the shared library build: `LEAN_PATH=/tmp/lib/build lean lean/GameTheory.lean`.
-- Imports `FusedAlgebra.Base` only. Namespace `GameTheory`, local notation `✳` for `circ`.
+- Imports `FusedAlgebra.Base` only. Namespace `GameTheory`, the library's scoped notation `◯` for `circ` (`open scoped CircleOp`).
   Defines its own dial fold `dfold k l` (with `dfold_lift`, `dfold_append`, `dfold_one`).
   Section 5 works over `Rat` (`abbrev K := Rat`) because the 1/2, 1/3, 1/6 weights need characteristic 0.
 - Intended module path: `FusedAlgebra/Topics/GameTheory.lean`.

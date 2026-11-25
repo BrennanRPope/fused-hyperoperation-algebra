@@ -24,7 +24,7 @@ Nothing is at risk of being lost: the Zenodo DOI (10.5281/zenodo.24539305) alrea
 | 4 | Diamond hierarchical lattice closed forms (slope (2y/(y+1))², exact ν) | Known in parts, formula not found | Chang, Roeder & Shrock 2020; textbook percolation (golden ratio at Q = 1) | Short note, arXiv cond-mat.stat-mech; or a section of paper 1 |
 | — | Sugeno λ-measure = α-point-process dial = Tsallis q-sum | Known pieces, link not found stated | Sugeno 1974; Shirai & Takahashi 2003; Tsallis 1988 | A section of paper 1 |
 | — | (k, q) landscape map and shape number | Known | Coleman & McGuinness 1991 classify exactly this plane by c² − 4d | A section of paper 1 |
-| — | Schwarzschild river, (−g_tt − 1) ✳ (g_rr − 1) = 0 | Known | Jacobson 2007; Hamilton & Lisle 2008 | A section of paper 1 |
+| — | Schwarzschild river, (−g_tt − 1) ∘₁ (g_rr − 1) = 0 | Known | Jacobson 2007; Hamilton & Lisle 2008 | A section of paper 1 |
 | — | Fermat counterexample map | Known method | Buzzard's FLT blueprint (top-down, 1980s inputs assumed) | None |
 | — | Signed category with a + b − ab as product | Open question | Schanuel 1991 ("negative sets"); Propp; Baez | A MathOverflow question |
 | — | Elliptic near misses | Depends on our own "rung" definition | — | None until the framework is published |

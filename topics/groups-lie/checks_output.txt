@@ -37,25 +37,25 @@ PASS parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same pa
 PASS units: scaling x ↦ λx sends (p,q) to (λp, λ²q) and p²-4q to λ²(p²-4q)
 PASS conjugation and scaling never change the sign of p²-4q (random c, λ on 6 points)
 PASS rung s at (s, s(s-1)/4) has p² - 4q = s (landscape placement)
-PASS T_a(x) = (1+ka)x + a equals a ✳ₖ x
-PASS T_a ∘ T_b = T_{a ✳ₖ b}
+PASS T_a(x) = (1+ka)x + a equals a ∘ₖ x
+PASS T_a ∘ T_b = T_{a ∘ₖ b}
 PASS T_a fixes -1/k (the wall), for every a
 PASS about the wall it is a pure dilation: T_a(y - 1/k) + 1/k = (1+ka)·y
 PASS scaling conjugation: T^k_{λa}(λx) = λ·T^{kλ}_a(x)
 PASS k = 0 is a translation with no fixed point (a ≠ 0)
 PASS generators 1 + kx: [x∂, ∂] = -∂, and [1+kx, 1+k'x] = (k'-k)·1, a translation
 PASS Inönü–Wigner shadow: (a+b)/(1-qab) → a+b as q → 0 (Lorentz → Galilei)
-PASS (F_p minus the wall, ✳) is cyclic of order p-1 for every odd prime p < 60
-PASS 1 ✳ 1 ✳ ... (n copies) = 2ⁿ - 1 (Mersenne numbers)
-PASS 1 generates (F_p minus wall, ✳) exactly when 2 is a primitive root mod p (odd p < 500)
+PASS (F_p minus the wall, ∘₁) is cyclic of order p-1 for every odd prime p < 60
+PASS 1 ∘₁ 1 ∘₁ ... (n copies) = 2ⁿ - 1 (Mersenne numbers)
+PASS 1 generates (F_p minus wall, ∘₁) exactly when 2 is a primitive root mod p (odd p < 500)
 PASS small cases: generator 1 for p = 5, 11, 13; for p = 7 use 2 (1 has order 3)
 PASS circle x²+y²=1 over F_p has p+1 points when p ≡ 3 mod 4, p-1 when p ≡ 1 mod 4 (p < 60)
 PASS tan law on F_p ∪ {∞} is a cyclic group of order p+1 for every prime p ≡ 3 mod 4 below 40 (the finite circle)
 PASS finite shadows: the landscape group over F_p has p - ((p²-4q)/p) elements: p-1 line, p border, p+1 circle (all p,q mod 5,7,11,13)
-PASS the matrix circle operation: lift (I+A)(I+B) = I + A✳B, and A✳B - B✳A = AB - BA exactly
+PASS the matrix circle operation: lift (I+A)(I+B) = I + A∘₁B, and A∘₁B - B∘₁A = AB - BA exactly
 PASS group commutator (1+tA)(1+tB)(1+tA)⁻¹(1+tB)⁻¹ - 1 = t²[A,B] + O(t³)
 PASS landscape matrices commute (both are I + sX), so the commutator vanishes on the landscape
-PASS group algebra: (g-1) ✳ (h-1) = gh - 1 for all g, h in S3 (as permutation matrices)
+PASS group algebra: (g-1) ∘₁ (h-1) = gh - 1 for all g, h in S3 (as permutation matrices)
 PASS trace of AB - BA is 0: brackets land in sl2 (5 random pairs)
 
 59 of 59 checks pass

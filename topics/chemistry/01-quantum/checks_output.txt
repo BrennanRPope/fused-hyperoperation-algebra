@@ -1,4 +1,4 @@
-PASS product wavefunction: (1+cA)(1+cB)-1 = cA ✳ cB (200 random pairs)
+PASS product wavefunction: (1+cA)(1+cB)-1 = cA ∘₁ cB (200 random pairs)
 PASS N=1: CISD = Δ-√(Δ²+N g²) closed form
 PASS N=1: full CI = N × one molecule (size-extensive)  CISD keeps 1.000 of the correlation
 PASS N=2: CISD = Δ-√(Δ²+N g²) closed form

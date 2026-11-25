@@ -9,7 +9,7 @@
 <style>
 /* VOICE a technical write-up for one person who thinks in pictures
    IDEA a phase wheel: every colour of the plane meets at the wall, the one point the circle operation turns around
-   PICTURE live plane: polar web about −1, a small triangle and its image under ✳w, the two similar triangles
+   PICTURE live plane: polar web about −1, a small triangle and its image under ∘₁ w, the two similar triangles
    COLOUR warm paper and ink; magenta for the wall, teal for z, amber for w; night indigo
    TYPE Newsreader 600 display + Inter
    LAYOUT plane 60% left, readout right; stacks on a phone */
@@ -58,19 +58,19 @@ ul{padding-left:20px}
 <section class="band">
 <div class="wrap">
 <h1>In the complex plane, the circle operation is a spin and a stretch about the wall</h1>
-<p class="lede">Read a ✳ b = (1 + a)(1 + b) − 1 with complex numbers and it becomes a picture. Combining with w by the circle operation ∘₁ (called mult-add before 1.0) turns the whole plane about the point −1 by the angle of 1 + w and stretches it by the length of 1 + w. The wall is the one point that never moves, and almost everything complex analysis says about the circle operation is about hitting that point or winding around it.</p>
+<p class="lede">Read a ∘₁ b = (1 + a)(1 + b) − 1 with complex numbers and it becomes a picture. Combining with w by the circle operation ∘₁ (called mult-add before 1.0) turns the whole plane about the point −1 by the angle of 1 + w and stretches it by the length of 1 + w. The wall is the one point that never moves, and almost everything complex analysis says about the circle operation is about hitting that point or winding around it.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hero"></div>
 <div class="ctl"><label for="hr">Stretch |1 + w|</label><input id="hr" type="range" min="0.3" max="1.7" step="0.01" value="1.25"><output id="hro"></output></div>
 <div class="ctl"><label for="ht">Turn of 1 + w</label><input id="ht" type="range" min="-180" max="180" step="1" value="40"><output id="hto"></output></div>
-<p class="small">Magenta dot: the wall −1. Circles and rays: distances and angles seen from the wall. Amber: w. Teal: a small triangle near z and its image after ✳ w. The two shaded triangles, (−1, 0, w) and (−1, z, z ✳ w), always have the same shape.</p>
+<p class="small">Magenta dot: the wall −1. Circles and rays: distances and angles seen from the wall. Amber: w. Teal: a small triangle near z and its image after ∘₁ w. The two shaded triangles, (−1, 0, w) and (−1, z, z ∘₁ w), always have the same shape.</p>
 </div>
 <div class="panel">
-<div class="small">The step z ↦ z ✳ w, as seen from the wall</div>
+<div class="small">The step z ↦ z ∘₁ w, as seen from the wall</div>
 <div class="big" id="hb"></div>
 <table class="rd"><tbody id="htb"></tbody></table>
-<p class="small">Seen from the wall, the circle operation is plain complex multiplication: z ✳ w + 1 = (1 + w)(z + 1). It is the old way of drawing a product with similar triangles, with the origin moved to −1 and the unit moved to 0.</p>
+<p class="small">Seen from the wall, the circle operation is plain complex multiplication: z ∘₁ w + 1 = (1 + w)(z + 1). It is the old way of drawing a product with similar triangles, with the origin moved to −1 and the unit moved to 0.</p>
 </div>
 </div>
 </div>
@@ -80,7 +80,7 @@ ul{padding-left:20px}
 <div class="wrap side">
 <div>
 <h2>The log of the lift turns the spin into a slide, and the wall is the branch point</h2>
-<p>Take L(z) = log(1 + z). Then L(z ✳ w) = L(z) + L(w), up to a whole number of turns 2πi. The way back is E(w) = e^w − 1, one step of the rung flow: it sends straight lines to the polar web about the wall. Vertical lines become circles round −1, horizontal lines become rays out of −1, and a climb of 2π up the strip is one full trip round the wall, landing back where it started (E(2πi) = 0).</p>
+<p>Take L(z) = log(1 + z). Then L(z ∘₁ w) = L(z) + L(w), up to a whole number of turns 2πi. The way back is E(w) = e^w − 1, one step of the rung flow: it sends straight lines to the polar web about the wall. Vertical lines become circles round −1, horizontal lines become rays out of −1, and a climb of 2π up the strip is one full trip round the wall, landing back where it started (E(2πi) = 0).</p>
 <p>So log(1 + z) has its branch point at the wall, not at 0. A loop round 0 that misses −1 changes nothing; any loop round −1 adds 2πi. The colour picture shows it: hue is the angle seen from the wall, and every hue meets at −1.</p>
 <p>On the circle |1 + z| = 1, which passes through 0 with its centre on the wall, the circle operation just adds angles. That circle is the k = 1 rotation condition 2x + x² + y² = 0 from the <a href="https://claude.ai/artifact/6MmBPSMK179Q7ZRFTjz3L3">linear algebra page</a>.</p>
 </div>
@@ -134,10 +134,10 @@ ul{padding-left:20px}
 <div class="panel"><div class="fig2" id="prod"></div></div>
 <div>
 <h2>A product's zeros are exactly where one piece hits the wall</h2>
-<p>An infinite product is a circle-operation fold: ∏(1 + aₙ) − 1 = a₁ ✳ a₂ ✳ a₃ ✳ …. Euler's sine product is the fold of the pieces −z²/n²:</p>
-<div class="eq">sin(πz)/(πz) − 1 = (−z²) ✳ (−z²/4) ✳ (−z²/9) ✳ …</div>
+<p>An infinite product is a circle-operation fold: ∏(1 + aₙ) − 1 = a₁ ∘₁ a₂ ∘₁ a₃ ∘₁ …. Euler's sine product is the fold of the pieces −z²/n²:</p>
+<div class="eq">sin(πz)/(πz) − 1 = (−z²) ∘₁ (−z²/4) ∘₁ (−z²/9) ∘₁ …</div>
 <p>Its zeros are the points where one piece lands on the wall, −z²/n² = −1, that is z = ±n. Weierstrass's product for 1/Γ is the same with pieces (1 + z/n)e^(−z/n) − 1, which hit the wall at z = −n, the poles of Γ.</p>
-<p>The fold converges when Σ|aₙ| does, because |a₁ ✳ … ✳ aₙ| ≤ |a₁| ✳ … ✳ |aₙ| (proved in Lean). A merely convergent Σaₙ is not enough: aₙ = (−1)ⁿ/√n sums fine, yet its product sinks to 0, because the corner terms aₙ²/2 pile up.</p>
+<p>The fold converges when Σ|aₙ| does, because |a₁ ∘₁ … ∘₁ aₙ| ≤ |a₁| ∘₁ … ∘₁ |aₙ| (proved in Lean). A merely convergent Σaₙ is not enough: aₙ = (−1)ⁿ/√n sums fine, yet its product sinks to 0, because the corner terms aₙ²/2 pile up.</p>
 <p>The argument principle counts wall hits too. The output-lifted derivative f′/(1 + f) of the <a href="https://claude.ai/artifact/VBRCmFrQVwQiXjMxZkY5SY">calculus page</a>, integrated round a loop and divided by 2πi, is the number of times f hits −1 inside. Round |z| = 3.5 the sine fold gives 6; e^z − 1 gives 0, because it never reaches the wall.</p>
 </div>
 </div>
@@ -162,7 +162,7 @@ ul{padding-left:20px}
 <h2>What's known, what's ours</h2>
 <table><tbody>
 <tr><td>Complex product as similar triangles; affine maps fixing a point</td><td>Wessel 1799, Argand 1806</td></tr>
-<tr><td>Branch point of log(1 + z); e^w − 1 turns + into ✳</td><td>Euler, Cauchy, Riemann</td></tr>
+<tr><td>Branch point of log(1 + z); e^w − 1 turns + into ∘₁</td><td>Euler, Cauchy, Riemann</td></tr>
 <tr><td>One-parameter Möbius groups, fixed points, trace² test</td><td>Klein, Poincaré; any textbook</td></tr>
 <tr><td>Parabolic petals; Abel coordinates; horn-map invariants</td><td>Leau 1897, Fatou 1919, Écalle, Voronin 1981</td></tr>
 <tr><td>Half-iterate of e^z − 1 is not analytic</td><td>Baker 1958</td></tr>
@@ -212,10 +212,10 @@ function hero(){
   g+=poly(f,[WALL,[0,0],w],'var(--fw)','var(--w)',1.5)+poly(f,[WALL,z,zw],'var(--fz)','var(--z)',1.5);
   g+=poly(f,tri,'none','var(--z)',2,'5 4')+poly(f,img,'var(--fz)','var(--z)',2.5);
   g+=dot(f,[0,0],'var(--ink)',4)+dot(f,w,'var(--w)',6)+dot(f,z,'var(--z)',5)+dot(f,zw,'var(--z)',6)+dot(f,WALL,'var(--wall)',7);
-  g+=txt(f,WALL,'wall −1',-10,-12,'end')+txt(f,[0,0],'0',6,16)+txt(f,w,'w',8,-8)+txt(f,z,'z',-8,-8,'end')+txt(f,zw,'z ✳ w',8,-8);
+  g+=txt(f,WALL,'wall −1',-10,-12,'end')+txt(f,[0,0],'0',6,16)+txt(f,w,'w',8,-8)+txt(f,z,'z',-8,-8,'end')+txt(f,zw,'z ∘₁ w',8,-8);
   sh.innerHTML=g;
   $('hb').textContent=cf(zw);
-  const rows=[['z',cf(z)],['w',cf(w)],['1 + w: length, turn',fmt(r)+', '+Math.round(th*180/Math.PI)+'°'],['distance of z from wall',fmt(abs(add(z,[1,0])),3)],['distance of z ✳ w',fmt(abs(add(zw,[1,0])),3)],['ratio',fmt(abs(add(zw,[1,0]))/abs(add(z,[1,0])),3)]];
+  const rows=[['z',cf(z)],['w',cf(w)],['1 + w: length, turn',fmt(r)+', '+Math.round(th*180/Math.PI)+'°'],['distance of z from wall',fmt(abs(add(z,[1,0])),3)],['distance of z ∘₁ w',fmt(abs(add(zw,[1,0])),3)],['ratio',fmt(abs(add(zw,[1,0]))/abs(add(z,[1,0])),3)]];
   $('htb').innerHTML=rows.map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td></tr>').join('');
 }
 // strip

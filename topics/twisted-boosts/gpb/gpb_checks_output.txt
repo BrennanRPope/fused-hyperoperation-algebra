@@ -9,7 +9,7 @@ PASS space slice r=10.0M: carried vector comes back turned by 2π(1-√(1-2M/r))
 PASS space slice r=50.0M: carried vector comes back turned by 2π(1-√(1-2M/r)) = 0.126946
 PASS local orbital speed: v² = M/(r-2M), so γ = √((r-2M)/(r-3M))
 PASS exact factorization: √(1-3M/r) = √(1-2M/r) · (1/γ)  (squared exactly; and numerically on x in (0,1/3))
-PASS precession fractions fuse: -p = (-p_space) ✳ (-p_velocity)  (since 1-p = (1-p_s)(1-p_v))
+PASS precession fractions fuse: -p = (-p_space) ∘₁ (-p_velocity)  (since 1-p = (1-p_s)(1-p_v))
 PASS first order: p_space ≈ M/r, p_velocity ≈ M/(2r), total ≈ 3M/(2r)
 PASS velocity part to first order = Thomas: (γ-1) and (1-1/γ) both ≈ v²/2 = M/(2r)
    r = 7027.4 km: space part 4402.6 mas/yr, velocity part 2201.3 mas/yr, total 6603.9, exact 6603.9

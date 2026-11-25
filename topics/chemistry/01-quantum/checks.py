@@ -13,7 +13,7 @@ for _ in range(200):
     lhs = (1+cA)*(1+cB) - 1
     check_val = cA + cB + cA*cB
     assert abs(lhs-check_val) < 1e-12
-check("product wavefunction: (1+cA)(1+cB)-1 = cA ✳ cB (200 random pairs)", True)
+check("product wavefunction: (1+cA)(1+cB)-1 = cA ∘₁ cB (200 random pairs)", True)
 
 # 2. N-dimer model: each molecule = 2 states (ground, doubly excited at 2Δ), coupling g.
 def exact_one(D, g):

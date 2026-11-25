@@ -6,7 +6,7 @@
   only (nilpotent_pair_sixth_root: propext only). The #print lines were removed afterwards.
 - Intended module path: `FusedAlgebra/Topics/FunctionalAnalysis.lean` (namespace `FunctionalAnalysis`). Add after Base in build.sh.
 - Operator laws are proved over a general noncommutative `[Lean.Grind.Ring R]` with the operator circle operation ∘₁ (called mult-add before 1.0) `opCirc a b = a + b + a*b`
-  (local notation ⊛, because the library's ✳ needs a commutative semiring); `opCirc_comm_eq` shows it is ✳ when R is commutative.
+  (local notation ◯ₒ, because the library's ◯ needs a commutative semiring); `opCirc_comm_eq` shows it is ◯ when R is commutative.
   Note: in a noncommutative ring `grind` does not use equational hypotheses, so those proofs rewrite with the hypothesis first
   and call `grind` only on pure identities.
 

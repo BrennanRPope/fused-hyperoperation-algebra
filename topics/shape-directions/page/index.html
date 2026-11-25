@@ -86,7 +86,7 @@ code{font-size:14px;overflow-wrap:anywhere}
   <div class="ctl"><label for="x">Shear</label><input id="x" type="range" min="-0.5" max="0.5" step="0.01" value="0"><output id="xo"></output></div>
   <p class="small" id="nome"></p></div>
 </div>
-<p class="small">The torus's shape is the ratio τ of its two periods; the nome is q = e^{2πiτ}. Stretching the torus (q → 0) pinches it into the circle operation's cylinder, which is the soliton edge of the theta lattice. The gluing a ↦ a ✳ (q − 1) commutes with the law for every q, so nothing near 0 can see the nome; only the whole torus can, through j.</p>
+<p class="small">The torus's shape is the ratio τ of its two periods; the nome is q = e^{2πiτ}. Stretching the torus (q → 0) pinches it into the circle operation's cylinder, which is the soliton edge of the theta lattice. The gluing a ↦ a ∘₁ (q − 1) commutes with the law for every q, so nothing near 0 can see the nome; only the whole torus can, through j.</p>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap">
@@ -129,7 +129,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 <li>For non-commuting laws in three or more dimensions without rotational symmetry: Bianchi's classification has families with a free parameter, so a law that needs a direction-dependent twist would bring a genuine new dial. In the plane with rotational symmetry the twist adds nothing: it is curvature × area, one number.</li>
 </ul>
 <h3>Proofs</h3>
-<p class="small">36 Lean theorems in <code>shape-directions/lean/ShapeDirections.lean</code> (core Lean, no mathlib, no sorry, ✳ notation): weight_is_units, graph_weight_survives, ruler_num, ruler_den, ruler_keeps_disc, zoom_disc, ladder_forces_c3, ladder_forces_c4, rung_rate_inverts, rung_disc_is_height, rung_crossings, jet_rank, glue_commutes, glue_descends, cusp_psi3, node_psi3, pair_weight_survives, periods_outnumber_curves, additive_at_three, mult_at_three and more. Every statement was checked in sympy first; the library compiles them next. Numerical checks: 29 of 29 pass in <code>checks.py</code>.</p>
+<p class="small">36 Lean theorems in <code>shape-directions/lean/ShapeDirections.lean</code> (core Lean, no mathlib, no sorry, ∘₁ notation): weight_is_units, graph_weight_survives, ruler_num, ruler_den, ruler_keeps_disc, zoom_disc, ladder_forces_c3, ladder_forces_c4, rung_rate_inverts, rung_disc_is_height, rung_crossings, jet_rank, glue_commutes, glue_descends, cusp_psi3, node_psi3, pair_weight_survives, periods_outnumber_curves, additive_at_three, mult_at_three and more. Every statement was checked in sympy first; the library compiles them next. Numerical checks: 29 of 29 pass in <code>checks.py</code>.</p>
 <p class="small">Known pieces: the classification of one-dimensional complex groups, Tate's curve, Bennett's commutative hyperoperations (the rung sheet), Sekiguchi–Oort–Suwa, Riemann's period matrices, Shiota's theorem, Helmholtz–Lie. What is ours: the sorting of the project's dials against them, the third-order identity D = s, and the fourth-order gap.</p>
 </div>
 </div></section>

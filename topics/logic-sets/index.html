@@ -82,14 +82,14 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div>
 <h2>The leak is one parabola, and it works in any ring</h2>
 <p>This is not special to 0 and 1. Take any a and b that equal their own squares (idempotents: on sets they are indicator functions, in a matrix ring they are projections). Then the dial gives back an idempotent up to one leak term:</p>
-<div class="eq">(a ✳ₖ b)² − (a ✳ₖ b) = (k + 1)(k + 2)·ab</div>
+<div class="eq">(a ∘ₖ b)² − (a ∘ₖ b) = (k + 1)(k + 2)·ab</div>
 <p>The two roots are OR and XOR. Read with q = k + 1, the roots are q = 0 and q = −1, and n trues folded together give the q-number [n]_q: always 1 for OR, and 1, 0, 1, 0 (parity) for XOR. Every other q leaves 0 and 1 already at n = 2.</p>
 <p>The other Boolean laws leak the same way. Distributing AND over the dial misses by k·abc(1 − a); absorption a ∨ (a ∧ b) misses by ab(1 − a). Both vanish exactly when a² = a. So Boolean algebra is the dial with its inputs pinned to 0 and 1, and nothing more.</p>
 </div>
 <div>
 <h2>Each notch has a wall, and the wall is a truth value</h2>
 <div class="fig2" id="walls"></div>
-<p class="small">Lines b ↦ m ✳ₖ b for m = 0, ¼, ½, ¾, 1. Left, OR: every line passes through (1, 1). Right, XOR: every line pivots on (½, ½).</p>
+<p class="small">Lines b ↦ m ∘ₖ b for m = 0, ¼, ½, ¾, 1. Left, OR: every line passes through (1, 1). Right, XOR: every line pivots on (½, ½).</p>
 <p>The dial's wall is −1/k, the value that swallows everything. For OR it is 1: true OR anything is true. For XOR it is ½: a fair coin XOR any bit is a fair coin. That is Shannon's one-time pad (1949). Encrypt a message bit with a fair key bit and the ciphertext is exactly ½, whatever the message, and independent of it.</p>
 </div>
 </div>
@@ -102,7 +102,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <p>Fuzzy logic lets truth run from 0 to 1 and asks for an "or" that is associative, monotone and has 0 as identity (a t-conorm). Hamacher (1978) found every such rule that is a ratio of polynomials. His family is</p>
 <div class="eq">S_γ(a, b) = (a + b + (γ − 2)ab) / (1 + (γ − 1)ab)</div>
 <p>On the landscape that is the point p = γ − 2, q = 1 − γ, so the whole family is the line p + q = −1. The statistics page found this same line as the unions with certainty as a wall. Measure truth by its odds, o = x/(1 − x), and the bend disappears:</p>
-<div class="eq">odds(S_γ(a, b)) = odds(a) ✳<sub>γ</sub> odds(b)</div>
+<div class="eq">odds(S_γ(a, b)) = odds(a) ∘<sub>γ</sub> odds(b)</div>
 <p><b>Hamacher's parameter is the dial, read on odds.</b> γ = 0 adds odds, γ = 1 combines them by the circle operation ∘₁ (called mult-add before 1.0) (the probabilistic sum a + b − ab), γ = 2 is the Einstein sum (a + b)/(1 + ab), relativity's point. The t-norms ("and") are the mirror images under x ↦ 1 − x, De Morgan's law, and are the dial on odds against.</p>
 </div>
 <div class="panel"><div class="fig2" id="land"></div>
@@ -131,7 +131,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div>
 <h2>Sets have no wall, until you allow negative sets</h2>
 <div class="fig2" id="sets"></div>
-<p>For finite sets, |A ⊔ B ⊔ A×B| = a ✳ b, and adding a spare point to each side turns this into a plain product, minus the spare pair. Sizes are never negative, so finite sets have no wall and no inverses.</p>
+<p>For finite sets, |A ⊔ B ⊔ A×B| = a ∘₁ b, and adding a spare point to each side turns this into a plain product, minus the spare pair. Sizes are never negative, so finite sets have no wall and no inverses.</p>
 <p>Count by Euler characteristic instead (Schanuel 1991): a point counts 1, an open interval counts −1, a product counts the product. Now the open interval <i>is</i> the wall. Glue the spare point to it and you get [0, 1), which counts 0, and 0 times anything is 0. Two open intervals count −2, the circle operation's other unit: X ⊔ X ⊔ X×X counts 0.</p>
 </div>
 </div>
@@ -141,8 +141,8 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div class="wrap side">
 <div>
 <h2>The logic of the rungs: arithmetic switches on at rung 2</h2>
-<p>The axioms page showed the circle operation alone is multiplication in disguise, a decidable theory (Skolem 1930, Mostowski 1952), and that the circle operation with the successor carries all of arithmetic. One more step finishes the ladder. The fused exponent x ⊛ a = (x + 1)^(a + 1) − 1 <b>alone</b> defines the rungs below it:</p>
-<div class="eq">b ✳ c = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ⊛ c = x ⊛ d<br>b + c + 1 = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ✳ (x ⊛ c) = x ⊛ d</div>
+<p>The axioms page showed the circle operation alone is multiplication in disguise, a decidable theory (Skolem 1930, Mostowski 1952), and that the circle operation with the successor carries all of arithmetic. One more step finishes the ladder. The fused exponent fexp(x, a) = (x + 1)^(a + 1) − 1 <b>alone</b> defines the rungs below it:</p>
+<div class="eq">b ∘₁ c = d &nbsp;⇔&nbsp; for every x, fexp(fexp(x, b), c) = fexp(x, d)<br>b + c + 1 = d &nbsp;⇔&nbsp; for every x, fexp(x, b) ∘₁ fexp(x, c) = fexp(x, d)</div>
 <p>and 0 is its only right identity, so the successor is b + 0 + 1. With +, × and the successor definable, the first-order theory of rung 2 by itself is undecidable (Gödel, Church). Lean proves the three definitions.</p>
 </div>
 <div class="panel"><div class="fig2" id="ladder"></div>
@@ -204,7 +204,7 @@ function drawDial(){
   const N=v=>m+(v+1)/4*(W-2*m);
   g+=L(N(-1),yTop,N(3),yTop,'var(--rule)',2);
   [0,1].forEach(v=>{g+=L(N(v),yTop-10,N(v),yTop+10,'var(--xor)',3)+T(N(v),yTop+28,String(v),'middle');});
-  g+=T(N(-1),yTop-14,'1 ✳ₖ 1 = 2 + k lands at');
+  g+=T(N(-1),yTop-14,'1 ∘ₖ 1 = 2 + k lands at');
   const c=2+k, ok=Math.abs(c)<1e-9||Math.abs(c-1)<1e-9;
   g+=C(N(Math.max(-1,Math.min(3,c))),yTop,9,ok?'var(--xor)':'var(--wall)');
   // bottom: leak parabola
@@ -249,7 +249,7 @@ function drawLand(){
   g+=T(X(p1),Y(0)-6,'p','end')+T(X(0)+6,Y(q1)+10,'q');
   sL.innerHTML=g;
   const a=0.3,bb=0.6,S=(a+bb+(gm-2)*a*bb)/(1+(gm-1)*a*bb),o=x=>x/(1-x);
-  $('gread').textContent='γ = '+fm(gm)+' sits at (p, q) = ('+fm(gm-2)+', '+fm(1-gm)+'). With a = 0.3, b = 0.6: S = '+S.toFixed(3)+'. In odds: '+o(a).toFixed(3)+' ✳γ '+o(bb).toFixed(3)+' = '+(o(a)+o(bb)+gm*o(a)*o(bb)).toFixed(3)+' = odds of S.';
+  $('gread').textContent='γ = '+fm(gm)+' sits at (p, q) = ('+fm(gm-2)+', '+fm(1-gm)+'). With a = 0.3, b = 0.6: S = '+S.toFixed(3)+'. In odds: '+o(a).toFixed(3)+' ∘_γ '+o(bb).toFixed(3)+' = '+(o(a)+o(bb)+gm*o(a)*o(bb)).toFixed(3)+' = odds of S.';
 }
 function drawSets(){
   const W=sS.clientWidth,H=sS.clientHeight,m=20;
@@ -264,7 +264,7 @@ function drawSets(){
 }
 function drawLadder(){
   const W=sR.clientWidth,H=sR.clientHeight;
-  const rows=[['rung 2 alone (fused exponent)',false,'defines ✳, +1, 0'],['rung 1 + successor',false,'axioms page'],['rung 1 alone (the circle operation)',true,'× in disguise: Skolem'],['rung 0 alone (shifted add)',true,'Presburger']];
+  const rows=[['rung 2 alone (fused exponent)',false,'defines ∘₁, +1, 0'],['rung 1 + successor',false,'axioms page'],['rung 1 alone (the circle operation)',true,'× in disguise: Skolem'],['rung 0 alone (shifted add)',true,'Presburger']];
   const bh=(H-20)/rows.length-10;let g='';
   rows.forEach(([t,dec,n],i)=>{const y=10+i*(bh+10);
     g+='<rect x="8" y="'+y+'" width="'+(W-16)+'" height="'+bh+'" rx="5" fill="color-mix(in srgb,'+(dec?'var(--xor)':'var(--wall)')+' 14%,transparent)" stroke="'+(dec?'var(--xor)':'var(--wall)')+'" stroke-width="2"/>';

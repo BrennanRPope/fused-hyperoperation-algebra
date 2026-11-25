@@ -71,7 +71,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <div class="wrap side">
 <div>
 <h2>The cube lists subsets, and the dial paints them</h2>
-<div class="eq">(1 + x₁)(1 + x₂)⋯(1 + xₙ) − 1 = x₁ ✳ x₂ ✳ ⋯ ✳ xₙ = Σ over nonempty S of x_S</div>
+<div class="eq">(1 + x₁)(1 + x₂)⋯(1 + xₙ) − 1 = x₁ ∘₁ x₂ ∘₁ ⋯ ∘₁ xₙ = Σ over nonempty S of x_S</div>
 <p>Each corner of the n-cube is a subset; its layers are Pascal's rows, the tesseract's 1-4-6-4-1. Set every xᵢ = 1 and the count is 2ⁿ − 1.</p>
 <p>Turn the dial: (1 + k·x₁)⋯(1 + k·xₙ) weighs a subset by k^|S|. For whole k that is a count too: each chosen element wears one of k colours, giving (1 + k)ⁿ = qⁿ in all. At k = −1 the signed corners cancel to 0, which is inclusion–exclusion (proved on the <a href="https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv">statistics page</a>); it counts derangements 1, 0, 1, 2, 9, 44, 265. At k = −2 the total is (−1)ⁿ, parity. Weighting the corners by q to the sum of their positions gives the q-binomials, done on the <a href="https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL">q page</a>.</p>
 <p>The same cube sorts compositions: m numbers adding to n, each zero or a positive part. Pick the corner of nonzero parts, then split n among them. For two parts that is the pairs (a, b), either or both nonzero: n + 1 of them.</p>
@@ -89,7 +89,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <div class="wrap cols">
 <div>
 <h2>n! is a circle-operation fold, and the cube sorts permutations by cycles</h2>
-<div class="eq">1 ✳ 2 = 5, 5 ✳ 3 = 23, 23 ✳ 4 = 119, … : 1 ✳ 2 ✳ ⋯ ✳ (n − 1) = n! − 1</div>
+<div class="eq">1 ∘₁ 2 = 5, 5 ∘₁ 3 = 23, 23 ∘₁ 4 = 119, … : 1 ∘₁ 2 ∘₁ ⋯ ∘₁ (n − 1) = n! − 1</div>
 <p>The lift says why: (1 + 1)(1 + 2)⋯(1 + (n − 1)) = n!. The picture says more. Build a permutation by placing the points one at a time. Point i + 1 either starts a new cycle (axis i off, weight 1) or goes right after one of the i points already placed (axis i on, weight i). Pick "Axis weights 1, 2, 3" on the cube above: its layers 1, 6, 11, 6 are the permutations of 4 points with 4, 3, 2 and 1 cycles, Stirling's cycle numbers.</p>
 <p>With the dial, each permutation weighs k^(n − cycles), and the total is (1 + k)(1 + 2k)⋯. At k = −1 that weight is the permutation's sign, and the axis of weight 1 sits exactly on the dial's wall −1/k = 1. One entry on the wall sends the whole fold to the wall, so even and odd permutations balance.</p>
 </div>
@@ -97,7 +97,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <h2>The exponential formula is exactly one step of the flow</h2>
 <p>For labelled structures, (1 + A)(1 + B) − 1 counts the ways to split the points into an A-part and a B-part, either one possibly empty but not both. Combine C/n with itself n times by the circle operation ∘₁ (called mult-add before 1.0) and let n grow: the result is e^C − 1 = E(C), the same staircase that builds e. So E(C) counts nonempty sets of C-pieces.</p>
 <p>Put connected graphs in as C (1, 1, 4, 38, 728 on 1 to 5 points) and E returns all graphs (1, 2, 8, 64, 1024). Going back, log(1 + x), is one rung down, E⁻¹. So yes: the exponential formula is the rung flow at t = 1, and nothing more exotic.</p>
-<p>The dial version, n copies of C/n under ✳ₖ, tends to (e^(kC) − 1)/k, which weighs a structure by k for each piece beyond the first. Fed nonempty sets, its layers are the Stirling numbers S(n, j), set partitions by block count.</p>
+<p>The dial version, n copies of C/n under ∘ₖ, tends to (e^(kC) − 1)/k, which weighs a structure by k for each piece beyond the first. Fed nonempty sets, its layers are the Stirling numbers S(n, j), set partitions by block count.</p>
 </div>
 </div>
 </section>

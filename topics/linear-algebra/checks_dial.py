@@ -14,7 +14,7 @@ A3 = sp.Matrix(3, 3, lambda i, j: sp.Symbol(f'a{i+1}{j+1}')); I2, I3 = sp.eye(2)
 wm = lambda X, Y, w: X + Y + w * X * Y
 
 # 1. real dial: one law in other units for every k != 0
-check("k(A ⊞k B) = (kA) ⊞ (kB)", Z(k * wm(A2, B2, k) - wm(k * A2, k * B2, 1)))
+check("k(A ∘ₖ B) = (kA) ∘₁ (kB)", Z(k * wm(A2, B2, k) - wm(k * A2, k * B2, 1)))
 # det(I+kA) is the reversed characteristic polynomial; walls at k = -1/λ
 p3 = (t * I3 - A3).det()
 check("det(I+kA) = (-k)^3 p_A(-1/k)", Z((I3 + k * A3).det() - (-k)**3 * p3.subs(t, -1 / k)))
@@ -74,7 +74,7 @@ check("κ = +1: det(I + aU) = (1-a)(1+a)", Z((I2 + a * Uk).det().subs(kap, 1) - 
 c = sp.Symbol('c')
 check("shape s = k²/(k²-4q) unchanged by units", Z(sp.simplify((c*k)**2 / ((c*k)**2 - 4 * c**2 * q) - k**2 / (k**2 - 4 * q))))
 
-# 4. matrix dial K inside the law: A ⊞_K B = A + B + AKB ; Sylvester ; rank-one = addition
+# 4. matrix dial K inside the law: A ∘_K B = A + B + AKB ; Sylvester ; rank-one = addition
 K2 = sp.Matrix(2, 2, sp.symbols('k11 k12 k21 k22'))
 check("(I + AK)(I + BK) = I + (A + B + AKB)K", Z((I2 + A2 * K2) * (I2 + B2 * K2) - (I2 + (A2 + B2 + A2 * K2 * B2) * K2)))
 check("Sylvester 2x2: det(I + AK) = det(I + KA)", Z((I2 + A2 * K2).det() - (I2 + K2 * A2).det()))

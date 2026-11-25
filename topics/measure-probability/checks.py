@@ -32,9 +32,9 @@ def sugeno_lambda(g):
 
 print("== 1. The Sugeno lambda-measure is the dial with k = lambda")
 x, y, z, l = sp.symbols('x y z l')
-check("symbolic: disjoint union a ✳λ b is associative and commutative",
+check("symbolic: disjoint union a ∘_λ b is associative and commutative",
       sp.expand(dial(l, dial(l, x, y), z) - dial(l, x, dial(l, y, z))) == 0 and sp.expand(dial(l, x, y) - dial(l, y, x)) == 0)
-check("symbolic: lift 1+λ(a✳λb) = (1+λa)(1+λb)", sp.expand(1 + l*dial(l, x, y) - (1+l*x)*(1+l*y)) == 0)
+check("symbolic: lift 1+λ(a∘_λb) = (1+λa)(1+λb)", sp.expand(1 + l*dial(l, x, y) - (1+l*x)*(1+l*y)) == 0)
 ok = True
 for _ in range(300):
     n = rng.integers(2, 7); g = rng.uniform(0.02, 0.8, n); lam = sugeno_lambda(g)
@@ -220,13 +220,13 @@ for _ in range(500):
     ok &= abs(odds(dial(-1, p, q)) - dial(1, odds(p), odds(q))) < 1e-8*max(1, odds(dial(-1,p,q)))
     ok &= abs(against(p*q) - dial(1, against(p), against(q))) < 1e-8*max(1, against(p*q))
     ok &= abs(odds(dial(-1, dial(-1, p, q), r)) - dial(1, dial(1, odds(p), odds(q)), odds(r))) < 1e-7*max(1, odds(dial(-1,dial(-1,p,q),r)))
-check("independent A, B: odds(A∪B) = odds A ✳ odds B; odds-against(A∩B) = against A ✳ against B; 3 events", ok)
+check("independent A, B: odds(A∪B) = odds A ∘₁ odds B; odds-against(A∩B) = against A ∘₁ against B; 3 events", ok)
 bad = sum(abs(odds(p*q) - dial(1, odds(p), odds(q))) > 1e-6 for p, q in rng.uniform(0.05, 0.95, (200, 2)))
 check("odds of an 'and' do NOT the circle operation (dropped claim): fails on 200 of 200 random pairs", bad == 200)
 # Monte Carlo
 N = 400000; A = rng.random(N) < .3; B = rng.random(N) < .45
 pe = (A|B).mean()
-check("simulation (400,000 draws): odds of A∪B matches 0.4286 ✳ 0.8182 = 1.5974",
+check("simulation (400,000 draws): odds of A∪B matches 0.4286 ∘₁ 0.8182 = 1.5974",
       abs(pe/(1-pe) - dial(1, odds(.3), odds(.45))) < 0.02, f"{pe/(1-pe):.4f}")
 
 print("== 10. Expectation passes through the dial when variables are independent")
@@ -241,13 +241,13 @@ for _ in range(300):
     EX = (J.sum(1))@xs; EY = (J.sum(0))@ys; EXY = xs@J@ys
     E2 = sum(J[i, j]*dial(k, xs[i], ys[j]) for i in range(5) for j in range(4))
     okcov &= abs(E2 - dial(k, EX, EY) - k*(EXY - EX*EY)) < 1e-10
-check("300 random independent pairs: E[X ✳ₖ Y] = E X ✳ₖ E Y", ok)
+check("300 random independent pairs: E[X ∘ₖ Y] = E X ∘ₖ E Y", ok)
 check("dependent pairs: the gap is exactly k·Cov(X, Y) (the corner's excess)", okcov)
 r = [(-0.5, 0.5), (0.5, 0.5)]           # fair ±50% bet
 vals = list(itertools.product(*[[v for v, _ in r]]*6))
 EW = sum(np.prod([0.5]*6) * (np.prod([1+v for v in path]) - 1) for path in vals)
 med = np.median([np.prod([1+v for v in path]) - 1 for path in vals])
-check("martingale: six fair ±50% bets, E[r₁ ✳ … ✳ r₆] = 0 exactly", abs(EW) < 1e-12)
+check("martingale: six fair ±50% bets, E[r₁ ∘₁ … ∘₁ r₆] = 0 exactly", abs(EW) < 1e-12)
 check("yet the typical path loses: median wealth change = 0.75³ − 1 = −0.578", abs(med - (0.75**3 - 1)) < 1e-12)
 check("volatility drag: E log(1+r) = ½log(0.75) < 0 = log(1 + E r)", 0.5*math.log(1.5)+0.5*math.log(0.5) < 0)
 
@@ -257,7 +257,7 @@ for _ in range(200):
     n = rng.integers(1, 30); dx, dy = rng.normal(0, .1, n), rng.normal(0, .1, n)
     lhs = (np.prod(1+dx) - 1); rhs = (np.prod(1+dy) - 1)
     ok &= abs(dial(1, lhs, rhs) - (np.prod(1 + dial(1, dx, dy)) - 1)) < 1e-10
-check("ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ✳ Δy = Δx+Δy+ΔxΔy", ok)
+check("ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ∘₁ Δy = Δx+Δy+ΔxΔy", ok)
 T, sig = 1.0, 0.8; errs = []; qv = []
 for n in [100, 1000, 10000, 100000]:
     e1 = e2 = 0.0
@@ -271,6 +271,6 @@ check("the summed self-corners ΣΔW² → T (the Itô drag is half of them)", q
 
 print("== 12. Discrete hazards (already on the information page; restated)")
 h = rng.uniform(0, .2, 12); F = lam_measure(-1, h)
-check("failure by step n = h₁ ✳₋₁ … ✳₋₁ hₙ = 1 − ∏(1 − hᵢ)", abs(F - (1 - np.prod(1-h))) < 1e-14)
+check("failure by step n = h₁ ∘₋₁ … ∘₋₁ hₙ = 1 − ∏(1 − hᵢ)", abs(F - (1 - np.prod(1-h))) < 1e-14)
 
 print(f"\n{sum(results)}/{len(results)} checks pass")

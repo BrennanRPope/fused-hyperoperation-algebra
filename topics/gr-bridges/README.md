@@ -17,7 +17,7 @@ Lovelock, Deser (with Brans-Dicke, Cassini and the sombrero).
   works is a dial on each direction pair: the square rule of a Clifford (geometric) algebra, e_i e_j + e_j e_i = 2 k_ij.
   That k_ij is exactly a metric. It is a renaming of g_ij, plus a reason the metric has to be there.
 - **k as a Clifford number works only in the sandwich form a + b + a·k·b.** That law is associative for every
-  multivector k and keeps the exact lift 1 + k(a✳b) = (1 + k a)(1 + k b). A weight field k(x) used alone makes no
+  multivector k and keeps the exact lift 1 + k(a∘₁b) = (1 + k a)(1 + k b). A weight field k(x) used alone makes no
   curvature (it is pure gauge). Add a twist field and you get gauge-theory gravity (Lasenby, Doran and Gull), which is
   general relativity, and our river is its natural ("Newtonian") gauge.
 - **The bridges:** every bridge reaches Einstein's equations once the direction dial is in. The circle operation supplies the most
@@ -48,14 +48,14 @@ field alone is flat (S7), so self-similarity does not create curvature by itself
 
 | Ingredient the bridge needs | Supplied by the circle operation? |
 |---|---|
-| Area change of a light bundle (Raychaudhuri) | **Yes.** Area = (1+a)(1+b) = 1 + (a✳b). Exactly: θ′ + θ²/2 + σ² = a″/(1+a) + b″/(1+b) = −R_kk. With straight rays the area's second difference is 2αβ, the circle-operation cross term; that cross term is the focusing (J1). |
+| Area change of a light bundle (Raychaudhuri) | **Yes.** Area = (1+a)(1+b) = 1 + (a∘₁b). Exactly: θ′ + θ²/2 + σ² = a″/(1+a) + b″/(1+b) = −R_kk. With straight rays the area's second difference is 2αβ, the circle-operation cross term; that cross term is the focusing (J1). |
 | Unruh temperature T = a/2π | **Yes.** Constant acceleration runs the Doppler factor along the circle-operation flow e^{aτ}; its Fourier transform is thermal, |β/α|² = e^{−2πΩ/a}. The 2π is the rotation period after flipping the dial's sign (J2). |
 | "Heat flux = focusing in every light direction ⇒ Einstein" | Algebra, checked: X(k,k) = 0 for all light-like k forces X = φg; Bianchi fixes φ (J3). |
 | Entropy proportional to area, with η = 1/(4Għ) | **No.** This is the one outside input (quantum entanglement / Bekenstein). |
 | Matter's energy flux T_ab | No (matter). |
 
 Extra links found:
-- Our earlier "clock deficit ✳ ruler deficit = 0" is exactly Jacobson's 2007 condition g_tt g_rr = −1, which holds iff
+- Our earlier "clock deficit ∘₁ ruler deficit = 0" is exactly Jacobson's 2007 condition g_tt g_rr = −1, which holds iff
   no energy flows along radial light rays (J4).
 - If horizon patches combine entropy by the circle operation with dial k (that is Tsallis's rule), the entropy that adds is
   log(1+kS)/k (Rényi). Small patches can't see k, so the local Einstein equations are unchanged. Globally black holes

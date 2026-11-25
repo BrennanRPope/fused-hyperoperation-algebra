@@ -49,7 +49,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div class="band"><div class="wrap">
 <p class="mute">Fused Hyperoperation Algebra · Nov 25, 2026</p>
 <h1>Linear algebra is the circle-operation cube, one dimension up</h1>
-<p class="lede">The determinant of I + A is the circle-operation cube: 1 + (λ₁ ⊞ λ₂ ⊞ … ⊞ λₙ), with the principal minors as its corners, counted 1, 3, 3, 1 in three dimensions. Almost everything here is known mathematics seen through the shift x ↦ 1 + x. The strongest find is that your soliton cube is exactly a determinant det(I + M).</p>
+<p class="lede">The determinant of I + A is the circle-operation cube: 1 + (λ₁ ∘₁ λ₂ ∘₁ … ∘₁ λₙ), with the principal minors as its corners, counted 1, 3, 3, 1 in three dimensions. Almost everything here is known mathematics seen through the shift x ↦ 1 + x. The strongest find is that your soliton cube is exactly a determinant det(I + M).</p>
 <div class="fig hero"><svg id="box" role="img" aria-label="A box stretched from the unit cube split into 1 unit cube, 3 slabs, 3 beams and 1 corner block"></svg></div>
 <p class="mute">The unit cube stretched by 1 + a, 1 + b, 1 + c along three eigen-directions. Its volume det(I + A) is the unit cube, 3 slabs (the trace), 3 beams (the 2×2 minors) and 1 corner block (the determinant).</p>
 <nav class="scroll" aria-label="Sections"><a href="#cube">Determinant</a><a href="#dial">One formula</a><a href="#vectors">Vectors and maps</a><a href="#matrices">Matrices</a><a href="#rotations">Rotations</a><a href="#coupling">Coupling</a><a href="#tensors">Tensors</a><a href="#solitons">Solitons</a><a href="#turn">Turning the dial</a><a href="#matdial">Matrix dial</a><a href="#ledger">What's known</a><a href="#lean">Lean</a></nav>
@@ -61,7 +61,7 @@ svg text{font-family:Literata,Georgia,serif}
 <p>Expand det(I + A) and every term is a principal minor: pick a set S of rows, take the same columns, and multiply out. That is the corner expansion of the circle-operation cube, with a minor sitting at each corner.</p>
 <div class="eq">det(I + kA) = 1 + k·e₁ + k²·e₂ + k³·e₃</div>
 <p>e₁ is the trace, e₂ the sum of the three 2×2 principal minors, e₃ the determinant. When the eigenvalues sit on the diagonal (a triangular matrix), this is exactly the cube of the eigenvalues:</p>
-<div class="eq">det(I + A) − 1 = λ₁ ⊞ λ₂ ⊞ λ₃</div>
+<div class="eq">det(I + A) − 1 = λ₁ ∘₁ λ₂ ∘₁ λ₃</div>
 <p>So the trace adds the eigenvalues, the determinant multiplies them, and the shifted determinant combines them by the circle operation ∘₁ (called mult-add before 1.0). A matrix sits on the wall, det(I + A) = 0, exactly when −1 is one of its eigenvalues.</p>
 </div>
 <div><p class="mute">Known since Fredholm (1903), who defined det(I + K) for integral operators by this same corner sum, now called the Fredholm determinant. It is the infinite circle operation of the eigenvalues.</p></div>
@@ -71,7 +71,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div>
 <h2>One formula covers the whole dial <span class="tag r">reframing</span></h2>
 <p>Write D_k(A) = e₁ + k·e₂ + k²·e₃, so that det(I + kA) = 1 + k·D_k(A). Then for every weight k:</p>
-<div class="eq">D_k(A ⊞ₖ B) = D_k(A) ⊞ₖ D_k(B)</div>
+<div class="eq">D_k(A ∘ₖ B) = D_k(A) ∘ₖ D_k(B)</div>
 <p>At k = 0 this says the trace is additive. At k = 1 it says det(I + A) is multiplicative. They are one law at two settings of your dial, and Lean proves it for 2×2 matrices over any ring and 3×3 over any field.</p>
 <p>Your linearizer L(x) = log(1 + x) carries one end to the other: log det(I + A) = tr log(I + A), and det(e^Y) = e^(tr Y).</p>
 </div>
@@ -83,15 +83,15 @@ svg text{font-family:Literata,Georgia,serif}
 <div>
 <h2>Vectors and maps: two readings</h2>
 <p><b>Shift the field.</b> <span class="tag s">standard</span> The fused ring (u + v + 1, the circle operation) is the ordinary ring moved by one, so its vector spaces are ordinary ones with the origin at the wall corner (−1, −1). A fused-linear map is an affine map that fixes that corner. Combining with a by the circle operation is zooming by 1 + a about the wall, as drawn.</p>
-<p><b>Use the circle operation as the addition.</b> <span class="tag s">standard</span> On (−1, ∞)ⁿ, with ⊞ as addition and the circle power x^(⊞t) = (1 + x)^t − 1 as scaling, you get a real vector space. log(1 + x) maps it onto ordinary ℝⁿ. Its linear maps are monomial maps, 1 + fᵢ = ∏ (1 + xⱼ)^mᵢⱼ. A matrix becomes a table of exponents, and composing two maps multiplies their tables. This is toric geometry's view, and Aitchison's geometry of proportions.</p>
+<p><b>Use the circle operation as the addition.</b> <span class="tag s">standard</span> On (−1, ∞)ⁿ, with ∘₁ as addition and the circle power x^(∘₁t) = (1 + x)^t − 1 as scaling, you get a real vector space. log(1 + x) maps it onto ordinary ℝⁿ. Its linear maps are monomial maps, 1 + fᵢ = ∏ (1 + xⱼ)^mᵢⱼ. A matrix becomes a table of exponents, and composing two maps multiplies their tables. This is toric geometry's view, and Aitchison's geometry of proportions.</p>
 </div>
 </div></section>
 
 <section class="band" id="matrices"><div class="wrap grid">
 <div>
 <h2>Matrices under the circle operation <span class="tag s">standard</span></h2>
-<div class="eq">A ⊞ B = A + B + AB, &nbsp; I + (A ⊞ B) = (I + A)(I + B)</div>
-<p>Order now matters, because matrices don't commute. Off the wall every matrix has a way back, (I + A)⁻¹ − I. Circle-operation subtraction X ⊟ A = (X − A)(I + A)⁻¹ undoes ⊞, just as it does for rates.</p>
+<div class="eq">A ∘₁ B = A + B + AB, &nbsp; I + (A ∘₁ B) = (I + A)(I + B)</div>
+<p>Order now matters, because matrices don't commute. Off the wall every matrix has a way back, (I + A)⁻¹ − I. Circle-operation subtraction X ⊟ A = (X − A)(I + A)⁻¹ undoes ∘₁, just as it does for rates.</p>
 <p>The Cayley transform, which turns a skew matrix S into a rotation, is circle-operation subtraction of S from its own transpose:</p>
 <div class="eq">(I + S)⁻¹(I − S) = I + (Sᵀ ⊟ S)</div>
 </div>
@@ -102,7 +102,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div class="fig"><svg id="circ" role="img" aria-label="Circles through the origin centred at the walls -1/k, flattening to the vertical axis at k = 0"></svg></div>
 <div>
 <h2>Rotations come from the dial <span class="tag r">reframing</span></h2>
-<p>I + kX is a rotation exactly when Xᵀ ⊞ₖ X = 0. For a 2×2 X = [[x, −y], [y, x]] this reads 2x + k(x² + y²) = 0: a circle through 0, centred on the weighted wall −1/k.</p>
+<p>I + kX is a rotation exactly when Xᵀ ∘ₖ X = 0. For a 2×2 X = [[x, −y], [y, x]] this reads 2x + k(x² + y²) = 0: a circle through 0, centred on the weighted wall −1/k.</p>
 <p>At k = 1 the circle sits on the wall −1, the rotations shifted by one. As k shrinks the circles grow and flatten into the vertical axis. At k = 0 the corner drops out and the condition is Xᵀ + X = 0, the skew matrices. That is the Lie algebra: the group flattens to its tangent line at the turn of the dial.</p>
 </div>
 </div></section>
@@ -111,7 +111,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div>
 <h2>Off-diagonal entries turn the dial <span class="tag r">reframing</span></h2>
 <p>For a 2×2 matrix M:</p>
-<div class="eq">det(I + M) − 1 = m₁₁ ⊞_w m₂₂, &nbsp; w = 1 − m₁₂m₂₁ / (m₁₁m₂₂)</div>
+<div class="eq">det(I + M) − 1 = m₁₁ ∘_w m₂₂, &nbsp; w = 1 − m₁₂m₂₁ / (m₁₁m₂₂)</div>
 <p>With no coupling (diagonal) w = 1, the plain circle operation, volume. A rank-one matrix gives w = 0, plain addition. Coupling the two directions slides the weight between them, so the corner term is how much the directions still act independently.</p>
 </div>
 <div><p class="mute">An elementary identity. The point is the reading: the dial weight is not a free choice, it is the coupling ratio of a matrix.</p></div>
@@ -169,7 +169,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div class="fig"><svg id="ends3" role="img" aria-label="Three stretched boxes: at small k the slabs dominate, at large k the corner block dominates"></svg></div>
 <div>
 <h2>Only the ends of the real dial differ <span class="tag r">reframing</span></h2>
-<p>k(A ⊞ₖ B) = (kA) ⊞ (kB), so any nonzero k, fractional, negative or large, is the k = 1 law measured in units of k. In the box picture k stretches every side to k·λ. Small k leaves a thin box made almost entirely of slabs, which is the trace. Large k makes the corner block swamp everything, which is the determinant. The cube is the bridge between the two.</p>
+<p>k(A ∘ₖ B) = (kA) ∘₁ (kB), so any nonzero k, fractional, negative or large, is the k = 1 law measured in units of k. In the box picture k stretches every side to k·λ. Small k leaves a thin box made almost entirely of slabs, which is the trace. Large k makes the corner block swamp everything, which is the determinant. The cube is the bridge between the two.</p>
 <p>k = −1 is not a new law either. It is the same law reflected, which is why the earlier pages found failure union as the circle operation's mirror image.</p>
 </div>
 </div></section>
@@ -204,16 +204,16 @@ svg text{font-family:Literata,Georgia,serif}
 
 <section class="band" id="inside"><div class="wrap">
 <h2>A matrix inside the law <span class="tag s">standard</span></h2>
-<p>The weight can also sit between the factors: A ⊞_K B = A + B + AKB, which lifts through I + AK. Sylvester's identity det(I + AK) = det(I + KA) says the cube in one dimension equals the cube in another: a 3×5 A and a 5×3 K give the same volume. When K has rank one, every corner term vanishes and det(I + A·u·vᵀ) = 1 + vᵀAu. A rank-one weight turns the cube back into addition, the general form of the 2×2 coupling result above.</p>
+<p>The weight can also sit between the factors: A ∘_K B = A + B + AKB, which lifts through I + AK. Sylvester's identity det(I + AK) = det(I + KA) says the cube in one dimension equals the cube in another: a 3×5 A and a 5×3 K give the same volume. When K has rank one, every corner term vanishes and det(I + A·u·vᵀ) = 1 + vᵀAu. A rank-one weight turns the cube back into addition, the general form of the 2×2 coupling result above.</p>
 </div></section>
 
 <section class="band" id="ledger"><div class="wrap">
 <h2>What's known, what's reframed, what's new</h2>
 <table class="stack"><thead><tr><th>Piece</th><th>Status</th><th>Where it's from</th></tr></thead><tbody>
-<tr><td>det(I + A) = corner sum of principal minors; shifted det = ⊞ of eigenvalues</td><td>Standard</td><td>Fredholm determinant, 1903</td></tr>
-<tr><td>Matrix ⊞ and the group of I + A</td><td>Standard</td><td>Jacobson's circle operation, 1945</td></tr>
+<tr><td>det(I + A) = corner sum of principal minors; shifted det = ∘₁ of eigenvalues</td><td>Standard</td><td>Fredholm determinant, 1903</td></tr>
+<tr><td>Matrix ∘₁ and the group of I + A</td><td>Standard</td><td>Jacobson's circle operation, 1945</td></tr>
 <tr><td>Trace and det(I + A) as one dial homomorphism D_k</td><td>Reframing</td><td>Jacobi's formula, log-det</td></tr>
-<tr><td>Rotations as Xᵀ ⊞ₖ X = 0, circles on the walls, Lie algebra at k = 0</td><td>Reframing</td><td>Lie group contraction</td></tr>
+<tr><td>Rotations as Xᵀ ∘ₖ X = 0, circles on the walls, Lie algebra at k = 0</td><td>Reframing</td><td>Lie group contraction</td></tr>
 <tr><td>Cayley transform = I + (Sᵀ ⊟ S)</td><td>Reframing</td><td>Cayley, 1846</td></tr>
 <tr><td>2×2 coupling sets the dial weight</td><td>Reframing</td><td>Elementary</td></tr>
 <tr><td>Exterior, classical, symmetric, Gaussian on one dial</td><td>Known</td><td>Vere-Jones α-permanents, 1988</td></tr>
@@ -277,7 +277,7 @@ function zoomFig(){
   h+=`<line x1="${X(-1)}" y1="${Y(-1)}" x2="${X(w[0])}" y2="${Y(w[1])}" stroke="${css('--mute')}" stroke-dasharray="4 4"/>`;
   h+=`<circle cx="${X(-1)}" cy="${Y(-1)}" r="6" fill="${css('--red')}"/><text x="${X(-1)+10}" y="${Y(-1)+20}" font-size="14" fill="${css('--red')}">wall corner (−1, −1)</text>`;
   h+=`<circle cx="${X(v[0])}" cy="${Y(v[1])}" r="4" fill="${css('--ink')}"/><text x="${X(v[0])+8}" y="${Y(v[1])+16}" font-size="14" fill="${css('--ink')}">x</text>`;
-  h+=`<circle cx="${X(w[0])}" cy="${Y(w[1])}" r="4" fill="${css('--blue')}"/><text x="${X(w[0])-54}" y="${Y(w[1])-10}" font-size="14" fill="${css('--blue')}">a ⊞ x</text>`;
+  h+=`<circle cx="${X(w[0])}" cy="${Y(w[1])}" r="4" fill="${css('--blue')}"/><text x="${X(w[0])-54}" y="${Y(w[1])-10}" font-size="14" fill="${css('--blue')}">a ∘₁ x</text>`;
   h+=`<text x="${X(0.6)}" y="${Y(w[1])+22}" font-size="13" fill="${css('--mute')}">each side × (1 + aᵢ)</text>`;
   s.innerHTML=h;}
 function circFig(){

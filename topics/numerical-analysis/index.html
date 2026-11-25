@@ -63,7 +63,7 @@ footer{color:var(--soft);font-size:14px}
 <p class="small">A toy float system with 3 significant bits, so the ticks are visible. Ticks are the numbers it can hold: crowded near 0, a quarter apart between 1 and 2. The amber arrow is the lift 1 + a snapping to the nearest tick; the hollow dot is what comes back after subtracting 1. Real float64 has 53 bits, the same picture with ticks 2⁻⁵² apart near 1.</p>
 </div>
 <div class="panel">
-<div class="small">Digits kept for a ✳ b at |a| ≈ 10⁻¹² (float64, median)</div>
+<div class="small">Digits kept for a ∘₁ b at |a| ≈ 10⁻¹² (float64, median)</div>
 <div class="big"><span id="dl">4</span> <span class="small">lift</span> · <span style="color:var(--teal)">16</span> <span class="small">fused</span></div>
 <div class="fig2" id="dig"></div>
 <p class="small"><span class="key" style="background:var(--amber)"></span>(1 + a)(1 + b) − 1 &nbsp; <span class="key" style="background:var(--teal)"></span>a + b + ab and fma(a, b, a + b). The lift loses about log₁₀(1/|a|) digits: one for every power of ten a sits below 1.</p>
@@ -82,7 +82,7 @@ footer{color:var(--soft);font-size:14px}
 <div>
 <h2>One fused step is one fma</h2>
 <p>Hardware fused multiply-add computes x·y + z with a single rounding (IBM POWER, 1990; standard in IEEE 754-2008). The circle operation has three fma shapes, all equal on paper and proved equal in Lean:</p>
-<div class="eq">a ✳ b = fma(a, b, a + b) = fma(a, 1 + b, b) = fma(b, 1 + a, a)</div>
+<div class="eq">a ∘₁ b = fma(a, b, a + b) = fma(a, 1 + b, b) = fma(b, 1 + a, a)</div>
 <p>For small a and b, a + b + ab and fma(a, b, a + b) do equally well: within one rounding for 400 random pairs at each size from 10⁻⁴ down to 10⁻¹⁶. The shapes with 1 + b inside round a lift first and lose a little (up to about 10⁻¹³ in the checks). The real difference shows up next, near the way back.</p>
 </div>
 </div>
@@ -91,10 +91,10 @@ footer{color:var(--soft);font-size:14px}
 <section class="band">
 <div class="wrap cols">
 <div class="panel"><div class="fig2" id="band"></div>
-<p class="small">b is the inverse of a, −a/(1 + a), nudged by one part in 10⁹, so a ✳ b is tiny and everything cancels. <span class="key" style="background:var(--amber)"></span>a + b + ab &nbsp; <span class="key" style="background:var(--teal)"></span>fma(a, b, a + b). Shaded: the octave 1/2 ≤ 1 + a ≤ 2.</p></div>
+<p class="small">b is the inverse of a, −a/(1 + a), nudged by one part in 10⁹, so a ∘₁ b is tiny and everything cancels. <span class="key" style="background:var(--amber)"></span>a + b + ab &nbsp; <span class="key" style="background:var(--teal)"></span>fma(a, b, a + b). Shaded: the octave 1/2 ≤ 1 + a ≤ 2.</p></div>
 <div>
 <h2>Near the inverse, one fma is exact inside the octave around 1</h2>
-<p>When b is close to the inverse of a, a ✳ b is close to 0 and the two big pieces a + b and ab cancel. Plain a + b + ab rounds ab first and loses up to ten digits. fma(a, b, a + b) rounds ab not at all, so it is correct to the last bit whenever a + b itself is exact.</p>
+<p>When b is close to the inverse of a, a ∘₁ b is close to 0 and the two big pieces a + b and ab cancel. Plain a + b + ab rounds ab first and loses up to ten digits. fma(a, b, a + b) rounds ab not at all, so it is correct to the last bit whenever a + b itself is exact.</p>
 <p>Sterbenz's lemma (1974) says x − y is exact when y/2 ≤ x ≤ 2y. Lean proves the inverse lands in that window <b>whenever the lift 1 + a lies between 1/2 and 2</b> (<code>sterbenz_window_pos</code>, <code>_neg</code>). The checks agree: inside the shaded octave fma was correctly rounded 248 times out of 248; outside it, 572 of 952 were not. A geometric reading: stay within one factor of 2 of the identity in the lifted picture and one fma is perfect.</p>
 </div>
 </div>
@@ -104,8 +104,8 @@ footer{color:var(--soft);font-size:14px}
 <div class="wrap cols">
 <div>
 <h2>log1p and expm1 are the rung chart that keeps 0 at 0</h2>
-<p>The other way to turn ✳ into something easy is the log: log(1 + a ✳ b) = log(1 + a) + log(1 + b). Library functions log1p(x) = log(1 + x) and expm1(x) = eˣ − 1 compute these without ever forming 1 + x. expm1 is the rung flow E at t = 1 and log1p is its inverse, and both fix 0 with slope 1. So this chart turns the circle operation into adding <i>without</i> moving the identity onto the coarse grid. That is the whole reason they exist.</p>
-<div class="eq">a^(✳t) = expm1(t · log1p(a)) &nbsp;&nbsp; x₁ ✳ₖ … ✳ₖ xₙ = expm1(Σ log1p(k·xᵢ)) / k</div>
+<p>The other way to turn ∘₁ into something easy is the log: log(1 + a ∘₁ b) = log(1 + a) + log(1 + b). Library functions log1p(x) = log(1 + x) and expm1(x) = eˣ − 1 compute these without ever forming 1 + x. expm1 is the rung flow E at t = 1 and log1p is its inverse, and both fix 0 with slope 1. So this chart turns the circle operation into adding <i>without</i> moving the identity onto the coarse grid. That is the whole reason they exist.</p>
+<div class="eq">a^(∘₁t) = expm1(t · log1p(a)) &nbsp;&nbsp; x₁ ∘ₖ … ∘ₖ xₙ = expm1(Σ log1p(k·xᵢ)) / k</div>
 <p>The second line is one routine for every dial value k. At k = −1 it is "at least one of many events": for 100,000 events of chance 10⁻¹², 1 − ∏(1 − p) is off by about 2 parts in 10⁷, while −expm1(Σ log1p(−p)) is right to 16 digits. A long product of 200,000 returns of size 10⁻⁷ tells the same story: naive product minus 1 keeps 9 digits, the fma fold 14, the log1p sum all 16.</p>
 </div>
 <div class="panel"><div class="fig2" id="int"></div>
@@ -118,8 +118,8 @@ footer{color:var(--soft);font-size:14px}
 <div>
 <h2>Every rounding error is a circle-operation number</h2>
 <p>A float operation returns the true answer times (1 + δ) with |δ| ≤ u = 2⁻⁵³. Relative errors are lift coordinates, so they compose by the operation itself:</p>
-<div class="eq">x(1 + δ₁) · y(1 + δ₂) = xy(1 + δ₁ ✳ δ₂)<br>x(1 + δ₁) / y(1 + δ₂) = (x/y)(1 + δ₁ ⊟ δ₂)</div>
-<p>Division brings in circle-operation subtraction, Fisher's rule for real interest rates. A product of n floats carries Higham's total error θₙ, and θₙ is exactly the circle-operation fold δ₁ ✳ δ₂ ✳ … of the step errors: the checks compute each δ as an exact fraction and the fold matches θₙ to the last bit for n up to 1,000. Lean then proves Higham's bound in this form: if each |δ| ≤ u, the fold stays within u^(✳n) = (1 + u)ⁿ − 1, and that is at most nu/(1 − nu).</p>
+<div class="eq">x(1 + δ₁) · y(1 + δ₂) = xy(1 + δ₁ ∘₁ δ₂)<br>x(1 + δ₁) / y(1 + δ₂) = (x/y)(1 + δ₁ ⊟ δ₂)</div>
+<p>Division brings in circle-operation subtraction, Fisher's rule for real interest rates. A product of n floats carries Higham's total error θₙ, and θₙ is exactly the circle-operation fold δ₁ ∘₁ δ₂ ∘₁ … of the step errors: the checks compute each δ as an exact fraction and the fold matches θₙ to the last bit for n up to 1,000. Lean then proves Higham's bound in this form: if each |δ| ≤ u, the fold stays within u^(∘₁n) = (1 + u)ⁿ − 1, and that is at most nu/(1 − nu).</p>
 </div>
 <div class="panel">
 <table><thead><tr><th>Floats multiplied</th><th>actual |θₙ|</th><th>bound (1 + u)ⁿ − 1</th></tr></thead><tbody id="tt"></tbody></table>
@@ -137,12 +137,12 @@ footer{color:var(--soft);font-size:14px}
 <p class="small">The unit square against the lifted rectangle (1 + e) × (1 − e). Slide the teal strip to the top and it fills all but the amber e × e corner, so the new residual is −e². <span class="mono" id="seq"></span></p></div>
 <div>
 <h2>Newton's inverse without division: only the corner is left</h2>
-<p>To find the inverse v of u (so u ✳ v = 0, i.e. 1/(1 + u)) without dividing, repeat</p>
-<div class="eq">v ← v ✳ (−e), where e = u ✳ v is the residual</div>
+<p>To find the inverse v of u (so u ∘₁ v = 0, i.e. 1/(1 + u)) without dividing, repeat</p>
+<div class="eq">v ← v ∘₁ (−e), where e = u ∘₁ v is the residual</div>
 <p>Lean proves the new residual is exactly −e² (<code>newton_residual</code>), so after n steps it is −(−e₀)^(2ⁿ) (<code>newton_iter_residual</code>). In the lift the step multiplies by (1 − e), and (1 + e)(1 − e) = 1 − e²: the picture shows the e × e corner is the only thing that survives. That is quadratic convergence, digits doubling (0.9, 1.4, 2.3, 4.0, 7.6, 14.7, 16 in float64). It converges exactly when |e₀| < 1, i.e. 0 &lt; (1 + u)(1 + v₀) &lt; 2.</p>
-<p>Goldschmidt's division (1964) is the same corner, unrolled: (−e) ✳ e ✳ e² ✳ e⁴ ✳ … = −e^(2ⁿ) (<code>gold_eq</code>).</p>
+<p>Goldschmidt's division (1964) is the same corner, unrolled: (−e) ∘₁ e ∘₁ e² ∘₁ e⁴ ∘₁ … = −e^(2ⁿ) (<code>gold_eq</code>).</p>
 <h2>Horner's rule walks the cube</h2>
-<p>Combining with b by the circle operation is the affine step acc ↦ acc·(1 + b) + b, which is one Horner step and one fma. So x₁ ✳ x₂ ✳ … ✳ xₙ in n fma steps adds up all 2ⁿ − 1 corners of the circle-operation cube (<code>horner_cube</code>), and the power a^(✳n) is Horner on b(1 + y + … + yⁿ⁻¹), y = 1 + b (<code>mpow_horner</code>).</p>
+<p>Combining with b by the circle operation is the affine step acc ↦ acc·(1 + b) + b, which is one Horner step and one fma. So x₁ ∘₁ x₂ ∘₁ … ∘₁ xₙ in n fma steps adds up all 2ⁿ − 1 corners of the circle-operation cube (<code>horner_cube</code>), and the power a^(∘₁n) is Horner on b(1 + y + … + yⁿ⁻¹), y = 1 + b (<code>mpow_horner</code>).</p>
 </div>
 </div>
 </section>
@@ -157,7 +157,7 @@ footer{color:var(--soft);font-size:14px}
 <tr><td>Sterbenz's exact subtraction</td><td>Sterbenz 1974</td></tr>
 <tr><td>θₙ, γₙ = nu/(1 − nu)</td><td>Higham, Accuracy and Stability, Lemma 3.1</td></tr>
 <tr><td>Newton reciprocal, Goldschmidt division, Horner's rule</td><td>Classical; Goldschmidt 1964; Horner 1819</td></tr>
-<tr><td>Relative errors compose by ✳ and ⊟; θₙ is the ✳-fold</td><td>Known content in circle-operation words</td></tr>
+<tr><td>Relative errors compose by ∘₁ and ⊟; θₙ is the ∘₁-fold</td><td>Known content in circle-operation words</td></tr>
 <tr><td>fma(a, b, a + b) is exact near the inverse inside the octave 1/2 ≤ 1 + a ≤ 2</td><td>Ours as stated; a two-line consequence of Sterbenz and fma, not found written</td></tr>
 <tr><td>One log1p/expm1 routine for every dial k</td><td>Ours as a packaging of the classical trick</td></tr>
 </tbody></table>

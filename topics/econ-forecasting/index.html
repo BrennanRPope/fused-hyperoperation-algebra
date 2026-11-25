@@ -168,7 +168,7 @@ footer{border-top:1px solid var(--rule)}
 <h2>What Lean proved</h2>
 <p>File <code>lean/FinanceMultAdd.lean</code>, core Lean 4.37 with no mathlib and no <code>sorry</code>, only Lean's standard axioms:</p>
 <ul>
-<li><b>fisher:</b> (nominal ⊖ inflation) ⊕ inflation = nominal.</li>
+<li><b>fisher:</b> (nominal ⊖ inflation) ∘₁ inflation = nominal.</li>
 <li><b>mall_growth:</b> combining a list of returns by the circle operation gives total growth minus 1.</li>
 <li><b>drag, drag_le:</b> (1+m+s)(1+m−s) = (1+m)² − s² ≤ (1+m)².</li>
 <li><b>gordon:</b> with q(1+j) = 1, j·(q + … + q<sup>N</sup>) = 1 − q<sup>N</sup>: a growing stream is a flat perpetuity at j = r ⊖ g. <b>gsum_le</b>: the price never passes D/j. <b>gsum_pole</b>: once g ≥ r the N-year price is at least N, so it has no ceiling.</li>

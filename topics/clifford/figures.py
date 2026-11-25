@@ -152,8 +152,8 @@ lab = ["1", "e₁", "e₂", "e₁₂", "e₃", "e₁₃", "e₂₃", "e₁₂₃
 a = (t(14, 24, "Grades: 2ⁿ blades", "tt") + cube(70, 180, 90, "kt", lab)
      + t(14, 222, "each subset of directions is its own part", "sm"))
 lab2 = ["", "a₁", "a₂", "a₁a₂", "a₃", "a₁a₃", "a₂a₃", "a₁a₂a₃"]
-b = (t(14, 24, "a₁e₁ ✳ a₂e₂ ✳ a₃e₃ keeps all 7", "tt") + cube(70, 180, 90, "m", lab2, hl=set(range(1, 8)))
-     + t(14, 222, "add the parts up: ordinary a₁ ✳ a₂ ✳ a₃", "sm mt"))
+b = (t(14, 24, "a₁e₁ ∘₁ a₂e₂ ∘₁ a₃e₃ keeps all 7", "tt") + cube(70, 180, 90, "m", lab2, hl=set(range(1, 8)))
+     + t(14, 222, "add the parts up: ordinary a₁ ∘₁ a₂ ∘₁ a₃", "sm mt"))
 add("04", "Grades and multivectors", "Clifford", a, "The circle operation", b)
 
 # ------------------------------------------------------------------ 05 involutions
@@ -206,10 +206,10 @@ a = (t(14, 24, "Grassmann's wedge: oriented area", "tt")
      + path("M140,150 A20,20 0 1 1 160,140", "kt") + t(170, 146, "x∧y", "sm")
      + t(14, 222, "x∧y = −y∧x", "sm"))
 b = (t(14, 24, "Order matters by twice the area", "tt")
-     + t(20, 70, "x ✳ y = x + y + x·y + x∧y", "")
-     + t(20, 100, "y ✳ x = x + y + x·y − x∧y", "")
+     + t(20, 70, "x ∘₁ y = x + y + x·y + x∧y", "")
+     + t(20, 100, "y ∘₁ x = x + y + x·y − x∧y", "")
      + f'<rect x="16" y="120" width="290" height="40" rx="6" class="hl"/>'
-     + t(26, 146, "x ✳ y − y ✳ x = 2 x∧y", "tt")
+     + t(26, 146, "x ∘₁ y − y ∘₁ x = 2 x∧y", "tt")
      + t(14, 200, "the same corner split as twisted boosts", "sm mt"))
 add("08", "Grassmann's exterior product", "Clifford", a, "The circle operation", b)
 
@@ -243,8 +243,8 @@ a = (t(14, 24, "Dual numbers: ε² = 0", "tt") + poly(curve, "kt")
      + t(176, 140, "a + a′ε", "sm")
      + t(14, 222, "the ε part rides along as a tangent", "sm"))
 b = (t(14, 24, "The circle operation carries its derivative", "tt")
-     + t(20, 76, "(a₀ + a₁ε) ✳ (b₀ + b₁ε) =", "")
-     + t(20, 106, "a₀ ✳ b₀", "mt")
+     + t(20, 76, "(a₀ + a₁ε) ∘₁ (b₀ + b₁ε) =", "")
+     + t(20, 106, "a₀ ∘₁ b₀", "mt")
      + t(20, 136, "+ (a₁(1 + b₀) + b₁(1 + a₀)) ε", "")
      + t(14, 210, "border country = re-charted dual numbers", "sm mt"))
 add("10", "Dual numbers", "Clifford", a, "The circle operation", b)
@@ -326,7 +326,7 @@ a = (t(14, 24, "Chain of circles (1871)", "tt")
 b = (t(14, 24, "Survives every landscape move", "tt")
      + "".join(circ(130 + 30 * math.cos(2 * math.pi * i / 4 + 0.9), 112 + 26 * math.sin(2 * math.pi * i / 4 + 0.9), 40 + 6 * i, "m") for i in range(4))
      + t(14, 200, "Möbius maps keep it, so it holds in every chart;", "sm")
-     + t(14, 218, "no ✳ statement of it yet", "sm mt"))
+     + t(14, 218, "no ∘₁ statement of it yet", "sm mt"))
 add("16", "Clifford's chain of circles", "Clifford", a, "The circle operation", b)
 
 # ------------------------------------------------------------------ 17 special divisors
@@ -336,7 +336,7 @@ a = (t(14, 24, "Special divisors (1878)", "tt")
      + t(14, 210, "on a curve: dim |D| ≤ deg D / 2", "sm"))
 b = (t(14, 24, "No analog found", "tt")
      + f'<rect x="20" y="60" width="280" height="90" rx="8" class="pl"/>'
-     + t(30, 92, "would need ✳ acting on divisors", "sm") + t(30, 116, "(sums of points on a curve)", "sm")
+     + t(30, 92, "would need ∘₁ acting on divisors", "sm") + t(30, 116, "(sums of points on a curve)", "sm")
      + t(30, 140, "no route seen", "sm mt"))
 add("17", "Clifford's theorem on special divisors", "Clifford", a, "The circle operation", b)
 

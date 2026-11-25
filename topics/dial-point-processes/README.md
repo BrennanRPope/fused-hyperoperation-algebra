@@ -1,7 +1,7 @@
 # Point processes on the dial (Nov 25, 2026)
 
 Finding: the α-determinantal processes (Shirai–Takahashi 2003) are the dial with k = α: k = −1 fermions, 0 Poisson,
-+1 bosons. On a region with kernel eigenvalues μᵢ, P(no point) = (1 + k·(μ₁ ✳ₖ μ₂ ✳ₖ …))^(−1/k) = exp(−Σ ℓₖ(μᵢ)),
++1 bosons. On a region with kernel eigenvalues μᵢ, P(no point) = (1 + k·(μ₁ ∘ₖ μ₂ ∘ₖ …))^(−1/k) = exp(−Σ ℓₖ(μᵢ)),
 ℓₖ the dial's logarithm. Existence: the wall −1/k must stay off the spectrum, and for k < 0 it must be a whole number.
 
 ## Files
@@ -22,7 +22,7 @@ Finding: the α-determinantal processes (Shirai–Takahashi 2003) are the dial w
    at k = 2/m (real kernels).
 3. Variance: each mode adds μ(1 + kμ), value times lift, zero at 0 and at the wall; Var = tr K + k tr K², a straight Fano
    line in k (fit to 7 simulations: slope 0.579 vs 0.577, intercept 1.001). Known (Shirai–Takahashi; Morris 1982).
-   Superposition: m copies of (k, K) = (k/m, mK), from c·(a ✳ₖ b) = (ca) ✳_{k/c} (cb). Known; identity in Lean.
+   Superposition: m copies of (k, K) = (k/m, mK), from c·(a ∘ₖ b) = (ca) ∘_{k/c} (cb). Known; identity in Lean.
 4. Bend: tilting a mode by t^N, in the ruler (mean − μ)/Var, composes by the landscape lens law at p = 1 + 2kμ,
    q = kμ(1 + kμ): always on p² − 4q = 1. Rare mode = the circle operation ∘₁ (called mult-add before 1.0) (1,0), full fermion mode = union of failures (−1,0),
    half-filled = velocity addition with limit 2 (0, −1/4); shape (2F − 1)², F = Fano. Placement ours; the bend is pinned by

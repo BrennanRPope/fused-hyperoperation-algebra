@@ -50,7 +50,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <section class="band">
 <div class="wrap">
 <h1>Series multiplies, parallel fuses, and the colour count picks the fuse</h1>
-<p class="lede">Wire bonds together and any series–parallel network collapses two bonds at a time. For reliability the rule is exact and old: series multiplies, parallel is the failure union a ✳₋₁ b. Give each site Q colours (the Potts model) and series still multiplies, while parallel becomes a landscape law. Every Q lands on one straight line of the landscape, the line of laws that can mean "or": Q = 1 is reliability, Q = 2 is velocity addition.</p>
+<p class="lede">Wire bonds together and any series–parallel network collapses two bonds at a time. For reliability the rule is exact and old: series multiplies, parallel is the failure union a ∘₋₁ b. Give each site Q colours (the Potts model) and series still multiplies, while parallel becomes a landscape law. Every Q lands on one straight line of the landscape, the line of laws that can mean "or": Q = 1 is reliability, Q = 2 is velocity addition.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="net"></div>
@@ -70,9 +70,9 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <section class="band alt">
 <div class="wrap cols">
 <div>
-<h2>Reliability is exactly the dial pair (×, ✳₋₁)</h2>
-<div class="eq">series: p₁·p₂ &nbsp;&nbsp; parallel: p₁ ✳₋₁ p₂ = 1 − (1 − p₁)(1 − p₂)</div>
-<p>Two bonds in series both have to work; in parallel at least one. On the failure side the two swap: a series pair fails by ✳₋₁ and a parallel pair fails by ×. That is De Morgan, the k = −1 lift x ↦ 1 − x. In odds against, u = 1/p − 1, a series pair is the plain circle operation ∘₁ (called mult-add before 1.0): u = u₁ ✳ u₂. So any network built from series and parallel pairs is a formula in × and ✳₋₁, checked here on 40 random networks against brute force.</p>
+<h2>Reliability is exactly the dial pair (×, ∘₋₁)</h2>
+<div class="eq">series: p₁·p₂ &nbsp;&nbsp; parallel: p₁ ∘₋₁ p₂ = 1 − (1 − p₁)(1 − p₂)</div>
+<p>Two bonds in series both have to work; in parallel at least one. On the failure side the two swap: a series pair fails by ∘₋₁ and a parallel pair fails by ×. That is De Morgan, the k = −1 lift x ↦ 1 − x. In odds against, u = 1/p − 1, a series pair is the plain circle operation ∘₁ (called mult-add before 1.0): u = u₁ ∘₁ u₂. So any network built from series and parallel pairs is a formula in × and ∘₋₁, checked here on 40 random networks against brute force.</p>
 <p>Not every network is built that way. The Wheatstone bridge has no series or parallel pair at all. Pivot on its middle bond instead: contracted, it is two parallel pairs in series; deleted, two series pairs in parallel. That gives 2p² + 2p³ − 5p⁴ + 2p⁵. Pivoting is deletion–contraction, the move behind the Tutte polynomial.</p>
 </div>
 <div>
@@ -102,7 +102,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
 <div>
 <h2>The strong product of graphs is the Kronecker circle operation</h2>
 <p>In the strong product G ⊠ H two pairs are joined when each coordinate is equal or adjacent. Add the identity to each adjacency matrix (count "equal" as a step) and the product is a plain Kronecker product: (A + I) ⊗ (B + I). Subtract the I ⊗ I and the adjacency is A ⊗ I + I ⊗ B + A ⊗ B, the circle operation with matrices.</p>
-<p>The three pieces are named products: A ⊗ I + I ⊗ B is the Cartesian product (the k = 0 part, no corner) and A ⊗ B the tensor product (the corner). Degrees fuse, d = d₁ ✳ d₂; eigenvalues fuse, λ ✳ μ; and the count 2m + n multiplies. The OR product (joined if either coordinate is) is the k = −1 version, with the all-ones matrix J in place of I.</p>
+<p>The three pieces are named products: A ⊗ I + I ⊗ B is the Cartesian product (the k = 0 part, no corner) and A ⊗ B the tensor product (the corner). Degrees fuse, d = d₁ ∘₁ d₂; eigenvalues fuse, λ ∘₁ μ; and the count 2m + n multiplies. The OR product (joined if either coordinate is) is the k = −1 version, with the all-ones matrix J in place of I.</p>
 <p>The same split shows up in independence polynomials I(G), which count independent vertex sets by size. For a disjoint union I − 1 combines by the circle operation; for a join it just adds, since a set may use only one side. The <a href="https://claude.ai/artifact/UQQzmkzekxe2hL4m8F8NQL">Lee–Yang</a> dial gas at k = 0 is exactly I(G).</p>
 </div>
 <div class="panel"><div class="fig3" id="prod"></div>

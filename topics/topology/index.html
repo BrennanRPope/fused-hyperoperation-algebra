@@ -99,7 +99,7 @@ footer{border-top:1px solid var(--rule)}
 <div>
 <h2>K-theory: the lead</h2>
 <p>K-theory studies a space by the twisted bundles of circles (line bundles) it carries. Two of them combine by tensor product, and if you write each as x = L − 1, the combination rule is</p>
-<div class="eq">x ⊕ y = x + y + xy</div>
+<div class="eq">x ∘₁ y = x + y + xy</div>
 <p>which is your operation, exactly. (Some books write c(L) = 1 − L⁻¹ and get x + y − xy, the same law with the sign flipped.) Taking L to its k-th power gives the <b>Adams operation</b></p>
 <div class="eq">ψᵏ(x) = (1 + x)ᵏ − 1 = the k-th circle power</div>
 <p>Two facts about these powers, both checked in Python on the projective spaces CP¹ to CP⁶:</p>
@@ -236,7 +236,7 @@ footer{border-top:1px solid var(--rule)}
 <section class="band" id="proof">
 <div class="wrap">
 <h2>The 1, 3, 7 proof on your cube, checked in Lean</h2>
-<p>Here is the whole Adams–Atiyah argument drawn on the circle-operation cube, using CP² (the space built on the Hopf map) as the worked case. Its Adams operations are the truncated circle-operation sums: ψᵏ(x) = x ⊕ x ⊕ … ⊕ x, the k-cube, cut off above grade 2 because CP² has no 6-cell.</p>
+<p>Here is the whole Adams–Atiyah argument drawn on the circle-operation cube, using CP² (the space built on the Hopf map) as the worked case. Its Adams operations are the truncated circle-operation sums: ψᵏ(x) = x ∘₁ x ∘₁ … ∘₁ x, the k-cube, cut off above grade 2 because CP² has no 6-cell.</p>
 <div class="plate"><img src="figures/t7_adams_cube.png" alt="Three panels: a square for psi 2, a cube for psi 3 with its top corner greyed out, and three squares joined by lines showing psi 2 psi 3 equals psi 6."></div>
 <p class="cap">Blue corners are grade 1 (x), red are grade 2 (x²). The 6-cube is a cube of squares, so its 15 grade-2 corners are 3 inside one square plus 12 across two.</p>
 <div class="two" style="margin-top:18px">

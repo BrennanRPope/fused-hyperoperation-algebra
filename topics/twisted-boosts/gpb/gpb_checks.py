@@ -79,7 +79,7 @@ gam = 1/sp.sqrt(1-v2)
 check("local orbital speed: v² = M/(r-2M), so γ = √((r-2M)/(r-3M))", sp.simplify(gam**2 - (1-2*x)/(1-3*x)) == 0)
 check("exact factorization: √(1-3M/r) = √(1-2M/r) · (1/γ)  (squared exactly; and numerically on x in (0,1/3))", sp.simplify((1-3*x) - (1-2*x)*(1-v2)) == 0 and max(abs(float((sp.sqrt(1-3*x) - s/gam).subs(x,xx))) for xx in [0.001,0.05,0.1,0.2,0.3,0.33]) < 1e-14)
 ps = 1 - s; pv = 1 - 1/gam; ptot = 1 - sp.sqrt(1-3*x)
-check("precession fractions fuse: -p = (-p_space) ✳ (-p_velocity)  (since 1-p = (1-p_s)(1-p_v))", max(abs(float((-ptot - ((-ps)+(-pv)+(-ps)*(-pv))).subs(x,xx))) for xx in [0.001,0.05,0.1,0.2,0.3,0.33]) < 1e-14)
+check("precession fractions fuse: -p = (-p_space) ∘₁ (-p_velocity)  (since 1-p = (1-p_s)(1-p_v))", max(abs(float((-ptot - ((-ps)+(-pv)+(-ps)*(-pv))).subs(x,xx))) for xx in [0.001,0.05,0.1,0.2,0.3,0.33]) < 1e-14)
 check("first order: p_space ≈ M/r, p_velocity ≈ M/(2r), total ≈ 3M/(2r)",
       sp.series(ps,x,0,2).removeO()==x and sp.series(pv,x,0,2).removeO()==x/2 and sp.series(ptot,x,0,2).removeO()==sp.Rational(3,2)*x)
 check("velocity part to first order = Thomas: (γ-1) and (1-1/γ) both ≈ v²/2 = M/(2r)",

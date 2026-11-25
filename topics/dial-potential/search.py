@@ -287,8 +287,8 @@ def round1():
     g = add("P1", "tree_lam", "Quartic sombrero, height free", "V = (λ/4)(k² − k0²)²", "k = Higgs magnitude, k0 = v",
             "flip symmetry k → −k (proved) makes V even; a quartic is the simplest even well", "B", n_free=1)
     g.fitted = ["mH/v"]
-    g = add("P2", "tree_lam", "Lift-normalised well", "V = (k ✳ (−k) + k0²)² = (k0² − k²)²",
-            "k = Higgs magnitude", "k ✳ (−k) = −k² (proved): the well is the lift of a dial against its mirror, coefficient 1",
+    g = add("P2", "tree_lam", "Lift-normalised well", "V = (k ∘₁ (−k) + k0²)² = (k0² − k²)²",
+            "k = Higgs magnitude", "k ∘₁ (−k) = −k² (proved): the well is the lift of a dial against its mirror, coefficient 1",
             "B", meta={"lam": 4.0})
     g.preds["mH/v"] = (math.sqrt(2 * 4.0), TREE)
     g = add("P3", "tree_lam", "Higgs at half the vev", "V = (1/32)(k² − k0²)²  (λ = 1/8)", "k = Higgs magnitude",

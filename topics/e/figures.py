@@ -105,7 +105,7 @@ ax.plot(a,a,color=M,lw=1,ls='--',label='slope 1 line')
 for n,c in [(1,R),(2,G),(5,K)]:
     ax.scatter([1/n],[np.log1p(1/n)],color=c,zorder=5)
     ax.text(1/n-0.6 if n==1 else 1/n+0.03,np.log1p(1/n)-0.14,f'n={n}: n·L(1/n) = {n*np.log1p(1/n):.3f}',color=c,fontsize=10)
-ax.set_title('L turns ⊕ into +:  L(a ⊕ b) = L(a) + L(b)\nn steps of 1/n weigh n·L(1/n) → 1',fontsize=11)
+ax.set_title('L turns ∘₁ into +:  L(a ∘₁ b) = L(a) + L(b)\nn steps of 1/n weigh n·L(1/n) → 1',fontsize=11)
 ax.legend(frameon=False,loc='upper left'); ax.spines[['top','right']].set_visible(False)
 ax=axs[2]
 for n,c in [(8,G),(16,B),(64,K)]:

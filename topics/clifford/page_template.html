@@ -108,12 +108,12 @@ li{margin-bottom:8px}
    <h2>k as a fused number: what holds, what breaks</h2>
    <p>You asked whether k could itself be a structure across dimensions that keeps its information. Clifford algebra answers it two ways.</p>
    <p><b>With plain numbers as arguments.</b> Any multivector dial K obeys K² = tr(K)·K − N(K), so a + b + abK reads as the landscape law with p = tr K and q = N K. Nothing outside the landscape appears. The circle operation's own k is the null element k(1 + e)/2, on the light cone. A general K in Cl(3,0) gives the landscape with complex coefficients.</p>
-   <p><b>With multivectors as arguments</b> (X ✳ Y = X + Y + XKY, the sandwich law the gr-bridges thread found):</p>
+   <p><b>With multivectors as arguments</b> (X ∘₁ Y = X + Y + XKY, the sandwich law the gr-bridges thread found):</p>
   </div>
   <div>
    <ul>
-    <li><b>Kept:</b> associativity for every K, identity 0, and the lift (1 + KX)(1 + KY) = 1 + K(X ✳ Y). Proved in Lean for a 2D algebra with any squares.</li>
-    <li><b>Lost:</b> commutativity. X ✳ Y − Y ✳ X = XKY − YKX; for two vectors it is twice their oriented area.</li>
+    <li><b>Kept:</b> associativity for every K, identity 0, and the lift (1 + KX)(1 + KY) = 1 + K(X ∘₁ Y). Proved in Lean for a 2D algebra with any squares.</li>
+    <li><b>Lost:</b> commutativity. X ∘₁ Y − Y ∘₁ X = XKY − YKX; for two vectors it is twice their oriented area.</li>
     <li><b>The wall</b> becomes a set: two walls for a vector dial (1 − a²k²), none for a bivector dial, a cone of zero divisors in most algebras. It stays the single point −1 only in R, C and H.</li>
     <li><b>Information:</b> factors in their own directions keep every subset product on its own blade. The ordinary circle operation ∘₁ (called mult-add before 1.0) is what you get by adding those parts, which is where information is lost.</li>
     <li><b>A constant invertible K</b> is only a change of coordinates (gr-bridges); a K that varies alone is flat. Curvature needs a second field.</li>
@@ -130,7 +130,7 @@ li{margin-bottom:8px}
    <li><b>Bolting in: the most practical.</b> Since landscape laws are rotor compositions read in a chart, any geometric-algebra or dual-quaternion library computes them as is. That makes circle-operation results portable into robotics (dual quaternions), graphics (rotors) and physics codes without new software.</li>
    <li><b>Hopf phase = half the twist: a tidy link, no data test.</b> It is the same geometric phase physicists measure as Thomas precession and Berry phase, already checked against data on the twisted-boosts page.</li>
    <li><b>Complex landscape from Cl(3,0): open, low priority.</b> A general dial gives complex p and q. It reads as the landscape over C, which earlier pages already touch (Lee–Yang zeros); it would matter only if a complex dial has a physical meaning, and none was found.</li>
-   <li><b>Higher Clifford–Klein forms: open.</b> A flat torus made from ✳ needs two commuting dials and a lattice in them. Doable as a construction; it would add a picture, not a prediction.</li>
+   <li><b>Higher Clifford–Klein forms: open.</b> A flat torus made from ∘₁ needs two commuting dials and a lattice in them. Doable as a construction; it would add a picture, not a prediction.</li>
   </ul>
  </div>
 </section>

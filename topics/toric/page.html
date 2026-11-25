@@ -107,7 +107,7 @@ td.hot{color:var(--red);font-weight:600}
 <h3>Your cube is 3-space, sorted by which coordinates are zero</h3>
 <p>Group the points of 3-space by which coordinates are nonzero. There are 8 groups, one per corner of your cube, and a corner with k switches on holds aᵏ points. Adding the corners gives 1 + 3a + 3a² + a³ = (1 + a)³ = q³, which is every point. The far corner, a³, is the torus itself.</p>
 <h3>Projective space is a circle power divided by a</h3>
-<p>Remove the origin and you have your circle power: a ⊕ a ⊕ a = (1 + a)³ − 1. Divide by the circle's scaling and you get the projective plane:</p>
+<p>Remove the origin and you have your circle power: a ∘₁ a ∘₁ a = (1 + a)³ − 1. Divide by the circle's scaling and you get the projective plane:</p>
 <div class="eq">((1 + a)³ − 1) / a = a² + 3a + 3 = q² + q + 1</div>
 <p>In the triangle that pictures it, the inside is the torus (a² points), each edge is a circle (a points), and each corner is one point.</p>
 </div>
@@ -193,7 +193,7 @@ td.hot{color:var(--red);font-weight:600}
 <div>
 <p>The maps from the circle-operation circle to itself are the windings x → xⁿ. Doing n and then m is the winding by nm. A winding by n can be done in stages through any divisor of n, and the stages form a box: for 30, the cube of 1, 2, 3, 5, 6, 10, 15, 30, with each edge a prime winding. A prime is a winding with no stage in between. Unique factorization says every winding breaks into prime stages in one way, up to order.</p>
 <h3>Zeta counts the windings</h3>
-<p>The circle has one winding of each degree, so Σ n<sup>−s</sup> = ζ(s) counts them, and the Euler product says you pick each prime's winding independently. That is the cube from your prime page, ζ(s) − 1 = ⊕ 1/(pˢ − 1), now with a picture behind it.</p>
+<p>The circle has one winding of each degree, so Σ n<sup>−s</sup> = ζ(s) counts them, and the Euler product says you pick each prime's winding independently. That is the cube from your prime page, ζ(s) − 1 = the circle operation of all the 1/(pˢ − 1), one per prime p, now with a picture behind it.</p>
 <h3>Counting over a prime is counting fixed points of a winding</h3>
 <p>Over a field of size q, the points are the fixed points of Frobenius, x → x<sup>q</sup>. Over the complex numbers, the same winding z → z<sup>q</sup> fixes 0, ∞ and the q − 1 roots of unity: q + 1 points, the count of P¹. On every toric shape the q-fold winding's fixed points match the count over the field of size q, orbit by orbit, (q − 1)ᵏ each. This is the Lefschetz fixed-point picture, and it is standard.</p>
 </div>
@@ -255,13 +255,13 @@ td.hot{color:var(--red);font-weight:600}
 <div>
 <p>P¹ × P¹ is four copies of the plane, one per quadrant of its fan. Each copy is a chart with your corner coordinates: switch i is on when coordinate i is nonzero. Charts are glued by x ↦ 1/x on whichever factor changes.</p>
 <h3>The gluing map is the circle inverse</h3>
-<p>Write x = 1 + u. Then 1/x = 1 + u′ with u′ = −u/(1 + u), the u′ that makes u ⊞ u′ = 0. The one point the inverse can't reach, u = −1, is x = 0, and that is exactly the point the other chart sees as infinity.</p>
+<p>Write x = 1 + u. Then 1/x = 1 + u′ with u′ = −u/(1 + u), the u′ that makes u ∘₁ u′ = 0. The one point the inverse can't reach, u = −1, is x = 0, and that is exactly the point the other chart sees as infinity.</p>
 <div class="eq">(1 + u)⁻¹ = 1 + (−u / (1 + u))</div>
 <p><b>Your 1/x wall is where you change charts.</b> That is standard geometry, not a new theorem, but it puts the wall in a place where nothing breaks.</p>
 <h3>What the Lean file proves</h3>
 <p>For any field (the rationals, or any field in mathlib):</p>
 <p>1. A point's corner never changes under torus scaling, so corners label the orbits.<br>2. Each of the four charts is one-to-one, and together they cover every point.<br>3. Where two charts overlap, the transition carries one chart's coordinates to the other's.<br>4. Going chart c → d → e equals c → e (the cocycle condition), so the gluing is consistent.<br>5. Each chart's origin is a fixed point lying in that chart only; torus points lie in all four.<br>6. The fan count a² + 4a + 4 = (a + 2)², the circle-operation form of (q + 1)².</p>
-<p class="small mute">Status: compiled with Lean 4.37 with no errors and no "sorry", using only Lean's standard axioms. It uses core Lean, not mathlib, because mathlib's download server is blocked from this computer. It glues points with charts and transition maps; it does not build P¹ × P¹ as a scheme, which would need mathlib. The earlier TesseractCoords.lean imports mathlib; it was later compiled against mathlib on Brennan's Mac Studio with no errors, after its circle-operation symbol changed from ⊞ to ✳.</p>
+<p class="small mute">Status: compiled with Lean 4.37 with no errors and no "sorry", using only Lean's standard axioms. It uses core Lean, not mathlib, because mathlib's download server is blocked from this computer. It glues points with charts and transition maps; it does not build P¹ × P¹ as a scheme, which would need mathlib. The earlier TesseractCoords.lean imports mathlib; it was later compiled against mathlib on Brennan's Mac Studio with no errors, after it stopped writing the circle operation with mathlib's biproduct symbol ⊞. It now writes it ◯.</p>
 </div>
 <div>
 <div class="fig" id="gluefig" style="min-height:360px" role="img" aria-label="A square standing for P1 times P1. Each corner is the origin of one chart. Four translucent rectangles, one per chart, each cover the square except the two far edges. The inside is covered four times, each edge twice except at its ends, each corner once."><svg id="gluesvg"></svg></div>
@@ -283,7 +283,7 @@ td.hot{color:var(--red);font-weight:600}
 <p>The new coordinate b/a uses both old ones. Every chart change here is a monomial map, a 2×2 matrix of whole numbers acting on the exponents.</p>
 <h3>In circle-operation coordinates the gluing is circle-operation division</h3>
 <p>Write a = 1 + u and b = 1 + w. The chart change becomes: take the circle inverse of u, then combine it with w by the circle operation.</p>
-<div class="eq">(u, w) ↦ (u⁻, w ⊞ u⁻),&nbsp;&nbsp; u⁻ = −u / (1 + u)</div>
+<div class="eq">(u, w) ↦ (u⁻, w ∘₁ u⁻),&nbsp;&nbsp; u⁻ = −u / (1 + u)</div>
 <p>On P¹ × P¹ the gluing was the inverse alone. On P² it is the inverse and then a circle operation, which is the circle operation's version of dividing. The 1/x wall u = −1 is again where you change charts.</p>
 <h3>Windings pass through every chart</h3>
 <p>Winding x ↦ xⁿ commutes with every chart change, because powers commute with monomial maps. So [x : y : z] ↦ [xⁿ : yⁿ : zⁿ] is one map of the whole plane, read the same way in every chart. Over a field with q elements its fixed points number g² + 3g + 3 with g = gcd(n − 1, q − 1). That is the P² count for a field of size g + 1. When n = q the winding is the Frobenius and fixes all q² + q + 1 points.</p>
@@ -296,7 +296,7 @@ td.hot{color:var(--red);font-weight:600}
 <div class="fig" style="min-height:340px" role="img" aria-label="A triangle standing for the projective plane. Each corner is the origin of one chart. Three translucent triangles, one per chart, each cover the big triangle except the edge opposite its corner. The inside is covered three times, each edge twice except at its ends, each corner once."><svg id="p2svg"></svg></div>
 <h3>What the Lean file proves</h3>
 <p>For any field:</p>
-<p>1. Each of the three charts is one-to-one, and together they cover every point of P².<br>2. A point of one chart lies in another exactly where the transition can divide, and there the transition carries one chart's coordinates to the other's.<br>3. The cocycle condition: going chart c → d → e equals c → e on every triple overlap.<br>4. Each chart's origin lies in that chart only; torus points lie in all three.<br>5. In circle-operation coordinates the chart changes are (u, w) ↦ (u⁻, w ⊞ u⁻) and (u, w) ↦ (w⁻, u ⊞ w⁻).<br>6. Windings commute with every chart change and give one well-defined map of P².<br>7. The fan count a² + 3a + 3 = q² + q + 1.</p>
+<p>1. Each of the three charts is one-to-one, and together they cover every point of P².<br>2. A point of one chart lies in another exactly where the transition can divide, and there the transition carries one chart's coordinates to the other's.<br>3. The cocycle condition: going chart c → d → e equals c → e on every triple overlap.<br>4. Each chart's origin lies in that chart only; torus points lie in all three.<br>5. In circle-operation coordinates the chart changes are (u, w) ↦ (u⁻, w ∘₁ u⁻) and (u, w) ↦ (w⁻, u ∘₁ w⁻).<br>6. Windings commute with every chart change and give one well-defined map of P².<br>7. The fan count a² + 3a + 3 = q² + q + 1.</p>
 <h3>Counted by brute force over six fields</h3>
 <div class="scroll"><table>
 <thead><tr><th class="n">q</th><th class="n">In 3 charts (torus)</th><th class="n">In 2 (circles)</th><th class="n">In 1 (fixed)</th><th class="n">Total</th></tr></thead>

@@ -201,7 +201,7 @@ b.append(L(cx + r, cy, qx, qy, AMB, 1.6, "5 4", arrow=True)); b.append(T((cx + r
 b.append(C(px, py, 5, SKY, SKY)); b.append(T(px + 8, py - 8, "1 + a = e^(iθ)", 13, anchor="start"))
 b.append(C(cx + r, cy, 4, "currentColor", "currentColor")); b.append(T(cx + r + 8, cy + 18, "1", 13, anchor="start"))
 b.append(C(cx, cy, 5, PINK, PINK)); b.append(T(cx - 8, cy + 20, "wall: 1 + a = 0", 13, anchor="end", fill=PINK))
-b.append(T(cx, 380, "a ✳ ā = 0 on the whole circle; it wraps around and never meets the wall", 13, fill=SOFT))
+b.append(T(cx, 380, "a ∘₁ ā = 0 on the whole circle; it wraps around and never meets the wall", 13, fill=SOFT))
 cx2 = 780
 b.append(T(cx2, 36, "Boost (q = −1, hyperbola)", 16, weight=700, fill=SKY))
 b.append(L(cx2 - 180, cy, cx2 + 180, cy, "currentColor", 1, op=.5)); b.append(L(cx2, cy + 170, cx2, cy - 170, "currentColor", 1, op=.5))
@@ -215,8 +215,8 @@ qx, qy = cx2 + r * math.cosh(ph), cy + r * math.sinh(ph)
 b.append(L(cx2 + r, cy, px, py, AMB, 2.2, arrow=True)); b.append(T((cx2 + r + px) / 2 - 12, (cy + py) / 2 - 4, "a", 15, anchor="end", weight=700, fill=AMB))
 b.append(L(cx2 + r, cy, qx, qy, AMB, 1.6, "5 4", arrow=True)); b.append(T((cx2 + r + qx) / 2 - 12, (cy + qy) / 2 + 12, "ā", 15, anchor="end", weight=700, fill=AMB))
 b.append(C(px, py, 5, SKY, SKY)); b.append(T(px - 10, py - 12, "1 + a = cosh φ + j sinh φ", 13, anchor="end"))
-b.append(T(cx2, 380, "same rule a ✳ ā = 0 (with j² = +1); the arms run up to the light walls", 13, fill=SOFT))
-figs["circle"] = save("circle", W, H, "The U(1) phase lives on a circle, the boost on a hyperbola; both obey a ✳ ā = 0, with the mirror sign of the dial", b)
+b.append(T(cx2, 380, "same rule a ∘₁ ā = 0 (with j² = +1); the arms run up to the light walls", 13, fill=SOFT))
+figs["circle"] = save("circle", W, H, "The U(1) phase lives on a circle, the boost on a hyperbola; both obey a ∘₁ ā = 0, with the mirror sign of the dial", b)
 
 # ---------------------------------------------------------------- 5. holonomy: plaquettes, solenoid, gravity loop
 b = []
@@ -238,7 +238,7 @@ for p, q in ((B_, E_), (E_, F_), (F_, Cc), (Cc, B_)):
 b.append(T(x0 + e / 2, y0 + e / 2 + 5, "a₁", 16, weight=700, fill=SKY))
 b.append(T(x0 + 1.5 * e, y0 + e / 2 + 5, "a₂", 16, weight=700, fill=AMB))
 b.append(T(x0 + e, y0 + e + 34, "shared link runs both ways: cancels", 12, fill=SOFT))
-b.append(T(x0 + e, y0 + e + 56, "big loop = a₁ ✳ a₂ (Stokes)", 14, weight=700))
+b.append(T(x0 + e, y0 + e + 56, "big loop = a₁ ∘₁ a₂ (Stokes)", 14, weight=700))
 b.append(T(x0 + e, y0 + e + 80, "each plaquette = e^(i ε² F) − 1", 12, fill=SOFT))
 # solenoid
 cx, cy = 520, 200

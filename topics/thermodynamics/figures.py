@@ -40,7 +40,7 @@ ax.add_patch(Rectangle((e1, e2), 1 - e1, 1 - e2, fc=PALE_C, ec=INK, lw=1.5))
 ax.text(e1 / 2, .5, "work\nstage 1\nη₁", ha="center", va="center", color="white", weight="bold")
 ax.text(e1 + (1 - e1) / 2, e2 / 2, "work stage 2\nη₂(1 − η₁)", ha="center", va="center", fontsize=10)
 ax.text(e1 + (1 - e1) / 2, e2 + (1 - e2) / 2, "waste heat\n(1 − η₁)(1 − η₂)", ha="center", va="center")
-ax.set_title("Two engines in series: η = η₁ ⊞₋₁ η₂\nthe waste box multiplies (lift 1 − η)", fontsize=11)
+ax.set_title("Two engines in series: η = η₁ ∘₋₁ η₂\nthe waste box multiplies (lift 1 − η)", fontsize=11)
 ax.set_xlim(-.05, 1.05); ax.set_ylim(-.05, 1.05); ax.set_aspect("equal"); ax.axis("off")
 # (c) fridges in cascade: the rejected-heat box grows
 ax = axs[2]; u1, u2 = .45, .35
@@ -51,7 +51,7 @@ ax.plot([1, 1], [1, 1 + u2], color=INK, lw=1)
 ax.text(.5, .5, "cold heat\npumped\nQ_c = 1", ha="center", va="center")
 ax.text(1 + u1 / 2, .5, "work 1\nu₁", ha="center", va="center")
 ax.text((1 + u1) / 2, 1 + u2 / 2, "work 2: u₂(1 + u₁)", ha="center", va="center", color="white", weight="bold")
-ax.set_title("Two fridges in cascade: u = u₁ ⊞ u₂ (k = +1)\nrunning an engine backwards is the inverse", fontsize=11)
+ax.set_title("Two fridges in cascade: u = u₁ ∘₁ u₂ (k = +1)\nrunning an engine backwards is the inverse", fontsize=11)
 ax.set_xlim(-.05, 1.6); ax.set_ylim(-.05, 1.5); ax.set_aspect("equal"); ax.axis("off")
 save(fig, "f1_three_squares.png")
 

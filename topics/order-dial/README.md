@@ -10,12 +10,12 @@ Everything below is checked: `checks.py` (71/71 pass) and `lean/OrderDial.lean` 
 
 ## 1. The frame: things plus arrows that compose
 
-A category is just objects plus arrows that compose, with composition always associative. A monoid is a category with one object, so the number line under ✳ *is* a one-object category: its arrows are numbers, composing them is the circle operation, and 0 is the identity arrow.
+A category is just objects plus arrows that compose, with composition always associative. A monoid is a category with one object, so the number line under ∘₁ *is* a one-object category: its arrows are numbers, composing them is the circle operation, and 0 is the identity arrow.
 
 ![Left: a fan of stretches through one centre. Right: two stretches with different centres, whose two orders differ by a constant gap](figures/fig7-centres-and-order.png)
 
-- **The circle operation is composition.** Read a as the map x ↦ (1 + ka)x + a. Doing b then a gives the map for a ✳ₖ b (the existing `T_comp` in [groups-lie](../groups-lie/), and here `app_comp`, `k_slice`). Every one of those maps fixes the same point, the wall −1/k (left picture). Maps that share a centre commute, which is why the circle operation doesn't care about order.
-- **The full home is the stretch-and-shift (affine) group.** Let the stretch a and the shift c vary separately: (a, c) is x ↦ (1 + a)x + c. Composing gives (a ✳ b, c + (1 + a)d): **the stretches still combine by the circle operation, and only the shifts pick up order** (`comp`, `stretch_order_free`).
+- **The circle operation is composition.** Read a as the map x ↦ (1 + ka)x + a. Doing b then a gives the map for a ∘ₖ b (the existing `T_comp` in [groups-lie](../groups-lie/), and here `app_comp`, `k_slice`). Every one of those maps fixes the same point, the wall −1/k (left picture). Maps that share a centre commute, which is why the circle operation doesn't care about order.
+- **The full home is the stretch-and-shift (affine) group.** Let the stretch a and the shift c vary separately: (a, c) is x ↦ (1 + a)x + c. Composing gives (a ∘₁ b, c + (1 + a)d): **the stretches still combine by the circle operation, and only the shifts pick up order** (`comp`, `stretch_order_free`).
 - **The cost of order is a wedge.** The two orders differ by a pure shift equal to a·d − b·c, the oriented area spanned by (a, c) and (b, d) (`order_gap`). Two maps commute exactly when that area is zero, which is exactly when they share a centre (`commute_iff`). The circle operation's family is one such commuting slice.
 - **The whole landscape is composition too.** Every law (a + b + p·ab)/(1 − q·ab) is a one-parameter family of Möbius maps x ↦ (αx + β)/(γx + δ) composing (check I7; proved as `mob` products in groups-lie). The circle operation is the slice that fixes infinity (the affine maps). Lie's vector fields α + βx + γx² are the arrows' directions; translation and stretch don't commute ([1, x] = 1, check I9).
 
@@ -25,11 +25,11 @@ A category is just objects plus arrows that compose, with composition always ass
 
 | Earlier result | As composition |
 |---|---|
-| Fused rungs: conjugate a rung by x ↦ 1 + x | composing with the shift S on both sides, S⁻¹ ∘ f ∘ S; the shift is an isomorphism of one-object categories, (ℝ, ✳) ≅ (ℝ, ×) |
-| Circle powers a^(✳n) = (1 + a)ⁿ − 1 | n-fold composition of one stretch |
+| Fused rungs: conjugate a rung by x ↦ 1 + x | composing with the shift S on both sides, S⁻¹ ∘ f ∘ S; the shift is an isomorphism of one-object categories, (ℝ, ∘₁) ≅ (ℝ, ×) |
+| Circle powers a^(∘₁n) = (1 + a)ⁿ − 1 | n-fold composition of one stretch |
 | Rung flow and the Abel function | fractional composition powers: "do this map half a time" |
 | The landscape plane (k, q) | one-parameter families of Möbius maps |
-| Category theory pass: A ✳ B is the product in sets-and-partial-functions | the arrows there compose as partial functions; the lift is a functor |
+| Category theory pass: A ∘₁ B is the product in sets-and-partial-functions | the arrows there compose as partial functions; the lift is a functor |
 | `no_iterate_half` (no f with f(f(n)) = 2ⁿ when f(0) = 1) | the cardinal shadow of "no functor square root of the power set", section 6 |
 
 ## 2. Where order changes the answer: compounding
@@ -38,7 +38,7 @@ A category is just objects plus arrows that compose, with composition always ass
 
 One compounding period is a stretch-and-shift: grow by r, deposit d. Do it in the other order and the results differ by **r·d, the interest on the deposit**, which is exactly the corner piece of the circle-operation box (`compounding_corner`). Two periods with rates and deposits (r₁, d₁), (r₂, d₂) differ by r₁d₂ − r₂d₁ (check I2). Over many periods, depositing at the start instead of the end multiplies the final balance by 1 + r (the annuity-due rule, check I3).
 
-**What k becomes.** Each period has its own centre −d/r: the balance at which interest exactly cancels the payment (on a loan, the balance that never shrinks). For the circle operation's family, rate = k × deposit, so every period has the same centre, the wall −1/k (`centre_fixed`, check I4). That gives the wall a plain-money meaning: it is the interest-only balance. When periods have different centres, the composite has a new centre of its own, −(d₁ + (1 + r₁)d₂)/(r₁ ✳ r₂) (check I6), and k is no longer one number: it becomes a property of each map.
+**What k becomes.** Each period has its own centre −d/r: the balance at which interest exactly cancels the payment (on a loan, the balance that never shrinks). For the circle operation's family, rate = k × deposit, so every period has the same centre, the wall −1/k (`centre_fixed`, check I4). That gives the wall a plain-money meaning: it is the interest-only balance. When periods have different centres, the composite has a new centre of its own, −(d₁ + (1 + r₁)d₂)/(r₁ ∘₁ r₂) (check I6), and k is no longer one number: it becomes a property of each map.
 
 *Known:* annuity arithmetic. *Ours:* the reading of k as rate per unit deposit and of the wall as the shared fixed point.
 
@@ -46,19 +46,19 @@ One compounding period is a stretch-and-shift: grow by r, deposit d. Do it in th
 
 Brennan asked to use known algebras that give up commutativity or associativity. Two findings.
 
-**The circle operation copies its inputs' laws exactly.** The shift x ↦ 1 + x turns a + b + ab into the product (1 + a)(1 + b), so whatever the product obeys, ✳ obeys, and whatever it breaks, ✳ breaks, by the same amount: the commutator of ✳ is the commutator of the product, and so is the associator (checks E, on quaternions, octonions and sedenions).
+**The circle operation copies its inputs' laws exactly.** The shift x ↦ 1 + x turns a + b + ab into the product (1 + a)(1 + b), so whatever the product obeys, ∘₁ obeys, and whatever it breaks, ∘₁ breaks, by the same amount: the commutator of ∘₁ is the commutator of the product, and so is the associator (checks E, on quaternions, octonions and sedenions).
 
 ![Cayley–Dickson ladder: reals, complex, quaternions, octonions, sedenions, losing one law per step](figures/fig5-cayley-dickson-ladder.png)
 
-So the quaternion circle operation is associative but order-sensitive; the octonion circle operation loses associativity but keeps the weaker "alternative" law (a ✳ a) ✳ b = a ✳ (a ✳ b); the sedenion circle operation loses even that, and its zero divisors become extra walls (a pair a, b, neither −1, with a ✳ b = −1, check E).
+So the quaternion circle operation is associative but order-sensitive; the octonion circle operation loses associativity but keeps the weaker "alternative" law (a ∘₁ a) ∘₁ b = a ∘₁ (a ∘₁ b); the sedenion circle operation loses even that, and its zero divisors become extra walls (a pair a, b, neither −1, with a ∘₁ b = −1, check E).
 
-**Putting order into the formula itself costs grouping.** Try a ✳ b = a + b + λ·ab + (1 − λ)·ba, sliding from one order (λ = 1) to the other (λ = 0).
+**Putting order into the formula itself costs grouping.** Try a ∘₁ b = a + b + λ·ab + (1 − λ)·ba, sliding from one order (λ = 1) to the other (λ = 0).
 
 ![Grouping error rises from zero at both ends to a peak at λ = ½; the order error falls to zero at ½; flexibility error stays zero](figures/fig4-order-in-the-formula.png)
 
 - Its order error is (2λ − 1)·[a, b], a Lie bracket (`mutAdd_comm`, check D6).
 - Its grouping error is λ(1 − λ) times a fixed amount, so it is associative only at the two ends (symbolic check D1; on 2×2 matrices `mutAdd_assoc_only_at_ends`).
-- In the middle, λ = ½, you land on the **Jordan product** (ab + ba)/2, shifted: a + b + (ab + ba)/2 = (1 + a)∘(1 + b) − 1 (checks D4, D5). Every λ stays "flexible", (a ✳ b) ✳ a = a ✳ (b ✳ a) (`mutAdd_flexible`).
+- In the middle, λ = ½, you land on the **Jordan product** (ab + ba)/2, shifted: a + b + (ab + ba)/2 = (1 + a)∘(1 + b) − 1 (checks D4, D5). Every λ stays "flexible", (a ∘₁ b) ∘₁ a = a ∘₁ (b ∘₁ a) (`mutAdd_flexible`).
 
 *Known:* these are the quasi-associative (mutation) algebras; λ = ½ is the special Jordan algebra, which Jordan, von Neumann and Wigner (1934) proposed for quantum observables. *Ours:* only the circle-operation reading. *Verdict:* a smooth order dial inside the formula exists, but it trades away associativity, so it is not the natural road. The natural road is to keep the formula and change what goes in (sections 4 and 5).
 
@@ -110,7 +110,7 @@ Iterating the power set climbs the infinities: P, P∘P, P∘P∘P, … In categ
 ![A cube with axes for grouping, order and repetition; trees, lists, bags, sets, ordered sets and mobiles at its corners; the circle operation circled at the bag corner](figures/fig1-cube-of-laws.png)
 
 - **Three yes/no rules sort the collections.** Does grouping matter (associativity)? Does order (commutativity)? Do repeats count (idempotence)? Trees → lists → bags → sets add one law at a time; that path is the Boom hierarchy (named for Hendrik Boom, first in print in Meertens's 1986 *Algorithmics*). As free objects: lists are the free monoid, bags the free commutative monoid, finite sets the free semilattice (checks B1–B4, B8). Ordered sets without repeats (a LinkedHashSet) are the free left regular band (checks B5–B7).
-- **The circle operation sits at the bag corner.** It is associative and commutative, but 1 ✳ 1 = 3, and its only idempotents are 0 and the wall −1/k (`circK_idem_iff`). Category theory lives on the associative face of the cube: composition always ignores grouping, never necessarily order.
+- **The circle operation sits at the bag corner.** It is associative and commutative, but 1 ∘₁ 1 = 3, and its only idempotents are 0 and the wall −1/k (`circK_idem_iff`). Category theory lives on the associative face of the cube: composition always ignores grouping, never necessarily order.
 
 ![Five rows: set, bag, random set, dictionary and list, each a map from keys to a value, with the value rule that combines two](figures/fig2-everything-is-a-map.png)
 

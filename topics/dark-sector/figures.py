@@ -75,7 +75,7 @@ ax.add_patch(Rectangle((1, 0), z1, 1, fc="#fde3d4", ec=INK2)); ax.text(1 + z1 / 
 ax.add_patch(Rectangle((0, 1), 1, z2, fc="#ccf1e9", ec=INK2)); ax.text(0.5, 1 + z2 / 2, "z₂", ha="center", va="center")
 ax.add_patch(Rectangle((1, 1), z1, z2, fc="#fbe6b3", ec=INK2)); ax.text(1 + z1 / 2, 1 + z2 / 2, "z₁z₂", ha="center", va="center")
 ax.set_xlim(-0.1, 1.8); ax.set_ylim(-0.1, 1.55); ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("Redshifts compose by the circle operation\n(1+z₁)(1+z₂) = 1 + (z₁ ⊕ z₂)", fontsize=10.5, color=INK)
+ax.set_title("Redshifts compose by the circle operation\n(1+z₁)(1+z₂) = 1 + (z₁ ∘₁ z₂)", fontsize=10.5, color=INK)
 
 ax = axs[1]                                     # oblique cube: unit cube (Λ) inside the (1+z) cube (matter shell)
 def box(ax, o, s, fc, ec=INK2, alpha=1.0):
@@ -92,7 +92,7 @@ box(ax, (0, 0), (1, 1, 1), "#dbe9fa")
 ax.text(0.5, 0.45, "unit cube\n= Λ part", ha="center", va="center", fontsize=9)
 ax.text(1.75, 2.05, "shell = 3z + 3z² + z³\nweighted by Ωm", ha="center", fontsize=9)
 ax.set_xlim(-0.1, 2.4); ax.set_ylim(-0.1, 2.5); ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("Flat ΛCDM is a circle-operation cube with dial k\nH²/H₀² = 1 + Ωm·(z ⊕ z ⊕ z)", fontsize=10.5, color=INK)
+ax.set_title("Flat ΛCDM is a circle-operation cube with dial k\nH²/H₀² = 1 + Ωm·(z ∘₁ z ∘₁ z)", fontsize=10.5, color=INK)
 
 ax = axs[2]; gNv, a0v = 0.35, 1.6; gv = np.sqrt(gNv * a0v)
 ax.add_patch(Rectangle((0, 0), a0v, gNv, fc="#dbe9fa", ec=INK2)); ax.text(a0v / 2, gNv / 2, "g_N × a0", ha="center", va="center", fontsize=9)

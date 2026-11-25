@@ -31,14 +31,14 @@
 
 == D. Multivector arguments: what is kept and what is lost (builds on gr-bridges S6)
 [PASS] kept: associativity of X + Y + X K Y (Cl(2,0), general symbolic X, Y, W, K) [gr-bridges S6 did Cl(3,0)]
-[PASS] kept: the left lift 1 + K(X ✳ Y) = (1 + KX)(1 + KY) and the right lift (1 + XK)(1 + YK) = 1 + (X ✳ Y)K
-[PASS] lost: commutativity; X ✳ Y - Y ✳ X = X K Y - Y K X exactly
-[PASS] K = 1, vectors x, y: x ✳ y - y ✳ x = 2 x∧y = 2(x1 y2 - x2 y1) e12, twice the oriented area
-[PASS] vectors: x ✳ y = x + y + x·y + x∧y, the corner splits into dot (scalar) + wedge (bivector), as on twisted boosts
-[PASS] kept information: a1 e1 ✳ a2 e2 ✳ a3 e3 ✳ a4 e4 = sum over the 15 non-empty subsets S of a_S e_S, each on its own blade
+[PASS] kept: the left lift 1 + K(X ∘₁ Y) = (1 + KX)(1 + KY) and the right lift (1 + XK)(1 + YK) = 1 + (X ∘₁ Y)K
+[PASS] lost: commutativity; X ∘₁ Y - Y ∘₁ X = X K Y - Y K X exactly
+[PASS] K = 1, vectors x, y: x ∘₁ y - y ∘₁ x = 2 x∧y = 2(x1 y2 - x2 y1) e12, twice the oriented area
+[PASS] vectors: x ∘₁ y = x + y + x·y + x∧y, the corner splits into dot (scalar) + wedge (bivector), as on twisted boosts
+[PASS] kept information: a1 e1 ∘₁ a2 e2 ∘₁ a3 e3 ∘₁ a4 e4 = sum over the 15 non-empty subsets S of a_S e_S, each on its own blade
 [PASS] ... and the result does not depend on the squares kappa (no direction repeats), so no dial is needed for this
-[PASS] the scalar shadow (every blade read as 1) is the ordinary circle operation a1 ✳ a2 ✳ a3 ✳ a4 = prod(1 + a_i) - 1, which forgets which subset
-[PASS] reversion: (X ✳_K Y)~ = Y~ ✳_(K~) X~ (general Cl(2,0) elements)
+[PASS] the scalar shadow (every blade read as 1) is the ordinary circle operation a1 ∘₁ a2 ∘₁ a3 ∘₁ a4 = prod(1 + a_i) - 1, which forgets which subset
+[PASS] reversion: (X ∘_K Y)~ = Y~ ∘_(K~) X~ (general Cl(2,0) elements)
 [PASS] wall for a vector dial k (k^2 = 25): 1 + a k has (1 + a k)(1 - a k) = 1 - 25 a^2, two walls a = ±1/5
 [PASS] a bivector dial (squares negative) has no wall at all for real a: (1 + a B)(1 - a B) = 1 + 25 a^2 > 0
 
@@ -67,7 +67,7 @@
 [PASS] and the circle operation's theta is exactly Clifford's elliptic projector (1 + ω)/2 (idempotent): the circle operation is the left half of an elliptic motion
 
 == I. Dual numbers as jets: the circle operation with ε^2 = 0 is the circle operation plus its derivative
-[PASS] (a0 + a1 ε) ✳ (b0 + b1 ε) = (a0 ✳ b0) + (a1(1 + b0) + b1(1 + a0)) ε: the ε part is the derivative (chain rule)
+[PASS] (a0 + a1 ε) ∘₁ (b0 + b1 ε) = (a0 ∘₁ b0) + (a1(1 + b0) + b1(1 + a0)) ε: the ε part is the derivative (chain rule)
 
 == J. Clifford parallels, the Hopf fibration, and the twist
 [PASS] left multiplication by e^{i α} moves every point of S^3 by exactly α: a Clifford translation (all orbits parallel)

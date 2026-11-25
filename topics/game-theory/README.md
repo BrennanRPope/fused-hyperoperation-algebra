@@ -8,7 +8,7 @@
 
 ## Findings
 1. Multiplicative weights (Littlestone-Warmuth 1994, Hedge 1997): each expert's weight is
-   1 + ε·(g1 ✳ε g2 ✳ε …), the total is n·∏(1 + ε r_t), so the learner's lifted fortune is at least the
+   1 + ε·(g1 ∘_ε g2 ∘_ε …), the total is n·∏(1 + ε r_t), so the learner's lifted fortune is at least the
    leader's over n. Logs give the lifted regret bound; the corner (εg)² is the only cost of returning
    to plain gains, giving regret ≤ log n/ε + εT. Known; the dial reading is ours.
 2. Kelly (1956): bets at fraction f compose by the dial with k = f; ruin is the dial's wall r = −1/f.

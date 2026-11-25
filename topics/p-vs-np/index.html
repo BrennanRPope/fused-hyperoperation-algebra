@@ -43,7 +43,7 @@ core Lean 4.37, no mathlib, no <code>sorry</code>, standard axioms only;
 library now 108 modules, 2,735 theorems).</p>
 <h2 id="the-result-in-two-sentences">The result in two sentences</h2>
 <p>The circle operation ∘₁ (called mult-add before 1.0) can't change P vs NP: on the shifted ruler it is ordinary
-multiplication, and Lean now proves that any circuit built from ⊞ and
+multiplication, and Lean now proves that any circuit built from ∘₁ and
 shifted add turns into an ordinary circuit of exactly the same size, and
 back. Where it does say something real is the dial: folded over a
 problem's witnesses, k = −1 asks "is there one?" (NP), k = 0 asks "how
@@ -208,17 +208,17 @@ id="4-where-mult-add-touches-the-question-judged-on-its-own-merits">4.
 Where the circle operation touches the question, judged on its own merits</h2>
 <h3 id="41-the-shifted-ruler-no-new-power-proved">4.1 The shifted ruler:
 no new power (proved)</h3>
-<p>With shifted add a ⊕ b = a + b + 1 and the circle operation a ⊞ b = a + b + ab,
-the map x ↦ 1 + x turns ⊕ into + and ⊞ into ×, gate for gate. Lean
+<p>With shifted add sadd(a, b) = a + b + 1 and the circle operation a ∘₁ b = a + b + ab,
+the map x ↦ 1 + x turns sadd into + and ∘₁ into ×, gate for gate. Lean
 (<code>evalS_lift</code>, <code>eval_from_shift</code>,
-<code>size_mapC</code>): every ⊕/⊞ circuit is a +/× circuit with the
-same wiring and size, and every +/× circuit is a ⊕/⊞ circuit with the
+<code>size_mapC</code>): every sadd/∘₁ circuit is a +/× circuit with the
+same wiring and size, and every +/× circuit is a sadd/∘₁ circuit with the
 same wiring and size. So circuit size, VP vs VNP, and every algebraic
 lower-bound question are identical in both worlds. <strong>Not a
 lead.</strong> This is the honest answer to "does anything change?":
 nothing does, and that's now a theorem rather than a hunch.</p>
 <p>The circle operation a + b + k·ab is the same story for every k ≠ 0
-(it's ⊞ seen through x ↦ kx, <code>CircleOp.circK_scale</code>). At k = 0
+(it's ∘₁ seen through x ↦ kx, <code>CircleOp.circK_scale</code>). At k = 0
 it becomes plain addition. That's a contraction, not a tropical limit:
 the dial doesn't turn + into min.</p>
 <h3
@@ -289,7 +289,7 @@ where the landscape changes character.</p>
 id="43-over-the-two-element-field-mult-add-is-the-or-gate-proved">4.3
 Over the two-element field, the circle operation is the OR gate (proved)</h3>
 <p>Over GF(2), a + b + ab is a OR b, and x ↦ 1 + x is NOT, so the lift 1
-+ (a ⊞ b) = (1 + a)(1 + b) is De Morgan's law
++ (a ∘₁ b) = (1 + a)(1 + b) is De Morgan's law
 (<code>gf2_circ_is_or</code>, <code>gf2_lift_de_morgan</code>). Over
 the integers, the k = −1 version a + b − ab is the standard arithmetized
 OR.</p>
@@ -303,7 +303,7 @@ values sits inside known barrier territory. <strong>Not a lead for P vs
 NP</strong>, but a useful "what can't work" entry.</p>
 <h3 id="44-easy-because-it-factors-proved">4.4 Easy because it factors
 (proved)</h3>
-<p>The fold 1 ⊞ 1 ⊞ … ⊞ 1 over n inputs has 2ⁿ − 1 monomials but takes n
+<p>The fold 1 ∘₁ 1 ∘₁ … ∘₁ 1 over n inputs has 2ⁿ − 1 monomials but takes n
 − 1 gates (<code>foldCirc_ones</code>), because 1 + (fold) = (1 + x₁)⋯(1 +
 xₙ) factors. The hard counting problems (the permanent, #SAT) are hard
 because their sums don't factor: the constraints tie the variables

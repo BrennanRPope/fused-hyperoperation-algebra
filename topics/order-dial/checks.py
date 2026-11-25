@@ -224,7 +224,7 @@ check("I4 fixed point of one period is -d/r (interest-only balance); for T_k (r 
 check("I5 periods sharing a centre commute (r1 d2 = r2 d1)", sp.expand((r_*d2 - r2*d_).subs({d_: r_*Xs, d2: r2*Xs})) == 0)
 # I6 composing two different-centre stretches gives a new centre
 cen = sp.solve(sp.Eq(P1(P2(Xs)), Xs), Xs)[0]
-check("I6 the composite of two periods has its own centre, -(d1 + (1+r1) d2)/(r1 ✳ r2)",
+check("I6 the composite of two periods has its own centre, -(d1 + (1+r1) d2)/(r1 ∘₁ r2)",
       sp.simplify(cen + (d_ + (1+r_)*d2)/(r_ + r2 + r_*r2)) == 0)
 
 # I7 landscape laws are composition of Moebius maps (one-parameter subgroups fixing two points)

@@ -79,7 +79,7 @@ html{scroll-padding-top:20px}
 
 <div class="band" id="dictionary">
 <h2>The dictionary, rule by rule</h2>
-<p>Write a step as f(k+1) = f(k) ⊞ d(k). Then d is the circle-operation slope, and through the lift 1 + x every step multiplies a box by (1 + d).</p>
+<p>Write a step as f(k+1) = f(k) ∘₁ d(k). Then d is the circle-operation slope, and through the lift 1 + x every step multiplies a box by (1 + d).</p>
 <table class="stack"><thead><tr><th>Calculus idea</th><th>Circle-operation form</th><th>Lowest rung</th><th>Limit?</th><th>Status</th></tr></thead><tbody id="dict"></tbody></table>
 <p class="mute" style="margin-top:10px">Rung 2 is the circle operation, rung 3 is the circle power. "Proved" means checked in core Lean with no sorry. "Checked" means checked symbolically or numerically in Python (12 of 12 pass).</p>
 </div>
@@ -88,9 +88,9 @@ html{scroll-padding-top:20px}
 <div class="two">
 <div>
 <h2>The fundamental theorem is the cube's lift</h2>
-<p>Combine the slopes back together by the circle operation and you get the whole climb: f(n) = f(0) ⊞ (d₀ ⊞ d₁ ⊞ … ⊞ dₙ₋₁). Through the lift it says the end box is the start box times every step's factor. That is Volterra's product integral (1887), exact at every step size, and proved in Lean.</p>
-<p>A constant slope a gives a ⊞ a ⊞ … ⊞ a, the circle power. So the straight lines of circle-operation calculus are exponentials. Slice a total rate x into n steps of x/n and the staircase closes on eˣ − 1, which the drawing shows for x = 1.</p>
-<p class="mute">The ordinary version is the same telescope with + in place of ⊞: the differences add back to f(n) − f(0). Also proved.</p>
+<p>Combine the slopes back together by the circle operation and you get the whole climb: f(n) = f(0) ∘₁ (d₀ ∘₁ d₁ ∘₁ … ∘₁ dₙ₋₁). Through the lift it says the end box is the start box times every step's factor. That is Volterra's product integral (1887), exact at every step size, and proved in Lean.</p>
+<p>A constant slope a gives a ∘₁ a ∘₁ … ∘₁ a, the circle power. So the straight lines of circle-operation calculus are exponentials. Slice a total rate x into n steps of x/n and the staircase closes on eˣ − 1, which the drawing shows for x = 1.</p>
+<p class="mute">The ordinary version is the same telescope with + in place of ∘₁: the differences add back to f(n) − f(0). Also proved.</p>
 </div>
 <div><div class="fig2" role="img" aria-label="Staircases of n circle-operation steps closing on e to the x minus 1"><svg id="stairs"></svg></div>
 <p class="mute" style="margin-top:8px">Black curve: eˣ − 1. Grey stairs: 2, 4 and 16 circle-operation steps of size x/n.</p></div>
@@ -103,10 +103,10 @@ html{scroll-padding-top:20px}
 <table class="stack"><thead><tr><th>Lifted side</th><th>Step</th><th>Derivative it gives</th><th>Known as</th></tr></thead><tbody>
 <tr><td>Neither</td><td class="f">(f(x+h) − f(x)) / h</td><td class="f">f′</td><td>Newton–Leibniz</td></tr>
 <tr><td>Output</td><td class="f">(f(x+h) ⊟ f(x)) / h</td><td class="f">f′ / (1 + f)</td><td>Geometric calculus (Grossman–Katz, 1972); its exponential form is Volterra's</td></tr>
-<tr><td>Input</td><td class="f">(f(x ⊞ h) − f(x)) / (x ⊞ h − x)</td><td class="f">Jackson's q-derivative, q = 1 + h</td><td>q-calculus (Jackson, 1908)</td></tr>
-<tr><td>Both</td><td class="f">(f(x ⊞ h) ⊟ f(x)) / h</td><td class="f">(1 + x) f′ / (1 + f)</td><td>Bigeometric calculus (Grossman–Katz)</td></tr>
+<tr><td>Input</td><td class="f">(f(x ∘₁ h) − f(x)) / (x ∘₁ h − x)</td><td class="f">Jackson's q-derivative, q = 1 + h</td><td>q-calculus (Jackson, 1908)</td></tr>
+<tr><td>Both</td><td class="f">(f(x ∘₁ h) ⊟ f(x)) / h</td><td class="f">(1 + x) f′ / (1 + f)</td><td>Bigeometric calculus (Grossman–Katz)</td></tr>
 </tbody></table>
-<p style="margin-top:12px">The q-derivative does appear, as you asked to check: stepping the input by the circle operation moves it by h(1 + x), which is Jackson's gap with q = 1 + h. In the output-lifted calculus the product rule is just the sum rule, D(f ⊞ g) = Df + Dg, and the chain rule is D(f∘g) = (Df)(g)·g′. In exponential form that chain rule raises to the power g′, so it needs rung 3.</p>
+<p style="margin-top:12px">The q-derivative does appear, as you asked to check: stepping the input by the circle operation moves it by h(1 + x), which is Jackson's gap with q = 1 + h. In the output-lifted calculus the product rule is just the sum rule, D(f ∘₁ g) = Df + Dg, and the chain rule is D(f∘g) = (Df)(g)·g′. In exponential form that chain rule raises to the power g′, so it needs rung 3.</p>
 </div>
 
 <div class="band" id="newton">
@@ -139,14 +139,14 @@ html{scroll-padding-top:20px}
 {
 const rows=[
  ["Derivative","Circle-operation slope d = (f(k+1) − f(k)) / (1 + f(k)); continuous form f′/(1 + f)","2","For the continuous form","Proved (discrete), checked"],
- ["Integral","d₀ ⊞ d₁ ⊞ … ⊞ dₙ₋₁, a product of the factors (1 + dₖ)","2","For the continuous form","Proved (discrete), checked"],
- ["Fundamental theorem","f(n) = f(0) ⊞ ∫d","2","No","Proved"],
- ["Exponential","Constant slope a gives a^(⊞n); slope x/n gives eˣ − 1","3","Yes, for eˣ","Proved (discrete), checked"],
- ["Product rule","Steps of f ⊞ g are d ⊞ e; ordinary form keeps the corner","2","Yes, to drop the corner","Proved"],
- ["Rates of a product","p ⊞ₕ q = p + q + h·p·q (weight = step size)","2","h → 0 gives p + q","Proved"],
+ ["Integral","d₀ ∘₁ d₁ ∘₁ … ∘₁ dₙ₋₁, a product of the factors (1 + dₖ)","2","For the continuous form","Proved (discrete), checked"],
+ ["Fundamental theorem","f(n) = f(0) ∘₁ ∫d","2","No","Proved"],
+ ["Exponential","Constant slope a gives a^(∘₁n); slope x/n gives eˣ − 1","3","Yes, for eˣ","Proved (discrete), checked"],
+ ["Product rule","Steps of f ∘₁ g are d ∘₁ e; ordinary form keeps the corner","2","Yes, to drop the corner","Proved"],
+ ["Rates of a product","p ∘ₕ q = p + q + h·p·q (weight = step size)","2","h → 0 gives p + q","Proved"],
  ["Chain rule","Blocks: power of a power; rates: (Df)(g)·g′","3","Yes, for real exponents","Proved (blocks), checked"],
  ["nth derivative","Newton: f(n) = Σ C(n,k)·Δᵏf(0), the cube's layers","2","Yes, to reach Taylor","Proved (Newton), checked"],
- ["q-derivative","Input step x ⊞ h − x = h(1 + x), q = 1 + h","2","For the q → 1 limit","Proved"]];
+ ["q-derivative","Input step x ∘₁ h − x = h(1 + x), q = 1 + h","2","For the q → 1 limit","Proved"]];
 const tb=document.getElementById('dict');
 const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 tb.innerHTML=rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>Rung ${esc(r[2])}</td><td>${esc(r[3])}</td><td><span class="tag${r[4]==='Proved'?' p':''}">${esc(r[4])}</span></td></tr>`).join('');

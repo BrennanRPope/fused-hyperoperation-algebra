@@ -90,8 +90,8 @@ footer{border-top:1px solid var(--rule)}
 <section class="band" id="weights"><div class="wrap two">
 <div>
 <h2>One shape, three weights</h2>
-<p>Write a ⊕<sub>k</sub> b = a + b + k·a·b. With k = 1 it is your rung-1 circle operation. Multiply everything by k and any weighted version turns into the plain circle operation, so they are all the same operation seen at different scales.</p>
-<div class="eq">1 + k·(a ⊕<sub>k</sub> b) = (1 + k·a)(1 + k·b)</div>
+<p>Write a ∘<sub>k</sub> b = a + b + k·a·b. With k = 1 it is your rung-1 circle operation. Multiply everything by k and any weighted version turns into the plain circle operation, so they are all the same operation seen at different scales.</p>
+<div class="eq">1 + k·(a ∘<sub>k</sub> b) = (1 + k·a)(1 + k·b)</div>
 <table>
 <thead><tr><th>Noise</th><th>Rule</th><th class="n">k</th><th class="n">Wall −1/k</th></tr></thead>
 <tbody>
@@ -101,7 +101,7 @@ footer{border-top:1px solid var(--rule)}
 </tbody>
 </table>
 <p style="margin-top:12px">The coordinate 1 + k·a is what physicists call the fidelity or polarization: how much of the qubit's state survives. Stacking channels multiplies it, so on a log scale noise adds up in a straight line.</p>
-<p><b>The wall is the circle operation's −1.</b> In the plain circle operation, −1 swallows everything: (−1) ⊕ b = −1. Here the matching point −1/k is total noise, where the qubit holds no information at all. You've said you dislike 0 × 4 = 0 because information is lost. Quantum noise is exactly that loss, and noise reduction is the work of staying away from the wall.</p>
+<p><b>The wall is the circle operation's −1.</b> In the plain circle operation, −1 swallows everything: (−1) ∘₁ b = −1. Here the matching point −1/k is total noise, where the qubit holds no information at all. You've said you dislike 0 × 4 = 0 because information is lost. Quantum noise is exactly that loss, and noise reduction is the work of staying away from the wall.</p>
 </div>
 <figure class="plate">
 <img src="figures/q1_three_rules.png" alt="Left: combined error chance against the number of stacked noise channels, three curves rising toward walls at 1, 0.75 and 0.5. Right: the same in the coordinate 1 plus k times the error, on a log scale, as three straight lines.">
@@ -143,7 +143,7 @@ footer{border-top:1px solid var(--rule)}
 <figcaption class="cap">Left and middle: each qubit's phase is a helix (your curves via i). Right: what survives on average.</figcaption>
 </figure>
 <p>A qubit in superposition carries a phase that turns at a slightly wrong rate when its surroundings jitter. Over time its state draws a helix, exactly your "curves via i" picture, and different qubits get different pitches, so their helices fan out and the average washes away.</p>
-<p>The spin echo flips the qubit at the halfway mark. That mirrors the helix, the second half unwinds the first, and every qubit lands back on the same point. In circle-operation terms, the second half is composed with its own inverse: a ⊕ (−a/(1 + a)) = 0. It also matches your idea of negatives as a mirror image. With frozen noise the echo undoes everything; with slowly drifting noise it undoes the slow part and buys time. Stacking many such mirrors is dynamical decoupling, one of the main noise-reduction methods on real hardware. All of this is known physics (Hahn, 1950), but it is your geometry exactly.</p>
+<p>The spin echo flips the qubit at the halfway mark. That mirrors the helix, the second half unwinds the first, and every qubit lands back on the same point. In circle-operation terms, the second half is composed with its own inverse: a ∘₁ (−a/(1 + a)) = 0. It also matches your idea of negatives as a mirror image. With frozen noise the echo undoes everything; with slowly drifting noise it undoes the slow part and buys time. Stacking many such mirrors is dynamical decoupling, one of the main noise-reduction methods on real hardware. All of this is known physics (Hahn, 1950), but it is your geometry exactly.</p>
 </div></section>
 
 <section class="band" id="codes"><div class="wrap two">

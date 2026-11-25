@@ -69,7 +69,7 @@ table{{border-collapse:collapse;width:100%;font-size:15px}}th,td{{text-align:lef
 <section class="band" id="table"><div class="wrap"><h2>{S.get('table_h2','Where the circle operation shows up, and how much it gives')}</h2>
 <table class="stack"><thead><tr><th>Place</th><th>What the circle operation does there</th><th>Known since</th><th>Verdict</th></tr></thead><tbody>{rows}</tbody></table></div></section>
 <section class="band" id="lean"><div class="wrap"><h2>Lean: {len(names)} theorems, compiled, no sorry</h2>
-<p>File <code>{S['lean_file']}</code>, core Lean 4.37 with no mathlib, built on the shared library's base and using ✳ for the circle operation. Every theorem uses only Lean's standard axioms. It goes into the shared proof library as <code>FusedAlgebra/Topics/Biology/{os.path.basename(S['lean_file'])}</code>.</p>
+<p>File <code>{S['lean_file']}</code>, core Lean 4.37 with no mathlib, built on the shared library's base and using ∘₁ for the circle operation. Every theorem uses only Lean's standard axioms. It goes into the shared proof library as <code>FusedAlgebra/Topics/Biology/{os.path.basename(S['lean_file'])}</code>.</p>
 <p class="scroll" style="font-size:14px">{leanlist}</p>
 <p>Numeric checks: {S['checks']}, from <code>checks.py</code> beside this page.</p></div></section>
 <section class="band" id="sources"><div class="wrap"><h2>Sources</h2><ul>{src}</ul>

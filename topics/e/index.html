@@ -70,11 +70,11 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="build"><div class="wrap">
 <h2>The build: one unit, in n slices, combined by the circle operation</h2>
-<p>The circle operation is <span class="b">a ⊕ b = a + b + ab = (1 + a)(1 + b) − 1</span>. Combining x with itself n times by the circle operation gives</p>
-<div class="eq">x ⊕ x ⊕ … ⊕ x  (n times)  =  (1 + x)ⁿ − 1</div>
+<p>The circle operation is <span class="b">a ∘₁ b = a + b + ab = (1 + a)(1 + b) − 1</span>. Combining x with itself n times by the circle operation gives</p>
+<div class="eq">x ∘₁ x ∘₁ … ∘₁ x  (n times)  =  (1 + x)ⁿ − 1</div>
 <p>Geometrically that's a box of side 1 + x in n dimensions, cut at 1 on every axis. It falls into the 2ⁿ corner pieces of the n-cube. A corner with k switches on is a block of size xᵏ, and there are C(n,k) of them. Those layers are your Pascal rows 1, 3, 3, 1 and so on.</p>
 <p>Now spend exactly one whole unit, cut into n equal slices: <span class="b">x = 1/n</span>. Put the unit corner back and you get the staircase</p>
-<div class="eq">1 + (1/n ⊕ 1/n ⊕ … ⊕ 1/n)  =  (1 + 1/n)ⁿ  =  Σₖ C(n,k) / nᵏ</div>
+<div class="eq">1 + (1/n ∘₁ 1/n ∘₁ … ∘₁ 1/n)  =  (1 + 1/n)ⁿ  =  Σₖ C(n,k) / nᵏ</div>
 <p>So layer k of the n-cube carries total weight <span class="b">C(n,k)/nᵏ</span>. The whole question of e is what each layer does as n grows.</p>
 </div></section>
 
@@ -129,7 +129,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="two">
 <div>
 <h3>The circle operation's own logarithm</h3>
-<p>The map <span class="b">L(a) = ln(1 + a)</span> turns the circle operation into plain adding: L(a ⊕ b) = L(a) + L(b). Its inverse is E(t) = eᵗ − 1. So n copies of x under the circle operation are E(n·L(x)).</p>
+<p>The map <span class="b">L(a) = ln(1 + a)</span> turns the circle operation into plain adding: L(a ∘₁ b) = L(a) + L(b). Its inverse is E(t) = eᵗ − 1. So n copies of x under the circle operation are E(n·L(x)).</p>
 <p>With x = 1/n, the weight is n·L(1/n). Near the unit corner L has <strong>slope 1</strong>, so tiny slices keep their full value and n·L(1/n) → 1. The build lands on E(1) = e − 1. Any other base would give the curve a slope other than 1 at the corner, and the slices would come out scaled. e is the one base where a tiny circle-operation step and a tiny plain step are the same size.</p>
 </div>
 <div>

@@ -9,7 +9,7 @@ Files
 - index.html: the page (inline SVG drawn by script).
 
 Findings
-- Tangle sum is the dial: in x = g/f, x(S+T) = x(S) ✳_d x(T) with weight d = −A² − A⁻² (the loop
+- Tangle sum is the dial: in x = g/f, x(S+T) = x(S) ∘_d x(T) with weight d = −A² − A⁻² (the loop
   value). The corner term d·g₁g₂ is the loop trapped when both sides are "down". Lift 1 + d·x =
   ⟨D(T)⟩/f is closing the tangle, and the lift law is ⟨D(S+T)⟩ = ⟨D(S)⟩⟨D(T)⟩ (connected sum).
   Ingredients classical (Kauffman 1987, Goldman–Kauffman 1997); the dial reading is ours.

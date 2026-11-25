@@ -17,7 +17,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/comm_by_moves_2.svg",
@@ -51,7 +51,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/assoc_by_moves_2.svg",
@@ -85,7 +85,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/zero_by_moves_2.svg",
@@ -119,7 +119,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/wall_by_moves_2.svg",
@@ -159,7 +159,7 @@
     "moves": [
      "multadd"
     ],
-    "caption": "The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/mpow_add_by_moves_3.svg",
@@ -207,7 +207,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/wcomm_by_moves_4.svg",
@@ -275,7 +275,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/inv_by_moves_2.svg",

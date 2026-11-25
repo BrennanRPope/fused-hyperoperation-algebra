@@ -40,7 +40,7 @@
   "kind": "new",
   "head": "Giving each factor its own direction loses nothing",
   "clif": "A multivector has one part for each subset of directions: 2ⁿ blades in n dimensions.",
-  "ma": "a₁e₁ ✳ a₂e₂ ✳ … ✳ aₙeₙ puts each subset's product on its own blade (15 parts for n = 4), and no square of any direction enters. The ordinary circle operation is the scalar shadow: add the parts up and you get ∏(1 + aᵢ) − 1, which forgets which subset gave what. This is the precise sense in which a fused number can keep its information.",
+  "ma": "a₁e₁ ∘₁ a₂e₂ ∘₁ … ∘₁ aₙeₙ puts each subset's product on its own blade (15 parts for n = 4), and no square of any direction enters. The ordinary circle operation is the scalar shadow: add the parts up and you get ∏(1 + aᵢ) − 1, which forgets which subset gave what. This is the precise sense in which a fused number can keep its information.",
   "src": "checks D; Lean G4.blades_keep; the circle-operation cube page"
  },
  {
@@ -51,7 +51,7 @@
   "kind": "new",
   "head": "Clifford conjugation is the circle inverse",
   "clif": "Clifford conjugation and reversion flip signs of grades and the order of products.",
-  "ma": "On the θ-lift, θ ↦ p − θ is multiplicative and X·X̄ is the norm. The lift times its conjugate is the rate V(a) (for the circle operation, 1 + a). Read in the chart, the conjugate is the landscape inverse −a/(1 + pa). Reversion turns X ✳_K Y into Ỹ ✳_K̃ X̃.",
+  "ma": "On the θ-lift, θ ↦ p − θ is multiplicative and X·X̄ is the norm. The lift times its conjugate is the rate V(a) (for the circle operation, 1 + a). Read in the chart, the conjugate is the landscape inverse −a/(1 + pa). Reversion turns X ∘_K Y into Ỹ ∘_K̃ X̃.",
   "src": "checks B, D; Lean tconj_mul, mul_tconj, lift_tconj, G4.rev_star"
  },
  {
@@ -84,7 +84,7 @@
   "kind": "new",
   "head": "Order matters by exactly twice the oriented area",
   "clif": "Clifford took Grassmann's wedge x∧y, the oriented area, as the antisymmetric part of his product.",
-  "ma": "With vectors and K = 1, x ✳ y = x + y + x·y + x∧y, and x ✳ y − y ✳ x = 2x∧y whatever the squares of the directions. The corner splits into dot plus wedge, the same split the twisted-boosts page found in the velocity law.",
+  "ma": "With vectors and K = 1, x ∘₁ y = x + y + x·y + x∧y, and x ∘₁ y − y ∘₁ x = 2x∧y whatever the squares of the directions. The corner splits into dot plus wedge, the same split the twisted-boosts page found in the velocity law.",
   "src": "checks D; Lean G4.vector_corner, G4.vector_comm_wedge, G4.star_comm_defect"
  },
  {
@@ -106,7 +106,7 @@
   "kind": "known",
   "head": "Dual numbers carry the derivative along",
   "clif": "With ε² = 0, a + bε carries a tangent; dual quaternions compose rigid motions.",
-  "ma": "(a₀ + a₁ε) ✳ (b₀ + b₁ε) = a₀ ✳ b₀ + (a₁(1 + b₀) + b₁(1 + a₀))ε: the circle operation plus its first jet. Every border-country law is dual numbers in another chart.",
+  "ma": "(a₀ + a₁ε) ∘₁ (b₀ + b₁ε) = a₀ ∘₁ b₀ + (a₁(1 + b₀) + b₁(1 + a₀))ε: the circle operation plus its first jet. Every border-country law is dual numbers in another chart.",
   "src": "checks I; Lean dual_circ; jets page"
  },
  {
@@ -139,7 +139,7 @@
   "kind": "",
   "head": "The chart is the elliptic fold; only 1-D forms so far",
   "clif": "Fold a space by a discrete group; S³ with opposite points glued is elliptic space; Clifford's flat torus was the first such form.",
-  "ma": "The chart identifies R and −R, which for unit quaternions is S³/±1, elliptic space. The circle law's group is already a circle, and tan(πj/n) give finite cyclic forms. Missing: a flat torus built from ✳, which needs two commuting dials and a lattice.",
+  "ma": "The chart identifies R and −R, which for unit quaternions is S³/±1, elliptic space. The circle law's group is already a circle, and tan(πj/n) give finite cyclic forms. Missing: a flat torus built from ∘₁, which needs two commuting dials and a lattice.",
   "src": "checks K; finite circle clocks on the groups-lie page"
  },
  {
@@ -172,7 +172,7 @@
   "kind": "",
   "head": "Holds in every chart, but only by Möbius invariance",
   "clif": "4 lines give 4 circles through one point, 5 lines give 5 such points on a circle, and so on.",
-  "ma": "Landscape translations are Möbius maps, so the theorem survives in every chart (lines become circles through the image of infinity). There is no ✳ statement of the chain itself; that would need concurrency written as a ✳ identity.",
+  "ma": "Landscape translations are Möbius maps, so the theorem survives in every chart (lines become circles through the image of infinity). There is no ∘₁ statement of the chain itself; that would need concurrency written as a ∘₁ identity.",
   "src": "checks L"
  },
  {
@@ -183,7 +183,7 @@
   "kind": "",
   "head": "No analog",
   "clif": "On an algebraic curve, a special divisor D has dim |D| ≤ deg D / 2.",
-  "ma": "No circle-operation version found. It would need ✳ acting on divisors (formal sums of points on a curve), and no route to that was seen.",
+  "ma": "No circle-operation version found. It would need ∘₁ acting on divisors (formal sums of points on a curve), and no route to that was seen.",
   "src": ""
  }
 ]

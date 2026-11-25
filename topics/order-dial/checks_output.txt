@@ -58,7 +58,7 @@ PASS I2 two compounding periods: order defect = r1*d2 - r2*d1 (a wedge)
 PASS I3 depositing at the start of each period (annuity due) = (1+r) x depositing at the end
 PASS I4 fixed point of one period is -d/r (interest-only balance); for T_k (r = k a, d = a) it is the wall -1/k
 PASS I5 periods sharing a centre commute (r1 d2 = r2 d1)
-PASS I6 the composite of two periods has its own centre, -(d1 + (1+r1) d2)/(r1 ✳ r2)
+PASS I6 the composite of two periods has its own centre, -(d1 + (1+r1) d2)/(r1 ∘₁ r2)
 PASS I7 Moebius composition: mob(s) mob(t) = (1 - q s t) mob(F(s,t)), F the landscape law
 PASS I8 circle operation (p=1, q=0) is the affine slice: Moebius maps that fix infinity
 PASS I9 [translation, dilation] = translation: affine algebra [X, Y] = Y (not central)

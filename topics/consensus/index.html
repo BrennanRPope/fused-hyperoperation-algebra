@@ -61,14 +61,14 @@ a{color:inherit}
 </div>
 </div>
 <div><div class="fig" id="race" role="img" aria-label="Chance an attacker ever catches up, against confirmation depth, for attacker shares from 10% to 50%. At 50% the line stays at 1."></div>
-<p class="muted" style="color:inherit">Chance an attacker with share q ever catches up from z blocks behind: r<sup>z</sup> with r = q/(1−q). Write a = r − 1 and it is 1 + a<sup>⊕z</sup>, a circle power.</p></div>
+<p class="muted" style="color:inherit">Chance an attacker with share q ever catches up from z blocks behind: r<sup>z</sup> with r = q/(1−q). Write a = r − 1 and it is 1 + a<sup>∘₁z</sup>, a circle power.</p></div>
 </div></section>
 
 <nav class="scroll band" style="padding-block:10px"><a href="#map">The mapping</a><a href="#plays">Pictures</a><a href="#new">New ideas tested</a><a href="#energy">Energy</a><a href="#rulecraft">For Rulecraft</a><a href="#verdict">Verdict</a><a href="#proofs">Proofs</a><a href="#sources">Sources</a></nav>
 
 <section class="band" id="map"><div class="wrap">
 <h2>Each method, through the algebra</h2>
-<p>The circle operation with dial k is a ⊕<sub>k</sub> b = a + b + k·ab. With k = 1 it is the plain circle operation, 1 + (a ⊕ b) = (1+a)(1+b). With k = −1 it is "at least one of two independent things happens": 1 − (1−a)(1−b).</p>
+<p>The circle operation with dial k is a ∘<sub>k</sub> b = a + b + k·ab. With k = 1 it is the plain circle operation, 1 + (a ∘₁ b) = (1+a)(1+b). With k = −1 it is "at least one of two independent things happens": 1 − (1−a)(1−b).</p>
 <table class="stack"><thead><tr><th>Method</th><th>What keeps it safe</th><th>In the algebra</th><th>Verdict</th></tr></thead><tbody id="rows"></tbody></table>
 </div></section>
 
@@ -124,7 +124,7 @@ a{color:inherit}
 
 <section class="band" id="proofs"><div class="wrap">
 <h2>Proofs and checks</h2>
-<p><code>lean/ConsensusFused.lean</code>: 35 theorems in core Lean 4.24.0, no mathlib, no <code>sorry</code>, standard axioms only. Highlights: the circle power climbs the cube, 1 + k·a<sup>⊕ₖn</sup> = (1 + k·a)<sup>n</sup>; the 51% step is exactly 0 and its powers stay 0; n &gt; 3f gives honest quorum overlap and n ≤ 3f does not; three quorums need f &lt; n/4; the majority-of-three map pulls every share below 1/2 down; the Sybil corner and the split-proof rule for additive weights; both coin-age flips; slashing detection as a k = −1 power; VDF doubling and Pietrzak's halves.</p>
+<p><code>lean/ConsensusFused.lean</code>: 35 theorems in core Lean 4.24.0, no mathlib, no <code>sorry</code>, standard axioms only. Highlights: the circle power climbs the cube, 1 + k·a<sup>∘ₖn</sup> = (1 + k·a)<sup>n</sup>; the 51% step is exactly 0 and its powers stay 0; n &gt; 3f gives honest quorum overlap and n ≤ 3f does not; three quorums need f &lt; n/4; the majority-of-three map pulls every share below 1/2 down; the Sybil corner and the split-proof rule for additive weights; both coin-age flips; slashing detection as a k = −1 power; VDF doubling and Pietrzak's halves.</p>
 <p>Lean does not check anything with real numbers or logarithms, or that a race is a gambler's ruin or a committee a binomial draw. Those are in <code>checks.py</code>, whose Monte Carlo runs match the exact formulas: double spends against Rosenfeld's formula, committees against the binomial tail, selfish mining against Eyal and Sirer.</p>
 <p class="muted">Files: math-theory/consensus/ in the project folder: index.html, checks.py, checks_output.txt, figures.py, figures/, lean/ConsensusFused.lean, SOURCES.md. Research only: nothing here is investment advice.</p>
 </div></section>
@@ -142,7 +142,7 @@ a{color:inherit}
 
 <script>{
 const rows=[
-["Proof of work (Bitcoin)","An attacker must outrun the honest chain; each block costs energy","Catch-up chance r<sup>z</sup> = 1 + a<sup>⊕z</sup>, a = r − 1. a = −1 is the wall (attacker powerless), a = 0 the identity (q = 1/2), where depth stops helping","known"],
+["Proof of work (Bitcoin)","An attacker must outrun the honest chain; each block costs energy","Catch-up chance r<sup>z</sup> = 1 + a<sup>∘₁z</sup>, a = r − 1. a = −1 is the wall (attacker powerless), a = 0 the identity (q = 1/2), where depth stops helping","known"],
 ["Proof of stake, longest chain","Same race, with stake in place of hash power","Same circle power; the race needs a majority, 1/2","known"],
 ["BFT voting (Tendermint, HotStuff)","Two quorums of 2/3 must share an honest validator","Worst-case overlap 2Q − 1 is a straight line; the safe triangle's corner is 1/3. Random quorums overlap as a product, the k = −1 circle operation","known"],
 ["Committee sampling","A random committee must stay under 1/3 faulty","Top layers of a weighted cube (binomial tail); shrinks fast with size","known"],
@@ -150,7 +150,7 @@ const rows=[
 ["Slashing (fixes nothing at stake)","Double votes are caught and burned","Caught = 1 − (1 − d)<sup>m</sup>, a k = −1 power. Simulated: without slashing a fork never settles; with it, in 2 rounds","known"],
 ["Checkpoints (fix long-range attacks)","New nodes trust a recent checkpoint","Exited share of an old set = 1 − (1 − c)<sup>t</sup>; checkpoint before it nears 1/3","known"],
 ["Proof of space and time (Chia)","Storage held over time","Space × time is an area, rung 1. Nothing new","known"],
-["Verifiable delay functions","x<sup>2<sup>T</sup></sup> takes T squarings in a row","T circle doublings, a ⊕ a, climb a cube of dimension 2<sup>T</sup>; Pietrzak's proof checks the two half-towers","known"],
+["Verifiable delay functions","x<sup>2<sup>T</sup></sup> takes T squarings in a row","T circle doublings, a ∘₁ a, climb a cube of dimension 2<sup>T</sup>; Pietrzak's proof checks the two half-towers","known"],
 ["Fused stake × time","Weight (1+s)<sup>(1+t)</sup> − 1","Coin age by another name; silent attackers win","fail"],
 ["Log stake weight","Weight log(1+s), additive under the circle operation","Splitting pays the corner square s<sub>1</sub>s<sub>2</sub>","fail"]];
 document.getElementById('rows').innerHTML=rows.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td><span class="tag ${r[3]}">${r[3]=='fail'?'fails':'known'}</span></td></tr>`).join('');

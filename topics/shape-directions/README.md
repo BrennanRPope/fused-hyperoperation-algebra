@@ -17,5 +17,5 @@ Question (Brennan): is there another whole dimension underneath, like q was?
 - jets.py → jets.json (rung jets; rate valid through a⁶)
 - checks.py → checks_output.txt, results.json (29/29 pass)
 - lean_mirror.py (sympy mirror of every Lean statement, 39/39)
-- lean/ShapeDirections.lean (36 theorems, core Lean 4, no sorry, ✳ notation; not compiled here; intended path FusedAlgebra/Topics/ShapeDirections.lean, imports only Base)
+- lean/ShapeDirections.lean (36 theorems, core Lean 4, no sorry, ∘₁ notation; not compiled here; intended path FusedAlgebra/Topics/ShapeDirections.lean, imports only Base)
 - page/index.html (published page)

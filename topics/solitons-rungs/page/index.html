@@ -145,11 +145,11 @@ small{color:var(--soft)}
 <h2>Lean</h2>
 <p>26 theorems in <code>math-theory/solitons-rungs/lean/SolitonsRungs.lean</code>, core Lean 4 in the library's style, with no mathlib and no sorry. They aren't compiled yet because Lean isn't installed where this was written; the library build should fold them in.</p>
 <ul>
-<li><b>Two solitons:</b> τ = 1 + (a ⊞_A b); weight 1 gives (1+a)(1+b); weight 0 gives plain addition; A(τ − 1) = (Aa) ⊞ (Ab).</li>
+<li><b>Two solitons:</b> τ = 1 + (a ∘_A b); weight 1 gives (1+a)(1+b); weight 0 gives plain addition; A(τ − 1) = (Aa) ∘₁ (Ab).</li>
 <li><b>Three solitons:</b> corners multiply over pairs; a soliton that interacts with nobody factors off; equal weights give k³ where the circle operation with dial k gives k², and these agree only at k = 0 or 1.</li>
 <li><b>Roads:</b> the three-body gap is s(2s−1)(s−1); the four-body gap is s(s−1) times a quartic that is not zero at ½; the rung flow's own three-body term is s(s−1)/2.</li>
 <li><b>Theta face:</b> n(n−1) ≥ 0, it is 0 only at n = 0 or 1, the two-wave exponent vanishes exactly on the unit square, and the written-out theta series at q = 0 is the cube.</li>
-<li><b>Gluing and weights:</b> wq − 1 = (w−1) ⊞ (q−1); a truncated triple product is the circle operation of its orbit; KdV weights lie in [0, 1), and are 0 only for equal speeds.</li>
+<li><b>Gluing and weights:</b> wq − 1 = (w−1) ∘₁ (q−1); a truncated triple product is the circle operation of its orbit; KdV weights lie in [0, 1), and are 0 only for equal speeds.</li>
 </ul>
 <p><small>Left out, because core Lean has no exp, log or limits: the rung flow itself, the infinite triple product, theta functions solving KdV, and the tropical limit. Those stand on the numerical checks in <code>checks.py</code> (25 of 25 pass) and <code>graph_check_output.txt</code>.</small></p>
 </div></section>

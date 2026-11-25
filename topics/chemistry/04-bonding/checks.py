@@ -137,7 +137,7 @@ lad = {"C–C": (348, 614, 839), "N–N": (163, 418, 941), "C–N": (293, 615, 8
 fits = {}
 for name, (e1, e2, e3) in lad.items():
     k = (e2 - 2*e1)/(e1*e1)               # dial from the double bond
-    pred = ((1 + k*e1)**3 - 1)/k           # associative dial: triple = e1 ✳_k e1 ✳_k e1
+    pred = ((1 + k*e1)**3 - 1)/k           # associative dial: triple = e1 ∘ₖ e1 ∘ₖ e1
     fits[name] = dict(k=k, pred=pred, meas=e3, err=(pred - e3)/e3, inc=(e1, e2-e1, e3-e2))
 R["ladders"] = fits
 for n, f in fits.items():

@@ -84,7 +84,7 @@ b.append(T(ox + U + U * a_ / 2, oy - U - U * b_ / 2 + 5, "ab", 16, weight=700))
 b.append(T(ox + (U + U * a_) / 2, oy + 24, "stretch 1 + a across", 13))
 b.append(f'<text x="{ox-14}" y="{oy-(U+U*b_)/2}" transform="rotate(-90 {ox-14} {oy-(U+U*b_)/2})" text-anchor="middle" fill="currentColor" stroke="none">stretch 1 + b</text>')
 tx = 345
-for i, line in enumerate(["A thin beam of light:", "area = (1 + a)(1 + b)", "       = 1 + (a ✳ b)", "",
+for i, line in enumerate(["A thin beam of light:", "area = (1 + a)(1 + b)", "       = 1 + (a ∘₁ b)", "",
                           "The ab corner is what makes", "light beams focus", "(Raychaudhuri's θ²/2 + σ² term).",
                           "", "Curvature bends a and b;", "matter's energy does the rest."]):
     col = SKY if "ab corner" in line or "focus" in line else "currentColor"
@@ -163,7 +163,7 @@ lines = [("ab  =  a·b  +  a ∧ b", 18, "currentColor", 700),
          ("a ∧ b : the twist in the a-b plane", 14, SKY, 400),
          ("", 14, "currentColor", 400),
          ("The circle operation with a Clifford weight k:  a + b + a k b", 16, "currentColor", 700),
-         ("1 + k(a ✳ b) = (1 + k a)(1 + k b), associative for every k", 14, "currentColor", 400),
+         ("1 + k(a ∘₁ b) = (1 + k a)(1 + k b), associative for every k", 14, "currentColor", 400),
          ("k(x) alone: flat (pure gauge). Add a twist field:", 14, PINK, 400),
          ("gauge-theory gravity = general relativity", 14, "currentColor", 400)]
 for i, (s_, sz, col, wt) in enumerate(lines):

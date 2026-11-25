@@ -18,7 +18,7 @@ def eq(x, q):
 print("== 1. The q-logarithm turns products into the dial, k = 1 − q")
 x, y, k, q = sp.symbols('x y k q', positive=True)
 L = (x**k - 1)/k; Ly = (y**k - 1)/k; Lxy = ((x*y)**k - 1)/k
-check("symbolic: ln_q(xy) = ln_q x ✳ₖ ln_q y with k = 1 − q", sp.simplify(sp.expand_power_base(Lxy - dial(k, L, Ly), force=True)) == 0)
+check("symbolic: ln_q(xy) = ln_q x ∘ₖ ln_q y with k = 1 − q", sp.simplify(sp.expand_power_base(Lxy - dial(k, L, Ly), force=True)) == 0)
 ok = True
 for _ in range(500):
     qq = rng.uniform(-2, 3); a, b = rng.uniform(.05, 5, 2); kk = 1 - qq
@@ -27,10 +27,10 @@ for _ in range(500):
         u, v = lnq(a, qq), lnq(b, qq)
         ok &= abs(eq(dial(kk, u, v), qq) - eq(u, qq)*eq(v, qq)) < 1e-8*max(1, a*b)
         ok &= abs(eq(lnq(a, qq), qq) - a) < 1e-9*max(1, a)
-check("500 random q: ln_q(ab) = dial; e_q(u ✳ₖ v) = e_q(u)·e_q(v); e_q inverts ln_q", ok)
-check("k = −1 (Tsallis q = 2): ln_2 x = 1 − 1/x and (1 − 1/xy) = (1 − 1/x) ✳₋₁ (1 − 1/y)",
+check("500 random q: ln_q(ab) = dial; e_q(u ∘ₖ v) = e_q(u)·e_q(v); e_q inverts ln_q", ok)
+check("k = −1 (Tsallis q = 2): ln_2 x = 1 − 1/x and (1 − 1/xy) = (1 − 1/x) ∘₋₁ (1 − 1/y)",
       sp.simplify((1 - 1/(x*y)) - dial(-1, 1 - 1/x, 1 - 1/y)) == 0)
-check("k = 1 (q = 0): ln_0 x = x − 1, the 'count minus one' that combines by the circle operation: 5·7 − 1 = 4 ✳ 6",
+check("k = 1 (q = 0): ln_0 x = x − 1, the 'count minus one' that combines by the circle operation: 5·7 − 1 = 4 ∘₁ 6",
       abs(lnq(7.0, 0) - 6) < 1e-15 and dial(1, 4, 6) == 5*7 - 1)
 
 print("== 2. Tsallis entropy is the expectation of a q-surprise; the measure engine composes it")
@@ -44,13 +44,13 @@ for _ in range(300):
     okeng &= abs(sum(pi*ri*dial(kk, lnq(1/pi, qq), lnq(1/ri, qq)) for pi in p for ri in r) - dial(kk, S(p), S(r))) < 1e-9
     okeng &= abs(S(joint) - dial(kk, S(p), S(r))) < 1e-9
 check("S_q = Σ p·ln_q(1/p) = (Σp^q − 1)/(1 − q)", ok)
-check("S(A×B) = E[s_A ✳ₖ s_B] = S(A) ✳ₖ S(B)  (Tsallis 1988, via E[X✳Y] = EX✳EY)", okeng)
+check("S(A×B) = E[s_A ∘ₖ s_B] = S(A) ∘ₖ S(B)  (Tsallis 1988, via E[X∘₁Y] = EX∘₁EY)", okeng)
 # dependence breaks it by k·Cov
 J = rng.dirichlet(np.ones(12)).reshape(3, 4); pA, pB = J.sum(1), J.sum(0); qq = 0.5; kk = .5
 sA = np.array([lnq(1/v, qq) for v in pA]); sB = np.array([lnq(1/v, qq) for v in pB])
 lhs = sum(J[i, j]*dial(kk, sA[i], sB[j]) for i in range(3) for j in range(4))
 cov = sA@J@sB - (pA@sA)*(pB@sB)
-check("correlated sources: E[s_A ✳ s_B] misses S_A ✳ S_B by exactly k·Cov(s_A, s_B)", abs(lhs - dial(kk, pA@sA, pB@sB) - kk*cov) < 1e-12)
+check("correlated sources: E[s_A ∘₁ s_B] misses S_A ∘₁ S_B by exactly k·Cov(s_A, s_B)", abs(lhs - dial(kk, pA@sA, pB@sB) - kk*cov) < 1e-12)
 
 print("== 3. Two q's: the project's q is Tsallis' dual index 2 − q")
 xs = sp.symbols('xs', positive=True); qs = sp.symbols('qs')
@@ -72,7 +72,7 @@ for _ in range(300):
     ok &= abs(sm(p, a, b) - (math.exp(kk*renyi(p, a)) - 1)/kk) < 1e-9
     okc &= abs(sm(j, a, b) - dial(kk, sm(p, a, b), sm(r, a, b))) < 1e-9
 check("H_{α,β} = (e^{(1−β)·Rényi_α} − 1)/(1 − β)", ok)
-check("H_{α,β}(A×B) = H(A) ✳ₖ H(B) with k = 1 − β, for every α", okc)
+check("H_{α,β}(A×B) = H(A) ∘ₖ H(B) with k = 1 − β, for every α", okc)
 p = rng.dirichlet(np.ones(5)); a = 1.7
 check("β = α is Tsallis", abs(sm(p, a, a) - (np.sum(p**a) - 1)/(1 - a)) < 1e-12)
 check("β = 2 − α is Landsberg–Vedral (1/Σp^α − 1)/(α − 1), weight k = α − 1 (flipped)", abs(sm(p, a, 2-a) - (1/np.sum(p**a) - 1)/(a - 1)) < 1e-12)
@@ -117,7 +117,7 @@ for _ in range(60):
     okleaf &= leafc(Gt) == leafc(A)*leafc(B) and all(leafc(T) == 1 + (D-1)*inner(T) for T in (A, B, Gt))
     depth = nx.shortest_path_length(Gt, 0)
     okkr &= abs(sum(D**-depth[v] for v in Gt.nodes if Gt.out_degree(v) == 0) - 1) < 1e-12
-check("60 random D-ary trees (D = 2, 3, 4): inner(graft A B) = inner A ✳_{D−1} inner B", ok)
+check("60 random D-ary trees (D = 2, 3, 4): inner(graft A B) = inner A ∘_{D−1} inner B", ok)
 check("leaves multiply and leaves = 1 + (D−1)·inner (the lift)", okleaf)
 check("Kraft sum of every full tree is exactly 1, and stays 1 after grafting", okkr)
 check("complete depth-n tree has [n]_D = 1 + D + … + D^(n−1) internal nodes (q-number, q = D)",
@@ -131,12 +131,12 @@ for _ in range(500):
     C = M(a1, b1) @ M(a2, b2)
     ok &= abs((C[0, 1] + C[1, 0]) - dial(-1, a1+b1, a2+b2)) < 1e-12
     ok &= abs(np.linalg.det(C) - (1-a1-b1)*(1-a2-b2)) < 1e-12
-check("500 random 2×2 channels: s = a + b of the cascade = s₁ ✳₋₁ s₂, and det = 1 − s multiplies", ok)
+check("500 random 2×2 channels: s = a + b of the cascade = s₁ ∘₋₁ s₂, and det = 1 − s multiplies", ok)
 C = np.array([[.9,.1],[.2,.8]]) @ np.array([[.85,.15],[.25,.75]])
-check("figure example: s₁ = 0.3, s₂ = 0.4 chain to 0.58 = 0.3 ✳₋₁ 0.4", abs(C[0,1] + C[1,0] - 0.58) < 1e-12 and abs(dial(-1, .3, .4) - .58) < 1e-12)
+check("figure example: s₁ = 0.3, s₂ = 0.4 chain to 0.58 = 0.3 ∘₋₁ 0.4", abs(C[0,1] + C[1,0] - 0.58) < 1e-12 and abs(dial(-1, .3, .4) - .58) < 1e-12)
 p_, q_ = sp.symbols('p q')
-check("BSC (s = 2p): 2p ✳₋₁ 2q = 2(p ✳₋₂ q), the parity law", sp.expand(dial(-1, 2*p_, 2*q_) - 2*dial(-2, p_, q_)) == 0)
-check("Z-channel (s = p): p ✳₋₁ q, the union law", all(abs((np.array([[1-a,a],[0,1]])@np.array([[1-c,c],[0,1]]))[0,1] - dial(-1,a,c)) < 1e-12 for a, c in rng.uniform(0,1,(50,2))))
+check("BSC (s = 2p): 2p ∘₋₁ 2q = 2(p ∘₋₂ q), the parity law", sp.expand(dial(-1, 2*p_, 2*q_) - 2*dial(-2, p_, q_)) == 0)
+check("Z-channel (s = p): p ∘₋₁ q, the union law", all(abs((np.array([[1-a,a],[0,1]])@np.array([[1-c,c],[0,1]]))[0,1] - dial(-1,a,c)) < 1e-12 for a, c in rng.uniform(0,1,(50,2))))
 def cap(Mt):
     h = lambda v: -sum(t*math.log2(t) for t in v if t > 0)
     f = lambda u: -(h(np.array([1-u, u])@Mt) - ((1-u)*h(Mt[0]) + u*h(Mt[1])))

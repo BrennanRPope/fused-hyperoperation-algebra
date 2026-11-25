@@ -1,4 +1,4 @@
-PASS ordered mechanism, solved at steady state: V/v = 1 + (u_A ✳_k u_B), k = Kia/Ka (300 random rate sets) | 2.4e-12
+PASS ordered mechanism, solved at steady state: V/v = 1 + (u_A ∘ₖ u_B), k = Kia/Ka (300 random rate sets) | 2.4e-12
 PASS ping-pong mechanism, solved at steady state: V/v = 1 + u_A + u_B, dial k = 0 (300 sets) | 8.9e-14
 PASS random independent binding: V/v = (1+u_A)(1+u_B), dial k = 1 (A=0.1,B=5)
 PASS random independent binding: V/v = (1+u_A)(1+u_B), dial k = 1 (A=3,B=0.2)
@@ -8,9 +8,9 @@ PASS in concentration terms the meeting point is 1/A = -1/Kia
 PASS ping-pong (k = 0): every slope equal, so parallel lines
    MDH dial k = Kia/Ka = 0.167; lines meet at 1/A = -1/Kia = -0.0833 per µM
 PASS MDH sits at k ≈ 0.17: sequential, but close to the ping-pong end
-PASS multiplicative two-nutrient Monod: 1/θ = 1 + (u1 ✳ u2) (100 cases)
+PASS multiplicative two-nutrient Monod: 1/θ = 1 + (u1 ∘₁ u2) (100 cases)
 PASS additive-resistance form: 1/θ = 1 + u1 + u2, dial 0 (100 cases)
-PASS total limitation 1 - θ1θ2 = λ1 ✳_(-1) λ2: limitations combine by the 'or' law
+PASS total limitation 1 - θ1θ2 = λ1 ∘₋₁ λ2: limitations combine by the 'or' law
 PASS Liebig's minimum is not a dial setting: the best single k misses it by >5% somewhere | best k=-0.01, worst miss 0.171
 PASS free (unbound) fraction u/(1+u) = -inv(u) at u = 0.1
 PASS free (unbound) fraction u/(1+u) = -inv(u) at u = 1

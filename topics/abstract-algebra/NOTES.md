@@ -11,10 +11,10 @@ Namespace `AbstractAlgebra`. Defines records CommMonoidLaws, CommGroupLaws, OpIs
 tateSetoid (a def, not an instance), TateQ, shiftIso, scaleIso.
 
 ## Proved (Lean) vs checked (checks.py, 33/33 pass)
-Proved: monoid laws; shift iso (R,⊞,0)≅(R,·,1) with wall->0; units = quasi-regular; Int units {0,-2};
+Proved: monoid laws; shift iso (R,∘₁,0)≅(R,·,1) with wall->0; units = quasi-regular; Int units {0,-2};
 field units off wall; scale iso for k≠0; Int scale embedding; weight −2 = XOR; nilpotent weight ⇒ group;
-Fin 8/9/12 exact group criterion; Fin 12 units; Klein (Fin4,⊞₂) not iso (Fin4,+); Fin 9 k=3 and Fin 8 k=4
-cyclic, Fin 8 k=2 not; fused ring (fadd, ⊞); mpow endomorphisms; Tate congruence + quotient monoid +
+Fin 8/9/12 exact group criterion; Fin 12 units; Klein (Fin4,∘₂) not iso (Fin4,+); Fin 9 k=3 and Fin 8 k=4
+cyclic, Fin 8 k=2 not; fused ring (fadd, ∘₁); mpow endomorphisms; Tate congruence + quotient monoid +
 inverses; slope-addition walls mod 3,5,7,11,13.
-Checked only: criterion for all n≤40; principal-units identification n≤30; ⊕-irreducibles = p−1; finite
+Checked only: criterion for all n≤40; principal-units identification n≤30; ∘₁-irreducibles = p−1; finite
 fields cyclic; Bennett commutative rung; ftet not distributive over fexp; landscape counts p−(Δ/p).

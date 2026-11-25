@@ -1,4 +1,4 @@
-PASS shell n holds n² orbitals = 1 + (n−1)✳(n−1); its subshells are the square's L-shaped gnomons (n ≤ 29)
+PASS shell n holds n² orbitals = 1 + (n−1)∘₁(n−1); its subshells are the square's L-shaped gnomons (n ≤ 29)
 PASS SO(4): shell n = spin j ⊗ spin j with 2j = n−1; the Clebsch–Gordan series is exactly l = 0…n−1
 PASS Madelung order begins 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f 5d 6p 7s 5f 6d 7p
 PASS noble gases fall at Z = 2, 10, 18, 36, 54, 86, 118

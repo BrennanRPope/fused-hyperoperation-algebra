@@ -144,7 +144,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="two">
 <div>
 <p>For a loss X, the moment generating function is M(s) = E[e<sup>sX</sup>]. For independent losses, M multiplies, so <b>M − 1 combines by the circle operation</b>:</p>
-<div class="eq">M<sub>X+Y</sub> − 1 = (M<sub>X</sub> − 1) ⊕ (M<sub>Y</sub> − 1)</div>
+<div class="eq">M<sub>X+Y</sub> − 1 = (M<sub>X</sub> − 1) ∘₁ (M<sub>Y</sub> − 1)</div>
 <p>With n independent risks, M<sub>total</sub> − 1 is a sum over the corners of an n-cube: each corner is a group of risks acting together. Taking log(1 + ·) turns this into plain addition. That log is the cumulant generating function, which actuaries already use because it adds across independent risks.</p>
 </div>
 <div>
@@ -231,7 +231,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="two">
 <div>
 <p>A policy can end several ways in a year: death, lapse, disability. Each has an <b>absolute rate</b> q′ (what would happen if it were the only cause). The chance the policy ends at all is a circle operation:</p>
-<div class="eq">−q<sup>(τ)</sup> = (−q′<sub>death</sub>) ⊕ (−q′<sub>lapse</sub>) ⊕ (−q′<sub>disability</sub>)</div>
+<div class="eq">−q<sup>(τ)</sup> = (−q′<sub>death</sub>) ∘₁ (−q′<sub>lapse</sub>) ∘₁ (−q′<sub>disability</sub>)</div>
 <p>With death from the SOA table at age 45 (0.40%), lapse 6% and disability 0.4% (both illustrative), the total is 6.7502%. Adding the rates gives 6.7997%; the extra 0.0495% is the cube's faces, years where two causes would both have struck.</p>
 <p>Actuaries then need the <b>dependent rates</b>: how many policies end by each cause. That depends on when in the year each cause strikes, and textbooks offer two assumptions. Here is what they are geometrically:</p>
 <ul>
@@ -274,7 +274,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="wrap two">
 <div>
 <h2>Interest is the circle operation, and annuities are cube layers</h2>
-<p>A year at 3% then a year at 5% gives 3% ⊕ 5% = 8.15%. The rest of the interest toolkit follows:</p>
+<p>A year at 3% then a year at 5% gives 3% ∘₁ 5% = 8.15%. The rest of the interest toolkit follows:</p>
 <ul>
 <li><b>Force of interest</b> δ = log(1 + i): the circle-operation log, so rates add in δ.</li>
 <li><b>Discount rate</b> d = i ÷ (1 + i) = minus the circle inverse of i. At 5% both give 0.047619.</li>
@@ -294,7 +294,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="wrap two">
 <div>
 <h2>Mortality: hazard is boundary over volume</h2>
-<p>Survival over the year is also a circle operation: the 3-year death chance at 45 from the SOA table, 1.291699%, equals −((−q₄₅) ⊕ (−q₄₆) ⊕ (−q₄₇)) to all digits. The force of mortality μ = −log(1 − q) is its circle-operation log.</p>
+<p>Survival over the year is also a circle operation: the 3-year death chance at 45 from the SOA table, 1.291699%, equals −((−q₄₅) ∘₁ (−q₄₆) ∘₁ (−q₄₇)) to all digits. The force of mortality μ = −log(1 − q) is its circle-operation log.</p>
 <p>Now the geometric version. If survival to age x is the volume of a shrinking k-dimensional cube with side (1 − x/ω), then</p>
 <div class="eq">μ(x) = k ÷ (ω − x) = surface ÷ volume</div>
 <p>That has a pole at the end age ω, and the order of the pole is the dimension k. On a plot of 1/μ, it shows as a straight line hitting zero with slope 1/k. That is the infinity test for "is there a maximum human lifespan?"</p>
@@ -336,7 +336,7 @@ footer{border-top:1px solid var(--rule)}
 </section>
 
 <footer class="band">
-<div class="wrap"><p class="mute">Part of the Fused Hyperoperation Algebra notes. The circle operation: a ⊕ b = a + b + ab = (1 + a)(1 + b) − 1.</p></div>
+<div class="wrap"><p class="mute">Part of the Fused Hyperoperation Algebra notes. The circle operation: a ∘₁ b = a + b + ab = (1 + a)(1 + b) − 1.</p></div>
 </footer>
 </body>
 </html>

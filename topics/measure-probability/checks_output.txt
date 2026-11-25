@@ -1,6 +1,6 @@
 == 1. The Sugeno lambda-measure is the dial with k = lambda
-PASS  symbolic: disjoint union a ✳λ b is associative and commutative
-PASS  symbolic: lift 1+λ(a✳λb) = (1+λa)(1+λb)
+PASS  symbolic: disjoint union a ∘_λ b is associative and commutative
+PASS  symbolic: lift 1+λ(a∘_λb) = (1+λa)(1+λb)
 PASS  300 random spaces: μ(A∪B) = μ(A)+μ(B)+λμ(A)μ(B) for every disjoint pair, μ(Ω)=1
 == 2. The normalization equation ∏(1+λg_i) = 1+λ
 PASS  400 random densities: exactly one nonzero root λ > −1
@@ -33,20 +33,20 @@ PASS  the line meets the border parabola tangentially at the cusp (−2, 1)
 PASS  tangent measure μ = tan(πP/4): (μA+μB)/(1−μAμB) on disjoint sets, μ(Ω)=1
 PASS  dial line: the additive coordinate log(1+kx)/k adds over atoms
 == 9. Odds of an 'or' combine by the circle operation
-PASS  independent A, B: odds(A∪B) = odds A ✳ odds B; odds-against(A∩B) = against A ✳ against B; 3 events
+PASS  independent A, B: odds(A∪B) = odds A ∘₁ odds B; odds-against(A∩B) = against A ∘₁ against B; 3 events
 PASS  odds of an 'and' do NOT the circle operation (dropped claim): fails on 200 of 200 random pairs
-PASS  simulation (400,000 draws): odds of A∪B matches 0.4286 ✳ 0.8182 = 1.5974   [1.6046]
+PASS  simulation (400,000 draws): odds of A∪B matches 0.4286 ∘₁ 0.8182 = 1.5974   [1.6046]
 == 10. Expectation passes through the dial when variables are independent
-PASS  300 random independent pairs: E[X ✳ₖ Y] = E X ✳ₖ E Y
+PASS  300 random independent pairs: E[X ∘ₖ Y] = E X ∘ₖ E Y
 PASS  dependent pairs: the gap is exactly k·Cov(X, Y) (the corner's excess)
-PASS  martingale: six fair ±50% bets, E[r₁ ✳ … ✳ r₆] = 0 exactly
+PASS  martingale: six fair ±50% bets, E[r₁ ∘₁ … ∘₁ r₆] = 0 exactly
 PASS  yet the typical path loses: median wealth change = 0.75³ − 1 = −0.578
 PASS  volatility drag: E log(1+r) = ½log(0.75) < 0 = log(1 + E r)
 == 11. Yor's formula: stochastic exponentials multiply by the circle operation, step by step
-PASS  ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ✳ Δy = Δx+Δy+ΔxΔy
+PASS  ℰ(X)ℰ(Y) = ℰ(X+Y+[X,Y]): per step Δx ∘₁ Δy = Δx+Δy+ΔxΔy
 PASS  Brownian (20 paths each): ∏(1+σΔW) → exp(σW − σ²T/2), mean error falls with finer steps   [0.0264, 0.0121, 0.0038, 0.0015]
 PASS  the summed self-corners ΣΔW² → T (the Itô drag is half of them)   [0.0938, 0.0282, 0.0132, 0.0040]
 == 12. Discrete hazards (already on the information page; restated)
-PASS  failure by step n = h₁ ✳₋₁ … ✳₋₁ hₙ = 1 − ∏(1 − hᵢ)
+PASS  failure by step n = h₁ ∘₋₁ … ∘₋₁ hₙ = 1 − ∏(1 − hᵢ)
 
 38/38 checks pass

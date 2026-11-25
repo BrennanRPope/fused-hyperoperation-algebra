@@ -79,7 +79,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div>
 <h2>The q-logarithm is the dial's own logarithm</h2>
 <p>Tsallis' q-logarithm is ln<sub>q</sub>x = (x<sup>1−q</sup> − 1)/(1 − q). Write k = 1 − q and it is (x<sup>k</sup> − 1)/k: raise to the power k, then undo the dial's lift. So it turns products into the dial:</p>
-<div class="eq">ln<sub>q</sub>(xy) = ln<sub>q</sub>x ✳<sub>k</sub> ln<sub>q</sub>y,  e<sub>q</sub>(u ✳<sub>k</sub> v) = e<sub>q</sub>(u)·e<sub>q</sub>(v)</div>
+<div class="eq">ln<sub>q</sub>(xy) = ln<sub>q</sub>x ∘<sub>k</sub> ln<sub>q</sub>y,  e<sub>q</sub>(u ∘<sub>k</sub> v) = e<sub>q</sub>(u)·e<sub>q</sub>(v)</div>
 <p>with the q-exponential e<sub>q</sub>(u) = (1 + ku)<sup>1/k</sup> as its inverse. At k = 1 it is x − 1, the count minus one. At k = −1 it is 1 − 1/x, which obeys the union rule. At k = 0 it is the ordinary log. Lean proves the law for every whole-number weight, the k = −1 case, and the inverse.</p>
 </div>
 </div>
@@ -89,8 +89,8 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div class="wrap side">
 <div>
 <h2>Tsallis entropy is an average, and the average passes through the dial</h2>
-<p>Call s(p) = ln<sub>q</sub>(1/p) the q-surprise of an outcome. Tsallis entropy is its average, Σ p·s(p), and that equals (Σp<sup>q</sup> − 1)/(1 − q). For independent sources the surprise of a joint outcome is s(p) ✳<sub>k</sub> s(r), because the q-log turns the product pr into the dial.</p>
-<p>The measure and probability page of this pass proves that for independent quantities E[X ✳<sub>k</sub> Y] = E X ✳<sub>k</sub> E Y. Apply it to the surprises and Tsallis' 1988 law follows in one line: S(A×B) = S(A) ✳<sub>k</sub> S(B). Lean proves this as one lemma for any surprise that turns products into ✳<sub>k</sub>; at k = 0 it is the earlier page's outer-log lemma for Shannon. For correlated sources the miss is exactly k·Cov of the two surprises.</p>
+<p>Call s(p) = ln<sub>q</sub>(1/p) the q-surprise of an outcome. Tsallis entropy is its average, Σ p·s(p), and that equals (Σp<sup>q</sup> − 1)/(1 − q). For independent sources the surprise of a joint outcome is s(p) ∘<sub>k</sub> s(r), because the q-log turns the product pr into the dial.</p>
+<p>The measure and probability page of this pass proves that for independent quantities E[X ∘<sub>k</sub> Y] = E X ∘<sub>k</sub> E Y. Apply it to the surprises and Tsallis' 1988 law follows in one line: S(A×B) = S(A) ∘<sub>k</sub> S(B). Lean proves this as one lemma for any surprise that turns products into ∘<sub>k</sub>; at k = 0 it is the earlier page's outer-log lemma for Shannon. For correlated sources the miss is exactly k·Cov of the two surprises.</p>
 <h2>Two q's, honestly</h2>
 <p>The project reads the dial as q-numbers with q = k + 1. Tsallis writes k = 1 − q. So the project's q is 2 − q<sub>Tsallis</sub>. That is not a clash to hide: q ↔ 2 − q is Tsallis statistics' own known "additive duality", ln<sub>2−q</sub>(x) = −ln<sub>q</sub>(1/x), and on the dial it is the sign flip k → −k. Lean proves the dual log composes with weight −k. Read a Tsallis index through the project's eyes by flipping it around 1.</p>
 </div>
@@ -104,7 +104,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div>
 <h2>Every composable entropy here is Rényi pushed through a dial</h2>
 <p>Sharma and Mittal (1975) found a two-index family that contains Shannon, Rényi and Tsallis. Through the lift it has a one-line description: take Rényi entropy of order α, which adds over independent sources, and push it through the dial's exponential (e<sup>kx</sup> − 1)/k.</p>
-<div class="eq">H<sub>α,β</sub> = (e<sup>(1−β)·Rényi<sub>α</sub></sup> − 1)/(1 − β), and H(A×B) = H(A) ✳<sub>k</sub> H(B), k = 1 − β</div>
+<div class="eq">H<sub>α,β</sub> = (e<sup>(1−β)·Rényi<sub>α</sub></sup> − 1)/(1 − β), and H(A×B) = H(A) ∘<sub>k</sub> H(B), k = 1 − β</div>
 <p>So the order α says which average you take, and the weight k says which dial carries it. Tsallis is the diagonal β = α; Landsberg and Vedral's normalized entropy (1998) is β = 2 − α, the flipped dial. Checked on 300 random pairs.</p>
 <h2>The q-exponential is compound interest, not the rung flow</h2>
 <p>At k = 1/n the q-exponential is (1 + x/n)<sup>n</sup>: n circle-operation steps of x/n, the climb up the cube toward e. It runs from the identity (k = 1) to e<sup>x</sup> − 1 (k = 0), so it looked like a fractional rung flow. It is not one: two half-steps match e<sup>x</sup> − 1 through x² and miss at x³ (1/8 against 1/6). It interpolates between rungs without being a flow.</p>
@@ -112,7 +112,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div class="panel"><div class="fig2" id="chan" style="min-height:300px"></div>
 <p class="small">A two-input channel as a parallelogram: its rows (1 − a, a) and (b, 1 − b) span an area 1 − (a + b). Chain two channels and the areas multiply, so the crossover sum composes by the union rule. Shown: s₁ = 0.3, s₂ = 0.4, cascade 0.58.</p>
 <h2 style="margin-top:18px">Any binary channel chains by the union rule</h2>
-<p>The earlier page had the symmetric channel (parity, k = −2) and the alphabet ladder. Here is the general two-input case: whatever a = P(1 | 0) and b = P(0 | 1) are, the crossover sum s = a + b of a cascade is s₁ ✳₋₁ s₂, because the determinant 1 − s multiplies. The symmetric channel has s = 2p, and the union rule on 2p is the parity rule on p. The Z-channel has s = p and chains by the union rule directly; its capacity falls every hop (0.504, 0.314, 0.206, … bits for s = 0.3).</p>
+<p>The earlier page had the symmetric channel (parity, k = −2) and the alphabet ladder. Here is the general two-input case: whatever a = P(1 | 0) and b = P(0 | 1) are, the crossover sum s = a + b of a cascade is s₁ ∘₋₁ s₂, because the determinant 1 − s multiplies. The symmetric channel has s = 2p, and the union rule on 2p is the parity rule on p. The Z-channel has s = p and chains by the union rule directly; its capacity falls every hop (0.504, 0.314, 0.206, … bits for s = 0.3).</p>
 </div>
 </div>
 </section>
@@ -171,7 +171,7 @@ function hero(){
   lay(G,0);S1.innerHTML=edges+dots;
   const corner=(D-1)*IA*IB,tot=IA+IB+corner;
   $('tot').textContent=tot;
-  $('parts').textContent=IA+' navy + '+IB+' cyan + '+corner+' amber = '+IA+' ✳'+(D-1==1?'':'ₖ')+' '+IB+(D-1==1?' (k = 1, the plain circle operation)':' with k = '+(D-1));
+  $('parts').textContent=IA+' navy + '+IB+' cyan + '+corner+' amber = '+IA+' ∘'+(D-1==1?'₁':'ₖ')+' '+IB+(D-1==1?' (k = 1, the plain circle operation)':' with k = '+(D-1));
   $('kr').textContent=leaves+' leaves = '+(1+(D-1)*IA)+' × '+(1+(D-1)*IB)+'. Kraft sum of the grafted tree: exactly 1.';
 }
 function plane(){

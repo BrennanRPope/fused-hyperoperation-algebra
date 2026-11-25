@@ -1,4 +1,4 @@
-PASS k(A ⊞k B) = (kA) ⊞ (kB)
+PASS k(A ∘ₖ B) = (kA) ∘₁ (kB)
 PASS det(I+kA) = (-k)^3 p_A(-1/k)
 PASS k = -1: det(I-A) = p_A(1), Fredholm λ = -k
 PASS walls: det(I+kA)=0 exactly at k = -1/λ

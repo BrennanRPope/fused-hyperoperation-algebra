@@ -88,7 +88,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 
 <section class="band" id="powers"><div class="wrap">
 <h2>Fermat is one ordinary power against one circle power</h2>
-<p>Write <b>[p]s</b> for the circle p-th power, s ⊕ s ⊕ … ⊕ s, which equals (1+s)ᵖ − 1. Divide xᵖ + yᵖ = zᵖ by xᵖ and set t = y/x and s = z/x − 1. The equation becomes:</p>
+<p>Write <b>[p]s</b> for the circle p-th power, s ∘₁ s ∘₁ … ∘₁ s, which equals (1+s)ᵖ − 1. Divide xᵖ + yᵖ = zᵖ by xᵖ and set t = y/x and s = z/x − 1. The equation becomes:</p>
 <div class="eq">tᵖ = [p]s</div>
 <p>So Fermat's Last Theorem says an ordinary p-th power of a fraction never equals a circle p-th power of a fraction, except in the trivial cases. This is a restatement, not new content, but it puts the theorem in your language.</p>
 <div class="two">
@@ -111,7 +111,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 <h3>The rotated cube collapses</h3>
 <div class="fig" style="min-height:300px" id="rotfig" role="img" aria-label="Seven points on a circle, each a copy of t rotated by a seventh root of unity."><svg id="rot"></svg></div>
 <p>Now give the cube's corners the rotated copies t, ζt, ζ²t, … where ζ is a p-th root of unity. By rotational symmetry every middle layer sums to zero, and only the far corner survives:</p>
-<div class="eq">t ⊕ ζt ⊕ ζ²t ⊕ … ⊕ ζᵖ⁻¹t = tᵖ</div>
+<div class="eq">t ∘₁ ζt ∘₁ ζ²t ∘₁ … ∘₁ ζᵖ⁻¹t = tᵖ</div>
 <p class="small">Checked numerically for p = 3, 5, 7, 11. This is Kummer's factorization, xᵖ + yᵖ = ∏(x + ζᵏy), drawn as a cube.</p>
 </div>
 </div>
@@ -211,7 +211,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 <h3>The limit, plainly</h3>
 <p>Over the real or complex numbers every one-dimensional formal group, the circle operation included, becomes plain addition after a change of coordinates: its logarithm. So the circle operation alone carries no local shape. Its geometry lives in two places: how pieces are glued globally (folding by q, lattices, fans) and its behaviour mod p (height).</p>
 <h3>Your 1/x wall is the door to the rest</h3>
-<p>Combining with b by the circle operation is an affine map: a ⊕ b = (1 + b)·a + b, a stretch centred at −1. Stretches and shifts together make the affine group. Add one more move, inversion a → 1/a, and you get the full Möbius group. That group runs hyperbolic geometry, every surface with two or more holes, and modular forms.</p>
+<p>Combining with b by the circle operation is an affine map: a ∘₁ b = (1 + b)·a + b, a stretch centred at −1. Stretches and shifts together make the affine group. Add one more move, inversion a → 1/a, and you get the full Möbius group. That group runs hyperbolic geometry, every surface with two or more holes, and modular forms.</p>
 <p>So the circle operation covers the commutative geometry: tori, toric varieties, genus 0 and genus 1. "Any geometry" needs the step you were already stuck on. This is my framing of standard facts, not a theorem.</p>
 </div>
 </div>

@@ -136,8 +136,8 @@ check("rung s at (s, s(s-1)/4) has p² - 4q = s (landscape placement)", z((p**2 
 
 # --- the dial inside the ax+b group ---
 T = lambda kk, aa, xx: (1 + kk*aa)*xx + aa
-check("T_a(x) = (1+ka)x + a equals a ✳ₖ x", z(T(k,a,x) - (a + x + k*a*x)))
-check("T_a ∘ T_b = T_{a ✳ₖ b}", z(T(k,a,T(k,b,x)) - T(k, a+b+k*a*b, x)))
+check("T_a(x) = (1+ka)x + a equals a ∘ₖ x", z(T(k,a,x) - (a + x + k*a*x)))
+check("T_a ∘ T_b = T_{a ∘ₖ b}", z(T(k,a,T(k,b,x)) - T(k, a+b+k*a*b, x)))
 check("T_a fixes -1/k (the wall), for every a", z(T(k,a,-1/k) + 1/k))
 check("about the wall it is a pure dilation: T_a(y - 1/k) + 1/k = (1+ka)·y", z(T(k,a,y-1/k) + 1/k - (1+k*a)*y))
 check("scaling conjugation: T^k_{λa}(λx) = λ·T^{kλ}_a(x)", z(T(k,lam*a,lam*x) - lam*T(k*lam,a,x)))
@@ -157,10 +157,10 @@ for P in primes(60):
     if P == 2: continue
     found = any(len({mp_pow(g, j, P) for j in range(P-1)}) == P-1 for g in range(P-1))
     cyc = cyc and found
-check("(F_p minus the wall, ✳) is cyclic of order p-1 for every odd prime p < 60", cyc)
+check("(F_p minus the wall, ∘₁) is cyclic of order p-1 for every odd prime p < 60", cyc)
 def is_primroot(g, P): return len({pow(g, j, P) for j in range(1, P)}) == P-1
-check("1 ✳ 1 ✳ ... (n copies) = 2ⁿ - 1 (Mersenne numbers)", all(mp_pow(1, n, 10**9+7) == (2**n-1) % (10**9+7) for n in range(30)))
-check("1 generates (F_p minus wall, ✳) exactly when 2 is a primitive root mod p (odd p < 500)",
+check("1 ∘₁ 1 ∘₁ ... (n copies) = 2ⁿ - 1 (Mersenne numbers)", all(mp_pow(1, n, 10**9+7) == (2**n-1) % (10**9+7) for n in range(30)))
+check("1 generates (F_p minus wall, ∘₁) exactly when 2 is a primitive root mod p (odd p < 500)",
       all((len({mp_pow(1, j, P) for j in range(P-1)}) == P-1) == is_primroot(2, P) for P in primes(500) if P > 2))
 check("small cases: generator 1 for p = 5, 11, 13; for p = 7 use 2 (1 has order 3)",
       all(len({mp_pow(1,j,P) for j in range(P-1)})==P-1 for P in (5,11,13)) and len({mp_pow(2,j,7) for j in range(6)})==6 and mp_pow(1,3,7)==0)
@@ -202,7 +202,7 @@ for _ in range(5):
     A = sp.Matrix(2, 2, [random.randint(-5,5) for _ in range(4)])
     B = sp.Matrix(2, 2, [random.randint(-5,5) for _ in range(4)])
     good = good and (ma(A,B) - ma(B,A) == A*B - B*A) and (I2 + ma(A,B) == (I2+A)*(I2+B))
-check("the matrix circle operation: lift (I+A)(I+B) = I + A✳B, and A✳B - B✳A = AB - BA exactly", good)
+check("the matrix circle operation: lift (I+A)(I+B) = I + A∘₁B, and A∘₁B - B∘₁A = AB - BA exactly", good)
 A = np.array([[0.3,-1.2],[0.7,0.4]]); B = np.array([[-0.5,0.9],[1.1,0.2]]); E = np.eye(2)
 errs = []
 for tt in [1e-2, 5e-3, 2.5e-3]:
@@ -215,7 +215,7 @@ check("landscape matrices commute (both are I + sX), so the commutator vanishes 
 perm = lambda s: sp.Matrix(3, 3, lambda i, j: 1 if s[j] == i else 0)
 gs = [perm(s) for s in itertools.permutations(range(3))]
 I3 = sp.eye(3)
-check("group algebra: (g-1) ✳ (h-1) = gh - 1 for all g, h in S3 (as permutation matrices)",
+check("group algebra: (g-1) ∘₁ (h-1) = gh - 1 for all g, h in S3 (as permutation matrices)",
       all(ma(g-I3, h-I3) == g*h - I3 for g in gs for h in gs))
 check("trace of AB - BA is 0: brackets land in sl2 (5 random pairs)",
       all((lambda A_, B_: (A_*B_-B_*A_).trace() == 0)(sp.Matrix(2,2,[random.randint(-4,4) for _ in range(4)]), sp.Matrix(2,2,[random.randint(-4,4) for _ in range(4)])) for _ in range(5)))

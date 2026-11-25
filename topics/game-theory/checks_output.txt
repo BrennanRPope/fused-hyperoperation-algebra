@@ -1,12 +1,12 @@
 == 1. Multiplicative weights (Hedge): weights live in the lift, the dial is the learning rate
-PASS each expert's weight is prod(1 + eps·g) = 1 + eps·(g1 ✳eps g2 ✳eps ...): the dial value is the learning rate
+PASS each expert's weight is prod(1 + eps·g) = 1 + eps·(g1 ∘_eps g2 ∘_eps ...): the dial value is the learning rate
 PASS the total weight is n·prod(1 + eps·r_t): the algorithm's own gains fold under the same dial
 PASS lifted regret: sum log(1+eps r) >= best expert's sum log(1+eps g) - ln n (300 runs, three kinds of gains)
 PASS plain regret <= ln n / eps + eps·T for gains in [-1, 1], eps <= 1/2  worst regret/bound 0.84
 PASS with eps = sqrt(ln n / T): regret <= 2 sqrt(T ln n)
 PASS the corner cost: eps·g - (eps·g)^2 <= log(1 + eps·g) <= eps·g for |eps·g| <= 1/2
 == 2. Kelly betting: bets compose by the dial with k = f, ruin is the wall
-PASS wealth after bets r1..rn at fraction f is 1 + f·(r1 ✳f r2 ✳f ... ✳f rn)
+PASS wealth after bets r1..rn at fraction f is 1 + f·(r1 ∘_f r2 ∘_f ... ∘_f rn)
 PASS ruin is the dial's wall: an outcome r = -1/f leaves wealth 0 whatever comes after
 PASS Kelly's fraction f* = p - q/b maximises the growth rate E log(1 + f·r)
 PASS at f* the wealth multiplies by p/pi on a win and q/(1-pi) on a loss, pi = 1/(1+b) the bookmaker's chance; growth = KL(p || pi)

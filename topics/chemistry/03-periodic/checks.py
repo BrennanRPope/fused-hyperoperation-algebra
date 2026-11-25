@@ -10,8 +10,8 @@ L = "spdfghik"
 for n in range(1, 30):
     assert sum(2*l+1 for l in range(n)) == n*n
     m = n-1
-    assert n*n == 1 + (m + m + m*m)   # 1 + (n-1)✳(n-1)
-check("shell n holds n² orbitals = 1 + (n−1)✳(n−1); its subshells are the square's L-shaped gnomons (n ≤ 29)", True)
+    assert n*n == 1 + (m + m + m*m)   # 1 + (n-1)∘₁(n-1)
+check("shell n holds n² orbitals = 1 + (n−1)∘₁(n−1); its subshells are the square's L-shaped gnomons (n ≤ 29)", True)
 # SO(4) = SU(2)xSU(2): two spins j = (n-1)/2; j⊗j decomposes into l = 0..2j
 for n in range(1, 20):
     twoj = n-1

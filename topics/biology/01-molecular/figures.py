@@ -19,10 +19,10 @@ save(fig,"figures/f1_helix_coil_dial.png")
 # f2 binding
 fig,ax=plt.subplots(1,2,figsize=(10.5,4.2))
 w=np.logspace(-2,3,300); ax[0].semilogx(w,2*np.sqrt(w)/(1+np.sqrt(w)),color=S1)
-for wv,lab in ((0.01,"near-exclusive"),(1,"independent: plain ✳"),(100,"strongly cooperative")):
+for wv,lab in ((0.01,"near-exclusive"),(1,"independent: plain ∘₁"),(100,"strongly cooperative")):
     ax[0].plot(wv,2*np.sqrt(wv)/(1+np.sqrt(wv)),"o",ms=8,color=S2,mec="white",mew=2)
     ax[0].annotate(lab,(wv,2*np.sqrt(wv)/(1+np.sqrt(wv))),xytext=(8,-4) if wv>0.05 else (8,4),textcoords="offset points",fontsize=9.5,color=INK)
-ax[0].set_xlabel("cooperativity ω  (the dial in Z = 1 + a ✳_ω b)"); ax[0].set_ylabel("Hill coefficient at half saturation")
+ax[0].set_xlabel("cooperativity ω  (the dial in Z = 1 + a ∘_ω b)"); ax[0].set_ylabel("Hill coefficient at half saturation")
 ax[0].set_title("Two sites: the dial sets cooperativity")
 L,c,KR,n=9000,0.014,2.8,4
 p=np.logspace(-0.3,2.6,400); a=p/KR

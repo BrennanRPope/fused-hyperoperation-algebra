@@ -1,5 +1,5 @@
 """Game theory through the circle operation: every claim on the page, checked.
-Dial: a ✳k b = a + b + k·ab, lift 1 + k·x."""
+Dial: a ∘ₖ b = a + b + k·ab, lift 1 + k·x."""
 import math, random, itertools
 from fractions import Fraction as F
 import numpy as np
@@ -46,7 +46,7 @@ for trial in range(300):
     # tuned rate
     epst = min(0.5, math.sqrt(math.log(n) / T)); r2, _ = hedge(G, epst)
     ok5 &= (G_best - r2.sum()) <= 2 * math.sqrt(T * math.log(n)) + 1e-9
-check("each expert's weight is prod(1 + eps·g) = 1 + eps·(g1 ✳eps g2 ✳eps ...): the dial value is the learning rate", ok1)
+check("each expert's weight is prod(1 + eps·g) = 1 + eps·(g1 ∘_eps g2 ∘_eps ...): the dial value is the learning rate", ok1)
 check("the total weight is n·prod(1 + eps·r_t): the algorithm's own gains fold under the same dial", ok2)
 check("lifted regret: sum log(1+eps r) >= best expert's sum log(1+eps g) - ln n (300 runs, three kinds of gains)", ok3)
 check("plain regret <= ln n / eps + eps·T for gains in [-1, 1], eps <= 1/2", ok4, "worst regret/bound %.2f" % worst_ratio)
@@ -59,7 +59,7 @@ okk = True
 for _ in range(100):
     f = random.uniform(0.01, 0.9); rs = [random.uniform(-1, 3) for _ in range(6)]
     okk &= math.isclose(np.prod([1 + f * r for r in rs]), 1 + f * dial(f, rs), rel_tol=1e-12)
-check("wealth after bets r1..rn at fraction f is 1 + f·(r1 ✳f r2 ✳f ... ✳f rn)", okk)
+check("wealth after bets r1..rn at fraction f is 1 + f·(r1 ∘_f r2 ∘_f ... ∘_f rn)", okk)
 f = 0.4
 check("ruin is the dial's wall: an outcome r = -1/f leaves wealth 0 whatever comes after",
       all(F(1) + F(2, 5) * dial(F(2, 5), [F(-5, 2)] + [F(x) for x in xs]) == 0 for xs in [[1, 2], [-1, 3, 5]]))

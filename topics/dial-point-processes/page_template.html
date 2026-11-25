@@ -51,7 +51,7 @@ footer{color:var(--soft);font-size:14px}
 <section class="band">
 <div class="wrap">
 <h1>One dial runs fermions to bosons, and its wall decides which can exist</h1>
-<p class="lede">Points that repel (fermions), points that ignore each other (Poisson) and points that clump (bosons) are one family, the α-processes of Shirai and Takahashi. Read α as the dial k. On any region the kernel has eigenvalues μ; fold them with ✳ₖ and the chance the region is empty is the lift of that fold to the power −1/k. The wall −1/k must stay off the eigenvalues, and on the fermion side it must sit on a whole number.</p>
+<p class="lede">Points that repel (fermions), points that ignore each other (Poisson) and points that clump (bosons) are one family, the α-processes of Shirai and Takahashi. Read α as the dial k. On any region the kernel has eigenvalues μ; fold them with ∘ₖ and the chance the region is empty is the lift of that fold to the power −1/k. The wall −1/k must stay off the eigenvalues, and on the fermion side it must sit on a whole number.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hero"></div>
@@ -72,9 +72,9 @@ footer{color:var(--soft);font-size:14px}
 <div>
 <h2>The empty-region chance is the dial fold of the eigenvalues</h2>
 <p>Shirai and Takahashi's generating functional, on a region D with eigenvalues μᵢ of the kernel there:</p>
-<div class="eq">P(no point in D) = det(I + kK)<sup>−1/k</sup> = (1 + k·(μ₁ ✳ₖ μ₂ ✳ₖ ⋯))<sup>−1/k</sup></div>
+<div class="eq">P(no point in D) = det(I + kK)<sup>−1/k</sup> = (1 + k·(μ₁ ∘ₖ μ₂ ∘ₖ ⋯))<sup>−1/k</sup></div>
 <div class="eq">−log P(no point) = Σ ℓₖ(μᵢ),&nbsp;&nbsp; ℓₖ(x) = log(1 + kx)/k</div>
-<p>ℓₖ is the dial's logarithm, the map that turns ✳ₖ into plain +. So for empty regions every process on the dial looks like Poisson with mean Σℓₖ(μ): at k = 0 that is the expected count, at k = −1 it is larger (fermions rarely leave gaps), at k = +1 smaller (bosons leave gaps by clumping elsewhere). At k = −1 the fold itself is the chance of at least one point, the functional-analysis page's 1 − det(I − K).</p>
+<p>ℓₖ is the dial's logarithm, the map that turns ∘ₖ into plain +. So for empty regions every process on the dial looks like Poisson with mean Σℓₖ(μ): at k = 0 that is the expected count, at k = −1 it is larger (fermions rarely leave gaps), at k = +1 smaller (bosons leave gaps by clumping elsewhere). At k = −1 the fold itself is the chance of at least one point, the functional-analysis page's 1 − det(I − K).</p>
 </div>
 <div>
 <h2>Each eigenvalue is its own independent mode</h2>
@@ -110,7 +110,7 @@ footer{color:var(--soft);font-size:14px}
 <h2>Number variance is a straight line in k</h2>
 <div class="eq">Var N = Σ μᵢ(1 + k·μᵢ) = tr K + k·tr K²</div>
 <p>Each mode adds its value times its lift. That product is zero at μ = 0 and again at the wall, the two places a mode's count is certain. Summed, the variance is a straight line in k through the Poisson value: fermions below it (sub-Poisson, repulsion), bosons above (super-Poisson, clumping). The second factorial moment is (Σμ)² + k·Σμ². Known (Shirai–Takahashi; the per-mode variance μ + kμ² is Morris's 1982 quadratic variance function for binomial, Poisson and negative binomial).</p>
-<p><b>Superposition slides along the dial.</b> m independent copies of the process (k, K) are exactly the process (k/m, m·K): the lifted kernel k·K is unchanged and 1/k counts copies. Underneath is the dial identity c·(a ✳ₖ b) = (c·a) ✳<sub>k/c</sub> (c·b), proved in Lean.</p>
+<p><b>Superposition slides along the dial.</b> m independent copies of the process (k, K) are exactly the process (k/m, m·K): the lifted kernel k·K is unchanged and 1/k counts copies. Underneath is the dial identity c·(a ∘ₖ b) = (c·a) ∘<sub>k/c</sub> (c·b), proved in Lean.</p>
 </div>
 </div>
 </section>
@@ -213,7 +213,7 @@ function hero(){
   g+=T(KX(-1),top+30,'fermions','start','var(--fer)')+T(KX(2),bot-26,'bosons','end','var(--bos)');
   sH.innerHTML=g;
   const F=fold(k), lift=1+k*F, V=S1+k*S2;
-  $('tb').innerHTML=[['fold μ₁ ✳ₖ μ₂ ✳ₖ ⋯',f(F)],['lift 1 + k·fold = det(I + kK)',f(lift)],['chance empty',f(hole(k))],['Σ ℓₖ(μ) (Poisson-like mean)',f(-Math.log(hole(k)))],['mean count',f(S1)],['variance tr K + k tr K²',f(V)],['Fano factor',f(V/S1)]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('');
+  $('tb').innerHTML=[['fold μ₁ ∘ₖ μ₂ ∘ₖ ⋯',f(F)],['lift 1 + k·fold = det(I + kK)',f(lift)],['chance empty',f(hole(k))],['Σ ℓₖ(μ) (Poisson-like mean)',f(-Math.log(hole(k)))],['mean count',f(S1)],['variance tr K + k tr K²',f(V)],['Fano factor',f(V/S1)]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('');
 }
 function strips(){
   const W=sS.clientWidth,H=sS.clientHeight,m=8,rows=[['-1','fermions k = −1'],['0','Poisson k = 0'],['1','bosons k = +1']];

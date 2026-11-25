@@ -150,7 +150,7 @@ a{color:var(--g1)}
 <thead><tr><th>Switch times itself</th><th>What you get</th></tr></thead>
 <tbody>
 <tr><td><span class="math">x·x = 0</span></td><td>Plain addition: (1+ax)(1+bx) = 1+(a+b)x. This is the world of derivatives (dual numbers, jets).</td></tr>
-<tr><td><span class="math">x·x = x</span></td><td>The circle operation: (1+ax)(1+bx) = 1+(a⊕b)x. Probability, logic, solitons. This page.</td></tr>
+<tr><td><span class="math">x·x = x</span></td><td>The circle operation: (1+ax)(1+bx) = 1+(a∘₁b)x. Probability, logic, solitons. This page.</td></tr>
 <tr><td><span class="math">e·e = ±1</span>, order flips sign</td><td>Geometric algebra: rotations, and Maxwell's four equations as one (Hestenes). Spacetime algebra has exactly 16 basis pieces, in layers of 1, 4, 6, 4, 1.</td></tr>
 </tbody></table>
 <p style="margin-bottom:0">Each row is known on its own. Seeing them as one dial on one tesseract is the "same lens" you were after, and it's worth chasing. It isn't a new theorem yet.</p>
@@ -160,7 +160,7 @@ a{color:var(--g1)}
 
 <section class="band" id="geometry">
 <h2>The geometry underneath</h2>
-<p>Take a box with sides 1+a and 1+b and cut it at 1 on each side. It falls into four pieces: the unit square, a strip of area a, a strip of area b and a corner piece of area ab. The pieces add up to the box, so 1 + a + b + ab = (1+a)(1+b). Take away the unit square and what's left is a⊕b.</p>
+<p>Take a box with sides 1+a and 1+b and cut it at 1 on each side. It falls into four pieces: the unit square, a strip of area a, a strip of area b and a corner piece of area ab. The pieces add up to the box, so 1 + a + b + ab = (1+a)(1+b). Take away the unit square and what's left is a∘₁b.</p>
 <figure>
 <svg viewBox="0 0 378 344" role="img" aria-label="A rectangle with sides 1 plus a and 1 plus b, cut at 1 on each side into four pieces: the unit square 1, two strips a and b, and the corner piece ab.">
 <rect x="40" y="124" width="170" height="170" fill="var(--g0)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="3"/>
@@ -179,7 +179,7 @@ a{color:var(--g1)}
 <figcaption>Two axes: 4 pieces, coloured by grade. The corner piece ab is where the two directions meet.</figcaption>
 </figure>
 <p>Do the same with four sides 1+a, 1+b, 1+c, 1+d and the box falls into 16 pieces: 1 unit hypercube, 4 rods, 6 slabs, 4 blocks and 1 hyperblock. Each piece sits at one tesseract corner, and its measure is the product of the letters that are switched on. This is the geometric underpinning: it's a real cut of a real box, and it holds in any number of dimensions.</p>
-<div class="eq">1 + (a ⊕ b ⊕ c ⊕ d) = (1+a)(1+b)(1+c)(1+d) = sum of all 16 corner pieces</div>
+<div class="eq">1 + (a ∘₁ b ∘₁ c ∘₁ d) = (1+a)(1+b)(1+c)(1+d) = sum of all 16 corner pieces</div>
 </section>
 
 <section class="band" id="definition">
@@ -193,7 +193,7 @@ a{color:var(--g1)}
 <dt>Value at x</dt><dd>ev<sub>x</sub>(w) = Σ<sub>S</sub> w<sub>S</sub> · Π<sub>i∈S</sub> x<sub>i</sub>. Every point is a weighted mix of the 16 corner monomials.</dd>
 <dt>Box coordinates</dt><dd>B<sub>T</sub> = sum of c<sub>S</sub> over every corner S inside T (the zeta step). For a pure point B<sub>T</sub> = Π<sub>i∈T</sub>(1+a<sub>i</sub>), the measure of a sub-box.</dd>
 <dt>Möbius step</dt><dd>The exact inverse: c<sub>S</sub> = Σ<sub>T⊆S</sub> (−1)<sup>|S−T|</sup> B<sub>T</sub>.</dd>
-<dt>The circle operation</dt><dd>(v ⊛ w)<sub>T</sub> = Σ v<sub>S</sub>w<sub>U</sub> over pairs with S ∪ U = T. In box coordinates it is plain multiplication, corner by corner. For pure points it is the circle operation on each axis.</dd>
+<dt>The circle operation</dt><dd>(v ∘₁ w)<sub>T</sub> = Σ v<sub>S</sub>w<sub>U</sub> over pairs with S ∪ U = T. In box coordinates it is plain multiplication, corner by corner. For pure points it is the circle operation on each axis.</dd>
 <dt>As a ring</dt><dd>Polynomials in x<sub>a</sub>…x<sub>d</sub> with the rule x<sub>i</sub>² = x<sub>i</sub>. A switch turned on twice is still on.</dd>
 </dl>
 <figure>
@@ -277,9 +277,9 @@ a{color:var(--g1)}
 <tr><td>All 16 corners</td><td>The point plus its interactions</td><td>Kept</td></tr>
 <tr><td>Box coordinates</td><td>Sub-box measures</td><td>Kept, the Möbius step goes back</td></tr>
 <tr><td>Totals per grade</td><td>1, a+b+c+d, ab+ac+…, abc+…, abcd</td><td>Loses which axis is which</td></tr>
-<tr><td>Sum of all corners</td><td>1 + a⊕b⊕c⊕d</td><td>One number, most is lost</td></tr>
+<tr><td>Sum of all corners</td><td>1 + a∘₁b∘₁c∘₁d</td><td>One number, most is lost</td></tr>
 </tbody></table>
-<p>The one trouble spot is −1, a box side of zero. The circle operation with −1 swallows everything: (−1)⊕b = −1, just as 0×b = 0. So the information loss you dislike in ordinary multiplication moves to −1 here. It doesn't vanish.</p>
+<p>The one trouble spot is −1, a box side of zero. The circle operation with −1 swallows everything: (−1)∘₁b = −1, just as 0×b = 0. So the information loss you dislike in ordinary multiplication moves to −1 here. It doesn't vanish.</p>
 </section>
 
 <section class="band" id="simpler">
@@ -289,7 +289,7 @@ a{color:var(--g1)}
 <div class="ex">
 <h3><span class="tag win">Simpler</span>At least one of four things happens</h3>
 <p>Four independent chances: 1/10, 1/5, 1/4, 1/3.</p>
-<div class="ba"><div><b>Before: inclusion-exclusion</b>15 terms with alternating signs, one per non-empty corner: p₁+p₂+p₃+p₄ − p₁p₂ − … + p₁p₂p₃ + … − p₁p₂p₃p₄</div><div><b>After: one circle-operation chain</b>P = −((−p₁) ⊕ (−p₂) ⊕ (−p₃) ⊕ (−p₄)) = 16/25</div></div>
+<div class="ba"><div><b>Before: inclusion-exclusion</b>15 terms with alternating signs, one per non-empty corner: p₁+p₂+p₃+p₄ − p₁p₂ − … + p₁p₂p₃ + … − p₁p₂p₃p₄</div><div><b>After: one circle-operation chain</b>P = −((−p₁) ∘₁ (−p₂) ∘₁ (−p₃) ∘₁ (−p₄)) = 16/25</div></div>
 <p>When the events depend on each other, put the chance that all of S happen on corner S. The answer is then one signed sum over the corners, a single Möbius step. Checked against a direct count of 2,000 simulated cases. <span class="tag known">Known</span> Inclusion-exclusion is the Möbius function of exactly this lattice (Rota, 1964).</p>
 </div>
 
@@ -325,14 +325,14 @@ a{color:var(--g1)}
 <li>The rule x² = x: idempotent algebra, the same as functions on the cube's 16 vertices. With one axis it is the split-complex numbers.</li>
 <li>Weighted corner mixes: multilinear polynomials and Boolean function analysis.</li>
 <li>Grade = dimension on 1, 4, 6, 4, 1 corners: Grassmann and Clifford (geometric) algebra.</li>
-<li>a⊕b = a+b+ab itself: the circle operation in ring theory.</li>
+<li>a∘₁b = a+b+ab itself: the circle operation in ring theory.</li>
 </ul>
 <p><b>What's yours:</b> using grade-tagged corners as a coordinate system for ordinary space, with the circle operation as its native way of combining points, and the idea that one dial on the same tesseract joins derivatives, the circle operation and geometric algebra. That framing could turn into something. As of today there's no new theorem here, and every piece above matches known maths.</p>
 </section>
 
 <section class="band" id="try">
 <h2>Try it</h2>
-<p>Type an ordinary point. The page lists its 16 corners by grade and checks that they add up to 1 + a⊕b⊕c⊕d.</p>
+<p>Type an ordinary point. The page lists its 16 corners by grade and checks that they add up to 1 + a∘₁b∘₁c∘₁d.</p>
 <div class="calc">
 <div><label for="ia">a</label><input id="ia" inputmode="decimal" value="0.5"></div>
 <div><label for="ib">b</label><input id="ib" inputmode="decimal" value="2"></div>
@@ -346,7 +346,7 @@ a{color:var(--g1)}
 <section class="band" id="lean">
 <h2>The formal version, in Lean 4</h2>
 <p class="warn">Checked. Compiled against mathlib v4.37.0-rc1 on Lean 4.37.0-rc1 on Brennan's Mac Studio (Nov 25, 2026), with zero errors and no "sorry".</p>
-<p>It defines corners, grade, the from-and-back maps, the value map, box coordinates, the union product and the soliton weights. It states and proves that the circle operation is associative and commutative, that there are n choose k corners of grade k, that the corners sum to the box ∏(1+aᵢ), and that box coordinates turn the axis-wise circle operation into multiplication. Lean already uses ⊕ for sum types and mathlib uses ⊞ for biproducts, so the circle operation is written ✳, a plus and a times sign laid over each other. To recheck it, drop it in a Lean project that uses mathlib and run <span class="math">lake env lean TesseractCoords.lean</span>.</p>
+<p>It defines corners, grade, the from-and-back maps, the value map, box coordinates, the union product and the soliton weights. It states and proves that the circle operation is associative and commutative, that there are n choose k corners of grade k, that the corners sum to the box ∏(1+aᵢ), and that box coordinates turn the axis-wise circle operation into multiplication. Lean already uses ⊕ for sum types and mathlib uses ⊞ for biproducts, so the circle operation is written ◯ (typed \bigcirc), the ring-theory circle. The file was renamed after that compile and has not been rechecked since. To recheck it, drop it in a Lean project that uses mathlib and run <span class="math">lake env lean TesseractCoords.lean</span>.</p>
 <div class="codehead"><b>TesseractCoords.lean</b><button data-copy="leancode">Copy</button></div>
 <pre id="leancode">/-
   Tesseract coordinates for Fused Hyperoperation Algebra
@@ -354,15 +354,18 @@ a{color:var(--g1)}
 
   STATUS: checked. Compiled against mathlib v4.37.0-rc1 on Lean 4.37.0-rc1
   on Brennan&#x27;s Mac Studio (Nov 25, 2026) with zero errors and no `sorry`.
-  An earlier compile failed only because `⊞`, the circle-operation symbol used here
-  before, is mathlib&#x27;s global notation for biproducts; the circle operation is now
-  written `✳`, which mathlib does not use. To recheck, put the file in a
+  An earlier compile failed only because `⊞`, the circle-operation symbol used
+  here before, is mathlib&#x27;s global notation for biproducts; it was then
+  written with the eight-spoked asterisk (U+2733), which mathlib does not
+  use. In the 1.0 rename it became `◯` (typed \bigcirc, free in mathlib,
+  scoped to `CircleOp`); this file has not been rechecked against mathlib
+  since that rename. To recheck, put the file in a
   Lean project that depends on mathlib and run `lake env lean
   TesseractCoords.lean`.
 
   Notation: Lean already uses `⊕` for sum types and mathlib uses `⊞` for
-  biproducts, so the circle operation is written `✳` here, a plus and a times sign laid
-  over each other. a ✳ b = a + b + a*b.
+  biproducts, so the circle operation is written `◯` here, as in
+  ring theory. a ◯ b = a + b + a*b.
 
   The picture. Cut a box with sides 1+a, 1+b, 1+c, 1+d at 1 on every axis.
   It falls into 16 pieces, one per corner of the tesseract. A corner is a
@@ -373,47 +376,47 @@ import Mathlib
 
 open Finset BigOperators
 
-namespace MultAdd
+namespace CircleOp
 
 variable {R : Type*} [CommRing R]
 
-/-! ## circle operation on numbers -/
+/-! ## The circle operation on numbers -/
 
-/-- the circle operation: one operation that adds and multiplies at once. -/
+/-- The circle operation: one operation that adds and multiplies at once. -/
 def circ (a b : R) : R := a + b + a * b
 
-@[inherit_doc] infixl:65 &quot; ✳ &quot; =&gt; circ
+@[inherit_doc] scoped infixl:65 &quot; ◯ &quot; =&gt; circ
 
 /-- The geometric heart: the circle operation is a box with sides 1 + a and 1 + b,
 minus the unit square. -/
-theorem one_add_multAdd (a b : R) : 1 + (a ✳ b) = (1 + a) * (1 + b) := by
+theorem one_add_circ (a b : R) : 1 + (a ◯ b) = (1 + a) * (1 + b) := by
   unfold circ; ring
 
-theorem circ_comm (a b : R) : a ✳ b = b ✳ a := by
+theorem circ_comm (a b : R) : a ◯ b = b ◯ a := by
   unfold circ; ring
 
-theorem circ_assoc (a b c : R) : (a ✳ b) ✳ c = a ✳ (b ✳ c) := by
+theorem circ_assoc (a b c : R) : (a ◯ b) ◯ c = a ◯ (b ◯ c) := by
   unfold circ; ring
 
-theorem circ_zero (a : R) : a ✳ 0 = a := by
+theorem circ_zero (a : R) : a ◯ 0 = a := by
   unfold circ; ring
 
 /-- Four numbers: the tesseract box with 16 pieces. -/
-theorem one_add_multAdd₄ (a b c d : R) :
-    1 + (a ✳ b ✳ c ✳ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
+theorem one_add_circ₄ (a b c d : R) :
+    1 + (a ◯ b ◯ c ◯ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
   simp only [circ]; ring
 
-/-- the circle operation of a whole list (0 is the identity). -/
-def multAddList : List R → R
+/-- The circle operation of a whole list (0 is the identity). -/
+def circList : List R → R
   | [] =&gt; 0
-  | x :: xs =&gt; x ✳ multAddList xs
+  | x :: xs =&gt; x ◯ circList xs
 
-theorem one_add_multAddList :
-    ∀ l : List R, 1 + multAddList l = (l.map (fun x =&gt; 1 + x)).prod
-  | [] =&gt; by simp [multAddList]
+theorem one_add_circList :
+    ∀ l : List R, 1 + circList l = (l.map (fun x =&gt; 1 + x)).prod
+  | [] =&gt; by simp [circList]
   | x :: xs =&gt; by
-      simp only [multAddList, one_add_multAdd, List.map_cons, List.prod_cons,
-        one_add_multAddList xs]
+      simp only [circList, one_add_circ, List.map_cons, List.prod_cons,
+        one_add_circList xs]
 
 /-! ## Tesseract coordinates -/
 
@@ -440,7 +443,7 @@ def eval {n : ℕ} (x : Fin n → R) (c : Coord n R) : R :=
 /-- Box coordinates (the zeta transform): add up every corner inside T. -/
 def zeta {n : ℕ} (c : Coord n R) : Coord n R := fun T =&gt; ∑ S ∈ T.powerset, c S
 
-/-- the circle operation of two tesseract points: corners combine by joining their
+/-- The circle operation of two tesseract points: corners combine by joining their
 switches (S ∪ U). This is the union, or OR, product on subsets. -/
 def compose {n : ℕ} (v w : Coord n R) : Coord n R :=
   fun T =&gt; ∑ S : Corner n, ∑ U : Corner n, if S ∪ U = T then v S * w U else 0
@@ -483,9 +486,9 @@ theorem sum_corners_ofPoint {n : ℕ} (a : Fin n → R) :
   simp only [ofPoint]
 
 /-- So the sum of all corners is 1 plus the circle operation of the coordinates. -/
-theorem sum_corners_eq_one_add_multAdd {n : ℕ} (a : Fin n → R) :
-    ∑ S : Corner n, ofPoint a S = 1 + multAddList (List.ofFn a) := by
-  rw [sum_corners_ofPoint, one_add_multAddList, List.map_ofFn, List.prod_ofFn]
+theorem sum_corners_eq_one_add_circ {n : ℕ} (a : Fin n → R) :
+    ∑ S : Corner n, ofPoint a S = 1 + circList (List.ofFn a) := by
+  rw [sum_corners_ofPoint, one_add_circList, List.map_ofFn, List.prod_ofFn]
   rfl
 
 /-- Evaluating &quot;every weight 1&quot; at x gives the box ∏ (1 + x i). -/
@@ -500,10 +503,10 @@ theorem zeta_ofPoint {n : ℕ} (a : Fin n → R) (T : Corner n) :
   rw [Finset.prod_one_add]
   rfl
 
-/-- In box coordinates, circle-operation axis by axis is plain multiplication. -/
-theorem zeta_ofPoint_multAdd {n : ℕ} (a b : Fin n → R) (T : Corner n) :
-    zeta (ofPoint (fun i =&gt; a i ✳ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
-  simp only [zeta_ofPoint, one_add_multAdd, Finset.prod_mul_distrib]
+/-- In box coordinates, the circle operation axis by axis is plain multiplication. -/
+theorem zeta_ofPoint_circ {n : ℕ} (a b : Fin n → R) (T : Corner n) :
+    zeta (ofPoint (fun i =&gt; a i ◯ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
+  simp only [zeta_ofPoint, one_add_circ, Finset.prod_mul_distrib]
 
 /-- With no interaction (every A i j = 1) every soliton weight is 1, so the
 tau function is the pure box ∏ (1 + e^{η i}). -/
@@ -517,7 +520,7 @@ theorem solitonWeights_one {n : ℕ} :
   coordinates. The Python helpers test it on many random points.
 -/
 
-end MultAdd</pre>
+end CircleOp</pre>
 </section>
 
 <section class="band" id="python">
@@ -538,7 +541,7 @@ The three ideas, in code:
   from_point(a)  -&gt; corner coordinates  c_S = product of a_i for i in S
   zeta(c)        -&gt; box coordinates     B_T = sum of c_S over S inside T
                                              = product of (1 + a_i), i in T
-  compose(v, w)  -&gt; the circle operation on corners (switches combine by OR)
+  compose(v, w)  -&gt; circle operation on corners (switches combine by OR)
 
 ∘₁ a (+) b = a + b + ab = (1+a)(1+b) - 1. In box coordinates it is
 plain multiplication, corner by corner; mobius() goes back.
@@ -556,12 +559,12 @@ AXES = &quot;abcdefgh&quot;
 # ---------------------------------------------------------------- numbers
 
 def multadd(x, y):
-    &quot;&quot;&quot;the circle operation of two numbers: x + y + x*y.&quot;&quot;&quot;
+    &quot;&quot;&quot;The circle operation of two numbers: x + y + x*y.&quot;&quot;&quot;
     return x + y + x * y
 
 
 def multadd_all(values):
-    &quot;&quot;&quot;the circle operation of a whole list, left to right (0 is the identity).&quot;&quot;&quot;
+    &quot;&quot;&quot;The circle operation of a whole list, left to right (0 is the identity).&quot;&quot;&quot;
     total = 0
     for v in values:
         total = multadd(total, v)
@@ -708,7 +711,7 @@ def mobius(b):
 
 
 def compose(v, w):
-    &quot;&quot;&quot;the circle operation of two tesseract points: corners combine by OR of switches.
+    &quot;&quot;&quot;The circle operation of two tesseract points: corners combine by OR of switches.
 
     (v * w)_T = sum of v_S * w_U over every pair with S | U == T.
     Same as mobius(zeta(v) * zeta(w)) corner by corner.
@@ -942,7 +945,7 @@ function draw(){
     total+=p;layers[g].push({lab,nm:nm||'1',p})}
   rows.innerHTML=layers.map((L,g)=>'<div class="row"><span class="g">'+names[g]+'</span>'+L.map(c=>'<span class="chip" style="background:'+G[g]+(g===3?';color:#111':'')+'">'+c.nm+' = '+fmt(c.p)+'</span>').join('')+'</div>').join('');
   let ma=0;for(const v of a)ma=ma+v+ma*v;
-  res.textContent='Sum of all 16 corners = '+fmt(total)+'.  1 + a⊕b⊕c⊕d = '+fmt(1+ma)+'.';
+  res.textContent='Sum of all 16 corners = '+fmt(total)+'.  1 + a∘₁b∘₁c∘₁d = '+fmt(1+ma)+'.';
 }
 ids.forEach(i=>document.getElementById(i).addEventListener('input',draw));
 draw();

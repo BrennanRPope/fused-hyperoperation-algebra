@@ -32,7 +32,7 @@ DEMOS = [
 CAPTION = {
     "goal": "The goal, as the engine reads it.",
     "lift": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y.",
-    "multadd": "The circle operation: every ⊕ opens into a product of rods, a box with its unit attached.",
+    "multadd": "The circle operation: every ∘₁ opens into a product of rods, a box with its unit attached.",
     "swap": "Swap: reflect across the diagonal (CommSemiring.mul_comm).",
     "regroup": "Regroup: re-cut the same box (Semiring.mul_assoc).",
     "collapse": "Collapse: zero lengths and units fall away.",

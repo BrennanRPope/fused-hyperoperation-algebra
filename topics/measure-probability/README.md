@@ -9,7 +9,7 @@ Page: index.html (self-contained). Checks: checks.py → checks_output.txt (38/3
 - log(1+λμ)/log(1+λ) is an ordinary probability P, and μ = [P]_q with q = 1+λ = k+1 (distortion known; q-number naming ours).
 - Inclusion–exclusion becomes multiplicative (known); dual weight −λ/(1+λ) is the circle operation's inverse, q* = 1/q (known fact, reading ours).
 - λ > −1 is "the wall −1/λ must lie outside [0,1]". On the landscape, decomposable measures (Weber 1984) normalize on finite spaces iff 1+pt+qt² has no root on [0,1]; edge = the statistics page's "or" line k+q = −1 up to the cusp (−2,1), then the border parabola, tangent there. Placement ours.
-- E[X ✳ₖ Y] = EX ✳ₖ EY for independent X, Y; gap = k·Cov otherwise. Odds of an independent "or" combine by the circle operation ∘₁ (called mult-add before 1.0). Multiplicative martingales; Yor's formula as step-wise the circle operation; Itô drag = half the summed self-corners (Doléans-Dade 1970, Yor 1976).
+- E[X ∘ₖ Y] = EX ∘ₖ EY for independent X, Y; gap = k·Cov otherwise. Odds of an independent "or" combine by the circle operation ∘₁ (called mult-add before 1.0). Multiplicative martingales; Yor's formula as step-wise the circle operation; Itô drag = half the summed self-corners (Doléans-Dade 1970, Yor 1976).
 - Dropped: Bernoulli convolutions (no structure beyond the generic product), odds of an "and" (fail; odds against work).
 
 ## Verdict

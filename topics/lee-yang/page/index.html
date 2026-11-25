@@ -49,7 +49,7 @@ code{overflow-wrap:anywhere;font-size:14px}
  </div>
  <div>
   <h2>Turn the dial</h2>
-  <p>One edge of the dial gas is the weighted lift itself: 1 + (x ⊞ₖ y) = 1 + x + y + k·xy is two sites with fugacities x, y and pair weight k. Chain n edges into a ring and the zeros come out in closed form: ζ + 1/ζ runs from −2 (the wall) to 2 − 4/k.</p>
+  <p>One edge of the dial gas is the weighted lift itself: 1 + (x ∘ₖ y) = 1 + x + y + k·xy is two sites with fugacities x, y and pair weight k. Chain n edges into a ring and the zeros come out in closed form: ζ + 1/ζ runs from −2 (the wall) to 2 − 4/k.</p>
   <div class="read" id="kread">k = 3.00 <small>q = 4.00</small></div>
   <label for="k" class="mute">dial k</label>
   <input id="k" type="range" min="-3" max="6" step="0.05" value="3">
@@ -91,7 +91,7 @@ code{overflow-wrap:anywhere;font-size:14px}
 
 <section class="band">
 <h2>Count colours and the special values become walls</h2>
-<p>For the Potts model with Q colours the edge matrix, scaled, has trace 1 + (Q − 1)·t with t = v/(Q + v). So the dial here is k = Q − 1, and your q is exactly the number of colours. A Potts ring is (Q + v)ⁿ·(1 + k·tⁿ), the weighted lift of tⁿ, and two separate rings combine by ⊞ₖ. Proper colourings are t = −1/k: the wall.</p>
+<p>For the Potts model with Q colours the edge matrix, scaled, has trace 1 + (Q − 1)·t with t = v/(Q + v). So the dial here is k = Q − 1, and your q is exactly the number of colours. A Potts ring is (Q + v)ⁿ·(1 + k·tⁿ), the weighted lift of tⁿ, and two separate rings combine by ∘ₖ. Proper colourings are t = −1/k: the wall.</p>
 <div class="img"><img src="figures/f2_colour_zeros.png" alt="Zeros of the colour-count polynomials of a 40-site ring and of square-lattice strips of width 2, 3 and 4, plotted against the dial k = Q − 1. Real zeros sit at k = −1 and k = 0, and pile up at k = 1. Nothing lies left of k = −1, so k = −2 has none."></div>
 <table class="stack" style="margin-top:16px"><thead><tr><th>Special value</th><th>Colour count there</th><th>Status</th></tr></thead><tbody>
 <tr><td>q = 0, or (k = −1)</td><td>zero for every graph with an edge</td><td><span class="tag">known</span> ring case in Lean</td></tr>
@@ -135,13 +135,13 @@ code{overflow-wrap:anywhere;font-size:14px}
 <h2>Proofs</h2>
 <p>Files <code>math-theory/lee-yang/lean/LeeYang.lean</code> (39 theorems, merged into the shared library) , <code>LeeYangCluster.lean</code> (10 theorems, merged) and <code>LeeYangSpill.lean</code> (10 theorems, sent to the library), core Lean 4.37, no sorry, standard axioms only. The main ones:</p>
 <table class="stack"><thead><tr><th>Theorem</th><th>Says</th></tr></thead><tbody>
-<tr><td><code>edge_gas</code></td><td>one edge of the gas is 1 + (x ⊞ₖ y)</td></tr>
+<tr><td><code>edge_gas</code></td><td>one edge of the gas is 1 + (x ∘ₖ y)</td></tr>
 <tr><td><code>ringT_tr</code></td><td>the ring's transfer matrix has trace 1 + k·z</td></tr>
 <tr><td><code>odd_ring_vanishes_on_wall</code></td><td>every odd ring is 0 on the wall, for every k</td></tr>
 <tr><td><code>even_ring_on_wall</code></td><td>an even ring on the wall is 2(z(1 − k))^m</td></tr>
 <tr><td><code>triangle_factor</code>, <code>triangle_disc_nonpos</code></td><td>the triangle is (1 + kz)·(quadratic), and for k ≥ 1 the quadratic's zeros are a conjugate pair on |z| = 1/k</td></tr>
 <tr><td><code>ring_zero_family</code>, <code>ring_family_zeta</code></td><td>the closed form of the ring's zeros, from the wall (c = 0) to the edge (c = 4)</td></tr>
-<tr><td><code>pottsRing_lift</code>, <code>two_rings</code></td><td>a Potts ring is the weighted lift of tⁿ; two rings combine by ⊞ₖ with k = Q − 1</td></tr>
+<tr><td><code>pottsRing_lift</code>, <code>two_rings</code></td><td>a Potts ring is the weighted lift of tⁿ; two rings combine by ∘ₖ with k = Q − 1</td></tr>
 <tr><td><code>ising_ring_transfer</code></td><td>the Q = 2 formula equals the transfer-matrix trace</td></tr>
 <tr><td><code>ring_zero_at_q0</code>, <code>_q1</code>, <code>_q2_odd</code>, <code>parity_never_zero</code></td><td>colour counts on rings: zero at q = 0, 1, at 2 when odd, never at −1</td></tr>
 <tr><td><code>beraha5_not_int</code> … <code>beraha12_not_int</code></td><td>each predicted value for n = 5, 7, 8, 9, 10, 12 is a root of an integer polynomial with no whole-number root, so a law at a whole-number dial value can only hit k = 2</td></tr>

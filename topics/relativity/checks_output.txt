@@ -1,9 +1,9 @@
 PASS lens: D(u+v rel) = D(u)·D(v)
-PASS the circle operation in disguise: d(u⊕v) = d(u) ⊞ d(v), d = 2u/(1-u)
+PASS the circle operation in disguise: d(u⊕v) = d(u) ∘₁ d(v), d = 2u/(1-u)
 PASS d(u) = 2u/(1-u)
 PASS inverse lens: u = d/(2+d)
 PASS units: velc(u,v)/c = vel(u/c, v/c)
-PASS light absorbs: 1 ⊕ v = 1 (like -1 ⊞ b = -1)
+PASS light absorbs: 1 ⊕ v = 1 (like -1 ∘₁ b = -1)
 PASS -1 ⊕ v = -1
 PASS light wall maps to the circle-operation wall: d(-1) = -1, d(1) = ∞
 PASS speed limit: 1 - u⊕v = (1-u)(1-v)/(1+uv)

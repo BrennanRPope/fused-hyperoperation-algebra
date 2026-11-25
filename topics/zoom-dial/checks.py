@@ -56,7 +56,7 @@ for name, rs in SETS.items():
 for r, d in [(0.25, 0.5), (1/3, np.log(2)/np.log(3)), (0.5, 1.0)]:
     w = r**d; t, u = 0.37, 1.9
     lhs = (w*t) + (w*u) + (w*t)*(w*u); rhs = w*(t + u + w*t*u)
-    check(f"4 zoom r={r:.3f}, d={d:.3f}: w t ✳ w u = w (t ⊞_w u)", abs(lhs - rhs) < 1e-12)
+    check(f"4 zoom r={r:.3f}, d={d:.3f}: w t ∘₁ w u = w (t ∘_w u)", abs(lhs - rhs) < 1e-12)
 # size-dial link: doubling at dimension beta is zoom 1/2, weight 2^-beta
 check("4b size dial: zoom 1/2 at dimension beta gives weight 2^-beta (beta = 1, 2, 3)", all(abs(0.5**b - 2.0**-b) < 1e-15 for b in [1, 2, 3]))
 

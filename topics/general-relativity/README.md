@@ -41,7 +41,7 @@ Results (checks.py, sections C to C3; all exact, sympy):
   after the clock change t_S = t − ∫ v/(1 − v²) dr. River observers fall freely and are at rest at infinity.
 - Static clocks and static radial rulers are boosted through the river, and one boost gives both: clock
   factor 1 − v² = −g_tt, ruler factor 1/(1 − v²) = g_rr. So the time deficit and the radial-space deficit
-  are circle inverses, (−g_tt − 1) ✳ (g_rr − 1) = 0. This is why γ = 1 and why light bends twice the
+  are circle inverses, (−g_tt − 1) ∘₁ (g_rr − 1) = 0. This is why γ = 1 and why light bends twice the
   Newtonian amount: half from clocks, half from rulers, because a boost dilates time and contracts length
   by the same γ.
 - Weak field: −g_tt = 1 − 2U + 2U² (β = 1), g_ij = (1 + 2U)δ_ij (γ = 1). So light bending 1.751″,
@@ -52,7 +52,7 @@ Results (checks.py, sections C to C3; all exact, sympy):
   nothing new. The Hubble river v = −Hr gives Friedmann's equations (H² = 8πρ/3 is Newton's escape speed
   for a uniform ball).
 - Gravity Probe B's exact factor √(1 − 3M/r) is 1/γ of the gyroscope's speed through the river (river
-  radial, orbit tangential, composed at right angles): −w² = (−v_r²) ✳ (−v_o²). This replaces the earlier
+  radial, orbit tangential, composed at right angles): −w² = (−v_r²) ∘₁ (−v_o²). This replaces the earlier
   twisted-boosts bookkeeping, which took Schwarzschild's space curvature as an input; the river supplies it.
 - Known: Painlevé 1921, Gullstrand 1922, Milne–McCrea 1934, Hamilton & Lisle 2008 ("river model").
 

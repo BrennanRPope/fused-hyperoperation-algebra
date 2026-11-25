@@ -35,7 +35,7 @@ PASS one law across the dial: twist angle = q × signed area (K = q), q ∈ {-1,
 PASS 1-D law (a+b)/(1 - q·ab): q=-1/c² relativity, q=0 Galilean, q=+1 tangent addition
 PASS metric 2|dz|/(1+q|z|²) has Gaussian curvature q (symbolic)
 PASS half-velocity is half a kick: t ⊕ t = 2t/(1+t²) = β, and t = β/(1+√(1-β²))
-PASS on the circle-operation ruler: d(t⊕t) = d(t) ✳ d(t)
+PASS on the circle-operation ruler: d(t⊕t) = d(t) ∘₁ d(t)
 PASS hyperbolic disk area 4πt²/(1-t²) = 2π(cosh φ - 1) with t = tanh(φ/2)
 
 36/36 checks pass

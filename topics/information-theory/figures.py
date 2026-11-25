@@ -51,7 +51,7 @@ square(axs[2], "k = −1  either one", "p + q − pq: everything but 'both fine'
        {"a": "+", "b": "+", "ab": "+"})
 square(axs[3], "k = −2  exactly one", "p + q − 2pq: the two off-diagonal cells\nbit flips, parity, check nodes",
        {"a": "+", "b": "+"})
-fig.suptitle("One square, four ways to count its corner: the weight k in a ⊕ₖ b = a + b + k·ab",
+fig.suptitle("One square, four ways to count its corner: the weight k in a ∘ₖ b = a + b + k·ab",
              x=0.01, ha="left", fontsize=13)
 plt.tight_layout(rect=(0, 0.10, 1, 0.93)); fig.savefig(f"{OUT}/f1_corner_square.png", dpi=150); plt.close(fig)
 

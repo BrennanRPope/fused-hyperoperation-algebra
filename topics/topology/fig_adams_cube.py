@@ -14,7 +14,7 @@ ax=axs[0]; P={(0,0):(0,0),(1,0):(1,0),(0,1):(0,1),(1,1):(1,1)}
 for a,b in [((0,0),(1,0)),((0,0),(0,1)),((1,0),(1,1)),((0,1),(1,1))]:
     ax.plot(*zip(P[a],P[b]),color=M,lw=2,zorder=1)
 for c,p in P.items(): dot(ax,p,sum(c),{0:'1',1:'x',2:'x²'}[sum(c)])
-ax.set_title('ψ²(x) = x ⊕ x = 2x + x²\nsquare: 2 edge corners, 1 diagonal corner',fontsize=12)
+ax.set_title('ψ²(x) = x ∘₁ x = 2x + x²\nsquare: 2 edge corners, 1 diagonal corner',fontsize=12)
 ax.text(0.5,-0.55,'mod 2 the two x corners cancel:\nψ²(x) ≡ x², so μ₂ = 1 is odd',ha='center',fontsize=11,color=R)
 ax.set_xlim(-0.5,1.5); ax.set_ylim(-0.9,1.4); ax.set_aspect('equal'); ax.axis('off')
 # panel 2: cube = psi^3
@@ -28,7 +28,7 @@ for a in corners:
 for c in corners:
     g=sum(c); dot(ax,proj(c),g if g<3 else 3)
 ax.text(*np.add(proj((1,1,1)),(0.12,0.08)),'x³ = 0\n(no 6-cell in CP²)',fontsize=10,color='#7d7a86')
-ax.set_title('ψ³(x) = x ⊕ x ⊕ x = 3x + 3x²\ncube: 3 edge corners, 3 face corners',fontsize=12)
+ax.set_title('ψ³(x) = x ∘₁ x ∘₁ x = 3x + 3x²\ncube: 3 edge corners, 3 face corners',fontsize=12)
 ax.text(0.72,-0.55,'μ₃ = 3',ha='center',fontsize=11,color=R)
 ax.set_xlim(-0.5,1.9); ax.set_ylim(-0.9,1.6); ax.set_aspect('equal'); ax.axis('off')
 # panel 3: psi^2 psi^3 = psi^6 as three squares
