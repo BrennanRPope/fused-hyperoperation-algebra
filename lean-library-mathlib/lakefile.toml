@@ -28,3 +28,10 @@ roots = ["ProofComplexity"]
 relaxedAutoImplicit = true
 weak.linter.mathlibStandardSet = false
 maxSynthPendingDepth = 1
+
+# The one topic file that imports Mathlib directly (topics/tesseract/TesseractCoords.lean), built
+# from where it lives. Not a default target: CI builds it in its own report-only step.
+[[lean_lib]]
+name = "Tesseract"
+srcDir = "../topics/tesseract"
+roots = ["TesseractCoords"]

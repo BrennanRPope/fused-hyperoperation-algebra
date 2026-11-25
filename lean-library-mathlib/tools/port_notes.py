@@ -4,13 +4,15 @@
 Usage:  python3 tools/port_notes.py            # coverage report
         python3 tools/port_notes.py --table    # Markdown summary table for PORT-NOTES.md
 
-Every theorem listed in ../lean-library/theorems.tsv must appear in the table of its module.
+Every theorem of the core library as it was when ported (tools/original-theorems.tsv, a copy
+of lean-library/theorems.tsv at main 7a51396, before the 1.0 rename) must appear in the table of
+its module.
 """
 import collections, glob, os, sys
 
 here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 orig = collections.defaultdict(list)
-for line in open(os.path.join(here, "..", "lean-library", "theorems.tsv"), encoding="utf-8"):
+for line in open(os.path.join(here, "tools", "original-theorems.tsv"), encoding="utf-8"):
     mod, name = line.rstrip("\n").split("\t")[:2]
     orig[mod].append(name)
 

@@ -1,0 +1,15 @@
+# Topic Lean files that don't build on their own, with the reason. tools/topic_lean.py fails CI
+# on any other failure, and says when a listed file builds again so it can come off this list.
+# Every result in these files is proved in the shared library (lean-library/), which CI builds.
+topics/axioms/lean/Axioms/Rederive.lean	imports the whole library and also Axioms.MultAddRing, whose copy is now in the library as Foundations.CircleRing, so the names clash; the compiled modules are lean-library/FusedAlgebra/Foundations/
+topics/axioms/lean/Axioms/Check.lean	imports Axioms.Rederive (see above)
+topics/consensus/lean/ConsensusFused.lean	written for Lean 4.24; one simp step fails on 4.37. Compiled version: lean-library/FusedAlgebra/Topics/Consensus.lean
+topics/elliptic/lean/EllipticS3.lean	first draft, marked NOT YET COMPILED. Compiled version: lean-library/FusedAlgebra/Topics/EllipticS3.lean
+topics/entropy-noise/lean/CheckEntropyNoise.lean	checks theorem names that only the library version has. Compiled version: lean-library/FusedAlgebra/Topics/EntropyNoise.lean
+topics/fermat-counterexample-map/lean/CounterexampleMap.lean	first draft, written without a compiler. Compiled version: lean-library/FusedAlgebra/Topics/Fermat/CounterexampleMap.lean
+topics/fractional-rungs/lean/FractionalRungs.lean	first draft, marked NOT COMPILED. Compiled version: lean-library/FusedAlgebra/Topics/FractionalRungs.lean
+topics/patterns/lean/Patterns.lean	first draft; two proofs were repaired when it joined the library. Compiled version: lean-library/FusedAlgebra/Topics/Patterns.lean
+topics/proof-engine/lean/FusedPictures.sketch.lean	a sketch, not meant to compile; the compiled file is FusedPictures.lean beside it
+topics/q-across/lean/Knots.lean	first draft, marked NOT YET COMPILED. Compiled version: lean-library/FusedAlgebra/Topics/QAcross/Knots.lean
+topics/q-across/lean/QCounting.lean	first draft, marked NOT YET COMPILED. Compiled version: lean-library/FusedAlgebra/Topics/QAcross/QCounting.lean
+topics/rulecraft/lean/RulecraftFused.lean	first draft, marked UNCHECKED. Compiled version: lean-library/FusedAlgebra/Topics/Rulecraft.lean

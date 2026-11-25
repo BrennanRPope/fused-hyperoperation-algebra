@@ -1,0 +1,30 @@
+== A. k = -1 corner sum = multipartite information
+PASS A1 cube sum of product weights = a o_k b o_k c (k=-1.0)
+PASS A1 cube sum of product weights = a o_k b o_k c (k=0.5)
+PASS A1 cube sum of product weights = a o_k b o_k c (k=2.0)
+PASS A2 I3 = k=-1 corner sum
+PASS A3 k=-1 corner sum kills additive pieces, n=2
+PASS A3 k=-1 corner sum kills additive pieces, n=3
+PASS A3 k=-1 corner sum kills additive pieces, n=4
+PASS A3 k=-1 corner sum kills additive pieces, n=5
+PASS A3 k=-1 corner sum kills additive pieces, n=6
+PASS A4 only k=-1 kills the additive piece (n=3)  {-2: 3.0, -1: 0.0, -0.5: 0.75, 0: 3.0, 0.5: 6.75, 1: 12.0}
+== B. contraction maps between hypercubes
+PASS B  contraction map exists: SA  S_A + S_B >= S_AB  maps found = 2
+PASS B  contraction map exists: SSA S_AB + S_BC >= S_B + S_ABC  maps found = 1
+PASS B  contraction map exists: MMI S_AB + S_BC + S_AC >= S_A + S_B + S_C + S_ABC  maps found = 1
+PASS B  contraction map does not exist: reversed MMI (false)  maps found = 0
+PASS B  contraction map exists: 5-party cyclic inequality
+PASS B  no contraction map: reversed 5-party cyclic (false)
+== C. random graphs: min-cut entropies
+PASS C  MMI holds in all 1500 random graphs (I3 <= 0)  max I3 = 4.44e-15, min = -9.35
+== D. random quantum states
+PASS D  GHZ (4 qubits) violates MMI: I3 = +1 bit  I3 = 1.0000
+PASS D  W state (4 qubits) violates MMI  I3 = 0.2451
+PASS D  4-qutrit perfect tensor (AME) satisfies MMI with I3 = -2 qutrits  I3 = -2.0000
+PASS D  some random quantum states violate MMI  Haar 4-qubit: 0.2% violate; sparse 2-4 term: 13.2% violate
+== E. AdS3 / CFT2: Ryu-Takayanagi with geodesics
+PASS E  MMI holds for 3000 random interval triples in AdS3 (I3 <= 0)  max I3 = 7.11e-15
+PASS E  I3 does not depend on the cutoff (eps 1e-3 vs 1e-6)  max change 2.1e-14
+
+23 passed, 0 failed

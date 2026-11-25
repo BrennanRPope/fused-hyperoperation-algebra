@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Run every topic's numeric checks and compare them with the saved output.
 
-For each topics/**/checks*.py this runs the script in its own folder and fails if:
+For each topics/**/checks*.py, and each script listed in tools/extra_checks.txt, this runs the
+script in its own folder and fails if:
   - the script exits with an error or times out,
   - any output line reports a failure (a line starting with FAIL, or "N failed" with N > 0),
   - the saved checks*_output.txt states a pass count ("29/29", "18 of 18", "49 passed",
@@ -85,7 +86,19 @@ def main():
     ap.add_argument("--timeout", type=int, default=900)
     ap.add_argument("paths", nargs="*")
     a = ap.parse_args()
-    scripts = [Path(p).resolve() for p in a.paths] if a.paths else sorted((ROOT / "topics").rglob("checks*.py"))
+    if a.paths:
+        scripts = [Path(p).resolve() for p in a.paths]
+    else:
+        scripts = sorted((ROOT / "topics").rglob("checks*.py"))
+        extra = ROOT / "tools" / "extra_checks.txt"
+        if extra.exists():
+            for line in extra.read_text().splitlines():
+                if line.strip() and not line.startswith("#"):
+                    p = ROOT / line.strip()
+                    if not p.exists():
+                        sys.exit(f"tools/extra_checks.txt lists {line.strip()}, which does not exist")
+                    if p not in scripts:
+                        scripts.append(p)
     results = []
     with cf.ThreadPoolExecutor(a.jobs) as ex:
         for script, ok, note, dt in ex.map(lambda s: run_one(s, a.timeout), scripts):

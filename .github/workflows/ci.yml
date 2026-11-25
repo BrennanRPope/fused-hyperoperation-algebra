@@ -34,6 +34,9 @@ jobs:
       - name: Build every module and check axioms (Check.lean)
         run: bash lean-library/build.sh
 
+      - name: Every topic Lean file still builds (known old drafts listed in tools/topic_lean_known.tsv)
+        run: python3 tools/topic_lean.py --jobs 4
+
       - name: Assumptions ledger is current; no sorry, axiom or opaque in the source
         run: python3 tools/assumptions.py --check
 
@@ -60,7 +63,7 @@ jobs:
       - name: Install check libraries
         run: python -m pip install -r tools/requirements-checks.txt
 
-      - name: Run every topics/*/checks*.py and compare with the saved output
+      - name: Run every topics/**/checks*.py (and tools/extra_checks.txt) and compare with the saved output
         run: python tools/run_checks.py --jobs 4 --timeout 1500
 
       - name: Topic write-ups still missing an Assumptions section (report only)

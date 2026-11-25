@@ -1,0 +1,37 @@
+# Check scripts not named checks*.py that tools/run_checks.py also runs (one path per line).
+# They print PASS/FAIL lines or assert, and passed on Nov 25, 2026. Figure scripts and scripts that
+# need a Lean build artifact are left out: topics/topology/fig_kummer_wilson.py (redraws figures)
+# and topics/proof-engine/film.py (reads build/demo_trace.txt from a Lean run).
+topics/patterns/elliptic_counting.py
+topics/rung-shape/rung_shape.py
+topics/rung-shape/sheet_vs_flow.py
+topics/rung-shape/symbolic_checks.py
+topics/height-running-coupling/running_coupling.py
+topics/ns-rungs/algebra_checks.py
+topics/ns-rungs/higher_rungs.py
+topics/shape-directions/lean_mirror.py
+topics/fractional-rungs/symbolic_proofs.py
+topics/fractional-rungs/regular_iteration.py
+topics/lee-yang/potts_strips.py
+topics/tesseract/examples.py
+topics/tesseract/gluing_check.py
+topics/tesseract/p2_check.py
+topics/landscape/gap_tests.py
+topics/landscape/algebra_checks.py
+topics/knot-theory/tangles.py
+topics/ns-continuum/rung_height.py
+topics/toric/more.py
+topics/pi/constants_hunt.py
+topics/pi/pi_checks.py
+topics/q-across/knots_mirror.py
+topics/q-across/flow_check.py
+topics/q-across/qcounting_mirror.py
+topics/q-across/partitions_mirror.py
+topics/q-across/series_check.py
+topics/elliptic/s3_checks.py
+topics/elliptic/rung_test.py
+topics/shape-directions/waves/rank.py
+topics/fractional-rungs/e-every-height/e_every_height.py
+topics/dial-survey/wall/wall_checks.py
+topics/twisted-boosts/pulsar/pulsar_checks.py
+topics/twisted-boosts/gpb/gpb_checks.py
