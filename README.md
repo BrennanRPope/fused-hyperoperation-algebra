@@ -104,6 +104,10 @@ All the Lean proofs are gathered in [`lean-library/`](lean-library/README.md): o
 
 Some topic folders also keep the original Lean file they were first written in. The one file that imports mathlib, `topics/tesseract/TesseractCoords.lean`, writes mult-add as `✳` (mathlib already uses `⊞` for biproducts) and compiles cleanly against mathlib v4.37.0-rc1 (checked on Brennan's Mac Studio, Nov 25, 2026). A port of the whole library to mathlib is under way on its own branch.
 
+## Releases
+
+Releases are made automatically. To cut one, add a `## vX.Y.Z` section to [CHANGELOG.md](CHANGELOG.md), set the same number in [VERSION](VERSION) and in `version:` in [CITATION.cff](CITATION.cff), and push to main. The release workflow then tags it and publishes the GitHub release, and Zenodo archives that snapshot under a new permanent DOI. Pushes that leave VERSION unchanged make no release.
+
 ## License
 
 Copyright 2026 Brennan Pope.

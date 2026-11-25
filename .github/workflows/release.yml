@@ -1,0 +1,63 @@
+# Makes a GitHub release whenever VERSION names a version that has no tag yet.
+# Each release also becomes a permanent Zenodo version with its own DOI,
+# so bump VERSION only when a snapshot should be kept.
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read VERSION and check for an existing tag
+        id: v
+        run: |
+          v="$(tr -d '[:space:]' < VERSION)"
+          if ! printf '%s' "$v" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "VERSION must look like 1.2.3, got '$v'" >&2
+            exit 1
+          fi
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/v$v" > /dev/null; then
+            echo "Tag v$v already exists; nothing to release."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Take the notes for this version from CHANGELOG.md
+        if: steps.v.outputs.exists == 'false'
+        env:
+          V: ${{ steps.v.outputs.version }}
+        run: |
+          : > notes.md
+          if [ -f CHANGELOG.md ]; then
+            awk -v h="## v$V" 'index($0, h) == 1 { f = 1; next } /^## / { if (f) exit } f' CHANGELOG.md > notes.md
+          fi
+          if grep -q '[^[:space:]]' notes.md; then echo "Using CHANGELOG notes."; else echo "No CHANGELOG section; GitHub will write notes."; : > notes.md; fi
+
+      - name: Create the tag and publish the release
+        if: steps.v.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          V: ${{ steps.v.outputs.version }}
+        run: |
+          if [ -s notes.md ]; then
+            gh release create "v$V" --target "$GITHUB_SHA" --title "v$V" --notes-file notes.md
+          else
+            gh release create "v$V" --target "$GITHUB_SHA" --title "v$V" --generate-notes
+          fi
