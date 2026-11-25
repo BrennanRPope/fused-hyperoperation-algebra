@@ -1,0 +1,20 @@
+PASS half iterate a(a(x)) = e^x - 1 to order 9
+PASS half iterate starts x + x^2/4 + x^3/48 + 0x^4 + x^5/3840 - 7x^6/92160   1 1/4 1/48 0 1/3840 -7/92160 1/645120
+PASS half step of 'nonempty sets' is not a counting series: n!*coef is not a whole number at n=2 (1/2) and goes negative at n=6   n!*coef: 1, 1/2, 1/8, 0, 1/32, -7/128, 1/128
+PASS E^t coefficients interpolated as polynomials in t give the half iterate at t=1/2
+PASS 2!*[x^2]E^t = t, so whole-number counts force t to be a whole number
+PASS integer t >= 0: every n!*coef of E^t is a whole number >= 0 (counts of nested set partitions)
+PASS no non-decreasing f with f(f(n)) = 2^n: every choice of f(0), f(1) below 60 fails at n = 0 or 1
+PASS strictly increasing whole-number f on n >= 2 with f(f(n)) = 2^n (checked n = 2..59)   f(2..12) = 3, 4, 8, 9, 10, 11, 16, 32, 64, 128, 129
+PASS f(f(n)) = n + d: strictly increasing solution found exactly for even d (d = 1..8)   {1: False, 2: True, 3: False, 4: True, 5: False, 6: True, 7: False, 8: True}
+PASS ordered Mostowski model: subsets of A with least support of size n = 2*3^n (brute force n<=8)   [2, 6, 18, 54, 162, 486, 1458, 4374, 13122]
+PASS same count by inclusion-exclusion over supports: sum (-1)^(n-s) C(n,s) 2^(2s+1) = 2*3^n
+PASS stabiliser of s atoms has C(2s+1,2) + (s+1) orbits on increasing pairs
+PASS P of increasing pairs: least-support-n count grows like 2^(2n^2) (ratio falling toward 1) (power set turns orbit growth o(n) into about 2^o(n))   log2(count)/(2n^2): 1.281, 1.220, 1.181, 1.153, 1.133, 1.117, 1.105, 1.095
+PASS coefficient picture matches m < fin(m) < 2^m < seq^{1-1}(m) eventually (1 < 2*3^n < n!)
+PASS key step: monotone g with g o g strictly inflationary is itself strictly inflationary and g(x) < (g o g)(x); exhaustive on a 7-step scale   429 monotone square roots tested
+PASS gap worlds: square root of 'jump d successors' on indices exists iff d even (same as check 5)
+PASS m*m >= 2m >= m+1 for m >= 2 (why flat multiplication forces flat addition forces flat successor)
+PASS mult-add m+m+m*m sits above m*m, so flat mult-add <=> flat multiplication (given m <= m*m)
+
+18 of 18 checks pass

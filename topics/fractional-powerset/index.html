@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A dial for the power set</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the infinities series, honest about known vs open
+   IDEA a plate from a geometry atlas: rungs of a ladder against a smooth band
+   PICTURE the size ladder with halvings running out of rungs, beside an open smooth band
+   COLOUR white ground, near-black ink, ultramarine for sizes and choice, vermilion for the power set
+   TYPE Newsreader for titles, Inter for text; LAYOUT finding and plate first, sections with plates, tables stack on phones */
+
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:70ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:66ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.eq.r2{border-left-color:var(--red)}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+ol.key{padding-left:22px;margin:16px 0 0}ol.key li{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+code{font-size:14px;overflow-wrap:anywhere}
+a{color:var(--blue)}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+
+.plate svg{display:block;width:100%;height:auto}
+.verdict{border-left:3px solid var(--red);padding:4px 0 4px 14px;margin:14px 0}
+</style>
+</head>
+<body>
+<header class="band top">
+<div class="wrap two">
+<div>
+<h1>A dial between a set and its power set</h1>
+<p class="lede">With the axiom of choice, a smooth dial of power sets is impossible, and even a single half step is optional: some worlds have one, others don't. Leave choice off and the obstacle disappears. Nobody has built the dial there or ruled it out, so it is a sharp open question.</p>
+<p>You asked for a family P<sup>t</sup>, one operation for every t between 0 and 1, with P<sup>0</sup> doing nothing, P<sup>1</sup> taking all subsets, and P<sup>s</sup> then P<sup>t</sup> landing where P<sup>s+t</sup> does, all counted by size. Half is the first test.</p>
+<p class="mute">Each operation must be monotone: a bigger set never gets a smaller result. Every natural set-building operation is.</p>
+</div>
+<div><div class="plate"><svg viewBox="0 0 760 360" role="img" aria-labelledby="p1t"><title id="p1t">Left: with choice, sizes are rungs and the halvings run out of rungs. Right: without choice, sizes may sit densely and a smooth dial is not ruled out.</title><text x="40" y="32" font-family="Newsreader,Georgia,serif" font-size="20" fill="#15131a">With choice: rungs</text><line x1="80" y1="310.0" x2="270" y2="310.0" stroke="#1d2bd8" stroke-width="2.4"/><text x="72" y="315.0" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#1d2bd8">κ</text><line x1="80" y1="268.3" x2="270" y2="268.3" stroke="#15131a" stroke-width="1.4"/><text x="72" y="273.3" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#15131a">κ⁺</text><line x1="80" y1="226.7" x2="270" y2="226.7" stroke="#15131a" stroke-width="1.4"/><text x="72" y="231.7" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#15131a">κ⁺⁺</text><line x1="80" y1="185.0" x2="270" y2="185.0" stroke="#15131a" stroke-width="1.4"/><text x="72" y="190.0" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#15131a">κ⁺⁺⁺</text><line x1="80" y1="143.3" x2="270" y2="143.3" stroke="#15131a" stroke-width="1.4"/><text x="72" y="148.3" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#15131a">κ⁺⁴</text><line x1="80" y1="101.7" x2="270" y2="101.7" stroke="#15131a" stroke-width="1.4"/><text x="72" y="106.7" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#15131a">κ⁺⁵</text><line x1="80" y1="60.0" x2="270" y2="60.0" stroke="#cf3519" stroke-width="2.4"/><text x="72" y="65.0" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#cf3519">2^κ</text><circle cx="180" cy="185.0" r="6" fill="#1d2bd8"/><text x="180" y="173.0" font-family="Inter,system-ui,sans-serif" font-size="13" text-anchor="middle" fill="#15131a">P^½</text><circle cx="210" cy="226.7" r="6" fill="#1d2bd8"/><text x="210" y="214.7" font-family="Inter,system-ui,sans-serif" font-size="13" text-anchor="middle" fill="#15131a">P^¼</text><circle cx="240" cy="268.3" r="6" fill="#1d2bd8"/><text x="240" y="256.3" font-family="Inter,system-ui,sans-serif" font-size="13" text-anchor="middle" fill="#15131a">P^⅛</text><path d="M263 282.16666666666663 L277 296.16666666666663 M277 282.16666666666663 L263 296.16666666666663" stroke="#cf3519" stroke-width="3"/><text x="284" y="294.2" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#cf3519">P^(1/16): no rung left</text><path d="M100 304.0 C 60 226.7, 60 143.3, 100 66.0" fill="none" stroke="#cf3519" stroke-width="1.6" stroke-dasharray="5 4"/><text x="46" y="185.0" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#cf3519" transform="rotate(-90 46 185.0)" text-anchor="middle">power set P</text><text x="420" y="32" font-family="Newsreader,Georgia,serif" font-size="20" fill="#15131a">Without choice: open</text><defs><linearGradient id="g1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#1d2bd8" stop-opacity=".18"/><stop offset="1" stop-color="#cf3519" stop-opacity=".18"/></linearGradient></defs><rect x="480" y="60" width="200" height="250" fill="url(#g1)" rx="6"/><line x1="480" y1="310" x2="680" y2="310" stroke="#1d2bd8" stroke-width="2.4"/><line x1="480" y1="60" x2="680" y2="60" stroke="#cf3519" stroke-width="2.4"/><text x="472" y="315" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#1d2bd8">X</text><text x="472" y="65" font-family="Inter,system-ui,sans-serif" font-size="14" text-anchor="end" fill="#cf3519">P(X)</text><polyline points="490.0,310.0 494.5,303.8 499.0,297.5 503.5,291.2 508.0,285.0 512.5,278.8 517.0,272.5 521.5,266.2 526.0,260.0 530.5,253.8 535.0,247.5 539.5,241.2 544.0,235.0 548.5,228.8 553.0,222.5 557.5,216.2 562.0,210.0 566.5,203.8 571.0,197.5 575.5,191.2 580.0,185.0 584.5,178.8 589.0,172.5 593.5,166.2 598.0,160.0 602.5,153.8 607.0,147.5 611.5,141.2 616.0,135.0 620.5,128.8 625.0,122.5 629.5,116.2 634.0,110.0 638.5,103.8 643.0,97.5 647.5,91.2 652.0,85.0 656.5,78.8 661.0,72.5 665.5,66.2 670.0,60.0" fill="none" stroke="#15131a" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><circle cx="535.0" cy="247.5" r="5" fill="#fff" stroke="#15131a" stroke-width="1.6"/><text x="545.0" y="263.5" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#15131a">t = ¼</text><circle cx="580.0" cy="185.0" r="5" fill="#fff" stroke="#15131a" stroke-width="1.6"/><text x="590.0" y="201.0" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#15131a">t = ½</text><circle cx="625.0" cy="122.5" r="5" fill="#fff" stroke="#15131a" stroke-width="1.6"/><text x="635.0" y="138.5" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#15131a">t = ¾</text><text x="706" y="199.0" font-family="Newsreader,Georgia,serif" font-size="44" fill="#5d5a66" text-anchor="middle">?</text><text x="480" y="344" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">sizes can sit densely: the dial is open</text><text x="80" y="344" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">halvings must fall rung by rung, forever</text></svg></div>
+<p class="cap">Left: with choice, sizes are rungs and the halvings P<sup>1/2</sup>, P<sup>1/4</sup>, P<sup>1/8</sup>… must each land on a lower rung, so they run out. Right: without choice, sizes can sit densely, and the dial is neither built nor ruled out.</p></div>
+</div>
+</header>
+<nav class="nav" aria-label="Sections"><a href="#findings">Findings</a><a href="#choice">With choice</a><a href="#without">Without choice</a><a href="#axiom">The rung axiom</a><a href="#grades">Choice as a position</a><a href="#levers">Which levers work</a><a href="#known">Known and new</a><a href="#verdict">Verdicts</a><a href="#files">Proofs and files</a></nav>
+
+<section class="band" id="findings"><div class="wrap">
+<h2>Six findings</h2>
+<ol class="key">
+<li><b>The finite wall.</b> No monotone rule on whole numbers has f(f(n)) = 2ⁿ. It already fails at n = 0 and n = 1. Starting from n = 2, a strictly increasing one exists: 3, 4, 8, 9, 10, 11, 16, 32, 64, 128, 129, …, but it is patched together by hand.</li>
+<li><b>One half step on infinite sizes is optional.</b> A monotone half power set must land strictly between κ and 2<sup>κ</sup>. If the continuum hypothesis holds at every size, there is no room. In worlds where 2<sup>κ</sup> = κ⁺⁺ for every infinite κ (consistent from a large cardinal, Merimovich 2007), the plain next-size-up operation is a half power set.</li>
+<li><b>The full dial is impossible with choice.</b> Even just halving over and over: the halvings P<sup>1/2</sup>(κ), P<sup>1/4</sup>(κ), P<sup>1/8</sup>(κ)… must strictly decrease, and well-ordered sizes cannot decrease forever. Proved in four lines, and in Lean on a well-ordered scale.</li>
+<li><b>Without choice the obstacle is gone.</b> Sizes can then fall forever, even with a lot of choice left (Karagila 2014: decreasing chains are consistent with DC<sub>κ</sub> for any κ). I found no result that builds the dial or rules it out.</li>
+<li><b>Natural constructions are blocked.</b> The half step of "make a set of sets" has fractional and negative counts: e<sup>x</sup> − 1 has the half iterate x + x²/4 + x³/48 + 0·x⁴ + x⁵/3840 − 7x⁶/92160 + …, so the 2-element count would be ½. Any choiceless dial would have to come from symmetry, not from a formula.</li>
+<li><b>Choice is a position on the rung ladder.</b> Successor flat on infinite sizes, addition flat, multiplication flat: each is a stronger grade of choice, and the last is full choice. Exponentiation is never flat, and that is exactly where the power set lives.</li>
+</ol>
+</div></section>
+
+<section class="band" id="choice"><div class="wrap">
+<h2>With choice: one step maybe, a dial never</h2>
+<h3>Why a half step has to land strictly in between</h3>
+<p>Say F is monotone and F(F(κ)) = 2<sup>κ</sup>. If F(κ) ≤ κ, then F(F(κ)) ≤ F(κ) ≤ κ, but 2<sup>κ</sup> is bigger than κ. If F(κ) ≥ 2<sup>κ</sup>, then F(F(κ)) ≥ F(2<sup>κ</sup>) > 2<sup>κ</sup>. So κ &lt; F(κ) &lt; 2<sup>κ</sup>, and with choice that means 2<sup>κ</sup> is at least two rungs above κ, at every κ where F works.</p>
+<div class="eq">κ &lt; F(κ) &lt; 2<sup>κ</sup> &nbsp;&nbsp;so&nbsp;&nbsp; 2<sup>κ</sup> ≥ κ⁺⁺</div>
+<h3>When the half step exists</h3>
+<p>Easton (1970) showed the power function can be almost anything on regular cardinals; the singular ones resist, which is why a global answer needs large cardinals. Merimovich built worlds where 2<sup>λ</sup> = λ<sup>+n</sup> for every λ, for any fixed n. In the n = 2 world, "next size up" composed with itself is "two sizes up", which is the power set. A whole-number check shows the pattern: a monotone square root of "jump d rungs" exists only when d is even. So the n = 3 world has no half power set at all.</p>
+<h3>Why the dial cannot exist</h3>
+<p>Write P<sub>k</sub> for P<sup>1/2<sup>k</sup></sup>, so each P<sub>k+1</sub> done twice is P<sub>k</sub>. If some P<sub>k+1</sub> ever failed to grow a size, then P<sub>k</sub> = P<sub>k+1</sub>∘P<sub>k+1</sub> would fail too, and so on up to P itself, contradicting Cantor. So every level grows. Then</p>
+<div class="eq">P<sub>k</sub>(κ) = P<sub>k+1</sub>(P<sub>k+1</sub>(κ)) &gt; P<sub>k+1</sub>(κ)</div>
+<p>which gives an infinite strictly decreasing sequence of sizes, all above κ. With choice, sizes are well-ordered, so that cannot happen. The argument needs only the dyadic fractions, so every version of the dial that halves is dead, not just the continuous one.</p>
+</div></section>
+
+<section class="band" id="without"><div class="wrap two">
+<div>
+<h2>Without choice: where a dial could live</h2>
+<p>Drop choice and sizes stop being well-ordered. Jech and Sochor showed any ordering can appear among the sizes of some model, and Karagila showed this survives a lot of dependent choice. So the one obstruction above is gone. What remains are a few hard facts that hold with no choice at all:</p>
+<ul>
+<li>The finite wall at sizes 0 and 1, so a rung axiom must start above them.</li>
+<li>For an infinite set, the finite subsets are always fewer than all subsets (Halbeisen–Shelah 1994).</li>
+<li>Two power sets in a row are always Dedekind-infinite (Kuratowski), and their size absorbs doubling (Läuchli).</li>
+</ul>
+<p>None of these rules out a half step. They only fix the walls the dial would have to fit between.</p>
+<h3>The best evidence a dial could fit</h3>
+<p>With choice, infinite arithmetic is flat: a + b, a·b and a ✳ b are all just the larger size, the tropical, fully zoomed-out view. Without choice, infinite sizes can remember finite growth. In the ordered Mostowski model, Halbeisen and Shelah found the same order as for finite counts: m &lt; fin(m) &lt; 2<sup>m</sup> &lt; injective sequences. Half-exponential growth is a finite growth rate, so the question becomes whether a choiceless world can remember it too.</p>
+</div>
+<div>
+<div class="plate"><svg viewBox="0 0 760 320" role="img" aria-labelledby="p3t"><title id="p3t">In the ordered Mostowski model, how many elements each set has per support of n atoms, on a log scale: finite subsets 1, power set 2 times 3 to the n, injective sequences n factorial.</title><line x1="70" y1="270.0" x2="620" y2="270.0" stroke="#d9d8e0"/><text x="62" y="274.0" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="end">2^0</text><line x1="70" y1="219.5" x2="620" y2="219.5" stroke="#d9d8e0"/><text x="62" y="223.5" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="end">2^4</text><line x1="70" y1="168.9" x2="620" y2="168.9" stroke="#d9d8e0"/><text x="62" y="172.9" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="end">2^8</text><line x1="70" y1="118.4" x2="620" y2="118.4" stroke="#d9d8e0"/><text x="62" y="122.4" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="end">2^12</text><line x1="70" y1="67.9" x2="620" y2="67.9" stroke="#d9d8e0"/><text x="62" y="71.9" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="end">2^16</text><text x="70.0" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">0</text><text x="131.1" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">1</text><text x="192.2" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">2</text><text x="253.3" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">3</text><text x="314.4" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">4</text><text x="375.6" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">5</text><text x="436.7" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">6</text><text x="497.8" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">7</text><text x="558.9" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">8</text><text x="620.0" y="288" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">9</text><text x="345.0" y="310" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66" text-anchor="middle">size of the support (atoms n)</text><polyline points="70.0,270.0 131.1,270.0 192.2,270.0 253.3,270.0 314.4,270.0 375.6,270.0 436.7,270.0 497.8,270.0 558.9,270.0 620.0,270.0" fill="none" stroke="#5d5a66" stroke-width="2.4"/><circle cx="70.0" cy="270.0" r="3" fill="#5d5a66"/><circle cx="131.1" cy="270.0" r="3" fill="#5d5a66"/><circle cx="192.2" cy="270.0" r="3" fill="#5d5a66"/><circle cx="253.3" cy="270.0" r="3" fill="#5d5a66"/><circle cx="314.4" cy="270.0" r="3" fill="#5d5a66"/><circle cx="375.6" cy="270.0" r="3" fill="#5d5a66"/><circle cx="436.7" cy="270.0" r="3" fill="#5d5a66"/><circle cx="497.8" cy="270.0" r="3" fill="#5d5a66"/><circle cx="558.9" cy="270.0" r="3" fill="#5d5a66"/><circle cx="620.0" cy="270.0" r="3" fill="#5d5a66"/><text x="630" y="274.0" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">fin  1</text><polyline points="70.0,257.4 131.1,237.3 192.2,217.3 253.3,197.3 314.4,177.3 375.6,157.3 436.7,137.2 497.8,117.2 558.9,97.2 620.0,77.2" fill="none" stroke="#cf3519" stroke-width="2.4"/><circle cx="70.0" cy="257.4" r="3" fill="#cf3519"/><circle cx="131.1" cy="237.3" r="3" fill="#cf3519"/><circle cx="192.2" cy="217.3" r="3" fill="#cf3519"/><circle cx="253.3" cy="197.3" r="3" fill="#cf3519"/><circle cx="314.4" cy="177.3" r="3" fill="#cf3519"/><circle cx="375.6" cy="157.3" r="3" fill="#cf3519"/><circle cx="436.7" cy="137.2" r="3" fill="#cf3519"/><circle cx="497.8" cy="117.2" r="3" fill="#cf3519"/><circle cx="558.9" cy="97.2" r="3" fill="#cf3519"/><circle cx="620.0" cy="77.2" r="3" fill="#cf3519"/><text x="630" y="81.2" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#cf3519">P(A)  2·3ⁿ</text><polyline points="70.0,270.0 131.1,270.0 192.2,257.4 253.3,237.3 314.4,212.1 375.6,182.8 436.7,150.1 497.8,114.6 558.9,76.7 620.0,36.7" fill="none" stroke="#1d2bd8" stroke-width="2.4"/><circle cx="70.0" cy="270.0" r="3" fill="#1d2bd8"/><circle cx="131.1" cy="270.0" r="3" fill="#1d2bd8"/><circle cx="192.2" cy="257.4" r="3" fill="#1d2bd8"/><circle cx="253.3" cy="237.3" r="3" fill="#1d2bd8"/><circle cx="314.4" cy="212.1" r="3" fill="#1d2bd8"/><circle cx="375.6" cy="182.8" r="3" fill="#1d2bd8"/><circle cx="436.7" cy="150.1" r="3" fill="#1d2bd8"/><circle cx="497.8" cy="114.6" r="3" fill="#1d2bd8"/><circle cx="558.9" cy="76.7" r="3" fill="#1d2bd8"/><circle cx="620.0" cy="36.7" r="3" fill="#1d2bd8"/><text x="630" y="40.7" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#1d2bd8">seq¹⁻¹  n!</text></svg></div>
+<p class="cap">In the ordered Mostowski model every subset of the atoms has a least finite support, and the subsets with a support of n atoms number exactly 2·3ⁿ (checked by brute force and by inclusion–exclusion). So the power set reads like the series Σ 2·3ⁿ xⁿ, against Σ xⁿ for finite subsets and Σ n! xⁿ for injective sequences.</p>
+<h3>What decides the in-between sizes</h3>
+<p>In these models the power set takes the number of orbits a set has around n atoms, o(n), and turns it into about 2<sup>o(n)</sup> elements per support. For the atoms o(n) = 2n + 1; for pairs of atoms o(n) ≈ 2n², and the power set count grows like 2<sup>2n²</sup>. Sets built from boundedly many atoms have polynomial orbit counts, so, heuristically, a half step needs a symmetry group whose orbit counts grow faster than every polynomial but slower than exponential. Such groups exist (S<sub>∞</sub> wr S<sub>∞</sub> grows like the partition numbers, about e<sup>c√n</sup>), and there are theorems forbidding some bands (Macpherson's gap for primitive groups, sharpened by Simon). That is the concrete place to look.</p>
+</div>
+</div></section>
+
+<section class="band" id="axiom"><div class="wrap">
+<h2>The rung axiom, stated</h2>
+<div class="box">
+<p><b>Rung axiom RA(D).</b> For every t in D there is an operation P<sup>t</sup> on sets with at least two elements such that: each P<sup>t</sup> is monotone in size; P<sup>0</sup>(X) has the size of X; P<sup>1</sup>(X) has the size of the power set of X; and P<sup>s</sup>(P<sup>t</sup>(X)) has the size of P<sup>s+t</sup>(X) whenever s + t ≤ 1.</p>
+</div>
+<table class="stack">
+<thead><tr><th>Version</th><th>Status</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Any version that includes sizes 0 and 1</td><td>False, even without choice</td><td>The finite wall</td></tr>
+<tr><td>D = {0, ½, 1}, on infinite sizes, with choice</td><td>Independent of ZFC</td><td>The continuum hypothesis everywhere refutes it; Merimovich's gap-2 world satisfies it</td></tr>
+<tr><td>D = dyadic fractions (or all of [0, 1]), with choice</td><td>Refutable in ZFC</td><td>Halvings would descend forever</td></tr>
+<tr><td>D = dyadic fractions or [0, 1], without choice</td><td>Open, as far as I could find</td><td>The ZFC obstruction needs well-ordered sizes; no ZF result touches the composition law</td></tr>
+</tbody></table>
+</div></section>
+
+<section class="band" id="grades"><div class="wrap two">
+<div>
+<h2>Choice as a position, not a switch</h2>
+<p>Your idea was that choice falls out of where you sit on the flow. There is a clean version of that, and it uses the rungs themselves. Ask which hyperoperation goes flat on infinite sizes, meaning m ∘ m = m for every infinite m:</p>
+<ul>
+<li><b>Successor flat</b> (m + 1 = m): every infinite set is Dedekind-infinite. A weak grade of choice.</li>
+<li><b>Addition flat</b> (m + m = m): strictly stronger, still strictly weaker than full choice.</li>
+<li><b>Multiplication flat</b> (m·m = m): exactly the axiom of choice (Tarski 1924). Mult-add flat is the same thing, since m ✳ m sits between m·m and itself.</li>
+<li><b>Exponent flat</b>: never, by Cantor. The power set is the first rung that cannot go flat in any world.</li>
+</ul>
+<p>Each grade implies the one below it, proved from rules that hold without choice, and the implications are strict. So choice is the height to which infinite arithmetic goes flat. The dial question sits right at the top: full flatness of multiplication is what kills the dial.</p>
+</div>
+<div><div class="plate"><svg viewBox="0 0 760 340" role="img" aria-labelledby="p2t"><title id="p2t">The hyperoperation ladder. Flat successor means every infinite set is Dedekind-infinite. Flat addition is stronger. Flat multiplication, or flat mult-add, is the axiom of choice. Exponentiation is never flat, and the power set lives there.</title><line x1="60" y1="26" x2="60" y2="270" stroke="#15131a" stroke-width="3"/><line x1="300" y1="26" x2="300" y2="270" stroke="#15131a" stroke-width="3"/><line x1="60" y1="46" x2="300" y2="46" stroke="#cf3519" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 8"/><text x="320" y="42" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" fill="#15131a">exponent  2^m</text><text x="320" y="62" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">never flat (Cantor): the power set lives here</text><line x1="60" y1="114" x2="300" y2="114" stroke="#1d2bd8" stroke-width="5" stroke-linecap="round" /><text x="320" y="110" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" fill="#15131a">multiply  m·m = m   (and mult-add m✳m = m)</text><text x="320" y="130" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">the axiom of choice (Tarski 1924)</text><line x1="60" y1="182" x2="300" y2="182" stroke="#1d2bd8" stroke-width="5" stroke-linecap="round" /><text x="320" y="178" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" fill="#15131a">add  m + m = m</text><text x="320" y="198" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">strictly weaker than choice</text><text x="180" y="174" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">⇑ needs more choice</text><line x1="60" y1="250" x2="300" y2="250" stroke="#1d2bd8" stroke-width="5" stroke-linecap="round" /><text x="320" y="246" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" fill="#15131a">successor  m + 1 = m</text><text x="320" y="266" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">every infinite set is Dedekind-infinite</text><text x="180" y="242" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5d5a66" text-anchor="middle">⇑ needs more choice</text><text x="60" y="298" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">Choice is the height to which infinite arithmetic goes flat.</text><text x="60" y="316" font-family="Inter,system-ui,sans-serif" font-size="13" fill="#5d5a66">Full choice flattens three rungs; nothing flattens the fourth.</text></svg></div>
+<h3>But the landscape is not a line</h3>
+<p>The grades of choice form a partial order, not a ladder. The Boolean prime ideal theorem and dependent choice are incomparable: Cohen's basic model has the first and an infinite Dedekind-finite set of reals, so not even the successor rung is flat there; Solovay's model has dependent choice and no free ultrafilter on ℕ. The ordered Mostowski model has every set linearly orderable and the prime ideal theorem, yet no rung is flat. The rung ladder is one honest line through a landscape with at least two more independent directions.</p>
+</div>
+</div></section>
+
+<section class="band" id="levers"><div class="wrap">
+<h2>Which levers do real work</h2>
+<table class="stack">
+<thead><tr><th>Lever</th><th>Does it index choice?</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Which rung is flat</td><td>Yes, in three strict steps</td><td>Successor, addition, multiplication. A real one-parameter path, but discrete, and only one direction of the landscape.</td></tr>
+<tr><td>Symmetry group of the atoms</td><td>Yes, as a landscape</td><td>This is how choiceless worlds are actually built: more symmetry, less choice. Its orbit growth also decides what sizes fit between a set and its power set. A group, not a number.</td></tr>
+<tr><td>Height κ of dependent choice</td><td>Yes, as a ladder of cardinals</td><td>Sizes below κ stay rigid. It does not stop sizes falling forever higher up, so it neither opens nor closes the dial.</td></tr>
+<tr><td>q (the weight in a + b + k·ab)</td><td>Only as a two-way switch</td><td>On infinite sizes, k = 0 is the addition rung and every whole k ≥ 1 is the multiplication rung. Fractional or negative k has no meaning for sizes.</td></tr>
+<tr><td>Twist</td><td>No</td><td>Twist measures how far an addition fails to commute. Size arithmetic always commutes, with or without choice, so there is nothing for it to act on. The nearest real lever is the symmetry group above.</td></tr>
+<tr><td>Flow position t</td><td>No</td><td>With choice the flow cannot act on sizes at all. It lives on growth rates, where it is smooth and known.</td></tr>
+</tbody></table>
+</div></section>
+
+<section class="band" id="known"><div class="wrap">
+<h2>What is known and what is new</h2>
+<table class="stack">
+<thead><tr><th>Piece</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>A monotone half step must sit strictly between κ and 2<sup>κ</sup></td><td>Elementary; not found stated</td><td>This page</td></tr>
+<tr><td>2<sup>λ</sup> = λ<sup>+n</sup> for all λ is consistent</td><td>Known</td><td>Merimovich 2007</td></tr>
+<tr><td>Successor is a half power set in the gap-2 world; odd gaps have none</td><td>New observation, easy</td><td>This page, Lean and Python</td></tr>
+<tr><td>No dyadic dial with choice</td><td>New statement, short proof; not found in print</td><td>This page, Lean on a well-ordered scale</td></tr>
+<tr><td>Any order embeds in the sizes without choice, even with DC<sub>κ</sub></td><td>Known</td><td>Jech, Jech–Sochor; Karagila 2014</td></tr>
+<tr><td>fin(X) &lt; P(X) in ZF; the Mostowski order m &lt; fin &lt; 2<sup>m</sup> &lt; seq<sup>1-1</sup></td><td>Known</td><td>Halbeisen–Shelah 1994, 2001</td></tr>
+<tr><td>Half iterate of e<sup>x</sup> − 1 diverges and is not a counting series</td><td>Known</td><td>Baker 1958; OEIS A052104</td></tr>
+<tr><td>Power set count 2·3ⁿ per support in the Mostowski model; "orbit growth o(n) becomes 2<sup>o(n)</sup>"</td><td>Easy computation, likely folklore; the growth reading is my framing</td><td>This page</td></tr>
+<tr><td>Flat multiplication is choice; flat addition and flat successor are strictly weaker</td><td>Known</td><td>Tarski 1924; Howard–Rubin, via Halbeisen–Shelah</td></tr>
+<tr><td>Choice as "how high the rungs go flat"</td><td>New framing of known facts</td><td>This page</td></tr>
+<tr><td>A dial of power sets without choice</td><td>Open, as far as I could find</td><td>No source found either way</td></tr>
+</tbody></table>
+</div></section>
+
+<section class="band" id="verdict"><div class="wrap">
+<h2>Verdicts</h2>
+<div class="verdict">
+<p><b>The fractional power set: a lead worth following.</b> With choice it is settled by this page. Without choice it is a clean, well-posed open question, and the one known obstruction does not apply. The catch is honest: every natural formula for a half step gives fractional or negative counts, so the geometric underpinning you want would have to come from a symmetry group with in-between orbit growth, not from a formula. The next step is concrete: take a group whose orbit counts grow like e<sup>c√n</sup>, build its permutation model, and see whether some set there behaves like a half power set of the atoms.</p>
+</div>
+<div class="verdict">
+<p><b>Choice as a position: a real picture, a modest lead.</b> The rung ladder does index grades of choice, strictly, and it puts the power set exactly where flatness becomes impossible, which fits the fused picture well. But it has only three steps, it is built from classical theorems, and the full landscape has other independent directions. q only reproduces the add-versus-multiply split, and the twist has nothing to act on. The one sub-question worth checking is whether a rung between addition and multiplication, such as ℵ₀·m = m, is its own grade of choice; Howard and Rubin's tables may already answer it.</p>
+</div>
+</div></section>
+
+<section class="band" id="files"><div class="wrap">
+<h2>Proofs and checks</h2>
+<p><b>Lean, core only, no sorry, not yet compiled here</b> (this workspace has no Lean toolchain): 11 theorems in <code>lean/FractionalPowerset.lean</code>.</p>
+<ul>
+<li><code>no_monotone_half_pow2</code>: the finite wall.</li>
+<li><code>half_shift_even</code>, <code>no_half_shift_odd</code>: a monotone square root of "jump d" needs d even.</li>
+<li><code>dial_inflationary</code>, <code>no_dyadic_dial</code>, <code>no_descending</code>, <code>no_descending_wf</code>: the dial argument on a well-ordered scale.</li>
+<li><code>flat_mul_flat_add</code>, <code>flat_add_flat_succ</code>, <code>flat_madd_iff_flat_mul</code>: the rung chain, from rules that hold without choice.</li>
+</ul>
+<p><b>Python: 18 of 18 checks pass</b>, including the half iterate of e<sup>x</sup> − 1 to order 9, the hand-built half step from n = 2 up, the even-jump search, the 2·3ⁿ count two ways, and the 2<sup>2n²</sup> growth for pairs.</p>
+<p><b>Not proved:</b> the ZFC and ZF results are cited, not reproved. The Mostowski computation is argued and checked as combinatorics, not formalised. Tarski's theorem itself is cited.</p>
+<p>Files in <code>math-theory/fractional-powerset/</code>: README.md, checks.py, checks_output.txt, lean/FractionalPowerset.lean, this page.</p>
+<h3>Sources</h3>
+<p class="mute"><a href="https://arxiv.org/abs/math/0005179">Merimovich, A power function with a fixed finite gap everywhere</a>. <a href="https://arxiv.org/abs/1212.4396v4">Karagila, Embedding orders into the cardinals with DCκ</a>. <a href="https://arxiv.org/abs/math/9308220">Halbeisen and Shelah, Consequences of arithmetic for set theory</a>. <a href="https://arxiv.org/pdf/math/0010268">Halbeisen and Shelah, Relations between some cardinals in the absence of the axiom of choice</a>. <a href="https://oeis.org/A052104">OEIS A052104, half iterate of eˣ − 1</a>. <a href="https://www.arxiv.org/pdf/1810.06531">Simon, On ω-categorical structures with few finite substructures</a>. <a href="https://arxiv.org/pdf/math/0212405">Gitik, The power set function</a>.</p>
+</div></section>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+
+</body>
+</html>

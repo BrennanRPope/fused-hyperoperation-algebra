@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fermat Counterexample Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a scientific plate, exact and calm, a companion to Fermat in Pieces.
+   IDEA a sieve: the level of a would-be counterexample, with each prime falling through.
+   PICTURE two sieves side by side, the hypothetical counterexample (only 2 left, nothing lives at level 2) and a real curve (13 sticks).
+   COLOUR white, ink #10131a, prussian for proved, carmine for cited deep steps; night #0f1217.
+   TYPE Literata display + Literata text. LAYOUT title and verdict, sieves full width, then the ladder, the squeeze, the ledger of failed methods. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1217);--ink:light-dark(#10131a,#e6e8ee);--mute:light-dark(#4d5361,#a2a8b6);--line:light-dark(#d9dce3,#2a2f3a);--pr:light-dark(#0b4f8a,#5aa2e6);--prf:light-dark(#e6eef7,#16273a);--ca:light-dark(#b3122e,#ff6b81);--caf:light-dark(#fbe9ec,#3a1820);--panel:light-dark(#f4f6f9,#151a22)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Literata,Georgia,serif;overflow-x:clip}
+h1,h2,h3{font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0 0 .45em}
+h1{font-size:clamp(30px,4.4vw,48px)}h2{font-size:clamp(22px,2.6vw,30px)}h3{font-size:18px;letter-spacing:0}
+p{max-width:70ch;margin:0 0 .9em}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}.wrap{max-width:1240px;margin:0 auto}.panel{background:var(--panel)}
+.lead{font-size:18px}.mute{color:var(--mute)}
+.verdict{border-left:4px solid var(--ca);padding:10px 16px;background:var(--caf);max-width:80ch;margin-top:14px}
+.sieves{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,36px);margin-top:26px}
+.fig{position:relative;min-height:380px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:14px Literata,Georgia,serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+.cap{font-size:14.5px;color:var(--mute);margin-top:8px}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;margin:10px 0 0}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+.sp{background:var(--pr)}.sn{background:var(--prf);border:1.5px solid var(--pr)}.sc{background:var(--caf);border:1.5px solid var(--ca)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;border-bottom:2px solid var(--ink)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--mute)}
+.tag{display:inline-block;font-size:13px;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.tag.p{background:var(--pr);color:var(--bg)}.tag.n{background:var(--prf);color:var(--pr);border:1px solid var(--pr)}.tag.c{background:var(--caf);color:var(--ca);border:1px solid var(--ca)}
+code{font-size:14px;overflow-wrap:anywhere}
+.arrows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:16px 0}
+.arrow{border-top:3px solid var(--ca);padding-top:10px}
+.arrow b{display:block;font-size:18px;margin-bottom:4px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px)}
+@media(max-width:760px){.sieves,.two,.arrows{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<section class="band"><div class="wrap">
+<h1>What a Fermat counterexample would force, and where it breaks</h1>
+<p class="lead">Suppose a<sup>p</sup> + b<sup>p</sup> = c<sup>p</sup> for a prime p ≥ 5. Its Frey curve y² = x(x − a<sup>p</sup>)(x + b<sup>p</sup>) would have to satisfy fourteen properties at once. Ten are elementary and proved in Lean (one leans on a cited formula); four rest on deep theorems. Every odd prime falls out of the curve's level, the prime 2 never does, and level 2 has no room for anything. That collision is the whole proof.</p>
+<div class="verdict"><b>Lead worth following?</b> No. This is a clean map of a proof that is already complete, and nothing here points to new mathematics. Its use is as a lesson in method: the contradiction rests on exactly two facts (odd exponents divisible by p, and level 2 being empty), and every real curve we tried keeps at least one odd prime stuck in its level.</div>
+
+<div class="sieves">
+ <div><div class="fig"><svg id="s1" role="img" aria-label="Sieve for the hypothetical counterexample"></svg></div>
+ <p class="cap">The hypothetical counterexample: conductor rad(abc). Every odd prime has exponent 2p·v in the discriminant, a multiple of p, so Ribet removes it. The prime 2 has exponent 2p·v − 8, never a multiple of p, so it stays. Level 2: the space of weight-2 cusp forms is empty (X₀(2) has genus 0).</p></div>
+ <div><div class="fig"><svg id="s2" role="img" aria-label="Sieve for the real curve from 13 + 243 = 256"></svg></div>
+ <p class="cap">A real curve, from 13 + 3⁵ = 2⁸ (conductor 78, minimal discriminant 2⁸·3¹⁰·13², checked in PARI). Mod 5, the prime 3 falls through (exponent 10), but 13 sticks (exponent 2), so the level lands on 26, where two cusp forms live. No contradiction, as it must be.</p></div>
+</div>
+<div class="key"><span><i class="sw sp"></i>proved in the library before today</span><span><i class="sw sn"></i>proved today (written, awaiting the library's compile)</span><span><i class="sw sc"></i>deep theorem, cited as a named hypothesis</span></div>
+</div></section>
+
+<section class="band panel"><div class="wrap">
+<h2>The ladder: fourteen properties, elementary to deep</h2>
+<div class="scroll"><table class="stack"><thead><tr><th>#</th><th>The Frey curve would have</th><th>Why</th><th>Status</th></tr></thead><tbody id="ladder"></tbody></table></div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Where the properties collide</h2>
+<p>Rows 8 and 9 say the mod-p representation lives at level 2 with weight 2. Row 14 says nothing lives there. Three deep arrows connect them, and the Lean file states each as a field of one structure, <code>DeepArrows</code>, then proves <code>squeeze</code>: no counterexample survives, and <code>flt_of_deep_arrows</code>: Fermat for every n ≥ 3.</p>
+<div class="arrows">
+ <div class="arrow"><b>Wiles</b>The curve is semistable (row 5), so it is modular (Wiles, Taylor–Wiles 1995). Without this there is no cusp form to lower at all.</div>
+ <div class="arrow"><b>Mazur</b>The mod-p representation is irreducible for p ≥ 5, using the full 2-torsion (row 2). This is the arrow real curves escape through.</div>
+ <div class="arrow"><b>Ribet</b>Irreducible and modular, unramified at every odd bad prime (row 8): the level drops to 2 (row 9 stops it there). This is the arrow that consumes the p-th powers.</div>
+</div>
+<div class="two">
+<div><h3>The escape Mazur closes</h3>
+<p>The curve from −125 + 128 = 3 has minimal discriminant 2⁶·3²·5⁶. Mod 3, the exponents at 2 and 5 are multiples of 3, so its level would collapse to 1 where nothing lives either. It survives only because it has a rational 3-isogeny (PARI finds degrees 1, 2, 3, 4, 6, 12 in its class), so its mod-3 representation is reducible and Ribet's arrow does not apply. For the Frey curve with p ≥ 5 Mazur's theorem forbids exactly this.</p></div>
+<div><h3>Why 2 never leaves</h3>
+<p>In the normalised solution a ≡ 3 mod 4 and b is even, so the 2-part of the minimal discriminant is 2^(2p·v − 8) with v = v₂(b) (Lean <code>disc_two_part</code>). Since 2p·v − 8 ≡ −8 mod p and no odd prime divides 8, the exponent is never a multiple of p (<code>two_exponent_not_multiple</code>). So the level is 2, not 1. Either would do; 2 is what the arithmetic gives.</p></div>
+</div>
+</div></section>
+
+<section class="band panel"><div class="wrap">
+<h2>What can't work, and why</h2>
+<p>Each method below proves something real, then stops at a wall. The witness column is the concrete object that shows the wall; most are proved in Lean or checked in <code>checks.py</code>.</p>
+<div class="scroll"><table class="stack"><thead><tr><th>Method</th><th>What it does reach</th><th>Where it stops</th><th>Witness</th></tr></thead><tbody id="fails"></tbody></table></div>
+</div></section>
+
+<section class="band"><div class="wrap two">
+<div><h2>Mult-add's view</h2>
+<p>At each bad prime the curve's smooth points form the multiplicative group, whose chord law is mult-add (proved earlier, FreyPieces 3f). The Frey condition "exponent divisible by p" says Tate's parameter is a p-th power up to a unit, which in mult-add terms is a mult-add p-th power. That is Tate's uniformisation restated: clean, not new. No other step looks simpler on the rungs, and I haven't forced one.</p></div>
+<div><h2>Lean status</h2>
+<p><code>CounterexampleMap.lean</code>: 24 theorems in core Lean, no sorry, deep results only as fields of <code>DeepArrows</code>. It was written without a Lean compiler in this session; every identity was checked in sympy and every number in PARI, and the library thread will compile it after <code>FermatRoute</code> and fix any step Lean rejects. Files: <code>math-theory/fermat-counterexample-map/</code> (README, checks.py, checks_output.txt, lean/).</p></div>
+</div></section>
+
+<script>
+{
+const P='p',N='n',C='c';
+const ladder=[
+['Normalised form: gcd 1, a ≡ 3 mod 4, b even, 32 ∣ b^p','Re-sign and reorder any coprime solution',P,'FreyPieces 2'],
+['Full rational 2-torsion','Roots 0, a^p, −b^p are integers',P,'FreyPieces 3a'],
+['Discriminant 16(abc)^{2p}; minimal Δ = (abc)^{2p}/2⁸','Change of variables with u = 2',P,'FreyPieces 3b–d'],
+['c4 = A²+AB+B², 2c6 = (A−B)(A+2B)(2A+B), c4³ − c6² = 1728Δ','Polynomial identity',N,'A1–A3'],
+['Semistable: only nodes, including at 2','No prime divides both Δ and c4',P,'FreyPieces 3e'],
+['Bad primes = primes of abc, so conductor = rad(abc)','Odd primes cancel from 256Δ; 2 divides both',N,'B1'],
+['j = c4³/Δ in lowest terms: every bad prime is a pole of j','gcd(c4³, Δ) = 1',N,'A4'],
+['Every odd prime\'s exponent in Δ is a multiple of p (p included)','Δ is 2⁻⁸ times a p-th power',P,'FreyPieces 3g'],
+['The exponent of 2 is 2p·v₂(b) − 8, never a multiple of p','p ∤ 8',N,'C1, C2'],
+['Mod-p representation: unramified outside 2p, finite at p, Serre level 2, weight 2','Rows 8–9 through Tate\'s curve',C,'cited'],
+['Irreducible mod p','Mazur 1978, with the 2-torsion',C,'DeepArrows.mazur'],
+['Modular of level rad(abc)','Wiles, Taylor–Wiles 1995',C,'DeepArrows.wiles'],
+['Comes from a weight-2 newform of level 2','Ribet 1990',C,'DeepArrows.ribet'],
+['dim S₂(Γ₀(2)) = genus X₀(2) = 0','Genus formula evaluated (μ 3, ν₂ 1, ν₃ 0, cusps 2); Shimura for dim = genus',N,'D1, D2 + cited']];
+const lab={p:'proved',n:'proved today',c:'cited'};
+document.getElementById('ladder').innerHTML=ladder.map((r,i)=>`<tr><td class="n">${i+1}</td><td>${r[0]}</td><td>${r[1]}</td><td><span class="tag ${r[2]}">${lab[r[2]]}</span> <span class="mute">${r[3]}</span></td></tr>`).join('');
+const fails=[
+['Congruences and local tests','Kill any single fake: 3987¹²+4365¹² vs 4472¹² dies mod 3, 1782¹²+1841¹² vs 1922¹² dies mod 2','No modulus kills every fake: q-adic solutions with abc ≠ 0 always exist','(−1, 32n, −1) passes every normalisation and the equation mod n (fake_passes_mod)'],
+['Sophie Germain / Legendre','Case I (p ∤ abc) for each p with an auxiliary prime; first one listed for every p < 100','Case II (p ∣ abc) escapes every auxiliary prime','x⁵+y⁵=z⁵ forces 11 ∣ xyz (germain_mod_11); mod-q walls for p = 5 at q = 11, 41, 71, 101'],
+['Infinite descent (Fermat, Euler)','n = 4 and n = 3, both proved in the library','Needs unique factorisation in Z[ζ_p], lost from p = 23 (class number 3)','Toy: Z[√−5] has no norm 2 or 3, yet 6 = 2·3 = (1+√−5)(1−√−5) (no_norm_two_three)'],
+['Kummer\'s regular primes','Every regular p','Irregular primes are infinite; not known whether regular ones are','37 ∣ numerator of B₃₂ (irregular_37); 14 irregular primes below 300'],
+['Wieferich-type criteria','Case I unless 2^{p−1} ≡ 1 mod p²','The condition holds for real primes, so it cannot finish','1093 and 3511 (wieferich_1093_3511), the only ones below 10⁶'],
+['Size: the abc conjecture','A Fermat triple has abc < c³, so its abc quality exceeds p/3','abc is unproved; the record quality 1.6299 (Reyssat) sits just under 5/3','An explicit bound c < rad² would leave only p < 6 (explicit_abc_kills)'],
+['Searching for curves directly','Real Frey-like curves from 56,339 triples (p = 5) and 62,456 (p = 7)','Every one keeps an odd prime in its level','Best cases leave one prime: 13 + 3⁵ = 2⁸ keeps 13']];
+document.getElementById('fails').innerHTML=fails.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+
+function sieve(svg,primes,title,result){
+ const draw=()=>{
+  const W=svg.clientWidth,H=svg.clientHeight,n=primes.length;
+  const top=56,mid=H*0.56,bot=H-58,cx=W/2,half=Math.min(W*0.42,240);
+  const xs=primes.map((_,i)=>cx-half+ (2*half)*(i+0.5)/n);
+  let s=`<text x="${cx}" y="26" text-anchor="middle" style="font-weight:600">${title}</text>`;
+  s+=`<path d="M${cx-half-10} ${top+40} L${cx-34} ${mid} L${cx-34} ${mid+8} M${cx+half+10} ${top+40} L${cx+34} ${mid} L${cx+34} ${mid+8}" fill="none" stroke="var(--ink)" stroke-width="2"/>`;
+  s+=`<text x="${cx}" y="${top+30}" text-anchor="middle" class="m" style="fill:var(--mute)">level (primes of the conductor)</text>`;
+  primes.forEach((p,i)=>{
+   const x=xs[i],y=top+8;
+   const col=p.stay?'var(--pr)':'var(--line)';
+   s+=`<circle cx="${x}" cy="${y}" r="15" fill="${p.stay?'var(--prf)':'var(--panel)'}" stroke="${col}" stroke-width="2"/>`;
+   s+=`<text x="${x}" y="${y+5}" text-anchor="middle" style="font-size:13px">${p.q}</text>`;
+   if(!p.stay){s+=`<path d="M${x} ${y+18} L${x} ${y+34}" stroke="var(--mute)" stroke-width="1.5" stroke-dasharray="3 3"/><text x="${x}" y="${y+50}" text-anchor="middle" style="font-size:12px;fill:var(--mute)">${p.why}</text>`;}
+  });
+  const st=primes.filter(p=>p.stay);
+  st.forEach((p,i)=>{const x=cx+(i-(st.length-1)/2)*40,y=mid+34;
+   s+=`<circle cx="${x}" cy="${y}" r="16" fill="var(--prf)" stroke="var(--pr)" stroke-width="2"/><text x="${x}" y="${y+5}" text-anchor="middle">${p.q}</text>`;});
+  s+=`<text x="${cx}" y="${mid+76}" text-anchor="middle">${st.filter(p=>p.why).map(p=>p.q+': '+p.why).join(' · ')}</text>`;
+  s+=`<rect x="${cx-half*0.8}" y="${bot-26}" width="${half*1.6}" height="40" rx="6" fill="${result.bad?'var(--caf)':'var(--prf)'}" stroke="${result.bad?'var(--ca)':'var(--pr)'}" stroke-width="2"/>`;
+  s+=`<text x="${cx}" y="${bot-1}" text-anchor="middle" style="font-weight:600">${result.t}</text>`;
+  svg.innerHTML=s;};
+ const ro=new ResizeObserver(draw);ro.observe(svg);
+}
+sieve(document.getElementById('s1'),[{q:2,stay:1,why:'2pv − 8'},{q:'q₁',why:'2pv₁'},{q:'q₂',why:'2pv₂'},{q:'q₃',why:'2pv₃'},{q:'…',why:'p ∣'}],'Counterexample, mod p',{bad:1,t:'level 2: no forms. Contradiction'});
+sieve(document.getElementById('s2'),[{q:2,stay:1,why:'exp 8'},{q:3,why:'exp 10'},{q:13,stay:1,why:'exp 2'}],'13 + 3⁵ = 2⁸, mod 5',{bad:0,t:'level 26: 2 forms. Fine'});
+}
+</script>
+</body></html>

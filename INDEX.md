@@ -37,6 +37,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Topology (K-theory, Adams operations, Hopf invariant one) | `topics/topology/` | [page](https://claude.ai/artifact/4Nb6GyQBxi8gDNdHbszA26) |
 | Statistics from mult-add | `topics/statistics/` | [page](https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv) |
 | Information theory | `topics/information-theory/` | [page](https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v) |
+| Fractional power sets and choice grades | `topics/fractional-powerset/` | [page](https://claude.ai/artifact/94mPKskoy8QKXDumoDjRb7) |
 
 ## Fourteen branches of math
 
@@ -67,6 +68,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Elliptic curves lead | `topics/elliptic/` | [page](https://claude.ai/artifact/JhsmEQaHNRhZ9t5Ph5RZ6y) |
 | The birth of a prime (Claude Doc) | `topics/primes/` | [page](https://claude.ai/artifact/SisvRHEDreffPYfN8mD1ch) |
 | q across knots, primes, counting and physics | `topics/q-across/` | [page](https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL) |
+| Fermat counterexample map (Wiles, Ribet, Mazur and genus steps are named assumptions in Lean, not proofs) | `topics/fermat-counterexample-map/` | [page](https://claude.ai/artifact/G1nEFedgkjtv7X5ehD3ber) |
 | Unsolved problems through the mult-add lens | (page only) | [page](https://claude.ai/artifact/FkH6Zb3JS7URmP7S46HWoz) |
 
 ## Computation
