@@ -1,0 +1,18 @@
+original	status	new_name	note
+redshift_compose	dropped	MultAdd.one_add_multAdd	same statement (sides swapped), in Basic for any semiring
+redshift_power	dropped	MultAdd.one_add_mpow	same statement (sides swapped), in Basic for any semiring
+redshift_compose_int	dropped	MultAdd.one_add_multAdd	the ℤ case of the semiring lemma, with ✳ unfolded (MultAdd.multAdd_def)
+cube_layers	ported	DarkSector.cube_layers	any commutative semiring (original over ℕ)
+cube_is_mpow3	ported	DarkSector.mpow_three	renamed; any commutative semiring
+lcdm_is_weighted_cube	ported	DarkSector.lcdm_is_weighted_cube	any commutative ring (original over ℚ); right side written 1 + Om * mpow z 3, equal to the original by mpow_three
+multAdd_growth_is_exponential	ported	DarkSector.multAdd_growth_is_exponential	stays on ℕ
+fexp_growth_trivial	ported	DarkSector.fexp_growth_trivial	
+fexp_growth_trivial'	ported	DarkSector.fexp_growth_trivial'	
+pow_growth_trivial	ported	DarkSector.pow_growth_trivial	
+multAdd_ge_add	ported	DarkSector.add_le_multAdd	renamed; any ordered semiring, with the hypotheses 0 ≤ a, 0 ≤ b (automatic on ℕ)
+foldMA_ge_sum	ported	DarkSector.sum_le_multAddList	renamed; any ordered semiring, with the hypothesis that the entries are nonnegative (automatic on ℕ)
+corner_le_quarter	ported	DarkSector.corner_le_quarter	any linearly ordered commutative ring; one line from mathlib's four_mul_le_sq_add
+minv_lift	ported	DarkSector.one_add_mul_one_add_of_multAdd_eq_zero	renamed; any semiring; hypothesis written x ✳ y = 0
+mu_is_neg_minv	ported	DarkSector.mu_is_neg_minv	any commutative ring; hypothesis written x ✳ y = 0
+simple_mond_square	ported	DarkSector.simple_mond_square	any semiring
+deep_mond_square	ported	DarkSector.deep_mond_square	any monoid
