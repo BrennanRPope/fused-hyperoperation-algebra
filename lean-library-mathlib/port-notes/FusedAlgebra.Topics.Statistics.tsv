@@ -1,0 +1,138 @@
+original	status	new_name	note
+IsInd	mathlib	IsIdempotentElem	x * x = x
+ind_cases	mathlib	IsIdempotentElem.iff_eq_zero_or_one	needs no zero divisors, as in the original over ℚ
+and_ind	mathlib	IsIdempotentElem.mul	
+or_ind	ported	StatFused.or_ind	any commutative ring; from IsIdempotentElem.add_sub_mul
+xor_ind	ported	StatFused.xor_ind	any commutative ring
+not_ind	mathlib	IsIdempotentElem.one_sub	
+or_table	ported	StatFused.or_table	any commutative ring
+xor_table	ported	StatFused.xor_table	any commutative ring
+count_table	ported	StatFused.count_table	any commutative ring
+sq_diff_is_xor	ported	StatFused.sq_diff_is_xor	any commutative ring
+de_morgan	ported	StatFused.de_morgan	any commutative ring
+de_morgan_and	ported	StatFused.de_morgan_and	any commutative ring
+xor_complement	ported	StatFused.xor_complement	any commutative ring
+unionL	ported	StatFused.unionL	now l.foldr (wAdd (-1)) 0; any commutative ring
+union_misses	ported	StatFused.one_sub_unionL	renamed
+union_neg_foldMA	ported	StatFused.unionL_eq_neg_multAddList	renamed
+inclusion_exclusion	ported	StatFused.inclusion_exclusion	with List.sublists', List.prod, List.sum
+groups_map	mathlib	List.sublists'_map	
+incl_excl_two	ported	StatFused.unionL_pair	renamed
+Ex	ported	StatFused.expect	renamed (lowerCamelCase); now a List.sum; weights in any commutative ring
+Ex_add	ported	StatFused.expect_add	
+Ex_sub	ported	StatFused.expect_sub	
+Ex_smul	ported	StatFused.expect_const_mul	renamed
+Ex_const	ported	StatFused.expect_const	
+Ex_congr	dropped	funext	rewriting under the function argument is funext / congr; no lemma needed
+Ex_sumL	ported	StatFused.expect_list_sum	renamed
+union_general	ported	StatFused.union_general	
+union_lift	ported	StatFused.union_lift	
+union_disjoint	ported	StatFused.union_disjoint	
+xor_lift	ported	StatFused.xor_lift	
+cov_is_corner_excess	ported	StatFused.cov_is_corner_excess	
+sgn	dropped	(-1) ^ g.length	the sign of a corner is written (-1) ^ g.length directly
+prodL_neg_sgn	mathlib	List.prod_map_neg	
+union_corners	ported	StatFused.union_corners	sign written (-1) ^ g.length
+allOf	ported	StatFused.allOf	
+sgn_map	mathlib	List.length_map	with sgn replaced by (-1) ^ length
+inclusion_exclusion_general	ported	StatFused.inclusion_exclusion_general	sign written (-1) ^ g.length
+NDist	ported	StatFused.NDist	now takes the ring: NDist R
+gen	ported	StatFused.gen	now a List.sum
+nshift	ported	StatFused.nshift	
+nconv	ported	StatFused.nconv	now a List.flatMap
+gen_append	ported	StatFused.gen_append	
+gen_nshift	ported	StatFused.gen_nshift	
+gen_conv	ported	StatFused.gen_nconv	renamed after the operation nconv
+kmoment_law	ported	StatFused.kmoment_law	
+nbern	ported	StatFused.nbern	
+bern_kmoment	ported	StatFused.bern_kmoment	
+heads	ported	StatFused.heads	now a List.foldr
+foldW	ported	StatFused.foldW	now a List.foldr; new foldW_neg_one : foldW (-1) = unionL
+heads_kmoment	ported	StatFused.heads_kmoment	
+heads_none	ported	StatFused.heads_none	
+heads_parity	ported	StatFused.heads_parity	
+pw_neg_one_parity	mathlib	neg_one_pow_eq_ite	also Even.neg_one_pow, Odd.neg_one_pow
+pEven	ported	StatFused.pEven	x % 2 = 0 written Even x
+pOdd	ported	StatFused.pOdd	x % 2 = 0 written Even x
+gen_neg_one	ported	StatFused.gen_neg_one	
+pZero	ported	StatFused.pZero	
+gen_zero	ported	StatFused.gen_zero	
+binom	ported	StatFused.binom	
+binom_kmoment	ported	StatFused.binom_kmoment	
+litCorners	ported	StatFused.litCorners	Finset sum of Nat.choose
+gen_is_lit_corners	ported	StatFused.gen_eq_litCorners	renamed
+bp	ported	StatFused.bp	
+bp_zero_col	ported	StatFused.bp_zero_col	now a corollary of bp_layers
+bp_above	ported	StatFused.bp_above	now a corollary of bp_layers
+bp_layers	ported	StatFused.bp_layers	strengthened: the hypothesis j ≤ n is dropped (both sides are 0 above the diagonal)
+Dist	ported	StatFused.Dist	now takes the ring: Dist R
+mass	ported	StatFused.moment	mass d = moment 0 d; one definition moment r for all the moments
+m1	ported	StatFused.moment	m1 d = moment 1 d
+m2	ported	StatFused.moment	m2 d = moment 2 d
+m3	ported	StatFused.moment	m3 d = moment 3 d
+m4	ported	StatFused.moment	m4 d = moment 4 d
+shift	ported	StatFused.shift	
+conv	ported	StatFused.conv	now a List.flatMap
+mass_append	ported	StatFused.moment_append	r = 0
+m1_append	ported	StatFused.moment_append	r = 1
+m2_append	ported	StatFused.moment_append	r = 2
+m3_append	ported	StatFused.moment_append	r = 3
+m4_append	ported	StatFused.moment_append	r = 4
+mass_shift	ported	StatFused.moment_shift	r = 0 of the general statement (every r, Pascal row r)
+m1_shift	ported	StatFused.moment_shift	r = 1; evaluate with simp [moment_shift, Finset.sum_range_succ]
+m2_shift	ported	StatFused.moment_shift	r = 2
+m3_shift	ported	StatFused.moment_shift	r = 3
+m4_shift	ported	StatFused.moment_shift	r = 4
+mass_conv	ported	StatFused.moment_zero_conv	corollary of the new general moment_conv
+m1_conv	ported	StatFused.moment_one_conv	corollary of moment_conv
+m2_conv	ported	StatFused.moment_two_conv	corollary of moment_conv
+m3_conv	ported	StatFused.moment_three_conv	corollary of moment_conv
+m4_conv	ported	StatFused.moment_four_conv	corollary of moment_conv
+k2	ported	StatFused.k2	written with ^
+k3	ported	StatFused.k3	written with ^
+k4	ported	StatFused.k4	written with ^
+mean_add	ported	StatFused.mean_add	
+var_add	ported	StatFused.var_add	
+k3_add	ported	StatFused.k3_add	
+k4_add	ported	StatFused.k4_add	
+point0	dropped	[(0, 1)]	used once, inlined in convPow
+convPow	ported	StatFused.convPow	
+convPow_mass	ported	StatFused.convPow_mass	
+convPow_mean	ported	StatFused.convPow_mean	
+convPow_k2	ported	StatFused.convPow_k2	
+convPow_k3	ported	StatFused.convPow_k3	
+convPow_k4	ported	StatFused.convPow_k4	
+scale	ported	StatFused.scale	
+scale_m	ported	StatFused.moment_scale	generalised to every r: moment r (scale c d) = c ^ r * moment r d
+scale_k	ported	StatFused.k2_scale	the conjunction is split: k2_scale, k3_scale, k4_scale
+skewSq	ported	StatFused.skewSq	any field; written with ^
+kurt	ported	StatFused.kurt	any field; written with ^
+skewSq_scale	ported	StatFused.skewSq_scale	any field
+kurt_scale	ported	StatFused.kurt_scale	any field
+clt_skew	ported	StatFused.clt_skew	any field of characteristic 0; 0 < n written n ≠ 0
+clt_kurt	ported	StatFused.clt_kurt	any field of characteristic 0; 0 < n written n ≠ 0
+bern	ported	StatFused.bern	
+bern_stats	ported	StatFused.k2_bern	the conjunction is split: moment_zero_bern, moment_one_bern, k2_bern, k3_bern, k4_bern
+bern_var_parity	ported	StatFused.bern_var_parity	any field with 2 ≠ 0
+binom_mean_var	ported	StatFused.binom_mean_var	
+fair_coin_kurt	ported	StatFused.fair_coin_kurt	any field of characteristic 0; 0 < n written n ≠ 0
+odds	ported	StatFused.odds	any field
+bayes_odds	ported	StatFused.bayes_odds	any field; the unused hypotheses p ≠ 0 and lH ≠ 0 are dropped
+evidence_multAdd	ported	StatFused.evidence_multAdd	any commutative ring
+repeated_evidence	ported	StatFused.repeated_evidence	any commutative ring
+complement_is_inverse	ported	StatFused.complement_is_inverse	any field
+complement_cancels	ported	StatFused.complement_cancels	any field
+pool	ported	StatFused.pool	any field
+pool_velocity	ported	StatFused.pool_velocity	any field with 2 ≠ 0 (the statement is false in characteristic 2)
+pool_odds	ported	StatFused.pool_odds	any field
+amh	ported	StatFused.amh	any field
+lens	ported	StatFused.lens	any field
+amh_union_is_lens	ported	StatFused.amh_union_is_lens	any field
+amh_walls	ported	StatFused.amh_walls	any commutative ring
+amh_lens_multiplies	ported	StatFused.amh_lens_multiplies	any field
+amh_independent	ported	StatFused.amh_independent	any field
+amh_velocity	ported	StatFused.amh_velocity	any field
+amh_cusp	ported	StatFused.amh_cusp	any commutative ring
+amh_line	ported	StatFused.amh_line	any commutative ring
+certainty_absorbs_iff	ported	StatFused.certainty_absorbs_iff	any field
+amh_zero	ported	StatFused.amh_zero	any field
