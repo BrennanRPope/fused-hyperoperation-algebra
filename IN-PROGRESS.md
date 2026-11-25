@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,125 theorems in 129 modules, synced Nov 25 ~21:45 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,164 theorems in 132 modules, synced Nov 25 ~22:10 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -23,8 +23,8 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/patterns/`
 - `topics/shape-directions/`
 
-Nothing finished is waiting to be added as of Nov 25, 17:15 UTC. README.md "Promising leads" tracks where each lead stands.
+Full audit of the working folder against main, Nov 25 ~22:00 UTC: everything with content is now in the repo. No drafts are left: the one folder still being written during the audit, `topics/fractional-rungs/e-every-height/`, was finished before the push. README.md "Promising leads" tracks where each lead stands.
 
-A port of the Lean library to mathlib is happening on a separate branch, not on main.
+A port of the Lean library to mathlib is on the separate branch `mathlib-port`, not merged into main. The Mathlib build check runs on that branch (and builds it green on GitHub); no pull request to Mathlib is planned until the theory is more complete.
 
 When syncing again, copy the current state of every folder and update INDEX.md.

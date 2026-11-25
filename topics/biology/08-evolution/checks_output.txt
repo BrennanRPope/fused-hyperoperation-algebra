@@ -1,0 +1,15 @@
+PASS haploid selection p' = p(1 + s)/(1 + sp) multiplies the allele's odds by 1 + s
+PASS two selective stages (survival then fecundity) act as one stage with s = s₁ ∘₁ s₂
+PASS t generations of constant selection are one step with s_t = mpow(s, t) | s = 0.15, 40 generations: odds × 268
+PASS the additive and multiplicative 'no epistasis' nulls are dial 0 and dial 1; epistasis against the multiplicative null is ε = (k − 1)·s₁s₂
+PASS if every mutation's effect is linear in background fitness with slope c_j = k·a_j, adding mutations in either order gives the same genotype
+PASS …and that is the dial: x + Δ_j(x) = x ∘_k a_j, so the fitness of any genotype is the dial-sum of its mutations' effects
+PASS all 720 orders of six mutations reach one fitness (50 random orders checked) | fitness 0.2697
+PASS conversely, a common slope for every mutation (beneficial and deleterious alike) gives different fitness for the same genotype depending on order | largest order gap 0.0201 in excess fitness
+PASS at the wall x = −1/k every mutation is neutral: all the lines Δ_j(x) cross zero at one background fitness | k = -1.8: wall at excess fitness 0.556
+PASS past the wall every mutation flips sign: beneficial ones turn deleterious and vice versa (sign epistasis for all at once)
+PASS in noisy simulated data the fitted slope/intercept ratio is the same for every mutation, the test the dial puts to global-epistasis data | ratios [-1.83, -1.77, -1.84, -1.83], true k = -1.8
+PASS Haldane–Muller load: loads at many loci combine by the 'or' law, and n loci of load U/n give wpow(−1, U/n, n) → 1 − e^(−U) | U = 0.5: load 0.3935
+PASS a diploid's homozygous effect is the dial-sum of its two heterozygous copies: s = (hs) ∘_k (hs) with k = (1 − 2h)/(h²s); additivity h = ½ is k = 0 | h = 0.3, s = 0.2: k = 22.22
+
+13/13 checks passed

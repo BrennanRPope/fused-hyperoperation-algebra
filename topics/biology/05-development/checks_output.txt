@@ -1,0 +1,17 @@
+PASS logistic: size/asymptote = 1 + mpow(x(t), −1/ν) with x(t) decaying exponentially
+PASS von Bertalanffy: size/asymptote = 1 + mpow(x(t), −1/ν) with x(t) decaying exponentially
+PASS Richards ν = 0.5: size/asymptote = 1 + mpow(x(t), −1/ν) with x(t) decaying exponentially
+PASS Richards ν = 2: size/asymptote = 1 + mpow(x(t), −1/ν) with x(t) decaying exponentially
+PASS logistic (ν = 1) is the circle-operation inverse: y/K = 1 + inv(x), the same saturation as Michaelis–Menten
+PASS Gompertz is the ν → 0 end of the family
+PASS Gompertz in discrete time: each step is the circle-operation power x ↦ (1+x)^λ − 1, λ = e^(−r)
+PASS powers compose: mpow(mpow(x, a), b) = mpow(x, a·b), so n steps are one power λⁿ
+   soybean leaf weight per plant (g): ν = 2.54, power −1/ν = -0.39; p(logistic) = 0.0048, p(Gompertz) = 1.7e-08, p(von Bertalanffy) = 1.9e-11
+   loblolly pine height (ft): ν = -0.81, power −1/ν = 1.24; p(logistic) = 0, p(Gompertz) = 1.4e-07, p(von Bertalanffy) = 0.00053
+   orange tree trunk circumference (mm): ν = 0.93, power −1/ν = -1.08; p(logistic) = 0.97, p(Gompertz) = 0.57, p(von Bertalanffy) = 0.43
+PASS orange trees: the data cannot tell logistic, Gompertz and von Bertalanffy apart (all p > 0.05)
+PASS soybean and loblolly reject all three named shapes (pooled curves)
+PASS the three data sets do not share one exponent: fitted ν spans more than 1 | Soybean 2.54, Loblolly -0.81, Orange 0.93
+PASS allometry y = b·x^α: the growth of y is the circle-operation power of the growth of x
+
+12/12 checks passed

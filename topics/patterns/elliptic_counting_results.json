@@ -1,0 +1,124 @@
+{
+ "checks": [
+  {
+   "name": "y\u00b2 + y = x\u00b3 \u2212 x is smooth (discriminant \u2260 0)",
+   "ok": true,
+   "detail": "\u0394 = 37"
+  },
+  {
+   "name": "its counting sequence is whole numbers: 1, 1, \u22121, 1, 2, \u22121, \u22123, \u22125, 7, \u22124, \u221223, 29, 59, \u2026",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "x(nP) = x(P) \u2212 W(n\u22121)W(n+1)/W(n)\u00b2, n = 2..24 (exact)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "the EDS recurrence W(m+n)W(m\u2212n) = W(m+1)W(m\u22121)W(n)\u00b2 \u2212 W(n+1)W(n\u22121)W(m)\u00b2 holds",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "strong divisibility gcd(W_m, W_n) = |W_gcd(m,n)|, like Fibonacci",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "it is a Somos-4 sequence: W(n+4)W(n) = W(n+3)W(n+1) + W(n+2)\u00b2 (since W2 = 1, W1\u00b7W3 = \u22121); its odd terms are the classic Somos-4 numbers 1, 1, 2, 3, 7, 23, 59 up to sign",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "on every landscape law tested, the curve's EDS = Lucas sequence \u00d7 gauge A^(n\u00b2\u22121)B^(n\u22121)",
+   "ok": true,
+   "detail": "the circle operation, velocity, slope, Fibonacci law, Euler char., a random law"
+  },
+  {
+   "name": "Lucas: Q\u00b7U(m+4)U(m) = U(m+3)U(m+1)U(2)\u00b2 \u2212 U(3)U(1)U(m+2)\u00b2 (the q = 0 edge of Somos-4)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "theta along a line, W(n) = \u03b8(n\u00b7z) with gluing q, satisfies the EDS recurrence",
+   "ok": true,
+   "detail": "worst rel. error 3.1e-11"
+  },
+  {
+   "name": "at q = 0 the theta collapses to w\u207f\u141f\u00b2 \u2212 w\u207b\u207f\u141f\u00b2, a Lucas sequence (Q = 1) up to gauge",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "y\u00b2 + y = x\u00b3 \u2212 x\u00b2 has a rational point of order 5: W5 = 0 and 5P = O",
+   "ok": true,
+   "detail": "W1..W6 = [1, 1, -1, -1, 0, 1]"
+  },
+  {
+   "name": "the 5-torsion family's discriminant is b\u2075(b\u00b2 \u2212 11b \u2212 1)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "so it pinches to a node exactly at b = \u03c6\u2075 = 11.09 and b = \u2212\u03c6\u207b\u2075 = \u22120.090: golden",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "at both golden nodes the order-5 point becomes a 5-cycle of a line law with turn number \u03c6\u00b2 or 1/\u03c6\u00b2",
+   "ok": true,
+   "detail": "b=11.0902: law k=10.0902, q=31.6525, turn number 0.381966; b=-0.0902: law k=-1.0902, q=0.3475, turn number 2.618034"
+  },
+  {
+   "name": "Ramanujan: 1/R\u2075 \u2212 11 \u2212 R\u2075 = q\u207b\u00b9\u220f(1\u2212q\u207f)\u2076/(1\u2212q\u2075\u207f)\u2076, the same b\u00b2 \u2212 11b \u2212 1 with b = \u2212R\u2075",
+   "ok": true,
+   "detail": "worst rel. error 1.5e-14"
+  },
+  {
+   "name": "the 5-fold curve with b = \u2212R(q)\u2075 is the Tate curve with gluing q\u2075 (same j-invariant)",
+   "ok": true,
+   "detail": "worst rel. error 1.2e-12"
+  },
+  {
+   "name": "as the gluing tightens (q \u2192 1), R(q) \u2192 1/\u03c6, so b \u2192 \u2212\u03c6\u207b\u2075: the golden pinch",
+   "ok": true,
+   "detail": "R(0.9) = 0.618033988750; R(0.99) = 0.618033988750; 1/\u03c6 = 0.618033988750"
+  }
+ ],
+ "data": {
+  "eds_smooth": [
+   0,
+   1,
+   1,
+   -1,
+   1,
+   2,
+   -1,
+   -3,
+   -5,
+   7,
+   -4,
+   -23,
+   29,
+   59,
+   129,
+   -314,
+   -65,
+   1529,
+   -3689,
+   -8209,
+   -16264,
+   83313,
+   113689,
+   -620297,
+   2382785,
+   7869898
+  ],
+  "golden_nodes": [
+   "b=11.0902: law k=10.0902, q=31.6525, turn number 0.381966",
+   "b=-0.0902: law k=-1.0902, q=0.3475, turn number 2.618034"
+  ]
+ },
+ "summary": "17 of 17 checks pass"
+}

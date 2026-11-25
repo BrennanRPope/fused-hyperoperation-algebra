@@ -1,0 +1,15 @@
+PASS Rescorla–Wagner learning ΔV = αβ(λ − V) gives V_n = λ·wpow(−1, αβ, n): the learning curve is the 'or' power | after 10 trials V = 0.803
+PASS two training phases of n₁ and n₂ trials compose by the 'or' law: wpow(−1, a, n₁ + n₂) = wpow(−1, a, n₁) ∘₋₁ wpow(−1, a, n₂)
+PASS a compound of two cues learns its summed strength as one cue with rate α₁ + α₂ (shared prediction error)
+PASS blocking: a cue pretrained near λ leaves almost nothing for a new cue added later | new cue reaches 0.010 of λ
+PASS hyperbolic discounting d = 1/(1 + kD): the 'interest' u = 1/d − 1 = kD adds over split delays, dial 0
+PASS exponential discounting: u composes by plain ∘₁ over split delays, dial 1, the only time-consistent case
+PASS subadditivity: discounting a hyperbolic delay in two pieces discounts more than in one, by exactly k²D₁D₂ in 1/d | k = 0.4, delays 3 + 5: 1/d grows by 2.40
+PASS any discount that composes over split delays by one fixed dial κ has u(D) = (e^(cD) − 1)/κ: exponential measured from the wall −1/κ
+PASS …κ = 1 is exponential and κ → 0 with c/κ = k held fixed is hyperbolic
+PASS Loewenstein–Prelec's generalised hyperbola (1 + αD)^(−β/α) is 1/(1 + mpow(αD, β/α)); α = β is hyperbolic and α → 0 exponential
+PASS hyperbolic discounting reverses preferences as both options recede, exponential never does
+PASS many eyes: a group of n vigilant animals spots a predator with wpow(−1, p, n) | p = 0.2, n = 6: 0.738
+PASS Herrnstein's hyperbola R = k·r/(r + r_e) is k times −inv(r/r_e), saturation again
+
+13/13 checks passed

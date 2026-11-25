@@ -1,0 +1,1323 @@
+{
+ "body": {
+  "order": [
+   "rod",
+   "rect",
+   "hyper",
+   "box",
+   "point",
+   "cube"
+  ],
+  "back": 171,
+  "total": 637,
+  "null_mean": 0.4395890974750393,
+  "null_sd": 0.015824200142380986,
+  "pairs": [
+   {
+    "a": "rod",
+    "b": "rect",
+    "fwd": 82,
+    "back": 41
+   },
+   {
+    "a": "rod",
+    "b": "hyper",
+    "fwd": 42,
+    "back": 3
+   },
+   {
+    "a": "rod",
+    "b": "box",
+    "fwd": 43,
+    "back": 9
+   },
+   {
+    "a": "rod",
+    "b": "point",
+    "fwd": 16,
+    "back": 16
+   },
+   {
+    "a": "rod",
+    "b": "cube",
+    "fwd": 87,
+    "back": 43
+   },
+   {
+    "a": "rect",
+    "b": "hyper",
+    "fwd": 44,
+    "back": 17
+   },
+   {
+    "a": "rect",
+    "b": "box",
+    "fwd": 40,
+    "back": 7
+   },
+   {
+    "a": "rect",
+    "b": "point",
+    "fwd": 3,
+    "back": 4
+   },
+   {
+    "a": "rect",
+    "b": "cube",
+    "fwd": 58,
+    "back": 12
+   },
+   {
+    "a": "hyper",
+    "b": "box",
+    "fwd": 13,
+    "back": 8
+   },
+   {
+    "a": "hyper",
+    "b": "point",
+    "fwd": 0,
+    "back": 0
+   },
+   {
+    "a": "hyper",
+    "b": "cube",
+    "fwd": 22,
+    "back": 2
+   },
+   {
+    "a": "box",
+    "b": "point",
+    "fwd": 2,
+    "back": 1
+   },
+   {
+    "a": "box",
+    "b": "cube",
+    "fwd": 11,
+    "back": 7
+   },
+   {
+    "a": "point",
+    "b": "cube",
+    "fwd": 3,
+    "back": 1
+   }
+  ]
+ },
+ "action": {
+  "order": [
+   "plain",
+   "repeat",
+   "explode",
+   "collapse",
+   "measure",
+   "swap",
+   "regroup",
+   "dial",
+   "flatten",
+   "squash",
+   "tally"
+  ],
+  "back": 331,
+  "total": 1208,
+  "null_mean": 0.41646980595923183,
+  "null_sd": 0.014414399396574788,
+  "pairs": [
+   {
+    "a": "plain",
+    "b": "repeat",
+    "fwd": 11,
+    "back": 10
+   },
+   {
+    "a": "plain",
+    "b": "explode",
+    "fwd": 82,
+    "back": 37
+   },
+   {
+    "a": "plain",
+    "b": "collapse",
+    "fwd": 78,
+    "back": 15
+   },
+   {
+    "a": "plain",
+    "b": "measure",
+    "fwd": 5,
+    "back": 10
+   },
+   {
+    "a": "plain",
+    "b": "swap",
+    "fwd": 49,
+    "back": 10
+   },
+   {
+    "a": "plain",
+    "b": "regroup",
+    "fwd": 27,
+    "back": 3
+   },
+   {
+    "a": "plain",
+    "b": "dial",
+    "fwd": 14,
+    "back": 1
+   },
+   {
+    "a": "plain",
+    "b": "flatten",
+    "fwd": 4,
+    "back": 4
+   },
+   {
+    "a": "plain",
+    "b": "squash",
+    "fwd": 24,
+    "back": 10
+   },
+   {
+    "a": "plain",
+    "b": "tally",
+    "fwd": 8,
+    "back": 3
+   },
+   {
+    "a": "repeat",
+    "b": "explode",
+    "fwd": 41,
+    "back": 21
+   },
+   {
+    "a": "repeat",
+    "b": "collapse",
+    "fwd": 21,
+    "back": 3
+   },
+   {
+    "a": "repeat",
+    "b": "measure",
+    "fwd": 6,
+    "back": 2
+   },
+   {
+    "a": "repeat",
+    "b": "swap",
+    "fwd": 3,
+    "back": 1
+   },
+   {
+    "a": "repeat",
+    "b": "regroup",
+    "fwd": 14,
+    "back": 2
+   },
+   {
+    "a": "repeat",
+    "b": "dial",
+    "fwd": 10,
+    "back": 0
+   },
+   {
+    "a": "repeat",
+    "b": "flatten",
+    "fwd": 6,
+    "back": 0
+   },
+   {
+    "a": "repeat",
+    "b": "squash",
+    "fwd": 15,
+    "back": 1
+   },
+   {
+    "a": "repeat",
+    "b": "tally",
+    "fwd": 3,
+    "back": 0
+   },
+   {
+    "a": "explode",
+    "b": "collapse",
+    "fwd": 40,
+    "back": 29
+   },
+   {
+    "a": "explode",
+    "b": "measure",
+    "fwd": 10,
+    "back": 8
+   },
+   {
+    "a": "explode",
+    "b": "swap",
+    "fwd": 20,
+    "back": 11
+   },
+   {
+    "a": "explode",
+    "b": "regroup",
+    "fwd": 10,
+    "back": 21
+   },
+   {
+    "a": "explode",
+    "b": "dial",
+    "fwd": 16,
+    "back": 22
+   },
+   {
+    "a": "explode",
+    "b": "flatten",
+    "fwd": 12,
+    "back": 2
+   },
+   {
+    "a": "explode",
+    "b": "squash",
+    "fwd": 79,
+    "back": 10
+   },
+   {
+    "a": "explode",
+    "b": "tally",
+    "fwd": 8,
+    "back": 2
+   },
+   {
+    "a": "collapse",
+    "b": "measure",
+    "fwd": 8,
+    "back": 5
+   },
+   {
+    "a": "collapse",
+    "b": "swap",
+    "fwd": 17,
+    "back": 18
+   },
+   {
+    "a": "collapse",
+    "b": "regroup",
+    "fwd": 15,
+    "back": 6
+   },
+   {
+    "a": "collapse",
+    "b": "dial",
+    "fwd": 8,
+    "back": 8
+   },
+   {
+    "a": "collapse",
+    "b": "flatten",
+    "fwd": 26,
+    "back": 5
+   },
+   {
+    "a": "collapse",
+    "b": "squash",
+    "fwd": 26,
+    "back": 8
+   },
+   {
+    "a": "collapse",
+    "b": "tally",
+    "fwd": 5,
+    "back": 3
+   },
+   {
+    "a": "measure",
+    "b": "swap",
+    "fwd": 8,
+    "back": 0
+   },
+   {
+    "a": "measure",
+    "b": "regroup",
+    "fwd": 2,
+    "back": 2
+   },
+   {
+    "a": "measure",
+    "b": "dial",
+    "fwd": 2,
+    "back": 1
+   },
+   {
+    "a": "measure",
+    "b": "flatten",
+    "fwd": 8,
+    "back": 1
+   },
+   {
+    "a": "measure",
+    "b": "squash",
+    "fwd": 3,
+    "back": 2
+   },
+   {
+    "a": "measure",
+    "b": "tally",
+    "fwd": 3,
+    "back": 3
+   },
+   {
+    "a": "swap",
+    "b": "regroup",
+    "fwd": 44,
+    "back": 12
+   },
+   {
+    "a": "swap",
+    "b": "dial",
+    "fwd": 7,
+    "back": 1
+   },
+   {
+    "a": "swap",
+    "b": "flatten",
+    "fwd": 1,
+    "back": 1
+   },
+   {
+    "a": "swap",
+    "b": "squash",
+    "fwd": 13,
+    "back": 3
+   },
+   {
+    "a": "swap",
+    "b": "tally",
+    "fwd": 1,
+    "back": 0
+   },
+   {
+    "a": "regroup",
+    "b": "dial",
+    "fwd": 8,
+    "back": 1
+   },
+   {
+    "a": "regroup",
+    "b": "flatten",
+    "fwd": 20,
+    "back": 2
+   },
+   {
+    "a": "regroup",
+    "b": "squash",
+    "fwd": 4,
+    "back": 0
+   },
+   {
+    "a": "regroup",
+    "b": "tally",
+    "fwd": 0,
+    "back": 0
+   },
+   {
+    "a": "dial",
+    "b": "flatten",
+    "fwd": 2,
+    "back": 0
+   },
+   {
+    "a": "dial",
+    "b": "squash",
+    "fwd": 19,
+    "back": 3
+   },
+   {
+    "a": "dial",
+    "b": "tally",
+    "fwd": 1,
+    "back": 0
+   },
+   {
+    "a": "flatten",
+    "b": "squash",
+    "fwd": 8,
+    "back": 7
+   },
+   {
+    "a": "flatten",
+    "b": "tally",
+    "fwd": 0,
+    "back": 0
+   },
+   {
+    "a": "squash",
+    "b": "tally",
+    "fwd": 2,
+    "back": 1
+   }
+  ]
+ },
+ "ex_cube_rod": [
+  {
+   "needed": "AbstractAlgebra.nilpotent_weight_inverse",
+   "user": "AbstractAlgebra.nilpotent_weight_group",
+   "stmt": "wAdd k a (-a * geom (-(k * a)) m) = 0",
+   "ustmt": "CommGroupLaws (wAdd k) 0"
+  },
+  {
+   "needed": "AbstractAlgebra.tate_glue",
+   "user": "AbstractAlgebra.tateQ_glued",
+   "stmt": "tateRel q a 0",
+   "ustmt": "(Quotient.mk (tateSetoid q) a : TateQ q) = TateQ.zero q"
+  },
+  {
+   "needed": "Combinatorics.painted_subsets",
+   "user": "Combinatorics.alternating_corners",
+   "stmt": "sumL ((groups (List.replicate n k)).map prodL) = (1 + k) ^ n",
+   "ustmt": "sumL ((groups (List.replicate (n + 1) (-1 : Int))).map prodL) = 0"
+  },
+  {
+   "needed": "CounterexampleMap.DeepArrows.mazur",
+   "user": "CounterexampleMap.squeeze",
+   "stmt": "CounterexampleMap.Counterexample p a b c \u2192 self.Irreducible p a b c",
+   "ustmt": "\u2200 p a b c, \u00ac Counterexample p a b c"
+  },
+  {
+   "needed": "CounterexampleMap.DeepArrows.ribet",
+   "user": "CounterexampleMap.squeeze",
+   "stmt": "CounterexampleMap.Counterexample p a b c \u2192 self.Modular p a b c \u2192 self.Irreducible p a b c \u2192 1 \u2264 self.dimS2 2",
+   "ustmt": "\u2200 p a b c, \u00ac Counterexample p a b c"
+  },
+  {
+   "needed": "CounterexampleMap.DeepArrows.wiles",
+   "user": "CounterexampleMap.squeeze",
+   "stmt": "CounterexampleMap.Counterexample p a b c \u2192 self.Modular p a b c",
+   "ustmt": "\u2200 p a b c, \u00ac Counterexample p a b c"
+  },
+  {
+   "needed": "Fermat3.pow_emod_of",
+   "user": "Fermat3.three_dvd_of_cube",
+   "stmt": "x^n % m = ((x % m)^n) % m",
+   "ustmt": "(3 : Int) \u2223 x"
+  },
+  {
+   "needed": "Fermat3.pow_emod_of",
+   "user": "Fermat3.three_dvd_of_sq",
+   "stmt": "x^n % m = ((x % m)^n) % m",
+   "ustmt": "(3 : Int) \u2223 x"
+  },
+  {
+   "needed": "FermatRoute.dvd_self_pow",
+   "user": "FermatRoute.cop_left",
+   "stmt": "x \u2223 x ^ p",
+   "ustmt": "Int.gcd a c = 1"
+  },
+  {
+   "needed": "FermatRoute.prime_dvd_of_dvd_pow",
+   "user": "FermatRoute.cop_left",
+   "stmt": "\u2200 {n : Nat}, (q : Int) \u2223 x ^ n \u2192 (q : Int) \u2223 x",
+   "ustmt": "Int.gcd a c = 1"
+  },
+  {
+   "needed": "FreyPieces.factor_out",
+   "user": "FreyPieces.exact_exponent_pth_power",
+   "stmt": "\u2200 M, M \u2260 0 \u2192 \u2203 k m, M = q ^ k * m \u2227 \u00ac q \u2223 m",
+   "ustmt": "p \u2223 e"
+  },
+  {
+   "needed": "FreyPieces.frey_disc_pth_power",
+   "user": "FreyPieces.frey_disc_valuation",
+   "stmt": "256 * \u0394 = ((a * b * c) ^ 2) ^ p",
+   "ustmt": "p \u2223 e"
+  },
+  {
+   "needed": "FreyPieces.not_dvd_pow",
+   "user": "FreyPieces.exact_exponent_pth_power",
+   "stmt": "\u2200 p, \u00ac q \u2223 m ^ p",
+   "ustmt": "p \u2223 e"
+  },
+  {
+   "needed": "FreyPieces.pow_mod_two",
+   "user": "FreyPieces.coprime_parity",
+   "stmt": "x ^ n % 2 = x % 2",
+   "ustmt": "(x % 2 = 0 \u2227 y % 2 = 1 \u2227 z % 2 = 1) \u2228 (x % 2 = 1 \u2227 y % 2 = 0 \u2227 z % 2 = 1) \u2228 (x % 2 = 1 \u2227 y % 2 = 1 \u2227 z % 2 = 0)"
+  },
+  {
+   "needed": "FunctionalAnalysis.rpow_comm",
+   "user": "FunctionalAnalysis.neumann_miss",
+   "stmt": "x * rpow x n = rpow x n * x",
+   "ustmt": "a \u229b nsum a n = -(rpow (-a) (n + 1))"
+  },
+  {
+   "needed": "FunctionalAnalysis.rpow_neg",
+   "user": "FunctionalAnalysis.nilpotent_quasi_inverse",
+   "stmt": "rpow (-a) n = rpow (-1 : R) n * rpow a n",
+   "ustmt": "a \u229b nsum a n = 0 \u2227 nsum a n \u229b a = 0"
+  },
+  {
+   "needed": "LeeYang.tr_odd_pow_zero",
+   "user": "MolecularBiology.zb_odd_ring_wall",
+   "stmt": "tr (pow x (2 * m + 1)) = 0",
+   "ustmt": "tr (pow (zb \u03c3 (-1)) (2 * m + 1)) = 0"
+  },
+  {
+   "needed": "MAFound.FusedPeano.ladN_succ",
+   "user": "MAFound.FusedPeano.toN_lad",
+   "stmt": "ladN (n + 1) a (succ b) = ladN n a (ladN (n + 1) a b)",
+   "ustmt": "toN (N := N) (lad n a b) = ladN n (toN a) (toN b)"
+  },
+  {
+   "needed": "MAFound.FusedPeano.ladN_zero_right",
+   "user": "MAFound.FusedPeano.toN_lad",
+   "stmt": "ladN (n + 1) a zero = if n = 0 then succ a else a",
+   "ustmt": "toN (N := N) (lad n a b) = ladN n (toN a) (toN b)"
+  },
+  {
+   "needed": "MAFound.FusedPeano.toN_fromN",
+   "user": "MAFound.FusedPeano.fromN_toN",
+   "stmt": "toN (fromN n) = n",
+   "ustmt": "fromN (toN (N := N) k) = k"
+  },
+  {
+   "needed": "MAFound.FusedPeano.toN_fromN",
+   "user": "MAFound.FusedPeano.mul_one'",
+   "stmt": "toN (fromN n) = n",
+   "ustmt": "mul x (toN 1) = x"
+  },
+  {
+   "needed": "MAFound.FusedPeano.toN_fromN",
+   "user": "MAFound.FusedPeano.transfer2",
+   "stmt": "toN (fromN n) = n",
+   "ustmt": "P x y"
+  },
+  {
+   "needed": "MAFound.FusedPeano.toN_fromN",
+   "user": "MAFound.FusedPeano.transfer3",
+   "stmt": "toN (fromN n) = n",
+   "ustmt": "P x y z"
+  },
+  {
+   "needed": "MAFound.FusedPeano.toN_surjective",
+   "user": "MAFound.FusedPeano.toN_bijective",
+   "stmt": "\u2203 k, toN k = n",
+   "ustmt": "(\u2200 j k : Nat, toN (N := N) j = toN k \u2192 j = k) \u2227 (\u2200 n : N, \u2203 k, toN k = n)"
+  },
+  {
+   "needed": "MeasureProbability.indep_dial",
+   "user": "MeasureProbability.martingale_step",
+   "stmt": "Ex (prodD ws vs) (fun ab => wAdd k (X ab.1) (Y ab.2)) = wAdd k (Ex ws X) (Ex vs Y)",
+   "ustmt": "Ex (prodD ws vs) (fun ab => X ab.1 \u2733 Y ab.2) = 0"
+  },
+  {
+   "needed": "MeasureProbability.sure_atom",
+   "user": "MeasureProbability.sure_atom_exists",
+   "stmt": "prodL (l.map (fun g => 1 - g)) = 0",
+   "ustmt": "\u2203 g \u2208 l, g = 1"
+  },
+  {
+   "needed": "MultAdd.HopfOne.commute_equation",
+   "user": "MultAdd.HopfOne.hopf_invariant_one",
+   "stmt": "2 ^ n * (2 ^ n - 1) * \u03bc\u2083 = 3 ^ n * (3 ^ n - 1) * \u03bc\u2082",
+   "ustmt": "n = 1 \u2228 n = 2 \u2228 n = 4"
+  },
+  {
+   "needed": "MultAdd.HopfOne.level_three_pow",
+   "user": "MultAdd.HopfOne.only_one_two_four",
+   "stmt": "OneMod (if k = 0 then 1 else k + 2) (3 ^ (2 ^ k * (2 * t + 1)))",
+   "ustmt": "n = 1 \u2228 n = 2 \u2228 n = 4"
+  },
+  {
+   "needed": "MultAdd.HopfOne.odd_three_pow",
+   "user": "MultAdd.HopfOne.hopf_invariant_one",
+   "stmt": "\u2200 n : Nat, IsOdd ((3 : Int) ^ n)",
+   "ustmt": "n = 1 \u2228 n = 2 \u2228 n = 4"
+  },
+  {
+   "needed": "MultAdd.HopfOne.pow_ge",
+   "user": "MultAdd.HopfOne.only_one_two_four",
+   "stmt": "k + 3 \u2264 2 ^ k",
+   "ustmt": "n = 1 \u2228 n = 2 \u2228 n = 4"
+  },
+  {
+   "needed": "MultAdd.HopfOne.two_adic_split",
+   "user": "MultAdd.HopfOne.only_one_two_four",
+   "stmt": "\u2200 n, 1 \u2264 n \u2192 \u2203 k t, n = 2 ^ k * (2 * t + 1)",
+   "ustmt": "n = 1 \u2228 n = 2 \u2228 n = 4"
+  },
+  {
+   "needed": "MultAdd.HopfOne.two_pow_dvd_of_mul_odd",
+   "user": "MultAdd.HopfOne.hopf_invariant_one",
+   "stmt": "\u2200 (n : Nat) (x y : Int), IsOdd y \u2192 (2 : Int) ^ n \u2223 x * y \u2192 (2 : Int) ^ n \u2223 x",
+   "ustmt": "n = 1 \u2228 n = 2 \u2228 n = 4"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.nr_mono",
+   "user": "MultAdd.OsgoodInverse.harm_anti",
+   "stmt": "nr i \u2264 nr k",
+   "ustmt": "Antitone1 harm"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.nr_mono",
+   "user": "MultAdd.OsgoodInverse.isq_anti",
+   "stmt": "nr i \u2264 nr k",
+   "ustmt": "Antitone1 isq"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.nr_nonneg",
+   "user": "MultAdd.OsgoodInverse.isq_anti",
+   "stmt": "\u2200 k, 0 \u2264 nr k",
+   "ustmt": "Antitone1 isq"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.nr_pos",
+   "user": "MultAdd.OsgoodInverse.harm_anti",
+   "stmt": "0 < nr k",
+   "ustmt": "Antitone1 harm"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.nr_pos",
+   "user": "MultAdd.OsgoodInverse.isq_anti",
+   "stmt": "0 < nr k",
+   "ustmt": "Antitone1 isq"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.riccati_clock",
+   "user": "MultAdd.OsgoodInverse.riccati_hits_wall",
+   "stmt": "\u2200 n, (\u2200 k, k \u2264 n \u2192 1 + y k \u2260 0) \u2192 1 / (1 + y n) = 1 / (1 + y 0) - steps h n",
+   "ustmt": "\u00ac (\u2200 k, k \u2264 m \u2192 1 + y k \u2260 0)"
+  },
+  {
+   "needed": "MultAdd.mpow_eq",
+   "user": "Population.hassell_one",
+   "stmt": "mpow a n = (1 + a) ^ n - 1",
+   "ustmt": "1 + mpow x 1 = 1 + x"
+  },
+  {
+   "needed": "PowersetDials.W_replicate_one",
+   "user": "PowersetDials.half_squared_family",
+   "stmt": "W (List.replicate n (1 : R)) c = 1",
+   "ustmt": "conv n (List.replicate n (r - 1)) (List.replicate n (r - 1)) c = 1"
+  },
+  {
+   "needed": "PowersetDials.conv_W",
+   "user": "PowersetDials.half_squared_family",
+   "stmt": "conv n ts ss c = W (List.zipWith multAdd ts ss) c",
+   "ustmt": "conv n (List.replicate n (r - 1)) (List.replicate n (r - 1)) c = 1"
+  },
+  {
+   "needed": "PowersetDials.total_W",
+   "user": "PowersetDials.total_empty",
+   "stmt": "sumL ((vecs ts.length).map (W ts)) = prodL (ts.map (fun t => 1 + t))",
+   "ustmt": "sumL ((vecs n).map (W (List.replicate n (0 : Nat)))) = 1"
+  },
+  {
+   "needed": "PowersetDials.total_uniform",
+   "user": "PowersetDials.total_empty",
+   "stmt": "prodL ((List.replicate n t).map (fun x => 1 + x)) = (1 + t) ^ n",
+   "ustmt": "sumL ((vecs n).map (W (List.replicate n (0 : Nat)))) = 1"
+  }
+ ],
+ "ex_hyper_box": [
+  {
+   "needed": "ChemEquilibrium.two_site_square",
+   "user": "ChemEquilibrium.cooperative_no_real_zero",
+   "stmt": "\u03c9 * (\u03c9 * x * x + 2 * x + 1) = (\u03c9 * x + 1) * (\u03c9 * x + 1) + (\u03c9 - 1)",
+   "ustmt": "\u03c9 * x * x + 2 * x + 1 \u2260 0"
+  },
+  {
+   "needed": "Fermat3.Eis.cube_of_cop",
+   "user": "Fermat3.key_cube",
+   "stmt": "\u2203 u \u03b4 : Eis, IsUnit u \u2227 \u03b1 = u * \u03b4^3",
+   "ustmt": "\u2203 a b : Int, p = a^3 - 9*a*b^2 \u2227 q = 3*a^2*b - 3*b^3"
+  },
+  {
+   "needed": "FreyPieces.frey_disc",
+   "user": "CounterexampleMap.frey_bad_primes",
+   "stmt": "256 * (freyModel a2 a4).disc = (A * B * C) ^ 2",
+   "ustmt": "(q : Int) \u2223 (freyModel a2 a4).disc \u2194 (q : Int) \u2223 A * B * C"
+  },
+  {
+   "needed": "FreyPieces.frey_disc",
+   "user": "FreyPieces.frey_at_two",
+   "stmt": "256 * (freyModel a2 a4).disc = (A * B * C) ^ 2",
+   "ustmt": "(freyModel a2 a4).c4 % 2 = 1 \u2227 4 \u2223 (freyModel a2 a4).disc"
+  },
+  {
+   "needed": "LeeYangSpill.slowest_step",
+   "user": "LeeYangSpill.turning_never_stalls",
+   "stmt": "4 * q * (1 + k * a + q * a * a) \u2265 4 * q - k * k",
+   "ustmt": "0 < 1 + k * a + q * a * a"
+  },
+  {
+   "needed": "MultAdd.wAdd_lift",
+   "user": "AbstractAlgebra.wAdd_unit_iff",
+   "stmt": "1 + k * wAdd k a b = (1 + k * a) * (1 + k * b)",
+   "ustmt": "(\u2203 b, wAdd k a b = 0) \u2192 (\u2203 c, (1 + k * a) * c = 1)"
+  },
+  {
+   "needed": "MultAdd.wAdd_lift",
+   "user": "InfoFused.linearize",
+   "stmt": "1 + k * wAdd k a b = (1 + k * a) * (1 + k * b)",
+   "ustmt": "L (1 + k * wAdd k a b) = L (1 + k * a) + L (1 + k * b)"
+  },
+  {
+   "needed": "MultAdd.wAdd_lift",
+   "user": "InfoFused.tsallis",
+   "stmt": "1 + k * wAdd k a b = (1 + k * a) * (1 + k * b)",
+   "ustmt": "k * SAB = k * wAdd k SA SB"
+  },
+  {
+   "needed": "MultAdd.wAdd_lift",
+   "user": "MeasureProbability.wall_blocks",
+   "stmt": "1 + k * wAdd k a b = (1 + k * a) * (1 + k * b)",
+   "ustmt": "0 < 1 + k * wAdd k a b"
+  },
+  {
+   "needed": "MultAdd.wAdd_lift",
+   "user": "SizeDialResidual.twisted_half",
+   "stmt": "1 + k * wAdd k a b = (1 + k * a) * (1 + k * b)",
+   "ustmt": "k * wAdd k h h = k"
+  },
+  {
+   "needed": "MultAdd.wAdd_lift",
+   "user": "ThermoFused.renyi_adds",
+   "stmt": "1 + k * wAdd k a b = (1 + k * a) * (1 + k * b)",
+   "ustmt": "L (1 + k * wAdd k SA SB) = L (1 + k * SA) + L (1 + k * SB)"
+  },
+  {
+   "needed": "MultAdd.wAdd_scale",
+   "user": "Dynamics.dial_square_units",
+   "stmt": "k * wAdd k a b = multAdd (k * a) (k * b)",
+   "ustmt": "k * wAdd k x x = msq (k * x)"
+  },
+  {
+   "needed": "SimpleLaws.four_norm",
+   "user": "SimpleLaws.norm_nonneg_turning",
+   "stmt": "4 * norm k q a b = (2 * a + k * b) * (2 * a + k * b) + (4 * q - k * k) * (b * b)",
+   "ustmt": "0 \u2264 4 * norm k q a b"
+  }
+ ],
+ "ex_rod_cube": [
+  {
+   "needed": "CounterexampleMap.squeeze",
+   "user": "CounterexampleMap.flt_of_deep_arrows",
+   "stmt": "\u2200 p a b c, \u00ac Counterexample p a b c",
+   "ustmt": "\u2200 n, 3 \u2264 n \u2192 FLT n"
+  },
+  {
+   "needed": "EntropyNoise.lsum_div",
+   "user": "EntropyNoise.escort_escort",
+   "stmt": "InfoFused.lsum (l.map (fun y => y / c)) = InfoFused.lsum l / c",
+   "ustmt": "escort b (escort a l) = escort (a * b) l"
+  },
+  {
+   "needed": "FermatRoute.cop_left",
+   "user": "FermatRoute.frey_normalize_cop",
+   "stmt": "Int.gcd a c = 1",
+   "ustmt": "\u2203 a' b' c' : Int, a' ^ p + b' ^ p = c' ^ p \u2227 a' % 4 = 3 \u2227 b' % 2 = 0 \u2227 Int.gcd a' b' = 1 \u2227 a' * b' * c' \u2260 0 \u2227 (32 : Int) \u2223 b' ^ p"
+  },
+  {
+   "needed": "FermatRoute.gcd_natAbs_congr",
+   "user": "FermatRoute.frey_normalize_cop",
+   "stmt": "Int.gcd a' b' = Int.gcd a b",
+   "ustmt": "\u2203 a' b' c' : Int, a' ^ p + b' ^ p = c' ^ p \u2227 a' % 4 = 3 \u2227 b' % 2 = 0 \u2227 Int.gcd a' b' = 1 \u2227 a' * b' * c' \u2260 0 \u2227 (32 : Int) \u2223 b' ^ p"
+  },
+  {
+   "needed": "FreyPieces.euclid",
+   "user": "FreyPieces.not_dvd_pow",
+   "stmt": "p \u2223 a \u2228 p \u2223 b",
+   "ustmt": "\u2200 p, \u00ac q \u2223 m ^ p"
+  },
+  {
+   "needed": "FreyPieces.euclid_int",
+   "user": "FermatRoute.prime_dvd_of_dvd_pow",
+   "stmt": "(p : Int) \u2223 a \u2228 (p : Int) \u2223 b",
+   "ustmt": "\u2200 {n : Nat}, (q : Int) \u2223 x ^ n \u2192 (q : Int) \u2223 x"
+  },
+  {
+   "needed": "FreyPieces.four_or_odd_prime",
+   "user": "FreyPieces.flt_reduction",
+   "stmt": "4 \u2223 n \u2228 \u2203 p, IsPrime p \u2227 p \u2260 2 \u2227 p \u2223 n",
+   "ustmt": "\u2200 n, 3 \u2264 n \u2192 FLT n"
+  },
+  {
+   "needed": "FreyPieces.prime_ne_two_odd",
+   "user": "FermatRoute.flt_of_no_frey_curve",
+   "stmt": "p % 2 = 1",
+   "ustmt": "\u2200 n, 3 \u2264 n \u2192 FLT n"
+  },
+  {
+   "needed": "Infinities.half_iter_upper",
+   "user": "Infinities.half_not_poly",
+   "stmt": "\u2200 n, N \u2264 n \u2192 g n \u2264 h (h n)",
+   "ustmt": "\u2200 n, N \u2264 n \u2192 g n \u2264 n ^ (k * k)"
+  },
+  {
+   "needed": "LeeYang.Mat2.ext'",
+   "user": "LeeYang.even_pow_of_tr_zero",
+   "stmt": "x = y",
+   "ustmt": "pow x (2 * m) = smul ((-det x) ^ m) one"
+  },
+  {
+   "needed": "LeeYang.Mat2.ext'",
+   "user": "LeeYang.odd_pow_of_tr_zero",
+   "stmt": "x = y",
+   "ustmt": "pow x (2 * m + 1) = smul ((-det x) ^ m) x"
+  },
+  {
+   "needed": "MAFound.FusedPeano.fromN_toN",
+   "user": "MAFound.FusedPeano.recN_succ",
+   "stmt": "fromN (toN (N := N) k) = k",
+   "ustmt": "recN z s (succ n) = s n (recN z s n)"
+  },
+  {
+   "needed": "MAFound.FusedPeano.ind",
+   "user": "MAFound.FusedPeano.ladN_one",
+   "stmt": "P MAFound.FusedPeano.zero \u2192 (\u2200 (n : N), P n \u2192 P (MAFound.FusedPeano.succ n)) \u2192 \u2200 (n : N), P n",
+   "ustmt": "ladN 1 a b = sadd a b"
+  },
+  {
+   "needed": "MAFound.FusedPeano.ind",
+   "user": "MAFound.FusedPeano.ladN_two",
+   "stmt": "P MAFound.FusedPeano.zero \u2192 (\u2200 (n : N), P n \u2192 P (MAFound.FusedPeano.succ n)) \u2192 \u2200 (n : N), P n",
+   "ustmt": "ladN 2 a b = madd a b"
+  },
+  {
+   "needed": "MAFound.FusedPeano.ind",
+   "user": "MAFound.FusedPeano.toN_surjective",
+   "stmt": "P MAFound.FusedPeano.zero \u2192 (\u2200 (n : N), P n \u2192 P (MAFound.FusedPeano.succ n)) \u2192 \u2200 (n : N), P n",
+   "ustmt": "\u2203 k, toN k = n"
+  },
+  {
+   "needed": "MAFound.FusedPeano.madd_zero",
+   "user": "MAFound.FusedPeano.ladN_two",
+   "stmt": "MAFound.FusedPeano.madd a MAFound.FusedPeano.zero = a",
+   "ustmt": "ladN 2 a b = madd a b"
+  },
+  {
+   "needed": "MAFound.FusedPeano.recN_zero",
+   "user": "MAFound.FusedPeano.ladN_zero_right",
+   "stmt": "recN z s (zero : N) = z",
+   "ustmt": "ladN (n + 1) a zero = if n = 0 then succ a else a"
+  },
+  {
+   "needed": "MAFound.FusedPeano.sadd_comm",
+   "user": "MAFound.FusedPeano.ladN_two",
+   "stmt": "sadd a b = sadd b a",
+   "ustmt": "ladN 2 a b = madd a b"
+  },
+  {
+   "needed": "MAFound.FusedPeano.sadd_succ",
+   "user": "MAFound.FusedPeano.ladN_one",
+   "stmt": "MAFound.FusedPeano.sadd a (MAFound.FusedPeano.succ b) = MAFound.FusedPeano.succ (MAFound.FusedPeano.sadd a b)",
+   "ustmt": "ladN 1 a b = sadd a b"
+  },
+  {
+   "needed": "MAFound.FusedPeano.sadd_zero",
+   "user": "MAFound.FusedPeano.ladN_one",
+   "stmt": "MAFound.FusedPeano.sadd a MAFound.FusedPeano.zero = MAFound.FusedPeano.succ a",
+   "ustmt": "ladN 1 a b = sadd a b"
+  },
+  {
+   "needed": "MAFound.FusedPeano.toN_add",
+   "user": "MAFound.FusedPeano.add_toN_fromN",
+   "stmt": "toN (N := N) (a + b) = add (toN a) (toN b)",
+   "ustmt": "add x y = toN (fromN x + fromN y)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.add",
+   "user": "MultAdd.Cube.bsum_meq",
+   "stmt": "MEq p (x + u) (y + v)",
+   "ustmt": "\u2200 m, (\u2200 k, k < m \u2192 MEq p (f k) (g k)) \u2192 MEq p (bsum f m) (bsum g m)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.add",
+   "user": "MultAdd.Cube.fermat",
+   "stmt": "MEq p (x + u) (y + v)",
+   "ustmt": "\u2200 a : Nat, MEq p ((a : Int) ^ p) a"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.add",
+   "user": "MultAdd.Cube.lucas_step",
+   "stmt": "MEq p (x + u) (y + v)",
+   "ustmt": "\u2200 n k, MEq p (layer n k) (blockCount p n k)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.refl",
+   "user": "MultAdd.Cube.alt_layer",
+   "stmt": "MEq p x x",
+   "ustmt": "\u2200 k, k \u2264 p - 1 \u2192 MEq p ((-1 : Int) ^ k * (layer (p - 1) k : Int)) 1"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.refl",
+   "user": "MultAdd.Cube.bsum_meq",
+   "stmt": "MEq p x x",
+   "ustmt": "\u2200 m, (\u2200 k, k < m \u2192 MEq p (f k) (g k)) \u2192 MEq p (bsum f m) (bsum g m)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.refl",
+   "user": "MultAdd.Cube.fermat",
+   "stmt": "MEq p x x",
+   "ustmt": "\u2200 a : Nat, MEq p ((a : Int) ^ p) a"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.refl",
+   "user": "MultAdd.Cube.lucas",
+   "stmt": "MEq p x x",
+   "ustmt": "\u2200 f n k, n < p ^ f \u2192 k < p ^ f \u2192 MEq p (layer n k) (digitProd p f n k)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.refl",
+   "user": "MultAdd.Cube.lucas_step",
+   "stmt": "MEq p x x",
+   "ustmt": "\u2200 n k, MEq p (layer n k) (blockCount p n k)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.trans",
+   "user": "MultAdd.Cube.fermat",
+   "stmt": "MEq p x z",
+   "ustmt": "\u2200 a : Nat, MEq p ((a : Int) ^ p) a"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.trans",
+   "user": "MultAdd.Cube.lucas",
+   "stmt": "MEq p x z",
+   "ustmt": "\u2200 f n k, n < p ^ f \u2192 k < p ^ f \u2192 MEq p (layer n k) (digitProd p f n k)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.trans",
+   "user": "MultAdd.Cube.lucas_step",
+   "stmt": "MEq p x z",
+   "ustmt": "\u2200 n k, MEq p (layer n k) (blockCount p n k)"
+  },
+  {
+   "needed": "MultAdd.Cube.MEq.trans",
+   "user": "MultAdd.Cube.wilson",
+   "stmt": "MEq p x z",
+   "ustmt": "MEq p (fact (p - 1)) (-1)"
+  },
+  {
+   "needed": "MultAdd.Cube.Val.unique",
+   "user": "MultAdd.Cube.layer_val_dsum",
+   "stmt": "e = f",
+   "ustmt": "\u2200 k j, (p - 1) * val p (layer (j + k) k) + dsum p (j + k) = dsum p j + dsum p k"
+  },
+  {
+   "needed": "MultAdd.Cube.coprime_of_lt",
+   "user": "MultAdd.Cube.prime_dvd_middle",
+   "stmt": "Nat.Coprime p k",
+   "ustmt": "p \u2223 layer p k"
+  },
+  {
+   "needed": "MultAdd.Cube.euclid",
+   "user": "MultAdd.Cube.Val.mul",
+   "stmt": "p \u2223 b",
+   "ustmt": "Val p (a * b) (e + f)"
+  },
+  {
+   "needed": "MultAdd.Cube.euclid",
+   "user": "MultAdd.Cube.fermat_unit",
+   "stmt": "p \u2223 b",
+   "ustmt": "MEq p ((a : Int) ^ (p - 1)) 1"
+  },
+  {
+   "needed": "MultAdd.Cube.exists_prime_factor",
+   "user": "MultAdd.Cube.aks_middle",
+   "stmt": "\u2200 n, 2 \u2264 n \u2192 \u2203 p, IsPrime p \u2227 p \u2223 n",
+   "ustmt": "(\u2200 k, 0 < k \u2192 k < n \u2192 n \u2223 layer n k) \u2194 IsPrime n"
+  },
+  {
+   "needed": "MultAdd.E.le_div_of_mul_le",
+   "user": "MultAdd.E.s_le_stair",
+   "stmt": "a \u2264 b / c",
+   "ustmt": "s N - 3 * (tri N : Rat) / (n : Rat) \u2264 stair n"
+  },
+  {
+   "needed": "MultAdd.E.le_div_of_mul_le",
+   "user": "MultAdd.E.u_step",
+   "stmt": "a \u2264 b / c",
+   "ustmt": "u (N + 1) \u2264 u N"
+  },
+  {
+   "needed": "MultAdd.E.le_div_of_mul_le",
+   "user": "MultAdd.E.wt_ge",
+   "stmt": "a \u2264 b / c",
+   "ustmt": "1 / (fact k : Rat) \u2264 wt n k + (tri k : Rat) / ((n : Rat) * (fact k : Rat))"
+  },
+  {
+   "needed": "MultAdd.E.le_div_of_mul_le",
+   "user": "MultAdd.E.wt_le",
+   "stmt": "a \u2264 b / c",
+   "ustmt": "wt n k \u2264 1 / (fact k : Rat)"
+  },
+  {
+   "needed": "MultAdd.E.natcast_ne",
+   "user": "MultAdd.E.stair_lt_succ",
+   "stmt": "(a : Rat) \u2260 0",
+   "ustmt": "stair n < stair (n + 1)"
+  },
+  {
+   "needed": "MultAdd.E.natcast_ne",
+   "user": "MultAdd.E.wt_le",
+   "stmt": "(a : Rat) \u2260 0",
+   "ustmt": "wt n k \u2264 1 / (fact k : Rat)"
+  },
+  {
+   "needed": "MultAdd.E.one_div_le_one_div",
+   "user": "MultAdd.E.s_bound",
+   "stmt": "1 / a \u2264 1 / b",
+   "ustmt": "\u2200 N, s N \u2264 3 - 2 / (2 : Rat) ^ N"
+  },
+  {
+   "needed": "MultAdd.E.one_div_nonneg",
+   "user": "MultAdd.E.s_le_stair",
+   "stmt": "0 \u2264 1 / a",
+   "ustmt": "s N - 3 * (tri N : Rat) / (n : Rat) \u2264 stair n"
+  },
+  {
+   "needed": "MultAdd.E.one_div_nonneg",
+   "user": "MultAdd.E.s_le_u",
+   "stmt": "0 \u2264 1 / a",
+   "ustmt": "s N \u2264 u N"
+  },
+  {
+   "needed": "MultAdd.E.one_div_nonneg",
+   "user": "MultAdd.E.s_mono",
+   "stmt": "0 \u2264 1 / a",
+   "ustmt": "s N \u2264 s M"
+  },
+  {
+   "needed": "MultAdd.E.one_div_nonneg",
+   "user": "MultAdd.E.wt_ge",
+   "stmt": "0 \u2264 1 / a",
+   "ustmt": "1 / (fact k : Rat) \u2264 wt n k + (tri k : Rat) / ((n : Rat) * (fact k : Rat))"
+  },
+  {
+   "needed": "MultAdd.E.one_div_nonneg",
+   "user": "MultAdd.E.wt_le",
+   "stmt": "0 \u2264 1 / a",
+   "ustmt": "wt n k \u2264 1 / (fact k : Rat)"
+  },
+  {
+   "needed": "MultAdd.E.one_div_nonneg",
+   "user": "MultAdd.E.wt_nonneg",
+   "stmt": "0 \u2264 1 / a",
+   "ustmt": "0 \u2264 wt n k"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.harm_anti",
+   "user": "MultAdd.OsgoodInverse.harmonic_grows",
+   "stmt": "Antitone1 harm",
+   "ustmt": "nr n \u2264 2 * dsum harm n"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.isq_anti",
+   "user": "MultAdd.OsgoodInverse.inverse_squares_bounded",
+   "stmt": "Antitone1 isq",
+   "ustmt": "dsum isq n \u2264 2"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.one_div_pos",
+   "user": "MultAdd.OsgoodInverse.harm_nonneg",
+   "stmt": "0 < 1 / p",
+   "ustmt": "0 \u2264 harm k"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.one_div_pos",
+   "user": "MultAdd.OsgoodInverse.inverse_squares_bounded",
+   "stmt": "0 < 1 / p",
+   "ustmt": "dsum isq n \u2264 2"
+  },
+  {
+   "needed": "MultAdd.OsgoodInverse.riccati_clock_step",
+   "user": "MultAdd.OsgoodInverse.riccati_clock",
+   "stmt": "1 / (1 + b) = 1 / (1 + a) - h",
+   "ustmt": "\u2200 n, (\u2200 k, k \u2264 n \u2192 1 + y k \u2260 0) \u2192 1 / (1 + y n) = 1 / (1 + y 0) - steps h n"
+  },
+  {
+   "needed": "MultAdd.lift_inj",
+   "user": "MultAdd.fexp_carries_multAdd",
+   "stmt": "x = y",
+   "ustmt": "fexp a b = multAdd a ((a + 1) ^ b - 1)"
+  },
+  {
+   "needed": "MultAdd.lift_inj",
+   "user": "MultAdd.fexp_iter",
+   "stmt": "x = y",
+   "ustmt": "fexp a (b + 1) = multAdd a (fexp a b)"
+  },
+  {
+   "needed": "MultAdd.lift_inj",
+   "user": "MultAdd.fexp_multAdd_right",
+   "stmt": "x = y",
+   "ustmt": "fexp (multAdd a b) c = multAdd (fexp a c) (fexp b c)"
+  },
+  {
+   "needed": "MultAdd.lift_inj",
+   "user": "MultAdd.fexp_sadd",
+   "stmt": "x = y",
+   "ustmt": "fexp a (sadd b c) = multAdd (fexp a b) (fexp a c)"
+  },
+  {
+   "needed": "MultAdd.lift_inj",
+   "user": "MultAdd.fexp_tower",
+   "stmt": "x = y",
+   "ustmt": "fexp (fexp a b) c = fexp a (multAdd b c)"
+  },
+  {
+   "needed": "MultAdd.lift_inj",
+   "user": "MultAdd.fpent_iter",
+   "stmt": "x = y",
+   "ustmt": "fpent a (b + 1) = ftet a (fpent a b)"
+  },
+  {
+   "needed": "MultAdd.lift_inj",
+   "user": "MultAdd.ftet_iter",
+   "stmt": "x = y",
+   "ustmt": "ftet a (b + 1) = fexp a (ftet a b)"
+  },
+  {
+   "needed": "MultAdd.multAdd_zero",
+   "user": "AbstractAlgebra.mpow_multAdd",
+   "stmt": "multAdd a 0 = a",
+   "ustmt": "mpow (multAdd a b) n = multAdd (mpow a n) (mpow b n)"
+  },
+  {
+   "needed": "MultAdd.multAdd_zero",
+   "user": "AbstractAlgebra.mpow_zero_base",
+   "stmt": "multAdd a 0 = a",
+   "ustmt": "mpow (0 : R) n = 0"
+  },
+  {
+   "needed": "MultAdd.multAdd_zero",
+   "user": "MultAdd.Calculus.ftc",
+   "stmt": "multAdd a 0 = a",
+   "ustmt": "f n = multAdd (f 0) (mint d n)"
+  },
+  {
+   "needed": "MultAdd.multAdd_zero",
+   "user": "MultAdd.Calculus.mint_add",
+   "stmt": "multAdd a 0 = a",
+   "ustmt": "mint d (a + b) = multAdd (mint d a) (mint (fun j => d (a + j)) b)"
+  },
+  {
+   "needed": "MultAdd.multAdd_zero",
+   "user": "MultAdd.Calculus.mint_multAdd",
+   "stmt": "multAdd a 0 = a",
+   "ustmt": "mint (fun k => multAdd (d k) (e k)) n = multAdd (mint d n) (mint e n)"
+  },
+  {
+   "needed": "MultAdd.multAdd_zero",
+   "user": "MultAdd.mpow_add",
+   "stmt": "multAdd a 0 = a",
+   "ustmt": "mpow a (m + n) = multAdd (mpow a m) (mpow a n)"
+  },
+  {
+   "needed": "MultAdd.neg_one_absorbs",
+   "user": "CategoryTheory.circle_wall",
+   "stmt": "multAdd (-1) b = -1",
+   "ustmt": "ev (-1) (pmul (sphere 1) ys) - 1 = -1"
+  },
+  {
+   "needed": "MultAdd.neg_one_absorbs",
+   "user": "ComplexAnalysis.fold_wall_of_mem",
+   "stmt": "multAdd (-1) b = -1",
+   "ustmt": "foldMA l = -1"
+  },
+  {
+   "needed": "MultAdd.neg_one_absorbs",
+   "user": "Dynamics.iter_wall",
+   "stmt": "multAdd (-1) b = -1",
+   "ustmt": "iter msq n (-1 : R) = -1"
+  },
+  {
+   "needed": "MultAdd.neg_one_absorbs",
+   "user": "Dynamics.wall_fixed_mpow",
+   "stmt": "multAdd (-1) b = -1",
+   "ustmt": "mpow (-1 : R) (n + 1) = -1"
+  },
+  {
+   "needed": "MultAdd.sadd_lift",
+   "user": "MultAdd.fexp_sadd",
+   "stmt": "sadd a b + 1 = (a + 1) + (b + 1)",
+   "ustmt": "fexp a (sadd b c) = multAdd (fexp a b) (fexp a c)"
+  },
+  {
+   "needed": "MultAdd.sumL_append",
+   "user": "MultAdd.one_add_foldMA_eq_corners",
+   "stmt": "sumL (l ++ m) = sumL l + sumL m",
+   "ustmt": "1 + foldMA l = sumL ((groups l).map prodL)"
+  },
+  {
+   "needed": "MultAdd.sumL_append",
+   "user": "PowersetDials.rational_factor",
+   "stmt": "sumL (l ++ m) = sumL l + sumL m",
+   "ustmt": "(1 - x) * (1 + 2 * sumL ((List.range m).map (fun k => x ^ (k + 1)))) = 1 + x - 2 * x ^ (m + 1)"
+  },
+  {
+   "needed": "MultAdd.wAdd_zero",
+   "user": "ConsensusFused.depth_useless",
+   "stmt": "wAdd k a 0 = a",
+   "ustmt": "wpow 1 0 n = 0"
+  },
+  {
+   "needed": "MultAdd.zero_multAdd",
+   "user": "MultAdd.foldMA_append",
+   "stmt": "multAdd 0 a = a",
+   "ustmt": "foldMA (S ++ T) = multAdd (foldMA S) (foldMA T)"
+  },
+  {
+   "needed": "MultAdd.zero_multAdd",
+   "user": "Numerical.horner_cube",
+   "stmt": "multAdd 0 a = a",
+   "ustmt": "1 + hornerMA 0 bs = sumL ((groups bs).map prodL)"
+  },
+  {
+   "needed": "PiMultAdd.G.ext'",
+   "user": "PiMultAdd.gpow_lift",
+   "stmt": "a.re = b.re \u2192 a.im = b.im \u2192 a = b",
+   "ustmt": "G.add G.one (gpow a n) = G.pow (G.add G.one a) n"
+  },
+  {
+   "needed": "PiMultAdd.div_le_div_of",
+   "user": "PiMultAdd.gt_nonneg",
+   "stmt": "a' / d \u2264 a / b",
+   "ustmt": "0 \u2264 gt x k"
+  },
+  {
+   "needed": "PiMultAdd.div_le_div_of",
+   "user": "PiMultAdd.term_shrink",
+   "stmt": "a' / d \u2264 a / b",
+   "ustmt": "gt x (k + 1) \u2264 gt x k"
+  },
+  {
+   "needed": "PowersetDials.cell_merge",
+   "user": "PowersetDials.conv_W",
+   "stmt": "((if (false || false) = z then cell t false * cell s false else 0) + (if (false || true) = z then cell t false * cell s true else 0)) + ((if (true || false) = z then cell t true * cell s false else 0) + (if (true || true) = z then cell t true * cell s true else 0)) = cell (t \u2733 s) z",
+   "ustmt": "conv n ts ss c = W (List.zipWith multAdd ts ss) c"
+  },
+  {
+   "needed": "PowersetDials.sumL_map_add",
+   "user": "PowersetDials.conv_W",
+   "stmt": "sumL (l.map (fun a => f a + g a)) = sumL (l.map f) + sumL (l.map g)",
+   "ustmt": "conv n ts ss c = W (List.zipWith multAdd ts ss) c"
+  },
+  {
+   "needed": "PowersetDials.sumL_map_append",
+   "user": "PowersetDials.total_W",
+   "stmt": "sumL ((l ++ m).map f) = sumL (l.map f) + sumL (m.map f)",
+   "ustmt": "sumL ((vecs ts.length).map (W ts)) = prodL (ts.map (fun t => 1 + t))"
+  },
+  {
+   "needed": "PowersetDials.sumL_vecs_succ",
+   "user": "PowersetDials.conv_W",
+   "stmt": "sumL ((vecs (n + 1)).map F) = sumL ((vecs n).map (fun a => F (false :: a))) + sumL ((vecs n).map (fun a => F (true :: a)))",
+   "ustmt": "conv n ts ss c = W (List.zipWith multAdd ts ss) c"
+  },
+  {
+   "needed": "PvsNP.sAdd_lift",
+   "user": "PvsNP.evalS_lift",
+   "stmt": "1 + sAdd a b = (1 + a) + (1 + b)",
+   "ustmt": "1 + evalS env C = eval (fun i => 1 + env i) (mapC (fun c => 1 + c) C)"
+  }
+ ]
+}

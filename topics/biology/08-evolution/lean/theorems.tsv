@@ -1,0 +1,18 @@
+FusedAlgebra.Topics.Biology.Evolution	Evolution.add_is_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.additive_dominance	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.common_slope_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.consistent_forces_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.epistasis	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.from_the_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.generations	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.generations_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.load	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.mult_null	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.order_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.path_consistent_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.proportional_consistent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.stages	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.star_def	
+FusedAlgebra.Topics.Biology.Evolution	Evolution.three_mutations	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.wall_at	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Evolution	Evolution.wall_neutral	propext, Classical.choice, Quot.sound

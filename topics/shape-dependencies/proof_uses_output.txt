@@ -1,0 +1,90 @@
+theorems with a shape: 3026  uses (T -> U, U's proof uses T): 1859
+theorems whose proof uses another library theorem: 1047
+
+Body flow (needed theorem's body -> using theorem's body): up 461, down 176, same 1222
+net upward flow 285; null (bodies shuffled within module) mean -33.1, sd 56.2, z 5.66, share of nulls at least as high 0.0000
+
+Body matrix (row = needed, column = user):
+         point    rod   rect    box  hyper   cube
+  point      7     16      4      1      0      3
+    rod     16    273     82     43     42     87
+   rect      3     41    132     40     44     58
+    box      2      9      7     57      8     11
+  hyper      0      3     17     13     74     22
+   cube      1     43     12      7      2    679
+
+Family graph at rising thresholds (edge X -> Y kept when at least w uses):
+  w >=  1: edges 469, cycles (strong components > 1): [['box-collapse', 'box-dial', 'box-explode', 'box-measure', 'box-plain', 'box-squash', 'box-swap', 'box-tally', 'cube-collapse', 'cube-dial', 'cube-explode', 'cube-flatten', 'cube-measure', 'cube-plain', 'cube-regroup', 'cube-repeat', 'cube-squash', 'cube-swap', 'cube-tally', 'hyper-collapse', 'hyper-dial', 'hyper-explode', 'hyper-plain', 'hyper-squash', 'hyper-swap', 'mixed-flatten', 'mixed-measure', 'mixed-odd', 'mixed-regroup', 'mixed-repeat', 'point-collapse', 'point-explode', 'point-plain', 'point-regroup', 'point-squash', 'rect-collapse', 'rect-dial', 'rect-explode', 'rect-measure', 'rect-plain', 'rect-regroup', 'rect-squash', 'rect-swap', 'rect-tally', 'rod-collapse', 'rod-dial', 'rod-explode', 'rod-measure', 'rod-plain', 'rod-regroup', 'rod-repeat', 'rod-squash', 'rod-swap', 'rod-tally']]
+           two-way pairs: [('box-collapse', 'box-explode'), ('box-collapse', 'box-swap'), ('box-collapse', 'mixed-regroup'), ('box-collapse', 'rod-explode'), ('box-dial', 'rect-dial'), ('box-dial', 'rect-squash'), ('box-explode', 'box-squash'), ('box-explode', 'hyper-explode'), ('box-explode', 'mixed-repeat'), ('box-explode', 'point-collapse'), ('cube-collapse', 'cube-dial'), ('cube-collapse', 'cube-explode'), ('cube-collapse', 'cube-flatten'), ('cube-collapse', 'cube-measure'), ('cube-collapse', 'cube-plain'), ('cube-collapse', 'cube-squash'), ('cube-collapse', 'cube-swap'), ('cube-collapse', 'rod-collapse'), ('cube-collapse', 'rod-plain'), ('cube-collapse', 'rod-repeat'), ('cube-dial', 'cube-explode'), ('cube-dial', 'cube-swap'), ('cube-dial', 'rod-dial'), ('cube-explode', 'cube-flatten'), ('cube-explode', 'cube-measure'), ('cube-explode', 'cube-plain'), ('cube-explode', 'cube-repeat'), ('cube-explode', 'cube-squash'), ('cube-explode', 'cube-swap'), ('cube-explode', 'cube-tally'), ('cube-explode', 'rod-collapse'), ('cube-explode', 'rod-explode'), ('cube-explode', 'rod-regroup'), ('cube-explode', 'rod-squash'), ('cube-flatten', 'cube-measure'), ('cube-flatten', 'cube-plain'), ('cube-flatten', 'cube-regroup'), ('cube-flatten', 'cube-squash'), ('cube-flatten', 'rect-plain'), ('cube-measure', 'cube-plain'), ('cube-measure', 'cube-regroup'), ('cube-measure', 'cube-repeat'), ('cube-measure', 'cube-squash'), ('cube-measure', 'rod-tally'), ('cube-plain', 'cube-repeat'), ('cube-plain', 'cube-swap'), ('cube-plain', 'cube-tally'), ('cube-plain', 'rod-plain'), ('cube-regroup', 'cube-repeat'), ('cube-repeat', 'cube-squash'), ('cube-repeat', 'rect-explode'), ('cube-repeat', 'rod-collapse'), ('cube-squash', 'cube-swap'), ('cube-squash', 'rod-squash'), ('hyper-dial', 'hyper-explode'), ('hyper-dial', 'rect-dial'), ('hyper-dial', 'rect-explode'), ('hyper-explode', 'rect-collapse'), ('hyper-explode', 'rect-explode'), ('hyper-explode', 'rod-plain'), ('hyper-squash', 'rect-collapse'), ('hyper-squash', 'rect-squash'), ('point-collapse', 'point-squash'), ('point-squash', 'rect-squash'), ('point-squash', 'rod-squash'), ('rect-collapse', 'rect-explode'), ('rect-collapse', 'rod-collapse'), ('rect-dial', 'rect-explode'), ('rect-explode', 'rect-measure'), ('rect-explode', 'rect-plain'), ('rect-explode', 'rect-regroup'), ('rect-explode', 'rect-tally'), ('rect-explode', 'rod-explode'), ('rect-explode', 'rod-regroup'), ('rect-measure', 'rect-squash'), ('rect-plain', 'rect-swap'), ('rect-regroup', 'rod-regroup'), ('rect-squash', 'rod-squash'), ('rect-swap', 'rod-regroup'), ('rect-swap', 'rod-swap'), ('rod-collapse', 'rod-plain'), ('rod-collapse', 'rod-regroup'), ('rod-collapse', 'rod-swap'), ('rod-explode', 'rod-plain'), ('rod-explode', 'rod-swap'), ('rod-plain', 'rod-regroup'), ('rod-plain', 'rod-repeat'), ('rod-plain', 'rod-squash'), ('rod-plain', 'rod-swap'), ('rod-regroup', 'rod-swap')]
+  w >=  2: edges 233, cycles (strong components > 1): [['box-dial', 'box-explode', 'box-swap', 'cube-collapse', 'cube-dial', 'cube-explode', 'cube-flatten', 'cube-measure', 'cube-plain', 'cube-regroup', 'cube-repeat', 'cube-squash', 'cube-swap', 'cube-tally', 'hyper-dial', 'hyper-explode', 'point-collapse', 'point-squash', 'rect-collapse', 'rect-dial', 'rect-explode', 'rect-measure', 'rect-plain', 'rect-squash', 'rect-swap', 'rod-collapse', 'rod-explode', 'rod-plain', 'rod-regroup', 'rod-squash', 'rod-swap']]
+           two-way pairs: [('box-dial', 'rect-squash'), ('box-explode', 'hyper-explode'), ('cube-collapse', 'cube-dial'), ('cube-collapse', 'cube-explode'), ('cube-collapse', 'cube-flatten'), ('cube-collapse', 'cube-plain'), ('cube-collapse', 'cube-squash'), ('cube-collapse', 'rod-collapse'), ('cube-dial', 'cube-explode'), ('cube-explode', 'cube-flatten'), ('cube-explode', 'cube-plain'), ('cube-explode', 'cube-repeat'), ('cube-explode', 'cube-squash'), ('cube-explode', 'rod-collapse'), ('cube-explode', 'rod-explode'), ('cube-flatten', 'cube-regroup'), ('cube-flatten', 'cube-squash'), ('cube-measure', 'cube-plain'), ('cube-plain', 'cube-repeat'), ('cube-regroup', 'cube-repeat'), ('cube-squash', 'cube-swap'), ('hyper-dial', 'rect-dial'), ('hyper-explode', 'rect-explode'), ('rect-explode', 'rect-plain'), ('rect-explode', 'rod-explode'), ('rect-squash', 'rod-squash'), ('rod-collapse', 'rod-plain'), ('rod-collapse', 'rod-regroup'), ('rod-collapse', 'rod-swap'), ('rod-explode', 'rod-plain'), ('rod-explode', 'rod-swap'), ('rod-plain', 'rod-regroup'), ('rod-plain', 'rod-squash'), ('rod-plain', 'rod-swap'), ('rod-regroup', 'rod-swap')]
+  w >=  3: edges 138, cycles (strong components > 1): [['box-dial', 'box-swap', 'cube-collapse', 'cube-dial', 'cube-explode', 'cube-flatten', 'cube-measure', 'cube-plain', 'cube-regroup', 'cube-repeat', 'cube-squash', 'cube-swap', 'hyper-dial', 'hyper-explode', 'rect-collapse', 'rect-dial', 'rect-explode', 'rect-plain', 'rect-squash', 'rod-collapse', 'rod-explode', 'rod-plain', 'rod-regroup', 'rod-squash', 'rod-swap']]
+           two-way pairs: [('cube-collapse', 'cube-dial'), ('cube-collapse', 'cube-explode'), ('cube-collapse', 'cube-flatten'), ('cube-collapse', 'cube-plain'), ('cube-collapse', 'rod-collapse'), ('cube-dial', 'cube-explode'), ('cube-explode', 'cube-repeat'), ('cube-explode', 'cube-squash'), ('cube-flatten', 'cube-squash'), ('cube-plain', 'cube-repeat'), ('rect-explode', 'rect-plain'), ('rect-squash', 'rod-squash'), ('rod-collapse', 'rod-plain'), ('rod-collapse', 'rod-regroup'), ('rod-collapse', 'rod-swap'), ('rod-explode', 'rod-plain'), ('rod-explode', 'rod-swap'), ('rod-plain', 'rod-squash'), ('rod-plain', 'rod-swap'), ('rod-regroup', 'rod-swap')]
+  w >=  5: edges  72, cycles (strong components > 1): [['cube-collapse', 'cube-dial', 'cube-explode', 'cube-flatten', 'cube-measure', 'cube-plain', 'cube-regroup', 'cube-repeat', 'cube-squash', 'cube-swap'], ['rect-explode', 'rect-plain', 'rect-squash', 'rod-collapse', 'rod-plain', 'rod-regroup', 'rod-squash', 'rod-swap']]
+           two-way pairs: [('cube-collapse', 'cube-plain'), ('cube-dial', 'cube-explode'), ('cube-explode', 'cube-repeat'), ('cube-explode', 'cube-squash'), ('cube-flatten', 'cube-squash'), ('cube-plain', 'cube-repeat'), ('rod-collapse', 'rod-swap'), ('rod-plain', 'rod-squash'), ('rod-plain', 'rod-swap'), ('rod-regroup', 'rod-swap')]
+  w >=  8: edges  38, cycles (strong components > 1): [['cube-collapse', 'cube-dial', 'cube-explode', 'cube-plain', 'cube-regroup', 'cube-repeat'], ['rod-collapse', 'rod-swap']]
+           two-way pairs: [('cube-collapse', 'cube-plain'), ('cube-explode', 'cube-repeat'), ('rod-collapse', 'rod-swap')]
+  w >= 12: edges  20, cycles (strong components > 1): []
+           two-way pairs: []
+  w >= 20: edges  11, cycles (strong components > 1): []
+           two-way pairs: []
+
+Strongest family uses (needed -> user: uses; users in target / target size):
+    cube-explode -> cube-explode     75   40/131
+       cube-dial -> cube-dial        50   46/114
+   cube-collapse -> cube-collapse    35   30/107
+     cube-repeat -> cube-explode     35   21/131
+    cube-explode -> cube-squash      26   15/63
+   cube-collapse -> cube-flatten     25   22/68
+       rod-plain -> rod-collapse     24   15/72
+    cube-flatten -> cube-flatten     24   20/68
+       rod-plain -> rod-swap         24   15/34
+      cube-plain -> cube-collapse    24   17/107
+       rod-plain -> rect-explode     23   23/308
+       rod-plain -> rod-explode      22   18/86
+     cube-squash -> cube-squash      21   17/63
+   cube-collapse -> cube-explode     21   19/131
+      hyper-dial -> hyper-dial       20   20/101
+        rod-swap -> rod-regroup      20   10/27
+    cube-regroup -> cube-flatten     20   20/68
+    rect-explode -> rect-explode     19   17/308
+    hyper-squash -> hyper-squash     19   15/89
+       rod-plain -> hyper-explode    17   17/168
+     rect-squash -> rect-squash      17   16/142
+        rod-swap -> rod-swap         17   14/34
+      rod-squash -> rod-squash       17   14/113
+    cube-regroup -> cube-explode     17   11/131
+      hyper-dial -> cube-dial        17   17/114
+       rod-plain -> rod-plain        15   14/101
+       cube-dial -> cube-explode     15   15/131
+       rect-dial -> rect-dial        15   15/124
+      rod-squash -> cube-squash      15   12/63
+    cube-regroup -> cube-regroup     14   14/42
+    rect-explode -> rect-plain       13   13/59
+   cube-collapse -> cube-squash      13   10/63
+     cube-repeat -> cube-squash      13   7/63
+       rod-plain -> rod-regroup      13   9/27
+     rod-regroup -> rod-regroup      12   11/27
+     cube-repeat -> cube-repeat      11   10/116
+       rod-plain -> box-explode      11   10/102
+     cube-repeat -> cube-collapse    10   9/107
+    rect-explode -> hyper-explode    10   10/168
+        rod-swap -> rod-collapse     10   8/72
+
+Full coverage claims (every proof in Y that uses any theorem uses one from X), Y with >= 5 users:
+
+Uses inside one family: 444 of 1859 (24%)
+
+Action matrix (row = needed lead move, column = user):
+           collaps     dial  explode  flatten  measure    plain  regroup   repeat   squash     swap    tally
+ collapse       71        8       29       26        8       15       15        3       26       17        5
+     dial        8      151       22        2        1        1        1        0       19        1        1
+  explode       40       16      147       12       10       37       10       21       79       20        8
+  flatten        5        0        2       25        1        4        2        0        8        1        0
+  measure        5        2        8        8        3       10        2        2        3        8        3
+    plain       78       14       82        4        5       24       27       11       24       49        8
+  regroup        6        8       21       20        2        3       46        2        4       12        0
+   repeat       21       10       41        6        6       10       14       14       15        3        3
+   squash        8        3       10        7        2       10        0        1      136        3        2
+     swap       18        7       11        1        0       10       44        1       13       32        1
+    tally        3        0        2        0        3        3        0        0        1        0        2

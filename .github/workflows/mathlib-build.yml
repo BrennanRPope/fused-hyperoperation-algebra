@@ -7,7 +7,7 @@ name: Mathlib build
 
 on:
   push:
-    branches: [main]
+    branches: [main, mathlib-port]
     paths:
       - "lean-library-mathlib/**"
       - ".github/workflows/mathlib-build.yml"

@@ -272,6 +272,15 @@ FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tateRel_refl
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tateRel_symm	
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tateRel_trans	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tate_glue	
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.dep_extra	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.dep_v	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.gaussian_boost	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.largeN_u	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.largeN_v	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.litim_mismatch	
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.litim_partial_fractions	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.plane_exponents_opposite	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.plane_generator	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.corner_tiny	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.double_pulsar_within_error	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BinaryPulsar	BinaryPulsar.drag_needed	propext, Classical.choice, Quot.sound
@@ -410,6 +419,15 @@ FusedAlgebra.Topics.Biology.Population	Population.bh_room	propext, Classical.cho
 FusedAlgebra.Topics.Biology.Population	Population.hassell_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Biology.Population	Population.interventions	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Biology.Population	Population.survival_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.chain4_corners	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.incl_excl3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.nchain3_corners	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.plane_chain3_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.plane_chain3_num	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.plane_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.tangent3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.velocity3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.BooleanLattice	BooleanLattice.way_back_of_strict_zeta	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Calculus	CircleOp.Calculus.cubes_example	
 FusedAlgebra.Topics.Calculus	CircleOp.Calculus.dif_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Calculus	CircleOp.Calculus.dif_shift	
@@ -2708,6 +2726,27 @@ FusedAlgebra.Topics.SeveralWaves	SeveralWaves.rule4_second_value	propext, Classi
 FusedAlgebra.Topics.SeveralWaves	SeveralWaves.tau4_exclusion	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SeveralWaves	SeveralWaves.tau4_free	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SeveralWaves	SeveralWaves.tau4_splits	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.addition_is_dial_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.circ_needs_add_and_mul	
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.cusp_collinear	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.cusp_is_addition	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.law_is_addition_plus_corner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.merged_is_addition	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.nodal_collinear	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.nodal_law_is_circ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.nodal_negation	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.nodal_on_curve	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.nodal_phi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.turn_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.turn_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.turn_keeps_border	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.turn_num	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.two_walls_difference	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.velocity_turns_to_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.walls_merge_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.zoom_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.zoom_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ShapeDependencies	ShapeDependencies.zoom_num	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.additive_at_five	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.additive_at_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ShapeDirections	ShapeDirections.additive_at_two	propext, Classical.choice, Quot.sound

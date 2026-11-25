@@ -1,15 +1,15 @@
 {
- "numbers_scanned": 7279,
- "pages_scanned": 30,
+ "numbers_scanned": 7413,
+ "pages_scanned": 33,
  "rel_tol": 0.00015,
- "reps": 300,
+ "reps": 1000,
  "results": [
   {
    "constant": "1/e",
    "observed": 12,
-   "null_mean": 1.5833333333333333,
-   "null_sd": 1.1845064607487608,
-   "p": 0.0033222591362126247,
+   "null_mean": 1.552,
+   "null_sd": 1.2582909043619444,
+   "p": 0.000999000999000999,
    "pages": {
     "biology": 2,
     "elliptic": 2,
@@ -23,9 +23,9 @@
   {
    "constant": "e",
    "observed": 12,
-   "null_mean": 1.1833333333333333,
-   "null_sd": 1.0907438847970783,
-   "p": 0.0033222591362126247,
+   "null_mean": 1.203,
+   "null_sd": 1.1008137898845562,
+   "p": 0.000999000999000999,
    "pages": {
     "biology": 3,
     "fused-constants": 3,
@@ -38,9 +38,9 @@
   {
    "constant": "e^(1/e)",
    "observed": 7,
-   "null_mean": 2.02,
-   "null_sd": 1.3806761628516175,
-   "p": 0.016611295681063124,
+   "null_mean": 2.168,
+   "null_sd": 1.5019240992806526,
+   "p": 0.011988011988011988,
    "pages": {
     "dark-sector": 1,
     "elliptic": 2,
@@ -52,9 +52,9 @@
   {
    "constant": "\u221a2",
    "observed": 5,
-   "null_mean": 2.0633333333333335,
-   "null_sd": 1.4649194137866044,
-   "p": 0.06312292358803986,
+   "null_mean": 2.097,
+   "null_sd": 1.479726663948447,
+   "p": 0.06993006993006994,
    "pages": {
     "fused-constants": 2,
     "lee-yang": 1,
@@ -66,9 +66,9 @@
   {
    "constant": "ln 2",
    "observed": 5,
-   "null_mean": 2.466666666666667,
-   "null_sd": 1.4817407180595248,
-   "p": 0.09634551495016612,
+   "null_mean": 2.531,
+   "null_sd": 1.5162582233907258,
+   "p": 0.1038961038961039,
    "pages": {
     "elliptic": 2,
     "fused-constants": 2,
@@ -79,9 +79,9 @@
   {
    "constant": "omega W(1)",
    "observed": 5,
-   "null_mean": 1.95,
-   "null_sd": 1.4540174230959775,
-   "p": 0.05647840531561462,
+   "null_mean": 1.952,
+   "null_sd": 1.442808372584523,
+   "p": 0.054945054945054944,
    "pages": {
     "elliptic": 2,
     "fused-constants": 1,
@@ -90,11 +90,24 @@
    "n_pages": 3
   },
   {
+   "constant": "golden ratio \u03c6",
+   "observed": 4,
+   "null_mean": 1.802,
+   "null_sd": 1.3464011289359499,
+   "p": 0.1068931068931069,
+   "pages": {
+    "elliptic": 1,
+    "graph-theory": 1,
+    "lee-yang": 2
+   },
+   "n_pages": 3
+  },
+  {
    "constant": "silver 1+\u221a2",
    "observed": 4,
-   "null_mean": 1.28,
-   "null_sd": 1.1112755433884673,
-   "p": 0.036544850498338874,
+   "null_mean": 1.333,
+   "null_sd": 1.1866385296289683,
+   "p": 0.04695304695304695,
    "pages": {
     "fused-constants": 2,
     "lee-yang": 1,
@@ -103,11 +116,37 @@
    "n_pages": 3
   },
   {
+   "constant": "\u03c0/2",
+   "observed": 4,
+   "null_mean": 1.789,
+   "null_sd": 1.3253222249702146,
+   "p": 0.10789210789210789,
+   "pages": {
+    "elliptic": 2,
+    "functional-analysis": 1,
+    "twisted-boosts": 1
+   },
+   "n_pages": 3
+  },
+  {
+   "constant": "2/\u03c0",
+   "observed": 4,
+   "null_mean": 2.03,
+   "null_sd": 1.3874797295816612,
+   "p": 0.14185814185814186,
+   "pages": {
+    "elliptic": 2,
+    "functional-analysis": 1,
+    "twisted-boosts": 1
+   },
+   "n_pages": 3
+  },
+  {
    "constant": "\u03c0",
    "observed": 13,
-   "null_mean": 0.7666666666666667,
-   "null_sd": 0.9159087776022724,
-   "p": 0.0033222591362126247,
+   "null_mean": 0.868,
+   "null_sd": 0.8891434080057052,
+   "p": 0.000999000999000999,
    "pages": {
     "elliptic": 1,
     "pi": 12
@@ -115,59 +154,23 @@
    "n_pages": 2
   },
   {
-   "constant": "golden ratio \u03c6",
-   "observed": 3,
-   "null_mean": 1.82,
-   "null_sd": 1.402711659607918,
-   "p": 0.27906976744186046,
-   "pages": {
-    "elliptic": 1,
-    "lee-yang": 2
-   },
-   "n_pages": 2
-  },
-  {
    "constant": "\u03c6\u00b2 (Beraha B5)",
    "observed": 3,
-   "null_mean": 1.3966666666666667,
-   "null_sd": 1.2107802810125745,
-   "p": 0.18604651162790697,
+   "null_mean": 1.483,
+   "null_sd": 1.2392380723654355,
+   "p": 0.1878121878121878,
    "pages": {
     "elliptic": 1,
     "lee-yang": 2
-   },
-   "n_pages": 2
-  },
-  {
-   "constant": "\u03c0/2",
-   "observed": 3,
-   "null_mean": 1.6833333333333333,
-   "null_sd": 1.3024549469708688,
-   "p": 0.2425249169435216,
-   "pages": {
-    "elliptic": 2,
-    "twisted-boosts": 1
-   },
-   "n_pages": 2
-  },
-  {
-   "constant": "2/\u03c0",
-   "observed": 3,
-   "null_mean": 2.033333333333333,
-   "null_sd": 1.502960042346066,
-   "p": 0.3521594684385382,
-   "pages": {
-    "elliptic": 2,
-    "twisted-boosts": 1
    },
    "n_pages": 2
   },
   {
    "constant": "\u221a5",
    "observed": 2,
-   "null_mean": 1.43,
-   "null_sd": 1.237645614328539,
-   "p": 0.43521594684385384,
+   "null_mean": 1.306,
+   "null_sd": 1.1297628069643646,
+   "p": 0.3646353646353646,
    "pages": {
     "elliptic": 1,
     "ns-rungs": 1
@@ -177,9 +180,9 @@
   {
    "constant": "2+\u221a3",
    "observed": 2,
-   "null_mean": 0.6333333333333333,
-   "null_sd": 0.8595864638818418,
-   "p": 0.15946843853820597,
+   "null_mean": 0.513,
+   "null_sd": 0.722378709542301,
+   "p": 0.08491508491508491,
    "pages": {
     "elliptic": 1,
     "lee-yang": 1
@@ -189,9 +192,9 @@
   {
    "constant": "ln 3",
    "observed": 3,
-   "null_mean": 1.7666666666666666,
-   "null_sd": 1.256538454998051,
-   "p": 0.2425249169435216,
+   "null_mean": 1.766,
+   "null_sd": 1.2685598133316378,
+   "p": 0.25774225774225773,
    "pages": {
     "elliptic": 3
    },
@@ -200,9 +203,9 @@
   {
    "constant": "\u221a3",
    "observed": 1,
-   "null_mean": 2.033333333333333,
-   "null_sd": 1.489593531433622,
-   "p": 0.8737541528239202,
+   "null_mean": 2.014,
+   "null_sd": 1.427516724945806,
+   "p": 0.8561438561438561,
    "pages": {
     "lee-yang": 1
    },
@@ -211,9 +214,9 @@
   {
    "constant": "2cos(\u03c0/7)",
    "observed": 1,
-   "null_mean": 2.0766666666666667,
-   "null_sd": 1.4710955856851118,
-   "p": 0.8770764119601329,
+   "null_mean": 2.083,
+   "null_sd": 1.4670074982766788,
+   "p": 0.8801198801198801,
    "pages": {
     "elliptic": 1
    },
@@ -222,9 +225,9 @@
   {
    "constant": "Euler \u03b3",
    "observed": 1,
-   "null_mean": 1.5233333333333334,
-   "null_sd": 1.2066988945972488,
-   "p": 0.7840531561461794,
+   "null_mean": 1.707,
+   "null_sd": 1.3368436707408986,
+   "p": 0.8191808191808192,
    "pages": {
     "elliptic": 1
    },
@@ -233,9 +236,9 @@
   {
    "constant": "Catalan G",
    "observed": 1,
-   "null_mean": 2.8666666666666667,
-   "null_sd": 1.7594190960528862,
-   "p": 0.9368770764119602,
+   "null_mean": 2.795,
+   "null_sd": 1.646503871844825,
+   "p": 0.949050949050949,
    "pages": {
     "fused-constants": 1
    },
@@ -244,9 +247,9 @@
   {
    "constant": "\u03b6(3)",
    "observed": 1,
-   "null_mean": 1.6833333333333333,
-   "null_sd": 1.2232697531161671,
-   "p": 0.8305647840531561,
+   "null_mean": 1.838,
+   "null_sd": 1.3400582076909944,
+   "p": 0.8361638361638362,
    "pages": {
     "ns-rungs": 1
    },
@@ -255,8 +258,8 @@
   {
    "constant": "plastic \u03c1",
    "observed": 0,
-   "null_mean": 1.77,
-   "null_sd": 1.3001666559842755,
+   "null_mean": 1.873,
+   "null_sd": 1.3523575710587787,
    "p": 1.0,
    "pages": {},
    "n_pages": 0

@@ -2,16 +2,26 @@
 
 Every topic, its folder in this repo, and its published page on claude.ai (pages open for Brennan's account). See IN-PROGRESS.md for folders that were still changing at the last sync, and PAGES-INDEX.md for the raw list of page ids.
 
+## Drafts
+
+Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of its README.
+
+None right now. The last one saved mid-way, e at every rung height, was finished before this push.
+
 ## The library and tools
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,125 theorems, 129 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,164 theorems, 132 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
+| Proof complexity: proofs through the circle operation are not shorter (negative result; Mathlib Lean files, not built here) | `topics/proof-complexity/` | — |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
 | Mathlib port check: does the port on the `mathlib-port` branch prove the same 1,750 theorems? (read side by side, not compiled) | `topics/mathlib-port-check/` | no page |
 | Common patterns pass | `topics/patterns/` | no page yet |
+| The theory's shape: the Boolean lattice (n-cube); a chain of circle operations sums over its corners | `topics/boolean-lattice/` | — |
+| Do shapes depend on shapes? Proof bodies order yes, whole laws no | `topics/shape-dependencies/` | not yet published |
+| Mathlib port: what it takes to merge (plan; no Mathlib pull request yet) | `topics/mathlib-plan/` | — |
 | Dependency map: prerequisites for a G dial, how results depend on each other, and what each rests on ([DEPENDENCY-MAP.md](DEPENDENCY-MAP.md)) | `topics/dependency-map/` | — |
 
 ## Foundations
@@ -29,6 +39,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | pi and other transcendentals | `topics/pi/` | [page](https://claude.ai/artifact/SsQ4CUfuyWHmmBSwvKYxYA) |
 | Natural constants, fused | `topics/fused-constants/` | [page](https://claude.ai/artifact/TW1FbQ74pbLGD9P68doQ2y) |
 | Fractional and negative rungs | `topics/fractional-rungs/` | no page yet |
+| e and the supernatural logarithm at every rung height: e_s = 1 + E^s(1) | `topics/fractional-rungs/e-every-height/` | — |
 | The smooth shape through the rungs (rung sheet) | `topics/rung-shape/` | [page](https://claude.ai/artifact/AHr9NVcjzr4cHjQVrRaEnJ) |
 | Infinities | `topics/infinities/` | [page](https://claude.ai/artifact/YEchSB4Ft97HsNEcV4q3aJ) |
 | Landscape map of fused laws | `topics/landscape/` | [page](https://claude.ai/artifact/E2ri2CF3xiGEWA5B9hAWYf) |
@@ -56,11 +67,13 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Does resolving the chain force the turn? Only reversibility and the classical path at every length force k = −i | `topics/why-i/e-i-pi/chain-resolves/` | — |
 | Dials for G: three published dials with stable ends, and G as the square of the stability-forced length | `topics/why-i/e-i-pi/g-dials/` | — |
 | Units at different levels: asymptotic safety, dimension flow and G (the RG flow of G as a circle-operation chain) | `topics/why-i/e-i-pi/asymptotic-safety/` | — |
+| Beyond one loop: G's running matches the circle operation only at one loop or large N (limiting result) | `topics/why-i/e-i-pi/asymptotic-safety/beyond-one-loop/` | — |
 | k as the Cayley–Klein curvature dial (κ = −k²/4) | `topics/why-i/cayley-klein/` | — |
 | The circle operation as κ-Poincaré momentum addition | `topics/why-i/kappa-poincare/` | — |
 | The dial map: the framework does not make gravity a forced step | `topics/why-i/dial-map/` | — |
 | String theory: what it rests on, G as (coupling)² × length^(D−2), T-duality as the k = 1 inverse | `topics/string-theory/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
+| Interim theory name: Hypercube Composition Theory (final name still open, ROADMAP item 8) | `topics/names-review/THEORY-NAME.md` | — |
 | Electromagnetism through the circle operation: light sets the dial d = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
 | Size weighting as a dial, and what the circle operation leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |
 
@@ -136,6 +149,16 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | 01 Quantum chemistry | `topics/chemistry/01-quantum/` | [page](https://claude.ai/artifact/T7nq4VDeDLgZcdPFunvDXd) |
 | 02 Conservation of mass and charge | `topics/chemistry/02-conservation/` | [page](https://claude.ai/artifact/KrZP1fbkBG53nNKvcz2kYt) |
 | 03 Periodic law | `topics/chemistry/03-periodic/` | [page](https://claude.ai/artifact/1noQ3igMrH77b9bZ7ocL8y) |
+| 04 Bonding and valence | `topics/chemistry/04-bonding/` | [page](https://claude.ai/artifact/N7zionN5F7ABGi86xAW1nE) |
+| 05 Stoichiometry and proportions | `topics/chemistry/05-stoichiometry/` | [page](https://claude.ai/artifact/F6KLdvnVUQ2VUS4rMbscMj) |
+| 06 Gas laws | `topics/chemistry/06-gas-laws/` | [page](https://claude.ai/artifact/VRTU1XGxbaxTzGT3yiB5TK) |
+| 07 Chemical thermodynamics (Gibbs) | `topics/chemistry/07-gibbs/` | [page](https://claude.ai/artifact/Q14CAvSfgRNYMtd5Q36cwn) |
+| 08 Equilibrium and mass action | `topics/chemistry/08-equilibrium/` | [page](https://claude.ai/artifact/6MZCz3kfVLy4fKRLwXTdNn) |
+| 09 Rates and Arrhenius | `topics/chemistry/09-rates/` | [page](https://claude.ai/artifact/4bv4XrP5PCNSJEbJxqLSf4) |
+| 10 Electrochemistry and Nernst | `topics/chemistry/10-electrochemistry/` | [page](https://claude.ai/artifact/YJyPaYuGYCdwEPPwFJohp5) |
+| 11 Acids and bases | `topics/chemistry/11-acids-bases/` | [page](https://claude.ai/artifact/HD9Qo9wtMqhYCqyTuNPoW4) |
+| 12 Organic chemistry | `topics/chemistry/12-organic/` | [page](https://claude.ai/artifact/1EZy9KmDV2Zne7xvHoCMRL) |
+| 13 Biochemistry | `topics/chemistry/13-biochemistry/` | [page](https://claude.ai/artifact/SUDjpM1zrqnDHdBXeMJvXq) |
 
 ## Biology
 
@@ -144,6 +167,16 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Biology, all chapters | `topics/biology/` | no page yet |
 | 01 Molecular biology | `topics/biology/01-molecular/` | [page](https://claude.ai/artifact/D4N4o6M3e7vRJuU5NkDpLh) |
 | 02 Metabolism | `topics/biology/02-metabolism/` | [page](https://claude.ai/artifact/8sJ7P1mBE6PeqqNEDg7JhQ) |
+| 03 Cell biology | `topics/biology/03-cell/` | [page](https://claude.ai/artifact/MD9HyXQFA5M5ai5okJdWEX) |
+| 04 Genetics | `topics/biology/04-genetics/` | [page](https://claude.ai/artifact/AzdqcvaM3ScGG28kVTS4No) |
+| 05 Developmental biology | `topics/biology/05-development/` | [page](https://claude.ai/artifact/898LXAfMTPjWoS3wg5crNY) |
+| 06 Physiology | `topics/biology/06-physiology/` | [page](https://claude.ai/artifact/4tvsRPgwNeGVhqQWPTZkCw) |
+| 07 Neuroscience | `topics/biology/07-neuroscience/` | [page](https://claude.ai/artifact/DU5rWsu5k7VxUHVPFGmTwt) |
+| 08 Evolution | `topics/biology/08-evolution/` | [page](https://claude.ai/artifact/7Bp87asyNsREZjqMeKPWhT) |
+| 09 Population | `topics/biology/09-population/` | [page](https://claude.ai/artifact/BsidfaottuXfA8RPPGDVgT) |
+| 10 Ecology | `topics/biology/10-ecology/` | [page](https://claude.ai/artifact/Xw4bKkWgC9u7G2EsK7vnwW) |
+| 11 Behaviour | `topics/biology/11-behaviour/` | [page](https://claude.ai/artifact/6fsetfzEB6Yq6FfPCzMZnA) |
+| Biology Lean handoff notes (history: all 11 files are now in the library) | `topics/biology/LEAN-HANDOFF.md` | — |
 | Photosynthesis | `topics/photosynthesis/` | [page](https://claude.ai/artifact/Bed2mSeyhXJHP3eS8A2exN) |
 | Mirrored and reversed twists on photosynthesis | `topics/photosynthesis-twists/` | [page](https://claude.ai/artifact/KvTeqUBzFEUjsKWWku9BBK) |
 | Nitrogen and the Three Sisters | (page only) | [page](https://claude.ai/artifact/CKd8YAk66brByG8FwZkG1f) |

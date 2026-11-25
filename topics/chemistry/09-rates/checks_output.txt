@@ -1,0 +1,21 @@
+PASS first order: X(t₁ + t₂) = X(t₁) ⊞₋₁ X(t₂) (survivals multiply)  0.650062
+PASS two parallel first-order channels: rate constants add (k = 0), and the conversion is Xa ⊞₋₁ Xb
+PASS branching ratio of parallel channels is ka/(ka + kb), fixed at every time
+PASS second order: X/(1 − X) grows linearly in time (k[A]₀t)
+PASS so X(t₁ + t₂) = (X₁ + X₂ − 2X₁X₂)/(1 − X₁X₂), the landscape law at (k, q) = (−2, 1)
+PASS (−2, 1) lies on the border k² = 4q: second-order kinetics is a border law (like a flat triangle)
+PASS zeroth order composes by plain addition (0, 0) and first order by (−1, 0)
+PASS order n: survival A/A₀ = e_q(−kt) with Tsallis q = n (A₀ = 1)  n = 0.5, 1.5, 2, 2.5, 3
+PASS consecutive times compose survivals by the q-product: s(t₁ + t₂) = s(t₁) ⊗_n s(t₂)
+PASS the q-logarithm turns an ordinary product into the dial: ln_q(xy) = ln_q x ⊞_(1−q) ln_q y
+PASS order 2: the implied q is 1 for every pair (a genuine landscape law)
+PASS order 3: no constant q works (implied q spans a range), so third-order kinetics is not a landscape law  q from 2.31 to 2.92
+PASS …but near zero conversion its implied q tends to 3 = n(n − 1)/2, matching orders 0, 1, 2 (q = 0, 0, 1)  2.998
+PASS the osculating point (−n, n(n−1)/2) has discriminant n(2 − n): two walls for 0 < n < 2, border at n = 0 and 2, turning for n > 2
+PASS order n < 1 empties in finite time t* = A₀^(1−n)/((1−n)k): order ½ at k = 0.7 ends at t = 2.857
+PASS orders n ≥ 1 never reach zero (the wall is approached only asymptotically)
+PASS Arrhenius: rate ratios over successive temperature steps multiply (ln k adds in 1/T)
+PASS a catalyst that lowers the barrier by ΔE multiplies the rate by e^(ΔE/RT): ×5.6, ×5.4e3, ×2.9e7 for 10, 50, 100 kJ/mol at 700 K
+PASS running at 700 K instead of 463 K (where K = 1) speeds a 100 kJ/mol step by ×6.6e3: the reason Haber reactors run hot  50 kJ: ×81, 100 kJ: ×6.6e+03, 150 kJ: ×5.4e+05
+
+19/19 checks pass

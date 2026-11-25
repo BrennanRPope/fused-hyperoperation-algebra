@@ -1,0 +1,12 @@
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.dial_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.dial_steps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.exponential_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.herrnstein	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.hyperbolic_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.hyperbolic_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.many_eyes	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.rw_curve	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.rw_phases	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.rw_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.star_def	
+FusedAlgebra.Topics.Biology.Behaviour	Behaviour.subadditive	propext, Classical.choice, Quot.sound

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developmental biology and the circle operation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the biology series, honest about what is known and what might be new
+   IDEA a naturalist's field plate pinned over a proof notebook: one living system, one dial, the corner cell in view
+   PICTURE the lead plate in the first screen, then one plate per finding, a verdict table and the Lean list
+   COLOUR white ground, near-black ink, leaf green for the living thing and the lead, ultramarine for the circle operation, vermilion for warnings; night is deep ink with plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plate first; known/new and lead-verdict boxes; one band per finding; verdict table; Lean; sources */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1414);--ink:light-dark(#15171a,#e8eeea);--mute:light-dark(#5b615d,#a6b2ab);--green:light-dark(#1d6b3c,#7fd6a0);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#c2361c,#ff8a6b);--wash:light-dark(#eef6f0,#16241c);--rule:light-dark(#d8ddd9,#2a3a31)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;text-wrap:balance;margin:0 0 .4em}
+h1{font-size:clamp(32px,5vw,50px)}h2{font-size:clamp(25px,3.2vw,34px)}h3{font-size:20px;margin-top:1.2em}
+p,li{max-width:70ch}a{color:var(--blue)}code{overflow-wrap:anywhere;font-size:.9em}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}.wrap{max-width:1240px;margin:0 auto}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(20px,3vw,44px);align-items:center}
+.kicker{color:var(--green);font-weight:600;margin:0 0 .6em}
+.lede{font-size:18.5px}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:10px;margin:18px 0}
+.plate img{display:block;width:100%;height:auto}
+.plate figcaption{color:#5b615d;font-size:13.5px;padding:8px 4px 2px}
+.stats{display:flex;flex-wrap:wrap;gap:12px 28px;margin:18px 0 0;padding:0;list-style:none}
+.stats li{font-size:14px;color:var(--mute)}.stats b{display:block;font:600 28px/1.1 Newsreader,serif;color:var(--ink)}
+.box{background:var(--wash);border-radius:6px;padding:18px 22px;margin:22px 0}.box p{margin:.4em 0}
+.box.lead{border-left:4px solid var(--green)}
+nav.scroll{display:flex;gap:18px;white-space:nowrap;padding:12px max(5vw,16px);border-block:1px solid var(--rule);font-size:14.5px;background:var(--bg)}
+nav.scroll a{flex:none;text-decoration:none}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;z-index:2}}
+.eq{font-family:Newsreader,Georgia,serif;font-size:21px;background:var(--wash);border-radius:6px;padding:12px 18px;overflow-x:auto;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}th{font-weight:600}
+.scroll{overflow-x:auto}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+<header class="band"><div class="wrap hero"><div>
+<p class="kicker">Biology series · 5 of 11</p>
+<h1>Growth curves are one circle-operation power of a fading excess, and logistic growth is the inverse again</h1><p class="lede">The Richards family of growth curves, which holds the logistic, Gompertz and von Bertalanffy curves as special cases, is exactly size/asymptote = 1 + mpow(x, p), where the excess x fades exponentially and p = −1/ν. Logistic growth is p = −1, the circle-operation inverse, the same saturation as an enzyme's Michaelis–Menten curve. Gompertz growth in discrete time iterates a single circle-operation power. Three real growth data sets put the exponent in three different places.</p><ul class="stats"><li><b>12 / 12</b>numeric checks</li><li><b>8</b>Lean theorems, no sorry</li><li><b>0</b>leads</li></ul></div>
+<figure class="plate"><img src="figures/f1_growth_family.png" alt="Left: four members of the Richards family, all of the form 1 + mpow(x, −1/ν). Right: three real growth data sets with the best Richards curve and the logistic and Gompertz fits. Soybean and loblolly reject the named shapes; the orange trees cannot tell them apart." loading="lazy"><figcaption>Left: four members of the Richards family, all of the form 1 + mpow(x, −1/ν). Right: three real growth data sets with the best Richards curve and the logistic and Gompertz fits. Soybean and loblolly reject the named shapes; the orange trees cannot tell them apart.</figcaption></figure>
+</div></header>
+<nav class="scroll"><a href="#family">Growth curves</a><a href="#data">Real data</a><a href="#table">Verdicts</a><a href="#lean">Lean</a><a href="#sources">Sources</a></nav>
+<section class="band"><div class="wrap"><div class="box"><p><b>Known or new.</b> All of this is known. The Richards curve (1959) unifies the logistic, Gompertz and von Bertalanffy growth laws through one shape parameter ν, and allometry is Huxley's power law. Writing the family as 1 + mpow(x, −1/ν) is a relabelling of Richards' own formula. What the page adds is the link to the rest of the series: the logistic case is the same circle-operation inverse that gives enzyme saturation, and the Gompertz case is an iterated circle-operation power.</p></div><div class="box lead"><p><b>Is there a lead worth following?</b> None. The placement is exact but it is a relabelling: the shape parameter ν already plays the role of the exponent, and the data show no preferred value. It is noted here as glue for the series, not followed.</p></div></div></section>
+<section class="band" id="family"><div class="wrap"><h2>1. One power, many growth laws</h2><p>The Richards growth curve is y = K·(1 + Q·e<sup>−rt</sup>)<sup>−1/ν</sup>. Put x = Q·e<sup>−rt</sup>, an excess that fades exponentially. Then</p>
+<div class="eq">y / K = 1 + mpow(x, −1/ν)</div>
+<p>a single circle-operation power. The named growth laws are settings of the power:</p>
+<ul><li><b>Logistic (ν = 1, power −1):</b> y/K = 1/(1 + x) = 1 + inv(x). This is the circle-operation inverse, the same saturation as Michaelis–Menten kinetics on the metabolism page.</li>
+<li><b>Von Bertalanffy (ν = −⅓, power 3):</b> y/K = (1 + x)³ with x between −1 and 0.</li>
+<li><b>Gompertz (ν → 0):</b> the limit, checked numerically to 10⁻⁴.</li></ul>
+<p>In discrete time Gompertz growth is y<sub>t+1</sub>/K = (y<sub>t</sub>/K)<sup>λ</sup>, so each step is the circle-operation power x ↦ (1 + x)<sup>λ</sup> − 1. Powers compose by multiplying exponents, so n steps are one power λⁿ. Lean proves both facts for whole-number exponents.</p>
+<p>Allometry, Huxley's y ∝ x<sup>a</sup>, says the growth of y is the circle-operation power of the growth of x. Kleiber's ¾ law on the metabolism page is the same statement.</p></div></section><section class="band" id="data"><div class="wrap"><h2>2. Where real growth sits</h2><p>I fitted the Richards curve to three classic growth data sets, pooling all individuals in each, and tested the three named shapes against the free fit:</p>
+<ul><li><b>Soybean leaf weight:</b> ν = 2.54 (power −0.39). Logistic, Gompertz and von Bertalanffy are all rejected (p ≤ 0.005).</li>
+<li><b>Loblolly pine height:</b> ν = −0.81 (power 1.24), past von Bertalanffy. All three named shapes are rejected.</li>
+<li><b>Orange tree trunks:</b> ν = 0.93, but the data cannot tell the three shapes apart (all p > 0.4).</li></ul>
+<p>So the exponent varies from data set to data set, as growth biologists already know, and nothing singles out a special value. Pooling different plots, years and trees mixes individuals with different curves, so these ν values describe the average curve, not each organism.</p>
+<p>I also considered phyllotaxis and morphogen gradients and did not find a place where the circle operation (called mult-add before 1.0) applies: phyllotaxis is about continued fractions and the golden angle, and gradients from two sources simply add. I ran no computation on either.</p></div></section>
+<section class="band" id="table"><div class="wrap"><h2>Where the circle operation shows up in development</h2>
+<table class="stack"><thead><tr><th>Place</th><th>What the circle operation does there</th><th>Known since</th><th>Verdict</th></tr></thead><tbody><tr><td>Richards growth family</td><td>y/K = 1 + mpow(x, −1/ν), x fading exponentially</td><td>Richards 1959</td><td>Exact relabelling</td></tr><tr><td>Logistic growth</td><td>Power −1: the circle-operation inverse, as in enzyme saturation</td><td>Verhulst 1838</td><td>Exact, known</td></tr><tr><td>Gompertz growth</td><td>Iterated circle-operation power; steps compose to λⁿ</td><td>Gompertz 1825</td><td>Exact, known</td></tr><tr><td>Allometry</td><td>Growth of y = mpow(growth of x, a)</td><td>Huxley 1932</td><td>Relabelling only</td></tr><tr><td>Real growth data</td><td>ν = 2.54, −0.81, 0.93: no shared exponent</td><td>Standard data sets</td><td>No lead</td></tr></tbody></table></div></section>
+<section class="band" id="lean"><div class="wrap"><h2>Lean: 8 theorems, compiled, no sorry</h2>
+<p>File <code>biology/05-development/lean/Development.lean</code>, core Lean 4.37 with no mathlib, built on the shared library's base and using ∘₁ for the circle operation. Every theorem uses only Lean's standard axioms. It goes into the shared proof library as <code>FusedAlgebra/Topics/Biology/Development.lean</code>.</p>
+<p class="scroll" style="font-size:14px"><code>allometry</code>, <code>bertalanffy</code>, <code>gompertz_steps</code>, <code>logistic</code>, <code>logistic_shortfall</code>, <code>mpow_mpow</code>, <code>pow_mul&#x27;</code>, <code>star_def</code></p>
+<p>Numeric checks: 12 of 12 pass, from <code>checks.py</code> beside this page.</p></div></section>
+<section class="band" id="sources"><div class="wrap"><h2>Sources</h2><ul><li>Richards 1959, A flexible growth function for empirical use, J. Exp. Bot. 10:290</li><li><a href="https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/datasets/Loblolly.csv">Data: Soybean (nlme), Loblolly and Orange (R datasets), via Rdatasets</a></li><li><a href="https://claude.ai/artifact/8sJ7P1mBE6PeqqNEDg7JhQ">Metabolism page in this series (saturation as the inverse)</a></li></ul>
+<p style="color:var(--mute);font-size:14px">Fits are ordinary least squares on pooled data with three free parameters plus ν; p-values compare a fixed-ν fit against the free one with an F test. A mixed-effects fit per individual would be the careful version.</p></div></section>
+</body></html>

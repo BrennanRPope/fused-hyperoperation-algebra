@@ -128,4 +128,7 @@ import FusedAlgebra.Topics.WhyI
 import FusedAlgebra.Topics.Checkerboard
 import FusedAlgebra.Topics.CheckerboardPotential
 import FusedAlgebra.Topics.EIPi
+import FusedAlgebra.Topics.ShapeDependencies
+import FusedAlgebra.Topics.BooleanLattice
+import FusedAlgebra.Topics.BeyondOneLoop
 import FusedAlgebra.Deprecated

@@ -1,0 +1,18 @@
+PASS Hückel ring levels are 2cos(2πj/N); a Möbius twist shifts them to 2cos((2j+1)π/N), N = 3…10
+PASS characteristic polynomial of the ring = 2T_N(x/2) − 2 (Hückel) and 2T_N(x/2) + 2 (Möbius)
+PASS benzene: π energy 8β, resonance 2β over three ethylenes
+PASS cyclobutadiene: resonance 0 and a degenerate half-filled pair (gap 0): antiaromatic
+PASS Möbius cyclobutadiene: levels ±√2 doubly, π energy 4√2 = 5.66β, resonance 1.66β, gap 2√2: aromatic
+PASS 4n + 2 rule: Hückel rings with 6 and 10 electrons have a gap; 4, 8, 12 have none. Möbius is the reverse
+PASS Hammett: σ adds over substituents (k = 0), so k/k₀ = 10^(ρΣσ) multiplies and k/k₀ − 1 composes by the circle operation
+PASS ee = (r − 1)/(r + 1) = tanh(ln r / 2): ee is a tanh of the free-energy difference
+PASS matched pair: ratios multiply (10 × 5 = 50) and ee composes by (e₁ + e₂)/(1 + e₁e₂): 0.818 ⊕ 0.667 = 0.961
+PASS mismatched pair: ratios divide, ee composes by (e₁ − e₂)/(1 − e₁e₂): 0.818 ⊖ 0.667 = 0.333
+PASS (0, −1) is in the two-walls country (k² − 4q = 4) with walls at ee = ±1: a perfectly selective step absorbs anything
+PASS this is exactly relativistic velocity addition, with ee as v/c and ln r as twice the rapidity
+PASS Horeau duplication: e → 2e/(1 + e²) is e ⊕ e; 20% ee climbs to 38%, 67%, 92%, 99.7% in four rounds
+PASS ee 90%, 99%, 99.9% need ΔΔG‡ = 7.3, 13.1, 18.8 kJ/mol: each extra nine costs close to RT ln 10 = 5.7 kJ/mol
+PASS six-step linear route: losses fold at k = −1 to 1 − Πyᵢ (here 64% lost)
+PASS eight 90% steps in a line keep 43%; two parallel four-step branches plus a 90% coupling keep 59% (only the longest branch counts)
+
+16/16 checks pass

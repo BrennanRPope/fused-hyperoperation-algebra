@@ -1,0 +1,18 @@
+PASS Hill (F + a)(v + b) = (F0 + a)b is the level set X ∘₁ Y = X0, with X = F/a, Y = v/b
+PASS velocity is the circle-operation difference Y = X0 ∘₁ inv(X)
+PASS so v_max/b = F0/a: the curve is symmetric in its two reduced variables
+PASS the asymptotes F = −a and v = −b are the circle operation's absorbing −1 in each coordinate: X = −1 forces 1 + X ∘₁ Y = 0 for every Y
+PASS peak power sits where (1 + X)² = 1 + X0, i.e. F/F0 = (a/F0)(√(1 + F0/a) − 1) | a/F0 = 0.25 gives F/F0 = 0.309, v/vmax = 0.309, power 0.095 of F0·vmax
+PASS at peak power the two reduced variables are equal, X = Y: the circle operation 'square root' of X0
+PASS same site (mutually exclusive): dose ratios add, DR₁₂ − 1 = (DR₁ − 1) + (DR₂ − 1) | b₁ = 2.66, b₂ = 10.04
+PASS independent separate sites: dose ratios multiply, DR₁₂ = DR₁·DR₂ | b₁ = 2.66, b₂ = 10.04
+PASS antagonists that help each other bind (ω = 3) push the dose ratio beyond multiplicative: DR₁₂ − 1 = (DR₁ − 1) ∘_ω (DR₂ − 1)
+PASS well-stirred extraction E = u/(1 + u) = −inv(u): saturation again
+PASS two enzymes in one organ (parallel): intrinsic clearances add, dial 0 on u
+PASS two organs in series (gut then liver): escapes multiply, so u combines by plain ∘₁
+PASS and the total first-pass loss 1 − F is the 'or' of the two extractions, dial −1
+PASS same total intrinsic clearance removes more when split across two organs in series than pooled in one
+PASS Q10: rate ratio over ΔT is a circle operation power, (1 + q)^(ΔT/10) − 1
+PASS Poiseuille: a 10% narrower vessel has resistance 1 + mpow(−0.1, −4) = 1.52 times higher
+
+16/16 checks passed

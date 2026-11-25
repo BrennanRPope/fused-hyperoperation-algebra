@@ -42,7 +42,7 @@
   },
   {
    "id": "LT",
-   "label": "local tomography = mult-add of counts",
+   "label": "local tomography = circle operation of counts",
    "layer": 1
   },
   {

@@ -8,7 +8,7 @@
    IDEA: a stepping machine: one 2×2 step, turned by the law, counting out the n-fold sum.
    PICTURE: the landscape plane with every law, and a live counter that steps a value and shows its Lucas numbers.
    COLOUR and TYPE: aluminium ground, black ink, orange for walls, violet for turns, gold only for φ; Geist.
-   LAYOUT: verdict first, the plane and the counter, then golden ratio, constant census, q, proofs, leads. */
+   LAYOUT: verdict first, the plane and the counter, then golden ratio, elliptic counting, constant census, proofs, known or new. */
 :root{color-scheme:light dark;--bg:light-dark(#e9eaec,#141517);--card:light-dark(#ffffff,#1d1f22);--ink:light-dark(#101214,#eceef0);--mute:light-dark(#555a60,#a3a8ae);--line:light-dark(#c9ccd1,#33373c);--wall:#ff4f00;--turn:#6a4ce2;--gold:light-dark(#b8860b,#e2b33c);--blue:light-dark(#257de0,#4c9cf0)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
@@ -43,7 +43,7 @@ table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font
 th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
 td.n,th.n{text-align:right;white-space:nowrap}
 .scroll{overflow-x:auto}code{overflow-wrap:anywhere;font-size:14px}
-.links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;margin-top:8px}.links a{color:var(--blue)}
+a{color:var(--blue)}.links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;margin-top:8px}.links a{color:var(--blue)}
 details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 @media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
 </style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
@@ -52,12 +52,14 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 <p class="mute small">Fused Hyperoperation Algebra · patterns across the results · Nov 25, 2026</p>
 <h1>One 2×2 step sits under every law, and Fibonacci is one setting of it</h1>
 <p>Every law on the map, the circle operation ∘₁ (called mult-add before 1.0), velocity addition, slope addition, the channels, the Euler characteristic, is the same machine: adding a value is one 2×2 step, and adding it n times is that step taken n times. Taking a 2×2 step n times always follows one recurrence, Lucas's: U(n+2) = P·U(n+1) − Q·U(n), where P is the step's trace and Q its determinant. Fibonacci is the case P = 1, Q = −1, which is exactly the law (a + b − ab)/(1 + ab) adding 1 to itself.</p>
+<p>One level up, the elliptic laws count the same way with elliptic divisibility (Somos) sequences, and the Lucas count is exactly their pinched edge, where the gluing number goes to zero. That ties this counting engine to the elliptic and soliton pages. It is known mathematics (Ward 1948), and it holds in every check.</p>
 <p>The golden ratio is not a force running through the results. It shows up for one arithmetic reason, the number 5, and in the numbers our pages actually produced it turns up no more often than chance. The constants that do repeat above chance are e and its family, which is the ruler that turns every law into plain multiplication.</p>
 <div class="nums">
 <div><b>__NCHECK__</b><span>exact and numeric checks pass</span></div>
 <div><b>__NLEAN__</b><span>Lean theorems (__LEANSTATUS__)</span></div>
 <div><b>__NNUM__</b><span>numbers scanned from __NPAGES__ pages</span></div>
 <div><b>__PHIHITS__ vs __PHINULL__</b><span>golden-ratio hits vs chance</span></div>
+<div><b>__NECHECK__</b><span>elliptic counting checks pass</span></div>
 </div>
 </div>
 
@@ -69,7 +71,8 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 <li><span class="tag t-no">Not a force</span><div><b>The golden ratio comes from 5, twice.</b> The smallest irrational walls a whole-number law can have are the golden walls (discriminant 5, at k = ±1, d = −1): that is the resistor ladder and the Fibonacci law. And the first cycle a whole-number turn can never make is the 5-cycle, so a 5-cycle forces a golden trace: that is where Lee–Yang's 1.618 came from. Both facts are classical number theory. In the census φ appears at chance level, and every hit was put in by hand.</div></li>
 <li><span class="tag t-keep">Explained</span><div><b>e and its family repeat above chance.</b> e, e − 1 and 1/e turn up on 5 to 6 independent pages, far above chance. That is the exponential ruler: the lens that turns the circle operation into multiplication, and rung flow. It confirms that the ruler is the shared object across pages.</div></li>
 <li><span class="tag t-no">Not one force</span><div><b>Two different numbers once shared the letter q.</b> Before 1.0 the pages used q for the map's second coordinate (now d, the curvature: relativity, twisted boosts) and for the gluing/colour number k + 1 (elliptic, solitons, q-counting, Lee–Yang). Parallels hold within each meaning, not across them. How the two meet is the subject of the map-of-directions work, so it is left there.</div></li>
-<li><span class="tag t-next">Worth following</span><div><b>One level up: elliptic laws count with Somos sequences.</b> On the elliptic direction the n-fold sum is governed by elliptic divisibility sequences (Ward 1948), the exact twin of Lucas one level up, and they shrink back to Lucas sequences at d = 0. That would carry today's counting engine across the elliptic and soliton pages. Known math, but it is the natural next placement.</div></li>
+<li><span class="tag t-keep">Holds, known</span><div><b>One level up: elliptic laws count with Somos sequences.</b> On an elliptic law the n-fold sum is read off an elliptic divisibility sequence W(n) (Ward 1948). On every landscape law that sequence is the Lucas sequence times a gauge, and the Lucas recurrence is the elliptic one with an extra factor Q^(n−1), proved in Lean. On the theta side W(n) = θ(n·z), and at gluing q = 0 the theta becomes the soliton's sinh, which is Lucas again. Worth keeping as the one counting engine across the landscape, elliptic and soliton pages; not new mathematics.</div></li>
+<li><span class="tag t-no">Not a force</span><div><b>The golden ratio returns at the elliptic level, from 5 again.</b> Curves can do what lines cannot: a rational point of order 5 (Mazur's list allows 1 to 10 and 12). The family of curves with such a point pinches back to a line only at b = φ⁵ and b = −φ⁻⁵, and there the point becomes the golden 5-cycle with turn number φ² or 1/φ². Its parameter is minus the fifth power of the Rogers–Ramanujan continued fraction, which tends to 1/φ as the gluing tightens. So φ is where 5-fold symmetry meets a line: the same 5 as before, seen from above. Classical (Klein, Ramanujan).</div></li>
 </ul>
 </div>
 
@@ -107,27 +110,45 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 </div>
 
 <div class="band">
+<h2>One level up: elliptic counting</h2>
+<p>A landscape law adds by a 2×2 step and counts with a Lucas sequence. An elliptic law adds by the chord rule on a cubic curve and counts with an elliptic divisibility sequence: the n-fold sum of a point P has x(nP) = x(P) − W(n−1)·W(n+1)/W(n)², and W obeys W(m+n)W(m−n) = W(m+1)W(m−1)W(n)² − W(n+1)W(n−1)W(m)². On y² + y = x³ − x the sequence is __W37__ …, whole numbers with gcd(W m, W n) = |W gcd(m, n)|, just like Fibonacci.</p>
+<div class="grid2">
+<div class="card">
+<div class="fig short" id="theta"><svg role="img" aria-label="Size of the counting sequence W(n) = θ(n z) against n, for the chosen gluing number"></svg></div>
+<label for="gq">gluing number q: <span id="gqv"></span></label><input id="gq" type="range" min="0" max="0.6" step="0.005" value="0.2">
+<p class="small mute">Size of W(n) = θ(n·z), on a log scale, n = 1 to 24 (z fixed off the real line). At q = 0 the theta is the soliton's sinh, a Lucas sequence, and the dots climb in a straight line. Any gluing bends the line into a parabola: elliptic counting grows like n², line counting like n.</p>
+</div>
+<div class="card">
+<div class="fig short" id="pinch"><svg role="img" aria-label="The Rogers–Ramanujan continued fraction R(q) against q, rising to 1/φ"></svg></div>
+<p class="small mute">The curves with a point of order 5 form one family, y² + (1 − b)xy − by = x³ − bx², with discriminant b⁵(b² − 11b − 1). Glued with gluing q⁵, the family sits at b = −R(q)⁵, where R is the Rogers–Ramanujan continued fraction (violet). As q → 1, R → 1/φ and b → −φ⁻⁵, the golden pinch (gold).</p>
+</div>
+</div>
+</div>
+
+<div class="band">
 <h2>Constant census against a fair null</h2>
 <p>Every number printed to at least 4 significant digits in every page's check output (__NNUM4__ numbers, __NPAGES4__ pages) was matched against 21 named constants, also allowing the negative, the reciprocal and ±1 (the circle operation shifts by 1). The null keeps each number's first two digits and size and scrambles the rest, __REPS__ times. A constant counts as a real repeat only if it beats its null.</p>
 <div class="card">
 <div class="fig short" id="census"><svg role="img" aria-label="Observed matches per constant against the chance level"></svg></div>
 <div class="scroll"><table class="stack" id="ctab"><thead><tr><th>Constant</th><th class="n">Hits</th><th class="n">Chance</th><th class="n">p</th><th>Pages</th></tr></thead><tbody></tbody></table></div>
-<p class="small mute">At 6 or more digits (stricter, __NNUM6__ numbers) φ has 0 hits. Most π hits are on the π page, which looked for π. The e hits on the biology, rung-shape and Navier–Stokes pages came out of computations that were not looking for e.</p>
+<p class="small mute">Bars: hits. Orange tick: what chance gives. Blue bars beat chance (p under 0.01). The fourth φ hit is a fixed point 0.618 on the graph-theory page, set by the whole-number choice Q = 1, which is the same discriminant-5 story. At 6 or more digits (stricter, __NNUM6__ numbers) φ has 0 hits. Most π hits are on the π page, which looked for π. The e hits on the biology, rung-shape and Navier–Stokes pages came out of computations that were not looking for e.</p>
 </div>
 </div>
 
 <div class="band">
 <h2>Proofs</h2>
-<p>__LEANNOTE__ File: <code>patterns/lean/Patterns.lean</code>, namespace <code>Patterns</code>.</p>
+<p>__LEANNOTE__ Files: <code>patterns/lean/Patterns.lean</code> (namespace <code>Patterns</code>) and <code>patterns/lean/EllipticCounting.lean</code> (namespace <code>EllipticCounting</code>, __ELEANSTATUS__).</p>
 <div class="scroll"><table class="stack"><thead><tr><th>Theorem</th><th>What it says</th></tr></thead><tbody id="ptab"></tbody></table></div>
 <h3>Checks</h3>
 <div class="scroll"><table class="stack"><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody id="xtab"></tbody></table></div>
+<h3>Elliptic counting checks</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody id="etab"></tbody></table></div>
 </div>
 
 <div class="band">
 <h2>Known or new</h2>
-<p>Known: Möbius classification, Lucas sequences and their addition rule and Cassini identity (Lucas 1878), the infinite resistor ladder and φ, the crystallographic restriction (only periods 1, 2, 3, 4, 6 with whole numbers), Beraha numbers (Beraha, Kahane and Weiss), 5 as the smallest real quadratic discriminant, Fibonacci strong divisibility. New here: placing every law of this project on one Lucas recurrence, the Fibonacci law's spot on the map at (−1, −1), the census showing which constants really recur across the pages, and the Lean proofs on the fused base.</p>
-<p class="small mute">Files: patterns/checks.py, patterns/census.py, patterns/lean/Patterns.lean, beside this page in the project folder.</p>
+<p>Known: Möbius classification, Lucas sequences and their addition rule and Cassini identity (Lucas 1878), the infinite resistor ladder and φ, the crystallographic restriction (only periods 1, 2, 3, 4, 6 with whole numbers), Beraha numbers (Beraha, Kahane and Weiss), 5 as the smallest real quadratic discriminant, Fibonacci strong divisibility, elliptic divisibility sequences and division polynomials (Ward 1948), Somos-4 and the curve y² + y = x³ − x, Lucas sequences as degenerate elliptic divisibility sequences, Mazur's torsion theorem, the Tate normal form for 5-torsion and its discriminant, the Rogers–Ramanujan continued fraction and its limit 1/φ. New here: placing every law of this project on one Lucas recurrence, the Fibonacci law's spot on the map at (−1, −1), the census showing which constants really recur across the pages, and the Lean proofs on the fused base.</p>
+<p class="small mute">Files: patterns/checks.py, patterns/census.py, patterns/elliptic_counting.py, patterns/lean/Patterns.lean, patterns/lean/EllipticCounting.lean, beside this page in the project folder.</p>
 </div>
 
 <script>
@@ -205,8 +226,34 @@ function drawCensus(){const [box,s]=svgOf('census');const W=box.clientWidth,H=bo
 document.querySelector('#ctab tbody').innerHTML=D.census.map(r=>`<tr><td>${esc(r.constant)}</td><td class="n">${r.observed}</td><td class="n">${r.null_mean.toFixed(1)}</td><td class="n">${r.p<0.001?'&lt;0.001':r.p.toFixed(3)}</td><td>${esc(Object.keys(r.pages).sort().join(', ')||'none')}</td></tr>`).join('');
 document.getElementById('ptab').innerHTML=D.proofs.map(p=>`<tr><td><code>${esc(p[0])}</code></td><td>${esc(p[1])}</td></tr>`).join('');
 document.getElementById('xtab').innerHTML=D.checks.map(c=>`<tr><td>${esc(c.name)}</td><td>${c.ok?'pass':'fail'}${c.detail?' · '+esc(c.detail):''}</td></tr>`).join('');
-const all=()=>{update();drawFib();drawTurns();drawCensus();};
-const ro=new ResizeObserver(all);['plane','steps','fib','turns','census'].forEach(id=>ro.observe(document.getElementById(id)));
+document.getElementById('etab').innerHTML=D.echecks.map(c=>`<tr><td>${esc(c.name)}</td><td>${c.ok?'pass':'fail'}${c.detail?' · '+esc(c.detail):''}</td></tr>`).join('');
+const gq=document.getElementById('gq');gq.addEventListener('input',drawTheta);
+function cm(a,b){return [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];}
+function cexp(z){const e=Math.exp(z[0]);return [e*Math.cos(z[1]),e*Math.sin(z[1])];}
+function logTheta(z,q){// log|θ(z)|, θ = (e^{z/2} − e^{−z/2}) ∏(1 − qᵐ e^z)(1 − qᵐ e^{−z})
+ const a=cexp([z[0]/2,z[1]/2]),b=cexp([-z[0]/2,-z[1]/2]);let L=Math.log(Math.hypot(a[0]-b[0],a[1]-b[1]));
+ const w=cexp(z),wi=cexp([-z[0],-z[1]]);let qm=q;for(let m=1;m<400&&qm>1e-300;m++,qm*=q){L+=Math.log(Math.hypot(1-qm*w[0],-qm*w[1]))+Math.log(Math.hypot(1-qm*wi[0],-qm*wi[1]));}
+ return L;}
+function drawTheta(){const [box,s]=svgOf('theta');const W=box.clientWidth,H=box.clientHeight,m=34;const q=+gq.value;document.getElementById('gqv').textContent=q.toFixed(3);
+ const z=[0.35,1.1],N=24;const v=[],v0=[];for(let n=1;n<=N;n++){v.push(logTheta([n*z[0],n*z[1]],q));v0.push(logTheta([n*z[0],n*z[1]],0));}
+ const hi=Math.max(30,...v,...v0)*1.05,lo=Math.min(0,...v,...v0);const X=n=>m+(n-1)/(N-1)*(W-2*m),Y=y=>H-m-(y-lo)/(hi-lo)*(H-2*m);let g='';
+ g+=`<line x1="${m}" x2="${W-m}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--line')}"/>`;
+ let p0='',p='';for(let n=1;n<=N;n++){p0+=(p0?'L':'M')+X(n)+','+Y(v0[n-1]);p+=(p?'L':'M')+X(n)+','+Y(v[n-1]);}
+ g+=`<path d="${p0}" fill="none" stroke="${css('--mute')}" stroke-dasharray="5 4"/><path d="${p}" fill="none" stroke="${css('--turn')}" opacity=".5"/>`;
+ for(let n=1;n<=N;n++)g+=`<circle cx="${X(n)}" cy="${Y(v[n-1])}" r="4" fill="${css('--turn')}"><title>n = ${n}: log|W| = ${v[n-1].toFixed(2)}</title></circle>`;
+ g+=`<text x="${W-m}" y="${Y(v0[N-1])-6}" text-anchor="end" fill="${css('--mute')}" font-size="12">q = 0: Lucas, straight</text>`;
+ g+=`<text x="${m}" y="${H-8}" fill="${css('--mute')}" font-size="12">n, 1 to ${N}</text><text x="${m}" y="${m-12}" fill="${css('--mute')}" font-size="12">log |W(n)|</text>`;s.innerHTML=g;}
+function RRq(q){let v=Math.pow(q,0.2);for(let n=1;n<4000;n++){const a=Math.pow(q,5*n-4);if(a<1e-17)break;v*=(1-Math.pow(q,5*n-1))*(1-a)/((1-Math.pow(q,5*n-2))*(1-Math.pow(q,5*n-3)));}return v;}
+function drawPinch(){const [box,s]=svgOf('pinch');const W=box.clientWidth,H=box.clientHeight,m=34;
+ const X=q=>m+q*(W-2*m),Y=y=>H-m-y/0.7*(H-2*m);let g='';
+ for(const y of [0,0.2,0.4,0.6])g+=`<line x1="${m}" x2="${W-m}" y1="${Y(y)}" y2="${Y(y)}" stroke="${css('--line')}"/><text x="${m-6}" y="${Y(y)+4}" text-anchor="end" fill="${css('--mute')}" font-size="12">${y}</text>`;
+ g+=`<line x1="${m}" x2="${W-m}" y1="${Y(1/phi)}" y2="${Y(1/phi)}" stroke="${css('--gold')}" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${m+6}" y="${Y(1/phi)-6}" fill="${css('--gold')}" font-size="12">1/φ = 0.618</text>`;
+ let p='';for(let i=1;i<=200;i++){const q=i/200*0.995;p+=(p?'L':'M')+X(q)+','+Y(RRq(q));}
+ g+=`<path d="${p}" fill="none" stroke="${css('--turn')}" stroke-width="2"/>`;
+ for(const q of [0.1,0.3,0.5,0.7,0.9])g+=`<circle cx="${X(q)}" cy="${Y(RRq(q))}" r="4" fill="${css('--turn')}"><title>R(${q}) = ${RRq(q).toFixed(6)}</title></circle>`;
+ g+=`<text x="${W-m}" y="${H-8}" text-anchor="end" fill="${css('--mute')}" font-size="12">gluing q, 0 to 1</text><text x="${X(0.35)}" y="${Y(RRq(0.35))+18}" fill="${css('--turn')}" font-size="12">R(q)</text>`;s.innerHTML=g;}
+const all=()=>{update();drawFib();drawTurns();drawCensus();drawTheta();drawPinch();};
+const ro=new ResizeObserver(all);['plane','steps','fib','turns','census','theta','pinch'].forEach(id=>ro.observe(document.getElementById(id)));
 set(1,0,1);
 }
 </script>

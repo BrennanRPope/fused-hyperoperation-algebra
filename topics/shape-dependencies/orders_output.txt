@@ -1,0 +1,105 @@
+
+body: best order rod -> rect -> hyper -> box -> point -> cube
+  cross-shape uses 637, against the order 171 (26.8%); null best-order back share mean 44.0%, sd 1.6%, z -10.82, draws at or below observed 0/300
+  pair by pair (earlier -> later uses, later -> earlier uses):
+         rod -> rect       82  back   41
+         rod -> hyper      42  back    3
+         rod -> box        43  back    9
+         rod -> point      16  back   16
+         rod -> cube       87  back   43
+        rect -> hyper      44  back   17
+        rect -> box        40  back    7
+        rect -> point       3  back    4   <- reversed
+        rect -> cube       58  back   12
+       hyper -> box        13  back    8
+       hyper -> cube       22  back    2
+         box -> point       2  back    1
+         box -> cube       11  back    7
+       point -> cube        3  back    1
+
+action: best order plain -> repeat -> explode -> collapse -> measure -> swap -> regroup -> dial -> flatten -> squash -> tally
+  cross-shape uses 1208, against the order 331 (27.4%); null best-order back share mean 41.6%, sd 1.4%, z -9.88, draws at or below observed 0/300
+  pair by pair (earlier -> later uses, later -> earlier uses):
+       plain -> repeat     11  back   10
+       plain -> explode    82  back   37
+       plain -> collapse   78  back   15
+       plain -> measure     5  back   10   <- reversed
+       plain -> swap       49  back   10
+       plain -> regroup    27  back    3
+       plain -> dial       14  back    1
+       plain -> flatten     4  back    4
+       plain -> squash     24  back   10
+       plain -> tally       8  back    3
+      repeat -> explode    41  back   21
+      repeat -> collapse   21  back    3
+      repeat -> measure     6  back    2
+      repeat -> swap        3  back    1
+      repeat -> regroup    14  back    2
+      repeat -> dial       10  back    0
+      repeat -> flatten     6  back    0
+      repeat -> squash     15  back    1
+      repeat -> tally       3  back    0
+     explode -> collapse   40  back   29
+     explode -> measure    10  back    8
+     explode -> swap       20  back   11
+     explode -> regroup    10  back   21   <- reversed
+     explode -> dial       16  back   22   <- reversed
+     explode -> flatten    12  back    2
+     explode -> squash     79  back   10
+     explode -> tally       8  back    2
+    collapse -> measure     8  back    5
+    collapse -> swap       17  back   18   <- reversed
+    collapse -> regroup    15  back    6
+    collapse -> dial        8  back    8
+    collapse -> flatten    26  back    5
+    collapse -> squash     26  back    8
+    collapse -> tally       5  back    3
+     measure -> swap        8  back    0
+     measure -> regroup     2  back    2
+     measure -> dial        2  back    1
+     measure -> flatten     8  back    1
+     measure -> squash      3  back    2
+     measure -> tally       3  back    3
+        swap -> regroup    44  back   12
+        swap -> dial        7  back    1
+        swap -> flatten     1  back    1
+        swap -> squash     13  back    3
+        swap -> tally       1  back    0
+     regroup -> dial        8  back    1
+     regroup -> flatten    20  back    2
+     regroup -> squash      4  back    0
+        dial -> flatten     2  back    0
+        dial -> squash     19  back    3
+        dial -> tally       1  back    0
+     flatten -> squash      8  back    7
+      squash -> tally       2  back    1
+
+Examples, cube needed by rod (43):
+  nilpotent_weight_group [AbstractAlgebra] uses nilpotent_weight_inverse: circK k a (-a * geom (-(k * a)) m) = 0
+  tateQ_glued [AbstractAlgebra] uses tate_glue: tateRel q a 0
+  alternating_corners [Combinatorics] uses painted_subsets: sumL ((groups (List.replicate n k)).map prodL) = (1 + k) ^ n
+  squeeze [CounterexampleMap] uses mazur: CounterexampleMap.Counterexample p a b c → self.Irreducible p a b c
+  squeeze [CounterexampleMap] uses ribet: CounterexampleMap.Counterexample p a b c → self.Modular p a b c → self.Irreducible p a b c
+  squeeze [CounterexampleMap] uses wiles: CounterexampleMap.Counterexample p a b c → self.Modular p a b c
+  three_dvd_of_cube [Fermat3] uses pow_emod_of: x^n % m = ((x % m)^n) % m
+  three_dvd_of_sq [Fermat3] uses pow_emod_of: x^n % m = ((x % m)^n) % m
+  cop_left [FermatRoute] uses dvd_self_pow: x ∣ x ^ p
+  cop_left [FermatRoute] uses prime_dvd_of_dvd_pow: ∀ {n : Nat}, (q : Int) ∣ x ^ n → (q : Int) ∣ x
+  exact_exponent_pth_power [FreyPieces] uses factor_out: ∀ M, M ≠ 0 → ∃ k m, M = q ^ k * m ∧ ¬ q ∣ m
+  frey_disc_valuation [FreyPieces] uses frey_disc_pth_power: 256 * Δ = ((a * b * c) ^ 2) ^ p
+
+Examples, hyper needed by box (13):
+  cooperative_no_real_zero [ChemEquilibrium] uses two_site_square: ω * (ω * x * x + 2 * x + 1) = (ω * x + 1) * (ω * x + 1) + (ω - 1)
+  key_cube [Fermat3] uses cube_of_cop: ∃ u δ : Eis, IsUnit u ∧ α = u * δ^3
+  frey_bad_primes [CounterexampleMap] uses frey_disc: 256 * (freyModel a2 a4).disc = (A * B * C) ^ 2
+  frey_at_two [FreyPieces] uses frey_disc: 256 * (freyModel a2 a4).disc = (A * B * C) ^ 2
+  turning_never_stalls [LeeYangSpill] uses slowest_step: 4 * q * (1 + k * a + q * a * a) ≥ 4 * q - k * k
+  circK_unit_iff [AbstractAlgebra] uses circK_lift: 1 + k * circK k a b = (1 + k * a) * (1 + k * b)
+
+Examples, rod needed by cube (87):
+  flt_of_deep_arrows [CounterexampleMap] uses squeeze: ∀ p a b c, ¬ Counterexample p a b c
+  escort_escort [EntropyNoise] uses lsum_div: InfoFused.lsum (l.map (fun y => y / c)) = InfoFused.lsum l / c
+  frey_normalize_cop [FermatRoute] uses cop_left: Int.gcd a c = 1
+  frey_normalize_cop [FermatRoute] uses gcd_natAbs_congr: Int.gcd a' b' = Int.gcd a b
+  not_dvd_pow [FreyPieces] uses euclid: p ∣ a ∨ p ∣ b
+  prime_dvd_of_dvd_pow [FermatRoute] uses euclid_int: (p : Int) ∣ a ∨ (p : Int) ∣ b

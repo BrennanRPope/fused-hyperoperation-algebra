@@ -1,0 +1,13 @@
+PASS reactions add ⇒ ΔG adds (k = 0) and K multiplies; K − 1 composes by the circle operation: (K₁−1) ∘₁ (K₂−1) = K₁K₂ − 1
+PASS glutamine from glutamate + NH₄⁺ (+14.2 kJ/mol, K′ = 3.2e−3) coupled to ATP hydrolysis (−30.5, K′ = 2.2e5): K′ = 7.2e2  3.25e-03 × 2.20e+05 = 7.17e+02
+PASS two sites with interaction factor ω: Z − 1 = x + y + ωxy = x ⊞_ω y exactly
+PASS ω = 0 (hard exclusion) gives Z = 1 + x + y: plain addition; ω = 1 (no interaction) gives (1+x)(1+y): the circle operation
+PASS occupancy correlation ⟨n₁n₂⟩ − ⟨n₁⟩⟨n₂⟩ has the sign of k − 1: the dial reads attraction or repulsion
+PASS in fact ⟨n₁n₂⟩ − ⟨n₁⟩⟨n₂⟩ = xy(k − 1)/Z²: the covariance is the dial's distance from the circle operation
+PASS k = e^(−ε/RT): a 5 kJ/mol repulsion sets k = 0.13, an equal attraction k = 7.5 (298 K)
+PASS N₂ + 3H₂ → 2NH₃: ΔH° = −91.8 kJ, ΔS° = −198.1 J/K, ΔG°(298) = −32.7 kJ = 2 × CRC ΔfG°(NH₃) = 2 × −16.4  ΔG° = -32.73 kJ
+PASS K = 1 near 463 K (ΔH/ΔS, constant-ΔH approximation): above it the equilibrium favours N₂ + H₂  463 K
+PASS K(298) ≈ 5.5e5 but K(700) ≈ 3e−4 (per bar², constant ΔH): exothermic, so heat lowers K (van 't Hoff)  298 K: 5.43e+05, 400 K: 4.36e+01, 500 K: 1.75e-01, 600 K: 4.40e-03, 700 K: 3.18e-04, 800 K: 4.42e-05
+PASS van 't Hoff: ln K against 1/T has slope −ΔH/R (log side adds; K side multiplies by e^(−ΔH/R·Δ(1/T)))
+
+11/11 checks pass

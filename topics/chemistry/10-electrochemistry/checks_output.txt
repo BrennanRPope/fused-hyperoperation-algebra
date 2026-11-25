@@ -1,0 +1,24 @@
+PASS coupled steps: ΔG adds, K multiplies, so K − 1 composes by the circle operation
+PASS Luther's rule: Cu²⁺/Cu = mean of Cu²⁺/Cu⁺ (0.153) and Cu⁺/Cu (0.521) = 0.337 V; tables give 0.342
+PASS Fe³⁺/Fe = (0.771 + 2·(−0.447))/3 = −0.041 V; tables give −0.037
+PASS Frost convexity: Cu⁺ sits above the Cu–Cu²⁺ chord, so 2Cu⁺ → Cu + Cu²⁺ with K = e^(F·0.368/RT) ≈ 1.7e6  K = 1.66e+06
+PASS the Luther mean is idempotent (E with E gives E), so potentials do not compose by the circle operation; only K − 1 does
+PASS De Donder: in series the forward/backward ratios multiply, so (ratio − 1) composes by the circle operation
+PASS Butler–Volmer, α = 1 (one-sided): i(η₁+η₂)/i₀ = j₁ ∘₁ j₂
+PASS Butler–Volmer, α = ½: the current does not compose by the circle operation (gap ≠ 0); only the forward/backward ratio e^(Fη/RT) does  gap = -1.717
+PASS Tafel slope at α = ½, 25 °C: 118 mV per decade  118.3 mV
+PASS independent identical sites (k = 1): E₁ − E₂ = (RT/F) ln 4 = 35.6 mV  35.62 mV
+PASS Z − 1 = x ⊞ₖ x matches the two macroscopic potentials, with E₁ − E₂ = (RT/F) ln(4/k)
+PASS comproportionation constant K_c = e^(F·ΔE/RT) = 4/k (diacid analogue: k = 4·10^(−ΔpKa))
+PASS Nernst-curve steepness at the midpoint: n = 2√k/(1 + √k), from 0 (k → 0) to 2 (k → ∞), 1 at 35.6 mV
+PASS cooperative two-electron behaviour (n > 1) ⇔ k > 1 ⇔ ΔE < 35.6 mV ⇔ complex zeros of 1 + 2x + kx²
+PASS potential inversion (E₂ > E₁) ⇔ k > 4
+PASS Z-scheme: 8 photons per O₂ (4 at 680 nm, 4 at 700 nm, 14.4 eV) store 4 × 1.135 eV in NADPH: 31.6%  0.316
+PASS thermodynamics alone would allow one 680 nm photon per electron (1.82 eV > 1.135 eV, 62%); the two-photon Z-scheme halves that, so its cost is in the scheme, not the energy
+PASS solar-to-biomass ceilings 4.6% (C3) and 6.0% (C4) of full sunlight are 9.4% and 12.3% of PAR: both imply PAR ≈ 49% of sunlight
+PASS any chain of stage losses composes at k = −1: total loss = L₁ ⊞₋₁ L₂ ⊞₋₁ … = 1 − Π(1 − Lᵢ)
+PASS Kok clock (25% S₀, 75% S₁ dark, 10% misses, 5% double hits): O₂ peaks on flash 3, then every 4 flashes
+PASS the damping per flash is |α − β + i(1 − α − β)| = 0.851, the circulant eigenvalue at z = i
+PASS long-run O₂ per flash = (1 − α + β)/4 (mean clock advance over 4)  0.2379
+
+22/22 checks pass

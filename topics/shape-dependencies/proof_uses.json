@@ -1,0 +1,4669 @@
+{
+ "edges": 1859,
+ "body_flow": {
+  "up": 461,
+  "down": 176,
+  "same": 1222,
+  "null_mean": -33.092,
+  "null_sd": 56.235456217585714,
+  "p": 0.0
+ },
+ "body_matrix": {
+  "point>point": 7,
+  "point>rod": 16,
+  "point>rect": 4,
+  "point>box": 1,
+  "point>hyper": 0,
+  "point>cube": 3,
+  "rod>point": 16,
+  "rod>rod": 273,
+  "rod>rect": 82,
+  "rod>box": 43,
+  "rod>hyper": 42,
+  "rod>cube": 87,
+  "rect>point": 3,
+  "rect>rod": 41,
+  "rect>rect": 132,
+  "rect>box": 40,
+  "rect>hyper": 44,
+  "rect>cube": 58,
+  "box>point": 2,
+  "box>rod": 9,
+  "box>rect": 7,
+  "box>box": 57,
+  "box>hyper": 8,
+  "box>cube": 11,
+  "hyper>point": 0,
+  "hyper>rod": 3,
+  "hyper>rect": 17,
+  "hyper>box": 13,
+  "hyper>hyper": 74,
+  "hyper>cube": 22,
+  "cube>point": 1,
+  "cube>rod": 43,
+  "cube>rect": 12,
+  "cube>box": 7,
+  "cube>hyper": 2,
+  "cube>cube": 679
+ },
+ "family_edges": [
+  {
+   "src": "cube-explode",
+   "dst": "cube-explode",
+   "w": 75,
+   "users": 40,
+   "dst_size": 131
+  },
+  {
+   "src": "cube-dial",
+   "dst": "cube-dial",
+   "w": 50,
+   "users": 46,
+   "dst_size": 114
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-collapse",
+   "w": 35,
+   "users": 30,
+   "dst_size": 107
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-explode",
+   "w": 35,
+   "users": 21,
+   "dst_size": 131
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-squash",
+   "w": 26,
+   "users": 15,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-flatten",
+   "w": 25,
+   "users": 22,
+   "dst_size": 68
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-collapse",
+   "w": 24,
+   "users": 15,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-flatten",
+   "w": 24,
+   "users": 20,
+   "dst_size": 68
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-swap",
+   "w": 24,
+   "users": 15,
+   "dst_size": 34
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-collapse",
+   "w": 24,
+   "users": 17,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-explode",
+   "w": 23,
+   "users": 23,
+   "dst_size": 308
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-explode",
+   "w": 22,
+   "users": 18,
+   "dst_size": 86
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-squash",
+   "w": 21,
+   "users": 17,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-explode",
+   "w": 21,
+   "users": 19,
+   "dst_size": 131
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "hyper-dial",
+   "w": 20,
+   "users": 20,
+   "dst_size": 101
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-regroup",
+   "w": 20,
+   "users": 10,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-flatten",
+   "w": 20,
+   "users": 20,
+   "dst_size": 68
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-explode",
+   "w": 19,
+   "users": 17,
+   "dst_size": 308
+  },
+  {
+   "src": "hyper-squash",
+   "dst": "hyper-squash",
+   "w": 19,
+   "users": 15,
+   "dst_size": 89
+  },
+  {
+   "src": "rod-plain",
+   "dst": "hyper-explode",
+   "w": 17,
+   "users": 17,
+   "dst_size": 168
+  },
+  {
+   "src": "rect-squash",
+   "dst": "rect-squash",
+   "w": 17,
+   "users": 16,
+   "dst_size": 142
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-swap",
+   "w": 17,
+   "users": 14,
+   "dst_size": 34
+  },
+  {
+   "src": "rod-squash",
+   "dst": "rod-squash",
+   "w": 17,
+   "users": 14,
+   "dst_size": 113
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-explode",
+   "w": 17,
+   "users": 11,
+   "dst_size": 131
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "cube-dial",
+   "w": 17,
+   "users": 17,
+   "dst_size": 114
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-plain",
+   "w": 15,
+   "users": 14,
+   "dst_size": 101
+  },
+  {
+   "src": "cube-dial",
+   "dst": "cube-explode",
+   "w": 15,
+   "users": 15,
+   "dst_size": 131
+  },
+  {
+   "src": "rect-dial",
+   "dst": "rect-dial",
+   "w": 15,
+   "users": 15,
+   "dst_size": 124
+  },
+  {
+   "src": "rod-squash",
+   "dst": "cube-squash",
+   "w": 15,
+   "users": 12,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-regroup",
+   "w": 14,
+   "users": 14,
+   "dst_size": 42
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-plain",
+   "w": 13,
+   "users": 13,
+   "dst_size": 59
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-squash",
+   "w": 13,
+   "users": 10,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-squash",
+   "w": 13,
+   "users": 7,
+   "dst_size": 63
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-regroup",
+   "w": 13,
+   "users": 9,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rod-regroup",
+   "w": 12,
+   "users": 11,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-repeat",
+   "w": 11,
+   "users": 10,
+   "dst_size": 116
+  },
+  {
+   "src": "rod-plain",
+   "dst": "box-explode",
+   "w": 11,
+   "users": 10,
+   "dst_size": 102
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-collapse",
+   "w": 10,
+   "users": 9,
+   "dst_size": 107
+  },
+  {
+   "src": "rect-explode",
+   "dst": "hyper-explode",
+   "w": 10,
+   "users": 10,
+   "dst_size": 168
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-collapse",
+   "w": 10,
+   "users": 8,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-dial",
+   "w": 10,
+   "users": 4,
+   "dst_size": 114
+  },
+  {
+   "src": "rod-explode",
+   "dst": "cube-squash",
+   "w": 10,
+   "users": 8,
+   "dst_size": 63
+  },
+  {
+   "src": "box-dial",
+   "dst": "box-dial",
+   "w": 9,
+   "users": 9,
+   "dst_size": 74
+  },
+  {
+   "src": "rect-plain",
+   "dst": "rod-collapse",
+   "w": 9,
+   "users": 8,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-regroup",
+   "w": 9,
+   "users": 9,
+   "dst_size": 42
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-plain",
+   "w": 9,
+   "users": 9,
+   "dst_size": 44
+  },
+  {
+   "src": "rect-explode",
+   "dst": "hyper-squash",
+   "w": 9,
+   "users": 6,
+   "dst_size": 89
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "box-dial",
+   "w": 9,
+   "users": 9,
+   "dst_size": 74
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-repeat",
+   "w": 9,
+   "users": 9,
+   "dst_size": 116
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-repeat",
+   "w": 8,
+   "users": 6,
+   "dst_size": 116
+  },
+  {
+   "src": "rod-plain",
+   "dst": "hyper-squash",
+   "w": 8,
+   "users": 8,
+   "dst_size": 89
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "hyper-explode",
+   "w": 8,
+   "users": 7,
+   "dst_size": 168
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rod-swap",
+   "w": 8,
+   "users": 6,
+   "dst_size": 34
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-dial",
+   "w": 8,
+   "users": 8,
+   "dst_size": 114
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-regroup",
+   "w": 8,
+   "users": 3,
+   "dst_size": 11
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-dial",
+   "w": 8,
+   "users": 8,
+   "dst_size": 114
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rod-collapse",
+   "w": 7,
+   "users": 7,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-dial",
+   "w": 7,
+   "users": 6,
+   "dst_size": 114
+  },
+  {
+   "src": "rod-plain",
+   "dst": "box-swap",
+   "w": 7,
+   "users": 6,
+   "dst_size": 21
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-explode",
+   "w": 7,
+   "users": 7,
+   "dst_size": 131
+  },
+  {
+   "src": "box-explode",
+   "dst": "box-explode",
+   "w": 7,
+   "users": 7,
+   "dst_size": 102
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "hyper-squash",
+   "w": 7,
+   "users": 5,
+   "dst_size": 89
+  },
+  {
+   "src": "rect-squash",
+   "dst": "hyper-squash",
+   "w": 7,
+   "users": 6,
+   "dst_size": 89
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-squash",
+   "w": 7,
+   "users": 6,
+   "dst_size": 142
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "box-collapse",
+   "w": 7,
+   "users": 2,
+   "dst_size": 20
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-squash",
+   "w": 7,
+   "users": 6,
+   "dst_size": 63
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rod-regroup",
+   "w": 7,
+   "users": 6,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-dial",
+   "dst": "cube-squash",
+   "w": 7,
+   "users": 6,
+   "dst_size": 63
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rect-regroup",
+   "w": 7,
+   "users": 3,
+   "dst_size": 11
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-plain",
+   "w": 6,
+   "users": 5,
+   "dst_size": 44
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-measure",
+   "w": 6,
+   "users": 6,
+   "dst_size": 18
+  },
+  {
+   "src": "rod-plain",
+   "dst": "hyper-swap",
+   "w": 6,
+   "users": 6,
+   "dst_size": 21
+  },
+  {
+   "src": "cube-swap",
+   "dst": "cube-explode",
+   "w": 6,
+   "users": 6,
+   "dst_size": 131
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-squash",
+   "w": 6,
+   "users": 6,
+   "dst_size": 113
+  },
+  {
+   "src": "rect-squash",
+   "dst": "box-squash",
+   "w": 6,
+   "users": 5,
+   "dst_size": 60
+  },
+  {
+   "src": "rect-squash",
+   "dst": "cube-squash",
+   "w": 6,
+   "users": 6,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-plain",
+   "w": 6,
+   "users": 4,
+   "dst_size": 44
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-repeat",
+   "w": 6,
+   "users": 6,
+   "dst_size": 116
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-flatten",
+   "w": 6,
+   "users": 4,
+   "dst_size": 68
+  },
+  {
+   "src": "rect-dial",
+   "dst": "cube-dial",
+   "w": 6,
+   "users": 6,
+   "dst_size": 114
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-dial",
+   "w": 5,
+   "users": 4,
+   "dst_size": 114
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "hyper-plain",
+   "w": 5,
+   "users": 4,
+   "dst_size": 12
+  },
+  {
+   "src": "box-squash",
+   "dst": "box-squash",
+   "w": 5,
+   "users": 5,
+   "dst_size": 60
+  },
+  {
+   "src": "rect-plain",
+   "dst": "box-collapse",
+   "w": 5,
+   "users": 2,
+   "dst_size": 20
+  },
+  {
+   "src": "box-explode",
+   "dst": "box-collapse",
+   "w": 5,
+   "users": 3,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-plain",
+   "w": 5,
+   "users": 4,
+   "dst_size": 101
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-swap",
+   "w": 5,
+   "users": 5,
+   "dst_size": 22
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-swap",
+   "w": 5,
+   "users": 4,
+   "dst_size": 27
+  },
+  {
+   "src": "rect-squash",
+   "dst": "rod-squash",
+   "w": 5,
+   "users": 5,
+   "dst_size": 113
+  },
+  {
+   "src": "rect-regroup",
+   "dst": "rect-regroup",
+   "w": 5,
+   "users": 5,
+   "dst_size": 11
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rod-swap",
+   "w": 5,
+   "users": 4,
+   "dst_size": 34
+  },
+  {
+   "src": "rod-squash",
+   "dst": "rod-plain",
+   "w": 5,
+   "users": 5,
+   "dst_size": 101
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-flatten",
+   "w": 5,
+   "users": 3,
+   "dst_size": 68
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-flatten",
+   "w": 5,
+   "users": 5,
+   "dst_size": 68
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-explode",
+   "w": 4,
+   "users": 4,
+   "dst_size": 131
+  },
+  {
+   "src": "rect-explode",
+   "dst": "box-explode",
+   "w": 4,
+   "users": 4,
+   "dst_size": 102
+  },
+  {
+   "src": "box-dial",
+   "dst": "rect-dial",
+   "w": 4,
+   "users": 4,
+   "dst_size": 124
+  },
+  {
+   "src": "rod-plain",
+   "dst": "point-collapse",
+   "w": 4,
+   "users": 4,
+   "dst_size": 35
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-swap",
+   "w": 4,
+   "users": 3,
+   "dst_size": 22
+  },
+  {
+   "src": "box-squash",
+   "dst": "hyper-squash",
+   "w": 4,
+   "users": 4,
+   "dst_size": 89
+  },
+  {
+   "src": "rod-squash",
+   "dst": "rect-squash",
+   "w": 4,
+   "users": 4,
+   "dst_size": 142
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-collapse",
+   "w": 4,
+   "users": 3,
+   "dst_size": 46
+  },
+  {
+   "src": "rod-explode",
+   "dst": "box-collapse",
+   "w": 4,
+   "users": 2,
+   "dst_size": 20
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-measure",
+   "w": 4,
+   "users": 4,
+   "dst_size": 15
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-collapse",
+   "w": 4,
+   "users": 4,
+   "dst_size": 107
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-flatten",
+   "w": 4,
+   "users": 4,
+   "dst_size": 68
+  },
+  {
+   "src": "rod-plain",
+   "dst": "cube-collapse",
+   "w": 4,
+   "users": 3,
+   "dst_size": 107
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "rod-collapse",
+   "w": 4,
+   "users": 4,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-tally",
+   "w": 4,
+   "users": 3,
+   "dst_size": 25
+  },
+  {
+   "src": "rod-plain",
+   "dst": "cube-repeat",
+   "w": 4,
+   "users": 4,
+   "dst_size": 116
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rect-dial",
+   "w": 4,
+   "users": 4,
+   "dst_size": 124
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "rect-dial",
+   "w": 4,
+   "users": 4,
+   "dst_size": 124
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-explode",
+   "w": 4,
+   "users": 4,
+   "dst_size": 131
+  },
+  {
+   "src": "point-regroup",
+   "dst": "rod-regroup",
+   "w": 4,
+   "users": 4,
+   "dst_size": 27
+  },
+  {
+   "src": "mixed-odd",
+   "dst": "rod-regroup",
+   "w": 4,
+   "users": 4,
+   "dst_size": 27
+  },
+  {
+   "src": "box-dial",
+   "dst": "cube-dial",
+   "w": 4,
+   "users": 4,
+   "dst_size": 114
+  },
+  {
+   "src": "rod-measure",
+   "dst": "cube-flatten",
+   "w": 4,
+   "users": 3,
+   "dst_size": 68
+  },
+  {
+   "src": "cube-explode",
+   "dst": "rod-squash",
+   "w": 4,
+   "users": 2,
+   "dst_size": 113
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-flatten",
+   "w": 4,
+   "users": 4,
+   "dst_size": 68
+  },
+  {
+   "src": "box-swap",
+   "dst": "cube-regroup",
+   "w": 4,
+   "users": 4,
+   "dst_size": 42
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-swap",
+   "w": 4,
+   "users": 4,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "cube-regroup",
+   "w": 4,
+   "users": 4,
+   "dst_size": 42
+  },
+  {
+   "src": "rect-dial",
+   "dst": "rod-dial",
+   "w": 3,
+   "users": 3,
+   "dst_size": 13
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-squash",
+   "w": 3,
+   "users": 3,
+   "dst_size": 63
+  },
+  {
+   "src": "rect-dial",
+   "dst": "rect-squash",
+   "w": 3,
+   "users": 3,
+   "dst_size": 142
+  },
+  {
+   "src": "rect-explode",
+   "dst": "box-plain",
+   "w": 3,
+   "users": 3,
+   "dst_size": 8
+  },
+  {
+   "src": "cube-dial",
+   "dst": "cube-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 107
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-measure",
+   "w": 3,
+   "users": 2,
+   "dst_size": 18
+  },
+  {
+   "src": "cube-explode",
+   "dst": "rod-explode",
+   "w": 3,
+   "users": 3,
+   "dst_size": 86
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-squash",
+   "w": 3,
+   "users": 3,
+   "dst_size": 142
+  },
+  {
+   "src": "cube-plain",
+   "dst": "rod-tally",
+   "w": 3,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "hyper-squash",
+   "dst": "hyper-plain",
+   "w": 3,
+   "users": 2,
+   "dst_size": 12
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "rect-squash",
+   "w": 3,
+   "users": 3,
+   "dst_size": 142
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 107
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-plain",
+   "w": 3,
+   "users": 3,
+   "dst_size": 44
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rect-squash",
+   "w": 3,
+   "users": 2,
+   "dst_size": 142
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rod-plain",
+   "w": 3,
+   "users": 3,
+   "dst_size": 101
+  },
+  {
+   "src": "box-collapse",
+   "dst": "box-collapse",
+   "w": 3,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rod-swap",
+   "w": 3,
+   "users": 3,
+   "dst_size": 34
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "rod-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 72
+  },
+  {
+   "src": "rect-swap",
+   "dst": "hyper-swap",
+   "w": 3,
+   "users": 2,
+   "dst_size": 21
+  },
+  {
+   "src": "cube-swap",
+   "dst": "cube-squash",
+   "w": 3,
+   "users": 3,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-swap",
+   "w": 3,
+   "users": 3,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-swap",
+   "w": 3,
+   "users": 3,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-swap",
+   "w": 3,
+   "users": 3,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "rod-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 72
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-explode",
+   "w": 3,
+   "users": 3,
+   "dst_size": 86
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rect-regroup",
+   "w": 3,
+   "users": 3,
+   "dst_size": 11
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "hyper-dial",
+   "w": 3,
+   "users": 2,
+   "dst_size": 101
+  },
+  {
+   "src": "rect-plain",
+   "dst": "rect-regroup",
+   "w": 3,
+   "users": 3,
+   "dst_size": 11
+  },
+  {
+   "src": "rect-plain",
+   "dst": "rod-regroup",
+   "w": 3,
+   "users": 3,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rod-swap",
+   "w": 3,
+   "users": 3,
+   "dst_size": 34
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rod-plain",
+   "w": 3,
+   "users": 3,
+   "dst_size": 101
+  },
+  {
+   "src": "cube-explode",
+   "dst": "rod-plain",
+   "w": 3,
+   "users": 3,
+   "dst_size": 101
+  },
+  {
+   "src": "cube-explode",
+   "dst": "rod-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 72
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rod-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 72
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "cube-squash",
+   "w": 3,
+   "users": 3,
+   "dst_size": 63
+  },
+  {
+   "src": "rect-plain",
+   "dst": "rect-explode",
+   "w": 3,
+   "users": 3,
+   "dst_size": 308
+  },
+  {
+   "src": "rod-measure",
+   "dst": "cube-plain",
+   "w": 3,
+   "users": 3,
+   "dst_size": 44
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "cube-collapse",
+   "w": 3,
+   "users": 3,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "cube-regroup",
+   "w": 3,
+   "users": 3,
+   "dst_size": 42
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-dial",
+   "w": 2,
+   "users": 1,
+   "dst_size": 13
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rect-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 308
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-repeat",
+   "w": 2,
+   "users": 2,
+   "dst_size": 116
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "rod-repeat",
+   "w": 2,
+   "users": 2,
+   "dst_size": 15
+  },
+  {
+   "src": "box-explode",
+   "dst": "box-tally",
+   "w": 2,
+   "users": 2,
+   "dst_size": 6
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "box-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 102
+  },
+  {
+   "src": "rod-plain",
+   "dst": "point-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 19
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rod-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 86
+  },
+  {
+   "src": "rect-explode",
+   "dst": "hyper-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 12
+  },
+  {
+   "src": "box-explode",
+   "dst": "box-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 60
+  },
+  {
+   "src": "box-explode",
+   "dst": "hyper-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 168
+  },
+  {
+   "src": "rect-dial",
+   "dst": "cube-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 131
+  },
+  {
+   "src": "point-collapse",
+   "dst": "cube-collapse",
+   "w": 2,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "rect-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 46
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "hyper-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 18
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 131
+  },
+  {
+   "src": "box-dial",
+   "dst": "rect-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 142
+  },
+  {
+   "src": "rod-plain",
+   "dst": "box-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 60
+  },
+  {
+   "src": "rect-squash",
+   "dst": "rect-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 59
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-flatten",
+   "w": 2,
+   "users": 2,
+   "dst_size": 68
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rod-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 86
+  },
+  {
+   "src": "rect-measure",
+   "dst": "rect-swap",
+   "w": 2,
+   "users": 2,
+   "dst_size": 22
+  },
+  {
+   "src": "rect-measure",
+   "dst": "rect-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 142
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rod-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 72
+  },
+  {
+   "src": "rect-explode",
+   "dst": "box-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 20
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "box-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rod-tally",
+   "w": 2,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rect-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 59
+  },
+  {
+   "src": "rod-swap",
+   "dst": "box-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-measure",
+   "dst": "box-collapse",
+   "w": 2,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "box-collapse",
+   "dst": "box-measure",
+   "w": 2,
+   "users": 2,
+   "dst_size": 11
+  },
+  {
+   "src": "box-plain",
+   "dst": "box-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 20
+  },
+  {
+   "src": "box-swap",
+   "dst": "mixed-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 4
+  },
+  {
+   "src": "box-explode",
+   "dst": "box-measure",
+   "w": 2,
+   "users": 2,
+   "dst_size": 11
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "box-tally",
+   "w": 2,
+   "users": 2,
+   "dst_size": 6
+  },
+  {
+   "src": "rect-plain",
+   "dst": "rect-swap",
+   "w": 2,
+   "users": 2,
+   "dst_size": 22
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-tally",
+   "w": 2,
+   "users": 2,
+   "dst_size": 25
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-measure",
+   "w": 2,
+   "users": 2,
+   "dst_size": 18
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-plain",
+   "dst": "cube-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 42
+  },
+  {
+   "src": "cube-swap",
+   "dst": "cube-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 44
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-tally",
+   "w": 2,
+   "users": 2,
+   "dst_size": 19
+  },
+  {
+   "src": "cube-dial",
+   "dst": "rod-dial",
+   "w": 2,
+   "users": 2,
+   "dst_size": 13
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "rect-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 308
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "rod-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-measure",
+   "w": 2,
+   "users": 2,
+   "dst_size": 18
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "rod-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 101
+  },
+  {
+   "src": "rod-swap",
+   "dst": "cube-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "rod-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 86
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-measure",
+   "w": 2,
+   "users": 2,
+   "dst_size": 18
+  },
+  {
+   "src": "rod-plain",
+   "dst": "hyper-dial",
+   "w": 2,
+   "users": 2,
+   "dst_size": 101
+  },
+  {
+   "src": "rect-dial",
+   "dst": "hyper-dial",
+   "w": 2,
+   "users": 2,
+   "dst_size": 101
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "rect-collapse",
+   "w": 2,
+   "users": 1,
+   "dst_size": 46
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "cube-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 107
+  },
+  {
+   "src": "rect-dial",
+   "dst": "cube-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-swap",
+   "dst": "box-dial",
+   "w": 2,
+   "users": 2,
+   "dst_size": 74
+  },
+  {
+   "src": "rod-squash",
+   "dst": "hyper-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 89
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "hyper-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 89
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "rect-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 308
+  },
+  {
+   "src": "cube-tally",
+   "dst": "rect-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 59
+  },
+  {
+   "src": "rod-plain",
+   "dst": "cube-swap",
+   "w": 2,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-plain",
+   "dst": "cube-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 44
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rod-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rod-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rod-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 44
+  },
+  {
+   "src": "rect-squash",
+   "dst": "point-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 53
+  },
+  {
+   "src": "point-squash",
+   "dst": "point-collapse",
+   "w": 2,
+   "users": 1,
+   "dst_size": 35
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 113
+  },
+  {
+   "src": "box-swap",
+   "dst": "rod-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 27
+  },
+  {
+   "src": "rect-swap",
+   "dst": "rod-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rod-plain",
+   "w": 2,
+   "users": 1,
+   "dst_size": 101
+  },
+  {
+   "src": "rect-swap",
+   "dst": "rect-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 142
+  },
+  {
+   "src": "rod-explode",
+   "dst": "cube-repeat",
+   "w": 2,
+   "users": 2,
+   "dst_size": 116
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "cube-explode",
+   "w": 2,
+   "users": 2,
+   "dst_size": 131
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "rod-regroup",
+   "w": 2,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-squash",
+   "dst": "cube-flatten",
+   "w": 2,
+   "users": 1,
+   "dst_size": 68
+  },
+  {
+   "src": "rod-squash",
+   "dst": "rod-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "rect-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 59
+  },
+  {
+   "src": "rod-measure",
+   "dst": "cube-swap",
+   "w": 2,
+   "users": 2,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-measure",
+   "dst": "rect-explode",
+   "w": 2,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rect-swap",
+   "dst": "cube-swap",
+   "w": 2,
+   "users": 2,
+   "dst_size": 27
+  },
+  {
+   "src": "rect-swap",
+   "dst": "cube-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 63
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-plain",
+   "w": 2,
+   "users": 2,
+   "dst_size": 44
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 11
+  },
+  {
+   "src": "rect-explode",
+   "dst": "cube-regroup",
+   "w": 2,
+   "users": 2,
+   "dst_size": 42
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "point-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 35
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rect-collapse",
+   "w": 2,
+   "users": 2,
+   "dst_size": 46
+  },
+  {
+   "src": "rect-squash",
+   "dst": "box-dial",
+   "w": 2,
+   "users": 2,
+   "dst_size": 74
+  },
+  {
+   "src": "rod-dial",
+   "dst": "rod-dial",
+   "w": 2,
+   "users": 2,
+   "dst_size": 13
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rod-squash",
+   "w": 2,
+   "users": 2,
+   "dst_size": 113
+  },
+  {
+   "src": "rod-explode",
+   "dst": "cube-explode",
+   "w": 2,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "cube-dial",
+   "dst": "cube-flatten",
+   "w": 2,
+   "users": 2,
+   "dst_size": 68
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-swap",
+   "w": 2,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "hyper-dial",
+   "w": 2,
+   "users": 2,
+   "dst_size": 101
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-plain",
+   "w": 2,
+   "users": 1,
+   "dst_size": 59
+  },
+  {
+   "src": "rect-tally",
+   "dst": "rect-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 19
+  },
+  {
+   "src": "cube-dial",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "rod-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 101
+  },
+  {
+   "src": "rod-dial",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "point-regroup",
+   "dst": "point-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "rect-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "hyper-squash",
+   "dst": "rect-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 46
+  },
+  {
+   "src": "cube-dial",
+   "dst": "point-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 12
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 46
+  },
+  {
+   "src": "rod-plain",
+   "dst": "mixed-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "rod-plain",
+   "dst": "hyper-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "point-explode",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "hyper-plain",
+   "dst": "hyper-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "rect-plain",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "box-measure",
+   "dst": "rod-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 86
+  },
+  {
+   "src": "rect-tally",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "mixed-tally",
+   "dst": "rod-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 72
+  },
+  {
+   "src": "rect-tally",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rod-tally",
+   "dst": "cube-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "box-explode",
+   "dst": "rect-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 124
+  },
+  {
+   "src": "hyper-squash",
+   "dst": "rect-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 142
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "hyper-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 168
+  },
+  {
+   "src": "box-collapse",
+   "dst": "hyper-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 89
+  },
+  {
+   "src": "rect-plain",
+   "dst": "cube-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "rect-plain",
+   "dst": "cube-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 68
+  },
+  {
+   "src": "rect-plain",
+   "dst": "hyper-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 89
+  },
+  {
+   "src": "rect-squash",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "box-explode",
+   "dst": "hyper-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 89
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "hyper-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 168
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rect-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 124
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "mixed-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "box-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 60
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "cube-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "rect-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 59
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "rect-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 22
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "rect-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 142
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "rod-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 34
+  },
+  {
+   "src": "rect-measure",
+   "dst": "rect-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rect-measure",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rect-swap",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "point-collapse",
+   "dst": "rod-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 34
+  },
+  {
+   "src": "rect-measure",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rect-measure",
+   "dst": "hyper-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "rect-squash",
+   "dst": "rect-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rect-explode",
+   "dst": "hyper-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "box-explode",
+   "dst": "point-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 35
+  },
+  {
+   "src": "hyper-collapse",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-explode",
+   "dst": "hyper-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rect-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rod-swap",
+   "dst": "hyper-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "point-collapse",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "rect-plain",
+   "dst": "rect-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "rect-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 59
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "mixed-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "rod-swap",
+   "dst": "box-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rect-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 142
+  },
+  {
+   "src": "rod-swap",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "rod-measure",
+   "dst": "rod-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 34
+  },
+  {
+   "src": "box-tally",
+   "dst": "rod-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 26
+  },
+  {
+   "src": "box-collapse",
+   "dst": "rod-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 86
+  },
+  {
+   "src": "box-tally",
+   "dst": "box-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 6
+  },
+  {
+   "src": "box-tally",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "mixed-regroup",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "box-collapse",
+   "dst": "mixed-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "box-collapse",
+   "dst": "box-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "box-swap",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "box-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 8
+  },
+  {
+   "src": "box-measure",
+   "dst": "cube-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 44
+  },
+  {
+   "src": "mixed-repeat",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "box-collapse",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "rod-plain",
+   "dst": "box-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-measure",
+   "dst": "mixed-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 7
+  },
+  {
+   "src": "box-explode",
+   "dst": "mixed-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 7
+  },
+  {
+   "src": "box-collapse",
+   "dst": "mixed-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 7
+  },
+  {
+   "src": "hyper-swap",
+   "dst": "hyper-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "rect-plain",
+   "dst": "hyper-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "rod-swap",
+   "dst": "hyper-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rect-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 22
+  },
+  {
+   "src": "rect-explode",
+   "dst": "hyper-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "rect-swap",
+   "dst": "rect-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 22
+  },
+  {
+   "src": "rod-tally",
+   "dst": "cube-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-measure",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "cube-swap",
+   "dst": "cube-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "point-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 7
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "mixed-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "mixed-repeat",
+   "dst": "point-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 7
+  },
+  {
+   "src": "mixed-repeat",
+   "dst": "rod-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 72
+  },
+  {
+   "src": "rod-dial",
+   "dst": "rod-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "cube-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "box-dial",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "rect-explode",
+   "dst": "box-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 74
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "box-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 74
+  },
+  {
+   "src": "rect-tally",
+   "dst": "rod-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 72
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "rod-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 13
+  },
+  {
+   "src": "rod-measure",
+   "dst": "rod-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 13
+  },
+  {
+   "src": "mixed-measure",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rod-swap",
+   "dst": "rod-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "hyper-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 89
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "rod-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 34
+  },
+  {
+   "src": "cube-swap",
+   "dst": "rod-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 86
+  },
+  {
+   "src": "rod-explode",
+   "dst": "point-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 35
+  },
+  {
+   "src": "box-measure",
+   "dst": "box-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "cube-dial",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "cube-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 25
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 25
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rect-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "cube-explode",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-measure",
+   "dst": "cube-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 114
+  },
+  {
+   "src": "box-explode",
+   "dst": "cube-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 114
+  },
+  {
+   "src": "mixed-repeat",
+   "dst": "rect-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "rect-regroup",
+   "dst": "mixed-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "rect-regroup",
+   "dst": "rod-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "box-explode",
+   "dst": "cube-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "rect-plain",
+   "dst": "hyper-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 101
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "rod-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 101
+  },
+  {
+   "src": "cube-tally",
+   "dst": "cube-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 44
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rect-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "rod-plain",
+   "dst": "rod-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "cube-swap",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "rod-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "rod-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rect-regroup",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rect-regroup",
+   "dst": "box-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "rect-plain",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rect-plain",
+   "dst": "box-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "cube-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "rod-swap",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rect-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "rect-regroup",
+   "dst": "rect-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 22
+  },
+  {
+   "src": "cube-plain",
+   "dst": "rod-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 101
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "rect-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 22
+  },
+  {
+   "src": "rod-plain",
+   "dst": "box-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 6
+  },
+  {
+   "src": "rod-measure",
+   "dst": "rod-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 86
+  },
+  {
+   "src": "rod-measure",
+   "dst": "rod-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-squash",
+   "dst": "point-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 53
+  },
+  {
+   "src": "point-squash",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "point-collapse",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "point-collapse",
+   "dst": "point-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 53
+  },
+  {
+   "src": "rod-swap",
+   "dst": "point-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "rod-swap",
+   "dst": "mixed-odd",
+   "w": 1,
+   "users": 1,
+   "dst_size": 2
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "point-regroup",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "mixed-odd",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "rect-swap",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "rect-swap",
+   "dst": "rod-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 34
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rect-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 22
+  },
+  {
+   "src": "rect-swap",
+   "dst": "box-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 60
+  },
+  {
+   "src": "rect-swap",
+   "dst": "rect-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 59
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "point-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 53
+  },
+  {
+   "src": "point-squash",
+   "dst": "rect-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 142
+  },
+  {
+   "src": "point-squash",
+   "dst": "point-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 53
+  },
+  {
+   "src": "point-plain",
+   "dst": "rect-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 142
+  },
+  {
+   "src": "point-plain",
+   "dst": "point-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 35
+  },
+  {
+   "src": "box-collapse",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "rect-dial",
+   "dst": "box-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 74
+  },
+  {
+   "src": "point-explode",
+   "dst": "rod-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 72
+  },
+  {
+   "src": "box-dial",
+   "dst": "box-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 60
+  },
+  {
+   "src": "rect-dial",
+   "dst": "box-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 60
+  },
+  {
+   "src": "cube-swap",
+   "dst": "cube-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 114
+  },
+  {
+   "src": "point-explode",
+   "dst": "rod-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 34
+  },
+  {
+   "src": "rod-explode",
+   "dst": "rect-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 59
+  },
+  {
+   "src": "hyper-explode",
+   "dst": "rect-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 46
+  },
+  {
+   "src": "box-explode",
+   "dst": "box-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 8
+  },
+  {
+   "src": "rect-plain",
+   "dst": "box-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 8
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "cube-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 44
+  },
+  {
+   "src": "hyper-swap",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "cube-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 116
+  },
+  {
+   "src": "rod-measure",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "cube-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 68
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "rod-repeat",
+   "dst": "cube-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 63
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 63
+  },
+  {
+   "src": "rod-plain",
+   "dst": "cube-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 68
+  },
+  {
+   "src": "rod-squash",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 18
+  },
+  {
+   "src": "cube-squash",
+   "dst": "cube-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 116
+  },
+  {
+   "src": "cube-explode",
+   "dst": "rod-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "rect-dial",
+   "dst": "box-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 8
+  },
+  {
+   "src": "point-explode",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "rod-squash",
+   "dst": "cube-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 42
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 107
+  },
+  {
+   "src": "cube-measure",
+   "dst": "cube-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 116
+  },
+  {
+   "src": "cube-squash",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "rod-squash",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "point-collapse",
+   "dst": "rod-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 20
+  },
+  {
+   "src": "cube-explode",
+   "dst": "box-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 60
+  },
+  {
+   "src": "cube-explode",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "box-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "hyper-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 89
+  },
+  {
+   "src": "rect-squash",
+   "dst": "hyper-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 21
+  },
+  {
+   "src": "box-swap",
+   "dst": "point-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "rect-swap",
+   "dst": "point-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "rect-explode",
+   "dst": "box-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 60
+  },
+  {
+   "src": "rect-explode",
+   "dst": "rod-repeat",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "rect-explode",
+   "dst": "hyper-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 101
+  },
+  {
+   "src": "rect-explode",
+   "dst": "box-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "rod-collapse",
+   "dst": "point-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-swap",
+   "w": 1,
+   "users": 1,
+   "dst_size": 27
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "mixed-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "mixed-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "cube-repeat",
+   "dst": "mixed-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "box-dial",
+   "dst": "rod-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 13
+  },
+  {
+   "src": "hyper-dial",
+   "dst": "rect-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 142
+  },
+  {
+   "src": "rect-squash",
+   "dst": "rod-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 13
+  },
+  {
+   "src": "rod-dial",
+   "dst": "cube-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 114
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "rect-explode",
+   "dst": "mixed-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  },
+  {
+   "src": "cube-dial",
+   "dst": "cube-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 25
+  },
+  {
+   "src": "cube-plain",
+   "dst": "cube-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 25
+  },
+  {
+   "src": "cube-flatten",
+   "dst": "cube-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 44
+  },
+  {
+   "src": "cube-collapse",
+   "dst": "cube-tally",
+   "w": 1,
+   "users": 1,
+   "dst_size": 25
+  },
+  {
+   "src": "cube-tally",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "rod-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 72
+  },
+  {
+   "src": "rect-dial",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "rect-dial",
+   "dst": "cube-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 42
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "cube-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 131
+  },
+  {
+   "src": "rod-regroup",
+   "dst": "rect-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 308
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "rod-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 86
+  },
+  {
+   "src": "box-dial",
+   "dst": "box-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "rect-plain",
+   "dst": "box-dial",
+   "w": 1,
+   "users": 1,
+   "dst_size": 74
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "rect-collapse",
+   "w": 1,
+   "users": 1,
+   "dst_size": 46
+  },
+  {
+   "src": "rect-collapse",
+   "dst": "rect-measure",
+   "w": 1,
+   "users": 1,
+   "dst_size": 15
+  },
+  {
+   "src": "box-squash",
+   "dst": "box-explode",
+   "w": 1,
+   "users": 1,
+   "dst_size": 102
+  },
+  {
+   "src": "mixed-repeat",
+   "dst": "cube-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 42
+  },
+  {
+   "src": "cube-regroup",
+   "dst": "rect-regroup",
+   "w": 1,
+   "users": 1,
+   "dst_size": 11
+  },
+  {
+   "src": "box-explode",
+   "dst": "rod-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 113
+  },
+  {
+   "src": "mixed-flatten",
+   "dst": "cube-plain",
+   "w": 1,
+   "users": 1,
+   "dst_size": 44
+  },
+  {
+   "src": "mixed-flatten",
+   "dst": "hyper-squash",
+   "w": 1,
+   "users": 1,
+   "dst_size": 89
+  },
+  {
+   "src": "hyper-swap",
+   "dst": "mixed-flatten",
+   "w": 1,
+   "users": 1,
+   "dst_size": 4
+  }
+ ],
+ "thresholds": [
+  {
+   "w": 1,
+   "edges": 469,
+   "components": [
+    [
+     "box-collapse",
+     "box-dial",
+     "box-explode",
+     "box-measure",
+     "box-plain",
+     "box-squash",
+     "box-swap",
+     "box-tally",
+     "cube-collapse",
+     "cube-dial",
+     "cube-explode",
+     "cube-flatten",
+     "cube-measure",
+     "cube-plain",
+     "cube-regroup",
+     "cube-repeat",
+     "cube-squash",
+     "cube-swap",
+     "cube-tally",
+     "hyper-collapse",
+     "hyper-dial",
+     "hyper-explode",
+     "hyper-plain",
+     "hyper-squash",
+     "hyper-swap",
+     "mixed-flatten",
+     "mixed-measure",
+     "mixed-odd",
+     "mixed-regroup",
+     "mixed-repeat",
+     "point-collapse",
+     "point-explode",
+     "point-plain",
+     "point-regroup",
+     "point-squash",
+     "rect-collapse",
+     "rect-dial",
+     "rect-explode",
+     "rect-measure",
+     "rect-plain",
+     "rect-regroup",
+     "rect-squash",
+     "rect-swap",
+     "rect-tally",
+     "rod-collapse",
+     "rod-dial",
+     "rod-explode",
+     "rod-measure",
+     "rod-plain",
+     "rod-regroup",
+     "rod-repeat",
+     "rod-squash",
+     "rod-swap",
+     "rod-tally"
+    ]
+   ],
+   "two_way": [
+    [
+     "box-collapse",
+     "box-explode"
+    ],
+    [
+     "box-collapse",
+     "box-swap"
+    ],
+    [
+     "box-collapse",
+     "mixed-regroup"
+    ],
+    [
+     "box-collapse",
+     "rod-explode"
+    ],
+    [
+     "box-dial",
+     "rect-dial"
+    ],
+    [
+     "box-dial",
+     "rect-squash"
+    ],
+    [
+     "box-explode",
+     "box-squash"
+    ],
+    [
+     "box-explode",
+     "hyper-explode"
+    ],
+    [
+     "box-explode",
+     "mixed-repeat"
+    ],
+    [
+     "box-explode",
+     "point-collapse"
+    ],
+    [
+     "cube-collapse",
+     "cube-dial"
+    ],
+    [
+     "cube-collapse",
+     "cube-explode"
+    ],
+    [
+     "cube-collapse",
+     "cube-flatten"
+    ],
+    [
+     "cube-collapse",
+     "cube-measure"
+    ],
+    [
+     "cube-collapse",
+     "cube-plain"
+    ],
+    [
+     "cube-collapse",
+     "cube-squash"
+    ],
+    [
+     "cube-collapse",
+     "cube-swap"
+    ],
+    [
+     "cube-collapse",
+     "rod-collapse"
+    ],
+    [
+     "cube-collapse",
+     "rod-plain"
+    ],
+    [
+     "cube-collapse",
+     "rod-repeat"
+    ],
+    [
+     "cube-dial",
+     "cube-explode"
+    ],
+    [
+     "cube-dial",
+     "cube-swap"
+    ],
+    [
+     "cube-dial",
+     "rod-dial"
+    ],
+    [
+     "cube-explode",
+     "cube-flatten"
+    ],
+    [
+     "cube-explode",
+     "cube-measure"
+    ],
+    [
+     "cube-explode",
+     "cube-plain"
+    ],
+    [
+     "cube-explode",
+     "cube-repeat"
+    ],
+    [
+     "cube-explode",
+     "cube-squash"
+    ],
+    [
+     "cube-explode",
+     "cube-swap"
+    ],
+    [
+     "cube-explode",
+     "cube-tally"
+    ],
+    [
+     "cube-explode",
+     "rod-collapse"
+    ],
+    [
+     "cube-explode",
+     "rod-explode"
+    ],
+    [
+     "cube-explode",
+     "rod-regroup"
+    ],
+    [
+     "cube-explode",
+     "rod-squash"
+    ],
+    [
+     "cube-flatten",
+     "cube-measure"
+    ],
+    [
+     "cube-flatten",
+     "cube-plain"
+    ],
+    [
+     "cube-flatten",
+     "cube-regroup"
+    ],
+    [
+     "cube-flatten",
+     "cube-squash"
+    ],
+    [
+     "cube-flatten",
+     "rect-plain"
+    ],
+    [
+     "cube-measure",
+     "cube-plain"
+    ],
+    [
+     "cube-measure",
+     "cube-regroup"
+    ],
+    [
+     "cube-measure",
+     "cube-repeat"
+    ],
+    [
+     "cube-measure",
+     "cube-squash"
+    ],
+    [
+     "cube-measure",
+     "rod-tally"
+    ],
+    [
+     "cube-plain",
+     "cube-repeat"
+    ],
+    [
+     "cube-plain",
+     "cube-swap"
+    ],
+    [
+     "cube-plain",
+     "cube-tally"
+    ],
+    [
+     "cube-plain",
+     "rod-plain"
+    ],
+    [
+     "cube-regroup",
+     "cube-repeat"
+    ],
+    [
+     "cube-repeat",
+     "cube-squash"
+    ],
+    [
+     "cube-repeat",
+     "rect-explode"
+    ],
+    [
+     "cube-repeat",
+     "rod-collapse"
+    ],
+    [
+     "cube-squash",
+     "cube-swap"
+    ],
+    [
+     "cube-squash",
+     "rod-squash"
+    ],
+    [
+     "hyper-dial",
+     "hyper-explode"
+    ],
+    [
+     "hyper-dial",
+     "rect-dial"
+    ],
+    [
+     "hyper-dial",
+     "rect-explode"
+    ],
+    [
+     "hyper-explode",
+     "rect-collapse"
+    ],
+    [
+     "hyper-explode",
+     "rect-explode"
+    ],
+    [
+     "hyper-explode",
+     "rod-plain"
+    ],
+    [
+     "hyper-squash",
+     "rect-collapse"
+    ],
+    [
+     "hyper-squash",
+     "rect-squash"
+    ],
+    [
+     "point-collapse",
+     "point-squash"
+    ],
+    [
+     "point-squash",
+     "rect-squash"
+    ],
+    [
+     "point-squash",
+     "rod-squash"
+    ],
+    [
+     "rect-collapse",
+     "rect-explode"
+    ],
+    [
+     "rect-collapse",
+     "rod-collapse"
+    ],
+    [
+     "rect-dial",
+     "rect-explode"
+    ],
+    [
+     "rect-explode",
+     "rect-measure"
+    ],
+    [
+     "rect-explode",
+     "rect-plain"
+    ],
+    [
+     "rect-explode",
+     "rect-regroup"
+    ],
+    [
+     "rect-explode",
+     "rect-tally"
+    ],
+    [
+     "rect-explode",
+     "rod-explode"
+    ],
+    [
+     "rect-explode",
+     "rod-regroup"
+    ],
+    [
+     "rect-measure",
+     "rect-squash"
+    ],
+    [
+     "rect-plain",
+     "rect-swap"
+    ],
+    [
+     "rect-regroup",
+     "rod-regroup"
+    ],
+    [
+     "rect-squash",
+     "rod-squash"
+    ],
+    [
+     "rect-swap",
+     "rod-regroup"
+    ],
+    [
+     "rect-swap",
+     "rod-swap"
+    ],
+    [
+     "rod-collapse",
+     "rod-plain"
+    ],
+    [
+     "rod-collapse",
+     "rod-regroup"
+    ],
+    [
+     "rod-collapse",
+     "rod-swap"
+    ],
+    [
+     "rod-explode",
+     "rod-plain"
+    ],
+    [
+     "rod-explode",
+     "rod-swap"
+    ],
+    [
+     "rod-plain",
+     "rod-regroup"
+    ],
+    [
+     "rod-plain",
+     "rod-repeat"
+    ],
+    [
+     "rod-plain",
+     "rod-squash"
+    ],
+    [
+     "rod-plain",
+     "rod-swap"
+    ],
+    [
+     "rod-regroup",
+     "rod-swap"
+    ]
+   ]
+  },
+  {
+   "w": 2,
+   "edges": 233,
+   "components": [
+    [
+     "box-dial",
+     "box-explode",
+     "box-swap",
+     "cube-collapse",
+     "cube-dial",
+     "cube-explode",
+     "cube-flatten",
+     "cube-measure",
+     "cube-plain",
+     "cube-regroup",
+     "cube-repeat",
+     "cube-squash",
+     "cube-swap",
+     "cube-tally",
+     "hyper-dial",
+     "hyper-explode",
+     "point-collapse",
+     "point-squash",
+     "rect-collapse",
+     "rect-dial",
+     "rect-explode",
+     "rect-measure",
+     "rect-plain",
+     "rect-squash",
+     "rect-swap",
+     "rod-collapse",
+     "rod-explode",
+     "rod-plain",
+     "rod-regroup",
+     "rod-squash",
+     "rod-swap"
+    ]
+   ],
+   "two_way": [
+    [
+     "box-dial",
+     "rect-squash"
+    ],
+    [
+     "box-explode",
+     "hyper-explode"
+    ],
+    [
+     "cube-collapse",
+     "cube-dial"
+    ],
+    [
+     "cube-collapse",
+     "cube-explode"
+    ],
+    [
+     "cube-collapse",
+     "cube-flatten"
+    ],
+    [
+     "cube-collapse",
+     "cube-plain"
+    ],
+    [
+     "cube-collapse",
+     "cube-squash"
+    ],
+    [
+     "cube-collapse",
+     "rod-collapse"
+    ],
+    [
+     "cube-dial",
+     "cube-explode"
+    ],
+    [
+     "cube-explode",
+     "cube-flatten"
+    ],
+    [
+     "cube-explode",
+     "cube-plain"
+    ],
+    [
+     "cube-explode",
+     "cube-repeat"
+    ],
+    [
+     "cube-explode",
+     "cube-squash"
+    ],
+    [
+     "cube-explode",
+     "rod-collapse"
+    ],
+    [
+     "cube-explode",
+     "rod-explode"
+    ],
+    [
+     "cube-flatten",
+     "cube-regroup"
+    ],
+    [
+     "cube-flatten",
+     "cube-squash"
+    ],
+    [
+     "cube-measure",
+     "cube-plain"
+    ],
+    [
+     "cube-plain",
+     "cube-repeat"
+    ],
+    [
+     "cube-regroup",
+     "cube-repeat"
+    ],
+    [
+     "cube-squash",
+     "cube-swap"
+    ],
+    [
+     "hyper-dial",
+     "rect-dial"
+    ],
+    [
+     "hyper-explode",
+     "rect-explode"
+    ],
+    [
+     "rect-explode",
+     "rect-plain"
+    ],
+    [
+     "rect-explode",
+     "rod-explode"
+    ],
+    [
+     "rect-squash",
+     "rod-squash"
+    ],
+    [
+     "rod-collapse",
+     "rod-plain"
+    ],
+    [
+     "rod-collapse",
+     "rod-regroup"
+    ],
+    [
+     "rod-collapse",
+     "rod-swap"
+    ],
+    [
+     "rod-explode",
+     "rod-plain"
+    ],
+    [
+     "rod-explode",
+     "rod-swap"
+    ],
+    [
+     "rod-plain",
+     "rod-regroup"
+    ],
+    [
+     "rod-plain",
+     "rod-squash"
+    ],
+    [
+     "rod-plain",
+     "rod-swap"
+    ],
+    [
+     "rod-regroup",
+     "rod-swap"
+    ]
+   ]
+  },
+  {
+   "w": 3,
+   "edges": 138,
+   "components": [
+    [
+     "box-dial",
+     "box-swap",
+     "cube-collapse",
+     "cube-dial",
+     "cube-explode",
+     "cube-flatten",
+     "cube-measure",
+     "cube-plain",
+     "cube-regroup",
+     "cube-repeat",
+     "cube-squash",
+     "cube-swap",
+     "hyper-dial",
+     "hyper-explode",
+     "rect-collapse",
+     "rect-dial",
+     "rect-explode",
+     "rect-plain",
+     "rect-squash",
+     "rod-collapse",
+     "rod-explode",
+     "rod-plain",
+     "rod-regroup",
+     "rod-squash",
+     "rod-swap"
+    ]
+   ],
+   "two_way": [
+    [
+     "cube-collapse",
+     "cube-dial"
+    ],
+    [
+     "cube-collapse",
+     "cube-explode"
+    ],
+    [
+     "cube-collapse",
+     "cube-flatten"
+    ],
+    [
+     "cube-collapse",
+     "cube-plain"
+    ],
+    [
+     "cube-collapse",
+     "rod-collapse"
+    ],
+    [
+     "cube-dial",
+     "cube-explode"
+    ],
+    [
+     "cube-explode",
+     "cube-repeat"
+    ],
+    [
+     "cube-explode",
+     "cube-squash"
+    ],
+    [
+     "cube-flatten",
+     "cube-squash"
+    ],
+    [
+     "cube-plain",
+     "cube-repeat"
+    ],
+    [
+     "rect-explode",
+     "rect-plain"
+    ],
+    [
+     "rect-squash",
+     "rod-squash"
+    ],
+    [
+     "rod-collapse",
+     "rod-plain"
+    ],
+    [
+     "rod-collapse",
+     "rod-regroup"
+    ],
+    [
+     "rod-collapse",
+     "rod-swap"
+    ],
+    [
+     "rod-explode",
+     "rod-plain"
+    ],
+    [
+     "rod-explode",
+     "rod-swap"
+    ],
+    [
+     "rod-plain",
+     "rod-squash"
+    ],
+    [
+     "rod-plain",
+     "rod-swap"
+    ],
+    [
+     "rod-regroup",
+     "rod-swap"
+    ]
+   ]
+  },
+  {
+   "w": 5,
+   "edges": 72,
+   "components": [
+    [
+     "cube-collapse",
+     "cube-dial",
+     "cube-explode",
+     "cube-flatten",
+     "cube-measure",
+     "cube-plain",
+     "cube-regroup",
+     "cube-repeat",
+     "cube-squash",
+     "cube-swap"
+    ],
+    [
+     "rect-explode",
+     "rect-plain",
+     "rect-squash",
+     "rod-collapse",
+     "rod-plain",
+     "rod-regroup",
+     "rod-squash",
+     "rod-swap"
+    ]
+   ],
+   "two_way": [
+    [
+     "cube-collapse",
+     "cube-plain"
+    ],
+    [
+     "cube-dial",
+     "cube-explode"
+    ],
+    [
+     "cube-explode",
+     "cube-repeat"
+    ],
+    [
+     "cube-explode",
+     "cube-squash"
+    ],
+    [
+     "cube-flatten",
+     "cube-squash"
+    ],
+    [
+     "cube-plain",
+     "cube-repeat"
+    ],
+    [
+     "rod-collapse",
+     "rod-swap"
+    ],
+    [
+     "rod-plain",
+     "rod-squash"
+    ],
+    [
+     "rod-plain",
+     "rod-swap"
+    ],
+    [
+     "rod-regroup",
+     "rod-swap"
+    ]
+   ]
+  },
+  {
+   "w": 8,
+   "edges": 38,
+   "components": [
+    [
+     "cube-collapse",
+     "cube-dial",
+     "cube-explode",
+     "cube-plain",
+     "cube-regroup",
+     "cube-repeat"
+    ],
+    [
+     "rod-collapse",
+     "rod-swap"
+    ]
+   ],
+   "two_way": [
+    [
+     "cube-collapse",
+     "cube-plain"
+    ],
+    [
+     "cube-explode",
+     "cube-repeat"
+    ],
+    [
+     "rod-collapse",
+     "rod-swap"
+    ]
+   ]
+  },
+  {
+   "w": 12,
+   "edges": 20,
+   "components": [],
+   "two_way": []
+  },
+  {
+   "w": 20,
+   "edges": 11,
+   "components": [],
+   "two_way": []
+  }
+ ],
+ "action_matrix": {
+  "collapse>collapse": 71,
+  "collapse>dial": 8,
+  "collapse>explode": 29,
+  "collapse>flatten": 26,
+  "collapse>measure": 8,
+  "collapse>plain": 15,
+  "collapse>regroup": 15,
+  "collapse>repeat": 3,
+  "collapse>squash": 26,
+  "collapse>swap": 17,
+  "collapse>tally": 5,
+  "dial>collapse": 8,
+  "dial>dial": 151,
+  "dial>explode": 22,
+  "dial>flatten": 2,
+  "dial>measure": 1,
+  "dial>plain": 1,
+  "dial>regroup": 1,
+  "dial>repeat": 0,
+  "dial>squash": 19,
+  "dial>swap": 1,
+  "dial>tally": 1,
+  "explode>collapse": 40,
+  "explode>dial": 16,
+  "explode>explode": 147,
+  "explode>flatten": 12,
+  "explode>measure": 10,
+  "explode>plain": 37,
+  "explode>regroup": 10,
+  "explode>repeat": 21,
+  "explode>squash": 79,
+  "explode>swap": 20,
+  "explode>tally": 8,
+  "flatten>collapse": 5,
+  "flatten>dial": 0,
+  "flatten>explode": 2,
+  "flatten>flatten": 25,
+  "flatten>measure": 1,
+  "flatten>plain": 4,
+  "flatten>regroup": 2,
+  "flatten>repeat": 0,
+  "flatten>squash": 8,
+  "flatten>swap": 1,
+  "flatten>tally": 0,
+  "measure>collapse": 5,
+  "measure>dial": 2,
+  "measure>explode": 8,
+  "measure>flatten": 8,
+  "measure>measure": 3,
+  "measure>plain": 10,
+  "measure>regroup": 2,
+  "measure>repeat": 2,
+  "measure>squash": 3,
+  "measure>swap": 8,
+  "measure>tally": 3,
+  "plain>collapse": 78,
+  "plain>dial": 14,
+  "plain>explode": 82,
+  "plain>flatten": 4,
+  "plain>measure": 5,
+  "plain>plain": 24,
+  "plain>regroup": 27,
+  "plain>repeat": 11,
+  "plain>squash": 24,
+  "plain>swap": 49,
+  "plain>tally": 8,
+  "regroup>collapse": 6,
+  "regroup>dial": 8,
+  "regroup>explode": 21,
+  "regroup>flatten": 20,
+  "regroup>measure": 2,
+  "regroup>plain": 3,
+  "regroup>regroup": 46,
+  "regroup>repeat": 2,
+  "regroup>squash": 4,
+  "regroup>swap": 12,
+  "regroup>tally": 0,
+  "repeat>collapse": 21,
+  "repeat>dial": 10,
+  "repeat>explode": 41,
+  "repeat>flatten": 6,
+  "repeat>measure": 6,
+  "repeat>plain": 10,
+  "repeat>regroup": 14,
+  "repeat>repeat": 14,
+  "repeat>squash": 15,
+  "repeat>swap": 3,
+  "repeat>tally": 3,
+  "squash>collapse": 8,
+  "squash>dial": 3,
+  "squash>explode": 10,
+  "squash>flatten": 7,
+  "squash>measure": 2,
+  "squash>plain": 10,
+  "squash>regroup": 0,
+  "squash>repeat": 1,
+  "squash>squash": 136,
+  "squash>swap": 3,
+  "squash>tally": 2,
+  "swap>collapse": 18,
+  "swap>dial": 7,
+  "swap>explode": 11,
+  "swap>flatten": 1,
+  "swap>measure": 0,
+  "swap>plain": 10,
+  "swap>regroup": 44,
+  "swap>repeat": 1,
+  "swap>squash": 13,
+  "swap>swap": 32,
+  "swap>tally": 1,
+  "tally>collapse": 3,
+  "tally>dial": 0,
+  "tally>explode": 2,
+  "tally>flatten": 0,
+  "tally>measure": 3,
+  "tally>plain": 3,
+  "tally>regroup": 0,
+  "tally>repeat": 0,
+  "tally>squash": 1,
+  "tally>swap": 0,
+  "tally>tally": 2
+ },
+ "family_sizes": {
+  "rect-plain": 59,
+  "rect-explode": 308,
+  "rect-swap": 22,
+  "box-swap": 21,
+  "rod-collapse": 72,
+  "box-dial": 74,
+  "hyper-dial": 101,
+  "rect-dial": 124,
+  "rod-dial": 13,
+  "cube-collapse": 107,
+  "cube-flatten": 68,
+  "cube-repeat": 116,
+  "cube-regroup": 42,
+  "cube-dial": 114,
+  "cube-explode": 131,
+  "cube-squash": 63,
+  "rod-regroup": 27,
+  "rod-explode": 86,
+  "rect-squash": 142,
+  "rod-squash": 113,
+  "rod-swap": 34,
+  "rect-regroup": 11,
+  "rod-plain": 101,
+  "cube-plain": 44,
+  "rod-repeat": 15,
+  "cube-swap": 27,
+  "cube-measure": 18,
+  "hyper-collapse": 18,
+  "rod-measure": 26,
+  "box-tally": 6,
+  "rect-tally": 19,
+  "point-squash": 53,
+  "point-plain": 7,
+  "point-collapse": 35,
+  "box-squash": 60,
+  "point-tally": 146,
+  "point-regroup": 4,
+  "rect-measure": 15,
+  "point-dial": 12,
+  "rod-tally": 20,
+  "rect-collapse": 46,
+  "box-explode": 102,
+  "hyper-squash": 89,
+  "point-explode": 19,
+  "box-plain": 8,
+  "hyper-explode": 168,
+  "hyper-swap": 21,
+  "cube-tally": 25,
+  "mixed-flatten": 4,
+  "mixed-measure": 4,
+  "hyper-plain": 12,
+  "mixed-regroup": 4,
+  "box-collapse": 20,
+  "mixed-repeat": 7,
+  "box-measure": 11,
+  "mixed-tally": 3,
+  "mixed-odd": 2,
+  "rod-flatten": 7
+ },
+ "users_in": {
+  "mixed-regroup": 3,
+  "point-squash": 4,
+  "cube-explode": 91,
+  "cube-plain": 23,
+  "rect-collapse": 12,
+  "rect-squash": 33,
+  "box-dial": 22,
+  "cube-collapse": 61,
+  "rect-explode": 50,
+  "cube-dial": 85,
+  "rect-tally": 3,
+  "rod-regroup": 23,
+  "rect-dial": 26,
+  "cube-swap": 17,
+  "box-measure": 6,
+  "cube-flatten": 50,
+  "cube-squash": 47,
+  "rod-squash": 29,
+  "box-explode": 22,
+  "hyper-explode": 31,
+  "box-squash": 14,
+  "rod-explode": 29,
+  "hyper-collapse": 5,
+  "cube-regroup": 23,
+  "cube-repeat": 32,
+  "rect-measure": 8,
+  "rod-collapse": 38,
+  "box-swap": 8,
+  "rod-swap": 23,
+  "hyper-squash": 36,
+  "rod-plain": 29,
+  "cube-measure": 14,
+  "rect-plain": 21,
+  "rod-repeat": 6,
+  "box-collapse": 7,
+  "hyper-dial": 27,
+  "rect-swap": 11,
+  "rect-regroup": 11,
+  "point-dial": 1,
+  "point-regroup": 3,
+  "rod-dial": 6,
+  "hyper-plain": 6,
+  "rod-tally": 4,
+  "mixed-repeat": 1,
+  "hyper-swap": 9,
+  "point-collapse": 8,
+  "mixed-measure": 2,
+  "point-explode": 2,
+  "mixed-flatten": 3,
+  "point-plain": 1,
+  "cube-tally": 7,
+  "box-plain": 6,
+  "box-tally": 6,
+  "rod-measure": 1,
+  "mixed-odd": 1
+ }
+}

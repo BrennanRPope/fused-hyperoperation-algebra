@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dynamics Through the Circle Operation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA an orbit chart: one orbit drawn in three coordinate systems. Teal for the map, magenta for the wall
+   (the attracting point), amber for orbit points. LAYOUT hero circle + cobweb, then rulers, flow, horn; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#eef1f4,#0f1418);--panel:light-dark(#ffffff,#182027);--ink:light-dark(#14202b,#e6edf2);--soft:light-dark(#506070,#9fb0bd);--rule:light-dark(#c8d1d9,#2f3b45);--teal:light-dark(#0f6e6e,#5fd0c8);--mag:light-dark(#b0186b,#ff6fb5);--amb:light-dark(#b86e00,#f2b34a);--fill:light-dark(rgba(176,24,107,.08),rgba(255,111,181,.12))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}.alt{background:var(--panel)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font:600 clamp(30px,4.3vw,47px)/1.08 "Space Grotesk",Inter,sans-serif;letter-spacing:-.015em;margin:0 0 14px;max-width:23ch;text-wrap:balance}
+h2{font:600 24px/1.2 "Space Grotesk",Inter,sans-serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:68ch;margin:0}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}.alt .panel{background:var(--bg)}
+.first{margin-top:22px}
+.fig{position:relative;min-height:380px}.fig.s{min-height:300px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13.5px Inter,sans-serif;fill:var(--ink)}
+.eq{font:17px/1.6 "Space Grotesk",Inter,sans-serif;border-left:3px solid var(--mag);padding:8px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.small{color:var(--soft);font-size:14px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
+.ctls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:4px 24px}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 4em;gap:10px;align-items:center}
+.ctl label{font-weight:600;white-space:nowrap}.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:44px;accent-color:var(--teal)}
+p,li{max-width:68ch}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:left}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+.ledger td:last-child{color:var(--soft)}
+footer{padding:18px max(5vw,16px);color:var(--soft);font-size:14px}
+@media(max-width:860px){.side{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 3px}.fig{min-height:520px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>The circle operation squaring is z² in other coordinates, and folding it by the circle-operation inverse gives the logistic map</h1>
+<p class="lede">The lift z = 1 + x is a change of coordinates, and in dynamics a change of coordinates (a conjugacy) keeps everything that matters: fixed points, how hard they pull, chaos. So x ∘₁ x = (1 + x)² − 1 behaves exactly like z ↦ z². The wall −1 is the point that swallows everything inside the circle |1 + x| = 1. Fold the plane by pairing each w with its circle-operation inverse and the circle collapses onto [0, 1], where the same orbit becomes the chaotic logistic map 4X(1 − X).</p>
+<div class="panel first"><div class="fig" id="hero"></div>
+<div class="ctls">
+<div class="ctl"><label for="th">Start angle</label><input id="th" type="range" min="1" max="359" step="1" value="47"><output id="tho"></output></div>
+<div class="ctl"><label for="rr">|1 + x|</label><input id="rr" type="range" min="0.8" max="1.15" step="0.01" value="1"><output id="rro"></output></div>
+</div>
+<p class="small" id="heroc"></p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The wall pulls hardest; the identity pushes</h2>
+<p>Near the wall, (−1 + h) ∘₁ (−1 + h) = −1 + h². A small offset is squared, so the wall is <b>superattracting</b> (multiplier 0): that is the absorbing −1 seen as a place orbits fall into. Near the identity, h ∘₁ h = 2h + h², so 0 <b>repels</b> with multiplier 2. The boundary between falling in and escaping is the circle |1 + x| = 1 (the Julia set), and on it the map doubles the angle: chaos with Lyapunov exponent log 2.</p>
+<p>The dial changes nothing essential. k·(x ∘ₖ x) = (kx) ∘₁ (kx), so every k ≠ 0 is the same map in other units, with its wall −1/k still superattracting. At k = −2 (parity) the square is 2x(1 − x): the logistic map at r = 2, whose famous superstable point 1/2 is the parity wall.</p>
+</div>
+<div class="panel">
+<table><thead><tr><th>Point</th><th>The circle operation (called mult-add before 1.0)</th><th>Through the lift</th><th>Pull</th></tr></thead><tbody>
+<tr><td>Wall</td><td>x = −1</td><td>z = 0</td><td>multiplier 0, superattracting</td></tr>
+<tr><td>Identity</td><td>x = 0</td><td>z = 1</td><td>multiplier 2, repelling</td></tr>
+<tr><td>Period n</td><td>(1+x)^(2ⁿ−1) = 1</td><td>roots of unity</td><td>2ⁿ − 1 points on the circle</td></tr>
+<tr><td>Julia set</td><td>|1 + x| = 1</td><td>|z| = 1</td><td>angle doubling, log 2</td></tr>
+</tbody></table>
+<p class="small">x ↦ x^(∘₁n) = (1 + x)ⁿ − 1 is zⁿ: multiplier n at the identity, 0 at the wall, and these maps compose like powers.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div class="panel"><div class="fig s" id="rul"></div>
+<p class="small">Top: x ∘₁ x from x = 0.03, and the same points on the log ruler log(1 + x), where each step doubles. Bottom: e^x − 1 from x = −3, and the same points on the Abel ruler α, where each step adds exactly 1.</p></div>
+<div>
+<h2>Two rulers: one stretches, one shifts</h2>
+<p>A repelling or attracting fixed point can be straightened. Koenigs (1884): there is a coordinate in which the map is plain multiplication by its multiplier. For x ∘₁ x at the identity that coordinate is <b>log(1 + x)</b>, the project's log ruler: log(1 + x ∘₁ x) = 2·log(1 + x). It is the same ruler that turns ∘₁ into +, and Koenigs's own limit 2ⁿ·f⁻ⁿ(x) recovers it.</p>
+<p>The rung map E(x) = e^x − 1 has multiplier 1 at 0, and no stretching coordinate exists (the equation fails at the x² term). What exists instead is Fatou's coordinate, a ruler on which the map is <b>a shift by 1</b>: α(E(x)) = α(x) + 1, with α = −2/x + ⅓·log|x| − x/36 + …. That is the project's "ruler for which rung you're on", and half a step along it gives E^(1/2)(1) = 1.27103, the fractional-rungs value.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The rung flow is the flow of one vector field, and 0 is its parabolic point</h2>
+<p>Fractional rungs E^t are the flow of v = 1/α′ = x²/2 − x³/12 + x⁴/48 − x⁵/180 + 11x⁶/8640 − …, and E is its time-1 map: v(E(x)) = E′(x)·v(x). v is positive on both sides of 0, so the flow pushes everything to the right: negative numbers creep up to 0 forever, positive ones leave and then explode.</p>
+<p>Near 0 the flow is the Möbius flow x/(1 − t·x/2) of x′ = x²/2, whose ruler −2/x adds t exactly. So locally the rung ladder is a landscape-style Möbius map, and its two walls have merged at 0 (a double wall, the parabola case). The landscape itself is a family of flows too: each law F_{k,d} is "run y′ = 1 + ky + dy² for time a, then time b", and the circle operation is y′ = 1 + y, whose equilibrium is the wall.</p>
+</div>
+<div class="panel"><div class="fig s" id="flow"></div>
+<p class="small">The vector field v(x) of the rung flow (teal) and its first term x²/2 (dashed). Arrows show the direction of the flow.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div class="panel"><div class="fig s" id="horn"></div>
+<p class="small">How far apart the two half-rulers are, at points iy in the upper half-plane, against the height Im α. The dots fall on a line of slope −2π/ln 10: the gap is c₁·e^(2πiα).</p></div>
+<div>
+<h2>The ruler from the left and the ruler from the right disagree by a tiny wobble</h2>
+<p>The Abel ruler can be built from the right (pulling x down to 0 with log(1 + x)) or from the left (pushing x up with e^x − 1). On the real line they cover different halves. In the complex plane they overlap above and below 0, and there they differ by α₊ − α₋ = c₁·e^(2πiα) + …: a periodic wobble that shrinks like e^(−2π·Im α).</p>
+<p>We measured <b>c₁ ≈ −10.749 − 63.246i</b> (|c₁| ≈ 64.15, with the ruler normalized to have no constant term), the same to seven digits at four points. A nonzero c₁ is Écalle and Voronin's invariant saying that e^x − 1 has <b>no analytic flow through 0</b>: the fractional rungs on the two sides are two different families that cannot be joined smoothly in the complex plane. That is Baker's 1958 divergence result, seen as a number.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The logistic fold, Chebyshev and the tent map are one picture</h2>
+<div class="eq">X(w) = w·ι(w)/4 = −w²/(4(1 + w)),&nbsp; ι(w) = −w/(1 + w)</div>
+<p>Because w ∘₁ ι(w) = 0, the sum and product of w and its inverse are negatives of each other, so X = −(w + ι(w))/4. X forgets which of the pair you started from (2-to-1), squaring commutes with ι, and so 4X(1 − X) = X(w ∘₁ w). On the circle w = e^(iθ) − 1, X = sin²(θ/2): uniform angles fold into the logistic map's density 1/(π√(X(1 − X))), and its Lyapunov exponent is log 2.</p>
+<p>In u = 1 − 2X the logistic step is the Chebyshev polynomial T₂, and every Tₙ is zⁿ seen through Joukowski's map (z + 1/z)/2 = 1 + (w + ι(w))/2. Fold the angle-doubling circle by θ ↔ −θ and you get the tent map. The chain rule reads the same way: slopes multiply along an orbit, so slope − 1 composes by ∘₁, a relabelling of the product.</p>
+</div>
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>z² dynamics, Julia set, superattracting points</td><td>Fatou, Julia 1918-19</td></tr>
+<tr><td>Linearizing coordinate at |λ| ≠ 0, 1</td><td>Koenigs 1884</td></tr>
+<tr><td>Fatou coordinate, parabolic points; regular iteration</td><td>Fatou 1919; Szekeres 1958</td></tr>
+<tr><td>Logistic r = 4 solved by sin²; Chebyshev</td><td>Ulam and von Neumann 1947</td></tr>
+<tr><td>e^x − 1 has no analytic fractional iterates at 0</td><td>Baker 1958</td></tr>
+<tr><td>Horn map invariants of parabolic germs</td><td>Écalle 1981, Voronin 1981; Dudko and Sauzin 2015</td></tr>
+<tr><td>Wall = superattracting point; logistic = fold by ι; dial squares one map</td><td>Ours: readings of the classical facts</td></tr>
+<tr><td>The number c₁ for e^x − 1</td><td>Computed here; not found in print, not ruled out</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>Lead worth following?</h2>
+<p><b>Yes, a modest one: the horn map of the rung flow.</b> Everything else on this page is classical dynamics seen through the lift, and the lift being a conjugacy is exactly how dynamicists already think. The useful output there is a dictionary (wall = superattracting point, identity = repelling point with ruler log(1 + x), circle-operation inverse = the fold that makes the logistic map), not a discovery.</p>
+<p>The horn map is different. It measures, in one number per frequency, how the project's fractional rungs fail to be one family across 0. Computing c₂, c₃, … and checking them against the Borel-plane route of Dudko and Sauzin would turn "the rung ruler" into a fully described object. We found no genuine connection to Feigenbaum's period doubling, so it is left out.</p>
+</div>
+<div>
+<h2>Proved and checked</h2>
+<p><b>53 of 53 checks pass</b> (sympy, numpy, mpmath at 30 to 40 digits). <b>31 Lean theorems</b>, core Lean 4.37, no sorry, standard axioms only, among them <code>iter_msq_lift</code>, <code>wall_superattracting</code>, <code>dial_square_units</code>, <code>parity_logistic</code>, <code>iter_jet_ruler</code>, <code>logistic_fold</code>, <code>fold_inv</code>, <code>cheb_joukowski</code>, <code>pflow_add</code> and <code>pflow_ruler</code>.</p>
+</div>
+</div>
+</section>
+<footer>53 of 53 checks pass (checks.py). 31 Lean theorems, core Lean 4.37, no sorry, standard axioms only (lean/Dynamics.lean).</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const SER={"horn": [[6.764705856615764, -16.651839217441676], [5.776194496368706, -13.954587705159938], [5.056821065836914, -11.99159595064656], [4.509695579846708, -10.498625804826048], [4.079452367258302, -9.324598473758547], [3.732157695225108, -8.376917198182213], [3.4458545397426534, -7.595666696160408], [3.2057072022227833, -6.940364044024685], [3.0013308507806467, -6.382671695735095], [2.825238927163541, -5.90216091384287], [2.6718980865548487, -5.483733037199407], [2.53713029680683, -5.1159880714989], [2.417721896754657, -4.790157999412027], [2.311160592390392, -4.49938914762254], [2.2154540687768964, -4.238247183977499]], "c1": [-10.748807091437495, -63.24629816680789], "alpha_coef": [-0.027777777777777776, 0.001851851851851852, 0.0001286008230452675, -0.00016304747207524986], "v": [0.5, -0.08333333333333333, 0.020833333333333332, -0.005555555555555556, 0.0012731481481481483, -0.00014880952380952382, -4.546957671957672e-05, 1.997905643738977e-05, 1.132146531452087e-05]};
+const mk=(id,lab)=>{$(id).innerHTML='<svg role="img" aria-label="'+lab+'"></svg>';return $(id).firstChild;};
+const sH=mk('hero','One orbit, circle and cobweb'),sR=mk('rul','Two rulers'),sF=mk('flow','Vector field of the rung flow'),sN=mk('horn','Horn map size');
+const T=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'middle')+'"'+(c?' fill="'+c+'"':'')+'>'+t+'</text>';
+const L=(x1,y1,x2,y2,c,w,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="5 4"':'')+'/>';
+const C=(x,y,r,f,s)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="2"':'')+'/>';
+function hero(){
+  const W=sH.clientWidth,H=sH.clientHeight,th=+$('th').value*Math.PI/180,r=+$('rr').value;
+  $('tho').textContent=$('th').value+'°';$('rro').textContent=r.toFixed(2);
+  const wide=W>=620,pw=wide?W/2:W,ph=wide?H:H/2;
+  // left: w-plane, centre -1
+  const R=Math.min(pw,ph)/2-34,cx=pw/2,cy=ph/2,X=re=>cx+(re+1)*R/1,Y=im=>cy-im*R;
+  let g=L(0,cy,pw,cy,'var(--rule)')+'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="var(--fill)" stroke="var(--teal)" stroke-width="2.5"/>';
+  g+=C(cx,cy,6,'var(--mag)')+T(cx,cy+22,'wall −1','middle','var(--mag)')+C(X(0),cy,5,'var(--panel)','var(--teal)')+T(X(0)+8,cy+18,'0','start');
+  let a=th,rad=r,prev=null;const orb=[];
+  for(let n=0;n<7;n++){const re=rad*Math.cos(a)-1,im=rad*Math.sin(a);orb.push([re,im]);a*=2;rad*=rad;if(rad>6)break;}
+  orb.forEach((p,n)=>{const x=X(p[0]),y=Y(p[1]);if(Math.abs(x-cx)>pw||Math.abs(y-cy)>ph)return;if(prev)g+=L(prev[0],prev[1],x,y,'var(--amb)',1.5,1);g+=C(x,y,5,'var(--amb)')+(n<5?T(x+(x>cx?10:-10),y-8,'w'+'₀₁₂₃₄'[n],x>cx?'start':'end'):'');prev=[x,y];});
+  g+=T(cx,18,'x ∘₁ x on the plane (circle |1+x| = 1)');
+  // right: cobweb
+  const ox=wide?pw:0,oy=wide?0:ph,m=36,S=Math.min(pw,ph)-2*m,bx=ox+(pw-S)/2,by=oy+(ph-S)/2+8,P=v=>bx+v*S,Q=v=>by+S-v*S;
+  g+='<rect x="'+bx+'" y="'+by+'" width="'+S+'" height="'+S+'" fill="none" stroke="var(--rule)"/>'+L(P(0),Q(0),P(1),Q(1),'var(--rule)');
+  let cp='';for(let i=0;i<=60;i++){const v=i/60;cp+=(i?' L':'M')+P(v)+' '+Q(4*v*(1-v));}
+  g+='<path d="'+cp+'" fill="none" stroke="var(--teal)" stroke-width="2.5"/>';
+  let xv=Math.sin(th/2)**2,cw='M'+P(xv)+' '+Q(0);
+  for(let n=0;n<6;n++){const nx=4*xv*(1-xv);cw+=' L'+P(xv)+' '+Q(nx)+' L'+P(nx)+' '+Q(nx);xv=nx;}
+  g+='<path d="'+cw+'" fill="none" stroke="var(--amb)" stroke-width="1.5"/>';
+  xv=Math.sin(th/2)**2;for(let n=0;n<5;n++){g+=C(P(xv),Q(0),4.5,'var(--amb)');xv=4*xv*(1-xv);}
+  g+=T(bx+S/2,oy+18,'the fold X = sin²(θ/2): logistic 4X(1−X)')+T(P(0),Q(0)+18,'0')+T(P(1),Q(0)+18,'1');
+  sH.innerHTML=g;
+  $('heroc').textContent=r<1?'Inside the circle: each step squares the distance to the wall, so the orbit falls into −1.':r>1?'Outside the circle: the distance squares upward and the orbit escapes.':'On the circle every step doubles the angle. The fold sends the same orbit to the cobweb of the logistic map.';
+}
+const E=x=>Math.expm1(x),Lg=x=>Math.log1p(x);
+const asym=y=>-2/y+Math.log(Math.abs(y))/3+SER.alpha_coef.reduce((s,c,j)=>s+c*y**(j+1),0);
+function alpha(x){let y=x;const n=3000;if(y>0){for(let i=0;i<n;i++)y=Lg(y);return asym(y)+n;}for(let i=0;i<n;i++)y=E(y);return asym(y)-n;}
+function rul(){
+  const W=sR.clientWidth,H=sR.clientHeight,m=26,X=(v,a,b)=>m+(v-a)/(b-a)*(W-2*m);
+  let g='';const rows=[H*.12,H*.34,H*.62,H*.86];rows.forEach(y=>g+=L(m,y,W-m,y,'var(--rule)'));
+  let x=0.03;const p1=[];for(let n=0;n<6;n++){p1.push(x);x=x+x+x*x;}
+  p1.forEach((v,n)=>{g+=C(X(v,0,2.2),rows[0],5,'var(--amb)')+C(X(Lg(v),0,Math.log(3.2)),rows[1],5,'var(--teal)')+L(X(v,0,2.2),rows[0],X(Lg(v),0,Math.log(3.2)),rows[1],'var(--rule)',1,1);});
+  g+=T(m,rows[0]-12,'x ∘₁ x on x','start')+T(m,rows[1]-12,'on log(1 + x): each step × 2','start','var(--teal)');
+  x=-3;const p2=[];for(let n=0;n<7;n++){p2.push(x);x=E(x);}
+  const al=p2.map(alpha),a0=al[0];
+  p2.forEach((v,n)=>{g+=C(X(v,-3.2,0.2),rows[2],5,'var(--amb)')+C(X(al[n]-a0,-0.4,6.4),rows[3],5,'var(--mag)')+L(X(v,-3.2,0.2),rows[2],X(al[n]-a0,-0.4,6.4),rows[3],'var(--rule)',1,1);});
+  for(let k=0;k<=6;k++)g+=L(X(k,-0.4,6.4),rows[3]-5,X(k,-0.4,6.4),rows[3]+5,'var(--soft)');
+  g+=T(m,rows[2]-12,'e^x − 1 on x, from −3 toward 0','start')+T(m,rows[3]-12,'on the Abel ruler α: each step + 1','start','var(--mag)');
+  sR.innerHTML=g;
+}
+function flow(){
+  const W=sF.clientWidth,H=sF.clientHeight,m=30,x0=-3,x1=1.4,X=v=>m+(v-x0)/(x1-x0)*(W-2*m),vmax=1.6,Y=v=>H-m-v/vmax*(H-2*m);
+  let g=L(m,Y(0),W-m,Y(0),'var(--rule)')+L(X(0),m,X(0),H-m,'var(--rule)');
+  let p='',q='';for(let i=0;i<=120;i++){const x=x0+(x1-x0)*i/120;if(Math.abs(x)<1e-6)continue;const h=1e-5*Math.max(1,Math.abs(x));const v=2*h/(alpha(x+h)-alpha(x-h));if(v>vmax*1.05)continue;p+=(p?' L':'M')+X(x)+' '+Y(v);if(x*x/2<vmax)q+=(q?' L':'M')+X(x)+' '+Y(x*x/2);}
+  g+='<path d="'+q+'" fill="none" stroke="var(--soft)" stroke-width="1.5" stroke-dasharray="5 4"/><path d="'+p+'" fill="none" stroke="var(--teal)" stroke-width="3"/>';
+  for(let k=-2.5;k<1.3;k+=0.75)g+='<path d="M'+(X(k)-6)+' '+(Y(0)-6)+' L'+X(k)+' '+Y(0)+' L'+(X(k)-6)+' '+(Y(0)+6)+'" fill="none" stroke="var(--amb)" stroke-width="2.5"/>';
+  g+=C(X(0),Y(0),5,'var(--mag)')+T(X(0)+8,Y(0)+20,'0: parabolic','start','var(--mag)')+T(W-m,Y(0)+20,'x','end')+T(X(0)+8,m+4,'v(x)','start');
+  sF.innerHTML=g;
+}
+function horn(){
+  const W=sN.clientWidth,H=sN.clientHeight,m=58,d=SER.horn,a0=2,a1=7,l0=-18,l1=-3,X=v=>m+(v-a0)/(a1-a0)*(W-m-16),Y=v=>16+(l1-v)/(l1-l0)*(H-m-16);
+  let g=L(m,H-m,W-16,H-m,'var(--rule)')+L(m,16,m,H-m,'var(--rule)');
+  for(let l=-18;l<=-3;l+=3)g+=T(m-6,Y(l)+4,'10'+String(l).split('').map(ch=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[ch]||'⁻').join(''),'end','var(--soft)');
+  for(let a=2;a<=7;a++)g+=T(X(a),H-m+18,a,'middle','var(--soft)');
+  const c=Math.log10(Math.hypot(SER.c1[0],SER.c1[1])),sl=-2*Math.PI/Math.LN10;
+  g+=L(X(a0),Y(c+sl*a0),X(a1),Y(c+sl*a1),'var(--soft)',1.5,1);
+  d.forEach(p=>{if(p[1]>=l0&&p[1]<=l1)g+=C(X(p[0]),Y(p[1]),5,'var(--mag)');});
+  g+=T((m+W)/2,H-6,'height Im α')+T(m+8,30,'|α₊ − α₋|','start');
+  sN.innerHTML=g;
+}
+$('th').addEventListener('input',hero);$('rr').addEventListener('input',hero);
+[[sH,hero],[sR,rul],[sF,flow],[sN,horn]].forEach(([s,f])=>{new ResizeObserver(f).observe(s.parentNode);f();});
+}
+</script>
+</body>
+</html>

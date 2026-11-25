@@ -10,7 +10,7 @@
 
 **What is ours, and it is exact:**
 
-- In the variable 1/g, the flow of G (one-loop shape) is our weighted circle operation (called mult-add before 1.0) with dial k = −g*. The wall is the UV fixed point, and the dial strength is d − 2, which is G's units.
+- In the variable 1/g, the flow of G (one-loop shape) is our weighted circle operation (called mult-add before 1.0) with dial k = −g*. The wall is the UV fixed point, and the dial strength is d − 2, which is G's units. **This holds only for the one-loop shape.** The follow-up [beyond one loop](beyond-one-loop/README.md) found it exact only where gravity is one-loop exact or at large N; it breaks once graviton loops are resummed (Litim's θ = 23/11 instead of 2, and pure gravity's complex exponents). So it is a limiting result and a rewriting of known physics, not a path to new physics.
 - The fixed point is approached by shrinking and turning together: e^{−θt} with θ = 1.475 ± 3.043i, which is e and i together.
 - Three published dimension-flow curves (asymptotic safety, CDT, Calcagni) are exact two-wall curves. Moving the scale composes them by relativistic velocity addition, with the two dimensions as the walls.
 
@@ -38,7 +38,7 @@
 - **Gravity (known, if the fixed point exists).** β_g = (d − 2 + η_N)g = 0 with g* ≠ 0 forces **η_N = 2 − d = −2** (A7). Then G_k = g*/k², the propagator is 1/p⁴, and d_s = 2 (D6; Lauscher–Reuter 2005, Reuter–Saueressig 2011). Litim (2004) puts it as gravity being dimensionless in two dimensions.
 - **Reading (ours).** The two units G loses are exactly two steps of the lattice in picture a1. At the UV level G is a pure number, at the IR level it is a length²: Brennan's "different units at different levels", literally.
 
-## 3. The flow of G is our weighted circle operation (ours)
+## 3. The flow of G is our weighted circle operation (ours; one-loop shape only)
 
 ![The flow is the circle operation](figures/a3-flow-is-mult-add.png)
 
@@ -114,7 +114,7 @@ Calcagni's complex dimensions (log-oscillations from discrete scale invariance, 
 ## Assumptions
 
 - The UV fixed point of asymptotic safety exists. Evidence comes from truncated flows (here Einstein–Hilbert); it is not proven, and all fixed-point numbers depend on the scheme.
-- The one-loop flow β = (d − 2)g − wg² is a toy for the shape. The exact the circle operation result (section 3) holds for that shape only.
+- The one-loop flow β = (d − 2)g − wg² is a toy for the shape. The exact circle-operation result (section 3) holds for that shape only; [beyond one loop](beyond-one-loop/README.md) shows where it breaks.
 - d_s = 2d/(2 − η) is derived from a propagator 1/p^(2−η) and the heat-kernel return probability; the η = −2 case matches Lauscher–Reuter.
 - A9 shows the constant gλ plateau on Λ < 0 trajectories, which need no tuning. Λ > 0 trajectories need tuning close to the separatrix, as Reuter–Weyer discuss; I did not integrate one to 10⁻¹²².
 - Λ = 1.1056 × 10⁻⁵² m⁻², CODATA G, ħ, c. γ = 0.2375 for ρ_c.

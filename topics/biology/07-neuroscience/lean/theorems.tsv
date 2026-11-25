@@ -1,0 +1,17 @@
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.T_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.clear_den	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.clear_num	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.div_mul_cancel'	
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.factor_A	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.factor_B	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.lens_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.odds_vss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.one_compartment	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.release	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.reversal_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.soma_line	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.soma_reversal_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.star_def	
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.twoport	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.twoport_lens	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.NeuroScience	NeuroScience.weber	propext, Classical.choice, Quot.sound

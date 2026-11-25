@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acids and bases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical write-up read by one curious person, often on a phone
+   IDEA a page from a chemistry handbook: each subject opens with its element-style tile and one finding
+   PICTURE one large drawn chart or diagram per page, carrying the subject's the circle operation finding
+   COLOUR white ground, near-black ink, sodium-flame yellow slab behind the verdict, copper-blue marks, flame red accent
+   TYPE Archivo 800 titles + Source Sans 3 text
+   LAYOUT title and tile across the top, picture full width beneath, figures in a row; phone: stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1216);--ink:light-dark(#14161a,#e9ecef);--mute:light-dark(#555c66,#a3abb5);--rule:light-dark(#d9dde2,#2a3038);--blue:light-dark(#1f5fbf,#6ea3ff);--red:light-dark(#d23c2a,#ff7a66);--yel:light-dark(#ffd23f,#8a6d00);--yelink:light-dark(#14161a,#fff4c7);--panel:light-dark(#f4f6f8,#171b21);--green:light-dark(#1d7f4e,#5fd39a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(24px,4vw,56px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font:800 clamp(30px,4.4vw,48px)/1.06 Archivo,system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+h2{font:800 clamp(22px,2.6vw,28px)/1.15 Archivo,system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+h3{font:700 18px/1.3 Archivo,system-ui,sans-serif;margin:18px 0 6px}
+p{margin:0 0 12px;max-width:72ch}
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start}
+.tile{width:118px;height:132px;border:3px solid var(--ink);padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between;background:var(--bg)}
+.tile .z{font:700 15px Archivo,sans-serif}.tile .sym{font:800 46px/1 Archivo,sans-serif;letter-spacing:-.03em}.tile .nm{font-size:13px;line-height:1.2;color:var(--mute)}
+.lead{font-size:19px;max-width:70ch}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:14px;margin:18px 0 6px}
+.figs div{border-top:3px solid var(--ink);padding-top:6px}
+.figs b{display:block;font:800 clamp(24px,3vw,34px)/1.1 Archivo,sans-serif;white-space:nowrap}
+.figs span{font-size:14px;color:var(--mute)}
+.fig{position:relative;min-height:360px;margin:12px 0 4px}
+.fig.tall{min-height:440px}.fig.short{min-height:280px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cap{font-size:14px;color:var(--mute);margin:4px 0 0;max-width:none}
+svg text{font:14px "Source Sans 3",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+svg .ax{stroke:var(--rule);stroke-width:1}svg .axk{stroke:var(--ink);stroke-width:1.2}
+.verdict{background:var(--yel);color:var(--yelink);padding:clamp(18px,3vw,30px) max(5vw,16px)}
+.verdict h2{margin-bottom:6px}.verdict p{max-width:80ch;font-size:18px}
+.sec{border-top:1px solid var(--rule)}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:700;border-bottom:2px solid var(--ink)}
+.st{white-space:nowrap;font-weight:700}
+.st.known{color:var(--mute)}.st.tidy{color:var(--blue)}.st.new{color:var(--red)}
+code{font:14px ui-monospace,Menlo,monospace;overflow-wrap:anywhere;background:var(--panel);padding:1px 4px;border-radius:3px}
+.lean{columns:2 22em;column-gap:32px;font-size:15px;padding-left:18px}.lean li{break-inside:avoid;margin-bottom:6px}
+.eq{font:17px/1.4 "Source Sans 3",sans-serif;background:var(--panel);padding:10px 14px;margin:8px 0 14px;overflow-x:auto;white-space:nowrap}
+a{color:var(--blue)}
+.nav{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;margin-top:10px}
+footer{font-size:14px;color:var(--mute)}
+@media(max-width:700px){.two{grid-template-columns:minmax(0,1fr)}.top{grid-template-columns:minmax(0,1fr)}.tile{width:96px;height:108px}.tile .sym{font-size:36px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:block;border:0;padding:2px 0}.stack td::before{content:attr(data-l) ": ";font-weight:700}.lean{columns:1}}
+</style></head><body>
+<header class="band"><div class="wrap">
+<div class="top"><div><h1>Acids and bases add in logs and fold at k = −1, and triprotic acids reject the dial's many-site fold in favour of pairwise interactions</h1><p class="lead">pH turns the lift into addition, independent groups combine by failure-union, and buffer mixing is a mediant. The real test is triprotic acids: folding the dial over three sites would pin one pKa gap at log 3, while pairwise interactions make the two gaps equal. Citric, phosphoric and arsenic acids all have near-equal gaps.</p></div>
+<div class="tile" aria-hidden="true"><span class="z">11</span><span class="sym">pH</span><span class="nm">Acids</span></div></div>
+<div class="figs"><div><b>14 / 14</b><span>checks pass</span></div><div><b>9</b><span>Lean theorems, compiled</span></div><div><b>1.63 / 1.64</b><span>citric acid pKa gaps</span></div><div><b>0.48</b><span>what the dial fold would force</span></div></div>
+<div class="fig tall"><svg id="pic" role="img" aria-label="Titration of phosphoric acid: pH against protons removed. The three half-equivalence points sit at the three pKas, spaced by nearly equal gaps of about 5."></svg></div>
+<p class="cap">Titration of phosphoric acid: pH against protons removed. The three half-equivalence points sit at the three pKas, spaced by nearly equal gaps of about 5.</p>
+<nav class="nav"><a href="#logs">pH and logs</a><a href="#buffers">Buffers</a><a href="#gaps">Triprotic test</a><a href="#claims">Every claim</a><a href="#lean">Lean</a><a href="#files">Files</a></nav>
+</div></header>
+<section class="verdict"><div class="wrap"><h2>Lead check: not a lead</h2><p>The triprotic test is clean and decisive, but it goes against the dial: its many-site fold does not describe polyprotic acids, and the picture that fits is classical pairwise electrostatics. The rest restates known log and mixing rules. I noted the negative result and didn't follow it further.</p></div></section>
+<section class="band sec" id="logs"><div class="wrap"><h2>pH turns the lift into addition, and independent groups fold at k = −1</h2><p>Chaining dissociation steps multiplies their constants, so pKa values add and K − 1 composes by the circle operation (called mult-add before 1.0), as in subject 7. The fraction of an acid deprotonated is a logistic curve in pH (Henderson–Hasselbalch). For two independent groups, the chance that at least one has lost its proton is α₁ ⊞₋₁ α₂, the failure-union law again.</p>
+<p>The isoelectric point is an average, not a circle operation: glycine (pKa 2.34 and 9.60) is neutral at pH 5.97, exactly their mean, because h² = K₁K₂ there.</p></div></section><section class="band sec" id="buffers"><div class="wrap"><h2>Buffers: capacities add, and mixing combines ratios by the mediant</h2><p>Two buffers in one solution have a total capacity equal to the sum of their separate terms at the shared pH, the plain addition law (k = 0). Mixing two buffers made from one acid combines their base-to-acid ratios as the mediant (b₁ + b₂)/(a₁ + a₂), which always lies between the two. The full equilibrium calculation agrees with the mediant formula to 0.001 pH units in the test case. Neither of these is the circle operation.</p></div></section><section class="band sec" id="gaps"><div class="wrap"><h2>A real test: triprotic acids follow pairwise interactions, not the dial folded over three sites</h2><div class="two"><div><p>Subject 8 showed that folding the dial over n sites gives the MWC model with exclusive binding. For three sites that fold makes the protonation polynomial 1 + 3x + 3kx² + k²x³, and a short calculation shows that this pins the lower gap pKa₂ − pKa₁ at log 3 = 0.48, whatever k is. A uniform interaction between every pair of protons instead gives 1 + 3x + 3kx² + k³x³, which makes the two gaps equal.</p>
+<p>Real acids pick the second. From one standard table: citric acid has gaps 1.63 and 1.64, phosphoric 5.06 and 5.14, arsenic 4.72 and 4.59 (arsenic values vary by about 0.2 between sources). Each pair is close to equal and every gap is far from 0.48. Fitting the pairwise factor gives about 6.6 kJ/mol of repulsion per proton pair for citric acid and 26 kJ/mol for phosphoric. Using the first two pKas to predict the third gives 6.39 for citric (table 6.40), 12.26 for phosphoric (12.34) and 11.65 for arsenic (11.52).</p>
+<p>So the dial's many-site fold, which matched MWC exactly, does not describe polyprotic acids. That is a useful negative: it marks where the fold stops applying. The pairwise picture that does fit is the classical Bjerrum and Kirkwood–Westheimer electrostatic view.</p></div><div><div class="fig "><svg id="gaps-fig"></svg></div><p class="cap">Lower and upper pKa gaps for three triprotic acids (blue). The green diagonal is the uniform pairwise prediction, equal gaps; the dashed red line is the three-site dial fold, which fixes the lower gap at log 3.</p></div></div></div></section>
+<section class="band sec" id="claims"><div class="wrap"><h2>Every claim, what it is, and how it was checked</h2>
+<p>Status: <b>known</b> is standard science restated; <b>tidy reading</b> is a known fact read in circle-operation terms; <b>new here</b> is new as far as I could find.</p><div class="scroll"><table class="stack"><thead><tr><th>Claim</th><th>Status</th><th>Checked by</th></tr></thead><tbody><tr><td data-l="Claim">Chained Ka multiply; independent groups combine at k = −1</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">Python; Lean <code>chained_K</code>, <code>indep_groups</code></td></tr><tr><td data-l="Claim">Isoelectric point is where h² = K₁K₂ (glycine 5.97)</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">Python; Lean <code>isoelectric</code></td></tr><tr><td data-l="Claim">Buffer capacities add; mixing buffers combines ratios by the mediant</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">full equilibrium solve; Lean <code>mediant_above</code>, <code>mediant_below</code></td></tr><tr><td data-l="Claim">Three-site dial fold pins pKa₂ − pKa₁ at log 3 for every k</td><td data-l="Status"><span class="st new">new here</span></td><td data-l="Checked by">Python; Lean <code>fold_three</code>, <code>fold_gap_log3</code>, <code>fold_unequal_gaps</code></td></tr><tr><td data-l="Claim">Uniform pairwise interaction gives equal pKa gaps</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">Python; Lean <code>pairwise_equal_gaps</code></td></tr><tr><td data-l="Claim">Citric, phosphoric and arsenic acids have near-equal gaps, far from log 3</td><td data-l="Status"><span class="st known">checked against a table</span></td><td data-l="Checked by">tabulated pKas</td></tr></tbody></table></div></div></section>
+<section class="band sec" id="lean"><div class="wrap"><h2>Proved in Lean</h2>
+<p><code>chemistry/11-acids-bases/lean/ChemAcids.lean</code>: core Lean 4.37.0-rc1, no mathlib, no <code>sorry</code>, compiled against the shared library; every theorem uses only Lean's standard axioms.</p>
+<ul class="lean"><li><code>indep_groups, chained_K</code>: k = −1 for independent groups, the circle operation for chained constants</li><li><code>isoelectric</code>: h² = K₁K₂ at the isoelectric point</li><li><code>mediant_above, mediant_below</code>: the buffer-mixing mediant lies between the ratios</li><li><code>fold_three</code>: the three-site dial fold's coefficients 3, 3k, k²</li><li><code>fold_gap_log3, fold_unequal_gaps</code>: the fold pins one gap at log 3 and breaks gap equality</li><li><code>pairwise_equal_gaps</code>: pairwise interaction gives equal gaps</li></ul></div></section>
+<section class="band sec" id="files"><div class="wrap"><h2>Files and sources</h2><p>In the project folder under math-theory/chemistry/11-acids-bases/: <code>checks.py</code> (14 checks), <code>checks_output.txt</code>, <code>results.json</code>, <code>lean/ChemAcids.lean</code>, <code>make_page.py</code>.</p><p>Sources: pKa values from a general-chemistry ionization-constant appendix (citric 3.13, 4.76, 6.40; phosphoric 2.14, 7.20, 12.34; arsenic 2.21, 6.93, 11.52; arsenic varies between tables); Bjerrum (1923) and Kirkwood and Westheimer (1938) for the electrostatic pairwise picture; Monod, Wyman and Changeux (1965).</p>
+<footer><p>Chemistry pass, part 11 of 13: acids and bases. Before: electrochemistry. Next: organic chemistry.</p></footer></div></section>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function nice(lo,hi,n){const span=hi-lo,step0=span/n,mag=Math.pow(10,Math.floor(Math.log10(step0))),f=step0/mag;const st=(f<1.5?1:f<3?2:f<7?5:10)*mag;const out=[];for(let v=Math.ceil(lo/st-1e-9)*st;v<=hi+1e-9;v+=st)out.push(+v.toPrecision(12));return out}
+function fmt(v){const a=Math.abs(v);if(a!==0&&(a<1e-3||a>=1e5))return v.toExponential(0).replace('e+','e');return String(+v.toPrecision(4))}
+function plot(el,o){
+  const draw=()=>{const W=el.clientWidth,H=el.clientHeight,small=W<520;
+    const m={l:o.ml||(small?46:60),r:o.mr||(small?14:150),t:24,b:o.xlab?52:30};
+    const tx=v=>o.xlog?Math.log10(v):v,ty=v=>o.ylog?Math.log10(v):v;
+    const X=v=>m.l+(tx(v)-tx(o.x[0]))/(tx(o.x[1])-tx(o.x[0]))*(W-m.l-m.r);
+    const Y=v=>H-m.b-(ty(v)-ty(o.y[0]))/(ty(o.y[1])-ty(o.y[0]))*(H-m.t-m.b);
+    let s='';
+    const xt=o.xticks||(o.xlog?[]:nice(o.x[0],o.x[1],small?4:7)),yt=o.yticks||(o.ylog?[]:nice(o.y[0],o.y[1],5));
+    yt.forEach(v=>{s+=`<line class="ax" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l-8}" y="${Y(v)+5}" text-anchor="end">${esc(o.yfmt?o.yfmt(v):fmt(v))}</text>`});
+    xt.forEach((v,i)=>{if(small&&i%2&&xt.length>5)return;s+=`<text x="${X(v)}" y="${H-m.b+20}" text-anchor="middle">${esc(o.xfmt?o.xfmt(v):fmt(v))}</text>`});
+    s+=`<line class="axk" x1="${m.l}" x2="${W-m.r}" y1="${H-m.b}" y2="${H-m.b}"/>`;
+    if(o.xlab)s+=`<text x="${(m.l+W-m.r)/2}" y="${H-8}" text-anchor="middle">${esc(o.xlab)}</text>`;
+    if(o.ylab)s+=`<text x="${m.l}" y="14">${esc(o.ylab)}</text>`;
+    (o.bands||[]).forEach(b=>{s+=`<rect x="${X(b.x0)}" y="${m.t}" width="${X(b.x1)-X(b.x0)}" height="${H-m.t-m.b}" fill="${b.fill}" opacity="${b.op||.14}"/>`+(b.label?`<text x="${(X(b.x0)+X(b.x1))/2}" y="${m.t+16}" text-anchor="middle">${esc(b.label)}</text>`:'')});
+    (o.hlines||[]).forEach(h=>{s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(h.y)}" y2="${Y(h.y)}" stroke="${h.c||'var(--mute)'}" stroke-dasharray="5 4"/>`+(h.label?`<text x="${W-m.r+6}" y="${Y(h.y)+5}">${esc(small?(h.short||''):h.label)}</text>`:'')});
+    (o.series||[]).forEach(se=>{const c=se.c||'var(--blue)';
+      if(se.line!==false&&se.pts.length>1)s+=`<polyline fill="none" stroke="${c}" stroke-width="${se.w||3}" ${se.dash?`stroke-dasharray="${se.dash}"`:''} points="${se.pts.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+      if(se.dots)se.pts.forEach(p=>{s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${se.r||5}" fill="${c}"/>`});
+      if(se.name){const p=se.pts[se.pts.length-1];const lx=small?X(p[0])-4:X(p[0])+8;s+=`<text x="${lx}" y="${Y(p[1])+(se.dy||0)+5}" text-anchor="${small?'end':'start'}" fill="${c}">${esc(small?(se.short||se.name):se.name)}</text>`}
+      (se.labels||[]).forEach(L=>{s+=`<text x="${X(L.x)+(L.dx||8)}" y="${Y(L.y)+(L.dy||5)}" text-anchor="${L.a||'start'}">${esc(L.t)}</text>`});
+    });
+    if(o.extra)s+=o.extra({X,Y,W,H,m,small});
+    el.innerHTML=s};
+  const ro=new ResizeObserver(draw);ro.observe(el);draw();
+}
+
+{
+plot(document.getElementById('pic'),{x:[0,3],y:[0,14],ml:52,mr:20,xticks:[0,0.5,1,1.5,2,2.5,3],yticks:[0,2,4,6,8,10,12,14],xlab:'protons removed per H₃PO₄',ylab:'pH',series:[{"pts": [[0.022395631294123516, 0.5], [0.02803188103688936, 0.6], [0.035035756602359885, 0.7], [0.04371088177824843, 0.8], [0.05441291349204096, 0.9], [0.06755011135988408, 1.0], [0.08357875015950862, 1.1], [0.10299066899661642, 1.2000000000000002], [0.12628987695451777, 1.3], [0.15395535000662527, 1.4], [0.1863884639630001, 1.5], [0.2238464233436516, 1.6], [0.2663677578665707, 1.7000000000000002], [0.31370184826896724, 1.8], [0.36525965753568074, 1.9000000000000001], [0.42010442739755754, 2.0], [0.4769961831651863, 2.1], [0.5344917776329896, 2.2], [0.5910860803264506, 2.3], [0.6453663058320143, 2.4000000000000004], [0.696146880421401, 2.5], [0.7425590122922183, 2.6], [0.7840838312579784, 2.7], [0.8205337339652893, 2.8000000000000003], [0.8519973639160221, 2.9000000000000004], [0.8787671152045337, 3.0], [0.9012654807295611, 3.1], [0.9199810059373011, 3.2], [0.9354188497244621, 3.3000000000000003], [0.948066586186222, 3.4000000000000004], [0.9583733191464477, 3.5], [0.966739135104084, 3.6], [0.9735118609478949, 3.7], [0.9789885364831208, 3.8000000000000003], [0.9834196227563562, 3.9000000000000004], [0.9870145569770807, 4.0], [0.9899477517770527, 4.1], [0.9923645020202784, 4.2], [0.9943865184838373, 4.300000000000001], [0.9961169774623214, 4.4], [0.997645082317344, 4.5], [0.9990501971319328, 4.6000000000000005], [1.0004056490763464, 4.7], [1.0017823155037284, 4.8], [1.003252121116244, 4.9], [1.004891573760246, 5.0], [1.006785466073693, 5.1000000000000005], [1.0090308636623146, 5.2], [1.0117414857584217, 5.300000000000001], [1.015052555736964, 5.4], [1.0191261473537663, 5.5], [1.0241569648634068, 5.6000000000000005], [1.0303783532290653, 5.7], [1.038068116026646, 5.800000000000001], [1.0475533993098969, 5.9], [1.0592134614236777, 6.0], [1.0734785947021561, 6.1000000000000005], [1.0908228469176204, 6.2], [1.1117476484056785, 6.300000000000001], [1.1367532582574755, 6.4], [1.166295529400589, 6.5], [1.2007273909562948, 6.6000000000000005], [1.2402280899283251, 6.7], [1.2847285541012892, 6.800000000000001], [1.3338471542348393, 6.9], [1.3868542945406468, 7.0], [1.4426835174032955, 7.1000000000000005], [1.4999989010515422, 7.2], [1.5573141970462925, 7.300000000000001], [1.6131431537861929, 7.4], [1.6661498395811127, 7.5], [1.7152677789061819, 7.6000000000000005], [1.7597673481859673, 7.7], [1.799266878120277, 7.800000000000001], [1.833697241314458, 7.9], [1.8632376111029205, 8.0], [1.8882408203591698, 8.100000000000001], [1.9091625980935842, 8.2], [1.926503045367318, 8.3], [1.9407633921705034, 8.4], [1.9524174331770443, 8.5], [1.9618951416282409, 8.6], [1.9695753740384276, 8.700000000000001], [1.9757847707829264, 8.8], [1.9808004993552883, 8.9], [1.984855104886955, 9.0], [1.9881422862487255, 9.1], [1.990822853941343, 9.200000000000001], [1.9930304448510856, 9.3], [1.9948767870091857, 9.4], [1.9964564488136733, 9.5], [1.9978510941911536, 9.6], [1.9991333159724247, 9.700000000000001], [2.0003701476752096, 9.8], [2.001626368146426, 9.9], [2.0029677200427582, 10.0], [2.0044641652928146, 10.100000000000001], [2.006193299792671, 10.200000000000001], [2.0082440450852403, 10.3], [2.0107207241611618, 10.4], [2.013747606965714, 10.5], [2.017473970901127, 10.600000000000001], [2.0220796509790726, 10.700000000000001], [2.027780937151771, 10.8], [2.0348364918801773, 10.9], [2.043552685203128, 11.0], [2.0542873555703465, 11.100000000000001], [2.067450494578137, 11.200000000000001], [2.083499750717278, 11.3], [2.102928050680026, 11.4], [2.126240261837494, 11.5], [2.153916033757929, 11.600000000000001], [2.186357266091287, 11.700000000000001], [2.223821564884279, 11.8], [2.2663477608930305, 11.9], [2.313685453194401, 12.0], [2.365245755343742, 12.100000000000001], [2.4200920045319867, 12.200000000000001], [2.47698427670002, 12.3], [2.5344794376419495, 12.4], [2.591072335448935, 12.5], [2.645350127406846, 12.600000000000001], [2.696127140578287, 12.700000000000001], [2.7425344320087, 12.8], [2.7840529151937448, 12.9], [2.820494689363104, 13.0], [2.851948000675413, 13.100000000000001], [2.8787047233342706, 13.200000000000001], [2.9011866798973514, 13.3], [2.919881559918555, 13.4], [2.935293436284372, 13.5]], "c": "var(--blue)", "w": 3, "name": "", "short": ""}, {"pts": [[0.5, 2.14], [1.5, 7.2], [2.5, 12.34]], "c": "var(--red)", "line": false, "dots": true, "r": 6, "name": "", "short": ""}],extra:({X,Y})=>`<text x="${X(0.5+0.08)}" y="${Y(2.14)+5}">pKa 2.14</text><text x="${X(1.5+0.08)}" y="${Y(7.2)+5}">pKa 7.2</text><text x="${X(2.5+0.08)}" y="${Y(12.34)+5}">pKa 12.34</text>`});
+
+plot(document.getElementById('gaps-fig'),{x:[0,6],y:[0,6],ml:44,mr:20,xticks:[0,1,2,3,4,5,6],yticks:[0,1,2,3,4,5,6],xlab:'lower gap pKa₂ − pKa₁',ylab:'upper gap pKa₃ − pKa₂',
+ series:[{pts:[[0,0],[6,6]],c:'var(--green)',w:2.5},{pts:[[0.477,0],[0.477,6]],c:'var(--red)',w:2.5,dash:'6 4'},
+ {pts:[[1.63, 1.6400000000000006], [5.0600000000000005, 5.14], [4.72, 4.59]],c:'var(--blue)',line:false,dots:true,r:7,labels:[{"x": 1.63, "y": 1.6400000000000006, "t": "citric", "dx": 10, "dy": 4}, {"x": 5.0600000000000005, "y": 5.14, "t": "phosphoric", "dx": -10, "dy": -10, "a": "end"}, {"x": 4.72, "y": 4.59, "t": "arsenic", "dx": 10, "dy": 16}]}],
+ extra:({X,Y})=>`<text x="${X(2.6)}" y="${Y(2.0)}" fill="var(--green)">pairwise: equal gaps</text><text x="${X(0.6)}" y="${Y(5.6)}" fill="var(--red)">dial fold: lower gap = log 3</text>`});
+
+}</script></body></html>

@@ -1,0 +1,14 @@
+PASS two-site binding polynomial 1 + K₁h + K₂h + ωK₁K₂h²: P − 1 = (K₁h) ⊞_ω (K₂h)
+PASS symmetric diacid: pKa₂ − pKa₁ = log 4 − log ω, so ω = 4·10^(−ΔpKa) (log 4 = 0.60 is the independent-site gap)
+PASS the dial climbs from 0.004 (oxalic) to 0.75 (sebacic): from near-exclusion toward independence as the carboxylates separate  oxalic 0.004, malonic 0.025, succinic 0.252, glutaric 0.340, adipic 0.400, pimelic 0.470, suberic 0.427, azelaic 0.451, sebacic 0.745
+PASS never past 1: like charges only repel, so k < 1 for every diacid
+PASS two sites: Hill coefficient 2√ω/(1+√ω); zeros real iff ω ≤ 1; for ω > 1 they sit on the circle |h| = 1/√ω
+PASS all complex zero pairs (ω > 1) lie on one circle |x|² = −Re x, through 0 and −1
+PASS so cooperativity (n_H > 1), complex zeros, and the dial past the circle operation (k > 1) are the same condition for two sites
+PASS the dial folded over n sites, 1 + ((1+kx)ⁿ − 1)/k, has exactly the saturation curve of the MWC model with binding only to R and L = k − 1  n = 2, 3, 4; k = 1.5 … 100
+PASS fold coefficients: C(n, j)·k^(j−1) for j ≥ 1: only the first ligand pays, every later one gains the factor k  [1, 4, 6*k, 4*k**2, k**3]
+PASS four sites: Hill coefficient rises from 1 (k = 1) toward 4 as k grows; it passes 2.8 by k ≈ 10³  k=1.0001: 1.00, k=3: 1.26, k=10: 1.64, k=100: 2.42, k=1000: 3.03, k=10000: 3.43
+PASS Haber at 700 K (ideal gas, constant ΔH): ammonia fraction rises with pressure (Le Chatelier)  1 bar 0.6%, 50 bar 19.0%, 100 bar 29.1%, 200 bar 40.7%, 300 bar 47.6%
+PASS at 200 bar the vdW fugacity factor from subject 6 lifts the fraction  40.7% → 45.3%
+
+12/12 checks pass

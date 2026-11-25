@@ -139,7 +139,7 @@ NODES = {
  "MX":   ("matrix chains carry\nkappa1 (Lambda), kappa2 (c)", 1, 6.9, "cayley-klein, dial-map"),
  "HP":   ("half-plane: invariant\nlength gives J", 1, 5.6, "why-i"),
  "KS":   ("keep size\n=> Re k = 0", 1, 4.3, "why-i, e-i-pi"),
- "LT":   ("local tomography =\nmult-add of counts", 1, 3.0, "e-i-pi"),
+ "LT":   ("local tomography =\ncircle operation of counts", 1, 3.0, "e-i-pi"),
  "E":    ("e = real dial\nchained finely", 1, 1.8, "e-i-pi, e"),
  "WI":   ("wall -1/k\nflips i", 1, 0.5, "why-i"),
  "SR":   ("special relativity:\nvelocity addition", 2, 9.0, "relativity"),

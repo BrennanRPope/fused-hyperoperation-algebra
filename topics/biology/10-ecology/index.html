@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ecology and the circle operation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the biology series, honest about what is known and what might be new
+   IDEA a naturalist's field plate pinned over a proof notebook: one living system, one dial, the corner cell in view
+   PICTURE the lead plate in the first screen, then one plate per finding, a verdict table and the Lean list
+   COLOUR white ground, near-black ink, leaf green for the living thing and the lead, ultramarine for the circle operation, vermilion for warnings; night is deep ink with plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plate first; known/new and lead-verdict boxes; one band per finding; verdict table; Lean; sources */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1414);--ink:light-dark(#15171a,#e8eeea);--mute:light-dark(#5b615d,#a6b2ab);--green:light-dark(#1d6b3c,#7fd6a0);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#c2361c,#ff8a6b);--wash:light-dark(#eef6f0,#16241c);--rule:light-dark(#d8ddd9,#2a3a31)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;text-wrap:balance;margin:0 0 .4em}
+h1{font-size:clamp(32px,5vw,50px)}h2{font-size:clamp(25px,3.2vw,34px)}h3{font-size:20px;margin-top:1.2em}
+p,li{max-width:70ch}a{color:var(--blue)}code{overflow-wrap:anywhere;font-size:.9em}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}.wrap{max-width:1240px;margin:0 auto}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(20px,3vw,44px);align-items:center}
+.kicker{color:var(--green);font-weight:600;margin:0 0 .6em}
+.lede{font-size:18.5px}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:10px;margin:18px 0}
+.plate img{display:block;width:100%;height:auto}
+.plate figcaption{color:#5b615d;font-size:13.5px;padding:8px 4px 2px}
+.stats{display:flex;flex-wrap:wrap;gap:12px 28px;margin:18px 0 0;padding:0;list-style:none}
+.stats li{font-size:14px;color:var(--mute)}.stats b{display:block;font:600 28px/1.1 Newsreader,serif;color:var(--ink)}
+.box{background:var(--wash);border-radius:6px;padding:18px 22px;margin:22px 0}.box p{margin:.4em 0}
+.box.lead{border-left:4px solid var(--green)}
+nav.scroll{display:flex;gap:18px;white-space:nowrap;padding:12px max(5vw,16px);border-block:1px solid var(--rule);font-size:14.5px;background:var(--bg)}
+nav.scroll a{flex:none;text-decoration:none}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;z-index:2}}
+.eq{font-family:Newsreader,Georgia,serif;font-size:21px;background:var(--wash);border-radius:6px;padding:12px 18px;overflow-x:auto;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}th{font-weight:600}
+.scroll{overflow-x:auto}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+<header class="band"><div class="wrap hero"><div>
+<p class="kicker">Biology series · 10 of 11</p>
+<h1>A predator's time budget puts Beddington–DeAngelis and Crowley–Martin on one dial, and Tsallis diversity has its ceiling at the wall</h1><p class="lede">Model a predator that searches, handles prey, and gets drawn into fights with other predators. If a handling predator is drawn in at k times the rate of a searching one, the feeding rate is αN/(1 + x ∘ₖ y), with x the handling load and y the interference load. k = 0 is the Beddington–DeAngelis functional response, k = 1 is Crowley–Martin, and k above 1 means a predator holding prey attracts trouble. Separately, Tsallis diversity is the q-logarithm of Hill's effective number, so independent communities combine by the dial with k = 1 − q. For q above 1 the wall 1/(q − 1) is exactly the ceiling that diversity approaches as species are added.</p><ul class="stats"><li><b>11 / 11</b>numeric checks</li><li><b>10</b>Lean theorems, no sorry</li><li><b>1</b>modest lead</li></ul></div>
+<figure class="plate"><img src="figures/f1_functional_response.png" alt="Left: feeding rate per predator as predator density rises, with prey plentiful, for four values of the dial. Right: the 95% spread of fitted k across 200 simulated feeding experiments with true k = 0.5. Only the large, low-noise design separates the two classic forms." loading="lazy"><figcaption>Left: feeding rate per predator as predator density rises, with prey plentiful, for four values of the dial. Right: the 95% spread of fitted k across 200 simulated feeding experiments with true k = 0.5. Only the large, low-noise design separates the two classic forms.</figcaption></figure>
+</div></header>
+<nav class="scroll"><a href="#fr">Functional response</a><a href="#div">Diversity</a><a href="#other">Stressors</a><a href="#table">Verdicts</a><a href="#lean">Lean</a><a href="#sources">Sources</a></nav>
+<section class="band"><div class="wrap"><div class="box"><p><b>Known or new.</b> Beddington (1975), DeAngelis et al. (1975) and Crowley and Martin (1989) are the two classic predator-interference responses, and Skalski and Gilliam (2001) found that neither wins across datasets. Tsallis pseudo-additivity, S(A·B) = S(A) + S(B) + (1 − q)S(A)S(B), is well known in physics, and Jost (2006) brought the Hill-number view to ecology. The 'additive' and 'multiplicative' nulls for multiple stressors are standard (Folt et al. 1999; Crain et al. 2008). In a short search I did not find the one-parameter family joining Beddington–DeAngelis and Crowley–Martin, or its four-state derivation. It is simple enough that it may exist under another name.</p></div><div class="box lead"><p><b>Is there a lead worth following?</b> Modest, noted rather than followed. The dial turns 'which functional response?' into 'what is k?', a single number with a behavioural meaning that a standard feeding experiment can estimate. A fitted k above 1 would point to kleptoparasitism, a handling predator drawing others in. But the simulations show the cost: separating k = 0 from k = 1 takes about 120 trials at 10% noise, and at a more typical 25% noise even 120 trials do not. That may be why published datasets disagree. Taking this further needs those datasets, which I did not have here.</p></div></div></section>
+<section class="band" id="fr"><div class="wrap"><h2>1. Predator interference is a dial</h2><p>A predator is in one of four states: searching, handling a prey item (entered at rate αN, left at rate 1/h), interfering after meeting another predator while searching (rate γP, left at 1/τ), or interfering while handling, entered at k·γP. The steady-state share of time spent searching is one over</p>
+<div class="eq">1 + x + y + k·xy = 1 + (x ∘<sub>k</sub> y), &nbsp; x = αNh, &nbsp; y = γPτ</div>
+<p>so the feeding rate is αN/(1 + x ∘<sub>k</sub> y). The steady state of the four-state chain matches the formula to 1 × 10⁻¹⁴, and a stochastic simulation of one predator over 200,000 time units ate within 0.1% of it.</p>
+<ul><li><b>k = 0:</b> handlers never interfere. This is Beddington–DeAngelis, 1 + x + y.</li>
+<li><b>k = 1:</b> handlers interfere as often as searchers. This is Crowley–Martin, (1 + x)(1 + y).</li>
+<li><b>k above 1:</b> holding prey draws other predators in, as with food theft.</li></ul>
+<p>In a simulated 30-trial experiment crossing six prey densities with five predator densities (true k = 0.5, 4% noise), the dial fit recovered k = 0.56 and beat both classic forms on AIC. With more realistic noise the picture changes: the spread of fitted k is 0.23–0.98 for 30 trials at 10% noise and 0.02–3.1 at 25%; 120 trials narrow it to 0.34–0.72 and 0.15–1.6.</p></div></section><section class="band" id="div"><div class="wrap"><h2>2. Diversity: the wall is the ceiling</h2><p>Hill's effective number of species D<sub>q</sub> multiplies when two independent communities are combined, and Tsallis (HCDT) entropy is its q-logarithm, S<sub>q</sub> = ln<sub>q</sub>(D<sub>q</sub>). So the entropies combine by</p>
+<div class="eq">S(A·B) = S(A) ∘<sub>1−q</sub> S(B)</div>
+<p>q = 1 is dial 0, Shannon entropy adding. For q above 1 the wall −1/k is 1/(q − 1), and that is exactly the ceiling of S<sub>q</sub>: at q = 2, communities of 10, 100 and 10,000 equally common species give 0.9, 0.99 and 0.9999, never reaching 1. A community at the ceiling absorbs any other, as a wall should. This is one of the few places in the series where the wall is a natural bound rather than an unphysical point.</p></div></section><section class="band" id="other"><div class="wrap"><h2>3. Multiple stressors and colonisation</h2><p>Ecologists judge two stressors synergistic or antagonistic against a null. Adding proportional losses is dial 0, and independent action, the usual multiplicative null, is the 'or' law, dial −1, the same choice drug combinations face on the cell biology page. Island colonisation from n sources is wpow(−1, c, n).</p></div></section>
+<section class="band" id="table"><div class="wrap"><h2>Where the circle operation (called mult-add before 1.0) shows up in ecology</h2>
+<table class="stack"><thead><tr><th>Place</th><th>What the circle operation does there</th><th>Known since</th><th>Verdict</th></tr></thead><tbody><tr><td>Predator interference</td><td>Feeding rate αN/(1 + x ∘ₖ y); k = 0 BD, 1 CM, above 1 theft</td><td>Beddington 1975; Crowley and Martin 1989</td><td>Exact derivation; one-parameter family possibly new</td></tr><tr><td>Diversity</td><td>Tsallis = ln_q(Hill); combines by dial 1 − q; wall = ceiling 1/(q − 1)</td><td>Tsallis 1988; Jost 2006</td><td>Exact, known</td></tr><tr><td>Multiple stressors</td><td>Additive null dial 0, multiplicative null 'or'</td><td>Folt 1999; Crain 2008</td><td>Exact, known</td></tr><tr><td>Colonisation</td><td>wpow(−1, c, n)</td><td>Textbook</td><td>Relabelling</td></tr></tbody></table></div></section>
+<section class="band" id="lean"><div class="wrap"><h2>Lean: 10 theorems, compiled, no sorry</h2>
+<p>File <code>biology/10-ecology/lean/Ecology.lean</code>, core Lean 4.37 with no mathlib, built on the shared library's base and using ∘₁ for the circle operation. Every theorem uses only Lean's standard axioms. It goes into the shared proof library as <code>FusedAlgebra/Topics/Biology/Ecology.lean</code>.</p>
+<p class="scroll" style="font-size:14px"><code>bd</code>, <code>budget_states</code>, <code>cm</code>, <code>colonisation</code>, <code>corner</code>, <code>search_share</code>, <code>star_def</code>, <code>stressors</code>, <code>tsallis_two</code>, <code>tsallis_wall</code></p>
+<p>Numeric checks: 11 of 11 pass, from <code>checks.py</code> beside this page.</p></div></section>
+<section class="band" id="sources"><div class="wrap"><h2>Sources</h2><ul><li>Skalski and Gilliam 2001, Functional responses with predator interference: viable alternatives to the Holling type II model, Ecology 82:3083</li><li>Crowley and Martin 1989, Functional responses and interference within and between year classes of a dragonfly population, J. N. Am. Benthol. Soc. 8:211</li><li>Jost 2006, Entropy and diversity, Oikos 113:363</li><li><a href="https://claude.ai/artifact/MD9HyXQFA5M5ai5okJdWEX">Cell biology page in this series (drug-combination nulls)</a></li></ul>
+<p style="color:var(--mute);font-size:14px">All feeding data on this page are simulated; the noise levels (10% and 25%) are my assumptions, not taken from experiments. The descriptions of Beddington–DeAngelis and Crowley–Martin, and Skalski and Gilliam's finding, come from a web search; the other citations are from memory.</p></div></section>
+</body></html>

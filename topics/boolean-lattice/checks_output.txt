@@ -1,0 +1,94 @@
+PASS chain of 2 = sum over corners S of k^(|S|-1) prod a_S, k=1
+PASS chain of 2 = sum over corners S of k^(|S|-1) prod a_S, k=0
+PASS chain of 2 = sum over corners S of k^(|S|-1) prod a_S, k=-1
+PASS chain of 2 = sum over corners S of k^(|S|-1) prod a_S, k=1/2
+PASS chain of 2 = sum over corners S of k^(|S|-1) prod a_S, k=3
+PASS chain of 3 = sum over corners S of k^(|S|-1) prod a_S, k=1
+PASS chain of 3 = sum over corners S of k^(|S|-1) prod a_S, k=0
+PASS chain of 3 = sum over corners S of k^(|S|-1) prod a_S, k=-1
+PASS chain of 3 = sum over corners S of k^(|S|-1) prod a_S, k=1/2
+PASS chain of 3 = sum over corners S of k^(|S|-1) prod a_S, k=3
+PASS chain of 4 = sum over corners S of k^(|S|-1) prod a_S, k=1
+PASS chain of 4 = sum over corners S of k^(|S|-1) prod a_S, k=0
+PASS chain of 4 = sum over corners S of k^(|S|-1) prod a_S, k=-1
+PASS chain of 4 = sum over corners S of k^(|S|-1) prod a_S, k=1/2
+PASS chain of 4 = sum over corners S of k^(|S|-1) prod a_S, k=3
+PASS chain of 5 = sum over corners S of k^(|S|-1) prod a_S, k=1
+PASS chain of 5 = sum over corners S of k^(|S|-1) prod a_S, k=0
+PASS chain of 5 = sum over corners S of k^(|S|-1) prod a_S, k=-1
+PASS chain of 5 = sum over corners S of k^(|S|-1) prod a_S, k=1/2
+PASS chain of 5 = sum over corners S of k^(|S|-1) prod a_S, k=3
+PASS P(at least one) = chain at k = -1 (inclusion-exclusion)
+PASS matrix chain of 3 = sum over corners, factors in chain order, k=1
+PASS matrix chain of 3 = sum over corners, factors in chain order, k=2
+PASS matrix chain of 3 = sum over corners, factors in chain order, k=-1
+PASS matrix chain of 4 = sum over corners, factors in chain order, k=1
+PASS matrix chain of 4 = sum over corners, factors in chain order, k=2
+PASS matrix chain of 4 = sum over corners, factors in chain order, k=-1
+PASS order matters for matrices: A1 o A2 != A2 o A1
+PASS plane chain of 2 = Lucas-weighted corners, (k, d) = (0, -1)
+PASS plane chain of 3 = Lucas-weighted corners, (k, d) = (0, -1)
+PASS plane chain of 4 = Lucas-weighted corners, (k, d) = (0, -1)
+PASS plane chain of 5 = Lucas-weighted corners, (k, d) = (0, -1)
+PASS plane chain of 2 = Lucas-weighted corners, (k, d) = (0, 1)
+PASS plane chain of 3 = Lucas-weighted corners, (k, d) = (0, 1)
+PASS plane chain of 4 = Lucas-weighted corners, (k, d) = (0, 1)
+PASS plane chain of 5 = Lucas-weighted corners, (k, d) = (0, 1)
+PASS plane chain of 2 = Lucas-weighted corners, (k, d) = (1, -1)
+PASS plane chain of 3 = Lucas-weighted corners, (k, d) = (1, -1)
+PASS plane chain of 4 = Lucas-weighted corners, (k, d) = (1, -1)
+PASS plane chain of 5 = Lucas-weighted corners, (k, d) = (1, -1)
+PASS plane chain of 2 = Lucas-weighted corners, (k, d) = (1, 0)
+PASS plane chain of 3 = Lucas-weighted corners, (k, d) = (1, 0)
+PASS plane chain of 4 = Lucas-weighted corners, (k, d) = (1, 0)
+PASS plane chain of 5 = Lucas-weighted corners, (k, d) = (1, 0)
+PASS plane chain of 2 = Lucas-weighted corners, (k, d) = (2, 3)
+PASS plane chain of 3 = Lucas-weighted corners, (k, d) = (2, 3)
+PASS plane chain of 4 = Lucas-weighted corners, (k, d) = (2, 3)
+PASS plane chain of 5 = Lucas-weighted corners, (k, d) = (2, 3)
+PASS plane chain of 2 = Lucas-weighted corners, (k, d) = (1/2, -2/3)
+PASS plane chain of 3 = Lucas-weighted corners, (k, d) = (1/2, -2/3)
+PASS plane chain of 4 = Lucas-weighted corners, (k, d) = (1/2, -2/3)
+PASS plane chain of 5 = Lucas-weighted corners, (k, d) = (1/2, -2/3)
+PASS (k,d) = (0,-1) weights 0,1,0,1: velocity addition = odd corners / even corners
+PASS (k,d) = (0,1) weights 0,1,0,-1: the tangent of a sum of angles
+PASS (k,d) = (1,-1) weights are the Fibonacci numbers
+PASS (k,d) = (k,0) weights are k^(m-1), the single-dial case
+PASS eta^4 = 0 on B_3 (no chain longer than 3)
+PASS (1 + k eta)(sum (-k)^m eta^m) = 1 on B_3, k=1
+PASS eta o_k eta' = 0: the way back of the strict zeta, k=1
+PASS (1 + k eta)(sum (-k)^m eta^m) = 1 on B_3, k=2
+PASS eta o_k eta' = 0: the way back of the strict zeta, k=2
+PASS (1 + k eta)(sum (-k)^m eta^m) = 1 on B_3, k=-1
+PASS eta o_k eta' = 0: the way back of the strict zeta, k=-1
+PASS Hall: mu = alternating count of chains equals (-1)^|T-S| (Rota's Boolean Moebius)
+PASS B_1: maximal chains = n! = vertices of the permutohedron
+PASS B_1: all chains bottom-to-top = ordered set partitions (Fubini 1) = faces of the permutohedron
+PASS B_2: maximal chains = n! = vertices of the permutohedron
+PASS B_2: all chains bottom-to-top = ordered set partitions (Fubini 3) = faces of the permutohedron
+PASS B_3: maximal chains = n! = vertices of the permutohedron
+PASS B_3: all chains bottom-to-top = ordered set partitions (Fubini 13) = faces of the permutohedron
+PASS B_4: maximal chains = n! = vertices of the permutohedron
+PASS B_4: all chains bottom-to-top = ordered set partitions (Fubini 75) = faces of the permutohedron
+PASS B_5: maximal chains = n! = vertices of the permutohedron
+PASS B_5: all chains bottom-to-top = ordered set partitions (Fubini 541) = faces of the permutohedron
+PASS equal entries, n=1, k=1: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=1, k=2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=1, k=-1/2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=2, k=1: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=2, k=2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=2, k=-1/2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=3, k=1: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=3, k=2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=3, k=-1/2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=4, k=1: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=4, k=2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=4, k=-1/2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=5, k=1: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=5, k=2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=5, k=-1/2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=6, k=1: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=6, k=2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+PASS equal entries, n=6, k=-1/2: layers C(n,m) k^(m-1) a^m = ((1+ka)^n - 1)/k
+
+92 checks passed.

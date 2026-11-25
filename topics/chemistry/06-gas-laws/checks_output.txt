@@ -1,0 +1,17 @@
+PASS ideal mixture: partial pressures add, P = Σ xᵢ P (the k = 0 law)
+PASS van der Waals: 1/Z = (1 + a/PV²)(1 − b/V) exactly, so 1/Z − 1 = attraction ∘₁ (−excluded volume)  5 gases × 4 states
+PASS for CO₂ at 300 K, 0.2 L/mol the corner −αβ is not small next to α and β  α = 1.347, β = 0.213, corner = -0.287
+PASS vdW critical point: Vc = 3b, Tc = 8a/27Rb, Pc = a/27b², Zc = 3/8 for every gas  argon vdW Tc = 150.9 K (measured 150.7 K)
+PASS real gases sit near Zc ≈ 0.29 (argon 0.291), so vdW's 0.375 is off by 30%: corresponding states hold, the vdW form does not
+PASS Π over pairs (1 + f_ij) = 1 + (f₁ ∘₁ f₂ ∘₁ … ): the Mayer product is the circle-operation lift, and its expansion is the sum over corners (clusters)
+PASS the fold of m pair functions has exactly the 2^m − 1 subset products: Mayer's graphs are the circle operation's corners
+PASS Lennard-Jones argon (ε/k = 119.8 K, σ = 3.405 Å): Boyle temperature 3.42 ε/k  T_B = 409 K
+PASS …within 2% of the 408 K where argon's B₂ changes sign in the 2023 ab initio potential
+PASS B₂ at 273 K is negative (attraction wins) and at 800 K positive (excluded volume wins)  150 K: -84.7, 200 K: -47.9, 273.15 K: -21.5, 300 K: -15.5, 400 K: -1.0, 500 K: 7.1, 800 K: 18.0 cm³/mol
+PASS vdW gives B₂ = b − a/RT: to first order 1/Z − 1 ≈ α − β adds, the corner enters at second order
+PASS cubic EOS denominators V² + ubV + wb²: vdW (0,0) double root at 0, RK (1,0) roots 0, −b, PR (2,−1) roots −b(1 ± √2)  van der Waals (u,w)=(0,0) disc 0: roots/b [0.0, 0.0]; Redlich–Kwong / SRK (u,w)=(1,0) disc 1: roots/b [-1.0, 0.0]; Peng–Robinson (u,w)=(2,-1) disc 8: roots/b [-2.414, 0.414]
+PASS critical Z: vdW 0.375, RK 0.333, PR 0.307: the more 'two walls' the denominator, the closer to real 0.29  van der Waals 0.3750, Redlich–Kwong / SRK 0.3333, Peng–Robinson 0.3074
+PASS Haber, 700 K and 200 bar: vdW fugacity coefficients N₂, H₂ slightly above 1, NH₃ below 1  N₂ φ = 1.061, H₂ φ = 1.081, NH₃ φ = 0.888
+PASS fugacity coefficients multiply into the equilibrium (K_φ = φ_NH₃²/φ_N₂ φ_H₂³), their logs add: the lift again  K_φ = 0.588: non-ideality favours ammonia by 70%
+
+15/15 checks pass

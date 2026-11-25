@@ -72,3 +72,6 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - the dial's potential (Higgs-like dial, 71 guesses in 4 rounds) WpQzqeezDjmRmUcbgTA7RT
 - fractal boxes (half-dimension box: joining yes = dials, iterating no) NbFUcWVphAGGNvhug8XvwS
 - size dial and residual PKMMfy7vXAZRK9cAucwSTg (54.5% exact; size measure = dimension beta, twist k=2^-beta; leftover = repetition at double size, 2^-beta; class group)
+- electromagnetism (EM sets the dial, fields on the light cone, gauge loops, F as wedge, Maxwell as one equation) A71iTBsgUHZSkcbNUrEacY
+- hidden dials of a half box (fractal dials vs the circle operation: has dimension+t, missing zoom) NOT YET PUBLISHED (daily new-page cap) — fractal-dials/index.html
+- shape dependencies (do shapes depend on shapes? proof bodies order yes, whole laws no, composition shapes exact line + 21 Lean theorems) NOT YET PUBLISHED (daily new-page cap) — shape-dependencies/index.html

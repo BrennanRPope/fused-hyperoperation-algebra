@@ -1,0 +1,73 @@
+n-fold build of 1/n with B_s, literally combined one at a time
+ s=-2.00: 1+E^s(1)=1.5265890341  n=1000 build=1.5268844710  n*err at n=100,1000: +0.29660, +0.29544  predicted +0.29531
+ s=-1.00: 1+E^s(1)=1.6931471806  n=1000 build=1.6933972329  n*err at n=100,1000: +0.25052, +0.25005  predicted +0.25000
+ s=-0.50: 1+E^s(1)=1.8202323343  n=1000 build=1.8204044474  n*err at n=100,1000: +0.17219, +0.17211  predicted +0.17210
+ s=+0.00: 1+E^s(1)=2.0000000000  n=1000 build=2.0000000004  n*err at n=100,1000: +0.00000, +0.00000  predicted -0.00000
+ s=+0.25: 1+E^s(1)=2.1204319616  n=1000 build=2.1202773975  n*err at n=100,1000: -0.15414, -0.15456  predicted -0.15461
+ s=+0.50: 1+E^s(1)=2.2710274139  n=1000 build=2.2706367428  n*err at n=100,1000: -0.38904, -0.39067  predicted -0.39085
+ s=+0.75: 1+E^s(1)=2.4639087052  n=1000 build=2.4631484939  n*err at n=100,1000: -0.75568, -0.76021  predicted -0.76072
+ s=+1.00: 1+E^s(1)=2.7182818285  n=1000 build=2.7169239334  n*err at n=100,1000: -1.34680, -1.35790  predicted -1.35914
+ s=+1.50: 1+E^s(1)=3.5645129118  n=1000 build=3.5603402006  n*err at n=100,1000: -4.11160, -4.17271  predicted -4.17961
+ s=+2.00: 1+E^s(1)=5.5749415248  n=1000 build=5.5598329937  n*err at n=100,1000: -14.70835, -15.10853  predicted -15.15426
+PASS n-fold build converges to 1 + E^s(1) at all 10 heights (n=1000)
+PASS error matches the predicted -(s/2n)(E^s)'(1) to 1%
+PASS e_0 = 2
+PASS e_1 = e
+PASS e_2 = e^(e-1)
+PASS e_-1 = 1 + log 2
+PASS e_-2 = 1 + log(1 + log 2)
+PASS e_3 = e^(e^(e-1)-1)
+e_s table: {"-3": 1.4230358572, "-2": 1.5265890341, "-1": 1.6931471806, "-0.5": 1.8202323343, "0": 2.0, "0.3333": 2.1667861402, "0.5": 2.2710274139, "0.6667": 2.39392282, "1": 2.7182818285, "1.5": 3.5645129118, "2": 5.5749415248, "2.5": 12.9943274439, "3": 97.0223655661}
+PASS E^1/2 applied to (e_1/2 - 1) gives e - 1
+Levy one-line formula for e_1/2: {10: 2.2810389357, 100: 2.2721495917, 1000: 2.2711402762, 10000: 2.2710386988, 100000: 2.2710285414}  target 2.2710274139
+PASS Levy's formula converges to e_1/2 (n=1e5 within 1e-4)
+Levy with log correction: {10: 2.270885212977, 100: 2.271025561886, 1000: 2.271027395085, 10000: 2.271027413724}
+PASS Levy + log term converges faster (n=1e4 within 1e-7)
+Taylor coefficients of e_s in s (about s=0):
+  s^0: +2.000000000000e+00
+  s^1: +4.330455960208e-01
+  s^2: +1.758135716928e-01
+  s^3: +6.852145335873e-02
+  s^4: +2.592600607509e-02
+  s^5: +9.585579373232e-03
+  s^6: +3.477987263773e-03
+  s^7: +1.242131975394e-03
+  s^8: +4.376260042449e-04
+  s^9: +1.523622360025e-04
+  s^10: +5.249036072667e-05
+  s^11: +1.791380248281e-05
+  s^12: +6.061738072008e-06
+  s^13: +2.035351825207e-06
+series vs direct: {-1: (np.float64(1.6931471799), 1.6931471806), -0.5: (np.float64(1.8202323343), 1.8202323343), 0.5: (np.float64(2.2710274139), 2.2710274139), 1: (np.float64(2.7182818272), 2.7182818285)}
+PASS power series in s reproduces e_s on [-1, 1] to 1e-8
+PASS first Taylor coefficient matches the numeric d/ds of e_s (Julia iterative logarithm at 1)   c1 = 0.4330455960
+PASS Julia equation lambda(e^x-1) = e^x lambda(x) at x=1   1.17713998 vs 1.17713998
+|s|(e_s - 1) for s = -10..-300: {-10: 1.74828, -30: 1.92868, -100: 1.98572, -300: 1.99726}  (-> 2, log correction)
+  ln_s worst inv: 1.86e-12
+  ln_s worst one: 0.00e+00
+  ln_s worst base: 1.43e-12
+  ln_s worst slope: 1.17e-08
+  ln_s worst curv: 2.92e-06
+  ln_s worst hom: 1.29e-11
+  ln_s worst ln1: 4.23e-12
+  ln_s worst ln2: 1.32e-12
+  ln_s worst prod1: 2.36e-11
+PASS ln_s(exp_s(t)) = t
+PASS ln_s(1) = 0 at every height
+PASS ln_s(e_s) = 1 at every height
+PASS slope of ln_s at 1 is 1 at every height
+PASS curvature of ln_s at 1 is -s (the height itself)
+PASS ln_s turns X (x)_s Y into addition
+PASS ln_1 = natural log, (x)_1 = ordinary product
+PASS ln_2(X) = log(1 + log X)
+  s=q=0.5: cubic coeff ours 0.1036 (s^2/4+s/12=0.1042), Tsallis 0.1242 (q(q+1)/6=0.1250)
+  s=q=2.0: cubic coeff ours 1.1523 (s^2/4+s/12=1.1667), Tsallis 0.9901 (q(q+1)/6=1.0000)
+
+22 of 22 checks pass
+PASS heights compose: ln_(s+t) = ln_s(1 + ln_t)   worst 1.8e-12
+PASS ln_s(e_(s+t)) = e_t - 1   worst 3.5e-12
+PASS ln_s(XY) = B_(1-s)(ln_s X, ln_s Y)  (s=1: ln turns x into +;  s=0: X-1 turns x into a+b+ab)   worst 6.5e-11
+Julia iterative logarithm lambda(x) = dE^s/ds at s=0, series: x^1: 0, x^2: 1/2, x^3: -1/12, x^4: 1/48, x^5: -1/180, x^6: 11/8640, x^7: -1/6720, x^8: -11/241920
+PASS lambda(x) = x^2/2 - x^3/12 + x^4/48 - ...
+
+26 of 26 checks pass (final)

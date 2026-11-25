@@ -1,0 +1,16 @@
+PASS Henderson–Hasselbalch: pH = pKa + log(base/acid) is the logistic fraction 1/(1 + 10^(pKa − pH))
+PASS Ka multiplies when steps are chained (pKa adds): log turns the lift into addition
+PASS two independent groups: chance at least one is deprotonated = α₁ ⊞₋₁ α₂
+PASS glycine (pKa 2.34, 9.60): net charge zero at pH 5.97, the plain average of the two pKas  pI = 5.9700
+PASS buffer capacities add (k = 0): the mixture's β equals the sum of each acid's term at the shared pH (water counted once)  β = 0.0509 M
+PASS mixing two acetate buffers: base/acid ratios combine by the mediant (b₁ + b₂)/(a₁ + a₂), not by the circle operation  pH 4.847 vs 4.847
+PASS the mediant lies between the two ratios (0.25 and 9)
+PASS the dial folded over three sites fixes one pKa gap at log 3 = 0.477, whatever k is
+PASS a uniform pairwise interaction gives two equal gaps, each log(3/k)
+PASS tabulated gaps: citric 1.63 / 1.64, phosphoric 5.06 / 5.14, arsenic 4.72 / 4.59: each pair within 0.15 of equal  citric 1.63/1.64; phosphoric 5.06/5.14; arsenic 4.72/4.59
+PASS …and every gap is at least 1.6, far from the fold's 0.48
+PASS fitted pair factors: citric k ≈ 0.07 (6.6 kJ/mol repulsion per pair), phosphoric ≈ 2.4e-5 (26 kJ/mol), arsenic ≈ 6.6e-5 (24 kJ/mol)  citric 0.07, 6.6 kJ/mol; phosphoric 2.4e-05, 26.4 kJ/mol; arsenic 6.6e-05, 23.8 kJ/mol
+PASS pairwise picture predicts pKa₃ from pKa₁ and pKa₂: citric 6.39 (table 6.40), phosphoric 12.26 (12.34), arsenic 11.65 (11.52)  citric 6.39; phosphoric 12.26; arsenic 11.65
+PASS phosphoric titration: half-equivalence points sit at the three pKas (protons removed 0.5, 1.5, 2.5)
+
+14/14 checks pass

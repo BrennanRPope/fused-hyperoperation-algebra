@@ -1,0 +1,61 @@
+Product laws (Newton, Ohm, Boyle, Kepler)    n= 17 body rect    29%  family hyper-dial      12%
+Thermodynamics                               n= 68 body rect    56%  family rect-explode    24%
+Electromagnetism (Maxwell)                   n= 41 body hyper   39%  family hyper-squash    22%
+Special relativity                           n= 53 body rect    40%  family rect-plain      17%
+Twisted boosts (Thomas)                      n= 36 body rod     44%  family rod-explode     19%
+General relativity                           n= 50 body rect    40%  family rect-explode    22%
+Gravity Probe B                              n= 16 body point   50%  family point-squash    50%
+Binary pulsar                                n= 10 body point   50%  family point-squash    50%
+Information theory                           n= 52 body rect    58%  family rect-dial       38%
+Quantum noise                                n= 21 body rect    43%  family box-squash      24%
+Entropy and noise                            n= 41 body rect    29%  family rect-squash     12%
+Lee–Yang zeros                               n= 59 body cube    36%  family hyper-dial      20%
+Fluids (Navier–Stokes)                       n= 24 body point   38%  family point-tally     33%
+Solitons (KdV)                               n= 26 body rect    50%  family rect-explode    27%
+Dark sector (MOND, redshift)                 n= 17 body rect    47%  family rect-explode    24%
+Quantum chemistry                            n=  8 body rect    50%  family rect-explode    38%
+Conservation of mass and charge              n= 10 body box     60%  family box-explode     20%
+Periodic law                                 n= 12 body cube    67%  family rect-explode    25%
+Bonding and valence                          n= 23 body rect    30%  family rect-explode    30%
+Stoichiometry                                n= 15 body point   47%  family point-tally     33%
+Gas laws                                     n= 12 body rect    50%  family rect-explode    42%
+Gibbs energy                                 n= 11 body rect    45%  family rect-explode    36%
+Equilibrium, mass action                     n= 11 body box     27%  family box-explode     18%
+Rates, Arrhenius                             n=  8 body rect    62%  family rect-squash     38%
+Electrochemistry, Nernst                     n=  9 body box     33%  family box-dial        22%
+Acids and bases                              n=  7 body rect    57%  family rect-squash     29%
+Organic chemistry                            n=  9 body hyper   44%  family hyper-explode   33%
+Biochemistry                                 n=  8 body rect    50%  family point-tally     38%
+Molecular biology                            n= 28 body rect    36%  family rect-explode    14%
+Metabolism                                   n= 17 body rect    47%  family box-dial        24%
+Cell biology                                 n= 11 body rect    45%  family rod-squash      27%
+Genetics                                     n= 13 body rect    62%  family rect-dial       46%
+Development                                  n=  5 body cube    60%  family cube-flatten    40%
+Physiology                                   n=  6 body rect    83%  family rect-explode    67%
+Neuroscience                                 n= 14 body hyper   50%  family hyper-squash    29%
+Evolution                                    n= 14 body box     43%  family rect-dial       21%
+Population growth                            n=  5 body rect    40%  family rect-dial       20%
+Ecology                                      n=  7 body rect    57%  family box-dial        29%
+Behaviour                                    n=  8 body hyper   38%  family hyper-dial      38%
+
+Body flow along textbook edges (57): up 13, down 12, same layer 32; net 1; null (bodies shuffled across laws) mean -0.03, sd 6.84, z 0.15, p 0.477
+Body-level edges (needed body -> user body: count): {('rect', 'hyper'): 3, ('hyper', 'rect'): 3, ('rect', 'rod'): 1, ('rect', 'point'): 4, ('rod', 'point'): 2, ('rect', 'cube'): 4, ('point', 'rect'): 1, ('hyper', 'box'): 2, ('box', 'point'): 1, ('rect', 'box'): 4, ('point', 'box'): 1, ('box', 'rect'): 1, ('box', 'hyper'): 2}
+Family-level two-way pairs (cycles of length 2): [('box-dial', 'hyper-squash'), ('box-dial', 'rect-explode'), ('box-explode', 'point-tally'), ('hyper-dial', 'hyper-squash'), ('hyper-dial', 'rect-explode'), ('hyper-squash', 'rect-explode'), ('point-tally', 'rect-explode'), ('rect-explode', 'rod-squash')]
+Body-level two-way pairs: [('box', 'hyper'), ('box', 'point'), ('box', 'rect'), ('hyper', 'rect'), ('point', 'rect')]
+
+Edges that run against the body order (a law built on a law of bigger body):
+  Electromagnetism (Maxwell) (hyper) -> Special relativity (rect)  [textbook]
+  Special relativity (rect) -> Twisted boosts (Thomas) (rod)  [lean]
+  General relativity (rect) -> Gravity Probe B (point)  [textbook]
+  Twisted boosts (Thomas) (rod) -> Gravity Probe B (point)  [textbook]
+  General relativity (rect) -> Binary pulsar (point)  [textbook]
+  Twisted boosts (Thomas) (rod) -> Binary pulsar (point)  [textbook]
+  Product laws (Newton, Ohm, Boyle, Kepler) (rect) -> Fluids (Navier–Stokes) (point)  [textbook]
+  Thermodynamics (rect) -> Fluids (Navier–Stokes) (point)  [textbook]
+  Electromagnetism (Maxwell) (hyper) -> Quantum chemistry (rect)  [textbook]
+  Conservation of mass and charge (box) -> Stoichiometry (point)  [textbook]
+  Equilibrium, mass action (box) -> Acids and bases (rect)  [textbook]
+  Organic chemistry (hyper) -> Biochemistry (rect)  [textbook]
+
+Roots (need nothing in this table): ['Product laws (Newton, Ohm, Boyle, Kepler)', 'Population growth']
+Longest chain: Product laws (Newton, Ohm, Boyle, Kepler) [rect] -> Electromagnetism (Maxwell) [hyper] -> Quantum chemistry [rect] -> Bonding and valence [rect] -> Organic chemistry [hyper] -> Biochemistry [rect] -> Molecular biology [rect] -> Cell biology [rect] -> Physiology [rect] -> Neuroscience [hyper] -> Behaviour [hyper]

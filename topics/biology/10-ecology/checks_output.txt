@@ -1,0 +1,13 @@
+PASS a predator that searches, handles, and is drawn into interference from either state feeds at αN/(1 + x ∘ₖ y), x = αNh, y = γPτ | steady state of the 4-state chain vs formula: largest relative gap 7.6e-15
+PASS k = 0 (no interference while handling) is Beddington–DeAngelis, 1 + x + y
+PASS k = 1 (handlers interfere as often as searchers) is Crowley–Martin, (1 + x)(1 + y)
+PASS a stochastic simulation of one predator (200,000 time units) eats at the formula's rate | simulated 0.7866, formula 0.7874
+PASS in a simulated feeding experiment crossing prey and predator density (true k = 0.5, 4% noise) the dial fit recovers k, and both classic forms fit worse | fitted k = 0.56; AIC dial -185.1, BD -122.9, CM -175.3
+PASS Tsallis (HCDT) entropy is the q-logarithm of Hill's effective number: S_q = ln_q(D_q)
+PASS two independent communities: Hill numbers multiply and Tsallis entropies combine by the dial with k = 1 − q
+PASS for q > 1 the wall −1/k = 1/(q − 1) is the ceiling: Tsallis entropy approaches it as richness grows and never passes it | q = 2: 0.9000, 0.9900, 0.9999 → wall 1.0
+PASS q = 1 is dial 0: Shannon entropies of independent communities add
+PASS multiple-stressor nulls: 'simple addition' of losses is dial 0, 'multiplicative' (independent action) is the 'or' law, dial −1
+PASS an island receiving colonists from n sources, each succeeding with chance c, is colonised with wpow(−1, c, n)
+
+11/11 checks passed

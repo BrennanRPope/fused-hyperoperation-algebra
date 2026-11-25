@@ -1,0 +1,1535 @@
+{
+ "nodes": {
+  "prod": {
+   "label": "Product laws (Newton, Ohm, Boyle, Kepler)",
+   "field": "physics",
+   "n": 17,
+   "body": "rect",
+   "body_share": 0.29411764705882354,
+   "family": "hyper-dial",
+   "family_share": 0.11764705882352941,
+   "bodies": [
+    [
+     "rect",
+     5
+    ],
+    [
+     "cube",
+     4
+    ],
+    [
+     "hyper",
+     4
+    ],
+    [
+     "rod",
+     2
+    ],
+    [
+     "box",
+     2
+    ]
+   ]
+  },
+  "thermo": {
+   "label": "Thermodynamics",
+   "field": "physics",
+   "n": 68,
+   "body": "rect",
+   "body_share": 0.5588235294117647,
+   "family": "rect-explode",
+   "family_share": 0.23529411764705882,
+   "bodies": [
+    [
+     "rect",
+     38
+    ],
+    [
+     "rod",
+     10
+    ],
+    [
+     "cube",
+     8
+    ],
+    [
+     "hyper",
+     6
+    ],
+    [
+     "box",
+     4
+    ],
+    [
+     "point",
+     2
+    ]
+   ]
+  },
+  "em": {
+   "label": "Electromagnetism (Maxwell)",
+   "field": "physics",
+   "n": 41,
+   "body": "hyper",
+   "body_share": 0.3902439024390244,
+   "family": "hyper-squash",
+   "family_share": 0.21951219512195122,
+   "bodies": [
+    [
+     "hyper",
+     16
+    ],
+    [
+     "rect",
+     16
+    ],
+    [
+     "box",
+     6
+    ],
+    [
+     "point",
+     2
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "sr": {
+   "label": "Special relativity",
+   "field": "physics",
+   "n": 53,
+   "body": "rect",
+   "body_share": 0.39622641509433965,
+   "family": "rect-plain",
+   "family_share": 0.16981132075471697,
+   "bodies": [
+    [
+     "rect",
+     21
+    ],
+    [
+     "hyper",
+     16
+    ],
+    [
+     "cube",
+     8
+    ],
+    [
+     "rod",
+     5
+    ],
+    [
+     "box",
+     2
+    ],
+    [
+     "point",
+     1
+    ]
+   ]
+  },
+  "thomas": {
+   "label": "Twisted boosts (Thomas)",
+   "field": "physics",
+   "n": 36,
+   "body": "rod",
+   "body_share": 0.4444444444444444,
+   "family": "rod-explode",
+   "family_share": 0.19444444444444445,
+   "bodies": [
+    [
+     "rod",
+     16
+    ],
+    [
+     "rect",
+     12
+    ],
+    [
+     "hyper",
+     5
+    ],
+    [
+     "box",
+     3
+    ]
+   ]
+  },
+  "gr": {
+   "label": "General relativity",
+   "field": "physics",
+   "n": 50,
+   "body": "rect",
+   "body_share": 0.4,
+   "family": "rect-explode",
+   "family_share": 0.22,
+   "bodies": [
+    [
+     "rect",
+     20
+    ],
+    [
+     "point",
+     10
+    ],
+    [
+     "rod",
+     9
+    ],
+    [
+     "hyper",
+     7
+    ],
+    [
+     "box",
+     4
+    ]
+   ]
+  },
+  "gpb": {
+   "label": "Gravity Probe B",
+   "field": "physics",
+   "n": 16,
+   "body": "point",
+   "body_share": 0.5,
+   "family": "point-squash",
+   "family_share": 0.5,
+   "bodies": [
+    [
+     "point",
+     8
+    ],
+    [
+     "rect",
+     4
+    ],
+    [
+     "rod",
+     3
+    ],
+    [
+     "box",
+     1
+    ]
+   ]
+  },
+  "pulsar": {
+   "label": "Binary pulsar",
+   "field": "physics",
+   "n": 10,
+   "body": "point",
+   "body_share": 0.5,
+   "family": "point-squash",
+   "family_share": 0.5,
+   "bodies": [
+    [
+     "point",
+     5
+    ],
+    [
+     "rod",
+     3
+    ],
+    [
+     "rect",
+     2
+    ]
+   ]
+  },
+  "info": {
+   "label": "Information theory",
+   "field": "physics",
+   "n": 52,
+   "body": "rect",
+   "body_share": 0.5769230769230769,
+   "family": "rect-dial",
+   "family_share": 0.38461538461538464,
+   "bodies": [
+    [
+     "rect",
+     30
+    ],
+    [
+     "cube",
+     12
+    ],
+    [
+     "box",
+     7
+    ],
+    [
+     "rod",
+     2
+    ],
+    [
+     "hyper",
+     1
+    ]
+   ]
+  },
+  "qnoise": {
+   "label": "Quantum noise",
+   "field": "physics",
+   "n": 21,
+   "body": "rect",
+   "body_share": 0.42857142857142855,
+   "family": "box-squash",
+   "family_share": 0.23809523809523808,
+   "bodies": [
+    [
+     "rect",
+     9
+    ],
+    [
+     "box",
+     6
+    ],
+    [
+     "point",
+     4
+    ],
+    [
+     "cube",
+     1
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "entropy": {
+   "label": "Entropy and noise",
+   "field": "physics",
+   "n": 41,
+   "body": "rect",
+   "body_share": 0.2926829268292683,
+   "family": "rect-squash",
+   "family_share": 0.12195121951219512,
+   "bodies": [
+    [
+     "rect",
+     12
+    ],
+    [
+     "rod",
+     10
+    ],
+    [
+     "cube",
+     9
+    ],
+    [
+     "box",
+     5
+    ],
+    [
+     "hyper",
+     4
+    ],
+    [
+     "point",
+     1
+    ]
+   ]
+  },
+  "leeyang": {
+   "label": "Lee–Yang zeros",
+   "field": "physics",
+   "n": 59,
+   "body": "cube",
+   "body_share": 0.3559322033898305,
+   "family": "hyper-dial",
+   "family_share": 0.2033898305084746,
+   "bodies": [
+    [
+     "cube",
+     21
+    ],
+    [
+     "hyper",
+     16
+    ],
+    [
+     "rect",
+     14
+    ],
+    [
+     "box",
+     4
+    ],
+    [
+     "rod",
+     2
+    ],
+    [
+     "point",
+     2
+    ]
+   ]
+  },
+  "fluids": {
+   "label": "Fluids (Navier–Stokes)",
+   "field": "physics",
+   "n": 24,
+   "body": "point",
+   "body_share": 0.375,
+   "family": "point-tally",
+   "family_share": 0.3333333333333333,
+   "bodies": [
+    [
+     "point",
+     9
+    ],
+    [
+     "cube",
+     5
+    ],
+    [
+     "hyper",
+     3
+    ],
+    [
+     "rect",
+     3
+    ],
+    [
+     "box",
+     2
+    ],
+    [
+     "rod",
+     2
+    ]
+   ]
+  },
+  "soliton": {
+   "label": "Solitons (KdV)",
+   "field": "physics",
+   "n": 26,
+   "body": "rect",
+   "body_share": 0.5,
+   "family": "rect-explode",
+   "family_share": 0.2692307692307692,
+   "bodies": [
+    [
+     "rect",
+     13
+    ],
+    [
+     "box",
+     6
+    ],
+    [
+     "hyper",
+     6
+    ],
+    [
+     "point",
+     1
+    ]
+   ]
+  },
+  "dark": {
+   "label": "Dark sector (MOND, redshift)",
+   "field": "physics",
+   "n": 17,
+   "body": "rect",
+   "body_share": 0.47058823529411764,
+   "family": "rect-explode",
+   "family_share": 0.23529411764705882,
+   "bodies": [
+    [
+     "rect",
+     8
+    ],
+    [
+     "cube",
+     5
+    ],
+    [
+     "box",
+     2
+    ],
+    [
+     "hyper",
+     1
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "cq": {
+   "label": "Quantum chemistry",
+   "field": "chemistry",
+   "n": 8,
+   "body": "rect",
+   "body_share": 0.5,
+   "family": "rect-explode",
+   "family_share": 0.375,
+   "bodies": [
+    [
+     "rect",
+     4
+    ],
+    [
+     "box",
+     2
+    ],
+    [
+     "hyper",
+     1
+    ],
+    [
+     "cube",
+     1
+    ]
+   ]
+  },
+  "ccons": {
+   "label": "Conservation of mass and charge",
+   "field": "chemistry",
+   "n": 10,
+   "body": "box",
+   "body_share": 0.6,
+   "family": "box-explode",
+   "family_share": 0.2,
+   "bodies": [
+    [
+     "box",
+     6
+    ],
+    [
+     "rect",
+     2
+    ],
+    [
+     "point",
+     1
+    ],
+    [
+     "hyper",
+     1
+    ]
+   ]
+  },
+  "cper": {
+   "label": "Periodic law",
+   "field": "chemistry",
+   "n": 12,
+   "body": "cube",
+   "body_share": 0.6666666666666666,
+   "family": "rect-explode",
+   "family_share": 0.25,
+   "bodies": [
+    [
+     "cube",
+     8
+    ],
+    [
+     "rect",
+     4
+    ]
+   ]
+  },
+  "cbond": {
+   "label": "Bonding and valence",
+   "field": "chemistry",
+   "n": 23,
+   "body": "rect",
+   "body_share": 0.30434782608695654,
+   "family": "rect-explode",
+   "family_share": 0.30434782608695654,
+   "bodies": [
+    [
+     "rect",
+     7
+    ],
+    [
+     "cube",
+     6
+    ],
+    [
+     "point",
+     6
+    ],
+    [
+     "rod",
+     3
+    ],
+    [
+     "hyper",
+     1
+    ]
+   ]
+  },
+  "cstoi": {
+   "label": "Stoichiometry",
+   "field": "chemistry",
+   "n": 15,
+   "body": "point",
+   "body_share": 0.4666666666666667,
+   "family": "point-tally",
+   "family_share": 0.3333333333333333,
+   "bodies": [
+    [
+     "point",
+     7
+    ],
+    [
+     "rect",
+     4
+    ],
+    [
+     "cube",
+     1
+    ],
+    [
+     "box",
+     1
+    ],
+    [
+     "hyper",
+     1
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "cgas": {
+   "label": "Gas laws",
+   "field": "chemistry",
+   "n": 12,
+   "body": "rect",
+   "body_share": 0.5,
+   "family": "rect-explode",
+   "family_share": 0.4166666666666667,
+   "bodies": [
+    [
+     "rect",
+     6
+    ],
+    [
+     "box",
+     3
+    ],
+    [
+     "hyper",
+     2
+    ],
+    [
+     "point",
+     1
+    ]
+   ]
+  },
+  "cgibbs": {
+   "label": "Gibbs energy",
+   "field": "chemistry",
+   "n": 11,
+   "body": "rect",
+   "body_share": 0.45454545454545453,
+   "family": "rect-explode",
+   "family_share": 0.36363636363636365,
+   "bodies": [
+    [
+     "rect",
+     5
+    ],
+    [
+     "box",
+     3
+    ],
+    [
+     "point",
+     2
+    ],
+    [
+     "hyper",
+     1
+    ]
+   ]
+  },
+  "ceq": {
+   "label": "Equilibrium, mass action",
+   "field": "chemistry",
+   "n": 11,
+   "body": "box",
+   "body_share": 0.2727272727272727,
+   "family": "box-explode",
+   "family_share": 0.18181818181818182,
+   "bodies": [
+    [
+     "box",
+     3
+    ],
+    [
+     "hyper",
+     3
+    ],
+    [
+     "rect",
+     2
+    ],
+    [
+     "cube",
+     2
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "crate": {
+   "label": "Rates, Arrhenius",
+   "field": "chemistry",
+   "n": 8,
+   "body": "rect",
+   "body_share": 0.625,
+   "family": "rect-squash",
+   "family_share": 0.375,
+   "bodies": [
+    [
+     "rect",
+     5
+    ],
+    [
+     "point",
+     2
+    ],
+    [
+     "hyper",
+     1
+    ]
+   ]
+  },
+  "celec": {
+   "label": "Electrochemistry, Nernst",
+   "field": "chemistry",
+   "n": 9,
+   "body": "box",
+   "body_share": 0.3333333333333333,
+   "family": "box-dial",
+   "family_share": 0.2222222222222222,
+   "bodies": [
+    [
+     "box",
+     3
+    ],
+    [
+     "rect",
+     2
+    ],
+    [
+     "rod",
+     2
+    ],
+    [
+     "hyper",
+     1
+    ],
+    [
+     "point",
+     1
+    ]
+   ]
+  },
+  "cacid": {
+   "label": "Acids and bases",
+   "field": "chemistry",
+   "n": 7,
+   "body": "rect",
+   "body_share": 0.5714285714285714,
+   "family": "rect-squash",
+   "family_share": 0.2857142857142857,
+   "bodies": [
+    [
+     "rect",
+     4
+    ],
+    [
+     "hyper",
+     2
+    ],
+    [
+     "box",
+     1
+    ]
+   ]
+  },
+  "corg": {
+   "label": "Organic chemistry",
+   "field": "chemistry",
+   "n": 9,
+   "body": "hyper",
+   "body_share": 0.4444444444444444,
+   "family": "hyper-explode",
+   "family_share": 0.3333333333333333,
+   "bodies": [
+    [
+     "hyper",
+     4
+    ],
+    [
+     "point",
+     2
+    ],
+    [
+     "rect",
+     2
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "cbio": {
+   "label": "Biochemistry",
+   "field": "chemistry",
+   "n": 8,
+   "body": "rect",
+   "body_share": 0.5,
+   "family": "point-tally",
+   "family_share": 0.375,
+   "bodies": [
+    [
+     "rect",
+     4
+    ],
+    [
+     "point",
+     3
+    ],
+    [
+     "box",
+     1
+    ]
+   ]
+  },
+  "bmol": {
+   "label": "Molecular biology",
+   "field": "biology",
+   "n": 28,
+   "body": "rect",
+   "body_share": 0.35714285714285715,
+   "family": "rect-explode",
+   "family_share": 0.14285714285714285,
+   "bodies": [
+    [
+     "rect",
+     10
+    ],
+    [
+     "box",
+     7
+    ],
+    [
+     "cube",
+     5
+    ],
+    [
+     "rod",
+     4
+    ],
+    [
+     "point",
+     1
+    ],
+    [
+     "hyper",
+     1
+    ]
+   ]
+  },
+  "bmet": {
+   "label": "Metabolism",
+   "field": "biology",
+   "n": 17,
+   "body": "rect",
+   "body_share": 0.47058823529411764,
+   "family": "box-dial",
+   "family_share": 0.23529411764705882,
+   "bodies": [
+    [
+     "rect",
+     8
+    ],
+    [
+     "box",
+     5
+    ],
+    [
+     "rod",
+     3
+    ],
+    [
+     "cube",
+     1
+    ]
+   ]
+  },
+  "bcell": {
+   "label": "Cell biology",
+   "field": "biology",
+   "n": 11,
+   "body": "rect",
+   "body_share": 0.45454545454545453,
+   "family": "rod-squash",
+   "family_share": 0.2727272727272727,
+   "bodies": [
+    [
+     "rect",
+     5
+    ],
+    [
+     "box",
+     3
+    ],
+    [
+     "rod",
+     3
+    ]
+   ]
+  },
+  "bgen": {
+   "label": "Genetics",
+   "field": "biology",
+   "n": 13,
+   "body": "rect",
+   "body_share": 0.6153846153846154,
+   "family": "rect-dial",
+   "family_share": 0.46153846153846156,
+   "bodies": [
+    [
+     "rect",
+     8
+    ],
+    [
+     "box",
+     3
+    ],
+    [
+     "rod",
+     1
+    ],
+    [
+     "hyper",
+     1
+    ]
+   ]
+  },
+  "bdev": {
+   "label": "Development",
+   "field": "biology",
+   "n": 5,
+   "body": "cube",
+   "body_share": 0.6,
+   "family": "cube-flatten",
+   "family_share": 0.4,
+   "bodies": [
+    [
+     "cube",
+     3
+    ],
+    [
+     "box",
+     1
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "bphys": {
+   "label": "Physiology",
+   "field": "biology",
+   "n": 6,
+   "body": "rect",
+   "body_share": 0.8333333333333334,
+   "family": "rect-explode",
+   "family_share": 0.6666666666666666,
+   "bodies": [
+    [
+     "rect",
+     5
+    ],
+    [
+     "box",
+     1
+    ]
+   ]
+  },
+  "bneuro": {
+   "label": "Neuroscience",
+   "field": "biology",
+   "n": 14,
+   "body": "hyper",
+   "body_share": 0.5,
+   "family": "hyper-squash",
+   "family_share": 0.2857142857142857,
+   "bodies": [
+    [
+     "hyper",
+     7
+    ],
+    [
+     "rod",
+     3
+    ],
+    [
+     "rect",
+     3
+    ],
+    [
+     "box",
+     1
+    ]
+   ]
+  },
+  "bevo": {
+   "label": "Evolution",
+   "field": "biology",
+   "n": 14,
+   "body": "box",
+   "body_share": 0.42857142857142855,
+   "family": "rect-dial",
+   "family_share": 0.21428571428571427,
+   "bodies": [
+    [
+     "box",
+     6
+    ],
+    [
+     "rect",
+     5
+    ],
+    [
+     "hyper",
+     2
+    ],
+    [
+     "cube",
+     1
+    ]
+   ]
+  },
+  "bpop": {
+   "label": "Population growth",
+   "field": "biology",
+   "n": 5,
+   "body": "rect",
+   "body_share": 0.4,
+   "family": "rect-dial",
+   "family_share": 0.2,
+   "bodies": [
+    [
+     "rect",
+     2
+    ],
+    [
+     "box",
+     2
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "beco": {
+   "label": "Ecology",
+   "field": "biology",
+   "n": 7,
+   "body": "rect",
+   "body_share": 0.5714285714285714,
+   "family": "box-dial",
+   "family_share": 0.2857142857142857,
+   "bodies": [
+    [
+     "rect",
+     4
+    ],
+    [
+     "box",
+     2
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  },
+  "bbeh": {
+   "label": "Behaviour",
+   "field": "biology",
+   "n": 8,
+   "body": "hyper",
+   "body_share": 0.375,
+   "family": "hyper-dial",
+   "family_share": 0.375,
+   "bodies": [
+    [
+     "hyper",
+     3
+    ],
+    [
+     "rect",
+     2
+    ],
+    [
+     "cube",
+     2
+    ],
+    [
+     "rod",
+     1
+    ]
+   ]
+  }
+ },
+ "edges": [
+  {
+   "a": "prod",
+   "b": "thermo",
+   "tag": "textbook",
+   "why": "gas laws and mechanics underlie kinetic theory"
+  },
+  {
+   "a": "prod",
+   "b": "em",
+   "tag": "textbook",
+   "why": "Coulomb's inverse square and Ohm's law come first"
+  },
+  {
+   "a": "em",
+   "b": "sr",
+   "tag": "textbook",
+   "why": "light speed is the same in every frame (Maxwell), Einstein 1905"
+  },
+  {
+   "a": "prod",
+   "b": "sr",
+   "tag": "textbook",
+   "why": "Newton's mechanics is the slow limit SR must reproduce"
+  },
+  {
+   "a": "sr",
+   "b": "thomas",
+   "tag": "lean",
+   "why": "two boosts in different directions; the library imports Relativity"
+  },
+  {
+   "a": "sr",
+   "b": "gr",
+   "tag": "textbook",
+   "why": "GR makes SR's boosts local"
+  },
+  {
+   "a": "prod",
+   "b": "gr",
+   "tag": "textbook",
+   "why": "Newton's gravity is GR's weak-field limit"
+  },
+  {
+   "a": "gr",
+   "b": "gpb",
+   "tag": "textbook",
+   "why": "geodetic and frame-dragging turns"
+  },
+  {
+   "a": "thomas",
+   "b": "gpb",
+   "tag": "textbook",
+   "why": "the velocity twist is Thomas precession"
+  },
+  {
+   "a": "gr",
+   "b": "pulsar",
+   "tag": "textbook",
+   "why": "spin precession and orbital decay"
+  },
+  {
+   "a": "thomas",
+   "b": "pulsar",
+   "tag": "textbook",
+   "why": "the velocity twist"
+  },
+  {
+   "a": "thermo",
+   "b": "info",
+   "tag": "reading",
+   "why": "Shannon's entropy borrows Boltzmann's form (historically; logically independent)"
+  },
+  {
+   "a": "info",
+   "b": "qnoise",
+   "tag": "textbook",
+   "why": "channels and their capacity"
+  },
+  {
+   "a": "qnoise",
+   "b": "entropy",
+   "tag": "lean",
+   "why": "the library imports QuantumNoise"
+  },
+  {
+   "a": "info",
+   "b": "entropy",
+   "tag": "lean",
+   "why": "the library imports InformationTheory"
+  },
+  {
+   "a": "thermo",
+   "b": "entropy",
+   "tag": "textbook",
+   "why": "thermodynamic entropy"
+  },
+  {
+   "a": "thermo",
+   "b": "leeyang",
+   "tag": "textbook",
+   "why": "partition functions of statistical mechanics"
+  },
+  {
+   "a": "prod",
+   "b": "fluids",
+   "tag": "textbook",
+   "why": "Newton's second law for a fluid parcel"
+  },
+  {
+   "a": "thermo",
+   "b": "fluids",
+   "tag": "textbook",
+   "why": "energy equation, viscosity"
+  },
+  {
+   "a": "fluids",
+   "b": "soliton",
+   "tag": "textbook",
+   "why": "KdV is shallow water"
+  },
+  {
+   "a": "prod",
+   "b": "dark",
+   "tag": "textbook",
+   "why": "MOND modifies Newton's gravity"
+  },
+  {
+   "a": "gr",
+   "b": "dark",
+   "tag": "reading",
+   "why": "cosmological redshift composes by mult-add"
+  },
+  {
+   "a": "em",
+   "b": "cq",
+   "tag": "textbook",
+   "why": "the atom's Coulomb potential"
+  },
+  {
+   "a": "em",
+   "b": "ccons",
+   "tag": "reading",
+   "why": "charge conservation is Maxwell's continuity equation"
+  },
+  {
+   "a": "cq",
+   "b": "cper",
+   "tag": "textbook",
+   "why": "shells fill in order"
+  },
+  {
+   "a": "cq",
+   "b": "cbond",
+   "tag": "textbook",
+   "why": "bonds are shared orbitals"
+  },
+  {
+   "a": "ccons",
+   "b": "cstoi",
+   "tag": "textbook",
+   "why": "balancing equations"
+  },
+  {
+   "a": "prod",
+   "b": "cgas",
+   "tag": "textbook",
+   "why": "Boyle, Charles"
+  },
+  {
+   "a": "thermo",
+   "b": "cgas",
+   "tag": "textbook",
+   "why": "ideal gas from kinetic theory"
+  },
+  {
+   "a": "thermo",
+   "b": "cgibbs",
+   "tag": "textbook",
+   "why": "G = H − TS"
+  },
+  {
+   "a": "cgibbs",
+   "b": "ceq",
+   "tag": "textbook",
+   "why": "ΔG° = −RT ln K"
+  },
+  {
+   "a": "cstoi",
+   "b": "ceq",
+   "tag": "textbook",
+   "why": "mass action counts by the equation's coefficients"
+  },
+  {
+   "a": "thermo",
+   "b": "crate",
+   "tag": "textbook",
+   "why": "the Boltzmann factor in Arrhenius"
+  },
+  {
+   "a": "cgibbs",
+   "b": "celec",
+   "tag": "textbook",
+   "why": "ΔG = −nFE"
+  },
+  {
+   "a": "em",
+   "b": "celec",
+   "tag": "textbook",
+   "why": "potential and charge"
+  },
+  {
+   "a": "ceq",
+   "b": "celec",
+   "tag": "textbook",
+   "why": "Nernst has the reaction quotient"
+  },
+  {
+   "a": "ceq",
+   "b": "cacid",
+   "tag": "textbook",
+   "why": "Ka is an equilibrium constant"
+  },
+  {
+   "a": "cbond",
+   "b": "corg",
+   "tag": "textbook",
+   "why": "carbon's four bonds"
+  },
+  {
+   "a": "corg",
+   "b": "cbio",
+   "tag": "textbook",
+   "why": "biomolecules are organic"
+  },
+  {
+   "a": "cgibbs",
+   "b": "cbio",
+   "tag": "textbook",
+   "why": "coupled reactions"
+  },
+  {
+   "a": "crate",
+   "b": "cbio",
+   "tag": "textbook",
+   "why": "enzyme kinetics"
+  },
+  {
+   "a": "cbio",
+   "b": "bmol",
+   "tag": "textbook",
+   "why": "DNA, RNA, proteins"
+  },
+  {
+   "a": "cbio",
+   "b": "bmet",
+   "tag": "textbook",
+   "why": "pathways"
+  },
+  {
+   "a": "cgibbs",
+   "b": "bmet",
+   "tag": "textbook",
+   "why": "ATP's free energy"
+  },
+  {
+   "a": "bmol",
+   "b": "bcell",
+   "tag": "textbook",
+   "why": "the cell's machinery"
+  },
+  {
+   "a": "bmol",
+   "b": "bgen",
+   "tag": "textbook",
+   "why": "genes are DNA"
+  },
+  {
+   "a": "bgen",
+   "b": "bdev",
+   "tag": "textbook",
+   "why": "gene regulation"
+  },
+  {
+   "a": "bcell",
+   "b": "bdev",
+   "tag": "textbook",
+   "why": "cell division and signalling"
+  },
+  {
+   "a": "bcell",
+   "b": "bphys",
+   "tag": "textbook",
+   "why": "tissues"
+  },
+  {
+   "a": "bmet",
+   "b": "bphys",
+   "tag": "textbook",
+   "why": "energy budgets"
+  },
+  {
+   "a": "bphys",
+   "b": "bneuro",
+   "tag": "textbook",
+   "why": "neurons are cells"
+  },
+  {
+   "a": "celec",
+   "b": "bneuro",
+   "tag": "textbook",
+   "why": "Nernst and Goldman potentials"
+  },
+  {
+   "a": "bgen",
+   "b": "bevo",
+   "tag": "textbook",
+   "why": "heredity"
+  },
+  {
+   "a": "bpop",
+   "b": "bevo",
+   "tag": "textbook",
+   "why": "Fisher–Haldane–Wright population genetics"
+  },
+  {
+   "a": "bpop",
+   "b": "beco",
+   "tag": "textbook",
+   "why": "Lotka–Volterra builds on logistic growth"
+  },
+  {
+   "a": "bevo",
+   "b": "bbeh",
+   "tag": "textbook",
+   "why": "behavioural ecology, kin selection"
+  },
+  {
+   "a": "bneuro",
+   "b": "bbeh",
+   "tag": "textbook",
+   "why": "behaviour runs on nervous systems"
+  }
+ ],
+ "flow": {
+  "up": 13,
+  "down": 12,
+  "same": 32,
+  "null_mean": -0.0337,
+  "null_sd": 6.843118025432559,
+  "p": 0.4767
+ },
+ "body_edges": {
+  "rect>hyper": 3,
+  "hyper>rect": 3,
+  "rect>rod": 1,
+  "rect>point": 4,
+  "rod>point": 2,
+  "rect>cube": 4,
+  "point>rect": 1,
+  "hyper>box": 2,
+  "box>point": 1,
+  "rect>box": 4,
+  "point>box": 1,
+  "box>rect": 1,
+  "box>hyper": 2
+ },
+ "against": [
+  {
+   "a": "em",
+   "b": "sr"
+  },
+  {
+   "a": "sr",
+   "b": "thomas"
+  },
+  {
+   "a": "gr",
+   "b": "gpb"
+  },
+  {
+   "a": "thomas",
+   "b": "gpb"
+  },
+  {
+   "a": "gr",
+   "b": "pulsar"
+  },
+  {
+   "a": "thomas",
+   "b": "pulsar"
+  },
+  {
+   "a": "prod",
+   "b": "fluids"
+  },
+  {
+   "a": "thermo",
+   "b": "fluids"
+  },
+  {
+   "a": "em",
+   "b": "cq"
+  },
+  {
+   "a": "ccons",
+   "b": "cstoi"
+  },
+  {
+   "a": "ceq",
+   "b": "cacid"
+  },
+  {
+   "a": "corg",
+   "b": "cbio"
+  }
+ ],
+ "chain": [
+  "prod",
+  "em",
+  "cq",
+  "cbond",
+  "corg",
+  "cbio",
+  "bmol",
+  "bcell",
+  "bphys",
+  "bneuro",
+  "bbeh"
+ ],
+ "roots": [
+  "prod",
+  "bpop"
+ ]
+}

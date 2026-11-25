@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Patterns across the results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful lab notebook; plain answers, honest marks of what is known.
+   IDEA: a stepping machine: one 2×2 step, turned by the law, counting out the n-fold sum.
+   PICTURE: the landscape plane with every law, and a live counter that steps a value and shows its Lucas numbers.
+   COLOUR and TYPE: aluminium ground, black ink, orange for walls, violet for turns, gold only for φ; Geist.
+   LAYOUT: verdict first, the plane and the counter, then golden ratio, elliptic counting, constant census, proofs, known or new. */
+:root{color-scheme:light dark;--bg:light-dark(#e9eaec,#141517);--card:light-dark(#ffffff,#1d1f22);--ink:light-dark(#101214,#eceef0);--mute:light-dark(#555a60,#a3a8ae);--line:light-dark(#c9ccd1,#33373c);--wall:#ff4f00;--turn:#6a4ce2;--gold:light-dark(#b8860b,#e2b33c);--blue:light-dark(#257de0,#4c9cf0)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Geist,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.05;margin:0 0 14px;text-wrap:balance;font-weight:700}
+h2{font-size:clamp(22px,2.6vw,30px);line-height:1.1;margin:0 0 12px;text-wrap:balance}
+h3{font-size:18px;margin:18px 0 6px}
+p{max-width:70ch;margin:0 0 12px}.mute{color:var(--mute)}.small{font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,2.4vw,26px)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:860px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.fig{position:relative;min-height:380px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig.short{min-height:280px}
+.nums{display:flex;flex-wrap:wrap;gap:12px 28px;margin:18px 0 6px}.nums b{display:block;font-size:clamp(24px,3vw,34px);line-height:1}
+.nums span{font-size:14px;color:var(--mute)}
+.verdict{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.verdict li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.tag{font-size:13px;font-weight:700;padding:3px 8px;border-radius:999px;justify-self:start;align-self:start;white-space:nowrap}
+.t-keep{background:color-mix(in srgb,var(--blue) 18%,transparent);color:var(--blue)}
+.t-no{background:color-mix(in srgb,var(--mute) 18%,transparent);color:var(--mute)}
+.t-next{background:color-mix(in srgb,var(--turn) 18%,transparent);color:var(--turn)}
+@media(max-width:600px){.verdict li{grid-template-columns:minmax(0,1fr)}}
+label{display:block;font-size:14px;color:var(--mute);margin-top:8px}
+input[type=range]{width:100%;height:44px;accent-color:var(--turn)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--turn);outline-offset:2px}
+button.on{border-color:var(--turn);color:var(--turn)}
+.readout{font-variant-numeric:tabular-nums;font-size:15px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap}
+.scroll{overflow-x:auto}code{overflow-wrap:anywhere;font-size:14px}
+a{color:var(--blue)}.links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;margin-top:8px}.links a{color:var(--blue)}
+details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<div class="band">
+<p class="mute small">Fused Hyperoperation Algebra · patterns across the results · Nov 25, 2026</p>
+<h1>One 2×2 step sits under every law, and Fibonacci is one setting of it</h1>
+<p>Every law on the map, the circle operation ∘₁ (called mult-add before 1.0), velocity addition, slope addition, the channels, the Euler characteristic, is the same machine: adding a value is one 2×2 step, and adding it n times is that step taken n times. Taking a 2×2 step n times always follows one recurrence, Lucas's: U(n+2) = P·U(n+1) − Q·U(n), where P is the step's trace and Q its determinant. Fibonacci is the case P = 1, Q = −1, which is exactly the law (a + b − ab)/(1 + ab) adding 1 to itself.</p>
+<p>One level up, the elliptic laws count the same way with elliptic divisibility (Somos) sequences, and the Lucas count is exactly their pinched edge, where the gluing number goes to zero. That ties this counting engine to the elliptic and soliton pages. It is known mathematics (Ward 1948), and it holds in every check.</p>
+<p>The golden ratio is not a force running through the results. It shows up for one arithmetic reason, the number 5, and in the numbers our pages actually produced it turns up no more often than chance. The constants that do repeat above chance are e and its family, which is the ruler that turns every law into plain multiplication.</p>
+<div class="nums">
+<div><b>18 of 18</b><span>exact and numeric checks pass</span></div>
+<div><b>51</b><span>Lean theorems (all 51 compiled)</span></div>
+<div><b>7,413</b><span>numbers scanned from 33 pages</span></div>
+<div><b>4 vs 1.8</b><span>golden-ratio hits vs chance</span></div>
+<div><b>17 of 17</b><span>elliptic counting checks pass</span></div>
+</div>
+</div>
+
+<div class="band">
+<h2>Verdict on each pattern, fundamental first</h2>
+<ul class="verdict">
+<li><span class="tag t-keep">Keep as the lens</span><div><b>One step, three kinds.</b> Each law is a 2×2 step. Its three countries are the three kinds of 2×2 step: two walls (it stretches toward a wall), the border (it slides), no wall (it turns). This is the classification of Möbius maps, known since the 1800s. It is the shape underneath the 1-D laws, not a new prediction.</div></li>
+<li><span class="tag t-keep">Keep as a tool</span><div><b>Lucas sequences count every law.</b> For any law and any value a, the n-fold sum is a·U(n)/(U(n) − Q·U(n−1)) with P = 2 + k·a and Q = 1 + k·a + d·a². Associativity becomes Lucas's addition rule, Cassini's identity becomes the determinant, and a wall is exactly where the determinant is zero. Known (Lucas 1878); new only as a placement of every law on one recurrence. Proved in Lean.</div></li>
+<li><span class="tag t-no">Not a force</span><div><b>The golden ratio comes from 5, twice.</b> The smallest irrational walls a whole-number law can have are the golden walls (discriminant 5, at k = ±1, d = −1): that is the resistor ladder and the Fibonacci law. And the first cycle a whole-number turn can never make is the 5-cycle, so a 5-cycle forces a golden trace: that is where Lee–Yang's 1.618 came from. Both facts are classical number theory. In the census φ appears at chance level, and every hit was put in by hand.</div></li>
+<li><span class="tag t-keep">Explained</span><div><b>e and its family repeat above chance.</b> e, e − 1 and 1/e turn up on 5 to 6 independent pages, far above chance. That is the exponential ruler: the lens that turns the circle operation into multiplication, and rung flow. It confirms that the ruler is the shared object across pages.</div></li>
+<li><span class="tag t-no">Not one force</span><div><b>Two different numbers once shared the letter q.</b> Before 1.0 the pages used q for the map's second coordinate (now d, the curvature: relativity, twisted boosts) and for the gluing/colour number k + 1 (elliptic, solitons, q-counting, Lee–Yang). Parallels hold within each meaning, not across them. How the two meet is the subject of the map-of-directions work, so it is left there.</div></li>
+<li><span class="tag t-keep">Holds, known</span><div><b>One level up: elliptic laws count with Somos sequences.</b> On an elliptic law the n-fold sum is read off an elliptic divisibility sequence W(n) (Ward 1948). On every landscape law that sequence is the Lucas sequence times a gauge, and the Lucas recurrence is the elliptic one with an extra factor Q^(n−1), proved in Lean. On the theta side W(n) = θ(n·z), and at gluing q = 0 the theta becomes the soliton's sinh, which is Lucas again. Worth keeping as the one counting engine across the landscape, elliptic and soliton pages; not new mathematics.</div></li>
+<li><span class="tag t-no">Not a force</span><div><b>The golden ratio returns at the elliptic level, from 5 again.</b> Curves can do what lines cannot: a rational point of order 5 (Mazur's list allows 1 to 10 and 12). The family of curves with such a point pinches back to a line only at b = φ⁵ and b = −φ⁻⁵, and there the point becomes the golden 5-cycle with turn number φ² or 1/φ². Its parameter is minus the fifth power of the Rogers–Ramanujan continued fraction, which tends to 1/φ as the gluing tightens. So φ is where 5-fold symmetry meets a line: the same 5 as before, seen from above. Classical (Klein, Ramanujan).</div></li>
+</ul>
+</div>
+
+<div class="band">
+<h2>The plane of laws, and the step that counts them</h2>
+<div class="grid2">
+<div class="card">
+<div class="fig" id="plane"><svg role="img" aria-label="The plane of laws: weight k across, second coordinate d up, the parabola d = k²/4, and every law as a dot"></svg></div>
+<p class="small mute">Across: weight k. Up: the map's second coordinate d, in a ⊕ b = (a + b + k·ab)/(1 − d·ab). Below the parabola: two walls. On it: the border. Above: turning. Gold rings are the golden walls (±1, −1). Click anywhere to load that law into the counter.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Step counter</h3>
+<div class="presets" id="presets"></div>
+<label for="kk">weight k: <span id="kv"></span></label><input id="kk" type="range" min="-3" max="3" step="0.01">
+<label for="qq">second coordinate d: <span id="qv"></span></label><input id="qq" type="range" min="-3" max="3" step="0.01">
+<label for="aa">value added each step a: <span id="av"></span></label><input id="aa" type="range" min="-2" max="2" step="0.001">
+<div class="readout" id="read"></div>
+<div class="fig short" id="steps"><svg role="img" aria-label="The n-fold sums a, a⊕a, … as dots, with the walls as orange lines"></svg></div>
+</div>
+</div>
+</div>
+
+<div class="band">
+<h2>Where the golden ratio actually lives</h2>
+<div class="grid2">
+<div class="card">
+<div class="fig short" id="fib"><svg role="img" aria-label="The Fibonacci law counting 1, 1/2, 2/3, 3/5, … into the wall 1/φ, and the ladder counting into φ"></svg></div>
+<p class="small mute">Violet: the Fibonacci law adds 1 to itself and gets F(n)/F(n+1), marching into its wall 1/φ. Orange: its mirror image, the resistor ladder of the simple-laws page, marches into φ. Both have discriminant 5.</p>
+</div>
+<div class="card">
+<div class="fig short" id="turns"><svg role="img" aria-label="Turn number 4cos²(π/n) for each period n, with whole-number turns marked"></svg></div>
+<p class="small mute">A turning step has period n exactly when its turn number P²/Q equals 4cos²(πm/n), the Beraha numbers. Filled dots are whole numbers (periods 1, 2, 3, 4, 6, the only cycles a whole-number law can make). Period 5 is the first gap, and its turn numbers are φ² and 1/φ².</p>
+</div>
+</div>
+</div>
+
+<div class="band">
+<h2>One level up: elliptic counting</h2>
+<p>A landscape law adds by a 2×2 step and counts with a Lucas sequence. An elliptic law adds by the chord rule on a cubic curve and counts with an elliptic divisibility sequence: the n-fold sum of a point P has x(nP) = x(P) − W(n−1)·W(n+1)/W(n)², and W obeys W(m+n)W(m−n) = W(m+1)W(m−1)W(n)² − W(n+1)W(n−1)W(m)². On y² + y = x³ − x the sequence is 1, 1, -1, 1, 2, -1, -3, -5, 7, -4, -23, 29, 59 …, whole numbers with gcd(W m, W n) = |W gcd(m, n)|, just like Fibonacci.</p>
+<div class="grid2">
+<div class="card">
+<div class="fig short" id="theta"><svg role="img" aria-label="Size of the counting sequence W(n) = θ(n z) against n, for the chosen gluing number"></svg></div>
+<label for="gq">gluing number q: <span id="gqv"></span></label><input id="gq" type="range" min="0" max="0.6" step="0.005" value="0.2">
+<p class="small mute">Size of W(n) = θ(n·z), on a log scale, n = 1 to 24 (z fixed off the real line). At q = 0 the theta is the soliton's sinh, a Lucas sequence, and the dots climb in a straight line. Any gluing bends the line into a parabola: elliptic counting grows like n², line counting like n.</p>
+</div>
+<div class="card">
+<div class="fig short" id="pinch"><svg role="img" aria-label="The Rogers–Ramanujan continued fraction R(q) against q, rising to 1/φ"></svg></div>
+<p class="small mute">The curves with a point of order 5 form one family, y² + (1 − b)xy − by = x³ − bx², with discriminant b⁵(b² − 11b − 1). Glued with gluing q⁵, the family sits at b = −R(q)⁵, where R is the Rogers–Ramanujan continued fraction (violet). As q → 1, R → 1/φ and b → −φ⁻⁵, the golden pinch (gold).</p>
+</div>
+</div>
+</div>
+
+<div class="band">
+<h2>Constant census against a fair null</h2>
+<p>Every number printed to at least 4 significant digits in every page's check output (7,413 numbers, 33 pages) was matched against 21 named constants, also allowing the negative, the reciprocal and ±1 (the circle operation shifts by 1). The null keeps each number's first two digits and size and scrambles the rest, 1,000 times. A constant counts as a real repeat only if it beats its null.</p>
+<div class="card">
+<div class="fig short" id="census"><svg role="img" aria-label="Observed matches per constant against the chance level"></svg></div>
+<div class="scroll"><table class="stack" id="ctab"><thead><tr><th>Constant</th><th class="n">Hits</th><th class="n">Chance</th><th class="n">p</th><th>Pages</th></tr></thead><tbody></tbody></table></div>
+<p class="small mute">Bars: hits. Orange tick: what chance gives. Blue bars beat chance (p under 0.01). The fourth φ hit is a fixed point 0.618 on the graph-theory page, set by the whole-number choice Q = 1, which is the same discriminant-5 story. At 6 or more digits (stricter, 6,440 numbers) φ has 0 hits. Most π hits are on the π page, which looked for π. The e hits on the biology, rung-shape and Navier–Stokes pages came out of computations that were not looking for e.</p>
+</div>
+</div>
+
+<div class="band">
+<h2>Proofs</h2>
+<p>All 51 theorems (32 Patterns, 19 elliptic counting) compiled in the shared library with core Lean 4.37, standard axioms only and no sorry. Files: <code>patterns/lean/Patterns.lean</code> (namespace <code>Patterns</code>) and <code>patterns/lean/EllipticCounting.lean</code> (namespace <code>EllipticCounting</code>, compiled in the shared library).</p>
+<div class="scroll"><table class="stack"><thead><tr><th>Theorem</th><th>What it says</th></tr></thead><tbody id="ptab"></tbody></table></div>
+<h3>Checks</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody id="xtab"></tbody></table></div>
+<h3>Elliptic counting checks</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody id="etab"></tbody></table></div>
+</div>
+
+<div class="band">
+<h2>Known or new</h2>
+<p>Known: Möbius classification, Lucas sequences and their addition rule and Cassini identity (Lucas 1878), the infinite resistor ladder and φ, the crystallographic restriction (only periods 1, 2, 3, 4, 6 with whole numbers), Beraha numbers (Beraha, Kahane and Weiss), 5 as the smallest real quadratic discriminant, Fibonacci strong divisibility, elliptic divisibility sequences and division polynomials (Ward 1948), Somos-4 and the curve y² + y = x³ − x, Lucas sequences as degenerate elliptic divisibility sequences, Mazur's torsion theorem, the Tate normal form for 5-torsion and its discriminant, the Rogers–Ramanujan continued fraction and its limit 1/φ. New here: placing every law of this project on one Lucas recurrence, the Fibonacci law's spot on the map at (−1, −1), the census showing which constants really recur across the pages, and the Lean proofs on the fused base.</p>
+<p class="small mute">Files: patterns/checks.py, patterns/census.py, patterns/elliptic_counting.py, patterns/lean/Patterns.lean, patterns/lean/EllipticCounting.lean, beside this page in the project folder.</p>
+</div>
+
+<script>
+{
+const D={"census": [{"constant": "1/e", "observed": 12, "null_mean": 1.552, "null_sd": 1.2582909043619444, "p": 0.000999000999000999, "pages": {"biology": 2, "elliptic": 2, "fused-constants": 3, "information-theory-full": 1, "ns-rungs": 3, "rung-shape": 1}, "n_pages": 6}, {"constant": "e", "observed": 12, "null_mean": 1.203, "null_sd": 1.1008137898845562, "p": 0.000999000999000999, "pages": {"biology": 3, "fused-constants": 3, "information-theory-full": 1, "ns-rungs": 3, "rung-shape": 2}, "n_pages": 5}, {"constant": "e^(1/e)", "observed": 7, "null_mean": 2.168, "null_sd": 1.5019240992806526, "p": 0.011988011988011988, "pages": {"dark-sector": 1, "elliptic": 2, "fused-constants": 2, "pi": 2}, "n_pages": 4}, {"constant": "√2", "observed": 5, "null_mean": 2.097, "null_sd": 1.479726663948447, "p": 0.06993006993006994, "pages": {"fused-constants": 2, "lee-yang": 1, "ns-continuum": 1, "ns-rungs": 1}, "n_pages": 4}, {"constant": "ln 2", "observed": 5, "null_mean": 2.531, "null_sd": 1.5162582233907258, "p": 0.1038961038961039, "pages": {"elliptic": 2, "fused-constants": 2, "rung-shape": 1}, "n_pages": 3}, {"constant": "omega W(1)", "observed": 5, "null_mean": 1.952, "null_sd": 1.442808372584523, "p": 0.054945054945054944, "pages": {"elliptic": 2, "fused-constants": 1, "pi": 2}, "n_pages": 3}, {"constant": "golden ratio φ", "observed": 4, "null_mean": 1.802, "null_sd": 1.3464011289359499, "p": 0.1068931068931069, "pages": {"elliptic": 1, "graph-theory": 1, "lee-yang": 2}, "n_pages": 3}, {"constant": "silver 1+√2", "observed": 4, "null_mean": 1.333, "null_sd": 1.1866385296289683, "p": 0.04695304695304695, "pages": {"fused-constants": 2, "lee-yang": 1, "ns-rungs": 1}, "n_pages": 3}, {"constant": "π/2", "observed": 4, "null_mean": 1.789, "null_sd": 1.3253222249702146, "p": 0.10789210789210789, "pages": {"elliptic": 2, "functional-analysis": 1, "twisted-boosts": 1}, "n_pages": 3}, {"constant": "2/π", "observed": 4, "null_mean": 2.03, "null_sd": 1.3874797295816612, "p": 0.14185814185814186, "pages": {"elliptic": 2, "functional-analysis": 1, "twisted-boosts": 1}, "n_pages": 3}, {"constant": "π", "observed": 13, "null_mean": 0.868, "null_sd": 0.8891434080057052, "p": 0.000999000999000999, "pages": {"elliptic": 1, "pi": 12}, "n_pages": 2}, {"constant": "φ² (Beraha B5)", "observed": 3, "null_mean": 1.483, "null_sd": 1.2392380723654355, "p": 0.1878121878121878, "pages": {"elliptic": 1, "lee-yang": 2}, "n_pages": 2}, {"constant": "√5", "observed": 2, "null_mean": 1.306, "null_sd": 1.1297628069643646, "p": 0.3646353646353646, "pages": {"elliptic": 1, "ns-rungs": 1}, "n_pages": 2}, {"constant": "2+√3", "observed": 2, "null_mean": 0.513, "null_sd": 0.722378709542301, "p": 0.08491508491508491, "pages": {"elliptic": 1, "lee-yang": 1}, "n_pages": 2}, {"constant": "ln 3", "observed": 3, "null_mean": 1.766, "null_sd": 1.2685598133316378, "p": 0.25774225774225773, "pages": {"elliptic": 3}, "n_pages": 1}, {"constant": "√3", "observed": 1, "null_mean": 2.014, "null_sd": 1.427516724945806, "p": 0.8561438561438561, "pages": {"lee-yang": 1}, "n_pages": 1}, {"constant": "2cos(π/7)", "observed": 1, "null_mean": 2.083, "null_sd": 1.4670074982766788, "p": 0.8801198801198801, "pages": {"elliptic": 1}, "n_pages": 1}, {"constant": "Euler γ", "observed": 1, "null_mean": 1.707, "null_sd": 1.3368436707408986, "p": 0.8191808191808192, "pages": {"elliptic": 1}, "n_pages": 1}, {"constant": "Catalan G", "observed": 1, "null_mean": 2.795, "null_sd": 1.646503871844825, "p": 0.949050949050949, "pages": {"fused-constants": 1}, "n_pages": 1}, {"constant": "ζ(3)", "observed": 1, "null_mean": 1.838, "null_sd": 1.3400582076909944, "p": 0.8361638361638362, "pages": {"ns-rungs": 1}, "n_pages": 1}, {"constant": "plastic ρ", "observed": 0, "null_mean": 1.873, "null_sd": 1.3523575710587787, "p": 1.0, "pages": {}, "n_pages": 0}], "checks": [{"name": "n-fold sum = a·U(n)/(U(n) − Q·U(n−1)) for all 16 map laws + 40 random laws", "ok": true, "detail": "2446 exact cases"}, {"name": "Lucas addition U(m+n+1) = U(m+1)U(n+1) − Q·U(m)U(n)", "ok": true, "detail": ""}, {"name": "Cassini: U(n+1)² − U(n)U(n+2) = Qⁿ (determinant of the n-step)", "ok": true, "detail": ""}, {"name": "The circle operation: denominator U(n) − (1+a)U(n−1) = 1, so a^(∘₁n) = (1+a)ⁿ − 1", "ok": true, "detail": ""}, {"name": "law (a + b − ab)/(1 + ab): 1 ⊕ 1 ⊕ … (n times) = F(n)/F(n+1)", "ok": true, "detail": "1, 1/2, 2/3, 3/5, 5/8, …"}, {"name": "its walls are the roots of 1 − a − a² = 0: 1/φ and −φ", "ok": true, "detail": ""}, {"name": "the counting marches into the wall 1/φ", "ok": true, "detail": ""}, {"name": "the resistor ladder step is z ⊕ 1 in the mirror law (k, d) = (1, −1)", "ok": true, "detail": ""}, {"name": "mirror: −((−a) ⊕ (−b)) at (k, d) is a ⊕ b at (−k, d)", "ok": true, "detail": ""}, {"name": "smallest non-square wall discriminant of an integer law is 5 (the golden walls)", "ok": true, "detail": "next: [8, 12, 13, 17]"}, {"name": "slope addition at a = tan(π/n) has period n and turn number 4cos²(π/n)", "ok": true, "detail": "n = 3..12"}, {"name": "period 5 ⇔ turn number φ² = 2.618 or 1/φ² = 0.382 (golden)", "ok": true, "detail": ""}, {"name": "U5 = (P² − Q)² − Q·P²: with Q = 1 it is (P² − P − 1)(P² + P − 1), golden roots", "ok": true, "detail": ""}, {"name": "integer laws only ever cycle with period 1, 2, 3, 4 or 6 (never 5)", "ok": true, "detail": "periods seen: {2: 50, 3: 4, 4: 4}"}, {"name": "Circle-operation Fibonacci from 1, 1 is 2^F(n) − 1: 1, 1, 3, 7, 31, 255, 8191, …", "ok": true, "detail": ""}, {"name": "strong divisibility: gcd(x_m, x_n) = x_gcd (inherits Fibonacci's)", "ok": true, "detail": ""}, {"name": "general start: 1 + x(n) = (1 + x0)^F(n−1) · (1 + x1)^F(n)", "ok": true, "detail": ""}, {"name": "golden law's walls exist mod p exactly when p ≡ ±1 (mod 5): quadratic reciprocity for √5", "ok": true, "detail": ""}], "echecks": [{"name": "y² + y = x³ − x is smooth (discriminant ≠ 0)", "ok": true, "detail": "Δ = 37"}, {"name": "its counting sequence is whole numbers: 1, 1, −1, 1, 2, −1, −3, −5, 7, −4, −23, 29, 59, …", "ok": true, "detail": ""}, {"name": "x(nP) = x(P) − W(n−1)W(n+1)/W(n)², n = 2..24 (exact)", "ok": true, "detail": ""}, {"name": "the EDS recurrence W(m+n)W(m−n) = W(m+1)W(m−1)W(n)² − W(n+1)W(n−1)W(m)² holds", "ok": true, "detail": ""}, {"name": "strong divisibility gcd(W_m, W_n) = |W_gcd(m,n)|, like Fibonacci", "ok": true, "detail": ""}, {"name": "it is a Somos-4 sequence: W(n+4)W(n) = W(n+3)W(n+1) + W(n+2)² (since W2 = 1, W1·W3 = −1); its odd terms are the classic Somos-4 numbers 1, 1, 2, 3, 7, 23, 59 up to sign", "ok": true, "detail": ""}, {"name": "on every landscape law tested, the curve's EDS = Lucas sequence × gauge A^(n²−1)B^(n−1)", "ok": true, "detail": "the circle operation, velocity, slope, Fibonacci law, Euler char., a random law"}, {"name": "Lucas: Q·U(m+4)U(m) = U(m+3)U(m+1)U(2)² − U(3)U(1)U(m+2)² (the q = 0 edge of Somos-4)", "ok": true, "detail": ""}, {"name": "theta along a line, W(n) = θ(n·z) with gluing q, satisfies the EDS recurrence", "ok": true, "detail": "worst rel. error 3.1e-11"}, {"name": "at q = 0 the theta collapses to wⁿᐟ² − w⁻ⁿᐟ², a Lucas sequence (Q = 1) up to gauge", "ok": true, "detail": ""}, {"name": "y² + y = x³ − x² has a rational point of order 5: W5 = 0 and 5P = O", "ok": true, "detail": "W1..W6 = [1, 1, -1, -1, 0, 1]"}, {"name": "the 5-torsion family's discriminant is b⁵(b² − 11b − 1)", "ok": true, "detail": ""}, {"name": "so it pinches to a node exactly at b = φ⁵ = 11.09 and b = −φ⁻⁵ = −0.090: golden", "ok": true, "detail": ""}, {"name": "at both golden nodes the order-5 point becomes a 5-cycle of a line law with turn number φ² or 1/φ²", "ok": true, "detail": "b=11.0902: law k=10.0902, q=31.6525, turn number 0.381966; b=-0.0902: law k=-1.0902, q=0.3475, turn number 2.618034"}, {"name": "Ramanujan: 1/R⁵ − 11 − R⁵ = q⁻¹∏(1−qⁿ)⁶/(1−q⁵ⁿ)⁶, the same b² − 11b − 1 with b = −R⁵", "ok": true, "detail": "worst rel. error 1.5e-14"}, {"name": "the 5-fold curve with b = −R(q)⁵ is the Tate curve with gluing q⁵ (same j-invariant)", "ok": true, "detail": "worst rel. error 1.2e-12"}, {"name": "as the gluing tightens (q → 1), R(q) → 1/φ, so b → −φ⁻⁵: the golden pinch", "ok": true, "detail": "R(0.9) = 0.618033988750; R(0.99) = 0.618033988750; 1/φ = 0.618033988750"}], "dots": [{"t": "The circle operation", "x": 1, "y": 0}, {"t": "Addition", "x": 0, "y": 0}, {"t": "Union of failures", "x": -1, "y": 0}, {"t": "Parity", "x": -2, "y": 0}, {"t": "3-letter channel", "x": -1.5, "y": 0}, {"t": "4-letter channel", "x": -1.3333333333333333, "y": 0}, {"t": "Depolarizing qutrit", "x": -1.125, "y": 0}, {"t": "2× leverage", "x": 2, "y": 0}, {"t": "Partial damage", "x": -0.5, "y": 0}, {"t": "Velocity addition", "x": 0, "y": -1}, {"t": "Slope addition", "x": 0, "y": 1}, {"t": "Sine addition", "x": 0, "y": -0.5}, {"t": "Euler characteristic", "x": 2, "y": 1}, {"t": "Rung 2", "x": 2, "y": 0.5}, {"t": "Rung −1", "x": -1, "y": 0.5}, {"t": "Half rung", "x": 0.5, "y": -0.0625}], "proofs": [["step_num", "Adding a in the law (k, q), acting on the pair (x, y) that stands for x/y. -/ def step (k q a : R) (v : R × R) : R × R := ((1 + k * a) * v.1 + a * v.2, (-(q * a)) * v.1 + v.2) /-- The step's top entry is the law's numerator: x + a·y + k·x·a (for y = 1, circK k x a)."], ["step_den", "The step's bottom entry is the law's denominator: y − q·x·a (for y = 1, 1 − q·x·a)."], ["step_is_law", "With y = 1 the step is exactly the law: numerator circK k x a, denominator 1 − q·x·a."], ["iter_lucas", "n copies of a, as a pair, starting from 0 = (0, 1). -/ def iter (k q a : R) : Nat → R × R | 0 => (0, 1) | n + 1 => step k q a (iter k q a n) /-! ## 2. The Lucas sequence of a law -/ /-- Lucas's sequence: U 0 = 0, U 1 = 1, U (n+2) = P·U(n+1) − Q·U n. -/ def lucas (P Q : R) : Nat → R | 0 => 0 | 1 => 1 | n + 2 => P * lucas P Q (n + 1) - Q * lucas P Q n theorem lucas_zero (P Q : R) : lucas P Q 0 = 0 := rfl theorem lucas_one (P Q : R) : lucas P Q 1 = 1 := rfl theorem lucas_succ_succ (P Q : R) (n : Nat) : lucas P Q (n + 2) = P * lucas P Q (n + 1) - Q * lucas P Q n := rfl /-- The heart of it: n + 1 copies of a, in any law of the map, are (a·U(n+1), U(n+1) − Q·U n) with P = 2 + k·a and Q = 1 + k·a + q·a²."], ["step_trace", "The trace of the step is P = 2 + k·a."], ["step_det", "The determinant of the step is Q = 1 + k·a + q·a²: the law's wall polynomial."], ["wall_absorbs", "A wall is where the determinant vanishes: adding a wall value w sends every pair onto the wall (top = w · bottom), whatever it started as. This is absorption."], ["lucas_add_pair", "Associativity of the law, read on the counting sequence, is Lucas's addition rule: U(m+n+1) = U(m+1)·U(n+1) − Q·U m·U n. Proved for the pair (n, n+1) together."], ["cassini", "Cassini's identity is the determinant of n steps: U(n+1)² − U n·U(n+2) = Qⁿ."], ["cycle_of_lucas_zero", "If U(n+1) = 0 then n + 1 copies of a land back on 0: a cycle."], ["lucas_five", "The fifth term: U 5 = (P² − Q)² − Q·P²."], ["lucas_five_golden", "With Q = 1 (a step of determinant 1, a pure turn), the five-cycle condition factors into the two golden quadratics: U 5 = (P² − P − 1)(P² + P − 1)."], ["multadd_den_one", "The circle operation (k, q) = (1, 0): the denominator is always 1, U(n+1) − (1 + a)·U n = 1."], ["multadd_iter", "The circle operation's counting pair is ((1 + a)^(n+1) − 1, 1), via the Lucas formula."], ["golden_step", "The Fibonacci law (k, q) = (−1, −1): adding 1 is the Fibonacci step (x, y) ↦ (y, x + y)."], ["ladder_is_step", "The resistor ladder of the simple-laws page is one step of the mirror law (1, −1)."], ["mirror_num", "Mirror: flipping the sign of every value takes the law at (k, q) to the law at (−k, q)."], ["golden_walls", "The golden walls: the Fibonacci law's wall polynomial is 1 − a − a², whose roots are 1/φ and −φ (stated as: w is a wall exactly when w² + w = 1)."], ["lucas_fib_pair", "The Lucas sequence with P = 1, Q = −1 is Fibonacci."], ["golden_law_fib", "In the law a ⊕ b = (a + b − ab)/(1 + ab), adding 1 to itself n + 1 times gives F(n+1)/F(n+2): 1, 1/2, 2/3, 3/5, 5/8, …, marching into the golden wall 1/φ."], ["golden_cassini", "Cassini for the golden law: F(n+1)² − F n·F(n+2) = (−1)ⁿ, the determinant (−1) per step."], ["disc_square_or_ge_five", "The smallest irrational walls. For whole-number k and q the wall discriminant k² − 4q is either a perfect square or at least 5. So the first integer law whose walls are irrational has discriminant 5: the golden walls, at (k, q) = (±1, −1)."], ["no_integer_five_cycle", "No whole-number turn has period 5. With determinant 1 and a whole-number trace P, the fifth Lucas term P⁴ − 3P² + 1 is odd, so never 0. A five-cycle needs a golden trace."], ["mfib_lift_pair", "Fibonacci numbers on Nat (for exponents). -/ def nfib : Nat → Nat | 0 => 0 | 1 => 1 | n + 2 => nfib (n + 1) + nfib n /-- The circle-operation Fibonacci sequence: x(n+2) = x(n+1) ◯ x(n). -/ def mfib (x0 x1 : R) : Nat → R | 0 => x0 | 1 => x1 | n + 2 => circ (mfib x0 x1 (n + 1)) (mfib x0 x1 n) /-- Flatten it and the exponents are Fibonacci numbers: 1 + x(n+1) = (1 + x0)^F(n) · (1 + x1)^F(n+1)."], ["mfib_one_one", "From 1, 1: the circle-operation Fibonacci numbers are 2^F(n) − 1 (1, 1, 3, 7, 31, 255, 8191, …), stated as 1 + x(n+1) = (1 + 1)^F(n+2) in any number system."], ["lucas_shift_one", "one-step shift: U(a+1)U(a+e) − U(a)U(a+e+1) = Q^a · U(e)"], ["lucas_exchange_pair", "the general exchange identity: U(a+c)U(a+e) − U(a)U(a+e+c) = Q^a · U(c) · U(e)"], ["lucas_catalan", "Catalan's identity in the form used below: U(n+d)² − U(d)·U(2n+d) = Q^d · U(n)²"], ["lucas_eds", "**Lucas counting is elliptic counting, weighted by Q^(n−1).** Writing n = f + 1 and m = f + e + 2 (so m > n ≥ 1): Q^(n−1)·U(m+n)·U(m−n) = U(m+1)U(m−1)U(n)² − U(n+1)U(n−1)U(m)². This is the elliptic divisibility recurrence (with U(1) = 1), with the extra factor Q^(n−1)."], ["lucas_eds_unit", "with Q = 1 the Lucas sequence satisfies the elliptic divisibility recurrence exactly"], ["lucas_somos4", "the Somos-4 edge (n = 2): Q·U(m+4)U(m) = P²·U(m+3)U(m+1) − (P² − Q)·U(m+2)²"], ["tate5_disc", "the standard b-invariants and discriminant of y² + a1 xy + a3 y = x³ + a2 x² + a4 x + a6 -/ def disc (a1 a2 a3 a4 a6 : R) : R := let b2 := a1 * a1 + 4 * a2 let b4 := 2 * a4 + a1 * a3 let b6 := a3 * a3 + 4 * a6 let b8 := a1 * a1 * a6 + 4 * a2 * a6 - a1 * a3 * a4 + a2 * a3 * a3 - a4 * a4; -(b2 * b2 * b8) - 8 * (b4 * b4 * b4) - 27 * (b6 * b6) + 9 * b2 * b4 * b6 /-- Tate normal form with a point of order 5: y² + (1−b)xy − by = x³ − bx². Its discriminant is b⁵(b² − 11b − 1), so it pinches only at b = 0 and b² = 11b + 1."], ["tate5_golden_pinch", "the pinch points b² − 11b − 1 = 0 are φ⁵ = 5φ + 3 and −φ⁻⁵ = 8 − 5φ, for any φ with φ² = φ + 1"], ["golden_fifth_power", "and 5φ + 3 really is φ⁵"], ["w37_seeds", "division-polynomial seeds at a point with x = 0: W2 = 2y + a1 x + a3, W3 = b8, W4 = W2·(b4 b8 − b6²) -/ def seedW2 (a3 y : Int) : Int := 2 * y + a3 def seedW3 (a1 a2 a3 a4 a6 : Int) : Int := a1 * a1 * a6 + 4 * a2 * a6 - a1 * a3 * a4 + a2 * a3 * a3 - a4 * a4 def seedW4 (a1 a2 a3 a4 a6 y : Int) : Int := let b4 := 2 * a4 + a1 * a3 let b6 := a3 * a3 + 4 * a6 seedW2 a3 y * (b4 * seedW3 a1 a2 a3 a4 a6 - b6 * b6) /-- the counting sequence of y² + y = x³ − x, W(0) .. W(25) -/ def w37List : List Int := [0, 1, 1, -1, 1, 2, -1, -3, -5, 7, -4, -23, 29, 59, 129, -314, -65, 1529, -3689, -8209, -16264, 83313, 113689, -620297, 2382785, 7869898] def w37 (n : Nat) : Int := w37List.getD n 0 /-- the seeds are the curve's division polynomials at (0, 0): a = (0, 0, 1, −1, 0)"], ["w37_point", "(0, 0) is on y² + y = x³ − x"], ["w37_somos4", "Somos-4: W(n+4)W(n) = W(n+3)W(n+1) + W(n+2)²"], ["w37_eds", "the elliptic divisibility recurrence, for 1 ≤ n < m, m + n ≤ 24"], ["w37_strong_div", "strong divisibility, like Fibonacci: gcd(W m, W n) = |W gcd(m, n)|"], ["w37_odd_somos", "its odd terms are the classic Somos-4 numbers 1, 1, 2, 3, 7, 23, 59, 314, 1529, 8209 (up to sign)"], ["order_five_point", "y² + y = x³ − x², a = (0, −1, 1, 0, 0), at (0, 0): W2 = 1, W3 = −1, W4 = −1, W5 = W4·W2³ − W3³ = 0"], ["order_five_points", "its multiples, all on the curve: P = (0,0), 2P = (1,−1), 3P = (1,0), 4P = (0,−1), and 3P = −2P, 4P = −P (negation is y ↦ −y − 1), so 5P = O"], ["order_five_lines", "why: the tangent at P is y = 0, cutting x³ − x² = x²(x − 1), so −2P = (1, 0); the chord through P and 2P is y = −x, cutting x(x − 1)², so P + 2P = −(1, −1) = (1, 0)"]]};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const phi=(1+Math.sqrt(5))/2;
+const st={k:1,q:0,a:1};
+const presets=[["The circle operation",1,0,1],["Velocity",0,-1,0.5],["Slope, 5-cycle",0,1,Math.tan(Math.PI/5)],["Fibonacci law",-1,-1,1],["Ladder",1,-1,1],["Euler char.",2,1,0.3]];
+const pe=document.getElementById('presets');
+pe.innerHTML=presets.map((p,i)=>`<button data-i="${i}">${esc(p[0])}</button>`).join('');
+pe.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const p=presets[+b.dataset.i];set(p[1],p[2],p[3]);});
+const kk=document.getElementById('kk'),qq=document.getElementById('qq'),aa=document.getElementById('aa');
+[kk,qq,aa].forEach(el=>el.addEventListener('input',()=>{st.k=+kk.value;st.q=+qq.value;st.a=+aa.value;update();}));
+function set(k,q,a){st.k=k;st.q=q;if(a!==undefined)st.a=a;kk.value=st.k;qq.value=st.q;aa.value=st.a;update();}
+function fmt(x){if(!isFinite(x))return '∞';const r=Math.abs(x)<1e-12?0:x;return Math.abs(r)>=1e4?r.toExponential(2):(+r.toFixed(4)).toString();}
+function counts(){const {k,q,a}=st;const P=2+k*a,Q=1+k*a+q*a*a;const U=[0,1];for(let i=0;i<24;i++)U.push(P*U[U.length-1]-Q*U[U.length-2]);
+ const s=[];for(let n=1;n<=16;n++){const den=U[n]-Q*U[n-1];s.push(Math.abs(den)<1e-12?Infinity:a*U[n]/den);}return {P,Q,U,s};}
+function walls(k,q){const d=k*k-4*q;if(Math.abs(q)<1e-12)return Math.abs(k)<1e-12?[]:[-1/k];if(d<0)return [];const r=Math.sqrt(d);return [(-k+r)/(2*q),(-k-r)/(2*q)];}
+function country(k,q){const d=k*k-4*q;return Math.abs(d)<1e-9?'border':(d>0?'two walls':'turning');}
+function update(){
+ document.getElementById('kv').textContent=fmt(st.k);document.getElementById('qv').textContent=fmt(st.q);document.getElementById('av').textContent=fmt(st.a);
+ const c=counts(),tau=c.P*c.P/c.Q;let per='none';for(let n=2;n<=16;n++){if(Math.abs(c.U[n])<1e-9*Math.max(1,Math.abs(c.U[n-1]))){per=n;break;}}
+ const w=walls(st.k,st.q);
+ document.getElementById('read').innerHTML=`<p style="margin:8px 0">Country: <b>${country(st.k,st.q)}</b>. Walls: ${w.length?w.map(fmt).join(', '):'none'}.<br>Trace P = ${fmt(c.P)}, determinant Q = ${fmt(c.Q)}, turn number P²/Q = ${fmt(tau)}. Period: ${per}.<br>Lucas U(1..8): ${c.U.slice(1,9).map(fmt).join(', ')}</p>`;
+ drawPlane();drawSteps(c,w);
+}
+function svgOf(id){const box=document.getElementById(id),s=box.querySelector('svg');return [box,s];}
+function drawPlane(){const [box,s]=svgOf('plane');const W=box.clientWidth,H=box.clientHeight,m=34;
+ const X=k=>m+(k+3)/6*(W-2*m),Y=q=>H-m-(q+3)/6*(H-2*m);const ink=css('--ink'),mute=css('--mute'),line=css('--line');
+ let g=`<rect x="${X(-3)}" y="${Y(3)}" width="${X(3)-X(-3)}" height="${Y(-3)-Y(3)}" fill="none" stroke="${line}"/>`;
+ let pa='',pt='';for(let i=0;i<=120;i++){const k=-3+6*i/120,q=k*k/4;if(q<=3){pa+=(pa?'L':'M')+X(k)+','+Y(q);}}
+ let fill='M'+X(-3)+','+Y(3);for(let i=0;i<=120;i++){const k=-3+6*i/120;fill+='L'+X(k)+','+Y(Math.min(3,k*k/4));}fill+='L'+X(3)+','+Y(3)+'Z';
+ g+=`<path d="${fill}" fill="${css('--turn')}" opacity=".08"/><path d="${pa}" fill="none" stroke="${ink}" stroke-width="1.5"/>`;
+ g+=`<line x1="${X(-3)}" x2="${X(3)}" y1="${Y(0)}" y2="${Y(0)}" stroke="${line}"/><line y1="${Y(-3)}" y2="${Y(3)}" x1="${X(0)}" x2="${X(0)}" stroke="${line}"/>`;
+ if(W>520){g+=`<text x="${X(0)+6}" y="${Y(2.7)}" fill="${css('--turn')}" font-size="13">turning (no wall)</text><text x="${X(-2.9)}" y="${Y(-2.6)}" fill="${css('--wall')}" font-size="13">two walls</text>`;}
+ g+=`<text x="${W-m}" y="${H-8}" text-anchor="end" fill="${mute}" font-size="12">k</text><text x="${m-4}" y="${m-10}" fill="${mute}" font-size="12">d</text>`;
+ for(const [k,q] of [[1,-1],[-1,-1]])g+=`<circle cx="${X(k)}" cy="${Y(q)}" r="10" fill="none" stroke="${css('--gold')}" stroke-width="2.5"/>`;
+ for(const d of D.dots){g+=`<circle cx="${X(d.x)}" cy="${Y(d.y)}" r="4.5" fill="${ink}"><title>${esc(d.t)} (${d.x}, ${d.y})</title></circle>`;}
+ const lab=W>620?D.dots.filter(d=>['The circle operation','Velocity addition','Slope addition','Euler characteristic','Parity','Addition'].includes(d.t)):[];
+ for(const d of lab)g+=`<text x="${X(d.x)+7}" y="${Y(d.y)-7}" fill="${mute}" font-size="12">${esc(d.t)}</text>`;
+ g+=`<text x="${X(-1)+12}" y="${Y(-1)+16}" fill="${css('--gold')}" font-size="12">Fibonacci law</text>`;
+ g+=`<circle cx="${X(Math.max(-3,Math.min(3,st.k)))}" cy="${Y(Math.max(-3,Math.min(3,st.q)))}" r="7" fill="${css('--turn')}" stroke="${css('--card')}" stroke-width="2"/>`;
+ s.innerHTML=g;s.onclick=e=>{const r=s.getBoundingClientRect();const k=((e.clientX-r.left-m)/(W-2*m))*6-3,q=((H-m-(e.clientY-r.top))/(H-2*m))*6-3;set(+k.toFixed(2),+q.toFixed(2));};}
+function drawSteps(c,w){const [box,s]=svgOf('steps');const W=box.clientWidth,H=box.clientHeight,m=30;
+ const vals=c.s.filter(isFinite);let lo=Math.min(0,...vals,...w),hi=Math.max(0,...vals,...w);lo=Math.max(lo,-6);hi=Math.min(hi,6);if(hi-lo<1e-6){hi+=1;lo-=1;}
+ const X=n=>m+(n-1)/15*(W-2*m),Y=v=>H-m-(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*(H-2*m);let g='';
+ g+=`<line x1="${m}" x2="${W-m}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--line')}"/>`;
+ for(const v of w)if(v>=lo&&v<=hi)g+=`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--wall')}" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${W-m}" y="${Y(v)-5}" text-anchor="end" fill="${css('--wall')}" font-size="12">wall ${fmt(v)}</text>`;
+ let p='';c.s.forEach((v,i)=>{if(isFinite(v)&&v>=lo-1e-9&&v<=hi+1e-9){p+=(p?'L':'M')+X(i+1)+','+Y(v);}});
+ g+=`<path d="${p}" fill="none" stroke="${css('--turn')}" opacity=".5"/>`;
+ c.s.forEach((v,i)=>{if(isFinite(v))g+=`<circle cx="${X(i+1)}" cy="${Y(v)}" r="4" fill="${css('--turn')}"><title>${i+1} copies: ${fmt(v)}</title></circle>`;});
+ g+=`<text x="${m}" y="${H-8}" fill="${css('--mute')}" font-size="12">copies of a, 1 to 16</text>`;s.innerHTML=g;}
+function drawFib(){const [box,s]=svgOf('fib');const W=box.clientWidth,H=box.clientHeight,m=30;const N=12;
+ const X=n=>m+(n-1)/(N-1)*(W-2*m),Y=v=>H-m-(v-0)/(2.1)*(H-2*m);let g='';const F=[0,1];for(let i=0;i<20;i++)F.push(F[F.length-1]+F[F.length-2]);
+ for(const [v,lab,col] of [[1/phi,'wall 1/φ = 0.618','--gold'],[phi,'φ = 1.618','--gold']])g+=`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css(col)}" stroke-dasharray="5 4"/><text x="${W-m}" y="${Y(v)-6}" text-anchor="end" fill="${css(col)}" font-size="12">${lab}</text>`;
+ let p1='',p2='';for(let n=1;n<=N;n++){const a=F[n]/F[n+1],b=F[2*n]/F[2*n-1];p1+=(p1?'L':'M')+X(n)+','+Y(a);p2+=(p2?'L':'M')+X(n)+','+Y(b);
+  g+=`<circle cx="${X(n)}" cy="${Y(a)}" r="4" fill="${css('--turn')}"><title>${F[n]}/${F[n+1]}</title></circle><circle cx="${X(n)}" cy="${Y(b)}" r="4" fill="${css('--wall')}"><title>${F[2*n]}/${F[2*n-1]}</title></circle>`;}
+ g=`<path d="${p1}" fill="none" stroke="${css('--turn')}" opacity=".5"/><path d="${p2}" fill="none" stroke="${css('--wall')}" opacity=".5"/>`+g;
+ if(W>420)g+=`<text x="${X(2)+6}" y="${Y(0.5)+18}" fill="${css('--turn')}" font-size="12">1/2, 2/3, 3/5, 5/8 …</text><text x="${X(2)+6}" y="${Y(1.5)-12}" fill="${css('--wall')}" font-size="12">1, 3/2, 8/5, 21/13 …</text>`;
+ s.innerHTML=g;}
+function drawTurns(){const [box,s]=svgOf('turns');const W=box.clientWidth,H=box.clientHeight,m=30;const N=12;
+ const X=n=>m+(n-1)/(N-1)*(W-2*m),Y=v=>H-m-v/4*(H-2*m);let g='';
+ for(const v of [0,1,2,3,4])g+=`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--line')}"/><text x="${m-6}" y="${Y(v)+4}" text-anchor="end" fill="${css('--mute')}" font-size="12">${v}</text>`;
+ for(let n=1;n<=N;n++){const v=4*Math.cos(Math.PI/n)**2;const whole=Math.abs(v-Math.round(v))<1e-9;const gold=n===5||n===10;
+  g+=`<circle cx="${X(n)}" cy="${Y(v)}" r="${gold?7:5}" fill="${whole?css('--ink'):'none'}" stroke="${gold?css('--gold'):css('--ink')}" stroke-width="${gold?2.5:1.5}"><title>period ${n}: ${v.toFixed(4)}</title></circle>`;
+  if(W>360||n%2)g+=`<text x="${X(n)}" y="${H-10}" text-anchor="middle" fill="${css('--mute')}" font-size="12">${n}</text>`;}
+ g+=`<text x="${X(5)+10}" y="${Y(phi*phi)+4}" fill="${css('--gold')}" font-size="12">φ²</text><text x="${W-m}" y="${m-10}" text-anchor="end" fill="${css('--mute')}" font-size="12">period n</text>`;s.innerHTML=g;}
+function drawCensus(){const [box,s]=svgOf('census');const W=box.clientWidth,H=box.clientHeight;const rows=D.census.slice(0,12);const lw=W>520?120:84,m=10,rh=(H-20)/rows.length;
+ const mx=Math.max(...rows.map(r=>Math.max(r.observed,r.null_mean)))*1.08;let g='';
+ rows.forEach((r,i)=>{const y=10+i*rh,bw=(W-lw-2*m-40)*r.observed/mx,nw=(W-lw-2*m-40)*r.null_mean/mx;const col=r.p<0.01?css('--blue'):(r.constant.startsWith('golden')||r.constant.startsWith('φ')?css('--gold'):css('--mute'));
+  g+=`<text x="${lw-6}" y="${y+rh*0.62}" text-anchor="end" fill="${css('--ink')}" font-size="12">${esc(r.constant)}</text><rect x="${lw}" y="${y+rh*0.18}" width="${Math.max(1,bw)}" height="${rh*0.64}" rx="3" fill="${col}"/><line x1="${lw+nw}" x2="${lw+nw}" y1="${y+2}" y2="${y+rh-2}" stroke="${css('--wall')}" stroke-width="2"/><text x="${lw+Math.max(bw,nw)+6}" y="${y+rh*0.62}" fill="${css('--mute')}" font-size="12">${r.observed}</text>`;});
+ s.innerHTML=g;}
+document.querySelector('#ctab tbody').innerHTML=D.census.map(r=>`<tr><td>${esc(r.constant)}</td><td class="n">${r.observed}</td><td class="n">${r.null_mean.toFixed(1)}</td><td class="n">${r.p<0.001?'&lt;0.001':r.p.toFixed(3)}</td><td>${esc(Object.keys(r.pages).sort().join(', ')||'none')}</td></tr>`).join('');
+document.getElementById('ptab').innerHTML=D.proofs.map(p=>`<tr><td><code>${esc(p[0])}</code></td><td>${esc(p[1])}</td></tr>`).join('');
+document.getElementById('xtab').innerHTML=D.checks.map(c=>`<tr><td>${esc(c.name)}</td><td>${c.ok?'pass':'fail'}${c.detail?' · '+esc(c.detail):''}</td></tr>`).join('');
+document.getElementById('etab').innerHTML=D.echecks.map(c=>`<tr><td>${esc(c.name)}</td><td>${c.ok?'pass':'fail'}${c.detail?' · '+esc(c.detail):''}</td></tr>`).join('');
+const gq=document.getElementById('gq');gq.addEventListener('input',drawTheta);
+function cm(a,b){return [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];}
+function cexp(z){const e=Math.exp(z[0]);return [e*Math.cos(z[1]),e*Math.sin(z[1])];}
+function logTheta(z,q){// log|θ(z)|, θ = (e^{z/2} − e^{−z/2}) ∏(1 − qᵐ e^z)(1 − qᵐ e^{−z})
+ const a=cexp([z[0]/2,z[1]/2]),b=cexp([-z[0]/2,-z[1]/2]);let L=Math.log(Math.hypot(a[0]-b[0],a[1]-b[1]));
+ const w=cexp(z),wi=cexp([-z[0],-z[1]]);let qm=q;for(let m=1;m<400&&qm>1e-300;m++,qm*=q){L+=Math.log(Math.hypot(1-qm*w[0],-qm*w[1]))+Math.log(Math.hypot(1-qm*wi[0],-qm*wi[1]));}
+ return L;}
+function drawTheta(){const [box,s]=svgOf('theta');const W=box.clientWidth,H=box.clientHeight,m=34;const q=+gq.value;document.getElementById('gqv').textContent=q.toFixed(3);
+ const z=[0.35,1.1],N=24;const v=[],v0=[];for(let n=1;n<=N;n++){v.push(logTheta([n*z[0],n*z[1]],q));v0.push(logTheta([n*z[0],n*z[1]],0));}
+ const hi=Math.max(30,...v,...v0)*1.05,lo=Math.min(0,...v,...v0);const X=n=>m+(n-1)/(N-1)*(W-2*m),Y=y=>H-m-(y-lo)/(hi-lo)*(H-2*m);let g='';
+ g+=`<line x1="${m}" x2="${W-m}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--line')}"/>`;
+ let p0='',p='';for(let n=1;n<=N;n++){p0+=(p0?'L':'M')+X(n)+','+Y(v0[n-1]);p+=(p?'L':'M')+X(n)+','+Y(v[n-1]);}
+ g+=`<path d="${p0}" fill="none" stroke="${css('--mute')}" stroke-dasharray="5 4"/><path d="${p}" fill="none" stroke="${css('--turn')}" opacity=".5"/>`;
+ for(let n=1;n<=N;n++)g+=`<circle cx="${X(n)}" cy="${Y(v[n-1])}" r="4" fill="${css('--turn')}"><title>n = ${n}: log|W| = ${v[n-1].toFixed(2)}</title></circle>`;
+ g+=`<text x="${W-m}" y="${Y(v0[N-1])-6}" text-anchor="end" fill="${css('--mute')}" font-size="12">q = 0: Lucas, straight</text>`;
+ g+=`<text x="${m}" y="${H-8}" fill="${css('--mute')}" font-size="12">n, 1 to ${N}</text><text x="${m}" y="${m-12}" fill="${css('--mute')}" font-size="12">log |W(n)|</text>`;s.innerHTML=g;}
+function RRq(q){let v=Math.pow(q,0.2);for(let n=1;n<4000;n++){const a=Math.pow(q,5*n-4);if(a<1e-17)break;v*=(1-Math.pow(q,5*n-1))*(1-a)/((1-Math.pow(q,5*n-2))*(1-Math.pow(q,5*n-3)));}return v;}
+function drawPinch(){const [box,s]=svgOf('pinch');const W=box.clientWidth,H=box.clientHeight,m=34;
+ const X=q=>m+q*(W-2*m),Y=y=>H-m-y/0.7*(H-2*m);let g='';
+ for(const y of [0,0.2,0.4,0.6])g+=`<line x1="${m}" x2="${W-m}" y1="${Y(y)}" y2="${Y(y)}" stroke="${css('--line')}"/><text x="${m-6}" y="${Y(y)+4}" text-anchor="end" fill="${css('--mute')}" font-size="12">${y}</text>`;
+ g+=`<line x1="${m}" x2="${W-m}" y1="${Y(1/phi)}" y2="${Y(1/phi)}" stroke="${css('--gold')}" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${m+6}" y="${Y(1/phi)-6}" fill="${css('--gold')}" font-size="12">1/φ = 0.618</text>`;
+ let p='';for(let i=1;i<=200;i++){const q=i/200*0.995;p+=(p?'L':'M')+X(q)+','+Y(RRq(q));}
+ g+=`<path d="${p}" fill="none" stroke="${css('--turn')}" stroke-width="2"/>`;
+ for(const q of [0.1,0.3,0.5,0.7,0.9])g+=`<circle cx="${X(q)}" cy="${Y(RRq(q))}" r="4" fill="${css('--turn')}"><title>R(${q}) = ${RRq(q).toFixed(6)}</title></circle>`;
+ g+=`<text x="${W-m}" y="${H-8}" text-anchor="end" fill="${css('--mute')}" font-size="12">gluing q, 0 to 1</text><text x="${X(0.35)}" y="${Y(RRq(0.35))+18}" fill="${css('--turn')}" font-size="12">R(q)</text>`;s.innerHTML=g;}
+const all=()=>{update();drawFib();drawTurns();drawCensus();drawTheta();drawPinch();};
+const ro=new ResizeObserver(all);['plane','steps','fib','turns','census','theta','pinch'].forEach(id=>ro.observe(document.getElementById(id)));
+set(1,0,1);
+}
+</script>
+</body></html>

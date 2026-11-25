@@ -1,0 +1,23 @@
+7413 distinct numbers (>=4 sig. digits) from 33 pages
+constant            obs pages   null       p  pages
+1/e                  12     6   1.55  0.0010  {'biology': 2, 'elliptic': 2, 'fused-constants': 3, 'information-theory-full': 1, 'ns-rungs': 3, 'rung-shape': 1}
+e                    12     5   1.20  0.0010  {'biology': 3, 'fused-constants': 3, 'information-theory-full': 1, 'ns-rungs': 3, 'rung-shape': 2}
+e^(1/e)               7     4   2.17  0.0120  {'dark-sector': 1, 'elliptic': 2, 'fused-constants': 2, 'pi': 2}
+√2                    5     4   2.10  0.0699  {'fused-constants': 2, 'lee-yang': 1, 'ns-continuum': 1, 'ns-rungs': 1}
+ln 2                  5     3   2.53  0.1039  {'elliptic': 2, 'fused-constants': 2, 'rung-shape': 1}
+omega W(1)            5     3   1.95  0.0549  {'elliptic': 2, 'fused-constants': 1, 'pi': 2}
+golden ratio φ        4     3   1.80  0.1069  {'elliptic': 1, 'graph-theory': 1, 'lee-yang': 2}
+silver 1+√2           4     3   1.33  0.0470  {'fused-constants': 2, 'lee-yang': 1, 'ns-rungs': 1}
+π/2                   4     3   1.79  0.1079  {'elliptic': 2, 'functional-analysis': 1, 'twisted-boosts': 1}
+2/π                   4     3   2.03  0.1419  {'elliptic': 2, 'functional-analysis': 1, 'twisted-boosts': 1}
+π                    13     2   0.87  0.0010  {'elliptic': 1, 'pi': 12}
+φ² (Beraha B5)        3     2   1.48  0.1878  {'elliptic': 1, 'lee-yang': 2}
+√5                    2     2   1.31  0.3646  {'elliptic': 1, 'ns-rungs': 1}
+2+√3                  2     2   0.51  0.0849  {'elliptic': 1, 'lee-yang': 1}
+ln 3                  3     1   1.77  0.2577  {'elliptic': 3}
+√3                    1     1   2.01  0.8561  {'lee-yang': 1}
+2cos(π/7)             1     1   2.08  0.8801  {'elliptic': 1}
+Euler γ               1     1   1.71  0.8192  {'elliptic': 1}
+Catalan G             1     1   2.79  0.9491  {'fused-constants': 1}
+ζ(3)                  1     1   1.84  0.8362  {'ns-rungs': 1}
+plastic ρ             0     0   1.87  1.0000  {}

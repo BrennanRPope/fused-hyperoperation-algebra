@@ -1,0 +1,19 @@
+PASS one compartment: two excitatory synapses sum by the lens law (v₁ + v₂ − 2v₁v₂)/(1 − v₁v₂) | v₁ = 0.801, v₂ = 0.802, together 0.890, linear sum 1.603
+PASS in odds v/(1 − v), i.e. conductance in leak units, the inputs simply add: dial 0
+PASS the reversal potential v = 1 absorbs: a synapse clamped at reversal makes the others irrelevant
+PASS any passive tree, any two synapses, any reversal potentials: the soma sums them by an exact lens law (200 trees × 5 strengths) | largest relative error 9.6e-14
+PASS the constants are k = −Z_ij(1/(E_j Z_si) + 1/(E_i Z_sj)) and q = Z_ij²/(E_i E_j Z_si Z_sj): geometry and reversal potentials only, never synapse strength
+PASS with one synapse at the soma the law sits on the line k·E + q·E² = −1 (in units of the reversal potential: k + q = −1) | here ρ = Z_si/Z_ss = 0.409
+PASS k = −(A + B) and q = A·B with A = Z_ij/(E_j Z_si), B = Z_ij/(E_i Z_sj)
+PASS in the coordinate T(v) = (1 − A·v)/(1 − B·v) the two responses simply multiply: T(v₁₂) = T(v₁)·T(v₂), so T − 1 adds by plain ∘₁
+   model dendrite, E at trunk node 40, I at node 10: EPSP 0.2–5.4 mV, IPSP -2.64–-0.31 mV
+   exact lens k = 0.2172 /mV, q = -2.06e-03 /mV²; best bilinear k = 0.2172 /mV; bilinear misses the shunting term by 1.7% rms
+PASS Hao et al.'s measured rule V ≈ EPSP + IPSP + k·EPSP·IPSP is the dial, the first-order part of the exact lens law | bilinear fit k = 0.2172, exact k = 0.2172 per mV
+PASS the exact lens law reproduces every amplitude pair; the bilinear rule leaves a residual from the missing 1 − q·ab | lens error 7.3e-14 mV; bilinear error 1.7% of the shunting term
+PASS tree factorisation: for excitation anywhere beyond the inhibitory site, the dominant term of k equals Z_II/(|E_I|·Z_sI), independent of where the excitation is | 0.2263 per mV
+PASS so k is nearly flat for distal excitation and falls steeply for excitation between the inhibition and the soma, as Hao et al. measured | k distal 0.209–0.218 (spread 4%); next to the soma 0.140 per mV (65% of the distal level)
+PASS inhibition on an oblique branch shunts excitation in that branch far more than on the trunk, as Hao et al. reported | max k in branch 0.588, on trunk 0.183 per mV
+PASS chance at least one of n release sites fires: 1 − (1 − p)ⁿ = wpow(−1, p, n)
+PASS Weber: n just-noticeable steps multiply the stimulus by (1 + w)ⁿ, a circle operation power
+
+15/15 checks passed

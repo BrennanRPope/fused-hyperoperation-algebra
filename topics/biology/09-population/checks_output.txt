@@ -1,0 +1,13 @@
+PASS Reed–Frost: a susceptible meeting I infectives escapes with (1 − p)^I, so the infection chance is wpow(−1, p, I)
+PASS the Reed–Frost epidemic's final size matches the final-size relation 1 − z = e^(−R₀z) for large populations | R₀ = 4.0: chain 0.980, relation 0.980
+PASS independent interventions that cut transmission by e₁ and e₂ cut it by the 'or' law e₁ ∘₋₁ e₂ together | 0.4 and 0.3 together: 0.58
+PASS the herd-immunity threshold 1 − 1/R₀ is −inv(R₀ − 1), the circle operation's inverse of the excess reproduction number | R₀ = 3.0: 0.667
+PASS n independent 25% interventions stop spread at R₀ = 3 once wpow(−1, 0.25, n) ≥ 1 − 1/R₀ | n = 4
+PASS two Beverton–Holt seasons in a row are one Beverton–Holt season: growth excesses compose by ∘₁, and 1/M = 1/M₁ + R₁/M₂ | R = 4.0, M = 13.79
+PASS the room left below carrying capacity, K/N − 1, shrinks by the factor 1/R each generation exactly
+PASS Hassell's N' = λN/(1 + aN)^b has denominator 1 + mpow(aN, b); b = 1 is Beverton–Holt
+PASS with a·b held fixed and b large, Hassell becomes Ricker: (1 + c·N/b)^(−b) → e^(−cN) | largest gap 0.034 at b = 2000
+PASS the chance of dying across several age classes is the 'or' fold of the per-class mortalities | 0.1520
+PASS Levins colonisation: an empty patch with n occupied neighbours, each colonising with chance c, is colonised with wpow(−1, c, n)
+
+11/11 checks passed

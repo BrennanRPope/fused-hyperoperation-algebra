@@ -1,0 +1,46 @@
+result                        std     op    ctl   (route-specific lines, each vs standard; std vs op)
+R1 subset expansion          1219    218     99
+R2 inclusion-exclusion        864    696    276
+R3 Moebius heart             3325   1242   1090
+R4 binomial                  1717   2714   2600
+R5 geometric series           265    424    226
+R6 tangent addition            52    247      -
+PASS R1 subset expansion: standard own lines 3 <= operation 8
+PASS R1 subset expansion: standard proof term 387 < operation 652
+PASS R2 inclusion-exclusion: standard own lines 8 <= operation 33
+PASS R2 inclusion-exclusion: standard proof term 572 < operation 3774
+PASS R3 Moebius heart: standard own lines 5 <= operation 12
+PASS R3 Moebius heart: standard proof term 135 < operation 656
+PASS R4 binomial: standard own lines 4 <= operation 9
+PASS R4 binomial: standard proof term 472 < operation 970
+PASS R5 geometric series: standard own lines 4 <= operation 15
+PASS R5 geometric series: standard proof term 434 < operation 2776
+PASS R6 tangent addition: standard own lines 7 <= operation 42
+PASS R6 tangent addition: standard proof term 1649 < operation 21160
+PASS R1 subset expansion: operation route cost 218 < standard 1219
+PASS R2 inclusion-exclusion: operation route cost 696 < standard 864
+PASS R3 Moebius heart: operation route cost 1242 < standard 3325
+PASS R4 binomial: operation route cost 2714 > standard 1717
+PASS R5 geometric series: operation route cost 424 > standard 265
+PASS R6 tangent addition: operation route cost 247 > standard 52
+PASS R1 subset expansion: control 11 < operation 174 (head to head)
+PASS R1 subset expansion: vs standard, control 99 <= operation 218
+PASS R2 inclusion-exclusion: control 121 < operation 481 (head to head)
+PASS R2 inclusion-exclusion: vs standard, control 276 <= operation 696
+PASS R3 Moebius heart: control 18 < operation 174 (head to head)
+PASS R3 Moebius heart: vs standard, control 1090 <= operation 1242
+PASS R4 binomial: control 17 < operation 145 (head to head)
+PASS R4 binomial: vs standard, control 2600 <= operation 2714
+PASS R5 geometric series: control 7 < operation 259 (head to head)
+PASS R5 geometric series: vs standard, control 226 <= operation 424
+PASS R1 subset expansion: control also beats standard (99 < 1263)
+PASS R2 inclusion-exclusion: control also beats standard (276 < 804)
+PASS R3 Moebius heart: control also beats standard (1090 < 3329)
+PASS R1 subset expansion: depths [57, 54, 53] within 4
+PASS R2 inclusion-exclusion: depths [59, 58, 58] within 4
+PASS R3 Moebius heart: depths [57, 54, 54] within 4
+PASS R4 binomial: depths [57, 54, 54] within 4
+PASS R5 geometric series: depths [55, 55, 54] within 4
+PASS R6 tangent addition: depths [92, 93] within 4
+
+37 checks passed.
