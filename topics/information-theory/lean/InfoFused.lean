@@ -38,7 +38,7 @@ namespace InfoFused
 /-- Weighted mult-add. -/
 def wmul (k a b : Rat) : Rat := a + b + k * a * b
 /-- Plain mult-add, rung 1. -/
-def madd (a b : Rat) : Rat := a + b + a * b
+def circ (a b : Rat) : Rat := a + b + a * b
 
 /-- Our own power, so every lemma used is proved here. -/
 def pw (x : Rat) : Nat → Rat
@@ -54,15 +54,15 @@ theorem wmul_comm (k a b : Rat) : wmul k a b = wmul k b a := by unfold wmul; gri
 theorem wmul_assoc (k a b c : Rat) : wmul k (wmul k a b) c = wmul k a (wmul k b c) := by
   unfold wmul; grind
 theorem wmul_zero (k a : Rat) : wmul k a 0 = a := by unfold wmul; grind
-theorem madd_eq (a b : Rat) : madd a b = wmul 1 a b := by unfold madd wmul; grind
+theorem circ_eq (a b : Rat) : circ a b = wmul 1 a b := by unfold circ wmul; grind
 
 /-- K1, lift: the coordinate 1 + k·a multiplies. -/
 theorem lift (k a b : Rat) : 1 + k * wmul k a b = (1 + k * a) * (1 + k * b) := by
   unfold wmul; grind
 
 /-- Every nonzero weight is plain mult-add after scaling by k. -/
-theorem scale (k a b : Rat) : k * wmul k a b = madd (k * a) (k * b) := by
-  unfold wmul madd; grind
+theorem scale (k a b : Rat) : k * wmul k a b = circ (k * a) (k * b) := by
+  unfold wmul circ; grind
 
 /-- K3, flip: reading a and b as their negatives swaps the sign of the weight. -/
 theorem flip (k a b : Rat) : wmul k (-a) (-b) = -(wmul (-k) a b) := by unfold wmul; grind
@@ -151,8 +151,8 @@ theorem survival (p q : Rat) : 1 - wmul (-1) p q = (1 - p) * (1 - q) := by
   have h := lift (-1) p q; grind
 
 /-- The k = −1 rule is mult-add read on the negatives (K3). -/
-theorem union_is_flipped_madd (p q : Rat) : wmul (-1) p q = -(madd (-p) (-q)) := by
-  unfold wmul madd; grind
+theorem union_is_flipped_circ (p q : Rat) : wmul (-1) p q = -(circ (-p) (-q)) := by
+  unfold wmul circ; grind
 
 /-- Inclusion–exclusion for three independent events falls out of associativity:
     the signed corners of the mult-add cube. -/
@@ -222,8 +222,8 @@ theorem gini_simpson (QA QB : Rat) : 1 - QA * QB = wmul (-1) (1 - QA) (1 - QB) :
 
 /-- Landmark q = 0 (k = 1): S₀ = N − 1, support sizes multiply, so N − 1 mult-adds:
     the N×M grid minus its unit corner. -/
-theorem support_count (N M : Rat) : N * M - 1 = madd (N - 1) (M - 1) := by
-  unfold madd; grind
+theorem support_count (N M : Rat) : N * M - 1 = circ (N - 1) (M - 1) := by
+  unfold circ; grind
 
 /-- Landmark q = 1 (k = 0): Shannon, plain addition. -/
 theorem shannon_weight (a b : Rat) : wmul 0 a b = a + b := by unfold wmul; grind
@@ -250,8 +250,8 @@ theorem kraft_product (KA KB : Rat) (h0 : 0 ≤ KA) (hA : KA ≤ 1) (hB : KB ≤
 
 /-- Campbell's exponential cost: M = Σ pᵢ·D^(t·ℓᵢ) multiplies for concatenated
     independent sources (K5 on the weights), so M − 1 composes by plain mult-add. -/
-theorem campbell (MA MB : Rat) : MA * MB - 1 = madd (MA - 1) (MB - 1) := by
-  unfold madd; grind
+theorem campbell (MA MB : Rat) : MA * MB - 1 = circ (MA - 1) (MB - 1) := by
+  unfold circ; grind
 
 /-- Expected length adds for concatenated codes (the k = 0 shadow of Campbell):
     Σᵢⱼ pᵢrⱼ(ℓᵢ + mⱼ) = Σ pℓ + Σ rm when both sum to 1.  Stated on the grid sums. -/
@@ -360,12 +360,12 @@ theorem hamming_perfect (r m : Nat) (h : m + r + 1 = 2 ^ r) :
 -/
 
 /-- Check node: −2·(p ⊕₋₂ q) = (−2p) ⊕ (−2q), plain mult-add. -/
-theorem check_node (p q : Rat) : -2 * wmul (-2) p q = madd (-2 * p) (-2 * q) := by
-  unfold wmul madd; grind
+theorem check_node (p q : Rat) : -2 * wmul (-2) p q = circ (-2 * p) (-2 * q) := by
+  unfold wmul circ; grind
 
 /-- Variable node: posterior odds multiply, so o − 1 mult-adds. -/
-theorem variable_node (o1 o2 : Rat) : o1 * o2 - 1 = madd (o1 - 1) (o2 - 1) := by
-  unfold madd; grind
+theorem variable_node (o1 o2 : Rat) : o1 * o2 - 1 = circ (o1 - 1) (o2 - 1) := by
+  unfold circ; grind
 
 /-- Odds product in ρ coordinates (ρ = (o−1)/(o+1)), with denominators cleared:
     numerator and denominator of the velocity sum. -/

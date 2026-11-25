@@ -9,15 +9,15 @@
 -/
 namespace DataCenterFused
 
-def madd (a b : Nat) : Nat := a + b + a * b
-theorem madd_lift (a b : Nat) : madd a b + 1 = (a + 1) * (b + 1) := by unfold madd; grind
-theorem madd_comm (a b : Nat) : madd a b = madd b a := by unfold madd; grind
-theorem madd_assoc (a b c : Nat) : madd (madd a b) c = madd a (madd b c) := by unfold madd; grind
+def circ (a b : Nat) : Nat := a + b + a * b
+theorem circ_lift (a b : Nat) : circ a b + 1 = (a + 1) * (b + 1) := by unfold circ; grind
+theorem circ_comm (a b : Nat) : circ a b = circ b a := by unfold circ; grind
+theorem circ_assoc (a b c : Nat) : circ (circ a b) c = circ a (circ b c) := by unfold circ; grind
 
 /-- Fold a power chain of stage odds with mult-add. -/
 def chain : List Nat → Nat
   | [] => 0
-  | r :: rs => madd r (chain rs)
+  | r :: rs => circ r (chain rs)
 /-- Product of (1 + r) over the stages. -/
 def lifts : List Nat → Nat
   | [] => 1
@@ -27,7 +27,7 @@ def lifts : List Nat → Nat
 theorem chain_lift (rs : List Nat) : chain rs + 1 = lifts rs := by
   induction rs with
   | nil => rfl
-  | cons r rs ih => simp only [chain, lifts]; rw [madd_lift, ih]
+  | cons r rs ih => simp only [chain, lifts]; rw [circ_lift, ih]
 
 theorem lifts_append (xs ys : List Nat) : lifts (xs ++ ys) = lifts xs * lifts ys := by
   induction xs with
@@ -44,9 +44,9 @@ theorem chain_swap (xs ys : List Nat) (a b : Nat) :
   omega
 
 /-- Splitting the chain at the IT meter: (outside ⊕ inside) is the whole chain (TUE = PUE·ITUE). -/
-theorem chain_split (xs ys : List Nat) : chain (xs ++ ys) = madd (chain xs) (chain ys) := by
+theorem chain_split (xs ys : List Nat) : chain (xs ++ ys) = circ (chain xs) (chain ys) := by
   have h := chain_lift (xs ++ ys)
-  rw [lifts_append, ← chain_lift xs, ← chain_lift ys, ← madd_lift] at h
+  rw [lifts_append, ← chain_lift xs, ← chain_lift ys, ← circ_lift] at h
   omega
 
 /-- Position independence: scaling one stage's factor scales the facility total by the same

@@ -11,7 +11,7 @@
 -/
 import FusedAlgebra.Base
 
-namespace MultAdd.Cube
+namespace CircleOp.Cube
 
 /-! ## The cube's layers -/
 
@@ -119,4 +119,4 @@ theorem layer_step (n k : Nat) : (k + 1) * layer n (k + 1) = (n - k) * layer n k
         subst hmj
         grind
 
-end MultAdd.Cube
+end CircleOp.Cube

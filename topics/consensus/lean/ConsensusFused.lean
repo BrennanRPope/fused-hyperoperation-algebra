@@ -20,7 +20,7 @@
 namespace ConsensusFused
 
 def wmul (k a b : Rat) : Rat := a + b + k * a * b
-def madd (a b : Rat) : Rat := a + b + a * b
+def circ (a b : Rat) : Rat := a + b + a * b
 
 /-- Our own power, so every lemma we use is proved here. -/
 def pw (x : Rat) : Nat → Rat
@@ -34,10 +34,10 @@ def mpow (k a : Rat) : Nat → Rat
 
 /-! ## 0. The algebra -/
 
-theorem madd_lift (a b : Rat) : 1 + madd a b = (1 + a) * (1 + b) := by unfold madd; grind
-theorem madd_comm (a b : Rat) : madd a b = madd b a := by unfold madd; grind
-theorem madd_assoc (a b c : Rat) : madd (madd a b) c = madd a (madd b c) := by unfold madd; grind
-theorem madd_zero (a : Rat) : madd a 0 = a := by unfold madd; grind
+theorem circ_lift (a b : Rat) : 1 + circ a b = (1 + a) * (1 + b) := by unfold circ; grind
+theorem circ_comm (a b : Rat) : circ a b = circ b a := by unfold circ; grind
+theorem circ_assoc (a b c : Rat) : circ (circ a b) c = circ a (circ b c) := by unfold circ; grind
+theorem circ_zero (a : Rat) : circ a 0 = a := by unfold circ; grind
 theorem wmul_lift (k a b : Rat) : 1 + k * wmul k a b = (1 + k * a) * (1 + k * b) := by
   unfold wmul; grind
 /-- k = −1 is "at least one of two independent events". -/
@@ -185,13 +185,13 @@ theorem caught (d : Rat) (m : Nat) : mpow (-1) d m = 1 - pw (1 - d) m := by
 
 def dbl : Nat → Rat → Rat
   | 0, a => a
-  | n + 1, a => madd (dbl n a) (dbl n a)
+  | n + 1, a => circ (dbl n a) (dbl n a)
 
 theorem dbl_lift (a : Rat) (n : Nat) : 1 + dbl n a = pw (1 + a) (2 ^ n) := by
   induction n with
   | zero => simp [dbl, pw]
   | succ n ih =>
-    rw [dbl, madd_lift, ih, Nat.pow_succ, pw_mul]
+    rw [dbl, circ_lift, ih, Nat.pow_succ, pw_mul]
     simp [pw]
 
 theorem pietrzak_halves (x : Rat) (m n : Nat) : pw (pw x (2 ^ m)) (2 ^ n) = pw x (2 ^ (m + n)) := by

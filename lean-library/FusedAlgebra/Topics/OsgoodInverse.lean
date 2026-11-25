@@ -44,9 +44,9 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Pi
 import FusedAlgebra.Topics.NSContinuum
 
-namespace MultAdd.OsgoodInverse
+namespace CircleOp.OsgoodInverse
 
-open MultAdd Lean.Grind
+open CircleOp Lean.Grind
 
 set_option linter.unusedSectionVars false
 
@@ -75,9 +75,9 @@ theorem ric_step (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
   unfold ric; grind
 
 /-- The same law in mult-add: the step is h times the lift of y(t) ⊞ y(t+h). -/
-theorem ric_step_multAdd (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
-    ric (t + h) - ric t = h * (1 + multAdd (ric t) (ric (t + h))) := by
-  rw [ric_step t h h1 h2, multAdd_lift]; grind
+theorem ric_step_circ (t h : K) (h1 : 1 - t ≠ 0) (h2 : 1 - (t + h) ≠ 0) :
+    ric (t + h) - ric t = h * (1 + circ (ric t) (ric (t + h))) := by
+  rw [ric_step t h h1 h2, circ_lift]; grind
 
 /-- Read in the clock coordinate, the climb is uniform: one step of the law
     lowers 1/(1+y) by exactly h. -/
@@ -131,36 +131,36 @@ theorem riccati_hits_wall (y : Nat → K) (h : K) (m : Nat)
     into the wall −1. Blow-up at infinity and leaving the wall are one question,
     swapped by the mult-add inverse. -/
 theorem mirror_step (a b h : K) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0)
-    (hs : b - a = h * (1 + a) * (1 + b)) : multAddInv b - multAddInv a = -h := by
+    (hs : b - a = h * (1 + a) * (1 + b)) : circInv b - circInv a = -h := by
   have hc := riccati_clock_step a b h ha hb hs
-  unfold multAddInv
+  unfold circInv
   grind
 
 /-- The mirrored walk reaches the wall exactly when the climb blows up:
     1 + (−u/(1+u)) = 1/(1+u). -/
-theorem mirror_lift (u : K) (hu : 1 + u ≠ 0) : 1 + multAddInv u = 1 / (1 + u) := by
-  unfold multAddInv; grind
+theorem mirror_lift (u : K) (hu : 1 + u ≠ 0) : 1 + circInv u = 1 / (1 + u) := by
+  unfold circInv; grind
 
 /-- **The rung-1 climb never reaches the wall.** If yₙ₊₁ = yₙ ⊞ h then
     1 + yₙ = (1 + y₀)(1 + h)ⁿ: the clock log₁₊ y advances by log(1+h) per step
     forever (continuous form: ∫ ds/(1+s) = log(1+s) → ∞). -/
-theorem rung1_lift (y : Nat → K) (h : K) (hs : ∀ n, y (n + 1) = multAdd (y n) h) :
+theorem rung1_lift (y : Nat → K) (h : K) (hs : ∀ n, y (n + 1) = circ (y n) h) :
     ∀ n, 1 + y n = (1 + y 0) * (1 + h) ^ n := by
   intro n
   induction n with
   | zero => rw [Semiring.pow_zero]; grind
-  | succ n ih => rw [Semiring.pow_succ, hs n, multAdd_lift, ih]; grind
+  | succ n ih => rw [Semiring.pow_succ, hs n, circ_lift, ih]; grind
 
 end Field
 
 /-- On the rationals the rung-1 climb stays on the safe side of the wall forever. -/
 theorem rung1_never_wall (y : Nat → Rat) (h : Rat) (hh : 0 < 1 + h) (h0 : 0 < 1 + y 0)
-    (hs : ∀ n, y (n + 1) = multAdd (y n) h) : ∀ n, 0 < 1 + y n := by
+    (hs : ∀ n, y (n + 1) = circ (y n) h) : ∀ n, 0 < 1 + y n := by
   intro n
   induction n with
   | zero => exact h0
   | succ n ih =>
-    have e : 1 + y (n + 1) = (1 + y n) * (1 + h) := by rw [hs n, multAdd_lift]
+    have e : 1 + y (n + 1) = (1 + y n) * (1 + h) := by rw [hs n, circ_lift]
     rw [e]
     have := Rat.mul_lt_mul_of_pos_left hh ih
     grind
@@ -314,7 +314,7 @@ theorem const_block (c : Rat) (j : Nat) : ∀ s, fsum (fun _ => c) s (2 ^ j) = (
 /-- **The blocks are the mult-add lattice.** The j-th block starts at
     2ʲ = 1 + 1^(⊞j), the lift of the j-fold mult-add of 1. -/
 theorem block_start (j : Nat) : 2 ^ j = mpow (1 : Nat) j + 1 :=
-  (MultAdd.NSContinuum.mpow_one_nat j).symm
+  (CircleOp.NSContinuum.mpow_one_nat j).symm
 
 /-- The j-th block [2ʲ, 2ʲ⁺¹). -/
 def blk (a : Nat → Rat) (j : Nat) : Rat := fsum a (2 ^ j) (2 ^ j)
@@ -469,7 +469,7 @@ theorem harm_nonneg (k : Nat) : 0 ≤ harm k := by
 theorem harm_anti : Antitone1 harm := by
   intro i k hi hik
   unfold harm
-  exact PiMultAdd.div_le_div_of (nr_pos i hi) (nr_mono i k hik)
+  exact PiCircle.div_le_div_of (nr_pos i hi) (nr_mono i k hik)
     (by decide +kernel : (0 : Rat) ≤ 1) (Rat.le_refl)
 
 /-- One rung down, the harmonic terms become all ones: 2ʲ · (1/2ʲ) = 1. -/
@@ -505,7 +505,7 @@ theorem isq_anti : Antitone1 isq := by
   have hpp : 0 < nr i * nr i := by
     have := Rat.mul_lt_mul_of_pos_left hp hp; grind
   have hle : nr i * nr i ≤ nr k * nr k := by grind
-  exact PiMultAdd.div_le_div_of hpp hle (by decide +kernel : (0 : Rat) ≤ 1) (Rat.le_refl)
+  exact PiCircle.div_le_div_of hpp hle (by decide +kernel : (0 : Rat) ≤ 1) (Rat.le_refl)
 
 /-- One rung down, the inverse squares become a geometric series:
     Σ_{j<n} 2ʲ/4ʲ = 2 − 2/2ⁿ. -/
@@ -555,4 +555,4 @@ theorem rot_perp (x y : Int) : x * rot1 x y + y * rot2 x y = 0 := by
 theorem rad_out (x y : Int) : x * rad1 x y + y * rad2 x y = (x ^ 2 + y ^ 2) ^ 2 := by
   unfold rad1 rad2; grind
 
-end MultAdd.OsgoodInverse
+end CircleOp.OsgoodInverse

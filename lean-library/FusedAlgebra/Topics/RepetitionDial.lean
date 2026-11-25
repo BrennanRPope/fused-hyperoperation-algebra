@@ -37,7 +37,7 @@ import FusedAlgebra.Base
 
 namespace RepetitionDial
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -50,13 +50,13 @@ variable {R : Type} [Lean.Grind.CommRing R]
 /-- **Atoms compose by ⊞ₖ.** If the k-powers of two atoms are 1 + ka and
     1 + kb, their product is 1 + k(a ⊞ₖ b). -/
 theorem atoms_compose (k a b A B : R) (hA : 1 + k * a = A) (hB : 1 + k * b = B) :
-    1 + k * wAdd k a b = A * B := by
-  rw [← hA, ← hB]; exact wAdd_lift k a b
+    1 + k * circK k a b = A * B := by
+  rw [← hA, ← hB]; exact circK_lift k a b
 
 /-- Three atoms: the order of composing does not matter. -/
 theorem atoms_compose3 (k a b c : R) :
-    1 + k * wAdd k (wAdd k a b) c = (1 + k * a) * (1 + k * b) * (1 + k * c) := by
-  rw [wAdd_lift, wAdd_lift]
+    1 + k * circK k (circK k a b) c = (1 + k * a) * (1 + k * b) * (1 + k * c) := by
+  rw [circK_lift, circK_lift]
 
 end Compose
 

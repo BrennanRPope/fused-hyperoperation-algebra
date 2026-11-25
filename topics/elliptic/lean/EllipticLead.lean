@@ -12,7 +12,7 @@
 import FusedAlgebra.Base
 
 namespace EllipticLead
-open MultAdd
+open CircleOp
 
 /-! ### 1. The landscape plane is the cubics with a double point -/
 
@@ -52,8 +52,8 @@ theorem tate_q0_law (v1 v2 : Int) :
     (1 - v1) + (1 - v2) - (1 - v1) * (1 - v2) = 1 - v1 * v2 := by grind
 
 /-- and a = −z turns it into mult-add exactly -/
-theorem tate_q0_is_multAdd (a b : Int) :
-    -((-a) + (-b) - (-a) * (-b)) = multAdd a b := by unfold multAdd; grind
+theorem tate_q0_is_circ (a b : Int) :
+    -((-a) + (-b) - (-a) * (-b)) = circ a b := by unfold circ; grind
 
 /-- weights of the invariant differential (from ../rung_test.py): d_n has weight n,
     so the coefficient a_i first acts on the cube's layer i+1, and nothing new can enter at layer 6 -/
@@ -75,7 +75,7 @@ theorem d5_weight (u a1 a2 a3 a4 : Int) :
 
 /-- mult-add's own curve (a1 = −1, a2 = a3 = a4 = 0) has d_n = (−1)^n: the differential dz/(1+z),
     the log of mult-add, through layer 6 -/
-theorem multAdd_curve_d :
+theorem circ_curve_d :
     d1 (-1) = -1 ∧ d2 (-1) 0 = 1 ∧ d3 (-1) 0 0 = -1 ∧ d4 (-1) 0 0 0 = 1 ∧ d5 (-1) 0 0 0 = -1 := by
   unfold d1 d2 d3 d4 d5; decide
 

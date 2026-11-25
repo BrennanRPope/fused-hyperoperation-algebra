@@ -13,7 +13,7 @@
                                  the square roots of their zoom ratios add to 1
                                  (Moran's equation at s = 1/2), exactly.
   * mulAdd_shift, mulAdd_identity
-                                 (x-1) ✳ (y-1) = xy - 1: mult-add is multiplication
+                                 (x-1) ◯ (y-1) = xy - 1: mult-add is multiplication
                                  of sides 1 + a. It has no notion of size, which is
                                  why a zoom dial would be new.
   * two_pow_mod7, uneven_not_lattice
@@ -62,7 +62,7 @@ theorem half_dimension_certificates :
 
 /-! ## 2. Mult-add multiplies sides; it has no zoom -/
 
-/-- mult-add: a ✳ b = a + b + ab. -/
+/-- mult-add: a ◯ b = a + b + ab. -/
 def mulAdd (a b : Int) : Int := a + b + a * b
 
 /-- Writing sides as 1 + a, mult-add is plain multiplication of sides. -/

@@ -11,10 +11,10 @@
   * Higham's θₙ is the mult-add fold of the step errors, bounded by (1+u)ⁿ − 1 ≤ nu/(1 − nu);
   * the lift's way back amplifies a rounding by (1 + a)/a; the inverse is sensitive only at the wall;
   * Sterbenz's window: inside the octave 1/2 ≤ 1 + a ≤ 2 the inverse is within a factor 2 of −a;
-  * Newton's division-free inverse is v ↦ v ✳ (−(u ✳ v)), and the residual squares: e ↦ −e²;
+  * Newton's division-free inverse is v ↦ v ◯ (−(u ◯ v)), and the residual squares: e ↦ −e²;
   * Goldschmidt's factors fold to −e^(2ⁿ);
-  * a chain of mult-adds is a chain of Horner (fma) steps, and Bernoulli: a^(✳n) ≥ n·a.
-  LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/Numerical.lean; merged unchanged. multAdd_bound states the same as ComplexAnalysis.corner_bound but is kept,
+  * a chain of mult-adds is a chain of Horner (fma) steps, and Bernoulli: a^(◯n) ≥ n·a.
+  LIBRARY NOTE: in the shared library at FusedAlgebra/Topics/Numerical.lean; merged unchanged. circ_bound states the same as ComplexAnalysis.corner_bound but is kept,
   because a later proof here uses it and this file does not import ComplexAnalysis; sq_nonneg_rat
   and pow_nonneg_rat stay as local Rat helpers like the ones in Finance and Thermodynamics.
 -/
@@ -22,8 +22,8 @@ import FusedAlgebra.Base
 
 namespace Numerical
 
-open MultAdd
-local infixl:65 " ✳ " => multAdd
+open CircleOp
+open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -32,48 +32,48 @@ set_option linter.unusedSectionVars false
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
 
-theorem fma_shape_corner (a b : R) : a ✳ b = a * b + (a + b) := by unfold multAdd; grind
-theorem fma_shape_right (a b : R) : a ✳ b = a * (1 + b) + b := by unfold multAdd; grind
-theorem fma_shape_left (a b : R) : a ✳ b = b * (1 + a) + a := by unfold multAdd; grind
+theorem fma_shape_corner (a b : R) : a ◯ b = a * b + (a + b) := by unfold circ; grind
+theorem fma_shape_right (a b : R) : a ◯ b = a * (1 + b) + b := by unfold circ; grind
+theorem fma_shape_left (a b : R) : a ◯ b = b * (1 + a) + a := by unfold circ; grind
 
 /-! ## 2. Relative errors are mult-add numbers -/
 
 /-- Multiply two perturbed values: the relative errors mult-add. -/
 theorem relerr_mul (x y d₁ d₂ : R) :
-    (x * (1 + d₁)) * (y * (1 + d₂)) = x * y * (1 + (d₁ ✳ d₂)) := by
-  have h := multAdd_lift d₁ d₂; rw [h]; grind
+    (x * (1 + d₁)) * (y * (1 + d₂)) = x * y * (1 + (d₁ ◯ d₂)) := by
+  have h := circ_lift d₁ d₂; rw [h]; grind
 
 /-- Three perturbed factors: the errors fold. -/
 theorem relerr_mul3 (x y z d₁ d₂ d₃ : R) :
-    (x * (1 + d₁)) * (y * (1 + d₂)) * (z * (1 + d₃)) = x * y * z * (1 + (d₁ ✳ d₂ ✳ d₃)) := by
-  have h := multAdd_lift (d₁ ✳ d₂) d₃; have h' := multAdd_lift d₁ d₂; rw [h, h']; grind
+    (x * (1 + d₁)) * (y * (1 + d₂)) * (z * (1 + d₃)) = x * y * z * (1 + (d₁ ◯ d₂ ◯ d₃)) := by
+  have h := circ_lift (d₁ ◯ d₂) d₃; have h' := circ_lift d₁ d₂; rw [h, h']; grind
 
 /-- Higham's θₙ: the product of the factors (1 + δᵢ), minus 1, is the mult-add fold. -/
-theorem theta_is_fold (ds : List R) : prodL (ds.map (fun d => 1 + d)) - 1 = foldMA ds := by
-  have h := foldMA_lift ds; grind
+theorem theta_is_fold (ds : List R) : prodL (ds.map (fun d => 1 + d)) - 1 = foldCirc ds := by
+  have h := foldCirc_lift ds; grind
 
 /-- A chain of rounded products: each step's error δ multiplies in. -/
 def chain : List R → R → R
   | [], p => p
   | d :: ds, p => chain ds (p * (1 + d))
 
-theorem chain_eq (ds : List R) (p : R) : chain ds p = p * (1 + foldMA ds) := by
+theorem chain_eq (ds : List R) (p : R) : chain ds p = p * (1 + foldCirc ds) := by
   induction ds generalizing p with
   | nil => show p = p * (1 + 0); grind
   | cons d ds ih =>
-    show chain ds (p * (1 + d)) = p * (1 + (d ✳ foldMA ds))
-    rw [ih, multAdd_lift]; grind
+    show chain ds (p * (1 + d)) = p * (1 + (d ◯ foldCirc ds))
+    rw [ih, circ_lift]; grind
 
-/-- Perturbing a value moves a ✳ b by exactly h·(1 + b): the sensitivity is the other lift. -/
-theorem multAdd_sensitivity (a b h : R) : ((a + h) ✳ b) - (a ✳ b) = h * (1 + b) := by
-  unfold multAdd; grind
+/-- Perturbing a value moves a ◯ b by exactly h·(1 + b): the sensitivity is the other lift. -/
+theorem circ_sensitivity (a b h : R) : ((a + h) ◯ b) - (a ◯ b) = h * (1 + b) := by
+  unfold circ; grind
 
 /-- Newton's step for the inverse, without division. -/
-def newton (u v : R) : R := v ✳ (-(u ✳ v))
+def newton (u v : R) : R := v ◯ (-(u ◯ v))
 
 /-- The residual squares (with a sign): the corner e·e is all that is left. -/
-theorem newton_residual (u v : R) : u ✳ newton u v = -((u ✳ v) * (u ✳ v)) := by
-  unfold newton multAdd; grind
+theorem newton_residual (u v : R) : u ◯ newton u v = -((u ◯ v) * (u ◯ v)) := by
+  unfold newton circ; grind
 
 /-- n Newton steps. -/
 def newtonIter (u : R) : Nat → R → R
@@ -82,31 +82,31 @@ def newtonIter (u : R) : Nat → R → R
 
 /-- After n steps the residual is −(−e₀)^(2ⁿ): quadratic convergence, digits double. -/
 theorem newton_iter_residual (u : R) : ∀ (n : Nat) (v : R),
-    u ✳ newtonIter u n v = -(pw (-(u ✳ v)) (2 ^ n))
+    u ◯ newtonIter u n v = -(pw (-(u ◯ v)) (2 ^ n))
   | 0, v => by simp only [newtonIter, Nat.pow_zero, pw]; grind
   | n + 1, v => by
     simp only [newtonIter]
     rw [newton_iter_residual u n (newton u v), newton_residual, Nat.pow_succ, pw_mul]
-    generalize u ✳ v = e
+    generalize u ◯ v = e
     have h1 : -(-(e * e)) = (-e) * (-e) := by grind
     rw [h1, pw_mul_base]
     simp only [pw]; grind
 
 /-- At the exact inverse the residual is 0 and Newton stands still. -/
-theorem newton_fixed (u v : R) (h : u ✳ v = 0) : newton u v = v := by
-  unfold newton; rw [h]; unfold multAdd; grind
+theorem newton_fixed (u v : R) (h : u ◯ v = 0) : newton u v = v := by
+  unfold newton; rw [h]; unfold circ; grind
 
-/-- Goldschmidt's factors: (−e) ✳ e ✳ e² ✳ e⁴ ✳ … -/
+/-- Goldschmidt's factors: (−e) ◯ e ◯ e² ◯ e⁴ ◯ … -/
 def gold (e : R) : Nat → R
   | 0 => -e
-  | n + 1 => gold e n ✳ pw e (2 ^ n)
+  | n + 1 => gold e n ◯ pw e (2 ^ n)
 
 theorem gold_eq (e : R) : ∀ n, gold e n = -(pw e (2 ^ n))
   | 0 => by simp only [gold, Nat.pow_zero, pw]; grind
   | n + 1 => by
     simp only [gold]; rw [gold_eq e n, Nat.pow_succ, pw_mul]
     generalize pw e (2 ^ n) = y
-    unfold multAdd; simp only [pw]; grind
+    unfold circ; simp only [pw]; grind
 
 /-- In the lift: (1 − e)(1 + e)(1 + e²)…(1 + e^(2^(n−1))) = 1 − e^(2ⁿ). -/
 theorem gold_lift (e : R) (n : Nat) : 1 + gold e n = 1 - pw e (2 ^ n) := by
@@ -115,19 +115,19 @@ theorem gold_lift (e : R) (n : Nat) : 1 + gold e n = 1 - pw e (2 ^ n) := by
 /-! ## 3. Horner: a chain of mult-adds is a chain of fma steps -/
 
 /-- Left-to-right fold with one Horner/fma step per entry: acc ↦ acc·(1 + b) + b. -/
-def hornerMA : R → List R → R
+def hornerCirc : R → List R → R
   | acc, [] => acc
-  | acc, b :: bs => hornerMA (acc * (1 + b) + b) bs
+  | acc, b :: bs => hornerCirc (acc * (1 + b) + b) bs
 
-theorem hornerMA_eq (acc : R) (bs : List R) : hornerMA acc bs = acc ✳ foldMA bs := by
+theorem hornerCirc_eq (acc : R) (bs : List R) : hornerCirc acc bs = acc ◯ foldCirc bs := by
   induction bs generalizing acc with
-  | nil => simp only [hornerMA, foldMA]; rw [multAdd_zero]
+  | nil => simp only [hornerCirc, foldCirc]; rw [circ_zero]
   | cons b bs ih =>
-    simp only [hornerMA, foldMA]; rw [ih]; unfold multAdd; grind
+    simp only [hornerCirc, foldCirc]; rw [ih]; unfold circ; grind
 
 /-- Starting from 0, the n Horner steps give the whole cube: every corner product once. -/
-theorem horner_cube (bs : List R) : 1 + hornerMA 0 bs = sumL ((groups bs).map prodL) := by
-  rw [hornerMA_eq, zero_multAdd, one_add_foldMA_eq_corners]
+theorem horner_cube (bs : List R) : 1 + hornerCirc 0 bs = sumL ((groups bs).map prodL) := by
+  rw [hornerCirc_eq, zero_circ, one_add_foldCirc_eq_corners]
 
 /-- Ordinary Horner evaluation, coefficients from the top. -/
 def horner (x : R) : List R → R
@@ -141,8 +141,8 @@ theorem mpow_horner (b : R) : ∀ n, mpow b n = horner (1 + b) (List.replicate n
     simp only [mpow, List.replicate, horner]
     rw [← mpow_horner b n, fma_shape_left]; grind
 
-/-- Powers by squaring: a^(✳2n) = a^(✳n) ✳ a^(✳n). -/
-theorem mpow_double (a : R) (n : Nat) : mpow a (2 * n) = mpow a n ✳ mpow a n := by
+/-- Powers by squaring: a^(◯2n) = a^(◯n) ◯ a^(◯n). -/
+theorem mpow_double (a : R) (n : Nat) : mpow a (2 * n) = mpow a n ◯ mpow a n := by
   rw [Nat.two_mul, mpow_add]
 
 end Ring
@@ -165,12 +165,12 @@ theorem lift_amplifier (a η : K) (ha : a ≠ 0) :
 
 /-- The inverse's exact sensitivity: only 1 + u near 0 (the wall) makes it large. -/
 theorem inverse_sensitivity (u h : K) (h1 : 1 + u ≠ 0) (h2 : 1 + u + h ≠ 0) :
-    multAddInv (u + h) - multAddInv u = -h / ((1 + u) * (1 + u + h)) := by
-  unfold multAddInv; grind
+    circInv (u + h) - circInv u = -h / ((1 + u) * (1 + u + h)) := by
+  unfold circInv; grind
 
 /-- The fused inverse undoes the lift's reciprocal: 1 + inv u = 1/(1 + u). -/
-theorem inverse_lift (u : K) (h : 1 + u ≠ 0) : (1 + multAddInv u) * (1 + u) = 1 := by
-  unfold multAddInv; grind
+theorem inverse_lift (u : K) (h : 1 + u ≠ 0) : (1 + circInv u) * (1 + u) = 1 := by
+  unfold circInv; grind
 
 end Field
 
@@ -219,35 +219,35 @@ theorem sterbenz_window_neg {a b : Rat} (h0 : a ≤ 0) (h1 : -1 ≤ 2 * a) (hb :
 
 /-! ## 5. Error bounds: θₙ stays inside ±((1+u)ⁿ − 1), and (1+u)ⁿ − 1 ≤ nu/(1 − nu) -/
 
-/-- |a| ≤ u and |t| ≤ M give |a ✳ t| ≤ u ✳ M (the corner of the bounds bounds the corner). -/
-theorem multAdd_bound {a t u M : Rat} (ha1 : -u ≤ a) (ha2 : a ≤ u) (ht1 : -M ≤ t) (ht2 : t ≤ M) :
-    -(u ✳ M) ≤ a ✳ t ∧ a ✳ t ≤ u ✳ M := by
+/-- |a| ≤ u and |t| ≤ M give |a ◯ t| ≤ u ◯ M (the corner of the bounds bounds the corner). -/
+theorem circ_bound {a t u M : Rat} (ha1 : -u ≤ a) (ha2 : a ≤ u) (ht1 : -M ≤ t) (ht2 : t ≤ M) :
+    -(u ◯ M) ≤ a ◯ t ∧ a ◯ t ≤ u ◯ M := by
   have p1 := Rat.mul_nonneg (by grind : (0:Rat) ≤ u - a) (by grind : (0:Rat) ≤ M + t)
   have p2 := Rat.mul_nonneg (by grind : (0:Rat) ≤ u + a) (by grind : (0:Rat) ≤ M - t)
   have p3 := Rat.mul_nonneg (by grind : (0:Rat) ≤ u + a) (by grind : (0:Rat) ≤ M + t)
   have p4 := Rat.mul_nonneg (by grind : (0:Rat) ≤ u - a) (by grind : (0:Rat) ≤ M - t)
-  unfold multAdd; constructor <;> grind
+  unfold circ; constructor <;> grind
 
 theorem mpow_nonneg {u : Rat} (hu : 0 ≤ u) : ∀ n, 0 ≤ mpow u n
   | 0 => by simp only [mpow]; grind
   | n + 1 => by
-    simp only [mpow]; unfold multAdd
+    simp only [mpow]; unfold circ
     have h := mpow_nonneg hu n
     have := Rat.mul_nonneg h hu; grind
 
 /-- Higham's Lemma 3.1 in mult-add form: n step errors of size at most u fold to at most
-    (1 + u)ⁿ − 1 = u^(✳n). -/
+    (1 + u)ⁿ − 1 = u^(◯n). -/
 theorem theta_bound {u : Rat} (hu : 0 ≤ u) : ∀ (ds : List Rat), (∀ d ∈ ds, -u ≤ d ∧ d ≤ u) →
-    -(mpow u ds.length) ≤ foldMA ds ∧ foldMA ds ≤ mpow u ds.length
-  | [], _ => by simp only [foldMA, List.length, mpow]; grind
+    -(mpow u ds.length) ≤ foldCirc ds ∧ foldCirc ds ≤ mpow u ds.length
+  | [], _ => by simp only [foldCirc, List.length, mpow]; grind
   | d :: ds, h => by
     have hd := h d (by simp)
     have ih := theta_bound hu ds (fun x hx => h x (by simp [hx]))
-    simp only [foldMA, List.length]
-    have hm : mpow u (ds.length + 1) = u ✳ mpow u ds.length := by
-      rw [mpow, multAdd_comm]
+    simp only [foldCirc, List.length]
+    have hm : mpow u (ds.length + 1) = u ◯ mpow u ds.length := by
+      rw [mpow, circ_comm]
     rw [hm]
-    exact multAdd_bound hd.1 hd.2 ih.1 ih.2
+    exact circ_bound hd.1 hd.2 ih.1 ih.2
 
 theorem pow_nonneg_rat {x : Rat} (hx : 0 ≤ x) : ∀ n : Nat, 0 ≤ x ^ n
   | 0 => by rw [Rat.pow_zero]; grind
@@ -268,12 +268,12 @@ theorem gamma_lift {u : Rat} (hu : 0 ≤ u) : ∀ n : Nat, (1 + u) ^ n * (1 - n 
     have := Rat.mul_le_mul_of_nonneg_left step hp
     grind
 
-/-- γₙ: u^(✳n)·(1 − nu) ≤ nu, i.e. (1 + u)ⁿ − 1 ≤ nu/(1 − nu) whenever nu < 1. -/
+/-- γₙ: u^(◯n)·(1 − nu) ≤ nu, i.e. (1 + u)ⁿ − 1 ≤ nu/(1 − nu) whenever nu < 1. -/
 theorem gamma_bound {u : Rat} (hu : 0 ≤ u) (n : Nat) : mpow u n * (1 - n * u) ≤ n * u := by
   have h := gamma_lift hu n
   rw [mpow_eq]; grind
 
-/-- Bernoulli: compounding never loses to simple interest, a^(✳n) ≥ n·a for a ≥ −1. -/
+/-- Bernoulli: compounding never loses to simple interest, a^(◯n) ≥ n·a for a ≥ −1. -/
 theorem bernoulli {a : Rat} (ha : -1 ≤ a) : ∀ n : Nat, (n : Rat) * a ≤ mpow a n
   | 0 => by simp only [mpow]; grind
   | n + 1 => by

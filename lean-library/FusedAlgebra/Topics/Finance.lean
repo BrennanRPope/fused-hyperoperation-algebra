@@ -27,16 +27,16 @@
   * lowest_rate_wins: the averaged factor is at least half the factor of the lowest rate,
                   so over long horizons the lowest-rate corner sets the rate.
 
-  LIBRARY NOTE: mult-add and mult-add subtraction (msub, Fisher's rule) come from FusedAlgebra.Base; wrapped in namespace FinanceMultAdd.
+  LIBRARY NOTE: mult-add and mult-add subtraction (msub, Fisher's rule) come from FusedAlgebra.Base; wrapped in namespace FinanceCircle.
 -/
 import FusedAlgebra.Base
 
-namespace FinanceMultAdd
+namespace FinanceCircle
 
-open MultAdd
+open CircleOp
 
 /-- Fisher's rule: real rate ⊞ inflation = nominal rate (msub and the proof live in Base). -/
-theorem fisher (a b : Rat) (h : 1 + b ≠ 0) : multAdd (msub a b) b = a := msub_multAdd a b h
+theorem fisher (a b : Rat) (h : 1 + b ≠ 0) : circ (msub a b) b = a := msub_circ a b h
 
 theorem drag (m s : Rat) : (1 + m + s) * (1 + m - s) = (1 + m) ^ 2 - s ^ 2 := by grind
 
@@ -159,7 +159,7 @@ theorem average_factors {u v x y d : Rat} (hu : 0 < u) (hv : 0 < v) (hx : x * u 
 
 def mall : List Rat → Rat
   | [] => 0
-  | r :: rs => multAdd r (mall rs)
+  | r :: rs => circ r (mall rs)
 
 def growth : List Rat → Rat
   | [] => 1
@@ -167,7 +167,7 @@ def growth : List Rat → Rat
 
 theorem mall_growth : ∀ rs : List Rat, mall rs = growth rs - 1
   | [] => by simp [mall, growth]; exact Rat.sub_self.symm
-  | r :: rs => by simp only [mall, growth, multAdd]; rw [mall_growth rs]; grind
+  | r :: rs => by simp only [mall, growth, circ]; rw [mall_growth rs]; grind
 
 theorem gsum_le (q j : Rat) (h : q * (1 + j) = 1) (hq : 0 ≤ q) (N : Nat) : j * gsum q N ≤ 1 := by
   rw [gordon q j h N]; have := pow_nonneg' hq N; grind
@@ -188,4 +188,4 @@ theorem lowest_rate_wins {x y : Rat} (hy : 0 ≤ y) (hxy : y ≤ x) (n : Nat) :
   constructor <;> grind
 
 
-end FinanceMultAdd
+end FinanceCircle

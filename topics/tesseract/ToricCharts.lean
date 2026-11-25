@@ -37,7 +37,7 @@
   scheme or variety, which would need mathlib.
 -/
 
-namespace MultAdd.Toric
+namespace CircleOp.Toric
 
 open Lean.Grind
 
@@ -48,22 +48,22 @@ variable {K : Type} [Field K] [DecidableEq K]
 /-! ## 1. Mult-add and its inverse: the gluing map -/
 
 /-- Mult-add: a ⊞ b = a + b + a·b = (1 + a)(1 + b) - 1. -/
-def multAdd (a b : K) : K := a + b + a * b
+def circ (a b : K) : K := a + b + a * b
 
 /-- The mult-add inverse: the u' with u ⊞ u' = 0. -/
-def multAddInv (u : K) : K := -u / (1 + u)
+def circInv (u : K) : K := -u / (1 + u)
 
-theorem multAdd_multAddInv (u : K) (h : 1 + u ≠ 0) : multAdd u (multAddInv u) = 0 := by
-  unfold multAdd multAddInv; grind
+theorem circ_circInv (u : K) (h : 1 + u ≠ 0) : circ u (circInv u) = 0 := by
+  unfold circ circInv; grind
 
 /-- Gluing x ↦ 1/x, written in mult-add coordinates x = 1 + u, is the
 mult-add inverse. -/
-theorem inv_one_add (u : K) (h : 1 + u ≠ 0) : (1 + u)⁻¹ = 1 + multAddInv u := by
-  unfold multAddInv; grind
+theorem inv_one_add (u : K) (h : 1 + u ≠ 0) : (1 + u)⁻¹ = 1 + circInv u := by
+  unfold circInv; grind
 
 /-- The wall: u = -1 (x = 0) has no mult-add inverse at all. -/
-theorem no_multAddInv_at_wall (v : K) : multAdd (-1) v ≠ 0 := by
-  unfold multAdd; grind
+theorem no_circInv_at_wall (v : K) : circ (-1) v ≠ 0 := by
+  unfold circ; grind
 
 /-! ## 2. A chart is n-space; its tesseract corner is the set of nonzero coordinates -/
 
@@ -216,4 +216,4 @@ theorem trans2_cocycle (c d e : Bool × Bool) (v : K × K) :
 (a each), four fixed points. In ordinary coordinates it is (q + 1)². -/
 theorem fan_count (a : Nat) : a ^ 2 + 4 * a + 4 = (a + 2) ^ 2 := by grind
 
-end MultAdd.Toric
+end CircleOp.Toric

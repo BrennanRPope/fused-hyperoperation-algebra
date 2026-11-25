@@ -23,8 +23,8 @@ elab "#check_axioms_modules" : command => do
       let some ci := env.find? n | continue
       unless ci matches ConstantInfo.thmInfo _ do continue
       if n.isInternalDetail then continue
-      let generated := (`MAFound.Rederived).isPrefixOf n && !(`MAFound.Rederived.Rungs).isPrefixOf n
-        || (`MAFound.RederivedPeano).isPrefixOf n
+      let generated := (`CircFound.Rederived).isPrefixOf n && !(`CircFound.Rederived.Rungs).isPrefixOf n
+        || (`CircFound.RederivedPeano).isPrefixOf n
       unless generated do
         let some _ ← liftCoreM (findDeclarationRanges? n) | continue
       let axs ← liftCoreM (collectAxioms n)
@@ -41,6 +41,6 @@ elab "#check_axioms_modules" : command => do
 
 #check_axioms_modules
 
-#check @MAFound.Rederived.MultAdd.mpow_lift
-#check @MAFound.Rederived.MultAdd.multAdd_multAddInv
-#check @MAFound.RederivedPeano.MultAdd.foldMA_lift
+#check @CircFound.Rederived.CircleOp.mpow_lift
+#check @CircFound.Rederived.CircleOp.circ_circInv
+#check @CircFound.RederivedPeano.CircleOp.foldCirc_lift

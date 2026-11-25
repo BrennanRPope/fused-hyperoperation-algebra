@@ -23,8 +23,8 @@
   * `step`, `no_sol`    : Euler's infinite descent on |xyz| for x³ + y³ + z³ = 0.
 
   The mult-add angle (a ⊞ b = a + b + ab, mpow s n = (1 + s)ⁿ − 1, from FusedAlgebra.Base):
-  * `flt3_multAdd_iff` : over ℚ, with x ≠ 0, x³ + y³ = z³ iff (y/x)³ = mpow (z/x − 1) 3.
-  * `flt3_multAdd`     : so for nonzero integers, (y/x)³ is never the mult-add cube of z/x − 1.
+  * `flt3_circ_iff` : over ℚ, with x ≠ 0, x³ + y³ = z³ iff (y/x)³ = mpow (z/x − 1) 3.
+  * `flt3_circ`     : so for nonzero integers, (y/x)³ is never the mult-add cube of z/x − 1.
   * `mpow_three`       : mpow s 3 = s³ + 3(s + s²): the middle layers of the cube
                          (Pascal 1, 3, 3, 1) carry the factor 3,
   * `mpow_three_mod3`  : so mult-add cubes and plain cubes agree mod 3 (both ≡ s),
@@ -43,7 +43,7 @@
   LIBRARY NOTE: copied from fermat/lean/Fermat3.lean (Nov 25) as Topics/Fermat/Fermat3.
 -/
 import FusedAlgebra.Base
-open MultAdd
+open CircleOp
 
 namespace Fermat3
 
@@ -81,7 +81,7 @@ theorem mpow_three (s : Int) : mpow s 3 = s^3 + 3*(s + s^2) := by
   rw [mpow_eq]; grind
 
 /-- Over ℚ with x ≠ 0: x³ + y³ = z³ iff (y/x)³ is the mult-add cube of z/x − 1. -/
-theorem flt3_multAdd_iff (x y z : Rat) (hx : x ≠ 0) :
+theorem flt3_circ_iff (x y z : Rat) (hx : x ≠ 0) :
     x^3 + y^3 = z^3 ↔ (y/x)^3 = mpow (z/x - 1) 3 := by
   rw [mpow_eq]
   constructor
@@ -969,11 +969,11 @@ theorem flt3_nat (x y z : Nat) (hx : x ≠ 0) (hy : y ≠ 0) : x^3 + y^3 ≠ z^3
   exact flt3 x y z (by omega) (by omega) hz h'
 
 /-- In the mult-add picture: for integers x, y, z ≠ 0, (y/x)³ is never the mult-add cube of z/x − 1. -/
-theorem flt3_multAdd (x y z : Int) (hx : x ≠ 0) (hy : y ≠ 0) (hz : z ≠ 0) :
+theorem flt3_circ (x y z : Int) (hx : x ≠ 0) (hy : y ≠ 0) (hz : z ≠ 0) :
     ((y : Rat) / x)^3 ≠ mpow ((z : Rat) / x - 1) 3 := by
   intro h
   have hx' : (x : Rat) ≠ 0 := by exact_mod_cast hx
-  have := (flt3_multAdd_iff (x : Rat) y z hx').2 h
+  have := (flt3_circ_iff (x : Rat) y z hx').2 h
   exact flt3 x y z hx hy hz (by exact_mod_cast this)
 
 /-! ## Supporting lemmas -/

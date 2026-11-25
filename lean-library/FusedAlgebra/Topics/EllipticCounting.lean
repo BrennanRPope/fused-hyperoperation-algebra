@@ -15,7 +15,7 @@
   Known mathematics throughout: Ward (1948), Somos (1989), Tate normal form, Mazur (1977).
   LIBRARY NOTE: first compiled in the shared library, after Patterns. Changes: lucas_shift_one's
   step case states the two recurrence steps as hypotheses for grind; lucas_eds_unit uses
-  MultAdd.one_pow'; disc gets a `;` after `let b8 := …`, since the next line's leading minus was
+  CircleOp.one_pow'; disc gets a `;` after `let b8 := …`, since the next line's leading minus was
   being read as part of b8; order_five_point's last conjunct read w3 * (w3 * w3 * w3), which is
   false (it is −2); it now reads w3 * w3 * w3, the W3³ its docstring names. No exact twins.
 -/
@@ -91,7 +91,7 @@ theorem lucas_eds (P Q : R) (f e : Nat) :
   rw [show e + 1 + (f + 1) = f + e + 2 by omega,
     show f + e + 2 + (f + 1) = 2 * f + e + 3 by omega] at hC
   have hp : Q ^ (f + e + 1) = Q ^ f * Q ^ (e + 1) := by
-    rw [show f + e + 1 = f + (e + 1) by omega, MultAdd.pow_add']
+    rw [show f + e + 1 = f + (e + 1) by omega, CircleOp.pow_add']
   grind
 
 /-- with Q = 1 the Lucas sequence satisfies the elliptic divisibility recurrence exactly -/
@@ -100,7 +100,7 @@ theorem lucas_eds_unit (P : R) (f e : Nat) :
       = lucas P 1 (f + e + 3) * lucas P 1 (f + e + 1) * (lucas P 1 (f + 1) * lucas P 1 (f + 1))
         - lucas P 1 (f + 2) * lucas P 1 f * (lucas P 1 (f + e + 2) * lucas P 1 (f + e + 2)) := by
   have h := lucas_eds P 1 f e
-  rw [MultAdd.one_pow' f] at h
+  rw [CircleOp.one_pow' f] at h
   grind
 
 /-- the Somos-4 edge (n = 2): Q·U(m+4)U(m) = P²·U(m+3)U(m+1) − (P² − Q)·U(m+2)² -/

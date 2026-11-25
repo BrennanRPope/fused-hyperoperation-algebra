@@ -9,7 +9,7 @@
   where c is everything beyond the reference determinant. Two molecules that
   do not interact have Ψ_AB = Ψ_A Ψ_B, so
 
-      1 + c_AB = (1 + c_A)(1 + c_B),   c_AB = c_A ✳ c_B.
+      1 + c_AB = (1 + c_A)(1 + c_B),   c_AB = c_A ◯ c_B.
 
   The corner c_A·c_B is "both molecules excited at once". Truncated CI (CISD)
   keeps only c_A + c_B: it is the k = 0 law, and its size-consistency error is
@@ -20,47 +20,46 @@
   doubly excited state 2Δ above it, coupled by g. CISD's energy E solves
   E(E − 2Δ) = N g² (its 2-level secular equation); the exact energy is N e₁.
 
-  LIBRARY NOTE: this file declares `local infixl " ✳ "` for multAdd. If Base
-  now declares ✳ itself, delete that line.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
 -/
 import FusedAlgebra.Base
 
 namespace ChemQuantum
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
 
 /-- Two independent fragments: the excess amplitude mult-adds. -/
-theorem fragments_multAdd (cA cB : R) : (1 + cA) * (1 + cB) = 1 + (cA ✳ cB) := by
-  unfold multAdd; grind
+theorem fragments_circ (cA cB : R) : (1 + cA) * (1 + cB) = 1 + (cA ◯ cB) := by
+  unfold circ; grind
 
 /-- What truncated CI drops when two fragments are joined: exactly the corner. -/
-theorem cisd_drops_corner (cA cB : R) : (cA ✳ cB) - (cA + cB) = cA * cB := by
-  unfold multAdd; grind
+theorem cisd_drops_corner (cA cB : R) : (cA ◯ cB) - (cA + cB) = cA * cB := by
+  unfold circ; grind
 
 /-- k = 0 (CISD) and k = 1 (exact) are the two ends of the weighted law. -/
-theorem cisd_is_weight_zero (cA cB : R) : wAdd 0 cA cB = cA + cB := wAdd_weight_zero cA cB
-theorem exact_is_weight_one (cA cB : R) : wAdd 1 cA cB = cA ✳ cB := wAdd_one cA cB
+theorem cisd_is_weight_zero (cA cB : R) : circK 0 cA cB = cA + cB := circK_weight_zero cA cB
+theorem exact_is_weight_one (cA cB : R) : circK 1 cA cB = cA ◯ cB := circK_one cA cB
 
 /-- N identical independent molecules: 1 + c_N = (1 + c)^N, the mult-add power. -/
 theorem n_fragments (c : R) (N : Nat) : 1 + mpow c N = (1 + c) ^ N := mpow_lift c N
 
 /-- Joining N then M molecules is the same as joining N + M. -/
-theorem fragments_assoc (c : R) (N M : Nat) : mpow c (N + M) = mpow c N ✳ mpow c M :=
+theorem fragments_assoc (c : R) (N M : Nat) : mpow c (N + M) = mpow c N ◯ mpow c M :=
   mpow_add c N M
 
 /-- Three fragments: the corner expansion has pairs and one triple, nothing else. -/
 theorem three_fragments (a b c : R) :
-    (a ✳ b) ✳ c = a + b + c + (a * b + a * c + b * c) + a * b * c := by
-  unfold multAdd; grind
+    (a ◯ b) ◯ c = a + b + c + (a * b + a * c + b * c) + a * b * c := by
+  unfold circ; grind
 
 /-- What CISD drops from three fragments: every pair and the triple. -/
 theorem cisd_drops_three (a b c : R) :
-    ((a ✳ b) ✳ c) - (a + b + c) = a * b + a * c + b * c + a * b * c := by
-  unfold multAdd; grind
+    ((a ◯ b) ◯ c) - (a + b + c) = a * b + a * c + b * c + a * b * c := by
+  unfold circ; grind
 
 end Ring
 
@@ -92,8 +91,8 @@ theorem cisd_not_extensive (D g e N : Rat) (hN0 : N ≠ 0) (hN1 : N ≠ 1) (he :
 /-! ## Spin coupling counts states by mult-add -/
 
 /-- Multiplicities multiply, so 2s (multiplicity − 1) mult-adds. -/
-theorem spin_multiplicity (s1 s2 : Nat) : (s1 + 1) * (s2 + 1) = (s1 ✳ s2) + 1 := by
-  unfold multAdd; grind
+theorem spin_multiplicity (s1 s2 : Nat) : (s1 + 1) * (s2 + 1) = (s1 ◯ s2) + 1 := by
+  unfold circ; grind
 
 /-- The Clebsch–Gordan series for two equal spins j ⊗ j (2j = n): the
     multiplicities 2S+1 for S = 0..n sum to (n+1)². -/

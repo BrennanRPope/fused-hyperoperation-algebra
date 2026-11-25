@@ -49,12 +49,11 @@ import FusedAlgebra.Topics.Thermodynamics
 import FusedAlgebra.Topics.Relativity
 
 namespace TwistedBoosts
-open MultAdd ThermoFused Relativity
+open CircleOp ThermoFused Relativity
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
-theorem star_def (a b : Rat) : a ✳ b = a + b + a * b := rfl
+theorem star_def (a b : Rat) : a ◯ b = a + b + a * b := rfl
 
 /-! ## 0. Complex numbers as pairs of rationals -/
 
@@ -336,9 +335,9 @@ theorem half_kick (t : Rat) : vel t t = 2 * t / (1 + t * t) := by
   unfold vel; grind
 
 /-- On the mult-add ruler, the velocity is the half-velocity mult-added to itself:
-    d(t ⊕ t) = d(t) ✳ d(t). The half-velocity is half a kick. -/
+    d(t ⊕ t) = d(t) ◯ d(t). The half-velocity is half a kick. -/
 theorem half_kick_ruler (t : Rat) (h : 1 - t ≠ 0) (h2 : 1 + t * t ≠ 0) :
-    dop (vel t t) = dop t ✳ dop t :=
+    dop (vel t t) = dop t ◯ dop t :=
   dop_vel t t h h h2
 
 /-- The twist's tangent, written with the mult-add corner: Y/X = q(u × v)/(1 − q(u·v)),

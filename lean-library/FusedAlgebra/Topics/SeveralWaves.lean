@@ -7,8 +7,8 @@
   Not compiled in the session that wrote it (no Lean there); written in the library's
   `unfold …; grind` style for its first compile. Every identity was checked with sympy.
 
-  Picture. One wave is mult-add: its tau function is 1 + x, and (1 + a)(1 + b) = 1 + a ✳ b
-  (Base's multAdd_lift). Two and three waves are SolitonsRungs' tau2 and tau3.
+  Picture. One wave is mult-add: its tau function is 1 + x, and (1 + a)(1 + b) = 1 + a ◯ b
+  (Base's circ_lift). Two and three waves are SolitonsRungs' tau2 and tau3.
   With g waves the tau function is a sum over the subsets S of the waves of
     ∏_{i ∈ S} x_i · ∏_{i < j in S} A_ij,
   so each pair of waves carries one number, the pair weight A_ij. A_ij = 1 for every pair is
@@ -37,10 +37,9 @@
 import FusedAlgebra.Base
 
 namespace SeveralWaves
-open MultAdd
+open CircleOp
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## A. Waves with pair weights -/
 

@@ -34,7 +34,7 @@
   formal check in core Lean and the reading on the cube.
 -/
 
-namespace MultAdd.Cube
+namespace CircleOp.Cube
 
 /-! ## The cube's layers -/
 
@@ -427,4 +427,4 @@ example : layer 9 3 = 84 ∧ ¬ (9 ∣ 84) := by decide
 /-- Lucas in base 7: C(10,4) = 210, and 10 = 13₇, 4 = 04₇ gives C(1,0)·C(3,4) = 0 ≡ 210. -/
 example : layer 10 4 = 210 ∧ digitProd 7 2 10 4 = 0 ∧ 210 % 7 = 0 := by decide
 
-end MultAdd.Cube
+end CircleOp.Cube

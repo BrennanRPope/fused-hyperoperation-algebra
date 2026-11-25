@@ -11,7 +11,7 @@
   theorems stated exactly what a library theorem already states, so they were
   removed and a comment names the library theorem in each place: lift_num
   (ThermoFused.lens_den), lift_den (ThermoFused.lens_num), light_absorbs
-  (ThermoFused.vel_wall_pos) and multAdd_wall (MultAdd.neg_one_absorbs). Nothing
+  (ThermoFused.vel_wall_pos) and circ_wall (CircleOp.neg_one_absorbs). Nothing
   else changed.
 
   Speeds are in units of light (c = 1); `velC` keeps c and shows that is only
@@ -37,7 +37,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Thermodynamics
 
 namespace Relativity
-open MultAdd ThermoFused
+open CircleOp ThermoFused
 
 /-! ## 1. Mult-add in disguise -/
 
@@ -54,8 +54,8 @@ theorem dop_lift (u : Rat) (h : 1 - u ≠ 0) : 1 + dop u = (1 + u) / (1 - u) := 
 
 /-- **Velocity addition is mult-add in disguise**: d(u ⊕ v) = d(u) ⊞ d(v). -/
 theorem dop_vel (u v : Rat) (hu : 1 - u ≠ 0) (hv : 1 - v ≠ 0) (huv : 1 + u * v ≠ 0) :
-    dop (vel u v) = multAdd (dop u) (dop v) := by
-  unfold dop vel multAdd
+    dop (vel u v) = circ (dop u) (dop v) := by
+  unfold dop vel circ
   have e : 1 - (u + v) / (1 + u * v) = (1 - u) * (1 - v) / (1 + u * v) := by grind
   rw [e]
   have h1 : (1 - u) * (1 - v) ≠ 0 := by
@@ -80,8 +80,8 @@ theorem velC_units (c u v : Rat) (hc : c ≠ 0) :
 /-! ## 2. Light is the wall -/
 
 /- Light absorbs, as −1 does in mult-add: 1 ⊕ v = 1 is ThermoFused.vel_wall_pos
-   (was light_absorbs), and −1 ⊞ b = −1 is MultAdd.neg_one_absorbs (was
-   multAdd_wall). -/
+   (was light_absorbs), and −1 ⊞ b = −1 is CircleOp.neg_one_absorbs (was
+   circ_wall). -/
 
 /-- d carries the light wall −1 onto mult-add's wall −1. -/
 theorem dop_wall : dop (-1) = -1 := by unfold dop; grind

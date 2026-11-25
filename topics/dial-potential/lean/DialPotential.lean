@@ -12,7 +12,7 @@
      power of k.  The double well (hump at 0, dips at ±k0) is even but cannot respect rescaling: some
      outside scale has to set k0.  That is the exact reason the search needed a coupling to something with
      units.
-  3. The mirror well: k ✳ (−k) = −k², so (k ✳ (−k) + k0²)² = (k0² − k²)², the 1D sombrero, with its
+  3. The mirror well: k ◯ (−k) = −k², so (k ◯ (−k) + k0²)² = (k0² − k²)², the 1D sombrero, with its
      expansion at the dip (curvature 8k0²) and, in the usual normalisation, m² = 2λv² and
      hump height = m²v²/8.
   4. The rolling dial today: at the exponential potential's late-time fixed point, Ω_φ = 1 and
@@ -26,7 +26,7 @@
 import FusedAlgebra.Base
 
 namespace DialPotential
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -37,46 +37,46 @@ section Ring
 variable {R : Type} [CommRing R]
 
 /-- Flip: the dial −k is the dial k seen through a ↦ −a. -/
-theorem dial_flip (k a b : R) : wAdd (-k) a b = -(wAdd k (-a) (-b)) := by
-  unfold wAdd; grind
+theorem dial_flip (k a b : R) : circK (-k) a b = -(circK k (-a) (-b)) := by
+  unfold circK; grind
 
 /-- Rescaling: if k'·s = k, the dial k' on (s·a, s·b) is s times the dial k on (a, b). -/
 theorem dial_rescale (k k' s a b : R) (h : k' * s = k) :
-    wAdd k' (s * a) (s * b) = s * wAdd k a b := by
-  unfold wAdd; rw [← h]; grind
+    circK k' (s * a) (s * b) = s * circK k a b := by
+  unfold circK; rw [← h]; grind
 
 /-- At weight zero the dial is plain addition: the symmetric point. -/
-theorem dial_zero (a b : R) : wAdd 0 a b = a + b := by
-  unfold wAdd; grind
+theorem dial_zero (a b : R) : circK 0 a b = a + b := by
+  unfold circK; grind
 
 /-! ## 3. The mirror well -/
 
-/-- A dial against its mirror: k ✳ (−k) = −k². -/
-theorem multAdd_mirror (k : R) : multAdd k (-k) = -(k * k) := by
-  unfold multAdd; grind
+/-- A dial against its mirror: k ◯ (−k) = −k². -/
+theorem circ_mirror (k : R) : circ k (-k) = -(k * k) := by
+  unfold circ; grind
 
-/-- The mirror well: the square of (k ✳ (−k) + k0²). -/
-def well (k0 k : R) : R := (multAdd k (-k) + k0 * k0) * (multAdd k (-k) + k0 * k0)
+/-- The mirror well: the square of (k ◯ (−k) + k0²). -/
+def well (k0 k : R) : R := (circ k (-k) + k0 * k0) * (circ k (-k) + k0 * k0)
 
 theorem well_eq (k0 k : R) : well k0 k = (k0 * k0 - k * k) * (k0 * k0 - k * k) := by
-  unfold well multAdd; grind
+  unfold well circ; grind
 
 /-- The well is even: it respects the flip. -/
 theorem well_even (k0 k : R) : well k0 (-k) = well k0 k := by
-  unfold well multAdd; grind
+  unfold well circ; grind
 
 /-- Zero at both dips. -/
 theorem well_dips (k0 : R) : well k0 k0 = 0 ∧ well k0 (-k0) = 0 := by
-  unfold well multAdd; constructor <;> grind
+  unfold well circ; constructor <;> grind
 
 /-- The hump at the symmetric point k = 0 has height k0⁴. -/
 theorem well_hump (k0 : R) : well k0 0 = k0 * k0 * (k0 * k0) := by
-  unfold well multAdd; grind
+  unfold well circ; grind
 
 /-- Expansion at the dip: no linear term, curvature 8k0² (twice the h² coefficient 4k0²). -/
 theorem well_at_dip (k0 h : R) :
     well k0 (k0 + h) = 4 * k0 * k0 * (h * h) + 4 * k0 * (h * h * h) + h * h * h * h := by
-  unfold well multAdd; grind
+  unfold well circ; grind
 
 end Ring
 
@@ -89,8 +89,8 @@ theorem scale_covariant_is_power (V : Rat → Rat) (n : Nat)
   rw [Rat.mul_one] at this
   rw [this, Rat.mul_comm]
 
-theorem well_one_one : well (1 : Rat) 1 = 0 := by unfold well multAdd; grind
-theorem well_one_two : well (1 : Rat) (2 * 1) = 9 := by unfold well multAdd; grind
+theorem well_one_one : well (1 : Rat) 1 = 0 := by unfold well circ; grind
+theorem well_one_two : well (1 : Rat) (2 * 1) = 9 := by unfold well circ; grind
 
 /-- The double well cannot respect the rescaling for any power n: a scale from outside sets k0. -/
 theorem well_breaks_scale (n : Nat) : ¬ (∀ s k : Rat, well 1 (s * k) = s ^ n * well 1 k) := by

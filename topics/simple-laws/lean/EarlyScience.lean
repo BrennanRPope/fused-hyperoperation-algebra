@@ -11,39 +11,39 @@
 import FusedAlgebra.Base
 
 namespace SimpleLaws
-open MultAdd
+open CircleOp
 
 /-! ## Counting -/
 
 /-- non-empty choices: a set of m things has 2^m − 1 non-empty subsets; joining two separate
     sets combines those counts by mult-add (pick from either, or both, but not nothing) -/
 theorem nonempty_subsets (m n : Nat) :
-    multAdd ((2 : Int) ^ m - 1) ((2 : Int) ^ n - 1) = (2 : Int) ^ (m + n) - 1 := by
-  unfold multAdd; rw [pow_add']; grind
+    circ ((2 : Int) ^ m - 1) ((2 : Int) ^ n - 1) = (2 : Int) ^ (m + n) - 1 := by
+  unfold circ; rw [pow_add']; grind
 
 /-! ## Measurement -/
 
 /-- relative errors in a product combine by mult-add, exactly (the textbook rule "they add"
     is the k = 0 shadow that drops the corner e₁e₂) -/
 theorem product_error (x y e1 e2 : Int) :
-    (x * (1 + e1)) * (y * (1 + e2)) = (x * y) * (1 + multAdd e1 e2) := by
-  unfold multAdd; grind
+    (x * (1 + e1)) * (y * (1 + e2)) = (x * y) * (1 + circ e1 e2) := by
+  unfold circ; grind
 
 /-- the corner that the first-order rule drops -/
-theorem product_error_corner (e1 e2 : Int) : multAdd e1 e2 - (e1 + e2) = e1 * e2 := by
-  unfold multAdd; grind
+theorem product_error_corner (e1 e2 : Int) : circ e1 e2 - (e1 + e2) = e1 * e2 := by
+  unfold circ; grind
 
 /-! ## Archimedes' lever and Boyle's law: products held constant -/
 
 /-- if one factor of a constant product grows by a, the other must change by b with a ⊞ b = 0:
     the lever (weight × arm) and Boyle (pressure × volume) are the same picture -/
 theorem constant_product (P V a b : Int) (hPV : P * V ≠ 0) :
-    (P * (1 + a)) * (V * (1 + b)) = P * V ↔ multAdd a b = 0 := by
-  have e : (P * (1 + a)) * (V * (1 + b)) = P * V + P * V * multAdd a b := by unfold multAdd; grind
+    (P * (1 + a)) * (V * (1 + b)) = P * V ↔ circ a b = 0 := by
+  have e : (P * (1 + a)) * (V * (1 + b)) = P * V + P * V * circ a b := by unfold circ; grind
   rw [e]
   constructor
   · intro h
-    have h0 : P * V * multAdd a b = 0 := by omega
+    have h0 : P * V * circ a b = 0 := by omega
     rcases Int.mul_eq_zero.mp h0 with h1 | h1
     · exact absurd h1 hPV
     · exact h1
@@ -51,16 +51,16 @@ theorem constant_product (P V a b : Int) (hPV : P * V ≠ 0) :
 
 /-- on a field the partner change is the mult-add inverse −a/(1 + a) -/
 theorem boyle_partner {K : Type} [Lean.Grind.Field K] (a b : K) (ha : 1 + a ≠ 0)
-    (h : multAdd a b = 0) : b = multAddInv a := by
-  have h1 : b * (1 + a) = -a := by unfold multAdd at h; grind
-  unfold multAddInv
+    (h : circ a b = 0) : b = circInv a := by
+  have h1 : b * (1 + a) = -a := by unfold circ at h; grind
+  unfold circInv
   grind
 
 /-- pressure gains combine at k = +1 while the matching volume losses combine at k = −1:
     if (1 + a)(1 − d₁) = 1 and (1 + b)(1 − d₂) = 1 then the totals match the same way -/
 theorem boyle_gain_loss (a b d1 d2 : Int) (h1 : (1 + a) * (1 - d1) = 1) (h2 : (1 + b) * (1 - d2) = 1) :
-    (1 + multAdd a b) * (1 - wAdd (-1) d1 d2) = 1 := by
-  rw [multAdd_lift, wAdd_either]
+    (1 + circ a b) * (1 - circK (-1) d1 d2) = 1 := by
+  rw [circ_lift, circK_either]
   have : (1 + a) * (1 + b) * (1 - (1 - (1 - d1) * (1 - d2))) = ((1 + a) * (1 - d1)) * ((1 + b) * (1 - d2)) := by grind
   rw [this, h1, h2]; grind
 
@@ -69,16 +69,16 @@ theorem boyle_gain_loss (a b d1 d2 : Int) (h1 : (1 + a) * (1 - d1) = 1) (h2 : (1
 /-- T² ∝ a³ on percent changes: (1 + t)² = (1 + α)³ is t ⊞ t = α ⊞ α ⊞ α
     (the square's gnomon equals the cube's layers) -/
 theorem kepler_third (t α : Int) :
-    (1 + t) * (1 + t) = (1 + α) * (1 + α) * (1 + α) ↔ multAdd t t = multAdd (multAdd α α) α := by
-  rw [← multAdd_lift, ← multAdd_lift, ← multAdd_lift]; omega
+    (1 + t) * (1 + t) = (1 + α) * (1 + α) * (1 + α) ↔ circ t t = circ (circ α α) α := by
+  rw [← circ_lift, ← circ_lift, ← circ_lift]; omega
 
 /-- four times as far out, eight times as long a year -/
 example : (1 + 7) * (1 + 7) = (1 + 3) * (1 + 3) * (1 + 3) := by decide
 
 /-- gravity: when the distance grows by ρ the force changes by the mult-add inverse of ρ ⊞ ρ -/
-theorem inverse_square {K : Type} [Lean.Grind.Field K] (ρ : K) (h : 1 + multAdd ρ ρ ≠ 0) :
-    ((1 + ρ) * (1 + ρ))⁻¹ = 1 + multAddInv (multAdd ρ ρ) := by
-  rw [← multAdd_lift]; exact inv_one_add _ h
+theorem inverse_square {K : Type} [Lean.Grind.Field K] (ρ : K) (h : 1 + circ ρ ρ ≠ 0) :
+    ((1 + ρ) * (1 + ρ))⁻¹ = 1 + circInv (circ ρ ρ) := by
+  rw [← circ_lift]; exact inv_one_add _ h
 
 /-! ## Newton's law of cooling: the gap left behind compounds at k = −1 -/
 
@@ -108,18 +108,18 @@ theorem lenses_in_contact (P1 P2 : Int) : ((lens P2).mul (lens P1)).C = -(P1 + P
 
 /-- two lenses a distance d apart: total power P₁ + P₂ − d·P₁P₂, weighted mult-add at k = −d -/
 theorem lenses_apart (P1 d P2 : Int) :
-    ((lens P2).mul ((gap d).mul (lens P1))).C = -(wAdd (-d) P1 P2) := by
-  simp only [Ray.mul, lens, gap, wAdd]; grind
+    ((lens P2).mul ((gap d).mul (lens P1))).C = -(circK (-d) P1 P2) := by
+  simp only [Ray.mul, lens, gap, circK]; grind
 
 /-- each lens's squeeze factor 1 − d·P (how much a parallel beam narrows over the gap) multiplies -/
 theorem squeeze_multiplies (P1 d P2 : Int) :
-    1 - d * wAdd (-d) P1 P2 = (1 - d * P1) * (1 - d * P2) := by
-  unfold wAdd; grind
+    1 - d * circK (-d) P1 P2 = (1 - d * P1) * (1 - d * P2) := by
+  unfold circK; grind
 
 /-- the wall: a first lens that focuses exactly on the second (d·P₁ = 1) makes the second lens
     change nothing: the field lens of telescope eyepieces -/
-theorem field_lens (P1 d P2 : Int) (h : d * P1 = 1) : wAdd (-d) P1 P2 = P1 := by
-  unfold wAdd
+theorem field_lens (P1 d P2 : Int) (h : d * P1 = 1) : circK (-d) P1 P2 = P1 := by
+  unfold circK
   have : -d * P1 * P2 = -(d * P1) * P2 := by grind
   rw [this, h]; grind
 

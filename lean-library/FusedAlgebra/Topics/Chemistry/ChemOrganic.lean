@@ -11,7 +11,7 @@
   law at (0, −1), (e₁ + e₂)/(1 + e₁e₂), the velocity-addition law; ee = ±1 are
   its walls, and Horeau's duplication is e ⊕ e.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
   LIBRARY NOTE: first compiled in the shared library, after ChemAcids. Two exact twins
   removed (hammett_compose, route_losses); each is marked where it stood. No proof step or
   statement changed.
@@ -19,9 +19,9 @@
 import FusedAlgebra.Base
 
 namespace ChemOrganic
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-- Benzene (Hückel 6-ring): x⁶ − 6x⁴ + 9x² − 4 = (x − 2)(x + 2)(x − 1)²(x + 1)². -/
 theorem benzene_charpoly (x : Rat) :
@@ -52,8 +52,8 @@ theorem ee_compose (r1 r2 e1 e2 : Rat)
 
 /-- The ee law is the landscape law at (k, q) = (0, −1): numerator e₁ + e₂, denominator 1 + e₁e₂. -/
 theorem ee_is_landscape (e1 e2 : Rat) :
-    wAdd 0 e1 e2 = e1 + e2 ∧ 1 - (-1) * e1 * e2 = 1 + e1 * e2 := by
-  unfold wAdd; constructor <;> grind
+    circK 0 e1 e2 = e1 + e2 ∧ 1 - (-1) * e1 * e2 = 1 + e1 * e2 := by
+  unfold circK; constructor <;> grind
 
 /-- Its discriminant k² − 4q is 4: the two-walls country. -/
 theorem ee_two_walls : (0 : Rat) * 0 - 4 * (-1) = 4 := by grind
@@ -62,8 +62,8 @@ theorem ee_two_walls : (0 : Rat) * 0 - 4 * (-1) = 4 := by grind
 theorem ee_wall (b : Rat) : 1 + b = 1 * (1 + 1 * b) := by grind
 
 /-- Horeau duplication is e ⊕ e: numerator 2e, denominator 1 + e². -/
-theorem horeau (e : Rat) : wAdd 0 e e = 2 * e ∧ 1 - (-1) * e * e = 1 + e * e := by
-  unfold wAdd; constructor <;> grind
+theorem horeau (e : Rat) : circK 0 e e = 2 * e ∧ 1 - (-1) * e * e = 1 + e * e := by
+  unfold circK; constructor <;> grind
 
 -- LIBRARY: route_losses (Linear routes: losses fold at k = −1) was an exact twin of ChemStoichiometry.loss_two and is removed.
 

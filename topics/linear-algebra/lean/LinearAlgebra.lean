@@ -34,8 +34,8 @@
 -/
 import FusedAlgebra.Base
 
-namespace LinearAlgebraMA
-open MultAdd
+namespace LinearAlgebraCirc
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -91,33 +91,33 @@ def tr (x : M2 R) : R := x.a + x.d
 def det (x : M2 R) : R := x.a * x.d - x.b * x.c
 
 /-- Matrix mult-add: A ⊞ B = A + B + AB. -/
-def madd (x y : M2 R) : M2 R := add (add x y) (mul x y)
+def circ (x y : M2 R) : M2 R := add (add x y) (mul x y)
 /-- Weighted matrix mult-add: A ⊞ₖ B = A + B + k·AB. -/
-def wmadd (k : R) (x y : M2 R) : M2 R := add (add x y) (smul k (mul x y))
+def circK (k : R) (x y : M2 R) : M2 R := add (add x y) (smul k (mul x y))
 /-- The dial invariant: D_k(A) = tr A + k·det A, so det(I + kA) = 1 + k·D_k(A). -/
 def Dk (k : R) (x : M2 R) : R := tr x + k * det x
 
 /-! ## 1. The lift: matrix mult-add is matrix multiplication through A ↦ I + A -/
 
-theorem lift (x y : M2 R) : add one (madd x y) = mul (add one x) (add one y) := by
-  apply M2.ext' <;> simp only [madd, add, mul, one] <;> grind
+theorem lift (x y : M2 R) : add one (circ x y) = mul (add one x) (add one y) := by
+  apply M2.ext' <;> simp only [circ, add, mul, one] <;> grind
 
 theorem wlift (k : R) (x y : M2 R) :
-    add one (smul k (wmadd k x y)) = mul (add one (smul k x)) (add one (smul k y)) := by
-  apply M2.ext' <;> simp only [wmadd, add, mul, smul, one] <;> grind
+    add one (smul k (circK k x y)) = mul (add one (smul k x)) (add one (smul k y)) := by
+  apply M2.ext' <;> simp only [circK, add, mul, smul, one] <;> grind
 
-theorem madd_assoc (x y z : M2 R) : madd (madd x y) z = madd x (madd y z) := by
-  apply M2.ext' <;> simp only [madd, add, mul] <;> grind
+theorem circ_assoc (x y z : M2 R) : circ (circ x y) z = circ x (circ y z) := by
+  apply M2.ext' <;> simp only [circ, add, mul] <;> grind
 
-theorem madd_zero (x : M2 R) : madd x zero = x := by
-  apply M2.ext' <;> simp only [madd, add, mul, zero] <;> grind
+theorem circ_zero (x : M2 R) : circ x zero = x := by
+  apply M2.ext' <;> simp only [circ, add, mul, zero] <;> grind
 
-theorem zero_madd (x : M2 R) : madd zero x = x := by
-  apply M2.ext' <;> simp only [madd, add, mul, zero] <;> grind
+theorem zero_circ (x : M2 R) : circ zero x = x := by
+  apply M2.ext' <;> simp only [circ, add, mul, zero] <;> grind
 
 /-- At weight 0 the corner is gone: plain matrix addition. -/
-theorem wmadd_zero_weight (x y : M2 R) : wmadd 0 x y = add x y := by
-  apply M2.ext' <;> simp only [wmadd, add, mul, smul] <;> grind
+theorem circK_zero_weight (x y : M2 R) : circK 0 x y = add x y := by
+  apply M2.ext' <;> simp only [circK, add, mul, smul] <;> grind
 
 /-! ## 2. Determinant and trace -/
 
@@ -133,24 +133,24 @@ theorem tr_add (x y : M2 R) : tr (add x y) = tr x + tr y := by
   simp only [tr, add]; grind
 
 /-- The dial homomorphism, for every weight k at once (any commutative ring). -/
-theorem Dk_hom (k : R) (x y : M2 R) : Dk k (wmadd k x y) = wAdd k (Dk k x) (Dk k y) := by
-  simp only [Dk, tr, det, wmadd, add, smul, mul, wAdd]; grind
+theorem Dk_hom (k : R) (x y : M2 R) : Dk k (circK k x y) = CircleOp.circK k (Dk k x) (Dk k y) := by
+  simp only [Dk, tr, det, circK, add, smul, mul, CircleOp.circK]; grind
 
 /-- k = 1: the shifted determinant det(I + A) − 1 turns matrix ⊞ into scalar ⊞. -/
 theorem shifted_det_hom (x y : M2 R) :
-    det (add one (madd x y)) - 1 = multAdd (det (add one x) - 1) (det (add one y) - 1) := by
-  rw [lift, det_mul]; unfold multAdd; grind
+    det (add one (circ x y)) - 1 = CircleOp.circ (det (add one x) - 1) (det (add one y) - 1) := by
+  rw [lift, det_mul]; unfold CircleOp.circ; grind
 
 /-! ## 3. The off-diagonal entries set the dial -/
 
 /-- det(I + M) − 1 = m₁₁ ⊞_w m₂₂ whenever m₁₂·m₂₁ = (1 − w)·m₁₁·m₂₂. -/
 theorem coupling_sets_weight (w : R) (m : M2 R) (h : m.b * m.c = (1 - w) * m.a * m.d) :
-    det (add one m) - 1 = wAdd w m.a m.d := by
-  simp only [det, add, one, wAdd]; grind
+    det (add one m) - 1 = CircleOp.circK w m.a m.d := by
+  simp only [det, add, one, CircleOp.circK]; grind
 
 /-- No coupling (diagonal): mult-add, weight 1. -/
-theorem diagonal_is_multAdd (p q : R) : det (add one ⟨p, 0, 0, q⟩) - 1 = multAdd p q := by
-  simp only [det, add, one, multAdd]; grind
+theorem diagonal_is_circ (p q : R) : det (add one ⟨p, 0, 0, q⟩) - 1 = CircleOp.circ p q := by
+  simp only [det, add, one, CircleOp.circ]; grind
 
 /-- Rank one (m₁₂m₂₁ = m₁₁m₂₂, determinant 0): plain addition, weight 0. -/
 theorem rank_one_is_add (m : M2 R) (h : m.b * m.c = m.a * m.d) :
@@ -158,31 +158,31 @@ theorem rank_one_is_add (m : M2 R) (h : m.b * m.c = m.a * m.d) :
   simp only [det, add, one]; grind
 
 /-- Two by two, a matrix never commutes for free: order matters for matrix ⊞. -/
-theorem madd_not_comm :
-    madd (⟨0, 1, 0, 0⟩ : M2 Int) ⟨0, 0, 1, 0⟩ ≠ madd ⟨0, 0, 1, 0⟩ ⟨0, 1, 0, 0⟩ := by
+theorem circ_not_comm :
+    circ (⟨0, 1, 0, 0⟩ : M2 Int) ⟨0, 0, 1, 0⟩ ≠ circ ⟨0, 0, 1, 0⟩ ⟨0, 1, 0, 0⟩ := by
   intro h
   have h1 := congrArg M2.a h
   revert h1
   first
     | decide
-    | (simp only [madd, add, mul]; grind)
+    | (simp only [circ, add, mul]; grind)
 
 /-! ## 4. Rotations: the orthogonal condition is Xᵀ ⊞ₖ X = 0 -/
 
 theorem orth_lift (k : R) (x : M2 R) :
     mul (transpose (add one (smul k x))) (add one (smul k x))
-      = add one (smul k (wmadd k (transpose x) x)) := by
-  apply M2.ext' <;> simp only [transpose, wmadd, add, mul, smul, one] <;> grind
+      = add one (smul k (circK k (transpose x) x)) := by
+  apply M2.ext' <;> simp only [transpose, circK, add, mul, smul, one] <;> grind
 
 /-- For X = [[x, −y], [y, x]], Xᵀ ⊞ₖ X is (2x + k(x² + y²))·I. -/
 theorem rotation_condition (k x y : R) :
-    wmadd k (transpose ⟨x, -y, y, x⟩) ⟨x, -y, y, x⟩
+    circK k (transpose ⟨x, -y, y, x⟩) ⟨x, -y, y, x⟩
       = ⟨2 * x + k * (x * x + y * y), 0, 0, 2 * x + k * (x * x + y * y)⟩ := by
-  apply M2.ext' <;> simp only [transpose, wmadd, add, mul, smul] <;> grind
+  apply M2.ext' <;> simp only [transpose, circK, add, mul, smul] <;> grind
 
 /-- k = 0 drops the corner: the condition becomes Xᵀ + X = 0 (skew, the Lie algebra). -/
-theorem rotation_condition_flat (x : M2 R) : wmadd 0 (transpose x) x = add (transpose x) x :=
-  wmadd_zero_weight _ _
+theorem rotation_condition_flat (x : M2 R) : circK 0 (transpose x) x = add (transpose x) x :=
+  circK_zero_weight _ _
 
 end M2
 
@@ -222,23 +222,23 @@ def det (x : M3 R) : R :=
   x.a11 * (x.a22 * x.a33 - x.a23 * x.a32) - x.a12 * (x.a21 * x.a33 - x.a23 * x.a31)
     + x.a13 * (x.a21 * x.a32 - x.a22 * x.a31)
 
-def madd (x y : M3 R) : M3 R := add (add x y) (mul x y)
-def wmadd (k : R) (x y : M3 R) : M3 R := add (add x y) (smul k (mul x y))
+def circ (x y : M3 R) : M3 R := add (add x y) (mul x y)
+def circK (k : R) (x y : M3 R) : M3 R := add (add x y) (smul k (mul x y))
 /-- D_k(A) = e₁ + k·e₂ + k²·e₃, so det(I + kA) = 1 + k·D_k(A). -/
 def Dk (k : R) (x : M3 R) : R := tr x + k * e2 x + k * k * det x
 
-theorem lift (x y : M3 R) : add one (madd x y) = mul (add one x) (add one y) := by
-  apply M3.ext' <;> simp only [madd, add, mul, one] <;> grind
+theorem lift (x y : M3 R) : add one (circ x y) = mul (add one x) (add one y) := by
+  apply M3.ext' <;> simp only [circ, add, mul, one] <;> grind
 
 theorem wlift (k : R) (x y : M3 R) :
-    add one (smul k (wmadd k x y)) = mul (add one (smul k x)) (add one (smul k y)) := by
-  apply M3.ext' <;> simp only [wmadd, add, mul, smul, one] <;> grind
+    add one (smul k (circK k x y)) = mul (add one (smul k x)) (add one (smul k y)) := by
+  apply M3.ext' <;> simp only [circK, add, mul, smul, one] <;> grind
 
-theorem madd_assoc (x y z : M3 R) : madd (madd x y) z = madd x (madd y z) := by
-  apply M3.ext' <;> simp only [madd, add, mul] <;> grind
+theorem circ_assoc (x y z : M3 R) : circ (circ x y) z = circ x (circ y z) := by
+  apply M3.ext' <;> simp only [circ, add, mul] <;> grind
 
-theorem madd_zero (x : M3 R) : madd x zero = x := by
-  apply M3.ext' <;> simp only [madd, add, mul, zero] <;> grind
+theorem circ_zero (x : M3 R) : circ x zero = x := by
+  apply M3.ext' <;> simp only [circ, add, mul, zero] <;> grind
 
 /-- The mult-add cube of a matrix: det(I + kA) = 1 + k·e₁ + k²·e₂ + k³·e₃. -/
 theorem det_one_add_smul (k : R) (x : M3 R) :
@@ -263,16 +263,16 @@ theorem box_cube (a b c : R) :
 /-- For a triangular matrix (eigenvalues on the diagonal) the shifted determinant is the
     mult-add of the eigenvalues, as the trace is their sum. -/
 theorem triangular_eigen (x : M3 R) (h21 : x.a21 = 0) (h31 : x.a31 = 0) (h32 : x.a32 = 0) :
-    det (add one x) - 1 = foldMA [x.a11, x.a22, x.a33] := by
-  simp only [det, add, one, foldMA, multAdd]; rw [h21, h31, h32]; grind
+    det (add one x) - 1 = foldCirc [x.a11, x.a22, x.a33] := by
+  simp only [det, add, one, foldCirc, CircleOp.circ]; rw [h21, h31, h32]; grind
 
 theorem tr_add (x y : M3 R) : tr (add x y) = tr x + tr y := by
   simp only [tr, add]; grind
 
 theorem orth_lift (k : R) (x : M3 R) :
     mul (transpose (add one (smul k x))) (add one (smul k x))
-      = add one (smul k (wmadd k (transpose x) x)) := by
-  apply M3.ext' <;> simp only [transpose, wmadd, add, mul, smul, one] <;> grind
+      = add one (smul k (circK k (transpose x) x)) := by
+  apply M3.ext' <;> simp only [transpose, circK, add, mul, smul, one] <;> grind
 
 end M3
 
@@ -286,14 +286,14 @@ variable {K : Type} [Lean.Grind.Field K]
 /-- The 3×3 dial homomorphism for every weight k: k = 0 is trace additivity, k ≠ 0 is
     det(I + kA) multiplicative. -/
 theorem M3.Dk_hom (k : K) (x y : M3 K) :
-    M3.Dk k (M3.wmadd k x y) = wAdd k (M3.Dk k x) (M3.Dk k y) := by
+    M3.Dk k (M3.circK k x y) = CircleOp.circK k (M3.Dk k x) (M3.Dk k y) := by
   by_cases hk : k = 0
   · subst hk
-    simp only [M3.Dk, M3.tr, M3.wmadd, M3.add, M3.smul, M3.mul, wAdd]; grind
-  · have h1 := M3.det_one_add_smul k (M3.wmadd k x y)
+    simp only [M3.Dk, M3.tr, M3.circK, M3.add, M3.smul, M3.mul, CircleOp.circK]; grind
+  · have h1 := M3.det_one_add_smul k (M3.circK k x y)
     rw [M3.wlift, M3.det_mul, M3.det_one_add_smul, M3.det_one_add_smul] at h1
-    have h6 : k * M3.Dk k (M3.wmadd k x y) = k * wAdd k (M3.Dk k x) (M3.Dk k y) := by
-      unfold M3.Dk wAdd; grind
+    have h6 : k * M3.Dk k (M3.circK k x y) = k * CircleOp.circK k (M3.Dk k x) (M3.Dk k y) := by
+      unfold M3.Dk CircleOp.circK; grind
     grind
 
 namespace M2
@@ -314,8 +314,8 @@ theorem add_one_eq_one {w : M2 K} (h : add one w = one) : w = zero := by
   apply M2.ext' <;> simp only [zero] <;> grind
 
 /-- Off the wall (det(I + A) ≠ 0) every matrix has a mult-add inverse: (I + A)⁻¹ − I. -/
-theorem madd_inverse (x : M2 K) (h : det (add one x) ≠ 0) :
-    madd x (sub (inv (add one x)) one) = zero := by
+theorem circ_inverse (x : M2 K) (h : det (add one x) ≠ 0) :
+    circ x (sub (inv (add one x)) one) = zero := by
   have hl := lift x (sub (inv (add one x)) one)
   have hz : add one (sub (inv (add one x)) one) = inv (add one x) := by
     apply M2.ext' <;> simp only [add, sub, one] <;> grind
@@ -326,12 +326,12 @@ theorem madd_inverse (x : M2 K) (h : det (add one x) ≠ 0) :
 def msubM (x a : M2 K) : M2 K := mul (sub x a) (inv (add one a))
 
 theorem msub_undo_W (x w : M2 K) (h : det w ≠ 0) :
-    madd (mul (sub x (sub w one)) (inv w)) (sub w one) = x := by
+    circ (mul (sub x (sub w one)) (inv w)) (sub w one) = x := by
   have hd : det w = w.a * w.d - w.b * w.c := rfl
-  apply M2.ext' <;> simp only [madd, add, sub, mul, inv, one] <;> grind
+  apply M2.ext' <;> simp only [circ, add, sub, mul, inv, one] <;> grind
 
 /-- ⊟ undoes ⊞: (X ⊟ A) ⊞ A = X, off the wall. -/
-theorem msub_undo (x a : M2 K) (h : det (add one a) ≠ 0) : madd (msubM x a) a = x := by
+theorem msub_undo (x a : M2 K) (h : det (add one a) ≠ 0) : circ (msubM x a) a = x := by
   have hA : sub (add one a) one = a := by
     apply M2.ext' <;> simp only [sub, add, one] <;> grind
   have := msub_undo_W x (add one a) h
@@ -422,13 +422,13 @@ theorem fl_sadd (m : M2 R) (u1 u2 v1 v2 : R) :
   unfold fl1 fl2 sadd; constructor <;> grind
 
 theorem fl_scale (m : M2 R) (c v1 v2 : R) :
-    fl1 m (multAdd c v1) (multAdd c v2) = multAdd c (fl1 m v1 v2) ∧
-    fl2 m (multAdd c v1) (multAdd c v2) = multAdd c (fl2 m v1 v2) := by
-  unfold fl1 fl2 multAdd; constructor <;> grind
+    fl1 m (circ c v1) (circ c v2) = circ c (fl1 m v1 v2) ∧
+    fl2 m (circ c v1) (circ c v2) = circ c (fl2 m v1 v2) := by
+  unfold fl1 fl2 circ; constructor <;> grind
 
 /-- Mult-adding a is zooming by 1 + a about the wall −1. -/
-theorem multAdd_is_zoom (a x : R) : multAdd a x - (-1) = (1 + a) * (x - (-1)) := by
-  unfold multAdd; grind
+theorem circ_is_zoom (a x : R) : circ a x - (-1) = (1 + a) * (x - (-1)) := by
+  unfold circ; grind
 
 end Fused
 
@@ -447,14 +447,14 @@ def mono (p q : Nat) (x1 x2 : R) : R := (1 + x1) ^ p * (1 + x2) ^ q - 1
 
 /-- Monomial maps are the linear maps of rate space: they turn ⊞ into ⊞. -/
 theorem mono_hom (p q : Nat) (x1 x2 y1 y2 : R) :
-    mono p q (multAdd x1 y1) (multAdd x2 y2) = multAdd (mono p q x1 x2) (mono p q y1 y2) := by
+    mono p q (circ x1 y1) (circ x2 y2) = circ (mono p q x1 x2) (mono p q y1 y2) := by
   unfold mono
-  rw [multAdd_lift, multAdd_lift, mul_pow', mul_pow']
+  rw [circ_lift, circ_lift, mul_pow', mul_pow']
   generalize (1 + x1) ^ p = P1
   generalize (1 + y1) ^ p = Q1
   generalize (1 + x2) ^ q = P2
   generalize (1 + y2) ^ q = Q2
-  unfold multAdd; grind
+  unfold circ; grind
 
 /-- Composing monomial maps multiplies exponent matrices (first row shown; the second row is
     the same statement with the other row of exponents). -/
@@ -469,4 +469,4 @@ theorem mono_compose (u1 u2 : R) (a b c d e f : Nat) :
 
 end Monomial
 
-end LinearAlgebraMA
+end LinearAlgebraCirc

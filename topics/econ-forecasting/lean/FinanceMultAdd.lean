@@ -28,11 +28,11 @@
                   so over long horizons the lowest-rate corner sets the rate.
 -/
 
-def madd (a b : Rat) : Rat := a + b + a * b
+def circ (a b : Rat) : Rat := a + b + a * b
 def msub (a b : Rat) : Rat := (a - b) / (1 + b)
 
-theorem fisher (a b : Rat) (h : 1 + b ≠ 0) : madd (msub a b) b = a := by
-  unfold madd msub
+theorem fisher (a b : Rat) (h : 1 + b ≠ 0) : circ (msub a b) b = a := by
+  unfold circ msub
   have : (a - b) / (1 + b) * (1 + b) = a - b := Rat.div_mul_cancel h
   grind
 
@@ -165,7 +165,7 @@ theorem average_factors {u v x y d : Rat} (hu : 0 < u) (hv : 0 < v) (hx : x * u 
 
 def mall : List Rat → Rat
   | [] => 0
-  | r :: rs => madd r (mall rs)
+  | r :: rs => circ r (mall rs)
 
 def growth : List Rat → Rat
   | [] => 1
@@ -173,7 +173,7 @@ def growth : List Rat → Rat
 
 theorem mall_growth : ∀ rs : List Rat, mall rs = growth rs - 1
   | [] => by simp [mall, growth]; exact Rat.sub_self.symm
-  | r :: rs => by simp only [mall, growth, madd]; rw [mall_growth rs]; grind
+  | r :: rs => by simp only [mall, growth, circ]; rw [mall_growth rs]; grind
 
 theorem gsum_le (q j : Rat) (h : q * (1 + j) = 1) (hq : 0 ≤ q) (N : Nat) : j * gsum q N ≤ 1 := by
   rw [gordon q j h N]; have := pow_nonneg' hq N; grind

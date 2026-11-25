@@ -11,8 +11,8 @@
      survives. Once each element carries its own dial, the dial values fix
      the units and k's size matters (part 3).
   2. Per-element dials are odds. With p = t/(1 + t), "in A or in B" for
-     independent random subsets has odds t ✳ s (`odds_union`). The uniform
-     dial t = 2^a − 1 adds exponents: (2^a − 1) ✳ (2^b − 1) = 2^(a+b) − 1
+     independent random subsets has odds t ◯ s (`odds_union`). The uniform
+     dial t = 2^a − 1 adds exponents: (2^a − 1) ◯ (2^b − 1) = 2^(a+b) − 1
      (`exponent_ruler`), so the per-element dial and the fractional exponent
      are one dial, read through the mult-add ruler.
   3. k acting on per-element dials. One element with weight k contributes
@@ -31,7 +31,7 @@
 -/
 import FusedAlgebra.Base
 
-namespace MultAdd
+namespace CircleOp
 namespace DialSurvey
 
 open Lean.Grind
@@ -40,21 +40,21 @@ open Lean.Grind
 
 /-- In units λ times bigger, weight k becomes weight k·λ. -/
 theorem units_change_weight {R : Type} [CommSemiring R] (k l a b : R) :
-    wAdd k (l * a) (l * b) = l * wAdd (k * l) a b := by
-  unfold wAdd; grind
+    circK k (l * a) (l * b) = l * circK (k * l) a b := by
+  unfold circK; grind
 
 /-- With units 1/k the weight becomes 1: every nonzero k is mult-add in its own units. -/
 theorem weight_to_one (k a b : Rat) (hk : k ≠ 0) :
-    wAdd k (a / k) (b / k) = (1 / k) * multAdd a b := by
-  unfold wAdd multAdd; grind
+    circK k (a / k) (b / k) = (1 / k) * circ a b := by
+  unfold circK circ; grind
 
 /-! ## 2. Per-element dials are odds -/
 
-/-- Odds t ↦ probability t/(1+t); "in A or in B" (independent) has odds t ✳ s. -/
+/-- Odds t ↦ probability t/(1+t); "in A or in B" (independent) has odds t ◯ s. -/
 theorem odds_union (t s : Rat) (ht : 1 + t ≠ 0) (hs : 1 + s ≠ 0) :
-    1 - multAdd t s / (1 + multAdd t s) = (1 - t / (1 + t)) * (1 - s / (1 + s)) := by
-  have hl : 1 + multAdd t s = (1 + t) * (1 + s) := multAdd_lift t s
-  have hm : multAdd t s = (1 + t) * (1 + s) - 1 := by rw [← hl]; grind
+    1 - circ t s / (1 + circ t s) = (1 - t / (1 + t)) * (1 - s / (1 + s)) := by
+  have hl : 1 + circ t s = (1 + t) * (1 + s) := circ_lift t s
+  have hm : circ t s = (1 + t) * (1 + s) - 1 := by rw [← hl]; grind
   rw [hm]; grind
 
 /-- The complement of a subset with odds t has odds 1/t. -/
@@ -65,8 +65,8 @@ theorem odds_complement (t : Rat) (ht : t ≠ 0) (ht1 : 1 + t ≠ 0) :
 /-- The uniform dial 2^a − 1 is the exponent a read through the mult-add ruler:
     dials mult-add exactly when exponents add. -/
 theorem exponent_ruler (a b : Nat) :
-    multAdd ((2 : Int) ^ a - 1) (2 ^ b - 1) = 2 ^ (a + b) - 1 := by
-  unfold multAdd; rw [Int.pow_add]; grind
+    circ ((2 : Int) ^ a - 1) (2 ^ b - 1) = 2 ^ (a + b) - 1 := by
+  unfold circ; rw [Int.pow_add]; grind
 
 /-! ## 3. k acting on per-element dials: how many copies an element may have -/
 
@@ -202,4 +202,4 @@ theorem necklace_whole (k : Int) : 2 ∣ k * k - k ∧ 3 ∣ k * k * k - k := by
     · exact ⟨9 * q * q * q + 18 * q * q + 11 * q + 2, by grind⟩
 
 end DialSurvey
-end MultAdd
+end CircleOp

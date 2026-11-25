@@ -43,8 +43,8 @@
 -/
 import FusedAlgebra.Base
 
-namespace PiMultAdd
-open MultAdd
+namespace PiCircle
+open CircleOp
 
 /-! ## 1. Gaussian integers and mult-add on them -/
 
@@ -124,8 +124,8 @@ theorem circle_real_points (x : Rat) : (1 + x) * (1 + x) = 1 ↔ x = 0 ∨ x = -
   · rintro (h | h) <;> subst h <;> decide +kernel
 
 /-- in mult-add units: x ⊞ x = 0 (a half turn twice is a full turn) exactly at 0 and −2 -/
-theorem multAdd_self_zero (x : Rat) : multAdd x x = 0 ↔ x = 0 ∨ x = -2 := by
-  rw [← circle_real_points]; unfold multAdd; constructor <;> intro h <;> grind
+theorem circ_self_zero (x : Rat) : circ x x = 0 ↔ x = 0 ∨ x = -2 := by
+  rw [← circle_real_points]; unfold circ; constructor <;> intro h <;> grind
 
 /-! ## 3. The lens: the turning law is mult-add
 
@@ -174,7 +174,7 @@ theorem quarter_on_circle : G.norm (G.add G.one q4) = 1 := by decide
 theorem slope_one_twice : tl ⟨1, 1⟩ ⟨1, 1⟩ = ⟨2, 0⟩ := by decide
 theorem slope_one_four : tl (tl (tl ⟨1, 1⟩ ⟨1, 1⟩) ⟨1, 1⟩) ⟨1, 1⟩ = ⟨0, -4⟩ := by decide
 /-- the parity point is its own way back: (−2) ⊞ (−2) = 0 -/
-theorem parity_twice : multAdd (-2 : Rat) (-2) = 0 := by decide +kernel
+theorem parity_twice : circ (-2 : Rat) (-2) = 0 := by decide +kernel
 
 /-! ## 5. Steps that land exactly on the eighth turn (the 45° ray, slope 1)
 
@@ -372,4 +372,4 @@ theorem machin_50_digits :
     machinHi 22 < (314159265358979323846264338327950288419716939937511 / 10 ^ 50 : Rat) := by
   decide +kernel
 
-end PiMultAdd
+end PiCircle

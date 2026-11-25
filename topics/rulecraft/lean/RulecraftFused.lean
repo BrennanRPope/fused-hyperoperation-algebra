@@ -23,11 +23,11 @@
     whole effect is X_S ⊞ X_T = X_S + X_T + X_S·X_T. The cross term X_S·X_T
     is exactly the corners of the cube that touch both sides: the
     spillover a body with scope S cannot see. The corner expansion
-    (`one_add_foldMA_eq_corners`) shows the mult-add of a list is the sum,
+    (`one_add_foldCirc_eq_corners`) shows the mult-add of a list is the sum,
     over every nonempty group of parties, of the product of their effects.
 
   * Order-free reforms. Mult-add is commutative and associative, so the
-    mult-add of any reshuffled list is the same (`foldMA_perm`). Percent
+    mult-add of any reshuffled list is the same (`foldCirc_perm`). Percent
     changes to one quantity can never be path-dependent. The fused
     exponent rung is not commutative (`fexp_not_comm`), so path dependence
     needs a higher rung or more than one quantity.
@@ -63,7 +63,7 @@
   new is only the reading on Rulecraft and the formal statements.
 -/
 
-namespace MultAdd.Rulecraft
+namespace CircleOp.Rulecraft
 
 open Lean.Grind
 
@@ -75,43 +75,43 @@ section Ring
 variable {R : Type} [CommRing R]
 
 /-- Mult-add: a ⊞ b = a + b + a·b. -/
-def multAdd (a b : R) : R := a + b + a * b
+def circ (a b : R) : R := a + b + a * b
 
-theorem multAdd_lift (a b : R) : 1 + multAdd a b = (1 + a) * (1 + b) := by
-  unfold multAdd; grind
+theorem circ_lift (a b : R) : 1 + circ a b = (1 + a) * (1 + b) := by
+  unfold circ; grind
 
-theorem multAdd_comm (a b : R) : multAdd a b = multAdd b a := by
-  unfold multAdd; grind
+theorem circ_comm (a b : R) : circ a b = circ b a := by
+  unfold circ; grind
 
-theorem multAdd_assoc (a b c : R) :
-    multAdd (multAdd a b) c = multAdd a (multAdd b c) := by
-  unfold multAdd; grind
+theorem circ_assoc (a b c : R) :
+    circ (circ a b) c = circ a (circ b c) := by
+  unfold circ; grind
 
-theorem zero_multAdd (a : R) : multAdd 0 a = a := by
-  unfold multAdd; grind
+theorem zero_circ (a : R) : circ 0 a = a := by
+  unfold circ; grind
 
 /-- The event horizon: -1 absorbs everything composed with it. -/
-theorem neg_one_absorbs (b : R) : multAdd (-1) b = -1 := by
-  unfold multAdd; grind
+theorem neg_one_absorbs (b : R) : circ (-1) b = -1 := by
+  unfold circ; grind
 
 /-- The thermostat: undoing +d by -d leaves the corner square -d². -/
-theorem thermostat_residue (d : R) : multAdd d (-d) = -(d * d) := by
-  unfold multAdd; grind
+theorem thermostat_residue (d : R) : circ d (-d) = -(d * d) := by
+  unfold circ; grind
 
 /-- Weighted mult-add: the corner carries a coupling weight A. -/
-def wAdd (A a b : R) : R := a + b + A * a * b
+def circK (A a b : R) : R := a + b + A * a * b
 
 /-- Weighted mult-add is mult-add seen through x ↦ A·x. -/
-theorem weighted_conj (A a b : R) : A * wAdd A a b = multAdd (A * a) (A * b) := by
-  unfold wAdd multAdd; grind
+theorem weighted_conj (A a b : R) : A * circK A a b = circ (A * a) (A * b) := by
+  unfold circK circ; grind
 
 /-- A = 0: no corner, plain addition (nothing spills over). -/
-theorem wAdd_zero (a b : R) : wAdd 0 a b = a + b := by
-  unfold wAdd; grind
+theorem circK_zero (a b : R) : circK 0 a b = a + b := by
+  unfold circK; grind
 
 /-- A = 1: plain mult-add (pure compounding). -/
-theorem wAdd_one (a b : R) : wAdd 1 a b = multAdd a b := by
-  unfold wAdd multAdd; grind
+theorem circK_one (a b : R) : circK 1 a b = circ a b := by
+  unfold circK circ; grind
 
 /-- A panel of two: area = own corners + cross corners. -/
 theorem panel_grid (e₁ e₂ i₁ i₂ : R) :
@@ -135,33 +135,33 @@ theorem fused_price_expand (k : R) : (1 + k) * (1 + k) - 1 = k * k + 2 * k := by
 /-! ### The boundary theorem -/
 
 /-- The mult-add of a list of effects: x₁ ⊞ x₂ ⊞ … ⊞ xₙ. -/
-def foldMA : List R → R
+def foldCirc : List R → R
   | [] => 0
-  | a :: l => multAdd a (foldMA l)
+  | a :: l => circ a (foldCirc l)
 
 /-- Scope matches spillover: the whole is the inside ⊞ the outside, and
     the cross term X_S·X_T is what crosses the boundary. -/
-theorem foldMA_append (S T : List R) :
-    foldMA (S ++ T) = multAdd (foldMA S) (foldMA T) := by
+theorem foldCirc_append (S T : List R) :
+    foldCirc (S ++ T) = circ (foldCirc S) (foldCirc T) := by
   induction S with
-  | nil => simp only [List.nil_append, foldMA]; rw [zero_multAdd]
+  | nil => simp only [List.nil_append, foldCirc]; rw [zero_circ]
   | cons a S ih =>
-    simp only [List.cons_append, foldMA]
-    rw [ih, multAdd_assoc]
+    simp only [List.cons_append, foldCirc]
+    rw [ih, circ_assoc]
 
 theorem boundary (S T : List R) :
-    foldMA (S ++ T) = foldMA S + foldMA T + foldMA S * foldMA T := by
-  rw [foldMA_append]; rfl
+    foldCirc (S ++ T) = foldCirc S + foldCirc T + foldCirc S * foldCirc T := by
+  rw [foldCirc_append]; rfl
 
 /-- Order-free reforms: any reshuffle of the same effects gives the same
     total. -/
-theorem foldMA_perm {l l' : List R} (h : List.Perm l l') : foldMA l = foldMA l' := by
+theorem foldCirc_perm {l l' : List R} (h : List.Perm l l') : foldCirc l = foldCirc l' := by
   induction h with
   | nil => rfl
-  | cons x _ ih => simp only [foldMA]; rw [ih]
+  | cons x _ ih => simp only [foldCirc]; rw [ih]
   | swap x y l =>
-    simp only [foldMA]
-    unfold multAdd; grind
+    simp only [foldCirc]
+    unfold circ; grind
   | trans _ _ ih₁ ih₂ => exact ih₁.trans ih₂
 
 /-! ### The corners: every nonempty group of parties -/
@@ -195,14 +195,14 @@ theorem sumL_map_cons (a : R) (gs : List (List R)) :
 /-- The corner expansion: 1 + (x₁ ⊞ … ⊞ xₙ) is the sum over every group
     of parties (the empty group gives the 1) of the product of their
     effects. Layer k of the cube is the groups of size k. -/
-theorem one_add_foldMA_eq_corners (l : List R) :
-    1 + foldMA l = sumL ((groups l).map prodL) := by
+theorem one_add_foldCirc_eq_corners (l : List R) :
+    1 + foldCirc l = sumL ((groups l).map prodL) := by
   induction l with
-  | nil => simp only [foldMA, groups, List.map, prodL, sumL]; grind
+  | nil => simp only [foldCirc, groups, List.map, prodL, sumL]; grind
   | cons a l ih =>
-    simp only [foldMA, groups, List.map_append]
+    simp only [foldCirc, groups, List.map_append]
     rw [sumL_append, sumL_map_cons, ← ih]
-    unfold multAdd; grind
+    unfold circ; grind
 
 end Ring
 
@@ -212,16 +212,16 @@ section Field
 variable {K : Type} [Field K]
 
 /-- Everywhere but -1 there is an exact way back: -a/(1+a). -/
-theorem way_back (a : K) (h : 1 + a ≠ 0) : multAdd a (-a / (1 + a)) = 0 := by
-  unfold multAdd; grind
+theorem way_back (a : K) (h : 1 + a ≠ 0) : circ a (-a / (1 + a)) = 0 := by
+  unfold circ; grind
 
 /-- At -1 there is none: nothing composes with -1 to give 0. -/
-theorem no_way_back (b : K) : multAdd (-1) b ≠ 0 := by
-  unfold multAdd; grind
+theorem no_way_back (b : K) : circ (-1) b ≠ 0 := by
+  unfold circ; grind
 
 /-- Losing n parts of n+1 needs a gain of n: 90% lost (n = 9) needs +900%. -/
-theorem recovery (n : K) (h : n + 1 ≠ 0) : multAdd (-(n / (n + 1))) n = 0 := by
-  unfold multAdd; grind
+theorem recovery (n : K) (h : n + 1 ≠ 0) : circ (-(n / (n + 1))) n = 0 := by
+  unfold circ; grind
 
 end Field
 
@@ -258,4 +258,4 @@ example : (1 + 1) * (9 + 9) = 10 * 10 - 8 * 8 := by decide
     holding 2 of them sees 3 and 21 straddle its edge (3 · 7). -/
 example : (2 ^ 2 - 1) + (2 ^ 3 - 1) + (2 ^ 2 - 1) * (2 ^ 3 - 1) = 2 ^ 5 - 1 := by decide
 
-end MultAdd.Rulecraft
+end CircleOp.Rulecraft

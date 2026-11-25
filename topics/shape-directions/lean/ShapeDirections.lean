@@ -23,7 +23,7 @@
        bend q = s(s−1)/4, so D = s (rung height = the bend's discriminant through third order),
        and a fourth-order coefficient −s(s−1)/12 that no point of the landscape plane has
        (zero only at rungs 0 and 1). In jet space the rung adds a direction; the weight does not.
-    D. The nome: gluing a ↦ a ✳ (q − 1) commutes with the law for every q and the law descends
+    D. The nome: gluing a ↦ a ◯ (q − 1) commutes with the law for every q and the law descends
        to every quotient, so nothing near 0 can see q. Torsion through the 3-division polynomial:
        the cusp (addition) has no 3-step loop, the node (mult-add) has two plus the start.
     E. Several waves: a pair weight survives every separate rescaling of the waves. Riemann's
@@ -34,24 +34,23 @@
 import FusedAlgebra.Base
 
 namespace ShapeDirections
-open MultAdd
+open CircleOp
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
-theorem star_def (a b : Int) : a ✳ b = a + b + a * b := rfl
+theorem star_def (a b : Int) : a ◯ b = a + b + a * b := rfl
 
 /-! ## A. The weight is the size of the measuring stick -/
 
 /-- Zooming the inputs by λ and the weight by 1/λ gives the same law: the weight is units. -/
-theorem weight_is_units (k l a b : Int) : l * wAdd (l * k) a b = wAdd k (l * a) (l * b) := by
-  unfold wAdd; grind
+theorem weight_is_units (k l a b : Int) : l * circK (l * k) a b = circK k (l * a) (l * b) := by
+  unfold circK; grind
 
-/- (Every nonzero weight is mult-add after a zoom: that is the base's `wAdd_scale`.) -/
+/- (Every nonzero weight is mult-add after a zoom: that is the base's `circK_scale`.) -/
 
 /-- The q of the q-integers (and of the Potts colours) is the weight plus one. -/
-theorem qcount_is_weight (q a b : Int) : wAdd (q - 1) a b = a + b + q * a * b - a * b := by
-  unfold wAdd; grind
+theorem qcount_is_weight (q a b : Int) : circK (q - 1) a b = a + b + q * a * b - a * b := by
+  unfold circK; grind
 
 /-- Three sites in a row, each site with fugacity z and each occupied bond with weight k:
     Z = 1 + 3z + (2k+1)z² + k²z³. -/
@@ -78,15 +77,15 @@ theorem graph_weight_survives (k k' l m : Rat)
 /-- Cross-multiplied numerator of F_{p,q}(N a, N b) with N(x) = x/(1+cx): it is the numerator
     of F_{p+2c, ·}(a, b). -/
 theorem ruler_num (p c a b : Int) :
-    a * (1 + c * b) + b * (1 + c * a) + p * a * b = wAdd (p + 2 * c) a b := by
-  unfold wAdd; grind
+    a * (1 + c * b) + b * (1 + c * a) + p * a * b = circK (p + 2 * c) a b := by
+  unfold circK; grind
 
 /-- Cross-multiplied denominator: (1+ca)(1+cb) − q·ab is the denominator of N applied to
     F_{p+2c, q+pc+c²}(a, b). Together with ruler_num: N⁻¹(F_{p,q}(N a, N b)) = F_{p+2c, q+pc+c²}(a,b). -/
 theorem ruler_den (p q c a b : Int) :
     (1 + c * a) * (1 + c * b) - q * a * b
-      = (1 - (q + p * c + c * c) * a * b) + c * wAdd (p + 2 * c) a b := by
-  unfold wAdd; grind
+      = (1 - (q + p * c + c * c) * a * b) + c * circK (p + 2 * c) a b := by
+  unfold circK; grind
 
 /-- The ruler keeps the discriminant: (p+2c)² − 4(q+pc+c²) = p² − 4q. The ruler's orbits are
     the parabolas q = (p² − D)/4, one for each D. -/
@@ -185,18 +184,18 @@ theorem jet_rank :
 
 /-! ## D. The nome: a gluing the law never sees -/
 
-/-- Gluing a ↦ a ✳ (q − 1) commutes with the law, for every q. -/
-theorem glue_commutes (q a b : Int) : (a ✳ (q - 1)) ✳ b = (a ✳ b) ✳ (q - 1) := by
-  unfold multAdd; grind
+/-- Gluing a ↦ a ◯ (q − 1) commutes with the law, for every q. -/
+theorem glue_commutes (q a b : Int) : (a ◯ (q - 1)) ◯ b = (a ◯ b) ◯ (q - 1) := by
+  unfold circ; grind
 
 /-- Two gluings are one gluing by the product: the gluings form the group q^ℤ (in mult-add form). -/
-theorem glue_twice (q q' a : Int) : (a ✳ (q - 1)) ✳ (q' - 1) = a ✳ (q * q' - 1) := by
-  unfold multAdd; grind
+theorem glue_twice (q q' a : Int) : (a ◯ (q - 1)) ◯ (q' - 1) = a ◯ (q * q' - 1) := by
+  unfold circ; grind
 
 /-- The law descends to the quotient: glued inputs give a glued output, whatever the gluings.
     So the torus ℂ*/q^ℤ carries mult-add for every nome, and the nome is invisible near 0. -/
-theorem glue_descends (x y a b : Int) : (a ✳ (x - 1)) ✳ (b ✳ (y - 1)) = (a ✳ b) ✳ (x * y - 1) := by
-  unfold multAdd; grind
+theorem glue_descends (x y a b : Int) : (a ◯ (x - 1)) ◯ (b ◯ (y - 1)) = (a ◯ b) ◯ (x * y - 1) := by
+  unfold circ; grind
 
 /-- The 3-division polynomial of y² + a₁xy = x³ + a₂x² (a₃ = a₄ = a₆ = 0):
     ψ₃ = 3x⁴ + b₂x³ with b₂ = a₁² + 4a₂ (b₄ = b₆ = b₈ = 0). -/
@@ -241,16 +240,16 @@ theorem periods_outnumber_curves :
 /-! ## F. Whole numbers: the weight keeps its primes -/
 
 theorem pseries_two (k x : Int) : wpow k x 2 = 2 * x + k * x * x := by
-  rw [show wpow k x 2 = wAdd k (wAdd k 0 x) x from rfl]; unfold wAdd; grind
+  rw [show wpow k x 2 = circK k (circK k 0 x) x from rfl]; unfold circK; grind
 
 theorem pseries_three (k x : Int) : wpow k x 3 = 3 * x + 3 * k * x * x + k * k * x * x * x := by
-  rw [show wpow k x 3 = wAdd k (wAdd k (wAdd k 0 x) x) x from rfl]; unfold wAdd; grind
+  rw [show wpow k x 3 = circK k (circK k (circK k 0 x) x) x from rfl]; unfold circK; grind
 
 theorem pseries_five (k x : Int) :
     wpow k x 5 = 5 * x + 10 * k * x * x + 10 * k * k * x * x * x + 5 * k * k * k * x * x * x * x
       + k * k * k * k * x * x * x * x * x := by
-  rw [show wpow k x 5 = wAdd k (wAdd k (wAdd k (wAdd k (wAdd k 0 x) x) x) x) x from rfl]
-  unfold wAdd; grind
+  rw [show wpow k x 5 = circK k (circK k (circK k (circK k (circK k 0 x) x) x) x) x from rfl]
+  unfold circK; grind
 
 /-- p ∣ k: the p-fold power is p times a whole number (the law is additive at p). -/
 theorem additive_at_two (m x : Int) : wpow (2 * m) x 2 = 2 * (x + m * x * x) := by

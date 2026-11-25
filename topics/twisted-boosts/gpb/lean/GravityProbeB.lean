@@ -14,7 +14,7 @@
       fraction p_v = 1 − 1/γ with γ² = (r − 2M)/(r − 3M) (exact factor; equals
       Thomas's (γ − 1) to first order).
   They combine by multiplying the factors: 1 − p = (1 − p_s)(1 − p_v), so
-  −p = (−p_s) ✳ (−p_v): **the precession fractions mult-add**. The total is the
+  −p = (−p_s) ◯ (−p_v): **the precession fractions mult-add**. The total is the
   known exact geodetic precession 1 − √(1 − 3M/r) per orbit.
 
   Here x = M/r (in units G = c = 1). Lean works with the squares of the factors,
@@ -23,9 +23,9 @@
 import FusedAlgebra.Base
 
 namespace GravityProbeB
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## 1. The two factors and their product -/
 
@@ -44,17 +44,17 @@ theorem factors_multiply (x : Rat) (h2 : 1 - 2 * x ≠ 0) :
     (1 - 2 * x) * (1 - v2 x) = 1 - 3 * x := by
   unfold v2; grind
 
-/-- **The precession fractions mult-add**: if 1 − p = (1 − a)(1 − b) then −p = (−a) ✳ (−b). -/
+/-- **The precession fractions mult-add**: if 1 − p = (1 − a)(1 − b) then −p = (−a) ◯ (−b). -/
 theorem fractions_fuse (p a b : Rat) (h : 1 - p = (1 - a) * (1 - b)) :
-    -p = (-a) ✳ (-b) := by
+    -p = (-a) ◯ (-b) := by
   show -p = -a + -b + -a * -b; grind
 
 /-- And back: the mult-add form gives the product of factors. -/
-theorem fuse_factors (a b : Rat) : 1 + ((-a) ✳ (-b)) = (1 - a) * (1 - b) := by
+theorem fuse_factors (a b : Rat) : 1 + ((-a) ◯ (-b)) = (1 - a) * (1 - b) := by
   show 1 + (-a + -b + -a * -b) = (1 - a) * (1 - b); grind
 
 /-- The same law is the dial's weight −1: p = a + b − ab ("either twist"). -/
-theorem fuse_weight_minus_one (a b : Rat) : -((-a) ✳ (-b)) = a + b + (-1) * a * b := by
+theorem fuse_weight_minus_one (a b : Rat) : -((-a) ◯ (-b)) = a + b + (-1) * a * b := by
   show -(-a + -b + -a * -b) = a + b + (-1) * a * b; grind
 
 /-! ## 2. Weak field: one part velocity, two parts space -/
@@ -63,7 +63,7 @@ theorem fuse_weight_minus_one (a b : Rat) : -((-a) ✳ (-b)) = a + b + (-1) * a 
 theorem weak_split (x : Rat) : x + x / 2 = 3 / 2 * x := by grind
 
 /-- The fused total differs from the plain sum only by the corner a·b (second order). -/
-theorem corner_is_second_order (a b : Rat) : (a + b) - (-((-a) ✳ (-b))) = a * b := by
+theorem corner_is_second_order (a b : Rat) : (a + b) - (-((-a) ◯ (-b))) = a * b := by
   show (a + b) - (-(-a + -b + -a * -b)) = a * b; grind
 
 /-- In PPN form the geodetic coefficient is γ_PPN + ½; general relativity's γ_PPN = 1 gives 3/2. -/

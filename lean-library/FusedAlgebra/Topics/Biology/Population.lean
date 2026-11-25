@@ -6,7 +6,7 @@
   1. Reed–Frost: the chance a susceptible is infected by I infectives is wpow(−1, p, I);
      independent interventions combine by the "or" law; the herd-immunity threshold
      1 − 1/R₀ is −inv(R₀ − 1).
-  2. Beverton–Holt: two seasons compose into one, with growth excesses combining by ✳;
+  2. Beverton–Holt: two seasons compose into one, with growth excesses combining by ◯;
      the room below carrying capacity shrinks by 1/R each generation.
   3. Hassell: (1 + aN)^b = 1 + mpow(aN, b); b = 1 is Beverton–Holt.
   4. Survivorship and Levins colonisation are "or" folds.
@@ -17,12 +17,11 @@
 import FusedAlgebra.Base
 
 namespace Population
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
@@ -32,10 +31,10 @@ variable {R : Type} [Lean.Grind.CommRing R]
 -- LIBRARY: reed_frost (Reed–Frost: infection chance from I infectives) was an exact twin of Metabolism.limitation_pow and is removed.
 
 /-- Two interventions: transmission kept is (1 − e₁)(1 − e₂) = 1 − (e₁ "or" e₂). -/
-theorem interventions (e₁ e₂ : R) : (1 - e₁) * (1 - e₂) = 1 - wAdd (-1) e₁ e₂ := by
-  unfold wAdd; grind
+theorem interventions (e₁ e₂ : R) : (1 - e₁) * (1 - e₂) = 1 - circK (-1) e₁ e₂ := by
+  unfold circK; grind
 
--- LIBRARY: seasons_growth (Growth factors multiply across seasons, so growth excesses r = R − 1 combine by ✳) was an exact twin of ChemQuantum.fragments_multAdd and is removed.
+-- LIBRARY: seasons_growth (Growth factors multiply across seasons, so growth excesses r = R − 1 combine by ◯) was an exact twin of ChemQuantum.fragments_circ and is removed.
 
 -- LIBRARY: hassell (Hassell's denominator: (1 + aN)^b = 1 + mpow(aN, b)) was an exact twin of MolecularBiology.mwc_R and is removed.
 
@@ -47,7 +46,7 @@ theorem hassell_one (x : R) : 1 + mpow x 1 = 1 + x := by
 
 /-- Three age classes, grouped either way. -/
 theorem survival_assoc (q₁ q₂ q₃ : R) :
-    wAdd (-1) (wAdd (-1) q₁ q₂) q₃ = wAdd (-1) q₁ (wAdd (-1) q₂ q₃) := by unfold wAdd; grind
+    circK (-1) (circK (-1) q₁ q₂) q₃ = circK (-1) q₁ (circK (-1) q₂ q₃) := by unfold circK; grind
 
 -- LIBRARY: levins (Levins: colonisation from n occupied neighbours) was an exact twin of Metabolism.limitation_pow and is removed.
 

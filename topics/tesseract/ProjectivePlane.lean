@@ -38,7 +38,7 @@
   construction of P² as a scheme, which would need mathlib.
 -/
 
-namespace MultAdd.Toric.P2
+namespace CircleOp.Toric.P2
 
 open Lean.Grind
 
@@ -47,10 +47,10 @@ set_option linter.unusedSectionVars false
 variable {K : Type} [Field K] [DecidableEq K]
 
 /-- Mult-add: a ⊞ b = a + b + a·b = (1 + a)(1 + b) - 1. -/
-def multAdd (a b : K) : K := a + b + a * b
+def circ (a b : K) : K := a + b + a * b
 
 /-- The mult-add inverse u⁻, with u ⊞ u⁻ = 0. -/
-def multAddInv (u : K) : K := -u / (1 + u)
+def circInv (u : K) : K := -u / (1 + u)
 
 /-- A point [x:y:z] of P². `inl (a, b)` is [a:b:1]; `inr (some u)` is [1:u:0];
 `inr none` is [0:1:0]. -/
@@ -153,13 +153,13 @@ theorem torus_in_all (c d : Cone) (x y : K) (hx : x ≠ 0) (hy : y ≠ 0) :
 
 /-- In mult-add coordinates, the chart change c0 → c1, (a, b) ↦ (1/a, b/a),
 is (u, w) ↦ (u⁻, w ⊞ u⁻): the mult-add inverse, then a mult-add. -/
-theorem trans01_multAdd (u w : K) (h : 1 + u ≠ 0) :
-    trans c0 c1 (1 + u, 1 + w) = (1 + multAddInv u, 1 + multAdd w (multAddInv u)) := by
-  simp only [trans, multAdd, multAddInv, Prod.mk.injEq]; constructor <;> grind
+theorem trans01_circ (u w : K) (h : 1 + u ≠ 0) :
+    trans c0 c1 (1 + u, 1 + w) = (1 + circInv u, 1 + circ w (circInv u)) := by
+  simp only [trans, circ, circInv, Prod.mk.injEq]; constructor <;> grind
 
-theorem trans02_multAdd (u w : K) (h : 1 + w ≠ 0) :
-    trans c0 c2 (1 + u, 1 + w) = (1 + multAddInv w, 1 + multAdd u (multAddInv w)) := by
-  simp only [trans, multAdd, multAddInv, Prod.mk.injEq]; constructor <;> grind
+theorem trans02_circ (u w : K) (h : 1 + w ≠ 0) :
+    trans c0 c2 (1 + u, 1 + w) = (1 + circInv w, 1 + circ u (circInv w)) := by
+  simp only [trans, circ, circInv, Prod.mk.injEq]; constructor <;> grind
 
 /-! Windings x ↦ xⁿ. -/
 
@@ -209,4 +209,4 @@ theorem chart_wind (c : Cone) (n : Nat) (v : K × K) :
 fixed points; in ordinary coordinates q² + q + 1. -/
 theorem fan_count (a : Nat) : a ^ 2 + 3 * a + 3 = (a + 1) ^ 2 + (a + 1) + 1 := by grind
 
-end MultAdd.Toric.P2
+end CircleOp.Toric.P2

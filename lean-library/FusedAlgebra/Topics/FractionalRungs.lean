@@ -1,5 +1,5 @@
 /-
-  Fused Hyperoperation Algebra: the corner wAdd and the rungs below addition.
+  Fused Hyperoperation Algebra: the corner circK and the rungs below addition.
   Core Lean 4 only (no mathlib).
 
   STATUS: the original file was not compiled where it was written (Nov 25); in the
@@ -15,18 +15,18 @@ import FusedAlgebra.Rungs
 
 namespace FractionalRungs
 
-open MultAdd
+open CircleOp
 
-/-! The corner dial a + b + k·a·b is the weighted mult-add `wAdd` of FusedAlgebra.Base;
+/-! The corner dial a + b + k·a·b is the weighted mult-add `circK` of FusedAlgebra.Base;
   its commutative, associative, identity, lift, rescale and mirror laws are
-  wAdd_comm, wAdd_assoc, wAdd_zero, wAdd_lift, wAdd_scale and wAdd_flip there. -/
+  circK_comm, circK_assoc, circK_zero, circK_lift, circK_scale and circK_flip there. -/
 
 /-- k = -1 is inclusion–exclusion: 1 - (1-a)(1-b) -/
-theorem dial_or (a b : Int) : wAdd (-1) a b = 1 - (1 - a) * (1 - b) := by unfold wAdd; grind
+theorem dial_or (a b : Int) : circK (-1) a b = 1 - (1 - a) * (1 - b) := by unfold circK; grind
 /-- three at once: layers of the cube weighted 1, k, k² (one per dimension) -/
 theorem dial_three (k a b c : Int) :
-    wAdd k (wAdd k a b) c = a + b + c + k * (a * b + b * c + c * a) + k * k * (a * b * c) := by
-  unfold wAdd; grind
+    circK k (circK k a b) c = a + b + c + k * (a * b + b * c + c * a) + k * k * (a * b * c) := by
+  unfold circK; grind
 /-- KdV: Hirota's weight 1 - A = 4 k1 k2 / (k1+k2)², stated without division -/
 theorem kdv_weight (k1 k2 : Int) :
     (k1 + k2) * (k1 + k2) - (k1 - k2) * (k1 - k2) = 4 * k1 * k2 := by grind

@@ -9,13 +9,13 @@
   and the Ali–Mikhail–Haq copula `amh`.
 
   1. Potts / random-cluster bonds (edge weight v, Q colours). Two bonds in parallel
-     join with weight v₁ ✳ v₂ (mult-add); two in series with v₁v₂/(Q + v₁ + v₂).
+     join with weight v₁ ◯ v₂ (mult-add); two in series with v₁v₂/(Q + v₁ + v₂).
      In the transmissivity t = v/(Q + v): series multiplies, t = t₁t₂, and parallel
      is the landscape law F_{Q−2, 1−Q}, on the "or" line k + q = −1. Q = 1 is the
      failure union (reliability), Q = 2 velocity addition (Ising, tanh), and the
      law is AMH union with θ = 1 − Q. Walls: a perfect bond t = 1, and the proper
      colouring bond v = −1, t = −1/(Q − 1).
-  2. Two-terminal reliability: series ×, parallel ✳₋₁; the failure side swaps them;
+  2. Two-terminal reliability: series ×, parallel ◯₋₁; the failure side swaps them;
      in odds-against coordinates series is plain mult-add. The Wheatstone bridge
      by pivoting.
   3. The diamond hierarchical lattice: the dial pair iterated. Percolation fixed
@@ -34,17 +34,17 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Statistics
 
 namespace GraphTheory
-open MultAdd
+open CircleOp
 open StatFused (lens amh)
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
 /-! # 1. Potts bonds: parallel mult-adds, series multiplies transmissivity -/
 
 /-- Two parallel bonds join their ends with weight v₁ + v₂ + v₁v₂: one, the other, or both. -/
-theorem parallel_join (v₁ v₂ : Rat) : v₁ + v₂ + v₁ * v₂ = v₁ ✳ v₂ := rfl
+theorem parallel_join (v₁ v₂ : Rat) : v₁ + v₂ + v₁ * v₂ = v₁ ◯ v₂ := rfl
 
 /-- Series pair through a middle vertex: "ends not joined" weighs Q + v₁ + v₂ (middle alone,
     or tied to one end), "ends joined" weighs v₁v₂. One bond of weight v with the factor
@@ -73,22 +73,22 @@ theorem series_tr (Q v₁ v₂ : Rat) (h1 : Q + v₁ ≠ 0) (h2 : Q + v₂ ≠ 0
   have e : Q * (Q + v₁ + v₂) + v₁ * v₂ = (Q + v₁) * (Q + v₂) := by grind
   rw [e]; grind
 
-/-- **Parallel is a landscape law.** With tᵢ = vᵢ/(Q + vᵢ), the joined bond v₁ ✳ v₂ has
+/-- **Parallel is a landscape law.** With tᵢ = vᵢ/(Q + vᵢ), the joined bond v₁ ◯ v₂ has
     t = (t₁ + t₂ + (Q − 2)t₁t₂)/(1 − (1 − Q)t₁t₂) = F_{Q−2, 1−Q}(t₁, t₂). -/
 theorem parallel_tr (Q v₁ v₂ : Rat) (h1 : Q + v₁ ≠ 0) (h2 : Q + v₂ ≠ 0)
-    (h : Q + (v₁ ✳ v₂) ≠ 0) (hQ : Q ≠ 0) :
-    tr Q (v₁ ✳ v₂) = lens (Q - 2) (1 - Q) (tr Q v₁) (tr Q v₂) := by
+    (h : Q + (v₁ ◯ v₂) ≠ 0) (hQ : Q ≠ 0) :
+    tr Q (v₁ ◯ v₂) = lens (Q - 2) (1 - Q) (tr Q v₁) (tr Q v₂) := by
   unfold tr lens
   have hp : (Q + v₁) * (Q + v₂) ≠ 0 := by grind
   have hn : v₁ / (Q + v₁) + v₂ / (Q + v₂) + (Q - 2) * (v₁ / (Q + v₁)) * (v₂ / (Q + v₂)) =
-      Q * (v₁ ✳ v₂) / ((Q + v₁) * (Q + v₂)) := by
-    unfold multAdd; grind
+      Q * (v₁ ◯ v₂) / ((Q + v₁) * (Q + v₂)) := by
+    unfold circ; grind
   have hd : 1 - (1 - Q) * (v₁ / (Q + v₁)) * (v₂ / (Q + v₂)) =
-      Q * (Q + (v₁ ✳ v₂)) / ((Q + v₁) * (Q + v₂)) := by
+      Q * (Q + (v₁ ◯ v₂)) / ((Q + v₁) * (Q + v₂)) := by
     have e : (1 - Q) * (v₁ / (Q + v₁)) * (v₂ / (Q + v₂)) =
         (1 - Q) * v₁ * v₂ / ((Q + v₁) * (Q + v₂)) := by grind
     rw [e]
-    unfold multAdd; grind
+    unfold circ; grind
   rw [hn, hd, ddiv _ _ _ hp (by grind)]
   exact (cancel_left Q _ hQ h).symm
 
@@ -102,9 +102,9 @@ theorem parallel_lift (Q v : Rat) (h : Q + v ≠ 0) (hQ : Q ≠ 0) :
   have e : 1 - v / (Q + v) = Q / (Q + v) := by grind
   rw [e]; grind
 
-/-- Q = 1: percolation and reliability, the failure union a ✳₋₁ b. -/
-theorem q_one (a b : Rat) : lens (1 - 2) (1 - 1) a b = wAdd (-1) a b := by
-  unfold lens wAdd; grind
+/-- Q = 1: percolation and reliability, the failure union a ◯₋₁ b. -/
+theorem q_one (a b : Rat) : lens (1 - 2) (1 - 1) a b = circK (-1) a b := by
+  unfold lens circK; grind
 
 /-- Q = 2: Ising, velocity addition (tanh addition). -/
 theorem q_two (a b : Rat) : lens (2 - 2) (1 - 2) a b = (a + b) / (1 + a * b) := by
@@ -140,40 +140,40 @@ theorem colouring_wall_absorbs (Q a : Rat) (h : Q - 1 ≠ 0)
   grind
 
 /-- In weights, the colouring bond is mult-add's own wall −1. -/
-theorem colouring_is_wall (v : Rat) : (-1) ✳ v = -1 := neg_one_absorbs v
+theorem colouring_is_wall (v : Rat) : (-1) ◯ v = -1 := neg_one_absorbs v
 
-/-! # 2. Two-terminal reliability: the dial pair (×, ✳₋₁) -/
+/-! # 2. Two-terminal reliability: the dial pair (×, ◯₋₁) -/
 
 /-- Parallel works if either works. -/
-theorem parallel_rel (p₁ p₂ : Rat) : wAdd (-1) p₁ p₂ = 1 - (1 - p₁) * (1 - p₂) := wAdd_either p₁ p₂
+theorem parallel_rel (p₁ p₂ : Rat) : circK (-1) p₁ p₂ = 1 - (1 - p₁) * (1 - p₂) := circK_either p₁ p₂
 
-/-- On the failure side the roles swap: a series pair fails by ✳₋₁. -/
-theorem series_fails (p₁ p₂ : Rat) : 1 - p₁ * p₂ = wAdd (-1) (1 - p₁) (1 - p₂) := by
-  unfold wAdd; grind
+/-- On the failure side the roles swap: a series pair fails by ◯₋₁. -/
+theorem series_fails (p₁ p₂ : Rat) : 1 - p₁ * p₂ = circK (-1) (1 - p₁) (1 - p₂) := by
+  unfold circK; grind
 
 /-- In odds against, u = 1/p − 1, series is plain mult-add. -/
 theorem series_odds (p₁ p₂ : Rat) (h1 : p₁ ≠ 0) (h2 : p₂ ≠ 0) :
-    1 / (p₁ * p₂) - 1 = (1 / p₁ - 1) ✳ (1 / p₂ - 1) := by
-  unfold multAdd; grind
+    1 / (p₁ * p₂) - 1 = (1 / p₁ - 1) ◯ (1 / p₂ - 1) := by
+  unfold circ; grind
 
 /-- **The Wheatstone bridge** has no series or parallel pair; pivot on the middle bond:
     contracted, it is two parallel pairs in series; deleted, two series pairs in parallel. -/
 theorem wheatstone (p : Rat) :
-    p * (wAdd (-1) p p * wAdd (-1) p p) + (1 - p) * wAdd (-1) (p * p) (p * p) =
+    p * (circK (-1) p p * circK (-1) p p) + (1 - p) * circK (-1) (p * p) (p * p) =
       2 * p ^ 2 + 2 * p ^ 3 - 5 * p ^ 4 + 2 * p ^ 5 := by
-  unfold wAdd; grind
+  unfold circK; grind
 
 /-! # 3. The diamond lattice: the dial pair iterated -/
 
 /-- One diamond step: two series pairs in parallel. -/
-def diamond (p : Rat) : Rat := wAdd (-1) (p * p) (p * p)
+def diamond (p : Rat) : Rat := circK (-1) (p * p) (p * p)
 
 theorem diamond_poly (p : Rat) : diamond p = 2 * p ^ 2 - p ^ 4 := by
-  unfold diamond wAdd; grind
+  unfold diamond circK; grind
 
 /-- **The golden fixed point.** If p² = 1 − p (p = (√5 − 1)/2), the diamond step fixes p. -/
 theorem golden_fixed (p : Rat) (h : p * p = 1 - p) : diamond p = p := by
-  unfold diamond wAdd
+  unfold diamond circK
   have h4 : p * p * (p * p) = 2 - 3 * p := by rw [h]; grind
   grind
 
@@ -188,7 +188,7 @@ theorem golden_slope (p : Rat) (h : p * p = 1 - p) : 4 * p - 4 * (p * p * p) = 4
 def diamondQ (Q t : Rat) : Rat := lens (Q - 2) (1 - Q) (t * t) (t * t)
 
 theorem diamondQ_one (t : Rat) : diamondQ 1 t = diamond t := by
-  unfold diamondQ diamond lens wAdd; grind
+  unfold diamondQ diamond lens circK; grind
 
 /-- Ising (Q = 2): if t³ + t² + t = 1, the diamond step fixes t. -/
 theorem ising_fixed (t : Rat) (h : t * t * t + t * t + t = 1) : diamondQ 2 t = t := by
@@ -210,13 +210,13 @@ theorem three_state_fixed : diamondQ 3 (1 / 2) = 1 / 2 := by
 /-! # 4. Products: the strong product is the Kronecker mult-add -/
 
 /-- Closed adjacency entries multiply: (a + i)(b + j) − i·j = a·j + i·b + a·b. With
-    i = j = 1 (same vertex in both) this is a ✳ b; the three terms are the Cartesian
+    i = j = 1 (same vertex in both) this is a ◯ b; the three terms are the Cartesian
     pieces A⊗I, I⊗B and the tensor corner A⊗B. -/
 theorem strong_entry (a b i j : Int) : (a + i) * (b + j) - i * j = a * j + i * b + a * b := by
   grind
 
-theorem strong_entry_diag (a b : Int) : (a + 1) * (b + 1) - 1 = a ✳ b := by
-  unfold multAdd; grind
+theorem strong_entry_diag (a b : Int) : (a + 1) * (b + 1) - 1 = a ◯ b := by
+  unfold circ; grind
 
 /-- Edge counts: 2m + n multiplies. -/
 theorem strong_count (n₁ m₁ n₂ m₂ : Nat) :
@@ -249,12 +249,12 @@ theorem c5_strong_p2 : edgeCount (strong (cycle 5) (path 2)) = 5 * 1 + 2 * 5 + 2
 /-! # 5. Independence polynomials: union mult-adds, join adds -/
 
 /-- Disjoint union multiplies independence polynomials, so I − 1 mult-adds. -/
-theorem union_multAdd (IG IH : Int) : IG * IH - 1 = (IG - 1) ✳ (IH - 1) := by
-  unfold multAdd; grind
+theorem union_circ (IG IH : Int) : IG * IH - 1 = (IG - 1) ◯ (IH - 1) := by
+  unfold circ; grind
 
 /-- A join lets a set use only one side, so I − 1 adds (dial k = 0). -/
-theorem join_adds (IG IH : Int) : (IG + IH - 1) - 1 = wAdd 0 (IG - 1) (IH - 1) := by
-  unfold wAdd; grind
+theorem join_adds (IG IH : Int) : (IG + IH - 1) - 1 = circK 0 (IG - 1) (IH - 1) := by
+  unfold circK; grind
 
 /-- Coefficients of the independence polynomial by brute force over vertex subsets. -/
 def subsetsOf : List Nat → List (List Nat)

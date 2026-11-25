@@ -40,7 +40,7 @@
 -/
 import FusedAlgebra.Base
 
-namespace MultAdd.Toric
+namespace CircleOp.Toric
 
 open Lean.Grind
 
@@ -49,7 +49,7 @@ set_option linter.unusedSectionVars false
 variable {K : Type} [Field K] [DecidableEq K]
 
 /-! ## 1. Mult-add and its inverse: the gluing map
-  (multAdd, multAddInv, multAdd_multAddInv, inv_one_add and no_multAddInv_at_wall
+  (circ, circInv, circ_circInv, inv_one_add and no_circInv_at_wall
   are proved once in FusedAlgebra.Base) -/
 
 
@@ -204,4 +204,4 @@ theorem trans2_cocycle (c d e : Bool × Bool) (v : K × K) :
 (a each), four fixed points. In ordinary coordinates it is (q + 1)². -/
 theorem fan_count (a : Nat) : a ^ 2 + 4 * a + 4 = (a + 2) ^ 2 := by grind
 
-end MultAdd.Toric
+end CircleOp.Toric

@@ -2,7 +2,7 @@
   Fused Hyperoperation Algebra and the dark sector: the exact statements behind the page.
   Core Lean 4 only (no mathlib), no `sorry`.
 
-  multAdd a b = a + b + a*b = (1+a)(1+b) - 1        (rung 2, mult-add)
+  circ a b = a + b + a*b = (1+a)(1+b) - 1        (rung 2, mult-add)
   fexp a b = (1+a)^(1+b) - 1                      (rung 3, fused exponent)
 
   LIBRARY NOTE: mult-add, the mult-add power and the fused exponent come from FusedAlgebra.Base and FusedAlgebra.Rungs; the local copies were removed.
@@ -12,18 +12,18 @@ import FusedAlgebra.Rungs
 
 namespace DarkSector
 
-open MultAdd
+open CircleOp
 
 
 /-! ## 1. Redshifts compose by mult-add (exact, no model needed)
 Light stretched by 1+z₁ and then by 1+z₂ is stretched by (1+z₁)(1+z₂).  So the total redshift is z₁ ⊕ z₂.
 Geometrically: the (1+z₁)×(1+z₂) rectangle = unit square + two strips z₁, z₂ + corner z₁z₂. -/
-theorem redshift_compose (z₁ z₂ : Nat) : (1 + z₁) * (1 + z₂) = 1 + multAdd z₁ z₂ := by unfold multAdd; grind
+theorem redshift_compose (z₁ z₂ : Nat) : (1 + z₁) * (1 + z₂) = 1 + circ z₁ z₂ := by unfold circ; grind
 /-- n equal stretches: (1+z)^n = 1 + (z ⊕ z ⊕ … ⊕ z). -/
 theorem redshift_power (z n : Nat) : (1 + z) ^ n = 1 + mpow z n := by
   induction n with
   | zero => simp [mpow]
-  | succ n ih => rw [Nat.pow_succ, ih, mpow]; unfold multAdd; grind
+  | succ n ih => rw [Nat.pow_succ, ih, mpow]; unfold circ; grind
 /-- The same with integers, so blueshifts (negative z) are covered too. -/
 theorem redshift_compose_int (z₁ z₂ : Int) : (1 + z₁) * (1 + z₂) = 1 + (z₁ + z₂ + z₁ * z₂) := by grind
 
@@ -40,14 +40,14 @@ theorem lcdm_is_weighted_cube (Om z : Rat) :
 /-! ## 3. Constant expansion rate = growth fractions that compose by mult-add (rung 2)
 If the fractional growth A(t) over a time t satisfies A(t+s) = A(t) ⊕ A(s), the scale factor 1+A grows
 exponentially: 1 + A(t) = (1 + A(1))^t.  That is de Sitter expansion, the cosmological constant. -/
-theorem multAdd_growth_is_exponential (A : Nat → Nat) (hA : ∀ t s, A (t + s) = multAdd (A t) (A s)) :
+theorem circ_growth_is_exponential (A : Nat → Nat) (hA : ∀ t s, A (t + s) = circ (A t) (A s)) :
     ∀ t, A t + 1 = (A 1 + 1) ^ t := by
   have h0 : A 0 = 0 := by
-    have := hA 0 0; simp [multAdd] at this; grind
+    have := hA 0 0; simp [circ] at this; grind
   intro t
   induction t with
   | zero => simp [h0]
-  | succ n ih => rw [hA n 1, multAdd_lift', ih, Nat.pow_succ]
+  | succ n ih => rw [hA n 1, circ_lift', ih, Nat.pow_succ]
 
 /-! ## 4. No-go one rung up
 Expansion cannot compose at the fused-exponent rung.  If growth over t+s were A(t) ⊛ A(s), in either order,
@@ -69,12 +69,12 @@ theorem pow_growth_trivial (a : Nat → Nat) (h0 : a 0 = 1) (ha : ∀ t s, a (t 
 /-! ## 5. Why mult-add of gravity points the wrong way
 Combining non-negative pulls by mult-add never gives less than their sum, and the extra is exactly the
 product: a corner rectangle a·b.  For many pieces the extra only grows. -/
-theorem multAdd_ge_add (a b : Nat) : a + b ≤ multAdd a b := by unfold multAdd; omega
-theorem foldMA_ge_sum : ∀ l : List Nat, l.sum ≤ foldMA l
-  | [] => by simp [foldMA]
+theorem circ_ge_add (a b : Nat) : a + b ≤ circ a b := by unfold circ; omega
+theorem foldCirc_ge_sum : ∀ l : List Nat, l.sum ≤ foldCirc l
+  | [] => by simp [foldCirc]
   | x :: xs => by
-      have ih := foldMA_ge_sum xs
-      simp only [List.sum_cons, foldMA]; unfold multAdd; omega
+      have ih := foldCirc_ge_sum xs
+      simp only [List.sum_cons, foldCirc]; unfold circ; omega
 /-- The corner is at most a quarter of the square on the sum:  4ab ≤ (a+b)².
 In units of the scale s, the extra pull relative to the plain sum is at most (a+b)/4 of it, so it fades as
 the fields weaken.  Dark matter shows up in exactly the opposite place: where fields are weakest. -/
@@ -98,7 +98,7 @@ theorem simple_mond_square (g gN a0 : Int) (h : gN * (g + a0) = g * g) : g * g =
 theorem deep_mond_square (g gN a0 : Nat) (h : g * g = gN * a0) : g ^ 2 = gN * a0 := by rw [Nat.pow_two]; exact h
 
 /-! ## Small kernel checks -/
-example : (1 + 2) * (1 + 3) = 1 + multAdd 2 3 := by decide
+example : (1 + 2) * (1 + 3) = 1 + circ 2 3 := by decide
 example : mpow 1 3 = 7 := by decide
 example : mpow 2 3 = 26 := by decide
 

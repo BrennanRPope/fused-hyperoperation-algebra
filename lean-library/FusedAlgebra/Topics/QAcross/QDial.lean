@@ -24,7 +24,7 @@
 import FusedAlgebra.Base
 
 namespace QDial
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -46,8 +46,8 @@ theorem qnum_eq_wpow (q : R) (n : Nat) : qnum q n = wpow (q - 1) 1 n := by
   | zero => rfl
   | succ n ih =>
     rw [qnum_succ, ih]
-    show 1 + q * wpow (q - 1) 1 n = wAdd (q - 1) (wpow (q - 1) 1 n) 1
-    unfold wAdd; grind
+    show 1 + q * wpow (q - 1) 1 n = circK (q - 1) (wpow (q - 1) 1 n) 1
+    unfold circK; grind
 
 /-- The lift: 1 + (q − 1)·[n]_q = qⁿ. (So q-counting is mult-add counting through x ↦ 1 + x.) -/
 theorem qnum_lift (q : R) (n : Nat) : 1 + (q - 1) * qnum q n = q ^ n := by
@@ -56,20 +56,20 @@ theorem qnum_lift (q : R) (n : Nat) : 1 + (q - 1) * qnum q n = q ^ n := by
 
 /-- q-integers add by the weighted mult-add, weight q − 1: [m+n] = [m] ⊞ₖ [n]. -/
 theorem qnum_add (q : R) (m n : Nat) :
-    qnum q (m + n) = wAdd (q - 1) (qnum q m) (qnum q n) := by
+    qnum q (m + n) = circK (q - 1) (qnum q m) (qnum q n) := by
   induction n with
   | zero =>
-    show qnum q m = wAdd (q - 1) (qnum q m) 0
-    unfold wAdd; grind
+    show qnum q m = circK (q - 1) (qnum q m) 0
+    unfold circK; grind
   | succ n ih =>
     rw [← Nat.add_assoc, qnum_succ, ih, qnum_succ]
-    unfold wAdd; grind
+    unfold circK; grind
 
 /-- The standard form of the same rule: [m+n] = [m] + qᵐ·[n]. -/
 theorem qnum_add_std (q : R) (m n : Nat) :
     qnum q (m + n) = qnum q m + q ^ m * qnum q n := by
   rw [qnum_add, ← qnum_lift q m]
-  unfold wAdd; grind
+  unfold circK; grind
 
 /-- (q − 1)·[n]_q is the mult-add power (q − 1)^(⊞n). -/
 theorem qnum_mpow (q : R) (n : Nat) : (q - 1) * qnum q n = mpow (q - 1) n := by
@@ -80,15 +80,15 @@ theorem qnum_mpow (q : R) (n : Nat) : (q - 1) * qnum q n = mpow (q - 1) n := by
   grind
 
 /-- One Tate step: multiplying the lift 1 + a by q is a mult-add step by q − 1. -/
-theorem tate_glue_step (q a : R) : (1 + a) * q = 1 + multAdd a (q - 1) := by
-  unfold multAdd; grind
+theorem tate_glue_step (q a : R) : (1 + a) * q = 1 + circ a (q - 1) := by
+  unfold circ; grind
 
 /-- n Tate steps: (1 + a)·qⁿ = 1 + (a ⊞ (q − 1)·[n]_q). Going n times round the torus's
     q-direction is one mult-add step whose length is (q − 1) times the q-integer [n]_q. -/
 theorem tate_glue_n (q a : R) (n : Nat) :
-    (1 + a) * q ^ n = 1 + multAdd a ((q - 1) * qnum q n) := by
+    (1 + a) * q ^ n = 1 + circ a ((q - 1) * qnum q n) := by
   rw [← qnum_lift q n]
-  unfold multAdd; grind
+  unfold circ; grind
 
 end Ring
 
@@ -127,16 +127,16 @@ theorem qnum_at_neg_one (n : Nat) :
 /-- The parity law is ⊞ at k = −2: on {0, 1} it is "exclusive or".
     Same truth table as StatFused.xor_table, which is over Rat; this one is over Int. -/
 theorem parity_xor :
-    wAdd (-2 : Int) 0 0 = 0 ∧ wAdd (-2 : Int) 0 1 = 1 ∧
-    wAdd (-2 : Int) 1 0 = 1 ∧ wAdd (-2 : Int) 1 1 = 0 := by
-  unfold wAdd; decide
+    circK (-2 : Int) 0 0 = 0 ∧ circK (-2 : Int) 0 1 = 1 ∧
+    circK (-2 : Int) 1 0 = 1 ∧ circK (-2 : Int) 1 1 = 0 := by
+  unfold circK; decide
 
 /-- The failure union at k = −1 on {0, 1} is "or".
     Same truth table as StatFused.or_table, which is over Rat; this one is over Int. -/
 theorem failure_or :
-    wAdd (-1 : Int) 0 0 = 0 ∧ wAdd (-1 : Int) 0 1 = 1 ∧
-    wAdd (-1 : Int) 1 0 = 1 ∧ wAdd (-1 : Int) 1 1 = 1 := by
-  unfold wAdd; decide
+    circK (-1 : Int) 0 0 = 0 ∧ circK (-1 : Int) 0 1 = 1 ∧
+    circK (-1 : Int) 1 0 = 1 ∧ circK (-1 : Int) 1 1 = 1 := by
+  unfold circK; decide
 
 /-- Small values: [3]_q at the four dial points (counting 3, volume 7, union 1, parity 1). -/
 theorem qnum_three_at_dial :

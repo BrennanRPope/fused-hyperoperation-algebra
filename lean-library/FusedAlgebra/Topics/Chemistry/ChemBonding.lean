@@ -14,16 +14,16 @@
   the characteristic polynomial t² − x t + 1 has no real root (the turning
   country: Bloch waves, the band); x² > 4 is the gap (two walls).
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
-  Merged unchanged at Topics/Chemistry/ChemBonding; the local infix stays. No exact twins; the Rat
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
+  Merged unchanged at Topics/Chemistry/ChemBonding; it now uses Base's ◯. No exact twins; the Rat
   helpers one_pow_rat and sq_nonneg_rat stay local like the other topics' Rat helpers.
 -/
 import FusedAlgebra.Base
 
 namespace ChemBonding
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-- Squared length of a φa + b φb when the overlap is S. -/
 def norm2 (a b S : Rat) : Rat := a * a + b * b + 2 * a * b * S

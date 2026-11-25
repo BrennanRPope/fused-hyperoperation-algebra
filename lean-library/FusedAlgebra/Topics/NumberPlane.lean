@@ -19,7 +19,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Landscape
 
 namespace SimpleLaws
-open MultAdd
+open CircleOp
 
 /-! ### 1. The number system at (k, q): a + b·u with u² = k·u − q -/
 
@@ -54,12 +54,12 @@ theorem tilted_re (q x y : Int) : mre q 1 x 1 y = LandscapeMap.den q x y := by
 
 /-- ... and its u-part is the landscape numerator, the weighted mult-add of x and y -/
 theorem tilted_u (k x y : Int) : mu k 1 x 1 y = LandscapeMap.num k x y := by
-  unfold mu LandscapeMap.num wAdd; grind
+  unfold mu LandscapeMap.num circK; grind
 
 /-- at mult-add's own point (k, q) = (1, 0) the unit is idempotent (u² = u) and the
     u-part is plain mult-add, with real part 1: nothing to divide by -/
-theorem multadd_point_u (x y : Int) : mu 1 1 x 1 y = multAdd x y := by
-  unfold mu multAdd; grind
+theorem multadd_point_u (x y : Int) : mu 1 1 x 1 y = circ x y := by
+  unfold mu circ; grind
 theorem multadd_point_re (x y : Int) : mre 0 1 x 1 y = 1 := by unfold mre; grind
 
 /-- the complex corner (0, 1), u = i: slopes add like tangents, (x + y)/(1 − x y) -/
@@ -135,12 +135,12 @@ theorem norm_multadd_tilted (x : Int) : norm 1 0 1 x = 1 + x := by unfold norm; 
 
 /-- the product of two tilted ones has norm (1 + x)(1 + y) = 1 + (x ⊞ y) -/
 theorem norm_multadd_lift (x y : Int) :
-    norm 1 0 (mre 0 1 x 1 y) (mu 1 1 x 1 y) = 1 + multAdd x y := by
-  unfold norm mre mu multAdd; grind
+    norm 1 0 (mre 0 1 x 1 y) (mu 1 1 x 1 y) = 1 + circ x y := by
+  unfold norm mre mu circ; grind
 
 /-- the unit circle N = 1 at mult-add's point is the curve x ⊞ y = 0, i.e. (1 + x)(1 + y) = 1:
     a hyperbola whose asymptotes are the walls x = −1 and y = −1 -/
-theorem unit_circle_is_hyperbola (x y : Int) : multAdd x y = 0 ↔ (1 + x) * (1 + y) = 1 := by
-  rw [← multAdd_lift]; omega
+theorem unit_circle_is_hyperbola (x y : Int) : circ x y = 0 ↔ (1 + x) * (1 + y) = 1 := by
+  rw [← circ_lift]; omega
 
 end SimpleLaws

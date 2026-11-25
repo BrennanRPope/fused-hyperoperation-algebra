@@ -5,7 +5,7 @@
 import FusedAlgebra.Base
 import FusedAlgebra.Rungs
 import FusedAlgebra.Cube
-import FusedAlgebra.Foundations.MultAddRing
+import FusedAlgebra.Foundations.CircleRing
 import FusedAlgebra.Foundations.Independence
 import FusedAlgebra.Foundations.FusedPeano
 import FusedAlgebra.Topics.ClosingRate

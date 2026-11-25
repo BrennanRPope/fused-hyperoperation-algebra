@@ -166,7 +166,7 @@ partial def flattenOp (isOp : Expr → Option (Expr × Expr)) (e : Expr) (off : 
   | none => (#[e], toString off)
 
 def maOp? (e : Expr) : Option (Expr × Expr) :=
-  if constIs e ``MultAdd.multAdd then let a := lastArgs e 2; some (a[0]!, a[1]!) else none
+  if constIs e ``CircleOp.circ then let a := lastArgs e 2; some (a[0]!, a[1]!) else none
 
 def mulOp? (e : Expr) : Option (Expr × Expr) :=
   if constIs e ``HMul.hMul && e.getAppNumArgs == 6 then some (e.getArg! 4, e.getArg! 5) else none
@@ -183,29 +183,29 @@ partial def read (e0 : Expr) : ReadM Shape := do
     let (ls, cut) := flattenOp maOp? e 0
     return .box { sides := ← ls.mapM sideOf, cut }
   -- weighted family a ⊞ₖ b: a box whose far corner is dialed to weight k
-  if constIs e ``MultAdd.wAdd then
+  if constIs e ``CircleOp.circK then
     let as := lastArgs e 3
     let k := as[0]!
     let wOp : Expr → Option (Expr × Expr) := fun x =>
-      if constIs x ``MultAdd.wAdd && (lastArgs x 3)[0]! == k then
+      if constIs x ``CircleOp.circK && (lastArgs x 3)[0]! == k then
         let bs := lastArgs x 3; some (bs[1]!, bs[2]!) else none
     let (ls, cut) := flattenOp wOp e 0
     return .box { sides := ← ls.mapM sideOf, cut, weight := some (toString (← ppExpr k)) }
   -- mult-add power a^(⊞n): a cube of n equal sides, unit removed
-  if constIs e ``MultAdd.mpow then
+  if constIs e ``CircleOp.mpow then
     let as := lastArgs e 2
     return .box { sides := #[← sideOf as[0]!], power := some (toString (← ppExpr as[1]!)) }
-  if constIs e ``MultAdd.wpow then
+  if constIs e ``CircleOp.wpow then
     let as := lastArgs e 3
     return .box { sides := #[← sideOf as[1]!], power := some (toString (← ppExpr as[2]!)),
                   weight := some (toString (← ppExpr as[0]!)) }
   -- a fold over a list: a box with any number of sides
-  if constIs e ``MultAdd.foldMA then
+  if constIs e ``CircleOp.foldCirc then
     return .box { sides := #[← sideOf (lastArgs e 1)[0]!], any := true }
   -- the inverse and mult-add subtraction: a squash onto the hyperbola
-  if constIs e ``MultAdd.multAddInv then
+  if constIs e ``CircleOp.circInv then
     return .squash (← read (lastArgs e 1)[0]!)
-  if constIs e ``MultAdd.msub then
+  if constIs e ``CircleOp.msub then
     let as := lastArgs e 2
     return .squash (.rel "⊟" (← read as[0]!) (← read as[1]!))
   if constIs e ``Inv.inv then
@@ -396,16 +396,16 @@ def tryRewrites (rws : List (TSyntax `tactic)) : TacticM Unit := do
 syntax (name := liftMove) "lift" : tactic
 @[tactic liftMove] def evalLift : Tactic := fun stx => do
   tryRewrites [← `(tactic| refine lift_back_ring ?_), ← `(tactic| refine lift_back_nat ?_),
-               ← `(tactic| apply MultAdd.lift_inj)]
+               ← `(tactic| apply CircleOp.lift_inj)]
   showGoal stx "lift"
 
 /-- `multadd`: open every lifted mult-add into its box, (1 + a ⊞ b) ↦ (1 + a)(1 + b).
     Uses the library's lift lemmas only. -/
 syntax (name := multaddMove) "multadd" : tactic
 @[tactic multaddMove] def evalMultadd : Tactic := fun stx => do
-  evalTactic (← `(tactic| simp only [MultAdd.multAdd_lift, MultAdd.multAdd_lift',
-      MultAdd.mpow_lift, MultAdd.wAdd_lift, MultAdd.wpow_lift, MultAdd.foldMA_lift,
-      MultAdd.fexp_lift, MultAdd.ftet_lift, MultAdd.sadd_lift]))
+  evalTactic (← `(tactic| simp only [CircleOp.circ_lift, CircleOp.circ_lift',
+      CircleOp.mpow_lift, CircleOp.circK_lift, CircleOp.wpow_lift, CircleOp.foldCirc_lift,
+      CircleOp.fexp_lift, CircleOp.ftet_lift, CircleOp.sadd_lift]))
   showGoal stx "multadd"
 
 /-- `swap`: reflect a box across its diagonal (mul_comm). Optional arguments pick the factors. -/
@@ -429,7 +429,7 @@ syntax (name := collapseMove) "collapse" : tactic
 @[tactic collapseMove] def evalCollapse : Tactic := fun stx => do
   evalTactic (← `(tactic| simp only [Semiring.mul_one, Semiring.one_mul, Semiring.add_zero,
       Semiring.zero_mul, Semiring.mul_zero, AddCommMonoid.zero_add, one_add_neg_one,
-      MultAdd.multAdd_zero, MultAdd.zero_multAdd, MultAdd.wAdd_zero, MultAdd.wAdd_weight_zero,
+      CircleOp.circ_zero, CircleOp.zero_circ, CircleOp.circK_zero, CircleOp.circK_weight_zero,
       Nat.mul_one, Nat.one_mul, Nat.add_zero, Nat.zero_add]))
   showGoal stx "collapse"
 
@@ -438,7 +438,7 @@ syntax (name := collapseMove) "collapse" : tactic
 syntax (name := squashMove) "squash" (ppSpace colGt term:max)* : tactic
 @[tactic squashMove] def evalSquash : Tactic := fun stx => do
   let args := stx[1].getArgs.map (⟨·⟩ : Syntax → Term)
-  let t ← `(MultAdd.inv_one_add $args*)
+  let t ← `(CircleOp.inv_one_add $args*)
   tryRewrites [← `(tactic| rw [← $t:term]), ← `(tactic| rw [$t:term])]
   -- the squashed rectangle has area exactly 1
   evalTactic (← `(tactic| try rw [Lean.Grind.Field.mul_inv_cancel (by assumption)]))
@@ -448,22 +448,22 @@ syntax (name := squashMove) "squash" (ppSpace colGt term:max)* : tactic
     weight 1 is mult-add, weight 0 is plain addition. -/
 syntax (name := dialMove) "dial" : tactic
 @[tactic dialMove] def evalDial : Tactic := fun stx => do
-  tryRewrites [← `(tactic| rw [MultAdd.wAdd_scale]), ← `(tactic| rw [MultAdd.wAdd_one]),
-               ← `(tactic| rw [MultAdd.wAdd_weight_zero]), ← `(tactic| rw [MultAdd.wpow_one])]
+  tryRewrites [← `(tactic| rw [CircleOp.circK_scale]), ← `(tactic| rw [CircleOp.circK_one]),
+               ← `(tactic| rw [CircleOp.circK_weight_zero]), ← `(tactic| rw [CircleOp.wpow_one])]
   showGoal stx "dial"
 
 /-- `flatten`: area becomes length, a product of powers becomes a sum of exponents. -/
 syntax (name := flattenMove) "flatten" : tactic
 @[tactic flattenMove] def evalFlatten : Tactic := fun stx => do
-  tryRewrites [← `(tactic| rw [MultAdd.pow_add']), ← `(tactic| rw [MultAdd.pw_add]),
-               ← `(tactic| rw [MultAdd.mpow_add]), ← `(tactic| rw [Nat.pow_add])]
+  tryRewrites [← `(tactic| rw [CircleOp.pow_add']), ← `(tactic| rw [CircleOp.pw_add]),
+               ← `(tactic| rw [CircleOp.mpow_add]), ← `(tactic| rw [Nat.pow_add])]
   showGoal stx "flatten"
 
 /-- `extrude`: one more dimension. The next rung is the rung below iterated. -/
 syntax (name := extrudeMove) "extrude" : tactic
 @[tactic extrudeMove] def evalExtrude : Tactic := fun stx => do
-  tryRewrites [← `(tactic| rw [MultAdd.fexp_iter]), ← `(tactic| rw [MultAdd.ftet_iter]),
-               ← `(tactic| rw [MultAdd.fpent_iter]), ← `(tactic| rw [Semiring.pow_succ]),
+  tryRewrites [← `(tactic| rw [CircleOp.fexp_iter]), ← `(tactic| rw [CircleOp.ftet_iter]),
+               ← `(tactic| rw [CircleOp.fpent_iter]), ← `(tactic| rw [Semiring.pow_succ]),
                ← `(tactic| rw [Nat.pow_succ])]
   showGoal stx "extrude"
 

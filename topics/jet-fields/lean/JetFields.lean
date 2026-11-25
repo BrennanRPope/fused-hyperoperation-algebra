@@ -11,7 +11,7 @@
     R[ε]/(ε² − kε). With k = 0 these are the dual numbers (the derivative);
     with k = h they hold the values at two points h apart (the forward
     difference). Units 1 + aε multiply by the weighted mult-add:
-    (1 + aε)(1 + bε) = 1 + (a ⊞ₖ b)ε (`units_wAdd`). So the corner weight k
+    (1 + aε)(1 + bε) = 1 + (a ⊞ₖ b)ε (`units_circK`). So the corner weight k
     is the gap between two sample points, and k → 0 merges them into a
     tangent vector (`twoPt_mul`, `twoPt_weight_zero`). The wall 1 + ka = 0 is
     where the unit vanishes at the second point (`wall_no_inverse`); the dual
@@ -51,9 +51,9 @@
 -/
 import FusedAlgebra.Base
 
-namespace MultAdd.JetFields
+namespace CircleOp.JetFields
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -86,17 +86,17 @@ theorem eps_sq (k : R) : wmul k ⟨0, 1⟩ ⟨0, 1⟩ = ⟨0, k⟩ := by
   simp only [wmul, WDual.mk.injEq]; constructor <;> grind
 
 /-- **Units multiply by weighted mult-add**: (1 + aε)(1 + bε) = 1 + (a ⊞ₖ b)ε. -/
-theorem units_wAdd (k a b : R) : wmul k ⟨1, a⟩ ⟨1, b⟩ = ⟨1, wAdd k a b⟩ := by
-  simp only [wmul, wAdd, WDual.mk.injEq]; constructor <;> grind
+theorem units_circK (k a b : R) : wmul k ⟨1, a⟩ ⟨1, b⟩ = ⟨1, circK k a b⟩ := by
+  simp only [wmul, circK, WDual.mk.injEq]; constructor <;> grind
 
 /-- With weight 1 the units multiply by plain mult-add. -/
-theorem units_multAdd (a b : R) : wmul 1 ⟨1, a⟩ ⟨1, b⟩ = ⟨1, multAdd a b⟩ := by
-  rw [units_wAdd, wAdd_one]
+theorem units_circ (a b : R) : wmul 1 ⟨1, a⟩ ⟨1, b⟩ = ⟨1, circ a b⟩ := by
+  rw [units_circK, circK_one]
 
 /-- With weight 0 (dual numbers, 1-jets) the corner is dropped: relative
     slopes add. This is the logarithmic derivative of a product. -/
 theorem dual_units_add (a b : R) : wmul 0 ⟨1, a⟩ ⟨1, b⟩ = ⟨1, a + b⟩ := by
-  rw [units_wAdd, wAdd_weight_zero]
+  rw [units_circK, circK_weight_zero]
 
 /-- The two-point reading: value at x and value at x + k (slope · gap added). -/
 def twoPt (k : R) (x : WDual R) : R × R := (x.re, x.re + k * x.du)
@@ -264,8 +264,8 @@ def diag3 (a b c : R) : M3 R := ⟨a, 0, 0, 0, b, 0, 0, 0, c⟩
 /-- **In principal axes the step's volume change is literally mult-add:**
     det(I + h·diag(a,b,c)) = 1 + (ha ⊞ hb ⊞ hc). -/
 theorem det_diag_cube (h a b c : R) :
-    ((diag3 a b c).step h).det = 1 + multAdd (multAdd (h * a) (h * b)) (h * c) := by
-  simp only [diag3, M3.step, M3.det, det9, multAdd]; grind
+    ((diag3 a b c).step h).det = 1 + circ (circ (h * a) (h * b)) (h * c) := by
+  simp only [diag3, M3.step, M3.det, det9, circ]; grind
 
 /-- The layers of a diagonal gradient are the cube's layers of (a, b, c). -/
 theorem diag_layers (a b c : R) :
@@ -566,4 +566,4 @@ theorem box_minor_zero (u v : Nat → Nat → R) (n : Nat)
 
 end Grid
 
-end MultAdd.JetFields
+end CircleOp.JetFields

@@ -24,7 +24,7 @@
 /-- Weighted mult-add. -/
 def wmul (k a b : Rat) : Rat := a + b + k * a * b
 /-- Plain mult-add, rung 1 of the theory. -/
-def madd (a b : Rat) : Rat := a + b + a * b
+def circ (a b : Rat) : Rat := a + b + a * b
 
 /-! ## 1. Every weight is the same mult-add, scaled -/
 
@@ -33,7 +33,7 @@ theorem wmul_assoc (k a b c : Rat) : wmul k (wmul k a b) c = wmul k a (wmul k b 
 theorem wmul_zero (k a : Rat) : wmul k a 0 = a := by unfold wmul; grind
 
 /-- Scaling by k turns weighted mult-add into plain mult-add. -/
-theorem scale_hom (k a b : Rat) : k * wmul k a b = madd (k * a) (k * b) := by unfold wmul madd; grind
+theorem scale_hom (k a b : Rat) : k * wmul k a b = circ (k * a) (k * b) := by unfold wmul circ; grind
 
 /-- The coordinate 1 + k·a multiplies: this is the "polarization" of the channel. -/
 theorem one_plus_mul (k a b : Rat) : 1 + k * wmul k a b = (1 + k * a) * (1 + k * b) := by unfold wmul; grind
@@ -156,8 +156,8 @@ theorem undetected_two_ways (p : Rat) :
 
 /-! ## 8. The echo: composing with the mult-add inverse -/
 
-theorem madd_inverse (a : Rat) (h : 1 + a ≠ 0) : madd a (-a / (1 + a)) = 0 := by
-  unfold madd
+theorem circ_inverse (a : Rat) (h : 1 + a ≠ 0) : circ a (-a / (1 + a)) = 0 := by
+  unfold circ
   have e : (1 + a) * (-a / (1 + a)) = -a := by
     rw [Rat.div_def, ← Rat.mul_assoc, Rat.mul_comm (1 + a), Rat.mul_assoc, Rat.mul_inv_cancel _ h]; grind
   grind

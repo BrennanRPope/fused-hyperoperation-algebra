@@ -31,8 +31,8 @@ import FusedAlgebra.Topics.Elliptic
 import FusedAlgebra.Topics.Topology.CubeProofs
 
 namespace FreyPieces
-open MultAdd
-open MultAdd.Cube (IsPrime exists_prime_factor MEq)
+open CircleOp
+open CircleOp.Cube (IsPrime exists_prime_factor MEq)
 
 /-! ## 1. Exponent reduction -/
 
@@ -496,20 +496,20 @@ theorem one_add_div_mul {b d : Rat} (h : b ≠ 0) : (1 + d / b) * b = b + d := b
   rw [Rat.add_mul, Rat.div_mul_cancel h, Rat.one_mul]
 
 /-- 3f. Link: three points of the node are collinear exactly when s1 ⊞ s2 ⊞ s3 = 0, sᵢ = (m2 − m1)/(tᵢ − m2). -/
-theorem node_chord_multAdd (m1 m2 t1 t2 t3 : Rat) (hm : m1 ≠ m2)
+theorem node_chord_circ (m1 m2 t1 t2 t3 : Rat) (hm : m1 ≠ m2)
     (h12 : t1 ≠ t2) (h23 : t2 ≠ t3) (h31 : t3 ≠ t1)
     (h1 : t1 ≠ m2) (h2 : t2 ≠ m2) (h3 : t3 ≠ m2) :
     chordDet (nodeX m1 m2 t1) (t1 * nodeX m1 m2 t1) (nodeX m1 m2 t2)
         (t2 * nodeX m1 m2 t2) (nodeX m1 m2 t3) (t3 * nodeX m1 m2 t3) = 0 ↔
-      multAdd (multAdd ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = 0 := by
+      circ (circ ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = 0 := by
   have key := node_chord_identity m1 m2 t1 t2 t3
   have sub_ne : ∀ u v : Rat, u ≠ v → u - v ≠ 0 := fun u v h e => h (by grind)
   have e1 := sub_ne _ _ h1
   have e2 := sub_ne _ _ h2
   have e3 := sub_ne _ _ h3
-  have hlift : (1 + multAdd (multAdd ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)))
+  have hlift : (1 + circ (circ ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)))
       * ((t1 - m2) * (t2 - m2) * (t3 - m2)) = (t1 - m1) * (t2 - m1) * (t3 - m1) := by
-    rw [multAdd_lift, multAdd_lift]
+    rw [circ_lift, circ_lift]
     have f1 := one_add_div_mul (d := m2 - m1) e1
     have f2 := one_add_div_mul (d := m2 - m1) e2
     have f3 := one_add_div_mul (d := m2 - m1) e3
@@ -523,7 +523,7 @@ theorem node_chord_multAdd (m1 m2 t1 t2 t3 : Rat) (hm : m1 ≠ m2)
   have hd : m2 - m1 ≠ 0 := sub_ne _ _ (fun h => hm h.symm)
   generalize chordDet (nodeX m1 m2 t1) (t1 * nodeX m1 m2 t1) (nodeX m1 m2 t2)
         (t2 * nodeX m1 m2 t2) (nodeX m1 m2 t3) (t3 * nodeX m1 m2 t3) = D at key ⊢
-  generalize multAdd (multAdd ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = S at hlift ⊢
+  generalize circ (circ ((m2 - m1) / (t1 - m2)) ((m2 - m1) / (t2 - m2))) ((m2 - m1) / (t3 - m2)) = S at hlift ⊢
   generalize (t1 - t2) * (t2 - t3) * (t3 - t1) = V at key hV
   generalize (t1 - m2) * (t2 - m2) * (t3 - m2) = Pb at key hlift hB
   generalize (t1 - m1) * (t2 - m1) * (t3 - m1) = Pa at key hlift
@@ -639,7 +639,7 @@ theorem rat_div_pow {x : Rat} (y : Rat) (hx : x ≠ 0) (n : Nat) : (y / x) ^ n *
     rw [e, ih, h]
 
 /-- 4. x^n + y^n = z^n exactly when (y/x)^n = mpow (z/x − 1) n: an n-th power equals a mult-add n-th power. -/
-theorem flt_multAdd (x y z : Rat) (hx : x ≠ 0) (n : Nat) :
+theorem flt_circ (x y z : Rat) (hx : x ≠ 0) (n : Nat) :
     x ^ n + y ^ n = z ^ n ↔ (y / x) ^ n = mpow (z / x - 1) n := by
   rw [mpow_eq]
   have hxn : x ^ n ≠ 0 := by
@@ -709,10 +709,10 @@ end FreyPieces
 #print axioms FreyPieces.frey_reduces_to_node
 #print axioms FreyPieces.node_chord_identity
 #print axioms FreyPieces.node_point
-#print axioms FreyPieces.node_chord_multAdd
+#print axioms FreyPieces.node_chord_circ
 #print axioms FreyPieces.frey_disc_pth_power
 #print axioms FreyPieces.exact_exponent_pth_power
 #print axioms FreyPieces.frey_disc_valuation
-#print axioms FreyPieces.flt_multAdd
+#print axioms FreyPieces.flt_circ
 #print axioms FreyPieces.level2_counts
 #print axioms FreyPieces.genus_X0_2

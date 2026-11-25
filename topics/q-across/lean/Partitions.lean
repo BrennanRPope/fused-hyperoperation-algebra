@@ -19,7 +19,7 @@
     Jacobi's four-square theorem θ(q)⁴ = 1 + 8 Σₙ (Σ_{d|n, 4∤d} d) qⁿ       checked mod q³⁰
 
   The mult-add link: Π(1 − qⁿ) is 1 + (the mult-add of the list −q, −q², −q³, …), by the
-  library's foldMA_lift. Its corner expansion is a signed sum over sets of distinct parts, and
+  library's foldCirc_lift. Its corner expansion is a signed sum over sets of distinct parts, and
   the pentagonal theorem says those corners cancel down to the pentagonal numbers (Franklin's
   picture: slide the top row of a Ferrers diagram onto its staircase edge). The q here is the
   Tate gluing q: η(τ) = q^(1/24) Π(1 − qⁿ), θ and the partition series all live on the Tate
@@ -29,7 +29,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.QAcross.Knots
 
 namespace QPartitions
-open MultAdd
+open CircleOp
 open QKnots (Poly padd pscale pmul pzeros trim negOnePow)
 
 /-! ## Truncated series -/
@@ -76,10 +76,10 @@ theorem eulerProd_30_explicit :
 def tma (N : Nat) (x y : Poly) : Poly := (padd (padd x y) (pmul x y)).take N
 
 /-- −q ⊞ −q² ⊞ … ⊞ −q^(N−1) mod q^N. -/
-def eulerMA (N : Nat) : Poly := (List.range' 1 (N - 1)).foldl (fun acc k => tma N acc (pzeros k [-1])) []
+def eulerCirc (N : Nat) : Poly := (List.range' 1 (N - 1)).foldl (fun acc k => tma N acc (pzeros k [-1])) []
 
-/-- 1 + (−q ⊞ −q² ⊞ …) is Euler's product (the list lift foldMA_lift, seen on series). -/
-theorem euler_is_multAdd_30 : trim (padd [1] (eulerMA 30)) = trim (eulerProd 30) := by
+/-- 1 + (−q ⊞ −q² ⊞ …) is Euler's product (the list lift foldCirc_lift, seen on series). -/
+theorem euler_is_circ_30 : trim (padd [1] (eulerCirc 30)) = trim (eulerProd 30) := by
   decide +kernel
 
 /-! ## Partition numbers -/

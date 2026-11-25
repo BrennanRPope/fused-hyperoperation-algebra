@@ -17,12 +17,11 @@
 import FusedAlgebra.Base
 
 namespace Development
-open MultAdd Lean.Grind
+open CircleOp Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-/-- Brennan's notation for mult-add in this file: a ✳ b = a + b + ab. -/
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 section Ring
 variable {R : Type} [Lean.Grind.CommRing R]
@@ -66,8 +65,8 @@ variable {K : Type} [Lean.Grind.Field K]
 -- LIBRARY: logistic (**Logistic growth is saturation by the inverse.** With excess x = Q·e^(−rt), size/asymptote = 1/(1 + x) = 1 + inv(x), the Michaelis–Menten form again) was an exact twin of Metabolism.saturation and is removed.
 
 /-- The logistic shortfall below the asymptote is −inv(x) = x/(1 + x). -/
-theorem logistic_shortfall (x : K) (_h : 1 + x ≠ 0) : 1 - 1 / (1 + x) = -multAddInv x := by
-  unfold multAddInv; grind
+theorem logistic_shortfall (x : K) (_h : 1 + x ≠ 0) : 1 - 1 / (1 + x) = -circInv x := by
+  unfold circInv; grind
 
 end Field
 

@@ -28,7 +28,7 @@ import FusedAlgebra.Base
 
 namespace ZoomDial
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -106,8 +106,8 @@ variable {R : Type} [Lean.Grind.CommRing R]
 
 /-- **Zoom is twist.** Shrinking two dial values by the natural weight w = r^d and
     mult-adding is the twisted mult-add at k = w, scaled by w. -/
-theorem zoom_is_twist (w t u : R) : multAdd (w * t) (w * u) = w * wAdd w t u :=
-  (wAdd_scale w t u).symm
+theorem zoom_is_twist (w t u : R) : circ (w * t) (w * u) = w * circK w t u :=
+  (circK_scale w t u).symm
 
 /-- **Zooms compose by multiplying:** zoom r₁ then r₂ weighs (r₁r₂)ⁿ = r₁ⁿr₂ⁿ
     (n a whole-number exponent; checks.py covers real s). -/

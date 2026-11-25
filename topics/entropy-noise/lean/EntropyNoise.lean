@@ -43,7 +43,7 @@ import FusedAlgebra.Topics.InformationTheory
 
 namespace EntropyNoise
 
-open MultAdd
+open CircleOp
 
 /-! ## Small order facts on Rat (core has no `nlinarith`) -/
 
@@ -90,29 +90,29 @@ theorem mul_bound (a b u : Rat) (h1 : a ≤ u) (h2 : -a ≤ u) (hb1 : b ≤ 1) (
 /-- Certainty swallows everything, a ⊕ₖ 1 = 1 for every a, exactly when k = −1.
     The statistics page's "or" laws are the line k + q_L = −1 of lens laws; the
     Tsallis laws have no denominator (q_L = 0), so they meet it only here. -/
-theorem certainty_absorbs_iff (k : Rat) : (∀ a : Rat, wAdd k a 1 = 1) ↔ k = -1 := by
+theorem certainty_absorbs_iff (k : Rat) : (∀ a : Rat, circK k a 1 = 1) ↔ k = -1 := by
   constructor
-  · intro h; have := h 1; unfold wAdd at this; grind
-  · intro hk a; subst hk; unfold wAdd; grind
+  · intro h; have := h 1; unfold circK at this; grind
+  · intro hk a; subst hk; unfold circK; grind
 
 /-- Tsallis' index q = 2 is that point: Gini–Simpson (linear entropy) follows the
     union rule, because its lift is the collision sum (InfoFused.gini_simpson). -/
 theorem tsallis_two_is_union (QA QB : Rat) :
-    1 - QA * QB = wAdd (-1) (1 - QA) (1 - QB) := InfoFused.gini_simpson QA QB
+    1 - QA * QB = circK (-1) (1 - QA) (1 - QB) := InfoFused.gini_simpson QA QB
 
 /-- Tsallis pseudo-additivity with the weight written as 1 − q (InfoFused.tsallis). -/
 theorem tsallis_weight (q P R SA SB SAB : Rat) (hA : (1 - q) * SA = P - 1)
     (hB : (1 - q) * SB = R - 1) (hAB : (1 - q) * SAB = P * R - 1) :
-    (1 - q) * SAB = (1 - q) * wAdd (1 - q) SA SB :=
+    (1 - q) * SAB = (1 - q) * circK (1 - q) SA SB :=
   InfoFused.tsallis (1 - q) P R SA SB SAB hA hB hAB
 
 /-- Orders multiply along a chain, so weights k = 1 − q compose by the union rule. -/
-theorem weights_compose (a b : Rat) : 1 - a * b = wAdd (-1) (1 - a) (1 - b) := by
-  unfold wAdd; grind
+theorem weights_compose (a b : Rat) : 1 - a * b = circK (-1) (1 - a) (1 - b) := by
+  unfold circK; grind
 
 /-- k(T, T₀) = 1 − T₀/T is Carnot's efficiency, and it cascades by the union rule. -/
 theorem carnot_weight (T Tm T0 : Rat) (_hT : T ≠ 0) (hm : Tm ≠ 0) :
-    1 - T0 / T = wAdd (-1) (1 - Tm / T) (1 - T0 / Tm) := by
+    1 - T0 / T = circK (-1) (1 - Tm / T) (1 - T0 / Tm) := by
   have e : (Tm / T) * (T0 / Tm) = T0 / T := by
     rw [Rat.div_def, Rat.div_def, Rat.div_def]
     have : Tm * Tm⁻¹ = 1 := Rat.mul_inv_cancel Tm hm
@@ -283,7 +283,7 @@ theorem collision_parallel (p q : Pauli) :
   simp only [List.map, InfoFused.lsum, coll]; grind
 
 theorem linear_entropy_parallel (p q : Pauli) :
-    1 - coll p * coll q = wAdd (-1) (1 - coll p) (1 - coll q) := InfoFused.gini_simpson _ _
+    1 - coll p * coll q = circK (-1) (1 - coll p) (1 - coll q) := InfoFused.gini_simpson _ _
 
 /-- The depolarizing diagonal: total fault chance s spread evenly over X, Y, Z. -/
 def depol (s : Rat) : Pauli := ⟨1 - s, s / 3, s / 3, s / 3⟩
@@ -407,7 +407,7 @@ theorem kw_lens_polar (p : Rat) :
     _ = p * (1 - p)⁻¹ := by rw [this]; grind
 
 /-- Bonds in series (summing out a spin) multiply tanh K: the bit-flip law. -/
-theorem decimation (p q : Rat) : 1 - 2 * wAdd (-2) p q = (1 - 2 * p) * (1 - 2 * q) :=
+theorem decimation (p q : Rat) : 1 - 2 * circK (-2) p q = (1 - 2 * p) * (1 - 2 * q) :=
   QuantumNoise.bit_flip p q
 
 end EntropyNoise

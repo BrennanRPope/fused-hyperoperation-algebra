@@ -12,7 +12,7 @@
   pairwise interaction gives 3, 3k, k³, which makes the two gaps equal.
   Tabulated triprotic acids follow the pairwise pattern.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
   LIBRARY NOTE: first compiled in the shared library, after ChemElectro. Two exact twins
   removed (indep_groups, chained_K); each is marked where it stood. No proof step or
   statement changed.
@@ -20,9 +20,9 @@
 import FusedAlgebra.Base
 
 namespace ChemAcids
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 -- LIBRARY: indep_groups (Independent groups: "at least one deprotonated" is failure-union, k = −1) was an exact twin of ChemStoichiometry.loss_two and is removed.
 
@@ -42,8 +42,8 @@ theorem mediant_below (a1 a2 b1 b2 : Rat) (h : b1 * a2 ≤ b2 * a1) : (b1 + b2) 
   grind
 
 /-- The dial folded over three equal sites: x ⊞ₖ x ⊞ₖ x = 3x + 3k x² + k² x³. -/
-theorem fold_three (k x : Rat) : wAdd k (wAdd k x x) x = 3 * x + 3 * k * (x * x) + k * k * (x * x * x) := by
-  unfold wAdd; grind
+theorem fold_three (k x : Rat) : circK k (circK k x x) x = 3 * x + 3 * k * (x * x) + k * k * (x * x * x) := by
+  unfold circK; grind
 
 /-- Uniform pairwise interaction: β₁ = 3K, β₂ = 3kK², β₃ = k³K³ satisfy β₁³β₃ = β₂³,
     which says the two stepwise ratios K₁/K₂ and K₂/K₃ are equal (equal pKa gaps). -/

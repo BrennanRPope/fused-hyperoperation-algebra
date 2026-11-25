@@ -24,11 +24,11 @@
 import FusedAlgebra.Base
 
 namespace DiffGeometry
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## 1. The three conics and the central chart -/
 
@@ -122,7 +122,7 @@ theorem curv_scale (p q l : Int) : curv4 (l * p) (l * l * q) = l * l * curv4 p q
   simp only [curv4]; grind
 
 /-- Mult-add: conformal curvature −1 (the half plane), projective curvature −1/4. -/
-theorem multAdd_curv : curv4 1 0 = -1 := by decide
+theorem circ_curv : curv4 1 0 = -1 := by decide
 
 /-- The dial line: curvature −k², flat only at k = 0. -/
 theorem dial_curv (k : Int) : curv4 k 0 = -(k * k) := by simp only [curv4]; grind
@@ -182,8 +182,8 @@ theorem lens_factor (u v a b : Int) :
 
 /-! ## 5. Mult-add in the upper half plane -/
 
-/-- Height y = 1 + x: a translation x ↦ a ✳ x is the dilation y ↦ (1 + a)y. -/
-theorem halfplane_dilation (a x : Int) : (1 + a) * (1 + x) = 1 + (a ✳ x) := (multAdd_lift a x).symm
+/-- Height y = 1 + x: a translation x ↦ a ◯ x is the dilation y ↦ (1 + a)y. -/
+theorem halfplane_dilation (a x : Int) : (1 + a) * (1 + x) = 1 + (a ◯ x) := (circ_lift a x).symm
 
 /-- Dilations keep the half-plane metric (dX² + dY²)/Y² (cleared: λ²(dx² + dy²)·y² = (dx² + dy²)·(λy)²). -/
 theorem halfplane_isometry (l dx dy y : Int) :

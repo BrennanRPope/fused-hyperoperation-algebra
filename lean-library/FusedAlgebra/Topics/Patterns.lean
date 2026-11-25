@@ -7,7 +7,7 @@
   step_is_law splits the pair equality before grind; disc_square_or_ge_five and
   no_integer_five_cycle get the parity split from omega, since Int.emod_add_ediv and
   Int.emod_two_eq_zero_or_one are not in core Lean 4.37. No exact twins: mirror_num is
-  MultAdd.wAdd_flip with the minus sign moved across.
+  CircleOp.circK_flip with the minus sign moved across.
 
   Every law on the landscape map is a ⊕ b = (a + b + k·ab)/(1 − q·ab). Write a value x/y as
   the pair (x, y). Then adding a is one 2×2 step
@@ -32,7 +32,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.EarlyScience
 
 namespace Patterns
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -45,7 +45,7 @@ variable {R : Type} [Lean.Grind.CommRing R]
 def step (k q a : R) (v : R × R) : R × R :=
   ((1 + k * a) * v.1 + a * v.2, (-(q * a)) * v.1 + v.2)
 
-/-- The step's top entry is the law's numerator: x + a·y + k·x·a (for y = 1, wAdd k x a). -/
+/-- The step's top entry is the law's numerator: x + a·y + k·x·a (for y = 1, circK k x a). -/
 theorem step_num (k q a x y : R) : (step k q a (x, y)).1 = x + a * y + k * x * a := by
   unfold step; grind
 
@@ -53,10 +53,10 @@ theorem step_num (k q a x y : R) : (step k q a (x, y)).1 = x + a * y + k * x * a
 theorem step_den (k q a x y : R) : (step k q a (x, y)).2 = y - q * x * a := by
   unfold step; grind
 
-/-- With y = 1 the step is exactly the law: numerator wAdd k x a, denominator 1 − q·x·a. -/
+/-- With y = 1 the step is exactly the law: numerator circK k x a, denominator 1 − q·x·a. -/
 theorem step_is_law (k q a x : R) :
-    step k q a (x, 1) = (wAdd k x a, 1 - q * x * a) := by
-  unfold step wAdd; simp only [Prod.mk.injEq]; constructor <;> grind
+    step k q a (x, 1) = (circK k x a, 1 - q * x * a) := by
+  unfold step circK; simp only [Prod.mk.injEq]; constructor <;> grind
 
 /-- n copies of a, as a pair, starting from 0 = (0, 1). -/
 def iter (k q a : R) : Nat → R × R
@@ -189,8 +189,8 @@ theorem ladder_is_step (p : Int × Int) : SimpleLaws.ladderStep p = step 1 (-1) 
   simp only [SimpleLaws.ladderStep, step, Prod.mk.injEq]; constructor <;> grind
 
 /-- Mirror: flipping the sign of every value takes the law at (k, q) to the law at (−k, q). -/
-theorem mirror_num (k a b : R) : -(wAdd k (-a) (-b)) = wAdd (-k) a b := by
-  unfold wAdd; grind
+theorem mirror_num (k a b : R) : -(circK k (-a) (-b)) = circK (-k) a b := by
+  unfold circK; grind
 
 theorem mirror_den (q a b : R) : 1 - q * (-a) * (-b) = 1 - q * a * b := by grind
 
@@ -296,11 +296,11 @@ def nfib : Nat → Nat
   | 1 => 1
   | n + 2 => nfib (n + 1) + nfib n
 
-/-- The mult-add Fibonacci sequence: x(n+2) = x(n+1) ✳ x(n). -/
+/-- The mult-add Fibonacci sequence: x(n+2) = x(n+1) ◯ x(n). -/
 def mfib (x0 x1 : R) : Nat → R
   | 0 => x0
   | 1 => x1
-  | n + 2 => multAdd (mfib x0 x1 (n + 1)) (mfib x0 x1 n)
+  | n + 2 => circ (mfib x0 x1 (n + 1)) (mfib x0 x1 n)
 
 /-- Flatten it and the exponents are Fibonacci numbers:
     1 + x(n+1) = (1 + x0)^F(n) · (1 + x1)^F(n+1). -/
@@ -313,15 +313,15 @@ theorem mfib_lift_pair (x0 x1 : R) (n : Nat) :
     · show 1 + x1 = (1 + x0) ^ 0 * (1 + x1) ^ 1
       rw [Lean.Grind.Semiring.pow_zero, Lean.Grind.Semiring.pow_succ, Lean.Grind.Semiring.pow_zero]
       grind
-    · show 1 + multAdd x1 x0 = (1 + x0) ^ 1 * (1 + x1) ^ 1
-      rw [multAdd_lift, Lean.Grind.Semiring.pow_succ, Lean.Grind.Semiring.pow_succ,
+    · show 1 + circ x1 x0 = (1 + x0) ^ 1 * (1 + x1) ^ 1
+      rw [circ_lift, Lean.Grind.Semiring.pow_succ, Lean.Grind.Semiring.pow_succ,
         Lean.Grind.Semiring.pow_zero, Lean.Grind.Semiring.pow_zero]
       grind
   | succ n ih =>
     obtain ⟨h1, h2⟩ := ih
     refine ⟨h2, ?_⟩
-    show 1 + multAdd (mfib x0 x1 (n + 2)) (mfib x0 x1 (n + 1)) = _
-    rw [multAdd_lift, h2, h1, show nfib (n + 1 + 1) = nfib (n + 1) + nfib n from rfl,
+    show 1 + circ (mfib x0 x1 (n + 2)) (mfib x0 x1 (n + 1)) = _
+    rw [circ_lift, h2, h1, show nfib (n + 1 + 1) = nfib (n + 1) + nfib n from rfl,
       show nfib (n + 1 + 2) = nfib (n + 2) + nfib (n + 1) from rfl,
       show nfib (n + 2) = nfib (n + 1) + nfib n from rfl]
     simp only [pow_add']

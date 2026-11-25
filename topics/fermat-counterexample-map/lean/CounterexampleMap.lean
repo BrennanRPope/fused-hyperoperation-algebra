@@ -40,8 +40,8 @@
 import FusedAlgebra.Topics.Fermat.FermatRoute
 
 namespace CounterexampleMap
-open MultAdd
-open MultAdd.Cube (IsPrime)
+open CircleOp
+open CircleOp.Cube (IsPrime)
 open FreyPieces
 
 /-! ## A. c6, the c4³ − c6² = 1728Δ identity, and the j-invariant's denominator -/

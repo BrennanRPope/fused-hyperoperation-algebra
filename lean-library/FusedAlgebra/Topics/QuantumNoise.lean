@@ -26,20 +26,20 @@ import FusedAlgebra.Base
 
 namespace QuantumNoise
 
-open MultAdd
+open CircleOp
 
 /-! ## 1. Every weight is the same mult-add, scaled
   (commutative, associative, identity 0, scaling, the lift and the wall are in Base:
-  wAdd_comm, wAdd_assoc, wAdd_zero, wAdd_scale, wAdd_lift, wAdd_wall) -/
+  circK_comm, circK_assoc, circK_zero, circK_scale, circK_lift, circK_wall) -/
 
 /-! ## 2. The three channel rules -/
 
-theorem amplitude_damping (g h : Rat) : 1 - wAdd (-1) g h = (1 - g) * (1 - h) := by unfold wAdd; grind
-theorem bit_flip (p q : Rat) : 1 - 2 * wAdd (-2) p q = (1 - 2 * p) * (1 - 2 * q) := by unfold wAdd; grind
-theorem depolarizing (p q : Rat) : 1 - 4/3 * wAdd (-4/3) p q = (1 - 4/3 * p) * (1 - 4/3 * q) := by unfold wAdd; grind
+theorem amplitude_damping (g h : Rat) : 1 - circK (-1) g h = (1 - g) * (1 - h) := by unfold circK; grind
+theorem bit_flip (p q : Rat) : 1 - 2 * circK (-2) p q = (1 - 2 * p) * (1 - 2 * q) := by unfold circK; grind
+theorem depolarizing (p q : Rat) : 1 - 4/3 * circK (-4/3) p q = (1 - 4/3 * p) * (1 - 4/3 * q) := by unfold circK; grind
 /-- The rule from the call, p + q − pq, is the k = −1 rule. It is right for amplitude
     damping. For bit-flips it is off by exactly p·q. -/
-theorem call_rule_gap (p q : Rat) : wAdd (-1) p q - wAdd (-2) p q = p * q := by unfold wAdd; grind
+theorem call_rule_gap (p q : Rat) : circK (-1) p q - circK (-2) p q = p * q := by unfold circK; grind
 
 /-! ## 3. Stacking n channels climbs the cube -/
 
@@ -134,8 +134,8 @@ theorem undetected_two_ways (p : Rat) :
 
 /-! ## 8. The echo: composing with the mult-add inverse -/
 
-theorem madd_inverse (a : Rat) (h : 1 + a ≠ 0) : multAdd a (-a / (1 + a)) = 0 :=
-  multAdd_multAddInv a h
+theorem circ_inverse (a : Rat) (h : 1 + a ≠ 0) : circ a (-a / (1 + a)) = 0 :=
+  circ_circInv a h
 
 end QuantumNoise
 

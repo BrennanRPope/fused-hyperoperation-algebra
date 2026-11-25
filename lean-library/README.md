@@ -20,15 +20,15 @@ here). `python3 tools/theorems_md.py` turns that list into `THEOREMS.md`.
 A `lakefile.toml` and `lean-toolchain` are included for `lake build` too.
 
 To use the library in a new proof, put the file under `FusedAlgebra/Topics/`,
-start it with `import FusedAlgebra.Base` and `open MultAdd`, add it to
+start it with `import FusedAlgebra.Base` and `open CircleOp`, add it to
 `build.sh` and `FusedAlgebra.lean`, and run `./build.sh`.
 
 ## Layout
 
 Foundation (imported by the topics):
 
-- `FusedAlgebra/Base.lean`: mult-add a ⊞ b = a + b + ab on any commutative
-  semiring (so Nat, Int and Rat at once): the lift 1 + (a ⊞ b) = (1+a)(1+b),
+- `FusedAlgebra/Base.lean`: mult-add a ◯ b = a + b + ab on any commutative
+  semiring (so Nat, Int and Rat at once): the lift 1 + (a ◯ b) = (1+a)(1+b),
   commutative, associative, identity 0, the wall −1, the weighted family
   a + b + k·ab with its lift, scaling, flip and wall, the mult-add power and
   weighted power, list folds with the corner expansion, the inverse
@@ -68,7 +68,7 @@ Topics (each imports the foundation):
 | `Topics/Fermat/FreyPieces` | fermat/lean/FreyPieces.lean | |
 | `Topics/Fermat/FermatRoute` | fermat/lean/FermatRoute.lean | imports the three above |
 | `Topics/Fermat/CounterexampleMap` | fermat-counterexample-map/lean/CounterexampleMap.lean | first compiled here; one proof reworked |
-| `Foundations/MultAddRing` | axioms/lean/Axioms/MultAddRing.lean | standalone; does not import Base |
+| `Foundations/CircleRing` | axioms/lean/Axioms/MultAddRing.lean | standalone; does not import Base |
 | `Foundations/Independence` | axioms/lean/Axioms/Independence.lean | standalone |
 | `Foundations/FusedPeano` | axioms/lean/Axioms/FusedPeano.lean | standalone |
 | `Topics/Pi` | pi/lean/PiFromMultAdd.lean | |
@@ -204,7 +204,7 @@ SolitonsRungs (26) had never been compiled; it built on the first try with no
 changes and has no twins. Relativity came with 34 theorems; four stated exactly
 what a library theorem already states and were removed, with a comment naming the
 library theorem: lift_num (ThermoFused.lens_den), lift_den (ThermoFused.lens_num),
-light_absorbs (ThermoFused.vel_wall_pos) and multAdd_wall (MultAdd.neg_one_absorbs).
+light_absorbs (ThermoFused.vel_wall_pos) and circ_wall (CircleOp.neg_one_absorbs).
 The other 30 compiled unchanged. Relativity builds right after Thermodynamics.
 LeeYang (39) compiled unchanged after Relativity; none of its theorems is an
 exact twin of a library theorem.
@@ -212,7 +212,7 @@ TwistedBoosts (32 theorems, 36 by the check's count with its two @[ext] lemma
 pairs) had never been compiled. One proof step changed, no statement: in
 sphere_no_wall, two `Rat.le_total 0 x` calls became `(Rat.le_total : (0 : Rat) ≤ x ∨ x ≤ 0)`.
 LeeYangCluster (10) compiled unchanged after LeeYang. It has no exact twins; its
-ring-general `wAdd_units` is kept beside the Int-only Landscape.units_num.
+ring-general `circK_units` is kept beside the Int-only Landscape.units_num.
 GravityProbeB (16) had never been compiled; it compiled unchanged after
 TwistedBoosts, every `grind` step closing, with no exact twins.
 LeeYangSpill (10) compiled unchanged after LeeYangCluster; its Int helper
@@ -220,7 +220,7 @@ LeeYangSpill (10) compiled unchanged after LeeYangCluster; its Int helper
 The first three chemistry subjects go under Topics/Chemistry. All compiled as
 sent. ChemPeriodic (12) is unchanged. Five theorems were exact twins of Base
 and were removed with a comment naming the Base theorem: in ChemQuantum,
-cisd_is_weight_zero (wAdd_weight_zero), exact_is_weight_one (wAdd_one),
+cisd_is_weight_zero (circK_weight_zero), exact_is_weight_one (circK_one),
 n_fragments (mpow_lift) and fragments_assoc (mpow_add); in ChemConservation,
 fugacity_mul (pw_add). That leaves ChemQuantum 8 and ChemConservation 10.
 Patterns (32) had never been compiled and builds right after EarlyScience. Three
@@ -228,8 +228,8 @@ proof steps changed, no statement: step_is_law splits the pair before `grind`, a
 the two parity proofs take their split from `omega` because `Int.emod_add_ediv` and
 `Int.emod_two_eq_zero_or_one` are not in core Lean 4.37. No exact twins.
 ShapeDirections (36) had never been compiled; it compiled unchanged with no exact
-twins. Its Int star_def and weight_is_units sit beside the general multAdd_def and
-LeeYangCluster.wAdd_units.
+twins. Its Int star_def and weight_is_units sit beside the general circ_def and
+LeeYangCluster.circK_units.
 BinaryPulsar (10) compiled unchanged after GravityProbeB, with no exact twins.
 The 14-branch pass added 14 modules (513 theorems as sent), built after the Fermat
 modules so that their imports (Statistics, InformationTheory, the QAcross files) come
@@ -237,10 +237,10 @@ first. All compiled as sent. Twins were found by comparing every new theorem's
 elaborated statement with every library theorem's, so a match is the same statement
 up to variable names. Twelve exact twins were removed, each with a comment naming the
 theorem that stays: GroupsLie scale_disc and shift_disc (ShapeDirections), GraphTheory
-parallel_rel, or_line, union_multAdd and series_fails, DiffGeometry halfplane_dilation,
-KnotTheory qnum_at_one, Dynamics chain_multAdd, InformationFull joint_mass and
+parallel_rel, or_line, union_circ and series_fails, DiffGeometry halfplane_dilation,
+KnotTheory qnum_at_one, Dynamics chain_circ, InformationFull joint_mass and
 shannon_engine, and GameTheory hedge_expert (a twin of kelly_many in the same file).
-Numerical keeps multAdd_bound, the same statement as ComplexAnalysis.corner_bound,
+Numerical keeps circ_bound, the same statement as ComplexAnalysis.corner_bound,
 because a later proof there uses it and the file does not import ComplexAnalysis; its
 Rat helpers sq_nonneg_rat and pow_nonneg_rat stay local as under Small leftovers.
 Chemistry subjects 4 to 6 compiled as sent. ChemBonding (23) is unchanged. ChemStoichiometry
@@ -269,7 +269,7 @@ Biology, eleven files with 164 theorems, compiled with no proof changes and buil
 RuleBreakers; MolecularBiology also imports LeeYang. 36 theorems were exact twins and are
 removed with a comment naming the survivor, leaving 128. Every file restated the ✳
 definition as star_def, so the copy in MolecularBiology stays and the other ten go. The rest
-mostly restate Metabolism.limitation_pow (the "or" power), ChemQuantum.fragments_multAdd,
+mostly restate Metabolism.limitation_pow (the "or" power), ChemQuantum.fragments_circ,
 CellBiology.bliss_or and MolecularBiology.mwc_R. Development keeps pow_mul', a twin of
 Dynamics.pow_mul_R, because its later proofs use it and it does not import Dynamics.
 FractionalPowerset (11) was written without a toolchain and compiled unchanged, with no
@@ -287,7 +287,7 @@ dim_eq_genus) are Props. They are named hypotheses, not proofs: flt_of_deep_arro
 Fermat's Last Theorem only from them.
 EllipticCounting (19) had never been compiled and builds after Patterns. Proof fixes:
 lucas_shift_one's step case gives grind the two recurrence steps, lucas_eds_unit uses
-MultAdd.one_pow', and disc needed a `;` after its `let b8` line, because the next line's
+CircleOp.one_pow', and disc needed a `;` after its `let b8` line, because the next line's
 leading minus was read as part of b8. One statement was false as written and was corrected
 to match its own docstring: order_five_point's last conjunct had w3 * (w3 * w3 * w3), which
 is W3⁴ and evaluates to −2; it now has w3 * w3 * w3 (W3³), and the conjunct is 0 as claimed.

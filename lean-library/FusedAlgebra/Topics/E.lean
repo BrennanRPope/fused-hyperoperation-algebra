@@ -43,9 +43,9 @@
 import FusedAlgebra.Base
 import FusedAlgebra.Cube
 
-namespace MultAdd.E
+namespace CircleOp.E
 
-open MultAdd.Cube
+open CircleOp.Cube
 
 /-- Distinct picks: n·(n-1)·…·(n-k+1), the ordered ways to pick k different axes. -/
 def fall (n : Nat) : Nat → Nat
@@ -485,4 +485,4 @@ example : (27182818 / 10000000 : Rat) < s 10 ∧ u 10 < 27182819 / 10000000 := b
 /-- The staircase at n = 100 is about 2.7048. -/
 example : (2704 / 1000 : Rat) < stair 100 ∧ stair 100 < 2705 / 1000 := by decide +kernel
 
-end MultAdd.E
+end CircleOp.E

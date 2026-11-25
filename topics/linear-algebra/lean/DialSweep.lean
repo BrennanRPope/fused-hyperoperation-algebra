@@ -29,7 +29,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.LinearAlgebra
 
 namespace DialSweep
-open MultAdd LinearAlgebraMA
+open CircleOp LinearAlgebraCirc
 
 set_option linter.unusedSectionVars false
 
@@ -39,12 +39,12 @@ variable {R : Type} [Lean.Grind.CommRing R]
 /-! ## 1. One law in other units -/
 
 theorem scale2 (k : R) (x y : M2 R) :
-    M2.smul k (M2.wmadd k x y) = M2.madd (M2.smul k x) (M2.smul k y) := by
-  apply M2.ext' <;> simp only [M2.smul, M2.wmadd, M2.madd, M2.add, M2.mul] <;> grind
+    M2.smul k (M2.circK k x y) = M2.circ (M2.smul k x) (M2.smul k y) := by
+  apply M2.ext' <;> simp only [M2.smul, M2.circK, M2.circ, M2.add, M2.mul] <;> grind
 
 theorem scale3 (k : R) (x y : M3 R) :
-    M3.smul k (M3.wmadd k x y) = M3.madd (M3.smul k x) (M3.smul k y) := by
-  apply M3.ext' <;> simp only [M3.smul, M3.wmadd, M3.madd, M3.add, M3.mul] <;> grind
+    M3.smul k (M3.circK k x y) = M3.circ (M3.smul k x) (M3.smul k y) := by
+  apply M3.ext' <;> simp only [M3.smul, M3.circK, M3.circ, M3.add, M3.mul] <;> grind
 
 /-! ## 2. The dial is the characteristic polynomial -/
 
@@ -74,7 +74,7 @@ theorem det_top (k : R) (x : M3 R) :
 /-- At k = −1 the rotation condition is X + Xᵀ − XᵀX = 0: I − X is orthogonal. -/
 theorem orth_neg_one (x : M3 R) :
     M3.mul (M3.transpose (M3.add M3.one (M3.smul (-1) x))) (M3.add M3.one (M3.smul (-1) x))
-      = M3.add M3.one (M3.smul (-1) (M3.wmadd (-1) (M3.transpose x) x)) :=
+      = M3.add M3.one (M3.smul (-1) (M3.circK (-1) (M3.transpose x) x)) :=
   M3.orth_lift (-1) x
 
 /-! ## 4. A matrix on the dial -/
@@ -142,12 +142,12 @@ theorem shear_is_add (a b : R) :
 /-! ## 5. A matrix weight inside the law -/
 
 /-- A ⊞_K B = A + B + A·K·B. -/
-def kmadd (kk x y : M2 R) : M2 R := M2.add (M2.add x y) (M2.mul (M2.mul x kk) y)
+def kcirc (kk x y : M2 R) : M2 R := M2.add (M2.add x y) (M2.mul (M2.mul x kk) y)
 
-theorem kmadd_lift (kk x y : M2 R) :
-    M2.add M2.one (M2.mul (kmadd kk x y) kk)
+theorem kcirc_lift (kk x y : M2 R) :
+    M2.add M2.one (M2.mul (kcirc kk x y) kk)
       = M2.mul (M2.add M2.one (M2.mul x kk)) (M2.add M2.one (M2.mul y kk)) := by
-  apply M2.ext' <;> simp only [kmadd, M2.add, M2.mul, M2.one] <;> grind
+  apply M2.ext' <;> simp only [kcirc, M2.add, M2.mul, M2.one] <;> grind
 
 theorem sylvester2 (x kk : M2 R) :
     M2.det (M2.add M2.one (M2.mul x kk)) = M2.det (M2.add M2.one (M2.mul kk x)) := by
@@ -217,8 +217,8 @@ theorem cayley_weighted (k s : K) :
   rw [e, M2.cayley]
 
 /-- The weighted inverse: off the weighted wall, a ⊞ₖ (−a/(1 + k·a)) = 0. -/
-theorem winv (k a : K) (h : 1 + k * a ≠ 0) : wAdd k a (-a / (1 + k * a)) = 0 := by
-  unfold wAdd; grind
+theorem winv (k a : K) (h : 1 + k * a ≠ 0) : circK k a (-a / (1 + k * a)) = 0 := by
+  unfold circK; grind
 
 end Field
 

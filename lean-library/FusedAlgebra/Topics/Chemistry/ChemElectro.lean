@@ -13,7 +13,7 @@
   losses compose at k = −1, and the Kok clock's damping eigenvalue has
   modulus at most 1.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
   LIBRARY NOTE: first compiled in the shared library, after ChemRates. Three exact twins
   removed (ratio_series, bv_one_sided, stage_losses); each is marked where it stood. No
   proof step or statement changed.
@@ -21,9 +21,9 @@
 import FusedAlgebra.Base
 
 namespace ChemElectro
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 -- LIBRARY: ratio_series (Coupled steps: ratios (K, or forward/backward rate ratios) multiply, so ratio − 1 mult-adds) was an exact twin of InfoFused.campbell and is removed.
 
@@ -42,8 +42,8 @@ theorem luther_idem (n1 n2 E : Rat) (h : n1 + n2 ≠ 0) : (n1 * E + n2 * E) / (n
   rw [this, Rat.mul_div_cancel h]
 
 /-- Two one-electron sites with interaction factor k: Z − 1 = x ⊞ₖ x. -/
-theorem two_site (k x : Rat) : (1 + 2 * x + k * x * x) - 1 = wAdd k x x := by
-  unfold wAdd; grind
+theorem two_site (k x : Rat) : (1 + 2 * x + k * x * x) - 1 = circK k x x := by
+  unfold circK; grind
 
 /-- Its discriminant is 4(1 − k): complex zeros exactly when k > 1 (cooperativity). -/
 theorem two_site_disc (k : Rat) : 2 * 2 - 4 * k = 4 * (1 - k) := by grind
@@ -58,8 +58,8 @@ theorem nernst_midpoint (s : Rat) (hs : s ≠ 0) :
 
 /-- Three stages fold the same way, in either grouping. -/
 theorem stage_losses3 (L1 L2 L3 : Rat) :
-    wAdd (-1) (wAdd (-1) L1 L2) L3 = 1 - (1 - L1) * (1 - L2) * (1 - L3) := by
-  unfold wAdd; grind
+    circK (-1) (circK (-1) L1 L2) L3 = 1 - (1 - L1) * (1 - L2) * (1 - L3) := by
+  unfold circK; grind
 
 /-- Kok clock: one flash advances 0, 1 or 2 steps with probabilities α, 1 − α − β, β.
     The mean advance is 1 − α + β. -/

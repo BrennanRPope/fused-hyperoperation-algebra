@@ -3,7 +3,7 @@
   ===========================================================
 
   For each mult-add axiom we give a structure where every other axiom holds
-  and that one fails. So the list in `Axioms.MultAddRing` has no spare part
+  and that one fails. So the list in `Foundations.CircleRing` has no spare part
   among M1–M4. (A1–A4 are the usual abelian-group axioms; their independence
   is classical and not redone here.)
 
@@ -17,14 +17,14 @@
   LIBRARY NOTE: copied from axioms/lean/Axioms/Independence.lean (Nov 25) as Foundations/Independence.
 -/
 
-namespace MAFound.Independence
+namespace CircFound.Independence
 
 /-- The eight axioms, as statements about given operations. -/
 structure Ops (R : Type) where
   zero : R
   add : R → R → R
   neg : R → R
-  madd : R → R → R
+  circ : R → R → R
   wall : R
 
 variable {R : Type}
@@ -32,11 +32,11 @@ def A1 (o : Ops R) : Prop := ∀ a b c, o.add (o.add a b) c = o.add a (o.add b c
 def A2 (o : Ops R) : Prop := ∀ a b, o.add a b = o.add b a
 def A3 (o : Ops R) : Prop := ∀ a, o.add a o.zero = a
 def A4 (o : Ops R) : Prop := ∀ a, o.add (o.neg a) a = o.zero
-def M1 (o : Ops R) : Prop := ∀ a b, o.madd a b = o.madd b a
-def M2 (o : Ops R) : Prop := ∀ a b c, o.madd (o.madd a b) c = o.madd a (o.madd b c)
-def M3 (o : Ops R) : Prop := ∀ a, o.madd a o.wall = o.wall
+def M1 (o : Ops R) : Prop := ∀ a b, o.circ a b = o.circ b a
+def M2 (o : Ops R) : Prop := ∀ a b c, o.circ (o.circ a b) c = o.circ a (o.circ b c)
+def M3 (o : Ops R) : Prop := ∀ a, o.circ a o.wall = o.wall
 def M4 (o : Ops R) : Prop :=
-  ∀ a b c, o.madd a (o.add b c) = o.add (o.add (o.madd a b) (o.madd a c)) (o.neg a)
+  ∀ a b c, o.circ a (o.add b c) = o.add (o.add (o.circ a b) (o.circ a c)) (o.neg a)
 
 /-- The group part holds for whole numbers with ordinary +. -/
 def intOps (m : Int → Int → Int) (w : Int) : Ops Int := ⟨0, (· + ·), (- ·), m, w⟩
@@ -136,4 +136,4 @@ theorem no_M2 :
   · intro x; apply Tri.ext' <;> simp only [triOps, Tri.add, Tri.mul] <;> grind
   · intro x y z; apply Tri.ext' <;> simp only [triOps, Tri.add, Tri.mul, Tri.neg] <;> grind
 
-end MAFound.Independence
+end CircFound.Independence

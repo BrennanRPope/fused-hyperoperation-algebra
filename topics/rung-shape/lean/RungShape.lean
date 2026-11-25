@@ -14,7 +14,7 @@ import FusedAlgebra.Base
 
 namespace RungShape
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 section Ring
@@ -25,25 +25,25 @@ variable {R : Type} [CommRing R]
 /-- Mixed second difference of mult-add = h·k, the area of the corner rectangle.
   (Rung 0 has twist 0: a flat plane. Rung 1 has twist 1: the saddle.) -/
 theorem twist_rung1 (a b h k : R) :
-    multAdd (a + h) (b + k) - multAdd (a + h) b - multAdd a (b + k) + multAdd a b = h * k := by
-  unfold multAdd; grind
+    circ (a + h) (b + k) - circ (a + h) b - circ a (b + k) + circ a b = h * k := by
+  unfold circ; grind
 
 /-- The corner dial a + b + t·ab has twist t (the corner weight). -/
 theorem twist_dial (t a b h k : R) :
-    wAdd t (a + h) (b + k) - wAdd t (a + h) b - wAdd t a (b + k) + wAdd t a b = t * (h * k) := by
-  unfold wAdd; grind
+    circK t (a + h) (b + k) - circK t (a + h) b - circK t a (b + k) + circK t a b = t * (h * k) := by
+  unfold circK; grind
 
 /-- Rung 1's graph is ruled: along any fixed a it is a straight line in b. -/
-theorem ruled_rung1 (a b : R) : multAdd a b = a + (1 + a) * b := by
-  unfold multAdd; grind
+theorem ruled_rung1 (a b : R) : circ a b = a + (1 + a) * b := by
+  unfold circ; grind
 
 /-- ... and along any fixed b it is a straight line in a (doubly ruled saddle). -/
-theorem ruled_rung1' (a b : R) : multAdd a b = b + (1 + b) * a := by
-  unfold multAdd; grind
+theorem ruled_rung1' (a b : R) : circ a b = b + (1 + b) * a := by
+  unfold circ; grind
 
 /-- Flat along the axes: rung 1 adds nothing on the a-axis (the identity line). -/
-theorem axis_rung1 (a : R) : multAdd a 0 - a = 0 := by
-  unfold multAdd; grind
+theorem axis_rung1 (a : R) : circ a 0 - a = 0 := by
+  unfold circ; grind
 
 /-! ### The near-identity flow: one step of rung height is a Möbius step
 
@@ -69,16 +69,16 @@ variable {K : Type} [Field K]
 theorem sheet_rung0 (a c : K) : a + (c - a) = c := by grind
 
 /-- Rung 1 slice: a ⊞ b = c is the hyperbola b = (c − a)/(1 + a). -/
-theorem sheet_rung1 (a c : K) (h : 1 + a ≠ 0) : multAdd a ((c - a) / (1 + a)) = c := by
-  unfold multAdd; grind
+theorem sheet_rung1 (a c : K) (h : 1 + a ≠ 0) : circ a ((c - a) / (1 + a)) = c := by
+  unfold circ; grind
 
 /-- Corner-dial slice: a ⊞ₜ b = c is b = (c − a)/(1 + t·a). -/
-theorem sheet_dial (t a c : K) (h : 1 + t * a ≠ 0) : wAdd t a ((c - a) / (1 + t * a)) = c := by
-  unfold wAdd; grind
+theorem sheet_dial (t a c : K) (h : 1 + t * a ≠ 0) : circK t a ((c - a) / (1 + t * a)) = c := by
+  unfold circK; grind
 
 /-- Every slice passes through (c, 0) and (0, c): the sheet's two fixed edges. -/
-theorem sheet_edges (c : K) : multAdd c 0 = c ∧ multAdd 0 c = c := by
-  unfold multAdd; constructor <;> grind
+theorem sheet_edges (c : K) : circ c 0 = c ∧ circ 0 c = c := by
+  unfold circ; constructor <;> grind
 
 /-- The near-identity flow in closed form: φ_t(x) = 2x/(2 − t x) satisfies its defining relation. -/
 theorem flow_closed (t x : K) (h : 2 - t * x ≠ 0) : (2 * x / (2 - t * x)) * (2 - t * x) = 2 * x := by
@@ -139,10 +139,10 @@ variable {R : Type} [CommRing R]
 
 /-- Rung 1 with no logarithms: its lens is x ↦ 1 + x into multiplication, and the slice
   a ⊞ b = c is the "straight line" (1 + a)(1 + b) = 1 + c of that lens. -/
-theorem sheet_rung1_lens (a b c : R) : multAdd a b = c ↔ (1 + a) * (1 + b) = 1 + c := by
+theorem sheet_rung1_lens (a b c : R) : circ a b = c ↔ (1 + a) * (1 + b) = 1 + c := by
   constructor
-  · intro h; rw [← multAdd_lift, h]
-  · intro h; have e := multAdd_lift a b; grind
+  · intro h; rw [← circ_lift, h]
+  · intro h; have e := circ_lift a b; grind
 
 end Ring
 

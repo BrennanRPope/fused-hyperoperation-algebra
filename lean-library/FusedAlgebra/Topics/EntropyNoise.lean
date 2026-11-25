@@ -51,7 +51,7 @@ import FusedAlgebra.Topics.InformationTheory
 
 namespace EntropyNoise
 
-open MultAdd
+open CircleOp
 
 /-! ## Small order facts on Rat (core has no `nlinarith`) -/
 
@@ -98,10 +98,10 @@ theorem mul_bound (a b u : Rat) (h1 : a ≤ u) (h2 : -a ≤ u) (hb1 : b ≤ 1) (
 /-- Certainty swallows everything, a ⊕ₖ 1 = 1 for every a, exactly when k = −1.
     The statistics page's "or" laws are the line k + q_L = −1 of lens laws; the
     Tsallis laws have no denominator (q_L = 0), so they meet it only here. -/
-theorem certainty_absorbs_iff (k : Rat) : (∀ a : Rat, wAdd k a 1 = 1) ↔ k = -1 := by
+theorem certainty_absorbs_iff (k : Rat) : (∀ a : Rat, circK k a 1 = 1) ↔ k = -1 := by
   constructor
-  · intro h; have := h 1; unfold wAdd at this; grind
-  · intro hk a; subst hk; unfold wAdd; grind
+  · intro h; have := h 1; unfold circK at this; grind
+  · intro hk a; subst hk; unfold circK; grind
 
 /- Tsallis' index q = 2 is that point: Gini–Simpson (linear entropy) follows the
    union rule, because its lift is the collision sum. Library: InfoFused.gini_simpson

@@ -21,10 +21,10 @@
 
   Proved here from the axioms (core Lean, no `sorry`):
   * rung 1 and rung 2 laws by induction alone: ⊕ commutative, associative,
-    identity 0, and ⊕ distributes over ⊞ exactly (`madd_sadd`),
+    identity 0, and ⊕ distributes over ⊞ exactly (`circ_sadd`),
   * ordinary + and × defined from ⊞ and ⊕, with their Peano recursions,
   * categoricity: every model is a copy of Nat (`toN_bijective`, `toN_sadd`,
-    `toN_madd`), so these axioms pin the numbers down completely,
+    `toN_circ`), so these axioms pin the numbers down completely,
   * recursion on any model, and the whole fused ladder from one schema
     (`ladN`), whose rungs 1 and 2 are the primitives,
   * every rung n of the fused ladder is the ordinary hyperoperation seen
@@ -34,19 +34,19 @@
   LIBRARY NOTE: copied from axioms/lean/Axioms/FusedPeano.lean (Nov 25) as Foundations/FusedPeano.
 -/
 
-namespace MAFound
+namespace CircFound
 
 class FusedPeano (N : Type) where
   zero : N
   succ : N → N
   sadd : N → N → N
-  madd : N → N → N
+  circ : N → N → N
   succ_ne_zero : ∀ n, succ n ≠ zero
   succ_inj : ∀ m n, succ m = succ n → m = n
   sadd_zero : ∀ a, sadd a zero = succ a
   sadd_succ : ∀ a b, sadd a (succ b) = succ (sadd a b)
-  madd_zero : ∀ a, madd a zero = a
-  madd_succ : ∀ a b, madd a (succ b) = sadd (madd a b) a
+  circ_zero : ∀ a, circ a zero = a
+  circ_succ : ∀ a b, circ a (succ b) = sadd (circ a b) a
   ind : ∀ (P : N → Prop), P zero → (∀ n, P n → P (succ n)) → ∀ n, P n
 
 namespace FusedPeano
@@ -91,36 +91,36 @@ theorem sadd_ne_zero (a b : N) : sadd a b ≠ zero := by
 /-! ## Rung 2 (mult-add) from the axioms -/
 
 /-- 0 is a left identity too. -/
-theorem zero_madd (b : N) : madd zero b = b := by
-  refine ind (fun b => madd zero b = b) ?_ ?_ b
-  · rw [madd_zero]
-  · intro b ih; rw [madd_succ, ih, sadd_zero]
+theorem zero_circ (b : N) : circ zero b = b := by
+  refine ind (fun b => circ zero b = b) ?_ ?_ b
+  · rw [circ_zero]
+  · intro b ih; rw [circ_succ, ih, sadd_zero]
 
 /-- Growing the box along its other side. -/
-theorem succ_madd (a b : N) : madd (succ a) b = sadd (madd a b) b := by
-  refine ind (fun b => madd (succ a) b = sadd (madd a b) b) ?_ ?_ b
-  · rw [madd_zero, madd_zero, sadd_zero]
+theorem succ_circ (a b : N) : circ (succ a) b = sadd (circ a b) b := by
+  refine ind (fun b => circ (succ a) b = sadd (circ a b) b) ?_ ?_ b
+  · rw [circ_zero, circ_zero, sadd_zero]
   · intro b ih
-    rw [madd_succ, ih, madd_succ, sadd_succ, sadd_succ, sadd_assoc, sadd_assoc, sadd_comm b a]
+    rw [circ_succ, ih, circ_succ, sadd_succ, sadd_succ, sadd_assoc, sadd_assoc, sadd_comm b a]
 
 /-- Mult-add is commutative: the box turned on its side. -/
-theorem madd_comm (a b : N) : madd a b = madd b a := by
-  refine ind (fun b => madd a b = madd b a) ?_ ?_ b
-  · rw [madd_zero, zero_madd]
-  · intro b ih; rw [madd_succ, succ_madd, ih]
+theorem circ_comm (a b : N) : circ a b = circ b a := by
+  refine ind (fun b => circ a b = circ b a) ?_ ?_ b
+  · rw [circ_zero, zero_circ]
+  · intro b ih; rw [circ_succ, succ_circ, ih]
 
 /-- Rung 2 distributes over rung 1 exactly, with no correction term:
     a ⊕ (b ⊞ c) = (a ⊕ b) ⊞ (a ⊕ c). Two boxes of the same width, stacked. -/
-theorem madd_sadd (a b c : N) : madd a (sadd b c) = sadd (madd a b) (madd a c) := by
-  refine ind (fun c => madd a (sadd b c) = sadd (madd a b) (madd a c)) ?_ ?_ c
-  · rw [sadd_zero, madd_succ, madd_zero]
-  · intro c ih; rw [sadd_succ, madd_succ, ih, madd_succ, sadd_assoc]
+theorem circ_sadd (a b c : N) : circ a (sadd b c) = sadd (circ a b) (circ a c) := by
+  refine ind (fun c => circ a (sadd b c) = sadd (circ a b) (circ a c)) ?_ ?_ c
+  · rw [sadd_zero, circ_succ, circ_zero]
+  · intro c ih; rw [sadd_succ, circ_succ, ih, circ_succ, sadd_assoc]
 
 /-- Mult-add is associative: a 3-D box built two ways. -/
-theorem madd_assoc (a b c : N) : madd (madd a b) c = madd a (madd b c) := by
-  refine ind (fun c => madd (madd a b) c = madd a (madd b c)) ?_ ?_ c
-  · rw [madd_zero, madd_zero]
-  · intro c ih; rw [madd_succ, ih, madd_succ, madd_sadd]
+theorem circ_assoc (a b c : N) : circ (circ a b) c = circ a (circ b c) := by
+  refine ind (fun c => circ (circ a b) c = circ a (circ b c)) ?_ ?_ c
+  · rw [circ_zero, circ_zero]
+  · intro c ih; rw [circ_succ, ih, circ_succ, circ_sadd]
 
 /-! ## Ordinary addition and multiplication, defined -/
 
@@ -158,28 +158,28 @@ theorem add_right_cancel' {a b c : N} (h : add a c = add b c) : a = b := by
   apply sadd_right_cancel (c := c)
   rw [← succ_add_eq, ← succ_add_eq, h]
 
-theorem madd_is (x y : N) : ∃ z, madd x y = add (add x y) z := by
-  refine ind (fun y => ∃ z, madd x y = add (add x y) z) ?_ ?_ y
-  · exact ⟨zero, by rw [madd_zero, add_zero', add_zero']⟩
+theorem circ_is (x y : N) : ∃ z, circ x y = add (add x y) z := by
+  refine ind (fun y => ∃ z, circ x y = add (add x y) z) ?_ ?_ y
+  · exact ⟨zero, by rw [circ_zero, add_zero', add_zero']⟩
   · intro y ⟨z, hz⟩
     refine ⟨add z x, ?_⟩
-    rw [madd_succ, ← succ_add_eq, hz, add_succ', succ_add', add_assoc' (add x y) z x]
+    rw [circ_succ, ← succ_add_eq, hz, add_succ', succ_add', add_assoc' (add x y) z x]
 
 /-- Multiplication: x · y is what is left of x ⊕ y after taking off x and y. -/
-noncomputable def mul (x y : N) : N := Classical.choose (madd_is x y)
+noncomputable def mul (x y : N) : N := Classical.choose (circ_is x y)
 
-theorem madd_eq' (x y : N) : madd x y = add (add x y) (mul x y) :=
-  Classical.choose_spec (madd_is x y)
+theorem circ_eq' (x y : N) : circ x y = add (add x y) (mul x y) :=
+  Classical.choose_spec (circ_is x y)
 
 theorem mul_zero' (x : N) : mul x zero = zero := by
-  have h := madd_eq' x zero
-  rw [madd_zero, add_zero'] at h
+  have h := circ_eq' x zero
+  rw [circ_zero, add_zero'] at h
   apply add_right_cancel' (c := x)
   rw [zero_add', add_comm']; exact h.symm
 
 theorem mul_succ' (x y : N) : mul x (succ y) = add (mul x y) x := by
-  have h1 := madd_eq' x (succ y)
-  rw [madd_succ, ← succ_add_eq, madd_eq', add_succ', succ_add'] at h1
+  have h1 := circ_eq' x (succ y)
+  rw [circ_succ, ← succ_add_eq, circ_eq', add_succ', succ_add'] at h1
   have h2 := succ_inj _ _ h1
   -- h2 : x + y + xy + x = x + y + x(y+1)
   apply add_right_cancel' (c := add x y)
@@ -215,19 +215,19 @@ theorem toN_sadd (a b : Nat) : toN (N := N) (a + b + 1) = sadd (toN a) (toN b) :
     rw [sadd_succ, ← ih]; rfl
 
 /-- Counting carries mult-add to mult-add: (a + b + ab) ↦ a ⊕ b. -/
-theorem toN_madd (a b : Nat) : toN (N := N) (a + b + a * b) = madd (toN a) (toN b) := by
+theorem toN_circ (a b : Nat) : toN (N := N) (a + b + a * b) = circ (toN a) (toN b) := by
   induction b with
-  | zero => show toN (a + 0 + a * 0) = madd (toN a) zero; rw [madd_zero]; simp
+  | zero => show toN (a + 0 + a * 0) = circ (toN a) zero; rw [circ_zero]; simp
   | succ b ih =>
     rw [show a + (b + 1) + a * (b + 1) = (a + b + a * b) + a + 1 by grind, toN_sadd, ih]
-    show _ = madd (toN a) (succ (toN b)); rw [madd_succ]
+    show _ = circ (toN a) (succ (toN b)); rw [circ_succ]
 
 theorem toN_add (a b : Nat) : toN (N := N) (a + b) = add (toN a) (toN b) := by
   apply succ_inj; rw [succ_add_eq, ← toN_sadd]; rfl
 
 theorem toN_mul (a b : Nat) : toN (N := N) (a * b) = mul (toN a) (toN b) := by
   apply add_right_cancel' (c := add (toN a) (toN b))
-  rw [add_comm' (mul _ _), ← madd_eq', ← toN_madd, ← toN_add, ← toN_add, Nat.add_comm (a * b)]
+  rw [add_comm' (mul _ _), ← circ_eq', ← toN_circ, ← toN_add, ← toN_add, Nat.add_comm (a * b)]
 
 /-- The way back from the model to Nat. -/
 noncomputable def fromN (n : N) : Nat := Classical.choose (toN_surjective n)
@@ -347,10 +347,10 @@ theorem ladN_one (a b : N) : ladN 1 a b = sadd a b := by
   · intro b ih; rw [ladN_succ, ih, sadd_succ]; rfl
 
 /-- The schema's rung 2 is the primitive ⊕. -/
-theorem ladN_two (a b : N) : ladN 2 a b = madd a b := by
-  refine ind (fun b => ladN 2 a b = madd a b) ?_ ?_ b
-  · rw [ladN_zero_right, madd_zero]; rfl
-  · intro b ih; rw [ladN_succ, ih, ladN_one, madd_succ, sadd_comm]
+theorem ladN_two (a b : N) : ladN 2 a b = circ a b := by
+  refine ind (fun b => ladN 2 a b = circ a b) ?_ ?_ b
+  · rw [ladN_zero_right, circ_zero]; rfl
+  · intro b ih; rw [ladN_succ, ih, ladN_one, circ_succ, sadd_comm]
 
 /-- Counting carries the whole ladder over: every model has every rung. -/
 theorem toN_lad (n a b : Nat) : toN (N := N) (lad n a b) = ladN n (toN a) (toN b) := by
@@ -427,7 +427,7 @@ noncomputable instance instCommSemiring : Lean.Grind.CommSemiring N where
   mul_comm := mul_comm'
 
 /-- In the derived semiring, a + b + a·b is the primitive ⊕. -/
-theorem multAdd_eq (a b : N) : a + b + a * b = madd a b := (madd_eq' a b).symm
+theorem circ_eq (a b : N) : a + b + a * b = circ a b := (circ_eq' a b).symm
 
 /-! ## Strength: + and × can be defined from successor and mult-add
 
@@ -481,4 +481,4 @@ theorem add_definable (x y z : Nat) :
       exact Nat.eq_of_mul_eq_mul_left (Nat.pos_of_ne_zero hz) e
 
 end FusedPeano
-end MAFound
+end CircFound

@@ -9,7 +9,7 @@ import FusedAlgebra.Rungs
 
 namespace FusedRungs
 
-open MultAdd
+open CircleOp
 
 /-! ### Burgers: why the top corner of the Cole–Hopf cube must be empty
   A term e^(a x + b t) solves the heat equation φ_t = ν φ_xx iff b = ν a².

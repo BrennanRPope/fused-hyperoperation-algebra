@@ -31,9 +31,9 @@ import FusedAlgebra.Base
 import FusedAlgebra.Cube
 import FusedAlgebra.Topics.Topology.CubeProofs
 
-namespace MultAdd.NSContinuum
+namespace CircleOp.NSContinuum
 
-open MultAdd MultAdd.Cube
+open CircleOp CircleOp.Cube
 
 /-! ## 1. The dyadic shell is the mult-add cube -/
 
@@ -181,4 +181,4 @@ theorem planar_stretching_zero (G : Fin 3 → Fin 3 → Int) (w : Int)
     stretch G (fun k => if k = 2 then w else 0) i = 0 := by
   simp [stretch, hz]
 
-end MultAdd.NSContinuum
+end CircleOp.NSContinuum

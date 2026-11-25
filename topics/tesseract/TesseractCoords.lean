@@ -5,14 +5,17 @@
   STATUS: checked. Compiled against mathlib v4.37.0-rc1 on Lean 4.37.0-rc1
   on Brennan's Mac Studio (Nov 25, 2026) with zero errors and no `sorry`.
   An earlier compile failed only because `⊞`, the mult-add symbol used here
-  before, is mathlib's global notation for biproducts; mult-add is now
-  written `✳`, which mathlib does not use. To recheck, put the file in a
+  before, is mathlib's global notation for biproducts; mult-add was then
+  written with the eight-spoked asterisk (U+2733), which mathlib does not
+  use. In the 1.0 rename it became the circle operation `◯` (typed
+  \bigcirc, free in mathlib, scoped to `CircleOp`); this file has not been
+  rechecked against mathlib since that rename. To recheck, put the file in a
   Lean project that depends on mathlib and run `lake env lean
   TesseractCoords.lean`.
 
   Notation: Lean already uses `⊕` for sum types and mathlib uses `⊞` for
-  biproducts, so mult-add is written `✳` here, a plus and a times sign laid
-  over each other. a ✳ b = a + b + a*b.
+  biproducts, so mult-add is written `◯` here, the circle operation of
+  ring theory. a ◯ b = a + b + a*b.
 
   The picture. Cut a box with sides 1+a, 1+b, 1+c, 1+d at 1 on every axis.
   It falls into 16 pieces, one per corner of the tesseract. A corner is a
@@ -23,47 +26,47 @@ import Mathlib
 
 open Finset BigOperators
 
-namespace MultAdd
+namespace CircleOp
 
 variable {R : Type*} [CommRing R]
 
 /-! ## Mult-add on numbers -/
 
 /-- Mult-add: one operation that adds and multiplies at once. -/
-def multAdd (a b : R) : R := a + b + a * b
+def circ (a b : R) : R := a + b + a * b
 
-@[inherit_doc] infixl:65 " ✳ " => multAdd
+@[inherit_doc] scoped infixl:65 " ◯ " => circ
 
 /-- The geometric heart: mult-add is a box with sides 1 + a and 1 + b,
 minus the unit square. -/
-theorem one_add_multAdd (a b : R) : 1 + (a ✳ b) = (1 + a) * (1 + b) := by
-  unfold multAdd; ring
+theorem one_add_circ (a b : R) : 1 + (a ◯ b) = (1 + a) * (1 + b) := by
+  unfold circ; ring
 
-theorem multAdd_comm (a b : R) : a ✳ b = b ✳ a := by
-  unfold multAdd; ring
+theorem circ_comm (a b : R) : a ◯ b = b ◯ a := by
+  unfold circ; ring
 
-theorem multAdd_assoc (a b c : R) : (a ✳ b) ✳ c = a ✳ (b ✳ c) := by
-  unfold multAdd; ring
+theorem circ_assoc (a b c : R) : (a ◯ b) ◯ c = a ◯ (b ◯ c) := by
+  unfold circ; ring
 
-theorem multAdd_zero (a : R) : a ✳ 0 = a := by
-  unfold multAdd; ring
+theorem circ_zero (a : R) : a ◯ 0 = a := by
+  unfold circ; ring
 
 /-- Four numbers: the tesseract box with 16 pieces. -/
-theorem one_add_multAdd₄ (a b c d : R) :
-    1 + (a ✳ b ✳ c ✳ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
-  simp only [multAdd]; ring
+theorem one_add_circ₄ (a b c d : R) :
+    1 + (a ◯ b ◯ c ◯ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
+  simp only [circ]; ring
 
 /-- Mult-add of a whole list (0 is the identity). -/
-def multAddList : List R → R
+def circList : List R → R
   | [] => 0
-  | x :: xs => x ✳ multAddList xs
+  | x :: xs => x ◯ circList xs
 
-theorem one_add_multAddList :
-    ∀ l : List R, 1 + multAddList l = (l.map (fun x => 1 + x)).prod
-  | [] => by simp [multAddList]
+theorem one_add_circList :
+    ∀ l : List R, 1 + circList l = (l.map (fun x => 1 + x)).prod
+  | [] => by simp [circList]
   | x :: xs => by
-      simp only [multAddList, one_add_multAdd, List.map_cons, List.prod_cons,
-        one_add_multAddList xs]
+      simp only [circList, one_add_circ, List.map_cons, List.prod_cons,
+        one_add_circList xs]
 
 /-! ## Tesseract coordinates -/
 
@@ -133,9 +136,9 @@ theorem sum_corners_ofPoint {n : ℕ} (a : Fin n → R) :
   simp only [ofPoint]
 
 /-- So the sum of all corners is 1 plus the mult-add of the coordinates. -/
-theorem sum_corners_eq_one_add_multAdd {n : ℕ} (a : Fin n → R) :
-    ∑ S : Corner n, ofPoint a S = 1 + multAddList (List.ofFn a) := by
-  rw [sum_corners_ofPoint, one_add_multAddList, List.map_ofFn, List.prod_ofFn]
+theorem sum_corners_eq_one_add_circ {n : ℕ} (a : Fin n → R) :
+    ∑ S : Corner n, ofPoint a S = 1 + circList (List.ofFn a) := by
+  rw [sum_corners_ofPoint, one_add_circList, List.map_ofFn, List.prod_ofFn]
   rfl
 
 /-- Evaluating "every weight 1" at x gives the box ∏ (1 + x i). -/
@@ -151,9 +154,9 @@ theorem zeta_ofPoint {n : ℕ} (a : Fin n → R) (T : Corner n) :
   rfl
 
 /-- In box coordinates, mult-add axis by axis is plain multiplication. -/
-theorem zeta_ofPoint_multAdd {n : ℕ} (a b : Fin n → R) (T : Corner n) :
-    zeta (ofPoint (fun i => a i ✳ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
-  simp only [zeta_ofPoint, one_add_multAdd, Finset.prod_mul_distrib]
+theorem zeta_ofPoint_circ {n : ℕ} (a b : Fin n → R) (T : Corner n) :
+    zeta (ofPoint (fun i => a i ◯ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
+  simp only [zeta_ofPoint, one_add_circ, Finset.prod_mul_distrib]
 
 /-- With no interaction (every A i j = 1) every soliton weight is 1, so the
 tau function is the pure box ∏ (1 + e^{η i}). -/
@@ -167,4 +170,4 @@ theorem solitonWeights_one {n : ℕ} :
   coordinates. The Python helpers test it on many random points.
 -/
 
-end MultAdd
+end CircleOp

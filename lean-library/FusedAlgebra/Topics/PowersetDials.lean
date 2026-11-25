@@ -10,20 +10,20 @@
   the product of the dials of its members. What is proved, by part:
 
   1. The count. The weighed subsets add up to ∏(1 + t_x), which is
-     1 + (t₁ ✳ t₂ ✳ … ✳ tₙ). All dials 1 give 2ⁿ, all 0 give 1, dials that are
+     1 + (t₁ ◯ t₂ ◯ … ◯ tₙ). All dials 1 give 2ⁿ, all 0 give 1, dials that are
      0 or 1 give 2^(number of ones): the old split P(A) × P(S∖A).
   2. Merging. Combining two dialled power sets of the same set by union
      (every pair (A, B), weighed by the product, landing on A ∪ B) gives the
      dialled power set whose dials are mult-added, element by element
      (`conv_W`). The same one-element computation (`cell_merge`) says that
      merging two elements into one block, present when either is present,
-     gives the block the dial t ✳ s. Dial 0 is the unit of merging.
-  3. The half. If r·r = 2 then h = r − 1 has h ✳ h = 1, so the dialled power
+     gives the block the dial t ◯ s. Dial 0 is the unit of merging.
+  3. The half. If r·r = 2 then h = r − 1 has h ◯ h = 1, so the dialled power
      set with every dial h, merged with itself, is exactly P(S) with every
      subset weighed 1 (`half_squared_family`). In general a dial t with
-     t^(✳m) = 1 is an m-th root. Halving commutes with merging.
-     Each half has a partner: t ✳ (1 − t)/(1 + t) = 1; partnering is an
-     involution swapping 0 and 1 and fixing exactly the dials with t ✳ t = 1.
+     t^(◯m) = 1 is an m-th root. Halving commutes with merging.
+     Each half has a partner: t ◯ (1 − t)/(1 + t) = 1; partnering is an
+     involution swapping 0 and 1 and fixing exactly the dials with t ◯ t = 1.
   4. Complement. Taking complements turns dial t into 1/t (`W_compl`), so it
      swaps "merge by union" (mult-add on the dials) with "merge by
      intersection" (mult-add on the reciprocal dials). The only dial that
@@ -46,12 +46,12 @@ import FusedAlgebra.Base
 
 namespace PowersetDials
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## 1. Subsets as bit vectors, weights, and the count -/
 
@@ -120,10 +120,10 @@ theorem total_W (ts : List R) :
     rw [e1, e2, sumL_map_mul, sumL_map_mul, ih]
     simp only [List.map, prodL]; grind
 
-/-- The count is the mult-add chain plus one: ∏(1 + tᵢ) = 1 + (t₁ ✳ … ✳ tₙ). -/
+/-- The count is the mult-add chain plus one: ∏(1 + tᵢ) = 1 + (t₁ ◯ … ◯ tₙ). -/
 theorem total_W_chain (ts : List R) :
-    sumL ((vecs ts.length).map (W ts)) = 1 + foldMA ts := by
-  rw [total_W, foldMA_lift]
+    sumL ((vecs ts.length).map (W ts)) = 1 + foldCirc ts := by
+  rw [total_W, foldCirc_lift]
 
 /-- All dials equal: (1 + t)ⁿ. -/
 theorem total_uniform (t : R) (n : Nat) :
@@ -185,16 +185,16 @@ def conv (n : Nat) (ts ss : List R) (c : List Bool) : R :=
     if orV a b = c then W ts a * W ss b else 0))
 
 /-- **One element merged.** The four ways (in/out, in/out) that land on
-    "out" weigh 1; the three that land on "in" weigh t + s + ts = t ✳ s.
+    "out" weigh 1; the three that land on "in" weigh t + s + ts = t ◯ s.
     Read as coarse-graining: a block of two elements, present when either is,
-    carries the dial t ✳ s. -/
+    carries the dial t ◯ s. -/
 theorem cell_merge (t s : R) (z : Bool) :
     ((if (false || false) = z then cell t false * cell s false else 0) +
      (if (false || true) = z then cell t false * cell s true else 0)) +
     ((if (true || false) = z then cell t true * cell s false else 0) +
      (if (true || true) = z then cell t true * cell s true else 0))
-      = cell (t ✳ s) z := by
-  cases z <;> simp only [Bool.or_false, Bool.or_true, cell, multAdd] <;>
+      = cell (t ◯ s) z := by
+  cases z <;> simp only [Bool.or_false, Bool.or_true, cell, circ] <;>
     simp <;> grind
 
 theorem summand_split (t s : R) (ts ss : List R) (x y z : Bool) (a b c : List Bool) :
@@ -221,10 +221,10 @@ theorem inner_sum (t s : R) (ts ss : List R) (x z : Bool) (c : List Bool) (n : N
 
 /-- **Merging dialled power sets multiplies nothing new in: the dials mult-add.**
     Union-convolving the family with dials ts and the family with dials ss
-    gives the family with dials tᵢ ✳ sᵢ. -/
+    gives the family with dials tᵢ ◯ sᵢ. -/
 theorem conv_W (n : Nat) (ts ss : List R) (c : List Bool)
     (h1 : ts.length = n) (h2 : ss.length = n) (h3 : c.length = n) :
-    conv n ts ss c = W (List.zipWith multAdd ts ss) c := by
+    conv n ts ss c = W (List.zipWith circ ts ss) c := by
   induction n generalizing ts ss c with
   | zero =>
     match ts, ss, c, h1, h2, h3 with
@@ -249,27 +249,27 @@ theorem conv_W (n : Nat) (ts ss : List R) (c : List Bool)
 
 /-- Dial 0 is the unit of merging: the family {∅}. -/
 theorem zipWith_zero (ss : List R) :
-    List.zipWith multAdd (List.replicate ss.length 0) ss = ss := by
+    List.zipWith circ (List.replicate ss.length 0) ss = ss := by
   induction ss with
   | nil => rfl
-  | cons s ss ih => simp only [List.length_cons, List.replicate, List.zipWith]; rw [ih, zero_multAdd]
+  | cons s ss ih => simp only [List.length_cons, List.replicate, List.zipWith]; rw [ih, zero_circ]
 
 /-- Merging a constant family with itself mult-adds the dial with itself. -/
 theorem zipWith_replicate (t : R) (n : Nat) :
-    List.zipWith multAdd (List.replicate n t) (List.replicate n t) = List.replicate n (t ✳ t) := by
+    List.zipWith circ (List.replicate n t) (List.replicate n t) = List.replicate n (t ◯ t) := by
   induction n with
   | zero => rfl
   | succ n ih => simp only [List.replicate, List.zipWith]; rw [ih]
 
-/-- Merging commutes with halving: if r halves t and r' halves t', then r ✳ r'
-    halves t ✳ t'. (On the line u = log(1 + t), merging is addition and halving
+/-- Merging commutes with halving: if r halves t and r' halves t', then r ◯ r'
+    halves t ◯ t'. (On the line u = log(1 + t), merging is addition and halving
     is u ↦ u/2.) -/
 theorem half_of_merge (r r' : R) :
-    (r ✳ r') ✳ (r ✳ r') = (r ✳ r) ✳ (r' ✳ r') := by
-  unfold multAdd; grind
+    (r ◯ r') ◯ (r ◯ r') = (r ◯ r) ◯ (r' ◯ r') := by
+  unfold circ; grind
 
 /-- m copies merged: the m-fold mult-add power of the dial. An m-th root of the
-    full power set is a dial with t^(✳m) = 1, that is (1 + t)^m = 2. -/
+    full power set is a dial with t^(◯m) = 1, that is (1 + t)^m = 2. -/
 theorem mth_root_of_full (t : R) (m : Nat) (h : (1 + t) ^ m = 1 + 1) :
     1 + mpow t m = 1 + 1 := by
   rw [mpow_lift, h]
@@ -281,9 +281,9 @@ end Merge
 section Half
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- **The half dial.** If r·r = 2, then h = r − 1 (that is √2 − 1) has h ✳ h = 1. -/
-theorem half_dial (r : R) (hr : r * r = 2) : (r - 1) ✳ (r - 1) = 1 := by
-  unfold multAdd; grind
+/-- **The half dial.** If r·r = 2, then h = r − 1 (that is √2 − 1) has h ◯ h = 1. -/
+theorem half_dial (r : R) (hr : r * r = 2) : (r - 1) ◯ (r - 1) = 1 := by
+  unfold circ; grind
 
 /-- W with every dial 1 weighs every subset 1. -/
 theorem W_replicate_one (n : Nat) (c : List Bool) : W (List.replicate n (1 : R)) c = 1 := by
@@ -310,8 +310,8 @@ variable {K : Type} [Lean.Grind.Field K]
 def partner (t : K) : K := (1 - t) / (1 + t)
 
 /-- Partners mult-add to 1: (1 + t)(1 + partner t) = 2. -/
-theorem partner_spec (t : K) (h : 1 + t ≠ 0) : t ✳ partner t = 1 := by
-  unfold partner multAdd; grind
+theorem partner_spec (t : K) (h : 1 + t ≠ 0) : t ◯ partner t = 1 := by
+  unfold partner circ; grind
 
 /-- Partnering is an involution. -/
 theorem partner_partner (t : K) (h : 1 + t ≠ 0) (h2 : (1 + 1 : K) ≠ 0) :
@@ -325,8 +325,8 @@ theorem partner_zero : partner (0 : K) = 1 := by unfold partner; grind
 theorem partner_one : partner (1 : K) = 0 := by unfold partner; grind
 
 /-- The fixed points of partnering are exactly the half dials. -/
-theorem partner_fixed_iff (t : K) (h : 1 + t ≠ 0) : partner t = t ↔ t ✳ t = 1 := by
-  unfold partner multAdd
+theorem partner_fixed_iff (t : K) (h : 1 + t ≠ 0) : partner t = t ↔ t ◯ t = 1 := by
+  unfold partner circ
   constructor
   · intro e; grind
   · intro e; grind
@@ -334,8 +334,8 @@ theorem partner_fixed_iff (t : K) (h : 1 + t ≠ 0) : partner t = t ↔ t ✳ t 
 /-- In probabilities (p = t/(1 + t)), the union half is p = 1 − r/2 = 1 − 1/√2:
     two independent copies, joined, give a fair coin, 1/2. -/
 theorem half_prob_union (r : K) (hr : r * r = 2) (h2 : (1 + 1 : K) ≠ 0) :
-    wAdd (-1) (1 - r / 2) (1 - r / 2) = 1 / 2 := by
-  unfold wAdd; grind
+    circK (-1) (1 - r / 2) (1 - r / 2) = 1 / 2 := by
+  unfold circK; grind
 
 /-! ## 4. Complement -/
 
@@ -365,8 +365,8 @@ theorem W_compl (ts : List K) (c : List Bool) (h : ∀ t ∈ ts, t ≠ 0)
     intersection exactly as dials mult-add under union.
     (1 + 1/t)(1 + 1/s) is the lift of t·s/(1 + t + s), the intersection's dial. -/
 theorem compl_swaps_merge (t s : K) (ht : t ≠ 0) (hs : s ≠ 0) (h : 1 + t + s ≠ 0) :
-    t⁻¹ ✳ s⁻¹ = (t * s / (1 + t + s))⁻¹ := by
-  unfold multAdd
+    t⁻¹ ◯ s⁻¹ = (t * s / (1 + t + s))⁻¹ := by
+  unfold circ
   have hts : t * s ≠ 0 := by grind
   grind
 
@@ -386,9 +386,9 @@ end Field
 /-- **No single probability is a half both ways.** Joining two copies gives
     1/2 and intersecting two copies gives 1/2 cannot both hold. -/
 theorem no_half_both_ways (p : Rat) :
-    ¬ (wAdd (-1) p p = 1 / 2 ∧ p * p = 1 / 2) := by
+    ¬ (circK (-1) p p = 1 / 2 ∧ p * p = 1 / 2) := by
   intro ⟨h1, h2⟩
-  unfold wAdd at h1
+  unfold circK at h1
   have hp : p = 1 / 2 := by grind
   rw [hp] at h2; grind
 
@@ -478,11 +478,11 @@ section Tiny
 variable {K : Type} [Lean.Grind.Field K]
 
 /-- **Tiny dials linearise.** Halving a small dial x by plain participation (x/2)
-    misses the union half only at second order: (x/2) ✳ (x/2) = x + x²/4. Where the
+    misses the union half only at second order: (x/2) ◯ (x/2) = x + x²/4. Where the
     dials that matter are tiny (large primes, Poisson points on the line), the
     naive half and the merging half agree. -/
-theorem tiny_half (x : K) (h2 : (2 : K) ≠ 0) : (x / 2) ✳ (x / 2) = x + x * x / 4 := by
-  unfold multAdd; grind
+theorem tiny_half (x : K) (h2 : (2 : K) ≠ 0) : (x / 2) ◯ (x / 2) = x + x * x / 4 := by
+  unfold circ; grind
 
 /-- Participation complement c ↦ 1 − c fixes exactly c = 1/2. -/
 theorem participation_fixed (c : K) (h2 : (2 : K) ≠ 0) : c = 1 - c ↔ c = 1 / 2 := by

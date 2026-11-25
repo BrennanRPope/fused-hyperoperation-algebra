@@ -10,7 +10,7 @@
   (f₁f₂, f₁g₂ + g₁f₂ + d·g₁g₂), d = −A² − A⁻² the loop value.
 
   What this file shows, through the project's words:
-    * in x = g/f the sum is the dial x₁ ✳_d x₂ with weight d (ratio_dial);
+    * in x = g/f the sum is the dial x₁ ◯_d x₂ with weight d (ratio_dial);
     * the lift 1 + d·x is closing the tangle (D joins left ends and right ends), and the lift
       law is ⟨D(S + T)⟩ = ⟨D(S)⟩·⟨D(T)⟩: connected sum (closeD_tsum);
     * in y = A²·g/f one crossing is the q-dial step y ↦ q·y + 1 with q = −A⁻⁴ = −t, so n twists
@@ -23,10 +23,10 @@ import FusedAlgebra.Topics.QAcross.QDial
 import FusedAlgebra.Topics.QAcross.Knots
 
 namespace KnotTheory
-open MultAdd
+open CircleOp
 open Lean.Grind
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -68,15 +68,15 @@ theorem tsum_lift (d : R) (S T : R × R) :
     (tsum d S T).1 + d * (tsum d S T).2 = (S.1 + d * S.2) * (T.1 + d * T.2) := by
   unfold tsum; grind
 
-/-- The "mult-add value" P − 1 of a closed diagram turns connected sum into ✳ exactly.
+/-- The "mult-add value" P − 1 of a closed diagram turns connected sum into ◯ exactly.
     (A relabelling: it is the lift of P(K # L) = P(K)·P(L).) -/
-theorem closeD_multAdd (d : R) (S T : R × R) :
-    closeD d (tsum d S T) - 1 = (closeD d S - 1) ✳ (closeD d T - 1) := by
-  rw [closeD_tsum]; unfold multAdd; grind
+theorem closeD_circ (d : R) (S T : R × R) :
+    closeD d (tsum d S T) - 1 = (closeD d S - 1) ◯ (closeD d T - 1) := by
+  rw [closeD_tsum]; unfold circ; grind
 
 /-- The same for any multiplicative knot polynomial (Jones, Alexander, HOMFLY). -/
-theorem poly_multAdd (P Q : R) : P * Q - 1 = (P - 1) ✳ (Q - 1) := by
-  unfold multAdd; grind
+theorem poly_circ (P Q : R) : P * Q - 1 = (P - 1) ◯ (Q - 1) := by
+  unfold circ; grind
 
 /-- The wall: a tangle whose closure has bracket 0 absorbs everything added to it. -/
 theorem closeD_wall (d : R) (S T : R × R) (h : closeD d S = 0) : closeD d (tsum d S T) = 0 := by
@@ -116,8 +116,8 @@ theorem weight_is_q_minus_one (A Ai : R) (h : A * Ai = 1) : loopv A Ai * (Ai * A
 
 /-- Rescaling by A² turns the d-dial into the (q − 1)-dial. -/
 theorem y_scale (A Ai x y : R) (h : A * Ai = 1) :
-    A * A * wAdd (loopv A Ai) x y = wAdd (tq Ai - 1) (A * A * x) (A * A * y) := by
-  unfold wAdd loopv tq; grind
+    A * A * circK (loopv A Ai) x y = circK (tq Ai - 1) (A * A * x) (A * A * y) := by
+  unfold circK loopv tq; grind
 
 /-- n twists: [n] = Aⁿ·[0] + Aⁿ·A⁻²·[n]_q·[∞]. -/
 theorem twist_formula (A Ai : R) (h : A * Ai = 1) (n : Nat) :
@@ -204,8 +204,8 @@ variable {K : Type} [Field K]
 
 /-- In x = g/f, adding tangles is the weighted mult-add with weight d. -/
 theorem ratio_dial (d : K) (S T : K × K) (hS : S.1 ≠ 0) (hT : T.1 ≠ 0) :
-    (tsum d S T).2 / (tsum d S T).1 = wAdd d (S.2 / S.1) (T.2 / T.1) := by
-  unfold tsum wAdd; grind
+    (tsum d S T).2 / (tsum d S T).1 = circK d (S.2 / S.1) (T.2 / T.1) := by
+  unfold tsum circK; grind
 
 /-- The lift 1 + d·x is the closure, divided by the [0]-coefficient. -/
 theorem lift_is_closing (d : K) (T : K × K) (hT : T.1 ≠ 0) :
@@ -214,8 +214,8 @@ theorem lift_is_closing (d : K) (T : K × K) (hT : T.1 ≠ 0) :
 
 /-- Stacking is the same dial in z = f/g. -/
 theorem stack_dial (d : K) (S T : K × K) (hS : S.2 ≠ 0) (hT : T.2 ≠ 0) :
-    (vsum d S T).1 / (vsum d S T).2 = wAdd d (S.1 / S.2) (T.1 / T.2) := by
-  unfold vsum wAdd; grind
+    (vsum d S T).1 / (vsum d S T).2 = circK d (S.1 / S.2) (T.1 / T.2) := by
+  unfold vsum circK; grind
 
 /-- One crossing added: y ↦ q·y + 1, with y = A²·g/f. -/
 theorem twist_step_y (A Ai : K) (h : A * Ai = 1) (S : K × K) (hS : S.1 ≠ 0) :

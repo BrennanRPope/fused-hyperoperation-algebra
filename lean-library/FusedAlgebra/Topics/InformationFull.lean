@@ -11,7 +11,7 @@
   1. The q-logarithm and q-exponential as the dial's own log and exp
      (stated for whole-number weights, where core Lean has the powers).
   2. Tsallis entropy as the expectation of a q-surprise s with
-     s(xy) = s(x) ✳ₖ s(y): the weighted outer-log lemma, which contains
+     s(xy) = s(x) ◯ₖ s(y): the weighted outer-log lemma, which contains
      Shannon (k = 0) and Tsallis (any k) at once.
   3. The duality q ↔ 2 − q is the dial's sign flip; Sharma–Mittal entropies.
   4. Binary trees: grafting composes internal nodes by mult-add; leaves are the lift.
@@ -23,12 +23,12 @@ import FusedAlgebra.Topics.InformationTheory
 
 namespace InformationFull
 
-open MultAdd
+open CircleOp
 open InfoFused (lsum outer shan lsum_append lsum_map shan_append)
 
 set_option linter.unusedSectionVars false
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! # 1. The q-logarithm and q-exponential -/
 
@@ -37,8 +37,8 @@ def qlogN (m : Nat) (x : Rat) : Rat := (x ^ m - 1) / m
 
 /-- The q-logarithm turns products into the dial with k = m. -/
 theorem qlogN_mul (m : Nat) (hm : m ≠ 0) (x y : Rat) :
-    qlogN m (x * y) = wAdd (m : Rat) (qlogN m x) (qlogN m y) := by
-  unfold qlogN wAdd
+    qlogN m (x * y) = circK (m : Rat) (qlogN m x) (qlogN m y) := by
+  unfold qlogN circK
   have h : (m : Rat) ≠ 0 := by
     intro e; exact hm (by exact_mod_cast e)
   rw [mul_pow']; grind
@@ -67,8 +67,8 @@ theorem qlog_of_root (m : Nat) (hm : m ≠ 0) (x y : Rat) (h : y ^ m = 1 + (m : 
 
 /-- k = −1 (Tsallis q = 2): ln x = 1 − 1/x, and it obeys the union rule. -/
 theorem qlog_neg_one (x y : Rat) (hx : x ≠ 0) (hy : y ≠ 0) :
-    1 - 1 / (x * y) = wAdd (-1) (1 - 1 / x) (1 - 1 / y) := by
-  unfold wAdd
+    1 - 1 / (x * y) = circK (-1) (1 - 1 / x) (1 - 1 / y) := by
+  unfold circK
   have : x * y ≠ 0 := by grind
   grind
 
@@ -81,24 +81,24 @@ theorem qlog_dual (m : Nat) (x : Rat) : qlogNeg m x = -(qlogN m x⁻¹) := by
 
 /-- The dual logarithm turns products into the dial with the opposite weight. -/
 theorem qlogNeg_mul (m : Nat) (hm : m ≠ 0) (x y : Rat) (hx : x ≠ 0) (hy : y ≠ 0) :
-    qlogNeg m (x * y) = wAdd (-(m : Rat)) (qlogNeg m x) (qlogNeg m y) := by
+    qlogNeg m (x * y) = circK (-(m : Rat)) (qlogNeg m x) (qlogNeg m y) := by
   rw [qlog_dual, qlog_dual, qlog_dual]
   have e : (x * y)⁻¹ = x⁻¹ * y⁻¹ := by grind
   rw [e, qlogN_mul m hm]
-  unfold wAdd; grind
+  unfold circK; grind
 
 /-- The q-exponential at weight 1/n: (1 + x/n)^n. -/
 def qexpN (n : Nat) (x : Rat) : Rat := (1 + x / n) ^ n
 
-/-- It turns the dial into multiplication: e(x)·e(y) = e(x ✳_{1/n} y). -/
+/-- It turns the dial into multiplication: e(x)·e(y) = e(x ◯_{1/n} y). -/
 theorem qexpN_mul (n : Nat) (hn : n ≠ 0) (x y : Rat) :
-    qexpN n x * qexpN n y = qexpN n (wAdd (1 / (n : Rat)) x y) := by
+    qexpN n x * qexpN n y = qexpN n (circK (1 / (n : Rat)) x y) := by
   unfold qexpN
   rw [← mul_pow']
   congr 1
   have h : (n : Rat) ≠ 0 := by
     intro e; exact hn (by exact_mod_cast e)
-  unfold wAdd; grind
+  unfold circK; grind
 
 /-- Compound interest: e_q(x) − 1 is n mult-add steps of x/n (rung 2). -/
 theorem qexp_climb (n : Nat) (x : Rat) : qexpN n x - 1 = mpow (x / n) n := by
@@ -111,19 +111,19 @@ theorem qexpN_zero (n : Nat) : qexpN n 0 = 1 := by
 
 /-! # 2. Tsallis entropy as an expectation: the weighted outer-log lemma -/
 
-theorem shan_map_w (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = wAdd k (s x) (s y))
+theorem shan_map_w (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = circK k (s x) (s y))
     (x : Rat) (ys : List Rat) :
     shan s (ys.map (fun y => x * y))
       = x * lsum ys * s x + x * shan s ys + k * (x * s x) * shan s ys := by
   induction ys with
   | nil => simp only [List.map_nil, shan, lsum]; grind
-  | cons y ys ih => simp only [List.map_cons, shan, lsum]; rw [ih, hs]; unfold wAdd; grind
+  | cons y ys ih => simp only [List.map_cons, shan, lsum]; rw [ih, hs]; unfold circK; grind
 
 /-- For any surprise s that turns products into ⊞ₖ, the joint "entropy" Σ p·s(p)
     of independent sources is
       (Σr)·S_A + (Σp)·S_B + k·S_A·S_B.
     k = 0 is the information page's outer-log lemma (Shannon); any k is Tsallis. -/
-theorem outer_shan_w (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = wAdd k (s x) (s y))
+theorem outer_shan_w (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = circK k (s x) (s y))
     (xs ys : List Rat) :
     shan s (outer xs ys) = lsum ys * shan s xs + lsum xs * shan s ys + k * shan s xs * shan s ys := by
   induction xs with
@@ -132,11 +132,11 @@ theorem outer_shan_w (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = wAdd
     simp only [outer, shan, lsum]; rw [shan_append, shan_map_w s k hs, ih]; grind
 
 /-- Tsallis' pseudo-additivity, proved as "expectation passes through the dial":
-    S(A × B) = S(A) ✳ₖ S(B) for normalized independent sources. -/
-theorem tsallis_engine (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = wAdd k (s x) (s y))
+    S(A × B) = S(A) ◯ₖ S(B) for normalized independent sources. -/
+theorem tsallis_engine (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = circK k (s x) (s y))
     (xs ys : List Rat) (hx : lsum xs = 1) (hy : lsum ys = 1) :
-    shan s (outer xs ys) = wAdd k (shan s xs) (shan s ys) := by
-  rw [outer_shan_w s k hs, hx, hy]; unfold wAdd; grind
+    shan s (outer xs ys) = circK k (shan s xs) (shan s ys) := by
+  rw [outer_shan_w s k hs, hx, hy]; unfold circK; grind
 
 -- LIBRARY: shannon_engine (Shannon entropy is additive, the k = 0 corner) was an exact twin of InfoFused.shannon_additive and is removed.
 
@@ -147,13 +147,13 @@ theorem tsallis_engine (s : Rat → Rat) (k : Rat) (hs : ∀ x y, s (x * y) = wA
 /-- If R adds over independent sources and E turns + into ⊞ₖ, then E∘R composes
     by ⊞ₖ.  With R = Rényi of order α and E(x) = (e^{kx} − 1)/k this is
     Sharma–Mittal H_{α,β}, k = 1 − β. -/
-theorem sm_compose (E : Rat → Rat) (k : Rat) (hE : ∀ x y, E (x + y) = wAdd k (E x) (E y))
-    (RA RB RAB : Rat) (hR : RAB = RA + RB) : E RAB = wAdd k (E RA) (E RB) := by
+theorem sm_compose (E : Rat → Rat) (k : Rat) (hE : ∀ x y, E (x + y) = circK k (E x) (E y))
+    (RA RB RAB : Rat) (hR : RAB = RA + RB) : E RAB = circK k (E RA) (E RB) := by
   rw [hR, hE]
 
 /-- Flipping the weight: the dial at −k is the dial at k read on negatives. -/
-theorem flip_weight (k a b : Rat) : wAdd (-k) a b = -(wAdd k (-a) (-b)) := by
-  unfold wAdd; grind
+theorem flip_weight (k a b : Rat) : circK (-k) a b = -(circK k (-a) (-b)) := by
+  unfold circK; grind
 
 /-! # 4. Binary trees: grafting is mult-add -/
 
@@ -192,8 +192,8 @@ theorem graft_inner (a b : BT) : inner (graft a b) = inner a + leaves a * inner 
     simp only [graft, inner, leaves]; rw [ihl, ihr, Nat.add_mul]; omega
 
 /-- Grafting composes internal nodes (decisions) by mult-add. -/
-theorem graft_multAdd (a b : BT) : inner (graft a b) = inner a ✳ inner b := by
-  rw [graft_inner, leaves_lift]; unfold multAdd
+theorem graft_circ (a b : BT) : inner (graft a b) = inner a ◯ inner b := by
+  rw [graft_inner, leaves_lift]; unfold circ
   rw [Nat.add_mul, Nat.one_mul]; omega
 
 /-- The complete tree of depth n. -/
@@ -206,7 +206,7 @@ theorem full_inner (n : Nat) : inner (full n) = mpow 1 n := by
   induction n with
   | zero => rfl
   | succ n ih =>
-    simp only [full, inner, mpow]; rw [ih]; unfold multAdd; omega
+    simp only [full, inner, mpow]; rw [ih]; unfold circ; omega
 
 /-- Kraft: weight 1/2 per level; every full binary tree has Kraft sum exactly 1. -/
 def kraft : BT → Rat
@@ -219,12 +219,12 @@ theorem kraft_one (t : BT) : kraft t = 1 := by
   | node l r ihl ihr => simp only [kraft]; rw [ihl, ihr]; grind
 
 /-- D-ary trees by counts: graft (leaves 1 + c·I) — internal nodes compose by the dial c = D − 1. -/
-theorem dary_graft (c IA IB : Nat) : IA + (1 + c * IA) * IB = wAdd c IA IB := by
-  unfold wAdd; rw [Nat.add_mul, Nat.one_mul, Nat.mul_assoc]; omega
+theorem dary_graft (c IA IB : Nat) : IA + (1 + c * IA) * IB = circK c IA IB := by
+  unfold circK; rw [Nat.add_mul, Nat.one_mul, Nat.mul_assoc]; omega
 
 /-- ... and leaves multiply: the lift of the dial. -/
-theorem dary_leaves (c IA IB : Nat) : (1 + c * IA) * (1 + c * IB) = 1 + c * wAdd c IA IB :=
-  (wAdd_lift c IA IB).symm
+theorem dary_leaves (c IA IB : Nat) : (1 + c * IA) * (1 + c * IB) = 1 + c * circK c IA IB :=
+  (circK_lift c IA IB).symm
 
 /-- The complete D-ary tree of depth n: c·[n]_D + 1 = D^n, with D = 1 + c. -/
 theorem dary_full (c : Nat) (n : Nat) : 1 + c * wpow c 1 n = (1 + c * 1) ^ n := wpow_lift c 1 n
@@ -232,11 +232,11 @@ theorem dary_full (c : Nat) (n : Nat) : 1 + c * wpow c 1 n = (1 + c * 1) ^ n := 
 /-! # 5. Any binary channel: the crossover sum composes by the union rule -/
 
 /-- Cascade of [[1−a, a], [b, 1−b]] and [[1−a₂, a₂], [b₂, 1−b₂]]:
-    the new crossover sum is (a + b) ✳₋₁ (a₂ + b₂). -/
+    the new crossover sum is (a + b) ◯₋₁ (a₂ + b₂). -/
 theorem channel_cascade (a b a2 b2 : Rat) :
     ((1 - a) * a2 + a * (1 - b2)) + (b * (1 - a2) + (1 - b) * b2)
-      = wAdd (-1) (a + b) (a2 + b2) := by
-  unfold wAdd; grind
+      = circK (-1) (a + b) (a2 + b2) := by
+  unfold circK; grind
 
 /-- The determinant 1 − s multiplies. -/
 theorem channel_det (a b a2 b2 : Rat) :
@@ -245,11 +245,11 @@ theorem channel_det (a b a2 b2 : Rat) :
       = (1 - a - b) * (1 - a2 - b2) := by grind
 
 /-- The binary symmetric channel (s = 2p): the union rule on 2p is the parity rule on p. -/
-theorem bsc_from_union (p q : Rat) : wAdd (-1) (2 * p) (2 * q) = 2 * wAdd (-2) p q := by
-  unfold wAdd; grind
+theorem bsc_from_union (p q : Rat) : circK (-1) (2 * p) (2 * q) = 2 * circK (-2) p q := by
+  unfold circK; grind
 
 /-- The Z-channel (b = 0): its crossover composes by the union rule. -/
-theorem z_cascade (a a2 : Rat) : (1 - a) * a2 + a * (1 - 0) = wAdd (-1) a a2 := by
-  unfold wAdd; grind
+theorem z_cascade (a a2 : Rat) : (1 - a) * a2 + a * (1 - 0) = circK (-1) a a2 := by
+  unfold circK; grind
 
 end InformationFull

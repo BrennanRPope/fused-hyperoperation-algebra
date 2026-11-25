@@ -7,13 +7,13 @@
   Mult-add (rung 2):  a ⊕ b = a + b + a*b,  and  (a ⊕ b) + 1 = (a+1)(b+1).
   A stage's overhead odds r = (input - output)/output, so input = output * (1 + r).
 
-  LIBRARY NOTE: mult-add and the list fold (foldMA, the power chain) come from FusedAlgebra.Base; the local copies were removed.
+  LIBRARY NOTE: mult-add and the list fold (foldCirc, the power chain) come from FusedAlgebra.Base; the local copies were removed.
 -/
 import FusedAlgebra.Base
 
 namespace DataCenterFused
 
-open MultAdd
+open CircleOp
 
 
 /-- Product of (1 + r) over the stages. -/
@@ -22,10 +22,10 @@ def lifts : List Nat → Nat
   | r :: rs => (r + 1) * lifts rs
 
 /-! ### Lead 1. A power chain's overhead is the mult-add of its stages, in any order. -/
-theorem foldMA_lift_nat (rs : List Nat) : foldMA rs + 1 = lifts rs := by
+theorem foldCirc_lift_nat (rs : List Nat) : foldCirc rs + 1 = lifts rs := by
   induction rs with
   | nil => rfl
-  | cons r rs ih => simp only [foldMA, lifts]; rw [multAdd_lift', ih]
+  | cons r rs ih => simp only [foldCirc, lifts]; rw [circ_lift', ih]
 
 theorem lifts_append (xs ys : List Nat) : lifts (xs ++ ys) = lifts xs * lifts ys := by
   induction xs with
@@ -33,18 +33,18 @@ theorem lifts_append (xs ys : List Nat) : lifts (xs ++ ys) = lifts xs * lifts ys
   | cons x xs ih => simp only [List.cons_append, lifts]; rw [ih, Nat.mul_assoc]
 
 /-- Swapping two neighbouring stages never changes the total: blame by position is not physical. -/
-theorem foldMA_swap (xs ys : List Nat) (a b : Nat) :
-    foldMA (xs ++ a :: b :: ys) = foldMA (xs ++ b :: a :: ys) := by
+theorem foldCirc_swap (xs ys : List Nat) (a b : Nat) :
+    foldCirc (xs ++ a :: b :: ys) = foldCirc (xs ++ b :: a :: ys) := by
   have h : lifts (xs ++ a :: b :: ys) = lifts (xs ++ b :: a :: ys) := by
     rw [lifts_append, lifts_append]; simp only [lifts]; grind
-  have h1 := foldMA_lift_nat (xs ++ a :: b :: ys)
-  have h2 := foldMA_lift_nat (xs ++ b :: a :: ys)
+  have h1 := foldCirc_lift_nat (xs ++ a :: b :: ys)
+  have h2 := foldCirc_lift_nat (xs ++ b :: a :: ys)
   omega
 
-/-- Splitting the foldMA at the IT meter: (outside ⊕ inside) is the whole foldMA (TUE = PUE·ITUE). -/
-theorem foldMA_split (xs ys : List Nat) : foldMA (xs ++ ys) = multAdd (foldMA xs) (foldMA ys) := by
-  have h := foldMA_lift_nat (xs ++ ys)
-  rw [lifts_append, ← foldMA_lift_nat xs, ← foldMA_lift_nat ys, ← multAdd_lift'] at h
+/-- Splitting the foldCirc at the IT meter: (outside ⊕ inside) is the whole foldCirc (TUE = PUE·ITUE). -/
+theorem foldCirc_split (xs ys : List Nat) : foldCirc (xs ++ ys) = circ (foldCirc xs) (foldCirc ys) := by
+  have h := foldCirc_lift_nat (xs ++ ys)
+  rw [lifts_append, ← foldCirc_lift_nat xs, ← foldCirc_lift_nat ys, ← circ_lift'] at h
   omega
 
 /-- Position independence: scaling one stage's factor scales the facility total by the same

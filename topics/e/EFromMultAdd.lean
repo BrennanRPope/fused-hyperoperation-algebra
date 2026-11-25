@@ -39,7 +39,7 @@
   the formal check in core Lean and the reading on the mult-add cube.
 -/
 
-namespace MultAdd.E
+namespace CircleOp.E
 
 /-- `layer n k`: how many corners of the n-cube have exactly k switches on
     (grade k). Built by Pascal's rule: adding one more axis to the cube
@@ -262,26 +262,26 @@ theorem stair_nat_lt (m : Nat) :
 /-! ## Mult-add on the rationals -/
 
 /-- **Mult-add.** a ⊕ b = a + b + ab = (1+a)(1+b) − 1. -/
-def madd (a b : Rat) : Rat := a + b + a * b
+def circ (a b : Rat) : Rat := a + b + a * b
 
 /-- x mult-added to itself n times (0 is the mult-add identity). -/
 def mpow (x : Rat) : Nat → Rat
   | 0 => 0
-  | n + 1 => madd (mpow x n) x
+  | n + 1 => circ (mpow x n) x
 
 /-- n mult-adds of x make the box (1+x)ⁿ, minus the unit corner. -/
 theorem mpow_eq (x : Rat) : ∀ n, mpow x n = (1 + x) ^ n - 1
   | 0 => by simp [mpow] <;> grind
   | n + 1 => by
-    simp only [mpow, madd]; rw [mpow_eq x n, Rat.pow_succ]; grind
+    simp only [mpow, circ]; rw [mpow_eq x n, Rat.pow_succ]; grind
 
 theorem pow_add' (a : Rat) (m : Nat) : ∀ n, a ^ (m + n) = a ^ m * a ^ n
   | 0 => by simp
   | n + 1 => by rw [← Nat.add_assoc, Rat.pow_succ, Rat.pow_succ, pow_add' a m n]; grind
 
 /-- The exponential law: m steps then n steps is m + n steps. -/
-theorem mpow_add (x : Rat) (m n : Nat) : mpow x (m + n) = madd (mpow x m) (mpow x n) := by
-  rw [mpow_eq, mpow_eq, mpow_eq, pow_add']; simp only [madd]; grind
+theorem mpow_add (x : Rat) (m n : Nat) : mpow x (m + n) = circ (mpow x m) (mpow x n) := by
+  rw [mpow_eq, mpow_eq, mpow_eq, pow_add']; simp only [circ]; grind
 
 /-! ## Sums -/
 
@@ -606,4 +606,4 @@ example : (27182818 / 10000000 : Rat) < s 10 ∧ u 10 < 27182819 / 10000000 := b
 /-- The staircase at n = 100 is about 2.7048. -/
 example : (2704 / 1000 : Rat) < stair 100 ∧ stair 100 < 2705 / 1000 := by decide +kernel
 
-end MultAdd.E
+end CircleOp.E

@@ -7,10 +7,10 @@
   roots of unity as Eisenstein numbers a + bω with ω² = −1 − ω.
 
     1. Mult-add on the complex plane is a spin and a stretch about the wall −1:
-       1 + (z ✳ w) = (1 + w)(1 + z), the step z ↦ z ✳ w is the vector w turned by 1 + z,
+       1 + (z ◯ w) = (1 + w)(1 + z), the step z ↦ z ◯ w is the vector w turned by 1 + z,
        squared distance from the wall multiplies, the circle |1 + z| = 1 is closed.
-    2. Affine maps that fix −1 are exactly the maps z ↦ z ✳ c.
-    3. Mult-add roots of 0: if ζⁿ = 1 then (ζ − 1)^(✳n) = 0. Worked: the square n = 4 in
+    2. Affine maps that fix −1 are exactly the maps z ↦ z ◯ c.
+    3. Mult-add roots of 0: if ζⁿ = 1 then (ζ − 1)^(◯n) = 0. Worked: the square n = 4 in
        the Gaussian integers and the triangle n = 3 in the Eisenstein integers.
     4. Möbius: the landscape law F(a,b) = (a + b + p·ab)/(1 − q·ab) in projective form.
        Translation matrices compose; det = wall polynomial; tr² − 4·det = a²(p² − 4q);
@@ -24,9 +24,9 @@
 import FusedAlgebra.Base
 
 namespace ComplexAnalysis
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -53,7 +53,7 @@ def sub (z w : Cx R) : Cx R := ⟨z.re - w.re, z.im - w.im⟩
 def mul (z w : Cx R) : Cx R := ⟨z.re * w.re - z.im * w.im, z.re * w.im + z.im * w.re⟩
 /-- Squared length |z|². -/
 def normSq (z : Cx R) : R := z.re * z.re + z.im * z.im
-/-- Complex mult-add z ✳ w = z + w + zw. -/
+/-- Complex mult-add z ◯ w = z + w + zw. -/
 def ma (z w : Cx R) : Cx R := add (add z w) (mul z w)
 /-- n copies of z under complex mult-add. -/
 def mpowC (z : Cx R) : Nat → Cx R
@@ -78,17 +78,17 @@ theorem ma_assoc (z w u : Cx R) : ma (ma z w) u = ma z (ma w u) := by
 theorem ma_zero (z : Cx R) : ma z zero = z := by
   apply Cx.ext' <;> simp only [ma, add, mul, zero] <;> grind
 
-/-- The wall −1 absorbs: it is the fixed point of every map z ↦ z ✳ w. -/
+/-- The wall −1 absorbs: it is the fixed point of every map z ↦ z ◯ w. -/
 theorem wall_fixed (w : Cx R) : ma wall w = wall := by
   apply Cx.ext' <;> simp only [ma, add, mul, wall] <;> grind
 
-/-- Seen from the wall, z ↦ z ✳ w is multiplication by 1 + w: a spin and a stretch. -/
+/-- Seen from the wall, z ↦ z ◯ w is multiplication by 1 + w: a spin and a stretch. -/
 theorem spin_about_wall (z w : Cx R) :
     sub (ma z w) wall = mul (add one w) (sub z wall) := by
   apply Cx.ext' <;> simp only [ma, add, sub, mul, one, wall] <;> grind
 
-/-- The step from z to z ✳ w is the vector w turned and stretched by 1 + z
-    (so triangle (−1, 0, w) and triangle (−1, z, z ✳ w) are similar). -/
+/-- The step from z to z ◯ w is the vector w turned and stretched by 1 + z
+    (so triangle (−1, 0, w) and triangle (−1, z, z ◯ w) are similar). -/
 theorem step_is_turned_w (z w : Cx R) : sub (ma z w) z = mul (add one z) w := by
   apply Cx.ext' <;> simp only [ma, add, sub, mul, one] <;> grind
 
@@ -115,11 +115,11 @@ theorem circle_equation (z : Cx R) :
 /-! ## 2. Affine maps that fix the wall -/
 
 /-- An affine map z ↦ αz + β that fixes −1 is mult-add by α − 1. -/
-theorem affine_fixing_wall (α β z : R) (h : α * (-1) + β = -1) : α * z + β = z ✳ (α - 1) := by
-  unfold multAdd; grind
+theorem affine_fixing_wall (α β z : R) (h : α * (-1) + β = -1) : α * z + β = z ◯ (α - 1) := by
+  unfold circ; grind
 
 /-- Composing two of them mult-adds their parameters. -/
-theorem affine_compose (z c d : R) : (z ✳ c) ✳ d = z ✳ (c ✳ d) := multAdd_assoc z c d
+theorem affine_compose (z c d : R) : (z ◯ c) ◯ d = z ◯ (c ◯ d) := circ_assoc z c d
 
 /-! ## 3. Mult-add roots of zero -/
 
@@ -226,7 +226,7 @@ theorem two_walls_lift (r1 r2 a b : R) :
   intro N D; simp only [N, D]; grind
 
 /-- Mult-add is the case of one wall at −1 and the other at infinity (r₁ = −1, r₂ = 0). -/
-theorem two_walls_multAdd (a b : R) :
+theorem two_walls_circ (a b : R) :
     let N := a + b + (-((-1) + 0)) * a * b
     (1 - (-1) * N) = (1 - (-1) * a) * (1 - (-1) * b) := by
   intro N; simp only [N]; grind
@@ -253,14 +253,14 @@ section Products
 variable {R : Type} [Lean.Grind.CommRing R]
 
 /-- If one piece sits on the wall, the whole fold sits on the wall. -/
-theorem fold_wall_of_mem (l : List R) (h : (-1 : R) ∈ l) : foldMA l = -1 := by
+theorem fold_wall_of_mem (l : List R) (h : (-1 : R) ∈ l) : foldCirc l = -1 := by
   induction l with
   | nil => cases h
   | cons a l ih =>
-    simp only [foldMA]
+    simp only [foldCirc]
     cases h with
     | head => exact neg_one_absorbs _
-    | tail _ hm => rw [ih hm, multAdd_comm]; exact neg_one_absorbs _
+    | tail _ hm => rw [ih hm, circ_comm]; exact neg_one_absorbs _
 
 end Products
 
@@ -275,10 +275,10 @@ theorem prodL_eq_zero_int (l : List Int) (h : prodL l = 0) : (0 : Int) ∈ l := 
 
 /-- On the integers the converse holds too: a fold hits the wall only if a piece does
     (the zeros of a product are the zeros of its factors). -/
-theorem fold_wall_iff_int (l : List Int) : foldMA l = -1 ↔ (-1 : Int) ∈ l := by
+theorem fold_wall_iff_int (l : List Int) : foldCirc l = -1 ↔ (-1 : Int) ∈ l := by
   constructor
   · intro h
-    have hl := foldMA_lift l
+    have hl := foldCirc_lift l
     rw [h] at hl
     have h0 : prodL (l.map (fun x => 1 + x)) = 0 := by rw [← hl]; decide
     have hm := prodL_eq_zero_int _ h0
@@ -287,29 +287,29 @@ theorem fold_wall_iff_int (l : List Int) : foldMA l = -1 ↔ (-1 : Int) ∈ l :=
     rw [← this]; exact hx
   · exact fold_wall_of_mem l
 
-/-- The size bound for one corner: if |a| ≤ A and |b| ≤ B then |a ✳ b| ≤ A ✳ B. -/
+/-- The size bound for one corner: if |a| ≤ A and |b| ≤ B then |a ◯ b| ≤ A ◯ B. -/
 theorem corner_bound (a b A B : Rat) (ha1 : -A ≤ a) (ha2 : a ≤ A) (hb1 : -B ≤ b) (hb2 : b ≤ B) :
-    -(A ✳ B) ≤ a ✳ b ∧ a ✳ b ≤ A ✳ B := by
+    -(A ◯ B) ≤ a ◯ b ∧ a ◯ b ≤ A ◯ B := by
   have p1 : 0 ≤ (A - a) * (B + b) := Rat.mul_nonneg (by grind) (by grind)
   have p2 : 0 ≤ (A + a) * (B - b) := Rat.mul_nonneg (by grind) (by grind)
   have p3 : 0 ≤ (A - a) * (B - b) := Rat.mul_nonneg (by grind) (by grind)
   have p4 : 0 ≤ (A + a) * (B + b) := Rat.mul_nonneg (by grind) (by grind)
-  unfold multAdd
+  unfold circ
   constructor <;> grind
 
 /-- Sizes are never negative under mult-add of sizes. -/
-theorem size_nonneg (A B : Rat) (hA : 0 ≤ A) (hB : 0 ≤ B) : 0 ≤ A ✳ B := by
+theorem size_nonneg (A B : Rat) (hA : 0 ≤ A) (hB : 0 ≤ B) : 0 ≤ A ◯ B := by
   have := Rat.mul_nonneg hA hB
-  unfold multAdd; grind
+  unfold circ; grind
 
 /-- Weierstrass's bound: the fold of the pieces is bounded by the fold of their sizes,
-    |(a₁ ✳ … ✳ aₙ)| ≤ |a₁| ✳ … ✳ |aₙ| = ∏(1 + |aᵢ|) − 1. -/
+    |(a₁ ◯ … ◯ aₙ)| ≤ |a₁| ◯ … ◯ |aₙ| = ∏(1 + |aᵢ|) − 1. -/
 theorem fold_bound : ∀ (l : List (Rat × Rat)), (∀ x ∈ l, -x.2 ≤ x.1 ∧ x.1 ≤ x.2) →
-    -(foldMA (l.map Prod.snd)) ≤ foldMA (l.map Prod.fst) ∧
-      foldMA (l.map Prod.fst) ≤ foldMA (l.map Prod.snd)
-  | [], _ => by simp only [List.map, foldMA]; grind
+    -(foldCirc (l.map Prod.snd)) ≤ foldCirc (l.map Prod.fst) ∧
+      foldCirc (l.map Prod.fst) ≤ foldCirc (l.map Prod.snd)
+  | [], _ => by simp only [List.map, foldCirc]; grind
   | x :: l, h => by
-    simp only [List.map, foldMA]
+    simp only [List.map, foldCirc]
     have hx := h x (List.Mem.head _)
     have ih := fold_bound l (fun y hy => h y (List.Mem.tail _ hy))
     exact corner_bound _ _ _ _ hx.1 hx.2 ih.1 ih.2
@@ -318,7 +318,7 @@ theorem fold_bound : ∀ (l : List (Rat × Rat)), (∀ x ∈ l, -x.2 ≤ x.1 ∧
 
 /-- Gluing (1 + a) ~ q(1 + a) respects mult-add, so the punctured plane folds into a torus. -/
 theorem tate_glue {R : Type} [Lean.Grind.CommRing R] (q a a' b : R) (h : 1 + a' = q * (1 + a)) :
-    1 + (a' ✳ b) = q * (1 + (a ✳ b)) := by
-  rw [multAdd_lift, multAdd_lift, h]; grind
+    1 + (a' ◯ b) = q * (1 + (a ◯ b)) := by
+  rw [circ_lift, circ_lift, h]; grind
 
 end ComplexAnalysis

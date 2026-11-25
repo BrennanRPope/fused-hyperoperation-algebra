@@ -17,15 +17,15 @@
   excess z^Q − 1 mult-adds. Every additive conservation law is the log of a
   mult-add lift.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
-  Merged at Topics/Chemistry/ChemConservation; the local infix stays. One exact twin removed.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
+  Merged at Topics/Chemistry/ChemConservation; it now uses Base's ◯. One exact twin removed.
 -/
 import FusedAlgebra.Base
 
 namespace ChemConservation
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-- Invariant mass squared of two parts with "cosine" c. -/
 def mass2 (m1 m2 c : Rat) : Rat := m1 * m1 + m2 * m2 + 2 * m1 * m2 * c
@@ -77,12 +77,12 @@ section Charge
 variable {R : Type} [Lean.Grind.CommRing R]
 
 -- LIBRARY: fugacity_mul (fugacities multiply as charges add) was an exact twin of
---   MultAdd.pw_add and is removed.
+--   CircleOp.pw_add and is removed.
 
 /-- So the excess z^Q − 1 mult-adds. -/
-theorem fugacity_multAdd (z : R) (Q1 Q2 : Nat) :
-    pw z (Q1 + Q2) - 1 = (pw z Q1 - 1) ✳ (pw z Q2 - 1) := by
-  rw [pw_add]; unfold multAdd; grind
+theorem fugacity_circ (z : R) (Q1 Q2 : Nat) :
+    pw z (Q1 + Q2) - 1 = (pw z Q1 - 1) ◯ (pw z Q2 - 1) := by
+  rw [pw_add]; unfold circ; grind
 
 /-- A neutral system (charge 0) has fugacity 1: excess 0, mult-add's identity. -/
 theorem neutral_identity (z : R) : pw z 0 - 1 = 0 := by simp only [pw]; grind

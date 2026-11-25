@@ -30,7 +30,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.Thermodynamics
 
 namespace Relativity
-open MultAdd ThermoFused
+open CircleOp ThermoFused
 
 /-! ## 1. Mult-add in disguise -/
 
@@ -47,8 +47,8 @@ theorem lift_den (u v : Rat) : (1 + u * v) - (u + v) = (1 - u) * (1 - v) := by g
 
 /-- **Velocity addition is mult-add in disguise**: d(u ⊕ v) = d(u) ⊞ d(v). -/
 theorem dop_vel (u v : Rat) (hu : 1 - u ≠ 0) (hv : 1 - v ≠ 0) (huv : 1 + u * v ≠ 0) :
-    dop (vel u v) = multAdd (dop u) (dop v) := by
-  unfold dop vel multAdd
+    dop (vel u v) = circ (dop u) (dop v) := by
+  unfold dop vel circ
   have e : 1 - (u + v) / (1 + u * v) = (1 - u) * (1 - v) / (1 + u * v) := by grind
   rw [e]
   have h1 : (1 - u) * (1 - v) ≠ 0 := by
@@ -75,7 +75,7 @@ theorem velC_units (c u v : Rat) (hc : c ≠ 0) :
 /-- Light absorbs, as −1 does in mult-add: 1 ⊕ v = 1. -/
 theorem light_absorbs (v : Rat) (h : 1 + v ≠ 0) : vel 1 v = 1 := vel_wall_pos v h
 
-theorem multAdd_wall (b : Rat) : multAdd (-1) b = -1 := by unfold multAdd; grind
+theorem circ_wall (b : Rat) : circ (-1) b = -1 := by unfold circ; grind
 
 /-- d carries the light wall −1 onto mult-add's wall −1. -/
 theorem dop_wall : dop (-1) = -1 := by unfold dop; grind

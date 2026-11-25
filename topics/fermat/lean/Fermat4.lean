@@ -28,7 +28,7 @@
 -/
 import FusedAlgebra.Base
 
-open MultAdd
+open CircleOp
 
 namespace Fermat4
 

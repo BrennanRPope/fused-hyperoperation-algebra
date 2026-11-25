@@ -11,7 +11,7 @@
   activities multiply). Steps in series add their times. Proofreading
   multiplies discrimination odds. Nitrogenase and Calvin-cycle bookkeeping.
 
-  LIBRARY NOTE: `local infixl " ✳ "` for multAdd; delete it if Base declares ✳.
+  LIBRARY NOTE: the local infix for circ was replaced by Base's scoped ◯ (`open scoped CircleOp`) in the 1.0 rename.
   LIBRARY NOTE: first compiled in the shared library, after ChemOrganic. Three exact twins
   removed (exclusive_loewe, bliss_fraction, proofreading); each is marked where it stood.
   No proof step or statement changed.
@@ -19,23 +19,23 @@
 import FusedAlgebra.Base
 
 namespace ChemBiochem
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-- Yonetani–Theorell: with k = 1/α the binding polynomial minus one is a ⊞ₖ b. -/
-theorem yonetani_theorell (k a b : Rat) : (1 + a + b + k * a * b) - 1 = wAdd k a b := by
-  unfold wAdd; grind
+theorem yonetani_theorell (k a b : Rat) : (1 + a + b + k * a * b) - 1 = circK k a b := by
+  unfold circK; grind
 
 -- LIBRARY: exclusive_loewe (Mutually exclusive inhibitors (k = 0): plain addition, Loewe's straight isobole) was an exact twin of InfoFused.shannon_weight and is removed.
 
 /-- Independent inhibitors (k = 1): mult-add, so 1 + (a ⊞₁ b) = (1 + a)(1 + b). -/
-theorem independent_lift (a b : Rat) : 1 + wAdd 1 a b = (1 + a) * (1 + b) := by
-  unfold wAdd; grind
+theorem independent_lift (a b : Rat) : 1 + circK 1 a b = (1 + a) * (1 + b) := by
+  unfold circK; grind
 
 /-- …which is Bliss independence for the remaining activity: 1/(1+a) · 1/(1+b) = 1/(1 + a ⊞₁ b). -/
 theorem bliss (a b : Rat) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0) :
-    (1 / (1 + a)) * (1 / (1 + b)) = 1 / (1 + wAdd 1 a b) := by
+    (1 / (1 + a)) * (1 / (1 + b)) = 1 / (1 + circK 1 a b) := by
   rw [independent_lift]
   have hab : (1 + a) * (1 + b) ≠ 0 := by
     intro h; rcases Rat.mul_eq_zero.mp h with h | h <;> contradiction
@@ -44,8 +44,8 @@ theorem bliss (a b : Rat) (ha : 1 + a ≠ 0) (hb : 1 + b ≠ 0) :
 -- LIBRARY: bliss_fraction (Bliss in fractional-inhibition form: fractions combine at k = −1) was an exact twin of ChemStoichiometry.loss_two and is removed.
 
 /-- The 50% isobole for interaction k: b(1 + k·a) = 1 − a solves a ⊞ₖ b = 1. -/
-theorem isobole (k a b : Rat) (h : b * (1 + k * a) = 1 - a) : wAdd k a b = 1 := by
-  unfold wAdd; grind
+theorem isobole (k a b : Rat) (h : b * (1 + k * a) = 1 - a) : circK k a b = 1 := by
+  unfold circK; grind
 
 /-- Irreversible steps in series: times add, so with t = 1/k the turnover time of three steps is t₁ + t₂ + t₃
     and the overall rate is its reciprocal (cleared: kcat·(t₁ + t₂ + t₃) = 1). -/

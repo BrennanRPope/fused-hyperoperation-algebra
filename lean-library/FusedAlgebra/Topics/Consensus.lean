@@ -17,25 +17,25 @@
   the probability models themselves (that a race is a gambler's ruin, that a
   committee is a binomial draw); and the simulations. Those are in checks.py.
 
-  LIBRARY NOTE: in the shared library the mult-add, weighted mult-add and weighted power (wAdd, wpow) come from FusedAlgebra.Base; the local copies were removed.
+  LIBRARY NOTE: in the shared library the mult-add, weighted mult-add and weighted power (circK, wpow) come from FusedAlgebra.Base; the local copies were removed.
 -/
 import FusedAlgebra.Base
 
 namespace ConsensusFused
 
-open MultAdd
+open CircleOp
 
 
 /-! ## 0. The algebra -/
 
 /-- k = −1 is "at least one of two independent events". -/
-theorem either (a b : Rat) : wAdd (-1) a b = 1 - (1 - a) * (1 - b) := wAdd_either a b
+theorem either (a b : Rat) : circK (-1) a b = 1 - (1 - a) * (1 - b) := circK_either a b
 
 /-- The mult-add power climbs the cube: 1 + k·(a ⊕ₖ … ⊕ₖ a) = (1 + k·a)^n. -/
 theorem mpow_lift (k a : Rat) (n : Nat) : 1 + k * wpow k a n = pw (1 + k * a) n := by
   induction n with
   | zero => simp only [wpow, pw]; grind
-  | succ n ih => rw [wpow, wAdd_lift, ih, pw]
+  | succ n ih => rw [wpow, circK_lift, ih, pw]
 
 theorem mpow_lift1 (a : Rat) (n : Nat) : 1 + wpow 1 a n = pw (1 + a) n := by
   have h := mpow_lift 1 a n
@@ -60,7 +60,7 @@ theorem half_is_identity : (1/2 : Rat) / (1 - 1/2) - 1 = 0 := by decide +kernel
 theorem depth_useless (n : Nat) : wpow 1 0 n = 0 := by
   induction n with
   | zero => rfl
-  | succ n ih => rw [wpow, ih, wAdd_zero]
+  | succ n ih => rw [wpow, ih, circK_zero]
 
 /-- Catch-up probability as a mult-add power, checked exactly for q = 1/4, z = 6:
     r = 1/3, a = −2/3, and 1 + a^(⊕6) = (1/3)^6. -/
@@ -158,13 +158,13 @@ theorem caught (d : Rat) (m : Nat) : wpow (-1) d m = 1 - pw (1 - d) m := by
 
 def dbl : Nat → Rat → Rat
   | 0, a => a
-  | n + 1, a => multAdd (dbl n a) (dbl n a)
+  | n + 1, a => circ (dbl n a) (dbl n a)
 
 theorem dbl_lift (a : Rat) (n : Nat) : 1 + dbl n a = pw (1 + a) (2 ^ n) := by
   induction n with
   | zero => simp [dbl, pw]
   | succ n ih =>
-    rw [dbl, multAdd_lift, ih, Nat.pow_succ, pw_mul]
+    rw [dbl, circ_lift, ih, Nat.pow_succ, pw_mul]
     simp [pw]
 
 theorem pietrzak_halves (x : Rat) (m n : Nat) : pw (pw x (2 ^ m)) (2 ^ n) = pw x (2 ^ (m + n)) := by

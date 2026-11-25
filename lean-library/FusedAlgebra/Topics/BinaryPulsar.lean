@@ -70,7 +70,7 @@ theorem velocity_not_isolated : (477 / 100 : Rat) - 432 / 100 < 65 / 100 := by g
 
 /-! ## 3. Why the exact fusion cannot show here -/
 
-/-- The ✳ corner is the product of two first-order twists, each of size about M/r ≈ 4.35e-6,
+/-- The ◯ corner is the product of two first-order twists, each of size about M/r ≈ 4.35e-6,
     so it is below 1e-10 of a turn, far under the measurement's 14% error. -/
 theorem corner_tiny :
     (435 / 100000000 : Rat) * (435 / 100000000) < 1 / 10000000000 := by grind

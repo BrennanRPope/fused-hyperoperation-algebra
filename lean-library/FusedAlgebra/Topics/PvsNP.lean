@@ -29,13 +29,13 @@
      away (`np_point_forgets`). These classes are standard; the dial is one picture of them.
 
   3. Over the two-element field, mult-add IS the OR gate and the shift x ↦ 1 + x IS
-     NOT, so the lift is De Morgan's law (`gf2_multAdd_is_or`, `gf2_lift_de_morgan`).
+     NOT, so the lift is De Morgan's law (`gf2_circ_is_or`, `gf2_lift_de_morgan`).
      That is exactly the arithmetized OR used in IP = PSPACE and in the
      Razborov–Smolensky lower bounds, which is why the algebrization and natural-proofs
      barriers cover any argument built from it.
 
   4. The n-input mult-add fold has 2ⁿ − 1 monomials but is built from n − 1 gates
-     (`foldMA_ones`): it is easy because it factors. The hard counting problems
+     (`foldCirc_ones`): it is easy because it factors. The hard counting problems
      (permanent, #SAT) are the ones whose monomials do not factor.
 
   5. Min-plus (tropical) laws on Nat, the algebra of dynamic programming
@@ -45,7 +45,7 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.QAcross.QDial
 
 namespace PvsNP
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -97,9 +97,9 @@ theorem sAdd_lift (a b : R) : 1 + sAdd a b = (1 + a) + (1 + b) := by
   unfold sAdd; grind
 
 /-- On the shifted ruler, ⊞ distributes over ⊕ (the semiring law, moved by x ↦ 1 + x). -/
-theorem multAdd_sAdd_distrib (a b c : R) :
-    multAdd a (sAdd b c) = sAdd (multAdd a b) (multAdd a c) := by
-  unfold multAdd sAdd; grind
+theorem circ_sAdd_distrib (a b c : R) :
+    circ a (sAdd b c) = sAdd (circ a b) (circ a c) := by
+  unfold circ sAdd; grind
 
 /-- Ordinary evaluation with + and ×. -/
 def eval (env : Nat → R) : Circ R → R
@@ -113,7 +113,7 @@ def evalS (env : Nat → R) : Circ R → R
   | var i => env i
   | const c => c
   | add a b => sAdd (evalS env a) (evalS env b)
-  | mul a b => multAdd (evalS env a) (evalS env b)
+  | mul a b => circ (evalS env a) (evalS env b)
 
 /-- Transport: a ⊕/⊞ circuit is a +/× circuit of the same wiring, seen through x ↦ 1 + x. -/
 theorem evalS_lift (env : Nat → R) (C : Circ R) :
@@ -124,7 +124,7 @@ theorem evalS_lift (env : Nat → R) (C : Circ R) :
   | add a b iha ihb =>
     simp only [evalS, eval, mapC]; rw [sAdd_lift, iha, ihb]
   | mul a b iha ihb =>
-    simp only [evalS, eval, mapC]; rw [multAdd_lift, iha, ihb]
+    simp only [evalS, eval, mapC]; rw [circ_lift, iha, ihb]
 
 end Semiring
 
@@ -141,12 +141,12 @@ theorem eval_from_shift (env : Nat → R) (C : Circ R) :
   | add a b iha ihb =>
     simp only [eval, evalS, mapC]; rw [iha, ihb]; unfold sAdd; grind
   | mul a b iha ihb =>
-    simp only [eval, evalS, mapC]; rw [iha, ihb]; unfold multAdd; grind
+    simp only [eval, evalS, mapC]; rw [iha, ihb]; unfold circ; grind
 
 /-- The identities of the shifted semiring: −1 for ⊕ and 0 for ⊞; −1 absorbs under ⊞. -/
 theorem shifted_identities (a : R) :
-    sAdd a (-1) = a ∧ multAdd a 0 = a ∧ multAdd a (-1) = -1 := by
-  unfold sAdd multAdd; refine ⟨?_, ?_, ?_⟩ <;> grind
+    sAdd a (-1) = a ∧ circ a 0 = a ∧ circ a (-1) = -1 := by
+  unfold sAdd circ; refine ⟨?_, ?_, ?_⟩ <;> grind
 
 end Ring
 
@@ -161,7 +161,7 @@ def ind (b : Bool) : R := if b then 1 else 0
 /-- Fold a list with the weighted mult-add a + b + k·ab. -/
 def foldW (k : R) : List R → R
   | [] => 0
-  | a :: l => wAdd k a (foldW k l)
+  | a :: l => circK k a (foldW k l)
 
 /-- Number of yes answers. -/
 def countT : List Bool → Nat
@@ -176,9 +176,9 @@ theorem witness_fold (k : R) (bs : List Bool) :
   | cons b l ih =>
     cases b
     · simp only [List.map, foldW, countT, ind, ih]
-      unfold wAdd; simp only [ite_false, Bool.false_eq_true]; grind
+      unfold circK; simp only [ite_false, Bool.false_eq_true]; grind
     · simp only [List.map, foldW, countT, ind, ih, ite_true]
-      rw [Nat.add_comm, QDial.qnum_succ]; unfold wAdd; grind
+      rw [Nat.add_comm, QDial.qnum_succ]; unfold circK; grind
 
 /-- The ModₚP family: if qᵖ = 1, the count only matters mod p (through the lift). -/
 theorem modp_period (q : R) (p m : Nat) (hq : q ^ p = 1) :
@@ -206,14 +206,14 @@ theorem np_point (bs : List Bool) :
   | nil => rfl
   | cons b l ih =>
     cases b <;> simp only [List.map, foldW, anyT, ih, Bool.false_or, Bool.true_or] <;>
-      (unfold wAdd ind; split <;> simp_all <;> omega)
+      (unfold circK ind; split <;> simp_all <;> omega)
 
 theorem sharpP_point (bs : List Bool) :
     foldW (0 : Int) (bs.map ind) = (countT bs : Int) := by
   induction bs with
   | nil => rfl
   | cons b l ih =>
-    cases b <;> simp only [List.map, foldW, countT, ih] <;> (unfold wAdd ind; simp; try omega)
+    cases b <;> simp only [List.map, foldW, countT, ih] <;> (unfold circK ind; simp; try omega)
 
 theorem parityP_point (bs : List Bool) :
     foldW (-2 : Int) (bs.map ind) = ind (parT bs) := by
@@ -221,7 +221,7 @@ theorem parityP_point (bs : List Bool) :
   | nil => rfl
   | cons b l ih =>
     cases b <;> simp only [List.map, foldW, parT, ih, Bool.false_xor, Bool.true_xor] <;>
-      (unfold wAdd ind; cases parT l <;> simp)
+      (unfold circK ind; cases parT l <;> simp)
 
 /-- q = 0 forgets: one witness and five witnesses give the same answer. -/
 theorem np_point_forgets : QDial.qnum (0 : Int) 1 = QDial.qnum (0 : Int) 5 := by decide
@@ -246,26 +246,26 @@ theorem qnum_two_strictMono {m n : Nat} (h : m < n) :
 /-! ## 3. The two-element field: mult-add is OR, the shift is NOT -/
 
 /-- Mult-add over GF(2): + is xor, × is and. -/
-def gf2MultAdd (a b : Bool) : Bool := xor (xor a b) (a && b)
+def gf2Circle (a b : Bool) : Bool := xor (xor a b) (a && b)
 
-theorem gf2_multAdd_is_or (a b : Bool) : gf2MultAdd a b = (a || b) := by
+theorem gf2_circ_is_or (a b : Bool) : gf2Circle a b = (a || b) := by
   cases a <;> cases b <;> rfl
 
 theorem gf2_shift_is_not (a : Bool) : xor true a = !a := by cases a <;> rfl
 
 /-- The lift 1 + (a ⊞ b) = (1 + a)(1 + b) over GF(2) is De Morgan: ¬(a ∨ b) = ¬a ∧ ¬b. -/
 theorem gf2_lift_de_morgan (a b : Bool) :
-    xor true (gf2MultAdd a b) = (xor true a && xor true b) := by
+    xor true (gf2Circle a b) = (xor true a && xor true b) := by
   cases a <;> cases b <;> rfl
 
 /-! ## 4. Easy because it factors -/
 
 /-- n gates, 2ⁿ − 1 monomials: 1 + (1 ⊞ 1 ⊞ … ⊞ 1) = 2ⁿ. -/
-theorem foldMA_ones (n : Nat) : 1 + foldMA (List.replicate n (1 : Nat)) = 2 ^ n := by
+theorem foldCirc_ones (n : Nat) : 1 + foldCirc (List.replicate n (1 : Nat)) = 2 ^ n := by
   induction n with
   | zero => rfl
   | succ n ih =>
-    rw [List.replicate_succ, foldMA, Nat.pow_succ, ← ih]; unfold multAdd; omega
+    rw [List.replicate_succ, foldCirc, Nat.pow_succ, ← ih]; unfold circ; omega
 
 /-! ## 5. Min-plus: the algebra of dynamic programming -/
 

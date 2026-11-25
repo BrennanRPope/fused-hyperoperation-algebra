@@ -27,7 +27,7 @@ import FusedAlgebra.Cube
 import FusedAlgebra.Topics.QAcross.QDial
 
 namespace QKnots
-open MultAdd
+open CircleOp
 
 /-! ## Polynomials as coefficient lists -/
 
@@ -223,7 +223,7 @@ theorem trefoilL_cube :
 /-- The states with k B-smoothings are counted by the cube's layers (Pascal), up to 5 crossings. -/
 theorem state_layers :
     ∀ n : Fin 6, ∀ k : Fin 6,
-      ((allStates n.val).filter (fun s => numB s == k.val)).length = MultAdd.Cube.layer n.val k.val := by
+      ((allStates n.val).filter (fun s => numB s == k.val)).length = CircleOp.Cube.layer n.val k.val := by
   decide +kernel
 
 /-! ## The local rules, for any commutative ring (A·Ai = 1, so Ai = A⁻¹) -/

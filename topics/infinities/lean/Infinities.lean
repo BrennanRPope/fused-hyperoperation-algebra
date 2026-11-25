@@ -13,7 +13,7 @@
 
   What is stated and proved here:
   * sumOnes_eq      n ones added make n.                       (the countable side)
-  * maddOnes_succ   n ones mult-added make 2ⁿ − 1.             (the corner side)
+  * circOnes_succ   n ones mult-added make 2ⁿ − 1.             (the corner side)
   * layers_eval     the mult-add cube's layers, weighted by t, fill (1+t)ⁿ
                     (layers 3 = [1,3,3,1]).
   * wOnes_spec      the zoomed mult-add a + b + t·ab, folded n times on 1,
@@ -31,26 +31,26 @@ namespace Infinities
 
 /-! ## Sum of ones versus mult-add of ones -/
 
-def madd (a b : Nat) : Nat := a + b + a * b
+def circ (a b : Nat) : Nat := a + b + a * b
 
 def sumOnes : Nat → Nat
   | 0 => 0
   | n + 1 => sumOnes n + 1
 
-def maddOnes : Nat → Nat
+def circOnes : Nat → Nat
   | 0 => 0
-  | n + 1 => madd (maddOnes n) 1
+  | n + 1 => circ (circOnes n) 1
 
 theorem sumOnes_eq (n : Nat) : sumOnes n = n := by
   induction n with
   | zero => rfl
   | succ n ih => simp [sumOnes, ih]
 
-theorem maddOnes_succ (n : Nat) : maddOnes n + 1 = 2 ^ n := by
+theorem circOnes_succ (n : Nat) : circOnes n + 1 = 2 ^ n := by
   induction n with
   | zero => rfl
   | succ n ih =>
-    show maddOnes n + 1 + maddOnes n * 1 + 1 = 2 ^ (n + 1)
+    show circOnes n + 1 + circOnes n * 1 + 1 = 2 ^ (n + 1)
     rw [Nat.pow_succ, ← ih, Nat.mul_one]
     omega
 
@@ -91,11 +91,11 @@ theorem layers_eval (t n : Nat) : evalL t (layers n) = (1 + t) ^ n := by
 
 /-! ## Zoomed mult-add: a + b + t·ab (t = 0 addition, t = 1 mult-add) -/
 
-def wmadd (t a b : Nat) : Nat := a + b + t * a * b
+def circK (t a b : Nat) : Nat := a + b + t * a * b
 
 def wOnes (t : Nat) : Nat → Nat
   | 0 => 0
-  | n + 1 => wmadd t (wOnes t n) 1
+  | n + 1 => circK t (wOnes t n) 1
 
 theorem wkey (t w : Nat) : t * (w + 1 + t * w * 1) + 1 = (t * w + 1) * (1 + t) := by
   simp only [Nat.mul_one, Nat.mul_add, Nat.add_mul, Nat.one_mul, Nat.mul_assoc,
@@ -113,7 +113,7 @@ theorem wOnes_spec (t n : Nat) : t * wOnes t n + 1 = (1 + t) ^ n := by
 theorem wOnes_zero (n : Nat) : wOnes 0 n = n := by
   induction n with
   | zero => rfl
-  | succ n ih => simp [wOnes, wmadd, ih]
+  | succ n ih => simp [wOnes, circK, ih]
 
 /-! ## The infinite cube: more corners than axes (Cantor) -/
 

@@ -42,7 +42,7 @@
   the middle of the Pascal row vanishes mod p.
 -/
 
-namespace MultAdd.HopfOne
+namespace CircleOp.HopfOne
 
 /-! ## Part 1: the exact power of 2 in 3^n − 1 -/
 
@@ -250,12 +250,12 @@ structure Trunc where
 deriving DecidableEq
 
 /-- Mult-add: (1+p)(1+q) − 1 with x³ = 0. -/
-def madd (p q : Trunc) : Trunc := ⟨p.α + q.α, p.β + q.β + p.α * q.α⟩
+def circ (p q : Trunc) : Trunc := ⟨p.α + q.α, p.β + q.β + p.α * q.α⟩
 
 /-- The k-fold mult-add sum x ⊕ x ⊕ … ⊕ x, i.e. (1 + x)^k − 1. -/
 def mpow : Nat → Trunc
   | 0 => ⟨0, 0⟩
-  | k + 1 => madd (mpow k) ⟨1, 0⟩
+  | k + 1 => circ (mpow k) ⟨1, 0⟩
 
 /-- (1 + x)^k − 1 = k x + C(k,2) x², written without division. -/
 theorem mpow_formula (k : Nat) : (mpow k).α = k ∧ 2 * (mpow k).β = k * (k - 1 : Int) := by
@@ -263,7 +263,7 @@ theorem mpow_formula (k : Nat) : (mpow k).α = k ∧ 2 * (mpow k).β = k * (k - 
   | zero => simp [mpow]
   | succ k ih =>
     obtain ⟨h1, h2⟩ := ih
-    simp only [mpow, madd]
+    simp only [mpow, circ]
     constructor
     · rw [h1]; simp
     · simp only [Int.add_zero, Int.mul_one]
@@ -303,4 +303,4 @@ theorem cp2_case :
     (2 : Int) ∣ 1 - 1 := by
   refine ⟨by decide, by decide, by simp [psi], ⟨0, by decide⟩⟩
 
-end MultAdd.HopfOne
+end CircleOp.HopfOne

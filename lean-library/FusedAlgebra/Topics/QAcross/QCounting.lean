@@ -25,7 +25,7 @@ import FusedAlgebra.Cube
 import FusedAlgebra.Topics.QAcross.Knots
 
 namespace QCounting
-open MultAdd
+open CircleOp
 open QKnots (Poly padd pzeros trim)
 
 /-! ## 1. Gaussian binomials -/
@@ -64,16 +64,16 @@ theorem peval_pzeros (x : Int) : ∀ (k : Nat) (p : Poly), peval x (pzeros k p) 
 
 /-- At q = 1 the Gaussian binomial is the binomial coefficient: the layer of the mult-add cube.
     (Every n and k, not a finite check.) -/
-theorem gauss_at_one : ∀ n k : Nat, peval 1 (gauss n k) = (MultAdd.Cube.layer n k : Int)
+theorem gauss_at_one : ∀ n k : Nat, peval 1 (gauss n k) = (CircleOp.Cube.layer n k : Int)
   | n, 0 => by
-    rw [MultAdd.Cube.layer_zero_right]
+    rw [CircleOp.Cube.layer_zero_right]
     simp only [gauss, peval] <;> decide
   | 0, k + 1 => by
-    simp only [gauss, peval, MultAdd.Cube.layer] <;> decide
+    simp only [gauss, peval, CircleOp.Cube.layer] <;> decide
   | n + 1, k + 1 => by
     simp only [gauss]
     rw [peval_padd, peval_pzeros, gauss_at_one n k, gauss_at_one n (k + 1),
-      MultAdd.Cube.layer_succ_succ, pw_one]
+      CircleOp.Cube.layer_succ_succ, pw_one]
     omega
 
 /-- The four points of the dial on [4, 2]_q = 1 + q + 2q² + q³ + q⁴:
@@ -89,7 +89,7 @@ theorem gauss_at_neg_one :
     ∀ n : Fin 9, ∀ k : Fin 9, k.val ≤ n.val →
       peval (-1) (gauss n.val k.val) =
         (if n.val % 2 == 0 && k.val % 2 == 1 then 0
-         else (MultAdd.Cube.layer (n.val / 2) (k.val / 2) : Int)) := by
+         else (CircleOp.Cube.layer (n.val / 2) (k.val / 2) : Int)) := by
   decide +kernel
 
 /-! ## 2. The q-binomial theorem is a mult-add fold -/
@@ -169,7 +169,7 @@ theorem ising_trace (u : R) (n : Nat) : 2 * (ising u n).1 = pw (1 + u) n + pw (1
 
 /-- ... and in mult-add terms: Z = 2 + u^(⊞n) + (−u)^(⊞n). Only the even layers of the cube
     survive (a ring has an even number of domain walls). -/
-theorem ising_multAdd (u : R) (n : Nat) : 2 * (ising u n).1 = 2 + mpow u n + mpow (-u) n := by
+theorem ising_circ (u : R) (n : Nat) : 2 * (ising u n).1 = 2 + mpow u n + mpow (-u) n := by
   have h := ising_trace u n
   rw [pw_eq_pow, pw_eq_pow] at h
   have a := mpow_lift u n

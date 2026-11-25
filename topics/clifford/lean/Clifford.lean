@@ -20,10 +20,10 @@
        Clifford's elliptic ω (κ = 1): (1 + ω)² = 2(1 + ω), and x + yω ↦ (x + y, x − y) is a
        multiplicative split into two copies of the line (left and right halves).
     5. Cl(2,0)-type algebra with squares κ₁, κ₂, as 4-tuples: associative; the multivector
-       mult-add X + Y + XKY is associative and has the lift (1 + KX)(1 + KY) = 1 + K(X ✳ Y);
+       mult-add X + Y + XKY is associative and has the lift (1 + KX)(1 + KY) = 1 + K(X ◯ Y);
        its commutator is XKY − YKX; for vectors with K = 1 it is twice the wedge (oriented area),
-       and the corner of two vectors splits into dot + wedge; reversion turns X ✳_K Y into
-       Ỹ ✳_K̃ X̃; two factors in different directions keep their product on its own blade.
+       and the corner of two vectors splits into dot + wedge; reversion turns X ◯_K Y into
+       Ỹ ◯_K̃ X̃; two factors in different directions keep their product on its own blade.
     6. Dual numbers: mult-add with ε² = 0 carries the derivative (a₁(1 + b₀) + b₁(1 + a₀)).
     7. The q = +1 twin of the light-wall identity: |1 − ūv|² + |u + v|² = (1 + |u|²)(1 + |v|²)
        (norm of the quaternion lift; no wall on the sphere side).
@@ -35,11 +35,11 @@ import FusedAlgebra.Base
 import FusedAlgebra.Topics.GroupsLie
 
 namespace CliffordW
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## 1. The Clifford algebra of the rate form x² + pxy + qy² -/
 
@@ -98,13 +98,13 @@ theorem B4.lift_mul (p q a b : Int) :
     B4.mul p q ⟨1, 0, 0, a⟩ ⟨1, 0, 0, b⟩ = ⟨1 - q * a * b, 0, 0, a + b + p * a * b⟩ := by
   apply B4.ext' <;> simp only [B4.mul] <;> grind
 
-/-- At mult-add's point (1, 0) the geometric product of lifts is the lift of a ✳ b. -/
-theorem B4.lift_multAdd (a b : Int) :
-    B4.mul 1 0 ⟨1, 0, 0, a⟩ ⟨1, 0, 0, b⟩ = ⟨1, 0, 0, a ✳ b⟩ := by
-  apply B4.ext' <;> simp only [B4.mul, multAdd] <;> grind
+/-- At mult-add's point (1, 0) the geometric product of lifts is the lift of a ◯ b. -/
+theorem B4.lift_circ (a b : Int) :
+    B4.mul 1 0 ⟨1, 0, 0, a⟩ ⟨1, 0, 0, b⟩ = ⟨1, 0, 0, a ◯ b⟩ := by
+  apply B4.ext' <;> simp only [B4.mul, circ] <;> grind
 
 /-- Mult-add's rate form x² + xy factors as x(x + y): two light lines (a split form). -/
-theorem multAdd_form_split (x y : Int) : x * x + 1 * x * y + 0 * y * y = x * (x + y) := by grind
+theorem circ_form_split (x y : Int) : x * x + 1 * x * y + 0 * y * y = x * (x + y) := by grind
 
 /-! ## 2. Conjugation, norm and the wall -/
 
@@ -128,7 +128,7 @@ theorem lift_tconj (p q a : Int) :
   simp only [tconj, GroupsLie.tmul]; ext <;> simp <;> grind
 
 /-- Mult-add: lift times conjugate = 1 + a, so the conjugate (1 + a) − aθ is (1 + a)·(lift of the inverse). -/
-theorem multAdd_lift_tconj (a : Int) : GroupsLie.tmul 1 0 (1, a) (tconj 1 (1, a)) = (1 + a, 0) := by
+theorem circ_lift_tconj (a : Int) : GroupsLie.tmul 1 0 (1, a) (tconj 1 (1, a)) = (1 + a, 0) := by
   simp only [tconj, GroupsLie.tmul]; ext <;> simp <;> grind
 
 /-- The conjugate of a lift, read in the chart, is the landscape inverse: its θ-slot over its
@@ -176,7 +176,7 @@ theorem dial_discriminant (κ : Int) (K : Int × Int) :
   simp only [ctr, cnorm]; grind
 
 /-- Mult-add's dial is null: K = c(1 + e) with e² = 1 has N = 0 and tr = 2c, so K² = 2c·K. -/
-theorem multAdd_dial_null (c : Int) :
+theorem circ_dial_null (c : Int) :
     cnorm 1 (c, c) = 0 ∧ ctr (c, c) = 2 * c ∧ cmul 1 (c, c) (c, c) = (2 * c * c, 2 * c * c) := by
   simp only [cnorm, ctr, cmul]; refine ⟨?_, ?_, ?_⟩ <;> (try ext) <;> simp <;> grind
 
@@ -250,7 +250,7 @@ def G4.sub (x y : G4) : G4 := ⟨x.s - y.s, x.e1 - y.e1, x.e2 - y.e2, x.b - y.b�
 def G4.one : G4 := ⟨1, 0, 0, 0⟩
 def G4.rev (x : G4) : G4 := ⟨x.s, x.e1, x.e2, -x.b⟩
 
-/-- Multivector mult-add X ✳_K Y = X + Y + XKY. -/
+/-- Multivector mult-add X ◯_K Y = X + Y + XKY. -/
 def G4.star (k1 k2 : Int) (K x y : G4) : G4 :=
   G4.add (G4.add x y) (G4.mul k1 k2 (G4.mul k1 k2 x K) y)
 
@@ -261,7 +261,7 @@ theorem G4.mul_assoc (k1 k2 : Int) (x y z : G4) :
 theorem G4.e12_sq (k1 k2 : Int) : G4.mul k1 k2 ⟨0, 0, 0, 1⟩ ⟨0, 0, 0, 1⟩ = ⟨-(k1 * k2), 0, 0, 0⟩ := by
   apply G4.ext' <;> simp only [G4.mul] <;> grind
 
-/-- Kept: the left lift. 1 + K(X ✳_K Y) = (1 + KX)(1 + KY). -/
+/-- Kept: the left lift. 1 + K(X ◯_K Y) = (1 + KX)(1 + KY). -/
 theorem G4.star_lift (k1 k2 : Int) (K x y : G4) :
     G4.add G4.one (G4.mul k1 k2 K (G4.star k1 k2 K x y)) =
       G4.mul k1 k2 (G4.add G4.one (G4.mul k1 k2 K x)) (G4.add G4.one (G4.mul k1 k2 K y)) := by
@@ -275,7 +275,7 @@ theorem G4.star_assoc (k1 k2 : Int) (K x y z : G4) :
 theorem G4.star_zero (k1 k2 : Int) (K x : G4) : G4.star k1 k2 K x ⟨0, 0, 0, 0⟩ = x := by
   apply G4.ext' <;> simp only [G4.mul, G4.add, G4.star] <;> grind
 
-/-- Lost: commutativity. X ✳ Y − Y ✳ X = XKY − YKX. -/
+/-- Lost: commutativity. X ◯ Y − Y ◯ X = XKY − YKX. -/
 theorem G4.star_comm_defect (k1 k2 : Int) (K x y : G4) :
     G4.sub (G4.star k1 k2 K x y) (G4.star k1 k2 K y x) =
       G4.sub (G4.mul k1 k2 (G4.mul k1 k2 x K) y) (G4.mul k1 k2 (G4.mul k1 k2 y K) x) := by
@@ -289,7 +289,7 @@ theorem G4.vector_comm_wedge (k1 k2 x1 x2 y1 y2 : Int) :
   apply G4.ext' <;> simp only [G4.mul, G4.add, G4.sub, G4.star, G4.one] <;> grind
 
 /-- The corner of two vectors (K = 1, Euclidean squares) splits into dot + wedge:
-    x ✳ y = x + y + (x·y) + (x∧y)e₁₂. -/
+    x ◯ y = x + y + (x·y) + (x∧y)e₁₂. -/
 theorem G4.vector_corner (x1 x2 y1 y2 : Int) :
     G4.star 1 1 G4.one ⟨0, x1, x2, 0⟩ ⟨0, y1, y2, 0⟩ =
       ⟨x1 * y1 + x2 * y2, x1 + y1, x2 + y2, x1 * y2 - x2 * y1⟩ := by
@@ -300,20 +300,20 @@ theorem G4.rev_mul (k1 k2 : Int) (x y : G4) :
     G4.rev (G4.mul k1 k2 x y) = G4.mul k1 k2 (G4.rev y) (G4.rev x) := by
   apply G4.ext' <;> simp only [G4.mul, G4.rev] <;> grind
 
-/-- Reversion turns X ✳_K Y into Ỹ ✳_K̃ X̃. -/
+/-- Reversion turns X ◯_K Y into Ỹ ◯_K̃ X̃. -/
 theorem G4.rev_star (k1 k2 : Int) (K x y : G4) :
     G4.rev (G4.star k1 k2 K x y) = G4.star k1 k2 (G4.rev K) (G4.rev y) (G4.rev x) := by
   apply G4.ext' <;> simp only [G4.mul, G4.rev, G4.add, G4.star] <;> grind
 
 /-- Information kept: two factors in different directions keep their product on its own blade,
-    a₁e₁ ✳ a₂e₂ = a₁e₁ + a₂e₂ + a₁a₂e₁₂, whatever the squares; the scalar shadow
-    (sum of the parts) is a₁ ✳ a₂. -/
+    a₁e₁ ◯ a₂e₂ = a₁e₁ + a₂e₂ + a₁a₂e₁₂, whatever the squares; the scalar shadow
+    (sum of the parts) is a₁ ◯ a₂. -/
 theorem G4.blades_keep (k1 k2 a1 a2 : Int) :
     G4.star k1 k2 G4.one ⟨0, a1, 0, 0⟩ ⟨0, 0, a2, 0⟩ = ⟨0, a1, a2, a1 * a2⟩ ∧
-      0 + a1 + a2 + a1 * a2 = a1 ✳ a2 := by
+      0 + a1 + a2 + a1 * a2 = a1 ◯ a2 := by
   constructor
   · apply G4.ext' <;> simp only [G4.mul, G4.add, G4.star, G4.one] <;> grind
-  · simp only [multAdd]; grind
+  · simp only [circ]; grind
 
 /-- Two walls for a vector dial: (1 + a k)(1 − a k) = 1 − a²k² with k = 3e₁ + 4e₂ (k² = 25). -/
 theorem G4.vector_dial_walls (a : Int) :
@@ -322,10 +322,10 @@ theorem G4.vector_dial_walls (a : Int) :
 
 /-! ## 6. Dual numbers carry the derivative -/
 
-theorem dual_multAdd (a0 a1 b0 b1 : Int) :
+theorem dual_circ (a0 a1 b0 b1 : Int) :
     (GroupsLie.tmul 0 0 (a0, a1) (b0, b1)).2 + a1 + b1 = a1 * (1 + b0) + b1 * (1 + a0) ∧
-      (GroupsLie.tmul 0 0 (a0, a1) (b0, b1)).1 + a0 + b0 = a0 ✳ b0 := by
-  simp only [GroupsLie.tmul, multAdd]; constructor <;> grind
+      (GroupsLie.tmul 0 0 (a0, a1) (b0, b1)).1 + a0 + b0 = a0 ◯ b0 := by
+  simp only [GroupsLie.tmul, circ]; constructor <;> grind
 
 /-! ## 7. The sphere twin of the light-wall identity (no wall at q = +1) -/
 

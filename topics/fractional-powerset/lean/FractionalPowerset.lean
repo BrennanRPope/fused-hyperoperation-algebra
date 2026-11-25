@@ -27,7 +27,7 @@
                             impossible: the values P^(1/2^k)(0) would fall forever.
                             This is the ZFC obstruction with ℕ standing in for
                             the well-ordered alephs.
-  * flat_mul_flat_add, flat_add_flat_succ, flat_madd_iff_flat_mul
+  * flat_mul_flat_add, flat_add_flat_succ, flat_circ_iff_flat_mul
                             the rung chain for "which rung is flat on infinite
                             sizes", from rules that hold for cardinals in ZF
                             (Cantor–Bernstein, monotone + and ·, m·2 = m + m).
@@ -162,8 +162,8 @@ theorem flat_add_flat_succ {C : Type} (add : C → C → C) (le : C → C → Pr
     exact this
   · exact self_le_add m one
 
-/-- Mult-add `m ✳ m = (m + m) + m·m` is flat exactly when multiplication is. -/
-theorem flat_madd_iff_flat_mul {C : Type} (add mul : C → C → C) (le : C → C → Prop)
+/-- Mult-add `m ◯ m = (m + m) + m·m` is flat exactly when multiplication is. -/
+theorem flat_circ_iff_flat_mul {C : Type} (add mul : C → C → C) (le : C → C → Prop)
     (antisymm : ∀ a b, le a b → le b a → a = b)
     (two : C) (two_def : ∀ m, mul m two = add m m)
     (mul_mono : ∀ m a b, le a b → le (mul m a) (mul m b))

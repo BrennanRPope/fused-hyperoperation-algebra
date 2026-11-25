@@ -31,7 +31,7 @@
 -/
 
 import CubeProofs
-namespace MultAdd.Cube
+namespace CircleOp.Cube
 
 /-! ## Kummer: carries -/
 
@@ -499,4 +499,4 @@ theorem wilson_iff (n : Nat) (hn : 2 ≤ n) : MEq n (fact (n - 1)) (-1) ↔ IsPr
 example : fact 6 = 720 ∧ 720 % 7 = 6 := by decide
 example : carries 3 5 4 0 = 2 ∧ layer 9 4 = 126 ∧ val 3 126 = 2 := by decide +kernel
 
-end MultAdd.Cube
+end CircleOp.Cube

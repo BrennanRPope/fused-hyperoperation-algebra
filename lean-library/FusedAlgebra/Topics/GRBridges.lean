@@ -9,10 +9,10 @@
   1. Boosts in the Clifford plane Cl(1,1) (= 2×2 real matrices): 1 + βσ composes so that the two
      light-cone parts multiply, i.e. they compose by mult-add; the norm 1 − β² is the wall.
   2. The multivector mult-add a + b + a·k·b (2×2 integer matrices, a non-commutative model):
-     exact lift 1 + k(a ✳ b) = (1 + k a)(1 + k b) and associativity for every k; the
+     exact lift 1 + k(a ◯ b) = (1 + k a)(1 + k b) and associativity for every k; the
      front-loaded a + b + k·a·b fails associativity for a non-central k (explicit witness).
   3. Schur's factor (n−1)(n−2)/2: zero only in dimension 2, so a place-only dial is free only there.
-  4. Jacobson's area bookkeeping: bundle area = 1 + (a ✳ b); with straight rays the second
+  4. Jacobson's area bookkeeping: bundle area = 1 + (a ◯ b); with straight rays the second
      difference of the area is the cross term 2αβ; θ²/2 + σ² = θ₁² + θ₂².
   5. The river's energy constraint: e2 is the pairwise layer of a three-way mult-add; the
      spherical river's e2 is Newton's shell law; the Schwarzschild river has e2 = 0, and an aether
@@ -23,9 +23,9 @@
 import FusedAlgebra.Base
 
 namespace GRBridges
-open MultAdd
+open CircleOp
 
-local infixl:65 " ✳ " => multAdd
+open scoped CircleOp
 
 /-! ## 1. Boosts in Cl(1,1): light-cone parts compose by mult-add -/
 
@@ -35,14 +35,14 @@ theorem boost_product (b1 b2 : Rat) :
     (1 + b1 * b2) - (b1 + b2) = (1 - b1) * (1 - b2) := by
   constructor <;> grind
 
-/-- The forward light-cone part (scalar + σ) of a product is 1 + (β₁ ✳ β₂). -/
-theorem forward_part_multAdd (b1 b2 : Rat) : (1 + b1 * b2) + (b1 + b2) = 1 + (b1 ✳ b2) := by
-  unfold multAdd; grind
+/-- The forward light-cone part (scalar + σ) of a product is 1 + (β₁ ◯ β₂). -/
+theorem forward_part_circ (b1 b2 : Rat) : (1 + b1 * b2) + (b1 + b2) = 1 + (b1 ◯ b2) := by
+  unfold circ; grind
 
-/-- The backward light-cone part is 1 + ((−β₁) ✳ (−β₂)). -/
-theorem backward_part_multAdd (b1 b2 : Rat) :
-    (1 + b1 * b2) - (b1 + b2) = 1 + ((-b1) ✳ (-b2)) := by
-  unfold multAdd; grind
+/-- The backward light-cone part is 1 + ((−β₁) ◯ (−β₂)). -/
+theorem backward_part_circ (b1 b2 : Rat) :
+    (1 + b1 * b2) - (b1 + b2) = 1 + ((-b1) ◯ (-b2)) := by
+  unfold circ; grind
 
 /-- The norm (1 + βσ)(1 − βσ) = 1 − β²: zero exactly at β = ±1, the wall (light speed). -/
 theorem boost_norm (b : Rat) : (1 + b) * (1 - b) = 1 - b * b := by grind
@@ -71,7 +71,7 @@ def sand (k a b : M2) : M2 := add (add a b) (mul (mul a k) b)
 /-- Front-loaded mult-add: a + b + k·a·b. -/
 def front (k a b : M2) : M2 := add (add a b) (mul k (mul a b))
 
-/-- **The lift holds for every matrix weight k:** 1 + k(a ✳ b) = (1 + k a)(1 + k b). -/
+/-- **The lift holds for every matrix weight k:** 1 + k(a ◯ b) = (1 + k a)(1 + k b). -/
 theorem sand_lift (k a b : M2) :
     add one (mul k (sand k a b)) = mul (add one (mul k a)) (add one (mul k b)) := by
   apply M2.ext' <;> simp [sand, add, mul, one] <;> grind
@@ -101,7 +101,7 @@ theorem isotropic_einstein (n : Rat) : (n - 1) - n * (n - 1) / 2 = -((n - 1) * (
 /-! ## 4. Jacobson's area bookkeeping -/
 
 /-- Bundle area from two transverse stretches. -/
-theorem bundle_area (a b : Rat) : (1 + a) * (1 + b) = 1 + (a ✳ b) := by unfold multAdd; grind
+theorem bundle_area (a b : Rat) : (1 + a) * (1 + b) = 1 + (a ◯ b) := by unfold circ; grind
 
 /-- Straight rays (a = αλ, b = βλ): the second difference of the area is the cross term 2αβ. -/
 theorem flat_focusing (α β l : Rat) :
@@ -118,8 +118,8 @@ theorem focusing_cross (t1 t2 : Rat) : (t1 + t2)^2 - (t1^2 + t2^2) = 2 * t1 * t2
 
 /-- Three-way mult-add = sum + pairwise layer (e2) + triple layer. -/
 theorem three_way_layers (a b c : Rat) :
-    a ✳ (b ✳ c) = (a + b + c) + (a*b + b*c + c*a) + a*b*c := by
-  unfold multAdd; grind
+    a ◯ (b ◯ c) = (a + b + c) + (a*b + b*c + c*a) + a*b*c := by
+  unfold circ; grind
 
 /-- e2 from traces: (tr K)² − tr K² = 2 e2. -/
 theorem e2_from_traces (a b c : Rat) : (a + b + c)^2 - (a^2 + b^2 + c^2) = 2 * (a*b + b*c + c*a) := by grind

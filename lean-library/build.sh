@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")"
 mods=(
   FusedAlgebra.Base FusedAlgebra.Rungs FusedAlgebra.Cube
-  FusedAlgebra.Foundations.MultAddRing FusedAlgebra.Foundations.Independence FusedAlgebra.Foundations.FusedPeano
+  FusedAlgebra.Foundations.CircleRing FusedAlgebra.Foundations.Independence FusedAlgebra.Foundations.FusedPeano
   FusedAlgebra.Topics.ClosingRate FusedAlgebra.Topics.Consensus FusedAlgebra.Topics.DarkSector
   FusedAlgebra.Topics.DataCenter FusedAlgebra.Topics.E FusedAlgebra.Topics.Finance
   FusedAlgebra.Topics.FusedConstants FusedAlgebra.Topics.FractionalRungs FusedAlgebra.Topics.Infinities FusedAlgebra.Topics.InformationTheory

@@ -5,8 +5,8 @@
 
   LIBRARY NOTE: copied from lee-yang/lean/LeeYang.lean (Nov 25), unchanged apart from this
   note. No theorem states exactly what a library theorem states; the closest are
-  edge_gas_hardcore and edge_gas_free, which add 1 to MultAdd.wAdd_weight_zero and
-  MultAdd.wAdd_one.
+  edge_gas_hardcore and edge_gas_free, which add 1 to CircleOp.circK_weight_zero and
+  CircleOp.circK_one.
 
   Two ways to build a partition function from the dial k (with q = k + 1):
 
@@ -23,7 +23,7 @@
 import FusedAlgebra.Base
 
 namespace LeeYang
-open MultAdd
+open CircleOp
 
 set_option linter.unusedSectionVars false
 
@@ -62,16 +62,16 @@ open Mat2
 
 /-- One edge of the dial gas: the two-site lattice gas with pair weight k is the lift of
     the weighted mult-add of the two fugacities. -/
-theorem edge_gas (k x y : R) : 1 + wAdd k x y = 1 + x + y + k * x * y := by
-  unfold wAdd; grind
+theorem edge_gas (k x y : R) : 1 + circK k x y = 1 + x + y + k * x * y := by
+  unfold circK; grind
 
 /-- At k = 1 (q = 2) the two sites are independent: the gas factors. -/
-theorem edge_gas_free (x y : R) : 1 + wAdd 1 x y = (1 + x) * (1 + y) := by
-  unfold wAdd; grind
+theorem edge_gas_free (x y : R) : 1 + circK 1 x y = (1 + x) * (1 + y) := by
+  unfold circK; grind
 
 /-- At k = 0 (q = 1) the two sites exclude each other: hard core. -/
-theorem edge_gas_hardcore (x y : R) : 1 + wAdd 0 x y = 1 + x + y := by
-  unfold wAdd; grind
+theorem edge_gas_hardcore (x y : R) : 1 + circK 0 x y = 1 + x + y := by
+  unfold circK; grind
 
 /-- The ring transfer matrix: from an empty site the next site weighs 1 (empty) or z
     (occupied); from an occupied site, 1 or k·z. -/
@@ -265,8 +265,8 @@ theorem pottsRing_lift {K : Type} [Lean.Grind.Field K] (Q v t : K) (n : Nat)
     mult-add of the two tⁿ, at the dial k = Q − 1. -/
 theorem two_rings (Q t A B : R) (n m : Nat) :
     (A * (1 + (Q - 1) * t ^ n)) * (B * (1 + (Q - 1) * t ^ m))
-      = (A * B) * (1 + (Q - 1) * wAdd (Q - 1) (t ^ n) (t ^ m)) := by
-  have h := wAdd_lift (Q - 1) (t ^ n) (t ^ m)
+      = (A * B) * (1 + (Q - 1) * circK (Q - 1) (t ^ n) (t ^ m)) := by
+  have h := circK_lift (Q - 1) (t ^ n) (t ^ m)
   rw [h]; grind
 
 /-- Proper colourings: v = −1. The chromatic polynomial of the n-cycle. -/
