@@ -1,0 +1,43 @@
+== F. published facets and the full paper's example
+PASS F  contraction map exists: orbit 3, MMI uplift: S_ABC+S_ADE+S_BCDE >= S_A+S_BC+S_DE+S_ABCDE
+PASS F  contraction map exists: orbit 4, cyclic: S_ABC+S_ABD+S_ACE+S_BDE+S_CDE >= S_AB+S_AC+S_BD+S_CE+S_DE+S_ABCDE
+PASS F  contraction map absent: BFN 2025 eq 3.2, deformed MMI (false): MMI with an extra S_AB on the right
+PASS F  contraction map absent: BFN 2025 eq 3.3 (false): S_BC+S_ACD+S_ACE+S_BCDE >= S_AC+S_BCD+S_BCE+S_ACDE
+== G. rule length in the dial-k corner basis
+INFO G  SA: 1 terms at k=-1; k=0: 3; k=1: 3; generic: 3; shortest at k in [-1.0]
+INFO G  MMI: 1 terms at k=-1; k=0: 7; k=1: 7; generic: 7; shortest at k in [-1.0]
+INFO G  MMI uplift: 9 terms at k=-1; k=0: 7; k=1: 18; generic: 31; shortest at k in [0.0]
+INFO G  cyclic (5): 11 terms at k=-1; k=0: 11; k=1: 21; generic: 31; shortest at k in [-1.0, 0.0]
+PASS G  SA and MMI are one term at k = -1 (shortest); the MMI uplift is shorter at k = 0 (it is I3 of merged parties)
+PASS G  MMI at k=-1 is the single top corner (= -I3)
+== H. cross-ratios, the union rule, the flip and the height flow (ours, reading)
+PASS H1 gluing adjacent B's: x(A, B1uB2) = x(A,B1) o_{-1} x(A,B2)   (sympy, exact)
+PASS H2 the flip phi_{-1} (odds) carries o_{-1} to o_1   (sympy)
+PASS H3 height flow: E(t1+t2) = E(t1) o_1 E(t2)   (sympy)
+PASS H4 odds of x is E(t) with t = -log(1-x): phi_{-1}(x) = E(-log(1-x))   (sympy)
+PASS H5 vacuum: RT mutual information = (c/3) max(0, log odds(x)) and gluing law, 3000 configs  max error 6.0e-13
+PASS H6 vacuum: I3(A:B1:B2) <= 0 in every config  max 0.0e+00
+PASS H5 BTZ: RT mutual information = (c/3) max(0, log odds(x)) and gluing law, 3000 configs  max error 2.2e-12
+PASS H6 BTZ: I3(A:B1:B2) <= 0 in every config  max 0.0e+00
+PASS H7 when all three are connected, I3 = -(c/3) log(1 + 1/X1 + 1/X2): the '+X1+X2' of o_1 is MMI's slack  274 configs
+== I. dial sweeps off k = -1
+PASS I1 corner sum is <= 0 for every graph only at k = -1 on the grid (and >= 0 for k >= -1/2)  k with all <= 0: [-1.0]
+PASS I2 soft-min dial (positive weights): no SA or MMI violation at any h tested, h = 0 to 3
+PASS I2b ...but with mixed-sign weights (not a ferromagnet) MMI fails often  30% of 300 signed graphs at h = 1
+PASS I2c soft-min dial: the five-party facets (uplift, cyclic) also hold at h = 0.3, 1, 5 (120 graphs)  worst RHS-LHS 0.0e+00
+PASS I3 Renyi index: random states break MMI at every alpha tested (no Renyi index rescues them)  {0.25: 0.102, 0.5: 0.118, 0.75: 0.12, 1.0: 0.127, 1.5: 0.138, 2.0: 0.148, 3.0: 0.153, 5.0: 0.153, 1000000.0: 0.16}
+PASS I4 GHZ, n=2: cube sum = 1 o_k 1 o_k ... o_k 1 = ((1+k)^n - 1)/k, equal to 1 at k=-1
+PASS I4 GHZ, n=3: cube sum = 1 o_k 1 o_k ... o_k 1 = ((1+k)^n - 1)/k, equal to 1 at k=-1
+PASS I4 GHZ, n=4: cube sum = 1 o_k 1 o_k ... o_k 1 = ((1+k)^n - 1)/k, equal to 1 at k=-1
+PASS I4 GHZ, n=5: cube sum = 1 o_k 1 o_k ... o_k 1 = ((1+k)^n - 1)/k, equal to 1 at k=-1
+PASS I4 GHZ, n=6: cube sum = 1 o_k 1 o_k ... o_k 1 = ((1+k)^n - 1)/k, equal to 1 at k=-1
+PASS I4 GHZ, n=7: cube sum = 1 o_k 1 o_k ... o_k 1 = ((1+k)^n - 1)/k, equal to 1 at k=-1
+== J. first law of entanglement from RT (North Star link)
+PASS J1 d=2: delta S (RT area change) = delta <H_modular> (ball, first order)  both = R**2*m/(24*G) per unit solid angle
+PASS J1 d=3: delta S (RT area change) = delta <H_modular> (ball, first order)  both = R**3*m/(32*G) per unit solid angle
+PASS J1 d=4: delta S (RT area change) = delta <H_modular> (ball, first order)  both = R**4*m/(40*G) per unit solid angle
+PASS J1 d=5: delta S (RT area change) = delta <H_modular> (ball, first order)  both = R**5*m/(48*G) per unit solid angle
+PASS J1 d=6: delta S (RT area change) = delta <H_modular> (ball, first order)  both = R**6*m/(56*G) per unit solid angle
+PASS J2 BTZ: Delta<H> - Delta S = (c/3)[y^2/6 - log(sinh y / y)] >= 0 for all sizes (relative entropy)
+
+32 passed, 0 failed
