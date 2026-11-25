@@ -125,3 +125,5 @@ import FusedAlgebra.Topics.Conventions
 import FusedAlgebra.Topics.PathNames
 import FusedAlgebra.Topics.OrderDial
 import FusedAlgebra.Topics.WhyI
+import FusedAlgebra.Topics.Checkerboard
+import FusedAlgebra.Topics.CheckerboardPotential

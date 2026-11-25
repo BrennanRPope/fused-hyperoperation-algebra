@@ -477,6 +477,13 @@ FusedAlgebra.Topics.CategoryTheory	CategoryTheory.toPair_natural
 FusedAlgebra.Topics.CategoryTheory	CategoryTheory.toPair_ofPair	
 FusedAlgebra.Topics.CategoryTheory	CategoryTheory.torus_cells	
 FusedAlgebra.Topics.CategoryTheory	CategoryTheory.wedge_smash	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Checkerboard	Checkerboard.circ_chain	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Checkerboard	Checkerboard.circ_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Checkerboard	Checkerboard.counts_five	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Checkerboard	Checkerboard.turn_move_order	
+FusedAlgebra.Topics.CheckerboardPotential	CheckerboardPotential.scalar_comm	propext
+FusedAlgebra.Topics.CheckerboardPotential	CheckerboardPotential.subsetSum_eq_prod	propext
+FusedAlgebra.Topics.CheckerboardPotential	CheckerboardPotential.tick_factor	propext
 FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.fold_gap_log3	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.fold_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Chemistry.ChemAcids	ChemAcids.fold_unequal_gaps	propext, Classical.choice, Quot.sound

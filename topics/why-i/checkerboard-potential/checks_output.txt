@@ -1,0 +1,19 @@
+PASS A1 at one site the potential and the turn commute (no twist), so one tick's factor is 1 + k(v o_k t)
+PASS A2 [ours, exact at finite eps] N ticks with a potential = free moves times 1 + k(chain of all 2N turn and potential elements)
+PASS B1 k = -1: summing over all 2^12 checkerboard paths, weight (-k eps mu)^R times the product of (1 + k eps V) along the path, gives the chain exactly: each path once
+PASS B1 k = -i: summing over all 2^12 checkerboard paths, weight (-k eps mu)^R times the product of (1 + k eps V) along the path, gives the chain exactly: each path once
+PASS B2 k = -1: for one path, the 2^12 ways to insert potential elements sum to the product of (1 + k eps V) along it (the Dyson series in V, path by path)
+PASS B2 k = -i: for one path, the 2^12 ways to insert potential elements sum to the product of (1 + k eps V) along it (the Dyson series in V, path by path)
+PASS C1 k = -1 (telegraph with killing): the chain converges to an independent continuum solver (Strang/FFT); error halves with eps  | relative errors ['5.9e-02', '3.0e-02', '1.5e-02']
+PASS C1 k = -i (Dirac with V): the chain converges to an independent continuum solver (Strang/FFT); error halves with eps  | relative errors ['2.5e-02', '1.3e-02', '6.8e-03']
+PASS C2 the plain factor 1 - i eps V and the phase e^(-i eps V) differ by O(eps^2) per tick, so by O(eps) over a fixed time: same limit  | gaps ['3.7e-02', '1.8e-02', '9.1e-03']
+PASS C3 k = -i with the phase e^(-i eps V): total |amplitude|^2 stays exactly constant (unitary, an electric quantum walk); k = -1 with e^(-eps V), V >= 0: probabilities stay >= 0 and their total only falls (killing)
+PASS D1 k = -i, slow packet in a harmonic V (omega = 1, top speed 0.1): after half a period the chain's packet has swung from x = 0.1 to -0.1 and matches Schrodinger's with V, better as m grows; a fast swing (top speed 0.5) does not, because it is relativistic  | slow: overlap 0.9973 at m = 10, 0.9994 at m = 40, centre -0.099; fast: overlap 0.9265
+PASS D2 k = -1, fast turning (a = 20) with killing V = 2 x^2: the chain's density matches the Feynman-Kac equation u_t = (1/2a) u'' - V u  | relative L1 difference 0.010
+PASS D3 k = -1: the slowest decay rates with V = (c/2) x^2 are Omega (n + 1/2), Feynman-Kac's oscillator in imaginary time. On the lattice Omega = sqrt(2 c D) with D = (1 - a eps)/(2a), which tends to sqrt(c/a)  | eps 0.01: [0.1998 0.6022 1.007 ] vs [0.2 0.6 1. ]; eps 0.004: [0.2142 0.6464 1.0819] vs [0.2145 0.6434 1.0724]; limit [0.2236 0.6708 1.118 ]
+PASS E1 with the phase e^(-i eps V) each path's weight keeps its size (m eps)^R, so the total size is still (1 + m eps)^N -> e^(m t): the bounded complex path measure survives any real potential
+PASS E2 with the plain factor 1 - i eps V the sizes grow at most by (1 + eps^2 max V^2)^(N/2) -> 1 on the light cone (V is bounded there)  | 4.177 <= 21.361
+PASS E3 k = -1: averaging random Kac paths with weight exp(-sum eps V) reproduces the chain (Feynman-Kac for the telegraph; random evolutions)  | paths 0.0296 +/- 0.0002, chain 0.0298
+PASS G1 a vector potential enters as link phases on the moves (Feynman-Hibbs's e^(i A dx)); a pure-gauge one only multiplies the state by e^(i chi(x)), as gauge invariance requires
+
+17/17 pass

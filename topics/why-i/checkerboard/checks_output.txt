@@ -1,0 +1,26 @@
+PASS A1 1 + k(a o_k b) = (1 + k a)(1 + k b) for non-commuting matrices, at every dial
+PASS A2 a o b o c = sum over the 7 non-empty ordered sub-chains, weight k^(size - 1): each once, order kept
+PASS B1 [ours, exact at finite eps] N steps of (turn, move) = the free moves times 1 + k(t_N o_k ... o_k t_1), where t_j is the turn element seen from step j
+PASS B2 k = -1 (telegraph): summing (turn weight)^R over all 2^12 choices of turn times gives the chain's amplitude at every site (every checkerboard path once)
+PASS B2 k = -i (checkerboard): summing (turn weight)^R over all 2^12 choices of turn times gives the chain's amplitude at every site (every checkerboard path once)
+PASS B3 the number of paths with R turns ending at x is C(r-1, s) C(l-1, s-1) (end moving right, R = 2s) or C(r-1, s) C(l-1, s) (end moving left, R = 2s+1); r counts the right steps plus the starting direction, l the left steps (Feynman-Hibbs problem 2-6)
+PASS B4 Kac's probability chain (continue 1 - a eps, turn a eps) is the k = -1 chain with turn weight a eps/(1 - a eps), times (1 - a eps)^N
+PASS B5 at k = -1 (normalized) every entry is a probability and they sum to 1 at every step: a true measure on paths
+PASS B6 at k = -i the step (cos m eps, i sin m eps) keeps the total |amplitude|^2 = 1 exactly (Meyer's quantum walk); the pure chain (1, i m eps) drifts by (1 + m^2 eps^2)^(N/2), which goes to 1 as eps -> 0
+PASS C1 k = -1 (telegraph): amplitude/(2 eps) converges to the continuum kernel inside the light cone; error halves with eps  | errors ['1.9e-01', '1.0e-01', '5.1e-02', '2.6e-02']
+PASS C1 k = -i (checkerboard): amplitude/(2 eps) converges to the continuum kernel inside the light cone; error halves with eps  | errors ['6.0e-02', '2.9e-02', '1.4e-02', '7.2e-03']
+PASS C2 k = -1 (telegraph): the never-turn path carries amplitude 1 to x = t (pure chain); with Kac's normalization it carries (1 - a eps)^N -> e^(-a t)
+PASS C2 k = -i (checkerboard): the never-turn path carries amplitude 1 to x = t (pure chain); with Kac's normalization it carries (1 - a eps)^N -> e^(-a t)
+PASS C3 k = -1 (telegraph): the kernel solves d_t G_R = -d_x G_R + w G_L and d_t G_L = d_x G_L + w G_R (w = -k m)
+PASS C3 k = -i (checkerboard): the kernel solves d_t G_R = -d_x G_R + w G_L and d_t G_L = d_x G_L + w G_R (w = -k m)
+PASS C4 k = -1: Kac's density u = p_R + p_L solves the telegraph equation u_tt + 2a u_t = u_xx  | residual 3.7e-09
+PASS C4b k = -i: each component solves the Klein-Gordon equation psi_tt - psi_xx + m^2 psi = 0 (the 1+1 Dirac equation squared)
+PASS C5 proof step: in momentum space one step is 1 + eps A + O(eps^2), so N = t/eps steps converge to exp(t A) for every momentum (Lie-Trotter)
+PASS C6 proof step: the step's size is at most sqrt(1 + m^2 eps^2) at every momentum, so N = t/eps steps stay below e^(m^2 eps t/2) -> 1 (dominated convergence then gives the kernel as a limit of distributions)  | 1.00008450
+PASS D1 k = -1, long times: the slow mode decays at rate p^2/(2a), i.e. diffusion with D = 1/(2a) (Kac 1974; c = 1)  | [0.00062 0.00249 0.00998] vs [0.000625 0.0025   0.01    ]
+PASS D2 k = -i: the step's frequencies are sqrt(m^2 + p^2) (relativistic), which is m + p^2/(2m) for small p: Schrodinger's free particle  | [0.000625 0.002498 0.009975] vs [0.000625 0.0025   0.01    ]
+PASS D3 the turn rate a continued to i m sends the diffusion constant 1/(2a) to -i/(2m): the heat equation becomes Schrodinger's (Nelson's continuation in mass, here at the level of the chain)
+PASS D4 k = -1: the mean square distance is t/a - (1 - e^(-2at))/(2a^2), which becomes the diffusive t/a at long times  | 1.24174 vs 1.24424
+PASS E1 path by path, the k = -i weight (i m eps)^R has the same size as the k = -1 weight (m eps)^R; summed, the sizes are (1 + m eps)^N -> e^(m t), finite as eps -> 0: a complex path measure of bounded total variation (Cameron's no-go does not bite here)  | total size [12.612 13.024 13.24  13.351] vs e^(mt) = 13.464
+
+24/24 pass

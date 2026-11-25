@@ -1,0 +1,30 @@
+PASS K1 shift-after-boost = e^(i m v a) x boost-after-shift: the boost/shift twist is set by the mass (Bargmann 1954)  | exp(I*a*m*v)
+PASS K2 shift symmetry + boost rule [K, H] = iP (with [K, P] = i m) force H = P^2/(2m) + constant (Levy-Leblond)  | Eq(f(p), C1 + p**2/(2*m))
+PASS K3 operator check: [m x, P^2/2m] = i P
+PASS Q1 the Poisson bracket of two monomials has coefficient a*d - b*c: the order dial's wedge, on exponents
+PASS Q2 brackets of polynomials of degree <= 2 stay of degree <= 2 (a finite-dimensional algebra: Heisenberg + sp(2))
+PASS Q3 cubics do not close: {q^3, p^3} = 9 q^2 p^2 has degree 4 (why Groenewold-van Hove stops at quadratics)
+PASS Q4 the order dial's affine pair sits inside: {q, q p} = q, the affine rule [X, Y] = Y (Klauder's Q and D)
+PASS Q5 for a quadratic Hamiltonian the time-sliced chain is a product of 2x2 symplectic matrices converging to the exact flow (error ~ 1/N^2)  | ['1.5e-02', '1.5e-04', '1.5e-06']
+PASS Q6 each step keeps oriented phase-space area (det = 1): the chain never loses the twist
+PASS B1 Bohr-Sommerfeld: orbit area 2*pi*E/w set to 2*pi*hbar*(n + 1/2) reproduces the computed oscillator levels  | computed [0.65   1.9499 3.2497 4.5495], area rule [0.65 1.95 3.25 4.55]
+PASS B2 for x^4 the same area rule is off by 18% at n = 0 and improves fast with n (it is the leading semiclassical term)  | relative errors [0.1822 0.0125 0.0054 0.0026 0.0013 0.0006]
+PASS B3 spin: a sphere of area 4*pi*hbar*(j + 1/2) holds exactly 2j + 1 cells of area 2*pi*hbar (Kostant-Souriau integrality)
+PASS B4 a closed loop of steps returns to the start shifted only by its area (here 2*pi); with hbar = 1 its phase e^(i*area) = 1 exactly
+PASS B5 the same loop with hbar = 0.7 gives phase != 1: the rule fixes area in units of hbar, not hbar itself  | phase -0.901+0.434j
+PASS M1 Feynman-Kac: averaging Brownian paths with weight exp(-int V dt) matches e^(-tH) f (rigorous, Kac 1949)  | paths 0.3834 +/- 0.0014, exact 0.3836
+PASS M2 Klauder's affine phase-space metric q^2 dp^2 + dq^2/q^2 is exactly the Poincare length on the order dial's half-plane (a = 1/q, b = p)  | Matrix([[q**2, 0], [0, q**(-2)]])
+PASS M3 Klauder's labels compose like the order dial's maps: (a, b) = (1/q, p) follows x -> a x + b
+PASS M4 hyperbolic Brownian motion looks the same from every start: distance-from-start quantiles agree (start i vs start 3 + 0.25i)  | [0.816 1.277 1.801 2.295] vs [0.813 1.269 1.79  2.299]
+PASS M5 its stretch coordinate drifts like E[log lam_t] = -t/2 (generator (1/2) lam^2 Laplacian)  | -0.4964
+PASS M6 with its scale put back, Klauder's metric has Gaussian curvature -1/(beta*hbar) (scalar curvature -2/(beta*hbar), the figure Klauder quotes)  | K = -1/(beta*hbar)
+PASS B6 [ours, arithmetic] Klauder's area element is dp dq, so a closed genus-g surface of that curvature holds (2g-2)*beta cells of size 2*pi*hbar: integrality fixes beta, not hbar  | area element 1, cells 2*beta*(g - 1)
+PASS S1 Duistermaat-Heckman: on the sphere, int exp(i t z) dA equals the sum of its two stationary-phase terms exactly, for every t
+PASS S2 checkerboard/telegraph: one two-way chain; turn weight i*m*eps gives the 1+1 Dirac propagator, real turn rate gives Kac's telegraph kernel  | errors 2.4e-04, 4.3e-04
+PASS S3 Suzuki-Trotter: the time-sliced quantum trace equals a classical Ising ring sum exactly, and tends to Tr e^(beta H)  | ring 5.21882, sliced 5.21882, exact 5.21449
+PASS S4 Wilson loop: the phase around a loop equals the product of the plaquette phases inside (discrete Stokes)
+PASS S5 Selberg/Gutzwiller shape: a hyperbolic element slides points along its axis by length 2*arccosh(|tr|/2) (here tr = 3)  | 1.92485 vs 1.92485
+PASS S6 thimble: int exp(i x^2) dx along the real line = int along the line turned by 45 degrees (a Gaussian) = sqrt(pi) e^(i pi/4)  | 1.2509+1.2527j vs 1.2533+1.2533j
+PASS S7 Magnus/BCH: the log of an ordered product is the sum plus nested twists; the third-order term cuts the error by a lot  | error to 2nd order 2.6e-04, to 3rd 9.0e-06
+
+28/28 pass
