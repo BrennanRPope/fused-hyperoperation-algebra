@@ -1,0 +1,29 @@
+PASS 1a half box layers start 1, 1/2, -1/8, 1/16, -5/128, 7/256  | 1, 1/2, -1/8, 1/16, -5/128, 7/256
+PASS 1b half box corner total -> sqrt 2 (sum of layers at a=1)  | 400 layers: 1.414231 vs 1.414214
+PASS 1c half box has negative layers (k=2,4,6,...)
+PASS 1d half box joined with half box = stick: layers 1,1,0,0,... exactly
+PASS 1e 4^k C(1/2,k) = 1, then (-1)^(k-1) * 2 * Catalan(k-1)  | [1, 2, -2, 4, -10, 28, -84, 264]
+PASS 1f third box joined three times = stick
+PASS 2a (1+1)^(1/2) = 1 + (sqrt2 - 1): half dimension at side 2 = one stick with dial sqrt2-1
+PASS 2b mult-add half power a^(*1/2) = sqrt(1+a)-1 joins back to a
+PASS 2c dyadic halves forced: f(1/2)=sqrt2, f(1/4)=2^(1/4) (positive roots)
+PASS 3a C_1/4 level m: 2^m pieces of length 4^-m
+PASS 3b dimension of C_1/4 = log2/log4 = 1/2
+PASS 3c box counting: halving the scale multiplies the count by about sqrt2 (slope 1/2)  | per-halving ratios ~ 1.51, 1.34, 1.50, 1.34, 1.50, 1.33, 1.50, 1.33
+PASS 3d the count / sqrt(1/eps) keeps wobbling with period one level (x4 in scale): no single corner number  | ratio range 1.938 .. 2.121; per-halving ratios alternate ~1.50 / ~1.33
+PASS 3e half box squared: 4^m squares of side 4^-m, dimension log4/log4 = 1
+PASS 3f the squared half box is dust: level-m pieces are separated by gaps (no stick inside)
+PASS 3g its shadow on the x-axis has length (1/2)^m -> 0 (a stick's shadow stays 1)
+PASS 4a three pieces at scale 1/9 also has dimension 1/2 (log3/log9)
+PASS 4b same dimension, different counts at the same scale  | C_1/4: 127, three-at-1/9: 140, sqrt(1/eps) = 64
+PASS 4c uneven pieces (0.09, 0.49) also solve the Moran equation for d = 1/2  | r2 = 0.4900
+PASS 4d C_1/4 x three-at-1/9 (a different half squared against C_1/4) box-counts at dimension ~1  | slopes 0.968, 1.070, 1.062
+PASS 5a level m=1,2,3 of C_1/4: N points give 2^N - 1 subsets, pairwise as far apart as the points  | N = 2, 4, 8 -> 3, 15, 255 separated subsets (asserted above)
+PASS 5b subsets of an eps-net are an eps-net of the hyperspace (1500 random pieces of level 6 vs the 8-point net)  | eps = 63/4096, worst Hausdorff distance = 63/4096
+PASS 5c any rule N -> <= A N + B applied twice falls below 2^N eventually (A,B <= 6)
+PASS 5d two different increasing integer half power sets from n=2 up (non-canonical)  | A: [3, 4, 8, 9, 10, 11, 16, 32, 64, 128]  B: [3, 4, 8, 10, 12, 14, 16, 18, 32, 34]
+PASS 6a Cantor sets of dimension 1/2, 0.63 and 0.32 all code subsets of N one-to-one: 2^10 distinct level-10 points each (asserted above)
+PASS 7a species: sets x sets = power set (sum C(n,k) = 2^n); sqrt2^n is not a half under this product  | a different way of joining gives a different half: count 1 per set
+PASS 7b groupoid with 1/2 element: maps into {0,1} number 2 (groupoid size 2), not 2^(1/2)
+
+27 of 27 pass

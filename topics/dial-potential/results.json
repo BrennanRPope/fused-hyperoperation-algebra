@@ -1,0 +1,2635 @@
+{
+ "rounds": [
+  [
+   {
+    "id": "C2",
+    "family": "gravity",
+    "name": "Dial boosts plus the river (= general relativity)",
+    "shape": "local boosts by the dial, river at escape speed",
+    "coupling": "k couples to clocks and rulers equally",
+    "geometry": "time and space deficits are mult-add inverses (proved)",
+    "grade": "A",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 15.065870847895837,
+    "net_bits": 10.743942753008476,
+    "ruled_out": false,
+    "max_abs_z": 0.9130434782629895,
+    "rows": [
+     {
+      "target": "gamma",
+      "pred": 1.0,
+      "z": -0.9130434782629895,
+      "bits": 15.065870847895837
+     }
+    ],
+    "extra": {},
+    "meta": {}
+   },
+   {
+    "id": "C6",
+    "family": "quint",
+    "name": "Dial today, V \u221d k",
+    "shape": "V \u221d k, \u03bb = \u221a(2/3) = 0.816",
+    "coupling": "k is the metric's conformal factor",
+    "geometry": "conformal factor's kinetic term fixes the slope at n\u00b7\u221a(2/3), n = 1",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 13.879035627974874,
+    "net_bits": 9.55710753308751,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.816496580927726,
+      "Om": 0.299721144282703,
+      "heldout_chi2": 8.935246481808408,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.8964605420085615
+     },
+     "train_bao": {
+      "par": 0.816496580927726,
+      "Om": 0.3035162042911356,
+      "heldout_chi2": 1402.5538537278771,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.8973518053631045
+     },
+     "full": {
+      "par": 0.816496580927726,
+      "Om": 0.3029688611242928,
+      "chi2": 1411.28746603229,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 4.850753378104173,
+      "w0": -0.8972236817649283,
+      "wa_proxy": -0.15119748033046854
+     },
+     "heldout_dchi2_sum": 19.240428828843626,
+     "cosmo_bits": 13.879035627974874,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "lam": 0.816496580927726
+    }
+   },
+   {
+    "id": "C5",
+    "family": "quint",
+    "name": "Scale-symmetric dial today, slope free",
+    "shape": "V = V0 e^(\u2212\u03bb\u03c6), \u03c6 = \u221a(3/2) ln k",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "rescaling symmetry (proved) makes ln k the natural field, so V is exponential",
+    "grade": "A",
+    "free_params": 1,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 12.62056448445863,
+    "net_bits": 8.298636389571268,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.7664426637541439,
+      "Om": 0.3041862904889517,
+      "heldout_chi2": 8.877919219100182,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9098791709529537
+     },
+     "train_bao": {
+      "par": 0.9996614425642555,
+      "Om": 0.306631153992589,
+      "heldout_chi2": 1404.355792440474,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.8458101421719482
+     },
+     "full": {
+      "par": 0.8176839003264718,
+      "Om": 0.3029671851514921,
+      "chi2": 1411.2874180820038,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 4.850801328390389,
+      "w0": -0.8969187983178875,
+      "wa_proxy": -0.15162979082255235
+     },
+     "heldout_dchi2_sum": 17.495817378954957,
+     "cosmo_bits": 12.62056448445863,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "lam": null
+    }
+   },
+   {
+    "id": "P9",
+    "family": "yt",
+    "name": "Top at the dial's unit",
+    "shape": "y_t = 1, so mt = v/\u221a2",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "unit coupling = the lift's own scale",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 6.961075905809389,
+    "net_bits": -5.109045038667434,
+    "ruled_out": false,
+    "max_abs_z": 0.4408207464074756,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7071067811865475,
+      "z": 0.4408207464074756,
+      "bits": 6.961075905809389
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.0
+    }
+   },
+   {
+    "id": "P8",
+    "family": "sumrule",
+    "name": "Mass budget sum rule",
+    "shape": "mH\u00b2 + mW\u00b2 + mZ\u00b2 + mt\u00b2 = v\u00b2",
+    "coupling": "k sets every mass",
+    "geometry": "none: a budget of corners adding to the vev",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 8.813781191217037,
+    "bits": 6.827334542980313,
+    "net_bits": -6.308374743124087,
+    "ruled_out": false,
+    "max_abs_z": 0.6203507668563794,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5148433579824138,
+      "z": 0.6203507668563794,
+      "bits": 6.827334542980313
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "rule": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "rule_t": [
+      1,
+      1,
+      1,
+      1,
+      "1"
+     ]
+    }
+   },
+   {
+    "id": "P3",
+    "family": "tree_lam",
+    "name": "Higgs at half the vev",
+    "shape": "V = (1/32)(k\u00b2 \u2212 k0\u00b2)\u00b2  (\u03bb = 1/8)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "none beyond the even well; \u03bb = 1/8 is picked as a small fraction",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 6.5947757287278606,
+    "net_bits": -5.475345215748963,
+    "ruled_out": false,
+    "max_abs_z": 0.8409697062119424,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5,
+      "z": -0.8409697062119424,
+      "bits": 6.5947757287278606
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.125
+    }
+   },
+   {
+    "id": "P4",
+    "family": "flat",
+    "name": "Dial flat at the Planck scale",
+    "shape": "\u03bb(M_Pl) = 0: the well vanishes at the top scale",
+    "coupling": "k = Higgs magnitude, Standard Model running",
+    "geometry": "at k's symmetric point mult-add is plain addition; 'flat at the top' = no hump left at M_Pl",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 0.1961679716070588,
+    "net_bits": -4.125760123280304,
+    "ruled_out": true,
+    "max_abs_z": 3.3732130570210566,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.522636192897727,
+      "z": 3.3732130570210566,
+      "bits": 0.1961679716070588
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "scale": "MPl",
+     "beta": false,
+     "own_rge_mh": 128.59017726538139
+    }
+   },
+   {
+    "id": "P1",
+    "family": "tree_lam",
+    "name": "Quartic sombrero, height free",
+    "shape": "V = (\u03bb/4)(k\u00b2 \u2212 k0\u00b2)\u00b2",
+    "coupling": "k = Higgs magnitude, k0 = v",
+    "geometry": "flip symmetry k \u2192 \u2212k (proved) makes V even; a quartic is the simplest even well",
+    "grade": "B",
+    "free_params": 1,
+    "fitted_on": [
+     "mH/v"
+    ],
+    "choice_bits": 0.0,
+    "bits": 0.0,
+    "net_bits": -4.321928094887363,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {},
+    "meta": {}
+   },
+   {
+    "id": "C4",
+    "family": "bd",
+    "name": "Dial coupled to curvature (Brans\u2013Dicke)",
+    "shape": "k\u00b7R, coupling \u03c9 free",
+    "coupling": "k couples to curvature",
+    "geometry": "dial as a local G",
+    "grade": "B",
+    "free_params": 1,
+    "fitted_on": [
+     "gamma"
+    ],
+    "choice_bits": 0.0,
+    "bits": 0.0,
+    "net_bits": -4.321928094887363,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {},
+    "meta": {}
+   },
+   {
+    "id": "C7",
+    "family": "quint",
+    "name": "Dial today, V \u221d k\u00b2",
+    "shape": "V \u221d k\u00b2, \u03bb = 2\u221a(2/3) = 1.633",
+    "coupling": "k is the metric's conformal factor",
+    "geometry": "n = 2: an energy density scales as k\u00b2 when k \u221d 1/length\u00b2",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -46.42135135795959,
+    "net_bits": -50.74327945284695,
+    "ruled_out": true,
+    "max_abs_z": 3.1,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.632993161855452,
+      "Om": 0.2902577324625053,
+      "heldout_chi2": 33.61363692376303,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.5452738230953621
+     },
+     "train_bao": {
+      "par": 1.632993161855452,
+      "Om": 0.32449732958223393,
+      "heldout_chi2": 1461.4695497378707,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.5818625172976891
+     },
+     "full": {
+      "par": 1.632993161855452,
+      "Om": 0.32043406851757555,
+      "chi2": 1479.2886149824958,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": -63.150395572101615,
+      "w0": -0.5776676538740875,
+      "wa_proxy": -0.5405802183742605
+     },
+     "heldout_dchi2_sum": -64.35365762310455,
+     "cosmo_bits": -46.42135135795959,
+     "cosmo_z": 3.1
+    },
+    "meta": {
+     "lam": 1.632993161855452
+    }
+   },
+   {
+    "id": "P5",
+    "family": "flat",
+    "name": "Dial flat and level at the Planck scale",
+    "shape": "\u03bb(M_Pl) = 0 and \u03b2_\u03bb(M_Pl) = 0",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "flat and level: the hump and its slope both vanish at the top scale",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -72.87822386428623,
+    "net_bits": -77.2001519591736,
+    "ruled_out": true,
+    "max_abs_z": 10.854169495891176,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5405951508765634,
+      "z": 10.854169495891176,
+      "bits": -76.05177642193084
+     },
+     {
+      "target": "mt/v",
+      "pred": 0.7098500587166976,
+      "z": 2.9149374456609833,
+      "bits": 3.1735525576446184
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "scale": "MPl",
+     "beta": true
+    }
+   },
+   {
+    "id": "P10",
+    "family": "angle",
+    "name": "Weinberg angle as a dial quarter",
+    "shape": "sin\u00b2\u03b8_W = 1/4",
+    "coupling": "k mixes hypercharge and weak isospin",
+    "geometry": "a quarter turn of the dial's rotation",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -165.28269656556074,
+    "net_bits": -177.35281751003757,
+    "ruled_out": true,
+    "max_abs_z": 15.548418624318973,
+    "rows": [
+     {
+      "target": "sin2W",
+      "pred": 0.25,
+      "z": 15.548418624318973,
+      "bits": -165.28269656556074
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "s2": 0.25
+    }
+   },
+   {
+    "id": "P11",
+    "family": "unif",
+    "name": "One dial for all three forces",
+    "shape": "the three gauge couplings meet (SM running)",
+    "coupling": "k is the single coupling above the meeting scale",
+    "geometry": "one dial, three rungs",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -925.8573911996727,
+    "net_bits": -930.1793192945601,
+    "ruled_out": true,
+    "max_abs_z": 36.01601395570337,
+    "rows": [
+     {
+      "target": "sin2W",
+      "pred": 0.20756507517751363,
+      "z": -36.01601395570337,
+      "bits": -925.8573911996727
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "M_meet": 675470859062151.2
+    }
+   },
+   {
+    "id": "P7",
+    "family": "veltman",
+    "name": "Dial blind to the cutoff (Veltman)",
+    "shape": "quadratic sensitivity cancels: mH\u00b2 = 4mt\u00b2 \u2212 2mW\u00b2 \u2212 mZ\u00b2",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "the symmetric point k = 0 is not pulled by heavy physics",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -1502.7022147219554,
+    "net_bits": -1507.0241428168429,
+    "ruled_out": true,
+    "max_abs_z": 45.74972280969328,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 1.2706967254076258,
+      "z": 45.74972280969328,
+      "bits": -1502.7022147219554
+     }
+    ],
+    "extra": {},
+    "meta": {}
+   },
+   {
+    "id": "P2",
+    "family": "tree_lam",
+    "name": "Lift-normalised well",
+    "shape": "V = (k \u2733 (\u2212k) + k0\u00b2)\u00b2 = (k0\u00b2 \u2212 k\u00b2)\u00b2",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "k \u2733 (\u2212k) = \u2212k\u00b2 (proved): the well is the lift of a dial against its mirror, coefficient 1",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -5293.167390419251,
+    "net_bits": -5297.489318514138,
+    "ruled_out": true,
+    "max_abs_z": 85.71894560862404,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 2.8284271247461903,
+      "z": 85.71894560862404,
+      "bits": -5293.167390419251
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 4.0
+    }
+   },
+   {
+    "id": "C8",
+    "family": "hier",
+    "name": "Dark energy from the weak scale",
+    "shape": "\u03c1\u039b^(1/4) = v\u00b2/M_Pl",
+    "coupling": "k's dip height set by the vev",
+    "geometry": "seesaw between the two scales",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -5607.777911522646,
+    "net_bits": -5612.099839617533,
+    "ruled_out": true,
+    "max_abs_z": 88.24506268184521,
+    "rows": [
+     {
+      "target": "rhoL/MPl",
+      "pred": 1.0221604712929568e-32,
+      "z": -88.24506268184521,
+      "bits": -5607.777911522646
+     }
+    ],
+    "extra": {},
+    "meta": {}
+   },
+   {
+    "id": "P12",
+    "family": "alpha",
+    "name": "Fine-structure constant from \u03c0",
+    "shape": "1/\u03b1 = 4\u03c0\u00b3 + \u03c0\u00b2 + \u03c0",
+    "coupling": "k = electric charge",
+    "geometry": "none (a known numerology)",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 12.0,
+    "bits": -158397464.1491335,
+    "net_bits": -158397480.4710616,
+    "ruled_out": true,
+    "max_abs_z": 14818.41957274182,
+    "rows": [
+     {
+      "target": "alpha",
+      "pred": 0.007297336344064641,
+      "z": -14818.41957274182,
+      "bits": -158397464.1491335
+     }
+    ],
+    "extra": {},
+    "meta": {}
+   },
+   {
+    "id": "P6",
+    "family": "cw",
+    "name": "Scale-symmetric dial (Coleman\u2013Weinberg)",
+    "shape": "V = \u03bb k\u2074 (ln(k\u00b2/k0\u00b2) \u2212 \u00bd), no tree mass",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "the dial's rescaling symmetry (proved) forbids a tree-level k0; only quantum running can set it",
+    "grade": "A",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -Infinity,
+    "net_bits": -Infinity,
+    "ruled_out": true,
+    "max_abs_z": Infinity,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": null,
+      "z": Infinity,
+      "bits": -Infinity
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "m2_GeV2": -2127.715660888414
+    }
+   },
+   {
+    "id": "C1",
+    "family": "gravity",
+    "name": "Dial alone as gravity",
+    "shape": "k(x) = 1/c(x)\u00b2, clocks only",
+    "coupling": "k couples to time",
+    "geometry": "a varying dial changes clock rates (relativity pass)",
+    "grade": "A",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -1363663155.1427124,
+    "net_bits": -1363663159.4646404,
+    "ruled_out": true,
+    "max_abs_z": 43479.17391304348,
+    "rows": [
+     {
+      "target": "gamma",
+      "pred": 0.0,
+      "z": -43479.17391304348,
+      "bits": -1363663155.1427124
+     }
+    ],
+    "extra": {},
+    "meta": {}
+   },
+   {
+    "id": "C3",
+    "family": "lightdial",
+    "name": "Light's dial rolling as dark energy",
+    "shape": "exponential V, \u03bb = \u221a(2/3), \u03b1 \u221d \u221ak",
+    "coupling": "k = 1/c\u00b2 couples to light",
+    "geometry": "the same k sets c and the potential",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -2765649943.8438826,
+    "net_bits": -2765649948.1658106,
+    "ruled_out": true,
+    "max_abs_z": 61919.3422808157,
+    "rows": [
+     {
+      "target": "dalpha",
+      "pred": -0.08668577919314198,
+      "z": -61919.3422808157,
+      "bits": -2765649943.8438826
+     }
+    ],
+    "extra": {
+     "dalpha_pred": -0.08668577919314198,
+     "dphi": -0.21233592697876869,
+     "n_alpha_bound_2sigma": 2.3648630941327255e-05
+    },
+    "meta": {
+     "lam": 0.816496580927726
+    }
+   }
+  ],
+  [
+   {
+    "id": "quint:cosine:free",
+    "family": "quint_shape",
+    "name": "Dial today on a circle (q < 0, compact dial), period free",
+    "shape": "V0 (1 + cos \u03c6/f)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "negative dial: the dial's rotations close on a circle",
+    "grade": "B",
+    "free_params": 1,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 9.764527867496657,
+    "net_bits": 4.442599772609294,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.0363636363636364,
+      "Om": 0.3186537001965042,
+      "heldout_chi2": 13.667269634606075,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9530196552490183
+     },
+     "train_bao": {
+      "par": 1.0363636363636364,
+      "Om": 0.30037446706037163,
+      "heldout_chi2": 1403.5257494822145,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9503410983779703
+     },
+     "full": {
+      "par": 1.0363636363636364,
+      "Om": 0.30350688725768477,
+      "chi2": 1412.8059939448772,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 3.3322254655170127,
+      "w0": -0.9508138198444754,
+      "wa_proxy": -0.07805209375467514
+     },
+     "heldout_dchi2_sum": 13.536509921708646,
+     "cosmo_bits": 9.764527867496657,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "cosine",
+     "par": null,
+     "lam": null
+    }
+   },
+   {
+    "id": "quint:exp:0.516",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.516",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 8.820743204136246,
+    "net_bits": 3.4988151092488833,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.5165,
+      "Om": 0.32019119785876665,
+      "heldout_chi2": 14.682695921402745,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9608539699518058
+     },
+     "train_bao": {
+      "par": 0.5165,
+      "Om": 0.29984767551706837,
+      "heldout_chi2": 1403.8186865523458,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9590060871313276
+     },
+     "full": {
+      "par": 0.5165,
+      "Om": 0.30346387057089463,
+      "chi2": 1413.1193305451789,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 3.018888865215331,
+      "w0": -0.9593399992396885,
+      "wa_proxy": -0.06106316380492238
+     },
+     "heldout_dchi2_sum": 12.228146564780674,
+     "cosmo_bits": 8.820743204136246,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.5165,
+     "lam": 0.5165
+    }
+   },
+   {
+    "id": "tree_lam:2/5\u00b7\u03c0^-1",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 2/5\u00b7\u03c0^-1",
+    "shape": "V = (lam = 2/5\u00b7\u03c0^-1)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 7.0002831161228904,
+    "net_bits": -6.069837828353933,
+    "ruled_out": false,
+    "max_abs_z": 0.38089032834664016,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5046265044049906,
+      "z": -0.38089032834664016,
+      "bits": 7.0002831161228904
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.127323954474
+    }
+   },
+   {
+    "id": "tree_lam:5/4\u00b7\u03c0^-2",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 5/4\u00b7\u03c0^-2",
+    "shape": "V = (lam = 5/4\u00b7\u03c0^-2)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 6.914984933260807,
+    "net_bits": -6.155136011216016,
+    "ruled_out": false,
+    "max_abs_z": 0.5131528350730328,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5032921210450249,
+      "z": -0.5131528350730328,
+      "bits": 6.914984933260807
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.126651479553
+    }
+   },
+   {
+    "id": "yt:3/1\u00b7\u03c0^-1",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 3/1\u00b7\u03c0^-1",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 3/1\u00b7\u03c0^-1)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 6.739592484677428,
+    "net_bits": -6.330528459799395,
+    "ruled_out": false,
+    "max_abs_z": 0.7080707226400648,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.6909882989425363,
+      "z": -0.7080707226400648,
+      "bits": 6.739592484677428
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 0.954929658551
+    }
+   },
+   {
+    "id": "tree_lam:6/5\u00b7\u03c0^-2",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 6/5\u00b7\u03c0^-2",
+    "shape": "V = (lam = 6/5\u00b7\u03c0^-2)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 5.410324067773185,
+    "net_bits": -7.659796876703638,
+    "ruled_out": false,
+    "max_abs_z": 1.5327193824594099,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.4931235552495946,
+      "z": -1.5327193824594099,
+      "bits": 5.410324067773185
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.121585420371
+    }
+   },
+   {
+    "id": "yt:1/3\u00b7\u03c0^1",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 1/3\u00b7\u03c0^1",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 1/3\u00b7\u03c0^1)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 5.278271688371263,
+    "net_bits": -7.79184925610556,
+    "ruled_out": false,
+    "max_abs_z": 1.589712215454888,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7236012545584066,
+      "z": 1.589712215454888,
+      "bits": 5.278271688371263
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.047197551197
+    }
+   },
+   {
+    "id": "tree_lam:3/8\u00b7\u03c0^-1",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 3/8\u00b7\u03c0^-1",
+    "shape": "V = (lam = 3/8\u00b7\u03c0^-1)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 4.2402852657756105,
+    "net_bits": -8.829835678701212,
+    "ruled_out": false,
+    "max_abs_z": 1.9927987602533943,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.48860251190308057,
+      "z": -1.9927987602533943,
+      "bits": 4.2402852657756105
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.119366207319
+    }
+   },
+   {
+    "id": "yt:2/7\u00b7\u03c0^1",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 2/7\u00b7\u03c0^1",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 2/7\u00b7\u03c0^1)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 3.447731949222691,
+    "net_bits": -9.62238899525413,
+    "ruled_out": false,
+    "max_abs_z": 2.2505225717939443,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.6699245856908075,
+      "z": -2.2505225717939443,
+      "bits": 3.447731949222691
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 0.897597901026
+    }
+   },
+   {
+    "id": "flat:GUT:lam",
+    "family": "flat",
+    "name": "Dial flat at the GUT scale",
+    "shape": "\u03bb(GUT) = 0",
+    "coupling": "k = Higgs magnitude, Standard Model running",
+    "geometry": "at k's symmetric point mult-add is plain addition; 'flat at the top' = no hump left at M_Pl",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 2.584962500721156,
+    "bits": 0.7834210339721119,
+    "net_bits": -7.123469561636407,
+    "ruled_out": true,
+    "max_abs_z": 3.2648240893270986,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5215351077437274,
+      "z": 3.2648240893270986,
+      "bits": 0.7834210339721119
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "scale": "GUT",
+     "beta": false
+    }
+   },
+   {
+    "id": "flat:MPl_red:lam",
+    "family": "flat",
+    "name": "Dial flat at the MPl_red scale",
+    "shape": "\u03bb(MPl_red) = 0",
+    "coupling": "k = Higgs magnitude, Standard Model running",
+    "geometry": "at k's symmetric point mult-add is plain addition; 'flat at the top' = no hump left at M_Pl",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 2.584962500721156,
+    "bits": 0.5994881149879641,
+    "net_bits": -7.307402480620555,
+    "ruled_out": true,
+    "max_abs_z": 3.2932142990652404,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5221167488257109,
+      "z": 3.2932142990652404,
+      "bits": 0.5994881149879641
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "scale": "MPl_red",
+     "beta": false
+    }
+   },
+   {
+    "id": "flat:string:lam",
+    "family": "flat",
+    "name": "Dial flat at the string scale",
+    "shape": "\u03bb(string) = 0",
+    "coupling": "k = Higgs magnitude, Standard Model running",
+    "geometry": "at k's symmetric point mult-add is plain addition; 'flat at the top' = no hump left at M_Pl",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 2.584962500721156,
+    "bits": 0.5279818578517865,
+    "net_bits": -7.378908737756732,
+    "ruled_out": true,
+    "max_abs_z": 3.315121891123331,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5218950103248506,
+      "z": 3.315121891123331,
+      "bits": 0.5279818578517865
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "scale": "string",
+     "beta": false
+    }
+   },
+   {
+    "id": "quint:hilltop:free",
+    "family": "quint_shape",
+    "name": "Dial today near the top of its hump (hilltop), width free",
+    "shape": "V0 (1 \u2212 \u03c6\u00b2/2\u03bc\u00b2)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "the 1D sombrero: field sits near the hump at k = 0 and starts to roll",
+    "grade": "B",
+    "free_params": 1,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 0.4037149246845307,
+    "net_bits": -4.918213170202832,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.0545454545454547,
+      "Om": 0.33116739009988655,
+      "heldout_chi2": 23.707516251252695,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9984182086772738
+     },
+     "train_bao": {
+      "par": 1.0545454545454547,
+      "Om": 0.297581505649667,
+      "heldout_chi2": 1406.4623450636864,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9982337974317633
+     },
+     "full": {
+      "par": 1.0545454545454547,
+      "Om": 0.3041796457795263,
+      "chi2": 1415.9946118536513,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 0.1436075567428361,
+      "w0": -0.9982721582379989,
+      "wa_proxy": -0.002825828007313236
+     },
+     "heldout_dchi2_sum": 0.5596677235901062,
+     "cosmo_bits": 0.4037149246845307,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "hilltop",
+     "par": null,
+     "lam": null
+    }
+   },
+   {
+    "id": "yt:7/2\u00b7\u03c0^-1",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 7/2\u00b7\u03c0^-1",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 7/2\u00b7\u03c0^-1)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 0.024505241684059875,
+    "net_bits": -13.045615702792762,
+    "ruled_out": true,
+    "max_abs_z": 3.1321640646124913,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7463526651801412,
+      "z": 3.1321640646124913,
+      "bits": 0.024505241684059875
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.114084601643
+    }
+   },
+   {
+    "id": "flat:MPl_red:beta",
+    "family": "flat",
+    "name": "Dial flat and level at the MPl_red scale",
+    "shape": "\u03bb(MPl_red) = 0 and \u03b2_\u03bb = 0",
+    "coupling": "k = Higgs magnitude, Standard Model running",
+    "geometry": "at k's symmetric point mult-add is plain addition; 'flat at the top' = no hump left at M_Pl",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 2.584962500721156,
+    "bits": -7.46580971716846,
+    "net_bits": -15.372700312776978,
+    "ruled_out": true,
+    "max_abs_z": 5.932316163115553,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5260577498795828,
+      "z": 5.932316163115553,
+      "bits": -16.475157742584894
+     },
+     {
+      "target": "mt/v",
+      "pred": 0.7028205274735357,
+      "z": 0.631803793122065,
+      "bits": 9.009348025416434
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "scale": "MPl_red",
+     "beta": true
+    }
+   },
+   {
+    "id": "quint:exp:1.117",
+    "family": "quint",
+    "name": "Dial today, exponential slope 1.117",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -20.416079912041603,
+    "net_bits": -25.738008006928965,
+    "ruled_out": true,
+    "max_abs_z": 3.1,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.1165,
+      "Om": 0.2573629493029803,
+      "heldout_chi2": 51.53334234624758,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.7830096167487464
+     },
+     "train_bao": {
+      "par": 1.1165,
+      "Om": 0.30898945825010665,
+      "heldout_chi2": 1407.498883150518,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.807307364022359
+     },
+     "full": {
+      "par": 1.1165,
+      "Om": 0.3039088578810837,
+      "chi2": 1415.7587027540585,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 0.37951665633568155,
+      "w0": -0.8050311108644356,
+      "wa_proxy": -0.277140078931557
+     },
+     "heldout_dchi2_sum": -28.302696458236348,
+     "cosmo_bits": -20.416079912041603,
+     "cosmo_z": 3.1
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 1.1165,
+     "lam": 1.1165
+    }
+   },
+   {
+    "id": "SR:mH\u00b2 + mZ\u00b2 + mt\u00b2 = 1\u00b7v\u00b2",
+    "family": "sumrule",
+    "name": "Sum rule mH\u00b2 + mZ\u00b2 + mt\u00b2 = 1\u00b7v\u00b2",
+    "shape": "mH\u00b2 + mZ\u00b2 + mt\u00b2 = 1\u00b7v\u00b2",
+    "coupling": "k sets every mass",
+    "geometry": "neighbour in the sum-rule grammar",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 8.813781191217037,
+    "bits": -52.09288678336836,
+    "net_bits": -66.22859606947276,
+    "ruled_out": true,
+    "max_abs_z": 9.059006880149301,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.6095973088561425,
+      "z": 9.059006880149301,
+      "bits": -52.09288678336836
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "rule": [
+      "0",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "rule_t": [
+      0,
+      1,
+      1,
+      1,
+      "1"
+     ]
+    }
+   },
+   {
+    "id": "SR:mH\u00b2 + mW\u00b2 + mt\u00b2 = 1\u00b7v\u00b2",
+    "family": "sumrule",
+    "name": "Sum rule mH\u00b2 + mW\u00b2 + mt\u00b2 = 1\u00b7v\u00b2",
+    "shape": "mH\u00b2 + mW\u00b2 + mt\u00b2 = 1\u00b7v\u00b2",
+    "coupling": "k sets every mass",
+    "geometry": "neighbour in the sum-rule grammar",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 8.813781191217037,
+    "bits": -80.75529589737701,
+    "net_bits": -94.89100518348141,
+    "ruled_out": true,
+    "max_abs_z": 11.036310152648571,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.6342116903780133,
+      "z": 11.036310152648571,
+      "bits": -80.75529589737701
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "rule": [
+      "1",
+      "0",
+      "1",
+      "1",
+      "1"
+     ],
+     "rule_t": [
+      1,
+      0,
+      1,
+      1,
+      "1"
+     ]
+    }
+   },
+   {
+    "id": "SR:mH\u00b2 + mW\u00b2 + mZ\u00b2 = 1\u00b7v\u00b2",
+    "family": "sumrule",
+    "name": "Sum rule mH\u00b2 + mW\u00b2 + mZ\u00b2 = 1\u00b7v\u00b2",
+    "shape": "mH\u00b2 + mW\u00b2 + mZ\u00b2 = 1\u00b7v\u00b2",
+    "coupling": "k sets every mass",
+    "geometry": "neighbour in the sum-rule grammar",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 8.813781191217037,
+    "bits": -511.25085333434725,
+    "net_bits": -525.3865626204516,
+    "ruled_out": true,
+    "max_abs_z": 26.806598171858543,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.8696516655192627,
+      "z": 26.806598171858543,
+      "bits": -511.25085333434725
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "rule": [
+      "1",
+      "1",
+      "0",
+      "1",
+      "1"
+     ],
+     "rule_t": [
+      1,
+      1,
+      0,
+      1,
+      "1"
+     ]
+    }
+   },
+   {
+    "id": "SR:mH\u00b2 + mW\u00b2 + mZ\u00b2 + mt\u00b2 = 1/4\u00b7v\u00b2",
+    "family": "sumrule",
+    "name": "Sum rule mH\u00b2 + mW\u00b2 + mZ\u00b2 + mt\u00b2 = 1/4\u00b7v\u00b2",
+    "shape": "mH\u00b2 + mW\u00b2 + mZ\u00b2 + mt\u00b2 = 1/4\u00b7v\u00b2",
+    "coupling": "k sets every mass",
+    "geometry": "neighbour in the sum-rule grammar",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 8.813781191217037,
+    "bits": -Infinity,
+    "net_bits": -Infinity,
+    "ruled_out": true,
+    "max_abs_z": Infinity,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": NaN,
+      "z": Infinity,
+      "bits": -Infinity
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "rule": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1/4"
+     ],
+     "rule_t": [
+      1,
+      1,
+      1,
+      1,
+      "1/4"
+     ]
+    }
+   }
+  ],
+  [
+   {
+    "id": "quint:exp:0.666",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.666",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 12.585057100488346,
+    "net_bits": 6.803697386963686,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.6665,
+      "Om": 0.31172273214779117,
+      "heldout_chi2": 10.470971489530092,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9332556733503636
+     },
+     "train_bao": {
+      "par": 0.6665,
+      "Om": 0.301476537896007,
+      "heldout_chi2": 1402.8119638562202,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9316838716414435
+     },
+     "full": {
+      "par": 0.6665,
+      "Om": 0.3031432343883322,
+      "chi2": 1411.8759822390728,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 4.262237171321431,
+      "w0": -0.9319417324883554,
+      "wa_proxy": -0.1013076197522258
+     },
+     "heldout_dchi2_sum": 17.446593692778833,
+     "cosmo_bits": 12.585057100488346,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.6665,
+     "lam": 0.6665
+    }
+   },
+   {
+    "id": "quint:exp:0.967",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.967",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 7.536197617501236,
+    "net_bits": 1.7548379039765765,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.9665,
+      "Om": 0.2826577324848946,
+      "heldout_chi2": 16.49414439558083,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.8480289000115123
+     },
+     "train_bao": {
+      "par": 0.9665,
+      "Om": 0.30600998164105825,
+      "heldout_chi2": 1403.7879963815212,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.8559321917620227
+     },
+     "full": {
+      "par": 0.9665,
+      "Om": 0.3031275418938991,
+      "chi2": 1412.1819634425456,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 3.9562559678486195,
+      "w0": -0.8549769387015463,
+      "wa_proxy": -0.210137522811648
+     },
+     "heldout_dchi2_sum": 10.447388261427118,
+     "cosmo_bits": 7.536197617501236,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.9665,
+     "lam": 0.9665
+    }
+   },
+   {
+    "id": "yt:1/1",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 1/1",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 1/1)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 6.961075905809382,
+    "net_bits": -6.568476657304738,
+    "ruled_out": false,
+    "max_abs_z": 0.44082074640748653,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7071067811865476,
+      "z": 0.44082074640748653,
+      "bits": 6.961075905809382
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.0
+    }
+   },
+   {
+    "id": "tree_lam:1/8",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 1/8",
+    "shape": "V = (lam = 1/8)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 6.5947757287278606,
+    "net_bits": -6.93477683438626,
+    "ruled_out": false,
+    "max_abs_z": 0.8409697062119424,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5,
+      "z": -0.8409697062119424,
+      "bits": 6.5947757287278606
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.125
+    }
+   },
+   {
+    "id": "tree_lam:4/3\u00b7\u03c0^-2",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 4/3\u00b7\u03c0^-2",
+    "shape": "V = (lam = 4/3\u00b7\u03c0^-2)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 6.234077576461264,
+    "net_bits": -7.295474986652857,
+    "ruled_out": false,
+    "max_abs_z": 1.0987555967182818,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5197978674888922,
+      "z": 1.0987555967182818,
+      "bits": 6.234077576461264
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.135094911523
+    }
+   },
+   {
+    "id": "tree_lam:3/7\u00b7\u03c0^-1",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 3/7\u00b7\u03c0^-1",
+    "shape": "V = (lam = 3/7\u00b7\u03c0^-1)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 5.805291494882687,
+    "net_bits": -7.724261068231433,
+    "ruled_out": false,
+    "max_abs_z": 1.3422695661970514,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5223380565304427,
+      "z": 1.3422695661970514,
+      "bits": 5.805291494882687
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.13641852265
+    }
+   },
+   {
+    "id": "quint:exp:0.366",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.366",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 4.83407271960864,
+    "net_bits": -0.9472869939160198,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.3665,
+      "Om": 0.32604922299985023,
+      "heldout_chi2": 19.01298103048366,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9806114222995367
+     },
+     "train_bao": {
+      "par": 0.3665,
+      "Om": 0.29865925670525856,
+      "heldout_chi2": 1405.0151002556086,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9793709006762801
+     },
+     "full": {
+      "par": 0.3665,
+      "Om": 0.30379713653555723,
+      "chi2": 1414.4550178437366,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 1.6832015666575444,
+      "w0": -0.9796087062234413,
+      "wa_proxy": -0.03081809765670873
+     },
+     "heldout_dchi2_sum": 6.701447752436952,
+     "cosmo_bits": 4.83407271960864,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.3665,
+     "lam": 0.3665
+    }
+   },
+   {
+    "id": "tree_lam:7/6\u00b7\u03c0^-2",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 7/6\u00b7\u03c0^-2",
+    "shape": "V = (lam = 7/6\u00b7\u03c0^-2)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 3.4974071620644716,
+    "net_bits": -10.032145401049648,
+    "ruled_out": false,
+    "max_abs_z": 2.2363127297052294,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.4862263826305603,
+      "z": -2.2363127297052294,
+      "bits": 3.4974071620644716
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.118208047583
+    }
+   },
+   {
+    "id": "flat:seesaw:lam",
+    "family": "flat",
+    "name": "Dial flat at the seesaw scale",
+    "shape": "\u03bb(seesaw) = 0",
+    "coupling": "k = Higgs magnitude, Standard Model running",
+    "geometry": "at k's symmetric point mult-add is plain addition; 'flat at the top' = no hump left at M_Pl",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 2.584962500721156,
+    "bits": 3.223528387605646,
+    "net_bits": -5.14279382664017,
+    "ruled_out": false,
+    "max_abs_z": 2.7121291892223667,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5188787385304618,
+      "z": 2.7121291892223667,
+      "bits": 3.223528387605646
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "scale": "seesaw",
+     "beta": false
+    }
+   },
+   {
+    "id": "tree_lam:8/7\u00b7\u03c0^-2",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 8/7\u00b7\u03c0^-2",
+    "shape": "V = (lam = 8/7\u00b7\u03c0^-2)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 1.6445918985124006,
+    "net_bits": -11.88496066460172,
+    "ruled_out": false,
+    "max_abs_z": 2.751298234852186,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.48123931353953203,
+      "z": -2.751298234852186,
+      "bits": 1.6445918985124006
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.115795638448
+    }
+   },
+   {
+    "id": "yt:7/8",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 7/8",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 7/8)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 1.0942240848532778,
+    "net_bits": -12.435328478260843,
+    "ruled_out": false,
+    "max_abs_z": 2.885741937072798,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.6614378277661477,
+      "z": -2.885741937072798,
+      "bits": 1.0942240848532778
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 0.875
+    }
+   },
+   {
+    "id": "yt:6/7",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 6/7",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 6/7)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -1.234653088860643,
+    "net_bits": -14.764205651974764,
+    "ruled_out": true,
+    "max_abs_z": 3.3994140408372,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.6546536707080317,
+      "z": -3.3994140408372,
+      "bits": -1.234653088860643
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 0.857142857143
+    }
+   },
+   {
+    "id": "yt:8/7",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 8/7",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 8/7)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -3.136963421132334,
+    "net_bits": -16.666515984246452,
+    "ruled_out": true,
+    "max_abs_z": 3.767383429884653,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7559289460184072,
+      "z": 3.767383429884653,
+      "bits": -3.136963421132334
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.142857142857
+    }
+   },
+   {
+    "id": "yt:7/6",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 7/6",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 7/6)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -6.119200592753671,
+    "net_bits": -19.648753155867794,
+    "ruled_out": true,
+    "max_abs_z": 4.281055533663426,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7637626158260824,
+      "z": 4.281055533663426,
+      "bits": -6.119200592753671
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.166666666667
+    }
+   },
+   {
+    "id": "quint:exp:1.266",
+    "family": "quint",
+    "name": "Dial today, exponential slope 1.266",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -113.67557577099372,
+    "net_bits": -119.45693548451838,
+    "ruled_out": true,
+    "max_abs_z": 3.1,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.2665,
+      "Om": 0.21807860043406763,
+      "heldout_chi2": 173.33108212003776,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.6903100717049794
+     },
+     "train_bao": {
+      "par": 1.2665,
+      "Om": 0.3125151395673832,
+      "heldout_chi2": 1414.9862566068769,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.7512992519192593
+     },
+     "full": {
+      "par": 1.2665,
+      "Om": 0.3057635123433981,
+      "chi2": 1423.7392784104366,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": -7.601059000042369,
+      "w0": -0.7473435229506544,
+      "wa_proxy": -0.3506462355632438
+     },
+     "heldout_dchi2_sum": -157.58780968838545,
+     "cosmo_bits": -113.67557577099372,
+     "cosmo_z": 3.1
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 1.2665,
+     "lam": 1.2665
+    }
+   }
+  ],
+  [
+   {
+    "id": "quint:exp:0.742",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.742",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 13.761903300957457,
+    "net_bits": 7.612156181452774,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.7415,
+      "Om": 0.3062324608266224,
+      "heldout_chi2": 9.103585430025888,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9161239439308512
+     },
+     "train_bao": {
+      "par": 0.7415,
+      "Om": 0.30244415218907567,
+      "heldout_chi2": 1402.5478946641088,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9153980696717046
+     },
+     "full": {
+      "par": 0.7415,
+      "Om": 0.30302975960975975,
+      "chi2": 1411.4553784208283,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 4.682840989565875,
+      "w0": -0.9155106364621107,
+      "wa_proxy": -0.12507727547963654
+     },
+     "heldout_dchi2_sum": 19.07804894439453,
+     "cosmo_bits": 13.761903300957457,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.7415,
+     "lam": 0.7415
+    }
+   },
+   {
+    "id": "quint:exp:0.891",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.891",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 12.199578867970237,
+    "net_bits": 6.049831748465555,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.8915,
+      "Om": 0.29196564179894197,
+      "heldout_chi2": 10.888147192804562,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.8739210298992619
+     },
+     "train_bao": {
+      "par": 0.8915,
+      "Om": 0.30470496633113103,
+      "heldout_chi2": 1402.92917445302,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.8775336733280771
+     },
+     "full": {
+      "par": 0.8915,
+      "Om": 0.3029907272700773,
+      "chi2": 1411.4845982861991,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 4.65362112419507,
+      "w0": -0.8770529535916631,
+      "wa_proxy": -0.179587844206206
+     },
+     "heldout_dchi2_sum": 16.912207392704516,
+     "cosmo_bits": 12.199578867970237,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.8915,
+     "lam": 0.8915
+    }
+   },
+   {
+    "id": "quint:exp:0.592",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.592",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 10.826770510389403,
+    "net_bits": 4.677023390884721,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.5915,
+      "Om": 0.31634819784003615,
+      "heldout_chi2": 12.46047025237634,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9481042510228171
+     },
+     "train_bao": {
+      "par": 0.5915,
+      "Om": 0.3006150143334357,
+      "heldout_chi2": 1403.2599678784609,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9462179132537873
+     },
+     "full": {
+      "par": 0.5915,
+      "Om": 0.30329507905571645,
+      "chi2": 1412.4562076268817,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 3.6820117835125075,
+      "w0": -0.9465434035490495,
+      "wa_proxy": -0.07995291270310956
+     },
+     "heldout_dchi2_sum": 15.009090907691949,
+     "cosmo_bits": 10.826770510389403,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.5915,
+     "lam": 0.5915
+    }
+   },
+   {
+    "id": "quint:exp:0.442",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.442",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 6.77224000358363,
+    "net_bits": 0.6224928840789481,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.4415,
+      "Om": 0.3234055734827523,
+      "heldout_chi2": 16.921086088045758,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9716542115877536
+     },
+     "train_bao": {
+      "par": 0.4415,
+      "Om": 0.2992090439771924,
+      "heldout_chi2": 1404.4201248213649,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9700569063120383
+     },
+     "full": {
+      "par": 0.4415,
+      "Om": 0.3036351262391089,
+      "chi2": 1413.8025514556803,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 2.3356679547139265,
+      "w0": -0.9703547944698787,
+      "wa_proxy": -0.04467562783242007
+     },
+     "heldout_dchi2_sum": 9.388318129118534,
+     "cosmo_bits": 6.77224000358363,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.4415,
+     "lam": 0.4415
+    }
+   },
+   {
+    "id": "tree_lam:7/5\u00b7\u03c0^-2",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 7/5\u00b7\u03c0^-2",
+    "shape": "V = (lam = 7/5\u00b7\u03c0^-2)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 3.231270089268796,
+    "net_bits": -10.666669879825346,
+    "ruled_out": false,
+    "max_abs_z": 2.317334448961404,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5326343156406654,
+      "z": 2.317334448961404,
+      "bits": 3.231270089268796
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.141849657099
+    }
+   },
+   {
+    "id": "quint:exp:0.291",
+    "family": "quint",
+    "name": "Dial today, exponential slope 0.291",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": 3.1425241309513092,
+    "net_bits": -3.007222988553373,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.2915,
+      "Om": 0.3281221571370957,
+      "heldout_chi2": 20.815668287395667,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9878064219181846
+     },
+     "train_bao": {
+      "par": 0.2915,
+      "Om": 0.2982120212095494,
+      "heldout_chi2": 1405.5573972687125,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.9869524241192562
+     },
+     "full": {
+      "par": 0.2915,
+      "Om": 0.303940569547121,
+      "chi2": 1415.036225617208,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 1.1019937931862387,
+      "w0": -0.987119880519014,
+      "wa_proxy": -0.019510966941626462
+     },
+     "heldout_dchi2_sum": 4.356463482420985,
+     "cosmo_bits": 3.1425241309513092,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 0.2915,
+     "lam": 0.2915
+    }
+   },
+   {
+    "id": "tree_lam:1/7",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 1/7",
+    "shape": "V = (lam = 1/7)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": 2.617771972907997,
+    "net_bits": -11.280167996186146,
+    "ruled_out": false,
+    "max_abs_z": 2.4940986202658273,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.5345224838245815,
+      "z": 2.4940986202658273,
+      "bits": 2.617771972907997
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.142857142857
+    }
+   },
+   {
+    "id": "quint:exp:1.042",
+    "family": "quint",
+    "name": "Dial today, exponential slope 1.042",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -2.1187346180710858,
+    "net_bits": -8.268481737575769,
+    "ruled_out": false,
+    "max_abs_z": 0.0,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.0415,
+      "Om": 0.27135604137059033,
+      "heldout_chi2": 28.4055510605517,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.8180862337049539
+     },
+     "train_bao": {
+      "par": 1.0415,
+      "Om": 0.3074360555566544,
+      "heldout_chi2": 1405.261167831719,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.832530092544754
+     },
+     "full": {
+      "par": 1.0415,
+      "Om": 0.3034149556975938,
+      "chi2": 1413.5418434864648,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 2.596375923929372,
+      "w0": -0.8309731250073932,
+      "wa_proxy": -0.24271289733802326
+     },
+     "heldout_dchi2_sum": -2.937189853741451,
+     "cosmo_bits": -2.1187346180710858,
+     "cosmo_z": 0.0
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 1.0415,
+     "lam": 1.0415
+    }
+   },
+   {
+    "id": "yt:8/3\u00b7\u03c0^-1",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 8/3\u00b7\u03c0^-1",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 8/3\u00b7\u03c0^-1)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -2.468434472522972,
+    "net_bits": -16.366374441617115,
+    "ruled_out": true,
+    "max_abs_z": 3.6423069607141683,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.6514700158706462,
+      "z": -3.6423069607141683,
+      "bits": -2.468434472522972
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 0.848826363157
+    }
+   },
+   {
+    "id": "yt:5/6",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 5/6",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 5/6)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -5.031777375808659,
+    "net_bits": -18.9297173449028,
+    "ruled_out": true,
+    "max_abs_z": 4.101212967953325,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.6454972243677737,
+      "z": -4.101212967953325,
+      "bits": -5.031777375808659
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 0.833333333333
+    }
+   },
+   {
+    "id": "yt:3/8\u00b7\u03c0^1",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 3/8\u00b7\u03c0^1",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 3/8\u00b7\u03c0^1)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -7.661927150609236,
+    "net_bits": -21.559867119703377,
+    "ruled_out": true,
+    "max_abs_z": 4.523948453532081,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7674950309598102,
+      "z": 4.523948453532081,
+      "bits": -7.661927150609236
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.178097245096
+    }
+   },
+   {
+    "id": "tree_lam:1/3\u00b7\u03c0^-1",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 1/3\u00b7\u03c0^-1",
+    "shape": "V = (lam = 1/3\u00b7\u03c0^-1)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -10.459632790468685,
+    "net_bits": -24.357572759562828,
+    "ruled_out": true,
+    "max_abs_z": 4.934537507118919,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.4606588659626557,
+      "z": -4.934537507118919,
+      "bits": -10.459632790468685
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.106103295395
+    }
+   },
+   {
+    "id": "yt:6/5",
+    "family": "yt",
+    "name": "Top from a grammar Yukawa: yt2 = 6/5",
+    "shape": "y_t = 1, so mt = v/\u221a2(yt2 = 6/5)",
+    "coupling": "k sets the top Yukawa",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -10.808970873242187,
+    "net_bits": -24.706910842336328,
+    "ruled_out": true,
+    "max_abs_z": 4.982854460758323,
+    "rows": [
+     {
+      "target": "mt/v",
+      "pred": 0.7745966692414834,
+      "z": 4.982854460758323,
+      "bits": -10.808970873242187
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "yt2": 1.2
+    }
+   },
+   {
+    "id": "tree_lam:1/1\u00b7\u03c0^-2",
+    "family": "tree_lam",
+    "name": "Higgs from a grammar quartic: lam = 1/1\u00b7\u03c0^-2",
+    "shape": "V = (lam = 1/1\u00b7\u03c0^-2)",
+    "coupling": "k = Higgs magnitude",
+    "geometry": "grammar neighbour of the parent constant",
+    "grade": "C",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 7.7481928495894605,
+    "bits": -19.616560688351353,
+    "net_bits": -33.514500657445495,
+    "ruled_out": true,
+    "max_abs_z": 6.086366561354939,
+    "rows": [
+     {
+      "target": "mH/v",
+      "pred": 0.4501581580778027,
+      "z": -6.086366561354939,
+      "bits": -19.616560688351353
+     }
+    ],
+    "extra": {},
+    "meta": {
+     "lam": 0.101321183642
+    }
+   },
+   {
+    "id": "quint:exp:1.192",
+    "family": "quint",
+    "name": "Dial today, exponential slope 1.192",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -54.22460822748566,
+    "net_bits": -60.37435534699034,
+    "ruled_out": true,
+    "max_abs_z": 3.1,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.1915,
+      "Om": 0.23970980512662532,
+      "heldout_chi2": 95.22679680641778,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.7410962609869461
+     },
+     "train_bao": {
+      "par": 1.1915,
+      "Om": 0.3106786208358708,
+      "heldout_chi2": 1410.67400085181,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.7802399122978346
+     },
+     "full": {
+      "par": 1.1915,
+      "Om": 0.30466623243475366,
+      "chi2": 1419.0652116974632,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": -2.9269922870689697,
+      "w0": -0.7771486166853682,
+      "wa_proxy": -0.31320605931137435
+     },
+     "heldout_dchi2_sum": -75.1712686196986,
+     "cosmo_bits": -54.22460822748566,
+     "cosmo_z": 3.1
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 1.1915,
+     "lam": 1.1915
+    }
+   },
+   {
+    "id": "quint:exp:1.341",
+    "family": "quint",
+    "name": "Dial today, exponential slope 1.341",
+    "shape": "V0 e^(\u2212\u03bb\u03c6)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "exponential from rescaling symmetry",
+    "grade": "B",
+    "free_params": 0,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -173.42107853448292,
+    "net_bits": -179.5708256539876,
+    "ruled_out": true,
+    "max_abs_z": 3.1,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 1.3415,
+      "Om": 0.20205384097431356,
+      "heldout_chi2": 250.47458807986823,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.6363354184740474
+     },
+     "train_bao": {
+      "par": 1.3415,
+      "Om": 0.31451538822683894,
+      "heldout_chi2": 1420.6676042303443,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.7204526505319383
+     },
+     "full": {
+      "par": 1.3415,
+      "Om": 0.3072986507149348,
+      "chi2": 1430.112037590508,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": -13.973818180113767,
+      "w0": -0.7156634512541983,
+      "wa_proxy": -0.3891374151404452
+     },
+     "heldout_dchi2_sum": -240.41266327168336,
+     "cosmo_bits": -173.42107853448292,
+     "cosmo_z": 3.1
+    },
+    "meta": {
+     "shape": "exp",
+     "par": 1.3415,
+     "lam": 1.3415
+    }
+   }
+  ]
+ ],
+ "chance_tree_lam": {
+  "best": "tree_lam:2/5\u00b7\u03c0^-1",
+  "bits": 7.0002831161228904,
+  "p": 0.358
+ },
+ "chance_sumrule": {
+  "best": "P8",
+  "bits": 6.827334542980313,
+  "p": 0.2635
+ },
+ "chance_yt": {
+  "best": "P9",
+  "bits": 6.961075905809389,
+  "p": 0.387
+ },
+ "flat_dial": {
+  "lambda0": {
+   "mh": 128.68330049261084,
+   "mh_err": 1.040746231828981,
+   "mh_own_rge": 128.59017726538139
+  },
+  "lambda_beta0": {
+   "mh": 133.10514884052463,
+   "mt": 174.77903300970473,
+   "mh_err": 0.7416653895205809,
+   "mt_err": 0.7038368495650135,
+   "ier": 1
+  },
+  "lambda_negative_from": 36718642012.99254,
+  "beta_min_at": 2.5168799772648915e+17,
+  "lambda_at_beta_min": -0.010637732010204135,
+  "lambda_MPl_measured_inputs": -0.01026360807262127
+ },
+ "slope_profile": {
+  "lam": [
+   0.0,
+   0.1,
+   0.2,
+   0.30000000000000004,
+   0.4,
+   0.5,
+   0.6000000000000001,
+   0.7000000000000001,
+   0.8,
+   0.9,
+   1.0,
+   1.1,
+   1.2000000000000002,
+   1.3,
+   1.4000000000000001,
+   1.5,
+   1.6
+  ],
+  "chi2": [
+   1416.1382194103942,
+   1416.002030246989,
+   1415.6037800420763,
+   1414.9750031204792,
+   1414.1701981178646,
+   1413.269862394041,
+   1412.3849836023144,
+   1411.6632494734147,
+   1411.2973338748702,
+   1411.5357287669035,
+   1412.696724149701,
+   1415.1862707775783,
+   1419.5205521080825,
+   1426.3539689578995,
+   1436.5123842326484,
+   1451.0283332229678,
+   1471.1652368049276
+  ],
+  "best": 0.8,
+  "one_sigma": [
+   0.613,
+   0.965
+  ]
+ },
+ "slope_geo_hits": {
+  "n": 43,
+  "inside": [
+   0.632456,
+   0.654654,
+   0.707107,
+   0.755929,
+   0.774597,
+   0.790569,
+   0.816497,
+   0.845154,
+   0.866025,
+   0.894427,
+   0.912871,
+   0.92582,
+   0.935414
+  ]
+ },
+ "conformal_gamma": {
+  "gamma": 0.7142857142857143,
+  "z": -12423.273291925467
+ },
+ "targets": {
+  "mH/v": {
+   "value": 0.5084890665712505,
+   "rel_sigma": 0.0008785942492012779,
+   "prior_efolds": 6.907755278982137,
+   "note": "Higgs mass over the vev"
+  },
+  "mW/v": {
+   "value": 0.3264126157274613,
+   "rel_sigma": 0.00016548628081404317,
+   "prior_efolds": 6.907755278982137,
+   "note": "W mass over the vev"
+  },
+  "mZ/v": {
+   "value": 0.3703522444289073,
+   "rel_sigma": 2.1932710444356715e-05,
+   "prior_efolds": 6.907755278982137,
+   "note": "Z mass over the vev"
+  },
+  "mt/v": {
+   "value": 0.7008782605287596,
+   "rel_sigma": 0.001680477487396419,
+   "prior_efolds": 6.907755278982137,
+   "note": "top mass over the vev"
+  },
+  "sin2W": {
+   "value": 0.23129,
+   "rel_sigma": 0.00017294305849798955,
+   "prior_efolds": 6.907755278982137,
+   "note": "weak mixing angle (MS-bar, M_Z)"
+  },
+  "alpha_s": {
+   "value": 0.118,
+   "rel_sigma": 0.007627118644067797,
+   "prior_efolds": 6.907755278982137,
+   "note": "strong coupling at M_Z"
+  },
+  "alpha": {
+   "value": 0.0072973525643314245,
+   "rel_sigma": 1.5e-10,
+   "prior_efolds": 6.907755278982137,
+   "note": "fine-structure constant"
+  },
+  "v/MPl": {
+   "value": 1.0110195207279416e-16,
+   "rel_sigma": 0.0,
+   "prior_efolds": 92.10340371976183,
+   "note": "weak scale over reduced Planck mass"
+  },
+  "rhoL/MPl": {
+   "value": 9.197818802969582e-31,
+   "rel_sigma": 0.01,
+   "prior_efolds": 92.10340371976183,
+   "note": "dark energy scale over reduced Planck mass"
+  }
+ },
+ "n_guesses": 71,
+ "runtime_s": 107.80553150177002
+}

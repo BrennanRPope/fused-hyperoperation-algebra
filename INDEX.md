@@ -6,7 +6,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 2,801 theorems, 111 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 2,930 theorems, 116 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
@@ -41,6 +41,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Fractional power sets and choice grades | `topics/fractional-powerset/` | [page](https://claude.ai/artifact/94mPKskoy8QKXDumoDjRb7) |
 | Power set dials: one dial per element (merging, complement, primes, other sets) | `topics/fractional-powerset-dials/` | [page](https://claude.ai/artifact/27MDnoDnLAMxUUmWGADYk9) |
 | Dial survey: the five dials, and k acting on per-element dials and on the primes | `topics/dial-survey/` | [page](https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr) |
+| Fractal boxes: does a box of fractional dimension give a fractional power set? | `topics/fractal-boxes/` | [page](https://claude.ai/artifact/NbFUcWVphAGGNvhug8XvwS) |
 
 ## Fourteen branches of math
 
@@ -55,6 +56,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Game theory | `topics/game-theory/` | no page yet |
 | Graph theory | `topics/graph-theory/` | no page yet |
 | Groups and Lie theory | `topics/groups-lie/` | no page yet |
+| Clifford's work, piece by piece, through mult-add | `topics/clifford/` | [page](https://claude.ai/artifact/NU8rLX3jBBeaojcq8g3hMW) |
 | Information theory, full branch | `topics/information-theory-full/` | no page yet |
 | Knot theory | `topics/knot-theory/` | no page yet |
 | Logic and sets | `topics/logic-sets/` | no page yet |
@@ -93,6 +95,8 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Relativity | `topics/relativity/` | [page](https://claude.ai/artifact/S2RVDVVQWR4UAQVtmDQQMq) |
 | Twisted boosts and Gravity Probe B | `topics/twisted-boosts/` | no page yet |
 | General relativity through mult-add | `topics/general-relativity/` | [page](https://claude.ai/artifact/SHrK88RpTBLLfTaeAxgi37) |
+| Curved space from mult-add, and four bridges to Einstein's equations (Jacobson, teleparallel, Lovelock, Deser) | `topics/gr-bridges/` | [page](https://claude.ai/artifact/LhAbnuPMJnNoq9cRYBz3xc) |
+| The dial's potential: a scored search of 71 guesses (Higgs-like dial, rolling dark-energy dial) | `topics/dial-potential/` | [page](https://claude.ai/artifact/WpQzqeezDjmRmUcbgTA7RT) |
 | Lee–Yang zeros (cluster test, fill-then-spill) | `topics/lee-yang/` | [page](https://claude.ai/artifact/UQQzmkzekxe2hL4m8F8NQL) |
 | Point processes on the dial (fermions, Poisson, bosons as k = −1, 0, 1) | `topics/dial-point-processes/` | page source `index.html` in the folder |
 | Diamond hierarchical lattice on the landscape (Potts model, Julia sets) | `topics/diamond-lattice/` | page source `index.html` in the folder |

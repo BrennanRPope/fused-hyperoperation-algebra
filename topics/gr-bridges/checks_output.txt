@@ -1,0 +1,115 @@
+
+== S1. Mult-add's own rule in one direction: velocity composition in the Clifford plane Cl(1,1)
+[PASS] sigma = e1 e0 squares to +1 (a boost: hyperbolic, not a rotation)
+[PASS] (1 + b1 sigma)(1 + b2 sigma) = (1 + b1 b2)(1 + beta sigma) with beta = (b1 + b2)/(1 + b1 b2), Einstein's addition
+[PASS] Doppler-squared D^2 = (1+beta)/(1-beta) multiplies, so D^2 - 1 composes by mult-add
+[PASS] the wall: 1 + beta sigma has norm 1 - beta^2, which is zero exactly at light speed (mult-add's -1)
+
+== S2. Twist from the Clifford square rule: boosts in two directions close on a rotation, weighted by the dial
+[PASS] [e0e1, e0e2] = -2 k0 e1e2: two 'boosts' close on a rotation in the 1-2 plane, coefficient = the dial of the shared direction
+[PASS] [e1e2, e2e3] = +2 k2 e1e3 (any two planes sharing a direction close on the third plane, weighted by that direction's square)
+[PASS] k0 = 0 (Galilean dial): the boosts commute, no twist
+
+== S3. Mult-add's own rules give one constant curvature: velocity space and its twist (Thomas-Wigner = area x curvature)
+[PASS] Thomas-Wigner rotation angle = angle defect (= area x curvature, Gauss-Bonnet with curvature -1) of the velocity triangle  (worst mismatch 2.5e-15 over 4 triangles)
+
+== S4. A dial that varies from place to place, in 2 dimensions: any curvature q(x, y) is reachable
+[PASS] conformal metric e^{2u}(dx^2 + dy^2) has curvature q = -e^{-2u} (u_xx + u_yy) (Liouville)
+[PASS] twist of a small loop / its area = the local curvature, at three places with three different curvatures  (q=-0.1892 vs -0.1892; q=0.1661 vs 0.1661; q=0.2087 vs 0.2087)
+
+== S5. In 3 or more dimensions a place-only dial is forced to be constant (Schur's theorem)
+[PASS] isotropic curvature gives G_ab = -(n-1)(n-2)/2 q g_ab, so the Bianchi identity forces (n-1)(n-2)/2 dq = 0
+[PASS] n = 2: the factor is 0, so q is free; n = 3, 4: the factor is 1 and 3, so q must be constant
+[PASS] place-only dial e^{2w(x)} in 3D: the x-y and x-z planes agree, but the y-z plane differs (the dial picks up a direction)  (K_xy = -exp(-2*w(x))*Derivative(w(x), (x, 2)), K_yz = -exp(-2*w(x))*Derivative(w(x), x)**2)
+[PASS] making all three planes agree (w'' = w'^2) forces a solution whose curvature is a constant: Schur again  (K = -exp(-2*C1))
+
+== S6. k as a Clifford number: mult-add with a multivector weight
+[PASS] sandwich law a + b + a k b, with ANY multivector k in Cl(3,0): lift 1 + k(a * b) = (1 + k a)(1 + k b), all 8 parts
+[PASS] the sandwich law is associative for every multivector k (general symbolic a, b, c, k)
+[PASS] the front-loaded law a + b + k a b fails associativity when k is not central (k = 2 + e1e2)
+[PASS] centre of Cl(3,0) contains the volume element I (so k = a + bI works front-loaded); in Cl(1,3) I anticommutes with vectors
+[PASS] so a constant invertible k adds nothing: a -> 1 + k a turns a + b + a k b into the plain geometric product (same group)
+[PASS] in Cl(1,3) a null vector squares to 0: the light cone is where 1 + k a stops being invertible in the Lorentzian slots
+
+== S7. A multivector weight that varies from place to place, used alone, is pure gauge (zero curvature)
+[PASS] weight field k(x): changing weight from point to point is the connection A = k^-1 dk, whose curvature dA + A^2 vanishes identically
+
+== S8. The direction dial: k_ij(x) in the Clifford square rule e_i e_j + e_j e_i = 2 k_ij IS a metric, and its twist depends on the plane
+[PASS] the symmetric part of the Clifford product of two vectors is k_ij a^i b^j: the direction dial is a quadratic form (= a metric)  (by definition of the Clifford algebra of (V, k): ab + ba = 2 k(a, b))
+[PASS] a place-and-direction dial k_ij(x): the twist per area differs from plane to plane at one point (curvature varies freely)  (sectional curvatures 0.00325, 0.01138, -0.00345)
+[PASS] numeric loop in the x-y plane: twist / area matches the x-y sectional curvature  (0.00325 vs 0.00325)
+
+== S9. Which direction dial does matter produce? gamma = 1 is the 'no focusing without energy flux' (Clausius) condition
+[PASS] weak static field: in vacuum, light rays focus (R_kk != 0) in some direction unless gamma = 1  (R_kk(vacuum) = -(gamma - 1)*(2*n_x**2*Derivative(U(x, y, z), (x, 2)) + n_x**2*Derivative(U(x, y, z), (y, 2)) + 2*n_x*n_y*Derivative(U(x, y, z), x, y) + 2*n_x*n_z*Derivative(U(x, y, z), x, z) + n_y**2*Derivative(U(x, y, z), (x, 2)) + 2*n_y**2*Derivative(U(x, y, z), (y, 2)) + 2*n_y*n_z*Derivative(U(x, y, z), y, z) - Derivative(U(x, y, z), (x, 2)) - Derivative(U(x, y, z), (y, 2))))
+[PASS] dial-only (gamma = 0) focuses light where no energy crosses: it breaks the Clausius rule that Jacobson's bridge needs
+
+== J1. Jacobson's area bookkeeping is mult-add: Raychaudhuri focusing is the 'ab' term of two transverse stretches
+[PASS] area of the bundle's cross-section: (1+a)(1+b) = 1 + (a mult-add b)
+[PASS] Raychaudhuri, exactly: dtheta/dlam + theta^2/2 + sigma^2 = a''/(1+a) + b''/(1+b), which geodesic deviation (a'' = -R_1k1k (1+a)) makes -R_kk
+[PASS] no curvature (a, b linear): the area's second derivative is 2 alpha beta, the mult-add cross term, and that alone makes the focusing
+
+== J2. Unruh temperature: the mult-add flow (Doppler factor growing as e^{a tau}) gives a Planck spectrum with T = a/2pi
+[PASS] |beta/alpha|^2 = exp(-2 pi Omega / a) for every frequency: a thermal (Planck) spectrum at T = a / 2pi
+[PASS] the integral formula behind it, int s^(z-1) e^(-p s) ds = Gamma(z) p^(-z), checked numerically  (rel err 5.5e-17)
+[PASS] dial flip: Rindler -a^2 X^2 dt^2 + dX^2 with t = -i tau is a plane in polar form; no cone tip only if tau has period 2pi/a  (circumference / radius = 2 pi exactly when the period is 2 pi / a, so T = a / 2 pi)
+
+== J3. The algebra that turns heat flow into Einstein's equation: X(k, k) = 0 for every light-like k forces X = phi g
+[PASS] solving X(k,k) = 0 over light-like directions leaves only X = phi * eta (one free number per point)
+
+== J4. Our river's mult-add inverse is Jacobson's 'no radial energy flux' condition
+[PASS] for -f dt^2 + dr^2/h + r^2 dOmega^2: R_kk (radial light ray) is proportional to (f/h)', so it vanishes iff f = h, i.e. g_tt g_rr = -1  (R_kk = (-f(r)*Derivative(h(r), r) + h(r)*Derivative(f(r), r))/(r*f(r)))
+[PASS] and g_tt g_rr = -1 is exactly our earlier result that the clock deficit and ruler deficit are mult-add inverses
+
+== J5. If horizon entropy itself combines by weighted mult-add (Tsallis), the local equations do not change
+[PASS] mult-adding N equal patches of entropy eta*A/N, N -> infinity: total = (e^{k eta A} - 1)/k (the mult-add flow again)
+[PASS] the entropy that adds is log(1 + k S)/k (Renyi); dS_add = dS_k/(1 + k S_k) -> 1 as the patch shrinks, so Clausius on a small patch is unchanged
+[PASS] globally it does change black holes: Renyi temperature (1 + 4 pi lambda M^2)/(8 pi M), heat capacity changes sign at M = 1/sqrt(4 pi lambda)
+
+== J6. What Jacobson leaves free, and the sombrero's possible role: the entropy per area eta = 1/(4 G hbar)
+[PASS] if a sombrero field with non-minimal coupling xi phi^2 R set G through its vev (induced gravity, Zee 1979): the Higgs vev needs xi ~ 1e32  (xi = (M_Pl/v)^2 = 9.78e+31)
+
+== T1. The river as a teleparallel frame: flat connection, and the torsion is the river's velocity gradient
+[PASS] metric of the river frame: -dt^2 + |dx + v dt|^2 (flat slices, unit lapse, shift = river velocity)
+[PASS] Weitzenbock torsion T^i_{j t} = d_j v^i, every other component zero: torsion IS the river's velocity gradient
+[PASS] the Weitzenbock connection e^-1 de has zero curvature: in the teleparallel picture there is no twist at all
+
+== T2. Einstein's equations on any river (not only spherical): energy = the mult-add cross terms of the river's strain
+[PASS] G_nn = e2(K), the sum of products of pairs of principal strain rates of the river: Hamiltonian constraint e2(K) = 8 pi rho
+[PASS] e2 is the 'ab' layer of the three-way mult-add: (1+k1)(1+k2)(1+k3) = 1 + e1 + e2 + e3
+[PASS] momentum constraint: G_nj = +/- d_i (K_ij - delta_ij K) for every river
+[PASS] and d_i(K_ij - delta_ij K) = -(1/2) curl curl v: the river's swirl is sourced by moving mass (gravitomagnetic Ampere law, exact)
+[PASS] e2 of the full gradient is a pure divergence, so e2(K) = divergence - |curl v|^2 / 4: only the swirl carries bulk action
+[PASS] spherical river: e2(v', v/r, v/r) = (r v^2)'/r^2, so e2 = 8 pi rho is Newton's shell law v^2 = 2 m(r)/r
+
+== T3. The teleparallel equivalent of GR: torsion scalar = -(Ricci scalar) + divergence, on every river
+[PASS] R = -T -/+ 2 d_mu T^mu (det e = 1): the TEGR torsion scalar and Einstein-Hilbert differ by a boundary term
+[PASS] on every river the torsion scalar is exactly T = 2 e2(K) = (tr K)^2 - K_ij K^ij: the TEGR Lagrangian is the cross-term layer  (T - 2 e2(K) = 0)
+
+== T4. Twist versus torsion on the Schwarzschild river
+[PASS] torsion d v/d r; river acceleration v v' = -M/r^2 (Newton); tidal twist rate (v v')' = 2M/r^3 = the holonomy found before
+
+== L1. Lovelock's '4 dimensions' hypothesis: the only other second-order term (Gauss-Bonnet) is empty in 4D, alive in 5D
+[PASS] Gauss-Bonnet field tensor vanishes identically in 4D (spherical metric with free f(r))
+[PASS] but not in 5D: there Lovelock allows a second law, so '4 dimensions' is doing real work  (H_tt = 6*(f(r) - 1)*f(r)*Derivative(f(r), r)/r**3)
+
+== L2. Is the river a gauge choice or a field? If a field (Einstein-aether), exact Schwarzschild needs c2 = -c13
+[PASS] on the Schwarzschild river, (tr K)^2 = K_ij K^ij (that is GR's vacuum constraint e2(K) = 0)
+[PASS] aether river (unit, geodesic, hypersurface-orthogonal: grad u = K): constraint (1+c2) K^2 - (1-c13) K_ij K^ij = (c2 + c13) K^2, so c2 = -c13
+[PASS] GW170817 (speed of gravity = c to ~1e-15) gives |c13| <~ 1e-15, hence |c2| <~ 1e-15: the river as a field is pinned to the river as a gauge  (c13 bound 1.3e-15)
+
+== L3. The cosmological constant is the one thing Lovelock leaves free, and the river carries it as a second escape term
+[PASS] river v^2 = 2M/r + Lambda r^2/3 gives G^a_b = -Lambda delta^a_b exactly (Schwarzschild-de Sitter)
+
+== D1. Deser's bootstrap needs a massless spin-2 field; the river (a vector) and the place dial (a scalar) have none
+[PASS] a river wave v(t - z): its strain has no transverse-traceless part, so it cannot carry the two polarizations seen by LIGO
+[PASS] a direction dial k_ij = delta_ij + h_ij keeps exactly two transverse-traceless pieces (h+, hx): the spin-2 field Deser needs
+
+== D2. Dial + river as a scalar-tensor theory (Brans-Dicke), Cassini, and what the sombrero does
+[PASS] Brans-Dicke: gamma = (1 + omega)/(2 + omega), so gamma - 1 = -1/(2 + omega)
+[PASS] Cassini (gamma - 1 = (2.1 +- 2.3)e-5, 2 sigma) needs omega > about 40,000 for a massless dial  (omega > 39998)
+[PASS] equivalently the dial's coupling to matter alpha^2 = 1/(2 omega + 3) must be below ~1.2e-5  (1.25e-05)
+[PASS] a sombrero that gives the dial a mass hides it from Cassini at full strength if m > ~1e-17 eV (range below ~1/10 AU)  (m > 1.3e-17 eV)
+[PASS] if the dial's sombrero is the Higgs one (m = 125 GeV) its reach is ~1.6e-18 m: no solar-system test can see it  (range 1.6e-18 m)
+[PASS] the light dial that the dial-potential search keeps alive (V proportional to k, mass ~ H0 ~ 1e-33 eV) gets no Yukawa shelter: it must couple below alpha^2 ~ 1e-5  (H0 = 1.4e-33 eV)
+
+65 passed, 0 failed

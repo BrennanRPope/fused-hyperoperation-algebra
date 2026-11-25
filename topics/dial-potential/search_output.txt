@@ -1,0 +1,187 @@
+====================================================================================================
+Dial potential search, Nov 25 2026.  Scores in bits; ruled out = some prediction more than 3σ off.
+grammar of constants p/q·π^a: 215 members (7.7 bits to pick one); sum-rule grammar: 450 rules (8.8 bits)
+====================================================================================================
+Targets:
+  mH/v      = 0.508489  (±8.8e-04 rel)   Higgs mass over the vev
+  mW/v      = 0.326413  (±1.7e-04 rel)   W mass over the vev
+  mZ/v      = 0.370352  (±2.2e-05 rel)   Z mass over the vev
+  mt/v      = 0.700878  (±1.7e-03 rel)   top mass over the vev
+  sin2W     = 0.23129  (±1.7e-04 rel)   weak mixing angle (MS-bar, M_Z)
+  alpha_s   = 0.118  (±7.6e-03 rel)   strong coupling at M_Z
+  alpha     = 0.00729735  (±1.5e-10 rel)   fine-structure constant
+  v/MPl     = 1.01102e-16  (±0.0e+00 rel)   weak scale over reduced Planck mass
+  rhoL/MPl  = 9.19782e-31  (±1.0e-02 rel)   dark energy scale over reduced Planck mass
+  gamma     = 1 + (2.1 ± 2.3)e-5 (Cassini);  Δα/α(z=1.15) = (1.3 ± 1.4)e-6 (ESPRESSO)
+  Pantheon+ supernovae (1590) and DESI DR2 BAO (13 numbers)
+
+---- Round 1: 20 guesses (search so far: 20 guesses, look-elsewhere 4.3 bits)
+id                                     bits      net  max|z|  verdict   guess
+C2                                     15.1     10.7     0.9  alive     Dial boosts plus the river (= general relativity)
+                                       gamma     pred 1  z = -0.91  (+15.1 bits)
+C6                                     13.9      9.6     0.0  alive     Dial today, V ∝ k
+                                       full fit: slope/width 0.816496580927726, Ωm 0.303, Δχ² vs Λ +4.85, w0 -0.897; held-out Δχ² (SN→BAO + BAO→SN) +19.24
+C5                                     12.6      8.3     0.0  alive     Scale-symmetric dial today, slope free
+                                       full fit: slope/width 0.8176839003264718, Ωm 0.303, Δχ² vs Λ +4.85, w0 -0.897; held-out Δχ² (SN→BAO + BAO→SN) +17.50
+P9                                      7.0     -5.1     0.4  alive     Top at the dial's unit
+                                       mt/v      pred 0.707107  z = +0.44  (+7.0 bits)
+P8                                      6.8     -6.3     0.6  alive     Mass budget sum rule
+                                       mH/v      pred 0.514843  z = +0.62  (+6.8 bits)
+P3                                      6.6     -5.5     0.8  alive     Higgs at half the vev
+                                       mH/v      pred 0.5  z = -0.84  (+6.6 bits)
+P4                                      0.2     -4.1     3.4  ruled out Dial flat at the Planck scale
+                                       mH/v      pred 0.522636  z = +3.37  (+0.2 bits)
+P1                                      0.0     -4.3     0.0  no test   Quartic sombrero, height free
+C4                                      0.0     -4.3     0.0  no test   Dial coupled to curvature (Brans–Dicke)
+C7                                    -46.4    -50.7     3.1  ruled out Dial today, V ∝ k²
+                                       full fit: slope/width 1.632993161855452, Ωm 0.320, Δχ² vs Λ -63.15, w0 -0.578; held-out Δχ² (SN→BAO + BAO→SN) -64.35
+P5                                    -72.9    -77.2    10.9  ruled out Dial flat and level at the Planck scale
+                                       mH/v      pred 0.540595  z = +10.85  (-76.1 bits)
+                                       mt/v      pred 0.70985  z = +2.91  (+3.2 bits)
+P10                                  -165.3   -177.4    15.5  ruled out Weinberg angle as a dial quarter
+                                       sin2W     pred 0.25  z = +15.55  (-165.3 bits)
+P11                                  -925.9   -930.2    36.0  ruled out One dial for all three forces
+                                       sin2W     pred 0.207565  z = -36.02  (-925.9 bits)
+P7                                  -1502.7  -1507.0    45.7  ruled out Dial blind to the cutoff (Veltman)
+                                       mH/v      pred 1.2707  z = +45.75  (-1502.7 bits)
+P2                                  -5293.2  -5297.5    85.7  ruled out Lift-normalised well
+                                       mH/v      pred 2.82843  z = +85.72  (-5293.2 bits)
+C8                                  -5607.8  -5612.1    88.2  ruled out Dark energy from the weak scale
+                                       rhoL/MPl  pred 1.02216e-32  z = -88.25  (-5607.8 bits)
+P12                                   -huge    -huge 14818.4  ruled out Fine-structure constant from π
+                                       alpha     pred 0.00729734  z = -14818.42  (< -100000 bits)
+P6                                    -huge    -huge     inf  ruled out Scale-symmetric dial (Coleman–Weinberg)
+                                       mH/v      no real prediction (mass squared negative)
+C1                                    -huge    -huge 43479.2  ruled out Dial alone as gravity
+                                       gamma     pred 0  z = -43479.17  (< -100000 bits)
+C3                                    -huge    -huge 61919.3  ruled out Light's dial rolling as dark energy
+                                       dalpha    pred -0.0866858  z = -61919.34  (< -100000 bits)
+                                       Δα/α predicted -0.0867; coupling to light must be below 2.4e-05 of natural to pass
+  kept for refinement: C2, C6, C5, P9, P8, P3, P4
+
+---- Round 2: 20 guesses (search so far: 40 guesses, look-elsewhere 5.3 bits)
+id                                     bits      net  max|z|  verdict   guess
+quint:cosine:free                       9.8      4.4     0.0  alive     Dial today on a circle (q < 0, compact dial), period free
+                                       full fit: slope/width 1.0363636363636364, Ωm 0.304, Δχ² vs Λ +3.33, w0 -0.951; held-out Δχ² (SN→BAO + BAO→SN) +13.54
+quint:exp:0.516                         8.8      3.5     0.0  alive     Dial today, exponential slope 0.516
+                                       full fit: slope/width 0.5165, Ωm 0.303, Δχ² vs Λ +3.02, w0 -0.959; held-out Δχ² (SN→BAO + BAO→SN) +12.23
+tree_lam:2/5·π^-1                       7.0     -6.1     0.4  alive     Higgs from a grammar quartic: lam = 2/5·π^-1
+                                       mH/v      pred 0.504627  z = -0.38  (+7.0 bits)
+tree_lam:5/4·π^-2                       6.9     -6.2     0.5  alive     Higgs from a grammar quartic: lam = 5/4·π^-2
+                                       mH/v      pred 0.503292  z = -0.51  (+6.9 bits)
+yt:3/1·π^-1                             6.7     -6.3     0.7  alive     Top from a grammar Yukawa: yt2 = 3/1·π^-1
+                                       mt/v      pred 0.690988  z = -0.71  (+6.7 bits)
+tree_lam:6/5·π^-2                       5.4     -7.7     1.5  alive     Higgs from a grammar quartic: lam = 6/5·π^-2
+                                       mH/v      pred 0.493124  z = -1.53  (+5.4 bits)
+yt:1/3·π^1                              5.3     -7.8     1.6  alive     Top from a grammar Yukawa: yt2 = 1/3·π^1
+                                       mt/v      pred 0.723601  z = +1.59  (+5.3 bits)
+tree_lam:3/8·π^-1                       4.2     -8.8     2.0  alive     Higgs from a grammar quartic: lam = 3/8·π^-1
+                                       mH/v      pred 0.488603  z = -1.99  (+4.2 bits)
+yt:2/7·π^1                              3.4     -9.6     2.3  alive     Top from a grammar Yukawa: yt2 = 2/7·π^1
+                                       mt/v      pred 0.669925  z = -2.25  (+3.4 bits)
+flat:GUT:lam                            0.8     -7.1     3.3  ruled out Dial flat at the GUT scale
+                                       mH/v      pred 0.521535  z = +3.26  (+0.8 bits)
+flat:MPl_red:lam                        0.6     -7.3     3.3  ruled out Dial flat at the MPl_red scale
+                                       mH/v      pred 0.522117  z = +3.29  (+0.6 bits)
+flat:string:lam                         0.5     -7.4     3.3  ruled out Dial flat at the string scale
+                                       mH/v      pred 0.521895  z = +3.32  (+0.5 bits)
+quint:hilltop:free                      0.4     -4.9     0.0  alive     Dial today near the top of its hump (hilltop), width free
+                                       full fit: slope/width 1.0545454545454547, Ωm 0.304, Δχ² vs Λ +0.14, w0 -0.998; held-out Δχ² (SN→BAO + BAO→SN) +0.56
+yt:7/2·π^-1                             0.0    -13.0     3.1  ruled out Top from a grammar Yukawa: yt2 = 7/2·π^-1
+                                       mt/v      pred 0.746353  z = +3.13  (+0.0 bits)
+flat:MPl_red:beta                      -7.5    -15.4     5.9  ruled out Dial flat and level at the MPl_red scale
+                                       mH/v      pred 0.526058  z = +5.93  (-16.5 bits)
+                                       mt/v      pred 0.702821  z = +0.63  (+9.0 bits)
+quint:exp:1.117                       -20.4    -25.7     3.1  ruled out Dial today, exponential slope 1.117
+                                       full fit: slope/width 1.1165, Ωm 0.304, Δχ² vs Λ +0.38, w0 -0.805; held-out Δχ² (SN→BAO + BAO→SN) -28.30
+SR:mH² + mZ² + mt² = 1·v²             -52.1    -66.2     9.1  ruled out Sum rule mH² + mZ² + mt² = 1·v²
+                                       mH/v      pred 0.609597  z = +9.06  (-52.1 bits)
+SR:mH² + mW² + mt² = 1·v²             -80.8    -94.9    11.0  ruled out Sum rule mH² + mW² + mt² = 1·v²
+                                       mH/v      pred 0.634212  z = +11.04  (-80.8 bits)
+SR:mH² + mW² + mZ² = 1·v²            -511.3   -525.4    26.8  ruled out Sum rule mH² + mW² + mZ² = 1·v²
+                                       mH/v      pred 0.869652  z = +26.81  (-511.3 bits)
+SR:mH² + mW² + mZ² + mt² = 1/4·v²     -huge    -huge     inf  ruled out Sum rule mH² + mW² + mZ² + mt² = 1/4·v²
+                                       mH/v      no real prediction (mass squared negative)
+  kept for refinement: quint:cosine:free, quint:exp:0.516, tree_lam:2/5·π^-1, tree_lam:5/4·π^-2, yt:3/1·π^-1, flat:GUT:lam
+
+---- Round 3: 15 guesses (search so far: 55 guesses, look-elsewhere 5.8 bits)
+id                                     bits      net  max|z|  verdict   guess
+quint:exp:0.666                        12.6      6.8     0.0  alive     Dial today, exponential slope 0.666
+                                       full fit: slope/width 0.6665, Ωm 0.303, Δχ² vs Λ +4.26, w0 -0.932; held-out Δχ² (SN→BAO + BAO→SN) +17.45
+quint:exp:0.967                         7.5      1.8     0.0  alive     Dial today, exponential slope 0.967
+                                       full fit: slope/width 0.9665, Ωm 0.303, Δχ² vs Λ +3.96, w0 -0.855; held-out Δχ² (SN→BAO + BAO→SN) +10.45
+yt:1/1                                  7.0     -6.6     0.4  alive     Top from a grammar Yukawa: yt2 = 1/1
+                                       mt/v      pred 0.707107  z = +0.44  (+7.0 bits)
+tree_lam:1/8                            6.6     -6.9     0.8  alive     Higgs from a grammar quartic: lam = 1/8
+                                       mH/v      pred 0.5  z = -0.84  (+6.6 bits)
+tree_lam:4/3·π^-2                       6.2     -7.3     1.1  alive     Higgs from a grammar quartic: lam = 4/3·π^-2
+                                       mH/v      pred 0.519798  z = +1.10  (+6.2 bits)
+tree_lam:3/7·π^-1                       5.8     -7.7     1.3  alive     Higgs from a grammar quartic: lam = 3/7·π^-1
+                                       mH/v      pred 0.522338  z = +1.34  (+5.8 bits)
+quint:exp:0.366                         4.8     -0.9     0.0  alive     Dial today, exponential slope 0.366
+                                       full fit: slope/width 0.3665, Ωm 0.304, Δχ² vs Λ +1.68, w0 -0.980; held-out Δχ² (SN→BAO + BAO→SN) +6.70
+tree_lam:7/6·π^-2                       3.5    -10.0     2.2  alive     Higgs from a grammar quartic: lam = 7/6·π^-2
+                                       mH/v      pred 0.486226  z = -2.24  (+3.5 bits)
+flat:seesaw:lam                         3.2     -5.1     2.7  alive     Dial flat at the seesaw scale
+                                       mH/v      pred 0.518879  z = +2.71  (+3.2 bits)
+tree_lam:8/7·π^-2                       1.6    -11.9     2.8  alive     Higgs from a grammar quartic: lam = 8/7·π^-2
+                                       mH/v      pred 0.481239  z = -2.75  (+1.6 bits)
+yt:7/8                                  1.1    -12.4     2.9  alive     Top from a grammar Yukawa: yt2 = 7/8
+                                       mt/v      pred 0.661438  z = -2.89  (+1.1 bits)
+yt:6/7                                 -1.2    -14.8     3.4  ruled out Top from a grammar Yukawa: yt2 = 6/7
+                                       mt/v      pred 0.654654  z = -3.40  (-1.2 bits)
+yt:8/7                                 -3.1    -16.7     3.8  ruled out Top from a grammar Yukawa: yt2 = 8/7
+                                       mt/v      pred 0.755929  z = +3.77  (-3.1 bits)
+yt:7/6                                 -6.1    -19.6     4.3  ruled out Top from a grammar Yukawa: yt2 = 7/6
+                                       mt/v      pred 0.763763  z = +4.28  (-6.1 bits)
+quint:exp:1.266                      -113.7   -119.5     3.1  ruled out Dial today, exponential slope 1.266
+                                       full fit: slope/width 1.2665, Ωm 0.306, Δχ² vs Λ -7.60, w0 -0.747; held-out Δχ² (SN→BAO + BAO→SN) -157.59
+  kept for refinement: quint:exp:0.666, quint:exp:0.967, yt:1/1, tree_lam:1/8, tree_lam:4/3·π^-2, flat:seesaw:lam
+
+---- Round 4: 16 guesses (search so far: 71 guesses, look-elsewhere 6.1 bits)
+id                                     bits      net  max|z|  verdict   guess
+quint:exp:0.742                        13.8      7.6     0.0  alive     Dial today, exponential slope 0.742
+                                       full fit: slope/width 0.7415, Ωm 0.303, Δχ² vs Λ +4.68, w0 -0.916; held-out Δχ² (SN→BAO + BAO→SN) +19.08
+quint:exp:0.891                        12.2      6.0     0.0  alive     Dial today, exponential slope 0.891
+                                       full fit: slope/width 0.8915, Ωm 0.303, Δχ² vs Λ +4.65, w0 -0.877; held-out Δχ² (SN→BAO + BAO→SN) +16.91
+quint:exp:0.592                        10.8      4.7     0.0  alive     Dial today, exponential slope 0.592
+                                       full fit: slope/width 0.5915, Ωm 0.303, Δχ² vs Λ +3.68, w0 -0.947; held-out Δχ² (SN→BAO + BAO→SN) +15.01
+quint:exp:0.442                         6.8      0.6     0.0  alive     Dial today, exponential slope 0.442
+                                       full fit: slope/width 0.4415, Ωm 0.304, Δχ² vs Λ +2.34, w0 -0.970; held-out Δχ² (SN→BAO + BAO→SN) +9.39
+tree_lam:7/5·π^-2                       3.2    -10.7     2.3  alive     Higgs from a grammar quartic: lam = 7/5·π^-2
+                                       mH/v      pred 0.532634  z = +2.32  (+3.2 bits)
+quint:exp:0.291                         3.1     -3.0     0.0  alive     Dial today, exponential slope 0.291
+                                       full fit: slope/width 0.2915, Ωm 0.304, Δχ² vs Λ +1.10, w0 -0.987; held-out Δχ² (SN→BAO + BAO→SN) +4.36
+tree_lam:1/7                            2.6    -11.3     2.5  alive     Higgs from a grammar quartic: lam = 1/7
+                                       mH/v      pred 0.534522  z = +2.49  (+2.6 bits)
+quint:exp:1.042                        -2.1     -8.3     0.0  alive     Dial today, exponential slope 1.042
+                                       full fit: slope/width 1.0415, Ωm 0.303, Δχ² vs Λ +2.60, w0 -0.831; held-out Δχ² (SN→BAO + BAO→SN) -2.94
+yt:8/3·π^-1                            -2.5    -16.4     3.6  ruled out Top from a grammar Yukawa: yt2 = 8/3·π^-1
+                                       mt/v      pred 0.65147  z = -3.64  (-2.5 bits)
+yt:5/6                                 -5.0    -18.9     4.1  ruled out Top from a grammar Yukawa: yt2 = 5/6
+                                       mt/v      pred 0.645497  z = -4.10  (-5.0 bits)
+yt:3/8·π^1                             -7.7    -21.6     4.5  ruled out Top from a grammar Yukawa: yt2 = 3/8·π^1
+                                       mt/v      pred 0.767495  z = +4.52  (-7.7 bits)
+tree_lam:1/3·π^-1                     -10.5    -24.4     4.9  ruled out Higgs from a grammar quartic: lam = 1/3·π^-1
+                                       mH/v      pred 0.460659  z = -4.93  (-10.5 bits)
+yt:6/5                                -10.8    -24.7     5.0  ruled out Top from a grammar Yukawa: yt2 = 6/5
+                                       mt/v      pred 0.774597  z = +4.98  (-10.8 bits)
+tree_lam:1/1·π^-2                     -19.6    -33.5     6.1  ruled out Higgs from a grammar quartic: lam = 1/1·π^-2
+                                       mH/v      pred 0.450158  z = -6.09  (-19.6 bits)
+quint:exp:1.192                       -54.2    -60.4     3.1  ruled out Dial today, exponential slope 1.192
+                                       full fit: slope/width 1.1915, Ωm 0.305, Δχ² vs Λ -2.93, w0 -0.777; held-out Δχ² (SN→BAO + BAO→SN) -75.17
+quint:exp:1.341                      -173.4   -179.6     3.1  ruled out Dial today, exponential slope 1.341
+                                       full fit: slope/width 1.3415, Ωm 0.307, Δχ² vs Λ -13.97, w0 -0.716; held-out Δχ² (SN→BAO + BAO→SN) -240.41
+
+====================================================================================================
+Held-out and chance checks
+  m_H from a grammar constant: best real hit Higgs from a grammar quartic: lam = 2/5·π^-1 (7.0 bits). Random targets do as well 36% of the time.
+  m_H from a mass sum rule: best real hit Mass budget sum rule (6.8 bits). Random targets do as well 26% of the time.
+  m_t from a grammar Yukawa: best real hit Top at the dial's unit (7.0 bits). Random targets do as well 39% of the time.
+  Flat dial at M_Pl (λ = 0): m_H = 128.68 ± 1.04 GeV (NNLO fit; our two-loop run 128.59) vs measured 125.2 ± 0.11: +3.3σ
+  Flat and level at M_Pl (λ = β_λ = 0): m_H = 133.11 ± 0.74, m_t = 174.78 ± 0.70 GeV (held out: measured m_t 172.57 ± 0.29, +2.9σ)
+  With measured inputs: λ turns negative at μ ≈ 3.67e+10 GeV; β_λ is smallest at μ ≈ 2.52e+17 GeV (λ there -0.0106); λ(M_Pl) = -0.0103
+  Exponential slope from all data: best λ = 0.80, 1σ range 0.61 to 0.96; √(2/3) = 0.816; Λ (λ = 0) is Δχ² = 4.8 worse
+  Of 43 simple slopes √(p/q), p, q ≤ 8, 13 fall inside that 1σ range
+  Conformal dial (slope n·√(2/3)) couples to matter with α0² = 1/6, so PPN γ = 1 − 2α0²/(1+α0²) = 5/7 = 0.7143: Cassini puts that 12423σ away unless the force is screened
+  So the conformal slope survives only if the dial is screened in the solar system (as f(R) gravity must be), or if the dial is dark-only, in which case the slope is free (best 0.80)

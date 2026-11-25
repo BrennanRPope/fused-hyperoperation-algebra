@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The dial's potential</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a lab datasheet, exact and calm; the finding first.
+   IDEA: a search log: rounds of guesses, each scored in bits, like an instrument's test sheet.
+   PICTURE: every guess plotted by round and net bits, coloured by reading (Higgs, formula, gravity, dark energy).
+   COLOUR and TYPE: cobalt title strip, white panels, black ink, pale cobalt zones; Space Grotesk + Inter.
+   LAYOUT: strip, key figures, the picture, then sections that state their point; two small charts inside. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0a0d18);--ink:light-dark(#111318,#e8ebf4);--mut:light-dark(#545b6b,#a3abbd);
+--cob:#1240e0;--zone:light-dark(#eef2ff,#141a33);--rule:light-dark(#d5dbea,#28304d);
+--hig:light-dark(#c2410c,#fb923c);--for:light-dark(#7c8597,#8b93a7);--gra:light-dark(#0f766e,#2dd4bf);--dar:light-dark(#1240e0,#7d9bff)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;font-weight:600;line-height:1.1;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(30px,4.4vw,48px)}h2{font-size:clamp(22px,2.6vw,28px);margin-top:.2em}h3{font-size:18px}
+.strip{background:var(--cob);color:#fff;padding:clamp(24px,4vw,48px) max(5vw,16px) clamp(20px,3vw,36px)}
+.strip p{max-width:70ch;font-size:17px;margin:.4em 0 0;color:#e6ebff}
+.band{padding:clamp(24px,3.5vw,52px) max(5vw,16px);max-width:1240px;margin:0 auto}
+.zone{background:var(--zone)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:1240px;margin:0 auto;padding:20px max(5vw,16px) 0}
+.kpi{border-top:3px solid var(--ink);padding:10px 2px}
+.kpi b{display:block;font:600 clamp(24px,3vw,32px)/1.1 "Space Grotesk",sans-serif;white-space:nowrap}
+.kpi span{color:var(--mut);font-size:14px}
+.fig{position:relative;min-height:360px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.small{min-height:280px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--mut);margin:.4em 0 .8em}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(20px,3vw,40px)}
+p,li{max-width:72ch}.mut{color:var(--mut)}
+table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;font-size:14px;color:var(--mut)}td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sub{color:var(--mut);font-size:13px;margin-top:2px}
+.lead{border-left:4px solid var(--dar);padding:4px 0 4px 16px;margin:14px 0}.lead.no{border-color:var(--for)}.lead.known{border-color:var(--hig)}
+.scroll{overflow-x:auto;display:flex;gap:18px;padding:12px max(5vw,16px);border-bottom:1px solid var(--rule);font-size:14px;white-space:nowrap}
+.scroll a{flex:none;color:var(--ink)}
+@media(min-width:900px){.scroll{position:sticky;top:0;background:var(--bg);z-index:2}}
+code{overflow-wrap:anywhere;font-size:14px}html{scroll-padding-top:72px}
+a{color:var(--dar)}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mut)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<header class="strip">
+<h1>The dial's potential: the Higgs reading misses, the dark-energy reading is alive</h1>
+<p>71 guesses in four rounds, each scored against measured numbers. No guess that makes the dial the Higgs field survives with a prediction of its own. The one reading still standing is the dial as a slowly rolling field today: its rescaling symmetry forces an exponential potential, and that fits supernovae and galaxy surveys better than a fixed cosmological constant, by a margin that is real but not yet decisive.</p>
+</header>
+<div class="kpis">
+<div class="kpi"><b>71</b><span>guesses over 4 rounds, about 2 minutes of computing</span></div>
+<div class="kpi"><b>128.7 GeV</b><span>Higgs mass from "flat dial at the Planck scale"; measured 125.2 (3.3σ off)</span></div>
+<div class="kpi"><b>Δχ² = 4.8</b><span>rolling dial beats a cosmological constant (slope 0.80, range 0.61 to 0.96)</span></div>
+<div class="kpi"><b>26 to 39%</b><span>how often random numbers are matched as well as the best formula hits</span></div>
+</div>
+<nav class="scroll"><a href="#search">The search</a><a href="#scoring">Scoring</a><a href="#round1">Round 1</a><a href="#rounds">Rounds 2 to 4</a><a href="#higgs">Higgs reading</a><a href="#dark">Dark-energy reading</a><a href="#leads">Leads</a><a href="#lean">Proved in Lean</a><a href="#files">Files</a></nav>
+
+<section class="band" id="search">
+<h2>Every guess, by round</h2>
+<div class="legend"><span><i style="background:var(--hig)"></i>dial as the Higgs (physics)</span><span><i style="background:var(--for)"></i>formulas (numbers from small fractions and π)</span><span><i style="background:var(--gra)"></i>dial in gravity</span><span><i style="background:var(--dar)"></i>dial as dark energy</span><span><i style="border:2px solid var(--mut);background:none"></i>ruled out</span></div>
+<div class="fig" id="f1"><svg id="s1" role="img" aria-label="Net bits of each guess by round"></svg></div>
+<p class="mut">Net bits: the evidence a guess earns from the numbers it predicts, minus what it cost to pick it (one choice out of a list, and the size of the whole search). Above zero means it did better than chance after those costs. Ruled-out guesses are drawn at the floor.</p>
+</section>
+
+<section class="band zone" id="scoring">
+<h2>How each guess was scored</h2>
+<div class="two"><div>
+<p>A guess is a shape for the dial's potential plus what the dial couples to. Each one predicts some measured numbers. A prediction p for a measured x earns <b>bits = log₂(W / (s√2π)) − z²/(2 ln 2)</b>, where s is the combined uncertainty (measurement plus the guess's own theory error), z = ln(p/x)/s, and W is how widely the number could have fallen beforehand (0.01 to 10 for ratios of order one). Sharp and close scores high; a miss goes very negative; more than 3σ off is ruled out.</p>
+<p>Three guards against numerology. A number used to fix a free parameter earns nothing. Picking a constant from a list of G candidates costs log₂ G bits (215 fractions times powers of π: 7.7 bits; 450 mass sum rules: 8.8 bits), and the whole search costs log₂ of the number of guesses tried. The formula families were also run against random targets to see how often chance alone does as well. Tree-level mass relations carry a 2% theory error for loop corrections.</p>
+<p>For the dark-energy guesses the score is Δχ² against a cosmological constant on 1,590 Pantheon+ supernovae and 13 DESI DR2 BAO numbers, converted to bits. Free parameters are fitted on one data set and scored on the other (both ways), so a guess only gains by predicting data it did not see.</p>
+</div><div>
+<table class="stack"><thead><tr><th>Target</th><th>Measured</th><th>Why it's here</th></tr></thead><tbody>
+<tr><td>m<sub>H</sub>/v</td><td class=num>0.5085</td><td>the curvature at the dip, if the dial is the Higgs</td></tr>
+<tr><td>m<sub>t</sub>/v</td><td class=num>0.7009</td><td>top quark, the heaviest coupling</td></tr>
+<tr><td>sin²θ<sub>W</sub></td><td class=num>0.23129</td><td>mixing of the forces the Higgs breaks</td></tr>
+<tr><td>α</td><td class=num>1/137.036</td><td>if the dial is light's dial (k = 1/c²)</td></tr>
+<tr><td>PPN γ</td><td class=num>1 ± 2.3·10⁻⁵</td><td>light bending (Cassini): any coupling to gravity</td></tr>
+<tr><td>Δα/α at z = 1.15</td><td class=num>(1.3 ± 1.4)·10⁻⁶</td><td>a rolling dial that touches light</td></tr>
+<tr><td>ρ<sub>Λ</sub><sup>1/4</sup>/M<sub>Pl</sub></td><td class=num>9.2·10⁻³¹</td><td>the dip's residual height as dark energy</td></tr>
+<tr><td>supernovae + BAO</td><td class=num>1,603 points</td><td>how the expansion has changed</td></tr>
+</tbody></table>
+<p class="mut">Masses: PDG 2024 (m<sub>H</sub> 125.20, m<sub>W</sub> 80.369, m<sub>Z</sub> 91.188, m<sub>t</sub> 172.57 GeV, α<sub>s</sub> 0.1180, v 246.22 GeV).</p>
+</div></div>
+</section>
+
+<section class="band" id="round1">
+<h2>Round 1: twenty guesses, eleven ruled out at once</h2>
+<p>Geometry grades: A follows from a proved mult-add fact, B is motivated by one, C has no geometric reason (kept to show what numerology looks like under these rules).</p>
+<table class="stack"><thead><tr><th>ID</th><th>Guess</th><th>Grade</th><th>Net bits</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>C1</td><td>Dial alone as gravity<div class=sub>k(x) = 1/c(x)², clocks only; k couples to time</div></td><td>A</td><td class=num>far below −1000</td><td>ruled out</td></tr>
+<tr><td>C2</td><td>Dial boosts plus the river (= general relativity)<div class=sub>local boosts by the dial, river at escape speed; k couples to clocks and rulers equally</div></td><td>A</td><td class=num>+10.7</td><td>alive</td></tr>
+<tr><td>C3</td><td>Light&#x27;s dial rolling as dark energy<div class=sub>exponential V, λ = √(2/3), α ∝ √k; k = 1/c² couples to light</div></td><td>B</td><td class=num>far below −1000</td><td>ruled out</td></tr>
+<tr><td>C4</td><td>Dial coupled to curvature (Brans–Dicke)<div class=sub>k·R, coupling ω free; k couples to curvature</div></td><td>B</td><td class=num>-4.3</td><td>nothing to test</td></tr>
+<tr><td>C5</td><td>Scale-symmetric dial today, slope free<div class=sub>V = V0 e^(−λφ), φ = √(3/2) ln k; k couples only to itself and gravity</div></td><td>A</td><td class=num>+8.3</td><td>alive</td></tr>
+<tr><td>C6</td><td>Dial today, V ∝ k<div class=sub>V ∝ k, λ = √(2/3) = 0.816; k is the metric&#x27;s conformal factor</div></td><td>B</td><td class=num>+9.6</td><td>alive</td></tr>
+<tr><td>C7</td><td>Dial today, V ∝ k²<div class=sub>V ∝ k², λ = 2√(2/3) = 1.633; k is the metric&#x27;s conformal factor</div></td><td>B</td><td class=num>-50.7</td><td>ruled out</td></tr>
+<tr><td>C8</td><td>Dark energy from the weak scale<div class=sub>ρΛ^(1/4) = v²/M_Pl; k&#x27;s dip height set by the vev</div></td><td>C</td><td class=num>-5612.1</td><td>ruled out</td></tr>
+<tr><td>P1</td><td>Quartic sombrero, height free<div class=sub>V = (λ/4)(k² − k0²)²; k = Higgs magnitude, k0 = v</div></td><td>B</td><td class=num>-4.3</td><td>nothing to test</td></tr>
+<tr><td>P10</td><td>Weinberg angle as a dial quarter<div class=sub>sin²θ_W = 1/4; k mixes hypercharge and weak isospin</div></td><td>C</td><td class=num>-177.4</td><td>ruled out</td></tr>
+<tr><td>P11</td><td>One dial for all three forces<div class=sub>the three gauge couplings meet (SM running); k is the single coupling above the meeting scale</div></td><td>B</td><td class=num>-930.2</td><td>ruled out</td></tr>
+<tr><td>P12</td><td>Fine-structure constant from π<div class=sub>1/α = 4π³ + π² + π; k = electric charge</div></td><td>C</td><td class=num>far below −1000</td><td>ruled out</td></tr>
+<tr><td>P2</td><td>Lift-normalised well<div class=sub>V = (k ✳ (−k) + k0²)² = (k0² − k²)²; k = Higgs magnitude</div></td><td>B</td><td class=num>-5297.5</td><td>ruled out</td></tr>
+<tr><td>P3</td><td>Higgs at half the vev<div class=sub>V = (1/32)(k² − k0²)²  (λ = 1/8); k = Higgs magnitude</div></td><td>C</td><td class=num>-5.5</td><td>alive</td></tr>
+<tr><td>P4</td><td>Dial flat at the Planck scale<div class=sub>λ(M_Pl) = 0: the well vanishes at the top scale; k = Higgs magnitude, Standard Model running</div></td><td>B</td><td class=num>-4.1</td><td>ruled out</td></tr>
+<tr><td>P5</td><td>Dial flat and level at the Planck scale<div class=sub>λ(M_Pl) = 0 and β_λ(M_Pl) = 0; k = Higgs magnitude</div></td><td>B</td><td class=num>-77.2</td><td>ruled out</td></tr>
+<tr><td>P6</td><td>Scale-symmetric dial (Coleman–Weinberg)<div class=sub>V = λ k⁴ (ln(k²/k0²) − ½), no tree mass; k = Higgs magnitude</div></td><td>A</td><td class=num>far below −1000</td><td>ruled out</td></tr>
+<tr><td>P7</td><td>Dial blind to the cutoff (Veltman)<div class=sub>quadratic sensitivity cancels: mH² = 4mt² − 2mW² − mZ²; k = Higgs magnitude</div></td><td>C</td><td class=num>-1507.0</td><td>ruled out</td></tr>
+<tr><td>P8</td><td>Mass budget sum rule<div class=sub>mH² + mW² + mZ² + mt² = v²; k sets every mass</div></td><td>C</td><td class=num>-6.3</td><td>alive</td></tr>
+<tr><td>P9</td><td>Top at the dial&#x27;s unit<div class=sub>y_t = 1, so mt = v/√2; k sets the top Yukawa</div></td><td>C</td><td class=num>-5.1</td><td>alive</td></tr>
+</tbody></table>
+</section>
+
+<section class="band zone" id="rounds">
+<h2>Rounds 2 to 4: the closest guesses refined</h2>
+<p>Each round kept the five best-scoring guesses, plus the best near miss (within 4σ) of any other family, and made children from them: the neighbouring constants in the formula lists, the "flat dial" condition moved to other high scales, and for the rolling dial a slope step that halves each round (±0.3, ±0.15, ±0.075) plus two hump-shaped potentials. Rounds 3 and 4 had 15 and 16 children because the formula neighbourhoods ran out.</p>
+<ul>
+<li><b>Formulas:</b> a constant near the best hit is always found (m<sub>H</sub> within 1% from λ = 2/(5π); y<sub>t</sub> = 1 gives m<sub>t</sub> within 1%), and its neighbours scatter both ways. Net bits stay below −5 throughout: the closeness costs more to find than it earns.</li>
+<li><b>Flat dial at other scales:</b> moving the top scale from the Planck mass down to 10¹⁶ to 10¹⁷ GeV changes the Higgs mass by under 1 GeV; only the seesaw scale (10¹⁴) gets within 3σ, at 127.8 GeV, and nothing picks that scale out. Adding "level" (zero slope too) makes it worse at every scale.</li>
+<li><b>Rolling dial:</b> the slope walk settled between 0.74 and 0.89; the full fit's best is 0.80. A dial on a circle (negative dial, cosine potential) scores Δχ² = 3.3 with one more parameter; the literal sombrero today (rolling off the hump) does no better than a constant (Δχ² = 0.1).</li>
+</ul>
+</section>
+
+<section class="band" id="higgs">
+<h2>The Higgs reading: closest physics is 3.3σ off, and it's known physics</h2>
+<div class="two"><div>
+<p>If the dial is the size of the Higgs field, the flip symmetry (proved: the dial −k is the dial k seen through a ↦ −a) makes the potential even, so the dips sit at ±k0, exactly the 1D sombrero. But the dial's rescaling symmetry (also proved) means no tree-level shape can set k0 by itself. Something with units has to. The guesses that try:</p>
+<ul>
+<li><b>Flat dial at the Planck scale</b> (the hump vanishes at the top scale, where the dial returns to plain addition): λ(M<sub>Pl</sub>) = 0 gives m<sub>H</sub> = 128.7 ± 1.0 GeV (NNLO fit of Buttazzo et al. 2013; our own two-loop run gives 128.6). Measured 125.2: 3.3σ. It needs the top quark 1.5 GeV lighter than measured. This is Froggatt and Nielsen's 1995 prediction (135 ± 9 GeV) and Shaposhnikov and Wetterich's 2009 one (126 GeV), redone with today's top mass.</li>
+<li><b>Flat and level</b> (λ = β<sub>λ</sub> = 0): m<sub>H</sub> 133.1, m<sub>t</sub> 174.8 GeV; the held-out top mass is 2.9σ off and the Higgs 8σ.</li>
+<li><b>Scale-symmetric dial</b> (Coleman–Weinberg, the most geometric option): m<sub>H</sub>² = (6m<sub>W</sub>⁴ + 3m<sub>Z</sub>⁴ − 12m<sub>t</sub>⁴)/(8π²v²) is negative. The top quark kills it, by a factor of 22 (proved in Lean).</li>
+<li><b>Cutoff-blind (Veltman):</b> 313 GeV, over twice the measured mass (proved).</li>
+</ul>
+</div><div>
+<h3>The Higgs quartic run up to the Planck scale</h3>
+<div class="fig small" id="f2"><svg id="s2" role="img" aria-label="Higgs quartic lambda against energy scale"></svg></div>
+<p class="mut">With measured inputs λ crosses zero near 4·10¹⁰ GeV and ends at −0.010 at M<sub>Pl</sub>. "Flat at the top" would need the curve to land on zero.</p>
+</div></div>
+</section>
+
+<section class="band zone" id="dark">
+<h2>The dark-energy reading: the one guess that keeps earning</h2>
+<div class="two"><div>
+<p>Rescaling the dial changes nothing (k → k/s with a → s·a), so the natural measure on the dial is dk/k and the natural field is ln k. A potential that respects the rescaling is a single power of k (proved), which in ln k is an exponential, V = V0 e<sup>−λφ</sup>. That is a thawing quintessence field: frozen early, rolling a little today.</p>
+<ul>
+<li><b>Fit to all data:</b> slope 0.80 (1σ 0.61 to 0.96), Δχ² = 4.8 better than a constant, today's w = −0.90.</li>
+<li><b>Held out:</b> fitted on supernovae alone it predicts the BAO numbers with χ² 8.9 against the constant's 24.1; fitted on BAO alone it predicts the supernovae 4 better. The gain does not come from fitting both at once.</li>
+<li><b>The slope √(2/3) = 0.816</b> (the dial as the metric's conformal factor, V ∝ k) lands on the best fit. On its own that means little: 13 of 43 simple slopes √(p/q) sit inside the 1σ range.</li>
+<li><b>That conformal reading has a held-out test, and fails it unscreened:</b> the same factor couples to matter with α0² = 1/6, giving PPN γ = 5/7 (proved), 12,000σ from Cassini. It survives only with screening near masses, as f(R) gravity needs, or if the dial is dark-only, and then the slope is free.</li>
+<li><b>It cannot be light's dial.</b> If k = 1/c² rolled like this, α would have shifted by 9% since z = 1.15; quasar spectra allow about 10⁻⁶. The coupling to light must be below 2.4·10⁻⁵ of natural.</li>
+</ul>
+</div><div>
+<h3>How sharply the data pin the slope</h3>
+<div class="fig small" id="f3"><svg id="s3" role="img" aria-label="Chi squared against exponential slope"></svg></div>
+<p class="mut">Δχ² from the best slope; the band is 1σ, the dashed line √(2/3). Slope 0 is a cosmological constant.</p>
+</div></div>
+</section>
+
+<section class="band" id="leads">
+<h2>Leads, each judged on its own merits</h2>
+<div class="lead"><h3>Worth following: the dial as a dark-only rolling field</h3><p>It is the one place where a proved symmetry of the dial fixes the form of the potential, leaving one number, and that form beats a constant on data it was not fitted to. The preference is modest (about 2σ) and is the same hint DESI reported in 2025; it leans on the supernova sample, and Pantheon+ is the gentler one. It becomes a real test when DESI's final data and Euclid pin w(z): an exponential dial predicts a specific thawing curve from one slope. Next step: refit with the other supernova samples and a CMB distance prior, and compare the dial's one-parameter curve with DESI's w0–wa result.</p></div>
+<div class="lead known"><h3>Known physics, now in tension: flat dial at the Planck scale</h3><p>The cleanest Higgs-sector use of "the dial is plain addition at the top". It is not ours (1995, 2009), and today's top mass puts it 3.3σ off. It revives only if the top mass comes down by about 1.5 GeV, which the measurement does not allow today.</p></div>
+<div class="lead no"><h3>Not leads: the formula hits</h3><p>m<sub>H</sub> = v/2, y<sub>t</sub> = 1 and the mass sum rule m<sub>H</sub>² + m<sub>W</sub>² + m<sub>Z</sub>² + m<sub>t</sub>² = v² each land within 1 to 2%. Random targets are matched that well 26 to 39% of the time by the same lists, none comes with a second number to hold out, and none has a geometric reason behind it.</p></div>
+<div class="lead no"><h3>Ruled out</h3><p>Coleman–Weinberg Higgs, Veltman, one dial for all three forces (sin²θ<sub>W</sub> 0.208 against 0.231), a quarter-turn mixing angle, the dial alone as gravity (half the light bending), light's dial rolling, dark energy from v²/M<sub>Pl</sub> (90 times too small), 1/α = 4π³ + π² + π (misses at the tenth digit), a steep exponential (λ ≥ 1.2) and the unscreened conformal coupling.</p></div>
+<p>On Brennan's mass idea: the curvature at the bottom of the dip is a mass in both readings, but only the Higgs reading makes it a number we can check, and there it is an input, not a prediction. In the dark-energy reading the dial's mass is about the Hubble rate, 10⁻³³ eV, seen only through the expansion.</p>
+</section>
+
+<section class="band zone" id="lean">
+<h2>Proved in Lean</h2>
+<p>24 theorems in <code>FusedAlgebra/Topics/DialPotential</code>, core Lean 4.37, no mathlib, no sorry, standard axioms only; merged into the shared library, which builds clean at 2,807 theorems.</p>
+<ul>
+<li>The dial's two symmetries: flip (wAdd (−k) a b = −wAdd k (−a) (−b)) and rescaling (if k′s = k, the dial k′ on s·a, s·b is s times the dial k).</li>
+<li>A potential with V(s·k) = sⁿV(k) is V(1)·kⁿ; the double well satisfies that for no n, so an outside scale must set k0.</li>
+<li>The mirror well: k ✳ (−k) = −k², (k ✳ (−k) + k0²)² = (k0² − k²)², even, zero at ±k0, hump k0⁴, expansion at the dip 4k0²h² + 4k0h³ + h⁴; in the usual normalisation m² = 2λv² and hump height m²v²/8.</li>
+<li>Exponential fixed point: Ω = 1 and w = λ²/3 − 1 (−7/9 and −1/9 for the conformal slopes), existing only for λ² ≤ 6.</li>
+<li>Exact arithmetic on measured masses: the Coleman–Weinberg mass squared is negative (and stays so with 10 GeV shifts), the Veltman mass is over twice m<sub>H</sub>, and the conformal coupling gives γ = 5/7.</li>
+</ul>
+</section>
+
+<section class="band" id="files">
+<h2>Files</h2>
+<p>In <code>math-theory/dial-potential/</code>: <code>search.py</code> (all four rounds, scoring, chance and held-out checks; writes <code>search_output.txt</code> and <code>results.json</code>), <code>sm_rge.py</code> (Higgs running, checked against the published NNLO result: −0.0141 against −0.0143), <code>quintessence.py</code> (rolling-field expansion fits, reusing the dark-sector data), <code>lean/DialPotential.lean</code>, and this page's builder.</p>
+<p class="mut">Sources: PDG 2024; Buttazzo et al., JHEP 12 (2013) 089; Froggatt and Nielsen, PLB 368 (1996) 96; Shaposhnikov and Wetterich, PLB 683 (2010) 196; Gildener and Weinberg, PRD 13 (1976) 3333; Copeland, Liddle and Wands, PRD 57 (1998) 4686; Damour and Esposito-Farèse, CQG 9 (1992) 2093; Bertotti, Iess and Tortora (Cassini), Nature 425 (2003) 374; Murphy et al. (ESPRESSO), A&A 658 (2022) A123; Pantheon+ (Scolnic et al. 2022); DESI DR2 BAO (2025).</p>
+</section>
+
+<script>
+{
+const D={"pts": [{"r": 1, "b": 10.74, "out": false, "g": "gravity", "n": "Dial boosts plus the river (= general relativity)", "id": "C2"}, {"r": 1, "b": 9.56, "out": false, "g": "dark", "n": "Dial today, V \u221d k", "id": "C6"}, {"r": 1, "b": 8.3, "out": false, "g": "dark", "n": "Scale-symmetric dial today, slope free", "id": "C5"}, {"r": 1, "b": -5.11, "out": false, "g": "formula", "n": "Top at the dial's unit", "id": "P9"}, {"r": 1, "b": -6.31, "out": false, "g": "formula", "n": "Mass budget sum rule", "id": "P8"}, {"r": 1, "b": -5.48, "out": false, "g": "formula", "n": "Higgs at half the vev", "id": "P3"}, {"r": 1, "b": -4.13, "out": true, "g": "higgs", "n": "Dial flat at the Planck scale", "id": "P4"}, {"r": 1, "b": -30, "out": true, "g": "dark", "n": "Dial today, V \u221d k\u00b2", "id": "C7"}, {"r": 1, "b": -30, "out": true, "g": "higgs", "n": "Dial flat and level at the Planck scale", "id": "P5"}, {"r": 1, "b": -30, "out": true, "g": "formula", "n": "Weinberg angle as a dial quarter", "id": "P10"}, {"r": 1, "b": -30, "out": true, "g": "higgs", "n": "One dial for all three forces", "id": "P11"}, {"r": 1, "b": -30, "out": true, "g": "higgs", "n": "Dial blind to the cutoff (Veltman)", "id": "P7"}, {"r": 1, "b": -30, "out": true, "g": "formula", "n": "Lift-normalised well", "id": "P2"}, {"r": 1, "b": -30, "out": true, "g": "gravity", "n": "Dark energy from the weak scale", "id": "C8"}, {"r": 1, "b": -30, "out": true, "g": "formula", "n": "Fine-structure constant from \u03c0", "id": "P12"}, {"r": 1, "b": -30, "out": true, "g": "higgs", "n": "Scale-symmetric dial (Coleman\u2013Weinberg)", "id": "P6"}, {"r": 1, "b": -30, "out": true, "g": "gravity", "n": "Dial alone as gravity", "id": "C1"}, {"r": 1, "b": -30, "out": true, "g": "gravity", "n": "Light's dial rolling as dark energy", "id": "C3"}, {"r": 2, "b": 4.44, "out": false, "g": "dark", "n": "Dial today on a circle (q < 0, compact dial), period free", "id": "quint:cosine:free"}, {"r": 2, "b": 3.5, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.516", "id": "quint:exp:0.516"}, {"r": 2, "b": -6.07, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 2/5\u00b7\u03c0^-1", "id": "tree_lam:2/5\u00b7\u03c0^-1"}, {"r": 2, "b": -6.16, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 5/4\u00b7\u03c0^-2", "id": "tree_lam:5/4\u00b7\u03c0^-2"}, {"r": 2, "b": -6.33, "out": false, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 3/1\u00b7\u03c0^-1", "id": "yt:3/1\u00b7\u03c0^-1"}, {"r": 2, "b": -7.66, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 6/5\u00b7\u03c0^-2", "id": "tree_lam:6/5\u00b7\u03c0^-2"}, {"r": 2, "b": -7.79, "out": false, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 1/3\u00b7\u03c0^1", "id": "yt:1/3\u00b7\u03c0^1"}, {"r": 2, "b": -8.83, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 3/8\u00b7\u03c0^-1", "id": "tree_lam:3/8\u00b7\u03c0^-1"}, {"r": 2, "b": -9.62, "out": false, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 2/7\u00b7\u03c0^1", "id": "yt:2/7\u00b7\u03c0^1"}, {"r": 2, "b": -7.12, "out": true, "g": "higgs", "n": "Dial flat at the GUT scale", "id": "flat:GUT:lam"}, {"r": 2, "b": -7.31, "out": true, "g": "higgs", "n": "Dial flat at the MPl_red scale", "id": "flat:MPl_red:lam"}, {"r": 2, "b": -7.38, "out": true, "g": "higgs", "n": "Dial flat at the string scale", "id": "flat:string:lam"}, {"r": 2, "b": -4.92, "out": false, "g": "dark", "n": "Dial today near the top of its hump (hilltop), width free", "id": "quint:hilltop:free"}, {"r": 2, "b": -13.05, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 7/2\u00b7\u03c0^-1", "id": "yt:7/2\u00b7\u03c0^-1"}, {"r": 2, "b": -15.37, "out": true, "g": "higgs", "n": "Dial flat and level at the MPl_red scale", "id": "flat:MPl_red:beta"}, {"r": 2, "b": -25.74, "out": true, "g": "dark", "n": "Dial today, exponential slope 1.117", "id": "quint:exp:1.117"}, {"r": 2, "b": -30, "out": true, "g": "formula", "n": "Sum rule mH\u00b2 + mZ\u00b2 + mt\u00b2 = 1\u00b7v\u00b2", "id": "SR:mH\u00b2 + mZ\u00b2 + mt\u00b2 = 1\u00b7v\u00b2"}, {"r": 2, "b": -30, "out": true, "g": "formula", "n": "Sum rule mH\u00b2 + mW\u00b2 + mt\u00b2 = 1\u00b7v\u00b2", "id": "SR:mH\u00b2 + mW\u00b2 + mt\u00b2 = 1\u00b7v\u00b2"}, {"r": 2, "b": -30, "out": true, "g": "formula", "n": "Sum rule mH\u00b2 + mW\u00b2 + mZ\u00b2 = 1\u00b7v\u00b2", "id": "SR:mH\u00b2 + mW\u00b2 + mZ\u00b2 = 1\u00b7v\u00b2"}, {"r": 2, "b": -30, "out": true, "g": "formula", "n": "Sum rule mH\u00b2 + mW\u00b2 + mZ\u00b2 + mt\u00b2 = 1/4\u00b7v\u00b2", "id": "SR:mH\u00b2 + mW\u00b2 + mZ\u00b2 + mt\u00b2 = 1/4\u00b7v\u00b2"}, {"r": 3, "b": 6.8, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.666", "id": "quint:exp:0.666"}, {"r": 3, "b": 1.75, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.967", "id": "quint:exp:0.967"}, {"r": 3, "b": -6.57, "out": false, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 1/1", "id": "yt:1/1"}, {"r": 3, "b": -6.93, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 1/8", "id": "tree_lam:1/8"}, {"r": 3, "b": -7.3, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 4/3\u00b7\u03c0^-2", "id": "tree_lam:4/3\u00b7\u03c0^-2"}, {"r": 3, "b": -7.72, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 3/7\u00b7\u03c0^-1", "id": "tree_lam:3/7\u00b7\u03c0^-1"}, {"r": 3, "b": -0.95, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.366", "id": "quint:exp:0.366"}, {"r": 3, "b": -10.03, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 7/6\u00b7\u03c0^-2", "id": "tree_lam:7/6\u00b7\u03c0^-2"}, {"r": 3, "b": -5.14, "out": false, "g": "higgs", "n": "Dial flat at the seesaw scale", "id": "flat:seesaw:lam"}, {"r": 3, "b": -11.88, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 8/7\u00b7\u03c0^-2", "id": "tree_lam:8/7\u00b7\u03c0^-2"}, {"r": 3, "b": -12.44, "out": false, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 7/8", "id": "yt:7/8"}, {"r": 3, "b": -14.76, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 6/7", "id": "yt:6/7"}, {"r": 3, "b": -16.67, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 8/7", "id": "yt:8/7"}, {"r": 3, "b": -19.65, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 7/6", "id": "yt:7/6"}, {"r": 3, "b": -30, "out": true, "g": "dark", "n": "Dial today, exponential slope 1.266", "id": "quint:exp:1.266"}, {"r": 4, "b": 7.61, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.742", "id": "quint:exp:0.742"}, {"r": 4, "b": 6.05, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.891", "id": "quint:exp:0.891"}, {"r": 4, "b": 4.68, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.592", "id": "quint:exp:0.592"}, {"r": 4, "b": 0.62, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.442", "id": "quint:exp:0.442"}, {"r": 4, "b": -10.67, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 7/5\u00b7\u03c0^-2", "id": "tree_lam:7/5\u00b7\u03c0^-2"}, {"r": 4, "b": -3.01, "out": false, "g": "dark", "n": "Dial today, exponential slope 0.291", "id": "quint:exp:0.291"}, {"r": 4, "b": -11.28, "out": false, "g": "formula", "n": "Higgs from a grammar quartic: lam = 1/7", "id": "tree_lam:1/7"}, {"r": 4, "b": -8.27, "out": false, "g": "dark", "n": "Dial today, exponential slope 1.042", "id": "quint:exp:1.042"}, {"r": 4, "b": -16.37, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 8/3\u00b7\u03c0^-1", "id": "yt:8/3\u00b7\u03c0^-1"}, {"r": 4, "b": -18.93, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 5/6", "id": "yt:5/6"}, {"r": 4, "b": -21.56, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 3/8\u00b7\u03c0^1", "id": "yt:3/8\u00b7\u03c0^1"}, {"r": 4, "b": -24.36, "out": true, "g": "formula", "n": "Higgs from a grammar quartic: lam = 1/3\u00b7\u03c0^-1", "id": "tree_lam:1/3\u00b7\u03c0^-1"}, {"r": 4, "b": -24.71, "out": true, "g": "formula", "n": "Top from a grammar Yukawa: yt2 = 6/5", "id": "yt:6/5"}, {"r": 4, "b": -30, "out": true, "g": "formula", "n": "Higgs from a grammar quartic: lam = 1/1\u00b7\u03c0^-2", "id": "tree_lam:1/1\u00b7\u03c0^-2"}, {"r": 4, "b": -30, "out": true, "g": "dark", "n": "Dial today, exponential slope 1.192", "id": "quint:exp:1.192"}, {"r": 4, "b": -30, "out": true, "g": "dark", "n": "Dial today, exponential slope 1.341", "id": "quint:exp:1.341"}], "lam": [[2.237, 0.12617], [2.338, 0.12164], [2.448, 0.11696], [2.549, 0.11284], [2.658, 0.10859], [2.76, 0.10483], [2.869, 0.10094], [2.979, 0.09721], [3.08, 0.09391], [3.189, 0.09048], [3.291, 0.08744], [3.4, 0.08427], [3.501, 0.08146], [3.611, 0.07852], [3.72, 0.07569], [3.822, 0.07317], [3.931, 0.07054], [4.032, 0.06819], [4.142, 0.06574], [4.243, 0.06354], [4.353, 0.06125], [4.462, 0.05903], [4.563, 0.05704], [4.673, 0.05496], [4.774, 0.0531], [4.884, 0.05115], [4.985, 0.0494], [5.094, 0.04756], [5.204, 0.04578], [5.305, 0.04418], [5.415, 0.04251], [5.516, 0.041], [5.625, 0.03942], [5.727, 0.038], [5.836, 0.03651], [5.946, 0.03506], [6.047, 0.03376], [6.156, 0.03239], [6.258, 0.03116], [6.367, 0.02987], [6.468, 0.02871], [6.578, 0.02748], [6.688, 0.02629], [6.789, 0.02523], [6.898, 0.0241], [6.999, 0.02309], [7.109, 0.02202], [7.21, 0.02106], [7.32, 0.02005], [7.429, 0.01907], [7.53, 0.01819], [7.64, 0.01725], [7.741, 0.01642], [7.851, 0.01554], [7.952, 0.01474], [8.061, 0.01391], [8.171, 0.01309], [8.272, 0.01236], [8.382, 0.01159], [8.483, 0.01089], [8.592, 0.01016], [8.694, 0.00951], [8.803, 0.00881], [8.913, 0.00814], [9.014, 0.00753], [9.124, 0.00689], [9.225, 0.00632], [9.334, 0.00571], [9.435, 0.00517], [9.545, 0.0046], [9.655, 0.00404], [9.756, 0.00354], [9.865, 0.00301], [9.966, 0.00254], [10.076, 0.00204], [10.177, 0.00159], [10.287, 0.00112], [10.396, 0.00066], [10.497, 0.00024], [10.607, -0.00019], [10.708, -0.00058], [10.818, -0.00099], [10.919, -0.00136], [11.028, -0.00174], [11.138, -0.00212], [11.239, -0.00246], [11.349, -0.00281], [11.45, -0.00313], [11.56, -0.00346], [11.661, -0.00376], [11.77, -0.00407], [11.88, -0.00438], [11.981, -0.00465], [12.091, -0.00493], [12.192, -0.00519], [12.301, -0.00546], [12.402, -0.0057], [12.512, -0.00595], [12.622, -0.00619], [12.723, -0.00641], [12.832, -0.00664], [12.933, -0.00684], [13.043, -0.00705], [13.144, -0.00724], [13.254, -0.00743], [13.363, -0.00762], [13.464, -0.00779], [13.574, -0.00797], [13.675, -0.00813], [13.785, -0.00829], [13.886, -0.00843], [13.996, -0.00858], [14.105, -0.00873], [14.206, -0.00885], [14.316, -0.00899], [14.417, -0.0091], [14.527, -0.00922], [14.628, -0.00933], [14.737, -0.00944], [14.847, -0.00954], [14.948, -0.00964], [15.058, -0.00973], [15.159, -0.00981], [15.268, -0.0099], [15.369, -0.00997], [15.479, -0.01004], [15.589, -0.01011], [15.69, -0.01017], [15.799, -0.01023], [15.9, -0.01028], [16.01, -0.01034], [16.111, -0.01038], [16.221, -0.01042], [16.33, -0.01046], [16.432, -0.01049], [16.541, -0.01053], [16.642, -0.01055], [16.752, -0.01057], [16.853, -0.01059], [16.963, -0.01061], [17.072, -0.01062], [17.173, -0.01063], [17.283, -0.01064], [17.384, -0.01064], [17.494, -0.01064], [17.595, -0.01063], [17.704, -0.01062], [17.814, -0.01061], [17.915, -0.0106], [18.025, -0.01058], [18.126, -0.01057], [18.235, -0.01054], [18.336, -0.01052], [18.446, -0.01049], [18.556, -0.01046], [18.657, -0.01043], [18.766, -0.01039], [18.868, -0.01035], [18.977, -0.01031], [19.087, -0.01026]], "slope": [[0.0, 4.841], [0.1, 4.705], [0.2, 4.306], [0.3, 3.678], [0.4, 2.873], [0.5, 1.973], [0.6, 1.088], [0.7, 0.366], [0.8, 0.0], [0.9, 0.238], [1.0, 1.399], [1.1, 3.889], [1.2, 8.223], [1.3, 15.057], [1.4, 25.215], [1.5, 39.731], [1.6, 59.868]], "best": 0.8, "band": [0.613, 0.965], "geo": 0.816496580927726};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const col={higgs:'--hig',formula:'--for',gravity:'--gra',dark:'--dar'};
+function axes(W,H,m,xl,yl){return `<line x1="${m.l}" y1="${H-m.b}" x2="${W-m.r}" y2="${H-m.b}" stroke="${css('--rule')}"/><line x1="${m.l}" y1="${m.t}" x2="${m.l}" y2="${H-m.b}" stroke="${css('--rule')}"/>`+
+`<text x="${(m.l+W-m.r)/2}" y="${H-6}" text-anchor="middle" font-size="13" fill="${css('--mut')}">${xl}</text>`+
+`<text x="14" y="${(m.t+H-m.b)/2}" transform="rotate(-90 14 ${(m.t+H-m.b)/2})" text-anchor="middle" font-size="13" fill="${css('--mut')}">${yl}</text>`}
+const s1=document.getElementById('s1');
+const d1=()=>{const W=s1.clientWidth,H=s1.clientHeight,m={l:52,r:16,t:16,b:40},narrow=W<520;
+ const lo=-30,hi=12,X=r=>m.l+(r-0.5)/4*(W-m.l-m.r),Y=b=>m.t+(hi-b)/(hi-lo)*(H-m.t-m.b);
+ let s=axes(W,H,m,'round','net bits');
+ for(const t of [-30,-20,-10,0,10]){s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="${css('--rule')}" stroke-dasharray="${t===0?'':'2 4'}"/>`;if(!narrow||t%20===0)s+=`<text x="${m.l-6}" y="${Y(t)+4}" text-anchor="end" font-size="12" fill="${css('--mut')}">${t===-30?'≤ −30':t}</text>`}
+ for(let r=1;r<=4;r++)s+=`<text x="${X(r)}" y="${H-m.b+18}" text-anchor="middle" font-size="12" fill="${css('--mut')}">${r}</text>`;
+ const cnt={};D.pts.forEach(p=>{const k=p.r+':'+Math.round(p.b);const j=(cnt[k]=(cnt[k]||0)+1);const off=((j%7)-3)*(narrow?4:7)+((p.id.length*7)%9-4);
+  const c=css(col[p.g]);const x=X(p.r)+off,y=Y(Math.max(p.b,lo));
+  s+=p.out?`<circle cx="${x}" cy="${y}" r="4.5" fill="none" stroke="${c}" stroke-width="1.6"><title></title></circle>`:`<circle cx="${x}" cy="${y}" r="5" fill="${c}"><title></title></circle>`});
+ s1.innerHTML=s;let i=0;for(const t of s1.querySelectorAll('title'))t.textContent=D.pts[i++].n};
+const ro1=new ResizeObserver(d1);ro1.observe(s1);
+const s2=document.getElementById('s2');
+const d2=()=>{const W=s2.clientWidth,H=s2.clientHeight,m={l:56,r:12,t:12,b:40};const xs=D.lam.map(p=>p[0]),x0=Math.min(...xs),x1=Math.max(...xs),y0=-0.02,y1=0.14;
+ const X=x=>m.l+(x-x0)/(x1-x0)*(W-m.l-m.r),Y=y=>m.t+(y1-y)/(y1-y0)*(H-m.t-m.b);
+ let s=axes(W,H,m,'energy scale, log₁₀ GeV','quartic λ');
+ for(const t of [0,0.05,0.1])s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="${css('--rule')}" stroke-dasharray="${t?'2 4':''}"/><text x="${m.l-6}" y="${Y(t)+4}" text-anchor="end" font-size="12" fill="${css('--mut')}">${t}</text>`;
+ for(const t of [5,10,15])s+=`<text x="${X(t)}" y="${H-m.b+18}" text-anchor="middle" font-size="12" fill="${css('--mut')}">${t}</text>`;
+ s+=`<polyline fill="none" stroke="${css('--hig')}" stroke-width="2.5" points="${D.lam.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+ s+=`<circle cx="${X(x1)}" cy="${Y(0)}" r="5" fill="none" stroke="${css('--ink')}" stroke-width="1.5"/><text x="${X(x1)-8}" y="${Y(0)-10}" text-anchor="end" font-size="12" fill="${css('--ink')}">flat dial needs this</text>`;
+ s2.innerHTML=s};
+const ro2=new ResizeObserver(d2);ro2.observe(s2);
+const s3=document.getElementById('s3');
+const d3=()=>{const W=s3.clientWidth,H=s3.clientHeight,m={l:48,r:12,t:12,b:40};const x0=0,x1=1.6,y0=0,y1=Math.max(...D.slope.map(p=>p[1]));
+ const X=x=>m.l+(x-x0)/(x1-x0)*(W-m.l-m.r),Y=y=>m.t+(y1-y)/(y1-y0)*(H-m.t-m.b);
+ let s=`<rect x="${X(D.band[0])}" y="${m.t}" width="${X(D.band[1])-X(D.band[0])}" height="${H-m.t-m.b}" fill="${css('--zone')}"/>`+axes(W,H,m,'slope λ','Δχ²');
+ for(const t of [0,0.4,0.8,1.2,1.6])s+=`<text x="${X(t)}" y="${H-m.b+18}" text-anchor="middle" font-size="12" fill="${css('--mut')}">${t}</text>`;
+ for(const t of [0,5,10])if(t<=y1)s+=`<text x="${m.l-6}" y="${Y(t)+4}" text-anchor="end" font-size="12" fill="${css('--mut')}">${t}</text>`;
+ s+=`<line x1="${X(D.geo)}" x2="${X(D.geo)}" y1="${m.t}" y2="${H-m.b}" stroke="${css('--ink')}" stroke-dasharray="4 4"/>`;
+ s+=`<polyline fill="none" stroke="${css('--dar')}" stroke-width="2.5" points="${D.slope.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+ s+=`<text x="${X(0)+6}" y="${Y(D.slope[0][1])+16}" font-size="12" fill="${css('--mut')}">constant</text>`;
+ s3.innerHTML=s};
+const ro3=new ResizeObserver(d3);ro3.observe(s3);
+}
+</script>
+</body></html>

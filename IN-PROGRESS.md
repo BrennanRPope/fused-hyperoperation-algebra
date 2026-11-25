@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 2,801 theorems in 111 modules, synced Nov 25 ~16:45 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 2,930 theorems in 116 modules, synced Nov 25 ~17:05 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -23,7 +23,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/patterns/`
 - `topics/shape-directions/`
 
-Still running and not in the repo yet (Nov 25, 16:55 UTC): Clifford algebra, the dial potential search, the general relativity bridges, fractal boxes, and the size dial residual. README.md "Promising leads" tracks where each stands. They will be added when they finish.
+Still running and not in the repo yet (Nov 25, 17:05 UTC): the size dial residual, and a follow-up on the dial wall (its Lean module, DialWall, is already in the library). README.md "Promising leads" tracks where each stands. They will be added when they finish.
 
 A port of the Lean library to mathlib is happening on a separate branch, not on main.
 

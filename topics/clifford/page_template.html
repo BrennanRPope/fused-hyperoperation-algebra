@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clifford Through Mult-Add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical write-up to scan, every claim with its check
+   IDEA an architect's monograph of plates: Clifford's drawing on the left, the mult-add drawing on the right
+   PICTURE where the dial K lives: three kinds of direction, mult-add sitting on the light cone
+   COLOUR white, black ink, concrete planes, one yellow for the matching piece, a blue for mult-add
+   TYPE Hanken Grotesk throughout
+   LAYOUT title and finding across the top, picture beneath full width, table, then plates in pairs (stacked on a phone) */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1a1a19);--ink:light-dark(#141414,#ecece8);--mute:light-dark(#77776f,#9a9a92);--plane:light-dark(#e4e4e0,#2c2c2a);--hl:light-dark(#ffe600,#7a6a00);--ma:light-dark(#1f5fa8,#7db3ff);--rule:light-dark(#d8d8d4,#3a3a37)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 'Hanken Grotesk',system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(28px,4vw,56px);padding-inline:max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:clamp(32px,4.6vw,50px);line-height:1.05;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;font-weight:600}
+h2{font-size:26px;line-height:1.15;margin:0 0 14px;font-weight:600;letter-spacing:-.01em}
+h3{font-size:21px;line-height:1.2;margin:0 0 4px;font-weight:600}
+p{max-width:70ch;margin:0 0 12px}
+.lede{font-size:18px}
+.hero svg{width:100%;height:auto;display:block;max-width:900px}
+svg .k{stroke:var(--ink);fill:none;stroke-width:2}
+svg .kt{stroke:var(--ink);fill:none;stroke-width:1.2}
+svg .m{stroke:var(--ma);fill:none;stroke-width:2.4}
+svg .mf{fill:var(--ma)}
+svg .kf{fill:var(--ink)}
+svg .hl{fill:var(--hl)}
+svg .hls{stroke:var(--hl);fill:none;stroke-width:7;stroke-linecap:round}
+svg .pl{fill:var(--plane)}
+svg .dash{stroke:var(--mute);fill:none;stroke-width:1.4;stroke-dasharray:5 4}
+svg .mute{fill:var(--mute)}
+svg text{font:14px 'Hanken Grotesk',system-ui,sans-serif;fill:var(--ink)}
+svg .tt{font-weight:600;font-size:15px}
+svg .sm{font-size:13px}
+svg .mt{fill:var(--ma)}
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(9em,1fr));gap:12px;margin:22px 0 4px;max-width:900px}
+.tally div{border-top:3px solid var(--ink);padding-top:8px}
+.tally b{display:block;font-size:clamp(28px,4vw,40px);line-height:1;font-weight:600}
+.tally div.y{border-color:var(--hl)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600;border-bottom:2px solid var(--ink)}
+td a{color:var(--ink);text-underline-offset:3px}
+.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:13px;font-weight:600;white-space:nowrap}
+.tag.ok{background:var(--hl);color:var(--ink)}
+.tag.part{background:var(--plane)}
+.tag.tr{border:1px solid var(--ink)}
+.tag.none{color:var(--mute);border:1px dashed var(--mute)}
+.kd{color:var(--mute);font-size:13px}
+.grey{background:var(--plane)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px}
+.plate{border-top:1px solid var(--rule);padding-top:26px;margin-top:26px}
+.piece{color:var(--mute);font-size:14px;margin-bottom:12px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+figure{margin:0}
+figure svg{width:100%;height:auto;display:block;max-width:440px}
+figcaption{font-size:15px;margin-top:8px;max-width:58ch}
+.src{font-size:13px;color:var(--mute);margin-top:10px}
+code{overflow-wrap:anywhere;font-size:14px}
+ul{padding-left:20px;max-width:72ch}
+li{margin-bottom:8px}
+.nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;margin-top:18px}
+.nav a{color:var(--ink)}
+@media(max-width:640px){.pair{grid-template-columns:minmax(0,1fr)}table{font-size:13px}th,td{padding:7px 5px}}
+</style>
+</head>
+<body>
+<header class="band">
+ <div class="wrap">
+  <h1>Clifford's work, piece by piece, through mult-add</h1>
+  <p class="lede">Of sixteen pieces of Clifford's work, twelve have an exact mult-add analog, two match partly, one holds only by transfer and one has none. The biggest: mult-add's dial k is a light-cone multivector, and moving it off the cone gives the whole landscape, with q equal to its norm.</p>
+  <p>This is a dictionary, not new mathematics: every match is to known Clifford-algebra facts, and none predicts anything new. Its use is that mult-add results can now be written in, and computed by, the rotor and dual-quaternion tools that robotics, graphics and physics already run.</p>
+  <div class="hero">{{HERO}}</div>
+  <div class="tally">
+   <div class="y"><b>{{NEXACT}}</b>of 16 exact</div>
+   <div><b>{{NPART}}</b>partial</div>
+   <div><b>{{NTR}}</b>transfer only</div>
+   <div><b>{{NNONE}}</b>no analog</div>
+   <div><b>{{NCHECK}}</b>checks pass</div>
+   <div><b>53</b>new Lean theorems</div>
+  </div>
+  <nav class="nav"><a href="#table">Table</a><a href="#k">k as a multivector</a><a href="#leads">Leads</a><a href="#plates">Pictures, piece by piece</a><a href="#files">Files</a></nav>
+ </div>
+</header>
+
+<section class="band grey" id="table">
+ <div class="wrap">
+  <h2>Each piece, its analog, and how close the match is</h2>
+  <div class="scroll"><table>
+   <thead><tr><th>Clifford piece</th><th>Mult-add analog</th><th>Status</th></tr></thead>
+   <tbody>{{TABLE}}</tbody>
+  </table></div>
+ </div>
+</section>
+
+<section class="band" id="k">
+ <div class="wrap cols">
+  <div>
+   <h2>k as a fused number: what holds, what breaks</h2>
+   <p>You asked whether k could itself be a structure across dimensions that keeps its information. Clifford algebra answers it two ways.</p>
+   <p><b>With plain numbers as arguments.</b> Any multivector dial K obeys K² = tr(K)·K − N(K), so a + b + abK reads as the landscape law with p = tr K and q = N K. Nothing outside the landscape appears. Mult-add's own k is the null element k(1 + e)/2, on the light cone. A general K in Cl(3,0) gives the landscape with complex coefficients.</p>
+   <p><b>With multivectors as arguments</b> (X ✳ Y = X + Y + XKY, the sandwich law the gr-bridges thread found):</p>
+  </div>
+  <div>
+   <ul>
+    <li><b>Kept:</b> associativity for every K, identity 0, and the lift (1 + KX)(1 + KY) = 1 + K(X ✳ Y). Proved in Lean for a 2D algebra with any squares.</li>
+    <li><b>Lost:</b> commutativity. X ✳ Y − Y ✳ X = XKY − YKX; for two vectors it is twice their oriented area.</li>
+    <li><b>The wall</b> becomes a set: two walls for a vector dial (1 − a²k²), none for a bivector dial, a cone of zero divisors in most algebras. It stays the single point −1 only in R, C and H.</li>
+    <li><b>Information:</b> factors in their own directions keep every subset product on its own blade. Ordinary mult-add is what you get by adding those parts, which is where information is lost.</li>
+    <li><b>A constant invertible K</b> is only a change of coordinates (gr-bridges); a K that varies alone is flat. Curvature needs a second field.</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section class="band grey" id="leads">
+ <div class="wrap">
+  <h2>Leads, each on its own merits</h2>
+  <ul>
+   <li><b>Light-cone dial: worth writing up, not a new law.</b> "k is a null multivector, q is its norm, curvature is minus the square of its non-scalar part" is the cleanest single sentence for what the dial is. It unifies the landscape page, the relativity page and the twist rule. It predicts nothing new because the 2D cases are fully classified.</li>
+   <li><b>Bolting in: the most practical.</b> Since landscape laws are rotor compositions read in a chart, any geometric-algebra or dual-quaternion library computes them as is. That makes mult-add results portable into robotics (dual quaternions), graphics (rotors) and physics codes without new software.</li>
+   <li><b>Hopf phase = half the twist: a tidy link, no data test.</b> It is the same geometric phase physicists measure as Thomas precession and Berry phase, already checked against data on the twisted-boosts page.</li>
+   <li><b>Complex landscape from Cl(3,0): open, low priority.</b> A general dial gives complex p and q. It reads as the landscape over C, which earlier pages already touch (Lee–Yang zeros); it would matter only if a complex dial has a physical meaning, and none was found.</li>
+   <li><b>Higher Clifford–Klein forms: open.</b> A flat torus made from ✳ needs two commuting dials and a lattice in them. Doable as a construction; it would add a picture, not a prediction.</li>
+  </ul>
+ </div>
+</section>
+
+<section class="band" id="plates">
+ <div class="wrap">
+  <h2>The pictures, piece by piece</h2>
+  <p>Left: Clifford's piece. Right: its mult-add analog. Yellow marks the part that matches; blue is mult-add.</p>
+  {{PLATES}}
+ </div>
+</section>
+
+<section class="band grey" id="files">
+ <div class="wrap">
+  <h2>Files and checks</h2>
+  <ul>
+   <li><code>math-theory/clifford/checks.py</code>: {{NCHECK}} checks pass, sections A to L (sympy exact algebra; numpy for SO(4), rigid motions, Lorentz maps, Hopf holonomy, Miquel point).</li>
+   <li><code>math-theory/clifford/lean/Clifford.lean</code>: 53 theorems, core Lean 4.37.0-rc1, no sorry. In the shared library as <code>FusedAlgebra/Topics/Clifford</code>; the library builds clean at 2,876 theorems.</li>
+   <li><code>math-theory/clifford/figures/</code>: the 35 SVG pictures (one pair per piece, plus the dial picture); <code>figures.py</code> draws them.</li>
+   <li>Cited, not repeated: groups-lie (θ-lift), twisted-boosts (corner, twist = curvature × area), general-relativity (light bending halves), gr-bridges (sandwich law, in progress).</li>
+   <li>Clifford's ω² = +1 for elliptic space follows his 1873 "Preliminary sketch of biquaternions" (Proc. London Math. Soc.).</li>
+  </ul>
+ </div>
+</section>
+</body>
+</html>

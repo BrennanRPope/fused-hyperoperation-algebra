@@ -21,11 +21,11 @@ mods=(
   FusedAlgebra.Topics.QAcross.QDial FusedAlgebra.Topics.QAcross.Knots FusedAlgebra.Topics.QAcross.Partitions FusedAlgebra.Topics.QAcross.QCounting
   FusedAlgebra.Topics.SolitonsRungs FusedAlgebra.Topics.PvsNP
   FusedAlgebra.Topics.Fermat.Fermat4 FusedAlgebra.Topics.Fermat.Fermat3 FusedAlgebra.Topics.Fermat.FreyPieces FusedAlgebra.Topics.Fermat.FermatRoute FusedAlgebra.Topics.Fermat.CounterexampleMap
-  FusedAlgebra.Topics.LogicSets FusedAlgebra.Topics.CategoryTheory FusedAlgebra.Topics.Combinatorics FusedAlgebra.Topics.GroupsLie FusedAlgebra.Topics.GraphTheory
+  FusedAlgebra.Topics.LogicSets FusedAlgebra.Topics.CategoryTheory FusedAlgebra.Topics.Combinatorics FusedAlgebra.Topics.GroupsLie FusedAlgebra.Topics.Clifford FusedAlgebra.Topics.GraphTheory
   FusedAlgebra.Topics.MeasureProbability FusedAlgebra.Topics.ComplexAnalysis FusedAlgebra.Topics.FunctionalAnalysis FusedAlgebra.Topics.DiffGeometry FusedAlgebra.Topics.KnotTheory
   FusedAlgebra.Topics.Dynamics FusedAlgebra.Topics.InformationFull FusedAlgebra.Topics.Numerical FusedAlgebra.Topics.GameTheory FusedAlgebra.Topics.DiamondLattice FusedAlgebra.Topics.DialPointProcesses FusedAlgebra.Topics.SeveralWaves FusedAlgebra.Topics.RuleBreakers \
   FusedAlgebra.Topics.Biology.MolecularBiology FusedAlgebra.Topics.Biology.Metabolism FusedAlgebra.Topics.Biology.CellBiology FusedAlgebra.Topics.Biology.Genetics FusedAlgebra.Topics.Biology.Development FusedAlgebra.Topics.Biology.Physiology FusedAlgebra.Topics.Biology.NeuroScience FusedAlgebra.Topics.Biology.Evolution FusedAlgebra.Topics.Biology.Population FusedAlgebra.Topics.Biology.Ecology FusedAlgebra.Topics.Biology.Behaviour FusedAlgebra.Topics.FractionalPowerset
-  FusedAlgebra.Topics.GeneralRelativity FusedAlgebra.Topics.PowersetDials FusedAlgebra.Topics.DialSurvey
+  FusedAlgebra.Topics.GeneralRelativity FusedAlgebra.Topics.GRBridges FusedAlgebra.Topics.PowersetDials FusedAlgebra.Topics.DialSurvey FusedAlgebra.Topics.DialWall FusedAlgebra.Topics.FractalBoxes FusedAlgebra.Topics.DialPotential
   FusedAlgebra Check
 )
 export LEAN_PATH="$PWD/build"

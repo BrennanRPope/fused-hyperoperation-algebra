@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 111 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 2801 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 116 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 2930 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -112,6 +112,7 @@ Topics (each imports the foundation):
 | `Topics/CategoryTheory` | category-theory/lean/CategoryTheory.lean |  |
 | `Topics/Combinatorics` | combinatorics/lean/Combinatorics.lean |  |
 | `Topics/GroupsLie` | groups-lie/lean/GroupsLie.lean | 2 twins removed |
+| `Topics/Clifford` | clifford/lean/Clifford.lean | first compile, Nov 25; imports GroupsLie |
 | `Topics/GraphTheory` | graph-theory/lean/GraphTheory.lean | 4 twins removed |
 | `Topics/MeasureProbability` | measure-probability/lean/MeasureProbability.lean |  |
 | `Topics/ComplexAnalysis` | complex-analysis/lean/ComplexAnalysis.lean |  |
@@ -140,7 +141,11 @@ Topics (each imports the foundation):
 | `Topics/FractionalPowerset` | fractional-powerset/lean/FractionalPowerset.lean | first compiled here, unchanged |
 | `Topics/PowersetDials` | fractional-powerset-dials/lean/PowersetDials.lean | 48 theorems: per-element dials, merging, the half, complement, known sets |
 | `Topics/DialSurvey` | dial-survey/lean/DialSurvey.lean | first compile, Nov 25: k on per-element dials, odds, necklaces |
+| `Topics/DialWall` | dial-survey/wall/DialWall.lean | first compile, Nov 25: necklace exponents behind the wall at Re s = 0, k = ±1 special, the k = −1/2 cancellation |
+| `Topics/DialPotential` | dial-potential/lean/DialPotential.lean | 24 theorems, first compile Nov 25: dial flip and rescaling, even and power-law potentials, the mirror well, exponential fixed point, Coleman-Weinberg and Veltman checks, conformal γ = 5/7 |
+| `Topics/FractalBoxes` | fractal-boxes/lean/FractalBoxes.lean | 15 theorems, first compile Nov 25: signed corner layers of a half box (Newton's C(½,k)), two halves join to a stick, Cantor codes one to one in any base, no linear-size rule is a half of 2^d |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |
+| `Topics/GRBridges` | gr-bridges/lean/GRBridges.lean | 22 theorems: Clifford boosts, sandwich mult-add for matrix weights, Schur factor, Raychaudhuri area terms, river constraint, Brans-Dicke; first compile, one witness fixed |
 | `Topics/NavierStokes` | ns-rungs/lean/FusedRungs.lean (Burgers, shell model) | |
 | `Topics/QuantumNoise` | quantum-noise/QuantumNoise.lean | |
 | `Topics/Rulecraft` | rulecraft/lean/RulecraftFused.lean | first compile, one step fixed |

@@ -67,3 +67,7 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - P vs NP: what can't work FQr7rMChaa6ofsJV2WfDjs
 - power set dials 27MDnoDnLAMxUUmWGADYk9 (one dial per element; merging, complement, primes, other sets)
 - dial survey (five dials, quick pass) LoM7iRCttrFnAi9VGz2kVr
+- GR bridges + curved space from mult-add (five pictures): https://claude.ai/artifact/LhAbnuPMJnNoq9cRYBz3xc
+- Clifford through mult-add NU8rLX3jBBeaojcq8g3hMW (17 pieces, picture pairs)
+- the dial's potential (Higgs-like dial, 71 guesses in 4 rounds) WpQzqeezDjmRmUcbgTA7RT
+- fractal boxes (half-dimension box: joining yes = dials, iterating no) NbFUcWVphAGGNvhug8XvwS
