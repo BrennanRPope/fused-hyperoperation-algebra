@@ -25,6 +25,7 @@ public import FusedAlgebra.Topics.Fermat.Fermat4
 public import FusedAlgebra.Topics.Fermat.FreyPieces
 public import FusedAlgebra.Topics.Finance
 public import FusedAlgebra.Topics.FractionalRungs
+public import FusedAlgebra.Topics.FusedConstants
 public import FusedAlgebra.Topics.GeometryTrig
 public import FusedAlgebra.Topics.Infinities
 public import FusedAlgebra.Topics.InformationTheory
