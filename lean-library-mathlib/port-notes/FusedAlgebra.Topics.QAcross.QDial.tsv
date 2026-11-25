@@ -1,0 +1,18 @@
+original	status	new_name	note
+qnum	ported	QDial.qnum	now the geometric sum ∑ i ∈ Finset.range n, q ^ i over any semiring; the original recursion is qnum_succ
+qnum_zero	ported	QDial.qnum_zero	any semiring
+qnum_succ	ported	QDial.qnum_succ	now a theorem (was the definition); any semiring
+qnum_eq_wpow	ported	QDial.qnum_eq_wpow	
+qnum_lift	ported	QDial.one_add_mul_qnum	renamed; proved from Finset.mul_geom_sum
+qnum_add	ported	QDial.qnum_add	
+qnum_add_std	ported	QDial.qnum_add_eq_add_pow_mul	renamed; any semiring
+qnum_mpow	ported	QDial.mul_qnum_eq_mpow	renamed
+tate_glue_step	ported	QDial.tate_glue_step	
+tate_glue_n	ported	QDial.tate_glue_n	
+qnum_at_one	ported	QDial.qnum_one	renamed; generalised from ℤ to any semiring
+qnum_at_two	ported	QDial.qnum_two	renamed; generalised from ℤ to any commutative ring
+qnum_at_zero	ported	QDial.qnum_zero_left	renamed; generalised from ℤ to any semiring
+qnum_at_neg_one	ported	QDial.qnum_neg_one	renamed; generalised from ℤ to any commutative ring
+parity_xor	ported	QDial.parity_xor	generalised from ℤ to any commutative ring
+failure_or	ported	QDial.failure_or	generalised from ℤ to any commutative ring
+qnum_three_at_dial	ported	QDial.qnum_three_at_dial	generalised from ℤ to any commutative ring
