@@ -1,0 +1,6 @@
+n=3.0 gam=0.4000 K41 j_d~19.9: N=24 stop deep=16 t=10.0000 | N=32 stop deep=16 t=10.0000 | N=40 stop deep=16 t=10.0000 | N=48 stop deep=16 t=10.0000 | N=56 stop deep=16 t=10.0000
+n=3.5 gam=0.3636 K41 j_d~39.9: N=24 REACH deep=17 t=0.4448 | N=32 stop deep=25 t=10.0000 | N=40 stop deep=25 t=10.0000 | N=48 stop deep=25 t=10.0000 | N=56 stop deep=25 t=10.0000
+n=3.75 gam=0.3478 K41 j_d~79.7: N=24 REACH deep=18 t=0.3866 | N=32 REACH deep=25 t=0.4227 | N=40 REACH deep=34 t=0.5214 | N=48 stop deep=38 t=10.0000 | N=56 stop deep=38 t=10.0000
+n=4.0 gam=0.3333 K41 j_d~inf: N=24 REACH deep=18 t=0.3455 | N=32 REACH deep=25 t=0.3549 | N=40 REACH deep=34 t=0.3651 | N=48 REACH deep=41 t=0.3762 | N=56 REACH deep=49 t=0.3884
+n=4.25 gam=0.3200 K41 j_d~inf: N=24 REACH deep=17 t=0.3121 | N=32 REACH deep=25 t=0.3151 | N=40 REACH deep=33 t=0.3170 | N=48 REACH deep=42 t=0.3182 | N=56 REACH deep=49 t=0.3190
+n=4.5 gam=0.3077 K41 j_d~inf: N=24 REACH deep=17 t=0.2835 | N=32 REACH deep=26 t=0.2845 | N=40 REACH deep=33 t=0.2850 | N=48 REACH deep=48 t=0.2851 | N=56 REACH deep=56 t=0.2852

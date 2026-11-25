@@ -1,0 +1,26 @@
+full NS       t= 0.0 enstrophy=   7.845 max|w|=  7.250 helicity=+1.911
+full NS       t= 0.5 enstrophy=   7.530 max|w|=  7.277 helicity=+1.799
+full NS       t= 1.0 enstrophy=   7.578 max|w|=  8.560 helicity=+1.685
+full NS       t= 1.5 enstrophy=   7.826 max|w|= 10.930 helicity=+1.563
+full NS       t= 2.0 enstrophy=   8.101 max|w|= 13.373 helicity=+1.433
+full NS       t= 2.5 enstrophy=   8.325 max|w|= 14.486 helicity=+1.299
+full NS       t= 3.0 enstrophy=   8.436 max|w|= 13.919 helicity=+1.164
+full NS       t= 3.5 enstrophy=   8.436 max|w|= 14.563 helicity=+1.031
+full NS       t= 4.0 enstrophy=   8.310 max|w|= 16.105 helicity=+0.903
+full NS       t= 4.5 enstrophy=   8.039 max|w|= 15.636 helicity=+0.783
+full NS       t= 5.0 enstrophy=   7.628 max|w|= 13.718 helicity=+0.672
+full NS       t= 5.5 enstrophy=   7.099 max|w|= 13.191 helicity=+0.574
+full NS       t= 6.0 enstrophy=   6.512 max|w|= 12.154 helicity=+0.487
+single-handed t= 0.0 enstrophy=   7.845 max|w|=  7.250 helicity=+1.911
+single-handed t= 0.5 enstrophy=   7.401 max|w|=  7.051 helicity=+1.800
+single-handed t= 1.0 enstrophy=   7.032 max|w|=  7.195 helicity=+1.690
+single-handed t= 1.5 enstrophy=   6.619 max|w|=  7.537 helicity=+1.579
+single-handed t= 2.0 enstrophy=   6.147 max|w|=  7.158 helicity=+1.471
+single-handed t= 2.5 enstrophy=   5.662 max|w|=  7.095 helicity=+1.370
+single-handed t= 3.0 enstrophy=   5.198 max|w|=  6.776 helicity=+1.276
+single-handed t= 3.5 enstrophy=   4.768 max|w|=  6.796 helicity=+1.192
+single-handed t= 4.0 enstrophy=   4.377 max|w|=  6.787 helicity=+1.115
+single-handed t= 4.5 enstrophy=   4.028 max|w|=  6.778 helicity=+1.046
+single-handed t= 5.0 enstrophy=   3.718 max|w|=  6.708 helicity=+0.983
+single-handed t= 5.5 enstrophy=   3.439 max|w|=  6.523 helicity=+0.925
+single-handed t= 6.0 enstrophy=   3.185 max|w|=  6.340 helicity=+0.873

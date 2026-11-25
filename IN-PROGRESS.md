@@ -23,7 +23,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/patterns/`
 - `topics/shape-directions/`
 
-Still running and not in the repo yet (Nov 25, 17:05 UTC): the size dial residual. README.md "Promising leads" tracks where each stands. They will be added when they finish.
+Nothing finished is waiting to be added as of Nov 25, 17:15 UTC. README.md "Promising leads" tracks where each lead stands.
 
 A port of the Lean library to mathlib is happening on a separate branch, not on main.
 

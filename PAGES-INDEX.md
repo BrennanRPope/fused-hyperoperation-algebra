@@ -71,3 +71,4 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - Clifford through mult-add NU8rLX3jBBeaojcq8g3hMW (17 pieces, picture pairs)
 - the dial's potential (Higgs-like dial, 71 guesses in 4 rounds) WpQzqeezDjmRmUcbgTA7RT
 - fractal boxes (half-dimension box: joining yes = dials, iterating no) NbFUcWVphAGGNvhug8XvwS
+- size dial and residual PKMMfy7vXAZRK9cAucwSTg (54.5% exact; size measure = dimension beta, twist q=1+2^-beta; leftover = repetition at double size, 2^-beta; class group)

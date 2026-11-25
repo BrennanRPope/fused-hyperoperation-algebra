@@ -1,0 +1,1 @@
+eps=0.05 alpha=0.2: N=24 stop t=120.000 deep=12 (55s) | N=32 stop t=120.000 deep=13 (102s) | N=40 stop t=120.000 deep=13 (112s)

@@ -1,0 +1,2 @@
+eps=0.05 alpha=0.2 nu=0.0: N=24 REACH t=92.999 deep=21 (111s)
+eps=0.05 alpha=0.2 nu=1e-05: N=24 REACH t=95.938 deep=21 (131s)

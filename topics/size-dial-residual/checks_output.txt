@@ -1,0 +1,74 @@
+== A. The 54.5% exactly
+PASS plain 1/2 on naturals by size = -12 Li2(-1/2)/pi^2  0.545206298491
+   eps=0.01: direct ratio 0.545039
+   eps=0.001: direct ratio 0.545190
+   eps=0.0001: direct ratio 0.545205
+PASS direct sums approach it
+== B. The weighting family: the share depends only on the dimension beta
+   beta=0: plain 1/2 gives 58.50%   half-dial t* = 0.41421356
+   beta=0.5: plain 1/2 gives 56.18%   half-dial t* = 0.43766978
+   beta=1: plain 1/2 gives 54.52%   half-dial t* = 0.4545237
+   beta=2: plain 1/2 gives 52.42%   half-dial t* = 0.47571932
+   beta=3: plain 1/2 gives 51.29%   half-dial t* = 0.48710313
+   beta=4: plain 1/2 gives 50.68%   half-dial t* = 0.4932181
+   beta=8: plain 1/2 gives 50.05%   half-dial t* = 0.4995284
+   beta=inf: plain 1/2 gives 50.00%   half-dial t* = 0.5
+PASS beta=0 half-dial is sqrt2-1
+PASS lattice N^1 by size gives Li_2 share  measured 0.54521 vs 0.54521
+PASS lattice N^2 by size gives Li_3 share  measured 0.52421 vs 0.52421
+PASS lattice N^3 by size gives Li_4 share  measured 0.51288 vs 0.51288
+   Dirichlet n^-s, s=1.1: share 0.51052
+   Dirichlet n^-s, s=1.01: share 0.50119
+   Dirichlet n^-s, s=1.001: share 0.50012
+PASS Dirichlet weighting -> exactly half as s->1
+   log-density weights 1/n, X=1000: share 0.51746
+   log-density weights 1/n, X=100000: share 0.51049
+   log-density weights 1/n, X=10000000: share 0.50749
+PASS log density -> half (slowly, like 1/log X)
+PASS sharp count gives log1.5/log2 = 58.50%
+== C. Is it the twist k? Each element's weight IS its twist (wAdd_scale), but no single k fits
+   beta=0.5: closest single twist k=0.651, worst gap over t in [0,1] = 0.057 points
+   beta=1: closest single twist k=0.441, worst gap over t in [0,1] = 0.064 points
+   beta=2: closest single twist k=0.215, worst gap over t in [0,1] = 0.042 points
+   beta=3: closest single twist k=0.109, worst gap over t in [0,1] = 0.021 points
+PASS a single twist nearly fits (gap < 0.2 points) but not exactly (gap > 1e-5)
+PASS beta=0.5: local effective twist = 2^-beta  0.707107
+PASS beta=1: local effective twist = 2^-beta  0.500000
+PASS beta=2: local effective twist = 2^-beta  0.250000
+PASS beta=3: local effective twist = 2^-beta  0.125000
+PASS naturals by size: sum w^2 / sum w -> 1/2
+PASS mixture of twists k_n = q^n reproduces 54.5%
+== D. Does size weighting commute with merging and complement?
+PASS union of weighted dials != weighting of union dial; gap = t s w (w-1)  0.1660 vs 0.1900
+PASS they agree only when w is 0 or 1 (sharp count)
+   complement of {1} in {1..10}: weight q^(sum) = 5.827e-01
+   complement of {1} in {1..100}: weight q^(sum) = 1.182e-22
+   complement of {1} in {1..1000}: weight q^(sum) = 0.000e+00
+PASS complement sends every finite subset to weight 0 on an infinite sized set
+== E. The residual: what subsets (mult-add) miss is repetition = the same set at doubled size
+PASS beta=1: subsets/multisets log-total = 1 - 2^-1  50.00% explained, 50.00% residual
+PASS beta=2: subsets/multisets log-total = 1 - 2^-2  75.00% explained, 25.00% residual
+PASS beta=3: subsets/multisets log-total = 1 - 2^-3  87.50% explained, 12.50% residual
+PASS beta=4: subsets/multisets log-total = 1 - 2^-4  93.75% explained, 6.25% residual
+PASS p(n) = sum q(i) p2(n-i) for n<=400 (Euler, exact)
+   log q(n)/log p(n) at n=400: 0.6946  (-> 1/sqrt2 = 0.7071 at fixed size)
+PASS beta=3 gives 7/8 (fermion factor in the Stefan-Boltzmann law)
+   at most 1 copy, beta=1: 50.0% explained
+   at most 2 copies, beta=1: 66.7% explained
+   at most 3 copies, beta=1: 75.0% explained
+PASS at most m copies explains 1-(m+1)^-beta (beta=2, m=2)
+== F. Dirichlet-type sets: exponent fully explained, constant partly
+PASS naturals: squarefree share -> 6/pi^2  0.60793 vs 0.60793
+   rationals: raw share at X=10^6 is 0.5234 (drifts like 1/log X); slopes give 0.4713
+PASS rationals by height ab: squarefree-pair share of the X log X term -> prod(1-2/(p(p+1)))  0.4713 vs 0.4717; coprime slope 0.6077 vs 6/pi^2 0.6079
+PASS Q(i): squarefree ideals share -> 1/zeta_K(2)  0.6636 vs 0.6637
+PASS Q(sqrt-5): squarefree ideals share -> 1/zeta_K(2)  0.5390 vs 0.5315
+PASS Q(sqrt-5): principal ideals are 1/h = 1/2 of all ideals (class group)  0.4999
+PASS sign dials: (1+x)(1+y)+(1-x)(1-y) = 2(1+xy)
+== G. Random reals (Poisson points): no repetition, nothing missing
+   1000 points, 1000 cells: 363 cells hit twice
+   1000 points, 100000 cells: 4 cells hit twice
+   1000 points, 10000000 cells: 0 cells hit twice
+PASS repeats vanish as the grid refines (continuous points never coincide)
+
+33 of 33 pass

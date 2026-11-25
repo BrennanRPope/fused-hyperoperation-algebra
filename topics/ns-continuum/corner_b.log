@@ -1,0 +1,4 @@
+eps=0.0 alpha=0.2: N=24 stop t=60.000 deep=10 (2s) | N=32 stop t=60.000 deep=10 (2s) | N=40 stop t=60.000 deep=11 (3s)
+eps=0.0 alpha=0.25: N=24 stop t=60.000 deep=10 (2s) | N=32 stop t=60.000 deep=10 (2s) | N=40 stop t=60.000 deep=8 (1s)
+eps=0.0 alpha=0.75: N=24 stop t=60.000 deep=6 (12s) | N=32 stop t=60.000 deep=6 (18s) | N=40 stop t=60.000 deep=6 (21s)
+eps=0.0 alpha=1.0: N=24 stop t=60.000 deep=6 (14s) | N=32 stop t=60.000 deep=5 (17s) | N=40 stop t=60.000 deep=5 (24s)

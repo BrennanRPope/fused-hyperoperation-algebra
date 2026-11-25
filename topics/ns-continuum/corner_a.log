@@ -1,0 +1,2 @@
+eps=inf alpha=0.2: N=24 REACH t=0.661 deep=22 (0s) | N=32 REACH t=1.828 deep=31 (3s) | N=40 REACH t=1.581 deep=39 (13s)
+eps=inf alpha=0.25: N=24 REACH t=0.663 deep=22 (0s) | N=32 REACH t=1.733 deep=31 (3s) | N=40 REACH t=1.657 deep=39 (12s)

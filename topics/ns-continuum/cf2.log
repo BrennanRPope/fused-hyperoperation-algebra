@@ -1,0 +1,3 @@
+eps=0.25 alpha=0.2: N=24 REACH t=11.402 deep=21 (8s) | N=32 REACH t=2.866 deep=31 (26s) | N=40 REACH t=3.285 deep=38 (148s)
+eps=0.25 alpha=0.25: N=24 REACH t=11.934 deep=22 (8s) | N=32 REACH t=2.816 deep=29 (17s) | N=40 REACH t=5.021 deep=38 (359s)
+eps=0.25 alpha=0.3: N=24 REACH t=15.925 deep=21 (14s) | N=32 REACH t=4.646 deep=29 (36s) | N=40 REACH t=5.793 deep=37 (139s)

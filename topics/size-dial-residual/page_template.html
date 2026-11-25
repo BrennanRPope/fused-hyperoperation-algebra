@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Size dial and residual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a research write-up, finding first
+   IDEA an engineering datasheet for mult-add: a ruled sheet of what it covers and what it leaves
+   PICTURE the explained-versus-left-over bars for every set, then the dimension curve and the doubling ladder
+   COLOUR cobalt title strip, white plates, orange for the leftover, purple for the class group
+   TYPE Space Grotesk 600 + Inter
+   LAYOUT title strip, finding, big bar chart; sections each with text beside or above its plate; stack on phones */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0a0d18);--ink:light-dark(#14161c,#e8eaf2);--sub:light-dark(#4e5363,#a9aec0);--zone:light-dark(#eef2ff,#141a30);--rule:light-dark(#d5daea,#2a3150);--cob:#1240e0}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2{font-family:"Space Grotesk",Inter,sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.08;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(30px,4.4vw,48px)}h2{font-size:clamp(22px,2.6vw,30px);margin-top:.2em}
+.strip{background:var(--cob);color:#fff;padding:14px max(5vw,16px);font-size:15px}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+.zone{background:var(--zone)}
+.lead{font-size:clamp(17px,1.6vw,19px);max-width:68ch}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:14px;overflow-x:auto}
+.plate svg{display:block;width:100%;min-width:620px;height:auto}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(20px,3vw,44px);align-items:start}
+p{max-width:70ch;margin:.2em 0 .9em}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(9em,1fr));gap:12px;margin:18px 0 6px}
+.fig-n{border-top:3px solid var(--cob);padding-top:8px}
+.fig-n b{display:block;font:600 clamp(26px,3vw,36px)/1.1 "Space Grotesk",Inter,sans-serif}
+.fig-n span{color:var(--sub);font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600}td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+.verdict{border-left:4px solid var(--cob);padding:6px 0 6px 16px;margin:14px 0}
+code{font-size:.92em;overflow-wrap:anywhere}
+ul{padding-left:1.2em;max-width:72ch}li{margin:.3em 0}
+small{color:var(--sub)}
+@media(max-width:820px){.two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:8px;border-bottom:1px solid var(--rule)}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:2px 0}.stack td::before{content:attr(data-l);color:var(--sub)}}
+</style></head><body>
+<div class="strip">Fused Hyperoperation Algebra · size weighting and what mult-add leaves over · Nov 25, 2026</div>
+
+<section class="band"><div class="wrap">
+<h1>Nothing mysterious is missing: what mult-add leaves over is repetition, and its size is set by dimension</h1>
+<p class="lead">The 54.5% is exact: −12·Li₂(−½)/π². Counting by size adds one number, the dimension β of the size measure, and the same β decides how much of each set mult-add explains. Subsets (each element at most once) cover a share 1 − 2<sup>−β</sup>; the rest is the same set again at double size. Across the naturals, integers, rationals and number fields, that is the whole gap, apart from one second kind: the class group, which a sign on each dial repairs.</p>
+<div class="figs">
+<div class="fig-n"><b>54.52%</b><span>plain ½ on the naturals by size, exactly</span></div>
+<div class="fig-n"><b>1 − 2<sup>−β</sup></b><span>share of the log-total that subsets explain</span></div>
+<div class="fig-n"><b>q = 1 + 2<sup>−β</sup></b><span>the twist a size measure acts like, for small dials</span></div>
+<div class="fig-n"><b>33 of 33</b><span>checks pass; 18 new Lean theorems</span></div>
+</div>
+<div class="plate">{{f2}}</div>
+<p><small>Blue is what mult-add with dials explains. Orange is repetition. Purple is the class group. Grey: no atoms to start from. Every bar is measured or exact; the numbers are in checks_output.txt.</small></p>
+</div></section>
+
+<section class="band zone"><div class="wrap two">
+<div>
+<h2>Where 54.5% comes from</h2>
+<p>Counting the naturals by size weighs element n by qⁿ. A dial t on every element makes each factor 1 + t·qⁿ. As q → 1 the log of the total is (1/(1 − q))·(−Li₂(−t)), so turning every dial to ½ keeps Li₂(−½)/Li₂(−1) = <b>0.545206</b> of it. By Landen's identity that is 12·(Li₂(⅓) + ½ ln²(3/2))/π². Direct sums at q = e<sup>−0.0001</sup> give 0.545205.</p>
+<p>The reason is that the merging scale log(1 + t) is only linear for small dials. Halving t halves the log-total only where the weights are tiny. On the naturals by size the small numbers carry weights near 1, so the curve bends.</p>
+<p>Change the weighting and the share changes, but only through one number: β, how fast the count of elements grows with size. A sharp count (every n ≤ X weighed 1) is β = 0 and gives log 1.5 / log 2 = 58.50%. Exponential weighting on a d-dimensional lattice is β = d and gives Li<sub>d+1</sub>(−½)/Li<sub>d+1</sub>(−1), which the lattice sums match to five digits. Dirichlet weighting n<sup>−s</sup>, logarithmic density and the primes all count by logarithmic size, which is β = ∞, and give exactly 50%.</p>
+</div>
+<div class="plate">{{f1}}</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Is size weighting a new dial? It is the twist, one per element</h2>
+<div class="two">
+<div>
+<p>Weighing an element by w and then mult-adding is the twisted mult-add with k = w (Base's <code>wAdd_scale</code>, restated as <code>weight_is_twist</code>). So counting by size gives every element its own twist kₙ = qⁿ. It is not a new kind of parameter; it is the twist, spread across the elements.</p>
+<p>For small dials the spread acts like one twist exactly: k = 2<sup>−β</sup>, so q = 1 + 2<sup>−β</sup>. Mult-add (q = 2) is the sharp count, β = 0; plain addition (q = 1) is β = ∞. Over the whole range of dials a single twist comes within 0.06 percentage points of the β = 1 curve (k = 0.441), but never exactly. That makes β a geometric reading of q: the twist is the dimension of the size measure.</p>
+</div>
+<div>
+<p><b>Merging.</b> Union of two weighted dials is not the weighted union dial. The gap is exactly t·s·w·(w − 1) (<code>weighted_merge_gap</code>), so the two commute only when every weight is 0 or 1: the sharp count.</p>
+<p><b>Complement.</b> On an infinite set with sizes, the complement of a finite subset has infinite size and weight 0. Counting by size breaks the t → 1/t symmetry outright; it survives only on finite sets.</p>
+<p><b>Halves.</b> The corner halves (odd numbers only) and the merging half stay exactly half at every β. Only the uniform ½ moves.</p>
+</div></div>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Weighting of the naturals</th><th>β</th><th>Plain ½ keeps</th><th>Uniform dial that halves</th><th>Acts like twist</th></tr></thead>
+<tbody>
+<tr><td>Sharp count, n ≤ X</td><td class="n">0</td><td class="n">58.50%</td><td class="n">√2 − 1 = 0.4142</td><td class="n">k = 1</td></tr>
+<tr><td>Abel weight qⁿ</td><td class="n">1</td><td class="n">54.52%</td><td class="n">0.4545</td><td class="n">k = ½ locally</td></tr>
+<tr><td>Plane lattice, q<sup>|v|</sup></td><td class="n">2</td><td class="n">52.42%</td><td class="n">0.4757</td><td class="n">k = ¼</td></tr>
+<tr><td>3-D lattice</td><td class="n">3</td><td class="n">51.29%</td><td class="n">0.4871</td><td class="n">k = ⅛</td></tr>
+<tr><td>Log density 1/n, Dirichlet n<sup>−s</sup>, primes</td><td class="n">∞</td><td class="n">50.00%</td><td class="n">½</td><td class="n">k = 0</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="band zone"><div class="wrap two">
+<div>
+<h2>What is left over: the same set again, at double size</h2>
+<p>Mult-add builds subsets: each element at most once. Every set below that allows an element to repeat (a prime dividing twice, a part used twice in a partition) has the same leftover, and it is always the same thing: the whole structure again with every size doubled. Euler's identity for partitions is the clearest case: partitions = partitions into distinct parts × partitions at doubled size (checked exactly to n = 400). For the primes, ζ(s) = [ζ(s)/ζ(2s)] · ζ(2s).</p>
+<p>Doubling every size in a β-dimensional measure keeps 2<sup>−β</sup> of the log-total, like a ball whose radius is halved. So subsets explain 1 − 2<sup>−β</sup>: half for the naturals by size, three quarters in a plane, seven eighths in three dimensions. The seven eighths is the known fermion factor in the Stefan–Boltzmann law. For the sets counted by logarithmic size (β = ∞) the leftover touches no growth exponent at all, only the leading constant: 6/π² of the naturals are squarefree, 1/ζ<sub>K</sub>(2) of the ideals of a number field.</p>
+<p>Mult-add can carry the leftover itself. Use the dials t, t², t⁴, … as further elements (the Fermi–Dirac primes p, p², p⁴, …) and every natural is one subset of them, so the gap closes exactly (<code>fermi_dirac</code>). The one extra step is squaring a dial, which is the rung below mult-add. Allowing at most m copies instead of one explains 1 − (m + 1)<sup>−β</sup>.</p>
+</div>
+<div class="plate">{{f3}}</div>
+</div></section>
+
+<section class="band"><div class="wrap two">
+<div>
+<h2>The second kind of leftover: the class group</h2>
+<p>In Z[√−5] numbers do not factor uniquely, but ideals do, so mult-add over prime ideals explains the ideals with only the repetition gap (squarefree share 0.539 at norm 200,000 against 1/ζ<sub>K</sub>(2) = 0.532). The numbers themselves are the principal ideals, and they are exactly half: measured 0.4999. No per-element dial with values in 0…∞ can see that, because being principal depends on how many non-principal primes you used.</p>
+<p>A sign on each dial fixes it. Give the non-principal primes dial −x as well as x; then ½(∏(1 + x) + ∏(1 − x)) keeps exactly the products with an even number of them (<code>even_half</code>). For a larger class group the signs become roots of unity: complex, twisted dials.</p>
+</div>
+<div>
+<h2>Out of reach: the algebraic numbers, multiplied</h2>
+<p>As a set counted by height the algebraic numbers behave like the primes (logarithmic size, plain ½ gives half, nothing repeats). Under multiplication there is nothing for mult-add to hold: every algebraic number is a square, a cube and every other power of another one, so there are no atoms to dial. That is a limit of any subset-based construction, not a missing dial.</p>
+<p>Random reals (Poisson points) are the other extreme: points never coincide, so there is no repetition and mult-add explains all of it.</p>
+</div>
+</div></section>
+
+<section class="band zone"><div class="wrap">
+<h2>Verdicts, each on its own merits</h2>
+<div class="verdict"><b>Size weighting as a dial.</b> Real and exactly computable, but not new: it is the twist, one per element, summed up by the dimension β (these are the Fermi–Dirac functions of physics). Worth keeping as a reading of q: for small dials q = 1 + 2<sup>−β</sup>, which ties the twist to a dimension, a geometric quantity. It does not predict anything outside the known polylogarithm formulas.</div>
+<div class="verdict"><b>Is mult-add missing something?</b> No hidden piece showed up. The leftover is consistent across every set with unique factorization, and it is fully named: repetition, which is the set at double size, a share 2<sup>−β</sup> of the log-total and none of any growth exponent for the number-theory sets. Where factorization fails, the class group adds a second, also named, leftover. Both close with things mult-add can already express (a dial ladder, and signed dials).</div>
+<div class="verdict"><b>A lead worth following.</b> Mult-add is one end of a range: at most one copy. Full repetition is the other end. Physics has a continuous dial between them (Haldane's exclusion statistics), so "how much repetition" could become a dial of its own, with mult-add at one end. That would give the doubling ladder a continuous version. It is known physics, so its value here is a cleaner frame, not a discovery, unless it turns up a set whose leftover sits at a fractional point.</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Files</h2>
+<ul>
+<li><code>checks.py</code> and <code>checks_output.txt</code>: every number on this page (mpmath; sieves to 10⁶; Euler's identity to n = 400; ideal counts in Z[i] and Z[√−5] to norm 200,000).</li>
+<li><code>lean/SizeDialResidual.lean</code>: 18 theorems in core Lean 4.37, no sorry: weight = twist, the merge gap, sharp weights commute, the twisted half, subsets × doubled = multisets, the finite η–ζ doubling law, at most m copies, sign dials and the class-group half. Library builds with 2,819 theorems in 112 modules.</li>
+<li><code>figures.py</code> and the three SVG figures; <code>README.md</code>.</li>
+</ul>
+<p><small>The polylogarithm limits and the growth laws (Meinardus, Selberg–Delange, Hecke for ideal counts) are cited and checked numerically, not proved in Lean.</small></p>
+</div></section>
+</body></html>

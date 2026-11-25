@@ -1,0 +1,17 @@
+t= 0.0 max|w|=  2.000  P_total= -0.0000  single-handed=  0.0000  mixed= -0.0000
+t= 0.5 max|w|=  1.874  P_total=  0.0398  single-handed=  0.0001  mixed=  0.0398
+t= 1.0 max|w|=  1.572  P_total=  0.0861  single-handed=  0.0006  mixed=  0.0855
+t= 1.5 max|w|=  1.373  P_total=  0.1442  single-handed=  0.0024  mixed=  0.1418
+t= 2.0 max|w|=  1.790  P_total=  0.2173  single-handed=  0.0060  mixed=  0.2113
+t= 2.5 max|w|=  2.381  P_total=  0.3053  single-handed=  0.0113  mixed=  0.2939
+t= 3.0 max|w|=  3.340  P_total=  0.4096  single-handed=  0.0178  mixed=  0.3918
+t= 3.5 max|w|=  4.816  P_total=  0.5598  single-handed=  0.0288  mixed=  0.5310
+t= 4.0 max|w|=  8.027  P_total=  0.8289  single-handed=  0.0484  mixed=  0.7805
+t= 4.5 max|w|= 13.402  P_total=  1.2377  single-handed=  0.0726  mixed=  1.1652
+t= 5.0 max|w|= 15.262  P_total=  1.5035  single-handed=  0.1026  mixed=  1.4009
+t= 5.5 max|w|= 13.726  P_total=  1.3641  single-handed=  0.1173  mixed=  1.2469
+t= 6.0 max|w|= 10.404  P_total=  1.2307  single-handed=  0.1128  mixed=  1.1179
+t= 6.5 max|w|= 10.333  P_total=  1.2142  single-handed=  0.1010  mixed=  1.1132
+t= 7.0 max|w|=  9.811  P_total=  1.2219  single-handed=  0.0990  mixed=  1.1229
+t= 7.5 max|w|=  9.795  P_total=  1.2559  single-handed=  0.0833  mixed=  1.1726
+t= 8.0 max|w|= 13.143  P_total=  1.3583  single-handed=  0.0498  mixed=  1.3085
