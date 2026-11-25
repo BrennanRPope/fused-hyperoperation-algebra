@@ -1099,6 +1099,23 @@ FusedAlgebra.Topics.E	MultAdd.E.u_step	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.E	MultAdd.E.wt_ge	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.E	MultAdd.E.wt_le	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.E	MultAdd.E.wt_nonneg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.G_lift_hom	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.complex_counts	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.counts_mult_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.dial_is_direction	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.four_quarter_turns	
+FusedAlgebra.Topics.EIPi	EIPi.full_turn_lifts_to_one	
+FusedAlgebra.Topics.EIPi	EIPi.half_turn_lifts_to_minus_one	
+FusedAlgebra.Topics.EIPi	EIPi.i_squared	
+FusedAlgebra.Topics.EIPi	EIPi.lift_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.lift_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.madd_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.madd_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EIPi	EIPi.q_lifts_to_i	
+FusedAlgebra.Topics.EIPi	EIPi.two_quarter_turns	
+FusedAlgebra.Topics.EIPi	EIPi.two_quaterbits	
+FusedAlgebra.Topics.EIPi	EIPi.two_qubits	
+FusedAlgebra.Topics.EIPi	EIPi.two_rebits	
 FusedAlgebra.Topics.EarlyScience	SimpleLaws.boyle_gain_loss	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EarlyScience	SimpleLaws.boyle_partner	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EarlyScience	SimpleLaws.constant_product	propext, Classical.choice, Quot.sound

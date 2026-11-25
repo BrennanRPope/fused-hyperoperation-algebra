@@ -1,0 +1,20 @@
+PASS R1 the action, as a function of the middle point, is stationary at the classical path; its curvature is 2 cot(T/2), which turns negative past T = pi
+PASS R2 real dial, T < pi: e^(-S/hbar) piles up on the classical middle point; width halves when hbar quarters (Laplace)  | peak 0.850651 vs classical 0.850651; widths 0.1659, 0.0830
+PASS R3 imaginary dial, T = 0.6 pi: a window round the classical point gives the whole Fresnel value; a window away from it gives ~0 (stationary phase)  | |near-exact|/|exact| = 6.4e-06, |far|/|exact| = 1.1e-04
+PASS R4 imaginary dial, T = 1.4 pi: a window round the classical point gives the whole Fresnel value; a window away from it gives ~0 (stationary phase) - still works past T = pi, and the phase has turned by a quarter (e^(-i pi/2))  | |near-exact|/|exact| = 6.4e-06, |far|/|exact| = 1.1e-04
+PASS R5 real dial, T > pi: e^(-S/hbar) GROWS away from the classical point (the classical path is a maximum along this direction), so the sum diverges  | weights at 0.1, 0.5, 1.0 away: 2.1e+00, 7.7e+07, 3.6e+31
+PASS R6 Morse index: the number of directions in which the classical path is a MAXIMUM of the action = number of half-periods passed (floor(T/pi))  | T/pi = [0.5, 0.9, 1.1, 1.9, 2.1, 2.9, 3.1] -> [0, 0, 1, 1, 2, 2, 3]
+PASS R7 there are always large positive directions (wiggly paths cost kinetic action; the top one grows like 4N/T as slices refine), so a dial with Re(kappa) < 0 diverges at every T
+PASS R8 dials kappa = e^(i alpha) that keep the Gaussian path sum from blowing up: the whole half-plane |alpha| <= 90 deg for T < pi; ONLY alpha = +-90 deg (purely imaginary) for T > pi  | T=0.6pi: [-90.0, 90.0] deg; T=1.4pi: 2 angles at -90.0, 90.0 deg
+PASS R9 Maslov: at the imaginary dial each passed conjugate point turns the amplitude by a quarter turn, e^(-i pi/2) (i again, one per caustic)
+PASS R10 imaginary dial -> classical mechanics: the classical action obeys Hamilton-Jacobi dS/dt + (dS/dx)^2/2 + x^2/2 = 0 (Madelung/WKB as hbar -> 0)
+PASS R11 real dial (Wick-rotated, where it converges for all times) -> dS/dtau + (dS/dx)^2/2 - x^2/2 = 0: Hamilton-Jacobi of the UPSIDE-DOWN potential (Hopf-Cole, Freidlin-Wentzell)
+PASS R12 the Euclidean action has no conjugate points (its Hessian stays positive at every duration): the real dial converges for all times, but on the inverted mechanics
+PASS R13 two classical routes: the real dial's -hbar log(sum) tends to the MINIMUM of the two actions (one branch kept, the other forgotten; viscosity solution)
+PASS R14 the imaginary dial keeps both routes: |e^(iS1/h) + e^(iS2/h)|^2 swings between 0 and 4 with fringe spacing 2 pi hbar t/d (interference)  | spacing 0.0314; fringes in |x|<0.5: 32
+PASS R15 checkerboard at k = -i (Feynman): two different starts stay exactly as distinguishable after 300 steps (nothing lost)
+PASS R16 checkerboard at k = -1 (Kac): total probability is kept, but the two starts blur together (distance falls)  | L1 distance 2.00 -> 0.021
+PASS R17 Kac's turn step can't be run backward as a process (its inverse has negative entries); Feynman's can (inverse = conjugate transpose)
+PASS R18 the Kac chain's entropy rises step by step (information lost); the Feynman chain's step is invertible at every resolution eps
+
+18/18 pass

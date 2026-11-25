@@ -1,0 +1,44 @@
+PASS A1 n copies of x/n under o_k equal ((1 + kx/n)^n - 1)/k (the lift multiplies)
+PASS A2 real dial: chain of 1/n steps -> e - 1, error ~ 1/n (e is the lift of one whole unit)  | errors 1.2e-01, 1.3e-02, 1.4e-03, 1.4e-04
+PASS A3 every dial is mult-add after scaling the inputs by k: k(a o_k b) = (ka) o_1 (kb)  | so 'which dial' over the complex numbers = 'which direction the inputs point'
+PASS A4 the lift keeps size 1 for every x exactly when k is purely imaginary (i is the size-keeping dial)  | k=0.7i: 4.4e-16;  k=0.05+0.7i: 0.65
+PASS A5 one short step: |1 + k*eps| = 1 + Re(k)*eps + O(eps^2), so size-keeping forces Re k = 0
+PASS A6 at k = i the flow first returns to 0 at x = 2*pi (pi is half the turn)  | x0 = 6.283190
+PASS A7 at k = i, x = pi lands on -2/k = 2i, i.e. lift 1 + k*x = -1 (Euler: e^(i*pi) = -1)
+PASS A8 Euler by pure chaining: 400,000 steps of pi/400000 at k = i land within 2e-5 of 2i  | 0.0000000+2.0000123j
+PASS A9 discrete Euler over Gaussian integers (k = 1): q = -1+i (lift i); q o q = -2; four copies = 0
+PASS A10 flat coordinate log(1+kx)/k turns o_k into + (up to whole turns 2*pi*i/k)
+PASS A11 k = -i walks the same circle the other way: flow(-i, x) = conj(flow(i, x)) for real x
+PASS B1 Hardy's K_AB = K_A K_B is mult-add of parameter counts: (K_A-1) o_1 (K_B-1) = K_AB - 1 (any K = N^r)
+PASS B2 complex: products of local Hermitian 2x2 span all 16 Hermitian 4x4; two-qubit 15 = 3 + 3 + 3*3 = 3 o 3
+PASS B3 real: local products give 9 of the 10 real symmetric 4x4 directions; 2 o 2 = 8 but K_AB - 1 = 9 (one hidden)  | the hidden one is sigma_y (x) sigma_y
+PASS B4 that hidden joint parameter is J (x) J, two local quarter turns (J = -i sigma_y): J(x)J = -sigma_y(x)sigma_y
+PASS B5 quaternionic: K(2) = 6, K(4) = 28; local tomography needs 6*6 = 36 (5 o 5 = 35 vs 27): too few joint parameters
+PASS B6 Masanes-Muller bit-ball dimension d = K(2) - 1: real 2, complex 3, quaternionic 5; only d = 3 obeys (d+1)^2 = K(4)
+PASS B7 continuity: a classical bit has no continuous reversible path (a small turn leaves the simplex); a qubit does, e^(-i t sigma_x/2): |0> -> |1>, norm kept
+PASS C1 phasors: complex numbers are the real matrices [[a,-b],[b,a]]; M(zw) = M(z)M(w), M(i)^2 = -1 (i is removable here)
+PASS C2 AC circuits: current from the complex impedance R + iwL + 1/(iwC) matches direct real time-stepping  | max diff 2.3e-12; phase lag -56.3 deg
+PASS C3 Fourier without i: the real Hartley transform is its own inverse (/N) and gives the same power |X|^2 = (H_k^2 + H_-k^2)/2
+PASS C4 a real size-keeping shift has eigen-waves e^(2 pi i k/N): all eigenvalues on the unit circle, only +-1 real
+PASS C5 Clifford: with REAL matrices e1, e2 (e1^2 = e2^2 = 1, anticommuting), the oriented plane e1e2 squares to -1
+PASS C6 Pauli/Hestenes: sigma1 sigma2 sigma3 = i*1, the oriented volume of space plays i (and commutes with everything)
+PASS C7 EM: a boost of rapidity phi turns F = E + icB by the IMAGINARY angle i*phi (Silberstein 1907)
+PASS C8 that complex rotation is complex-orthogonal (R^T R = 1): the Lorentz group is SO(3, C)
+PASS C9 F.F = (E^2 - B^2) + 2i E.B is unchanged by the boost (both Lorentz invariants in one complex number)
+PASS C10 duality rotation F -> e^(-i theta)F keeps energy |F|^2/2 and Poynting E x B (i = the E-to-B quarter turn)
+PASS C11 vacuum Maxwell is one complex equation curl F = i dF/dt (Riemann-Silberstein); duality-rotated waves still solve it
+PASS C12 Minkowski's ict: a rotation by imaginary angle i*phi in the (x, ict) plane is exactly the boost
+PASS C13 Euler for boosts: rapidity i*pi gives -1 on (ct, x), the reflection to the opposite wedge; 2*pi*i gives 1
+PASS C14 classical oscillator: a = (wq + ip)/sqrt(2w) obeys da/dt = -iwa (phase space turns; i = that turn)
+PASS C15 Koopman-von Neumann: the classical Liouville generator (here d/dtheta) is REAL antisymmetric, so its spectrum is purely imaginary; i appears only if you insist on writing it as Hermitian
+PASS C16 causality -> Kramers-Kronig: Re chi rebuilt from Im chi alone (damped oscillator, poles in the lower half-plane)  | max err 7.5e-06
+PASS C17 the same recipe FAILS for an acausal response (poles in the upper half-plane): it returns minus the true Re chi
+PASS C18 the causal response's poles sit at Im w = -gamma/2 < 0: the sign of i picks which half-plane is the future
+PASS C19 KMS (Kubo 1957, Martin-Schwinger 1959): <A(t)B> = <B A(t + i beta)>; temperature is a period in imaginary time
+PASS C20 the thermal weight e^(-beta H) is time evolution e^(-iHt) at the imaginary time t = -i beta (Wick)
+PASS C21 Euclidean Rindler ds^2 = rho^2 dtheta^2 + drho^2 has no cone tip only if theta has period 2*pi
+PASS C22 Unruh T = hbar a/(2 pi c kB): 4.0e-20 K at a = 1 g  | 3.977e-20 K
+PASS C23 Hawking T = hbar c^3/(8 pi G M kB) for one solar mass: 6.17e-8 K (one formula holds hbar, c, G, kB and the 2*pi)  | 6.170e-08 K
+PASS C24 the same T is the Unruh formula at the horizon's surface gravity kappa = c^4/(4GM): G enters only through kappa
+
+42/42 pass

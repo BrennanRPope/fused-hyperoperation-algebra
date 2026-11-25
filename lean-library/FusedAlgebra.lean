@@ -127,3 +127,4 @@ import FusedAlgebra.Topics.OrderDial
 import FusedAlgebra.Topics.WhyI
 import FusedAlgebra.Topics.Checkerboard
 import FusedAlgebra.Topics.CheckerboardPotential
+import FusedAlgebra.Topics.EIPi

@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 mult-add laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 127 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3108 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 128 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 3125 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -152,6 +152,7 @@ Topics (each imports the foundation):
 | `Topics/WhyI` | why-i/lean/WhyI.lean | 21 theorems, first compile Nov 25: the twist (order gap) is antisymmetric and equals (k − k₂)·a·b between two dials, dial-k elements on the line λ = 1 + k·s, the quarter turn J squares to −1 and turns the dot product into the area form, a mirror flips J to −J, symmetric matrices have antisymmetric commutators, weighted-circle chains multiply as ∏(1 + k·aⱼ), a path's accumulated twist is its shoelace area |
 | `Topics/Checkerboard` | why-i/checkerboard/lean/Checkerboard.lean | 4 theorems, first compile Nov 25 (one type annotation fixed): on non-commuting 2×2 integer matrices 1 + k(x ∘ₖ y) = (1 + kx)(1 + ky), three steps expand into the 7 ordered sub-chains, the swap and a diagonal move do not commute, checkerboard path counts match the Feynman–Hibbs formula at N = 5 |
 | `Topics/CheckerboardPotential` | why-i/checkerboard-potential/lean/CheckerboardPotential.lean | 3 theorems, first compile Nov 25: a scalar potential commutes with every turn element so each tick factors, and summing k^|S|∏v over every subset of ticks gives ∏(1 + k·vⱼ) |
+| `Topics/EIPi` | why-i/e-i-pi/lean/EIPi.lean | 17 theorems, first compile Nov 25: the lift 1 + k(a ∘ₖ b) = (1 + ka)(1 + kb) for two and three steps, a dial is a direction (k(a ∘ₖ b) = ka ∘₁ kb), a discrete Euler on the Gaussian integers (q = −1 + i lifts to i, four copies lift to 1), local tomography as mult-add of parameter counts: true for complex counts, false for real and quaternionic |
 | `Topics/Conventions` | names-review/lean/Conventions.lean | 7 theorems, first compile Nov 25: the weight-to-probability sign flip, both ring-theory circle conventions on the dial, (weights compose by k, probabilities by −k) and related notation facts; recommendations only, nothing renamed |
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |

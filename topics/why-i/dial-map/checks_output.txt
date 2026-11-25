@@ -1,0 +1,17 @@
+PASS S0 all four 1+1 kinematical algebras (Galilei, Poincare, de Sitter, anti-de Sitter) satisfy the Jacobi identity
+PASS S1 1+1: Galilei can be deformed (H^2 != 0), Poincare can still be deformed, de Sitter and anti-de Sitter are rigid (H^2 = 0): turning on 1/c^2 then the curvature reaches a stable algebra (Bacry-Levy-Leblond 1968; Mendes 1994)  | dim H^2 = [np.int64(5), np.int64(2), np.int64(0), np.int64(0)]
+PASS S2 the 3+1 algebras (Galilei, Poincare, de Sitter, anti-de Sitter), built as Cayley-Klein matrices with labels (kappa1, kappa2, 1, 1), are 10-dimensional Lie algebras (Jacobi holds)
+PASS S3 3+1: Galilei can be deformed, Poincare can be deformed (toward de Sitter), de Sitter and anti-de Sitter are rigid (H^2 = 0)  | dim H^2 (Gal, Poi, dS, AdS) = [np.int64(4), np.int64(1), np.int64(0), np.int64(0)]
+PASS S3b 1+1 Bargmann (Galilei with mass, the Schrodinger particle's symmetry) is a Lie algebra and can still be deformed (toward Poincare)  | dim H^2 = 6
+PASS S4 x, p, 1 commuting (classical) can be deformed into [x, p] = hbar (Heisenberg); the Heisenberg algebra itself is not rigid either, so the stable quantum statement lives in the full algebra of observables (Moyal: Vey 1975, Bayen et al. 1978), not in this 3-dimensional piece  | dim H^2 (abelian, Heisenberg) = [np.int64(9), np.int64(5)]
+PASS S5 a one-parameter law has a 1-dimensional (abelian) Lie algebra, which has nothing to deform (H^2 = 0 trivially): so turning k (or d) on from 0 is not a deformation
+PASS S6 instead, every k is plain addition after the ruler log(1 + k x)/k (over the rationals every formal group law of one variable is isomorphic to addition): k changes the ruler and the global shape (walls, circle vs line), not the local law
+PASS S7 a Lorentz boost goes to a Galilean boost as c -> infinity, with error ~ 1/c^2 (Inonu-Wigner contraction, the cube's 1/c edge)
+PASS S8 de Sitter / anti-de Sitter go to Poincare as the curvature radius grows (kappa1 = +-1/R^2 -> 0): the Cayley-Klein kappa1 edge
+PASS G1 Newtonian binding, to first order in G, is exactly the weighted circle operation a + b + k ab with k = -G/(r c^2) (a ruler choice at fixed separation, ours as a reading)
+PASS G2 ADM dressed-mass law F = L^-1(L(a) + L(b)) with L(m) = m + (G/2R) m^2 agrees with a + b + k ab, k = -G/R, through second order and differs at third (extra 4 alpha^2 ab(a + b)); L^-1 is an exact closed form  | third-order term = 4*a*alpha**2*b*(a + b)
+PASS G3 toy bootstrap (ours, a scalar cartoon of Gupta-Feynman-Deser): iterating 'add the binding energy of the current mass' converges to the ADM closed form; the summed self-coupling is a ruler change, and not the k-ruler
+PASS G4 kappa-Poincare's momentum composition (p0 + q0, p1 + e^{-p0/kappa} q1) is the affine stretch-and-shift composition with 1 + k a = e^{-p0/kappa}: associative, order matters (gap only in the shifted slot)  | order gap = [ 0.         -0.30635488]
+PASS G5 as kappa (the Planck-scale dial) -> infinity, kappa-Poincare composition -> plain addition (Poincare), error ~ 1/kappa
+
+15/15 pass

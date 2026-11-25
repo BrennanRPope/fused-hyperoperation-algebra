@@ -1,0 +1,12 @@
+PASS K1a massless momentum in kappa-Poincare is |p| = kappa (1 - e^{-p0/kappa}) (zero of the Majid-Ruegg Casimir); it never exceeds kappa however large the energy
+PASS K1b for two massless particles moving the same way, kappa-Poincare composes their momenta by exactly a + b + k ab with k = -1/kappa, and the result is again massless (ours as stated; follows in one line from Majid-Ruegg 1994)
+PASS K1c the wall of o_k at -1/k = kappa is kappa-Poincare's maximum momentum: kappa o_k anything = kappa
+PASS K2 the whole 3+1 kappa-Poincare momentum composition is a matrix chain A o_k B = A + B + k AB with lift I + kA = [[e^{-p0/kappa}, p], [0, 1]]: the group AN(3) (Majid-Ruegg 1994; Kowalski-Glikman 2002-03)
+PASS K3 Magueijo-Smolin's energy composition U^-1(U(E) + U(E')), U(E) = E/(1 - l E) (as in Judes-Visser 2002), is (E + E' + k EE')/(1 - d EE') with k = -2l, d = l^2: the repo's plane on the line k^2 = 4d (kappa = d - k^2/4 = 0), where the two walls merge into one double wall at the invariant Planck energy 1/l (ours as a placement)  | composition = (2*E1*E2*l - E1 - E2)/(E1*E2*l**2 - 1)
+PASS K4 every one-coordinate composition (o_k, Magueijo-Smolin's energy law, plain addition) is addition after a change of ruler, so matching a 1D law says nothing model-specific: DSR bases are coordinates on one momentum space (Kowalski-Glikman 2002; Kowalski-Glikman-Nowak 2002)
+PASS K5a scalar o_k: connection Gamma = -k, no torsion, no curvature (associative): trivial momentum-space geometry
+PASS K5b kappa-Poincare (the affine chain): torsion 1/kappa (it is the order gap, p+q - q+p ~ -T pq) and zero curvature (associative): a group manifold, flat connection with torsion (Amelino-Camelia, Freidel, Kowalski-Glikman, Smolin 2011)  | T^(01)_1 = 0.9995
+PASS K6 Snyder's momentum composition (coset of the de Sitter-type space, here its spatial sphere slice) is non-associative (curvature), with no torsion at leading order; chains of o_k are always associative, so they reach Snyder only by keeping the leftover rotation, i.e. as the full matrix group, the same move as Thomas-Wigner (Girelli-Livine 2010)  | associator = 0.0390, commutator = 0.0603
+PASS K7 the same o_k carries two different physical dials: velocity addition (spacetime signature kappa2 = -1/c^2, repo's a = 2u/(1 - u), k = 1 at c = 1) and the kappa-Poincare momentum law (Planck energy, k = -1/kappa): DSR keeps the first and adds the second
+
+10/10 pass

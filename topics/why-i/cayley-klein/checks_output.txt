@@ -1,0 +1,15 @@
+PASS K1 a Cayley-Klein 'rotation' with label kappa composes its tangent T = S_kappa/C_kappa by (x + y)/(1 - kappa x y): circle for kappa > 0, line for 0, hyperbola for kappa < 0 (Yaglom; Herranz-Ortega-Santander 2000)
+PASS K2 [ours, a short derivation] the Cayley map a = T/(1 - (k/2) T) turns kappa-tangent addition into a o_k b exactly, with kappa = -k^2/4: real k gives kappa < 0, k = 0 gives kappa = 0, imaginary k gives kappa > 0
+PASS K3 the hidden coordinate log(1 + k a)/k is the Cayley-Klein arc length (rapidity, angle) theta: the additive coordinate is the same
+PASS K4 the lift 1 + k a is a unit phase e^(2 i sqrt(kappa) theta) when kappa > 0 (imaginary k) and a positive number e^(k theta) when kappa < 0 (real k): our k = -i is the elliptic (rotation) case, k = -1 the hyperbolic (boost) case
+PASS K5 velocity addition is the kappa = -1/c^2 law (Levy-Leblond 1976); with k = 2/c the lift 1 + k a is the squared Doppler factor (Bondi's k-calculus); c = 1 gives a = u/(1 - u), and the repo's a = 2u/(1 - u) is the same law rescaled (k = 1)
+PASS D1 [ours, from two known results] every law (a + b + k ab)/(1 - d ab) is the kappa-tangent law in disguise, with kappa = d - k^2/4 (the same Cayley map). So (k, d) is two coordinates on ONE dial; lines of equal kappa are the parabolas d = kappa + k^2/4
+PASS D2 the walls of the (k, d) law (real roots of 1 + k x + d x^2, Coleman-McGuinness's discriminant k^2 - 4d = -4 kappa) are two for kappa < 0, none for kappa > 0: only the sign of kappa is a real invariant, as in Cayley-Klein
+PASS D3 the repo's relativity point (k, d) = (0, -1/c^2), pure o_k at k = 2/c, and every point on the parabola d = k^2/4 - 1/c^2 are the same geometry, kappa = -1/c^2; the repo's line q = k^2/4 - 1 (c = 1) is exactly this parabola
+PASS D4 all nine Cayley-Klein groups of the plane are non-commutative (even Galilean), while every scalar law (k, d) is commutative: no scalar dial, k or d, can hold the second Cayley-Klein dial
+PASS N1 in N dimensions the motion generators J_ab (one per pair of directions, label kappa_ab) close into a Lie algebra when kappa_ac = kappa_ab kappa_bc, i.e. every label is a product of N dials kappa_1..kappa_N (Cayley-Klein, Herranz-Santander); with an independent label per pair they do not close  | product rule: closes for N = 2, 3, 4; free labels: smallest closure failure 0.13
+PASS N2 [ours] each pair's one-parameter group is a scalar o_k chain with its own k_ab = 2 sqrt(-kappa_ab), so a chain across the planes carries all N(N+1)/2 labels, but only N of the k's are free: k_ac^2 = -k_ab^2 k_bc^2/4
+PASS N3 with matrix elements, o_k (k = 1, A = G - 1) is the group law of every Cayley-Klein group, all dials included: the dials live in the matrices, not in k
+PASS N4 multiplying k by i flips the sign of that plane's kappa (hyperbolic <-> elliptic): our k = -1 -> -i step is the Cayley-Klein analytic continuation of one label (Gromov's j: 1 -> i), the 'Wick rotation' of that plane
+
+13/13 pass

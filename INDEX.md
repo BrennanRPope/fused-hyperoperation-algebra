@@ -6,7 +6,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,108 theorems, 127 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,125 theorems, 128 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
@@ -51,6 +51,11 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Path integrals in a stronger sense: the three published pieces that make the chain a real path integral | `topics/why-i/path-integral-strong/` | — |
 | Feynman's checkerboard and Kac's telegraph as one weighted circle chain (k = −i and k = −1) | `topics/why-i/checkerboard/` | — |
 | Adding a potential to the checkerboard and telegraph chain | `topics/why-i/checkerboard-potential/` | — |
+| e, i and π from one dial, and where i lives in physics | `topics/why-i/e-i-pi/` | — |
+| Does resolving the chain force the turn? Only reversibility and the classical path at every length force k = −i | `topics/why-i/e-i-pi/chain-resolves/` | — |
+| k as the Cayley–Klein curvature dial (κ = −k²/4) | `topics/why-i/cayley-klein/` | — |
+| The circle operation as κ-Poincaré momentum addition | `topics/why-i/kappa-poincare/` | — |
+| The dial map: the framework does not make gravity a forced step | `topics/why-i/dial-map/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
 | Electromagnetism through mult-add: light sets the dial q = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
 | Size weighting as a dial, and what mult-add leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |
