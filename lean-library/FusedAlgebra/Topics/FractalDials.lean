@@ -12,9 +12,10 @@
   * half_dimension_certificates  the five sample sets A to E all have dimension 1/2:
                                  the square roots of their zoom ratios add to 1
                                  (Moran's equation at s = 1/2), exactly.
-  * mulAdd_shift                 (x-1) ✳ (y-1) = xy - 1: mult-add is multiplication
-                                 of sides 1 + a, so Moran's "sides add to 1" is the
-                                 element sitting at the mult-add identity a = 0.
+  * mulAdd_shift, mulAdd_identity
+                                 (x-1) ✳ (y-1) = xy - 1: mult-add is multiplication
+                                 of sides 1 + a. It has no notion of size, which is
+                                 why a zoom dial would be new.
   * two_pow_mod7, uneven_not_lattice
                                  the uneven set D (zooms 9/100 and 49/100) is
                                  non-lattice: no power of one zoom equals a power of
@@ -59,7 +60,7 @@ theorem half_dimension_certificates :
     ((1/4 : Rat) * (1/4) = 1/16 ∧ (1/4 : Rat) + 1/4 + 1/4 + 1/4 = 1) := by
   refine ⟨⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_, ?_⟩, ⟨?_, ?_⟩⟩ <;> decide +kernel
 
-/-! ## 2. Moran's equation is the mult-add identity -/
+/-! ## 2. Mult-add multiplies sides; it has no zoom -/
 
 /-- mult-add: a ✳ b = a + b + ab. -/
 def mulAdd (a b : Int) : Int := a + b + a * b

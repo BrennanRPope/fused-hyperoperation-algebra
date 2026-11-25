@@ -119,3 +119,4 @@ import FusedAlgebra.Topics.DialWall
 import FusedAlgebra.Topics.FractalBoxes
 import FusedAlgebra.Topics.FractalDials
 import FusedAlgebra.Topics.DialPotential
+import FusedAlgebra.Topics.RepetitionDial

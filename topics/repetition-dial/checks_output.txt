@@ -1,0 +1,31 @@
+PASS 1 (1+ka)(1+kb) = 1 + k(a+b+kab)
+PASS 1b k-log of one atom is its fugacity x
+PASS 2 coefficient of x^n in (1+kx)^(1/k) = prod(1-jk)/n!
+PASS 2b k=0 gives e^x (1/n!)
+PASS 2c k=1 gives 1+x
+PASS 2d k=-1 gives 1/(1-x) (all 1)
+PASS 3 k=1/m: C(m,n)/m^n (cap at m copies); k=-1/m: C(m+n-1,n)/m^n (unlimited)
+PASS 4a every k in [-2,0] (rational grid) has all coefficients > 0
+PASS 4b k = 1/m: no negative coefficient
+PASS 4c k > 0 not of form 1/m: some coefficient negative
+PASS 4d k=2/3: coefficient of x^3 = -1/54
+PASS 5a mean copies n = x/(1+kx), i.e. 1/(e^(beta eps) + k)
+PASS 5b variance = n(1 - k n): k = (n - var)/n^2 is constant
+PASS 5c 1/n - 1/x = k exactly
+PASS 6a g=0.25: n = x dlnZ/dx with Z=(1+w)/w
+PASS 6a g=0.5: n = x dlnZ/dx with Z=(1+w)/w
+PASS 6a g=0.75: n = x dlnZ/dx with Z=(1+w)/w
+PASS 6b Haldane effective k slides from 2g-1 (dilute) to g (crowded)
+PASS 6c g->0 gives constant k = -1 (bosons)
+PASS 6d g=1 is exactly the k=1 atom
+PASS 6e g=1/2: (w+1/2-k)^2 = w(1+w) is -2k w + (1/2-k)^2 = 0 (one w only)
+PASS 7a cap m=2 is not a single k (predicted c3=1, true 0; c4 check)
+PASS 7b cap m=2 = boson(x)/boson(x^3): two k=-1 atoms at sizes 1 and 3
+PASS 7a cap m=3 is not a single k (predicted c3=1, true 1; c4 check)
+PASS 7b cap m=3 = boson(x)/boson(x^4): two k=-1 atoms at sizes 1 and 4
+PASS 7c cap m=2: effective k drifts (dilute -1 -> crowded 1/2)
+PASS 8a Z_k continuous at k=0 (-> e^x)
+PASS 8b dZ/dk continuous at k=0 (= -x^2/2 e^x)
+PASS 9 1/(1-x) = prod (1+x^(2^j)) through x^63
+
+29/29 checks passed
