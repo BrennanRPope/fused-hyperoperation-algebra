@@ -17,12 +17,12 @@ PASS ∂F/∂b = V(a)/(1-qab)²
 PASS invariant ruler: ∂F/∂b · V(b) = V(F(a,b)), so dx/V(x) is carried by every translation
 PASS closed-form logarithm L(x) = ∫₀ˣ ds/(1+ps+qs²) in all three cases (8 points × 3 x)
 PASS L(F(a,b)) = L(a) + L(b): the logarithm turns every landscape law into addition
-PASS named rulers: mult-add log(1+x), tanh law artanh x, tan law arctan x
+PASS named rulers: circle-operation log(1+x), tanh law artanh x, tan law arctan x
 PASS border (p²=4q): L = x/(1+px/2), and F is plain addition in L
 PASS dial: L = log(1+kx)/k → x as k → 0
 PASS elliptic period: ∫ over all reals of dx/(1+px+qx²) = 2π/√(4q-p²)  (3 points)
 PASS real walls exactly when p² - 4q > 0 (roots of 1+px+qx²)
-PASS line case: L runs to ±∞ at the two walls (mult-add: wall -1)
+PASS line case: L runs to ±∞ at the two walls (the circle operation: wall -1)
 PASS circle case: the point ∞ belongs to the group; tan law F(a, ∞) = -1/a
 PASS bracket of fields α+βx+γx² stays in the span: (αβ'-βα') + 2(αγ'-γα')x + (βγ'-γβ')x²
 PASS Jacobi identity for the field bracket
@@ -32,7 +32,7 @@ PASS matrix form: trace-free part X₀ has tr(X₀²) = (p² - 4q)/2
 PASS rate in the new chart: (1+cy)²·V(y/(1+cy)) = 1 + (p+2c)y + (q+pc+c²)y²
 PASS discriminant unchanged: (p+2c)² - 4(q+pc+c²) = p² - 4q
 PASS conjugation: F_{p+2c, q+pc+c²}(φa, φb) = φ(F_{p,q}(a,b)), φ(x) = x/(1-cx)
-PASS mult-add (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)
+PASS the circle operation (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)
 PASS parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same parabola p²-4q = 4
 PASS units: scaling x ↦ λx sends (p,q) to (λp, λ²q) and p²-4q to λ²(p²-4q)
 PASS conjugation and scaling never change the sign of p²-4q (random c, λ on 6 points)
@@ -52,7 +52,7 @@ PASS small cases: generator 1 for p = 5, 11, 13; for p = 7 use 2 (1 has order 3)
 PASS circle x²+y²=1 over F_p has p+1 points when p ≡ 3 mod 4, p-1 when p ≡ 1 mod 4 (p < 60)
 PASS tan law on F_p ∪ {∞} is a cyclic group of order p+1 for every prime p ≡ 3 mod 4 below 40 (the finite circle)
 PASS finite shadows: the landscape group over F_p has p - ((p²-4q)/p) elements: p-1 line, p border, p+1 circle (all p,q mod 5,7,11,13)
-PASS matrix mult-add: lift (I+A)(I+B) = I + A✳B, and A✳B - B✳A = AB - BA exactly
+PASS the matrix circle operation: lift (I+A)(I+B) = I + A✳B, and A✳B - B✳A = AB - BA exactly
 PASS group commutator (1+tA)(1+tB)(1+tA)⁻¹(1+tB)⁻¹ - 1 = t²[A,B] + O(t³)
 PASS landscape matrices commute (both are I + sX), so the commutator vanishes on the landscape
 PASS group algebra: (g-1) ✳ (h-1) = gh - 1 for all g, h in S3 (as permutation matrices)

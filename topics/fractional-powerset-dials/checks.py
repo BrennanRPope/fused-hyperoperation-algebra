@@ -43,11 +43,11 @@ for n in range(1, 5):
     ss = [F(random.randint(0, 6), random.randint(1, 4)) for _ in range(n)]
     c = conv(lambda a: W(ts, a), lambda b: W(ss, b), n)
     ms = [multadd(t, s) for t, s in zip(ts, ss)]
-    check(f"merge n={n}: W_t * W_s = W_(t mult-add s)", all(c[x] == W(ms, x) for x in c))
+    check(f"merge n={n}: W_t * W_s = W_(t ∘₁ s)", all(c[x] == W(ms, x) for x in c))
 # coarse-graining: block of 2 elements present if either present
 t, s = F(2, 3), F(5, 7)
 inblock = t + s + t*s
-check("block of two elements carries dial t mult-add s", inblock == multadd(t, s))
+check("block of two elements carries dial t ∘₁ s", inblock == multadd(t, s))
 
 # 3. the half
 h = math.sqrt(2) - 1
@@ -71,11 +71,11 @@ check("zeta(F*G) = zeta(F) zeta(G)", all(z3[C] == z1[C]*z2[C] for C in subsets(3
 for m in (2, 3, 5):
     t = 2**(1/m) - 1; x = 0
     for _ in range(m): x = multadd(x, t)
-    check(f"{m}-th root dial 2^(1/{m})-1 mult-added {m} times = 1", abs(x - 1) < 1e-12, f"t = {t:.6f}")
+    check(f"{m}-th root dial 2^(1/{m})-1 combined by the circle operation {m} times = 1", abs(x - 1) < 1e-12, f"t = {t:.6f}")
 # halving commutes with merging (u = log(1+t) line)
 t1, t2 = 0.7, 2.3
 half = lambda t: math.sqrt(1 + t) - 1
-check("half(t mult-add s) = half(t) mult-add half(s)", abs(half(multadd(t1, t2)) - multadd(half(t1), half(t2))) < 1e-12)
+check("half(t ∘₁ s) = half(t) ∘₁ half(s)", abs(half(multadd(t1, t2)) - multadd(half(t1), half(t2))) < 1e-12)
 
 # partner involution and the angle picture
 partner = lambda t: (1 - t) / (1 + t)
@@ -98,10 +98,10 @@ check("union half in probability: 1 - 1/sqrt2, joined twice gives 1/2", abs(p(h)
 check("intersection half: 1/sqrt2, intersected twice gives 1/2; dial sqrt2+1 = 1/h",
       abs(hp_inter**2 - 0.5) < 1e-12 and abs(p(math.sqrt(2) + 1) - hp_inter) < 1e-12)
 check("halves mirror about 1/2: 0.2929 + 0.7071 = 1", abs(hp_union + hp_inter - 1) < 1e-12)
-# odds-against mult-add for intersection
+# odds-against the circle operation for intersection
 pa, pb = F(1,3), F(2,5)
 against = lambda q: (1 - q) / q
-check("intersection: odds-against mult-add", against(pa*pb) == multadd(against(pa), against(pb)))
+check("intersection: odds-against the circle operation", against(pa*pb) == multadd(against(pa), against(pb)))
 check("complement-fixed dial is 1 only (t = 1/t, t > 0)", all(abs(1/t - t) > 1e-9 for t in [0.2, 0.5, h, 2, 3]))
 
 # 5. infinite sets: Bernoulli product measure, density, Borel-Cantelli

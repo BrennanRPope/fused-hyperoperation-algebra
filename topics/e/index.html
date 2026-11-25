@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>e from mult-add</title>
+<title>e from the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE a careful reading document in the same series as the topology and toric pages, honest about known vs new
-   IDEA a plate from a geometry atlas: ink drawings, ultramarine for mult-add, vermilion for e's layers
+   IDEA a plate from a geometry atlas: ink drawings, ultramarine for the circle operation, vermilion for e's layers
    PICTURE the 3-cube with weighted corners beside its layer totals against 1/k!
    COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
    TYPE Newsreader for titles, Inter for text
@@ -56,8 +56,8 @@ footer{border-top:1px solid var(--rule)}
 <header class="band top">
 <div class="wrap two">
 <div>
-<h1>e is what mult-add makes of a whole unit, cut finer and finer</h1>
-<p class="lede">Mult-add <span class="b">1/n</span> to itself <span class="b">n</span> times. That builds the n-cube with every switch weighing 1/n. As n grows, layer k of the cube settles on <span class="r">1/k!</span>, and the cube's total settles on <span class="r">e = 1 + 1 + 1/2 + 1/6 + … = 2.71828…</span></p>
+<h1>e is what the circle operation makes of a whole unit, cut finer and finer</h1>
+<p class="lede">Combine <span class="b">1/n</span> with itself <span class="b">n</span> times by the circle operation ∘₁ (called mult-add before 1.0). That builds the n-cube with every switch weighing 1/n. As n grows, layer k of the cube settles on <span class="r">1/k!</span>, and the cube's total settles on <span class="r">e = 1 + 1 + 1/2 + 1/6 + … = 2.71828…</span></p>
 <p>Every finite step of this is proved in core Lean with no <code>sorry</code>: the staircase only climbs, it never passes 3, each layer is trapped between 1/k! minus its collisions and 1/k!, and the kernel computes e to seven places. Only the final "and so they meet at one number" needs the real line, which core Lean doesn't have.</p>
 </div>
 <div class="plate"><img src="figures/e1_cube_weights.png" alt="The 3-cube with corners weighted 1, 1/3, 1/9, 1/27, and a bar chart comparing its layer totals 1, 1, 1/3, 1/27 with 1/k!: 1, 1, 1/2, 1/6."><p class="cap">n = 3. The cube's layers (solid) against e's layers (hatched). The first two already match; the higher ones are short because some picks collide.</p></div>
@@ -69,8 +69,8 @@ footer{border-top:1px solid var(--rule)}
 </nav>
 
 <section class="band" id="build"><div class="wrap">
-<h2>The build: one unit, in n slices, mult-added</h2>
-<p>Mult-add is <span class="b">a ⊕ b = a + b + ab = (1 + a)(1 + b) − 1</span>. Mult-adding x to itself n times gives</p>
+<h2>The build: one unit, in n slices, combined by the circle operation</h2>
+<p>The circle operation is <span class="b">a ⊕ b = a + b + ab = (1 + a)(1 + b) − 1</span>. Combining x with itself n times by the circle operation gives</p>
 <div class="eq">x ⊕ x ⊕ … ⊕ x  (n times)  =  (1 + x)ⁿ − 1</div>
 <p>Geometrically that's a box of side 1 + x in n dimensions, cut at 1 on every axis. It falls into the 2ⁿ corner pieces of the n-cube. A corner with k switches on is a block of size xᵏ, and there are C(n,k) of them. Those layers are your Pascal rows 1, 3, 3, 1 and so on.</p>
 <p>Now spend exactly one whole unit, cut into n equal slices: <span class="b">x = 1/n</span>. Put the unit corner back and you get the staircase</p>
@@ -107,7 +107,7 @@ footer{border-top:1px solid var(--rule)}
 <div>
 <h3>What holds the staircase in</h3>
 <ul>
-<li><strong>It only climbs.</strong> (1 + 1/n)ⁿ &lt; (1 + 1/(n+1))ⁿ⁺¹. Cutting the same unit into more slices always buys more corners. Proved from Bernoulli's inequality, itself proved by mult-adding one more axis.</li>
+<li><strong>It only climbs.</strong> (1 + 1/n)ⁿ &lt; (1 + 1/(n+1))ⁿ⁺¹. Cutting the same unit into more slices always buys more corners. Proved from Bernoulli's inequality, itself proved by adding one more axis with the circle operation.</li>
 <li><strong>It never passes the sums.</strong> (1 + 1/n)ⁿ ≤ s n, since each layer is at most 1/k!.</li>
 <li><strong>The sums never reach 3.</strong> 1/k! ≤ 1/2ᵏ⁻¹, a halving staircase that tops out at 3.</li>
 </ul>
@@ -125,16 +125,16 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="why"><div class="wrap">
 <h2>Why this number is the natural base</h2>
-<div class="plate"><img src="figures/e5_natural_base.png" alt="Three panels: 2^x, e^x and 3^x with tangents at zero, only e^x having slope 1; the curve ln(1+a) with the slope-1 line and n times L(1/n) approaching 1; and mult-add steps 1/n along the real line out to e beside steps i pi over n curving round a half circle to minus 1."><p class="cap">Left: the slope-1 point. Middle: the map that turns mult-add into adding. Right: the same build in two directions.</p></div>
+<div class="plate"><img src="figures/e5_natural_base.png" alt="Three panels: 2^x, e^x and 3^x with tangents at zero, only e^x having slope 1; the curve ln(1+a) with the slope-1 line and n times L(1/n) approaching 1; and circle-operation steps 1/n along the real line out to e beside steps i pi over n curving round a half circle to minus 1."><p class="cap">Left: the slope-1 point. Middle: the map that turns the circle operation into adding. Right: the same build in two directions.</p></div>
 <div class="two">
 <div>
-<h3>Mult-add's own logarithm</h3>
-<p>The map <span class="b">L(a) = ln(1 + a)</span> turns mult-add into plain adding: L(a ⊕ b) = L(a) + L(b). Its inverse is E(t) = eᵗ − 1. So n mult-adds of x are E(n·L(x)).</p>
-<p>With x = 1/n, the weight is n·L(1/n). Near the unit corner L has <strong>slope 1</strong>, so tiny slices keep their full value and n·L(1/n) → 1. The build lands on E(1) = e − 1. Any other base would give the curve a slope other than 1 at the corner, and the slices would come out scaled. e is the one base where a tiny mult-add step and a tiny plain step are the same size.</p>
+<h3>The circle operation's own logarithm</h3>
+<p>The map <span class="b">L(a) = ln(1 + a)</span> turns the circle operation into plain adding: L(a ⊕ b) = L(a) + L(b). Its inverse is E(t) = eᵗ − 1. So n copies of x under the circle operation are E(n·L(x)).</p>
+<p>With x = 1/n, the weight is n·L(1/n). Near the unit corner L has <strong>slope 1</strong>, so tiny slices keep their full value and n·L(1/n) → 1. The build lands on E(1) = e − 1. Any other base would give the curve a slope other than 1 at the corner, and the slices would come out scaled. e is the one base where a tiny circle-operation step and a tiny plain step are the same size.</p>
 </div>
 <div>
 <h3>The exponential law, for free</h3>
-<p>m steps then n steps is m + n steps: mult-adding x m times and x n times, then mult-adding the two results, is the same as mult-adding x m + n times (<code>mpow_add</code>, proved). In the limit that's eᵃ·eᵇ = eᵃ⁺ᵇ, read off the cube: an (m+n)-cube is an m-cube times an n-cube.</p>
+<p>m steps then n steps is m + n steps: combining x m times and x n times, then combining the two results, is the same as combining x m + n times (all by the circle operation) (<code>mpow_add</code>, proved). In the limit that's eᵃ·eᵇ = eᵃ⁺ᵇ, read off the cube: an (m+n)-cube is an m-cube times an n-cube.</p>
 <h3>Turning the slices sideways</h3>
 <p>Point the slices along i instead: (1 + iπ/n)ⁿ curls round a half circle to −1. That's the Euler identity proof from before, the same build in a perpendicular direction. Real slices grow the box; imaginary slices turn it. Together they're the helix.</p>
 </div>
@@ -147,7 +147,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="scroll"><table class="stack">
 <thead><tr><th>Theorem</th><th>What it says</th></tr></thead>
 <tbody>
-<tr><td class="fit">mpow_eq, mpow_add</td><td>n mult-adds of x make (1 + x)ⁿ − 1, and mult-add powers add like exponents.</td></tr>
+<tr><td class="fit">mpow_eq, mpow_add</td><td>n copies of x under the circle operation make (1 + x)ⁿ − 1, and circle powers add like exponents.</td></tr>
 <tr><td class="fit">binomial</td><td>(1 + x)ⁿ = Σ C(n,k)·xᵏ: the cube's corners fill the box.</td></tr>
 <tr><td class="fit">layer_mul_fact</td><td>C(n,k)·k! = n(n−1)…(n−k+1), the distinct ordered picks.</td></tr>
 <tr><td class="fit">collisions</td><td>Ordered picks that reuse an axis number at most C(k,2)·nᵏ⁻¹.</td></tr>
@@ -165,7 +165,7 @@ footer{border-top:1px solid var(--rule)}
 <h2>Known vs new</h2>
 <div class="box">
 <p><strong>Known:</strong> all of the mathematics. (1 + 1/n)ⁿ → e is Jacob Bernoulli's compound interest (1683); e = Σ 1/k! is Euler (1748); the layer-by-layer limit is the standard textbook proof (Tannery's theorem); the collision count is the usual birthday-problem bound.</p>
-<p><strong>New here:</strong> the reading on your mult-add cube, where e is the corner count of the infinitely sliced unit cube and its gap at finite n is exactly the diagonal collision set, plus a complete check in core Lean with no library. No new theorem.</p>
+<p><strong>New here:</strong> the reading on your circle-operation cube, where e is the corner count of the infinitely sliced unit cube and its gap at finite n is exactly the diagonal collision set, plus a complete check in core Lean with no library. No new theorem.</p>
 </div>
 <p class="mute">Files: EFromMultAdd.lean, figures.py and figures/ in math-theory/e.</p>
 </div></section>

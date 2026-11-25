@@ -1,4 +1,4 @@
-"""Writes the SVG pictures for the page (figures/*.svg). Colours: currentColor ink, sky = mult-add supplies it,
+"""Writes the SVG pictures for the page (figures/*.svg). Colours: currentColor ink, sky = the circle operation supplies it,
 pink = needs something from outside or fails."""
 import math, os
 OUT = "/mnt/project-files/math-theory/gr-bridges/figures"
@@ -31,7 +31,7 @@ b.append(T(x0 + 20, 180, "−c", 12, fill=PINK)); b.append(T(x0 + 200, 180, "+c"
 b.append(f'<path d="M{x0+110} 140 Q{x0+130} 100 {x0+150} 140" marker-end="url(#ar)"/>')
 b.append(f'<path d="M{x0+150} 140 Q{x0+163} 110 {x0+176} 140" marker-end="url(#ar)"/>')
 b.append(f'<circle cx="{x0+110}" cy="140" r="4" fill="currentColor"/>')
-b.append(T(x0 + 110, 215, "speeds combine by mult-add", 13))
+b.append(T(x0 + 110, 215, "speeds combine by the circle operation", 13))
 b.append(T(x0 + 110, 235, "the wall −1 is light speed", 13))
 b.append(T(x0 + 110, 285, "no curvature yet", 13, fill=SKY, weight=700))
 # panel 2: curved triangle
@@ -66,7 +66,7 @@ b.append(T(x0 + 110, 235, "pair: k_ij = the metric", 13))
 b.append(T(x0 + 110, 285, "any curvature", 13, fill=SKY, weight=700))
 for x0 in xs[:-1]:
     b.append(f'<line x1="{x0+224}" y1="160" x2="{x0+256}" y2="160" stroke-width="2" marker-end="url(#ar)"/>')
-fig1 = save("ladder", W, H, "Four steps: mult-add gives one fixed curvature; a place dial works in 2D but is blocked in 3D and 4D; a direction dial (a metric) gives any curvature", "".join(b))
+fig1 = save("ladder", W, H, "Four steps: the circle operation gives one fixed curvature; a place dial works in 2D but is blocked in 3D and 4D; a direction dial (a metric) gives any curvature", "".join(b))
 
 # ---------------------------------------------------------------- 2. bundle area
 b = []
@@ -89,7 +89,7 @@ for i, line in enumerate(["A thin beam of light:", "area = (1 + a)(1 + b)", "   
                           "", "Curvature bends a and b;", "matter's energy does the rest."]):
     col = SKY if "ab corner" in line or "focus" in line else "currentColor"
     b.append(T(tx, 70 + i * 22, line, 14, anchor="start", fill=col, weight=700 if i in (1, 2) else 400))
-fig2 = save("bundle", W, H, "The cross-section of a light beam grows as (1+a)(1+b) = 1 + a mult-add b; the ab corner is the focusing term", "".join(b))
+fig2 = save("bundle", W, H, "The cross-section of a light beam grows as (1+a)(1+b) = 1 + a ∘₁ b; the ab corner is the focusing term", "".join(b))
 
 # ---------------------------------------------------------------- 3. bridges
 b = []
@@ -120,12 +120,12 @@ for j, (name, chips) in enumerate(rows):
     b.append(T(970, y + 30, "Einstein + Λ", 14, weight=700))
 yl = 60 + 78 * len(rows) + 14
 b.append(f'<rect x="140" y="{yl}" width="22" height="16" rx="8" fill="{SKY}" fill-opacity=".25" stroke="{SKY}"/>')
-b.append(T(170, yl + 13, "mult-add, the dial or the river supplies it", 13, anchor="start"))
+b.append(T(170, yl + 13, "The circle operation, the dial or the river supplies it", 13, anchor="start"))
 b.append(f'<rect x="520" y="{yl}" width="22" height="16" rx="8" stroke="{PINK}" stroke-dasharray="4 3"/>')
 b.append(T(550, yl + 13, "comes from outside, or fails", 13, anchor="start", fill=PINK))
 b.append(f'<rect x="800" y="{yl}" width="22" height="16" rx="8" stroke-opacity=".5"/>')
 b.append(T(830, yl + 13, "follows from the others", 13, anchor="start"))
-fig3 = save("bridges", W, H, "What each of the four bridges needs, and which parts mult-add supplies", "".join(b))
+fig3 = save("bridges", W, H, "What each of the four bridges needs, and which parts the circle operation supplies", "".join(b))
 
 # ---------------------------------------------------------------- 4. river and torsion
 b = []
@@ -162,11 +162,11 @@ lines = [("ab  =  a·b  +  a ∧ b", 18, "currentColor", 700),
          ("a·b = k_ij aⁱ bʲ : the direction dial (a metric)", 14, "currentColor", 400),
          ("a ∧ b : the twist in the a-b plane", 14, SKY, 400),
          ("", 14, "currentColor", 400),
-         ("mult-add with a Clifford weight k:  a + b + a k b", 16, "currentColor", 700),
+         ("The circle operation with a Clifford weight k:  a + b + a k b", 16, "currentColor", 700),
          ("1 + k(a ✳ b) = (1 + k a)(1 + k b), associative for every k", 14, "currentColor", 400),
          ("k(x) alone: flat (pure gauge). Add a twist field:", 14, PINK, 400),
          ("gauge-theory gravity = general relativity", 14, "currentColor", 400)]
 for i, (s_, sz, col, wt) in enumerate(lines):
     b.append(T(tx, 60 + i * 28, s_, sz, anchor="start", fill=col, weight=wt))
-fig5 = save("clifford", W, H, "The Clifford product of two vectors keeps the dot (the direction dial) and the wedge (the twist); mult-add with a Clifford weight is a + b + a k b", "".join(b))
+fig5 = save("clifford", W, H, "The Clifford product of two vectors keeps the dot (the direction dial) and the wedge (the twist); the circle operation with a Clifford weight is a + b + a k b", "".join(b))
 print("ok")

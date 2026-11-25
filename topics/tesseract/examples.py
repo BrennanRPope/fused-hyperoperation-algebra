@@ -29,7 +29,7 @@ def example_or_of_events():
         sign = 1 if t.grade(mask) % 2 else -1
         terms.append(sign * prod_)
     before = sum(terms)
-    # After: one mult-add chain on -p, i.e. P = -((-p1) (+) (-p2) (+) ...)
+    # After: one circle-operation chain on -p, i.e. P = -((-p1) (+) (-p2) (+) ...)
     after = -t.multadd_all([-x for x in p])
     print(f"before: {len(terms)} signed terms, one per non-empty corner -> {before}")
     print(f"after : -( -p1 (+) -p2 (+) -p3 (+) -p4 ) -> {after}")

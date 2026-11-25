@@ -1,4 +1,4 @@
-"""Measure theory and probability through mult-add: every claim on index.html, checked.
+"""Measure theory and probability through the circle operation: every claim on index.html, checked.
 Run: python3 checks.py > checks_output.txt"""
 import itertools, math
 import numpy as np, sympy as sp
@@ -65,7 +65,7 @@ g1, g2 = sp.symbols('g1 g2', positive=True)
 l2 = (1 - g1 - g2)/(g1*g2)
 check("two atoms: λ = (1 − g1 − g2)/(g1 g2) solves it", sp.simplify((1+l2*g1)*(1+l2*g2) - (1+l2)) == 0)
 
-print("== 3. Möbius masses are the corners of the mult-add cube")
+print("== 3. Möbius masses are the corners of the circle-operation cube")
 ok = ok_bel = ok_dualbel = True
 for _ in range(200):
     n = rng.integers(2, 6); g = rng.uniform(0.05, 0.8, n); lam = sugeno_lambda(g)
@@ -121,7 +121,7 @@ for _ in range(200):
 check("(1+λμ(A∪B))(1+λμ(A∩B)) = (1+λμ(A))(1+λμ(B))", ok2)
 check("three sets: 1+λμ(∪) = ∏ over corners of (1+λμ(∩))^(±1)", okn)
 
-print("== 6. Duality: the dual weight is mult-add's inverse")
+print("== 6. Duality: the dual weight is the circle operation's inverse")
 ok = True
 for _ in range(200):
     n = rng.integers(2, 6); g = rng.uniform(0.05, 0.8, n); lam = sugeno_lambda(g)
@@ -133,7 +133,7 @@ for _ in range(200):
             if set(A) & set(B): continue
             ok &= abs(dual(sorted(set(A)|set(B))) - dial(ld, dual(A), dual(B))) < 1e-9
 check("200 spaces: μ*(A) = 1 − μ(Aᶜ) is a λ*-measure with λ* = −λ/(1+λ)", ok)
-check("symbolic: λ* = mult-add inverse of λ, (λ*)* = λ, 1+λ* = 1/(1+λ)",
+check("symbolic: λ* = circle inverse of λ, (λ*)* = λ, 1+λ* = 1/(1+λ)",
       sp.simplify(dial(1, l, -l/(1+l))) == 0 and sp.simplify(-(-l/(1+l))/(1-l/(1+l)) - l) == 0 and sp.simplify(1 - l/(1+l) - 1/(1+l)) == 0)
 
 print("== 7. What the weight means: firing atoms and compounding")
@@ -212,7 +212,7 @@ for k in [-0.9, -0.5, 0.5, 3.0]:
     ok &= abs(Lk(m) - sum(Lk(gi) for gi in gs)) < 1e-12
 check("dial line: the additive coordinate log(1+kx)/k adds over atoms", ok)
 
-print("== 9. Odds of an 'or' mult-add")
+print("== 9. Odds of an 'or' combine by the circle operation")
 ok = True
 odds = lambda p: p/(1-p); against = lambda p: (1-p)/p
 for _ in range(500):
@@ -222,7 +222,7 @@ for _ in range(500):
     ok &= abs(odds(dial(-1, dial(-1, p, q), r)) - dial(1, dial(1, odds(p), odds(q)), odds(r))) < 1e-7*max(1, odds(dial(-1,dial(-1,p,q),r)))
 check("independent A, B: odds(A∪B) = odds A ✳ odds B; odds-against(A∩B) = against A ✳ against B; 3 events", ok)
 bad = sum(abs(odds(p*q) - dial(1, odds(p), odds(q))) > 1e-6 for p, q in rng.uniform(0.05, 0.95, (200, 2)))
-check("odds of an 'and' do NOT mult-add (dropped claim): fails on 200 of 200 random pairs", bad == 200)
+check("odds of an 'and' do NOT the circle operation (dropped claim): fails on 200 of 200 random pairs", bad == 200)
 # Monte Carlo
 N = 400000; A = rng.random(N) < .3; B = rng.random(N) < .45
 pe = (A|B).mean()
@@ -251,7 +251,7 @@ check("martingale: six fair ±50% bets, E[r₁ ✳ … ✳ r₆] = 0 exactly", a
 check("yet the typical path loses: median wealth change = 0.75³ − 1 = −0.578", abs(med - (0.75**3 - 1)) < 1e-12)
 check("volatility drag: E log(1+r) = ½log(0.75) < 0 = log(1 + E r)", 0.5*math.log(1.5)+0.5*math.log(0.5) < 0)
 
-print("== 11. Yor's formula: stochastic exponentials multiply by mult-add, step by step")
+print("== 11. Yor's formula: stochastic exponentials multiply by the circle operation, step by step")
 ok = True
 for _ in range(200):
     n = rng.integers(1, 30); dx, dy = rng.normal(0, .1, n), rng.normal(0, .1, n)

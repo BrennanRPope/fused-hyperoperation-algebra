@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Information Theory Through Mult-add: The Full Pass</title>
+<title>Information Theory Through the circle operation: The Full Pass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap" rel="stylesheet">
 <style>
@@ -72,8 +72,8 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <section class="band alt">
 <div class="wrap cols">
 <div>
-<h2>Counting decisions is the root: grafting trees is mult-add</h2>
-<p>Hartley's count (1928) says that choosing among N outcomes takes log N units; the earlier page noted that N − 1 composes by mult-add. Trees show why. Asking every question of A and then every question of B is grafting B onto each leaf of A. Leaves multiply (that is Hartley), and leaves = 1 + (D − 1)·questions, so the question count rides on the lift. Lean proves the binary case on actual trees, by structural induction, and the D-ary case on the counts.</p>
+<h2>Counting decisions is the root: grafting trees is the circle operation</h2>
+<p>Hartley's count (1928) says that choosing among N outcomes takes log N units; the earlier page noted that N − 1 composes by the circle operation ∘₁ (called mult-add before 1.0). Trees show why. Asking every question of A and then every question of B is grafting B onto each leaf of A. Leaves multiply (that is Hartley), and leaves = 1 + (D − 1)·questions, so the question count rides on the lift. Lean proves the binary case on actual trees, by structural induction, and the D-ary case on the counts.</p>
 <p>Two side facts drop out. Every full tree has Kraft sum exactly 1 (each leaf at depth ℓ weighs D<sup>−ℓ</sup>), and grafting keeps it 1, the tree form of the Kraft product on the earlier page. And the complete tree of depth n asks [n]<sub>D</sub> questions: this is where the project's q-numbers meet information, with q equal to the number of answers.</p>
 </div>
 <div>
@@ -107,7 +107,7 @@ footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:ce
 <div class="eq">H<sub>α,β</sub> = (e<sup>(1−β)·Rényi<sub>α</sub></sup> − 1)/(1 − β), and H(A×B) = H(A) ✳<sub>k</sub> H(B), k = 1 − β</div>
 <p>So the order α says which average you take, and the weight k says which dial carries it. Tsallis is the diagonal β = α; Landsberg and Vedral's normalized entropy (1998) is β = 2 − α, the flipped dial. Checked on 300 random pairs.</p>
 <h2>The q-exponential is compound interest, not the rung flow</h2>
-<p>At k = 1/n the q-exponential is (1 + x/n)<sup>n</sup>: n mult-add steps of x/n, the climb up the cube toward e. It runs from the identity (k = 1) to e<sup>x</sup> − 1 (k = 0), so it looked like a fractional rung flow. It is not one: two half-steps match e<sup>x</sup> − 1 through x² and miss at x³ (1/8 against 1/6). It interpolates between rungs without being a flow.</p>
+<p>At k = 1/n the q-exponential is (1 + x/n)<sup>n</sup>: n circle-operation steps of x/n, the climb up the cube toward e. It runs from the identity (k = 1) to e<sup>x</sup> − 1 (k = 0), so it looked like a fractional rung flow. It is not one: two half-steps match e<sup>x</sup> − 1 through x² and miss at x³ (1/8 against 1/6). It interpolates between rungs without being a flow.</p>
 </div>
 <div class="panel"><div class="fig2" id="chan" style="min-height:300px"></div>
 <p class="small">A two-input channel as a parallelogram: its rows (1 − a, a) and (b, 1 − b) span an area 1 − (a + b). Chain two channels and the areas multiply, so the crossover sum composes by the union rule. Shown: s₁ = 0.3, s₂ = 0.4, cascade 0.58.</p>
@@ -171,7 +171,7 @@ function hero(){
   lay(G,0);S1.innerHTML=edges+dots;
   const corner=(D-1)*IA*IB,tot=IA+IB+corner;
   $('tot').textContent=tot;
-  $('parts').textContent=IA+' navy + '+IB+' cyan + '+corner+' amber = '+IA+' ✳'+(D-1==1?'':'ₖ')+' '+IB+(D-1==1?' (k = 1, plain mult-add)':' with k = '+(D-1));
+  $('parts').textContent=IA+' navy + '+IB+' cyan + '+corner+' amber = '+IA+' ✳'+(D-1==1?'':'ₖ')+' '+IB+(D-1==1?' (k = 1, the plain circle operation)':' with k = '+(D-1));
   $('kr').textContent=leaves+' leaves = '+(1+(D-1)*IA)+' × '+(1+(D-1)*IB)+'. Kraft sum of the grafted tree: exactly 1.';
 }
 function plane(){

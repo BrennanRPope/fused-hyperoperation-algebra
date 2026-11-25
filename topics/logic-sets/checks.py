@@ -11,7 +11,7 @@ def check(name, ok):
 
 a, b, c, k, g, x, y = sp.symbols('a b c k gamma x y')
 w = lambda k_, u, v: u + v + k_*u*v          # the dial
-ma = lambda u, v: u + v + u*v                # mult-add
+ma = lambda u, v: u + v + u*v                # circle operation
 
 # ---------- 1. Boolean logic on the dial ----------
 check("dial table on 0,1: 0,1,1 and 1 (+)k 1 = 2 + k",
@@ -123,7 +123,7 @@ check("wall: chi(I + B + IxB) = -1 for finite B of size 0..9 and for B = I, B = 
       all(chi(cadd(I, [nb], cprod(I,[nb]))) == -1 for nb in range(10)) and
       chi(cadd(I, I, cprod(I, I))) == -1 and chi(cadd(I, cprod(I,I), cprod(I,cprod(I,I)))) == -1)
 X2 = [0, 2]             # two open intervals, chi = -2
-check("two open intervals X: chi(X + X + XxX) = 0, so X is its own mult-add inverse at the level of chi",
+check("two open intervals X: chi(X + X + XxX) = 0, so X is its own circle inverse at the level of chi",
       chi(X2) == -2 and chi(cadd(X2, X2, cprod(X2, X2))) == 0 and ma(-2, -2) == 0)
 check("chi of products multiplies and so chi(A + B + AxB) = chi A (+) chi B (random cell lists)",
       all(chi(cadd(P, Q, cprod(P, Q))) == ma(chi(P), chi(Q))
@@ -148,7 +148,7 @@ check("Hamacher t-norm is the De Morgan mirror: T(a,b) = 1 - S(1-a,1-b)",
       sp.simplify(T - (1 - S.subs({a:1-a, b:1-b}, simultaneous=True))) == 0)
 check("the t-norm is the dial on odds-against (1-x)/x",
       sp.simplify((1-T)/T - w(g, (1-a)/a, (1-b)/b)) == 0)
-check("gamma = 0 adds odds (dial k = 0), gamma = 1 mult-adds odds (k = 1)",
+check("gamma = 0 adds odds (dial k = 0), gamma = 1 combines by the circle operation odds (k = 1)",
       sp.simplify(odds(S.subs(g,0)) - odds(a) - odds(b)) == 0 and sp.simplify(odds(S.subs(g,1)) - ma(odds(a), odds(b))) == 0)
 check("Hamacher's additive generator log(1 + gamma*odds(x)) is the log of the dial's lift on odds",
       all(abs(mp.log(1+gg*odds(mp.mpf(u)+0)) + mp.log(1+gg*odds(mp.mpf(v))) -
@@ -247,7 +247,7 @@ check("definability: b + c + 1 = d  iff  for all x, (x*b)(+)(x*c) = x*d",
       all((sadd(bb,cc) == dd) == all(ma(fexp(xx,bb),fexp(xx,cc)) == fexp(xx,dd) for xx in range(6)) for bb in N for cc in N for dd in range(20)))
 check("zero is the only right identity of the fused exponent (y < 20)",
       [yy for yy in range(20) if all(fexp(xx,yy) == xx for xx in range(6))] == [0])
-check("mult-add alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives",
+check("The circle operation alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives",
       all(ma(aa_,bb)+1 == (aa_+1)*(bb+1) for aa_ in range(30) for bb in range(30)))
 
 n_pass = sum(ok for _, ok in results)

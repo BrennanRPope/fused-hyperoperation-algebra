@@ -1,4 +1,4 @@
-== 1. Tsallis pseudo-additivity is weighted mult-add with k = 1 - q ==
+== 1. Tsallis pseudo-additivity is the circle operation with k = 1 - q ==
 PASS S_q(A x B) = S_A + S_B + (1-q) S_A S_B on 1400 random pairs  max error 3.6e-15
 PASS q = 1 (k = 0): Shannon entropy adds
 PASS lens law absorbs certainty (a o 1 = 1 for all a) exactly on k + q_L = -1  [{k: -q_L - 1}]

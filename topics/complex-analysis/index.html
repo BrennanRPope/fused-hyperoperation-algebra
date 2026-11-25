@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Complex Analysis Through Mult-add</title>
+<title>Complex Analysis Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE a technical write-up for one person who thinks in pictures
-   IDEA a phase wheel: every colour of the plane meets at the wall, the one point mult-add turns around
+   IDEA a phase wheel: every colour of the plane meets at the wall, the one point the circle operation turns around
    PICTURE live plane: polar web about −1, a small triangle and its image under ✳w, the two similar triangles
    COLOUR warm paper and ink; magenta for the wall, teal for z, amber for w; night indigo
    TYPE Newsreader 600 display + Inter
@@ -57,8 +57,8 @@ ul{padding-left:20px}
 <body>
 <section class="band">
 <div class="wrap">
-<h1>In the complex plane, mult-add is a spin and a stretch about the wall</h1>
-<p class="lede">Read a ✳ b = (1 + a)(1 + b) − 1 with complex numbers and it becomes a picture. Mult-adding w turns the whole plane about the point −1 by the angle of 1 + w and stretches it by the length of 1 + w. The wall is the one point that never moves, and almost everything complex analysis says about mult-add is about hitting that point or winding around it.</p>
+<h1>In the complex plane, the circle operation is a spin and a stretch about the wall</h1>
+<p class="lede">Read a ✳ b = (1 + a)(1 + b) − 1 with complex numbers and it becomes a picture. Combining with w by the circle operation ∘₁ (called mult-add before 1.0) turns the whole plane about the point −1 by the angle of 1 + w and stretches it by the length of 1 + w. The wall is the one point that never moves, and almost everything complex analysis says about the circle operation is about hitting that point or winding around it.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="hero"></div>
@@ -70,7 +70,7 @@ ul{padding-left:20px}
 <div class="small">The step z ↦ z ✳ w, as seen from the wall</div>
 <div class="big" id="hb"></div>
 <table class="rd"><tbody id="htb"></tbody></table>
-<p class="small">Seen from the wall, mult-add is plain complex multiplication: z ✳ w + 1 = (1 + w)(z + 1). It is the old way of drawing a product with similar triangles, with the origin moved to −1 and the unit moved to 0.</p>
+<p class="small">Seen from the wall, the circle operation is plain complex multiplication: z ✳ w + 1 = (1 + w)(z + 1). It is the old way of drawing a product with similar triangles, with the origin moved to −1 and the unit moved to 0.</p>
 </div>
 </div>
 </div>
@@ -82,7 +82,7 @@ ul{padding-left:20px}
 <h2>The log of the lift turns the spin into a slide, and the wall is the branch point</h2>
 <p>Take L(z) = log(1 + z). Then L(z ✳ w) = L(z) + L(w), up to a whole number of turns 2πi. The way back is E(w) = e^w − 1, one step of the rung flow: it sends straight lines to the polar web about the wall. Vertical lines become circles round −1, horizontal lines become rays out of −1, and a climb of 2π up the strip is one full trip round the wall, landing back where it started (E(2πi) = 0).</p>
 <p>So log(1 + z) has its branch point at the wall, not at 0. A loop round 0 that misses −1 changes nothing; any loop round −1 adds 2πi. The colour picture shows it: hue is the angle seen from the wall, and every hue meets at −1.</p>
-<p>On the circle |1 + z| = 1, which passes through 0 with its centre on the wall, mult-add just adds angles. That circle is the k = 1 rotation condition 2x + x² + y² = 0 from the <a href="https://claude.ai/artifact/6MmBPSMK179Q7ZRFTjz3L3">linear algebra page</a>.</p>
+<p>On the circle |1 + z| = 1, which passes through 0 with its centre on the wall, the circle operation just adds angles. That circle is the k = 1 rotation condition 2x + x² + y² = 0 from the <a href="https://claude.ai/artifact/6MmBPSMK179Q7ZRFTjz3L3">linear algebra page</a>.</p>
 </div>
 <div class="panel"><div class="fig2" id="strip" style="min-height:420px"></div>
 <p class="small">Left: the w strip, a grid of plain addition. Right: its image under e^w − 1 over the phase colouring of 1 + z. Each coloured line on the left lands on the matching line on the right.</p></div>
@@ -94,9 +94,9 @@ ul{padding-left:20px}
 <div class="panel"><div class="fig2" id="roots"></div>
 <div class="ctl"><label for="rn">n</label><input id="rn" type="range" min="2" max="12" step="1" value="5"><output id="rno"></output></div></div>
 <div>
-<h2>The mult-add roots of 0 sit on the circle through 0 around the wall</h2>
-<p>Mult-add z with itself n times and you get (1 + z)ⁿ − 1. That is 0 exactly when 1 + z is an n-th root of unity, so the n mult-add roots of 0 are ζ − 1: a regular n-gon on the circle |1 + z| = 1, with one corner at 0, the identity.</p>
-<p>Mult-add all n of them together and the answer is the product of the roots of unity, minus 1: 0 for odd n and −2 for even n, the point straight across the circle from 0. For n = 4 the square is 0, −1 + i, −2, −1 − i; for n = 3 the triangle is 0, ω − 1, ω² − 1. Both are proved in Lean on the Gaussian and Eisenstein integers.</p>
+<h2>The circle roots of 0 sit on the circle through 0 around the wall</h2>
+<p>Combine z with itself n times by the circle operation and you get (1 + z)ⁿ − 1. That is 0 exactly when 1 + z is an n-th root of unity, so the n circle roots of 0 are ζ − 1: a regular n-gon on the circle |1 + z| = 1, with one corner at 0, the identity.</p>
+<p>Combine all n of them by the circle operation and the answer is the product of the roots of unity, minus 1: 0 for odd n and −2 for even n, the point straight across the circle from 0. For n = 4 the square is 0, −1 + i, −2, −1 − i; for n = 3 the triangle is 0, ω − 1, ω² − 1. Both are proved in Lean on the Gaussian and Eisenstein integers.</p>
 </div>
 </div>
 </section>
@@ -106,11 +106,11 @@ ul{padding-left:20px}
 <h2>Every landscape law is a Möbius flow whose fixed points are the walls</h2>
 <p>Fix a and look at b ↦ F(a, b) = (a + b + p·ab)/(1 − q·ab) as a map of the complex plane. It is a Möbius map with matrix [[1 + pa, a], [−qa, 1]], these matrices compose by the law itself, and their determinant 1 + pa + qa² is the wall polynomial. The fixed points of every one of these maps, whatever a is, are the two walls. The type is set by one number: trace² − 4·det = a²(p² − 4q).</p>
 <div class="cols" style="margin-top:14px">
-<div class="panel"><div class="fig2" id="m1"></div><p class="small">Mult-add, walls −1 and ∞, complex a: orbits spiral out of the wall (loxodromic).</p></div>
+<div class="panel"><div class="fig2" id="m1"></div><p class="small">The circle operation, walls −1 and ∞, complex a: orbits spiral out of the wall (loxodromic).</p></div>
 <div class="panel"><div class="fig2" id="m2"></div><p class="small">Velocity addition, walls ±1: orbits run on arcs from one wall to the other (hyperbolic).</p></div>
 <div class="panel"><div class="fig2" id="m3"></div><p class="small">Tangent addition, walls ±i: orbits circle the walls forever (elliptic).</p></div>
 </div>
-<p>Over the complex numbers this collapses the landscape to two laws. With two separate walls w₁, w₂, the coordinate ζ = (1 − x/w₁)/(1 − x/w₂) turns the law into multiplication, so the law is mult-add in disguise (for tangent addition ζ is the Cayley map e^(2i·arctan x); for velocity addition it is the Doppler factor squared). When the two walls merge (p² = 4q) the law is plain addition in the coordinate x/(1 + cx). This is the textbook fact that a one-parameter Möbius group is conjugate to either z ↦ λz or z ↦ z + t.</p>
+<p>Over the complex numbers this collapses the landscape to two laws. With two separate walls w₁, w₂, the coordinate ζ = (1 − x/w₁)/(1 − x/w₂) turns the law into multiplication, so the law is the circle operation in disguise (for tangent addition ζ is the Cayley map e^(2i·arctan x); for velocity addition it is the Doppler factor squared). When the two walls merge (p² = 4q) the law is plain addition in the coordinate x/(1 + cx). This is the textbook fact that a one-parameter Möbius group is conjugate to either z ↦ λz or z ↦ z + t.</p>
 </div>
 </section>
 
@@ -134,7 +134,7 @@ ul{padding-left:20px}
 <div class="panel"><div class="fig2" id="prod"></div></div>
 <div>
 <h2>A product's zeros are exactly where one piece hits the wall</h2>
-<p>An infinite product is a mult-add fold: ∏(1 + aₙ) − 1 = a₁ ✳ a₂ ✳ a₃ ✳ …. Euler's sine product is the fold of the pieces −z²/n²:</p>
+<p>An infinite product is a circle-operation fold: ∏(1 + aₙ) − 1 = a₁ ✳ a₂ ✳ a₃ ✳ …. Euler's sine product is the fold of the pieces −z²/n²:</p>
 <div class="eq">sin(πz)/(πz) − 1 = (−z²) ✳ (−z²/4) ✳ (−z²/9) ✳ …</div>
 <p>Its zeros are the points where one piece lands on the wall, −z²/n² = −1, that is z = ±n. Weierstrass's product for 1/Γ is the same with pieces (1 + z/n)e^(−z/n) − 1, which hit the wall at z = −n, the poles of Γ.</p>
 <p>The fold converges when Σ|aₙ| does, because |a₁ ✳ … ✳ aₙ| ≤ |a₁| ✳ … ✳ |aₙ| (proved in Lean). A merely convergent Σaₙ is not enough: aₙ = (−1)ⁿ/√n sums fine, yet its product sinks to 0, because the corner terms aₙ²/2 pile up.</p>
@@ -151,7 +151,7 @@ ul{padding-left:20px}
 </div>
 <div>
 <h2>Glue the punctured plane and you get the elliptic page's torus</h2>
-<p>Remove the wall and mult-add on what is left is the group of nonzero complex numbers. The log of the lift unrolls it to a cylinder of period 2πi; gluing 1 + a to q(1 + a) folds the cylinder into a torus, the Tate curve of the <a href="https://claude.ai/artifact/JhsmEQaHNRhZ9t5Ph5RZ6y">elliptic page</a>. The gluing respects mult-add (proved), so the torus inherits the law.</p>
+<p>Remove the wall and the circle operation on what is left is the group of nonzero complex numbers. The log of the lift unrolls it to a cylinder of period 2πi; gluing 1 + a to q(1 + a) folds the cylinder into a torus, the Tate curve of the <a href="https://claude.ai/artifact/JhsmEQaHNRhZ9t5Ph5RZ6y">elliptic page</a>. The gluing respects the circle operation (proved), so the torus inherits the law.</p>
 </div>
 </div>
 </section>
@@ -174,7 +174,7 @@ ul{padding-left:20px}
 </div>
 <div>
 <h2>Lead worth following?</h2>
-<p><b>No new mathematical lead here.</b> Complex analysis meets mult-add as the group of nonzero complex numbers seen through the lift, and every result on this page is classical. What the branch gives the project is a sure geometric footing: the wall is a genuine puncture, the log of the lift is the cylinder over it, and the zeros, poles, roots and fixed points that showed up on other pages are all the same event, a piece landing on −1.</p>
+<p><b>No new mathematical lead here.</b> Complex analysis meets the circle operation as the group of nonzero complex numbers seen through the lift, and every result on this page is classical. What the branch gives the project is a sure geometric footing: the wall is a genuine puncture, the log of the lift is the cylinder over it, and the zeros, poles, roots and fixed points that showed up on other pages are all the same event, a piece landing on −1.</p>
 <p>One thread has real content: the ripple between the two Abel rulers of the rung step. Its size says how far fractional rungs are from being one analytic flow, and it makes the choice of petal unavoidable. Follow it only if you want a canonical half rung; the answer is that none exists, and the ripple measures by how much.</p>
 </div>
 </div>
@@ -200,7 +200,7 @@ const path=(f,ps,c,w,d)=>'<path d="'+ps.map((p,i)=>(i?'L':'M')+f.X(p[0])+' '+f.Y
 function web(f,R){let g='';for(let r=0.5;r<=R;r+=0.5)g+='<circle cx="'+f.X(-1)+'" cy="'+f.Y(0)+'" r="'+r*f.s+'" fill="none" stroke="var(--rule)"/>';for(let k=0;k<12;k++){const t=k*Math.PI/6;g+=ln(f,[-1,0],[-1+R*Math.cos(t),R*Math.sin(t)],'var(--rule)');}return g;}
 const WALL=[-1,0];
 // hero
-const sh=mk('hero','Mult-add as a turn and stretch about the wall −1');
+const sh=mk('hero','The circle operation as a turn and stretch about the wall −1');
 function hero(){
   const r=+$('hr').value, th=+$('ht').value*Math.PI/180;
   $('hro').textContent=fmt(r); $('hto').textContent=Math.round(th*180/Math.PI)+'°';
@@ -240,7 +240,7 @@ function strip(){
   ss.innerHTML=g;
 }
 // roots
-const sr=mk('roots','Mult-add roots of zero on the circle about the wall');
+const sr=mk('roots','Circle roots of zero on the circle about the wall');
 function roots(){
   const n=+$('rn').value; $('rno').textContent=n;
   const f=frame(sr,-2.6,0.7,-1.35,1.35);
@@ -251,7 +251,7 @@ function roots(){
   const tot=n%2?[0,0]:[-2,0];
   g+='<circle cx="'+f.X(tot[0])+'" cy="'+f.Y(tot[1])+'" r="12" fill="none" stroke="var(--w)" stroke-width="2.5"/>';
   g+=dot(f,WALL,'var(--wall)',6)+txt(f,WALL,'wall',0,-12,'middle')+txt(f,[0,0],'0',10,-10);
-  g+=txt(f,[-1,-1.25],'all '+n+' mult-added: '+(n%2?'0':'−2'),0,0,'middle');
+  g+=txt(f,[-1,-1.25],'all '+n+' combined by the circle operation: '+(n%2?'0':'−2'),0,0,'middle');
   sr.innerHTML=g;
 }
 // Moebius panels
@@ -266,7 +266,7 @@ function mob(id,lab,p,q,a,win,starts,steps,walls){
     s.innerHTML=g;};
 }
 const C=(r,t)=>[r*Math.cos(t),r*Math.sin(t)];
-const m1=mob('m1','Orbits of mult-add translation',1,0,[0.08,0.12],[-3.2,1.4,-2.2,2.2],[0,1,2,3,4,5].map(k=>add(WALL,C(0.18,k*Math.PI/3+0.3))),45,[[WALL,'−1']]);
+const m1=mob('m1','Orbits of circle-operation translation',1,0,[0.08,0.12],[-3.2,1.4,-2.2,2.2],[0,1,2,3,4,5].map(k=>add(WALL,C(0.18,k*Math.PI/3+0.3))),45,[[WALL,'−1']]);
 const m2=mob('m2','Orbits of velocity addition',0,-1,[0.2,0],[-1.6,1.6,-1.5,1.5],[[-0.92,0],[-0.85,0.35],[-0.85,-0.35],[-0.7,0.9],[-0.7,-0.9],[-0.95,0.12]],30,[[[-1,0],'−1'],[[1,0],'+1']]);
 const m3=mob('m3','Orbits of tangent addition',0,1,[0.3,0],[-2.3,2.3,-2.3,2.3],[[0,0.35],[0,0.65],[0,1.55],[0,-0.5],[0,-1.75],[-2.2,0]],40,[[[0,1],'i'],[[0,-1],'−i']]);
 // flower and ripple

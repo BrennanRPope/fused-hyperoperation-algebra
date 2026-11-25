@@ -29,9 +29,9 @@ def rate(Fab, n=6):
     r = sp.series(r, a, 0, n).removeO()
     return [sp.simplify(sp.expand(r).coeff(a, i)) for i in range(1, n)]
 rk = rate(W(k, a, b)); ru = [sp.diff(sp.expand(r.subs(a, a)), k) for r in rk]
-euler = [1, 0, 0, 0, 0]   # d/dlam of r_n lam^n at lam=1, at the mult-add point r=(1,0,0,..)
+euler = [1, 0, 0, 0, 0]   # d/dlam of r_n lam^n at lam=1, at the circle-operation point r=(1,0,0,..)
 tan_w = [sp.diff(r, k).subs(k, 1) for r in rk]
-check("1b the weight's tangent at mult-add equals the units (zoom) tangent: no new direction",
+check("1b the weight's tangent at the circle operation equals the units (zoom) tangent: no new direction",
       [sp.nsimplify(t) for t in tan_w] == euler, str(tan_w))
 check("1c q_count = k + 1 is a relabelling: a + b + (q-1)ab is the weight law with k = q - 1",
       sp.expand(W(q - 1, a, b) - (a + b + (q - 1)*a*b)) == 0)
@@ -64,7 +64,7 @@ check("2c units move (p,q) to (lam p, lam^2 q): D -> lam^2 D, so only the sign o
 l = sp.log((1 - v*x)/(1 - u*x))/(u - v)
 dl = sp.simplify(sp.diff(l, x) - 1/(1 + (-(u + v))*x + u*v*x**2))
 check("2d log of F_{p,q} is log((1-vx)/(1-ux))/(u-v): one period 2 pi i/(u-v) = 2 pi i/sqrt(D)", dl == 0)
-note("D > 0: period imaginary, real points form a line (two real walls: mult-add, velocity addition)")
+note("D > 0: period imaginary, real points form a line (two real walls: the circle operation, velocity addition)")
 note("D < 0: period real, real points form a circle (complex walls: slope addition, rotations)")
 note("D = 0: no period (double wall: addition in disguise)")
 # numeric: tangent addition (p=0, q=1, D=-4) returns after one real period pi in its log (arctan)
@@ -83,20 +83,20 @@ note("rung s rate R_s(a) = 1 + s a + s(s-1)/4 a^2 - s(s-1)/12 a^3 + s(s-1)(s+4)/
 check("3a rung s third-order point is (p,q) = (s, s(s-1)/4) and its discriminant is D = s",
       sp.expand(r1 - s) == 0 and sp.expand(r2 - s*(s - 1)/4) == 0 and sp.expand(r1**2 - 4*r2 - s) == 0)
 note("so through third order, rung height = the bend's discriminant in the ladder's own units:")
-note("rung s osculates the law with one period 2 pi i/sqrt(s): rung 1 -> 2 pi i (mult-add), rung 0 -> none,")
+note("rung s osculates the law with one period 2 pi i/sqrt(s): rung 1 -> 2 pi i (the circle operation), rung 0 -> none,")
 note("rung 4 -> pi i, rung -1 -> 2 pi (real: a circle, rotation-like). Negative rungs bend like rotations.")
 check("3b fourth order: the rung leaves the landscape plane by r3 = -s(s-1)/12 (zero only at rungs 0 and 1)",
       sp.factor(r3) == sp.factor(-s*(s - 1)/12) and set(sp.solve(r3, s)) == {0, 1})
 dr3 = sp.diff(r3, s)
 check("3c the crossings at rungs 0 and 1 are transverse (dr3/ds = +1/12 at 0, -1/12 at 1)",
       dr3.subs(s, 0) == sp.Rational(1, 12) and dr3.subs(s, 1) == -sp.Rational(1, 12))
-# rank test at the mult-add point in jet space (r1, r2, r3): units, weight, bend, rung
+# rank test at the circle-operation point in jet space (r1, r2, r3): units, weight, bend, rung
 tan_rung = [sp.diff(rr[i], s).subs(s, 1) for i in (1, 2, 3)]
 Mtx = sp.Matrix([[1, 0, 0],                 # units (zoom)
                  [1, 0, 0],                 # weight
                  [0, 1, 0],                 # bend q (r2)
                  tan_rung])                 # rung
-note("tangents at mult-add in (r1,r2,r3): units (1,0,0), weight (1,0,0), bend (0,1,0), rung " + str(tan_rung))
+note("tangents at the circle operation in (r1,r2,r3): units (1,0,0), weight (1,0,0), bend (0,1,0), rung " + str(tan_rung))
 check("3d rank of {units, weight, bend, rung} = 3 (weight repeats units; bend and rung are new)",
       Mtx.rank() == 3 and sp.Matrix([[1, 0, 0], [1, 0, 0]]).rank() == 1)
 # every local law is addition through its log: rung s law in coordinate E^-s is addition (by definition)
@@ -110,7 +110,7 @@ check("3e any third-order jet (p, q) is reached from plain addition by a ruler x
 
 # ---------------------------------------------------------------- 4. the nome (Tate gluing)
 qq = sp.symbols('qn')
-check("4a the gluing w -> (1+w)q - 1 commutes with mult-add for every q: the law near 0 never sees q",
+check("4a the gluing w -> (1+w)q - 1 commutes with the circle operation for every q: the law near 0 never sees q",
       sp.expand(((1 + a)*qq - 1) + b + ((1 + a)*qq - 1)*b - (((a + b + a*b) + 1)*qq - 1)) == 0)
 # Tate curve y^2 + xy = x^3 + a4 x + a6 ; its formal group in z = -x/y
 def tate_coeffs(qv, M=60):
@@ -159,7 +159,7 @@ note("invariant differential of the Weierstrass curve in z: " + str(oms))
 check("4e the curve's own ruler: a4 first enters the invariant differential at z^4, a6 at z^6 (weights 4, 6)",
       all(sp.diff(oms[i], A4) == 0 for i in range(4)) and sp.diff(oms[4], A4) != 0
       and all(sp.diff(o, A6) == 0 for o in oms))
-note("Tate curve has a1 = 1, a2 = a3 = 0: through z^3 its differential is the nodal one, i.e. mult-add's (q = 0)")
+note("Tate curve has a1 = 1, a2 = a3 = 0: through z^3 its differential is the nodal one, i.e. the circle operation's (q = 0)")
 note("so the nome hides until the fifth order of the law in the curve's ruler, and vanishes entirely in the ruler u")
 
 # ---------------------------------------------------------------- 5. global shape: torsion counts
@@ -215,11 +215,11 @@ a4n, a6n = tate_coeffs(mp.mpf('0.1'))
 a4r, a6r = sp.Float(str(a4n), 30), sp.Float(str(a6n), 30)
 for n in (3, 5):
     cusp = torsion_count(0, 0, 0, 0, 0, n)        # y^2 = x^3   (additive)
-    node = torsion_count(1, 0, 0, 0, 0, n)        # y^2 + xy = x^3 (q = 0: mult-add)
+    node = torsion_count(1, 0, 0, 0, 0, n)        # y^2 + xy = x^3 (q = 0: the circle operation)
     tor = torsion_count(1, 0, 0, a4r, a6r, n)     # Tate curve q = 0.1 (torus)
     counts[n] = (cusp, node, tor)
     note(f"n = {n}: points with n steps back to the start: cusp {cusp}, node {node}, Tate torus {tor}")
-check("5a torsion counts 1, n, n^2 for addition, mult-add and the torus (n = 3, 5): 0, 1 and 2 periods",
+check("5a torsion counts 1, n, n^2 for addition, the circle operation and the torus (n = 3, 5): 0, 1 and 2 periods",
       all(counts[n] == (1, n, n*n) for n in (3, 5)), str(counts))
 note("the number of periods of the log (0, 1, 2) is the whole global shape of a one-input law;")
 note("rank-1 lattices are all one shape after units (the weight); rank-2 lattices keep one ratio tau, nome e^{2 pi i tau}")
@@ -252,7 +252,7 @@ vel = lambda U, V: (U + V)/(1 + U*V)
 check("7a rapidity is a position on one law, not a family parameter: tanh(phi1+phi2) = tanh phi1 (+) tanh phi2",
       sp.simplify(sp.tanh(phi1 + phi2).rewrite(sp.exp) - vel(sp.tanh(phi1), sp.tanh(phi2)).rewrite(sp.exp)) == 0)
 D1 = lambda V: (1 + V)/(1 - V)
-check("7b Doppler-squared minus 1 is the mult-add ruler of the same law, e^{2 phi} - 1 = E(2 phi): one rung step between two rulers",
+check("7b Doppler-squared minus 1 is the circle-operation ruler of the same law, e^{2 phi} - 1 = E(2 phi): one rung step between two rulers",
       sp.simplify((D1(sp.tanh(phi1)) - 1).rewrite(sp.exp) - (sp.exp(2*phi1) - 1)) == 0)
 note("boost twist: omega = q x (area of the velocity triangle), q = the bend; by Helmholtz-Lie, an isotropic")
 note("law in the plane has constant curvature, one number: the twist adds no new direction")

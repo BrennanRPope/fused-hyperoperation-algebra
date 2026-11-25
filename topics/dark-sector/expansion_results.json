@@ -239,7 +239,7 @@
    ],
    "bao_hrd": 31.813691836213064
   },
-  "Mult-add cube, free weight per layer": {
+  "Circle-operation cube, free weight per layer": {
    "sn": {
     "chi2": 1402.3860771730542,
     "params": [

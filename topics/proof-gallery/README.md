@@ -1,6 +1,6 @@
 # Proof shape gallery
 
-Every theorem in ../lean-library (1,485 on Nov 25) drawn as a mult-add shape and
+Every theorem in ../lean-library (1,485 on Nov 25) drawn as a circle-operation shape and
 grouped by shape alone. Page: https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ (private).
 
 Run in order (Python 3, no packages):

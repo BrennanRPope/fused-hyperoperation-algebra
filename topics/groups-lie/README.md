@@ -1,4 +1,4 @@
-# Group theory and Lie groups through mult-add (Nov 25, 2026)
+# Group theory and Lie groups through the circle operation (Nov 25, 2026)
 
 Files
 - index.html: the page (self-contained; slide-rule ruler figure, landscape map, dial-as-dilation, finite clock).
@@ -20,7 +20,7 @@ Findings
   style contraction to translations. In 1-D the Lie algebra is always the line, so k is units + wall position.
 - Finite clocks: (F_p minus wall, ✳) cyclic (Gauss); 1 ✳ … ✳ 1 = 2ⁿ - 1, so 1 generates iff 2 is a primitive root
   (Artin's conjecture). Circle (tan law) clock has p + 1 elements for p ≡ 3 mod 4.
-- Matrix mult-add: A ✳ B - B ✳ A = AB - BA exactly; group commutator = t²[A,B] + O(t³). Magnus 1937.
+- The matrix circle operation ∘₁ (called mult-add before 1.0): A ✳ B - B ✳ A = AB - BA exactly; group commutator = t²[A,B] + O(t³). Magnus 1937.
 
 Verdict: not a lead on its own. It names the landscape correctly (one-parameter Möbius groups, Lie's sl2) and
 predicts nothing new, since 1-D groups are fully classified. The live direction is the non-commuting corner

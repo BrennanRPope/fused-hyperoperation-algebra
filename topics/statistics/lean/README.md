@@ -6,5 +6,5 @@
   after `Topics.E` and to `FusedAlgebra.lean`. Compiled that way in a copy of the library on Nov 25.
 - `CheckStatistics.lean`: axiom check for this module alone (writes build/statistics_theorems.tsv).
 - `theorems.tsv`: the 98 theorems with their axioms.
-- Reused from Base (not re-proved): wAdd lift/comm/assoc, mpow/wpow lift, foldMA corner expansion,
-  multAddInv. From E: binomial, rsum. From Cube: layer.
+- Reused from Base (not re-proved): circK lift/comm/assoc, mpow/wpow lift, foldCirc corner expansion,
+  circInv. From E: binomial, rsum. From Cube: layer.

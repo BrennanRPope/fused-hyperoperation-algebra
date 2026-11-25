@@ -9,7 +9,7 @@ R = json.load(open("results.json"))
 # F1 three singular cubics
 fig, axs = plt.subplots(1, 3, figsize=(11, 3.8))
 X, Y = np.meshgrid(np.linspace(-1.6, 2.2, 600), np.linspace(-2.2, 2.2, 600))
-specs = [("Node: two walls (mult-add)", -1, 0, [0, 1]), ("Lone dot: turning walls", 0, -1, []), ("Cusp: the border (addition)", 0, 0, [0])]
+specs = [("Node: two walls (the circle operation)", -1, 0, [0, 1]), ("Lone dot: turning walls", 0, -1, []), ("Cusp: the border (addition)", 0, 0, [0])]
 for ax, (ttl, a1, a2, slopes) in zip(axs, specs):
     ax.contour(X, Y, Y**2 + a1*X*Y - X**3 - a2*X**2, [0], colors=INK, linewidths=2)
     if a2 == -1: ax.plot([0], [0], "o", color=INK, ms=6)
@@ -31,7 +31,7 @@ cols = [BLUE, GREEN, AMBER, INK]
 for q, c in zip([0.03, 0.01, 0.002, 0.0], cols):
     a4, a6 = tate_coeffs(q) if q else (0, 0)
     ax.contour(X, Y, Y**2 + X*Y - X**3 - a4*X - a6, [0], colors=c, linewidths=2 if q == 0 else 1.5)
-    ax.plot([], [], color=c, label=f"q = {q}" + ("  (the node: mult-add)" if q == 0 else ""))
+    ax.plot([], [], color=c, label=f"q = {q}" + ("  (the node: the circle operation)" if q == 0 else ""))
 ax.legend(loc="upper left", fontsize=9, frameon=False); ax.set_aspect("equal")
 ax.set_title("Smoothing the node: the real Tate curve y² + xy = x³ + a₄(q)x + a₆(q)", fontsize=10)
 plt.tight_layout(); plt.savefig("figures/f2_tate_pinch.png"); plt.close()
@@ -44,7 +44,7 @@ ax.plot([0, 0], [-0.5, -1], color=AMBER, lw=4, solid_capstyle="round", label="pe
 good = [(-a/math.sqrt(p)) for nm in R["frob"] for p, a, b in R["frob"][nm] if not b]
 ax.scatter(good, np.ones(len(good)) + np.random.default_rng(0).uniform(-.03, .03, len(good)), s=3, color=GREEN, alpha=.35, label="good primes: (-a_p/√p, 1), scaled by units")
 ax.scatter([1, -1], [0, 0], s=80, color=RED, zorder=5, label="bad primes: k = +1 non-split, -1 split")
-ax.annotate("mult-add\n(non-split)", (1, 0), (1.25, -.55), fontsize=9, arrowprops=dict(arrowstyle="-", color=GRAY))
+ax.annotate("The circle operation\n(non-split)", (1, 0), (1.25, -.55), fontsize=9, arrowprops=dict(arrowstyle="-", color=GRAY))
 ax.annotate("Tate curve at q=0\n(split)", (-1, 0), (-2.4, -.55), fontsize=9, arrowprops=dict(arrowstyle="-", color=GRAY))
 ax.text(-2.5, 1.55, "turning country\n(no real wall)", fontsize=9, color=GRAY); ax.text(1.6, -1.2, "two-wall country", fontsize=9, color=GRAY)
 ax.axhline(0, color=GRAY, lw=.5); ax.axvline(0, color=GRAY, lw=.5)
@@ -67,7 +67,7 @@ fig, ax = plt.subplots(figsize=(7, 3.8))
 ax.plot(s, g6*1e3, color=BLUE, label="layer 6 gap ×1000 (nothing left to tune)")
 ax.plot(s, g8*1e3, color=RED, label="layer 8 gap ×1000 (after tuning a₆ at layer 7)")
 ax.axhline(0, color=GRAY, lw=.7)
-for v, lab in [(0, "addition\n(cusp)"), (1, "mult-add\n(node)")]:
+for v, lab in [(0, "addition\n(cusp)"), (1, "The circle operation\n(node)")]:
     ax.plot([v], [0], "o", color=INK); ax.text(v, .8, lab, ha="center", fontsize=9)
 ax.set_ylim(-3, 3); ax.set_xlabel("rung s"); ax.legend(fontsize=9, frameon=False, loc="lower left")
 ax.set_title("Where a cubic curve can copy rung s: both gaps vanish only at s = 0 and 1", fontsize=10)

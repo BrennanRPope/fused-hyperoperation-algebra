@@ -1,4 +1,4 @@
-"""Tesseract coordinates for Fused Mult-Add Algebra.
+"""Tesseract coordinates for Fused Hyperoperation Algebra.
 
 A point in n dimensions gets 2**n coordinates, one per corner of the
 n-cube (n = 4 is the tesseract). A corner is addressed by n switches,
@@ -12,9 +12,9 @@ The three ideas, in code:
   from_point(a)  -> corner coordinates  c_S = product of a_i for i in S
   zeta(c)        -> box coordinates     B_T = sum of c_S over S inside T
                                              = product of (1 + a_i), i in T
-  compose(v, w)  -> mult-add on corners (switches combine by OR)
+  compose(v, w)  -> circle operation on corners (switches combine by OR)
 
-Mult-add a (+) b = a + b + ab = (1+a)(1+b) - 1. In box coordinates it is
+∘₁ a (+) b = a + b + ab = (1+a)(1+b) - 1. In box coordinates it is
 plain multiplication, corner by corner; mobius() goes back.
 
 Everything works with ints, floats or fractions.Fraction.
@@ -30,12 +30,12 @@ AXES = "abcdefgh"
 # ---------------------------------------------------------------- numbers
 
 def multadd(x, y):
-    """Mult-add of two numbers: x + y + x*y."""
+    """The circle operation of two numbers: x + y + x*y."""
     return x + y + x * y
 
 
 def multadd_all(values):
-    """Mult-add of a whole list, left to right (0 is the identity)."""
+    """The circle operation of a whole list, left to right (0 is the identity)."""
     total = 0
     for v in values:
         total = multadd(total, v)
@@ -45,7 +45,7 @@ def multadd_all(values):
 def multadd_inverse(x):
     """The y with x (+) y = 0, that is -x / (1 + x). Undefined at x = -1."""
     if x == -1:
-        raise ZeroDivisionError("-1 has no mult-add inverse (its box side is 0)")
+        raise ZeroDivisionError("-1 has no circle inverse (its box side is 0)")
     return -x / (1 + x) if isinstance(x, float) else Fraction(-x) / (1 + x)
 
 
@@ -155,7 +155,7 @@ def grade_totals(c):
     return out
 
 
-# ------------------------------------------------- transforms and mult-add
+# ------------------------------------------------- transforms and the circle operation
 
 def zeta(c):
     """Box coordinates: B_T = sum of c_S over every S inside T."""
@@ -182,7 +182,7 @@ def mobius(b):
 
 
 def compose(v, w):
-    """Mult-add of two tesseract points: corners combine by OR of switches.
+    """The circle operation of two tesseract points: corners combine by OR of switches.
 
     (v * w)_T = sum of v_S * w_U over every pair with S | U == T.
     Same as mobius(zeta(v) * zeta(w)) corner by corner.
@@ -235,4 +235,4 @@ if __name__ == "__main__":
     a = [Fraction(1, 2), 2, 3, Fraction(-1, 3)]
     c = from_point(a)
     print(describe(c))
-    print("total =", total(c), "= 1 + mult-add =", 1 + multadd_all(a))
+    print("total =", total(c), "= 1 + circle operation =", 1 + multadd_all(a))

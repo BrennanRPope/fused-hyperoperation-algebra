@@ -1,6 +1,6 @@
 """Landscape map: exact symbolic checks for the plane of fused laws.
 
-The map's coordinates are the first two layers of the mult-add cube beyond the sides:
+The map's coordinates are the first two layers of the circle-operation cube beyond the sides:
   c1 = weight of the corner cell ab           (the corner weight, the dial k)
   c2 = weight of each next-layer cell a^2 b, a b^2   (the bend)
 Every point (p, q) of the plane is the Mobius law  F_{p,q}(a,b) = (a + b + p ab) / (1 - q ab).
@@ -62,7 +62,7 @@ check("d/db F(a,b) at b=0 is 1 + p a + q a^2 (the Riccati rate)", sp.expand(g - 
 Fw = F(a, b, p=-(u + v), q=u * v)
 M = lambda x: (1 - u * x) / (1 - v * x)
 check("lift: M(a (+) b) = M(a) M(b) with M(x) = (1-ux)/(1-vx)", sp.simplify(M(Fw) - M(a) * M(b)) == 0)
-check("mult-add is the case u = -1, v = 0 (wall at -1, other wall at infinity)",
+check("The circle operation is the case u = -1, v = 0 (wall at -1, other wall at infinity)",
       sp.simplify(F(a, b, p=1, q=0) - (a + b + a * b)) == 0)
 check("velocity addition is u = 1, v = -1 (walls at +1 and -1)",
       sp.simplify(F(a, b, p=0, q=-1) - (a + b) / (1 + a * b)) == 0)
@@ -85,7 +85,7 @@ check("complex walls: M(a (+) b) = M(a) M(b) and |M| = 1 on reals (a turn of a c
 # --- 4. Units: rescaling moves a point along a parabola through the origin ------------------
 check("units: F_{p,q}(lam a, lam b) = lam F_{lam p, lam^2 q}(a, b)",
       sp.simplify(F(lam * a, lam * b) - lam * F(a, b, p=lam * p, q=lam ** 2 * q)) == 0)
-check("dial: k (a (+)_k b) = (k a) (+) (k b)  [every k != 0 on the line is mult-add in other units]",
+check("dial: k (a (+)_k b) = (k a) (+) (k b)  [every k != 0 on the line is the circle operation in other units]",
       sp.simplify(t * F(a, b, p=t, q=0) - F(t * a, t * b, p=1, q=0)) == 0)
 # the unit-free shape: rung-equivalent height s_eq = p^2/(p^2 - 4q)
 seq = (u + v) ** 2 / (u - v) ** 2
@@ -115,7 +115,7 @@ y = sp.symbols('y')
 Fchi = (a + b + (1 - y) * a * b) / (1 + y * a * b)
 Jc = jet(Fchi, 3)
 check("chi_y genus law sits at (1-y, -y): the line c2 = c1 - 1", sp.simplify(Jc[(1, 1)] - (1 - y)) == 0 and sp.simplify(Jc[(2, 1)] + y) == 0)
-check("Todd genus (y = 0) is mult-add, signature (y = 1) is velocity addition",
+check("Todd genus (y = 0) is the circle operation, signature (y = 1) is velocity addition",
       sp.simplify(Fchi.subs(y, 0) - (a + b + a * b)) == 0 and sp.simplify(Fchi.subs(y, 1) - (a + b) / (1 + a * b)) == 0)
 check("chi_y line touches the parabola only at y = -1 (Euler characteristic, a cusp)",
       sp.factor((1 - y) ** 2 - 4 * (-y)) == (y + 1) ** 2)
@@ -180,7 +180,7 @@ check("rung s osculates two real walls for s > 0 (discriminant = s)", sp.expand(
 k1, k2 = sp.symbols('k1 k2', positive=True)
 check("Hirota weight A = ((k1-k2)/(k1+k2))^2 = M(k2/k1)^2 for velocity addition's lens M(x) = (1-x)/(1+x)",
       sp.simplify(((k1 - k2) / (k1 + k2)) ** 2 - ((1 - k2 / k1) / (1 + k2 / k1)) ** 2) == 0)
-check("KdV phase shift: A(f - 1) = (A e1) (+) (A e2), plain mult-add after moving each wave by log A",
+check("KdV phase shift: A(f - 1) = (A e1) (+) (A e2), the plain circle operation after moving each wave by log A",
       sp.expand(A1 * (z1 + z2 + A1 * z1 * z2) - ((A1 * z1) + (A1 * z2) + (A1 * z1) * (A1 * z2))) == 0)
 
 out.append("")

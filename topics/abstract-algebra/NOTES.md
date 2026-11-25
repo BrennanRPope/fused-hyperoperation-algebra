@@ -1,6 +1,6 @@
-# Abstract algebra through mult-add (Nov 25, 2026)
+# Abstract algebra through the circle operation (Nov 25, 2026)
 
-Page: "Mult-Add Algebra Atlas" (claude.ai artifact DTBbDjwUepJAUmU9AQEAhV).
+Page: "Circle-Operation Algebra Atlas" (claude.ai artifact DTBbDjwUepJAUmU9AQEAhV).
 
 ## For the library thread
 New file to fold in: `lean/AbstractAlgebra.lean` -> `lean-library/FusedAlgebra/Topics/AbstractAlgebra.lean`.

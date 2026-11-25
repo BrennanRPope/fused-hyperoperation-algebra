@@ -1,4 +1,4 @@
-"""Galaxy rotation curves (SPARC) against Newton, fused (mult-add) gravity, MOND and NFW dark-matter halos.
+"""Galaxy rotation curves (SPARC) against Newton, fused (the circle operation) gravity, MOND and NFW dark-matter halos.
 
 Run:  python3 -I sparc_fits.py  (writes sparc_results.json and sparc_points.npz next to this file)
 
@@ -44,16 +44,16 @@ def pieces(g, ud=UD, ub=UB):
 
 # ---------- models: g_N pieces -> g_model ----------
 def newton(gg, gd, gb, p):            return gg + gd + gb
-def madd_exp(gg, gd, gb, p):           # mult-add over infinitely many small mass pieces = exp map of the formal group
+def madd_exp(gg, gd, gb, p):           # circle operation over infinitely many small mass pieces = exp map of the formal group
     s = 10 ** p[0]; x = (gg + gd + gb) / s
     return s * np.expm1(np.clip(x, -50, 50))
-def madd_pieces(gg, gd, gb, p):        # mult-add of the three named pieces: gas (+) disk (+) bulge
+def madd_pieces(gg, gd, gb, p):        # circle operation of the three named pieces: gas (+) disk (+) bulge
     s = 10 ** p[0]
     return s * ((1 + gg / s) * (1 + gd / s) * (1 + gb / s) - 1)
 def madd_background(gg, gd, gb, p):    # local field (+) a constant background k on scale s: g = (1+k) gN + k s
     k, s = p[0], 10 ** p[1]
     return (1 + k) * (gg + gd + gb) + k * s
-def mond_simple(gg, gd, gb, p):        # mu(x) = x/(1+x) = minus the mult-add inverse of x
+def mond_simple(gg, gd, gb, p):        # mu(x) = x/(1+x) = minus the circle inverse of x
     a0 = 10 ** p[0]; gN = np.maximum(gg + gd + gb, 1e-16)
     return gN / 2 + np.sqrt(gN ** 2 / 4 + gN * a0)
 def rar(gg, gd, gb, p):                # McGaugh+2016:  g = gN / (1 - exp(-sqrt(gN/a0)))
@@ -62,10 +62,10 @@ def rar(gg, gd, gb, p):                # McGaugh+2016:  g = gN / (1 - exp(-sqrt(
 
 GLOBAL = {
     "Newton (visible matter only)": (newton, []),
-    "Mult-add of many small pieces (exp map)": (madd_exp, [(-14, -2)]),
-    "Mult-add of gas, disk, bulge": (madd_pieces, [(-14, -2)]),
-    "Mult-add with a constant background": (madd_background, [(-1, 5), (-14, -8)]),
-    "MOND, simple mu (= minus mult-add inverse)": (mond_simple, [(-12, -8)]),
+    "The circle operation of many small pieces (exp map)": (madd_exp, [(-14, -2)]),
+    "The circle operation of gas, disk, bulge": (madd_pieces, [(-14, -2)]),
+    "The circle operation with a constant background": (madd_background, [(-1, 5), (-14, -8)]),
+    "MOND, simple mu (= minus circle inverse)": (mond_simple, [(-12, -8)]),
     "MOND / RAR (McGaugh 2016)": (rar, [(-12, -8)]),
 }
 
@@ -148,9 +148,9 @@ if __name__ == "__main__":
     print(f"{'NFW halo':48s} chi2={c2:12.1f}  k={k}")
 
     # free mass-to-light per galaxy
-    for label in ["Newton (visible matter only)", "Mult-add of many small pieces (exp map)", "MOND / RAR (McGaugh 2016)"]:
+    for label in ["Newton (visible matter only)", "The circle operation of many small pieces (exp map)", "MOND / RAR (McGaugh 2016)"]:
         f, _ = GLOBAL[label]; p = out["fixed_ml"][label]["params"]
-        if label.startswith("Mult-add"):          # refit the scale together with the per-galaxy M/L (coarse grid)
+        if label.startswith("The circle operation"):          # refit the scale together with the per-galaxy M/L (coarse grid)
             trials = [[x] for x in np.linspace(-11, -2, 10)]
             scored = [(sum(fit_free_ml(g, f, q)[0] for g in gals), q) for q in trials]
             p = min(scored)[1]
@@ -165,7 +165,7 @@ if __name__ == "__main__":
     out["free_ml"]["NFW dark-matter halo"] = dict(chi2=c2, k=k, bic=c2 + k * math.log(npts), chi2_per_dof=c2 / (npts - k))
     print(f"free M/L  NFW  chi2={c2:.1f} k={k}")
 
-    # mult-add exp map: how strong must the scale be? chi2 profile vs log10 a*
+    # Circle-operation exp map: how strong must the scale be? chi2 profile vs log10 a*
     grid = np.linspace(-12, -2, 41)
     out["madd_exp_profile"] = dict(log_s=grid.tolist(), chi2=[total_chi2(madd_exp, [x]) for x in grid])
 

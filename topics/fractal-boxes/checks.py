@@ -53,11 +53,11 @@ for d in (0.5, 1/3, 0.25, 1.5):
     pass
 check("2a (1+1)^(1/2) = 1 + (sqrt2 - 1): half dimension at side 2 = one stick with dial sqrt2-1",
       abs((1+1)**0.5 - (1 + (math.sqrt(2)-1))) < 1e-15)
-# mult-add power: a^(*d) = (1+a)^d - 1 ; halves combine back
+# Circle power: a^(*d) = (1+a)^d - 1 ; halves combine back
 def mpow(a, d): return (1+a)**d - 1
 def madd(a, b): return a + b + a*b
 ok = all(abs(madd(mpow(a, .5), mpow(a, .5)) - a) < 1e-12 for a in (0.3, 1, 2.5, 7))
-check("2b mult-add half power a^(*1/2) = sqrt(1+a)-1 joins back to a", ok)
+check("2b circle-operation half power a^(*1/2) = sqrt(1+a)-1 joins back to a", ok)
 # continuity pins it down: f(d+e)=f(d)f(e), f(1)=2, continuous -> 2^d; check dyadic values
 check("2c dyadic halves forced: f(1/2)=sqrt2, f(1/4)=2^(1/4) (positive roots)",
       abs(math.sqrt(2)**2 - 2) < 1e-15 and abs((2**0.25)**4 - 2) < 1e-14)

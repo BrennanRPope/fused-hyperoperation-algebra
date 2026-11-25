@@ -1,4 +1,4 @@
-# Knot theory through mult-add: every claim on the page, checked (sympy, exact where possible).
+# Knot theory through the circle operation: every claim on the page, checked (sympy, exact where possible).
 # Uses tangles.py: tangle diagrams (state sum over the cube) and the (f, g) tangle algebra.
 import sympy as sp, cmath, math, random, itertools
 from tangles import *
@@ -37,7 +37,7 @@ S, T, U = (f1, g1), (f2, g2), (f3, g3)
 tsg = lambda S, T: (S[0]*T[0], S[0]*T[1] + S[1]*T[0] + dd*S[1]*T[1])
 check("sum formula: (f1,g1)+(f2,g2) = (f1f2, f1g2 + g1f2 + d·g1g2)",
       all(z(sp.expand(ts((f1, g1), (f2, g2))[i]) - [f1*f2, f1*g2 + g1*f2 + d*g1*g2][i]) for i in range(2)))
-check("in x = g/f: x(S+T) = x(S) ✳_d x(T)  (weighted mult-add, weight d)",
+check("in x = g/f: x(S+T) = x(S) ✳_d x(T)  (the circle operation, weight d)",
       z(tsg(S, T)[1]/tsg(S, T)[0] - wadd(dd, g1/f1, g2/f2)))
 check("sum is commutative and associative, [0] = (1, 0) is the identity",
       all(z(tsg(S, T)[i] - tsg(T, S)[i]) and z(tsg(tsg(S, T), U)[i] - tsg(S, tsg(T, U))[i]) for i in range(2))
@@ -56,7 +56,7 @@ check("stacking is the same dial in z = f/g = 1/x, and ⟨N⟩ is its lift: ⟨N
 s1, s2 = build(cf_word([2, 2]))[0], build(cf_word([1, 1, 1]))[0]
 V1, V2, V12 = jones(closeD(s1)), jones(closeD(s2)), jones(closeD(hsum(s1, s2)))
 check("diagram check: V(D(S+T)) = V(D(S))·V(D(T)) (figure-eight # trefoil)", z(V12 - V1*V2))
-check("'mult-add value' P − 1 turns # into ✳ exactly (a relabelling of P(K#L) = P(K)P(L))",
+check("'circle-operation value' P − 1 turns # into ✳ exactly (a relabelling of P(K#L) = P(K)P(L))",
       z((V12 - 1) - wadd(1, V1 - 1, V2 - 1)))
 t_ = sp.symbols('t_', positive=True)
 check("disjoint union multiplies the Jones polynomial by d = −(t^½ + t^−½) (unlink of 2)",

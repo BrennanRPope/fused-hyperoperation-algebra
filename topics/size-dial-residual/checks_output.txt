@@ -26,7 +26,7 @@ PASS Dirichlet weighting -> exactly half as s->1
    log-density weights 1/n, X=10000000: share 0.50749
 PASS log density -> half (slowly, like 1/log X)
 PASS sharp count gives log1.5/log2 = 58.50%
-== C. Is it the twist k? Each element's weight IS its twist (wAdd_scale), but no single k fits
+== C. Is it the twist k? Each element's weight IS its twist (circK_scale), but no single k fits
    beta=0.5: closest single twist k=0.651, worst gap over t in [0,1] = 0.057 points
    beta=1: closest single twist k=0.441, worst gap over t in [0,1] = 0.064 points
    beta=2: closest single twist k=0.215, worst gap over t in [0,1] = 0.042 points
@@ -45,7 +45,7 @@ PASS they agree only when w is 0 or 1 (sharp count)
    complement of {1} in {1..100}: weight q^(sum) = 1.182e-22
    complement of {1} in {1..1000}: weight q^(sum) = 0.000e+00
 PASS complement sends every finite subset to weight 0 on an infinite sized set
-== E. The residual: what subsets (mult-add) miss is repetition = the same set at doubled size
+== E. The residual: what subsets (the circle operation) miss is repetition = the same set at doubled size
 PASS beta=1: subsets/multisets log-total = 1 - 2^-1  50.00% explained, 50.00% residual
 PASS beta=2: subsets/multisets log-total = 1 - 2^-2  75.00% explained, 25.00% residual
 PASS beta=3: subsets/multisets log-total = 1 - 2^-3  87.50% explained, 12.50% residual

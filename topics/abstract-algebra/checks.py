@@ -1,4 +1,4 @@
-"""Abstract algebra through mult-add: numeric and exact checks.
+"""Abstract algebra through the circle operation: numeric and exact checks.
 Run: python3 checks.py  (writes checks_output.txt and results.json)"""
 import json, math, itertools
 from fractions import Fraction as Fr
@@ -21,7 +21,7 @@ ok('1 inverse -a/(1+a) off the wall', all(ma(a,-a/(1+a))==0 for a in xs if a!=-1
 # two components: (-inf,-1) is the coset of -2, (-2)⊕(-2)=0
 ok('1 -2 is the only element of order 2 in R\\{-1}: (-2)⊕(-2)=0', ma(-2,-2)==0)
 
-# 2. weighted family: scaling x->kx
+# 2. circle operation with dial k: scaling x->kx
 ok('2 scaling k(a⊕k b)=(ka)⊕(kb), k in -3..3', all(k*wa(k,a,b)==ma(k*a,k*b) for k in range(-3,4) for a in xs[:15] for b in xs[:15]))
 
 # 3. integers: units of (Z, ⊕_k)
@@ -133,7 +133,7 @@ ftet=lambda a,b: tet(a+1,b+1)-1
 ok('5 fused tetration does not distribute over fused exponent: ftet(fexp(1,2),1) vs fexp(ftet(1,1),ftet(2,1)) (note a=b=1 is a coincidence: both 255)',
    ftet(fexp(1,2),1)!=fexp(ftet(1,1),ftet(2,1)) and ftet(fexp(1,1),1)==fexp(ftet(1,1),ftet(1,1))==255)
 
-# 6. Pascal: mult-add powers and change of basis
+# 6. Pascal: circle powers and change of basis
 from math import comb
 N=7
 ok('6 a^(⊕n)=sum_{k>=1} C(n,k) a^k (cube layers), n<=7', all(sum(comb(n,k)*Fr(a)**k for k in range(1,n+1))==(1+Fr(a))**n-1 for n in range(N) for a in A))

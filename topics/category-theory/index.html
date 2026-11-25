@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Category Theory Through Mult-add</title>
+<title>Category Theory Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -51,7 +51,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <body>
 <section class="band">
 <div class="wrap">
-<h1>Give each side a "nothing" and mult-add becomes a plain product</h1>
+<h1>Give each side a "nothing" and the circle operation becomes a plain product</h1>
 <p class="lede">A ✳ B means: something from A only, something from B only, or one of each. That is a + b + ab choices. Add a "nothing" value to each side (Option, Maybe) and pairs of options are exactly those choices plus one empty pair. This is the lift 1 + x, made out of sets, and in the category of partial functions A ✳ B is the honest categorical product.</p>
 <div class="first">
 <div class="panel">
@@ -106,9 +106,9 @@ def optionThese :
 <section class="band alt">
 <div class="wrap side">
 <div>
-<h2>Associativity is the mult-add cube</h2>
+<h2>Associativity is the circle-operation cube</h2>
 <p>(A ✳ B) ✳ C and A ✳ (B ✳ C) both list the seven non-empty corners of a cube: A, B, C, AB, AC, BC, ABC. Lean writes the re-bracketing out case by case and checks both round trips; the checks confirm the pentagon and hexagon rules. So (finite sets, ✳, ∅) is a symmetric monoidal category, and Option is a strong monoidal functor into (sets, ×, one point): it sends ✳ to ×, and ∅ to the one-point set.</p>
-<p>Counting sizes, the decategorification, sends ✳ to mult-add: |A ✳ B| = |A| ✳ |B|, and |Option A| = 1 + |A| is the lift. Nothing here is new; it is the reason mult-add's algebra is so well behaved. The cube's empty corner is the base point that the lift adds and the subtraction takes away.</p>
+<p>Counting sizes, the decategorification, sends ✳ to the circle operation ∘₁ (called mult-add before 1.0): |A ✳ B| = |A| ✳ |B|, and |Option A| = 1 + |A| is the lift. Nothing here is new; it is the reason the circle operation's algebra is so well behaved. The cube's empty corner is the base point that the lift adds and the subtraction takes away.</p>
 </div>
 <div class="panel"><div class="fig2" id="cube"></div>
 <p class="small">The cube for A, B, C. The hollow corner is "nothing from any of them", the base point. The other seven are A ✳ B ✳ C.</p></div>
@@ -124,7 +124,7 @@ def optionThese :
 <p>For pointed spaces, the product splits after one suspension (Σ, "stack the space between two poles"):</p>
 <div class="eq">Σ(X × Y) ≃ ΣX ∨ ΣY ∨ Σ(X ∧ Y)</div>
 <p>wedge plus smash, the same a + b + ab, now as shapes. This is a standard fact of homotopy theory. The checks compute the homology of a triangulated torus and its suspension and find exactly the pieces of S² ∨ S² ∨ S³.</p>
-<p>Count each space by its reduced Euler characteristic χ̃ = χ − 1. Products multiply χ, so <b>χ̃(X × Y) = χ̃X ✳ χ̃Y</b>: χ̃ is the mult-add coordinate and χ is its lift. Lean proves this for cell counts at every t, not only t = −1. Spheres sit at ±1, and the circle, at χ̃ = −1, is mult-add's wall: S¹ × Y always has χ̃ = −1. The logic page found the same wall in sets, as the open interval.</p>
+<p>Count each space by its reduced Euler characteristic χ̃ = χ − 1. Products multiply χ, so <b>χ̃(X × Y) = χ̃X ✳ χ̃Y</b>: χ̃ is the circle-operation coordinate and χ is its lift. Lean proves this for cell counts at every t, not only t = −1. Spheres sit at ±1, and the circle, at χ̃ = −1, is the circle operation's wall: S¹ × Y always has χ̃ = −1. The logic page found the same wall in sets, as the open interval.</p>
 <p>The topology page already reads the torus's holes as the Pascal cube; this is the same cube with the base point taken out.</p>
 </div>
 </div>
@@ -141,13 +141,13 @@ def optionThese :
 <tr><td>Σ(X×Y) ≃ ΣX ∨ ΣY ∨ Σ(X∧Y)</td><td>Standard homotopy theory</td></tr>
 <tr><td>χ multiplies on products; cardinality as decategorification</td><td>Euler, Poincaré; Baez–Dolan's decategorification</td></tr>
 <tr><td>Symmetric monoidal (FinSet, ✳, ∅); Option strong monoidal</td><td>Follows from the Par product; textbook</td></tr>
-<tr><td>χ̃ as the mult-add coordinate, the circle as the wall, spheres at ±1</td><td>Ours, as a reading; the arithmetic is known</td></tr>
+<tr><td>χ̃ as the circle-operation coordinate, the circle as the wall, spheres at ±1</td><td>Ours, as a reading; the arithmetic is known</td></tr>
 <tr><td>Tagged Option 1 + kA lifts the dial for k ≥ 0</td><td>Ours, a small exercise; no claim of novelty</td></tr>
 </table>
 </div>
 <div>
 <h2>Lead worth following?</h2>
-<p><b>Not as mathematics; yes as a design tool.</b> Everything here is textbook. Its value for the project is a firm underpinning: mult-add is a genuine categorical product, the lift is a functor, and the wall is the circle. So the framework's algebra rests on structure nobody disputes.</p>
+<p><b>Not as mathematics; yes as a design tool.</b> Everything here is textbook. Its value for the project is a firm underpinning: the circle operation is a genuine categorical product, the lift is a functor, and the wall is the circle. So the framework's algebra rests on structure nobody disputes.</p>
 <p>The useful lead is in software. These is the type of every merge, sync, diff and outer join, and the monoidal laws are exactly what make merges compose: merging three sources in either order gives the same seven cases. Treating "merge" as a function out of A ✳ B, and checking it against the Lean laws here, is a concrete way to keep merge code honest and loosely coupled.</p>
 <p>The one open-ended question: negative dial values (OR at −1, XOR at −2) have no set model, only Euler-characteristic ones. Whether some category of signed or virtual objects has ✳₋₁ as its product is a fair question, but it is probably the known story of Euler characteristic and Mayer–Vietoris in other clothes.</p>
 <p class="small">Builds on: <a href="https://claude.ai/artifact/4Nb6GyQBxi8gDNdHbszA26">topology</a>, <a href="https://claude.ai/artifact/DTBbDjwUepJAUmU9AQEAhV">algebra atlas</a>, <a href="https://claude.ai/artifact/YEchSB4Ft97HsNEcV4q3aJ">infinities</a>, <a href="https://claude.ai/artifact/PrF6u5bRhkq6tPBcD5K4i2">axioms</a>.</p>
@@ -160,7 +160,7 @@ def optionThese :
 {
 const $=id=>document.getElementById(id);
 const mk=(id,l)=>{$(id).innerHTML='<svg role="img" aria-label="'+l+'"></svg>';return $(id).firstChild;};
-const sG=mk('grid','grid of option pairs'),sA=mk('align','aligned lists'),sC=mk('cd','product diagram'),sK=mk('cube','mult-add cube'),sX=mk('chi','reduced Euler characteristic line');
+const sG=mk('grid','grid of option pairs'),sA=mk('align','aligned lists'),sC=mk('cd','product diagram'),sK=mk('cube','Circle-operation cube'),sX=mk('chi','reduced Euler characteristic line');
 const T=(x,y,t,a,c,sz)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c||sz?' style="'+(c?'fill:'+c+';':'')+(sz?'font-size:'+sz+'px':'')+'"':'')+'>'+t+'</text>';
 const L=(x1,y1,x2,y2,c,sw,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(sw||1.5)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
 const R=(x,y,w,h,f,s)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="1.5"':'')+'/>';

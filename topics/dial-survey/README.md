@@ -11,7 +11,7 @@ Page: https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr (source index.html)
    with t_p = p^-s. Twist = q x area (twisted boosts), fixed by k and directions. Choice = a setting (partial order), not a number.
 2. k: only sign survives rescaling (units_change_weight). Also Tsallis q-algebra with k = 1 - q_T. No lead by itself.
 3. Per-element t is odds: union of independent random subsets has odds t ✳ s; complement t -> 1/t. Uniform t = 2^a - 1
-   is the fractional exponent through the mult-add ruler (exponent_ruler).
+   is the fractional exponent through the circle-operation ruler (exponent_ruler).
 4. New: k acting on per-element dials = how many copies allowed. Per-element factor (1 - kz)^(-1/k), coefficient
    prod_{j<e}(1+jk)/e!. k=-1 subsets, k=-1/m at most m copies (proved), k=0 Poisson, k=1 multisets.
 5. On primes: Z_k(s) = prod_p (1 - k p^-s)^(-1/k) = prod_N zeta(Ns)^(M(k,N)/k), M = aperiodic necklaces (cyclotomic

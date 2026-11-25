@@ -52,7 +52,7 @@ def rational_checks(n=2000):
     for _ in range(n):
         u = Fraction(rnd.randint(-50, 50), rnd.randint(1, 50))
         if u == -1: continue
-        # gluing x -> 1/x in mult-add coordinates (x = 1 + u) is the mult-add inverse
+        # gluing x -> 1/x in circle-operation coordinates (x = 1 + u) is the circle inverse
         uinv = -u / (1 + u)
         assert u + uinv + u * uinv == 0
         assert 1 / (1 + u) == 1 + uinv
@@ -61,5 +61,5 @@ def rational_checks(n=2000):
 if __name__ == '__main__':
     for p in [2, 3, 5, 7, 11, 13]:
         print('F_%d:' % p, 'points by number of charts holding them', finite_field_checks(p), 'total', (p + 1) ** 2)
-    print('mult-add inverse = gluing map on 2000 random rationals:', rational_checks())
+    print('Circle inverse = gluing map on 2000 random rationals:', rational_checks())
     print('all gluing checks passed')

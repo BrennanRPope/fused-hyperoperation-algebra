@@ -1,4 +1,4 @@
-"""Navier-Stokes through the mult-add lens: symbolic checks.
+"""Navier-Stokes through the circle-operation lens: symbolic checks.
 Run: python3 exact_flows.py
 For each classic exact solution: verify NS (with a pressure), split the
 nonlinearity into corners pot x pot / pot x vort / vort x vort, and test

@@ -1,4 +1,4 @@
-"""Complex analysis through mult-add: every claim on the page, checked.
+"""Complex analysis through the circle operation: every claim on the page, checked.
 Run: python3 checks.py > checks_output.txt
 """
 import cmath, math, json
@@ -15,7 +15,7 @@ def check(name, ok, detail=""):
 def ma(z, w): return z + w + z * w
 def rc(n=1): return rng.normal(size=n) + 1j * rng.normal(size=n)
 
-# ---------------- 1. mult-add is a spin and a stretch about the wall
+# ---------------- 1. The circle operation is a spin and a stretch about the wall
 z, w = rc(200), rc(200)
 check("lift: 1 + z*w = (1+z)(1+w) on 200 random complex pairs",
       np.max(abs(1 + ma(z, w) - (1 + z) * (1 + w))) < 1e-12)
@@ -29,23 +29,23 @@ check("triangle (-1, 0, w) is similar to triangle (-1, z, z*w) (same complex sha
       np.max(abs(t1 - t2)) < 1e-10)
 check("the step z -> z*w is the vector w turned and stretched by 1+z: z*w - z = (1+z)w",
       np.max(abs(ma(z, w) - z - (1 + z) * w)) < 1e-12)
-# affine maps fixing -1 are exactly mult-add by something
+# affine maps fixing -1 are exactly the circle operation by something
 al, be = rc(50), None
 check("an affine map z -> a z + b fixes -1 iff b = a - 1, i.e. it is z -> z*(a-1)",
       np.max(abs((al * z[:50] + (al - 1)) - ma(z[:50], al - 1))) < 1e-12)
 u, v = rc(50), rc(50)
-check("composing two such maps mult-adds their parameters",
+check("composing two such maps combines their parameters by the circle operation",
       np.max(abs(ma(ma(z[:50], u), v) - ma(z[:50], ma(u, v)))) < 1e-10)
 k = rc(50)
 check("dial: z *_k w = z + w + k z w spins about its own wall -1/k by 1 + k w",
       np.max(abs((z[:50] + w[:50] + k * z[:50] * w[:50] + 1 / k) / (z[:50] + 1 / k) - (1 + k * w[:50]))) < 1e-9)
 
-# ---------------- 2. the mult-add circle and roots of zero
+# ---------------- 2. the circle-operation circle and roots of zero
 th1, th2 = rng.uniform(0, 2 * np.pi, 100), rng.uniform(0, 2 * np.pi, 100)
 c1, c2 = np.exp(1j * th1) - 1, np.exp(1j * th2) - 1
-check("circle |1+z| = 1 (through 0, centred on the wall) is closed under mult-add",
+check("circle |1+z| = 1 (through 0, centred on the wall) is closed under the circle operation",
       np.max(abs(abs(1 + ma(c1, c2)) - 1)) < 1e-12)
-check("on that circle mult-add adds angles seen from the wall",
+check("on that circle the circle operation adds angles seen from the wall",
       np.max(abs(ma(c1, c2) - (np.exp(1j * (th1 + th2)) - 1))) < 1e-12)
 def mpow(z, n):
     r = 0
@@ -58,13 +58,13 @@ for n in range(1, 13):
     ok &= all(abs(abs(1 + r) - 1) < 1e-12 for r in roots)
     # no other solutions: (1+z)^n - 1 has exactly n roots
     ok &= len(set(np.round(np.roots([1] + [0] * (n - 1) + [-1]) - 1, 8))) == n
-check("the n mult-add n-th roots of 0 are zeta - 1, a regular n-gon on |1+z| = 1 (n = 1..12)", ok)
+check("the n circle n-th roots of 0 are zeta - 1, a regular n-gon on |1+z| = 1 (n = 1..12)", ok)
 ok = True
 for n in range(1, 13):
     tot = 0
     for j in range(n): tot = ma(tot, cmath.exp(2j * math.pi * j / n) - 1)
     ok &= abs(tot - ((-1) ** (n + 1) - 1)) < 1e-9
-check("mult-adding all n roots gives 0 for odd n and -2 for even n", ok)
+check("combining all n roots by the circle operation gives 0 for odd n and -2 for even n", ok)
 
 # ---------------- 3. the log of the lift, the branch cut, winding about the wall
 L = lambda z: np.log(1 + z)
@@ -82,7 +82,7 @@ check("a loop round 0 that misses the wall adds nothing (the branch point is the
 check("a loop that encloses both 0 and the wall adds 2 pi i", abs(wind(-0.5, 1.2, -1) - 1) < 1e-9)
 E = lambda z: np.expm1(z)
 a, b = rc(100), rc(100)
-check("E(w) = e^w - 1 turns + into mult-add: E(a+b) = E(a) * E(b)",
+check("E(w) = e^w - 1 turns + into the circle operation: E(a+b) = E(a) * E(b)",
       np.max(abs(E(a + b) - ma(E(a), E(b)))) < 1e-9)
 check("E(2 pi i) = 0: one trip round the wall is the period", abs(E(2j * np.pi)) < 1e-14)
 y = np.linspace(-3, 3, 50)
@@ -183,14 +183,14 @@ z0 = mp.mpc(0, -1); wv = rep(z0); D = att(z0) - wv
 check("lower overlap carries the mirror ripple conj(a1) e^{-2 pi i w} (e^z - 1 is real)",
       abs(complex(D * mp.exp(2j * mp.pi * wv)) - a1.conjugate()) < 1e-2)
 
-# ---------------- 6. products: mult-add folds and their wall hits
+# ---------------- 6. products: circle-operation folds and their wall hits
 def sinfold(z, N):
     t = 0
     for n in range(1, N + 1): t = ma(t, -z * z / n ** 2)
     return t
 zs = [0.3 + 0.4j, 1.7 - 0.2j, -2.5 + 1.1j]
 ok = all(abs((1 + sinfold(z, 200000)) - cmath.sin(math.pi * z) / (math.pi * z)) < 5e-4 * abs(z) ** 2 for z in zs)
-check("sin(pi z)/(pi z) - 1 is the mult-add fold of the pieces -z^2/n^2 (Euler), checked at 3 complex z", ok)
+check("sin(pi z)/(pi z) - 1 is the circle-operation fold of the pieces -z^2/n^2 (Euler), checked at 3 complex z", ok)
 errs = [abs((1 + sinfold(1.3, N)) - math.sin(math.pi * 1.3) / (math.pi * 1.3)) for N in (100, 1000, 10000)]
 check("the fold converges like 1/N because sum |z^2/n^2| converges", errs[0] / errs[1] > 8 and errs[1] / errs[2] > 8,
       " ".join(f"{e:.2e}" for e in errs))
@@ -236,7 +236,7 @@ check("z^(*5) = (1+z)^5 - 1 hits the wall 5 times, all at z = -1 (count 5 on |z+
 qq = 0.2 * cmath.exp(0.7j)
 a, b = rc(20), rc(20)
 a2 = qq * (1 + a) - 1
-check("the gluing (1+a) ~ q(1+a) respects mult-add: a ~ a' implies a*b ~ a'*b (torus of the elliptic page)",
+check("the gluing (1+a) ~ q(1+a) respects the circle operation: a ~ a' implies a*b ~ a'*b (torus of the elliptic page)",
       np.max(abs((1 + ma(a2, b)) - qq * (1 + ma(a, b)))) < 1e-12)
 
 n = len(results); p = sum(results)

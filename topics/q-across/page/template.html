@@ -6,7 +6,7 @@
 /* VOICE: a calm scientific plate, honest about what is standard.
    IDEA: a printed plate of figures from a mathematics atlas, one q threading through them.
    PICTURE: the q dial and the Tate ring glued into a torus; then knots, Ferrers dots, lattice paths.
-   COLOUR and TYPE: white, ink, carmine for the q, prussian for mult-add; Literata throughout.
+   COLOUR and TYPE: white, ink, carmine for the q, prussian for the circle operation; Literata throughout.
    LAYOUT: figure-led bands, text column beside or under, ruled tables. */
 :root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1217);--ink:light-dark(#10131a,#e8e9ec);--mute:light-dark(#4a5060,#a7adb9);--rule:light-dark(#d9dbe0,#2a2f39);--car:light-dark(#c1121f,#ff5a63);--pru:light-dark(#0b4f8a,#6fb2f0);--soft:light-dark(#f4f5f7,#161a21)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
@@ -47,9 +47,9 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <section class="band"><div class="wrap grid">
 <div>
 <h1>One <span class="q">q</span>, five worlds</h1>
-<p class="lead">The gluing number <span class="q">q</span> from the elliptic work is the mult-add dial moved by one: <b>k = q − 1</b>. With that single substitution, the q-integers of quantum algebra, the loop of the Jones polynomial, Euler's partition product and the Ising ring all become mult-add statements.</p>
+<p class="lead">The gluing number <span class="q">q</span> from the elliptic work is the circle-operation dial moved by one: <b>k = q − 1</b>. With that single substitution, the q-integers of quantum algebra, the loop of the Jones polynomial, Euler's partition product and the Ising ring all become circle-operation statements.</p>
 <div class="eq">[m + n]<sub>q</sub> = [m]<sub>q</sub> ⊞<sub>q−1</sub> [n]<sub>q</sub> &nbsp;&nbsp; and &nbsp;&nbsp; (1 + a)·qⁿ = 1 + (a ⊞ (q − 1)·[n]<sub>q</sub>)</div>
-<p>The first line says q-integers add by weighted mult-add. The second says that going n times round the torus's q-direction is one mult-add step of length (q − 1)·[n]<sub>q</sub>. Both are proved in Lean for every n.</p>
+<p>The first line says q-integers add by the circle operation ∘ₖ with dial k (called weighted mult-add before 1.0). The second says that going n times round the torus's q-direction is one circle-operation step of length (q − 1)·[n]<sub>q</sub>. Both are proved in Lean for every n.</p>
 <div class="stats"><div><b>61</b>theorems in 4 Lean files</div><div><b>0</b>new theorems of mathematics</div><div><b>1</b>picture that joins them</div></div>
 <p class="mute" style="margin-top:12px">The Lean files are written but not yet compiled (Lean isn't installed where this was built). Every finite list in them was checked against a line-for-line Python copy.</p>
 </div>
@@ -59,15 +59,15 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <section class="band alt" id="dial"><div class="wrap grid">
 <div>
 <h2>The dial is q − 1</h2>
-<p>The q-integer is [n]<sub>q</sub> = 1 + q + q² + … + q<sup>n−1</sup>. Standard algebra gives [m + n] = [m] + qᵐ[n]. Rewritten with k = q − 1 that rule is exactly the weighted mult-add a + b + k·ab, so [n]<sub>q</sub> is n copies of 1 under ⊞<sub>k</sub>.</p>
+<p>The q-integer is [n]<sub>q</sub> = 1 + q + q² + … + q<sup>n−1</sup>. Standard algebra gives [m + n] = [m] + qᵐ[n]. Rewritten with k = q − 1 that rule is exactly the circle operation a + b + k·ab, so [n]<sub>q</sub> is n copies of 1 under ⊞<sub>k</sub>.</p>
 <p>Your four dial settings land on the four famous values of q:</p>
 <table class="stack"><thead><tr><th>q</th><th>k</th><th>Your name</th><th>[n]<sub>q</sub></th></tr></thead><tbody>
 <tr><td>1</td><td>0</td><td>addition, counting</td><td>n</td></tr>
-<tr><td>2</td><td>1</td><td>mult-add, volume</td><td>2ⁿ − 1, nonzero vectors over the two-element field</td></tr>
+<tr><td>2</td><td>1</td><td>The circle operation, volume</td><td>2ⁿ − 1, nonzero vectors over the two-element field</td></tr>
 <tr><td>0</td><td>−1</td><td>failure union, "or"</td><td>1 for every n ≥ 1 (the crystal limit)</td></tr>
 <tr><td>−1</td><td>−2</td><td>parity, "exclusive or"</td><td>1, 0, 1, 0, …</td></tr>
 </tbody></table>
-<p>The elliptic gluing joins in through the lift x ↦ 1 + x: multiplying 1 + a by q is mult-adding q − 1, so n trips round the torus mult-add (q − 1)·[n]<sub>q</sub>, which is the mult-add power (q − 1)<sup>⊞n</sup>.</p>
+<p>The elliptic gluing joins in through the lift x ↦ 1 + x: multiplying 1 + a by q is combining with q − 1 by the circle operation, so n trips round the torus combine by the circle operation to (q − 1)·[n]<sub>q</sub>, which is the circle power (q − 1)<sup>⊞n</sup>.</p>
 </div>
 <div>
 <h3>Proved in Lean, every n (QDial.lean)</h3>
@@ -87,18 +87,18 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <section class="band" id="flow"><div class="wrap grid">
 <div>
 <h2>Where q sits against the rung flow</h2>
-<p><b>τ and q are one rung apart.</b> The elliptic modulus has two coordinates: τ, which glues the plane by translation (rung 0), and q = e<sup>2πiτ</sup>. Since q − 1 = E(2πiτ) with E(x) = eˣ − 1, the multiplicative coordinate is the additive one moved up exactly one step of the flow. Climbing that step also rolls the plane into a cylinder, because E(z + 2πi) = E(z). So at rung 1 only one gluing is left, mult-add translation by q − 1, and it closes the cylinder into the same torus. Same torus, two charts. This part is exact.</p>
+<p><b>τ and q are one rung apart.</b> The elliptic modulus has two coordinates: τ, which glues the plane by translation (rung 0), and q = e<sup>2πiτ</sup>. Since q − 1 = E(2πiτ) with E(x) = eˣ − 1, the multiplicative coordinate is the additive one moved up exactly one step of the flow. Climbing that step also rolls the plane into a cylinder, because E(z + 2πi) = E(z). So at rung 1 only one gluing is left, circle-operation translation by q − 1, and it closes the cylinder into the same torus. Same torus, two charts. This part is exact.</p>
 <p><b>q-deformation is a separate direction, not a step along the flow.</b> The flow law B<sub>s</sub>(a, b) = E<sup>s</sup>(E<sup>−s</sup>a + E<sup>−s</sup>b) expands as</p>
 <div class="eq">B<sub>s</sub> = a + b + <span class="m">s</span>·ab + <span class="m">s(s − 1)/4</span>·(a²b + ab²) + …</div>
 <p>while the dial law is a + b + k·ab with nothing after it. So k = s to second order: the dial points along the flow as it leaves addition, and the two meet again at rung 1. In between, the dial is a straight chord and the flow is a curved arc that dips to a cubic term of −1/16 at the half rung. (Exact symbolic algebra to third order, in <code>flow_check.py</code>.)</p>
-<p><b>On the landscape</b>, the q of q-counting runs along the k axis. The elliptic gluing q is a third direction: it opens the node at the mult-add point into a torus (the elliptic page's picture), crossing both the rung sheet and the dial.</p>
+<p><b>On the landscape</b>, the q of q-counting runs along the k axis. The elliptic gluing q is a third direction: it opens the node at the circle-operation point into a torus (the elliptic page's picture), crossing both the rung sheet and the dial.</p>
 <p class="mute">Where it is only an analogy: a torus "at half a rung" is the same torus in another chart, and E<sup>½</sup> exists only by regular iteration on the real line (its series diverges, Baker 1958), so fractional-rung gluing is formal. One new definition worth a look, not standard: q-integers along the flow, [n]<sub>s</sub> = E<sup>s</sup>(n·E<sup>−s</sup>(x))/x = n + s·C(n, 2)·x + …, which gives [n]<sub>q</sub> at s = 1. Nobody has shown it means anything yet.</p>
 </div>
 <figure>{{chord}}</figure>
 </div></section>
 
 <section class="band alt" id="knots"><div class="wrap">
-<h2>Knots: the Jones polynomial is a sum over the mult-add cube</h2>
+<h2>Knots: the Jones polynomial is a sum over the circle-operation cube</h2>
 <div class="g3">
 <figure>{{trefoilL}}<figcaption>Left trefoil</figcaption></figure>
 <figure>{{trefoilR}}<figcaption>Right trefoil (mirror)</figcaption></figure>
@@ -107,7 +107,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 </div>
 <div class="grid" style="margin-top:20px">
 <div>
-<p>Kauffman's bracket smooths each crossing one of two ways. A diagram with n crossings therefore has 2ⁿ states: the corners of the n-cube, the same cube as the mult-add corner expansion. Each corner counts A<sup>#A − #B</sup> times d<sup>loops − 1</sup>, and the loop value is</p>
+<p>Kauffman's bracket smooths each crossing one of two ways. A diagram with n crossings therefore has 2ⁿ states: the corners of the n-cube, the same cube as the circle-operation corner expansion. Each corner counts A<sup>#A − #B</sup> times d<sup>loops − 1</sup>, and the loop value is</p>
 <div class="eq">d = −A² − A⁻² = −A⁻²·[2]<sub>A⁴</sub></div>
 <p>So the knot q and the counting q are one q (Jones's t is A⁻⁴). Khovanov homology is built on exactly this cube of states.</p>
 <table class="stack"><thead><tr><th>Diagram</th><th>Jones V(t)</th><th>t = 1</th><th>t = −1</th></tr></thead><tbody>
@@ -130,7 +130,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 
 <section class="band" id="primes"><div class="wrap grid">
 <div>
-<h2>Primes and partitions: Euler's product is a mult-add</h2>
+<h2>Primes and partitions: Euler's product is a circle operation</h2>
 <p>Euler's product (1 − q)(1 − q²)(1 − q³)⋯ is 1 + (−q ⊞ −q² ⊞ −q³ ⊞ …), by the library's list lift. Its corner expansion is a signed sum over sets of distinct parts. Euler's pentagonal theorem says almost everything cancels:</p>
 <div class="eq">∏(1 − qⁿ) = 1 − q − q² + q⁵ + q⁷ − q¹² − q¹⁵ + q²² + q²⁶ − …</div>
 <p>Franklin's picture shows why: slide the smallest row of a Ferrers diagram onto its staircase edge (or back). That pairs off partitions with an even and odd number of parts, leaving only the pentagonal shapes unpaired.</p>
@@ -149,7 +149,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <div class="eq">θ(q)⁴ = 1 + 8·Σ (sum of the divisors of n not divisible by 4)·qⁿ</div>
 <p>This is where primes enter: a prime p has only the divisors 1 and p, so it is a sum of four squares in exactly 8(p + 1) ways.</p>
 <h3>Proved in Lean (Partitions.lean)</h3>
-<p class="mute">All finite checks: <code>pentagonal_30</code>, <code>euler_is_multAdd_30</code>, <code>euler_inverse_30</code> (mod q³⁰), <code>partitions_to_50</code>, <code>ramanujan_5</code>, <code>_7</code>, <code>_11</code>, <code>no_ramanujan_13</code>, <code>triple_product_30</code>, <code>jacobi_four_squares_30</code>, <code>four_squares_primes</code>, <code>lagrange_below_30</code>. 13 theorems.</p>
+<p class="mute">All finite checks: <code>pentagonal_30</code>, <code>euler_is_circ_30</code>, <code>euler_inverse_30</code> (mod q³⁰), <code>partitions_to_50</code>, <code>ramanujan_5</code>, <code>_7</code>, <code>_11</code>, <code>no_ramanujan_13</code>, <code>triple_product_30</code>, <code>jacobi_four_squares_30</code>, <code>four_squares_primes</code>, <code>lagrange_below_30</code>. 13 theorems.</p>
 <p class="mute">The full theorems (Euler 1750, Jacobi 1829, Ramanujan 1919, with the congruences for all powers of 5, 7 and 11 proved later by Watson and Atkin) are standard and are not proved here. What Lean confirms is every coefficient up to the stated power.</p>
 </div>
 </div></section>
@@ -160,7 +160,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <h3>Gaussian binomials: the cube with a q on each corner</h3>
 <p>The q-binomial theorem says (1 + t)(1 + qt)⋯(1 + q<sup>n−1</sup>t), which is 1 + (t ⊞ qt ⊞ … ⊞ q<sup>n−1</sup>t), has layer k equal to q<sup>k(k−1)/2</sup>[n, k]<sub>q</sub>. Geometrically, [n, k]<sub>q</sub> counts lattice paths in a k × (n − k) box by the area under them:</p>
 <figure>{{paths}}</figure>
-<p>That gives [4, 2]<sub>q</sub> = 1 + q + 2q² + q³ + q⁴. At q = 1 it is 6 (Pascal, the mult-add cube's layer), at q = 2 it is 35 (the planes in a 4-dimensional space over the two-element field), at q = 0 it is 1, and at q = −1 it is 2 (Pascal folded in half). Lean proves the q = 1 case for every n and k (<code>gauss_at_one</code>).</p>
+<p>That gives [4, 2]<sub>q</sub> = 1 + q + 2q² + q³ + q⁴. At q = 1 it is 6 (Pascal, the circle-operation cube's layer), at q = 2 it is 35 (the planes in a 4-dimensional space over the two-element field), at q = 0 it is 1, and at q = −1 it is 2 (Pascal folded in half). Lean proves the q = 1 case for every n and k (<code>gauss_at_one</code>).</p>
 <h3>The quantum group U<sub>q</sub>(sl₂)</h3>
 <p>Its defining relation [E, F] = (K − K⁻¹)/(q − q⁻¹) holds on every irreducible representation because of a single ring identity, [k + 1][n − k] − [k][n − k + 1] = [n − 2k], proved for any commutative ring (<code>uq_sl2_commutator</code>). At q = 1 it becomes the ordinary rule [E, F] = H. Its 2-dimensional representation has quantum dimension q + q⁻¹, minus the knot loop value.</p>
 </div>
@@ -169,9 +169,9 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 <figure style="max-width:300px">{{ising}}</figure>
 <p>Spins on a ring with domain-wall weight u have partition function</p>
 <div class="eq">Z = (1 + u)ⁿ + (1 − u)ⁿ = 2 + u<sup>⊞n</sup> + (−u)<sup>⊞n</sup></div>
-<p>The two mult-add powers cancel every odd layer of the cube, which is the statement that a ring always has an even number of walls. Proved in Lean for every n (<code>ising_eigen</code>, <code>ising_trace</code>, <code>ising_multAdd</code>). The bridge to knots is standard too: the Potts model's state count Q and the knot loop value satisfy Q = d², through the Temperley–Lieb algebra.</p>
+<p>The two circle powers cancel every odd layer of the cube, which is the statement that a ring always has an even number of walls. Proved in Lean for every n (<code>ising_eigen</code>, <code>ising_trace</code>, <code>ising_circ</code>). The bridge to knots is standard too: the Potts model's state count Q and the knot loop value satisfy Q = d², through the Temperley–Lieb algebra.</p>
 <h3>Proved in Lean (QCounting.lean)</h3>
-<p class="mute"><code>peval_padd</code>, <code>peval_pzeros</code>, <code>gauss_at_one</code> (general), <code>gauss_4_2</code>, <code>gauss_at_neg_one</code> (n ≤ 8), <code>q_binomial_theorem</code> (n ≤ 6), <code>uq_sl2_commutator</code>, <code>uq_sl2_weight</code>, <code>sl2_classical</code>, <code>quantum_dim_is_loop</code>, <code>ising_eigen</code>, <code>ising_trace</code>, <code>ising_multAdd</code>. 13 theorems.</p>
+<p class="mute"><code>peval_padd</code>, <code>peval_pzeros</code>, <code>gauss_at_one</code> (general), <code>gauss_4_2</code>, <code>gauss_at_neg_one</code> (n ≤ 8), <code>q_binomial_theorem</code> (n ≤ 6), <code>uq_sl2_commutator</code>, <code>uq_sl2_weight</code>, <code>sl2_classical</code>, <code>quantum_dim_is_loop</code>, <code>ising_eigen</code>, <code>ising_trace</code>, <code>ising_circ</code>. 13 theorems.</p>
 </div>
 </div></section>
 
@@ -189,7 +189,7 @@ pre,.scroll{overflow-x:auto}html{scroll-padding-top:20px}
 
 <section class="band alt" id="honest"><div class="wrap">
 <h2>What is new and what isn't</h2>
-<p>Every identity on this page is standard mathematics. The new part is the arrangement: one substitution, k = q − 1, puts the famous q's on your dial (counting at 1, volume at 2, union at 0, parity at −1), makes the Tate gluing a mult-add step, and shows the knot cube, the partition product and the Ising ring as mult-add folds. The rung flow gives a clean geometric fact: the q dial is the flow's tangent at addition and its chord to rung 1.</p>
+<p>Every identity on this page is standard mathematics. The new part is the arrangement: one substitution, k = q − 1, puts the famous q's on your dial (counting at 1, volume at 2, union at 0, parity at −1), makes the Tate gluing a circle-operation step, and shows the knot cube, the partition product and the Ising ring as circle-operation folds. The rung flow gives a clean geometric fact: the q dial is the flow's tangent at addition and its chord to rung 1.</p>
 <p>Nothing here is a lead as strong as the KdV solitons. The one open thread is the q-integers along the flow, [n]<sub>s</sub>, a definition that nobody has studied, which may or may not lead anywhere.</p>
 <p class="mute">Earlier pages: <a href="https://claude.ai/artifact/JhsmEQaHNRhZ9t5Ph5RZ6y">elliptic lead</a>, <a href="https://claude.ai/artifact/AHr9NVcjzr4cHjQVrRaEnJ">rung sheet</a>, <a href="https://claude.ai/artifact/E2ri2CF3xiGEWA5B9hAWYf">landscape</a>.</p>
 </div></section>

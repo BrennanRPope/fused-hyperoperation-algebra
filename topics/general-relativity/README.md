@@ -1,12 +1,12 @@
-# General relativity through mult-add (Nov 25, 2026)
+# General relativity through the circle operation (Nov 25, 2026)
 Page: https://claude.ai/artifact/SHrK88RpTBLLfTaeAxgi37 (source index.html)
 
-Question (Brennan, Nov 25): special relativity's velocity addition is mult-add; can we get from the
-mult-add geometry to Einstein's field equations G = 8πG T, or find the exact step where it fails?
+Question (Brennan, Nov 25): special relativity's velocity addition is the circle operation ∘₁ (called mult-add before 1.0); can we get from the
+circle-operation geometry to Einstein's field equations G = 8πG T, or find the exact step where it fails?
 
 ## Answer
 
-Not from mult-add alone. Mult-add gives the local rules of motion (the dial q sets the signature and
+Not from the circle operation alone. The circle operation gives the local rules of motion (the dial q sets the signature and
 the speed of light, and twist = curvature × area). Einstein's equations need a rule for how matter
 bends spacetime, and every route tested has to supply that rule from outside. What we found is the
 exact place each route needs it, and one route that comes close in a picture that is ours to use.
@@ -31,9 +31,9 @@ exact place each route needs it, and one route that comes close in a picture tha
 
 ## Route (c): the river (weak field and beyond)
 
-Two postulates, both stated in mult-add language:
+Two postulates, both stated in circle-operation language:
 1. At each event there is a free-fall frame (the river) in which space is flat and special relativity
-   holds, so speeds compose by mult-add on the Doppler-squared ruler.
+   holds, so speeds compose by the circle operation on the Doppler-squared ruler.
 2. The river flows past static observers at Newton's escape speed, v² = 2m/r (r = areal radius).
 
 Results (checks.py, sections C to C3; all exact, sympy):
@@ -41,7 +41,7 @@ Results (checks.py, sections C to C3; all exact, sympy):
   after the clock change t_S = t − ∫ v/(1 − v²) dr. River observers fall freely and are at rest at infinity.
 - Static clocks and static radial rulers are boosted through the river, and one boost gives both: clock
   factor 1 − v² = −g_tt, ruler factor 1/(1 − v²) = g_rr. So the time deficit and the radial-space deficit
-  are mult-add inverses, (−g_tt − 1) ✳ (g_rr − 1) = 0. This is why γ = 1 and why light bends twice the
+  are circle inverses, (−g_tt − 1) ✳ (g_rr − 1) = 0. This is why γ = 1 and why light bends twice the
   Newtonian amount: half from clocks, half from rulers, because a boost dilates time and contracts length
   by the same γ.
 - Weak field: −g_tt = 1 − 2U + 2U² (β = 1), g_ij = (1 + 2U)δ_ij (γ = 1). So light bending 1.751″,

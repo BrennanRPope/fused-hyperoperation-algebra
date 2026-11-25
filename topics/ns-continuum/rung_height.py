@@ -1,4 +1,4 @@
-"""Rung height (mult-add flow E^t, E(x)=e^x-1) of the dissipation deficiency in the NS gap.
+"""Rung height (circle-operation flow E^t, E(x)=e^x-1) of the dissipation deficiency in the NS gap.
 Dissipation symbol m(s) = s^{5/2} / D(s), s = |xi|, L = ln s.
   3D NS: D = s^{1/2} = e^{L/2}          Tao 2009 proved: D up to L^{1/4} (Osgood int dL/D^4 = inf)
   Tao's conjecture (proved for the dyadic model, Barbato-Morandin-Romito 2014): D up to L^{1/2}

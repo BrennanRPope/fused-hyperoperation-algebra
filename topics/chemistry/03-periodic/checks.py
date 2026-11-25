@@ -1,4 +1,4 @@
-"""The periodic law through mult-add: shells are squares (SO(4)), periods follow the
+"""The periodic law through the circle operation: shells are squares (SO(4)), periods follow the
 Madelung diagonals, and the 20 exceptions only swap electrons between neighbouring diagonals.
 Run: python3 checks.py"""
 import json
@@ -74,7 +74,7 @@ check("no exception involves a p subshell except lawrencium's 6d→7p (same diag
       all(all(l != 1 for (n, l) in d) for Z, d in moves.items() if Z != 103))
 same_diag = [Z for Z, s in zip(moves, spans) if s == 0]
 check("the exceptions on one diagonal (d↔f or d↔p swaps) are La, Ce, Gd, Ac, Th, Pa, U, Np, Cm, Lr", same_diag == [57, 58, 64, 89, 90, 91, 92, 93, 96, 103], f"{same_diag}")
-# 4. the dial: q-integers are weighted mult-add powers of 1 with k = q - 1
+# 4. the dial: q-integers are circle powers of 1 with k = q - 1
 def wpow(k, a, n):
     x = 0.0
     for _ in range(n): x = x + a + k*x*a
@@ -83,6 +83,6 @@ for q in [0.5, 0.9, 1.0, 1.1, 2.0]:
     for n in range(1, 10):
         qint = n if q == 1 else (q**n - 1)/(q - 1)
         assert abs(wpow(q-1, 1.0, n) - qint) < 1e-9
-check("q-integers [n]_q = n copies of 1 under the weighted mult-add with k = q − 1 (the dial q = k + 1)", True)
+check("q-integers [n]_q = n copies of 1 under the circle operation with k = q − 1 (the dial q = k + 1)", True)
 json.dump({"order": order, "moves": {str(Z): {f"{n}{L[l]}": v for (n, l), v in d.items()} for Z, d in moves.items()}}, open("results.json", "w"), indent=1)
 print(f"{sum(ok)}/{len(ok)} checks pass")

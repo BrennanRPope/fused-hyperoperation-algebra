@@ -9,7 +9,7 @@ Shape of a proof = (body, frame, moves):
 Group = body + the proof's leading action, the first move present in a fixed
 order (squash, dial, flatten, regroup, swap, explode, collapse, repeat; else plain).
 Groups under 4 proofs are pooled by action; the field never enters.
-Height on the rung sheet (s = 0 addition, 1 mult-add, 2 fused exponent, 3 and up
+Height on the rung sheet (s = 0 addition, 1 circle operation, 2 fused exponent, 3 and up
 the towers) comes from the highest operation the statement uses.
 Output: gallery.json
 """
@@ -25,7 +25,7 @@ SHAPE_MOVES = ACTIONS + ["lift", "multadd", "extrude"]
 FIELD = {
     "FusedAlgebra.Base": ("Foundation", "foundation"),
     "FusedAlgebra.Rungs": ("Rung ladder", "foundation"),
-    "FusedAlgebra.Cube": ("Mult-add cube", "foundation"),
+    "FusedAlgebra.Cube": ("Circle-operation cube", "foundation"),
     "FusedAlgebra.Topics.ClosingRate": ("Closing rates", "economy and society"),
     "FusedAlgebra.Topics.Consensus": ("Distributed consensus", "computing and information"),
     "FusedAlgebra.Topics.DarkSector": ("Dark matter (MOND)", "physics"),
@@ -44,7 +44,7 @@ FIELD = {
     "FusedAlgebra.Topics.Topology.CubeProofs": ("Primes on the cube", "numbers and infinity"),
     "FusedAlgebra.Topics.Topology.KummerWilson": ("Kummer and Wilson", "numbers and infinity"),
     "FusedAlgebra.Topics.Topology.HopfInvariantOne": ("Hopf invariant one", "geometry and topology"),
-    "FusedAlgebra.Foundations.MultAddRing": ("Mult-add ring axioms", "foundation"),
+    "FusedAlgebra.Foundations.MultAddRing": ("Circle-operation ring axioms", "foundation"),
     "FusedAlgebra.Foundations.Independence": ("Axiom independence", "foundation"),
     "FusedAlgebra.Foundations.FusedPeano": ("Fused Peano arithmetic", "foundation"),
     "FusedAlgebra.Topics.AbstractAlgebra": ("Abstract algebra", "algebra"),
@@ -131,7 +131,7 @@ def ambiguity(f, own, kown):
     if f["dim"] is None and not f.get("lean_sides"): why.append("its statement could not be read, so its size is a guess")
     if not own and not kown: why.append("no move shows in its own text or in its compiled proof term, so only the statement gives its shape")
     if not f["moves"] and f["dim"] is not None and f["dim"] <= 1 and f["frame"] in ("tiles", "witness", "both_ways"):
-        why.append("it is about chart or divisibility logic more than about a mult-add picture")
+        why.append("it is about chart or divisibility logic more than about a circle-operation picture")
     return why
 
 def main():

@@ -1,19 +1,19 @@
-# Electromagnetism through mult-add (Nov 25, 2026)
+# Electromagnetism through the circle operation (Nov 25, 2026)
 Page: https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY (slug 49b926a7-cb25-47e8-9c1f-da8a404822e9, version 1795626602-cf6b;
 source index.html, built by build_page.py from figures/*.svg and results.json)
 
-Task (Brennan, Nov 25, voice): "let's look at electromagnetism" — show how Maxwell fits under the mult-add lens, in historical
+Task (Brennan, Nov 25, voice): "let's look at electromagnetism" — show how Maxwell fits under the circle-operation lens, in historical
 order (EM, then special relativity, then gravity: "general relativity... stood on the shoulders of electromagnetism").
 
 ## Answer
 - Same structure (exact, known physics): (1) the wave equation survives a dial boost only at q = -1/c^2, and c^2 eps0 mu0 = 1:
   EM sets the dial; (2) boosts scale the light-cone parts of E, B by D and 1/D, ratio by D^2 = 1 + d(v) (the lift); D's multiply,
-  d's mult-add; light is a null field on the wall, energy density x 1/lift; (3) loop phase = charge x flux, same "loop turn =
-  curvature x area" as gravity; lattice plaquettes are the mult-add of four links, neighbours mult-add (discrete Stokes).
-- Renamings: phases as mult-add of e^{i theta} - 1 (any multiplicative group); F as the wedge part of the "corner" grad A
+  d's combine by the circle operation ∘₁ (called mult-add before 1.0); light is a null field on the wall, energy density x 1/lift; (3) loop phase = charge x flux, same "loop turn =
+  curvature x area" as gravity; lattice plaquettes are the circle operation of four links, neighbours combine by the circle operation (discrete Stokes).
+- Renamings: phases as the circle operation of e^{i theta} - 1 (any multiplicative group); F as the wedge part of the "corner" grad A
   (content = Clifford's dot + wedge split); grad F = J is Hestenes 1966.
 - Small frame of ours: gauge phase (q = +1, circle) and boost (q = -1, hyperbola) both obey a * conj(a) = 0.
-- EM linear vs gravity nonlinear = commuting phases (plain mult-add) vs non-commuting boosts (sandwich law, order gap = commutator).
+- EM linear vs gravity nonlinear = commuting phases (the plain circle operation) vs non-commuting boosts (sandwich law, order gap = commutator).
 - Stops: source law grad F = J from outside (as Einstein's equations); vacuum superposition is plain addition (k = 0);
   Born-Infeld shares the wall shape but not the composition law (ATLAS: scale > ~100 GeV, arXiv:1703.08450).
 - No new prediction, no lead toward new physics. Kept: the bridge to gravity as a gauge field (teleparallel river).

@@ -5,15 +5,15 @@
 [PASS] A2. the cross term d_X d_T vanishes only for q = -1/c^2 (Galilean q = 0 leaves it)  (q = [-1/c**2]; cross term at q=0: -2*g**2*v)
 [PASS] A2b. at q = -1/c^2 the operator keeps its form exactly (same wave speed c in the new frame)  (coefficient ratio TT/XX = -1/c**2)
 [PASS] A3. composing two dial boosts gives the landscape law (u+v)/(1 - q u v); q = -1 is Einstein's
-[PASS] A3b. Doppler-squared minus one composes by mult-add: d(u (+) v) = d(u) * d(v)
+[PASS] A3b. Doppler-squared minus one composes by the circle operation: d(u (+) v) = d(u) * d(v)
 
 == B. The fields ride the boosts: E and B on the light cone
 [PASS] B0. textbook boost of E, B along x equals the rational form in the Doppler factor D (gamma = (D^2+1)/2D)
 [PASS] B1. light-cone parts: (E_y + B_z) -> (E_y + B_z)/D and (E_y - B_z) -> D (E_y - B_z)
 [PASS] B1b. the other pair: (E_z - B_y) -> /D and (E_z + B_y) -> x D
-[PASS] B2. the ratio (E_y - B_z)/(E_y + B_z) is multiplied by D^2 = (1+v)/(1-v) = 1 + d(v), mult-add's lift
+[PASS] B2. the ratio (E_y - B_z)/(E_y + B_z) is multiplied by D^2 = (1+v)/(1-v) = 1 + d(v), the circle operation's lift
 [PASS] B3. two boosts compose as one with D = D1 D2 (all six components)
-[PASS] B3b. and v(D1 D2) is Einstein's sum of v(D1), v(D2); so d composes by mult-add
+[PASS] B3b. and v(D1 D2) is Einstein's sum of v(D1), v(D2); so d composes by the circle operation
 [PASS] B4. E^2 - B^2 and E.B are unchanged by every boost (the field's two invariants)
 [PASS] B4b. each light-cone pair keeps its product: (E_y+B_z)(E_y-B_z) fixed (a squeeze, like T^2 - X^2)
 [PASS] B5a. reading E and B back off the bivector F = E + I B works
@@ -23,9 +23,9 @@
 [PASS] B7. magnetism from electricity: a pure E_y, boosted, gets B_z = -gamma v E_y (Purcell's picture)
 
 == C. The gauge phase as a dial
-[PASS] C1. a unit phase written as a = e^{i theta} - 1 satisfies a * conj(a) = 0: its conjugate is its mult-add inverse
+[PASS] C1. a unit phase written as a = e^{i theta} - 1 satisfies a * conj(a) = 0: its conjugate is its circle inverse
 [PASS] C1b. in general a * conj(a) = |1 + a|^2 - 1, so 'phase' means exactly 'a * conj(a) = 0'
-[PASS] C2. phases compose by mult-add: (e^{i t1} - 1) * (e^{i t2} - 1) = e^{i(t1+t2)} - 1 (a renaming of multiplication)
+[PASS] C2. phases compose by the circle operation: (e^{i t1} - 1) * (e^{i t2} - 1) = e^{i(t1+t2)} - 1 (a renaming of multiplication)
 [PASS] C2b. the wall a = -1 fails the phase rule: (-1) * conj(-1) = -1, not 0, so U(1) never reaches the wall
 [PASS] C3. in the half-angle chart t = tan(theta/2) phases compose by the landscape law at q = +1: (t1+t2)/(1 - t1 t2)
 [PASS] C3b. boosts in the half-rapidity chart s = tanh(phi/2) compose at the mirror dial q = -1: (s1+s2)/(1 + s1 s2)
@@ -34,8 +34,8 @@
 [PASS] C5. gauge invariance: A -> A + grad chi, phi -> phi - d_t chi leaves E and B unchanged
 [PASS] C6. holonomy: the loop integral of A around 20 random rational polygons is exactly B x enclosed area (phase = charge x flux)
 [PASS] C6b. Aharonov-Bohm: around a thin solenoid (B = 0 on the path) the phase is the flux for any loop around it, 0 for loops that miss it  (inside [0.999999999999, 1.0, 1.0], outside [-0.0, 0.0])
-[PASS] C7. a lattice plaquette is the mult-add of its four links (two run backwards, as mult-add inverses), and equals e^{i eps^2 F} - 1 exactly for a linear potential
-[PASS] C7b. discrete Stokes: plaquette * plaquette = the big loop (fluxes mult-add, the inner link cancels)
+[PASS] C7. a lattice plaquette is the circle operation of its four links (two run backwards, as circle inverses), and equals e^{i eps^2 F} - 1 exactly for a linear potential
+[PASS] C7b. discrete Stokes: plaquette * plaquette = the big loop (fluxes combine by the circle operation, the inner link cancels)
 [PASS] C8. contrast (Yang-Mills): with constant but non-commuting potentials the loop still turns, by eps^2 x [A_x, A_y]; U(1) phases commute, so constant A gives no field  (error ratio 2.00, 2.00 (about 2: first order))
 [PASS] C8b. the U(1) version of the same loop closes exactly (phases commute)
 
@@ -54,7 +54,7 @@
 == E. Where the lens stops
 [PASS] E1. Maxwell in vacuum is linear: two solutions add by plain addition (k = 0, no corner term)
 [PASS] E2. Born-Infeld (1934): D = E / sqrt(1 - E^2/b^2), so E = D / sqrt(1 + D^2/b^2) <= b: the same wall shape as speed from momentum, v = p / sqrt(1 + p^2)
-[PASS] E2b. but Born-Infeld fields do not compose by velocity addition (D adds, by Gauss's law): only the wall shape is shared, not the mult-add law  (E(D1+D2) = 0.9029 vs E1 (+) E2 = 0.9479)
+[PASS] E2b. but Born-Infeld fields do not compose by velocity addition (D adds, by Gauss's law): only the wall shape is shared, not the circle-operation law  (E(D1+D2) = 0.9029 vs E1 (+) E2 = 0.9479)
 [PASS] E3. the Schwinger field m^2 c^3/(e hbar) ~ 1.3e18 V/m: where QED makes the vacuum nonlinear (Maxwell's plain addition ends)  (1.3233e+18 V/m)
 
 == F. Bridge to gravity (side by side)

@@ -21,22 +21,22 @@ ROWS = [
  dict(id="02", piece="The three 2D Clifford algebras", year="", status="Exact", kind="made precise",
       head="Complex, split and dual numbers are the circle, line and border",
       clif="In two dimensions there are three: e² = −1 (complex numbers), e² = +1 (split-complex), e² = 0 (dual numbers).",
-      ma="The sign of p² − 4q picks which one the θ-lift is. Mult-add (1, 0) is the split case, written in its idempotent θ = (1 + e)/2. Its wall −1 is where the lift hits the zero divisor 1 − θ: the light cone. The class is set by the discriminant, not by the sign of q alone.",
+      ma="The sign of p² − 4q picks which one the θ-lift is. The circle operation (1, 0) is the split case, written in its idempotent θ = (1 + e)/2. Its wall −1 is where the lift hits the zero divisor 1 − θ: the light cone. The class is set by the discriminant, not by the sign of q alone.",
       src="checks B; Lean complex_no_zero_norm, split_zero_divisor, dual_nilpotent, wall_zero_divisor, theta_idem"),
  dict(id="03", piece="k as a multivector (your question)", year="", status="Exact", kind="new",
-      head="Mult-add's k is a light-cone multivector",
+      head="The circle operation's k is a light-cone multivector",
       clif="Every element K of a 2D Clifford algebra obeys K² = tr(K)·K − N(K).",
-      ma="Use K as the dial with plain numbers: (1 + aK)(1 + bK) = (1 − N·ab) + (a + b + tr·ab)K, so the law is the landscape with p = tr K and q = N K. Mult-add's own k is K = k(1 + e)/2, which has N = 0: it sits on the light cone. Curvature is minus the square of K's non-scalar part. A fully general K in Cl(3,0) gives the landscape with complex p and q (the complex unit is the volume element).",
-      src="checks C; Lean dial_sq, dial_lift, dial_discriminant, multAdd_dial_null"),
+      ma="Use K as the dial with plain numbers: (1 + aK)(1 + bK) = (1 − N·ab) + (a + b + tr·ab)K, so the law is the landscape with p = tr K and q = N K. The circle operation's own k is K = k(1 + e)/2, which has N = 0: it sits on the light cone. Curvature is minus the square of K's non-scalar part. A fully general K in Cl(3,0) gives the landscape with complex p and q (the complex unit is the volume element).",
+      src="checks C; Lean dial_sq, dial_lift, dial_discriminant, circ_dial_null"),
  dict(id="04", piece="Grades and multivectors", year="", status="Exact", kind="new",
       head="Giving each factor its own direction loses nothing",
       clif="A multivector has one part for each subset of directions: 2ⁿ blades in n dimensions.",
-      ma="a₁e₁ ✳ a₂e₂ ✳ … ✳ aₙeₙ puts each subset's product on its own blade (15 parts for n = 4), and no square of any direction enters. Ordinary mult-add is the scalar shadow: add the parts up and you get ∏(1 + aᵢ) − 1, which forgets which subset gave what. This is the precise sense in which a fused number can keep its information.",
-      src="checks D; Lean G4.blades_keep; the mult-add cube page"),
+      ma="a₁e₁ ✳ a₂e₂ ✳ … ✳ aₙeₙ puts each subset's product on its own blade (15 parts for n = 4), and no square of any direction enters. The ordinary circle operation is the scalar shadow: add the parts up and you get ∏(1 + aᵢ) − 1, which forgets which subset gave what. This is the precise sense in which a fused number can keep its information.",
+      src="checks D; Lean G4.blades_keep; the circle-operation cube page"),
  dict(id="05", piece="Reversion and involutions", year="", status="Exact", kind="new",
-      head="Clifford conjugation is the mult-add inverse",
+      head="Clifford conjugation is the circle inverse",
       clif="Clifford conjugation and reversion flip signs of grades and the order of products.",
-      ma="On the θ-lift, θ ↦ p − θ is multiplicative and X·X̄ is the norm. The lift times its conjugate is the rate V(a) (for mult-add, 1 + a). Read in the chart, the conjugate is the landscape inverse −a/(1 + pa). Reversion turns X ✳_K Y into Ỹ ✳_K̃ X̃.",
+      ma="On the θ-lift, θ ↦ p − θ is multiplicative and X·X̄ is the norm. The lift times its conjugate is the rate V(a) (for the circle operation, 1 + a). Read in the chart, the conjugate is the landscape inverse −a/(1 + pa). Reversion turns X ✳_K Y into Ỹ ✳_K̃ X̃.",
       src="checks B, D; Lean tconj_mul, mul_tconj, lift_tconj, G4.rev_star"),
  dict(id="06", piece="Rotors and spinors", year="", status="Exact", kind="existing, made precise",
       head="Half-velocities are rotor charts",
@@ -56,13 +56,13 @@ ROWS = [
  dict(id="09", piece="Biquaternions (1873)", year="1873", status="Exact", kind="new",
       head="Clifford's ω picks curvature the way our dial does",
       clif="Clifford wrote motions of space as q + ωr with ω commuting and ω² = +1 (elliptic space), 0 (Euclidean) or −1 (hyperbolic).",
-      ma="The ring of a + bω is our θ-lift at (0, −ω²): one of the three countries, chosen by the sign of space's curvature, as the twist rule's curvature is the dial q. Mult-add's θ (θ² = θ) is exactly Clifford's elliptic projector (1 + ω)/2, the piece that splits a motion of S³ into its left and right halves. Naming caution: the elliptic case uses the split ring.",
+      ma="The ring of a + bω is our θ-lift at (0, −ω²): one of the three countries, chosen by the sign of space's curvature, as the twist rule's curvature is the dial q. The circle operation's θ (θ² = θ) is exactly Clifford's elliptic projector (1 + ω)/2, the piece that splits a motion of S³ into its left and right halves. Naming caution: the elliptic case uses the split ring.",
       src="checks H (SO(4), rigid motions and Lorentz maps verified); Lean omega_projector, omega_split"),
  dict(id="10", piece="Dual numbers", year="1873", status="Exact", kind="known",
       head="Dual numbers carry the derivative along",
       clif="With ε² = 0, a + bε carries a tangent; dual quaternions compose rigid motions.",
-      ma="(a₀ + a₁ε) ✳ (b₀ + b₁ε) = a₀ ✳ b₀ + (a₁(1 + b₀) + b₁(1 + a₀))ε: mult-add plus its first jet. Every border-country law is dual numbers in another chart.",
-      src="checks I; Lean dual_multAdd; jets page"),
+      ma="(a₀ + a₁ε) ✳ (b₀ + b₁ε) = a₀ ✳ b₀ + (a₁(1 + b₀) + b₁(1 + a₀))ε: the circle operation plus its first jet. Every border-country law is dual numbers in another chart.",
+      src="checks I; Lean dual_circ; jets page"),
  dict(id="11", piece="Clifford parallels and the Hopf fibration", year="1873", status="Exact", kind="new link",
       head="The twist's phase is the Hopf phase",
       clif="In S³, left multiplication by a unit quaternion moves every point the same distance: Clifford parallels, the fibres of the Hopf map.",
@@ -86,7 +86,7 @@ ROWS = [
  dict(id="15", piece="Bott periodicity of Cl(p,q)", year="", status="Exact", kind="transfer + new wall fact",
       head="The wall stays one point only in R, C and H",
       clif="Cl(p,q) repeats its matrix type every 8 steps of p − q.",
-      ma="The shift X ↦ 1 + X makes mult-add on Cl(p,q) a copy of its multiplication, so Bott's pattern carries over unchanged (the blade-square count depends only on (p − q) mod 8). What mult-add adds: the wall stays the single point −1 exactly in Cl(0,0) = R, Cl(0,1) = C and Cl(0,2) = H; everywhere else a blade squares to +1 and the wall grows into a cone.",
+      ma="The shift X ↦ 1 + X makes the circle operation on Cl(p,q) a copy of its multiplication, so Bott's pattern carries over unchanged (the blade-square count depends only on (p − q) mod 8). What the circle operation adds: the wall stays the single point −1 exactly in Cl(0,0) = R, Cl(0,1) = C and Cl(0,2) = H; everywhere else a blade squares to +1 and the wall grows into a cone.",
       src="checks E; Lean sig_shift_11, sig_bott_8, division_only"),
  dict(id="16", piece="Clifford's chain of circles (1871)", year="1871", status="Transfer", kind="",
       head="Holds in every chart, but only by Möbius invariance",
@@ -96,7 +96,7 @@ ROWS = [
  dict(id="17", piece="Clifford's theorem on special divisors (1878)", year="1878", status="None", kind="",
       head="No analog",
       clif="On an algebraic curve, a special divisor D has dim |D| ≤ deg D / 2.",
-      ma="No mult-add version found. It would need ✳ acting on divisors (formal sums of points on a curve), and no route to that was seen.",
+      ma="No circle-operation version found. It would need ✳ acting on divisors (formal sums of points on a curve), and no route to that was seen.",
       src=""),
 ]
 
@@ -117,7 +117,7 @@ plates = "".join(f'''
   <p class="piece">{html.escape(r["piece"])} · <span class="tag {TONE[r["status"]]}">{r["status"]}</span></p>
   <div class="pair">
     <figure>{inline(r["id"] + "-a.svg")}<figcaption><b>Clifford.</b> {html.escape(r["clif"])}</figcaption></figure>
-    <figure>{inline(r["id"] + "-b.svg")}<figcaption><b>Mult-add.</b> {html.escape(r["ma"])}</figcaption></figure>
+    <figure>{inline(r["id"] + "-b.svg")}<figcaption><b>The circle operation.</b> {html.escape(r["ma"])}</figcaption></figure>
   </div>
   {f'<p class="src">Where: {html.escape(r["src"])}</p>' if r["src"] else ""}
 </section>''' for r in ROWS)

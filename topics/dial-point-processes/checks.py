@@ -213,7 +213,7 @@ check("every dial count lands on the one parabola p^2 - 4q = 1 (two real walls)"
 check("units-free shape p^2/(p^2-4q) = (2*Fano - 1)^2 for every mode", okD)
 check("fermion modes have shape in [0,1], boson modes shape > 1, none negative (no count lives above the border parabola)",
       all((0 <= sh <= 1) if k < 0 else sh > 1 for k, x, sh in shapes))
-check("empty-mode limit s=0: (p,q) = (1,0), mult-add; full fermion mode s=-1: (-1,0), union of failures",
+check("empty-mode limit s=0: (p,q) = (1,0), the circle operation; full fermion mode s=-1: (-1,0), union of failures",
       (1 + 2 * 0, 0 * 1) == (1, 0) and (1 + 2 * -1, -1 * 0) == (-1, 0))
 a, b = 0.37, -0.52
 check("half-filled fermion mode s=-1/2: (p,q) = (0,-1/4), lens law (a+b)/(1+ab/4) is velocity addition with speed limit 2",

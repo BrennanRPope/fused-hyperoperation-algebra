@@ -24,7 +24,7 @@ Finding: the α-determinantal processes (Shirai–Takahashi 2003) are the dial w
    line in k (fit to 7 simulations: slope 0.579 vs 0.577, intercept 1.001). Known (Shirai–Takahashi; Morris 1982).
    Superposition: m copies of (k, K) = (k/m, mK), from c·(a ✳ₖ b) = (ca) ✳_{k/c} (cb). Known; identity in Lean.
 4. Bend: tilting a mode by t^N, in the ruler (mean − μ)/Var, composes by the landscape lens law at p = 1 + 2kμ,
-   q = kμ(1 + kμ): always on p² − 4q = 1. Rare mode = mult-add (1,0), full fermion mode = union of failures (−1,0),
+   q = kμ(1 + kμ): always on p² − 4q = 1. Rare mode = the circle operation ∘₁ (called mult-add before 1.0) (1,0), full fermion mode = union of failures (−1,0),
    half-filled = velocity addition with limit 2 (0, −1/4); shape (2F − 1)², F = Fano. Placement ours; the bend is pinned by
    the filling, so it gives no new processes.
 5. Fractional rungs: nothing genuine (shape matching only); dropped.

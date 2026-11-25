@@ -1,4 +1,4 @@
-"""Order dial: checks for the data-structure map and the order axis of mult-add.
+"""Order dial: checks for the data-structure map and the order axis of the circle operation.
 Run: python3 checks.py  (needs sympy, numpy)."""
 import itertools, math, random
 import numpy as np
@@ -11,14 +11,14 @@ def check(name, ok):
 
 rng = np.random.default_rng(1)
 
-# ---------- A. Where mult-add sits in the Boom hierarchy ----------
+# ---------- A. Where the circle operation sits in the Boom hierarchy ----------
 a, b, c, k = sp.symbols('a b c k')
 w = lambda x, y: x + y + k*x*y
-check("A1 weighted mult-add is associative", sp.expand(w(w(a,b),c) - w(a,w(b,c))) == 0)
-check("A2 weighted mult-add is commutative", sp.expand(w(a,b) - w(b,a)) == 0)
+check("A1 the circle operation with dial k is associative", sp.expand(w(w(a,b),c) - w(a,w(b,c))) == 0)
+check("A2 the circle operation with dial k is commutative", sp.expand(w(a,b) - w(b,a)) == 0)
 idem = sp.solve(sp.Eq(w(a,a), a), a)
 check("A3 idempotents of a+b+kab are only 0 and the wall -1/k", set(idem) == {0, -1/k})
-check("A4 so mult-add is not idempotent: 1 * 1 = 3 (k=1)", w(1,1).subs(k,1) == 3)
+check("A4 so the circle operation is not idempotent: 1 * 1 = 3 (k=1)", w(1,1).subs(k,1) == 3)
 check("A5 the wall -1/k absorbs: (-1/k) * b = -1/k", sp.simplify(w(-1/k, b) + 1/k) == 0)
 
 # ---------- B. Free objects: the generating functions of sets, bags, lists ----------
@@ -58,7 +58,7 @@ check("B10 dict override is idempotent and right regular (xyx = yx)", all(over(p
 check("B11 dict override is not commutative (merge order matters on shared keys)", over({0:'a'},{0:'b'}) != over({0:'b'},{0:'a'}))
 check("B12 but dicts with disjoint keys merge in either order", over({0:'a'},{1:'b'}) == over({1:'b'},{0:'a'}))
 # every collection is a map key -> value; value rule picks the structure
-check("B13 random sets: union of independent memberships is k=-1 mult-add p+q-pq",
+check("B13 random sets: union of independent memberships is k=-1 circle operation p+q-pq",
       abs((1-(1-0.3)*(1-0.6)) - (0.3+0.6-0.3*0.6)) < 1e-12)
 
 # ---------- C. The order dial q: weight each out-of-order pair by q ----------
@@ -87,7 +87,7 @@ for wd in itertools.product('xy', repeat=4):
 check("C5 in the quantum plane yx = q xy, (x+y)^4 = sum [4,j]_q x^j y^(4-j)",
       all(sp.expand(coef[j] - qbinom(4,j)) == 0 for j in range(5)))
 
-# ---------- D. Order cannot sit in mult-add's formula without losing grouping ----------
+# ---------- D. Order cannot sit in the circle operation's formula without losing grouping ----------
 A, B, C = sp.symbols('A B C', commutative=False)
 al, be = sp.symbols('alpha beta')
 m = lambda X, Y: X + Y + al*X*Y + be*Y*X
@@ -108,7 +108,7 @@ check("D5 shifted: a+b+(ab+ba)/2 = (1+a)o(1+b) - 1 for the Jordan product o", np
 check("D6 commutator of the mutation = (2*lambda-1)[a,b]: the order part is a Lie bracket",
       all(np.abs((mm(X,Y,l)-mm(Y,X,l)) - (2*l-1)*(X@Y-Y@X)).max()<1e-12 for l in (0,.3,.5,1)))
 
-# ---------- E. Mult-add over non-commuting inputs: it copies the inputs' laws exactly ----------
+# ---------- E. The circle operation over non-commuting inputs: it copies the inputs' laws exactly ----------
 def cd_mult(p, r):  # Cayley-Dickson, arrays of length 2^n
     nn = len(p)
     if nn == 1: return p*r
@@ -121,30 +121,30 @@ def comm(op, p, r): return op(p,r) - op(r,p)
 def assoc_(op, p, r, s): return op(op(p,r),s) - op(p,op(r,s))
 for dim, name in [(4,'quaternions'),(8,'octonions'),(16,'sedenions')]:
     P, R, S = (rng.standard_normal(dim) for _ in range(3))
-    check(f"E {name}: commutator of mult-add = commutator of the product", np.allclose(comm(star,P,R), comm(cd_mult,P,R)))
-    check(f"E {name}: associator of mult-add = associator of the product", np.allclose(assoc_(star,P,R,S), assoc_(cd_mult,P,R,S)))
+    check(f"E {name}: commutator of the circle operation = commutator of the product", np.allclose(comm(star,P,R), comm(cd_mult,P,R)))
+    check(f"E {name}: associator of the circle operation = associator of the product", np.allclose(assoc_(star,P,R,S), assoc_(cd_mult,P,R,S)))
 P, R, S = (rng.standard_normal(4) for _ in range(3))
-check("E quaternion mult-add: associative, not commutative", np.allclose(assoc_(star,P,R,S),0) and not np.allclose(comm(star,P,R),0))
+check("E the quaternion circle operation: associative, not commutative", np.allclose(assoc_(star,P,R,S),0) and not np.allclose(comm(star,P,R),0))
 P, R, S = (rng.standard_normal(8) for _ in range(3))
-check("E octonion mult-add: not associative but alternative (a*a)*b = a*(a*b)",
+check("E the octonion circle operation: not associative but alternative (a*a)*b = a*(a*b)",
       (not np.allclose(assoc_(star,P,R,S),0)) and np.allclose(assoc_(star,P,P,R),0))
 P, R = (rng.standard_normal(16) for _ in range(2))
-check("E sedenion mult-add: not even alternative", not np.allclose(assoc_(star,P,P,R),0))
+check("E the sedenion circle operation: not even alternative", not np.allclose(assoc_(star,P,P,R),0))
 # sedenion zero divisors give extra walls: (e3+e10)(e6-e15) = 0
 e = lambda i: np.eye(16)[i]
 u, v = e(3)+e(10), e(6)-e(15)
-check("E sedenions: a zero-divisor pair (e3+e10)(e6-e15)=0, so a = u-1, b = v-1 mult-add onto the wall -1",
+check("E sedenions: a zero-divisor pair (e3+e10)(e6-e15)=0, so a = u-1, b = v-1 circle operation onto the wall -1",
       np.allclose(cd_mult(u, v), 0) and np.allclose(star(u-one(16), v-one(16)), -one(16)))
 
 # ---------- F. Composition of functions: the affine group ----------
-def aff(st, sh): return np.array([[1+st, sh],[0,1.0]])  # x -> (1+a)x + c, mult-add coordinate a
+def aff(st, sh): return np.array([[1+st, sh],[0,1.0]])  # x -> (1+a)x + c, circle-operation coordinate a
 def compose(p, r): M = aff(*p) @ aff(*r); return (M[0,0]-1, M[0,1])
 okF = True
 for _ in range(50):
     p = tuple(rng.standard_normal(2)); r = tuple(rng.standard_normal(2))
     st, sh = compose(p, r)
     okF &= np.isclose(st, p[0]+r[0]+p[0]*r[0]) and np.isclose(sh, p[1] + (1+p[0])*r[1])
-check("F1 composing x->(1+a)x+c: stretches mult-add, shifts pick up order: (a*b, c + (1+a)d)", okF)
+check("F1 composing x->(1+a)x+c: stretches combine by the circle operation, shifts pick up order: (a*b, c + (1+a)d)", okF)
 okW = True
 for _ in range(50):
     p = tuple(rng.standard_normal(2)); r = tuple(rng.standard_normal(2))
@@ -158,9 +158,9 @@ check("F4 two stretches about different centres do not commute", not np.isclose(
 # fixed points
 centre = lambda p: -p[1]/p[0]
 check("F5 every T_k has centre (fixed point) -1/k", np.isclose(centre(Tk(.3)), -1/kk) and np.isclose(centre(Tk(-2)), -1/kk))
-# same as matrix mult-add on [[a,c],[0,0]]
+# same as the matrix circle operation on [[a,c],[0,0]]
 Pm = np.array([[.4,.9],[0,0]]); Rm = np.array([[-.2,.5],[0,0]])
-check("F6 same as matrix mult-add A+B+AB on [[a,c],[0,0]]", np.allclose(Pm+Rm+Pm@Rm, np.array([[compose((.4,.9),(-.2,.5))[0], compose((.4,.9),(-.2,.5))[1]],[0,0]])))
+check("F6 same as the matrix circle operation A+B+AB on [[a,c],[0,0]]", np.allclose(Pm+Rm+Pm@Rm, np.array([[compose((.4,.9),(-.2,.5))[0], compose((.4,.9),(-.2,.5))[1]],[0,0]])))
 
 # ---------- G. q-commutation: when is a smooth order dial honest? ----------
 qq, cc = sp.symbols('q c')
@@ -194,12 +194,12 @@ check("H1 Moyal star is associative for every hbar (tested on polynomials)",
       sp.expand(moyal(moyal(f1,f2),f3) - moyal(f1,moyal(f2,f3))) == 0)
 check("H2 x*p - p*x = i hbar: the commutator is set by hbar", sp.expand(moyal(xs,ps) - moyal(ps,xs) - sp.I*hb) == 0)
 st = lambda f, g: f + g + moyal(f, g)
-check("H3 mult-add over the star product is associative for every hbar",
+check("H3 circle operation over the star product is associative for every hbar",
       sp.expand(st(st(f1,f2),f3) - st(f1,st(f2,f3))) == 0)
 pb = sp.diff(f1,xs)*sp.diff(f2,ps) - sp.diff(f1,ps)*sp.diff(f2,xs)
-check("H4 star mult-add commutator = i hbar {a,b} + O(hbar^3) (Poisson bracket)",
+check("H4 the star circle-operation commutator = i hbar {a,b} + O(hbar^3) (Poisson bracket)",
       sp.expand(sp.series(st(f1,f2)-st(f2,f1), hb, 0, 3).removeO() - sp.I*hb*pb) == 0)
-check("H5 at hbar = 0 star mult-add is ordinary (commutative) mult-add", sp.expand(st(f1,f2).subs(hb,0) - (f1+f2+f1*f2)) == 0)
+check("H5 at hbar = 0 the star circle operation is the ordinary (commutative) circle operation", sp.expand(st(f1,f2).subs(hb,0) - (f1+f2+f1*f2)) == 0)
 
 # ---------- I. Composition first ----------
 # I1 compounding: grow by r then deposit d, vs deposit then grow
@@ -236,7 +236,7 @@ F = (s_ + t_ + pp*s_*t_)/(1 - qq2*s_*t_)
 lhs = Mst/(1 - qq2*s_*t_)
 check("I7 Moebius composition: mob(s) mob(t) = (1 - q s t) mob(F(s,t)), F the landscape law",
       all(sp.simplify(lhs[i] - mob(F)[i]) == 0 for i in range(4)))
-check("I8 mult-add (p=1, q=0) is the affine slice: Moebius maps that fix infinity",
+check("I8 circle operation (p=1, q=0) is the affine slice: Moebius maps that fix infinity",
       mob(t_).subs({pp:1, qq2:0})[1,0] == 0)
 # I9 Lie's vector fields alpha + beta x + gamma x^2 (sl2): bracket of translation and dilation
 X_ = sp.symbols('x')

@@ -1,4 +1,4 @@
-"""Entropy and quantum noise on the mult-add cube: numeric and symbolic checks.
+"""Entropy and quantum noise on the circle-operation cube: numeric and symbolic checks.
 
 Part of Fused Hyperoperation Algebra. Companion page: index.html.
 Run: python3 checks.py > checks_output.txt
@@ -36,7 +36,7 @@ def wadd(k, a, b):
 
 
 # ---------------------------------------------------------------------------
-print("== 1. Tsallis pseudo-additivity is weighted mult-add with k = 1 - q ==")
+print("== 1. Tsallis pseudo-additivity is the circle operation with k = 1 - q ==")
 def tsallis(p, q):
     p = np.asarray(p, float)
     if abs(q - 1) < 1e-12:

@@ -17,7 +17,7 @@ Next test: do landscape laws cluster at Beraha dial values k = 1 + 2cos(2pi/n)?
 Question: do landscape laws sit at the colour-count predictions k_n = 1 + 2cos(2π/n) (n ≥ 5: 1.618, 2, 2.247, …, → 3)?
 - `cluster_test.py` → `cluster/cluster_output.txt`, census `cluster/landscape_census.csv` (85 fixed placements from landscape, thermodynamics, simple-laws, statistics; 11 parameter families listed, not scored). Figure `cluster_figure.py` → `figures/f4_cluster.png`.
 - Result: 3 hits, all at k = 2 (leverage, Euler cusp, rung 2); 0 at the seven non-integer predictions. Random-set null p = 0.099; simple-number null (denominator ≤ 4) matches it 80% of the time. Whole dial: integers −2..2 beat Beraha n = 2..6 (80 vs 76 laws); k = −2 (Q = −1, ring never vanishes) holds 4 laws. Units a ↦ λa move λk to k, so positive dial values on q = 0 are unit choices.
-- Lean: `lean/LeeYangCluster.lean`, 10 theorems (Beraha minimal polynomials have no integer root; wAdd_units; leverage_is_compounding; units_bend). Merged into the library (1626 theorems, 55 modules).
+- Lean: `lean/LeeYangCluster.lean`, 10 theorems (Beraha minimal polynomials have no integer root; circK_units; leverage_is_compounding; units_bend). Merged into the library (1626 theorems, 55 modules).
 - Verdict: lead closed.
 
 ## Fill-then-spill test (Nov 25)

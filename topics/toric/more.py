@@ -12,7 +12,7 @@ for p in primerange(5,110):
     ec.append((p,p+1-n1,p+1-n2,round(2*math.sqrt(p),2)))
 out['ec']=ec
 print('a_p for y^2=x^3-x and y^2=x^3+x+1 (p, a1, a2, bound):'); print(ec)
-# 2. mult-add n-th power vs ordinary power mod n (AKS identity)
+# 2. Circle n-th power vs ordinary power mod n (AKS identity)
 a=sp.symbols('a')
 aks=[]
 for n in range(2,200):
@@ -34,7 +34,7 @@ for n in range(1,6):
     GL=sp.prod([q**n-q**i for i in range(n)])
     lim.append(('GL',n,str(sp.factor(GL)),sp.limit(GL/(q-1)**n,q,1)))
 print(lim)
-# mult-add coordinates: P^n count = ((1+a)^(n+1)-1)/a
+# Circle-operation coordinates: P^n count = ((1+a)^(n+1)-1)/a
 for n in range(1,5):
     e=sp.expand(((1+a)**(n+1)-1)/a); print('P^%d'%n,e, ' at a=0:',e.subs(a,0))
 # 4. sublattices of Z^2, Z^3 by Hermite normal form, vs zeta products

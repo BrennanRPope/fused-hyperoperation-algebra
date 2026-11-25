@@ -1,4 +1,4 @@
-"""Numerical analysis through mult-add: every claim on the page, checked in real float64.
+"""Numerical analysis through the circle operation: every claim on the page, checked in real float64.
 a ✳ b = a + b + ab = (1+a)(1+b) - 1.  Exact references use Fractions (float(Fraction) rounds
 correctly, so it is the true correctly rounded answer) or mpmath at 60 digits.
 Writes figure data to page_data.json."""
@@ -73,7 +73,7 @@ for a in [F(k, 64) for k in range(-32, 65) if k != 0]:
     okb &= (min(-2*a, -a/2) <= inv <= max(-2*a, -a/2))
 check("exact: whenever 1/2 <= 1+a <= 2, the inverse lies between -2a and -a/2 (Sterbenz's window)", okb)
 
-print("== 3. log1p and expm1: the chart that turns mult-add into adding, tangent to the identity at 0")
+print("== 3. log1p and expm1: the chart that turns the circle operation into adding, tangent to the identity at 0")
 okl = True
 for _ in range(50):
     a, b = mpf(random.uniform(-.9, 3)), mpf(random.uniform(-.9, 3))
@@ -84,7 +84,7 @@ for _ in range(50):
     a, s, t = mpf(random.uniform(-.9, 3)), mpf(random.uniform(-2, 2)), mpf(random.uniform(-2, 2))
     P = lambda t: mp.expm1(t * mp.log1p(a))
     okt &= abs(P(s) + P(t) + P(s)*P(t) - P(s + t)) < mpf(10)**-45
-check("fractional mult-add powers a^(✳t) = expm1(t·log1p a) add their exponents", okt)
+check("fractional circle powers a^(✳t) = expm1(t·log1p a) add their exponents", okt)
 x = 1e-10
 naive_log = math.log(1 + x); good = math.log1p(x); exl = mp.log1p(mpf(x))
 check("log(1+x) at x = 1e-10 loses about 7 digits; log1p keeps them",
@@ -150,7 +150,7 @@ for k in [-2.0, -1.0, -0.5, 0.7, 3.0]:
     okd &= abs((mpf(via) - acc) / acc) < 1e-14
 check("one routine for every dial k: x1 ✳k ... ✳k xn = expm1(sum log1p(k·x))/k (k = -2, -1, -0.5, 0.7, 3)", okd)
 
-print("== 6. Rounding errors are mult-add numbers (Higham's theta_n)")
+print("== 6. Rounding errors are circle-operation numbers (Higham's theta_n)")
 okh = True; okexact = True; th = []
 for n in [10, 100, 300, 1000]:
     xs = [math.exp(random.gauss(0, 0.05)) for _ in range(n)]
@@ -166,11 +166,11 @@ for n in [10, 100, 300, 1000]:
     okh &= abs(theta) <= bound <= gam
     th.append([n, float(abs(theta)), float(bound)])
 data["theta"] = th
-check("the total relative error of a float product equals the exact mult-add fold of the step errors", okexact)
+check("the total relative error of a float product equals the exact circle-operation fold of the step errors", okexact)
 check("|theta_n| <= (1+u)^n - 1 <= n·u/(1 - n·u) for n = 10..1000", okh)
 x, y, d1, d2 = F(3, 7), F(-5, 11), F(1, 1000), F(-3, 2000)
 check("product of perturbed values: relative error d1 ✳ d2 (exact)", (x*(1+d1))*(y*(1+d2)) == x*y*(1 + d1 + d2 + d1*d2))
-check("quotient of perturbed values: relative error (d1 - d2)/(1 + d2), mult-add subtraction (exact)",
+check("quotient of perturbed values: relative error (d1 - d2)/(1 + d2), circle-operation subtraction (exact)",
       (x*(1+d1))/(y*(1+d2)) == (x/y)*(1 + (d1 - d2)/(1 + d2)))
 
 print("== 7. Conditioning: two danger points, the identity (way back) and the wall (way in)")
@@ -239,11 +239,11 @@ for n in [3, 6, 9]:
             if mask >> i & 1: p *= bs[i]
         corners += p
     okh2 &= (acc == corners)
-check("a chain of mult-adds, each one Horner step acc·(1+b)+b, sums all 2^n - 1 corners of the cube in n steps", okh2)
+check("a chain of circle operations, each one Horner step acc·(1+b)+b, sums all 2^n - 1 corners of the cube in n steps", okh2)
 check("the three fma shapes agree exactly: a·b+(a+b) = a·(1+b)+b = b·(1+a)+a",
       all(F(a)*F(b) + F(a)+F(b) == F(a)*(1+F(b)) + F(b) == F(b)*(1+F(a)) + F(a) for a, b in [(0.1, 0.2), (-0.7, 3.0)]))
 okp = all(((1+F(a))**(2*n) - 1) == (lambda m: m + m + m*m)((1+F(a))**n - 1) for a in [0.03, -0.4] for n in [1, 5, 20])
-check("mult-add powers by squaring: a^(✳2n) = a^(✳n) ✳ a^(✳n)", okp)
+check("Circle powers by squaring: a^(✳2n) = a^(✳n) ✳ a^(✳n)", okp)
 okbern = all((1+F(a))**n - 1 >= n*F(a) for a in [F(-1), F(-1, 2), F(1, 10), F(3)] for n in range(0, 30))
 check("Bernoulli: a^(✳n) >= n·a for a >= -1 (compounding never loses to simple interest)", okbern)
 

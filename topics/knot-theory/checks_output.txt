@@ -6,7 +6,7 @@ PASS tangle algebra = state sum over the cube, 40 random tangles up to 8 crossin
 PASS the four corners of the sum: [0]+[0]=[0], [0]+[∞]=[∞]+[0]=[∞], [∞]+[∞] traps a loop = d·[∞] (diagrams)
 --- 2. Adding tangles is the dial with weight d (the loop value) ---
 PASS sum formula: (f1,g1)+(f2,g2) = (f1f2, f1g2 + g1f2 + d·g1g2)
-PASS in x = g/f: x(S+T) = x(S) ✳_d x(T)  (weighted mult-add, weight d)
+PASS in x = g/f: x(S+T) = x(S) ✳_d x(T)  (the circle operation, weight d)
 PASS sum is commutative and associative, [0] = (1, 0) is the identity
 PASS the lift is closing: 1 + d·x = ⟨D(T)⟩/f  (D joins left ends and right ends)
 PASS lift law = connected sum: ⟨D(S+T)⟩ = ⟨D(S)⟩·⟨D(T)⟩
@@ -14,7 +14,7 @@ PASS wall: if ⟨D(S)⟩ = 0 then ⟨D(S+T)⟩ = 0 (x = −1/d absorbs)
 PASS second wall: [∞] = (0, 1) absorbs: S + [∞] = (0, ⟨D(S)⟩), i.e. x = ∞
 PASS stacking is the same dial in z = f/g = 1/x, and ⟨N⟩ is its lift: ⟨N(S*T)⟩ = ⟨N(S)⟩⟨N(T)⟩
 PASS diagram check: V(D(S+T)) = V(D(S))·V(D(T)) (figure-eight # trefoil)
-PASS 'mult-add value' P − 1 turns # into ✳ exactly (a relabelling of P(K#L) = P(K)P(L))
+PASS 'circle-operation value' P − 1 turns # into ✳ exactly (a relabelling of P(K#L) = P(K)P(L))
 PASS disjoint union multiplies the Jones polynomial by d = −(t^½ + t^−½) (unlink of 2)
 --- 3. Twisting is the q-dial step y -> q·y + 1, with q = -A^-4 = -t ---
 PASS y = A²·g/f: the sum becomes y ✳_k y' with k = d·A⁻² = q − 1

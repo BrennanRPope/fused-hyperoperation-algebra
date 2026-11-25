@@ -1,4 +1,4 @@
-# Differential geometry through mult-add: every claim on the page, checked.
+# Differential geometry through the circle operation: every claim on the page, checked.
 import sympy as sp, numpy as np, math, random
 from mpmath import mp, mpf, quad, log as mlog, atanh as matanh, atan as matan, sqrt as msqrt, pi as mpi
 from scipy import integrate
@@ -71,15 +71,15 @@ pp, qq = p + 2*c, q + p*c + c**2
 check("re-charting x ↦ x/(1-cx) keeps 4q - p² (so K_proj = q - p²/4 and K_conf = 4q - p² are chart-free)",
       z(4*qq - pp**2 - (4*q - p**2)))
 Lmu = lambda s: sp.log(1 + s)
-check("mult-add re-charted (c = -1/2) is F(0, -1/4), and its ruler log(1+x) = 2·artanh(φ(x)/2), φ(x) = x/(1 + x/2)",
+check("The circle operation re-charted (c = -1/2) is F(0, -1/4), and its ruler log(1+x) = 2·artanh(φ(x)/2), φ(x) = x/(1 + x/2)",
       (pp.subs({p: 1, q: 0, c: sp.Rational(-1, 2)}), qq.subs({p: 1, q: 0, c: sp.Rational(-1, 2)})) == (0, sp.Rational(-1, 4))
       and abs(mlog(1 + mpf('0.7')) - 2*matanh((mpf('0.7')/(1 + mpf('0.35')))/2)) < 1e-25)
-check("so mult-add is a hyperbolic line: K_proj = q - p²/4 = -1/4 (Klein chart), K_conf = 4q - p² = -1, matching the half plane's curvature -1",
+check("so the circle operation is a hyperbolic line: K_proj = q - p²/4 = -1/4 (Klein chart), K_conf = 4q - p² = -1, matching the half plane's curvature -1",
       (q - p**2/4).subs({p: 1, q: 0}) == sp.Rational(-1, 4) and (4*q - p**2).subs({p: 1, q: 0}) == sp.simplify(gauss_curv(1/v_**2, 0, 1/v_**2, u_, v_)))
-# half-plane picture of mult-add
-check("half plane: lift y = 1 + x; the dilation y ↦ (1+a)y is an isometry and composes as mult-add",
+# half-plane picture of circle-operation
+check("half plane: lift y = 1 + x; the dilation y ↦ (1+a)y is an isometry and composes as the circle operation",
       z(((1 + a)*(1 + x)) - (1 + (a + x + a*x))) and z(sp.simplify(((1 + a)**2*(1 + 0))/((1 + a)*v_)**2 - 1/v_**2)))
-check("distance up the vertical geodesic from y = 1 to y = 1 + x is log(1 + x), the mult-add ruler; the wall x = -1 is the horizon y = 0, infinitely far",
+check("distance up the vertical geodesic from y = 1 to y = 1 + x is log(1 + x), the circle-operation ruler; the wall x = -1 is the horizon y = 0, infinitely far",
       z(sp.integrate(1/v_, (v_, 1, 1 + x)).subs(x, 2) - sp.log(3)) and sp.limit(sp.log(1 + x), x, -1, '+') == -sp.oo)
 check("dial line (p = k, q = 0): K_conf = -k² (radius 1/|k|), K_proj = -k²/4 (radius 2/|k|); flat only at k = 0",
       z((4*q - p**2).subs({p: k, q: 0}) + k**2) and z((q - p**2/4).subs({p: k, q: 0}) + k**2/4) and sp.solve(sp.Eq(-k**2, 0), k) == [0])
@@ -100,7 +100,7 @@ for (pv, qv) in [(0, -1), (1, -2), (3, 2), (mpf('0.5'), mpf('-0.3')), (2, mpf('0
         if abs(Lnum - Lcr) > 1e-15: good = False
 check("ruler = Cayley-Klein distance: L(x) = log CR(0, x; walls)/√(p² - 4q) (5 line-type points)", good)
 W_ = sp.symbols('W', positive=True)
-check("mult-add: walls -1 and ∞, and log CR(0, x; ∞, -1) = log(1 + x)", z(sp.limit(CR(0, x, W_, -1), W_, sp.oo) - (1 + x)))
+check("The circle operation: walls -1 and ∞, and log CR(0, x; ∞, -1) = log(1 + x)", z(sp.limit(CR(0, x, W_, -1), W_, sp.oo) - (1 + x)))
 check("Klein disk (K = -1): distance between two points on a chord = ½|log cross-ratio| with the chord's ends on the circle, = length of the straight segment in the Beltrami metric",
       (lambda P1, P2: (lambda d_seg, d_cr: abs(d_seg - d_cr) < 1e-9)(
           integrate.quad(lambda s: math.sqrt(((lambda X, Y, dX, dY: ((1 - (X*X + Y*Y))*(dX*dX + dY*dY) + (X*dX + Y*dY)**2)/(1 - (X*X + Y*Y))**2)(

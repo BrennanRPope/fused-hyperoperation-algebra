@@ -3,7 +3,7 @@
 Reads every *output*.txt and *results*.json under math-theory (not the Lean
 library, not this folder), pulls out every number printed with at least 6
 significant digits, and asks which named constants it matches (the constant,
-its negative, its reciprocal, or one less / one more, since mult-add shifts
+its negative, its reciprocal, or one less / one more, since the circle operation shifts
 by 1). Then it builds a null: the same numbers with every digit after the
 second significant one replaced at random, 2000 times, and counts matches the
 same way. A constant is a real repeat only if it turns up well above its null.

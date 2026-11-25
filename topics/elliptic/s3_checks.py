@@ -1,4 +1,4 @@
-"""Why the good primes' turning angles live on the 3-sphere, in mult-add terms. Run: python3 s3_checks.py"""
+"""Why the good primes' turning angles live on the 3-sphere, in circle-operation terms. Run: python3 s3_checks.py"""
 import json, math, itertools, random
 import numpy as np, sympy as sp
 from checks import ap as ap_count   # point counting from checks.py (imports run its checks once)
@@ -10,15 +10,15 @@ def rep(name, ok, extra=""):
     line = ("PASS " if ok else "FAIL ") + name + (("   " + extra) if extra else ""); print(line); out.append(line)
 def note(t): print("   " + t); out.append("   " + t)
 
-# 1. every law on the map is mult-add's lift with 1 + a promoted to the matrix I + aG
+# 1. every law on the map is the circle operation's lift with 1 + a promoted to the matrix I + aG
 a, b, k, q = sp.symbols('a b k q')
 G = sp.Matrix([[k, 1], [-q, 0]]); I = sp.eye(2)
 F = (a + b + k*a*b)/(1 - q*a*b)
 lhs = (I + a*G)*(I + b*G); rhs = (1 - q*a*b)*(I + F*G)
-rep("1a (I + aG)(I + bG) = (1 - q ab)(I + F(a,b) G) with G = [[k,1],[-q,0]]: the lens law is mult-add's lift in 2x2 matrices",
+rep("1a (I + aG)(I + bG) = (1 - q ab)(I + F(a,b) G) with G = [[k,1],[-q,0]]: the lens law is the circle operation's lift in 2x2 matrices",
     sp.simplify(lhs - rhs) == sp.zeros(2))
 rep("1b Cayley-Hamilton G^2 = kG - qI: trace k, determinant q", sp.simplify(G*G - (k*G - q*I)) == sp.zeros(2))
-rep("1c mult-add is the 1x1 case G = [1] (k=1, q=0): (1+a)(1+b) = 1 + (a+b+ab)", sp.expand((1 + a)*(1 + b) - (1 + (a + b + a*b))) == 0)
+rep("1c circle operation is the 1x1 case G = [1] (k=1, q=0): (1+a)(1+b) = 1 + (a+b+ab)", sp.expand((1 + a)*(1 + b) - (1 + (a + b + a*b))) == 0)
 
 # 2. primes: G_p is (minus) Frobenius on the torus's two loops
 curves = {"11a1": (0, -1, 1, -10, -20, 11), "37a1": (0, 0, 1, -1, 0, 37), "14a1": (1, 0, 1, 4, -6, 14),
@@ -31,7 +31,7 @@ noncm = [x for c in curves.values() for x in data(c)]
 cmd = [x for c in cm.values() for x in data(c)]
 ok = all(abs(np.linalg.eigvals(np.array([[-a_, 1], [-p, 0]], float)/math.sqrt(p))).round(9).tolist() == [1.0, 1.0] for p, a_ in noncm[:3000])
 rep("2a for every good prime, G_p/sqrt(p) (trace -a_p/sqrt p, det 1) has both eigenvalues on the unit circle: a turn", ok)
-# 3. bad primes: Frobenius on the lift 1+a is the p-th power: identity (split) or mult-add inverse (non-split)
+# 3. bad primes: Frobenius on the lift 1+a is the p-th power: identity (split) or circle inverse (non-split)
 ok = True
 for p in [7, 11, 37, 101]:
     ok &= all(pow(x, p, p) == x for x in range(1, p))                         # split torus F_p*
@@ -46,7 +46,7 @@ for p in [7, 11, 37, 101]:
     norm1 = [(x, y) for x in range(p) for y in range(p) if (x*x - d*y*y) % p == 1]
     ok &= len(norm1) == p + 1
     ok &= all(mul(pw(u, p), u) == (1, 0) for u in norm1)
-rep("3a on the split torus u^p = u (Frobenius does nothing, a_p = +1); on the turning torus u^p = 1/u (it flips to the mult-add inverse, a_p = -1)", ok)
+rep("3a on the split torus u^p = u (Frobenius does nothing, a_p = +1); on the turning torus u^p = 1/u (it flips to the circle inverse, a_p = -1)", ok)
 
 # 4. the 3-sphere: unit quaternions = SU(2); a turn by theta is a latitude 2-sphere of radius sin(theta)
 w, x, y, z = sp.symbols('w x y z', real=True)

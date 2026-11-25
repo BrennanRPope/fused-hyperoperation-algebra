@@ -11,7 +11,7 @@
   OK  panel grid         (e1+e2)(i1+i2) = own + cross
   OK  fused voice price  (1+k)^2-1 = k^2+2k
 
-Boundary theorem: mult-add over S++T = X_S (+) X_T, cross term = straddling corners
+Boundary theorem: the circle operation over S++T = X_S (+) X_T, cross term = straddling corners
   |S|=1, |T|=4: total = XS+XT+XS*XT? True;  XS*XT = sum of straddling corners? True;  straddling corners = 15 of 31
   |S|=2, |T|=3: total = XS+XT+XS*XT? True;  XS*XT = sum of straddling corners? True;  straddling corners = 21 of 31
   |S|=3, |T|=2: total = XS+XT+XS*XT? True;  XS*XT = sum of straddling corners? True;  straddling corners = 21 of 31
@@ -79,13 +79,13 @@ Boundary theorem: mult-add over S++T = X_S (+) X_T, cross term = straddling corn
   Debt trap: r=5%, g=3%: naive r-g = 2.000%, exact r(-)g = (r-g)/(1+g) = 1.9417%
     debt 100% of GDP needs a primary surplus of 1.942% of GDP to hold steady
     30 years, no surplus: debt ratio x1.7806 -> 178.1% of GDP
-    the 30-fold mult-add on the cube, by layer: L1 58.25, L2 16.40, L3 2.97, L4 0.39, L5 0.04, rest 0.003
+    the 30-fold circle operation on the cube, by layer: L1 58.25, L2 16.40, L3 2.97, L4 0.39, L5 0.04, rest 0.003
     linear layer 58.25 points; compounding layers (2 and up) 19.81 points
     layer 2 overtakes layer 1 after n = 1 + 2/x = 104 years (L2/L1 = (n-1)x/2)
 
 ======================================================================
 4. QUICK MATCHES
-  Order of reforms: mult-add commutes, so percent reforms on one quantity are order-free: True
+  Order of reforms: the circle operation commutes, so percent reforms on one quantity are order-free: True
   Fused exponent rung (1+a)^(1+b)-1 does not commute: a=1,b=2 -> 7 ; a=2,b=1 -> 8
     with a=10%, b=20%: 12.1169% vs 22.2079%
   Voice pricing with a free floor vote (value u, price 0.5 per credit):

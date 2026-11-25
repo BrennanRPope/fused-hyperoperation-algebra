@@ -46,7 +46,7 @@ html = f"""<!DOCTYPE html>
 <div class="plate">{P['p2_two_halves_join']}</div>
 <p class="cap">Plate 2. Each coloured diagonal adds to one layer of the joined box. The negative pieces of the half box are exactly what make the cancellation work.</p>
 <div class="eq">box of dimension d, sides 1 + a: &nbsp;(1 + a)^d = 1 + (a ✳ a ✳ … ✳ a, d times) = 1 + a^(✳d)</div>
-<p>So "fractional dimension" is the fractional mult-add power, and at a = 1 it is 2^d. A box of dimension ½ with sides 2 has the same count as one stick of side √2: the half box is the dial √2 − 1 from the dials page, in a different drawing. Three third-boxes make a stick the same way. The numbers are forced: any continuous rule with f(d + e) = f(d)·f(e) and f(1) = 2 is 2^d.</p>
+<p>So "fractional dimension" is the fractional circle power, and at a = 1 it is 2^d. A box of dimension ½ with sides 2 has the same count as one stick of side √2: the half box is the dial √2 − 1 from the dials page, in a different drawing. Three third-boxes make a stick the same way. The numbers are forced: any continuous rule with f(d + e) = f(d)·f(e) and f(1) = 2 is 2^d.</p>
 </div></section>
 
 <section class="band" id="shape" style="background:var(--panel)"><div class="wrap">
@@ -80,7 +80,7 @@ html = f"""<!DOCTYPE html>
 <tr><td>Iterating: P½ ∘ P½ = P</td><td>No</td><td>Needs a half-exponential on counts; linear-size operations can't</td></tr>
 <tr><td>Canonical number</td><td>Yes</td><td>2^d is forced by continuity</td></tr>
 <tr><td>Canonical shape</td><td>No</td><td>Many dimension-½ fractals, each with its own count wobble</td></tr>
-<tr><td>Fits mult-add</td><td>Yes</td><td>Dimension d is the mult-add power a^(✳d) = (1 + a)^d − 1</td></tr>
+<tr><td>Fits the circle operation</td><td>Yes</td><td>Dimension d is the circle power a^(✳d) = (1 + a)^d − 1</td></tr>
 <tr><td>Merging and complement</td><td>Same as the dials</td><td>Union half √2 − 1, intersection half √2 + 1, as before</td></tr>
 <tr><td>Reaches the choice-free lead</td><td>No</td><td>All fractals have exactly the size of P(ℕ)</td></tr>
 </tbody></table>

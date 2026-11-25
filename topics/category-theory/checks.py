@@ -166,7 +166,7 @@ ok = True
 for _ in range(40):
     Xc = [1] + [random.randint(0, 3) for _ in range(3)]; Yc = [1] + [random.randint(0, 3) for _ in range(2)]
     ok &= sp.expand(P(pmul(Xc, Yc)) - 1 - ma(P(Xc) - 1, P(Yc) - 1)) == 0
-check("cell polynomials multiply under products, so P - 1 mult-adds, as polynomials in t (random complexes)", ok)
+check("cell polynomials multiply under products, so P - 1 combines by the circle operation, as polynomials in t (random complexes)", ok)
 chit = lambda c: P(c).subs(t, -1) - 1
 check("spheres: reduced Euler characteristic of S^n is (-1)^n (n < 8)", all(chit(sphere(n)) == (-1)**n for n in range(8)))
 check("circle is the wall: reduced chi of S^1 x Y is -1 for Y = S^0..S^5 and torus", all(chit(pmul(sphere(1), sphere(n))) == -1 for n in range(6)) and chit(pmul(sphere(1), [1,2,1])) == -1)

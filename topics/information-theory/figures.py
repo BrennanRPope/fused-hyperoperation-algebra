@@ -17,7 +17,7 @@ plt.rcParams.update({"font.size": 11, "text.color": INK, "axes.labelcolor": INK,
 # ---------- f1: four ways to count the corner ----------
 def square(ax, title, sub, cells, p=0.38, q=0.30, outer=False):
     ax.set_aspect("equal"); ax.axis("off")
-    if outer:  # the mult-add square: side 1+a by 1+b, unit cell at origin
+    if outer:  # the circle-operation square: side 1+a by 1+b, unit cell at origin
         a, b = 0.55, 0.42
         rects = {"1": (0,0,1,1), "a": (1,0,a,1), "b": (0,1,1,b), "ab": (1,1,a,b)}
         lab = {"1": "1", "a": "a", "b": "b", "ab": "ab"}
@@ -43,7 +43,7 @@ def square(ax, title, sub, cells, p=0.38, q=0.30, outer=False):
     ax.text(0, -0.13, sub, transform=ax.transAxes, fontsize=9.5, color=INK2, va="top")
 
 fig, axs = plt.subplots(1, 4, figsize=(13, 4.4))
-square(axs[0], "k = 1  mult-add", "(1+a)(1+b) − 1 = a + b + ab\nvolume grows: counting, odds, Campbell",
+square(axs[0], "k = 1  circle operation", "(1+a)(1+b) − 1 = a + b + ab\nvolume grows: counting, odds, Campbell",
        {"a": "+", "b": "+", "ab": "+"}, outer=True)
 square(axs[1], "k = 0  plain addition", "p + q: the corner counted twice\nShannon, Rényi, code lengths",
        {"a": "+", "b": "+", "ab": "++"})
@@ -55,7 +55,7 @@ fig.suptitle("One square, four ways to count its corner: the weight k in a ⊕�
              x=0.01, ha="left", fontsize=13)
 plt.tight_layout(rect=(0, 0.10, 1, 0.93)); fig.savefig(f"{OUT}/f1_corner_square.png", dpi=150); plt.close(fig)
 
-# ---------- f2: the mult-add cube, union vs parity ----------
+# ---------- f2: the circle-operation cube, union vs parity ----------
 def iso(x, y, z):
     return x * 1.0 + y * 0.55, z * 1.0 + y * 0.45
 def cube(ax, title, color_of, sign_of, sub):
@@ -119,7 +119,7 @@ ax.set_xlim(-2.5, 1.5); ax.set_ylim(-0.75, 1.05); ax.axis("off")
 ax.set_title("The weight ladder: where each information law sits", loc="left", fontsize=13)
 plt.tight_layout(); fig.savefig(f"{OUT}/f3_weight_ladder.png", dpi=150); plt.close(fig)
 
-# ---------- f4: decoding, two mult-adds on one segment ----------
+# ---------- f4: decoding, two circle operations on one segment ----------
 fig, ax = plt.subplots(figsize=(7.5, 5))
 r1 = np.linspace(-0.999, 0.999, 400); r2 = 0.6
 ax.plot(r1, r1 * r2, color=BLUE, lw=2)

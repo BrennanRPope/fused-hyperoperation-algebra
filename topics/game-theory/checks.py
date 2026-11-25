@@ -1,4 +1,4 @@
-"""Game theory through mult-add: every claim on the page, checked.
+"""Game theory through the circle operation: every claim on the page, checked.
 Dial: a ✳k b = a + b + k·ab, lift 1 + k·x."""
 import math, random, itertools
 from fractions import Fraction as F
@@ -102,7 +102,7 @@ for _ in range(200):
     okt &= math.isclose(s1, math.tanh(d1 * math.log(10) / 800), rel_tol=1e-9, abs_tol=1e-12)
     okp &= math.isclose(p12, p1 * p2 / (p1 * p2 + (1 - p1) * (1 - p2)), rel_tol=1e-9)
     okt &= math.isclose(O(p1), (1 + s1) / (1 - s1), rel_tol=1e-9)
-check("Elo odds multiply along a chain, so (odds - 1) mult-adds (Bradley-Terry)", oke)
+check("Elo odds multiply along a chain, so (odds - 1) combines by the circle operation (Bradley-Terry)", oke)
 check("the edge s = 2P - 1 composes as (s1 + s2)/(1 + s1·s2): relativity's velocity addition, landscape point (0, -1)", okv)
 check("edge = tanh(gap·ln10/800) and odds = (1 + s)/(1 - s): gap is rapidity, odds is the Doppler lift", okt)
 check("win chance composes as p1·p2 / (p1·p2 + (1-p1)(1-p2))", okp)

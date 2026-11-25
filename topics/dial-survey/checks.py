@@ -21,7 +21,7 @@ p = lambda x: x/(1+x)
 check("element dial t is odds: 1-P(in A or B) = (1-p_t)(1-p_s) iff dial t*s",
       sp.simplify((1-p(w(1,t,s))) - (1-p(t))*(1-p(s))) == 0)
 check("complement turns odds t into 1/t", sp.simplify((1-p(t)) - p(1/t)) == 0)
-# uniform dial t <-> exponent alpha = log2(1+t): count (1+t)^n = 2^(alpha n), and alpha adds when dials mult-add
+# uniform dial t <-> exponent alpha = log2(1+t): count (1+t)^n = 2^(alpha n), and alpha adds when dials combine by the circle operation
 for (x, y) in [(F(1,3), F(2,5)), (F(1), F(1)), (F(3,7), F(1,9))]:
     al = lambda u: math.log2(1+float(u))
     check(f"alpha(t*s) = alpha(t)+alpha(s) for t={x}, s={y}", abs(al(x+y+x*y) - al(x) - al(y)) < 1e-12)

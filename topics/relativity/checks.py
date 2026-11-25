@@ -1,4 +1,4 @@
-# Special relativity's velocity addition through mult-add: exact checks (sympy) + numeric.
+# Special relativity's velocity addition through the circle operation: exact checks (sympy) + numeric.
 import sympy as sp, math, random
 u,v,w,c,a,b,s,t,x,T,X = sp.symbols('u v w c a b s t x T X')
 ok=0; tot=0
@@ -10,15 +10,15 @@ vel=lambda p,q:(p+q)/(1+p*q)
 velc=lambda p,q:(p+q)/(1+p*q/c**2)
 ma=lambda p,q:p+q+p*q
 D=lambda p:(1+p)/(1-p)      # Doppler factor squared (Bondi k^2)
-d=lambda p:D(p)-1           # = 2p/(1-p), the mult-add variable
+d=lambda p:D(p)-1           # = 2p/(1-p), the circle-operation variable
 check("lens: D(u+v rel) = D(u)·D(v)", z(D(vel(u,v))-D(u)*D(v)))
-check("mult-add in disguise: d(u⊕v) = d(u) ⊞ d(v), d = 2u/(1-u)", z(d(vel(u,v))-ma(d(u),d(v))))
+check("The circle operation in disguise: d(u⊕v) = d(u) ⊞ d(v), d = 2u/(1-u)", z(d(vel(u,v))-ma(d(u),d(v))))
 check("d(u) = 2u/(1-u)", z(d(u)-2*u/(1-u)))
 check("inverse lens: u = d/(2+d)", z(d(u)/(2+d(u))-u))
 check("units: velc(u,v)/c = vel(u/c, v/c)", z(velc(u,v)/c-vel(u/c,v/c)))
 check("light absorbs: 1 ⊕ v = 1 (like -1 ⊞ b = -1)", z(vel(1,v)-1) and z(ma(-1,b)+1))
 check("-1 ⊕ v = -1", z(vel(-1,v)+1))
-check("light wall maps to mult-add wall: d(-1) = -1, d(1) = ∞", z(d(sp.Integer(-1))+1) and sp.limit(d(u),u,1,'-')==sp.oo)
+check("light wall maps to the circle-operation wall: d(-1) = -1, d(1) = ∞", z(d(sp.Integer(-1))+1) and sp.limit(d(u),u,1,'-')==sp.oo)
 check("speed limit: 1 - u⊕v = (1-u)(1-v)/(1+uv)", z(1-vel(u,v)-(1-u)*(1-v)/(1+u*v)))
 check("landscape point: (a+b+0·ab)/(1-(-1)ab)  → k=0, q=-1/c²", z(velc(a,b)-(a+b)/(1-(-1/c**2)*a*b)))
 # third layer
@@ -73,7 +73,7 @@ lam=2/t
 check("natural units: rung t² lands at (2t, t²-1)", z(lam*t**2-2*t) and z(lam**2*t**2*(t**2-1)/4-(t**2-1)))
 check("that curve is q = k²/4 - 1 (border parabola moved down 1)", z((2*t)**2/4-1-(t**2-1)))
 check("walls on it: 1+2t·a+(t²-1)a² = (1+(1+t)a)(1-(1-t)a)", z(1+2*t*a+(t**2-1)*a**2-(1+(1+t)*a)*(1-(1-t)*a)))
-check("t=0 walls ±1 (velocity addition), t=1 walls -1/2 and ∞ (mult-add k=2)",
+check("t=0 walls ±1 (velocity addition), t=1 walls -1/2 and ∞ (the circle operation k=2)",
       z((1+a)*(1-a)-(1-a**2)) and z((1+2*a)*(1-0*a)-(1+2*a)))
 check("raw units: rung s walls at -2/(√s(1+√s)) and 2/(√s(1-√s)); speed limit ~2/√s as s→0",
       z((1+t**2*a+t**2*(t**2-1)/4*a**2).subs(a,-2/(t*(1+t)))) and z((1+t**2*a+t**2*(t**2-1)/4*a**2).subs(a,2/(t*(1-t)))))

@@ -39,7 +39,7 @@ for ax, q, title in [(axs[0], 0.35, "q = 0.35: the whole lattice carries weight"
     ax.set_xticks(range(-2, 4)); ax.set_yticks(range(-2, 4))
     ax.set_xlabel("copies of wave 1  (n₁)"); ax.set_ylabel("copies of wave 2  (n₂)")
     ax.set_title(title, fontsize=11, loc="left")
-fig.text(0.5, -0.04, "Dot area = weight q^C(n₁,2) · q^C(n₂,2) · A^(n₁n₂).  The shaded square is the mult-add cube.",
+fig.text(0.5, -0.04, "Dot area = weight q^C(n₁,2) · q^C(n₂,2) · A^(n₁n₂).  The shaded square is the circle-operation cube.",
          ha="center", fontsize=10, color=GREY)
 save(fig, "lattice.svg")
 
@@ -81,7 +81,7 @@ for ax, q, title in [(axs[0], 0.55*np.exp(0.7j), "q ≠ 0: the annulus between |
     ax.annotate("w·q", (pts[3].real, pts[3].imag), xytext=(6, -12), textcoords="offset points", color=INK, fontsize=9)
     ax.set_xlim(-1.6, 1.6); ax.set_ylim(-1.6, 1.6); ax.set_aspect("equal"); ax.axis("off")
     ax.set_title(title, fontsize=10.5, loc="left")
-fig.text(0.5, 0.0, "Orange: the orbit w·qᵐ.  Multiplying by q is mult-add by q−1, so gluing is a rung-1 move.",
+fig.text(0.5, 0.0, "Orange: the orbit w·qᵐ.  Multiplying by q is the circle operation by q−1, so gluing is a rung-1 move.",
          ha="center", fontsize=10, color=GREY)
 save(fig, "annulus.svg")
 

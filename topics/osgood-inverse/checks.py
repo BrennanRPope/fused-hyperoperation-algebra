@@ -1,5 +1,5 @@
 """Numerical checks for "The inverse of the Osgood test" (Nov 25, 2026).
-Each line prints PASS/FAIL. Mult-add notation: E(x)=e^x-1, L(y)=log(1+y)=log1p (E's inverse)."""
+Each line prints PASS/FAIL. Circle-operation notation: E(x)=e^x-1, L(y)=log(1+y)=log1p (E's inverse)."""
 import sys, json, math
 import numpy as np
 from scipy.integrate import solve_ivp, quad
@@ -82,9 +82,9 @@ s = 1 / x
 rep("mirror: d/dt(1/x) = -s^2 w(1/s) when x' = w(x)", np.allclose(-w(x) / x ** 2, -s ** 2 * w(1 / s)))
 Ttop = quad(lambda s: 1 / (s ** 2 * w(1 / s)), 1, np.inf)[0]
 rep("mirror of 2*sqrt(x): s'=-2 s^{3/2} comes in from infinity in finite time, the same time Omega(1)=1", abs(Ttop - 1) < 1e-9)
-# mult-add form: u = multAddInv(v) = -v/(1+v) swaps v -> infinity with u -> wall -1
+# Circle-operation form: u = circInv(v) = -v/(1+v) swaps v -> infinity with u -> wall -1
 v = np.array([1e2, 1e6, 1e12]); u = -v / (1 + v)
-rep("mult-add inverse sends infinity to the wall: -v/(1+v) -> -1", np.allclose(u, -1, atol=1e-2) and abs(u[-1] + 1) < 1e-11)
+rep("Circle inverse sends infinity to the wall: -v/(1+v) -> -1", np.allclose(u, -1, atol=1e-2) and abs(u[-1] + 1) < 1e-11)
 
 # 7. Systems: same size, opposite outcomes (direction decides)
 def rot(t, z): r2 = z[0] ** 2 + z[1] ** 2; return [-r2 * z[1], r2 * z[0]]

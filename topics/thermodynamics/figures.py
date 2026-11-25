@@ -30,7 +30,7 @@ ax.text(.5, .5, "both in\nground state\n1", ha="center", va="center")
 ax.text(1 + zA / 2, .5, "A excited\nz_A", ha="center", va="center")
 ax.text(.5, 1 + zB / 2, "B excited\nz_B", ha="center", va="center")
 ax.text(1 + zA / 2, 1 + zB / 2, "both\nexcited\nz_A·z_B", ha="center", va="center", color="white", weight="bold")
-ax.set_title("Two systems: Z_AB = (1 + z_A)(1 + z_B)\nthe corner of mult-add is 'both excited'", fontsize=11)
+ax.set_title("Two systems: Z_AB = (1 + z_A)(1 + z_B)\nthe corner of the circle operation is 'both excited'", fontsize=11)
 ax.set_xlim(-.05, 1.9); ax.set_ylim(-.05, 1.62); ax.set_aspect("equal"); ax.axis("off")
 # (b) engines in series: the waste box shrinks
 ax = axs[1]; e1, e2 = .35, .3
@@ -74,7 +74,7 @@ for bits in itertools.product((0, 1), repeat=3):
     ax.text(p[0], p[1] - .22, word, ha="center", va="top", fontsize=10)
 ax.text(.73, -.62, "8 corners = 8 ways to fill 3 fermion modes (Pauli: each 0 or 1)\n"
         "Ξ = (1 + z₁)(1 + z₂)(1 + z₃) = sum over corners", ha="center", fontsize=10.5)
-ax.set_title("Fermions are the mult-add cube", fontsize=12)
+ax.set_title("Fermions are the circle-operation cube", fontsize=12)
 ax.set_xlim(-.4, 1.85); ax.set_ylim(-.85, 1.65); ax.set_aspect("equal"); ax.axis("off")
 ax = fig.add_subplot(1, 2, 2)
 zb = .62; x0 = 0
@@ -187,7 +187,7 @@ for a_, col in [(1.0, INK), (.6, PALE_H), (.3, HOT), (0.0, "#7a1a0e")]:
     sq = [(0, 0, "1"), (1, 0, f"{a_:g}·zᵢ"), (0, 1, f"{a_:g}·zⱼ"), (1, 1, "zᵢzⱼ")]
 ax.axis("off")
 x0 = 0
-for a_, title in [(1.0, "T = ∞: a = 1\nplain mult-add square"), (.45, "ferromagnet: 0 < a < 1\nedges shrink"), (0.0, "T = 0: a = 0\nonly the diagonal")]:
+for a_, title in [(1.0, "T = ∞: a = 1\nplain circle-operation square"), (.45, "ferromagnet: 0 < a < 1\nedges shrink"), (0.0, "T = 0: a = 0\nonly the diagonal")]:
     s0 = 1.0
     cells = [((0, 0), "white", "1"), ((1, 0), PALE_H if a_ > 0 else "#f3f3f3", f"{a_:g} zᵢ" if a_ else "0"),
              ((0, 1), PALE_H if a_ > 0 else "#f3f3f3", f"{a_:g} zⱼ" if a_ else "0"), ((1, 1), HOT, "zᵢzⱼ")]
@@ -198,7 +198,7 @@ for a_, title in [(1.0, "T = ∞: a = 1\nplain mult-add square"), (.45, "ferroma
     ax.text(x0 + .61, -.2, title, ha="center", va="top", fontsize=10)
     x0 += 1.6
 ax.text(2.2, 1.55, "each bond's Lee–Yang polynomial 1 + a zᵢ + a zⱼ + zᵢzⱼ\n"
-        "is a mult-add square with its two edge cells weighted by a = e^(−2βJ)", ha="center", fontsize=10.5)
+        "is a circle-operation square with its two edge cells weighted by a = e^(−2βJ)", ha="center", fontsize=10.5)
 ax.text(2.2, -.75, "Asano (1970): glue the squares spin by spin, keeping only the cube's all-0 and all-1 corners;\n"
         "the zeros stay on the circle. Checked against brute force on 15 random graphs.", ha="center", va="top", fontsize=10)
 ax.set_xlim(-.2, 4.6); ax.set_ylim(-1.15, 1.85); ax.set_aspect("equal")

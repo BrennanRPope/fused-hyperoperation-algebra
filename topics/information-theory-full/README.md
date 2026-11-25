@@ -1,4 +1,4 @@
-# Information theory through mult-add: the full pass
+# Information theory through the circle operation: the full pass
 
 Page: index.html (self-contained). Checks: checks.py → checks_output.txt (28/28 pass). Lean: lean/InformationFull.lean (31 theorems, compiles clean), lean/README.md.
 

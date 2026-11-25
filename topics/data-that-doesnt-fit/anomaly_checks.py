@@ -1,5 +1,5 @@
 import math
-print("=== Muon puzzle: Heitler-Matthews cascade as k-fold mult-add ===")
+print("=== Muon puzzle: Heitler-Matthews cascade as k-fold circle operation ===")
 xi=10.0; Nm=50.0
 for E in [1e7,1e8,1e9,1e10]:  # GeV
     k=math.log(E/xi)/math.log(Nm)
@@ -44,4 +44,4 @@ s=1/3.5; d=1-math.sqrt(s); print("total destruction",round(1-s,3)," each",round(
 print()
 print("=== Hubble: two partial fixes ===")
 for aa,bb in [(0.04,0.045),(0.06,0.025)]:
-    print(aa,bb,"mult-add",round(aa+bb+aa*bb,4),"add",aa+bb,"cross",round(aa*bb,4))
+    print(aa,bb,"The circle operation",round(aa+bb+aa*bb,4),"add",aa+bb,"cross",round(aa*bb,4))

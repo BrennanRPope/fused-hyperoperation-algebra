@@ -1,10 +1,10 @@
-real rate 1871-2022: mean 2.45%, mult-add mean 2.28%, sd 5.87%, min -13.6%, share of negative years 21%
+real rate 1871-2022: mean 2.45%, circle-operation mean 2.28%, sd 5.87%, min -13.6%, share of negative years 21%
 year-to-year autocorrelation 0.32
 
 T = 10 years, 113 origins 1901-2013 (overlapping; about 12 independent windows)
   realized discount factor: mean 0.875, median 0.835
   constant mean rate           mean forecast 0.722  realized/forecast  1.21  mean |log error| 0.257
-  constant mult-add mean       mean forecast 0.740  realized/forecast  1.18  mean |log error| 0.247
+  the constant circle-operation mean       mean forecast 0.740  realized/forecast  1.18  mean |log error| 0.247
   averaged factors, block 1    mean forecast 0.758  realized/forecast  1.15  mean |log error| 0.238
   averaged factors, block 10   mean forecast 0.785  realized/forecast  1.11  mean |log error| 0.235
   averaged, uncertain mean     mean forecast 0.817  realized/forecast  1.07  mean |log error| 0.225
@@ -12,7 +12,7 @@ T = 10 years, 113 origins 1901-2013 (overlapping; about 12 independent windows)
 T = 20 years, 103 origins 1901-2003 (overlapping; about 6 independent windows)
   realized discount factor: mean 0.745, median 0.716
   constant mean rate           mean forecast 0.519  realized/forecast  1.43  mean |log error| 0.416
-  constant mult-add mean       mean forecast 0.546  realized/forecast  1.37  mean |log error| 0.386
+  the constant circle-operation mean       mean forecast 0.546  realized/forecast  1.37  mean |log error| 0.386
   averaged factors, block 1    mean forecast 0.574  realized/forecast  1.30  mean |log error| 0.360
   averaged factors, block 10   mean forecast 0.616  realized/forecast  1.21  mean |log error| 0.345
   averaged, uncertain mean     mean forecast 0.722  realized/forecast  1.03  mean |log error| 0.291
@@ -20,7 +20,7 @@ T = 20 years, 103 origins 1901-2003 (overlapping; about 6 independent windows)
 T = 30 years, 93 origins 1901-1993 (overlapping; about 4 independent windows)
   realized discount factor: mean 0.615, median 0.568
   constant mean rate           mean forecast 0.371  realized/forecast  1.66  mean |log error| 0.556
-  constant mult-add mean       mean forecast 0.400  realized/forecast  1.54  mean |log error| 0.505
+  the constant circle-operation mean       mean forecast 0.400  realized/forecast  1.54  mean |log error| 0.505
   averaged factors, block 1    mean forecast 0.432  realized/forecast  1.43  mean |log error| 0.460
   averaged factors, block 10   mean forecast 0.482  realized/forecast  1.28  mean |log error| 0.467
   averaged, uncertain mean     mean forecast 0.697  realized/forecast  0.88  mean |log error| 0.318
@@ -28,7 +28,7 @@ T = 30 years, 93 origins 1901-1993 (overlapping; about 4 independent windows)
 T = 40 years, 83 origins 1901-1983 (overlapping; about 3 independent windows)
   realized discount factor: mean 0.554, median 0.515
   constant mean rate           mean forecast 0.260  realized/forecast  2.13  mean |log error| 0.768
-  constant mult-add mean       mean forecast 0.288  realized/forecast  1.92  mean |log error| 0.691
+  the constant circle-operation mean       mean forecast 0.288  realized/forecast  1.92  mean |log error| 0.691
   averaged factors, block 1    mean forecast 0.320  realized/forecast  1.73  mean |log error| 0.642
   averaged factors, block 10   mean forecast 0.368  realized/forecast  1.50  mean |log error| 0.661
   averaged, uncertain mean     mean forecast 0.751  realized/forecast  0.74  mean |log error| 0.478
@@ -36,7 +36,7 @@ T = 40 years, 83 origins 1901-1983 (overlapping; about 3 independent windows)
 T = 50 years, 73 origins 1901-1973 (overlapping; about 2 independent windows)
   realized discount factor: mean 0.489, median 0.481
   constant mean rate           mean forecast 0.175  realized/forecast  2.80  mean |log error| 1.057
-  constant mult-add mean       mean forecast 0.200  realized/forecast  2.45  mean |log error| 0.921
+  the constant circle-operation mean       mean forecast 0.200  realized/forecast  2.45  mean |log error| 0.921
   averaged factors, block 1    mean forecast 0.229  realized/forecast  2.14  mean |log error| 0.812
   averaged factors, block 10   mean forecast 0.274  realized/forecast  1.78  mean |log error| 0.805
   averaged, uncertain mean     mean forecast 0.923  realized/forecast  0.53  mean |log error| 0.664

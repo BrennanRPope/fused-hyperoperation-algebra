@@ -1,7 +1,7 @@
 # Gravity Probe B through "twist = curvature x area".
 # Geodetic precession = velocity-space twist (Thomas-type, q = -1/c^2) + space-curvature holonomy.
 # Checks: exact Schwarzschild parallel transport (numeric ODE), Flamm-surface holonomy and curvature integral,
-# the mult-add combination of the two factors, GP-B numbers, frame dragging as a gravitomagnetic flux.
+# the circle-operation combination of the two factors, GP-B numbers, frame dragging as a gravitomagnetic flux.
 import numpy as np, sympy as sp, math
 ok=0; tot=0
 def check(name, cond):
@@ -71,7 +71,7 @@ for r in (4.0, 10.0, 50.0):
     # vector vs radial ends at -2π√(1-2/r); report mod 2π
     check(f"space slice r={r}M: carried vector comes back turned by 2π(1-√(1-2M/r)) = {want:.6f}", abs(((got - (-2*math.pi*math.sqrt(1-2/r)))+math.pi)%(2*math.pi)-math.pi) < 1e-8)
 
-# ---------- 3. the two factors fuse by mult-add ----------
+# ---------- 3. the two factors fuse by the circle operation ----------
 x = sp.symbols('x', positive=True)            # x = M/r
 s = sp.sqrt(1-2*x)                           # space factor (Flamm)
 v2 = x/(1-2*x)                               # local orbital speed² vs static observers

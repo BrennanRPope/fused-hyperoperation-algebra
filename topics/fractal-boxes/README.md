@@ -1,6 +1,6 @@
 # Fractal boxes: does a box of fractional dimension give a fractional power set? (Nov 25, 2026)
 
-Task: Brennan's yes on the voice call to "Should I look into whether fractal boxes give a consistent fractional power set?" Background: the mult-add box with sides 1+a, 1+b, ... has 2^n corner pieces, one per subset ("the tesseract is a picture of a power set"). Option tested: a box of fractional dimension d, with 2^d corner pieces. Picture-led write-up at his request ("if I have more pictures to look at, I can help").
+Task: Brennan's yes on the voice call to "Should I look into whether fractal boxes give a consistent fractional power set?" Background: the circle-operation box with sides 1+a, 1+b, ... has 2^n corner pieces, one per subset ("the tesseract is a picture of a power set"). Option tested: a box of fractional dimension d, with 2^d corner pieces. Picture-led write-up at his request ("if I have more pictures to look at, I can help").
 
 Page: https://claude.ai/artifact/NbFUcWVphAGGNvhug8XvwS (source index.html here; build_page.py inlines the SVG plates).
 
@@ -16,7 +16,7 @@ A box of half a dimension does have √2 corner pieces in an exact sense, and tw
 6. Other candidates: magnitude (Leinster) has magnitude dimension = Minkowski dimension for compact subsets of R^n (Meckes 2015), so it adds nothing. Groupoid with 1/2 element (point with Z/2 symmetry): maps into {0,1} number 2, not √2. Species: P = E·E under labelled product, so the half there is E (count 1 per set), not √2^n: a different joining gives a different half.
 
 ## Consistency tests
-Joining yes; iterating no; canonical number yes, canonical shape no; fits mult-add yes (fractional mult-add power); merging/complement same as the dials page; reaches the choice-free lead no.
+Joining yes; iterating no; canonical number yes, canonical shape no; fits the circle operation ∘₁ (called mult-add before 1.0) yes (fractional circle power); merging/complement same as the dials page; reaches the choice-free lead no.
 
 ## Files
 - checks.py / checks_output.txt: 27 of 27 pass (pure Python: fractions, math, itertools).

@@ -67,7 +67,7 @@ for j in range(0, 8):
     fm = sum(math.comb(x, j) * math.comb(n, x) * p**x * (1-p)**(n-x) for x in range(n+1))
     check(f"binomial E[C(X,{j})] = C(n,{j}) p^{j} (expected lit {j}-corners)", abs(fm - math.comb(n, j)*p**j) < 1e-12)
 
-# 5. Moments -> cumulants is mult-add's log, log(1+x), on the moment series
+# 5. Moments -> cumulants is the circle operation's log, log(1+x), on the moment series
 s = sp.symbols('s'); m1, m2, m3, m4 = sp.symbols('m1 m2 m3 m4')
 M = 1 + m1*s + m2*s**2/2 + m3*s**3/6 + m4*s**4/24
 K = sp.series(sp.log(M), s, 0, 5).removeO()
@@ -76,13 +76,13 @@ lean_k = [m1, m2 - m1**2, m3 - 3*m2*m1 + 2*m1**3, m4 - 4*m3*m1 - 3*m2**2 + 12*m2
 for j in range(4):
     check(f"cumulant k{j+1} from log(1 + moment series) matches the Lean formula", sp.simplify(kap[j] - lean_k[j]) == 0)
 a, b = sp.symbols('a b')
-check("MGF multiplies, so (M-1) mult-adds: (MX MY - 1) = (MX-1) (+) (MY-1)",
+check("MGF multiplies, so (M-1) combines by the circle operation: (MX MY - 1) = (MX-1) (+) (MY-1)",
       sp.simplify((1+a)*(1+b) - 1 - (a + b + a*b)) == 0)
 
 # 6. Normal and CLT
 mu, sig = sp.symbols('mu sigma', positive=True)
 Mn = sp.exp(mu*s + sig**2*s**2/2)
-check("normal MGF - 1 = E(mu s + sigma^2 s^2/2), E(x)=e^x-1 (mult-add's exponential)", sp.simplify(Mn - 1 - (sp.exp(mu*s + sig**2*s**2/2) - 1)) == 0)
+check("normal MGF - 1 = E(mu s + sigma^2 s^2/2), E(x)=e^x-1 (the circle operation's exponential)", sp.simplify(Mn - 1 - (sp.exp(mu*s + sig**2*s**2/2) - 1)) == 0)
 E = lambda x: sp.exp(x) - 1
 check("normals add because E(x+y) = E(x) (+) E(y)", sp.simplify(E(a+b) - (E(a) + E(b) + E(a)*E(b))) == 0)
 p = 0.3; prev = None; errs = []

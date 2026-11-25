@@ -4,26 +4,26 @@
 [PASS] vector square = the form: (x u + y v)^2 = x^2 + p x y + q y^2 (scalar)
 [PASS] theta = uv (a product of two vectors, a bivector) obeys theta^2 = p theta - q: the theta-lift of groups-lie
 [PASS] (1 + a theta)(1 + b theta) = (1 - q a b)(1 + F_{p,q}(a,b) theta): the landscape law is the geometric product of two lifts
-[PASS] mult-add point (p,q) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent
-[PASS] mult-add's rate form is x^2 + xy = x(x + y): two light lines, so mult-add lifts are hyperbolic rotors (boosts)
+[PASS] circle-operation point (p,q) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent
+[PASS] the circle operation's rate form is x^2 + xy = x(x + y): two light lines, so circle-operation lifts are hyperbolic rotors (boosts)
 
 == B. The three 2D Clifford algebras are the landscape's three countries
 [PASS] theta' = theta - p/2 squares to the scalar p^2/4 - q (a quarter of the discriminant)
 [PASS] circle (complex numbers, Cl(0,1)): (1 + a e)(1 + b e) ratio gives F_(0, 1) = tan addition
 [PASS] line (split-complex numbers, Cl(1,0)): (1 + a e)(1 + b e) ratio gives F_(0, -1) = velocity addition
 [PASS] border (dual numbers, Cl(0,0,1)): (1 + a e)(1 + b e) ratio gives F_(0, 0) = plain addition
-[PASS] mult-add sits in the split-complex numbers: theta = (1 + e)/2 with e^2 = +1 is idempotent
+[PASS] the circle operation sits in the split-complex numbers: theta = (1 + e)/2 with e^2 = +1 is idempotent
 [PASS] the wall a = -1: 1 - theta times theta = 0, so the wall is where the lift hits a zero divisor (the light cone of Cl(1,0))
 [PASS] conjugation theta -> p - theta is multiplicative on the even part
-[PASS] lift times its conjugate = the rate V(a) = 1 + pa + qa^2 (for mult-add: 1 + a, the plain lift)
-[PASS] Clifford conjugation read in the chart is the landscape inverse -a/(1+pa) (mult-add: the inverse -a/(1+a))
+[PASS] lift times its conjugate = the rate V(a) = 1 + pa + qa^2 (for the circle operation: 1 + a, the plain lift)
+[PASS] Clifford conjugation read in the chart is the landscape inverse -a/(1+pa) (the circle operation: the inverse -a/(1+a))
 
 == C. Making k a multivector: with scalar arguments, trace and norm of K are the landscape (p, q)
 [PASS] every K = k0 + k1 e satisfies K^2 = tr(K) K - N(K) with tr = 2 k0, N = k0^2 - kappa k1^2
-[PASS] (1 + aK)(1 + bK) = (1 - N ab) + (a + b + tr ab) K: mult-add with dial K reads as F_{tr K, N K}
+[PASS] (1 + aK)(1 + bK) = (1 - N ab) + (a + b + tr ab) K: the circle operation with dial K reads as F_{tr K, N K}
 [PASS] chart-free curvature: q - p^2/4 = -kappa k1^2, minus the square of K's non-scalar part
-[PASS] mult-add's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,q) = (k, 0)
-[PASS] so the dial k is a light-cone multivector, and the curvature of mult-add is -k^2/4 (hyperbolic), matching relativity
+[PASS] the circle operation's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,q) = (k, 0)
+[PASS] so the dial k is a light-cone multivector, and the curvature of the circle operation is -k^2/4 (hyperbolic), matching relativity
 [PASS] Cl(3,0), K = s + vector: K^2 = 2s K - (s^2 - |v|^2): a line-country law (vectors square positive)
 [PASS] Cl(3,0), K = s + bivector (a quaternion): K^2 = 2s K - (s^2 + |B|^2): a circle-country law (rotations)
 [PASS] generic K in Cl(3,0): W = K minus its centre part has W^2 in the centre span(1, I)
@@ -37,7 +37,7 @@
 [PASS] vectors: x ✳ y = x + y + x·y + x∧y, the corner splits into dot (scalar) + wedge (bivector), as on twisted boosts
 [PASS] kept information: a1 e1 ✳ a2 e2 ✳ a3 e3 ✳ a4 e4 = sum over the 15 non-empty subsets S of a_S e_S, each on its own blade
 [PASS] ... and the result does not depend on the squares kappa (no direction repeats), so no dial is needed for this
-[PASS] the scalar shadow (every blade read as 1) is ordinary mult-add a1 ✳ a2 ✳ a3 ✳ a4 = prod(1 + a_i) - 1, which forgets which subset
+[PASS] the scalar shadow (every blade read as 1) is the ordinary circle operation a1 ✳ a2 ✳ a3 ✳ a4 = prod(1 + a_i) - 1, which forgets which subset
 [PASS] reversion: (X ✳_K Y)~ = Y~ ✳_(K~) X~ (general Cl(2,0) elements)
 [PASS] wall for a vector dial k (k^2 = 25): 1 + a k has (1 + a k)(1 - a k) = 1 - 25 a^2, two walls a = ±1/5
 [PASS] a bivector dial (squares negative) has no wall at all for real a: (1 + a B)(1 - a B) = 1 + 25 a^2 > 0
@@ -64,9 +64,9 @@
 [PASS] Euclidean space, ω^2 = 0 (dual quaternions): products compose rigid motions exactly (rotation + translation)
 [PASS] hyperbolic space, ω^2 = -1 (Hamilton's complex biquaternions = SL(2,C)): unit ones keep t^2 - |x|^2, the Lorentz/hyperbolic motions
 [PASS] Clifford's coefficient ring R[ω], ω^2 = κ, is our theta-lift at (p,q) = (0, -κ): ratio law (a+b)/(1 + κab)
-[PASS] and mult-add's theta is exactly Clifford's elliptic projector (1 + ω)/2 (idempotent): mult-add is the left half of an elliptic motion
+[PASS] and the circle operation's theta is exactly Clifford's elliptic projector (1 + ω)/2 (idempotent): the circle operation is the left half of an elliptic motion
 
-== I. Dual numbers as jets: mult-add with ε^2 = 0 is mult-add plus its derivative
+== I. Dual numbers as jets: the circle operation with ε^2 = 0 is the circle operation plus its derivative
 [PASS] (a0 + a1 ε) ✳ (b0 + b1 ε) = (a0 ✳ b0) + (a1(1 + b0) + b1(1 + a0)) ε: the ε part is the derivative (chain rule)
 
 == J. Clifford parallels, the Hopf fibration, and the twist

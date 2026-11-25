@@ -6,7 +6,7 @@
  "third rung three times = one rung": true,
  "result independent of step count (400 vs 1600)": true,
  "B_0(1.3, 0.7) = 2.0": true,
- "B_1(1.3, 0.7) = mult-add = 2.91": true,
+ "B_1(1.3, 0.7) = the circle operation = 2.91": true,
  "B_-1(1.3, 0.7) = log(e^1.3 + e^0.7 - 1)": true,
  "B_2(1.3, 0.7) = (1+a)(1+b)e^{L(a)L(b)} - 1": true,
  "B_s associative at s = -0.5, 0.25, 0.5, 0.75, 1.5": true,

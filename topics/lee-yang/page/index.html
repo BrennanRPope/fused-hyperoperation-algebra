@@ -96,7 +96,7 @@ code{overflow-wrap:anywhere;font-size:14px}
 <table class="stack" style="margin-top:16px"><thead><tr><th>Special value</th><th>Colour count there</th><th>Status</th></tr></thead><tbody>
 <tr><td>q = 0, or (k = −1)</td><td>zero for every graph with an edge</td><td><span class="tag">known</span> ring case in Lean</td></tr>
 <tr><td>q = 1, addition (k = 0)</td><td>zero for every graph with an edge</td><td><span class="tag">known</span> ring case in Lean</td></tr>
-<tr><td>q = 2, mult-add (k = 1)</td><td>zero exactly when the graph has an odd loop; even strips pile zeros onto it (distance 0.00002 at 3×14)</td><td><span class="tag">known</span> ring case in Lean</td></tr>
+<tr><td>q = 2, the circle operation ∘₁ (called mult-add before 1.0) (k = 1)</td><td>zero exactly when the graph has an odd loop; even strips pile zeros onto it (distance 0.00002 at 3×14)</td><td><span class="tag">known</span> ring case in Lean</td></tr>
 <tr><td>q = −1, parity (k = −2)</td><td>never zero: the count is ± the number of acyclic orientations (2ⁿ − 2 on a ring)</td><td><span class="tag">known</span> ring case in Lean</td></tr>
 </tbody></table>
 <p class="mute" style="margin-top:10px">These are the first Beraha numbers, Q = 4cos²(π/n), where colour zeros of planar lattices pile up (Beraha, Kahane and Weiss; Tutte; Jackson for the zero-free gap up to 32/27). On the dial they are k = 1 + 2cos(2π/n): −1, 0, 1, then 1.618, 2, 2.247 … up to 3. Parity is not in the list.</p>
@@ -145,7 +145,7 @@ code{overflow-wrap:anywhere;font-size:14px}
 <tr><td><code>ising_ring_transfer</code></td><td>the Q = 2 formula equals the transfer-matrix trace</td></tr>
 <tr><td><code>ring_zero_at_q0</code>, <code>_q1</code>, <code>_q2_odd</code>, <code>parity_never_zero</code></td><td>colour counts on rings: zero at q = 0, 1, at 2 when odd, never at −1</td></tr>
 <tr><td><code>beraha5_not_int</code> … <code>beraha12_not_int</code></td><td>each predicted value for n = 5, 7, 8, 9, 10, 12 is a root of an integer polynomial with no whole-number root, so a law at a whole-number dial value can only hit k = 2</td></tr>
-<tr><td><code>wAdd_units</code>, <code>leverage_is_compounding</code>, <code>units_bend</code></td><td>rescaling by λ turns weight λk into k (and bend λ²q into q); 2× leverage at k = 2 is plain compounding at k = 1</td></tr>
+<tr><td><code>circK_units</code>, <code>leverage_is_compounding</code>, <code>units_bend</code></td><td>rescaling by λ turns weight λk into k (and bend λ²q into q); 2× leverage at k = 2 is plain compounding at k = 1</td></tr>
 <tr><td><code>step_disc</code>, <code>wall_square</code>, <code>slowest_step</code>, <code>turning_never_stalls</code></td><td>repeating a law is a Möbius step with discriminant x²(k² − 4q); its slowest move is set by the distance past the border, and on the turning side it never stops</td></tr>
 <tr><td><code>walls_factor</code>, <code>border_orbit</code>, <code>tan_fourth</code></td><td>two walls stop the orbit; on the border n steps land at nx/(1 − (n − 1)ux), filling toward the double wall forever; tangent addition comes round in exactly four steps</td></tr>
 </tbody></table>

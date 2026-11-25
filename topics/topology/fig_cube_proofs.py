@@ -1,4 +1,4 @@
-"""Pictures for the AKS identity, Fermat and Lucas on the mult-add cube."""
+"""Pictures for the AKS identity, Fermat and Lucas on the circle-operation cube."""
 import numpy as np, matplotlib, itertools
 from math import comb
 matplotlib.use('Agg')

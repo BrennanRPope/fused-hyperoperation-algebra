@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Linear Algebra from Mult-Add</title>
+<title>Linear Algebra from the Circle Operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
 <style>
 /* VOICE: a scientific plate, calm and exact, for one reader who thinks in pictures.
-   IDEA: an atlas plate: the determinant drawn as the mult-add cube, the dial drawn as circles.
+   IDEA: an atlas plate: the determinant drawn as the circle-operation cube, the dial drawn as circles.
    PICTURE: a stretched box split 1, 3, 3, 1; rotation circles through 0 centred on walls; three solitons.
    COLOUR and TYPE: white, ink, carmine for walls and results, prussian for structure; Literata throughout.
    LAYOUT: title band, hero figure, then sections each with a figure and a short text column. */
@@ -48,8 +48,8 @@ svg text{font-family:Literata,Georgia,serif}
 
 <div class="band"><div class="wrap">
 <p class="mute">Fused Hyperoperation Algebra · Nov 25, 2026</p>
-<h1>Linear algebra is the mult-add cube, one dimension up</h1>
-<p class="lede">The determinant of I + A is the mult-add cube: 1 + (λ₁ ⊞ λ₂ ⊞ … ⊞ λₙ), with the principal minors as its corners, counted 1, 3, 3, 1 in three dimensions. Almost everything here is known mathematics seen through the shift x ↦ 1 + x. The strongest find is that your soliton cube is exactly a determinant det(I + M).</p>
+<h1>Linear algebra is the circle-operation cube, one dimension up</h1>
+<p class="lede">The determinant of I + A is the circle-operation cube: 1 + (λ₁ ⊞ λ₂ ⊞ … ⊞ λₙ), with the principal minors as its corners, counted 1, 3, 3, 1 in three dimensions. Almost everything here is known mathematics seen through the shift x ↦ 1 + x. The strongest find is that your soliton cube is exactly a determinant det(I + M).</p>
 <div class="fig hero"><svg id="box" role="img" aria-label="A box stretched from the unit cube split into 1 unit cube, 3 slabs, 3 beams and 1 corner block"></svg></div>
 <p class="mute">The unit cube stretched by 1 + a, 1 + b, 1 + c along three eigen-directions. Its volume det(I + A) is the unit cube, 3 slabs (the trace), 3 beams (the 2×2 minors) and 1 corner block (the determinant).</p>
 <nav class="scroll" aria-label="Sections"><a href="#cube">Determinant</a><a href="#dial">One formula</a><a href="#vectors">Vectors and maps</a><a href="#matrices">Matrices</a><a href="#rotations">Rotations</a><a href="#coupling">Coupling</a><a href="#tensors">Tensors</a><a href="#solitons">Solitons</a><a href="#turn">Turning the dial</a><a href="#matdial">Matrix dial</a><a href="#ledger">What's known</a><a href="#lean">Lean</a></nav>
@@ -58,13 +58,13 @@ svg text{font-family:Literata,Georgia,serif}
 <section class="band" id="cube"><div class="wrap grid">
 <div>
 <h2>The determinant is the cube <span class="tag s">standard</span></h2>
-<p>Expand det(I + A) and every term is a principal minor: pick a set S of rows, take the same columns, and multiply out. That is the corner expansion of the mult-add cube, with a minor sitting at each corner.</p>
+<p>Expand det(I + A) and every term is a principal minor: pick a set S of rows, take the same columns, and multiply out. That is the corner expansion of the circle-operation cube, with a minor sitting at each corner.</p>
 <div class="eq">det(I + kA) = 1 + k·e₁ + k²·e₂ + k³·e₃</div>
 <p>e₁ is the trace, e₂ the sum of the three 2×2 principal minors, e₃ the determinant. When the eigenvalues sit on the diagonal (a triangular matrix), this is exactly the cube of the eigenvalues:</p>
 <div class="eq">det(I + A) − 1 = λ₁ ⊞ λ₂ ⊞ λ₃</div>
-<p>So the trace adds the eigenvalues, the determinant multiplies them, and the shifted determinant mult-adds them. A matrix sits on the wall, det(I + A) = 0, exactly when −1 is one of its eigenvalues.</p>
+<p>So the trace adds the eigenvalues, the determinant multiplies them, and the shifted determinant combines them by the circle operation ∘₁ (called mult-add before 1.0). A matrix sits on the wall, det(I + A) = 0, exactly when −1 is one of its eigenvalues.</p>
 </div>
-<div><p class="mute">Known since Fredholm (1903), who defined det(I + K) for integral operators by this same corner sum, now called the Fredholm determinant. It is the infinite mult-add of the eigenvalues.</p></div>
+<div><p class="mute">Known since Fredholm (1903), who defined det(I + K) for integral operators by this same corner sum, now called the Fredholm determinant. It is the infinite circle operation of the eigenvalues.</p></div>
 </div></section>
 
 <section class="band" id="dial"><div class="wrap grid">
@@ -79,23 +79,23 @@ svg text{font-family:Literata,Georgia,serif}
 </div></section>
 
 <section class="band" id="vectors"><div class="wrap grid">
-<div class="fig"><svg id="zoom" role="img" aria-label="A box anchored at the wall corner (-1,-1) stretched by mult-add"></svg></div>
+<div class="fig"><svg id="zoom" role="img" aria-label="A box anchored at the wall corner (-1,-1) stretched by the circle operation"></svg></div>
 <div>
 <h2>Vectors and maps: two readings</h2>
-<p><b>Shift the field.</b> <span class="tag s">standard</span> The fused ring (u + v + 1, mult-add) is the ordinary ring moved by one, so its vector spaces are ordinary ones with the origin at the wall corner (−1, −1). A fused-linear map is an affine map that fixes that corner. Mult-adding a is zooming by 1 + a about the wall, as drawn.</p>
-<p><b>Use mult-add as the addition.</b> <span class="tag s">standard</span> On (−1, ∞)ⁿ, with ⊞ as addition and the mult-add power x^(⊞t) = (1 + x)^t − 1 as scaling, you get a real vector space. log(1 + x) maps it onto ordinary ℝⁿ. Its linear maps are monomial maps, 1 + fᵢ = ∏ (1 + xⱼ)^mᵢⱼ. A matrix becomes a table of exponents, and composing two maps multiplies their tables. This is toric geometry's view, and Aitchison's geometry of proportions.</p>
+<p><b>Shift the field.</b> <span class="tag s">standard</span> The fused ring (u + v + 1, the circle operation) is the ordinary ring moved by one, so its vector spaces are ordinary ones with the origin at the wall corner (−1, −1). A fused-linear map is an affine map that fixes that corner. Combining with a by the circle operation is zooming by 1 + a about the wall, as drawn.</p>
+<p><b>Use the circle operation as the addition.</b> <span class="tag s">standard</span> On (−1, ∞)ⁿ, with ⊞ as addition and the circle power x^(⊞t) = (1 + x)^t − 1 as scaling, you get a real vector space. log(1 + x) maps it onto ordinary ℝⁿ. Its linear maps are monomial maps, 1 + fᵢ = ∏ (1 + xⱼ)^mᵢⱼ. A matrix becomes a table of exponents, and composing two maps multiplies their tables. This is toric geometry's view, and Aitchison's geometry of proportions.</p>
 </div>
 </div></section>
 
 <section class="band" id="matrices"><div class="wrap grid">
 <div>
-<h2>Matrices under mult-add <span class="tag s">standard</span></h2>
+<h2>Matrices under the circle operation <span class="tag s">standard</span></h2>
 <div class="eq">A ⊞ B = A + B + AB, &nbsp; I + (A ⊞ B) = (I + A)(I + B)</div>
-<p>Order now matters, because matrices don't commute. Off the wall every matrix has a way back, (I + A)⁻¹ − I. Mult-add subtraction X ⊟ A = (X − A)(I + A)⁻¹ undoes ⊞, just as it does for rates.</p>
-<p>The Cayley transform, which turns a skew matrix S into a rotation, is mult-add subtraction of S from its own transpose:</p>
+<p>Order now matters, because matrices don't commute. Off the wall every matrix has a way back, (I + A)⁻¹ − I. Circle-operation subtraction X ⊟ A = (X − A)(I + A)⁻¹ undoes ⊞, just as it does for rates.</p>
+<p>The Cayley transform, which turns a skew matrix S into a rotation, is circle-operation subtraction of S from its own transpose:</p>
 <div class="eq">(I + S)⁻¹(I − S) = I + (Sᵀ ⊟ S)</div>
 </div>
-<div><p class="mute">Matrix mult-add is Jacobson's circle operation (1945), and the group of I + A is the adjoint group of the ring. The Cayley transform dates from 1846. Writing it as Sᵀ ⊟ S is a reframing I haven't seen stated.</p></div>
+<div><p class="mute">The matrix circle operation is Jacobson's (1945), and the group of I + A is the adjoint group of the ring. The Cayley transform dates from 1846. Writing it as Sᵀ ⊟ S is a reframing I haven't seen stated.</p></div>
 </div></section>
 
 <section class="band" id="rotations"><div class="wrap grid">
@@ -112,7 +112,7 @@ svg text{font-family:Literata,Georgia,serif}
 <h2>Off-diagonal entries turn the dial <span class="tag r">reframing</span></h2>
 <p>For a 2×2 matrix M:</p>
 <div class="eq">det(I + M) − 1 = m₁₁ ⊞_w m₂₂, &nbsp; w = 1 − m₁₂m₂₁ / (m₁₁m₂₂)</div>
-<p>With no coupling (diagonal) w = 1, plain mult-add, volume. A rank-one matrix gives w = 0, plain addition. Coupling the two directions slides the weight between them, so the corner term is how much the directions still act independently.</p>
+<p>With no coupling (diagonal) w = 1, the plain circle operation, volume. A rank-one matrix gives w = 0, plain addition. Coupling the two directions slides the weight between them, so the corner term is how much the directions still act independently.</p>
 </div>
 <div><p class="mute">An elementary identity. The point is the reading: the dial weight is not a free choice, it is the coupling ratio of a matrix.</p></div>
 </div></section>
@@ -133,7 +133,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div class="fig"><svg id="sol" role="img" aria-label="Three KdV solitons at three times, computed from det(I + M)"></svg></div>
 <div>
 <h2>Lead: the soliton cube is a determinant <span class="tag l">lead</span></h2>
-<p class="lead">Hirota's three-soliton τ, your weighted mult-add cube, is det(I + M) for the Cauchy-type matrix Mᵢⱼ = 2√(kᵢkⱼ)/(kᵢ + kⱼ)·e^((ηᵢ+ηⱼ)/2).</p>
+<p class="lead">Hirota's three-soliton τ, your circle-operation cube with dial k, is det(I + M) for the Cauchy-type matrix Mᵢⱼ = 2√(kᵢkⱼ)/(kᵢ + kⱼ)·e^((ηᵢ+ηⱼ)/2).</p>
 <p>Each principal minor of a Cauchy matrix factors into pair weights ((kᵢ − kⱼ)/(kᵢ + kⱼ))², so the corner expansion of the determinant is the pairwise weighted cube. A generic matrix does not factor that way: its triple corner is not the product of its pair weights. So the Cauchy matrix is what makes the soliton cube pairwise.</p>
 <p>Known since the 1980s (Sato's τ functions; Pöppe 1984). What it gives you is the reason the cube appears. A next step would be to test whether other equations with determinant τ functions (KP, sine-Gordon, Toda) have their weights on one k-dial.</p>
 </div>
@@ -170,7 +170,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div>
 <h2>Only the ends of the real dial differ <span class="tag r">reframing</span></h2>
 <p>k(A ⊞ₖ B) = (kA) ⊞ (kB), so any nonzero k, fractional, negative or large, is the k = 1 law measured in units of k. In the box picture k stretches every side to k·λ. Small k leaves a thin box made almost entirely of slabs, which is the trace. Large k makes the corner block swamp everything, which is the determinant. The cube is the bridge between the two.</p>
-<p>k = −1 is not a new law either. It is the same law reflected, which is why the earlier pages found failure union as mult-add's mirror image.</p>
+<p>k = −1 is not a new law either. It is the same law reflected, which is why the earlier pages found failure union as the circle operation's mirror image.</p>
 </div>
 </div></section>
 
@@ -188,7 +188,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div>
 <h2>A matrix on the dial draws your landscape <span class="tag l">biggest find</span></h2>
 <p class="lead">Put the 2×2 matrix U = [[0, −q], [1, k]] on the dial. Then (I + aU)(I + bU) = (1 − q·ab)I + (a + b + k·ab)U, and the ratio of the two parts is your landscape lens law (a + b + k·ab)/(1 − q·ab).</p>
-<p>Everything on the landscape page reads off U. Its wall polynomial 1 + k·a + q·a² is det(I + aU). The walls sit at −1/eigenvalue, just as the plain dial's wall sits at −1/k. The three countries are the three kinds of 2×2 matrix: two real eigenvalues, one repeated, or a complex pair. The parabola k² = 4q is where the eigenvalues meet, since k² − 4q = (λ₁ − λ₂)². The "or" line k + q = −1 is where U has eigenvalue −1, one direction sitting exactly on mult-add's wall.</p>
+<p>Everything on the landscape page reads off U. Its wall polynomial 1 + k·a + q·a² is det(I + aU). The walls sit at −1/eigenvalue, just as the plain dial's wall sits at −1/k. The three countries are the three kinds of 2×2 matrix: two real eigenvalues, one repeated, or a complex pair. The parabola k² = 4q is where the eigenvalues meet, since k² − 4q = (λ₁ − λ₂)². The "or" line k + q = −1 is where U has eigenvalue −1, one direction sitting exactly on the circle operation's wall.</p>
 </div>
 </div></section>
 
@@ -232,7 +232,7 @@ svg text{font-family:Literata,Georgia,serif}
 <div>
 <h2>In Lean</h2>
 <p>79 theorems: 51 in <code>linear-algebra/lean/LinearAlgebra.lean</code> and 28 for the dial sweep in <code>linear-algebra/lean/DialSweep.lean</code>, written for the shared library in its style (core Lean, no sorry), with 2×2 and 3×3 matrices spelled out as records. <b>Not yet compiled</b>: this session had no Lean toolchain, so the library thread still has to build it. Every identity was checked in Python first: 37 of 37 for the base page, 31 of 31 for the sweep.</p>
-<p>Sweep file: one law in other units, the reversed characteristic polynomial and its walls, k = −1, the dial matrix U and the landscape lens law, walls as −1/eigenvalue, the discriminant, the or line, rotation, shear and boost, the matrix weight, Sylvester (2×2 and 3×3), rank one, the weighted Cayley transform. Base file: the matrix lift and weighted lift, associativity, det(I + kA) expansions, det(AB) = det A·det B, the box cube, triangular eigenvalues as a mult-add fold, the dial homomorphism, the coupling weight, the rotation condition and its circle, inverses, ⊟ and Cayley, the KdV two-soliton, fused-linear maps, monomial maps and exponent-matrix composition.</p>
+<p>Sweep file: one law in other units, the reversed characteristic polynomial and its walls, k = −1, the dial matrix U and the landscape lens law, walls as −1/eigenvalue, the discriminant, the or line, rotation, shear and boost, the matrix weight, Sylvester (2×2 and 3×3), rank one, the weighted Cayley transform. Base file: the matrix lift and weighted lift, associativity, det(I + kA) expansions, det(AB) = det A·det B, the box cube, triangular eigenvalues as a circle-operation fold, the dial homomorphism, the coupling weight, the rotation condition and its circle, inverses, ⊟ and Cayley, the KdV two-soliton, fused-linear maps, monomial maps and exponent-matrix composition.</p>
 </div>
 <div>
 <p class="mute">Left out of Lean: general n×n matrices (only 2×2 and 3×3); eigenvalues of non-triangular matrices; exterior and symmetric powers and the α-permanent dial; the 3×3 Cauchy factoring; log and exp, which need limits. From the sweep: the limits k → 0 and k → ∞ (only the polynomial forms are in Lean); complex k, since core Lean has no complex numbers (the units i, ε, j are done as real 2×2 matrices instead); n×n Sylvester. The 3×3 dial homomorphism is proved over fields; for general rings it is checked symbolically only.</p>
@@ -349,7 +349,7 @@ function planeFig(){
   h+=`<path d="${d}" fill="none" stroke="${css('--blue')}" stroke-width="2"/>`;
   h+=`<line x1="0" y1="${Y(0)}" x2="${W}" y2="${Y(0)}" stroke="${css('--rule')}"/><line x1="${X(0)}" y1="0" x2="${X(0)}" y2="${H}" stroke="${css('--rule')}"/>`;
   h+=`<line x1="${X(-2.2)}" y1="${Y(1.2)}" x2="${X(1.4)}" y2="${Y(-2.4)}" stroke="${css('--red')}" stroke-width="2"/>`;
-  const pts=[[1,0,'mult-add'],[0,-1,'velocity'],[0,1,'tangent'],[-1,0,'failure union'],[0,0,'addition']];
+  const pts=[[1,0,'The circle operation'],[0,-1,'velocity'],[0,1,'tangent'],[-1,0,'failure union'],[0,0,'addition']];
   pts.forEach(p=>{h+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="5" fill="${css('--ink')}"/><text x="${X(p[0])+8}" y="${Y(p[1])-7}" font-size="13" fill="${css('--ink')}">${p[2]}</text>`;});
   h+=`<text x="${X(-2.8)}" y="${Y(2.2)}" font-size="13" fill="${css('--blue')}">complex eigenvalues</text><text x="${X(1.2)}" y="${Y(-1.6)}" font-size="13" fill="${css('--mute')}">two real eigenvalues</text><text x="${X(1.9)}" y="${Y(1.25)}" font-size="13" fill="${css('--blue')}">k² = 4q</text><text x="${X(-2.9)}" y="${Y(-0.7)}" font-size="13" fill="${css('--red')}">or line k + q = −1</text><text x="${W-8}" y="${Y(0)+16}" font-size="12" text-anchor="end" fill="${css('--mute')}">k</text><text x="${X(0)+6}" y="14" font-size="12" fill="${css('--mute')}">q</text>`;
   s.innerHTML=h;}

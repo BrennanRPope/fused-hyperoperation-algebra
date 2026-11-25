@@ -1,4 +1,4 @@
-"""Metabolism (as biology) through mult-add: checks. Run: python3 -I checks.py"""
+"""Metabolism (as biology) through the circle operation: checks. Run: python3 -I checks.py"""
 import numpy as np, math
 rng=np.random.default_rng(2); ok=tot=0
 def check(n,c,d=""):
@@ -69,13 +69,13 @@ lieb=1/(1+np.maximum(U1,U2))
 best=min(((k,np.max(np.abs(1/(1+wadd(k,U1,U2))-lieb))) for k in np.linspace(-0.5,2,251)),key=lambda t:t[1])
 check("Liebig's minimum is not a dial setting: the best single k misses it by >5% somewhere",best[1]>0.05,f"best k={best[0]:.2f}, worst miss {best[1]:.3f}")
 
-# ---- 3. Saturation is the mult-add inverse
+# ---- 3. Saturation is the circle inverse
 inv=lambda u:-u/(1+u)
 for u in (0.1,1,9):
     check(f"free (unbound) fraction u/(1+u) = -inv(u) at u = {u}",abs(u/(1+u)+inv(u))<1e-15)
 check("bound fraction θ = 1 + inv(u): saturation is the lift of the inverse",abs(theta(3.0)-(1+inv(3.0)))<1e-15)
 
-# ---- 4. Kleiber 3/4: a mult-add power with fractional exponent, nothing more
+# ---- 4. Kleiber 3/4: a circle power with fractional exponent, nothing more
 mp=lambda a,n:(1+a)**n-1
 check("doubling body mass raises basal rate by mpow(1, 3/4) = 2^(3/4) - 1 = 68%",abs(mp(1,0.75)-(2**0.75-1))<1e-15,f"{mp(1,.75):.3f}")
 check("mass-specific rate falls by the inverse: 1 + inv(...) per doubling",abs((1+mp(1,0.75))/2-2**-0.25)<1e-15)

@@ -1,4 +1,4 @@
-"""Bonding and valence through mult-add.
+"""Bonding and valence through the circle operation.
 1. Overlap: |φa+φb|² = a² + b² + 2ab·S is the invariant-mass law with cosine S.
 2. Hückel chains: the transfer recurrence P(n+2) = x P(n+1) − P(n) is the landscape point (k,q) = (x,1);
    band = turning (|x|<2), band edge = border, gap = two walls. Cassini invariant = q^n.

@@ -15,6 +15,6 @@ PASS coefficient picture matches m < fin(m) < 2^m < seq^{1-1}(m) eventually (1 <
 PASS key step: monotone g with g o g strictly inflationary is itself strictly inflationary and g(x) < (g o g)(x); exhaustive on a 7-step scale   429 monotone square roots tested
 PASS gap worlds: square root of 'jump d successors' on indices exists iff d even (same as check 5)
 PASS m*m >= 2m >= m+1 for m >= 2 (why flat multiplication forces flat addition forces flat successor)
-PASS mult-add m+m+m*m sits above m*m, so flat mult-add <=> flat multiplication (given m <= m*m)
+PASS the circle operation m+m+m*m sits above m*m, so the flat circle operation <=> flat multiplication (given m <= m*m)
 
 18 of 18 checks pass

@@ -25,7 +25,7 @@ Yr=[];S=Sr.copy()
 for f in range(16):
     Yr.append(S[1]*(g+b)+S[2]*b); S=Mr@S
 Yr=np.array(Yr); res['reversed']=dict(lam=[lam.real,-lam.imag],identical_yields=bool(np.allclose(Yr,Yf)),eig=sorted([round(complex(e).imag,4) for e in np.linalg.eigvals(Mr)]))
-# 3 mult-add inverse = un-flashing (time reversal of the probabilities)
+# 3 circle inverse = un-flashing (time reversal of the probabilities)
 Mi=np.linalg.inv(M)
 neg=int((Mi<-1e-12).sum()); ev=np.linalg.eigvals(Mi)
 S=np.array([0.25,0.25,0.25,0.25]); traj=[]

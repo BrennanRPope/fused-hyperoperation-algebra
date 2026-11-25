@@ -79,8 +79,8 @@ def bao_chi2(model, p):
 def E_lcdm(z, p):  return np.sqrt(p[0] * (1 + z) ** 3 + 1 - p[0])
 def E_wcdm(z, p):  return np.sqrt(p[0] * (1 + z) ** 3 + (1 - p[0]) * (1 + z) ** (3 * (1 + p[1])))
 def E_eds(z, p):   return (1 + z) ** 1.5
-def E_power(z, p): return (1 + z) ** (1 - p[0])          # fused power law: chi = ((1+z)^b - 1)/b = b-th mult-add power / b
-def E_cube(z, p):                                         # mult-add cube of redshift with its own weight per layer
+def E_power(z, p): return (1 + z) ** (1 - p[0])          # fused power law: chi = ((1+z)^b - 1)/b = b-th circle power / b
+def E_cube(z, p):                                         # circle-operation cube of redshift with its own weight per layer
     return np.sqrt(np.maximum(1 + p[0] * 3 * z + p[1] * 3 * z ** 2 + p[2] * z ** 3, 1e-6))
 
 def E_scaled_cube(z, p):                                  # cube of the scaled redshift: E^2 = (1 + l z)^3 = 1 + (l z)(+)(l z)(+)(l z)
@@ -99,7 +99,7 @@ MODELS = {
     "Flat coasting, chi = ln(1+z)": (("D", D_coast), [], []),
     "Fused power law, chi = ((1+z)^b - 1)/b": (("E", E_power), [0.3], [(-1.0, 1.5)]),
     "Cube of scaled redshift, E^2 = (1 + l z)^3": (("E", E_scaled_cube), [0.3], [(0.0, 3.0)]),
-    "Mult-add cube, free weight per layer": (("E", E_cube), [0.3, 0.3, 0.3], [(-2, 3), (-2, 3), (-2, 3)]),
+    "Circle-operation cube, free weight per layer": (("E", E_cube), [0.3, 0.3, 0.3], [(-2, 3), (-2, 3), (-2, 3)]),
 }
 EH = {MODELS["Empty open universe (Milne)"][0]: lambda z, p: 1 + z,
       MODELS["Flat coasting, chi = ln(1+z)"][0]: lambda z, p: 1 + z}

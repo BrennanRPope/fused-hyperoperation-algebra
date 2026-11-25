@@ -14,4 +14,4 @@ tagged dial `TheseK` with 1 + K×(A ✳ₖ B) ≅ (1 + K×A) × (1 + K×B); Par:
 projections, pairing, the product's universal property (fst_pair, snd_pair, pair_unique), Empty as zero object;
 counting (all values listed, length = a ✳ b, completeness); wedge + smash; align: length = max, both inputs
 recovered, zip = the both-part; cell polynomials: evaluation is multiplicative under products, reduced count
-mult-adds at every t, spheres at (−1)ⁿ, circle is the wall, torus cells 1-2-1, χ̃(S²×S²) = 3, suspension split count.
+combines by the circle operation ∘₁ (called mult-add before 1.0) at every t, spheres at (−1)ⁿ, circle is the wall, torus cells 1-2-1, χ̃(S²×S²) = 3, suspension split count.

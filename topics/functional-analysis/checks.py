@@ -1,4 +1,4 @@
-"""Functional analysis through mult-add: every claim on the page, checked.
+"""Functional analysis through the circle operation: every claim on the page, checked.
 Run: python3 checks.py > checks_output.txt
 """
 import math, json
@@ -21,7 +21,7 @@ def qi(A): return np.linalg.inv(I(len(A)) + A) - I(len(A))
 def rmat(n, s=1.0): return s * (rng.normal(size=(n, n)) + 1j * rng.normal(size=(n, n))) / math.sqrt(2 * n)
 nrm = lambda A: np.linalg.norm(A, 2)
 
-# ---------------- 1. operator mult-add
+# ---------------- 1. the operator circle operation
 A, B, C = rmat(6), rmat(6), rmat(6)
 check("A * B = A + B + AB = (I + A)(I + B) - I", nrm(I(6) + ma(A, B) - (I(6) + A) @ (I(6) + B)) < 1e-12)
 check("associative: (A*B)*C = A*(B*C)", nrm(ma(ma(A, B), C) - ma(A, ma(B, C))) < 1e-12)
@@ -43,7 +43,7 @@ check("Jacobson's circle a o b = a + b - ab is the k = -1 dial: a o b = -((-a)*(
       nrm((A + B - A @ B) + ma(-A, -B)) < 1e-12)
 Bp = qi(B)
 check("socks and shoes: (A*B)' = B'*A'", nrm(qi(ma(A, B)) - ma(Bp, Ap)) < 1e-10)
-check("resolvent identity in mult-add form: A' - B' = (I + A')(B - A)(I + B')",
+check("resolvent identity in circle-operation form: A' - B' = (I + A')(B - A)(I + B')",
       nrm(Ap - Bp - (I(6) + Ap) @ (B - A) @ (I(6) + Bp)) < 1e-10)
 T = rmat(6, 1.3)
 lam, mu = 0.7 + 0.4j, -0.5 + 1.1j
@@ -84,16 +84,16 @@ X = rmat(5); Ac = X @ X + 0.3 * X; Bc = 0.5 * X - 0.2 * X @ X @ X
 e = np.linalg.eigvals(X)
 pa, pb = e * e + 0.3 * e, 0.5 * e - 0.2 * e ** 3
 got = np.sort_complex(np.linalg.eigvals(ma(Ac, Bc)))
-check("commuting A, B (polynomials in one X): eigenvalues of A*B are the pairwise mult-adds a_i * b_i",
+check("commuting A, B (polynomials in one X): eigenvalues of A*B are the pairwise combines by the circle operation a_i * b_i",
       np.allclose(got, np.sort_complex(pa + pb + pa * pb), atol=1e-9))
 N1 = np.array([[0, 1], [0, 0]]); N2 = np.array([[0, 0], [-1, 0]])
 ok = True; pts = []
 for t in np.linspace(0.1, 3.9, 20):
     M = ma(N1, t * N2); evs = np.linalg.eigvals(M)
     ok &= np.allclose(abs(1 + evs), 1) and abs(np.linalg.det(np.eye(2) + M) - 1) < 1e-12
-check("two operators with spectrum {0} (nilpotent) can mult-add to eigenvalues all round the circle |1+z| = 1", ok)
+check("two operators with spectrum {0} (nilpotent) can combine by the circle operation to eigenvalues all round the circle |1+z| = 1", ok)
 ev6 = np.linalg.eigvals(ma(N1, N2))
-check("at t = 1 those eigenvalues are e^{+-2 pi i/3}: N1*N2 is a sixth mult-add root of 0 (its sixth mult-add power vanishes)",
+check("at t = 1 those eigenvalues are e^{+-2 pi i/3}: N1*N2 is a sixth circle root of 0 (its sixth circle power vanishes)",
       np.allclose(np.sort(np.angle(ev6)), [-2 * np.pi / 3, 2 * np.pi / 3])
       and np.allclose(np.linalg.matrix_power(np.eye(2) + ma(N1, N2), 6) - np.eye(2), 0))
 ok = True
@@ -109,7 +109,7 @@ ca, cb = rng.normal(size=n), rng.normal(size=n)
 Ca, Cb = circ(ca), circ(cb)
 fa, fb = np.fft.fft(ca), np.fft.fft(cb)
 fab = np.fft.fft(ma(Ca, Cb)[:, 0])
-check("characters carry mult-add to mult-add: Fourier modes of circulants, F(A*B) = F(A) * F(B) mode by mode",
+check("characters carry the circle operation to the circle operation: Fourier modes of circulants, F(A*B) = F(A) * F(B) mode by mode",
       np.allclose(fab, fa + fb + fa * fb))
 # BCH
 eps = 1e-2
@@ -169,7 +169,7 @@ for z in (0.7, 2.3, 4.0, 7.5):
     ok &= abs(np.linalg.det(np.eye(400) - z * z * Gm) - np.sin(z) / z) < 2e-5
 check("det(I - z^2 G) = sin(z)/z (Nystrom, 400 nodes): the sine product of the complex page", ok)
 z = 2.3
-check("Lidskii: det(I + K) - 1 is the mult-add fold of the eigenvalues of K",
+check("Lidskii: det(I + K) - 1 is the circle-operation fold of the eigenvalues of K",
       abs((np.linalg.det(np.eye(400) - z * z * Gm) - 1) - (np.prod(1 - z * z * eg) - 1)) < 1e-10)
 check("the determinant vanishes exactly when an eigenvalue of -z^2 G hits the wall: z = n pi",
       all(abs(-(n * np.pi) ** 2 * eg[n - 1] + 1) < 1e-3 for n in (1, 2, 3)) and abs(np.sin(np.pi) / np.pi) < 1e-15)
@@ -180,7 +180,7 @@ check("cube layers: e1 = tr G = 1/6 and e2 = (tr^2 - tr G^2)/2 = 1/120 match sin
       abs(tr1 - 1 / 6) < 1e-5 and abs((tr1 ** 2 - tr2) / 2 - 1 / 120) < 1e-5)
 K1 = lambda x, y: 0.8 * np.exp(-(x - y) ** 2); K2 = lambda x, y: 0.5 * np.cos(x + 2 * y)
 _, w1, M1 = nystrom(K1, 60); _, _, M2 = nystrom(K2, 60)
-check("Fredholm determinants multiply along mult-add of integral operators: det(I + K*L) = det(I+K) det(I+L)",
+check("Fredholm determinants multiply along the circle operation of integral operators: det(I + K*L) = det(I+K) det(I+L)",
       abs(np.linalg.det(np.eye(60) + ma(M1, M2)) - np.linalg.det(np.eye(60) + M1) * np.linalg.det(np.eye(60) + M2)) < 1e-10)
 _, _, M1b = nystrom(K1, 120); _, _, M2b = nystrom(K2, 120)
 check("and the Nystrom values are converged (60 vs 120 nodes agree to 1e-12)",

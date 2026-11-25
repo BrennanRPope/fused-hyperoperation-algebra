@@ -2,7 +2,7 @@
 PASS  symbolic: ln_q(xy) = ln_q x ✳ₖ ln_q y with k = 1 − q
 PASS  500 random q: ln_q(ab) = dial; e_q(u ✳ₖ v) = e_q(u)·e_q(v); e_q inverts ln_q
 PASS  k = −1 (Tsallis q = 2): ln_2 x = 1 − 1/x and (1 − 1/xy) = (1 − 1/x) ✳₋₁ (1 − 1/y)
-PASS  k = 1 (q = 0): ln_0 x = x − 1, the 'count minus one' that mult-adds: 5·7 − 1 = 4 ✳ 6
+PASS  k = 1 (q = 0): ln_0 x = x − 1, the 'count minus one' that combines by the circle operation: 5·7 − 1 = 4 ✳ 6
 == 2. Tsallis entropy is the expectation of a q-surprise; the measure engine composes it
 PASS  S_q = Σ p·ln_q(1/p) = (Σp^q − 1)/(1 − q)
 PASS  S(A×B) = E[s_A ✳ₖ s_B] = S(A) ✳ₖ S(B)  (Tsallis 1988, via E[X✳Y] = EX✳EY)
@@ -18,7 +18,7 @@ PASS  β = α is Tsallis
 PASS  β = 2 − α is Landsberg–Vedral (1/Σp^α − 1)/(α − 1), weight k = α − 1 (flipped)
 PASS  β → 1 is Rényi; α = β → 1 is Shannon
 == 5. The q-exponential is compound interest; it is not the rung flow
-PASS  k = 1/n: e_q(x) − 1 = n mult-add steps of x/n = (1 + x/n)^n − 1 (rung 2)
+PASS  k = 1/n: e_q(x) − 1 = n circle-operation steps of x/n = (1 + x/n)^n − 1 (rung 2)
 PASS  as k → 0, e_q(1) → e: 2.0, 2.5937, 2.7048, 2.7181
 PASS  half-step test: g_{1/2}∘g_{1/2} matches e^x − 1 to x², fails at x³ (1/8 vs 1/6), so the family is not a flow
 == 6. Trees: grafting composes internal nodes by the dial with k = D − 1

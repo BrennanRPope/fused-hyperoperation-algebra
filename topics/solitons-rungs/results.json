@@ -7,11 +7,11 @@
   "pass": true,
   "detail": ""
  },
- "1c weighted mult-add a+b+k ab has triple corner k^2: no three-body term for any k": {
+ "1c the circle operation a+b+k ab has triple corner k^2: no three-body term for any k": {
   "pass": true,
   "detail": ""
  },
- "1d KdV corners multiply over PAIRS: equal weights A give triple corner A^3, not weighted mult-add's A^2": {
+ "1d KdV corners multiply over PAIRS: equal weights A give triple corner A^3, not the A^2 of the circle operation with dial k": {
   "pass": true,
   "detail": ""
  },
@@ -71,7 +71,7 @@
   "pass": true,
   "detail": "max rel err 5.5e-38"
  },
- "4b Th/(q;q)_inf - 1 is the mult-add of every point of w's q-orbit": {
+ "4b Th/(q;q)_inf - 1 is the circle operation of every point of w's q-orbit": {
   "pass": true,
   "detail": "err 1.4e-40"
  },
@@ -125,11 +125,11 @@
   "0.1": 0.00037842891299551425,
   "0.3": 1.516209461907073e-07
  },
- "4g gluing w -> w q is mult-add by q-1 in the 1+x picture, and q-1 = E(log q)": {
+ "4g gluing w -> w q is the circle operation by q-1 in the 1+x picture, and q-1 = E(log q)": {
   "pass": true,
   "detail": ""
  },
- "5a genus-2 theta -> 1 + w1 + w2 + A w1 w2 (the weighted mult-add cube), error proportional to q": {
+ "5a genus-2 theta -> 1 + w1 + w2 + A w1 w2 (the circle-operation cube with dial k), error proportional to q": {
   "pass": true,
   "detail": ""
  },

@@ -1,4 +1,4 @@
-"""Mult-add (a (+) b = a + b + ab) as actuarial tools, and the infinity test.
+"""The circle operation (a (+) b = a + b + ab) as actuarial tools, and the infinity test.
 
 Run:  python3 checks.py > checks_output.txt
 Needs numpy, scipy, rdata. Data files are in ./data (see data/SOURCES.md).
@@ -10,16 +10,16 @@ warnings.filterwarnings("ignore")
 rng = np.random.default_rng(20261125)
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-def ma(a, b):            # mult-add
+def ma(a, b):            # circle operation
     return a + b + a * b
 def ma_all(xs):
     out = 0.0
     for x in xs:
         out = ma(out, x)
     return out
-def ma_inv(a):           # mult-add inverse: a (+) inv = 0
+def ma_inv(a):           # circle inverse: a (+) inv = 0
     return -a / (1 + a)
-def ma_pow(a, n):        # n-th mult-add power (any real n)
+def ma_pow(a, n):        # n-th circle power (any real n)
     return (1 + a) ** n - 1
 def cube_sum(ws, sign=1):
     """Sum over nonempty corners S of the cube of prod_{k in S} w_k (times sign^(|S|+1))."""
@@ -37,14 +37,14 @@ def load(name, key):
 def ok(flag):
     return "True" if flag else "FALSE"
 
-print("== 1. Interest is mult-add ==")
+print("== 1. Interest is the circle operation ==")
 i, j = 0.03, 0.05
 print(f" 3% then 5%: (+) gives {ma(i,j):.6f}; (1.03)(1.05)-1 = {1.03*1.05-1:.6f}")
 print(f" force of interest delta = log(1+i) at 5%: {log(1.05):.6f}; logs add: {ok(abs(log(1+ma(i,j))-(log(1+i)+log(1+j)))<1e-15)}")
 d = 0.05 / 1.05
-print(f" discount rate d = i/(1+i) = {d:.6f}; minus the mult-add inverse of i = {-ma_inv(0.05):.6f}: {ok(abs(d+ma_inv(0.05))<1e-15)}")
+print(f" discount rate d = i/(1+i) = {d:.6f}; minus the circle inverse of i = {-ma_inv(0.05):.6f}: {ok(abs(d+ma_inv(0.05))<1e-15)}")
 i12 = 12 * ma_pow(0.05, 1 / 12)
-print(f" nominal monthly rate i(12) = 12 x (12th mult-add root of 5%) = {i12:.6f}")
+print(f" nominal monthly rate i(12) = 12 x (12th circle root of 5%) = {i12:.6f}")
 n = 10
 s_closed = ma_pow(0.05, n) / 0.05
 s_cube = sum(comb(n, k) * 0.05 ** (k - 1) for k in range(1, n + 1))
@@ -54,7 +54,7 @@ print(f"  layer 1 (simple interest) = {n}; layers 2..10 (interest on interest) =
 layers = [comb(n, k) * 0.05 ** k for k in range(1, n + 1)]
 print("  share of (1.05^10 - 1) in each cube layer:", [round(x / ma_pow(0.05, n), 4) for x in layers[:5]], "...")
 
-print("\n== 2. Survival is mult-add of negated death rates ==")
+print("\n== 2. Survival is the circle operation of negated death rates ==")
 ilt = load("soa08Act.rda", "soa08Act")
 lx = np.array(ilt.lx, float); ages = np.array(ilt.x)
 qx = 1 - lx[1:] / lx[:-1]
@@ -98,14 +98,14 @@ print(" UDD dependent rates      ", np.round(udd_rates, 9), "sum", round(udd_rat
 print(" equal split of each corner", np.round(corner, 9))
 print(" Shapley value of the game ", np.round(shap, 9))
 print(f"  UDD = equal corner split = Shapley: {ok(np.allclose(udd_rates,corner,atol=1e-13) and np.allclose(udd_rates,shap,atol=1e-13))}")
-# constant force: proportional to mult-add logs
+# constant force: proportional to circle-operation logs
 mus = -np.log(1 - qp)
 cf = mus / mus.sum() * tot
 # Aumann-Shapley along the diagonal in log coordinates: v = 1 - exp(-sum mu_k x_k)
 asl = np.array([quad(lambda t: mus[jj] * np.exp(-t * mus.sum()), 0, 1)[0] for jj in range(3)])
 print(" constant force rates     ", np.round(cf, 9), "sum", round(cf.sum(), 9))
 print(" diagonal path in log coords", np.round(asl, 9))
-print(f"  constant force = straight path in mult-add log coordinates: {ok(np.allclose(cf,asl,atol=1e-13))}")
+print(f"  constant force = straight path in circle-operation log coordinates: {ok(np.allclose(cf,asl,atol=1e-13))}")
 # a third path: every death happens in the first half of the year, everything else uniform
 def path_rates(Q):    # Q(t) -> array of cumulative absolute probabilities, Q(1) = qp
     ts = np.linspace(0, 1, 200001)
@@ -138,7 +138,7 @@ mc_u, mc_c = simulate("udd"), simulate("cf")
 print(" simulation (4 million lives), UDD:", np.round(mc_u, 5), " constant force:", np.round(mc_c, 5))
 print(f"  within 3 standard errors: {ok(np.all(np.abs(mc_u-udd_rates) < 3*np.sqrt(udd_rates/N)) and np.all(np.abs(mc_c-cf) < 3*np.sqrt(cf/N)))}")
 
-print("\n== 4. Independent risks: (M - 1) mult-adds, cumulants are the mult-add log ==")
+print("\n== 4. Independent risks: (M - 1) combines by the circle operation, cumulants are the circle-operation log ==")
 def M_exp(s, b=1.0): return b / (b - s)
 def M_gamma(s, k=2.0, b=2.0): return (1 - s / b) ** (-k)
 def M_cpois(s, lam=0.5): return np.exp(lam * (M_exp(s, 3.0) - 1))
@@ -154,7 +154,7 @@ mc = np.mean(np.exp(s * Xs))
 print(f" simulated E[exp(s X_sum)] - 1 = {mc-1:.4f} (2 million draws)")
 print(f" logs add (cumulant generating functions): {ok(abs(np.log(prod) - sum(np.log(1+x) for x in a))<1e-12)}")
 
-print("\n== 5. Claim counts: one mult-add power (1 + c(z - 1))^n ==")
+print("\n== 5. Claim counts: one circle power (1 + c(z - 1))^n ==")
 def series_coeffs(n, c, K=40):
     """coefficients of P(z) = (1 + c(z-1))^n = (1-c)^n (1 + c z/(1-c))^n."""
     out = []
@@ -219,7 +219,7 @@ for m in [6, 7]:
     for k in [2, 3, 4, 5, 6, 7]:
         p = series_coeffs(m / k, 0.3, 40)
         res.append((k, bool(np.all(p > -1e-15))))
-    print(f" binomial m={m}: k-th mult-add root has no negative coefficient for k =", [k for k, g in res if g])
+    print(f" binomial m={m}: k-th circle root has no negative coefficient for k =", [k for k, g in res if g])
 # real counts: claims per week in the Danish fire data
 dd = load("danishuni.rda", "danishuni")
 days = dd["Date"].to_numpy()
@@ -266,7 +266,7 @@ def lomax_moment(alpha, k, sig=1.0):
 print(" Lomax E[X^3] near its poles:", {al: round(lomax_moment(al, 3), 2) for al in [3.01, 3.5, 2.99, 2.01, 1.01]})
 alpha_l, sig = 2.5, 1.0
 Y = sig * (rng.random(2_000_000) ** (-1 / alpha_l) - 1)
-print(f" Lomax alpha={alpha_l}: survival (1 + x)^-alpha is a mult-add power with n = -alpha; sample mean {Y.mean():.4f} vs exact {lomax_moment(alpha_l,1):.4f}; E[X^2] exact {lomax_moment(alpha_l,2):.4f}; E[X^3] infinite")
+print(f" Lomax alpha={alpha_l}: survival (1 + x)^-alpha is a circle power with n = -alpha; sample mean {Y.mean():.4f} vs exact {lomax_moment(alpha_l,1):.4f}; E[X^2] exact {lomax_moment(alpha_l,2):.4f}; E[X^3] infinite")
 # Danish fire: Hill estimate, and the max/sum ratio for each moment order
 x = load("danish.rda", "danish")
 print(f" Danish fire, {len(x)} losses (million DKK, 1985 values): mean {x.mean():.3f}, max {x.max():.2f}")

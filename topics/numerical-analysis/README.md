@@ -1,4 +1,4 @@
-# Numerical analysis through mult-add (Nov 25, 2026)
+# Numerical analysis through the circle operation (Nov 25, 2026)
 
 ## Files
 - index.html: the page (self-contained; figure data from page_data.json inlined).
@@ -23,7 +23,7 @@
 4. Relative errors compose by ✳ (products) and ⊟ (quotients); Higham's θn is exactly the ✳-fold of
    the step errors (checked to the bit), bounded by (1+u)^n − 1 ≤ nu/(1 − nu) (proved). Known content.
 5. Newton's division-free inverse is v ← v ✳ (−(u ✳ v)); the residual goes e ↦ −e², the corner of
-   (1+e)(1−e). Goldschmidt: (−e) ✳ e ✳ e² ✳ … = −e^(2^n). Horner: a chain of mult-adds sums the
+   (1+e)(1−e). Goldschmidt: (−e) ✳ e ✳ e² ✳ … = −e^(2^n). Horner: a chain of circle operations sums the
    2^n − 1 cube corners in n fma steps. Classical, restated.
 
 ## Verdict

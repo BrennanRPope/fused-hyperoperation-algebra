@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE a careful reading document in the same series as the toric, Fermat, topology and actuarial pages, honest about known vs new
-   IDEA a plate from a geometry atlas laid over a lab notebook: ink drawings, ultramarine for mult-add, vermilion for faults
+   IDEA a plate from a geometry atlas laid over a lab notebook: ink drawings, ultramarine for the circle operation, vermilion for faults
    PICTURE one cube of fault patterns, coloured two ways, showing why each channel has its own weight k
    COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
    TYPE Newsreader for titles, Inter for text
@@ -59,8 +59,8 @@ footer{border-top:1px solid var(--rule)}
 <div class="wrap two">
 <div>
 <p class="mute">Fused Hyperoperation Algebra · quantum noise · November 25, 2026</p>
-<h1>Qubit noise is mult-add with a weight, and error correction is a flow back to the clean corner</h1>
-<p class="lede">Every standard way a qubit gets noisy combines by the same rule, <b>a + b + k·a·b</b>: your mult-add with a weight k. Only the weight changes from one kind of noise to the next. Error-correcting codes then act as maps on the cube that push noise back toward the corner where nothing went wrong.</p>
+<h1>Qubit noise is the circle operation with a weight, and error correction is a flow back to the clean corner</h1>
+<p class="lede">Every standard way a qubit gets noisy combines by the same rule, <b>a + b + k·a·b</b>: your circle operation ∘ₖ (called mult-add before 1.0) with a weight k. Only the weight changes from one kind of noise to the next. Error-correcting codes then act as maps on the cube that push noise back toward the corner where nothing went wrong.</p>
 <p>The picture is exact and easy to see. Honestly, every piece of it is already known in quantum information. What it gives you is one geometric lens over all of it, not a new tool for beating real thresholds.</p>
 </div>
 <figure class="plate" style="margin:0">
@@ -79,7 +79,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="box flag">
 <p><b>On the call, the combined error for two noise sources was given as p + q − pq.</b> That rule is right for one kind of noise and wrong for another.</p>
 <ul>
-<li><b>Amplitude damping</b> (an excited qubit relaxing, the "T1" decay): any fault counts, so the combined chance is p + q − pq. This is mult-add mirrored with a minus sign, exactly as said.</li>
+<li><b>Amplitude damping</b> (an excited qubit relaxing, the "T1" decay): any fault counts, so the combined chance is p + q − pq. This is the circle operation mirrored with a minus sign, exactly as said.</li>
 <li><b>Bit-flips and phase-flips</b>: two flips cancel, so only an odd number counts. The combined chance is <b>p + q − 2pq</b>. The call's rule overstates it by exactly p·q.</li>
 </ul>
 <p class="mute" style="margin:0">Checked both ways: a density-matrix simulation of the actual quantum channels agrees with each rule to 10<sup>−16</sup>, and the call's rule misses bit-flips by 0.07 at p = 0.13, q = 0.27. Lean proves the gap is exactly pq.</p>
@@ -90,7 +90,7 @@ footer{border-top:1px solid var(--rule)}
 <section class="band" id="weights"><div class="wrap two">
 <div>
 <h2>One shape, three weights</h2>
-<p>Write a ⊕<sub>k</sub> b = a + b + k·a·b. With k = 1 it is your rung-1 mult-add. Multiply everything by k and any weighted version turns into plain mult-add, so they are all the same operation seen at different scales.</p>
+<p>Write a ⊕<sub>k</sub> b = a + b + k·a·b. With k = 1 it is your rung-1 circle operation. Multiply everything by k and any weighted version turns into the plain circle operation, so they are all the same operation seen at different scales.</p>
 <div class="eq">1 + k·(a ⊕<sub>k</sub> b) = (1 + k·a)(1 + k·b)</div>
 <table>
 <thead><tr><th>Noise</th><th>Rule</th><th class="n">k</th><th class="n">Wall −1/k</th></tr></thead>
@@ -101,11 +101,11 @@ footer{border-top:1px solid var(--rule)}
 </tbody>
 </table>
 <p style="margin-top:12px">The coordinate 1 + k·a is what physicists call the fidelity or polarization: how much of the qubit's state survives. Stacking channels multiplies it, so on a log scale noise adds up in a straight line.</p>
-<p><b>The wall is mult-add's −1.</b> In plain mult-add, −1 swallows everything: (−1) ⊕ b = −1. Here the matching point −1/k is total noise, where the qubit holds no information at all. You've said you dislike 0 × 4 = 0 because information is lost. Quantum noise is exactly that loss, and noise reduction is the work of staying away from the wall.</p>
+<p><b>The wall is the circle operation's −1.</b> In the plain circle operation, −1 swallows everything: (−1) ⊕ b = −1. Here the matching point −1/k is total noise, where the qubit holds no information at all. You've said you dislike 0 × 4 = 0 because information is lost. Quantum noise is exactly that loss, and noise reduction is the work of staying away from the wall.</p>
 </div>
 <figure class="plate">
 <img src="figures/q1_three_rules.png" alt="Left: combined error chance against the number of stacked noise channels, three curves rising toward walls at 1, 0.75 and 0.5. Right: the same in the coordinate 1 plus k times the error, on a log scale, as three straight lines.">
-<figcaption class="cap">Left: stacked 5% channels creep toward their walls. Right: in the 1 + k·a coordinate each is a straight line, the mult-add log at work.</figcaption>
+<figcaption class="cap">Left: stacked 5% channels creep toward their walls. Right: in the 1 + k·a coordinate each is a straight line, the circle-operation log at work.</figcaption>
 </figure>
 </div></section>
 
@@ -125,7 +125,7 @@ footer{border-top:1px solid var(--rule)}
 <p>A general "Pauli" noise channel flips a qubit by X, Y or Z with some chances. Record how much of each direction survives, (λx, λy, λz), and you get a point in the cube [−1, 1]³. The points that are real channels fill the tetrahedron on four alternate corners of that cube: no noise, a certain X, a certain Y, a certain Z.</p>
 <p>Two facts make this the cleanest geometric picture in the whole study:</p>
 <ul>
-<li><b>Composing two channels multiplies the coordinates</b>, one axis at a time. Each axis is its own mult-add.</li>
+<li><b>Composing two channels multiplies the coordinates</b>, one axis at a time. Each axis is its own circle operation.</li>
 <li><b>The four faces are the four chances.</b> 1 + λx + λy + λz is four times the chance of no error, and so on, so "inside the tetrahedron" means exactly "all chances are nonnegative".</li>
 </ul>
 <p>Repeating a channel walks the point toward the centre, total noise. Depolarizing noise is the diagonal from the clean corner through the centre. A known trick called twirling (randomly rotating the noise) projects any channel onto that diagonal, which is why so much of quantum computing models noise as depolarizing.</p>
@@ -143,7 +143,7 @@ footer{border-top:1px solid var(--rule)}
 <figcaption class="cap">Left and middle: each qubit's phase is a helix (your curves via i). Right: what survives on average.</figcaption>
 </figure>
 <p>A qubit in superposition carries a phase that turns at a slightly wrong rate when its surroundings jitter. Over time its state draws a helix, exactly your "curves via i" picture, and different qubits get different pitches, so their helices fan out and the average washes away.</p>
-<p>The spin echo flips the qubit at the halfway mark. That mirrors the helix, the second half unwinds the first, and every qubit lands back on the same point. In mult-add terms, the second half is composed with its own inverse: a ⊕ (−a/(1 + a)) = 0. It also matches your idea of negatives as a mirror image. With frozen noise the echo undoes everything; with slowly drifting noise it undoes the slow part and buys time. Stacking many such mirrors is dynamical decoupling, one of the main noise-reduction methods on real hardware. All of this is known physics (Hahn, 1950), but it is your geometry exactly.</p>
+<p>The spin echo flips the qubit at the halfway mark. That mirrors the helix, the second half unwinds the first, and every qubit lands back on the same point. In circle-operation terms, the second half is composed with its own inverse: a ⊕ (−a/(1 + a)) = 0. It also matches your idea of negatives as a mirror image. With frozen noise the echo undoes everything; with slowly drifting noise it undoes the slow part and buys time. Stacking many such mirrors is dynamical decoupling, one of the main noise-reduction methods on real hardware. All of this is known physics (Hahn, 1950), but it is your geometry exactly.</p>
 </div></section>
 
 <section class="band" id="codes"><div class="wrap two">
@@ -207,26 +207,26 @@ footer{border-top:1px solid var(--rule)}
 </tbody>
 </table>
 <div class="box">
-<p style="margin:0"><b>No lead here as promising as the KdV soliton cube.</b> The soliton case was a known equation whose solution is literally a weighted mult-add cube. Here the matches are just as exact, but each is a standard textbook fact, and none opens a door the field hasn't walked through. The closest to a lead is the flow-on-the-cube view of concatenation, and that idea goes back to the first threshold theorems (1996 to 1997).</p>
+<p style="margin:0"><b>No lead here as promising as the KdV soliton cube.</b> The soliton case was a known equation whose solution is literally a circle-operation cube with dial k. Here the matches are just as exact, but each is a standard textbook fact, and none opens a door the field hasn't walked through. The closest to a lead is the flow-on-the-cube view of concatenation, and that idea goes back to the first threshold theorems (1996 to 1997).</p>
 </div>
 </div></section>
 
 <section class="band" id="known"><div class="wrap">
 <h2>Known vs new</h2>
 <p><b>Known:</b> the composition rules and multiplying fidelities (standard; used in randomized benchmarking), the Pauli tetrahedron (Fujiwara and Algoet 1999; King and Ruskai), twirling, the spin echo (Hahn 1950) and dynamical decoupling, repetition and Shor codes (Shor 1995), concatenated thresholds as fixed points (Aharonov and Ben-Or; Knill, Laflamme and Zurek), surface code thresholds (Dennis, Kitaev, Landahl and Preskill 2002), MacWilliams (1963), biased-noise tailoring (Tuckett and others).</p>
-<p><b>New here:</b> reading all of it as one weighted mult-add, with −1/k as the information-killing wall; the Shor code's two concatenated code-capacity thresholds stated as one picture, a box (the numbers follow directly from the standard recursion and may well be in the literature; I didn't find them quoted); and the formal check of every algebraic step in core Lean.</p>
+<p><b>New here:</b> reading all of it as one circle operation with dial k, with −1/k as the information-killing wall; the Shor code's two concatenated code-capacity thresholds stated as one picture, a box (the numbers follow directly from the standard recursion and may well be in the literature; I didn't find them quoted); and the formal check of every algebraic step in core Lean.</p>
 </div></section>
 
 <section class="band" id="lean"><div class="wrap">
 <h2>What Lean checked</h2>
 <p>File <code>QuantumNoise.lean</code>: core Lean 4.37, no mathlib, no <code>sorry</code>, only Lean's standard axioms. 29 theorems, including:</p>
 <ul>
-<li>Weighted mult-add is associative, scaling turns it into plain mult-add, 1 + k·a multiplies, and −1/k absorbs everything.</li>
+<li>The circle operation with dial k is associative, scaling turns it into the plain circle operation, 1 + k·a multiplies, and −1/k absorbs everything.</li>
 <li>The amplitude-damping, bit-flip and depolarizing rules, and that the call's rule misses bit-flips by exactly pq.</li>
 <li>Stacking n channels: 1 + k·(n-fold) = (1 + k·a)<sup>n</sup>, by induction.</li>
 <li>Pauli channels: composing multiplies all three coordinates, and the tetrahedron's faces are the four chances.</li>
 <li>The 3-copy vote in survival coordinates is (3λ − λ³)/2, its fixed points are −1, 0, 1, and it always helps between 0 and 1. Phase-flips through the bit-flip code are cubed.</li>
-<li>The Shor thresholds bracketed by exact rational arithmetic; MacWilliams for the 3-copy code; the mult-add inverse behind the echo.</li>
+<li>The Shor thresholds bracketed by exact rational arithmetic; MacWilliams for the 3-copy code; the circle inverse behind the echo.</li>
 </ul>
 <p class="mute"><b>What Lean did not check:</b> that these formulas describe the quantum channels (the density-matrix simulations in <code>checks.py</code> do that), anything with real numbers, limits or continuity, and the surface code. All numbers are in <code>checks_output.txt</code>; pictures come from <code>figures.py</code>.</p>
 </div></section>

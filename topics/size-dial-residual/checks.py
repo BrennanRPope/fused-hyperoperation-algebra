@@ -1,4 +1,4 @@
-"""Size weighting as a dial, and what mult-add leaves unexplained.
+"""Size weighting as a dial, and what the circle operation leaves unexplained.
 Run: python3 checks.py  (needs mpmath). Prints PASS/FAIL lines and the numbers on the page."""
 import math, mpmath as mp
 mp.mp.dps = 30
@@ -58,7 +58,7 @@ check("log density -> half (slowly, like 1/log X)", abs(num/den - 0.5) < 0.02)
 # sharp natural density (every n<=X weight 1): beta = 0
 check("sharp count gives log1.5/log2 = 58.50%", abs(float(share(0, .5)) - 0.5849625) < 1e-6)
 
-print("== C. Is it the twist k? Each element's weight IS its twist (wAdd_scale), but no single k fits")
+print("== C. Is it the twist k? Each element's weight IS its twist (circK_scale), but no single k fits")
 import numpy as np
 ts = np.linspace(0.01, 1, 200)
 KEFF = {}
@@ -93,7 +93,7 @@ for N in [10, 100, 1000]:
     print(f"   complement of {{1}} in {{1..{N}}}: weight q^(sum) = {math.exp(-0.01*(N*(N+1)//2 - 1)):.3e}")
 check("complement sends every finite subset to weight 0 on an infinite sized set", math.exp(-0.01*(1000*1001//2-1)) < 1e-300 or True)
 
-print("== E. The residual: what subsets (mult-add) miss is repetition = the same set at doubled size")
+print("== E. The residual: what subsets (the circle operation) miss is repetition = the same set at doubled size")
 for beta in [1, 2, 3, 4]:
     F = -Li(beta+1, -1); B = mp.zeta(beta+1)
     check(f"beta={beta}: subsets/multisets log-total = 1 - 2^-{beta}", abs(F/B - (1 - mp.mpf(2)**-beta)) < 1e-25,

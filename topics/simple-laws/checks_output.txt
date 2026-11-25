@@ -1,7 +1,7 @@
 PASS number system slope = landscape law
 PASS norm multiplies
 PASS region addition = border
-PASS region mult-add = two walls
+PASS region the circle operation = two walls
 PASS region union of failures / cooling = two walls
 PASS region tangent / Pythagoras = turning
 PASS region velocity addition (Einstein) = two walls
@@ -36,10 +36,10 @@ PASS two lenses apart P=5.0,3.0 d=0.1
 PASS two lenses apart P=10.0,-4.0 d=0.05
 PASS two lenses apart P=2.0,7.0 d=0.5
 PASS field lens: P1 d = 1 leaves total power = P1
-PASS Boyle partner of 0.5 is its mult-add inverse
-PASS Boyle partner of 1.0 is its mult-add inverse
-PASS Boyle partner of 3.0 is its mult-add inverse
-PASS Boyle partner of -0.5 is its mult-add inverse
+PASS Boyle partner of 0.5 is its circle inverse
+PASS Boyle partner of 1.0 is its circle inverse
+PASS Boyle partner of 3.0 is its circle inverse
+PASS Boyle partner of -0.5 is its circle inverse
 PASS Boyle hyperbola: b -> -1 as a -> infinity (the wall)
 PASS ladder invariant after 12 sections
 PASS ladder -> golden ratio

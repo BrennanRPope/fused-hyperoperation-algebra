@@ -24,10 +24,10 @@ check('norm multiplies', sp.expand(N(pr.coeff(u,0),pr.coeff(u,1))-N(a,b)*N(c,d))
 def region(K,Q):
     D_=K*K-4*Q
     return 'two walls' if D_>0 else ('border' if D_==0 else 'turning')
-pts={'addition':(0,0),'mult-add':(1,0),'union of failures / cooling':(-1,0),'tangent / Pythagoras':(0,1),
+pts={'addition':(0,0),'The circle operation':(1,0),'union of failures / cooling':(-1,0),'tangent / Pythagoras':(0,1),
      'velocity addition (Einstein)':(0,-1),'lens pair d=0.1 m':(-0.1,0),'rung 2':(2,sp.Rational(1,2)),
      'law of cosines C=60deg':(-1,1),'law of cosines C=90deg':(0,1),'flat triangle':(2,1)}
-exp={'addition':'border','mult-add':'two walls','union of failures / cooling':'two walls','tangent / Pythagoras':'turning',
+exp={'addition':'border','The circle operation':'two walls','union of failures / cooling':'two walls','tangent / Pythagoras':'turning',
      'velocity addition (Einstein)':'two walls','lens pair d=0.1 m':'two walls','rung 2':'two walls',
      'law of cosines C=60deg':'turning','law of cosines C=90deg':'turning','flat triangle':'border'}
 for n,(K,Q) in pts.items(): check('region '+n+' = '+exp[n], region(K,Q)==exp[n])
@@ -69,7 +69,7 @@ M=np.array([[1,0],[-9.,1]])@np.array([[1,0.2],[0,1]])@np.array([[1,0],[-5.,1]])
 check('field lens: P1 d = 1 leaves total power = P1', abs(-M[1,0]-5.)<1e-12)
 # 7. Boyle: pressure gain a, volume factor 1/(1+a); hyperbola asymptotes at the walls
 for av in [0.5,1.0,3.0,-0.5]:
-    bv=-av/(1+av); check(f'Boyle partner of {av} is its mult-add inverse', abs(av+bv+av*bv)<1e-14)
+    bv=-av/(1+av); check(f'Boyle partner of {av} is its circle inverse', abs(av+bv+av*bv)<1e-14)
 check('Boyle hyperbola: b -> -1 as a -> infinity (the wall)', abs(-1e9/(1+1e9)+1)<1e-8)
 # 8. ladder: F(2n)/F(2n-1) -> golden ratio, invariant n^2-nd-d^2=-1
 nn,dd_=0,1; phi=(1+5**0.5)/2
@@ -89,7 +89,7 @@ check('cooling: 1-(1-a)^2 = a + a - a*a', sp.expand(1-(1-a)**2-(a+a-a*a))==0)
 cc=sp.Symbol('cc',positive=True)
 check('Galilean is the c -> infinity limit', sp.limit((x+y)/(1+x*y/cc**2),cc,sp.oo)==x+y)
 check('units: Einstein in m/s is the point (0,-1/c^2)', sp.simplify((x+y)/(1+x*y/cc**2)-law(0,-1/cc**2,x,y))==0)
-# 12. relative error of a product is mult-add exactly
+# 12. relative error of a product is the circle operation exactly
 check('relative errors multiply-add', sp.expand((1+a)*(1+b)-1-(a+b+a*b))==0)
 # 13. nonempty subsets
 for m_,n_ in [(2,3),(5,1),(4,4)]:

@@ -5,7 +5,7 @@ PASS 1d half box joined with half box = stick: layers 1,1,0,0,... exactly
 PASS 1e 4^k C(1/2,k) = 1, then (-1)^(k-1) * 2 * Catalan(k-1)  | [1, 2, -2, 4, -10, 28, -84, 264]
 PASS 1f third box joined three times = stick
 PASS 2a (1+1)^(1/2) = 1 + (sqrt2 - 1): half dimension at side 2 = one stick with dial sqrt2-1
-PASS 2b mult-add half power a^(*1/2) = sqrt(1+a)-1 joins back to a
+PASS 2b circle-operation half power a^(*1/2) = sqrt(1+a)-1 joins back to a
 PASS 2c dyadic halves forced: f(1/2)=sqrt2, f(1/4)=2^(1/4) (positive roots)
 PASS 3a C_1/4 level m: 2^m pieces of length 4^-m
 PASS 3b dimension of C_1/4 = log2/log4 = 1/2

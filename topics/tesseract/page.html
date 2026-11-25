@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tesseract coordinates for mult-add</title>
+<title>Tesseract coordinates for the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -62,8 +62,8 @@ a{color:var(--g1)}
 <body>
 <div class="rail"></div>
 <header class="band">
-<h1>Tesseract coordinates for mult-add</h1>
-<p class="lead">Every point gets 16 numbers, one for each corner of a tesseract. A corner's address says which axes it uses, so its dimension is part of its name. Mult-add is the natural way to combine these points: two corners combine by joining their switches.</p>
+<h1>Tesseract coordinates for the circle operation</h1>
+<p class="lead">Every point gets 16 numbers, one for each corner of a tesseract. A corner's address says which axes it uses, so its dimension is part of its name. The circle operation ∘₁ (called mult-add before 1.0) is the natural way to combine these points: two corners combine by joining their switches.</p>
 <figure>
 <svg viewBox="0 0 560 540" role="img" aria-label="A tesseract drawn as a cube inside a cube. Its 16 corners are labelled with four switches, a b c d, and coloured by how many switches are on: 1 corner of grade 0, 4 of grade 1, 6 of grade 2, 4 of grade 3, 1 of grade 4.">
 <line x1="280.0" y1="473.8" x2="424.1" y2="414.1" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
@@ -150,7 +150,7 @@ a{color:var(--g1)}
 <thead><tr><th>Switch times itself</th><th>What you get</th></tr></thead>
 <tbody>
 <tr><td><span class="math">x·x = 0</span></td><td>Plain addition: (1+ax)(1+bx) = 1+(a+b)x. This is the world of derivatives (dual numbers, jets).</td></tr>
-<tr><td><span class="math">x·x = x</span></td><td>Mult-add: (1+ax)(1+bx) = 1+(a⊕b)x. Probability, logic, solitons. This page.</td></tr>
+<tr><td><span class="math">x·x = x</span></td><td>The circle operation: (1+ax)(1+bx) = 1+(a⊕b)x. Probability, logic, solitons. This page.</td></tr>
 <tr><td><span class="math">e·e = ±1</span>, order flips sign</td><td>Geometric algebra: rotations, and Maxwell's four equations as one (Hestenes). Spacetime algebra has exactly 16 basis pieces, in layers of 1, 4, 6, 4, 1.</td></tr>
 </tbody></table>
 <p style="margin-bottom:0">Each row is known on its own. Seeing them as one dial on one tesseract is the "same lens" you were after, and it's worth chasing. It isn't a new theorem yet.</p>
@@ -193,7 +193,7 @@ a{color:var(--g1)}
 <dt>Value at x</dt><dd>ev<sub>x</sub>(w) = Σ<sub>S</sub> w<sub>S</sub> · Π<sub>i∈S</sub> x<sub>i</sub>. Every point is a weighted mix of the 16 corner monomials.</dd>
 <dt>Box coordinates</dt><dd>B<sub>T</sub> = sum of c<sub>S</sub> over every corner S inside T (the zeta step). For a pure point B<sub>T</sub> = Π<sub>i∈T</sub>(1+a<sub>i</sub>), the measure of a sub-box.</dd>
 <dt>Möbius step</dt><dd>The exact inverse: c<sub>S</sub> = Σ<sub>T⊆S</sub> (−1)<sup>|S−T|</sup> B<sub>T</sub>.</dd>
-<dt>Mult-add</dt><dd>(v ⊛ w)<sub>T</sub> = Σ v<sub>S</sub>w<sub>U</sub> over pairs with S ∪ U = T. In box coordinates it is plain multiplication, corner by corner. For pure points it is mult-add on each axis.</dd>
+<dt>The circle operation</dt><dd>(v ⊛ w)<sub>T</sub> = Σ v<sub>S</sub>w<sub>U</sub> over pairs with S ∪ U = T. In box coordinates it is plain multiplication, corner by corner. For pure points it is the circle operation on each axis.</dd>
 <dt>As a ring</dt><dd>Polynomials in x<sub>a</sub>…x<sub>d</sub> with the rule x<sub>i</sub>² = x<sub>i</sub>. A switch turned on twice is still on.</dd>
 </dl>
 <figure>
@@ -279,7 +279,7 @@ a{color:var(--g1)}
 <tr><td>Totals per grade</td><td>1, a+b+c+d, ab+ac+…, abc+…, abcd</td><td>Loses which axis is which</td></tr>
 <tr><td>Sum of all corners</td><td>1 + a⊕b⊕c⊕d</td><td>One number, most is lost</td></tr>
 </tbody></table>
-<p>The one trouble spot is −1, a box side of zero. Mult-add with −1 swallows everything: (−1)⊕b = −1, just as 0×b = 0. So the information loss you dislike in ordinary multiplication moves to −1 here. It doesn't vanish.</p>
+<p>The one trouble spot is −1, a box side of zero. The circle operation with −1 swallows everything: (−1)⊕b = −1, just as 0×b = 0. So the information loss you dislike in ordinary multiplication moves to −1 here. It doesn't vanish.</p>
 </section>
 
 <section class="band" id="simpler">
@@ -289,7 +289,7 @@ a{color:var(--g1)}
 <div class="ex">
 <h3><span class="tag win">Simpler</span>At least one of four things happens</h3>
 <p>Four independent chances: 1/10, 1/5, 1/4, 1/3.</p>
-<div class="ba"><div><b>Before: inclusion-exclusion</b>15 terms with alternating signs, one per non-empty corner: p₁+p₂+p₃+p₄ − p₁p₂ − … + p₁p₂p₃ + … − p₁p₂p₃p₄</div><div><b>After: one mult-add chain</b>P = −((−p₁) ⊕ (−p₂) ⊕ (−p₃) ⊕ (−p₄)) = 16/25</div></div>
+<div class="ba"><div><b>Before: inclusion-exclusion</b>15 terms with alternating signs, one per non-empty corner: p₁+p₂+p₃+p₄ − p₁p₂ − … + p₁p₂p₃ + … − p₁p₂p₃p₄</div><div><b>After: one circle-operation chain</b>P = −((−p₁) ⊕ (−p₂) ⊕ (−p₃) ⊕ (−p₄)) = 16/25</div></div>
 <p>When the events depend on each other, put the chance that all of S happen on corner S. The answer is then one signed sum over the corners, a single Möbius step. Checked against a direct count of 2,000 simulated cases. <span class="tag known">Known</span> Inclusion-exclusion is the Möbius function of exactly this lattice (Rota, 1964).</p>
 </div>
 
@@ -307,12 +307,12 @@ a{color:var(--g1)}
 
 <div class="ex">
 <h3><span class="tag lose">Worse</span>Rotating a point</h3>
-<p>Turn (3, 4) by the angle with cos = 3/5. In polar form you just add the angle. In corner form the new ab corner is cos·sin·(a² − b²) + (cos² − sin²)·ab. It needs a² and b², and no corner holds a square. Circles (x² + y² = r²) have the same problem. Rotations and distances belong to the e·e = ±1 row of the dial, not to mult-add. The size also doubles with every axis: 2<sup>n</sup> numbers for n axes.</p>
+<p>Turn (3, 4) by the angle with cos = 3/5. In polar form you just add the angle. In corner form the new ab corner is cos·sin·(a² − b²) + (cos² − sin²)·ab. It needs a² and b², and no corner holds a square. Circles (x² + y² = r²) have the same problem. Rotations and distances belong to the e·e = ±1 row of the dial, not to the circle operation. The size also doubles with every axis: 2<sup>n</sup> numbers for n axes.</p>
 </div>
 
 <div class="ex">
 <h3><span class="tag known">Known</span>Maxwell as one equation</h3>
-<p>In spacetime algebra, Maxwell's four equations become ∇F = J (David Hestenes, 1966). That algebra has the same 16 corners in layers of 1, 4, 6, 4, 1, but switches square to ±1 and anticommute. So this belongs to the geometric-algebra row of the dial. It isn't a mult-add result, and it's credited here to show where the dial leads.</p>
+<p>In spacetime algebra, Maxwell's four equations become ∇F = J (David Hestenes, 1966). That algebra has the same 16 corners in layers of 1, 4, 6, 4, 1, but switches square to ±1 and anticommute. So this belongs to the geometric-algebra row of the dial. It isn't a circle-operation result, and it's credited here to show where the dial leads.</p>
 </div>
 </section>
 
@@ -327,7 +327,7 @@ a{color:var(--g1)}
 <li>Grade = dimension on 1, 4, 6, 4, 1 corners: Grassmann and Clifford (geometric) algebra.</li>
 <li>a⊕b = a+b+ab itself: the circle operation in ring theory.</li>
 </ul>
-<p><b>What's yours:</b> using grade-tagged corners as a coordinate system for ordinary space, with mult-add as its native way of combining points, and the idea that one dial on the same tesseract joins derivatives, mult-add and geometric algebra. That framing could turn into something. As of today there's no new theorem here, and every piece above matches known maths.</p>
+<p><b>What's yours:</b> using grade-tagged corners as a coordinate system for ordinary space, with the circle operation as its native way of combining points, and the idea that one dial on the same tesseract joins derivatives, the circle operation and geometric algebra. That framing could turn into something. As of today there's no new theorem here, and every piece above matches known maths.</p>
 </section>
 
 <section class="band" id="try">
@@ -346,22 +346,22 @@ a{color:var(--g1)}
 <section class="band" id="lean">
 <h2>The formal version, in Lean 4</h2>
 <p class="warn">Checked. Compiled against mathlib v4.37.0-rc1 on Lean 4.37.0-rc1 on Brennan's Mac Studio (Nov 25, 2026), with zero errors and no "sorry".</p>
-<p>It defines corners, grade, the from-and-back maps, the value map, box coordinates, the union product and the soliton weights. It states and proves that mult-add is associative and commutative, that there are n choose k corners of grade k, that the corners sum to the box ∏(1+aᵢ), and that box coordinates turn axis-wise mult-add into multiplication. Lean already uses ⊕ for sum types and mathlib uses ⊞ for biproducts, so mult-add is written ✳, a plus and a times sign laid over each other. To recheck it, drop it in a Lean project that uses mathlib and run <span class="math">lake env lean TesseractCoords.lean</span>.</p>
+<p>It defines corners, grade, the from-and-back maps, the value map, box coordinates, the union product and the soliton weights. It states and proves that the circle operation is associative and commutative, that there are n choose k corners of grade k, that the corners sum to the box ∏(1+aᵢ), and that box coordinates turn the axis-wise circle operation into multiplication. Lean already uses ⊕ for sum types and mathlib uses ⊞ for biproducts, so the circle operation is written ✳, a plus and a times sign laid over each other. To recheck it, drop it in a Lean project that uses mathlib and run <span class="math">lake env lean TesseractCoords.lean</span>.</p>
 <div class="codehead"><b>TesseractCoords.lean</b><button data-copy="leancode">Copy</button></div>
 <pre id="leancode">/-
-  Tesseract coordinates for Fused Mult-Add Algebra
+  Tesseract coordinates for Fused Hyperoperation Algebra
   ================================================
 
   STATUS: checked. Compiled against mathlib v4.37.0-rc1 on Lean 4.37.0-rc1
   on Brennan&#x27;s Mac Studio (Nov 25, 2026) with zero errors and no `sorry`.
-  An earlier compile failed only because `⊞`, the mult-add symbol used here
-  before, is mathlib&#x27;s global notation for biproducts; mult-add is now
+  An earlier compile failed only because `⊞`, the circle-operation symbol used here
+  before, is mathlib&#x27;s global notation for biproducts; the circle operation is now
   written `✳`, which mathlib does not use. To recheck, put the file in a
   Lean project that depends on mathlib and run `lake env lean
   TesseractCoords.lean`.
 
   Notation: Lean already uses `⊕` for sum types and mathlib uses `⊞` for
-  biproducts, so mult-add is written `✳` here, a plus and a times sign laid
+  biproducts, so the circle operation is written `✳` here, a plus and a times sign laid
   over each other. a ✳ b = a + b + a*b.
 
   The picture. Cut a box with sides 1+a, 1+b, 1+c, 1+d at 1 on every axis.
@@ -377,33 +377,33 @@ namespace MultAdd
 
 variable {R : Type*} [CommRing R]
 
-/-! ## Mult-add on numbers -/
+/-! ## circle operation on numbers -/
 
-/-- Mult-add: one operation that adds and multiplies at once. -/
-def multAdd (a b : R) : R := a + b + a * b
+/-- the circle operation: one operation that adds and multiplies at once. -/
+def circ (a b : R) : R := a + b + a * b
 
-@[inherit_doc] infixl:65 &quot; ✳ &quot; =&gt; multAdd
+@[inherit_doc] infixl:65 &quot; ✳ &quot; =&gt; circ
 
-/-- The geometric heart: mult-add is a box with sides 1 + a and 1 + b,
+/-- The geometric heart: the circle operation is a box with sides 1 + a and 1 + b,
 minus the unit square. -/
 theorem one_add_multAdd (a b : R) : 1 + (a ✳ b) = (1 + a) * (1 + b) := by
-  unfold multAdd; ring
+  unfold circ; ring
 
-theorem multAdd_comm (a b : R) : a ✳ b = b ✳ a := by
-  unfold multAdd; ring
+theorem circ_comm (a b : R) : a ✳ b = b ✳ a := by
+  unfold circ; ring
 
-theorem multAdd_assoc (a b c : R) : (a ✳ b) ✳ c = a ✳ (b ✳ c) := by
-  unfold multAdd; ring
+theorem circ_assoc (a b c : R) : (a ✳ b) ✳ c = a ✳ (b ✳ c) := by
+  unfold circ; ring
 
-theorem multAdd_zero (a : R) : a ✳ 0 = a := by
-  unfold multAdd; ring
+theorem circ_zero (a : R) : a ✳ 0 = a := by
+  unfold circ; ring
 
 /-- Four numbers: the tesseract box with 16 pieces. -/
 theorem one_add_multAdd₄ (a b c d : R) :
     1 + (a ✳ b ✳ c ✳ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
-  simp only [multAdd]; ring
+  simp only [circ]; ring
 
-/-- Mult-add of a whole list (0 is the identity). -/
+/-- the circle operation of a whole list (0 is the identity). -/
 def multAddList : List R → R
   | [] =&gt; 0
   | x :: xs =&gt; x ✳ multAddList xs
@@ -440,7 +440,7 @@ def eval {n : ℕ} (x : Fin n → R) (c : Coord n R) : R :=
 /-- Box coordinates (the zeta transform): add up every corner inside T. -/
 def zeta {n : ℕ} (c : Coord n R) : Coord n R := fun T =&gt; ∑ S ∈ T.powerset, c S
 
-/-- Mult-add of two tesseract points: corners combine by joining their
+/-- the circle operation of two tesseract points: corners combine by joining their
 switches (S ∪ U). This is the union, or OR, product on subsets. -/
 def compose {n : ℕ} (v w : Coord n R) : Coord n R :=
   fun T =&gt; ∑ S : Corner n, ∑ U : Corner n, if S ∪ U = T then v S * w U else 0
@@ -482,7 +482,7 @@ theorem sum_corners_ofPoint {n : ℕ} (a : Fin n → R) :
   rw [Finset.prod_one_add, powerset_univ]
   simp only [ofPoint]
 
-/-- So the sum of all corners is 1 plus the mult-add of the coordinates. -/
+/-- So the sum of all corners is 1 plus the circle operation of the coordinates. -/
 theorem sum_corners_eq_one_add_multAdd {n : ℕ} (a : Fin n → R) :
     ∑ S : Corner n, ofPoint a S = 1 + multAddList (List.ofFn a) := by
   rw [sum_corners_ofPoint, one_add_multAddList, List.map_ofFn, List.prod_ofFn]
@@ -500,7 +500,7 @@ theorem zeta_ofPoint {n : ℕ} (a : Fin n → R) (T : Corner n) :
   rw [Finset.prod_one_add]
   rfl
 
-/-- In box coordinates, mult-add axis by axis is plain multiplication. -/
+/-- In box coordinates, circle-operation axis by axis is plain multiplication. -/
 theorem zeta_ofPoint_multAdd {n : ℕ} (a b : Fin n → R) (T : Corner n) :
     zeta (ofPoint (fun i =&gt; a i ✳ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
   simp only [zeta_ofPoint, one_add_multAdd, Finset.prod_mul_distrib]
@@ -513,7 +513,7 @@ theorem solitonWeights_one {n : ℕ} :
 
 /-
   Next step (not stated here yet): `zeta (compose v w) = zeta v * zeta w`
-  for every pair of points, which makes `compose` exactly mult-add in box
+  for every pair of points, which makes `compose` exactly the circle operation in box
   coordinates. The Python helpers test it on many random points.
 -/
 
@@ -522,9 +522,9 @@ end MultAdd</pre>
 
 <section class="band" id="python">
 <h2>Python helpers</h2>
-<p>tesseract.py converts between ordinary and tesseract coordinates, lists corners by grade, runs the zeta and Möbius steps, composes points with mult-add and builds soliton weights. Its 15 tests pass, and examples.py runs every before-and-after on this page. All of it is saved in your project folder under math-theory/tesseract.</p>
+<p>tesseract.py converts between ordinary and tesseract coordinates, lists corners by grade, runs the zeta and Möbius steps, composes points with the circle operation and builds soliton weights. Its 15 tests pass, and examples.py runs every before-and-after on this page. All of it is saved in your project folder under math-theory/tesseract.</p>
 <div class="codehead"><b>tesseract.py</b><button data-copy="pycode">Copy</button></div>
-<pre id="pycode">&quot;&quot;&quot;Tesseract coordinates for Fused Mult-Add Algebra.
+<pre id="pycode">&quot;&quot;&quot;Tesseract coordinates for Fused Hyperoperation Algebra.
 
 A point in n dimensions gets 2**n coordinates, one per corner of the
 n-cube (n = 4 is the tesseract). A corner is addressed by n switches,
@@ -538,9 +538,9 @@ The three ideas, in code:
   from_point(a)  -&gt; corner coordinates  c_S = product of a_i for i in S
   zeta(c)        -&gt; box coordinates     B_T = sum of c_S over S inside T
                                              = product of (1 + a_i), i in T
-  compose(v, w)  -&gt; mult-add on corners (switches combine by OR)
+  compose(v, w)  -&gt; the circle operation on corners (switches combine by OR)
 
-Mult-add a (+) b = a + b + ab = (1+a)(1+b) - 1. In box coordinates it is
+∘₁ a (+) b = a + b + ab = (1+a)(1+b) - 1. In box coordinates it is
 plain multiplication, corner by corner; mobius() goes back.
 
 Everything works with ints, floats or fractions.Fraction.
@@ -556,12 +556,12 @@ AXES = &quot;abcdefgh&quot;
 # ---------------------------------------------------------------- numbers
 
 def multadd(x, y):
-    &quot;&quot;&quot;Mult-add of two numbers: x + y + x*y.&quot;&quot;&quot;
+    &quot;&quot;&quot;the circle operation of two numbers: x + y + x*y.&quot;&quot;&quot;
     return x + y + x * y
 
 
 def multadd_all(values):
-    &quot;&quot;&quot;Mult-add of a whole list, left to right (0 is the identity).&quot;&quot;&quot;
+    &quot;&quot;&quot;the circle operation of a whole list, left to right (0 is the identity).&quot;&quot;&quot;
     total = 0
     for v in values:
         total = multadd(total, v)
@@ -571,7 +571,7 @@ def multadd_all(values):
 def multadd_inverse(x):
     &quot;&quot;&quot;The y with x (+) y = 0, that is -x / (1 + x). Undefined at x = -1.&quot;&quot;&quot;
     if x == -1:
-        raise ZeroDivisionError(&quot;-1 has no mult-add inverse (its box side is 0)&quot;)
+        raise ZeroDivisionError(&quot;-1 has no circle inverse (its box side is 0)&quot;)
     return -x / (1 + x) if isinstance(x, float) else Fraction(-x) / (1 + x)
 
 
@@ -681,7 +681,7 @@ def grade_totals(c):
     return out
 
 
-# ------------------------------------------------- transforms and mult-add
+# ------------------------------------------------- transforms and the circle operation
 
 def zeta(c):
     &quot;&quot;&quot;Box coordinates: B_T = sum of c_S over every S inside T.&quot;&quot;&quot;
@@ -708,7 +708,7 @@ def mobius(b):
 
 
 def compose(v, w):
-    &quot;&quot;&quot;Mult-add of two tesseract points: corners combine by OR of switches.
+    &quot;&quot;&quot;the circle operation of two tesseract points: corners combine by OR of switches.
 
     (v * w)_T = sum of v_S * w_U over every pair with S | U == T.
     Same as mobius(zeta(v) * zeta(w)) corner by corner.
@@ -761,7 +761,7 @@ if __name__ == &quot;__main__&quot;:
     a = [Fraction(1, 2), 2, 3, Fraction(-1, 3)]
     c = from_point(a)
     print(describe(c))
-    print(&quot;total =&quot;, total(c), &quot;= 1 + mult-add =&quot;, 1 + multadd_all(a))
+    print(&quot;total =&quot;, total(c), &quot;= 1 + circle operation =&quot;, 1 + multadd_all(a))
 </pre>
 <details><summary>examples.py, the checks behind "simpler or worse"</summary>
 <div class="codehead"><b>examples.py</b><button data-copy="excode">Copy</button></div>
@@ -796,7 +796,7 @@ def example_or_of_events():
         sign = 1 if t.grade(mask) % 2 else -1
         terms.append(sign * prod_)
     before = sum(terms)
-    # After: one mult-add chain on -p, i.e. P = -((-p1) (+) (-p2) (+) ...)
+    # After: one circle-operation chain on -p, i.e. P = -((-p1) (+) (-p2) (+) ...)
     after = -t.multadd_all([-x for x in p])
     print(f&quot;before: {len(terms)} signed terms, one per non-empty corner -&gt; {before}&quot;)
     print(f&quot;after : -( -p1 (+) -p2 (+) -p3 (+) -p4 ) -&gt; {after}&quot;)

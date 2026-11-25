@@ -86,13 +86,13 @@ for P, Q in [(3, 1), (1, -1), (F(5, 2), F(7, 3)), (-2, 5)]:
         okcas &= U[n + 1] ** 2 - U[n] * U[n + 2] == Q ** n
 check("Cassini: U(n+1)² − U(n)U(n+2) = Qⁿ (determinant of the n-step)", okcas)
 
-# 3. Mult-add: the denominator is always 1, U(n) = ((1+a)^n − 1)/a
+# 3. The circle operation: the denominator is always 1, U(n) = ((1+a)^n − 1)/a
 okm = True
 for a in [F(1, 2), F(3), F(-1, 3)]:
     U = lucas(2 + a, 1 + a, 20)
     for n in range(1, 20):
         okm &= U[n] - (1 + a) * U[n - 1] == 1 and a * U[n] == (1 + a) ** n - 1
-check("mult-add: denominator U(n) − (1+a)U(n−1) = 1, so a^(⊕n) = (1+a)ⁿ − 1", okm)
+check("The circle operation: denominator U(n) − (1+a)U(n−1) = 1, so a^(⊕n) = (1+a)ⁿ − 1", okm)
 
 # 4. The Fibonacci law: (k, q) = (−1, −1), adding 1 to itself
 fibop = law(F(-1), F(-1))
@@ -171,13 +171,13 @@ check("integer laws only ever cycle with period 1, 2, 3, 4 or 6 (never 5)",
       set(periods) <= {1, 2, 3, 4, 6}, f"periods seen: {dict(sorted(periods.items()))}")
 out["data"]["integer_periods"] = periods
 
-# 8. Fibonacci inside mult-add itself: x(n+2) = x(n+1) ✳ x(n)
+# 8. Fibonacci inside the circle operation itself: x(n+2) = x(n+1) ✳ x(n)
 ma = lambda a, b: a + b + a * b
 xs = [1, 1]
 for _ in range(20):
     xs.append(ma(xs[-1], xs[-2]))
 fibn = lucas(1, -1, 25)
-check("mult-add Fibonacci from 1, 1 is 2^F(n) − 1: 1, 1, 3, 7, 31, 255, 8191, …",
+check("Circle-operation Fibonacci from 1, 1 is 2^F(n) − 1: 1, 1, 3, 7, 31, 255, 8191, …",
       all(xs[n] == 2 ** fibn[n + 1] - 1 for n in range(20)))
 okg = all(math.gcd(xs[m], xs[n]) == 2 ** fibn[math.gcd(m + 1, n + 1)] - 1 for m in range(15) for n in range(15))
 check("strong divisibility: gcd(x_m, x_n) = x_gcd (inherits Fibonacci's)", okg)

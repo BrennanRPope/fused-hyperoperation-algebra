@@ -43,7 +43,7 @@ ax.plot(log10s, d['fam']['1.0'], color=C['red'], lw=2.5, label='3D NS:  s^½  (r
 ax.plot(log10s, d['fam']['0.0'], color=C['gray'], lw=1.5, ls=':', label='rung 0:  ½ log s')
 ax.set_xlabel('frequency  log₁₀ s'); ax.set_ylabel('deficiency  log₁₀ D(s)   (dissipation = s^{5/2} / D)')
 ax.set_ylim(-0.3, 30); ax.legend(fontsize=8.5, frameon=False, loc='upper left')
-ax.set_title('The gap is one full rung of the mult-add flow wide')
+ax.set_title('The gap is one full rung of the circle-operation flow wide')
 fig.tight_layout(); fig.savefig('figures/f2_rung_height.png', dpi=150); plt.close(fig)
 
 # ---------- F3: Osgood integrals ----------
@@ -89,6 +89,6 @@ for k in range(1, 6):
     bottom += vals
 for nn, b in zip(dims, bottom): ax.text(nn, b + 0.5, f'{int(b)}', ha='center', fontsize=9)
 ax.set_xlabel('dimension n'); ax.set_ylabel('new cells per old cell = 1^(⊞n) = 2ⁿ − 1')
-ax.legend(fontsize=8.5, frameon=False); ax.set_title('The shell is the mult-add cube, graded', fontsize=10)
+ax.legend(fontsize=8.5, frameon=False); ax.set_title('The shell is the circle-operation cube, graded', fontsize=10)
 fig.tight_layout(); fig.savefig('figures/f5_annulus.png', dpi=150); plt.close(fig)
 print('figures done')

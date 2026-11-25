@@ -19,7 +19,7 @@ fam = {g["id"]: g for g in G["groups"]}
 
 # dot number, (x, y) as on the map, title, [(module suffix or "", theorem short name)]
 LINKS = [
- (1, 1, 0, "Mult-add", [("Base", "multAdd_lift"), ("Base", "multAdd_comm"), ("Base", "multAdd_assoc"),
+ (1, 1, 0, "The circle operation", [("Base", "multAdd_lift"), ("Base", "multAdd_comm"), ("Base", "multAdd_assoc"),
     ("DarkSector", "redshift_compose"), ("DarkSector", "redshift_power"), ("DataCenter", "pue_corner"),
     ("DataCenter", "additive_books_corner"), ("DataCenter", "foldMA_split"), ("Finance", "fisher"),
     ("InformationTheory", "uniform_tsallis_is_fused_power"), ("InformationTheory", "campbell"),

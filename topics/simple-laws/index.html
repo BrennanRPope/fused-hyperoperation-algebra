@@ -75,13 +75,13 @@ code{overflow-wrap:anywhere;font-size:14px}
 </head>
 <body>
 <nav class="toc" aria-label="Sections">
-<a href="#map">Map</a><a href="#numbers">Every point is mult-add</a><a href="#era-0">Counting</a><a href="#era-1">Measurement</a><a href="#era-2">Geometry</a><a href="#era-3">Trigonometry</a><a href="#era-4">Archimedes</a><a href="#era-5">Galileo</a><a href="#era-6">Kepler</a><a href="#era-7">Optics</a><a href="#era-8">Boyle</a><a href="#era-9">Hooke</a><a href="#era-10">Newton</a><a href="#era-11">Electricity</a><a href="#era-12">Einstein</a><a href="#lead">Lead check</a><a href="#files">Files</a>
+<a href="#map">Map</a><a href="#numbers">Every point is the circle operation</a><a href="#era-0">Counting</a><a href="#era-1">Measurement</a><a href="#era-2">Geometry</a><a href="#era-3">Trigonometry</a><a href="#era-4">Archimedes</a><a href="#era-5">Galileo</a><a href="#era-6">Kepler</a><a href="#era-7">Optics</a><a href="#era-8">Boyle</a><a href="#era-9">Hooke</a><a href="#era-10">Newton</a><a href="#era-11">Electricity</a><a href="#era-12">Einstein</a><a href="#lead">Lead check</a><a href="#files">Files</a>
 </nav>
 
 <header class="band" id="map">
 <div class="wrap">
 <h1>The landscape from the ground up</h1>
-<p class="lede">Early science lands on only a handful of spots on the map: addition, mult-add, the failure line to the left of it, the turning corner and the speed-of-light corner. And geometry falls out on its own: every point of the plane is mult-add in its own number system, and the three countries are Euclid's, Galileo's and Einstein's geometry.</p>
+<p class="lede">Early science lands on only a handful of spots on the map: addition, the circle operation ∘₁ (called mult-add before 1.0), the failure line to the left of it, the turning corner and the speed-of-light corner. And geometry falls out on its own: every point of the plane is the circle operation in its own number system, and the three countries are Euclid's, Galileo's and Einstein's geometry.</p>
 <p class="mute">Turn the dial to fill the map one era at a time. The newest settlements glow. Hover or tap a dot for every law that lives there so far.</p>
 <div class="plate">
   <div class="fig" id="mapfig"><svg id="plane" role="img" aria-label="The landscape plane with the laws placed so far"></svg></div>
@@ -106,16 +106,16 @@ code{overflow-wrap:anywhere;font-size:14px}
 
 <section class="band alt" id="numbers">
 <div class="wrap">
-<h2>Every point of the map is mult-add in its own number system</h2>
+<h2>Every point of the map is the circle operation in its own number system</h2>
 <div class="two">
 <div>
-<p>Invent a new unit u with one rule, u² = k·u − q. Numbers are now a + b·u. Mult-add two "tilted ones":</p>
+<p>Invent a new unit u with one rule, u² = k·u − q. Numbers are now a + b·u. Combine two "tilted ones" by the circle operation:</p>
 <p><code>(1 + x·u)(1 + y·u) = (1 − q·x·y) + (x + y + k·x·y)·u</code></p>
-<p>Read the answer as a slope, the u part over the plain part, and you get exactly the law at the point (k, q) of the landscape. So every law on the map is mult-add, done in a different number system and read as a slope.</p>
+<p>Read the answer as a slope, the u part over the plain part, and you get exactly the law at the point (k, q) of the landscape. So every law on the map is the circle operation, done in a different number system and read as a slope.</p>
 <p>Each number system comes with its own Pythagoras. The size a² + k·ab + q·b² multiplies when the numbers multiply, so it is a length. What kind of length depends on the country:</p>
 </div>
 <div class="pic">
-<svg viewBox="0 0 480 300" role="img" aria-label="Unit circles of the three countries and of mult-add">
+<svg viewBox="0 0 480 300" role="img" aria-label="Unit circles of the three countries and of the circle operation">
 <defs><clipPath id="cp1"><rect x="0" y="0" width="480" height="300"/></clipPath></defs>
 <g clip-path="url(#cp1)">
 <!-- turning -->
@@ -124,13 +124,13 @@ code{overflow-wrap:anywhere;font-size:14px}
 <g transform="translate(180,110)"><line x1="-45" y1="0" x2="45" y2="0" stroke="#2b4f75"/><line x1="0" y1="-45" x2="0" y2="45" stroke="#2b4f75"/><line x1="-34" y1="-45" x2="-34" y2="45" stroke="#f3f8ff" stroke-width="3"/><line x1="34" y1="-45" x2="34" y2="45" stroke="#f3f8ff" stroke-width="3"/></g>
 <!-- two walls -->
 <g transform="translate(300,110)"><line x1="-45" y1="0" x2="45" y2="0" stroke="#2b4f75"/><line x1="0" y1="-45" x2="0" y2="45" stroke="#2b4f75"/><line x1="-45" y1="-45" x2="45" y2="45" stroke="#8fd3ff" stroke-dasharray="4 4"/><line x1="-45" y1="45" x2="45" y2="-45" stroke="#8fd3ff" stroke-dasharray="4 4"/><path id="hb" d="" fill="none" stroke="#8fd3ff" stroke-width="3"/></g>
-<!-- mult-add / Boyle -->
+<!-- the circle operation / Boyle -->
 <g transform="translate(410,110)"><line x1="-50" y1="25" x2="50" y2="25" stroke="#8fd3ff" stroke-dasharray="4 4"/><line x1="-25" y1="-50" x2="-25" y2="50" stroke="#8fd3ff" stroke-dasharray="4 4"/><path id="bh" d="" fill="none" stroke="#ffd166" stroke-width="3"/><circle cx="0" cy="0" r="3.5" fill="#ffd166"/></g>
 </g>
 <text x="60" y="190" text-anchor="middle">Turning</text><text x="60" y="208" text-anchor="middle">Euclid</text><text x="60" y="226" text-anchor="middle" class="ms">a² + b²</text>
 <text x="180" y="190" text-anchor="middle">Border</text><text x="180" y="208" text-anchor="middle">Galileo</text><text x="180" y="226" text-anchor="middle">a²</text>
 <text x="300" y="190" text-anchor="middle">Two walls</text><text x="300" y="208" text-anchor="middle">Einstein</text><text x="300" y="226" text-anchor="middle">a² − b²</text>
-<text x="410" y="190" text-anchor="middle">Mult-add</text><text x="410" y="208" text-anchor="middle">Boyle</text><text x="410" y="226" text-anchor="middle">(1+x)(1+y)</text>
+<text x="410" y="190" text-anchor="middle">The circle operation</text><text x="410" y="208" text-anchor="middle">Boyle</text><text x="410" y="226" text-anchor="middle">(1+x)(1+y)</text>
 <text x="240" y="280" text-anchor="middle">The "unit circle" of each geometry; dashed lines are its walls</text>
 </svg>
 </div>
@@ -139,9 +139,9 @@ code{overflow-wrap:anywhere;font-size:14px}
   <div style="--c:var(--pink)"><h3>Turning: Euclid</h3><p>u is like i. The length is a² + b² in disguise, its unit circle is a circle, and moving along the law is rotation. Trigonometry lives here.</p></div>
   <div style="--c:var(--ink)"><h3>Border: Galileo</h3><p>u² = 0 after a shift. The length is one square, so one direction has no length at all. Galileo's velocity addition, plain x + y, is the corner of this country.</p></div>
   <div style="--c:var(--sky)"><h3>Two walls: Einstein</h3><p>u splits into two real directions. The length is a² − b², its unit circle is a hyperbola, and the walls are its asymptotes: the light cone.</p></div>
-  <div style="--c:var(--gold)"><h3>Mult-add's own point</h3><p>At (1, 0) the unit is u² = u. The length is (1 + x)(1 + y), and its unit circle, (1 + x)(1 + y) = 1, is Boyle's hyperbola PV = constant. Its asymptotes are the walls at −1.</p></div>
+  <div style="--c:var(--gold)"><h3>The circle operation's own point</h3><p>At (1, 0) the unit is u² = u. The length is (1 + x)(1 + y), and its unit circle, (1 + x)(1 + y) = 1, is Boyle's hyperbola PV = constant. Its asymptotes are the walls at −1.</p></div>
 </div>
-<p class="mute" style="margin-top:14px">Proved in Lean: the slope law at every (k, q), the length multiplying, the three ways the length factors, and the unit circle at mult-add's point (<code>NumberPlane.lean</code>, 26 theorems). Known as Clifford's and Study's number systems; Yaglom's <em>A Simple Non-Euclidean Geometry and Its Physical Basis</em> (1979) tells the Galileo and Einstein story with them. New here is reading the whole landscape plane through them.</p>
+<p class="mute" style="margin-top:14px">Proved in Lean: the slope law at every (k, q), the length multiplying, the three ways the length factors, and the unit circle at the circle operation's point (<code>NumberPlane.lean</code>, 26 theorems). Known as Clifford's and Study's number systems; Yaglom's <em>A Simple Non-Euclidean Geometry and Its Physical Basis</em> (1979) tells the Galileo and Einstein story with them. New here is reading the whole landscape plane through them.</p>
 </div>
 </section>
 
@@ -149,11 +149,11 @@ code{overflow-wrap:anywhere;font-size:14px}
 
 <section class="band alt" id="lead">
 <div class="wrap">
-<h2>Lead check: no new soliton, but the geometry now comes from mult-add</h2>
+<h2>Lead check: no new soliton, but the geometry now comes from the circle operation</h2>
 <div class="lead">
-<p><strong>The biggest result on this page is the number-system reading.</strong> It answers your rule that the geometry must be derived from mult-add: one rule for u gives each point of the map its own length, and the three countries come out as Euclid, Galileo and Einstein, with Boyle's hyperbola as mult-add's own circle. It is known mathematics (Clifford, Study, Yaglom), so it is a foundation, not a discovery like a new law.</p>
+<p><strong>The biggest result on this page is the number-system reading.</strong> It answers your rule that the geometry must be derived from the circle operation: one rule for u gives each point of the map its own length, and the three countries come out as Euclid, Galileo and Einstein, with Boyle's hyperbola as the circle operation's own circle. It is known mathematics (Clifford, Study, Yaglom), so it is a foundation, not a discovery like a new law.</p>
 <p>Nothing in early science sits off the five familiar spots except the law of cosines, which draws a whole line, q = 1. Every real triangle lies inside the turning country on that line, flat triangles sit on the border, and past the border cosine becomes cosh: the triangles of relativity. A rotation seen in axes tilted to angle θ is exactly the law at (2 cos θ, 1) (checked numerically to 10⁻¹⁰).</p>
-<p class="mute" style="margin:0">Next door worth opening: the same number systems in three or four dimensions (quaternions and their cousins) would put the mult-add cube's higher layers on the map, which is where the tesseract coordinates could plug in.</p>
+<p class="mute" style="margin:0">Next door worth opening: the same number systems in three or four dimensions (quaternions and their cousins) would put the circle-operation cube's higher layers on the map, which is where the tesseract coordinates could plug in.</p>
 </div>
 </div>
 </section>
@@ -164,7 +164,7 @@ code{overflow-wrap:anywhere;font-size:14px}
 <div class="scroll"><table>
 <thead><tr><th>File</th><th>What it holds</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td><code>lean/NumberPlane.lean</code></td><td>Mult-add in the number system u² = k·u − q gives the landscape law; the length multiplies; turning, border and two-walls factorings; Boyle's hyperbola as mult-add's unit circle</td><td>26 theorems, compiled</td></tr>
+<tr><td><code>lean/NumberPlane.lean</code></td><td>The circle operation in the number system u² = k·u − q gives the landscape law; the length multiplies; turning, border and two-walls factorings; Boyle's hyperbola as the circle operation's unit circle</td><td>26 theorems, compiled</td></tr>
 <tr><td><code>lean/GeometryTrig.lean</code></td><td>Gnomon (Euclid II.4), cube and box layers, square-cube law, Galileo's odd numbers, Pythagoras by areas and by 1 + x·i, Euclid's triples, angle addition, tangent addition, double and triple angle, law of cosines on the line q = 1</td><td>24 theorems, compiled</td></tr>
 <tr><td><code>lean/EarlyScience.lean</code></td><td>Non-empty choices, measurement errors, lever and Boyle, Kepler III, inverse square, cooling, ray matrices for lenses and the field-lens wall, series and parallel, the resistor ladder and its golden walls</td><td>17 theorems, compiled</td></tr>
 <tr><td><code>checks.py</code></td><td>Sympy identities, regions of every point, tilted-frame rotations, real planet orbits, ray traces, transmission line, ladder</td><td>54 of 54 pass</td></tr>
@@ -179,24 +179,24 @@ code{overflow-wrap:anywhere;font-size:14px}
 {
 const ERAS=[
  {n:'Counting and arithmetic',w:'Prehistory to Babylon',c:'#f3f8ff',
-  intro:'Counting is addition. Multiplying, seen through the +1 lift, is mult-add, and repeating that climbs the ladder. Mult-add even has a counting meaning: pick from either set, or both, but not nothing.',
+  intro:'Counting is addition. Multiplying, seen through the +1 lift, is the circle operation, and repeating that climbs the ladder. The circle operation even has a counting meaning: pick from either set, or both, but not nothing.',
   laws:[['Adding counts','combination','(0, 0) addition, rung 0','border','lean','dual_point'],
-   ['Multiplying, seen through +1','combination','(1, 0) mult-add, rung 1','two walls','lean','multadd_point_u'],
+   ['Multiplying, seen through +1','combination','(1, 0) circle operation, rung 1','two walls','lean','multadd_point_u'],
    ['Non-empty choices from two separate sets','combination','(1, 0): (2^m − 1) ⊞ (2^n − 1) = 2^(m+n) − 1','two walls','lean','nonempty_subsets'],
    ['Repeated multiplying (powers)','rung','(2, ½) rung 2, the smooth fused exponent','two walls','old','rung curve']]},
  {n:'Measurement and units',w:'Egypt to the 1600s',c:'#a9c3dc',
-  intro:'Changing units never moves a law to a new country: it slides the dot along a parabola through the origin. Measurement error is where mult-add first earns its keep: the textbook rule that relative errors add drops the corner, which mult-add keeps exactly.',
+  intro:'Changing units never moves a law to a new country: it slides the dot along a parabola through the origin. Measurement error is where the circle operation first earns its keep: the textbook rule that relative errors add drops the corner, which the circle operation keeps exactly.',
   laws:[['Changing units','units','slides (k, q) to (λk, λ²q); the shape k²/(k² − 4q) stays','same country','lean','LandscapeMap.units_num'],
-   ['Relative error of a product, exact','combination','(1, 0) mult-add','two walls','lean','product_error'],
-   ['Relative errors "add" (first order)','combination','(0, 0), the shadow of mult-add without its corner','border','lean','product_error_corner']]},
+   ['Relative error of a product, exact','combination','(1, 0) circle operation','two walls','lean','product_error'],
+   ['Relative errors "add" (first order)','combination','(0, 0), the shadow of the circle operation without its corner','border','lean','product_error_corner']]},
  {n:'Geometry',w:'Euclid, about 300 BC',c:'#ffd166',
-  intro:'The corner square ab of (1 + a)(1 + b) is the geometry of mult-add. Euclid knew it as the gnomon, the L-shaped piece that grows a square (Elements II.4). Mult-add three times gives the cube and its layers 1, 3, 3, 1. The right triangle with legs 1 and x is the number 1 + x·i; mult-adding two of them multiplies their squared hypotenuses, which is Pythagoras carried through every product.',
+  intro:'The corner square ab of (1 + a)(1 + b) is the geometry of the circle operation. Euclid knew it as the gnomon, the L-shaped piece that grows a square (Elements II.4). Applying the circle operation three times gives the cube and its layers 1, 3, 3, 1. The right triangle with legs 1 and x is the number 1 + x·i; combining two of them by the circle operation multiplies their squared hypotenuses, which is Pythagoras carried through every product.',
   pic:'gnomon',
   laws:[['Rectangle and gnomon (Euclid II.4)','geometry','(1, 0): the corner square is a ⊞ a − 2a','two walls','lean','gnomon, euclid_II_4'],
    ['Box and cube volume','geometry','(1, 0) three times: layers 3, 3, 1','two walls','lean','cube_layers, box_corners'],
    ['Pythagoras','geometry','(0, 1): the length a² + b² of the complex corner','turning','lean','pythagoras_from_areas, norm_complex'],
    ['Euclid’s triples','geometry','(0, 1): square the triangle q + p·i','turning','lean','euclid_triple'],
-   ['Similar figures','geometry','mult-add powers 2 and 3 of the length change','two walls','lean','square_cube']]},
+   ['Similar figures','geometry','Circle powers 2 and 3 of the length change','two walls','lean','square_cube']]},
  {n:'Trigonometry',w:'Hipparchus and Ptolemy to De Moivre',c:'#ff5c8a',
   intro:'Angle addition is multiplication at the complex corner (0, 1). Slopes combine by tangent addition, the turning law. Cubing 1 + x·i sends the cube’s layers 1, 3, 3, 1 alternately to the two axes: that is the triple-angle formula. The law of cosines is the length on the whole line q = 1.',
   pic:'trig',
@@ -207,53 +207,53 @@ const ERAS=[
    ['Law of cosines','line','the line q = 1, with k = −2 cos C, from (−2, 1) to (2, 1)','turning; border when flat','lean','law_of_cosines_norm, triangle_lengths_real'],
    ['Rotation seen in tilted axes','combination','(2 cos θ, 1) for axes at angle θ','turning','chk','checks.py item 3']]},
  {n:'Archimedes',w:'About 250 BC',c:'#8fd3ff',
-  intro:'Weights times arms add up (torques add), so balancing is addition. But the balance itself is a product held constant: double the arm and the weight must change by the mult-add inverse of doubling. That is the same picture as Boyle’s law, two thousand years early.',
+  intro:'Weights times arms add up (torques add), so balancing is addition. But the balance itself is a product held constant: double the arm and the weight must change by the circle inverse of doubling. That is the same picture as Boyle’s law, two thousand years early.',
   laws:[['Torques add','combination','(0, 0)','border','inf','—'],
    ['Lever balance, weight × arm held constant','product law','partners a, b with a ⊞ b = 0: the hyperbola (1 + a)(1 + b) = 1','two walls','lean','constant_product'],
    ['Buoyancy, displaced weight','combination','(0, 0)','border','inf','—']]},
  {n:'Galileo',w:'1590s to 1638',c:'#ffd166',
-  intro:'Galileo found that a falling body covers distances 1, 3, 5, 7 in equal times. Those are exactly Euclid’s gnomons, the strips that grow one square into the next, so the distance is the square of the time. His square-cube law is mult-add powers 2 and 3. His velocity addition, plain x + y, is the corner of the border country.',
+  intro:'Galileo found that a falling body covers distances 1, 3, 5, 7 in equal times. Those are exactly Euclid’s gnomons, the strips that grow one square into the next, so the distance is the square of the time. His square-cube law is circle powers 2 and 3. His velocity addition, plain x + y, is the corner of the border country.',
   pic:'fall',
-  laws:[['Odd-number rule, distance ∝ time²','power','mult-add power 2: each step is a gnomon','two walls','lean','fall_is_gnomon, fallen_square'],
+  laws:[['Odd-number rule, distance ∝ time²','power','Circle power 2: each step is a gnomon','two walls','lean','fall_is_gnomon, fallen_square'],
    ['Square-cube law','power','area a ⊞ a, volume (a ⊞ a) ⊞ a','two walls','lean','square_cube'],
    ['Galilean velocity addition','combination','(0, 0), the dual-number corner','border','lean','dual_point']]},
  {n:'Kepler',w:'1609 to 1619',c:'#8fd3ff',
   intro:'Kepler’s third law is the cube against the square: on percent changes, t ⊞ t = α ⊞ α ⊞ α. Four times as far out means eight times as long a year. The real orbits of five planets match to half a percent. The first law (ellipses) is a shape, not a way of combining, so it gets no dot.',
   laws:[['First law, ellipses','neither','a curve, not a combining law','—','inf','—'],
    ['Second law, equal areas','combination','(0, 0): areas swept add','border','inf','—'],
-   ['Third law, T² ∝ a³','power','mult-add powers: the square’s gnomon equals the cube’s layers','two walls','lean','kepler_third; data in checks.py']]},
+   ['Third law, T² ∝ a³','power','Circle powers: the square’s gnomon equals the cube’s layers','two walls','lean','kepler_third; data in checks.py']]},
  {n:'Optics',w:'Snell 1621 to the lens makers',c:'#ff5c8a',
-  intro:'Thin lenses touching add their powers. Pull them apart by d and the total is P₁ + P₂ − d·P₁P₂: weighted mult-add with k = −d, straight from the ray matrices. Each lens’s squeeze factor 1 − d·P multiplies. The wall is real: a first lens that focuses exactly on the second makes the second lens change nothing. Telescope makers call it a field lens.',
+  intro:'Thin lenses touching add their powers. Pull them apart by d and the total is P₁ + P₂ − d·P₁P₂: the circle operation with k = −d, straight from the ray matrices. Each lens’s squeeze factor 1 − d·P multiplies. The wall is real: a first lens that focuses exactly on the second makes the second lens change nothing. Telescope makers call it a field lens.',
   pic:'lens',
   laws:[['Lenses in contact','combination','(0, 0)','border','lean','lenses_in_contact'],
    ['Lenses a distance d apart','combination','(−d, 0), wall at power 1/d (the field lens)','two walls','lean','lenses_apart, field_lens'],
    ['Mirror and thin-lens equation','combination','(0, 0): the reciprocal distances add','border','inf','—'],
-   ['Snell’s law, n·sin θ conserved','product law','percent changes by mult-add','two walls','inf','—']]},
+   ['Snell’s law, n·sin θ conserved','product law','percent changes by the circle operation','two walls','inf','—']]},
  {n:'Boyle',w:'1662',c:'#ffd166',
-  intro:'Pressure times volume stays fixed. Raise the pressure by a fraction a and the volume changes by b with a ⊞ b = 0: b is the mult-add inverse −a/(1 + a). Pressure gains stack at k = +1 while the matching volume losses stack at k = −1, mirror images. The curve (1 + a)(1 + b) = 1 is mult-add’s own unit circle, and its asymptotes are the walls: no pressure needs infinite room, no room needs infinite pressure.',
+  intro:'Pressure times volume stays fixed. Raise the pressure by a fraction a and the volume changes by b with a ⊞ b = 0: b is the circle inverse −a/(1 + a). Pressure gains stack at k = +1 while the matching volume losses stack at k = −1, mirror images. The curve (1 + a)(1 + b) = 1 is the circle operation’s own unit circle, and its asymptotes are the walls: no pressure needs infinite room, no room needs infinite pressure.',
   pic:'boyle',
   laws:[['PV constant, the partner change','product law','a ⊞ b = 0, b = −a/(1 + a)','two walls','lean','constant_product, boyle_partner'],
-   ['Pressure gains stacking','combination','(1, 0) mult-add','two walls','lean','boyle_gain_loss'],
+   ['Pressure gains stacking','combination','(1, 0) circle operation','two walls','lean','boyle_gain_loss'],
    ['Volume losses stacking','combination','(−1, 0) union of failures','two walls','lean','boyle_gain_loss'],
-   ['Boyle’s hyperbola','geometry','the unit circle of mult-add’s number system','two walls','lean','unit_circle_is_hyperbola']]},
+   ['Boyle’s hyperbola','geometry','the unit circle of the circle operation’s number system','two walls','lean','unit_circle_is_hyperbola']]},
  {n:'Hooke',w:'1678',c:'#8fd3ff',
   intro:'A spring’s force is proportional to its stretch. A proportion is a change of units, so it slides along a parabola rather than sitting at a point. Springs side by side add their stiffness; springs end to end add their stretchiness, which is addition read through the flip x ↦ 1/x.',
   laws:[['F = kx','units','a change of units, not a point','same country','inf','—'],
    ['Springs side by side','combination','(0, 0)','border','inf','—'],
    ['Springs end to end','combination','(0, 0) read through x ↦ 1/x','border','lean','parallel_is_inverted_addition']]},
  {n:'Newton',w:'1687 to 1701',c:'#f3f8ff',
-  intro:'Forces and momenta add. F = ma is a product law. Gravity’s inverse square is a mult-add power of −2: move out by ρ and the force changes by the mult-add inverse of ρ ⊞ ρ. Newton’s law of cooling closes a fixed fraction of the temperature gap each minute, so the part closed stacks at k = −1, the failure line. The first law is the identity itself: add nothing and nothing changes.',
+  intro:'Forces and momenta add. F = ma is a product law. Gravity’s inverse square is a circle power of −2: move out by ρ and the force changes by the circle inverse of ρ ⊞ ρ. Newton’s law of cooling closes a fixed fraction of the temperature gap each minute, so the part closed stacks at k = −1, the failure line. The first law is the identity itself: add nothing and nothing changes.',
   laws:[['First law, inertia','neither','the identity 0 of every law','—','inf','—'],
    ['Forces and momenta add (second and third laws)','combination','(0, 0)','border','inf','—'],
-   ['F = ma','product law','percent changes by mult-add','two walls','lean','product_error'],
-   ['Inverse-square gravity','power','mult-add power −2: inverse of ρ ⊞ ρ','two walls','lean','inverse_square'],
+   ['F = ma','product law','percent changes by the circle operation','two walls','lean','product_error'],
+   ['Inverse-square gravity','power','Circle power −2: inverse of ρ ⊞ ρ','two walls','lean','inverse_square'],
    ['Law of cooling','combination','(−1, 0) union of failures; wall = fully cooled','two walls','lean','cooling']]},
  {n:'Electricity',w:'Ohm 1827 to the telegraph',c:'#ff5c8a',
   intro:'Series resistors add, parallel ones add through the flip. Ohm’s law is a product law. The surprise is the ladder: 1 Ω in series, 1 Ω across, repeated. Its resistance runs 1, 3/2, 8/5, 21/13, ratios of Fibonacci numbers, and every value sits on the hyperbola n² − nd − d² = −1 that hugs the golden ratio. The golden ratio is the wall. Make the steps tiny and you get a telegraph line, which sits at the speed-of-light corner (0, −1) in its own units; a line ended in its matching resistance looks infinitely long, because that resistance is the wall.',
   pic:'ladder',
   laws:[['Series resistors','combination','(0, 0)','border','inf','—'],
    ['Parallel resistors, capacitors in series','combination','(0, 0) read through x ↦ 1/x','border','lean','parallel_is_inverted_addition'],
-   ['Ohm’s law, V = IR','product law','percent changes by mult-add','two walls','inf','—'],
+   ['Ohm’s law, V = IR','product law','percent changes by the circle operation','two walls','inf','—'],
    ['Resistor ladder','combination','one section: walls at the golden ratio and −1/golden','two walls','lean','ladder_fib, ladder_walls, ladder_hyperbola'],
    ['Telegraph line (many tiny sections)','combination','(0, −1) in units of the matching resistance','two walls','chk','checks.py item 9']]},
  {n:'Einstein, for contrast',w:'1905',c:'#8fd3ff',
@@ -263,7 +263,7 @@ const ERAS=[
 ];
 const DOTS=[
  {k:0,q:0,e:0,t:'Addition',lx:-10,ly:20,a:'end'},
- {k:1,q:0,e:0,t:'Mult-add',lx:10,ly:20,a:'start'},
+ {k:1,q:0,e:0,t:'The circle operation',lx:10,ly:20,a:'start'},
  {k:2,q:.5,e:0,t:'Rung 2',lx:12,ly:4,a:'start'},
  {k:0,q:1,e:2,t:'Pythagoras, tangent addition',lx:12,ly:-12,a:'start'},
  {k:0,q:-.5,e:3,t:'Sine alone',lx:12,ly:4,a:'start'},
@@ -288,7 +288,7 @@ function PICS(n){
 <rect x="30" y="60" width="120" height="120" fill="#13406b" stroke="#f3f8ff"/><rect x="150" y="60" width="60" height="120" fill="#8fd3ff" opacity=".55"/><rect x="30" y="180" width="120" height="50" fill="#8fd3ff" opacity=".55"/><rect x="150" y="180" width="60" height="50" fill="#ffd166"/>
 ${T(90,125,'1')}${T(180,125,'a')}${T(90,210,'b')}${T(180,210,'ab')}${T(120,40,'(1 + a)(1 + b) = 1 + a + b + ab')}
 <g transform="translate(250,70)"><rect x="0" y="40" width="100" height="100" fill="#13406b" stroke="#f3f8ff"/><path d="M0 40 L30 10 L130 10 L100 40 Z" fill="#8fd3ff" opacity=".55"/><path d="M100 40 L130 10 L130 110 L100 140 Z" fill="#8fd3ff" opacity=".35"/><path d="M100 40 L130 10" stroke="#ffd166" stroke-width="4"/></g>
-${T(320,46,'cube: 1, 3, 3, 1')}${T(300,246,'the gold edge is the corner abc')}</svg><p class="cap">Left: mult-add is the area of the grown rectangle; its corner square ab is Euclid's gnomon piece. Right: three times over, the cube.</p>`;
+${T(320,46,'cube: 1, 3, 3, 1')}${T(300,246,'the gold edge is the corner abc')}</svg><p class="cap">Left: the circle operation is the area of the grown rectangle; its corner square ab is Euclid's gnomon piece. Right: three times over, the cube.</p>`;
  if(n==='trig'){const o=[40,210],s=150,x=.5,y=.75;const p1=[o[0]+s,o[1]-s*x],p2=[o[0]+s*(1-x*y),o[1]-s*(x+y)];
   return `<svg viewBox="0 0 440 260" role="img" aria-label="Two right triangles compose">
 <line x1="${o[0]}" y1="${o[1]}" x2="420" y2="${o[1]}" stroke="#2b4f75"/>

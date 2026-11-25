@@ -195,7 +195,7 @@ check("gap worlds: square root of 'jump d successors' on indices exists iff d ev
 # 10. Rung flatness chain (finite sanity): for m >= 2, m*m >= m+m >= m+1, so flat multiplication => flat addition => flat successor
 check("m*m >= 2m >= m+1 for m >= 2 (why flat multiplication forces flat addition forces flat successor)",
       all(m * m >= 2 * m >= m + 1 for m in range(2, 10000)))
-check("mult-add m+m+m*m sits above m*m, so flat mult-add <=> flat multiplication (given m <= m*m)",
+check("The circle operation m+m+m*m sits above m*m, so the flat circle operation <=> flat multiplication (given m <= m*m)",
       all(m + m + m * m >= m * m >= m for m in range(1, 10000)))
 
 print(f"\n{sum(results)} of {len(results)} checks pass")

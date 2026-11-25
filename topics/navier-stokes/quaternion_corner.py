@@ -12,6 +12,6 @@ flows = {
 for name, u in flows.items():
     w = curl(u); q = Q(0, *u)*Q(0, *w)
     print(name, '| number part:', sp.simplify(q.a), '| arrow part:', [sp.simplify(c) for c in (q.b, q.c, q.d)])
-# mult-add in variables that square to zero and anticommute: the cube's layers
+# The circle operation in variables that square to zero and anticommute: the cube's layers
 e = sp.symbols('e1:4', commutative=False)
 print("Grassmann cube (1+e1)(1+e2)(1+e3) has 1,3,3,1 terms by degree: layers of Lambda(R^3) = pressure, velocity, vorticity, helicity")

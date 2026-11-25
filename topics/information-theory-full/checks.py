@@ -1,4 +1,4 @@
-"""Information theory, full pass, through mult-add: every claim on index.html, checked.
+"""Information theory, full pass, through the circle operation: every claim on index.html, checked.
 Run: python3 checks.py > checks_output.txt"""
 import math, itertools
 import numpy as np, sympy as sp, networkx as nx
@@ -30,7 +30,7 @@ for _ in range(500):
 check("500 random q: ln_q(ab) = dial; e_q(u ✳ₖ v) = e_q(u)·e_q(v); e_q inverts ln_q", ok)
 check("k = −1 (Tsallis q = 2): ln_2 x = 1 − 1/x and (1 − 1/xy) = (1 − 1/x) ✳₋₁ (1 − 1/y)",
       sp.simplify((1 - 1/(x*y)) - dial(-1, 1 - 1/x, 1 - 1/y)) == 0)
-check("k = 1 (q = 0): ln_0 x = x − 1, the 'count minus one' that mult-adds: 5·7 − 1 = 4 ✳ 6",
+check("k = 1 (q = 0): ln_0 x = x − 1, the 'count minus one' that combines by the circle operation: 5·7 − 1 = 4 ✳ 6",
       abs(lnq(7.0, 0) - 6) < 1e-15 and dial(1, 4, 6) == 5*7 - 1)
 
 print("== 2. Tsallis entropy is the expectation of a q-surprise; the measure engine composes it")
@@ -85,7 +85,7 @@ for n in [1, 2, 5, 12, 100]:
         mp = 0.0
         for _ in range(n): mp = dial(1, mp, xx/n)
         ok &= abs(eq(xx, 1 - 1/n) - 1 - mp) < 1e-9*(1+mp)
-check("k = 1/n: e_q(x) − 1 = n mult-add steps of x/n = (1 + x/n)^n − 1 (rung 2)", ok)
+check("k = 1/n: e_q(x) − 1 = n circle-operation steps of x/n = (1 + x/n)^n − 1 (rung 2)", ok)
 check("as k → 0, e_q(1) → e: 2.0, 2.5937, 2.7048, 2.7181",
       all(abs(eq(1, 1-1/n) - (1+1/n)**n) < 1e-12 for n in [1, 10, 100, 10000]) and abs(eq(1, 1-1e-6) - math.e) < 1e-5)
 t = sp.symbols('t'); g = lambda X: (1 + X/2)**2 - 1

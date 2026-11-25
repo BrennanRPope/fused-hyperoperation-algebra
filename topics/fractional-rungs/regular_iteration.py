@@ -8,7 +8,7 @@ it the classical way: walk toward 0 with n steps, apply the formal series of E^s
   x > 0: E^s(x) = E^n( P_s( L^n(x) ) )      L(x) = log(1+x) pulls positives to 0
   x < 0: E^s(x) = L^n( P_s( E^n(x) ) )      E pulls negatives to 0
 
-B_s(a,b) = E^s( E^-s(a) + E^-s(b) ):  s = 0 addition, s = 1 mult-add, s = -1 log(e^a+e^b-1).
+B_s(a,b) = E^s( E^-s(a) + E^-s(b) ):  s = 0 addition, s = 1 circle operation, s = -1 log(e^a+e^b-1).
 """
 from fractions import Fraction as Fr
 import math, json, sys
@@ -115,7 +115,7 @@ if __name__ == "__main__":
 
     # s-ladder values at whole rungs
     rep("B_0(1.3, 0.7) = 2.0", abs(B(0, 1.3, .7) - 2.0) < 1e-9)
-    rep("B_1(1.3, 0.7) = mult-add = 2.91", abs(B(1, 1.3, .7) - (1.3 + .7 + .91)) < 1e-9)
+    rep("B_1(1.3, 0.7) = the circle operation = 2.91", abs(B(1, 1.3, .7) - (1.3 + .7 + .91)) < 1e-9)
     rep("B_-1(1.3, 0.7) = log(e^1.3 + e^0.7 - 1)", abs(B(-1, 1.3, .7) - math.log(math.exp(1.3) + math.exp(.7) - 1)) < 1e-9)
     b2 = (1+1.3)*(1+.7)*math.exp(math.log1p(1.3)*math.log1p(.7)) - 1
     rep("B_2(1.3, 0.7) = (1+a)(1+b)e^{L(a)L(b)} - 1", abs(B(2, 1.3, .7) - b2) < 1e-8)

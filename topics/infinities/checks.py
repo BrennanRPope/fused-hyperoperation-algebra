@@ -1,10 +1,10 @@
-"""Infinities between countable and the continuum, seen through fused mult-add.
+"""Infinities between countable and the continuum, seen through the fused circle operation.
 
 Numeric and exact checks behind index.html. Run:  python3 checks.py > checks_output.txt
 
-Mult-add  a (+) b = a + b + ab = (1+a)(1+b) - 1.
-Weighted (zoomed) mult-add  a (+)_t b = a + b + t ab ; t = 0 is addition, t = 1 is mult-add.
-Fractional rungs B_s from ../fractional-rungs/regular_iteration.py (s = 0 addition, s = 1 mult-add).
+Circle operation  a (+) b = a + b + ab = (1+a)(1+b) - 1.
+Weighted (zoomed) ∘₁  a (+)_t b = a + b + t ab ; t = 0 is addition, t = 1 is the circle operation.
+Fractional rungs B_s from ../fractional-rungs/regular_iteration.py (s = 0 addition, s = 1 circle operation).
 """
 import math, sys, itertools, random, json
 from fractions import Fraction as Fr
@@ -22,7 +22,7 @@ def rep(name, ok, extra=""):
 def madd(a, b): return a + b + a*b
 def wmadd(t, a, b): return a + b + t*a*b
 
-# ---------------------------------------------------------------- 1. sum of ones vs mult-add of ones
+# ---------------------------------------------------------------- 1. sum of ones vs the circle operation of ones
 ok = True
 for n in range(0, 40):
     s = 0; m = 0
@@ -30,9 +30,9 @@ for n in range(0, 40):
         s = s + 1
         m = madd(m, 1)
     ok &= (s == n) and (m == 2**n - 1)
-rep("n ones added = n ; n ones mult-added = 2^n - 1 (all corners of the n-cube but the origin)", ok)
+rep("n ones added = n ; n ones combined by the circle operation = 2^n - 1 (all corners of the n-cube but the origin)", ok)
 
-# corners of the n-cube by grade (number of switches on) = Pascal layers = mult-add cube layers
+# corners of the n-cube by grade (number of switches on) = Pascal layers = circle-operation cube layers
 ok = True
 for n in range(1, 16):
     layers = [0]*(n+1)
@@ -54,7 +54,7 @@ for trial in range(2000):
     ok &= all(rows[i] != diag for i in range(n))
 rep("diagonal flip misses every row of any n x n 0/1 table (2000 random tables)", ok)
 
-# ---------------------------------------------------------------- 3. weighted mult-add: exact identities
+# ---------------------------------------------------------------- 3. the circle operation with dial k: exact identities
 ok = True
 for t in [Fr(0), Fr(1, 3), Fr(1, 2), Fr(1), Fr(2), Fr(7, 5)]:
     w = Fr(0)
@@ -65,13 +65,13 @@ for t in [Fr(0), Fr(1, 3), Fr(1, 2), Fr(1), Fr(2), Fr(7, 5)]:
         else:
             ok &= (w == n)
         w = wmadd(t, w, 1)
-rep("n-fold weighted mult-add of 1:  t*W_n + 1 = (1+t)^n  (t=0 gives W_n = n)", ok)
+rep("n-fold circle operation with dial k of 1:  t*W_n + 1 = (1+t)^n  (t=0 gives W_n = n)", ok)
 
 ok = True
 for t in [Fr(1, 3), Fr(1, 2), Fr(2)]:
     for a, b in [(Fr(1), Fr(2)), (Fr(3, 7), Fr(5, 2)), (Fr(0), Fr(4))]:
         ok &= t*wmadd(t, a, b) == madd(t*a, t*b)
-rep("zoom: t*(a (+)_t b) = (ta) (+) (tb) -- weighted mult-add is mult-add seen at scale t", ok)
+rep("zoom: t*(a (+)_t b) = (ta) (+) (tb) -- the circle operation with dial k is the circle operation seen at scale t", ok)
 
 ok = all(sum(comb(n, k)*Fr(t)**k for k in range(n+1)) == (1+Fr(t))**n
          for n in range(0, 25) for t in [Fr(1, 3), Fr(1), Fr(5, 2)])
@@ -112,10 +112,10 @@ ok = all(abs(v[-1] - target) < 2e-4 for _, v, target in rows)
 rep("(1/n) log2 C(n, pn) -> H(p)/ln 2 as n grows", ok,
     "; ".join(f"p={p:.3f}: {v[0]:.4f},{v[1]:.4f},{v[2]:.4f},{v[3]:.5f} -> {tg:.5f}" for p, v, tg in rows))
 
-# smooth and increasing on [0,1]: zoom 0 (addition) -> dimension 0, zoom 1 (mult-add) -> dimension 1
+# smooth and increasing on [0,1]: zoom 0 (addition) -> dimension 0, zoom 1 (the circle operation) -> dimension 1
 ts = np.linspace(1e-6, 1, 2001)
 Ds = np.array([D_closed(t) for t in ts])
-rep("D(t) rises smoothly from 0 (t -> 0, addition) to 1 (t = 1, mult-add)",
+rep("D(t) rises smoothly from 0 (t -> 0, addition) to 1 (t = 1, the circle operation)",
     np.all(np.diff(Ds) > 0) and Ds[0] < 1e-4 and abs(Ds[-1] - 1) < 1e-12,
     f"D(0.01)={D_closed(0.01):.4f} D(0.1)={D_closed(0.1):.4f} D(0.5)={D_closed(0.5):.4f} D(1)={D_closed(1):.4f}")
 
@@ -229,7 +229,7 @@ ct = comb_nodes(N)
 spl = {k for k in range(N) if (k + 1) & k == 0}   # split at levels 0,1,3,7,15 (sizes 2,4,8,16,32)
 ut = uniform_nodes(N, spl)
 cs, us = still_splitting(ct, d), still_splitting(ut, d)
-rep("comb: of the depth-6 nodes only the spine splits again (addition, countable); uniform: all do (mult-add, continuum)",
+rep("comb: of the depth-6 nodes only the spine splits again (addition, countable); uniform: all do (the circle operation, continuum)",
     cs == 1 and us == len(ut[d]), f"comb {cs} of {len(ct[d])}, uniform {us} of {len(ut[d])}; shape, not count, decides (perfect set theorem)")
 
 # gauge sizes of Cantor sets built from rung counts: C_s covered by L_s(n) pieces of size 2^-n.

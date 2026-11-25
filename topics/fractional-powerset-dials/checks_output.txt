@@ -6,18 +6,18 @@ PASS count n=4: sum of weights = prod(1+t) = 1 + chain
 PASS count n=5: sum of weights = prod(1+t) = 1 + chain
 PASS count n=6: sum of weights = prod(1+t) = 1 + chain
 PASS all dials 1 -> 2^n, all 0 -> 1, all 1/2 -> 1.5^n
-PASS merge n=1: W_t * W_s = W_(t mult-add s)
-PASS merge n=2: W_t * W_s = W_(t mult-add s)
-PASS merge n=3: W_t * W_s = W_(t mult-add s)
-PASS merge n=4: W_t * W_s = W_(t mult-add s)
-PASS block of two elements carries dial t mult-add s
+PASS merge n=1: W_t * W_s = W_(t ∘₁ s)
+PASS merge n=2: W_t * W_s = W_(t ∘₁ s)
+PASS merge n=3: W_t * W_s = W_(t ∘₁ s)
+PASS merge n=4: W_t * W_s = W_(t ∘₁ s)
+PASS block of two elements carries dial t ∘₁ s
 PASS half: W_h * W_h = P(S) (every subset weight 1), n=4  [h = 0.414214]
 PASS unique nonneg square root (zeta/Mobius) is the product dial sqrt2-1
 PASS zeta(F*G) = zeta(F) zeta(G)
-PASS 2-th root dial 2^(1/2)-1 mult-added 2 times = 1  [t = 0.414214]
-PASS 3-th root dial 2^(1/3)-1 mult-added 3 times = 1  [t = 0.259921]
-PASS 5-th root dial 2^(1/5)-1 mult-added 5 times = 1  [t = 0.148698]
-PASS half(t mult-add s) = half(t) mult-add half(s)
+PASS 2-th root dial 2^(1/2)-1 combined by the circle operation 2 times = 1  [t = 0.414214]
+PASS 3-th root dial 2^(1/3)-1 combined by the circle operation 3 times = 1  [t = 0.259921]
+PASS 5-th root dial 2^(1/5)-1 combined by the circle operation 5 times = 1  [t = 0.148698]
+PASS half(t ∘₁ s) = half(t) ∘₁ half(s)
 PASS partner(0)=1, partner(1)=0, partner(h)=h, involution
 PASS angle: t=tan(th) has partner tan(45deg - th)
 PASS half dial = tan(22.5 deg)
@@ -26,7 +26,7 @@ PASS complement turns dials t into 1/t
 PASS union half in probability: 1 - 1/sqrt2, joined twice gives 1/2
 PASS intersection half: 1/sqrt2, intersected twice gives 1/2; dial sqrt2+1 = 1/h
 PASS halves mirror about 1/2: 0.2929 + 0.7071 = 1
-PASS intersection: odds-against mult-add
+PASS intersection: odds-against the circle operation
 PASS complement-fixed dial is 1 only (t = 1/t, t > 0)
 PASS infinite set (sampled 200k): half subsets have density 0.293, union of two has 0.5  [0.2940, 0.5015]
 PASS summable dials 1/k^2: infinite chain converges (prod(1+1/k^2) = sinh(pi)/pi)  [3.67604]

@@ -51,7 +51,7 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 <div class="band">
 <p class="mute small">Fused Hyperoperation Algebra · patterns across the results · Nov 25, 2026</p>
 <h1>One 2×2 step sits under every law, and Fibonacci is one setting of it</h1>
-<p>Every law on the map, mult-add, velocity addition, slope addition, the channels, the Euler characteristic, is the same machine: adding a value is one 2×2 step, and adding it n times is that step taken n times. Taking a 2×2 step n times always follows one recurrence, Lucas's: U(n+2) = P·U(n+1) − Q·U(n), where P is the step's trace and Q its determinant. Fibonacci is the case P = 1, Q = −1, which is exactly the law (a + b − ab)/(1 + ab) adding 1 to itself.</p>
+<p>Every law on the map, the circle operation ∘₁ (called mult-add before 1.0), velocity addition, slope addition, the channels, the Euler characteristic, is the same machine: adding a value is one 2×2 step, and adding it n times is that step taken n times. Taking a 2×2 step n times always follows one recurrence, Lucas's: U(n+2) = P·U(n+1) − Q·U(n), where P is the step's trace and Q its determinant. Fibonacci is the case P = 1, Q = −1, which is exactly the law (a + b − ab)/(1 + ab) adding 1 to itself.</p>
 <p>The golden ratio is not a force running through the results. It shows up for one arithmetic reason, the number 5, and in the numbers our pages actually produced it turns up no more often than chance. The constants that do repeat above chance are e and its family, which is the ruler that turns every law into plain multiplication.</p>
 <div class="nums">
 <div><b>__NCHECK__</b><span>exact and numeric checks pass</span></div>
@@ -67,7 +67,7 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 <li><span class="tag t-keep">Keep as the lens</span><div><b>One step, three kinds.</b> Each law is a 2×2 step. Its three countries are the three kinds of 2×2 step: two walls (it stretches toward a wall), the border (it slides), no wall (it turns). This is the classification of Möbius maps, known since the 1800s. It is the shape underneath the 1-D laws, not a new prediction.</div></li>
 <li><span class="tag t-keep">Keep as a tool</span><div><b>Lucas sequences count every law.</b> For any law and any value a, the n-fold sum is a·U(n)/(U(n) − Q·U(n−1)) with P = 2 + k·a and Q = 1 + k·a + q·a². Associativity becomes Lucas's addition rule, Cassini's identity becomes the determinant, and a wall is exactly where the determinant is zero. Known (Lucas 1878); new only as a placement of every law on one recurrence. Proved in Lean.</div></li>
 <li><span class="tag t-no">Not a force</span><div><b>The golden ratio comes from 5, twice.</b> The smallest irrational walls a whole-number law can have are the golden walls (discriminant 5, at k = ±1, q = −1): that is the resistor ladder and the Fibonacci law. And the first cycle a whole-number turn can never make is the 5-cycle, so a 5-cycle forces a golden trace: that is where Lee–Yang's 1.618 came from. Both facts are classical number theory. In the census φ appears at chance level, and every hit was put in by hand.</div></li>
-<li><span class="tag t-keep">Explained</span><div><b>e and its family repeat above chance.</b> e, e − 1 and 1/e turn up on 5 to 6 independent pages, far above chance. That is the exponential ruler: the lens that turns mult-add into multiplication, and rung flow. It confirms that the ruler is the shared object across pages.</div></li>
+<li><span class="tag t-keep">Explained</span><div><b>e and its family repeat above chance.</b> e, e − 1 and 1/e turn up on 5 to 6 independent pages, far above chance. That is the exponential ruler: the lens that turns the circle operation into multiplication, and rung flow. It confirms that the ruler is the shared object across pages.</div></li>
 <li><span class="tag t-no">Not one force</span><div><b>q names two different numbers.</b> The pages use q for the map's second coordinate (curvature: relativity, twisted boosts) and for the gluing/colour number q = k + 1 (elliptic, solitons, q-counting, Lee–Yang). Parallels hold within each meaning, not across them. How the two meet is the subject of the map-of-directions work, so it is left there.</div></li>
 <li><span class="tag t-next">Worth following</span><div><b>One level up: elliptic laws count with Somos sequences.</b> On the elliptic direction the n-fold sum is governed by elliptic divisibility sequences (Ward 1948), the exact twin of Lucas one level up, and they shrink back to Lucas sequences at q = 0. That would carry today's counting engine across the elliptic and soliton pages. Known math, but it is the natural next placement.</div></li>
 </ul>
@@ -108,7 +108,7 @@ details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 
 <div class="band">
 <h2>Constant census against a fair null</h2>
-<p>Every number printed to at least 4 significant digits in every page's check output (__NNUM4__ numbers, __NPAGES4__ pages) was matched against 21 named constants, also allowing the negative, the reciprocal and ±1 (mult-add shifts by 1). The null keeps each number's first two digits and size and scrambles the rest, __REPS__ times. A constant counts as a real repeat only if it beats its null.</p>
+<p>Every number printed to at least 4 significant digits in every page's check output (__NNUM4__ numbers, __NPAGES4__ pages) was matched against 21 named constants, also allowing the negative, the reciprocal and ±1 (the circle operation shifts by 1). The null keeps each number's first two digits and size and scrambles the rest, __REPS__ times. A constant counts as a real repeat only if it beats its null.</p>
 <div class="card">
 <div class="fig short" id="census"><svg role="img" aria-label="Observed matches per constant against the chance level"></svg></div>
 <div class="scroll"><table class="stack" id="ctab"><thead><tr><th>Constant</th><th class="n">Hits</th><th class="n">Chance</th><th class="n">p</th><th>Pages</th></tr></thead><tbody></tbody></table></div>
@@ -137,7 +137,7 @@ const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const phi=(1+Math.sqrt(5))/2;
 const st={k:1,q:0,a:1};
-const presets=[["Mult-add",1,0,1],["Velocity",0,-1,0.5],["Slope, 5-cycle",0,1,Math.tan(Math.PI/5)],["Fibonacci law",-1,-1,1],["Ladder",1,-1,1],["Euler char.",2,1,0.3]];
+const presets=[["The circle operation",1,0,1],["Velocity",0,-1,0.5],["Slope, 5-cycle",0,1,Math.tan(Math.PI/5)],["Fibonacci law",-1,-1,1],["Ladder",1,-1,1],["Euler char.",2,1,0.3]];
 const pe=document.getElementById('presets');
 pe.innerHTML=presets.map((p,i)=>`<button data-i="${i}">${esc(p[0])}</button>`).join('');
 pe.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const p=presets[+b.dataset.i];set(p[1],p[2],p[3]);});
@@ -168,7 +168,7 @@ function drawPlane(){const [box,s]=svgOf('plane');const W=box.clientWidth,H=box.
  g+=`<text x="${W-m}" y="${H-8}" text-anchor="end" fill="${mute}" font-size="12">k</text><text x="${m-4}" y="${m-10}" fill="${mute}" font-size="12">q</text>`;
  for(const [k,q] of [[1,-1],[-1,-1]])g+=`<circle cx="${X(k)}" cy="${Y(q)}" r="10" fill="none" stroke="${css('--gold')}" stroke-width="2.5"/>`;
  for(const d of D.dots){g+=`<circle cx="${X(d.x)}" cy="${Y(d.y)}" r="4.5" fill="${ink}"><title>${esc(d.t)} (${d.x}, ${d.y})</title></circle>`;}
- const lab=W>620?D.dots.filter(d=>['Mult-add','Velocity addition','Slope addition','Euler characteristic','Parity','Addition'].includes(d.t)):[];
+ const lab=W>620?D.dots.filter(d=>['The circle operation','Velocity addition','Slope addition','Euler characteristic','Parity','Addition'].includes(d.t)):[];
  for(const d of lab)g+=`<text x="${X(d.x)+7}" y="${Y(d.y)-7}" fill="${mute}" font-size="12">${esc(d.t)}</text>`;
  g+=`<text x="${X(-1)+12}" y="${Y(-1)+16}" fill="${css('--gold')}" font-size="12">Fibonacci law</text>`;
  g+=`<circle cx="${X(Math.max(-3,Math.min(3,st.k)))}" cy="${Y(Math.max(-3,Math.min(3,st.q)))}" r="7" fill="${css('--turn')}" stroke="${css('--card')}" stroke-width="2"/>`;

@@ -4,17 +4,17 @@ PASS z -> z*w multiplies distance from the wall by |1+w| and turns by arg(1+w)
 PASS triangle (-1, 0, w) is similar to triangle (-1, z, z*w) (same complex shape ratio)
 PASS the step z -> z*w is the vector w turned and stretched by 1+z: z*w - z = (1+z)w
 PASS an affine map z -> a z + b fixes -1 iff b = a - 1, i.e. it is z -> z*(a-1)
-PASS composing two such maps mult-adds their parameters
+PASS composing two such maps combines their parameters by the circle operation
 PASS dial: z *_k w = z + w + k z w spins about its own wall -1/k by 1 + k w
-PASS circle |1+z| = 1 (through 0, centred on the wall) is closed under mult-add
-PASS on that circle mult-add adds angles seen from the wall
-PASS the n mult-add n-th roots of 0 are zeta - 1, a regular n-gon on |1+z| = 1 (n = 1..12)
-PASS mult-adding all n roots gives 0 for odd n and -2 for even n
+PASS circle |1+z| = 1 (through 0, centred on the wall) is closed under the circle operation
+PASS on that circle the circle operation adds angles seen from the wall
+PASS the n circle n-th roots of 0 are zeta - 1, a regular n-gon on |1+z| = 1 (n = 1..12)
+PASS combining all n roots by the circle operation gives 0 for odd n and -2 for even n
 PASS Log(1+z*w) = Log(1+z) + Log(1+w) + 2 pi i m with m in {-1, 0, 1}
 PASS following log(1+z) once round a loop about the wall adds 2 pi i
 PASS a loop round 0 that misses the wall adds nothing (the branch point is the wall, not 0)
 PASS a loop that encloses both 0 and the wall adds 2 pi i
-PASS E(w) = e^w - 1 turns + into mult-add: E(a+b) = E(a) * E(b)
+PASS E(w) = e^w - 1 turns + into the circle operation: E(a+b) = E(a) * E(b)
 PASS E(2 pi i) = 0: one trip round the wall is the period
 PASS E sends each vertical line Re w = s to the circle of radius e^s about the wall
 PASS E sends each horizontal line Im w = t to the ray from the wall at angle t
@@ -37,7 +37,7 @@ PASS the two Abel rulers (left petal, right petal) disagree on the upper overlap
 PASS a1 is the same from five starting points at heights Im w from 2.4 to 6.4 (rel. spread < 1e-4)
 PASS the ripple dies like e^{-2 pi Im w} (fitted rate vs 2 pi)   rate = 6.2832
 PASS lower overlap carries the mirror ripple conj(a1) e^{-2 pi i w} (e^z - 1 is real)
-PASS sin(pi z)/(pi z) - 1 is the mult-add fold of the pieces -z^2/n^2 (Euler), checked at 3 complex z
+PASS sin(pi z)/(pi z) - 1 is the circle-operation fold of the pieces -z^2/n^2 (Euler), checked at 3 complex z
 PASS the fold converges like 1/N because sum |z^2/n^2| converges   3.36e-03 3.35e-04 3.35e-05
 PASS its zeros are exactly the wall hits: piece -z^2/n^2 = -1 iff z = +-n
 PASS 1/Gamma(z) = z e^{gamma z} times the fold of Weierstrass pieces (1+z/n)e^{-z/n} - 1 (complex z)
@@ -47,6 +47,6 @@ PASS a_n = (-1)^n/n: sum of corners finite, fold converges to 0 (product exactly
 PASS (1/2 pi i) closed integral of f'/(1+f) counts wall hits: sine fold on |z| = 3.5 gives 6   6.000000
 PASS the rung step e^z - 1 never hits the wall (count 0 on |z| = 5)
 PASS z^(*5) = (1+z)^5 - 1 hits the wall 5 times, all at z = -1 (count 5 on |z+1| = 1)
-PASS the gluing (1+a) ~ q(1+a) respects mult-add: a ~ a' implies a*b ~ a'*b (torus of the elliptic page)
+PASS the gluing (1+a) ~ q(1+a) respects the circle operation: a ~ a' implies a*b ~ a'*b (torus of the elliptic page)
 
 50 of 50 checks pass

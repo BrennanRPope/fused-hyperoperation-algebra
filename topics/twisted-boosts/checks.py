@@ -1,4 +1,4 @@
-# Twisted boosts: non-collinear boost composition in the mult-add / dial picture.
+# Twisted boosts: non-collinear boost composition in the circle operation / dial picture.
 # Exact checks (sympy) + numeric checks against real 4x4 Lorentz matrices, SO(3), and geometry.
 import sympy as sp, numpy as np, math, random
 rng = np.random.default_rng(7)
@@ -202,7 +202,7 @@ tt = sp.symbols('tt', positive=True)
 check("half-velocity is half a kick: t ⊕ t = 2t/(1+t²) = β, and t = β/(1+√(1-β²))",
       z0(sp.simplify((2*tt/(1+tt**2)) / (1+sp.sqrt(1-(2*tt/(1+tt**2))**2)) - tt).subs(tt, sp.Rational(1,3))) )
 dl = lambda p: 2*p/(1-p)
-check("on the mult-add ruler: d(t⊕t) = d(t) ✳ d(t)", z0(dl(2*tt/(1+tt**2)) - (dl(tt)+dl(tt)+dl(tt)**2)))
+check("on the circle-operation ruler: d(t⊕t) = d(t) ✳ d(t)", z0(dl(2*tt/(1+tt**2)) - (dl(tt)+dl(tt)+dl(tt)**2)))
 check("hyperbolic disk area 4πt²/(1-t²) = 2π(cosh φ - 1) with t = tanh(φ/2)",
       abs(float(4*sp.pi*sp.tanh(sp.Rational(7,10))**2/(1-sp.tanh(sp.Rational(7,10))**2) - 2*sp.pi*(sp.cosh(sp.Rational(14,10))-1))) < 1e-12)
 

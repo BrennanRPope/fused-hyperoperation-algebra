@@ -12,7 +12,7 @@ PASS x'=2*sqrt(x): leaving time Omega(1) = 1 is finite, so x=(t-c)^2 (t>=c) all 
 PASS x'=x log(1/x) (Yudovich's modulus): the leaving time from r to 1/2 grows without bound as r -> 0  [2.81, 4.1963, 5.5826] (= loglog(1/r) - loglog 2)
 PASS mirror: d/dt(1/x) = -s^2 w(1/s) when x' = w(x)
 PASS mirror of 2*sqrt(x): s'=-2 s^{3/2} comes in from infinity in finite time, the same time Omega(1)=1
-PASS mult-add inverse sends infinity to the wall: -v/(1+v) -> -1
+PASS circle inverse sends infinity to the wall: -v/(1+v) -> -1
 PASS rotation field |x|^2 Jx (speed r^3, fails Osgood) keeps |x| = 1 forever  max drift 1.5e-11
 PASS radial field |x|^2 x (same speed) blows up at T = 1/(2 r0^2) = 0.5  reached r^2=1e10 at 0.500000
 PASS test int dx/E^t(x): rung 0 keeps growing (it is log x)  5.700 -> 22.341

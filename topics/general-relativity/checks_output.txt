@@ -17,13 +17,13 @@
 [PASS] PPN law perihelion = (2+2gamma-beta)/3 x GR for 'conformal dial (Nordstrom), A = B = exp(-2U)'  (-14.33")
 [PASS] Cassini rules out every dial-only theory (gamma <= 0) by > 40,000 sigma  (43,477 sigma for gamma = 0)
 
-== C. Route (c): the river. Flat space + local mult-add velocity addition + Newton's escape speed
+== C. Route (c): the river. Flat space + local circle-operation velocity addition + Newton's escape speed
 [PASS] River at Newton's escape speed v = sqrt(2M/r): Einstein tensor vanishes (vacuum)
 [PASS] Changing the clock to t_S = t - int v/(1-v^2) dr gives Schwarzschild exactly
 [PASS] River observers fall freely (geodesics) and are at rest at infinity
 [PASS] Static clock rate = 1/gamma_river: 1 - v^2 = 1 - 2M/r = -g_tt
 [PASS] Static radial ruler = gamma_river: 1/(1 - v^2) = g_rr (Lorentz contraction)
-[PASS] Time deficit and radial-space deficit are mult-add inverses: (-g_tt-1) ✳ (g_rr-1) = 0
+[PASS] Time deficit and radial-space deficit are circle inverses: (-g_tt-1) ✳ (g_rr-1) = 0
 [PASS] Horizon r = 2M is where the river reaches light speed (the velocity wall)
 [PASS] Areal and isotropic radii: 1 - 2M/r = ((1-u)/(1+u))^2 with r = rho(1+u)^2, u = M/(2 rho)
 [PASS] Weak field of the river: -g_tt = 1 - 2U + 2U^2 (beta = 1), g_ij = (1 + 2U) (gamma = 1)
@@ -53,10 +53,10 @@
 [PASS] so a R^a_b + b R delta^a_b is divergence-free only if b = -a/2 (here dR/dt != 0)  (R = 40*r)
 [PASS] Small loop in the t-r plane returns a boosted vector: rapidity = (2M/r^3) x area (tidal curvature)  (eta 3.685e-06 vs 3.704e-06)
 
-== F. Exact mult-add facts the river gives
+== F. The exact circle-operation facts the river gives
 [PASS] Orbit speed seen from the river (perpendicular composition): 1 - w^2 = (1-2x)(1 - v_o^2) = 1 - 3x
 [PASS] so Gravity Probe B's factor sqrt(1-3M/r) is 1/gamma of the gyroscope's speed through the river; -w^2 = (-v_r^2) ✳ (-v_o^2)
-[PASS] Redshifts chain by multiplying (1+z) factors, so redshifts mult-add: z = z1 ✳ z2
+[PASS] Redshifts chain by multiplying (1+z) factors, so redshifts combine by the circle operation: z = z1 ✳ z2
 [PASS] Infalling light seen by the river: blueshift gamma times Doppler sqrt((1-v)/(1+v)) = 1/(1+v)
 
 44 of 44 checks pass

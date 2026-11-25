@@ -81,18 +81,18 @@ a{color:var(--pr)}
 
 <div class="root"><b>Fermat's Last Theorem: no a, b, c ≥ 1 with aⁿ + bⁿ = cⁿ for n ≥ 3</b><span class="mute">Lean: <code>flt_of_no_frey_curve</code> proves it from the one open box, <code>NoFreyCurve</code> (assemblies F to H). Tap any piece.</span></div>
 <div class="tree" id="tree"></div>
-<div class="detail" id="detail" aria-live="polite"><b>Tap a piece</b> to see what it says, its Lean name and how it reads in mult-add.</div>
+<div class="detail" id="detail" aria-live="polite"><b>Tap a piece</b> to see what it says, its Lean name and how it reads in the circle operation ∘₁ (called mult-add before 1.0).</div>
 </div></section>
 
 <section class="band panel"><div class="wrap">
-<h2>The route in mult-add geometry: the proof is easy exactly where the curve is mult-add</h2>
+<h2>The route in circle-operation geometry: the proof is easy exactly where the curve is the circle operation</h2>
 <ol class="steps">
-<li><div><b>Fermat is a mult-add power against an ordinary one.</b> Divide aᵖ + bᵖ = cᵖ by aᵖ and set t = b/a, s = c/a − 1. The equation becomes tᵖ = [p]s, where [p]s = s ⊕ s ⊕ … ⊕ s = (1 + s)ᵖ − 1. <span class="tag p p">proved</span></div></li>
+<li><div><b>Fermat is a circle power against an ordinary one.</b> Divide aᵖ + bᵖ = cᵖ by aᵖ and set t = b/a, s = c/a − 1. The equation becomes tᵖ = [p]s, where [p]s = s ⊕ s ⊕ … ⊕ s = (1 + s)ᵖ − 1. <span class="tag p p">proved</span></div></li>
 <li><div><b>Reduce to primes.</b> Every n ≥ 3 is a multiple of 4 or of an odd prime, so exponents 3, 4 and the primes from 5 up are enough. Exponents 3 and 4 are proved here in full, 3 by building the Eisenstein integers from scratch and 4 by Fermat's own descent. <span class="tag p p">proved</span></div></li>
 <li><div><b>Build the Frey curve</b> y² = x(x − aᵖ)(x + bᵖ) from a solution, after normalizing so a ≡ 3 mod 4, b is even and gcd(a, b) = 1. Its three half-way points are 0, aᵖ and −bᵖ. Its discriminant is 16(abc)²ᵖ, and its minimal model has 256·Δ = (abc)²ᵖ: a perfect p-th power. <span class="tag p p">proved</span></div></li>
-<li><div><b>At every bad prime the curve pinches into the mult-add node, never a cusp.</b> No prime divides both Δ and c₄ = A² + AB + B². At the node, three points lie on one line exactly when their coordinates mult-add to zero. This is semistability, and it is mult-add's own shape. <span class="tag p p">proved</span></div></li>
-<li><div><b>Near each pinch the curve is a mult-add cylinder glued into a torus</b> (Tate's curve, u ~ q·u). The gluing size q has a p-th power exponent, so the p-torsion points line up without anything new at that prime: the bad primes become invisible to E[p] (Hellegouarch, Frey, Serre). <span class="tag k">known</span></div></li>
-<li><div><b>At the good primes the curve is not mult-add.</b> Frobenius turns instead of stretching (a<sub>p</sub>² &lt; 4p), the turning country found in the elliptic work. Wiles and Taylor–Wiles prove the curve is modular here, with Langlands–Tunnell, the 3–5 switch and R = T. Mazur supplies irreducibility. <span class="tag o">out of reach</span></div></li>
+<li><div><b>At every bad prime the curve pinches into the circle-operation node, never a cusp.</b> No prime divides both Δ and c₄ = A² + AB + B². At the node, three points lie on one line exactly when their coordinates combine by the circle operation to zero. This is semistability, and it is the circle operation's own shape. <span class="tag p p">proved</span></div></li>
+<li><div><b>Near each pinch the curve is a circle-operation cylinder glued into a torus</b> (Tate's curve, u ~ q·u). The gluing size q has a p-th power exponent, so the p-torsion points line up without anything new at that prime: the bad primes become invisible to E[p] (Hellegouarch, Frey, Serre). <span class="tag k">known</span></div></li>
+<li><div><b>At the good primes the curve is not the circle operation.</b> Frobenius turns instead of stretching (a<sub>p</sub>² &lt; 4p), the turning country found in the elliptic work. Wiles and Taylor–Wiles prove the curve is modular here, with Langlands–Tunnell, the 3–5 switch and R = T. Mazur supplies irreducibility. <span class="tag o">out of reach</span></div></li>
 <li><div><b>Ribet strips the invisible primes from the level, leaving 2.</b> The modular curve X₀(2) is a sphere, genus 0, so it carries no weight-2 cusp form to match. Contradiction. The genus count is proved here; Ribet is not. <span class="tag o">out of reach</span></div></li>
 </ol>
 </div></section>
@@ -101,7 +101,7 @@ a{color:var(--pr)}
 <div>
 <h2>A bad prime pinches the loop shut into a node</h2>
 <p>The Frey curve's oval runs from −B to 0 and its open branch starts at A. When a prime divides A, the curve seen through that prime has A = 0: the oval and the branch touch at the origin and make a double point. The two tangent lines there are the node's walls.</p>
-<p>The Lean piece <code>frey_semistable</code> says this is all that ever happens: c₄ never shares a prime with Δ, so the pinch is always a node with two distinct walls, never a cusp where the walls merge. <code>frey_reduces_to_node</code> shows the reduced curve is exactly the node family whose chord law the library already ties to mult-add.</p>
+<p>The Lean piece <code>frey_semistable</code> says this is all that ever happens: c₄ never shares a prime with Δ, so the pinch is always a node with two distinct walls, never a cusp where the walls merge. <code>frey_reduces_to_node</code> shows the reduced curve is exactly the node family whose chord law the library already ties to the circle operation.</p>
 </div>
 <div class="fig" id="figPinch" role="img" aria-label="Frey curves for B = 1 and A shrinking to 0: the oval and branch meet at the origin"></div>
 </div></section>
@@ -111,7 +111,7 @@ a{color:var(--pr)}
 <div>
 <h2>On the node, three points on a line multiply to 1</h2>
 <p>Take the pinched curve y² = x²(x + 1). Every line through the node at slope t meets the curve once more, at x = t² − 1. Give that point the coordinate s = −2/(t + 1), so its lift is 1 + s = (t − 1)/(t + 1).</p>
-<p>Three points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0, which under the lift says (1 + s₁)(1 + s₂)(1 + s₃) = 1. The drawing uses t = 1.3 and t = 1.7; the third point is forced to the lift that makes the product 1. Proved in general as <code>node_chord_multAdd</code>.</p>
+<p>Three points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0, which under the lift says (1 + s₁)(1 + s₂)(1 + s₃) = 1. The drawing uses t = 1.3 and t = 1.7; the third point is forced to the lift that makes the product 1. Proved in general as <code>node_chord_circ</code>.</p>
 <p class="mute" id="chordNums"></p>
 </div>
 </div></section>
@@ -119,7 +119,7 @@ a{color:var(--pr)}
 <section class="band"><div class="wrap two">
 <div>
 <h2>Why the bad primes drop out: the glued cylinder lines up when q is a p-th power</h2>
-<p>Take mult-add's lifted line, the punctured plane under multiplication, and draw it in log coordinates: angle across, log-size up. That is a cylinder. Tate glued its top to its bottom (u ~ q·u) to make the curve near a bad prime into a torus.</p>
+<p>Take the circle operation's lifted line, the punctured plane under multiplication, and draw it in log coordinates: angle across, log-size up. That is a cylinder. Tate glued its top to its bottom (u ~ q·u) to make the curve near a bad prime into a torus.</p>
 <p>The p-torsion points are the u with uᵖ a power of q. Here p = 5 and q = t⁵, so all 25 points sit on a clean grid built from t and the fifth roots of 1, and nothing new has to be adjoined at that prime. The piece that makes q a p-th power is <code>frey_disc_valuation</code>: p divides the exponent of every odd prime in Δ. The step from there to "unramified" is known math, stated here and not formalized.</p>
 </div>
 <div class="fig" id="figTorus" role="img" aria-label="Unrolled Tate torus with a 5 by 5 grid of torsion points"></div>
@@ -127,11 +127,11 @@ a{color:var(--pr)}
 
 <section class="band panel"><div class="wrap">
 <h2>Lean status: 148 theorems in four files, every one on Lean's three standard axioms</h2>
-<p>Core Lean 4.37.0-rc1 with no mathlib, built on the project's mult-add library. No <code>sorry</code> and no new axioms; <code>#print axioms</code> on every main theorem lists only propext, Classical.choice and Quot.sound.</p>
+<p>Core Lean 4.37.0-rc1 with no mathlib, built on the project's circle-operation library. No <code>sorry</code> and no new axioms; <code>#print axioms</code> on every main theorem lists only propext, Classical.choice and Quot.sound.</p>
 <div class="scroll"><table>
 <thead><tr><th>File</th><th>What it proves</th><th class="n">Lines</th><th class="n">Theorems</th></tr></thead>
 <tbody>
-<tr><td><code>Fermat4.lean</code></td><td>x⁴ + y⁴ ≠ z² and so FLT for 4, by Fermat's descent; a nonzero rational 4th power is never a mult-add 4th power</td><td class="n">270</td><td class="n">9</td></tr>
+<tr><td><code>Fermat4.lean</code></td><td>x⁴ + y⁴ ≠ z² and so FLT for 4, by Fermat's descent; a nonzero rational 4th power is never a circle operation 4th power</td><td class="n">270</td><td class="n">9</td></tr>
 <tr><td><code>Fermat3.lean</code></td><td>FLT for 3 in full: first case by cubes mod 9; Euler's descent, with the Eisenstein integers (Euclidean division, Bézout, units, cube lemma) built from scratch; the mod-3 cube layers</td><td class="n">1,067</td><td class="n">84</td></tr>
 <tr><td><code>FreyPieces.lean</code></td><td>exponent reduction, coprime reduction, parity, normalization; the Frey curve's torsion, discriminant, minimal model, c₄, semistability, node chord law, p-th power discriminant; the genus count of X₀(2)</td><td class="n">718</td><td class="n">46</td></tr>
 <tr><td><code>FermatRoute.lean</code></td><td>the join: FLT for all n ≥ 3 from the prime case p ≥ 5, and from the single statement <code>NoFreyCurve</code></td><td class="n">186</td><td class="n">9</td></tr>
@@ -150,9 +150,9 @@ theorem flt_of_no_frey_curve (H : NoFreyCurve) : ∀ n, 3 ≤ n → FLT n</pre>
 <div class="verdict">
 <h2>Known versus new</h2>
 <p><b>Known:</b> every mathematical statement here. Exponent 4 is Fermat's, exponent 3 is Euler's and Gauss's, the Frey curve facts are Frey, Serre and Ribet's, and the Tate curve is Tate's. Exponents 3 and 4 have been formalized before, in mathlib.</p>
-<p><b>New here:</b> these proofs written from scratch in core Lean on the mult-add library, and one geometric reading that holds the route together: the half of Wiles's proof that is easy is the half where the curve is mult-add (the pinched bad primes), and the hard half is where it turns instead (the good primes). That reading restates known facts; it is not a new theorem.</p>
+<p><b>New here:</b> these proofs written from scratch in core Lean on the circle-operation library, and one geometric reading that holds the route together: the half of Wiles's proof that is easy is the half where the curve is the circle operation (the pinched bad primes), and the hard half is where it turns instead (the good primes). That reading restates known facts; it is not a new theorem.</p>
 <p><b>No new lead</b> as strong as the solitons came out of this. Fermat's Last Theorem itself is not proved here: the 13 open pieces carry nearly all of its difficulty.</p>
-<p class="mute">Earlier page on the same subject: <a href="https://claude.ai/artifact/Q3GveFG3TjJSeqrYbXEouL">Fermat through mult-add</a> (Kummer's road, the Fermat curve, toric geometry).</p>
+<p class="mute">Earlier page on the same subject: <a href="https://claude.ai/artifact/Q3GveFG3TjJSeqrYbXEouL">Fermat through the circle operation</a> (Kummer's road, the Fermat curve, toric geometry).</p>
 </div>
 </div></section>
 
@@ -165,33 +165,33 @@ const N=[
 ["p","Joining 3, 4 and p ≥ 5","FLT for 4, for 3 and for primes p ≥ 5 gives FLT for every n ≥ 3.","flt_reduction_frey, flt_of_prime_case",""]]],
 ["B","Exponent 4",[
 ["p","Coprime square lemma","If a·b = c² and gcd(a, b) = 1, a is a square, with no prime factorization needed.","sq_of_coprime_mul",""],
-["p","Pythagorean triples","Every primitive triple is (m² − n², 2mn, m² + n²).","pyth_param","Multiplying triples as complex numbers is the lift of mult-add to the circle."],
+["p","Pythagorean triples","Every primitive triple is (m² − n², 2mn, m² + n²).","pyth_param","Multiplying triples as complex numbers is the lift of the circle operation to the circle."],
 ["p","Descent step","A solution of x⁴ + y⁴ = z² gives a smaller one.","descent_step",""],
 ["p","FLT for 4","x⁴ + y⁴ ≠ z², so x⁴ + y⁴ ≠ z⁴.","no_x4_y4_z2, fermat4",""],
-["p","Mult-add form","No nonzero rational 4th power is a mult-add 4th power.","fourth_power_ne_mpow_four","q⁴ ≠ [4]s = (1 + s)⁴ − 1."]]],
+["p","Circle-operation form","No nonzero rational 4th power is a circle operation 4th power.","fourth_power_ne_mpow_four","q⁴ ≠ [4]s = (1 + s)⁴ − 1."]]],
 ["C","Exponent 3",[
 ["p","First case","If 3 divides none of x, y, z then x³ + y³ ≠ z³: cubes mod 9 are 0, 1, 8.","cube_mod9, case1",""],
 ["p","Factor and gcd","x³ + y³ = (x + y)(x² − xy + y²), and the two factors share at most a 3.","sum_cubes, gcd_factors",""],
 ["p","Eisenstein integers","ℤ[ω] built from scratch: Euclidean division, Bézout, the six units, coprime cubes.","Eis.div_rem, Eis.bezout, Eis.cube_of_cop",""],
 ["p","Euler's lemma","If p² + 3q² is a cube with gcd 1, then p = a³ − 9ab² and q = 3a²b − 3b³.","key_cube",""],
 ["p","Descent and FLT for 3","A primitive solution gives a smaller one, so none exists.","step, no_sol, flt3, flt3_nat",""],
-["p","The cube's middle layers","[3]s = s³ + 3(s + s²): the middle layers carry the 3, so x + y ≡ z mod 3.","mpow_three, sum_mod3, flt3_multAdd","Pascal's 1, 3, 3, 1 on the mult-add cube."]]],
+["p","The cube's middle layers","[3]s = s³ + 3(s + s²): the middle layers carry the 3, so x + y ≡ z mod 3.","mpow_three, sum_mod3, flt3_circ","Pascal's 1, 3, 3, 1 on the circle-operation cube."]]],
 ["D","Prime p ≥ 5: set up",[
 ["p","Coprime reduction","Any solution divides down to one with gcd(x, y) = 1.","coprime_reduction, flt_of_coprime",""],
 ["p","Parity","In a coprime solution exactly one of x, y, z is even.","coprime_parity",""],
 ["p","Frey normalization","Re-sign and reorder so a ≡ 3 mod 4, b even, 32 | bᵖ, gcd(a, b) = 1 kept.","frey_normalize_cop",""],
 ["p","FLT from NoFreyCurve","Fermat for all n ≥ 3 follows from the one deep statement.","flt_of_no_frey_curve",""],
-["p","Mult-add restatement","xⁿ + yⁿ = zⁿ exactly when (y/x)ⁿ = [n](z/x − 1).","flt_multAdd","An ordinary power never equals a mult-add power, except trivially."]]],
+["p","Circle-operation restatement","xⁿ + yⁿ = zⁿ exactly when (y/x)ⁿ = [n](z/x − 1).","flt_circ","An ordinary power never equals a circle power, except trivially."]]],
 ["E","The Frey curve",[
 ["p","Two-torsion","(0,0), (A,0), (−B,0) lie on y² = x(x − A)(x + B).","frey_two_torsion",""],
 ["p","Discriminant","Δ = 16(ABC)² when A + B = C.","frey_disc_roots",""],
 ["p","Minimal model","x = 4X, y = 8Y + 4X gives Y² + XY = X³ + a₂X² + a₄X with integer a₂, a₄.","frey_change_of_vars, frey_minimal_model",""],
 ["p","c₄ and Δ","c₄ = A² + AB + B² and 256·Δ = (ABC)².","frey_c4, frey_disc",""],
-["p","Semistable","No prime divides both Δ and c₄, including 2: every bad prime gives a node, never a cusp.","frey_semistable, frey_at_two","Every pinch is mult-add's node or its turning twin."],
-["p","Node chord law is mult-add","Mod a bad prime the curve is the node family; three of its points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0.","frey_reduces_to_node, node_chord_multAdd","The group on a node is mult-add."],
+["p","Semistable","No prime divides both Δ and c₄, including 2: every bad prime gives a node, never a cusp.","frey_semistable, frey_at_two","Every pinch is the circle operation's node or its turning twin."],
+["p","Node chord law is the circle operation","Mod a bad prime the curve is the node family; three of its points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0.","frey_reduces_to_node, node_chord_circ","The group on a node is the circle operation."],
 ["p","Δ is a p-th power","256·Δ = ((abc)²)ᵖ, so p divides the exponent of every odd prime in Δ.","frey_disc_pth_power, frey_disc_valuation","The Tate gluing q is a p-th power."]]],
 ["F","The mod-p picture",[
-["k","Tate's curve","Near a bad prime the curve is the mult-add cylinder glued by u ~ qu (Tate 1959). Checked numerically in the elliptic work.","","The torus is mult-add with one gluing rule."],
+["k","Tate's curve","Near a bad prime the curve is the circle-operation cylinder glued by u ~ qu (Tate 1959). Checked numerically in the elliptic work.","","The torus is the circle operation with one gluing rule."],
 ["k","Finite at bad primes","Since p divides the exponent of q, E[p] is unramified at odd bad primes (Hellegouarch, Frey, Serre).","",""],
 ["k","Serre's conductor is 2","The mod-p representation has conductor 2 and weight 2.","",""],
 ["o","Mazur: irreducible","For semistable E and p ≥ 5 the mod-p representation is irreducible (Mazur 1978).","",""]]],
@@ -201,7 +201,7 @@ const N=[
 ["o","Deformation ring R → Hecke ring T","Set up the universal deformation ring and the map to the Hecke algebra.","",""],
 ["o","Taylor–Wiles patching","Patch over auxiliary primes to control R.","",""],
 ["o","R = T","The numerical criterion: R and T are complete intersections and equal.","",""],
-["o","Semistable curves are modular","The conclusion: E comes from a weight-2 newform of level N = rad(abc).","","At the good primes Frobenius turns (a_p² < 4p): the part that is not mult-add."]]],
+["o","Semistable curves are modular","The conclusion: E comes from a weight-2 newform of level N = rad(abc).","","At the good primes Frobenius turns (a_p² < 4p): the part that is not the circle operation."]]],
 ["H","Level lowering and the finish",[
 ["o","Ribet's level lowering","The newform can be taken at level 2 (Ribet 1990).","",""],
 ["p","X₀(2) counts","For Γ₀(2): index 3, one elliptic point of order 2, none of order 3, two cusps; so genus 0.","level2_counts, genus_X0_2","X₀(2) is a sphere."],
@@ -219,7 +219,7 @@ document.getElementById('tree').innerHTML=N.map(g=>`<div class="col"><h3>${esc(g
 const det=document.getElementById('detail');
 document.getElementById('tree').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const x=all[+b.dataset.i];
 det.style.borderLeftColor=x[0]=="o"?"var(--ca)":"var(--pr)";
-det.innerHTML=`<b>${esc(x[1])}</b> <span class="mute">· ${nm[x[0]]}</span><br>${esc(x[2])}${x[3]?`<br>Lean: <code>${esc(x[3])}</code>`:''}${x[4]?`<br><i>Mult-add:</i> ${esc(x[4])}`:''}`});
+det.innerHTML=`<b>${esc(x[1])}</b> <span class="mute">· ${nm[x[0]]}</span><br>${esc(x[2])}${x[3]?`<br>Lean: <code>${esc(x[3])}</code>`:''}${x[4]?`<br><i>The circle operation:</i> ${esc(x[4])}`:''}`});
 
 const S=(el,fn)=>{const ro=new ResizeObserver(()=>{const W=el.clientWidth,H=el.clientHeight;el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${fn(W,H)}</svg>`});ro.observe(el);return ro};
 const cs=getComputedStyle(document.documentElement);

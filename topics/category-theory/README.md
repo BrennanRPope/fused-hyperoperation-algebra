@@ -1,6 +1,6 @@
-# Category theory through mult-add (Nov 25, 2026)
+# Category theory through the circle operation (Nov 25, 2026)
 
-Page title: "Give each side a 'nothing' and mult-add becomes a plain product" (source index.html, not yet published).
+Page title: "Give each side a 'nothing' and the circle operation ∘₁ (called mult-add before 1.0) becomes a plain product" (source index.html, not yet published).
 
 ## Files
 - index.html: the page (Option grid with wedge/smash, These/align/outer join in code, Par product diagram,
@@ -16,11 +16,11 @@ Page title: "Give each side a 'nothing' and mult-add becomes a plain product" (s
    Par ≃ pointed sets carries ✳ to ×. (FinSet, ✳, ∅) is symmetric monoidal (pentagon, hexagon checked).
 3. align/zip_longest returns These; both inputs come back, zip is the ab corner. Full outer joins and diffs are These-valued.
 4. Σ(X×Y) ≃ ΣX ∨ ΣY ∨ Σ(X∧Y) (standard; topology page did not cover it; homology of ΣT² checked).
-5. Ours as a reading: χ̃ = χ − 1 is the mult-add coordinate (χ̃(X×Y) = χ̃X ✳ χ̃Y, at every t for cell
+5. Ours as a reading: χ̃ = χ − 1 is the circle-operation coordinate (χ̃(X×Y) = χ̃X ✳ χ̃Y, at every t for cell
    polynomials); the circle is the wall, spheres sit at ±1, a point at 0.
 6. Ours, small: tagged Option 1 + K×A lifts the dial A + B + k·AB for k ≥ 0; negative k has no set model.
 
 ## Verdict
-No new mathematics; a firm underpinning (mult-add is a real categorical product, the lift a functor, the wall the
+No new mathematics; a firm underpinning (the circle operation is a real categorical product, the lift a functor, the wall the
 circle). A practical lead for software: treat merge/sync/diff as functions out of These and hold them to the
 monoidal laws.

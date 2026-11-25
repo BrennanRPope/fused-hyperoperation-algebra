@@ -1,4 +1,4 @@
-# Mult-add as an axiom: the foundation files
+# The circle operation as an axiom: the foundation files
 
 Core Lean 4.37.0-rc1, no mathlib, no `sorry`. `./build.sh` builds the shared
 library (if needed) and then these files; `Axioms/Check.lean` confirms every
@@ -25,4 +25,4 @@ theorem uses only Lean's three standard axioms. Last clean build: Nov 25, 2026,
 
 ## For the library thread
 
-`MultAddRing`, `Independence` and `FusedPeano` are standalone and could be folded in as `FusedAlgebra/Foundations/`. They declare global instances `[MARing R] → Add R, Mul R, …` and `[FusedPeano N] → Add N, …`; harmless unless a type carries both its own ring and one of these classes. `Rederive` imports the whole library, so it belongs after it, like `Check`.
+`MultAddRing`, `Independence` and `FusedPeano` are standalone and could be folded in as `FusedAlgebra/Foundations/`. They declare global instances `[CircRing R] → Add R, Mul R, …` and `[FusedPeano N] → Add N, …`; harmless unless a type carries both its own ring and one of these classes. `Rederive` imports the whole library, so it belongs after it, like `Check`.

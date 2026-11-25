@@ -30,7 +30,7 @@ PASS - finite sizes are >= 0: no set has the wall's size -1 or an inverse size -
 PASS - open interval has Euler characteristic -1 (Schanuel's negative set)
 PASS - half-open interval [0,1) = point + open interval has Euler characteristic 0 (the lift of the wall)
 PASS - wall: chi(I + B + IxB) = -1 for finite B of size 0..9 and for B = I, B = square
-PASS - two open intervals X: chi(X + X + XxX) = 0, so X is its own mult-add inverse at the level of chi
+PASS - two open intervals X: chi(X + X + XxX) = 0, so X is its own circle inverse at the level of chi
 PASS - chi of products multiplies and so chi(A + B + AxB) = chi A (+) chi B (random cell lists)
 PASS - Hamacher t-conorm is the landscape law at p = gamma - 2, q = 1 - gamma
 PASS - those points lie on the line p + q = -1
@@ -41,7 +41,7 @@ PASS - miss: 1 - S = (1-a)(1-b)/(1+(gamma-1)ab), independent of gamma in the num
 PASS - Hamacher is the dial on odds: odds(S) = odds a (+)gamma odds b
 PASS - Hamacher t-norm is the De Morgan mirror: T(a,b) = 1 - S(1-a,1-b)
 PASS - the t-norm is the dial on odds-against (1-x)/x
-PASS - gamma = 0 adds odds (dial k = 0), gamma = 1 mult-adds odds (k = 1)
+PASS - gamma = 0 adds odds (dial k = 0), gamma = 1 combines by the circle operation odds (k = 1)
 PASS - Hamacher's additive generator log(1 + gamma*odds(x)) is the log of the dial's lift on odds
 PASS - odds wall of dial gamma is o = -1/gamma, i.e. x = 1/(1-gamma); gamma = 2 gives x = -1 (light)
 PASS - on truth values every Hamacher t-conorm with gamma != 0 is OR
@@ -71,6 +71,6 @@ PASS - sum law (x * a) (+) (x * b) = x * (a + b + 1) (x,a,b < 7)
 PASS - definability: b (+) c = d  iff  for all x, (x*b)*c = x*d  (b,c,d < 7, x < 6)
 PASS - definability: b + c + 1 = d  iff  for all x, (x*b)(+)(x*c) = x*d
 PASS - zero is the only right identity of the fused exponent (y < 20)
-PASS - mult-add alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives
+PASS - the circle operation alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives
 
 67/67 checks passed

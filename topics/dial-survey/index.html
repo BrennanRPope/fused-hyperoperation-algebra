@@ -46,7 +46,7 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <nav class="scroll"><a href="#k">1. k</a><a href="#twist">2. Twist</a><a href="#elem">3. Per element</a><a href="#prime">4. Primes</a><a href="#choice">5. Choice</a><a href="#two">k on elements</a><a href="#wall">Wall and Lee–Yang</a><a href="#same">Same dial</a><a href="#proofs">Proofs</a></nav>
 
 <h2 id="k">1. The k dial (q = k + 1)</h2>
-<p><b>What it is.</b> a ✳ₖ b = a + b + k·ab, with 1 + k(a ✳ₖ b) = (1 + ka)(1 + kb). In units λ times bigger, weight k reads as k·λ, so on bare numbers only the sign of k survives: k &gt; 0 is mult-add, k = 0 is addition, k &lt; 0 is "union of chances".</p>
+<p><b>What it is.</b> a ✳ₖ b = a + b + k·ab, with 1 + k(a ✳ₖ b) = (1 + ka)(1 + kb). In units λ times bigger, weight k reads as k·λ, so on bare numbers only the sign of k survives: k &gt; 0 is the circle operation ∘₁ (called mult-add before 1.0), k = 0 is addition, k &lt; 0 is "union of chances".</p>
 <p><b>Connects to.</b> Already found across the project: q-counting and knots (q = k + 1), Potts colours, Sugeno's λ-measures, fermion/Poisson/boson point processes (k = −1, 0, +1). It is also Tsallis's q-algebra from statistical physics, with k = 1 − q<sub>Tsallis</sub>.</p>
 <p><b>What following it gives.</b> On its own, nothing more: a one-parameter family whose only invariant is a sign is fully classified. Its size starts to matter only once elements carry their own dials, because then the dial values fix the units (section "k on elements").</p>
 <p class="verdict"><b>Not a lead by itself.</b> It's the axis the other dials are measured against. The separate search for a potential on k is the place where its size could get a physical meaning.</p>
@@ -58,7 +58,7 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <p class="verdict"><b>Not a separate dial, and no new prediction.</b> Worth keeping as the geometric anchor your rule asks for, not as a path to follow further.</p>
 
 <h2 id="elem">3. One dial per element</h2>
-<p><b>What it is.</b> Each element x gets t<sub>x</sub>; a subset weighs the product of its members' dials, and the total is ∏(1 + t<sub>x</sub>). Exactly: <b>t is odds</b>, p = t/(1 + t). "In A or in B" for independent random subsets has odds t ✳ s, and complement turns odds t into 1/t. A uniform dial t = 2<sup>α</sup> − 1 gives counts 2<sup>αn</sup>, and dials mult-add exactly when exponents add, so this dial and the fractional power set's exponent are one dial read through the mult-add ruler.</p>
+<p><b>What it is.</b> Each element x gets t<sub>x</sub>; a subset weighs the product of its members' dials, and the total is ∏(1 + t<sub>x</sub>). Exactly: <b>t is odds</b>, p = t/(1 + t). "In A or in B" for independent random subsets has odds t ✳ s, and complement turns odds t into 1/t. A uniform dial t = 2<sup>α</sup> − 1 gives counts 2<sup>αn</sup>, and dials combine by the circle operation exactly when exponents add, so this dial and the fractional power set's exponent are one dial read through the circle-operation ruler.</p>
 <p><b>Connects to.</b> Bernoulli product measures; a lattice gas with fugacity t on each site (partition function ∏(1 + t)); Lee–Yang zeros.</p>
 <p><b>What following it gives.</b> A half power set that exists in weighted form (every dial √2 − 1), where the set-theoretic half is blocked by choice. Weights aren't sizes, though, so it doesn't settle the ZF question. The merging and complement rules are worked out on <a href="https://claude.ai/artifact/27MDnoDnLAMxUUmWGADYk9">Power set dials</a>.</p>
 <p class="verdict lead"><b>A lead, but only paired with k.</b> On its own it's the measure-theory shadow of the fractional power set. With k acting on it, it produces new structure (below).</p>
@@ -115,7 +115,7 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <li><b>q and k:</b> q = k + 1, the same dial shifted. Also the Potts colour count and the knot gluing number.</li>
 <li><b>Twist and k:</b> the twist is q × area, fixed by k and the directions.</li>
 <li><b>Prime dial and per-element dial:</b> the slice t<sub>p</sub> = p<sup>−s</sup> on the primes.</li>
-<li><b>Per-element dial and fractional exponent:</b> t = 2<sup>α</sup> − 1; dials mult-add when exponents add.</li>
+<li><b>Per-element dial and fractional exponent:</b> t = 2<sup>α</sup> − 1; dials combine by the circle operation when exponents add.</li>
 <li><b>k on elements and point processes:</b> "copies allowed" is the fermion/Poisson/boson dial already found in point processes.</li>
 <li><b>Choice:</b> independent of all of them, and not numeric.</li>
 </ul>
@@ -138,7 +138,7 @@ const nodes = [
  {id:'ch', t:'5. Choice', s:'a setting', x:.86, y:.14, lead:true},
  {id:'al', t:'Exponent α', s:'t = 2^α − 1', x:.18, y:.88, lead:false}
 ];
-const links = [['k','tw','q is curvature'],['k','el','copies allowed'],['el','pr','slice'],['el','al','mult-add ruler']];
+const links = [['k','tw','q is curvature'],['k','el','copies allowed'],['el','pr','slice'],['el','al','Circle-operation ruler']];
 const drawMap = () => {
   const W = ms.clientWidth, H = ms.clientHeight, narrow = W < 520;
   const bw = narrow ? 128 : 170, bh = narrow ? 50 : 56;

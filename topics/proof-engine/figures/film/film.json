@@ -1,7 +1,7 @@
 [
  {
   "name": "comm_by_moves",
-  "statement": "multAdd a b = multAdd b a",
+  "statement": "circ a b = circ b a",
   "why": "Commutativity: the rectangle flipped on its diagonal is the same rectangle.",
   "frames": [
    {
@@ -17,7 +17,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/comm_by_moves_2.svg",
@@ -35,7 +35,7 @@
  },
  {
   "name": "assoc_by_moves",
-  "statement": "multAdd (multAdd a b) c = multAdd a (multAdd b c)",
+  "statement": "circ (circ a b) c = circ a (circ b c)",
   "why": "Associativity: slabs and columns are one box.",
   "frames": [
    {
@@ -51,7 +51,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/assoc_by_moves_2.svg",
@@ -69,7 +69,7 @@
  },
  {
   "name": "zero_by_moves",
-  "statement": "multAdd a 0 = a",
+  "statement": "circ a 0 = a",
   "why": "Identity: a side of length 0 flattens the rectangle to a strip.",
   "frames": [
    {
@@ -85,7 +85,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/zero_by_moves_2.svg",
@@ -103,7 +103,7 @@
  },
  {
   "name": "wall_by_moves",
-  "statement": "multAdd (−1) b = −1",
+  "statement": "circ (−1) b = −1",
   "why": "The wall: a side of length −1 makes the lifted rod 0, and the whole box with it.",
   "frames": [
    {
@@ -119,7 +119,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/wall_by_moves_2.svg",
@@ -137,7 +137,7 @@
  },
  {
   "name": "mpow_add_by_moves",
-  "statement": "mpow a (m + n) = multAdd (mpow a m) (mpow a n)",
+  "statement": "mpow a (m + n) = circ (mpow a m) (mpow a n)",
   "why": "A cube of m + n sides is a cube of m sides times a cube of n.",
   "frames": [
    {
@@ -159,7 +159,7 @@
     "moves": [
      "multadd"
     ],
-    "caption": "Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/mpow_add_by_moves_3.svg",
@@ -177,7 +177,7 @@
  },
  {
   "name": "wcomm_by_moves",
-  "statement": "k · wAdd k a b = k · wAdd k b a",
+  "statement": "k · circK k a b = k · circK k b a",
   "why": "Dial: scale the weighted corner into a plain box, then flip it.",
   "frames": [
    {
@@ -192,14 +192,14 @@
     "moves": [
      "dial"
     ],
-    "caption": "Dial: k times a k-weighted corner is the plain box on k·a and k·b (wAdd_scale)."
+    "caption": "Dial: k times a k-weighted corner is the plain box on k·a and k·b (circK_scale)."
    },
    {
     "file": "figures/film/wcomm_by_moves_2.svg",
     "moves": [
      "dial"
     ],
-    "caption": "Dial: k times a k-weighted corner is the plain box on k·a and k·b (wAdd_scale)."
+    "caption": "Dial: k times a k-weighted corner is the plain box on k·a and k·b (circK_scale)."
    },
    {
     "file": "figures/film/wcomm_by_moves_3.svg",
@@ -207,7 +207,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/wcomm_by_moves_4.svg",
@@ -227,7 +227,7 @@
  },
  {
   "name": "fexp_iter_by_moves",
-  "statement": "fexp a (b + 1) = multAdd a (fexp a b)",
+  "statement": "fexp a (b + 1) = circ a (fexp a b)",
   "why": "Rung 2 on whole numbers: one more slab extrudes the fused power.",
   "frames": [
    {
@@ -259,7 +259,7 @@
  },
  {
   "name": "inv_by_moves",
-  "statement": "multAdd u (multAddInv u) = 0",
+  "statement": "circ u (circInv u) = 0",
   "why": "Inverse in a field: squash the second side to 1/(1+u); the rectangle has area 1.",
   "frames": [
    {
@@ -275,7 +275,7 @@
      "lift",
      "multadd"
     ],
-    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. Mult-add: every ⊕ opens into a product of rods, a box with its unit attached."
+    "caption": "Lift: x ↦ 1+x attaches the unit to both sides. Safe because 1+x = 1+y gives x = y. The circle operation: every ⊕ opens into a product of rods, a box with its unit attached."
    },
    {
     "file": "figures/film/inv_by_moves_2.svg",

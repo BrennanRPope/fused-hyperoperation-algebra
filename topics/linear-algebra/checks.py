@@ -1,4 +1,4 @@
-"""Checks for 'Linear algebra from mult-add'. Run: python3 checks.py
+"""Checks for 'Linear algebra from the circle operation'. Run: python3 checks.py
 Every identity the page and the Lean file state is checked here symbolically
 (sympy) or, where noted, numerically (numpy)."""
 import itertools, math
@@ -78,7 +78,7 @@ S = rng.normal(size=(4, 4)); S = S - S.T
 In = np.eye(4)
 cay = np.linalg.solve(In + S, In - S)          # (I+S)^{-1}(I-S)
 msub = (S.T - S) @ np.linalg.inv(In + S)         # (Aᵀ - A)(I+A)^{-1}, right-division form
-# mult-add subtraction X ⊟ A with X ⊟ A ⊞ A = X:  X ⊟ A = (X - A)(I+A)^{-1}
+# Circle-operation subtraction X ⊟ A with X ⊟ A ⊞ A = X:  X ⊟ A = (X - A)(I+A)^{-1}
 check("Cayley (I+S)^-1(I-S) = I + (Sᵀ ⊟ S)", np.allclose(cay, In + msub))
 check("Cayley is orthogonal", np.allclose(cay.T @ cay, In))
 check("⊟ undoes ⊞: (X⊟A)⊞A = X", np.allclose((msub) + S + msub @ S, S.T))

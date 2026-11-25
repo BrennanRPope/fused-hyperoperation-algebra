@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mult-add and economic forecasting</title>
+<title>The circle operation and economic forecasting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE same careful reading document as the actuarial, toric and topology pages; honest about known vs new
-   IDEA a geometry plate laid over a central bank bulletin: ink drawings, ultramarine for mult-add, vermilion for where things blow up
+   IDEA a geometry plate laid over a central bank bulletin: ink drawings, ultramarine for the circle operation, vermilion for where things blow up
    PICTURE averaging the cube's corners: three rate worlds and the long-run rate falling toward the lowest corner
    COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
    TYPE Newsreader for titles, Inter for text
@@ -57,8 +57,8 @@ footer{border-top:1px solid var(--rule)}
 <header class="band top">
 <div class="wrap two">
 <div>
-<h1>Mult-add can't out-forecast finance, but it points at one market failure that's real</h1>
-<p class="lede">Finance already compounds everything by mult-add, so on forecasting the algebra mostly restates what's known. One idea from it does real work: <b>average the cube's corners (discount factors), not the rates</b>.</p>
+<h1>The circle operation can't out-forecast finance, but it points at one market failure that's real</h1>
+<p class="lede">Finance already compounds everything by the circle operation ∘₁ (called mult-add before 1.0), so on forecasting the algebra mostly restates what's known. One idea from it does real work: <b>average the cube's corners (discount factors), not the rates</b>.</p>
 <p>On 150 years of US interest and inflation data, averaging discount factors cut the error of 20 to 50 year discount forecasts by <b>14 to 43%</b> against the standard constant-rate method. It also says that a harm 100 years away, like climate damage, is undervalued by <b>1.7× to 5×</b> when you discount at one average rate. Weitzman found this in 1998, and the UK Treasury uses it. The other two ideas, systemic risk as lost dimension and growth of growth (the next rung), did not beat their baselines.</p>
 <p class="mute">Research only, not investment advice. Every number below was checked in Python on Shiller's S&amp;P and Treasury data (1871 to 2022) and daily prices of Dow and S&amp;P 500 stocks (1962 to 2015).</p>
 </div>
@@ -70,7 +70,7 @@ footer{border-top:1px solid var(--rule)}
 </header>
 
 <nav class="nav" aria-label="Sections">
-<a href="#verdict">Verdict</a><a href="#native">Finance is mult-add</a><a href="#discount">Long-run harms</a><a href="#dimension">Systemic risk</a><a href="#rung">Growth of growth</a><a href="#failures">Market-failure leads</a><a href="#lean">What Lean proved</a><a href="#known">Known vs new</a>
+<a href="#verdict">Verdict</a><a href="#native">Finance is the circle operation</a><a href="#discount">Long-run harms</a><a href="#dimension">Systemic risk</a><a href="#rung">Growth of growth</a><a href="#failures">Market-failure leads</a><a href="#lean">What Lean proved</a><a href="#known">Known vs new</a>
 </nav>
 
 <section class="band" id="verdict"><div class="wrap">
@@ -87,10 +87,10 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="native" style="background:var(--panel)"><div class="wrap two">
 <div>
-<h2>Finance already runs on mult-add</h2>
+<h2>Finance already runs on the circle operation</h2>
 <p><b>Real rates.</b> The real rate is nominal ⊖ inflation, where a ⊖ b = (a − b)/(1 + b). The usual shortcut, nominal minus inflation, was off by 2 points in 1918 and 3.7 points in the deflation of 1877. At 100% inflation a 10% real return needs 120% nominal, not 110%.</p>
 <p><b>Thirty years of the S&amp;P as a 30-cube.</b> From 1993 to 2022 real wealth grew 7.47×. Adding the 30 yearly returns (layer 1) explains only 39% of that growth. The other 61% sits in the higher layers: return on return.</p>
-<p><b>Volatility drag is a square.</b> Up s, then down s, around a mean m: (1+m+s)(1+m−s) = (1+m)² − s². Since 1871 the S&amp;P's arithmetic mean real return is 8.15% and its mult-add mean 6.68%. The 1.47-point gap is the cut-out square.</p>
+<p><b>Volatility drag is a square.</b> Up s, then down s, around a mean m: (1+m+s)(1+m−s) = (1+m)² − s². Since 1871 the S&amp;P's arithmetic mean real return is 8.15% and its circle-operation mean 6.68%. The 1.47-point gap is the cut-out square.</p>
 <p><b>Gordon growth is a perpetuity at r ⊖ g.</b> A dividend growing at g, discounted at r, is worth exactly D/(r ⊖ g). The price has a pole at g = r. The dividend yield measures r ⊖ g directly: 6.8% in 1950, 1.2% in 2000, 1.7% at the end of 2022, so stocks sat far closer to the pole in 2000 and 2022 than in 1950.</p>
 </div>
 <figure style="margin:0">
@@ -127,14 +127,14 @@ footer{border-top:1px solid var(--rule)}
 <p><b>How far to trust it.</b> The windows overlap, so 50-year results rest on about two independent half-centuries, and the 1940s and 1970s (negative real rates) drive much of the gap. The direction is solid at every horizon and in every variant; the size is not. How much to lower the rate depends on how persistent rate uncertainty is: the blocks method under-corrects, the uncertain-mean method over-corrects past 30 years, and the truth sits between them.</p>
 </div>
 <p><b>What it implies.</b> With the uncertain-mean model on the full record, the certainty-equivalent rate falls from 2.3% for one year to 1.8% at 10 years, 1.3% at 50 and 0.8% at 100. A $1 million harm in 100 years is worth about $89,000 today at the constant 2.45% rate, and $155,000 to $468,000 with averaged factors (10-year blocks give the low end, the uncertain mean the high end). Beyond about 150 years the answer depends only on how low the lowest plausible long-run rate is: the lowest corner wins.</p>
-<p><b>Precedent.</b> This is not new policy. The UK Treasury's Green Book has used a falling schedule since 2003: 3.5% for the first 30 years, stepping down to 1% after 300. What mult-add adds is the picture: averaging corners, with the lowest corner taking over.</p>
+<p><b>Precedent.</b> This is not new policy. The UK Treasury's Green Book has used a falling schedule since 2003: 3.5% for the first 30 years, stepping down to 1% after 300. What the circle operation adds is the picture: averaging corners, with the lowest corner taking over.</p>
 </div></section>
 
 <section class="band" id="dimension" style="background:var(--panel)"><div class="wrap">
 <h2>Systemic risk as lost dimension: true, but not a forecast</h2>
 <div class="two">
 <div>
-<p>Independent risks make a true n-cube: their generating functions mult-add, and the cube has n independent axes. Correlation leans the cube onto its diagonal. The effective dimension, (Σλ)²/Σλ² over the correlation matrix's eigenvalues, counts the axes left. Each bank or fund that piles into the same exposures removes axes for everyone and pays nothing for it, which is why systemic risk is an externality.</p>
+<p>Independent risks make a true n-cube: their generating functions combine by the circle operation, and the cube has n independent axes. Correlation leans the cube onto its diagonal. The effective dimension, (Σλ)²/Σλ² over the correlation matrix's eigenvalues, counts the axes left. Each bank or fund that piles into the same exposures removes axes for everyone and pays nothing for it, which is why systemic risk is an externality.</p>
 <p><b>The picture is striking.</b> About 417 S&amp;P 500 stocks behave like 15 independent ones (4% of the axes). The Dow stocks behave like about 6. Dimension collapsed to about 3 in 2008 to 2009 and again after the 2011 euro scare.</p>
 <p><b>The forecast is weak.</b> Adding dimension to the standard volatility model (HAR: last day, week and month) improved next-month volatility forecasts by 1.4% out of sample on the S&amp;P 500, and made them 0.4% worse on the Dow. For calling a 10% fall within three months it made things slightly worse (S&amp;P AUC 0.657 → 0.652; Dow 0.633 → 0.604). Dimension mostly moves with volatility, so it adds little the volatility model doesn't already know.</p>
 <p class="mute">Caveat: the stock lists are 2015 survivors, which flatters the early years.</p>
@@ -169,7 +169,7 @@ footer{border-top:1px solid var(--rule)}
 <p>File <code>lean/FinanceMultAdd.lean</code>, core Lean 4.37 with no mathlib and no <code>sorry</code>, only Lean's standard axioms:</p>
 <ul>
 <li><b>fisher:</b> (nominal ⊖ inflation) ⊕ inflation = nominal.</li>
-<li><b>mall_growth:</b> mult-adding a list of returns gives total growth minus 1.</li>
+<li><b>mall_growth:</b> combining a list of returns by the circle operation gives total growth minus 1.</li>
 <li><b>drag, drag_le:</b> (1+m+s)(1+m−s) = (1+m)² − s² ≤ (1+m)².</li>
 <li><b>gordon:</b> with q(1+j) = 1, j·(q + … + q<sup>N</sup>) = 1 − q<sup>N</sup>: a growing stream is a flat perpetuity at j = r ⊖ g. <b>gsum_le</b>: the price never passes D/j. <b>gsum_pole</b>: once g ≥ r the N-year price is at least N, so it has no ceiling.</li>
 <li><b>average_factors:</b> for any horizon n, the average of two discount factors is at least the factor at the averaged growth rate (built from <b>am_hm</b> and <b>power_mean</b>). <b>lowest_rate_wins:</b> the average is at least half the lowest-rate factor, so far out the lowest corner sets the rate.</li>
@@ -179,7 +179,7 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="known" style="background:var(--panel)"><div class="wrap">
 <h2>Known vs new, plainly</h2>
-<p>Every result here is known. Compounding as mult-add, the Fisher equation, volatility drag and Gordon growth are textbook. Falling long-run discount rates are Weitzman (1998, 2001), tested on US data by Newell and Pizer (2003). Effective dimension of markets is the participation ratio from physics and Kritzman's absorption ratio. Finite-time poles in prices are Sornette's.</p>
+<p>Every result here is known. Compounding as the circle operation, the Fisher equation, volatility drag and Gordon growth are textbook. Falling long-run discount rates are Weitzman (1998, 2001), tested on US data by Newell and Pizer (2003). Effective dimension of markets is the participation ratio from physics and Kritzman's absorption ratio. Finite-time poles in prices are Sornette's.</p>
 <p>What looks new is one picture that joins them: each rate path is a corner product, fair value averages corners, and three different failures show up as the cube's geometry. Averaging favours the lowest corner (long-run discounting), correlation flattens the cube (systemic risk), and a growing stream approaches a pole (Gordon, bubbles, compounding damage). That is a teaching and design language, which suits Rulecraft's "scope matches spillover" well, but it is not a better forecaster than what economists already use.</p>
 </div></section>
 

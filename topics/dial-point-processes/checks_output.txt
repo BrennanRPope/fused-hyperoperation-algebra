@@ -106,7 +106,7 @@ PASS the tilted mean runs by the rate m' = m(1 + k m) (the variance function, Mo
 PASS every dial count lands on the one parabola p^2 - 4q = 1 (two real walls)
 PASS units-free shape p^2/(p^2-4q) = (2*Fano - 1)^2 for every mode
 PASS fermion modes have shape in [0,1], boson modes shape > 1, none negative (no count lives above the border parabola)
-PASS empty-mode limit s=0: (p,q) = (1,0), mult-add; full fermion mode s=-1: (-1,0), union of failures
+PASS empty-mode limit s=0: (p,q) = (1,0), the circle operation; full fermion mode s=-1: (-1,0), union of failures
 PASS half-filled fermion mode s=-1/2: (p,q) = (0,-1/4), lens law (a+b)/(1+ab/4) is velocity addition with speed limit 2
 PASS particle-hole: at k=-1 eigenvalues mu and 1-mu give the same shape
 

@@ -89,10 +89,10 @@ th{font-weight:600}
 <div class="stripe"><i></i><i></i><i></i></div>
 <header class="band"><div class="wrap">
   <h1 id="title">Every proof in the library, drawn as a shape</h1>
-  <p class="lede" id="lede">Each of the library's Lean proofs is drawn from its own source as a mult-add shape, then grouped by that shape alone. Fields never enter the grouping, so proofs from far-apart subjects land in the same drawer when their geometry matches.</p>
+  <p class="lede" id="lede">Each of the library's Lean proofs is drawn from its own source as a circle-operation shape, then grouped by that shape alone. Fields never enter the grouping, so proofs from far-apart subjects land in the same drawer when their geometry matches.</p>
   <div class="hero">
     <div><div class="fig" id="sheetfig" role="img" aria-label="The rung sheet: unit curves of every rung stacked by height, with each shape family pinned at its rung"><svg id="sheet"></svg></div>
-      <p class="small mute" style="margin-top:8px">The rung sheet: at each height s, the curve of all a, b with a combined with b at rung s equal to 1. The outer corner of the square is at the bottom, the line (addition, s = 0) and the hyperbola (mult-add, s = 1) in the middle, the axes at the top. Each numbered pin is a shape family, placed at the highest rung its statements use.</p></div>
+      <p class="small mute" style="margin-top:8px">The rung sheet: at each height s, the curve of all a, b with a combined with b at rung s equal to 1. The outer corner of the square is at the bottom, the line (addition, s = 0) and the hyperbola (the circle operation ∘₁ (called mult-add before 1.0), s = 1) in the middle, the axes at the top. Each numbered pin is a shape family, placed at the highest rung its statements use.</p></div>
     <div><h3>Shape families on the sheet</h3><ul class="key" id="key"></ul></div>
   </div>
 </div></header>
@@ -127,13 +127,13 @@ th{font-weight:600}
   <h2>How shapes were read</h2>
   <p>Nothing was assigned by hand. Scripts read the Lean files, and a Lean program reads the compiled library (the library itself is untouched); the same rules apply to every proof:</p>
   <div class="scroll"><table class="stack"><thead><tr><th>Part</th><th>Read from</th><th>Rule</th></tr></thead><tbody>
-  <tr><td>Size (body)</td><td>The statement</td><td>Its polynomial degree in its variables, with the library's definitions expanded (mult-add a b counts as a + b + ab). Degree 0 is a point, 1 a rod, 2 a rectangle, 3 a box, 4 to 9 a hyperbox. A power with a symbolic exponent, a fold over a list or a recursive definition run n times is a cube of any size.</td></tr>
+  <tr><td>Size (body)</td><td>The statement</td><td>Its polynomial degree in its variables, with the library's definitions expanded (the circle operation a b counts as a + b + ab). Degree 0 is a point, 1 a rod, 2 a rectangle, 3 a box, 4 to 9 a hyperbox. A power with a symbolic exponent, a fold over a list or a recursive definition run n times is a cube of any size.</td></tr>
   <tr><td>Frame</td><td>The statement</td><td>Equal: the same picture. ≤ or &lt;: one fits inside the other. ≠ or ¬: they cannot match. Divides or congruent: it tiles evenly. ∃: a piece is found that fits. ↔: each holds the other.</td></tr>
-  <tr><td>Moves</td><td>The proof, the definitions it unfolds and the lemmas it cites</td><td>The proof engine's moves, matched by a fixed table of lemma names and patterns: lift, mult-add, swap, regroup, collapse, squash, dial, flatten, extrude. Extra marks: explode (corner pieces), repeat (induction), measure (rods compared by length), tally (checked by counting). Swap, regroup and collapse are also read from the two sides of the statement directly.</td></tr>
+  <tr><td>Moves</td><td>The proof, the definitions it unfolds and the lemmas it cites</td><td>The proof engine's moves, matched by a fixed table of lemma names and patterns: lift, the circle operation, swap, regroup, collapse, squash, dial, flatten, extrude. Extra marks: explode (corner pieces), repeat (induction), measure (rods compared by length), tally (checked by counting). Swap, regroup and collapse are also read from the two sides of the statement directly.</td></tr>
   <tr><td>Compiled moves</td><td>The proof term Lean compiled (engine/Extract.lean)</td><td>Every constant the kernel-checked proof uses, with Lean's own helper lemmas opened and the statement's own words removed, matched by a second table. Grind's ring normaliser counts as explode (a polynomial as a sum of monomials is the box broken into corner pieces); omega and linear arithmetic count as measure; decide counts as tally. Used for the leading move only when the proof's own text names none.</td></tr>
-  <tr><td>Size check</td><td>The engine's Reader, run on the elaborated statement</td><td>The proof engine reads each statement as a picture (lifted products, mult-adds, dialed corners, mult-add powers, squashes). Its largest box sets the size when the polynomial reading fails.</td></tr>
+  <tr><td>Size check</td><td>The engine's Reader, run on the elaborated statement</td><td>The proof engine reads each statement as a picture (lifted products, combines by the circle operation, dialed corners, circle powers, squashes). Its largest box sets the size when the polynomial reading fails.</td></tr>
   <tr><td>Family</td><td>Size and moves</td><td>Size plus the leading move, the first present in this order: squash, dial, flatten, regroup, swap, explode, collapse, repeat; otherwise plain. Families under four proofs are pooled by move, and the last few into odd ones out.</td></tr>
-  <tr><td>Height on the sheet</td><td>The statement</td><td>s = 0 for rods (addition), 1 for rectangles, boxes and hyperboxes (mult-add), 2 for any-size cubes (the fused exponent), 3 and 4 for tetration and pentation; flattening proofs drop a rung. A family sits at its median.</td></tr>
+  <tr><td>Height on the sheet</td><td>The statement</td><td>s = 0 for rods (addition), 1 for rectangles, boxes and hyperboxes (the circle operation), 2 for any-size cubes (the fused exponent), 3 and 4 for tetration and pentation; flattening proofs drop a rung. A family sits at its median.</td></tr>
   </tbody></table></div>
   <p style="margin-top:14px" id="honest"></p>
   <p class="small mute">Scripts and data: math-theory/proof-gallery/ in the project folder (parse.py, degree.py, features.py, cluster.py, build_data.py; gallery.json holds every proof's shape), with the Lean extract from math-theory/proof-engine/lean/Extract.lean. Sheet curves from the rung-shape work.</p>
@@ -145,7 +145,7 @@ th{font-weight:600}
 {
 const C={a:'#1d5aa6',b:'#d0312d',c:'#e8b417',ab:'#6a3d9a',u:'#d9d6cf',ink:'#10131a',green:'#3f8f4f',orange:'#e0701f',slate:'#2e6f8e'};
 const MOVEC={squash:C.ink,dial:C.c,flatten:C.slate,regroup:C.a,swap:C.b,explode:C.ab,collapse:'#8a8780',repeat:C.green,lift:'#b9b5ad',multadd:C.orange,extrude:'#555a63',measure:'#2e6f8e',tally:'#9a6b2f'};
-const MOVEN={lift:'lift',multadd:'mult-add',swap:'swap',regroup:'regroup',collapse:'collapse',squash:'squash',dial:'dial',flatten:'flatten',extrude:'extrude',explode:'explode',repeat:'repeat',measure:'measure',tally:'tally'};
+const MOVEN={lift:'lift',multadd:'The circle operation',swap:'swap',regroup:'regroup',collapse:'collapse',squash:'squash',dial:'dial',flatten:'flatten',extrude:'extrude',explode:'explode',repeat:'repeat',measure:'measure',tally:'tally'};
 const BODYN={point:'point',rod:'rod',rect:'rectangle',box:'box',hyper:'hyperbox',cube:'cube of any size',unclear:'unread'};
 const FRAMEN={same:'the two pictures are the same',inside:'one picture fits inside the other',mismatch:'the pictures cannot match',tiles:'the picture tiles evenly',witness:'a piece is found that fits',both_ways:'each picture holds the other'};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -210,7 +210,7 @@ function init(){
   /* key */
   const order=G.map((g,i)=>i).sort((x,y)=>G[y].height-G[x].height||x-y);
   let lastH=null, kh='';
-  const HN={4:'s = 4, pentation',3:'s = 3, tetration',2:'s = 2, fused exponent',1:'s = 1, mult-add',0:'s = 0, addition','-1':'s = −1, below addition'};
+  const HN={4:'s = 4, pentation',3:'s = 3, tetration',2:'s = 2, fused exponent',1:'s = 1, the circle operation',0:'s = 0, addition','-1':'s = −1, below addition'};
   for(const i of order){const g=G[i]; if(g.height!==lastH){kh+=`<li style="border:0;display:block" class="lvl">${HN[g.height]||'s = '+g.height}</li>`; lastH=g.height;}
     kh+=`<li><span class="num">${i+1}</span><button type="button" data-go="${i}"><b>${esc(g.name)}</b></button><span class="h">${g.count}</span></li>`;}
   const key=document.getElementById('key'); key.innerHTML=kh;
@@ -276,7 +276,7 @@ function drawSheet(){
     const d='M'+pts.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join('L');
     const col=s===0?C.a:s===1?C.b:whole?C.ink:'#b9b5ad';
     o+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="${whole?(s===0||s===1?2.4:1.4):.7}" opacity="${whole?1:.8}"/>`;
-    if(whole){const [x,y]=pt(1.02,0,s); o+=`<text x="${x+6}" y="${y+4}" font-size="12" fill="${C.ink}">s = ${s}${s===0?'  addition':s===1?'  mult-add':s===2?'  fused exponent':''}</text>`;}
+    if(whole){const [x,y]=pt(1.02,0,s); o+=`<text x="${x+6}" y="${y+4}" font-size="12" fill="${C.ink}">s = ${s}${s===0?'  addition':s===1?'  the circle operation':s===2?'  fused exponent':''}</text>`;}
   });
   /* pins */
   const G=D.groups, byH={};

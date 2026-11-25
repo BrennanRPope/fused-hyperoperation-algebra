@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Logic and Sets Through Mult-add</title>
+<title>Logic and Sets Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -58,7 +58,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <section class="band">
 <div class="wrap">
 <h1>Only two notches on the dial keep true and false: OR and XOR</h1>
-<p class="lede">Put 0 for false and 1 for true. The weighted mult-add a + b + k·ab gives 0, 1, 1 on three corners of the truth table for every k. The fourth corner, 1 with 1, lands at 2 + k. It stays a truth value at exactly two settings: k = −1, which is OR, and k = −2, which is XOR. Turn the knob and watch the corner.</p>
+<p class="lede">Put 0 for false and 1 for true. The circle operation a + b + k·ab gives 0, 1, 1 on three corners of the truth table for every k. The fourth corner, 1 with 1, lands at 2 + k. It stays a truth value at exactly two settings: k = −1, which is OR, and k = −2, which is XOR. Turn the knob and watch the corner.</p>
 <div class="first">
 <div class="panel">
 <div class="fig" id="dial"></div>
@@ -103,7 +103,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div class="eq">S_γ(a, b) = (a + b + (γ − 2)ab) / (1 + (γ − 1)ab)</div>
 <p>On the landscape that is the point p = γ − 2, q = 1 − γ, so the whole family is the line p + q = −1. The statistics page found this same line as the unions with certainty as a wall. Measure truth by its odds, o = x/(1 − x), and the bend disappears:</p>
 <div class="eq">odds(S_γ(a, b)) = odds(a) ✳<sub>γ</sub> odds(b)</div>
-<p><b>Hamacher's parameter is the dial, read on odds.</b> γ = 0 adds odds, γ = 1 mult-adds them (the probabilistic sum a + b − ab), γ = 2 is the Einstein sum (a + b)/(1 + ab), relativity's point. The t-norms ("and") are the mirror images under x ↦ 1 − x, De Morgan's law, and are the dial on odds against.</p>
+<p><b>Hamacher's parameter is the dial, read on odds.</b> γ = 0 adds odds, γ = 1 combines them by the circle operation ∘₁ (called mult-add before 1.0) (the probabilistic sum a + b − ab), γ = 2 is the Einstein sum (a + b)/(1 + ab), relativity's point. The t-norms ("and") are the mirror images under x ↦ 1 − x, De Morgan's law, and are the dial on odds against.</p>
 </div>
 <div class="panel"><div class="fig2" id="land"></div>
 <div class="ctl"><label for="g">γ</label><input id="g" type="range" min="0" max="6" step="0.05" value="1"><output id="go"></output></div>
@@ -132,7 +132,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <h2>Sets have no wall, until you allow negative sets</h2>
 <div class="fig2" id="sets"></div>
 <p>For finite sets, |A ⊔ B ⊔ A×B| = a ✳ b, and adding a spare point to each side turns this into a plain product, minus the spare pair. Sizes are never negative, so finite sets have no wall and no inverses.</p>
-<p>Count by Euler characteristic instead (Schanuel 1991): a point counts 1, an open interval counts −1, a product counts the product. Now the open interval <i>is</i> the wall. Glue the spare point to it and you get [0, 1), which counts 0, and 0 times anything is 0. Two open intervals count −2, mult-add's other unit: X ⊔ X ⊔ X×X counts 0.</p>
+<p>Count by Euler characteristic instead (Schanuel 1991): a point counts 1, an open interval counts −1, a product counts the product. Now the open interval <i>is</i> the wall. Glue the spare point to it and you get [0, 1), which counts 0, and 0 times anything is 0. Two open intervals count −2, the circle operation's other unit: X ⊔ X ⊔ X×X counts 0.</p>
 </div>
 </div>
 </section>
@@ -141,7 +141,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1p
 <div class="wrap side">
 <div>
 <h2>The logic of the rungs: arithmetic switches on at rung 2</h2>
-<p>The axioms page showed mult-add alone is multiplication in disguise, a decidable theory (Skolem 1930, Mostowski 1952), and that mult-add with the successor carries all of arithmetic. One more step finishes the ladder. The fused exponent x ⊛ a = (x + 1)^(a + 1) − 1 <b>alone</b> defines the rungs below it:</p>
+<p>The axioms page showed the circle operation alone is multiplication in disguise, a decidable theory (Skolem 1930, Mostowski 1952), and that the circle operation with the successor carries all of arithmetic. One more step finishes the ladder. The fused exponent x ⊛ a = (x + 1)^(a + 1) − 1 <b>alone</b> defines the rungs below it:</p>
 <div class="eq">b ✳ c = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ⊛ c = x ⊛ d<br>b + c + 1 = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ✳ (x ⊛ c) = x ⊛ d</div>
 <p>and 0 is its only right identity, so the successor is b + 0 + 1. With +, × and the successor definable, the first-order theory of rung 2 by itself is undecidable (Gödel, Church). Lean proves the three definitions.</p>
 </div>
@@ -191,7 +191,7 @@ const sD=mk('dial','dial and leak'),sW=mk('walls','wall fans'),sL=mk('land','lan
 const T=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c?' style="fill:'+c+'"':'')+'>'+t+'</text>';
 const L=(x1,y1,x2,y2,c,sw,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(sw||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
 const C=(x,y,r,f,s)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="2"':'')+'/>';
-const named={'-2':'XOR (parity)','-1':'OR (failure union)','0':'plain count','1':'mult-add'};
+const named={'-2':'XOR (parity)','-1':'OR (failure union)','0':'plain count','1':'The circle operation'};
 const snaps=$('snaps');[-2,-1,0,1].forEach(v=>{const b=document.createElement('button');b.textContent='k = '+String(v).replace('-','−');b.onclick=()=>{$('k').value=v;drawDial();};snaps.appendChild(b);});
 function drawDial(){
   const k=+$('k').value, W=sD.clientWidth, H=sD.clientHeight, m=34;
@@ -264,7 +264,7 @@ function drawSets(){
 }
 function drawLadder(){
   const W=sR.clientWidth,H=sR.clientHeight;
-  const rows=[['rung 2 alone (fused exponent)',false,'defines ✳, +1, 0'],['rung 1 + successor',false,'axioms page'],['rung 1 alone (mult-add)',true,'× in disguise: Skolem'],['rung 0 alone (shifted add)',true,'Presburger']];
+  const rows=[['rung 2 alone (fused exponent)',false,'defines ✳, +1, 0'],['rung 1 + successor',false,'axioms page'],['rung 1 alone (the circle operation)',true,'× in disguise: Skolem'],['rung 0 alone (shifted add)',true,'Presburger']];
   const bh=(H-20)/rows.length-10;let g='';
   rows.forEach(([t,dec,n],i)=>{const y=10+i*(bh+10);
     g+='<rect x="8" y="'+y+'" width="'+(W-16)+'" height="'+bh+'" rx="5" fill="color-mix(in srgb,'+(dec?'var(--xor)':'var(--wall)')+' 14%,transparent)" stroke="'+(dec?'var(--xor)':'var(--wall)')+'" stroke-width="2"/>';

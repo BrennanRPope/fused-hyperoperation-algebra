@@ -58,7 +58,7 @@ def v_lift():
 def v_rect():
     cv = Canvas(360, 250)
     draw_rect(cv, 60, 195, "a", "b", S=70)
-    caption(cv, "Mult-add: two rods make a rectangle; drop the unit", 218, 13)
+    caption(cv, "The circle operation: two rods make a rectangle; drop the unit", 218, 13)
     caption(cv, "a ⊕ b = a + b + ab", 238, 13)
     save("v_rect", cv, {"kind": "rect", "xv": "a", "yv": "b", "unit": "dashed"})
 
@@ -124,7 +124,7 @@ def v_squash():
 
 def v_dial():
     cv = Canvas(360, 250)
-    for i, (k, lab) in enumerate([(0.0, "k = 0  plain add"), (0.45, "k = A  soliton"), (1.0, "k = 1  mult-add")]):
+    for i, (k, lab) in enumerate([(0.0, "k = 0  plain add"), (0.45, "k = A  soliton"), (1.0, "k = 1  circle operation")]):
         ox = 14 + i * 116
         draw_rect(cv, ox, 170, "a", "b", S=40, k=k, labels=False)
         cv.text(ox + 40 + A * 20, 188, lab, 11)
@@ -201,7 +201,7 @@ def soliton():
     save("soliton", cv)
 
 
-# ------------------------------------------------------------------ worked example: madd_assoc
+# ------------------------------------------------------------------ worked example: circ_assoc
 def step_canvas():
     return Canvas(620, 250)
 

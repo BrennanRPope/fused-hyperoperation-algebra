@@ -61,9 +61,9 @@ only because it has a rational 3-isogeny).
 - **Near misses** (F6): 3987¹² + 4365¹² vs 4472¹² dies mod 3; 1782¹² + 1841¹² vs 1922¹² dies mod 2.
   Each fake dies to some modulus, no modulus kills them all.
 
-## Mult-add
+## The circle operation
 
 At each bad prime the curve's smooth points form the multiplicative group, whose chord law is
-mult-add (FreyPieces 3f). The Frey condition "exponent ≡ 0 mod p" is the statement that Tate's
-parameter is a p-th power up to a unit, i.e. a mult-add p-th power: this is Tate's uniformisation
+the circle operation ∘₁ (called mult-add before 1.0) (FreyPieces 3f). The Frey condition "exponent ≡ 0 mod p" is the statement that Tate's
+parameter is a p-th power up to a unit, i.e. a circle p-th power: this is Tate's uniformisation
 restated, clean but not new. No other step gets a cleaner view from the rungs.

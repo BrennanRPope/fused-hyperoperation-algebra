@@ -1,4 +1,4 @@
-# Logic and set theory through mult-add (Nov 25, 2026)
+# Logic and set theory through the circle operation (Nov 25, 2026)
 
 Page title: "Only two notches on the dial keep true and false: OR and XOR" (source index.html, not yet published).
 
@@ -19,7 +19,7 @@ Page title: "Only two notches on the dial keep true and false: OR and XOR" (sour
    Aczél–Alsina leave the plane except where they meet Hamacher (Dombi 1 = SS −1 = Hamacher 0; AA 1 = Frank→1 = prob. sum).
 5. Sets: |A ⊔ B ⊔ A×B| = a ✳ b; no wall for finite sets, but with Euler characteristic (Schanuel 1991) the open
    interval is the wall (its lift [0,1) counts 0) and two open intervals are the other unit −2.
-6. Rung 2 (fused exponent) alone defines mult-add, shifted add and 0, so its theory is undecidable; rung 0 and
+6. Rung 2 (fused exponent) alone defines the circle operation ∘₁ (called mult-add before 1.0), shifted add and 0, so its theory is undecidable; rung 0 and
    rung 1 alone are decidable (Presburger, Skolem/Mostowski). Folklore for x^y, proved here in fused form.
 
 ## Verdict

@@ -1,11 +1,11 @@
-"""Electromagnetism through the mult-add lens.
+"""Electromagnetism through the circle-operation lens.
 
 Run: python3 checks.py  (writes checks_output.txt and results.json).  Natural units c = 1 unless stated.
 Order follows history: electromagnetism set the dial (A), its fields ride the boosts (B), its gauge phase is a dial (C),
 its field is the corner of a Clifford product and Maxwell is one equation (D), where the lens stops (E), and the
 bridge to gravity (F).
 
-Mult-add: a * b = a + b + ab, lift 1 + (a * b) = (1 + a)(1 + b).  Weighted: a + b + k ab.  Landscape law with dial q:
+The circle operation: a * b = a + b + ab, lift 1 + (a * b) = (1 + a)(1 + b).  Weighted: a + b + k ab.  Landscape law with dial q:
 (u + v) / (1 - q u v): q = -1/c^2 is Einstein's velocity addition, q = 0 Galilean, q = +1 the tangent (circle) law.
 """
 import json, math, sys, os, random, cmath
@@ -93,7 +93,7 @@ law = lambda a, b, qq: (a + b) / (1 - qq * a * b)
 check("A3. composing two dial boosts gives the landscape law (u+v)/(1 - q u v); q = -1 is Einstein's",
       zero(law(u1, u2, -1) - (u1 + u2) / (1 + u1 * u2)))
 dop = lambda u: 2 * u / (1 - u)
-check("A3b. Doppler-squared minus one composes by mult-add: d(u (+) v) = d(u) * d(v)",
+check("A3b. Doppler-squared minus one composes by the circle operation: d(u (+) v) = d(u) * d(v)",
       zero(dop(law(u1, u2, -1)) - ma(dop(u1), dop(u2))))
 
 # =====================================================================================================
@@ -128,12 +128,12 @@ check("B1. light-cone parts: (E_y + B_z) -> (E_y + B_z)/D and (E_y - B_z) -> D (
       zero(bd[1] + bd[5] - (Ey + Bz) / D) and zero(bd[1] - bd[5] - D * (Ey - Bz)))
 check("B1b. the other pair: (E_z - B_y) -> /D and (E_z + B_y) -> x D",
       zero(bd[2] - bd[4] - (Ez - By) / D) and zero(bd[2] + bd[4] - D * (Ez + By)))
-check("B2. the ratio (E_y - B_z)/(E_y + B_z) is multiplied by D^2 = (1+v)/(1-v) = 1 + d(v), mult-add's lift",
+check("B2. the ratio (E_y - B_z)/(E_y + B_z) is multiplied by D^2 = (1+v)/(1-v) = 1 + d(v), the circle operation's lift",
       zero(D ** 2 - (1 + vD(D)) / (1 - vD(D))) and zero(D ** 2 - (1 + dop(vD(D)))))
 comp = boost_D(boost_D(FLD, D1), D2)
 check("B3. two boosts compose as one with D = D1 D2 (all six components)",
       all(zero(a - b) for a, b in zip(comp, boost_D(FLD, D1 * D2))))
-check("B3b. and v(D1 D2) is Einstein's sum of v(D1), v(D2); so d composes by mult-add",
+check("B3b. and v(D1 D2) is Einstein's sum of v(D1), v(D2); so d composes by the circle operation",
       zero(vD(D1 * D2) - law(vD(D1), vD(D2), -1)) and zero(dop(vD(D1 * D2)) - ma(dop(vD(D1)), dop(vD(D2)))))
 inv1 = lambda F: F[0] ** 2 + F[1] ** 2 + F[2] ** 2 - F[3] ** 2 - F[4] ** 2 - F[5] ** 2
 inv2 = lambda F: F[0] * F[3] + F[1] * F[4] + F[2] * F[5]
@@ -208,14 +208,14 @@ check("B7. magnetism from electricity: a pure E_y, boosted, gets B_z = -gamma v 
 section("C. The gauge phase as a dial")
 th1, th2, th = sp.symbols('theta1 theta2 theta', real=True)
 a = sp.exp(sp.I * th) - 1
-check("C1. a unit phase written as a = e^{i theta} - 1 satisfies a * conj(a) = 0: its conjugate is its mult-add inverse",
+check("C1. a unit phase written as a = e^{i theta} - 1 satisfies a * conj(a) = 0: its conjugate is its circle inverse",
       zero(sp.simplify(ma(a, sp.conjugate(a)))))
 ar, ai = sp.symbols('a_r a_i', real=True)
 A_ = ar + sp.I * ai
 check("C1b. in general a * conj(a) = |1 + a|^2 - 1, so 'phase' means exactly 'a * conj(a) = 0'",
       zero(sp.expand(ma(A_, sp.conjugate(A_)) - (sp.Abs(1 + A_) ** 2 - 1)).rewrite(sp.re)) or
       zero(sp.expand(ma(A_, sp.conjugate(A_)) - ((1 + ar) ** 2 + ai ** 2 - 1))))
-check("C2. phases compose by mult-add: (e^{i t1} - 1) * (e^{i t2} - 1) = e^{i(t1+t2)} - 1 (a renaming of multiplication)",
+check("C2. phases compose by the circle operation: (e^{i t1} - 1) * (e^{i t2} - 1) = e^{i(t1+t2)} - 1 (a renaming of multiplication)",
       zero(sp.simplify(ma(sp.exp(sp.I * th1) - 1, sp.exp(sp.I * th2) - 1) - (sp.exp(sp.I * (th1 + th2)) - 1))))
 check("C2b. the wall a = -1 fails the phase rule: (-1) * conj(-1) = -1, not 0, so U(1) never reaches the wall",
       ma(-1, -1) == -1)
@@ -229,7 +229,7 @@ check("C3b. boosts in the half-rapidity chart s = tanh(phi/2) compose at the mir
 # split-complex check: boosts as 1 + a with j^2 = +1, a * abar = 0
 ph = sp.symbols('phi', real=True)
 a0, a1j = sp.cosh(ph) - 1, sp.sinh(ph)          # a = a0 + j a1
-# (a0 + j a1) * (a0 - j a1) mult-add, with j^2 = +1: a + abar + a abar = 2 a0 + (a0^2 - a1^2)
+# (a0 + j a1) * (a0 - j a1) circle operation, with j^2 = +1: a + abar + a abar = 2 a0 + (a0^2 - a1^2)
 check("C4. a Lorentz boost as a split-complex number a = (cosh phi - 1) + j sinh phi also has a * abar = 0 "
       "(j^2 = +1): the same rule, mirror sign", zero(sp.simplify(2 * a0 + a0 ** 2 - a1j ** 2)))
 check("C4b. the phase version with i^2 = -1: 2 a0 + a0^2 + a1^2 = 0 for a0 = cos - 1, a1 = sin",
@@ -289,7 +289,7 @@ check("C6b. Aharonov-Bohm: around a thin solenoid (B = 0 on the path) the phase 
       "0 for loops that miss it", all(abs(v_ - 1) < 1e-9 for v_ in inside) and all(abs(v_) < 1e-9 for v_ in outside),
       f"inside {[round(v_, 12) for v_ in inside]}, outside {[round(v_, 12) for v_ in outside]}")
 
-# C7 lattice plaquette as mult-add of link values, and discrete Stokes
+# C7 lattice plaquette as the circle operation of link values, and discrete Stokes
 eps = sp.symbols('epsilon', positive=True)
 cA = sp.symbols('c0:6', real=True)
 Ax_lin = cA[0] + cA[1] * x + cA[2] * y
@@ -308,15 +308,15 @@ corners = [(0, 0), (eps, 0), (eps, eps), (0, eps)]
 l1 = link(None, corners[0], corners[1]); l2 = link(None, corners[1], corners[2])
 l3 = link(None, corners[3], corners[2]); l4 = link(None, corners[0], corners[3])
 plaq = ma(ma(ma(l1, l2), inv(l3)), inv(l4))
-check("C7. a lattice plaquette is the mult-add of its four links (two run backwards, as mult-add inverses), "
+check("C7. a lattice plaquette is the circle operation of its four links (two run backwards, as circle inverses), "
       "and equals e^{i eps^2 F} - 1 exactly for a linear potential",
       zero(sp.simplify(plaq - (sp.exp(sp.I * eps ** 2 * Fxy) - 1))))
-# discrete Stokes: two plaquettes side by side compose by mult-add into the 2x1 rectangle (shared link cancels)
+# discrete Stokes: two plaquettes side by side compose by the circle operation into the 2x1 rectangle (shared link cancels)
 cR = [(eps, 0), (2 * eps, 0), (2 * eps, eps), (eps, eps)]
 m1 = link(None, cR[0], cR[1]); m2 = link(None, cR[1], cR[2]); m3 = link(None, cR[3], cR[2]); m4 = link(None, cR[0], cR[3])
 plaq2 = ma(ma(ma(m1, m2), inv(m3)), inv(m4))
 big = ma(ma(ma(ma(ma(l1, m1), m2), inv(m3)), inv(l3)), inv(l4))
-check("C7b. discrete Stokes: plaquette * plaquette = the big loop (fluxes mult-add, the inner link cancels)",
+check("C7b. discrete Stokes: plaquette * plaquette = the big loop (fluxes combine by the circle operation, the inner link cancels)",
       zero(sp.simplify(ma(plaq, plaq2) - big)))
 
 # C8 non-commuting contrast: constant matrix potentials give a field only through the commutator
@@ -424,7 +424,7 @@ Efun = lambda Dv: Dv / math.sqrt(1 + Dv * Dv)
 d1_, d2_ = 0.8, 1.3
 lhs = Efun(d1_ + d2_); rhs = (Efun(d1_) + Efun(d2_)) / (1 + Efun(d1_) * Efun(d2_))
 check("E2b. but Born-Infeld fields do not compose by velocity addition (D adds, by Gauss's law): only the wall shape "
-      "is shared, not the mult-add law", abs(lhs - rhs) > 1e-3, f"E(D1+D2) = {lhs:.4f} vs E1 (+) E2 = {rhs:.4f}")
+      "is shared, not the circle-operation law", abs(lhs - rhs) > 1e-3, f"E(D1+D2) = {lhs:.4f} vs E1 (+) E2 = {rhs:.4f}")
 me, e_ch, hbar = 9.1093837015e-31, 1.602176634e-19, 1.054571817e-34
 Es = me ** 2 * c_SI ** 3 / (e_ch * hbar)
 check("E3. the Schwinger field m^2 c^3/(e hbar) ~ 1.3e18 V/m: where QED makes the vacuum nonlinear "

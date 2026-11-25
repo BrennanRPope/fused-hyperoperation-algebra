@@ -1,10 +1,10 @@
 A. Symbolic identities (the Lean file's ring facts)
   ok  K1 lift
-  ok  scale to plain mult-add
+  ok  scale to the plain circle operation
   ok  K3 flip
   ok  assoc
   ok  union rule
-  ok  union = flipped mult-add
+  ok  union = flipped the circle operation
   ok  inclusion-exclusion 3
   ok  gini-simpson
   ok  support count
@@ -156,17 +156,17 @@ B. Laws on numbers
   ok  [0] Kraft sums multiply (1.000*1.000)
   ok  [0] Kraft slack composes by union rule
   ok  [0] expected lengths add
-  ok  [0] Campbell M multiplies, M-1 mult-adds
+  ok  [0] Campbell M multiplies, M-1 combines by the circle operation
   ok  [0] Campbell cost >= Renyi(1/(1+t)) bound (Campbell 1965)
   ok  [1] Kraft sums multiply (1.000*1.000)
   ok  [1] Kraft slack composes by union rule
   ok  [1] expected lengths add
-  ok  [1] Campbell M multiplies, M-1 mult-adds
+  ok  [1] Campbell M multiplies, M-1 combines by the circle operation
   ok  [1] Campbell cost >= Renyi(1/(1+t)) bound (Campbell 1965)
   ok  [2] Kraft sums multiply (1.000*1.000)
   ok  [2] Kraft slack composes by union rule
   ok  [2] expected lengths add
-  ok  [2] Campbell M multiplies, M-1 mult-adds
+  ok  [2] Campbell M multiplies, M-1 combines by the circle operation
   ok  [2] Campbell cost >= Renyi(1/(1+t)) bound (Campbell 1965)
 
   codes and decoding

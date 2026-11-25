@@ -63,12 +63,12 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - bio 11 behaviour 6fsetfzEB6Yq6FfPCzMZnA
 - fractional power set + choice grades 94mPKskoy8QKXDumoDjRb7
 - Fermat counterexample map G1nEFedgkjtv7X5ehD3ber
-- general relativity (mult-add toward Einstein) SHrK88RpTBLLfTaeAxgi37
+- general relativity (the circle operation ∘₁ (called mult-add before 1.0) toward Einstein) SHrK88RpTBLLfTaeAxgi37
 - P vs NP: what can't work FQr7rMChaa6ofsJV2WfDjs
 - power set dials 27MDnoDnLAMxUUmWGADYk9 (one dial per element; merging, complement, primes, other sets)
 - dial survey (five dials, quick pass) LoM7iRCttrFnAi9VGz2kVr
-- GR bridges + curved space from mult-add (five pictures): https://claude.ai/artifact/LhAbnuPMJnNoq9cRYBz3xc
-- Clifford through mult-add NU8rLX3jBBeaojcq8g3hMW (17 pieces, picture pairs)
+- GR bridges + curved space from the circle operation (five pictures): https://claude.ai/artifact/LhAbnuPMJnNoq9cRYBz3xc
+- Clifford through the circle operation NU8rLX3jBBeaojcq8g3hMW (17 pieces, picture pairs)
 - the dial's potential (Higgs-like dial, 71 guesses in 4 rounds) WpQzqeezDjmRmUcbgTA7RT
 - fractal boxes (half-dimension box: joining yes = dials, iterating no) NbFUcWVphAGGNvhug8XvwS
 - size dial and residual PKMMfy7vXAZRK9cAucwSTg (54.5% exact; size measure = dimension beta, twist q=1+2^-beta; leftover = repetition at double size, 2^-beta; class group)

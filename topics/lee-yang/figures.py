@@ -46,7 +46,7 @@ for L, n in ((1, 40), (2, 20), (3, 14), (4, 10)):
     zs = [z - 1 for z in P[(L, n)]]
     c, m, s, lab = sty[L]
     ax.scatter([z.real for z in zs], [z.imag for z in zs], s=s, color=c, marker=m, label=lab, zorder=4, lw=0)
-for kv, name in ((-2, "k = −2\nparity"), (-1, "k = −1\nor"), (0, "k = 0\naddition"), (1, "k = 1\nmult-add")):
+for kv, name in ((-2, "k = −2\nparity"), (-1, "k = −1\nor"), (0, "k = 0\naddition"), (1, "k = 1\ncircle operation")):
     ax.axvline(kv, color=ORANGE if kv > -2 else "#bbbbbb", lw=1, ls=":", zorder=1)
     ax.text(kv, -2.25, name, ha="center", va="top", fontsize=9, color=INK)
 ax.set_xlim(-3.2, 3.6); ax.set_ylim(-2.0, 2.0); ax.axhline(0, color="#cccccc", lw=0.8)

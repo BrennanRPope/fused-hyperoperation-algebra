@@ -44,7 +44,7 @@ ax.plot(t, G(t), color=BLUE, lw=2.6)
 marks = [(-1, RED, "t = −1, k = −2\nP(even) − P(odd)\nparity, piling-up"),
          (0, GOLD, "t = 0, k = −1\nP(no heads)\nthe union rule's survival"),
          (1, GREEN, "t = 1, k = 0\ntotal = 1, slope = mean\naddition"),
-         (2, INK, "t = 2, k = 1\nE[2^X]\nplain mult-add")]
+         (2, INK, "t = 2, k = 1\nE[2^X]\nplain the circle operation")]
 for tt, c, lab in marks:
     y = float(G(np.array(tt)))
     ax.plot([tt], [y], "o", color=c, ms=9, zorder=5)

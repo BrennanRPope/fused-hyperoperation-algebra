@@ -121,7 +121,7 @@ footer{color:var(--soft);font-size:14px}
 <h2>Tilting a mode puts it on the landscape, always on one parabola</h2>
 <p>Weight a mode's count by t<sup>N</sup> (the standard exponential tilt). Its mean moves, by the rate m′ = m(1 + km). Measure the move in the ruler x = (new mean − μ)/variance. Then tilts compose exactly by the landscape's lens law (a + b + p·ab)/(1 − q·ab) at</p>
 <div class="eq">p = 1 + 2s,&nbsp;&nbsp; q = s(1 + s),&nbsp;&nbsp; s = kμ,&nbsp;&nbsp; so p² − 4q = 1</div>
-<p>Every mode of every dial process lands on that one parabola, inside the two-walled country. Its two walls are the empty mode and the full mode. A rare mode (s near 0) sits at mult-add, the Poisson point. A full fermion mode sits at the union of failures. A half-filled fermion mode is velocity addition with speed limit 2. Bosons climb toward the border parabola (gamma, the clumping limit) and never reach it. The units-free shape is (2F − 1)², F the mode's Fano factor, which is why particles and holes look alike.</p>
+<p>Every mode of every dial process lands on that one parabola, inside the two-walled country. Its two walls are the empty mode and the full mode. A rare mode (s near 0) sits at the circle operation ∘₁ (called mult-add before 1.0), the Poisson point. A full fermion mode sits at the union of failures. A half-filled fermion mode is velocity addition with speed limit 2. Bosons climb toward the border parabola (gamma, the clumping limit) and never reach it. The units-free shape is (2F − 1)², F the mode's Fano factor, which is why particles and holes look alike.</p>
 <p><b>What the bend means here:</b> it is not a free knob. A mode's bend is fixed by its filling kμ, so the bend adds no new processes, and no dial process lives above the border, where slope addition sits. <b>Fractional rungs:</b> we found nothing genuine; a fermion filling can match a rung's shape, but the rung itself is not a lens law (landscape page), so we dropped it.</p>
 </div>
 <div class="panel"><div class="fig2" id="land"></div>
@@ -146,7 +146,7 @@ footer{color:var(--soft);font-size:14px}
 <tr><td>Exists for α &lt; 0 only if −1/α is whole and the spectrum lies in [0, −1/α]; extra kernel condition for α &gt; 0</td><td>Shirai–Takahashi 2003; Maunoury 2016</td></tr>
 <tr><td>Quadratic variance functions μ + kμ²</td><td>Morris 1982</td></tr>
 <tr><td>α as the dial; voids through the dial's logarithm; existence as "wall off the spectrum" next to Sugeno's rule</td><td>Ours: reading</td></tr>
-<tr><td>Tilt law on the landscape: the parabola p² − 4q = 1, shape (2F − 1)²</td><td>Ours: placement (each lens law with real walls is mult-add in other coordinates)</td></tr>
+<tr><td>Tilt law on the landscape: the parabola p² − 4q = 1, shape (2F − 1)²</td><td>Ours: placement (each lens law with real walls is the circle operation in other coordinates)</td></tr>
 </tbody></table>
 </div>
 </div>
@@ -259,7 +259,7 @@ function land(){
   const seg=(a,b,c)=>{let p='';for(let i=0;i<=60;i++){const s=a+(b-a)*i/60,P=1+2*s,Q=s*(1+s);if(Q>q1||P>k1)continue;p+=(p?' L':'M')+X(P).toFixed(1)+' '+Y(Q).toFixed(1);}return '<path d="'+p+'" fill="none" stroke="'+c+'" stroke-width="4"/>';};
   g+=seg(-1,0,'var(--fer)')+seg(0,1.2,'var(--bos)');
   g+=C(X(1),Y(0),6,'var(--poi)')+C(X(-1),Y(0),6,'var(--fer)')+C(X(0),Y(-0.25),6,'var(--fer)')+C(X(0),Y(1),5,'var(--soft)');
-  g+=T(X(1)+8,Y(0)+18,nar?'mult-add':'mult-add (Poisson)')+T(X(-1),Y(0)-12,nar?'full':'full mode: union','middle');
+  g+=T(X(1)+8,Y(0)+18,nar?'the circle operation':'The circle operation (Poisson)')+T(X(-1),Y(0)-12,nar?'full':'full mode: union','middle');
   g+=T(X(0)+10,Y(-0.25)+18,nar?'half-filled':'half-filled: velocity')+T(X(0)+9,Y(1)+4,'slope addition');
   g+=T(X(2.6),Y(1.95),'border','end','var(--soft)')+T(X(k1),Y(0)-8,'k','end')+T(X(0)-8,Y(q1)+10,'q','end');
   sL.innerHTML=g;

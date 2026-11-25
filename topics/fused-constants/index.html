@@ -59,7 +59,7 @@ footer{border-top:1px solid var(--rule)}
 <h1>Each rung's natural constant climbs, and they close in on 1</h1>
 <p class="lede">The test that generalizes is the <b>kiss</b>: the largest base whose infinite tower on the next rung still settles, which is where the rung's curve just touches the diagonal. In fused coordinates the constants run <span class="b">−1, 0, 0.4447, 0.6353, 0.757, 0.832, …</span> and they converge to <span class="r">1</span> (ordinary coordinates: 0, 1, e<sup>1/e</sup>, 1.6353, … → 2).</p>
 <p>Fusing doesn't change them: sliding by one moves every kiss by exactly one. The limit 1 is the far corner of the 2×2 square, the one place where every rung agrees: 1 (k) 1 = 3 on all of them.</p>
-<p>The gap to 1 shrinks by <span class="r">1/ln 4 ≈ 0.721</span> per rung, about 28%. That rate is proved, up to a constant factor, and it comes from the slope of mult-add's power curve at the corner (1, 1).</p>
+<p>The gap to 1 shrinks by <span class="r">1/ln 4 ≈ 0.721</span> per rung, about 28%. That rate is proved, up to a constant factor, and it comes from the slope of the circle operation's power curve at the corner (1, 1).</p>
 <p class="mute">Rungs 1 to 3 are exact. Rung 4 is known in the literature. From rung 5 up, heights between whole numbers need a rule, and I used the standard linear one; the limit 1 is proved for that rule.</p>
 </div>
 <figure class="plate" style="margin:0"><img src="figures/c3_ladder.png" alt="Fused natural constant at each rung, climbing from minus 1 toward 1, with the gap shrinking about 30 percent per rung"><figcaption class="cap">The constants, rung by rung (left), and their distance from 1 on a log scale (right).</figcaption></figure>
@@ -78,7 +78,7 @@ footer{border-top:1px solid var(--rule)}
 <thead><tr><th>Test</th><th>What it gives on rung 3</th><th>Does it climb?</th></tr></thead>
 <tbody>
 <tr><td><b>Slope one at the start</b> (e's own test: bˣ has slope 1 at x = 0)</td><td>e</td><td>No. Above rung 3 the answer depends on the rule for in-between heights. The linear rule gives e again on every rung; the analytic rule doesn't even give e (slope 1.0918 there).</td></tr>
-<tr><td><b>Cut finer and finer</b> (1/n combined n times)</td><td>e, for mult-add</td><td>No. It works because mult-add is associative. The power rung isn't, and a tower of n copies of 1 + 1/n just sinks to 1.</td></tr>
+<tr><td><b>Cut finer and finer</b> (1/n combined n times)</td><td>e, for the circle operation ∘₁ (called mult-add before 1.0)</td><td>No. It works because the circle operation is associative. The power rung isn't, and a tower of n copies of 1 + 1/n just sinks to 1.</td></tr>
 <tr><td><b>The kiss</b> (largest base whose next-rung tower settles: the curve x ↦ c (k) x meets the diagonal with value x and slope 1 at once)</td><td>e<sup>1/e</sup>, kissing at x = e</td><td><b>Yes.</b> It makes sense on every rung, it's exact on the first three, and sliding keeps it. e's slope test turns out to be this same kiss at rung 3, shrunk by e (next section).</td></tr>
 </tbody></table>
 <p>The slide keeps kisses because it moves the curve and the diagonal together: the gap to the diagonal and every slope are unchanged. So <b>each fused constant is the ordinary constant minus 1</b>, and its kiss point is the ordinary one minus 1. Lean proves the whole-number form (<code>slide_fixed</code>, <code>slide_gap</code>, <code>slide_step</code>, <code>slide_kiss</code>).</p>
@@ -91,7 +91,7 @@ footer{border-top:1px solid var(--rule)}
 <thead><tr><th>Rung</th><th>The map</th><th>Ordinary</th><th>Fused</th><th>Kiss at (fused x)</th><th>Status</th></tr></thead>
 <tbody>
 <tr><td class=fit>1</td><td>add: x ↦ b + x</td><td class=fit>0</td><td class='fit b'>−1</td><td>everywhere (adding 0 is the diagonal)</td><td class=mute>exact</td></tr>
-<tr><td class=fit>2</td><td>multiply: x ↦ b·x</td><td class=fit>1</td><td class='fit b'>0</td><td>everywhere (mult-add by 0 is the diagonal)</td><td class=mute>exact</td></tr>
+<tr><td class=fit>2</td><td>multiply: x ↦ b·x</td><td class=fit>1</td><td class='fit b'>0</td><td>everywhere (the circle operation by 0 is the diagonal)</td><td class=mute>exact</td></tr>
 <tr><td class=fit>3</td><td>power: x ↦ bˣ</td><td class=fit>e<sup>1/e</sup> = 1.444667861009766</td><td class='fit b'>0.444667861009766</td><td>x = e − 1 = 1.71828</td><td class=mute>exact</td></tr>
 <tr><td class=fit>4</td><td>tetration: x ↦ b↑↑x</td><td class=fit>1.635324496715</td><td class='fit b'>0.635324496715</td><td>2.0885</td><td class=mute>analytic heights (known)</td></tr>
 <tr><td class=fit>4</td><td>same, linear heights</td><td class=fit>1.640974559105</td><td class='fit b'>0.640974559105</td><td>2.3101</td><td class=mute>linear heights</td></tr>
@@ -113,7 +113,7 @@ footer{border-top:1px solid var(--rule)}
 <div>
 <p>The power rung asks when bˣ = x. Read b as a cube's side and x as its number of dimensions: when can a cube's volume equal its dimension count? That needs b = x<sup>1/x</sup>, and that is largest at <b>x = e</b>, with side <b>e<sup>1/e</sup> = 1.4447</b>. A square of that side has area 2.087, a cube 3.015, both just above their dimension; at dimension e they meet exactly.</p>
 <p>In fused coordinates: extra side 0.4447 beyond the unit corner, and the extra volume equals the extra dimension at e − 1.</p>
-<p><b>e and e<sup>1/e</sup> are one kiss at two scales.</b> Shrink the rung-3 kiss by e and slide it to the corner, and it becomes exactly e<sup>u</sup> − 1 meeting the diagonal at the unit corner with slope 1, which is e's slope test and the inverse of mult-add's own log ln(1+u):</p>
+<p><b>e and e<sup>1/e</sup> are one kiss at two scales.</b> Shrink the rung-3 kiss by e and slide it to the corner, and it becomes exactly e<sup>u</sup> − 1 meeting the diagonal at the unit corner with slope 1, which is e's slope test and the inverse of the circle operation's own log ln(1+u):</p>
 <div class="eq">(e<sup>1/e</sup>)<sup>e(1+u)</sup> / e − 1 = e<sup>u</sup> − 1</div>
 <p>So they aren't two independent constants. That's why the climb starts here.</p>
 <p class="mute">The tower also has a lower edge, e<sup>−e</sup> = 0.0660 (fused −0.934), and a tower of 1/e settles on the omega constant 0.5671. Both check to 40 digits.</p>
@@ -149,7 +149,7 @@ footer{border-top:1px solid var(--rule)}
 
 <section class="band" id="rate"><div class="wrap">
 <h2>How fast they close in: 1/ln 4 per rung</h2>
-<p class="lede">Each rung shrinks the gap 1 − c<sub>k</sub> by a factor of 1/ln 4 = 0.7213, about 28%. The reason is one slope: mult-add's power curve leaves the corner (1, 1) with slope ln 4 = ln(2·2).</p>
+<p class="lede">Each rung shrinks the gap 1 − c<sub>k</sub> by a factor of 1/ln 4 = 0.7213, about 28%. The reason is one slope: the circle operation's power curve leaves the corner (1, 1) with slope ln 4 = ln(2·2).</p>
 <div class="box">
 <p><b>Theorem (linear rule).</b> There are constants A, B &gt; 0 so that for every rung k ≥ 5</p>
 <div class="eq">A · (ln 4)<sup>−k</sup> &nbsp;≤&nbsp; 1 − c<sub>k</sub> &nbsp;≤&nbsp; B · (ln 4)<sup>−k</sup></div>
@@ -158,7 +158,7 @@ footer{border-top:1px solid var(--rule)}
 <div class="two">
 <div>
 <h3>The picture</h3>
-<p>In fused coordinates the inner map from the closed form is y ↦ (1 + c)<sup>y</sup> − 1. For whole y that is <b>c mult-added to itself y times</b>, the same power that built e. At c = 1 the curve 2<sup>y</sup> − 1 runs through both corners of the unit square.</p>
+<p>In fused coordinates the inner map from the closed form is y ↦ (1 + c)<sup>y</sup> − 1. For whole y that is <b>c combined by the circle operation with itself y times</b>, the same power that built e. At c = 1 the curve 2<sup>y</sup> − 1 runs through both corners of the unit square.</p>
 <ul>
 <li><b>At (0, 0):</b> slope ln 2 = 0.69, so steps pull in.</li>
 <li><b>At (1, 1):</b> slope 2 ln 2 = ln 4 = 1.39, so steps push out.</li>
@@ -202,7 +202,7 @@ footer{border-top:1px solid var(--rule)}
 <h2>What Lean proved</h2>
 <p><code>lean/FusedConstants.lean</code>: core Lean 4 only, no mathlib, no <code>sorry</code>, only Lean's standard axioms. Checked with Lean 4.37.0-rc1.</p>
 <ul>
-<li><code>mult_add</code>: (1+a)(1+b) − 1 = a + b + ab, so fused rung 2 is mult-add.</li>
+<li><code>mult_add</code>: (1+a)(1+b) − 1 = a + b + ab, so fused rung 2 is the circle operation.</li>
 <li><code>slide_fixed</code>, <code>slide_gap</code>, <code>slide_step</code>, <code>slide_kiss</code>: sliding by one moves fixed points by exactly one and keeps every gap and every step, so a kiss survives the slide.</li>
 <li><code>rung1_base0</code>, <code>rung2_base1</code>: adding 0 and multiplying by 1 are the diagonal, so the first two constants are exact.</li>
 <li><code>all_rungs_two_two</code>, <code>fused_one_one</code>: 2 (k) 2 = 4 and fused 1 (k) 1 = 3 on every rung.</li>
@@ -224,7 +224,7 @@ footer{border-top:1px solid var(--rule)}
 <li><b>Known:</b> e<sup>1/e</sup> and e<sup>−e</sup> as the edges where the infinite power tower settles (Euler and Eisenstein, 18th and 19th centuries); the omega constant; the rung-4 base 1.6353… for tetration's parabolic fixed point, posted on the <a href="https://tetrationforum.org/showthread.php?tid=668">Tetration Forum</a> (not peer reviewed; my independent check agrees to 10 digits). The linear rule for in-between heights and Robbins' natural super-logarithm are standard. 2 + 2 = 2·2 = 2² = 4 on every rung is classical.</li>
 <li><b>Elementary but not found published:</b> that under the linear rule the critical bases climb to 2, with the closed form on the second unit of height. It may well be folklore on tetration forums.</li>
 <li><b>The rate:</b> that a critical parameter closes in geometrically, at a rate set by the slope at a repelling fixed point, is standard dynamics. I haven't found this particular rate, 1/ln 4 for the critical bases under the linear rule, published anywhere. It is elementary once the closed form is in hand, so it may be folklore. It belongs to the linear rule: the ln 4 comes from that rule's second unit of height, and I haven't checked whether the analytic rule closes in at the same rate.</li>
-<li><b>New here:</b> the fused reading (every constant shifted by exactly 1), e and e<sup>1/e</sup> drawn as one kiss at two scales on the mult-add corner, the cube picture, and the core Lean skeleton.</li>
+<li><b>New here:</b> the fused reading (every constant shifted by exactly 1), e and e<sup>1/e</sup> drawn as one kiss at two scales on the circle-operation corner, the cube picture, and the core Lean skeleton.</li>
 </ul>
 </div></section>
 

@@ -40,9 +40,9 @@ sections = [
   body=f"""<p>Measure the angle for real bound states and the Coulomb ones line up on one value. Hydrogen's 1s state gives θ = {r['hydrogen_theta']:.6e}, against α = {alpha:.6e}: they agree to 8 parts per million. Positronium and muonium, with very different masses, give the same angle. He⁺ gives 2α. To leading order θ = √(2B/μ), and a Coulomb binding energy is ½μ(Zα)², so θ = Zα for every hydrogen-like system, whatever its masses.</p>
 <p>Taking sin θ = α exactly, the compact two-body Dirac form, predicts hydrogen's ionisation energy as {r['B_pred_eV']:.6f} eV against the measured 13.598434 eV. The difference, 3.4 × 10⁻⁵ eV, is the 1s Lamb shift (a quantum-electrodynamics correction) to within 2%.</p>
 <p>Chemistry sits much nearer the border: an H₂ bond has θ ≈ 1.4 × 10⁻⁴, so burning hydrogen loses only 1.8 × 10⁻¹⁰ of the water's mass. Lavoisier's balances, good to about one part in ten thousand, could never see it. That is why conservation of mass is exact for chemists and approximate for physicists: chemistry lives within a hair of the border.</p>"""),
- dict(id="charge", nav="Charge", h="Charge is the k = 0 law, and its phase is mult-add on the circle",
-  body="""<p>Charges add with no corner: the k = 0 line, mult-add's own identity line. Their exponentials multiply. The phase e<sup>iQφ</sup> of a charge Q, or the fugacity z<sup>Q</sup> in a grand ensemble, multiplies as charges add, so its excess mult-adds: e<sup>i(Q₁+Q₂)φ</sup> − 1 = (e<sup>iQ₁φ</sup> − 1) ✳ (e<sup>iQ₂φ</sup> − 1). On the unit circle that is rotation, the turning country again.</p>
-<p>Every additive conservation law in chemistry has this shape: the conserved quantity is the log of a lift whose excess mult-adds. A balanced redox equation such as MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O balances atoms and charge (+17 on each side) by plain addition.</p>"""),
+ dict(id="charge", nav="Charge", h="Charge is the k = 0 law, and its phase is the circle operation on the circle",
+  body="""<p>Charges add with no corner: the k = 0 line, the circle operation's own identity line. Their exponentials multiply. The phase e<sup>iQφ</sup> of a charge Q, or the fugacity z<sup>Q</sup> in a grand ensemble, multiplies as charges add, so its excess combines by the circle operation: e<sup>i(Q₁+Q₂)φ</sup> − 1 = (e<sup>iQ₁φ</sup> − 1) ✳ (e<sup>iQ₂φ</sup> − 1). On the unit circle that is rotation, the turning country again.</p>
+<p>Every additive conservation law in chemistry has this shape: the conserved quantity is the log of a lift whose excess combines by the circle operation. A balanced redox equation such as MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O balances atoms and charge (+17 on each side) by plain addition.</p>"""),
 ]
 claims = [
  ("Invariant mass is a law of cosines, M² = m₁² + m₂² + 2m₁m₂c", "known", "500 random four-vector pairs"),
@@ -52,11 +52,11 @@ claims = [
  ("sin θ = α gives hydrogen's ionisation energy to 2.5 ppm; the rest is the Lamb shift", "known", "mpmath, CODATA 2018"),
  ("Chemical bonds sit at θ ~ 10⁻⁴, so chemistry is within a hair of the border", "tidy reading", "H₂ and HCl bond energies"),
  ("Burning hydrogen loses 1.8 × 10⁻¹⁰ of the mass", "known", "ΔH = −571.66 kJ per 2 mol"),
- ("Charge phases mult-add on the circle; charges add at k = 0", "tidy reading", "300 cases; Lean <code>fugacity_multAdd</code>, <code>circle_closed</code>"),
+ ("Charge phases combine by the circle operation on the circle; charges add at k = 0", "tidy reading", "300 cases; Lean <code>fugacity_circ</code>, <code>circle_closed</code>"),
 ]
 lean = [("lavoisier","c = 1 gives (m₁ + m₂)² exactly"),("deficit","(m₁ + m₂)² − M² = 2m₁m₂(1 − c)"),("binding_exact","B(2(m₁+m₂) − B) = 2m₁m₂(1 − c)"),
  ("bound_lighter","c &lt; 1 and positive masses: the whole is lighter"),("free_heavier","c &gt; 1: the pair is heavier"),("cosine_extra","the extra piece beyond m₁² + m₂² is 2c·m₁m₂"),
- ("small_angle","c = 1 − θ²/2 gives deficit m₁m₂θ²"),("fugacity_mul, fugacity_multAdd","z<sup>Q</sup> multiplies, its excess mult-adds"),("neutral_identity","charge 0 is mult-add's identity"),
+ ("small_angle","c = 1 − θ²/2 gives deficit m₁m₂θ²"),("fugacity_mul, fugacity_circ","z<sup>Q</sup> multiplies, its excess combines by the circle operation"),("neutral_identity","charge 0 is the circle operation's identity"),
  ("circle_closed","products of points on the unit circle stay on it")]
 n = build("index.html", title="Conservation of mass and charge", tile=("2","M","Conservation"),
  h1="Conservation of mass is the border of a law of cosines, and binding is a turn by Zα",

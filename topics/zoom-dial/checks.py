@@ -1,4 +1,4 @@
-"""Zoom dial (FHA 1.0 checklist item 2): can mult-add take a zoom ratio per piece,
+"""Zoom dial (FHA 1.0 checklist item 2): can the circle operation take a zoom ratio per piece,
 with dimension coming out as an output?
 
 Proposal tested: a piece shrunk by zoom r carries weight r^s (s a free exponent).
@@ -52,7 +52,7 @@ for name, rs in SETS.items():
     d = moran(rs); w = [r**d for r in rs]
     check(f"3 {name}: natural weights r^d sum to 1", abs(sum(w) - 1) < 1e-9)
 
-# 4. zoom as twist: scaling dial values by w = r^d turns mult-add into the twisted rule at k = w
+# 4. zoom as twist: scaling dial values by w = r^d turns the circle operation into the twisted rule at k = w
 for r, d in [(0.25, 0.5), (1/3, np.log(2)/np.log(3)), (0.5, 1.0)]:
     w = r**d; t, u = 0.37, 1.9
     lhs = (w*t) + (w*u) + (w*t)*(w*u); rhs = w*(t + u + w*t*u)

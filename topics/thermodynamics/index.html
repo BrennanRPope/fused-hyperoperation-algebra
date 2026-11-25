@@ -59,8 +59,8 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <body>
 
 <section class="band"><div class="wrap">
-<h1>Thermodynamics runs on the mult-add square</h1>
-<p class="lede">Almost every way thermodynamics combines two things is mult-add with a weight: independent systems at k = +1, engines in series at k = −1, entropy and free energy at k = 0, Ising bonds in series at the parity weight −2. Each is known physics. Nothing here beats the solitons as a discovery. The most promising door is Lee–Yang: a proved "all zeros on a circle" theorem whose proof is built from mult-add squares.</p>
+<h1>Thermodynamics runs on the circle-operation square</h1>
+<p class="lede">Almost every way thermodynamics combines two things is the circle operation ∘ₖ (called mult-add before 1.0) with a weight: independent systems at k = +1, engines in series at k = −1, entropy and free energy at k = 0, Ising bonds in series at the parity weight −2. Each is known physics. Nothing here beats the solitons as a discovery. The most promising door is Lee–Yang: a proved "all zeros on a circle" theorem whose proof is built from circle-operation squares.</p>
 <div class="nums">
 <div><big>30</big>laws tested, every one placed on the map</div>
 <div><big>55 / 55</big>Python checks pass, plus 25 / 25 for the Lean identities</div>
@@ -71,7 +71,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Where thermodynamics lands on the landscape</h2>
-<p>Each point (k, q) is the law (a + b + k·ab)/(1 − q·ab): k is how full the corner cell ab is, q is how much the cube's next layer bends. Grey rings are the laws from earlier pages. Red stations are thermodynamics. Most of it lies on the straight line q = 0, where mult-add lives. It also reaches the velocity point, the border parabola and the turning country above it.</p>
+<p>Each point (k, q) is the law (a + b + k·ab)/(1 − q·ab): k is how full the corner cell ab is, q is how much the cube's next layer bends. Grey rings are the laws from earlier pages. Red stations are thermodynamics. Most of it lies on the straight line q = 0, where the circle operation lives. It also reaches the velocity point, the border parabola and the turning country above it.</p>
 <div class="plate">
 <div class="fig"><svg id="map" role="img" aria-label="The k–q plane with the parabola k² = 4q splitting it into a two-walled country below and a turning country above, with thermodynamics laws pinned as numbered red dots"></svg></div>
 <ol class="legend" id="legend"></ol>
@@ -81,17 +81,17 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <section class="band"><div class="wrap">
 <h2>The square: what the corner means in heat</h2>
 <div class="shot"><img src="figures/f1_three_squares.png" alt="Three squares. Left: a square of side 1 + z_A by 1 + z_B; the unit cell is both systems in their ground states, the side cells are one system excited, the red corner z_A·z_B is both excited. Middle: a unit square of heat; a red strip η₁ is stage one's work, a strip below is stage two's work, and the remaining box (1 − η₁)(1 − η₂) is waste. Right: a unit square of cold heat grows by u₁ of work, then the whole grows by a strip u₂(1 + u₁)."></div>
-<p class="cap">The geometry is derived, not imposed: count the joint states (left), follow the heat (middle and right), and the mult-add square falls out.</p>
+<p class="cap">The geometry is derived, not imposed: count the joint states (left), follow the heat (middle and right), and the circle-operation square falls out.</p>
 <div class="two">
 <div>
 <h3>Partition functions (k = +1)</h3>
 <p>Measure energies from each ground state, so Z = 1 + z with z the excited weight. For independent systems Z_AB = Z_A·Z_B, so z_AB = z_A ⊞ z_B. The corner z_A·z_B is exactly "both excited". Free energy −kT ln Z is the log of the lift, so it adds, and so does heat capacity. <span class="tag k">known</span></p>
 <h3>Third law: the identity and the wall</h3>
-<p>As T → 0 every excess z goes to 0, the mult-add identity, and 0 ⊞ 0 = 0. A degenerate ground state leaves g − 1, which composes as (g₁g₂ − 1) = (g₁ − 1) ⊞ (g₂ − 1). Pauling's ice count W = (3/2)ᴺ is a climb: W − 1 = (½)^(⊞N). Absolute zero is the wall −1. A finite run of cooling steps, each keeping some heat, never lands on it (Lean: <code>unattainable</code>). <span class="tag k">known, restated</span> The cooling-step model is a simplification of Nernst's real argument.</p>
+<p>As T → 0 every excess z goes to 0, the circle-operation identity, and 0 ⊞ 0 = 0. A degenerate ground state leaves g − 1, which composes as (g₁g₂ − 1) = (g₁ − 1) ⊞ (g₂ − 1). Pauling's ice count W = (3/2)ᴺ is a climb: W − 1 = (½)^(⊞N). Absolute zero is the wall −1. A finite run of cooling steps, each keeping some heat, never lands on it (Lean: <code>unattainable</code>). <span class="tag k">known, restated</span> The cooling-step model is a simplification of Nernst's real argument.</p>
 </div>
 <div>
 <h3>Engines and fridges are one square read two ways</h3>
-<p>Run a second engine on the first engine's waste heat. The waste box multiplies, so η = η₁ ⊞₋₁ η₂, the failure-union rule. Carnot fits exactly, η(T_h,T_c) = η(T_h,T_m) ⊞₋₁ η(T_m,T_c), and a perfect stage is the wall. Cascade two fridges and the work per unit of cold heat composes at k = +1. Running an engine backwards is the mult-add inverse: u = η/(1 − η) = inv(−η). <span class="tag k">known bookkeeping</span> <span class="tag s">tidy reading</span></p>
+<p>Run a second engine on the first engine's waste heat. The waste box multiplies, so η = η₁ ⊞₋₁ η₂, the failure-union rule. Carnot fits exactly, η(T_h,T_c) = η(T_h,T_m) ⊞₋₁ η(T_m,T_c), and a perfect stage is the wall. Cascade two fridges and the work per unit of cold heat composes at k = +1. Running an engine backwards is the circle inverse: u = η/(1 − η) = inv(−η). <span class="tag k">known bookkeeping</span> <span class="tag s">tidy reading</span></p>
 <p>Curzon–Ahlborn's efficiency at maximum power, 1 − √(T_c/T_h), is half a step of the k = −1 climb: two of them make one Carnot step, η_C = η_CA ⊞₋₁ η_CA. The Otto cycle composes the same way through its compression ratios. And the second law composes: stages under their Carnot bounds give a cascade under the overall bound (Lean: <code>second_law_composes</code>).</p>
 </div>
 </div>
@@ -101,7 +101,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <h2>Quantum statistics: fermions are the cube, bosons are the way back</h2>
 <div class="shot"><img src="figures/f2_fermion_cube_boson_stairs.png" alt="Left: a cube whose eight corners are the eight ways to fill three fermion modes, from all empty to all full, shaded by how many are full. Right: a staircase of shrinking squares 1, z, z², z³ and so on, summing to 1/(1 − z)."></div>
 <div class="two">
-<p>Pauli lets each fermion mode be empty or full, so the many-fermion states are the corners of the cube, and the grand partition function is the corner expansion: Ξ = (1 + z₁)⋯(1 + zₙ) = 1 + (z₁ ⊞ ⋯ ⊞ zₙ). A boson mode holds any number, Ξ_B = 1/(1 − z), and its excess z/(1 − z) is the mult-add inverse of −z. So Ξ_B(z)·Ξ_F(−z) = 1: a boson is a fermion of weight −z run backwards. <span class="tag k">known</span> (the fermion–boson, or Koszul, duality; checked for 4 modes)</p>
+<p>Pauli lets each fermion mode be empty or full, so the many-fermion states are the corners of the cube, and the grand partition function is the corner expansion: Ξ = (1 + z₁)⋯(1 + zₙ) = 1 + (z₁ ⊞ ⋯ ⊞ zₙ). A boson mode holds any number, Ξ_B = 1/(1 − z), and its excess z/(1 − z) is the circle inverse of −z. So Ξ_B(z)·Ξ_F(−z) = 1: a boson is a fermion of weight −z run backwards. <span class="tag k">known</span> (the fermion–boson, or Koszul, duality; checked for 4 modes)</p>
 <p>The Fermi function lives between two walls. With t = 1 − 2n = tanh(x/2), adding energies adds t like velocities, (t₁ + t₂)/(1 + t₁t₂), with walls at n = 0 and n = 1. For bosons 1/(1 + 2n) is the same tanh, so 1 + 2n lives outside the walls. <span class="tag k">known</span></p>
 </div>
 <div class="shot"><img src="figures/f3_fermi_walls.png" alt="Left: the curve t = tanh(x/2) running from the lower wall t = −1, labelled full level, to the upper wall t = 1, labelled empty level, through the identity t = 0. Right: a segment from −1 to 1 with T = 0⁻ at the left end, negative temperatures, T = ±∞ in the middle, positive temperatures, and T = 0⁺ at the right end."></div>
@@ -110,7 +110,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Entropy families: the weight is the entropy index</h2>
-<p>Tsallis entropy composes as S_AB = S_A ⊞ₖ S_B with k = 1 − q, and Rényi entropy is the log of the lift, so it adds. This weighted mult-add already has a name in that literature: the <b>q-sum</b>, x ⊕_q y = x + y + (1 − q)xy, with its q-logarithm and q-exponential (Nivanen, Le Méhauté and Wang 2003; Borges 2004). So the whole k-line is Tsallis' q-algebra. <span class="tag k">known</span></p>
+<p>Tsallis entropy composes as S_AB = S_A ⊞ₖ S_B with k = 1 − q, and Rényi entropy is the log of the lift, so it adds. This circle operation with dial k already has a name in that literature: the <b>q-sum</b>, x ⊕_q y = x + y + (1 − q)xy, with its q-logarithm and q-exponential (Nivanen, Le Méhauté and Wang 2003; Borges 2004). So the whole k-line is Tsallis' q-algebra. <span class="tag k">known</span></p>
 <p>Kaniadakis' relativistic κ-entropy uses the κ-sum x√(1 + κ²y²) + y√(1 + κ²x²), which is sinh addition. It has no corner term, and its next layer bends upward: it osculates the map at (0, κ²/2), in the turning country, the mirror of sine addition at (0, −½). <span class="tag k">known law</span> <span class="tag s">placement computed here</span></p>
 </div></section>
 
@@ -125,12 +125,12 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Lee–Yang: the most promising door</h2>
-<div class="shot"><img src="figures/f5_lee_yang.png" alt="Left: zeros of the partition function in the complex field variable. Zeros of 25 random ferromagnets all sit on the unit circle; zeros of antiferromagnets sit on the real axis off the circle. Right: three two-by-two squares with cells 1, a·zᵢ, a·zⱼ and zᵢzⱼ, for a = 1 (plain mult-add square), a = 0.45, and a = 0 (only the diagonal cells)."></div>
+<div class="shot"><img src="figures/f5_lee_yang.png" alt="Left: zeros of the partition function in the complex field variable. Zeros of 25 random ferromagnets all sit on the unit circle; zeros of antiferromagnets sit on the real axis off the circle. Right: three two-by-two squares with cells 1, a·zᵢ, a·zⱼ and zᵢzⱼ, for a = 1 (the plain circle-operation square), a = 0.45, and a = 0 (only the diagonal cells)."></div>
 <div class="two">
-<p>For any ferromagnetic Ising model, every zero of the partition function in the field variable z lies on the unit circle (Lee and Yang 1952). It is a proved "zeros on a line" theorem, often held up as a model for the Riemann hypothesis. Each bond contributes 1 + a·zᵢ + a·zⱼ + zᵢzⱼ with a = e^(−2βJ). At infinite temperature (a = 1) that is the plain mult-add square (1 + zᵢ)(1 + zⱼ). Cooling shrinks the edge cells, and at T = 0 only the diagonal is left. Asano's proof (1970) glues these squares spin by spin, keeping only the cube's all-0 and all-1 corners. Checked here against brute force on 15 random graphs, and the circle on 40.</p>
-<p>A three-spin chain shows it in miniature: Z = 1 + (a ⊞ b)z + (a ⊞ b)z² + z³ = (1 + z)(1 + (m − 1)z + z²) with m = a ⊞ b. Ferromagnetic bonds keep 0 ≤ a ⊞ b ≤ 3, so the quadratic's zeros are on the circle (all proved in Lean: <code>chain3_multAdd</code>, <code>chain3_disc</code>). Read as a law whose walls are those zeros, a ferromagnet sits in the turning country, and infinite temperature touches the border at (2, 1), the Euler-characteristic cusp. <span class="tag k">theorem known</span> <span class="tag s">mult-add reading new to this project</span></p>
+<p>For any ferromagnetic Ising model, every zero of the partition function in the field variable z lies on the unit circle (Lee and Yang 1952). It is a proved "zeros on a line" theorem, often held up as a model for the Riemann hypothesis. Each bond contributes 1 + a·zᵢ + a·zⱼ + zᵢzⱼ with a = e^(−2βJ). At infinite temperature (a = 1) that is the plain circle-operation square (1 + zᵢ)(1 + zⱼ). Cooling shrinks the edge cells, and at T = 0 only the diagonal is left. Asano's proof (1970) glues these squares spin by spin, keeping only the cube's all-0 and all-1 corners. Checked here against brute force on 15 random graphs, and the circle on 40.</p>
+<p>A three-spin chain shows it in miniature: Z = 1 + (a ⊞ b)z + (a ⊞ b)z² + z³ = (1 + z)(1 + (m − 1)z + z²) with m = a ⊞ b. Ferromagnetic bonds keep 0 ≤ a ⊞ b ≤ 3, so the quadratic's zeros are on the circle (all proved in Lean: <code>chain3_circ</code>, <code>chain3_disc</code>). Read as a law whose walls are those zeros, a ferromagnet sits in the turning country, and infinite temperature touches the border at (2, 1), the Euler-characteristic cusp. <span class="tag k">theorem known</span> <span class="tag s">circle-operation reading new to this project</span></p>
 </div>
-<div class="lead"><b>Lead check.</b> Nothing here is a discovery on the level of the solitons. Lee–Yang is the door worth opening next: rewrite Asano's contraction as an operation on mult-add squares and prove the general circle theorem in the library. That needs complex numbers, which core Lean lacks, but Gaussian rationals over Rat would do.</div>
+<div class="lead"><b>Lead check.</b> Nothing here is a discovery on the level of the solitons. Lee–Yang is the door worth opening next: rewrite Asano's contraction as an operation on circle-operation squares and prove the general circle theorem in the library. That needs complex numbers, which core Lean lacks, but Gaussian rationals over Rat would do.</div>
 </div></section>
 
 <section class="band"><div class="wrap">
@@ -146,12 +146,12 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h2>Wick rotation is a change of units by i</h2>
-<p>Read a law in units i·a and it moves from (k, q) to (i·k, −q). On the k = 0 axis that flips q: thermal tanh addition at (0, −1), with two walls, becomes quantum tan addition at (0, +1), a turn. Imaginary time trades saturation for oscillation, and the map shows it as a reflection through the straight line. <span class="tag k">known</span> (Wick 1954) <span class="tag s">placement restated</span> Fluctuation theorems sit at k = +1 too: for independent processes ⟨e^(−βW)⟩ − 1 mult-adds (Jarzynski 1997), and coupled reactions multiply equilibrium constants (Hess).</p>
+<p>Read a law in units i·a and it moves from (k, q) to (i·k, −q). On the k = 0 axis that flips q: thermal tanh addition at (0, −1), with two walls, becomes quantum tan addition at (0, +1), a turn. Imaginary time trades saturation for oscillation, and the map shows it as a reflection through the straight line. <span class="tag k">known</span> (Wick 1954) <span class="tag s">placement restated</span> Fluctuation theorems sit at k = +1 too: for independent processes ⟨e^(−βW)⟩ − 1 combines by the circle operation (Jarzynski 1997), and coupled reactions multiply equilibrium constants (Hess).</p>
 </div></section>
 
 <section class="band"><div class="wrap">
 <h2>Every law, its place and its status</h2>
-<p class="mute">Status: <span class="tag k">known</span> standard physics restated; <span class="tag s">tidy reading</span> a known fact read in mult-add terms; <span class="tag n">new here</span> new to the literature as far as I found. The Lean column names theorems in <code>lean/ThermoFused.lean</code>.</p>
+<p class="mute">Status: <span class="tag k">known</span> standard physics restated; <span class="tag s">tidy reading</span> a known fact read in circle-operation terms; <span class="tag n">new here</span> new to the literature as far as I found. The Lean column names theorems in <code>lean/ThermoFused.lean</code>.</p>
 <div class="scroll"><table class="stack">
 <thead><tr><th>Law</th><th>Form</th><th>(k, q)</th><th>Status</th><th>Lean</th></tr></thead>
 <tbody id="rows"></tbody>
@@ -163,7 +163,7 @@ td code,p code{font-size:13px;overflow-wrap:anywhere}
 <h2>Proofs and files</h2>
 <p>All in <code>math-theory/thermodynamics/</code> in the project folder.</p>
 <ul>
-<li><code>lean/ThermoFused.lean</code>: 68 theorems, core Lean 4.37.0-rc1, no <code>sorry</code>, phrased through the library's mult-add (<code>import FusedAlgebra.Base</code>). <b>Not compiled yet:</b> Lean isn't installed where this was written. The shared library's build can compile it as a new topic. Real exp, log and square roots enter as abstract quantities with the one property each proof needs.</li>
+<li><code>lean/ThermoFused.lean</code>: 68 theorems, core Lean 4.37.0-rc1, no <code>sorry</code>, phrased through the library's the circle operation (<code>import FusedAlgebra.Base</code>). <b>Not compiled yet:</b> Lean isn't installed where this was written. The shared library's build can compile it as a new topic. Real exp, log and square roots enter as abstract quantities with the one property each proof needs.</li>
 <li><code>checks.py</code>: 55 checks pass, exact sympy algebra plus numerics: brute-force state sums, ray-by-ray bounce sums, transfer-matrix decimation, Lee–Yang zeros and Asano gluing (<code>checks_output.txt</code>).</li>
 <li><code>lean_identities.py</code>: every ring and field identity in the Lean file, checked symbolically: 25 / 25.</li>
 <li><code>figures.py</code>, <code>figures/</code>: the pictures.</li>
@@ -239,10 +239,10 @@ const R=[
  ["Ising bonds in series","p₁ ⊞₋₂ p₂","(−2, 0)","known","ising_series, decimation_num/den"],
  ["Ising bonds in parallel","velocity addition of tanh K","(0, −1)","known","fermi_velocity_num/den"],
  ["Kramers–Wannier duality","the lens M(t); fixed point √2 − 1 = T_c","lens","known","lens_vel, lens_involution, lens_fixed_point"],
- ["Lee–Yang, three-spin chain","coefficients a ⊞ b, zeros on the circle","(2a, 1)","theorem known, reading new to this project","chain3_multAdd, chain3_disc, two_spin_no_real_zero"],
+ ["Lee–Yang, three-spin chain","coefficients a ⊞ b, zeros on the circle","(2a, 1)","theorem known, reading new to this project","chain3_circ, chain3_disc, two_spin_no_real_zero"],
  ["Stokes' pile, gray plates","(a + b − 2ab)/(1 − ab)","(−2, 1)","placement new here","stokes_additive, shields, stokes_double_wall"],
  ["Wick rotation","units by i: (k, q) → (ik, −q)","(0, ∓1)","known, restated","wick_num, wick_den"],
- ["Jarzynski equality","⟨e^(−βW)⟩ − 1 mult-adds","(1, 0)","known","jarzynski_composes"],
+ ["Jarzynski equality","⟨e^(−βW)⟩ − 1 combines by the circle operation","(1, 0)","known","jarzynski_composes"],
  ["Hess's law","K multiplies, ΔG adds","(1, 0)","known","hess"],
  ["Doppler temperature","T ratio = lens of boosts","(0, −1)","known","doppler_is_lens"],
  ["Heat capacity from Var E","variances add","(0, 0)","known","Python only"],

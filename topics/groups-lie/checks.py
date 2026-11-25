@@ -1,4 +1,4 @@
-# Group theory and Lie groups through mult-add: every claim on the page, checked.
+# Group theory and Lie groups through the circle operation: every claim on the page, checked.
 import sympy as sp, math, random, itertools
 import numpy as np
 from mpmath import mp, quad, mpf, inf, log as mlog, atan as matan, sqrt as msqrt
@@ -80,7 +80,7 @@ for (pv, qv) in [(1,0), (0,-1), (0,1), (2,1), (1,-2), (-0.7,0.3), (0.5,0.0625), 
         Fv = (av+bv+pv*av*bv)/(1-qv*av*bv)
         if abs(Lclosed(pv,qv,Fv) - Lclosed(pv,qv,av) - Lclosed(pv,qv,bv)) > 1e-20: good = False
 check("L(F(a,b)) = L(a) + L(b): the logarithm turns every landscape law into addition", good)
-check("named rulers: mult-add log(1+x), tanh law artanh x, tan law arctan x",
+check("named rulers: circle-operation log(1+x), tanh law artanh x, tan law arctan x",
       abs(Lclosed(1,0,mpf('0.3'))-mlog(mpf('1.3')))<1e-25 and abs(Lclosed(0,-1,mpf('0.3'))-mp.atanh(mpf('0.3')))<1e-25 and abs(Lclosed(0,1,mpf('0.3'))-matan(mpf('0.3')))<1e-25)
 check("border (p²=4q): L = x/(1+px/2), and F is plain addition in L",
       z(sp.diff(x/(1+p*x/2), x) - 1/V(p, p**2/4, x)) and
@@ -91,7 +91,7 @@ check("elliptic period: ∫ over all reals of dx/(1+px+qx²) = 2π/√(4q-p²)  
           for pv, qv in [(0,1), (1,1), (-2,3)]))
 check("real walls exactly when p² - 4q > 0 (roots of 1+px+qx²)",
       all(((pv*pv-4*qv) > 0) == all(abs(sp.im(r)) < 1e-12 for r in sp.Poly(qv*x**2+pv*x+1, x).nroots()) for pv, qv in [(1,0.1),(0,-1),(0,1),(2,1.5),(3,2),(-1,2)]))
-check("line case: L runs to ±∞ at the two walls (mult-add: wall -1)", sp.limit(sp.log(1+x), x, -1, '+') == -sp.oo)
+check("line case: L runs to ±∞ at the two walls (the circle operation: wall -1)", sp.limit(sp.log(1+x), x, -1, '+') == -sp.oo)
 check("circle case: the point ∞ belongs to the group; tan law F(a, ∞) = -1/a",
       sp.limit(F(0,1,a,x), x, sp.oo) == -1/a)
 
@@ -121,7 +121,7 @@ check("discriminant unchanged: (p+2c)² - 4(q+pc+c²) = p² - 4q", z(pp**2-4*qq-
 phi = lambda s: s/(1 - c*s)
 check("conjugation: F_{p+2c, q+pc+c²}(φa, φb) = φ(F_{p,q}(a,b)), φ(x) = x/(1-cx)",
       z(sp.simplify(F(pp,qq,phi(a),phi(b)) - phi(F(p,q,a,b)))))
-check("mult-add (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)",
+check("The circle operation (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)",
       (pp.subs({p:1,q:0,c:sp.Rational(-1,2)}), qq.subs({p:1,q:0,c:sp.Rational(-1,2)})) == (0, sp.Rational(-1,4))
       and z(F(0,sp.Rational(-1,4),2*a,2*b) - 2*F(0,-1,a,b)))
 check("parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same parabola p²-4q = 4",
@@ -202,7 +202,7 @@ for _ in range(5):
     A = sp.Matrix(2, 2, [random.randint(-5,5) for _ in range(4)])
     B = sp.Matrix(2, 2, [random.randint(-5,5) for _ in range(4)])
     good = good and (ma(A,B) - ma(B,A) == A*B - B*A) and (I2 + ma(A,B) == (I2+A)*(I2+B))
-check("matrix mult-add: lift (I+A)(I+B) = I + A✳B, and A✳B - B✳A = AB - BA exactly", good)
+check("the matrix circle operation: lift (I+A)(I+B) = I + A✳B, and A✳B - B✳A = AB - BA exactly", good)
 A = np.array([[0.3,-1.2],[0.7,0.4]]); B = np.array([[-0.5,0.9],[1.1,0.2]]); E = np.eye(2)
 errs = []
 for tt in [1e-2, 5e-3, 2.5e-3]:
@@ -211,7 +211,7 @@ for tt in [1e-2, 5e-3, 2.5e-3]:
 check("group commutator (1+tA)(1+tB)(1+tA)⁻¹(1+tB)⁻¹ - 1 = t²[A,B] + O(t³)", max(errs) < 10 and errs[0]/errs[-1] < 1.5)
 check("landscape matrices commute (both are I + sX), so the commutator vanishes on the landscape",
       sp.simplify(mob(a)*mob(b) - mob(b)*mob(a)) == sp.zeros(2))
-# group algebra: g ↦ g - 1 turns products into mult-add (permutation matrices of S3)
+# group algebra: g ↦ g - 1 turns products into the circle operation (permutation matrices of S3)
 perm = lambda s: sp.Matrix(3, 3, lambda i, j: 1 if s[j] == i else 0)
 gs = [perm(s) for s in itertools.permutations(range(3))]
 I3 = sp.eye(3)

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mult-add toward Einstein</title>
+<title>The circle operation toward Einstein</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE a careful research report: what is derived, what is put in, where each route stops
-   IDEA a transit route map: three lines leave "mult-add" for "Einstein's equations"
+   IDEA a transit route map: three lines leave "the circle operation" for "Einstein's equations"
    PICTURE the route map, each line ending at its terminus or a stop marker
    COLOUR atlas plate: deep sea ground in both themes, sky blue lines, white text, signal pink for stops
    TYPE Hanken Grotesk 300 large titles, Hanken Grotesk text
@@ -47,11 +47,11 @@ footer{border-top:1px solid var(--rule)}
 <header class="band top"><div class="wrap hero">
  <div>
   <p class="mute">Fused Hyperoperation Algebra · November 25, 2026</p>
-  <h1>Mult-add gets you to the door of general relativity, not through it</h1>
-  <p class="lede">Mult-add gives the local rules of motion: the dial q sets the speed of light and the signature, and twist = curvature × area. Einstein's equations also need a rule for how matter bends spacetime. Three routes show exactly where that rule has to come in.</p>
+  <h1>The circle operation gets you to the door of general relativity, not through it</h1>
+  <p class="lede">The circle operation ∘₁ (called mult-add before 1.0) gives the local rules of motion: the dial q sets the speed of light and the signature, and twist = curvature × area. Einstein's equations also need a rule for how matter bends spacetime. Three routes show exactly where that rule has to come in.</p>
   <p class="mute">44 of 44 checks pass (sympy, mpmath, scipy). 28 Lean theorems merged; the shared library builds clean at 2,715.</p>
  </div>
- <div class="fig" id="mapfig" role="img" aria-label="Route map: three routes from mult-add toward Einstein's equations. Route a stops at half the light bending. Route c reaches black holes and cosmology and stops at gravitational waves. Route b reaches Einstein's equations once a metric and a second-order law are added."><svg id="map"></svg></div>
+ <div class="fig" id="mapfig" role="img" aria-label="Route map: three routes from the circle operation toward Einstein's equations. Route a stops at half the light bending. Route c reaches black holes and cosmology and stops at gravitational waves. Route b reaches Einstein's equations once a metric and a second-order law are added."><svg id="map"></svg></div>
 </div></header>
 
 <nav class="nav"><a href="#route-a">Route a: dial as a field</a><a href="#route-c">Route c: the river</a><a href="#route-b">Route b: holonomy</a><a href="#leads">Leads</a><a href="#files">Files</a></nav>
@@ -76,10 +76,10 @@ footer{border-top:1px solid var(--rule)}
  <h2>Route c: the river of free fall</h2>
  <div class="two">
   <div>
-   <p>Two postulates in mult-add's own language:</p>
-   <ol><li>At every event there is a free-fall frame, the river, in which space is flat and special relativity holds, so speeds compose by mult-add on the Doppler-squared ruler.</li>
+   <p>Two postulates in the circle operation's own language:</p>
+   <ol><li>At every event there is a free-fall frame, the river, in which space is flat and special relativity holds, so speeds compose by the circle operation on the Doppler-squared ruler.</li>
    <li>The river flows past standing observers at Newton's escape speed, v² = 2m/r.</li></ol>
-   <p>That is enough for the exact Schwarzschild black hole. A standing clock and a standing ruler are both boosted through the river, and one boost gives both factors: the clock runs at 1 − v² and the ruler stretches by 1/(1 − v²). So <b>the time deficit and the space deficit are mult-add inverses</b>, (−g<sub>tt</sub> − 1) ✳ (g<sub>rr</sub> − 1) = 0. That is why light bends twice the Newtonian amount: half from clocks, half from rulers, because a boost dilates time and shortens length by the same factor.</p>
+   <p>That is enough for the exact Schwarzschild black hole. A standing clock and a standing ruler are both boosted through the river, and one boost gives both factors: the clock runs at 1 − v² and the ruler stretches by 1/(1 − v²). So <b>the time deficit and the space deficit are circle inverses</b>, (−g<sub>tt</sub> − 1) ✳ (g<sub>rr</sub> − 1) = 0. That is why light bends twice the Newtonian amount: half from clocks, half from rulers, because a boost dilates time and shortens length by the same factor.</p>
    <p>The horizon r = 2M is where the river reaches light speed, the wall of the velocity law.</p>
   </div>
   <div>
@@ -136,7 +136,7 @@ const peri=[["General relativity",42.98,0],["Time only, A = 1−2U",28.65,1],["T
 const row=(l,v,p,mx,u)=>`<div class="bar"><span>${l}</span><span><i class="${p?'p':''}" style="width:${Math.max(Math.abs(v)/mx*100,1.5)}%"></i></span><b>${v}${u}</b></div>`;
 document.getElementById('bend').innerHTML=bend.map(r=>row(r[0],r[1],r[2],1.751,'″')).join('');
 document.getElementById('peri').innerHTML=peri.map(r=>row(r[0],r[1],r[2],42.98,'″')).join('');
-const led=[["Lorentz rules, light speed, signature","Derived: the dial q (mult-add on the Doppler ruler)"],["Twist = curvature × area","Derived: twisted boosts; in spacetime it is the Riemann tensor"],["Bianchi identity","Automatic for any metric"],["Left side R − ½Rg","Forced by Bianchi + Lovelock"],["A metric field at all","Put in"],["Local, second-order law","Put in"],["Newton's escape speed for the river","Put in (route c)"],["Gravitational waves","Not reachable by the river"],["Values of G and Λ","Free"]];
+const led=[["Lorentz rules, light speed, signature","Derived: the dial q (the circle operation on the Doppler ruler)"],["Twist = curvature × area","Derived: twisted boosts; in spacetime it is the Riemann tensor"],["Bianchi identity","Automatic for any metric"],["Left side R − ½Rg","Forced by Bianchi + Lovelock"],["A metric field at all","Put in"],["Local, second-order law","Put in"],["Newton's escape speed for the river","Put in (route c)"],["Gravitational waves","Not reachable by the river"],["Values of G and Λ","Free"]];
 document.getElementById('ledger').innerHTML=led.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
 const s=document.getElementById('map');
 function draw(){const W=s.clientWidth,H=s.clientHeight,sm=W<520;
@@ -155,7 +155,7 @@ function draw(){const W=s.clientWidth,H=s.clientHeight,sm=W<520;
  g+=dot(x0,ym,12,'#8fd3ff')+dot(x1,ym,12,'#ffffff');
  [[.55,ym],[.64,ym]].forEach(p=>g+=dot(X(p[0]),p[1],6,'#0a2540').replace('stroke="#0a2540"','stroke="#8fd3ff"'));
  [[.45,yb],[.62,yb]].forEach(p=>g+=dot(X(p[0]),p[1],6,'#0a2540').replace('stroke="#0a2540"','stroke="#ffffff"'));
- g+=t(x0,ym-24,'mult-add','middle','#8fd3ff',sm?13:16)+t(x0,ym+32,'dial q','middle','#a9c1d6');
+ g+=t(x0,ym-24,'The circle operation','middle','#8fd3ff',sm?13:16)+t(x0,ym+32,'dial q','middle','#a9c1d6');
  g+=t(x1,ym-24,'Einstein','middle','#ffffff',sm?13:16)+t(x1,ym+32,'G = 8πT','middle','#a9c1d6');
  g+=t(X(.28),ya-16,'a · dial as a field','middle','#ff5c8a')+t(X(.42),ya+30,'half the bending','middle','#a9c1d6');
  g+=t(X(.40),ym-14,'c · the river','middle','#8fd3ff');

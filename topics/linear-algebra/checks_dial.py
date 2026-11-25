@@ -1,4 +1,4 @@
-"""Dial sweep for linear algebra from mult-add. Run: python3 checks_dial.py"""
+"""Dial sweep for linear algebra from the circle operation. Run: python3 checks_dial.py"""
 import itertools, math, cmath
 import numpy as np
 import sympy as sp

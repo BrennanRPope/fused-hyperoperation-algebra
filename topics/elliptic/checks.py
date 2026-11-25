@@ -46,7 +46,7 @@ def count_ns(A1, A2, p):
         for yy in range(p):
             if (yy*yy + A1*xx*yy - xx**3 - A2*xx*xx) % p == 0: n += 1
     return n - 1  # drop the node (0,0)
-cases = [("mult-add node y^2-xy=x^3 (k=1,q=0)", -1, 0), ("velocity-addition node y^2=x^3+x^2 (k=0,q=-1)", 0, 1),
+cases = [("Circle-operation node y^2-xy=x^3 (k=1,q=0)", -1, 0), ("velocity-addition node y^2=x^3+x^2 (k=0,q=-1)", 0, 1),
          ("turning node y^2=x^3-x^2 (k=0,q=1)", 0, -1), ("cusp y^2=x^3", 0, 0)]
 ok = True; rows = []
 for name, A1, A2 in cases:
@@ -59,7 +59,7 @@ for name, A1, A2 in cases:
 rep("1f smooth points over F_p: p-1 when the walls are in F_p (two walls), p+1 when not (turning), p at the cusp", ok)
 for r in rows[::4]: note(f"{r[0]}: p={r[1]} -> {r[2]} points")
 
-# ============ 2. smoothing the node: Tate curve = mult-add with 1+a ~ q(1+a)
+# ============ 2. smoothing the node: Tate curve = the circle operation with 1+a ~ q(1+a)
 mp.mp.dps = 30
 def tate(qq, M=60):
     s = lambda kk: mp.fsum(n**kk*qq**n/(1 - qq**n) for n in range(1, M))
@@ -87,7 +87,7 @@ u = sp.symbols('u')
 x0 = u/(1 - u)**2; y0 = u**2/(1 - u)**3
 rep("2d at q = 0 Tate's curve is the node y^2+xy=x^3 and z = -x/y = 1 - 1/u, so the lift 1+a (a = -z) is 1/u",
     sp.simplify(y0**2 + x0*y0 - x0**3) == 0 and sp.simplify(-x0/y0 - (1 - 1/u)) == 0)
-rep("2e q = 0 law in z is a+b-ab, which is mult-add after a -> -a", sp.expand(-((-t1) + (-t2) - (-t1)*(-t2)) - (t1 + t2 + t1*t2)) == 0)
+rep("2e q = 0 law in z is a+b-ab, which is the circle operation after a -> -a", sp.expand(-((-t1) + (-t2) - (-t1)*(-t2)) - (t1 + t2 + t1*t2)) == 0)
 Q = sp.symbols('q')
 ser = lambda kk: sum(n**kk*Q**n/(1 - Q**n) for n in range(1, 5))
 a4q = sp.series(-5*ser(3), Q, 0, 4).removeO(); a6q = sp.series(-(5*ser(3) + 7*ser(5))/12, Q, 0, 4).removeO()
@@ -115,7 +115,7 @@ eps = sp.symbols('eps')
 om = omega_series(1, 0, 0, -5*eps, -eps)
 om1 = sp.expand(sp.series(om, eps, 0, 2).removeO())
 om0 = sp.expand(om1.subs(eps, 0)); omq = sp.expand(om1.coeff(eps, 1))
-rep("2h q = 0 differential is dz/(1-z) (the flipped mult-add's log)", sp.expand(om0 - sp.series(1/(1 - zz), zz, 0, 8).removeO()) == 0)
+rep("2h q = 0 differential is dz/(1-z) (the flipped the circle operation's log)", sp.expand(om0 - sp.series(1/(1 - zz), zz, 0, 8).removeO()) == 0)
 lowest = min(sp.Poly(omq, zz).monoms())[0]
 note(f"first-order-in-q part of the invariant differential: {sp.factor(omq)}")
 rep("2i q first enters at z^4 of the differential, i.e. the cube's 5th layer of the law (a3 = 0 on Tate's curve)", lowest == 4)
@@ -217,7 +217,7 @@ for name, c in curves.items():
         if bad: ok_bad &= a in (-1, 0, 1)
         else: ok_h &= a*a < 4*p
     frob[name] = rows
-    note(f"{name}: bad primes " + ", ".join(f"p={p}: a_p={a} ({'split, k=-1' if a==1 else 'non-split, k=+1 (mult-add)' if a==-1 else 'additive'})" for p, a, b in rows if b))
+    note(f"{name}: bad primes " + ", ".join(f"p={p}: a_p={a} ({'split, k=-1' if a==1 else 'non-split, k=+1 (the circle operation)' if a==-1 else 'additive'})" for p, a, b in rows if b))
 rep("4a good primes: a_p^2 < 4p for all four curves, p < 4000 (Hasse): Euler factor 1 - a_p T + p T^2 sits in the turning country", ok_h)
 rep("4b bad primes: Euler factor 1 - a_p T lands on the q = 0 line at k = -a_p in {-1, 0, +1}", ok_bad)
 th = [math.acos(a/(2*math.sqrt(p))) for nm in ["11a1", "37a1", "14a1", "15a1"] for p, a, b in frob[nm] if not b]

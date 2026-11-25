@@ -16,7 +16,7 @@
    "detail": ""
   },
   {
-   "name": "mult-add: denominator U(n) \u2212 (1+a)U(n\u22121) = 1, so a^(\u2295n) = (1+a)\u207f \u2212 1",
+   "name": "The circle operation: denominator U(n) \u2212 (1+a)U(n\u22121) = 1, so a^(\u2295n) = (1+a)\u207f \u2212 1",
    "ok": true,
    "detail": ""
   },
@@ -71,7 +71,7 @@
    "detail": "periods seen: {2: 50, 3: 4, 4: 4}"
   },
   {
-   "name": "mult-add Fibonacci from 1, 1 is 2^F(n) \u2212 1: 1, 1, 3, 7, 31, 255, 8191, \u2026",
+   "name": "Circle-operation Fibonacci from 1, 1 is 2^F(n) \u2212 1: 1, 1, 3, 7, 31, 255, 8191, \u2026",
    "ok": true,
    "detail": ""
   },

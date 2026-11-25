@@ -1,4 +1,4 @@
-"""Picture of the Adams-Atiyah proof on the mult-add cube (CP^2 case)."""
+"""Picture of the Adams-Atiyah proof on the circle-operation cube (CP^2 case)."""
 import numpy as np, matplotlib, itertools
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt

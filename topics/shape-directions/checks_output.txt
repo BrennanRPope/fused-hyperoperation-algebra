@@ -1,26 +1,26 @@
 PASS 1a weight is units: F_{lam k}(a,b) = F_k(lam a, lam b)/lam
-PASS 1b the weight's tangent at mult-add equals the units (zoom) tangent: no new direction   [1, 0, 0, 0, 0]
+PASS 1b the weight's tangent at the circle operation equals the units (zoom) tangent: no new direction   [1, 0, 0, 0, 0]
 PASS 1c q_count = k + 1 is a relabelling: a + b + (q-1)ab is the weight law with k = q - 1
 PASS 1d on a graph (3-site path) the weight survives every rescaling of the sites: c0 c2 / c1^2 = (2*k + 1)/9
 PASS 2a a projective ruler x -> x/(1+cx) moves (p,q) to (p+2c, q+pc+c^2)
 PASS 2b ...and keeps the discriminant D = p^2 - 4q: lens orbits are the parabolas q = (p^2 - D)/4
 PASS 2c units move (p,q) to (lam p, lam^2 q): D -> lam^2 D, so only the sign of D survives units
 PASS 2d log of F_{p,q} is log((1-vx)/(1-ux))/(u-v): one period 2 pi i/(u-v) = 2 pi i/sqrt(D)
-   D > 0: period imaginary, real points form a line (two real walls: mult-add, velocity addition)
+   D > 0: period imaginary, real points form a line (two real walls: the circle operation, velocity addition)
    D < 0: period real, real points form a circle (complex walls: slope addition, rotations)
    D = 0: no period (double wall: addition in disguise)
 PASS 2e circle check: slope addition of tan(pi/7) seven times returns to 0 (real period)
    rung s rate R_s(a) = 1 + s a + s(s-1)/4 a^2 - s(s-1)/12 a^3 + s(s-1)(s+4)/144 a^4 - ...
 PASS 3a rung s third-order point is (p,q) = (s, s(s-1)/4) and its discriminant is D = s
    so through third order, rung height = the bend's discriminant in the ladder's own units:
-   rung s osculates the law with one period 2 pi i/sqrt(s): rung 1 -> 2 pi i (mult-add), rung 0 -> none,
+   rung s osculates the law with one period 2 pi i/sqrt(s): rung 1 -> 2 pi i (the circle operation), rung 0 -> none,
    rung 4 -> pi i, rung -1 -> 2 pi (real: a circle, rotation-like). Negative rungs bend like rotations.
 PASS 3b fourth order: the rung leaves the landscape plane by r3 = -s(s-1)/12 (zero only at rungs 0 and 1)
 PASS 3c the crossings at rungs 0 and 1 are transverse (dr3/ds = +1/12 at 0, -1/12 at 1)
-   tangents at mult-add in (r1,r2,r3): units (1,0,0), weight (1,0,0), bend (0,1,0), rung [1, 1/4, -1/12]
+   tangents at the circle operation in (r1,r2,r3): units (1,0,0), weight (1,0,0), bend (0,1,0), rung [1, 1/4, -1/12]
 PASS 3d rank of {units, weight, bend, rung} = 3 (weight repeats units; bend and rung are new)
 PASS 3e any third-order jet (p, q) is reached from plain addition by a ruler x + f2 x^2 + f3 x^3 (L2 collapses everything locally)   {f2: -p/2, f3: (p**2 - q)/3}
-PASS 4a the gluing w -> (1+w)q - 1 commutes with mult-add for every q: the law near 0 never sees q
+PASS 4a the gluing w -> (1+w)q - 1 commutes with the circle operation for every q: the law near 0 never sees q
    q = 1.0e-6: j = 1000744.19691
    q = 0.0001: j = 10763.9042039
    q = 0.001: j = 1963.26264333
@@ -30,11 +30,11 @@ PASS 4c on the nome's own range (0, e^-2pi] j falls strictly from infinity to 17
 PASS 4d a larger nome is a smaller one seen sideways: q = 0.1 and q' = exp(4 pi^2/log 0.1) = 3.58e-8 have the same j (tau -> -1/tau)   j = 27932056.243 and 27932056.243
    invariant differential of the Weierstrass curve in z: [1, A1, A1**2 + A2, A1**3 + 2*A1*A2 + 2*A3, A1**4 + 3*A1**2*A2 + 6*A1*A3 + A2**2 + 2*A4]
 PASS 4e the curve's own ruler: a4 first enters the invariant differential at z^4, a6 at z^6 (weights 4, 6)
-   Tate curve has a1 = 1, a2 = a3 = 0: through z^3 its differential is the nodal one, i.e. mult-add's (q = 0)
+   Tate curve has a1 = 1, a2 = a3 = 0: through z^3 its differential is the nodal one, i.e. the circle operation's (q = 0)
    so the nome hides until the fifth order of the law in the curve's ruler, and vanishes entirely in the ruler u
    n = 3: points with n steps back to the start: cusp 1, node 3, Tate torus 9
    n = 5: points with n steps back to the start: cusp 1, node 5, Tate torus 25
-PASS 5a torsion counts 1, n, n^2 for addition, mult-add and the torus (n = 3, 5): 0, 1 and 2 periods   {3: (1, 3, 9), 5: (1, 5, 25)}
+PASS 5a torsion counts 1, n, n^2 for addition, the circle operation and the torus (n = 3, 5): 0, 1 and 2 periods   {3: (1, 3, 9), 5: (1, 5, 25)}
    the number of periods of the log (0, 1, 2) is the whole global shape of a one-input law;
    rank-1 lattices are all one shape after units (the weight); rank-2 lattices keep one ratio tau, nome e^{2 pi i tau}
 PASS 5b dimension count: rank-2 lattices (omega1, omega2) in C^2 minus one complex scale = 1 complex direction (the nome)
@@ -46,7 +46,7 @@ PASS 6d counts per number of waves: {1: 1, 2: 3, 3: 6, 4: 10, 5: 15}
    curves of genus g have only 3g-3 moduli (g >= 2): 3, 6 vs 6, 10 at g = 3, 4: Schottky's problem starts at g = 4
 PASS 6e from four waves on, Riemann's period matrices outnumber curves: g(g+1)/2 > 3g-3 iff (g-2)(g-3) > 0, first at g = 4
 PASS 7a rapidity is a position on one law, not a family parameter: tanh(phi1+phi2) = tanh phi1 (+) tanh phi2
-PASS 7b Doppler-squared minus 1 is the mult-add ruler of the same law, e^{2 phi} - 1 = E(2 phi): one rung step between two rulers
+PASS 7b Doppler-squared minus 1 is the circle-operation ruler of the same law, e^{2 phi} - 1 = E(2 phi): one rung step between two rulers
    boost twist: omega = q x (area of the velocity triangle), q = the bend; by Helmholtz-Lie, an isotropic
    law in the plane has constant curvature, one number: the twist adds no new direction
 PASS 8a over whole numbers the weight keeps its primes: [p](x) of a+b+kab is 0 mod p iff p | k, else = x^p mod p

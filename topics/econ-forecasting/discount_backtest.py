@@ -7,9 +7,9 @@ rng = np.random.default_rng(7)
 out = []
 def say(s=""): print(s); out.append(s)
 A = load.shiller_annual()
-r = ((1 + A.r_nom) / (1 + A.infl) - 1)      # ex-post real rate, mult-add difference
+r = ((1 + A.r_nom) / (1 + A.infl) - 1)      # ex-post real rate, circle-operation difference
 years = r.index.values; rv = r.values
-say(f"real rate {years[0]}-{years[-1]}: mean {100*rv.mean():.2f}%, mult-add mean {100*(np.exp(np.log1p(rv).mean())-1):.2f}%, sd {100*rv.std():.2f}%, min {100*rv.min():.1f}%, share of negative years {np.mean(rv<0):.0%}")
+say(f"real rate {years[0]}-{years[-1]}: mean {100*rv.mean():.2f}%, circle-operation mean {100*(np.exp(np.log1p(rv).mean())-1):.2f}%, sd {100*rv.std():.2f}%, min {100*rv.min():.1f}%, share of negative years {np.mean(rv<0):.0%}")
 ac = np.corrcoef(rv[:-1], rv[1:])[0, 1]; say(f"year-to-year autocorrelation {ac:.2f}")
 
 def boot_paths(hist, T, n, block):
@@ -24,7 +24,7 @@ def boot_paths(hist, T, n, block):
 def forecasts(hist, T, n=4000):
     f = {}
     f["constant mean rate"] = (1 + hist.mean()) ** -T
-    f["constant mult-add mean"] = np.exp(-T * np.log1p(hist).mean())
+    f["the constant circle-operation mean"] = np.exp(-T * np.log1p(hist).mean())
     for b in (1, 10):
         p = boot_paths(hist, T, n, b)
         f[f"averaged factors, block {b}"] = np.mean(np.exp(-np.log1p(p).sum(axis=1)))

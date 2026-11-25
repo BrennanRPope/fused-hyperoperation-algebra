@@ -1,7 +1,7 @@
-"""General relativity through mult-add: the three routes, checked.
+"""General relativity through the circle operation: the three routes, checked.
 
 Run: python3 checks.py  (writes checks_output.txt and results.json)
-Units G = c = 1 unless stated.  ✳ is mult-add a + b + ab.
+Units G = c = 1 unless stated.  ✳ is the circle operation a + b + ab.
 """
 import json, math, sys, os
 import sympy as sp
@@ -31,7 +31,7 @@ def section(title):
     LINES.append("\n== " + title)
 
 
-ma = lambda a, b: a + b + a * b   # mult-add
+ma = lambda a, b: a + b + a * b   # circle operation
 
 t, x, y, z, r, th, ph = sp.symbols('t x y z r theta phi', real=True)
 M, q = sp.symbols('M q', real=True)
@@ -122,7 +122,7 @@ RES["B"] = {k: {"bending_arcsec": v[0], "perihelion_arcsec_per_century": v[1], "
 RES["B_cassini_sigma_gamma0"] = sig_dial
 
 # ---------------------------------------------------------------------------
-section("C. Route (c): the river. Flat space + local mult-add velocity addition + Newton's escape speed")
+section("C. Route (c): the river. Flat space + local circle-operation velocity addition + Newton's escape speed")
 X = [t, r, th, ph]
 def river_metric(v):
     # ds^2 = -dt^2 + (dr + v dt)^2 + r^2 dOmega^2   (river flows inward at speed v)
@@ -152,8 +152,8 @@ check("River observers fall freely (geodesics) and are at rest at infinity", all
 # Static observers move through the river at v: one boost gives both factors
 check("Static clock rate = 1/gamma_river: 1 - v^2 = 1 - 2M/r = -g_tt", sp.simplify((1 - v**2) - (1 - 2 * M / r)) == 0)
 check("Static radial ruler = gamma_river: 1/(1 - v^2) = g_rr (Lorentz contraction)", sp.simplify(1 / (1 - v**2) - new_rr) == 0)
-# Mult-add inverse: (-g_tt - 1) and (g_rr - 1) are mult-add inverses
-check("Time deficit and radial-space deficit are mult-add inverses: (-g_tt-1) ✳ (g_rr-1) = 0",
+# Circle inverse: (-g_tt - 1) and (g_rr - 1) are circle inverses
+check("Time deficit and radial-space deficit are circle inverses: (-g_tt-1) ✳ (g_rr-1) = 0",
       sp.simplify(ma(-gtt - 1, new_rr - 1)) == 0)
 # Horizon = the dial's wall: river speed reaches c
 check("Horizon r = 2M is where the river reaches light speed (the velocity wall)",
@@ -279,7 +279,7 @@ check("Small loop in the t-r plane returns a boosted vector: rapidity = (2M/r^3)
 RES["E"] = {"loop_rapidity": eta, "curvature_times_area": Rtrtr * area}
 
 # ---------------------------------------------------------------------------
-section("F. Exact mult-add facts the river gives")
+section("F. The exact circle-operation facts the river gives")
 xx = sp.symbols('x', positive=True)   # x = M/r
 vr2, vo2 = 2 * xx, xx / (1 - 2 * xx)
 w2 = vr2 + vo2 * (1 - vr2)            # perpendicular composition
@@ -288,7 +288,7 @@ check("Orbit speed seen from the river (perpendicular composition): 1 - w^2 = (1
 check("so Gravity Probe B's factor sqrt(1-3M/r) is 1/gamma of the gyroscope's speed through the river; -w^2 = (-v_r^2) ✳ (-v_o^2)",
       sp.simplify(-w2 - ma(-vr2, -vo2)) == 0)
 z1, z2 = sp.symbols('z1 z2')
-check("Redshifts chain by multiplying (1+z) factors, so redshifts mult-add: z = z1 ✳ z2",
+check("Redshifts chain by multiplying (1+z) factors, so redshifts combine by the circle operation: z = z1 ✳ z2",
       sp.expand((1 + ma(z1, z2)) - (1 + z1) * (1 + z2)) == 0)
 vv = sp.symbols('v', positive=True)
 check("Infalling light seen by the river: blueshift gamma times Doppler sqrt((1-v)/(1+v)) = 1/(1+v)",

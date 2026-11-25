@@ -1,5 +1,5 @@
-"""Checks for 'Fermat's Last Theorem through mult-add'.
-Mult-add: a (+) b = a + b + ab = (1+a)(1+b) - 1.
+"""Checks for 'Fermat's Last Theorem through the circle operation'.
+The circle operation: a (+) b = a + b + ab = (1+a)(1+b) - 1.
 """
 import cmath, math
 from fractions import Fraction
@@ -10,8 +10,8 @@ t, T, x = symbols('t T x')
 def madd(a, b):
     return a + b + a*b
 
-# 1. Rotated mult-add cube: (+)_{k} zeta^k t = t^p for odd p
-print("== 1. mult-add of p rotated copies ==")
+# 1. Rotated circle-operation cube: (+)_{k} zeta^k t = t^p for odd p
+print("== 1. The circle operation of p rotated copies ==")
 for p in [3, 5, 7, 11]:
     z = cmath.exp(2j*math.pi/p)
     for tv in [0.37, 1.9+0.4j]:
@@ -27,11 +27,11 @@ for p in [3, 5, 7, 11]:
         layers.append(round(abs(s), 9))
     print("  layer sums |e_r(zeta^k)|:", layers)
 
-# Fermat in mult-add form: with t=y/x, s=z/x-1: (+)zeta^k t == [p](s) == (1+s)^p - 1
+# Fermat in circle-operation form: with t=y/x, s=z/x-1: (+)zeta^k t == [p](s) == (1+s)^p - 1
 print("Check 3^p..: x^p+y^p=z^p <=> (+)_k zeta^k (y/x) = (1+s)^p - 1, s=z/x-1 (identity check on 3,4,5 squares p=2 analog skipped)")
 
-# 2. Torsion of mult-add: [p](a) = (1+a)^p - 1; roots a = zeta^k - 1; pi=zeta-1, |prod over k!=0 of (zeta^k-1)| = p
-print("\n== 2. p-torsion of mult-add ==")
+# 2. Torsion of the circle operation: [p](a) = (1+a)^p - 1; roots a = zeta^k - 1; pi=zeta-1, |prod over k!=0 of (zeta^k-1)| = p
+print("\n== 2. p-torsion of the circle operation ==")
 for p in [5, 7, 13]:
     z = cmath.exp(2j*math.pi/p)
     prod = 1
@@ -42,8 +42,8 @@ for p in [5, 7, 13]:
     P = Poly(expand((1+T)**p - 1), T)
     print("  [p](T) coeffs mod p:", [c % p for c in P.all_coeffs()])
 
-# 3. Bernoulli numbers from the mult-add exponential exp_G(x)=e^x-1
-print("\n== 3. Bernoulli from mult-add exponential ==")
+# 3. Bernoulli numbers from the circle-operation exponential exp_G(x)=e^x-1
+print("\n== 3. Bernoulli from circle-operation exponential ==")
 ser = series(x/(exp(x)-1), x, 0, 12).removeO()
 print([ser.coeff(x, k)*math.factorial(k) for k in range(12)])
 # Coleman power series of cyclotomic unit: [a](T)/T. log of it in log-coordinates

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mult-Add Algebra Atlas</title>
+<title>Circle-Operation Algebra Atlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
 <style>
 /* VOICE: a scientific plate, calm and exact, for one reader who thinks in pictures.
-   IDEA: an atlas plate: each structure mult-add builds is a region, the shift x -> 1+x the projection.
+   IDEA: an atlas plate: each structure the circle operation builds is a region, the shift x -> 1+x the projection.
    PICTURE: two number lines joined by the shift, with the wall -1 landing on 0; clock wheels; a prime strip; a glued annulus.
    COLOUR and TYPE: white, ink, carmine for walls and the result, prussian for groups; Literata throughout.
    LAYOUT: title band, hero figure full width, then sections with a figure and a short text column. */
@@ -47,78 +47,78 @@ svg text{font-family:Literata,Georgia,serif}
 
 <div class="band" style="padding-bottom:0"><div class="wrap">
 <p class="mute">Fused Hyperoperation Algebra · abstract algebra · Nov 25, 2026</p>
-<h1>Every structure mult-add builds is a familiar one, moved one step to the left</h1>
-<p class="lede">Slide every number up by 1 and mult-add becomes plain multiplication. So mult-add makes a group, rings, a module and a torus, each one an exact copy of a structure algebra already knows. The new things are the pictures and a few clean tables, not new structures.</p>
+<h1>Every structure the circle operation builds is a familiar one, moved one step to the left</h1>
+<p class="lede">Slide every number up by 1 and the circle operation ∘₁ (called mult-add before 1.0) becomes plain multiplication. So the circle operation makes a group, rings, a module and a torus, each one an exact copy of a structure algebra already knows. The new things are the pictures and a few clean tables, not new structures.</p>
 </div></div>
-<div class="fig hero" id="hero" role="img" aria-label="Two number lines. The top line is mult-add, the bottom is multiplication. Arrows show each point moving one step: the wall −1 lands on 0, the identity 0 lands on 1, and −2 lands on −1."><svg id="heroSvg"></svg></div>
+<div class="fig hero" id="hero" role="img" aria-label="Two number lines. The top line is the circle operation, the bottom is multiplication. Arrows show each point moving one step: the wall −1 lands on 0, the identity 0 lands on 1, and −2 lands on −1."><svg id="heroSvg"></svg></div>
 
 <nav class="scroll"><a href="#verdict">Verdict</a><a href="#map">The map</a><a href="#weights">Weights</a><a href="#clocks">Clocks</a><a href="#rings">Rings</a><a href="#pascal">Pascal</a><a href="#tate">Torus</a><a href="#primes">Countries by prime</a><a href="#known">Known or new</a><a href="#files">Files</a></nav>
 
 <section class="band" id="verdict"><div class="wrap">
-<div class="verdict"><p>Mult-add is multiplication in disguise, so every group, ring and quotient it makes is a known one: ring theorists call it the circle operation, and its units are the quasi-regular elements of the Jacobson radical. No lead here is as promising as the solitons. The most useful finds are a sharp test for when a clock of numbers wraps into a group, and that a law's country can change from prime to prime.</p></div>
+<div class="verdict"><p>The circle operation is multiplication in disguise, so every group, ring and quotient it makes is a known one: it is the circle operation of ring theory, and its units are the quasi-regular elements of the Jacobson radical. No lead here is as promising as the solitons. The most useful finds are a sharp test for when a clock of numbers wraps into a group, and that a law's country can change from prime to prime.</p></div>
 <p class="mute">53 Lean theorems, core Lean 4.37, no mathlib, no sorry, standard axioms only · 33 of 33 exact and numeric checks pass.</p>
 </div></section>
 
 <section class="band" id="map"><div class="wrap">
-<h2>The map: what mult-add builds, and what it is a copy of</h2>
+<h2>The map: what the circle operation builds, and what it is a copy of</h2>
 <p>Tags: <span class="tag p">proved in Lean</span> <span class="tag n">checked numerically</span> <span class="tag i">known result, cited</span></p>
-<div class="scroll"><table class="stack"><thead><tr><th>Where</th><th>What mult-add makes</th><th>Copy of</th><th>Status</th></tr></thead><tbody id="mapRows"></tbody></table></div>
+<div class="scroll"><table class="stack"><thead><tr><th>Where</th><th>What the circle operation makes</th><th>Copy of</th><th>Status</th></tr></thead><tbody id="mapRows"></tbody></table></div>
 </div></section>
 
 <section class="band" id="weights"><div class="wrap grid">
-<div><h2>The weighted family is one group, measured in different units</h2>
-<p>For every weight k other than 0, multiplying by k turns a ⊕<sub>k</sub> b = a + b + k·ab into plain mult-add: k(a ⊕<sub>k</sub> b) = (ka) ⊕ (kb). The wall moves from −1 to −1/k, nothing else changes. So all nonzero weights give the same group, and k = 0 (plain addition) is the only different one: addition has no element that undoes itself, while mult-add has −2, since (−2) ⊕ (−2) = 0.</p>
+<div><h2>The circle operation with dial k is one group, measured in different units</h2>
+<p>For every weight k other than 0, multiplying by k turns a ⊕<sub>k</sub> b = a + b + k·ab into the plain circle operation: k(a ⊕<sub>k</sub> b) = (ka) ⊕ (kb). The wall moves from −1 to −1/k, nothing else changes. So all nonzero weights give the same group, and k = 0 (plain addition) is the only different one: addition has no element that undoes itself, while the circle operation has −2, since (−2) ⊕ (−2) = 0.</p>
 <p>On the whole numbers the units are tiny. Only 0 and −2 can be undone under ⊕, because only ±1 can be undone under ×. Weights ±1 and ±2 are the only ones with a second unit, and weight −2 on {0, 1} is exactly exclusive or, the parity wall from earlier pages. <span class="tag p">proved</span></p>
 <p>Unique factoring carries over too: the positive whole numbers that can't be split as a ⊕ b are exactly p − 1 for primes p: 1, 2, 4, 6, 10, 12, 16. <span class="tag n">checked to 60</span></p></div>
-<div class="fig" style="min-height:300px" role="img" aria-label="Walls of the weighted family: for each weight k the wall sits at −1/k, sliding toward zero as k grows and off to infinity at k = 0."><svg id="wallSvg"></svg></div>
+<div class="fig" style="min-height:300px" role="img" aria-label="Walls of the circle operation with dial k: for each weight k the wall sits at −1/k, sliding toward zero as k grows and off to infinity at k = 0."><svg id="wallSvg"></svg></div>
 </div></section>
 
 <section class="band" id="clocks"><div class="wrap grid">
-<div><h2>Clock arithmetic: when does mult-add wrap into a group?</h2>
-<p>On a clock of n numbers, plain mult-add is never a group, because the wall n − 1 swallows everything. Its units are the clock's ordinary units shifted down by one, φ(n) of them. On a 12-clock they are 0, 4, 6, 10. <span class="tag p">proved</span></p>
+<div><h2>Clock arithmetic: when does the circle operation wrap into a group?</h2>
+<p>On a clock of n numbers, the plain circle operation is never a group, because the wall n − 1 swallows everything. Its units are the clock's ordinary units shifted down by one, φ(n) of them. On a 12-clock they are 0, 4, 6, 10. <span class="tag p">proved</span></p>
 <p>The weighted clock (ℤ/n, ⊕<sub>k</sub>) is a group exactly when every prime of n divides k, because then k is nilpotent and 1 + ka can always be undone (a geometric series that stops). <span class="tag p">proved in general for nilpotent k, exact for n = 8, 9, 12</span> <span class="tag n">checked for every n up to 40</span></p>
 <p>Which group it is follows one rule, the p-adic logarithm: odd p<sup>m</sup> with k = p gives the plain cycle; powers of 2 need k divisible by 4 to be a cycle, and with k = 2 they split, like the Klein four-group (ℤ/4, ⊕₂), which is not (ℤ/4, +). The clock (ℤ/n, ⊕<sub>k</sub>) is exactly the units ≡ 1 mod k in the clock of size kn. <span class="tag p">Klein and cyclic cases proved</span> <span class="tag n">identification checked to n = 30</span></p></div>
 <div><div class="ctl" role="group" aria-label="Choose a clock"><button data-c="9,3">ℤ/9, k = 3</button><button data-c="8,4">ℤ/8, k = 4</button><button data-c="8,2">ℤ/8, k = 2</button><button data-c="4,2">ℤ/4, k = 2</button><button data-c="12,1">ℤ/12, k = 1</button></div>
-<div class="fig" style="min-height:330px" role="img" aria-label="Clock wheel. Arrows show repeated mult-add of 1 with itself. A single loop through every point means the group is a cycle."><svg id="clockSvg"></svg></div>
+<div class="fig" style="min-height:330px" role="img" aria-label="Clock wheel. Arrows show repeated the circle operation of 1 with itself. A single loop through every point means the group is a cycle."><svg id="clockSvg"></svg></div>
 <p class="mute" id="clockNote"></p></div>
 </div></section>
 
 <section class="band" id="rings"><div class="wrap">
 <h2>Rings: the fused pair is one, rung 3 is a module, rung 4 is nothing</h2>
 <div class="grid"><div>
-<p><b>Rungs 1 and 2 form a ring.</b> Shifted addition a ⊞ b = a + b + 1 and mult-add obey every ring law, with zero −1 and one 0, and the shift carries them to (+, ×) exactly. Mult-add distributes over shifted addition but not over plain addition. <span class="tag p">proved</span> The axiom thread's MA-ring takes the other pairing (plain + with ⊕) and recovers × from it; the two meet at the same ring.</p>
-<p><b>Rung 3 is a module action, not a product.</b> The fused exponent spreads over mult-add, (a ⊕ b)⊛s = (a⊛s) ⊕ (b⊛s), and its exponents combine by the fused ring: a⊛(s ⊞ t) = (a⊛s) ⊕ (a⊛t), (a⊛s)⊛t = a⊛(s ⊕ t). That makes (ℝ above −1, ⊕) a vector space whose scalars are the fused ring, the old fact that positive numbers under × are a vector space with powers as scalars. <span class="tag p">proved for whole-number scalars</span> <span class="tag n">checked for fractions</span></p>
+<p><b>Rungs 1 and 2 form a ring.</b> Shifted addition a ⊞ b = a + b + 1 and the circle operation obey every ring law, with zero −1 and one 0, and the shift carries them to (+, ×) exactly. The circle operation distributes over shifted addition but not over plain addition. <span class="tag p">proved</span> The axiom thread's MA-ring takes the other pairing (plain + with ⊕) and recovers × from it; the two meet at the same ring.</p>
+<p><b>Rung 3 is a module action, not a product.</b> The fused exponent spreads over the circle operation, (a ⊕ b)⊛s = (a⊛s) ⊕ (b⊛s), and its exponents combine by the fused ring: a⊛(s ⊞ t) = (a⊛s) ⊕ (a⊛t), (a⊛s)⊛t = a⊛(s ⊕ t). That makes (ℝ above −1, ⊕) a vector space whose scalars are the fused ring, the old fact that positive numbers under × are a vector space with powers as scalars. <span class="tag p">proved for whole-number scalars</span> <span class="tag n">checked for fractions</span></p>
 </div><div>
-<p><b>Rung 4 and up carry no ring structure.</b> The shift keeps every law, so fused tetration fails exactly where tetration fails: not commutative, not associative, and it spreads over neither mult-add nor the fused exponent. (1, 1, 1 happens to agree, 255 both ways; 1, 2, 1 does not.) <span class="tag p">failures over mult-add proved in the library</span> <span class="tag n">over the fused exponent checked</span></p>
-<p><b>If you want a ring at every rung, there is a known choice.</b> Bennett (1915) built rungs that stay commutative: c(a, b) = (1 + a)<sup>ln(1+b)</sup> − 1. It is commutative, associative, spreads over mult-add, and its one is e − 1. Each such rung is the previous pair seen through ln(1 + x). It is a different ladder from your hyperoperation ladder, and it is a copy of (+, ×) at every step. <span class="tag n">checked to 10⁻¹²</span> <span class="tag i">Bennett 1915</span></p>
+<p><b>Rung 4 and up carry no ring structure.</b> The shift keeps every law, so fused tetration fails exactly where tetration fails: not commutative, not associative, and it spreads over neither the circle operation nor the fused exponent. (1, 1, 1 happens to agree, 255 both ways; 1, 2, 1 does not.) <span class="tag p">failures over the circle operation proved in the library</span> <span class="tag n">over the fused exponent checked</span></p>
+<p><b>If you want a ring at every rung, there is a known choice.</b> Bennett (1915) built rungs that stay commutative: c(a, b) = (1 + a)<sup>ln(1+b)</sup> − 1. It is commutative, associative, spreads over the circle operation, and its one is e − 1. Each such rung is the previous pair seen through ln(1 + x). It is a different ladder from your hyperoperation ladder, and it is a copy of (+, ×) at every step. <span class="tag n">checked to 10⁻¹²</span> <span class="tag i">Bennett 1915</span></p>
 </div></div></div></section>
 
 <section class="band" id="pascal"><div class="wrap grid">
 <div><h2>Polynomials and Pascal</h2>
-<p>Mult-add powers are the cube: a<sup>⊕n</sup> = (1 + a)<sup>n</sup> − 1 = Σ C(n, j) a<sup>j</sup>, one layer of Pascal per row of corners. Going back uses Pascal with alternating signs. The two matrices are the shift x ↦ x + 1 and its inverse, and the shift is e raised to differentiation (Taylor's theorem as a matrix).</p>
-<p>The power maps are the endomorphisms of mult-add: (a ⊕ b)<sup>⊕n</sup> = a<sup>⊕n</sup> ⊕ b<sup>⊕n</sup> and (a<sup>⊕m</sup>)<sup>⊕n</sup> = a<sup>⊕mn</sup>. So the whole numbers act on mult-add as a ring, and over the p-adic numbers the binomial coefficients C(c, j) for any p-adic c extend it. <span class="tag p">proved</span> <span class="tag i">Mahler, formal groups</span></p>
-<p>On power series with no constant term there is no wall at all, so mult-add is a group there: these are the big Witt vectors. <span class="tag n">checked</span> <span class="tag i">Witt 1937</span></p></div>
+<p>Circle powers are the cube: a<sup>⊕n</sup> = (1 + a)<sup>n</sup> − 1 = Σ C(n, j) a<sup>j</sup>, one layer of Pascal per row of corners. Going back uses Pascal with alternating signs. The two matrices are the shift x ↦ x + 1 and its inverse, and the shift is e raised to differentiation (Taylor's theorem as a matrix).</p>
+<p>The power maps are the endomorphisms of the circle operation: (a ⊕ b)<sup>⊕n</sup> = a<sup>⊕n</sup> ⊕ b<sup>⊕n</sup> and (a<sup>⊕m</sup>)<sup>⊕n</sup> = a<sup>⊕mn</sup>. So the whole numbers act on the circle operation as a ring, and over the p-adic numbers the binomial coefficients C(c, j) for any p-adic c extend it. <span class="tag p">proved</span> <span class="tag i">Mahler, formal groups</span></p>
+<p>On power series with no constant term there is no wall at all, so the circle operation is a group there: these are the big Witt vectors. <span class="tag n">checked</span> <span class="tag i">Witt 1937</span></p></div>
 <div class="fig" style="min-height:300px" role="img" aria-label="Pascal's triangle in two colours: the shift matrix, and beside it the signed inverse."><svg id="pascalSvg"></svg></div>
 </div></section>
 
 <section class="band" id="tate"><div class="wrap grid">
 <div class="fig" style="min-height:320px" role="img" aria-label="An annulus between radius q and 1. The inner circle and the outer circle are the same circle, so the ring closes into a torus."><svg id="tateSvg"></svg></div>
-<div><h2>The Tate torus is a quotient group of mult-add</h2>
-<p>Declare a ∼ b when (1 + a) and (1 + b) differ by a power of q. That relation is a congruence for mult-add: glued inputs give glued outputs. So mult-add passes to the quotient, which is a commutative monoid, and a group off the wall on a field. The class of q − 1 is the identity. <span class="tag p">proved, with Lean's quotient type</span></p>
+<div><h2>The Tate torus is a quotient group of the circle operation</h2>
+<p>Declare a ∼ b when (1 + a) and (1 + b) differ by a power of q. That relation is a congruence for the circle operation: glued inputs give glued outputs. So the circle operation passes to the quotient, which is a commutative monoid, and a group off the wall on a field. The class of q − 1 is the identity. <span class="tag p">proved, with Lean's quotient type</span></p>
 <p>Over the complex numbers with |q| &lt; 1 the quotient is ℂ*/q<sup>ℤ</sup>, an elliptic curve, the elliptic page's torus. Over the reals with 0 &lt; q &lt; 1 it is a circle and a second circle (two components); over a prime field it is a finite cyclic group. <span class="tag i">Tate 1959</span></p></div>
 </div></section>
 
 <section class="band" id="primes"><div class="wrap grid">
 <div><h2>The landscape's countries are the three kinds of one-dimensional group, and they change with the prime</h2>
 <p>Your guess holds. Two walls is the split torus (a copy of × with p − 1 points mod p). Turning is the non-split torus (rotations, p + 1 points). The border is the additive group (p points). These are the only three connected one-dimensional algebraic groups. <span class="tag n">counted for 6 laws, 9 primes</span> <span class="tag i">classical</span></p>
-<p>The country is decided by the discriminant k² − 4q, and mod p by whether it is a square. Slope addition (k = 0, q = 1) has discriminant −4, so it grows two walls exactly at primes p ≡ 1 mod 4, the primes that are sums of two squares (5 = 1 + 4, 13 = 4 + 9). It turns at 3, 7, 11. Mult-add always has two walls. <span class="tag p">walls mod 3, 5, 7, 11, 13 proved</span></p></div>
+<p>The country is decided by the discriminant k² − 4q, and mod p by whether it is a square. Slope addition (k = 0, q = 1) has discriminant −4, so it grows two walls exactly at primes p ≡ 1 mod 4, the primes that are sums of two squares (5 = 1 + 4, 13 = 4 + 9). It turns at 3, 7, 11. The circle operation always has two walls. <span class="tag p">walls mod 3, 5, 7, 11, 13 proved</span></p></div>
 <div class="fig" style="min-height:280px" role="img" aria-label="A strip of primes from 3 to 97. Slope addition is two-walled at primes 1 mod 4 and turning at primes 3 mod 4."><svg id="primeSvg"></svg></div>
 </div></section>
 
 <section class="band" id="known"><div class="wrap">
 <h2>Known or new</h2>
 <p><b>Known.</b> The circle operation a + b + ab and quasi-regular elements (Perlis 1942, Jacobson 1945); radical rings; the multiplicative formal group and its endomorphisms; principal units of ℤ/n and the p-adic logarithm; Bennett's commutative hyperoperations (1915); the Tate curve (1959); one-dimensional tori and the additive group; Witt vectors. Every structure on this page is one of these, seen through the shift.</p>
-<p><b>Possibly fresh, as presentation only.</b> One table that says, for each weight k and clock n, whether mult-add wraps into a group and which group; and the reading of a landscape point's country as a Legendre symbol, which ties the turning country to Fermat's two-square primes. Neither is a new theorem.</p>
+<p><b>Possibly fresh, as presentation only.</b> One table that says, for each weight k and clock n, whether the circle operation wraps into a group and which group; and the reading of a landscape point's country as a Legendre symbol, which ties the turning country to Fermat's two-square primes. Neither is a new theorem.</p>
 <p><b>Inferred, not proved here.</b> The general identification of (ℤ/n, ⊕<sub>k</sub>) with principal units and its cyclic or split form (checked, follows from the p-adic logarithm); the country counts for all primes (checked, classical); Bennett's rung (real logs, outside core Lean).</p>
 </div></section>
 
@@ -135,7 +135,7 @@ const css=v=>{probe.style.color=`var(${v})`;return getComputedStyle(probe).color
 const rows=[
 ['Reals','(ℝ∖{−1}, ⊕), −1 absorbs','(ℝ*, ×) via x ↦ 1 + x','p'],
 ['Any ring','(R, ⊕) monoid; units = a with 1 + a a unit','(R, ×); quasi-regular elements','p'],
-['Weights k ≠ 0','(R, ⊕ₖ), wall −1/k','mult-add, via x ↦ kx','p'],
+['Weights k ≠ 0','(R, ⊕ₖ), wall −1/k','The circle operation, via x ↦ kx','p'],
 ['Integers','units {0, −2}','{±1}','p'],
 ['Positive integers','⊕-irreducibles are p − 1','primes','n'],
 ['Clock ℤ/n','monoid, φ(n) units, wall n − 1','(ℤ/n, ×)','p'],
@@ -153,7 +153,7 @@ $('mapRows').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[
 function hero(){const s=$('heroSvg'),W=s.clientWidth,H=s.clientHeight;const red=css('--red'),blue=css('--blue'),ink=css('--ink'),mute=css('--mute');
  const lo=-4,hi=3,x=v=>40+(v-lo)/(hi-lo)*(W-80);const y1=H*0.3,y2=H*0.72;let o='';
  const small=W<520;
- o+=`<text x="${x(lo)}" y="${y1-30}" fill="${mute}" font-size="14">mult-add line</text><text x="${x(lo)}" y="${y2+44}" fill="${mute}" font-size="14">multiplication line</text>`;
+ o+=`<text x="${x(lo)}" y="${y1-30}" fill="${mute}" font-size="14">Circle-operation line</text><text x="${x(lo)}" y="${y2+44}" fill="${mute}" font-size="14">multiplication line</text>`;
  o+=`<line x1="${x(lo)}" x2="${x(-1)}" y1="${y1}" y2="${y1}" stroke="${blue}" stroke-width="5" opacity=".45"/><line x1="${x(-1)}" x2="${x(hi)}" y1="${y1}" y2="${y1}" stroke="${blue}" stroke-width="5"/>`;
  o+=`<line x1="${x(lo)}" x2="${x(0)}" y1="${y2}" y2="${y2}" stroke="${blue}" stroke-width="5" opacity=".45"/><line x1="${x(0)}" x2="${x(hi)}" y1="${y2}" y2="${y2}" stroke="${blue}" stroke-width="5"/>`;
  for(let v=lo;v<=hi;v++){o+=`<line x1="${x(v)}" x2="${x(v)}" y1="${y1-6}" y2="${y1+6}" stroke="${ink}"/><text x="${x(v)}" y="${y1-12}" text-anchor="middle" font-size="14" fill="${ink}">${v<0?'−'+(-v):v}</text>`;

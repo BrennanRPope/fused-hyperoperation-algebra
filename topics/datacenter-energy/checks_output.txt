@@ -1,4 +1,4 @@
-=== Lead 1: the power chain composes by mult-add ===
+=== Lead 1: the power chain composes by the circle operation ===
 stage odds [0.0256, 0.0417, 0.0526, 0.1111]
 chain efficiency 0.8003  fused odds 0.2496  check 1/eta-1 0.2496
 naive sum of fractional losses 0.215  true lost fraction 0.1997
@@ -54,5 +54,5 @@ excess airflow removed by slowing fans (cube) vs switching units off (linear), 3
    5%/°F, 5°F: compounded 22.6% vs naive 25%
    5%/°F, 9°F: compounded 37.0% vs naive 45%
 
-=== Stacking independent savings composes by mult-add on the kept fraction ===
+=== Stacking independent savings composes by the circle operation on the kept fraction ===
 UPS eco 2.5%, cold-redundant PSUs 3%, fan sharing 3% -> 8.26% (naive 8.5%) US-scale 14.5 TWh/yr

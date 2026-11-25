@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Knots Through Mult-add</title>
+<title>Knots Through the circle operation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -48,17 +48,17 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:14px}
 <body>
 <section class="band">
 <div class="wrap">
-<h1>Adding two tangles is mult-add, and the weight is the value of a loop</h1>
+<h1>Adding two tangles is the circle operation, and the weight is the value of a loop</h1>
 <p class="lede">Cut a knot diagram open and you have a tangle: a box with four loose ends. Kauffman's bracket writes any tangle as a mix of two plain ones, f parts "two arcs across" and g parts "two arcs down". Put two tangles side by side and the mix follows the dial a + b + k·ab exactly, with k = d, the value of one closed loop. The corner term is a loop trapped in the middle. Closing the tangle is the lift.</p>
 <div class="first">
 <div class="panel"><div class="fig" id="hero"></div>
-<p class="small">Each tangle is either across ([0], weight f) or down ([∞], weight g). Side by side there are four corners, as in the mult-add square. Three give a plain tangle back. The fourth, down beside down, traps the red loop, and a loop is worth d = −A² − A⁻².</p></div>
+<p class="small">Each tangle is either across ([0], weight f) or down ([∞], weight g). Side by side there are four corners, as in the circle-operation square. Three give a plain tangle back. The fourth, down beside down, traps the red loop, and a loop is worth d = −A² − A⁻².</p></div>
 <div class="panel">
 <p style="margin-top:0"><b>The sum, read off the four corners:</b></p>
 <div class="eq">(f₁, g₁) + (f₂, g₂) = (f₁f₂,&nbsp; f₁g₂ + g₁f₂ + d·g₁g₂)</div>
 <p>Call x = g/f the tangle's share of "down". Then</p>
 <div class="eq">x(S + T) = x(S) + x(T) + d·x(S)·x(T)</div>
-<p>That is the weighted mult-add with dial k = d. Its lift is 1 + d·x = ⟨D(T)⟩/f, where D closes the tangle by joining the two left ends and the two right ends. Closing a sum gives a connected sum, and brackets multiply:</p>
+<p>That is the circle operation ∘ₖ (called mult-add before 1.0) with dial k = d. Its lift is 1 + d·x = ⟨D(T)⟩/f, where D closes the tangle by joining the two left ends and the two right ends. Closing a sum gives a connected sum, and brackets multiply:</p>
 <div class="eq">⟨D(S + T)⟩ = ⟨D(S)⟩ · ⟨D(T)⟩</div>
 <p class="small">Checked against the full state sum over the cube for 40 random tangles up to 8 crossings, both closures. Proved for any ring in Lean (<code>ratio_dial</code>, <code>closeD_tsum</code>).</p>
 </div>
@@ -120,7 +120,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:14px}
 <div>
 <h2>Torus knots carry a ratio of q-numbers</h2>
 <p>The Alexander polynomial of the torus knot T(p, q) is (t^pq − 1)(t − 1)/((t^p − 1)(t^q − 1)). Read with q-numbers it is <b>[q]_(t^p) / [q]_t</b>, a ratio of two dial powers. Its zeros are the pq-th roots of unity that are neither p-th nor q-th roots: (p − 1)(q − 1) dots on the circle. For T(2, n) it is [n]_(−t) = 1 − t + t² − … + t^(n−1): the twist's own q-integer, at the same q = −t.</p>
-<p>Connected sum multiplies Jones, Alexander and HOMFLY. So the "mult-add value" P − 1 of a knot turns connected sum into ✳ exactly. That is honest relabelling: it is the lift read backwards, and it predicts nothing new.</p>
+<p>Connected sum multiplies Jones, Alexander and HOMFLY. So the "circle-operation value" P − 1 of a knot turns connected sum into ✳ exactly. That is honest relabelling: it is the lift read backwards, and it predicts nothing new.</p>
 </div>
 <div class="panel"><div class="fig s" id="tor"></div>
 <div class="ctl" style="grid-template-columns:auto minmax(0,1fr)"><label for="tk">Torus knot</label><select id="tk"><option>2,3</option><option>2,5</option><option selected>3,4</option><option>3,5</option><option>4,5</option></select></div>
@@ -145,7 +145,7 @@ footer{padding:18px max(5vw,16px);color:var(--soft);font-size:14px}
 </div>
 <div>
 <h2>Lead worth following?</h2>
-<p><b>Not as new knot theory.</b> Every formula here was known, and the q-deformation of Conway's fraction is already mapped by Morier-Genoud and Ovsienko. What the mult-add reading adds is a clean geometric reason for each piece: the corner is a trapped loop, closing is the lift, and Conway's fraction is the dial at weight zero, where the twist's two walls merge.</p>
+<p><b>Not as new knot theory.</b> Every formula here was known, and the q-deformation of Conway's fraction is already mapped by Morier-Genoud and Ovsienko. What the circle-operation reading adds is a clean geometric reason for each piece: the corner is a trapped loop, closing is the lift, and Conway's fraction is the dial at weight zero, where the twist's two walls merge.</p>
 <p>It is worth keeping as a lens and as a teaching picture. One small test is left: tangles with four ends only ever reach the dial line. Tangles with six ends have a five-dimensional bracket space, and that is the first place a bend could appear. That is a question, not yet a lead.</p>
 </div>
 </div>

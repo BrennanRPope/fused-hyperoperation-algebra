@@ -20,11 +20,11 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Axioms | `topics/axioms/` | [page](https://claude.ai/artifact/PrF6u5bRhkq6tPBcD5K4i2) |
 | Algebra atlas | `topics/abstract-algebra/` | [page](https://claude.ai/artifact/DTBbDjwUepJAUmU9AQEAhV) |
 | Linear algebra | `topics/linear-algebra/` | [page](https://claude.ai/artifact/6MmBPSMK179Q7ZRFTjz3L3) |
-| Calculus from mult-add | `topics/calculus/` | [page](https://claude.ai/artifact/VBRCmFrQVwQiXjMxZkY5SY) |
+| Calculus from the circle operation ∘₁ (called mult-add before 1.0) | `topics/calculus/` | [page](https://claude.ai/artifact/VBRCmFrQVwQiXjMxZkY5SY) |
 | Fields of jets | `topics/jet-fields/` | [page](https://claude.ai/artifact/Lg84gxR34iuBqZwQNZWjF3) |
 | Osgood inverse | `topics/osgood-inverse/` | [page](https://claude.ai/artifact/TrRisNESnD3ZPv6sHbK3Gy) |
 | Euler's identity (Claude Doc) | (page only) | [page](https://claude.ai/artifact/PwjUtELeuJQQbcx6vesXit) |
-| e from mult-add | `topics/e/` | [page](https://claude.ai/artifact/TBpb2hxxUxQsFwASbnAx65) |
+| e from the circle operation | `topics/e/` | [page](https://claude.ai/artifact/TBpb2hxxUxQsFwASbnAx65) |
 | pi and other transcendentals | `topics/pi/` | [page](https://claude.ai/artifact/SsQ4CUfuyWHmmBSwvKYxYA) |
 | Natural constants, fused | `topics/fused-constants/` | [page](https://claude.ai/artifact/TW1FbQ74pbLGD9P68doQ2y) |
 | Fractional and negative rungs | `topics/fractional-rungs/` | no page yet |
@@ -32,24 +32,24 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Infinities | `topics/infinities/` | [page](https://claude.ai/artifact/YEchSB4Ft97HsNEcV4q3aJ) |
 | Landscape map of fused laws | `topics/landscape/` | [page](https://claude.ai/artifact/E2ri2CF3xiGEWA5B9hAWYf) |
 | The landscape from the simplest laws up | `topics/simple-laws/` | [page](https://claude.ai/artifact/KjLF8S4j6DKkgUL5bUrNr9) |
-| Mult-add crawl map | (page only) | [page](https://claude.ai/artifact/PgWqA5hKzRKzWJDSr3FCBM) |
+| Circle-operation crawl map | (page only) | [page](https://claude.ai/artifact/PgWqA5hKzRKzWJDSr3FCBM) |
 | Tesseract coordinates | `topics/tesseract/` | [page](https://claude.ai/artifact/KV9thET91iskRFkxqPne5n) |
 | Toric geometry and the primes | `topics/toric/` | [page](https://claude.ai/artifact/PV2A6FTHF98FTqBvHsCazZ) |
 | Topology (K-theory, Adams operations, Hopf invariant one) | `topics/topology/` | [page](https://claude.ai/artifact/4Nb6GyQBxi8gDNdHbszA26) |
-| Statistics from mult-add | `topics/statistics/` | [page](https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv) |
+| Statistics from the circle operation | `topics/statistics/` | [page](https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv) |
 | Information theory | `topics/information-theory/` | [page](https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v) |
 | Fractional power sets and choice grades | `topics/fractional-powerset/` | [page](https://claude.ai/artifact/94mPKskoy8QKXDumoDjRb7) |
 | Power set dials: one dial per element (merging, complement, primes, other sets) | `topics/fractional-powerset-dials/` | [page](https://claude.ai/artifact/27MDnoDnLAMxUUmWGADYk9) |
 | Dial survey: the five dials, and k acting on per-element dials and on the primes | `topics/dial-survey/` | [page](https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr) |
 | Fractal boxes: does a box of fractional dimension give a fractional power set? | `topics/fractal-boxes/` | [page](https://claude.ai/artifact/NbFUcWVphAGGNvhug8XvwS) |
-| Hidden dials of a half box: mult-add has dimension and weights, lacks only a zoom dial | `topics/fractal-dials/` | page to come |
+| Hidden dials of a half box: the circle operation has dimension and weights, lacks only a zoom dial | `topics/fractal-dials/` | page to come |
 | What could become a paper: literature check of every result, ranked | `topics/paper-candidates/` | — |
 | The repetition dial: copies per element fall out of k (1/k cells); crowding between elements stays outside | `topics/repetition-dial/` | — |
 | The zoom dial: size as one new input; dimension comes out at the wall (Moran's equation) | `topics/zoom-dial/` | — |
-| Composition, order and the collection laws: mult-add as stretches about one centre, order cost as a wedge, the route to quantum, no functor half power set | `topics/order-dial/` | — |
+| Composition, order and the collection laws: the circle operation as stretches about one centre, order cost as a wedge, the route to quantum, no functor half power set | `topics/order-dial/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
-| Electromagnetism through mult-add: light sets the dial q = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
-| Size weighting as a dial, and what mult-add leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |
+| Electromagnetism through the circle operation: light sets the dial q = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
+| Size weighting as a dial, and what the circle operation leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |
 
 ## Fourteen branches of math
 
@@ -64,7 +64,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Game theory | `topics/game-theory/` | no page yet |
 | Graph theory | `topics/graph-theory/` | no page yet |
 | Groups and Lie theory | `topics/groups-lie/` | no page yet |
-| Clifford's work, piece by piece, through mult-add | `topics/clifford/` | [page](https://claude.ai/artifact/NU8rLX3jBBeaojcq8g3hMW) |
+| Clifford's work, piece by piece, through the circle operation | `topics/clifford/` | [page](https://claude.ai/artifact/NU8rLX3jBBeaojcq8g3hMW) |
 | Information theory, full branch | `topics/information-theory-full/` | no page yet |
 | Knot theory | `topics/knot-theory/` | no page yet |
 | Logic and sets | `topics/logic-sets/` | no page yet |
@@ -82,13 +82,13 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | The birth of a prime (Claude Doc) | `topics/primes/` | [page](https://claude.ai/artifact/SisvRHEDreffPYfN8mD1ch) |
 | q across knots, primes, counting and physics | `topics/q-across/` | [page](https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL) |
 | Fermat counterexample map (Wiles, Ribet, Mazur and genus steps are named assumptions in Lean, not proofs) | `topics/fermat-counterexample-map/` | [page](https://claude.ai/artifact/G1nEFedgkjtv7X5ehD3ber) |
-| Unsolved problems through the mult-add lens | (page only) | [page](https://claude.ai/artifact/FkH6Zb3JS7URmP7S46HWoz) |
+| Unsolved problems through the circle-operation lens | (page only) | [page](https://claude.ai/artifact/FkH6Zb3JS7URmP7S46HWoz) |
 
 ## Computation
 
 | Topic | Folder | Page |
 |---|---|---|
-| P vs NP: what can't work, and where mult-add touches it | `topics/p-vs-np/` | [page](https://claude.ai/artifact/FQr7rMChaa6ofsJV2WfDjs) |
+| P vs NP: what can't work, and where the circle operation touches it | `topics/p-vs-np/` | [page](https://claude.ai/artifact/FQr7rMChaa6ofsJV2WfDjs) |
 
 ## Physics
 
@@ -102,8 +102,8 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Solitons on the rungs | `topics/solitons-rungs/` | [page](https://claude.ai/artifact/5yXzCgEwC2jY5y6LkFCUXJ) |
 | Relativity | `topics/relativity/` | [page](https://claude.ai/artifact/S2RVDVVQWR4UAQVtmDQQMq) |
 | Twisted boosts and Gravity Probe B | `topics/twisted-boosts/` | no page yet |
-| General relativity through mult-add | `topics/general-relativity/` | [page](https://claude.ai/artifact/SHrK88RpTBLLfTaeAxgi37) |
-| Curved space from mult-add, and four bridges to Einstein's equations (Jacobson, teleparallel, Lovelock, Deser) | `topics/gr-bridges/` | [page](https://claude.ai/artifact/LhAbnuPMJnNoq9cRYBz3xc) |
+| General relativity through the circle operation | `topics/general-relativity/` | [page](https://claude.ai/artifact/SHrK88RpTBLLfTaeAxgi37) |
+| Curved space from the circle operation, and four bridges to Einstein's equations (Jacobson, teleparallel, Lovelock, Deser) | `topics/gr-bridges/` | [page](https://claude.ai/artifact/LhAbnuPMJnNoq9cRYBz3xc) |
 | The dial's potential: a scored search of 71 guesses (Higgs-like dial, rolling dark-energy dial) | `topics/dial-potential/` | [page](https://claude.ai/artifact/WpQzqeezDjmRmUcbgTA7RT) |
 | Lee–Yang zeros (cluster test, fill-then-spill) | `topics/lee-yang/` | [page](https://claude.ai/artifact/UQQzmkzekxe2hL4m8F8NQL) |
 | Point processes on the dial (fermions, Poisson, bosons as k = −1, 0, 1) | `topics/dial-point-processes/` | page source `index.html` in the folder |

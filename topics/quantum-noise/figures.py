@@ -61,7 +61,7 @@ ax.add_collection3d(Poly3DCollection(faces, alpha=0.12, facecolor=B, edgecolor=B
 for t, lab in zip(T, ["identity (no noise)", "X  (certain bit-flip)", "Y", "Z  (certain phase-flip)"]):
     ax.scatter(*t, s=50, color=B); ax.text(*(t*1.12 + (np.array([0,0,0.12]) if t[0]==1 and t[1]==1 else 0)), lab, fontsize=9, color=TXT)
 d = np.linspace(-1/3, 1, 50); ax.plot(d, d, d, color=O, lw=2.5); ax.text(-0.45, -0.45, -0.6, "depolarizing line", color=TXT, fontsize=9)
-ax.scatter(0, 0, 0, s=60, color=G); ax.text(0.05, 0.05, -0.15, "total noise (the −1 of mult-add)", fontsize=8.5, color=TXT2)
+ax.scatter(0, 0, 0, s=60, color=G); ax.text(0.05, 0.05, -0.15, "total noise (the −1 of the circle operation)", fontsize=8.5, color=TXT2)
 lam = np.array([0.95, 0.80, 0.85]); path = np.array([lam**m for m in range(0, 25)])
 ax.plot(*path.T, color=A, lw=2, marker="o", ms=3); ax.text(0.55, 0.2, -0.35, "same channel\napplied again and again", fontsize=8.5, color=TXT)
 ax.set_xlabel("λx"); ax.set_ylabel("λy"); ax.set_zlabel("λz"); ax.view_init(elev=20, azim=35)

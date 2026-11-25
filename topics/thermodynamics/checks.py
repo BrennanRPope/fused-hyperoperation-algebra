@@ -1,7 +1,7 @@
-"""Thermodynamics through mult-add: exact (sympy) and numeric checks.
+"""Thermodynamics through the circle operation: exact (sympy) and numeric checks.
 
 Every law below is tested, not assumed. Each check prints PASS or FAIL.
-Mult-add:   a (+) b = a + b + ab = (1+a)(1+b) - 1
+The circle operation:   a (+) b = a + b + ab = (1+a)(1+b) - 1
 Weighted:   a (+)_k b = a + b + k ab,   1 + k(a (+)_k b) = (1+ka)(1+kb)
 Landscape:  (a + b + k ab) / (1 - q ab)  -> the point (k, q)
 Run: python3 checks.py   (needs sympy, numpy, mpmath)
@@ -61,7 +61,7 @@ for trial in range(5):
     ok = close(ZAB, ZA * ZB) and close(zAB, ma(zA, zB)) and close(cell_A, zA) and close(cell_B, zB) \
         and close(corner, zA * zB) and close(zAB, cell_A + cell_B + corner)
     if trial == 0:
-        check("Z_AB = Z_A Z_B, and z = Z - 1 composes by mult-add; the corner ab is exactly 'both excited'", ok)
+        check("Z_AB = Z_A Z_B, and z = Z - 1 composes by the circle operation; the corner ab is exactly 'both excited'", ok)
     elif not ok:
         check("partition trial", False)
 # free energy adds (K4 linearize) and heat capacity adds
@@ -84,7 +84,7 @@ check("heat capacity adds for independent parts (C = beta^2 Var E, k = 0)",
       close(C(EAB, 0.9), C(EA, 0.9) + C(EB, 0.9), 1e-6))
 # third law: z -> 0 (the identity) as T -> 0; degenerate ground states leave g - 1
 zs = [sum(math.exp(-b_ * e) for e in EA[1:]) for b_ in (1, 10, 100)]
-check("third law: excess z -> 0, the mult-add identity, as T -> 0", zs[2] < 1e-25 and zs[0] > zs[1] > zs[2])
+check("third law: excess z -> 0, the circle-operation identity, as T -> 0", zs[2] < 1e-25 and zs[0] > zs[1] > zs[2])
 g1, g2 = 3, 2
 check("residual entropy: ground degeneracies g compose as (g1g2 - 1) = (g1 - 1) (+) (g2 - 1)",
       g1 * g2 - 1 == ma(g1 - 1, g2 - 1))
@@ -96,7 +96,7 @@ for n_ in range(1, 7):
     if sp.Rational(3, 2) ** n_ - 1 != mp:
         break
 else:
-    check("Pauling's ice count W = (3/2)^N: W - 1 is the mult-add power (1/2)^(+N), a climb up the cube", True)
+    check("Pauling's ice count W = (3/2)^N: W - 1 is the circle power (1/2)^(+N), a climb up the cube", True)
 check("Landauer: n bits have 2^n states, 2^n - 1 = 1^(+n); erasing costs kT ln 2 per climb step",
       all(2 ** n_ - 1 == (lambda n: (lambda f: f(f, n))(lambda f, m: 0 if m == 0 else ma(f(f, m - 1), 1)))(n_)
           for n_ in range(1, 9)))
@@ -109,7 +109,7 @@ for _ in range(200):
     for s in steps:
         tot = ma(tot, s)
     ok &= (tot > -1) and (1 + tot == math.prod(rs))  # exact rationals
-check("unattainability: mult-adding cooling steps (each > -1) never lands on the wall -1 (T = 0)", ok)
+check("unattainability: combining cooling steps (each > -1) by the circle operation never lands on the wall -1 (T = 0)", ok)
 # equipartition: classical Z ~ T^(f/2)
 T0 = 1.0
 for f in (1, 2, 3, 6):
@@ -137,7 +137,7 @@ check("fermion grand partition Xi = prod(1 + z_i) = sum over every corner of the
 zz = sp.symbols('zz')
 XiB = 1 / (1 - zz)
 inv = lambda u: -u / (1 + u)
-check("boson mode: Xi_B - 1 = z/(1 - z) = the mult-add inverse of -z (a negative fermion, run backwards)",
+check("boson mode: Xi_B - 1 = z/(1 - z) = the circle inverse of -z (a negative fermion, run backwards)",
       sp.simplify((XiB - 1) - inv(-zz)) == 0)
 check("Xi_B(z) * Xi_F(-z) = 1 for every mode (boson = way back from a negative fermion)",
       sp.simplify(XiB * (1 - zz)) == 1)
@@ -187,9 +187,9 @@ for _ in range(200):
     u1, u2 = random.uniform(0, 3), random.uniform(0, 3)
     W1 = u1 * Qc; Q1 = Qc + W1; W2 = u2 * Q1
     ok &= close((W1 + W2) / Qc, ma(u1, u2))
-check("two fridges in cascade: u = W/Qc composes by plain mult-add (k = +1)", ok)
+check("two fridges in cascade: u = W/Qc composes by the plain circle operation (k = +1)", ok)
 eta = sp.symbols('eta')
-check("reversing an engine is the mult-add inverse: u = eta/(1 - eta) = inv(-eta)",
+check("reversing an engine is the circle inverse: u = eta/(1 - eta) = inv(-eta)",
       sp.simplify(eta / (1 - eta) - inv(-eta)) == 0)
 check("Carnot fridge: u = 1/COP = (Th - Tc)/Tc = Th/Tc - 1, so 1 + u is the temperature ratio",
       sp.simplify(1 / (Tc / (Th - Tc)) - (Th / Tc - 1)) == 0)
@@ -224,7 +224,7 @@ check("Tsallis S_q(A,B) = S_A (+)_k S_B with k = 1 - q; Renyi = log of the lift,
 qs = sp.symbols('q_s', positive=True)
 xx, yy = sp.symbols('x y', positive=True)
 lnq = lambda u: (u ** (1 - qs) - 1) / (1 - qs)
-check("q-logarithm: ln_q(xy) = ln_q x (+)_(1-q) ln_q y (Tsallis' 'q-sum' is this weighted mult-add)",
+check("q-logarithm: ln_q(xy) = ln_q x (+)_(1-q) ln_q y (Tsallis' 'q-sum' is this circle operation with dial k)",
       sp.simplify(sp.powsimp(lnq(xx * yy) - wa(1 - qs, lnq(xx), lnq(yy)), force=True)) == 0)
 ok = True
 for qq in (0.4, 0.8, 1.3):
@@ -300,7 +300,7 @@ nn = sp.symbols('n', positive=True)
 check("n identical plates: R_n = nR/(1 + (n - 1)R), so shields cut heat as 1/(n + 1), not exponentially",
       all(sp.simplify((lambda r: r / (1 + r))(nv * Nf(a)) - nv * a / (1 + (nv - 1) * a)) == 0 for nv in range(1, 6)))
 
-print("\n== H. Lee-Yang zeros and the mult-add square ==")
+print("\n== H. Lee-Yang zeros and the circle-operation square ==")
 av = sp.symbols('alpha', nonnegative=True)
 P2 = 1 + 2 * av * z + z ** 2
 ok = True
@@ -312,7 +312,7 @@ check("two spins: Z = 1 + 2a z + z^2 (a = e^(-2bJ)) has zeros on |z| = 1 exactly
       ok and not all(abs(abs(rt) - 1) < 1e-6 for rt in roots))
 check("as a landscape point (k, q) = (2a, 1): ferromagnets sit in the turning country, T = infinity touches the border",
       all((2 * av_) ** 2 - 4 <= 0 for av_ in np.linspace(0, 1, 11)))
-check("the bond polynomial at T = infinity (a = 1) is the plain mult-add square (1 + z_i)(1 + z_j)",
+check("the bond polynomial at T = infinity (a = 1) is the plain circle-operation square (1 + z_i)(1 + z_j)",
       sp.expand((1 + x) * (1 + y)) == sp.expand(1 + 1 * x + 1 * y + x * y))
 
 
@@ -393,7 +393,7 @@ for trial in range(15):
     J = {(i, i + 1): random.uniform(0.1, 1.2) for i in range(n - 1)}
     J.update({(i, j): random.uniform(0.1, 1.2) for i in range(n) for j in range(i + 2, n) if random.random() < 0.4})
     ok &= np.allclose(asano_build(n, J), Z_poly(n, J))
-check("Asano contraction: Z is the product of weighted mult-add squares, one per bond, with each spin's copies "
+check("Asano contraction: Z is the product of the circle-operation squares with dial k, one per bond, with each spin's copies "
       "glued by keeping only the cube's all-0 and all-1 corners", ok)
 
 print("\n== I. Wick rotation is the landscape's change of units with lambda = i ==")
@@ -415,9 +415,9 @@ for _ in range(20):
     J1 = np.sum(p1 * np.exp(-bt * W1)) - 1; J2 = np.sum(p2 * np.exp(-bt * W2)) - 1
     J12 = np.sum(np.outer(p1, p2) * np.exp(-bt * (W1[:, None] + W2[None, :]))) - 1
     ok &= close(J12, ma(J1, J2))
-check("Jarzynski for independent processes: <e^(-bW)> - 1 composes by mult-add, Delta F adds", ok)
+check("Jarzynski for independent processes: <e^(-bW)> - 1 composes by the circle operation, Delta F adds", ok)
 K1v, K2v = 3.7, 0.21
-check("Hess's law: coupled reactions multiply K (K - 1 mult-adds) and add Delta G = -RT ln K",
+check("Hess's law: coupled reactions multiply K (K - 1 combines by the circle operation) and add Delta G = -RT ln K",
       close(math.log(K1v * K2v), math.log(K1v) + math.log(K2v)) and close(K1v * K2v - 1, ma(K1v - 1, K2v - 1)))
 
 print("\n== K. Doppler temperature of blackbody light ==")

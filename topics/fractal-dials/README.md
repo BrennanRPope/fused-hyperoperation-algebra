@@ -1,8 +1,8 @@
 # Hidden dials of a half box
 
 **Result.** Many fractals share dimension ½. Six known dials tell them apart: zoom, placement,
-wobble, weights, topology and branching growth. Mult-add already has the two that matter for
-counting (dimension = fractional mult-add power; weights = per-element dial t = p/(1−p)), has the
+wobble, weights, topology and branching growth. The circle operation ∘₁ (called mult-add before 1.0) already has the two that matter for
+counting (dimension = fractional circle power; weights = per-element dial t = p/(1−p)), has the
 growth dial separately (rung flow at t = ½), and has a cousin of wobble (complex dimensions act like
 a phase on the zoom, resembling twist or a Clifford rotor). It is missing one clean dial: a zoom
 (size) dial, which would make dimension an output, d = log(pieces)/log(1/zoom). Placement and
@@ -18,13 +18,13 @@ no new lead on the iterating half. All dials here are known math. No line for th
 
 ## Mapping
 
-| Fractal dial | In mult-add | Status |
+| Fractal dial | In the circle operation | Status |
 |---|---|---|
 | dimension d | fractional power (1+a)^d | has it |
 | weights p : 1−p (D_q, f(α)) | per-element t = p/(1−p) | has it |
 | branching growth | rung flow at t = ½ | has it, separately |
 | wobble / complex dimensions | phase on zoom; like twist, Clifford rotor | partial (analogy) |
-| zoom ratio r | none: mult-add has no size | missing: one candidate |
+| zoom ratio r | none: the circle operation has no size | missing: one candidate |
 | placement (lacunarity, Minkowski content) | geometry | outside |
 | topology (touching, gluing) | silent below d = 1 | outside |
 

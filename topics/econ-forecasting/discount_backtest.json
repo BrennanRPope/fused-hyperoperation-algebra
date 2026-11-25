@@ -6,7 +6,7 @@
     "ratio": 1.2116094408767324,
     "mae_log": 0.25711344179496604
    },
-   "constant mult-add mean": {
+   "the constant circle-operation mean": {
     "mean_forecast": 0.7400909711280009,
     "ratio": 1.182606251390159,
     "mae_log": 0.24718008157212257
@@ -34,7 +34,7 @@
     "ratio": 1.4346516968310925,
     "mae_log": 0.41560136396186065
    },
-   "constant mult-add mean": {
+   "the constant circle-operation mean": {
     "mean_forecast": 0.5455911160447129,
     "ratio": 1.3654315246028303,
     "mae_log": 0.3859158107729903
@@ -62,7 +62,7 @@
     "ratio": 1.6595695063194909,
     "mae_log": 0.5559913925414172
    },
-   "constant mult-add mean": {
+   "the constant circle-operation mean": {
     "mean_forecast": 0.3998476281998184,
     "ratio": 1.5384088244245537,
     "mae_log": 0.50486210838912
@@ -90,7 +90,7 @@
     "ratio": 2.1309068972763554,
     "mae_log": 0.7675940734375729
    },
-   "constant mult-add mean": {
+   "the constant circle-operation mean": {
     "mean_forecast": 0.2881042607991436,
     "ratio": 1.9213544662355524,
     "mae_log": 0.6905674022910264
@@ -118,7 +118,7 @@
     "ratio": 2.800389314293587,
     "mae_log": 1.0566709469180644
    },
-   "constant mult-add mean": {
+   "the constant circle-operation mean": {
     "mean_forecast": 0.19961223297163214,
     "ratio": 2.450212889789516,
     "mae_log": 0.9207884992892332

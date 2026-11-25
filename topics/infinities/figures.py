@@ -100,7 +100,7 @@ ax.set_xlim(-0.5, 7.2); ax.set_ylim(-1.0, 0.9); ax.axis("off")
 ax.set_title("Growth of the finite stages: the fused rungs fill the gap smoothly", loc="left", fontsize=13)
 save(fig, "f2_three_scales.png")
 
-# ------------------------------------------------------------- 3. zoomed mult-add sweeps dimension
+# ------------------------------------------------------------- 3. the zoomed circle-operation sweeps dimension
 def Dt(t):
     return (math.log1p(t) - (t*math.log(t) if t > 0 else 0)/(1+t))/math.log(2)
 fig, axs = plt.subplots(1, 2, figsize=(11, 4.4), gridspec_kw={"width_ratios": [1.15, 1]})
@@ -109,7 +109,7 @@ ts = np.linspace(0, 1, 400)
 ax.plot(ts, [Dt(t) for t in ts], color=BLUE, lw=2.6)
 for t in [0.1, 0.5]:
     ax.plot(t, Dt(t), "o", color=RED); ax.text(t + 0.03, Dt(t) - 0.07, f"t = {t}: dim {Dt(t):.2f}", fontsize=10)
-ax.set_xlabel("zoom t in  a + b + t·ab     (0 = addition, 1 = mult-add)")
+ax.set_xlabel("zoom t in  a + b + t·ab     (0 = addition, 1 = the circle operation)")
 ax.set_ylabel("dimension of the corners it lands on")
 ax.set_xlim(0, 1); ax.set_ylim(0, 1.05)
 ax.spines[["top", "right"]].set_visible(False)
