@@ -54,7 +54,7 @@ PASS Goldschmidt division of 1 by d in [1/2,1] reaches about 1e-15 after 6 facto
 == 9. Horner and the cube
 PASS a chain of circle operations, each one Horner step acc·(1+b)+b, sums all 2^n - 1 corners of the cube in n steps
 PASS the three fma shapes agree exactly: a·b+(a+b) = a·(1+b)+b = b·(1+a)+a
-PASS circle powers by squaring: a^(∘₁2n) = a^(∘₁n) ∘₁ a^(∘₁n)
+PASS Circle powers by squaring: a^(∘₁2n) = a^(∘₁n) ∘₁ a^(∘₁n)
 PASS Bernoulli: a^(∘₁n) >= n·a for a >= -1 (compounding never loses to simple interest)
 
 41/41 checks pass

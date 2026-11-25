@@ -32,7 +32,7 @@ PASS matrix form: trace-free part X₀ has tr(X₀²) = (p² - 4d)/2
 PASS rate in the new chart: (1+cy)²·V(y/(1+cy)) = 1 + (p+2c)y + (d+pc+c²)y²
 PASS discriminant unchanged: (p+2c)² - 4(d+pc+c²) = p² - 4d
 PASS conjugation: F_{p+2c, d+pc+c²}(φa, φb) = φ(F_{p,d}(a,b)), φ(x) = x/(1-cx)
-PASS the circle operation (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)
+PASS The circle operation (1,0) with c = -1/2 lands on (0,-1/4); scaled by 2 that is velocity addition (0,-1)
 PASS parity (-2,0) with c = 1 lands exactly on velocity addition (0,-1); same parabola p²-4d = 4
 PASS units: scaling x ↦ λx sends (p,d) to (λp, λ²d) and p²-4d to λ²(p²-4d)
 PASS conjugation and scaling never change the sign of p²-4d (random c, λ on 6 points)

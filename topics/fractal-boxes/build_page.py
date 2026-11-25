@@ -80,7 +80,7 @@ html = f"""<!DOCTYPE html>
 <tr><td>Iterating: P½ ∘ P½ = P</td><td>No</td><td>Needs a half-exponential on counts; linear-size operations can't</td></tr>
 <tr><td>Canonical number</td><td>Yes</td><td>2^D is forced by continuity</td></tr>
 <tr><td>Canonical shape</td><td>No</td><td>Many dimension-½ fractals, each with its own count wobble</td></tr>
-<tr><td>Fits the circle operation</td><td>Yes</td><td>Dimension D is the circle power a^(∘₁D) = (1 + a)^D − 1</td></tr>
+<tr><td>Fits the circle operation ∘₁ (called mult-add before 1.0)</td><td>Yes</td><td>Dimension D is the circle power a^(∘₁D) = (1 + a)^D − 1</td></tr>
 <tr><td>Merging and complement</td><td>Same as the dials</td><td>Union half √2 − 1, intersection half √2 + 1, as before</td></tr>
 <tr><td>Reaches the choice-free lead</td><td>No</td><td>All fractals have exactly the size of P(ℕ)</td></tr>
 </tbody></table>

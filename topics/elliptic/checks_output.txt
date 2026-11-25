@@ -4,7 +4,7 @@ PASS 1c z = -1/t, so z -> wall exactly where x(t) = t^2+a1 t-a2 = 0: the node's 
 PASS 1d lens (t-m1)/(t-m2) of the two branches turns the chord law into multiplication
 PASS 1e discriminant of the tangent slopes a1^2+4a2 equals the map's k^2-4d
 PASS 1f smooth points over F_p: p-1 when the walls are in F_p (two walls), p+1 when not (turning), p at the cusp
-   circle-operation node y^2-xy=x^3 (k=1,d=0): p=5 -> 4 points
+   Circle-operation node y^2-xy=x^3 (k=1,d=0): p=5 -> 4 points
    velocity-addition node y^2=x^3+x^2 (k=0,d=-1): p=5 -> 4 points
    turning node y^2=x^3-x^2 (k=0,d=1): p=5 -> 4 points
    cusp y^2=x^3: p=5 -> 5 points

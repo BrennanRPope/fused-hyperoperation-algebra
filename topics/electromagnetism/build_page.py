@@ -55,7 +55,7 @@ html{{scroll-padding-top:72px}}
 <header class="band"><div class="wrap">
 <h1>Electromagnetism through the circle-operation lens</h1>
 <p class="lede">Electromagnetism fits under the same lens as gravity, in three exact places, and it comes first in the story: Maxwell's waves are what set the dial that special relativity and then gravity run on. Nothing here is new physics; it is known physics seen through one shared lens, with the renamings marked as renamings.</p>
-{fig("history", "History in order. Maxwell's equations fix the speed c = 1/√(ε₀μ₀), which is the dial of the velocity law. Special relativity composes boosts by the circle operation. General relativity makes the twist rule local. Electromagnetism and gravity share the loop rule in the bottom band.")}
+{fig("history", "History in order. Maxwell's equations fix the speed c = 1/√(ε₀μ₀), which is the dial of the velocity law. Special relativity composes boosts by the circle operation ∘₁ (called mult-add before 1.0). General relativity makes the twist rule local. Electromagnetism and gravity share the loop rule in the bottom band.")}
 </div></header>
 <nav class="scroll band" style="padding-block:0"><a href="#answer">The answer</a><a href="#dial">1. The dial</a><a href="#boosts">2. Boosting E and B</a><a href="#gauge">3. The gauge phase</a><a href="#loops">4. Loops and lattices</a><a href="#corner">5. F as the corner</a><a href="#one">6. One equation</a><a href="#walls">7. Where it stops</a><a href="#gravity">8. On to gravity</a><a href="#table">Scorecard</a><a href="#files">Checks and proofs</a></nav>
 

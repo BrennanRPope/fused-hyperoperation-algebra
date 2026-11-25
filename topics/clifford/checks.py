@@ -107,7 +107,7 @@ for name, kv, pq, law in [("circle (complex numbers, Cl(0,1))", -1, (0, 1), "tan
     B_ = G.add(G.scalar(1), G.scale(b, G.e(0)))
     prod = G.mul(A_, B_)
     s0 = prod.get(0, 0); s1 = prod.get(1, 0)
-    check(f"{name}: (1 + a e)(1 + b e) ratio gives F_{pd} = {law}", Z(s1/s0 - F(a, b, *pq)))
+    check(f"{name}: (1 + a e)(1 + b e) ratio gives F_{pq} = {law}", Z(s1/s0 - F(a, b, *pq)))
 check("The circle operation sits in the split-complex numbers: theta = (1 + e)/2 with e^2 = +1 is idempotent",
       (lambda G: G.equal(G.mul(G.add(G.scalar(sp.Rational(1, 2)), G.scale(sp.Rational(1, 2), G.e(0))),
                                 G.add(G.scalar(sp.Rational(1, 2)), G.scale(sp.Rational(1, 2), G.e(0)))),
@@ -129,7 +129,7 @@ chart = sp.simplify(cl[3] / cl[0])
 check("Clifford conjugation read in the chart is the landscape inverse -a/(1+pa) (the circle operation: the inverse -a/(1+a))",
       Z(chart + a/(1 + p*a)) and Z(F(a, chart)))
 RES["B"] = ("Exact match: the sign of p^2 - 4d picks C (circle), split-complex (line) or dual numbers (border). "
-            "the circle operation (1,0) is the split case in the idempotent coordinate theta = (1+e)/2; its wall -1 is the zero divisor 1 - theta "
+            "The circle operation (1,0) is the split case in the idempotent coordinate theta = (1+e)/2; its wall -1 is the zero divisor 1 - theta "
             "(the light cone); conjugation is the inverse.")
 
 # =============================================================================================

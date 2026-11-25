@@ -71,6 +71,6 @@ PASS - sum law (x * a) (+) (x * b) = x * (a + b + 1) (x,a,b < 7)
 PASS - definability: b (+) c = d  iff  for all x, (x*b)*c = x*d  (b,c,d < 7, x < 6)
 PASS - definability: b + c + 1 = d  iff  for all x, (x*b)(+)(x*c) = x*d
 PASS - zero is the only right identity of the fused exponent (y < 20)
-PASS - the circle operation alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives
+PASS - The circle operation alone is x in disguise: (a (+) b) + 1 = (a+1)(b+1) on Nat, lift one-to-one onto positives
 
 67/67 checks passed

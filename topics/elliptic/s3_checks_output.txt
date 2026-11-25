@@ -11,7 +11,7 @@ PASS 5a 4 non-CM curves, primes to 6000: turning angles fit the 3-sphere's sin^2
 PASS 5b 2 CM curves: half the primes are exact quarter turns (a_p = 0), the rest spread evenly on a circle (the 1-sphere), not sin^2   0.509 quarter turns; uniform chi2 3.2 on 11 dof
    non-CM moments E[(a_p/sqrt p)^2n], n=1..5: 0.98, 1.92, 4.73, 13.11, 39.03   Catalan: 1, 2, 5, 14, 42
    CM moments: 0.97, 2.87, 9.49, 33.01, 118.19   half the middle Pascal entry: 1, 3, 10, 35, 126
-PASS 6a non-CM moments sit near the Catalan numbers (within 10% for n <= 3; from a finite set of primes) and far from the circle's
+PASS 6a non-CM moments sit near the Catalan numbers (within 10% for n <= 3, from a finite set of primes) and far from the circle's
 PASS 6b CM moments sit near half the middle layer of the 2n-cube (within 10% for n <= 3) and far from Catalan (from n = 2; both laws give 1 at n = 1)
 PASS 6c exact, n = 1..8: the circle keeps the middle layer of the 2n-cube, the 3-sphere keeps middle minus neighbour = Catalan = corner walks that never dip below the start
 PASS 6d the sin^2 weight is (2 - e^{2i theta} - e^{-2i theta})/4 = |alpha - beta|^2/4: the squared distance between the two walls

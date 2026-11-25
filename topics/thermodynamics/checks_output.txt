@@ -77,7 +77,7 @@ PASS a blackbody seen head-on from a moving frame: T' = T sqrt((1+b)/(1-b)); boo
 == L. Landscape placements (jets) ==
      partition excess z, fridge u, Jarzynski          (k, d) = (1, 0)   k^2 - 4d = 1  -> two walls
      engine eta, heat pump 1/COP, Carnot, CA, Otto    (k, d) = (-1, 0)   k^2 - 4d = 1  -> two walls
-     Tsallis S_q (q_T = 1/2 shown)                      (k, d) = (1/2, 0)   k^2 - 4d = 1/4  -> two walls
+     Tsallis S_q (q_T = 1/2 shown)                    (k, d) = (1/2, 0)   k^2 - 4d = 1/4  -> two walls
      Ising series (disagreement p)                    (k, d) = (-2, 0)   k^2 - 4d = 4  -> two walls
      Fermi t = 1 - 2n, Ising parallel, Doppler        (k, d) = (0, -1)   k^2 - 4d = 4  -> two walls
      gray plates / Stokes pile                        (k, d) = (-2, 1)   k^2 - 4d = 0  -> border

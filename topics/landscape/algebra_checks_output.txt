@@ -6,7 +6,7 @@ PASS third-order jet of F_{p,d} is (corner, bend) = (p, d)
 PASS associativity holds numerator-by-numerator, denominator-by-denominator
 PASS d/db F(a,b) at b=0 is 1 + p a + d a^2 (the Riccati rate)
 PASS lift: M(a (+) b) = M(a) M(b) with M(x) = (1-ux)/(1-vx)
-PASS the circle operation is the case u = -1, v = 0 (wall at -1, other wall at infinity)
+PASS The circle operation is the case u = -1, v = 0 (wall at -1, other wall at infinity)
 PASS velocity addition is u = 1, v = -1 (walls at +1 and -1)
 PASS tangent addition is p = 0, d = 1 (walls at +i, -i)
 PASS discriminant p^2 - 4d = (u - v)^2

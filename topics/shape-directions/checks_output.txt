@@ -19,7 +19,7 @@ PASS 3b fourth order: the rung leaves the landscape plane by r3 = -s(s-1)/12 (ze
 PASS 3c the crossings at rungs 0 and 1 are transverse (dr3/ds = +1/12 at 0, -1/12 at 1)
    tangents at the circle operation in (r1,r2,r3): units (1,0,0), weight (1,0,0), bend (0,1,0), rung [1, 1/4, -1/12]
 PASS 3d rank of {units, weight, bend, rung} = 3 (weight repeats units; bend and rung are new)
-PASS 3e any third-order jet (p, d) is reached from plain addition by a ruler x + f2 x^2 + f3 x^3 (L2 collapses everything locally)   {f2: -p/2, f3: (p**2 - d)/3}
+PASS 3e any third-order jet (p, d) is reached from plain addition by a ruler x + f2 x^2 + f3 x^3 (L2 collapses everything locally)   {f2: -p/2, f3: (p**2 - q)/3}
 PASS 4a the gluing w -> (1+w)q - 1 commutes with the circle operation for every q: the law near 0 never sees q
    q = 1.0e-6: j = 1000744.19691
    q = 0.0001: j = 10763.9042039

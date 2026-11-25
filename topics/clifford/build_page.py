@@ -24,7 +24,7 @@ ROWS = [
       ma="The sign of p² − 4d picks which one the θ-lift is. The circle operation (1, 0) is the split case, written in its idempotent θ = (1 + e)/2. Its wall −1 is where the lift hits the zero divisor 1 − θ: the light cone. The class is set by the discriminant, not by the sign of d alone.",
       src="checks B; Lean complex_no_zero_norm, split_zero_divisor, dual_nilpotent, wall_zero_divisor, theta_idem"),
  dict(id="03", piece="k as a multivector (your question)", year="", status="Exact", kind="new",
-      head="The circle operation's k is a light-cone multivector",
+      head="In the circle operation ∘₁ (called mult-add before 1.0), k is a light-cone multivector",
       clif="Every element K of a 2D Clifford algebra obeys K² = tr(K)·K − N(K).",
       ma="Use K as the dial with plain numbers: (1 + aK)(1 + bK) = (1 − N·ab) + (a + b + tr·ab)K, so the law is the landscape with p = tr K and d = N K. The circle operation's own k is K = k(1 + e)/2, which has N = 0: it sits on the light cone. Curvature is minus the square of K's non-scalar part. A fully general K in Cl(3,0) gives the landscape with complex p and d (the complex unit is the volume element).",
       src="checks C; Lean dial_sq, dial_lift, dial_discriminant, circ_dial_null"),

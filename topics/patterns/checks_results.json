@@ -16,7 +16,7 @@
    "detail": ""
   },
   {
-   "name": "The circle operation: denominator U(n) \u2212 (1+a)U(n\u22121) = 1, so a^(\u2295n) = (1+a)\u207f \u2212 1",
+   "name": "The circle operation: denominator U(n) \u2212 (1+a)U(n\u22121) = 1, so a^(\u2218\u2081n) = (1+a)\u207f \u2212 1",
    "ok": true,
    "detail": ""
   },

@@ -4,15 +4,15 @@
 [PASS] vector square = the form: (x u + y v)^2 = x^2 + p x y + d y^2 (scalar)
 [PASS] theta = uv (a product of two vectors, a bivector) obeys theta^2 = p theta - d: the theta-lift of groups-lie
 [PASS] (1 + a theta)(1 + b theta) = (1 - d a b)(1 + F_{p,d}(a,b) theta): the landscape law is the geometric product of two lifts
-[PASS] circle-operation point (p,d) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent
-[PASS] the circle operation's rate form is x^2 + xy = x(x + y): two light lines, so circle-operation lifts are hyperbolic rotors (boosts)
+[PASS] Circle-operation point (p,d) = (1,0): (1 + a theta)(1 + b theta) = 1 + (a * b) theta exactly, theta idempotent
+[PASS] The circle operation's rate form is x^2 + xy = x(x + y): two light lines, so circle-operation lifts are hyperbolic rotors (boosts)
 
 == B. The three 2D Clifford algebras are the landscape's three countries
 [PASS] theta' = theta - p/2 squares to the scalar p^2/4 - d (a quarter of the discriminant)
 [PASS] circle (complex numbers, Cl(0,1)): (1 + a e)(1 + b e) ratio gives F_(0, 1) = tan addition
 [PASS] line (split-complex numbers, Cl(1,0)): (1 + a e)(1 + b e) ratio gives F_(0, -1) = velocity addition
 [PASS] border (dual numbers, Cl(0,0,1)): (1 + a e)(1 + b e) ratio gives F_(0, 0) = plain addition
-[PASS] the circle operation sits in the split-complex numbers: theta = (1 + e)/2 with e^2 = +1 is idempotent
+[PASS] The circle operation sits in the split-complex numbers: theta = (1 + e)/2 with e^2 = +1 is idempotent
 [PASS] the wall a = -1: 1 - theta times theta = 0, so the wall is where the lift hits a zero divisor (the light cone of Cl(1,0))
 [PASS] conjugation theta -> p - theta is multiplicative on the even part
 [PASS] lift times its conjugate = the rate V(a) = 1 + pa + da^2 (for the circle operation: 1 + a, the plain lift)
@@ -22,7 +22,7 @@
 [PASS] every K = k0 + k1 e satisfies K^2 = tr(K) K - N(K) with tr = 2 k0, N = k0^2 - kappa k1^2
 [PASS] (1 + aK)(1 + bK) = (1 - N ab) + (a + b + tr ab) K: the circle operation with dial K reads as F_{tr K, N K}
 [PASS] chart-free curvature: d - p^2/4 = -kappa k1^2, minus the square of K's non-scalar part
-[PASS] the circle operation's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,d) = (k, 0)
+[PASS] The circle operation's own dial is null: K = k(1 + e)/2 with e^2 = 1 has K^2 = k K, so tr K = k, N K = 0 and (p,d) = (k, 0)
 [PASS] so the dial k is a light-cone multivector, and the curvature of the circle operation is -k^2/4 (hyperbolic), matching relativity
 [PASS] Cl(3,0), K = s + vector: K^2 = 2s K - (s^2 - |v|^2): a line-country law (vectors square positive)
 [PASS] Cl(3,0), K = s + bivector (a quaternion): K^2 = 2s K - (s^2 + |B|^2): a circle-country law (rotations)

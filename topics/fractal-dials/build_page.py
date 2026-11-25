@@ -28,7 +28,7 @@ html = f"""<!DOCTYPE html>
 <header class="band top"><div class="wrap">
 <p class="mute" style="margin:0 0 8px">Fused Hyperoperation Algebra · fractional power sets · Nov 25, 2026</p>
 <h1>Hidden dials of a half box</h1>
-<p class="lede">Many fractals share dimension ½. What else tells them apart? Six known dials do: zoom, placement, wobble, weights, topology and branching growth. The circle operation already has the two that matter for counting (dimension and weights), has a cousin of a third (wobble), and is missing one clean one: a zoom dial for size. No mix of shape dials gives the natural iterating half of the power set; that still needs a dial on how fast branching grows.</p>
+<p class="lede">Many fractals share dimension ½. What else tells them apart? Six known dials do: zoom, placement, wobble, weights, topology and branching growth. The circle operation ∘₁ (called mult-add before 1.0) already has the two that matter for counting (dimension and weights), has a cousin of a third (wobble), and is missing one clean one: a zoom dial for size. No mix of shape dials gives the natural iterating half of the power set; that still needs a dial on how fast branching grows.</p>
 <div class="box verdict"><strong>Verdict, on its own merits: a small, clean addition; no new lead on the iterating half.</strong>
 <ol class="key">
 <li><strong>All of these dials are known math.</strong> Zoom ratios and Moran's equation (1946), lacunarity (Mandelbrot; Allain and Cloitre 1991), Minkowski content and complex dimensions (Lapidus and van Frankenhuijsen), multifractal spectra (Halsey and others 1986), and topology (Brouwer 1910). None is new here.</li>
