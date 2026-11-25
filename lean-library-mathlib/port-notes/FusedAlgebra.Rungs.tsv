@@ -1,0 +1,43 @@
+original	status	new_name	note
+sadd	ported	MultAdd.sadd	equals MultAdd.rung 1 (rung_one)
+fexp	ported	MultAdd.fexp	equals MultAdd.rung 3 (rung_three)
+tet	ported	MultAdd.tet	now hyperoperation 4; tet_zero, tet_succ added
+ftet	ported	MultAdd.ftet	equals MultAdd.rung 4 (rung_four)
+pent	ported	MultAdd.pent	now hyperoperation 5; pent_zero, pent_succ added
+fpent	ported	MultAdd.fpent	equals MultAdd.rung 5 (rung_five)
+sadd_lift	ported	MultAdd.sadd_add_one	renamed
+pow_pos'	mathlib	Nat.pow_pos	
+fexp_lift	ported	MultAdd.fexp_add_one	renamed
+tet_pos	ported	MultAdd.tet_pos	stated as 0 < _
+ftet_lift	ported	MultAdd.ftet_add_one	renamed
+lift_inj	mathlib	Nat.add_right_cancel	
+fexp_zero_right	ported	MultAdd.fexp_zero_right	
+fexp_zero_left	ported	MultAdd.fexp_zero_left	
+fexp_carries_multAdd	ported	MultAdd.fexp_eq_multAdd	renamed
+fexp_multAdd_right	ported	MultAdd.fexp_multAdd_left	renamed (mult-add is in the left argument)
+fexp_tower	ported	MultAdd.fexp_fexp	renamed
+fexp_sadd	ported	MultAdd.fexp_sadd	
+fexp_not_assoc	ported	MultAdd.fexp_not_assoc	
+fexp_not_comm	ported	MultAdd.fexp_not_comm	
+fexp_example	ported	MultAdd.fexp_example	
+multAdd_iter	ported	MultAdd.multAdd_succ	renamed; instance of MultAdd.rung_succ_succ
+fexp_iter	ported	MultAdd.fexp_succ	renamed; instance of MultAdd.rung_succ_succ
+ftet_iter	ported	MultAdd.ftet_succ	renamed; instance of MultAdd.rung_succ_succ
+fexp_base_iter	ported	MultAdd.iterate_fexp_add_one	renamed; Nat.repeat replaced by Function.iterate
+pent_pos	ported	MultAdd.pent_pos	stated as 0 < _
+fpent_lift	ported	MultAdd.fpent_add_one	renamed
+tet_one	ported	MultAdd.tet_one	
+ftet_zero_right	ported	MultAdd.ftet_zero_right	
+ftet_zero_left	ported	MultAdd.ftet_zero_left	
+fpent_zero_right	ported	MultAdd.fpent_zero_right	
+tet_one_base	ported	MultAdd.one_tet	renamed; is hyperoperation_ge_three_one
+pent_one_base	ported	MultAdd.one_pent	renamed; is hyperoperation_ge_three_one
+fpent_zero_left	ported	MultAdd.fpent_zero_left	
+fpent_iter	ported	MultAdd.fpent_succ	renamed; instance of MultAdd.rung_succ_succ
+ftet_values	ported	MultAdd.ftet_values	
+fpent_values	ported	MultAdd.fpent_values	
+ftet_not_assoc	ported	MultAdd.ftet_not_assoc	
+ftet_not_comm	ported	MultAdd.ftet_not_comm	
+ftet_no_multAdd_dist	ported	MultAdd.ftet_multAdd_left_ne	renamed
+ftet_no_tower	ported	MultAdd.ftet_ftet_ne	renamed
+ftet_no_sum	ported	MultAdd.ftet_sadd_ne	renamed

@@ -1,0 +1,10 @@
+original	status	new_name	note
+layer	mathlib	Nat.choose	
+layer_zero_right	mathlib	Nat.choose_zero_right	
+layer_succ_succ	mathlib	Nat.choose_succ_succ	
+layer_eq_zero	mathlib	Nat.choose_eq_zero_of_lt	
+layer_self	mathlib	Nat.choose_self	
+absorb	mathlib	Nat.add_one_mul_choose_eq	sides swapped: (n + 1) * choose n k = choose (n + 1) (k + 1) * (k + 1)
+fact	mathlib	Nat.factorial	notation n !
+fact_pos	mathlib	Nat.factorial_pos	
+layer_step	mathlib	Nat.choose_succ_right_eq	choose n (k + 1) * (k + 1) = choose n k * (n - k)

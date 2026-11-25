@@ -1,0 +1,58 @@
+original	status	new_name	note
+multAdd	ported	MultAdd.multAdd	notation ✳ (was ⊞), scoped in MultAdd; defined for any [Add R] [Mul R]
+multAdd_def	ported	MultAdd.multAdd_def	
+multAdd_lift	ported	MultAdd.one_add_multAdd	renamed to mathlib style
+multAdd_lift'	ported	MultAdd.multAdd_add_one	renamed
+multAdd_comm	ported	MultAdd.multAdd_comm	also PreQuasiregular.instCommMonoid and Std.Commutative instance
+multAdd_assoc	ported	MultAdd.multAdd_assoc	proved from mul_assoc in PreQuasiregular; Std.Associative instance
+multAdd_zero	ported	MultAdd.multAdd_zero	simp
+zero_multAdd	ported	MultAdd.zero_multAdd	simp
+multAdd_excess	dropped	MultAdd.multAdd_def	was rfl, same statement as multAdd_def
+wAdd	ported	MultAdd.wAdd	
+wAdd_def	ported	MultAdd.wAdd_def	
+wAdd_lift	ported	MultAdd.one_add_mul_wAdd	renamed
+wAdd_scale	ported	MultAdd.mul_wAdd	renamed
+wAdd_comm	ported	MultAdd.wAdd_comm	
+wAdd_assoc	ported	MultAdd.wAdd_assoc	
+wAdd_zero	ported	MultAdd.wAdd_zero	simp; zero_wAdd added
+wAdd_weight_zero	ported	MultAdd.wAdd_weight_zero	simp
+wAdd_one	ported	MultAdd.wAdd_one	simp
+pw	mathlib	HPow.hPow (x ^ n)	Monoid.npow
+pw_eq_pow	mathlib	rfl	pw is replaced by ^
+pw_add	mathlib	pow_add	
+pw_mul	mathlib	pow_mul	
+pw_one	mathlib	one_pow	
+pw_mul_base	mathlib	mul_pow	
+pow_add'	mathlib	pow_add	
+mul_pow'	mathlib	mul_pow	
+one_pow'	mathlib	one_pow	
+mpow	ported	MultAdd.mpow	now defined as the power in PreQuasiregular R; mpow_zero, mpow_succ, mpow_one, mpow_mul added
+mpow_lift	ported	MultAdd.one_add_mpow	renamed; proved by map_pow oneAddHom
+mpow_add	ported	MultAdd.mpow_add	proved by pow_add
+wpow	ported	MultAdd.wpow	
+wpow_lift	ported	MultAdd.one_add_mul_wpow	renamed
+wpow_one	ported	MultAdd.wpow_one	
+foldMA	ported	MultAdd.multAddList	renamed; defined as List.prod in PreQuasiregular R
+prodL	mathlib	List.prod	
+sumL	mathlib	List.sum	
+foldMA_append	ported	MultAdd.multAddList_append	proved by List.prod_append
+foldMA_lift	ported	MultAdd.one_add_multAddList	proved by map_list_prod oneAddHom
+foldMA_perm	ported	MultAdd.multAddList_perm	proved by List.Perm.prod_eq
+groups	mathlib	List.sublists'	same recursion (List.sublists'_cons)
+sumL_append	mathlib	List.sum_append	
+sumL_map_cons	mathlib	List.sum_map_mul_left	with List.prod_cons
+one_add_foldMA_eq_corners	ported	MultAdd.one_add_multAddList_eq_sum_sublists	Finset form is Finset.prod_one_add
+neg_one_absorbs	ported	MultAdd.neg_one_multAdd	renamed; multAdd_neg_one added
+mpow_eq	ported	MultAdd.mpow_eq	
+wAdd_either	ported	MultAdd.wAdd_neg_one	renamed
+wAdd_neg_one_mirror	ported	MultAdd.wAdd_neg_one_eq_neg_multAdd	renamed
+wAdd_flip	ported	MultAdd.wAdd_neg_neg	renamed
+wpow_neg_one	ported	MultAdd.wpow_neg_one	
+multAddInv	ported	MultAdd.multAddInv	
+multAdd_multAddInv	ported	MultAdd.multAdd_multAddInv	
+multAddInv_multAdd	ported	MultAdd.multAddInv_multAdd	
+inv_one_add	ported	MultAdd.inv_one_add	
+no_multAddInv_at_wall	ported	MultAdd.neg_one_multAdd_ne_zero	renamed; see also MultAdd.isQuasiregular_iff_one_add_ne_zero
+msub	ported	MultAdd.msub	
+msub_multAdd	ported	MultAdd.msub_multAdd	msub_eq_multAdd_multAddInv added
+wAdd_wall	ported	MultAdd.wAdd_wall	

@@ -1,0 +1,20 @@
+original	status	new_name	note
+fisher	ported	FinanceMultAdd.fisher	generalised from ℚ to any field
+drag	ported	FinanceMultAdd.drag	generalised to any field
+gsum	ported	FinanceMultAdd.gsum	now a Finset sum over range N
+gordon	ported	FinanceMultAdd.gordon	generalised to any field
+sq_nonneg'	mathlib	mul_self_nonneg	
+pow_nonneg'	mathlib	pow_nonneg	
+one_le_pow	mathlib	one_le_pow₀	
+pow_le_pow'	mathlib	pow_le_pow_left₀	
+cheb	ported	FinanceMultAdd.pow_sub_pow_mul_sub_nonneg	renamed; any linearly ordered field
+power_mean	ported	FinanceMultAdd.arith_mean_pow_le	renamed; any linearly ordered field
+drag_le	ported	FinanceMultAdd.drag_le	any linearly ordered field
+am_hm	ported	FinanceMultAdd.inv_arith_mean_le_arith_mean_inv	restated with ⁻¹ in place of the hypotheses x * u = 1, y * v = 1, c * ((u + v) / 2) = 1
+average_factors	ported	FinanceMultAdd.average_factors	restated with ⁻¹ in place of the reciprocal hypotheses
+mall	mathlib	MultAdd.multAddList	was a copy of the library's list fold
+growth	mathlib	List.prod	(rs.map (1 + ·)).prod
+mall_growth	ported	FinanceMultAdd.multAddList_eq_growth	renamed; one line from one_add_multAddList
+gsum_le	ported	FinanceMultAdd.gsum_le	any linearly ordered field
+gsum_pole	ported	FinanceMultAdd.gsum_pole	any linearly ordered field
+lowest_rate_wins	ported	FinanceMultAdd.lowest_rate_wins	any linearly ordered field
