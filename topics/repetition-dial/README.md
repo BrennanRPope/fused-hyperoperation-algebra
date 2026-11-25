@@ -17,7 +17,8 @@ Question (Brennan): the framework isn't complete "until we figure out how repeti
 
 ## Known vs new (honest)
 - All the pieces are known: the interpolating formula 1/(e^x + a) is textbook; (1 + x/m)^m as m exclusive states is the binomial theorem; (Z^k − 1)/k is the Box-Cox transform / Tsallis q-logarithm (Box & Cox 1964; Tsallis 1988, with Tsallis q = 1 − k); the fluctuation n(1 ∓ n) is textbook; Haldane 1991 (PRL 67, 937) and Wu 1994 (PRL 73, 922) give the g statistics, and the sparse and crowded limits used here follow from Wu's equation.
-- Possibly new, as packaging only: reading 1/k as cells per element inside the mult-add family, the "quantised on the exclusive side" sign map, and the one-dial test (Haldane's g as a k that slides with crowding). Not checked against the literature closely; treat as "not found stated", not as a discovery.
+- Already in this project, found during the names review (item 4): topics/dial-survey item 4 and lean-library DialSurvey.lean had the per-element copies count first, with the opposite sign (factor (1 − kz)^(−1/k), so k = −1 is subsets and k = −1/m is at most m copies), and proved those cases in Lean (kRise_fermi, kRise_bose, kRise_parafermi, fall_vanish). The pages agree once the sign is read as weight versus probability (names-review/lean/Conventions.lean, weight_prob_flip). This page duplicated that result; it should cite dial-survey.
+- What this page adds on top: atoms compose by the k-rule (atoms_compose), the occupation and fluctuation in the k form, the 1/n − 1/x = k gap, the negative-count check for k = 2/3, and the one-dial test (Haldane's g as a k that slides with crowding). Packaging only, not found stated, not a discovery.
 - Naming hazard for checklist item 4: the project's q = k + 1, but Tsallis's q = 1 − k for the same family.
 
 ## Figures
