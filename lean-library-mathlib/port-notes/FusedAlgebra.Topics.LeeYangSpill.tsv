@@ -1,0 +1,11 @@
+original	status	new_name	note
+step_disc	ported	LeeYangSpill.step_disc	products written as squares
+step_gap	ported	LeeYangSpill.step_gap	a * a written a ^ 2
+wall_square	ported	LeeYangSpill.wall_square	products written as squares
+walls_factor	ported	LeeYangSpill.walls_factor	products written as squares
+border_orbit	ported	LeeYangSpill.border_orbit	u * u written u ^ 2
+sq_nonneg'	mathlib	mul_self_nonneg	also sq_nonneg
+slowest_step	ported	LeeYangSpill.slowest_step	generalised from ℤ to any linearly ordered commutative ring; written with ≤
+turning_never_stalls	ported	LeeYangSpill.turning_never_stalls	generalised from ℤ to any linearly ordered commutative ring
+tan_square	ported	LeeYangSpill.tan_square	restated as the matrix identity !![1, 1; -1, 1] ^ 2 = !![0, 2; -2, 0] (the original listed the four entry computations)
+tan_fourth	ported	LeeYangSpill.tan_fourth	restated as !![1, 1; -1, 1] ^ 4 = (-4) • 1 (the original listed the four entries of the square of the square)

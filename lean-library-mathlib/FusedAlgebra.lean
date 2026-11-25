@@ -26,6 +26,7 @@ public import FusedAlgebra.Topics.InformationTheory
 public import FusedAlgebra.Topics.Landscape
 public import FusedAlgebra.Topics.LeeYang
 public import FusedAlgebra.Topics.LeeYangCluster
+public import FusedAlgebra.Topics.LeeYangSpill
 public import FusedAlgebra.Topics.LinearAlgebra
 public import FusedAlgebra.Topics.NSContinuum
 public import FusedAlgebra.Topics.NumberPlane
