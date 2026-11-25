@@ -17,7 +17,7 @@ wAdd_assoc	ported	MultAdd.wAdd_assoc
 wAdd_zero	ported	MultAdd.wAdd_zero	simp; zero_wAdd added
 wAdd_weight_zero	ported	MultAdd.wAdd_weight_zero	simp
 wAdd_one	ported	MultAdd.wAdd_one	simp
-pw	mathlib	HPow.hPow (x ^ n)	Monoid.npow
+pw	mathlib	HPow.hPow (x ^ n)	NPow.npow
 pw_eq_pow	mathlib	rfl	pw is replaced by ^
 pw_add	mathlib	pow_add	
 pw_mul	mathlib	pow_mul	

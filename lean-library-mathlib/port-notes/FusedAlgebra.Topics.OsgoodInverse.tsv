@@ -5,7 +5,7 @@ ric_lift	ported	MultAdd.OsgoodInverse.one_add_ric	renamed; right side written (1
 ric_step	ported	MultAdd.OsgoodInverse.ric_step	
 ric_step_multAdd	ported	MultAdd.OsgoodInverse.ric_step_multAdd	
 riccati_clock_step	ported	MultAdd.OsgoodInverse.riccati_clock_step	1 / x written x⁻¹
-steps	mathlib	AddMonoid.nsmul	steps h n is n • h
+steps	mathlib	NSMul.nsmul	steps h n is n • h
 steps_add	mathlib	add_nsmul	
 riccati_clock	ported	MultAdd.OsgoodInverse.riccati_clock	steps h n is n • h; 1 / x written x⁻¹
 riccati_hits_wall	ported	MultAdd.OsgoodInverse.riccati_hits_wall	steps h m is m • h; 1 / x written x⁻¹
@@ -30,7 +30,7 @@ fsum_mono	mathlib	Finset.sum_le_sum
 fsum_nonneg	mathlib	Finset.sum_nonneg	
 one_le_pow2	mathlib	Nat.one_le_two_pow	
 pow2_succ	mathlib	Nat.two_pow_succ	
-const_block	ported	MultAdd.OsgoodInverse.blk_const	renamed; stated for the dyadic block blk (start 2 ^ j) only, which is the only use; the general start is Finset.sum_const with Nat.card_Ico
+const_block	ported	MultAdd.OsgoodInverse.const_block	restored Nov 25 for a block of length 2 ^ j starting at any s (fsum is the sum over Ico s (s + 2 ^ j)); blk_const is its case s = 2 ^ j; generalised from ℚ to any field
 block_start	ported	MultAdd.OsgoodInverse.block_start	one line from MultAdd.Cube.mpow_one_add_one
 blk	ported	MultAdd.OsgoodInverse.blk	Finset sum over Ico (2 ^ j) (2 ^ (j + 1)); any field
 Antitone1	mathlib	AntitoneOn	Antitone1 a is AntitoneOn a (Set.Ici 1)

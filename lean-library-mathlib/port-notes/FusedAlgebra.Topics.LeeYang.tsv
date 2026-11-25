@@ -6,7 +6,7 @@ Mat2.mul	mathlib	HMul.hMul (Matrix.mul_fin_two)
 Mat2.smul	mathlib	SMul.smul (Matrix.smul)	
 Mat2.tr	mathlib	Matrix.trace	Matrix.trace_fin_two
 Mat2.det	mathlib	Matrix.det	Matrix.det_fin_two
-Mat2.pow	mathlib	HPow.hPow (Monoid.npow)	original recursion multiplied on the left; same value
+Mat2.pow	mathlib	HPow.hPow (NPow.npow)	original recursion multiplied on the left; same value
 edge_gas	ported	LeeYang.edge_gas	
 edge_gas_free	ported	LeeYang.edge_gas_free	
 edge_gas_hardcore	ported	LeeYang.edge_gas_hardcore	

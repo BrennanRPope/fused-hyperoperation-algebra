@@ -9,19 +9,19 @@ Lean 4.37.0-rc1 with mathlib v4.37.0-rc1. The core-Lean library is untouched.
 - All 62 modules are ported. `lake build` completes with no errors and no warnings, with
   mathlib's standard linter set switched on in `lakefile.toml`.
 - `lake exe runLinter FusedAlgebra` (mathlib's declaration linter) passes.
-- `lake env lean Check.lean` reports 1,964 theorems, all using only `propext`,
+- `lake env lean Check.lean` reports 1,970 theorems, all using only `propext`,
   `Classical.choice` and `Quot.sound`, and no `sorry`.
 - Every one of the 1,750 original theorem names (and every original definition) has a row in a
   name table under `port-notes/`. `python3 tools/port_notes.py` checks that coverage against
-  `../lean-library/theorems.tsv`; `lake env lean tools/CheckNames.lean` checks that all 1,717
+  `../lean-library/theorems.tsv`; `lake env lean tools/CheckNames.lean` checks that all 1,720
   "ported" rows name a declaration that really exists in the port.
 - Nothing is marked "not ported".
 
-What these checks do **not** establish: that each ported statement says exactly what the
-original said. Where a statement was restated, generalised, strengthened or given an extra
-hypothesis, the table row says so, but those rows were written by the porter of each module and
-have not been reviewed line by line against the originals. Treat the `note` column as the list
-of places to look.
+These checks alone do not establish that each ported statement says exactly what the original
+said. Where a statement was restated, generalised, strengthened or given an extra hypothesis,
+the table row says so. A separate line-by-line review against the originals has since been
+done; it found four helper lemmas that had lost content, now restored (see "Review fixes" at
+the end).
 
 ## How to build
 
@@ -74,7 +74,7 @@ Most modules also have `port-notes/<Module>.md` with the porter's remarks and ju
 |---|---:|---:|---:|---:|---:|---:|
 | `Base` | 46 | 57 | 42 | 14 | 1 | 0 |
 | `Cube` | 7 | 9 | 0 | 9 | 0 | 0 |
-| `Foundations.FusedPeano` | 65 | 89 | 51 | 30 | 8 | 0 |
+| `Foundations.FusedPeano` | 65 | 89 | 52 | 29 | 8 | 0 |
 | `Foundations.Independence` | 7 | 27 | 11 | 13 | 3 | 0 |
 | `Foundations.MultAddRing` | 51 | 78 | 41 | 34 | 3 | 0 |
 | `Rungs` | 36 | 42 | 40 | 2 | 0 | 0 |
@@ -93,10 +93,10 @@ Most modules also have `port-notes/<Module>.md` with the porter's remarks and ju
 | `Topics.Elliptic` | 22 | 28 | 28 | 0 | 0 | 0 |
 | `Topics.EllipticS3` | 17 | 19 | 17 | 1 | 1 | 0 |
 | `Topics.EntropyNoise` | 41 | 49 | 42 | 7 | 0 | 0 |
-| `Topics.Fermat.Fermat3` | 108 | 127 | 39 | 81 | 7 | 0 |
+| `Topics.Fermat.Fermat3` | 108 | 127 | 40 | 81 | 6 | 0 |
 | `Topics.Fermat.Fermat4` | 9 | 9 | 5 | 3 | 1 | 0 |
 | `Topics.Fermat.FermatRoute` | 9 | 10 | 5 | 4 | 1 | 0 |
-| `Topics.Fermat.FreyPieces` | 46 | 64 | 40 | 21 | 3 | 0 |
+| `Topics.Fermat.FreyPieces` | 46 | 64 | 41 | 20 | 3 | 0 |
 | `Topics.Finance` | 16 | 19 | 13 | 6 | 0 | 0 |
 | `Topics.FractionalRungs` | 8 | 9 | 8 | 0 | 1 | 0 |
 | `Topics.FusedConstants` | 20 | 22 | 19 | 2 | 1 | 0 |
@@ -134,7 +134,7 @@ Most modules also have `port-notes/<Module>.md` with the porter's remarks and ju
 | `Topics.Toric.ProjectivePlane` | 16 | 24 | 19 | 5 | 0 | 0 |
 | `Topics.Toric.ToricCharts` | 16 | 24 | 24 | 0 | 0 | 0 |
 | `Topics.TwistedBoosts` | 36 | 58 | 44 | 13 | 1 | 0 |
-| **Total** | 1750 | 2283 | 1717 | 489 | 77 | 0 |
+| **Total** | 1750 | 2283 | 1720 | 487 | 76 | 0 |
 
 "Rows" is larger than "Original theorems" because the tables also list definitions, structures
 and instances. The port has more theorems than "Ported" because of new bridge lemmas and
@@ -214,8 +214,6 @@ where mathlib supplies a classical theorem the docstring and table say so.
 - **Hypotheses removed** (statements got stronger) are listed per row, for example in
   Thermodynamics, Relativity, Statistics (`bayes_odds`, `bp_layers`) and
   `ShapeDirections.periods_outnumber_curves` (now all `g ≥ 2`).
-- **One narrowing:** `OsgoodInverse.const_block` is kept only in the form its single use needs
-  (`blk_const`).
 - **`decide +kernel`** is still used for the large numeric checks in Pi, Knots, Partitions and
   QCounting, as in the original. It is kernel evaluation and adds no axioms.
 - **Import graph changed.** `EntropyNoise` now imports `Finance`; `JetFields` imports
@@ -252,3 +250,32 @@ Porters left these in topic files because the core was frozen during the port:
 modules were ported in parallel in 13 dependency-ordered groups following `PORTING-GUIDE.md`,
 one commit per module, each gated on compiling with no output. The final checks listed under
 Status were then run on the whole library.
+
+## Review fixes (Nov 25, 2026)
+
+A line-by-line check of the port at `95bf1f4` against the core-Lean originals found four helper
+lemmas that had lost content. All four are restored, each saying at least what the original
+said:
+
+| Original | Problem found | Now |
+|---|---|---|
+| `FusedPeano.add_right_cancel'` | missing; the table pointed to mathlib's `add_right_cancel`, which did not apply because no cancellation instance existed on the models | `MAFound.FusedPeano.add_right_cancel`, proved for every model, plus `add_left_cancel` and an `IsCancelAdd N` instance, so mathlib's lemma now applies as well |
+| `Fermat3.measure_lt` | missing (bookkeeping for the exponent-3 descent) | `Fermat3.measure_lt`, original statement. The descent itself is still not ported |
+| `FreyPieces.pow_dvd_bound` | weaker: needed `q` prime | `FreyPieces.pow_dvd_bound` with the original hypothesis `2 ≤ q` |
+| `OsgoodInverse.const_block` | weaker: only the block starting at `2 ^ j` | `MultAdd.OsgoodInverse.const_block` for any start `s`; `blk_const` is now its special case |
+
+The same review asked for `#check` on seven mathlib names cited in the name tables. All seven
+exist in the pinned mathlib (v4.37.0-rc1), so no table entry needed changing:
+`Nat.add_one_mul_choose_eq`, `Nat.multiplicity_mul`, `Int.ModEq.sum`, `Nat.two_pow_succ`,
+`IsIdempotentElem.iff_eq_zero_or_one`, `neg_one_pow_eq_ite`, `fwdDiff_iter_comp_add`.
+One caveat on `Nat.multiplicity_mul`: it takes `[Fact p.Prime]` and `a, b ≠ 0`, as the
+KummerWilson table row already says.
+
+While re-checking names, the automatic name check (`tools/CheckNames.lean`) turned up five more
+table entries, not on the review's list, whose mathlib name did not resolve. Four were real
+errors: mathlib v4.37 no longer has `Monoid.npow`, `Monoid.Pow`, `DivInvMonoid.zpow` or
+`AddMonoid.nsmul` (the operations now live in the parent classes). They are corrected to
+`NPow.npow`, `Monoid.toNPow`, `ZPow.zpow` and `NSMul.nsmul` in the FusedPeano, MultAddRing,
+OsgoodInverse, Pi, Base, Fermat3 and LeeYang tables. The fifth, `mul_zero`, exists but under its full name
+`MulZeroClass.mul_zero`, which the table now uses. After these fixes every single-identifier
+mathlib name in the tables resolves.

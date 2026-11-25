@@ -42,7 +42,7 @@ MARing.mul_one	ported	MAFound.MARing.mul_one	protected
 MARing.natCast	mathlib	Nat.cast	default `Nat.unaryCast` of the CommRing instance
 MARing.natCast_succ	mathlib	Nat.cast_succ	
 MARing.intCast	mathlib	Int.cast	default `Int.castDef` of the CommRing instance
-MARing.npow	mathlib	Monoid.npow	default `npowRec` of the CommRing instance
+MARing.npow	mathlib	NPow.npow	default `npowRec` of the CommRing instance
 MARing.intCast_neg'	mathlib	Int.cast_neg	
 MARing.instAdd	mathlib	AddCommGroup.toAddCommMonoid	part of the AddCommGroup parent
 MARing.instMul	ported	MAFound.MARing.instMul	
@@ -53,7 +53,7 @@ MARing.instIntCast	mathlib	CommRing instance	from MAFound.MARing.instCommRing
 MARing.instOfNat	mathlib	instOfNat	numerals come from the CommRing instance
 MARing.instSMulNat	mathlib	AddMonoid.toNSMul	nsmul is the one of the AddCommGroup parent, not `natCast n * a`; they agree by `nsmul_eq_mul`
 MARing.instSMulInt	mathlib	SubNegMonoid.toZSMul	zsmul is the one of the AddCommGroup parent; agrees by `zsmul_eq_mul`
-MARing.instHPowNat	mathlib	Monoid.Pow	
+MARing.instHPowNat	mathlib	Monoid.toNPow	
 MARing.instCommRing	ported	MAFound.MARing.instCommRing	now a mathlib `CommRing R` instance instead of `Lean.Grind.CommRing R`
 MARing.multAdd_eq	ported	MAFound.MARing.multAdd_eq	stated with the library's `✳`
 MARing.one_eq	ported	MAFound.MARing.one_eq_neg_wall	renamed
@@ -74,6 +74,6 @@ MAField.inv_zero'	ported	MAFound.MAField.inv_zero	renamed
 MAField.inv_ne_zero	mathlib	inv_ne_zero	follows from the Field instance
 MAField.inv_inv'	mathlib	inv_inv	follows from the Field instance; only needed for Lean.Grind's zpow axioms
 MAField.inv_one'	mathlib	inv_one	follows from the Field instance; only needed for Lean.Grind's zpow axioms
-MAField.zpow	mathlib	DivInvMonoid.zpow	default `zpowRec` of the Field instance
+MAField.zpow	mathlib	ZPow.zpow	default `zpowRec` of the Field instance
 MAField.instField	ported	MAFound.MAField.instField	now a mathlib `Field R` instance instead of `Lean.Grind.Field R`
 MAField.way_back_formula	ported	MAFound.MAField.way_back_formula	stated with `MultAdd.multAddInv u = -u / (1 + u)`

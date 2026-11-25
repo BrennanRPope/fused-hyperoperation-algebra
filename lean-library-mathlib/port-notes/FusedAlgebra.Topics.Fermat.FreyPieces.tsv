@@ -52,7 +52,7 @@ node_chord_multAdd	ported	FreyPieces.node_chord_multAdd	generalised from ℚ to 
 frey_disc_pth_power	ported	FreyPieces.frey_disc_pth_power	any commutative ring
 factor_out	mathlib	Nat.exists_eq_pow_mul_and_not_dvd	
 not_dvd_pow	mathlib	Nat.Prime.dvd_of_dvd_pow	contrapositive
-pow_dvd_bound	mathlib	Nat.Prime.pow_dvd_iff_le_factorization	mathlib's form needs q prime (original: 2 ≤ q); only used for primes
+pow_dvd_bound	ported	FreyPieces.pow_dvd_bound	restored Nov 25 with the original hypothesis 2 ≤ q (q need not be prime); exact_exponent_pth_power still uses Nat.Prime.pow_dvd_iff_le_factorization
 exact_exponent_pth_power	ported	FreyPieces.exact_exponent_pth_power	proved from Nat.factorization_pow
 frey_disc_valuation	ported	FreyPieces.frey_disc_valuation	
 rat_div_pow	mathlib	div_pow	with div_mul_cancel₀

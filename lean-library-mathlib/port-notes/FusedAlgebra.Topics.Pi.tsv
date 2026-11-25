@@ -10,7 +10,7 @@ G.conj	mathlib	Zsqrtd.instStar	written star a
 G.norm	mathlib	Zsqrtd.norm	
 gma	dropped	MultAdd.multAdd	Gaussian mult-add is the general multAdd on GaussianInt
 gpow	dropped	MultAdd.mpow	the general mult-add power on GaussianInt
-G.pow	mathlib	Monoid.npow	written a ^ n
+G.pow	mathlib	NPow.npow	written a ^ n
 gma_lift	dropped	MultAdd.one_add_multAdd	instance of the general lift
 gma_comm	dropped	MultAdd.multAdd_comm	
 gma_assoc	dropped	MultAdd.multAdd_assoc	

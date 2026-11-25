@@ -31,11 +31,11 @@ FusedPeano.zero_add'	mathlib	zero_add	with `zero_eq`
 FusedPeano.add_comm'	mathlib	add_comm	
 FusedPeano.succ_add'	mathlib	add_right_comm	`succ x + y = succ (x + y)` is `add_right_comm x 1 y` after `succ_eq_add_one`
 FusedPeano.add_assoc'	mathlib	add_assoc	
-FusedPeano.add_right_cancel'	mathlib	add_right_cancel	N is cancellative because it is ring-isomorphic to ℕ (`ringEquivNat.injective` + `Nat.add_right_cancel`); no `IsCancelAdd N` instance is declared
+FusedPeano.add_right_cancel'	ported	MAFound.FusedPeano.add_right_cancel	restored Nov 25: proved for every model via ringEquivNat; add_left_cancel and an IsCancelAdd N instance added, so mathlib's add_right_cancel now applies too
 FusedPeano.madd_is	dropped	MAFound.FusedPeano.madd_eq	existence lemma used only to define `mul` by choice; the witness is `x * y`
 FusedPeano.mul	ported	MAFound.FusedPeano.instCommSemiring	`*` of the CommSemiring instance instead of a choice from `madd_is`; the defining property is `madd_eq`
 FusedPeano.madd_eq'	ported	MAFound.FusedPeano.madd_eq	renamed; `madd x y = x + y + x * y`
-FusedPeano.mul_zero'	mathlib	mul_zero	with `zero_eq`
+FusedPeano.mul_zero'	mathlib	MulZeroClass.mul_zero	with `zero_eq`
 FusedPeano.mul_succ'	mathlib	mul_add_one	after `succ_eq_add_one`
 FusedPeano.toN	ported	MAFound.FusedPeano.toN	
 FusedPeano.toN_injective	ported	MAFound.FusedPeano.toN_injective	stated as `Function.Injective toN`
@@ -70,13 +70,13 @@ FusedPeano.ladN_one	ported	MAFound.FusedPeano.ladN_one
 FusedPeano.ladN_two	ported	MAFound.FusedPeano.ladN_two	
 FusedPeano.toN_lad	ported	MAFound.FusedPeano.toN_rung	renamed; stated with `MultAdd.rung` in place of `lad`
 FusedPeano.add_toN_fromN	mathlib	Equiv.add_def	`x + y = equivNat.symm (equivNat x + equivNat y)` is how the transported `+` is defined
-FusedPeano.npow'	mathlib	Monoid.npow	power of the CommSemiring instance
+FusedPeano.npow'	mathlib	NPow.npow	power of the CommSemiring instance
 FusedPeano.instAdd	mathlib	CommSemiring instance	from MAFound.FusedPeano.instCommSemiring
 FusedPeano.instMul	mathlib	CommSemiring instance	from MAFound.FusedPeano.instCommSemiring
 FusedPeano.instNatCast	mathlib	CommSemiring instance	`MAFound.FusedPeano.natCast_eq_toN : (k : N) = toN k`
 FusedPeano.instOfNat	mathlib	instOfNat	numerals come from the CommSemiring instance
 FusedPeano.instSMulNat	mathlib	AddMonoid.toNSMul	
-FusedPeano.instHPowNat	mathlib	Monoid.Pow	
+FusedPeano.instHPowNat	mathlib	Monoid.toNPow	
 FusedPeano.transfer2	mathlib	Function.Surjective.forall₂	applied to `toN_surjective`; proofs use `obtain ⟨a, rfl⟩ := toN_surjective x`
 FusedPeano.transfer3	mathlib	Function.Surjective.forall₃	applied to `toN_surjective`
 FusedPeano.mul_comm'	mathlib	mul_comm	

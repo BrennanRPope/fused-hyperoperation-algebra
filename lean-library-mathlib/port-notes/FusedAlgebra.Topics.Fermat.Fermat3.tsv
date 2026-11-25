@@ -32,7 +32,7 @@ Eis.instIntCast (instance : IntCast Eis)	mathlib	QuadraticAlgebra.instAddCommGro
 Eis.instOfNat (instance : OfNat Eis n)	mathlib	QuadraticAlgebra.instAddCommMonoidWithOne	numerals come from the ring structure
 Eis.instSMulNat (instance : SMul Nat Eis)	mathlib	QuadraticAlgebra.instSMul	
 Eis.instSMulInt (instance : SMul Int Eis)	mathlib	QuadraticAlgebra.instSMul	
-Eis.npow	mathlib	QuadraticAlgebra.instCommRing	powers come from the commutative ring structure (`Monoid.npow`)
+Eis.npow	mathlib	QuadraticAlgebra.instCommRing	powers come from the commutative ring structure (`NPow.npow`)
 Eis.instHPow (instance : HPow Eis Nat Eis)	mathlib	QuadraticAlgebra.instCommRing	`x ^ n` is the monoid power of the commutative ring
 Eis.add_re	mathlib	QuadraticAlgebra.re_add	
 Eis.add_im	mathlib	QuadraticAlgebra.im_add	
@@ -111,7 +111,7 @@ sol_swap	dropped	Fermat3.no_sol	descent scaffolding: symmetry of `Sol`, vacuous 
 sol_rot	dropped	Fermat3.no_sol	descent scaffolding: rotation of `Sol`, vacuous once `no_sol` is taken from mathlib
 odd_of_cop_even	mathlib	Int.isCoprime_two_left	coprime to an even number implies odd (`IsCoprime.of_isCoprime_of_dvd_right` then `Int.isCoprime_two_left`); used only in the descent step
 sol_even	dropped	Fermat3.no_sol	descent scaffolding about `Sol` (some entry is even); the parity content is `Fermat3.cube_mod2`
-measure_lt	dropped	fermatLastTheoremThree	descent bookkeeping (the measure |xyz| drops); only used by `step`
+measure_lt	ported	Fermat3.measure_lt	restored Nov 25 with the original statement; the descent that used it is still replaced by fermatLastTheoremThree
 par_ab	ported	Fermat3.par_ab	Odd in place of % 2 = 1
 cop_of_param	ported	Fermat3.cop_of_param	IsCoprime in place of Int.gcd = 1
 step	dropped	fermatLastTheoremThree	Euler's descent step (190 lines): from a `Sol` build a smaller one. Its hypothesis is contradictory by mathlib's `fermatLastTheoremThree`, so it is not re-proved; its ingredients `key_cube`, `cube_of_mul3`, `par_ab`, `cop_of_param`, `cube_ne_two` are ported
