@@ -10,8 +10,9 @@ mods=(
   FusedAlgebra.Topics.DataCenter FusedAlgebra.Topics.E FusedAlgebra.Topics.Finance
   FusedAlgebra.Topics.FusedConstants FusedAlgebra.Topics.FractionalRungs FusedAlgebra.Topics.Infinities FusedAlgebra.Topics.InformationTheory
   FusedAlgebra.Topics.Landscape FusedAlgebra.Topics.RungShape FusedAlgebra.Topics.Elliptic FusedAlgebra.Topics.EllipticS3
-  FusedAlgebra.Topics.Thermodynamics FusedAlgebra.Topics.Relativity
-  FusedAlgebra.Topics.NumberPlane FusedAlgebra.Topics.GeometryTrig FusedAlgebra.Topics.EarlyScience FusedAlgebra.Topics.Pi FusedAlgebra.Topics.Calculus FusedAlgebra.Topics.AbstractAlgebra FusedAlgebra.Topics.Statistics
+  FusedAlgebra.Topics.Thermodynamics FusedAlgebra.Topics.Relativity FusedAlgebra.Topics.LeeYang FusedAlgebra.Topics.LeeYangCluster FusedAlgebra.Topics.LeeYangSpill FusedAlgebra.Topics.TwistedBoosts FusedAlgebra.Topics.GravityProbeB
+  FusedAlgebra.Topics.Chemistry.ChemQuantum FusedAlgebra.Topics.Chemistry.ChemConservation FusedAlgebra.Topics.Chemistry.ChemPeriodic FusedAlgebra.Topics.ShapeDirections
+  FusedAlgebra.Topics.NumberPlane FusedAlgebra.Topics.GeometryTrig FusedAlgebra.Topics.EarlyScience FusedAlgebra.Topics.Patterns FusedAlgebra.Topics.Pi FusedAlgebra.Topics.Calculus FusedAlgebra.Topics.AbstractAlgebra FusedAlgebra.Topics.Statistics
   FusedAlgebra.Topics.NavierStokes FusedAlgebra.Topics.QuantumNoise FusedAlgebra.Topics.Rulecraft
   FusedAlgebra.Topics.Toric.ToricCharts FusedAlgebra.Topics.Toric.ProjectivePlane
   FusedAlgebra.Topics.Topology.CubeProofs FusedAlgebra.Topics.Topology.KummerWilson

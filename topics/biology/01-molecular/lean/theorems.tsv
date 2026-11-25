@@ -1,0 +1,28 @@
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_excess	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_exclusive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_half	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_independent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_independent'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_is_wAdd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.bind2_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.catch_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.catch_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.copy_loss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.eigen_excess	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.eigen_threshold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_R	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_T	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_c_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.mwc_poly	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.star_def	
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.swap_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.swap_one	propext
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.swap_pow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.tr_swap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_det	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_is_dial_gas	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_odd_ring_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_ring_eq_dial_ring	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_ring_relabel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Biology.MolecularBiology	MolecularBiology.zb_tr	propext

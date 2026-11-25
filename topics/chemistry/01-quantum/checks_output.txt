@@ -1,0 +1,28 @@
+PASS product wavefunction: (1+cA)(1+cB)-1 = cA ✳ cB (200 random pairs)
+PASS N=1: CISD = Δ-√(Δ²+N g²) closed form
+PASS N=1: full CI = N × one molecule (size-extensive)  CISD keeps 1.000 of the correlation
+PASS N=2: CISD = Δ-√(Δ²+N g²) closed form
+PASS N=2: full CI = N × one molecule (size-extensive)  CISD keeps 0.980 of the correlation
+PASS N=3: CISD = Δ-√(Δ²+N g²) closed form
+PASS N=3: full CI = N × one molecule (size-extensive)  CISD keeps 0.961 of the correlation
+PASS N=4: CISD = Δ-√(Δ²+N g²) closed form
+PASS N=4: full CI = N × one molecule (size-extensive)  CISD keeps 0.944 of the correlation
+PASS N=6: CISD = Δ-√(Δ²+N g²) closed form
+PASS N=6: full CI = N × one molecule (size-extensive)  CISD keeps 0.912 of the correlation
+PASS N=8: CISD = Δ-√(Δ²+N g²) closed form
+PASS N=8: full CI = N × one molecule (size-extensive)  CISD keeps 0.884 of the correlation
+PASS N=10: CISD = Δ-√(Δ²+N g²) closed form
+PASS N=10: full CI = N × one molecule (size-extensive)  CISD keeps 0.859 of the correlation
+PASS CISD fraction kept falls like 1/√N at large N (×4 molecules → ÷2)  [np.float64(0.06590105177278238), np.float64(0.033504122446834914), np.float64(0.0168922336182332)]
+PASS corner weight k=1 recovers the exact energy for every N  [np.float64(0.9999999558662823), np.float64(0.9999999558662823), np.float64(0.9999999558662823), np.float64(0.9999999558662825)]
+PASS corner weight k=0 is CISD (fraction falls with N)  [np.float64(0.9999999558662823), np.float64(0.9797498711878986), np.float64(0.9436058036415289), np.float64(0.8842922362209881)]
+PASS k=1/2 sits between, still not size-extensive  [np.float64(0.9999999558662823), np.float64(0.9948377762457359), np.float64(0.9850565067835657), np.float64(0.9674366291205968)]
+  H2:   CISD corr -0.034674  CCSD corr -0.034674 Eh
+  2 H2: CISD corr -0.068221 (2× = -0.069349)  CCSD corr -0.069349 (2× = -0.069349)
+PASS one H2: CISD = CCSD (two electrons: no corner possible)
+PASS two H2 100 Å apart: CCSD = 2 × one H2
+PASS two H2 100 Å apart: CISD misses energy (size inconsistent)  misses 0.708 kcal/mol
+PASS two waters 100 Å apart: CCSD = 2 × one water  -0.270796 vs -0.270796
+PASS two waters: CISD loses correlation  misses 5.94 kcal/mol; CISD keeps 0.9636
+PASS spin coupling: Σ(2S+1) over the Clebsch–Gordan series = (2s1+1)(2s2+1), so 2s mult-adds (36 cases)
+25/25 checks pass

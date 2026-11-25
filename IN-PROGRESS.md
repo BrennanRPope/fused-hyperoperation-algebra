@@ -1,9 +1,28 @@
-# Still in progress (last synced Nov 25, 2026, 07:45 UTC)
+# Still in progress (last synced Nov 25, 2026, 08:38 UTC)
 
-This repo is a snapshot. Work on the theory carries on in other sessions, so any folder may get newer results after the last sync.
+This repo is a snapshot. Work carries on in other sessions, so any folder may get newer results after the last sync. These were written to in the 20 minutes before it:
 
-- `lean-library/` grows as new topics are proved.
-- **Lee–Yang** was still running at the last sync and is not in the repo yet.
-- `topics/entropy-noise/`, `topics/jet-fields/`, `topics/linear-algebra/`, `topics/osgood-inverse/` and `topics/q-across/` were still changing at the first sync and may be newer on disk.
+- `topics/biology/`
+- `topics/category-theory/`
+- `topics/chemistry/`
+- `topics/combinatorics/`
+- `topics/complex-analysis/`
+- `topics/differential-geometry/`
+- `topics/dynamical-systems/`
+- `topics/functional-analysis/`
+- `topics/game-theory/`
+- `topics/graph-theory/`
+- `topics/groups-lie/`
+- `topics/information-theory-full/`
+- `topics/knot-theory/`
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 1,750 theorems in 62 modules)
+- `topics/lee-yang/`
+- `topics/logic-sets/`
+- `topics/measure-probability/`
+- `topics/numerical-analysis/`
+- `topics/patterns/`
+- `topics/shape-directions/`
+
+A port of the Lean library to mathlib is happening on a separate branch, not on main.
 
 When syncing again, copy the current state of every folder and update INDEX.md.

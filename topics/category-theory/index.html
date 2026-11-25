@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Category Theory Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a merge view in a code review tool: left-only, right-only and both, the three parts of A + B + AB
+   COLOUR cool editor grey; left-only coral, right-only blue, both gold, the empty pair slate; night: editor dark
+   TYPE Space Grotesk + JetBrains Mono for code and equations */
+:root{color-scheme:light dark;--bg:light-dark(#edf0f3,#12161b);--panel:light-dark(#ffffff,#1b2027);--ink:light-dark(#121a24,#e7ecf1);--soft:light-dark(#4f5a66,#9fabb7);--rule:light-dark(#c9d0d8,#333b45);--L:light-dark(#c8414f,#ff7a85);--R:light-dark(#1f6fb2,#6cb4ff);--B:light-dark(#9a6a00,#f2bd4b);--nil:light-dark(#8a96a3,#5d6976);--wall:light-dark(#c8414f,#ff7a85)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Space Grotesk",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,52px) max(5vw,16px)}.alt{background:var(--panel)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font:600 clamp(30px,4.4vw,48px)/1.08 "Space Grotesk",sans-serif;letter-spacing:-.02em;margin:0 0 14px;max-width:22ch;text-wrap:balance}
+h2{font:600 24px/1.2 "Space Grotesk",sans-serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:66ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:400px}.fig2{position:relative;min-height:290px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px "Space Grotesk",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.alt svg text{stroke:var(--bg)}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 2.4em;gap:10px;align-items:center}
+.ctl label{font-weight:600}.ctl output{text-align:right;font:500 15px "JetBrains Mono",monospace}
+input[type=range]{width:100%;height:44px;accent-color:var(--B)}
+.big{font:600 clamp(34px,5vw,52px)/1 "Space Grotesk",sans-serif;font-variant-numeric:tabular-nums;margin:6px 0}
+.small{color:var(--soft);font-size:14px}
+.eq{font:500 15px/1.6 "JetBrains Mono",monospace;background:var(--panel);border-left:3px solid var(--B);padding:9px 12px;margin:12px 0;overflow-x:auto}
+.alt .eq{background:var(--bg)}
+pre{font:500 13px/1.5 "JetBrains Mono",monospace;background:var(--bg);border:1px solid var(--rule);border-radius:5px;padding:10px 12px;overflow-x:auto;margin:10px 0}
+.alt pre{background:var(--bg)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+p,li{max-width:66ch}
+.key span{display:inline-block;width:12px;height:12px;border-radius:2px;margin:0 4px 0 10px;vertical-align:-1px}
+table.data{border-collapse:collapse;width:100%;font-size:14px}
+table.data td{border-bottom:1px solid var(--rule);padding:6px 5px;text-align:left;vertical-align:top}
+code{font:500 13px "JetBrains Mono",monospace;overflow-wrap:anywhere}
+a{color:var(--R)}
+footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1px solid var(--rule)}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:330px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>Give each side a "nothing" and mult-add becomes a plain product</h1>
+<p class="lede">A ✳ B means: something from A only, something from B only, or one of each. That is a + b + ab choices. Add a "nothing" value to each side (Option, Maybe) and pairs of options are exactly those choices plus one empty pair. This is the lift 1 + x, made out of sets, and in the category of partial functions A ✳ B is the honest categorical product.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="grid"></div>
+<div class="ctl"><label for="a">a = |A|</label><input id="a" type="range" min="0" max="6" step="1" value="3"><output id="ao"></output></div>
+<div class="ctl"><label for="b">b = |B|</label><input id="b" type="range" min="0" max="6" step="1" value="2"><output id="bo"></output></div>
+</div>
+<div class="panel">
+<div class="small">Pairs (Option A, Option B)</div>
+<div class="big" id="tot"></div>
+<p id="split" style="font:500 15px 'JetBrains Mono',monospace;margin:4px 0 10px"></p>
+<p class="key small"><span style="background:var(--nil)"></span>nothing, nothing<span style="background:var(--L)"></span>A only<span style="background:var(--R)"></span>B only<span style="background:var(--B)"></span>both</p>
+<p class="small">The grid is (a + 1) by (b + 1): that is the lift, (1 + a)(1 + b). Strike out the grey corner and what is left is a ✳ b. The coloured edges are the wedge (a + b), the gold block is the smash (ab). Topologists use those two words for exactly these two pieces.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>In code it is These, align, and the full outer join</h2>
+<p>Haskell calls A ✳ B <code>These a b</code> (the <code>these</code> package); Rust's itertools calls it <code>EitherOrBoth</code>. The Option fact is a two-way conversion that loses nothing, and Lean checks both round trips:</p>
+<pre>inductive These (α β : Type) where
+  | this : α → These α β        -- A only
+  | that : β → These α β        -- B only
+  | both : α → β → These α β    -- one of each
+
+def optionThese :
+  Iso (Option (These α β)) (Option α × Option β)</pre>
+<p>Zipping two lists of different lengths without dropping the overhang (<code>align</code>, <code>zip_longest</code>) returns a list of These. Lean proves that both input lists come back out, the length is the longer one, and the ordinary zip is just the "both" part, the ab corner.</p>
+<p>A full outer join by key gives each key a These too: in the left table only, in the right only, or in both. So does a diff of two versions of a config. Any merge function is a function out of These, and getting all three cases right is the whole contract.</p>
+</div>
+<div class="panel"><div class="fig2" id="align"></div>
+<p class="small"><code>align [1, 2, 3, 4] ["a", "b"]</code>. Gold: both (the zip). Coral: left only. Read the top row of every cell and you get [1, 2, 3, 4] back; read the bottom row and you get ["a", "b"].</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div class="panel"><div class="fig2" id="cd"></div>
+<p class="small">Any two partial maps f and g out of X factor through A ✳ B in exactly one way. The projections are partial: "fst" has nothing to say about a B-only value.</p></div>
+<div>
+<h2>A ✳ B is the product in the category of partial functions</h2>
+<p>A partial function from X to A is a function X → Option A: it may answer "nothing". With these as the arrows (the category is called Par), the product of A and B is not A × B. It is A ✳ B. Given f: X → A and g: X → B, pair them: both answer gives "both", one answer gives "this" or "that", neither gives nothing. Lean proves the projections come out right and that this pairing is the only one.</p>
+<p>The empty set is both the start and the end object of Par (a zero object), and it is the unit of ✳. The coproduct in Par is still plain disjoint union. So Par has + for its sum and ✳ for its product, the way ordinary sets have + and ×. Turning partial maps into total maps by adding a base point (Option) is the textbook equivalence of Par with pointed sets, and it carries ✳ to ×.</p>
+<p><b>The dial, with k tags.</b> Put a tag from a k-element set on the "both" corner: A + B + k·AB. The tagged Option, 1 + k·A, turns that into a product too, 1 + k(A ✳ₖ B) ≅ (1 + kA)(1 + kB). That is the dial's lift 1 + kx made of sets. It works for every k ≥ 0 and for no negative k, since sets can't be negative.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>Associativity is the mult-add cube</h2>
+<p>(A ✳ B) ✳ C and A ✳ (B ✳ C) both list the seven non-empty corners of a cube: A, B, C, AB, AC, BC, ABC. Lean writes the re-bracketing out case by case and checks both round trips; the checks confirm the pentagon and hexagon rules. So (finite sets, ✳, ∅) is a symmetric monoidal category, and Option is a strong monoidal functor into (sets, ×, one point): it sends ✳ to ×, and ∅ to the one-point set.</p>
+<p>Counting sizes, the decategorification, sends ✳ to mult-add: |A ✳ B| = |A| ✳ |B|, and |Option A| = 1 + |A| is the lift. Nothing here is new; it is the reason mult-add's algebra is so well behaved. The cube's empty corner is the base point that the lift adds and the subtraction takes away.</p>
+</div>
+<div class="panel"><div class="fig2" id="cube"></div>
+<p class="small">The cube for A, B, C. The hollow corner is "nothing from any of them", the base point. The other seven are A ✳ B ✳ C.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div class="panel"><div class="fig2" id="chi"></div>
+<p class="small">Reduced Euler characteristic χ̃ = χ − 1, the lift read backwards. A point sits at 0, the identity. The circle sits on the wall: anything times a circle lands back at −1.</p></div>
+<div>
+<h2>For spaces the same split holds up to deformation, and the circle is the wall</h2>
+<p>For pointed spaces, the product splits after one suspension (Σ, "stack the space between two poles"):</p>
+<div class="eq">Σ(X × Y) ≃ ΣX ∨ ΣY ∨ Σ(X ∧ Y)</div>
+<p>wedge plus smash, the same a + b + ab, now as shapes. This is a standard fact of homotopy theory. The checks compute the homology of a triangulated torus and its suspension and find exactly the pieces of S² ∨ S² ∨ S³.</p>
+<p>Count each space by its reduced Euler characteristic χ̃ = χ − 1. Products multiply χ, so <b>χ̃(X × Y) = χ̃X ✳ χ̃Y</b>: χ̃ is the mult-add coordinate and χ is its lift. Lean proves this for cell counts at every t, not only t = −1. Spheres sit at ±1, and the circle, at χ̃ = −1, is mult-add's wall: S¹ × Y always has χ̃ = −1. The logic page found the same wall in sets, as the open interval.</p>
+<p>The topology page already reads the torus's holes as the Pascal cube; this is the same cube with the base point taken out.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table class="data">
+<tr><td>Par (sets and partial functions) is equivalent to pointed sets; its product is A + B + A×B</td><td>Textbook category theory</td></tr>
+<tr><td>Wedge and smash; (A×B)₊ = A₊ ∧ B₊</td><td>Textbook topology</td></tr>
+<tr><td><code>These</code>, <code>Align</code>, <code>zip_longest</code>, <code>EitherOrBoth</code></td><td>Haskell these and semialign packages; Rust itertools; Python itertools</td></tr>
+<tr><td>Σ(X×Y) ≃ ΣX ∨ ΣY ∨ Σ(X∧Y)</td><td>Standard homotopy theory</td></tr>
+<tr><td>χ multiplies on products; cardinality as decategorification</td><td>Euler, Poincaré; Baez–Dolan's decategorification</td></tr>
+<tr><td>Symmetric monoidal (FinSet, ✳, ∅); Option strong monoidal</td><td>Follows from the Par product; textbook</td></tr>
+<tr><td>χ̃ as the mult-add coordinate, the circle as the wall, spheres at ±1</td><td>Ours, as a reading; the arithmetic is known</td></tr>
+<tr><td>Tagged Option 1 + kA lifts the dial for k ≥ 0</td><td>Ours, a small exercise; no claim of novelty</td></tr>
+</table>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>Not as mathematics; yes as a design tool.</b> Everything here is textbook. Its value for the project is a firm underpinning: mult-add is a genuine categorical product, the lift is a functor, and the wall is the circle. So the framework's algebra rests on structure nobody disputes.</p>
+<p>The useful lead is in software. These is the type of every merge, sync, diff and outer join, and the monoidal laws are exactly what make merges compose: merging three sources in either order gives the same seven cases. Treating "merge" as a function out of A ✳ B, and checking it against the Lean laws here, is a concrete way to keep merge code honest and loosely coupled.</p>
+<p>The one open-ended question: negative dial values (OR at −1, XOR at −2) have no set model, only Euler-characteristic ones. Whether some category of signed or virtual objects has ✳₋₁ as its product is a fair question, but it is probably the known story of Euler characteristic and Mayer–Vietoris in other clothes.</p>
+<p class="small">Builds on: <a href="https://claude.ai/artifact/4Nb6GyQBxi8gDNdHbszA26">topology</a>, <a href="https://claude.ai/artifact/DTBbDjwUepJAUmU9AQEAhV">algebra atlas</a>, <a href="https://claude.ai/artifact/YEchSB4Ft97HsNEcV4q3aJ">infinities</a>, <a href="https://claude.ai/artifact/PrF6u5bRhkq6tPBcD5K4i2">axioms</a>.</p>
+</div>
+</div>
+</section>
+<footer>Checks: 29 of 29 pass (checks.py). Lean: 36 theorems in CategoryTheory.lean, core Lean 4.37, no sorry, standard axioms only.</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const mk=(id,l)=>{$(id).innerHTML='<svg role="img" aria-label="'+l+'"></svg>';return $(id).firstChild;};
+const sG=mk('grid','grid of option pairs'),sA=mk('align','aligned lists'),sC=mk('cd','product diagram'),sK=mk('cube','mult-add cube'),sX=mk('chi','reduced Euler characteristic line');
+const T=(x,y,t,a,c,sz)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c||sz?' style="'+(c?'fill:'+c+';':'')+(sz?'font-size:'+sz+'px':'')+'"':'')+'>'+t+'</text>';
+const L=(x1,y1,x2,y2,c,sw,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(sw||1.5)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const R=(x,y,w,h,f,s)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="1.5"':'')+'/>';
+const C=(x,y,r,f,s)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="2"':'')+'/>';
+function drawGrid(){
+  const a=+$('a').value,b=+$('b').value,W=sG.clientWidth,H=sG.clientHeight;
+  $('ao').textContent=a;$('bo').textContent=b;
+  const lab=34,cell=Math.min((W-lab-12)/(b+1),(H-lab-12)/(a+1),70),gap=Math.max(2,cell*0.08);
+  const ox=lab+(W-lab-cell*(b+1))/2,oy=lab;
+  let g=T(ox+cell/2,22,'none','middle','var(--soft)');
+  for(let j=1;j<=b;j++)g+=T(ox+j*cell+cell/2,22,'b'+j,'middle','var(--R)');
+  g+=T(ox-8,oy+cell/2+4,'none','end','var(--soft)');
+  for(let i=1;i<=a;i++)g+=T(ox-8,oy+i*cell+cell/2+4,'a'+i,'end','var(--L)');
+  for(let i=0;i<=a;i++)for(let j=0;j<=b;j++){
+    const f=i===0&&j===0?'var(--nil)':i===0?'var(--R)':j===0?'var(--L)':'var(--B)';
+    g+=R(ox+j*cell+gap/2,oy+i*cell+gap/2,cell-gap,cell-gap,i===0&&j===0?'none':f,i===0&&j===0?'var(--nil)':null);
+    if(i===0&&j===0)g+=L(ox+gap+4,oy+gap+4,ox+cell-gap-4,oy+cell-gap-4,'var(--nil)',2);
+  }
+  sG.innerHTML=g;
+  $('tot').textContent='('+(a+1)+')('+(b+1)+') = '+((a+1)*(b+1));
+  $('split').textContent='1 + '+a+' + '+b+' + '+(a*b)+'  →  a ✳ b = '+(a+b+a*b);
+}
+function drawAlign(){
+  const W=sA.clientWidth,H=sA.clientHeight,xs=['1','2','3','4'],ys=['"a"','"b"'];
+  const n=4,cw=Math.min(76,(W-20)/n),ch=Math.min(90,H-90),ox=(W-cw*n)/2,oy=50;
+  let g=T(ox,22,'left','start','var(--L)')+T(ox+cw*n,22,'right','end','var(--R)');
+  for(let i=0;i<n;i++){const both=i<ys.length,x=ox+i*cw+4;
+    g+=R(x,oy,cw-8,ch,both?'color-mix(in srgb,var(--B) 22%,transparent)':'color-mix(in srgb,var(--L) 18%,transparent)',both?'var(--B)':'var(--L)');
+    g+=T(x+(cw-8)/2,oy+ch*0.38,xs[i],'middle',null,16)+T(x+(cw-8)/2,oy+ch*0.78,both?ys[i]:'·','middle',null,16);
+    g+=T(x+(cw-8)/2,oy+ch+20,both?'both':'this','middle',both?'var(--B)':'var(--L)');}
+  sA.innerHTML=g;
+}
+function drawCD(){
+  const W=sC.clientWidth,H=sC.clientHeight,cx=W/2;
+  const P={X:[cx,30],T:[cx,H/2],A:[Math.max(40,cx-W*0.34),H-34],B:[Math.min(W-40,cx+W*0.34),H-34]};
+  const arrow=(p,q,c,d,lab,side)=>{const [x1,y1]=p,[x2,y2]=q,dx=x2-x1,dy=y2-y1,l=Math.hypot(dx,dy),ux=dx/l,uy=dy/l,s=24;
+    const a1=[x1+ux*s,y1+uy*s],a2=[x2-ux*s,y2-uy*s];
+    let o=L(a1[0],a1[1],a2[0],a2[1],c,2,d);
+    o+='<path d="M'+a2[0]+' '+a2[1]+' l'+(-ux*9-uy*5)+' '+(-uy*9+ux*5)+' M'+a2[0]+' '+a2[1]+' l'+(-ux*9+uy*5)+' '+(-uy*9-ux*5)+'" stroke="'+c+'" stroke-width="2" fill="none"/>';
+    const mx=(a1[0]+a2[0])/2+side*(-uy)*14,my=(a1[1]+a2[1])/2+side*ux*14;
+    return o+T(mx,my+4,lab,'middle',c);};
+  let g=arrow(P.X,P.A,'var(--L)','','f',1)+arrow(P.X,P.B,'var(--R)','','g',-1)+arrow(P.X,P.T,'var(--B)','6 4','pair',-1)+arrow(P.T,P.A,'var(--soft)','','fst',-1)+arrow(P.T,P.B,'var(--soft)','','snd',1);
+  g+=T(P.X[0],P.X[1]+5,'X','middle',null,16)+T(P.T[0],P.T[1]+5,'A ✳ B','middle',null,16)+T(P.A[0],P.A[1]+5,'A','middle',null,16)+T(P.B[0],P.B[1]+5,'B','middle',null,16);
+  sC.innerHTML=g;
+}
+function drawCube(){
+  const W=sK.clientWidth,H=sK.clientHeight,s=Math.min(W*0.5,H*0.58),ox=(W-s*1.35)/2,oy=H-30;
+  const pt=(x,y,z)=>[ox+x*s+z*s*0.35,oy-y*s-z*s*0.3];
+  const V={};[0,1].forEach(x=>[0,1].forEach(y=>[0,1].forEach(z=>{V[''+x+y+z]=pt(x,y,z);})));
+  let g='';
+  const E=[['000','100'],['000','010'],['000','001'],['100','110'],['100','101'],['010','110'],['010','011'],['001','101'],['001','011'],['110','111'],['101','111'],['011','111']];
+  E.forEach(([p,q])=>{g+=L(V[p][0],V[p][1],V[q][0],V[q][1],'var(--rule)',2);});
+  const name=k=>(k[0]==='1'?'A':'')+(k[1]==='1'?'B':'')+(k[2]==='1'?'C':'');
+  const col=k=>{const c=[...k].filter(d=>d==='1').length;return c===1?'var(--L)':c===2?'var(--R)':'var(--B)';};
+  Object.keys(V).forEach(k=>{const [x,y]=V[k];if(k==='000'){g+=C(x,y,8,'var(--panel)','var(--nil)');g+=T(x-12,y+5,'∅','end','var(--soft)');}
+    else{g+=C(x,y,8,col(k));g+=T(x+12,y-8,name(k));}});
+  sK.innerHTML=g;
+}
+function drawChi(){
+  const W=sX.clientWidth,H=sX.clientHeight,m=30,X=v=>m+(v+2.5)/6*(W-2*m),y0=H*0.42;
+  let g=L(X(-2.5),y0,X(3.5),y0,'var(--rule)',2);
+  for(let v=-2;v<=3;v++)g+=L(X(v),y0-6,X(v),y0+6,'var(--soft)')+T(X(v)+(v===-1?-10:0),y0-12,String(v).replace('-','−'),'middle','var(--soft)');
+  g+=L(X(-1),26,X(-1),H-20,'var(--wall)',2,'5 4')+T(X(-1)-6,22,'wall','end','var(--wall)');
+  const pts=[[-2,'S¹ ∨ S¹','var(--L)'],[-1,'circle S¹, also S³','var(--wall)'],[-1,'torus S¹×S¹','var(--wall)'],[0,'point (identity)','var(--ink)'],[1,'S², S⁴','var(--R)'],[3,'S²×S²','var(--B)']];
+  pts.forEach(([v,lab,c],r)=>{const y=y0+44+r*18,x=X(v),end=v>=3;g+=C(x,y0,6,c)+L(x,y0+8,x,y-4,c,1)+T(x+(end?-5:5),y,lab,end?'end':'start',c);});
+  g+=T(m,H-8,'S²×S²: 1 ✳ 1 = 3.  S¹×Y: −1 ✳ y = −1.','start');
+  sX.innerHTML=g;
+}
+$('a').addEventListener('input',drawGrid);$('b').addEventListener('input',drawGrid);
+[[sG,drawGrid],[sA,drawAlign],[sC,drawCD],[sK,drawCube],[sX,drawChi]].forEach(([s,f])=>{new ResizeObserver(f).observe(s.parentNode);f();});
+}
+</script>
+</body>
+</html>

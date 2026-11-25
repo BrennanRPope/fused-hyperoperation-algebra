@@ -1,0 +1,21 @@
+(a) Rung s on the landscape
+  s =    -1: corner k = -1.000000, bend q = 0.500000, s(s-1)/4 = 0.500000, shape k^2/(k^2-4q) = -1.000000
+  s =  -0.5: corner k = -0.500000, bend q = 0.187500, s(s-1)/4 = 0.187500, shape k^2/(k^2-4q) = -0.500000
+  s =     0: corner k = 0.000000, bend q = 0.000000, s(s-1)/4 = 0.000000, shape k^2/(k^2-4q) = border
+  s =  0.25: corner k = 0.250000, bend q = -0.046875, s(s-1)/4 = -0.046875, shape k^2/(k^2-4q) = 0.250000
+  s =   0.5: corner k = 0.500000, bend q = -0.062500, s(s-1)/4 = -0.062500, shape k^2/(k^2-4q) = 0.500000
+  s =     1: corner k = 1.000000, bend q = 0.000000, s(s-1)/4 = 0.000000, shape k^2/(k^2-4q) = 1.000000
+  s =   1.5: corner k = 1.500000, bend q = 0.187500, s(s-1)/4 = 0.187500, shape k^2/(k^2-4q) = 1.500000
+  s =     2: corner k = 2.000000, bend q = 0.500000, s(s-1)/4 = 0.500000, shape k^2/(k^2-4q) = 2.000000
+  s =   2.5: corner k = 2.500000, bend q = 0.937500, s(s-1)/4 = 0.937500, shape k^2/(k^2-4q) = 2.500000
+  The rung curve is the parabola (s, s(s-1)/4); its shape number is s itself, so it moves at
+  constant speed in the unit-free coordinate and crosses the border once, at s = 0, linearly.
+
+(b) Speed of the flow s -> E^s(x) between whole rungs
+  x = 0.5: speed rises the whole way (no slow-down at any rung): True; rung-locked wobble A = +0.00000
+  x = 1.0: speed rises the whole way (no slow-down at any rung): True; rung-locked wobble A = +0.00001
+  x = 2.0: speed rises the whole way (no slow-down at any rung): True; rung-locked wobble A = -0.00053
+  Control (staircased interpolation through the same rungs): rung-locked wobble A = -1.192; speed has 3 local minima
+  Null: 40 random interpolations through the same rungs give rung-locked wobbles A from -0.135 to +0.092 (spread 0.058); the regular one sits at +0.00001.
+  So a rung-locked pause is a free choice of interpolation, not something the rungs carry; the standard choice has none.
+  Reading: the standard (regular) flow between rungs never pauses at a rung. A pause would have to be put in by hand.

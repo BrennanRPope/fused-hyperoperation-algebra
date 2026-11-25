@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rung Flow Counts Groups Within Groups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA counters on squared paper: every structure is a handful of tokens grouped by loops
+   COLOUR squared-paper cream, pencil ink, counting teal, tomato for the negative (the wall), mustard for the corner
+   LAYOUT hero: bar ruler over t beside three nested-group sketches; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#f5f0e4,#191816);--panel:light-dark(#fffdf7,#23211e);--ink:light-dark(#1d1b18,#f1ece2);--soft:light-dark(#5d574d,#b3ab9d);--rule:light-dark(#d9d0bd,#3b3832);--teal:light-dark(#0b7285,#5cc7d8);--tom:light-dark(#d9480f,#ff8a5c);--mus:light-dark(#c88a00,#f2c14e);--tint:light-dark(rgba(11,114,133,.12),rgba(92,199,216,.16))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:600 clamp(32px,4.6vw,50px)/1.05 "Bricolage Grotesque",Inter,sans-serif;letter-spacing:-.02em;margin:0 0 14px;max-width:20ch;text-wrap:balance}
+h2{font:600 25px/1.15 "Bricolage Grotesque",Inter,sans-serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:70ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:380px}.fig2{position:relative;min-height:330px}.fig3{position:relative;min-height:470px}
+.fig>svg,.fig2>svg,.fig3>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px Inter,sans-serif;fill:var(--ink)}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 3.6em;gap:10px;align-items:center;margin:6px 0}
+.ctl label{font-weight:600;white-space:nowrap}.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:44px;accent-color:var(--teal)}
+select{font:inherit;padding:8px;border-radius:4px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);min-height:44px;max-width:100%}
+.small{color:var(--soft);font-size:14px}
+.read{font-variant-numeric:tabular-nums;font-size:15px;margin:6px 0 0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+p,li{max-width:68ch}
+.eq{font:16px/1.6 "Bricolage Grotesque",Inter,sans-serif;background:var(--panel);border-left:3px solid var(--mus);padding:10px 14px;margin:12px 0;overflow-x:auto}
+.alt .eq{background:var(--bg)}
+table{border-collapse:collapse;width:100%}
+td{padding:7px 6px;border-bottom:1px solid var(--rule);vertical-align:top}
+td:last-child{color:var(--soft)}
+a{color:var(--teal)}
+footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.fig{min-height:320px}.fig3{min-height:400px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>The rung flow counts groups within groups</h1>
+<p class="lede">Multiply out (1 + a)(1 + b)(1 + c) − 1 and every nonempty subset appears once: the mult-add cube is the oldest trick in counting. One rung up, the flow E(x) = eˣ − 1 wraps pieces into nonempty sets. Start from single points and climb: rung 1 counts sets, rung 2 set partitions, rung 3 partitions of partitions. Between whole rungs the numbers turn negative, so a fractional rung counts nothing.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="ruler"></div>
+<div class="ctl"><label for="t">Rung t</label><input id="t" type="range" min="-1" max="3" step="0.05" value="2"><output id="to"></output></div>
+<p class="read" id="tread"></p>
+<p class="small">Bar n is the number of structures on n labelled points at rung t (n! times the xⁿ coefficient of Eᵗ(x)), drawn on a log scale. Teal bars are counts; tomato bars are negative. Try t = 0.5 or 1.5.</p>
+</div>
+<div class="panel">
+<div class="fig2" id="nest"></div>
+<p class="small">One structure on 8 points at each whole rung. Rung 1: one loop, a set. Rung 2: loops of points, a set partition. Rung 3: loops of loops. Each rung puts a nonempty set around the pieces of the rung below: that is E.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The cube lists subsets, and the dial paints them</h2>
+<div class="eq">(1 + x₁)(1 + x₂)⋯(1 + xₙ) − 1 = x₁ ✳ x₂ ✳ ⋯ ✳ xₙ = Σ over nonempty S of x_S</div>
+<p>Each corner of the n-cube is a subset; its layers are Pascal's rows, the tesseract's 1-4-6-4-1. Set every xᵢ = 1 and the count is 2ⁿ − 1.</p>
+<p>Turn the dial: (1 + k·x₁)⋯(1 + k·xₙ) weighs a subset by k^|S|. For whole k that is a count too: each chosen element wears one of k colours, giving (1 + k)ⁿ = qⁿ in all. At k = −1 the signed corners cancel to 0, which is inclusion–exclusion (proved on the <a href="https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv">statistics page</a>); it counts derangements 1, 0, 1, 2, 9, 44, 265. At k = −2 the total is (−1)ⁿ, parity. Weighting the corners by q to the sum of their positions gives the q-binomials, done on the <a href="https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL">q page</a>.</p>
+<p>The same cube sorts compositions: m numbers adding to n, each zero or a positive part. Pick the corner of nonzero parts, then split n among them. For two parts that is the pairs (a, b), either or both nonzero: n + 1 of them.</p>
+</div>
+<div class="panel">
+<div class="fig2" id="cube"></div>
+<div class="ctl"><label for="mode">Cube</label><select id="mode"><option value="s">Subsets (k = 1)</option><option value="k">Dial k</option><option value="p">Axis weights 1, 2, 3</option></select><span></span></div>
+<div class="ctl" id="krow"><label for="k">Dial k</label><input id="k" type="range" min="-2" max="3" step="1" value="2"><output id="ko"></output></div>
+<p class="read" id="cread"></p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>n! is a mult-add fold, and the cube sorts permutations by cycles</h2>
+<div class="eq">1 ✳ 2 = 5, 5 ✳ 3 = 23, 23 ✳ 4 = 119, … : 1 ✳ 2 ✳ ⋯ ✳ (n − 1) = n! − 1</div>
+<p>The lift says why: (1 + 1)(1 + 2)⋯(1 + (n − 1)) = n!. The picture says more. Build a permutation by placing the points one at a time. Point i + 1 either starts a new cycle (axis i off, weight 1) or goes right after one of the i points already placed (axis i on, weight i). Pick "Axis weights 1, 2, 3" on the cube above: its layers 1, 6, 11, 6 are the permutations of 4 points with 4, 3, 2 and 1 cycles, Stirling's cycle numbers.</p>
+<p>With the dial, each permutation weighs k^(n − cycles), and the total is (1 + k)(1 + 2k)⋯. At k = −1 that weight is the permutation's sign, and the axis of weight 1 sits exactly on the dial's wall −1/k = 1. One entry on the wall sends the whole fold to the wall, so even and odd permutations balance.</p>
+</div>
+<div>
+<h2>The exponential formula is exactly one step of the flow</h2>
+<p>For labelled structures, (1 + A)(1 + B) − 1 counts the ways to split the points into an A-part and a B-part, either one possibly empty but not both. Mult-add C/n to itself n times and let n grow: the result is e^C − 1 = E(C), the same staircase that builds e. So E(C) counts nonempty sets of C-pieces.</p>
+<p>Put connected graphs in as C (1, 1, 4, 38, 728 on 1 to 5 points) and E returns all graphs (1, 2, 8, 64, 1024). Going back, log(1 + x), is one rung down, E⁻¹. So yes: the exponential formula is the rung flow at t = 1, and nothing more exotic.</p>
+<p>The dial version, n copies of C/n under ✳ₖ, tends to (e^(kC) − 1)/k, which weighs a structure by k for each piece beyond the first. Fed nonempty sets, its layers are the Stirling numbers S(n, j), set partitions by block count.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div class="panel"><div class="fig3" id="grid"></div>
+<p class="small">Sign of the count at rung t (across, 0 to 2) for n = 1 to 16 points (down). Tomato cells are negative, grey cells zero. The whole rungs t = 1 and t = 2 have no tomato cell; t = 0 is the bare point, zero beyond n = 1.</p></div>
+<div>
+<h2>Between the rungs the counts go negative</h2>
+<p>The number of structures on n points at rung t is a polynomial in t (Jabotinsky, Comtet). For n = 3 it is t(3t − 1)/2: 1 at t = 1, 5 at t = 2, 12 at t = 3, and negative for t between 0 and 1/3. For n = 4 it is t(2t − 1)(3t − 1)/2, negative between 1/3 and 1/2.</p>
+<p>The half rung is the series x + x²/4 + x³/48 + 0·x⁴ + x⁵/3840 − 7x⁶/92160 + ⋯. Done twice it gives eˣ − 1 exactly, but its x⁶ term is negative. Fractional rungs above 1 do no better: t = 3/2 stays positive up to 15 points and goes negative at 16. Baker (1958) showed these fractional series do not even converge.</p>
+<p>So the rung ruler has a counting meaning only at whole steps, where it measures depth of nesting. One step below the ground, t = −1, the counts are the signed cyclic orders (−1)ⁿ⁻¹(n − 1)!, the Möbius function of the partition lattice (Rota 1964).</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table><tbody>
+<tr><td>Product of (1 + xᵢ) as the subset generating function</td><td>Euler, 1748; standard</td></tr>
+<tr><td>Inclusion–exclusion, derangements</td><td>de Montmort 1708, de Moivre 1718, Sylvester</td></tr>
+<tr><td>Rising products and cycle numbers</td><td>Stirling 1730</td></tr>
+<tr><td>Exponential formula, labelled products</td><td>Riddell and Uhlenbeck 1953; Joyal's species 1981</td></tr>
+<tr><td>Iterates of eˣ − 1, polynomial in t; Bell numbers as rung 2</td><td>Jabotinsky 1963; Comtet, Advanced Combinatorics 1974; partitions of partitions are OEIS A000258</td></tr>
+<tr><td>Fractional iterates of eˣ − 1 diverge</td><td>Baker 1958</td></tr>
+<tr><td>Möbius function of the partition lattice</td><td>Schützenberger; Rota 1964</td></tr>
+<tr><td>Integer rungs as depth of nesting; the sign map to 16 points; the wall reading of the sign balance</td><td>Ours: a reading, no new count</td></tr>
+</tbody></table>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>No, not inside combinatorics.</b> Everything on this page is the standard generating-function toolkit seen through the lift, and the lift is exactly how combinatorialists already work: a product of (1 + x) is a choice of subset. The mult-add words name these steps neatly but predict no new count.</p>
+<p>One fact is worth carrying back to the rung work, because it is firm and it is about the flow itself: whole rungs of E have a concrete meaning (how many levels of grouping), while fractional rungs are only an interpolation. Their coefficients turn negative and their series diverge, so a fractional rung should never be read as "part of a grouping".</p>
+</div>
+</div>
+</section>
+
+<footer>59 of 59 numerical checks pass (checks.py). 35 Lean theorems, core Lean 4.37, compiled clean, no sorry, standard axioms only.</footer>
+
+<script>
+{
+const D={"coef":[[1.0],[0.0,1.0],[0.0,-0.5,1.5],[0.0,0.5,-2.5,3.0],[0.0,-0.6666666666666666,5.0,-10.833333333333334,7.5],[0.0,0.9166666666666666,-11.375,37.083333333333336,-48.125,22.5],[0.0,-0.75,26.541666666666668,-130.375,255.20833333333334,-228.375,78.75],[0.0,-1.8333333333333333,-53.75,456.1666666666667,-1295.0,1751.1666666666667,-1170.75,315.0],[0.0,7.25,57.375,-1473.125,6343.75,-12200.125,12341.875,-6493.5,1417.5],[0.0,41.083333333333336,71.95833333333333,3856.1666666666665,-28983.854166666668,79898.875,-113639.16666666667,90556.875,-38888.4375,7087.5]],"grid":["+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++","0++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++","0-------------+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++","0+++++++++++++------0++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++","0---------+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++","0++++----------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++","0-+++++++++++++++++++------------++++++++++++++++++++++++++++++++++++++++++++++++","0------------++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++","0+++++------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++","0+++++++++++++++++++--------------------+++++++++++++++++++++++++++++++++++++++++","0----------+++++++++++++++++++++++++++--+++++++++++++++++++++++++++++++++++++++++","0-------------------------+++++++++++++++---------+++++++++++++++++++++++++++++++","0++++++++++++++-------------------------++++----------+++++++++++++++++++++++++++","0-+++++++++++++++++++++++++++++---------+++++++++++++++++++++++++++++++++++++++++","0------------------++++++++++++++++++++++---------+++++++++++++++++++++++++++++++","0++++-------------------------------+++++----------------------++++++++++++++++++"]};
+const $=id=>document.getElementById(id);
+const mk=(el,lab)=>{el.innerHTML='<svg role="img" aria-label="'+lab+'"></svg>';return el.firstChild;};
+const sR=mk($('ruler'),'Counts at rung t'), sN=mk($('nest'),'Nested groups'), sC=mk($('cube'),'Mult-add cube'), sG=mk($('grid'),'Sign map');
+const P=(n,t)=>{const c=D.coef[n-1];let v=0;for(let i=c.length-1;i>=0;i--)v=v*t+c[i];return v;};
+const fmt=v=>{const r=Math.round(v);return (Math.abs(v-r)<1e-6?String(r):v.toFixed(Math.abs(v)<10?3:1)).replace('-','−');};
+function ruler(){
+  const t=+$('t').value, W=sR.clientWidth, H=sR.clientHeight, m=34, NN=10;
+  $('to').textContent=fmt(t);
+  const vals=[];for(let n=1;n<=NN;n++)vals.push(P(n,t));
+  const L=v=>Math.sign(v)*Math.log10(1+Math.abs(v)), top=6.5;
+  const y0=H*0.64, sc=(y0-m)/top, bw=(W-2*m)/NN, lo=(H-34-y0)/sc;
+  let g='<line x1="'+m+'" y1="'+y0+'" x2="'+(W-m/2)+'" y2="'+y0+'" stroke="var(--soft)"/>';
+  for(const e of [1,2,3,4,5,6]){const yy=y0-e*sc;g+='<line x1="'+m+'" y1="'+yy+'" x2="'+(W-m/2)+'" y2="'+yy+'" stroke="var(--rule)"/><text x="'+(m-4)+'" y="'+(yy+4)+'" text-anchor="end" >'+(e%2?'':'10'+(e==2?'²':e==4?'⁴':'⁶'))+'</text>';}
+  vals.forEach((v,i)=>{const h=Math.max(-lo,Math.min(top,L(v)))*sc, x=m+i*bw+bw*0.15, w=bw*0.7;
+    const neg=v<-1e-9;g+='<rect x="'+x+'" y="'+(neg?y0:y0-h)+'" width="'+w+'" height="'+Math.max(1,Math.abs(h))+'" fill="var(--'+(neg?'tom':'teal')+')" rx="2"/>';
+    g+='<text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle">'+(i+1)+'</text>';
+    if(bw>40||i%2==0)g+='<text x="'+(x+w/2)+'" y="'+(neg?y0-6:y0+16)+'" text-anchor="middle" style="font-size:11px">'+fmt(v)+'</text>';});
+  g+='<text x="'+m+'" y="16">points n</text>';
+  sR.innerHTML=g;
+  const ti=Math.round(t), whole=Math.abs(t-ti)<1e-9;
+  const names={'-1':'one rung down: signed cyclic orders, log(1 + x)','0':'the ground: x itself, a single point','1':'nonempty sets: eˣ − 1','2':'set partitions: the Bell numbers','3':'partitions of partitions'};
+  const neg=vals.findIndex(v=>v<-1e-9);
+  $('tread').textContent=whole?('Rung '+ti+': '+names[ti]+'.'):(neg>=0?'Not a whole rung: negative count at n = '+(neg+1)+'.':'Not a whole rung: positive up to n = 10 here, but negative further out (checked to 16).');
+}
+function nest(){
+  const W=sN.clientWidth,H=sN.clientHeight,rows=[[[0,1,2,3,4,5,6,7]],[[0,1,2],[3],[4,5],[6,7]],[[[0,1,2],[3]],[[4,5],[6,7]]]];
+  const pad=14,rh=(H-2*pad)/3,dx=(W-2*pad-30)/8;let g='';
+  const px=i=>pad+30+dx*(i+0.5);
+  rows.forEach((r,ri)=>{const cy=pad+rh*(ri+0.5);g+='<text x="'+pad+'" y="'+(cy+4)+'" style="font-weight:600">'+(ri+1)+'</text>';
+    const loop=(a,b,inset,col,wd)=>{const x1=px(a)-dx*0.42+inset,x2=px(b)+dx*0.42-inset,hh=rh*0.62-2*inset;
+      g+='<rect x="'+x1+'" y="'+(cy-hh/2)+'" width="'+(x2-x1)+'" height="'+hh+'" rx="'+Math.min(hh/2,18)+'" fill="none" stroke="var(--'+col+')" stroke-width="'+wd+'"/>';};
+    if(ri==0)loop(0,7,4,'teal',2.5);
+    if(ri==1)r.forEach(b=>loop(b[0],b[b.length-1],4,'teal',2.5));
+    if(ri==2)r.forEach(B=>{loop(B[0][0],B[B.length-1].slice(-1)[0],0,'mus',2.5);B.forEach(b=>loop(b[0],b[b.length-1],7,'teal',2));});
+    for(let i=0;i<8;i++)g+='<circle cx="'+px(i)+'" cy="'+cy+'" r="'+Math.min(6,dx*0.18)+'" fill="var(--ink)"/>';});
+  sN.innerHTML=g;
+}
+function cube(){
+  const mode=$('mode').value,k=+$('k').value;$('krow').style.display=mode=='k'?'':'none';$('ko').textContent=String(k).replace('-','−');
+  const W=sC.clientWidth,H=sC.clientHeight,s=Math.min(W*0.5,(H/2-22)/0.72),cx=W/2,cy=H/2;
+  const P3=(a,b,c)=>[cx+(a-0.5)*s+(c-0.5)*s*0.5,cy-(b-0.5)*s+(0.5-c)*s*0.42];
+  const wt=[1,2,3],lab=['a','b','c'];let g='';const corners=[];
+  for(let m=0;m<8;m++){const bits=[m&1,m>>1&1,m>>2&1];corners.push(bits);}
+  for(const b of corners)for(let d=0;d<3;d++)if(!b[d]){const e=b.slice();e[d]=1;const p=P3(...b),q=P3(...e);g+='<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="var(--rule)" stroke-width="2"/>';}
+  const layer=[0,0,0,0];
+  for(const b of corners){const j=b[0]+b[1]+b[2];let v,txt;
+    if(mode=='s'){v=1;txt=b.map((x,i)=>x?lab[i]:'').join('')||'∅';}
+    else if(mode=='k'){v=Math.pow(k,j);txt=j==0?'1':(j==1?'k':'k'+(j==2?'²':'³'));}
+    else{v=b.reduce((a,x,i)=>a*(x?wt[i]:1),1);txt=String(v);}
+    layer[j]+=v;const p=P3(...b);
+    g+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="17" fill="var(--panel)" stroke="var(--'+(j==0?'soft':j==3?'mus':'teal')+')" stroke-width="2.5"/><text x="'+p[0]+'" y="'+(p[1]+4)+'" text-anchor="middle">'+txt+'</text>';}
+  sC.innerHTML=g;
+  const L=layer.map(v=>String(v).replace('-','−'));const tot=layer.reduce((a,b)=>a+b,0);
+  $('cread').textContent=mode=='s'?'Layers 1, 3, 3, 1: the empty corner plus 7 nonempty subsets, 2³ − 1.':mode=='k'?('Layers '+L.join(', ')+'; total (1 + k)³ = '+String(tot).replace('-','−')+'.'):'Layers 1, 6, 11, 6: permutations of 4 points with 4, 3, 2, 1 cycles. Total 24 = 4!.';
+}
+function grid(){
+  const W=sG.clientWidth,H=sG.clientHeight,m=30,rows=D.grid.length,cols=81;
+  const cw=(W-m-8)/cols,ch=(H-m-10)/rows;let g='';
+  D.grid.forEach((r,i)=>{for(let j=0;j<cols;j++){const c=r[j];if(c=='+')continue;
+    g+='<rect x="'+(m+j*cw)+'" y="'+(6+i*ch)+'" width="'+(cw+0.6)+'" height="'+(ch-1)+'" fill="var(--'+(c=='-'?'tom':'soft')+')"/>';}
+    if(i%3==0||i==rows-1)g+='<text x="'+(m-6)+'" y="'+(6+i*ch+ch*0.75)+'" text-anchor="end">'+(i+1)+'</text>';});
+  for(const tt of [0,1,2]){const x=m+tt*40*cw+cw/2;g+='<line x1="'+x+'" y1="6" x2="'+x+'" y2="'+(6+rows*ch)+'" stroke="var(--teal)" stroke-width="2"/><text x="'+x+'" y="'+(H-6)+'" text-anchor="middle">t = '+tt+'</text>';}
+  g+='<text x="'+(m+20*cw)+'" y="'+(H-6)+'" text-anchor="middle" >½</text><text x="'+(m+60*cw)+'" y="'+(H-6)+'" text-anchor="middle">1½</text>';
+  sG.innerHTML=g;
+}
+$('t').addEventListener('input',ruler);$('mode').addEventListener('change',cube);$('k').addEventListener('input',cube);
+[[sR,ruler],[sN,nest],[sC,cube],[sG,grid]].forEach(([s,f])=>{new ResizeObserver(f).observe(s.parentNode);f();});
+}
+</script>
+</body>
+</html>

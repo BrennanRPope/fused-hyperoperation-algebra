@@ -1,0 +1,61 @@
+PASS  cube: prod(1+x_i)-1 = sum over nonempty subsets, n=1
+PASS  fold x1 * x2 * ... (mult-add) = cube, n=1
+PASS  cube: prod(1+x_i)-1 = sum over nonempty subsets, n=2
+PASS  fold x1 * x2 * ... (mult-add) = cube, n=2
+PASS  cube: prod(1+x_i)-1 = sum over nonempty subsets, n=3
+PASS  fold x1 * x2 * ... (mult-add) = cube, n=3
+PASS  cube: prod(1+x_i)-1 = sum over nonempty subsets, n=4
+PASS  fold x1 * x2 * ... (mult-add) = cube, n=4
+PASS  cube: prod(1+x_i)-1 = sum over nonempty subsets, n=5
+PASS  fold x1 * x2 * ... (mult-add) = cube, n=5
+PASS  at x_i = 1: 2^n - 1 nonempty subsets, n=1..10
+PASS  dial: prod(1+k x_i) = sum k^|S| x^S, n=1
+PASS  dial: prod(1+k x_i) = sum k^|S| x^S, n=2
+PASS  dial: prod(1+k x_i) = sum k^|S| x^S, n=3
+PASS  dial: prod(1+k x_i) = sum k^|S| x^S, n=4
+PASS  painted subsets: sum_j C(n,j) k^j = (1+k)^n = q^n (brute force n<=5, k<=3)
+PASS  k = -1: alternating subset sum is 0 for n>=1 (n=1..12)
+PASS  k = -2: sum (-2)^|S| = (-1)^n (n=0..12)
+PASS  derangements = sum_j (-1)^j C(n,j)(n-j)!  (brute force n<=7)
+PASS  derangements 1,0,1,2,9,44,265,1854,14833
+PASS  1 * 2 * ... * (n-1) = n! - 1 under mult-add (n=2..12)
+PASS  layer j of the cube with axis weights 1..n-1 = #perms with n-j cycles (n<=7)
+PASS  row n=4 layers 1,6,11,6
+PASS  dial: sum over perms k^(n - cycles) = prod_{i<n}(1 + k i), k=-1,2,3, n<=7
+PASS  k = -1: even and odd permutations balance (sum of signs 0, n=2..7)
+PASS  EGF mult-add (1+A)(1+B)-1 counts splits into optional A-part and B-part (n<=6)
+PASS  two-colourings: (e^x-1) * (e^x-1) = e^{2x}-1, counts 2^n
+PASS  connected graphs = log(1+G): 1,1,4,38,728,26704,1866256
+PASS  connected graph counts by brute force n=1..5
+PASS  E(connected) = all nonempty graphs 2^C(n,2) (n<=9)
+PASS  recurrence g_n = sum C(n-1,j-1) c_j g_(n-j) (n<=9)
+PASS  E^1(x) = e^x - 1: one nonempty set on n points (n<=9)
+PASS  E^2(x): Bell numbers 1,2,5,15,52,203,877,4140,21147 (brute force)
+PASS  E^3(x): partitions of partitions 1,3,12,60,358,2471,19302,167894 (sum_j S(n,j) B_j)
+PASS  E^-1(x) = log(1+x): signed cyclic orders (-1)^(n-1)(n-1)! (n<=9)
+PASS  mu(0,1) of the partition lattice = (-1)^(n-1)(n-1)! = n![x^n] log(1+x)  (n<=5)
+PASS  P_n(t) at t = 1,2,3 gives 1, Bell, partitions of partitions (n<=8)
+PASS  P_n(t) at t = 0 is x, at t = -1 the signed cyclic orders, at t = -2 log(1+log(1+x))
+PASS  P_2 = t, P_3 = t(3t-1)/2, P_4 = t(2t-1)(3t-1)/2
+PASS  P_3 has roots 0, 1/3 and P_4 roots 0, 1/3, 1/2 (leading terms positive): negative on (0,1/3) and (1/3,1/2)
+PASS  P_3 < 0 on (0, 1/3): P_3(1/4) = -1/32
+PASS  half rung: x + x^2/4 + x^3/48 + 0 x^4 + x^5/3840 - 7x^6/92160
+PASS  half rung composed with itself = e^x - 1 to order 8
+PASS  flow group law E^s(E^t(x)) = E^(s+t)(x) to order 8, symbolic s,t
+PASS  generator (iterative log): x^2/2 - x^3/12 + x^4/48 - x^5/180 + 11x^6/8640
+PASS  t = 1/2: first negative count at n = 6
+PASS  t = 11/10: negative at n = 12
+PASS  t = 5/4: negative at n = 13
+PASS  t = 3/2: positive to n = 15, negative at n = 16
+PASS  integer rungs t = 1..4 stay positive to n = 16
+PASS  sign map (figures.json from figures.py): no negative cell in the t = 1 and t = 2 columns, n = 1..16
+PASS  sign map: t = 0 column is the bare point x (1 then zeros)
+PASS  n copies of C/n under the k-dial -> (e^{kC} - 1)/k as n -> oo
+PASS  k = 1: n copies of C/n mult-added -> E(C) = e^C - 1 (the e staircase)
+PASS  n![x^n] (e^{k(e^x-1)} - 1)/k = sum_j S(n,j) k^(j-1)  (n<=7)
+PASS  S(n,j) = set partitions with j blocks (brute force n<=7)
+PASS  k = -1: sum_j (-1)^(j-1) S(n,j) = 1,0,-1,-1,2,9,9,-50 (complementary Bell, negated)
+PASS  m parts, each "a positive part" mult-added: weak compositions C(n+m-1,m-1) = sum_j C(m,j)C(n-1,j-1) (m<=4,n<=9)
+PASS  two parts: pairs (a,b), either or both nonzero, a+b=n: n+1
+
+59 of 59 checks pass

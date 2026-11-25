@@ -1,0 +1,31 @@
+PASS - |These A B| = a + b + ab = a (+) b for a, b < 8
+PASS - Option(These A B) <-> Option A x Option B is a bijection with both round trips (a, b < 5)
+PASS - (a+1)(b+1) = (a (+) b) + 1 and = 1 + (a+b) + ab: base point, wedge, smash
+PASS - pointed sets: A+ x B+ has a (+) b non-base points = wedge (a+b) + smash (ab) (a, b < 4)
+PASS - Option of the empty set is the one-point set (unit goes to unit)
+PASS - associator is a bijection (A(+)B)(+)C -> A(+)(B(+)C)
+PASS - both sides have the cube's 7 corners: a+b+c+ab+ac+bc+abc
+PASS - pentagon: the two ways to re-bracket ((A B) C) D agree on every element
+PASS - hexagon: the braiding (swap) and associator agree both ways round
+PASS - swap is its own inverse
+PASS - unit: empty (+) B has exactly the b elements That(b)
+PASS - tagged dial: 1 + K(A (+)k B) <-> (1 + KA)(1 + KB) is a bijection for k < 4 tags, a, b < 3 (the lift 1 + kx on sets)
+PASS - in Par, for every pair of partial maps f: X -> A, g: X -> B exactly one h: X -> A(+)B has projections f, g
+PASS - total number of such h equals |partial X->A| x |partial X->B| = (a+1)^x (b+1)^x
+PASS - the empty set is a zero object in Par: one partial map into it, one out of it
+PASS - disjoint union is the coproduct in Par too (counts: partial maps out of A+B = product of partial maps out of each)
+PASS - align: length max(n,m), both lists come back, zip is the both-part, zip_longest is align with defaults
+PASS - full outer join by key: each row is a These (left only, right only, both); row count = |keys A union keys B|
+PASS - cell polynomials multiply under products, so P - 1 mult-adds, as polynomials in t (random complexes)
+PASS - spheres: reduced Euler characteristic of S^n is (-1)^n (n < 8)
+PASS - circle is the wall: reduced chi of S^1 x Y is -1 for Y = S^0..S^5 and torus
+PASS - torus S^1 x S^1 has cells 1, 2, 1; S^2 x S^2 has reduced chi 1 (+) 1 = 3
+PASS - at t = 1: non-base cells of a product = wedge (a+b) + smash (ab) of non-base cells
+PASS - simplicial homology of a triangulated torus: Betti numbers 1, 2, 1 = coefficients of (1+t)^2
+PASS - unreduced suspension of the torus: Betti 1, 0, 2, 1, i.e. reduced homology of S^2 v S^2 v S^3 = Sigma S^1 v Sigma S^1 v Sigma(S^1 ^ S^1)
+PASS - suspension multiplies the reduced polynomial by t: t((1+t)^2 - 1) = 2t^2 + t^3, the homology of S^2 v S^2 v S^3
+PASS - suspension splitting count: t(a (+) b) = ta + tb + t ab
+PASS - cardinality is a monoidal functor: |A (+) B| = |A| (+) |B| and |Option A| = |A| + 1 is the lift
+PASS - a point has reduced chi 0 (the identity); S^1 v S^1 has -2; wedge adds reduced chi
+
+29/29 checks passed

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantum chemistry and mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical write-up read by one curious person, often on a phone
+   IDEA a page from a chemistry handbook: each subject opens with its element-style tile and one finding
+   PICTURE one large drawn chart or diagram per page, carrying the subject's mult-add finding
+   COLOUR white ground, near-black ink, sodium-flame yellow slab behind the verdict, copper-blue marks, flame red accent
+   TYPE Archivo 800 titles + Source Sans 3 text
+   LAYOUT title and tile across the top, picture full width beneath, figures in a row; phone: stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1216);--ink:light-dark(#14161a,#e9ecef);--mute:light-dark(#555c66,#a3abb5);--rule:light-dark(#d9dde2,#2a3038);--blue:light-dark(#1f5fbf,#6ea3ff);--red:light-dark(#d23c2a,#ff7a66);--yel:light-dark(#ffd23f,#8a6d00);--yelink:light-dark(#14161a,#fff4c7);--panel:light-dark(#f4f6f8,#171b21);--green:light-dark(#1d7f4e,#5fd39a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(24px,4vw,56px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font:800 clamp(30px,4.4vw,48px)/1.06 Archivo,system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+h2{font:800 clamp(22px,2.6vw,28px)/1.15 Archivo,system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+h3{font:700 18px/1.3 Archivo,system-ui,sans-serif;margin:18px 0 6px}
+p{margin:0 0 12px;max-width:72ch}
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start}
+.tile{width:118px;height:132px;border:3px solid var(--ink);padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between;background:var(--bg)}
+.tile .z{font:700 15px Archivo,sans-serif}.tile .sym{font:800 46px/1 Archivo,sans-serif;letter-spacing:-.03em}.tile .nm{font-size:13px;line-height:1.2;color:var(--mute)}
+.lead{font-size:19px;max-width:70ch}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:14px;margin:18px 0 6px}
+.figs div{border-top:3px solid var(--ink);padding-top:6px}
+.figs b{display:block;font:800 clamp(24px,3vw,34px)/1.1 Archivo,sans-serif;white-space:nowrap}
+.figs span{font-size:14px;color:var(--mute)}
+.fig{position:relative;min-height:360px;margin:12px 0 4px}
+.fig.tall{min-height:440px}.fig.short{min-height:280px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cap{font-size:14px;color:var(--mute);margin:4px 0 0;max-width:none}
+svg text{font:14px "Source Sans 3",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+svg .ax{stroke:var(--rule);stroke-width:1}svg .axk{stroke:var(--ink);stroke-width:1.2}
+.verdict{background:var(--yel);color:var(--yelink);padding:clamp(18px,3vw,30px) max(5vw,16px)}
+.verdict h2{margin-bottom:6px}.verdict p{max-width:80ch;font-size:18px}
+.sec{border-top:1px solid var(--rule)}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:700;border-bottom:2px solid var(--ink)}
+.st{white-space:nowrap;font-weight:700}
+.st.known{color:var(--mute)}.st.tidy{color:var(--blue)}.st.new{color:var(--red)}
+code{font:14px ui-monospace,Menlo,monospace;overflow-wrap:anywhere;background:var(--panel);padding:1px 4px;border-radius:3px}
+.lean{columns:2 22em;column-gap:32px;font-size:15px;padding-left:18px}.lean li{break-inside:avoid;margin-bottom:6px}
+.eq{font:17px/1.4 "Source Sans 3",sans-serif;background:var(--panel);padding:10px 14px;margin:8px 0 14px;overflow-x:auto;white-space:nowrap}
+a{color:var(--blue)}
+.nav{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;margin-top:10px}
+footer{font-size:14px;color:var(--mute)}
+@media(max-width:700px){.two{grid-template-columns:minmax(0,1fr)}.top{grid-template-columns:minmax(0,1fr)}.tile{width:96px;height:108px}.tile .sym{font-size:36px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:block;border:0;padding:2px 0}.stack td::before{content:attr(data-l) ": ";font-weight:700}.lean{columns:1}}
+</style></head><body>
+<header class="band"><div class="wrap">
+<div class="top"><div><h1>Size-consistency is mult-add: CISD fails because it drops the corner</h1><p class="lead">Two molecules that don't interact have a wavefunction equal to the product of theirs, so their excited parts compose by mult-add. Truncated CI keeps only the edges and loses the corner; coupled cluster keeps it by working in the log of the lift.</p></div>
+<div class="tile" aria-hidden="true"><span class="z">1</span><span class="sym">Ψ</span><span class="nm">Quantum chemistry</span></div></div>
+<div class="figs"><div><b>25 / 25</b><span>numeric checks pass</span></div><div><b>12</b><span>Lean theorems, compiled</span></div><div><b>5.9 kcal/mol</b><span>CISD&#x27;s error on two far-apart waters</span></div><div><b>k = 1</b><span>the only size-consistent corner weight</span></div></div>
+<div class="fig tall"><svg id="pic" role="img" aria-label="Share of the true correlation energy kept as identical molecules are added, for corner weight k = 0 (CISD), ½ and 1 (coupled cluster). Model: Δ = 1, g = 0.3, solved exactly in checks.py."></svg></div>
+<p class="cap">Share of the true correlation energy kept as identical molecules are added, for corner weight k = 0 (CISD), ½ and 1 (coupled cluster). Model: Δ = 1, g = 0.3, solved exactly in checks.py.</p>
+<nav class="nav"><a href="#corner">The corner</a><a href="#model">N molecules</a><a href="#real">Real molecules</a><a href="#claims">Every claim</a><a href="#lean">Lean</a><a href="#files">Files</a></nav>
+</div></header>
+<section class="verdict"><div class="wrap"><h2>Lead check: not a lead</h2><p>Size-consistency is fully understood in quantum chemistry: it is why coupled cluster replaced truncated CI decades ago. Mult-add explains it in one line, which makes this the clearest teaching picture of the failure, but it adds no prediction. The one small new fact, that a partial corner weight still fails, follows directly from the algebra.</p></div></section>
+<section class="band sec" id="corner"><div class="wrap"><h2>Two molecules that ignore each other: their wavefunctions multiply</h2><div class="two"><div><p>Write a molecule's wavefunction as the reference determinant times 1 + c, where c holds every excited configuration (intermediate normalisation). For two molecules too far apart to interact, the exact wavefunction is the product, so</p>
+<div class="eq">1 + c<sub>AB</sub> = (1 + c<sub>A</sub>)(1 + c<sub>B</sub>) &nbsp; ⟹ &nbsp; c<sub>AB</sub> = c<sub>A</sub> ✳ c<sub>B</sub> = c<sub>A</sub> + c<sub>B</sub> + c<sub>A</sub>c<sub>B</sub></div>
+<p>The corner c<sub>A</sub>c<sub>B</sub> is "both molecules excited at the same time". For two two-electron molecules that is a quadruple excitation of the pair.</p>
+<p>Truncated configuration interaction with singles and doubles (CISD) keeps only excitations up to two electrons, so it keeps c<sub>A</sub> + c<sub>B</sub> and throws the corner away. It is the weighted law at k = 0. That is the whole reason CISD is not size-consistent. Coupled cluster writes 1 + c = e<sup>T</sup>: T is the log of the lift, so T adds and the corner comes back by itself. In mult-add terms, coupled cluster is the ruler that turns ✳ into +.</p></div><div><div class="fig "><svg id="corner-fig"></svg></div><p class="cap">Three fragments A, B, C on the mult-add cube. CISD keeps the red edges out of the reference corner (one fragment excited at a time). Every blue corner is a product of fragment excitations that only the full ✳ keeps.</p></div></div></div></section><section class="band sec" id="model"><div class="wrap"><h2>With N molecules, CISD keeps a share that falls like 1/√N</h2><p>The checks file solves a model exactly: N identical molecules, each with a reference state and one doubly excited state 2Δ above it, coupled by g (Δ = 1, g = 0.3). The exact energy is N times one molecule. CISD's energy is Δ − √(Δ² + N g²), so its share of the correlation falls like 1/√N: 98% for two molecules, 86% for ten, under 7% for ten thousand.</p>
+<p>A wavefunction that keeps the corner with weight k (every m-fold product scaled by k<sup>m−1</sup>) is exact only at k = 1. Half a corner is better than none but still loses ground as N grows. Size-consistency is not a matter of degree: only the full mult-add composes correctly.</p>
+<p>Lean proves the model's key step: if e₁ solves one molecule, then N·e₁ misses the N-molecule CISD equation by exactly N(N − 1)e₁², the count of molecule pairs times the corner (<code>cisd_gap</code>, <code>cisd_not_extensive</code>).</p></div></section><section class="band sec" id="real"><div class="wrap"><h2>Real molecules show the same loss: 0.7 kcal/mol for two H₂, 5.9 for two waters</h2><p>I ran PySCF on real molecules 100 Å apart, where they cannot interact.</p>
+<ul><li><b>Two H₂ (cc-pVDZ):</b> CCSD gives exactly twice one molecule (-0.069349 Eh). CISD gives -0.068221 Eh against -0.069349: it loses -0.71 kcal/mol, though for a single H₂ CISD and CCSD agree exactly (two electrons leave no room for a corner).</li>
+<li><b>Two waters (6-31G):</b> CCSD is exactly twice one water; CISD keeps 96.4% and loses 5.9 kcal/mol, more than a hydrogen bond's worth of error from two molecules that are not even touching.</li></ul>
+<p>The same counting runs through spin coupling: multiplicities multiply, (2s₁ + 1)(2s₂ + 1), so 2s mult-adds, and the Clebsch–Gordan series fills the product exactly (36 cases checked, and in Lean).</p></div></section>
+<section class="band sec" id="claims"><div class="wrap"><h2>Every claim, what it is, and how it was checked</h2>
+<p>Status: <b>known</b> is standard science restated; <b>tidy reading</b> is a known fact read in mult-add terms; <b>new here</b> is new as far as I could find.</p><div class="scroll"><table class="stack"><thead><tr><th>Claim</th><th>Status</th><th>Checked by</th></tr></thead><tbody><tr><td data-l="Claim">Independent fragments: c<sub>AB</sub> = c<sub>A</sub> ✳ c<sub>B</sub></td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">200 random pairs; Lean <code>fragments_multAdd</code></td></tr><tr><td data-l="Claim">CISD drops exactly the corner, so it is the k = 0 law</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">Lean <code>cisd_drops_corner</code>, <code>cisd_drops_three</code></td></tr><tr><td data-l="Claim">Coupled cluster's exponential is the log of the lift, so it is size-consistent</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">PySCF: 2 H₂ and 2 H₂O, CCSD = 2× to 1e-6 Eh</td></tr><tr><td data-l="Claim">N-molecule CISD keeps a share falling like 1/√N</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">exact diagonalisation N ≤ 10; closed form to N = 160,000</td></tr><tr><td data-l="Claim">N·e₁ misses CISD by N(N−1)e₁², the molecule pairs</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">Lean <code>cisd_gap</code></td></tr><tr><td data-l="Claim">Only corner weight k = 1 is size-consistent; k = ½ still drifts</td><td data-l="Status"><span class="st new">new here</span></td><td data-l="Checked by">variational scan, N = 1 to 16</td></tr><tr><td data-l="Claim">Real CISD loses 0.71 kcal/mol (2 H₂) and 5.9 kcal/mol (2 H₂O)</td><td data-l="Status"><span class="st known">known</span></td><td data-l="Checked by">PySCF runs in checks.py</td></tr><tr><td data-l="Claim">Spin multiplicities multiply, 2s mult-adds</td><td data-l="Status"><span class="st tidy">tidy reading</span></td><td data-l="Checked by">36 cases; Lean <code>spin_multiplicity</code></td></tr></tbody></table></div></div></section>
+<section class="band sec" id="lean"><div class="wrap"><h2>Proved in Lean</h2>
+<p><code>chemistry/01-quantum/lean/ChemQuantum.lean</code>: core Lean 4.37.0-rc1, no mathlib, no <code>sorry</code>, compiled against the shared library; every theorem uses only Lean's standard axioms.</p>
+<ul class="lean"><li><code>fragments_multAdd</code>: (1 + c<sub>A</sub>)(1 + c<sub>B</sub>) = 1 + c<sub>A</sub> ✳ c<sub>B</sub></li><li><code>cisd_drops_corner</code>: what CISD drops is c<sub>A</sub>c<sub>B</sub></li><li><code>cisd_is_weight_zero, exact_is_weight_one</code>: the two ends of the dial</li><li><code>n_fragments</code>: 1 + c<sub>N</sub> = (1 + c)<sup>N</sup></li><li><code>fragments_assoc</code>: joining N then M is joining N + M</li><li><code>three_fragments, cisd_drops_three</code>: the three-fragment corner expansion and what CISD loses</li><li><code>cisd_gap</code>: the N(N − 1)e₁² gap</li><li><code>cisd_not_extensive</code>: CISD is not size-extensive for N ≥ 2</li><li><code>spin_multiplicity</code>: (s₁+1)(s₂+1) = s₁ ✳ s₂ + 1</li><li><code>clebsch_gordan_square</code>: the odd multiplicities of j ⊗ j fill a square</li></ul></div></section>
+<section class="band sec" id="files"><div class="wrap"><h2>Files and sources</h2><p>In the project folder under math-theory/chemistry/01-quantum/: <code>checks.py</code> (25 checks, numpy and PySCF), <code>checks_output.txt</code>, <code>results.json</code>, <code>lean/ChemQuantum.lean</code>, <code>make_page.py</code>.</p><p>Sources: Szabo and Ostlund, <i>Modern Quantum Chemistry</i> (1982), ch. 4 on size-consistency of truncated CI; Bartlett and Musiał, Rev. Mod. Phys. 79, 291 (2007), on coupled cluster; PySCF (Sun et al., WIREs Comput. Mol. Sci. 2018).</p>
+<footer><p>Chemistry pass, part 1 of 13: quantum chemistry. Next: conservation of mass and charge.</p></footer></div></section>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function nice(lo,hi,n){const span=hi-lo,step0=span/n,mag=Math.pow(10,Math.floor(Math.log10(step0))),f=step0/mag;const st=(f<1.5?1:f<3?2:f<7?5:10)*mag;const out=[];for(let v=Math.ceil(lo/st-1e-9)*st;v<=hi+1e-9;v+=st)out.push(+v.toPrecision(12));return out}
+function fmt(v){const a=Math.abs(v);if(a!==0&&(a<1e-3||a>=1e5))return v.toExponential(0).replace('e+','e');return String(+v.toPrecision(4))}
+function plot(el,o){
+  const draw=()=>{const W=el.clientWidth,H=el.clientHeight,small=W<520;
+    const m={l:o.ml||(small?46:60),r:o.mr||(small?14:150),t:24,b:o.xlab?52:30};
+    const tx=v=>o.xlog?Math.log10(v):v,ty=v=>o.ylog?Math.log10(v):v;
+    const X=v=>m.l+(tx(v)-tx(o.x[0]))/(tx(o.x[1])-tx(o.x[0]))*(W-m.l-m.r);
+    const Y=v=>H-m.b-(ty(v)-ty(o.y[0]))/(ty(o.y[1])-ty(o.y[0]))*(H-m.t-m.b);
+    let s='';
+    const xt=o.xticks||(o.xlog?[]:nice(o.x[0],o.x[1],small?4:7)),yt=o.yticks||(o.ylog?[]:nice(o.y[0],o.y[1],5));
+    yt.forEach(v=>{s+=`<line class="ax" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l-8}" y="${Y(v)+5}" text-anchor="end">${esc(o.yfmt?o.yfmt(v):fmt(v))}</text>`});
+    xt.forEach((v,i)=>{if(small&&i%2&&xt.length>5)return;s+=`<text x="${X(v)}" y="${H-m.b+20}" text-anchor="middle">${esc(o.xfmt?o.xfmt(v):fmt(v))}</text>`});
+    s+=`<line class="axk" x1="${m.l}" x2="${W-m.r}" y1="${H-m.b}" y2="${H-m.b}"/>`;
+    if(o.xlab)s+=`<text x="${(m.l+W-m.r)/2}" y="${H-8}" text-anchor="middle">${esc(o.xlab)}</text>`;
+    if(o.ylab)s+=`<text x="${m.l}" y="14">${esc(o.ylab)}</text>`;
+    (o.bands||[]).forEach(b=>{s+=`<rect x="${X(b.x0)}" y="${m.t}" width="${X(b.x1)-X(b.x0)}" height="${H-m.t-m.b}" fill="${b.fill}" opacity="${b.op||.14}"/>`+(b.label?`<text x="${(X(b.x0)+X(b.x1))/2}" y="${m.t+16}" text-anchor="middle">${esc(b.label)}</text>`:'')});
+    (o.hlines||[]).forEach(h=>{s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(h.y)}" y2="${Y(h.y)}" stroke="${h.c||'var(--mute)'}" stroke-dasharray="5 4"/>`+(h.label?`<text x="${W-m.r+6}" y="${Y(h.y)+5}">${esc(small?(h.short||''):h.label)}</text>`:'')});
+    (o.series||[]).forEach(se=>{const c=se.c||'var(--blue)';
+      if(se.line!==false&&se.pts.length>1)s+=`<polyline fill="none" stroke="${c}" stroke-width="${se.w||3}" ${se.dash?`stroke-dasharray="${se.dash}"`:''} points="${se.pts.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+      if(se.dots)se.pts.forEach(p=>{s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${se.r||5}" fill="${c}"/>`});
+      if(se.name){const p=se.pts[se.pts.length-1];const lx=small?X(p[0])-4:X(p[0])+8;s+=`<text x="${lx}" y="${Y(p[1])+(se.dy||0)+5}" text-anchor="${small?'end':'start'}" fill="${c}">${esc(small?(se.short||se.name):se.name)}</text>`}
+      (se.labels||[]).forEach(L=>{s+=`<text x="${X(L.x)+(L.dx||8)}" y="${Y(L.y)+(L.dy||5)}" text-anchor="${L.a||'start'}">${esc(L.t)}</text>`});
+    });
+    if(o.extra)s+=o.extra({X,Y,W,H,m,small});
+    el.innerHTML=s};
+  const ro=new ResizeObserver(draw);ro.observe(el);draw();
+}
+
+{
+
+plot(document.getElementById('pic'),{mr:215,x:[1,16],y:[0.7,1.02],xlab:'number of identical molecules, far apart',ylab:'share of the true correlation energy kept',
+ yfmt:v=>Math.round(v*100)+'%',
+ series:[{pts:[[1, 1.0], [2, 1.0], [3, 1.0], [4, 1.0], [5, 1.0], [6, 1.0], [7, 1.0], [8, 1.0], [9, 1.0], [10, 1.0], [11, 1.0], [12, 1.0], [13, 1.0], [14, 1.0], [15, 1.0], [16, 1.0]],c:'var(--green)',name:'k = 1: coupled cluster (exact)',short:'k = 1',dy:-6},
+ {pts:[[1, 0.9999999558662825], [2, 0.9948377762457363], [3, 0.989859524184583], [4, 0.9850565067835657], [5, 0.980419867255951], [6, 0.9759424826096682], [7, 0.971616825879667], [8, 0.9674366291205968], [9, 0.9633959621397853], [10, 0.9594892100501674], [11, 0.9557122813452834], [12, 0.952059462020002], [13, 0.9485273520970309], [14, 0.9451119400283295], [15, 0.9418095805988383], [16, 0.938617557196807]],c:'var(--blue)',name:'k = ½: half the corner',short:'k = ½'},
+ {pts:[[1, 1.0], [2, 0.9797498716689316], [3, 0.9610181724889675], [4, 0.943606190266551], [5, 0.9273515323876582], [6, 0.9121197761203164], [7, 0.8977983936204692], [8, 0.8842922445977275], [9, 0.8715201739349469], [10, 0.8594124037487167], [11, 0.8479085068236525], [12, 0.836955812288923], [13, 0.8265081372802252], [14, 0.8165247676518373], [15, 0.8069696312148823], [16, 0.7978106214180345]],c:'var(--red)',name:'k = 0: CISD, no corner',short:'k = 0'}],
+ extra:({X,Y,small})=>small?'':`<text x="${X(9)}" y="${Y(0.74)}">the loss is the corner: pairs of molecules excited together</text>`});
+
+
+{const el=document.getElementById('corner-fig');const draw=()=>{const W=el.clientWidth,H=el.clientHeight,s=Math.min(W*0.42,H*0.55),ox=W*0.18,oy=H*0.82,dx=s*0.45,dy=-s*0.32;
+const P=(a,b,c)=>[ox+a*s+c*dx,oy-b*s+c*dy];const V=[];for(let a=0;a<2;a++)for(let b=0;b<2;b++)for(let c=0;c<2;c++)V.push([a,b,c]);
+let t='';const E=[];V.forEach(p=>V.forEach(q=>{const d=p.reduce((s,x,i)=>s+Math.abs(x-q[i]),0);if(d===1&&p<q)E.push([p,q])}));
+E.forEach(([p,q])=>{const A=P(...p),B=P(...q);const kept=(p.join('')==='000');t+=`<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="${kept?'var(--red)':'var(--rule)'}" stroke-width="${kept?4:2}"/>`});
+const name=p=>{const n=['A','B','C'].filter((x,i)=>p[i]);return n.length?n.join('·'):'reference'};
+V.forEach(p=>{const A=P(...p),o=p.reduce((a,b)=>a+b,0);const col=o===0?'var(--ink)':o===1?'var(--red)':'var(--blue)';t+=`<circle cx="${A[0]}" cy="${A[1]}" r="8" fill="${col}"/><text x="${A[0]+12}" y="${o===0?A[1]+26:A[1]-10}">${name(p)}</text>`});
+el.innerHTML=t};const ro2=new ResizeObserver(draw);ro2.observe(el);draw();}
+
+}</script></body></html>

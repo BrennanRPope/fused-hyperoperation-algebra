@@ -1,0 +1,222 @@
+{
+ "numbers_scanned": 6440,
+ "pages_scanned": 24,
+ "rel_tol": 3e-06,
+ "reps": 2000,
+ "results": [
+  {
+   "constant": "\u03c0",
+   "observed": 6,
+   "null_mean": 0.0135,
+   "null_sd": 0.11540255629751016,
+   "p": 0.0004997501249375312,
+   "pages": {
+    "elliptic": 1,
+    "pi": 5
+   },
+   "n_pages": 2
+  },
+  {
+   "constant": "e",
+   "observed": 4,
+   "null_mean": 0.02,
+   "null_sd": 0.14352700094407322,
+   "p": 0.0004997501249375312,
+   "pages": {
+    "fused-constants": 3,
+    "ns-rungs": 1
+   },
+   "n_pages": 2
+  },
+  {
+   "constant": "1/e",
+   "observed": 4,
+   "null_mean": 0.0325,
+   "null_sd": 0.18012148678045048,
+   "p": 0.0004997501249375312,
+   "pages": {
+    "fused-constants": 3,
+    "ns-rungs": 1
+   },
+   "n_pages": 2
+  },
+  {
+   "constant": "e^(1/e)",
+   "observed": 4,
+   "null_mean": 0.0345,
+   "null_sd": 0.18522891242999837,
+   "p": 0.0004997501249375312,
+   "pages": {
+    "fused-constants": 2,
+    "pi": 2
+   },
+   "n_pages": 2
+  },
+  {
+   "constant": "omega W(1)",
+   "observed": 3,
+   "null_mean": 0.0325,
+   "null_sd": 0.17732385626305333,
+   "p": 0.0004997501249375312,
+   "pages": {
+    "fused-constants": 1,
+    "pi": 2
+   },
+   "n_pages": 2
+  },
+  {
+   "constant": "\u03c0/2",
+   "observed": 2,
+   "null_mean": 0.0305,
+   "null_sd": 0.1776787832015967,
+   "p": 0.0014992503748125937,
+   "pages": {
+    "elliptic": 1,
+    "twisted-boosts": 1
+   },
+   "n_pages": 2
+  },
+  {
+   "constant": "2/\u03c0",
+   "observed": 2,
+   "null_mean": 0.035,
+   "null_sd": 0.18648056198971516,
+   "p": 0.0009995002498750624,
+   "pages": {
+    "elliptic": 1,
+    "twisted-boosts": 1
+   },
+   "n_pages": 2
+  },
+  {
+   "constant": "ln 2",
+   "observed": 2,
+   "null_mean": 0.036,
+   "null_sd": 0.19158288023724873,
+   "p": 0.0014992503748125937,
+   "pages": {
+    "fused-constants": 2
+   },
+   "n_pages": 1
+  },
+  {
+   "constant": "\u221a5",
+   "observed": 1,
+   "null_mean": 0.0175,
+   "null_sd": 0.13112494041943357,
+   "p": 0.017991004497751123,
+   "pages": {
+    "elliptic": 1
+   },
+   "n_pages": 1
+  },
+  {
+   "constant": "golden ratio \u03c6",
+   "observed": 0,
+   "null_mean": 0.0405,
+   "null_sd": 0.19964906711527605,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "\u03c6\u00b2 (Beraha B5)",
+   "observed": 0,
+   "null_mean": 0.033,
+   "null_sd": 0.18141389141959335,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "\u221a2",
+   "observed": 0,
+   "null_mean": 0.0355,
+   "null_sd": 0.19036740792478107,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "silver 1+\u221a2",
+   "observed": 0,
+   "null_mean": 0.02,
+   "null_sd": 0.14352700094407322,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "\u221a3",
+   "observed": 0,
+   "null_mean": 0.0345,
+   "null_sd": 0.1825095887891921,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "2+\u221a3",
+   "observed": 0,
+   "null_mean": 0.008,
+   "null_sd": 0.08908422980528036,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "2cos(\u03c0/7)",
+   "observed": 0,
+   "null_mean": 0.028,
+   "null_sd": 0.16497272501841023,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "plastic \u03c1",
+   "observed": 0,
+   "null_mean": 0.0325,
+   "null_sd": 0.18287632432876597,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "Euler \u03b3",
+   "observed": 0,
+   "null_mean": 0.0365,
+   "null_sd": 0.19278939286174435,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "Catalan G",
+   "observed": 0,
+   "null_mean": 0.046,
+   "null_sd": 0.21652713455823497,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "\u03b6(3)",
+   "observed": 0,
+   "null_mean": 0.0355,
+   "null_sd": 0.18503986057063487,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  },
+  {
+   "constant": "ln 3",
+   "observed": 0,
+   "null_mean": 0.035,
+   "null_sd": 0.18648056198971516,
+   "p": 1.0,
+   "pages": {},
+   "n_pages": 0
+  }
+ ]
+}

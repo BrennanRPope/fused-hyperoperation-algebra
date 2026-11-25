@@ -1,0 +1,23 @@
+6440 distinct numbers (>=6 sig. digits) from 24 pages
+constant            obs pages   null       p  pages
+π                     6     2   0.01  0.0005  {'elliptic': 1, 'pi': 5}
+e                     4     2   0.02  0.0005  {'fused-constants': 3, 'ns-rungs': 1}
+1/e                   4     2   0.03  0.0005  {'fused-constants': 3, 'ns-rungs': 1}
+e^(1/e)               4     2   0.03  0.0005  {'fused-constants': 2, 'pi': 2}
+omega W(1)            3     2   0.03  0.0005  {'fused-constants': 1, 'pi': 2}
+π/2                   2     2   0.03  0.0015  {'elliptic': 1, 'twisted-boosts': 1}
+2/π                   2     2   0.04  0.0010  {'elliptic': 1, 'twisted-boosts': 1}
+ln 2                  2     1   0.04  0.0015  {'fused-constants': 2}
+√5                    1     1   0.02  0.0180  {'elliptic': 1}
+golden ratio φ        0     0   0.04  1.0000  {}
+φ² (Beraha B5)        0     0   0.03  1.0000  {}
+√2                    0     0   0.04  1.0000  {}
+silver 1+√2           0     0   0.02  1.0000  {}
+√3                    0     0   0.03  1.0000  {}
+2+√3                  0     0   0.01  1.0000  {}
+2cos(π/7)             0     0   0.03  1.0000  {}
+plastic ρ             0     0   0.03  1.0000  {}
+Euler γ               0     0   0.04  1.0000  {}
+Catalan G             0     0   0.05  1.0000  {}
+ζ(3)                  0     0   0.04  1.0000  {}
+ln 3                  0     0   0.04  1.0000  {}

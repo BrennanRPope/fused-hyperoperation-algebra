@@ -1,0 +1,50 @@
+PASS A * B = A + B + AB = (I + A)(I + B) - I
+PASS associative: (A*B)*C = A*(B*C)
+PASS 0 is the identity, -I is the wall: (-I)*B = B*(-I) = -I
+PASS order matters: A*B != B*A for random matrices
+PASS but det and trace do not see the order: det(I + A*B) = det(I + B*A) = det(I+A)det(I+B), tr(A*B) = tr(B*A)
+PASS quasi-inverse A' = (I+A)^-1 - I satisfies A*A' = A'*A = 0 (Perlis's r + s + rs = 0)
+PASS A' = -A(I+A)^-1 = -(I+A)^-1 A
+PASS Jacobson's circle a o b = a + b - ab is the k = -1 dial: a o b = -((-a)*(-b))
+PASS socks and shoes: (A*B)' = B'*A'
+PASS resolvent identity in mult-add form: A' - B' = (I + A')(B - A)(I + B')
+PASS classical Hilbert resolvent identity R(l) - R(m) = (l - m) R(l) R(m), R(z) = (T - z)^-1
+PASS and R(z) = -(1/z)(I + (-T/z)'): the resolvent is a rescaled quasi-inverse
+PASS spectrum of I + A is 1 + spectrum of A
+PASS I + A is singular exactly when -1 is an eigenvalue of A (the wall in the spectrum)
+PASS Neumann: for ||A|| = 0.8 the partial sums of sum (-A)^n converge to the quasi-inverse
+PASS each partial sum misses the wall-free answer by exactly one term: A * s_n = -(-A)^(n+1)
+PASS so the miss shrinks at least like 0.8^n
+PASS the ball ||A|| < 1 is safe but not the whole safe region: A = 2I is far out yet quasi-invertible
+PASS the distance from 0 to the wall -I is exactly 1 in operator norm
+PASS commuting A, B (polynomials in one X): eigenvalues of A*B are the pairwise mult-adds a_i * b_i
+PASS two operators with spectrum {0} (nilpotent) can mult-add to eigenvalues all round the circle |1+z| = 1
+PASS at t = 1 those eigenvalues are e^{+-2 pi i/3}: N1*N2 is a sixth mult-add root of 0 (its sixth mult-add power vanishes)
+PASS they never reach the wall: det(I + A*B) = det(I+A)det(I+B) = 1 for nilpotent A, B (200 random 4x4 pairs)
+PASS characters carry mult-add to mult-add: Fourier modes of circulants, F(A*B) = F(A) * F(B) mode by mode
+PASS log of the lift turns * into + only for commuting operators; otherwise the leftover starts with (1/2)[X, Y] (BCH)   1.05e-04 vs 2.39e-07
+PASS commuting X, Y: (e^X - I) * (e^Y - I) = e^(X+Y) - I exactly
+PASS dial on operators: det(I + k(A *_k B)) = det(I + kA) det(I + kB)
+PASS Volterra integration V: ||V^n||^(1/n) falls toward 0 (spectral radius 0), under the bound (1/n!)^(1/n) ~ e/n   0.637 0.533 0.449 0.386 0.338 0.300
+PASS ||V^n|| <= 1/n! (n = 1..8, discretised)
+PASS ||V|| = 2/pi
+PASS I + lambda V is invertible for lambda = 5, -5, 12: solution of y + lambda int y = f matches the exact ODE answer
+PASS Neumann series for lambda V converges for every lambda: quasi-inverse kernel -lambda e^{-lambda (x-t)}
+PASS that kernel really is the quasi-inverse: (lambda V) * Q = 0 up to discretisation
+PASS string Green kernel min(x,y) - xy: eigenvalues 1/(n^2 pi^2)
+PASS det(I - z^2 G) = sin(z)/z (Nystrom, 400 nodes): the sine product of the complex page
+PASS Lidskii: det(I + K) - 1 is the mult-add fold of the eigenvalues of K
+PASS the determinant vanishes exactly when an eigenvalue of -z^2 G hits the wall: z = n pi
+PASS its sign flips each time one more eigenvalue crosses the wall: sign = (-1)^(number past -1)
+PASS cube layers: e1 = tr G = 1/6 and e2 = (tr^2 - tr G^2)/2 = 1/120 match sin z/z = 1 - z^2/6 + z^4/120
+PASS Fredholm determinants multiply along mult-add of integral operators: det(I + K*L) = det(I+K) det(I+L)
+PASS and the Nystrom values are converged (60 vs 120 nodes agree to 1e-12)
+PASS CUE(8) kernel on the arc |theta| < 0.6: eigenvalues lie in [0, 1]
+PASS P(at least one eigenvalue in the arc) = 1 - det(I - K) = lambda_1 *_{-1} lambda_2 *_{-1} ... (failure union)
+PASS Monte Carlo, 40000 random unitaries: counts in the arc match independent coin flips with chances lambda_i (within 3 sigma)   0.0276/0.0281 0.4577/0.4551 0.4742/0.4777 0.0403/0.0389
+PASS the dial interpolates: void chance prod(1 + k lambda)^(-1/k) is det(I-K) at k = -1
+PASS and tends to e^(-sum lambda) (Poisson, no repulsion) as k -> 0
+PASS void chance rises from fermions (k=-1) through Poisson (k=0) to bosons (k=+1, det(I+K)^-1)   0.0281 < 0.2170 < 0.3162
+PASS lift form: void = (1 + k F_k)^(-1/k) where F_k is the k-dial fold of the eigenvalues
+
+48 of 48 checks pass

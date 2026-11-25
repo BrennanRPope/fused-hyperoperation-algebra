@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Theory Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a technical write-up for one person who thinks in pictures
+   IDEA the card table: ivory baize, chip colours, a ledger of who owes what
+   PICTURE five experts' fortunes as lines; the learner's line never drops below the leader by more than a fixed band
+   COLOUR ivory, ink, navy for the learner and the lift, burgundy for ruin and the wall, gold for corners shared
+   TYPE DM Serif Display headings, DM Sans text
+   LAYOUT chart left, ledger right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#f2ece0,#17140f);--panel:light-dark(#fffaf1,#221e17);--ink:light-dark(#1d1a16,#f1ebe0);--soft:light-dark(#5e564b,#b4aa9b);--rule:light-dark(#d8cdb9,#3d362b);--navy:light-dark(#1f4e8c,#7fb0f0);--wine:light-dark(#a3223a,#ff6f86);--gold:light-dark(#a8780a,#e8b84a);--band:light-dark(rgba(31,78,140,.13),rgba(127,176,240,.16));--l1:light-dark(#8a7f6f,#8f8577)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "DM Sans",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:400 clamp(32px,4.6vw,52px)/1.06 "DM Serif Display",Georgia,serif;margin:0 0 14px;text-wrap:balance;max-width:22ch}
+h2{font:400 27px/1.15 "DM Serif Display",Georgia,serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:70ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px}
+.fig{position:relative;min-height:400px}.fig2{position:relative;min-height:300px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px "DM Sans",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 4.6em;gap:10px;align-items:center;margin:6px 0}
+.ctl label{font-weight:600;white-space:nowrap}
+.ctl output{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{width:100%;height:44px;accent-color:var(--navy)}
+input[type=range]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.big{font:400 clamp(38px,5.5vw,58px)/1 "DM Serif Display",Georgia,serif;font-variant-numeric:tabular-nums}
+.small{color:var(--soft);font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px;align-items:start}
+.cols p,.cols li{max-width:66ch}
+.eq{font:16px/1.6 "DM Sans",sans-serif;font-weight:600;background:var(--panel);border-left:3px solid var(--gold);padding:10px 14px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+.ledger td{text-align:left}.ledger td:last-child{color:var(--soft)}
+.key{display:inline-block;width:14px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
+code{font-size:14px;overflow-wrap:anywhere}
+footer{color:var(--soft);font-size:14px}
+@media(max-width:860px){.first{grid-template-columns:minmax(0,1fr)}.fig{min-height:340px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 3px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>When winnings multiply, the dial keeps the books</h1>
+<p class="lede">In repeated play, fortunes grow by factors: a learner's trust in an advisor, a bettor's bankroll, the odds between rated players. Each factor is a lift 1 + k·x, so the gains themselves combine by the weighted mult-add x ✳ₖ y = x + y + k·xy. Read that way, the multiplicative weights algorithm, Kelly betting and Elo ratings are one picture, and a family of cooperative games gets a fair split in closed form. Nearly all of it is classical; the page shows it through the lift.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="hedge"></div>
+<div class="ctl"><label for="eps">Learning rate ε</label><input id="eps" type="range" min="0.02" max="0.5" step="0.01" value="0.1"><output id="epso"></output></div>
+<p class="small">Five advisors, 300 rounds, gains between −1 and 1; advisor A is strong for the first 150 rounds, advisor D for the last 150. Thin lines: each advisor's fortune log(∏(1 + εg))/ε. Navy: the learner who splits trust in proportion to the weights. Shaded: the band of width log 5 / ε under the leader. The learner never leaves it.</p>
+</div>
+<div class="panel">
+<div class="small">Learner versus the best advisor, in lifted log units</div>
+<div class="big" id="gap"></div>
+<p class="small" id="gapn"></p>
+<table><thead><tr><th>After 300 rounds</th><th>gain</th></tr></thead><tbody id="ht"></tbody></table>
+<p class="small">The guarantee is exact in the lift: the total weight is 5·∏(1 + ε·rₜ) and it can never be less than the leader's weight ∏(1 + ε·gₜ). Converting to plain gains costs the corners, at most ε per round.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div>
+<h2>The learning rate is the dial, and the regret bound is the lift</h2>
+<p>Multiplicative weights (Littlestone and Warmuth 1994; Hedge, Freund and Schapire 1997) multiplies each advisor's weight by 1 + ε·g after a gain g. Advisor i's weight is then a lift of its own dial fold:</p>
+<div class="eq">∏(1 + ε·gₜ) = 1 + ε·(g₁ ✳ε g₂ ✳ε … ✳ε g_T)</div>
+<p>The total weight obeys the same law with the learner's own expected gain rₜ (Lean: <code>hedge_step</code>), so it equals n·∏(1 + ε·rₜ). One advisor's weight is part of the total, so the learner's lifted fortune is at least the leader's divided by n (<code>lifted_regret</code>, proved for two advisors; checked for up to ten). Logs turn that into Σ log(1 + εr) ≥ Σ log(1 + εg) − log n.</p>
+</div>
+<div>
+<h2>What the corners cost</h2>
+<p>The lifted bound is free. The price is paid only when you go back to plain gains, where each round's log(1 + εg) sits between εg − (εg)² and εg. The squared term is the corner. Adding them up gives the textbook regret bound</p>
+<div class="eq">regret ≤ log n / ε + ε·T</div>
+<p>and with ε = √(log n / T), regret ≤ 2√(T log n). All three held in 300 simulated runs, including advisors that take turns being good. Small ε means small corners but a wide band; large ε, the reverse. The slider shows the trade.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div class="panel"><div class="fig2" id="kelly"></div>
+<div class="ctl"><label for="kp">Win chance p</label><input id="kp" type="range" min="0.3" max="0.8" step="0.01" value="0.55"><output id="kpo"></output></div>
+<div class="ctl"><label for="kb">Payout b</label><input id="kb" type="range" min="0.5" max="4" step="0.05" value="1"><output id="kbo"></output></div>
+<p class="small" id="kr"></p></div>
+<div>
+<h2>Kelly betting: bets compose by the dial at k = f, and ruin is the wall</h2>
+<p>Stake a fraction f of your bankroll on a bet that returns r. Your wealth multiplies by 1 + f·r, so a run of bets gives 1 + f·(r₁ ✳_f r₂ ✳_f …): the fraction you bet is the dial (<code>kelly_many</code>). The dial's wall is r = −1/f, losing the whole stake, and once you hit it nothing afterwards helps (<code>kelly_ruin</code>). That wall is why the log matters: log(1 + f·r) runs to minus infinity there.</p>
+<p>Kelly (1956) maximised the growth rate E log(1 + f·r). For a bet paying b to 1 that you win with chance p, the best fraction is f* = p − (1 − p)/b. At f* the lift has a clean meaning: a win multiplies your wealth by p/π and a loss by (1 − p)/(1 − π), where π = 1/(1 + b) is the bookmaker's implied chance (<code>kelly_ratio</code>). You grow by betting your beliefs against theirs, and the growth rate is the relative entropy between them. Bet twice Kelly and the growth falls to about zero; past that it turns negative and you shrink, even with the odds on your side.</p>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div>
+<h2>Elo: a rating gap is a rapidity</h2>
+<p>Elo's model (Elo 1978, the logistic form of Bradley and Terry 1952, first in Zermelo 1929) gives a player rated d points higher odds of 10^(d/400). Gaps add along a chain, so odds multiply, and odds − 1 mult-adds (<code>odds_multAdd</code>). The interesting ruler is the edge s = 2P − 1, the win chance measured from a coin flip. It composes exactly like relativistic speeds (<code>edge_compose</code>):</p>
+<div class="eq">s(A over C) = (s₁ + s₂) / (1 + s₁·s₂)</div>
+<p>That is the landscape point (0, −1). The dictionary is complete: the rating gap is rapidity (s = tanh(gap · ln 10 / 800)), the odds are the Doppler lift (1 + s)/(1 − s) (<code>odds_is_lift</code>), and certainty is the speed of light. A 200-point favourite wins 76%, an edge of 0.52. Two such gaps compose to an edge of 0.82, a 91% favourite; simply adding the edges would claim 1.04, a 102% chance. A 2000-point favourite still loses about once in 100,000 games.</p>
+</div>
+<div class="panel"><div class="fig2" id="elo"></div>
+<div class="ctl"><label for="g1">Gap A over B</label><input id="g1" type="range" min="-600" max="600" step="10" value="200"><output id="g1o"></output></div>
+<div class="ctl"><label for="g2">Gap B over C</label><input id="g2" type="range" min="-600" max="600" step="10" value="200"><output id="g2o"></output></div>
+<table><thead><tr><th>Ruler</th><th>A–B</th><th>B–C</th><th>A–C</th></tr></thead><tbody id="et"></tbody></table></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div class="panel"><div class="fig2" id="cube"></div>
+<div class="ctl"><label for="dk">Dial k</label><input id="dk" type="range" min="-1" max="3" step="0.05" value="2"><output id="dko"></output></div>
+<p class="small">Three players worth 0.5, 0.3 and 0.1 alone. Left: the cube; each corner is a coalition's dividend k^(size − 1)·∏x, dot size its value (gold positive, wine negative). Right: each player's Shapley value built from its corners: own value, half of each pair, a third of the triple.</p></div>
+<div>
+<h2>The dial game: each corner of the cube is shared equally</h2>
+<p>Give player i a stand-alone value xᵢ and let a coalition be worth the dial fold of its members, v(S) = (∏(1 + k·xᵢ) − 1)/k. Disjoint groups combine by v(S ∪ T) = v(S) + v(T) + k·v(S)·v(T) (<code>dial_game_union</code>): k &gt; 0 is synergy, k &lt; 0 overlap, and k = −1 is "at least one of us succeeds". Normalised to v(all) = 1 this is Sugeno's λ-measure (1974).</p>
+<p>Expanding the product lays the worth out on the cube: each coalition S is a corner carrying k^(|S|−1)·∏xᵢ, and these corners are exactly the game's Harsanyi dividends. Shapley's value gives every dividend to its members in equal shares (Harsanyi 1963), so it comes out in closed form:</p>
+<div class="eq">φᵢ = xᵢ · Σₘ kᵐ·eₘ(others)/(m + 1) = xᵢ ∫₀¹ ∏ⱼ≠ᵢ (1 + k·t·xⱼ) dt</div>
+<p>Checked exactly against all orderings for up to six players; proved in Lean for two and three (<code>shapley3_eq</code>, <code>shapley3_efficient</code>). The integral is Owen's diagonal formula, and Owen's multilinear extension, everyone showing up with chance t, is just the dial fold of t·xᵢ (<code>multilinear3</code>). At t = ½ it gives the Banzhaf value in one product: βᵢ = xᵢ·∏ⱼ≠ᵢ(1 + k·xⱼ/2) (<code>banzhaf3_eq</code>).</p>
+<p>One consequence reads straight off the cube: your bonus ratio φᵢ/xᵢ depends on your partners, not on you. With synergy the small player earns the biggest ratio (k = 2: 1.44, 1.67, 2.00); with overlap the big player keeps the most (k = −1: 0.81, 0.72, 0.65). At k = −1 this split is the actuarial page's uniform-decrement split of competing causes.</p>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table class="ledger"><tbody>
+<tr><td>Multiplicative weights and its regret bound</td><td>Littlestone and Warmuth 1994; Freund and Schapire 1997; Arora, Hazan and Kale 2012</td></tr>
+<tr><td>Kelly criterion, growth = relative entropy</td><td>Kelly 1956; Breiman 1961; Cover and Thomas</td></tr>
+<tr><td>Odds multiply; logistic and tanh forms</td><td>Zermelo 1929; Bradley and Terry 1952; Elo 1978</td></tr>
+<tr><td>λ-measure; Harsanyi dividends; Owen's multilinear extension; Banzhaf at ½</td><td>Sugeno 1974; Harsanyi 1963; Owen 1972, 1975</td></tr>
+<tr><td>Learning rate, Kelly fraction and λ are all the dial; ruin is the wall</td><td>Ours, as a single reading</td></tr>
+<tr><td>Elo dictionary: gap = rapidity, odds = Doppler lift, edge = velocity</td><td>Ours as stated; the identity is the classical tanh law</td></tr>
+<tr><td>Closed-form Shapley and Banzhaf values of the dial game via cube corners</td><td>Ours as stated; follows from known pieces, not found written in this form</td></tr>
+</tbody></table>
+<p class="small">Dropped: winning a best-of-n series is a binomial tail, not a fold (best-of-3 of best-of-3s is 71.6% at p = 0.6, best-of-9 is 73.3%). "At least one success" is the k = −1 fold already on the statistics page.</p>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>Not as mathematics; yes, a small one, as a design tool.</b> Every proof here was already a log-of-a-product proof, so the lift explains rather than extends them. The dial game's closed form is tidy but sits inside a well-worked theory of fuzzy measures.</p>
+<p>The useful part is practical. The dial game is a one-knob model of combos: set k and you have said exactly how much a group is worth beyond its members, and the Shapley formula says how to credit each member fairly, with the cube showing where every point came from. For anyone scoring team play or card combos, that is a ready-made, checkable rule. Kelly's wall and the Elo dictionary are good explanations to keep, but they predict nothing new.</p>
+</div>
+</div>
+</section>
+
+<section class="band" style="padding-top:0">
+<div class="wrap"><footer>31 of 31 checks pass (checks.py). 36 Lean theorems, core Lean 4.37, no sorry, standard axioms only (lean/GameTheory.lean).</footer></div>
+</section>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const sv=(id,label)=>{const e=$(id);e.innerHTML='<svg role="img" aria-label="'+label+'"></svg>';return e.firstChild;};
+const S1=sv('hedge','Advisors and the learner over 300 rounds'),S2=sv('kelly','Kelly growth rate against fraction bet'),S3=sv('elo','Win chance against rating gap'),S4=sv('cube','The cube of coalitions and the Shapley shares');
+const T=(x,y,t,a,c)=>'<text x="'+(+x).toFixed(1)+'" y="'+(+y).toFixed(1)+'" text-anchor="'+(a||'start')+'"'+(c?' style="fill:'+c+'"':'')+'>'+t+'</text>';
+const L=(x1,y1,x2,y2,c,w,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const P=(pts,c,w,d)=>'<path d="'+pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ')+'" fill="none" stroke="'+c+'" stroke-width="'+(w||2.5)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const f=(x,n=3)=>x.toFixed(n).replace('-','−');
+// fixed gains: a seeded generator so every reader sees the same game
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+const N=5,TT=300,G=[];
+for(let t=0;t<TT;t++){const row=[];for(let i=0;i<N;i++){let g=2*rnd()-1;if(i===0&&t<150)g+=0.35;if(i===3&&t>=150)g+=0.45;if(i===1)g+=0.1;row.push(Math.max(-1,Math.min(1,g)));}G.push(row);}
+const names=['A','B','C','D','E'];
+function drawHedge(){
+  const e=+$('eps').value;$('epso').textContent=e.toFixed(2);
+  const W=S1.clientWidth,H=S1.clientHeight,ml=40,mb=30,mt=14,mr=24;
+  let w=Array(N).fill(1),A=[[0,0]],E=names.map(()=>[[0,0]]),la=0,le=Array(N).fill(0),ga=0,ge=Array(N).fill(0);
+  for(let t=0;t<TT;t++){const s=w.reduce((a,b)=>a+b),r=w.reduce((a,wi,i)=>a+wi*G[t][i],0)/s;la+=Math.log1p(e*r);ga+=r;
+    for(let i=0;i<N;i++){le[i]+=Math.log1p(e*G[t][i]);ge[i]+=G[t][i];w[i]*=1+e*G[t][i];E[i].push([t+1,le[i]/e]);}A.push([t+1,la/e]);}
+  const best=E.map((_,j)=>0);let lo=0,hi=0;E.forEach(s=>s.forEach(p=>{lo=Math.min(lo,p[1]);hi=Math.max(hi,p[1]);}));
+  const band=Math.log(N)/e;lo=Math.min(lo,-band*0.3);
+  const X=t=>ml+t/TT*(W-ml-mr),Y=v=>mt+(hi-v)/(hi-lo)*(H-mt-mb);
+  let g='';
+  const env=[];for(let t=0;t<=TT;t++)env.push(Math.max(...E.map(s=>s[t][1])));
+  g+='<path d="'+env.map((v,t)=>(t?'L':'M')+X(t).toFixed(1)+' '+Y(v).toFixed(1)).join(' ')+' '+env.map((v,t)=>[t,v]).reverse().map(([t,v])=>'L'+X(t).toFixed(1)+' '+Y(v-band).toFixed(1)).join(' ')+'Z" fill="var(--band)"/>';
+  g+=L(ml,Y(0),W-mr,Y(0),'var(--rule)');
+  [0,100,200].forEach(t=>g+=T(X(t),H-10,t,'middle','var(--soft)'));
+  E.forEach((s,i)=>{g+=P(s.map(q=>[X(q[0]),Y(q[1])]),i===0||i===3?'var(--soft)':'var(--l1)',i===0||i===3?1.8:1);g+=T(X(TT)+4,Y(s[TT][1])+4,names[i],'start','var(--soft)');});
+  g+=P(A.map(q=>[X(q[0]),Y(q[1])]),'var(--navy)',3.2);
+  g+=T(ml+4,mt+12,'fortune in lifted log units','start','var(--soft)')+T(X(TT),H-10,'round 300','end','var(--soft)');
+  S1.innerHTML=g;
+  const bi=le.indexOf(Math.max(...le)),gapL=(le[bi]-la);
+  $('gap').innerHTML=f(gapL,3)+' <span class="small">≤ log 5 = 1.609</span>';
+  $('gapn').textContent='The learner trails advisor '+names[bi]+' by '+f(gapL,3)+' in Σ log(1 + εg). The guarantee says this can never exceed log 5, whatever the gains.';
+  const pb=ge.indexOf(Math.max(...ge));
+  $('ht').innerHTML='<tr><td>Best advisor ('+names[pb]+')</td><td>'+f(ge[pb],1)+'</td></tr><tr><td>Learner</td><td>'+f(ga,1)+'</td></tr><tr><td>Regret</td><td>'+f(ge[pb]-ga,1)+'</td></tr><tr><td>Bound log 5/ε + εT</td><td>'+f(Math.log(N)/e+e*TT,1)+'</td></tr>';
+}
+function drawKelly(){
+  const p=+$('kp').value,b=+$('kb').value,q=1-p;$('kpo').textContent=p.toFixed(2);$('kbo').textContent=b.toFixed(2);
+  const W=S2.clientWidth,H=S2.clientHeight,ml=46,mb=30,mt=14,mr=14;
+  const g=x=>p*Math.log1p(b*x)+q*Math.log1p(-x),fs=p-q/b,gs=fs>0?g(fs):0;
+  const top=Math.max(gs*1.4,0.01),bot=-Math.max(gs*2.2,0.02);
+  const X=x=>ml+x*(W-ml-mr),Y=v=>mt+(top-Math.max(bot,Math.min(top,v)))/(top-bot)*(H-mt-mb);
+  let s=L(ml,Y(0),W-mr,Y(0),'var(--rule)');
+  [0,0.25,0.5,0.75,1].forEach(x=>s+=T(X(x),H-10,x,'middle','var(--soft)'));
+  s+=L(X(1),mt,X(1),H-mb,'var(--wine)',3)+T(X(1)-6,mt+14,'ruin: f·r = −1','end','var(--wine)');
+  const pts=[];let xend=0;for(let i=0;i<=600;i++){const x=i/600*0.999;if(g(x)<bot)break;xend=x;pts.push([X(x),Y(g(x))]);}
+  s+=P(pts,'var(--navy)',3)+T(X(xend)+6,H-mb-8,'↓ toward −∞ at the wall','start','var(--soft)');
+  if(fs>0){s+='<circle cx="'+X(fs)+'" cy="'+Y(gs)+'" r="5.5" fill="var(--gold)"/>'+T(X(fs)+8,Y(gs)-8,'Kelly f* = '+f(fs,3),'start');
+    if(2*fs<1)s+='<circle cx="'+X(2*fs)+'" cy="'+Y(g(2*fs))+'" r="4.5" fill="var(--panel)" stroke="var(--navy)" stroke-width="2"/>'+T(X(2*fs)+8,Y(g(2*fs))+18,'2f*','start','var(--soft)');}
+  s+=T(ml+4,mt+12,'growth per bet, E log(1 + f·r)','start','var(--soft)')+T(W-mr,H-10,'','end');
+  S2.innerHTML=s;
+  const pi=1/(1+b);
+  $('kr').textContent=fs>0?'Bet '+(100*fs).toFixed(1)+'% each time. A win multiplies wealth by '+f(1+b*fs,3)+' = p/π, a loss by '+f(1-fs,3)+' = q/(1 − π), with the bookmaker\'s chance π = '+f(pi,3)+'. Growth '+f(gs,4)+' per bet = relative entropy of p against π.':'No edge: the bookmaker\'s chance π = '+f(pi,3)+' is at least yours, so Kelly bets nothing.';
+}
+const Pg=d=>1/(1+Math.pow(10,-d/400));
+function drawElo(){
+  const d1=+$('g1').value,d2=+$('g2').value,d=d1+d2;$('g1o').textContent=d1;$('g2o').textContent=d2;
+  const W=S3.clientWidth,H=S3.clientHeight,ml=40,mb=30,mt=12,mr=12;
+  const X=x=>ml+(x+1200)/2400*(W-ml-mr),Y=p=>mt+(1-p)*(H-mt-mb);
+  let s=L(ml,Y(0.5),W-mr,Y(0.5),'var(--rule)')+L(X(0),mt,X(0),H-mb,'var(--rule)');
+  s+=L(ml,Y(1),W-mr,Y(1),'var(--wine)',2,'5 4')+L(ml,Y(0),W-mr,Y(0),'var(--wine)',2,'5 4');
+  [-1200,-600,0,600,1200].forEach(x=>s+=T(X(x),H-10,String(x).replace('-','−'),'middle','var(--soft)'));
+  [0,0.5,1].forEach(p=>s+=T(ml-6,Y(p)+4,p,'end','var(--soft)'));
+  const pts=[];for(let i=0;i<=240;i++){const x=-1200+10*i;pts.push([X(x),Y(Pg(x))]);}
+  s+=P(pts,'var(--navy)',3);
+  [[d1,'A–B','var(--soft)'],[d2,'B–C','var(--soft)'],[d,'A–C','var(--gold)']].forEach(([x,l,c],i)=>{const sd=(i===1)?-1:1;s+=L(X(x),Y(0.5),X(x),Y(Pg(x)),c,1.5,'3 3')+'<circle cx="'+X(x)+'" cy="'+Y(Pg(x))+'" r="5" fill="'+c+'"/>'+T(X(x)+8*sd,Y(Pg(x))+(i===2?-8:(i===0?18:-8)),l,sd>0?'start':'end');});
+  s+=T(ml+6,Y(1)+16,'certainty: the wall','start','var(--wine)')+T(W-mr,H-mb-6,'rating gap','end','var(--soft)');
+  S3.innerHTML=s;
+  const O=x=>Math.pow(10,x/400),sE=x=>2*Pg(x)-1;
+  const rows=[['Gap (adds)',d1,d2,d,0],['Win chance',Pg(d1),Pg(d2),Pg(d),3],['Odds (multiply)',O(d1),O(d2),O(d),3],['Odds − 1 (mult-adds)',O(d1)-1,O(d2)-1,O(d)-1,3],['Edge (like velocity)',sE(d1),sE(d2),sE(d),3]];
+  $('et').innerHTML=rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+f(r[1],r[4])+'</td><td>'+f(r[2],r[4])+'</td><td><b>'+f(r[3],r[4])+'</b></td></tr>').join('');
+}
+function drawCube(){
+  const k=+$('dk').value;$('dko').textContent=f(k,2);
+  const xs=[0.5,0.3,0.1],W=S4.clientWidth,H=S4.clientHeight,narrow=W<480;
+  const cw=narrow?W:W*0.48,ch=narrow?H*0.5:H;
+  const sc=Math.min(cw,ch)*(narrow?0.38:0.36),cx=cw/2-sc*0.25,cy=ch/2+sc*0.55;
+  const pr=(a,b,c)=>[cx+a*sc+c*sc*0.5,cy-b*sc-c*sc*0.42];
+  let s='';
+  const V=[];for(let m=0;m<8;m++)V.push([m&1,(m>>1)&1,(m>>2)&1]);
+  for(let m=0;m<8;m++)for(let j=0;j<3;j++)if(!(m>>j&1)){const n=m|1<<j,a=pr(...V[m]),b=pr(...V[n]);s+=L(a[0].toFixed(1),a[1].toFixed(1),b[0].toFixed(1),b[1].toFixed(1),'var(--rule)',1.5);}
+  const lab=['1','2','3'];
+  for(let m=1;m<8;m++){const mem=[0,1,2].filter(j=>m>>j&1),dv=Math.pow(k,mem.length-1)*mem.reduce((a,j)=>a*xs[j],1);const p=pr(...V[m]);
+    s+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+(3+22*Math.sqrt(Math.abs(dv))).toFixed(1)+'" fill="'+(dv>=0?'var(--gold)':'var(--wine)')+'" opacity=".75"/>';
+    s+=T(p[0]+4,p[1]-6,'{'+mem.map(j=>lab[j]).join(',')+'}','start');}
+  const o=pr(0,0,0);s+='<circle cx="'+o[0]+'" cy="'+o[1]+'" r="3" fill="var(--soft)"/>';
+  // bars
+  const bx=narrow?0:W*0.52,by=narrow?H*0.5:0,bw=narrow?W:W*0.48,bh=narrow?H*0.5:H;
+  const parts=xs.map((x,i)=>{const o2=[0,1,2].filter(j=>j!==i);return [x,k*x*xs[o2[0]]/2+k*x*xs[o2[1]]/2,k*k*x*xs[o2[0]]*xs[o2[1]]/3];});
+  const maxv=Math.max(1.1,...parts.map(p=>p[0]+Math.max(0,p[1])+Math.max(0,p[2])));
+  const minv=Math.min(0,...parts.map(p=>Math.min(0,p[1])+Math.min(0,p[2])));
+  const Y=v=>by+14+(maxv-v)/(maxv-minv)*(bh-44),colw=bw/3;
+  s+=L(bx,Y(0),bx+bw,Y(0),'var(--rule)');
+  const cols=['var(--navy)','var(--gold)','var(--wine)'];
+  parts.forEach((p,i)=>{const x0=bx+i*colw+colw*0.22,ww=colw*0.56;let up=0,dn=0;
+    p.forEach((v,j)=>{if(v>=0){s+='<rect x="'+x0.toFixed(1)+'" y="'+Y(up+v).toFixed(1)+'" width="'+ww.toFixed(1)+'" height="'+(Y(up)-Y(up+v)).toFixed(1)+'" fill="'+cols[j]+'" opacity="'+(j?0.8:0.9)+'"/>';up+=v;}
+      else{s+='<rect x="'+x0.toFixed(1)+'" y="'+Y(dn).toFixed(1)+'" width="'+ww.toFixed(1)+'" height="'+(Y(dn+v)-Y(dn)).toFixed(1)+'" fill="'+cols[j]+'" opacity=".55"/>';dn+=v;}});
+    const tot=p[0]+p[1]+p[2];s+=T(x0+ww/2,Y(Math.max(up,0))-6,f(tot,3),'middle')+T(x0+ww/2,by+bh-8,(W<640?'':'player ')+lab[i]+'  ×'+f(tot/xs[i],2),'middle','var(--soft)');});
+  S4.innerHTML=s;
+}
+['eps'].forEach(id=>$(id).addEventListener('input',drawHedge));['kp','kb'].forEach(id=>$(id).addEventListener('input',drawKelly));
+['g1','g2'].forEach(id=>$(id).addEventListener('input',drawElo));$('dk').addEventListener('input',drawCube);
+[[S1,drawHedge],[S2,drawKelly],[S3,drawElo],[S4,drawCube]].forEach(([s,fn])=>{new ResizeObserver(fn).observe(s.parentNode);fn();});
+}
+</script>
+</body>
+</html>

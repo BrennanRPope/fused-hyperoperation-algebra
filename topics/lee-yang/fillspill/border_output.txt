@@ -1,0 +1,34 @@
+Landscape point fixed at k = 1 (ghost of the double wall at a = -2), bend just past the border:
+q = 1/4 + d/4, with d = 4q - k^2 the distance into the turning side. Step x = 0.05.
+  d = 1.0e-07: one full turn takes 407319 steps, 407155 of them lingering by the ghost (100%)
+  d = 3.2e-07: one full turn takes 229052 steps, 228888 of them lingering by the ghost (100%)
+  d = 1.0e-06: one full turn takes 128806 steps, 128642 of them lingering by the ghost (100%)
+  d = 3.2e-06: one full turn takes 72433 steps, 72269 of them lingering by the ghost (100%)
+  d = 1.0e-05: one full turn takes 40732 steps, 40568 of them lingering by the ghost (100%)
+  d = 3.2e-05: one full turn takes 22906 steps, 22742 of them lingering by the ghost (99%)
+  d = 1.0e-04: one full turn takes 12881 steps, 12717 of them lingering by the ghost (99%)
+  d = 3.2e-04: one full turn takes 7244 steps, 7080 of them lingering by the ghost (98%)
+  d = 1.0e-03: one full turn takes 4074 steps, 3910 of them lingering by the ghost (96%)
+  d = 3.2e-03: one full turn takes 2291 steps, 2128 of them lingering by the ghost (93%)
+  d = 1.0e-02: one full turn takes 1289 steps, 1128 of them lingering by the ghost (88%)
+  d = 3.2e-02: one full turn takes 725 steps, 571 of them lingering by the ghost (79%)
+  d = 1.0e-01: one full turn takes 408 steps, 269 of them lingering by the ghost (66%)
+  Fit: turn time ~ d^-0.500, linger ~ d^-0.521  (a fold predicts -1/2)
+  Two-walls side, d = -1e-03: comes back round = False; settles at a = -2.06531
+  Two-walls side, d = -1e-01: comes back round = False; settles at a = -2.92495
+  On the two-walls side the orbit settles into a wall and stays. On the turning side it lingers by
+  the ghost of the merged walls, then spills through infinity, and the linger grows without limit
+  as the border is approached.
+
+Random landscape points, all at d = 1e-4: does the time depend on anything but d?
+  one full turn takes 12171..13022 steps over 12 random k; spread 2.33% of the mean
+
+Exact angle per step: cos(phi) = (2 + kx)/(2 sqrt(1 + kx + qx^2)); for small x, phi ~ x sqrt(4q - k^2)/2.
+  d = 1e-06: phi = 2.439e-05, half-turn pi/phi = 128805 steps, x sqrt(d)/2 = 2.500e-05
+  d = 1e-04: phi = 2.439e-04, half-turn pi/phi = 12881 steps, x sqrt(d)/2 = 2.500e-04
+  d = 1e-02: phi = 2.439e-03, half-turn pi/phi = 1288 steps, x sqrt(d)/2 = 2.500e-03
+
+Fair null: random smooth maps near a fold, f(a) = a + eps + c a^2 + e a^3 (c in [0.5, 2], e in [-0.25, 0.25]), time from -0.5 to 0.5.
+  passage-time exponents: -0.510 .. -0.503; every fold gives -1/2.
+  Reading: the landscape border does fill, linger and spill, with the linger growing as 1/sqrt(distance).
+  That is the standard bottleneck of any fold (two fixed points merging), the same exponent as the null.

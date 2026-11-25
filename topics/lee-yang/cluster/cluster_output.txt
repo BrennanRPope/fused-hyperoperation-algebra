@@ -1,0 +1,26 @@
+Census: 85 fixed placements, 11 parameter families (not scored).
+Distinct dial values k: [-2.0, -1.5, -1.333333, -1.125, -1.0, -0.5, 0.0, 0.5, 1.0, 2.0]
+Laws per k: {-2.0: 4, -1.5: 1, -1.333333: 1, -1.125: 1, -1.0: 13, -0.5: 1, 0.0: 35, 0.5: 1, 1.0: 25, 2.0: 3}
+
+Predicted dial values (n = 5..12): [1.618, 2.0, 2.247, 2.4142, 2.5321, 2.618, 2.6825, 2.7321]
+Test A (window above 1, tolerance 0.01): 3 laws hit, 1 distinct value(s): [2.0]
+  every law with 1.5 < k <= 3: [('Leveraged compounding, 2x', 2.0, 0.0), ('Euler characteristic genus (cusp)', 2.0, 1.0), ('Rung 2', 2.0, 0.5)]
+  hits at the seven non-integer predictions (n = 5, 7..12): 0
+  Null A1, random 8-point sets in [1.5, 3]: P(>= 3 law hits) = 0.099, P(>= 1 value hits) = 0.099
+  Null A2, simple numbers (denominator <= 4) in [1.5, 3], 10 values: ['3/2', '5/3', '7/4', '2', '9/4', '7/3', '5/2', '8/3', '11/4', '3']
+    8-point subsets of them hit up to 3 laws; share with >= 3 hits: 0.800
+    Every hit is at k = 2, which the simple-number rule predicts as surely as Beraha does.
+
+Test B (whole dial, not independent of how the landscape was built):
+  Beraha n = 2..12 (11 values) hit 76 of 85 laws, 4 of 10 distinct values
+  Integers -2..2 (5 values) hit 80 laws, 5 distinct values
+  k = -2 (colour count Q = -1, where rings never vanish) holds 4 laws, more than k = 2 (3): ['Parity, bit flips, binary channel cascade', 'Bit-flip and phase-flip noise', 'Ising bonds in series', "Stokes' pile, gray plates"]
+  Log-likelihood, spike-plus-background model: Beraha n=2..12 68.2, integers -2..2 149.7  (difference 81.5 in favour of integers)
+  Same size, 5 values each: Beraha n=2..6 [-1.0, 0.0, 1.0, 1.618, 2.0] hits 76 laws; integers -2..2 hit 80. Log-likelihoods 127.7 vs 149.7.
+
+Test C (units): on the q = 0 axis every k > 0 is k = 1 in other units, so only sign(k) and k = 0
+  are properties of the law. Off the axis the unit-free number is k^2/q:
+    Leveraged compounding, 2x: (k, q) = (2, 0) -> sign +; same law at (1, 0) in units of 2
+    Euler characteristic genus (cusp): (k, q) = (2, 1) -> k^2/q = 4; same law at (1, 0.25) in units of 2
+    Rung 2: (k, q) = (2, 0.5) -> k^2/q = 8; same law at (1, 0.125) in units of 2
+  The three hits at k = 2 all move to k = 1 under a = 2a'. None is pinned to 2.

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measure and Probability Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a surveyor's plat: land measured in parcels, the corner cell where parcels meet is the extra
+   COLOUR parchment, sepia ink, survey orange for the corner, teal for what a negative weight removes
+   TYPE Source Serif 4 display + Inter; LAYOUT figure left, readout right; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#f3ecdc,#191714);--panel:light-dark(#fffaf0,#24211c);--ink:light-dark(#2b2116,#efe6d6);--soft:light-dark(#6d5d48,#b4a690);--rule:light-dark(#d6c8ad,#3d372e);--orange:light-dark(#d1561b,#ff8a4c);--teal:light-dark(#16807a,#4cc7bd);--fill:light-dark(rgba(22,128,122,.13),rgba(76,199,189,.18));--sand:light-dark(rgba(43,33,22,.07),rgba(239,230,214,.08))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.58 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}.alt{background:var(--panel)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font:650 clamp(31px,4.4vw,50px)/1.08 "Source Serif 4",Georgia,serif;margin:0 0 14px;max-width:22ch;text-wrap:balance}
+h2{font:650 26px/1.18 "Source Serif 4",Georgia,serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:68ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:420px}.fig2{position:relative;min-height:330px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:14px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.ctl{display:grid;grid-template-columns:5.5em minmax(0,1fr) 3.6em;gap:10px;align-items:center;margin:4px 0}
+.ctl label{font-weight:600}.ctl output{text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:40px;accent-color:var(--orange)}
+.big{font:650 clamp(38px,5.5vw,58px)/1 "Source Serif 4",serif;font-variant-numeric:tabular-nums}
+.small{color:var(--soft);font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:26px}
+.cols p,.cols li{max-width:66ch}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:start}
+.eq{font:17px/1.6 "Source Serif 4",serif;background:var(--panel);border-left:3px solid var(--orange);padding:9px 14px;margin:12px 0;overflow-x:auto}
+.alt .eq{background:var(--bg)}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-weight:600;font-size:14px;color:var(--soft)}
+td:last-child{color:var(--soft)}
+ul{padding-left:20px}
+footer{padding:20px max(5vw,16px);color:var(--soft);font-size:14px;text-align:center}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:340px}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.fig{min-height:300px}.fig2{min-height:280px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>Sugeno's λ-measure is the dial: probability with a weighted corner</h1>
+<p class="lede">An ordinary measure adds: two parcels that don't overlap weigh a + b. Sugeno's λ-measure (1974) weighs them a + b + λab. That is mult-add's dial with k = λ, and nothing else. So its whole theory, from the normalizing equation to its dual, is the dial's algebra drawn on one rectangle. Below, measure comes first; independence and growth processes follow from it.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="hero"></div>
+<div class="ctl"><label for="a">μ(A) = a</label><input id="a" type="range" min="0" max="1" step="0.01" value="0.35"><output id="ao"></output></div>
+<div class="ctl"><label for="b">μ(B) = b</label><input id="b" type="range" min="0" max="1" step="0.01" value="0.45"><output id="bo"></output></div>
+<div class="ctl"><label for="l">weight λ</label><input id="l" type="range" min="-0.95" max="2" step="0.01" value="0.8"><output id="lo"></output></div>
+<p class="small">The lift: a rectangle with sides 1 + λa and 1 + λb. The dashed square is 1. The two strips are λa and λb, and the orange corner is λ²ab. When λ is negative the strips are cut away, so their overlap would be cut twice; the corner puts it back once.</p>
+</div>
+<div class="panel">
+<div class="small">μ(A ∪ B) for disjoint A, B</div>
+<div class="big" id="mu"></div>
+<p class="small" id="plain"></p>
+<div class="eq">1 + λ·μ(A∪B) = (1 + λa)(1 + λb)</div>
+<p class="small">The area of the rectangle is the lift of the union. Lifts multiply, so the measure of a union is a fold of the dial over its atoms, and order never matters.</p>
+<p class="small" id="kind"></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>The masses are the corners of the mult-add cube</h2>
+<p>Give each atom (single point) a density gᵢ. Expanding the lift (1 + λg₁)(1 + λg₂)(1 + λg₃) visits every corner of the cube once, exactly as the mult-add cube does. Divide by λ and the measure of a set A is a sum over the corners S inside A:</p>
+<div class="eq">μ(A) = Σ<sub>S ⊆ A</sub> λ<sup>|S|−1</sup>·∏<sub>i∈S</sub> gᵢ</div>
+<p>Those corner amounts are what fuzzy-measure theory calls the Möbius masses: how much weight sits on each group of atoms jointly. Layer one is the atoms, layer two is pairs weighted λ, layer three is the triple weighted λ². When λ ≥ 0 every mass is positive, which makes μ a belief function in the Dempster–Shafer sense. When λ is negative the masses alternate in sign, and the dual measure 1 − μ(Aᶜ) is the belief function instead.</p>
+<p>A small tie to the q-numbers: m equal atoms of size g have μ = g·[m]<sub>q</sub> with q = 1 + λg. Counting atoms under the dial is q-counting.</p>
+</div>
+<div class="panel"><div class="fig2" id="cube"></div>
+<p class="small">Densities 0.2, 0.3, 0.4, which forces λ ≈ 0.372. Each corner shows its mass; the circle's area is proportional to it. The seven non-empty corners together weigh exactly 1.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div class="panel"><div class="fig2" id="norm"></div>
+<p class="small">The weight is not free. Solid: ∏(1 + λgᵢ). Dashed: 1 + λ. They meet at λ = 0 and at one more point, the weight. Orange: densities 0.2, 0.3, 0.4 (sum below 1, so λ &gt; 0). Teal: 0.4, 0.5, 0.6 (sum above 1, λ ≈ −0.772).</p></div>
+<div>
+<h2>Normalizing fixes the weight: total area must be 1 + λ</h2>
+<p>For μ(Ω) = 1 the whole rectangle must have area 1 + λ, so the densities decide λ through Sugeno's equation:</p>
+<div class="eq">(1 + λg₁)(1 + λg₂)⋯(1 + λgₙ) = 1 + λ</div>
+<p>There is exactly one nonzero root above −1 (checked on 400 random spaces). If the densities add to less than 1 the parcels must gain, so λ &gt; 0; if they add to more, λ &lt; 0. For two atoms Lean solves it outright: λ = (1 − g₁ − g₂)/(g₁g₂).</p>
+<p>The two signs have plain meanings. With λ negative, let atom i "fire" by itself with chance −λgᵢ. Then μ(A) is the chance some atom of A fires, as a share of the chance any fires: the failure union, rescaled. With λ positive, μ(A) is the compound growth of A's atoms as a share of the whole: interest compounding.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap side">
+<div>
+<h2>Take the log and it is ordinary probability; μ is a q-number of P</h2>
+<p>The rung-0 ruler for the dial is log(1 + λx). Rescale it so the whole space is 1:</p>
+<div class="eq">P(A) = log(1 + λμ(A)) / log(1 + λ)</div>
+<p>P adds over disjoint sets: it is an honest probability. Turning it around, μ(A) = (q<sup>P(A)</sup> − 1)/(q − 1) with q = 1 + λ = k + 1, which is the q-number [P]<sub>q</sub> at a real argument. So a λ-measure is a probability measure read through the q-number lens, and q = k + 1 is exactly the project's convention. Distorting a probability this way is known; the q-number name for it is just the project's reading.</p>
+<p><b>Inclusion–exclusion becomes multiplication.</b> For overlapping sets the lift obeys (1 + λμ(A∪B))(1 + λμ(A∩B)) = (1 + λμ(A))(1 + λμ(B)), and for more sets each corner's lift appears with power ±1. The signs of the classical formula moved into exponents.</p>
+<p><b>The dual weight is mult-add's inverse.</b> The dual measure μ*(A) = 1 − μ(Aᶜ) is again a λ-measure, with weight λ* = −λ/(1 + λ). That is mult-add's way back for λ, so q* = 1/q and the dual of the dual is the original. Lean proves this from the normalizing equation.</p>
+</div>
+<div class="panel"><div class="fig2" id="qn"></div>
+<p class="small">μ against P for q = 0.2, 0.5, 2, 5 (λ = q − 1). q = 1 is the diagonal, plain probability. Duals are mirror images through the centre: q and 1/q.</p></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div class="panel"><div class="fig2" id="land"></div>
+<p class="small">The landscape plane, dial p across, bend q up. Shaded: laws that can carry a normalized measure on finitely many atoms. Its edge is the "or" line k + q = −1 from the statistics page, until the cusp (−2, 1), then the border parabola, which the line touches there.</p></div>
+<div>
+<h2>Why λ must exceed −1: the wall has to stay outside [0, 1]</h2>
+<p>Sugeno's definition requires λ &gt; −1. The dial explains the rule. Its wall sits at −1/λ, and values below a wall stay below it, because positive lifts multiply to positive lifts. When λ ≤ −1 the wall sits inside (0, 1], so no collection of parcels can ever reach measure 1. At exactly λ = −1 the only way to 1 is a sure atom. Lean proves all three steps.</p>
+<p>The same test works on every law of the landscape, F(a, b) = (a + b + p·ab)/(1 − q·ab). Measures that combine by such a law are Weber's decomposable measures (1984). A finite normalized one exists exactly when the additive ruler L(x) = ∫dt/(1 + pt + qt²) stays finite up to 1, which happens exactly when 1 + pt + qt² has no root in [0, 1]. On the map, the edge of that region is the statistics page's "or" line, then the border parabola, meeting tangentially at the cusp. So every law that can serve as "A or B" sits exactly on the edge: certainty is its wall, so it can be approached but not reached from finitely many uncertain parts.</p>
+<p>Inside the region there are bent examples. The tangent law (0, 1) gives μ = tan(πP/4): disjoint sets combine as (μA + μB)/(1 − μA·μB) and the whole space has measure 1.</p>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>Independence: expectation passes straight through the dial</h2>
+<p>For independent X and Y and any weight k, E[X ✳ₖ Y] = E X ✳ₖ E Y. The reason is the corner: the only cross term is k·XY, and independence makes E[XY] = E X·E Y. For dependent variables the gap is exactly k·Cov(X, Y), the corner's excess. Lean proves both on finite distributions. The statistics page had this for events (the union law with k = −lift); this is the same fact for any random quantity.</p>
+<p><b>Odds of an "or" mult-add.</b> For independent events the lift of the odds is 1 + odds = 1/(1 − p), and misses multiply, so</p>
+<div class="eq">odds(A or B) = odds A ✳ odds B</div>
+<p>and odds against an "and" mult-add the same way. A 30% and a 45% event: odds 0.4286 ✳ 0.8182 = 1.597, matched by 400,000 simulated draws.</p>
+</div>
+<div>
+<h2>Growth: martingales and Yor's formula are the cube in time</h2>
+<p>Wealth after returns r₁, r₂, … is r₁ ✳ r₂ ✳ ⋯. With independent fair returns (mean 0) the expected change stays 0 at every step, by the engine above: a multiplicative martingale. Yet six fair ±50% bets leave the typical path down 58%. The mean is a dial of means; the typical path follows the log ruler, where each step loses ½·log(0.75).</p>
+<p>In continuous time this is the stochastic exponential ℰ (Doléans-Dade 1970). Yor's formula ℰ(X)·ℰ(Y) = ℰ(X + Y + [X, Y]) is mult-add one step at a time: each step's increment is Δx ✳ Δy, and the bracket [X, Y] is the running total of corner cells ΔxΔy. For Brownian motion the self-corners ΣΔW² add up to time t, and half of them is the familiar drift correction: ℰ(σW) = exp(σW − σ²t/2).</p>
+<div class="panel"><div class="fig2" id="bm" style="min-height:250px"></div>
+<p class="small">One path, 4,000 steps. Orange: the product ∏(1 + σΔW). Teal dashed: exp(σW − σ²t/2), on top of it. Grey: exp(σW), which forgets the corners and drifts away.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table><tbody>
+<tr><td>λ-measures, the rule a + b + λab, the normalizing equation, λ &gt; −1</td><td>Sugeno 1974</td></tr>
+<tr><td>λ-measures are belief (λ &gt; 0) or plausibility (λ &lt; 0) functions; the dual weight −λ/(1 + λ)</td><td>Banon 1981; standard in Wang and Klir</td></tr>
+<tr><td>λ-measures are distortions of a probability; multiplicative inclusion–exclusion</td><td>known (fuzzy-measure literature)</td></tr>
+<tr><td>Decomposable measures for any associative "sum"</td><td>Dubois and Prade 1982, Weber 1984</td></tr>
+<tr><td>Stochastic exponential, Yor's formula, multiplicative martingales, the log ruler for growth</td><td>Doléans-Dade 1970, Yor 1976, Kelly 1956</td></tr>
+<tr><td>Möbius masses = mult-add cube corners; μ = [P]<sub>q</sub> with q = k + 1; dual weight = mult-add inverse</td><td>ours as readings; the facts are known</td></tr>
+<tr><td>Normalizable region on the landscape: edge = "or" line, then border parabola, tangent at the cusp</td><td>ours as a placement; rests on the known strict/nilpotent split</td></tr>
+<tr><td>Odds of an independent "or" mult-add</td><td>a one-line consequence; I found no source stating it this way</td></tr>
+</tbody></table>
+<p class="small">Already covered elsewhere, so only cited here: the union rule, inclusion–exclusion as signed cube corners, dependence as k = −lift, the generating-function dial, cumulants and the CLT, Bayes odds and the AMH "or" line on the <a href="https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv">statistics page</a>; hazards adding and series systems on the <a href="https://claude.ai/artifact/SBsWmduwSNADpPVbeRDq2v">information theory page</a>; decrements, claim counts and ruin on the <a href="https://claude.ai/artifact/AYgNMio88Y3VE9gtx11ipR">actuarial page</a>; q-counting on the <a href="https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL">q page</a>. Tested and dropped: Bernoulli convolutions (their only structure is the generic product of characteristic functions), and odds of an "and" (they don't mult-add; odds against do).</p>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>A small one, yes.</b> The dial is not just present in measure theory, it is a named object there: Sugeno's λ-measure is the dial, and every classical fact about it is a line of dial algebra. That gives the project a ready, honest home in measure theory, and the Lean file already formalizes λ-measures.</p>
+<p>The step worth taking next is the bent laws. The landscape picks out a two-parameter family of decomposable measures with a clean test for which ones exist, and its edge is the same "or" line the statistics page found. The open question is concrete: what do integrals against a bent measure (the Choquet integral, which averages by layers) look like, and do they reproduce known aggregation rules? That is checkable in an afternoon.</p>
+<p>It will not predict new probability. The facts are known; what is ours is the single rectangle-and-cube picture and the placement on the map.</p>
+</div>
+</div>
+</section>
+
+<footer>38 of 38 checks pass (checks.py) · 36 Lean theorems in MeasureProbability.lean, compiled with core Lean 4.37, no sorry</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const f=(x,n=3)=>x.toFixed(n).replace('-','−');
+const dial=(k,a,b)=>a+b+k*a*b;
+const mk=id=>{$(id).innerHTML='<svg role="img"></svg>';return $(id).firstChild;};
+const S1=mk('hero'),S2=mk('cube'),S3=mk('norm'),S4=mk('qn'),S5=mk('land'),S6=mk('bm');
+const T=(x,y,t,a)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'">'+t+'</text>';
+const R=(x,y,w,h,s)=>'<rect x="'+Math.min(x,x+w)+'" y="'+Math.min(y,y+h)+'" width="'+Math.abs(w)+'" height="'+Math.abs(h)+'" '+s+'/>';
+function hero(){
+  const a=+$('a').value,b=+$('b').value,l=+$('l').value;
+  $('ao').textContent=f(a,2);$('bo').textContent=f(b,2);$('lo').textContent=f(l,2);
+  const m=dial(l,a,b);$('mu').textContent=f(m,3);
+  $('plain').textContent='Plain adding would give '+f(a+b,2)+'. The corner adds λab = '+f(l*a*b,3)+'.';
+  $('kind').textContent=l>0?'λ > 0: parcels gain when joined (superadditive, a belief function).':l<0?'λ < 0: parcels lose when joined (subadditive, a plausibility).':'λ = 0: an ordinary additive measure.';
+  const W=S1.clientWidth,H=S1.clientHeight,pad=34,s=Math.min((W-2*pad)/3,(H-2*pad)/3);
+  const X=x=>pad+x*s,Y=y=>H-pad-y*s;
+  const wa=1+l*a,hb=1+l*b;let g='';
+  g+=R(X(0),Y(0),wa*s,-hb*s,'fill="var(--sand)" stroke="var(--ink)" stroke-width="2"');
+  if(l>=0){g+=R(X(1),Y(0),l*a*s,-s,'fill="var(--fill)"')+R(X(0),Y(1),s,-l*b*s,'fill="var(--fill)"')+R(X(1),Y(1),l*a*s,-l*b*s,'fill="var(--orange)" opacity=".85"');}
+  else{g+=R(X(wa),Y(0),-l*a*s,-s,'fill="var(--fill)"')+R(X(0),Y(hb),s,-(-l*b)*s,'fill="var(--fill)"')+R(X(wa),Y(hb),-l*a*s,-(-l*b)*s,'fill="var(--orange)" opacity=".85"');}
+  g+=R(X(0),Y(0),s,-s,'fill="none" stroke="var(--soft)" stroke-dasharray="6 5" stroke-width="1.5"');
+  g+=T(X(wa/2),Y(0)+22,'1 + λa = '+f(wa,2),'middle')+T(X(0)-8,Y(hb/2)+5,'1 + λb','end');
+  if(Math.abs(l*a*l*b)>.004)g+=T(X(Math.max(wa,1))+8,Y(Math.max(hb,1))+16,'corner λ²ab');
+  g+=T(X(.5),Y(.5),'1','middle');
+  S1.innerHTML=g;
+}
+function cube(){
+  const gs=[.2,.3,.4];let l=.3718516622706614;
+  const W=S2.clientWidth,H=S2.clientHeight,sz=Math.min((W-210)/1.45,(H-70)/1.35),cx=W/2-sz*.725,cy=H/2+sz*.675;
+  const P=(x,y,z)=>[cx+x*sz+z*sz*.45,cy-y*sz-z*sz*.35];
+  let g='';const C=[];
+  for(let i=0;i<8;i++){const bits=[i&1,(i>>1)&1,(i>>2)&1];C.push(bits);}
+  for(const c of C)for(let d=0;d<3;d++)if(!c[d]){const e=c.slice();e[d]=1;const p=P(...c),q=P(...e);g+='<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="var(--rule)" stroke-width="2"/>';}
+  for(const c of C){const n=c[0]+c[1]+c[2];const p=P(...c);
+    let m=0;if(n){m=Math.pow(l,n-1);c.forEach((v,i)=>{if(v)m*=gs[i];});}
+    const r=n?Math.max(3,Math.sqrt(m)*sz*.22):3;
+    g+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+r+'" fill="'+(n>1?'var(--orange)':n?'var(--teal)':'var(--soft)')+'" opacity=".85"/>';
+    const lab=n?(c.map((v,i)=>v?'g'+(i+1):'').join('')+' '+f(m,3)):'∅';
+    g+=T(p[0]+(c[2]?8:-8),p[1]+(c[1]?-12:22),lab,c[2]?'start':'end');}
+  S2.innerHTML=g;
+}
+function norm(){
+  const W=S3.clientWidth,H=S3.clientHeight,m=36,l0=-1,l1=1.2,y0=-.1,y1=2.3;
+  const X=x=>m+(x-l0)/(l1-l0)*(W-2*m),Y=y=>H-m-(y-y0)/(y1-y0)*(H-2*m);
+  let g='<line x1="'+X(l0)+'" y1="'+Y(0)+'" x2="'+X(l1)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+Y(y0)+'" x2="'+X(0)+'" y2="'+Y(y1)+'" stroke="var(--rule)"/>';
+  g+='<line x1="'+X(l0)+'" y1="'+Y(0)+'" x2="'+X(l1)+'" y2="'+Y(1+l1)+'" stroke="var(--ink)" stroke-dasharray="6 5"/>';
+  for(const [gs,col,root] of [[[.2,.3,.4],'var(--orange)',.37185],[[.4,.5,.6],'var(--teal)',-.77243]]){
+    let d='';for(let i=0;i<=120;i++){const x=l0+(l1-l0)*i/120;const y=gs.reduce((p,v)=>p*(1+x*v),1);d+=(i?' L':'M')+X(x)+' '+Y(y);}
+    g+='<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="3"/><circle cx="'+X(root)+'" cy="'+Y(1+root)+'" r="6" fill="'+col+'"/>';
+    g+=T(X(root),Y(1+root)+(root>0?-14:24),'λ = '+f(root,3),'middle');}
+  g+=T(X(l1),Y(0)+20,'λ','end')+T(X(l0)+4,Y(-1e-9)-8,'−1');
+  S3.innerHTML=g;
+}
+function qn(){
+  const W=S4.clientWidth,H=S4.clientHeight,m=38,s=Math.min(W,H)-2*m,ox=(W-s)/2,oy=(H+s)/2;
+  const X=x=>ox+x*s,Y=y=>oy-y*s;
+  let g=R(X(0),Y(0),s,-s,'fill="none" stroke="var(--rule)"');
+  g+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(1)+'" y2="'+Y(1)+'" stroke="var(--soft)" stroke-dasharray="6 5"/>';
+  for(const q of [.2,.5,2,5]){let d='';for(let i=0;i<=80;i++){const p=i/80,mu=(Math.pow(q,p)-1)/(q-1);d+=(i?' L':'M')+X(p)+' '+Y(mu);}
+    const col=q>1?'var(--teal)':'var(--orange)';g+='<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="'+(q==5||q==.2?3:2)+'"/>';
+    const pl=q>1?.72:.28,ml=(Math.pow(q,pl)-1)/(q-1);g+=T(X(pl)+(q>1?6:-6),Y(ml)+(q>1?16:-6),'q = '+q,q>1?'start':'end');}
+  g+=T(X(.5),Y(0)+26,'P (ordinary probability)','middle')+T(X(0)-8,Y(1)+4,'μ','end');
+  S4.innerHTML=g;
+}
+function land(){
+  const W=S5.clientWidth,H=S5.clientHeight,m=30,p0=-5,p1=3,q0=-2.5,q1=6;
+  const X=p=>m+(p-p0)/(p1-p0)*(W-2*m),Y=q=>H-m-(q-q0)/(q1-q0)*(H-2*m);
+  let edge=[];for(let i=0;i<=100;i++){const p=p0+(p1-p0)*i/100;edge.push([p,p>=-2?-1-p:p*p/4]);}
+  let d='M'+X(p0)+' '+Y(q1);for(const [p,q] of edge)d+=' L'+X(p)+' '+Y(Math.min(q1,Math.max(q0,q)));d+=' L'+X(p1)+' '+Y(q1)+' Z';
+  let g='<path d="'+d+'" fill="var(--fill)"/>';
+  g+='<line x1="'+X(p0)+'" y1="'+Y(0)+'" x2="'+X(p1)+'" y2="'+Y(0)+'" stroke="var(--rule)"/><line x1="'+X(0)+'" y1="'+Y(q0)+'" x2="'+X(0)+'" y2="'+Y(q1)+'" stroke="var(--rule)"/>';
+  let pb='';for(let i=0;i<=80;i++){const p=-4.9+7.8*i/80,q=p*p/4;if(q>q1)continue;pb+=(pb?' L':'M')+X(p)+' '+Y(q);}
+  g+='<path d="'+pb+'" fill="none" stroke="var(--soft)" stroke-width="1.5" stroke-dasharray="5 4"/>';
+  g+='<line x1="'+X(-2)+'" y1="'+Y(1)+'" x2="'+X(1.5)+'" y2="'+Y(-2.5)+'" stroke="var(--orange)" stroke-width="3.5"/>';
+  g+='<line x1="'+X(-0.99)+'" y1="'+Y(0)+'" x2="'+X(p1)+'" y2="'+Y(0)+'" stroke="var(--teal)" stroke-width="3.5"/>';
+  const dot=(p,q,fill,t,dx,dy,a)=>'<circle cx="'+X(p)+'" cy="'+Y(q)+'" r="5.5" fill="'+fill+'" stroke="var(--ink)" stroke-width="1"/>'+T(X(p)+dx,Y(q)+dy,t,a);
+  const nar=W<420;
+  g+=dot(-2,1,'var(--orange)','cusp',-8,-8,'end')+dot(-1,0,'var(--panel)',nar?'union':'union, k = −1',-8,18,'end')+dot(1,0,'var(--ink)','mult-add',4,-10)+dot(0,1,'var(--panel)','tangent',8,-8)+dot(0,-1,'var(--panel)','velocity',8,16);
+  g+=T(X(1.9),Y(0)-8,'Sugeno, λ > −1','middle')+T(X(p1),Y(0)+18,'p','end')+T(X(0)-8,Y(q1)+12,'q','end');
+  S5.innerHTML=g;
+}
+let seed=11;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+const N=4000,sig=.9,dt=1/N,dW=[];for(let i=0;i<N;i++){const u=rnd(),v=rnd();dW.push(Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)*Math.sqrt(dt));}
+function bm(){
+  const W=S6.clientWidth,H=S6.clientHeight,m=30;let w=0,pr=1;const A=[[0,1,1,1]];
+  for(let i=0;i<N;i++){w+=dW[i];pr*=1+sig*dW[i];const t=(i+1)*dt;A.push([t,pr,Math.exp(sig*w-sig*sig*t/2),Math.exp(sig*w)]);}
+  const ymax=Math.max(...A.map(r=>r[3]))*1.05;
+  const X=t=>m+t*(W-2*m),Y=y=>H-m-y/ymax*(H-2*m);
+  const path=j=>A.filter((r,i)=>i%8==0).map((r,i)=>(i?'L':'M')+X(r[0])+' '+Y(r[j])).join(' ');
+  let g='<line x1="'+X(0)+'" y1="'+Y(1)+'" x2="'+X(1)+'" y2="'+Y(1)+'" stroke="var(--rule)"/>';
+  g+='<path d="'+path(3)+'" fill="none" stroke="var(--soft)" stroke-width="2"/><path d="'+path(1)+'" fill="none" stroke="var(--orange)" stroke-width="3.5"/><path d="'+path(2)+'" fill="none" stroke="var(--teal)" stroke-width="2" stroke-dasharray="6 5"/>';
+  g+=T(X(1),Y(A[N][3])-8,'exp(σW)','end')+T(X(0),Y(1)-6,'1')+T(X(1),H-8,'time t = 1','end');
+  S6.innerHTML=g;
+}
+['a','b','l'].forEach(i=>$(i).addEventListener('input',hero));
+[[S1,hero],[S2,cube],[S3,norm],[S4,qn],[S5,land],[S6,bm]].forEach(([s,fn])=>{new ResizeObserver(fn).observe(s.parentNode);fn();});
+}
+</script>
+</body>
+</html>

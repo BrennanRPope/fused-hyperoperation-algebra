@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logic and Sets Through Mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* IDEA a truth table on engineering paper: the dial is a knob, and only two notches keep the table in 0 and 1
+   COLOUR cream paper and navy ink; OR amber, XOR teal, AND violet, the wall red; night: dark paper, same accents lifted
+   TYPE IBM Plex Sans + Plex Mono for tables and equations */
+:root{color-scheme:light dark;--bg:light-dark(#f3efe4,#141412);--panel:light-dark(#fffdf6,#1e1d1a);--ink:light-dark(#18203a,#eeeadf);--soft:light-dark(#555a68,#aaa69b);--rule:light-dark(#d6cfbd,#3a3833);--or:light-dark(#b86f00,#ffb547);--xor:light-dark(#0b7d77,#4fd1c5);--and:light-dark(#6a3fb5,#b99bff);--wall:light-dark(#c42e1b,#ff6b55);--grid:light-dark(rgba(24,32,58,.07),rgba(238,234,223,.07))}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,52px) max(5vw,16px)}
+.alt{background:var(--panel)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font:600 clamp(30px,4.4vw,48px)/1.08 "IBM Plex Sans",sans-serif;letter-spacing:-.02em;margin:0 0 14px;max-width:22ch;text-wrap:balance}
+h2{font:600 24px/1.2 "IBM Plex Sans",sans-serif;margin:0 0 10px;text-wrap:balance}
+.lede{font-size:17px;max-width:66ch;margin:0}
+.first{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.alt .panel{background:var(--bg)}
+.fig{position:relative;min-height:400px}.fig2{position:relative;min-height:300px}
+.fig>svg,.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px "IBM Plex Sans",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.alt svg text{stroke:var(--bg)}
+.ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 3.6em;gap:10px;align-items:center}
+.ctl label{font-weight:600}.ctl output{text-align:right;font:500 15px "IBM Plex Mono",monospace}
+input[type=range]{width:100%;height:44px;accent-color:var(--xor)}
+.snaps{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.snaps button{font:500 13px "IBM Plex Mono",monospace;min-height:36px;padding:4px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--bg);color:var(--ink);cursor:pointer}
+.tt{border-collapse:collapse;font:500 22px "IBM Plex Mono",monospace;margin:8px 0}
+.tt td,.tt th{border:1px solid var(--rule);width:58px;height:50px;text-align:center}
+.tt th{font-size:14px;color:var(--soft);font-weight:500}
+.tt td.bad{color:var(--wall);background:color-mix(in srgb,var(--wall) 10%,transparent)}
+.tt td.ok{color:var(--xor)}
+.small{color:var(--soft);font-size:14px}
+.eq{font:500 15px/1.6 "IBM Plex Mono",monospace;background:var(--panel);border-left:3px solid var(--xor);padding:9px 12px;margin:12px 0;overflow-x:auto}
+.alt .eq{background:var(--bg)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
+.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+p,li{max-width:66ch}
+table.data{border-collapse:collapse;width:100%;font-size:14px}
+table.data td,table.data th{border-bottom:1px solid var(--rule);padding:6px 5px;text-align:left;vertical-align:top}
+table.data th{color:var(--soft);font-weight:600}
+code{font:500 13px "IBM Plex Mono",monospace;overflow-wrap:anywhere}
+a{color:var(--xor)}
+footer{padding:18px max(5vw,16px);color:var(--soft);font-size:13px;border-top:1px solid var(--rule)}
+@media(max-width:860px){.first,.side{grid-template-columns:minmax(0,1fr)}.fig{min-height:340px}}
+@media(max-width:420px){.tt td,.tt th{width:46px;height:42px;font-size:18px}}
+</style>
+</head>
+<body>
+<section class="band">
+<div class="wrap">
+<h1>Only two notches on the dial keep true and false: OR and XOR</h1>
+<p class="lede">Put 0 for false and 1 for true. The weighted mult-add a + b + k·ab gives 0, 1, 1 on three corners of the truth table for every k. The fourth corner, 1 with 1, lands at 2 + k. It stays a truth value at exactly two settings: k = −1, which is OR, and k = −2, which is XOR. Turn the knob and watch the corner.</p>
+<div class="first">
+<div class="panel">
+<div class="fig" id="dial"></div>
+<div class="ctl"><label for="k">Dial k</label><input id="k" type="range" min="-3" max="1" step="0.05" value="-1"><output id="ko"></output></div>
+<div class="snaps" id="snaps"></div>
+<p class="small">Top: where 1 with 1 lands. Bottom: the leak (k + 1)(k + 2), how far the corner is from being a truth value. It touches zero only at the two notches.</p>
+</div>
+<div class="panel">
+<div class="small">Truth table of a + b + k·ab</div>
+<table class="tt" aria-label="truth table"><tr><th></th><th>b = 0</th><th>b = 1</th></tr><tr><th>a = 0</th><td class="ok">0</td><td class="ok">1</td></tr><tr><th>a = 1</th><td class="ok">1</td><td id="corner"></td></tr></table>
+<p id="name" style="font-weight:600;margin:6px 0"></p>
+<p class="small" id="fold"></p>
+<p class="small">AND is the corner cell itself, the product ab. It is the same at every k. So the dial holds the whole of Boolean logic: OR and AND make the Boolean lattice, XOR and AND make the Boolean ring.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>The leak is one parabola, and it works in any ring</h2>
+<p>This is not special to 0 and 1. Take any a and b that equal their own squares (idempotents: on sets they are indicator functions, in a matrix ring they are projections). Then the dial gives back an idempotent up to one leak term:</p>
+<div class="eq">(a ✳ₖ b)² − (a ✳ₖ b) = (k + 1)(k + 2)·ab</div>
+<p>The two roots are OR and XOR. Read with q = k + 1, the roots are q = 0 and q = −1, and n trues folded together give the q-number [n]_q: always 1 for OR, and 1, 0, 1, 0 (parity) for XOR. Every other q leaves 0 and 1 already at n = 2.</p>
+<p>The other Boolean laws leak the same way. Distributing AND over the dial misses by k·abc(1 − a); absorption a ∨ (a ∧ b) misses by ab(1 − a). Both vanish exactly when a² = a. So Boolean algebra is the dial with its inputs pinned to 0 and 1, and nothing more.</p>
+</div>
+<div>
+<h2>Each notch has a wall, and the wall is a truth value</h2>
+<div class="fig2" id="walls"></div>
+<p class="small">Lines b ↦ m ✳ₖ b for m = 0, ¼, ½, ¾, 1. Left, OR: every line passes through (1, 1). Right, XOR: every line pivots on (½, ½).</p>
+<p>The dial's wall is −1/k, the value that swallows everything. For OR it is 1: true OR anything is true. For XOR it is ½: a fair coin XOR any bit is a fair coin. That is Shannon's one-time pad (1949). Encrypt a message bit with a fair key bit and the ciphertext is exactly ½, whatever the message, and independent of it.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>Fuzzy logic: Hamacher's family is the dial, read in odds</h2>
+<p>Fuzzy logic lets truth run from 0 to 1 and asks for an "or" that is associative, monotone and has 0 as identity (a t-conorm). Hamacher (1978) found every such rule that is a ratio of polynomials. His family is</p>
+<div class="eq">S_γ(a, b) = (a + b + (γ − 2)ab) / (1 + (γ − 1)ab)</div>
+<p>On the landscape that is the point p = γ − 2, q = 1 − γ, so the whole family is the line p + q = −1. The statistics page found this same line as the unions with certainty as a wall. Measure truth by its odds, o = x/(1 − x), and the bend disappears:</p>
+<div class="eq">odds(S_γ(a, b)) = odds(a) ✳<sub>γ</sub> odds(b)</div>
+<p><b>Hamacher's parameter is the dial, read on odds.</b> γ = 0 adds odds, γ = 1 mult-adds them (the probabilistic sum a + b − ab), γ = 2 is the Einstein sum (a + b)/(1 + ab), relativity's point. The t-norms ("and") are the mirror images under x ↦ 1 − x, De Morgan's law, and are the dial on odds against.</p>
+</div>
+<div class="panel"><div class="fig2" id="land"></div>
+<div class="ctl"><label for="g">γ</label><input id="g" type="range" min="0" max="6" step="0.05" value="1"><output id="go"></output></div>
+<p class="small" id="gread"></p>
+<p class="small">Grey curve: the landscape's border, a double wall. Teal: the stretch γ from 0 to 2, where the rule is also a probability law (a copula). Amber, running on to the lower right: γ above 2, still a fuzzy "or" but no longer a union of events. At γ = 0 the line touches the border.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>The other classical families leave the plane</h2>
+<p>By Hamacher's theorem, no other rational rule exists, so every other family can touch the landscape only where it meets Hamacher's. The checks confirm this numerically:</p>
+<table class="data"><tr><th>Family</th><th>On the landscape?</th></tr>
+<tr><td>Hamacher, γ ≥ 0</td><td>Yes, all of it, on p + q = −1</td></tr>
+<tr><td>Dombi λ = 1, Schweizer–Sklar p = −1</td><td>Yes: both are Hamacher γ = 0</td></tr>
+<tr><td>Aczél–Alsina λ = 1, Frank s → 1</td><td>Yes: the probabilistic sum</td></tr>
+<tr><td>Frank, other s</td><td>No, though it stays close to the line (misses 0.001 to 0.007)</td></tr>
+<tr><td>Yager, Dombi, Schweizer–Sklar, Aczél–Alsina, other values</td><td>No (misses 0.04 to 14)</td></tr>
+<tr><td>Łukasiewicz min(a + b, 1)</td><td>The k = 0 dial clipped at 1; not a group</td></tr>
+<tr><td>max (Gödel)</td><td>No: idempotent, a limit of Frank's family</td></tr>
+</table>
+<p class="small">Frank's family (1979) is the one where "and" plus "or" equals a + b. Inside Hamacher's family that holds only at γ = 1.</p>
+</div>
+<div>
+<h2>Sets have no wall, until you allow negative sets</h2>
+<div class="fig2" id="sets"></div>
+<p>For finite sets, |A ⊔ B ⊔ A×B| = a ✳ b, and adding a spare point to each side turns this into a plain product, minus the spare pair. Sizes are never negative, so finite sets have no wall and no inverses.</p>
+<p>Count by Euler characteristic instead (Schanuel 1991): a point counts 1, an open interval counts −1, a product counts the product. Now the open interval <i>is</i> the wall. Glue the spare point to it and you get [0, 1), which counts 0, and 0 times anything is 0. Two open intervals count −2, mult-add's other unit: X ⊔ X ⊔ X×X counts 0.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap side">
+<div>
+<h2>The logic of the rungs: arithmetic switches on at rung 2</h2>
+<p>The axioms page showed mult-add alone is multiplication in disguise, a decidable theory (Skolem 1930, Mostowski 1952), and that mult-add with the successor carries all of arithmetic. One more step finishes the ladder. The fused exponent x ⊛ a = (x + 1)^(a + 1) − 1 <b>alone</b> defines the rungs below it:</p>
+<div class="eq">b ✳ c = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ⊛ c = x ⊛ d<br>b + c + 1 = d &nbsp;⇔&nbsp; for every x, (x ⊛ b) ✳ (x ⊛ c) = x ⊛ d</div>
+<p>and 0 is its only right identity, so the successor is b + 0 + 1. With +, × and the successor definable, the first-order theory of rung 2 by itself is undecidable (Gödel, Church). Lean proves the three definitions.</p>
+</div>
+<div class="panel"><div class="fig2" id="ladder"></div>
+<p class="small">Which single rungs, or pairs, carry full arithmetic. Teal: decidable (a machine can settle every statement). Red: undecidable.</p></div>
+</div>
+</section>
+
+<section class="band alt">
+<div class="wrap cols">
+<div>
+<h2>What's known, what's ours</h2>
+<table class="data">
+<tr><td>Boolean algebra as 0/1 arithmetic; OR = a + b − ab</td><td>Boole 1847/1854</td></tr>
+<tr><td>Boolean rings (XOR, AND) and their match with Boolean lattices</td><td>Stone 1936</td></tr>
+<tr><td>Idempotents of a commutative ring form a Boolean algebra under these two rules</td><td>Classical ring theory</td></tr>
+<tr><td>One-time pad: a fair key hides the message</td><td>Vernam 1917, Shannon 1949</td></tr>
+<tr><td>Rational t-norms are exactly Hamacher's; their generator log(1 + γ·odds)</td><td>Hamacher 1978</td></tr>
+<tr><td>Hamacher t-norm is a copula only for 0 ≤ γ ≤ 2</td><td>Copula literature (Ali–Mikhail–Haq 1978, Nelsen)</td></tr>
+<tr><td>Frank, Yager, Dombi, Schweizer–Sklar, Aczél–Alsina families</td><td>Frank 1979; the others from the fuzzy-logic literature (Klement, Mesiar and Pap's book collects them)</td></tr>
+<tr><td>Euler characteristic as the size of polyhedral sets; −1 for the open interval</td><td>Schanuel 1991</td></tr>
+<tr><td>Presburger (+) and Skolem (×) decidable; + definable from S and ×</td><td>Presburger 1929, Skolem 1930, Mostowski 1952, J. Robinson 1949</td></tr>
+<tr><td>Only k = −1, −2 keep idempotents, leak (k + 1)(k + 2)ab</td><td>Ours, as a framing; a two-line computation</td></tr>
+<tr><td>Walls as truth values: OR's is true, XOR's is the fair coin</td><td>Ours, as a framing of known facts</td></tr>
+<tr><td>Hamacher's γ is the dial k on odds</td><td>Implicit in Hamacher's generator; we haven't seen it stated as one dial</td></tr>
+<tr><td>Rung 2 alone defines rungs 1 and 0</td><td>Ours, from the library's tower and sum laws; almost surely folklore for x^y</td></tr>
+</table>
+</div>
+<div>
+<h2>Lead worth following?</h2>
+<p><b>A small one, in fuzzy logic.</b> The odds reading turns a whole classical family into one dial line, and it predicts something checkable: any fuzzy rule built from the dial on some other coordinate (log-odds, survival, a power of x) is again associative, and the landscape tells you which coordinates land back on a rational rule. A short search for the coordinates that send the dial to rational t-conorms would either recover Hamacher's theorem in one line or find a gap in it. That is worth an afternoon.</p>
+<p>The Boolean part is the known algebra of 0 and 1 seen through the lift. It is tidy, it explains why exactly two operations exist, and it closes the question; it does not open a new one.</p>
+<p>The rung ladder is a clean statement, but it is a re-reading of a folklore fact (exponentiation defines multiplication), not a new direction.</p>
+<p class="small">Builds on: <a href="https://claude.ai/artifact/FwYdFUqfFh4DEAjHMqNEsv">statistics</a> (truth tables, inclusion–exclusion, the dependence line), <a href="https://claude.ai/artifact/PrF6u5bRhkq6tPBcD5K4i2">axioms</a> (fused Peano, Skolem), <a href="https://claude.ai/artifact/E2ri2CF3xiGEWA5B9hAWYf">landscape</a>, <a href="https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL">q-numbers</a>, <a href="https://claude.ai/artifact/S2RVDVVQWR4UAQVtmDQQMq">relativity</a>.</p>
+</div>
+</div>
+</section>
+<footer>Checks: 67 of 67 pass (checks.py). Lean: 35 theorems in LogicSets.lean, core Lean 4.37, no sorry, standard axioms only.</footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const w=(k,a,b)=>a+b+k*a*b;
+const fm=(x,n=2)=>(Math.round(x*100)/100).toFixed(n).replace('-','−');
+const mk=(id,label)=>{$(id).innerHTML='<svg role="img" aria-label="'+label+'"></svg>';return $(id).firstChild;};
+const sD=mk('dial','dial and leak'),sW=mk('walls','wall fans'),sL=mk('land','landscape with Hamacher line'),sS=mk('sets','open interval wall'),sR=mk('ladder','rung ladder');
+const T=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+(a||'start')+'"'+(c?' style="fill:'+c+'"':'')+'>'+t+'</text>';
+const L=(x1,y1,x2,y2,c,sw,d)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(sw||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';
+const C=(x,y,r,f,s)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+f+'"'+(s?' stroke="'+s+'" stroke-width="2"':'')+'/>';
+const named={'-2':'XOR (parity)','-1':'OR (failure union)','0':'plain count','1':'mult-add'};
+const snaps=$('snaps');[-2,-1,0,1].forEach(v=>{const b=document.createElement('button');b.textContent='k = '+String(v).replace('-','−');b.onclick=()=>{$('k').value=v;drawDial();};snaps.appendChild(b);});
+function drawDial(){
+  const k=+$('k').value, W=sD.clientWidth, H=sD.clientHeight, m=34;
+  $('ko').textContent=fm(k);
+  const X=v=>m+(v+3)/4*(W-2*m);
+  const yTop=H*0.2, y0=H*0.78, ys=(H*0.42)/2.2, Y=v=>y0-v*ys;
+  let g='';
+  for(let v=-3;v<=1;v+=0.5)g+=L(X(v),yTop-20,X(v),H-20,'var(--grid)');
+  // top: where 1 with 1 lands, on a number line from -1 to 3
+  const N=v=>m+(v+1)/4*(W-2*m);
+  g+=L(N(-1),yTop,N(3),yTop,'var(--rule)',2);
+  [0,1].forEach(v=>{g+=L(N(v),yTop-10,N(v),yTop+10,'var(--xor)',3)+T(N(v),yTop+28,String(v),'middle');});
+  g+=T(N(-1),yTop-14,'1 ✳ₖ 1 = 2 + k lands at');
+  const c=2+k, ok=Math.abs(c)<1e-9||Math.abs(c-1)<1e-9;
+  g+=C(N(Math.max(-1,Math.min(3,c))),yTop,9,ok?'var(--xor)':'var(--wall)');
+  // bottom: leak parabola
+  g+=L(X(-3),Y(0),X(1),Y(0),'var(--rule)',1.5);
+  let p='';for(let i=0;i<=80;i++){const v=-3+4*i/80,f=(v+1)*(v+2);if(f>2.2)continue;p+=(p?' L':'M')+X(v)+' '+Y(f);}
+  g+='<path d="'+p+'" fill="none" stroke="var(--ink)" stroke-width="2.5"/>';
+  g+=C(X(-1),Y(0),7,'var(--or)')+C(X(-2),Y(0),7,'var(--xor)');
+  g+=T(X(-1),Y(0)+24,'OR','middle','var(--or)')+T(X(-2),Y(0)+24,'XOR','middle','var(--xor)');
+  const f=(k+1)*(k+2);g+=C(X(k),Y(Math.min(f,2.2)),6,'var(--panel)','var(--ink)');
+  g+=T(X(-1.5),Y(2.0),'leak (k+1)(k+2)','middle');
+  for(let v=-3;v<=1;v++)g+=T(X(v),H-4,String(v).replace('-','−'),'middle');
+  sD.innerHTML=g;
+  const cc=$('corner');cc.textContent=fm(c,c%1?2:0).replace('.00','');cc.className=ok?'ok':'bad';
+  const key=String(Math.round(k*100)/100);
+  $('name').textContent=named[key]?'k = '+fm(k,0)+': '+named[key]:(ok?'':'Not a truth value: the corner leaks.');
+  let s=0,seq=[];for(let n=1;n<=6;n++){s=w(k,s,1);seq.push(fm(s,Math.abs(s-Math.round(s))<1e-9?0:2));}
+  $('fold').textContent='Fold n trues: '+seq.join(', ')+' (the q-number [n] with q = '+fm(k+1)+').';
+}
+function drawWalls(){
+  const W=sW.clientWidth,H=sW.clientHeight,gap=18,pw=(W-gap)/2,m=24;
+  let g='';
+  [[-1,0,'OR, wall at 1','var(--or)',1],[-2,pw+gap,'XOR, wall at ½','var(--xor)',0.5]].forEach(([k,ox,lab,col,wl])=>{
+    const X=b=>ox+m+b*(pw-2*m),Y=v=>H-m-v*(H-2*m-14);
+    g+='<rect x="'+X(0)+'" y="'+Y(1)+'" width="'+(X(1)-X(0))+'" height="'+(Y(0)-Y(1))+'" fill="none" stroke="var(--rule)"/>';
+    [0,.25,.5,.75,1].forEach(mm=>{g+=L(X(0),Y(w(k,mm,0)),X(1),Y(w(k,mm,1)),col,2,mm===.5&&k===-1?'':null);});
+    const px=k===-1?1:0.5;g+=C(X(px),Y(px),7,'var(--wall)');
+    g+=T(ox+m,14,lab)+T(X(0),Y(0)+16,'0','middle')+T(X(1),Y(0)+16,'1','middle');
+  });
+  sW.innerHTML=g;
+}
+function drawLand(){
+  const gm=+$('g').value,W=sL.clientWidth,H=sL.clientHeight,m=26;
+  $('go').textContent=fm(gm);
+  const p0=-3,p1=4.2,q0=-5.2,q1=2.2,X=p=>m+(p-p0)/(p1-p0)*(W-2*m),Y=q=>m+(q1-q)/(q1-q0)*(H-2*m);
+  let g=L(X(p0),Y(0),X(p1),Y(0),'var(--rule)')+L(X(0),Y(q0),X(0),Y(q1),'var(--rule)');
+  let b='';for(let i=0;i<=60;i++){const p=-3+6*i/60,q=p*p/4;if(q>q1)continue;b+=(b?' L':'M')+X(p)+' '+Y(q);}
+  g+='<path d="'+b+'" fill="none" stroke="var(--soft)" stroke-width="1.5"/>';
+  g+=L(X(-3.2),Y(2.2),X(-2),Y(1),'var(--rule)',1.5,'4 4');
+  g+=L(X(-2),Y(1),X(0),Y(-1),'var(--xor)',4)+L(X(0),Y(-1),X(4.2),Y(-5.2),'var(--or)',4);
+  [[0,'γ=0'],[1,'γ=1'],[2,'γ=2']].forEach(([gg,t])=>{g+=C(X(gg-2),Y(1-gg),4.5,'var(--ink)')+T(X(gg-2)+8,Y(1-gg)-6,t);});
+  g+=C(X(gm-2),Y(1-gm),8,'var(--wall)');
+  g+=T(X(p1),Y(0)-6,'p','end')+T(X(0)+6,Y(q1)+10,'q');
+  sL.innerHTML=g;
+  const a=0.3,bb=0.6,S=(a+bb+(gm-2)*a*bb)/(1+(gm-1)*a*bb),o=x=>x/(1-x);
+  $('gread').textContent='γ = '+fm(gm)+' sits at (p, q) = ('+fm(gm-2)+', '+fm(1-gm)+'). With a = 0.3, b = 0.6: S = '+S.toFixed(3)+'. In odds: '+o(a).toFixed(3)+' ✳γ '+o(bb).toFixed(3)+' = '+(o(a)+o(bb)+gm*o(a)*o(bb)).toFixed(3)+' = odds of S.';
+}
+function drawSets(){
+  const W=sS.clientWidth,H=sS.clientHeight,m=20;
+  const cw=Math.min(54,(W-2*m)/4.6,(H-130)/3.4),ox=m+cw*1.4,oy=m+46;
+  let g=T(m,14,'B: 3 points, +3','start','var(--and)')+T(m,34,'I×B: 3 open pieces, −3','start','var(--xor)');
+  const ax0=ox,ax1=ox+cw*3,bys=[oy,oy+cw,oy+2*cw],axisY=oy+3.1*cw;
+  g+=L(ax0,axisY,ax1,axisY,'var(--wall)',3)+C(ax0,axisY,5,'var(--panel)','var(--wall)')+C(ax1,axisY,5,'var(--panel)','var(--wall)');
+  g+=T(ax0,axisY+22,'open interval I: −1','start','var(--wall)');
+  bys.forEach(y=>{g+=C(m+cw*0.5,y,5,'var(--and)')+L(ax0,y,ax1,y,'var(--xor)',3)+C(ax0,y,4,'var(--panel)','var(--xor)')+C(ax1,y,4,'var(--panel)','var(--xor)');});
+  g+=T(m,H-26,'Total: −1 + 3 − 3 = −1.')+T(m,H-8,'The open interval swallows B.');
+  sS.innerHTML=g;
+}
+function drawLadder(){
+  const W=sR.clientWidth,H=sR.clientHeight;
+  const rows=[['rung 2 alone (fused exponent)',false,'defines ✳, +1, 0'],['rung 1 + successor',false,'axioms page'],['rung 1 alone (mult-add)',true,'× in disguise: Skolem'],['rung 0 alone (shifted add)',true,'Presburger']];
+  const bh=(H-20)/rows.length-10;let g='';
+  rows.forEach(([t,dec,n],i)=>{const y=10+i*(bh+10);
+    g+='<rect x="8" y="'+y+'" width="'+(W-16)+'" height="'+bh+'" rx="5" fill="color-mix(in srgb,'+(dec?'var(--xor)':'var(--wall)')+' 14%,transparent)" stroke="'+(dec?'var(--xor)':'var(--wall)')+'" stroke-width="2"/>';
+    g+=T(20,y+bh/2-2,t)+T(20,y+bh/2+16,(dec?'decidable · ':'undecidable · ')+n,'start',dec?'var(--xor)':'var(--wall)');});
+  sR.innerHTML=g;
+}
+$('k').addEventListener('input',drawDial);$('g').addEventListener('input',drawLand);
+[[sD,drawDial],[sW,drawWalls],[sL,drawLand],[sS,drawSets],[sR,drawLadder]].forEach(([s,f])=>{new ResizeObserver(f).observe(s.parentNode);f();});
+}
+</script>
+</body>
+</html>
