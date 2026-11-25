@@ -139,3 +139,5 @@ This is a separate scratch project with Mathlib at tag v4.37.0-rc1 (commit 31ce0
 stays core-only and is untouched. Every theorem uses only the standard axioms (propext, Classical.choice, Quot.sound).
 To rebuild, put the `lean/` folder in a fresh directory, run `lake exe cache get` (or build Mathlib from source,
 as was done here because the cache server was unreachable), then `lake build ProofComplexity.Measure`.
+
+**Not built by CI.** These Lean files need Mathlib, so the repo's main CI (core Lean only) doesn't build them, and the Mathlib build workflow builds only `lean-library-mathlib/` on the `mathlib-port` branch. They do fit that build: same Lean 4.37.0-rc1 and the same Mathlib commit (31ce06e, tag v4.37.0-rc1), and they import only Mathlib and each other. So they could be added there as a second Lake project or library. Nothing has been merged or added to that branch.

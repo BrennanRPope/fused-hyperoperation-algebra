@@ -1,0 +1,22 @@
+PASS v(x) = x^2/2 - x^3/12 + x^4/48 - x^5/180 + 11x^6/8640 (matches earlier task)
+PASS high-precision coefficients agree with exact ones
+PASS Julia equation v(E(x)) = E'(x) v(x) holds at x = -0.01  5.86e-80
+PASS rho = Res dx/v = 1/3
+PASS b0 and rho unchanged by a scheme change x = y + 0.7y^2 - 1.3y^3; b2 changes  b2: 0.0208333 -> 0.8575
+PASS Fatou coordinate log coefficient is -rho = -1/3 (Phi = z - (1/3) log z + ...)
+PASS two-loop formula fits x_200 far better than one-loop -2/n  one-loop err 1.75e-04, two-loop err 1.32e-08
+PASS V(z) = 1 + (1/3)/z + ...  (map is z -> z + 1 + (1/3)/z + ...)
+PASS Borel transform of the generator: nearest singularity at distance 2*pi (ratio test, k~140)  R = 6.3390229 vs 2pi = 6.2831853
+PASS large-order oscillation drifts like j^(-i sigma) with sigma = 2 pi rho = 2pi/3 (the log term of the Fatou coordinate)  sigma = -2.0932 (2pi/3 = 2.0944), beta = 0.998, residual 8.7e-07
+PASS Pade poles nearest the origin sit at +-2 pi i  ['+0.0124-6.2731i', '+0.0124+6.2731i']
+PASS formal E^(1/2) composed with itself gives e^x - 1 (to x^14)
+PASS formal half-iterate: same Borel lattice (+-2 pi i) and same drift sigma = 2pi/3  sigma = -2.0940, beta = -2.000, residual 9.5e-07
+  QED (alpha)                        b0=+0.21221 b1=+0.050661  same sign: True
+  QCD nf=3 (alpha_s)                 b0=-1.43239 b1=-0.810569  same sign: True
+  QCD nf=5 (alpha_s)                 b0=-1.22019 b1=-0.489719  same sign: True
+  QCD nf=6 (alpha_s)                 b0=-1.11408 b1=-0.329294  same sign: True
+  phi^4 single scalar (lambda/4!)    b0=+0.01900 b1=-0.000227  same sign: False
+  E = e^x - 1 (height)               b0=+0.50000 b1=-0.083333  same sign: False
+PASS E shares phi^4's two-loop sign pattern (b0, b1 opposite), not QED's or QCD's
+
+14 of 14 pass

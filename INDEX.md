@@ -6,7 +6,10 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 
 Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of its README.
 
-None right now. The last one saved mid-way, e at every rung height, was finished before this push.
+| Topic | Folder | Page |
+|---|---|---|
+| DRAFT: the height flow read as a running coupling. Early verdict: behaves exactly like a marginal coupling, but so does any map with a double fixed point; no physics test found. Merged into the height-flow stream. | `topics/height-running-coupling/` | — |
+| DRAFT: Lucas corner weights U_m(k, d) for the two-dial plane law. Early verdict: the weights are known Lucas sequences and the corner formula is probably folklore. Merged into the corner-weights stream. | `topics/lucas-weights/` | — |
 
 ## The library and tools
 
@@ -15,7 +18,7 @@ None right now. The last one saved mid-way, e at every rung height, was finished
 | Shared Lean library: 3,164 theorems, 132 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
-| Proof complexity: proofs through the circle operation are not shorter (negative result; Mathlib Lean files, not built here) | `topics/proof-complexity/` | — |
+| Proof complexity: proofs through the circle operation are not shorter (negative result; its Lean files need Mathlib, so CI doesn't build them) | `topics/proof-complexity/` | — |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
 | Mathlib port check: does the port on the `mathlib-port` branch prove the same 1,750 theorems? (read side by side, not compiled) | `topics/mathlib-port-check/` | no page |
 | Common patterns pass | `topics/patterns/` | no page yet |
