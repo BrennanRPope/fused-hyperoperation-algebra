@@ -14,7 +14,7 @@ no_M4	ported	MAFound.Independence.no_M4	A1-A4 conjuncts are now the AddCommGroup
 no_M3	ported	MAFound.Independence.no_M3	operation is `MultAdd.wAdd 2`; A1-A4 conjuncts are the instance; M1, M2, M4 come from the new general `wAdd_axioms`
 Mat	mathlib	Matrix (Fin 2) (Fin 2) ℤ	
 Mat.add	mathlib	Matrix.add	
-Mat.mul	mathlib	Matrix.instMul	
+Mat.mul	mathlib	HMul.hMul on Matrix (Matrix.mul_apply)	
 Mat.neg	mathlib	Matrix.neg	
 matOps	dropped	MultAdd.multAdd on Matrix (Fin 2) (Fin 2) ℤ, wall -1	
 Mat.ext'	mathlib	Matrix.ext	

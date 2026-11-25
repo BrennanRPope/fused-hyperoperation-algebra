@@ -17,7 +17,7 @@ kick_step	ported	Relativity.kick_step	any field; the unused hypothesis kD n u + 
 kicks_lift	ported	Relativity.kicks_lift	generalised from ℚ to any commutative ring
 B2	mathlib	Matrix (Fin 2) (Fin 2) R	the four-number structure is a 2×2 matrix
 boost	ported	Relativity.boost	now the matrix !![1, u; u, 1] over any commutative ring
-B2.mul	mathlib	Matrix.instMul	matrix multiplication (HMul.hMul); Matrix.mul_fin_two is the four-entry formula
+B2.mul	mathlib	HMul.hMul on Matrix (Matrix.mul_apply)	matrix multiplication (HMul.hMul); Matrix.mul_fin_two is the four-entry formula
 boost_mul	ported	Relativity.boost_mul	matrix product; any commutative ring. New: boost_mul_boost (= (1 + u * v) • boost (vel u v)) and det_boost
 boost_mul_vel	ported	Relativity.boost_mul_vel	generalised from ℚ to any field
 squeeze_plus	ported	Relativity.squeeze_plus	generalised from ℚ to any commutative ring

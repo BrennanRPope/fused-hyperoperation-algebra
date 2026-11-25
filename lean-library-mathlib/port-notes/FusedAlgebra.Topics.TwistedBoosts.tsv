@@ -19,7 +19,7 @@ cross_is_area	ported	TwistedBoosts.cross_is_area	ℚ-pairs became ℂ, the dial 
 cross_collinear	ported	TwistedBoosts.cross_collinear	ℚ-pairs became ℂ, the dial q : ℝ
 M	mathlib	Matrix (Fin 2) (Fin 2) ℂ	the four-field structure is a 2×2 matrix
 M.ext'	mathlib	Matrix.ext	
-M.mul	mathlib	Matrix.instMul	matrix multiplication; Matrix.mul_fin_two is the four-entry formula
+M.mul	mathlib	HMul.hMul on Matrix (Matrix.mul_apply)	matrix multiplication; Matrix.mul_fin_two is the four-entry formula
 boost	ported	TwistedBoosts.boost	now the matrix !![1, u; -q * conj u, 1] over ℂ with q : ℝ
 boost_real	ported	TwistedBoosts.boost_real	ℚ-pairs became ℂ, the dial q : ℝ; new boost_real_eq_map ties it to Relativity.boost
 tX	ported	TwistedBoosts.tX	ℚ-pairs became ℂ, the dial q : ℝ

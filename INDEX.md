@@ -7,6 +7,7 @@ Every topic, its folder in this repo, and its published page on claude.ai (pages
 | Topic | Folder | Page |
 |---|---|---|
 | Shared Lean library: 1,750 theorems, 62 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Mathlib port of the Lean library (branch `mathlib-port`): all 62 modules on mathlib's `PreQuasiregular` | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
