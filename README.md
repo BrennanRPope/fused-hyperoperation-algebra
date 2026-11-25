@@ -1,5 +1,9 @@
 # Fused Hyperoperation Algebra
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24539305.svg)](https://doi.org/10.5281/zenodo.24539305)
+
+Cite all versions with DOI [10.5281/zenodo.24539305](https://doi.org/10.5281/zenodo.24539305); Zenodo also gives each release, such as v0.1.0, its own version DOI.
+
 Brennan Pope's math theory, with the proofs, checks, figures and write-ups gathered in one place. (It was called Fused Mult-Add Algebra until Nov 25, 2026.)
 
 ## The idea in plain words
