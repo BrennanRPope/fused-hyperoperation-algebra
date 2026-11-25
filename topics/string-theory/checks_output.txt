@@ -1,0 +1,38 @@
+PASS A1 zeta(-1) = -1/12, so the regularized zero-point sum (D-2)/2 * (1+2+3+...) gives a = (D-2)/24  | zeta(-1) = -1/12
+PASS A2 bosonic string: a light-cone massless vector at level 1 needs a = 1, so D = 26  | D = 26
+PASS A3 superstring NS sector: bosons -1/24 and fermions -1/48 per direction, a = 1/2, so D = 10  | D = 10
+PASS A4 closed bosonic string, massless level N = Ntilde = 1: 24 x 24 = 576 states = graviton 299 + B-field 276 + dilaton 1  | massless spin-2 is forced into the spectrum
+PASS A5 G10 = (2 pi)^7 g_s^2 alpha'^4 / (16 pi): doubling g_s multiplies G by 4; doubling the string length multiplies G by 2^8  | G is derived: (coupling)^2 x (length)^8
+PASS A6 the 10D Planck length is l_P = g_s^(1/4) l_s: gravity's length is the string length times a power of the coupling  | l_P/l_s = 0.779921, g_s^(1/4) = 0.779921
+PASS A7 AdS5 x S5: L^3 / G5 = 2 N^2 / pi for any g_s, N: in AdS units Newton's constant is pi/(2 N^2), a 1/N^2 dial  | N = 37: L^3/G5 = 871.5325, 2N^2/pi = 871.5325
+PASS T1 closed-string spectrum on a circle is unchanged by R -> alpha'/R with momentum n <-> winding w (200 random states)
+PASS T2 at the self-dual radius R = sqrt(alpha') extra states (n, w = +-1) become massless (the SU(2) x SU(2) enhancement)  | 4 extra massless (n,w,N,Nt): [(-1, -1, 1, 0), (-1, 1, 0, 1), (1, -1, 0, 1), (1, 1, 1, 0)]
+PASS T3 p_L^2 - p_R^2 = 2 n w for every radius: the radius never changes the Lorentzian length of a lattice point
+PASS T4 changing the radius is a Lorentz boost of the (p_L, p_R) lattice with rapidity log(R2/R1) (Narain's O(1,1))  | rapidity 1.1527
+PASS T5 ours: with 1 + a = R/sqrt(alpha'), T-duality is the mult-add (k = 1) inverse: 1 + inv(a) = 1/(1 + a), and a o inv(a) = 0 (the self-dual radius)
+PASS T6 ours: in the flat coordinate u = log(1 + a) = log(R/sqrt(alpha')), the rapidity of T4, T-duality is the reflection u -> -u; the wall a = -1 is R = 0, sent to R = infinity
+PASS T7 2-torus with a B-field: T-duality E -> E^{-1} (E = G + B) swaps momentum and winding in the mass matrix, H(E^-1) = P H(E) P (Giveon-Porrati-Rabinovici)
+PASS S1 the order dial's stretch-and-shift maps tau -> lam*tau + s are exactly the upper-triangular (Borel) part of SL(2,R) acting on the half-plane
+PASS S2 S-duality tau -> -1/tau fixes tau = i (C0 = 0, g_s = 1), the order dial's 'do nothing' point
+PASS S3 ours: on the pure-multiplication line tau = i*lam (C0 = 0), S-duality g_s <-> 1/g_s is the group inverse lam -> 1/lam, the same shape as T5
+PASS S4 off that line S-duality is not the group inverse (it needs the full SL(2), beyond the dial's own group)  | S(tau) = -0.3211+0.5963j, group inverse point = -0.5385+0.7692j
+PASS S5 Borel maps all fix the cusp at infinity (weak coupling); S moves it to 0, so dualities live outside the dial's group
+PASS M1 the bosonic closed-string torus weight tau2^12 |eta(tau)|^48 is unchanged by tau -> tau + 1 and tau -> -1/tau (modular invariance)
+PASS M2 the fundamental domain F of SL(2,Z) has finite area pi/3 in dtau1 dtau2/tau2^2; the strip |tau1|<1/2 grows like 1/eps as tau2 -> eps (the UV region F leaves out)  | area(F) = 1.047198, strip down to eps: [10.0, 100.0, 999.9999999999999]
+PASS M3 number of string states at level N grows like exp(4 pi sqrt N) N^(-27/4) (Hardy-Ramanujan-Meinardus; the 4 pi comes from eta's tau -> -1/tau)  | fit over N = 200..3000: sqrt N coefficient 12.5659 (4 pi = 12.5664), log N coefficient -6.727 (-27/4)
+PASS M4 Hagedorn: sum over states of exp(-M/T) converges only for T < T_H = 1/(4 pi sqrt(alpha')) (open bosonic string)  | T_H = 0.07958 / sqrt(alpha')
+PASS M5 ours (bookkeeping): the partition-function denominator prod(1 - q^n) is 1 - (the k = -1 chain of the steps q^n), the project's survival dial
+PASS M6 the primon gas (Julia 1990) has the same kind of wall: zeta(s) = prod (1 - p^-s)^-1 blows up as s -> 1 (its 'Hagedorn' point)
+PASS L1 string GUP dx >= hbar/(2 dp) + alpha' dp/(2 hbar) has a minimum dx = sqrt(alpha') at dp = hbar/sqrt(alpha') (Gross-Mende, Amati-Ciafaloni-Veneziano, Konishi-Paffuti-Provero)
+PASS L2 that GUP is T-duality symmetric: dp -> hbar^2/(alpha' dp) swaps its two terms
+PASS L3 Kempf-Mangano-Mann [x, p] = i hbar (1 + beta p^2) is canonical in rho = arctan(sqrt(beta) p)/sqrt(beta): x = i hbar d/drho
+PASS L4 ours (reading): composing so that rho adds is the tangent law (p + q)/(1 - beta p q), the point (k, d) = (0, beta) of the repo's plane, kappa = d - k^2/4 = beta > 0: elliptic, no wall  | max error over 200 random (rho1, rho2, beta): 8.9e-16
+PASS L5 kappa-Poincare's massless momenta |p| = kappa(1 - e^(-p0/kappa)) compose by a + e^(-p0a/kappa) b = a o_k b with k = -1/kappa: the point (k, d) = (-1/kappa, 0), kappa_CK = -k^2/4 < 0, hyperbolic, wall at |p| = kappa
+PASS L6 the two are mirror images: KMM's flat coordinate rho is bounded (|rho| < pi/(2 sqrt beta)) with p unbounded; kappa-Poincare's flat coordinate p0 is unbounded with |p| < kappa_P
+PASS L7 Veneziano amplitude at fixed angle (t = -s/2) falls like exp(-alpha' s ln 2): faster than any power, the 'softness' behind the minimum length (Gross-Mende 1987)  | fitted slope of log|A| against alpha' s: -0.6966, -ln 2 = -0.6931
+PASS N1 Harer-Zagier: the gluings of a 2m-gon by genus give <tr X^(2m)> = sum_g eps_g(m) N^(m+1-2g); m = 2: (2, 1), m = 3: (5, 10), m = 4: (14, 70, 21)
+PASS N2 GUE Monte Carlo (N = 3, variance 1/N): (1/N) E tr X^4 = 2 + 1/N^2; the planar part is 2, each handle costs 1/N^2  | Monte Carlo 2.1133, exact 2.1111
+PASS N3 string amplitudes weigh a genus-g worldsheet by g_s^(2g-2) = g_s^(-chi): one handle costs g_s^2, the same power that sets G (A5); 't Hooft: g_s <-> 1/N
+PASS N4 Gauss-Bonnet: the worldsheet's Einstein-Hilbert term integrates to 4 pi chi (sphere: 4 pi; a K = -1 genus-g surface has area 4 pi (g - 1)); so the dilaton term is a pure topology weight
+
+36/36 checks pass
