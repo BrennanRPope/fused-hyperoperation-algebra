@@ -8,6 +8,7 @@ public import FusedAlgebra.Foundations.MultAddRing
 public import FusedAlgebra.Rungs
 public import FusedAlgebra.Topics.Calculus
 public import FusedAlgebra.Topics.Chemistry.ChemConservation
+public import FusedAlgebra.Topics.Chemistry.ChemPeriodic
 public import FusedAlgebra.Topics.Consensus
 public import FusedAlgebra.Topics.E
 public import FusedAlgebra.Topics.EarlyScience
