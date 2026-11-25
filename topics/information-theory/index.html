@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Information theory on the square</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the same series as the quantum-noise, topology and actuarial pages, honest about known vs new
+   IDEA a plate from a geometry atlas over a proof notebook: one square, its corner counted four ways
+   PICTURE the four-panel corner square, then the cube, the ladder, the decoder and the cascade
+   COLOUR white ground, near-black ink, ultramarine for mult-add, vermilion for warnings; night is deep ink with plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plate in the first screen; the kit table; one section per area with plates beside text; phone stacks */
+
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:68ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:64ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+.flag{border-left:3px solid var(--red)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fit{white-space:nowrap;font-weight:600}
+.f5{color:var(--red)}.f4{color:var(--blue)}.f3{color:var(--ink)}.f1{color:var(--mute)}
+code{font-size:14px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.eq{font-size:17px}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<header class="band top"><div class="wrap">
+<h1>Information theory is one square, counted four ways</h1>
+<p class="lede">Every composition law I checked in information theory is mult-add with a weight k, a ⊕ₖ b = a + b + k·ab, and the weight only says how the corner cell ab of the mult-add square is counted. Six shared lemmas then prove 44 known laws, from the union rule for failures to Tsallis entropy, Kraft's inequality, channel cascades, Hamming codes and belief-propagation decoding.</p>
+<div class="plate"><img src="figures/f1_corner_square.png" alt="Four squares. First, a mult-add square of side 1+a by 1+b with the unit cell white and cells a, b and ab shaded. Then three unit squares split at p and q: plain addition counts the corner pq twice, the either-one rule shades everything except the both-fine cell, and the exactly-one rule shades only the two off-diagonal cells."></div>
+<p class="cap">k = 1 grows a volume, k = 0 ignores the overlap, k = −1 counts the overlap once, k = −2 throws the overlap away. That is the whole story of this page, drawn once.</p>
+<div class="box flag">
+<p><strong>Known or new.</strong> Every law here is known, most of them classical, and that was the aim: proofs of existing laws in one fused language. Tsallis' non-additivity S_A + S_B + (1−q)S_A·S_B is from 1988, and reading entropies through formal group laws is already a research line (Tempesta's "group entropies"). Two readings are tidy rather than new: the channel ladder k = −(1 + c), and belief propagation as plain mult-add in two coordinates of the same bit.</p>
+<p style="margin:0"><strong>No lead as strong as the solitons turned up.</strong> What this area adds is breadth: one kit of six lemmas carries the whole field.</p>
+</div>
+<div class="box">
+<p style="margin:0"><strong>Proof status.</strong> 61 theorems in <code>lean/InfoFused.lean</code>, core Lean only, no <code>sorry</code>: 17 for the kit and 44 laws. <span class="r">They are not compiled yet.</span> Lean isn't installed where I worked, and installing it would have meant running a downloaded installer, which I didn't do. Every ring identity was checked symbolically with sympy, and every law numerically: 178 checks pass (<code>checks_output.txt</code>). The file follows the style of the project's compiled files (core <code>Rat</code>, <code>grind</code>), so it should compile with <code>lean InfoFused.lean</code> on Lean 4.24 or later; small tactic fixes are possible.</p>
+</div>
+</div></header>
+<nav class="nav scroll"><a href="#kit">The kit</a><a href="#fail">Failure chances</a><a href="#entropy">Entropy</a><a href="#compress">Compression</a><a href="#channels">Channels</a><a href="#codes">Codes and decoding</a><a href="#limits">What isn't proved</a><a href="#files">Files</a></nav>
+
+<section class="band" id="kit"><div class="wrap">
+<h2>The kit: six lemmas, used everywhere</h2>
+<p>Each law below is a short proof that calls one or two of these. That's the "common proof language": the same six moves, read on different quantities.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Lemma</th><th>Statement</th><th>Geometry</th></tr></thead>
+<tbody>
+<tr><td class="fit">K1 lift</td><td>1 + k·(a ⊕ₖ b) = (1 + k·a)(1 + k·b)</td><td>the square's area multiplies</td></tr>
+<tr><td class="fit">K2 climb</td><td>1 + k·(a ⊕ₖ a ⊕ₖ … ⊕ₖ a) = (1 + k·a)ⁿ</td><td>n copies climb the cube; this is rung 2</td></tr>
+<tr><td class="fit">K3 flip</td><td>(−a) ⊕ₖ (−b) = −(a ⊕₋ₖ b)</td><td>read the square from the other corner</td></tr>
+<tr><td class="fit">K4 linearize</td><td>any L with L(xy) = L(x) + L(y) turns ⊕ₖ into +</td><td>log flattens the square to two lengths</td></tr>
+<tr><td class="fit">K5 outer sum</td><td>Σᵢⱼ xᵢyⱼ = (Σxᵢ)(Σyⱼ)</td><td>a grid's total is its edges multiplied</td></tr>
+<tr><td class="fit">K6 outer log</td><td>Σᵢⱼ xᵢyⱼ·L(xᵢyⱼ) = (Σy)·Σx·L(x) + (Σx)·Σy·L(y)</td><td>log of a grid splits into its edges</td></tr>
+</tbody></table></div>
+<p class="mute" style="margin-top:10px">Every weight is the same algebra rescaled: k·(a ⊕ₖ b) = (k·a) ⊕ (k·b). So the laws really differ only in which coordinate they're read in.</p>
+</div></section>
+
+<section class="band" id="fail" style="background:var(--panel)"><div class="wrap two">
+<div>
+<h2>Failure chances: k = −1</h2>
+<p>Two independent parts failing with chances p and q: at least one fails with chance <strong>p ⊕₋₁ q = p + q − pq</strong>. That's mult-add read on negatives (K3): the "or" rule is mult-add seen from the both-fine corner.</p>
+<ul>
+<li><strong>Survival multiplies</strong> (K1): 1 − (p ⊕₋₁ q) = (1 − p)(1 − q).</li>
+<li><strong>Hazards add</strong> (K4): −log(1 − p) is the linear coordinate, so cumulative hazard adds.</li>
+<li><strong>Inclusion–exclusion</strong> falls out of associativity: the signed corners of the cube.</li>
+<li><strong>Series systems</strong> (K2): n parts fail with chance 1 − (1 − p)ⁿ.</li>
+<li><strong>Adding a part never helps</strong>: p ≤ p ⊕₋₁ q for 0 ≤ q, p ≤ 1.</li>
+</ul>
+</div>
+<div><div class="plate"><img src="figures/f2_cube_union_parity.png" alt="Two cubes whose corners are the products of p, q and r. Left: all seven non-empty corners shaded, singles plus, pairs minus, the triple plus. Right: only the three single corners and the triple shaded."></div>
+<p class="cap">Left: "either part fails" counts every non-empty corner with alternating signs. Right: "an odd number of flips" keeps only the odd layers. Same cube, two weights.</p></div>
+</div></section>
+
+<section class="band" id="entropy"><div class="wrap">
+<h2>Entropy: the Tsallis index is the weight</h2>
+<p>For independent sources, power sums multiply (K5): Σ(pᵢrⱼ)^q = (Σpᵢ^q)(Σrⱼ^q). Tsallis entropy is that power sum minus 1, over k = 1 − q. So by K1 it composes as <strong>S_AB = S_A ⊕ₖ S_B with k = 1 − q</strong>, Tsallis' pseudo-additivity. Applying log (K4) to 1 + k·S gives Rényi entropy, which adds. The family has three landmarks, each a law of its own:</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Tsallis q</th><th class="n">Weight k</th><th>What it counts</th><th>How it composes</th></tr></thead>
+<tbody>
+<tr><td>q = 0</td><td class="n">1</td><td>outcomes minus one, N − 1</td><td>NM − 1 = (N − 1) ⊕ (M − 1): the grid minus its unit cell</td></tr>
+<tr><td>q = 1</td><td class="n">0</td><td>Shannon entropy H</td><td>H(X,Y) = H(X) + H(Y), proved from K6 for any log</td></tr>
+<tr><td>q = 2</td><td class="n">−1</td><td>Gini–Simpson 1 − Σp², the chance two draws differ</td><td>the union rule: "the pair differs" = "A differs or B differs"</td></tr>
+</tbody></table></div>
+<h3>Where rung 2 shows up</h3>
+<p>For N equally likely outcomes and k = 1 − q a whole number m, 1 + k·S = Nᵐ. So k·S is exactly the fused power (N − 1)^⊕m, the climb up the mult-add cube (K2). Composing two sources uses rung 1; turning a count into an entropy uses rung 2.</p>
+<p class="mute">Known: Tsallis (1988); the Rényi–Tsallis link through log(1 + k·S); formal-group entropies (Tempesta, 2011 and 2016). The three-landmark reading is a presentation.</p>
+</div></section>
+
+<section class="band" id="compress" style="background:var(--panel)"><div class="wrap">
+<h2>Compression: Kraft and Campbell are the same grid</h2>
+<ul>
+<li><strong>Kraft sums multiply</strong> when you concatenate two prefix codes (K5), so the product code is still prefix-valid. The slack 1 − K composes like failure chances: 1 − K_A·K_B = (1 − K_A) ⊕₋₁ (1 − K_B).</li>
+<li><strong>Campbell's exponential cost</strong> M = Σp·2^(tℓ) multiplies for independent sources, so M − 1 is plain mult-add, k = 1. Its log is bounded by Rényi entropy of order 1/(1 + t) (Campbell, 1965). Checked numerically on Huffman codes.</li>
+<li><strong>Expected length adds</strong>, the k = 0 shadow of Campbell, and Shannon's bound sits there.</li>
+</ul>
+</div></section>
+
+<section class="band" id="channels"><div class="wrap">
+<h2>Channels: the alphabet ladder k = −(1 + c)</h2>
+<div class="plate"><img src="figures/f3_weight_ladder.png" alt="A number line of weights from 1 down to minus 2. At 1: Tsallis q equals 0, Campbell cost, variable node odds. At 0: Shannon, Rényi, code length, LLRs. At minus 1: independent failures, erasure channel, Gini–Simpson, Kraft slack. Between minus 1 and minus 2: minus 4/3 for four letters and minus 3/2 for three letters. At minus 2: binary symmetric channel, parity, check node."></div>
+<p>Send a symbol through two noisy hops in a row. It arrives right if both hops were clean, or if the first hop erred and the second erred back onto the right letter. If c is the chance a second error lands back on the right letter, the error composes as <strong>e₁ ⊕ₖ e₂ with k = −(1 + c)</strong>. For a symmetric channel c = 1/(letters − 1):</p>
+<ul>
+<li><strong>Erasures, or a huge alphabet</strong> (c = 0): k = −1, the union rule, and capacity 1 − e multiplies exactly.</li>
+<li><strong>Two letters</strong> (c = 1): k = −2, the binary symmetric cascade p + q − 2pq. Polarization 1 − 2p multiplies.</li>
+<li><strong>Four letters</strong> (c = 1/3): k = −4/3, the depolarizing qubit weight from the quantum-noise page, now explained as a 4-letter channel.</li>
+</ul>
+<p>Each formula was checked against the actual transition-matrix product for 2, 3, 4, 5 and 8 letters.</p>
+<div class="two" style="margin-top:18px">
+<div>
+<h3>Data processing: a cascade never beats its worst link</h3>
+<p>For crossovers below ½, the cascade's crossover is at least each link's and stays below ½, where capacity falls as crossover rises. For erasures, C₁·C₂ ≤ C₁. The strong form: the contraction (1 − 2p)² multiplies (Ahlswede–Gács). Parallel channels go the other way: capacities add and message counts multiply.</p>
+</div>
+<div><div class="plate"><img src="figures/f5_cascade_capacity.png" alt="Capacity in bits per use against the number of links in a cascade, from 1 to 20. Three binary symmetric channel curves, crossover 0.02, 0.05 and 0.10, and an erasure channel with erasure 0.10, all falling."></div></div>
+</div>
+</div></section>
+
+<section class="band" id="codes" style="background:var(--panel)"><div class="wrap two">
+<div>
+<h2>Codes and decoding</h2>
+<ul>
+<li><strong>Parity of n noisy bits</strong> is the odd layers of the cube: 1 − 2·P(odd) = (1 − 2p)ⁿ (K2 at k = −2). That's Matsui's piling-up lemma: biases combine as 2·ε₁·ε₂.</li>
+<li><strong>Hamming codes are perfect</strong>: with n = 2ʳ − 1, the 2ⁿ⁻ʳ balls of radius 1 (a corner plus its n neighbours, layers 0 and 1 of the cube) tile the whole n-cube exactly.</li>
+<li><strong>Belief propagation is mult-add twice.</strong> A check node (parity of two independent bits) is plain mult-add on −2p, so ρ = 1 − 2p multiplies. A variable node (two independent looks at one bit) multiplies odds, so odds − 1 is plain mult-add. In ρ coordinates that's Einstein's velocity addition, (ρ₁ + ρ₂)/(1 + ρ₁ρ₂), whose corners lift to (1 + a)(1 + b) and (1 − a)(1 − b). Gallager's φ function switches between the two coordinates.</li>
+</ul>
+<p class="mute">Known: the tanh rule and φ (Gallager, 1963); piling-up (Matsui, 1993); Hamming (1950). The velocity-addition resemblance has probably been noticed; I didn't find a source, so treat it as known.</p>
+</div>
+<div><div class="plate"><img src="figures/f4_decoding.png" alt="Outgoing belief against incoming belief, both from minus 1 to 1, with the other input fixed at 0.6. The check node is a straight line through the origin with slope 0.6. The variable node is a curve that rises steeply and bends toward 1."></div>
+<p class="cap">The bit's belief lives on a segment from −1 to 1. Parity scales it toward the middle; extra evidence pushes it out like adding velocities.</p></div>
+</div></section>
+
+<section class="band" id="limits"><div class="wrap">
+<h2>What Lean doesn't check</h2>
+<p>Core Lean has no real numbers, so anything needing log, real powers p^q or the binary entropy function h(p) is stated for any L that turns products into sums, which log does. The probability models themselves (that a channel is a transition matrix, a cascade a matrix product) are checked in Python, not in Lean, as is the fact that capacity 1 − h(p) falls on [0, ½]. And, again, the file hasn't been compiled yet.</p>
+</div></section>
+
+<footer class="band" id="files"><div class="wrap">
+<p class="mute" style="max-width:none">Files in the project folder, math-theory/information-theory/: index.html, lean/InfoFused.lean (61 theorems, uncompiled), checks.py and checks_output.txt (178 checks), figures.py, figures/. Related pages in this series: quantum-noise (bit-flip and depolarizing weights), consensus (the k = −1 rule for slashing). References: Tsallis, J. Stat. Phys. 1988; Rényi 1961; Campbell, Information and Control 1965; Gallager, Low-Density Parity-Check Codes 1963; Matsui, Eurocrypt 1993; Ahlswede and Gács, Annals of Probability 1976; Tempesta, Phys. Rev. E 2011 and Annals of Physics 2016; Hamming, Bell System Technical Journal 1950.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,100 @@
+== 1. Interest is mult-add ==
+ 3% then 5%: (+) gives 0.081500; (1.03)(1.05)-1 = 0.081500
+ force of interest delta = log(1+i) at 5%: 0.048790; logs add: True
+ discount rate d = i/(1+i) = 0.047619; minus the mult-add inverse of i = 0.047619: True
+ nominal monthly rate i(12) = 12 x (12th mult-add root of 5%) = 0.048889
+ 10-year accumulation s_10 at 5%: closed 12.577893, layer sum 12.577893, corner sum 12.577893
+  layer 1 (simple interest) = 10; layers 2..10 (interest on interest) = 2.577893
+  share of (1.05^10 - 1) in each cube layer: [0.795, 0.1789, 0.0239, 0.0021, 0.0001] ...
+
+== 2. Survival is mult-add of negated death rates ==
+ SOA Illustrative Life Table, ages 45-47: q = [0.003997 0.004314 0.004662]
+ 3q45 from the table 0.01291699; -((-q45)(+)(-q46)(+)(-q47)) = 0.01291699; cube (inclusion-exclusion) = 0.01291699
+ force of mortality = -log(1 + (-q)) adds: True
+
+== 3. Multiple decrements: a timing assumption is a path through the cube ==
+ absolute rates q' = [0.00399663 0.06       0.004     ]  (death from the SOA table at 45; lapse 6% and disability 0.4% are illustrative)
+ total q(tau) = 1 - prod(1 - q') = 0.06750180; plain sum overcounts by 0.00049482 (the cube's faces)
+ UDD dependent rates       [0.00386906 0.05976042 0.00387233] sum 0.067501802
+ equal split of each corner [0.00386906 0.05976042 0.00387233]
+ Shapley value of the game  [0.00386906 0.05976042 0.00387233]
+  UDD = equal corner split = Shapley: True
+ constant force rates      [0.0038679  0.05976273 0.00387117] sum 0.067501802
+ diagonal path in log coords [0.0038679  0.05976273 0.00387117]
+  constant force = straight path in mult-add log coordinates: True
+ deaths-early path         [0.00393276 0.05970059 0.00386845] sum 0.067501802
+  totals agree on all three paths (path-independent): True
+ simulation (4 million lives), UDD: [0.0039  0.05971 0.00388]  constant force: [0.00386 0.05978 0.00382]
+  within 3 standard errors: True
+
+== 4. Independent risks: (M - 1) mult-adds, cumulants are the mult-add log ==
+ at s = 0.3: M_sum - 1 = 1.0902179827; (+) of (M_k - 1) = 1.0902179827; cube corners = 1.0902179827
+ simulated E[exp(s X_sum)] - 1 = 1.0893 (2 million draws)
+ logs add (cumulant generating functions): True
+
+== 5. Claim counts: one mult-add power (1 + c(z - 1))^n ==
+ binomial m=5, q=0.3: sum p = 1.000000, fitted a = -0.428571, b = 2.571429, dimension -1 - b/a = 5.000000
+ neg. binomial r=2.5, beta=0.8: sum p = 1.000000, fitted a = 0.444444, b = 0.666667, dimension -1 - b/a = -2.500000
+ neg. binomial r=0.7, beta=3: sum p = 0.999927, fitted a = 0.750000, b = -0.225000, dimension -1 - b/a = -0.700000
+ Poisson lambda=2: a = -1.13e-16 (zero), b = 2.000000: dimension -1 - b/a is infinite
+ dimension 2.5: first negative coefficient at k = 4  (p_k = -5.40e-04)
+ dimension 3.3: first negative coefficient at k = 5  (p_k = -7.69e-05)
+ dimension 1.5: first negative coefficient at k = 3  (p_k = -2.88e-03)
+ dimension 0.5: first negative coefficient at k = 2  (p_k = -1.92e-02)
+ count models allowed at dimension n:           {-3: True, -1.2: True, -0.4: True, 0.25: False, 0.5: False, 0.9: False, 1.0: True, 1.4: False, 2.0: True, 2.6: False, 3.0: True, 4.5: False}
+ allowed once the zero count is removed:         {-3: True, -1.2: True, -0.4: True, 0.25: True, 0.5: True, 0.9: True, 1.0: True, 1.4: False, 2.0: True, 2.6: False, 3.0: True, 4.5: False}
+ binomial m=6: k-th mult-add root has no negative coefficient for k = [2, 3, 6]
+ binomial m=7: k-th mult-add root has no negative coefficient for k = [7]
+ Danish fire claims per week: 573 weeks, mean 3.7731, variance 4.9659
+  overdispersed, so negative binomial: r = 11.935, beta = 0.3161; dimension n = -r = -11.935; pole of the PGF at z = 1 + 1/beta = 4.163
+  log-likelihood Poisson -1258.7, negative binomial -1247.0 (moment fit)
+  weeks with 9+ claims: observed 15, Poisson expects 8.8, neg. binomial 18.0
+  claims per year 1980-1990: [169, 167, 181, 156, 161, 207, 240, 225, 209, 235, 217] (a rising trend adds some of the spread)
+  (a,b) straight-line fit on observed ratios: a = 0.438, b = 1.955, dimension -1 - b/a = -5.46 (noisy; uses the sparse tail)
+
+== 6. The infinity test: the order where a moment blows up is a dimension ==
+ 1/distance to a random point in a 1-ball: Hill tail index (k=4000) = 1.026
+ 1/distance to a random point in a 2-ball: Hill tail index (k=4000) = 2.021
+ 1/distance to a random point in a 3-ball: Hill tail index (k=4000) = 2.982
+ 1/distance to a random point in a 4-ball: Hill tail index (k=4000) = 3.938
+ Lomax E[X^3] near its poles: {3.01: np.float64(295.55), 3.5: np.float64(3.2), 2.99: np.float64(-304.55), 2.01: np.float64(-600.06), 1.01: np.float64(304.55)}
+ Lomax alpha=2.5: survival (1 + x)^-alpha is a mult-add power with n = -alpha; sample mean 0.6657 vs exact 0.6667; E[X^2] exact 2.6667; E[X^3] infinite
+ Danish fire, 2167 losses (million DKK, 1985 values): mean 3.385, max 263.25
+  Hill tail index with top 50: 1.865
+  Hill tail index with top 100: 1.601
+  Hill tail index with top 200: 1.362
+  Hill tail index with top 300: 1.431
+  Hill tail index with top 500: 1.421
+  max/sum of x^0.5: 0.0047  (small: moment looks finite)
+  max/sum of x^1: 0.0359  (small: moment looks finite)
+  max/sum of x^1.5: 0.1637  (one claim dominates: moment looks infinite)
+  max/sum of x^2: 0.3816  (one claim dominates: moment looks infinite)
+  max/sum of x^3: 0.6839  (one claim dominates: moment looks infinite)
+  max/sum of x^1 at n = 250, 500, 1000, 2000, 2167: [0.2172 0.1299 0.0756 0.0394 0.0359]
+  max/sum of x^2 at n = 250, 500, 1000, 2000, 2167: [0.8684 0.7612 0.6632 0.4421 0.3816]
+
+== 7. Ruin: Lundberg's root must sit left of the first infinity ==
+ exponential claims (mean 1): pole of order 1 at s = 1; R = 0.166667 (theory theta/(1+theta) = 0.166667)
+ gamma shape 2 (mean 1): pole of order 2 at s = 2; R = 0.226765
+ gamma shape 3 (mean 1): pole of order 3 at s = 3; R = 0.257705
+ gamma shape 5 (mean 1): pole of order 5 at s = 5; R = 0.289251
+ exponential, simulated ruin psi(u): [0.83447 0.36394 0.15859 0.02976 0.00111]
+ exponential, exact e^(-Ru)/(1+theta): [0.83333 0.36217 0.1574  0.02973 0.00106]
+ Lomax alpha=2.5: M(s) is infinite for every s > 0, so no Lundberg root exists
+ Lomax, simulated psi(u): [0.26594 0.06766 0.00693 0.00106]  power-law asymptote (1/(theta mu)) int_u S: [0.13705 0.02897 0.00493 0.00096]
+  ruin decays like u^-(alpha-1) = u^-1.5: one dimension below the tail
+ Danish fire, empirical Lundberg R: all claims 0.00897; without the largest 0.01507; without the top 5 0.03267
+  a finite sample always has a root, and it moves with the largest claims: the infinity is invisible to it
+
+== 8. Mortality: hazard = boundary / volume ==
+ 1-cube survival (1 - x/omega)^1 at x=60, omega=100: hazard 0.025000; k/(omega - x) = 0.025000
+ 2-cube survival (1 - x/omega)^2 at x=60, omega=100: hazard 0.050000; k/(omega - x) = 0.050000
+ 3-cube survival (1 - x/omega)^3 at x=60, omega=100: hazard 0.075000; k/(omega - x) = 0.075000
+ US 2007 male: log hazard is a straight line from 40 to 95 (Gompertz): slope 0.0877/year, doubling every 7.90 years
+ SOA Illustrative table: log(hazard - 0.0007) slope 0.09210 = log of 1.09648 per year (Makeham c = 10^0.04 = 1.09648)
+ a pole at a finite age would make 1/hazard fall linearly to zero; Gompertz makes it decay exponentially and never reach zero
+  US 2007 male, 1/hazard at 80: 15.010 years
+  US 2007 male, 1/hazard at 90: 5.230 years
+  US 2007 male, 1/hazard at 100: 2.225 years
+  US 2007 male, 1/hazard at 105: 1.596 years
+  US 2007 male, 1/hazard at 108: 1.443 years

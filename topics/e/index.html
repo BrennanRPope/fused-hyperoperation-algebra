@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>e from mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the same series as the topology and toric pages, honest about known vs new
+   IDEA a plate from a geometry atlas: ink drawings, ultramarine for mult-add, vermilion for e's layers
+   PICTURE the 3-cube with weighted corners beside its layer totals against 1/k!
+   COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plate in the first screen; sections with plates beside text; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:68ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:64ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+.fit{white-space:nowrap;font-weight:600}
+.f5{color:var(--red)}.f4{color:var(--blue)}.f3{color:var(--ink)}.f1{color:var(--mute)}
+code{font-size:14px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.eq{font-size:17px}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band top">
+<div class="wrap two">
+<div>
+<h1>e is what mult-add makes of a whole unit, cut finer and finer</h1>
+<p class="lede">Mult-add <span class="b">1/n</span> to itself <span class="b">n</span> times. That builds the n-cube with every switch weighing 1/n. As n grows, layer k of the cube settles on <span class="r">1/k!</span>, and the cube's total settles on <span class="r">e = 1 + 1 + 1/2 + 1/6 + … = 2.71828…</span></p>
+<p>Every finite step of this is proved in core Lean with no <code>sorry</code>: the staircase only climbs, it never passes 3, each layer is trapped between 1/k! minus its collisions and 1/k!, and the kernel computes e to seven places. Only the final "and so they meet at one number" needs the real line, which core Lean doesn't have.</p>
+</div>
+<div class="plate"><img src="figures/e1_cube_weights.png" alt="The 3-cube with corners weighted 1, 1/3, 1/9, 1/27, and a bar chart comparing its layer totals 1, 1, 1/3, 1/27 with 1/k!: 1, 1, 1/2, 1/6."><p class="cap">n = 3. The cube's layers (solid) against e's layers (hatched). The first two already match; the higher ones are short because some picks collide.</p></div>
+</div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+<a href="#build">The build</a><a href="#layers">Layers to 1/k!</a><a href="#collide">Collisions</a><a href="#climb">The staircase</a><a href="#why">Why e</a><a href="#lean">What Lean proved</a><a href="#new">Known vs new</a>
+</nav>
+
+<section class="band" id="build"><div class="wrap">
+<h2>The build: one unit, in n slices, mult-added</h2>
+<p>Mult-add is <span class="b">a ⊕ b = a + b + ab = (1 + a)(1 + b) − 1</span>. Mult-adding x to itself n times gives</p>
+<div class="eq">x ⊕ x ⊕ … ⊕ x  (n times)  =  (1 + x)ⁿ − 1</div>
+<p>Geometrically that's a box of side 1 + x in n dimensions, cut at 1 on every axis. It falls into the 2ⁿ corner pieces of the n-cube. A corner with k switches on is a block of size xᵏ, and there are C(n,k) of them. Those layers are your Pascal rows 1, 3, 3, 1 and so on.</p>
+<p>Now spend exactly one whole unit, cut into n equal slices: <span class="b">x = 1/n</span>. Put the unit corner back and you get the staircase</p>
+<div class="eq">1 + (1/n ⊕ 1/n ⊕ … ⊕ 1/n)  =  (1 + 1/n)ⁿ  =  Σₖ C(n,k) / nᵏ</div>
+<p>So layer k of the n-cube carries total weight <span class="b">C(n,k)/nᵏ</span>. The whole question of e is what each layer does as n grows.</p>
+</div></section>
+
+<section class="band" id="layers"><div class="wrap two">
+<div>
+<h2>Each layer settles on 1/k!</h2>
+<p>Write the layer's weight out:</p>
+<div class="eq">C(n,k)/nᵏ = (1/k!) · (n/n)·((n−1)/n)·…·((n−k+1)/n)</div>
+<p>The k! counts the orders you can switch the same k axes on. The product after it is the share of ordered picks that use k <em>different</em> axes. As n grows every factor goes to 1, so the layer goes to 1/k!.</p>
+<p>Adding the limits layer by layer gives</p>
+<div class="eq">e = 1/0! + 1/1! + 1/2! + 1/3! + …</div>
+<p>Layer 0 is the unit corner. Layer 1 is the single slices, which add back to exactly the one unit you spent. Layer 2 is pairs of slices, worth 1/2. Layer 3 is triples, worth 1/6. The interest-on-interest of compound growth is literally the higher layers of the cube.</p>
+</div>
+<div class="plate"><img src="figures/e2_layers_converge.png" alt="Bars of C(n,k)/n^k for n = 2, 4, 8, 32, 1000 rising toward red dots at 1/k! for layers 0 to 6."><p class="cap">Layers 0 to 6 for n = 2, 4, 8, 32 and 1000. Red dots are 1/k!.</p></div>
+</div></section>
+
+<section class="band" id="collide"><div class="wrap">
+<h2>The gap is collisions, and collisions die out</h2>
+<p>Why is a layer short of 1/k! at finite n? Picking k slices in order has nᵏ outcomes. The ones that pick the same slice twice don't make a corner; they collide. Distinct ordered picks number n(n−1)…(n−k+1), and that is exactly C(n,k)·k!.</p>
+<div class="plate"><img src="figures/e3_collisions.png" alt="Grids of n by n ordered pairs with the diagonal in red, for n = 4, 8, 16, and a 6 by 6 by 6 cube of ordered triples with collisions in red."><p class="cap">k = 2: the red diagonal is the collisions, a share of 1/n. k = 3: the collisions are the three diagonal planes, a share at most C(3,2)/n.</p></div>
+<p>Every collision has a pair of picks that agree, and there are only C(k,2) pairs to check, each agreeing with chance 1/n. So at most C(k,2)/n of the ordered picks collide, and</p>
+<div class="eq">1/k! − C(k,2)/(n·k!)  ≤  C(n,k)/nᵏ  ≤  1/k!</div>
+<p>Both sides are proved in Lean (<code>wt_ge</code>, <code>wt_le</code>). This is the geometric underpinning you asked for: e is the cube's corner count once the collisions, a thin diagonal set, have shrunk to nothing.</p>
+</div></section>
+
+<section class="band" id="climb"><div class="wrap">
+<h2>The staircase climbs, under a ceiling that comes down</h2>
+<div class="plate"><img src="figures/e4_staircase.png" alt="Left: the staircase (1+1/n)^n rising from 2 toward e for n up to 40, with s2, s3 and u2 marked. Right: a zoom on a log scale up to n = 100,000 with s4, s5, u4 and e."><p class="cap">Gold lines are the partial sums s N of 1/k!; red dashed lines are u N = s N + 1/(N!·N). e sits between every pair.</p></div>
+<div class="two">
+<div>
+<h3>What holds the staircase in</h3>
+<ul>
+<li><strong>It only climbs.</strong> (1 + 1/n)ⁿ &lt; (1 + 1/(n+1))ⁿ⁺¹. Cutting the same unit into more slices always buys more corners. Proved from Bernoulli's inequality, itself proved by mult-adding one more axis.</li>
+<li><strong>It never passes the sums.</strong> (1 + 1/n)ⁿ ≤ s n, since each layer is at most 1/k!.</li>
+<li><strong>The sums never reach 3.</strong> 1/k! ≤ 1/2ᵏ⁻¹, a halving staircase that tops out at 3.</li>
+</ul>
+</div>
+<div>
+<h3>What traps e</h3>
+<ul>
+<li><strong>The ceiling only comes down.</strong> u N = s N + 1/(N!·N) shrinks as N grows, and every step of the staircase sits under every u N.</li>
+<li><strong>The floor is reached.</strong> For n ≥ N the staircase is within 3·C(N,2)/n of s N, so it gets past any s N minus a sliver.</li>
+<li><strong>Exact check.</strong> s 10 = 2.71828180… and u 10 = 2.71828183…, computed exactly by Lean's kernel.</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="why"><div class="wrap">
+<h2>Why this number is the natural base</h2>
+<div class="plate"><img src="figures/e5_natural_base.png" alt="Three panels: 2^x, e^x and 3^x with tangents at zero, only e^x having slope 1; the curve ln(1+a) with the slope-1 line and n times L(1/n) approaching 1; and mult-add steps 1/n along the real line out to e beside steps i pi over n curving round a half circle to minus 1."><p class="cap">Left: the slope-1 point. Middle: the map that turns mult-add into adding. Right: the same build in two directions.</p></div>
+<div class="two">
+<div>
+<h3>Mult-add's own logarithm</h3>
+<p>The map <span class="b">L(a) = ln(1 + a)</span> turns mult-add into plain adding: L(a ⊕ b) = L(a) + L(b). Its inverse is E(t) = eᵗ − 1. So n mult-adds of x are E(n·L(x)).</p>
+<p>With x = 1/n, the weight is n·L(1/n). Near the unit corner L has <strong>slope 1</strong>, so tiny slices keep their full value and n·L(1/n) → 1. The build lands on E(1) = e − 1. Any other base would give the curve a slope other than 1 at the corner, and the slices would come out scaled. e is the one base where a tiny mult-add step and a tiny plain step are the same size.</p>
+</div>
+<div>
+<h3>The exponential law, for free</h3>
+<p>m steps then n steps is m + n steps: mult-adding x m times and x n times, then mult-adding the two results, is the same as mult-adding x m + n times (<code>mpow_add</code>, proved). In the limit that's eᵃ·eᵇ = eᵃ⁺ᵇ, read off the cube: an (m+n)-cube is an m-cube times an n-cube.</p>
+<h3>Turning the slices sideways</h3>
+<p>Point the slices along i instead: (1 + iπ/n)ⁿ curls round a half circle to −1. That's the Euler identity proof from before, the same build in a perpendicular direction. Real slices grow the box; imaginary slices turn it. Together they're the helix.</p>
+</div>
+</div>
+</div></section>
+
+<section class="band top" id="lean"><div class="wrap">
+<h2>What Lean proved, and what it didn't</h2>
+<p>File: <code>math-theory/e/EFromMultAdd.lean</code> (609 lines). Core Lean 4.37, no mathlib, no <code>sorry</code>, no warnings, only Lean's three standard axioms. Built on the rationals, which are in core Lean.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Theorem</th><th>What it says</th></tr></thead>
+<tbody>
+<tr><td class="fit">mpow_eq, mpow_add</td><td>n mult-adds of x make (1 + x)ⁿ − 1, and mult-add powers add like exponents.</td></tr>
+<tr><td class="fit">binomial</td><td>(1 + x)ⁿ = Σ C(n,k)·xᵏ: the cube's corners fill the box.</td></tr>
+<tr><td class="fit">layer_mul_fact</td><td>C(n,k)·k! = n(n−1)…(n−k+1), the distinct ordered picks.</td></tr>
+<tr><td class="fit">collisions</td><td>Ordered picks that reuse an axis number at most C(k,2)·nᵏ⁻¹.</td></tr>
+<tr><td class="fit">wt_le, wt_ge</td><td>Layer k weighs between 1/k! − C(k,2)/(n·k!) and 1/k!.</td></tr>
+<tr><td class="fit">bernoulli, stair_lt_succ</td><td>The staircase strictly climbs.</td></tr>
+<tr><td class="fit">stair_le_s, s_lt_three</td><td>(1 + 1/n)ⁿ ≤ 1/0! + … + 1/n! &lt; 3.</td></tr>
+<tr><td class="fit">u_step, stair_le_u</td><td>The ceiling u N only comes down; the staircase is under every u N.</td></tr>
+<tr><td class="fit">s_le_stair</td><td>For n ≥ N the staircase is at least s N − 3·C(N,2)/n.</td></tr>
+<tr><td class="fit">kernel checks</td><td>2.7182818 &lt; s 10 and u 10 &lt; 2.7182819; layer 3 of the 100-cube is 4851/30000.</td></tr>
+</tbody></table></div>
+<p class="mute" style="margin-top:12px">Not in Lean: core Lean has no real numbers, so "the staircase and the sums close on one number" is the completeness of the real line, a fact about limits rather than about the cube. Every statement short of that is proved, including the ε-bounds that say they close.</p>
+</div></section>
+
+<section class="band" id="new"><div class="wrap">
+<h2>Known vs new</h2>
+<div class="box">
+<p><strong>Known:</strong> all of the mathematics. (1 + 1/n)ⁿ → e is Jacob Bernoulli's compound interest (1683); e = Σ 1/k! is Euler (1748); the layer-by-layer limit is the standard textbook proof (Tannery's theorem); the collision count is the usual birthday-problem bound.</p>
+<p><strong>New here:</strong> the reading on your mult-add cube, where e is the corner count of the infinitely sliced unit cube and its gap at finite n is exactly the diagonal collision set, plus a complete check in core Lean with no library. No new theorem.</p>
+</div>
+<p class="mute">Files: EFromMultAdd.lean, figures.py and figures/ in math-theory/e.</p>
+</div></section>
+
+</body>
+</html>

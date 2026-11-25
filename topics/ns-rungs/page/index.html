@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Navier–Stokes, rung by rung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful lab notebook, honest about what is proved, checked, or only a toy.
+   IDEA: a scientific plate: one large ladder figure with callouts, then plates for each rung.
+   PICTURE: the hyperoperation ladder drawn as rungs, with Osgood's line as a wall beside it.
+   COLOUR and TYPE: white, ink, carmine for danger, prussian for safe; Literata throughout.
+   LAYOUT: lead + ladder plate, section links, then one plate per rung, known/new table, Lean, files. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1217);--ink:light-dark(#10131a,#e6e8ee);--soft:light-dark(#5a6070,#9aa1b2);--rule:light-dark(#d9dce3,#2a2f3a);--red:light-dark(#c1121f,#ff5a65);--blue:light-dark(#0b4f8a,#6fb3ff);--panel:light-dark(#f5f6f8,#161a22);--green:light-dark(#2f7d5b,#7fd3a8)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Literata,Georgia,serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,60px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.05;font-weight:600;margin:0 0 14px;text-wrap:balance}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:600;margin:0 0 12px;text-wrap:balance}
+h3{font-size:19px;margin:22px 0 6px}
+p,li{max-width:70ch}.lead{font-size:19px}
+.soft{color:var(--soft)}
+.plate{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center}
+@media(max-width:860px){.plate{grid-template-columns:minmax(0,1fr)}}
+.ladder{width:100%;height:auto;display:block}
+.ladder text{fill:var(--ink);font-family:Literata,Georgia,serif}
+.nav{display:flex;flex-wrap:wrap;gap:6px 18px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px max(5vw,16px);font-size:15px;max-width:1240px;margin:0 auto}
+.nav a{color:var(--blue);text-decoration:none}.nav a:hover{text-decoration:underline}
+@media(min-width:900px){.nav{position:sticky;top:0;background:var(--bg);z-index:2}}
+figure{margin:18px 0}figure img{width:100%;height:auto;border:1px solid var(--rule);border-radius:4px;background:#fff}
+figcaption{font-size:15px;color:var(--soft);margin-top:6px;max-width:90ch}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-weight:600}
+.scroll{overflow-x:auto}
+code{font-size:14px;overflow-wrap:anywhere;background:var(--panel);padding:1px 4px;border-radius:3px}
+.box{background:var(--panel);border-left:3px solid var(--blue);padding:14px 18px;margin:16px 0;max-width:80ch}
+.box.red{border-left-color:var(--red)}
+.tag{display:inline-block;font-size:13px;padding:1px 8px;border-radius:10px;border:1px solid currentColor;white-space:nowrap}
+.k{color:var(--blue)}.n{color:var(--red)}.t{color:var(--green)}
+html{scroll-padding-top:72px}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--soft)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<section class="band plate">
+<div>
+<h1>Navier–Stokes, rung by rung</h1>
+<p class="lead">Each rung of Fused Hyperoperation Algebra gives the fluid equations one honest tool and hits one wall. Mult-add is the log that flattens all motion without spin. The fused exponent turns out to be exactly the double-exponential growth law that 2D flow is proved to obey, so in its coordinates the edge of safety is a straight line.</p>
+<p>3D vortex stretching is a different animal: a self-feeding square that leaves the ladder altogether. In a helical shell-model toy, switching on any amount of right-meets-left coupling broke smoothness in finite time, later as the dial went down (blow-up time roughly ε<sup>−1.8</sup>). With the coupling off, nothing broke, and that part can be proved.</p>
+<p>Climbing higher doesn't help: tetration and pentation outgrow everything but never become infinite, so <a href="#higher">no rung matches stretching</a>.</p>
+<p class="soft">Nothing here solves the Millennium problem; this is how it looks through your lens. Every formula was checked in Python, the algebra was proved in core Lean, and the known/new line is near the end.</p>
+</div>
+<svg class="ladder" viewBox="0 0 560 470" role="img" aria-label="The ladder of rungs with Osgood's line">
+  <defs><linearGradient id="wall" x1="0" x2="1"><stop offset="0" stop-color="var(--red)" stop-opacity=".18"/><stop offset="1" stop-color="var(--red)" stop-opacity="0"/></linearGradient></defs>
+  <line x1="40" y1="20" x2="40" y2="450" stroke="var(--ink)" stroke-width="3"/>
+  <line x1="330" y1="20" x2="330" y2="450" stroke="var(--ink)" stroke-width="3"/>
+  <g font-size="14">
+    <line x1="40" y1="410" x2="330" y2="410" stroke="var(--blue)" stroke-width="6"/>
+    <text x="52" y="398" font-weight="600">Rung 1 · a + b + 1</text>
+    <text x="52" y="436" font-size="12.5">flow Y′ = 1 · heat, viscosity, pressure</text>
+    <line x1="40" y1="305" x2="330" y2="305" stroke="var(--blue)" stroke-width="6"/>
+    <text x="52" y="293" font-weight="600">Rung 2 · mult-add a+b+ab</text>
+    <text x="52" y="331" font-size="12.5">flow Y′ = Y · log flattens Burgers</text>
+    <line x1="40" y1="200" x2="330" y2="200" stroke="var(--blue)" stroke-width="6"/>
+    <text x="52" y="188" font-weight="600">Rung 3 · (1+a)<tspan dy="-6" font-size="10">1+b</tspan><tspan dy="6"> − 1</tspan></text>
+    <text x="52" y="226" font-size="12.5">flow Y′ = Y log Y · the 2D bound</text>
+    <line x1="40" y1="95" x2="330" y2="95" stroke="var(--blue)" stroke-width="6"/>
+    <text x="52" y="83" font-weight="600">Rung 4 · fused tetration</text>
+    <text x="52" y="121" font-size="12.5">flow Y′ = Y log Y loglog Y</text>
+  </g>
+  <rect x="400" y="20" width="160" height="430" fill="url(#wall)"/>
+  <line x1="400" y1="20" x2="400" y2="450" stroke="var(--red)" stroke-width="3" stroke-dasharray="8 6"/>
+  <text x="408" y="42" font-size="14" font-weight="600" fill="var(--red)" style="fill:var(--red)">Osgood's line</text>
+  <text x="408" y="62" font-size="12.5">finite climb time</text>
+  <text x="408" y="78" font-size="12.5">= blow-up</text>
+  <text x="408" y="250" font-size="14" font-weight="600" style="fill:var(--red)">Y′ = Y²</text>
+  <text x="408" y="270" font-size="12.5">3D vortex</text>
+  <text x="408" y="286" font-size="12.5">stretching</text>
+  <text x="408" y="302" font-size="12.5">feeds on itself</text>
+  <path d="M340 150 C 365 140, 380 120, 392 60" fill="none" stroke="var(--soft)" stroke-width="1.5" marker-end="url(#a)"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--soft)"/></marker></defs>
+  <text x="338" y="172" font-size="12" style="fill:var(--soft)">climbs toward,</text>
+  <text x="338" y="187" font-size="12" style="fill:var(--soft)">never crosses</text>
+</svg>
+</section>
+
+<nav class="nav scroll" aria-label="Sections"><a href="#rungs">The rungs</a><a href="#burgers">Rung 2: Burgers</a><a href="#growth">Rung 3: growth</a><a href="#dial">Right meets left</a><a href="#higher">Higher rungs</a><a href="#known">Known / new</a><a href="#lean">Lean</a><a href="#files">Files</a></nav>
+
+<section class="band" id="rungs">
+<h2>The rungs, defined one way and checked</h2>
+<p>I used one rule for every rung: take the ordinary hyperoperation and look at it through x ↦ 1 + x. So <b>rung n</b> is a ⊛<sub>n</sub> b = H<sub>n</sub>(1+a, 1+b) − 1. On this numbering your "fused add" (mult-add) is rung 2, because it is multiplication seen through the shift; rung 1, a + b + 1, is plain addition with the zero moved.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Rung</th><th>Operation</th><th>What straightens it</th><th>Flow from a fixed step</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>a + b + 1</td><td>nothing needed</td><td>Y′ = λ (a line)</td></tr>
+<tr><td>2</td><td>a + b + ab = (1+a)(1+b) − 1</td><td>one log: L(a) = log(1+a)</td><td>Y′ = λY (exponential)</td></tr>
+<tr><td>3</td><td>(1+a)<sup>1+b</sup> − 1</td><td>two logs: LL(a ⊛ b) = LL(a) + L(b)</td><td>Y′ = λ Y log Y (double exponential)</td></tr>
+<tr><td>4</td><td>(1+a)↑↑(1+b) − 1</td><td>an Abel function (slowly)</td><td>Y′ ≈ Y log Y loglog Y</td></tr>
+</tbody></table></div>
+<p>Each rung is the rung below repeated: mult-add repeats shifted add, the fused exponent repeats mult-add, and fused tetration repeats the fused exponent on the exponent side. All three were proved in Lean.</p>
+<h3>How the fused exponent behaves</h3>
+<ul>
+<li><b>Identity:</b> 0 is a right identity (a ⊛ 0 = a). There is no left identity: 0 is a left absorber (0 ⊛ b = 0), and the left element that would work depends on b.</li>
+<li><b>Not associative, not commutative:</b> (1 ⊛ 2) ⊛ 1 = 63 but 1 ⊛ (2 ⊛ 1) = 511; 1 ⊛ 2 = 7 but 2 ⊛ 1 = 8.</li>
+<li><b>It carries mult-add inside:</b> a ⊛ b = a ⊕ ((1+a)<sup>b</sup> − 1).</li>
+<li><b>Three clean laws</b>, the shifted forms of the exponent rules: right-distributes over mult-add, (a ⊕ b) ⊛ c = (a ⊛ c) ⊕ (b ⊛ c); tower law, (a ⊛ b) ⊛ c = a ⊛ (b ⊕ c); sum law, a ⊛ (b ⊞ c) = (a ⊛ b) ⊕ (a ⊛ c).</li>
+<li><b>Two inverses:</b> a root, c = (1+a)<sup>1/(1+b)</sup> − 1, and a log, b = L(a)/L(c) − 1.</li>
+</ul>
+<p class="soft">19 of 19 numeric checks pass (<code>algebra_checks.py</code>).</p>
+</section>
+
+<section class="band" id="burgers">
+<h2>Rung 2 on Burgers: the empty corner is why shocks fuse</h2>
+<p>The mult-add log is Cole–Hopf: write u = −2ν ∂<sub>x</sub> log φ and Burgers becomes the heat equation for φ. Two waves sit on a square of terms: 1, e<sub>1</sub>, e<sub>2</sub> and the top corner e<sub>1</sub>e<sub>2</sub>. For Burgers that top corner must be <b>empty</b>. Each term solves the heat equation only if its rate equals ν·slope², and the corner misses by exactly −2ν a<sub>1</sub>a<sub>2</sub> (proved in Lean). With the corner empty, the two shocks meet at t = 8 and fuse into one, and the middle plateau is gone. That is information lost, the thing you dislike about 0 × 4 = 0.</p>
+<p>KdV is the same square with the corner <b>filled</b> by Hirota's weight A = ((k<sub>1</sub>−k<sub>2</sub>)/(k<sub>1</sub>+k<sub>2</sub>))². Then both solitons survive the collision with their heights kept, each shifted by log A. The PDE residual is 6×10<sup>−4</sup> with the right corner against 0.31 with plain mult-add (corner 1).</p>
+<figure><img src="figures/n2_cube_waves.png" alt="Burgers shocks fusing and KdV solitons crossing, with their two-wave squares"><figcaption>Left: the two-wave square. Middle: u(x, t). Right: snapshots. Burgers loses a plateau; KdV keeps both waves.</figcaption></figure>
+<p>For Navier–Stokes, the same log flattens the gradient ("landscape") part of the flow, which the pressure soaks up. What is left is spin, as in the <a href="https://claude.ai/artifact/SkJga4ih1vuxS5ozxeZefF">earlier Navier–Stokes write-up</a>. Rung 2 cannot touch spin, because vorticity is not a gradient of anything.</p>
+</section>
+
+<section class="band" id="growth">
+<h2>Rung 3: the fused exponent is the growth law of 2D flow</h2>
+<p>Take a rung and keep applying it with the same small step. Rung 2 gives exponential growth, Y′ = λY. Rung 3 applied on the base side, Y → Y<sup>c</sup>, gives Y(t) = Y<sub>0</sub><sup>c<sup>t</sup></sup>, which is exactly the flow of <b>Y′ = λ Y log Y</b> (checked numerically; the discrete version, Y<sub>n</sub> + 1 = (a+1)<sup>(c+1)<sup>n</sup></sup>, is proved in Lean). By the chain rule, each rung's speed is the one below with one more log: F<sub>n+1</sub>(Y) = Y · F<sub>n</sub>(log Y).</p>
+<p>Now the fluid. In 2D the size of the vorticity gradient obeys a log-type inequality (Beale–Kato–Majda style) that gives exactly Y′ ≤ C Y log Y. That is the rung-3 flow, so 2D flow can grow at most double-exponentially (Wolibner, Yudovich), and Kiselev and Šverák showed in 2014 that double-exponential growth really happens. So 2D sits <b>on</b> rung 3: it grows as fast as the fused exponent, no faster, and never breaks.</p>
+<figure><img src="figures/n1_ladder.png" alt="Flows of each rung against self-feeding growth, and Osgood integrals"><figcaption>Every rung's flow lives forever: the time to climb to any height is infinite (Osgood's test, right). Only self-feeding growth, Y′ = Y<sup>1+ε</sup>, climbs in finite time.</figcaption></figure>
+<div class="box"><b>The geometric statement.</b> No rung contains blow-up. The rungs climb toward Osgood's line (Y log Y, then Y log Y loglog Y, and so on) and never cross it. Blow-up only happens when the step size feeds on the state itself: Y′ = Y·Y<sup>ε</sup>. In rung-3 coordinates, w = log log Y, the edge is a straight line, and blow-up is a curve that turns vertical.</div>
+<figure><img src="figures/n7_rung3_lens.png" alt="Growth laws and shell model enstrophy plotted as log log against time"><figcaption>Left: model growth laws in rung-3 coordinates. Right: the shell model below in the same coordinates; runs with cross-handed coupling turn vertical (they top out where the finite model runs out of shells).</figcaption></figure>
+<p>3D is different because of stretching: the velocity gradient feeds on itself. The restricted Euler model, dA/dt = −A² + (tr A²/d) I, shows it in one line. In 2D its right side is identically zero, so the square cancels. In 3D it blows up with log|A| against log(T − t) slope −0.99, the Riccati pole of Y′ = Y². The Beale–Kato–Majda criterion turns the Millennium question into this picture: does 3D vorticity stay at or under the rung-3 line, or does stretching self-feed past Osgood's line?</p>
+<figure><img src="figures/n5_restricted_euler.png" alt="Restricted Euler: 2D constant, 3D blow-up" style="max-width:620px"><figcaption>The square cancels; the cube runs away.</figcaption></figure>
+</section>
+
+<section class="band" id="dial">
+<h2>Right meets left: dialing the cross-handed corners</h2>
+<p>This picks up the open question from the earlier write-up. Every interaction in a fluid involves three waves, and each wave spins right (+) or left (−). The eight sign choices are the corners of a cube, with layers 1, 3, 3, 1 by number of minus signs (Pascal again; proved in Lean). The two same-handed corners, +++ and −−−, are layers 0 and 3. The six cross-handed corners are the middle layers.</p>
+<div class="plate" style="align-items:start">
+<figure><img src="figures/n3_sign_cube.png" alt="Triad-sign cube"><figcaption>Grey corners vanish in this shell model because golden-ratio shells make flat triangles.</figcaption></figure>
+<div>
+<h3>The toy</h3>
+<p>A helical shell model: shells k<sub>n</sub> = 1.618<sup>n</sup>, a right and a left amplitude per shell, interaction weights in Waleffe's helical-triad form (s<sub>p</sub>p − s<sub>q</sub>q)(s<sub>k</sub>k + s<sub>p</sub>p + s<sub>q</sub>q). It's built in the spirit of Benzi, Biferale and coauthors' 1996 models, not identical to them. Every corner conserves energy and helicity (proved in Lean; in the runs they drift by under 10<sup>−7</sup>). The dial ε multiplies the six cross-handed corners. With no viscosity, a blow-up shows up as energy reaching every smaller shell in finite time.</p>
+<p><b>Control:</b> the classic Sabra model with b = −0.5 shows the signature cleanly (all shells reached by t = 0.6188), and the 2D-like b = −1.5 does not.</p>
+</div></div>
+<figure><img src="figures/n4_shell_dial.png" alt="Arrival fronts, blow-up time against the dial, and against the number of shells"><figcaption>Left: when energy first reaches each shell. A front that flattens means every scale is reached by a fixed time. Middle: blow-up time for 6 random starts at each ε. Right: adding 15 more shells costs no extra time, as expected for a true finite-time event.</figcaption></figure>
+<ul>
+<li><b>ε = 0 (same-handed only):</b> no blow-up, and this part is provable. Each handedness keeps Σ k|u|² fixed and positive, so the energy a small shell can hold falls like 1/k. That is the same quantity Biferale and Titi used in 2013 to prove that single-helicity Navier–Stokes is globally regular.</li>
+<li><b>Every ε tested from 0.05 to 4, and cross-handed only (ε = 1 aside):</b> all 39 runs blew up. The six ε = 0.05 runs hadn't by t = 40, so I ran three of them to t = 200 and they blew up at t = 53 to 67. The blow-up time grows as the dial goes down, roughly <b>t* ∝ ε<sup>−1.8</sup></b> for ε ≤ 0.5. Medians: 0.82 at ε = 0.5, 4.6 at 0.25, 23 at 0.1, 54 at 0.05. The trend from ε = 0.1 to 0.5 had predicted about 60 to 120 for ε = 0.05.</li>
+<li><b>So in this toy there is no safe threshold:</b> any cross-handed coupling restores self-feeding, and a smaller dial only delays it.</li>
+<li><b>One caveat at ε = 1:</b> with all eight corners equal, the toy gains an extra conserved quantity, Σ k²|u⁺ + u⁻|² (numerically constant to 10<sup>−6</sup>), and only 2 of 6 runs blew up by t = 40. That's a symmetry accident of equal weights, not real fluid physics, where the corners have different geometric weights.</li>
+</ul>
+<figure><img src="figures/n6_spectra.png" alt="Energy per shell over time for eps 0 and eps 0.5"><figcaption>Energy per shell over time, relative to the Kolmogorov level. Same-handed only: the front creeps and fades. Cross-handed on: it runs to the smallest shell.</figcaption></figure>
+</section>
+
+<section class="band" id="higher">
+<h2>Climbing higher: tetration and pentation don't match stretching</h2>
+<p class="lead">Short answer: no rung matches vortex stretching, however high. Tetration and pentation grow unimaginably fast but never become infinite, while stretching becomes infinite in finite time. What blow-up does match is plain rung-2 growth on a clock that counts the log of time left. That is the known self-similar picture, so this part renames known growth.</p>
+<h3>The two new rungs</h3>
+<p>Defined the same way: a ⊛<sub>4</sub> b = (1+a)↑↑(1+b) − 1 and a ⊛<sub>5</sub> b = (1+a)↑↑↑(1+b) − 1, for whole-number b. Both keep 0 as a right identity and as a left absorber. Each is the rung below repeated on the exponent side (proved in Lean). Neither is associative nor commutative: (1 ⊛<sub>4</sub> 1) ⊛<sub>4</sub> 1 = 255 but 1 ⊛<sub>4</sub> (1 ⊛<sub>4</sub> 1) = 65 535.</p>
+<p><b>The clean laws stop at rung 3.</b> Distributivity over mult-add, the tower law and the sum law all fail at rung 4, each with a small counterexample checked in Lean. Rung 2 was straightened by one log and rung 3 by two. No fixed stack of logs straightens rung 4: taking logs of a tower just leaves a shorter tower. It needs the super-logarithm (log*), which for in-between heights isn't even uniquely defined. So above rung 3 there is no algebra left to work with, only speed.</p>
+<h3>Their growth, and the test</h3>
+<p>Repeating rung 4 with a fixed step stacks one more exponential per step. Its speed is Y · log Y · loglog Y ⋯, and the time to climb to height X is log* X. That never runs out, so it is still on the safe side of Osgood's line, and the same holds for pentation and every rung above. A self-feeding pole is different in kind: Y′ = Y² reaches infinity at a fixed time.</p>
+<p>The two leave different fingerprints in a cascade. Under a pole, each smaller shell takes a fixed fraction of the time the last one took. Under rung 3 or rung 4 growth, the steps shrink only like 1/n or 1/(n log n), so the ratio creeps toward 1.</p>
+<figure><img src="figures/n8_higher_rungs.png" alt="Height reached by each rung over time, step-time signatures, and arrival data from the shell models"><figcaption>Left: rung 4 reaches 10<sup>1,650,000</sup> by time 2 but stays finite; the pole is infinite at t = 0.05. Middle: each law's fingerprint. Right: time left against shell. The Sabra control is a clean straight line: each shell takes 0.62 of the last one's time. The helical toy is noisier. Its fronts fall roughly along straight lines, but fitted shell by shell they can't rule out tetration-speed growth on their own (the geometric fit won 7 of 12 runs).</figcaption></figure>
+<ul>
+<li><b>Stretching in the clock that matters:</b> a pole Z ~ (t* − t)<sup>−γ</sup> is exactly exponential (rung 2) in s = log(1/(t* − t)). The Sabra control gives γ ≈ 2.9 by this count, and the restricted Euler model gives γ = 1. The known 3D blow-up scenario with a boundary (Luo–Hou numerics, and Chen–Hou's computer-assisted proof for Euler) is self-similar in the same way. So blow-up is "rung 2 on a clock that runs out", not a higher rung.</li>
+<li><b>Why tetration still matters:</b> over any range a computer can reach, tetration growth looks just like blow-up. Its climb time grows like log*, which hardly moves. Adding 15 shells, as in the earlier test, would cost a tetration flow almost no time either. Telling the two apart is a job for proof, not simulation.</li>
+<li><b>The Millennium question, said in your ladder:</b> by the Beale–Kato–Majda criterion, if 3D vorticity were proved to stay below <i>any</i> rung, even pentation, smooth flow would follow forever. Blow-up means it outruns every rung. That is a restatement of the known criterion, not new progress, but it puts the whole ladder on the safe side.</li>
+</ul>
+<p class="soft">15 of 15 checks pass (<code>higher_rungs.py</code>); signature fits in <code>stretching_signature.py</code>.</p>
+</section>
+
+<section class="band" id="known">
+<h2>Known and new</h2>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Piece</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Mult-add = shifted multiplication, linearized by log(1+x)</td><td><span class="tag k">known</span></td><td>multiplicative formal group law</td></tr>
+<tr><td>Cole–Hopf (rung 2 on Burgers); the empty corner makes shocks merge</td><td><span class="tag k">known</span></td><td>Hopf 1950, Cole 1951</td></tr>
+<tr><td>Hirota's filled corner for KdV</td><td><span class="tag k">known</span></td><td>Hirota 1971</td></tr>
+<tr><td>Osgood's test; Y log Y as the borderline</td><td><span class="tag k">known</span></td><td>Osgood 1898</td></tr>
+<tr><td>2D double-exponential bound and its sharpness</td><td><span class="tag k">known</span></td><td>Wolibner, Yudovich; Kiselev–Šverák 2014</td></tr>
+<tr><td>Blow-up criterion via vorticity; restricted Euler pole</td><td><span class="tag k">known</span></td><td>Beale–Kato–Majda 1984; Vieillefosse 1982</td></tr>
+<tr><td>Helical triads; same-handed NS is regular</td><td><span class="tag k">known</span></td><td>Waleffe 1992; Biferale–Titi 2013</td></tr>
+<tr><td>Inviscid shell models blow up</td><td><span class="tag k">known</span></td><td>Mailybaev 2012 and later</td></tr>
+<tr><td>Self-similar blow-up is exponential in log(1/(time left))</td><td><span class="tag k">known</span></td><td>self-similar variables (Giga–Kohn; Eggers–Fontelos); Luo–Hou 2014, Chen–Hou 2022</td></tr>
+<tr><td>Any finite bound on vorticity, at any rung, gives smoothness</td><td><span class="tag k">known (restated)</span></td><td>Beale–Kato–Majda 1984</td></tr>
+<tr><td>Tetration and pentation don't match stretching; the clean laws stop at rung 3</td><td><span class="tag n">new to this project</span></td><td>checked here; the algebra facts are elementary</td></tr>
+<tr><td>Reading the fused exponent's fixed-step flow as the 2D growth law, and the whole ladder as the Osgood sequence</td><td><span class="tag n">new framing</span></td><td>the pieces are classical; putting them on your ladder is yours</td></tr>
+<tr><td>Blow-up time against the cross-handed dial, t* ∝ ε<sup>−1.8</sup>, in this toy</td><td><span class="tag n">not seen in what I searched</span></td><td>a quick search found the cascade studied with a cross-handed fraction (Sahoo, Alexakis, Biferale 2017), not blow-up time. Toy result only.</td></tr>
+</tbody></table></div>
+<div class="box red"><b>Lead check:</b> nothing here is as strong as the KdV soliton cube. The most interesting thread is the dial law. A real test would run the same dial on decimated 3D Navier–Stokes (a Sahoo-style simulation) and watch smoothness instead of the cascade.</div>
+</section>
+
+<section class="band" id="lean">
+<h2>What Lean checked, and what it didn't</h2>
+<p><code>lean/FusedRungs.lean</code>, core Lean 4.37 (mathlib's download is blocked here), compiles clean with no <code>sorry</code>, standard axioms only. Proved, on whole numbers through x ↦ 1 + x:</p>
+<ul>
+<li>The lift of each rung; mult-add is commutative and associative with identity 0.</li>
+<li>Fused exponent: right identity, left absorber, carries mult-add, right distributivity, tower law, sum law, non-associativity (63 vs 511), non-commutativity.</li>
+<li>Each rung is the rung below repeated (rungs 2, 3 and 4); the base-side repeat of rung 3 is a double exponential.</li>
+<li>The Burgers corner defect −2ν a<sub>1</sub>a<sub>2</sub>, and that it vanishes only when one wave is flat.</li>
+<li>Rungs 4 and 5: lifts, right identity, left absorber, rung 5 = rung 4 repeated, small values, non-associativity, non-commutativity, and counterexamples showing distributivity, the tower law and the sum law all fail at rung 4.</li>
+<li>Energy and helicity conservation for every corner of the shell model, for any shell ratio; the sign cube's layers 1, 3, 3, 1; same-handed corners are layers 0 and 3.</li>
+</ul>
+<p class="soft">Not checked by Lean: anything with real numbers, logs or exponentials (the log-log straightening, the Y log Y flow, Osgood's test), the KdV corner, the super-logarithm and growth speeds of rungs 4 and 5, every PDE and ODE, and all simulations. Those rest on the Python checks.</p>
+</section>
+
+<section class="band" id="files">
+<h2>Files</h2>
+<p>In the project folder <code>math-theory/ns-rungs/</code>: <code>algebra_checks.py</code>, <code>burgers_kdv_cube.py</code>, <code>restricted_euler.py</code>, <code>helical_shell.py</code>, <code>shell_scan.py</code>, <code>sabra_check.py</code>, <code>higher_rungs.py</code>, <code>stretching_signature.py</code>, the scan results (<code>scan_eps.json</code>, <code>scan_N.json</code>, <code>scan_eps005_long.json</code>), the figure scripts, and <code>lean/FusedRungs.lean</code>.</p>
+</section>
+</body></html>

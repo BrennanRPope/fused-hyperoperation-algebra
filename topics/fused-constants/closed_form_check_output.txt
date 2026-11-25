@@ -1,0 +1,5 @@
+closed form H_k(b,x) = b^(s^(k-3)(x)) on [1,2], worst error: 0
+tower of 10 copies of 1+1/10: 1.111782
+tower of 100 copies of 1+1/100: 1.010102
+tower of 1000 copies of 1+1/1000: 1.001001
+tower of 10000 copies of 1+1/10000: 1.000100

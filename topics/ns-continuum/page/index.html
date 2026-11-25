@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Navier–Stokes across dimensions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful lab notebook, honest about what is proved, checked, or only a toy.
+   IDEA: a survey plate: one map of the (dimension, dissipation) plane, then plates for each test.
+   PICTURE: the fan of scaling rays from one pivot, with the 2D column standing apart.
+   COLOUR and TYPE: white, ink, carmine for danger, prussian for safe, green for proved; Literata.
+   LAYOUT: verdict + fan plate, section links, one plate per test, known/new table, Lean, files. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1217);--ink:light-dark(#10131a,#e6e8ee);--soft:light-dark(#5a6070,#9aa1b2);--rule:light-dark(#d9dce3,#2a2f3a);--red:light-dark(#c1121f,#ff5a65);--blue:light-dark(#1d4e89,#7fb2ff);--green:light-dark(#2f6f3e,#7fd18f);--panel:light-dark(#f4f6f9,#171b22)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Literata,Georgia,serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,60px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.05;font-weight:600;margin:0 0 14px;text-wrap:balance}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:600;margin:0 0 12px;text-wrap:balance}
+h3{font-size:19px;margin:22px 0 6px}
+p,li{max-width:70ch}.lead{font-size:19px}
+.soft{color:var(--soft)}
+.plate{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(18px,3vw,40px);align-items:center}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2.5vw,32px);align-items:start}
+@media(max-width:860px){.plate,.two{grid-template-columns:minmax(0,1fr)}}
+.nav{display:flex;flex-wrap:wrap;gap:6px 18px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px max(5vw,16px);font-size:15px;max-width:1240px;margin:0 auto}
+.nav a{color:var(--blue);text-decoration:none}.nav a:hover{text-decoration:underline}
+@media(min-width:900px){.nav{position:sticky;top:0;background:var(--bg);z-index:2}}
+figure{margin:18px 0}figure img{width:100%;height:auto;border:1px solid var(--rule);border-radius:4px;background:#fff}
+figcaption{font-size:15px;color:var(--soft);margin-top:6px;max-width:90ch}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num{text-align:right;white-space:nowrap}
+.scroll{overflow-x:auto}
+code{font-size:14px;overflow-wrap:anywhere;background:var(--panel);padding:1px 4px;border-radius:3px}
+.box{background:var(--panel);border-left:3px solid var(--blue);padding:14px 18px;margin:16px 0;max-width:80ch}
+.box.red{border-left-color:var(--red)}.box.green{border-left-color:var(--green)}
+.tag{display:inline-block;font-size:13px;padding:1px 8px;border-radius:10px;border:1px solid currentColor;white-space:nowrap}
+.k{color:var(--blue)}.n{color:var(--red)}.t{color:var(--green)}.s{color:var(--soft)}
+html{scroll-padding-top:72px}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;font-weight:600}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<section class="band plate">
+<div>
+<h1>Can the dimension continuum reach 3D?</h1>
+<p class="lead"><b>No road opens.</b> Sliding the dimension from 2 to 3 is the same dial as turning the dissipation down from 5/4 to 1: every scaling threshold is a ray from one pivot point, so moving along dimension crosses exactly the rays that moving along dissipation does.</p>
+<p>2D is smooth for a different reason, one scaling can't see: its vortex-stretching corner is empty. In the shell-model toy that corner doesn't fade in. Any amount of it lets the cascade through; the amount only sets how fast.</p>
+<p>What mult-add does give is an exact ruler. The whole gap between what's proved and 3D Navier–Stokes is <a href="#rung">one full rung of mult-add's flow</a>, and every Osgood-type proof is stuck on the bottom rung.</p>
+<p class="soft">Nothing here is as promising as the soliton lead, and nothing here touches the Millennium problem. Each claim is tagged: <span class="tag t">proved here</span> <span class="tag k">known, restated</span> <span class="tag n">numerical evidence</span> <span class="tag s">speculation</span>.</p>
+</div>
+<figure style="margin:0"><img src="figures/f1_fan.png" alt="The (dimension, dissipation) plane with three scaling rays from the pivot (−2, 0) and the 2D column"><figcaption>The (n, α) plane. Green: Lions' critical ray, smooth on and above. Purple: the 2D column, smooth all the way down to α = 0. Orange: the fractional-dimension path at α = 1.</figcaption></figure>
+</section>
+
+<nav class="nav"><a href="#fan">The fan</a><a href="#cube">Shell = cube</a><a href="#rung">One rung wide</a><a href="#dyadic">Dyadic model</a><a href="#corner">Corner dial</a><a href="#known">Known / new</a><a href="#lean">Lean</a><a href="#files">Files</a></nav>
+
+<section class="band" id="fan">
+<h2>The fan: dimension and dissipation are one dial</h2>
+<p>Navier–Stokes in n dimensions with dissipation (−Δ)<sup>α</sup> is critical on the line α = (n+2)/4: there the energy bound exactly balances the nonlinearity, and on or above it the equations are proved smooth (Lions). <span class="tag k">known, restated</span></p>
+<p>Every threshold that comes from scaling depends only on the ratio γ = 2α/(n+2). So each threshold is a straight ray, and all the rays pass through one point, (n, α) = (−2, 0). <span class="tag t">proved here</span> It's simple arithmetic, but it settles the question you asked:</p>
+<ul>
+<li>2D Navier–Stokes (α = 1) and Lions' 3D threshold (α = 5/4) are on the same ray, the critical one.</li>
+<li>3D Navier–Stokes (α = 1) is on the same ray as 2D flow with α = 4/5.</li>
+<li>So walking the dimension from 2 to 3 at α = 1 sweeps γ from 1/2 to 2/5. Walking α from 5/4 down to 1 in 3D sweeps exactly the same rays. The dimension continuum is a reparametrized dissipation continuum, and it can't get past a ray that dissipation can't.</li>
+</ul>
+<div class="box"><b>The 2D column is not a ray.</b> 2D is smooth for every α ≥ 0, even with no dissipation at all (2D Euler: Wolibner 1933, Yudovich 1963). That is far below its ray. The reason is structural: in planar flow the stretching term (ω·∇)u is identically zero, so vorticity is only carried around, never amplified. This is the same "square cancels" seen in the restricted Euler model on the <a href="https://claude.ai/artifact/35PaQq5t56ZxNhHjKdq8pJ">rungs page</a>. <span class="tag k">known, restated</span> <span class="tag t">the zero is proved here</span></div>
+<p><b>Fractional dimension doesn't carry 2D's protection upward.</b> The standard way to put Navier–Stokes in a non-integer dimension D is fractal Fourier decimation (Frisch, Pomyalov, Procaccia, Ray 2012): keep a random set of modes whose count grows like k<sup>D</sup>. It keeps the parent equation's invariants, and it can only lower the dimension. So D between 2 and 3 means decimated 3D flow, which has energy and helicity but no enstrophy, and no known smoothness below Lions' ray. <span class="tag k">known, restated</span></p>
+</section>
+
+<section class="band" id="cube">
+<h2>The shell is the mult-add cube</h2>
+<div class="two">
+<div>
+<p>Where does the n in α = (n+2)/4 come from? From counting cells. Doubling an n-dimensional box of side 2<sup>j</sup> adds 2<sup>nj</sup>·(2<sup>n</sup> − 1) new cells, and 2<sup>n</sup> − 1 is exactly 1 mult-added to itself n times: 1 ⊕ 1 ⊕ … ⊕ 1. <span class="tag t">proved here (Lean, unchecked)</span></p>
+<p>The new cells come graded by the cube's layers: C(n, k) pieces where k of the n coordinates landed in the upper half. In 2D that's two strips and one corner. <span class="tag t">proved here (Lean, unchecked)</span></p>
+<p>The nonlinearity's strength in a shell goes like one derivative times the square root of the shell's cell count (Bernstein's inequality, as in Katz–Pavlović). That gives a growth factor 2<sup>1+n/2</sup> per shell against the dissipation's 2<sup>2α</sup>, and the critical line is 2α = 1 + n/2. <span class="tag k">known, restated</span></p>
+<p>The pivot n = −2 is where the coupling's growth factor is 1: its mult-add count is 0, the identity. That's the one geometric fact the fan has, and it is bookkeeping, not a new mechanism.</p>
+</div>
+<figure style="margin:0"><img src="figures/f5_annulus.png" alt="Left: an 8 by 8 grid with the 4 by 4 corner pale, two strips mid-blue and one corner dark. Right: stacked bars of binomial layers for n = 1 to 5."><figcaption>Left: the 48 new cells of a doubled 4×4 box are 16 copies of 1 ⊕ 1 = 3: two strips and a corner. Right: the same split in dimensions 1 to 5.</figcaption></figure>
+</div>
+</section>
+
+<section class="band" id="rung">
+<h2>The ruler: the gap is one full rung wide</h2>
+<p>Write the dissipation as s<sup>5/2</sup>/D(s) at frequency s, where D is the shortfall from Lions' power. Three facts are known: <span class="tag k">known, restated</span></p>
+<ul>
+<li>Tao (2009) proved 3D smoothness when D is as large as (log s)<sup>1/4</sup>, more exactly whenever ∫ ds / (s·D<sup>4</sup>) diverges.</li>
+<li>He conjectured the weaker test ∫ ds/(s·D<sup>2</sup>) = ∞, so up to (log s)<sup>1/2</sup>. Barbato, Morandin and Romito proved that for the dyadic model in 2014; for real Navier–Stokes it's open.</li>
+<li>True 3D Navier–Stokes needs D = s<sup>1/2</sup>.</li>
+</ul>
+<p>Both tests are Osgood tests, the same test that sorted the rung flows on the earlier page: a growth law lives forever exactly when its Osgood integral diverges. Here it sorts dissipations instead of growth laws.</p>
+<p>Now measure each D by how many rungs of mult-add's flow E<sup>t</sup> (E(x) = e<sup>x</sup> − 1) it sits above log s. Powers of log s are height 0. s<sup>1/2</sup> − 1 = E(½ log s) is height 1. That height is a known idea (the "exponentiality" of a function in Hardy-field and transseries theory), so the ruler is standard. Putting the Navier–Stokes gap on it gives a clean picture:</p>
+<div class="box green"><b>Everything proved or conjectured sits at height 0. 3D Navier–Stokes sits at height 1. No Osgood-type test can leave height 0</b>: any D that beats every power of log s makes ∫ d(log s)/D<sup>p</sup> converge, for any fixed p. <span class="tag t">proved here (on paper)</span></div>
+<p>The fractional rungs fill the gap with one ordered family, D<sub>t</sub>(s) = E<sup>t</sup>(½ log s). At t = 0 it's ½ log s, and at t = 1 it's s<sup>1/2</sup> − 1, which is exactly 3D Navier–Stokes. Each D<sub>t</sub> with 0 &lt; t &lt; 1 grows faster than every power of log s and slower than every power of s, so all of them sit strictly inside the gap. The classical in-between family exp((log s)<sup>β</sup>) all sit at height 1, as high as Navier–Stokes itself by this ruler. <span class="tag k">known, restated</span> (half-exponential bounds) <span class="tag n">checked numerically to s = 10<sup>300</sup></span></p>
+<div class="two">
+<figure><img src="figures/f2_rung_height.png" alt="Deficiency against frequency: Tao's edges flat near the bottom, rungs 0.25, 0.5, 0.75 rising, 3D NS steep"><figcaption>The deficiency D against frequency. Green: what's proved and conjectured. Blue: the fractional rungs. Red: 3D Navier–Stokes.</figcaption></figure>
+<figure><img src="figures/f3_osgood.png" alt="Osgood integrals: Tao's edge keeps growing, every positive rung levels off"><figcaption>Tao's test ∫ d(log s)/D⁴. Only the bottom rung keeps growing; every positive rung levels off almost at once.</figcaption></figure>
+</div>
+<p><b>What this does and doesn't buy.</b> It turns "close the gap" into a ladder of intermediate problems: is Navier–Stokes with deficiency E<sup>1/2</sup>(½ log s) smooth? A proof at any positive height would be a supercritical result beyond every known log improvement. Nothing here gives one, and I see no mult-add mechanism that would. <span class="tag s">speculation</span> One caveat from the checks: the asymptotic order between exp((log s)<sup>1/2</sup>) and the half rung only shows past s = 10<sup>300</sup>, so the heights are an asymptotic statement, not a visible one. 14 of 14 checks pass (<code>rung_height.py</code>).</p>
+</section>
+
+<section class="band" id="dyadic">
+<h2>Dyadic model: sliding the dimension, it breaks exactly at n = 4</h2>
+<div class="two">
+<div>
+<p>The Katz–Pavlović dyadic model keeps one number per shell and the Bernstein scaling above, so it takes any real dimension n. I ran it at α = 1 for n from 2 to 6 and watched how deep the energy cascade got as I added shells. If the deepest shell stops growing, the cascade is held. If it keeps up with the number of shells, energy is reaching infinitely small scales in finite time. <span class="tag n">numerical evidence</span></p>
+<p>Known so far: blow-up below γ = 1/3 (Cheskidov 2008), smooth from γ = 2/5 up (Barbato–Morandin–Romito 2011). 3D sits exactly on the 2/5 line, so the dyadic model is proved smooth in 3D and can't speak for the real equations. The band 1/3 ≤ γ &lt; 2/5 was open as of the 2022 survey. <span class="tag k">known, restated</span></p>
+<p>The numerics put the real break at γ = 1/3, which is n = 4 at α = 1: the constant-energy-flux (Kolmogorov) line. Everything in the open band looked smooth. Nothing special happens at n = 2 or n = 3; the dimension continuum is featureless here too.</p>
+</div>
+<figure style="margin:0"><img src="figures/f4_dyadic.png" alt="Deepest shell against number of shells: n=3, 3.5, 3.75 level off; n=4 creeps; n=4.25, 4.5 follow the diagonal"><figcaption>Deepest shell filled against the number of shells, viscosity 0.01, α = 1.</figcaption></figure>
+</div>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Dimension n</th><th>γ</th><th>Deepest shell, N = 24 → 56</th><th>Reading</th></tr></thead>
+<tbody>
+<tr><td>3</td><td class="num">0.400</td><td>16, 16, 16, 16, 16</td><td>held</td></tr>
+<tr><td>3.5</td><td class="num">0.364</td><td>17, 25, 25, 25, 25</td><td>held (open band)</td></tr>
+<tr><td>3.75</td><td class="num">0.348</td><td>18, 25, 34, 38, 38</td><td>held, deeper (open band)</td></tr>
+<tr><td>4</td><td class="num">0.333</td><td>18, 25, 34, 41, 49</td><td>marginal: keeps going, but its arrival time drifts later (0.345 → 0.388)</td></tr>
+<tr><td>4.25</td><td class="num">0.320</td><td>17, 25, 33, 42, 49</td><td>reaches the top every time, arrival converging (0.312 → 0.319)</td></tr>
+<tr><td>4.5</td><td class="num">0.308</td><td>17, 26, 33, 48, 56</td><td>reaches the top, arrival converging at 0.285</td></tr>
+</tbody></table></div>
+<p class="soft">Where it's held, the depth grows as the dissipation edge moves closer to 1/3, as the Kolmogorov estimate says, though the estimate runs about 25 to 40% deep. A truncated model can't prove smoothness; near γ = 1/3 the held depth would need hundreds of shells.</p>
+</section>
+
+<section class="band" id="corner">
+<h2>The corner dial: does 2D's protection fade or switch?</h2>
+<div class="two">
+<div>
+<p>2D is smooth because its stretching term is zero, not because of scaling. A helical shell model (Benzi and others, 1996) lets you turn that term up from zero: the cross-handed triad corners carry a weight ε, and ε = 0 is the 2D-like corner where those triads are switched off. I swept ε and the dissipation power α to see whether the protection fades out gradually or switches off at once. <span class="tag n">numerical evidence</span></p>
+<p>It switches. At ε = 0 the cascade never reached the top shell anywhere I tried. For every ε above zero, the cascade got through at small α, and the reach/held edge sat between α = 0.5 and 0.75 for ε = 4 and for cross-handed-only. Smaller ε only slowed it: at ε = 0.25 the arrival time grew from under 2 to between 3 and 16, but the pattern across α stayed the same.</p>
+<p>The ε = 0.05 cell shows the trap. With viscosity 0.001 it held through t = 400. With viscosity 0.00001 it reached at t ≈ 96, and with none at t ≈ 93. So weak coupling doesn't protect. It slows the cascade until viscosity at that data size can drain the energy first. That is a size-of-data effect, not a change in the critical exponent.</p>
+</div>
+<figure style="margin:0"><img src="figures/f6_corner.png" alt="Grid of outcomes: rows are corner weight epsilon from cross-handed-only down to zero, columns are alpha. Red reach cells for small alpha at every positive epsilon, blue held cells at epsilon zero and at alpha 0.75 and 1"><figcaption>Reach (red), held (blue) or mixed by shell count (orange), viscosity 0.001, 24 to 40 shells. Grey dots are cells I didn't run.</figcaption></figure>
+</div>
+<p class="soft">Gaps: ε = 0.25 above α = 0.3, ε = 1 above α = 0.2, and ε = 0.1 weren't finished. The mixed cells (ε = 1 at α = 0.2, cross-handed-only at α = 0.5) reached at 24 shells but not within t = 40 at 32 or 40, which reads as timing, not protection. For the dimension question the upshot is the same as the fan: there's no partial 2D protection to slide along toward 3D. You either have the empty corner or you don't.</p>
+</section>
+
+<section class="band" id="known">
+<h2>Known versus new</h2>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Claim</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Critical line α = (n+2)/4; smooth on and above</td><td class="k">known</td><td>Lions 1969</td></tr>
+<tr><td>2D smooth for every α ≥ 0 (stretching vanishes)</td><td class="k">known</td><td>Wolibner, Yudovich</td></tr>
+<tr><td>All scaling thresholds are rays from (−2, 0); 3D NS shares a ray with 2D at α = 4/5</td><td class="t">proved here (arithmetic)</td><td>new framing of known scaling</td></tr>
+<tr><td>Dyadic shell count = n-fold mult-add of 1, graded by the cube's layers</td><td class="t">proved here (Lean, unchecked)</td><td>restatement of the binomial theorem</td></tr>
+<tr><td>Tao's log room, (log s)<sup>1/4</sup>; conjectured (log s)<sup>1/2</sup>, proved for dyadic</td><td class="k">known</td><td>Tao 2009; Barbato–Morandin–Romito 2014</td></tr>
+<tr><td>Proved room is height 0, NS is height 1; Osgood tests can't leave height 0</td><td class="t">proved here (on paper)</td><td>new framing; heights are known (exponentiality)</td></tr>
+<tr><td>Fractional rungs E<sup>t</sup>(½ log s) form an ordered family strictly inside the gap</td><td class="k">known math</td><td>half-exponential bounds; checked to 10<sup>300</sup></td></tr>
+<tr><td>Dyadic model at α = 1 breaks at n = 4 (γ = 1/3); the open band looks smooth</td><td class="n">numerical evidence</td><td>possibly new; the band was open in the 2022 survey</td></tr>
+<tr><td id="corner-row">Corner dial: any cross-handed coupling lets the cascade through at small α; the coupling sets how fast, and protection appears only at exactly zero</td><td class="n">numerical evidence</td><td>toy model; new as far as I know</td></tr>
+<tr><td>A ladder of intermediate problems at heights between 0 and 1</td><td class="s">speculation</td><td>no method reaches any of them</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="band" id="lean">
+<h2>Lean</h2>
+<p><code>lean/NSContinuum.lean</code>, core Lean 4.37.0-rc1 in the shared library's style, no <code>sorry</code>. <b>Not compiled:</b> no Lean toolchain was available here, and installing one needs your yes. It states:</p>
+<ul>
+<li><code>mpow_one_nat</code>, <code>annulus_cells</code>: doubling a box adds 2<sup>nj</sup>·1<sup>⊕n</sup> cells.</li>
+<li><code>annulus_graded</code>: 2<sup>n</sup> − 1 is the sum of the cube's layers 1 to n (uses the library's <code>binomial</code>).</li>
+<li><code>onRay</code> is reflexive, symmetric and transitive; <code>lions_on_2d_ray</code>, <code>ns3d_on_ray_of_2d_four_fifths</code>, <code>ns3d_supercritical</code>, <code>fan_pivot</code>, <code>ns3d_on_bmr_line</code>.</li>
+<li><code>k41_edge_at_four</code>: the constant-flux margin vanishes at n = 4.</li>
+<li><code>energy_telescopes</code>, <code>gain_is_model</code>: the dyadic nonlinearity only passes energy upward.</li>
+<li><code>planar_stretching_zero</code>: planar flow's stretching term is zero.</li>
+</ul>
+<p class="soft">Not in Lean: anything needing real analysis (Osgood integrals, heights, solutions of the equations).</p>
+</section>
+
+<section class="band" id="files">
+<h2>Files</h2>
+<p>All in <code>math-theory/ns-continuum/</code>: <code>rung_height.py</code> (14/14 checks), <code>dyadic.py</code>, <code>viscous_scan.py</code>, <code>viscous_refine.py</code> (dimension scan), <code>corner_ifrk4.py</code> and <code>cf5.py</code> (corner dial), <code>figures.py</code>, <code>lean/NSContinuum.lean</code>.</p>
+<p class="soft">References: Lions 1969; Katz–Pavlović 2002; Cheskidov, Trans. AMS 2008; Tao, Analysis &amp; PDE 2009; Barbato–Morandin–Romito 2011 and 2014; Tao, J. AMS 2016 (averaged NS blow-up); Frisch–Pomyalov–Procaccia–Ray, PRL 2012; Biferale–Kerr, PRE 1995; Benzi–Biferale–Kerr–Trovatore, PRE 1996 (helical shell models); dyadic survey arXiv 2209.10203.</p>
+</section>
+</body></html>

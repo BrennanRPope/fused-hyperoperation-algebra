@@ -1,0 +1,22 @@
+PASS t=0 slice is L/2
+PASS t=1 slice is s^(1/2)-1 (3D NS deficiency)
+PASS family is ordered: higher rung = bigger deficiency at every frequency
+PASS flow law E^.25(E^.25(x)) = E^.5(x)
+PASS t=0.25: log D / log L rises (beats every power of L on the range)  1.14 -> 1.46
+PASS t=0.25: log D / L falls (below every power of s on the range)  0.089 -> 0.014
+PASS t=0.5: log D / log L rises (beats every power of L on the range)  1.71 -> 2.92
+PASS t=0.5: log D / L falls (below every power of s on the range)  0.133 -> 0.028
+PASS t=0.75: log D / log L rises (beats every power of L on the range)  2.94 -> 8.45
+PASS t=0.75: log D / L falls (below every power of s on the range)  0.229 -> 0.080
+   Tao edge L^(1/4)   int dL/D^4 to L=100: 3.9150  to L=690: 5.8446   int dL/D^2: 17.1911 -> 49.7080
+   conj edge L^(1/2)  int dL/D^4 to L=100: 0.4911  to L=690: 0.4996   int dL/D^2: 3.9150 -> 5.8446
+   rung t=0.0         int dL/D^4 to L=100: 0.6754  to L=690: 0.6754   int dL/D^2: 1.9644 -> 1.9986
+   rung t=0.25        int dL/D^4 to L=100: 0.3657  to L=690: 0.3657   int dL/D^2: 1.1664 -> 1.1669
+   rung t=0.5         int dL/D^4 to L=100: 0.1887  to L=690: 0.1887   int dL/D^2: 0.7072 -> 0.7072
+   rung t=0.75        int dL/D^4 to L=100: 0.0914  to L=690: 0.0914   int dL/D^2: 0.4257 -> 0.4257
+   rung t=1.0         int dL/D^4 to L=100: 0.0409  to L=690: 0.0409   int dL/D^2: 0.2489 -> 0.2489
+PASS Tao edge: integral keeps growing like ln L
+PASS rung t=0.25: Osgood integral has stopped growing (tail from L=300 is tiny)  tail=1.21e-12
+PASS rung t=0.5: Osgood integral has stopped growing (tail from L=300 is tiny)  tail=0.00e+00
+PASS exp((L/2)^0.5) gains on the half rung (ratio of logs rises; it overtakes only past s=1e300)  0.749 -> 0.972
+14 / 14 pass

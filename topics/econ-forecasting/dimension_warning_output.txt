@@ -1,0 +1,26 @@
+
+== DJ_const: 1972-01-05 to 2015-10-01, 2157 weeks, stocks per window 15-30 ==
+ effective dimension: median 6.1 axes (26% of n); lowest 2.2 on 1988-09-30; highest 17.0
+ corr(log d_eff/n, log trailing 22-day vol) = -0.32
+  next-month log vol, HAR (vol only)           out-of-sample MSE 0.1007  R2 0.459
+  next-month log vol, HAR + dimension          out-of-sample MSE 0.1010  R2 0.457
+  next-month log vol, HAR + absorption shift   out-of-sample MSE 0.1008  R2 0.458
+  next-month log vol, dimension only           out-of-sample MSE 0.1789  R2 0.038
+  adding dimension to HAR changes MSE by +0.4%
+  full-sample coefficient on log(d_eff/n): -0.017 (block-bootstrap se 0.026)
+  10% drawdown within 3 months, vol only               Brier 0.0930  AUC 0.633  (base rate 10.9%)
+  10% drawdown within 3 months, vol + dimension        Brier 0.0942  AUC 0.604  (base rate 10.9%)
+  10% drawdown within 3 months, vol + absorption shift Brier 0.0932  AUC 0.623  (base rate 10.9%)
+
+== SP500_const: 1987-10-02 to 2015-09-29, 1412 weeks, stocks per window 185-497 ==
+ effective dimension: median 14.7 axes (4% of n); lowest 2.9 on 2012-06-25; highest 67.5
+ corr(log d_eff/n, log trailing 22-day vol) = -0.49
+  next-month log vol, HAR (vol only)           out-of-sample MSE 0.1125  R2 0.535
+  next-month log vol, HAR + dimension          out-of-sample MSE 0.1109  R2 0.542
+  next-month log vol, HAR + absorption shift   out-of-sample MSE 0.1130  R2 0.533
+  next-month log vol, dimension only           out-of-sample MSE 0.2004  R2 0.172
+  adding dimension to HAR changes MSE by -1.4%
+  full-sample coefficient on log(d_eff/n): -0.064 (block-bootstrap se 0.018)
+  10% drawdown within 3 months, vol only               Brier 0.1107  AUC 0.657  (base rate 13.5%)
+  10% drawdown within 3 months, vol + dimension        Brier 0.1162  AUC 0.652  (base rate 13.5%)
+  10% drawdown within 3 months, vol + absorption shift Brier 0.1110  AUC 0.640  (base rate 13.5%)

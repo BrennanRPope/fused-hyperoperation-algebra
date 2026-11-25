@@ -1,0 +1,16 @@
+BURGERS (nu=0.05). Shock 2|1 moves at 1.5, shock 1|0 at 0.5; they meet at t=8.
+  corner weight A=0.0: max |phi_t - nu phi_xx|/phi = 0.000e+00
+  corner weight A=1.0: max |phi_t - nu phi_xx|/phi = 2.000e+01
+  t= 0: shocks at [-4.0, 4.0]  (2 shock(s))
+  t= 4: shocks at [2.0, 6.0]  (2 shock(s))
+  t= 8: shocks at [8.0]  (1 shock(s))
+  t=16: shocks at [16.0]  (1 shock(s))
+  t=30: shocks at [30.0]  (1 shock(s))
+
+KdV, k1=1.0, k2=0.6: Hirota corner weight A12=((k1-k2)/(k1+k2))^2 = 0.0625
+  relative PDE residual mid-collision (t=8): corner A12: 5.8e-04   corner 1 (plain mult-add): 3.1e-01   corner 0: 2.4e-02
+  t= 0: peaks (x, height) [(-10.0, 0.5), (4.62, 0.18)]
+  t= 8: peaks (x, height) [(-2.0, 0.491), (7.5, 0.181)]
+  t=25: peaks (x, height) [(9.02, 0.181), (17.78, 0.486)]
+  t=50: peaks (x, height) [(18.0, 0.18), (42.78, 0.5)]
+  both heights k^2/2 = 0.5, 0.18 survive. Phase shifts: fast +2.773, slow -4.621

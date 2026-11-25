@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data center energy, fused</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: audit report, plain and exact; every lead gets a verdict
+   IDEA: an energy audit sheet: the meter reading first, then line items
+   PICTURE: the PUE square, mult-add drawn as area, with the corner lit
+   COLOUR and TYPE: white, ink #101418, one yellow slab behind the key figure, slate; Manrope
+   LAYOUT: figure first, finding under it, leads as numbered line items, proofs and sources last */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#101418);--ink:light-dark(#101418,#e9edf1);--slate:light-dark(#55606b,#a3adb7);--rule:light-dark(#d9dee3,#2a323a);--panel:light-dark(#f4f6f8,#171d23);--yel:#ffd84a;--org:#e08a2e;--grn:#4a9a5b;--red:#c0504d;--blu:light-dark(#dfe8f5,#24344a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,60px) max(5vw,16px)}.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:clamp(30px,4.2vw,46px);line-height:1.08;font-weight:800;margin:.2em 0 .4em;text-wrap:balance;max-width:24ch}
+h2{font-size:clamp(22px,2.4vw,28px);line-height:1.15;margin:0 0 .5em;text-wrap:balance}
+h3{font-size:18px;margin:1.2em 0 .3em}
+p{max-width:70ch;margin:.5em 0}.muted{color:var(--slate);font-size:14px}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.sq{width:100%;height:auto;display:block}
+.sq text{font-family:Manrope,sans-serif;fill:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.kpi{border-top:3px solid var(--ink);padding-top:8px}.kpi b{display:block;font-size:clamp(24px,3vw,34px);line-height:1.1;white-space:nowrap}
+.kpi.key b{background:var(--yel);color:#101418;display:inline-block;padding:0 6px}
+.kpi span{font-size:13.5px;color:var(--slate)}
+.verdict{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;border:1.5px solid currentColor;margin-left:6px;white-space:nowrap}
+.v-known{color:var(--slate)}.v-book{color:var(--org)}.v-test{color:var(--grn)}
+.lead{border-top:1px solid var(--rule);padding:28px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,3vw,44px)}
+.lead img{width:100%;height:auto;border:1px solid var(--rule);border-radius:6px;background:#fff}
+.num{font-weight:800;font-size:15px;color:var(--slate)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+td.r,th.r{text-align:right;white-space:nowrap}
+.panel{background:var(--panel);border-radius:8px;padding:18px 22px}
+.toc{display:flex;gap:18px;font-size:14px;white-space:nowrap;padding-bottom:4px}.toc a{color:var(--ink)}
+code{font-size:14px;overflow-wrap:anywhere}pre,.scroll{overflow-x:auto}.scroll a{flex:none}html{scroll-padding-top:20px}
+ul{padding-left:1.2em}li{margin:.25em 0;max-width:72ch}
+a{color:inherit;text-underline-offset:3px}
+@media(max-width:820px){.hero,.lead{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.kpis{grid-template-columns:minmax(0,1fr)}table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--slate)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<section class="band"><div class="wrap hero">
+<svg class="sq" viewBox="0 0 520 470" role="img" aria-label="PUE 1.56 drawn as a mult-add square: IT power, a strip for power chain losses, a strip for cooling, and a red corner where cooling removes the power chain's own heat">
+  <rect x="20" y="150" width="380" height="300" fill="var(--blu)" stroke="#3b6fb6" stroke-width="2"/>
+  <text x="210" y="290" text-anchor="middle" font-size="22" font-weight="700">IT power</text>
+  <text x="210" y="318" text-anchor="middle" font-size="16">1</text>
+  <rect x="400" y="150" width="26" height="300" fill="var(--org)"/>
+  <text x="413" y="300" text-anchor="middle" font-size="12" transform="rotate(-90 413 300)">power chain p = 0.068</text>
+  <rect x="20" y="12" width="380" height="138" fill="#9fd0aa"/>
+  <text x="210" y="80" text-anchor="middle" font-size="16" style="fill:#101418">cooling c = 0.460</text>
+  <rect x="400" y="12" width="26" height="138" fill="var(--red)"/>
+  <line x1="426" y1="80" x2="448" y2="80" stroke="var(--ink)" stroke-width="1.5"/>
+  <text x="452" y="62" font-size="13" font-weight="700">corner</text>
+  <text x="452" y="80" font-size="13">p·c = 0.031</text>
+  <text x="452" y="98" font-size="12" style="fill:var(--slate)">cooling the</text>
+  <text x="452" y="113" font-size="12" style="fill:var(--slate)">chain's heat</text>
+</svg>
+<div>
+<p class="muted">Fused Hyperoperation Algebra · data center energy · Nov 25, 2026</p>
+<h1>No new physics in the data center, but three real levers get an exact geometry</h1>
+<p>A typical facility (PUE 1.56) is one mult-add square: (1 + p)(1 + c) = 1 + p + c + p·c. Every stage of power and cooling composes the same way, which turns three known savings into one picture each and lets them stack exactly.</p>
+<div class="kpis">
+<div class="kpi"><b>1.825 W</b><span>drawn at the meter per watt reaching the chips, average facility</span></div>
+<div class="kpi"><b>5.6%</b><span>of all overhead is cooling the power chain's own heat (the corner)</span></div>
+<div class="kpi key"><b>≈ 8%</b><span>from the three levers stacked; ~14.5 TWh a year if applied across the US</span></div>
+</div>
+</div></div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+<nav class="toc scroll"><a href="#bottom">Bottom line</a><a href="#lead1">1 Power chain</a><a href="#lead2">2 The corner</a><a href="#lead3">3 Unit rule</a><a href="#lead4">4 Fans</a><a href="#lead5">5 Setpoint</a><a href="#nofit">What didn't fit</a><a href="#proofs">Proofs</a><a href="#sources">Sources</a></nav>
+
+<div class="panel" id="bottom" style="margin-top:16px">
+<h2>Bottom line</h2>
+<p>Every lead below matches engineering that already exists. The algebra does not find a hidden source of savings. What it does is give each lever one clean shape you can see, an exact rule you can prove, and a way to stack savings without double counting. The most useful single result is the <b>unit rule</b> (lead 3): for any group of paralleled units, add one more only when the load passes the sweet spot times √(k(k+1)), the geometric mean of k and k+1. It covers power supplies, UPS modules, transformers and fans with one proof.</p>
+<table class="stack"><thead><tr><th>Lead</th><th>Shape</th><th class="r">Size</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>1 Power chain</td><td>Staircase of rectangles</td><td class="r">20% lost before the chips</td><td><span class="verdict v-book">Clean bookkeeping</span></td></tr>
+<tr><td>2 The corner</td><td>Corner of the PUE square</td><td class="r">5.6 to 9.6% of overhead</td><td><span class="verdict v-test">Testable on meters</span></td></tr>
+<tr><td>3 Unit rule</td><td>Square side = √(rectangle)</td><td class="r">4 to 6.5% of server input</td><td><span class="verdict v-known">Known, now unified</span></td></tr>
+<tr><td>4 Fans</td><td>Mult-add cube</td><td class="r">32 to 36% of fan energy</td><td><span class="verdict v-known">Known</span></td></tr>
+<tr><td>5 Setpoint</td><td>Cube power, degree by degree</td><td class="r">trims 1.5 to 8 points of hype</td><td><span class="verdict v-book">Clean bookkeeping</span></td></tr>
+</tbody></table>
+</div>
+
+<article class="lead" id="lead1"><div>
+<span class="num">LEAD 1</span><h2>The power chain is a mult-add fold</h2>
+<p>Write each stage as overhead odds r = 1/η − 1. Then the whole chain's odds are the mult-add of the stages, exactly, in any order. Geometrically each stage stretches a rectangle by (1 + r), so the chain is a staircase whose total area is the product.</p>
+<table><thead><tr><th>Stage (published mid-range)</th><th class="r">η</th><th class="r">odds</th></tr></thead><tbody>
+<tr><td>Distribution and transformers</td><td class="r">97.5%</td><td class="r">0.026</td></tr>
+<tr><td>UPS, double conversion</td><td class="r">96%</td><td class="r">0.042</td></tr>
+<tr><td>Server power supply</td><td class="r">95%</td><td class="r">0.053</td></tr>
+<tr><td>Board voltage regulators</td><td class="r">90%</td><td class="r">0.111</td></tr>
+<tr><td><b>Chain</b></td><td class="r"><b>80.0%</b></td><td class="r"><b>0.250</b></td></tr>
+</tbody></table>
+<p>The naive sum of losses says 21.5%; the true loss is 20.0%. Two things follow. First, PUE never sees the last two stages, because they sit inside the IT meter: "IT power" is already 1.17 times chip power. Splitting the fold at the meter gives TUE = ITUE × PUE, which Patterson and colleagues proposed in 2013. Second, improving any stage's efficiency by the same ratio saves the same share of the whole facility, wherever it sits. So rank upgrades by the log of the efficiency gain, not by watts lost at that stage.</p>
+<table class="stack"><thead><tr><th>Upgrade</th><th class="r">Facility saved</th><th class="r">US scale</th></tr></thead><tbody>
+<tr><td>UPS eco or high-efficiency mode (96 → 98.5%)</td><td class="r">2.5%</td><td class="r">4.5 TWh/yr</td></tr>
+<tr><td>Power supply Platinum → Titanium (94 → 96%)</td><td class="r">2.1%</td><td class="r">3.7 TWh/yr</td></tr>
+<tr><td>Voltage regulators 88 → 92%</td><td class="r">4.3%</td><td class="r">7.7 TWh/yr</td></tr>
+</tbody></table>
+<p><b>Verdict:</b> exact, but known physics. The 2.5% for eco mode matches the 2 to 3% the industry quotes, which is a good check that the model is honest.</p>
+</div><div><img src="figures/d2_neper_shares.png" alt="Bar of log-loss shares: distribution 4%, UPS 7%, server PSU 9%, board VRM 18%, cooling and other 63%"><p class="muted">Log units (nepers) add in any order, so this split doesn't depend on which stage you count first. The waterfall split in watts does.</p></div></article>
+
+<article class="lead" id="lead2"><div>
+<span class="num">LEAD 2</span><h2>The corner: cooling the power chain's own heat</h2>
+<p>The usual breakdown is additive: PUE = 1 + power losses + cooling. But a chiller can't tell IT heat from a hot UPS. Cooling scales with all the heat, so the true shape is a product: PUE = (1 + p)(1 + c). The corner p·c is cooling energy spent removing the power chain's waste heat. The additive breakdown books it all as cooling.</p>
+<table class="stack"><thead><tr><th>Facility</th><th class="r">p</th><th class="r">c</th><th class="r">Corner share</th></tr></thead><tbody>
+<tr><td>Uptime 2024 average, PUE 1.56</td><td class="r">0.068</td><td class="r">0.460</td><td class="r">5.6%</td></tr>
+<tr><td>Hamilton 2008 breakdown, PUE 1.7</td><td class="r">0.136</td><td class="r">0.493</td><td class="r">9.6%</td></tr>
+</tbody></table>
+<p>The practical consequence: every watt of electrical loss you remove saves about <b>1.46 watts</b> at the meter, so a power-chain upgrade is worth about half again what an additive spreadsheet credits it. Across the US average that corner is about 3.5 TWh a year. Emerson's "Energy Logic" cascade (1 W at the processor saves 2.84 W at PUE 1.9) is the same effect counted the old way.</p>
+<p><b>Verdict:</b> known as the cascade, but the fused breakdown makes it exact and testable. <b>Test:</b> regress a facility's metered cooling power on IT power and on electrical loss as two separate inputs. The fused model predicts the two coefficients come out equal, because heat is heat. If electrical loss gets a smaller coefficient, that's a sign of hot spots being cooled locally or not at all.</p>
+</div><div><img src="figures/d1_pue_square.png" alt="The PUE square with the corner highlighted"></div></article>
+
+<article class="lead" id="lead3"><div>
+<span class="num">LEAD 3</span><h2>The unit rule: add a unit at the geometric mean</h2>
+<p>Each power stage loses a fixed part (rung 1, shifted add), a proportional part (rung 2, mult-add) and a square part from resistance (the I²R area). k units sharing load X lose k·a + c·X²/k. Each unit is happiest at the sweet spot x* = √(a/c), where its fixed loss equals its square loss. The proof gives the switch point exactly: go from k to k+1 units when X passes x*·√(k(k+1)). Geometrically, that's Euclid's square equal in area to a k by k+1 rectangle.</p>
+<p>Fitting the 80 PLUS Titanium minimums puts x* at 35% of rating. So two redundant supplies that share a server drawing 20% of one supply's rating lose about <b>6.5% more input</b> than one carrying it alone with the other on cold standby. A vendor worked example (two 1000 W Platinum units at 500 W) shows 556 W versus 532 W: <b>4.3% less</b>. By lead 1, that 4.3% comes off the whole facility's share for those servers.</p>
+<p><b>Verdict:</b> known practice under many names (transformer economic loading, phase shedding in voltage regulators, cold redundancy in servers). The fused view proves one rule for all of them. It's the most actionable lever here, because most servers run lightly loaded on paired supplies. One caution from the vendor: cold standby is risky on grid power without a UPS.</p>
+</div><div><img src="figures/d3_unit_rule.png" alt="Loss curves for one, two and three units sharing load, crossing at 0.49 and 0.85 of one unit's rating"></div></article>
+
+<article class="lead" id="lead4"><div>
+<span class="num">LEAD 4</span><h2>Fans live on the mult-add cube</h2>
+<p>Fan power goes with the cube of speed, so a speed change d gives (1 + d)³ − 1 = 3d + 3d² + d³: the edges, faces and corner of the mult-add cube, layers 1, 3, 3, 1. In rung terms that is the fused exponent d ⊛ 2. A 20% slowdown cuts power 49%.</p>
+<p>The cube also says to <b>run the spare</b>. If N units can carry the air, running N + 1 at N/(N+1) speed uses N²/(N+1)² of the power. With N = 4 that saves 36% of fan energy, or 32% in a real turbulent duct where pressure drop grows as flow to the 1.75 power. Slowing fans to cut excess airflow beats switching units off: 30% less air saves 66% of fan energy by slowing, 30% by switching off. Upsite's 2013 audits found cooling running at 3.9 times the IT load, against a target of 1.2, so the room is there.</p>
+<p><b>Verdict:</b> known (affinity laws), and widely practiced by the best operators. Real savings are smaller where motors and drives have fixed losses or where static pressure dominates.</p>
+</div><div><img src="figures/d4_fans.png" alt="Left: fan power change versus speed change with cube layers. Right: energy saved by running a spare unit, by number of units"></div></article>
+
+<article class="lead" id="lead5"><div>
+<span class="num">LEAD 5</span><h2>Setpoint savings compound degree by degree</h2>
+<p>ENERGY STAR quotes 4 to 5% saved per °F of higher server inlet temperature. Each degree multiplies what's left, so n degrees give 1 − (1 − s)ⁿ, a rung-3 power, not s·n. At 5%, 5°F saves 22.6%, not 25%; 9°F saves 37%, not 45%.</p>
+<p><b>Verdict:</b> bookkeeping. It doesn't save energy by itself, but it stops a business case from promising 8 points more than it can deliver. Server fans speed up when inlets get too hot, which caps the gain.</p>
+</div><div class="panel"><h3 style="margin-top:0">Stacking the levers</h3><p>Savings stack on what's kept, so they compose by mult-add: 1 − (1 − 0.025)(1 − 0.03)(1 − 0.03) = <b>8.26%</b>, not the naive 8.5%. Those three are UPS eco mode, cold-redundant supplies and fan sharing. Applied to all 176 TWh of US data centers, that's about 14.5 TWh a year. Treat it as a ceiling: many sites already do some of this, and the best fleets run at PUE 1.09.</p></div></article>
+
+<div class="panel" id="nofit"><h2>What didn't fit</h2>
+<ul>
+<li>The <a href="https://claude.ai/artifact/35PaQq5t56ZxNhHjKdq8pJ">Navier–Stokes rung work</a> (blow-up rates, solitons) gives no cooling lever. The only fluid fact that matters here is the pressure-drop exponent: 1 when viscosity rules, 2 when inertia rules, about 1.75 in real ducts. That sets how strongly lead 4 pays.</li>
+<li>Server power is close to a fixed part plus a linear part, with no square part to balance. So the unit rule has no sweet spot there and simply says to pack work onto fewer servers. That's the long-known case for consolidation, not a new result.</li>
+<li>Chillers and liquid cooling follow thermodynamics (Carnot limits, heat capacity), which the algebra only relabels.</li>
+</ul></div>
+
+<div id="proofs" style="margin-top:30px"><h2>Proofs</h2>
+<p>All in core Lean 4.24, no mathlib, no <code>sorry</code>, standard axioms only: file <code>math-theory/datacenter-energy/lean/DataCenterFused.lean</code> (19 theorems).</p>
+<ul>
+<li><code>chain_lift</code>, <code>chain_split</code>, <code>chain_swap</code>: a chain's overhead is the mult-add fold of its stages, splits at any meter (TUE = ITUE × PUE), and doesn't care about order.</li>
+<li><code>scale_anywhere</code>: improving one stage by a factor improves the total by the same factor, wherever the stage sits.</li>
+<li><code>pue_corner</code>, <code>additive_books_corner</code>, <code>loss_costs_one_plus_c</code>: the corner, where the additive breakdown hides it, and the 1 + c watts each lost watt costs.</li>
+<li><code>unit_gap</code>, <code>add_unit_iff</code>, <code>equal_share</code>: the exact gap between k and k+1 units, the √(k(k+1)) switch point, and why equal sharing is best for a square loss.</li>
+<li><code>cube_layers</code>, <code>spread</code>, <code>spare_fan</code>, <code>spare_fan_helps</code>: the 1, 3, 3, 1 layers, total fan power Q³/k², and the N²/(N+1)² spare-unit ratio.</li>
+<li><code>stack</code>: savings stack by mult-add on what's kept.</li>
+</ul>
+<p class="muted">Numbers: <code>checks.py</code> and <code>checks_output.txt</code>; figures: <code>figures.py</code>; all in the same folder. The power supply fit uses spec minimums, so its sweet spot (35% of rating) is a little low compared with real units, which usually peak near half load.</p>
+</div>
+
+<div id="sources" style="margin-top:30px"><h2>Sources</h2>
+<ul class="muted">
+<li><a href="https://www.datacenterknowledge.com/energy-power-supply/data-center-industry-survey-highlights-cost-ai-and-sustainability-challenges">Uptime Institute 2024 survey</a>: average PUE 1.56, flat five years.</li>
+<li><a href="https://eta-publications.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report">LBNL 2024 US Data Center Energy Usage Report</a>: 176 TWh in 2023, 4.4% of US electricity.</li>
+<li><a href="https://www.iea.org/reports/energy-and-ai/executive-summary">IEA, Energy and AI</a>: about 415 TWh worldwide in 2024.</li>
+<li><a href="https://static.usenix.org/events/hotpower08/tech/hamilton_panel.pdf">Hamilton, HotPower '08</a>: IT 59%, distribution 8%, mechanical 33%.</li>
+<li><a href="https://arxiv.org/pdf/2610.09060">Mughees et al. 2026 review</a>: stage losses for distribution, UPS, PSU, VRM.</li>
+<li><a href="https://www.datacenterdynamics.com/en/opinions/advanced-eco-modes-for-ups-combine-savings-with-fast-response-times/">DCD on UPS eco modes</a>: 94 to 97% versus 98 to 99%, 2 to 3% saved.</li>
+<li><a href="https://en.wikipedia.org/wiki/80_Plus">80 PLUS levels</a>: Titanium redundant 90/94/96/91%.</li>
+<li><a href="https://www.thomas-krenn.com/en/wiki/Disable_PSU_cold_redundancy_for_power_from_overhead_lines_without_UPS">Thomas-Krenn on cold redundancy</a>: 556 W versus 532 W.</li>
+<li><a href="https://en.wikipedia.org/wiki/Energy_Logic">Energy Logic</a>: the 2.84 W cascade.</li>
+<li><a href="https://eta.lbl.gov/sites/default/files/awards/isc13_tuepaper_2.pdf">Patterson et al. 2013, TUE</a>: TUE = ITUE × PUE.</li>
+<li><a href="https://www.danfoss.com/en/service-and-support/articles/dds/more-about-variable-torque-applications/">Danfoss on affinity laws</a>: 20% slower, about 50% less power.</li>
+<li><a href="https://www.datacenterknowledge.com/archives/2013/09/19/cooling-capacity-factor-ccf-reveals-stranded-capacity/">Upsite cooling capacity factor</a>: 3.9 times running cooling.</li>
+<li><a href="https://www.energystar.gov/products/data_center_equipment/5-simple-ways-avoid-energy-waste-your-data-center/raise-temperature">ENERGY STAR on inlet temperature</a>: 4 to 5% per °F.</li>
+<li><a href="https://datacenters.google/efficiency">Google data center efficiency</a>: fleet PUE 1.09 in 2024.</li>
+</ul></div>
+</div></section>
+</body></html>

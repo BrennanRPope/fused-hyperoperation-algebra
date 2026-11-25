@@ -1,0 +1,39 @@
+PASS lift 2x2: I+(A⊞B) = (I+A)(I+B)
+PASS lift 3x3
+PASS weighted lift 3x3: I+k(A⊞kB) = (I+kA)(I+kB)
+PASS matrix ⊞ associative 3x3
+PASS matrix ⊞ not commutative in general
+PASS det(I+A) 3x3 = 1+e1+e2+e3
+PASS det(I+kA) 3x3 = 1+k e1+k^2 e2+k^3 e3
+PASS minor counts are 1,3,3,1
+PASS det(I+kA) 2x2 = 1 + k tr + k^2 det
+PASS diagonal: det(I+diag)-1 = a⊞b⊞c
+PASS D_k homomorphism 2x2 (all k)
+PASS D_k homomorphism 3x3 (all k)
+PASS k=0 case is trace additivity
+PASS det multiplicative 3x3
+PASS det(I+M)-1 = m11 ⊞_w m22 when m12 m21 = (1-w) m11 m22
+PASS 2x2 rotation-type: Xᵀ⊞kX=0 ⇔ 2x + k(x²+y²) = 0
+PASS circle: (x+1/k)² + y² = 1/k² same equation
+PASS I+kX orthogonal ⇔ Xᵀ ⊞k X = 0 (identity)
+PASS Cayley (I+S)^-1(I-S) = I + (Sᵀ ⊟ S)
+PASS Cayley is orthogonal
+PASS ⊟ undoes ⊞: (X⊟A)⊞A = X
+PASS det(I+A)-1 = λ1⊞…⊞λn
+PASS log det(I+A) = tr log(I+A)
+PASS det(exp Y) = exp(tr Y)
+PASS Σ tr Λ^j A = det(I+A)
+PASS Σ tr S^j A = 1/det(I-A)
+PASS dial k→0 gives exp(tr A)
+PASS dial k=-1 gives bosons 1/det(I-A)
+PASS dial k=-2 = real Gaussian E[exp(xᵀAx)] (Monte Carlo, 1%)
+PASS α-permanent generating function, α=-1.0 (= dial k=1.0)
+PASS α-permanent generating function, α=1.0 (= dial k=-1.0)
+PASS α-permanent generating function, α=2.0 (= dial k=-2.0)
+PASS α-permanent generating function, α=0.5 (= dial k=-0.5)
+PASS KdV 3-soliton: Hirota τ = det(I+M), M Cauchy-type
+PASS Cauchy minors factor into pair weights
+PASS generic symmetric 3x3: triple weight ≠ product of pair weights
+PASS u = 2(log det(I+M))_xx solves KdV (3 solitons, residual < 1e-20)
+
+37/37 checks pass

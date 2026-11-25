@@ -1,0 +1,163 @@
+{
+ "backtest": {
+  "10": {
+   "constant mean rate": {
+    "mean_forecast": 0.7223748672840136,
+    "ratio": 1.2116094408767324,
+    "mae_log": 0.25711344179496604
+   },
+   "constant mult-add mean": {
+    "mean_forecast": 0.7400909711280009,
+    "ratio": 1.182606251390159,
+    "mae_log": 0.24718008157212257
+   },
+   "averaged factors, block 1": {
+    "mean_forecast": 0.7583684748350361,
+    "ratio": 1.1541041566156518,
+    "mae_log": 0.237759406054771
+   },
+   "averaged factors, block 10": {
+    "mean_forecast": 0.7853619261191456,
+    "ratio": 1.1144367710545307,
+    "mae_log": 0.23518810600214266
+   },
+   "averaged, uncertain mean": {
+    "mean_forecast": 0.8165122810827354,
+    "ratio": 1.0719204466744594,
+    "mae_log": 0.2253518614305295
+   },
+   "realized_mean": 0.8752362090533875
+  },
+  "20": {
+   "constant mean rate": {
+    "mean_forecast": 0.5192670186333039,
+    "ratio": 1.4346516968310925,
+    "mae_log": 0.41560136396186065
+   },
+   "constant mult-add mean": {
+    "mean_forecast": 0.5455911160447129,
+    "ratio": 1.3654315246028303,
+    "mae_log": 0.3859158107729903
+   },
+   "averaged factors, block 1": {
+    "mean_forecast": 0.5737152052558201,
+    "ratio": 1.2984967150356603,
+    "mae_log": 0.3601293255949053
+   },
+   "averaged factors, block 10": {
+    "mean_forecast": 0.6160958672956637,
+    "ratio": 1.209174332982797,
+    "mae_log": 0.3447639874251416
+   },
+   "averaged, uncertain mean": {
+    "mean_forecast": 0.722197791920355,
+    "ratio": 1.0315280906769209,
+    "mae_log": 0.2913937090316812
+   },
+   "realized_mean": 0.744967309390692
+  },
+  "30": {
+   "constant mean rate": {
+    "mean_forecast": 0.37065583412172404,
+    "ratio": 1.6595695063194909,
+    "mae_log": 0.5559913925414172
+   },
+   "constant mult-add mean": {
+    "mean_forecast": 0.3998476281998184,
+    "ratio": 1.5384088244245537,
+    "mae_log": 0.50486210838912
+   },
+   "averaged factors, block 1": {
+    "mean_forecast": 0.4316268474612674,
+    "ratio": 1.425141006093297,
+    "mae_log": 0.45971594239925956
+   },
+   "averaged factors, block 10": {
+    "mean_forecast": 0.4819016531226838,
+    "ratio": 1.2764619412733733,
+    "mae_log": 0.467076394146324
+   },
+   "averaged, uncertain mean": {
+    "mean_forecast": 0.6968628531040971,
+    "ratio": 0.8827118806918826,
+    "mae_log": 0.31786264770769795
+   },
+   "realized_mean": 0.6151291196478287
+  },
+  "40": {
+   "constant mean rate": {
+    "mean_forecast": 0.2597722166723727,
+    "ratio": 2.1309068972763554,
+    "mae_log": 0.7675940734375729
+   },
+   "constant mult-add mean": {
+    "mean_forecast": 0.2881042607991436,
+    "ratio": 1.9213544662355524,
+    "mae_log": 0.6905674022910264
+   },
+   "averaged factors, block 1": {
+    "mean_forecast": 0.32018428714641045,
+    "ratio": 1.728849385962545,
+    "mae_log": 0.6424609863584673
+   },
+   "averaged factors, block 10": {
+    "mean_forecast": 0.3681527733708032,
+    "ratio": 1.5035888583959989,
+    "mae_log": 0.6614885387584213
+   },
+   "averaged, uncertain mean": {
+    "mean_forecast": 0.7506451084752491,
+    "ratio": 0.7374329120086166,
+    "mae_log": 0.47750050682585937
+   },
+   "realized_mean": 0.5535504082279269
+  },
+  "50": {
+   "constant mean rate": {
+    "mean_forecast": 0.17465159707986422,
+    "ratio": 2.800389314293587,
+    "mae_log": 1.0566709469180644
+   },
+   "constant mult-add mean": {
+    "mean_forecast": 0.19961223297163214,
+    "ratio": 2.450212889789516,
+    "mae_log": 0.9207884992892332
+   },
+   "averaged factors, block 1": {
+    "mean_forecast": 0.2285706044720219,
+    "ratio": 2.1397872544307335,
+    "mae_log": 0.8119003812286223
+   },
+   "averaged factors, block 10": {
+    "mean_forecast": 0.2741922806179496,
+    "ratio": 1.7837572417592822,
+    "mae_log": 0.8050383310058118
+   },
+   "averaged, uncertain mean": {
+    "mean_forecast": 0.9234330352884592,
+    "ratio": 0.5296458405714061,
+    "mae_log": 0.6638866349411598
+   },
+   "realized_mean": 0.48909246618676083
+  }
+ },
+ "schedule": {
+  "1": 0.02323361507472077,
+  "10": 0.0176656564150246,
+  "25": 0.016131245234331404,
+  "50": 0.013040225724252119,
+  "75": 0.01028601622564529,
+  "100": 0.007617397524253278,
+  "150": 0.00025942977935944356,
+  "200": -0.002660919446484833,
+  "300": -0.01212498308828569,
+  "400": -0.019743552589716717
+ },
+ "schedule_blocks": {
+  "1": 0.02297430441403847,
+  "10": 0.018611776479044106,
+  "50": 0.018770151285954828,
+  "100": 0.01884602284226844,
+  "200": 0.018741126298362554
+ }
+}

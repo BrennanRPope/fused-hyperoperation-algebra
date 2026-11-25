@@ -1,0 +1,26 @@
+{
+ "hero": {
+  "kind": "box",
+  "names": "abc",
+  "explode": "abc"
+ },
+ "v_lift": {
+  "kind": "rod",
+  "parts": [
+   [
+    "1",
+    1.0
+   ],
+   [
+    "a",
+    1.2
+   ]
+  ]
+ },
+ "v_rect": {
+  "kind": "rect",
+  "xv": "a",
+  "yv": "b",
+  "unit": "dashed"
+ }
+}

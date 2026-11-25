@@ -1,0 +1,32 @@
+== 1. Fisher: real rate = nominal (-) inflation ==
+ years 1871-2022; additive Fisher error (pct points): mean |gap| 0.329, max 3.72 in 1877
+  1918: yield 4.57%, inflation 17.86%: exact real -11.27%, additive -13.29%
+  1947: yield 2.25%, inflation 10.23%: exact real -7.24%, additive -7.98%
+  1974: yield 6.99%, inflation 11.80%: exact real -4.30%, additive -4.81%
+  1980: yield 10.80%, inflation 11.83%: exact real -0.92%, additive -1.03%
+  2022: yield 1.76%, inflation 6.41%: exact real -4.37%, additive -4.65%
+ check: real (+) inflation = nominal: True
+  at 50% inflation and a 10% real return, nominal = 65% (adding says 60%)
+  at 100% inflation and a 10% real return, nominal = 120% (adding says 110%)
+  at 200% inflation and a 10% real return, nominal = 230% (adding says 210%)
+
+== 2. Thirty years of real S&P returns as a 30-cube (1993-2022) ==
+ growth multiple 7.470x; (+) of all 30 returns = 6.4705; sum of layers 1..30 = 6.4705
+ layer totals k=1..8: 2.503, 2.614, 1.359, 0.237, -0.129, -0.093, -0.023, 0.000
+ layer 1 (adding the returns) = 2.503, i.e. 39% of the real growth; layers 2+ (return on return) = 3.968
+
+== 3. Volatility drag is the square cut out of the corner ==
+ up 27% then down 13%: (1+m+s)(1+m-s) = (1+m)^2 - s^2 = 1.1049 = 1.1449 - 0.0400
+ S&P real 1871-2022: arithmetic mean 8.15%, geometric (mult-add) mean 6.68%, drag 1.47 pts; variance/2 = 1.52 pts; variance/(2(1+m)) = 1.41
+
+== 4. Perpetuities and the pole ==
+ perpetuity at 2%: price 1/i = 50.0; duration (1+i)/i = 51.0 = 1/d with d = -( (-)i ) = 0.01961
+ perpetuity at 5%: price 1/i = 20.0; duration (1+i)/i = 21.0 = 1/d with d = -( (-)i ) = 0.04762
+ Gordon: D0(1+g)/(r-g) = 34.6667; perpetuity at r (-) g = 0.028846: D0/(r(-)g) = 34.6667; summed 4000 years = 34.6667
+ so a growing stream is a flat perpetuity at the mult-add difference of the rates; it blows up at g = r (a pole of order 1)
+  1921-01: dividend yield 7.11% = implied r (-) g; duration 1 + P/D = 15 years
+  1950-01: dividend yield 6.81% = implied r (-) g; duration 1 + P/D = 16 years
+  1982-01: dividend yield 5.68% = implied r (-) g; duration 1 + P/D = 19 years
+  2000-01: dividend yield 1.17% = implied r (-) g; duration 1 + P/D = 86 years
+  2009-03: dividend yield 3.60% = implied r (-) g; duration 1 + P/D = 29 years
+  2022-12: dividend yield 1.71% = implied r (-) g; duration 1 + P/D = 59 years

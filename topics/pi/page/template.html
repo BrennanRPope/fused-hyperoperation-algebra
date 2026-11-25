@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pi from Mult-Add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a research note read on a call, finding first
+   IDEA a geometry plate: one circle drawn round mult-add's wall, steps walked on it
+   PICTURE live circle: tiny turning steps (or halved steps) walking from 0 round to -2
+   COLOUR white / ink, red for the wall and the crossing, slate for the steps, pale panels
+   TYPE Source Serif 4 display + Inter text
+   LAYOUT laptop: verdict and figures over the plate with its controls beside; phone: title, plate, controls */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#10191e);--ink:light-dark(#121212,#e9eef0);--mute:light-dark(#4a5560,#a9b7bf);--red:light-dark(#e3120b,#ff5a4f);--slate:light-dark(#2e6f8e,#7cc0dd);--panel:light-dark(#e3ecf0,#18262d);--rule:light-dark(#c9d5db,#2b3d46)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.08;text-wrap:balance;margin:0 0 .4em}
+h1{font-size:clamp(32px,5vw,50px)}
+h2{font-size:clamp(24px,3vw,32px);margin-top:0}
+h3{font-size:17px;margin:1.2em 0 .3em}
+p{max-width:70ch;margin:.5em 0}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.tab{display:inline-block;background:var(--red);color:#fff;font-weight:600;font-size:13px;padding:3px 10px;margin-bottom:14px}
+.lede{font-size:18px;max-width:62ch}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:22px 0}
+.figs div{padding:12px 14px 12px 0}
+.figs b{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:clamp(24px,3vw,32px);line-height:1.1}
+.figs span{color:var(--mute);font-size:14px}
+.plate{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;align-items:stretch}
+.fig{position:relative;min-height:420px;background:var(--panel)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig svg text{paint-order:stroke;stroke:var(--panel);stroke-width:4px;font:14px Inter,sans-serif;fill:var(--ink)}
+.ctl{display:flex;flex-direction:column;gap:14px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+button{font:600 15px Inter,sans-serif;min-height:44px;padding:0 16px;border:1px solid var(--ink);background:var(--bg);color:var(--ink);cursor:pointer}
+button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+input[type=range]{width:100%;height:44px;accent-color:var(--red)}
+.read{border-top:1px solid var(--rule);padding-top:10px}
+.big{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(34px,5vw,52px);line-height:1;white-space:nowrap}
+.mute{color:var(--mute);font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px 40px}
+.panel{background:var(--panel);padding:16px 18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{font-size:13px;font-weight:600;padding:1px 7px;white-space:nowrap}
+.pr{background:var(--slate);color:var(--bg)}
+.inf{border:1px solid var(--mute);color:var(--mute)}
+.op{border:1px solid var(--red);color:var(--red)}
+pre{overflow-x:auto;background:var(--panel);padding:14px;font-size:13px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+code{overflow-wrap:anywhere;font-size:14px}
+.digits{max-height:190px;overflow-y:auto}
+.hc{position:relative;min-height:280px}
+.hc>svg{position:absolute;inset:0;width:100%;height:100%}
+.hc svg text{paint-order:stroke;stroke:var(--bg);stroke-width:4px;font:13px Inter,sans-serif;fill:var(--ink)}
+canvas{width:100%;height:260px;display:block;background:var(--panel)}
+nav.scroll{display:flex;gap:18px;white-space:nowrap;font-size:15px;padding-bottom:6px}
+nav a{color:var(--ink)}
+ul{padding-left:1.2em;max-width:72ch}
+li{margin:.25em 0}
+@media(max-width:820px){.plate{grid-template-columns:minmax(0,1fr)}.fig{min-height:340px}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;color:var(--mute);white-space:normal}.stack td:empty{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<header class="band">
+<div class="wrap">
+<span class="tab">Fused Hyperoperation Algebra · Nov 25, 2026</span>
+<h1>Pi is the length of the trip from 0 to −2 around mult-add's wall</h1>
+<p class="lede">Through the turning law's lens, every real slope sits on one circle of radius 1 drawn around the wall at −1. That circle crosses the number line at just two points: 0, where you start, and −2, the parity point. Pi is how far the turning flow runs to get from one to the other. Mult-add alone then gives you the digits. The hunt for a new transcendental found one number nobody seems to have named, B½(1,1) = 2.40717…, but whether it is transcendental can't be proved with today's math.</p>
+<div class="figs">
+<div><b>1,000</b><span>digits of pi from mult-add's logarithm, all correct</span></div>
+<div><b>43</b><span>Lean theorems, compiled, no sorry</span></div>
+<div><b>25 of 25</b><span>exact and numeric checks pass</span></div>
+<div><b>9</b><span>mult-add constants run through a 110-digit relation search</span></div>
+</div>
+<nav class="scroll" aria-label="Sections"><a href="#where">Where pi lives</a><a href="#digits">The digits</a><a href="#constants">Other constants</a><a href="#lean">What Lean proved</a><a href="#known">Known or new</a><a href="#files">Files</a></nav>
+</div>
+</header>
+
+<section class="band" style="padding-top:0">
+<div class="wrap plate">
+<div class="fig" id="plate" role="img" aria-label="Circle of radius 1 around the wall at minus 1, with mult-add steps walking from 0 round to minus 2"><svg id="ps"></svg></div>
+<div class="ctl">
+<div class="seg" role="group" aria-label="Kind of step">
+<button id="mTiny" aria-pressed="true">Tiny steps</button>
+<button id="mHalf" aria-pressed="false">Halved steps</button>
+</div>
+<label for="sl" id="slLab">Step size i/n, n = 10</label>
+<input type="range" id="sl" min="4" max="40" value="10">
+<div class="read">
+<div class="big" id="bigv">3.2</div>
+<div class="mute" id="readTxt">32 steps of i/10 pass −2; 32/10 = 3.2</div>
+</div>
+<p class="mute" id="modeTxt">Each dot is one more mult-add of the step i/n. The walk spirals a hair outward (each step has length a little over 1/n), so you count steps until it slips past the far side. Steps ÷ n heads for pi as n grows: 315 for n = 100, 3,142 for n = 1,000, 3,141,593 for n = 1,000,000.</p>
+</div>
+</div>
+</section>
+
+<section class="band" id="where" style="background:var(--panel)">
+<div class="wrap">
+<h2>Where pi lives: half of mult-add's own period</h2>
+<div class="cols">
+<div>
+<p>The turning law is slope addition, x ⊕ y = (x + y)/(1 − xy), at the landscape point (0, 1). Write each slope as the Gaussian number <b>1 + i·x</b>. Then slope addition is just multiplication: (1 + ix)(1 + iy) = (1 − xy)(1 + i·(x ⊕ y)). The lens 1 + a = (1 + ix)/(1 − ix) makes this exact, so a(x ⊕ y) = a(x) ⊞ a(y). The turning law is mult-add with complex walls.</p>
+<p>The lens puts every real slope on the circle |1 + a| = 1, centred on the wall −1. Mult-add keeps you on that circle, because lengths multiply. Slope 0 lands on a = 0, slope 1 on a = −1 + i, and slope ∞ on <b>a = −2</b>. On the real line the circle is exactly the two points 0 and −2.</p>
+<p>So the turning flow starts at 0, passes through infinity exactly when mult-add reaches −2, and comes back to 0. The distance to −2 in the law's own units is pi; the full loop is 2π. In mult-add's own terms, its logarithm log(1 + a) gains 2πi each time you go once round the wall.</p>
+</div>
+<div>
+<h3>Every turning law has period 2π ÷ √(4q − p²)</h3>
+<p>The law (a + b + p·ab)/(1 − q·ab) grows by y′ = 1 + p·y + q·y². Under the parabola (4q &gt; p²) the flow blows up and comes round, and the time it takes is 2π/√(4q − p²). Pi is the turning country's one constant; the distance from the parabola only sets the scale. On the parabola the period runs off to infinity. Above it, in two-wall country, the same formula gives an imaginary period, which is a logarithm. Pi and log are one quantity seen from either side of the parabola.</p>
+<div class="scroll"><table>
+<thead><tr><th>Point (p, q)</th><th class="n">Period, by integrating</th><th class="n">2π/√(4q − p²)</th></tr></thead>
+<tbody id="perBody"></tbody>
+</table></div>
+<p class="mute">Integrated to 25 digits, matching to 40. <span class="tag inf">inferred</span> in Lean's sense: the integral is analysis, which core Lean lacks.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" id="digits">
+<div class="wrap">
+<h2>Three ways to get the digits using mult-add only</h2>
+<div class="cols">
+<div>
+<h3>1. Count tiny steps</h3>
+<p>Mult-add i/n to itself until you pass −2. Pure counting, no logarithms, but slow: you get about one digit for each factor of 10 in n.</p>
+<div class="scroll"><table><thead><tr><th class="n">n</th><th class="n">Steps to pass −2</th><th class="n">Steps ÷ n</th></tr></thead><tbody id="stepBody"></tbody></table></div>
+<p class="mute">n ≤ 1,000 counted exactly with Gaussian integers; n = 10, 100 and 1,000 are also checked by Lean's kernel.</p>
+</div>
+<div>
+<h3>2. Halve the trip (Archimedes)</h3>
+<p>Find the step a with 3 copies landing on −2, then halve it again and again (a half-step b solves b ⊞ b = a). The straight lengths of all the steps sit below pi; the same steps measured in slope units sit above it. 48 steps is exactly Archimedes' 96-sided polygon.</p>
+<div class="scroll"><table><thead><tr><th class="n">Steps 0 → −2</th><th class="n">Below</th><th class="n">Above</th></tr></thead><tbody id="halfBody"></tbody></table></div>
+</div>
+<div>
+<h3>3. Land on the eighth turn, then take the way back</h3>
+<p>Four steps of i/5 and one step back of i/239 land exactly on the 45° ray, an eighth of the full turn: (5 + i)⁴(239 − i) = 114,244·(1 + i). Then mult-add's logarithm, L(a) = a − a²/2 + a³/3 − …, turns the steps back into addition, and its imaginary part at a = ix is x − x³/3 + x⁵/5 − … So pi = 4·(4·L(i/5) − L(i/239)) in imaginary parts. This is Machin's formula from 1706, written in mult-add.</p>
+<p>A search over mixes of two step sizes finds exactly the four that land on the eighth turn, the same four Størmer proved are the only ones in 1899: Machin, Euler (i/2 and i/3), Hermann and Hutton.</p>
+</div>
+</div>
+<h3>1,000 digits from route 3 (722 + 212 terms), checked against a reference value</h3>
+<pre class="digits" id="dig"></pre>
+<p><button id="copyD">Copy digits</button> <span class="mute" id="copyMsg"></span></p>
+<p class="mute">The Euler limit is a fourth view of the same thing: n copies of iπ/n mult-added head for −2 (−2.0000049 at n = 1,000,000), because (1 + iπ/n)ⁿ → e^{iπ} = −1. It needs pi to state, so it is a check rather than a route to the digits.</p>
+</div>
+</section>
+
+<section class="band" id="constants" style="background:var(--panel)">
+<div class="wrap">
+<h2>Hunting another transcendental: one unnamed number, nothing new proved</h2>
+<p>Each constant was computed to 120 trusted digits, then 110 of them were run through PSLQ (an integer-relation search) against 1, π, e, ln 2, ln 3, Euler's γ, ζ(3), Catalan's G, π², √2, √3, Γ(¼), ln π and π√3, for the number, its logarithm, and both together, with coefficients up to 10,000. Each was also tested for being a root of an integer polynomial up to degree 12. The search caught every relation that should exist, which shows it works.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Constant</th><th>Where mult-add makes it</th><th>Value</th><th>Relation search</th><th>Transcendental?</th></tr></thead>
+<tbody id="cBody"></tbody>
+</table></div>
+<div class="cols" style="margin-top:28px">
+<div>
+<h3>The new one: halfway between plus and mult-add</h3>
+<p>B_s is the fused operation at height s: B₀ is addition, B₁ is mult-add, and in between it uses the regular half-iterate of eˣ − 1 (unique by Écalle and Szekeres; your fractional-rungs page built it). At 1 and 1, height ½ gives</p>
+<p class="big" style="font-size:clamp(24px,3.5vw,34px);white-space:normal;overflow-wrap:anywhere">B½(1,1) = 2.4071710590 1658413387 3092350661 4815634779…</p>
+<p>It passes every test for transcendence I can run: no relation with 14 known constants at 110 digits, no polynomial up to degree 12. I found no published value. Proving it transcendental is out of reach: nobody can even prove e + π is irrational, and this number has no exponential form for Lindemann–Weierstrass, Gelfond–Schneider or Baker to grip. <span class="tag op">open</span></p>
+</div>
+<div>
+<div class="hc" id="hc" role="img" aria-label="B_s(1,1) as the height s goes from minus 1 to 2"><svg id="hs"></svg></div>
+<p class="mute">B_s(1,1) from s = −1 to 2: it passes 2 at s = 0 (1 + 1), 3 at s = 1 (1 ⊞ 1) and 5.467 at s = 2.</p>
+</div>
+</div>
+<div class="cols" style="margin-top:20px">
+<div>
+<h3>Feigenbaum sits on the road from mult-add to the turning law</h3>
+<p>Doubling in mult-add is u ↦ u² on the lift (the map z² + c at c = 0). Doubling in the turning law, read on the circle as z = u + 1/u, is z ↦ z² − 2 (c = −2). These are the only two real quadratic maps that can be solved exactly. Everything between them is the period-doubling cascade, whose rate is Feigenbaum's δ ≈ 4.6692016. Your elliptic curves supply the third solvable kind (Lattès maps). Feigenbaum's constants are believed transcendental but not even proved irrational. <span class="tag inf">known</span></p>
+</div>
+<div>
+<canvas id="fg" aria-label="Bifurcation diagram of z squared plus c from c = 0 to c = -2"></canvas>
+<p class="mute">Where z² + c settles, for c from 0 (mult-add doubling, left) to −2 (turning doubling, right). Superstable points computed here give δ = 4.669201596 at period 2¹⁴.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" id="lean">
+<div class="wrap">
+<h2>What Lean proved, and what it can't</h2>
+<div class="cols">
+<div>
+<p><span class="tag pr">proved</span> in core Lean 4.37, compiled against the library's base, no sorry, standard axioms only (43 theorems):</p>
+<ul>
+<li>Gaussian mult-add: lift, commutative, associative, identity 0, power lift.</li>
+<li>The lens: slope addition on pairs is Gaussian multiplication, and the conjugate multiplies too, so a(x ⊕ y) = a(x) ⊞ a(y).</li>
+<li>The circle round the wall is closed under mult-add; on the real line it is exactly {0, −2}; slope ∞ lands on −2; x ⊞ x = 0 only at 0 and −2.</li>
+<li>The quarter step: (−1 + i) ⊞ (−1 + i) = −2 and four copies give 0; slope 1 ⊕ 1 = 2/0 = ∞.</li>
+<li>Machin, Euler, Hermann and Hutton as exact mult-add identities, and Machin in the turning law itself.</li>
+<li>Step counts: 32 steps of i/10, 315 of i/100, 3,142 of i/1000.</li>
+<li>Gregory sums nest for 0 ≤ x ≤ 1 (every even sum below every odd sum), so the Machin intervals nest, and the kernel traps them between 3.14159265358979323846264338327950288419716939937510 and …511.</li>
+</ul>
+</div>
+<div>
+<p><span class="tag inf">inferred</span> (classical, checked numerically, not in core Lean):</p>
+<ul>
+<li>That the nested intervals close on the half-period of the turning law. That needs the real line and arctan 1 = π/4, which core Lean doesn't have. It's the same last step the e page left open.</li>
+<li>The period formula 2π/√(4q − p²) (an integral).</li>
+<li>All transcendence statements (Lindemann 1882, Gelfond–Schneider 1934), and all the relation-search results, which are evidence, not proof.</li>
+</ul>
+<p>For the library thread: copy <code>pi/lean/PiFromMultAdd.lean</code> to <code>FusedAlgebra/Topics/Pi.lean</code>, add it to build.sh and FusedAlgebra.lean. It imports only FusedAlgebra.Base and compiles in about 3 seconds.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" id="known" style="background:var(--panel)">
+<div class="wrap">
+<h2>Known or new</h2>
+<div class="cols">
+<div>
+<p><b>Known.</b> Every route to pi here is a re-derivation: Archimedes' polygons (about 250 BC), Gregory and Leibniz's series (1670s), Machin (1706), Euler's formula, the Cayley transform, Størmer's list (1899). That mult-add's logarithm has period 2πi is the textbook fact about the multiplicative group. Lindemann and Gelfond–Schneider settle the provable cases. The half-iterate value E½(1) = 1.27102741388995… is published (Finch, 2025, after Morris and Szekeres, 1961).</p>
+</div>
+<div>
+<p><b>New here.</b> The single picture: the circle round the wall through 0 and −2, with pi as the trip between them; pi and log as one period on either side of the landscape parabola; the Lean checks; and the number B½(1,1) = 2.40717…, which I could not find anywhere. No lead reaches the soliton level: nothing here is a new theorem, and the new number is new as a name, not as a proof.</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="band" id="files">
+<div class="wrap">
+<h2>Files</h2>
+<p class="mute">All in the project folder under <code>math-theory/pi/</code>: <code>pi_checks.py</code> and <code>pi_checks_output.txt</code> (25 checks), <code>constants_hunt.py</code> and <code>constants_output.txt</code> (values and relation searches), <code>half_curve.py</code>, <code>lean/PiFromMultAdd.lean</code> (43 theorems), and <code>pi_results.json</code>, <code>constants_results.json</code> with every number on this page.</p>
+</div>
+</footer>
+
+<script>
+{
+const D = __DATA__;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// ---------- the plate
+let mode = 'tiny';
+const ps = $('ps'), sl = $('sl');
+function walk(){
+  const pts = [[0,0]];
+  if (mode === 'tiny'){
+    const n = +sl.value; let re = 1, im = 0, m = 0;
+    while (m < 2000){
+      const r2 = re - im / n, i2 = im + re / n; re = r2; im = i2; m++;
+      pts.push([re - 1, im]);
+      if (im < 0) break;
+    }
+    return {pts, n, m};
+  }
+  const k = +sl.value, N = 3 * 2 ** k;
+  for (let j = 1; j <= N; j++){ const t = Math.PI * j / N; pts.push([Math.cos(t) - 1, Math.sin(t)]); }
+  return {pts, N, k};
+}
+function drawPlate(){
+  const W = ps.clientWidth, H = ps.clientHeight; if (!W || !H) return;
+  const pad = 34, xmin = -2.75, xmax = 0.75, ymin = -1.35, ymax = 1.45;
+  const sc = Math.min((W - 2*pad)/(xmax - xmin), (H - 2*pad)/(ymax - ymin));
+  const ox = W/2 - sc*(xmin + xmax)/2, oy = H/2 + sc*(ymin + ymax)/2;
+  const X = x => (ox + sc*x).toFixed(1), Y = y => (oy - sc*y).toFixed(1);
+  const w = walk();
+  let s = '';
+  s += `<line x1="${X(xmin)}" y1="${Y(0)}" x2="${X(xmax)}" y2="${Y(0)}" stroke="var(--rule)" stroke-width="1.5"/>`;
+  s += `<circle cx="${X(-1)}" cy="${Y(0)}" r="${sc}" fill="none" stroke="var(--mute)" stroke-width="1.5" stroke-dasharray="5 5"/>`;
+  const poly = w.pts.map(p => X(p[0]) + ',' + Y(p[1])).join(' ');
+  s += `<polyline points="${poly}" fill="none" stroke="var(--slate)" stroke-width="2"/>`;
+  const big = w.pts.length < 60;
+  w.pts.forEach((p, i) => { if (i && i < w.pts.length - 1) s += `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${big ? 3.5 : 2}" fill="var(--slate)"/>`; });
+  const last = w.pts[w.pts.length - 1];
+  s += `<circle cx="${X(last[0])}" cy="${Y(last[1])}" r="6" fill="var(--red)"/>`;
+  s += `<circle cx="${X(-1)}" cy="${Y(0)}" r="5" fill="var(--red)"/>`;
+  s += `<circle cx="${X(0)}" cy="${Y(0)}" r="5" fill="var(--ink)"/>`;
+  s += `<circle cx="${X(-2)}" cy="${Y(0)}" r="5" fill="var(--ink)"/>`;
+  s += `<circle cx="${X(-1)}" cy="${Y(1)}" r="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/>`;
+  s += `<text x="${X(-1)}" y="${+Y(0) + 22}" text-anchor="middle">wall −1</text>`;
+  s += `<text x="${+X(0) + 10}" y="${+Y(0) + 22}">0, start</text>`;
+  s += `<text x="${+X(-2) - 10}" y="${+Y(0) + 22}" text-anchor="end">−2</text>`;
+  s += `<text x="${+X(-2) - 10}" y="${+Y(0) + 40}" text-anchor="end">slope ∞</text>`;
+  s += `<text x="${+X(-1) + 10}" y="${+Y(1) - 10}">slope 1: −1 + i</text>`;
+  ps.innerHTML = s;
+  if (mode === 'tiny'){
+    $('slLab').textContent = `Step size i/n, n = ${w.n}`;
+    $('bigv').textContent = (w.m / w.n).toFixed(w.n >= 20 ? 3 : 2);
+    $('readTxt').textContent = `${w.m} steps of i/${w.n} pass −2; ${w.m}/${w.n} = ${(w.m / w.n).toFixed(4)}`;
+  } else {
+    const r = D.halving[w.k];
+    $('slLab').textContent = `Equal steps from 0 to −2: ${w.N}`;
+    $('bigv').textContent = (+r.lower).toFixed(5);
+    $('readTxt').textContent = `${w.N} steps: ${(+r.lower).toFixed(6)} < π < ${(+r.upper).toFixed(6)}`;
+  }
+}
+const ro1 = new ResizeObserver(drawPlate); ro1.observe(ps);
+function setMode(m){
+  mode = m;
+  $('mTiny').setAttribute('aria-pressed', m === 'tiny');
+  $('mHalf').setAttribute('aria-pressed', m === 'half');
+  if (m === 'tiny'){ sl.min = 4; sl.max = 40; sl.value = 10;
+    $('modeTxt').textContent = 'Each dot is one more mult-add of the step i/n. The walk spirals a hair outward (each step has length a little over 1/n), so you count steps until it slips past the far side. Steps ÷ n heads for pi as n grows: 315 for n = 100, 3,142 for n = 1,000, 3,141,593 for n = 1,000,000.'; }
+  else { sl.min = 0; sl.max = 5; sl.value = 0;
+    $('modeTxt').textContent = 'Start with the step whose three copies land on −2, then halve it (b ⊞ b = a) again and again. The straight lengths of the steps add up to just under pi; measured in slope units they add up to just over it. Four halvings reach 48 steps, exactly Archimedes’ 96-gon.'; }
+  drawPlate();
+}
+$('mTiny').onclick = () => setMode('tiny');
+$('mHalf').onclick = () => setMode('half');
+sl.oninput = drawPlate;
+
+// ---------- tables
+$('perBody').innerHTML = D.periods.map(r => `<tr><td>(${esc(r.p)}, ${esc(r.q)})</td><td class="n">${esc(r.period_numeric.slice(0, 14))}</td><td class="n">${esc(r.formula.slice(0, 14))}</td></tr>`).join('');
+$('stepBody').innerHTML = D.steps.filter(r => [10,100,1000,10000,100000,1000000].includes(r.n)).map(r => `<tr><td class="n">${esc(r.n.toLocaleString('en-US'))}</td><td class="n">${esc(r.steps.toLocaleString('en-US'))}</td><td class="n">${esc(r.steps_over_n.toFixed(6))}</td></tr>`).join('');
+$('halfBody').innerHTML = D.halving.map(r => `<tr><td class="n">${esc(r.steps)}</td><td class="n">${esc(r.lower.slice(0, 10))}</td><td class="n">${esc(r.upper.slice(0, 10))}</td></tr>`).join('');
+$('dig').textContent = D.digits;
+$('copyD').onclick = async () => { try { await navigator.clipboard.writeText(D.digits); $('copyMsg').textContent = 'Copied.'; } catch (e) { $('copyMsg').textContent = 'Copy was blocked here; select the digits instead.'; } };
+const tag = t => t[0] === 'p' ? `<span class="tag pr">${esc(t.slice(2))}</span>` : t[0] === 'o' ? `<span class="tag op">${esc(t.slice(2))}</span>` : `<span class="tag inf">${esc(t.slice(2))}</span>`;
+$('cBody').innerHTML = D.constants.map(r => `<tr><td><b>${esc(r.name)}</b></td><td>${esc(r.where)}</td><td class="n">${esc(r.value)}</td><td>${esc(r.search)}</td><td>${tag(r.status)} ${esc(r.why)}</td></tr>`).join('');
+
+// ---------- B_s(1,1) curve
+const hs = $('hs');
+function drawHalf(){
+  const W = hs.clientWidth, H = hs.clientHeight; if (!W || !H) return;
+  const L = 44, R = 16, T = 14, B = 34;
+  const xs = D.half.map(r => r[0]), ys = D.half.map(r => r[1]);
+  const x0 = -1, x1 = 2, y0 = 1, y1 = 6;
+  const X = x => L + (x - x0) / (x1 - x0) * (W - L - R), Y = y => T + (y1 - y) / (y1 - y0) * (H - T - B);
+  let s = '';
+  for (let y = 1; y <= 6; y++) s += `<line x1="${L}" x2="${W - R}" y1="${Y(y)}" y2="${Y(y)}" stroke="var(--rule)"/><text x="${L - 8}" y="${Y(y) + 4}" text-anchor="end">${y}</text>`;
+  for (let x = -1; x <= 2; x += 0.5) if (W > 520 || Number.isInteger(x)) s += `<text x="${X(x)}" y="${H - 12}" text-anchor="middle">${x}</text>`;
+  s += `<polyline fill="none" stroke="var(--slate)" stroke-width="2.5" points="${D.half.map(r => X(r[0]).toFixed(1) + ',' + Y(r[1]).toFixed(1)).join(' ')}"/>`;
+  [[0, 2, '1 + 1 = 2'], [1, 3, '1 ⊞ 1 = 3'], [0.5, 2.40717, 'B½ = 2.40717']].forEach(([x, y, t], i) => {
+    s += `<circle cx="${X(x)}" cy="${Y(y)}" r="${i === 2 ? 6 : 4.5}" fill="${i === 2 ? 'var(--red)' : 'var(--ink)'}"/>`;
+    s += `<text x="${X(x) + (i === 2 ? -10 : 10)}" y="${Y(y) - 10}" text-anchor="${i === 2 ? 'end' : 'start'}">${t}</text>`;
+  });
+  s += `<text x="${W - R}" y="${H - 12 - 16}" text-anchor="end">height s</text>`;
+  hs.innerHTML = s;
+}
+const ro2 = new ResizeObserver(drawHalf); ro2.observe(hs);
+
+// ---------- Feigenbaum road
+const cv = $('fg');
+function drawFeig(){
+  const W = cv.clientWidth, H = cv.clientHeight; if (!W) return;
+  const dpr = window.devicePixelRatio || 1; cv.width = W * dpr; cv.height = H * dpr;
+  const g = cv.getContext('2d'); g.scale(dpr, dpr);
+  const css = getComputedStyle(document.body);
+  g.fillStyle = getComputedStyle(cv).color || css.color;
+  const col = getComputedStyle(document.documentElement).getPropertyValue('--slate').trim();
+  g.fillStyle = css.color; g.globalAlpha = 0.5;
+  for (let px = 0; px < W; px++){
+    const c = -2 * px / (W - 1); let z = 0;
+    for (let i = 0; i < 300; i++) z = z * z + c;
+    for (let i = 0; i < 120; i++){ z = z * z + c; const py = H / 2 - z * (H / 4.4); g.fillRect(px, py, 1, 1); }
+  }
+  g.globalAlpha = 1; g.font = '13px Inter, sans-serif';
+  g.fillText('c = 0, mult-add doubling', 6, 16);
+  const t = 'c = −2, turning doubling'; g.fillText(t, W - g.measureText(t).width - 6, 16);
+}
+const ro3 = new ResizeObserver(drawFeig); ro3.observe(cv);
+}
+</script>
+</body>
+</html>

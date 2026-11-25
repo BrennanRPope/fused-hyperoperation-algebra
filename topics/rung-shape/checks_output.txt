@@ -1,0 +1,40 @@
+PASS A sheet slice s=0 is the exact level curve   max err 1.7e-12
+PASS A sheet slice s=1 is the exact level curve   max err 1.6e-12
+PASS A sheet slice s=-1 is the exact level curve   max err 1.8e-12
+PASS A sheet slice s=2 satisfies the closed form of rung 2   max err 1.6e-12
+   s=-1: d2b/ds2 left -0.01821  centre -0.01518  right -0.01220
+   s=+0: d2b/ds2 left +0.06786  centre +0.06832  right +0.06875
+   s=+1: d2b/ds2 left +0.06192  centre +0.06148  right +0.06104
+   s=+2: d2b/ds2 left +0.03957  centre +0.03917  right +0.03878
+PASS A sheet has no crease at any whole rung (one-sided curvatures in s agree to O(h))   worst gap 0.006
+PASS A bottom of the sheet: area under the slice -> 1 (the outer corner max(a,b)=1)   area at s=-3.5: 0.9994
+PASS A top of the sheet: area -> 0 (the curve falls onto the axes)   areas at s=8,16,32,64: 0.1103, 0.0482, 0.0179, 0.0060
+PASS A area under the slice falls smoothly from near 1 to near 0 (monotone)   0.988 -> 0.204
+PASS A area at rung 0 = 1/2 and at rung 1 = 2 ln 2 - 1   0.50000, 0.38630 (2ln2-1 = 0.38629)
+PASS the Abel function reproduces the regular half rung   diff 3.8e-13
+PASS perturbed interpolation still hits rung 1 exactly   diff 3.2e-14
+PASS perturbed interpolation still hits rung 2 exactly   diff 5.2e-14
+   slope of the half rung near 0: regular [1.001  1.0011 1.0012] ... -> 1;  perturbed ranges 0.333 .. 3.030
+PASS regular half rung has slope -> 1 at the identity
+PASS perturbed half rung keeps oscillating near the identity (no slope at 0: a crease)   oscillation 2.698
+PASS B flow surface slices at s=1,2,-1,-2 are E, E∘E, L, L∘L   max err 2.5e-10
+PASS B flow surface is one flow: E^0.7 ∘ E^-0.3 = E^0.4   err 2.3e-12
+   (rung s is addition in the coordinate u = E^-s(x), by definition)
+PASS C two-dial: rung-1 slice is the cube count 2^d - 1 for every real d   err 9.8e-11
+PASS C two-dial: rung-0 slice is the line d   err 1.2e-11
+PASS C two-dial: d = 5 at rung 1/2 equals five 1s combined by rung 1/2   err 1.1e-10
+   rung 1/2 run n times: n = [1.e+01 1.e+02 1.e+03 1.e+04 1.e+05] 
+      log(value)/log(n) = [1.59  2.446 3.659 5.226 7.204] 
+      log(value)/n      = [0.36611 0.11264 0.02527 0.00481 0.00083]
+PASS C rung 1/2 growth: power exponent keeps rising while exponential rate keeps falling
+PASS D graph of rung s at the identity: flat along the axes, twist = s, Gaussian curvature = -s²/9   s=-2:K=-0.4444 s=-1:K=-0.1111 s=-0.5:K=-0.0278 s=0:K=+0.0000 s=0.5:K=-0.0278 s=1:K=-0.1111 s=2:K=-0.4444
+PASS D only rungs 0 and 1 have straight-line rulings (graph linear in b)   -1:+0.0174 -0.5:+0.0072 0:+0.0000 0.5:-0.0033 1:+0.0000 1.5:+0.0159 2:+0.0583
+PASS E complex trajectory ends at 0 in both directions (one closed loop over the whole ladder)   |start| 6.7e-04, |end| 6.6e-04
+PASS E the loop is nearly the circle that kisses 0 (from the x²/2 term)   max deviation 0.020 of the radius
+PASS E at s = 1 the loop point is E(x0) (to the rounding of 20000 complex steps)   err 6.1e-09
+PASS E the whole ladder s from -inf to +inf winds once (not a repeating helix)   turned 0.993 times
+PASS F rungs fall to max(a,b) as s -> -inf (the floor of the sheet)   [2.20908, 2.001036, 2.0]
+PASS G corner dial misses rung 2: best k = 3.049 still off   max misfit 0.418
+PASS G corner dial misses rung -1: best k = -0.571 still off   max misfit 0.061
+
+29 of 29 checks pass

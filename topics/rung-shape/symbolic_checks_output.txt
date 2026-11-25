@@ -1,0 +1,21 @@
+PASS twist_rung1
+PASS twist_dial
+PASS ruled_rung1
+PASS ruled_rung1'
+PASS axis_rung1
+PASS flow_heights_add (ideal membership, explicit combination)
+PASS flow_heights_add (Groebner reduction)
+PASS flow_zero
+PASS sheet_rung0
+PASS sheet_rung1
+PASS sheet_dial
+PASS sheet_edges
+PASS flow_closed
+PASS phi_t solves dphi/dt = phi^2/2
+PASS phi heights add: phi_s(phi_t(x)) = phi_{s+t}(x)
+PASS phi matches the regular iterate to 2nd order (x + t x^2/2)
+PASS addPow: d copies of a added = d*a (d = 0..12)
+PASS cube_count: 1 + mpow 1 d = 2^d (d = 0..20)
+PASS Gaussian curvature of the graph at the identity = -s^2/9
+
+19 of 19 exact checks pass

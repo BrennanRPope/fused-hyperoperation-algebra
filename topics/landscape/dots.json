@@ -1,0 +1,210 @@
+[
+ {
+  "name": "Compound growth, returns, interest",
+  "domain": "finance",
+  "c1": 1,
+  "c2": 0,
+  "family": "line",
+  "source": "econ-forecasting"
+ },
+ {
+  "name": "Redshifts stacking (1+z multiplies)",
+  "domain": "cosmology",
+  "c1": 1,
+  "c2": 0,
+  "family": "line",
+  "source": "dark-sector"
+ },
+ {
+  "name": "K-theory, Todd genus",
+  "domain": "topology",
+  "c1": 1,
+  "c2": 0,
+  "family": "line",
+  "source": "topology"
+ },
+ {
+  "name": "Claim-count models (PGF)",
+  "domain": "insurance",
+  "c1": 1,
+  "c2": 0,
+  "family": "line",
+  "source": "actuarial"
+ },
+ {
+  "name": "PUE: power and cooling overheads",
+  "domain": "engineering",
+  "c1": 1,
+  "c2": 0,
+  "family": "line",
+  "source": "datacenter-energy"
+ },
+ {
+  "name": "Tsallis q = 0 (outcomes minus one), Campbell cost",
+  "domain": "information",
+  "c1": 1,
+  "c2": 0,
+  "family": "line",
+  "source": "information-theory"
+ },
+ {
+  "name": "Shannon and Renyi entropy, hazards, log-returns",
+  "domain": "information",
+  "c1": 0,
+  "c2": 0,
+  "family": "line",
+  "source": "information-theory"
+ },
+ {
+  "name": "Burgers shocks (empty corner)",
+  "domain": "fluids",
+  "c1": 0,
+  "c2": 0,
+  "family": "line",
+  "source": "ns-rungs"
+ },
+ {
+  "name": "Union of failures, survival, decrements",
+  "domain": "reliability",
+  "c1": -1,
+  "c2": 0,
+  "family": "line",
+  "source": "information-theory"
+ },
+ {
+  "name": "Amplitude damping (T1)",
+  "domain": "quantum",
+  "c1": -1,
+  "c2": 0,
+  "family": "line",
+  "source": "quantum-noise"
+ },
+ {
+  "name": "Gini-Simpson (Tsallis q = 2), Kraft slack, erasures",
+  "domain": "information",
+  "c1": -1,
+  "c2": 0,
+  "family": "line",
+  "source": "information-theory"
+ },
+ {
+  "name": "Slashing, validator churn",
+  "domain": "consensus",
+  "c1": -1,
+  "c2": 0,
+  "family": "line",
+  "source": "consensus"
+ },
+ {
+  "name": "Parity, bit flips, binary channel cascade",
+  "domain": "codes",
+  "c1": -2,
+  "c2": 0,
+  "family": "line",
+  "source": "information-theory"
+ },
+ {
+  "name": "Bit-flip and phase-flip noise",
+  "domain": "quantum",
+  "c1": -2,
+  "c2": 0,
+  "family": "line",
+  "source": "quantum-noise"
+ },
+ {
+  "name": "3-letter channel",
+  "domain": "channels",
+  "c1": -1.5,
+  "c2": 0,
+  "family": "line",
+  "source": "information-theory"
+ },
+ {
+  "name": "4-letter channel, depolarizing qubit",
+  "domain": "quantum",
+  "c1": -1.3333333333333333,
+  "c2": 0,
+  "family": "line",
+  "source": "quantum-noise"
+ },
+ {
+  "name": "Depolarizing qutrit",
+  "domain": "quantum",
+  "c1": -1.125,
+  "c2": 0,
+  "family": "line",
+  "source": "this page"
+ },
+ {
+  "name": "Leveraged compounding, 2x",
+  "domain": "finance",
+  "c1": 2,
+  "c2": 0,
+  "family": "line",
+  "source": "this page"
+ },
+ {
+  "name": "Partial damage, each hit removes half",
+  "domain": "reliability",
+  "c1": -0.5,
+  "c2": 0,
+  "family": "line",
+  "source": "this page"
+ },
+ {
+  "name": "Velocity addition (relativity), stacked reflections, signature",
+  "domain": "physics",
+  "c1": 0,
+  "c2": -1,
+  "family": "axis",
+  "source": "information-theory, topology"
+ },
+ {
+  "name": "Slope addition (tangent of angle sum)",
+  "domain": "geometry",
+  "c1": 0,
+  "c2": 1,
+  "family": "axis",
+  "source": "this page"
+ },
+ {
+  "name": "Sine addition (third-order point only)",
+  "domain": "geometry",
+  "c1": 0,
+  "c2": -0.5,
+  "family": "axis",
+  "source": "this page"
+ },
+ {
+  "name": "Euler characteristic genus (a cusp)",
+  "domain": "topology",
+  "c1": 2,
+  "c2": 1,
+  "family": "parabola",
+  "source": "this page"
+ },
+ {
+  "name": "Rung 2 (smooth fused exponent)",
+  "domain": "fused tower",
+  "c1": 2,
+  "c2": 0.5,
+  "family": "rung",
+  "source": "fractional-rungs"
+ },
+ {
+  "name": "Rung -1: log(e^a + e^b - 1)",
+  "domain": "fused tower",
+  "c1": -1,
+  "c2": 0.5,
+  "family": "rung",
+  "source": "fractional-rungs"
+ },
+ {
+  "name": "Half rung",
+  "domain": "fused tower",
+  "c1": 0.5,
+  "c2": -0.0625,
+  "family": "rung",
+  "source": "fractional-rungs"
+ }
+]

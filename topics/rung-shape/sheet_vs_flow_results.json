@@ -1,0 +1,8 @@
+{
+ "1 flow surface level {E^s(x) = 1} is the single curve x = E^-s(1) (one x per height)": true,
+ "2 at every height tested (6 whole, 20 random), each sheet point maps under E^-s onto the straight line u + v = E^-s(1) (rounding grows with E^-s(1), 96 at s = -3)": true,
+ "3 the sheet's diagonal point at height s is E^s(\u00bd E^-s(1)): the flow carrying the midpoint": true,
+ "4 halving with the rung operation alone, 14 times, recovers the flow's lens E^-s(a)": true,
+ "5 a different associative rung-\u00bd law has exactly the same unit curve": true,
+ "5b ...but its level-\u00bd curve differs: the other level sets carry the extra information": true
+}

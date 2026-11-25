@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twisting the Oxygen Clock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work document: a findings report, calm and exact
+   IDEA a lab notebook page where one point on a clock face is held up to a mirror, a reverser and an inverter
+   PICTURE the complex plane: the clock's point and where each twist sends it, the forbidden zone outside the circle
+   COLOUR white or deep night ground, chlorophyll green leads, sun yellow marks the turn, red marks forbidden
+   TYPE Newsreader 600 display + Inter text
+   LAYOUT laptop: title and verdict left, twist map right, then sections each with its drawing beside the text; phone: stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1511);--ink:light-dark(#14201a,#e6efe9);--mute:light-dark(#55665c,#9fb3a7);--line:light-dark(#d5ded8,#2a3a31);--panel:light-dark(#f1f6f2,#16211b);--leaf:light-dark(#1d7a3c,#5fcf86);--sun:light-dark(#c98a00,#f2c14e);--red:light-dark(#c8341f,#ff7a63);--blue:light-dark(#2565b5,#7fb2ff)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.08;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(34px,5vw,50px)}
+h2{font-size:clamp(24px,3vw,32px)}
+h3{font-size:17px;margin:1.2em 0 .3em}
+p{margin:0 0 .9em;max-width:68ch}
+a{color:var(--blue)}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.top{background:var(--panel);border-bottom:1px solid var(--line)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.lede{font-size:18px}
+.verdict{border-left:3px solid var(--leaf);padding:4px 0 4px 14px;margin:18px 0}
+.fig{position:relative;min-height:340px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.sq{aspect-ratio:1/1;min-height:0}
+svg text{font:13px Inter,system-ui,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.top svg text{stroke:var(--panel)}
+.cap{font-size:13px;color:var(--mute);margin-top:6px;max-width:none}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:start}
+section{border-top:1px solid var(--line)}
+.scroll{overflow-x:auto}
+nav.scroll{display:flex;gap:18px;padding:12px max(5vw,16px);border-bottom:1px solid var(--line);white-space:nowrap;font-size:14px}
+nav a{flex:none;text-decoration:none}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--mute);font-size:13px}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.ok{background:color-mix(in srgb,var(--leaf) 16%,transparent);color:var(--leaf)}
+.no{background:color-mix(in srgb,var(--red) 16%,transparent);color:var(--red)}
+.open{background:color-mix(in srgb,var(--sun) 20%,transparent);color:var(--sun)}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0}
+code{font-size:14px;overflow-wrap:anywhere}
+html{scroll-padding-top:20px}
+.tall{min-height:380px}
+@media(max-width:520px){.tall{min-height:600px}}
+@media(max-width:820px){.hero,.two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;text-align:right}.stack td::before{content:attr(data-l);color:var(--mute);text-align:left;flex:none;max-width:40%}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<header class="band top">
+<div class="wrap hero">
+<div>
+<h1>Twisting the oxygen clock</h1>
+<p class="lede">Reversing the clock gives a real, different reaction: respiration's oxygen-eating enzyme runs the same four-step square the other way. Undoing the clock in time is forbidden, and every other twist lands on chemistry that already exists.</p>
+<div class="verdict"><p><strong>Lead check:</strong> nothing here is as promising as the soliton cube. The one twist nobody has made work is a clock that runs both ways at no cost, and the reason is a geometric one: the four quarter turns can't be made equal.</p></div>
+<p class="cap">Fused Hyperoperation Algebra, rung 1: x ⊕ y = x + y + xy. The clock's flash step is the point 1 + x = λ in the complex plane, and n flashes are the n-fold mult-add, λⁿ. Numbers from <code>twists.py</code> beside this page.</p>
+</div>
+<div><div class="fig sq" id="f1"></div><p class="cap">Where each twist sends the clock's point λ = 0.056 + 0.888i (Shinkarev's fit to spinach). A clock made of probabilities must stay inside the circle.</p></div>
+</div>
+</header>
+<nav class="scroll" aria-label="Sections"><a href="#table">All twists</a><a href="#reverse">Reverse</a><a href="#sign">Sign flip</a><a href="#mirror">Mirror</a><a href="#shrink">Fewer sides</a><a href="#uphill">Uphill</a><a href="#cube">Cube moves</a><a href="#twoway">The open one</a><a href="#test">The test</a><a href="#honest">Known or new</a><a href="#sources">Sources</a></nav>
+
+<section class="band" id="table"><div class="wrap">
+<h2>Every twist landed on real chemistry except two</h2>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Twist</th><th>On the picture</th><th>Real chemistry</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>Reverse the direction</td><td>Mirror λ across the real axis</td><td>Cytochrome c oxidase: O₂ + 4e⁻ → 2H₂O in four single-electron steps (respiration)</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Flip the energy's sign</td><td>Run the whole loop downhill</td><td>Respiration and burning: glucose + 6O₂ → 6CO₂ + 6H₂O, −2870 kJ</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Undo flashes in time</td><td>Mult-add inverse, λ → 1/λ</td><td>None: populations go negative after one step back</td><td><span class="tag no">Forbidden</span></td></tr>
+<tr><td>Mirror the sugar</td><td>Every helix turns the other way</td><td>L-glucose has the same energy; no organism makes it; one soil bacterium eats it</td><td><span class="tag open">Allowed, not made</span></td></tr>
+<tr><td>Mirror the electron chain</td><td>Swap the two branches</td><td>Bacterial reaction centres have two near-twin branches; only one carries electrons; mutants force the other</td><td><span class="tag ok">Real, weak</span></td></tr>
+<tr><td>Mirror the light</td><td>Flip the sign of the twist in reflected light</td><td>Leaves reflect slightly circular light; mirror plants would flip its sign</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Fewer sides</td><td>Square → line, two photosystems → one</td><td>Sulfide photosynthesis in green sulfur bacteria: no oxygen, no four-step clock</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>One side</td><td>A loop closed by every photon</td><td>Bacteriorhodopsin and proteorhodopsin proton pumps</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Eight sides</td><td>Octagon</td><td>Nitrogenase's eight-electron cycle</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Run the chain uphill</td><td>Arrow against the ladder</td><td>Reverse electron flow in nitrite-eating bacteria</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Rotate the start</td><td>Turn the square by two corners</td><td>Hydroxylamine delays the first oxygen burst by two flashes</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Swap hit and miss</td><td>Cube's opposite corner</td><td>A clock that almost never advances: cold or blocked photosystem II</td><td><span class="tag ok">Real</span></td></tr>
+<tr><td>Both ways at no cost</td><td>Four equal quarter turns</td><td>No catalyst or enzyme does this for oxygen yet; the idea is already published as a symmetry index</td><td><span class="tag open">Open</span></td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="band" id="reverse"><div class="wrap two">
+<div>
+<h2>Reversed, the clock becomes respiration's oxygen enzyme</h2>
+<p>Photosystem II pulls four electrons out of two waters, one per flash, and lets O₂ go on the fourth step. Cytochrome c oxidase, the last enzyme of respiration, does the exact reverse: it binds O₂ and pushes four electrons into it one at a time, from cytochrome c, until two waters leave. Its catalytic states are named R, A, P, F, O, E, and four of the links between them are single electron steps. So the same square exists in nature, run the other way, in nearly every cell of yours.</p>
+<p><strong>The numbers.</strong> Splitting water needs electrons lifted from +0.818 V to NADPH at −0.324 V, 1.14 V each, paid for with two red photons (1.82 eV each). The reverse enzyme drops electrons from cytochrome c at +0.254 V to oxygen, 0.564 V each, which releases 218 kJ per O₂. It uses that to pump four protons across the membrane.</p>
+<p><strong>A surprise from the picture.</strong> Reversing the clock mirrors λ across the real axis, and I checked that the oxygen-per-flash pattern comes out identical, to every digit. The pattern can't tell which way the clock turns. Only the chemistry at the corners can: which state lets O₂ go, and which one takes it in.</p>
+</div>
+<div><div class="fig tall" id="f2"></div><p class="cap">Left, photosystem II turning one way with light. Right, cytochrome c oxidase turning the other way with electrons from cytochrome c. Corner names are the standard state labels.</p></div>
+</div></section>
+
+<section class="band" id="sign"><div class="wrap two">
+<div>
+<h2>Flipping the sign: one version is respiration, the other is forbidden</h2>
+<p>"Switch the sign" splits into two different moves.</p>
+<p><strong>Flip the energy's sign.</strong> Run the whole reaction downhill: sugar and oxygen back to carbon dioxide and water, releasing the 2870 kJ per glucose that light stored. That is respiration, or a fire. Real, and the reverse enzyme above is its last step.</p>
+<p><strong>Flip the step's sign.</strong> In mult-add the inverse of x is −x / (1 + x), the value that undoes it: (1 + x)(1 + y) = 1. Applied to the clock, that would un-flash it, running the probabilities backwards in time. The point moves from λ, inside the circle, to 1/λ, outside it at distance 1.124. Starting from a clock that is surely in S1, one step back already needs a population of −0.108, and after five steps one state is at −0.916. No real mixture has negative amounts.</p>
+<p>This is the second law in the picture. A clock made of chances can only shrink toward the steady state, so its points stay inside the unit circle. The inverse sends them outside, where only growth lives. The reverse chemistry is fine; reversing the forgetting is not.</p>
+</div>
+<div><div class="fig" id="f3" style="min-height:360px"></div><p class="cap">Un-flashing a clock that starts surely in S1. Bars below the line are negative amounts, which no sample can hold.</p></div>
+</div></section>
+
+<section class="band" id="mirror"><div class="wrap two">
+<div>
+<h2>Mirroring the handedness is allowed but changes nothing you can weigh</h2>
+<h3>The sugar</h3>
+<p>Life makes only D-glucose. Its mirror twin, L-glucose, has exactly the same energy, so a mirror plant would store the same 2870 kJ per sugar from the same light. The difference predicted from the weak force has never been measured in any molecule. One soil bacterium, Paracoccus 43P, was found in 2012 to eat L-glucose with its own pathway, so nature does touch the mirror sugar, but nothing makes it from light.</p>
+<p>A whole mirror plant would need every protein and nucleic acid mirrored too. That is "mirror life", and in December 2024 a large group of scientists warned in Science that mirror bacteria could evade immune defences and recommended not building them. It's chemically possible and deliberately left alone.</p>
+<h3>The electron chain</h3>
+<p>Proteins can't have true mirror symmetry, but reaction centres come close: two near-twin branches related by a half turn. In purple bacteria electrons go almost only down one branch. Mutants built since the 1990s can push some down the twin branch, more slowly. So the mirrored chain is real and works, just worse.</p>
+<h3>The light</h3>
+<p>Because chlorophyll's packing is chiral, leaves reflect light that is very slightly circular: about 7 parts in 10,000 in the field, near 680 nm, with a negative band just below and a positive band just above. Patty and colleagues use this as a sign of life from kilometres away. A mirror plant would show the same curve upside down.</p>
+</div>
+<div><div class="fig" id="f5" style="min-height:330px"></div><p class="cap">Sketch of the leaf's circular-polarization signal near 680 nm and its mirror. Shape and size follow Patty et al. 2019; the curve is drawn, not measured data.</p></div>
+</div></section>
+
+<section class="band" id="shrink"><div class="wrap two">
+<div>
+<h2>Fewer sides gives sulfide photosynthesis, one side gives the retinal pumps</h2>
+<p>Change the number of corners and the same wound Pascal row describes other real cycles. With the same miss chance (0.084) each one is the point λ = 0.084 + 0.916·e^(2πi/n).</p>
+<ul>
+<li><strong>Two sides, sulfide:</strong> green sulfur bacteria take two electrons from H₂S and drop sulfur, with no oxygen and no four-step clock. Their donor sits at −0.27 V, so one photosystem is enough: 4 photons per CO₂ by electron count, against 8 for plants. The cube loses a dimension twice, square to line and two photosystems to one.</li>
+<li><strong>One side, light pumps:</strong> bacteriorhodopsin and the ocean's proteorhodopsin close their whole loop on every photon and pump one proton. With λ = 1 there is no flash pattern at all. A 568 nm photon (2.18 eV) moves one proton across about 0.2 V, roughly 9% stored.</li>
+<li><strong>Eight sides, nitrogen:</strong> nitrogenase counts eight electrons per N₂ (Lowe–Thorneley states E0 to E8), each delivered with two ATP. It is driven by chemistry, not flashes, so this octagon is a picture, not a flash experiment.</li>
+</ul>
+<p>The sides change how fast the pattern fades: the two-sided clock's rhythm halves every 3.8 steps, the square's every 8.3, the octagon's every 30.</p>
+</div>
+<div><div class="fig" id="f4" style="min-height:380px"></div><p class="cap">The first 24 steps of λᵏ for one, two, four and eight sides, all with miss 0.084. Each dot is one flash or one electron.</p></div>
+</div></section>
+
+<section class="band" id="uphill"><div class="wrap two">
+<div>
+<h2>Running the chain uphill is real: chemosynthesis does it with a proton gradient</h2>
+<p>Photosynthesis lifts electrons with light. Respiration lets them fall. A third case lifts them with neither: bacteria that live on nitrite take electrons at +0.433 V and push them up to NADH at −0.320 V, 0.753 V uphill, 145 kJ per NADH. They pay by letting protons flow back in, so the respiratory chain runs backwards. At a 0.15 to 0.20 V gradient that costs roughly 4 to 5 protons per electron.</p>
+<p>Purple bacteria do the same trick after their photosystem, because it only reaches quinone. So "run it the other way" isn't one reaction; it's a family that cells use whenever their electron source sits too high on the ladder.</p>
+</div>
+<div><div class="fig" id="f8" style="min-height:400px"></div><p class="cap">Standard redox potentials at pH 7 (Thauer et al. 1977). Arrows show which way each process moves electrons, and what pays.</p></div>
+</div></section>
+
+<section class="band" id="cube"><div class="wrap two">
+<div>
+<h2>Turning the square and flipping the cube both match lab results</h2>
+<p><strong>Rotate the start.</strong> Turning the square by two corners means starting two steps behind. Hydroxylamine does exactly this: it reduces the cluster to two states below S0 in the dark, and the first oxygen burst moves from flash 3 to flash 5 (Messinger and colleagues, 1991). The model with two extra states reproduces flash 5.</p>
+<p><strong>Swap hit and miss.</strong> The cube's opposite-corner move turns a clock that almost always advances into one that almost never does: λ moves to 0.86 + 0.084i, a turn of only 5.6° per flash, a rhythm of 64 flashes that fades long before it shows. That is a frozen or blocked photosystem II: cold and some inhibitors raise the miss chance. Real, and dull.</p>
+</div>
+<div><div class="fig" id="f6" style="min-height:330px"></div><p class="cap">Model oxygen per flash, untreated and with two extra steps below S0. Same Kok numbers; each row scaled to its own late average.</p></div>
+</div></section>
+
+<section class="band" id="twoway"><div class="wrap two">
+<div>
+<h2>The open twist: a clock that runs both ways at no cost</h2>
+<p>Put the two clocks together and ask for one catalyst that splits water just above 1.23 V and makes it again just below, wasting nothing. Thermodynamics allows it. Hydrogenase enzymes already do this for hydrogen, the two-sided clock, running both directions with almost no loss.</p>
+<p>For oxygen nobody has it, and the picture says why. Each of the four steps should cost 1.23 eV, a perfect quarter turn. But on ordinary catalyst surfaces the two middle intermediates, OH and OOH, both hang on by one oxygen bond, so their energies move together, 3.2 eV apart. The two middle steps then need at least 1.6 eV each: turns of 117° instead of 90°, and a wasted 0.37 V at best. The square can't be made regular. Two steps have one intermediate and one dial; four steps have three intermediates but, on these surfaces, only two free dials.</p>
+<p><strong>Honest status:</strong> the 0.37 V floor and its cause are known (Rossmeisl, Nørskov and colleagues). The equal-steps idea itself is also published: chemists call it the electrochemical-step symmetry index (Govindarajan and colleagues, 2018), and the both-ways version is the bifunctional index, whose best value on these surfaces is 0.74 V (Busch and colleagues, 2016). It's plausible in principle and blocked by kinetics, not forbidden. The test below checks it against catalyst data.</p>
+</div>
+<div><div class="fig" id="f7" style="min-height:330px"></div><p class="cap">The four steps of water oxidation as arcs of a full turn (4.92 eV). Left, the ideal clock. Right, the best clock allowed by the 3.2 eV link.</p></div>
+</div></section>
+
+<section class="band" id="test"><div class="wrap">
+<h2>Tested on catalysts: the quarter turns restate the standard picture and don't beat it</h2>
+<div class="two">
+<div>
+<p>The largest arc is exactly the overpotential, by arithmetic: an arc is 90° × (step energy ÷ 1.23 eV), so the biggest arc's excess over 90° is the limiting step's excess over 1.23 V. On four real catalysts with published energies it reproduces every published overpotential and symmetry index to the digit. That is the standard limiting-step method, drawn as a clock.</p>
+<p><strong>Do the other arcs add anything?</strong> I drew 19,321 catalysts around the published 3.2 ± 0.2 eV link between OH and OOH and asked how well each measure predicts the overpotential. The usual single number, the O minus OH energy, did best overall. The average of the too-big arcs (the published symmetry index) did slightly better among the good catalysts only, by about 0.02 V, which is far below what calculations can resolve.</p>
+<p><strong>Where the shape does matter.</strong> For a catalyst that has to work both ways, splitting and remaking water, the total loss is the biggest arc minus the smallest. The usual single number explains less than a third of that; the full clock gives it exactly, because it also needs the OH energy, a second dial. The best possible on the 3.2 eV line came out at 0.74 V, the same value published for the best two-way catalyst.</p>
+<p><strong>Against experiment.</strong> The big tables pairing calculated energies with measured overpotentials sit in supplementary files on a publisher site this browser can't reach, so I couldn't run that comparison myself. Calculated adsorption energies carry roughly 0.2 to 0.5 eV of error, and at that size two catalysts 0.1 V apart get ranked the wrong way round a third to almost half the time. So no refinement of the arcs can be checked against the lab yet.</p>
+</div>
+<div><div class="fig" id="f9" style="min-height:360px"></div><p class="cap">Published free energies of four real catalysts drawn as clock arcs. Red arcs are larger than a quarter turn; the largest sets the wasted voltage.</p>
+<div class="scroll"><table>
+<thead><tr><th>Measure (simulated catalysts)</th><th class="num">Fit to overpotential, R²</th><th class="num">Typical miss</th></tr></thead>
+<tbody>
+<tr><td>Largest arc</td><td class="num">1.00</td><td class="num">0 V, by definition</td></tr>
+<tr><td>O minus OH energy (standard)</td><td class="num">0.76</td><td class="num">0.085 V</td></tr>
+<tr><td>Average of too-big arcs (symmetry index)</td><td class="num">0.67</td><td class="num">0.14 V</td></tr>
+<tr><td>Spread of all four arcs</td><td class="num">0.49</td><td class="num">0.18 V</td></tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="scroll" style="margin-top:18px"><table class="stack">
+<thead><tr><th>Catalyst, source</th><th class="num">Four steps (eV)</th><th class="num">Overpotential</th><th class="num">Symmetry index</th><th class="num">Both-ways loss</th></tr></thead>
+<tbody>
+<tr><td>BaNiO₂, Romeo et al. 2023</td><td class="num">1.85, 1.61, 1.32, 0.14</td><td class="num">0.62 V</td><td class="num">0.36 V</td><td class="num">1.71 V</td></tr>
+<tr><td>Sr₂NiIrO₆, Calle-Vallejo 2025</td><td class="num">0.77, 1.35, 1.13, 1.67</td><td class="num">0.44 V</td><td class="num">0.28 V</td><td class="num">0.90 V</td></tr>
+<tr><td>Sr₂NiIrO₆ tuned, same source</td><td class="num">0.93, 1.51, 0.97, 1.51</td><td class="num">0.28 V</td><td class="num">0.28 V</td><td class="num">0.58 V</td></tr>
+<tr><td>IrO₂ / RuO₂ typical, arXiv 2512.05938</td><td class="num">1.23, 1.60, 1.60, 0.49</td><td class="num">0.37 V</td><td class="num">0.25 V</td><td class="num">1.11 V</td></tr>
+</tbody></table></div>
+<p style="margin-top:14px">The tuned Sr₂NiIrO₆ is the prettiest case: its arcs come out 68°, 110°, 71°, 110°, a clock with a half-turn symmetry, and that is the shape the published optimization lands on. The verdict: the quarter-turn picture is a faithful drawing of known chemistry, already in use under another name, and it gives no new prediction that data here can confirm.</p>
+</div></section>
+
+<section class="band" id="honest"><div class="wrap">
+<h2>Known or new</h2>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Result</th><th>Status</th><th>Rating</th></tr></thead>
+<tbody>
+<tr><td>Reversed clock = cytochrome c oxidase</td><td>Known chemistry; the shared square picture of the two enzymes is a clean framing</td><td>Best match</td></tr>
+<tr><td>Direction invisible in the flash pattern</td><td>Follows from complex conjugation; checked numerically</td><td>Small, true</td></tr>
+<tr><td>Mult-add inverse is forbidden</td><td>Known: stochastic matrices contract (Perron–Frobenius), the second law</td><td>Clean geometric reason</td></tr>
+<tr><td>Polygon family 1, 2, 4, 8</td><td>Each cycle known; one formula for all is the lens</td><td>Tidy</td></tr>
+<tr><td>Mirror sugar, branch, light</td><td>Known; mirror life deliberately not pursued</td><td>No new chemistry</td></tr>
+<tr><td>Uneven quarter turns of water oxidation</td><td>Known: the scaling relation, the symmetry index (2018) and the bifunctional index (2016); tested here, restates them</td><td>Faithful drawing, no new prediction</td></tr>
+</tbody></table></div>
+<p style="margin-top:16px">No twist produced a reaction that chemistry doesn't already know, and none reaches the soliton cube, where one exact formula matched a whole family of waves. The quarter-turn test above confirms the picture is right and already known; it found no edge over the standard method.</p>
+</div></section>
+
+<section class="band" id="sources"><div class="wrap">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1305018">Shinkarev 2005, Biophysical Journal: Kok model parameters</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10194837/">Shimada et al. 2023: catalytic cycle of cytochrome c oxidase</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC23610">Michel 1998, PNAS: proton pumping steps in cytochrome c oxidase</a></li>
+<li><a href="https://depositonce.tu-berlin.de/items/2313392d-bfcb-4a5e-8be1-deb094d43912">Messinger, Pauly and Witt 1991: hydroxylamine two-flash delay</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3504760">Shimizu, Takaya and Nakamura 2012, JBC: L-glucose pathway in Paracoccus 43P</a></li>
+<li><a href="https://www.jcvi.org/publications/confronting-risks-mirror-life">Adamala et al. 2024, Science: Confronting risks of mirror life</a></li>
+<li><a href="https://www.rcsb.org/structure/1YF6">Paddock et al. 2005: B-branch electron transfer in a mutant reaction centre</a></li>
+<li><a href="https://ar5iv.labs.arxiv.org/html/1902.05859">Patty et al. 2019: circular polarization of vegetation in the field</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5024552">Review of the Lowe–Thorneley nitrogenase scheme</a></li>
+<li><a href="https://arxiv.org/pdf/1807.08546">Water oxidation and the 3.2 eV scaling relation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Green_sulfur_bacteria">Green sulfur bacteria</a></li>
+<li><a href="https://pubs.rsc.org/en/content/articlehtml/2023/sc/d2sc06832j">Romeo, Illas and Calle-Vallejo 2023, Chemical Science: the symmetry index and three steps above 1.23 eV</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12409882/">Calle-Vallejo 2025, Accounts of Chemical Research: symmetry index, bifunctional index and the 0.74 V optimum</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8720886">Exner 2021, MethodsX: the electrochemical-step asymmetry index</a></li>
+<li><a href="https://arxiv.org/html/2512.05938v1">Adsorption energies are necessary but not sufficient (arXiv 2512.05938): IrO₂/RuO₂ values and DFT error sizes</a></li>
+</ul>
+<p class="cap">Textbook values used without a page opened: standard redox potentials (Thauer, Jungermann and Decker 1977), bacteriorhodopsin's 568 nm band and one proton per photon, and hydrogenase reversibility, and Busch et al. 2016 (Nano Energy) on two dials for a two-way catalyst. Calculations: <code>math-theory/photosynthesis-twists/twists.py</code>, <code>quarter_turns_test.py</code> and their output files in the project folder.</p>
+</div></section>
+
+<script>
+{
+const NS='http://www.w3.org/2000/svg';
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const C={ink:'var(--ink)',mute:'var(--mute)',line:'var(--line)',leaf:'var(--leaf)',sun:'var(--sun)',red:'var(--red)',blue:'var(--blue)'};
+const t=(x,y,s,o={})=>`<text x="${x}" y="${y}" text-anchor="${o.a||'start'}" ${o.c?`style="fill:${o.c}"`:''} ${o.w?'font-weight="600"':''}>${s}</text>`;
+const ln=(x1,y1,x2,y2,c,w=1,d='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}" ${d?`stroke-dasharray="${d}"`:''}/>`;
+const dot=(x,y,r,c)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
+function mount(id,draw){const el=document.getElementById(id);const s=document.createElementNS(NS,'svg');el.appendChild(s);const go=()=>{const W=el.clientWidth,H=el.clientHeight;if(W>0&&H>0){s.setAttribute('viewBox',`0 0 ${W} ${H}`);s.innerHTML=draw(W,H);}};const ro=new ResizeObserver(go);ro.observe(el);}
+const lam={re:0.056,im:0.888};
+const cpow=(z,k)=>{const r=Math.hypot(z.re,z.im)**k,a=Math.atan2(z.im,z.re)*k;return{re:r*Math.cos(a),im:r*Math.sin(a)}};
+
+// F1 twist map
+mount('f1',(W,H)=>{const S=Math.min(W,H),ox=W/2,oy=H/2,R=S/2.75,X=x=>ox+x*R,Y=y=>oy-y*R;let o='';
+ o+=`<rect x="0" y="0" width="${W}" height="${H}" fill="${C.red}" opacity=".07"/>`;
+ o+=`<circle cx="${ox}" cy="${oy}" r="${R}" fill="var(--bg)" stroke="${C.ink}" stroke-width="1.5"/>`;
+ o+=ln(X(-1.3),oy,X(1.3),oy,C.line)+ln(ox,Y(1.3),ox,Y(-1.3),C.line);
+ let p='';for(let k=0;k<=24;k++){const z=cpow(lam,k);p+=(k?'L':'M')+X(z.re).toFixed(1)+' '+Y(z.im).toFixed(1);}
+ o+=`<path d="${p}" fill="none" stroke="${C.leaf}" stroke-width="1.2" opacity=".55"/>`;
+ const pts=[
+  {x:0.056,y:0.888,c:C.leaf,l:'Clock λ',dx:10,dy:-8},
+  {x:0.056,y:-0.888,c:C.blue,l:'Reversed: oxygen enzyme',dx:10,dy:16},
+  {x:0.071,y:-1.122,c:C.red,l:'Undone in time: forbidden',dx:10,dy:16},
+  {x:0.86,y:0.084,c:C.mute,l:'Hit and miss swapped',dx:-6,dy:-12,a:'end'},
+  {x:-0.832,y:0,c:C.sun,l:'Two sides: sulfide',dx:0,dy:-14,a:'middle'},
+  {x:0.732,y:0.648,c:C.sun,l:'Eight sides: nitrogen',dx:10,dy:-6},
+  {x:1,y:0,c:C.sun,l:'One side: pump',dx:-8,dy:20,a:'end'}];
+ for(const q of pts){o+=dot(X(q.x),Y(q.y),5.5,q.c);}
+ for(const q of pts){let a=q.a||'start',x=X(q.x)+q.dx;const w=q.l.length*7.3;if(a==='start'&&x+w>W-4){a='end';x=X(q.x)-10;}if(a==='end'&&x-w<4){a='start';x=4;}o+=t(x,Y(q.y)+q.dy,q.l,{a,w:1});}
+ o+=t(W-8,18,'Outside: no clock of chances',{a:'end',c:C.red});
+ o+=t(X(1.02),oy-6,'1',{c:C.mute})+t(ox+6,Y(1.02),'i',{c:C.mute});
+ return o;});
+
+// F2 two clocks
+mount('f2',(W,H)=>{let o='';const two=W>520;const r=Math.min(two?W/4.6:W/3.2,two?H/3.2:H/6.2);
+ const clocks=[{cx:two?W*0.27:W/2,cy:two?H*0.42:H*0.2,dir:1,c:C.leaf,lab:['S0','S1','S2','S3'],title:'Photosystem II',sub:'light in, O₂ out'},
+               {cx:two?W*0.75:W/2,cy:two?H*0.42:H*0.68,dir:-1,c:C.blue,lab:['O','E','R','A·P·F'],title:'Cytochrome c oxidase',sub:'O₂ in, water out'}];
+ o+=`<defs><marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--leaf)"/></marker><marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--blue)"/></marker></defs>`;
+ clocks.forEach((k,j)=>{const P=[0,1,2,3].map(i=>{const a=(135-i*90*k.dir)*Math.PI/180;return[k.cx+r*Math.cos(a),k.cy-r*Math.sin(a)]});
+  for(let i=0;i<4;i++){const a=P[i],b=P[(i+1)%4],sh=0.16;const x1=a[0]+(b[0]-a[0])*sh,y1=a[1]+(b[1]-a[1])*sh,x2=a[0]+(b[0]-a[0])*(1-sh),y2=a[1]+(b[1]-a[1])*(1-sh);
+   o+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${k.c}" stroke-width="2.5" marker-end="url(#ar${j+1})"/>`;}
+  P.forEach((p,i)=>{o+=`<circle cx="${p[0]}" cy="${p[1]}" r="17" fill="var(--bg)" stroke="${k.c}" stroke-width="2"/>`+t(p[0],p[1]+4.5,k.lab[i],{a:'middle',w:1});});
+  o+=t(k.cx,k.cy-4,'one step',{a:'middle',c:C.mute})+t(k.cx,k.cy+13,k.dir>0?'per flash':'per electron',{a:'middle',c:C.mute});
+  o+=t(k.cx,k.cy+r*0.71+42,k.title,{a:'middle',w:1})+t(k.cx,k.cy+r*0.71+60,k.sub,{a:'middle',c:C.mute});});
+ return o;});
+
+// F3 inverse populations
+mount('f3',(W,H)=>{const D=[[0,1,0,0],[1.133,-0.037,0.011,-0.108],[-0.086,0.039,-0.245,1.292],[0.088,-0.418,1.482,-0.152],[-0.638,1.712,-0.241,0.167],[1.991,-0.361,0.286,-0.916]];
+ let o='';const L=8,T=26,B=46,gw=(W-L*2)/D.length,zy=T+(H-T-B)*2/3.0,sc=(H-T-B)/3.0;
+ o+=t(L,16,'Amount in S0, S1, S2, S3 after stepping back',{c:C.mute});
+ o+=ln(L,zy,W-L,zy,C.ink,1);
+ D.forEach((g,i)=>{const bw=Math.max(4,(gw-14)/4);g.forEach((v,j)=>{const x=L+i*gw+7+j*bw,h=Math.abs(v)*sc;o+=`<rect x="${x}" y="${v>=0?zy-h:zy}" width="${bw-2}" height="${h}" fill="${v<0?C.red:C.leaf}"/>`;});
+  o+=t(L+i*gw+gw/2,H-B+22,i===0?'start':(W<520?'−'+i:i+' back'),{a:'middle',c:C.mute});});
+ o+=t(L+4,zy+sc*0.9,'below the line = impossible',{c:C.red});
+ return o;});
+
+// F4 polygon spirals
+mount('f4',(W,H)=>{const ns=[1,2,4,8],cols=W>480?2:2,rows=2,cw=W/cols,ch=H/rows;let o='';const a=0.084,g=0.916;
+ ns.forEach((n,k)=>{const cx=(k%cols)*cw+cw/2,cy=Math.floor(k/cols)*ch+ch/2+8,R=Math.min(cw,ch)/2-26;const z={re:a+g*Math.cos(2*Math.PI/n),im:g*Math.sin(2*Math.PI/n)};
+  o+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${C.line}"/>`;
+  if(n>1){let pp='';for(let i=0;i<=n;i++){const an=2*Math.PI*i/n;pp+=(i?'L':'M')+(cx+R*Math.cos(an)).toFixed(1)+' '+(cy-R*Math.sin(an)).toFixed(1);}o+=`<path d="${pp}" fill="none" stroke="${C.sun}" stroke-width="1" stroke-dasharray="3 3"/>`;}
+  let p='';const pts=[];for(let i=0;i<=24;i++){const w=cpow(z,i),x=cx+R*w.re,y=cy-R*w.im;pts.push([x,y]);p+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
+  o+=`<path d="${p}" fill="none" stroke="${C.leaf}" stroke-width="1.3" opacity=".7"/>`;pts.forEach(q=>o+=dot(q[0],q[1],2.6,C.leaf));
+  const names={1:'1 side: retinal pump',2:'2 sides: sulfide, H₂',4:'4 sides: water → O₂',8:'8 sides: N₂'};
+  o+=t(cx,cy-R-10,names[n],{a:'middle',w:1});});
+ return o;});
+
+// F5 CP sketch
+mount('f5',(W,H)=>{let o='';const L=44,R=12,T=24,B=40,X=nm=>L+(nm-640)/(720-640)*(W-L-R);const mid=T+(H-T-B)/2,amp=(H-T-B)/2-8;
+ const f=nm=>(-Math.exp(-(((nm-670)/9)**2))*0.75+Math.exp(-(((nm-690)/10)**2)))*0.9;
+ o+=ln(L,mid,W-R,mid,C.line);o+=ln(L,T,L,H-B,C.line);
+ const path=s=>{let p='';for(let nm=640;nm<=720;nm+=1){p+=(nm>640?'L':'M')+X(nm).toFixed(1)+' '+(mid-s*f(nm)*amp).toFixed(1);}return p;};
+ o+=`<path d="${path(1)}" fill="none" stroke="${C.leaf}" stroke-width="2.5"/>`;
+ o+=`<path d="${path(-1)}" fill="none" stroke="${C.blue}" stroke-width="2.5" stroke-dasharray="6 4"/>`;
+ [650,670,690,710].forEach(nm=>o+=t(X(nm),H-B+18,nm,{a:'middle',c:C.mute}));
+ o+=t((L+W-R)/2,H-6,'wavelength (nm)',{a:'middle',c:C.mute});
+ o+=t(L-6,T+8,'+7×10⁻⁴',{a:'end',c:C.mute})+t(L-6,H-B,'−7×10⁻⁴',{a:'end',c:C.mute});
+ o+=t(X(703),mid-amp*0.55,'real leaf',{c:C.leaf,w:1})+t(X(703),mid+amp*0.55+10,'mirror plant',{c:C.blue,w:1});
+ return o;});
+
+// F6 hydroxylamine bars
+mount('f6',(W,H)=>{const A=[0,0.194,2.802,0.702,0.139,0.39,1.91,1.07,0.402,0.504,1.423,1.151,0.622,0.6,1.155,1.127],Bv=[0,0,0.008,0.322,2.376,0.977,0.282,0.469,1.694,1.176,0.541,0.575,1.318,1.191,0.731,0.67];
+ let o='';const L=8,rows=[{d:A,l:'Untreated: first burst on flash 3',c:C.leaf},{d:Bv,l:'Two steps below S0: flash 5',c:C.sun}];const rh=(H-30)/2,bw=(W-L*2)/16;
+ rows.forEach((r,k)=>{const base=14+k*rh+rh-22;o+=t(L,14+k*rh+12,r.l,{w:1});o+=ln(L,base,W-L,base,C.line);
+  r.d.forEach((v,i)=>{const h=v/3*(rh-44);o+=`<rect x="${L+i*bw+1}" y="${base-h}" width="${bw-3}" height="${h}" fill="${r.c}"/>`;if(i%2===0||W>560)o+=t(L+i*bw+bw/2,base+15,i+1,{a:'middle',c:C.mute});});});
+ return o;});
+
+// F7 quarter turns
+mount('f7',(W,H)=>{let o='';const two=[{arcs:[90,90,90,90],e:['1.23','1.23','1.23','1.23'],l:'Ideal: equal quarter turns'},{arcs:[62.8,117.2,117.2,62.8],e:['0.86','1.60','1.60','0.86'],l:'Best allowed: 0.37 V wasted'}];
+ const cw=W/2,R=Math.min(cw/2-30,H/2-46);const cols=[C.leaf,C.sun,C.red,C.blue];
+ two.forEach((c,k)=>{const cx=k*cw+cw/2,cy=H/2+8;let a0=90;o+=t(cx,22,W<560?c.l.split(':')[0]:c.l,{a:'middle',w:1});
+  c.arcs.forEach((d,i)=>{const a1=a0-d,r1=a0*Math.PI/180,r2=a1*Math.PI/180;const x1=cx+R*Math.cos(r1),y1=cy-R*Math.sin(r1),x2=cx+R*Math.cos(r2),y2=cy-R*Math.sin(r2);
+   const col=d>90.5?C.red:(k===0?C.leaf:C.leaf);o+=`<path d="M${x1} ${y1}A${R} ${R} 0 0 1 ${x2} ${y2}" fill="none" stroke="${col}" stroke-width="${d>90.5?9:7}"/>`;
+   o+=ln(cx,cy,x1,y1,C.line);const am=(a0-d/2)*Math.PI/180;o+=t(cx+(R+20)*Math.cos(am),cy-(R+20)*Math.sin(am)+4,c.e[i],{a:'middle'});a0=a1;});
+  o+=t(cx,cy+5,'4.92 eV',{a:'middle',c:C.mute});});
+ return o;});
+
+// F8 redox ladder
+mount('f8',(W,H)=>{let o='';const T=16,B=52,Y=v=>T+(0.9-v)/(0.9+0.5)*(H-T-B);const lab=W>520?150:104,L=lab+8,cw=(W-L-8)/4;
+ const couples=[['O₂ / H₂O',0.818],['NO₃⁻ / NO₂⁻',0.433],['cyt c',0.254],['S / H₂S',-0.27],['NAD(P)H',-0.32],['Ferredoxin',-0.42]];
+ couples.forEach(([n,v])=>{o+=ln(L-4,Y(v),W-8,Y(v),C.line,1,'2 4');o+=t(L-8,Y(v)+4,n+(W>520?'  '+(v>0?'+':'')+v.toFixed(2):''),{a:'end',c:C.mute});});
+ o+=`<defs>${['leaf','sun','blue','red'].map(c=>`<marker id="m${c}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--${c})"/></marker>`).join('')}</defs>`;
+ const arr=[{f:0.818,to:-0.324,c:'leaf',l:'Plants',s:'light ×2'},{f:-0.27,to:-0.42,c:'sun',l:'Sulfide',s:'light ×1'},{f:-0.32,to:0.818,c:'blue',l:'Respiration',s:'releases'},{f:0.433,to:-0.32,c:'red',l:'Nitrite',s:'protons pay'}];
+ arr.forEach((a,i)=>{const x=L+cw*i+cw/2;o+=`<line x1="${x}" y1="${Y(a.f)}" x2="${x}" y2="${Y(a.to)}" stroke="var(--${a.c})" stroke-width="4" marker-end="url(#m${a.c})"/>`;
+  o+=t(x,H-26,a.l,{a:'middle',w:1});o+=t(x,H-8,a.s,{a:'middle',c:C.mute});});
+ return o;});
+// F9 real catalysts as arcs
+mount('f9',(W,H)=>{const D=[['BaNiO₂',[1.85,1.61,1.32,0.14]],['Sr₂NiIrO₆',[0.77,1.35,1.13,1.67]],['Sr₂NiIrO₆ tuned',[0.93,1.51,0.97,1.51]],['IrO₂ / RuO₂',[1.23,1.60,1.60,0.49]]];
+ let o='';const cw=W/2,ch=H/2,R=Math.min(cw,ch)/2-22;
+ D.forEach(([n,st],k)=>{const cx=(k%2)*cw+cw/2,cy=Math.floor(k/2)*ch+ch/2+10;let a0=90;o+=t(cx,cy-R-14,n,{a:'middle',w:1});
+  o+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${C.line}" stroke-width="1"/>`;
+  st.forEach(e=>{const d=360*e/4.92,a1=a0-d,r1=a0*Math.PI/180,r2=a1*Math.PI/180;const x1=cx+R*Math.cos(r1),y1=cy-R*Math.sin(r1),x2=cx+R*Math.cos(r2),y2=cy-R*Math.sin(r2);
+   const big=d>90.5;o+=`<path d="M${x1.toFixed(1)} ${y1.toFixed(1)}A${R} ${R} 0 ${d>180?1:0} 1 ${x2.toFixed(1)} ${y2.toFixed(1)}" fill="none" stroke="${big?C.red:C.leaf}" stroke-width="${big?8:6}"/>`;
+   o+=ln(cx,cy,x1,y1,C.line);a0=a1;});
+  const eta=Math.max(...st)-1.23;o+=t(cx,cy+5,eta.toFixed(2)+' V',{a:'middle',w:1});});
+ return o;});
+}
+</script>
+</body>
+</html>

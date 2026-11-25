@@ -1,0 +1,7 @@
+{
+ "CAPE (baseline)": -0.012048289783973987,
+ "acceleration only": -0.016934542009556797,
+ "CAPE + acceleration": -0.07329945371284685,
+ "CAPE + 5-yr growth rate": -0.2202244678478602,
+ "CAPE + rate + acceleration": -0.2750624947357825
+}

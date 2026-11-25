@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rulecraft, in fused algebra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a calm worked document, conclusion first, every caveat kept.
+   IDEA: an architect's plate set: each Rulecraft idea gets one exact drawing.
+   PICTURE: the boundary square, inside x outside, with the spillover corner in yellow.
+   COLOUR and TYPE: white, black, concrete planes, safety yellow on the corner only; Hanken Grotesk.
+   LAYOUT: title modest, wide margins, one big drawing, then plates with plain text beside. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1a1a19);--ink:light-dark(#151515,#ececea);--mute:light-dark(#5c5c58,#a9a9a4);--plane:light-dark(#e6e6e2,#2a2a28);--line:light-dark(#d0d0cb,#3a3a37);--yel:#ffe600;--yelink:#151515}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:clamp(32px,4.4vw,48px);line-height:1.05;font-weight:500;margin:0 0 14px;text-wrap:balance;max-width:20ch}
+h2{font-size:28px;line-height:1.15;font-weight:500;margin:0 0 4px;text-wrap:balance}
+h3{font-size:19px;font-weight:700;margin:22px 0 4px}
+.sub{color:var(--mute);font-size:14px;margin:0 0 16px}
+p{max-width:70ch;margin:0 0 12px}
+.lede{font-size:19px;max-width:62ch}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(20px,4vw,56px);align-items:center}
+.hero svg{width:100%;height:auto;display:block}
+.plane{background:var(--plane)}
+.scroll{display:flex;gap:18px;overflow-x:auto;padding:12px max(5vw,16px);border-block:1px solid var(--line);font-size:14px;white-space:nowrap}
+.scroll a{color:var(--ink);text-decoration:none;flex:none}.scroll a:hover{text-decoration:underline}
+@media(min-width:900px){.scroll{position:sticky;top:0;background:var(--bg);z-index:2}}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-weight:700;font-size:14px;color:var(--mute)}
+td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fit{white-space:nowrap;font-weight:700}
+.plate{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;margin-top:18px}
+.plate img{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line)}
+.nums{font-variant-numeric:tabular-nums}
+.k{background:var(--yel);color:var(--yelink);padding:0 4px}
+ul{padding-left:20px;max-width:70ch}li{margin-bottom:6px}
+code{font-size:14px;overflow-wrap:anywhere}
+.note{font-size:14px;color:var(--mute)}
+section{border-top:1px solid var(--line)}
+@media(max-width:860px){.hero,.plate{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band"><div class="wrap hero">
+  <div>
+    <h1>Rulecraft, in fused algebra</h1>
+    <p class="lede">Three of Rulecraft's ideas get an exact shape. <b>Scope matches spillover</b> is the corner of the cube that straddles a boundary. <b>Wisdom</b> is the corner of a square, and a mixed panel's wisdom is mostly cross corners. <b>The event horizon</b> is −1, the one value mult-add can never undo.</p>
+    <p class="note">Mult-add: a ⊞ b = a + b + ab = (1 + a)(1 + b) − 1. A number becomes a box; its pieces are the corners of a cube. Everything here is classical algebra read through Rulecraft. What may be new is the single picture.</p>
+  </div>
+  <svg viewBox="0 0 420 380" role="img" aria-label="The boundary square: a unit square, a strip for the inside effect, a strip for the outside effect, and a yellow corner where both change together">
+    <rect x="20" y="130" width="230" height="230" fill="var(--plane)" stroke="var(--bg)" stroke-width="4"/>
+    <rect x="250" y="130" width="92" height="230" fill="var(--ink)" opacity=".82" stroke="var(--bg)" stroke-width="4"/>
+    <rect x="20" y="20" width="230" height="110" fill="var(--ink)" opacity=".55" stroke="var(--bg)" stroke-width="4"/>
+    <rect x="250" y="20" width="92" height="110" fill="#ffe600" stroke="var(--bg)" stroke-width="4"/>
+    <text x="135" y="250" text-anchor="middle" fill="var(--ink)" font-size="17">1</text>
+    <text x="135" y="272" text-anchor="middle" fill="var(--mute)" font-size="13">nothing changes</text>
+    <text x="296" y="240" text-anchor="middle" fill="var(--bg)" font-size="15">inside</text>
+    <text x="296" y="260" text-anchor="middle" fill="var(--bg)" font-size="15">X_S</text>
+    <text x="135" y="72" text-anchor="middle" fill="var(--bg)" font-size="15">outside X_T</text>
+    <text x="296" y="66" text-anchor="middle" fill="#151515" font-size="14">cross</text>
+    <text x="296" y="86" text-anchor="middle" fill="#151515" font-size="14">X_S·X_T</text>
+    <text x="356" y="80" fill="var(--ink)" font-size="13">spillover:</text>
+    <text x="356" y="97" fill="var(--ink)" font-size="13">changed</text>
+    <text x="356" y="114" fill="var(--ink)" font-size="13">together</text>
+  </svg>
+</div></header>
+
+<nav class="scroll" aria-label="Sections">
+  <a href="#map">The map</a><a href="#spill">1. Scope matches spillover</a><a href="#wisdom">2. Wisdom and panels</a><a href="#horizon">3. The event horizon</a><a href="#quick">Smaller matches</a><a href="#weak">Weak fits</a><a href="#proofs">Proofs and files</a>
+</nav>
+
+<section class="band" id="map"><div class="wrap">
+  <h2>The map</h2>
+  <p class="sub">Each Rulecraft idea, the shape it takes, and how strong the fit is</p>
+  <table class="stack">
+    <thead><tr><th>Rulecraft idea</th><th>Shape in the algebra</th><th>Fit</th><th>What it adds beyond words</th></tr></thead>
+    <tbody>
+      <tr><td>Changed together, decided together <span class="note">(scope matches spillover)</span></td><td>The cross term of the boundary square; the cube's straddling corners <span class="note">(Harsanyi dividends on the subset cube)</span></td><td class="fit">Strong</td><td>An exact definition: a body's spillover is every corner that touches its members and someone outside. For product-shaped effects that total is exactly X_S·X_T.</td></tr>
+      <tr><td>Wisdom as an area; mixed panels</td><td>The square's corner; a panel is a grid of corners <span class="note">(bilinear area)</span></td><td class="fit">Strong</td><td>Keeps "zero on either axis means no wisdom" for the corner, keeps the strips that plain multiplying throws away, and shows a mixed panel's wisdom is mostly cross corners.</td></tr>
+      <tr><td>Event horizons, reversibility, the kernel</td><td>−1 absorbs; the way back is −a/(1+a) <span class="note">(the mult-add inverse)</span></td><td class="fit">Strong</td><td>A proof that one value, total loss, has no way back, and a formula for how fast the way back grows as you near it.</td></tr>
+      <tr><td>The thermostat</td><td>Undoing +d with −d leaves −d² <span class="note">(inverse vs additive correction)</span></td><td class="fit">Medium</td><td>The exact correction, and the size of the error an additive thermostat leaves.</td></tr>
+      <tr><td>Debt traps; r &gt; g</td><td>Compounding by cube layers; r ⊖ g = (r − g)/(1 + g)</td><td class="fit">Medium</td><td>Splits growth into the simple part and the compounding part, so a warning can watch the second.</td></tr>
+      <tr><td>Tensions ("each fails alone")</td><td>Balanced square: (s+d)(s−d) = s² − d²</td><td class="fit">Medium</td><td>A held-in-balance tension keeps the most corner; lopsidedness costs the square of the gap.</td></tr>
+      <tr><td>Benedict's high-synergy society</td><td>The sign of the corner weight A in a + b + A·ab</td><td class="fit">Medium</td><td>One number: A &gt; 0 self-interest and the common good compound, A &lt; 0 one gain is another's loss, A = 0 nothing spills over.</td></tr>
+      <tr><td>Influence with a free floor vote</td><td>The floor vote is the 1 in (1 + k)</td><td class="fit">Medium</td><td>A design choice the book hasn't named yet (below).</td></tr>
+      <tr><td>Order of reforms; path dependence</td><td>Mult-add commutes; the fused exponent rung doesn't</td><td class="fit">Narrow</td><td>Percent reforms on one quantity can never be path-dependent; curvature needs more.</td></tr>
+      <tr><td>Society tensor and KPIs</td><td>Main effects and interactions as cube layers, in log(1 + x) coordinates</td><td class="fit">Narrow</td><td>Same as factorial design (Yates, 1937); useful framing, nothing new.</td></tr>
+      <tr><td>Decision gravity, math and love, story, faith</td><td>None found</td><td class="fit">Weak</td><td>See weak fits.</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="band" id="spill"><div class="wrap">
+  <h2>1. Scope matches spillover is the straddling corner</h2>
+  <p class="sub">The boundary theorem: X(S and T) = X_S + X_T + X_S·X_T</p>
+  <p>Split everyone a decision touches into the deciding body (inside) and everyone else (outside). Stack their effects as a box. The box has four pieces: what nobody feels, what only the inside feels, what only the outside feels, and the corner where both sides change together. That corner is the spillover, and it is exactly the cross term X_S·X_T. On the cube of all the parties, it is every corner that touches someone inside <i>and</i> someone outside. With n parties there are 2ⁿ − 1 corners; a body holding s of them sees 2ˢ − 1 and has (2ˢ − 1)(2ⁿ⁻ˢ − 1) straddling its edge. Rulecraft's rule says: draw the boundary so the heavy corners fall inside.</p>
+  <div class="plate">
+    <img src="figures/r1_boundary.png" alt="Left: the boundary square with inside 0.4, outside 0.96 and cross 0.384. Right: the Upper town's plant is worth 17.44, of which Upper sees 4.">
+    <div>
+      <h3>Worked: three towns on a river</h3>
+      <p class="nums">Each town can build a treatment plant for <b>6</b>. A plant lifts water quality <b>40%</b> at its town and everywhere downstream, so qualities multiply: the Lower town's water improves by 1.4 × 1.4 × 1.4 − 1 = <b>1.744</b> when all three build. Each unit of improvement is worth <b>10</b> to the town that drinks it.</p>
+      <ul class="nums">
+        <li><b>Deciding alone:</b> Upper's own gain is 4, below 6. Middle's is 4 (5.6 if Upper built). Lower's is 4 with nothing upstream. Nobody builds.</li>
+        <li><b>Deciding as a basin:</b> all three gain 4 + 9.6 + 17.44 = <b>31.04</b> for a cost of 18. Net <b>+13.04</b>, lost entirely at the wrong scope.</li>
+        <li><b>Where it hides:</b> Upper's plant is worth 17.44 to the basin, but Upper sees 4. <span class="k">77%</span> of its value is in corners that reach downstream.</li>
+        <li><b>On Lower's cube:</b> 12 in single corners, 4.8 in pairs, 0.64 in the triple. Only 7.84 of it sits in corners that contain Lower's own plant.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Worked: a taxi ride against a carbon-heavy shipment</h3>
+  <p class="nums">Rulecraft's contrast between taxi medallions and cap and trade falls out of the same cube. A ride a rider values at 30 and costs the driver 18 has one corner, {rider, driver} = 12, entirely inside the pair. Nothing straddles, so there is no spillover to fix, and a cap that removes 1,000 rides just deletes 12,000 of value. A shipment with surplus 30 for factory and customer also has a three-way corner {factory, customer, world} = −18 that only exists when both trade. The pair sees 30; the world nets +12. Drop the surplus to 15 and the pair still trades while the world nets <b>−3</b>. A cap or price of 18 pulls that corner into the pair's view: they trade only when surplus beats 18. That is Pigou, drawn on the cube.</p>
+  <p class="note">Known parts: the corner split of a group's value is the Harsanyi dividend (1959); Oates's decentralisation theorem and Olson's fiscal equivalence are the economics. What the algebra adds: one picture, an exact spillover count for any boundary, and mult-add as the baseline. When effects merely compound, the corners are products of the sides; a real coupling shows up as a corner weight A ≠ 1. Rulecraft's co-change test is the recipe for measuring those corners from the decision log, using the cube's alternating signs (Möbius inversion) to pull them out of group totals.</p>
+</div></section>
+
+<section class="band plane" id="wisdom"><div class="wrap">
+  <h2>2. Wisdom is a corner, and a panel is a grid of corners</h2>
+  <p class="sub">The square (1 + e)(1 + i) − 1 = e + i + ei, and the panel grid (Σe)(Σi)</p>
+  <p>Rulecraft already models wisdom as an area: experience times intellect, zero if either is zero. The fused square keeps that claim for its corner, <b>ei</b>, and also keeps the two strips, <b>e</b> and <b>i</b>, which plain multiplication throws away. So a brilliant person with no experience scores 10 in strips and 0 in wisdom, instead of vanishing. That is the same complaint about 0 × 4 = 0 that started the theory.</p>
+  <div class="plate">
+    <img src="figures/r2_panels.png" alt="Expert plus resident make a 10 by 10 square of area 100, 82 of it cross corners. Two experts make a 2 by 18 strip of area 36.">
+    <div>
+      <h3>Worked: who sits on the panel</h3>
+      <p class="nums">On a 0 to 10 scale, an expert is (experience 1, intellect 9) and a resident who has lived the problem is (9, 1). Each alone has a wisdom corner of 9.</p>
+      <ul class="nums">
+        <li><b>Expert + resident:</b> summed 10 × 10 = <b>100</b>. Own corners 18, cross corners <span class="k">82</span>. The big one, 81, is the resident's experience joined to the expert's intellect.</li>
+        <li><b>Two experts:</b> 2 × 18 = <b>36</b> = 10² − 8². Same individuals' total, 64 less wisdom.</li>
+        <li><b>How well they join:</b> wisdom = own + A·cross. A = 0.1 (a crew that won't speak up, as at Tenerife) gives 26.2; A = 0.7 (crew resource management) gives 75.4.</li>
+      </ul>
+      <p>This puts a number on Rulecraft's line that a panel "covers more area than any member", and says why mixing beats sameness: for a fixed total, the square beats the strip.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" id="horizon"><div class="wrap">
+  <h2>3. The event horizon is −1</h2>
+  <p class="sub">−1 absorbs: (−1) ⊞ b = −1. Everywhere else, the way back is ⊖a = −a/(1 + a)</p>
+  <p>Mult-add has a way back from every change but one. Lose everything (a = −1) and the box's side becomes zero; no later change can rebuild it, because (−1) ⊞ b = −1 for every b. That is Rulecraft's event horizon in one line, and the kernel's job is to forbid steps to −1: abolishing elections, removing a group's rights. Near the horizon the way back grows without limit, which is why the thermostat must warn early.</p>
+  <div class="plate">
+    <img src="figures/r3_horizon.png" alt="The gain needed to recover rises from 25% after a 20% loss to 900% after a 90% loss and goes to infinity at 100%.">
+    <div>
+      <h3>Worked: the way back</h3>
+      <table class="nums">
+        <thead><tr><th>Lost</th><th style="text-align:right">Gain needed to recover</th></tr></thead>
+        <tbody><tr><td>20%</td><td class="n">25%</td></tr><tr><td>50%</td><td class="n">100%</td></tr><tr><td>90%</td><td class="n">900%</td></tr><tr><td>99%</td><td class="n">9,900%</td></tr><tr><td>100%</td><td class="n">none exists</td></tr></tbody>
+      </table>
+      <h3>The thermostat's exact correction</h3>
+      <p class="nums">A KPI drifts up 25%. Pulling it down 25% leaves it 6.25% low, because d ⊞ (−d) = −d², the drift's corner square. The exact correction is −20%. At a 10% drift the additive error is 1%; at 50% it is 25%.</p>
+    </div>
+  </div>
+  <h3>Worked: a debt trap, by cube layer</h3>
+  <div class="plate">
+    <img src="figures/r4_debt_layers.png" alt="Over 30 years the debt rise of 78.1 points splits into 58.2 simple, 16.4 from pairs of years and 3.4 from higher layers.">
+    <div>
+      <p class="nums">Interest r = 5%, growth g = 3%. The debt ratio grows each year by r ⊖ g = (r − g)/(1 + g) = <b>1.9417%</b>, not 2%. At 100% of GDP, holding steady takes a primary surplus of 1.94% of GDP. With none for 30 years the ratio reaches <b>178.1%</b>. On the 30-axis cube the rise of 78.1 points splits into <b>58.25</b> simple (layer 1), <b>16.40</b> from pairs of years, <b>2.97</b> from triples and 0.4 above that.</p>
+      <p>Intuition sees layer 1. The trap is layers 2 and up, which grow like (n − 1)x/2 times layer 1. A thermostat can watch that ratio directly. Piketty's r &gt; g is the same arithmetic run on wealth.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="band plane" id="quick"><div class="wrap">
+  <h2>Smaller matches</h2>
+  <p class="sub">Real but narrower; each is checked in the files</p>
+  <ul>
+    <li><b>Tensions held in balance.</b> Two principles sharing 10 units of effort keep the largest corner at 5 and 5 (25). Lopsided by 2 keeps 21; by 4, keeps 9. The loss is always the square of the gap, (s+d)(s−d) = s² − d². "Each fails alone" is the corner being zero at either end. Three-way tensions such as merit, mirror and mandate are a 3-cube with layers 1, 3, 3, 1.</li>
+    <li><b>Benedict's synergy as a sign.</b> In a ⊞_A b = a + b + A·ab the corner carries a weight. A &gt; 0 is a high-synergy society (gains compound), A &lt; 0 is low synergy (one gain is another's loss), A = 0 means nothing spills over. Proved: A·(a ⊞_A b) = (Aa) ⊞ (Ab), so every A is ordinary mult-add in rescaled units.</li>
+    <li><b>The free floor vote is the 1.</b> Rulecraft gives each citizen a free basic vote and prices extra influence quadratically, k². Pricing total voice V = 1 + k as V² − 1 instead keeps each person's voice proportional to how much they care. With values 1, 2 and 4, plain pricing gives voices 2 : 3 : 5; fused pricing gives 1 : 2 : 4. Plain pricing blends one-person-one-vote with quadratic voting; fused pricing is quadratic voting with the first unit pre-paid. Which the book wants is a values question, not a math one.</li>
+    <li><b>Saved influence must never earn a return.</b> If stored votes grew even 5% a period, they would compound like capital (1.63× in 10 periods), turning equal credits into r &gt; g. Rulecraft's "never earned" rule is the right guard.</li>
+    <li><b>Order of reforms.</b> Mult-add commutes and associates, so percent changes to one quantity give the same result in any order (proved for any reshuffle). Path dependence needs a higher rung: the fused exponent (1+a)^(1+b) − 1 gives 7 one way and 8 the other.</li>
+  </ul>
+</div></section>
+
+<section class="band" id="weak"><div class="wrap">
+  <h2>Weak fits, said plainly</h2>
+  <p class="sub">Where the algebra adds a picture but no new content</p>
+  <ul>
+    <li><b>Decision gravity.</b> Rulecraft wants a curved policy space. One-dimensional mult-add is flat: log(1 + x) straightens it into ordinary addition. It can supply coordinates for a curved model, not the curvature.</li>
+    <li><b>Math and love underneath everything.</b> King's power-and-love line has the square's shape (each alone fails), but that is a picture, not a theorem.</li>
+    <li><b>The society tensor.</b> Reading slider effects on a KPI as main effects plus interactions on a cube is the 2ᵏ factorial design (Yates, 1937). Fitting in log(1 + x) coordinates is sound advice, and nothing new.</li>
+    <li><b>Legitimacy and story, faith and power, peoples without a state.</b> No structure found.</li>
+  </ul>
+</div></section>
+
+<section class="band plane" id="proofs"><div class="wrap">
+  <h2>Proofs and files</h2>
+  <p class="sub">Core Lean 4, no mathlib; every identity also checked with sympy</p>
+  <p><b>RulecraftFused.lean is written but not yet compiled.</b> Installing Lean was refused in this session, so the file is unchecked. Every identity it states was checked symbolically in checks.py, so a failure would be a proof-script slip, not a false statement. It proves:</p>
+  <ul>
+    <li><code>boundary</code>, <code>foldMA_append</code>: the whole is inside ⊞ outside, cross term X_S·X_T</li>
+    <li><code>one_add_foldMA_eq_corners</code>: 1 + (x₁ ⊞ … ⊞ xₙ) is the sum over every group of parties of the product of their effects (the cube's corners)</li>
+    <li><code>foldMA_perm</code>: any reshuffle of the same effects gives the same total; <code>fexp_not_comm</code>: the fused exponent rung doesn't commute</li>
+    <li><code>neg_one_absorbs</code>, <code>no_way_back</code>, <code>way_back</code>, <code>recovery</code>: the event horizon and the exact way back</li>
+    <li><code>thermostat_residue</code>, <code>panel_grid</code>, <code>balance</code>, <code>balance_le</code>, <code>weighted_conj</code>, <code>fused_price_step</code></li>
+  </ul>
+  <p>Compounding by layers, (1 + x)ⁿ = Σ C(n,k) xᵏ, is already proved in topology/lean/CubeProofs.lean.</p>
+  <p class="note">Files in math-theory/rulecraft: checks.py and checks_output.txt (every number on this page), figures.py and figures/ (five plates), lean/RulecraftFused.lean. Rulecraft passages read from the working notes doc: The role of government, Principles, Wisdom (opening), Coupling, the influence and thermostat passages, and the mathematical foundations toolkit.</p>
+</div></section>
+
+</body>
+</html>

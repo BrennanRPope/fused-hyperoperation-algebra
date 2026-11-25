@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.npy
+*.npz
+*.log
+topics/dark-sector/data/pantheon/PantheonPlusSH0ES_STAT+SYS.cov
+topics/econ-forecasting/data/SP500_const.rda
+.lake/
+lean-library/build/
+*.olean
+*.ilean

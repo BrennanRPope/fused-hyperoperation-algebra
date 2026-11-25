@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculus from mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: exact, calm, a geometry plate with the working shown
+   IDEA: an architect's drawing sheet: one big exact box that grows
+   PICTURE: the growing box, two strips and the corner square, with a step-size slider
+   COLOUR and TYPE: white, black, concrete planes, safety yellow only on the corner; Hanken Grotesk
+   LAYOUT: modest title, big drawing, then the dictionary table, then short sections */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1a1a19);--ink:light-dark(#141414,#ecebe6);--mute:light-dark(#5c5c58,#a9a8a1);--con:light-dark(#d8d8d4,#3a3a37);--con2:light-dark(#ececea,#2a2a28);--line:light-dark(#141414,#ecebe6);--y:#ffe600;--rule:light-dark(#d0d0cc,#3d3d3a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,60px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(32px,4.4vw,48px);line-height:1.05;font-weight:500;margin:0 0 14px;text-wrap:balance}
+h2{font-size:24px;line-height:1.2;font-weight:500;margin:0 0 10px;text-wrap:balance}
+p{max-width:68ch;margin:0 0 12px}
+.lede{font-size:19px;max-width:62ch}
+.mute{color:var(--mute);font-size:14px}
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:start;margin-top:18px}
+.fig{position:relative;min-height:400px;background:var(--con2)}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.ctl{margin-top:14px}
+label{font-weight:500}
+input[type=range]{width:100%;height:44px;accent-color:#141414}
+:root[data-theme=dark] input[type=range]{accent-color:#ecebe6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) input[type=range]{accent-color:#ecebe6}}
+.read{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-variant-numeric:tabular-nums;margin-top:8px}
+.read b{font-weight:500;text-align:right;white-space:nowrap}
+.key{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border:1px solid var(--line)}
+.scroll{overflow-x:auto;display:flex;gap:18px;padding:12px max(5vw,16px);border-block:1px solid var(--rule);max-width:1240px;margin:0 auto}
+.scroll a{flex:none;color:var(--ink);text-decoration:none;font-size:15px}
+.scroll a:hover{text-decoration:underline}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:500;color:var(--mute)}
+.f{font-family:"Hanken Grotesk",system-ui;white-space:nowrap}
+.tag{white-space:nowrap;font-size:13px;padding:2px 7px;border:1px solid var(--line)}
+.tag.p{background:var(--y);color:#141414;border-color:#141414}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,44px)}
+.fig2{position:relative;min-height:300px;background:var(--con2)}.fig2>svg{position:absolute;inset:0;width:100%;height:100%}
+.flag{background:var(--y);color:#141414;padding:18px 20px;margin:8px 0 0}
+.flag p{max-width:none}
+code{overflow-wrap:anywhere;font-size:14px}
+html{scroll-padding-top:20px}
+@media(max-width:860px){.hero,.two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}.f{white-space:normal}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<div class="band">
+<h1>Calculus is mult-add with the corner dropped</h1>
+<p class="lede">Grow a box by a small step and it gains two strips and one corner square. Mult-add keeps the corner. Calculus is what is left when the step shrinks to nothing and the corner goes with it.</p>
+<div class="hero">
+  <div>
+    <div class="fig" id="boxfig" role="img" aria-label="A box F by G growing by two strips and a yellow corner square"><svg id="box"></svg></div>
+    <div class="ctl"><label for="h">Step size h: <span id="hv">0.60</span></label>
+    <input id="h" type="range" min="0" max="1" step="0.01" value="0.6"></div>
+  </div>
+  <div>
+    <h2>What the box says</h2>
+    <p>The box has sides F = 3 and G = 2. One step grows them by ΔF = 1.2h and ΔG = 0.9h.</p>
+    <div class="read">
+      <span><i class="key" style="background:var(--con)"></i>Strip ΔF·G</span><b id="s1"></b>
+      <span><i class="key" style="background:var(--con)"></i>Strip F·ΔG</span><b id="s2"></b>
+      <span><i class="key" style="background:var(--y)"></i>Corner ΔF·ΔG</span><b id="s3"></b>
+      <span>Corner's share of the growth</span><b id="s4"></b>
+    </div>
+    <p style="margin-top:14px">Divide by h and slide h toward 0: the strips become Leibniz's rule (FG)′ = F′G + FG′, and the corner shrinks like h² and disappears. That one disappearance is the only place a limit enters.</p>
+    <p class="mute">Relative growth says the same thing. Rates p and q over a step of size h give the product the rate p + q + h·p·q, your weighted mult-add with the step size as the corner weight.</p>
+  </div>
+</div>
+</div>
+
+<nav class="scroll" aria-label="Sections">
+<a href="#dictionary">Dictionary</a><a href="#ftc">Fundamental theorem</a><a href="#four">Four ways to fuse</a><a href="#newton">Newton and Taylor</a><a href="#timescales">Time scales</a><a href="#known">Known and new</a><a href="#lean">Lean</a>
+</nav>
+
+<div class="band" id="dictionary">
+<h2>The dictionary, rule by rule</h2>
+<p>Write a step as f(k+1) = f(k) ⊞ d(k). Then d is the mult-add slope, and through the lift 1 + x every step multiplies a box by (1 + d).</p>
+<table class="stack"><thead><tr><th>Calculus idea</th><th>Mult-add form</th><th>Lowest rung</th><th>Limit?</th><th>Status</th></tr></thead><tbody id="dict"></tbody></table>
+<p class="mute" style="margin-top:10px">Rung 2 is mult-add, rung 3 is the mult-add power. "Proved" means checked in core Lean with no sorry. "Checked" means checked symbolically or numerically in Python (12 of 12 pass).</p>
+</div>
+
+<div class="band" id="ftc">
+<div class="two">
+<div>
+<h2>The fundamental theorem is the cube's lift</h2>
+<p>Mult-add the slopes back together and you get the whole climb: f(n) = f(0) ⊞ (d₀ ⊞ d₁ ⊞ … ⊞ dₙ₋₁). Through the lift it says the end box is the start box times every step's factor. That is Volterra's product integral (1887), exact at every step size, and proved in Lean.</p>
+<p>A constant slope a gives a ⊞ a ⊞ … ⊞ a, the mult-add power. So the straight lines of mult-add calculus are exponentials. Slice a total rate x into n steps of x/n and the staircase closes on eˣ − 1, which the drawing shows for x = 1.</p>
+<p class="mute">The ordinary version is the same telescope with + in place of ⊞: the differences add back to f(n) − f(0). Also proved.</p>
+</div>
+<div><div class="fig2" role="img" aria-label="Staircases of n mult-add steps closing on e to the x minus 1"><svg id="stairs"></svg></div>
+<p class="mute" style="margin-top:8px">Black curve: eˣ − 1. Grey stairs: 2, 4 and 16 mult-add steps of size x/n.</p></div>
+</div>
+</div>
+
+<div class="band" id="four">
+<h2>Four ways to fuse a derivative</h2>
+<p>The lift x ↦ 1 + x can go on the output, the input, both or neither. Each choice is an existing calculus, shifted by 1.</p>
+<table class="stack"><thead><tr><th>Lifted side</th><th>Step</th><th>Derivative it gives</th><th>Known as</th></tr></thead><tbody>
+<tr><td>Neither</td><td class="f">(f(x+h) − f(x)) / h</td><td class="f">f′</td><td>Newton–Leibniz</td></tr>
+<tr><td>Output</td><td class="f">(f(x+h) ⊟ f(x)) / h</td><td class="f">f′ / (1 + f)</td><td>Geometric calculus (Grossman–Katz, 1972); its exponential form is Volterra's</td></tr>
+<tr><td>Input</td><td class="f">(f(x ⊞ h) − f(x)) / (x ⊞ h − x)</td><td class="f">Jackson's q-derivative, q = 1 + h</td><td>q-calculus (Jackson, 1908)</td></tr>
+<tr><td>Both</td><td class="f">(f(x ⊞ h) ⊟ f(x)) / h</td><td class="f">(1 + x) f′ / (1 + f)</td><td>Bigeometric calculus (Grossman–Katz)</td></tr>
+</tbody></table>
+<p style="margin-top:12px">The q-derivative does appear, as you asked to check: stepping the input by mult-add moves it by h(1 + x), which is Jackson's gap with q = 1 + h. In the output-lifted calculus the product rule is just the sum rule, D(f ⊞ g) = Df + Dg, and the chain rule is D(f∘g) = (Df)(g)·g′. In exponential form that chain rule raises to the power g′, so it needs rung 3.</p>
+</div>
+
+<div class="band" id="newton">
+<h2>Your nth-derivative formula is the cube's layers</h2>
+<p>Your original formula wasn't kept, but it matched the binomial theorem and Taylor's series, so this builds on the binomial form, Newton's forward formula: f(n) = Σ C(n,k)·Δᵏf(0). The n-th difference is a signed walk over the n-cube's layers, and the layers weigh the differences when you rebuild f. Lean proves this exactly.</p>
+<p>Now shrink the step to x/N. The layer weight C(N,k)·(x/N)ᵏ closes on xᵏ/k!, the same collapse that builds e on the e page, and Δᵏf/hᵏ closes on the k-th derivative. Newton's formula turns into Taylor's series. That last move is a limit, so it is checked numerically, not in Lean.</p>
+</div>
+
+<div class="band" id="timescales">
+<h2>The strongest lead: time-scale calculus</h2>
+<div class="flag">
+<p><b>Time-scale calculus is weighted mult-add calculus, with the corner weight equal to the step size.</b> Hilger (1988) and Bohner and Peterson (2001) built one calculus that covers both sums and integrals. Its ⊕ is p ⊕ q = p + q + μpq, where μ is the step size. Its inverse is ⊖p = −p/(1 + μp). It works only off the wall 1 + μp = 0, and its exponentials obey e_p·e_q = e_(p⊕q).</p>
+<p>That is your weighted family a + b + k·ab, with k = μ, your wall at −1/k and your lift. Step size 0 gives plain + and ordinary calculus. Step size 1 gives plain mult-add and difference equations. The field is established, so this is solid ground for "calculus falls out", not new math. It is nowhere near as surprising as the soliton cube.</p>
+</div>
+</div>
+
+<div class="band" id="known">
+<h2>Known and new</h2>
+<p><b>Known:</b> every rule on this page. Product integrals (Volterra 1887), geometric and bigeometric calculus (Grossman and Katz 1972), the q-derivative (Jackson 1908), Newton's forward formula and time scales (Hilger 1988). The corner-square picture of the discrete product rule is textbook too.</p>
+<p><b>New here:</b> one picture that holds all of them. The four calculi are the four places to put x ↦ 1 + x. Discrete and continuous calculus are two slices of one weighted mult-add family, where the step size is the corner weight. And the limit enters calculus at one place only: when the corner weight goes to 0.</p>
+<p><b>Inferred, not proved:</b> that nothing else in single-variable calculus needs more than rungs 2 and 3 plus that one limit. It held for every rule I tried.</p>
+</div>
+
+<div class="band" id="lean">
+<h2>What Lean checked</h2>
+<p>29 theorems in core Lean 4.37, no mathlib, no sorry, standard axioms only, in <code>math-theory/calculus/lean/FusedCalculus.lean</code>. They cover the fundamental theorem in mult-add, box and ordinary forms, constant slope as a power, the product rule as a sum rule, Leibniz with the corner, the block chain rule (a power of a power), time-scale ⊕ with its exponential law and inverse, Jackson's gap and Newton's forward formula. Limits are not in core Lean, so h → 0, Taylor and eˣ are checked in <code>checks.py</code> instead.</p>
+</div>
+
+<script>
+{
+const rows=[
+ ["Derivative","Mult-add slope d = (f(k+1) − f(k)) / (1 + f(k)); continuous form f′/(1 + f)","2","For the continuous form","Proved (discrete), checked"],
+ ["Integral","d₀ ⊞ d₁ ⊞ … ⊞ dₙ₋₁, a product of the factors (1 + dₖ)","2","For the continuous form","Proved (discrete), checked"],
+ ["Fundamental theorem","f(n) = f(0) ⊞ ∫d","2","No","Proved"],
+ ["Exponential","Constant slope a gives a^(⊞n); slope x/n gives eˣ − 1","3","Yes, for eˣ","Proved (discrete), checked"],
+ ["Product rule","Steps of f ⊞ g are d ⊞ e; ordinary form keeps the corner","2","Yes, to drop the corner","Proved"],
+ ["Rates of a product","p ⊞ₕ q = p + q + h·p·q (weight = step size)","2","h → 0 gives p + q","Proved"],
+ ["Chain rule","Blocks: power of a power; rates: (Df)(g)·g′","3","Yes, for real exponents","Proved (blocks), checked"],
+ ["nth derivative","Newton: f(n) = Σ C(n,k)·Δᵏf(0), the cube's layers","2","Yes, to reach Taylor","Proved (Newton), checked"],
+ ["q-derivative","Input step x ⊞ h − x = h(1 + x), q = 1 + h","2","For the q → 1 limit","Proved"]];
+const tb=document.getElementById('dict');
+const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+tb.innerHTML=rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>Rung ${esc(r[2])}</td><td>${esc(r[3])}</td><td><span class="tag${r[4]==='Proved'?' p':''}">${esc(r[4])}</span></td></tr>`).join('');
+
+const box=document.getElementById('box'),hin=document.getElementById('h');
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const drawBox=()=>{
+  const W=box.clientWidth,H=box.clientHeight,h=+hin.value;
+  const F=3,G=2,dF=1.2*h,dG=0.9*h,TF=F+1.2,TG=G+0.9;
+  const pad=W<520?30:46,s=Math.min((W-2*pad)/TF,(H-2*pad)/TG);
+  const x0=pad,y0=H-pad,X=v=>x0+v*s,Y=v=>y0-v*s;
+  const ink=css('--line'),con=css('--con');
+  const R=(x,y,w,hh,fill,dash)=>`<rect x="${X(x)}" y="${Y(y+hh)}" width="${w*s}" height="${hh*s}" fill="${fill}" stroke="${ink}" stroke-width="1.2" ${dash?'stroke-dasharray="4 4"':''}/>`;
+  const T=(x,y,t,a='middle')=>`<text x="${x}" y="${y}" fill="${ink}" font-size="${W<520?12:14}" text-anchor="${a}" font-family="Hanken Grotesk,sans-serif">${t}</text>`;
+  let o=R(0,0,F,G,'transparent');
+  o+=T(X(F/2),Y(G/2)+5,'F · G');
+  if(h>0){
+    o+=R(F,0,dF,G,con)+R(0,G,F,dG,con)+R(F,G,dF,dG,'#ffe600');
+    if(dF*s>34)o+=T(X(F+dF/2),Y(G/2)+5,'ΔF·G');
+    if(dG*s>18)o+=T(X(F/2),Y(G+dG/2)+5,'F·ΔG');
+    const cx=X(F+dF),cy=Y(G+dG);
+    o+=`<line x1="${X(F+dF/2)}" y1="${Y(G+dG/2)}" x2="${Math.min(cx+18,W-8)}" y2="${Math.max(cy-14,14)}" stroke="${ink}" stroke-width="1"/>`;
+    o+=T(Math.min(cx+22,W-8),Math.max(cy-18,12),'corner',cx+60>W?'end':'start');
+  }
+  o+=T(X(F/2),y0+20,'F = 3')+T(x0-10,Y(G/2),'G',"end");
+  box.innerHTML=o;
+  const f=v=>v.toFixed(3);
+  document.getElementById('hv').textContent=h.toFixed(2);
+  document.getElementById('s1').textContent=f(dF*G);
+  document.getElementById('s2').textContent=f(F*dG);
+  document.getElementById('s3').textContent=f(dF*dG);
+  const tot=dF*G+F*dG+dF*dG;
+  document.getElementById('s4').textContent=tot>0?(100*dF*dG/tot).toFixed(1)+'%':'0%';
+};
+const roBox=new ResizeObserver(drawBox);roBox.observe(box);hin.addEventListener('input',drawBox);
+
+const st=document.getElementById('stairs');
+const drawStairs=()=>{
+  const W=st.clientWidth,H=st.clientHeight,ink=css('--line'),mute=css('--mute');
+  const pl=W<520?30:40,pr=14,pt=14,pb=30,xm=1,ym=Math.E-1;
+  const X=v=>pl+v/xm*(W-pl-pr),Y=v=>H-pb-v/ym*(H-pt-pb);
+  let o=`<line x1="${pl}" y1="${H-pb}" x2="${W-pr}" y2="${H-pb}" stroke="${mute}"/><line x1="${pl}" y1="${pt}" x2="${pl}" y2="${H-pb}" stroke="${mute}"/>`;
+  [2,4,16].forEach((n,i)=>{let v=0,d=`M${X(0)},${Y(0)}`;for(let k=0;k<n;k++){const a=1/n;v=v+a+v*a;d+=` H${X((k+1)/n)} V${Y(v)}`;}
+    o+=`<path d="${d}" fill="none" stroke="${mute}" stroke-width="${1+i*0.4}" stroke-opacity="${0.45+0.2*i}"/>`;});
+  let c=`M${X(0)},${Y(0)}`;for(let i=1;i<=60;i++){const x=i/60;c+=` L${X(x)},${Y(Math.exp(x)-1)}`}
+  o+=`<path d="${c}" fill="none" stroke="${ink}" stroke-width="2"/>`;
+  o+=`<text x="${W-pr}" y="${Y(ym)+4}" text-anchor="end" fill="${ink}" font-size="13" font-family="Hanken Grotesk,sans-serif" dy="12">e − 1 ≈ 1.718</text>`;
+  o+=`<text x="${X(1)}" y="${H-10}" text-anchor="end" fill="${mute}" font-size="12" font-family="Hanken Grotesk,sans-serif">x = 1</text>`;
+  st.innerHTML=o;
+};
+const roSt=new ResizeObserver(drawStairs);roSt.observe(st);
+}
+</script>
+</body></html>

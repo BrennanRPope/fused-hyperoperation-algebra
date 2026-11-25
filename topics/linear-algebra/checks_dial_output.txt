@@ -1,0 +1,33 @@
+PASS k(A ⊞k B) = (kA) ⊞ (kB)
+PASS det(I+kA) = (-k)^3 p_A(-1/k)
+PASS k = -1: det(I-A) = p_A(1), Fredholm λ = -k
+PASS walls: det(I+kA)=0 exactly at k = -1/λ
+PASS k→∞: det(I+kA)/k^3 → det A
+PASS k→0: (det(I+kA)-1)/k → tr A
+PASS slabs dominate at small k, corner at large k
+PASS |1 + k z| = 1 ⇔ circle through 0 centred at -1/k (complex k)
+PASS weighted Cayley = Cayley of k·s (angle 2·atan(ks))
+PASS k = i: Hermitian H gives unitary (I+iH)^-1(I-iH)
+PASS k = i: wall -1/i = i is never an eigenvalue of Hermitian H
+PASS weighted inverse at k=-1.0: -X(I+kX)^-1
+PASS weighted inverse at k=0.5: -X(I+kX)^-1
+PASS weighted inverse at k=3.0: -X(I+kX)^-1
+PASS k = -1: I - X orthogonal ⇔ X + Xᵀ - XᵀX = 0 (circle centred +1)
+PASS companion U² = kU - qI
+PASS det(I + aU) = 1 + k a + q a²  (the landscape wall polynomial)
+PASS (I+aU)(I+bU) = (1 - q ab) I + (a + b + k ab) U
+PASS walls = -1/eigenvalues of U: det(I+aU) = (1+a l1)(1+a l2)
+PASS countries = discriminant of U: k² - 4q = (l1 - l2)²
+PASS or line k + q = -1 ⇔ wall at a = 1 ⇔ U has eigenvalue -1
+PASS pure unit U² = κI: κ = -1 rotation, 0 shear, +1 boost
+PASS projected law at κ: (a+b)/(1+κab)
+PASS κ = -1 gives tangent addition
+PASS κ = +1 gives velocity addition (tanh), walls at ±1 = light speed
+PASS κ = +1: det(I + aU) = (1-a)(1+a)
+PASS shape s = k²/(k²-4q) unchanged by units
+PASS (I + AK)(I + BK) = I + (A + B + AKB)K
+PASS Sylvester 2x2: det(I + AK) = det(I + KA)
+PASS Sylvester rectangular 3x5 / 5x3: cube in dim 3 = cube in dim 5
+PASS rank-one dial: det(I + A u vᵀ) = 1 + vᵀ A u (no corner terms)
+
+31/31 checks pass

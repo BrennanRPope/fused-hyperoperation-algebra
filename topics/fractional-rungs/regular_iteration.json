@@ -1,0 +1,27 @@
+{
+ "E^1 = e^x - 1 on both sides of 0": true,
+ "E^-1 = log(1+x)": true,
+ "half rung twice = one rung: E^1/2(E^1/2(x)) = e^x - 1": true,
+ "E^0.3 o E^0.45 = E^0.75": true,
+ "third rung three times = one rung": true,
+ "result independent of step count (400 vs 1600)": true,
+ "B_0(1.3, 0.7) = 2.0": true,
+ "B_1(1.3, 0.7) = mult-add = 2.91": true,
+ "B_-1(1.3, 0.7) = log(e^1.3 + e^0.7 - 1)": true,
+ "B_2(1.3, 0.7) = (1+a)(1+b)e^{L(a)L(b)} - 1": true,
+ "B_s associative at s = -0.5, 0.25, 0.5, 0.75, 1.5": true,
+ "B_s commutative": true,
+ "0 is the identity at every height": true,
+ "corner weight (B_s(h,h) - 2h)/h^2 -> s": true,
+ "B_s(1,1)": {
+  "-1": 1.4898801256469327,
+  "-0.5": 1.7073059606207122,
+  "0": 2.000000000003474,
+  "0.5": 2.4071710590203836,
+  "1": 3.000000000005877,
+  "1.5": 3.918255739379727,
+  "2": 5.467226688990146
+ },
+ "formal half-rung series diverges (n-th roots of coefficients keep growing; Baker 1958)": true,
+ "lower rungs approach max on positives: B_-3(2,1) within 1e-6 of 2 (lower still overflows floats)": true
+}

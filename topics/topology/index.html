@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topology's tools for mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the same series as the toric and Fermat pages, honest about known vs new
+   IDEA a plate from a geometry atlas: ink drawings, ultramarine for mult-add, vermilion for what topology counts
+   PICTURE the Hopf-invariant plot: mult-add powers forcing only n = 1, 2, 4, beside the finding
+   COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plot in the first screen; ranked table; sections with plates beside text; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:68ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:64ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+.fit{white-space:nowrap;font-weight:600}
+.f5{color:var(--red)}.f4{color:var(--blue)}.f3{color:var(--ink)}.f1{color:var(--mute)}
+code{font-size:14px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.eq{font-size:17px}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band top">
+<div class="wrap two">
+<div>
+<h1>Topology already runs on mult-add</h1>
+<p class="lede">Complex K-theory, one of topology's main tools, combines twisted circles with exactly <span class="b">a + b + ab</span>. Its key operations are your mult-add powers, and with them Adams and Atiyah proved in 1966 that only the 1-, 3- and 7-dimensional spheres can carry a multiplication like the complex numbers, quaternions and octonions.</p>
+<p>That is the lead, and it is as tight a match as the soliton cube. It is also known, like everything else on this page. I checked each piece below with small worked examples in Python; nothing here proves anything new.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/t4_hopf_invariant.png" alt="Plot of how many times 2 divides 3 to the n minus 1, against n. Only n equal to 1, 2 and 4 reach the line y equals n."></div>
+<figcaption class="cap">The whole proof comes down to this: two mult-add powers must commute, which needs 2ⁿ to divide 3ⁿ − 1. Checked for every n up to 5,000: only 1, 2 and 4 work.</figcaption>
+</figure>
+</div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+<a href="#ranking">Ranking</a><a href="#ktheory">K-theory</a><a href="#helix">Helix and winding</a><a href="#torus">Torus holes</a><a href="#chern">Chern numbers</a><a href="#todd">Riemann–Roch</a><a href="#dial">The dial</a><a href="#knots">Knots</a><a href="#proof">The 1, 3, 7 proof</a><a href="#more">Primes, Lucas, Fermat</a><a href="#kw">Kummer, Wilson</a><a href="#known">Known vs new</a>
+</nav>
+
+<section class="band" id="ranking">
+<div class="wrap">
+<h2>Ranked by how real the fit is</h2>
+<p>"Direct hit" means the topology tool is built on mult-add itself, not just compatible with it. "Weak" means you could use it, but mult-add adds nothing.</p>
+<div class="scroll">
+<table class="stack">
+<thead><tr><th>Tool</th><th>Fit</th><th>What it does with mult-add</th><th>Known since</th></tr></thead>
+<tbody>
+<tr><td>Complex K-theory, Adams operations</td><td class="fit f5">Direct hit</td><td>Its formal group law is a + b + ab; its operations ψᵏ are the mult-add powers (1+x)ᵏ − 1. Proves the 1, 2, 4, 8 theorem.</td><td>Atiyah, Hirzebruch, Adams, 1959–66</td></tr>
+<tr><td>Homology of the torus</td><td class="fit f5">Direct hit</td><td>Your cube's layers 1-3-3-1 and the tesseract's 1-4-6-4-1 are exactly the holes of the 3- and 4-torus, by dimension.</td><td>Classical (Künneth)</td></tr>
+<tr><td>Covering spaces, winding numbers</td><td class="fit f5">Direct hit</td><td>Your helix is the universal cover of the mult-add circle. Winding = Σ log(1 + aₖ) / 2πi over a mult-add walk.</td><td>Classical</td></tr>
+<tr><td>Chern numbers</td><td class="fit f4">Strong</td><td>The 2-D version of your SSH result: multiply around each small square, take the log, add up. Always a whole number.</td><td>Fukui–Hatsugai–Suzuki, 2005</td></tr>
+<tr><td>Riemann–Roch, Todd genus</td><td class="fit f4">Strong</td><td>The coefficients of log(1 + x) say every projective space has Todd genus 1; the counts it gives are Pascal's triangle.</td><td>Hirzebruch 1954; Mishchenko 1967</td></tr>
+<tr><td>Cobordism, formal group laws</td><td class="fit f4">Strong, as a map</td><td>Mult-add is one point on the map of all such laws: "height 1". It gives your dial a meaning (below).</td><td>Quillen, 1969</td></tr>
+<tr><td>Knots, linking, helicity</td><td class="fit f3">Good</td><td>Torus knots are z ↦ (zᵖ, z^q); the Alexander polynomial of one is a ratio of mult-add powers; helicity is linking.</td><td>Alexander 1928; Moffatt 1969</td></tr>
+<tr><td>Lefschetz fixed points</td><td class="fit f3">Good, small</td><td>The k-th mult-add power on the n-torus has (k − 1)ⁿ fixed points, Lefschetz number (1 − k)ⁿ.</td><td>Lefschetz, 1926</td></tr>
+<tr><td>Persistent homology</td><td class="fit f1">Weak</td><td>A tool for finding holes in data. Useful for your simulations, but there is no mult-add inside it.</td><td>Edelsbrunner et al., 2000s</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section class="band top" id="ktheory">
+<div class="wrap two">
+<div>
+<h2>K-theory: the lead</h2>
+<p>K-theory studies a space by the twisted bundles of circles (line bundles) it carries. Two of them combine by tensor product, and if you write each as x = L − 1, the combination rule is</p>
+<div class="eq">x ⊕ y = x + y + xy</div>
+<p>which is your operation, exactly. (Some books write c(L) = 1 − L⁻¹ and get x + y − xy, the same law with the sign flipped.) Taking L to its k-th power gives the <b>Adams operation</b></p>
+<div class="eq">ψᵏ(x) = (1 + x)ᵏ − 1 = the k-th mult-add power</div>
+<p>Two facts about these powers, both checked in Python on the projective spaces CP¹ to CP⁶:</p>
+<ul>
+<li>They compose by multiplying: ψ²ψ³ = ψ⁶. Your cube does this for free, since (1+x)⁶ = ((1+x)³)².</li>
+<li>Mod a prime they collapse to plain powers: ψᵖ(x) ≡ xᵖ. That is your "middle of the Pascal cube vanishes mod p" from the toric page, the same identity.</li>
+</ul>
+</div>
+<div>
+<h3>How those two facts settle the 1, 2, 4, 8 question</h3>
+<p>Suppose a map S⁴ⁿ⁻¹ → S²ⁿ has Hopf invariant one (any multiplication on the sphere S²ⁿ⁻¹ would produce one). Glue a cell along it and you get a space with a bottom generator a and a top generator b, with a² = b. The mult-add powers act as</p>
+<div class="eq">ψᵏ(a) = kⁿa + μₖb, &nbsp; ψᵏ(b) = k²ⁿb</div>
+<p>The prime fact makes μ₂ odd. The composing fact, ψ²ψ³ = ψ³ψ², forces</p>
+<div class="eq">2ⁿ(2ⁿ − 1)μ₃ = 3ⁿ(3ⁿ − 1)μ₂</div>
+<p>so 2ⁿ must divide 3ⁿ − 1, which happens only for n = 1, 2, 4. Those are the complex numbers, quaternions and octonions (dimensions 2, 4, 8).</p>
+<div class="box"><b>Worked case, CP².</b> It is the n = 1 space built on the Hopf map. Here a = x, b = x², and mult-add gives ψ²(x) = 2x + x², ψ³(x) = 3x + 3x². So μ₂ = 1 (odd, as it must be) and μ₃ = 3, and the equation reads 2 · 1 · 3 = 3 · 2 · 1. It balances.</div>
+<p class="mute">Why it fits your rule: the outcome is purely geometric (which spheres can multiply), and the engine is nothing but mult-add powers and their behaviour mod p.</p>
+</div>
+</div>
+</section>
+
+<section class="band" id="helix">
+<div class="wrap two">
+<figure style="margin:0">
+<div class="plate"><img src="figures/t1_helix_cover.png" alt="A helix above a circle; each point on the circle has one point on the helix for every whole turn."></div>
+<figcaption class="cap">The helix is the circle unrolled. Each point below has a ladder of points above, one per whole turn.</figcaption>
+</figure>
+<div>
+<h2>Your helix is the circle's universal cover</h2>
+<p>The mult-add circle is the set where |1 + a| = 1. The log, log(1 + a), unrolls it into a line, and drawing that unrolling in 3-D gives the helix you already use for curves. In topology this is the <b>universal covering space</b> of the circle, and the ladder of points above each point is its fundamental group π₁ = ℤ: loops are counted by whole turns.</p>
+<p>The tool that reads off the turns is the formal group's invariant differential, dx/(1 + x). For a closed mult-add walk with steps aₖ:</p>
+<div class="eq">winding = Σ log(1 + aₖ) / 2πi</div>
+<p>Checked on a degree-3 loop with a wiggle: 3.000000. This is how your SSH chain's winding number worked, and it is also why mult-add powers are the only continuous self-maps of the circle up to deformation: the k-th power has winding k.</p>
+</div>
+</div>
+</section>
+
+<section class="band top" id="torus">
+<div class="wrap">
+<h2>The Pascal cube is the torus's holes</h2>
+<div class="two">
+<div>
+<p>The torus T² is a circle times a circle. Built from cells, each circle is one point plus one loop, so Tⁿ has cells counted by (1 + t)ⁿ, your cube. I computed the holes (Betti numbers) of Tⁿ from a grid of cubes, n = 1 to 4, with honest boundary matrices:</p>
+<div class="eq">T³: 1, 3, 3, 1 &nbsp;&nbsp; T⁴: 1, 4, 6, 4, 1</div>
+<p>So a tesseract corner with k switches on is a k-dimensional hole of the 4-torus: the subtorus spanned by those k circles. Grade = dimension is literally true here.</p>
+<p>Holes multiply by the cup product, and on the torus it follows the rule e · e = 0 with order flipping sign. That is the fourth setting of your tesseract dial, beside dual numbers, mult-add and geometric algebra.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/t2_torus_pascal.png" alt="Pascal rows as Betti numbers of tori, and a torus with its two generating loops."></div>
+</figure>
+</div>
+<h3>Euler characteristic, read in mult-add coordinates</h3>
+<p>On the toric page, point counts over a finite field came out as polynomials in a = q − 1. The Euler characteristic of the same shape is that polynomial at <b>a = 0</b>, its constant term. Checked:</p>
+<div class="scroll">
+<table class="stack">
+<thead><tr><th>Shape</th><th>Count in mult-add coordinates</th><th>Euler characteristic (a = 0)</th></tr></thead>
+<tbody>
+<tr><td>Torus T²</td><td>a²</td><td>0</td></tr>
+<tr><td>P¹ (sphere)</td><td>a + 2</td><td>2</td></tr>
+<tr><td>P²</td><td>a² + 3a + 3</td><td>3</td></tr>
+<tr><td>P¹ × P¹</td><td>a² + 4a + 4</td><td>4</td></tr>
+<tr><td>P³</td><td>a³ + 4a² + 6a + 4</td><td>4</td></tr>
+</tbody>
+</table>
+</div>
+<p class="mute">Known: it is the q = 1 value of the point count, which for toric shapes equals the number of fixed points of the torus action. The mult-add reading is just that the torus pieces (every term with an a) contribute nothing.</p>
+</div>
+</section>
+
+<section class="band" id="chern">
+<div class="wrap two">
+<div>
+<h2>Chern numbers: SSH in two dimensions</h2>
+<p>A Chern number counts how many whole turns a field of quantum states twists over a torus. The standard way to compute it on a grid (Fukui, Hatsugai and Suzuki, 2005) is pure mult-add: multiply the overlaps around each small square, take the log, and add.</p>
+<div class="eq">C = Σ<sub>squares</sub> arg(U₁U₂U₃U₄) / 2π</div>
+<p>On the Qi–Wu–Zhang model it gives exactly −1, 0 or +1 depending on the mass m, to six decimals, even on a coarse 24 × 24 grid. It can only jump, never slide, because each square's log is taken on the helix and the total must close up.</p>
+<p>This is the same story as a twisted bundle over a sphere: its Chern number is the winding of the gluing map around the equator, which is a mult-add power z ↦ zᵏ.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/t3_chern.png" alt="Heat map of twist per grid square, and a step plot of Chern number against mass m."></div>
+</figure>
+</div>
+</section>
+
+<section class="band top" id="todd">
+<div class="wrap two">
+<figure style="margin:0">
+<div class="plate"><img src="figures/t6_riemann_roch.png" alt="Table of Euler characteristics of line bundles on projective spaces, equal to Pascal numbers."></div>
+</figure>
+<div>
+<h2>Riemann–Roch: the mult-add log counts things</h2>
+<p>Your log, log(1 + x) = x − x²/2 + x³/3 − …, is the log of K-theory's group law. Mishchenko's theorem says the coefficient of xⁿ⁺¹ times (n + 1) is, up to sign, a geometric number of CPⁿ: its Todd genus. Read off: 1, 1, 1, 1, … Every projective space has Todd genus 1.</p>
+<p>The Todd class t / (1 − e⁻ᵗ) built from the same law turns a twist k into a count, the Euler characteristic of the line bundle O(k). Checked for CP¹ to CP⁶, over a range of twists that includes negative ones:</p>
+<div class="eq">χ(O(k)) on CPⁿ = C(n + k, n)</div>
+<p>which is Pascal's triangle again, now as counts of polynomials of degree k in n + 1 variables.</p>
+</div>
+</div>
+</section>
+
+<section class="band" id="dial">
+<div class="wrap">
+<h2>Your dial has a name in topology</h2>
+<p>The tesseract page found one dial: what a switch does when it meets itself. Make it x · x = βx. Then (1 + ax)(1 + bx) = 1 + (a + b + βab)x, and as β slides you get:</p>
+<div class="scroll">
+<table class="stack">
+<thead><tr><th>Setting</th><th>Law</th><th>Topology's name</th></tr></thead>
+<tbody>
+<tr><td>β = 0</td><td>a + b</td><td>Ordinary cohomology (derivatives, dual numbers)</td></tr>
+<tr><td>β free</td><td>a + b + βab</td><td>Connective K-theory, where β is the Bott class</td></tr>
+<tr><td>β = 1</td><td>a + b + ab</td><td>Complex K-theory (mult-add)</td></tr>
+<tr><td>Beyond the dial</td><td>Laws from elliptic curves</td><td>Elliptic cohomology, the next rung ("height 2")</td></tr>
+</tbody>
+</table>
+</div>
+<p>Quillen showed in 1969 that complex cobordism carries the universal law, and every other one, mult-add included, is a specialisation of it. Topologists sort these laws by height: additive is the degenerate end, mult-add is height 1 at every prime because of ψᵖ(x) ≡ xᵖ, and elliptic laws reach height 2. So "derive geometry from mult-add" sits on a real ladder, and mult-add is its first proper rung.</p>
+</div>
+</section>
+
+<section class="band top" id="knots">
+<div class="wrap two">
+<div>
+<h2>Knots, links and helicity</h2>
+<p>A torus knot is the circle sent to the torus by two mult-add powers at once, z ↦ (zᵖ, z^q). The trefoil is (2, 3). Its Alexander polynomial, the classic knot invariant, is a ratio of mult-add powers in a = t − 1:</p>
+<div class="eq">Δ = [pq]·[1] / ([p]·[q]), &nbsp; [k] = (1 + a)ᵏ − 1</div>
+<p>Checked for (2,3), (2,5), (3,4), (3,5): each comes out a true polynomial with Δ(1) = 1 and degree (p − 1)(q − 1). The trefoil gives t² − t + 1.</p>
+<p>Linking ties back to the Navier–Stokes page. Two helices wound k times around each other on the torus have Gauss linking number exactly k (computed: 1.0000, 2.0000, 3.0001), and Moffatt (1969) showed a fluid's helicity is the total linking of its vortex lines. The right-meets-left cross term is where that linking changes.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/t5_trefoil.png" alt="A trefoil knot drawn on the surface of a torus."></div>
+</figure>
+</div>
+</section>
+
+<section class="band" id="proof">
+<div class="wrap">
+<h2>The 1, 3, 7 proof on your cube, checked in Lean</h2>
+<p>Here is the whole Adams–Atiyah argument drawn on the mult-add cube, using CP² (the space built on the Hopf map) as the worked case. Its Adams operations are truncated mult-add sums: ψᵏ(x) = x ⊕ x ⊕ … ⊕ x, the k-cube, cut off above grade 2 because CP² has no 6-cell.</p>
+<div class="plate"><img src="figures/t7_adams_cube.png" alt="Three panels: a square for psi 2, a cube for psi 3 with its top corner greyed out, and three squares joined by lines showing psi 2 psi 3 equals psi 6."></div>
+<p class="cap">Blue corners are grade 1 (x), red are grade 2 (x²). The 6-cube is a cube of squares, so its 15 grade-2 corners are 3 inside one square plus 12 across two.</p>
+<div class="two" style="margin-top:18px">
+<div>
+<h3>The argument in four steps</h3>
+<ol>
+<li><b>The square is odd.</b> ψ²(x) = 2x + x². Mod 2 the two edge corners cancel and only the diagonal corner survives, so ψ²(x) ≡ x². For any space with an odd Hopf invariant this makes μ₂ odd.</li>
+<li><b>Powers compose.</b> Doing the 3-cube and then the square on each corner gives the 6-cube, and so does the other order. So ψ²ψ³ = ψ³ψ² = ψ⁶.</li>
+<li><b>Composing gives an equation.</b> On a space with cells in dimensions 2n and 4n, comparing the two orders on the bottom cell gives 2ⁿ(2ⁿ − 1)μ₃ = 3ⁿ(3ⁿ − 1)μ₂. With μ₂ odd, 2ⁿ must divide 3ⁿ − 1.</li>
+<li><b>Counting factors of 2.</b> The power of 2 in 3ⁿ − 1 is 2 when n is odd, and 2ᵏ⁺² when n = 2ᵏ times an odd number. That is at least 2ⁿ only for n = 1, 2, 4: the complex numbers, quaternions and octonions.</li>
+</ol>
+</div>
+<div>
+<h3>What Lean checked, and what it took as given</h3>
+<table class="stack">
+<thead><tr><th>Piece</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>2ⁿ | 3ⁿ − 1 only for n = 1, 2, 4, and those three work</td><td><b class="b">Proved</b></td></tr>
+<tr><td>Commuting ψ², ψ³ plus the mod-2 rule and odd h force n = 1, 2, 4</td><td><b class="b">Proved</b></td></tr>
+<tr><td>On CP², ψᵏ is the k-fold mult-add sum kx + C(k,2)x², and ψʲψᵏ = ψʲᵏ for every j, k</td><td><b class="b">Proved</b></td></tr>
+<tr><td>CP² meets every hypothesis (μ₂ = 1, μ₃ = 3)</td><td><b class="b">Proved</b></td></tr>
+<tr><td>The glued space's K-theory has that two-cell shape, and ψᵏ exists, is additive, composes and obeys the mod-p rule there</td><td><b class="r">Given</b> (standard K-theory)</td></tr>
+</tbody>
+</table>
+<p class="mute" style="margin-top:10px">File: HopfInvariantOne.lean in math-theory/topology/lean. Core Lean 4.37.0-rc1, no mathlib, no sorry, only Lean's standard axioms. Run it with <code>lean HopfInvariantOne.lean</code>.</p>
+</div>
+</div>
+<h3>The main statements, as Lean has them</h3>
+<pre class="box" style="overflow-x:auto;font-size:13px;line-height:1.5"><code>theorem only_one_two_four (n : Nat) (hn : 1 ≤ n) (h : 2 ^ n ∣ 3 ^ n - 1) :
+    n = 1 ∨ n = 2 ∨ n = 4
+
+theorem hopf_invariant_one (n : Nat) (hn : 1 ≤ n) (h μ₂ μ₃ : Int)
+    (hodd : IsOdd h) (hmod : (2 : Int) ∣ μ₂ - h)
+    (hc : psi n 2 μ₂ (psi n 3 μ₃ ⟨1, 0⟩) = psi n 3 μ₃ (psi n 2 μ₂ ⟨1, 0⟩)) :
+    n = 1 ∨ n = 2 ∨ n = 4
+
+theorem psi_compose (j k : Nat) : psiT j (mpow k) = mpow (j * k)</code></pre>
+</div>
+</section>
+
+<section class="band top" id="more">
+<div class="wrap">
+<h2>Three more proofs on the cube: primes, Lucas and Fermat</h2>
+<p>All three come from one move: turn the cube's axes in a circle, axis 1 to axis 2 to axis 3 and so on, and watch which corners move together. Every proof below is checked in core Lean with nothing taken as given. Lean builds the cube's layer counts from Pascal's rule, which is one mult-add step: multiplying by (1 + x) adds an axis and every corner appears twice, switch off and switch on. It first proves the box theorem (1 + x)ⁿ = Σ C(n,k)xᵏ, the cube's corner pieces adding up to the box.</p>
+
+<div class="two" style="margin-top:14px">
+<div>
+<h3>1. Primes are where the middle vanishes</h3>
+<p>For n ≥ 2, n divides every middle layer of the n-cube <b>exactly when n is prime</b>. In mult-add terms: the mult-add n-th power (1 + x)ⁿ − 1 equals the plain power xⁿ mod n only for primes. This is the identity the AKS primality test (2002) is built on.</p>
+<p><b>Why, on the cube:</b> turning the axes moves middle corners in groups. For a prime p no middle corner can come back early, so every group has exactly p corners. For 4, the corner 1010 comes back after 2 turns, and 6 corners is not a multiple of 4.</p>
+<p><b>How Lean proves it:</b> one direction from k·C(p,k) = p·C(p−1,k−1); the other by taking a prime factor p of a composite n and showing, with Lucas, that C(n−1, p−1) ≡ 1 mod p, so n can't divide C(n,p).</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/t8_aks_necklaces.png" alt="Corners of the 5-cube and 4-cube in layer 2 drawn as necklaces, grouped by rotation: two groups of 5, versus a group of 4 and a group of 2."></div>
+<figcaption class="cap">Each necklace is one corner: a filled bead is a switch that is on. Turning the axes turns the necklace.</figcaption>
+</figure>
+</div>
+
+<div class="two" style="margin-top:18px">
+<figure style="margin:0">
+<div class="plate"><img src="figures/t10_lucas_blocks.png" alt="Bar chart of the 7-cube's layers split into corners fixed by turning each block of 3 axes and corners that move in groups of 3."></div>
+<figcaption class="cap">The 7-cube in blocks of 3, 3 and 1 axes. Red corners stay put; blue ones move in threes and vanish mod 3.</figcaption>
+</figure>
+<div>
+<h3>2. Lucas's theorem</h3>
+<p>To find C(n,k) mod p, write n and k in base p and multiply the C's of their digits. For 7 = 21 in base 3, the layers of the 7-cube mod 3 are C(2, k div 3)·C(1, k mod 3).</p>
+<p><b>Why, on the cube:</b> split the axes into blocks of p and turn each block on its own. Mod p, every corner that moves is in a group of p and disappears. What's left are corners where each block is all-on or all-off, and counting those is choosing whole blocks, one digit at a time.</p>
+<p><b>How Lean proves it:</b> it shows the digit product obeys Pascal's rule mod p, case by case on whether adding an axis carries into the next digit. The only carry that needs a prime is the one where the p-cube's middle appears, and that middle is divisible by p.</p>
+</div>
+</div>
+
+<div class="two" style="margin-top:18px">
+<div>
+<h3>3. Fermat's little theorem</h3>
+<p>For a prime p and any whole number a, aᵖ − a is a multiple of p.</p>
+<p><b>Why, on the cube:</b> take the grid cube with a points along each of p axes, aᵖ points in all. Turning the axes moves points in groups of p, except the a points on the main diagonal, which stay put. So aᵖ − a splits into groups of p. These are Fermat's necklaces.</p>
+<p><b>How Lean proves it:</b> through mult-add. Only the two end corners of the p-cube survive mod p, so (1 + x)ᵖ ≡ 1 + xᵖ: the mult-add p-th power is the plain p-th power. Then walk up from 0 one unit at a time; each step passes through that identity.</p>
+<p class="mute">Lean proves the necklace pictures' conclusions by the Pascal route rather than by counting necklaces, since counting orbits needs set machinery core Lean doesn't have.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/t9_fermat_necklaces.png" alt="The 27 points of a 3 by 3 by 3 grid drawn as three-bead necklaces in three colours, in 8 groups of 3 plus 3 single-colour necklaces."></div>
+<figcaption class="cap">p = 3, a = 3: 27 points, 24 moving in threes and 3 on the diagonal.</figcaption>
+</figure>
+</div>
+
+<h3>What Lean checked</h3>
+<div class="scroll">
+<table class="stack">
+<thead><tr><th>Theorem in CubeProofs.lean</th><th>Statement</th></tr></thead>
+<tbody>
+<tr><td>binomial</td><td>(1 + x)ⁿ = Σₖ C(n,k) xᵏ, with C built from Pascal's rule</td></tr>
+<tr><td>prime_dvd_middle</td><td>p prime, 0 &lt; k &lt; p ⇒ p | C(p,k)</td></tr>
+<tr><td>aks_middle</td><td>n ≥ 2: (n | C(n,k) for all 0 &lt; k &lt; n) ⇔ n prime</td></tr>
+<tr><td>lucas_step, lucas</td><td>C(n,k) ≡ product of C(nᵢ,kᵢ) over base-p digits (mod p)</td></tr>
+<tr><td>frobenius</td><td>(1 + x)ᵖ ≡ 1 + xᵖ (mod p)</td></tr>
+<tr><td>fermat</td><td>aᵖ ≡ a (mod p)</td></tr>
+</tbody>
+</table>
+</div>
+<p class="mute" style="margin-top:10px">Core Lean 4.37.0-rc1, no mathlib, no sorry, only Lean's standard axioms. File: lean/CubeProofs.lean in math-theory/topology. All three theorems are classical (Fermat 1640, Lucas 1878; the prime identity long predates AKS). What's new is only the core-Lean check and the cube reading.</p>
+</div>
+</section>
+
+<section class="band" id="kw">
+<div class="wrap">
+<h2>Kummer and Wilson: carries on the cube, pairs on the circle</h2>
+<p>Two more proofs, both checked in core Lean with nothing taken as given. They live in a new file, KummerWilson.lean, which builds on the cube's layer counts from CubeProofs.lean.</p>
+
+<div class="two" style="margin-top:14px">
+<div>
+<h3>4. Kummer's theorem</h3>
+<p>The exact power of p that divides C(j+k, k), the number of corners of the (j+k)-cube with k switches on, is <b>the number of carries when you add j and k in base p</b>. Lucas says whether p divides the count; Kummer says how many times.</p>
+<p><b>Why, on the cube:</b> 5 + 4 in base 3 is 12 + 11 = 100, two carries, and C(9,4) = 126 = 3² × 14. Coloured by the power of 3, the layers of the cube fall into the same nested triangles at every scale, one scale per base-3 digit.</p>
+<p><b>How Lean proves it:</b> with digit sums. Each carry trades p units of digit sum for a single 1, so (p − 1) × carries = s(j) + s(k) − s(j+k). The cube's absorption rule, (k+1)·C(n+1,k+1) = (n+1)·C(n,k), moves the power of p in the layer count by exactly the same amount as adding one corner moves the digit sums. So the two stay equal all the way up.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/t11_kummer_carries.png" alt="Pascal's triangle to row 26 coloured by the power of 3 in each entry, beside the base-3 sum 12 + 11 = 100 with its two carries marked."></div>
+<figcaption class="cap">Rows 0 to 26 of the cube's layers, coloured by how many times 3 divides each count.</figcaption>
+</figure>
+</div>
+
+<div class="two" style="margin-top:18px">
+<figure style="margin:0">
+<div class="plate"><img src="figures/t12_wilson_circle.png" alt="Left: the 12 points of the mult-add circle mod 13 with chords joining each point to its inverse, and the points 0 and 11 marked as their own inverses. Right: a bar chart of the seven layers of the 6-cube, each contributing 1 mod 7 except the last, which contributes 0."></div>
+<figcaption class="cap">Left: the picture proof. Right: the route Lean checks.</figcaption>
+</figure>
+<div>
+<h3>5. Wilson's theorem</h3>
+<p>For a prime p, (p − 1)! leaves remainder p − 1 when divided by p, that is, (p − 1)! ≡ −1. For n ≥ 2 this happens <b>exactly when n is prime</b>, so it is a primality test, though a slow one.</p>
+<p><b>Why, on the circle:</b> mod p, mult-add turns the points 0 to p − 2 around a circle, because shifting by one turns mult-add into multiplication of 1 to p − 1. Every point has a mult-add inverse, its mirror image. Only 0 and p − 2, the half turn, are their own mirrors. So when you mult-add every point together, the pairs cancel and you land on the half turn: (1+0)(1+1)···(1+(p−2)) = (p − 1)! ≡ −1.</p>
+<p><b>How Lean proves it:</b> by counting on the cube instead. Inclusion–exclusion over the corners of the (p−1)-cube counts the orderings of p − 1 things: Σₖ (−1)ᵏ C(p−1,k)(p−1−k)ᵖ⁻¹ = (p − 1)!. Mod p each layer's signed count is 1, and by Fermat each power is 1, except the last layer, which is 0. So (p − 1)! ≡ p − 1 ≡ −1.</p>
+<p class="mute">The circle picture needs a point that walks all the way round (a primitive root). That is a known theorem (Gauss), but it isn't proved in the Lean file, which is why Lean takes the cube route.</p>
+</div>
+</div>
+
+<h3>What Lean checked</h3>
+<div class="scroll">
+<table class="stack">
+<thead><tr><th>Theorem in KummerWilson.lean</th><th>Statement</th></tr></thead>
+<tbody>
+<tr><td>carries_dsum</td><td>(p − 1)·carries(a, b) + s(a+b) = s(a) + s(b), digit sums in base p</td></tr>
+<tr><td>dsum_succ</td><td>s(x+1) + (p − 1)·v_p(x+1) = s(x) + 1</td></tr>
+<tr><td>layer_val_dsum</td><td>(p − 1)·v_p(C(j+k,k)) + s(j+k) = s(j) + s(k)</td></tr>
+<tr><td>kummer</td><td>p^c | C(j+k,k) and p^(c+1) ∤ C(j+k,k), where c = carries adding j and k</td></tr>
+<tr><td>S_pow</td><td>Σₖ (−1)ᵏ C(n,k)(c−k)ᵐ = n! if m = n, and 0 if m &lt; n</td></tr>
+<tr><td>wilson</td><td>p prime ⇒ (p − 1)! ≡ −1 (mod p)</td></tr>
+<tr><td>wilson_iff</td><td>n ≥ 2: (n − 1)! ≡ −1 (mod n) ⇔ n prime</td></tr>
+</tbody>
+</table>
+</div>
+<p class="mute" style="margin-top:10px">Core Lean 4.37.0-rc1, no mathlib, no sorry, only Lean's standard axioms. File: lean/KummerWilson.lean in math-theory/topology. Both theorems are classical: Kummer 1852; Wilson's theorem was stated by Waring in 1770 and first proved by Lagrange in 1771; the inclusion–exclusion count goes back to Euler. What's new is only the core-Lean check and the cube and circle reading.</p>
+</div>
+</section>
+
+<section class="band top" id="known">
+<div class="wrap">
+<h2>Known vs new</h2>
+<p><b>Known:</b> every match on this page, including the 1, 3, 7 theorem, the prime identity, Lucas, Fermat, Kummer and Wilson. The Lean files are new formal checks in core Lean, not new mathematics. K-theory's group law and Adams operations (1959–66), Quillen's map of formal group laws (1969), torus homology, covering spaces, Riemann–Roch, the Chern-number algorithm (2005), torus knots and helicity. Mathematicians already know that K-theory "is" the multiplicative formal group, and use it daily.</p>
+<p><b>Possibly new, as a picture rather than a theorem:</b> seeing the cube, the helix and the dial as one object that topology also uses. Your circle is K-theory's line bundle, your helix is its cover, your cube is the torus's holes, your powers are Adams operations, and your dial is the cohomology ladder. I did not find this told as one geometric story in one place, but each sentence of it is standard.</p>
+<div class="box"><b>Proofs done on the cube so far:</b> the 1, 3, 7 sphere theorem (number step and mult-add core), the prime identity behind AKS, Lucas's theorem, Fermat's little theorem, Kummer's theorem and Wilson's theorem. <b>Next candidates:</b>
+<ul style="margin:6px 0 0">
+<li><b>Legendre's formula:</b> the power of p in n! is (n − s(n))/(p − 1), with s the base-p digit sum. Almost free from the digit-sum step behind Kummer. Ready for core Lean.</li>
+<li><b>Fermat's two-square theorem:</b> a prime p ≡ 1 mod 4 is a sum of two squares. Wilson gives the key step, a quarter turn on the mult-add circle, since ((p−1)/2)!² ≡ −1. Core Lean, but longer.</li>
+<li><b>Fundamental theorem of algebra by winding:</b> a degree-n polynomial winds like the n-th mult-add power. Needs mathlib.</li>
+<li><b>Adams's vector fields on spheres (1962):</b> the same engine as the 1, 3, 7 proof, with more K-theory taken as given.</li>
+</ul></div>
+<p class="mute">Sources and checks: <code>checks.py</code>, <code>checks_output.txt</code>, <code>figures.py</code>, <code>fig_adams_cube.py</code>, <code>fig_cube_proofs.py</code>, <code>fig_kummer_wilson.py</code>, <code>lean/HopfInvariantOne.lean</code>, <code>lean/CubeProofs.lean</code> and <code>lean/KummerWilson.lean</code> in your project folder under math-theory/topology. Main references: Adams and Atiyah, "K-theory and the Hopf invariant" (1966); Quillen, "On the formal group laws of unoriented and complex cobordism theory" (1969); Fukui, Hatsugai and Suzuki (2005); Moffatt, "The degree of knottedness of tangled vortex lines" (1969).</p>
+</div>
+</section>
+
+<footer class="band"><div class="wrap mute" style="font-size:14px">Fused Mult-Add Algebra series. Companion pages: tesseract coordinates, toric geometry and the primes, Navier–Stokes.</div></footer>
+</body>
+</html>

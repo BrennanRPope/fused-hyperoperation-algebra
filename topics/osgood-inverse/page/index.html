@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The inverse of the Osgood test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful lab notebook, honest about what is proved, checked, or only a toy.
+   IDEA: a clock face: the Osgood integral is the time on a road, and the page asks whether the road ends.
+   PICTURE: clocks that stop (red, blow-up) against clocks that never stop (blue), then the fan and the mirror.
+   COLOUR and TYPE: white, ink, carmine for blow-up, prussian for safe, green for the rung shift; Literata.
+   LAYOUT: verdict + clock plate, section links, one plate per converse, the rung ladder, known/new, Lean, files. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1217);--ink:light-dark(#10131a,#e6e8ee);--soft:light-dark(#5a6070,#9aa1b2);--rule:light-dark(#d9dce3,#2a2f3a);--red:light-dark(#c1121f,#ff5a65);--blue:light-dark(#1d4e89,#7fb2ff);--green:light-dark(#2f6f3e,#7fd18f);--panel:light-dark(#f4f6f9,#171b22)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Literata,Georgia,serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,60px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.05;font-weight:600;margin:0 0 14px;text-wrap:balance}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:600;margin:0 0 12px;text-wrap:balance}
+h3{font-size:19px;margin:22px 0 6px}
+p,li{max-width:72ch}.lead{font-size:19px}
+.soft{color:var(--soft)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2.5vw,32px);align-items:start}
+@media(max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+.nav{display:flex;flex-wrap:wrap;gap:6px 18px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px max(5vw,16px);font-size:15px;max-width:1240px;margin:0 auto}
+.nav a{color:var(--blue);text-decoration:none}.nav a:hover{text-decoration:underline}
+@media(min-width:900px){.nav{position:sticky;top:0;background:var(--bg);z-index:2}}
+figure{margin:18px 0}figure img{width:100%;height:auto;border:1px solid var(--rule);border-radius:4px;background:#fff}
+figcaption{font-size:15px;color:var(--soft);margin-top:6px;max-width:95ch}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num{text-align:right;white-space:nowrap}
+.scroll{overflow-x:auto}
+code{font-size:14px;overflow-wrap:anywhere;background:var(--panel);padding:1px 4px;border-radius:3px}
+.box{background:var(--panel);border-left:3px solid var(--blue);padding:14px 18px;margin:16px 0;max-width:82ch}
+.box.red{border-left-color:var(--red)}.box.green{border-left-color:var(--green)}
+.tag{display:inline-block;font-size:13px;padding:1px 8px;border-radius:10px;border:1px solid currentColor;white-space:nowrap}
+.k{color:var(--blue)}.n{color:var(--red)}.t{color:var(--green)}.s{color:var(--soft)}
+.v-pass{color:var(--blue);font-weight:600}.v-fail{color:var(--red);font-weight:600}.v-mid{color:var(--green);font-weight:600}
+html{scroll-padding-top:72px}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;font-weight:600}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<section class="band">
+<h1>The inverse of the Osgood test</h1>
+<p class="lead"><b>For one equation the test works both ways. For systems and for Navier–Stokes it doesn't.</b> If y' = f(y) has a finite Osgood integral, the solution blows up, and the blow-up time is exactly that integral. If a modulus ω has a finite integral at 0, the solution can leave 0 at any moment, so it isn't unique. With two or more components, or with an estimate instead of an equation, failing the test only means the proof stops.</p>
+<p>On the mult-add ladder the verdict is sharp: <b>every rung above 0 fails, rung 0 passes up to power 1, and right at that edge the test repeats itself one rung down</b>, with the lift factor 1 + s used up at each step. And blow-up at infinity and leaving the wall −1 turn out to be one question, swapped by mult-add's own inverse −u/(1+u).</p>
+<p class="soft">All the converses are classical; what's new is the mult-add packaging and the Lean forms. Nothing here is as promising as the soliton lead. Tags: <span class="tag t">proved here</span> <span class="tag k">known, restated</span> <span class="tag n">numerical check</span> <span class="tag s">speculation</span>.</p>
+<figure><img src="figures/row1_clock.png" alt="Left: time to reach height y for five growth laws; blue curves keep rising, red curves level off at 1, 2 and 1/0.3. Right: the solutions; blue ones climb the rungs E, E squared, E cubed, red ones shoot up at t = 1, 2 and 3.33."><figcaption>(a) The Osgood integral ∫ ds/f is the time to reach height y. Blue clocks never stop; red ones stop at 1, 2 and 1/0.3. (b) The same laws as solutions: each red one blows up exactly when its clock stops. Blue: the ladder E(t), E²(t), E³(t), finite for all time.</figcaption></figure>
+</section>
+
+<nav class="nav"><a href="#clock">The clock</a><a href="#growth">Blow-up converse</a><a href="#unique">Uniqueness converse</a><a href="#mirror">The mirror</a><a href="#fails">Where it fails</a><a href="#rungs">On the rungs</a><a href="#known">Known / new</a><a href="#lean">Lean</a><a href="#files">Files</a></nav>
+
+<section class="band" id="clock">
+<h2>Why the integral is a clock</h2>
+<p>Take y' = f(y) with f &gt; 0, and measure height with G(y) = ∫<sub>y₀</sub><sup>y</sup> ds/f(s). Along any solution, d/dt G(y(t)) = y'/f(y) = 1. So in the coordinate G the motion is uniform: the solution walks down a straight road at unit speed, and G(y) is the time it takes to reach height y. <span class="tag k">known, restated</span></p>
+<p>That is the whole geometric underpinning. The Osgood test asks one question: <b>is the road finite?</b> If the road to infinity has finite length T, the walker gets there at time T, which is blow-up. If the road out of 0 has finite length, the walker can step onto it at any moment, which is non-uniqueness. If both roads are infinite, nothing happens in finite time.</p>
+<div class="box">In mult-add terms the clock for y' = 1 + y is log(1 + y), mult-add's logarithm: the rung-1 law runs at unit speed on the log scale and the road never ends. For y' = (1+y)² the clock is 1 − 1/(1+y), the reciprocal of the lift, and the road has length exactly 1.</div>
+</section>
+
+<section class="band" id="growth">
+<h2>Converse 1: a finite clock forces blow-up, at exactly that time</h2>
+<div class="box red"><b>Theorem.</b> Let f be continuous and positive on [y₀, ∞). The solution of y' = f(y), y(0) = y₀, exists exactly for 0 ≤ t &lt; T*, where T* = ∫<sub>y₀</sub><sup>∞</sup> ds/f(s). If T* is finite, y(t) → ∞ as t → T*. <span class="tag k">known, restated</span></div>
+<p><b>Proof.</b> Since y' = f(y) &gt; 0, y is increasing and G(y(t)) = t. G is strictly increasing, so y(t) = G⁻¹(t), defined for exactly the times G takes, [0, G(∞)). Nothing else can happen. ∎</p>
+<p>The examples in the figure check this numerically: y' = (1+y)² blows up at 1, (1+y)<sup>1.5</sup> at 2, (1+y)³ at ½, each matching its integral to nine digits. <span class="tag n">numerical check</span></p>
+<p><b>The comparison form.</b> If you only know an inequality, the direction matters. y' ≥ f(y) with a finite integral forces blow-up by time T* (Bihari–LaSalle in reverse). But y' ≤ f(y) with a finite integral forces nothing: y' = 0 satisfies y' ≤ y². <span class="tag k">known, restated</span> This is exactly the Navier–Stokes situation: the enstrophy estimates are upper bounds.</p>
+<h3>Lean: the climb hits the wall</h3>
+<p>The continuous solution t/(1−t) of y' = (1+y)² obeys an exact difference law with no error term: y(t+h) − y(t) = h·(1 + y(t))(1 + y(t+h)), which is h times the lift of y(t) ⊕ y(t+h). The discrete climb with that law runs on a straight clock: 1/(1+yₙ) = 1/(1+y₀) − n·h. So started at y₀ = 0 with step h = 1/m, it cannot take m finite steps: at step m the clock reads 0. The rung-1 climb yₙ₊₁ = yₙ ⊕ h has 1 + yₙ = (1+y₀)(1+h)ⁿ and never reaches the wall. <span class="tag t">proved here (Lean, uncompiled)</span></p>
+</section>
+
+<section class="band" id="unique">
+<h2>Converse 2: a finite clock out of 0 forces non-uniqueness</h2>
+<div class="box red"><b>Theorem.</b> Let ω be continuous, nondecreasing, ω(0) = 0, ω &gt; 0 on (0, δ], and subadditive (true for every concave modulus). If Ω(r) = ∫<sub>0</sub><sup>r</sup> ds/ω(s) is finite, then x' = ω(max(x, 0)), x(0) = 0 has a right-hand side with modulus ω and infinitely many solutions: x ≡ 0 and, for every c ≥ 0, the curve that sits at 0 until c and then follows Ω⁻¹(t − c). If Ω is infinite, Osgood's theorem says every equation with modulus ω has unique solutions. So for concave moduli, <b>Osgood's condition is exactly uniqueness</b>. <span class="tag k">known, restated</span></div>
+<p><b>Proof.</b> Subadditivity gives |ω(a⁺) − ω(b⁺)| ≤ ω(|a⁺ − b⁺|) ≤ ω(|a − b|). Ω is increasing with Ω' = 1/ω on (0, δ], so x = Ω⁻¹(t) has x' = ω(x) for t &gt; 0. At t = 0, Ω(x) ≥ x/ω(x) because ω ≤ ω(x) on [0, x], so x(t)/t = x/Ω(x) ≤ ω(x) → 0 = ω(0). Shifting by c is allowed because the equation doesn't depend on t. ∎</p>
+<p>The same holds in a far stronger class: Colombo and Kumar (2026) build, for every non-Osgood modulus, a divergence-free velocity field with that modulus whose flow is not unique on a set of positive measure (<a href="https://arxiv.org/abs/2601.12096">arXiv 2601.12096</a>). <span class="tag k">known, restated</span> On the passing side, Yudovich's uniqueness theorem for 2D Euler with bounded vorticity runs on the modulus r·log(1/r), whose clock out of 0 is log log(1/r), infinite but barely.</p>
+<figure><img src="figures/row2_unique_systems.png" alt="Left: the fan of solutions (t − c) squared peeling off zero at times 0, 0.5, 1, 1.5, 2. Right: a rotation field on the left half plane with a circular orbit, a radial field on the right half plane with a ray to infinity."><figcaption>(c) x' = 2√x: the clock out of 0 is √r, finite, so a fan of solutions peels off 0. (d) Two fields with the same speed r³, which fails Osgood: the rotation field keeps |x| fixed forever, the radial field blows up at t = 1/(2r₀²).</figcaption></figure>
+<h3>Lean: the fan and the Lipschitz contrast</h3>
+<p>On the integer grid the trapezoid scheme of x' = 2√x is x(n+1) = x(n) + √x(n) + √x(n+1). For every start time c, x<sub>c</sub>(n) = (n − c)² (zero until c) solves it with √x<sub>c</sub> = n − c, every one starts at 0, and different c give different solutions. The trapezoid scheme of the Lipschitz x' = x started at 0 has only the zero solution. <span class="tag t">proved here (Lean, uncompiled)</span></p>
+</section>
+
+<section class="band" id="mirror">
+<h2>The mirror: leaving the wall is blow-up seen through the inverse</h2>
+<p>Put s = 1/x. If x' = ω(x), then s' = −s²·ω(1/s). So a solution leaving 0 in finite time is a solution arriving from infinity in finite time, which is blow-up run backwards, and the two clocks are the same integral: ∫<sub>0</sub><sup>δ</sup> dr/ω(r) = ∫<sub>1/δ</sub><sup>∞</sup> ds/(s²ω(1/s)). <span class="tag k">known, restated</span> The modulus √r mirrors to the growth s<sup>3/2</sup>; r·log(1/r) mirrors to s·log s.</p>
+<div class="box green"><b>In mult-add, the mirror is the inverse.</b> Under the lift, mult-add's inverse −u/(1+u) is the reciprocal: 1 + (−u/(1+u)) = 1/(1+u). It sends u → ∞ to the wall −1. A Riccati step uₙ₊₁ − uₙ = h(1+uₙ)(1+uₙ₊₁) becomes, through the inverse, a step of exactly −h: the climb to infinity is a walk at constant speed into the wall. So "does it blow up?" at infinity and "can it leave?" at the wall are one question. <span class="tag t">proved here (Lean, uncompiled)</span></div>
+</section>
+
+<section class="band" id="fails">
+<h2>Where the inverse fails</h2>
+<p><b>Systems.</b> The test reads only the size of the vector field, and size doesn't decide. The rotation field |x|²·Jx and the radial field |x|²·x both have speed r³. The first is perpendicular to x everywhere, so d/dt |x|² = 0 and nothing ever grows. The second pushes straight out, so r² obeys the Riccati law (r²)' = 2(r²)² and blows up at 1/(2r₀²). <span class="tag t">proved here (Lean, uncompiled)</span> <span class="tag n">numerical check</span> Navier–Stokes is the first kind on paper: its nonlinearity is perpendicular to the velocity in the energy sense (u·(u·∇)u integrates to 0), the same cancellation as the dyadic energy identity on the last page.</p>
+<p><b>Navier–Stokes.</b> The 3D enstrophy bound is an upper bound that fails Osgood, so it gives local smoothness and stops. Tao (2016) showed the gap can't be closed by size estimates alone: an averaged Navier–Stokes with the same energy identity and the same harmonic-analysis bounds does blow up in finite time (<a href="https://www.ams.org/jams/2016-29-03/S0894-0347-2015-00838-4/">J. Amer. Math. Soc. 29, 601–674</a>). So failing the test is consistent with blow-up and with smoothness, and the real equation stays open. <span class="tag k">known, restated</span></p>
+<p><b>When a lower bound does match.</b> The 2D Euler vorticity gradient obeys an upper bound of the form y' ≤ C·y·log y, which is the second rung of the ladder below and gives double-exponential growth, E² in mult-add terms. Kiselev and Šverák (2014) built data in a disk that actually grows double-exponentially, so that bound is sharp (<a href="https://annals.math.princeton.edu/2014/180-3/p09">Annals 180, 1205–1220</a>). That's the inverse holding, but by a separate construction, not by the test. <span class="tag k">known, restated</span></p>
+</section>
+
+<section class="band" id="rungs">
+<h2>On the rung ladder</h2>
+<p><b>The test moves down one rung exactly.</b> Write the growth law as f(s) = (1 + s)·g(s) and substitute s = E(x), so 1 + s = eˣ and ds = (1 + s)dx. Then ∫ ds/((1+s)g(s)) = ∫ dx/g(E(x)). The lift factor 1 + s is used up, and what's left is the same test for g read one rung down. <span class="tag t">proved here (on paper; discrete form in Lean)</span></p>
+<figure><img src="figures/row3_rung_shift.png" alt="Two shaded regions of equal area log 5: under 1/((1+s)(1+log(1+s))) for s up to 53.6, and under 1/(1+x) for x up to 4."><figcaption>(e) The same area, log 5, before and after the substitution s = E(x): the test for f = (1+s)(1+L(s)) is the test for 1 + x one rung down.</figcaption></figure>
+<p>In Lean the discrete form is Cauchy condensation. The blocks [2ʲ, 2ʲ⁺¹) start at 1 + 1<sup>⊕j</sup> (the mult-add lattice of 1) and have length 2ʲ, the lift factor. The partial sums are squeezed by Σ 2ʲ·a(2ʲ) both ways, so the series passes iff its condensed series passes. One rung down, 1/k becomes all ones (so 1 + ½ + … + 1/(2ⁿ − 1) ≥ n/2) and 1/k² becomes a geometric series (so its sums stay below 2). <span class="tag t">proved here (Lean, uncompiled)</span></p>
+<h3>The ladder of laws that pass</h3>
+<p>Apply the shift again and again. With L = log(1 + ·), the laws f₁ = 1 + y, f₂ = (1+y)(1+Ly), f₃ = f₂·(1 + L²y), … have clocks Ly, L²y, L³y, all infinite, and their solutions are exactly the rungs: E(t), E²(t), E³(t). <span class="tag k">known, restated</span> <span class="tag n">numerical check</span> At every level the edge is power 1 on the last factor: f₂·(1+Ly)<sup>0.3</sup> already fails, with clock 1/0.3.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Speed in the test, as a function of the rung variable x</th><th>Verdict</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Any positive rung, E<sup>t</sup>(x) with t &gt; 0, whole or fractional</td><td class="v-fail">fails</td><td>beats every power of x, so ∫ dx/E<sup>t</sup>(x) converges (t = ¼, ½, 1 checked out to x ≈ 10¹⁰)</td></tr>
+<tr><td>Rung 0, x<sup>p</sup> with p &gt; 1</td><td class="v-fail">fails</td><td>one power past the edge</td></tr>
+<tr><td>Rung 0, x<sup>p</sup> with p ≤ 1</td><td class="v-pass">passes</td><td>p = 1 is ∫ dx/x = log x, barely</td></tr>
+<tr><td>Exactly x · k(x)</td><td class="v-mid">go down a rung</td><td>passes iff ∫ dy/k(eʸ) = ∞: the same test again</td></tr>
+<tr><td>Any negative rung, slower than every power</td><td class="v-pass">passes</td><td>the integral diverges faster than log</td></tr>
+</tbody></table></div>
+<p>This matches the last page: Tao's Navier–Stokes test ∫ d(log s)/D⁴ passes for D up to (log s)<sup>1/4</sup>, which is rung 0 with power 4 × ¼ = 1, and 3D Navier–Stokes needs D = s<sup>1/2</sup>, rung 1, where every Osgood test fails.</p>
+<p><b>There is no last law that passes.</b> The ladder f₁, f₂, f₃, … never reaches an edge: for any law that passes there is a faster one that still passes (du Bois-Reymond, Hadamard). <span class="tag k">known, restated</span> One neat fact about where the ladder heads: the vector field V that generates the fractional rungs (V = d/dt E<sup>t</sup> at t = 0) obeys V(E(x)) = (1 + E(x))·V(x), its clock from x to E(x) is exactly 1, and it outgrows f₂ while still passing. So the rung flow itself runs just past every finite level of the ladder. This is the known behaviour of the super-logarithm's derivative, not a new result. <span class="tag n">numerical check</span> <span class="tag k">known, restated</span></p>
+<p class="soft">One gap in rigour: "every fractional rung t &gt; 0 beats every power of x" uses V(y)/y increasing for the regular iteration. I checked that numerically up to y = 10¹⁰⁰, not by proof.</p>
+</section>
+
+<section class="band" id="known">
+<h2>Known versus new</h2>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Claim</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Blow-up time of y' = f(y) equals ∫ ds/f; finite integral forces blow-up</td><td>Classical (separation of variables)</td></tr>
+<tr><td>Osgood's condition is necessary and sufficient for uniqueness, concave moduli</td><td>Classical (Osgood 1898; sharpness by the explicit fan above)</td></tr>
+<tr><td>Non-uniqueness for every non-Osgood modulus, even divergence-free</td><td>Colombo–Kumar 2026</td></tr>
+<tr><td>Upper bounds that fail Osgood force nothing; size estimates can't settle 3D NS</td><td>Classical; Tao 2016 for NS</td></tr>
+<tr><td>Uniqueness at 0 and blow-up at ∞ are one integral under s = 1/x</td><td>Classical change of variables</td></tr>
+<tr><td>In mult-add: the inverse −u/(1+u) swaps the wall and infinity, and turns the Riccati climb into a constant-speed walk</td><td>Packaging, proved here</td></tr>
+<tr><td>Test moves down a rung with the lift factor used up; ladder fₙ with solutions Eⁿ(t)</td><td>Iterated-log scale is classical; the mult-add form is packaging</td></tr>
+<tr><td>2D Euler gradient bound is the E² rung, and it's sharp in a disk</td><td>Kiselev–Šverák 2014; the rung reading is packaging</td></tr>
+<tr><td>Possible new lead</td><td>None. Nothing here is as promising as the solitons. <span class="tag s">speculation</span></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="band" id="lean">
+<h2>Lean</h2>
+<p><code>OsgoodInverse.lean</code>: 53 theorems in core Lean 4, no mathlib, no sorry, written against the shared library (imports Base, Pi and NSContinuum). <b>Not compiled yet</b>: this session had no Lean toolchain, so the file goes to the library build next. Nothing was weakened to make it fit.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Part</th><th>Theorems</th><th>Main statements</th></tr></thead>
+<tbody>
+<tr><td>Riccati climb and its wall</td><td class="num">16</td><td><code>ric_step</code>, <code>ric_step_multAdd</code>, <code>riccati_clock</code>, <code>riccati_hits_wall</code>, <code>mirror_step</code>, <code>rung1_lift</code>, <code>rung1_never_wall</code>, <code>ric_near_one</code></td></tr>
+<tr><td>Non-uniqueness out of 0</td><td class="num">5</td><td><code>fan_step</code>, <code>fan_zero</code>, <code>fan_distinct</code>, <code>lipschitz_unique</code></td></tr>
+<tr><td>The rung shift (condensation)</td><td class="num">28</td><td><code>block_start</code>, <code>dsum_le_csum</code>, <code>csum_le_dsum</code>, <code>condensation</code>, <code>fsum_le_dsum</code>, <code>harmonic_grows</code>, <code>inverse_squares_bounded</code></td></tr>
+<tr><td>Direction decides</td><td class="num">4</td><td><code>rot_perp</code>, <code>rad_out</code>, <code>rot_speed</code>, <code>rad_speed</code></td></tr>
+</tbody></table></div>
+<p><b>Left out</b> (needs real analysis): the integrals themselves, blow-up as a limit, the continuous fan Ω⁻¹(t − c), the rung growth of fractional iterates, the harmonic sums being unbounded (only the n/2 lower bound is stated, no Archimedean step), the iterated-log instance 1/(k·log k), and anything about Navier–Stokes solutions.</p>
+</section>
+
+<section class="band" id="files">
+<h2>Files</h2>
+<p>All under <code>math-theory/osgood-inverse/</code> in the project folder: <code>lean/OsgoodInverse.lean</code>; <code>checks.py</code> with <code>checks_output.txt</code> (22 of 22 pass); <code>figures.py</code> and <code>figures/</code>.</p>
+</section>
+</body></html>

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesseract coordinates for mult-add</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful maths explainer, plain words, honest about what is known.
+   IDEA: a metro map of the tesseract: five grade lines, each its own colour.
+   PICTURE: the tesseract with all 16 corners named by their switches.
+   COLOUR and TYPE: white or night ground; grade colours black, blue, green, amber, red; Figtree.
+   LAYOUT: one column, figures full width, code at the end behind Copy buttons. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1116);--ink:light-dark(#111418,#e9edf2);--soft:light-dark(#4a525c,#a9b2bd);--line:light-dark(#e3e7ec,#262c35);--card:light-dark(#f5f7f9,#161b22);
+--g0:light-dark(#1b1f24,#e9edf2);--g1:#0a5cff;--g2:#00a05a;--g3:#ffb400;--g4:#e6261f;--warn:light-dark(#8a5a00,#ffcf5c)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px);max-width:1000px;margin:0 auto}
+h1{font-size:clamp(32px,6vw,50px);line-height:1.05;font-weight:800;margin:0 0 14px;text-wrap:balance}
+h2{font-size:clamp(24px,3.6vw,32px);line-height:1.15;font-weight:800;margin:0 0 12px;text-wrap:balance}
+h3{font-size:19px;margin:22px 0 6px}
+p,li{max-width:68ch}.lead{font-size:19px;color:var(--soft)}
+.rail{height:8px;background:linear-gradient(90deg,var(--g0) 0 20%,var(--g1) 20% 40%,var(--g2) 40% 60%,var(--g3) 60% 80%,var(--g4) 80%)}
+figure{margin:18px 0}figure svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto;color:var(--ink)}
+figcaption{font-size:15px;color:var(--soft);max-width:62ch;margin:8px auto 0;text-align:center}
+.lab{font:700 15px "JetBrains Mono",monospace}.pill{font:700 15px Figtree,sans-serif;fill:#fff}.pill.dk{fill:#111}
+.big{font:800 26px Figtree,sans-serif;fill:#fff}.dim{font:600 18px Figtree,sans-serif;fill:currentColor}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-size:15px;margin-top:10px}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-1px}
+.scroll{display:flex;gap:16px;overflow-x:auto;padding:12px max(5vw,16px);border-block:1px solid var(--line);font-weight:600;font-size:15px;position:sticky;top:0;background:var(--bg);z-index:2}
+.scroll a{flex:none;color:var(--ink);text-decoration:none;padding:6px 0}.scroll a:hover{color:var(--g1)}
+@media(max-width:900px){.scroll{position:static}}
+.flag{border-left:6px solid var(--g4);background:var(--card);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.math{font-family:"JetBrains Mono",monospace;font-size:15px;background:var(--card);padding:2px 6px;border-radius:6px;white-space:nowrap}
+.eq{font-family:"JetBrains Mono",monospace;font-size:15px;background:var(--card);padding:12px 14px;border-radius:10px;overflow-x:auto;white-space:pre;line-height:1.5}
+dl{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:10px 18px}dt{font-weight:800}dd{margin:0}
+@media(max-width:600px){dl{grid-template-columns:minmax(0,1fr)}dd{margin-bottom:8px}}
+.ex{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0}
+.ex h3{margin-top:0}.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ba>div{background:var(--card);border-radius:10px;padding:10px 12px;font-size:15px}.ba b{display:block;font-size:13px;color:var(--soft);margin-bottom:4px}
+@media(max-width:600px){.ba{grid-template-columns:minmax(0,1fr)}}
+.tag{display:inline-block;font-size:13px;font-weight:700;border-radius:99px;padding:2px 10px;margin-right:6px}
+.win{background:var(--g2);color:#fff}.lose{background:var(--g4);color:#fff}.known{background:var(--line);color:var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.calc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:520px}
+.calc label{font-weight:700;font-size:15px}.calc input{width:100%;font:16px "JetBrains Mono",monospace;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-height:44px}
+input:focus-visible,button:focus-visible{outline:3px solid var(--g1);outline-offset:2px}
+.rows{margin-top:14px}.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
+.row .g{font-weight:800;font-size:14px;width:5.5em;flex:none}
+.chip{font:14px "JetBrains Mono",monospace;padding:4px 9px;border-radius:99px;color:#fff;white-space:nowrap}
+.res{margin-top:12px;font-size:16px}
+.codehead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}
+button{font:700 15px Figtree,sans-serif;min-height:44px;padding:0 16px;border-radius:10px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);cursor:pointer}
+pre{overflow-x:auto;background:var(--card);border-radius:12px;padding:14px;font:13px/1.5 "JetBrains Mono",monospace;max-height:520px}
+.warn{color:var(--warn);font-weight:700}
+details summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+a{color:var(--g1)}
+</style>
+</head>
+<body>
+<div class="rail"></div>
+<header class="band">
+<h1>Tesseract coordinates for mult-add</h1>
+<p class="lead">Every point gets 16 numbers, one for each corner of a tesseract. A corner's address says which axes it uses, so its dimension is part of its name. Mult-add is the natural way to combine these points: two corners combine by joining their switches.</p>
+<figure>
+<svg viewBox="0 0 560 540" role="img" aria-label="A tesseract drawn as a cube inside a cube. Its 16 corners are labelled with four switches, a b c d, and coloured by how many switches are on: 1 corner of grade 0, 4 of grade 1, 6 of grade 2, 4 of grade 3, 1 of grade 4.">
+<line x1="280.0" y1="473.8" x2="424.1" y2="414.1" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="280.0" y1="473.8" x2="339.7" y2="329.7" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="280.0" y1="473.8" x2="220.3" y2="329.7" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="280.0" y1="473.8" x2="135.9" y2="414.1" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="424.1" y1="414.1" x2="483.8" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="424.1" y1="414.1" x2="364.4" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="424.1" y1="414.1" x2="280.0" y2="354.4" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="339.7" y1="329.7" x2="483.8" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="339.7" y1="329.7" x2="280.0" y2="185.6" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="339.7" y1="329.7" x2="195.6" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="483.8" y1="270.0" x2="424.1" y2="125.9" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="483.8" y1="270.0" x2="339.7" y2="210.3" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="220.3" y1="329.7" x2="364.4" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="220.3" y1="329.7" x2="280.0" y2="185.6" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="220.3" y1="329.7" x2="76.2" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="364.4" y1="270.0" x2="424.1" y2="125.9" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="364.4" y1="270.0" x2="220.3" y2="210.3" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="280.0" y1="185.6" x2="424.1" y2="125.9" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="280.0" y1="185.6" x2="135.9" y2="125.9" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="424.1" y1="125.9" x2="280.0" y2="66.2" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="135.9" y1="414.1" x2="280.0" y2="354.4" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="135.9" y1="414.1" x2="195.6" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="135.9" y1="414.1" x2="76.2" y2="270.0" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="280.0" y1="354.4" x2="339.7" y2="210.3" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="280.0" y1="354.4" x2="220.3" y2="210.3" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="195.6" y1="270.0" x2="339.7" y2="210.3" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="195.6" y1="270.0" x2="135.9" y2="125.9" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="339.7" y1="210.3" x2="280.0" y2="66.2" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="76.2" y1="270.0" x2="220.3" y2="210.3" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="76.2" y1="270.0" x2="135.9" y2="125.9" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="220.3" y1="210.3" x2="280.0" y2="66.2" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<line x1="135.9" y1="125.9" x2="280.0" y2="66.2" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.6"/>
+<circle cx="280.0" cy="473.8" r="9" fill="var(--g0)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="280.0" y="502.8" text-anchor="middle" class="lab" fill="currentColor">0000</text>
+<circle cx="424.1" cy="414.1" r="9" fill="var(--g1)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="441.1" y="436.1" text-anchor="middle" class="lab" fill="currentColor">1000</text>
+<circle cx="339.7" cy="329.7" r="9" fill="var(--g1)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="356.7" y="351.7" text-anchor="middle" class="lab" fill="currentColor">0100</text>
+<circle cx="483.8" cy="270.0" r="9" fill="var(--g2)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="498.8" y="275.0" text-anchor="start" class="lab" fill="currentColor">1100</text>
+<circle cx="220.3" cy="329.7" r="9" fill="var(--g1)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="203.3" y="351.7" text-anchor="middle" class="lab" fill="currentColor">0010</text>
+<circle cx="364.4" cy="270.0" r="9" fill="var(--g2)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="379.4" y="275.0" text-anchor="start" class="lab" fill="currentColor">1010</text>
+<circle cx="280.0" cy="185.6" r="9" fill="var(--g2)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="280.0" y="166.6" text-anchor="middle" class="lab" fill="currentColor">0110</text>
+<circle cx="424.1" cy="125.9" r="9" fill="var(--g3)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="441.1" y="113.9" text-anchor="middle" class="lab" fill="currentColor">1110</text>
+<circle cx="135.9" cy="414.1" r="9" fill="var(--g1)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="118.9" y="436.1" text-anchor="middle" class="lab" fill="currentColor">0001</text>
+<circle cx="280.0" cy="354.4" r="9" fill="var(--g2)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="280.0" y="383.4" text-anchor="middle" class="lab" fill="currentColor">1001</text>
+<circle cx="195.6" cy="270.0" r="9" fill="var(--g2)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="180.6" y="275.0" text-anchor="end" class="lab" fill="currentColor">0101</text>
+<circle cx="339.7" cy="210.3" r="9" fill="var(--g3)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="356.7" y="198.3" text-anchor="middle" class="lab" fill="currentColor">1101</text>
+<circle cx="76.2" cy="270.0" r="9" fill="var(--g2)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="61.2" y="275.0" text-anchor="end" class="lab" fill="currentColor">0011</text>
+<circle cx="220.3" cy="210.3" r="9" fill="var(--g3)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="203.3" y="198.3" text-anchor="middle" class="lab" fill="currentColor">1011</text>
+<circle cx="135.9" cy="125.9" r="9" fill="var(--g3)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="118.9" y="113.9" text-anchor="middle" class="lab" fill="currentColor">0111</text>
+<circle cx="280.0" cy="66.2" r="9" fill="var(--g4)" stroke="var(--bg)" stroke-width="2.5"/>
+<text x="280.0" y="47.2" text-anchor="middle" class="lab" fill="currentColor">1111</text>
+</svg>
+<div class="legend">
+<span style="--c:var(--g0)">grade 0, point (1)</span><span style="--c:var(--g1)">grade 1, lines (4)</span><span style="--c:var(--g2)">grade 2, areas (6)</span><span style="--c:var(--g3)">grade 3, volumes (4)</span><span style="--c:var(--g4)">grade 4, hypervolume (1)</span>
+</div>
+<figcaption>The 16 corners, each named by four switches in the order a b c d. 1010 means a and c are on. Lines join corners one switch apart. 0000 sits at the bottom, 1111 at the top.</figcaption>
+</figure>
+</header>
+
+<nav class="scroll" aria-label="Sections">
+<a href="#lead">The lead</a><a href="#geometry">Geometry</a><a href="#definition">Definition</a><a href="#reality">Back to reality</a><a href="#simpler">Simpler or worse</a><a href="#known">What's known</a><a href="#try">Try it</a><a href="#lean">Lean</a><a href="#python">Python</a>
+</nav>
+
+<section class="band" id="lead">
+<h2>The lead worth following</h2>
+<div class="flag">
+<p style="margin-top:0"><b>One tesseract, one dial.</b> The same 16 corners show up in three very different parts of maths. The only difference is what happens when a switch meets itself.</p>
+<table>
+<thead><tr><th>Switch times itself</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><span class="math">x·x = 0</span></td><td>Plain addition: (1+ax)(1+bx) = 1+(a+b)x. This is the world of derivatives (dual numbers, jets).</td></tr>
+<tr><td><span class="math">x·x = x</span></td><td>Mult-add: (1+ax)(1+bx) = 1+(a⊕b)x. Probability, logic, solitons. This page.</td></tr>
+<tr><td><span class="math">e·e = ±1</span>, order flips sign</td><td>Geometric algebra: rotations, and Maxwell's four equations as one (Hestenes). Spacetime algebra has exactly 16 basis pieces, in layers of 1, 4, 6, 4, 1.</td></tr>
+</tbody></table>
+<p style="margin-bottom:0">Each row is known on its own. Seeing them as one dial on one tesseract is the "same lens" you were after, and it's worth chasing. It isn't a new theorem yet.</p>
+</div>
+<p><b>A second, smaller find.</b> For KdV solitons, take the log of each corner weight and run the Möbius step (below). Everything lands in grade 2 and nothing in grades 3 or 4. In plain words, the coordinates show at a glance that these waves only ever interact in pairs. Checked in Python for four solitons. This is known in essence (Hirota's formula, and the same trick as cumulants in statistical physics), but the tesseract makes it visible.</p>
+</section>
+
+<section class="band" id="geometry">
+<h2>The geometry underneath</h2>
+<p>Take a box with sides 1+a and 1+b and cut it at 1 on each side. It falls into four pieces: the unit square, a strip of area a, a strip of area b and a corner piece of area ab. The pieces add up to the box, so 1 + a + b + ab = (1+a)(1+b). Take away the unit square and what's left is a⊕b.</p>
+<figure>
+<svg viewBox="0 0 378 344" role="img" aria-label="A rectangle with sides 1 plus a and 1 plus b, cut at 1 on each side into four pieces: the unit square 1, two strips a and b, and the corner piece ab.">
+<rect x="40" y="124" width="170" height="170" fill="var(--g0)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="3"/>
+<text x="125" y="216" text-anchor="middle" class="big">1</text>
+<rect x="210" y="124" width="128" height="170" fill="var(--g1)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="3"/>
+<text x="274" y="216" text-anchor="middle" class="big">a</text>
+<rect x="40" y="30" width="170" height="94" fill="var(--g1)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="3"/>
+<text x="125" y="85" text-anchor="middle" class="big">b</text>
+<rect x="210" y="30" width="128" height="94" fill="var(--g2)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="3"/>
+<text x="274" y="85" text-anchor="middle" class="big">ab</text>
+<text x="125" y="320" text-anchor="middle" class="dim">1</text>
+<text x="274" y="320" text-anchor="middle" class="dim">a</text>
+<text x="356" y="82" text-anchor="middle" class="dim">b</text>
+<text x="356" y="214" text-anchor="middle" class="dim">1</text>
+</svg>
+<figcaption>Two axes: 4 pieces, coloured by grade. The corner piece ab is where the two directions meet.</figcaption>
+</figure>
+<p>Do the same with four sides 1+a, 1+b, 1+c, 1+d and the box falls into 16 pieces: 1 unit hypercube, 4 rods, 6 slabs, 4 blocks and 1 hyperblock. Each piece sits at one tesseract corner, and its measure is the product of the letters that are switched on. This is the geometric underpinning: it's a real cut of a real box, and it holds in any number of dimensions.</p>
+<div class="eq">1 + (a ⊕ b ⊕ c ⊕ d) = (1+a)(1+b)(1+c)(1+d) = sum of all 16 corner pieces</div>
+</section>
+
+<section class="band" id="definition">
+<h2>The definition, precisely</h2>
+<dl>
+<dt>Corner</dt><dd>A set S of switches from {a, b, c, d}. Written as four digits, 1 for on.</dd>
+<dt>Grade</dt><dd>|S|, the number of switches on. It is the corner's dimension.</dd>
+<dt>Point</dt><dd>One weight w<sub>S</sub> for every corner: 16 numbers for n = 4, 2<sup>n</sup> in general.</dd>
+<dt>From ordinary</dt><dd>An ordinary point (a, b, c, d) gets c<sub>S</sub> = product of its letters in S. So c<sub>0110</sub> = bc. These are the pure points.</dd>
+<dt>Back to ordinary</dt><dd>Read the grade-1 corners: a = c<sub>1000</sub> / c<sub>0000</sub>, and so on.</dd>
+<dt>Value at x</dt><dd>ev<sub>x</sub>(w) = Σ<sub>S</sub> w<sub>S</sub> · Π<sub>i∈S</sub> x<sub>i</sub>. Every point is a weighted mix of the 16 corner monomials.</dd>
+<dt>Box coordinates</dt><dd>B<sub>T</sub> = sum of c<sub>S</sub> over every corner S inside T (the zeta step). For a pure point B<sub>T</sub> = Π<sub>i∈T</sub>(1+a<sub>i</sub>), the measure of a sub-box.</dd>
+<dt>Möbius step</dt><dd>The exact inverse: c<sub>S</sub> = Σ<sub>T⊆S</sub> (−1)<sup>|S−T|</sup> B<sub>T</sub>.</dd>
+<dt>Mult-add</dt><dd>(v ⊛ w)<sub>T</sub> = Σ v<sub>S</sub>w<sub>U</sub> over pairs with S ∪ U = T. In box coordinates it is plain multiplication, corner by corner. For pure points it is mult-add on each axis.</dd>
+<dt>As a ring</dt><dd>Polynomials in x<sub>a</sub>…x<sub>d</sub> with the rule x<sub>i</sub>² = x<sub>i</sub>. A switch turned on twice is still on.</dd>
+</dl>
+<figure>
+<svg viewBox="0 0 640 400" role="img" aria-label="The 16 corners in five layers: 1, then a b c d, then the six pairs, then the four triples, then abcd. Lines join corners that differ by one switch.">
+<line x1="320" y1="40" x2="40" y2="120" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="320" y1="40" x2="227" y2="120" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="320" y1="40" x2="413" y2="120" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="320" y1="40" x2="600" y2="120" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="40" y1="120" x2="40" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="40" y1="120" x2="152" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="40" y1="120" x2="376" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="227" y1="120" x2="40" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="227" y1="120" x2="264" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="227" y1="120" x2="488" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="40" y1="200" x2="40" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="40" y1="200" x2="227" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="413" y1="120" x2="152" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="413" y1="120" x2="264" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="413" y1="120" x2="600" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="152" y1="200" x2="40" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="152" y1="200" x2="413" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="264" y1="200" x2="40" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="264" y1="200" x2="600" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="40" y1="280" x2="320" y2="360" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="600" y1="120" x2="376" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="600" y1="120" x2="488" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="600" y1="120" x2="600" y2="200" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="376" y1="200" x2="227" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="376" y1="200" x2="413" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="488" y1="200" x2="227" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="488" y1="200" x2="600" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="227" y1="280" x2="320" y2="360" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="600" y1="200" x2="413" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="600" y1="200" x2="600" y2="280" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="413" y1="280" x2="320" y2="360" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<line x1="600" y1="280" x2="320" y2="360" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4"/>
+<rect x="306" y="25" width="29" height="30" rx="15" fill="var(--g0)"/>
+<text x="320" y="45.5" text-anchor="middle" class="pill">1</text>
+<rect x="26" y="105" width="29" height="30" rx="15" fill="var(--g1)"/>
+<text x="40" y="125.5" text-anchor="middle" class="pill">a</text>
+<rect x="212" y="105" width="29" height="30" rx="15" fill="var(--g1)"/>
+<text x="227" y="125.5" text-anchor="middle" class="pill">b</text>
+<rect x="399" y="105" width="29" height="30" rx="15" fill="var(--g1)"/>
+<text x="413" y="125.5" text-anchor="middle" class="pill">c</text>
+<rect x="586" y="105" width="29" height="30" rx="15" fill="var(--g1)"/>
+<text x="600" y="125.5" text-anchor="middle" class="pill">d</text>
+<rect x="20" y="185" width="40" height="30" rx="15" fill="var(--g2)"/>
+<text x="40" y="205.5" text-anchor="middle" class="pill">ab</text>
+<rect x="132" y="185" width="40" height="30" rx="15" fill="var(--g2)"/>
+<text x="152" y="205.5" text-anchor="middle" class="pill">ac</text>
+<rect x="244" y="185" width="40" height="30" rx="15" fill="var(--g2)"/>
+<text x="264" y="205.5" text-anchor="middle" class="pill">bc</text>
+<rect x="356" y="185" width="40" height="30" rx="15" fill="var(--g2)"/>
+<text x="376" y="205.5" text-anchor="middle" class="pill">ad</text>
+<rect x="468" y="185" width="40" height="30" rx="15" fill="var(--g2)"/>
+<text x="488" y="205.5" text-anchor="middle" class="pill">bd</text>
+<rect x="580" y="185" width="40" height="30" rx="15" fill="var(--g2)"/>
+<text x="600" y="205.5" text-anchor="middle" class="pill">cd</text>
+<rect x="14" y="265" width="51" height="30" rx="15" fill="var(--g3)"/>
+<text x="40" y="285.5" text-anchor="middle" class="pill dk">abc</text>
+<rect x="201" y="265" width="51" height="30" rx="15" fill="var(--g3)"/>
+<text x="227" y="285.5" text-anchor="middle" class="pill dk">abd</text>
+<rect x="388" y="265" width="51" height="30" rx="15" fill="var(--g3)"/>
+<text x="413" y="285.5" text-anchor="middle" class="pill dk">acd</text>
+<rect x="574" y="265" width="51" height="30" rx="15" fill="var(--g3)"/>
+<text x="600" y="285.5" text-anchor="middle" class="pill dk">bcd</text>
+<rect x="289" y="345" width="62" height="30" rx="15" fill="var(--g4)"/>
+<text x="320" y="365.5" text-anchor="middle" class="pill">abcd</text>
+</svg>
+<figcaption>The same 16 corners stacked by grade: 1, 4, 6, 4, 1, which is row four of Pascal's triangle. Lines join corners one switch apart.</figcaption>
+</figure>
+</section>
+
+<section class="band" id="reality">
+<h2>Mapping back onto reality</h2>
+<p>For a pure point nothing is lost: the grade-1 corners are the ordinary coordinates, and the other 12 corners follow from them. A general point has 12 extra numbers, and those measure how far it is from being a simple product. That is where interaction lives.</p>
+<table>
+<thead><tr><th>You read</th><th>You get</th><th>Kept or lost</th></tr></thead>
+<tbody>
+<tr><td>Grade-1 corners</td><td>The ordinary point (a, b, c, d)</td><td>Kept exactly for pure points</td></tr>
+<tr><td>All 16 corners</td><td>The point plus its interactions</td><td>Kept</td></tr>
+<tr><td>Box coordinates</td><td>Sub-box measures</td><td>Kept, the Möbius step goes back</td></tr>
+<tr><td>Totals per grade</td><td>1, a+b+c+d, ab+ac+…, abc+…, abcd</td><td>Loses which axis is which</td></tr>
+<tr><td>Sum of all corners</td><td>1 + a⊕b⊕c⊕d</td><td>One number, most is lost</td></tr>
+</tbody></table>
+<p>The one trouble spot is −1, a box side of zero. Mult-add with −1 swallows everything: (−1)⊕b = −1, just as 0×b = 0. So the information loss you dislike in ordinary multiplication moves to −1 here. It doesn't vanish.</p>
+</section>
+
+<section class="band" id="simpler">
+<h2>What gets simpler, and what gets worse</h2>
+<p>Polar coordinates make circles easy and lines awkward. The same trade happens here. Every example below was checked in Python (examples.py).</p>
+
+<div class="ex">
+<h3><span class="tag win">Simpler</span>At least one of four things happens</h3>
+<p>Four independent chances: 1/10, 1/5, 1/4, 1/3.</p>
+<div class="ba"><div><b>Before: inclusion-exclusion</b>15 terms with alternating signs, one per non-empty corner: p₁+p₂+p₃+p₄ − p₁p₂ − … + p₁p₂p₃ + … − p₁p₂p₃p₄</div><div><b>After: one mult-add chain</b>P = −((−p₁) ⊕ (−p₂) ⊕ (−p₃) ⊕ (−p₄)) = 16/25</div></div>
+<p>When the events depend on each other, put the chance that all of S happen on corner S. The answer is then one signed sum over the corners, a single Möbius step. Checked against a direct count of 2,000 simulated cases. <span class="tag known">Known</span> Inclusion-exclusion is the Möbius function of exactly this lattice (Rota, 1964).</p>
+</div>
+
+<div class="ex">
+<h3><span class="tag win">Simpler</span>A truth table becomes a few corners</h3>
+<div class="ba"><div><b>Before: 16 rows</b>Parity of four bits: on when an odd number of inputs is on.</div><div><b>After: one corner</b>With inputs written as ±1, parity is the single corner abcd.</div></div>
+<p>Majority of three goes from 8 rows to ab + ac + bc − 2abc. The grade of a corner tells you how many inputs interact. <span class="tag lose">Worse</span> Write parity with 0/1 inputs instead and it fills all 15 non-empty corners, with weights 1, −2, 4, −8. Which switch rule you pick matters. <span class="tag known">Known</span> Boolean function analysis (Fourier–Walsh, algebraic normal form).</p>
+</div>
+
+<div class="ex">
+<h3><span class="tag win">Simpler</span>Four KdV solitons</h3>
+<div class="ba"><div><b>Before: 16 exponential terms</b>τ = 1 + e<sup>η₁</sup> + … + e<sup>η₁+η₂</sup>·A₁₂ + … + e<sup>η₁+η₂+η₃+η₄</sup>·A₁₂A₁₃A₁₄A₂₃A₂₄A₃₄, each coefficient written out.</div><div><b>After: one corner rule</b>w<sub>S</sub> = product of A<sub>ij</sub> over the pairs inside S, with A<sub>ij</sub> = ((k<sub>i</sub>−k<sub>j</sub>)/(k<sub>i</sub>+k<sub>j</sub>))².</div></div>
+<p>Checked with speeds k = ½, 1, 3⁄2, 2: u = 2∂²ₓ log τ solves u<sub>t</sub> + 6uu<sub>x</sub> + u<sub>xxx</sub> = 0 to within 1.5×10⁻³⁶ at 40-digit precision. Switch off the interaction (every A = 1, a pure box) and the error jumps to 7.5, so it's no longer a solution. The interaction lives entirely off the pure point. <span class="tag known">Known</span> Hirota, 1971.</p>
+</div>
+
+<div class="ex">
+<h3><span class="tag lose">Worse</span>Rotating a point</h3>
+<p>Turn (3, 4) by the angle with cos = 3/5. In polar form you just add the angle. In corner form the new ab corner is cos·sin·(a² − b²) + (cos² − sin²)·ab. It needs a² and b², and no corner holds a square. Circles (x² + y² = r²) have the same problem. Rotations and distances belong to the e·e = ±1 row of the dial, not to mult-add. The size also doubles with every axis: 2<sup>n</sup> numbers for n axes.</p>
+</div>
+
+<div class="ex">
+<h3><span class="tag known">Known</span>Maxwell as one equation</h3>
+<p>In spacetime algebra, Maxwell's four equations become ∇F = J (David Hestenes, 1966). That algebra has the same 16 corners in layers of 1, 4, 6, 4, 1, but switches square to ±1 and anticommute. So this belongs to the geometric-algebra row of the dial. It isn't a mult-add result, and it's credited here to show where the dial leads.</p>
+</div>
+</section>
+
+<section class="band" id="known">
+<h2>What's known, and what's yours</h2>
+<ul>
+<li>The box split (1+a)(1+b)… = sum of corner pieces: classical.</li>
+<li>Corners as the subsets of {a, b, c, d}: the Boolean lattice. The zeta and Möbius steps on it: Rota's theory of Möbius functions.</li>
+<li>Combining corners by joining switches: the subset union product, used in fast algorithms.</li>
+<li>The rule x² = x: idempotent algebra, the same as functions on the cube's 16 vertices. With one axis it is the split-complex numbers.</li>
+<li>Weighted corner mixes: multilinear polynomials and Boolean function analysis.</li>
+<li>Grade = dimension on 1, 4, 6, 4, 1 corners: Grassmann and Clifford (geometric) algebra.</li>
+<li>a⊕b = a+b+ab itself: the circle operation in ring theory.</li>
+</ul>
+<p><b>What's yours:</b> using grade-tagged corners as a coordinate system for ordinary space, with mult-add as its native way of combining points, and the idea that one dial on the same tesseract joins derivatives, mult-add and geometric algebra. That framing could turn into something. As of today there's no new theorem here, and every piece above matches known maths.</p>
+</section>
+
+<section class="band" id="try">
+<h2>Try it</h2>
+<p>Type an ordinary point. The page lists its 16 corners by grade and checks that they add up to 1 + a⊕b⊕c⊕d.</p>
+<div class="calc">
+<div><label for="ia">a</label><input id="ia" inputmode="decimal" value="0.5"></div>
+<div><label for="ib">b</label><input id="ib" inputmode="decimal" value="2"></div>
+<div><label for="ic">c</label><input id="ic" inputmode="decimal" value="3"></div>
+<div><label for="id">d</label><input id="id" inputmode="decimal" value="-0.25"></div>
+</div>
+<div class="rows" id="rows"></div>
+<div class="res" id="res"></div>
+</section>
+
+<section class="band" id="lean">
+<h2>The formal version, in Lean 4</h2>
+<p class="warn">Unchecked. I couldn't install Lean on my side, so this file has never been compiled and no proof in it is verified yet.</p>
+<p>It defines corners, grade, the from-and-back maps, the value map, box coordinates, the union product and the soliton weights. It states and proves (pending a compile) that mult-add is associative and commutative, that there are n choose k corners of grade k, that the corners sum to the box ∏(1+aᵢ), and that box coordinates turn axis-wise mult-add into multiplication. Lean already uses ⊕ for something else, so mult-add is written ⊞. To check it, drop it in a Lean project that uses mathlib and run <span class="math">lake env lean TesseractCoords.lean</span>.</p>
+<div class="codehead"><b>TesseractCoords.lean</b><button data-copy="leancode">Copy</button></div>
+<pre id="leancode">/-
+  Tesseract coordinates for Fused Mult-Add Algebra
+  ================================================
+
+  STATUS: UNCHECKED. This file was written for Lean 4 with mathlib but has
+  NOT been compiled, so no proof here is verified yet. To check it, put it
+  in a Lean project that depends on mathlib and run `lake env lean
+  TesseractCoords.lean`. Any error means a proof needs fixing; it does not
+  mean the math is wrong (the Python tests check the same facts by
+  computation).
+
+  Notation: Lean already uses `⊕` for something else (sum types), so
+  mult-add is written `⊞` here. a ⊞ b = a + b + a*b.
+
+  The picture. Cut a box with sides 1+a, 1+b, 1+c, 1+d at 1 on every axis.
+  It falls into 16 pieces, one per corner of the tesseract. A corner is a
+  set of switches S (which axes are &quot;on&quot;); its piece has measure
+  ∏_{i ∈ S} a i and its grade (dimension) is |S|.
+-/
+import Mathlib
+
+open Finset BigOperators
+
+namespace MultAdd
+
+variable {R : Type*} [CommRing R]
+
+/-! ## Mult-add on numbers -/
+
+/-- Mult-add: one operation that adds and multiplies at once. -/
+def multAdd (a b : R) : R := a + b + a * b
+
+@[inherit_doc] infixl:65 &quot; ⊞ &quot; =&gt; multAdd
+
+/-- The geometric heart: mult-add is a box with sides 1 + a and 1 + b,
+minus the unit square. -/
+theorem one_add_multAdd (a b : R) : 1 + (a ⊞ b) = (1 + a) * (1 + b) := by
+  unfold multAdd; ring
+
+theorem multAdd_comm (a b : R) : a ⊞ b = b ⊞ a := by
+  unfold multAdd; ring
+
+theorem multAdd_assoc (a b c : R) : (a ⊞ b) ⊞ c = a ⊞ (b ⊞ c) := by
+  unfold multAdd; ring
+
+theorem multAdd_zero (a : R) : a ⊞ 0 = a := by
+  unfold multAdd; ring
+
+/-- Four numbers: the tesseract box with 16 pieces. -/
+theorem one_add_multAdd₄ (a b c d : R) :
+    1 + (a ⊞ b ⊞ c ⊞ d) = (1 + a) * (1 + b) * (1 + c) * (1 + d) := by
+  simp only [multAdd]; ring
+
+/-- Mult-add of a whole list (0 is the identity). -/
+def multAddList : List R → R
+  | [] =&gt; 0
+  | x :: xs =&gt; x ⊞ multAddList xs
+
+theorem one_add_multAddList :
+    ∀ l : List R, 1 + multAddList l = (l.map (fun x =&gt; 1 + x)).prod
+  | [] =&gt; by simp [multAddList]
+  | x :: xs =&gt; by
+      simp only [multAddList, one_add_multAdd, List.map_cons, List.prod_cons,
+        one_add_multAddList xs]
+
+/-! ## Tesseract coordinates -/
+
+/-- A corner of the n-cube: the set of switches that are on. -/
+abbrev Corner (n : ℕ) := Finset (Fin n)
+
+/-- Tesseract coordinates: one weight for every corner. -/
+abbrev Coord (n : ℕ) (R : Type*) := Corner n → R
+
+/-- The grade of a corner is how many switches are on: its dimension
+(0 = point, 1 = line, 2 = area, 3 = volume, 4 = hypervolume). -/
+def grade {n : ℕ} (S : Corner n) : ℕ := S.card
+
+/-- Corner coordinates of an ordinary point a: corner S holds ∏_{i ∈ S} a i. -/
+def ofPoint {n : ℕ} (a : Fin n → R) : Coord n R := fun S =&gt; ∏ i ∈ S, a i
+
+/-- Back to ordinary coordinates: read off the grade-1 corners. -/
+def toPoint {n : ℕ} (c : Coord n R) : Fin n → R := fun i =&gt; c {i}
+
+/-- The evaluation map: weights become one number at x. -/
+def eval {n : ℕ} (x : Fin n → R) (c : Coord n R) : R :=
+  ∑ S : Corner n, c S * ∏ i ∈ S, x i
+
+/-- Box coordinates (the zeta transform): add up every corner inside T. -/
+def zeta {n : ℕ} (c : Coord n R) : Coord n R := fun T =&gt; ∑ S ∈ T.powerset, c S
+
+/-- Mult-add of two tesseract points: corners combine by joining their
+switches (S ∪ U). This is the union, or OR, product on subsets. -/
+def compose {n : ℕ} (v w : Coord n R) : Coord n R :=
+  fun T =&gt; ∑ S : Corner n, ∑ U : Corner n, if S ∪ U = T then v S * w U else 0
+
+/-- Hirota&#x27;s N-soliton weights: corner S gets the product of the pair
+interactions A i j for i &lt; j inside S. -/
+def solitonWeights {n : ℕ} (A : Fin n → Fin n → R) : Coord n R :=
+  fun S =&gt; ∏ p ∈ (S ×ˢ S).filter (fun p =&gt; p.1 &lt; p.2), A p.1 p.2
+
+/-! ## Facts -/
+
+/-- Nothing is lost going in and coming back out. -/
+theorem toPoint_ofPoint {n : ℕ} (a : Fin n → R) : toPoint (ofPoint a) = a := by
+  funext i; simp [toPoint, ofPoint]
+
+/-- There are n choose k corners of grade k. -/
+theorem card_corners_of_grade (n k : ℕ) :
+    ((univ : Finset (Corner n)).filter (fun S =&gt; grade S = k)).card = n.choose k := by
+  have h : (univ : Finset (Corner n)).filter (fun S =&gt; grade S = k)
+      = powersetCard k (univ : Finset (Fin n)) := by
+    rw [powersetCard_eq_filter, powerset_univ]; rfl
+  rw [h, card_powersetCard, card_univ, Fintype.card_fin]
+
+/-- The tesseract&#x27;s layers are 1, 4, 6, 4, 1. -/
+example : (powersetCard 0 (univ : Finset (Fin 4))).card = 1 := by
+  rw [card_powersetCard, card_univ, Fintype.card_fin]; rfl
+example : (powersetCard 1 (univ : Finset (Fin 4))).card = 4 := by
+  rw [card_powersetCard, card_univ, Fintype.card_fin]; rfl
+example : (powersetCard 2 (univ : Finset (Fin 4))).card = 6 := by
+  rw [card_powersetCard, card_univ, Fintype.card_fin]; rfl
+example : (powersetCard 3 (univ : Finset (Fin 4))).card = 4 := by
+  rw [card_powersetCard, card_univ, Fintype.card_fin]; rfl
+example : (powersetCard 4 (univ : Finset (Fin 4))).card = 1 := by
+  rw [card_powersetCard, card_univ, Fintype.card_fin]; rfl
+
+/-- The 16 pieces add up to the whole box: ∑_S ∏_{i ∈ S} a i = ∏ (1 + a i). -/
+theorem sum_corners_ofPoint {n : ℕ} (a : Fin n → R) :
+    ∑ S : Corner n, ofPoint a S = ∏ i, (1 + a i) := by
+  rw [Finset.prod_one_add, powerset_univ]
+  simp only [ofPoint]
+
+/-- So the sum of all corners is 1 plus the mult-add of the coordinates. -/
+theorem sum_corners_eq_one_add_multAdd {n : ℕ} (a : Fin n → R) :
+    ∑ S : Corner n, ofPoint a S = 1 + multAddList (List.ofFn a) := by
+  rw [sum_corners_ofPoint, one_add_multAddList, List.map_ofFn, List.prod_ofFn]
+  rfl
+
+/-- Evaluating &quot;every weight 1&quot; at x gives the box ∏ (1 + x i). -/
+theorem eval_ones {n : ℕ} (x : Fin n → R) :
+    eval x (fun _ =&gt; 1) = ∏ i, (1 + x i) := by
+  rw [Finset.prod_one_add, powerset_univ]
+  simp [eval]
+
+/-- Box coordinates of a point are sub-box measures ∏_{i ∈ T} (1 + a i). -/
+theorem zeta_ofPoint {n : ℕ} (a : Fin n → R) (T : Corner n) :
+    zeta (ofPoint a) T = ∏ i ∈ T, (1 + a i) := by
+  rw [Finset.prod_one_add]
+  rfl
+
+/-- In box coordinates, mult-add axis by axis is plain multiplication. -/
+theorem zeta_ofPoint_multAdd {n : ℕ} (a b : Fin n → R) (T : Corner n) :
+    zeta (ofPoint (fun i =&gt; a i ⊞ b i)) T = zeta (ofPoint a) T * zeta (ofPoint b) T := by
+  simp only [zeta_ofPoint, one_add_multAdd, Finset.prod_mul_distrib]
+
+/-- With no interaction (every A i j = 1) every soliton weight is 1, so the
+tau function is the pure box ∏ (1 + e^{η i}). -/
+theorem solitonWeights_one {n : ℕ} :
+    solitonWeights (fun _ _ =&gt; (1 : R)) = fun (_ : Corner n) =&gt; 1 := by
+  funext S; simp [solitonWeights]
+
+/-
+  Next step (not stated here yet): `zeta (compose v w) = zeta v * zeta w`
+  for every pair of points, which makes `compose` exactly mult-add in box
+  coordinates. The Python helpers test it on many random points.
+-/
+
+end MultAdd
+</pre>
+</section>
+
+<section class="band" id="python">
+<h2>Python helpers</h2>
+<p>tesseract.py converts between ordinary and tesseract coordinates, lists corners by grade, runs the zeta and Möbius steps, composes points with mult-add and builds soliton weights. Its 15 tests pass, and examples.py runs every before-and-after on this page. All of it is saved in your project folder under math-theory/tesseract.</p>
+<div class="codehead"><b>tesseract.py</b><button data-copy="pycode">Copy</button></div>
+<pre id="pycode">&quot;&quot;&quot;Tesseract coordinates for Fused Mult-Add Algebra.
+
+A point in n dimensions gets 2**n coordinates, one per corner of the
+n-cube (n = 4 is the tesseract). A corner is addressed by n switches,
+one per axis: switch i is on when axis i takes part. The corner&#x27;s
+grade (its dimension) is how many switches are on.
+
+Corners are stored as bitmasks: bit 0 is axis a, bit 1 is axis b, and so
+on. A coordinate vector is a plain list of length 2**n, indexed by mask.
+
+The three ideas, in code:
+  from_point(a)  -&gt; corner coordinates  c_S = product of a_i for i in S
+  zeta(c)        -&gt; box coordinates     B_T = sum of c_S over S inside T
+                                             = product of (1 + a_i), i in T
+  compose(v, w)  -&gt; mult-add on corners (switches combine by OR)
+
+Mult-add a (+) b = a + b + ab = (1+a)(1+b) - 1. In box coordinates it is
+plain multiplication, corner by corner; mobius() goes back.
+
+Everything works with ints, floats or fractions.Fraction.
+&quot;&quot;&quot;
+
+from fractions import Fraction
+from itertools import combinations
+from math import comb
+
+AXES = &quot;abcdefgh&quot;
+
+
+# ---------------------------------------------------------------- numbers
+
+def multadd(x, y):
+    &quot;&quot;&quot;Mult-add of two numbers: x + y + x*y.&quot;&quot;&quot;
+    return x + y + x * y
+
+
+def multadd_all(values):
+    &quot;&quot;&quot;Mult-add of a whole list, left to right (0 is the identity).&quot;&quot;&quot;
+    total = 0
+    for v in values:
+        total = multadd(total, v)
+    return total
+
+
+def multadd_inverse(x):
+    &quot;&quot;&quot;The y with x (+) y = 0, that is -x / (1 + x). Undefined at x = -1.&quot;&quot;&quot;
+    if x == -1:
+        raise ZeroDivisionError(&quot;-1 has no mult-add inverse (its box side is 0)&quot;)
+    return -x / (1 + x) if isinstance(x, float) else Fraction(-x) / (1 + x)
+
+
+# ---------------------------------------------------------------- corners
+
+def size(n):
+    return 1 &lt;&lt; n
+
+
+def grade(mask):
+    &quot;&quot;&quot;Number of switches on = the corner&#x27;s dimension.&quot;&quot;&quot;
+    return bin(mask).count(&quot;1&quot;)
+
+
+def label(mask, n):
+    &quot;&quot;&quot;Switch address in axis order a b c d..., e.g. &#x27;1010&#x27; for a and c.&quot;&quot;&quot;
+    return &quot;&quot;.join(&quot;1&quot; if mask &gt;&gt; i &amp; 1 else &quot;0&quot; for i in range(n))
+
+
+def name(mask, n):
+    &quot;&quot;&quot;Letters of the switches that are on, e.g. &#x27;ac&#x27;; the empty corner is &#x27;1&#x27;.&quot;&quot;&quot;
+    s = &quot;&quot;.join(AXES[i] for i in range(n) if mask &gt;&gt; i &amp; 1)
+    return s or &quot;1&quot;
+
+
+def corners_by_grade(n):
+    &quot;&quot;&quot;List of lists: corners_by_grade(n)[k] holds every corner of grade k.&quot;&quot;&quot;
+    layers = [[] for _ in range(n + 1)]
+    for mask in range(size(n)):
+        layers[grade(mask)].append(mask)
+    return layers
+
+
+def subsets(mask):
+    &quot;&quot;&quot;Every sub-corner of mask (every mask whose switches are inside it).&quot;&quot;&quot;
+    sub = mask
+    while True:
+        yield sub
+        if sub == 0:
+            return
+        sub = (sub - 1) &amp; mask
+
+
+# ------------------------------------------------- ordinary &lt;-&gt; tesseract
+
+def from_point(a):
+    &quot;&quot;&quot;Corner coordinates of an ordinary point a = (a_1..a_n).
+
+    Corner S holds the product of a_i over the switches in S: the measure
+    of that piece when a box with sides 1 + a_i is cut at 1 on every axis.
+    &quot;&quot;&quot;
+    n = len(a)
+    c = [1] * size(n)
+    for mask in range(1, size(n)):
+        low = mask &amp; -mask
+        i = low.bit_length() - 1
+        c[mask] = c[mask ^ low] * a[i]
+    return c
+
+
+def to_point(c):
+    &quot;&quot;&quot;Back to ordinary coordinates: the grade-1 corners, scaled by corner 1.&quot;&quot;&quot;
+    n = size_to_n(len(c))
+    if c[0] == 0:
+        raise ValueError(&quot;corner 1 is 0, so there is no scale to read from&quot;)
+    return [c[1 &lt;&lt; i] / c[0] if isinstance(c[0], float) else Fraction(c[1 &lt;&lt; i]) / c[0]
+            for i in range(n)]
+
+
+def is_pure(c, tol=0):
+    &quot;&quot;&quot;True when c comes from an ordinary point (every corner factors).&quot;&quot;&quot;
+    n = size_to_n(len(c))
+    if c[0] == 0:
+        return all(abs(x) &lt;= tol for x in c)
+    a = to_point(c)
+    rebuilt = from_point(a)
+    return all(abs(c[m] - c[0] * rebuilt[m]) &lt;= tol for m in range(len(c)))
+
+
+def size_to_n(length):
+    n = length.bit_length() - 1
+    if length != 1 &lt;&lt; n:
+        raise ValueError(&quot;a coordinate list must have length 2**n&quot;)
+    return n
+
+
+def evaluate(c, x):
+    &quot;&quot;&quot;Value of the coordinates at x: sum over corners of c_S times prod x_i.&quot;&quot;&quot;
+    n = size_to_n(len(c))
+    if len(x) != n:
+        raise ValueError(&quot;x needs one value per axis&quot;)
+    monomials = from_point(x)
+    return sum(c[m] * monomials[m] for m in range(len(c)))
+
+
+def total(c):
+    &quot;&quot;&quot;Sum of every corner. For a pure point this is 1 + (a (+) b (+) ...).&quot;&quot;&quot;
+    return sum(c)
+
+
+def grade_totals(c):
+    &quot;&quot;&quot;Sum of the corners in each grade: [point, lines, areas, volumes, ...].&quot;&quot;&quot;
+    n = size_to_n(len(c))
+    out = [0] * (n + 1)
+    for m, v in enumerate(c):
+        out[grade(m)] += v
+    return out
+
+
+# ------------------------------------------------- transforms and mult-add
+
+def zeta(c):
+    &quot;&quot;&quot;Box coordinates: B_T = sum of c_S over every S inside T.&quot;&quot;&quot;
+    b = list(c)
+    n = size_to_n(len(b))
+    for i in range(n):
+        bit = 1 &lt;&lt; i
+        for m in range(len(b)):
+            if m &amp; bit:
+                b[m] += b[m ^ bit]
+    return b
+
+
+def mobius(b):
+    &quot;&quot;&quot;Inverse of zeta (Mobius inversion): c_S = sum over T inside S of (-1)^|S-T| B_T.&quot;&quot;&quot;
+    c = list(b)
+    n = size_to_n(len(c))
+    for i in range(n):
+        bit = 1 &lt;&lt; i
+        for m in range(len(c)):
+            if m &amp; bit:
+                c[m] -= c[m ^ bit]
+    return c
+
+
+def compose(v, w):
+    &quot;&quot;&quot;Mult-add of two tesseract points: corners combine by OR of switches.
+
+    (v * w)_T = sum of v_S * w_U over every pair with S | U == T.
+    Same as mobius(zeta(v) * zeta(w)) corner by corner.
+    &quot;&quot;&quot;
+    if len(v) != len(w):
+        raise ValueError(&quot;both points need the same number of axes&quot;)
+    out = [0] * len(v)
+    for s, vs in enumerate(v):
+        if vs == 0:
+            continue
+        for u, wu in enumerate(w):
+            out[s | u] += vs * wu
+    return out
+
+
+def compose_fast(v, w):
+    &quot;&quot;&quot;compose() through box coordinates; O(n 2^n) instead of O(4^n).&quot;&quot;&quot;
+    return mobius([x * y for x, y in zip(zeta(v), zeta(w))])
+
+
+# ------------------------------------------------- the soliton example
+
+def soliton_tau_weights(A):
+    &quot;&quot;&quot;Hirota N-soliton corner weights: w_S = product of A[i][j], i &lt; j in S.
+
+    A[i][j] is the interaction between solitons i and j. With every
+    A[i][j] = 1 the point is pure: the tau function factors as
+    (1 + e^eta_1)(1 + e^eta_2)...
+    &quot;&quot;&quot;
+    n = len(A)
+    w = [1] * size(n)
+    for mask in range(size(n)):
+        on = [i for i in range(n) if mask &gt;&gt; i &amp; 1]
+        for i, j in combinations(on, 2):
+            w[mask] *= A[i][j]
+    return w
+
+
+def describe(c):
+    &quot;&quot;&quot;Readable listing, one line per corner, grouped by grade.&quot;&quot;&quot;
+    n = size_to_n(len(c))
+    lines = []
+    for k, layer in enumerate(corners_by_grade(n)):
+        parts = [f&quot;{label(m, n)} {name(m, n)}={c[m]}&quot; for m in layer]
+        lines.append(f&quot;grade {k} ({comb(n, k)}): &quot; + &quot;, &quot;.join(parts))
+    return &quot;\n&quot;.join(lines)
+
+
+if __name__ == &quot;__main__&quot;:
+    a = [Fraction(1, 2), 2, 3, Fraction(-1, 3)]
+    c = from_point(a)
+    print(describe(c))
+    print(&quot;total =&quot;, total(c), &quot;= 1 + mult-add =&quot;, 1 + multadd_all(a))
+</pre>
+<details><summary>examples.py, the checks behind "simpler or worse"</summary>
+<div class="codehead"><b>examples.py</b><button data-copy="excode">Copy</button></div>
+<pre id="excode">&quot;&quot;&quot;Where tesseract coordinates make things shorter, and where they don&#x27;t.
+
+Run: python3 examples.py   (needs sympy for the soliton check)
+Every example prints a before/after and asserts they agree.
+&quot;&quot;&quot;
+
+import random
+from fractions import Fraction
+from itertools import product
+
+import tesseract as t
+
+
+def header(s):
+    print(&quot;\n&quot; + &quot;=&quot; * 70 + &quot;\n&quot; + s + &quot;\n&quot; + &quot;=&quot; * 70)
+
+
+# ---------------------------------------------------------------- 1
+def example_or_of_events():
+    header(&quot;1. Chance that at least one of 4 independent things happens&quot;)
+    p = [Fraction(1, 10), Fraction(1, 5), Fraction(1, 4), Fraction(1, 3)]
+    # Before: inclusion-exclusion, 15 alternating terms (every non-empty corner)
+    terms = []
+    for mask in range(1, 16):
+        prod_ = 1
+        for i in range(4):
+            if mask &gt;&gt; i &amp; 1:
+                prod_ *= p[i]
+        sign = 1 if t.grade(mask) % 2 else -1
+        terms.append(sign * prod_)
+    before = sum(terms)
+    # After: one mult-add chain on -p, i.e. P = -((-p1) (+) (-p2) (+) ...)
+    after = -t.multadd_all([-x for x in p])
+    print(f&quot;before: {len(terms)} signed terms, one per non-empty corner -&gt; {before}&quot;)
+    print(f&quot;after : -( -p1 (+) -p2 (+) -p3 (+) -p4 ) -&gt; {after}&quot;)
+    assert before == after
+    # Dependent events: put P(all of S happen) on corner S, one Mobius step.
+    rng = random.Random(0)
+    worlds = [tuple(rng.random() &lt; 0.4 for _ in range(4)) for _ in range(2000)]
+    w = [Fraction(sum(all(x[i] for i in range(4) if m &gt;&gt; i &amp; 1) for x in worlds),
+                  len(worlds)) for m in range(16)]
+    none = sum((-1) ** t.grade(m) * w[m] for m in range(16))
+    direct = Fraction(sum(any(x) for x in worlds), len(worlds))
+    print(f&quot;dependent events: 1 - signed corner sum = {1 - none} = direct count {direct}&quot;)
+    assert 1 - none == direct
+
+
+# ---------------------------------------------------------------- 2
+def anf(table, n):
+    &quot;&quot;&quot;Truth table (index = input mask) -&gt; corner weights (Mobius transform).&quot;&quot;&quot;
+    return t.mobius(list(table))
+
+
+def walsh(table, n):
+    &quot;&quot;&quot;Fourier-Walsh weights with +-1 inputs: f = sum_S f^(S) prod x_i.&quot;&quot;&quot;
+    N = 1 &lt;&lt; n
+    out = []
+    for s in range(N):
+        tot = 0
+        for x in range(N):
+            chi = (-1) ** t.grade(x &amp; s)
+            tot += table[x] * chi
+        out.append(Fraction(tot, N))
+    return out
+
+
+def example_boolean():
+    header(&quot;2. A 16-row truth table becomes a few corners&quot;)
+    n = 4
+    parity = [t.grade(x) % 2 for x in range(16)]
+    pm = [1 - 2 * v for v in parity]          # parity as +1/-1
+    W = walsh(pm, n)
+    nz = {t.name(m, n): W[m] for m in range(16) if W[m]}
+    print(&quot;parity of 4 bits: 16 rows -&gt; Walsh corners&quot;, nz)
+    assert nz == {&quot;abcd&quot;: 1}
+    maj3 = [1 if t.grade(x) &gt;= 2 else 0 for x in range(8)]
+    c = anf(maj3, 3)
+    nz = {t.name(m, 3): c[m] for m in range(8) if c[m]}
+    print(&quot;majority of 3: 8 rows -&gt; corners&quot;, nz, &quot;(ab+ac+bc-2abc)&quot;)
+    assert nz == {&quot;ab&quot;: 1, &quot;ac&quot;: 1, &quot;bc&quot;: 1, &quot;abc&quot;: -2}
+    # where the 0/1 basis is worse: parity in 0/1 corners fills everything
+    c = anf(parity, 4)
+    print(&quot;same parity in 0/1 corners:&quot;, {t.name(m, 4): c[m] for m in range(16) if c[m]})
+
+
+# ---------------------------------------------------------------- 3
+def example_kdv():
+    header(&quot;3. KdV solitons: 16-term formula = one corner rule&quot;)
+    import sympy as sp
+    x, tt = sp.symbols(&quot;x t&quot;, real=True)
+    ks = [sp.Rational(1, 2), sp.Integer(1), sp.Rational(3, 2), sp.Integer(2)]
+    n = len(ks)
+    A = [[((ks[i] - ks[j]) / (ks[i] + ks[j])) ** 2 if i != j else 1
+          for j in range(n)] for i in range(n)]
+    w = t.soliton_tau_weights(A)
+    eta = [k * x - k ** 3 * tt for k in ks]
+    tau = sum(w[m] * sp.exp(sum(eta[i] for i in range(n) if m &gt;&gt; i &amp; 1))
+              for m in range(16))
+    u = 2 * sp.diff(sp.log(tau), x, 2)
+    resid = sp.diff(u, tt) + 6 * u * sp.diff(u, x) + sp.diff(u, x, 3)
+    f = sp.lambdify((x, tt), resid, &quot;mpmath&quot;)
+    import mpmath
+    mpmath.mp.dps = 40
+    pts = [(mpmath.mpf(xv), mpmath.mpf(tv)) for xv in (&quot;-6&quot;, &quot;-2&quot;, &quot;0&quot;, &quot;1.5&quot;, &quot;4&quot;)
+           for tv in (&quot;-1&quot;, &quot;0&quot;, &quot;0.7&quot;)]
+    worst = max(abs(f(xv, tv)) for xv, tv in pts)
+    print(&quot;tau has 16 terms; corner S weight = product of A_ij over pairs in S&quot;)
+    print(&quot;KdV residual u_t + 6 u u_x + u_xxx at 15 sample points: max |r| =&quot;,
+          mpmath.nstr(worst, 3))
+    assert worst &lt; 1e-25
+    # control: drop the interaction (every A = 1) and it is no longer a solution
+    w1 = [1] * 16
+    tau1 = sum(w1[m] * sp.exp(sum(eta[i] for i in range(n) if m &gt;&gt; i &amp; 1))
+               for m in range(16))
+    u1 = 2 * sp.diff(sp.log(tau1), x, 2)
+    r1 = sp.diff(u1, tt) + 6 * u1 * sp.diff(u1, x) + sp.diff(u1, x, 3)
+    f1 = sp.lambdify((x, tt), r1, &quot;mpmath&quot;)
+    ctrl = max(abs(f1(xv, tv)) for xv, tv in pts)
+    print(&quot;control with every A = 1 (pure box, no interaction): max |r| =&quot;,
+          mpmath.nstr(ctrl, 3))
+    assert ctrl &gt; 1e-3
+    # the interaction lives only in grade 2: Mobius of log-weights
+    logw = [sp.log(v) for v in w]
+    m = t.mobius(logw)
+    by_grade = {}
+    for mask in range(16):
+        g = t.grade(mask)
+        val = sp.nsimplify(sp.simplify(m[mask]))
+        by_grade.setdefault(g, set()).add(val == 0)
+    print(&quot;Mobius of log-weights is zero at grades:&quot;,
+          [g for g, s in by_grade.items() if s == {True}])
+    assert by_grade[3] == {True} and by_grade[4] == {True}
+
+
+# ---------------------------------------------------------------- 4
+def example_rotation_is_worse():
+    header(&quot;4. Where it gets worse: rotating a point&quot;)
+    a, b = Fraction(3), Fraction(4)
+    c = t.from_point([a, b])
+    # rotate by the angle with cos = 3/5, sin = 4/5 (exact)
+    co, si = Fraction(3, 5), Fraction(4, 5)
+    a2, b2 = co * a - si * b, si * a + co * b
+    c2 = t.from_point([a2, b2])
+    print(&quot;corners before:&quot;, c, &quot; after rotation:&quot;, c2)
+    # The new &#x27;ab&#x27; corner needs a^2 and b^2, which are not corners:
+    rebuilt = co * si * (a * a - b * b) + (co * co - si * si) * c[3]
+    assert c2[3] == rebuilt
+    print(&quot;new ab = cos*sin*(a^2 - b^2) + (cos^2 - sin^2)*ab  -&gt; needs a^2, b^2,&quot;)
+    print(&quot;which no corner holds. Polar does this in one step (add the angle).&quot;)
+    print(&quot;And -1 swallows everything: (-1) (+) b =&quot;, t.multadd(-1, Fraction(5)))
+
+
+if __name__ == &quot;__main__&quot;:
+    example_or_of_events()
+    example_boolean()
+    example_kdv()
+    example_rotation_is_worse()
+    print(&quot;\nall checks passed&quot;)
+</pre>
+</details>
+</section>
+
+<script>
+{
+const G=['var(--g0)','var(--g1)','var(--g2)','var(--g3)','var(--g4)'];
+const names=['point','lines','areas','volumes','hyper'];
+const ids=['ia','ib','ic','id'];
+const fmt=v=>{if(!isFinite(v))return'?';const r=Math.round(v*1e6)/1e6;return String(r)};
+function draw(){
+  const a=ids.map(i=>parseFloat(document.getElementById(i).value.replace(',','.')));
+  const rows=document.getElementById('rows'),res=document.getElementById('res');
+  if(a.some(v=>!isFinite(v))){rows.textContent='';res.textContent='Enter a number in each box.';return}
+  const layers=[[],[],[],[],[]];let total=0;
+  for(let m=0;m<16;m++){let p=1,lab='',nm='',g=0;for(let i=0;i<4;i++){const on=(m>>i)&1;lab+=on?'1':'0';if(on){p*=a[i];nm+='abcd'[i];g++}}
+    total+=p;layers[g].push({lab,nm:nm||'1',p})}
+  rows.innerHTML=layers.map((L,g)=>'<div class="row"><span class="g">'+names[g]+'</span>'+L.map(c=>'<span class="chip" style="background:'+G[g]+(g===3?';color:#111':'')+'">'+c.nm+' = '+fmt(c.p)+'</span>').join('')+'</div>').join('');
+  let ma=0;for(const v of a)ma=ma+v+ma*v;
+  res.textContent='Sum of all 16 corners = '+fmt(total)+'.  1 + a⊕b⊕c⊕d = '+fmt(1+ma)+'.';
+}
+ids.forEach(i=>document.getElementById(i).addEventListener('input',draw));
+draw();
+document.querySelectorAll('button[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent);b.textContent='Copied'}
+  catch(e){b.textContent='Select the text to copy'}
+  setTimeout(()=>b.textContent='Copy',1800)}));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+== 1. How two noise channels combine ==
+bit-flip  p+q-2pq : max PTM error 1.11e-16
+bit-flip  p+q-pq  : max PTM error 7.02e-02   <- the call's rule, wrong for bit-flips
+phase-flip p+q-2pq: max PTM error 1.11e-16
+depolarizing p+q-(4/3)pq: max PTM error 1.11e-16
+amplitude damping g+h-gh: max PTM error 1.11e-16   <- the call's rule fits here (T1 decay)
+
+== 2. Every rule is mult-add with a weight k: a + b + k*a*b, and (1 + k*a) multiplies ==
+amplitude damping  k=-1.000: 6 stacked at 0.05 -> predicted 0.264908, density matrix 0.264908, wall at p*=-1/k=1.000
+bit-flip           k=-2.000: 6 stacked at 0.05 -> predicted 0.234279, density matrix 0.234280, wall at p*=-1/k=0.500
+depolarizing       k=-1.333: 6 stacked at 0.05 -> predicted 0.254228, density matrix 0.254228, wall at p*=-1/k=0.750
+
+== 3. Pauli channels live in a tetrahedron inside the cube [-1,1]^3; composing multiplies coordinates ==
+2000 random pairs: coordinates multiply and stay in the tetrahedron: True
+
+== 4. 3-qubit bit-flip code, full density-matrix simulation ==
+px=0.1, pz=0.02: logical lambda_Z 0.944000 vs f(ex)=0.944000;  logical lambda_X 0.884736 vs ez^3=0.884736
+px=0.2, pz=0.1: logical lambda_Z 0.792000 vs f(ex)=0.792000;  logical lambda_X 0.512000 vs ez^3=0.512000
+px=0.3, pz=0.05: logical lambda_Z 0.568000 vs f(ex)=0.568000;  logical lambda_X 0.729000 vs ez^3=0.729000
+
+== 5. Shor code and concatenation (code capacity, independent X and Z flips, perfect decoding) ==
+p=0.05: logical X-error 0.04976 (MC) vs 0.05011 (map);  logical Z-error 0.02149 (MC) vs 0.02144 (map)
+p=0.1: logical X-error 0.14955 (MC) vs 0.14955 (map);  logical Z-error 0.07949 (MC) vs 0.07938 (map)
+p=0.2: logical X-error 0.34001 (MC) vs 0.34052 (map);  logical Z-error 0.25056 (MC) vs 0.25160 (map)
+two Shor levels, p=0.03: X 0.00165 (MC) vs 0.00161 (map); Z 0.00400 (MC) vs 0.00365 (map)
+two Shor levels, p=0.05: X 0.01073 (MC) vs 0.01091 (map); Z 0.02137 (MC) vs 0.02152 (map)
+two Shor levels, p=0.08: X 0.05512 (MC) vs 0.05455 (map); Z 0.08987 (MC) vs 0.09051 (map)
+concatenated Shor threshold (equal independent X and Z flips, hierarchical decoding): p_th = 0.074712
+separately: bit-flips survive below p_x = 0.096728, phase-flips below p_z = 0.074712 (the safe region is a box)
+concatenated 3-bit repetition, bit flips only: x -> f(x) pushes every x>0 to 1, threshold p=1/2
+
+== 6. Repetition code: failing corners of the n-cube by layer ==
+n=3: failing corners per layer [0, 0, 3, 1]; lowest failing layer = 2 = distance-based
+n=5: failing corners per layer [0, 0, 0, 10, 5, 1]; lowest failing layer = 3 = distance-based
+n=7: failing corners per layer [0, 0, 0, 0, 35, 21, 7, 1]; lowest failing layer = 4 = distance-based
+n=9: failing corners per layer [0, 0, 0, 0, 0, 126, 84, 36, 9, 1]; lowest failing layer = 5 = distance-based
+
+== 7. MacWilliams = flipping the cube's signs (repetition code n=3 and its dual) ==
+W_dual(x,y) == W_C(x+y, x-y)/|C| : True
+undetected error at p=1/10: direct 1/1000 , via dual code in polarization 1/1000
+
+== 8. Surface (toric) code, independent X flips, minimum-weight matching (pymatching) ==
+L=6: p=0.07:0.106, p=0.08:0.159, p=0.09:0.213, p=0.10:0.274, p=0.11:0.324, p=0.12:0.394, p=0.13:0.453
+L=10: p=0.07:0.060, p=0.08:0.106, p=0.09:0.176, p=0.10:0.252, p=0.11:0.355, p=0.12:0.421, p=0.13:0.511
+L=14: p=0.07:0.029, p=0.08:0.077, p=0.09:0.158, p=0.10:0.238, p=0.11:0.350, p=0.12:0.466, p=0.13:0.563
+L=18: p=0.07:0.019, p=0.08:0.063, p=0.09:0.127, p=0.10:0.232, p=0.11:0.371, p=0.12:0.495, p=0.13:0.591
+Curves cross near p = 0.10 (the known matching threshold is about 10.3%; the best possible decoder reaches about 10.9%).

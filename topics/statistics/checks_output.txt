@@ -1,0 +1,87 @@
+PASS parity, 1 unequal coins: P(even)-P(odd) = 1-2*fold(-2)
+PASS none, 1 unequal coins: P(none) = 1-fold(-1)
+PASS parity, 2 unequal coins: P(even)-P(odd) = 1-2*fold(-2)
+PASS none, 2 unequal coins: P(none) = 1-fold(-1)
+PASS parity, 3 unequal coins: P(even)-P(odd) = 1-2*fold(-2)
+PASS none, 3 unequal coins: P(none) = 1-fold(-1)
+PASS parity, 4 unequal coins: P(even)-P(odd) = 1-2*fold(-2)
+PASS none, 4 unequal coins: P(none) = 1-fold(-1)
+PASS parity, 5 unequal coins: P(even)-P(odd) = 1-2*fold(-2)
+PASS none, 5 unequal coins: P(none) = 1-fold(-1)
+PASS parity, 6 unequal coins: P(even)-P(odd) = 1-2*fold(-2)
+PASS none, 6 unequal coins: P(none) = 1-fold(-1)
+PASS inclusion-exclusion, 5 dependent events, trial 0
+PASS inclusion-exclusion, 5 dependent events, trial 1
+PASS inclusion-exclusion, 5 dependent events, trial 2
+PASS inclusion-exclusion, 5 dependent events, trial 3
+PASS inclusion-exclusion, 5 dependent events, trial 4
+PASS P(A or B) = p (+)_k q with k = -lift, and -1/max(p,q) <= k <= 0
+PASS Poisson k-moment adds by (+)_k, k=-2, lambda=0.3+1.1
+PASS Poisson k-moment adds by (+)_k, k=-2, lambda=2.0+0.5
+PASS binomial(n, lam/n) k-moment -> Poisson's (e^(k lam)-1)/k, k=-2  errors 1.25e-02 -> 1.26e-05
+PASS Poisson k-moment adds by (+)_k, k=-1, lambda=0.3+1.1
+PASS Poisson k-moment adds by (+)_k, k=-1, lambda=2.0+0.5
+PASS binomial(n, lam/n) k-moment -> Poisson's (e^(k lam)-1)/k, k=-1  errors 2.41e-02 -> 2.30e-05
+PASS Poisson k-moment adds by (+)_k, k=-0.5, lambda=0.3+1.1
+PASS Poisson k-moment adds by (+)_k, k=-0.5, lambda=2.0+0.5
+PASS binomial(n, lam/n) k-moment -> Poisson's (e^(k lam)-1)/k, k=-0.5  errors 2.28e-02 -> 2.21e-05
+PASS Poisson k-moment adds by (+)_k, k=0.7, lambda=0.3+1.1
+PASS Poisson k-moment adds by (+)_k, k=0.7, lambda=2.0+0.5
+PASS binomial(n, lam/n) k-moment -> Poisson's (e^(k lam)-1)/k, k=0.7  errors 1.36e-01 -> 1.47e-04
+PASS Poisson k-moment adds by (+)_k, k=1, lambda=0.3+1.1
+PASS Poisson k-moment adds by (+)_k, k=1, lambda=2.0+0.5
+PASS binomial(n, lam/n) k-moment -> Poisson's (e^(k lam)-1)/k, k=1  errors 2.75e-01 -> 3.10e-04
+PASS Poisson k-moment adds by (+)_k, k=2, lambda=0.3+1.1
+PASS Poisson k-moment adds by (+)_k, k=2, lambda=2.0+0.5
+PASS binomial(n, lam/n) k-moment -> Poisson's (e^(k lam)-1)/k, k=2  errors 1.69e+00 -> 2.27e-03
+PASS binomial E[C(X,0)] = C(n,0) p^0 (expected lit 0-corners)
+PASS binomial E[C(X,1)] = C(n,1) p^1 (expected lit 1-corners)
+PASS binomial E[C(X,2)] = C(n,2) p^2 (expected lit 2-corners)
+PASS binomial E[C(X,3)] = C(n,3) p^3 (expected lit 3-corners)
+PASS binomial E[C(X,4)] = C(n,4) p^4 (expected lit 4-corners)
+PASS binomial E[C(X,5)] = C(n,5) p^5 (expected lit 5-corners)
+PASS binomial E[C(X,6)] = C(n,6) p^6 (expected lit 6-corners)
+PASS binomial E[C(X,7)] = C(n,7) p^7 (expected lit 7-corners)
+PASS cumulant k1 from log(1 + moment series) matches the Lean formula
+PASS cumulant k2 from log(1 + moment series) matches the Lean formula
+PASS cumulant k3 from log(1 + moment series) matches the Lean formula
+PASS cumulant k4 from log(1 + moment series) matches the Lean formula
+PASS MGF multiplies, so (M-1) mult-adds: (MX MY - 1) = (MX-1) (+) (MY-1)
+PASS normal MGF - 1 = E(mu s + sigma^2 s^2/2), E(x)=e^x-1 (mult-add's exponential)
+PASS normals add because E(x+y) = E(x) (+) E(y)
+PASS CLT: coin p=0.3, distance to the normal shrinks ~1/sqrt(n)  0.0177 -> 0.0091 -> 0.0046 -> 0.0023 -> 0.0011
+PASS binomial n=5: kurtosis = kurt(coin)/n, skew^2 = skew^2(coin)/n (exact, as in Lean)
+PASS binomial n=50: kurtosis = kurt(coin)/n, skew^2 = skew^2(coin)/n (exact, as in Lean)
+PASS binomial n=500: kurtosis = kurt(coin)/n, skew^2 = skew^2(coin)/n (exact, as in Lean)
+PASS MGF climb (1 + s^2/2n)^n -> e^(s^2/2) at s=0.5
+PASS MGF climb (1 + s^2/2n)^n -> e^(s^2/2) at s=1.0
+PASS MGF climb (1 + s^2/2n)^n -> e^(s^2/2) at s=2.0
+   standardized coin-sum MGF at s=1, n=100: 1.67193  (normal: 1.64872)
+   standardized coin-sum MGF at s=1, n=400: 1.66053  (normal: 1.64872)
+   standardized coin-sum MGF at s=1, n=1600: 1.65467  (normal: 1.64872)
+   standardized coin-sum MGF at s=1, n=6400: 1.65171  (normal: 1.64872)
+PASS standardized coin-sum MGF at s=1 -> e^(1/2), gap halves each time n is x4 (skewness term, 1/sqrt n)  0.02321 0.01181 0.00595 0.00299
+PASS Var(X) = E[(X-X')^2]/2 for a random distribution
+PASS Var(X) = E[(X-X')^2]/2 for a random distribution
+PASS Var(X) = E[(X-X')^2]/2 for a random distribution
+PASS Var(X) = E[(X-X')^2]/2 for a random distribution
+PASS Var(X) = E[(X-X')^2]/2 for a random distribution
+PASS pool(0.2,0.7): log-odds add (rapidities)
+PASS pool(0.2,0.7): rho = 2p-1 composes by velocity addition
+PASS log-odds is twice the rapidity: logit p = 2 artanh(2p-1)
+PASS pool(0.9,0.95): log-odds add (rapidities)
+PASS pool(0.9,0.95): rho = 2p-1 composes by velocity addition
+PASS log-odds is twice the rapidity: logit p = 2 artanh(2p-1)
+PASS pool(0.4,0.1): log-odds add (rapidities)
+PASS pool(0.4,0.1): rho = 2p-1 composes by velocity addition
+PASS log-odds is twice the rapidity: logit p = 2 artanh(2p-1)
+PASS union under AMH = lens law at (k, q) = (-(1+theta), theta)
+PASS AMH union is associative (the lens turns it into multiplication)
+PASS AMH is a valid copula on the whole segment theta in [-1, 1]
+PASS …and stops being one past the cusp (theta = 1.5)
+PASS theta=-1 gives velocity addition, theta=0 independence, theta=1 the parabola k^2=4q
+PASS normal has the most entropy at fixed variance (vs uniform, Laplace)  1.4189 > 1.3466, 1.2425
+PASS binomial entropy -> normal's 1/2 log(2 pi e n p q)  3.63419 vs 3.63435
+PASS entropy of 3 independent coins = 3 x one coin (k = 0 addition)
+
+81/81 checks pass

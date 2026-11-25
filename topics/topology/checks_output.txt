@@ -1,0 +1,59 @@
+== 1. K-theory: Adams operations are mult-add powers ==
+ psi^2 psi^3 = psi^6 on K(CP^6): True
+ psi^3 psi^5 = psi^15 on K(CP^6): True
+ psi^2 psi^7 = psi^14 on K(CP^6): True
+ psi^2(x) - x^2 has every coefficient divisible by 2: True
+ psi^3(x) - x^3 has every coefficient divisible by 3: True
+ psi^5(x) - x^5 has every coefficient divisible by 5: True
+ psi^7(x) - x^7 has every coefficient divisible by 7: True
+ log(1 + ch(x) (+) ch(y)) = u + v : True
+
+== Hopf invariant one (Adams-Atiyah 1966) ==
+ CP^2: psi^2(x) = x**2 + 2*x
+ CP^2: psi^3(x) = 3*x**2 + 3*x
+ n <= 5000 with 2^n | 3^n-1 : [1, 2, 4]  -> spheres S^1,S^3,S^7 (dims 2,4,8 algebras)
+
+== 2. Todd genus and Riemann-Roch ==
+ log(1+x) = -x**8/8 + x**7/7 - x**6/6 + x**5/5 - x**4/4 + x**3/3 - x**2/2 + x
+ coefficient of x^(m+1) times (m+1), sign removed = Todd genus of CP^m: [1, 1, 1, 1, 1, 1, 1, 1]
+ chi(O(k)) on CP^N = C(N+k, N) for N<=6, k in [-N-2,7]: True
+
+== 3. Torus homology = the Pascal cube ==
+ T^1: cells [3, 3], Betti [np.int64(1), np.int64(1)], Pascal [1, 1], Euler 0
+ T^2: cells [9, 18, 9], Betti [np.int64(1), np.int64(2), np.int64(1)], Pascal [1, 2, 1], Euler 0
+ T^3: cells [27, 81, 81, 27], Betti [np.int64(1), np.int64(3), np.int64(3), np.int64(1)], Pascal [1, 3, 3, 1], Euler 0
+ T^4: cells [81, 324, 486, 324, 81], Betti [np.int64(1), np.int64(4), np.int64(6), np.int64(4), np.int64(1)], Pascal [1, 4, 6, 4, 1], Euler 0
+ P^1: count in mult-add coords a + 2  -> Euler characteristic = value at a=0 = 2
+ P^2: count in mult-add coords a**2 + 3*a + 3  -> Euler characteristic = value at a=0 = 3
+ P^1xP^1: count in mult-add coords a**2 + 4*a + 4  -> Euler characteristic = value at a=0 = 4
+ torus T^2: count in mult-add coords a**2  -> Euler characteristic = value at a=0 = 0
+ P^3: count in mult-add coords a**3 + 4*a**2 + 6*a + 4  -> Euler characteristic = value at a=0 = 4
+
+== 4. Winding and Chern numbers by mult-add walks ==
+ QWZ model m=-3: Chern number +0.000000
+ QWZ model m=-1.5: Chern number -1.000000
+ QWZ model m=-0.5: Chern number -1.000000
+ QWZ model m=+0.5: Chern number +1.000000
+ QWZ model m=+1.5: Chern number +1.000000
+ QWZ model m=+3: Chern number +0.000000
+ winding of f = sum log(1+a_k) / 2 pi i = 3.0
+
+== 5. Torus knots ==
+ T(2,3): Alexander = T**2 - T + 1; degree 2 = (p-1)(q-1) = 2; value at T=1: 1
+ T(2,5): Alexander = T**4 - T**3 + T**2 - T + 1; degree 4 = (p-1)(q-1) = 4; value at T=1: 1
+ T(3,4): Alexander = T**6 - T**5 + T**3 - T + 1; degree 6 = (p-1)(q-1) = 6; value at T=1: 1
+ T(3,5): Alexander = T**8 - T**7 + T**5 - T**4 + T**3 - T + 1; degree 8 = (p-1)(q-1) = 8; value at T=1: 1
+ two helices wound 1 times around each other on the torus: Gauss linking number +1.0000
+ two helices wound 2 times around each other on the torus: Gauss linking number +2.0000
+ two helices wound 3 times around each other on the torus: Gauss linking number +3.0001
+
+== 6. Lefschetz: fixed points of the k-th mult-add power ==
+ z->z^2 on T^1: fixed points 1, Lefschetz number (1-k)^1 = -1
+ z->z^2 on T^2: fixed points 1, Lefschetz number (1-k)^2 = 1
+ z->z^2 on T^3: fixed points 1, Lefschetz number (1-k)^3 = -1
+ z->z^3 on T^1: fixed points 2, Lefschetz number (1-k)^1 = -2
+ z->z^3 on T^2: fixed points 4, Lefschetz number (1-k)^2 = 4
+ z->z^3 on T^3: fixed points 8, Lefschetz number (1-k)^3 = -8
+ z->z^5 on T^1: fixed points 4, Lefschetz number (1-k)^1 = -4
+ z->z^5 on T^2: fixed points 16, Lefschetz number (1-k)^2 = 16
+ z->z^5 on T^3: fixed points 64, Lefschetz number (1-k)^3 = -64

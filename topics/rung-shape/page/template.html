@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rung Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a findings report for one reader who thinks in pictures
+   IDEA a mathematician's plate of a surface: the shape first, the evidence under it
+   PICTURE the rung sheet in 3D, each whole rung drawn as an orange contour on it
+   COLOUR sky field #4fb3e8, white, ink #10223a, orange #ff7a1a for whole rungs; night #0b1726
+   TYPE Outfit 600 display + Inter text
+   LAYOUT laptop: sky band with finding and figures left, sheet right; phone: title, sheet, figures */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0b1726);--ink:light-dark(#10223a,#e8f1f8);--soft:light-dark(#4a5d73,#a9bccd);--sky:light-dark(#4fb3e8,#14476b);--skyink:light-dark(#0b2238,#eaf6ff);--rule:light-dark(#d6e2ec,#24384d);--panel:light-dark(#f2f8fc,#102236);--hot:#ff7a1a;--blue:light-dark(#1f7fc0,#6cc4f5)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Outfit,Inter,sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.08;margin:0}
+h1{font-size:clamp(34px,5vw,50px);text-wrap:balance}
+h2{font-size:clamp(24px,3vw,32px);text-wrap:balance;margin-bottom:10px}
+h3{font-size:19px;margin-bottom:4px}
+p{margin:0 0 12px;max-width:68ch}
+a{color:var(--blue)}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.top{background:var(--sky);color:var(--skyink)}
+.top .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,44px);align-items:center}
+.lead{font-size:18px;margin:14px 0 18px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5em,1fr));gap:14px;margin-top:6px}
+.figs div{border-top:2px solid currentColor;padding-top:8px}
+.figs b{display:block;font:600 clamp(26px,3.4vw,36px)/1 Outfit,sans-serif;white-space:nowrap}
+.figs span{font-size:14px}
+.fig{position:relative;min-height:420px}
+.fig>div{position:absolute;inset:0}
+.top .fig{min-height:clamp(360px,44vw,540px);background:var(--bg);border-radius:6px}
+.note{font-size:14px;color:var(--soft)}
+.top .note{color:inherit;opacity:.85}
+.rank{display:grid;gap:2px;margin-top:14px}
+.row{display:grid;grid-template-columns:2.2em minmax(0,13em) minmax(0,9em) minmax(0,1fr);gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule)}
+.row .n{font:600 20px Outfit,sans-serif;color:var(--soft)}
+.row .nm{font-weight:600}
+.bar{height:14px;background:var(--panel);border-radius:2px;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--blue);border-radius:2px}
+.row.pick .bar i{background:var(--hot)}
+.pct{font:600 15px Inter;white-space:nowrap;margin-left:6px}
+.row .why{font-size:15px;color:var(--soft)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:14px}
+.ctl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0}
+.ctl label{font-weight:600}
+input[type=range]{width:min(100%,360px);height:44px;accent-color:var(--hot)}
+.read{font-variant-numeric:tabular-nums;white-space:nowrap}
+.formula{font:17px/1.6 "Cambria Math","STIX Two Math",Georgia,serif;background:var(--panel);border-left:3px solid var(--hot);padding:10px 14px;margin:10px 0 14px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600}
+.scroll{overflow-x:auto}
+code{overflow-wrap:anywhere;font-size:14px}
+ul{margin:0 0 12px;padding-left:1.2em}
+li{margin-bottom:6px}
+.sec{border-top:1px solid var(--rule)}
+@media(max-width:860px){.top .wrap,.two{grid-template-columns:minmax(0,1fr)}.row{grid-template-columns:2em minmax(0,1fr) minmax(0,7em)}.row .why{grid-column:2/-1}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.fig{min-height:340px}}
+</style>
+</head>
+<body>
+<header class="band top"><div class="wrap">
+<div>
+<h1>The rung sheet is the smooth shape through every rung</h1>
+<p class="lead">Stack each rung's "unit curve" (all pairs a, b with a ⊕ₛ b = 1) at its height s, and you get one smooth sheet. It runs from the square's outer corner at the bottom, through the straight line (addition) and the hyperbola (mult-add), and falls onto the axes at the top. My confidence it's the shape you're after: <b>80%</b>.</p>
+<div class="figs">
+<div><b>80%</b><span>confidence in the pick</span></div>
+<div><b>29/29</b><span>numeric checks pass</span></div>
+<div><b>20/20</b><span>exact identities pass</span></div>
+</div>
+<p class="note" style="margin-top:14px">Drag to turn the sheet. Orange lines are the whole rungs −2 to 3. The Lean file is written but not compiled.</p>
+</div>
+<div class="fig"><div id="sheet3d"></div></div>
+</div></header>
+
+<section class="band"><div class="wrap">
+<h2>Eight candidates, ranked</h2>
+<p>Nine shapes were tested; the flow surface turned out to be the pick itself, so it's merged into first place. Each shape was defined from mult-add, then tested three ways: does it hit every whole rung exactly, is it smooth between them, and is it forced by mult-add rather than chosen by me? The percentage is my confidence that it's the single shape you're feeling for.</p>
+<div class="rank" id="rank"></div>
+</div></section>
+
+<section class="band sec"><div class="wrap two">
+<div>
+<h2>How the sheet is made</h2>
+<p>Every rung is plain addition seen through a lens: rung s is <i>a ⊕ₛ b = Eˢ(E⁻ˢ(a) + E⁻ˢ(b))</i>, where E(x) = eˣ − 1 is mult-add's own exponential and Eˢ is E run s times, s any real. So the unit curve at height s has a closed form:</p>
+<div class="formula">b = Eˢ( E⁻ˢ(1) − E⁻ˢ(a) )</div>
+<p>At s = 0 it's the line a + b = 1. At s = 1 it's the hyperbola (1 + a)(1 + b) = 2. At s = −1 it's log(eᵃ + eᵇ − 1) = 1, and at s = 2 it matches rung 2's closed form, all to about 10⁻¹².</p>
+<p>The sheet has no crease at any whole rung: its bend measured from just below and just above each rung agrees. Every slice keeps the same two fixed edges, (1, 0) and (0, 1), because 0 is the identity at every height.</p>
+<p>The area under the slice inside the unit square is a natural height gauge: 1 at the bottom, exactly ½ at addition, exactly 2 ln 2 − 1 ≈ 0.386 at mult-add, and it keeps falling toward 0. It's the "how full is the corner" reading from the fractional-rungs page, now as a property of one surface.</p>
+</div>
+<div class="panel">
+<div class="ctl"><label for="sl">Height s</label><input id="sl" type="range" min="0" max="56" step="1" value="28"><span class="read" id="slr"></span></div>
+<div class="fig" style="min-height:340px"><div id="slice"></div></div>
+<div class="fig" style="min-height:220px"><div id="area"></div></div>
+</div>
+</div></section>
+
+<section class="band sec"><div class="wrap two">
+<div>
+<h2>Why this sheet and not another</h2>
+<p>Any way of filling in the rungs between whole numbers gives some sheet through the same orange curves. I tested that directly: I bent the in-between with a wobble (the Abel coordinate plus 0.08·sin 2π of itself). The whole rungs stay exact, to 10⁻¹³.</p>
+<p>But the wobbly half rung loses its slope at the identity: near 0 it swings between 0.33 and 3.03 forever, so the sheet gets a crease along its edges. The regular choice settles to slope 1. A short argument shows this happens for every periodic wobble, so only one filling stays smooth at 0.</p>
+<p>That's the reason for the 80%: smoothness at mult-add's identity picks the shape for you. It's a known result for functions like eˣ − 1 (Szekeres 1958, Écalle), not new, but it means the sheet isn't my taste.</p>
+</div>
+<div class="fig"><div id="uniq"></div></div>
+</div></section>
+
+<section class="band sec"><div class="wrap two">
+<div class="fig"><div id="flow3d"></div></div>
+<div>
+<h2>The skeleton: one flow</h2>
+<p>Under the sheet is a simpler surface, z = Eˢ(x). Its slices are x, eˣ − 1, then E∘E, and log(1 + x) and log∘log below. It's one flow: E^0.7 after E^−0.3 equals E^0.4.</p>
+<p>Rung s is just addition in the coordinate this surface gives at height s. So the sheet is what this flow does to straight lines; the next section checks that exactly.</p>
+</div>
+</div></section>
+
+<section class="band sec" id="sheet-vs-flow"><div class="wrap two">
+<div>
+<h2>Is the sheet the flow's "equals 1" slice? Not literally, but it is the same engine</h2>
+<p>The flow surface's own "equals 1" slice is a single curve: the x where Eˢ(x) = 1, which is x = E⁻ˢ(1), the path of 1 run backward (1.718 at s = −1, 1 at s = 0, ln 2 ≈ 0.693 at s = 1, 0.527 at s = 2).</p>
+<p>The rung sheet is the "equals 1" level of the rung operation instead, and it is exactly the flow applied to straight lines: (a, b) is on the slice at height s exactly when E⁻ˢ(a) + E⁻ˢ(b) = E⁻ˢ(1). That holds at every height, whole or fractional, with no exceptions. I checked 26 heights to about 10⁻⁹, and the Lean file proves it for any lens (not compiled). The flow's curve tells you where the straight line sits, and the sheet's diagonal point is the flow carrying half of it back out. Turn the dial: the left panel bends, the right one stays straight.</p>
+<p>What the flow adds: every other level (one nested sheet per value c), the actual value of any a ⊕ₛ b, and how points travel as the dial turns. The single sheet at c = 1 isn't enough on its own: I built a different, still associative rung ½ with exactly the same unit curve, which differs from the real one by up to 0.076 elsewhere and by 0.053 on its level-½ curve. All levels together are enough: halving with the rung operation alone gives the flow back to four or five decimals.</p>
+<p>So they're one object. I've merged them in the ranking at 80%: the flow is the engine, and the sheet is its clearest picture.</p>
+</div>
+<div class="panel">
+<div class="ctl"><label for="sl2">Height s</label><input id="sl2" type="range" min="0" max="56" step="1" value="36"><span class="read" id="sl2r"></span></div>
+<div class="two" style="gap:10px">
+<div class="fig" style="min-height:300px"><div id="vsSheet"></div></div>
+<div class="fig" style="min-height:300px"><div id="vsLens"></div></div>
+</div>
+<p class="note" style="margin:8px 0 0">Left: the slice of the sheet. Right: the same points seen through the flow at that height, u = E⁻ˢ(a), v = E⁻ˢ(b). They land on the straight line u + v = E⁻ˢ(1).</p>
+</div>
+</div></section>
+
+<section class="band sec"><div class="wrap two">
+<div>
+<h2>The growing cube is a second dial</h2>
+<p>The cube whose dimension is a dial is real, but it turns a different knob. Mult-adding 1 to itself d times gives 2ᵈ − 1, the corners of a d-cube, for any real d. That's a count, not a rung: the cube's dimension doesn't move you up the ladder.</p>
+<p>Both dials live on one surface: Eˢ(d·E⁻ˢ(a)). Its rung-1 slice is the cube 2ᵈ − 1, its rung-0 slice is the line d, and at whole d it's d copies combined by rung s. Rung ½ run n times grows faster than every power of n and slower than every exponential (right chart, log scale).</p>
+</div>
+<div><div class="fig" style="min-height:340px"><div id="dial3d"></div></div><div class="fig" style="min-height:260px"><div id="growth"></div></div></div>
+</div></section>
+
+<section class="band sec"><div class="wrap two">
+<div>
+<h2>The saddle and the helix</h2>
+<h3>Saddle (20%)</h3>
+<p>Mult-add's graph z = a + b + ab is exactly a saddle, ruled by straight lines both ways. At the identity, rung s's graph is flat along the axes with twist s, so its curvature there is −s²/9. Only rungs 0 and 1 have straight rulings. Curvature can't tell s from −s; the mirror image does, which echoes your negatives-as-mirror idea. A reading of the sheet, not the sheet.</p>
+<h3>Helix (10%)</h3>
+<p>A complex number near 0 rides the rungs around a near-perfect circle that kisses 0 (2% off, from the x²/2 term of eˣ − 1). The whole ladder, from −∞ to +∞, is exactly one turn, then it's back at 0. So it's a single loop, not a repeating helix, and it never passes through the real rungs as curves. Lovely, but not the shape.</p>
+</div>
+<div class="fig"><div id="loop3d"></div></div>
+</div></section>
+
+<section class="band sec"><div class="wrap">
+<h2>What the sheet says about infinities in between</h2>
+<p>Three different things get called "size of infinity", and the sheet speaks to one of them strongly.</p>
+<div class="scroll"><table>
+<thead><tr><th>Kind of size</th><th>Continuous family?</th><th>What the sheet adds</th></tr></thead>
+<tbody>
+<tr><td>Cardinality (how many elements)</td><td>No, with the axiom of choice cardinals come in steps; whether one sits between countable and the continuum can't be decided. Without choice, finer families are consistent.</td><td>Nothing. The sheet is about operations on numbers, not sizes of sets. Modifying set theory isn't needed for it.</td></tr>
+<tr><td>Growth rate (how fast it gets big)</td><td>Yes. Rung s run n times gives Eˢ(cn): for every s between 0 and 1 a growth strictly between n and 2ⁿ, faster than any power, slower than any exponential, ordered by s.</td><td>This is your continuum of infinities, and the sheet's height is its dial. It's standard math (Hardy's "orders of infinity"; half-exponential functions), so it needs no new axioms.</td></tr>
+<tr><td>Surreal size (ω, ω − 1, √ω)</td><td>Yes, densely ordered.</td><td>Surreals have eˣ and log, and fractional steps of eˣ have been built for transseries (Edgar 2013). Whether the surreals carry the whole sheet, I didn't verify.</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="band sec"><div class="wrap two">
+<div>
+<h2>Known, new, and proofs</h2>
+<ul>
+<li><b>Known:</b> the smooth in-between rungs are the regular iteration of eˣ − 1 (Szekeres 1958, Écalle); the in-between ladder of "commutative hyperoperations" goes back to Bennett (1915); the tropical floor is Maslov's limit.</li>
+<li><b>Possibly new, small:</b> drawing every rung as one sheet with an exact area gauge (½ at addition, 2 ln 2 − 1 at mult-add), and the two-dial surface joining the cube count to the rung height. I found no lead as promising as the solitons.</li>
+<li><b>Proofs:</b> <code>RungShape.lean</code> has 17 core-Lean theorems (twist = corner area, double ruling, exact unit curves at rungs 0 and 1, the near-identity flow's heights adding, the cube count 2ᵈ, and the sheet as the flow's pull-back of a straight line for any lens). No Lean here, so it is not compiled; the algebraic ones are also checked as exact sympy identities (20 of 20 pass).</li>
+</ul>
+</div>
+<div>
+<h2>Files</h2>
+<p class="note">In the project folder, math-theory/rung-shape/: <code>rung_shape.py</code> (29 numeric checks, output in checks_output.txt), <code>symbolic_checks.py</code> (20 exact checks), <code>sheet_vs_flow.py</code> (6 checks: sheet versus flow), <code>lean/RungShape.lean</code> (uncompiled), <code>export_data.py</code> (this page's grids). The in-between rungs come from math-theory/fractional-rungs/regular_iteration.py.</p>
+<p class="note">Rungs here are the s-ladder of the fractional-rungs page. The other ladder (fused tetration and up) is the count dial; its in-between values above rung 3 depend on the chosen extension, which is why the rung-constant surface ranks last.</p>
+</div>
+</div></section>
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script>
+{
+const D = /*DATA*/;
+const RANK = [
+  ["Rung sheet, with its flow", 80, "Hits every rung exactly, smooth, the only filling that stays smooth at the identity. The flow surface is the same object (checked below), so the two are merged.", 1],
+  ["Two-dial surface", 45, "Exact on both dials; it's the sheet plus the cube's count dial, a bigger object."],
+  ["Saddle horn (curvature −s²/9)", 20, "True at every height, but s and −s look alike; a reading of the sheet."],
+  ["Helix through the rungs", 10, "One loop over the whole ladder, complex only, and only near the identity."],
+  ["Growing cube alone", 10, "Smooth in its dimension, but that's the count dial, not the rung dial."],
+  ["Corner-dial sheet a + b + kab", 8, "Smooth, but misses rung 2 by 0.42 and rung −1 by 0.06."],
+  ["Tropical / amoeba picture", 5, "Exact as the floor (s → −∞, max), but only the bottom edge."],
+  ["Rung-constant surface", 5, "Not forced: above rung 3 its in-between depends on the extension chosen."]
+];
+document.getElementById("rank").innerHTML = RANK.map((r, i) =>
+  `<div class="row${r[3] ? " pick" : ""}"><span class="n">${i + 1}</span><span class="nm">${r[0]}</span><span style="display:flex;align-items:center"><span class="bar" style="flex:1"><i style="width:${r[1]}%"></i></span><span class="pct">${r[1]}%</span></span><span class="why">${r[2]}</span></div>`).join("");
+
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const resolve = v => { const p = document.createElement("span"); p.style.color = v; document.body.appendChild(p); const c = getComputedStyle(p).color; p.remove(); return c; };
+const cols = () => ({ ink: resolve("var(--ink)"), soft: resolve("var(--soft)"), rule: resolve("var(--rule)"), bg: resolve("var(--bg)"), blue: resolve("var(--blue)"), hot: "#ff7a1a" });
+const cfg = { displayModeBar: false, responsive: true };
+const base = c => ({ paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)", font: { family: "Inter, sans-serif", size: 13, color: c.ink }, margin: { l: 48, r: 16, t: 28, b: 42 }, showlegend: false });
+const ax = (c, t, extra) => Object.assign({ title: { text: t }, gridcolor: c.rule, zerolinecolor: c.rule, linecolor: c.rule }, extra || {});
+const sc = (c, t) => ({ title: { text: t }, gridcolor: c.rule, backgroundcolor: "rgba(0,0,0,0)", showbackground: false, zerolinecolor: c.rule, color: c.ink });
+const blues = c => [[0, "#0b3c66"], [0.5, "#4fb3e8"], [1, "#d8f0fc"]];
+const rungLabel = s => s == 0 ? "rung 0 (addition)" : s == 1 ? "rung 1 (mult-add)" : "rung " + s;
+
+function draw3dSheet(c) {
+  const S = D.sheet.s, A = D.sheet.a;
+  const X = S.map(() => A), Y = D.sheet.b, Z = S.map(s => A.map(() => s));
+  const tr = [{ type: "surface", x: X, y: Y, z: Z, surfacecolor: Z, colorscale: blues(c), showscale: false, opacity: 0.93, hovertemplate: "a %{x:.2f}<br>b %{y:.2f}<br>s %{z:.2f}<extra></extra>", contours: { z: { show: false } } }];
+  for (const k of Object.keys(D.rungs)) {
+    const r = D.rungs[k];
+    tr.push({ type: "scatter3d", mode: "lines", x: r.a, y: r.b, z: r.a.map(() => +k), line: { color: c.hot, width: 6 }, name: rungLabel(+k), hovertemplate: rungLabel(+k) + "<extra></extra>" });
+  }
+  const L = Object.assign(base(c), { margin: { l: 0, r: 0, t: 0, b: 0 }, scene: { xaxis: sc(c, "a"), yaxis: sc(c, "b"), zaxis: sc(c, "height s"), camera: { eye: { x: 1.55, y: 1.35, z: 0.7 } }, aspectmode: "manual", aspectratio: { x: 1, y: 1, z: 1.25 } } });
+  Plotly.react("sheet3d", tr, L, cfg);
+}
+const sl = document.getElementById("sl"), slr = document.getElementById("slr");
+function drawSlice(c) {
+  const i = +sl.value, s = D.sheet.s[i];
+  const ai = D.area.s.findIndex(t => Math.abs(t - s) < 0.05);
+  slr.textContent = `s = ${s.toFixed(3)}` + (ai >= 0 ? `,  area ${D.area.area[ai].toFixed(3)}` : "");
+  const tr = Object.keys(D.rungs).map(k => ({ x: D.rungs[k].a, y: D.rungs[k].b, mode: "lines", line: { color: c.rule, width: 1.5 }, hovertemplate: rungLabel(+k) + "<extra></extra>" }));
+  tr.push({ x: D.sheet.a, y: D.sheet.b[i], mode: "lines", fill: "tozeroy", fillcolor: "rgba(79,179,232,.22)", line: { color: Number.isInteger(s) ? c.hot : c.blue, width: 3.5 }, hovertemplate: "a %{x:.2f}, b %{y:.3f}<extra></extra>" });
+  const L = Object.assign(base(c), { xaxis: ax(c, "a", { range: [0, 1] }), yaxis: ax(c, "b", { range: [0, 1.02], scaleanchor: "x" }), margin: { l: 44, r: 10, t: 10, b: 40 } });
+  Plotly.react("slice", tr, L, cfg);
+  const A = D.area;
+  const tr2 = [{ x: A.s, y: A.area, mode: "lines", line: { color: c.blue, width: 3 }, hovertemplate: "s %{x:.2f}: area %{y:.3f}<extra></extra>" },
+    { x: [0, 1], y: [0.5, 2 * Math.log(2) - 1], mode: "markers+text", marker: { color: c.hot, size: 9 }, text: ["½ at addition", "2 ln 2 − 1 at mult-add"], textposition: ["top right", "top right"], textfont: { size: 12 }, hoverinfo: "skip" }];
+  if (ai >= 0) tr2.push({ x: [s], y: [A.area[ai]], mode: "markers", marker: { color: c.ink, size: 8, symbol: "circle-open", line: { width: 2 } }, hoverinfo: "skip" });
+  Plotly.react("area", tr2, Object.assign(base(c), { xaxis: ax(c, "height s"), yaxis: ax(c, "area under slice", { range: [0, 1.05] }), margin: { l: 52, r: 10, t: 10, b: 40 } }), cfg);
+}
+function drawUniq(c) {
+  const U = D.uniq;
+  const tr = [{ x: U.x, y: U.perturbed, mode: "lines", line: { color: c.soft, width: 2 }, hovertemplate: "x %{x:.4f}: slope %{y:.2f}<extra>wobbly</extra>" },
+    { x: U.x, y: U.regular, mode: "lines", line: { color: c.hot, width: 3.5 }, hovertemplate: "x %{x:.4f}: slope %{y:.3f}<extra>regular</extra>" }];
+  const L = Object.assign(base(c), { title: { text: "Slope of the half rung near the identity", font: { size: 15 } }, margin: { l: 50, r: 16, t: 40, b: 44 },
+    xaxis: ax(c, "x (log scale, toward 0 on the left)", { type: "log" }), yaxis: ax(c, "slope of E½ at x"),
+    annotations: [{ x: Math.log10(0.05), y: 1.15, text: "regular: settles to 1", showarrow: false, font: { color: c.hot, size: 13 }, xanchor: "left" },
+      { x: Math.log10(0.0025), y: 3.2, text: "wobbly filling: never settles", showarrow: false, font: { color: c.soft, size: 13 }, xanchor: "left" }] });
+  Plotly.react("uniq", tr, L, cfg);
+}
+function drawFlow(c) {
+  const F = D.flow;
+  const tr = [{ type: "surface", x: F.x, y: F.s, z: F.z, colorscale: blues(c), showscale: false, opacity: 0.92, hovertemplate: "x %{x:.2f}<br>s %{y:.2f}<br>Eˢ(x) %{z:.3f}<extra></extra>" }];
+  for (const k of Object.keys(D.flow_rungs)) tr.push({ type: "scatter3d", mode: "lines", x: F.x, y: F.x.map(() => +k), z: D.flow_rungs[k], line: { color: c.hot, width: 6 }, hovertemplate: "s = " + k + "<extra></extra>" });
+  Plotly.react("flow3d", tr, Object.assign(base(c), { margin: { l: 0, r: 0, t: 0, b: 0 }, scene: { xaxis: sc(c, "x"), yaxis: sc(c, "height s"), zaxis: sc(c, "Eˢ(x)"), camera: { eye: { x: -1.6, y: -1.4, z: 0.8 } } } }), cfg);
+}
+function drawDial(c) {
+  const T = D.dial2;
+  const tr = [{ type: "surface", x: T.d, y: T.s, z: T.z, colorscale: blues(c), showscale: false, opacity: 0.92, hovertemplate: "count d %{x:.1f}<br>rung s %{y:.1f}<br>value %{z:.2f}<extra></extra>" }];
+  const i1 = T.s.findIndex(s => Math.abs(s - 1) < 1e-6), i0 = T.s.findIndex(s => Math.abs(s) < 1e-6);
+  tr.push({ type: "scatter3d", mode: "lines", x: T.d, y: T.d.map(() => 1), z: T.z[i1], line: { color: c.hot, width: 7 }, hovertemplate: "rung 1: cube corners 2ᵈ − 1<extra></extra>" });
+  tr.push({ type: "scatter3d", mode: "lines", x: T.d, y: T.d.map(() => 0), z: T.z[i0], line: { color: c.ink, width: 5 }, hovertemplate: "rung 0: the line d<extra></extra>" });
+  Plotly.react("dial3d", tr, Object.assign(base(c), { margin: { l: 0, r: 0, t: 0, b: 0 }, scene: { xaxis: sc(c, "count d (cube dimension)"), yaxis: sc(c, "rung s"), zaxis: sc(c, "value"), camera: { eye: { x: 1.7, y: -1.3, z: 0.9 } } } }), cfg);
+  const G = D.growthcurves, n = G.n;
+  const lab = { "0": "rung 0: n", "0.25": "rung ¼", "0.5": "rung ½", "0.75": "rung ¾", "1": "rung 1: 2ⁿ − 1" };
+  const tr2 = ["0", "0.25", "0.5", "0.75", "1"].map((k, j) => ({ x: n, y: G[k], mode: "lines", line: { color: k == "0" || k == "1" ? c.hot : c.blue, width: k == "0.5" ? 3.5 : 2 }, hovertemplate: lab[k] + ": n %{x:.0f}, log₁₀ %{y:.2f}<extra></extra>" }));
+  const ann = ["0", "0.25", "0.5", "0.75", "1"].map(k => ({ x: n[n.length - 1], y: G[k][G[k].length - 1], text: lab[k], showarrow: false, xanchor: "right", yanchor: "bottom", font: { size: 12, color: c.ink } }));
+  Plotly.react("growth", tr2, Object.assign(base(c), { annotations: ann, margin: { l: 52, r: 10, t: 10, b: 40 }, xaxis: ax(c, "n (times run)"), yaxis: ax(c, "log₁₀(1 + value)") }), cfg);
+}
+function drawLoop(c) {
+  const P = D.loop, r = P.r;
+  const h = P.s.map(s => Math.asinh(s) / 3);
+  const th = Array.from({ length: 121 }, (_, i) => i / 120 * 2 * Math.PI);
+  const tr = [{ type: "scatter3d", mode: "lines", x: th.map(t => r * Math.sin(t)), y: th.map(t => r - r * Math.cos(t)), z: th.map(() => Math.min(...h) - 0.3), line: { color: c.rule, width: 3 }, hovertemplate: "the circle that kisses 0<extra></extra>" },
+    { type: "scatter3d", mode: "lines", x: P.re, y: P.im, z: h, line: { color: c.hot, width: 6 }, customdata: P.s, hovertemplate: "height s %{customdata:.1f}<extra></extra>" },
+    { type: "scatter3d", mode: "markers+text", x: [0], y: [0], z: [0], marker: { size: 4, color: c.ink }, text: ["s = 0"], textposition: "top center", hoverinfo: "skip" }];
+  Plotly.react("loop3d", tr, Object.assign(base(c), { margin: { l: 0, r: 0, t: 0, b: 0 }, scene: { xaxis: sc(c, "real part"), yaxis: sc(c, "imaginary part"), zaxis: sc(c, "height (stretched)"), camera: { eye: { x: 1.6, y: -1.5, z: 0.6 } } } }), cfg);
+}
+const sl2 = document.getElementById("sl2"), sl2r = document.getElementById("sl2r");
+function drawVs(c) {
+  const i = +sl2.value, s = D.sheet.s[i], w = D.lens.w[i];
+  sl2r.textContent = `s = ${s.toFixed(3)},  E⁻ˢ(1) = ${w.toFixed(3)}`;
+  const col = Number.isInteger(s) ? c.hot : c.blue;
+  const m = { l: 40, r: 8, t: 30, b: 38 };
+  Plotly.react("vsSheet", [{ x: D.sheet.a, y: D.sheet.b[i], mode: "lines", line: { color: col, width: 3.5 }, hovertemplate: "a %{x:.2f}, b %{y:.3f}<extra></extra>" }],
+    Object.assign(base(c), { title: { text: "sheet slice", font: { size: 14 } }, margin: m, xaxis: ax(c, "a", { range: [0, 1] }), yaxis: ax(c, "b", { range: [0, 1.02], scaleanchor: "x" }) }), cfg);
+  Plotly.react("vsLens", [{ x: [0, w], y: [w, 0], mode: "lines", line: { color: c.rule, width: 8 }, hoverinfo: "skip" },
+    { x: D.lens.u[i], y: D.lens.v[i], mode: "markers", marker: { color: col, size: 5 }, hovertemplate: "u %{x:.3f}, v %{y:.3f}<extra></extra>" }],
+    Object.assign(base(c), { title: { text: "through the flow", font: { size: 14 } }, margin: m, xaxis: ax(c, "u", { range: [0, w * 1.02] }), yaxis: ax(c, "v", { range: [0, w * 1.02], scaleanchor: "x" }) }), cfg);
+}
+sl2.addEventListener("input", () => drawSheetSafe(() => drawVs(cols())));
+function drawAll() {
+  if (!window.Plotly) { document.querySelectorAll(".fig>div").forEach(e => e.textContent = "The charts need the plotting library, which didn't load."); return; }
+  const c = cols();
+  drawSheetSafe(() => draw3dSheet(c)); drawSheetSafe(() => drawSlice(c)); drawSheetSafe(() => drawUniq(c));
+  drawSheetSafe(() => drawFlow(c)); drawSheetSafe(() => drawVs(c)); drawSheetSafe(() => drawDial(c)); drawSheetSafe(() => drawLoop(c));
+}
+function drawSheetSafe(f) { try { f(); } catch (e) { console.error(e); } }
+sl.addEventListener("input", () => drawSheetSafe(() => drawSlice(cols())));
+const themeWatch = new MutationObserver(drawAll);
+themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+const mq = window.matchMedia("(prefers-color-scheme: dark)");
+if (mq.addEventListener) mq.addEventListener("change", drawAll);
+drawAll();
+}
+</script>
+</body>
+</html>

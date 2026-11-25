@@ -1,0 +1,141 @@
+
+========================================================================
+C1  Proof of work: catching up z blocks is a mult-add power
+========================================================================
+q      r=q/p   a=r-1    r^10 (gambler)   1 + mpow(a,10)
+0.10   0.1111  -0.8889   2.867972e-10     2.867973e-10
+0.25   0.3333  -0.6667   1.693509e-05     1.693509e-05
+0.40   0.6667  -0.3333   1.734153e-02     1.734153e-02
+0.45   0.8182  -0.1818   1.344306e-01     1.344306e-01
+0.49   0.9608  -0.0392   6.702843e-01     6.702843e-01
+0.50   1.0000  +0.0000   1.000000e+00     1.000000e+00
+
+Double-spend success: Nakamoto, exact (Rosenfeld), Monte Carlo
+q     z   Nakamoto     exact       simulated
+0.10  1   0.20459     0.20000     0.19625
+0.10  3   0.01317     0.01712     0.01615
+0.10  6   0.00024     0.00059     0.00077
+0.25  1   0.52231     0.50000     0.49862
+0.25  3   0.19612     0.20703     0.20625
+0.25  6   0.04994     0.06866     0.07018
+0.40  1   0.82886     0.80000     0.80145
+0.40  3   0.66417     0.63488     0.62933
+0.40  6   0.50398     0.49300     0.49615
+At q = 0.5 the exact value is 1 at every depth: [1.0, 1.0, 1.0]
+
+========================================================================
+C2  BFT voting: why 1/3, as worst-case overlap of two quorums
+========================================================================
+n=   4: largest tolerable f = 1  (n > 3f gives 1)
+n=   7: largest tolerable f = 2  (n > 3f gives 2)
+n=  10: largest tolerable f = 3  (n > 3f gives 3)
+n= 100: largest tolerable f = 33  (n > 3f gives 33)
+k quorums must share an honest node: tolerable fraction 1/(k+1)
+  k=1: f < 1/2 = 0.5000
+  k=2: f < 1/3 = 0.3333
+  k=3: f < 1/4 = 0.2500
+  k=4: f < 1/5 = 0.2000
+random quorums of fraction 0.5: union 0.7500, overlap 0.2500, worst-case overlap 0.0000
+random quorums of fraction 0.67: union 0.8911, overlap 0.4489, worst-case overlap 0.3400
+random quorums of fraction 0.8: union 0.9600, overlap 0.6400, worst-case overlap 0.6000
+
+========================================================================
+C3  Committee sampling: failure is the mass of the top layers of a cube
+========================================================================
+c      f=0.20          f=0.25          f=0.30   (exact layer mass)
+   10  1.209e-01      2.241e-01      3.504e-01
+   30  6.109e-02      1.966e-01      4.112e-01
+  100  7.369e-04      2.759e-02      2.207e-01
+  300  4.275e-08      7.476e-04      1.163e-01
+ 1000  2.294e-23      1.697e-09      1.092e-02
+ 2000  1.417e-44      3.985e-17      6.501e-04
+Monte Carlo c=100 f=0.25: 2.7630e-02 vs exact 2.7595e-02
+majority-of-3 map (layers 1,3,3,1): {0.2: 0.104, 0.4: 0.352, 0.5: 0.5, 0.6: 0.648}
+  random spread, start 0.3: levels -> [0.3, 0.216, 0.1198, 0.0396, 0.0046]
+  random spread, start 0.45: levels -> [0.45, 0.4253, 0.3887, 0.3358, 0.2626]
+  random spread, start 0.55: levels -> [0.55, 0.5748, 0.6113, 0.6642, 0.7374]
+  worst case (attacker places stake): 2 levels of bare majority need only just over (1/2)^2 = 1/4
+
+========================================================================
+C4  Selfish mining (Eyal & Sirer 2014): reproduce the threshold
+========================================================================
+alpha  gamma  simulated  Eyal-Sirer formula  (honest share = alpha)
+0.20   0.0    0.1289     0.1297
+0.25   0.0    0.1968     0.1951
+0.30   0.0    0.2738     0.2731
+0.33   0.0    0.3278     0.3270
+0.35   0.0    0.3665     0.3665
+0.40   0.0    0.4778     0.4837
+0.20   0.5    0.1811     0.1824
+0.25   0.5    0.2490     0.2500
+0.30   0.5    0.3276     0.3269
+0.33   0.5    0.3778     0.3786
+0.35   0.5    0.4143     0.4160
+0.40   0.5    0.5261     0.5256
+threshold (1-g)/(3-2g) at gamma=0.0: 0.3333
+threshold (1-g)/(3-2g) at gamma=0.5: 0.2500
+threshold (1-g)/(3-2g) at gamma=1.0: 0.0000
+
+========================================================================
+C5  Candidate A: fuse stake with time (coin age), weight (1+s)^(1+t) - 1
+========================================================================
+attacker stake   weight rule            weight share at switch-on   share of next 20 blocks (avg of 200 runs)
+0.10             linear stake           0.100                       0.101
+0.10             coin age s*t           0.464                       0.389
+0.10             fused (1+s)^(1+t)-1    0.500                       0.415
+0.20             linear stake           0.200                       0.195
+0.20             coin age s*t           0.657                       0.532
+0.20             fused (1+s)^(1+t)-1    0.814                       0.682
+0.30             linear stake           0.300                       0.295
+0.30             coin age s*t           0.768                       0.642
+0.30             fused (1+s)^(1+t)-1    0.940                       0.860
+
+========================================================================
+C6  Candidate B: weigh stake by log(1+s), additive under mult-add
+========================================================================
+stake 0.10 split into    2: log weight 0.0953 -> 0.0976  (gain 2.4%)
+stake 0.10 split into   10: log weight 0.0953 -> 0.0995  (gain 4.4%)
+stake 0.30 split into   10: log weight 0.2624 -> 0.2956  (gain 12.7%)
+stake 0.30 split into 1000: log weight 0.2624 -> 0.3000  (gain 14.3%)
+corner check: (1+s1)(1+s2) - (1+s1+s2) = 0.006 = s1*s2 = 0.006
+other rules, stake 0.30 split 10 ways:
+  linear s   weight ratio split/whole = 1.000
+  sqrt s     weight ratio split/whole = 3.162
+  s^2        weight ratio split/whole = 0.100
+  log(1+s)   weight ratio split/whole = 1.127
+
+========================================================================
+C7  Nothing at stake and slashing: detection is a k = -1 mult-add power
+========================================================================
+d=0.05 m=   1: caught 0.0500  (check 1-(1-d)^m = 0.0500)
+d=0.05 m=  10: caught 0.4013  (check 1-(1-d)^m = 0.4013)
+d=0.05 m= 100: caught 0.9941  (check 1-(1-d)^m = 0.9941)
+d=0.20 m=   1: caught 0.2000  (check 1-(1-d)^m = 0.2000)
+d=0.20 m=  10: caught 0.8926  (check 1-(1-d)^m = 0.8926)
+d=0.20 m= 100: caught 1.0000  (check 1-(1-d)^m = 1.0000)
+rounds to settle a fork, no slashing: None (None = never: everyone votes both)
+rounds to settle a fork, with slashing: 2
+
+========================================================================
+C8  Long-range attacks: exited stake accumulates, weak subjectivity
+========================================================================
+exit churn cap 256 ETH/epoch on 36M ETH: c = 7.111e-06 per epoch
+epochs until 1/3 of an old set could have left:
+  fixed cap (linear):            46,875 epochs = 208 days
+  proportional churn (k=-1 power): 57,018 epochs = 253 days
+  (Ethereum's own weak-subjectivity rule is stricter; this is the upper bound of the idea, not their number)
+
+========================================================================
+C9  Verifiable delay functions: repeated mult-add doubling
+========================================================================
+10 doublings of a=0.001: 1.7828855056547699  vs (1+a)^(2^10)-1 = 1.7828855056544568
+toy VDF: x^(2^20) mod N = 151067276556, via two halves = 151067276556, equal: True
+
+========================================================================
+C10  Energy: proof of work vs proof of stake (published figures)
+========================================================================
+Bitcoin (PoW):              138.0 TWh/yr
+Ethereum before Merge:       23.0 TWh/yr
+Ethereum after Merge:      0.0026 TWh/yr
+Ethereum reduction:      99.989%
+Bitcoin / post-Merge Ethereum: 53,077x

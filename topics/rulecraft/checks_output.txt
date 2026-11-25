@@ -1,0 +1,96 @@
+======================================================================
+0. Algebra identities (symbolic check with sympy)
+  OK  product form       a(+)b = (1+a)(1+b)-1
+  OK  commutative        a(+)b = b(+)a
+  OK  associative
+  OK  -1 absorbs         (-1)(+)b = -1
+  OK  inverse            a(+)(-a/(1+a)) = 0
+  OK  thermostat residue d(+)(-d) = -d^2
+  OK  weighted conjugacy A*(a(+)_A b) = (Aa)(+)(Ab)
+  OK  balance            (s+d)(s-d) = s^2 - d^2
+  OK  panel grid         (e1+e2)(i1+i2) = own + cross
+  OK  fused voice price  (1+k)^2-1 = k^2+2k
+
+Boundary theorem: mult-add over S++T = X_S (+) X_T, cross term = straddling corners
+  |S|=1, |T|=4: total = XS+XT+XS*XT? True;  XS*XT = sum of straddling corners? True;  straddling corners = 15 of 31
+  |S|=2, |T|=3: total = XS+XT+XS*XT? True;  XS*XT = sum of straddling corners? True;  straddling corners = 21 of 31
+  |S|=3, |T|=2: total = XS+XT+XS*XT? True;  XS*XT = sum of straddling corners? True;  straddling corners = 21 of 31
+
+======================================================================
+1. SCOPE MATCHES SPILLOVER: three towns on a river
+  q = 2/5 (each plant lifts quality 40% at and below it), value 10 per unit, plant cost 6
+  Own-gain test (each town counts only its own water):
+    Upper  plant, upstream built []: own gain  4.00 vs cost 6 -> skip
+    Middle plant, upstream built []: own gain  4.00 vs cost 6 -> skip
+    Middle plant, upstream built ['Upper']: own gain  5.60 vs cost 6 -> skip
+    Lower  plant, upstream built []: own gain  4.00 vs cost 6 -> skip
+    Lower  plant, upstream built ['Upper']: own gain  5.60 vs cost 6 -> skip
+    Lower  plant, upstream built ['Upper', 'Middle']: own gain  7.84 vs cost 6 -> build
+  Towns deciding alone: nothing gets built. Basin net = 0
+  Basin body (all three): gain 31.04 - cost 18 = net +13.04
+    Upper gets 4.00
+    Middle gets 9.60
+    Lower gets 17.44
+  Lower town's gain on the cube (1.4^3 - 1 = 1.744): layer1 12.00, layer2 4.80, layer3 0.64
+    corners that contain Lower's own plant: 7.84; corners owed to upstream plants only: 9.60
+  Upper plant, everyone built: worth 17.44 to the basin; Upper sees 4.00. Spillover share 77%
+  Boundary Upper | Middle+Lower at Lower's tap: XS=0.4, XT=0.96, cross XS*XT=0.384 = 22% of the effect
+
+  Taxi ride vs a carbon-heavy shipment (Harsanyi corners)
+   Taxi: corners {('R',): 0, ('D',): 0, ('R', 'D'): 12}; every corner inside the pair -> no spillover; a cap removing 1000 rides destroys 12000
+   Shipment, surplus 30, world corner {F,C,World} = -18: pair sees 30 -> trades; world net +12 -> good trade
+   Shipment, surplus 15, world corner {F,C,World} = -18: pair sees 15 -> trades; world net -3 -> bad trade made anyway
+   A price or cap of 18 per shipment puts the -18 corner inside the pair's view: trade only if surplus > 18
+
+  Counting corners: a body with s of n parties sees 2^s-1 corners; (2^s-1)(2^(n-s)-1) straddle its edge
+    n=  3, s=  1: inside 1, straddling 3, outside-only 3
+    n=  3, s=  2: inside 3, straddling 3, outside-only 1
+    n= 10, s=  3: inside 7, straddling 889, outside-only 127
+    n= 50, s= 10: inside 1023, straddling 1124800395213825, outside-only 1099511627775
+
+======================================================================
+2. WISDOM AS AN AREA, AND MIXED PANELS
+  expert        e=1, i=9: strips e+i = 10, wisdom corner e*i = 9, fused total = 19
+  resident      e=9, i=1: strips e+i = 10, wisdom corner e*i = 9, fused total = 19
+  balanced      e=5, i=5: strips e+i = 10, wisdom corner e*i = 25, fused total = 35
+  no experience e=0, i=10: strips e+i = 10, wisdom corner e*i = 0, fused total = 10
+  expert+resident : E=10, I=10, area 100 = own corners 18 + cross corners 82   (balance: 10^2 - 0^2 = 100)
+  two experts     : E=2, I=18, area 36 = own corners 18 + cross corners 18   (balance: 10^2 - 8^2 = 36)
+  two residents   : E=18, I=2, area 36 = own corners 18 + cross corners 18   (balance: 10^2 - 8^2 = 36)
+  Joining weight A (how well deliberation joins members): wisdom = own + A*cross
+    A=0   : expert+resident   18.0   two experts  18.0
+    A=0.1 : expert+resident   26.2   two experts  19.8
+    A=0.5 : expert+resident   59.0   two experts  27.0
+    A=0.7 : expert+resident   75.4   two experts  30.6
+    A=1   : expert+resident  100.0   two experts  36.0
+
+======================================================================
+3. THE EVENT HORIZON AT -1, THE THERMOSTAT AND COMPOUNDING
+  lose  20.0% -> exact way back     25.0%
+  lose  50.0% -> exact way back    100.0%
+  lose  90.0% -> exact way back    900.0%
+  lose  99.0% -> exact way back   9900.0%
+  lose  99.9% -> exact way back  99900.0%
+  -1 absorbs: (-1)(+)b = -1 for any b; no way back exists
+  Additive thermostat (undo +d with -d) leaves -d^2:
+    drift 10%: additive fix leaves -1.00%; exact fix -9.09% leaves +0%
+    drift 25%: additive fix leaves -6.25%; exact fix -20.00% leaves +0%
+    drift 50%: additive fix leaves -25.00%; exact fix -33.33% leaves +0%
+  Debt trap: r=5%, g=3%: naive r-g = 2.000%, exact r(-)g = (r-g)/(1+g) = 1.9417%
+    debt 100% of GDP needs a primary surplus of 1.942% of GDP to hold steady
+    30 years, no surplus: debt ratio x1.7806 -> 178.1% of GDP
+    the 30-fold mult-add on the cube, by layer: L1 58.25, L2 16.40, L3 2.97, L4 0.39, L5 0.04, rest 0.003
+    linear layer 58.25 points; compounding layers (2 and up) 19.81 points
+    layer 2 overtakes layer 1 after n = 1 + 2/x = 104 years (L2/L1 = (n-1)x/2)
+
+======================================================================
+4. QUICK MATCHES
+  Order of reforms: mult-add commutes, so percent reforms on one quantity are order-free: True
+  Fused exponent rung (1+a)^(1+b)-1 does not commute: a=1,b=2 -> 7 ; a=2,b=1 -> 8
+    with a=10%, b=20%: 12.1169% vs 22.2079%
+  Voice pricing with a free floor vote (value u, price 0.5 per credit):
+    value 1: plain -> total voice 2 (cost 1); fused -> total voice 1 (cost 0)
+    value 2: plain -> total voice 3 (cost 4); fused -> total voice 2 (cost 3)
+    value 4: plain -> total voice 5 (cost 16); fused -> total voice 4 (cost 15)
+    plain pricing gives voice 2:3:5 for values 1:2:4; fused pricing gives 1:2:4
+  Saved influence that earned any return would compound: 10 periods at 5% -> 1.629x, layers 1..3: 0.500, 0.1125, 0.01500

@@ -1,0 +1,15 @@
+# Sources (figures used in checks.py)
+- Uptime Institute, Global Data Center Survey 2024: average PUE 1.56, flat five years. https://www.datacenterknowledge.com/energy-power-supply/data-center-industry-survey-highlights-cost-ai-and-sustainability-challenges
+- LBNL, 2024 United States Data Center Energy Usage Report (Shehabi et al., LBNL-2001637): 176 TWh in 2023, 4.4% of US electricity. https://eta-publications.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report
+- IEA, Energy and AI (2025): ~415 TWh in 2024, ~1.5% of world electricity. https://www.iea.org/reports/energy-and-ai/executive-summary
+- J. Hamilton, USENIX HotPower '08 panel: PUE ~1.7, IT 59%, distribution 8%, mechanical 33%; chain .997^3 x .94 x .99 = 92.2%. https://static.usenix.org/events/hotpower08/tech/hamilton_panel.pdf
+- Mughees, Li, Chen, Li, "AI Data Centers Meet Electrical Grids" (arXiv 2610.09060): MV/LV distribution 2-3%, online UPS 2-4%, PSU 4-6%, VRM 8-12% losses. https://arxiv.org/pdf/2610.09060
+- DCD opinion, "Advanced eco modes for UPS": double conversion 94-97%, bypass path 98-99%, eco-mode saving 2-3% of total energy. https://www.datacenterdynamics.com/en/opinions/advanced-eco-modes-for-ups-combine-savings-with-fast-response-times/
+- 80 PLUS (Wikipedia table): Titanium 230 V internal redundant minimums 90/94/96/91% at 10/20/50/100% load. https://en.wikipedia.org/wiki/80_Plus
+- Thomas-Krenn wiki: 2 x 1000 W Platinum PSUs sharing 500 W draw 556 W; one active draws 532 W. https://www.thomas-krenn.com/en/wiki/Disable_PSU_cold_redundancy_for_power_from_overhead_lines_without_UPS
+- Emerson Energy Logic: 1 W saved at the processor saves 2.84 W at PUE 1.9. https://en.wikipedia.org/wiki/Energy_Logic
+- Patterson et al., TUE (ISC 2013): TUE = ITUE x PUE; Jaguar ITUE 1.49, PUE 1.25, TUE 1.86. https://eta.lbl.gov/sites/default/files/awards/isc13_tuepaper_2.pdf
+- Danfoss, variable torque applications: 20% speed cut ~50% power (affinity laws). https://www.danfoss.com/en/service-and-support/articles/dds/more-about-variable-torque-applications/
+- Upsite (2013, via Data Center Knowledge): cooling running at 3.9x IT load on average; target CCF 1.2. https://www.datacenterknowledge.com/archives/2013/09/19/cooling-capacity-factor-ccf-reveals-stranded-capacity/
+- ENERGY STAR: 4-5% energy cost saving per 1°F rise in server inlet temperature. https://www.energystar.gov/products/data_center_equipment/5-simple-ways-avoid-energy-waste-your-data-center/raise-temperature
+- Google: 2024 fleet trailing-twelve-month PUE 1.09. https://datacenters.google/efficiency

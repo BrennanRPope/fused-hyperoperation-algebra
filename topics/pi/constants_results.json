@@ -1,0 +1,119 @@
+{
+ "values": {
+  "E_half_at_1": "1.2710274138899515214246518766722806879544209972110290192136486991790193344265139",
+  "B_half_1_1": "2.4071710590165841338730923506614815634779566261435692135565732181354850671725332",
+  "gluing_q_tau_i": "0.0018674427317079888144302129348270303934228050024753171993815386383179351229157281",
+  "gluing_q_tau_rho": "-0.0043334205099831292192217089832644197256010247168576017522392532759690606652377001",
+  "omega_fused_fixed": "0.56714329040978387299996866221035554975381578718651250813513107922304579308668457",
+  "kiss_rung3": "1.4446678610097661336583391085964302230585954532422531658205226643038549377186145",
+  "turning_period_rung_minus1": "6.283185307179586476925286766559005768394338798750211641949889184615632812572418"
+ },
+ "feigenbaum": {
+  "c_superstable": [
+   "0.0",
+   "-1.0",
+   "-1.3107026413368328836",
+   "-1.3815474844320614695",
+   "-1.3969453597045606417",
+   "-1.4002530812147827973",
+   "-1.4009619629448410403",
+   "-1.4011138049397761239",
+   "-1.4011463258269461786",
+   "-1.4011532908499238815",
+   "-1.4011547825466178412",
+   "-1.4011551020224639759",
+   "-1.4011551704444112638",
+   "-1.4011551850982972905",
+   "-1.4011551882367109415"
+  ],
+  "delta_estimates": [
+   "4.38567759856834",
+   "4.60094927653808",
+   "4.65513049539198",
+   "4.66611194782857",
+   "4.66854858144684",
+   "4.66906066064827",
+   "4.66917155537951",
+   "4.66919515603002",
+   "4.66920022908686",
+   "4.6692013132942",
+   "4.66920154578091",
+   "4.66920159553749"
+  ]
+ },
+ "pslq": {
+  "E_half_at_1": {
+   "X": "no relation with coefficients up to 10^4",
+   "log|X|": "no relation with coefficients up to 10^4",
+   "X and log|X| together": "no relation with coefficients up to 10^4",
+   "algebraic_deg<=12": "not a root of any integer polynomial of degree <= 12, coefficients <= 10^6"
+  },
+  "B_half_1_1": {
+   "X": "no relation with coefficients up to 10^4",
+   "log|X|": "no relation with coefficients up to 10^4",
+   "X and log|X| together": "no relation with coefficients up to 10^4",
+   "algebraic_deg<=12": "not a root of any integer polynomial of degree <= 12, coefficients <= 10^6"
+  },
+  "gluing_q_tau_i": {
+   "X": "no relation with coefficients up to 10^4",
+   "log|X|": "1*log|X| + 2*pi = 0",
+   "X and log|X| together": "1*log|X| + 2*pi = 0",
+   "algebraic_deg<=12": "not a root of any integer polynomial of degree <= 12, coefficients <= 10^6"
+  },
+  "gluing_q_tau_rho": {
+   "X": "no relation with coefficients up to 10^4",
+   "log|X|": "1*log|X| + 1*pi*sqrt3 = 0",
+   "X and log|X| together": "1*log|X| + 1*pi*sqrt3 = 0",
+   "algebraic_deg<=12": "not a root of any integer polynomial of degree <= 12, coefficients <= 10^6"
+  },
+  "omega_fused_fixed": {
+   "X": "no relation with coefficients up to 10^4",
+   "log|X|": "no relation with coefficients up to 10^4",
+   "X and log|X| together": "1*X + 1*log|X| = 0",
+   "algebraic_deg<=12": "not a root of any integer polynomial of degree <= 12, coefficients <= 10^6"
+  },
+  "kiss_rung3": {
+   "X": "no relation with coefficients up to 10^4",
+   "log|X|": "no relation with coefficients up to 10^4",
+   "X and log|X| together": "no relation with coefficients up to 10^4",
+   "algebraic_deg<=12": "not a root of any integer polynomial of degree <= 12, coefficients <= 10^6"
+  },
+  "turning_period_rung_minus1": {
+   "X": "1*X + -2*pi = 0",
+   "log|X|": "1*log|X| + -1*ln2 + -1*ln_pi = 0",
+   "X and log|X| together": "1*log|X| + -1*ln2 + -1*ln_pi = 0",
+   "algebraic_deg<=12": "not a root of any integer polynomial of degree <= 12, coefficients <= 10^6"
+  }
+ },
+ "pslq_digits": 110,
+ "basis": [
+  "1",
+  "pi",
+  "e",
+  "ln2",
+  "ln3",
+  "euler_gamma",
+  "zeta3",
+  "catalan",
+  "pi^2",
+  "sqrt2",
+  "sqrt3",
+  "gamma(1/4)",
+  "ln_pi",
+  "pi*sqrt3"
+ ],
+ "abel_coeffs_first": [
+  "-0.02777777777777777777777778",
+  "0.001851851851851851851851852",
+  "0.0001286008230452674897119342",
+  "-0.0001630474720752498530276308",
+  "0.00005363879090730942582794435",
+  "0.000001476527968297515622618503",
+  "-0.00001113659555614655555866608",
+  "0.000003821277894079355842044457",
+  "0.000002503726911798104714762309",
+  "-0.000002618791843544065820722254",
+  "-0.0000004895562809417805407199973"
+ ],
+ "trusted_digits": 120
+}

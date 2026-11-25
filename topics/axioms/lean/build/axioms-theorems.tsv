@@ -1,0 +1,290 @@
+Axioms.FusedPeano	MAFound.FusedPeano.add_assoc'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.add_comm'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.add_definable	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.add_right_cancel'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.add_succ'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.add_toN_fromN	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.add_zero'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.fromN_toN	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.hyp_add	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.hyp_mul	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.hyp_one	
+Axioms.FusedPeano	MAFound.FusedPeano.hyp_pow	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.ind	
+Axioms.FusedPeano	MAFound.FusedPeano.ladN_one	propext, Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.ladN_succ	propext, Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.ladN_two	propext, Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.ladN_zero_right	propext, Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.lad_lift	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.lad_one	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.lad_three	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.lad_two	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.madd_assoc	
+Axioms.FusedPeano	MAFound.FusedPeano.madd_comm	
+Axioms.FusedPeano	MAFound.FusedPeano.madd_eq'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.madd_is	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.madd_sadd	
+Axioms.FusedPeano	MAFound.FusedPeano.madd_succ	
+Axioms.FusedPeano	MAFound.FusedPeano.madd_zero	
+Axioms.FusedPeano	MAFound.FusedPeano.mul_add'	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.mul_assoc'	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.mul_comm'	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.mul_definable	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.mul_one'	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.mul_succ'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.mul_zero'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.multAdd_eq	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.recN_succ	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.recN_zero	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.sadd_assoc	
+Axioms.FusedPeano	MAFound.FusedPeano.sadd_comm	
+Axioms.FusedPeano	MAFound.FusedPeano.sadd_is_succ	
+Axioms.FusedPeano	MAFound.FusedPeano.sadd_ne_zero	
+Axioms.FusedPeano	MAFound.FusedPeano.sadd_right_cancel	
+Axioms.FusedPeano	MAFound.FusedPeano.sadd_succ	
+Axioms.FusedPeano	MAFound.FusedPeano.sadd_zero	
+Axioms.FusedPeano	MAFound.FusedPeano.succ_add'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.succ_add_eq	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.succ_inj	
+Axioms.FusedPeano	MAFound.FusedPeano.succ_madd	
+Axioms.FusedPeano	MAFound.FusedPeano.succ_ne_zero	
+Axioms.FusedPeano	MAFound.FusedPeano.succ_sadd	
+Axioms.FusedPeano	MAFound.FusedPeano.toN_add	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.toN_bijective	
+Axioms.FusedPeano	MAFound.FusedPeano.toN_fromN	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.toN_injective	
+Axioms.FusedPeano	MAFound.FusedPeano.toN_lad	propext, Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.toN_madd	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.toN_mul	propext, Classical.choice, Quot.sound
+Axioms.FusedPeano	MAFound.FusedPeano.toN_sadd	
+Axioms.FusedPeano	MAFound.FusedPeano.toN_surjective	
+Axioms.FusedPeano	MAFound.FusedPeano.transfer2	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.transfer3	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.zero_add'	Classical.choice
+Axioms.FusedPeano	MAFound.FusedPeano.zero_madd	
+Axioms.FusedPeano	MAFound.FusedPeano.zero_sadd	
+Axioms.Independence	MAFound.Independence.Mat.ext'	propext
+Axioms.Independence	MAFound.Independence.Tri.ext'	propext
+Axioms.Independence	MAFound.Independence.int_group	propext, Classical.choice, Quot.sound
+Axioms.Independence	MAFound.Independence.no_M1	propext, Classical.choice, Quot.sound
+Axioms.Independence	MAFound.Independence.no_M2	propext, Classical.choice, Quot.sound
+Axioms.Independence	MAFound.Independence.no_M3	propext, Classical.choice, Quot.sound
+Axioms.Independence	MAFound.Independence.no_M4	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.add_wall_ne	
+Axioms.MultAddRing	MAFound.MAField.inv_inv'	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.inv_ne_zero	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.inv_one'	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.inv_zero'	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.mul_inv	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.way_back	
+Axioms.MultAddRing	MAFound.MAField.way_back_formula	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.zero_ne_one'	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.MAField.zero_ne_wall	
+Axioms.MultAddRing	MAFound.MARing.add_assoc	
+Axioms.MultAddRing	MAFound.MARing.add_comm	
+Axioms.MultAddRing	MAFound.MARing.add_left_cancel	
+Axioms.MultAddRing	MAFound.MARing.add_left_comm	
+Axioms.MultAddRing	MAFound.MARing.add_mul	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.add_neg	
+Axioms.MultAddRing	MAFound.MARing.add_right_cancel	
+Axioms.MultAddRing	MAFound.MARing.add_zero	
+Axioms.MultAddRing	MAFound.MARing.instAssociativeAdd	
+Axioms.MultAddRing	MAFound.MARing.instCommutativeAdd	
+Axioms.MultAddRing	MAFound.MARing.intCast_neg'	
+Axioms.MultAddRing	MAFound.MARing.madd_add	
+Axioms.MultAddRing	MAFound.MARing.madd_assoc	
+Axioms.MultAddRing	MAFound.MARing.madd_comm	
+Axioms.MultAddRing	MAFound.MARing.madd_eq	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.madd_wall	
+Axioms.MultAddRing	MAFound.MARing.madd_zero	
+Axioms.MultAddRing	MAFound.MARing.mul_add	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.mul_assoc	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.mul_comm	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.mul_neg	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.mul_one	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.mul_wall	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.mul_zero	
+Axioms.MultAddRing	MAFound.MARing.multAdd_eq	propext, Classical.choice
+Axioms.MultAddRing	MAFound.MARing.natCast_succ	
+Axioms.MultAddRing	MAFound.MARing.neg_add	
+Axioms.MultAddRing	MAFound.MARing.neg_add_distrib	
+Axioms.MultAddRing	MAFound.MARing.neg_neg	
+Axioms.MultAddRing	MAFound.MARing.neg_unique	
+Axioms.MultAddRing	MAFound.MARing.neg_zero	
+Axioms.MultAddRing	MAFound.MARing.one_eq	
+Axioms.MultAddRing	MAFound.MARing.wall_eq	
+Axioms.MultAddRing	MAFound.MARing.wall_unique	
+Axioms.MultAddRing	MAFound.MARing.zero_add	
+Axioms.MultAddRing	MAFound.MARing.zero_eq	
+Axioms.MultAddRing	MAFound.MARing.zero_madd	
+Axioms.MultAddRing	MAFound.MARing.zero_mul	propext, Classical.choice
+Axioms.MultAddRing	MAFound.roundtrip_madd	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.roundtrip_mul	propext, Classical.choice, Quot.sound
+Axioms.MultAddRing	MAFound.roundtrip_wall	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Rulecraft.balance	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Rulecraft.boundary	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Rulecraft.fused_price_expand	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Rulecraft.fused_price_step	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Rulecraft.panel_grid	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Rulecraft.recovery	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Rulecraft.thermostat_residue	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.chart_cover	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.chart_injective	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.chart_trans	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.chart_wind	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.inChart_iff	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.inv_inv'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.inv_ne	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.inv_pow'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.origin_in_one_chart	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.pow_succ_eq_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.torus_in_all	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.trans01_multAdd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.trans02_multAdd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.trans_cocycle	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.P2.trans_wind	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.chart1_cover	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.chart1_injective	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.chart1_trans	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.chart2_cover	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.chart2_injective	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.chart2_trans	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.corner_all_on	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.corner_scale	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.fixed_point_in_one_chart	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.inChart2_iff	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.origin_in_one_chart	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.torus_in_all	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.torus_in_both	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.trans1_cocycle	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.Toric.trans2_cocycle	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.foldMA_append	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.foldMA_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.foldMA_perm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.inv_one_add	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.mpow_add	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.mpow_eq	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.mpow_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.msub_multAdd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.mul_pow'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAddInv_multAdd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_assoc	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_comm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_def	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_excess	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_lift'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_multAddInv	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.multAdd_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.neg_one_absorbs	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.no_multAddInv_at_wall	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.one_add_foldMA_eq_corners	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.one_pow'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.pow_add'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.pw_add	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.pw_eq_pow	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.MultAdd.pw_mul	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.pw_mul_base	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.pw_one	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.sumL_append	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.sumL_map_cons	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_assoc	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_comm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_def	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_either	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_flip	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_neg_one_mirror	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_one	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_scale	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_wall	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_weight_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wAdd_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wpow_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wpow_neg_one	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.wpow_one	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.MultAdd.zero_multAdd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.axis_rung1	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.flow_closed	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.flow_heights_add	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.flow_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.ruled_rung1	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.ruled_rung1'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.sheet_dial	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.sheet_edges	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.sheet_rung0	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.sheet_rung1	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.sheet_rung1_lens	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.twist_dial	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.RungShape.twist_rung1	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_example	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_iter	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_multAdd_right	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_not_assoc	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_not_comm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_sadd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_tower	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_zero_left	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fexp_zero_right	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.fpent_iter	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.fpent_values	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fpent_zero_left	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.fpent_zero_right	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_iter	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_no_multAdd_dist	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_no_sum	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_no_tower	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_not_assoc	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_not_comm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_values	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_zero_left	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.ftet_zero_right	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.ladN_toN	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.lad_eq_fexp	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.lad_eq_fpent	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.lad_eq_ftet	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.lad_eq_multAdd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.lad_eq_sadd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.Rungs.multAdd_iter	propext, Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.toN_ne	
+Axioms.Rederive	MAFound.Rederived.Rungs.toN_succ	Classical.choice
+Axioms.Rederive	MAFound.Rederived.Rungs.toN_zero	
+Axioms.Rederive	MAFound.Rederived.SimpleLaws.boyle_partner	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.SimpleLaws.inverse_square	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.Rederived.SimpleLaws.parallel_is_inverted_addition	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.foldMA_append	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.foldMA_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.foldMA_perm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.mpow_add	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.mpow_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.mul_pow'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.multAdd_assoc	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.multAdd_comm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.multAdd_def	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.multAdd_excess	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.multAdd_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.multAdd_lift'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.multAdd_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.one_add_foldMA_eq_corners	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.one_pow'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.pow_add'	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.pw_add	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.pw_eq_pow	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.pw_mul	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.pw_mul_base	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.pw_one	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.sumL_append	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.sumL_map_cons	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_assoc	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_comm	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_def	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_one	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_scale	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_weight_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wAdd_zero	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wpow_lift	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.wpow_one	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.RederivedPeano.MultAdd.zero_multAdd	propext, Classical.choice, Quot.sound
+Axioms.Rederive	MAFound.multAdd_eq_madd	propext, Classical.choice
+Axioms.Rederive	MAFound.multAdd_eq_madd'	propext, Classical.choice, Quot.sound

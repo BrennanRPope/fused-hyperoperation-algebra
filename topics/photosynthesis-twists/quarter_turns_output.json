@@ -1,0 +1,157 @@
+{
+ "real_points": [
+  {
+   "name": "BaNiO2 (Romeo 2023)",
+   "steps": [
+    1.85,
+    1.61,
+    1.32,
+    0.14
+   ],
+   "arcs": [
+    135.4,
+    117.8,
+    96.6,
+    10.2
+   ],
+   "eta_from_largest_arc": 0.62,
+   "eta": 0.62,
+   "essi": 0.363,
+   "rms": 0.657,
+   "descriptor": 1.61,
+   "round_trip": 1.71,
+   "published": {
+    "eta": 0.62,
+    "essi": 0.36
+   }
+  },
+  {
+   "name": "Sr2NiIrO6 (Calle-Vallejo 2025)",
+   "steps": [
+    0.77,
+    1.35,
+    1.13,
+    1.67
+   ],
+   "arcs": [
+    56.3,
+    98.8,
+    82.7,
+    122.2
+   ],
+   "eta_from_largest_arc": 0.44,
+   "eta": 0.44,
+   "essi": 0.28,
+   "rms": 0.328,
+   "descriptor": 1.35,
+   "round_trip": 0.9,
+   "published": {
+    "eta": 0.44,
+    "essi": 0.28
+   }
+  },
+  {
+   "name": "Sr2NiIrO6 optimized",
+   "steps": [
+    0.93,
+    1.51,
+    0.97,
+    1.51
+   ],
+   "arcs": [
+    68.0,
+    110.5,
+    71.0,
+    110.5
+   ],
+   "eta_from_largest_arc": 0.28,
+   "eta": 0.28,
+   "essi": 0.28,
+   "rms": 0.28,
+   "descriptor": 1.51,
+   "round_trip": 0.58,
+   "published": {
+    "eta": 0.28
+   }
+  },
+  {
+   "name": "IrO2/RuO2 typical (arXiv 2512.05938)",
+   "steps": [
+    1.23,
+    1.6,
+    1.6,
+    0.49
+   ],
+   "arcs": [
+    90.0,
+    117.1,
+    117.1,
+    35.9
+   ],
+   "eta_from_largest_arc": 0.37,
+   "eta": 0.37,
+   "essi": 0.247,
+   "rms": 0.453,
+   "descriptor": 1.6,
+   "round_trip": 1.11,
+   "published": {
+    "eta": 0.37
+   }
+  }
+ ],
+ "simulated_N": 19321,
+ "predict_eta": {
+  "largest_arc": "exact by definition (MAE 0)",
+  "descriptor_volcano": {
+   "mae": 0.085,
+   "r2": 0.763
+  },
+  "essi_fit": {
+   "slope": 0.792,
+   "intercept": 0.359,
+   "mae": 0.14,
+   "r2": 0.667
+  },
+  "rms_fit": {
+   "slope": 1.082,
+   "intercept": 0.131,
+   "mae": 0.178,
+   "r2": 0.488
+  }
+ },
+ "predict_eta_good_only": {
+  "n": 3631,
+  "descriptor_volcano_mae": 0.078,
+  "essi_fit": {
+   "slope": 0.557,
+   "intercept": 0.287,
+   "mae": 0.056,
+   "r2": 0.328
+  },
+  "rms_fit": {
+   "slope": 0.305,
+   "intercept": 0.329,
+   "mae": 0.059,
+   "r2": 0.238
+  }
+ },
+ "round_trip": {
+  "descriptor_only": {
+   "slope": 0.916,
+   "intercept": 1.026,
+   "mae": 0.331,
+   "r2": 0.294
+  },
+  "spread_of_arcs": "exact by definition",
+  "best_possible_on_scaling_line": {
+   "spread_V": 0.74,
+   "dG_OH": 0.86,
+   "descriptor": 1.6
+  }
+ },
+ "ranking_flip_probability_for_0p1V_gap": {
+  "0.1": 0.239,
+  "0.2": 0.36,
+  "0.5": 0.443
+ }
+}

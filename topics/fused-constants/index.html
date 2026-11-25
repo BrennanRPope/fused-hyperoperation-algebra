@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natural constants up the rungs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the same series as the e, topology and toric pages, honest about known vs new
+   IDEA a plate from a geometry atlas: curves kissing the diagonal, one plate per rung
+   PICTURE the ladder of constants climbing to 1, beside the finding
+   COLOUR white ground, near-black ink, ultramarine for the constants, vermilion for the limit; night is deep ink with plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plate first; sections with plates beside text; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:68ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:64ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+.fit{white-space:nowrap;font-weight:600}
+.f5{color:var(--red)}.f4{color:var(--blue)}.f3{color:var(--ink)}.f1{color:var(--mute)}
+code{font-size:14px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.eq{font-size:17px}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band top">
+<div class="wrap two">
+<div>
+<h1>Each rung's natural constant climbs, and they close in on 1</h1>
+<p class="lede">The test that generalizes is the <b>kiss</b>: the largest base whose infinite tower on the next rung still settles, which is where the rung's curve just touches the diagonal. In fused coordinates the constants run <span class="b">−1, 0, 0.4447, 0.6353, 0.757, 0.832, …</span> and they converge to <span class="r">1</span> (ordinary coordinates: 0, 1, e<sup>1/e</sup>, 1.6353, … → 2).</p>
+<p>Fusing doesn't change them: sliding by one moves every kiss by exactly one. The limit 1 is the far corner of the 2×2 square, the one place where every rung agrees: 1 (k) 1 = 3 on all of them.</p>
+<p>The gap to 1 shrinks by <span class="r">1/ln 4 ≈ 0.721</span> per rung, about 28%. That rate is proved, up to a constant factor, and it comes from the slope of mult-add's power curve at the corner (1, 1).</p>
+<p class="mute">Rungs 1 to 3 are exact. Rung 4 is known in the literature. From rung 5 up, heights between whole numbers need a rule, and I used the standard linear one; the limit 1 is proved for that rule.</p>
+</div>
+<figure class="plate" style="margin:0"><img src="figures/c3_ladder.png" alt="Fused natural constant at each rung, climbing from minus 1 toward 1, with the gap shrinking about 30 percent per rung"><figcaption class="cap">The constants, rung by rung (left), and their distance from 1 on a log scale (right).</figcaption></figure>
+</div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+<a href="#test">Which test</a><a href="#table">The numbers</a><a href="#rung3">Rung 3 on the cube</a><a href="#limit">Why they converge to 1</a><a href="#rate">How fast</a><a href="#slope">The slope test</a><a href="#lean">What Lean proved</a><a href="#known">Known vs new</a><a href="#files">Files</a>
+</nav>
+
+<section class="band" id="test"><div class="wrap">
+<h2>Three ways to say what makes e natural, and the one that climbs</h2>
+<p>Fused rung k is the ordinary rung slid so the unit corner sits at 0, the same definition as the Navier–Stokes rungs page:</p>
+<div class="eq">a (k) b = H<sub>k</sub>(1+a, 1+b) − 1 &nbsp;&nbsp; so &nbsp; a (2) b = a + b + ab, &nbsp; a (3) b = (1+a)<sup>1+b</sup> − 1</div>
+<table class="stack">
+<thead><tr><th>Test</th><th>What it gives on rung 3</th><th>Does it climb?</th></tr></thead>
+<tbody>
+<tr><td><b>Slope one at the start</b> (e's own test: bˣ has slope 1 at x = 0)</td><td>e</td><td>No. Above rung 3 the answer depends on the rule for in-between heights. The linear rule gives e again on every rung; the analytic rule doesn't even give e (slope 1.0918 there).</td></tr>
+<tr><td><b>Cut finer and finer</b> (1/n combined n times)</td><td>e, for mult-add</td><td>No. It works because mult-add is associative. The power rung isn't, and a tower of n copies of 1 + 1/n just sinks to 1.</td></tr>
+<tr><td><b>The kiss</b> (largest base whose next-rung tower settles: the curve x ↦ c (k) x meets the diagonal with value x and slope 1 at once)</td><td>e<sup>1/e</sup>, kissing at x = e</td><td><b>Yes.</b> It makes sense on every rung, it's exact on the first three, and sliding keeps it. e's slope test turns out to be this same kiss at rung 3, shrunk by e (next section).</td></tr>
+</tbody></table>
+<p>The slide keeps kisses because it moves the curve and the diagonal together: the gap to the diagonal and every slope are unchanged. So <b>each fused constant is the ordinary constant minus 1</b>, and its kiss point is the ordinary one minus 1. Lean proves the whole-number form (<code>slide_fixed</code>, <code>slide_gap</code>, <code>slide_step</code>, <code>slide_kiss</code>).</p>
+</div></section>
+
+<section class="band" id="table" style="background:var(--panel)"><div class="wrap">
+<h2>The constants, rung by rung</h2>
+<p>Each number is checked at 40 digits in <code>constants.py</code> by solving "value = x and slope = 1" together, then confirming the curve crosses just below the base and clears just above it.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Rung</th><th>The map</th><th>Ordinary</th><th>Fused</th><th>Kiss at (fused x)</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td class=fit>1</td><td>add: x ↦ b + x</td><td class=fit>0</td><td class='fit b'>−1</td><td>everywhere (adding 0 is the diagonal)</td><td class=mute>exact</td></tr>
+<tr><td class=fit>2</td><td>multiply: x ↦ b·x</td><td class=fit>1</td><td class='fit b'>0</td><td>everywhere (mult-add by 0 is the diagonal)</td><td class=mute>exact</td></tr>
+<tr><td class=fit>3</td><td>power: x ↦ bˣ</td><td class=fit>e<sup>1/e</sup> = 1.444667861009766</td><td class='fit b'>0.444667861009766</td><td>x = e − 1 = 1.71828</td><td class=mute>exact</td></tr>
+<tr><td class=fit>4</td><td>tetration: x ↦ b↑↑x</td><td class=fit>1.635324496715</td><td class='fit b'>0.635324496715</td><td>2.0885</td><td class=mute>analytic heights (known)</td></tr>
+<tr><td class=fit>4</td><td>same, linear heights</td><td class=fit>1.640974559105</td><td class='fit b'>0.640974559105</td><td>2.3101</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>5</td><td>pentation</td><td class=fit>1.757030666276</td><td class='fit b'>0.757030666276</td><td>2.3189</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>6</td><td>hexation</td><td class=fit>1.831639599438</td><td class='fit b'>0.831639599438</td><td>2.3335</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>7</td><td></td><td class=fit>1.883163228580</td><td class='fit b'>0.883163228580</td><td>2.5808</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>8</td><td></td><td class=fit>1.919856257590</td><td class='fit b'>0.919856257590</td><td>2.5985</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>10</td><td></td><td class=fit>1.962009955137</td><td class='fit b'>0.962009955137</td><td>2.5796</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>15</td><td></td><td class=fit>1.993055409308</td><td class='fit b'>0.993055409308</td><td>2.5135</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>20</td><td></td><td class=fit>1.998655543930</td><td class='fit b'>0.998655543930</td><td>2.2445</td><td class=mute>linear heights</td></tr>
+<tr><td class=fit>∞</td><td></td><td class=fit>2</td><td class='fit b'>1</td><td>—</td><td class=mute>proved (linear heights)</td></tr>
+</tbody></table></div>
+<p class="cap">Rung 4 analytic value: published as 1.63532449671527639934534 (Tetration Forum, using Kneser's tetration). My own check with Robbins' natural super-logarithm gives 1.635324496701 with 40 terms, closing in on it. The linear rule is 0.35% higher on rung 4. Nobody I found has computed rung 5 or higher with the analytic rule.</p>
+</div></section>
+
+<section class="band" id="rung3"><div class="wrap">
+<h2>Rung 3 on the cube: the largest cube whose volume can equal its dimension</h2>
+<div class="two">
+<div>
+<p>The power rung asks when bˣ = x. Read b as a cube's side and x as its number of dimensions: when can a cube's volume equal its dimension count? That needs b = x<sup>1/x</sup>, and that is largest at <b>x = e</b>, with side <b>e<sup>1/e</sup> = 1.4447</b>. A square of that side has area 2.087, a cube 3.015, both just above their dimension; at dimension e they meet exactly.</p>
+<p>In fused coordinates: extra side 0.4447 beyond the unit corner, and the extra volume equals the extra dimension at e − 1.</p>
+<p><b>e and e<sup>1/e</sup> are one kiss at two scales.</b> Shrink the rung-3 kiss by e and slide it to the corner, and it becomes exactly e<sup>u</sup> − 1 meeting the diagonal at the unit corner with slope 1, which is e's slope test and the inverse of mult-add's own log ln(1+u):</p>
+<div class="eq">(e<sup>1/e</sup>)<sup>e(1+u)</sup> / e − 1 = e<sup>u</sup> − 1</div>
+<p>So they aren't two independent constants. That's why the climb starts here.</p>
+<p class="mute">The tower also has a lower edge, e<sup>−e</sup> = 0.0660 (fused −0.934), and a tower of 1/e settles on the omega constant 0.5671. Both check to 40 digits.</p>
+</div>
+<div>
+<figure class="plate"><img src="figures/c2_cube.png" alt="Volume of a cube against its dimension for three side lengths, with side e to the 1 over e touching the line volume equals dimension at d equals e"><figcaption class="cap">Left: only side e<sup>1/e</sup> touches the line "volume = dimension", once, at d = e. Right: that cube over the unit corner.</figcaption></figure>
+<figure class="plate"><img src="figures/c1_kiss.png" alt="The fused rung 3 curve kissing the diagonal, and e to the u minus 1 with slope 1 at the corner"><figcaption class="cap">Left: the fused tower test on rung 3. Right: the same kiss, shrunk and slid to the unit corner.</figcaption></figure>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="limit" style="background:var(--panel)"><div class="wrap">
+<h2>Yes, they converge, and the limit is 1</h2>
+<div class="two">
+<div>
+<p>The proof is a squeeze between a ceiling and a rising floor.</p>
+<h3>The ceiling: fused base 1 never touches</h3>
+<p>Base 1 (ordinary 2) stays above the diagonal on every rung, so its tower always runs off and no constant can pass 1. Lean proves the whole-number version: on every rung from power up, H<sub>k</sub>(2, n) &gt; n, and the base-2 tower climbs at every step. It also proves 2 (k) 2 = 4 on every rung, so fused 1 (k) 1 = 3: the 2×2 square that every rung agrees on.</p>
+<h3>The floor: any smaller base eventually settles</h3>
+<p>On the second unit of height, every rung has an exact closed form (linear rule):</p>
+<div class="eq">H<sub>k</sub>(b, x) = b<sup>s∘s∘…∘s(x)</sup>, &nbsp; with k − 3 copies of s(x) = b<sup>x−1</sup></div>
+<p>The inner map s fixes 1 and pulls every height between 1 and 2 toward it whenever b is below 2. So as the rungs climb, the curve flattens onto a step: b<sup>x</sup> on the first unit, then flat at b. A flat line at height b must cross the diagonal at x = b, so for any base below 2 the tower settles once the rung is high enough. That pushes the constants past every number below 2. Squeezed against the ceiling, they converge to 2, which is fused 1.</p>
+<h3>How fast</h3>
+<p>The gap to 1 shrinks by a factor of 1/ln 4 = 0.7213 per rung. The <a href="#rate">next section</a> proves it. (An earlier version of this page guessed ln 2 = 0.693 here. That was the wrong corner.)</p>
+<p class="mute">Two honest limits. The floor argument uses the linear rule for in-between heights; it should carry over to rules that behave like it on the first unit of height, but I haven't proved that, and I haven't checked the analytic rule. And the kiss point itself doesn't settle neatly under the linear rule: it sits near fused 2.2 to 2.6, by one of the rule's corners, while the base-1 curve pinches toward the corner (1, 1).</p>
+</div>
+<div>
+<figure class="plate"><img src="figures/c4_pinch.png" alt="High rungs flatten onto a step that crosses the diagonal at the base, and base 1 curves pinch toward the corner one one"><figcaption class="cap">Left: fused base 0.8, high rungs flatten and cross the diagonal at 0.8. Right: fused base 1 never touches, but the gap closes at the corner (1, 1).</figcaption></figure>
+<figure class="plate"><img src="figures/c5_square.png" alt="The two by two square: unit corner plus three new cells"><figcaption class="cap">The limit point (1, 1) is the far corner of the doubled unit square: 2 + 2 = 2·2 = 2² = 2↑↑2 = … = 4.</figcaption></figure>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="rate"><div class="wrap">
+<h2>How fast they close in: 1/ln 4 per rung</h2>
+<p class="lede">Each rung shrinks the gap 1 − c<sub>k</sub> by a factor of 1/ln 4 = 0.7213, about 28%. The reason is one slope: mult-add's power curve leaves the corner (1, 1) with slope ln 4 = ln(2·2).</p>
+<div class="box">
+<p><b>Theorem (linear rule).</b> There are constants A, B &gt; 0 so that for every rung k ≥ 5</p>
+<div class="eq">A · (ln 4)<sup>−k</sup> &nbsp;≤&nbsp; 1 − c<sub>k</sub> &nbsp;≤&nbsp; B · (ln 4)<sup>−k</sup></div>
+<p style="margin-bottom:0">So the k-th root of the gap tends to exactly 1/ln 4. In plain terms: about seven rungs for each extra digit of closeness, because (ln 4)<sup>7</sup> = 9.8.</p>
+</div>
+<div class="two">
+<div>
+<h3>The picture</h3>
+<p>In fused coordinates the inner map from the closed form is y ↦ (1 + c)<sup>y</sup> − 1. For whole y that is <b>c mult-added to itself y times</b>, the same power that built e. At c = 1 the curve 2<sup>y</sup> − 1 runs through both corners of the unit square.</p>
+<ul>
+<li><b>At (0, 0):</b> slope ln 2 = 0.69, so steps pull in.</li>
+<li><b>At (1, 1):</b> slope 2 ln 2 = ln 4 = 1.39, so steps push out.</li>
+</ul>
+<p>Rung k is rung 3 run after k − 3 steps of this map. The tower test at rung k asks one thing: starting at the corner (1, 1), have k − 3 steps carried you far enough from it?</p>
+<p>At c = 1 you never move: (1, 1) is a fixed point, which is why fused base 1 never settles. Just below 1, the corner splits. A push-out point sits a distance of about 2.6 × (1 − c) beyond it, and the steps drift away from it, the distance growing by ln 4 each time. Getting a fixed distance away takes log(1/(1 − c)) / log(ln 4) steps. A rung allows k − 3 steps, so the threshold sits where (1 − c) is about (ln 4)<sup>−k</sup>.</p>
+<p>The number is worth a second look: 4 is the number every rung agrees on, 2 (k) 2 = 4, and the closing rate is one over its logarithm.</p>
+</div>
+<div>
+<figure class="plate"><img src="figures/c6_corner.png" alt="The curve 2 to the y minus 1 through the corners zero zero and one one of the unit square, with slopes ln 2 and ln 4, and the escape from the corner growing by ln 4 per step"><figcaption class="cap">Left: the power curve through both corners, and the steps at c = 0.97 leaving (1, 1). Right: the distance from the push-out point grows by ln 4 per step, so each factor of 10 closer to c = 1 buys 7 more steps.</figcaption></figure>
+</div>
+</div>
+<h3>The proof, in four steps</h3>
+<p class="mute">Ordinary coordinates: base b = 1 + c, gap ε = 2 − b, inner map s(x) = b<sup>x−1</sup>, orbit o<sub>0</sub> = 2, o<sub>j+1</sub> = s(o<sub>j</sub>), and m = k − 3.</p>
+<ol>
+<li><b>Closed form.</b> On heights 1 to 2, H<sub>k</sub>(b, x) = b<sup>s<sup>m</sup>(x)</sup>. The structure is Lean's <code>ladder</code>; the identity is checked in Python with error exactly 0.</li>
+<li><b>Escape time.</b> s has a repelling fixed point x<sub>2</sub> just above 2, with x<sub>2</sub> − 2 ≈ ε / (ln 4 − 1) and slope q<sub>b</sub> = x<sub>2</sub> ln b → ln 4. Because s is convex, the distance d<sub>j</sub> = x<sub>2</sub> − o<sub>j</sub> grows each step by at most q<sub>b</sub> and at least q<sub>b</sub>(1 − d<sub>j</sub> ln b). The losses multiply to a bounded factor, so the orbit needs log(1/ε)/log(ln 4) + O(1) steps to reach any fixed height below 2.</li>
+<li><b>No kiss until the orbit has escaped</b> (gives A). If b ≥ 1.95 and o<sub>m+1</sub> ≥ log<sub>b</sub> 3.5, then H<sub>k</sub>(b, x) &gt; x for every x, checked piece by piece on [0, 1], [1, 2], [2, 3], [3, 3.5] and [3.5, ∞), so the tower runs off. At the threshold the orbit must already be below log<sub>b</sub> 3.5 ≈ 1.81 after m + 1 steps.</li>
+<li><b>A kiss once it has escaped far enough</b> (gives B). If o<sub>m−2</sub> ≤ log<sub>b</sub> 3 ≈ 1.585, plus a small tail condition that holds for large k, then H<sub>k</sub>(b, 3) ≤ 3 while H<sub>k</sub>(b, 1) &gt; 1. So the curve crosses the diagonal and the tower settles. The margins close because the push at (1, 1) times the pull at (0, 0), ln 4 × ln 2 = 2(ln 2)<sup>2</sup> ≈ 0.96, is below 1.</li>
+</ol>
+<p>Steps 3 and 4 trap the threshold between two fixed escape heights, and step 2 turns each height into a step count of log(1/ε)/log(ln 4) + O(1). That is the theorem.</p>
+<h3>What's proved, what's checked, what's open</h3>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Claim</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Closed form's structure; escape-count template; integer facts behind 0.69 &lt; ln 2 &lt; 0.7 and 2(ln 2)<sup>2</sup> &lt; 1</td><td>Core Lean, no <code>sorry</code> (<code>lean/ClosingRate.lean</code>)</td></tr>
+<tr><td>Escape-time estimate, steps 3 and 4, so the sandwich A(ln 4)<sup>−k</sup> ≤ gap ≤ B(ln 4)<sup>−k</sup></td><td>Proved on paper above, not machine-checked</td></tr>
+<tr><td>Closed form exact; constants to rung 30; at every threshold from rung 6 to 30, step 3's test holds (o<sub>m+1</sub> 1.34 to 1.45, below log<sub>b</sub> 3.5) and step 4's test fails as it must (o<sub>m−2</sub> 1.67 to 1.83, above log<sub>b</sub> 3)</td><td>Python (<code>rate_scan.py</code>, <code>rate_checks.py</code>)</td></tr>
+<tr><td>That the ratio of consecutive gaps tends to 1/ln 4, and that gap × (ln 4)<sup>k</sup> settles to one constant</td><td>Open. At rung 30 the ratio is 0.7162 and still rising; gap × (ln 4)<sup>k</sup> is 0.82 and still drifting down</td></tr>
+</tbody></table></div>
+<figure class="plate"><img src="figures/c7_rate.png" alt="Measured shrink factor per rung approaching 1 over ln 4, with a dip where the kiss point jumps at rung 19, and gap times ln 4 to the k staying between 0.8 and 1.35"><figcaption class="cap">Left: the measured shrink per rung, against 1/ln 4. It overshoots at rungs 15 to 18, then drops when the kiss point jumps from about 3.49 to 3.24, and climbs back slowly. Right: gap × (ln 4)<sup>k</sup> stays between two constants, as the theorem says, but hasn't settled by rung 30.</figcaption></figure>
+</div></section>
+
+<section class="band" id="slope"><div class="wrap">
+<h2>The slope test gives no new constants</h2>
+<p>Running e's own test (slope 1 at height 0) on the higher rungs: with the linear rule every rung equals bˣ on the first unit of height, so the test picks e on every rung. With the analytic rule, base e's tetration has slope 1.0918 at 0, so the test isn't even tied to e there. Either way it doesn't produce a ladder. In fused coordinates e − 1 = 1.71828 shows up instead as <b>where</b> the rung-3 kiss happens.</p>
+<p>No lead here at the level of the KdV soliton cube. The cleanest small finding is the one above: e and e<sup>1/e</sup> are the same kiss at two scales, and the climb ends at the one square every rung agrees on.</p>
+</div></section>
+
+<section class="band" id="lean" style="background:var(--panel)"><div class="wrap">
+<h2>What Lean proved</h2>
+<p><code>lean/FusedConstants.lean</code>: core Lean 4 only, no mathlib, no <code>sorry</code>, only Lean's standard axioms. Checked with Lean 4.37.0-rc1.</p>
+<ul>
+<li><code>mult_add</code>: (1+a)(1+b) − 1 = a + b + ab, so fused rung 2 is mult-add.</li>
+<li><code>slide_fixed</code>, <code>slide_gap</code>, <code>slide_step</code>, <code>slide_kiss</code>: sliding by one moves fixed points by exactly one and keeps every gap and every step, so a kiss survives the slide.</li>
+<li><code>rung1_base0</code>, <code>rung2_base1</code>: adding 0 and multiplying by 1 are the diagonal, so the first two constants are exact.</li>
+<li><code>all_rungs_two_two</code>, <code>fused_one_one</code>: 2 (k) 2 = 4 and fused 1 (k) 1 = 3 on every rung.</li>
+<li><code>base_two_clears</code>, <code>base_two_tower_climbs</code>: from the power rung up, the base-2 curve is above the diagonal at every whole height, and the base-2 tower climbs at every step. This is the whole-number skeleton of the ceiling.</li>
+<li>Kernel checks: 2↑↑3 = 16, 2↑↑↑3 = 65536, 3↑↑2 = 27.</li>
+</ul>
+<p><code>lean/ClosingRate.lean</code>, same standards:</p>
+<ul>
+<li><code>ladder</code>: if each rung is the rung below run after one step of s, then rung j is the bottom rung run after j steps. This is the structure of the closed form on the second unit of height. It uses no axioms at all.</li>
+<li><code>grow</code>: if each step multiplies a gap by at least p/q, then j steps multiply it by at least (p/q)<sup>j</sup>. This is the counting template for the escape time.</li>
+<li><code>two_lt</code>: 2·1000<sup>700</sup> &lt; 1001<sup>700</sup>. <code>e_pow_lt</code>: 27182819<sup>69</sup> &lt; 2<sup>100</sup>·10<sup>483</sup>. With two textbook facts that are not in the file, (1 + 1/n)<sup>n</sup> &lt; e and e &lt; 2.7182819, these give 0.69 &lt; ln 2 &lt; 0.7, so 0.714 &lt; 1/ln 4 &lt; 0.7247 and 2(ln 2)<sup>2</sup> &lt; 0.98.</li>
+</ul>
+<p class="mute">Not in Lean: core Lean has no real numbers, so the in-between heights, the kiss itself (value and slope together), e<sup>1/e</sup>, 1.6353, the closed form on the second unit, the limit, and the two sides of the rate sandwich are checked in Python and argued here.</p>
+</div></section>
+
+<section class="band" id="known"><div class="wrap">
+<h2>Known vs new</h2>
+<ul>
+<li><b>Known:</b> e<sup>1/e</sup> and e<sup>−e</sup> as the edges where the infinite power tower settles (Euler and Eisenstein, 18th and 19th centuries); the omega constant; the rung-4 base 1.6353… for tetration's parabolic fixed point, posted on the <a href="https://tetrationforum.org/showthread.php?tid=668">Tetration Forum</a> (not peer reviewed; my independent check agrees to 10 digits). The linear rule for in-between heights and Robbins' natural super-logarithm are standard. 2 + 2 = 2·2 = 2² = 4 on every rung is classical.</li>
+<li><b>Elementary but not found published:</b> that under the linear rule the critical bases climb to 2, with the closed form on the second unit of height. It may well be folklore on tetration forums.</li>
+<li><b>The rate:</b> that a critical parameter closes in geometrically, at a rate set by the slope at a repelling fixed point, is standard dynamics. I haven't found this particular rate, 1/ln 4 for the critical bases under the linear rule, published anywhere. It is elementary once the closed form is in hand, so it may be folklore. It belongs to the linear rule: the ln 4 comes from that rule's second unit of height, and I haven't checked whether the analytic rule closes in at the same rate.</li>
+<li><b>New here:</b> the fused reading (every constant shifted by exactly 1), e and e<sup>1/e</sup> drawn as one kiss at two scales on the mult-add corner, the cube picture, and the core Lean skeleton.</li>
+</ul>
+</div></section>
+
+<footer class="band" id="files"><div class="wrap">
+<h2>Files</h2>
+<p class="mute">In the project folder under math-theory/fused-constants: <code>constants.py</code> and <code>constants_output.txt</code> (all numbers at 40 digits), <code>constants.json</code>, <code>kisspoint_scan.py</code>, <code>closed_form_check.py</code>, <code>figures.py</code>, <code>lean/FusedConstants.lean</code>; for the rate, <code>rate_scan.py</code> and <code>rate_scan_output.txt</code> (constants to rung 30), <code>rate_checks.py</code> and <code>rate_checks_output.txt</code>, <code>figures_rate.py</code>, <code>lean/ClosingRate.lean</code>.</p>
+</div></footer>
+</body>
+</html>

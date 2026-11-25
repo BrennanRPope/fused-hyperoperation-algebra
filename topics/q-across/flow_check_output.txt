@@ -1,0 +1,13 @@
+E^s = s*x**2/2 + x**5*(s**4/16 - 13*s**3/144 + s**2/24 - s/180) + x**4*(s**3/8 - 5*s**2/48 + s/48) + x**3*(s**2/4 - s/12) + x
+a^0 b^1: 1
+a^1 b^0: 1
+a^1 b^1: s
+a^1 b^2: s*(s - 1)/4
+a^2 b^1: s*(s - 1)/4
+c2 = s: the dial k matches flow time s to second order
+c3 = s*(s - 1)/4  (zero at s=0 and s=1 only; the q-dial has none)
+c3(1/2) = -1/16
+[2] along the flow: 2 + s x + s*(s - 1)/2 x^2
+   at s=1 vs [n]_q with q=1+x: x + 2
+[3] along the flow: 3 + 3*s x + s*(3*s - 2) x^2
+   at s=1 vs [n]_q with q=1+x: x**2 + 3*x + 3

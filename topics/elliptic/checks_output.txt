@@ -1,0 +1,47 @@
+PASS 1a every slope t through the double point gives a point (t^2+a1 t-a2, t(...)) on y^2+a1xy=x^3+a2x^2
+PASS 1b chord rule in z = -x/y is exactly the lens law (z1+z2+k z1 z2)/(1-q z1 z2), k=-a1, q=-a2
+PASS 1c z = -1/t, so z -> wall exactly where x(t) = t^2+a1 t-a2 = 0: the node's tangent slopes
+PASS 1d lens (t-m1)/(t-m2) of the two branches turns the chord law into multiplication
+PASS 1e discriminant of the tangent slopes a1^2+4a2 equals the map's k^2-4q
+PASS 1f smooth points over F_p: p-1 when the walls are in F_p (two walls), p+1 when not (turning), p at the cusp
+   mult-add node y^2-xy=x^3 (k=1,q=0): p=5 -> 4 points
+   velocity-addition node y^2=x^3+x^2 (k=0,q=-1): p=5 -> 4 points
+   turning node y^2=x^3-x^2 (k=0,q=1): p=5 -> 4 points
+   cusp y^2=x^3: p=5 -> 5 points
+PASS 2a Tate's formula u -> (x(u), y(u)) lands on y^2+xy=x^3+a4(q)x+a6(q)  (q = 0.05, complex u)   err 1.22e-29
+PASS 2b multiplying u is the chord-and-tangent sum: P(u1)+P(u2) = P(u1 u2)   err 2.2e-29
+PASS 2c u and q u are the same point (the gluing that closes the cylinder into a torus)   err 3.83e-30
+PASS 2d at q = 0 Tate's curve is the node y^2+xy=x^3 and z = -x/y = 1 - 1/u, so the lift 1+a (a = -z) is 1/u
+PASS 2e q = 0 law in z is a+b-ab, which is mult-add after a -> -a
+   a4(q) = -140*q**3 - 45*q**2 - 5*q + ...,  a6(q) = -154*q**3 - 23*q**2 - q + ...
+PASS 2f Tate curve's j-invariant is 1/q + 744 + 196884 q + ...: the whole landscape (q = 0) is the single point j = infinity   196884*q + 744 + 1/q
+PASS 2g its discriminant is q - 24 q^2 + ...: the smoothing parameter is q itself   -24*q**2 + q
+PASS 2h q = 0 differential is dz/(1-z) (the flipped mult-add's log)
+   first-order-in-q part of the invariant differential: -z**4*(112*z**3 + 63*z**2 + 30*z + 10)
+PASS 2i q first enters at z^4 of the differential, i.e. the cube's 5th layer of the law (a3 = 0 on Tate's curve)
+PASS 3a Jacobi sn addition (pendulum phase law) = a + b - (1+m)/2 (a^2 b + a b^2) + ...: corner 0, bend q = -(1+m)/2
+   so m = 0 (small swings, sine) sits at (0,-1/2) and m = 1 (separatrix) at (0,-1), velocity addition
+PASS 3b at m = 1 the sn law is exactly velocity addition (a+b)/(1+ab): the separatrix is the node
+PASS 3c cnoidal wave 2k^2 m cn^2(k(x-ct)|m) solves KdV (residual at sample points)   2.07e-25
+PASS 3d as the spacing grows (m -> 1, Tate parameter q -> 0) the cnoidal train becomes the soliton 2k^2 sech^2
+   m=0.9: spacing 5.16, q = 6.58e-03, max gap to sech^2 2.00e-01
+   m=0.99: spacing 7.39, q = 6.28e-04, max gap to sech^2 2.00e-02
+   m=0.9999: spacing 11.98, q = 6.25e-06, max gap to sech^2 2.00e-04
+   m=0.99999999: spacing 21.19, q = 6.25e-10, max gap to sech^2 2.00e-08
+PASS 3e Ochanine's elliptic genus law at eps = delta^2 is the lens law (a+b)/(1+delta ab): delta = 1 is the signature (velocity addition)
+PASS 3f Frey curve y^2 = x(x-A)(x+B): discriminant 16 A^2 B^2 (A+B)^2 and c4 = 16(A^2+AB+B^2)
+   A=5, B=27, A+B=32: mod 3 -> split node (two walls)
+   A=5, B=27, A+B=32: mod 5 -> non-split node (turning)
+   A=1, B=8, A+B=9: mod 3 -> split node (two walls)
+   A=7, B=9, A+B=16: mod 3 -> non-split node (turning)
+   A=7, B=9, A+B=16: mod 7 -> split node (two walls)
+PASS 3g at every odd bad prime of these Frey-type curves the reduction is a node, never a cusp (off the border)
+   11a1: bad primes p=11: a_p=1 (split, k=-1)
+   37a1: bad primes p=37: a_p=-1 (non-split, k=+1 (mult-add))
+   14a1: bad primes p=2: a_p=-1 (non-split, k=+1 (mult-add)), p=7: a_p=1 (split, k=-1)
+   15a1: bad primes p=3: a_p=-1 (non-split, k=+1 (mult-add)), p=5: a_p=1 (split, k=-1)
+PASS 4a good primes: a_p^2 < 4p for all four curves, p < 4000 (Hasse): Euler factor 1 - a_p T + p T^2 sits in the turning country
+PASS 4b bad primes: Euler factor 1 - a_p T lands on the q = 0 line at k = -a_p in {-1, 0, +1}
+PASS 4c turning angles follow Sato-Tate (2/pi) sin^2: chi-square over 12 bins   chi2 = 4.6 (11 dof), 2194 angles
+
+25 of 25 checks pass

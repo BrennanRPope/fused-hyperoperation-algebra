@@ -1,0 +1,58 @@
+=== Lead 1: the power chain composes by mult-add ===
+stage odds [0.0256, 0.0417, 0.0526, 0.1111]
+chain efficiency 0.8003  fused odds 0.2496  check 1/eta-1 0.2496
+naive sum of fractional losses 0.215  true lost fraction 0.1997
+inside the IT meter (PSU (+) VRM) odds 0.1696 -> 'IT' power is 1.1696 x chip power
+outside (dist (+) UPS) odds 0.0684
+
+=== Lead 2: PUE overhead = electrical (+) cooling; the corner is cooling the power chain ===
+Uptime 2024 average, PLF from chain above: PUE 1.560  PLF 0.0684  fused cooling odds c 0.4602  additive CLF 0.4916
+   corner PLF*c = 0.0315 = 5.6% of overhead; 1 W of electrical loss costs 1.460 W
+   per chip watt: 1.560 * 1.1696 = 1.825 W at the meter; fused odds 0.8246
+Hamilton 2008 (IT 59, dist 8, mech 33): PUE 1.695  PLF 0.1356  fused cooling odds c 0.4925  additive CLF 0.5593
+   corner PLF*c = 0.0668 = 9.6% of overhead; 1 W of electrical loss costs 1.493 W
+US scale: overhead 63.2 TWh/yr; corner (cooling the power chain) 3.5 TWh/yr (Uptime-average model)
+
+--- order-free blame: nepers (log of 1+odds) vs waterfall watts ---
+nepers {'Distribution and transformers': np.float64(0.0253), 'UPS, double conversion': np.float64(0.0408), 'Server PSU': np.float64(0.0513), 'Board VRM': np.float64(0.1054), 'Cooling and other overhead': np.float64(0.3785)} total 0.6013 =ln 1.8246
+shares {'Distribution and transformers': '4.2%', 'UPS, double conversion': '6.8%', 'Server PSU': '8.5%', 'Board VRM': '17.5%', 'Cooling and other overhead': '63.0%'}
+upgrades (facility saving = 1 - eta_old/eta_new, independent of where the stage sits):
+   UPS double conversion -> eco/high-efficiency mode: 2.54% of facility energy (US-scale 4.5 TWh/yr if applied everywhere)
+   PSU 80 PLUS Platinum 94% -> Titanium 96% (50% load): 2.08% of facility energy (US-scale 3.7 TWh/yr if applied everywhere)
+   VRM 88% -> 92%: 4.35% of facility energy (US-scale 7.7 TWh/yr if applied everywhere)
+
+=== Lead 3: part load. Loss = a + b x + c x^2 (fixed, proportional, square). ===
+Titanium-minimum fit: a=0.01762 b=-0.06468 c=0.14581; residuals [ 0.0015  -0.00225  0.0009  -0.00015]
+peak efficiency at x* = sqrt(a/c) = 0.348 of rating, eta* = 0.9646
+share between 2 units only above sqrt(2)*x* = 0.492 of one unit's rating; k -> k+1 units above x*·sqrt(k(k+1))
+   load 0.2: one unit loses 0.0105, two sharing lose 0.0252 -> one better; input saving +6.53%
+   load 0.3: one unit loses 0.0113, two sharing lose 0.0224 -> one better; input saving +3.43%
+   load 0.5: one unit loses 0.0217, two sharing lose 0.0211 -> two better; input saving -0.12%
+   load 0.8: one unit loses 0.0592, two sharing lose 0.0302 -> two better; input saving -3.50%
+Thomas-Krenn worked example (2x1000 W Platinum, 500 W load): 556 W shared vs 532 W one active -> 4.32% less
+
+=== Lead 4: fans and the cube ===
+speed change -10%: power x0.729; fused cube (1+d)^3-1 = 3d+3d^2+d^3 = -0.300+0.030-0.0010 = -0.2710
+speed change -20%: power x0.512; fused cube (1+d)^3-1 = 3d+3d^2+d^3 = -0.600+0.120-0.0080 = -0.4880
+speed change -30%: power x0.343; fused cube (1+d)^3-1 = 3d+3d^2+d^3 = -0.900+0.270-0.0270 = -0.6570
+   N=2: run N+1 units at N/(N+1) speed instead of N at full, cube law: power x0.444 (55.6% saving)
+   N=2: run N+1 units at N/(N+1) speed instead of N at full, Blasius turbulent duct (dp ~ Q^1.75): power x0.492 (50.8% saving)
+   N=2: run N+1 units at N/(N+1) speed instead of N at full, laminar (dp ~ Q): power x0.667 (33.3% saving)
+   N=4: run N+1 units at N/(N+1) speed instead of N at full, cube law: power x0.640 (36.0% saving)
+   N=4: run N+1 units at N/(N+1) speed instead of N at full, Blasius turbulent duct (dp ~ Q^1.75): power x0.677 (32.3% saving)
+   N=4: run N+1 units at N/(N+1) speed instead of N at full, laminar (dp ~ Q): power x0.800 (20.0% saving)
+   N=8: run N+1 units at N/(N+1) speed instead of N at full, cube law: power x0.790 (21.0% saving)
+   N=8: run N+1 units at N/(N+1) speed instead of N at full, Blasius turbulent duct (dp ~ Q^1.75): power x0.814 (18.6% saving)
+   N=8: run N+1 units at N/(N+1) speed instead of N at full, laminar (dp ~ Q): power x0.889 (11.1% saving)
+excess airflow removed by slowing fans (cube) vs switching units off (linear), 30% less air: 65.7% vs 30.0% fan saving
+
+=== Lead 5: setpoint raise compounds per degree (rung 3 power) ===
+   4%/°F, 3°F: compounded 11.5% vs naive 12%
+   4%/°F, 5°F: compounded 18.5% vs naive 20%
+   4%/°F, 9°F: compounded 30.7% vs naive 36%
+   5%/°F, 3°F: compounded 14.3% vs naive 15%
+   5%/°F, 5°F: compounded 22.6% vs naive 25%
+   5%/°F, 9°F: compounded 37.0% vs naive 45%
+
+=== Stacking independent savings composes by mult-add on the kept fraction ===
+UPS eco 2.5%, cold-redundant PSUs 3%, fan sharing 3% -> 8.26% (naive 8.5%) US-scale 14.5 TWh/yr

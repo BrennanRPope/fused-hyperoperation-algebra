@@ -1,0 +1,19 @@
+1885-12-01 to 2020-06-01, 1615 months; target = next 36 months' log real total return
+  1929-08: acceleration +0.062/yr^2, 5-yr growth rate +0.221/yr, CAPE 31.5, next 3 yrs -0.94
+  1937-02: acceleration +0.010/yr^2, 5-yr growth rate +0.184/yr, CAPE 22.2, next 3 yrs -0.23
+  1966-01: acceleration +0.040/yr^2, 5-yr growth rate +0.070/yr, CAPE 24.1, next 3 yrs +0.07
+  1987-08: acceleration +0.062/yr^2, 5-yr growth rate +0.125/yr, CAPE 18.3, next 3 yrs -0.04
+  1999-12: acceleration -0.014/yr^2, 5-yr growth rate +0.204/yr, CAPE 44.2, next 3 yrs -0.49
+  2007-10: acceleration -0.014/yr^2, 5-yr growth rate +0.073/yr, CAPE 27.3, next 3 yrs -0.25
+  share of months with acceleration above +0.05/yr^2: 22.8%
+  CAPE (baseline)              out-of-sample R2 vs historical mean: -0.012
+  acceleration only            out-of-sample R2 vs historical mean: -0.017
+  CAPE + acceleration          out-of-sample R2 vs historical mean: -0.073
+  CAPE + 5-yr growth rate      out-of-sample R2 vs historical mean: -0.220
+  CAPE + rate + acceleration   out-of-sample R2 vs historical mean: -0.275
+  full sample: coef on log CAPE -0.223 (se 0.109), on acceleration -0.024 (se 0.311)
+  pole fit on 1924-01..1929-06: predicted pole 1931-07-01 (pole order 1/e = 0.91); actual peak 1929-09
+  pole fit on 1995-01..1999-12: predicted pole 2024-09-15 (pole order 1/e = 5.55); actual peak 2000-08
+  pole fit on 2003-03..2007-06: predicted pole 2037-05-31 (pole order 1/e = 2.17); actual peak 2007-10
+  pole fit on 2016-01..2021-09: predicted pole 2023-02-07 (pole order 1/e = 0.38); actual peak 2022-01
+  pole fit on 1982-08..1987-06: predicted pole 1988-02-27 (pole order 1/e = 0.33); actual peak 1987-08

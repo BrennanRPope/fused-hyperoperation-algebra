@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fused Laws Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical map for one reader who thinks in pictures
+   IDEA an atlas plate: a surveyed map of a territory, with countries, borders and settlements
+   PICTURE the plane of fused laws, three countries split by a parabola, every law found so far as a numbered settlement
+   COLOUR deep sea ground in both themes, sky for the two-walled country, pink for the turning country, white ink and borders
+   TYPE Hanken Grotesk light, very large, for the title; Hanken Grotesk for text
+   LAYOUT title across the top, map full width under it, legend beside on laptop and under it on a phone, then gaps */
+:root{color-scheme:dark;--bg:#0a2540;--bg2:#0f3054;--ink:#f3f8ff;--mute:#a9c3dc;--sky:#8fd3ff;--pink:#ff5c8a;--line:#2b4f75}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 "Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(26px,4vw,56px);padding-inline:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-weight:300;font-size:clamp(32px,4.6vw,52px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;max-width:22ch}
+h2{font-weight:600;font-size:clamp(22px,2.6vw,28px);line-height:1.15;letter-spacing:-.01em;margin:0 0 12px;text-wrap:balance}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 12px;max-width:70ch}
+.lede{font-size:18px;color:var(--ink);max-width:72ch}
+.mute{color:var(--mute)}
+a{color:var(--sky)}
+.plate{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:stretch;margin-top:18px}
+.fig{position:relative;min-height:520px;background:var(--bg2);border:1px solid var(--line)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px "Hanken Grotesk",sans-serif;paint-order:stroke;stroke:var(--bg2);stroke-width:4px}
+.legend{list-style:none;margin:0;padding:0;font-size:14px;line-height:1.35;display:grid;gap:6px;align-content:start}
+.legend li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;cursor:default}
+.legend b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:12px}
+.legend li.on span{color:var(--sky)}
+.tip{position:absolute;pointer-events:none;background:#06182b;border:1px solid var(--sky);padding:10px 12px;font-size:14px;line-height:1.4;max-width:280px;display:none;z-index:2}
+.tip strong{display:block;margin-bottom:2px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:18px;margin:22px 0 0}
+.figs div{border-top:2px solid var(--ink);padding-top:8px}
+.figs big{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:300;line-height:1.1}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols>div{border-top:4px solid var(--c);padding-top:10px}
+.gap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;border-top:1px solid var(--line);padding-block:20px}
+.gap h3{font-size:20px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:2px 8px;border:1px solid currentColor;margin-bottom:8px}
+.filled{color:var(--sky)}.empty{color:var(--pink)}
+.strip{position:relative;height:150px;margin-top:10px}
+.strip>svg{position:absolute;inset:0;width:100%;height:100%}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--mute)}
+code{overflow-wrap:anywhere;font-size:14px}
+.alt{background:#0d2c4c}
+@media(max-width:900px){.plate{grid-template-columns:minmax(0,1fr)}.legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.cols,.gap{grid-template-columns:minmax(0,1fr)}.fig{min-height:420px}}
+@media(max-width:600px){.legend{grid-template-columns:minmax(0,1fr)}table{font-size:13px}th,td{padding:6px 4px}}
+</style>
+</head>
+<body>
+<section class="band"><div class="wrap">
+<h1>Every law we've found sits on one line of a bigger map</h1>
+<p class="lede">The map's two directions come from the mult-add cube itself: how full the corner cell <i>ab</i> is (your weight <i>k</i>), and how much the next layer of cells, <i>a²b</i> and <i>ab²</i>, bends. Every point on the plane is a real law, <b>(a + b + k·ab) / (1 − q·ab)</b>: mult-add seen through a lens whose two walls can sit anywhere. A parabola splits it into three countries. The gaps beside our line are filled by known laws we hadn't placed yet. One spot is truly empty, and the algebra says why.</p>
+<div class="plate">
+  <div class="fig" id="mapbox"><svg id="map" role="img" aria-label="Map of fused laws: corner weight across, bend up"></svg><div class="tip" id="tip"></div></div>
+  <ol class="legend" id="legend"></ol>
+</div>
+<div class="figs">
+  <div><big>44+</big>laws from earlier pages, all on the straight line or the axis</div>
+  <div><big>5</big>gaps tested: 4 hold known laws, 1 is forbidden</div>
+  <div><big>65</big>exact and numeric checks pass</div>
+  <div><big>27</big>Lean theorems written, not yet compiled</div>
+</div>
+</div></section>
+
+<section class="band alt"><div class="wrap">
+<h2>How to read the map: the cube's next layer is the second coordinate</h2>
+<p>Your weight <i>k</i> and the rung height <i>s</i> can't be two axes, because at the first layer they are the same number: both say how full the corner square is. The next independent number the algebra gives is the third layer of the cube, the weight on <i>a²b</i> and <i>ab²</i>. For mult-add it is 0, which is why mult-add is a polynomial. Those two weights fix every law to the cube's third layer, the way an osculating circle fixes a curve's bend at a point. And each point is exactly one law with no higher terms, the lens law above. So each dot is the lens law that matches a real law through the cube's third layer.</p>
+<p><b>The walls are the geometry.</b> Write 1 + k·a + q·a² = (1 − a/α)(1 − a/β). The lens <b>M(x) = (1 − x/α)/(1 − x/β)</b> turns the law into plain multiplication, M(a ⊕ b) = M(a)·M(b). The walls α and β are where everything gets swallowed, like −1 for mult-add. Mult-add has one wall at −1 and the other at infinity, and all of the straight line has a wall at infinity. Velocity addition has walls at ±1, the speed of light. Where the walls sit decides the country:</p>
+<div class="cols">
+  <div style="--c:var(--sky)"><h3>Two real walls</h3><p>Below the parabola. Things saturate: a speed limit, a carrying capacity, certainty. The lens is mult-add.</p></div>
+  <div style="--c:var(--ink)"><h3>One double wall</h3><p>On the parabola. Addition in disguise: the lens x/(1 − x/α) turns the law into plain +. A turning point, a cusp.</p></div>
+  <div style="--c:var(--pink)"><h3>No real wall</h3><p>Above the parabola. The walls are a complex pair, so the lens is a turn of a circle: slopes, waves, rotation. Your helix lives here.</p></div>
+</div>
+<p style="margin-top:16px"><b>The same plane is the cubic curves with a double point.</b> The curve y² + a₁xy = x³ + a₂x² carries exactly the law at k = −a₁, q = −a₂ (checked symbolically, item 5 of the checks). Two walls means the curve crosses itself (a node), no real wall means the double point is a lone dot (an acnode), the border is a cusp. True elliptic curves add more terms and sit one level above this plane, landing on it at the same point when you look only to the third layer.</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>The five gaps, and what's in them</h2>
+<div class="gap">
+  <div><span class="tag filled">filled, known</span><h3>1. The two-walled country off the line</h3><p>Logistic growth (walls at 0 and the carrying capacity), epidemics and autocatalysis, a body falling with air drag (terminal speed is the wall), and the variance of a Kalman filter. Each is a growth rate y′ = 1 + k·y + q·y², and every such rate's runs compose by exactly the lens law at (k, q).</p></div>
+  <div><p class="mute"><b>Test.</b> Integrated each law and composed two runs: error 10⁻¹³ to 10⁻¹⁵ (gap_tests.py, part A). Logistic started at fraction y of capacity has shape s = (1 − 2y)², so at the midpoint it is velocity addition exactly, the old tanh fact. Known since Verhulst (1838), Riccati, Kalman and Bucy (1961).</p></div>
+</div>
+<div class="gap">
+  <div><span class="tag filled">filled, known</span><h3>2. The turning country</h3><p>Slope addition, tan(α + β), sits at (0, 1). So does a wave: the log-slope ψ′/ψ of a wave where its energy is above the hill turns through blow-ups at every node. The oxygen clock from the photosynthesis page lives next door: its flash factor 0.056 + 0.888i is a complex wall pair, a turn of 86° per flash, period about 4.</p></div>
+  <div><p class="mute"><b>Test.</b> Schrödinger log-slope composes by the lens law with error 10⁻¹⁶, and the country flips exactly when energy crosses the hill: above the parabola for E &gt; V, below for E &lt; V, on it at E = V (part B). Known: Riccati form of the wave equation, Prüfer's angle (1926).</p></div>
+</div>
+<div class="gap">
+  <div><span class="tag filled">filled, known</span><h3>3. The border</h3><p>The cusp curve, a wave at its classical turning point, and the Euler characteristic as a Hirzebruch genus at (2, 1). Hirzebruch's χ_y family is a straight line, q = k − 1, through K-theory (mult-add, the Todd genus) and the signature (velocity addition); it touches the border only at the Euler characteristic.</p></div>
+  <div><p class="mute"><b>Test.</b> The parabola's lens turns the law into plain addition (exact). χ_y discriminant (1 − y)² + 4y = (1 + y)², zero only at y = −1. Convention from M. Albanese's notes; Hirzebruch (1966).</p></div>
+</div>
+<div class="gap">
+  <div><span class="tag filled">filled, with a floor</span><h3>4. The rest of the straight line</h3><p>Every k ≠ 0 on the line is mult-add in other units, k·(a ⊕ₖ b) = (ka) ⊕ (kb), so k only says where the wall sits against the quantity's natural range. k = 2 is 2× leveraged compounding. k between −1 and 0 is partial damage: a hit that removes only a fraction f sits at k = −f, its wall beyond certainty. Below −2 there is a real floor: noise measured as an error chance can't pass the parity wall, and past it nature leaves the line for complex walls instead.</p></div>
+  <div><p class="mute"><b>Test.</b> Symmetric channels sit at k = −L/(L − 1), from −2 to −1; quantum depolarizing at −d²/(d² − 1) (checked for qubit and qutrit, part C). Lean proves the floor for every L ≥ 2 (channel_floor). A 3-step cycle's eigenvalues sit on the unit circle, not below −1: a turn.</p></div>
+</div>
+<div class="gap">
+  <div><span class="tag empty">truly empty, with a reason</span><h3>5. The fractional rungs themselves</h3><p>Rung s sits at (s, s(s − 1)/4), and every dot on that curve is occupied by a lens law. But the rung itself is not: no growth law with a smooth (analytic) rate can be a fractional rung. A law from a rate y′ = g(y) has a convergent logarithm, while rung s has logarithm E<sup>−s</sup>, the −s-th iterate of eˣ − 1, whose series diverges for every non-whole s.</p></div>
+  <div><p class="mute"><b>Test.</b> Exact coefficients of the ½, −½ and ⅓ iterates: their n-th roots climb 0.25 → 0.39 → 0.53 → 0.66 and keep going (part D). Baker (1958) showed eˣ − 1 has no real non-integer iterates; Erdős and Jabotinsky (1960) confirm the whole-number rungs are the only analytic ones. <b>What a law there would have to say:</b> it would need a rate that isn't smooth at the start, or it could only appear as a limit.</p></div>
+</div>
+<p style="margin-top:12px"><b>One correction to earlier notes.</b> The KdV collision is not on the rung curve. Its corner weight A is between addition and mult-add, but it sits on the straight line with no bend. Its phase shift log A is exactly the change of units that turns the KdV square into plain mult-add. And A itself comes from velocity addition: √A = (1 − r)/(1 + r) with r the ratio of the two wavenumbers, the lens of the speed-of-light law. Sine-Gordon's tanh²(half rapidity difference) is the same fact, known.</p>
+</div></section>
+
+<section class="band alt"><div class="wrap">
+<h2>Without units, every law looks like one rung</h2>
+<p>Changing units slides a dot along a parabola through the origin, so the one number units can't change is the shape, s = k²/(k² − 4q). It is the rung the law looks like: rung s has shape s exactly, so the fractional rungs cover every shape once. Reading it off tells you where the walls sit.</p>
+<div class="strip"><svg id="strip" role="img" aria-label="Shape line from negative to infinity"></svg></div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Known or new</h2>
+<p><b>Known:</b> every law on the map, the lens-law family (one-parameter Möbius groups), singular cubics and their groups (Silverman, chapter III), Riccati flows, Hirzebruch genera, Baker's theorem. Over the real numbers every one of these laws is plain addition after a change of coordinates, as the Fermat page said, so the map places each law as it is written in its own natural quantity.</p>
+<p><b>Possibly new as a picture:</b> one plane holding all the earlier pages at once, with the cube's third layer as the second axis; the rung curve and the shape number s = k²/(k² − 4q) that makes every law "look like" one rung; the floor at −2 with the exit into complex walls; and gap 5 stated as a forbidden zone for analytic laws.</p>
+<p><b>Lead check.</b> Nothing here beats the solitons as a discovery. The most promising door is the cubic one: this plane is exactly the cubic curves with a double point, and real elliptic curves sit one level up. That is the road Wiles took, and the next map would add the cube's fourth layer to see them.</p>
+</div></section>
+
+<section class="band alt"><div class="wrap">
+<h2>Proofs and files</h2>
+<div class="scroll"><table>
+<thead><tr><th>File</th><th>What it holds</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><code>lean/LandscapeMap.lean</code></td><td>27 theorems, core Lean, no sorry: the lens law is commutative and associative with identity 0, the walls lens turns it into multiplication, the parabola lens into addition, units, the dial, the KdV phase shift, χ_y line, rung discriminant, the channel floor</td><td>Written, not compiled: Lean isn't installed in this workspace</td></tr>
+<tr><td><code>algebra_checks.py</code></td><td>Exact sympy checks, including the singular cubic's group law and an elliptic curve to third order</td><td>29 of 29 pass</td></tr>
+<tr><td><code>gap_tests.py</code></td><td>Logistic, drag, Kalman, Schrödinger, channels, qudits, fractional-rung divergence</td><td>36 of 36 pass</td></tr>
+<tr><td><code>dots.json</code></td><td>Every dot: law, domain, coordinates, source page</td><td>26 dots</td></tr>
+</tbody></table></div>
+<p class="mute" style="margin-top:12px">All in math-theory/landscape/ in the project folder. Sources: Silverman, The Arithmetic of Elliptic Curves; Baker, Math. Zeitschrift 1958; Erdős and Jabotinsky, J. d'Analyse 1960; Hirzebruch, Topological Methods in Algebraic Geometry; Kalman and Bucy 1961; Prüfer 1926; Hirota 1971.</p>
+</div></section>
+
+<script>
+{
+const DOTS=[
+ {n:1,x:1,y:0,t:"Mult-add",d:"Compound growth and interest, redshifts, K-theory and the Todd genus, claim-count models, PUE, Tsallis q = 0"},
+ {n:2,x:0,y:0,t:"Addition",d:"Shannon and Rényi entropy, hazards, log-returns, Burgers shocks (empty corner)"},
+ {n:3,x:-1,y:0,t:"Union of failures",d:"Survival and decrements, amplitude damping (T1), Gini–Simpson, Kraft slack, erasures, slashing"},
+ {n:4,x:-2,y:0,t:"Parity",d:"Bit flips, binary channel cascade, piling-up lemma, phase flips. The floor for noise."},
+ {n:5,x:-1.5,y:0,t:"3-letter channel",d:"Symmetric channel ladder, k = −L/(L − 1)"},
+ {n:6,x:-4/3,y:0,t:"4-letter channel",d:"Also the depolarizing qubit"},
+ {n:7,x:-9/8,y:0,t:"Depolarizing qutrit",d:"k = −d²/(d² − 1) with d = 3"},
+ {n:8,x:2,y:0,t:"2× leverage",d:"Leveraged compounding in the underlying's units"},
+ {n:9,x:-.5,y:0,t:"Partial damage",d:"Each hit removes half: k = −f, wall beyond certainty"},
+ {n:10,x:0,y:-1,t:"Velocity addition",d:"Relativity, stacked reflections, the signature genus, belief propagation in bias coordinates, logistic at its midpoint"},
+ {n:11,x:0,y:1,t:"Slope addition",d:"tan(α + β): walls at ±i, a turn"},
+ {n:12,x:0,y:-.5,t:"Sine addition",d:"Third-layer point only; sin(α + β) has walls at ±1"},
+ {n:13,x:2,y:1,t:"Euler characteristic",d:"Hirzebruch genus on the border: addition in disguise, a cusp"},
+ {n:14,x:2,y:.5,t:"Rung 2",d:"Smooth fused exponent B₂: log-returns compound by mult-add"},
+ {n:15,x:-1,y:.5,t:"Rung −1",d:"log(eᵃ + eᵇ − 1), toward max and the tropical limit"},
+ {n:16,x:.5,y:-1/16,t:"Half rung",d:"Its dot holds a lens law; the rung itself can't be analytic (gap 5)"}];
+const svg=document.getElementById('map'),box=document.getElementById('mapbox'),tip=document.getElementById('tip'),leg=document.getElementById('legend');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+leg.innerHTML=DOTS.map(d=>`<li data-n="${d.n}"><b>${d.n}</b><span><strong>${esc(d.t)}</strong> <span class="mute">(${fmt(d.x)}, ${fmt(d.y)})</span></span></li>`).join('');
+function fmt(v){const m={"-1.3333":"−4/3","-1.125":"−9/8","-0.0625":"−1/16"};const k=v.toFixed(4).replace(/0+$/,'').replace(/\.$/,'');return m[v.toFixed(4)]||k.replace('-','−')}
+const X0=-2.5,X1=2.6,Y0=-1.3,Y1=1.5;
+function draw(){
+ const W=svg.clientWidth,H=svg.clientHeight,small=W<520;
+ const ml=small?34:46,mr=12,mt=14,mb=small?40:46;
+ const sx=x=>ml+(x-X0)/(X1-X0)*(W-ml-mr),sy=y=>mt+(Y1-y)/(Y1-Y0)*(H-mt-mb);
+ const curve=(f,a,b,n=160)=>{let p=[];for(let i=0;i<=n;i++){const x=a+(b-a)*i/n,y=f(x);if(y>Y0-1&&y<Y1+1)p.push(`${sx(x).toFixed(1)},${sy(y).toFixed(1)}`)}return p.join(' ')};
+ const par=x=>x*x/4;
+ let up=`${sx(X0)},${sy(Y1)} `+curve(par,X0,X1)+` ${sx(X1)},${sy(Y1)}`;
+ let dn=`${sx(X0)},${sy(Y0)} `+curve(par,X0,X1)+` ${sx(X1)},${sy(Y0)}`;
+ let g=`<defs><clipPath id="c"><rect x="${ml}" y="${mt}" width="${W-ml-mr}" height="${H-mt-mb}"/></clipPath></defs>`;
+ g+=`<g clip-path="url(#c)"><polygon points="${up}" fill="var(--pink)" opacity=".16"/><polygon points="${dn}" fill="var(--sky)" opacity=".13"/>`;
+ for(let x=-2;x<=2;x++)g+=`<line x1="${sx(x)}" x2="${sx(x)}" y1="${mt}" y2="${H-mb}" stroke="var(--line)"/>`;
+ for(let y=-1;y<=1;y++)g+=`<line y1="${sy(y)}" y2="${sy(y)}" x1="${ml}" x2="${W-mr}" stroke="var(--line)"/>`;
+ g+=`<line x1="${sx(0)}" x2="${sx(0)}" y1="${mt}" y2="${H-mb}" stroke="var(--mute)" stroke-width="1"/>`;
+ g+=`<polyline points="${curve(x=>x-1,X0,X1,2)}" fill="none" stroke="var(--mute)" stroke-width="1.5" stroke-dasharray="2 5"/>`;
+ g+=`<polyline points="${curve(x=>x*(x-1)/4,X0,X1)}" fill="none" stroke="var(--sky)" stroke-width="2" stroke-dasharray="7 5"/>`;
+ g+=`<polyline points="${curve(par,X0,X1)}" fill="none" stroke="var(--ink)" stroke-width="2.5"/>`;
+ g+=`<line x1="${sx(X0)}" x2="${sx(X1)}" y1="${sy(0)}" y2="${sy(0)}" stroke="var(--ink)" stroke-width="3"/>`;
+ g+=`<line x1="${sx(0)}" x2="${sx(.97)}" y1="${sy(0)-9}" y2="${sy(0)-9}" stroke="var(--pink)" stroke-width="5" stroke-linecap="round"/>`;
+ for(let L=2;L<=14;L++){const x=sx(-L/(L-1));g+=`<line x1="${x}" x2="${x}" y1="${sy(0)+4}" y2="${sy(0)+12}" stroke="var(--sky)" stroke-width="1.5"/>`}
+ g+=`</g>`;
+ const lab=(x,y,t,a='start',c='var(--mute)')=>`<text x="${x}" y="${y}" text-anchor="${a}" fill="${c}">${t}</text>`;
+ g+=lab(sx(-2.4),sy(1.32),'No real wall: turning','start','var(--pink)');
+ g+=lab(sx(-2.4),sy(-1.12),'Two real walls: saturation','start','var(--sky)');
+ if(!small){g+=lab(sx(-2.0)+8,sy(1.0)+4,'border','start','var(--ink)');g+=lab(sx(2.55),sy(2.55*1.55/4)+16,'rung curve','end','var(--sky)');g+=lab(sx(.35),sy(-.74),'Hirzebruch χ_y','start');g+=lab(sx(.48),sy(0)-16,'KdV corner, dimension dial','middle','var(--pink)');g+=lab(sx(-1.55),sy(0)+28,'channel ladder','middle','var(--sky)')}
+ for(let x=-2;x<=2;x++)g+=lab(sx(x),H-mb+18,String(x).replace('-','−'),'middle');
+ for(let y=-1;y<=1;y++)g+=lab(ml-6,sy(y)+4,String(y).replace('-','−'),'end');
+ g+=lab((ml+W-mr)/2,H-6,small?'corner weight k':'corner weight k: how full the ab cell is','middle','var(--ink)');
+ g+=`<text transform="translate(12,${(mt+H-mb)/2}) rotate(-90)" text-anchor="middle" fill="var(--ink)">${small?'bend q':'bend q: weight of a²b and ab²'}</text>`;
+ const off={4:[0,-14],5:[0,20],6:[0,-14],7:[0,20],1:[0,-14],2:[-12,-12],3:[0,-14],9:[0,20]};
+ for(const d of DOTS){const cx=sx(d.x),cy=sy(d.y);const o=off[d.n]||[13,-9];
+  g+=`<g class="dot" data-n="${d.n}" tabindex="0"><circle cx="${cx}" cy="${cy}" r="14" fill="transparent"/><circle cx="${cx}" cy="${cy}" r="${small?4.5:6}" fill="var(--ink)" stroke="var(--bg2)" stroke-width="2"/>${lab(cx+o[0],cy+o[1]+4,d.n,o[0]===0?'middle':(o[0]<0?'end':'start'),'var(--ink)')}</g>`}
+ svg.innerHTML=g;
+ svg.querySelectorAll('.dot').forEach(el=>{const d=DOTS[+el.dataset.n-1];
+  const show=()=>{tip.innerHTML=`<strong>${d.n}. ${esc(d.t)}</strong>(${fmt(d.x)}, ${fmt(d.y)})<br>${esc(d.d)}`;tip.style.display='block';
+   const cx=sx(d.x),cy=sy(d.y);tip.style.left=Math.min(cx+14,W-290)+'px';tip.style.top=(cy>H/2?cy-110:cy+16)+'px';mark(d.n)};
+  el.addEventListener('pointerenter',show);el.addEventListener('focus',show);el.addEventListener('click',show);
+  el.addEventListener('pointerleave',()=>{tip.style.display='none';mark(0)});el.addEventListener('blur',()=>{tip.style.display='none';mark(0)})});
+}
+function mark(n){leg.querySelectorAll('li').forEach(li=>li.classList.toggle('on',+li.dataset.n===n))}
+const ro=new ResizeObserver(draw);ro.observe(svg);
+const st=document.getElementById('strip');
+function drawStrip(){
+ const W=st.clientWidth,H=st.clientHeight,small=W<560,y=60;
+ const P=[{v:-1.6,t:'turning',c:'var(--pink)'},{v:0,t:'symmetric walls',c:'var(--ink)'},{v:.5,t:'walls straddle',c:'var(--sky)'},{v:1,t:'one wall',c:'var(--ink)'},{v:2,t:'both on one side',c:'var(--sky)'},{v:3.1,t:'border (∞)',c:'var(--ink)'}];
+ const sx=v=>16+(v+2)/5.3*(W-32);
+ let g=`<line x1="${sx(-2)}" x2="${sx(0)}" y1="${y}" y2="${y}" stroke="var(--pink)" stroke-width="6"/><line x1="${sx(0)}" x2="${sx(3.1)}" y1="${y}" y2="${y}" stroke="var(--sky)" stroke-width="6"/>`;
+ const ex=[['s < 0','waves above the hill, slopes'],['s = 0','relativity, logistic midpoint'],['0 < s < 1','logistic, Kalman'],['s = 1','all of the straight line'],['s > 1','overshoot, falling too fast'],['s = ∞','cusp, turning point']];
+ P.forEach((p,i)=>{const x=sx(p.v),top=i%2===0;g+=`<circle cx="${x}" cy="${y}" r="7" fill="${p.c}" stroke="var(--bg)" stroke-width="2"/>`;
+  g+=`<text x="${x}" y="${top?y-30:y+30}" text-anchor="middle" fill="var(--ink)" style="font-weight:600">${ex[i][0]}</text>`;
+  if(!small)g+=`<text x="${x}" y="${top?y-14:y+46}" text-anchor="middle" fill="var(--mute)">${ex[i][1]}</text>`});
+ st.innerHTML=g.replace(/stroke:var\(--bg2\)/g,'');
+}
+const ro2=new ResizeObserver(drawStrip);ro2.observe(st);
+}
+</script>
+</body>
+</html>

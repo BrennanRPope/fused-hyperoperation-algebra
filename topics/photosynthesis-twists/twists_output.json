@@ -1,0 +1,264 @@
+{
+ "forward": {
+  "lam": [
+   0.05600000000000001,
+   0.888
+  ],
+  "abs": 0.8897640136575541,
+  "deg": 86.39153114743367,
+  "yields": [
+   0.081,
+   0.17,
+   2.425,
+   1.321,
+   0.41,
+   0.408,
+   1.73,
+   1.413,
+   0.693,
+   0.582,
+   1.358,
+   1.363,
+   0.881,
+   0.721,
+   1.164,
+   1.279
+  ]
+ },
+ "reversed": {
+  "lam": [
+   0.05600000000000001,
+   -0.888
+  ],
+  "identical_yields": true,
+  "eig": [
+   -0.888,
+   0.0,
+   0.0,
+   0.888
+  ]
+ },
+ "inverse": {
+  "negative_entries": 8,
+  "min_entry": -0.108,
+  "eig_abs": [
+   1.0,
+   1.1239,
+   1.1239,
+   1.2887
+  ],
+  "lam_inv": [
+   0.07073565076798707,
+   -1.1216653193209378
+  ],
+  "abs_inv": 1.1238935095714861,
+  "undo_from_S1": [
+   [
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.133,
+    -0.037,
+    0.011,
+    -0.108
+   ],
+   [
+    -0.086,
+    0.039,
+    -0.245,
+    1.292
+   ],
+   [
+    0.088,
+    -0.418,
+    1.482,
+    -0.152
+   ],
+   [
+    -0.638,
+    1.712,
+    -0.241,
+    0.167
+   ],
+   [
+    1.991,
+    -0.361,
+    0.286,
+    -0.916
+   ]
+  ]
+ },
+ "complement": {
+  "lam": [
+   0.86,
+   0.084
+  ],
+  "abs": 0.8640925876316727,
+  "deg": 5.578636255393386,
+  "period": 64.53190054324739
+ },
+ "hydroxylamine": {
+  "first_max_untreated": 3,
+  "first_max_treated": 5,
+  "treated": [
+   0.0,
+   0.0,
+   0.008,
+   0.322,
+   2.376,
+   0.977,
+   0.282,
+   0.469,
+   1.694,
+   1.176,
+   0.541,
+   0.575,
+   1.318,
+   1.191,
+   0.731,
+   0.67
+  ],
+  "untreated": [
+   0.0,
+   0.194,
+   2.802,
+   0.702,
+   0.139,
+   0.39,
+   1.91,
+   1.07,
+   0.402,
+   0.504,
+   1.423,
+   1.151,
+   0.622,
+   0.6,
+   1.155,
+   1.127
+  ]
+ },
+ "polygons": {
+  "1": {
+   "name": "rhodopsin pump: 1 photon per turn",
+   "lam": [
+    1.0,
+    -0.0
+   ],
+   "abs": 1.0,
+   "deg": -0.0,
+   "half_life_flashes": null
+  },
+  "2": {
+   "name": "H2 or sulfide: 2 electrons",
+   "lam": [
+    -0.832,
+    0.0
+   ],
+   "abs": 0.832,
+   "deg": 180.0,
+   "half_life_flashes": 3.77
+  },
+  "4": {
+   "name": "O2 from water: 4 electrons",
+   "lam": [
+    0.084,
+    0.916
+   ],
+   "abs": 0.9198,
+   "deg": 84.76,
+   "half_life_flashes": 8.3
+  },
+  "8": {
+   "name": "N2 (nitrogenase): 8 electrons",
+   "lam": [
+    0.7317,
+    0.6477
+   ],
+   "abs": 0.9772,
+   "deg": 41.52,
+   "half_life_flashes": 30.06
+  },
+  "note": "miss 0.084, hit 0.916, no double hits; same numbers for every polygon so only the shape changes"
+ },
+ "energy": {
+  "oxygenic": {
+   "lift_V": 1.142,
+   "photons_per_e": 2,
+   "photon_eV": 1.8232941176470587,
+   "stored_frac": 0.3131694412182217
+  },
+  "green_sulfur": {
+   "lift_V": 0.14999999999999997,
+   "photons_per_e": 1,
+   "photon_eV": 1.476,
+   "stored_frac": 0.10162601626016259
+  },
+  "cyt_oxidase": {
+   "drop_V": 0.564,
+   "kJ_per_O2": 217.67015999999998
+  },
+  "respiration_NADH_O2": {
+   "drop_V": 1.138,
+   "kJ_per_O2": 439.19971999999996
+  },
+  "reverse_flow_nitrite": {
+   "lift_V": 0.753,
+   "kJ_per_NADH": 145.30641,
+   "protons_per_e_at_0p15": 5.0200000000000005,
+   "protons_per_e_at_0p20": 3.7649999999999997
+  },
+  "photon_counts_per_CO2": {
+   "oxygenic_electrons": 4,
+   "oxygenic_photons": 8,
+   "green_sulfur_electrons": 4,
+   "green_sulfur_photons": 4
+  },
+  "bacteriorhodopsin": {
+   "photon_eV": 2.1828169014084504,
+   "stored_eV_at_0p2V": 0.2,
+   "frac": 0.09162472577106726
+  },
+  "electrolysis": {
+   "per_e_V": 1.229,
+   "per_O2_eV": 4.916
+  },
+  "OER": {
+   "ideal": [
+    1.229,
+    1.229,
+    1.229,
+    1.229
+   ],
+   "scaling_best": [
+    0.858,
+    1.6,
+    1.6,
+    0.858
+   ],
+   "eta_min": 0.371,
+   "arcs_deg_ideal": [
+    90,
+    90,
+    90,
+    90
+   ],
+   "arcs_deg_real": [
+    62.8,
+    117.2,
+    117.2,
+    62.8
+   ]
+  }
+ },
+ "mirror": {
+  "dG_L_glucose_equals_D": true,
+  "note": "enantiomers have equal free energy in an achiral setting; parity-violating difference never measured in a molecule"
+ },
+ "leaf_CP": {
+  "reflection_field": 0.0007,
+  "transmission_lab": 0.008
+ }
+}

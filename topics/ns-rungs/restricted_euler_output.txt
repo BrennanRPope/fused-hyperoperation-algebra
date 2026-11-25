@@ -1,0 +1,3 @@
+2D: |dA/dt| at a random trace-free A = 2.2e-16  (identically zero)
+3D: |A| reaches 1e6 at t = 2.606544
+3D: log|A| vs log(T-t) slope = -0.9891  (Riccati pole Y'=Y^2 gives -1)

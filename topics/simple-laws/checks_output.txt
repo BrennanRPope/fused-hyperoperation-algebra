@@ -1,0 +1,56 @@
+PASS number system slope = landscape law
+PASS norm multiplies
+PASS region addition = border
+PASS region mult-add = two walls
+PASS region union of failures / cooling = two walls
+PASS region tangent / Pythagoras = turning
+PASS region velocity addition (Einstein) = two walls
+PASS region lens pair d=0.1 m = two walls
+PASS region rung 2 = two walls
+PASS region law of cosines C=60deg = turning
+PASS region law of cosines C=90deg = turning
+PASS region flat triangle = border
+PASS rotation in a 90 deg frame = law at (2cos,1), err 1.6e-15
+PASS rotation in a 60 deg frame = law at (2cos,1), err 1.3e-13
+PASS rotation in a 120 deg frame = law at (2cos,1), err 5.9e-13
+PASS rotation in a 75 deg frame = law at (2cos,1), err 2.4e-13
+PASS gnomon (1+a)^2-1 = 2a+a^2
+PASS cube layers
+PASS triangles compose (Brahmagupta)
+PASS Euclid triples
+PASS triple angle: re 1-3x^2, im 3x-x^3
+PASS tan 3theta from the cube, t=0.2
+PASS tan 3theta from the cube, t=0.7
+PASS tan 3theta from the cube, t=-0.4
+PASS law of cosines as norm at k=-2cosC, C=30
+PASS law of cosines as norm at k=-2cosC, C=60
+PASS law of cosines as norm at k=-2cosC, C=90
+PASS law of cosines as norm at k=-2cosC, C=120
+PASS law of cosines as norm at k=-2cosC, C=150
+PASS Kepler III Mercury: t(+)t vs al(+)al(+)al within 0.5%
+PASS Kepler III Venus: t(+)t vs al(+)al(+)al within 0.5%
+PASS Kepler III Mars: t(+)t vs al(+)al(+)al within 0.5%
+PASS Kepler III Jupiter: t(+)t vs al(+)al(+)al within 0.5%
+PASS Kepler III Saturn: t(+)t vs al(+)al(+)al within 0.5%
+PASS two lenses apart P=5.0,3.0 d=0.1
+PASS two lenses apart P=10.0,-4.0 d=0.05
+PASS two lenses apart P=2.0,7.0 d=0.5
+PASS field lens: P1 d = 1 leaves total power = P1
+PASS Boyle partner of 0.5 is its mult-add inverse
+PASS Boyle partner of 1.0 is its mult-add inverse
+PASS Boyle partner of 3.0 is its mult-add inverse
+PASS Boyle partner of -0.5 is its mult-add inverse
+PASS Boyle hyperbola: b -> -1 as a -> infinity (the wall)
+PASS ladder invariant after 12 sections
+PASS ladder -> golden ratio
+PASS line sections compose by velocity addition (units of Z0)
+PASS matched load (Z = Z0, the wall) is unchanged by any length
+PASS cooling: 1-(1-a)^2 = a + a - a*a
+PASS Galilean is the c -> infinity limit
+PASS units: Einstein in m/s is the point (0,-1/c^2)
+PASS relative errors multiply-add
+PASS nonempty subsets 2,3
+PASS nonempty subsets 5,1
+PASS nonempty subsets 4,4
+
+54 passed, 0 failed

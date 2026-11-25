@@ -1,0 +1,30 @@
+small values: 1(4)1 = 3  1(4)2 = 15  1(4)3 = 65535  2(4)1 = 26  1(5)1 = 3  1(5)2 = 65535
+PASS  rung4 right identity: a(4)0 = a
+PASS  rung4 left absorber: 0(4)b = 0
+PASS  rung5 right identity: a(5)0 = a
+PASS  rung5 left absorber: 0(5)b = 0
+PASS  rung4 = rung3 iterated on the exponent side: a(4)(b+1) = a(3)(a(4)b)
+PASS  rung5 = rung4 iterated on the exponent side: a(5)(b+1) = a(4)(a(5)b)
+PASS  rung4 not associative: (1(4)1)(4)1 = 255 vs 1(4)(1(4)1) = 65535
+PASS  rung4 not commutative: 1(4)2 = 15 vs 2(4)1 = 26
+PASS  rung3-style distributivity FAILS at rung4: (1(+)1)(4)1 = 255 but (1(4)1)(+)(1(4)1) = 15
+PASS  rung3-style tower law FAILS at rung4: (1(4)1)(4)1 = 255 but 1(4)(1(3)1) = 1(4)3 = 65535
+PASS  rung3-style sum law FAILS at rung4: 1(4)(1(1)1) = 1(4)3 = 65535 but (1(4)1)(3)(1(4)1) = 3^4-1 = 80
+   super-log base 2 of 2^^2 = 2.000000
+   super-log base 2 of 2^^3 = 3.000000
+   super-log base 2 of 2^^4 = 4.000000
+PASS  super-log straightens rung4 along b (base 2): slog_2(2^^n) = n exactly with this choice
+PASS  but no fixed number of logs straightens it: logs of 2^^n keep a tower (log2 log2 2^^5 = 2^^3 = 16)
+   climb time from 20 to e^(L) for L = [10, 100, 10000.0, 100000000.0]
+     rung 2 flow:  [7.004, 97.004, 9997.004, 99999997.004]
+     rung 3 flow:  [1.205, 3.508, 8.113, 17.323]
+     rung 4 flow:  [0.741, 1.331, 1.705, 1.974]
+   self-feeding Y'=Y^2 from 20: reaches infinity at t = 1/20 = 0.05 (any L)
+PASS  every rung's climb time keeps growing with L (never a finite wall)
+   rung2 (Y'=Y)             step-time ratio, last shells: [1. 1. 1.]
+   rung3 (Y'=Y logY)        step-time ratio, last shells: [0.9726 0.9733 0.974 ]
+   rung4 (tetration flow)   step-time ratio, last shells: [0.959  0.9603 0.9614]
+   pole (Y'=Y^2)            step-time ratio, last shells: [0.382 0.382 0.382]
+PASS  only the self-feeding pole gives a constant ratio < 1 (geometric steps)
+
+15/15 checks passed

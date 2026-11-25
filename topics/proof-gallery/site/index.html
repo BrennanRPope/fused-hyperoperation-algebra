@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proof shape gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE  a calm atlas for one reader: exact, honest about doubt
+   IDEA   Byrne's 1847 Euclid plates, laid out as a museum drawer of specimens on the rung sheet
+   PICTURE the rung sheet in oblique view, each shape family pinned at its height
+   COLOUR white, ink, Byrne blue, red and yellow; a corner piece mixes its sides' colours
+   TYPE   Literata; LAYOUT finding, sheet, twins, then drawers of glyphs, then the rulebook */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1217);--ink:light-dark(#10131a,#e9e7e2);--mute:light-dark(#555a63,#a3a8b1);--rule:light-dark(#e3e1dc,#2a2f38);--panel:light-dark(#f6f5f2,#171b22);--tile:light-dark(#ffffff,#f4f2ee);--blue:#1d5aa6;--red:#d0312d;--yellow:#e8b417;--link:light-dark(#1d5aa6,#7fb0ef)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Literata,Georgia,serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:clamp(32px,4.6vw,50px);line-height:1.06;letter-spacing:-.02em;font-weight:600;margin:0 0 14px;text-wrap:balance;max-width:22ch}
+h2{font-size:clamp(24px,2.8vw,32px);line-height:1.12;font-weight:600;margin:0 0 10px;text-wrap:balance}
+h3{font-size:19px;line-height:1.25;margin:0 0 4px;font-weight:600}
+p{margin:0 0 12px;max-width:70ch}
+.lede{font-size:18px;max-width:64ch}
+.mute{color:var(--mute)}
+a{color:var(--link)}
+.stripe{height:10px;display:grid;grid-template-columns:3fr 2fr 1fr}
+.stripe i:nth-child(1){background:var(--blue)}.stripe i:nth-child(2){background:var(--red)}.stripe i:nth-child(3){background:var(--yellow)}
+.hero{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;align-items:start;margin-top:18px}
+@media(max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}}
+.fig{position:relative;height:clamp(380px,52vw,560px);background:var(--tile);border:1px solid var(--rule);border-radius:4px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.key{list-style:none;margin:0;padding:0;font-size:15px}
+.key li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--rule)}
+.key b{font-weight:600}
+.key .h{color:var(--mute);font-size:13px;white-space:nowrap}
+.key button{all:unset;cursor:pointer}
+.key button:focus-visible,.g:focus-visible,.btn:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:12px;font-weight:600}
+.lvl{font-size:13px;color:var(--mute);margin:12px 0 2px}
+.nav{display:flex;gap:18px;overflow-x:auto;padding:10px max(5vw,16px);border-block:1px solid var(--rule);font-size:15px;white-space:nowrap}
+.nav a{flex:none;text-decoration:none}
+@media(min-width:900px){.nav{position:sticky;top:0;background:var(--bg);z-index:3}}
+html{scroll-padding-top:64px}
+.twins{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:18px;margin-top:14px}
+.twin{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:14px 16px}
+.twin .pair{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:start;margin-top:10px}
+.twin .side{border-top:1px solid var(--rule);padding-top:8px;margin-top:8px}
+.twin .side:first-child{border:0;padding:0;margin:0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em;overflow-wrap:anywhere}
+.tag{display:inline-block;font-size:13px;padding:0 8px;border-radius:10px;border:1px solid var(--rule);background:var(--bg);margin:2px 4px 2px 0;white-space:nowrap}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 6px}
+select,input{font:16px Literata,Georgia,serif;min-height:44px;padding:6px 10px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:4px}
+input{flex:1 1 200px}
+.btn{font:15px Literata,Georgia,serif;min-height:44px;padding:6px 14px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:4px;cursor:pointer}
+.drawer{border-top:1px solid var(--rule);padding:22px 0 8px}
+.dh{display:grid;grid-template-columns:62px minmax(0,1fr);gap:14px;align-items:start}
+.grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.g{all:unset;box-sizing:border-box;width:52px;height:52px;border:1px solid var(--rule);border-radius:3px;background:var(--tile);cursor:pointer;display:grid;place-items:center}
+.g.amb{border-style:dashed}
+.g.amb svg{opacity:.62}
+.g.dim{opacity:.13}
+.g.on{outline:2px solid var(--red);outline-offset:1px}
+.g svg{width:46px;height:46px;display:block}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px 18px;margin-top:14px;font-size:15px}
+.legend div{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;align-items:center}
+.legend .gl{width:52px;height:52px;border:1px solid var(--rule);border-radius:3px;background:var(--tile);display:grid;place-items:center}
+.legend svg{width:46px;height:46px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:10px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600}
+.scroll{overflow-x:auto}
+#panel{position:fixed;right:16px;bottom:16px;width:min(440px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;background:var(--bg);border:1px solid var(--rule);border-radius:6px;box-shadow:0 10px 40px #0003;padding:16px 18px;z-index:9}
+#panel[hidden]{display:none}
+#panel .x{position:absolute;right:8px;top:8px;width:44px;height:44px}
+#panel h3{padding-right:44px;overflow-wrap:anywhere}
+#panel pre{white-space:pre-wrap;background:var(--panel);border:1px solid var(--rule);padding:8px 10px;border-radius:4px;font-size:13.5px;margin:6px 0 10px}
+.small{font-size:14px}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;color:var(--mute)}}
+@media(prefers-reduced-motion:no-preference){.g{transition:opacity .2s}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<div class="stripe"><i></i><i></i><i></i></div>
+<header class="band"><div class="wrap">
+  <h1 id="title">Every proof in the library, drawn as a shape</h1>
+  <p class="lede" id="lede">Each of the library's Lean proofs is drawn from its own source as a mult-add shape, then grouped by that shape alone. Fields never enter the grouping, so proofs from far-apart subjects land in the same drawer when their geometry matches.</p>
+  <div class="hero">
+    <div><div class="fig" id="sheetfig" role="img" aria-label="The rung sheet: unit curves of every rung stacked by height, with each shape family pinned at its rung"><svg id="sheet"></svg></div>
+      <p class="small mute" style="margin-top:8px">The rung sheet: at each height s, the curve of all a, b with a combined with b at rung s equal to 1. The outer corner of the square is at the bottom, the line (addition, s = 0) and the hyperbola (mult-add, s = 1) in the middle, the axes at the top. Each numbered pin is a shape family, placed at the highest rung its statements use.</p></div>
+    <div><h3>Shape families on the sheet</h3><ul class="key" id="key"></ul></div>
+  </div>
+</div></header>
+<nav class="nav" aria-label="Sections"><a href="#twins">Cross-field twins</a><a href="#gallery">The gallery</a><a href="#legend">Reading a glyph</a><a href="#method">How shapes were read</a></nav>
+
+<section class="band" id="twins"><div class="wrap">
+  <h2>Same shape, different worlds</h2>
+  <p>These proofs have exactly the same shape (same size, same frame, same moves) and come from different broad fields. Each pair or trio is the strongest match the rules found; ambiguous shapes were left out.</p>
+  <div class="twins" id="twinlist"></div>
+</div></section>
+
+<section class="band" id="gallery" style="background:var(--panel)"><div class="wrap">
+  <h2>The gallery</h2>
+  <p>One tile per proof. Proofs with the same tile have the same shape. A dashed tile is a shape the rules could not read with confidence; open it to see why.</p>
+  <div class="tools">
+    <label class="small" for="fsel">Light up a field</label>
+    <select id="fsel"><option value="">All fields</option></select>
+    <input id="q" type="search" placeholder="Find a theorem by name" aria-label="Find a theorem by name">
+    <button class="btn" id="clear" type="button">Clear</button>
+  </div>
+  <p class="small mute" id="hits"></p>
+  <div id="drawers"></div>
+</div></section>
+
+<section class="band" id="legend"><div class="wrap">
+  <h2>Reading a glyph</h2>
+  <p>The body is the statement's size: how many rods are multiplied together in its biggest piece. The overlay is the proof's leading move. Small marks along the bottom are the other moves; a mark at the top right is the frame, how the two sides meet.</p>
+  <div class="legend" id="leg"></div>
+</div></section>
+
+<section class="band" id="method"><div class="wrap">
+  <h2>How shapes were read</h2>
+  <p>Nothing was assigned by hand. Three scripts read the Lean files (the library itself is untouched) and the same rules apply to every proof:</p>
+  <div class="scroll"><table class="stack"><thead><tr><th>Part</th><th>Read from</th><th>Rule</th></tr></thead><tbody>
+  <tr><td>Size (body)</td><td>The statement</td><td>Its polynomial degree in its variables, with the library's definitions expanded (mult-add a b counts as a + b + ab). Degree 0 is a point, 1 a rod, 2 a rectangle, 3 a box, 4 to 9 a hyperbox. A power with a symbolic exponent, a fold over a list or a recursive definition run n times is a cube of any size.</td></tr>
+  <tr><td>Frame</td><td>The statement</td><td>Equal: the same picture. ≤ or &lt;: one fits inside the other. ≠ or ¬: they cannot match. Divides or congruent: it tiles evenly. ∃: a piece is found that fits. ↔: each holds the other.</td></tr>
+  <tr><td>Moves</td><td>The proof, the definitions it unfolds and the lemmas it cites</td><td>The proof engine's moves, matched by a fixed table of lemma names and patterns: lift, mult-add, swap, regroup, collapse, squash, dial, flatten, extrude. Four extra marks: explode (corner pieces), repeat (induction), tally (checked by counting). Swap, regroup and collapse are also read from the two sides of the statement directly.</td></tr>
+  <tr><td>Family</td><td>Size and moves</td><td>Size plus the leading move, the first present in this order: squash, dial, flatten, regroup, swap, explode, collapse, repeat; otherwise plain. Families under four proofs are pooled by move, and the last few into odd ones out.</td></tr>
+  <tr><td>Height on the sheet</td><td>The statement</td><td>s = 0 for rods (addition), 1 for rectangles, boxes and hyperboxes (mult-add), 2 for any-size cubes (the fused exponent), 3 and 4 for tetration and pentation; flattening proofs drop a rung. A family sits at its median.</td></tr>
+  </tbody></table></div>
+  <p style="margin-top:14px" id="honest"></p>
+  <p class="small mute">Scripts and data: math-theory/proof-gallery/ in the project folder (parse.py, degree.py, features.py, cluster.py, build_data.py; gallery.json holds every proof's shape). Sheet curves from the rung-shape work.</p>
+</div></section>
+
+<aside id="panel" hidden aria-live="polite"><button class="btn x" id="px" type="button" aria-label="Close">×</button><div id="pbody"></div></aside>
+
+<script>
+{
+const C={a:'#1d5aa6',b:'#d0312d',c:'#e8b417',ab:'#6a3d9a',u:'#d9d6cf',ink:'#10131a',green:'#3f8f4f',orange:'#e0701f',slate:'#2e6f8e'};
+const MOVEC={squash:C.ink,dial:C.c,flatten:C.slate,regroup:C.a,swap:C.b,explode:C.ab,collapse:'#8a8780',repeat:C.green,lift:'#b9b5ad',multadd:C.orange,extrude:'#555a63',tally:'#555a63'};
+const MOVEN={lift:'lift',multadd:'mult-add',swap:'swap',regroup:'regroup',collapse:'collapse',squash:'squash',dial:'dial',flatten:'flatten',extrude:'extrude',explode:'explode',repeat:'repeat',tally:'tally'};
+const BODYN={point:'point',rod:'rod',rect:'rectangle',box:'box',hyper:'hyperbox',cube:'cube of any size',unclear:'unread'};
+const FRAMEN={same:'the two pictures are the same',inside:'one picture fits inside the other',mismatch:'the pictures cannot match',tiles:'the picture tiles evenly',witness:'a piece is found that fits',both_ways:'each picture holds the other'};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const R=(x,y,w,h,f,ex='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}" stroke="${C.ink}" stroke-width=".8" ${ex}/>`;
+
+/* glyph: body, lead move overlay, other moves as marks, frame at top right */
+function body(b,lead){
+  const gap=lead==='explode'?2.5:0, dial=lead==='dial', col=lead==='collapse';
+  const rh=col?2.5:9;
+  if(b==='point') return `<circle cx="22" cy="24" r="5" fill="${C.ink}"/><circle cx="22" cy="24" r="9" fill="none" stroke="${C.ink}" stroke-width=".8"/>`;
+  if(b==='rod') return R(7,21,12,7,C.u)+R(19+gap,21,18,col?2:7,C.a);
+  if(b==='unclear') return `<rect x="10" y="10" width="24" height="24" fill="none" stroke="${C.ink}" stroke-dasharray="3 2"/><text x="22" y="27" font-size="13" text-anchor="middle" fill="${C.ink}">?</text>`;
+  const sq=(ox,oy,s)=>{const u=s*.48,x=s*.52;let o=R(ox,oy+x+gap,u,u,C.u)+R(ox+u+gap,oy+x+gap,x,u,C.a)+R(ox,oy+(col?x-rh*s/26+x:0),u,col?rh*s/26:x,C.b);
+    const ch=dial?x*.45:x; o+=R(ox+u+gap,oy+(x-ch)+(col?x-rh*s/26:0),x,col?Math.min(ch,rh*s/26):ch,C.ab); if(dial)o+=`<rect x="${ox+u+gap}" y="${oy}" width="${x}" height="${x-ch}" fill="none" stroke="${C.ink}" stroke-width=".7" stroke-dasharray="2 1.5"/>`; return o;};
+  if(b==='rect') return sq(9,9,26);
+  const cubeface=(ox,oy,s)=>{const d=s*.38;return `<polygon points="${ox},${oy} ${ox+d},${oy-d*.7} ${ox+s+d},${oy-d*.7} ${ox+s},${oy}" fill="${C.c}" stroke="${C.ink}" stroke-width=".8"/><polygon points="${ox+s},${oy} ${ox+s+d},${oy-d*.7} ${ox+s+d},${oy+s-d*.7} ${ox+s},${oy+s}" fill="${C.orange}" stroke="${C.ink}" stroke-width=".8"/>`+sq(ox,oy,s);};
+  if(b==='box') return cubeface(8,15,22);
+  if(b==='hyper') return `<rect x="15" y="5" width="22" height="22" fill="none" stroke="${C.ink}" stroke-width=".7" stroke-dasharray="2 1.5"/><line x1="8" y1="15" x2="15" y2="5" stroke="${C.ink}" stroke-width=".6"/><line x1="30" y1="15" x2="37" y2="5" stroke="${C.ink}" stroke-width=".6"/><line x1="30" y1="37" x2="37" y2="27" stroke="${C.ink}" stroke-width=".6"/>`+sq(8,15,22);
+  /* cube of any size: receding stack of squares */
+  return `<rect x="18" y="5" width="20" height="20" fill="${C.u}" stroke="${C.ink}" stroke-width=".6"/><rect x="13" y="10" width="20" height="20" fill="${C.u}" stroke="${C.ink}" stroke-width=".6"/>`+sq(7,15,22)+`<text x="40" y="40" font-size="9" fill="${C.ink}" font-style="italic">n</text>`;
+}
+function overlay(lead){
+  switch(lead){
+    case 'squash': return `<path d="M6,6 Q12,34 40,38" fill="none" stroke="${C.ink}" stroke-width="2"/>`;
+    case 'flatten': return `<line x1="4" y1="41" x2="40" y2="41" stroke="${C.slate}" stroke-width="3"/><path d="M40,30 v8" stroke="${C.slate}" stroke-width="1.5"/>`;
+    case 'regroup': return `<line x1="22" y1="3" x2="22" y2="40" stroke="${C.a}" stroke-width="1.4" stroke-dasharray="3 2"/><line x1="3" y1="22" x2="40" y2="22" stroke="${C.b}" stroke-width="1.4" stroke-dasharray="3 2"/>`;
+    case 'swap': return `<line x1="6" y1="39" x2="38" y2="7" stroke="${C.b}" stroke-width="1.6"/><path d="M33,7 h5 v5" fill="none" stroke="${C.b}" stroke-width="1.4"/><path d="M6,34 v5 h5" fill="none" stroke="${C.b}" stroke-width="1.4"/>`;
+    case 'repeat': return '';
+    default: return '';
+  }
+}
+function frame(fr){
+  switch(fr){
+    case 'inside': return `<rect x="34" y="2" width="9" height="9" fill="none" stroke="${C.ink}" stroke-width=".9"/><rect x="36.5" y="4.5" width="4" height="4" fill="${C.ink}"/>`;
+    case 'mismatch': return `<path d="M35,3 l7,7 M42,3 l-7,7" stroke="${C.b}" stroke-width="1.8"/>`;
+    case 'tiles': return `<path d="M34,2 h9 v9 h-9z M38.5,2 v9 M34,6.5 h9" fill="none" stroke="${C.ink}" stroke-width=".8"/>`;
+    case 'witness': return `<circle cx="38.5" cy="6.5" r="3.5" fill="${C.c}" stroke="${C.ink}" stroke-width=".8"/>`;
+    case 'both_ways': return `<path d="M34,6.5 h9 M36.5,4 l-2.5,2.5 l2.5,2.5 M40.5,4 l2.5,2.5 l-2.5,2.5" fill="none" stroke="${C.ink}" stroke-width="1"/>`;
+    default: return '';
+  }
+}
+function glyph(p){
+  const lead=p.lead==='plain'?'':p.lead;
+  let s='';
+  if(lead==='repeat') s+=`<g opacity=".35" transform="translate(4,-4)">${body(p.b,'')}</g>`;
+  s+=body(p.b,lead)+overlay(lead)+frame(p.fr);
+  const others=p.mv.filter(m=>m!==lead&&m!=='lift');
+  others.forEach((m,i)=>{s+=`<circle cx="${4+i*5.2}" cy="43.5" r="2" fill="${MOVEC[m]}"/>`;});
+  if(p.mv.includes('tally')&&!others.length) s+='';
+  return `<svg viewBox="0 0 46 46" aria-hidden="true">${s}</svg>`;
+}
+
+const D={};
+let sel=-1;
+fetch('data.json').then(r=>r.json()).then(d=>{Object.assign(D,d);init();}).catch(()=>{document.getElementById('drawers').textContent='The gallery data could not be loaded.';});
+
+function init(){
+  const P=D.proofs, G=D.groups;
+  document.getElementById('title').textContent=`${P.length} proofs fall into ${G.length} shape families, and ${G.filter(g=>g.fields.length>=3).length} of them cross fields`;
+  /* key */
+  const order=G.map((g,i)=>i).sort((x,y)=>G[y].height-G[x].height||x-y);
+  let lastH=null, kh='';
+  const HN={4:'s = 4, pentation',3:'s = 3, tetration',2:'s = 2, fused exponent',1:'s = 1, mult-add',0:'s = 0, addition','-1':'s = −1, below addition'};
+  for(const i of order){const g=G[i]; if(g.height!==lastH){kh+=`<li style="border:0;display:block" class="lvl">${HN[g.height]||'s = '+g.height}</li>`; lastH=g.height;}
+    kh+=`<li><span class="num">${i+1}</span><button type="button" data-go="${i}"><b>${esc(g.name)}</b></button><span class="h">${g.count}</span></li>`;}
+  const key=document.getElementById('key'); key.innerHTML=kh;
+  key.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(b) document.getElementById('dr'+b.dataset.go).scrollIntoView({behavior:'smooth'});});
+  /* fields */
+  document.getElementById('fsel').innerHTML+=D.fields.map((f,i)=>`<option value="${i}">${esc(f)}</option>`).join('');
+  /* drawers */
+  document.getElementById('drawers').innerHTML=G.map((g,gi)=>{
+    const rep=P.find(p=>p.c===gi);
+    const tiles=P.map((p,pi)=>p.c===gi?`<button type="button" class="g${p.a.length?' amb':''}" data-p="${pi}" title="${esc(p.n.split('.').pop())}: ${esc(D.fields[p.f])}">${glyph(p)}</button>`:'').join('');
+    return `<div class="drawer" id="dr${gi}"><div class="dh"><div class="g" style="cursor:default">${glyph({...rep,mv:[],fr:''})}</div><div><h3><span class="num" style="margin-right:8px">${gi+1}</span>${esc(g.name)}</h3><p class="small" style="margin:0 0 4px">${esc(g.sentence)}</p><p class="small mute" style="margin:0">${g.count} proofs from ${g.fields.length} fields: ${g.fields.map(([f,n])=>esc(f)+' '+n).join(', ')}. Rung height s = ${g.height}.</p></div></div><div class="grid">${tiles}</div></div>`;}).join('');
+  document.getElementById('drawers').addEventListener('click',e=>{const b=e.target.closest('[data-p]'); if(b) show(+b.dataset.p,b);});
+  /* twins */
+  document.getElementById('twinlist').innerHTML=D.twins.slice(0,6).map(t=>{
+    const ps=t.picks.map(n=>P.findIndex(p=>p.n===n));
+    const sig=t.signature; const one=P[ps[0]];
+    return `<div class="twin"><h3>${esc(BODYN[sig.body][0].toUpperCase()+BODYN[sig.body].slice(1))}: ${sig.moves.map(m=>MOVEN[m]).join(', ')}</h3><p class="small mute" style="margin:0">${esc(FRAMEN[sig.frame])}. ${t.size} proofs in the library share this exact shape.</p><div class="pair"><button type="button" class="g" data-p="${ps[0]}">${glyph(one)}</button><div>${ps.map(i=>{const p=P[i];return `<div class="side"><b>${esc(D.fields[p.f])}</b>: <a href="#" data-p="${i}">${esc(p.n.split('.').pop())}</a><br><code>${esc(p.s)}</code>${p.d?`<br><span class="small mute">${esc(p.d)}</span>`:''}</div>`}).join('')}</div></div></div>`;}).join('');
+  document.getElementById('twinlist').addEventListener('click',e=>{const b=e.target.closest('[data-p]'); if(b){e.preventDefault(); show(+b.dataset.p,b);}});
+  /* legend */
+  const L=[['Point: numbers only',{b:'point',lead:'plain',mv:[],fr:''}],['Rod: one rod, addition',{b:'rod',lead:'plain',mv:[],fr:''}],['Rectangle: a + b + ab',{b:'rect',lead:'plain',mv:[],fr:''}],['Box: three rods',{b:'box',lead:'plain',mv:[],fr:''}],['Hyperbox: four to nine rods',{b:'hyper',lead:'plain',mv:[],fr:''}],['Cube of any size: n rods',{b:'cube',lead:'plain',mv:[],fr:''}],
+    ['Squash: onto the hyperbola xy = 1',{b:'rect',lead:'squash',mv:[],fr:''}],['Dial: the corner weighted by k',{b:'rect',lead:'dial',mv:[],fr:''}],['Flatten: area to length',{b:'rect',lead:'flatten',mv:[],fr:''}],['Regroup: cut as slabs and as columns',{b:'rect',lead:'regroup',mv:[],fr:''}],['Swap: reflected on the diagonal',{b:'rect',lead:'swap',mv:[],fr:''}],['Explode: pulled into corner pieces',{b:'rect',lead:'explode',mv:[],fr:''}],['Collapse: a side shrunk to nothing',{b:'rect',lead:'collapse',mv:[],fr:''}],['Repeat: one layer laid again',{b:'rect',lead:'repeat',mv:[],fr:''}],
+    ['Frame: fits inside',{b:'rect',lead:'plain',mv:[],fr:'inside'}],['Frame: cannot match',{b:'rect',lead:'plain',mv:[],fr:'mismatch'}],['Frame: tiles evenly',{b:'rect',lead:'plain',mv:[],fr:'tiles'}],['Frame: a piece found that fits',{b:'rect',lead:'plain',mv:[],fr:'witness'}],['Frame: each holds the other',{b:'rect',lead:'plain',mv:[],fr:'both_ways'}]];
+  let lg=L.map(([t,p])=>`<div><span class="gl">${glyph(p)}</span><span>${esc(t)}</span></div>`).join('');
+  lg+=`<div><span class="gl"><svg viewBox="0 0 46 46">${Object.entries(MOVEC).filter(([m])=>m!=='lift').map(([m,c],i)=>`<circle cx="${5+(i%5)*9}" cy="${12+Math.floor(i/5)*11}" r="3" fill="${c}"/>`).join('')}</svg></span><span>Bottom marks, left to right: ${Object.keys(MOVEC).filter(m=>m!=='lift').map(m=>MOVEN[m]).join(', ')}</span></div>`;
+  document.getElementById('leg').innerHTML=lg;
+  const st=D.stats;
+  document.getElementById('honest').textContent=`Where the reading is shaky: ${st.ambiguous} of ${st.total} proofs are drawn with a dashed tile. Most of these were closed by an automatic step (grind, omega, simp), so no move shows in their own text and only the statement gives their shape; ${st.unclear} statement could not be parsed at all. The rules are a first pass, built without running Lean here, so lemma names stand in for the moves; a move hidden inside an automatic step is missed. Across the library there are ${st.shapes} distinct exact shapes; the ${G.length} families group them by size and leading move.`;
+  drawSheet(); new ResizeObserver(drawSheet).observe(document.getElementById('sheetfig'));
+  document.getElementById('fsel').addEventListener('change',filt);
+  document.getElementById('q').addEventListener('input',filt);
+  document.getElementById('clear').addEventListener('click',()=>{document.getElementById('fsel').value='';document.getElementById('q').value='';filt();});
+  document.getElementById('px').addEventListener('click',()=>{document.getElementById('panel').hidden=true;document.querySelectorAll('.g.on').forEach(x=>x.classList.remove('on'));});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('px').click();});
+}
+function filt(){
+  const f=document.getElementById('fsel').value, q=document.getElementById('q').value.trim().toLowerCase();
+  let n=0;
+  document.querySelectorAll('#drawers [data-p]').forEach(b=>{const p=D.proofs[+b.dataset.p];
+    const ok=(f===''||p.f===+f)&&(!q||p.n.toLowerCase().includes(q)); b.classList.toggle('dim',!ok); if(ok)n++;});
+  document.getElementById('hits').textContent=(f===''&&!q)?'':`${n} proofs match, spread over ${new Set(D.proofs.filter((p,i)=>(f===''||p.f===+f)&&(!q||p.n.toLowerCase().includes(q))).map(p=>p.c)).size} families.`;
+}
+function show(i,btn){
+  const p=D.proofs[i], g=D.groups[p.c];
+  document.querySelectorAll('.g.on').forEach(x=>x.classList.remove('on'));
+  const t=document.querySelector(`#drawers [data-p="${i}"]`); if(t) t.classList.add('on');
+  const moves=p.mv.length?p.mv.map(m=>`<span class="tag">${esc(MOVEN[m])}</span>`).join(''):'<span class="mute">none in its own text</span>';
+  document.getElementById('pbody').innerHTML=`<h3>${esc(p.n)}</h3><p class="small mute" style="margin:0 0 6px">${esc(D.fields[p.f])}. ${esc(D.modules[p.m])}, line ${p.l}.</p><pre>${esc(p.s)}</pre>${p.d?`<p class="small">${esc(p.d)}</p>`:''}<p class="small" style="margin:0 0 4px"><b>Shape:</b> ${esc(BODYN[p.b])}; ${esc(FRAMEN[p.fr])}. Family ${p.c+1}, ${esc(g.name)}. Rung height s = ${p.h}.</p><p class="small" style="margin:0 0 4px"><b>Moves:</b> ${moves}</p>${p.t.length?`<p class="small mute" style="margin:0 0 4px">Touched only through what it cites: ${p.t.map(m=>esc(MOVEN[m])).join(', ')}.</p>`:''}${p.a.length?`<p class="small" style="margin:6px 0 0"><b>Why the shape is uncertain:</b> ${p.a.map(esc).join('; ')}.</p>`:''}`;
+  const pn=document.getElementById('panel'); pn.hidden=false;
+}
+/* the rung sheet, oblique view, with family pins */
+function drawSheet(){
+  const svg=document.getElementById('sheet'), W=svg.clientWidth, H=svg.clientHeight; if(!W||!D.sheet) return;
+  const S=D.sheet, s0=-2, s1=3.5, U=Math.min(W*.5,H*.62), dk=.55, ang=.55;
+  const ox=W*.08, oy=H-(H*.06), hs=(H*.94-U*dk*Math.sin(ang)-U*.02)/(s1-s0);
+  const pt=(a,b,s)=>[ox+U*(a+b*dk*Math.cos(ang)), oy-(s-s0)*hs-U*b*dk*Math.sin(ang)];
+  const dark=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.dataset.theme!=='light'||document.documentElement.dataset.theme==='dark';
+  let o='';
+  /* rails: the square's sides at bottom and top */
+  for(const [a,b] of [[0,0],[1,0],[0,1],[1,1]]){const [x1,y1]=pt(a,b,s0),[x2,y2]=pt(a,b,s1); o+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#c9c6bf" stroke-width=".7" stroke-dasharray="3 3"/>`;}
+  S.s.forEach((s,k)=>{const whole=Math.abs(s-Math.round(s))<1e-9;
+    const pts=S.a.map((a,j)=>{const b=S.b[k][j]; return b==null?null:pt(a,b,s);}).filter(Boolean);
+    const d='M'+pts.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join('L');
+    const col=s===0?C.a:s===1?C.b:whole?C.ink:'#b9b5ad';
+    o+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="${whole?(s===0||s===1?2.4:1.4):.7}" opacity="${whole?1:.8}"/>`;
+    if(whole){const [x,y]=pt(1.02,0,s); o+=`<text x="${x+6}" y="${y+4}" font-size="12" fill="${C.ink}">s = ${s}${s===0?'  addition':s===1?'  mult-add':s===2?'  fused exponent':''}</text>`;}
+  });
+  /* pins */
+  const G=D.groups, byH={};
+  G.forEach((g,i)=>{(byH[g.height]=byH[g.height]||[]).push(i);});
+  for(const h in byH){const list=byH[h], k=S.s.findIndex(s=>Math.abs(s-h)<1e-9); if(k<0) continue;
+    list.forEach((gi,j)=>{const t=(j+.5)/list.length; const ai=Math.round((.06+.88*t)*(S.a.length-1)); const a=S.a[ai], b=S.b[k][ai]??0;
+      const [x,y]=pt(a,b,+h); const r=6+Math.sqrt(G[gi].count)*1.6;
+      o+=`<g class="pin" data-go="${gi}" style="cursor:pointer" tabindex="0" role="button" aria-label="${esc(G[gi].name)}"><title>${esc(G[gi].name)}: ${G[gi].count} proofs</title><circle cx="${x}" cy="${y}" r="${r}" fill="${C.ink}" stroke="#fff" stroke-width="1.5"/><text x="${x}" y="${y+4}" font-size="11" text-anchor="middle" fill="#fff" font-weight="600">${gi+1}</text></g>`;});}
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.innerHTML=o;
+  svg.onclick=e=>{const g=e.target.closest('[data-go]'); if(g) document.getElementById('dr'+g.dataset.go).scrollIntoView({behavior:'smooth'});};
+  svg.onkeydown=e=>{if(e.key==='Enter'){const g=e.target.closest('[data-go]'); if(g) document.getElementById('dr'+g.dataset.go).scrollIntoView({behavior:'smooth'});}};
+}
+}
+</script>
+</body>
+</html>

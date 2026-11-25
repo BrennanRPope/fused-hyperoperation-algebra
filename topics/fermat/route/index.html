@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fermat in Pieces</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a scientific plate for one proof, exact and calm.
+   IDEA an assembly drawing of Wiles's proof: every part numbered, the ones we built filled in.
+   PICTURE the proof tree, 40 parts in 8 assemblies, coloured by status, with the tally above it.
+   COLOUR white, ink #10131a, prussian for proved, prussian outline for known, carmine for out of reach; night #0f1217.
+   TYPE Literata display + Literata text.
+   LAYOUT title and tally across the top, tree full width beneath; then figures beside their text; tables last. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0f1217);--ink:light-dark(#10131a,#e6e8ee);--mute:light-dark(#4d5361,#a2a8b6);--line:light-dark(#d9dce3,#2a2f3a);--pr:light-dark(#0b4f8a,#5aa2e6);--prf:light-dark(#e8f0f8,#16263a);--ca:light-dark(#c1121f,#f0505a);--caf:light-dark(#fbeaeb,#33171a);--panel:light-dark(#f6f7f9,#151922)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Literata,Georgia,serif;overflow-x:clip}
+h1,h2,h3{font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0 0 .45em}
+h1{font-size:clamp(30px,4.4vw,48px)}h2{font-size:clamp(22px,2.6vw,30px)}h3{font-size:18px;letter-spacing:0}
+p{max-width:70ch;margin:0 0 .9em}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}.wrap{max-width:1240px;margin:0 auto}
+.panel{background:var(--panel)}
+.top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(18px,4vw,48px);align-items:end}
+.lead{font-size:18px}.mute{color:var(--mute)}
+.tally{display:grid;gap:10px}
+.bar{display:flex;height:34px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%}
+.big{font-size:clamp(40px,6vw,64px);font-weight:600;line-height:1;letter-spacing:-.03em}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+.p{background:var(--pr)}.k{background:var(--prf);border:1.5px solid var(--pr)}.o{background:repeating-linear-gradient(135deg,var(--caf) 0 4px,color-mix(in srgb,var(--ca) 35%,var(--caf)) 4px 6px);border:1.5px solid var(--ca)}
+.root{margin:26px 0 0;padding:14px 18px;border:2px solid var(--ink);border-radius:8px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.root b{font-size:20px}
+.tree{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 16px;margin-top:18px;position:relative}
+.col{border-top:2px solid var(--ink);padding-top:10px}
+.col h3{margin-bottom:8px}.col h3 span{color:var(--mute);font-weight:400}
+.chip{display:block;width:100%;text-align:left;font:inherit;font-size:14.5px;line-height:1.35;padding:8px 10px;margin:0 0 6px;border-radius:6px;cursor:pointer;color:var(--ink);background:var(--prf);border:1.5px solid var(--pr)}
+.chip.p{background:var(--pr);color:#fff;border-color:var(--pr)}
+:root[data-theme=dark] .chip.p{color:#0f1217}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .chip.p{color:#0f1217}}
+.chip.o{background:repeating-linear-gradient(135deg,var(--caf) 0 6px,color-mix(in srgb,var(--ca) 18%,var(--caf)) 6px 9px);border-color:var(--ca)}
+.chip:focus-visible{outline:3px solid var(--ca);outline-offset:2px}
+.chip small{display:block;font-size:13px;opacity:.85}
+.detail{margin-top:14px;padding:14px 18px;border-left:4px solid var(--pr);background:var(--panel);min-height:84px}
+.detail code{font-size:14px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.fig{position:relative;min-height:360px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:14px Literata,Georgia,serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:10px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);font-weight:600;font-size:20px;color:var(--pr);text-align:right}
+.tag{display:inline-block;font-size:13px;padding:1px 8px;border-radius:10px;margin-left:6px;white-space:nowrap}
+.tag.p{color:#fff}.tag.k{color:var(--pr)}.tag.o{color:var(--ca)}
+:root[data-theme=dark] .tag.p{color:#0f1217}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;border-bottom:2px solid var(--ink)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{font-size:14px;overflow-wrap:anywhere}
+pre{overflow-x:auto;background:var(--panel);padding:12px 14px;border-radius:6px;font-size:13.5px}
+.verdict{border:2px solid var(--ink);border-radius:8px;padding:16px 20px}
+a{color:var(--pr)}
+@media(max-width:900px){.tree{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.top,.two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:460px){.tree{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}}
+</style></head><body>
+
+<section class="band"><div class="wrap">
+<div class="top">
+<div>
+<h1>Fermat's Last Theorem, broken into the pieces Wiles's proof needs</h1>
+<p class="lead">27 of the 40 pieces are proved here in Lean, including all of exponents 3 and 4 and everything about the Frey curve. The 13 left are the deep middle of the proof: modularity, Mazur and Ribet. A Lean theorem joins it all up: Fermat for every exponent follows from one statement, that the Frey curve cannot exist.</p>
+</div>
+<div class="tally">
+<div><span class="big" id="tallyNum">27 of 40</span> <span class="mute">pieces proved in Lean</span></div>
+<div class="bar" id="tallyBar" aria-label="27 proved, 5 known and restated, 8 out of reach"></div>
+<div class="key"><span><i class="sw p"></i>Proved in Lean here</span><span><i class="sw k"></i>Known, stated, not formalized</span><span><i class="sw o"></i>Out of reach</span></div>
+</div>
+</div>
+
+<div class="root"><b>Fermat's Last Theorem: no a, b, c ≥ 1 with aⁿ + bⁿ = cⁿ for n ≥ 3</b><span class="mute">Lean: <code>flt_of_no_frey_curve</code> proves it from the one open box, <code>NoFreyCurve</code> (assemblies F to H). Tap any piece.</span></div>
+<div class="tree" id="tree"></div>
+<div class="detail" id="detail" aria-live="polite"><b>Tap a piece</b> to see what it says, its Lean name and how it reads in mult-add.</div>
+</div></section>
+
+<section class="band panel"><div class="wrap">
+<h2>The route in mult-add geometry: the proof is easy exactly where the curve is mult-add</h2>
+<ol class="steps">
+<li><div><b>Fermat is a mult-add power against an ordinary one.</b> Divide aᵖ + bᵖ = cᵖ by aᵖ and set t = b/a, s = c/a − 1. The equation becomes tᵖ = [p]s, where [p]s = s ⊕ s ⊕ … ⊕ s = (1 + s)ᵖ − 1. <span class="tag p p">proved</span></div></li>
+<li><div><b>Reduce to primes.</b> Every n ≥ 3 is a multiple of 4 or of an odd prime, so exponents 3, 4 and the primes from 5 up are enough. Exponents 3 and 4 are proved here in full, 3 by building the Eisenstein integers from scratch and 4 by Fermat's own descent. <span class="tag p p">proved</span></div></li>
+<li><div><b>Build the Frey curve</b> y² = x(x − aᵖ)(x + bᵖ) from a solution, after normalizing so a ≡ 3 mod 4, b is even and gcd(a, b) = 1. Its three half-way points are 0, aᵖ and −bᵖ. Its discriminant is 16(abc)²ᵖ, and its minimal model has 256·Δ = (abc)²ᵖ: a perfect p-th power. <span class="tag p p">proved</span></div></li>
+<li><div><b>At every bad prime the curve pinches into the mult-add node, never a cusp.</b> No prime divides both Δ and c₄ = A² + AB + B². At the node, three points lie on one line exactly when their coordinates mult-add to zero. This is semistability, and it is mult-add's own shape. <span class="tag p p">proved</span></div></li>
+<li><div><b>Near each pinch the curve is a mult-add cylinder glued into a torus</b> (Tate's curve, u ~ q·u). The gluing size q has a p-th power exponent, so the p-torsion points line up without anything new at that prime: the bad primes become invisible to E[p] (Hellegouarch, Frey, Serre). <span class="tag k">known</span></div></li>
+<li><div><b>At the good primes the curve is not mult-add.</b> Frobenius turns instead of stretching (a<sub>p</sub>² &lt; 4p), the turning country found in the elliptic work. Wiles and Taylor–Wiles prove the curve is modular here, with Langlands–Tunnell, the 3–5 switch and R = T. Mazur supplies irreducibility. <span class="tag o">out of reach</span></div></li>
+<li><div><b>Ribet strips the invisible primes from the level, leaving 2.</b> The modular curve X₀(2) is a sphere, genus 0, so it carries no weight-2 cusp form to match. Contradiction. The genus count is proved here; Ribet is not. <span class="tag o">out of reach</span></div></li>
+</ol>
+</div></section>
+
+<section class="band"><div class="wrap two">
+<div>
+<h2>A bad prime pinches the loop shut into a node</h2>
+<p>The Frey curve's oval runs from −B to 0 and its open branch starts at A. When a prime divides A, the curve seen through that prime has A = 0: the oval and the branch touch at the origin and make a double point. The two tangent lines there are the node's walls.</p>
+<p>The Lean piece <code>frey_semistable</code> says this is all that ever happens: c₄ never shares a prime with Δ, so the pinch is always a node with two distinct walls, never a cusp where the walls merge. <code>frey_reduces_to_node</code> shows the reduced curve is exactly the node family whose chord law the library already ties to mult-add.</p>
+</div>
+<div class="fig" id="figPinch" role="img" aria-label="Frey curves for B = 1 and A shrinking to 0: the oval and branch meet at the origin"></div>
+</div></section>
+
+<section class="band panel"><div class="wrap two">
+<div class="fig" id="figChord" role="img" aria-label="Nodal cubic y squared = x squared times x plus 1 with three collinear points"></div>
+<div>
+<h2>On the node, three points on a line multiply to 1</h2>
+<p>Take the pinched curve y² = x²(x + 1). Every line through the node at slope t meets the curve once more, at x = t² − 1. Give that point the coordinate s = −2/(t + 1), so its lift is 1 + s = (t − 1)/(t + 1).</p>
+<p>Three points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0, which under the lift says (1 + s₁)(1 + s₂)(1 + s₃) = 1. The drawing uses t = 1.3 and t = 1.7; the third point is forced to the lift that makes the product 1. Proved in general as <code>node_chord_multAdd</code>.</p>
+<p class="mute" id="chordNums"></p>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap two">
+<div>
+<h2>Why the bad primes drop out: the glued cylinder lines up when q is a p-th power</h2>
+<p>Take mult-add's lifted line, the punctured plane under multiplication, and draw it in log coordinates: angle across, log-size up. That is a cylinder. Tate glued its top to its bottom (u ~ q·u) to make the curve near a bad prime into a torus.</p>
+<p>The p-torsion points are the u with uᵖ a power of q. Here p = 5 and q = t⁵, so all 25 points sit on a clean grid built from t and the fifth roots of 1, and nothing new has to be adjoined at that prime. The piece that makes q a p-th power is <code>frey_disc_valuation</code>: p divides the exponent of every odd prime in Δ. The step from there to "unramified" is known math, stated here and not formalized.</p>
+</div>
+<div class="fig" id="figTorus" role="img" aria-label="Unrolled Tate torus with a 5 by 5 grid of torsion points"></div>
+</div></section>
+
+<section class="band panel"><div class="wrap">
+<h2>Lean status: 148 theorems in four files, every one on Lean's three standard axioms</h2>
+<p>Core Lean 4.37.0-rc1 with no mathlib, built on the project's mult-add library. No <code>sorry</code> and no new axioms; <code>#print axioms</code> on every main theorem lists only propext, Classical.choice and Quot.sound.</p>
+<div class="scroll"><table>
+<thead><tr><th>File</th><th>What it proves</th><th class="n">Lines</th><th class="n">Theorems</th></tr></thead>
+<tbody>
+<tr><td><code>Fermat4.lean</code></td><td>x⁴ + y⁴ ≠ z² and so FLT for 4, by Fermat's descent; a nonzero rational 4th power is never a mult-add 4th power</td><td class="n">270</td><td class="n">9</td></tr>
+<tr><td><code>Fermat3.lean</code></td><td>FLT for 3 in full: first case by cubes mod 9; Euler's descent, with the Eisenstein integers (Euclidean division, Bézout, units, cube lemma) built from scratch; the mod-3 cube layers</td><td class="n">1,067</td><td class="n">84</td></tr>
+<tr><td><code>FreyPieces.lean</code></td><td>exponent reduction, coprime reduction, parity, normalization; the Frey curve's torsion, discriminant, minimal model, c₄, semistability, node chord law, p-th power discriminant; the genus count of X₀(2)</td><td class="n">718</td><td class="n">46</td></tr>
+<tr><td><code>FermatRoute.lean</code></td><td>the join: FLT for all n ≥ 3 from the prime case p ≥ 5, and from the single statement <code>NoFreyCurve</code></td><td class="n">186</td><td class="n">9</td></tr>
+</tbody></table></div>
+<p style="margin-top:14px">The capstone, word for word:</p>
+<pre>def NoFreyCurve : Prop :=
+  ∀ (p : Nat), IsPrime p → 5 ≤ p → ∀ a b c : Int,
+    Int.gcd a b = 1 → a * b * c ≠ 0 → a % 4 = 3 → b % 2 = 0 → (32 : Int) ∣ b ^ p →
+    a ^ p + b ^ p ≠ c ^ p
+
+theorem flt_of_no_frey_curve (H : NoFreyCurve) : ∀ n, 3 ≤ n → FLT n</pre>
+<p class="mute">Files are in the project folder at math-theory/fermat/lean/, with build.sh. They sit beside the shared library, not inside it yet.</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<div class="verdict">
+<h2>Known versus new</h2>
+<p><b>Known:</b> every mathematical statement here. Exponent 4 is Fermat's, exponent 3 is Euler's and Gauss's, the Frey curve facts are Frey, Serre and Ribet's, and the Tate curve is Tate's. Exponents 3 and 4 have been formalized before, in mathlib.</p>
+<p><b>New here:</b> these proofs written from scratch in core Lean on the mult-add library, and one geometric reading that holds the route together: the half of Wiles's proof that is easy is the half where the curve is mult-add (the pinched bad primes), and the hard half is where it turns instead (the good primes). That reading restates known facts; it is not a new theorem.</p>
+<p><b>No new lead</b> as strong as the solitons came out of this. Fermat's Last Theorem itself is not proved here: the 13 open pieces carry nearly all of its difficulty.</p>
+<p class="mute">Earlier page on the same subject: <a href="https://claude.ai/artifact/Q3GveFG3TjJSeqrYbXEouL">Fermat through mult-add</a> (Kummer's road, the Fermat curve, toric geometry).</p>
+</div>
+</div></section>
+
+<script>
+{
+const N=[
+["A","Reduce to prime exponents",[
+["p","Divisor reduction","If FLT holds for d it holds for every multiple of d.","flt_of_dvd","xⁿ = (x^(n/d))^d: a power of a power."],
+["p","4 or an odd prime divides n","Every n ≥ 3 is a multiple of 4 or of an odd prime.","four_or_odd_prime",""],
+["p","Joining 3, 4 and p ≥ 5","FLT for 4, for 3 and for primes p ≥ 5 gives FLT for every n ≥ 3.","flt_reduction_frey, flt_of_prime_case",""]]],
+["B","Exponent 4",[
+["p","Coprime square lemma","If a·b = c² and gcd(a, b) = 1, a is a square, with no prime factorization needed.","sq_of_coprime_mul",""],
+["p","Pythagorean triples","Every primitive triple is (m² − n², 2mn, m² + n²).","pyth_param","Multiplying triples as complex numbers is the lift of mult-add to the circle."],
+["p","Descent step","A solution of x⁴ + y⁴ = z² gives a smaller one.","descent_step",""],
+["p","FLT for 4","x⁴ + y⁴ ≠ z², so x⁴ + y⁴ ≠ z⁴.","no_x4_y4_z2, fermat4",""],
+["p","Mult-add form","No nonzero rational 4th power is a mult-add 4th power.","fourth_power_ne_mpow_four","q⁴ ≠ [4]s = (1 + s)⁴ − 1."]]],
+["C","Exponent 3",[
+["p","First case","If 3 divides none of x, y, z then x³ + y³ ≠ z³: cubes mod 9 are 0, 1, 8.","cube_mod9, case1",""],
+["p","Factor and gcd","x³ + y³ = (x + y)(x² − xy + y²), and the two factors share at most a 3.","sum_cubes, gcd_factors",""],
+["p","Eisenstein integers","ℤ[ω] built from scratch: Euclidean division, Bézout, the six units, coprime cubes.","Eis.div_rem, Eis.bezout, Eis.cube_of_cop",""],
+["p","Euler's lemma","If p² + 3q² is a cube with gcd 1, then p = a³ − 9ab² and q = 3a²b − 3b³.","key_cube",""],
+["p","Descent and FLT for 3","A primitive solution gives a smaller one, so none exists.","step, no_sol, flt3, flt3_nat",""],
+["p","The cube's middle layers","[3]s = s³ + 3(s + s²): the middle layers carry the 3, so x + y ≡ z mod 3.","mpow_three, sum_mod3, flt3_multAdd","Pascal's 1, 3, 3, 1 on the mult-add cube."]]],
+["D","Prime p ≥ 5: set up",[
+["p","Coprime reduction","Any solution divides down to one with gcd(x, y) = 1.","coprime_reduction, flt_of_coprime",""],
+["p","Parity","In a coprime solution exactly one of x, y, z is even.","coprime_parity",""],
+["p","Frey normalization","Re-sign and reorder so a ≡ 3 mod 4, b even, 32 | bᵖ, gcd(a, b) = 1 kept.","frey_normalize_cop",""],
+["p","FLT from NoFreyCurve","Fermat for all n ≥ 3 follows from the one deep statement.","flt_of_no_frey_curve",""],
+["p","Mult-add restatement","xⁿ + yⁿ = zⁿ exactly when (y/x)ⁿ = [n](z/x − 1).","flt_multAdd","An ordinary power never equals a mult-add power, except trivially."]]],
+["E","The Frey curve",[
+["p","Two-torsion","(0,0), (A,0), (−B,0) lie on y² = x(x − A)(x + B).","frey_two_torsion",""],
+["p","Discriminant","Δ = 16(ABC)² when A + B = C.","frey_disc_roots",""],
+["p","Minimal model","x = 4X, y = 8Y + 4X gives Y² + XY = X³ + a₂X² + a₄X with integer a₂, a₄.","frey_change_of_vars, frey_minimal_model",""],
+["p","c₄ and Δ","c₄ = A² + AB + B² and 256·Δ = (ABC)².","frey_c4, frey_disc",""],
+["p","Semistable","No prime divides both Δ and c₄, including 2: every bad prime gives a node, never a cusp.","frey_semistable, frey_at_two","Every pinch is mult-add's node or its turning twin."],
+["p","Node chord law is mult-add","Mod a bad prime the curve is the node family; three of its points are collinear exactly when s₁ ⊕ s₂ ⊕ s₃ = 0.","frey_reduces_to_node, node_chord_multAdd","The group on a node is mult-add."],
+["p","Δ is a p-th power","256·Δ = ((abc)²)ᵖ, so p divides the exponent of every odd prime in Δ.","frey_disc_pth_power, frey_disc_valuation","The Tate gluing q is a p-th power."]]],
+["F","The mod-p picture",[
+["k","Tate's curve","Near a bad prime the curve is the mult-add cylinder glued by u ~ qu (Tate 1959). Checked numerically in the elliptic work.","","The torus is mult-add with one gluing rule."],
+["k","Finite at bad primes","Since p divides the exponent of q, E[p] is unramified at odd bad primes (Hellegouarch, Frey, Serre).","",""],
+["k","Serre's conductor is 2","The mod-p representation has conductor 2 and weight 2.","",""],
+["o","Mazur: irreducible","For semistable E and p ≥ 5 the mod-p representation is irreducible (Mazur 1978).","",""]]],
+["G","Modularity (Wiles, Taylor–Wiles 1995)",[
+["o","Langlands–Tunnell","The mod-3 representation is modular.","",""],
+["o","3–5 switch","When mod 3 fails, switch to mod 5 through an auxiliary curve.","",""],
+["o","Deformation ring R → Hecke ring T","Set up the universal deformation ring and the map to the Hecke algebra.","",""],
+["o","Taylor–Wiles patching","Patch over auxiliary primes to control R.","",""],
+["o","R = T","The numerical criterion: R and T are complete intersections and equal.","",""],
+["o","Semistable curves are modular","The conclusion: E comes from a weight-2 newform of level N = rad(abc).","","At the good primes Frobenius turns (a_p² < 4p): the part that is not mult-add."]]],
+["H","Level lowering and the finish",[
+["o","Ribet's level lowering","The newform can be taken at level 2 (Ribet 1990).","",""],
+["p","X₀(2) counts","For Γ₀(2): index 3, one elliptic point of order 2, none of order 3, two cusps; so genus 0.","level2_counts, genus_X0_2","X₀(2) is a sphere."],
+["k","Genus formula","12g = 12 + μ − 3ν₂ − 4ν₃ − 6ν∞ for X₀(N): cited, not formalized.","",""],
+["k","The contradiction","A weight-2 newform at level 2 would be needed, and there is none. This gives NoFreyCurve.","",""]]]
+];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const all=N.flatMap(g=>g[2]);
+const cnt={p:0,k:0,o:0};all.forEach(x=>cnt[x[0]]++);
+document.getElementById('tallyNum').textContent=cnt.p+' of '+all.length;
+document.getElementById('tallyBar').innerHTML=[["p",cnt.p],["k",cnt.k],["o",cnt.o]].map(([c,v])=>`<i class="${c}" style="width:${v/all.length*100}%"></i>`).join('');
+const nm={p:"Proved in Lean",k:"Known, stated, not formalized",o:"Out of reach"};
+let id=0;
+document.getElementById('tree').innerHTML=N.map(g=>`<div class="col"><h3>${esc(g[0])}. ${esc(g[1])} <span>${g[2].filter(x=>x[0]=="p").length}/${g[2].length}</span></h3>${g[2].map(x=>`<button class="chip ${x[0]}" data-i="${id++}" id="piece-${id}">${esc(x[1])}</button>`).join('')}</div>`).join('');
+const det=document.getElementById('detail');
+document.getElementById('tree').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const x=all[+b.dataset.i];
+det.style.borderLeftColor=x[0]=="o"?"var(--ca)":"var(--pr)";
+det.innerHTML=`<b>${esc(x[1])}</b> <span class="mute">· ${nm[x[0]]}</span><br>${esc(x[2])}${x[3]?`<br>Lean: <code>${esc(x[3])}</code>`:''}${x[4]?`<br><i>Mult-add:</i> ${esc(x[4])}`:''}`});
+
+const S=(el,fn)=>{const ro=new ResizeObserver(()=>{const W=el.clientWidth,H=el.clientHeight;el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${fn(W,H)}</svg>`});ro.observe(el);return ro};
+const cs=getComputedStyle(document.documentElement);
+// Pinch figure
+const roP=S(document.getElementById('figPinch'),(W,H)=>{
+ const m=28,x0=-1.25,x1=1.5,y0=-1.3,y1=1.3,X=x=>m+(x-x0)/(x1-x0)*(W-2*m),Y=y=>H-m-(y-y0)/(y1-y0)*(H-2*m);
+ const B=1,As=[0.6,0.3,0.12,0],cols=["var(--mute)","var(--mute)","var(--mute)","var(--ca)"];
+ let out=`<line x1="${X(x0)}" y1="${Y(0)}" x2="${X(x1)}" y2="${Y(0)}" stroke="var(--line)"/><line x1="${X(0)}" y1="${Y(y0)}" x2="${X(0)}" y2="${Y(y1)}" stroke="var(--line)"/>`;
+ As.forEach((A,k)=>{const f=x=>x*(x-A)*(x+B);const segs=[[-B,0],[A,x1]];
+  segs.forEach(([a,b])=>{let up=[],dn=[];for(let i=0;i<=200;i++){const x=a+(b-a)*(1-Math.cos(Math.PI*i/200))/2,v=f(x);if(v<0)continue;const y=Math.sqrt(v);if(y>y1+.2)continue;up.push(`${X(x).toFixed(1)},${Y(y).toFixed(1)}`);dn.unshift(`${X(x).toFixed(1)},${Y(-y).toFixed(1)}`)}
+   if(up.length>1)out+=`<polyline fill="none" stroke="${cols[k]}" stroke-width="${k==3?2.6:1.3}" stroke-opacity="${k==3?1:.35+.2*k}" points="${dn.concat(up).join(' ')}${a===-B?' '+dn[0]:''}"/>`})});
+ out+=`<circle cx="${X(0)}" cy="${Y(0)}" r="5" fill="var(--ca)"/><text x="${X(0)+10}" y="${Y(0)-10}">node at A = 0</text>`;
+ out+=`<text x="${X(-1)}" y="${Y(0)+20}">−B</text><text x="${X(.6)-6}" y="${Y(0)+20}">A = 0.6</text><text x="${m}" y="${m-8}" style="font-size:13px">y² = x(x − A)(x + 1), A = 0.6, 0.3, 0.12, 0</text>`;
+ return out});
+// Chord figure
+const t1=1.3,t2=1.7,r=t=>(t-1)/(t+1),r3=1/(r(t1)*r(t2)),t3=(1+r3)/(1-r3);
+document.getElementById('chordNums').textContent=`Lifts: ${r(t1).toFixed(3)} × ${r(t2).toFixed(3)} × ${r3.toFixed(2)} = 1, so the third slope is t = ${t3.toFixed(3)}.`;
+const roC=S(document.getElementById('figChord'),(W,H)=>{
+ const m=28,x0=-1.2,x1=2.2,y0=-3.8,y1=3.8,X=x=>m+(x-x0)/(x1-x0)*(W-2*m),Y=y=>H-m-(y-y0)/(y1-y0)*(H-2*m);
+ let up=[],dn=[];for(let i=0;i<=240;i++){const x=-1+(x1+1)*i/240,y=x*Math.sqrt(x+1);up.push(`${X(x).toFixed(1)},${Y(y).toFixed(1)}`);dn.push(`${X(x).toFixed(1)},${Y(-y).toFixed(1)}`)}
+ let out=`<line x1="${X(x0)}" y1="${Y(0)}" x2="${X(x1)}" y2="${Y(0)}" stroke="var(--line)"/><line x1="${X(0)}" y1="${Y(y0)}" x2="${X(0)}" y2="${Y(y1)}" stroke="var(--line)"/>`;
+ out+=`<line x1="${X(-1.2)}" y1="${Y(-1.2)}" x2="${X(2.2)}" y2="${Y(2.2)}" stroke="var(--mute)" stroke-dasharray="4 4"/><line x1="${X(-1.2)}" y1="${Y(1.2)}" x2="${X(2.2)}" y2="${Y(-2.2)}" stroke="var(--mute)" stroke-dasharray="4 4"/>`;
+ out+=`<polyline fill="none" stroke="var(--pr)" stroke-width="2.4" points="${up.join(' ')}"/><polyline fill="none" stroke="var(--pr)" stroke-width="2.4" points="${dn.join(' ')}"/>`;
+ const P=t=>[t*t-1,t*(t*t-1)],pts=[P(t1),P(t2),P(t3)];const sl=(pts[1][1]-pts[0][1])/(pts[1][0]-pts[0][0]),ic=pts[0][1]-sl*pts[0][0];
+ const xa=-0.4,xb=2.15;out+=`<line x1="${X(xa)}" y1="${Y(sl*xa+ic)}" x2="${X(xb)}" y2="${Y(sl*xb+ic)}" stroke="var(--ca)" stroke-width="2"/>`;
+ const lab=[`lift ${r(t1).toFixed(2)}`,`lift ${r(t2).toFixed(2)}`,`lift ${r3.toFixed(1)}`];
+ pts.forEach((p,i)=>{out+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="5.5" fill="var(--ca)"/><text x="${X(p[0])+(i==2?14:-92)}" y="${Y(p[1])+(i==2?30:-8)}">${lab[i]}</text>`});
+ out+=`<text x="${X(1.25)}" y="${Y(1.25)+22}" style="font-size:13px">wall slope +1</text><text x="${X(1.15)}" y="${Y(-1.15)+20}" style="font-size:13px">wall slope −1</text><text x="${m}" y="${m-8}" style="font-size:13px">y² = x²(x + 1)</text>`;
+ return out});
+// Torus figure
+const roT=S(document.getElementById('figTorus'),(W,H)=>{
+ const ml=92,mr=24,mt=36,mb=46,w=W-ml-mr,h=H-mt-mb,p=5;
+ let out=`<rect x="${ml}" y="${mt}" width="${w}" height="${h}" fill="var(--prf)" stroke="var(--pr)" stroke-width="1.5"/>`;
+ for(let k=1;k<p;k++)out+=`<line x1="${ml}" y1="${mt+h*k/p}" x2="${ml+w}" y2="${mt+h*k/p}" stroke="var(--line)"/><line x1="${ml+w*k/p}" y1="${mt}" x2="${ml+w*k/p}" y2="${mt+h}" stroke="var(--line)"/>`;
+ const ar=(x,y,dx,dy)=>`<path d="M${x-dx*8-dy*5},${y-dy*8+dx*5} L${x},${y} L${x-dx*8+dy*5},${y-dy*8-dx*5}" fill="none" stroke="var(--ca)" stroke-width="2"/>`;
+ out+=ar(ml+w/2,mt,1,0)+ar(ml+w/2+10,mt,1,0)+ar(ml+w/2,mt+h,1,0)+ar(ml+w/2+10,mt+h,1,0)+ar(ml,mt+h/2,0,-1)+ar(ml+w,mt+h/2,0,-1);
+ for(let j=0;j<p;j++)for(let k=0;k<p;k++)out+=`<circle cx="${ml+w*(j+.5)/p}" cy="${mt+h-h*(k+.5)/p}" r="${Math.max(4,Math.min(w,h)/40)}" fill="var(--pr)"/>`;
+ out+=`<text x="${ml}" y="${mt-12}">top glued to bottom: u ~ q·u</text><text x="${ml}" y="${mt+h+28}">angle: the 5th roots of 1</text><text x="8" y="${mt+h/2-6}" style="font-size:13px">log|u|</text><text x="8" y="${mt+h/2+12}" style="font-size:13px">steps of t</text>`;
+ return out});
+}
+</script>
+</body></html>

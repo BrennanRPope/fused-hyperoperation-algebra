@@ -1,0 +1,193 @@
+A. Symbolic identities (the Lean file's ring facts)
+  ok  K1 lift
+  ok  scale to plain mult-add
+  ok  K3 flip
+  ok  assoc
+  ok  union rule
+  ok  union = flipped mult-add
+  ok  inclusion-exclusion 3
+  ok  gini-simpson
+  ok  support count
+  ok  tsallis via lift
+  ok  kraft slack
+  ok  campbell
+  ok  bsc cascade = matrix product off-diagonal
+  ok  bsc cascade diagonal
+  ok  polarization
+  ok  piling-up
+  ok  q-ary cascade
+  ok  q-ary formula matches 2x2 matrix product, k = -2/1
+  ok  q-ary formula matches 3x3 matrix product, k = -3/2
+  ok  q-ary formula matches 4x4 matrix product, k = -4/3
+  ok  q-ary formula matches 5x5 matrix product, k = -5/4
+  ok  q-ary formula matches 8x8 matrix product, k = -8/7
+  ok  parity of 3 = odd layers
+  ok  check node
+  ok  variable node
+  ok  odds to velocity numerator
+  ok  odds to velocity denominator
+  ok  velocity corners +
+  ok  velocity corners -
+  ok  velocity addition associative (pairs)
+  ok  n flips, n=0
+  ok  n flips, n=1
+  ok  n flips, n=2
+  ok  n flips, n=3
+  ok  n flips, n=4
+  ok  n flips, n=5
+  ok  n flips, n=6
+  ok  n flips, n=7
+
+B. Laws on numbers
+  ok  [0] joint sums to 1
+  ok  [0] Shannon additive
+  ok  [0] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [0] Renyi a=0.0 additive
+  ok  [0] Renyi = log2(1+k S_T)/k, q=0.0
+  ok  [0] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [0] Renyi a=0.5 additive
+  ok  [0] Renyi = log2(1+k S_T)/k, q=0.5
+  ok  [0] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [0] Renyi a=2.0 additive
+  ok  [0] Renyi = log2(1+k S_T)/k, q=2.0
+  ok  [0] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [0] Renyi a=3.0 additive
+  ok  [0] Renyi = log2(1+k S_T)/k, q=3.0
+  ok  [0] Gini-Simpson by union rule
+  ok  [0] Gini = chance two draws differ
+  ok  [1] joint sums to 1
+  ok  [1] Shannon additive
+  ok  [1] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [1] Renyi a=0.0 additive
+  ok  [1] Renyi = log2(1+k S_T)/k, q=0.0
+  ok  [1] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [1] Renyi a=0.5 additive
+  ok  [1] Renyi = log2(1+k S_T)/k, q=0.5
+  ok  [1] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [1] Renyi a=2.0 additive
+  ok  [1] Renyi = log2(1+k S_T)/k, q=2.0
+  ok  [1] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [1] Renyi a=3.0 additive
+  ok  [1] Renyi = log2(1+k S_T)/k, q=3.0
+  ok  [1] Gini-Simpson by union rule
+  ok  [1] Gini = chance two draws differ
+  ok  [2] joint sums to 1
+  ok  [2] Shannon additive
+  ok  [2] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [2] Renyi a=0.0 additive
+  ok  [2] Renyi = log2(1+k S_T)/k, q=0.0
+  ok  [2] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [2] Renyi a=0.5 additive
+  ok  [2] Renyi = log2(1+k S_T)/k, q=0.5
+  ok  [2] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [2] Renyi a=2.0 additive
+  ok  [2] Renyi = log2(1+k S_T)/k, q=2.0
+  ok  [2] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [2] Renyi a=3.0 additive
+  ok  [2] Renyi = log2(1+k S_T)/k, q=3.0
+  ok  [2] Gini-Simpson by union rule
+  ok  [2] Gini = chance two draws differ
+  ok  [3] joint sums to 1
+  ok  [3] Shannon additive
+  ok  [3] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [3] Renyi a=0.0 additive
+  ok  [3] Renyi = log2(1+k S_T)/k, q=0.0
+  ok  [3] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [3] Renyi a=0.5 additive
+  ok  [3] Renyi = log2(1+k S_T)/k, q=0.5
+  ok  [3] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [3] Renyi a=2.0 additive
+  ok  [3] Renyi = log2(1+k S_T)/k, q=2.0
+  ok  [3] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [3] Renyi a=3.0 additive
+  ok  [3] Renyi = log2(1+k S_T)/k, q=3.0
+  ok  [3] Gini-Simpson by union rule
+  ok  [3] Gini = chance two draws differ
+  ok  [4] joint sums to 1
+  ok  [4] Shannon additive
+  ok  [4] Tsallis q=0.0: S_AB = S_A (+)_k S_B, k=1.0
+  ok  [4] Renyi a=0.0 additive
+  ok  [4] Renyi = log2(1+k S_T)/k, q=0.0
+  ok  [4] Tsallis q=0.5: S_AB = S_A (+)_k S_B, k=0.5
+  ok  [4] Renyi a=0.5 additive
+  ok  [4] Renyi = log2(1+k S_T)/k, q=0.5
+  ok  [4] Tsallis q=2.0: S_AB = S_A (+)_k S_B, k=-1.0
+  ok  [4] Renyi a=2.0 additive
+  ok  [4] Renyi = log2(1+k S_T)/k, q=2.0
+  ok  [4] Tsallis q=3.0: S_AB = S_A (+)_k S_B, k=-2.0
+  ok  [4] Renyi a=3.0 additive
+  ok  [4] Renyi = log2(1+k S_T)/k, q=3.0
+  ok  [4] Gini-Simpson by union rule
+  ok  [4] Gini = chance two draws differ
+  ok  uniform N=2, k=1: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=2, k=2: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=2, k=3: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=3, k=1: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=3, k=2: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=3, k=3: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=5, k=1: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=5, k=2: k*S_T = (N-1) fused power m = N^m - 1
+  ok  uniform N=5, k=3: k*S_T = (N-1) fused power m = N^m - 1
+
+  channels
+  ok  BSC 0.1,0.2: cascade crossover 0.2600 = p (+)_-2 q
+      capacities 0.5310, 0.2781 -> cascade 0.1733
+  ok    DPI: cascade capacity <= min
+  ok    SDPI: (1-2p)^2 multiplies
+  ok  BSC 0.05,0.3: cascade crossover 0.3200 = p (+)_-2 q
+      capacities 0.7136, 0.1187 -> cascade 0.0956
+  ok    DPI: cascade capacity <= min
+  ok    SDPI: (1-2p)^2 multiplies
+  ok  BSC 0.25,0.25: cascade crossover 0.3750 = p (+)_-2 q
+      capacities 0.1887, 0.1887 -> cascade 0.0456
+  ok    DPI: cascade capacity <= min
+  ok    SDPI: (1-2p)^2 multiplies
+  ok  BSC 0.01,0.4: cascade crossover 0.4020 = p (+)_-2 q
+      capacities 0.9192, 0.0290 -> cascade 0.0279
+  ok    DPI: cascade capacity <= min
+  ok    SDPI: (1-2p)^2 multiplies
+  ok  3-ary symmetric: error 0.22750 = weight -(1+1/2)
+  ok  4-ary symmetric: error 0.23000 = weight -(1+1/3)
+  ok  6-ary symmetric: error 0.23200 = weight -(1+1/5)
+  ok  BEC cascade erasure 0.4800 = union rule
+  ok  BEC capacity multiplies
+
+  compression
+  ok  [0] Kraft sums multiply (1.000*1.000)
+  ok  [0] Kraft slack composes by union rule
+  ok  [0] expected lengths add
+  ok  [0] Campbell M multiplies, M-1 mult-adds
+  ok  [0] Campbell cost >= Renyi(1/(1+t)) bound (Campbell 1965)
+  ok  [1] Kraft sums multiply (1.000*1.000)
+  ok  [1] Kraft slack composes by union rule
+  ok  [1] expected lengths add
+  ok  [1] Campbell M multiplies, M-1 mult-adds
+  ok  [1] Campbell cost >= Renyi(1/(1+t)) bound (Campbell 1965)
+  ok  [2] Kraft sums multiply (1.000*1.000)
+  ok  [2] Kraft slack composes by union rule
+  ok  [2] expected lengths add
+  ok  [2] Campbell M multiplies, M-1 mult-adds
+  ok  [2] Campbell cost >= Renyi(1/(1+t)) bound (Campbell 1965)
+
+  codes and decoding
+  ok  Hamming r=2: 2^1*(1+3) = 2^3
+  ok  Hamming r=3: 2^4*(1+7) = 2^7
+  ok  Hamming r=4: 2^11*(1+15) = 2^15
+  ok  Hamming r=5: 2^26*(1+31) = 2^31
+  ok  Hamming r=6: 2^57*(1+63) = 2^63
+  ok  parity of 3 bits, p=0.1: odd cube layers = (1-(1-2p)^n)/2
+  ok  parity of 5 bits, p=0.1: odd cube layers = (1-(1-2p)^n)/2
+  ok  parity of 3 bits, p=0.3: odd cube layers = (1-(1-2p)^n)/2
+  ok  parity of 5 bits, p=0.3: odd cube layers = (1-(1-2p)^n)/2
+  ok  check node p=0.1,q=0.3: rho multiplies
+  ok  variable node p=0.1,q=0.3: rho adds like velocities
+  ok  variable node: LLRs add
+  ok  rho = tanh(LLR/2)
+  ok  Gallager phi: check node in LLRs, phi(phi(x)) = x
+  ok  check node p=0.2,q=0.45: rho multiplies
+  ok  variable node p=0.2,q=0.45: rho adds like velocities
+  ok  variable node: LLRs add
+  ok  rho = tanh(LLR/2)
+  ok  Gallager phi: check node in LLRs, phi(phi(x)) = x
+
+All 178 checks passed.

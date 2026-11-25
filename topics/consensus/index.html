@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consensus without work, fused</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a federation's audit report: plain, exact, every claim gets a verdict
+   IDEA: a match report: the score line first, then the plays, then the referee's notes
+   PICTURE: the race chart: catch-up chance against confirmation depth, with the 51% line lying flat
+   COLOUR and TYPE: sky band #4fb3e8, white, ink #10223a, orange #ff7a1a for what matters; night #0b1726; Outfit + Inter
+   LAYOUT: sky band with finding, figures and the race chart; small multiples in rows; table of mechanisms; proofs and sources last */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0b1726);--ink:light-dark(#10223a,#e8eef5);--soft:light-dark(#4a5b70,#a8b6c7);--rule:light-dark(#d7e2ec,#21354d);--panel:light-dark(#f2f7fb,#112238);--sky:#4fb3e8;--org:#ff7a1a;--band:light-dark(#4fb3e8,#143a5c);--bandink:light-dark(#0b1726,#e8eef5)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:Outfit,Inter,sans-serif;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(30px,4.4vw,48px);margin:.1em 0 .35em;max-width:22ch}
+h2{font-size:clamp(23px,2.6vw,30px);margin:0 0 .45em}
+h3{font-size:19px;margin:1em 0 .3em}
+p{max-width:70ch;margin:.5em 0}.muted{color:var(--soft);font-size:14px}
+.top{background:var(--band);color:var(--bandink)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(20px,4vw,52px);align-items:center}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0 6px}
+.kpi{border-top:3px solid currentColor;padding-top:8px}.kpi b{display:block;font:700 clamp(24px,3vw,34px)/1.1 Outfit,sans-serif;white-space:nowrap}
+.kpi.key b{color:#10223a;background:var(--org);display:inline-block;padding:0 6px}
+.kpi span{font-size:14px}
+.fig{position:relative;min-height:340px;background:light-dark(#ffffff,#0b1726);border-radius:8px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig text{font:13px Inter,sans-serif;fill:var(--ink)}
+.scroll{overflow-x:auto;display:flex;gap:18px;padding:12px 0;white-space:nowrap}.scroll a{flex:none;color:var(--ink);font-weight:600;font-size:15px}
+nav.scroll{border-bottom:1px solid var(--rule)}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;background:var(--bg);z-index:2}}
+html{scroll-padding-top:72px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:12px 0}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:Outfit,sans-serif;font-size:15px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:1px 9px;border-radius:999px;border:1.5px solid currentColor;white-space:nowrap}
+.known{color:var(--soft)}.fail{color:#d0461b}.useful{color:#2f8fc4}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,36px)}
+.card img{width:100%;height:auto;border:1px solid var(--rule);border-radius:6px;background:#fff;display:block}
+.card p{font-size:15.5px}
+.idea{border-top:1px solid var(--rule);padding:26px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,3vw,44px)}
+.idea img{width:100%;height:auto;border:1px solid var(--rule);border-radius:6px;background:#fff}
+.panel{background:var(--panel);border-radius:8px;padding:18px 20px}
+ul{padding-left:1.2em}li{margin:.3em 0;max-width:72ch}
+code{overflow-wrap:anywhere;font-size:14px}
+a{color:inherit}
+@media(max-width:760px){.hero,.grid,.idea{grid-template-columns:minmax(0,1fr)}.kpis{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;font-weight:600}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head><body>
+
+<section class="band top"><div class="wrap hero">
+<div>
+<h1>Proof of stake saves the energy. The fused algebra explains why the thresholds sit where they do, but finds no better rule.</h1>
+<p>Every main alternative to proof of work fits one picture: an attacker's chances compose by mult-add, waiting for confirmations is a mult-add power, and the famous 1/2 and 1/3 lines are the identity and a corner of the cube. All of that restates known results. The two genuinely fused ideas I tested both weaken security.</p>
+<div class="kpis">
+<div class="kpi key"><b>99.99%</b><span>less electricity when Ethereum moved from work to stake</span></div>
+<div class="kpi"><b>a = 0</b><span>the 51% line is the identity of mult-add, so extra blocks buy nothing there</span></div>
+<div class="kpi"><b>2 of 2</b><span>fused-rung ideas tested failed against known attacks</span></div>
+</div>
+</div>
+<div><div class="fig" id="race" role="img" aria-label="Chance an attacker ever catches up, against confirmation depth, for attacker shares from 10% to 50%. At 50% the line stays at 1."></div>
+<p class="muted" style="color:inherit">Chance an attacker with share q ever catches up from z blocks behind: r<sup>z</sup> with r = q/(1−q). Write a = r − 1 and it is 1 + a<sup>⊕z</sup>, a mult-add power.</p></div>
+</div></section>
+
+<nav class="scroll band" style="padding-block:10px"><a href="#map">The mapping</a><a href="#plays">Pictures</a><a href="#new">New ideas tested</a><a href="#energy">Energy</a><a href="#rulecraft">For Rulecraft</a><a href="#verdict">Verdict</a><a href="#proofs">Proofs</a><a href="#sources">Sources</a></nav>
+
+<section class="band" id="map"><div class="wrap">
+<h2>Each method, through the algebra</h2>
+<p>Weighted mult-add is a ⊕<sub>k</sub> b = a + b + k·ab. With k = 1 it is plain mult-add, 1 + (a ⊕ b) = (1+a)(1+b). With k = −1 it is "at least one of two independent things happens": 1 − (1−a)(1−b).</p>
+<table class="stack"><thead><tr><th>Method</th><th>What keeps it safe</th><th>In the algebra</th><th>Verdict</th></tr></thead><tbody id="rows"></tbody></table>
+</div></section>
+
+<section class="band" id="plays" style="background:var(--panel)"><div class="wrap">
+<h2>The geometry behind the thresholds</h2>
+<div class="grid">
+<div class="card"><img src="figures/f1_bft_region.png" alt="Square of quorum size against faulty share, with a shaded safe triangle whose top corner is quorum 2/3, faulty 1/3"><h3>Why 1/3 for voting chains</h3><p>Two quorums must share an honest validator (solid line) and a quorum must form without the faulty ones (dashed line). The safe triangle's top corner is Q = 2/3, f = 1/3. Ask three quorums to share an honest node and the corner drops to 1/4; in general it is 1/(k+1).</p></div>
+<div class="card"><img src="figures/f2_committee_layers.png" alt="Bar chart of the layers of a 100-dimensional cube, with the layers at 34 or more faulty members shaded orange"><h3>Committees are cube layers</h3><p>A committee of 100 drawn from a population that is 25% faulty is a 100-dimensional cube with sides 0.75 and 0.25. Layer j holds the committees with j faulty members, Pascal-weighted. The orange layers break the 1/3 rule: 2.76% of the cube. At 1,000 members it is about one in 600 million.</p></div>
+<div class="card"><img src="figures/f6_churn.png" alt="Two curves of the share of an old validator set that has left over 400 days, crossing one third at about 208 and 253 days"><h3>Long-range attacks need a checkpoint</h3><p>Old keys that have left can't be punished, so an attacker can buy them. The share of an old set that has left climbs as a k = −1 power, 1 − (1−c)<sup>t</sup>. At Ethereum's exit cap of 256 ETH per epoch on 36 million staked, a third of an old set could be gone in 208 to 253 days. That is a loose upper bound; Ethereum's own checkpoint rule is stricter.</p></div>
+<div class="card"><img src="figures/f5_energy.png" alt="Log-scale bars: Bitcoin 138 TWh a year, Ethereum under proof of work 23 TWh, Ethereum under proof of stake 0.0026 TWh"><h3>The energy gap</h3><p>Bitcoin uses about 138 TWh a year. Ethereum used about 23 TWh before the Merge and about 0.0026 TWh after it. Bitcoin now uses roughly 53,000 times what Ethereum does.</p></div>
+</div>
+</div></section>
+
+<section class="band" id="new"><div class="wrap">
+<h2>Two fused-rung ideas, tested honestly</h2>
+<div class="idea">
+<div><h3>A. Fuse stake with time <span class="tag fail">fails</span></h3>
+<p>The natural fused rule gives each validator the weight (1+s)<sup>(1+t)</sup> − 1, stake fused with the time t since it last made a block. That is Peercoin's 2012 coin age with a steeper curve, and it has the same flaw: an attacker stays silent, lets age pile up, then switches on.</p>
+<p>In 200 simulated runs each, a 20% attacker split over 20 accounts took 68% of the next 20 blocks under the fused rule, and 53% under plain coin age. Under plain stake it took 20%. Lean checks the two-party version exactly: a 1/5 stake silent for 10 epochs outweighs a 4/5 stake that produced 1 epoch ago.</p></div>
+<img src="figures/f3_coin_age.png" alt="Bars of the attacker's share of the next 20 blocks for 10, 20 and 30 percent stake under plain stake, coin age and the fused rule; the fused rule passes half at 20 percent stake">
+</div>
+<div class="idea">
+<div><h3>B. Weigh stake by log(1 + s) <span class="tag fail">fails</span></h3>
+<p>log(1+s) is the weight that adds under mult-add, so it looked like the algebra's own choice. But stake adds with plain +. In the coordinate W = 1 + s, splitting one account into two turns 1 + s<sub>1</sub> + s<sub>2</sub> into (1+s<sub>1</sub>)(1+s<sub>2</sub>), and the extra is exactly the corner square s<sub>1</sub>·s<sub>2</sub>. Splitting a 30% stake into 1,000 accounts raises its weight 14%.</p>
+<p>The picture gives a clean rule, proved in Lean for any number of equal accounts: a weight is split-proof exactly when it adds under +. Any rule that rewards the fused corner pays it to whoever splits; any rule that punishes it (stake squared) pays whoever pools.</p></div>
+<img src="figures/f4_sybil_corner.png" alt="A square of side 1 plus s1 by 1 plus s2, divided into 1, s1, s2 and an orange corner s1 times s2 labelled Sybil gain">
+</div>
+</div></section>
+
+<section class="band" id="energy" style="background:var(--panel)"><div class="wrap">
+<h2>Where the energy saving comes from</h2>
+<p>Proof of work pays for security as a flow: power times time, an area that has to be bought again every block. Proof of stake pays with a stock: capital locked once, and burned only when someone is caught cheating. The 99.99% saving is entirely that swap from a flow to a stock. The algebra describes it but adds nothing to it.</p>
+<p>The cost of the swap is in the attacks the table lists: nothing at stake (fixed by slashing, where being caught is 1 − (1−d)<sup>m</sup> with m watchers), long-range attacks (fixed by checkpoints), and stake concentrating in pools. In January 2026 the largest liquid staking pool held about 24% of staked ETH, below the 1/3 line but close enough to watch.</p>
+</div></section>
+
+<section class="band" id="rulecraft"><div class="wrap">
+<h2>What this means for Rulecraft</h2>
+<ul>
+<li><b>Tamper-proof decision logs</b> don't need work or stake when the publishers are known. A hash-chained transparency log (as Certificate Transparency does for web certificates), countersigned by a few stewards voting under the n &gt; 3f rule, gives the same tamper evidence with almost no energy.</li>
+<li><b>Equal-credit priority markets</b> run into the Sybil corner directly: equal credits per account reward splitting. They need one account per person, after which the 1/2 and 1/3 lines become plain head counts.</li>
+</ul>
+</div></section>
+
+<section class="band" id="verdict" style="background:var(--panel)"><div class="wrap">
+<h2>Verdict</h2>
+<ul>
+<li><span class="tag known">known</span> Confirmation depth as a mult-add power, the 51% line as the identity, BFT's 1/3 as quorum overlap, committees as binomial cube layers, slashing and churn as k = −1 powers, VDFs as repeated doubling. Each is a standard result in new clothes.</li>
+<li><span class="tag useful">useful</span> One picture for all of them, and the corner-square rule for weights, which makes the Sybil problem visible at a glance.</li>
+<li><span class="tag fail">fails</span> Both fused-rung consensus rules (stake fused with age, log weighting). No new consensus mechanism here, and no lead as promising as the soliton one.</li>
+<li><span class="tag known">known</span> Selfish mining: the simulation reproduces Eyal and Sirer's threshold, (1−γ)/(3−2γ), which is 1/3 when the attacker wins no ties. Its 1/3 has a different origin from BFT's, and the algebra doesn't connect them.</li>
+</ul>
+</div></section>
+
+<section class="band" id="proofs"><div class="wrap">
+<h2>Proofs and checks</h2>
+<p><code>lean/ConsensusFused.lean</code>: 35 theorems in core Lean 4.24.0, no mathlib, no <code>sorry</code>, standard axioms only. Highlights: the mult-add power climbs the cube, 1 + k·a<sup>⊕ₖn</sup> = (1 + k·a)<sup>n</sup>; the 51% step is exactly 0 and its powers stay 0; n &gt; 3f gives honest quorum overlap and n ≤ 3f does not; three quorums need f &lt; n/4; the majority-of-three map pulls every share below 1/2 down; the Sybil corner and the split-proof rule for additive weights; both coin-age flips; slashing detection as a k = −1 power; VDF doubling and Pietrzak's halves.</p>
+<p>Lean does not check anything with real numbers or logarithms, or that a race is a gambler's ruin or a committee a binomial draw. Those are in <code>checks.py</code>, whose Monte Carlo runs match the exact formulas: double spends against Rosenfeld's formula, committees against the binomial tail, selfish mining against Eyal and Sirer.</p>
+<p class="muted">Files: math-theory/consensus/ in the project folder: index.html, checks.py, checks_output.txt, figures.py, figures/, lean/ConsensusFused.lean, SOURCES.md. Research only: nothing here is investment advice.</p>
+</div></section>
+
+<section class="band" id="sources" style="background:var(--panel)"><div class="wrap">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://jbs.cam.ac.uk/2025/cambridge-study-sustainable-energy-rising-in-bitcoin-mining/">Cambridge Centre for Alternative Finance, April 2025</a>: Bitcoin about 138 TWh a year.</li>
+<li><a href="https://consensys.io/blog/ethereum-blockchain-eliminates-99-99-of-its-carbon-footprint-overnight-after-a-successful-merge-according-to-new-report">CCRI report for ConsenSys, September 2022</a>: Ethereum about 23 million MWh a year before the Merge, about 2,600 MWh after.</li>
+<li><a href="https://ethereum.github.io/consensus-specs/electra/beacon-chain/">Ethereum consensus specs, Electra</a>: exit churn cap 256 ETH per epoch.</li>
+<li><a href="https://www.kucoin.com/news/flash/ethereum-staking-rate-hits-28-91-lido-holds-24-45-share">Staking figures, January 2026</a>: about 35.9 million ETH staked, the largest pool 24.45%.</li>
+<li>Standard results used: Nakamoto 2008; Rosenfeld 2014; Eyal and Sirer 2014; Castro and Liskov 1999; Pietrzak 2019; Wesolowski 2019; Peercoin 2012; Malkhi and Reiter 1997.</li>
+</ul>
+</div></section>
+
+<script>{
+const rows=[
+["Proof of work (Bitcoin)","An attacker must outrun the honest chain; each block costs energy","Catch-up chance r<sup>z</sup> = 1 + a<sup>⊕z</sup>, a = r − 1. a = −1 is the wall (attacker powerless), a = 0 the identity (q = 1/2), where depth stops helping","known"],
+["Proof of stake, longest chain","Same race, with stake in place of hash power","Same mult-add power; the race needs a majority, 1/2","known"],
+["BFT voting (Tendermint, HotStuff)","Two quorums of 2/3 must share an honest validator","Worst-case overlap 2Q − 1 is a straight line; the safe triangle's corner is 1/3. Random quorums overlap as a product, the k = −1 mult-add","known"],
+["Committee sampling","A random committee must stay under 1/3 faulty","Top layers of a weighted cube (binomial tail); shrinks fast with size","known"],
+["Delegated stake","Holders elect a few delegates who vote","Layers compose: spread at random, majority-of-three 3p² − 2p³ (Pascal 1,3,3,1) pulls toward 0 or 1; placed by an attacker, two bare majorities need only (1/2)² = 1/4","known"],
+["Slashing (fixes nothing at stake)","Double votes are caught and burned","Caught = 1 − (1 − d)<sup>m</sup>, a k = −1 power. Simulated: without slashing a fork never settles; with it, in 2 rounds","known"],
+["Checkpoints (fix long-range attacks)","New nodes trust a recent checkpoint","Exited share of an old set = 1 − (1 − c)<sup>t</sup>; checkpoint before it nears 1/3","known"],
+["Proof of space and time (Chia)","Storage held over time","Space × time is an area, rung 1. Nothing new","known"],
+["Verifiable delay functions","x<sup>2<sup>T</sup></sup> takes T squarings in a row","T mult-add doublings, a ⊕ a, climb a cube of dimension 2<sup>T</sup>; Pietrzak's proof checks the two half-towers","known"],
+["Fused stake × time","Weight (1+s)<sup>(1+t)</sup> − 1","Coin age by another name; silent attackers win","fail"],
+["Log stake weight","Weight log(1+s), additive under mult-add","Splitting pays the corner square s<sub>1</sub>s<sub>2</sub>","fail"]];
+document.getElementById('rows').innerHTML=rows.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td><span class="tag ${r[3]}">${r[3]=='fail'?'fails':'known'}</span></td></tr>`).join('');
+const s=document.getElementById('race');
+const qs=[0.10,0.25,0.40,0.45,0.50];
+const draw=()=>{const W=s.clientWidth,H=s.clientHeight,small=W<520;
+const L=small?36:48,R=small?54:92,T=18,B=40,pw=W-L-R,ph=H-T-B,Z=12;
+const X=z=>L+z/Z*pw,Y=p=>T+(1-p)*ph;
+let g=`<svg viewBox="0 0 ${W} ${H}">`;
+for(const p of [0,0.25,0.5,0.75,1]){g+=`<line x1="${L}" x2="${L+pw}" y1="${Y(p)}" y2="${Y(p)}" stroke="currentColor" opacity=".12"/>`;g+=`<text x="${L-6}" y="${Y(p)+4}" text-anchor="end">${p}</text>`}
+for(let z=0;z<=Z;z+=small?4:2)g+=`<text x="${X(z)}" y="${T+ph+18}" text-anchor="middle">${z}</text>`;
+g+=`<text x="${L+pw/2}" y="${H-4}" text-anchor="middle">blocks behind, z</text>`;
+const labs=[];qs.forEach(q=>{const r=q/(1-q);let d='';for(let i=0;i<=60;i++){const z=i/60*Z;d+=(i?'L':'M')+X(z).toFixed(1)+' '+Y(Math.min(1,r**z)).toFixed(1)}
+const hi=q==0.5;g+=`<path d="${d}" fill="none" stroke="${hi?'#ff7a1a':'#4fb3e8'}" stroke-width="${hi?3.5:2.2}"/>`;
+labs.push({y:Y(Math.min(1,r**Z))+4,t:small?'q '+q:'q = '+q+(hi?', a = 0':'')})});
+labs.sort((u,v)=>v.y-u.y);let last=T+ph+4;for(const l of labs){l.y=Math.min(l.y,last);last=l.y-16;g+=`<text x="${L+pw+6}" y="${l.y}">${l.t}</text>`}
+g+='</svg>';s.innerHTML=g};
+const ro=new ResizeObserver(draw);ro.observe(s);
+}</script>
+</body></html>

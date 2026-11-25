@@ -1,0 +1,26 @@
+PASS  rung2 = conj of multiply
+PASS  rung3 right identity 0: a (3) 0 = a
+PASS  rung3 left absorber 0: 0 (3) b = 0
+PASS  rung3 carries mult-add: a (3) b = a (+) ((1+a)^b - 1)
+PASS  rung3 right-distributes over rung2: (a(+)b)(3)c = (a(3)c)(+)(b(3)c)
+PASS  rung3 tower law: (a(3)b)(3)c = a(3)(b(+)c)
+PASS  rung3 sum law: a(3)(b(1)c) = (a(3)b)(+)(a(3)c)
+PASS  L linearizes rung2: L(a(+)b) = L(a)+L(b)
+PASS  LL linearizes rung3: LL(a(3)b) = LL(a)+L(b)
+PASS  rung3 root inverse: c=(1+a)^(1/(1+b))-1 solves c(3)b=a
+PASS  rung3 log inverse: b=L(a)/L(c)-1 solves c(3)b=a
+PASS  rung3 not associative (sample 1,2,1)
+   (1(3)2)(3)1 = 63   1(3)(2(3)1) = 511   (note (1(3)1)(3)1 = 1(3)(1(3)1) = 15 by coincidence)
+PASS  rung3 not commutative (1,2)
+PASS  no left identity: needed e depends on b
+   left 'identity' needed for b=0.5,1,2: [0.3104 0.4142 0.4422]
+PASS  iterating Y->Y^c equals the flow of Y'=log(c)·Y·log Y
+PASS  ladder F3 = Y log Y
+PASS  ladder F4 = Y log Y loglog Y
+   Osgood integrals to 1e+10: Y logY:    2.039   Y logY loglogY:   1.050   Y^1.5: 0.4472   Y^2: 0.0500
+   Osgood integrals to 1e+100: Y logY:    4.342   Y logY loglogY:   1.601   Y^1.5: 0.4472   Y^2: 0.0500
+   Osgood integrals to 1e+300: Y logY:    5.441   Y logY loglogY:   1.785   Y^1.5: 0.4472   Y^2: 0.0500
+PASS  Osgood: Y logY integral grows like loglog X (diverges)
+PASS  Osgood: Y^2 integral converges to 1/20
+
+19/19 checks passed

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mult-add and economic forecasting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE same careful reading document as the actuarial, toric and topology pages; honest about known vs new
+   IDEA a geometry plate laid over a central bank bulletin: ink drawings, ultramarine for mult-add, vermilion for where things blow up
+   PICTURE averaging the cube's corners: three rate worlds and the long-run rate falling toward the lowest corner
+   COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT verdict and lead plate in the first screen; verdict table; sections with plates; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:68ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:64ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+.flag{border-left:3px solid var(--red)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fit{white-space:nowrap;font-weight:600}
+.f5{color:var(--red)}.f4{color:var(--blue)}.f3{color:var(--ink)}.f1{color:var(--mute)}
+code{font-size:14px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.eq{font-size:17px}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<header class="band top">
+<div class="wrap two">
+<div>
+<h1>Mult-add can't out-forecast finance, but it points at one market failure that's real</h1>
+<p class="lede">Finance already compounds everything by mult-add, so on forecasting the algebra mostly restates what's known. One idea from it does real work: <b>average the cube's corners (discount factors), not the rates</b>.</p>
+<p>On 150 years of US interest and inflation data, averaging discount factors cut the error of 20 to 50 year discount forecasts by <b>14 to 43%</b> against the standard constant-rate method. It also says that a harm 100 years away, like climate damage, is undervalued by <b>1.7× to 5×</b> when you discount at one average rate. Weitzman found this in 1998, and the UK Treasury uses it. The other two ideas, systemic risk as lost dimension and growth of growth (the next rung), did not beat their baselines.</p>
+<p class="mute">Research only, not investment advice. Every number below was checked in Python on Shiller's S&amp;P and Treasury data (1871 to 2022) and daily prices of Dow and S&amp;P 500 stocks (1962 to 2015).</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/e1_average_corners.png" alt="Left: discount factors over 200 years for rates of 0.5, 2.5 and 4.5 percent, their average, and the factor at the average rate; the average sits well above. Right: the rate implied by the averaged factor falls from 2.5 percent toward 0.5 percent."></div>
+<figcaption class="cap">Three equally likely rate worlds. The averaged factor (blue) is held up by the low-rate corner, so the rate it implies falls toward the lowest rate. Discounting at the average rate (red) undervalues the far future.</figcaption>
+</figure>
+</div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+<a href="#verdict">Verdict</a><a href="#native">Finance is mult-add</a><a href="#discount">Long-run harms</a><a href="#dimension">Systemic risk</a><a href="#rung">Growth of growth</a><a href="#failures">Market-failure leads</a><a href="#lean">What Lean proved</a><a href="#known">Known vs new</a>
+</nav>
+
+<section class="band" id="verdict"><div class="wrap">
+<h2>Verdict, idea by idea</h2>
+<table class="stack">
+<thead><tr><th>Idea</th><th>Market failure it targets</th><th>Test on real data</th><th>Against the baseline</th><th>Known since</th></tr></thead>
+<tbody>
+<tr><td class="fit f5">Average the corners</td><td>Long-run harms discounted away; no market for 100-year promises</td><td>Forecast the discount factor history actually delivered, 10 to 50 years out</td><td><b>Beats</b> a constant average rate at every horizon: 50-year log error 1.06 → 0.66 to 0.81</td><td>Weitzman 1998; Newell and Pizer 2003; Arrow et al. 2013</td></tr>
+<tr><td class="fit f3">Lost dimension</td><td>Systemic risk: correlation nobody prices</td><td>Does a drop in effective dimension forecast next month's volatility or a 10% fall?</td><td>Barely: 1.4% better on S&amp;P 500 volatility, nothing on the Dow, worse at calling falls</td><td>Participation ratio; Kritzman's absorption ratio 2011; Moody's diversity score</td></tr>
+<tr><td class="fit f1">Growth of growth</td><td>Bubbles from reflexive feedback</td><td>Does acceleration of price, or a fitted pole, forecast 3-year returns or the peak?</td><td>No: out-of-sample R² below zero; pole dates scatter from 6 months to 30 years off</td><td>Sornette's log-periodic models, 1990s on</td></tr>
+<tr><td class="fit f4">Identities</td><td>Errors from adding rates that should compound</td><td>Fisher, return cubes, volatility drag, Gordon growth</td><td>Exact restatements, no forecasting gain; useful for teaching and for spotting mistakes</td><td>Classical</td></tr>
+</tbody></table>
+</div></section>
+
+<section class="band" id="native" style="background:var(--panel)"><div class="wrap two">
+<div>
+<h2>Finance already runs on mult-add</h2>
+<p><b>Real rates.</b> The real rate is nominal ⊖ inflation, where a ⊖ b = (a − b)/(1 + b). The usual shortcut, nominal minus inflation, was off by 2 points in 1918 and 3.7 points in the deflation of 1877. At 100% inflation a 10% real return needs 120% nominal, not 110%.</p>
+<p><b>Thirty years of the S&amp;P as a 30-cube.</b> From 1993 to 2022 real wealth grew 7.47×. Adding the 30 yearly returns (layer 1) explains only 39% of that growth. The other 61% sits in the higher layers: return on return.</p>
+<p><b>Volatility drag is a square.</b> Up s, then down s, around a mean m: (1+m+s)(1+m−s) = (1+m)² − s². Since 1871 the S&amp;P's arithmetic mean real return is 8.15% and its mult-add mean 6.68%. The 1.47-point gap is the cut-out square.</p>
+<p><b>Gordon growth is a perpetuity at r ⊖ g.</b> A dividend growing at g, discounted at r, is worth exactly D/(r ⊖ g). The price has a pole at g = r. The dividend yield measures r ⊖ g directly: 6.8% in 1950, 1.2% in 2000, 1.7% at the end of 2022, so stocks sat far closer to the pole in 2000 and 2022 than in 1950.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/e3_drag_and_pole.png" alt="Left: a square of side 1 plus m; a strip of height s from its top moves to its right side but is s too long, leaving an s by s square short. Right: price over dividend against dividend growth, rising to a pole at g equals r, with 1950, 1982, 2009, 2022 and 2000 marked on the curve."></div>
+<figcaption class="cap">Left: the s² lost to volatility. Right: the pole at g = r, with the S&amp;P placed on the curve by its dividend yield (r fixed at 7% for the picture).</figcaption>
+</figure>
+</div></section>
+
+<section class="band" id="discount"><div class="wrap">
+<h2>The lead: long-run harms are undervalued when you average rates</h2>
+<div class="two">
+<div>
+<p>Each possible future of interest rates is one path through the cube, and its discount factor is the product of its corners. The fair value of a far-off harm is the <b>average of those factors</b>. Discounting at one average rate instead takes the factor of the average path. Because 1/(1+r)ⁿ curves upward, the average of the factors is always at least the factor of the average (proved in Lean below), and the gap grows with the horizon until the lowest-rate world sets the rate.</p>
+<p>That is a market failure with a fix. Markets don't trade 100-year promises, so nobody sees this price. Projects and policies get discounted at today's average rate, and harms like climate damage, soil loss or deferred maintenance shrink to nearly nothing on paper.</p>
+<h3>The test</h3>
+<p>The real rate each year is the 10-year Treasury yield ⊖ that year's inflation (mean 2.45%, negative in 21% of years). From every starting year from 1901 on, using only earlier data, each method forecasts the discount factor that rolling the real rate forward actually delivered.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/e2_backtest.png" alt="Left: bars of mean absolute log error for four methods at 10 to 50 years; the constant average rate is worst at every horizon and the uncertain-mean method best. Right: realized over forecast ratio by horizon; the constant rate climbs to 2.8 at 50 years, the uncertain-mean line falls below 1 to 0.53."></div>
+<figcaption class="cap">Every averaged-factor method beats the constant rate on error. The constant rate undervalued the future by 1.4× at 20 years and 2.8× at 50. The uncertain-mean version overshoots past 30 years.</figcaption>
+</figure>
+</div>
+<div class="scroll"><table>
+<thead><tr><th>Horizon</th><th class="n">Constant average rate</th><th class="n">Averaged, 10-year blocks</th><th class="n">Averaged, uncertain mean</th><th class="n">Best gain</th></tr></thead>
+<tbody>
+<tr><td>10 years</td><td class="n">0.257</td><td class="n">0.235</td><td class="n">0.225</td><td class="n">−12%</td></tr>
+<tr><td>20 years</td><td class="n">0.416</td><td class="n">0.345</td><td class="n">0.291</td><td class="n">−30%</td></tr>
+<tr><td>30 years</td><td class="n">0.556</td><td class="n">0.467</td><td class="n">0.318</td><td class="n">−43%</td></tr>
+<tr><td>40 years</td><td class="n">0.768</td><td class="n">0.661</td><td class="n">0.478</td><td class="n">−38%</td></tr>
+<tr><td>50 years</td><td class="n">1.057</td><td class="n">0.805</td><td class="n">0.664</td><td class="n">−37%</td></tr>
+</tbody></table></div>
+<p class="cap">Mean absolute log error of the forecast discount factor (lower is better). "10-year blocks" resamples history in decade-long runs. "Uncertain mean" also treats the long-run average rate as unknown, drawn from its own error band.</p>
+<div class="box flag">
+<p><b>How far to trust it.</b> The windows overlap, so 50-year results rest on about two independent half-centuries, and the 1940s and 1970s (negative real rates) drive much of the gap. The direction is solid at every horizon and in every variant; the size is not. How much to lower the rate depends on how persistent rate uncertainty is: the blocks method under-corrects, the uncertain-mean method over-corrects past 30 years, and the truth sits between them.</p>
+</div>
+<p><b>What it implies.</b> With the uncertain-mean model on the full record, the certainty-equivalent rate falls from 2.3% for one year to 1.8% at 10 years, 1.3% at 50 and 0.8% at 100. A $1 million harm in 100 years is worth about $89,000 today at the constant 2.45% rate, and $155,000 to $468,000 with averaged factors (10-year blocks give the low end, the uncertain mean the high end). Beyond about 150 years the answer depends only on how low the lowest plausible long-run rate is: the lowest corner wins.</p>
+<p><b>Precedent.</b> This is not new policy. The UK Treasury's Green Book has used a falling schedule since 2003: 3.5% for the first 30 years, stepping down to 1% after 300. What mult-add adds is the picture: averaging corners, with the lowest corner taking over.</p>
+</div></section>
+
+<section class="band" id="dimension" style="background:var(--panel)"><div class="wrap">
+<h2>Systemic risk as lost dimension: true, but not a forecast</h2>
+<div class="two">
+<div>
+<p>Independent risks make a true n-cube: their generating functions mult-add, and the cube has n independent axes. Correlation leans the cube onto its diagonal. The effective dimension, (Σλ)²/Σλ² over the correlation matrix's eigenvalues, counts the axes left. Each bank or fund that piles into the same exposures removes axes for everyone and pays nothing for it, which is why systemic risk is an externality.</p>
+<p><b>The picture is striking.</b> About 417 S&amp;P 500 stocks behave like 15 independent ones (4% of the axes). The Dow stocks behave like about 6. Dimension collapsed to about 3 in 2008 to 2009 and again after the 2011 euro scare.</p>
+<p><b>The forecast is weak.</b> Adding dimension to the standard volatility model (HAR: last day, week and month) improved next-month volatility forecasts by 1.4% out of sample on the S&amp;P 500, and made them 0.4% worse on the Dow. For calling a 10% fall within three months it made things slightly worse (S&amp;P AUC 0.657 → 0.652; Dow 0.633 → 0.604). Dimension mostly moves with volatility, so it adds little the volatility model doesn't already know.</p>
+<p class="mute">Caveat: the stock lists are 2015 survivors, which flatters the early years.</p>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/e4_dimension.png" alt="Effective dimension of S&amp;P 500 members from 1988 to 2015, peaking near 67 in 1996 and falling near 3 in 2008 to 2009 and 2011 to 2012, with one-month volatility in red spiking in 1987, 2008 and 2011."></div>
+<figcaption class="cap">Blue: independent axes among S&amp;P 500 members (one-year windows). Red: one-month volatility. The cube folds flat in crises, but it folds at the same time volatility spikes, not before.</figcaption>
+</figure>
+</div>
+</div></section>
+
+<section class="band" id="rung"><div class="wrap">
+<h2>Growth of growth, the next rung: no edge</h2>
+<p>Compounding is rung 3: a steady rate and no pole. If the rate itself rises with the level, as in a bubble where rising prices pull in buyers, the path becomes hyperbolic and hits a pole at a finite time, P ~ (t<sub>c</sub> − t)<sup>−1/ε</sup>. The order of the pole is again a dimension, which is where your infinity test meets reflexive feedback.</p>
+<p>I tested it two ways on the S&amp;P since 1885. <b>Acceleration</b> of the real log price over the past five years did not forecast the next three years' real return (out-of-sample R² −0.017; Shiller's CAPE, the standard baseline, scored −0.012, and the two together −0.073). <b>Fitting a pole</b> to five-year run-ups gave 1931 for the 1929 peak, early 1988 for August 1987 and early 2023 for January 2022, but 2024 for the 2000 peak and 2037 for 2007. Close sometimes, wildly off other times: no usable signal.</p>
+</div></section>
+
+<section class="band" id="failures" style="background:var(--panel)"><div class="wrap">
+<h2>Ideas for fixing market failures</h2>
+<p>These follow from the geometry. Only the first was tested here; the rest are leads.</p>
+<ol>
+<li><b>Discount long-run harms by averaging factors.</b> Use a falling discount schedule for anything that lasts decades (climate, infrastructure, pensions, soil and water). Tested above: it beats the constant rate, and the gap is 1.7× to 5× at 100 years.</li>
+<li><b>Create the missing market.</b> The reason nobody sees the long-run price is that no one trades 100-year promises. A government that issues very long inflation-linked bonds lets the market reveal the long rate instead of an analyst guessing it. Britain's consols, perpetual bonds, ran from 1752 to 2015.</li>
+<li><b>Price compounding damage as a perpetuity at r ⊖ g.</b> A pollutant whose yearly damage grows at g is a Gordon stream, worth D/(r ⊖ g). As g nears r the fair tax heads for the pole, so a tax set with a slightly too-high r or too-low g is badly too small. This is the social cost of carbon's sensitivity, seen as distance from a pole.</li>
+<li><b>Charge for removed axes.</b> A systemic-risk surcharge tied to how much an institution lowers the system's effective dimension. It didn't forecast crashes here, but as a price on the externality it doesn't need to: it measures the damage, like a carbon tax measures emissions.</li>
+<li><b>Know when insurance fails.</b> From the actuarial page: once losses have tail dimension below 1 (no finite mean), pooling stops reducing risk and private catastrophe insurance can't work (Ibragimov, Jaffee and Walden 2009). The infinity test says when a public backstop is needed. Danish fire losses measured about 1.4, so they are insurable.</li>
+</ol>
+</div></section>
+
+<section class="band" id="lean"><div class="wrap">
+<h2>What Lean proved</h2>
+<p>File <code>lean/FinanceMultAdd.lean</code>, core Lean 4.37 with no mathlib and no <code>sorry</code>, only Lean's standard axioms:</p>
+<ul>
+<li><b>fisher:</b> (nominal ⊖ inflation) ⊕ inflation = nominal.</li>
+<li><b>mall_growth:</b> mult-adding a list of returns gives total growth minus 1.</li>
+<li><b>drag, drag_le:</b> (1+m+s)(1+m−s) = (1+m)² − s² ≤ (1+m)².</li>
+<li><b>gordon:</b> with q(1+j) = 1, j·(q + … + q<sup>N</sup>) = 1 − q<sup>N</sup>: a growing stream is a flat perpetuity at j = r ⊖ g. <b>gsum_le</b>: the price never passes D/j. <b>gsum_pole</b>: once g ≥ r the N-year price is at least N, so it has no ceiling.</li>
+<li><b>average_factors:</b> for any horizon n, the average of two discount factors is at least the factor at the averaged growth rate (built from <b>am_hm</b> and <b>power_mean</b>). <b>lowest_rate_wins:</b> the average is at least half the lowest-rate factor, so far out the lowest corner sets the rate.</li>
+</ul>
+<p class="mute">Not proved: the limits (that the rate falls all the way to the lowest one), which need the real line, and anything statistical.</p>
+</div></section>
+
+<section class="band" id="known" style="background:var(--panel)"><div class="wrap">
+<h2>Known vs new, plainly</h2>
+<p>Every result here is known. Compounding as mult-add, the Fisher equation, volatility drag and Gordon growth are textbook. Falling long-run discount rates are Weitzman (1998, 2001), tested on US data by Newell and Pizer (2003). Effective dimension of markets is the participation ratio from physics and Kritzman's absorption ratio. Finite-time poles in prices are Sornette's.</p>
+<p>What looks new is one picture that joins them: each rate path is a corner product, fair value averages corners, and three different failures show up as the cube's geometry. Averaging favours the lowest corner (long-run discounting), correlation flattens the cube (systemic risk), and a growing stream approaches a pole (Gordon, bubbles, compounding damage). That is a teaching and design language, which suits Rulecraft's "scope matches spillover" well, but it is not a better forecaster than what economists already use.</p>
+</div></section>
+
+<footer class="band"><div class="wrap">
+<p class="mute">Files in math-theory/econ-forecasting: identities.py, discount_backtest.py, dimension_warning.py, growth_of_growth.py and their _output.txt results, figures.py, lean/FinanceMultAdd.lean, data/SOURCES.md. Data: Shiller's S&amp;P series via the Frictionless datasets mirror; daily Dow and S&amp;P 500 constituent prices from the R package qrmdata.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+name = "FusedAlgebra"
+defaultTargets = ["FusedAlgebra"]
+
+[[lean_lib]]
+name = "FusedAlgebra"

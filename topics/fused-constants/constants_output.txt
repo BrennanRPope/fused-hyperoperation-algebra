@@ -1,0 +1,50 @@
+rung 3  kiss base  1.4446678610097661336583391086   at x = 2.71828182845904523536028747135
+        e^(1/e)    1.4446678610097661336583391086   |diff| 7.21e-43;  |kiss point - e| = 1.26e-41
+        cube side whose volume can equal its dimension: max of d^(1/d) at d = 2.718281828459045235360287, side 1.444667861009766133658339
+        stretch check u=0.37: (e^(1/e))^(e(1+u))/e - 1 - (e^u - 1) = 0.0
+        stretch check u=-0.6: (e^(1/e))^(e(1+u))/e - 1 - (e^u - 1) = 0.0
+        stretch check u=2.0: (e^(1/e))^(e(1+u))/e - 1 - (e^u - 1) = 9.18e-41
+        tower lower edge e^-e = 0.065988035845312537077;  omega W(1) = 0.567143290409783873, (1/e)^omega - omega = -1.15e-41
+
+Linear extension: tower-test constant c_k, kiss point x_k (fused: subtract 1 from both)
+  k= 4  c_k = 1.640974559105270402761959   x_k = 3.31006315701388303   2-c_k = 0.35902544   [crosses below: True, clears above: True]
+  k= 5  c_k = 1.757030666275906109156715   x_k = 3.31893222483139595   2-c_k = 0.24296933  ratio 0.676747   [crosses below: True, clears above: True]
+  k= 6  c_k = 1.831639599437919017474738   x_k = 3.33354189399889734   2-c_k = 0.1683604  ratio 0.692929   [crosses below: True, clears above: True]
+  k= 7  c_k = 1.883163228580346256110464   x_k = 3.58082736650154574   2-c_k = 0.11683677  ratio 0.693968   [crosses below: True, clears above: True]
+  k= 8  c_k = 1.919856257590375178357678   x_k = 3.59853796278179974   2-c_k = 0.080143742  ratio 0.685946   [crosses below: True, clears above: True]
+  k= 9  c_k = 1.945004610477657271661389   x_k = 3.59130646069917242   2-c_k = 0.05499539  ratio 0.686209   [crosses below: True, clears above: True]
+  k=10  c_k = 1.962009955136629621074126   x_k = 3.57962658667422124   2-c_k = 0.037990045  ratio 0.690786   [crosses below: True, clears above: True]
+  k=11  c_k = 1.973471941823600108400373   x_k = 3.56649193866725054   2-c_k = 0.026528058  ratio 0.69829   [crosses below: True, clears above: True]
+  k=12  c_k = 1.981253546407245624871747   x_k = 3.55251248687091292   2-c_k = 0.018746454  ratio 0.706665   [crosses below: True, clears above: True]
+  k=13  c_k = 1.986617772125062467939486   x_k = 3.53845510371981688   2-c_k = 0.013382228  ratio 0.713854   [crosses below: True, clears above: True]
+  k=14  c_k = 1.990379662226872029562962   x_k = 3.52522983134698376   2-c_k = 0.0096203378  ratio 0.718889   [crosses below: True, clears above: True]
+  k=15  c_k = 1.993055409308391768554158   x_k = 3.51352493556561736   2-c_k = 0.0069445907  ratio 0.721866   [crosses below: True, clears above: True]
+  k=16  c_k = 1.994976703791204010148078   x_k = 3.50366447047677847   2-c_k = 0.0050232962  ratio 0.723339   [crosses below: True, clears above: True]
+  k=17  c_k = 1.996363740083201275217322   x_k = 3.49566467367088366   2-c_k = 0.0036362599  ratio 0.723879   [crosses below: True, clears above: True]
+  k=18  c_k = 1.997367695895368606714618   x_k = 3.48935390582507884   2-c_k = 0.0026323041  ratio 0.723904   [crosses below: True, clears above: True]
+  k=19  c_k = 1.998100447883174661763975   x_k = 3.24385294544147535   2-c_k = 0.0018995521  ratio 0.721631   [crosses below: True, clears above: True]
+  k=20  c_k = 1.998655543930183477294044   x_k = 3.24451906655104135   2-c_k = 0.0013444561  ratio 0.707775   [crosses below: True, clears above: True]
+  ln 2 = 0.69314718  (expected ratio if 2 - c_k shrinks like (ln c)^k near c = 2)
+
+natural extension, 20 terms: c_4 = 1.63532449506004194  kiss at x = 3.08853198894028839
+natural extension, 30 terms: c_4 = 1.63532449658629239  kiss at x = 3.08853225071336234
+natural extension, 40 terms: c_4 = 1.6353244967011786  kiss at x = 3.08853226970719681
+published (Tetration Forum 'enigma' base, Kneser): 1.63532449671527639934534, upper fixed point 3.08853227180671765
+
+H_k(2,2), k=1..8: 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0
+min over x in (0,4) of H_k(2,x) - x, k=4..12: 0.9139, 0.9139, 0.8774, 0.7921, 0.7066, 0.6246, 0.5481, 0.4781, 0.4148
+
+b=1.8 k= 3: H at x = 0.5, 1.25, 1.5, 1.75, 2, 3: 1.341641, 2.084926, 2.414953, 2.797222, 3.240000, 5.832000
+b=1.8 k= 5: H at x = 0.5, 1.25, 1.5, 1.75, 2, 3: 1.341641, 1.906179, 2.051369, 2.257000, 2.561700, 3.786848
+b=1.8 k= 8: H at x = 0.5, 1.25, 1.5, 1.75, 2, 3: 1.341641, 1.822307, 1.855396, 1.908097, 2.001542, 2.125154
+b=1.8 k=12: H at x = 0.5, 1.25, 1.5, 1.75, 2, 3: 1.341641, 1.802684, 1.806742, 1.813406, 1.825861, 1.827646
+b=1.8 k=20: H at x = 0.5, 1.25, 1.5, 1.75, 2, 3: 1.341641, 1.800038, 1.800096, 1.800192, 1.800372, 1.800373
+b=1.8 k=30: H at x = 0.5, 1.25, 1.5, 1.75, 2, 3: 1.341641, 1.800000, 1.800000, 1.800001, 1.800002, 1.800002
+
+slope test k=4 b=2.0: slope just left of 0 = 1, just right = 0.69314718056
+slope test k=4 b=2.71828: slope just left of 0 = 1, just right = 1.0
+slope test k=5 b=2.0: slope just left of 0 = 1, just right = 0.69314718056
+slope test k=5 b=2.71828: slope just left of 0 = 1, just right = 1.0
+slope test k=6 b=2.0: slope just left of 0 = 1, just right = 0.69314718056
+slope test k=6 b=2.71828: slope just left of 0 = 1, just right = 1.0
+natural extension base e: slope of sexp at 0 = 1.09177011341  (not 1: the slope test is extension-dependent above rung 3)

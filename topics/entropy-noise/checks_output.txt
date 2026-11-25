@@ -1,0 +1,69 @@
+== 1. Tsallis pseudo-additivity is weighted mult-add with k = 1 - q ==
+PASS S_q(A x B) = S_A + S_B + (1-q) S_A S_B on 1400 random pairs  max error 3.6e-15
+PASS q = 1 (k = 0): Shannon entropy adds
+PASS lens law absorbs certainty (a o 1 = 1 for all a) exactly on k + q_L = -1  [{k: -q_L - 1}]
+PASS Tsallis laws have q_L = 0, so they meet that line only at k = -1, Tsallis q = 2
+   Note: the Tsallis index q and the landscape's q are different letters for different things.
+   Tsallis line: k + q_T = 1.  'Or' line: k + q_L = -1.  They cross only at (k, q_L) = (-1, 0).
+PASS quantum Tsallis (Tr rho^q) of rho x sigma composes at k = 1 - q  max error 8.2e-15
+PASS linear entropy 1 - Tr rho^2 of two independent qubits follows the union rule (k = -1)
+PASS qubit von Neumann entropy = h((1 - r)/2): a radial function on the Bloch ball
+
+== 2. The Pauli tetrahedron: three entropies, three norms of lambda ==
+PASS collision sum p_I^2+p_X^2+p_Y^2+p_Z^2 = (1 + |lambda|^2)/4 (Parseval on the tetrahedron)
+   depolarizing hashing bound: total fault chance p = 0.189290, so p_I = 0.810710, lambda = 0.747614
+PASS depolarizing hashing point p = 0.18929 (known)
+PASS necessary (sphere): every channel with positive hashing rate lies outside the midsphere |lambda| = 1  3223 positive-rate channels sampled
+PASS sufficient (plane): any channel with some fault chance above 0.8107 has positive hashing rate  2161 channels in the four corner caps
+PASS grouping bound H(p) <= h(p_max) + (1 - p_max) log2 3 on all samples
+PASS hashing surface touches the midsphere at the 6 edge midpoints (p = 1/2, 1/2, 0, 0: H = 1, |lambda| = 1)
+PASS hashing surface touches the plane along the depolarizing diagonal
+PASS unit sphere is the tetrahedron's midsphere: edge midpoints at distance 1, corners at sqrt 3
+PASS entanglement breaking (Choi state PPT) <=> |lx|+|ly|+|lz| <= 1, the octahedron  5000/5000 agree
+PASS Choi state eigenvalues are the four fault chances, so its von Neumann entropy is H(p)
+PASS King: min output entropy over pure inputs gives capacity 1 - h((1 - max|lambda_i|)/2)  max gap 3.3e-16
+   So the three level sets are: max|lambda| (cubes, classical capacity), |lambda|_2 (spheres, collision
+   entropy), |lambda|_1 (octahedra, entanglement breaking). Their unit balls kiss at (+-1,0,0),(0,+-1,0),(0,0,+-1).
+PASS the six kissing points have |.|_1 = |.|_2 = |.|_inf = 1
+PASS composing keeps a channel inside the octahedron |.|_1 <= 1  1611 tested
+PASS composing keeps a channel inside the midsphere ball |.|_2 <= 1  3391 tested
+PASS composing keeps a channel inside the any cube max|.| <= c (c = 0.6)  1541 tested
+
+== 3. The weight is a temperature: Renyi = free energy, k = 1 - T0/T (Carnot) ==
+PASS Baez: Renyi entropy of order q = -(F(T0/q) - F(T0))/(T0/q - T0) for Gibbs states  max error 2.8e-15
+PASS 1 + k*S_Tsallis = Z(T0/q)/Z(T0)^q, a ratio of partition functions (the thermodynamics page's lift)
+PASS escort of an escort: P_b(P_a(p)) = P_{ab}(p), so q multiplies along a chain
+PASS hence k = 1 - q composes by the union rule k1 + k2 - k1 k2
+PASS k(T, T0) = 1 - T0/T is Carnot's efficiency, and Carnot cascades by the same rule
+   Landmarks: k = 1 (q = 0) is infinite temperature, every state counted once (Hartley);
+   k = 0 is T = T0, Shannon; k -> -inf is T -> 0, only the ground state (min-entropy).
+
+== 4. Stacking noise: what cancellation hides ==
+PASS lambda = 0.9: net-channel entropy <= fault-pattern entropy, net purity >= pattern purity  n=1: 0.286 vs 0.286 bits; n=2: 0.573 vs 0.453 bits; n=4: 1.146 vs 0.662 bits; n=8: 2.291 vs 0.862 bits
+PASS lambda = 0.6: net-channel entropy <= fault-pattern entropy, net purity >= pattern purity  n=1: 0.722 vs 0.722 bits; n=2: 1.444 vs 0.904 bits; n=4: 2.888 vs 0.988 bits; n=8: 5.775 vs 1.000 bits
+PASS lambda = 0.3: net-channel entropy <= fault-pattern entropy, net purity >= pattern purity  n=1: 0.934 vs 0.934 bits; n=2: 1.868 vs 0.994 bits; n=4: 3.736 vs 1.000 bits; n=8: 7.473 vs 1.000 bits
+PASS n = 2: purity gap (1+l^4)/2 - ((1+l^2)/2)^2 = (1-l^2)^2/4, a perfect square
+
+== 5. Error correction as entropy removal: the 3-bit code's body diagonals ==
+PASS the 4 syndromes split the 3-cube into its 4 body diagonals (antipodal pairs)
+PASS p = 0.05: H(faults) 0.8592 = H(syndrome) 0.8166 + H(left) 0.0426; after an alarm the doubt is exactly one fresh coin p
+PASS p = 0.1: H(faults) 1.4070 = H(syndrome) 1.2694 + H(left) 0.1376; after an alarm the doubt is exactly one fresh coin p
+PASS p = 0.2: H(faults) 2.1658 = H(syndrome) 1.7596 + H(left) 0.4062; after an alarm the doubt is exactly one fresh coin p
+PASS p = 0.3: H(faults) 2.6439 = H(syndrome) 1.9492 + H(left) 0.6947; after an alarm the doubt is exactly one fresh coin p
+PASS no-alarm chance (1-p)^3 + p^3 = (1 + 3 lambda^2)/4, alarm chance each (1 - lambda^2)/4
+PASS concatenated 3-bit code from lambda = 0.2: residual entropy falls every level  0.971 -> 0.936 -> 0.861 -> 0.715 -> 0.472 -> 0.187
+PASS concatenated 3-bit code from lambda = 0.6: residual entropy falls every level  0.722 -> 0.482 -> 0.195 -> 0.027 -> 0.000 -> 0.000
+
+== 6. Thresholds as an entropy budget (surface code) ==
+PASS h(p) = 1/2 bit at p = 0.110028  0.110028
+   Random CSS codes reach rate 1 - 2h(p) (CSS hashing), positive exactly below this p.
+   Nishimori-Nemoto duality conjecture for the square lattice gives the same 0.1100;
+   numerics for the surface code's optimal threshold: 0.1092-0.1093. Our matching run crossed near 0.10.
+PASS our earlier matching-decoder crossing (~0.10) and the optimal threshold (0.1093) both sit below 0.1100
+PASS Nishimori line at p = 0.03: e^(-2K) = p/(1-p) gives tanh K = 1 - 2p = lambda
+PASS Nishimori line at p = 0.1093: e^(-2K) = p/(1-p) gives tanh K = 1 - 2p = lambda
+PASS Nishimori line at p = 0.2: e^(-2K) = p/(1-p) gives tanh K = 1 - 2p = lambda
+PASS Kramers-Wannier lens M(t) = (1-t)/(1+t) sends the polarization lambda to the error odds p/(1-p)
+   Landauer floor (known physics, not a check): p = 0.1%, T = 20 mK: 0.0114 bits -> 2.18e-27 J per qubit per round
+
+45 / 45 checks pass

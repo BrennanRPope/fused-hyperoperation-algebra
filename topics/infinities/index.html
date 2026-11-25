@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infinities in between</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the same series as the toric, Fermat and topology pages, honest about known vs new
+   IDEA a plate from a geometry atlas: ink drawings, ultramarine for counting and steps, vermilion for the continuum
+   PICTURE two trees with the same number of pieces at every level, one countable, one the continuum
+   COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plate in the first screen; three scales; sections with plates; known-vs-new table; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:70ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:66ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.eq.r2{border-left-color:var(--red)}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+ol.key{padding-left:22px;margin:16px 0 0}ol.key li{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+code{font-size:14px;overflow-wrap:anywhere}
+a{color:var(--blue)}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band top">
+<div class="wrap two">
+<div>
+<h1>Between countable and the continuum</h1>
+<p class="lede">Sizes of infinity come in separate steps, never a smooth line, as long as the axiom of choice holds. Your continuum is real, but it lives one level finer: in fractal size and in how fast the finite stages grow, and the fused rungs walk it smoothly.</p>
+<ol class="key">
+<li><b>In the fused algebra:</b> adding up ones gives the countable infinity. Mult-adding ones gives the continuum: <span class="b">1 + 1 + 1 + … = ℵ₀</span>, <span class="r">1 ⊕ 1 ⊕ 1 ⊕ … = 2<sup>ℵ₀</sup></span>.</li>
+<li><b>Shape decides, not count.</b> The two trees on the right have about the same number of pieces at every level. One ends countable, one ends as the continuum.</li>
+<li><b>The smooth in-between:</b> the zoomed mult-add a + b + t·ab sweeps fractal dimension from 0 to 1, and the fractional rungs give a continuous family of growth rates between n and 2ⁿ.</li>
+</ol>
+</div>
+<figure style="margin:0">
+<div class="plate"><img src="figures/f1_same_count.png" alt="Left, a comb tree in which only the spine keeps splitting: countable. Right, a tree in which every branch keeps splitting: the continuum. Both have about the same number of pieces at every level."></div>
+<figcaption class="cap">Same count, different shape. Addition grows by adding dead ends; mult-add grows by splitting every branch.</figcaption>
+</figure>
+</div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+<a href="#scales">Three scales</a><a href="#fused">The fused picture</a><a href="#axioms">What the axioms allow</a><a href="#smooth">Smooth size</a><a href="#rungs">Fractional rungs</a><a href="#corrections">Corrections</a><a href="#new">Known and new</a><a href="#proofs">Proofs and files</a>
+</nav>
+
+<section class="band" id="scales">
+<div class="wrap">
+<h2>Three ways to measure the gap</h2>
+<p>Each scale answers a different question, and only cardinality is forced to be a ladder. The other two are smooth.</p>
+<div class="plate"><img src="figures/f2_three_scales.png" alt="Three rulers. Cardinality: aleph-null, aleph-one, aleph-two and so on as separate dots up to the continuum. Fractal dimension: a smooth bar from 0 to 1. Growth of finite stages: n, polynomials, fractional rungs s equals one quarter, one half, three quarters, then 2 to the n."></div>
+<p class="cap">Top: how many elements. Middle: how much room a set takes up. Bottom: how fast the pieces multiply as you zoom in.</p>
+</div>
+</section>
+
+<section class="band" id="fused" style="background:var(--panel)">
+<div class="wrap two">
+<div>
+<h2>The fused picture: corners of the infinite cube</h2>
+<p>Mult-add n ones and you get every corner of the n-cube except the origin. The corners sort into layers by how many switches are on: 1, 3, 3, 1 for the cube, Pascal's rows in general.</p>
+<div class="eq">1 ⊕ 1 ⊕ ⋯ ⊕ 1 (n times) = (1+1)ⁿ − 1 = 2ⁿ − 1</div>
+<p>Now let n be the countable infinity. Adding ones gives ℵ₀. Mult-adding ones gives every corner of the infinite-dimensional cube, which is the Cantor set, which has the size of the real line.</p>
+<div class="eq r2">1 + 1 + 1 + ⋯ = ℵ₀  &nbsp;&nbsp;  1 ⊕ 1 ⊕ 1 ⊕ ⋯ = 2<sup>ℵ₀</sup> = 𝔠</div>
+<p>Where does the jump come from? Every corner with finitely many switches on is countable, layer by layer. The grade-1 layer is exactly the addition part, n singletons. Only the corners with infinitely many switches on push past countable. So the continuum is made entirely of <b>corner terms of infinite grade</b>, the ab part of a + b + ab carried on forever.</p>
+<p>The same split is a classical theorem about shapes. Any closed set of reals is a countable "dead-end" part plus a part where every branch keeps splitting (Cantor–Bendixson). That second part, if it is there at all, contains a copy of the whole infinite cube. This is why <b>no closed, Borel or analytic set has a size strictly in between</b>: it is either countable or it holds a full mult-add copy of the continuum.</p>
+</div>
+<div>
+<h3>How the fused ladder sees infinite sizes</h3>
+<p>On infinite cardinals, a + b = a·b = max(a, b), so mult-add collapses to max too. The first rung that can climb is the fused exponent:</p>
+<div class="eq">(1+a)<sup>(1+b)</sup> − 1 &nbsp;with a = 1, b = ℵ₀ &nbsp;gives&nbsp; 2<sup>ℵ₀</sup></div>
+<p>So in cardinal arithmetic, everything at or below mult-add is flat, and one step of the exponent rung jumps straight from ℵ₀ to 𝔠. Nothing in cardinal arithmetic lands in between. That matches the fractional-rungs work: there, lower rungs zoomed out turn into max. Infinite cardinal arithmetic is the fully zoomed-out (tropical) view of the ladder.</p>
+<h3>Proved in core Lean (uncompiled)</h3>
+<p>n ones added make n; n ones mult-added make 2ⁿ − 1; the layers 1, 3, 3, 1, weighted by t, fill (1+t)ⁿ; and Cantor's diagonal: no list of 0/1 sequences indexed by its own positions holds them all, so the infinite cube has more corners than axes.</p>
+</div>
+</div>
+</section>
+
+<section class="band" id="axioms">
+<div class="wrap two">
+<div>
+<h2>What the axioms allow</h2>
+<h3>With the axiom of choice (ZFC): steps, never smooth</h3>
+<p>Every infinite size is some ℵ, and the ℵs are well-ordered: each one has a next one, with nothing between them. Gödel (1938) showed the axioms are consistent with no size between ℵ₀ and 𝔠. Cohen (1963) showed they are consistent with as many as you like. Later work pins it down: 𝔠 can be any ℵ that isn't a countable limit of smaller ones (König's theorem rules out ℵ<sub>ω</sub>).</p>
+<ul>
+<li>𝔠 = ℵ₂ gives one size in between.</li>
+<li>𝔠 = ℵ<sub>ω+1</sub> gives infinitely many.</li>
+<li>𝔠 can even be so large that there are 𝔠 many sizes in between.</li>
+</ul>
+<p>But however many there are, they are always separate steps. A dense line of cardinals is impossible with choice.</p>
+<h3>Cichoń's diagram: the in-between sizes that real geometry produces</h3>
+<p>Questions about measure and category each define a size between ℵ₁ and 𝔠: how many null sets you need to cover the line, how many thin sets add up to something fat, and so on. 𝔟 and 𝔡 count growth rates: how many functions you need so that no single function outgrows them all, or so that they outgrow every function. ZFC proves the arrows plus two equations, add(M) = min(𝔟, cov(M)) and cof(M) = max(𝔡, non(M)); every way of putting each one at ℵ₁ or ℵ₂ that respects those is consistent.</p>
+</div>
+<div>
+<div class="plate"><img src="figures/f5_cichon.png" alt="Cichoń's diagram: ten cardinal characteristics between aleph-one and the continuum, connected by arrows pointing to larger ones, with b and d in the middle row."></div>
+<p class="cap">add, cov, non, cof of the null sets (N) and the meagre sets (M), plus 𝔟 and 𝔡 for growth rates.</p>
+<div class="box">
+<h3 style="margin-top:0">Without choice, your hunch can come true literally</h3>
+<p>Drop the axiom of choice and sizes stop forming a ladder. Jech and Sochor showed that <b>any ordering you like</b> can be built into the sizes of some model of ZF, including a densely ordered one like the rationals, so a smooth-looking line of infinities becomes consistent.</p>
+<p style="margin:0">It can even be consistent to have an infinite set of reals with no countable part at all (Dedekind-finite). It is not countable, it is smaller than the line, and it isn't bigger than ℵ₀ either: an infinity sitting sideways to the countable one.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" id="smooth" style="background:var(--panel)">
+<div class="wrap two">
+<div>
+<h2>Smooth size: the zoomed mult-add sweeps dimension</h2>
+<p>Weight each switch by t and the cube's layers become C(n,k)·tᵏ, which add up to (1+t)ⁿ. That is the n-fold of the zoomed mult-add a + b + t·ab, and it is ordinary mult-add seen at scale t: t·(a ⊕<sub>t</sub> b) = ta ⊕ tb. At t = 0 it is addition; at t = 1 it is mult-add.</p>
+<p>The heaviest layer sits at the share p = t/(1+t) of switches on. The infinite corners with exactly that share form a set whose fractal dimension is the binary entropy (Besicovitch 1934, Eggleston 1949). Put the two together and the zoom maps straight onto dimension:</p>
+<div class="eq">D(t) = [ ln(1+t) − t·ln t / (1+t) ] / ln 2</div>
+<p>D(0) = 0, D(0.1) ≈ 0.44, D(0.5) ≈ 0.92, D(1) = 1. A smooth bridge from the addition rung to the mult-add rung, and every set on it is built from the layers of the mult-add cube. The first term, ln(1+t), is the log of one weighted mult-add step; the second subtracts the cost of the weight.</p>
+<p><b>The catch:</b> every set on this bridge already has the size of the continuum. Dimension 0 holds countable sets and also some uncountable ones (sparse corner sets). Dimension measures room taken up, not number of points.</p>
+</div>
+<div>
+<div class="plate"><img src="figures/f3_zoom_dimension.png" alt="Left, the dimension curve D of t rising smoothly from 0 at t equals 0 to 1 at t equals 1. Right, weighted cube layers for t equals 0.1, 0.4 and 1, each peaking at t over 1 plus t."></div>
+<p class="cap">Left: zoom t against dimension. Right: the weighted layers of a 60-cube peak at t/(1+t).</p>
+<h3>Even finer: gauges reach down to countable</h3>
+<p>Dimension can't tell apart the uncountable sets of dimension 0. Gauge functions can: replace rᵈ by any slowly shrinking h(r). Every uncountable compact set has positive size for some gauge (from Rogers), while every countable set has size zero in every gauge. The gauges form a rich ordering with no bottom step: the closest thing to a true continuum of sizes that runs right down to the countable boundary.</p>
+</div>
+</div>
+</section>
+
+<section class="band" id="rungs">
+<div class="wrap two">
+<div>
+<h2>Fractional rungs fill the growth gap</h2>
+<p>The parallel fractional-rungs work gives a smooth ladder B<sub>s</sub>: s = 0 is addition, s = 1 is mult-add. Fuse n ones at rung s and count:</p>
+<div class="eq">N<sub>s</sub>(n) = Eˢ( n · E⁻ˢ(1) ),&nbsp; with log(1 + N<sub>s</sub>(n)) = Eˢ⁻¹( n · E⁻ˢ(1) )</div>
+<p>Rung 0 gives n. Rung 1 gives 2ⁿ − 1. Every rung in between eventually outgrows every polynomial and always stays below every exponential, and each rung outgrows the one below. That is a continuous one-parameter family of growth rates, filling exactly the gap between "countable sum" and "continuum corners".</p>
+<p>Why polynomial is impossible, in one line: the half rung squared is the whole rung. If the half rung stayed under nᵏ, the whole rung would stay under n<sup>k·k</sup>, but the whole rung is exponential. This squeeze is written out in core Lean (not yet compiled); the same argument works for any fraction.</p>
+<h3>From growth to geometry</h3>
+<p>Build a Cantor set that splits every branch just often enough to keep N<sub>s</sub>(n) pieces at scale 2⁻ⁿ. Each rung gives a set C<sub>s</sub> that is uncountable, has dimension 0, and has positive size in its own gauge and zero size in the gauge of any higher rung. So the fractional rungs give a strictly ordered, smooth chain of geometric sizes, all between "countable" and "positive dimension".</p>
+</div>
+<div>
+<div class="plate"><img src="figures/f4_rung_counts.png" alt="Log-log plot of the number of digits in the count against n, for rung 0 (n), fractional rungs s equals 0.25, 0.5, 0.75, and rung 1 (2 to the n). The fractional rungs lie between, ordered, with n squared and n to the tenth dotted."></div>
+<p class="cap">Digits in the count against n, up to a million. Polynomials are straight lines here; the fractional rungs bend upward past every one of them, and stay under 2ⁿ.</p>
+<div class="box">
+<h3 style="margin-top:0">So, a continuum in between?</h3>
+<p style="margin:0">In number of points: no, every one of these sets has exactly the size of the continuum, and with choice the sizes between ℵ₀ and 𝔠 are always separate steps. In growth and in geometric size: yes, and the fused rungs and the zoomed mult-add each give a smooth dial across it. 𝔟 and 𝔡 in Cichoń's diagram are precisely the cardinals that measure this growth continuum, which is how the smooth world and the stepped world meet.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" id="corrections" style="background:var(--panel)">
+<div class="wrap">
+<h2>Two corrections to what you heard on the call</h2>
+<table class="stack">
+<thead><tr><th>Claim</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>The axioms allow many in-between sizes, even infinitely many, but always as separate steps.</td><td>Right with the axiom of choice. Without choice it can fail: sizes can sit sideways to each other, and a densely ordered family of sizes is consistent (Jech–Sochor).</td></tr>
+<tr><td>Fractal dimension gives a smooth scale between countable and uncountable sets.</td><td>Not quite. Dimension is smooth, but any set of positive dimension is already uncountable, and dimension 0 contains both countable and uncountable sets. It is a scale inside the continuum. Gauge functions get closer to the countable boundary.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="band" id="new">
+<div class="wrap">
+<h2>What is known and what might be new</h2>
+<p>No lead here is on the level of the solitons. Every mathematical fact on this page is classical. What is new is the single picture that ties them together through mult-add.</p>
+<table class="stack">
+<thead><tr><th>Piece</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Continuum hypothesis independent; 𝔠 can be any ℵ of uncountable cofinality</td><td>Known</td><td>Gödel 1938, Cohen 1963, Solovay, Easton 1970, König</td></tr>
+<tr><td>No in-between sizes for closed, Borel or analytic sets</td><td>Known</td><td>Cantor–Bendixson, Alexandrov–Hausdorff, Suslin</td></tr>
+<tr><td>Cichoń's diagram and its consistency results</td><td>Known</td><td>Cichoń; Bartoszyński–Judah</td></tr>
+<tr><td>Without choice: any order embeds into the sizes; Dedekind-finite sets of reals</td><td>Known</td><td>Jech 1966, Jech–Sochor; Karagila 2014</td></tr>
+<tr><td>Frequency-p sets have dimension H(p)</td><td>Known</td><td>Besicovitch 1934, Eggleston 1949</td></tr>
+<tr><td>Every uncountable compact set has positive size in some gauge</td><td>Known</td><td>Rogers, Hausdorff Measures</td></tr>
+<tr><td>Half-exponential growth sits between all polynomials and all exponentials</td><td>Known</td><td>Regular iteration (Szekeres 1958); standard bounds</td></tr>
+<tr><td>ℵ₀ is the fold of + on ones, 𝔠 the fold of ⊕ on ones; the continuum is the corner terms of infinite grade</td><td>Restatement in fused language</td><td>This page</td></tr>
+<tr><td>Zoom t of mult-add maps to dimension D(t) in closed form</td><td>Repackaging of Eggleston plus the binomial layers; worth keeping as a picture</td><td>This page</td></tr>
+<tr><td>Fractional rungs give a smooth chain of gauge sizes and growth rates between n and 2ⁿ</td><td>New framing of known constructions; the cleanest link from a rung parameter to a smooth size</td><td>This page, with the fractional-rungs work</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="band" id="proofs" style="background:var(--panel)">
+<div class="wrap two">
+<div>
+<h2>Proofs and checks</h2>
+<p><b>Lean, core only, no sorry, uncompiled.</b> This workspace has no Lean toolchain, so the file hasn't been run through Lean yet. Every identity in it is also checked in Python.</p>
+<ul>
+<li><code>sumOnes_eq</code>, <code>maddOnes_succ</code>: n ones added make n; mult-added make 2ⁿ − 1.</li>
+<li><code>layers_eval</code>: the mult-add cube's layers, weighted by t, fill (1+t)ⁿ; <code>layers 3 = [1,3,3,1]</code>.</li>
+<li><code>wOnes_spec</code>, <code>wOnes_zero</code>: the zoomed mult-add folded n times gives t·Wₙ + 1 = (1+t)ⁿ, and plain n at t = 0.</li>
+<li><code>cantor</code>, <code>single_inj</code>: the infinite cube has strictly more corners than axes.</li>
+<li><code>half_iter_upper</code>, <code>half_iter_lower</code>, <code>half_not_poly</code>: the half-rung squeeze.</li>
+</ul>
+<p><b>Python: 22 of 22 checks pass</b>, including the brute-force corner layers, the dimension formula, the rung counts up to n = 10⁶ and the comb-versus-splitting trees.</p>
+<p class="mute">Not proved: the limit statements (eventually beats every polynomial, gauge sizes go to zero) are argued in prose and checked numerically, not formalised. The ZFC and ZF results are cited, not reproved.</p>
+</div>
+<div>
+<h3>Files</h3>
+<p>In <code>math-theory/infinities/</code>: <code>checks.py</code> and <code>checks_output.txt</code>, <code>figures.py</code>, <code>lean/Infinities.lean</code>, this page.</p>
+<h3>Open questions worth a next step</h3>
+<ul>
+<li>Does the fractional-rung chain C<sub>s</sub> say anything about 𝔟 or 𝔡, the growth cardinals in Cichoń's diagram?</li>
+<li>Is there a fused operation whose infinite fold lands on a Dedekind-finite set in a choiceless model, a mult-add with the corners only partly there?</li>
+<li>Compile the Lean file once a toolchain is available.</li>
+</ul>
+<h3>Sources</h3>
+<p class="mute" style="font-size:14px">Karagila, <a href="https://arxiv.org/abs/1212.4396v4">Embedding orders into the cardinals with DC<sub>κ</sub></a> (reviews Jech and Jech–Sochor). Peres and Solomyak, <a href="https://arxiv.org/pdf/1107.1749">Dimension spectrum for a nonconventional ergodic average</a> (states Besicovitch–Eggleston). <a href="https://arxiv.org/pdf/2207.03077">On a topological Erdős similarity problem</a> (the Rogers gauge result). <a href="https://en.wikipedia.org/wiki/Hausdorff_measure">Hausdorff measure</a>.</p>
+</div>
+</div>
+</section>
+
+</body>
+</html>

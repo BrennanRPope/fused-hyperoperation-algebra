@@ -1,0 +1,6 @@
+k= 8 c_k=1.919856237141 2-c_k=8.014e-02 kiss x=3.599  next-closest 1.94e-01 at x=2.919 | base 2: min gap 0.7066 at x=1.564
+k=12 c_k=1.981253537104 2-c_k=1.875e-02 kiss x=3.553  next-closest 2.24e-01 at x=2.958 | base 2: min gap 0.4148 at x=1.767
+k=16 c_k=1.994976703033 2-c_k=5.023e-03 kiss x=3.504  next-closest 1.57e-01 at x=2.910 | base 2: min gap 0.2262 at x=1.877
+k=20 c_k=1.998655540572 2-c_k=1.344e-03 kiss x=3.245  next-closest 9.22e-02 at x=2.957 | base 2: min gap 0.1185 at x=1.937
+k=25 c_k=1.999755396270 2-c_k=2.446e-04 kiss x=3.249  next-closest 5.03e-02 at x=1.973 | base 2: min gap 0.0513 at x=1.973
+k=30 c_k=1.999954245367 2-c_k=4.575e-05 kiss x=3.256  next-closest 2.17e-02 at x=1.989 | base 2: min gap 0.0219 at x=1.988

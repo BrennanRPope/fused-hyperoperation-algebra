@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum noise on the cube</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a careful reading document in the same series as the toric, Fermat, topology and actuarial pages, honest about known vs new
+   IDEA a plate from a geometry atlas laid over a lab notebook: ink drawings, ultramarine for mult-add, vermilion for faults
+   PICTURE one cube of fault patterns, coloured two ways, showing why each channel has its own weight k
+   COLOUR white ground, near-black ink, ultramarine, vermilion; night is deep ink with figure plates kept white
+   TYPE Newsreader for titles, Inter for text
+   LAYOUT finding and lead plate in the first screen; ranked table; sections with plates beside text; phone stacks */
+
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1020);--ink:light-dark(#15131a,#e9e8f2);--mute:light-dark(#5d5a66,#a9a7b8);--blue:light-dark(#1d2bd8,#8f9bff);--red:light-dark(#cf3519,#ff7d5e);--wash:light-dark(#eef0ff,#191d3c);--rule:light-dark(#d9d8e0,#2c2f4a);--panel:light-dark(#f6f6f9,#151830)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,50px)}
+h2{font-size:clamp(25px,3.4vw,34px);margin-bottom:12px}
+h3{font-size:17px;margin:22px 0 6px}
+p,li{max-width:68ch}p{margin:0 0 12px}
+.lede{font-size:18px;max-width:64ch;margin-top:14px}
+.mute{color:var(--mute)}.b{color:var(--blue)}.r{color:var(--red)}
+.top{background:var(--wash)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule)}
+.nav a:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.nav{position:sticky;top:0;z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,40px);align-items:start}
+@media(max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.plate{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;margin:6px 0 4px}
+.plate img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);margin:6px 2px 0;max-width:none}
+.eq{font-family:Newsreader,Georgia,serif;font-size:20px;background:var(--panel);border-left:3px solid var(--blue);padding:10px 14px;margin:10px 0 14px;overflow-x:auto;white-space:nowrap}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:14px 0}
+.flag{border-left:3px solid var(--red)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-weight:600}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fit{white-space:nowrap;font-weight:600}
+.f5{color:var(--red)}.f4{color:var(--blue)}.f3{color:var(--ink)}.f1{color:var(--mute)}
+code{font-size:14px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.eq{font-size:17px}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<header class="band top">
+<div class="wrap two">
+<div>
+<p class="mute">Fused Hyperoperation Algebra · quantum noise · November 25, 2026</p>
+<h1>Qubit noise is mult-add with a weight, and error correction is a flow back to the clean corner</h1>
+<p class="lede">Every standard way a qubit gets noisy combines by the same rule, <b>a + b + k·a·b</b>: your mult-add with a weight k. Only the weight changes from one kind of noise to the next. Error-correcting codes then act as maps on the cube that push noise back toward the corner where nothing went wrong.</p>
+<p>The picture is exact and easy to see. Honestly, every piece of it is already known in quantum information. What it gives you is one geometric lens over all of it, not a new tool for beating real thresholds.</p>
+</div>
+<figure class="plate" style="margin:0">
+<img src="figures/q2_fault_cube.png" alt="Two copies of a 3-cube whose corners are fault patterns of three stacked noise channels. Left, for amplitude damping, every corner except 000 is orange. Right, for bit-flips, only the corners with an odd number of 1s are orange.">
+<figcaption class="cap">The same cube of fault patterns, coloured two ways. Which corners hurt sets the weight k.</figcaption>
+</figure>
+</div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+<a href="#fix">The fix from the call</a><a href="#weights">Three weights</a><a href="#cube">The fault cube</a><a href="#tetra">The tetrahedron</a><a href="#echo">Helices and echo</a><a href="#codes">Codes as cube regions</a><a href="#flow">Codes as a flow</a><a href="#surface">Surface code</a><a href="#macw">Sign flips</a><a href="#rank">Where it helps</a><a href="#known">Known vs new</a><a href="#lean">Lean</a>
+</nav>
+
+<section class="band" id="fix"><div class="wrap">
+<h2>The fix from the call</h2>
+<div class="box flag">
+<p><b>On the call, the combined error for two noise sources was given as p + q − pq.</b> That rule is right for one kind of noise and wrong for another.</p>
+<ul>
+<li><b>Amplitude damping</b> (an excited qubit relaxing, the "T1" decay): any fault counts, so the combined chance is p + q − pq. This is mult-add mirrored with a minus sign, exactly as said.</li>
+<li><b>Bit-flips and phase-flips</b>: two flips cancel, so only an odd number counts. The combined chance is <b>p + q − 2pq</b>. The call's rule overstates it by exactly p·q.</li>
+</ul>
+<p class="mute" style="margin:0">Checked both ways: a density-matrix simulation of the actual quantum channels agrees with each rule to 10<sup>−16</sup>, and the call's rule misses bit-flips by 0.07 at p = 0.13, q = 0.27. Lean proves the gap is exactly pq.</p>
+</div>
+<p>The other claim from the call holds: on bits, "any fault" is OR and "odd number of faults" is XOR, and XOR is the arithmetic that error-correcting codes run on.</p>
+</div></section>
+
+<section class="band" id="weights"><div class="wrap two">
+<div>
+<h2>One shape, three weights</h2>
+<p>Write a ⊕<sub>k</sub> b = a + b + k·a·b. With k = 1 it is your rung-1 mult-add. Multiply everything by k and any weighted version turns into plain mult-add, so they are all the same operation seen at different scales.</p>
+<div class="eq">1 + k·(a ⊕<sub>k</sub> b) = (1 + k·a)(1 + k·b)</div>
+<table>
+<thead><tr><th>Noise</th><th>Rule</th><th class="n">k</th><th class="n">Wall −1/k</th></tr></thead>
+<tbody>
+<tr><td>Amplitude damping (T1)</td><td>g + h − gh</td><td class="n">−1</td><td class="n">1</td></tr>
+<tr><td>Depolarizing, one qubit</td><td>p + q − (4/3)pq</td><td class="n">−4/3</td><td class="n">3/4</td></tr>
+<tr><td>Bit-flip or phase-flip</td><td>p + q − 2pq</td><td class="n">−2</td><td class="n">1/2</td></tr>
+</tbody>
+</table>
+<p style="margin-top:12px">The coordinate 1 + k·a is what physicists call the fidelity or polarization: how much of the qubit's state survives. Stacking channels multiplies it, so on a log scale noise adds up in a straight line.</p>
+<p><b>The wall is mult-add's −1.</b> In plain mult-add, −1 swallows everything: (−1) ⊕ b = −1. Here the matching point −1/k is total noise, where the qubit holds no information at all. You've said you dislike 0 × 4 = 0 because information is lost. Quantum noise is exactly that loss, and noise reduction is the work of staying away from the wall.</p>
+</div>
+<figure class="plate">
+<img src="figures/q1_three_rules.png" alt="Left: combined error chance against the number of stacked noise channels, three curves rising toward walls at 1, 0.75 and 0.5. Right: the same in the coordinate 1 plus k times the error, on a log scale, as three straight lines.">
+<figcaption class="cap">Left: stacked 5% channels creep toward their walls. Right: in the 1 + k·a coordinate each is a straight line, the mult-add log at work.</figcaption>
+</figure>
+</div></section>
+
+<section class="band" id="cube"><div class="wrap">
+<h2>The fault cube: stacking noise climbs the layers</h2>
+<p>Stack n channels and each fault pattern is a corner of the n-cube, weighted by p for every channel that fired and 1 − p for every one that didn't. This is your Pascal cube: layer j holds C(n, j) corners. The picture at the top shows n = 3.</p>
+<ul>
+<li><b>Amplitude damping</b> counts every corner except the empty one: 1 − (1 − p)<sup>n</sup>.</li>
+<li><b>Bit-flips</b> count only the odd layers, because even layers cancel back to no flip: the chance is (1 − (1 − 2p)<sup>n</sup>)/2. The signs +, −, +, − on the layers are the same cube signs that played the Möbius role on the birth-of-a-prime page.</li>
+</ul>
+<p>So the weight k is a statement about geometry: which corners of the cube hurt.</p>
+</div></section>
+
+<section class="band" id="tetra"><div class="wrap two">
+<div>
+<h2>Every Pauli channel is a point in a tetrahedron inside the cube</h2>
+<p>A general "Pauli" noise channel flips a qubit by X, Y or Z with some chances. Record how much of each direction survives, (λx, λy, λz), and you get a point in the cube [−1, 1]³. The points that are real channels fill the tetrahedron on four alternate corners of that cube: no noise, a certain X, a certain Y, a certain Z.</p>
+<p>Two facts make this the cleanest geometric picture in the whole study:</p>
+<ul>
+<li><b>Composing two channels multiplies the coordinates</b>, one axis at a time. Each axis is its own mult-add.</li>
+<li><b>The four faces are the four chances.</b> 1 + λx + λy + λz is four times the chance of no error, and so on, so "inside the tetrahedron" means exactly "all chances are nonnegative".</li>
+</ul>
+<p>Repeating a channel walks the point toward the centre, total noise. Depolarizing noise is the diagonal from the clean corner through the centre. A known trick called twirling (randomly rotating the noise) projects any channel onto that diagonal, which is why so much of quantum computing models noise as depolarizing.</p>
+</div>
+<figure class="plate">
+<img src="figures/q3_tetrahedron.png" alt="A cube from minus 1 to 1 on three axes with a shaded tetrahedron on four alternate corners labelled identity, X, Y and Z. A diagonal line runs from the identity corner through the centre. A curve of dots shows one channel applied again and again, heading toward the centre.">
+<figcaption class="cap">Checked on 2,000 random pairs of channels: coordinates multiply and stay inside. Lean proves both facts.</figcaption>
+</figure>
+</div></section>
+
+<section class="band" id="echo"><div class="wrap">
+<h2>Helices and the echo: noise reduction as a mirror</h2>
+<figure class="plate">
+<img src="figures/q4_echo_helix.png" alt="Left: seven helices of different pitch over time, ending at scattered points. Middle: the same helices mirrored at the halfway mark, all returning to one point. Right: average coherence over many qubits against time: falls fast with no echo, stays at 1 with echo under frozen noise, and falls more slowly with echo under drifting noise.">
+<figcaption class="cap">Left and middle: each qubit's phase is a helix (your curves via i). Right: what survives on average.</figcaption>
+</figure>
+<p>A qubit in superposition carries a phase that turns at a slightly wrong rate when its surroundings jitter. Over time its state draws a helix, exactly your "curves via i" picture, and different qubits get different pitches, so their helices fan out and the average washes away.</p>
+<p>The spin echo flips the qubit at the halfway mark. That mirrors the helix, the second half unwinds the first, and every qubit lands back on the same point. In mult-add terms, the second half is composed with its own inverse: a ⊕ (−a/(1 + a)) = 0. It also matches your idea of negatives as a mirror image. With frozen noise the echo undoes everything; with slowly drifting noise it undoes the slow part and buys time. Stacking many such mirrors is dynamical decoupling, one of the main noise-reduction methods on real hardware. All of this is known physics (Hahn, 1950), but it is your geometry exactly.</p>
+</div></section>
+
+<section class="band" id="codes"><div class="wrap two">
+<div>
+<h2>A code is a region of the cube</h2>
+<p>Store one bit as n copies and take a majority vote. Every pattern of flips is a corner of the n-cube, and the vote fails on the upper half of the layers. So the chance of failure is a sum of whole cube layers.</p>
+<ul>
+<li><b>The distance</b> of a code is the lowest layer that fails. For 7 copies that is layer 4, so failure starts as 35·p<sup>4</sup>.</li>
+<li><b>In the survival coordinate</b> λ = 1 − 2p, a 3-copy vote is the polynomial f(λ) = (3λ − λ³)/2. Its only fixed points are 1 (clean), 0 (the wall) and −1. Between the wall and the clean corner it always helps (proved in Lean).</li>
+<li><b>Every curve crosses at p = 1/2</b>, the wall for k = −2. Below it, more copies win; above it, the vote is worse than useless.</li>
+</ul>
+</div>
+<figure class="plate">
+<img src="figures/q6_repetition_layers.png" alt="Left: bars of 1, 7, 21, 35, 35, 21, 7, 1 corners in each layer of the 7-cube, with layers 4 to 7 in orange. Right: chance the vote is wrong against flip chance per copy for 1, 3, 5, 9 and 21 copies, all crossing at one half.">
+<figcaption class="cap">Left: the 7-cube by layers, failing layers in orange. Right: more copies sharpen the curve around the wall.</figcaption>
+</figure>
+</div></section>
+
+<section class="band" id="flow"><div class="wrap">
+<h2>A code is a flow on the square, and the Shor code's safe region is a box</h2>
+<figure class="plate">
+<img src="figures/q5_code_flow.png" alt="Left: stream lines on the unit square for the 3-qubit bit-flip code, pushing right toward eta x equals 1 and down toward eta z equals 0. Middle: the phase-flip code, pushing up and left. Right: a zoomed square from 0.6 to 1 where a box in the top right corner is shaded as the safe region, bounded at about 0.81 and 0.85.">
+<figcaption class="cap">Axes are survival coordinates: η = 1 − 2 × (flip chance). The green dot is the clean corner.</figcaption>
+</figure>
+<p>Give each qubit a bit-flip chance and a phase-flip chance and plot their survival coordinates (ηx, ηz) on a square. A code is a map on that square, and the arrows show where it sends the noise.</p>
+<ul>
+<li><b>The 3-qubit bit-flip code</b> votes on bit-flips, so ηx moves to f(ηx), toward 1. Phase-flips pass straight through and an odd number becomes a logical phase-flip, so ηz is cubed: worse. It helps one kind of noise and hurts the other.</li>
+<li><b>The phase-flip code</b> is the mirror image.</li>
+<li><b>The Shor code</b> nests one inside the other. Concatenating it again and again, the safe region is a box: <b>bit-flips below 9.67%</b> and <b>phase-flips below 7.47%</b>. Inside the box the noise is crushed to zero; outside it wins.</li>
+</ul>
+<p>The box shape is a real geometric fact: in this code the two kinds of noise never mix, so the two thresholds are independent. The lopsided box is a design hint. If your hardware's noise is mostly phase-flips, swap the inner and outer codes and the larger allowance goes to phase-flips. That is the idea behind tailoring codes to biased noise, an active known area.</p>
+<p class="mute">These are code-capacity numbers: perfect gates and measurement, independent flips, and block-by-block decoding. Checked three ways: a full density-matrix simulation of the 3-qubit code matches the formulas to six digits, Monte Carlo on 9 and 81 qubits matches the Shor map, and Lean confirms by exact rational arithmetic that the thresholds sit between 9.65% and 9.70%, and between 7.45% and 7.50%.</p>
+</div></section>
+
+<section class="band" id="surface"><div class="wrap two">
+<div>
+<h2>The surface code: the cube gives the shape, not the number</h2>
+<p>The code real hardware is building toward is the surface code: qubits on a grid, checks on its squares. With bit-flip noise and a standard decoder (minimum-weight matching), bigger grids win below a crossing near 10%, matching the known value of about 10.3%. The best possible decoder reaches about 10.9%.</p>
+<p>The cube still describes it: failures are a region of the n-cube, and the lowest failing layer is half the grid width, so failures fall off like p raised to that power. But the threshold number itself comes from statistical physics (it maps onto a random magnet), and the cube gives no shortcut to it. I want to be plain about that.</p>
+</div>
+<figure class="plate">
+<img src="figures/q7_surface.png" alt="Chance the code fails against bit-flip chance per qubit for 6 by 6, 10 by 10, 14 by 14 and 18 by 18 grids. The curves cross near 0.10; below it the bigger grids fail less.">
+<figcaption class="cap">My simulation, 3,000 to 6,000 trials per point (toric version of the code).</figcaption>
+</figure>
+</div></section>
+
+<section class="band" id="macw"><div class="wrap">
+<h2>Switching to the dual code is flipping the cube's signs</h2>
+<p>Every linear code has a dual code. A classic theorem (MacWilliams, 1963) says the dual's layer counts come from the code's by substituting x → x + y and y → x − y: putting + and − signs on the cube's corners. In noise terms, it turns flip chances p into survival coordinates 1 − 2p. So the chance a code misses an error can be read off the dual code's layers, weighted by powers of 1 − 2p. Same signs as the bit-flip parity and the Möbius signs on the primes page: one cube, signed. Known, but it ties three of your pages together.</p>
+</div></section>
+
+<section class="band" id="rank"><div class="wrap">
+<h2>Where the cube helps, ranked</h2>
+<table class="stack">
+<thead><tr><th>Use</th><th>Does it help?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Bookkeeping for stacked noise</td><td>Yes, for seeing</td><td>One rule, a + b + k·ab, covers every channel; the log coordinate turns a noise budget into addition.</td></tr>
+<tr><td>Code design as a flow</td><td>Yes, for seeing</td><td>The square and tetrahedron show at a glance which noise a code helps and which it hurts, and the shape of the safe region.</td></tr>
+<tr><td>Echo and decoupling</td><td>A good picture</td><td>Mirror the helix, compose with the inverse. Explains it; designs nothing new.</td></tr>
+<tr><td>Thresholds of real codes</td><td>No</td><td>The surface code's threshold needs statistical physics; the cube only says how fast failures fall off.</td></tr>
+</tbody>
+</table>
+<div class="box">
+<p style="margin:0"><b>No lead here as promising as the KdV soliton cube.</b> The soliton case was a known equation whose solution is literally a weighted mult-add cube. Here the matches are just as exact, but each is a standard textbook fact, and none opens a door the field hasn't walked through. The closest to a lead is the flow-on-the-cube view of concatenation, and that idea goes back to the first threshold theorems (1996 to 1997).</p>
+</div>
+</div></section>
+
+<section class="band" id="known"><div class="wrap">
+<h2>Known vs new</h2>
+<p><b>Known:</b> the composition rules and multiplying fidelities (standard; used in randomized benchmarking), the Pauli tetrahedron (Fujiwara and Algoet 1999; King and Ruskai), twirling, the spin echo (Hahn 1950) and dynamical decoupling, repetition and Shor codes (Shor 1995), concatenated thresholds as fixed points (Aharonov and Ben-Or; Knill, Laflamme and Zurek), surface code thresholds (Dennis, Kitaev, Landahl and Preskill 2002), MacWilliams (1963), biased-noise tailoring (Tuckett and others).</p>
+<p><b>New here:</b> reading all of it as one weighted mult-add, with −1/k as the information-killing wall; the Shor code's two concatenated code-capacity thresholds stated as one picture, a box (the numbers follow directly from the standard recursion and may well be in the literature; I didn't find them quoted); and the formal check of every algebraic step in core Lean.</p>
+</div></section>
+
+<section class="band" id="lean"><div class="wrap">
+<h2>What Lean checked</h2>
+<p>File <code>QuantumNoise.lean</code>: core Lean 4.37, no mathlib, no <code>sorry</code>, only Lean's standard axioms. 29 theorems, including:</p>
+<ul>
+<li>Weighted mult-add is associative, scaling turns it into plain mult-add, 1 + k·a multiplies, and −1/k absorbs everything.</li>
+<li>The amplitude-damping, bit-flip and depolarizing rules, and that the call's rule misses bit-flips by exactly pq.</li>
+<li>Stacking n channels: 1 + k·(n-fold) = (1 + k·a)<sup>n</sup>, by induction.</li>
+<li>Pauli channels: composing multiplies all three coordinates, and the tetrahedron's faces are the four chances.</li>
+<li>The 3-copy vote in survival coordinates is (3λ − λ³)/2, its fixed points are −1, 0, 1, and it always helps between 0 and 1. Phase-flips through the bit-flip code are cubed.</li>
+<li>The Shor thresholds bracketed by exact rational arithmetic; MacWilliams for the 3-copy code; the mult-add inverse behind the echo.</li>
+</ul>
+<p class="mute"><b>What Lean did not check:</b> that these formulas describe the quantum channels (the density-matrix simulations in <code>checks.py</code> do that), anything with real numbers, limits or continuity, and the surface code. All numbers are in <code>checks_output.txt</code>; pictures come from <code>figures.py</code>.</p>
+</div></section>
+
+</body>
+</html>

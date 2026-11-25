@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermodynamics on the square</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE a technical plate for one reader who thinks in pictures; calm, exact, honest about what is old
+   IDEA a thermal survey sheet: a heat map of the law plane, hot and cold inks, numbered stations
+   PICTURE the (k, q) landscape with thermodynamics' laws pinned in heat red over the earlier pages in grey
+   COLOUR white sheet (charcoal at night), heat red for laws found here, cold blue for walls and two-wall country
+   TYPE Archivo light for the title, Archivo for text
+   LAYOUT verdict and figures on top, map with its legend, then one band per family of laws, status table, files */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#131518);--bg2:light-dark(#f4f6f8,#1b1e22);--ink:light-dark(#16181d,#eef1f5);--mute:light-dark(#5b6370,#a3acb9);--hot:light-dark(#c8321f,#ff7a5c);--cold:light-dark(#1f63a8,#79b8f2);--line:light-dark(#d8dde3,#2f343a);--hotbg:light-dark(#fde7e2,#3a1f1a);--coldbg:light-dark(#e3eef9,#16263a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}html{scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font:16.5px/1.6 Archivo,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(26px,4vw,56px) max(5vw,16px)}
+.band+.band{border-top:1px solid var(--line)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-weight:300;font-size:clamp(32px,4.6vw,52px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;max-width:20ch}
+h2{font-weight:600;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:0 0 12px;text-wrap:balance}
+h3{font-size:17px;margin:18px 0 4px}
+p{margin:0 0 12px;max-width:72ch}
+.lede{font-size:18.5px;max-width:70ch}
+.mute{color:var(--mute)}
+a{color:var(--cold)}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:18px;margin:22px 0 4px}
+.nums div{border-top:2px solid var(--ink);padding-top:8px}
+.nums big{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:300;line-height:1.1}
+.plate{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;margin-top:22px}
+.fig{position:relative;min-height:500px;background:var(--bg2);border:1px solid var(--line)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px Archivo,sans-serif}
+.legend{list-style:none;margin:0;padding:0;font-size:14.5px;line-height:1.35;display:grid;gap:7px;align-content:start}
+.legend li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px}
+.legend b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--hot);color:#fff;font-size:12px}
+.legend small{display:block;color:var(--mute)}
+.shot{background:#fff;border:1px solid var(--line);padding:8px;margin:14px 0 6px}
+.shot img{display:block;width:100%;height:auto}
+.cap{font-size:14px;color:var(--mute);max-width:80ch}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px}
+.tag{display:inline-block;font-size:12.5px;padding:1px 8px;border-radius:10px;border:1px solid currentColor;white-space:nowrap}
+.k{color:var(--mute)}.n{color:var(--hot)}.s{color:var(--cold)}
+.lead{background:var(--hotbg);border-left:4px solid var(--hot);padding:16px 18px;margin:8px 0 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600}
+td code,p code{font-size:13px;overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+@media(max-width:900px){.plate{grid-template-columns:minmax(0,1fr)}.fig{min-height:400px}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.2em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.8em;margin-inline-start:-7.2em;color:var(--mute)}.stack td:empty{display:none}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<section class="band"><div class="wrap">
+<h1>Thermodynamics runs on the mult-add square</h1>
+<p class="lede">Almost every way thermodynamics combines two things is mult-add with a weight: independent systems at k = +1, engines in series at k = −1, entropy and free energy at k = 0, Ising bonds in series at the parity weight −2. Each is known physics. Nothing here beats the solitons as a discovery. The most promising door is Lee–Yang: a proved "all zeros on a circle" theorem whose proof is built from mult-add squares.</p>
+<div class="nums">
+<div><big>30</big>laws tested, every one placed on the map</div>
+<div><big>55 / 55</big>Python checks pass, plus 25 / 25 for the Lean identities</div>
+<div><big>68</big>Lean theorems written in core Lean, not yet compiled</div>
+<div><big>0</big>new laws: one new placement (Stokes on the border) and some tidy readings</div>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Where thermodynamics lands on the landscape</h2>
+<p>Each point (k, q) is the law (a + b + k·ab)/(1 − q·ab): k is how full the corner cell ab is, q is how much the cube's next layer bends. Grey rings are the laws from earlier pages. Red stations are thermodynamics. Most of it lies on the straight line q = 0, where mult-add lives. It also reaches the velocity point, the border parabola and the turning country above it.</p>
+<div class="plate">
+<div class="fig"><svg id="map" role="img" aria-label="The k–q plane with the parabola k² = 4q splitting it into a two-walled country below and a turning country above, with thermodynamics laws pinned as numbered red dots"></svg></div>
+<ol class="legend" id="legend"></ol>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>The square: what the corner means in heat</h2>
+<div class="shot"><img src="figures/f1_three_squares.png" alt="Three squares. Left: a square of side 1 + z_A by 1 + z_B; the unit cell is both systems in their ground states, the side cells are one system excited, the red corner z_A·z_B is both excited. Middle: a unit square of heat; a red strip η₁ is stage one's work, a strip below is stage two's work, and the remaining box (1 − η₁)(1 − η₂) is waste. Right: a unit square of cold heat grows by u₁ of work, then the whole grows by a strip u₂(1 + u₁)."></div>
+<p class="cap">The geometry is derived, not imposed: count the joint states (left), follow the heat (middle and right), and the mult-add square falls out.</p>
+<div class="two">
+<div>
+<h3>Partition functions (k = +1)</h3>
+<p>Measure energies from each ground state, so Z = 1 + z with z the excited weight. For independent systems Z_AB = Z_A·Z_B, so z_AB = z_A ⊞ z_B. The corner z_A·z_B is exactly "both excited". Free energy −kT ln Z is the log of the lift, so it adds, and so does heat capacity. <span class="tag k">known</span></p>
+<h3>Third law: the identity and the wall</h3>
+<p>As T → 0 every excess z goes to 0, the mult-add identity, and 0 ⊞ 0 = 0. A degenerate ground state leaves g − 1, which composes as (g₁g₂ − 1) = (g₁ − 1) ⊞ (g₂ − 1). Pauling's ice count W = (3/2)ᴺ is a climb: W − 1 = (½)^(⊞N). Absolute zero is the wall −1. A finite run of cooling steps, each keeping some heat, never lands on it (Lean: <code>unattainable</code>). <span class="tag k">known, restated</span> The cooling-step model is a simplification of Nernst's real argument.</p>
+</div>
+<div>
+<h3>Engines and fridges are one square read two ways</h3>
+<p>Run a second engine on the first engine's waste heat. The waste box multiplies, so η = η₁ ⊞₋₁ η₂, the failure-union rule. Carnot fits exactly, η(T_h,T_c) = η(T_h,T_m) ⊞₋₁ η(T_m,T_c), and a perfect stage is the wall. Cascade two fridges and the work per unit of cold heat composes at k = +1. Running an engine backwards is the mult-add inverse: u = η/(1 − η) = inv(−η). <span class="tag k">known bookkeeping</span> <span class="tag s">tidy reading</span></p>
+<p>Curzon–Ahlborn's efficiency at maximum power, 1 − √(T_c/T_h), is half a step of the k = −1 climb: two of them make one Carnot step, η_C = η_CA ⊞₋₁ η_CA. The Otto cycle composes the same way through its compression ratios. And the second law composes: stages under their Carnot bounds give a cascade under the overall bound (Lean: <code>second_law_composes</code>).</p>
+</div>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Quantum statistics: fermions are the cube, bosons are the way back</h2>
+<div class="shot"><img src="figures/f2_fermion_cube_boson_stairs.png" alt="Left: a cube whose eight corners are the eight ways to fill three fermion modes, from all empty to all full, shaded by how many are full. Right: a staircase of shrinking squares 1, z, z², z³ and so on, summing to 1/(1 − z)."></div>
+<div class="two">
+<p>Pauli lets each fermion mode be empty or full, so the many-fermion states are the corners of the cube, and the grand partition function is the corner expansion: Ξ = (1 + z₁)⋯(1 + zₙ) = 1 + (z₁ ⊞ ⋯ ⊞ zₙ). A boson mode holds any number, Ξ_B = 1/(1 − z), and its excess z/(1 − z) is the mult-add inverse of −z. So Ξ_B(z)·Ξ_F(−z) = 1: a boson is a fermion of weight −z run backwards. <span class="tag k">known</span> (the fermion–boson, or Koszul, duality; checked for 4 modes)</p>
+<p>The Fermi function lives between two walls. With t = 1 − 2n = tanh(x/2), adding energies adds t like velocities, (t₁ + t₂)/(1 + t₁t₂), with walls at n = 0 and n = 1. For bosons 1/(1 + 2n) is the same tanh, so 1 + 2n lives outside the walls. <span class="tag k">known</span></p>
+</div>
+<div class="shot"><img src="figures/f3_fermi_walls.png" alt="Left: the curve t = tanh(x/2) running from the lower wall t = −1, labelled full level, to the upper wall t = 1, labelled empty level, through the identity t = 0. Right: a segment from −1 to 1 with T = 0⁻ at the left end, negative temperatures, T = ±∞ in the middle, positive temperatures, and T = 0⁺ at the right end."></div>
+<p class="cap">Negative temperature on the segment: hotter than infinity is not past a wall. It is the other side of the identity. The only walls are absolute zero from either side (Ramsey 1956, read on the velocity segment).</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Entropy families: the weight is the entropy index</h2>
+<p>Tsallis entropy composes as S_AB = S_A ⊞ₖ S_B with k = 1 − q, and Rényi entropy is the log of the lift, so it adds. This weighted mult-add already has a name in that literature: the <b>q-sum</b>, x ⊕_q y = x + y + (1 − q)xy, with its q-logarithm and q-exponential (Nivanen, Le Méhauté and Wang 2003; Borges 2004). So the whole k-line is Tsallis' q-algebra. <span class="tag k">known</span></p>
+<p>Kaniadakis' relativistic κ-entropy uses the κ-sum x√(1 + κ²y²) + y√(1 + κ²x²), which is sinh addition. It has no corner term, and its next layer bends upward: it osculates the map at (0, κ²/2), in the turning country, the mirror of sine addition at (0, −½). <span class="tag k">known law</span> <span class="tag s">placement computed here</span></p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>The Ising bond: series is parity, parallel is velocity, duality is the lens</h2>
+<div class="shot"><img src="figures/f4_ising_lens.png" alt="Left: three spins joined by two red bonds in series, and two spins joined by two blue bonds in parallel. Right: the curve t* = (1 − t)/(1 + t) crossing the diagonal at t = √2 − 1, marked as the 2D Ising critical point."></div>
+<div class="two">
+<p>Summing out the middle spin of two bonds multiplies tanh K, so the chance p that linked spins disagree composes at k = −2, the parity weight from the information page. Bonds in parallel add K, so tanh K composes by velocity addition. <span class="tag k">known</span> (decimation; Matsui's piling-up rule is the same algebra)</p>
+<p>Kramers–Wannier duality sends tanh K to e^(−2K), which is exactly the velocity lens M(t) = (1 − t)/(1 + t). The lens turns parallel into series, so duality swaps them. Its fixed point t = √2 − 1 is tanh K_c, the critical temperature of the 2D Ising model. The same lens gives the KdV two-soliton weight, √A = M(k₂/k₁). <span class="tag k">known</span> (Kramers–Wannier 1941; M is the Cayley transform, which is why it turns up in both)</p>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Lee–Yang: the most promising door</h2>
+<div class="shot"><img src="figures/f5_lee_yang.png" alt="Left: zeros of the partition function in the complex field variable. Zeros of 25 random ferromagnets all sit on the unit circle; zeros of antiferromagnets sit on the real axis off the circle. Right: three two-by-two squares with cells 1, a·zᵢ, a·zⱼ and zᵢzⱼ, for a = 1 (plain mult-add square), a = 0.45, and a = 0 (only the diagonal cells)."></div>
+<div class="two">
+<p>For any ferromagnetic Ising model, every zero of the partition function in the field variable z lies on the unit circle (Lee and Yang 1952). It is a proved "zeros on a line" theorem, often held up as a model for the Riemann hypothesis. Each bond contributes 1 + a·zᵢ + a·zⱼ + zᵢzⱼ with a = e^(−2βJ). At infinite temperature (a = 1) that is the plain mult-add square (1 + zᵢ)(1 + zⱼ). Cooling shrinks the edge cells, and at T = 0 only the diagonal is left. Asano's proof (1970) glues these squares spin by spin, keeping only the cube's all-0 and all-1 corners. Checked here against brute force on 15 random graphs, and the circle on 40.</p>
+<p>A three-spin chain shows it in miniature: Z = 1 + (a ⊞ b)z + (a ⊞ b)z² + z³ = (1 + z)(1 + (m − 1)z + z²) with m = a ⊞ b. Ferromagnetic bonds keep 0 ≤ a ⊞ b ≤ 3, so the quadratic's zeros are on the circle (all proved in Lean: <code>chain3_multAdd</code>, <code>chain3_disc</code>). Read as a law whose walls are those zeros, a ferromagnet sits in the turning country, and infinite temperature touches the border at (2, 1), the Euler-characteristic cusp. <span class="tag k">theorem known</span> <span class="tag s">mult-add reading new to this project</span></p>
+</div>
+<div class="lead"><b>Lead check.</b> Nothing here is a discovery on the level of the solitons. Lee–Yang is the door worth opening next: rewrite Asano's contraction as an operation on mult-add squares and prove the general circle theorem in the library. That needs complex numbers, which core Lean lacks, but Gaussian rationals over Rat would do.</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>A law on the border: Stokes' pile of plates</h2>
+<div class="two">
+<div>
+<p>Stack two non-absorbing glass plates, or face two gray surfaces for radiant heat. Summing every bounce gives R = (R₁ + R₂ − 2R₁R₂)/(1 − R₁R₂) (Stokes 1862; the gray-plate rule 1/ε = 1/ε₁ + 1/ε₂ − 1 is the same law). That is (k, q) = (−2, 1), exactly on the border parabola k² = 4q. Its lens N(R) = R/(1 − R) = 1/ε − 1 turns it into plain addition, with one double wall at R = 1, a perfect mirror.</p>
+<p>Being on the border has a visible consequence. n radiation shields cut heat flow as 1/(n + 1), a power law, while absorbing plates, with two walls, fall exponentially. This law wasn't on the map before (the earlier "stacked reflections" point at (0, −1) is the coherent wave version). <span class="tag k">formula known</span> <span class="tag n">placement new here</span></p>
+</div>
+<div class="shot" style="margin-top:0"><img src="figures/f6_stokes_border.png" alt="Fraction of light transmitted against number of plates. Non-absorbing plates fall slowly like 1/n; plates that absorb 30 percent fall exponentially toward zero."></div>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Wick rotation is a change of units by i</h2>
+<p>Read a law in units i·a and it moves from (k, q) to (i·k, −q). On the k = 0 axis that flips q: thermal tanh addition at (0, −1), with two walls, becomes quantum tan addition at (0, +1), a turn. Imaginary time trades saturation for oscillation, and the map shows it as a reflection through the straight line. <span class="tag k">known</span> (Wick 1954) <span class="tag s">placement restated</span> Fluctuation theorems sit at k = +1 too: for independent processes ⟨e^(−βW)⟩ − 1 mult-adds (Jarzynski 1997), and coupled reactions multiply equilibrium constants (Hess).</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Every law, its place and its status</h2>
+<p class="mute">Status: <span class="tag k">known</span> standard physics restated; <span class="tag s">tidy reading</span> a known fact read in mult-add terms; <span class="tag n">new here</span> new to the literature as far as I found. The Lean column names theorems in <code>lean/ThermoFused.lean</code>.</p>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Law</th><th>Form</th><th>(k, q)</th><th>Status</th><th>Lean</th></tr></thead>
+<tbody id="rows"></tbody>
+</table></div>
+<p class="mute" style="margin-top:12px">Not placed: how temperature transforms under a boost is still argued (Planck–Einstein T/γ, Ott γT, Landsberg invariant), so it is left off the map as unsettled.</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>Proofs and files</h2>
+<p>All in <code>math-theory/thermodynamics/</code> in the project folder.</p>
+<ul>
+<li><code>lean/ThermoFused.lean</code>: 68 theorems, core Lean 4.37.0-rc1, no <code>sorry</code>, phrased through the library's mult-add (<code>import FusedAlgebra.Base</code>). <b>Not compiled yet:</b> Lean isn't installed where this was written. The shared library's build can compile it as a new topic. Real exp, log and square roots enter as abstract quantities with the one property each proof needs.</li>
+<li><code>checks.py</code>: 55 checks pass, exact sympy algebra plus numerics: brute-force state sums, ray-by-ray bounce sums, transfer-matrix decimation, Lee–Yang zeros and Asano gluing (<code>checks_output.txt</code>).</li>
+<li><code>lean_identities.py</code>: every ring and field identity in the Lean file, checked symbolically: 25 / 25.</li>
+<li><code>figures.py</code>, <code>figures/</code>: the pictures.</li>
+</ul>
+<p class="mute">Sources: Lee and Yang, Phys. Rev. 1952; Asano, J. Phys. Soc. Japan 1970; Kramers and Wannier, Phys. Rev. 1941; Stokes, Proc. Roy. Soc. 1862; Curzon and Ahlborn, Am. J. Phys. 1975; Tsallis, J. Stat. Phys. 1988; Nivanen, Le Méhauté and Wang, Rep. Math. Phys. 2003; Borges, Physica A 2004; Kaniadakis, Phys. Rev. E 2002; Ramsey, Phys. Rev. 1956; Jarzynski, Phys. Rev. Lett. 1997; Pauling, JACS 1935; Landauer, IBM J. 1961; Wick, Phys. Rev. 1954.</p>
+</div></section>
+
+<script>
+{
+const old=[[1,0,"Compound growth"],[0,0,"Shannon, Rényi"],[-1,0,"Union of failures"],[-2,0,"Parity"],[-1.5,0,"3-letter channel"],[-1.333,0,"depolarizing qubit"],[-1.125,0,"qutrit"],[2,0,"2x leverage"],[-0.5,0,"partial damage"],[0,-1,"Velocity addition"],[0,1,"Slope addition"],[0,-0.5,"Sine addition"],[2,1,"Euler characteristic cusp"],[2,0.5,"Rung 2"],[-1,0.5,"Rung −1"],[0.5,-0.0625,"Half rung"]];
+const st=[
+ [1,0,"Partition functions, fermion cube, fridges, Jarzynski, Hess","independent things multiply"],
+ [-1,0,"Engines in series, Carnot, Curzon–Ahlborn, Otto, heat pumps","the waste box multiplies"],
+ [0,0,"Free energy, entropy, heat capacity, Rényi, ΔG","the log of the lift adds"],
+ [-2,0,"Ising bonds in series","disagreement chance, parity weight"],
+ [0,-1,"Fermi function, Ising bonds in parallel, Doppler temperature","two walls: empty and full"],
+ [-2,1,"Stokes' pile of plates, gray-plate radiation","on the border: one double wall"],
+ [0,0.5,"Kaniadakis κ-sum (κ = 1)","third-layer match only"],
+ [0,1,"Fermi function after Wick rotation","tan addition, a turn"],
+ [null,null,"Tsallis entropy, k = 1 − q","the whole straight line"],
+ [null,null,"Lee–Yang two-spin zeros, k = 2a, q = 1","ferromagnets in the turning country"]];
+document.getElementById('legend').innerHTML=st.map((s,i)=>`<li><b>${i+1}</b><span>${s[2]}<small>${s[3]}</small></span></li>`).join('');
+const svg=document.getElementById('map');
+const draw=()=>{
+ const W=svg.clientWidth,H=svg.clientHeight,pad=W<520?28:44;
+ const k0=-3.2,k1=3.2,q0=-2,q1=2.6;
+ const X=k=>pad+(k-k0)/(k1-k0)*(W-2*pad),Y=q=>H-pad-(q-q0)/(q1-q0)*(H-2*pad);
+ let par='',above='',below='';
+ for(let i=0;i<=120;i++){const k=k0+(k1-k0)*i/120,q=Math.min(k*k/4,q1);par+=(i?'L':'M')+X(k).toFixed(1)+' '+Y(q).toFixed(1)}
+ above=par+`L${X(k1)} ${Y(q1)}L${X(k0)} ${Y(q1)}Z`;below=par+`L${X(k1)} ${Y(q0)}L${X(k0)} ${Y(q0)}Z`;
+ let g=`<path d="${below}" fill="var(--coldbg)"/><path d="${above}" fill="var(--hotbg)"/>`;
+ g+=`<line x1="${X(k0)}" x2="${X(k1)}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--mute)" stroke-width="1"/>`;
+ g+=`<line x1="${X(0)}" x2="${X(0)}" y1="${Y(q0)}" y2="${Y(q1)}" stroke="var(--line)" stroke-width="1"/>`;
+ g+=`<path d="${par}" fill="none" stroke="var(--ink)" stroke-width="1.6"/>`;
+ g+=`<line x1="${X(-2)}" x2="${X(1)}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--hot)" stroke-width="7" stroke-opacity=".28" stroke-linecap="round"/>`;
+ g+=`<line x1="${X(0)}" x2="${X(2)}" y1="${Y(1)}" y2="${Y(1)}" stroke="var(--hot)" stroke-width="7" stroke-opacity=".28" stroke-linecap="round"/>`;
+ old.forEach(o=>{g+=`<circle cx="${X(o[0])}" cy="${Y(o[1])}" r="9" fill="none" stroke="var(--mute)" stroke-width="1.3" opacity=".7"><title>${o[2]} (earlier page)</title></circle>`});
+ const off={0:[0,-22],1:[0,-22],2:[0,22],3:[0,22],4:[22,0],5:[-22,0],6:[22,0],7:[22,0]};
+ st.forEach((s,i)=>{if(s[0]===null)return;const x=X(s[0]),y=Y(s[1]);const [dx,dy]=off[i]||[0,0];
+  g+=`<circle cx="${x}" cy="${y}" r="5" fill="var(--hot)"/><line x1="${x}" y1="${y}" x2="${x+dx*.6}" y2="${y+dy*.6}" stroke="var(--hot)"/>`;
+  g+=`<circle cx="${x+dx}" cy="${y+dy}" r="11" fill="var(--hot)"><title>${s[2]}</title></circle><text x="${x+dx}" y="${y+dy+4.5}" text-anchor="middle" fill="#fff" font-weight="700">${i+1}</text>`});
+ [[ -1.3,0,9],[1.25,1,10]].forEach(([k,q,n])=>{const x=X(k),y=Y(q)-20;g+=`<circle cx="${x}" cy="${y}" r="11" fill="var(--hot)"/><text x="${x}" y="${y+4.5}" text-anchor="middle" fill="#fff" font-weight="700">${n}</text>`});
+ if(W>=520){
+  g+=`<text x="${X(1.25)}" y="${Y(2.3)}" fill="var(--hot)">no real wall: turning</text>`;
+  g+=`<text x="${X(1.15)}" y="${Y(-1.7)}" fill="var(--cold)">two real walls: saturating</text>`;
+  g+=`<text x="${X(-3.1)}" y="${Y(2.38)}" fill="var(--ink)">border k² = 4q</text>`;
+  [-3,-2,-1,0,1,2,3].forEach(k=>g+=`<text x="${X(k)}" y="${H-pad+18}" text-anchor="middle" fill="var(--mute)">${k}</text>`);
+  [-2,-1,1,2].forEach(q=>g+=`<text x="${pad-8}" y="${Y(q)+4}" text-anchor="end" fill="var(--mute)">${q}</text>`);
+ }
+ g+=`<text x="${W-pad}" y="${H-6}" text-anchor="end" fill="var(--mute)">k, corner weight →</text><text x="${pad}" y="${pad-14}" fill="var(--mute)">↑ q, bend</text>`;
+ svg.innerHTML=g;};
+const ro=new ResizeObserver(draw);ro.observe(svg);
+const R=[
+ ["Partition functions multiply","z_AB = z_A ⊞ z_B, z = Z − 1","(1, 0)","known","partition_excess"],
+ ["Free energy, heat capacity add","log of the lift","(0, 0)","known","free_energy_adds"],
+ ["Third law","excess → 0, the identity","(1, 0)","known, restated","third_law_identity"],
+ ["Unattainability","finite steps never reach the wall −1","(1, 0)","tidy reading (simplified model)","unattainable"],
+ ["Residual entropy, Pauling's ice","W − 1 = (½)^(⊞N)","(1, 0)","known","pauling_ice"],
+ ["Landauer's bound","2ⁿ − 1 = 1^(⊞n)","(1, 0)","known","landauer_states"],
+ ["Equipartition","each quadratic degree a half-step in T","(1, 0)","known, restated","equipartition"],
+ ["Fermion grand partition","corner expansion of the cube","(1, 0)","known","fermion_cube"],
+ ["Bosons","Ξ_B − 1 = inv(−z)","inverse","known (Koszul duality)","boson_mode"],
+ ["Fermi function","t = 1 − 2n, velocity addition","(0, −1)","known","fermi_velocity_num/den"],
+ ["Negative temperature","walls are T = 0±, T = ∞ is the identity","(0, −1)","known, restated","vel_identity, vel_wall_pos/neg"],
+ ["Engines in series, Carnot","η₁ ⊞₋₁ η₂","(−1, 0)","known","engine_cascade, carnot_series"],
+ ["Fridges in cascade; reversal","u₁ ⊞ u₂; u = inv(−η)","(1, 0)","tidy reading","fridge_cascade, reverse_is_inverse"],
+ ["Curzon–Ahlborn","η_C = η_CA ⊞₋₁ η_CA, a half-step","(−1, 0)","tidy reading","curzon_ahlborn_half"],
+ ["Otto cycle, heat pumps","ratios multiply","(−1, 0)","known","ratio_series"],
+ ["Second law composes","stage bounds give the overall bound","(−1, 0)","known","second_law_composes"],
+ ["Tsallis entropy (q-sum)","S_A ⊞ₖ S_B, k = 1 − q","(1 − q, 0)","known","tsallis_composes, qlog_qsum"],
+ ["Rényi entropy","log of the lift","(0, 0)","known","renyi_adds"],
+ ["Kaniadakis κ-sum","sinh addition","(0, κ²/2)","placement computed here","Python only"],
+ ["Ising bonds in series","p₁ ⊞₋₂ p₂","(−2, 0)","known","ising_series, decimation_num/den"],
+ ["Ising bonds in parallel","velocity addition of tanh K","(0, −1)","known","fermi_velocity_num/den"],
+ ["Kramers–Wannier duality","the lens M(t); fixed point √2 − 1 = T_c","lens","known","lens_vel, lens_involution, lens_fixed_point"],
+ ["Lee–Yang, three-spin chain","coefficients a ⊞ b, zeros on the circle","(2a, 1)","theorem known, reading new to this project","chain3_multAdd, chain3_disc, two_spin_no_real_zero"],
+ ["Stokes' pile, gray plates","(a + b − 2ab)/(1 − ab)","(−2, 1)","placement new here","stokes_additive, shields, stokes_double_wall"],
+ ["Wick rotation","units by i: (k, q) → (ik, −q)","(0, ∓1)","known, restated","wick_num, wick_den"],
+ ["Jarzynski equality","⟨e^(−βW)⟩ − 1 mult-adds","(1, 0)","known","jarzynski_composes"],
+ ["Hess's law","K multiplies, ΔG adds","(1, 0)","known","hess"],
+ ["Doppler temperature","T ratio = lens of boosts","(0, −1)","known","doppler_is_lens"],
+ ["Heat capacity from Var E","variances add","(0, 0)","known","Python only"],
+ ["Relativistic temperature","still argued","not placed","open question","none"]];
+const cls=s=>s.includes('new here')?'n':(s.includes('tidy')||s.includes('new to')||s.includes('computed')?'s':'k');
+document.getElementById('rows').innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td style="white-space:nowrap">${r[2]}</td><td><span class="tag ${cls(r[3])}">${r[3]}</span></td><td><code>${r[4]}</code></td></tr>`).join('');
+}
+</script>
+</body>
+</html>

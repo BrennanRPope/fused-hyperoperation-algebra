@@ -1,0 +1,112 @@
+[
+ {
+  "name": "y'=(1+y)^2.0: blow-up time = integral = 1.0",
+  "ok": true,
+  "extra": "integral 1.0000000000, ODE reaches 1e6 at 0.99999900 (+ tail 1.00e-06)"
+ },
+ {
+  "name": "y'=(1+y)^1.5: blow-up time = integral = 2.0",
+  "ok": true,
+  "extra": "integral 2.0000000000, ODE reaches 1e6 at 1.99800000 (+ tail 2.00e-03)"
+ },
+ {
+  "name": "y'=(1+y)^3.0: blow-up time = integral = 0.5",
+  "ok": true,
+  "extra": "integral 0.5000000000, ODE reaches 1e6 at 0.50000000 (+ tail 5.00e-13)"
+ },
+ {
+  "name": "ladder n=1: E^1(t) solves y' = f_1(y) and the clock is L^1(y)",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "ladder n=2: E^2(t) solves y' = f_2(y) and the clock is L^2(y)",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "ladder n=3: E^3(t) solves y' = f_3(y) and the clock is L^3(y)",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "rung shift: s=E(x) carries the test for f=(1+s)*g=1+s one rung down",
+  "ok": true,
+  "extra": "0.9999990000 vs 0.9999990000"
+ },
+ {
+  "name": "rung shift: s=E(x) carries the test for f=(1+s)*g=(1+L(s))^1.3 one rung down",
+  "ok": true,
+  "extra": "1.8485477236 vs 1.8485477236"
+ },
+ {
+  "name": "rung shift: s=E(x) carries the test for f=(1+s)*g=1+L(s) one rung down",
+  "ok": true,
+  "extra": "2.6956747102 vs 2.6956747102"
+ },
+ {
+  "name": "n=2: f_2=(1+y)(1+Ly) keeps the clock running (= L^2 y); f_2*(1+Ly)^0.3 has a finite clock, 1/0.3",
+  "ok": true,
+  "extra": "pass [3.0, 5.0, 6.5], fail [1.978101, 2.589566, 2.859086] -> limit 3.333333"
+ },
+ {
+  "name": "x'=2*sqrt(x): leaving time Omega(1) = 1 is finite, so x=(t-c)^2 (t>=c) all solve from 0",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "x'=x log(1/x) (Yudovich's modulus): the leaving time from r to 1/2 grows without bound as r -> 0",
+  "ok": true,
+  "extra": "[2.81, 4.1963, 5.5826] (= loglog(1/r) - loglog 2)"
+ },
+ {
+  "name": "mirror: d/dt(1/x) = -s^2 w(1/s) when x' = w(x)",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "mirror of 2*sqrt(x): s'=-2 s^{3/2} comes in from infinity in finite time, the same time Omega(1)=1",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "mult-add inverse sends infinity to the wall: -v/(1+v) -> -1",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "rotation field |x|^2 Jx (speed r^3, fails Osgood) keeps |x| = 1 forever",
+  "ok": true,
+  "extra": "max drift 1.5e-11"
+ },
+ {
+  "name": "radial field |x|^2 x (same speed) blows up at T = 1/(2 r0^2) = 0.5",
+  "ok": true,
+  "extra": "reached r^2=1e10 at 0.500000"
+ },
+ {
+  "name": "test int dx/E^t(x): rung 0 keeps growing (it is log x)",
+  "ok": true,
+  "extra": "5.700 -> 22.341"
+ },
+ {
+  "name": "rungs 0.25, 0.5, 1: the integral has stopped growing by x ~ 1e10",
+  "ok": true,
+  "extra": "t=0.25: 1.74591 -> 1.75429, t=0.5: 0.71980 -> 0.71980, t=1.0: 0.14541 -> 0.14541"
+ },
+ {
+  "name": "generator law V(E(x)) = (1 + E(x)) V(x)",
+  "ok": true,
+  "extra": ""
+ },
+ {
+  "name": "V(y)/((1+y)L(y)) keeps rising: V outgrows the n=2 rung of the ladder",
+  "ok": true,
+  "extra": "0.573 0.893 1.44 2.25 3.29 4.55 6.54 8.88"
+ },
+ {
+  "name": "the rung flow's clock: int from x to E(x) of dy/V = 1 (one rung = one unit of time)",
+  "ok": true,
+  "extra": "1.000000"
+ }
+]
