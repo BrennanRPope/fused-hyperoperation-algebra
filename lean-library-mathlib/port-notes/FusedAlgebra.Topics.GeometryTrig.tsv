@@ -1,0 +1,27 @@
+original	status	new_name	note
+rectangle_corner	ported	SimpleLaws.rectangle_corner	any commutative semiring
+gnomon	ported	SimpleLaws.gnomon	any commutative semiring; a * a written a ^ 2
+euclid_II_4	ported	SimpleLaws.euclid_II_4	any commutative semiring; squares written ^ 2; one-line corollary of mathlib's add_sq
+cube_layers	ported	SimpleLaws.cube_layers	any commutative semiring; powers written ^
+box_corners	ported	SimpleLaws.box_corners	any commutative semiring
+square_cube	ported	SimpleLaws.square_cube	any commutative semiring; MultAdd.one_add_multAdd
+fall	ported	SimpleLaws.fall	unchanged; added simp lemmas fall_zero, fall_succ
+fallen	ported	SimpleLaws.fallen	now the Finset sum ∑ i ∈ range n, fall (i + 1)
+fall_is_gnomon	ported	SimpleLaws.fall_is_gnomon	squares written ^ 2
+fallen_square	ported	SimpleLaws.fallen_square	squares written ^ 2
+gnomon_lift	ported	SimpleLaws.gnomon_lift	squares written ^ 2
+pythagoras_from_areas	ported	SimpleLaws.pythagoras_from_areas	any commutative ring; squares written ^ 2
+triangles_compose	ported	SimpleLaws.triangles_compose	any commutative ring; squares written ^ 2
+triangles_compose_norm	ported	SimpleLaws.triangles_compose_norm	any commutative ring
+euclid_triple_parts	ported	SimpleLaws.euclid_triple_parts	any commutative ring; squares written ^ 2
+euclid_triple	ported	SimpleLaws.euclid_triple	any commutative ring; squares written ^ 2
+angle_addition	ported	SimpleLaws.angle_addition	any commutative ring; analytic versions are Real.cos_add, Real.sin_add
+unit_circle_closed	ported	SimpleLaws.unit_circle_closed	any commutative ring; squares written ^ 2
+tangent_addition	ported	SimpleLaws.tangent_addition	any commutative ring; analytic version is Real.tan_add
+double_angle	ported	SimpleLaws.double_angle	any commutative ring; squares written ^ 2
+triple_angle	ported	SimpleLaws.triple_angle	any commutative ring; powers written ^
+law_of_cosines_norm	ported	SimpleLaws.law_of_cosines_norm	any commutative ring; squares written ^ 2
+law_of_cosines_right_angle	ported	SimpleLaws.law_of_cosines_right_angle	any commutative ring; squares written ^ 2
+flat_triangle_open	ported	SimpleLaws.flat_triangle_open	any commutative ring; squares written ^ 2
+flat_triangle_shut	ported	SimpleLaws.flat_triangle_shut	any commutative ring; squares written ^ 2
+triangle_lengths_real	ported	SimpleLaws.triangle_lengths_real	any linearly ordered commutative ring; hypothesis written k ^ 2 ≤ 4

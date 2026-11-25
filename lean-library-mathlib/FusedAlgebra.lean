@@ -20,6 +20,7 @@ public import FusedAlgebra.Topics.EntropyNoise
 public import FusedAlgebra.Topics.Fermat.Fermat4
 public import FusedAlgebra.Topics.Fermat.FreyPieces
 public import FusedAlgebra.Topics.Finance
+public import FusedAlgebra.Topics.GeometryTrig
 public import FusedAlgebra.Topics.InformationTheory
 public import FusedAlgebra.Topics.Landscape
 public import FusedAlgebra.Topics.LeeYang
