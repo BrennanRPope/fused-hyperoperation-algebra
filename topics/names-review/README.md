@@ -1,12 +1,15 @@
 # Names and notation review before the 1.0 freeze (checklist item 4)
 
+> **Update, 2026-11-25:** Brennan chose to follow the literature, and to call mult-add the circle operation. The
+> symbol recommendation below (✳) is replaced by [RENAME-PLAN.md](RENAME-PLAN.md): ∘ₖ on the page, ◯[k] in Lean.
+
 **Result.** The names are mostly fine. Four things should be settled before the freeze, and one of them looks like a sign
 error but is not:
 
 1. **One symbol for mult-add: ✳.** The repo uses three today: ✳ (1,974 uses in 256 files), ⊞ (1,625 in 129) and ⊕
    (1,116 in 143). ⊞ is mathlib's biproduct (37 mathlib files), ⊕ is Lean's `Sum` type and mathlib's direct sum
-   (281 files), and ✳ appears nowhere in mathlib (checked by grep of a fresh mathlib4 clone, 2026-11-25). The Lean
-   library already declares `infixl:65 " ✳ " => multAdd`. Recommend ✳ for mult-add and ✳ₖ for the weighted rule
+   (281 files), and ✳ appears nowhere in mathlib (checked by grep of a fresh mathlib4 clone, 2026-11-25). About 80 Lean files
+   already declare ✳ locally for multAdd, though `Base.lean` declares ⊞ as the scoped notation. Recommend ✳ for mult-add and ✳ₖ for the weighted rule
    a + b + k·ab.
 2. **k has one meaning, but each page must say what it composes.** The counting row, the repetition dial and the zoom
    dial compose *weights*, so k = +1 means "at most once". The dial-survey copies row, the primon row and the
@@ -20,7 +23,11 @@ error but is not:
 4. **Rename the plane's second dial from q to d.** The landscape law (a + b + k·ab)/(1 − q·ab) is exactly the
    Coleman–McGuinness family (x + y + cxy)/(1 − dxy) (Pacific J. Math. 147, 1991). They proved these are *all* the
    rational formal group laws, and that the law is equivalent to plain addition when c² − 4d = 0 and to mult-add
-   otherwise (over the field with √(c² − 4d)). Calling the second dial d matches their paper and frees q.
+   otherwise (over the field with √(c² − 4d)). Calling the second dial d matches their paper and frees q. Catch: the zoom dial uses d for dimension
+   (x(d) = 1), so adopting d means writing the dimension another way there (s or δ are common).
+
+Every clash, including the ones inside the project (⊞ and ⊛ each mean two things in the library), is listed in
+[NAMING-COLLISIONS.md](NAMING-COLLISIONS.md), with what it means here, what it means elsewhere and since which version.
 
 Also noted, no change proposed: the project name's "Fused" collides with the computer term fused multiply-add (FMA).
 

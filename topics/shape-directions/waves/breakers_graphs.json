@@ -1,0 +1,13 @@
+{
+ "K4 (every pair k)": "-k**3*(k - 1)**8*(k + 2)",
+ "K4 minus one edge": "k*(k - 1)**8",
+ "cycle C4": "(k - 1)**8",
+ "path P4": "0",
+ "star": "0",
+ "triangle + lone wave": "0",
+ "two separate pairs": "0",
+ "one pair": "0",
+ "path P3 + lone wave": "0",
+ "paw (triangle + pendant)": "0",
+ "no pairs": "0"
+}

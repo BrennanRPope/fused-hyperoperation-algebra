@@ -44,7 +44,7 @@ fits={}
 from scipy.stats import f as fdist
 for nm in names:
     df=pd.read_csv(f'data/{nm}.csv')
-    p,rss,n=fit(df,'ct'); grid=np.linspace(-1.6,1.2,57)
+    p,rss,n=fit(df,'ct'); grid=np.linspace(-2.0,1.2,65)
     ci,_=profile_ci(df,'ct',p,rss,n,grid)
     pk,rssk,_=fit(df,'odds'); gk=np.linspace(-0.6,1.4,41); cik,_=profile_ci(df,'odds',pk,rssk,n,gk)
     def Fp(model,val,rss0,nn):
@@ -53,7 +53,7 @@ for nm in names:
     fits[nm]=dict(alpha=p[5],ci=ci,k=pk[5],cik=cik,p_loewe=pl,p_hsa=ph,p_bliss=pb,slopes=(p[1],p[3]),n=n)
     print(f"   {names[nm]}: α = {p[5]:.2f} (95% {ci[0]:.2f} to {ci[1]:.2f}); odds dial k = {pk[5]:.2f} ({cik[0]:.2f} to {cik[1]:.2f}); p(Loewe)={pl:.3g} p(HSA)={ph:.3g} p(Bliss)={pb:.3g}")
 check("glyphosate + metsulfuron: Loewe (α = 0) is not rejected",fits['glymet']['p_loewe']>0.05,f"α = {fits['glymet']['alpha']:.2f}")
-check("acifluorfen + diquat: α sits near the HSA end (α = -1 inside the 95% range)",fits['acidiq']['ci'][0]<=-1<=fits['acidiq']['ci'][1])
+check("acifluorfen + diquat: α sits just above the HSA end (95% range between -1 and -0.8, HSA itself excluded)",-1<fits['acidiq']['ci'][0] and fits['acidiq']['ci'][1]<-0.8 and fits['acidiq']['p_hsa']<0.05,f"p(HSA) = {fits['acidiq']['p_hsa']:.2g}")
 check("mecoprop + terbuthylazine: α near HSA too (α = -1 inside the 95% range)",fits['mecter']['ci'][0]<=-1<=fits['mecter']['ci'][1])
 check("both duckweed pairs reject Loewe additivity",fits['acidiq']['p_loewe']<0.05 and fits['mecter']['p_loewe']<0.05,
       f"p = {fits['acidiq']['p_loewe']:.2g}, {fits['mecter']['p_loewe']:.2g}")

@@ -1,0 +1,3 @@
+glymet floor c=0.025 alpha=-0.33 p(HSA,-0.5,Loewe)= ['8e-06', '0.52', '0.34']
+acidiq floor c=0.031 alpha=-0.95 p(HSA,-0.5,Loewe)= ['0.01', '8e-09', '4.4e-16']
+mecter floor c=-0.029 alpha=-0.98 p(HSA,-0.5,Loewe)= ['0.46', '0.0011', '7.6e-06']

@@ -54,7 +54,7 @@ code{font-size:14px;overflow-wrap:anywhere}
 
 <section class="band"><div class="wrap">
 <h1>Weight, bend and rung change the ruler. The nome is the one direction that changes the shape.</h1>
-<p class="lede">For a one-input law like mult-add there are exactly three global shapes, told apart by how many periods the law's log has: none (addition), one (mult-add), two (a torus). The only continuous dial left after that is the torus's proportions, the nome q. Weight is the size of the measuring stick, the landscape bend is a switch between line and circle, and rung height is a route through rulers that matches the bend to third order and leaves it at the fourth. New directions do appear, but only when there are two or more waves (pair weights) or when you insist on whole numbers (the weight's primes).</p>
+<p class="lede">For a one-input law like mult-add there are exactly three global shapes, told apart by how many periods the law's log has: none (addition), one (mult-add), two (a torus). The only continuous dial left after that is the torus's proportions, the nome q. Weight is the size of the measuring stick, the landscape bend is a switch between line and circle, and rung height is a route through rulers that matches the bend to third order and leaves it at the fourth. New directions do appear, but only when there are two or more waves (pair weights) or when you insist on whole numbers (the weight's primes). Followed further: each pair of waves adds one number, and from four waves on those numbers outrun the points that make waves.</p>
 <div class="first">
  <div class="panel">
   <div class="fig"><svg id="plane" role="img" aria-label="The landscape plane: corner p across, bend q up, with the parabolas of constant discriminant and the rung route"></svg></div>
@@ -99,8 +99,8 @@ code{font-size:14px;overflow-wrap:anywhere}
 <div>
 <h2>Where new directions do appear</h2>
 <h3>Several waves</h3>
-<p>A pair weight survives every separate rescaling of the waves (proved), so with g waves the period matrix has g(g+1)/2 entries: g nomes and g(g−1)/2 pair weights. The KdV collision weight A is the off-diagonal one at the soliton edge. From four waves on, Riemann's matrices outnumber the curves that can produce them (3g − 3): that gap is Schottky's problem, which Shiota settled in 1986 using exactly these soliton equations.</p>
-<div class="panel scroll"><table><thead><tr><th>Waves g</th><th class="num">Period-matrix numbers</th><th class="num">Curves (3g − 3)</th><th class="num">Room for a law with no curve</th></tr></thead><tbody id="gt"></tbody></table></div>
+<p>A pair weight survives every separate rescaling of the waves (proved), so with g waves the period matrix has g(g+1)/2 entries: g nomes and g(g−1)/2 pair weights. The KdV collision weight A is the off-diagonal one at the soliton edge. From four waves on, Riemann's matrices outnumber the curves that can produce them (3g − 3): that gap is Schottky's problem, which Shiota settled in 1986 using exactly these soliton equations. The pair weights alone, with the nomes set to zero, outrun the points by the same amount, (g − 2)(g − 3)/2 for every g (proved).</p>
+<div class="panel scroll"><table><thead><tr><th>Waves g</th><th class="num">Pair weights</th><th class="num">Points carry</th><th class="num">Period numbers</th><th class="num">Curves</th><th class="num">Extra, both ways</th></tr></thead><tbody id="gt"></tbody></table></div>
 </div>
 <div>
 <h3>Whole numbers</h3>
@@ -111,11 +111,42 @@ code{font-size:14px;overflow-wrap:anywhere}
 </div>
 </div></section>
 
+<section class="band" style="padding-top:0" id="waves-follow"><div class="wrap">
+<h2>Following several waves: each pair adds one number, and from four waves on they outrun the points</h2>
+<div class="first">
+<div class="panel">
+ <div class="fig" style="min-height:360px"><svg id="waves" role="img" aria-label="Waves as pairs of points on a line, with the pair weight between every two waves"></svg></div>
+ <div class="ctl"><label for="wg">Waves</label><input id="wg" type="range" min="2" max="5" step="1" value="4"><output id="wgo">4</output></div>
+ <div class="ctl"><label for="wsp">Spread</label><input id="wsp" type="range" min="0.3" max="4" step="0.05" value="1"><output id="wspo">1</output></div>
+</div>
+<div class="panel">
+ <p>With KP, the wave equation one dimension up from KdV, each wave is a pair of points (p, q) on a line, and Hirota's equation forces the weight between two waves to be their cross ratio (proved). Drag Spread up and every weight tends to 1: the waves stop interacting and the whole thing is g separate mult-adds. Two waves that share an end have weight 0: resonance. A weight is exactly 1 only when a wave is trivial (proved), so two real waves always interact.</p>
+ <div class="big" id="wbig" style="font-size:40px">6 weights, 5 numbers</div>
+ <p class="small" id="wread"></p>
+ <p class="small">The cross ratio does not change when the whole line is shifted, stretched or inverted (proved), so 2g points carry only 2g − 3 numbers, while g waves have g(g − 1)/2 weights. Up to three waves every array of weights comes from points (rank checked exactly up to eight waves). At four waves the six weights obey one rule, a polynomial of degree two in each weight: five weights fix the sixth up to two values.</p>
+</div>
+</div>
+</div></section>
+
+<section class="band" style="padding-top:0" id="breakers"><div class="wrap two">
+<div>
+<h2>Which four-wave arrays break the rule: loops do, trees don't</h2>
+<p>Put a weight on the pairs of a graph and leave the other pairs at 1 (not interacting). Every graph without a closed loop of four pairs obeys the four-wave rule for every weight, so those arrays are point-waves or limits of them. A loop of four interacting pairs breaks it: on the 4-cycle the rule equals the product of (w − 1)² over its four pairs, which is zero only if a pair stops interacting (proved). Breaking a closed rule means the array is not even a limit of point-waves.</p>
+<div class="panel scroll"><table><thead><tr><th>Shape of the interacting pairs</th><th>The rule at weight k</th><th>Verdict</th></tr></thead><tbody id="gr"></tbody></table></div>
+</div>
+<div>
+<h2>One weight shared by every pair fits at most four waves</h2>
+<p>Give every pair the same mult-add weight k. Two waves carry any k. Three waves carry any k other than 0 and 1, because the third wave sits at a root of t² − (k + 1)t + 1 (proved). Real points need k &gt; 1 or k ≤ −3. Four waves need both roots, and that forces them to be the cube roots of unity, so k = −2: the rule at weight k is −k³(k − 1)⁸(k + 2) (proved). A fifth wave has no root left. So a single shared weight stops being something points can carry after four waves.</p>
+<div class="panel"><div class="mini" style="min-height:240px"><svg id="tet" viewBox="0 0 320 240" role="img" aria-label="A regular tetrahedron inside a sphere, each vertex joined to its antipode"></svg></div>
+<p class="small">The k = −2 waves exist, with complex points: each is a vertex of a regular tetrahedron on the sphere paired with its opposite point (checked exactly in ℚ(ω)). No real configuration does it.</p></div>
+</div>
+</div></section>
+
 <section class="band" style="padding-top:0"><div class="wrap two">
 <div>
 <h2>Is any lead worth following?</h2>
 <ul>
-<li><b>Several waves: yes.</b> This is the only place a whole new dimension actually appears, and the soliton pair weights already live there. The next test is concrete: three waves with three independent pair weights, and the count from the table above. It is known mathematics (Riemann, Krichever, Shiota), so it builds the map rather than discovering something, but it is where the map continues.</li>
+<li><b>Several waves: followed to the end of what points can do.</b> Each pair of waves adds one number; from four waves on the numbers outrun the points, and four waves obey one rule. The arrays that break it are the ones with a closed loop of four interacting pairs, and a single shared weight fits at most four waves (only at −2, the tetrahedron). Past this, the rule-breakers are the degenerate face of Schottky’s problem, which is known ground; no further step here is fairly promising on its own merits.</li>
 <li><b>Rung height: not as a new direction.</b> The third-order match D = s and the exact fourth-order gap −s(s−1)/12 are clean, but every rung is addition in its own ruler, so this route can never produce a new shape. It is worth following only if the question is about the ladder itself.</li>
 <li><b>Whole numbers: a modest yes</b> if you want the 2ⁿ − 1 counts and the integer side of mult-add in the same picture. Known (Sekiguchi–Oort–Suwa), and it adds one discrete layer, not a dial.</li>
 <li><b>Another dial for one-input laws: no.</b> The classification is complete. A fourth shape would need a return count other than 1, n or n², which a one-dimensional group cannot have.</li>
@@ -125,11 +156,13 @@ code{font-size:14px;overflow-wrap:anywhere}
 <h2>What would confirm a further direction</h2>
 <ul>
 <li>For one input: a smooth, associative, commutative law whose n-step return count is not 1, n or n². None exists, so the map for one input is closed.</li>
-<li>For several waves: three or more waves whose pair weights cannot be set by one weight (already shown in the soliton work: KdV needs the triple corner A₁₂A₁₃A₂₃, a single law gives k²).</li>
+<li>For several waves: an array of four or more pair weights that breaks the four-wave rule. An array of all 2s does (proved), so such arrays exist; they are the many-wave laws that no line of points, and so no degenerate curve, produces.</li>
 <li>For non-commuting laws in three or more dimensions without rotational symmetry: Bianchi's classification has families with a free parameter, so a law that needs a direction-dependent twist would bring a genuine new dial. In the plane with rotational symmetry the twist adds nothing: it is curvature × area, one number.</li>
 </ul>
 <h3>Proofs</h3>
-<p class="small">36 Lean theorems in <code>shape-directions/lean/ShapeDirections.lean</code> (core Lean, no mathlib, no sorry, ✳ notation): weight_is_units, graph_weight_survives, ruler_num, ruler_den, ruler_keeps_disc, zoom_disc, ladder_forces_c3, ladder_forces_c4, rung_rate_inverts, rung_disc_is_height, rung_crossings, jet_rank, glue_commutes, glue_descends, cusp_psi3, node_psi3, pair_weight_survives, periods_outnumber_curves, additive_at_three, mult_at_three and more. Every statement was checked in sympy first; the library compiles them next. Numerical checks: 29 of 29 pass in <code>checks.py</code>.</p>
+<p class="small">36 Lean theorems in <code>shape-directions/lean/ShapeDirections.lean</code> (core Lean, no mathlib, no sorry, ✳ notation): weight_is_units, graph_weight_survives, ruler_num, ruler_den, ruler_keeps_disc, zoom_disc, ladder_forces_c3, ladder_forces_c4, rung_rate_inverts, rung_disc_is_height, rung_crossings, jet_rank, glue_commutes, glue_descends, cusp_psi3, node_psi3, pair_weight_survives, periods_outnumber_curves, additive_at_three, mult_at_three and more. Every statement was checked in sympy first. Numerical checks: 29 of 29 pass in <code>checks.py</code>.</p>
+<p class="small">Several waves: 23 more Lean theorems in <code>shape-directions/lean/SeveralWaves.lean</code>: tau4_free, tau4_splits, tau4_exclusion, kp_dispersion, kp_pair_weight, free_iff_trivial, resonance_iff, cross_ratio_affine, cross_ratio_inversion, excess_points, excess_curves, excess_agree, excess_from_four, the four-wave rule on two configurations, rule4_all_two. Both files compile cleanly in the shared library. Checks in <code>shape-directions/waves/</code>.</p>
+<p class="small">Rule breakers: 14 Lean theorems in <code>shape-directions/lean/RuleBreakers.lean</code>: path_obeys, star_obeys, triangle_obeys, paw_obeys, cycle_rule, diamond_rule, uniform_rule, third_wave, fourth_wave_forces, tetrahedral_waves and the sample values.</p>
 <p class="small">Known pieces: the classification of one-dimensional complex groups, Tate's curve, Bennett's commutative hyperoperations (the rung sheet), Sekiguchi–Oort–Suwa, Riemann's period matrices, Shiota's theorem, Helmholtz–Lie. What is ours: the sorting of the project's dials against them, the third-order identity D = s, and the fourth-order gap.</p>
 </div>
 </div></section>
@@ -225,11 +258,54 @@ const rows=[
 ['Pair weights','A between two waves (KdV, theta matrix)','survive every rescaling of the waves','survive','off-diagonal period-matrix entries','<span class="tag t-more">new, with 2+ waves</span>'],
 ['Weight\'s primes','which primes divide k, over the integers','','','additive at p ∣ k, multiplicative elsewhere','<span class="tag t-more">a discrete layer</span>']];
 document.getElementById('tab').innerHTML=rows.map(r=>'<tr>'+r.map((c,i)=>`<td${i==5?' class="v"':''}>${c}</td>`).join('')+'</tr>').join('');
-document.getElementById('gt').innerHTML=[1,2,3,4,5,6].map(g=>{const a=g*(g+1)/2,b=g<2?(g==1?1:0):3*g-3;return `<tr><td>${g}</td><td class="num">${a}</td><td class="num">${g==1?'1 (j)':b}</td><td class="num">${a-(g==1?1:b)}</td></tr>`}).join('');
+document.getElementById('gt').innerHTML=[2,3,4,5,6,7].map(g=>{const w=g*(g-1)/2,pt=2*g-3,a=g*(g+1)/2,c=3*g-3;return `<tr><td>${g}</td><td class="num">${w}</td><td class="num">${pt}</td><td class="num">${a}</td><td class="num">${c}</td><td class="num">${w-pt} = ${a-c}</td></tr>`}).join('');
 const pr=[2,3,5,7];document.getElementById('pt').innerHTML=[1,2,3,6,10,15].map(k=>'<tr><td>'+k+'</td>'+pr.map(p=>`<td>${k%p?'mult-add (x^'+p+')':'addition (0)'}</td>`).join('')+'</tr>').join('');
-const all=()=>{plane();gap();readout();lattices()};
+
+const wgIn=document.getElementById('wg'),wspIn=document.getElementById('wsp');
+const WC=[-3.2,-0.9,1.1,3.3,5.4],WW=[1.6,0.9,1.9,1.2,1.5],WOFF=[0,0.35,-0.1,0.2,-0.4];
+function waves(){
+ const sv=document.getElementById('waves'),W=sv.clientWidth,H=sv.clientHeight;if(!W)return;
+ const g=+wgIn.value,sp=+wspIn.value;document.getElementById('wgo').textContent=g;document.getElementById('wspo').textContent=sp.toFixed(2);
+ const mean=WC.slice(0,g).reduce((x,y)=>x+y,0)/g;
+ const wv=[];for(let i=0;i<g;i++){const c=(WC[i]-mean)*sp+WOFF[i];wv.push([c-WW[i]/2,c+WW[i]/2])}
+ const xs=wv.flat(),lo=Math.min(...xs),hi=Math.max(...xs),pad=0.6,L=36,R=W-36;
+ const X=v=>L+(v-lo+pad)/(hi-lo+2*pad)*(R-L),ly=H-46;
+ const cr=(i,j)=>{const[a1,b1]=wv[i],[a2,b2]=wv[j];return (a1-a2)*(b1-b2)/((a1-b2)*(b1-a2))};
+ const col=['var(--blue)','var(--amber)','var(--violet)','var(--red)','var(--grey)'];
+ let h='';h+=el('line',{x1:L,y1:ly,x2:R,y2:ly,stroke:'var(--rule)','stroke-width':2});
+ for(let i=0;i<g;i++){const[a,b]=wv[i],xa=X(a),xb=X(b),r=Math.abs(xb-xa)/2;
+  h+=el('path',{d:`M${xa.toFixed(1)},${ly}A${r.toFixed(1)},${(r*0.8).toFixed(1)} 0 0 1 ${xb.toFixed(1)},${ly}`,fill:'none',stroke:col[i],'stroke-width':3});
+  h+=el('circle',{cx:xa,cy:ly,r:5,fill:col[i]})+el('circle',{cx:xb,cy:ly,r:5,fill:'var(--panel)',stroke:col[i],'stroke-width':2.5});
+  h+=el('text',{x:(xa+xb)/2,y:ly+24,'text-anchor':'middle'},'wave '+(i+1));}
+ // weight graph on top
+ const gy=86,gr=Math.min(70,(W-80)/6),gx=W/2;const node=i=>[gx+gr*1.6*Math.cos(Math.PI*(0.5+2*i/g))*(g==2?1:1),gy-gr*0.75*Math.sin(Math.PI*(0.5+2*i/g))+10];
+ const lines=[];
+ for(let i=0;i<g;i++)for(let j=i+1;j<g;j++){const A=cr(i,j),[x1,y1]=node(i),[x2,y2]=node(j),wdt=Math.min(9,1+2.2*Math.abs(Math.log(Math.abs(A)||1e-9)));
+  h+=el('line',{x1,y1,x2,y2,stroke:A<0?'var(--amber)':'var(--blue)','stroke-width':wdt.toFixed(1),'stroke-linecap':'round',opacity:0.85});
+  h+=el('text',{x:(x1+x2)/2,y:(y1+y2)/2-6,'text-anchor':'middle'},A.toFixed(2));lines.push(`A${i+1}${j+1} = ${A.toFixed(3)}`)}
+ for(let i=0;i<g;i++){const[x,y]=node(i);h+=el('circle',{cx:x,cy:y,r:11,fill:col[i]})+el('text',{x,y:y+4.5,'text-anchor':'middle',style:'fill:var(--panel);stroke:none;font-weight:600'},i+1)}
+ sv.innerHTML=h;
+ const w=g*(g-1)/2,pn=2*g-3;
+ document.getElementById('wbig').textContent=`${w} weight${w>1?'s':''}, ${pn} number${pn>1?'s':''}`;
+ const ex=w-pn;
+ document.getElementById('wread').textContent=lines.join(' · ')+'. '+(ex>0?`${ex} rule${ex>1?"s tie":" ties"} these weights together: a random array of ${w} weights is not waves on a line.`:'Any array of weights this size comes from points: no rule yet.');
+}
+wgIn.addEventListener('input',waves);wspIn.addEventListener('input',waves);
+
+document.getElementById('gr').innerHTML=[
+['no pairs, one pair, two separate pairs','0','obeys'],['path of two or three pairs','0','obeys'],['star','0','obeys'],
+['triangle, with a lone or pendant wave','0','obeys'],['4-cycle','(k − 1)⁸','<b>breaks</b> unless k = 1'],
+['4-cycle plus a diagonal','k (k − 1)⁸','<b>breaks</b> unless k = 0 or 1'],['every pair (K₄)','−k³ (k − 1)⁸ (k + 2)','<b>breaks</b> unless k = 0, 1 or −2']
+].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+(function(){const v=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]];const R=95,cx=160,cy=120,a=0.55,b=0.35;
+ const P=p=>{const x=p[0]*Math.cos(a)-p[1]*Math.sin(a),y=p[0]*Math.sin(a)+p[1]*Math.cos(a),z=p[2];const y2=y*Math.cos(b)-z*Math.sin(b),z2=y*Math.sin(b)+z*Math.cos(b);return[cx+R*x/Math.sqrt(3),cy-R*z2/Math.sqrt(3),y2]};
+ const col=['var(--blue)','var(--amber)','var(--violet)','var(--red)'];let h=el('circle',{cx,cy,r:R,fill:'none',stroke:'var(--rule)','stroke-width':1.5});
+ const V=v.map(P);for(let i=0;i<4;i++)for(let j=i+1;j<4;j++)h+=el('line',{x1:V[i][0],y1:V[i][1],x2:V[j][0],y2:V[j][1],stroke:'var(--grey)','stroke-width':1.2});
+ v.forEach((p,i)=>{const A=P(p),B=P(p.map(c=>-c));h+=el('line',{x1:A[0],y1:A[1],x2:B[0],y2:B[1],stroke:col[i],'stroke-width':2.2,'stroke-dasharray':'5 4'})+el('circle',{cx:A[0],cy:A[1],r:6,fill:col[i]})+el('circle',{cx:B[0],cy:B[1],r:6,fill:'var(--panel)',stroke:col[i],'stroke-width':2.5})});
+ h+=el('text',{x:cx,y:232,'text-anchor':'middle'},'every pair of axes: weight −2');document.getElementById('tet').innerHTML=h})();
+const all=()=>{plane();gap();readout();lattices();waves()};
 sIn.addEventListener('input',()=>{plane();gap();readout()});tIn.addEventListener('input',lattices);xIn.addEventListener('input',lattices);
-const ro=new ResizeObserver(all);for(const id of ['plane','gap','l0','l1','l2'])ro.observe(document.getElementById(id));
+const ro=new ResizeObserver(all);for(const id of ['plane','gap','l0','l1','l2','waves'])ro.observe(document.getElementById(id));
 all();
 }
 </script>

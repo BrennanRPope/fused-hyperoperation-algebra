@@ -1,10 +1,25 @@
 # Fused Hyperoperation Algebra
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24539305.svg)](https://doi.org/10.5281/zenodo.24539305)
+[![CI](https://github.com/BrennanRPope/fused-hyperoperation-algebra/actions/workflows/ci.yml/badge.svg)](https://github.com/BrennanRPope/fused-hyperoperation-algebra/actions/workflows/ci.yml)
+[![axioms: 3 standard](https://img.shields.io/badge/axioms-3%20standard-blue)](ASSUMPTIONS.md)
+[![sorry: 0](https://img.shields.io/badge/sorry-0-brightgreen)](ASSUMPTIONS.md)
 
 Cite all versions with DOI [10.5281/zenodo.24539305](https://doi.org/10.5281/zenodo.24539305); Zenodo also gives each release, such as v0.1.0, its own version DOI.
 
 Brennan Pope's math theory, with the proofs, checks, figures and write-ups gathered in one place. (It was called Fused Mult-Add Algebra until Nov 25, 2026.)
+
+Some of our names and symbols mean something else in standard mathematics, physics or Lean's mathlib; [NAMING-COLLISIONS.md](NAMING-COLLISIONS.md) lists each one.
+
+## What this rests on
+
+Every result here rests on one of three things, and the repo keeps each one visible.
+
+- **Lean's three standard axioms, and nothing else.** Each theorem in the library uses at most `propext`, `Classical.choice` and `Quot.sound`, the axioms every Lean and mathlib proof uses. [ASSUMPTIONS.md](ASSUMPTIONS.md) lists which ones each theorem uses ([assumptions.csv](assumptions.csv) has the same table), and 301 theorems use none. No `sorry`, `admit`, `axiom` or `opaque` appears anywhere in the library.
+- **The hypotheses written into each theorem.** A theorem that needs, say, a ≠ −1 says so in its statement. Those are conditions on the inputs, not unproved claims.
+- **Numeric checks, which are evidence and not proofs.** Each topic's `checks.py` tests its claims numerically or symbolically. A passing check shows the claim held on the cases tried; only the Lean library proves anything.
+
+The [CI build](https://github.com/BrennanRPope/fused-hyperoperation-algebra/actions/workflows/ci.yml) enforces all of this on every push: it rebuilds the whole library, fails on any `sorry` or non-standard axiom, fails if ASSUMPTIONS.md is out of date, and runs every topic's check scripts. A red badge at the top means something new broke something old.
 
 ## The idea in plain words
 
@@ -62,7 +77,7 @@ Each entry says how solid it is (**proved in Lean**, **exact computation**, **nu
 
 ### Tools you can use now
 
-3. **A machine-checked library of the a + b + k·ab family.** 3,072 theorems in 123 modules, all compiling in core Lean 4 (no mathlib), none using `sorry`, each using only Lean's three standard axioms. It formalizes, among others: Sugeno λ-measures, Tsallis q-algebra, the void and variance laws of α-determinantal point processes, the diamond hierarchical lattice map, Lee–Yang ring zeros, and the bookkeeping of the Fermat proof. A port to mathlib is under way on its own branch, and a side-by-side reading of all 1,750 ported theorems found 4 real changes, all small helper lemmas (a build will confirm). *Status:* proved in Lean. *New?* The formal checks are new; most of the statements are known mathematics. [`lean-library/`](lean-library/README.md), [`topics/mathlib-port-check/`](topics/mathlib-port-check/README.md)
+3. **A machine-checked library of the a + b + k·ab family.** 3,080 theorems in 124 modules, all compiling in core Lean 4 (no mathlib), none using `sorry`, each using only Lean's three standard axioms. It formalizes, among others: Sugeno λ-measures, Tsallis q-algebra, the void and variance laws of α-determinantal point processes, the diamond hierarchical lattice map, Lee–Yang ring zeros, and the bookkeeping of the Fermat proof. A port to mathlib is under way on its own branch, and a side-by-side reading of all 1,750 ported theorems found 4 real changes, all small helper lemmas, and a build of the port (now 1,970 theorems) passed on GitHub. *Status:* proved in Lean. *New?* The formal checks are new; most of the statements are known mathematics. [`lean-library/`](lean-library/README.md), [`topics/mathlib-port-check/`](topics/mathlib-port-check/README.md)
 
 4. **A map of one-parameter composition laws.** Every law (a + b + k·ab) / (1 − q·ab) is a point (k, q) on one plane, and the parabola k² = 4q splits it into three regions: two real walls (saturation, like velocity addition), one double wall (addition in disguise), no real wall (turning, like tan addition). The shape number s = k²/(k² − 4q) says which fractional rung a law looks like. More than 44 laws from the other topics are placed; four empty spots turn out to hold known laws (logistic growth and Kalman variance, the Riccati log-slope of a wave, and Hirzebruch's χ_y genus among them) and one spot is provably empty. *Why care:* read off a law's walls and the coordinate that turns it into plain addition at a glance. *Status:* 65 exact and numeric checks, 27 theorems in Lean. *New?* No: the plane is exactly Coleman and McGuinness's 1991 classification of rational formal group laws (split by k² − 4q), and the three kinds go back to Lie and Klein's one-parameter Möbius groups. What the map adds is the picture and the 44 placed laws. [`topics/landscape/`](topics/landscape/)
 
@@ -109,7 +124,7 @@ The live leads, each judged on its own merits. "Known" marks what is already est
 
 ## Lean
 
-All the Lean proofs are gathered in [`lean-library/`](lean-library/README.md): one shared library built on a single base of mult-add laws. As of Nov 25, 2026 it holds 3,072 theorems in 123 modules, every one compiling with **core Lean 4 only** (no mathlib), none using `sorry`, and each using only Lean's three standard axioms. `lean-library/THEOREMS.md` lists them all; `./build.sh` rebuilds and re-checks them.
+All the Lean proofs are gathered in [`lean-library/`](lean-library/README.md): one shared library built on a single base of mult-add laws. As of Nov 25, 2026 it holds 3,080 theorems in 124 modules, every one compiling with **core Lean 4 only** (no mathlib), none using `sorry`, and each using only Lean's three standard axioms. `lean-library/THEOREMS.md` lists them all; `./build.sh` rebuilds and re-checks them.
 
 Some topic folders also keep the original Lean file they were first written in. The one file that imports mathlib, `topics/tesseract/TesseractCoords.lean`, writes mult-add as `✳` (mathlib already uses `⊞` for biproducts) and compiles cleanly against mathlib v4.37.0-rc1 (checked on Brennan's Mac Studio, Nov 25, 2026). A port of the whole library to mathlib is under way on its own branch.
 

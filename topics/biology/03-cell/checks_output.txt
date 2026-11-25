@@ -1,0 +1,24 @@
+PASS Bliss independence (survivals multiply) = plain ✳ on effect odds o = E/(1-E) | 1.9e-14
+PASS Bliss in effect terms is the 'or' law, dial -1
+PASS Chou–Talalay with α = -1 gives the Highest Single Agent model exactly (300 cases)
+PASS α = 0 is Loewe; with slopes 1 the effect odds simply add (dial 0 on odds)
+PASS Chou's 'mutually nonexclusive' α = 1 is NOT Bliss, even with slopes 1 | largest gap 91% of Bliss odds
+PASS wall: at v₂ = -1/α (α=-1) the combination index ignores the other drug
+PASS wall: at v₂ = -1/α (α=-0.5) the combination index ignores the other drug
+PASS wall: at v₂ = -1/α (α=0.5) the combination index ignores the other drug
+PASS wall: at v₂ = -1/α (α=2) the combination index ignores the other drug
+PASS for α = -1 the wall is v = 1: once one drug alone reaches the effect, the other drug is irrelevant
+   glyphosate + metsulfuron, green alga: α = -0.32 (95% -0.75 to 0.45); odds dial k = 0.12 (-0.15 to 0.70); p(Loewe)=0.343 p(HSA)=3.36e-06 p(Bliss)=0.0129
+   acifluorfen + diquat, duckweed: α = -0.94 (95% -0.95 to -0.85); odds dial k = -0.09 (-0.10 to -0.10); p(Loewe)=7.98e-12 p(HSA)=0.00539 p(Bliss)=4.9e-12
+   mecoprop + terbuthylazine, duckweed: α = -0.98 (95% -1.00 to -0.80); odds dial k = -0.14 (-0.20 to 0.15); p(Loewe)=1.74e-05 p(HSA)=0.486 p(Bliss)=0.000177
+PASS glyphosate + metsulfuron: Loewe (α = 0) is not rejected | α = -0.32
+PASS acifluorfen + diquat: α sits just above the HSA end (95% range between -1 and -0.8, HSA itself excluded) | p(HSA) = 0.0054
+PASS mecoprop + terbuthylazine: α near HSA too (α = -1 inside the 95% range)
+PASS both duckweed pairs reject Loewe additivity | p = 8e-12, 1.7e-05
+PASS Bliss (odds dial k = 1) is rejected in all three
+   acidiq α by mixing ratio: [(17, np.float64(-1.06)), (33, np.float64(-1.01)), (50, np.float64(-0.89)), (67, np.float64(-0.96)), (83, np.float64(-0.8))]
+   glymet α by mixing ratio: [(17, np.float64(-0.82)), (33, np.float64(0.39)), (50, np.float64(-0.38)), (67, np.float64(-0.8)), (83, np.float64(-1.0))]
+PASS multi-target survival 1 - (1 - e^(-D/D0))^n = wpow(-1, e^(-D/D0), n): targets combine by 'or'
+PASS LQ radiation: the split-dose saving 2βd₁d₂ is a corner term, but no single dial k reproduces it | k needed ranges 0.55, 0.46, 0.40, 0.30, 0.17
+
+17/17 checks passed

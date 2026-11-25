@@ -221,7 +221,6 @@ _g = json.load(open('figures.json'))['grid'] if __import__('os').path.exists('fi
 check('sign map (figures.json from figures.py): no negative cell in the t = 1 and t = 2 columns, n = 1..16', _g is not None and all(r[40] != '-' and r[80] != '-' for r in _g))
 check('sign map: t = 0 column is the bare point x (1 then zeros)', _g is not None and _g[0][0] == '+' and all(r[0] == '0' for r in _g[1:]))
 import json
-json.dump({'P': [[str(c) for c in sp.Poly(Pb[n], t).all_coeffs()[::-1]] for n in range(1, 13)]}, open('flow_polys.json', 'w'))
 
 # ---------- 7. The dial exponential counts blocks: Stirling numbers ----------
 nn = sp.symbols('n', positive=True)

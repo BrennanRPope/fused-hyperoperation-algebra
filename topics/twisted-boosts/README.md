@@ -17,3 +17,14 @@ Next lead offered: Gravity Probe B geodetic precession (~6.6 arcsec/yr) with twi
 - Caveat: exact velocity factor is 1/γ, Thomas's flat-space twist is γ−1; equal to first order only.
 - gpb/lean/GravityProbeB.lean: 16 theorems, sent to library for first compile.
 - Page updated (version 1795594639-04ee), section #gravity-probe-b.
+
+## Binary pulsar follow-up
+
+Checks: `pulsar/pulsar_checks.py` (13/13 pass). Lean: `pulsar/lean/BinaryPulsar.lean` (10 theorems, merged unchanged as Topics/BinaryPulsar; library builds clean at 2,263 theorems).
+
+- Three twists, each weighted by the companion's mass m₂: velocity ½·m₂/M, space m₂/M, companion's drag 2·m₁/M. Their sum times m₂ is m₂(4m₁ + 3m₂)/(2M), the standard spin-orbit coefficient. Light-gyroscope limit gives Gravity Probe B's 3/2.
+- Double pulsar, pulsar B: 0.75 + 1.51 + 2.81 = 5.07°/yr (one turn per 71 years), against 4.77 +0.66 −0.65 measured (Breton et al. 2008, arXiv:0807.2644). Within 1σ.
+- Without the drag twist: 2.26°/yr, 3.9σ off, so the data needs it. Without the velocity twist: 4.32°/yr, still within 1σ, so the pulsar can't isolate it.
+- Correction to the Gravity Probe B notes: the exact ✳ fusion can't be tested here either. M/r ≈ 4.35e-6 (about 7,000× Gravity Probe B's), and the corner is still about 1e-6 of the effect, far below the 14% error.
+- Hulse–Taylor: same bookkeeping gives 1.21°/yr.
+- Verdict: the twist law reproduces a second, independent measured precession, including the drag twist that a heavy partner adds. No further lead with data was judged fairly promising (strong-field gyroscope data doesn't exist; periastron advance as a twist is speculative), so the work stops here.

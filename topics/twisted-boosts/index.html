@@ -117,6 +117,21 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
 <p><b>Frame dragging</b> fits the same picture in another form. Earth's spin gives space a "gravitomagnetic" twist field, and the gyroscope's turn rate is that field's circulation per unit area (Stokes). Averaged over the polar orbit it gives about 41 mas/yr against the measured 37.2 ± 7.2 (the mission's refined figure is 39.2).</p>
 </div></section>
 
+<section class="band" style="padding-top:0" id="binary-pulsar"><div class="wrap panel">
+<h2>The double pulsar: three twists</h2>
+<p>In a binary pulsar the gyroscope is the pulsar itself, and its partner is not a fixed Earth but a star of similar mass swinging round the same centre. The same two twists appear, now weighted by the companion's mass m₂: the <b>velocity twist</b> ½·m₂/M and the <b>space twist</b> m₂/M. A third joins them, the <b>companion's drag</b> 2·m₁/M: the companion moves, so its gravitomagnetic field circulates round the pulsar, the frame-dragging twist again. Added up, the three give m₂(4m₁ + 3m₂)/(2M), which is exactly the standard spin-orbit coefficient, and with a light gyroscope (m₁ → 0) they fall back to the Gravity Probe B law.</p>
+<table style="margin-top:10px"><thead><tr><th>Double pulsar, pulsar B, degrees per year</th><th>Value</th></tr></thead><tbody>
+<tr><td>Velocity twist</td><td>0.75</td></tr>
+<tr><td>Space twist</td><td>1.51</td></tr>
+<tr><td>Companion's drag</td><td>2.81</td></tr>
+<tr><td>Sum (one turn every 71 years)</td><td>5.07</td></tr>
+<tr><td>Measured (Breton et al. 2008)</td><td>4.77 +0.66 −0.65</td></tr>
+<tr><td>Without the drag twist</td><td>2.26, off by 3.9 standard errors</td></tr>
+<tr><td>Without the velocity twist</td><td>4.32, still within one standard error</td></tr>
+</tbody></table>
+<p>So the pulsar needs the drag twist, but its 14% error cannot single out the velocity twist. And although its field is about 7,000 times Gravity Probe B's (M/r ≈ 4 × 10⁻⁶), the ✳ corner that separates the exact fusion from a plain sum is still about a millionth of the effect, so this test cannot see the exact fusion either. The same bookkeeping gives 1.21°/yr for the Hulse–Taylor pulsar, whose beam is seen to change shape at that slow rate.</p>
+</div></section>
+
 <section class="band" style="padding-top:0"><div class="wrap panel">
 <h2>Half a kick</h2>
 <p>The disk uses half-velocities: t = tanh(φ/2), the speed that, added to itself, gives the real speed (t ⊕ t = 2t/(1 + t²) = β). On the mult-add ruler of the relativity page that is the mult-add square root: d(t ⊕ t) = d(t) ✳ d(t). Half-velocities are the coordinates in which the corner splits cleanly, so the half kick is the natural unit for the twist.</p>
@@ -137,14 +152,16 @@ th:first-child,td:first-child{text-align:left;white-space:normal}
 <section class="band" style="padding-top:0"><div class="wrap panel">
 <h2>Is this a lead worth following?</h2>
 <p>Yes, and the Gravity Probe B test made it stronger. Twist = curvature × area, used twice (once in velocity space, once in space), gives 6,604 mas/yr against the measured 6,601.8 ± 18.3, and neither twist alone comes close. The exact answer even comes out as a mult-add of the two twist fractions. That is a real physical number reproduced by the picture, not only a restatement.</p>
-<p>What it is not: new physics. The split into a one-third velocity part and a two-thirds space part is textbook (de Sitter 1916, Schiff 1960). What is ours is the reading: both parts are the same twist law, and they fuse by ✳. A natural next step is a binary pulsar, where the same geodetic twist is measured in a much stronger field, so the exact (second-order) fusion would start to matter.</p>
+<p>What it is not: new physics. The split into a one-third velocity part and a two-thirds space part is textbook (de Sitter 1916, Schiff 1960). What is ours is the reading: both parts are the same twist law, and they fuse by ✳. The double pulsar then fits too: three twists give 5.07°/yr against the measured 4.77 ± 0.66, and the data needs the companion's drag twist.</p>
+<p>Where it stops: neither test can see the exact ✳ fusion, because the corner is second order and even the double pulsar's field leaves it about a millionth of the effect. Gyroscope data in a much stronger field does not exist yet, so for now the fusion is a correct exact identity, checked against theory, but not yet tested by measurement.</p>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap panel">
 <h2>Proved and checked</h2>
 <p><b>36 of 36 checks pass</b> (sympy and numpy): the matrix product, the split corner, the twist formula, the order swap, the two-dimensional light wall, and against real 4×4 Lorentz matrices on 2,000 random pairs: the composed velocity, the Wigner angle, and the angle equal to the triangle's area to 10⁻¹¹. The sphere end was checked the same way against 3D rotations, and twist = q × area at q = −1, −¼, ½ and 1.</p>
 <p><b>Gravity Probe B: 21 of 21 checks pass</b>, including a direct numerical parallel transport around Schwarzschild orbits, the space slice's curvature integral, and the mission numbers. 16 more Lean theorems cover the factor product, the mult-add fusion and the numbers.</p>
-<p><b>32 Lean theorems</b> (core Lean, no mathlib, no sorry, standard axioms only), compiled into the shared library, which now builds clean at 1,616 theorems: boost_mul, corner_split, twist_trivial_iff, twist_on_circle, twist_half_angle, order_swap, shape_mul, sdet_mul, light_wall_2d, under_light_2d, half_kick_ruler and more. The area and Thomas results need real numbers, so they live in the checks.</p>
+<p><b>Binary pulsar: 13 of 13 checks pass</b>: the three-twist coefficient, the test-gyroscope limit, the orbit average 1/(1 − e²), and the double pulsar and Hulse–Taylor numbers. 10 more Lean theorems cover the coefficient, the limit and the comparisons with measurement.</p>
+<p><b>32 Lean theorems</b> (core Lean, no mathlib, no sorry, standard axioms only), compiled into the shared library, which now builds clean at 2,263 theorems: boost_mul, corner_split, twist_trivial_iff, twist_on_circle, twist_half_angle, order_swap, shape_mul, sdet_mul, light_wall_2d, under_light_2d, half_kick_ruler and more. The area and Thomas results need real numbers, so they live in the checks.</p>
 </div></section>
 
 <script>

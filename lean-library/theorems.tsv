@@ -781,6 +781,9 @@ FusedAlgebra.Topics.Consensus	ConsensusFused.step_formula	propext, Classical.cho
 FusedAlgebra.Topics.Consensus	ConsensusFused.sybil_corner	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Consensus	ConsensusFused.sybil_gain	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Consensus	ConsensusFused.three_quorums	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Conventions	Conventions.circle_conventions	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Conventions	Conventions.circle_mirror	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Conventions	Conventions.circle_zero	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Conventions	Conventions.fair_example	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Conventions	Conventions.one_sub_prob	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Conventions	Conventions.prob_inverse	propext, Classical.choice, Quot.sound
@@ -2333,6 +2336,11 @@ FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.rung1_never_wall	propext
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.steps_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.steps_quarter	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.OsgoodInverse	MultAdd.OsgoodInverse.time_left_pos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PathNames	PathNames.chain3_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PathNames	PathNames.chain4_landscape	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PathNames	PathNames.circ_one_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PathNames	PathNames.circ_swap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PathNames	PathNames.scalar_shadow	propext
 FusedAlgebra.Topics.Patterns	Patterns.cassini	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Patterns	Patterns.cycle_of_lucas_zero	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Patterns	Patterns.disc_square_or_ge_five	propext, Classical.choice, Quot.sound

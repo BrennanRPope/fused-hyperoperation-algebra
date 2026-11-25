@@ -63,4 +63,24 @@ theorem fair_example :
     wAdd (-1 : Rat) (1/2) (1/2) = 3/4 := by
   decide +kernel
 
+section Circle
+variable {R : Type} [Lean.Grind.CommRing R]
+
+/-- **Both ring-theory conventions are on the dial.** Texts that write the circle operation as
+    a + b − ab are using k = −1; texts that write a + b + ab are using k = +1. The two are
+    mirror images under a ↦ −a: a ∘₋ₖ b = −((−a) ∘ₖ (−b)). -/
+theorem circle_mirror (k a b : R) : wAdd (-k) a b = -(wAdd k (-a) (-b)) := by
+  unfold wAdd; grind
+
+/-- k = 1 is the plus convention (mathlib's `PreQuasiregular`), k = −1 the minus convention. -/
+theorem circle_conventions (a b : R) :
+    wAdd 1 a b = a + b + a * b ∧ wAdd (-1) a b = a + b - a * b := by
+  unfold wAdd; constructor <;> grind
+
+/-- k = 0 is plain addition. -/
+theorem circle_zero (a b : R) : wAdd 0 a b = a + b := by
+  unfold wAdd; grind
+
+end Circle
+
 end Conventions

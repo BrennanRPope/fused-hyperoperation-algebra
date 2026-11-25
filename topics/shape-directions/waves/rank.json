@@ -1,0 +1,107 @@
+{
+ "2": {
+  "pairs": 1,
+  "kp_rank": [
+   1,
+   1,
+   1
+  ],
+  "expect_kp": 1,
+  "kdv_rank": [
+   1,
+   1,
+   1
+  ],
+  "expect_kdv": 1
+ },
+ "3": {
+  "pairs": 3,
+  "kp_rank": [
+   3,
+   3,
+   3
+  ],
+  "expect_kp": 3,
+  "kdv_rank": [
+   2,
+   2,
+   2
+  ],
+  "expect_kdv": 2
+ },
+ "4": {
+  "pairs": 6,
+  "kp_rank": [
+   5,
+   5,
+   5
+  ],
+  "expect_kp": 5,
+  "kdv_rank": [
+   3,
+   3,
+   3
+  ],
+  "expect_kdv": 3
+ },
+ "5": {
+  "pairs": 10,
+  "kp_rank": [
+   7,
+   7,
+   7
+  ],
+  "expect_kp": 7,
+  "kdv_rank": [
+   4,
+   4,
+   4
+  ],
+  "expect_kdv": 4
+ },
+ "6": {
+  "pairs": 15,
+  "kp_rank": [
+   9,
+   9,
+   9
+  ],
+  "expect_kp": 9,
+  "kdv_rank": [
+   5,
+   5,
+   5
+  ],
+  "expect_kdv": 5
+ },
+ "7": {
+  "pairs": 21,
+  "kp_rank": [
+   11,
+   11,
+   11
+  ],
+  "expect_kp": 11,
+  "kdv_rank": [
+   6,
+   6,
+   6
+  ],
+  "expect_kdv": 6
+ },
+ "8": {
+  "pairs": 28,
+  "kp_rank": [
+   13,
+   13,
+   13
+  ],
+  "expect_kp": 13,
+  "kdv_rank": [
+   7,
+   7,
+   7
+  ],
+  "expect_kdv": 7
+ }
+}

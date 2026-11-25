@@ -1,0 +1,23 @@
+{
+ "path, three weights": "0",
+ "star, three weights": "0",
+ "triangle + lone, three weights": "0",
+ "cycle, four weights": "(w - 1)**2*(x - 1)**2*(y - 1)**2*(z - 1)**2",
+ "tetrahedral": [
+  "(-2-0j)",
+  "(-2+0j)",
+  "(-2-0j)",
+  "(-2+0j)",
+  "(-2+0j)",
+  "(-2-0j)"
+ ],
+ "three_wave_condition": "-k*(k - 1)*(-k*t + t**2 - t + 1)",
+ "k_minus_two_config": [
+  "-2",
+  "-2",
+  "-2",
+  "-2",
+  "-2",
+  "-2"
+ ]
+}

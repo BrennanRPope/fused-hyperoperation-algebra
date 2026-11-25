@@ -83,3 +83,67 @@ fig.suptitle("Figure 2. One symbol and one letter for the freeze: ✳ for mult-a
              fontsize=13, weight="bold", y=1.0)
 fig.tight_layout(); fig.savefig(os.path.join(HERE, "fig2-symbols-and-letters.png"), dpi=130, bbox_inches="tight"); plt.close(fig)
 print("ok")
+
+# ---------- Fig 3: collision map
+items = [("⊞", ["mult-add (Base)", "rung-1 shifted add (Rungs)", "MARing product"], ["mathlib: biproduct"]),
+         ("⊕", ["mult-add (README, Rungs)", "the (k, q) plane law"], ["Lean: sum of types", "direct sum, XOR"]),
+         ("⊛", ["rung 3 (Rungs)", "mult-add (FunctionalAnalysis)"], ["mathlib: Day convolution", "convolution"]),
+         ("✳", ["mult-add (most pages)"], ["none found"]),
+         ("q", ["k + 1", "plane's second dial (−1/c²)"], ["Tsallis q = 1 − k", "q-analog base"]),
+         ("k", ["dial on weights (+1 once)", "dial on probabilities (−1 once)"], ["Boltzmann k, a field"]),
+         ("d", ["proposed plane dial", "zoom-dial dimension"], ["Coleman–McGuinness d (a match)"]),
+         ("mult-add", ["a + b + ab"], ["computing: a·b + c"]),
+         ("Fused", ["conjugated by x ↦ 1 + x"], ["fused multiply-add (FMA)"])]
+fig, ax = plt.subplots(figsize=(13.5, 9.6)); ax.axis("off"); ax.set_xlim(0, 13.5); ax.set_ylim(-0.6, len(items) + 0.6)
+ax.text(2.6, len(items) + 0.25, "meanings in this project", ha="center", weight="bold", fontsize=11)
+ax.text(10.9, len(items) + 0.25, "meanings elsewhere", ha="center", weight="bold", fontsize=11)
+for i, (name, ours, theirs) in enumerate(items):
+    y = len(items) - 1 - i + 0.2
+    inside = len(ours) > 1
+    clash = theirs not in (["none found"], ["Coleman–McGuinness d (a match)"])
+    fc = "#fadbd8" if (clash and inside) else ("#fdebd0" if clash or inside else "#d5f5e3")
+    box(ax, 6.75, y, 1.6, 0.62, name, fc)
+    for j, o in enumerate(ours):
+        yy = y + (j - (len(ours) - 1)/2) * 0.3
+        ax.text(5.6, yy, o, ha="right", va="center", fontsize=9.3, color="#1f618d")
+        ax.plot([5.65, 5.95], [yy, y], color="#1f618d", lw=0.8)
+    for j, t in enumerate(theirs):
+        yy = y + (j - (len(theirs) - 1)/2) * 0.3
+        ax.text(7.9, yy, t, ha="left", va="center", fontsize=9.3, color="#ba4a00" if clash else "#1e8449")
+        ax.plot([7.55, 7.85], [y, yy], color="#ba4a00" if clash else "#1e8449", lw=0.8)
+ax.text(6.75, -0.45, "Red: clashes both inside the project and outside.  Orange: one kind of clash.  Green: no clash found.",
+        ha="center", fontsize=9.5, style="italic")
+fig.suptitle("Figure 3. Naming collisions: each name, what it means here (left) and elsewhere (right), all present since v0.1.0 except d",
+             fontsize=12.5, weight="bold", y=0.98)
+fig.savefig(os.path.join(HERE, "fig3-collision-map.png"), dpi=130, bbox_inches="tight"); plt.close(fig)
+
+# ---------- Fig 4: the circle operation on the dial, and the Lean glyph
+fig, axes = plt.subplots(1, 2, figsize=(14, 5.6), gridspec_kw={"width_ratios": [1.25, 1]})
+ax = axes[0]; ax.set_xlim(-2.3, 2.3); ax.set_ylim(-1.6, 2.2); ax.axis("off")
+ax.set_title("One family, a ∘ₖ b = a + b + k·ab: both ring-theory conventions are points on it", weight="bold", fontsize=11)
+ax.annotate("", xy=(2.2, 0), xytext=(-2.2, 0), arrowprops=dict(arrowstyle="-|>", color="#34495e", lw=1.5))
+ax.text(2.2, -0.25, "k", fontsize=12, ha="right")
+pts = [(-1, "∘₋₁: a + b − ab", "minus convention\nColeman–Easdown;\nMcConnell–Stokes", "#ba4a00"),
+       (0, "∘₀: a + b", "plain addition", "#7f8c8d"),
+       (1, "∘₁: a + b + ab", "plus convention\nDivinsky 1955;\nmathlib PreQuasiregular", "#1f618d")]
+for x, top, bot, c in pts:
+    ax.plot([x], [0], "o", ms=13, color=c); ax.text(x, -0.42, f"k = {x:+d}" if x else "k = 0", ha="center", fontsize=10)
+    ax.text(x, 0.45, top, ha="center", fontsize=11, weight="bold", color=c)
+    ax.text(x, 1.0, bot, ha="center", va="bottom", fontsize=9, color=c)
+ax.annotate("", xy=(0.92, -0.75), xytext=(-0.92, -0.75), arrowprops=dict(arrowstyle="<->", color="#555", lw=1.2, connectionstyle="arc3,rad=0.25"))
+ax.text(0, -1.35, "mirror a ↦ −a turns one into the other:  a ∘₋ₖ b = −((−a) ∘ₖ (−b))   (circle_mirror, proved in Lean)",
+        ha="center", fontsize=9.5, style="italic")
+ax = axes[1]; ax.axis("off"); ax.set_xlim(0, 10); ax.set_ylim(0, 10)
+ax.set_title("Which glyph for Lean? (pages write ∘ₖ)", weight="bold", fontsize=11)
+rows = [("∘", "Lean's function composition", "#fadbd8"), ("⊚", "mathlib: composition (TypeVec)", "#fadbd8"),
+        ("○", "mathlib: composition of relations", "#fadbd8"), ("⊙", "mathlib: Hadamard product", "#fadbd8"),
+        ("✳", "not on mathlib's character list; no shortcut", "#fdebd0"),
+        ("◦", "free and allowed, but looks like ∘ (see the row above)", "#fdebd0"),
+        ("◯", "free in mathlib, allowed, typed \\bigcirc, clearly not ∘", "#d5f5e3")]
+for i, (g, note, fc) in enumerate(rows):
+    y = 9.0 - 1.22*i
+    ax.add_patch(FancyBboxPatch((0, y - 0.5), 10, 1.0, boxstyle="round,pad=0.02", fc=fc, ec="none"))
+    ax.text(0.7, y, g, ha="center", va="center", fontsize=17); ax.text(1.6, y, note, va="center", fontsize=10)
+ax.text(5, 0.25, "Recommended: a ◯ b for k = 1 and a ◯[k] b in Lean", ha="center", fontsize=10, weight="bold", color="#1e8449")
+fig.suptitle("Figure 4. The circle operation, generalized: ∘ₖ on the page, ◯[k] in Lean", fontsize=13, weight="bold", y=1.0)
+fig.tight_layout(); fig.savefig(os.path.join(HERE, "fig4-circle-operation.png"), dpi=130, bbox_inches="tight"); plt.close(fig)

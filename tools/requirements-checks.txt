@@ -1,0 +1,12 @@
+# Python packages the topic checks (topics/*/checks.py) use. CI installs these.
+numpy
+scipy
+sympy
+mpmath
+networkx
+matplotlib
+pandas
+rdata
+pymatching
+cypari2
+pyscf
