@@ -1,0 +1,17 @@
+PASS  scalings about one centre compose by a ∘k b
+PASS  the shared centre is −1/k
+PASS  maps with one centre commute
+PASS  1 + k(a ∘k b) = (1 + ka)(1 + kb)
+PASS  raise then grant on 1000 gives 1600
+PASS  grant then raise on 1000 gives 1650
+PASS  order gap of two affine maps is the oriented area (A1−1)C2 − (A2−1)C1
+PASS  two rules with one target fuse to strength s1 + s2 − s1·s2
+PASS  velocity addition (c = 1) is the point (0, −1)
+PASS  tan addition is the point (0, 1)
+PASS  Euler characteristic point (2, 1) lies on the parabola Δ = 0
+PASS  the χ_y line d = k − 1 passes through (1, 0), (0, −1) and (2, 1)
+PASS  velocity addition has two real walls (Δ > 0)
+PASS  tan addition has none (Δ < 0)
+PASS  30 results: 16 use ∘k, 6 the plane law or wider, 8 the picture only
+PASS  polish: oriented-area gap holds to 30 digits
+16 of 16 pass
