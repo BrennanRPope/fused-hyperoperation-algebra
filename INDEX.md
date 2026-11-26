@@ -81,7 +81,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | Proof complexity: proofs through the circle operation are not shorter (negative result; its Lean files are built in `lean-library-mathlib/`) | `topics/proof-complexity/` | — |
 | Shape directions map | `topics/shape-directions/` | [page](https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe) |
 | Mathlib port check: does the Mathlib version prove the same 1,750 theorems? (read side by side) | `topics/mathlib-port-check/` | no page |
-| Mathlib map: links from the core library to Mathlib's ring theory (circle operation, quasispectrum, Neumann series, Jacobson radical, Chebyshev S), 19 theorems, plus the Lee–Yang ℓp-ball band stated (not proved) and its p = 3 constants and shared core proved (15 theorems). Built by CI | `topics/mathlib-map/` | Mathlib map |
+| Mathlib map: links from the core library to Mathlib's ring theory (circle operation, quasispectrum, Neumann series, Jacobson radical, Chebyshev S), 19 theorems, plus the Lee–Yang ℓp-ball band stated (not proved) and its p = 3 constants, shared core and near-zone reasoning proved (22 theorems). Built by CI | `topics/mathlib-map/` | Mathlib map |
 | Common patterns pass | `topics/patterns/` | no page yet |
 | The theory's shape: the Boolean lattice (n-cube); a chain of circle operations sums over its corners | `topics/boolean-lattice/` | — |
 | Corner weights: every corner is a principal minor of one matrix; Cauchy matrices give soliton pair weights (lead; frame ours; parts DRAFT) | `topics/corner-weights/` | — |

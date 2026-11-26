@@ -42,3 +42,10 @@ open MathlibMap
 #print axioms MathlibMap.LeeYang.rule_three
 #print axioms MathlibMap.LeeYang.not_evenWhole_three
 #print axioms MathlibMap.LeeYang.holding_half_of_alternation
+#print axioms MathlibMap.LeeYang.taylor_cell
+#print axioms MathlibMap.LeeYang.RunCert.nearAlt
+#print axioms MathlibMap.LeeYang.alt_of_near_far
+#print axioms MathlibMap.LeeYang.alternates_of_near_far
+#print axioms MathlibMap.LeeYang.alternatesBelow_range
+#print axioms MathlibMap.LeeYang.holds_range
+#print axioms MathlibMap.LeeYang.rule_range
