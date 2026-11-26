@@ -1,0 +1,53 @@
+{
+ "tracks": {
+  "1.5": {
+   "drops": [
+    {
+     "a": 1.05,
+     "frm": 9,
+     "to": 8,
+     "through_edge": true
+    },
+    {
+     "a": 1.7,
+     "frm": 8,
+     "to": 6,
+     "through_edge": false
+    },
+    {
+     "a": 1.75,
+     "frm": 6,
+     "to": 2,
+     "through_edge": false
+    },
+    {
+     "a": 1.85,
+     "frm": 2,
+     "to": 0,
+     "through_edge": false
+    }
+   ],
+   "first_collision_a": 1.7,
+   "min_gap_up_to_p": 1.8499999999999996
+  },
+  "3.0": {
+   "drops": [
+    {
+     "a": 1.2,
+     "frm": 9,
+     "to": 8,
+     "through_edge": true
+    },
+    {
+     "a": 3.3,
+     "frm": 8,
+     "to": 7,
+     "through_edge": true
+    }
+   ],
+   "first_collision_a": null,
+   "min_gap_up_to_p": 2.9499999999999957
+  }
+ },
+ "polish_seconds": 1.89
+}

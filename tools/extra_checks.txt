@@ -42,3 +42,6 @@ topics/polar-recast/hec5/hec5_checks.py
 topics/quantum-action/lean_identities_check.py
 topics/simplex/shape_dial_checks.py
 topics/lucas-temperley-lieb/extra_checks.py
+topics/shape-dial-survey/proof_checks.py
+topics/shape-dial-survey/new_laws.py
+topics/shape-dial-survey/interlace_check.py

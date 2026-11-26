@@ -1,0 +1,7 @@
+PASS P1 s*G(s) equals the sine transform of g = a p x^(p-1)(1-x^p)^(a-1)  [max gap 2.9e-14]
+PASS P2 g rises all the way to the rim when a <= 1 and turns down near the rim when a > 1  [30 (p, a) pairs]
+PASS P3 at p = 4 with whole a, G equals (1 - D^2)^a applied to the round-ball (Bessel) transform  [max gap 3.3e-41]
+    zeros in |s| < 60 (all, real): {'p=4, a=2 (proved)': (36, 36), 'p=4, a=3 (proved)': (34, 34), 'p=1.5, a=0.95 (proved)': (36, 36), 'p=3, a=1 (proved)': (36, 36), 'p=4, a=1.5 (gap)': (36, 36), 'p=4, a=2.5 (gap)': (34, 34), 'p=6, a=2 (gap)': (36, 36), 'p=6, a=4 (gap)': (34, 34), 'p=1.5, a=1.2 (gap)': (36, 36), 'p=3, a=2 (gap)': (36, 36), 'p=5, a=4.5 (gap)': (34, 34), 'p=6, a=9 (gap (a > p, even p))': (30, 30)}
+PASS P4 every zero inside |s| < 60 is real in all 12 cases, proved and gap
+
+4 of 4 checks pass  (33.6 s)

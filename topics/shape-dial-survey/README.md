@@ -6,7 +6,9 @@ another, not just these 2, but really all of them." Then: "add a polishing step 
 doesn't take too much effort from the computer."
 Builds on `simplex/` (section 7, the round-to-triangle dial) and `polar-recast/` (the right shape for each family) and does
 not repeat them. Checks: `checks.py` → `checks_output.txt`, **46 of 46 pass** (numpy, scipy, mpmath), including 6 polish
-checks that cost **1.3 seconds in all**. Law list: `laws.py` → `laws.json`. Pictures: `figures.py` → `figures/`.
+checks that cost **1.3 seconds in all**. The new-law pass (asked for next: "check all laws using the shape dial to see if
+a new law emerges and what it might be for", using the smooth-to-angular switch too) is `new_laws.py` →
+`new_laws.json`, **9 of 9 pass**, pictures from `figures_new.py`. Law list: `laws.py` → `laws.json`. Pictures: `figures.py` → `figures/`.
 No new Lean in this pass. Colour key: **blue = our reading, orange = already known, grey = the cube end.**
 
 ## The result
@@ -28,7 +30,8 @@ The strongest leads, in order:
 
 1. **Bell's bound (C2).** One formula, CHSH = 2^(1 + max(1/p, 1 − 1/p)), runs along the roundness dial: 4 at the
    cross-polytope, Tsirelson's 2√2 at the sphere, 4 again at the cube. The classical value 2 sits on the simplex end.
-   This is the cleanest slide in the survey.
+   This is the cleanest slide in the survey. In print, the polygon version is Janotta et al. (2011) and our numbers
+   match theirs; the continuous family and its closed form weren't found.
 2. **Relativity ↔ Bayes (C1).** Of all the shapes on the dial, only the triangle (Bayes) and the disk (relativity) can
    move their centre anywhere and keep their shape. Everything between them can't. So the two laws are the only two
    "homogeneous" stops, and the dial between them is the turn-fading route from `simplex/` section 7.
@@ -40,6 +43,15 @@ The strongest leads, in order:
    again (p = ∞).
 5. **The swap rule → corner counting (C7).** The sphere's spread-out curvature gathers into the 8 cube corners or the 6
    octahedron corners as you slide, with the total fixed at 4π.
+
+**New laws at the in-between shapes (section N, added Nov 26).** Three laws appear only at the in-between settings, and all
+three come from the smooth-to-angular switch (the roundness dial p). The round-to-triangle dial and the corner-weight
+dial gave none of their own. The strongest is **Lee–Yang holds for a spin uniform in an n-dimensional p-ball exactly
+when n ≤ 1 + p²** (always, at even whole p), which I didn't find in print. Asked next to prove it: the breaking half is
+proved, and the holding half is proved for n ≤ p + 1 at every p, for the ball, and for p = 4 at whole a; the rest of
+the holding half is still open (section N3, proof). The other two are **Bell's 2√2 is a floor for
+every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
+(a short corollary of Fermat's last theorem).
 
 ![The three shape dials](figures/fig0-three-shape-dials.png)
 
@@ -97,8 +109,23 @@ Middle: even polygons. Right: the segment (one classical bit, the 1-D simplex) g
 - **Known:** 2 (classical), 2√2 (Tsirelson, quantum), 4 (the PR box).
 - **Ours:** all three are one curve, **CHSH(p) = 2^(1 + max(1/p, 1 − 1/p))**, matching the optimiser to 4e-16 at
   p = 1.25, 1.5, 2, 3, 4, 8 (checks C1–C3). Polygons: square 4, hexagon 3, every multiple of 8 sides exactly 2√2, the
-  others a little above and tending to 2√2 (check C5). I haven't searched the literature for this closed form, so it
-  may already be known.
+  others a little above and tending to 2√2 (check C5).
+- **In print (checked Nov 26):** known in part.
+  - The three stops (2, 2√2, 4) are textbook.
+  - The polygon family is Janotta, Gogolin, Barrett and Brunner, New J. Phys. 13, 063024 (2011). Our polygon numbers
+    match their table: every multiple of 8 sides gives exactly 2√2, and 4 mod 8 gives 2√2·sec(π/n) (4 for the square,
+    2.928 for n = 12, as here). They also show odd polygons stay below 2√2 and even ones reach or pass it.
+  - The general link between this bound and how incompatible two measurements can be is Banik et al. (2013) and Stevens
+    and Busch (2014); Bluhm, Jenčová and Nechita (2022) compute that incompatibility as a ratio of tensor norms and give
+    exact values for the disk and the cube, but only bounds for the cross-polytope.
+  - **Found on the second pass:** the closed form is twice the **James constant** of ℓp, J(ℓp) = max(2^(1/p), 2^(1 − 1/p))
+    (Gao and Lau, 1990, from Clarkson's inequalities). So the formula is known as a fact about norms; what I didn't find
+    in print is the step that makes it a Bell bound (section N1).
+  - **Not found in print:** the continuous roundness family read as Bell scores. One unreviewed
+    preprint on ResearchGate has "Tsirelson bounds in ℓp" in its title, but it wouldn't open, and the formula quoted
+    from it gives 2 rather than 4 at p = 1, so it looks like a different setup.
+  - One difference in setup: Janotta et al. use the polygon's own entangled state; here Alice measures in the shape and
+    Bob in its dual. The two agree on every even polygon we compared.
 - **Verdict: the strongest lead.** It ties the quantum bound to the sphere's place on the dial: 2√2 is the minimum
   along the dial, and the sphere is the only point that reaches it.
 
@@ -188,6 +215,9 @@ energy = −fitness/2.*
 - **Ours:** on the round and cube side every one of 18 cases keeps all zeros on the line (J1). Near the cross-polytope
   it breaks: the octahedron's spin (p = 1, solid ball, n = 3) has all its zeros off the line, the first at
   7.4977 + 2.7687i (J2, and polished in P5). At p = 1 the line holds only for a ≤ 1, and the cut-off rises with p (J3).
+- **Correction (new-law pass):** the first scan only looked at fields up to about 28. Summing the function exactly and
+  looking further out shows zeros leave the line whenever a > p, unless p is an even whole number. So the p = 3 cells
+  above a = 3, which the first scan marked "on", are off. Figure 9 now shows the corrected map; section N3 has the rule.
 - **Verdict: the one honest break.** It's worth a closer look because it says which spins our Lee–Yang modules may not
   cover.
 
@@ -214,6 +244,196 @@ level sets, whose order is the norm's p, with k = 1 − p.*
 
 ---
 
+## N. New laws at the in-between shapes
+
+Brennan asked next for every law to be checked at the in-between settings, to see whether a law appears there that
+matches none of the known ones, and to use the smooth-to-angular switch as well. I swept all 49 groups along the
+roundness dial (smooth ↔ angular: cross-polytope, sphere, cube), the shape dial (round ↔ triangle), the corner-weight
+dial, and where it made sense the crossing of the first two. What came out:
+
+| Dial | In-between law | Status |
+|---|---|---|
+| Roundness, crossed with shape | **N1** Bell's 2√2 is a floor for every symmetric shape, and a saddle where the dials cross | Follows from a known theorem (Gao–Lau 1990); the Bell reading wasn't found |
+| Roundness, rational settings | **N2** Fermat for every rational p: only p = 1, 2, ∞ have rational points to spare | Short corollary of Fermat's last theorem; not found stated |
+| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2 and p = 4 whole a; rest open |
+| Roundness | Volume sums E_{1/p}(2Γ(1 + 1/p)) | Immediate from the known volume formula: nothing new |
+| Roundness | Replicator at any p | The same law at every p (u = x^(1/p) is a change of variable, check N5): nothing new |
+| Shape (round ↔ triangle) | The turn fades from −1 to 0; ordering fraction falls 1/4 → 0.229 | Already in `simplex/` §7; no closed form for the ordering fraction |
+| Corner weights | Genus is constant between walls and jumps when a face collapses | Known (toric geometry) |
+
+### N1. Bell's bound is a floor (roundness dial, and its crossing with the shape dial)
+
+![N1](figures/fig13-new-bell-floor.png)
+
+*Figure 13. Left: 400 random symmetric shapes, 300 polygons checked exactly at their corners and 100 smooth ones
+polished; none scores below 2√2. Middle: the roundness dial, with the same formula confirmed in three dimensions.
+Right: the saddle where the two dials cross.*
+
+- **The law.** Put Alice's measurements in a centrally symmetric shape and Bob's in its dual. The best Bell (CHSH) score
+  is the largest value of ‖x + y‖ + ‖x − y‖ over unit vectors, and it is **never below 2√2**. Angular symmetric shapes
+  push it up, to 4 at the square or cross-polytope. The round disk sits on the floor, but so does the regular octagon
+  (2.828427124746, polished), so the floor does not single out the round shape. Toward the triangle along the shape
+  dial, Janotta et al. (2011) find the score falls below 2√2 (pentagon 2.683 with their entangled state, triangle 2). So
+  2√2 is a saddle: a floor one way, a ceiling the other.
+- **Checks.** N1a: lowest of 400 random shapes is 2.8293. N1b: octagon exactly 2√2. N1c: the p-ball formula holds in 3D
+  to 1e-8 (p = 1.25, 1.5, 3, 5).
+- **In print.** The floor is the Gao–Lau theorem that the James constant of any normed plane is at least √2, since the
+  score is at least twice that constant; the p-ball value is twice J(ℓp). I didn't find this read as a Bell bound.
+- **What it might be for.** Physics: a Bell score above 2√2 would point to a symmetric but angular state space, and one
+  below it to a lopsided, triangle-like one, so the score reads the shape of a hypothetical theory. It also says
+  "roundness" alone can't explain Tsirelson's bound, since the octagon matches it.
+- **Verdict: worth a short note,** mostly as a bridge between our Bell work and standard norm geometry.
+
+### N2. Fermat for every rational roundness (roundness dial at rational settings)
+
+![N2](figures/fig14-new-fermat-rational-p.png)
+
+*Figure 14. Every fraction p ≥ 1 with denominator up to 8. Only p = 1, 2 and ∞ have infinitely many rational points.*
+
+- **The law.** On |x|ᵖ + |y|ᵖ = 1 with p = m/n in lowest terms, a rational point needs x = uⁿ and y = vⁿ (a rational
+  number whose m/n-th power is rational must be an n-th power), and then uᵐ + vᵐ = 1. So the curve behaves exactly like
+  Fermat's exponent m, the numerator. On p ≥ 1 that leaves **infinitely many rational points only at p = 1, 2 and ∞**;
+  every other rational p has only the 4 trivial ones.
+- **Checks.** N2a: exact search at p = 3/2, 4/3, 5/2, 5/3, 5/4, 7/4, 6/5, 7/2, 9/4 finds only the trivial points, and a
+  brute-force scan that doesn't assume the n-th-power step finds none either. N2b: p = 1 and p = 2 keep filling up.
+- **Proof status.** Our Lean has exponents 3 and 4, which covers every p whose numerator is divisible by 3 or 4. The rest
+  rests on Wiles. Irrational p is open here.
+- **In print.** Not found stated; it's a two-line corollary, so it may well be folklore.
+- **What it might be for.** Computing: exact rational geometry (rational rotations, exact grid points on a unit circle)
+  works only in the taxicab, Euclidean and chessboard distances. Any in-between distance, such as the superellipse
+  used in design, has no rational points to build on.
+- **Verdict: a neat fact, not a lead.**
+
+### N3. Where Lee–Yang breaks (roundness dial)
+
+![N3](figures/fig15-new-lee-yang-rule.png)
+
+*Figure 15. Left: every tested (p, a). Blue means the zeros keep coming on the line; red means they leave it; grey means
+the break would only show beyond the range I could sum. Middle: at p = 1.5, just below and above the line. Right: the
+law in spin terms.*
+
+- **The law.** A spin uniform in the n-dimensional p-ball, read along one axis, has weight (1 − |x|ᵖ)^a with
+  a = (n − 1)/p. Its field function G(s) = ∫₀¹ (1 − xᵖ)^a cos(sx) dx has all its zeros on the Lee–Yang line
+  **exactly when a ≤ p, that is n ≤ 1 + p²**, unless p is an even whole number, where it holds for every a.
+- **Why.** Far out, G is a wave coming from the rim, of size s^−(a+1), plus a steady push from the centre, where |x|ᵖ has
+  a kink, of size a Γ(p+1) sin(πp/2) s^−(p+1). If a > p the push wins past a crossover that the formula predicts, G stops
+  changing sign, and zeros must leave the line. At even whole p there is no kink and no push.
+- **Checks (exact sums with mpmath, not quadrature).** N3a: below a = p the sign changes keep coming at the expected
+  rate out to s = 210; above a = p, in 14 cases tested past their predicted crossover, G has no real zeros and carries
+  the sign the kink predicts. N3b: at p = 2 and 4, every a up to 10 stays on the line. N3c, the polish: counting every
+  zero in |s| < 60 shows all are real for a just under p, and 36 of 36 are off the line at p = 1.5, a = 2.5.
+- **In print.** The two ends are known: p = 1 is Pólya's (1 − t)^a family (on the line only for a ≤ 1) and p = 2 is the
+  Bessel functions (always on the line). A second search (Nov 26) again found neither the general rule nor the
+  n ≤ 1 + p² form. Two recent Lee–Yang preprints (arXiv:2503.03510, arXiv:2603.18675) treat Blume–Capel spins, the sphere
+  and e^(−V) weights, not p-balls.
+- **What it might be for.** Statistical physics: the Lee–Yang theorem is how one proves phase transitions happen only at
+  zero field, and it needs single-spin weights with the property. This rule says which soft-cornered bounded spins
+  qualify: the 3D octahedral spin doesn't, a p = 1.5 spin does up to 3 components, and every even-p spin does.
+- **Verdict: worth following.** It's a clean statement I couldn't find in print, now half proved outright and proved
+  on three more slices of the other half. Closing the gap would make it a theorem worth writing up on its own.
+
+### N3, proof. What closes and what doesn't
+
+Asked next by Brennan: "Prove the Lee–Yang rule." **Short answer: partly proved.** The breaking half is proved. The
+holding half is proved for every p when n ≤ p + 1, for the round ball at every n, and for p = 4 when a is a whole number.
+The rest of the holding half, 1 < a ≤ p, is still open, though every zero I counted there is on the line.
+
+![N3 proof](figures/fig16-lee-yang-proof-map.png)
+
+*Figure 16. Left: the (p, a) map. Blue and dark green are proved to hold, red is proved to break, grey is the gap, and
+crosses are the cases checked by counting every zero in |s| < 60. Right: the weight g that decides whether Pólya's 1918
+theorem applies. It has to rise all the way to the rim, which happens exactly when a ≤ 1.*
+
+Write G(s) = ∫₀¹ (1 − xᵖ)^a cos(sx) dx with p ≥ 1 and a = (n − 1)/p. G is even, entire and of exponential type 1, and
+"Lee–Yang holds" means every zero of G is real.
+
+1. **Holding for a ≤ 1, any p (n ≤ p + 1). Proved.** Integrate by parts once: s·G(s) = ∫₀¹ g(x) sin(sx) dx with
+   g(x) = a p x^(p−1) (1 − xᵖ)^(a−1), which is positive. Its slope has the sign of (p − 1)(1 − xᵖ) − (a − 1) p xᵖ, which
+   stays ≥ 0 up to the rim exactly when a ≤ 1. Pólya's theorem (1918) says a sine transform over (0, 1) of a positive
+   nondecreasing weight has only real zeros, so G does too. At p = 1 this is the whole rule, so **the cross-polytope
+   end is fully proved** (hold for a ≤ 1, break for a > 1).
+2. **Holding for the round ball, every n. Known.** At p = 2, G is a Bessel function J_(a+1/2)(s)/s^(a+1/2) up to a
+   constant, and those have only real zeros for every a.
+3. **Holding at p = 4 for whole a (n = 5, 9, 13, …). Proved.** Factor 1 − x⁴ = (1 − x²)(1 + x²). Multiplying the weight
+   by x² is the same as applying −d²/ds² to its transform, so G = (1 − D²)^a F, where F is the round-ball (Bessel)
+   transform of (1 − x²)^a. F is in the Laguerre–Pólya class (real zeros, exponential type), and 1 − D and 1 + D each
+   keep a function in that class (Laguerre). So G has only real zeros. This trick works only at p = 4: at p = 6 the
+   extra factor 1 + x² + x⁴ turns into an operator with non-real roots.
+4. **Breaking for a > p, p not even (n > 1 + p²). Proved.** Far out on the real axis, Erdélyi's endpoint expansion gives
+   G(s) = a Γ(p+1) sin(πp/2) s^−(p+1) + O(s^−(a+1)): the centre's push beats the rim's wave, so G has only finitely many
+   real zeros. But G is bounded on the real line and of exponential type 1 in both imaginary directions, so by the
+   Cartwright–Levinson theorem it has about 2r/π zeros in |s| < r. Infinitely many of them are therefore off the line.
+5. **For a < p, only finitely many zeros can be off the line. Proved in outline (a standard argument, not written out in full).** Now the rim's wave is the
+   bigger term, so far out G changes sign once per half period, which accounts for every zero the Cartwright–Levinson
+   count allows there. Any zeros off the line sit in a bounded region.
+
+**The gap, exactly.** For p not even and 1 < a ≤ p (p + 1 < n ≤ 1 + p²), and for even p ≥ 4 outside the cases above, I
+can't rule out a few zeros near the origin leaving the line. Step 5 confines them to a bounded region, and the counts
+below found none there. Routes I tried that don't close it: the multivariate Lee–Yang property for the whole ball fails
+(its two-field function vanishes at h = (1 + 5i, 1 − 5i)), so there is no shortcut through the n-dimensional spin;
+pulling out a factor (1 + x²)^(−1) is an operator that can destroy real zeros; and (1 + x²)^a with fractional a gives no
+entire operator. The likeliest route is a monotone weight after a different integration by parts or substitution, in
+the spirit of Pólya's later work on ∫ e^(−t^(2m)) cos(st) dt.
+
+**Checks** (`proof_checks.py` → `proof_checks_output.txt`, **4 of 4 pass**, 34 s):
+
+| Check | What | Result |
+|---|---|---|
+| P1 | s·G(s) equals the sine transform of g (three (p, a) pairs, quadrature) | gap 3e-14 |
+| P2 | g rises to the rim exactly when a ≤ 1 (30 pairs, p from 1 to 6) | 30 of 30 |
+| P3 | at p = 4, G = (1 − D²)^a F for a = 1, 2, 3 (exact sums) | gap 3e-41 |
+| P4 | every zero in \|s\| < 60 is real: 4 proved cases, 7 gap cases (p = 1.5, 3, 4, 5, 6 at a from 1.2 to 4.5), and p = 6, a = 9 | 12 of 12 |
+
+**Lean.** None of the proof is in Lean yet. The rule and its open band are stated, as propositions with no proof, in
+`topics/mathlib-map/MathlibMap/LeeYangBand.lean`, which compiles against Mathlib. The pieces that would
+formalize first are step 1's slope computation and the integration by parts; Pólya's theorem and Cartwright–Levinson
+aren't in Mathlib, so the whole proof would need them added or taken as stated assumptions.
+
+### N3, sliding check. Is the sliding route alive?
+
+Asked next by Brennan: "Run the check." The idea: start at a = 1, where Lee–Yang is proved, and slide a up. A zero can
+only leave the line by first meeting a neighbour there, so if neighbours never meet before a = p, the rule holds. For
+Bessel functions (p = 2) the standard proof shows the zeros at a and a + 1 alternate, so I tested whether they alternate
+here.
+
+**Short answer: alive for p ≥ 2, not as it stands for 1 < p < 2.** For every roundness from 2 to 6 the zeros at a and
+a + 1 alternate, and no two zeros meet anywhere in the open band. Below p = 2 the band is narrower than 1, so a + 1 is
+already past p and its zeros have left the line: there's nothing to alternate with.
+
+![Sliding route](figures/fig17-lee-yang-sliding-route.png)
+
+*Figure 17. Left: at p = 3 every zero slides steadily to the right as a grows and none meet, inside the band (grey) or
+just past it. Middle: at p = 1.5 the zeros start pairing up inside the band and the pairs meet and leave the line just
+after a = p, the far pairs first, as the proved breaking side says. Right: at p = 4 the zeros at a = 2.5 (blue) and
+a = 3.5 (orange) alternate along the line.*
+
+- **What the numbers show.** In all 40 pairs where both a and a + 1 still have zeros on the line (p = 2 to 6, a from 1
+  up to p), the zeros alternate in |s| ≤ 30. That includes 24 pairs with both a and a + 1 inside the band. Tracking the
+  zeros in steps of 0.05 in a, the gap between neighbours stays at least 2.95 up to a = p at p = 3, and at least 1.85 at
+  p = 1.5, where the first meeting in view comes at a = 1.7.
+- **What a proof still needs.** Alternation only proves something with an identity that ties G at a to G at a + 1.
+  Bessel functions have one (at p = 2, s·G at a equals a constant times the derivative of G at a − 1). For other p
+  I don't see one, because the weight that appears after integrating by parts, x^(p−1)(1 − xᵖ)^(a−1), is the derivative
+  of the cosine kernel only at p = 2. The equivalent statement, by the Hermite–Kakeya–Obreschkoff theorem, is that every
+  weight (1 − xᵖ)^a (c − xᵖ) with c real gives a transform with only real zeros. That's a wider family than the one we
+  started with, so it isn't easier on its face.
+- **For 1 < p < 2.** The pairing has to use some other partner, one that stays on the line. The middle panel shows why
+  it's harder there: the zeros already crowd in pairs inside the band.
+- **Verdict.** The route is worth one more step for p ≥ 2: look for the identity linking a and a + 1, or prove the
+  wider (c − xᵖ) family directly. For 1 < p < 2 it doesn't help as it stands.
+
+**Checks** (`interlace_check.py` → `interlace_check.json`, then `interlace_summary.py` → `interlace_output.txt`,
+**4 of 4 pass**, 35 s plus 2 s polish):
+
+| Check | What | Result |
+|---|---|---|
+| I1 | zeros of G at a and a + 1 alternate wherever both are on the line, \|s\| ≤ 30 | 40 of 40 pairs |
+| I2 | at p = 1.5, a + 1 has no zeros on the line for a = 1, 1.25, 1.5 | confirmed |
+| I3 | no two zeros meet while a ≤ p (tracked in steps of 0.05) | none; first meeting at p = 1.5 is a = 1.7 |
+| I4 | polish: findroot refines each zero (moves of 0.025 at most) and alternation still holds | holds |
+
+---
+
 ## The polishing step
 
 Every numerical fit or search now ends with a cheap exact step, and its cost is recorded:
@@ -227,7 +447,13 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | P5 | Lee–Yang zeros (C9): Newton steps on the octahedron and ball zeros | 7.4977 + 2.7687i; 4.4934 | 3 ms |
 | P6 | Gauss–Bonnet (C7): half-resolution recheck of the total | 1.000000 | 11 ms |
 
-**Total: 1.3 seconds** on top of the survey's own run.
+| N1 | Bell floor: exact corner check on polygons, local optimiser on smooth shapes and 3D p-balls | 1e-8 | 5.8 s |
+| N2 | Fermat at rational p: exact search with whole-number arithmetic | exact | 0.1 s |
+| N3 | Lee–Yang: exact zero count in a disc with mpmath | exact | 13.5 s |
+| N3 proof | Lee–Yang proof checks: identity, slope, p = 4 operator, 12 disc counts | exact | 34 s |
+| N3 sliding | Lee–Yang zeros refined with findroot, alternation rechecked | moves ≤ 0.025 | 1.9 s |
+
+**Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
 ---
 
@@ -236,12 +462,38 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `laws.py` → `laws.json`: the 49 groups with Lean modules, shape, verdict and candidate.
 - `checks.py` → `checks_output.txt`, `results.json`: 46 checks (M, K, S, B, C, D, E, F, G, H, I, J, P).
 - `figures.py` → `figures/`: figures 0–12.
+- `new_laws.py` → `new_laws.json`: 9 checks for the new-law pass (N1–N3, N5). `figures_new.py` → figures 13–15.
+- `proof_checks.py` → `proof_checks.json`, `proof_checks_output.txt`: 4 checks for the Lee–Yang proof. `figures_proof.py` → figure 16.
+- `interlace_check.py` → `interlace_check.json`; `interlace_summary.py` → `interlace_output.txt`: 4 checks for the sliding route. `figures_interlace.py` → figure 17.
 
 ## References
 
 - S. Aaronson, "Is quantum mechanics an island in theoryspace?" (2004).
 - J.-P. Benzécri, convex domains and projective geometry; W. Goldman and J. Loftin on the space of convex shapes.
 - B. Tsirelson (1980), the 2√2 bound; S. Popescu and D. Rohrlich (1994), the PR box.
+- P. Janotta, C. Gogolin, J. Barrett, N. Brunner, "Limits on nonlocal correlations from the structure of the local state
+  space", New J. Phys. 13, 063024 (2011); arXiv:1012.1215.
+- M. Banik et al., "Degree of complementarity determines the nonlocality in quantum mechanics", Phys. Rev. A (2013).
+- N. Stevens, P. Busch, "Steering, incompatibility, and Bell inequality violations in a class of probabilistic theories"
+  (2014); arXiv:1311.1462.
+- A. Bluhm, A. Jenčová, I. Nechita, "Incompatibility in general probabilistic theories, generalized spectrahedra, and
+  tensor norms" (2022); arXiv:2011.06497.
 - F. Hirzebruch, the two-parameter genus; R. Stanley and V. Danilov, h-vectors of toric shapes.
 - D. Myrheim (1978) and D. Meyer (1988), ordering fraction and dimension of causal sets.
 - T. D. Lee and C. N. Yang (1952); C. Newman (1974); G. Pólya on (1 − t)^a.
+- G. Pólya, "Über die Nullstellen gewisser ganzer Funktionen", Math. Z. 2 (1918): sine and cosine transforms of
+  positive nondecreasing weights have only real zeros. E. Laguerre and G. Pólya on the Laguerre–Pólya class and the
+  operators that keep it.
+- A. Erdélyi, Asymptotic Expansions (1956), endpoint expansions of Fourier integrals; B. Ya. Levin, Distribution of
+  Zeros of Entire Functions, the Cartwright–Levinson theorem.
+- N. Obreschkoff, Verteilung und Berechnung der Nullstellen reeller Polynome (1963): two real-rooted functions have
+  alternating zeros exactly when all their real combinations are real-rooted (Hermite–Kakeya–Obreschkoff).
+- D. K. Dimitrov and P. K. Rusev, "Zeros of entire Fourier transforms", East J. Approx. (2011).
+- Lee–Yang preprints checked for the rule: "On the Lee-Yang property of some ferromagnets", arXiv:2503.03510; a preprint on
+  isotropic vector ferromagnets, arXiv:2603.18675.
+- J. Gao and K.-S. Lau, "On the geometry of spheres in normed linear spaces", J. Austral. Math. Soc. (1990): the James
+  constant, √2 ≤ J(X) ≤ 2, and J(ℓp) = max(2^(1/p), 2^(1 − 1/p)).
+- J. A. Clarkson, "Uniformly convex spaces" (1936).
+- N. Obreschkoff, Verteilung und Berechnung der Nullstellen reeller Polynome (1963): two real-rooted functions have
+  alternating zeros exactly when all their real combinations are real-rooted (Hermite–Kakeya–Obreschkoff).
+- D. K. Dimitrov and P. K. Rusev, "Zeros of entire Fourier transforms", East J. Approx. (2011): survey of Pólya's methods.

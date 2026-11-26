@@ -1,0 +1,7 @@
+PASS I1 zeros of G_a and G_(a+1) alternate whenever both are on the line in |s| <= 30  [40 pairs, 24 with both a and a+1 in the band]
+PASS I2 for p = 1.5 the partner a + 1 is already past p and has no zeros on the line, so the pairing has nothing to pair with  [p=1.5, a=1, p=1.5, a=1.25, p=1.5, a=1.5]
+     {'1.5': {'drops': [{'a': 1.05, 'frm': 9, 'to': 8, 'through_edge': True}, {'a': 1.7, 'frm': 8, 'to': 6, 'through_edge': False}, {'a': 1.75, 'frm': 6, 'to': 2, 'through_edge': False}, {'a': 1.85, 'frm': 2, 'to': 0, 'through_edge': False}], 'first_collision_a': 1.7, 'min_gap_up_to_p': 1.8499999999999996}, '3.0': {'drops': [{'a': 1.2, 'frm': 9, 'to': 8, 'through_edge': True}, {'a': 3.3, 'frm': 8, 'to': 7, 'through_edge': True}], 'first_collision_a': None, 'min_gap_up_to_p': 2.9499999999999957}}
+PASS I3 no two zeros meet while a <= p; the first meeting comes after a passes p (p = 1.5 at a = 1.7; p = 3 none up to a = 4.5)  [p=1.5: smallest gap 1.85 up to a = p; p=3.0: smallest gap 2.95 up to a = p]
+PASS I4 polish: findroot moves each zero by under half a grid step and alternation still holds  [largest move 0.025, 1.89 s]
+
+4 of 4 checks pass

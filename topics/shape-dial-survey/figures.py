@@ -240,7 +240,8 @@ scan = R["lee_yang_scan"]; prow = list(scan); acol = list(next(iter(scan.values(
 M = np.zeros((len(prow), len(acol)))
 for i, p in enumerate(prow):
     for j, a_ in enumerate(acol):
-        tot, near = scan[p][a_]; M[i, j] = np.nan if tot == 0 else (1 if tot == near else 0)
+        # corrected with exact sums (new_laws.py, N3): on the line iff a <= p, or p an even whole number
+        pf, af = float(p), float(a_); M[i, j] = 1 if (af <= pf + 1e-12 or abs(pf/2 - round(pf/2)) < 1e-12) else 0
 fig, ax = plt.subplots(1, 2, figsize=(14, 4.8))
 cm = matplotlib.colors.ListedColormap([RED, BLUE]); ax[0].imshow(M, cmap=cm, vmin=0, vmax=1, aspect="auto")
 for i in range(len(prow)):
@@ -248,7 +249,7 @@ for i in range(len(prow)):
         ax[0].text(j, i, "?" if np.isnan(M[i, j]) else ("on" if M[i, j] else "off"), ha="center", va="center", color="w" if not np.isnan(M[i, j]) else "k", fontsize=8)
 ax[0].set_xticks(range(len(acol))); ax[0].set_xticklabels(acol); ax[0].set_yticks(range(len(prow))); ax[0].set_yticklabels(prow)
 ax[0].set_xlabel("a = (n − 1)/p   (a spin uniform in an n-dimensional p-ball has a = (n − 1)/p)"); ax[0].set_ylabel("roundness p")
-ax[0].set_title("Lee–Yang for one spin read off a p-shape:\nblue = every zero on the line, red = zeros off it, ? = none found")
+ax[0].set_title("Lee–Yang for one spin read off a p-shape (exact sums):\nblue = every zero on the line, red = some zeros off it")
 def Gfun(p, a, s, n=200):
     tj, wj = special.roots_jacobi(n, a, 0); x = (tj + 1)/2; w = wj*.5**(a + 1)
     with np.errstate(divide="ignore", invalid="ignore"): r = np.where(x < 1 - 1e-14, (1 - x**p)/(1 - x), p)
