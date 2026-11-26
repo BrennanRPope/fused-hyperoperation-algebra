@@ -1,0 +1,12 @@
+PASS K1: Kerr-Schild inverse is exact: (eta + phi kk)^-1 = eta - phi kk (k null)
+PASS K2: probe mass shell = flat shell - (2M/r)(k.p)^2, with k.p = E + p_r: the single copy's (Q/r)(k.p) squared
+PASS K3: (k.p)^2 = E^2 [a: Newton's pull] + 2E p_r [b: cross term] + p_r^2 [c: space]
+PASS K4: Newton's term alone (a): T = 1 exactly, at every field strength: no precession, orbits close
+PASS K5: Newton + space (a + c): T = 1 - 2M/r exactly: the space factor, same as the gyroscope's
+PASS K6: all three (a + b + c): T = 1 - 6M/r = (1 - 2M/r)(1 - (2v)^2) exactly
+PASS K6b: Newton + cross term, no space (a + b): T = 1/(1 + 4M/r) exactly
+PASS K7: first order: T = 1 - (4b^2/a + 2c) M/r, i.e. advance per lap = pi (4b^2 + 2ac) M^2/L^2; at a=b=c=1: 4 + 2 = 6
+PASS K8: simulated orbits (e = 0.3) match pi(4b^2+2ac)M^2/L^2 to 2.1e-04 for 6 tag sets; Newton's term alone precesses 2e-22 (weak) and -8e-21 (r ~ 43-128M)
+PASS K9: single copy: Coulomb term alone precesses -5e-21; the cross term gives Sommerfeld's pi k^2/L^2 (ratio 1.00002): electric 1 = cross term at strength k
+PASS K10: gravity's cross term = the single copy's, at strength 2M instead of M (the 2 of 2E p_r): (2M)^2 -> 4, so 1 + 3 = 2^2 (ratio 1.00005)
+ALL PASS 11/11

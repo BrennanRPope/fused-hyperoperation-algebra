@@ -1,0 +1,363 @@
+{
+ "verdicts": {
+  "slides": "slides into another law (both ends proved, link checked)",
+  "plausible": "slides, plausible (numbers slide; the law in between not proved)",
+  "partly": "survives on part of the dial, breaks on the rest",
+  "kdial": "the shape move is the k dial in disguise",
+  "self": "is the shape dial itself",
+  "no": "no shape slide (plane-dial law, or no shape it depends on)"
+ },
+ "rows": [
+  {
+   "law": "Core law o_k: order free, identity 0, the wall",
+   "modules": "Base, Foundations",
+   "shape": "cube",
+   "verdict": "kdial",
+   "candidate": "C11"
+  },
+  {
+   "law": "Corner expansion: 1 + (x1 o ... o xn) = sum over corners",
+   "modules": "Base, Cube",
+   "shape": "cube",
+   "verdict": "kdial",
+   "candidate": "C11"
+  },
+  {
+   "law": "Powers: 1 + a^(n) = (1 + a)^n",
+   "modules": "Base",
+   "shape": "cube",
+   "verdict": "slides",
+   "candidate": "C5"
+  },
+  {
+   "law": "Rungs, height flow, Abel ruler",
+   "modules": "Rungs, FractionalRungs, RungShape, ZoomDial",
+   "shape": "half-line",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Calculus: fundamental theorem with o-steps",
+   "modules": "Calculus, ClosingRate",
+   "shape": "half-line",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Plane law (k, d): circle, parabola, hyperbola",
+   "modules": "Landscape, DialSweep, DialWall, DialSurvey",
+   "shape": "conics",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Clifford signatures",
+   "modules": "Clifford",
+   "shape": "conics per axis",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Elliptic curves: pinching the torus",
+   "modules": "Elliptic, EllipticS3, EllipticCounting",
+   "shape": "torus",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Einstein velocity addition",
+   "modules": "Relativity, Electromagnetism",
+   "shape": "ball",
+   "verdict": "slides",
+   "candidate": "C1"
+  },
+  {
+   "law": "Bayes' rule in odds form",
+   "modules": "Statistics",
+   "shape": "simplex",
+   "verdict": "slides",
+   "candidate": "C1"
+  },
+  {
+   "law": "Swap rule: turn = d x area (Thomas, Foucault, pulsars)",
+   "modules": "TwistedBoosts, GRBridges, GravityProbeB, BinaryPulsar",
+   "shape": "sphere / saddle",
+   "verdict": "slides",
+   "candidate": "C7"
+  },
+  {
+   "law": "Maxwell as one equation, F as a wedge",
+   "modules": "Electromagnetism",
+   "shape": "light cone",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Einstein tensor, Lovelock's step",
+   "modules": "GeneralRelativity, GRBridges",
+   "shape": "curved space",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Curvature by counting (2D causal diamonds)",
+   "modules": "curved-space page",
+   "shape": "cube order (triangle light cone)",
+   "verdict": "plausible",
+   "candidate": "C12"
+  },
+  {
+   "law": "Corner-weight shapes, power-set dials",
+   "modules": "PowersetDials, FractionalPowerset, FractalDials",
+   "shape": "generalized permutohedra",
+   "verdict": "self",
+   "candidate": ""
+  },
+  {
+   "law": "Bell numbers, Catalan, set partitions",
+   "modules": "Combinatorics",
+   "shape": "associahedron / permutohedron",
+   "verdict": "slides",
+   "candidate": "C5"
+  },
+  {
+   "law": "q-counting [n]_q",
+   "modules": "QAcross.QCounting, QAcross.QDial",
+   "shape": "simplex",
+   "verdict": "slides",
+   "candidate": "C5"
+  },
+  {
+   "law": "Cube face weights q^area, solitons",
+   "modules": "SolitonsRungs, QAcross.Partitions",
+   "shape": "cube faces / Grassmannian",
+   "verdict": "plausible",
+   "candidate": "C5"
+  },
+  {
+   "law": "Toric charts, projective plane",
+   "modules": "Toric.ToricCharts, Toric.ProjectivePlane",
+   "shape": "simplex",
+   "verdict": "slides",
+   "candidate": "C5"
+  },
+  {
+   "law": "Knots, graphs, diamond lattice, patterns",
+   "modules": "KnotTheory, GraphTheory, DiamondLattice, Patterns",
+   "shape": "various",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Union rule o_-1, independence",
+   "modules": "MeasureProbability, Foundations.Independence",
+   "shape": "cube",
+   "verdict": "slides",
+   "candidate": "C10"
+  },
+  {
+   "law": "Logistic (independent yes/no) and softmax (one of many)",
+   "modules": "Statistics",
+   "shape": "cube / simplex",
+   "verdict": "kdial",
+   "candidate": "C11"
+  },
+  {
+   "law": "Renyi = L_k(Tsallis)",
+   "modules": "InformationTheory",
+   "shape": "simplex",
+   "verdict": "kdial",
+   "candidate": "C11"
+  },
+  {
+   "law": "Shannon, Campbell's code lengths",
+   "modules": "InformationFull",
+   "shape": "simplex",
+   "verdict": "kdial",
+   "candidate": "C11"
+  },
+  {
+   "law": "Repetition dial: Fermi, classical, Bose",
+   "modules": "RepetitionDial",
+   "shape": "cube / orthant",
+   "verdict": "kdial",
+   "candidate": "C11"
+  },
+  {
+   "law": "Thermodynamics: Gibbs, temperature as Maslov dial",
+   "modules": "Thermodynamics, EntropyNoise",
+   "shape": "free-energy bodies",
+   "verdict": "slides",
+   "candidate": "C1"
+  },
+  {
+   "law": "Lee-Yang circle theorem",
+   "modules": "LeeYang, LeeYangCluster, LeeYangSpill",
+   "shape": "circle",
+   "verdict": "partly",
+   "candidate": "C9"
+  },
+  {
+   "law": "Born rule (quantum noise)",
+   "modules": "QuantumNoise",
+   "shape": "sphere",
+   "verdict": "slides",
+   "candidate": "C3"
+  },
+  {
+   "law": "Quantum correlations: CHSH <= 2 sqrt 2",
+   "modules": "beyond-the-cube page",
+   "shape": "elliptope",
+   "verdict": "slides",
+   "candidate": "C2"
+  },
+  {
+   "law": "Entropy of regions as a shape, holographic rules",
+   "modules": "exploration, polar-recast pages",
+   "shape": "polymatroid",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Game theory and evolution: replicator, Fisher's theorem",
+   "modules": "GameTheory, Biology.Evolution",
+   "shape": "simplex",
+   "verdict": "slides",
+   "candidate": "C4"
+  },
+  {
+   "law": "Consensus, dial point processes",
+   "modules": "Consensus, DialPointProcesses",
+   "shape": "various",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Navier-Stokes rungs, strain",
+   "modules": "NavierStokes, NSContinuum",
+   "shape": "strain triangle",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Dark sector",
+   "modules": "DarkSector",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Newton's G lead",
+   "modules": "newton-g page",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Fermat n = 3, n = 4, Pythagorean triples",
+   "modules": "Fermat.Fermat3, Fermat.Fermat4",
+   "shape": "p-circle with p = n",
+   "verdict": "slides",
+   "candidate": "C8"
+  },
+  {
+   "law": "Frey pieces, counterexample map, FLT route",
+   "modules": "Fermat.FreyPieces, Fermat.CounterexampleMap, Fermat.FermatRoute",
+   "shape": "torus of angles",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Hopf invariant one, Kummer-Wilson",
+   "modules": "Topology",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "P vs NP: what can't work",
+   "modules": "PvsNP",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "e: corner volumes 1/n!",
+   "modules": "E, FusedConstants",
+   "shape": "simplex",
+   "verdict": "slides",
+   "candidate": "C6"
+  },
+  {
+   "law": "pi and the Gaussian",
+   "modules": "Pi, GeometryTrig",
+   "shape": "sphere",
+   "verdict": "slides",
+   "candidate": "C6"
+  },
+  {
+   "law": "i, Euler's identity, complex analysis",
+   "modules": "EIPi, WhyI, ComplexAnalysis",
+   "shape": "sphere",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Conservation of mass and charge, stoichiometry",
+   "modules": "Chemistry.ChemConservation, ChemStoichiometry",
+   "shape": "simplex",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Equilibrium, Nernst, Arrhenius, pH, gas laws",
+   "modules": "Chemistry (other modules)",
+   "shape": "log axis",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Biology: genetics, physiology, ecology, cells",
+   "modules": "Biology (other modules)",
+   "shape": "various",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Finance: Fisher's rule for real rates",
+   "modules": "Finance",
+   "shape": "log axis",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Logic, sets, categories, algebra, linear algebra",
+   "modules": "LogicSets, CategoryTheory, AbstractAlgebra, LinearAlgebra",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Functional analysis, Osgood inverse, numerics, dynamics",
+   "modules": "FunctionalAnalysis, OsgoodInverse, Numerical, Dynamics, Infinities",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": ""
+  },
+  {
+   "law": "Data centres, Rulecraft, rule breakers, early science",
+   "modules": "DataCenter, Rulecraft, RuleBreakers, EarlyScience",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": ""
+  }
+ ],
+ "counts": {
+  "slides": 15,
+  "plausible": 2,
+  "partly": 1,
+  "kdial": 6,
+  "self": 1,
+  "no": 24
+ }
+}

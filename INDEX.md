@@ -30,18 +30,20 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: fractional steps of the height flow: only whole steps stay real chances. | `topics/fractional-steps/` | — |
 | DRAFT: parabolic fingerprints: where the rung step's exact fingerprint shows up. | `topics/parabolic-fingerprints/` | — |
 | DRAFT: everything proved, recast in the polar coordinates; 5-region holographic sign check. | `topics/polar-recast/` | — |
-| DRAFT: laws from the hypersphere (i, π, e; orbits and hydrogen on one 3-sphere; gravity's 6 split). | `topics/hypersphere/` | `Topics/Hypersphere` |
+| DRAFT: laws from the hypersphere (i, π, e; orbits and hydrogen on one 3-sphere; gravity's 6 split, including the double copy). | `topics/hypersphere/` | `Topics/Hypersphere` |
 | DRAFT: three bodies on the 3-sphere; orbits found as action minimums. | `topics/three-body/` | — |
 | DRAFT: quantum action: action is area; the q dial in 3D quantum gravity. | `topics/quantum-action/` | `Topics/QuantumAction` |
 | DRAFT: Q#'s body, Adjoint and Controlled on our shapes. | `topics/qsharp-functors/` | — |
 | DRAFT: the simplex as its own shape; the shape dial and temperature (section 7). | `topics/simplex/` | — |
 | DRAFT: the Lucas weights' silent layers are the Temperley–Lieb (Beraha) points. | `topics/lucas-temperley-lieb/` | — |
+| DRAFT: shape-dial survey: which proved laws slide into one another. | `topics/shape-dial-survey/` | — |
+| DRAFT: the missing shapes: the 24-cell, the 600-cell and E8. | `topics/exceptional-shapes/` | — |
 
 ## The library and tools
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,294 theorems, 138 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,304 theorems, 138 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |

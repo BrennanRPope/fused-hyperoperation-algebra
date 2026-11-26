@@ -5,9 +5,9 @@
   DRAFT. Companion checks: ../checks.py (57 checks) and ../orbits/checks_orbits.py (21 checks).
   Core Lean 4.37.0-rc1 only (no mathlib), no `sorry`. Imports Base only.
   First compiled in the shared library on Nov 26. Every proof is `grind`, `decide` or a short
-  induction; the facts that evaluate Rat definitions (sections 7 and 8) use `unfold …; grind`,
-  because `decide` can't evaluate Rat arithmetic in core Lean. Names updated to 1.0
-  (CircleOp.circ, called MultAdd.multAdd before 1.0).
+  induction; the facts that evaluate Rat definitions or Rat numerals (sections 7 to 9) use
+  `unfold …; grind` or `grind`, because `decide` can't evaluate Rat arithmetic in core Lean.
+  Names updated to 1.0 (CircleOp.circ, called MultAdd.multAdd before 1.0).
 
   What is here, and what is known vs ours:
     1. Quaternions (known: Hamilton 1843; Euler's four-square identity 1748).
@@ -16,8 +16,8 @@
     2. Fock's stereographic map (known: Fock 1935) puts each momentum on the unit 3-sphere.
     3. Kepler orbits as tilted great circles (known): with p0² = −2E, (h·p0)² + e² = 1.
     4. Level n holds n² orbital states (known): 1 + 3 + … + (2n − 1) = n².
-    5. Electric orbits (ours as stated; related remarks: Belloni–Reina 1986 on Sommerfeld,
-       arXiv:1008.1811): the circular orbit with the same L moves at speed k/L, so the disc
+    5. Electric orbits (ours as an exact equality; implied in qualitative form by Biedenharn 1983,
+       not stated as numbers in anything we read): the circular orbit with the same L moves at speed k/L, so the disc
        of speed-radius k/L is that orbit's velocity, and Sommerfeld's advance per lap equals
        its Thomas turn per lap.
     6. Hydrogen (exact rewrite of Dirac, ours as a rewrite): the quantum defect δ = κx/(1+x),
@@ -31,6 +31,7 @@
        (1 − 2M/r)(1 − 4v²), v the local orbital speed, beside the gyroscope's 1 − 3M/r = (1 − 2M/r)(1 − v²).
        Same space factor; the orbit's velocity factor runs at 2v. Both fuse by the circle operation.
        The general rule T = (N − 4v²)/B for any static metric is checked symbolically in sympy, not here.
+       The 4v² is v² (special relativity) + 3v² (gravity pulls on energy): ../orbits/twov/checks_twov.py.
 -/
 import FusedAlgebra.Base
 
@@ -185,7 +186,47 @@ theorem orbit_fractions_fuse (x : Rat) (h2 : 1 - 2 * x ≠ 0) :
 /-- At the innermost stable orbit r = 6M the orbit's disc radius 2v reaches light speed. -/
 theorem isco_two_v : 4 * vsq (1 / 6) = 1 := by unfold vsq; grind
 
+/-- **Where the 2v comes from** (../orbits/twov): the energy potential E(1 − 1/√(1 − 2x)) has Newton's closure
+    number N = (1 − 5x)/(1 − 2x), which is 1 − 3v². -/
+theorem energy_pull_closure (x : Rat) (h2 : 1 - 2 * x ≠ 0) :
+    (1 - 5 * x) / (1 - 2 * x) = 1 - 3 * vsq x := by
+  unfold vsq; grind
+
+/-- So 1 − 6x = (1 − 2x)·[(1 − 3v²) − v²]: space, times the energy pull (3v²) and special relativity (v²),
+    which add to 4v² = (2v)². -/
+theorem six_is_two_one_three (x : Rat) (h2 : 1 - 2 * x ≠ 0) :
+    (1 - 2 * x) * ((1 - 3 * vsq x) - vsq x) = 1 - 6 * x := by
+  unfold vsq; grind
+
 /-- At the photon sphere r = 3M the gyroscope's disc radius v reaches light speed. -/
 theorem photon_sphere_v : vsq (1 / 3) = 1 := by unfold vsq; grind
+
+/-! ## 9. Gravity's 6 through the double copy (Kerr-Schild form, ../orbits/dcopy)
+
+A probe in Schwarzschild, in Kerr-Schild form, has mass shell η(p,p) − (2M/r)(k·p)² = −1, with k·p = E + p_r.
+The single copy (Coulomb) has η(p,p) − (2Q/r)(k·p) = −1: one power of k·p, not two. -/
+
+/-- The square has three pieces: Newton's pull E², the cross term 2E·p, and space p². -/
+theorem kp_square (e p : Rat) : (e + p) * (e + p) = e * e + 2 * (e * p) + p * p := by grind
+
+/-- First-order turn per lap, in units of π M²/L², when the three pieces carry weights a, b, c
+    (checked by simulated orbits, dcopy K7–K8). -/
+def ksCoef (a b c : Rat) : Rat := 4 * (b * b) + 2 * (a * c)
+
+theorem ks_all : ksCoef 1 1 1 = 6 := by unfold ksCoef; grind
+theorem ks_newton_only : ksCoef 1 0 0 = 0 := by unfold ksCoef; grind
+theorem ks_newton_space : ksCoef 1 0 1 = 2 := by unfold ksCoef; grind
+theorem ks_newton_cross : ksCoef 1 1 0 = 4 := by unfold ksCoef; grind
+
+/-- The single copy's cross term has strength 1 (Sommerfeld's 1); gravity's has strength 2, from the 2 in 2E·p,
+    so it gives 2² = 4. With space's 2 that is the 6. -/
+theorem six_is_space_plus_square : (2 : Rat) + 2 * 2 * 1 = 6 := by grind
+
+/-- The clock-warp reading's special relativity (1) and energy pull (3) are the double copy's one square. -/
+theorem one_plus_three_is_square : (1 : Rat) + 3 = 2 * 2 := by grind
+
+/-- Completing the square in p_r (a canonical shift) turns the Kerr-Schild shell into a static one with
+    1/A = 1 + φ + φ²/(1 − φ), which is 1/(1 − φ): Schwarzschild's clock factor, φ = 2M/r. -/
+theorem ks_clock (φ : Rat) (h : 1 - φ ≠ 0) : 1 + φ + φ * φ / (1 - φ) = 1 / (1 - φ) := by grind
 
 end Hypersphere

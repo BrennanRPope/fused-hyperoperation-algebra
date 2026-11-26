@@ -1,0 +1,15 @@
+import sympy as sp
+r, E = sp.symbols('r E', positive=True)
+A = sp.Function('A')(r)
+# Clock-warp spacetime (B=1): rdot^2 = E^2/A - 1 - L^2/r^2  ==  SR form (E - Vg)^2 - 1 - L^2/r^2 with Vg = E(1 - A^(-1/2))
+Vg = E * (1 - A**sp.Rational(-1, 2))
+print('SR-form check:', sp.simplify((E - Vg)**2 - E**2 / A))
+v2 = r * sp.diff(A, r) / (2 * A)
+NV = 3 + r * sp.diff(Vg, r, 2) / sp.diff(Vg, r)
+NA = 3 + r * sp.diff(A, r, 2) / sp.diff(A, r)
+print('N_Vg - (N_A - 3 v^2) =', sp.simplify(NV - (NA - 3 * v2)))
+# Local energy and local speed: gamma_loc = E/sqrt(A) = E - Vg (the SR picture's gamma)
+M = sp.symbols('M', positive=True)
+As = 1 - 2 * M / r
+print('Schwarzschild N_Vg =', sp.simplify(NV.subs(A, As).doit()), ' v^2 =', sp.simplify(v2.subs(A, As).doit()))
+print('Vg series:', sp.series((1 - As**sp.Rational(-1, 2)), M, 0, 4))

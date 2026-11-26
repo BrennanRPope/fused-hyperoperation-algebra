@@ -58,7 +58,7 @@ def geodesic_advance(Af, dAf, Bf, dBf, r0, kick=1e-3, laps=6):
     """Integrate a geodesic of -A dt^2 + B dr^2 + r^2 dphi^2 in proper time; return mean periapsis advance per lap
     and the local speed of the circular orbit at r0."""
     A0, dA0 = Af(r0), dAf(r0)
-    Lc2 = r0**3 * dA0 / (2 * A0 - r0 * dA0); Ec2 = A0 * (1 + Lc2 / r0**2)
+    Lc2 = r0**3 * dA0 / (2 * A0 - r0 * dA0); Ec2 = A0 * (1 + Lc2 / r0**2 + kick**2 / Bf(r0))  # on the mass shell
     Lc, Ec = math.sqrt(Lc2), math.sqrt(Ec2)
     def rhs(tau, y):
         rr_, pr_, ph = y

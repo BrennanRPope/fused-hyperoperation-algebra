@@ -20,6 +20,8 @@ red = does not work. No Lean was compiled in this pass.
   area on relativity's velocity sphere: exactly the electric orbit's turn per lap, Dirac's fine structure and the
   Thomas turn of a gyroscope. Gravity's 1 − 6M/r splits exactly into curved space (1 − 2M/r) times a velocity disc
   at twice the orbital speed (1 − (2v)²); the gyroscope gets the same space factor times a disc at the speed itself.
+  The 6 is 2 (space) + 1 (special relativity) + 3 (gravity pulling on energy). Through string theory's double copy
+  it is 2 + 2²: gravity's coupling is the electric one squared, and the 2 in 2v is the 2 of that square.
 - **i and π** come out of the sphere in one line each: i is the step that stays on the sphere (its tangent at 1), and
   π is the distance from 1 to the opposite point −1. That is the same content as the dial route, stated more simply.
   The new content comes from the 3-sphere: there i becomes a whole sphere of i's that do not commute, which is where
@@ -274,7 +276,8 @@ dimensions.** Concretely:
    The 3-sphere is real (Fock), but what breaks it is an area on relativity's velocity sphere, not on the 3-sphere.
    For the electric force that one area is exactly the orbit's turn per lap, Dirac's fine structure and the Thomas
    turn of a gyroscope. For gravity, 1 − 6M/r = (1 − 2M/r)(1 − (2v)²) exactly: the gyroscope's space factor times a
-   velocity disc at twice the speed. A lead for both; why gravity doubles the speed is the open question.
+   velocity disc at twice the speed, and that 'twice' is 1 + 3: special relativity plus gravity pulling on energy.
+   The double copy shows 1 + 3 is one square, 2², from the cross term of (E + p)² (orbits section 7).
 2. **i, π and spin from S³ (section 1).** Worth following as structure, not as a new derivation: S³ is where one i
    becomes many and order starts to matter, which is the step from classical to quantum turning.
 3. **Sphere = simplex with angles (section 3).** Settles the hypertriangle question and gives quantum states'
@@ -283,9 +286,9 @@ dimensions.** Concretely:
 
 ## Next (offered, not started)
 
-- Why gravity's velocity disc has radius 2v (see the orbits section, section 5).
+- Try the double copy's three-piece split for a spinning black hole (Kerr); the non-spinning case is done (orbits section 7).
 - `lean/Hypersphere.lean` compiled into the library as `Topics/Hypersphere` on Nov 26 (quaternions, Fock's map, Kepler's tilt, n² states,
-  the orbit/gyroscope equality, Dirac's defect, the PPN coefficients, the exact split of 1 − 6M/r; 23 theorems). Still to write: E1 (corner simplex = 1/n!) and
+  the orbit/gyroscope equality, Dirac's defect, the PPN coefficients, the exact split of 1 − 6M/r and its 2 + 1 + 3 budget, and the double copy's 2 + 2²; 33 theorems). Still to write: E1 (corner simplex = 1/n!) and
   SR2 (Doppler factors and the core law).
 
 ## Files
@@ -293,8 +296,8 @@ dimensions.** Concretely:
 - `README.md`: this write-up
 - `checks.py` → `checks_output.txt` (57/57)
 - `figures.py` → `figures/fig1` … `fig12`
-- `orbits/`: Newton's orbits and hydrogen on one 3-sphere (`README.md`, `checks_orbits.py` 23/23, `six/checks_six.py` 11/11, figures O1–O7)
-- `lean/Hypersphere.lean`: Lean, compiled into the library as `Topics/Hypersphere` (23 theorems)
+- `orbits/`: Newton's orbits and hydrogen on one 3-sphere (`README.md`, `checks_orbits.py` 23/23, `six/checks_six.py` 11/11, `twov/checks_twov.py` 8/8, `dcopy/checks_dcopy.py` 11/11, figures O1–O9)
+- `lean/Hypersphere.lean`: Lean, compiled into the library as `Topics/Hypersphere` (33 theorems)
 
 ## References
 

@@ -6,9 +6,10 @@ perihelion shift (Mercury's 43″ a century) and hydrogen's fine structure both 
 (turn = d × area) on the 3-sphere they share?
 
 Checks: `checks_orbits.py` → `checks_orbits_output.txt`, **23 of 23 pass**, and `six/checks_six.py` →
-`six/checks_six_output.txt`, **11 of 11 pass** (numpy, scipy; real orbit simulations, not
-formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§8), compiled into the library as
-`FusedAlgebra.Topics.Hypersphere` on Nov 26. Colour key as before: **orange = known, blue = ours**.
+`six/checks_six_output.txt`, **11 of 11 pass**, and `twov/checks_twov.py` → `twov/checks_twov_output.txt`, **8 of 8 pass**, and
+`dcopy/checks_dcopy.py` → `dcopy/checks_dcopy_output.txt`, **11 of 11 pass** (numpy, scipy; real orbit simulations, not
+formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems), compiled into the
+library as `FusedAlgebra.Topics.Hypersphere` on Nov 26. Colour key as before: **orange = known, blue = ours**.
 
 ## The result in three sentences
 
@@ -19,14 +20,16 @@ formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean
    velocity space, and that is the same area that turns a gyroscope (Thomas precession).
 3. **For gravity, Einstein's 1 − 6M/r splits exactly into two twists** (section 5): (1 − 2M/r) for curved space, times
    (1 − (2v)²), a velocity disc at **twice** the orbital speed. A gyroscope on the same orbit gets the same space
-   factor times a disc at the orbital speed itself. So the 6 is 2 + 4: the gyroscope's 2 for space, and four times
-   Thomas's area because the disc's radius is doubled. Mercury's 42.98″ follows, now from an exact law. What is
-   still open is why gravity doubles the radius.
+   factor times a disc at the orbital speed itself. The "twice the speed" is really 1 + 3 (section 6): v² from
+   special relativity, as in the electric orbit, plus 3v² because gravity pulls on energy, and a falling body's
+   energy grows. So the 6 is 2 (space) + 1 (special relativity) + 3 (energy). Mercury's 42.98″ follows. Through
+   string theory's double copy (section 7), 1 + 3 is one square: gravity's coupling is the electric one squared,
+   (E + p)², and its cross term 2E·p doubles Sommerfeld's electric term, so the 2 in 2v is the 2 of the square.
 
 **Does it open a lead?** Yes. For the electric force it turns the Coulomb orbit and Dirac's fine structure into one
 swap-rule area. For gravity the 6 is no longer put in by hand: it is an exact product of the same two twists the
 Gravity Probe B page found for the gyroscope, with the velocity disc's radius doubled. That joins orbits and
-gyroscopes into one swap-rule picture. The doubling is the next thing to explain.
+gyroscopes into one swap-rule picture, and section 6 says where each piece of the 6 comes from.
 
 ## 1. Two spheres, not one
 
@@ -175,8 +178,84 @@ supplies N − 4v².
 - Mercury (S9) tests only the first order, which was already known to give 42.98″.
 - The frequencies themselves are textbook; what we add is the grouping into twist factors and the reading.
   We have not searched the literature for this grouping yet.
-- **Why 2v?** Electric orbits feel −v², gravity's clock warp gives −(2v)². One guess is that gravity pulls on energy,
-  which grows with speed, while the electric pull doesn't. That is a guess, not tested.
+- **Why 2v?** Section 6.
+
+## 6. Where the 2v comes from, and what string theory says
+
+![Where 2v comes from](figures/figO8-where-2v-comes-from.png)
+
+*Figure O8. A: the first-order budget. The electric orbit has only special relativity (1). The gyroscope adds curved
+space (2 + 1 = 3). The orbit adds a third piece, gravity pulling on energy (2 + 1 + 3 = 6). B: the potential the
+orbit actually feels is steeper than Newton's 1/r. C: the exact factors at every field strength.*
+
+**The answer (ours, exact).** It is not a doubling. Inside the clock warp, a geodesic is exactly a
+special-relativity orbit in the potential E(1 − 1/√A) (D1, and simulated orbits agree to 3 parts in 100 million, D7),
+and that picture's speed is the local speed (D2). Two things then spoil Newton's closed orbit:
+
+- **Special relativity, −v²:** the same velocity disc as the electric orbit and the Thomas turn (section 2).
+- **Gravity pulls on energy, −3v²:** a falling body's energy grows as 1/√(1 − 2M/r), and gravity pulls on that energy.
+  So the pull is steeper than 1/r: 1 − 1/√(1 − 2M/r) = −M/r − (3/2)M²/r² − … (D6). That steepness lowers Newton's
+  closure number from 1 to exactly 1 − 3v², for any clock rate (D3, D4; Lean `energy_pull_closure`).
+
+v² + 3v² = 4v² = (2v)², which is why it looked like a disc of radius 2v. Exactly:
+**1 − 6M/r = (1 − 2M/r) · [(1 − 3v²) − v²]** (D5; Lean `six_is_two_one_three`). The 6 is 2 (space) + 1 (special
+relativity) + 3 (energy) (D8). The gyroscope gets only the first two, 2 + 1 = 3, because a gyroscope's turn doesn't
+care how steep the pull is.
+
+**String theory, as Brennan suggested.** We looked in three places:
+- **T-duality and open/closed strings:** no factor of 2 on a speed there that bears on orbits. Nothing found.
+- **The double copy** (gravity = gauge theory squared, from string theory's KLT relations, 1986): this is the right
+  place. It builds Schwarzschild from the Coulomb field (Monteiro, O'Connell and White 2014), maps a charge's orbits
+  onto geodesics (Gonzo and Shi 2021), and its central rule is that gravity's charge is energy and momentum rather
+  than a fixed charge. That is the same physics as our 3v². No paper we found derives the 6 from the double copy;
+  section 7 now does.
+- **String theory's own gravity can remove the 6 entirely.** In N = 8 supergravity, the low-energy limit of string
+  theory, orbits of extremal black holes don't precess at all: the extra scalar and vector forces cancel it
+  (Caron-Huot and Zahraee 2018–19). That fits our table: scalar forces push the coefficient negative (Nordström −1),
+  and the budget can sum to zero. So the 6 is specific to pure general relativity, not to string theory's gravity.
+
+**Is the 1 − 6M/r split new? Not really.** Both ingredients are textbook: Ω_r² = Ω_φ²(1 − 6M/r) and a local orbital
+speed of c/2 at the innermost stable orbit. The split is a one-line rewrite of them. We did not find it written this
+way, nor the general rule T = (N − 4v²)/B, but published formulas for epicyclic frequencies in general static
+spacetimes contain it. Call it a new way of reading known results. The 2 + 1 + 3 budget is the useful part.
+
+## 7. The 6 through the double copy: the 2 in 2v is the 2 of a square
+
+![Gravity's 6 through the double copy](figures/figO9-double-copy-six.png)
+
+*Figure O9. A: gravity's coupling is the electric coupling squared, and the square (E + p)² has three pieces. B: the
+same 6 read two ways. Both give curved space 2; the double copy turns special relativity's 1 and the energy pull's 3
+into one square, 2² = 4. C: switching the pieces on one at a time, exactly.*
+
+Brennan asked to try deriving the 2 + 1 + 3 through string theory's double copy. **It works, and it explains why
+1 + 3 is a perfect square.**
+
+**The setup (known).** Written in Kerr–Schild form, the double copy's own coordinates, Schwarzschild is flat space plus
+(2M/r) k k, with k a light-like direction, and the inverse is exact (K1). So a falling body obeys
+η(p, p) − (2M/r)(k·p)² = −1, with k·p = E + p (K2). The single copy, Coulomb, has the same k but one power:
+η(p, p) − (2Q/r)(k·p) = −1. Gonzo and Shi (2021) use exactly this map, which "replaces the color charge of the test
+particle by its momentum", to rebuild Schwarzschild geodesics from charged orbits.
+
+**What we added (ours).** Expand the square: (k·p)² = E² + 2E·p + p² (K3). Each piece does one job, and we switched
+them on one at a time, exactly and in simulated orbits (K4–K10):
+
+- **E², Newton's pull:** on its own, the orbit closes exactly, at every field strength: no turn at all (K4, K8).
+- **p², space:** with Newton's pull it gives exactly 1 − 2M/r, the same space factor as the gyroscope (K5). It adds 2.
+- **2E·p, the cross term:** in the single copy this term is what makes Sommerfeld's electric turn, the 1 (K9). In
+  gravity the square doubles its strength, from M to 2M, so it gives 2² × 1 = 4 (K10).
+
+So **6 = 2 (space) + 2² (the cross term)**, and all three together give exactly 1 − 6M/r = (1 − 2M/r)(1 − (2v)²)
+(K6; Lean `ks_all`, `six_is_space_plus_square`). The "2v" is the 2 of the binomial square. The clock-warp reading of
+section 6 found the same 6 as 2 + 1 + 3; the two readings agree on space's 2, and the double copy shows that special
+relativity's 1 and the energy pull's 3 are one square, 1 + 3 = 2² (Lean `one_plus_three_is_square`).
+
+**One caution.** How the 6 splits into pieces depends on the coordinates; only the total is the same in every frame.
+The Kerr–Schild frame is the natural one here because it is where the double copy is exact and linear.
+
+**Is it published?** The Kerr–Schild form, its exact inverse and the charge-to-momentum map are known (Monteiro,
+O'Connell and White 2014; Gonzo and Shi 2021). Gonzo and Shi do not compute a precession, and we found no paper that
+splits the 6 into the three pieces of (k·p)², or ties gravity's 2v to the binomial 2. So the derivation is ours, built
+on known parts.
 
 ## Known vs ours
 
@@ -188,23 +267,32 @@ supplies N − 4v².
 - **Ours, exact rewrite:** Dirac's fine structure from one disc area per κ (F1, F4).
 - **Ours, first order, a reading:** every theory's perihelion shift is an integer times the hodograph area/c²
   (−1, +1, +6), and GR's orbit turns twice its gyroscope (R2, R3).
-- **Ours as a grouping, exact (literature not yet checked):** 1 − 6M/r = (1 − 2M/r)(1 − (2v)²), beside the
+- **Known ingredients, our grouping (not found written this way):** 1 − 6M/r = (1 − 2M/r)(1 − (2v)²), beside the
   gyroscope's (1 − 2M/r)(1 − v²); the general rules T = (N − 4v²)/B and T = N − v² (S1–S7).
+- **Ours, exact:** the 6 = 2 (space) + 1 (special relativity) + 3 (gravity pulling on energy), via the
+  special-relativity picture of a clock-warp geodesic (D1–D8).
+- **Known parts, our derivation:** the 6 = 2 (space) + 2² (the cross term 2E·p of the double copy's (k·p)²), with
+  Newton's pull alone giving no turn at all; 1 + 3 = 2² (K1–K10). The Kerr–Schild form and the charge-to-momentum
+  map are known; the split is not, in anything we found.
+- **Known, string theory:** the double copy (KLT 1986; Monteiro–O'Connell–White 2014; Gonzo–Shi 2021); no precession
+  in N = 8 supergravity (Caron-Huot–Zahraee 2019).
 - **Known, now read as discs:** v = c/2 at the innermost stable orbit, v = c at the photon sphere.
 - **Does not work:** the precession as an area on Fock's sphere (P7); GR's perihelion as one exact sum of areas
   (P5b); the split for eccentric orbits in closed form.
 
 ## Next (offered, not started)
 
-1. Explain the doubling: why gravity's clock warp gives a velocity disc of radius 2v. Test the energy guess.
+1. Try the same three-piece split for a spinning black hole (Kerr), whose Kerr–Schild form is also exact.
 2. Read Biedenharn (1983) in full for the R1 equality, and search for the T = (N − 4v²)/B grouping.
-3. ~~Compile `../lean/Hypersphere.lean` in the shared library (23 theorems).~~ Done Nov 26: all 23 compile as `Topics/Hypersphere`.
+3. ~~Compile `../lean/Hypersphere.lean` in the shared library (33 theorems).~~ Done Nov 26: all 33 compile as `Topics/Hypersphere`.
 
 ## Files
 
-`checks_orbits.py`, `checks_orbits_output.txt`, `results.json`, `figures_orbits.py`, `figures/figO1…figO7`,
+`checks_orbits.py`, `checks_orbits_output.txt`, `results.json`, `figures_orbits.py`, `figures/figO1…figO9`,
 `six/` (`checks_six.py` 11/11, `checks_six_output.txt`, `results_six.json`, `figures_six.py`, `explore.py`,
-`general.py`, `srnum.py`, `nordnum.py`), and `../lean/Hypersphere.lean`.
+`general.py`, `srnum.py`, `nordnum.py`), `twov/` (`checks_twov.py` 8/8, `checks_twov_output.txt`, `derive.py`,
+`figure_twov.py`), `dcopy/` (`checks_dcopy.py` 11/11, `checks_dcopy_output.txt`, `results_dcopy.json`, `derive.py`,
+`numcheck.py`, `figure_dcopy.py`), and `../lean/Hypersphere.lean`.
 
 ## References
 
@@ -214,3 +302,6 @@ A. Sommerfeld, Ann. Phys. 51, 1 (1916). L. H. Thomas, Nature 117, 514 (1926). P.
 610 (1928). C. M. Will, Theory and Experiment in Gravitational Physics (PPN perihelion and geodetic formulas).
 J. Bertrand, C. R. Acad. Sci. 77, 849 (1873) (closed orbits; the apsidal number). L. Belloni and C. Reina, Eur. J. Phys. 7, 55 (1986). A. A. Vankov, arXiv:1008.1811 (2010). L. C. Biedenharn, Found.
 Phys. 13, 13 (1983). P. Vickers, Brit. J. Phil. Sci. (2018), arXiv:1912.04698. G. W. Gibbons, arXiv:1509.01286 (2015).
+H. Kawai, D. C. Lewellen and S.-H. H. Tye, Nucl. Phys. B 269, 1 (1986) (KLT). R. Monteiro, D. O'Connell and C. D. White,
+JHEP 12, 056 (2014). R. Gonzo and C. Shi, Phys. Rev. D 104, 105012 (2021), arXiv:2109.01072. S. Caron-Huot and
+Z. Zahraee, JHEP 07, 179 (2019), arXiv:1810.04694.

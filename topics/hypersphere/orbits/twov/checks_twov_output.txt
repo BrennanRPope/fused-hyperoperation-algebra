@@ -1,0 +1,10 @@
+[PASS] D1 a geodesic in a clock-warp spacetime IS a special-relativity orbit in the potential E(1 − 1/√A): radial equations identical: (E − V)² − 1 − L²/r² = E²/A − 1 − L²/r²
+[PASS] D2 that picture's speed is the local speed a static observer measures (its γ = E/√A, the local energy): circular orbits at r = 7, 12, 40 M; worst difference 0.0e+00
+[PASS] D3 the energy potential's closure number: N(E(1 − 1/√A)) = N(A) − 3v², any clock rate A: symbolic
+[PASS] D4 Schwarzschild: N = 1 − 3v² (Newton's closed orbits spoiled by 3v²): N = (5*M - r)/(2*M - r), v² = M/(-2*M + r)
+[PASS] D5 so 1 − 6M/r = (1 − 2M/r) · [(1 − 3v²) − v²]: space × (energy pull 3v² + special relativity v²): identity
+[PASS] D6 the energy potential is steeper than Newton's: 1 − 1/√(1 − 2M/r) = −M/r − (3/2)M²/r² − …: series -3*M**2/(2*r**2) - M/r
+[PASS] D7 simulated: the clock-warp geodesic and the special-relativity orbit in E(1 − 1/√A) precess identically: eccentric orbits (L raised 2% at r = 12, 20, 40 M); worst relative difference 2.7e-08
+[PASS] D8 first-order budget: orbit 6 = 2 (space) + 1 (special relativity) + 3 (energy pull); gyroscope 3 = 2 + 1; electric 1: {'space': 2.0, 'special relativity': 1.0, 'energy pull': 3.0}
+
+8 of 8 checks pass

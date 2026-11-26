@@ -15,9 +15,9 @@
 ==============================================================================
 3. SIMULATED ORBITS (geodesics, small eccentricity)
 ==============================================================================
-[PASS] S7 Schwarzschild: simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 4.3e-06 (kick 1e-3, so small eccentricity)
-[PASS] S7 clock warp only (B = 1): simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 5.0e-06 (kick 1e-3, so small eccentricity)
-[PASS] S7 Reissner–Nordström Q = 0.6: simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 2.6e-06 (kick 1e-3, so small eccentricity)
+[PASS] S7 Schwarzschild: simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 7.1e-06 (kick 1e-3, so small eccentricity)
+[PASS] S7 clock warp only (B = 1): simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 8.8e-06 (kick 1e-3, so small eccentricity)
+[PASS] S7 Reissner–Nordström Q = 0.6: simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 4.9e-06 (kick 1e-3, so small eccentricity)
 
 ==============================================================================
 4. FIRST ORDER AND WHAT IT MEANS

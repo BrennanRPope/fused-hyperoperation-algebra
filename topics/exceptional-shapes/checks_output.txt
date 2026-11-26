@@ -1,0 +1,84 @@
+== A. Setting the shapes up as unit quaternions ==
+[PASS] A1 Q8 / cross-polytope closed under multiplication: 8 unit points, fraction of products inside = 1.000
+[PASS] A1 2T / 24-cell closed under multiplication: 24 unit points, fraction of products inside = 1.000
+[PASS] A1 2O / 24-cell+dual closed under multiplication: 48 unit points, fraction of products inside = 1.000
+[PASS] A1 2I / 600-cell closed under multiplication: 120 unit points, fraction of products inside = 1.000
+[PASS] A2 24-cell: edge = radius, 8 neighbours: edge 1.0000, neighbours 8
+[PASS] A3 600-cell: edge = 1/phi, 12 neighbours: edge 0.6180 vs 1/phi 0.6180, neighbours 12
+[PASS] A4 cell counts 24 / 600 / 120: 24-cell 24 cells, 600-cell 600, 120-cell 120 (from hull)
+[PASS] A5 120-cell has 600 corners (dual of 600-cell): 600 corners
+[PASS] A6 24-cell = cross-polytope + tesseract corners: 8 + 16 = 24
+
+== B. The core law on each corner set: x = (g-1)/k, x o_k y = x + y + k x y ==
+[PASS] B1 k=1: 24-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 1)
+[PASS] B1 k=1: 600-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 1)
+[PASS] B1 k=1: Clifford 48 closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 1)
+[PASS] B1 k=-1: 24-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 1)
+[PASS] B1 k=-1: 600-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 1)
+[PASS] B1 k=-1: Clifford 48 closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 1)
+[PASS] B1 k=0.5: 24-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 0.25)
+[PASS] B1 k=0.5: 600-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 0.25)
+[PASS] B1 k=0.5: Clifford 48 closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 0.25)
+[PASS] B1 k=2: 24-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 4)
+[PASS] B1 k=2: 600-cell closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 4)
+[PASS] B1 k=2: Clifford 48 closed under o_k: fraction inside 1.000; all on sphere |1+kx|=1 (radius 1/|k|, d = k^2 = 4)
+[PASS] B2 120-cell corners are NOT closed: fraction of products landing on a corner = 0.0000
+[PASS] B3 120-cell = five 600-cells (cosets of the 600-cell group): 600-cell corners times 120-cell corners stay on 120-cell: True; 5 pieces of 120, each a 600-cell: True
+
+== C. The swap rule: what do swaps of corners (a b a^-1 b^-1) generate? ==
+[PASS] C1 swaps of Clifford 48 generate 24-cell: 48 -> 24
+[PASS] C1 swaps of 24-cell generate cross-polytope: 24 -> 8
+[PASS] C1 swaps of cross-polytope generate line {+-1}: 8 -> 2
+[PASS] C2 swaps of the 600-cell give the whole 600-cell (perfect group): distinct single swaps 120 of 120: every corner is itself one swap
+[PASS] C3 3D shadows: 24 -> 12 -> 4 -> 1 (octahedral S4 solvable), 60 -> 60 (icosahedral A5 simple): rotation groups [24, 12, 4, 60]
+[PASS] C4 turn angles: 600-cell {0,72,120,144,180,...}; Clifford {0,90,120,180}: 600-cell [0, 72, 120, 144, 180]; Clifford [0, 90, 120, 180]
+
+== D. Gates on the 600-cell ==
+[PASS] D1 standard orientation: X, Y, Z on corners; H, S, sqrtX, T not: {'X': True, 'Y': True, 'Z': True, 'H': False, 'S': False, 'sqrtX': False, 'T': False}
+[PASS] D2 any orientation: S, sqrtX (90 deg) and T (45 deg) fit no 600-cell; H (180) can: turn angles {'X': np.float64(180.0), 'Y': np.float64(180.0), 'Z': np.float64(180.0), 'H': np.float64(180.0), 'S': np.float64(90.0), 'sqrtX': np.float64(90.0), 'T': np.float64(45.0)}
+[PASS] D3 Paulis and H together fit no 600-cell (X.H turns 90 deg): X*H turn = 90.0 deg, not a 600-cell angle
+[PASS] D4 T's best distance: 600-cell 0.236 vs Clifford 0.393 (on S^3): 0.236 vs 0.393 rad: closer to the 600-cell, on neither
+[PASS] D5 600-cell plus T keeps making new points (finite set + one off-corner gate): distinct gates (up to phase) using 0, 1, 2 T's: [60, 1848, 50244]
+[PASS] A7 600-cell = five 24-cells (cosets of the 24-cell group): 5 disjoint pieces of 24, each with 24-cell edges
+
+== E. Hopf shadows: polar coordinates = point on S^2 + phase ==
+[PASS] E1 600-cell, fibres along a 72-deg axis -> 12 points = icosahedron: 12 points, nearest angle 63.4349 deg; fibre size 10
+[PASS] E1 600-cell, fibres along a 120-deg axis -> 20 points = dodecahedron: 20 points, nearest angle 41.8103 deg; fibre size 6
+[PASS] E1 600-cell, fibres along a 180-deg axis -> 30 points = icosidodecahedron: 30 points, nearest angle 36.0000 deg; fibre size 4
+[PASS] E2 24-cell, fibres along a 180-deg axis -> 6 points = octahedron: 6 points, fibre size 4
+[PASS] E2 24-cell, fibres along a 120-deg axis -> 4 points = tetrahedron: 4 points, fibre size 6
+
+== F. Where each shape sits on the p dial (cross-polytope p=1, sphere p=2, cube p=inf) ==
+[PASS] F1 in/out radius ratio, exact for simple cases: {'simplex': np.float64(0.25), 'cross-polytope': np.float64(0.5), 'tesseract': np.float64(0.5), '24-cell': np.float64(0.7071), '600-cell': np.float64(0.9256), '120-cell': np.float64(0.9256)}
+[PASS] F2 600-cell and 120-cell (duals) share the same ratio: 0.925615
+[PASS] F3 24-cell sits at the Hölder pair p = 4/3 and 4; simplex is off the dial: pairs {simplex: None, cross-polytope: (np.float64(1.0), inf), tesseract: (np.float64(1.0), inf), 24-cell: (np.float64(1.333), np.float64(4.0)), 600-cell: (np.float64(1.799), np.float64(2.251)), 120-cell: (np.float64(1.799), np.float64(2.251))}
+[PASS] F4 second measure (volume) agrees in order: 600/120-cell rounder than 24-cell: 24-cell: polytope fills 0.405 of its ball; l_p at 1.333 fills 0.386, at 4.000 fills 0.547; 600-cell: polytope fills 0.783 of its ball; l_p at 1.799 fills 0.818, at 2.251 fills 0.891; 120-cell: polytope fills 0.850 of its ball; l_p at 1.799 fills 0.818, at 2.251 fills 0.891
+
+== G. Regular polytopes by dimension (Schläfli's test: Gram matrix positive definite) ==
+[PASS] G1 regular convex polytopes: 5 in 3D, 6 in 4D, 3 in every dimension 5-8: {3: 5, 4: 6, 5: 3, 6: 3, 7: 3, 8: 3}; 4D: [(3, 3, 3), (3, 3, 4), (3, 3, 5), (3, 4, 3), (4, 3, 3), (5, 3, 3)]
+[PASS] G2 regular tilings of flat space: only the cube tiling above 4D; 24-cell tiles 4D: tilings of (dim-1)-space: {2D: [(3, 6), (4, 4), (6, 3)], 3D: [(4, 3, 4)], 4D: [(3, 3, 4, 3), (3, 4, 3, 3), (4, 3, 3, 4)], 5D: [(4, 3, 3, 3, 4)], 6D: [(4, 3, 3, 3, 3, 4)], 7D: [(4, 3, 3, 3, 3, 3, 4)]}
+
+== H. E8 ==
+[PASS] H1 E8: 240 roots, inner products in {0,+-1,+-2}, 56 neighbours at 1: kissing number 240
+[PASS] H2 E8 Coxeter (Petrie) picture: Coxeter number 30, 8 rings of 30: h = 30.000, ring radii [np.float64(0.23824), np.float64(0.38547), np.float64(0.47386), np.float64(0.57292), np.float64(0.70429), np.float64(0.76672), np.float64(0.92701), np.float64(1.13957)]
+[PASS] H3 E8 = 600-cell and 600-cell/phi, with the golden ratio's Galois twin as the other 4 coordinates: 240 unit vectors, 2x inner products all integers in {-2..2}, 56 neighbours: an E8 root system
+[PASS] H4 E8's shadow in 4D = two 600-cells, radii in ratio phi: radii 0.525731 and 0.850651, ratio 1.618033989 (phi = 1.618033989); each ring has 600-cell edges
+[PASS] H5 240 integral octonion units closed under octonion multiplication (so under o_k): convention: Kirmse quads with ('inf', 0) swapped (Coxeter's correction); 240 units, E8 inner products
+[PASS] H6 grouping matters on E8's corners; Moufang identity holds: triples where (ab)c = a(bc): 0.0974; pairs that commute: 0.0288; Moufang (ab)(ca) = (a(bc))a on all 60000 samples: True
+[PASS] H7 8D cross-polytope (+-1, +-e_i) closed too: a 16-element loop: the cross-polytope is the one regular shape closed in every split dimension
+
+== I. 24-cell extras ==
+[PASS] I1 four squares: Hurwitz integers of size n = 24 x (odd divisor sum); Jacobi's count: n=1..30; e.g. n=1: 24 Hurwitz units, 8 ways as four squares
+[PASS] I2 the 24-cell is the tile (Voronoi cell) of the D4 lattice; 24 neighbours = kissing number 24: cell corners 24 = the 24 Hurwitz units
+
+== P. Polish (exact arithmetic, after the floating-point checks) ==
+[PASS] P1 600-cell closure re-done exactly in Z[phi] (no rounding): 14,400 products exact; all sizes exactly 1
+[PASS] P2 24-cell closure re-done exactly in fractions: 576 products exact
+[PASS] P3 E8 inner products exact: exact rationals on 9,600 pairs
+[PASS] P4 24-cell's p pair exact: 4/3 and 4 are Hölder conjugates (1/p + 1/q = 1): closed form, no fit
+[PASS] P5a 600-cell in/out ratio matches the closed form phi^2 / sqrt 8: 0.925614793410958 vs 0.925614793410958
+[PASS] P5 600-cell's p (simplicial side) polished by 4 Newton steps: p = 1.799344039297; closed form 2/(1+t) = 1.799344039297
+
+Timing: main checks 5.3 s; polish 0.48 s (9% extra)
+
+61 of 61 pass
