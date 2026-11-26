@@ -68,3 +68,9 @@ open MathlibMap
 #print axioms MathlibMap.TopologyShapes.curvature_neg_iff
 #print axioms MathlibMap.TopologyShapes.chi_product
 #print axioms MathlibMap.TopologyShapes.one_sub_chi_mul
+#print axioms MathlibMap.KleinFlow.sum_eq_zero_of_odd
+#print axioms MathlibMap.KleinFlow.sum_comp_eq_zero_of_odd
+#print axioms MathlibMap.KleinFlow.uniform_flow_klein_iff
+#print axioms MathlibMap.KleinFlow.relation_odd_on_klein
+#print axioms MathlibMap.KleinFlow.quartic_moment
+#print axioms MathlibMap.KleinFlow.lone_vortex_maximises
