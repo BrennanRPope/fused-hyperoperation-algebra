@@ -1,0 +1,45 @@
+== A. Uniform timing = equal corner split = Shapley, n = 2..5, exact ==
+  [PASS] A2: n = 2: UDD = corner split = Shapley (exact polynomials)
+  [PASS] A2b: n = 2: the shares add up to the union 1 - prod(1 - q)
+  [PASS] A3: n = 3: UDD = corner split = Shapley (exact polynomials)
+  [PASS] A3b: n = 3: the shares add up to the union 1 - prod(1 - q)
+  [PASS] A4: n = 4: UDD = corner split = Shapley (exact polynomials)
+  [PASS] A4b: n = 4: the shares add up to the union 1 - prod(1 - q)
+  [PASS] A5: n = 5: UDD = corner split = Shapley (exact polynomials)
+  [PASS] A5b: n = 5: the shares add up to the union 1 - prod(1 - q)
+
+== B. Path independence of the total ==
+  [PASS] B1: 25 random paths: every total equals 1 - prod(1 - q) to 1e-10
+  [PASS] B2: ... while the split between causes moves (spread > 0.05 for the largest cause)
+  [PASS] B3: product rule identity behind it (symbolic, any paths)
+
+== C. Constant force = straight path in log coordinates ==
+  [PASS] C1: constant force split = (log(1 - q_j)/sum log(1 - q)) x total
+  [PASS] C2: symbolic: D_1 = mu_1 (1 - e^{-M})/M
+  [PASS] C3: same as the textbook constant-force formula
+   UDD split    [0.20275 0.38055 0.09425 0.04875]
+   const force  [0.199929 0.388534 0.091098 0.046738]  total 0.7263
+  [PASS] C4: the two textbook splits differ (largest cause, by more than 1e-3)
+
+== D. Every line dial k ==
+  [PASS] D1: any k, 3 players: straight path = Shapley (Owen's diagonal formula)
+  [PASS] D2: any k: Shapley = corners k^{|S|-1} prod x shared equally
+  [PASS] D3: k = -1, -0.4, 0.7, 2: straight path in log coordinates = split in proportion to L_k
+
+== E. Plane dial: the straight path stops being Shapley ==
+   Shapley - straight path, through d^2: -d*x*y*(x - y)*(3*d*x*y + 5)/30
+  [PASS] E1: gap = -d x y (x - y)/6 + O(d^2), the same for every k
+   AMH theta = 0.0: total 0.650000  straight path [0.225 0.425]  Shapley [0.225 0.425]
+   AMH theta = 0.5: total 0.621622  straight path [0.208192 0.41343 ]  Shapley [0.210811 0.410811]
+   AMH theta = 0.9: total 0.595376  straight path [0.192784 0.402592]  Shapley [0.197688 0.397688]
+  [PASS] E2: theta = 0 (independent causes): straight path = Shapley
+  [PASS] E3: theta = 0.5, 0.9: totals still add up, but straight path != Shapley (gap > 1e-3)
+  [PASS] E4: the plane law's log coordinate inverts correctly
+  [PASS] E5: AMH theta = 0.5: straight path in the law's log coordinate = proportional split
+
+== F. Simulation: AMH-dependent causes, uniform marginal timing ==
+   simulated dependent rates 0.20849 0.41329  path integral [0.20819 0.41343]  Shapley [0.21081 0.41081]
+  [PASS] F1: simulation matches the straight-path integral within 3 standard errors
+  [PASS] F2: ... and rules out the Shapley split (more than 5 standard errors away)
+
+25/25 checks pass
