@@ -1,0 +1,57 @@
+== C1  two pieces at ratio r: segment, Cantor, half box, overlap
+PASS  A1 Moran root = log 2 / log(1/r) along the whole dial (49 settings)
+PASS  A2 stops: r = 1/4 -> D = 1/2 (half box), r = 1/3 -> log2/log3 (Cantor), r = 1/2 -> 1 (segment)  [0.630930]
+PASS  A3 the two images [0, r] and [1-r, 1] have gap 1 - 2r: open below 1/2, touching at 1/2, overlapping above
+PASS  A4 below 1/2 the box-count slope matches D (open set condition holds; Hutchinson 1981)  [r=0.25: 0.5000 vs 0.5000, r=0.4: 0.7570 vs 0.7565]
+PASS  A5 above 1/2 the set is the whole segment: box slope 1, while log2/log(1/r) = 1.357 > 1 (OSC fails)  [slope 0.9994]
+== C1b  the classic stops with N pieces
+PASS  B1 Sierpinski (3 at 1/2) log3/log2, Koch (4 at 1/3) log4/log3, n-cube (2^n at 1/2) n for n = 1..4
+PASS  B2 turning r with N = 2^n fixed slides the cube's D = n log2/log(1/r) (n = 3, 20 settings)
+== C2  box layers C(D, k) slide as D moves
+PASS  L1 D = 1/2 layers 1, 1/2, -1/8, 1/16, -5/128, 7/256 (FractalBoxes.half_layers)
+PASS  L2 D = 3 layers 1, 3, 3, 1, 0 (cube_layers)
+PASS  L3 POLISH (30 digits): sum_k C(D,k) a^k = (1+a)^D at D = 1/4, 1/2, 0.631, 1.585, 5/2 and a = 0.5, 0.9  [max error 7.89e-31, 0.23 s]
+PASS  L4 Moran box: a box of dimension D with side 1/r holds (1/r)^D = N pieces, for N = 2, 3, 8 and many r
+PASS  L5 the Moran box's layer series converges only for r >= 1/2 (a = 1/r - 1 <= 1): Cantor terms grow, r = 0.6 terms shrink  [Cantor |term| at k=20,40,80: 2.13e+03, 7.11e+08, 2.51e+20]
+PASS  L6 joining at a common ratio adds D: two half boxes (2 at 1/4) make 4 at 1/4, D = 1 (half_join_stick); three 1/3-boxes (2 at 1/8) make 8 at 1/8, D = 1 (third_join_stick)
+PASS  L7 D = 1/2 joined with D = 3/2 at a common ratio gives D = 2 (half_and_three_halves): 2 at 1/4 times 8 at 1/4 = 16 at 1/4
+== C3  the weight r^s: k at a fixed s, frozen at the true D, odds when one piece turns
+PASS  W1 w (t o_w u) = (w t) o_1 (w u): a weight is the homothety k = w (circK_scale, ZoomDial.zoom_is_twist)
+PASS  W2 uniform turning: at the Moran dimension every piece weighs r^D = 1/N, whatever r (N = 2, 3, 5; 30 settings)
+PASS  W3 at a fixed trial exponent s the weight r^s does move (s = 1/2: 0.316 at r = 0.1, 0.707 at r = 0.5): that is k moving
+PASS  W4 one piece turned alone: the weights r_i^D stay on the simplex (sum 1); their odds are (r1/r2)^D and the chance t/(1+t) is the weight
+PASS  W5 Bowen's equation: the soft maximum of log r_i at temperature 1/D is exactly 0 (free energy zero)
+PASS  W6 depth-n words weigh x(s)^n; the k = -1 word series 1/(1 - x) converges for s > D and hits its wall at s = D (zoom-dial)
+== C4  Kraft's sum is Moran's wall at D = 1; Renyi entropy becomes Renyi dimension
+PASS  K1 every full binary tree has Kraft sum exactly 1 (InformationFull.kraft_one), 40 random trees, exact fractions
+PASS  K2 with branch ratios (r1, r2) at every node, every full tree weighs 1 at the Moran D (and not at D + 0.1): Kraft slides to Moran  [5 ratio pairs x 40 trees; the induction is kraft_one's with 1/2 replaced by r_i^D]
+PASS  K3 c+1 branches at ratio 1/(c+1) give D = 1 for every c (dary_full's tree); at ratio r they give log(c+1)/log(1/r)
+PASS  K4 uniform ratio: the Renyi dimension D_q = tau(q)/(q-1) equals H_q(p)/log(1/r) (q = 0, 1/2, 2, 3)
+PASS  K5 natural weights p_i = r_i^D make every D_q equal D (a monofractal), uneven ratios
+PASS  K6 unequal ratios (multifractal formalism, Cawley-Mauldin 1992): tau(0) = -D_Moran and tau'(1) = information dimension sum p log p / sum p log r  [D_1 = 0.63833, D_0 = 0.95335]
+== C5  Stefan-Boltzmann 7/8 and the cap ladder r = 1/(m+1)
+PASS  G1 at most m copies: (1-x)(1 + x + ... + x^m) = 1 - x^(m+1), m = 1..6 (SizeDialResidual.at_most_m)
+PASS  G2 POLISH (30 digits): capped-at-m log Z / Bose log Z = 1 - (m+1)^(-beta) = 1 - r^beta, beta = 1, 2, 3, m = 1, 2, 3  [max error 9.86e-32, 0.48 s]
+PASS  G3 energy density in 3-D: 7/8 at m = 1 (Stefan-Boltzmann's fermion/boson ratio), 26/27 at m = 2, 63/64 at m = 3
+PASS  G4 Dirichlet form: sum (1 - m[m|n]) n^-s = (1 - m^(1-s)) zeta(s), so the leftover share is m^(-beta) at s = beta + 1 (m = 2 is eta)
+PASS  G5 the ladder's stops: r = 1/2 (Fermi), 1/3, 1/4, ... -> 0 (Bose, share 0); share r^beta
+== C6  the clock r of the height flow is the d dial in disguise for rho
+PASS  T1 rho = (ln r)/3 (newton-g Q1) equals the plane-law rho = 1/3 - 4d/(3k^2) at d = k^2 (1 - ln r)/4, for k = 1/2, 1, 2
+PASS  T2 the parabola d = k^2/4 has rho = 0 for every k: the only clock-free value (newton-g Q4)
+== Z  fractal strings and complex dimensions (Lapidus-van Frankenhuijsen)
+PASS  Z1 Cantor: complex dimensions D + 2 pi i n / log 3 are zeros of 1 - 2 (1/3)^s (n = 1..5)
+PASS  Z2 Cantor string lengths 3^-(n+1) (2^n of them): geometric zeta = 1/(3^s - 2), total length 1 at s = 1
+PASS  Z3 spectral zeta of a string = zeta(s) x geometric zeta (Lapidus): checked on the first 31 Cantor-string intervals at s = 2
+PASS  Z4 one piece turned alone: lattice (1/4, 1/2) has complex dimensions on the line Re s = D, every 2 pi/log 2; non-lattice (0.3, 0.5) has none on that line up to height 120  [non-lattice min |x(s)-1| on the line = 0.0106]
+== N  laws at in-between settings
+PASS  N1 two pieces at r = 2^(-1/D) have similarity dimension D: D = 1/2 (r = 1/4), 1 (1/2), 2 (0.7071), 3 (0.7937)
+PASS  N2 at r = 1/sqrt 2 the natural measure's Fourier transform is sinc(2 xi) sinc(sqrt2 xi): digits split into even and odd, so it is uniform * uniform (a trapezoid density), the square seen edge-on (Wintner 1935)
+PASS  N3 the joined half boxes, geometrically: (2/3) C_1/4 + (1/3) C_1/4 = the dyadic segment, level by level (exact, level 6: 4096 points)
+PASS  N4 but (1/2)(C_1/4 + C_1/4) has only 3^n points at level n (exact overlap): a dust of D = log3/log4 = 0.79, not 1
+PASS  N5 C_r + C_r is the 3-map set with shifts 0, 1-r, 2(1-r): gaps at r = 0.3, an interval from r = 1/3 on (cover condition 2r >= 1 - r)  [r=0.300: max gap 1.00e-01, r=0.333: max gap 9.55e-15, r=0.400: max gap 0.00e+00]
+PASS  N6 golden r = 1/phi: exact overlaps (1 = r + r^2); n digits give F(n+3) - 1 distinct points, not 2^n  [[2, 4, 7, 12, 20, 33, 54, 88]]
+PASS  N7 golden: dimension of the natural measure = Garsia entropy / log phi = 0.99571 < 1 (Alexander-Zagier 1991)  [0.995713, 0.5 s]
+PASS  N8 tribonacci r = 0.5437 (also Pisot): dimension 0.98041 < 1 (Grabner-Kirschenhofer-Tichy's 0.9804)  [0.980409]
+
+polish cost: 0.72 s for checks L3 and G2 (mpmath, 30 digits)
+45 of 45 pass

@@ -1,0 +1,59 @@
+PASS C1a all t = 0 counts 1 (empty set only)
+PASS C1a all t = 1 counts 2^n (plain power set)
+PASS C1b uniform t = 2^a - 1 counts 2^(a n), a in [0, 2]  [max rel err 1.3e-15]
+PASS C1c exponent ruler (2^a-1) o_1 (2^b-1) = 2^(a+b)-1
+PASS C1d forcing: P(S = everything) -> 1 as t -> infinity  [[0.0156, 0.5645, 0.942, 0.9994]]
+PASS C1e complement: weight(S; t) = (prod t) * weight(S^c; 1/t)
+PASS C1f one element alone: total = (1 + t1) * total(rest), straight line in t1
+PASS C2a Bayes: posterior odds = prior odds x likelihood ratio
+PASS C2b 40 looks: log posterior odds = log prior odds + sum log L
+PASS C2c multiplying odds is velocity addition: v(O1 O2) = (v1 + v2)/(1 + v1 v2)
+PASS C2d selection: allele odds after g generations = odds0 * (1+s)^g
+PASS C3a chance t/(1+t) = logistic of log t; 1/2 exactly at t = 1
+PASS C3b turning one odds alone: cube chances of the others stay; simplex chances drop, ratios kept (Luce)
+PASS C3c small odds: cube and simplex readings agree to first order
+PASS C3d two binding sites 1 + 2x + w x^2: no real zero exactly when w > 1 (discriminant 4(1 - w))
+PASS C3e entropy of the dialled power set peaks at t = 1 with n bits
+PASS C4a occupation n = t/(1 + k t) at k = 1 (Fermi), 1/2 (two copies), 0, -1 (Bose)
+PASS C4b Fermi minus Boltzmann is relative size t: the gap closes linearly
+PASS C4c N elements at odds 2/N: count law -> Poisson(2), distance falls like 1/N  [9.9e-02, 1.1e-02, 1.1e-03]
+PASS C4d (1 + 1/n)^n climbs to e (E.stair)
+PASS C5a ring of 12, pair weight k = 2: every zero on |k t| = 1  [max dev 4.2e-13]
+PASS C5b 4x4 torus, k = 2: every zero on |t k^2| = 1 (Lee-Yang circle)  [max dev 7.9e-12]
+PASS C5c complement t -> 1/t: in normalised odds the polynomial is palindromic
+PASS C5d one element at a time: Z != 0 whenever every normalised odds has |zeta_i| < 1 (1500 samples)  [min |Z| 2.07e-01]
+PASS C5e on the real axis the density is exactly 1/2 at normalised odds 1
+PASS C5f hard core (k = 0): zeros on the negative axis, none in (-1/4, 0)
+PASS C5g stronger pairs pull the nearest zero toward normalised odds 1 (angle shrinks)  [[np.float64(1.235), np.float64(0.559), np.float64(0.302)]]
+PASS C6a product over primes < 2e5 of (1 + p^-2) = zeta(2)/zeta(4)  [1.51981718 vs 1.51981775]
+PASS C6a product over primes < 2e5 of (1 + p^-3) = zeta(3)/zeta(6)  [1.18156495 vs 1.18156495]
+PASS C6b squarefree numbers up to 1e6: density 6/pi^2  [0.607926 vs 0.607927]
+PASS C6c a boson is a tower of fermions: prod (1 + x^(2^j)) = 1/(1 - x) (PowersetDials.fermi_dirac)
+PASS C6d one prime alone: t_2 -> 0 leaves the odd squarefree numbers, zeta(2)/zeta(4)/(1 + 1/4)  [1.2158522]
+PASS C7a 500 interval triples: odds glue X(A, B1B2) = X1 o_1 X2
+PASS C7b monogamy I3 <= 0 in every configuration (HoloGluing.monogamy_glued)
+PASS C7c mutual information turns on at odds X = 1 exactly
+PASS C8a tilting one mode by t^N stays in its family; the odds mu/(1 + k mu) is multiplied by t (k = -1, 0, 1/2, 1)
+PASS C8b L-ensemble: tilting by t^|S| is the DPP with kernel tK(I - K + tK)^-1 (inclusion chances)
+PASS C8c t = 1: one fermion level half full; one boson level's mean diverges as t -> 1
+PASS C9a odds t_i = q^i t: prod (1 + q^i t) = sum q^(k(k-1)/2) [n,k]_q t^k (n = 6)
+PASS C9b q = 1 brings back the binomial count (1 + t)^n
+PASS C9c odds q^i: distinct-part partitions; odds -q^i: Euler's pentagonal numbers (to q^30)
+PASS C10a bridge bond alone: reliability is a straight line in its chance t/(1+t)
+PASS C10b ends: t = 0 is two series pairs in parallel; t = infinity two parallel pairs in series (GraphTheory.wheatstone)
+PASS C10c whole curve matches 2p^2 + 2p^3 - 5p^4 + 2p^5 at bond chance p
+PASS N1a the complement t -> 1/t has one positive fixed point, t = 1 (PowersetDials.compl_fixed_dial)
+PASS N1b at t = 1: chance 1/2, Bayes neutral (L = 1), fermion half full, MI onset, entropy max, Lee-Yang crossing
+PASS N2a union half: t o_1 t = 1 and partner(t) = t (PowersetDials.half_dial, partner_fixed_iff, Thermodynamics.lens_fixed_point)
+PASS N2b two equal neighbours, neither sharing MI with A: I3 < 0 exactly when their odds pass sqrt2 - 1
+PASS N2c the edge of that region is the partner curve X2 = (1 - X1)/(1 + X1) (400 random pairs)
+PASS N2d real intervals on a line: RT lengths give the odds formula, and I3 turns negative exactly where X1 o_1 X2 passes 1
+PASS N2e CHSH's pi/8: the union half is tan(pi/8), but the Born odds there is tan^2(pi/8) = 3 - 2 sqrt2: no shared law
+PASS N3a t = 1/phi: t o_1 t = 1/t, i.e. 'both miss' (1-p)^2 equals 'one hits' p = 1/phi^2
+PASS N3b hard-core path at t = 1 counts Fibonacci F(14) = 377: growth phi per site, not a special t
+PASS P1 polish: onset of I3 < 0 is sqrt2 - 1 to 30 digits  [0.41421356237309504880168872421]
+PASS P2 polish: ring zeros refined at 30 digits sit on |2t| = 1
+PASS P3 polish: zeta(2)/zeta(4) = 15/pi^2 to 30 digits
+PASS P4 polish: golden point (1-p)^2 = p at 30 digits
+polish cost 0.08 s
+57 of 57 pass

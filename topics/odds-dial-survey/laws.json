@@ -1,0 +1,541 @@
+{
+ "dial": "t, the odds",
+ "verdicts": {
+  "slides": "carries a proved law into another proved law; link checked along the whole dial",
+  "plausible": "numbers slide; the law in between not proved",
+  "partly": "survives on part of the dial, breaks on the rest",
+  "disguise": "the move is really another dial",
+  "self": "the group is the odds dial itself",
+  "no": "no slide (t is only the law's argument, or the law lives on another dial)"
+ },
+ "rows": [
+  {
+   "id": 1,
+   "law": "Core law o_k: order free, identity 0, the wall",
+   "modules": "Base, Foundations",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "t is what the circle operation composes (DialSurvey.odds_union); the law holds at every t, so nothing moves"
+  },
+  {
+   "id": 2,
+   "law": "Corner expansion: 1 + (x1 o ... o xn) = sum over corners",
+   "modules": "Base, Cube",
+   "verdict": "self",
+   "candidate": "",
+   "reason": "with x_i = t_i the corner expansion IS the dialled power-set count (PowersetDials.total_W_chain)"
+  },
+  {
+   "id": 3,
+   "law": "Powers: 1 + a^(n) = (1 + a)^n",
+   "modules": "Base",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "uniform t = 2^a - 1 carries 1 + t^(n) = (1+t)^n onto the exponent ruler 2^(an) (DialSurvey.exponent_ruler)"
+  },
+  {
+   "id": 4,
+   "law": "Rungs, height flow, Abel ruler",
+   "modules": "Rungs, FractionalRungs, RungShape, ZoomDial",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "rungs live on the rung position; only the circle-operation rung's fractional powers meet t, and that is C1"
+  },
+  {
+   "id": 5,
+   "law": "Calculus: fundamental theorem with o-steps",
+   "modules": "Calculus, ClosingRate",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "calculus laws do not depend on a per-element weight"
+  },
+  {
+   "id": 6,
+   "law": "Plane law (k, d): circle, parabola, hyperbola",
+   "modules": "Landscape, DialSweep, DialWall, DialSurvey",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "plane law (k, d) is a two-dial law; t is its argument"
+  },
+  {
+   "id": 7,
+   "law": "Clifford signatures",
+   "modules": "Clifford",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Clifford signatures live on d per axis"
+  },
+  {
+   "id": 8,
+   "law": "Elliptic curves: pinching the torus",
+   "modules": "Elliptic, EllipticS3, EllipticCounting",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "torus laws; no per-element weight"
+  },
+  {
+   "id": 9,
+   "law": "Einstein velocity addition",
+   "modules": "Relativity, Electromagnetism",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "odds (1+v)/(1-v) is the Doppler lift; multiplying t is a boost (GameTheory.odds_is_lift, InformationTheory.odds_to_velocity)"
+  },
+  {
+   "id": 10,
+   "law": "Bayes' rule in odds form",
+   "modules": "Statistics",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "multiplying one element's odds by L is Bayes' update (Statistics.bayes_odds, evidence_circ, repeated_evidence)"
+  },
+  {
+   "id": 11,
+   "law": "Swap rule: turn = d x area (Thomas, Foucault, pulsars)",
+   "modules": "TwistedBoosts, GRBridges, GravityProbeB, BinaryPulsar",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "swap rule is d x area; no per-element weight"
+  },
+  {
+   "id": 12,
+   "law": "Maxwell as one equation, F as a wedge",
+   "modules": "Electromagnetism",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Maxwell; no per-element weight"
+  },
+  {
+   "id": 13,
+   "law": "Einstein tensor, Lovelock's step",
+   "modules": "GeneralRelativity, GRBridges",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Einstein tensor; no per-element weight"
+  },
+  {
+   "id": 14,
+   "law": "Curvature by counting (2D causal diamonds)",
+   "modules": "curved-space page",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "causal-diamond counting is a shape (C) / order question"
+  },
+  {
+   "id": 15,
+   "law": "Corner-weight shapes, power-set dials",
+   "modules": "PowersetDials, FractionalPowerset, FractalDials",
+   "verdict": "self",
+   "candidate": "",
+   "reason": "PowersetDials, FractionalPowerset, FractalDials define the per-element odds (total_W, conv_W, weights_odds)"
+  },
+  {
+   "id": 16,
+   "law": "Bell numbers, Catalan, set partitions",
+   "modules": "Combinatorics",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "set partitions and Catalan counts carry no per-element odds in the Lean statements"
+  },
+  {
+   "id": 17,
+   "law": "q-counting [n]_q",
+   "modules": "QAcross.QCounting, QAcross.QDial",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "geometric odds t_i = q^i t turn the binomial count into the q-binomial theorem (QAcross.QCounting.q_binomial_theorem)"
+  },
+  {
+   "id": 18,
+   "law": "Cube face weights q^area, solitons",
+   "modules": "SolitonsRungs, QAcross.Partitions",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "odds t_i = -q^i, n -> infinity, give Euler's product (QAcross.Partitions.pentagonal_30, euler_is_circ_30)"
+  },
+  {
+   "id": 19,
+   "law": "Toric charts, projective plane",
+   "modules": "Toric.ToricCharts, Toric.ProjectivePlane",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "toric charts are shapes; the genus slide belongs to the shape and plane dials"
+  },
+  {
+   "id": 20,
+   "law": "Knots, graphs, diamond lattice, patterns",
+   "modules": "KnotTheory, GraphTheory, DiamondLattice, Patterns",
+   "verdict": "slides",
+   "candidate": "C10",
+   "reason": "one bond's odds 0 -> infinity slides deletion into contraction (GraphTheory.wheatstone, series_odds)"
+  },
+  {
+   "id": 21,
+   "law": "Union rule o_-1, independence",
+   "modules": "MeasureProbability, Foundations.Independence",
+   "verdict": "self",
+   "candidate": "",
+   "reason": "independent OR is the circle operation on odds (MeasureProbability.odds_or), exactly how two power-set dials merge"
+  },
+  {
+   "id": 22,
+   "law": "Logistic (independent yes/no) and softmax (one of many)",
+   "modules": "Statistics",
+   "verdict": "slides",
+   "candidate": "C3",
+   "reason": "chance = t/(1+t) runs 0 -> 1/2 -> 1; cube vs simplex reading of the same odds (Statistics, compl_fixed_dial)"
+  },
+  {
+   "id": 23,
+   "law": "Renyi = L_k(Tsallis)",
+   "modules": "InformationTheory",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "belief propagation in this module: posterior odds multiply (InformationTheory.variable_node); Renyi itself does not move"
+  },
+  {
+   "id": 24,
+   "law": "Shannon, Campbell's code lengths",
+   "modules": "InformationFull",
+   "verdict": "slides",
+   "candidate": "C3",
+   "reason": "entropy of the dialled power set is n h(t/(1+t)): 0 at t = 0 and infinity, n bits at t = 1 (Thermodynamics.landauer_states 2^n)"
+  },
+  {
+   "id": 25,
+   "law": "Repetition dial: Fermi, classical, Bose",
+   "modules": "RepetitionDial",
+   "verdict": "slides",
+   "candidate": "C4",
+   "reason": "occupation n = t/(1+kt): small odds bring Fermi, Boltzmann, Bose together (RepetitionDial.inverse_gap, fluctuation)"
+  },
+  {
+   "id": 26,
+   "law": "Thermodynamics: Gibbs, temperature as Maslov dial",
+   "modules": "Thermodynamics, EntropyNoise",
+   "verdict": "slides",
+   "candidate": "C4",
+   "reason": "Boltzmann odds in the Fermi function (Thermodynamics.fermi_velocity_num, boson_mode, lens_fixed_point)"
+  },
+  {
+   "id": 27,
+   "law": "Lee-Yang circle theorem",
+   "modules": "LeeYang, LeeYangCluster, LeeYangSpill",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "uniform odds is the fugacity: zeros on the circle |normalised t| = 1, empty phase <-> full phase (LeeYang, lee-yang page)"
+  },
+  {
+   "id": 28,
+   "law": "Born rule (quantum noise)",
+   "modules": "QuantumNoise",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Born rule is a p = 2 / p = 1 matter (shape-dial survey C3)"
+  },
+  {
+   "id": 29,
+   "law": "Quantum correlations: CHSH <= 2 sqrt 2",
+   "modules": "beyond-the-cube page",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "CHSH lives on the roundness dial; the 22.5 degree coincidence is checked in N2 and is not a law"
+  },
+  {
+   "id": 30,
+   "law": "Entropy of regions as a shape, holographic rules",
+   "modules": "exploration, polar-recast pages",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "region-entropy cones and soft min cuts move on k and a softness (Maslov) dial, not on t"
+  },
+  {
+   "id": 31,
+   "law": "Game theory and evolution: replicator, Fisher's theorem",
+   "modules": "GameTheory, Biology.Evolution",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "selection multiplies an allele's odds by (1+s) each generation; Elo odds multiply (Biology.Evolution.generations_add, GameTheory.odds_circ)"
+  },
+  {
+   "id": 32,
+   "law": "Consensus, dial point processes",
+   "modules": "Consensus, DialPointProcesses",
+   "verdict": "slides",
+   "candidate": "C8",
+   "reason": "tilting a point process by t^N multiplies each mode's odds mu/(1+k mu) by t: same family (DialPointProcesses; L-ensembles)"
+  },
+  {
+   "id": 33,
+   "law": "Navier-Stokes rungs, strain",
+   "modules": "NavierStokes, NSContinuum",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "strain triangle; no per-element weight"
+  },
+  {
+   "id": 34,
+   "law": "Dark sector",
+   "modules": "DarkSector",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no per-element weight"
+  },
+  {
+   "id": 35,
+   "law": "Newton's G lead",
+   "modules": "newton-g page",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no per-element weight"
+  },
+  {
+   "id": 36,
+   "law": "Fermat n = 3, n = 4, Pythagorean triples",
+   "modules": "Fermat.Fermat3, Fermat.Fermat4",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fermat lives on the roundness dial"
+  },
+  {
+   "id": 37,
+   "law": "Frey pieces, counterexample map, FLT route",
+   "modules": "Fermat.FreyPieces, Fermat.CounterexampleMap, Fermat.FermatRoute",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Frey pieces; no per-element weight"
+  },
+  {
+   "id": 38,
+   "law": "Hopf invariant one, Kummer-Wilson",
+   "modules": "Topology",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "topology; no per-element weight"
+  },
+  {
+   "id": 39,
+   "law": "P vs NP: what can't work",
+   "modules": "PvsNP",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no per-element weight"
+  },
+  {
+   "id": 40,
+   "law": "e: corner volumes 1/n!",
+   "modules": "E, FusedConstants",
+   "verdict": "slides",
+   "candidate": "C4",
+   "reason": "n elements at odds 1/n count (1 + 1/n)^n -> e (E.stair, stair_le_s): the small-odds (Poisson) limit"
+  },
+  {
+   "id": 41,
+   "law": "pi and the Gaussian",
+   "modules": "Pi, GeometryTrig",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "pi and the Gaussian; no per-element weight in the Lean statements"
+  },
+  {
+   "id": 42,
+   "law": "i, Euler's identity, complex analysis",
+   "modules": "EIPi, WhyI, ComplexAnalysis",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "complex units; t enters only as a complex fugacity, which is C5"
+  },
+  {
+   "id": 43,
+   "law": "Conservation of mass and charge, stoichiometry",
+   "modules": "Chemistry.ChemConservation, ChemStoichiometry",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "conservation laws do not depend on t"
+  },
+  {
+   "id": 44,
+   "law": "Equilibrium, Nernst, Arrhenius, pH, gas laws",
+   "modules": "Chemistry (other modules)",
+   "verdict": "slides",
+   "candidate": "C3",
+   "reason": "per-site binding odds [L]/K: saturation t/(1+t), cooperative sites have no real zero (Chemistry.ChemEquilibrium.binding_dial, cooperative_no_real_zero)"
+  },
+  {
+   "id": 45,
+   "law": "Biology: genetics, physiology, ecology, cells",
+   "modules": "Biology (other modules)",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Bliss and Loewe are the union law and addition on effect odds: they hold at every t (same as group 21)"
+  },
+  {
+   "id": 46,
+   "law": "Finance: Fisher's rule for real rates",
+   "modules": "Finance",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fisher's real-rate rule; t is the argument"
+  },
+  {
+   "id": 47,
+   "law": "Logic, sets, categories, algebra, linear algebra",
+   "modules": "LogicSets, CategoryTheory, AbstractAlgebra, LinearAlgebra",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Hamacher's family acts on odds with k = gamma (LogicSets.hamS_odds): a k matter, t is its argument"
+  },
+  {
+   "id": 48,
+   "law": "Functional analysis, Osgood inverse, numerics, dynamics",
+   "modules": "FunctionalAnalysis, OsgoodInverse, Numerical, Dynamics, Infinities",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no per-element weight"
+  },
+  {
+   "id": 49,
+   "law": "Data centres, Rulecraft, rule breakers, early science",
+   "modules": "DataCenter, Rulecraft, RuleBreakers, EarlyScience",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "stage overhead odds stack by the circle operation; t is the argument"
+  },
+  {
+   "id": 50,
+   "law": "Hyperoperation ladder: whole rungs fused",
+   "modules": "HyperLadder",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "whole rungs; no per-element weight"
+  },
+  {
+   "id": 51,
+   "law": "Lie groups: the plane law as a Mobius product",
+   "modules": "GroupsLie",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Mobius products live on (k, d)"
+  },
+  {
+   "id": 52,
+   "law": "Number planes a + b u with u^2 = k u - q; quaternions, precession",
+   "modules": "NumberPlane, DiffGeometry, Hypersphere, Precession",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "number planes live on (k, d)"
+  },
+  {
+   "id": 53,
+   "law": "Jet fields R[e]/(e^2 - k e); jet river: Schwarzschild, Kerr, Kerr-Newman",
+   "modules": "JetFields, JetRiver, SpinningRiver",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "jet fields live on (k, d)"
+  },
+  {
+   "id": 54,
+   "law": "Order dial: the swap gap is an oriented area; Weyl moves",
+   "modules": "OrderDial, CutIndependence, QuantumAction",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "order dial q"
+  },
+  {
+   "id": 55,
+   "law": "Units and roots: the weight is units, every law is addition plus a corner",
+   "modules": "ShapeDirections, ShapeDependencies, Conventions, PathNames",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "conventions; no law moves"
+  },
+  {
+   "id": 56,
+   "law": "Dial potential, several waves, Dirac checkerboard",
+   "modules": "DialPotential, SeveralWaves, Checkerboard, CheckerboardPotential",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "insertion cubes weighted by potential steps, not by per-element odds"
+  },
+  {
+   "id": 57,
+   "law": "Size weight, fractional boxes, corner weights",
+   "modules": "SizeDialResidual, FractalBoxes, CornerWeights",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "for solitons a uniform t in det(I + tM) is a gauge: it only slides the waves (corner-weights README)"
+  },
+  {
+   "id": 58,
+   "law": "Holographic gluing: monogamy from the odds",
+   "modules": "HoloGluing, HoloGluingField",
+   "verdict": "slides",
+   "candidate": "C7",
+   "reason": "odds X of the two RT phases: disconnected (I = 0) <-> connected (I = log X), glued by X1 o_1 X2 (HoloGluing.monogamy_glued)"
+  },
+  {
+   "id": 59,
+   "law": "Force reach, the hidden-circle force, flux-tube dial, Yang-Mills gap",
+   "modules": "ForceReach, NewForce, FluxTubeDial, YangMillsGap",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "force reach lives on (k, d)"
+  },
+  {
+   "id": 60,
+   "law": "Tunnelling: barriers compose by o_k",
+   "modules": "Tunnelling",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "barrier odds R/T compose by o_K; t is the argument (Tunnelling)"
+  },
+  {
+   "id": 61,
+   "law": "Riemann rounds: prime cube fold, fused pairs",
+   "modules": "Riemann, RiemannElliptic, RiemannRound3, RiemannRound4",
+   "verdict": "slides",
+   "candidate": "C6",
+   "reason": "t_p = p^(-s): power set of primes -> squarefree numbers, zeta(s)/zeta(2s) (PowersetDials.euler_squarefree, fermi_dirac)"
+  },
+  {
+   "id": 62,
+   "law": "Elliptic modulus: kappa = 1 - 2m",
+   "modules": "EllipticModulus",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "elliptic modulus; no per-element weight"
+  },
+  {
+   "id": 63,
+   "law": "Beyond one loop: plane-law flows and their walls",
+   "modules": "BeyondOneLoop",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "plane-law flows"
+  },
+  {
+   "id": 64,
+   "law": "Boolean lattice, fresh look, fuzzy frame",
+   "modules": "BooleanLattice, FreshLook, FuzzyFrame",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Boolean lattice and fuzzy frame: t-free statements"
+  },
+  {
+   "id": 65,
+   "law": "Warp bubbles and wormholes: energy conditions",
+   "modules": "WarpWormhole",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "energy conditions; the TFD cross-ratio odds is an argument"
+  }
+ ],
+ "counts": {
+  "slides": 18,
+  "plausible": 0,
+  "partly": 0,
+  "disguise": 0,
+  "self": 3,
+  "no": 44
+ }
+}

@@ -1,0 +1,476 @@
+{
+ "dial": "k (homothety), d = 0",
+ "verdicts": {
+  "slides": "carries a proved law into another proved law; the link is checked along the whole dial",
+  "plausible": "numbers slide, the law in between is not proved",
+  "partly": "survives on part of the dial, breaks on the rest",
+  "disguise": "the move is really another dial",
+  "self": "the group is the k dial itself",
+  "no": "no slide (lives on another dial, or k is only a choice of units there)"
+ },
+ "rows": [
+  {
+   "law": "Core law o_k: order free, identity 0, the wall",
+   "modules": "Base, Foundations",
+   "verdict": "self",
+   "candidate": "",
+   "reason": "circK_assoc, circK_comm, circK_zero hold at every k; circK_scale makes k a unit choice; the wall -1/k moves (A1-A4)"
+  },
+  {
+   "law": "Corner expansion: 1 + (x1 o ... o xn) = sum over corners",
+   "modules": "Base, Cube",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "1 + k(x1 o ... o xn) = prod(1 + k xi): inclusion-exclusion (-1), sums (0), products (1); circK_lift, kfold_lift, incl_excl3 (B1-B3)"
+  },
+  {
+   "law": "Powers: 1 + a^(n) = (1 + a)^n",
+   "modules": "Base",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "wpow_lift at every k; k = -1 is 1 - (1 - a)^n (wpow_neg_one), k = 0 is n a, k = 1 is (1 + a)^n - 1 (B4)"
+  },
+  {
+   "law": "Rungs, height flow, Abel ruler",
+   "modules": "Rungs, FractionalRungs, RungShape, ZoomDial",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "every k != 0 is the k = 1 ladder rescaled (fexpK_scale); k = 0 cannot be reached (lift_zero_not_injective)"
+  },
+  {
+   "law": "Calculus: fundamental theorem with o-steps",
+   "modules": "Calculus, ClosingRate",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "D_k F = F'/(1 + kF) obeys the product rule and the fundamental theorem at every k: ordinary (0), geometric/product (1), hazard (-1) (F1-F4)"
+  },
+  {
+   "law": "Plane law (k, d): circle, parabola, hyperbola",
+   "modules": "Landscape, DialSweep, DialWall, DialSurvey",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "lives on the curvature dial d; at d = 0 it is group 1 (turning k at fixed d != 0 crosses the parabola: the d survey's business)"
+  },
+  {
+   "law": "Clifford signatures",
+   "modules": "Clifford",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "signatures are readings of d per axis; k plays no part"
+  },
+  {
+   "law": "Elliptic curves: pinching the torus",
+   "modules": "Elliptic, EllipticS3, EllipticCounting",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the nome and the pinching live on d and the period lattice"
+  },
+  {
+   "law": "Einstein velocity addition",
+   "modules": "Relativity, Electromagnetism",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "velocity addition is (k, d) = (0, -1/c^2); turning k at that d keeps the same kind and only moves the walls (a change of coordinates)"
+  },
+  {
+   "law": "Bayes' rule in odds form",
+   "modules": "Statistics",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "odds multiply at k = 1 in odds units; any k != 0 is a unit change; log-odds adding is the ruler, not the k = 0 stop"
+  },
+  {
+   "law": "Swap rule: turn = d x area (Thomas, Foucault, pulsars)",
+   "modules": "TwistedBoosts, GRBridges, GravityProbeB, BinaryPulsar",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "turn = d x area: curvature dial and order dial"
+  },
+  {
+   "law": "Maxwell as one equation, F as a wedge",
+   "modules": "Electromagnetism",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "Einstein tensor, Lovelock's step",
+   "modules": "GeneralRelativity, GRBridges",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "Curvature by counting (2D causal diamonds)",
+   "modules": "curved-space page",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "causal counting lives on the shape and order dials"
+  },
+  {
+   "law": "Corner-weight shapes, power-set dials",
+   "modules": "PowersetDials, FractionalPowerset, FractalDials",
+   "verdict": "disguise",
+   "candidate": "",
+   "reason": "corner weight k^(|S|-1) t^S = (k t)^S / k: turning k rescales the odds t (t dial in disguise)"
+  },
+  {
+   "law": "Bell numbers, Catalan, set partitions",
+   "modules": "Combinatorics",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "Touchard T_n(k): Bell numbers at k = 1, complementary Bell at k = -1 (dial_blocks_minus_one); rising product prod(1 + jk) (kfold_lift) (J4, J5)"
+  },
+  {
+   "law": "q-counting [n]_q",
+   "modules": "QAcross.QCounting, QAcross.QDial",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "[n]_q = n copies of 1 under o_k with k = q - 1 (qnum_eq_wpow); stops proved in qnum_at_* (J1-J3)"
+  },
+  {
+   "law": "Cube face weights q^area, solitons",
+   "modules": "SolitonsRungs, QAcross.Partitions",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the q of q^area is the order dial, not k"
+  },
+  {
+   "law": "Toric charts, projective plane",
+   "modules": "Toric.ToricCharts, Toric.ProjectivePlane",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "toric charts live on the shape (corner-weight) dial"
+  },
+  {
+   "law": "Knots, graphs, diamond lattice, patterns",
+   "modules": "KnotTheory, GraphTheory, DiamondLattice, Patterns",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "knot and graph polynomials use their own q; the k used there is fixed at -1 or a unit choice"
+  },
+  {
+   "law": "Union rule o_-1, independence",
+   "modules": "MeasureProbability, Foundations.Independence",
+   "verdict": "slides",
+   "candidate": "C4",
+   "reason": "Sugeno lambda-measure: normalisation pins lambda = k; plausibility side (-1 < k < 0), probability (0), belief side (k > 0); lam_* theorems (E1-E4)"
+  },
+  {
+   "law": "Logistic (independent yes/no) and softmax (one of many)",
+   "modules": "Statistics",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "normaliser 1 + (prod(1 + kx) - 1)/k: softmax with a none option (k -> 0) to independent logits (k = 1) (B6)"
+  },
+  {
+   "law": "Renyi = L_k(Tsallis)",
+   "modules": "InformationTheory",
+   "verdict": "slides",
+   "candidate": "C3",
+   "reason": "ln_q is the dial log with k = 1 - q_T; Tsallis composes by o_k, Renyi = L_k(Tsallis) is additive; tsallis_engine, renyi_additive (D1-D3)"
+  },
+  {
+   "law": "Shannon, Campbell's code lengths",
+   "modules": "InformationFull",
+   "verdict": "slides",
+   "candidate": "C3",
+   "reason": "Shannon is the k = 0 stop of the Tsallis/Renyi slide (D4); Campbell's code lengths carry Renyi's order"
+  },
+  {
+   "law": "Repetition dial: Fermi, classical, Bose",
+   "modules": "RepetitionDial",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "per-mode count = Katz/Panjer (a,b,0) class: binomial (k = -1/m), Poisson (0), negative binomial (k > 0); kRise_* and RepetitionDial (C1-C8)"
+  },
+  {
+   "law": "Thermodynamics: Gibbs, temperature as Maslov dial",
+   "modules": "Thermodynamics, EntropyNoise",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "Fermi (-1), Boltzmann (0), Bose (+1) occupations 1/(e^x - k) in one formula; fermion_lift, boson_mode, boson_fermion_dual (C6)"
+  },
+  {
+   "law": "Lee-Yang circle theorem",
+   "modules": "LeeYang, LeeYangCluster, LeeYangSpill",
+   "verdict": "partly",
+   "candidate": "C8",
+   "reason": "on a graph the edge weight k is not a unit: Lee-Yang holds for k >= 1 (attraction), fails for k < 1 (I1-I3)"
+  },
+  {
+   "law": "Born rule (quantum noise)",
+   "modules": "QuantumNoise",
+   "verdict": "slides",
+   "candidate": "C10",
+   "reason": "the noise channels: amplitude damping (-1), depolarizing (-4/3), bit flip (-2) are stops of k = -q/(q-1) (qary_cascade; K1-K4)"
+  },
+  {
+   "law": "Quantum correlations: CHSH <= 2 sqrt 2",
+   "modules": "beyond-the-cube page",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "CHSH lives on the shape dial p"
+  },
+  {
+   "law": "Entropy of regions as a shape, holographic rules",
+   "modules": "exploration, polar-recast pages",
+   "verdict": "partly",
+   "candidate": "C11",
+   "reason": "corner sum with weight k^(rank-1): sign-definite on geometries only at k = -1 (MMI); positive for every k >= sqrt6 - 3; between, either sign (L1-L4)"
+  },
+  {
+   "law": "Game theory and evolution: replicator, Fisher's theorem",
+   "modules": "GameTheory, Biology.Evolution",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "replicator and Fisher's theorem do not depend on k; dial_game_union is C4's law"
+  },
+  {
+   "law": "Consensus, dial point processes",
+   "modules": "Consensus, DialPointProcesses",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "alpha-determinantal processes are the per-mode law with k = alpha; k < 0 exists only at -1/m (Shirai-Takahashi 2003)"
+  },
+  {
+   "law": "Navier-Stokes rungs, strain",
+   "modules": "NavierStokes, NSContinuum",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "Dark sector",
+   "modules": "DarkSector",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "Newton's G lead",
+   "modules": "newton-g page",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "Fermat n = 3, n = 4, Pythagorean triples",
+   "modules": "Fermat.Fermat3, Fermat.Fermat4",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fermat lives on the roundness dial p"
+  },
+  {
+   "law": "Frey pieces, counterexample map, FLT route",
+   "modules": "Fermat.FreyPieces, Fermat.CounterexampleMap, Fermat.FermatRoute",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "Hopf invariant one, Kummer-Wilson",
+   "modules": "Topology",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "P vs NP: what can't work",
+   "modules": "PvsNP",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "witness fold [n]_(1+k): OR at -1 (NP), count at 0 (#P), parity at -2 (parity P); witness_fold, np_point, sharpP_point, parityP_point"
+  },
+  {
+   "law": "e: corner volumes 1/n!",
+   "modules": "E, FusedConstants",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "e = limit of (1 + k)^(1/k) as the grain k -> 0: compound to continuous (F6)"
+  },
+  {
+   "law": "pi and the Gaussian",
+   "modules": "Pi, GeometryTrig",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "pi and the Gaussian live on the sphere (shape dial)"
+  },
+  {
+   "law": "i, Euler's identity, complex analysis",
+   "modules": "EIPi, WhyI, ComplexAnalysis",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "EIPi uses k only as a direction (dial_is_direction): a unit choice"
+  },
+  {
+   "law": "Conservation of mass and charge, stoichiometry",
+   "modules": "Chemistry.ChemConservation, ChemStoichiometry",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "uses k = -1 only"
+  },
+  {
+   "law": "Equilibrium, Nernst, Arrhenius, pH, gas laws",
+   "modules": "Chemistry (other modules)",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "no k"
+  },
+  {
+   "law": "Biology: genetics, physiology, ecology, cells",
+   "modules": "Biology (other modules)",
+   "verdict": "slides",
+   "candidate": "C10",
+   "reason": "Haldane's map r1 + r2 - 2 r1 r2 is the q = 2 stop of the alphabet ladder; the cure model k = -1/pi (where-k-moves) sits on the same side"
+  },
+  {
+   "law": "Finance: Fisher's rule for real rates",
+   "modules": "Finance",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "Fisher's rule (1 + n) = (1 + r)(1 + i) with a period of length k: rates add exactly as k -> 0 (continuous compounding) (F5)"
+  },
+  {
+   "law": "Logic, sets, categories, algebra, linear algebra",
+   "modules": "LogicSets, CategoryTheory, AbstractAlgebra, LinearAlgebra",
+   "verdict": "partly",
+   "candidate": "C9",
+   "reason": "bits stay bits only at k = -1 and k = -2 (idem_defect, bits_closed_iff); matrix walls at k = -1/lambda (det(1 + kA), Dk_hom) (J6, B5)"
+  },
+  {
+   "law": "Functional analysis, Osgood inverse, numerics, dynamics",
+   "modules": "FunctionalAnalysis, OsgoodInverse, Numerical, Dynamics, Infinities",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Neumann series is 'no wall while |k||a| < 1', a unit statement (mathlib-map)"
+  },
+  {
+   "law": "Data centres, Rulecraft, rule breakers, early science",
+   "modules": "DataCenter, Rulecraft, RuleBreakers, EarlyScience",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "same-target rules are k = -1 in strength units; any k < 0 is the same law; the history result lives on the order dial"
+  },
+  {
+   "law": "Hyperoperation ladder: whole rungs fused",
+   "modules": "HyperLadder",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "every k != 0 is the k = 1 ladder rescaled (circK_scale, fexpK_scale); the partner a + b + 1/k blows up at k = 0"
+  },
+  {
+   "law": "Lie groups: the plane law as a Mobius product",
+   "modules": "GroupsLie",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Mobius plane law lives on (k, d) with d != 0"
+  },
+  {
+   "law": "Number planes a + b u with u^2 = k u - q; quaternions, precession",
+   "modules": "NumberPlane, DiffGeometry, Hypersphere, Precession",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "u^2 = k u (q = 0): split numbers for k != 0, dual numbers at k = 0 (split_point, dual_point)"
+  },
+  {
+   "law": "Jet fields R[e]/(e^2 - k e); jet river: Schwarzschild, Kerr, Kerr-Newman",
+   "modules": "JetFields, JetRiver, SpinningRiver",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "R[e]/(e^2 - k e): k = 0 jets (derivative), k = h two-point difference (ofTwoPt_twoPt, dual_units_add) (F7)"
+  },
+  {
+   "law": "Order dial: the swap gap is an oriented area; Weyl moves",
+   "modules": "OrderDial, CutIndependence, QuantumAction",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the order dial q"
+  },
+  {
+   "law": "Units and roots: the weight is units, every law is addition plus a corner",
+   "modules": "ShapeDirections, ShapeDependencies, Conventions, PathNames",
+   "verdict": "self",
+   "candidate": "",
+   "reason": "the group that proves k is units (ShapeDirections: F_(lam k)(a, b) = F_k(lam a, lam b)/lam)"
+  },
+  {
+   "law": "Dial potential, several waves, Dirac checkerboard",
+   "modules": "DialPotential, SeveralWaves, Checkerboard, CheckerboardPotential",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "dial_rescale, dial_flip: k is a unit choice there"
+  },
+  {
+   "law": "Size weight, fractional boxes, corner weights",
+   "modules": "SizeDialResidual, FractalBoxes, CornerWeights",
+   "verdict": "disguise",
+   "candidate": "",
+   "reason": "size and corner weights: k rescales the per-element weight (t dial in disguise)"
+  },
+  {
+   "law": "Holographic gluing: monogamy from the odds",
+   "modules": "HoloGluing, HoloGluingField",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "cross-ratios glue by o_-1 and odds by o_1; the flip x/(1 - x) links them, not a turn of k"
+  },
+  {
+   "law": "Force reach, the hidden-circle force, flux-tube dial, Yang-Mills gap",
+   "modules": "ForceReach, NewForce, FluxTubeDial, YangMillsGap",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "conics on the d dial"
+  },
+  {
+   "law": "Tunnelling: barriers compose by o_k",
+   "modules": "Tunnelling",
+   "verdict": "slides",
+   "candidate": "C7",
+   "reason": "averaged law of cosines composes by o_k with k = -2K: piling-up (-2), variances add (0), mean resistance (+2) (H1-H4)"
+  },
+  {
+   "law": "Riemann rounds: prime cube fold, fused pairs",
+   "modules": "Riemann, RiemannElliptic, RiemannRound3, RiemannRound4",
+   "verdict": "partly",
+   "candidate": "C6",
+   "reason": "Z_k(s) = prod_N zeta(Ns)^(M(k,N)/k) for every k, but it continues past Re s = 0 only at k = +-1 (Dahlquist 1952) (G1-G5)"
+  },
+  {
+   "law": "Elliptic modulus: kappa = 1 - 2m",
+   "modules": "EllipticModulus",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "kappa = 1 - 2m is an elliptic modulus, not k"
+  },
+  {
+   "law": "Beyond one loop: plane-law flows and their walls",
+   "modules": "BeyondOneLoop",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "plane-law flows with d != 0"
+  },
+  {
+   "law": "Boolean lattice, fresh look, fuzzy frame",
+   "modules": "BooleanLattice, FreshLook, FuzzyFrame",
+   "verdict": "partly",
+   "candidate": "C9",
+   "reason": "the Boolean lattice is the k = -1 point; inclusion-exclusion slides with C1, Boolean closure holds only at k = -1, -2"
+  },
+  {
+   "law": "Warp bubbles and wormholes: energy conditions",
+   "modules": "WarpWormhole",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "energy conditions do not involve k"
+  }
+ ],
+ "counts": {
+  "slides": 20,
+  "plausible": 0,
+  "partly": 5,
+  "disguise": 2,
+  "self": 2,
+  "no": 36
+ }
+}

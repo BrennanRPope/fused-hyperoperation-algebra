@@ -1,0 +1,541 @@
+{
+ "dial": "d (curvature dial), k fixed",
+ "verdicts": {
+  "slides": "slides into another law (both ends proved, link checked along the whole dial)",
+  "plausible": "numbers slide; the law in between is not proved",
+  "partly": "survives on part of the d dial, breaks on the rest",
+  "disguise": "the move is really another dial or parameter",
+  "self": "is the curvature dial itself",
+  "no": "no slide (lives on another dial, or does not depend on d)"
+ },
+ "rows": [
+  {
+   "n": 1,
+   "law": "Core law o_k: order free, identity 0, the wall",
+   "modules": "Base, Foundations",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "d = 0 is the core law; turning d moves its wall -1/k and brings the second wall in from infinity (Landscape assoc_num/assoc_den, DialSweep)"
+  },
+  {
+   "n": 2,
+   "law": "Corner expansion: 1 + (x1 o ... o xn) = sum over corners",
+   "modules": "Base, Cube",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "the corner sum becomes a ratio of two corner sums with Lucas weights U_|S|(k,d); at d = 0 U_n = k^(n-1) gives the cube back (checks B1-B3)"
+  },
+  {
+   "n": 3,
+   "law": "Powers: 1 + a^(n) = (1 + a)^n",
+   "modules": "Base",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "1 + k a^(n) = (1 + k a)^n becomes V(a^(n)) A_n^2 = V(a)^n, the norm of the number plane (NumberPlane norm_mul; check B5)"
+  },
+  {
+   "n": 4,
+   "law": "Rungs, height flow, Abel ruler",
+   "modules": "Rungs, FractionalRungs, RungShape, ZoomDial",
+   "verdict": "plausible",
+   "candidate": "C8",
+   "reason": "at fixed k, d sets the rung height s = k^2/Delta (Landscape rung_equivalent); the formal residue Delta/(3k^2) = 1/(3s) matches the rung's, analytic match not proved"
+  },
+  {
+   "n": 5,
+   "law": "Calculus: fundamental theorem with o-steps",
+   "modules": "Calculus, ClosingRate",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the Calculus module is built on o_k steps at d = 0; a plane-law calculus would go through the ruler dx/V(x), not in the repo"
+  },
+  {
+   "n": 6,
+   "law": "Plane law (k, d): circle, parabola, hyperbola",
+   "modules": "Landscape, DialSweep, DialWall, DialSurvey",
+   "verdict": "self",
+   "candidate": "C1",
+   "reason": "the (k, d) plane law; d is one of its two coordinates (Landscape, DialSweep, DialWall, DialSurvey)"
+  },
+  {
+   "n": 7,
+   "law": "Clifford signatures",
+   "modules": "Clifford",
+   "verdict": "slides",
+   "candidate": "C4",
+   "reason": "each generator squares to -d at k = 0: Clifford's omega^2 = +1/0/-1 (1873) is d = -1/0/+1 (Clifford division_cases, sig_examples, dual_nilpotent)"
+  },
+  {
+   "n": 8,
+   "law": "Elliptic curves: pinching the torus",
+   "modules": "Elliptic, EllipticS3, EllipticCounting",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "the pinched cubic y^2 + a1 xy = x^3 + a2 x^2 sits at (k, d) = (-a1, -a2): split node, cusp, non-split node as d crosses the parabola (Elliptic node_param, walls_are_branches; elliptic checks 1f)"
+  },
+  {
+   "n": 9,
+   "law": "Einstein velocity addition",
+   "modules": "Relativity, Electromagnetism",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "d = -1/c^2 is Einstein, d = 0 Galileo, d > 0 tangent addition (NumberPlane split/dual/complex_point, GroupsLie theta_*)"
+  },
+  {
+   "n": 10,
+   "law": "Bayes' rule in odds form",
+   "modules": "Statistics",
+   "verdict": "partly",
+   "candidate": "C6",
+   "reason": "odds updating needs two anchors; it survives (in a Moebius chart) while Delta > 0 and breaks at the parabola (rulecraft-history H15, H16)"
+  },
+  {
+   "n": 11,
+   "law": "Swap rule: turn = d x area (Thomas, Foucault, pulsars)",
+   "modules": "TwistedBoosts, GRBridges, GravityProbeB, BinaryPulsar",
+   "verdict": "slides",
+   "candidate": "C3",
+   "reason": "tan(w/2) = d(u x v)/(1 - d u.v): no twist at d = 0, Thomas at d = -1, Foucault/Berry at d = +1 (TwistedBoosts galilean_no_twist, twist_half_angle)"
+  },
+  {
+   "n": 12,
+   "law": "Maxwell as one equation, F as a wedge",
+   "modules": "Electromagnetism",
+   "verdict": "partly",
+   "candidate": "C7",
+   "reason": "the boost-invariant operator is d_x^2 + d d_t^2: a wave equation only for d < 0, degenerate at d = 0 (Galilean limits), elliptic for d > 0 (electromagnetism: wave equation survives a dial boost only at d = -1/c^2)"
+  },
+  {
+   "n": 13,
+   "law": "Einstein tensor, Lovelock's step",
+   "modules": "GeneralRelativity, GRBridges",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the Einstein tensor and Lovelock's step read the same in every signature; Schur pins d constant in 3D+ (gr-bridges S5), it does not slide"
+  },
+  {
+   "n": 14,
+   "law": "Curvature by counting (2D causal diamonds)",
+   "modules": "curved-space page",
+   "verdict": "partly",
+   "candidate": "C7",
+   "reason": "causal-diamond counting needs a light cone, which exists only on the two-wall side; every d < 0 gives the same counting (units), d = 0 flattens the cone"
+  },
+  {
+   "n": 15,
+   "law": "Corner-weight shapes, power-set dials",
+   "modules": "PowersetDials, FractionalPowerset, FractalDials",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "corner weights and power-set dials are the shape and odds dials"
+  },
+  {
+   "n": 16,
+   "law": "Bell numbers, Catalan, set partitions",
+   "modules": "Combinatorics",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "the genus slide: at fixed k, d sets q = beta/alpha of 1 + kx + dx^2 = (1 + alpha x)(1 + beta x); h-vectors at q (shape-dial survey C5, Landscape chi_y_line)"
+  },
+  {
+   "n": 17,
+   "law": "q-counting [n]_q",
+   "modules": "QAcross.QCounting, QAcross.QDial",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "[n]_q with q = beta/alpha; the Lucas weight is U_n = alpha^(n-1) [n]_q (check B6)"
+  },
+  {
+   "n": 18,
+   "law": "Cube face weights q^area, solitons",
+   "modules": "SolitonsRungs, QAcross.Partitions",
+   "verdict": "plausible",
+   "candidate": "C9",
+   "reason": "cube face weights q^area ride the same q, but the law in between is not proved (as in the shape-dial survey)"
+  },
+  {
+   "n": 19,
+   "law": "Toric charts, projective plane",
+   "modules": "Toric.ToricCharts, Toric.ProjectivePlane",
+   "verdict": "slides",
+   "candidate": "C9",
+   "reason": "toric h-vectors [n+1]_q at q set by d/k^2: 1 at d = 0, corner count on the parabola"
+  },
+  {
+   "n": 20,
+   "law": "Knots, graphs, diamond lattice, patterns",
+   "modules": "KnotTheory, GraphTheory, DiamondLattice, Patterns",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the diamond lattice's Potts Q moves k and d together along k + d = -1, with Delta = Q^2 >= 0 (diamond-lattice finding 2); d alone freezes Q"
+  },
+  {
+   "n": 21,
+   "law": "Union rule o_-1, independence",
+   "modules": "MeasureProbability, Foundations.Independence",
+   "verdict": "partly",
+   "candidate": "C6",
+   "reason": "the union rule's anchor 1 survives as a moved anchor for every d < 1/4 at k = -1 (a Moebius chart); at d = 1/4 and beyond no bounded slider"
+  },
+  {
+   "n": 22,
+   "law": "Logistic (independent yes/no) and softmax (one of many)",
+   "modules": "Statistics",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "logistic vs softmax is the k dial; d only changes the chart of the logit"
+  },
+  {
+   "n": 23,
+   "law": "Renyi = L_k(Tsallis)",
+   "modules": "InformationTheory",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Renyi = L_k(Tsallis) is the k dial"
+  },
+  {
+   "n": 24,
+   "law": "Shannon, Campbell's code lengths",
+   "modules": "InformationFull",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Shannon and Campbell live on the k dial"
+  },
+  {
+   "n": 25,
+   "law": "Repetition dial: Fermi, classical, Bose",
+   "modules": "RepetitionDial",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fermi / classical / Bose is k = -1, 0, +1 (DialWall); d is not used"
+  },
+  {
+   "n": 26,
+   "law": "Thermodynamics: Gibbs, temperature as Maslov dial",
+   "modules": "Thermodynamics, EntropyNoise",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Gibbs and the Maslov temperature are k-dial and tropical limits"
+  },
+  {
+   "n": 27,
+   "law": "Lee-Yang circle theorem",
+   "modules": "LeeYang, LeeYangCluster, LeeYangSpill",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Lee-Yang zeros: turning d at fixed k moves the root modulus 1/sqrt(d), off the circle except at d = 1"
+  },
+  {
+   "n": 28,
+   "law": "Born rule (quantum noise)",
+   "modules": "QuantumNoise",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the Born rule lives on the shape dial (sphere vs simplex)"
+  },
+  {
+   "n": 29,
+   "law": "Quantum correlations: CHSH <= 2 sqrt 2",
+   "modules": "beyond-the-cube page",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "CHSH lives on the shape dial"
+  },
+  {
+   "n": 30,
+   "law": "Entropy of regions as a shape, holographic rules",
+   "modules": "exploration, polar-recast pages",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "entropy cones do not use d"
+  },
+  {
+   "n": 31,
+   "law": "Game theory and evolution: replicator, Fisher's theorem",
+   "modules": "GameTheory, Biology.Evolution",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "replicator dynamics do not use d"
+  },
+  {
+   "n": 32,
+   "law": "Consensus, dial point processes",
+   "modules": "Consensus, DialPointProcesses",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "consensus and dial point processes are k-dial laws"
+  },
+  {
+   "n": 33,
+   "law": "Navier-Stokes rungs, strain",
+   "modules": "NavierStokes, NSContinuum",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "restricted Euler's discriminant 27R^2 + 4Q^3 is a cubic's, not the plane law's"
+  },
+  {
+   "n": 34,
+   "law": "Dark sector",
+   "modules": "DarkSector",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the dark-sector notes do not use d"
+  },
+  {
+   "n": 35,
+   "law": "Newton's G lead",
+   "modules": "newton-g page",
+   "verdict": "plausible",
+   "candidate": "C8",
+   "reason": "the second-loop number rho = 1/3 - 4d/(3k^2) slides with d (newton-g fig n7), so gravity's 3/5 is a choice d = -k^2/5, not a law"
+  },
+  {
+   "n": 36,
+   "law": "Fermat n = 3, n = 4, Pythagorean triples",
+   "modules": "Fermat.Fermat3, Fermat.Fermat4",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fermat curves live on the roundness dial p"
+  },
+  {
+   "n": 37,
+   "law": "Frey pieces, counterexample map, FLT route",
+   "modules": "Fermat.FreyPieces, Fermat.CounterexampleMap, Fermat.FermatRoute",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Frey curves reduce to nodes, never cusps (elliptic check 3g): a placement off the parabola, not a slide"
+  },
+  {
+   "n": 38,
+   "law": "Hopf invariant one, Kummer-Wilson",
+   "modules": "Topology",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Hopf invariant one / Bott: d picks the square of one generator, the theorem is about how many"
+  },
+  {
+   "n": 39,
+   "law": "P vs NP: what can't work",
+   "modules": "PvsNP",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "P vs NP does not use d"
+  },
+  {
+   "n": 40,
+   "law": "e: corner volumes 1/n!",
+   "modules": "E, FusedConstants",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "corner volumes 1/n! use the simplex"
+  },
+  {
+   "n": 41,
+   "law": "pi and the Gaussian",
+   "modules": "Pi, GeometryTrig",
+   "verdict": "partly",
+   "candidate": "C10",
+   "reason": "pi is the turning side's ruler length pi/sqrt(d); it goes to infinity at d = 0 and has no meaning on the two-wall side"
+  },
+  {
+   "n": 42,
+   "law": "i, Euler's identity, complex analysis",
+   "modules": "EIPi, WhyI, ComplexAnalysis",
+   "verdict": "partly",
+   "candidate": "C10",
+   "reason": "e^(pi u/sqrt d) = -1 holds exactly for d > 0; the dual (d = 0) and split (d < 0) exponentials never return"
+  },
+  {
+   "n": 43,
+   "law": "Conservation of mass and charge, stoichiometry",
+   "modules": "Chemistry.ChemConservation, ChemStoichiometry",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "conservation laws do not use d"
+  },
+  {
+   "n": 44,
+   "law": "Equilibrium, Nernst, Arrhenius, pH, gas laws",
+   "modules": "Chemistry (other modules)",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "equilibrium laws live on a log axis"
+  },
+  {
+   "n": 45,
+   "law": "Biology: genetics, physiology, ecology, cells",
+   "modules": "Biology (other modules)",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "biology modules do not use d"
+  },
+  {
+   "n": 46,
+   "law": "Finance: Fisher's rule for real rates",
+   "modules": "Finance",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fisher's real-rate rule is the k line"
+  },
+  {
+   "n": 47,
+   "law": "Logic, sets, categories, algebra, linear algebra",
+   "modules": "LogicSets, CategoryTheory, AbstractAlgebra, LinearAlgebra",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "logic, sets, categories, algebra do not depend on d"
+  },
+  {
+   "n": 48,
+   "law": "Functional analysis, Osgood inverse, numerics, dynamics",
+   "modules": "FunctionalAnalysis, OsgoodInverse, Numerical, Dynamics, Infinities",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "functional analysis, numerics, dynamics do not depend on d"
+  },
+  {
+   "n": 49,
+   "law": "Data centres, Rulecraft, rule breakers, early science",
+   "modules": "DataCenter, Rulecraft, RuleBreakers, EarlyScience",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "data centres, Rulecraft, early science do not depend on d"
+  },
+  {
+   "n": 50,
+   "law": "Hyperoperation ladder: whole rungs fused",
+   "modules": "HyperLadder",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the hyperoperation ladder is the height / k dial"
+  },
+  {
+   "n": 51,
+   "law": "Lie groups: the plane law as a Mobius product",
+   "modules": "GroupsLie",
+   "verdict": "slides",
+   "candidate": "C6",
+   "reason": "the plane law is a Moebius product; turning d carries hyperbolic -> parabolic -> elliptic one-parameter groups (GroupsLie mob_dial, theta_tan, theta_velocity, theta_dual)"
+  },
+  {
+   "n": 52,
+   "law": "Number planes a + b u with u^2 = k u - q; quaternions, precession",
+   "modules": "NumberPlane, DiffGeometry, Hypersphere, Precession",
+   "verdict": "slides",
+   "candidate": "C4",
+   "reason": "number planes u^2 = ku - d: split, dual, complex (NumberPlane split/dual/complex_point, norm_walls/norm_border/norm_nonneg_turning); Kepler's velocity space too (Hypersphere fock_on_sphere; gravity-from-theory N4-N6)"
+  },
+  {
+   "n": 53,
+   "law": "Jet fields R[e]/(e^2 - k e); jet river: Schwarzschild, Kerr, Kerr-Newman",
+   "modules": "JetFields, JetRiver, SpinningRiver",
+   "verdict": "slides",
+   "candidate": "C11",
+   "reason": "jets R[e]/(e^2 - ke) are the d = 0 stop of R[u]/(u^2 - ku + d): two sample points -> one point with a derivative -> complex step (jet-fields 'two sample points k apart')"
+  },
+  {
+   "n": 54,
+   "law": "Order dial: the swap gap is an oriented area; Weyl moves",
+   "modules": "OrderDial, CutIndependence, QuantumAction",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the order dial's oriented area lives on q; d enters only through the swap rule (group 11)"
+  },
+  {
+   "n": 55,
+   "law": "Units and roots: the weight is units, every law is addition plus a corner",
+   "modules": "ShapeDirections, ShapeDependencies, Conventions, PathNames",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "units: d -> lambda^2 d (Landscape units_den) says d's size is a unit choice at k = 0; used in every candidate, not a slide"
+  },
+  {
+   "n": 56,
+   "law": "Dial potential, several waves, Dirac checkerboard",
+   "modules": "DialPotential, SeveralWaves, Checkerboard, CheckerboardPotential",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "the dial potential and checkerboard are not run along d here"
+  },
+  {
+   "n": 57,
+   "law": "Size weight, fractional boxes, corner weights",
+   "modules": "SizeDialResidual, FractalBoxes, CornerWeights",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "size and box weights do not use d"
+  },
+  {
+   "n": 58,
+   "law": "Holographic gluing: monogamy from the odds",
+   "modules": "HoloGluing, HoloGluingField",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "holographic gluing does not use d"
+  },
+  {
+   "n": 59,
+   "law": "Force reach, the hidden-circle force, flux-tube dial, Yang-Mills gap",
+   "modules": "ForceReach, NewForce, FluxTubeDial, YangMillsGap",
+   "verdict": "slides",
+   "candidate": "C12",
+   "reason": "carrier mass m^2 = Delta/4 = -d at k = 0: Yukawa (d < 0) -> Coulomb (d = 0) -> closed ruler / tower (d > 0) (ForceReach drift_removal, double_root_iff_border)"
+  },
+  {
+   "n": 60,
+   "law": "Tunnelling: barriers compose by o_k",
+   "modules": "Tunnelling",
+   "verdict": "slides",
+   "candidate": "C13",
+   "reason": "a barrier is B_{-1}(u), a beam splitter B_{+1}(u); averaged, probabilities compose by o_k with k = -2d (Tunnelling mean_law_curvature, rung_two_barrier, rung_two_mixer)"
+  },
+  {
+   "n": 61,
+   "law": "Riemann rounds: prime cube fold, fused pairs",
+   "modules": "Riemann, RiemannElliptic, RiemannRound3, RiemannRound4",
+   "verdict": "slides",
+   "candidate": "C14",
+   "reason": "the heat flow on a pair of zeros keeps their sum (k) and moves their product (d) by 2t; crossing the parabola is a collision (RiemannRound3 heat_pair_disc, fused_disc, conj_disc)"
+  },
+  {
+   "n": 62,
+   "law": "Elliptic modulus: kappa = 1 - 2m",
+   "modules": "EllipticModulus",
+   "verdict": "disguise",
+   "candidate": "C15",
+   "reason": "kappa = 1 - 2m moves the modulus m (the t^4 coefficient, off the (k, d) plane); it meets the d road only at kappa = +1 and -1 (EllipticModulus)"
+  },
+  {
+   "n": 63,
+   "law": "Beyond one loop: plane-law flows and their walls",
+   "modules": "BeyondOneLoop",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "the flow x' = 1 + d x^2: tanh -> linear -> tan; wall exponents +-2 sqrt(-d) shrink to 0 at d = 0 (BeyondOneLoop plane_generator, plane_exponents_opposite)"
+  },
+  {
+   "n": 64,
+   "law": "Boolean lattice, fresh look, fuzzy frame",
+   "modules": "BooleanLattice, FreshLook, FuzzyFrame",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Boolean lattice and fuzzy frame are k = -1 laws"
+  },
+  {
+   "n": 65,
+   "law": "Warp bubbles and wormholes: energy conditions",
+   "modules": "WarpWormhole",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "energy conditions are not run along d here"
+  }
+ ],
+ "counts": {
+  "slides": 17,
+  "plausible": 3,
+  "partly": 6,
+  "disguise": 1,
+  "self": 1,
+  "no": 37
+ }
+}

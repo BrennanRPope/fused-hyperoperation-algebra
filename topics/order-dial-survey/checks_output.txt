@@ -1,0 +1,55 @@
+PASS A1 o_k over the quantum plane (yx = q xy) is associative for every q and k (symbolic)
+PASS A2 order gap of o_k on (alpha x, beta y) is k(1 - q) alpha beta xy: zero exactly at q = 1
+PASS A3 at q = -1 the cross terms cancel: (x + y)^2 = x^2 + y^2
+PASS A4 Pauli X, Z: ZX = -XZ, each squares to 1, (X + Z)^2 = 2 I (q = -1 stop, Lean `pauli`)
+PASS A5 if z z = q z z with q != 1 then z^2 = 0 (any q off 1 forbids repeats; Lean anticommute_self_zero at q=-1)
+PASS B1 reversed-order chain over x_j x_i = q x_i x_j: each rank-m corner gets k^m q^C(m,2) (soliton corner weight A^C(m,2) with A = q), n = 3, 4
+PASS B2 in sorted order no corner picks up q: the plain corner expansion (q = 1 end) for every q
+PASS C1 Potter-Schutzenberger: (x + y)^n with yx = q xy is sum [n,m]_q x^m y^(n-m), n = 1..10 (exact)
+PASS C2 q = 1: [n,m]_1 = C(n,m) for n <= 14 (Lean gauss_at_one proves every n)
+PASS C3 q = 0: [n,m]_0 = 1, so (x + y)^n = sum of the n + 1 sorted words, each once (only order-free words survive)
+PASS C4 q -> infinity: [n,m]_q has degree m(n - m) and leading coefficient 1 (only the fully reversed word)
+PASS C5 Cauchy (commutative) form: prod (1 + q^i t) = sum q^C(m,2) [n,m] t^m, n <= 10 (Lean q_binomial_theorem, n<=6)
+PASS C6 q-Lucas (Olive 1965, Desarmenien 1982): [n,m] = C(n div d, m div d) [n mod d, m mod d] mod Phi_d(q), d = 2..7, n <= 21 (exact)
+PASS C7 q = -1 case equals the repo's Lean gauss_at_neg_one: C(n div 2, m div 2), or 0 for n even, m odd (n <= 16)
+PASS D1 [n]_q = sum over words with one y of q^inv, n <= 12
+PASS D2 the lift 1 + (q - 1)[n]_q = q^n (Lean qnum_lift): the same count is the k dial at k = q - 1
+PASS D3 stops: q=1 counts n, q=0 gives 1, q=-1 parity, q=2 gives 2^n - 1 (all Lean, QDial)
+PASS D4 at a primitive d-th root of 1, [d]_q = 0 and [m]_q != 0 for 0 < m < d (d = 2..12)
+PASS E1 sum over partitions in an m x (n-m) box of q^|lambda| = [n,m]_q, n <= 10
+PASS E2 a word's out-of-order count equals its lattice path's area (every word, n <= 10)
+PASS E3 q -> 0 keeps one path (area 0, the minimum); q -> infinity keeps one (area m(n-m), the maximum)
+PASS E4 soliton/theta weight q^C(m,2) times [n,m]_q is the t^m layer of the q-orbit product (cube-weights I1), n <= 7
+PASS F1 sum over permutations of q^inv = [n]_q! (Rodrigues 1839, MacMahon), n <= 7
+PASS F2 at a cube root of 1 the routes cancel from n = 3 on (cube-weights E2), n = 3..7
+PASS F3 at q = -1 the route sum is [n]_{-1}! = 0 from n = 2 on (signs of permutations cancel)
+PASS G1 ends: q = 0 gives the target-sorted order (highest, rulecraft-history H5a); q = 1 the plain average over all 120 orders; q -> infinity the reversed order (lowest); 300 random packages of 5 rules
+PASS G2 the Mallows-weighted outcome falls monotonically as q grows, on a 62-point grid from 0 to 1000, 300 random packages -- largest step -4.12e-07 (negative = falling)
+PASS G3 a monotone coupling exists: Mallows(q) <= Mallows(q') in the weak order of orders for q < q' (6 pairs of q, n = 3, 4, 5; linear program) -- {3: True, 4: True, 5: True}
+PASS G4 duality: weight of an order at q equals the weight of its reverse at 1/q (n = 5)
+PASS H1 Weyl: shift-after-multiply = e^{iab} x multiply-after-shift (order costs a phase = area ab)
+PASS H2 Moyal: x * p - p * x = i hbar
+PASS H3 the Moyal product is associative for every hbar (polynomials, exact)
+PASS H4 at hbar = 0 the star circle operation is the ordinary commutative circle operation
+PASS H5 clock and shift (Sylvester 1882): C S = w S C with w = e^{2 pi i/m}, m = 2..8; hbar = 2 pi/m
+PASS I1 e2 e1 = q e1 e2 and e1^2 = c != 0 force q^2 = 1 (order-dial G1): Clifford lives only at q = +-1
+PASS I2 the jump: Bose counting (x^2 != 0) survives only at q = 1; any q != 1 on self-swaps gives x^2 = 0
+PASS J1 t = 1: V = 1 and t = -1: |V| = determinant (3, 5, 5), the two ends Lean proves (jones_at_one/neg_one)
+PASS J2 t = e^{2 pi i/3}: V = 1 for every knot here (Jones 1985)
+PASS J3 t = i: V = (-1)^Arf, Arf read from the determinant mod 8 (Murakami 1986)
+PASS K1 Schutzenberger 1953: e_q(x + y) = e_q(x) e_q(y) when yx = q xy, e_q(z) = sum z^n/[n]_q!, through degree 7 (q = 1/3, 2, symbolic q)
+PASS K2 q = 1 gives e (sum 1/n! = e, Lean E); q = 0 gives the geometric series 1/(1 - z)
+PASS L1 face weight q = beta/alpha is a reading of (k, d): (1 + q)^2/q = k^2/d and (1 - q)^2/q = Delta/d
+PASS L2 |q| = 1 exactly when Delta <= 0 (angle side); q real off the circle when Delta > 0 (5 settings)
+PASS L3 the dial's Lucas sequence U_n(k, d) = alpha^(n-1) [n]_{beta/alpha} (cut-independence Q10), n <= 8
+PASS L4 Jackson: (f(qx) - f(x))/((q - 1)x) on x^n gives [n]_q x^(n-1), with q = 1 + h a step size (k dial)
+PASS N1 Frobenius at roots of unity: [d, m]_q = 0 at a primitive d-th root for 0 < m < d, so (x + y)^d = x^d + y^d (d = 2..8, exact)
+PASS N1b primitive matters: at q = -1 (not primitive of order 4) (x + y)^4 = x^4 + 2x^2y^2 + y^4
+PASS N1c clock and shift obey it: (C + S)^m = C^m + S^m = 2I, m = 2..8
+PASS N2 finite pairs need a root of unity: det(VU) = q^m det(UV) forces q^m = 1, and tr(UV) = 0 (m = 2..6)
+PASS N3 at a root of unity U^m and V^m commute with everything (the big centre of the rational quantum torus)
+PASS N4 integer q = 2: [4,2]_2 = 35 planes in F_2^4 and [3]_q = q^2 + q + 1 points of the projective plane (q = 2, 3, 4, 5)
+PASS P1 polish: q-Lucas at q = e^{2 pi i/7}, n = 15, 20, at 30 digits -- worst gap 1.1e-27, 0.11 s
+PASS P2 polish: the tightest Rulecraft package from G2 is still falling at 30 digits -- largest step -4.12e-7, 0.03 s
+PASS P3 polish: (C + S)^7 = 2I at 30 digits -- gap 1.03e-30, 0.00 s
+54 of 54 pass

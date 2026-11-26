@@ -56,6 +56,12 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: the simplex as its own shape; the shape dial and temperature (section 7). | `topics/simplex/` | — |
 | DRAFT: the Lucas weights' silent layers are the Temperley–Lieb (Beraha) points. | `topics/lucas-temperley-lieb/` | — |
 | DRAFT: shape-dial survey: which proved laws slide into one another. | `topics/shape-dial-survey/` | — |
+| DRAFT: dial catalog. The 65 law groups every dial survey sorts, and the shared page builder | `topics/dial-catalog/` | — |
+| DRAFT: homothety-dial (k) survey. Three stops on the bare line; whole-number stops once the scale is pinned; one-mode counts are the Katz–Panjer (a, b, 0) class | `topics/homothety-dial-survey/` | — |
+| DRAFT: curvature-dial (d) survey. Three stops at k = 0 and nothing in between; corner weights are Lucas numbers; finite clocks on the turning side | `topics/curvature-dial-survey/` | — |
+| DRAFT: order-dial (q) survey. Binomial to q-binomial; face weights q^area; no special point beyond the roots of unity | `topics/order-dial-survey/` | — |
+| DRAFT: odds-dial (t) survey. t = 1 is the one self-dual stop where five laws meet; holographic three-party sharing starts at √2 − 1 | `topics/odds-dial-survey/` | — |
+| DRAFT: similarity-ratio (r) survey. Kraft into Moran; rᴰ acts as k only at a fixed exponent; the 7/8 ratio ladder | `topics/ratio-dial-survey/` | — |
 | DRAFT: the hyperoperation ladder, made complete: rung n is Goodstein's H_n read through x ↦ 1 + x; every law at every rung proved in Lean (80 theorems, giant rungs by remainders mod 7); fractional heights are a different, commutative ladder meeting it only at a + b + ab. | `topics/hyperoperation-ladder/` | — |
 | DRAFT: named functions: the hypernatural logarithm on every shape, the hypernatural exponential, and the existing names to adopt. | `topics/named-functions/` | — |
 | DRAFT: the missing shapes: the 24-cell, the 600-cell and E8. | `topics/exceptional-shapes/` | — |

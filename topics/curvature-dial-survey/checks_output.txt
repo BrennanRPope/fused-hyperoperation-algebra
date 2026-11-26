@@ -1,0 +1,84 @@
+== C1: the addition laws along d (k = 0 first)
+[PASS] A1 at k = 0, a o b = T_d(T_d^-1 a + T_d^-1 b) with T_d(t) = tan(sqrt d t)/sqrt d, d = -1, -0.3, 0, 0.5, 1  max err 1.1e-16
+[PASS] A2 the plane law is associative for every (k, d) (sympy)
+[PASS] A3 Einstein stop d = -1/c^2: 0.5c o 0.6c = 0.8462c  0.84615 c
+[PASS] A4 walls at k = 0 are +-1/sqrt(-d): 1 + d w^2 = 0, and they run off to infinity as d -> 0-  walls 1, 3.16, 10, 100
+[PASS] A5 for d > 0 there is no wall: the value runs to infinity at rapidity pi/(2 sqrt d) and wraps (d = 0.7)
+[PASS] A6 units: F_{k,d}(la, lb) = l F_{lk, l^2 d}(a, b), so at k = 0 only the sign of d is a law (sympy)
+[PASS] A7 a strict Moebius chart x/(1 + c x) moves (k, d) to (k - 2c, d - kc + c^2) and keeps Delta (sympy)
+[PASS] A8 the flow x' = 1 + d x^2 is T_d(t) (tanh, line, tan); wall exponents 2 d r = -2 sqrt(-d) -> 0 as d -> 0-  exponents -2.00, -1.00, -0.20
+[PASS] A9 at k = 1 the kind changes at d = k^2/4 = 0.25, not at d = 0 (d = 0 is the circle operation, two walls)
+== C2: corners with Lucas weights
+[PASS] B1 n-fold law = sum_S U_|S|(k,d) x^S / (1 - d sum_S U_|S|-1(k,d) x^S), n = 2..5 (sympy)
+[PASS] B2 at d = 0, U_n = k^(n-1): 1 + k(x1 o ... o x5) = prod(1 + k xi), the cube's corner expansion
+[PASS] B3 at k = 0 the odd corners go up and the even corners go down: (e1 - d e3)/(1 - d e2 + d^2 e4) (tangent sum, n = 4)
+[PASS] B4 the norm is multiplicative: V(a o b)(1 - d ab)^2 = V(a)V(b) (sympy; d = 0 is the lift 1 + k x)
+[PASS] B5 powers: V(a^(5)) * den^2 = V(a)^5, the d-version of 1 + k a^(n) = (1 + k a)^n (sympy)
+[PASS] B6 U_n(k, d) = alpha^(n-1) [n]_q with alpha + beta = k, alpha beta = d, q = beta/alpha, n = 1..8
+== C3: the twist turns on with d
+[PASS] C1 |twist| = |d| x area of the triangle (0, u, u o v) (L'Huilier), d = 1, 0.4, -0.4, -1, 80 random pairs  max err 3.4e-15
+[PASS] C2 Galilean stop d = 0: no twist for any directions
+[PASS] C3 tan(w/2) = d (u x v)/(1 - d u.v) along d = -1..1; the sign of the twist flips with the sign of d  twists -0.581, -0.307, +0.000, +0.329, +0.663
+== C4: number planes and Kepler
+[PASS] D1 in R[u]/(u^2 + d) slopes compose by (s1 + s2)/(1 - d s1 s2): split d<0, dual d=0, complex d>0 (sympy)
+[PASS] D2 norm x^2 + d y^2: two light-cone factors (d = -1), one square (d = 0), never zero off 0 (d = 1)  [(x - y)*(x + y), x**2, x**2 + y**2]
+[PASS] D3 Kepler hodographs are circles with |centre|^2 - R^2 = 2E: bound (d > 0 side), parabola (flat), escape (d < 0)  E=-0.2: -0.400000, E=+0.0: +0.000000, E=+0.3: +0.600000
+[PASS] D4 escape orbit: every speed stays above v_inf = sqrt(2E), the wall of the d < 0 chart  min speed 0.7826 vs 0.7746
+[PASS] D5 Fock's velocity metric 2|dv|/(|v|^2 - 2E) has curvature exactly -2E (c = -2E; sympy)
+== C5: node, cusp, non-split node
+[PASS] E1 y^2 + a1 xy = x^3 + a2 x^2 at (k, d) = (-a1, -a2): p - 1, p, p + 1 smooth points as Delta = a1^2 + 4a2 is a square, 0, a non-square (p = 7, 11, 13, every d)
+== C6: anchors
+[PASS] F1 x -> x o c fixes exactly the roots of 1 + kx + dx^2 (sympy)
+[PASS] F2 at k = -1 every d < 1/4 is the union rule x + y - xy in a Moebius chart plus units (lands on (-1, d))
+[PASS] F3 ... and no chart reaches d >= 1/4: charts keep Delta, units scale it by l^2 > 0, union has Delta = 1 > 0
+== C7: the boost-invariant operator
+[PASS] G1 d_x^2 + d d_t^2 is unchanged by the d-boost t' = g(t + d v x), x' = g(x - v t), g = (1 + d v^2)^(-1/2) (sympy)
+[PASS] G2 two d-boosts make one with velocity (v + w)/(1 - d v w): Einstein at d = -1/c^2, Galileo at 0 (sympy)
+[PASS] G3 the operator's type is the sign of d: wave (d < 0), degenerate d_x^2 (d = 0), Laplace (d > 0)
+== C8: the height s = k^2/Delta
+[PASS] H1 the exponential map of the plane law has iterative residue 1/3 - 4d/(3k^2) = Delta/(3k^2) (sympy)  resit = -(4*d - k**2)/(3*k**2)
+[PASS] H2 at k = 1: s = 1 at d = 0 (the circle operation), s -> 0 as d -> -inf, s = 2 at d = 1/8, s = -1 (a rewind) at d = 1/2  [1/9, 1, 2, -1]
+[PASS] H3 the rewind log(1 + x) has residue -1/3, the same as the turning law at d = k^2/2
+[PASS] H4 at k = 0 the conic laws' fingerprint is stuck at 3/10 for every d != 0 (eps = d^2): d moves nothing formal at k = 0
+== C9: the chi_y genus along d
+[PASS] I1 at fixed k = 1 every d is a chi_y genus up to units: y real in [-1, 1] for d <= 1/4, |y| = 1 beyond; k^2/d = -(1 - y)^2/y
+[PASS] I2 Todd (y = 0) at d = 0, Euler characteristic (y = -1) on the parabola d = k^2/4, signature (y -> 1) as d -> -inf  y(-50) = 0.868
+[PASS] I3 h-vectors at q = -y: all equal 1 at d = 0 (q = 0); corner counts 4, 8, 24, 14 on the parabola (q = 1)
+== C10: pi and i live on the turning side
+[PASS] J1 exp(pi u/sqrt d) = -1 at d = 0.37; at d = 0 exp(t u) = 1 + t u never returns; at d = -0.37 the real part is cosh >= 1
+[PASS] J2 the ruler length int dx/(1 + d x^2) is pi/sqrt d for d > 0 (d = 0.37) and diverges for d <= 0
+== C11: finite difference -> derivative -> complex step
+[PASS] K1 in R[u]/(u^2 - ku + d), the u-part of f(a + bu) is the divided difference (f(a + r1 b) - f(a + r2 b))/(r1 - r2) (sympy)
+[PASS] K2 on the parabola d = k^2/4 the two sample points merge: u-part = b f'(a + kb/2), the jet (sympy)
+[PASS] K3 same for f = exp (matrix exponential), both sides of the parabola; the turning side is the complex step Im f(a + i h)/h
+[PASS] K4 complex step at k = 0, d = h^2: u-part/b -> f'(a) with no cancellation (f = exp, h = 1e-8)
+== C12: Yukawa -> Coulomb -> oscillating
+[PASS] L1 exp(-sqrt(-d) r)/(4 pi r) solves Laplacian(phi) + d phi = 0 off the source for every d (sympy): Yukawa m^2 = -d, Coulomb d = 0, outgoing wave d > 0
+[PASS] L2 1D Green's functions of -w'' - d w = delta: e^(-m|x|)/2m (d = -1), -|x|/2 (d = 0), -sin(sqrt d |x|)/(2 sqrt d) (d = 1)
+[PASS] L3 both sides meet Coulomb's -|x|/2 at d = 0 (G(x) - G(0), d = -1e-10 and 1e-10; the gap shrinks like sqrt|d|)  2.0e-06
+[PASS] L4 drift removal: (k/2 + mu)^2 - k(k/2 + mu) + d = mu^2 - Delta/4 (ForceReach, re-derived)
+== C13: barrier and beam splitter
+[PASS] M1 averaged over the angle, half-chords compose by o_k with k = -2K (K = -1, -0.3, 0.5, 1)
+[PASS] M2 SU(2) beam splitter [[a, b], [-1*conj b, conj a]] = diag(a, conj a) B_d(b/a) with d = 1 (sympy)
+[PASS] M2 SU(1,1) barrier [[a, b], [1*conj b, conj a]] = diag(a, conj a) B_d(b/a) with d = -1 (sympy)
+== C14: heat flow on a pair is the d dial
+[PASS] N1 z^2 - s z + (P - 2t) solves f_t = -f_zz: the sum (k) stays, the product (d) moves by -2t (sympy)
+[PASS] N2 its discriminant is Delta + 8t: two real zeros meet at t = -Delta/8 and turn complex past it
+== C15: the modulus road
+[PASS] O1 the d road at k = 0 has log' = 1/(1 + d t^2) = 1/sqrt(1 + 2d t^2 + d^2 t^4): eps = kappa^2 (sympy)
+[PASS] O2 the modulus road has eps = 1, kappa = 1 - 2m: the two roads meet only at kappa = +1 (m = 0) and -1 (m = 1)
+[PASS] O3 pendulum: m = sin^2(theta0/2) gives kappa = cos(theta0)
+== N1: finite clocks at d/k^2 = 1/(4 cos^2(pi j/N))
+[PASS] P1 translation by infinity, x -> x o inf, has exact order N (N = 3..12, every j coprime to N)
+[PASS] P2 ... the Lucas weight U_N(k, d) = 0 there and not before: corners of size N drop out of the numerator
+[PASS] P3 ... q = beta/alpha is a primitive N-th root of unity, so [N]_q = 0 and y = -q is minus a root of unity (Hirzebruch's level-N cusp values)
+[PASS] P4 exact: infinity returns to 0 in 3 steps at d = k^2, 4 at d = k^2/2, 6 at d = k^2/3 (sympy)
+[PASS] P5 nothing like it on the two-wall side: U_n(1, d) != 0 for n < 40 and every d < 1/4 tested (60 values)
+[PASS] P6 the clocks sit at rung heights s = k^2/Delta = -cot^2(pi j/N): s = -1/3 (N = 3), -1 (N = 4), -3 (N = 6)
+== Polish (mpmath, 30 digits)
+[PASS] Q1 polish: tangent law at d = 0.37 to 30 digits  err 9.86e-32
+[PASS] Q2 polish: the Fourier transform of e^(-m|x|)/2m is 1/(q^2 + m^2) (m = 0.8, q = 1.3)
+[PASS] Q3 polish: pendulum quarter period K(m) - ln(4/sqrt(1 - m)) -> 0 at the separatrix (m = 1 - 1e-20)  5.85e-20
+[PASS] Q4 polish: translation by infinity has order 7 at d = 1/(4 cos^2(pi/7)), off-diagonal < 1e-27
+   polish cost: 0.05 s
+65 of 65 pass

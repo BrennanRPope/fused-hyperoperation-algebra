@@ -1,0 +1,522 @@
+[
+ {
+  "n": 1,
+  "law": "Core law o_k: order free, identity 0, the wall",
+  "modules": "Base, Foundations",
+  "verdict": "disguise",
+  "candidate": "C3",
+  "reason": "k dial in disguise: a weight w = r^s on each element gives w(t o_w u) = (wt) o_1 (wu) (Base circK_scale = ZoomDial.zoom_is_twist); at the Moran dimension the uniform weight r^D = 1/N does not move at all"
+ },
+ {
+  "n": 2,
+  "law": "Corner expansion: 1 + (x1 o ... o xn) = sum over corners",
+  "modules": "Base, Cube",
+  "verdict": "disguise",
+  "candidate": "C3",
+  "reason": "k dial in disguise: scaling every element by w turns k^(|S|-1) x^S into w (wk)^(|S|-1) x^S, a change of k (circK_scale)"
+ },
+ {
+  "n": 3,
+  "law": "Powers: 1 + a^(n) = (1 + a)^n",
+  "modules": "Base",
+  "verdict": "slides",
+  "candidate": "C2",
+  "reason": "(1+a)^n slides to the fractional circle power (1+a)^D as r moves D = n log2/log(1/r); ends proved (Base powers, FractalBoxes.cube_layers, half_layers); Newton's binomial carries it exactly"
+ },
+ {
+  "n": 4,
+  "law": "Rungs, height flow, Abel ruler",
+  "modules": "Rungs, FractionalRungs, RungShape, ZoomDial",
+  "verdict": "self",
+  "candidate": "C6",
+  "reason": "ZoomDial is the r dial itself (Moran's wall, words_weigh, zoom_compose); the rung and height-flow laws in this group meet r only as the clock of the flow, which is the d dial in disguise for rho (newton-g P8, Q1)"
+ },
+ {
+  "n": 5,
+  "law": "Calculus: fundamental theorem with o-steps",
+  "modules": "Calculus, ClosingRate",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 6,
+  "law": "Plane law (k, d): circle, parabola, hyperbola",
+  "modules": "Landscape, DialSweep, DialWall, DialSurvey",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "plane-dial law in (k, d); a piece's size never enters"
+ },
+ {
+  "n": 7,
+  "law": "Clifford signatures",
+  "modules": "Clifford",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "plane-dial law in (k, d); a piece's size never enters"
+ },
+ {
+  "n": 8,
+  "law": "Elliptic curves: pinching the torus",
+  "modules": "Elliptic, EllipticS3, EllipticCounting",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "torus pinching is a plane-dial (d) move; no piece sizes"
+ },
+ {
+  "n": 9,
+  "law": "Einstein velocity addition",
+  "modules": "Relativity, Electromagnetism",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "velocity addition is k = 0, d = -1/c^2; no piece sizes"
+ },
+ {
+  "n": 10,
+  "law": "Bayes' rule in odds form",
+  "modules": "Statistics",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "odds multiply; the odds dial t, not a size"
+ },
+ {
+  "n": 11,
+  "law": "Swap rule: turn = d x area (Thomas, Foucault, pulsars)",
+  "modules": "TwistedBoosts, GRBridges, GravityProbeB, BinaryPulsar",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "holonomy = curvature x area; area of a curved region, not a self-similar piece"
+ },
+ {
+  "n": 12,
+  "law": "Maxwell as one equation, F as a wedge",
+  "modules": "Electromagnetism",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 13,
+  "law": "Einstein tensor, Lovelock's step",
+  "modules": "GeneralRelativity, GRBridges",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 14,
+  "law": "Curvature by counting (2D causal diamonds)",
+  "modules": "curved-space page",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "Myrheim-Meyer counting reads a manifold's whole-number dimension; no similarity ratio enters"
+ },
+ {
+  "n": 15,
+  "law": "Corner-weight shapes, power-set dials",
+  "modules": "PowersetDials, FractionalPowerset, FractalDials",
+  "verdict": "partly",
+  "candidate": "C1",
+  "reason": "FractalDials: two pieces at ratio r give D = log2/log(1/r): half box (1/4), Cantor (1/3), segment (1/2) on one closed form; past r = 1/2 the pieces overlap and D stops being the set's dimension (Hutchinson 1981); power-set dials do not depend on r"
+ },
+ {
+  "n": 16,
+  "law": "Bell numbers, Catalan, set partitions",
+  "modules": "Combinatorics",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "Bell, Catalan and partition counts are corner-weight (shape) laws; no sizes"
+ },
+ {
+  "n": 17,
+  "law": "q-counting [n]_q",
+  "modules": "QAcross.QCounting, QAcross.QDial",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "[n]_q is a q (curvature-side) count; a size ratio does not enter"
+ },
+ {
+  "n": 18,
+  "law": "Cube face weights q^area, solitons",
+  "modules": "SolitonsRungs, QAcross.Partitions",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "q^area weights are the order/curvature side; no self-similar pieces"
+ },
+ {
+  "n": 19,
+  "law": "Toric charts, projective plane",
+  "modules": "Toric.ToricCharts, Toric.ProjectivePlane",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "toric charts are counted on the simplex; no sizes"
+ },
+ {
+  "n": 20,
+  "law": "Knots, graphs, diamond lattice, patterns",
+  "modules": "KnotTheory, GraphTheory, DiamondLattice, Patterns",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 21,
+  "law": "Union rule o_-1, independence",
+  "modules": "MeasureProbability, Foundations.Independence",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "union rule is k = -1; no sizes"
+ },
+ {
+  "n": 22,
+  "law": "Logistic (independent yes/no) and softmax (one of many)",
+  "modules": "Statistics",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "logistic/softmax live on the odds; r only enters through C3's weights"
+ },
+ {
+  "n": 23,
+  "law": "Renyi = L_k(Tsallis)",
+  "modules": "InformationTheory",
+  "verdict": "plausible",
+  "candidate": "C4",
+  "reason": "Renyi entropy becomes the Renyi dimension D_q = H_q(p)/log(1/r) at a uniform ratio (exact); with unequal ratios the multifractal formalism (Cawley-Mauldin 1992) carries it, not proved in the repo"
+ },
+ {
+  "n": 24,
+  "law": "Shannon, Campbell's code lengths",
+  "modules": "InformationFull",
+  "verdict": "slides",
+  "candidate": "C4",
+  "reason": "Kraft sum 1 for every full binary tree (InformationFull.kraft_one, r = 1/2, D = 1) slides to the Moran wall (ZoomDial.wall_every_depth) for any branch ratios at their D; checked on random trees along r"
+ },
+ {
+  "n": 25,
+  "law": "Repetition dial: Fermi, classical, Bose",
+  "modules": "RepetitionDial",
+  "verdict": "partly",
+  "candidate": "C5",
+  "reason": "Gentile cap (repetition-dial: at most m copies = any-number element at size 1 over one at size m+1): leftover share r^beta with r = 1/(m+1); Fermi (r = 1/2, 7/8 at beta = 3) to Bose (r -> 0); holds only at r = 1/(m+1)"
+ },
+ {
+  "n": 26,
+  "law": "Thermodynamics: Gibbs, temperature as Maslov dial",
+  "modules": "Thermodynamics, EntropyNoise",
+  "verdict": "disguise",
+  "candidate": "C3",
+  "reason": "temperature in disguise: r_i = exp(-E_i) are Boltzmann factors and Moran's equation says the free energy is 0 (Bowen's equation, 1979); D comes out as the inverse temperature, a reading"
+ },
+ {
+  "n": 27,
+  "law": "Lee-Yang circle theorem",
+  "modules": "LeeYang, LeeYangCluster, LeeYangSpill",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "Lee-Yang zeros of spin models; no self-similar pieces"
+ },
+ {
+  "n": 28,
+  "law": "Born rule (quantum noise)",
+  "modules": "QuantumNoise",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "Born rule lives on the sphere; no sizes"
+ },
+ {
+  "n": 29,
+  "law": "Quantum correlations: CHSH <= 2 sqrt 2",
+  "modules": "beyond-the-cube page",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "CHSH is a shape (p) law"
+ },
+ {
+  "n": 30,
+  "law": "Entropy of regions as a shape, holographic rules",
+  "modules": "exploration, polar-recast pages",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "entropy cones are polymatroid shapes; no sizes"
+ },
+ {
+  "n": 31,
+  "law": "Game theory and evolution: replicator, Fisher's theorem",
+  "modules": "GameTheory, Biology.Evolution",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "replicator flow on the simplex; no sizes"
+ },
+ {
+  "n": 32,
+  "law": "Consensus, dial point processes",
+  "modules": "Consensus, DialPointProcesses",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 33,
+  "law": "Navier-Stokes rungs, strain",
+  "modules": "NavierStokes, NSContinuum",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "strain triangle; self-similar blow-up ansatz is not a law proved here (ns-same-shape)"
+ },
+ {
+  "n": 34,
+  "law": "Dark sector",
+  "modules": "DarkSector",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 35,
+  "law": "Newton's G lead",
+  "modules": "newton-g page",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "newton-g's clock r is treated under C6 (group 4 and 64)"
+ },
+ {
+  "n": 36,
+  "law": "Fermat n = 3, n = 4, Pythagorean triples",
+  "modules": "Fermat.Fermat3, Fermat.Fermat4",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "Fermat curves are p-circles; no sizes"
+ },
+ {
+  "n": 37,
+  "law": "Frey pieces, counterexample map, FLT route",
+  "modules": "Fermat.FreyPieces, Fermat.CounterexampleMap, Fermat.FermatRoute",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 38,
+  "law": "Hopf invariant one, Kummer-Wilson",
+  "modules": "Topology",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 39,
+  "law": "P vs NP: what can't work",
+  "modules": "PvsNP",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 40,
+  "law": "e: corner volumes 1/n!",
+  "modules": "E, FusedConstants",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "corner volumes 1/n! of the simplex; whole-number dimension only"
+ },
+ {
+  "n": 41,
+  "law": "pi and the Gaussian",
+  "modules": "Pi, GeometryTrig",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "ball volumes; whole-number dimension only"
+ },
+ {
+  "n": 42,
+  "law": "i, Euler's identity, complex analysis",
+  "modules": "EIPi, WhyI, ComplexAnalysis",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 43,
+  "law": "Conservation of mass and charge, stoichiometry",
+  "modules": "Chemistry.ChemConservation, ChemStoichiometry",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 44,
+  "law": "Equilibrium, Nernst, Arrhenius, pH, gas laws",
+  "modules": "Chemistry (other modules)",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 45,
+  "law": "Biology: genetics, physiology, ecology, cells",
+  "modules": "Biology (other modules)",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 46,
+  "law": "Finance: Fisher's rule for real rates",
+  "modules": "Finance",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 47,
+  "law": "Logic, sets, categories, algebra, linear algebra",
+  "modules": "LogicSets, CategoryTheory, AbstractAlgebra, LinearAlgebra",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 48,
+  "law": "Functional analysis, Osgood inverse, numerics, dynamics",
+  "modules": "FunctionalAnalysis, OsgoodInverse, Numerical, Dynamics, Infinities",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 49,
+  "law": "Data centres, Rulecraft, rule breakers, early science",
+  "modules": "DataCenter, Rulecraft, RuleBreakers, EarlyScience",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 50,
+  "law": "Hyperoperation ladder: whole rungs fused",
+  "modules": "HyperLadder",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "whole rungs of the ladder; no sizes"
+ },
+ {
+  "n": 51,
+  "law": "Lie groups: the plane law as a Mobius product",
+  "modules": "GroupsLie",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "plane-dial law in (k, d); a piece's size never enters"
+ },
+ {
+  "n": 52,
+  "law": "Number planes a + b u with u^2 = k u - q; quaternions, precession",
+  "modules": "NumberPlane, DiffGeometry, Hypersphere, Precession",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "plane-dial law in (k, d); a piece's size never enters"
+ },
+ {
+  "n": 53,
+  "law": "Jet fields R[e]/(e^2 - k e); jet river: Schwarzschild, Kerr, Kerr-Newman",
+  "modules": "JetFields, JetRiver, SpinningRiver",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "jet fields are a k setting; no sizes"
+ },
+ {
+  "n": 54,
+  "law": "Order dial: the swap gap is an oriented area; Weyl moves",
+  "modules": "OrderDial, CutIndependence, QuantumAction",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "holonomy is a reading of the order dial q; no sizes"
+ },
+ {
+  "n": 55,
+  "law": "Units and roots: the weight is units, every law is addition plus a corner",
+  "modules": "ShapeDirections, ShapeDependencies, Conventions, PathNames",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "states that a weight is a choice of units; C3 leans on it, and turning r leaves it as it is"
+ },
+ {
+  "n": 56,
+  "law": "Dial potential, several waves, Dirac checkerboard",
+  "modules": "DialPotential, SeveralWaves, Checkerboard, CheckerboardPotential",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 57,
+  "law": "Size weight, fractional boxes, corner weights",
+  "modules": "SizeDialResidual, FractalBoxes, CornerWeights",
+  "verdict": "slides",
+  "candidate": "C2",
+  "reason": "fractional boxes (FractalBoxes: half_layers, half_join_stick, third_join_stick) slide along D as r turns; joining at a common ratio adds D (Moran); the size weight part is C3 (disguise), corner weights do not depend on r"
+ },
+ {
+  "n": 58,
+  "law": "Holographic gluing: monogamy from the odds",
+  "modules": "HoloGluing, HoloGluingField",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "monogamy from the odds; no sizes"
+ },
+ {
+  "n": 59,
+  "law": "Force reach, the hidden-circle force, flux-tube dial, Yang-Mills gap",
+  "modules": "ForceReach, NewForce, FluxTubeDial, YangMillsGap",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "plane-dial law in (k, d); a piece's size never enters"
+ },
+ {
+  "n": 60,
+  "law": "Tunnelling: barriers compose by o_k",
+  "modules": "Tunnelling",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "plane-dial law in (k, d); a piece's size never enters"
+ },
+ {
+  "n": 61,
+  "law": "Riemann rounds: prime cube fold, fused pairs",
+  "modules": "Riemann, RiemannElliptic, RiemannRound3, RiemannRound4",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "prime products; the repo's complex dimensions (zoom-dial) do not touch Lapidus-Maier (see the fractal-strings section)"
+ },
+ {
+  "n": 62,
+  "law": "Elliptic modulus: kappa = 1 - 2m",
+  "modules": "EllipticModulus",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "kappa = 1 - 2m is a d move; no sizes"
+ },
+ {
+  "n": 63,
+  "law": "Beyond one loop: plane-law flows and their walls",
+  "modules": "BeyondOneLoop",
+  "verdict": "disguise",
+  "candidate": "C6",
+  "reason": "for the two-loop number rho, changing the flow's clock r is the curvature dial d in disguise: rho = (ln r)/3 = 1/3 - 4d/(3k^2) at d = k^2(1 - ln r)/4 (newton-g P8, Q1); rho = 0 is clock-free (Q4)"
+ },
+ {
+  "n": 64,
+  "law": "Boolean lattice, fresh look, fuzzy frame",
+  "modules": "BooleanLattice, FreshLook, FuzzyFrame",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ },
+ {
+  "n": 65,
+  "law": "Warp bubbles and wormholes: energy conditions",
+  "modules": "WarpWormhole",
+  "verdict": "no",
+  "candidate": "",
+  "reason": "does not involve a piece with a size; no r to turn"
+ }
+]

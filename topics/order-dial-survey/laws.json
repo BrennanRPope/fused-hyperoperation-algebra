@@ -1,0 +1,597 @@
+{
+ "verdicts": {
+  "slides": "carries a proved law into another proved law; link checked along the dial",
+  "plausible": "numbers slide, the law in between is not proved here",
+  "partly": "survives on part of the dial, breaks on the rest",
+  "disguise": "the move is really another dial",
+  "self": "is the order dial itself",
+  "no": "no slide (another dial, or does not depend on q)"
+ },
+ "rows": [
+  {
+   "n": 1,
+   "law": "Core law o_k: order free, identity 0, the wall",
+   "modules": "Base, Foundations",
+   "shape": "cube",
+   "verdict": "slides",
+   "candidate": "C1",
+   "reason": "Over q-commuting inputs o_k stays associative (A1); order gap k(1-q)ab (A2): order-free at q = 1 (Lean circK_comm), exclusion at q = -1 (Lean anticommute_self_zero, pauli)"
+  },
+  {
+   "n": 2,
+   "law": "Corner expansion: 1 + (x1 o ... o xn) = sum over corners",
+   "modules": "Base, Cube",
+   "shape": "cube",
+   "verdict": "slides",
+   "candidate": "C2",
+   "reason": "Run the chain in reversed order over x_j x_i = q x_i x_j: rank-m corners get q^C(m,2) (B1), the soliton corner form (Lean tau3_equal_corner); sorted order keeps the plain expansion (B2)"
+  },
+  {
+   "n": 3,
+   "law": "Powers: 1 + a^(n) = (1 + a)^n",
+   "modules": "Base",
+   "shape": "cube",
+   "verdict": "slides",
+   "candidate": "C3",
+   "reason": "(x + y)^n with yx = q xy is the q-binomial (Potter 1950, Schutzenberger 1953; C1); q = 1 binomial (Lean gauss_at_one), q = 0 sorted words, q -> inf reversed word, roots of unity q-Lucas"
+  },
+  {
+   "n": 4,
+   "law": "Rungs, height flow, Abel ruler",
+   "modules": "Rungs, FractionalRungs, RungShape, ZoomDial",
+   "shape": "half-line",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Rungs live on the half-line and the k dial; no product of two moves to reorder"
+  },
+  {
+   "n": 5,
+   "law": "Calculus: fundamental theorem with o-steps",
+   "modules": "Calculus, ClosingRate",
+   "shape": "half-line",
+   "verdict": "disguise",
+   "candidate": "C12",
+   "reason": "Jackson's q-derivative gives [n]_q x^(n-1) (L4), but its q = 1 + h is a step size: the k dial"
+  },
+  {
+   "n": 6,
+   "law": "Plane law (k, d): circle, parabola, hyperbola",
+   "modules": "Landscape, DialSweep, DialWall, DialSurvey",
+   "shape": "conics",
+   "verdict": "disguise",
+   "candidate": "C12",
+   "reason": "The face weight q = beta/alpha is a reading of (k, d): (1+q)^2/q = k^2/d (L1); turning it is turning d (curvature dial in disguise)"
+  },
+  {
+   "n": 7,
+   "law": "Clifford signatures",
+   "modules": "Clifford",
+   "shape": "conics per axis",
+   "verdict": "partly",
+   "candidate": "C9",
+   "reason": "Elements that square to numbers allow only q = +1 or -1 (I1, order-dial G1); in between, Clifford breaks"
+  },
+  {
+   "n": 8,
+   "law": "Elliptic curves: pinching the torus",
+   "modules": "Elliptic, EllipticS3, EllipticCounting",
+   "shape": "torus",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "The Tate parameter q of the torus (QDial tate_glue_n) is the curve's period, not a swap factor"
+  },
+  {
+   "n": 9,
+   "law": "Einstein velocity addition",
+   "modules": "Relativity, Electromagnetism",
+   "shape": "ball",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Velocity addition is a ball law on the plane dial; no q"
+  },
+  {
+   "n": 10,
+   "law": "Bayes' rule in odds form",
+   "modules": "Statistics",
+   "shape": "simplex",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Bayes in odds form is commutative and has no swap factor"
+  },
+  {
+   "n": 11,
+   "law": "Swap rule: turn = d x area (Thomas, Foucault, pulsars)",
+   "modules": "TwistedBoosts, GRBridges, GravityProbeB, BinaryPulsar",
+   "shape": "sphere / saddle",
+   "verdict": "disguise",
+   "candidate": "C12",
+   "reason": "Turn = d x area flattens into phase = area/hbar with hbar = 1/(j d) (quantum-action A3): the d dial and spin, not q at fixed d"
+  },
+  {
+   "n": 12,
+   "law": "Maxwell as one equation, F as a wedge",
+   "modules": "Electromagnetism",
+   "shape": "light cone",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Maxwell's law does not depend on q (magnetic translations obey a Weyl rule, but that is not proved here)"
+  },
+  {
+   "n": 13,
+   "law": "Einstein tensor, Lovelock's step",
+   "modules": "GeneralRelativity, GRBridges",
+   "shape": "curved space",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Einstein tensor: no swap factor"
+  },
+  {
+   "n": 14,
+   "law": "Curvature by counting (2D causal diamonds)",
+   "modules": "curved-space page",
+   "shape": "cube order (triangle light cone)",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Causal-diamond counting: no swap factor"
+  },
+  {
+   "n": 15,
+   "law": "Corner-weight shapes, power-set dials",
+   "modules": "PowersetDials, FractionalPowerset, FractalDials",
+   "shape": "generalized permutohedra",
+   "verdict": "slides",
+   "candidate": "C6",
+   "reason": "Routes through the cube (the permutohedron's vertices) weighted q^inv sum to [n]_q! (F1; cube-weights E1): n! at q = 1, one route at q = 0, all cancel at a cube root of 1 from n = 3 (F2)"
+  },
+  {
+   "n": 16,
+   "law": "Bell numbers, Catalan, set partitions",
+   "modules": "Combinatorics",
+   "shape": "associahedron / permutohedron",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "q-Catalan and q-Stirling numbers exist in print (Carlitz) but are not built in this repo"
+  },
+  {
+   "n": 17,
+   "law": "q-counting [n]_q",
+   "modules": "QAcross.QCounting, QAcross.QDial",
+   "shape": "simplex",
+   "verdict": "slides",
+   "candidate": "C4",
+   "reason": "[n]_q = sum over words with one y of q^inv (D1): n at q = 1, 1 at q = 0, parity at q = -1, 0 at a root of unity (Lean QDial); same numbers as the k dial at k = q - 1 (Lean qnum_lift)"
+  },
+  {
+   "n": 18,
+   "law": "Cube face weights q^area, solitons",
+   "modules": "SolitonsRungs, QAcross.Partitions",
+   "shape": "cube faces / Grassmannian",
+   "verdict": "slides",
+   "candidate": "C5",
+   "reason": "Face weights q^area: inversions = path area (E2), sum = [n,m]_q (E1): counts C(n,m) at q = 1 (Lean gauss_at_one), keeps the one minimum at q -> 0 (E3; Lean theta2_face, orbit_product_q0)"
+  },
+  {
+   "n": 19,
+   "law": "Toric charts, projective plane",
+   "modules": "Toric.ToricCharts, Toric.ProjectivePlane",
+   "shape": "simplex",
+   "verdict": "disguise",
+   "candidate": "C12",
+   "reason": "Toric point counts run through a = q - 1 points on the circle (Lean fan_count): q is the field size, reached through the k dial"
+  },
+  {
+   "n": 20,
+   "law": "Knots, graphs, diamond lattice, patterns",
+   "modules": "KnotTheory, GraphTheory, DiamondLattice, Patterns",
+   "shape": "various",
+   "verdict": "plausible",
+   "candidate": "C10",
+   "reason": "Jones polynomial: Lean proves t = 1 (components) and t = -1 (determinant); t = e^{2pi i/3} and t = i checked (J2, J3); that t is the order dial goes through U_q(sl2), not proved here"
+  },
+  {
+   "n": 21,
+   "law": "Union rule o_-1, independence",
+   "modules": "MeasureProbability, Foundations.Independence",
+   "shape": "cube",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "The union rule is the k dial at k = -1"
+  },
+  {
+   "n": 22,
+   "law": "Logistic (independent yes/no) and softmax (one of many)",
+   "modules": "Statistics",
+   "shape": "cube / simplex",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Logistic and softmax are commutative sums"
+  },
+  {
+   "n": 23,
+   "law": "Renyi = L_k(Tsallis)",
+   "modules": "InformationTheory",
+   "shape": "simplex",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Tsallis's q is k + 1 (the homothety dial), the first clashing meaning of q, not the order dial"
+  },
+  {
+   "n": 24,
+   "law": "Shannon, Campbell's code lengths",
+   "modules": "InformationFull",
+   "shape": "simplex",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Shannon and code lengths: commutative"
+  },
+  {
+   "n": 25,
+   "law": "Repetition dial: Fermi, classical, Bose",
+   "modules": "RepetitionDial",
+   "shape": "cube / orthant",
+   "verdict": "partly",
+   "candidate": "C9",
+   "reason": "Repeats survive only at q = 1; any q != 1 on self-swaps forces x^2 = 0 (I2, Lean anticommute_self_zero): Bose to Fermi is a jump; anyons in between not proved"
+  },
+  {
+   "n": 26,
+   "law": "Thermodynamics: Gibbs, temperature as Maslov dial",
+   "modules": "Thermodynamics, EntropyNoise",
+   "shape": "free-energy bodies",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Gibbs and temperature are the Maslov (k) dial"
+  },
+  {
+   "n": 27,
+   "law": "Lee-Yang circle theorem",
+   "modules": "LeeYang, LeeYangCluster, LeeYangSpill",
+   "shape": "circle",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Lee-Yang: no swap factor"
+  },
+  {
+   "n": 28,
+   "law": "Born rule (quantum noise)",
+   "modules": "QuantumNoise",
+   "shape": "sphere",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Born rule: no swap factor"
+  },
+  {
+   "n": 29,
+   "law": "Quantum correlations: CHSH <= 2 sqrt 2",
+   "modules": "beyond-the-cube page",
+   "shape": "elliptope",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "CHSH uses anticommuting observables (q = -1), but nothing slides with q in the repo"
+  },
+  {
+   "n": 30,
+   "law": "Entropy of regions as a shape, holographic rules",
+   "modules": "exploration, polar-recast pages",
+   "shape": "polymatroid",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Entropy cones: commutative"
+  },
+  {
+   "n": 31,
+   "law": "Game theory and evolution: replicator, Fisher's theorem",
+   "modules": "GameTheory, Biology.Evolution",
+   "shape": "simplex",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Replicator dynamics: no swap factor"
+  },
+  {
+   "n": 32,
+   "law": "Consensus, dial point processes",
+   "modules": "Consensus, DialPointProcesses",
+   "shape": "various",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Point processes are the k dial (alpha-determinantal)"
+  },
+  {
+   "n": 33,
+   "law": "Navier-Stokes rungs, strain",
+   "modules": "NavierStokes, NSContinuum",
+   "shape": "strain triangle",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Navier-Stokes: no swap factor"
+  },
+  {
+   "n": 34,
+   "law": "Dark sector",
+   "modules": "DarkSector",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Dark sector: no q"
+  },
+  {
+   "n": 35,
+   "law": "Newton's G lead",
+   "modules": "newton-g page",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Newton's G: no q"
+  },
+  {
+   "n": 36,
+   "law": "Fermat n = 3, n = 4, Pythagorean triples",
+   "modules": "Fermat.Fermat3, Fermat.Fermat4",
+   "shape": "p-circle with p = n",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fermat: no q"
+  },
+  {
+   "n": 37,
+   "law": "Frey pieces, counterexample map, FLT route",
+   "modules": "Fermat.FreyPieces, Fermat.CounterexampleMap, Fermat.FermatRoute",
+   "shape": "torus of angles",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Frey curves: no q"
+  },
+  {
+   "n": 38,
+   "law": "Hopf invariant one, Kummer-Wilson",
+   "modules": "Topology",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Topology modules: no q"
+  },
+  {
+   "n": 39,
+   "law": "P vs NP: what can't work",
+   "modules": "PvsNP",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "P vs NP: no q"
+  },
+  {
+   "n": 40,
+   "law": "e: corner volumes 1/n!",
+   "modules": "E, FusedConstants",
+   "shape": "simplex",
+   "verdict": "plausible",
+   "candidate": "C11",
+   "reason": "e_q(x + y) = e_q(x) e_q(y) for yx = q xy (Schutzenberger 1953; K1 to degree 7): e at q = 1 (Lean E), 1/(1 - z) at q = 0; the q-law is not proved in the repo"
+  },
+  {
+   "n": 41,
+   "law": "pi and the Gaussian",
+   "modules": "Pi, GeometryTrig",
+   "shape": "sphere",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "pi and the Gaussian: no q"
+  },
+  {
+   "n": 42,
+   "law": "i, Euler's identity, complex analysis",
+   "modules": "EIPi, WhyI, ComplexAnalysis",
+   "shape": "sphere",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Euler's identity marks the stop q = e^{i pi} = -1, but the law itself has no q"
+  },
+  {
+   "n": 43,
+   "law": "Conservation of mass and charge, stoichiometry",
+   "modules": "Chemistry.ChemConservation, ChemStoichiometry",
+   "shape": "simplex",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Conservation laws: commutative"
+  },
+  {
+   "n": 44,
+   "law": "Equilibrium, Nernst, Arrhenius, pH, gas laws",
+   "modules": "Chemistry (other modules)",
+   "shape": "log axis",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Chemistry: no q"
+  },
+  {
+   "n": 45,
+   "law": "Biology: genetics, physiology, ecology, cells",
+   "modules": "Biology (other modules)",
+   "shape": "various",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Biology: no q"
+  },
+  {
+   "n": 46,
+   "law": "Finance: Fisher's rule for real rates",
+   "modules": "Finance",
+   "shape": "log axis",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Fisher's rule: commutative (compounding order is different centres, order-dial section 2)"
+  },
+  {
+   "n": 47,
+   "law": "Logic, sets, categories, algebra, linear algebra",
+   "modules": "LogicSets, CategoryTheory, AbstractAlgebra, LinearAlgebra",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "The Boom hierarchy is order on/off, not a dial (order-dial section 7)"
+  },
+  {
+   "n": 48,
+   "law": "Functional analysis, Osgood inverse, numerics, dynamics",
+   "modules": "FunctionalAnalysis, OsgoodInverse, Numerical, Dynamics, Infinities",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Functional analysis etc.: no q"
+  },
+  {
+   "n": 49,
+   "law": "Data centres, Rulecraft, rule breakers, early science",
+   "modules": "DataCenter, Rulecraft, RuleBreakers, EarlyScience",
+   "shape": "-",
+   "verdict": "plausible",
+   "candidate": "C7",
+   "reason": "Rulecraft's order of reforms weighted q^(out-of-order pairs): best order at q = 0 (H5a), plain average at q = 1, worst at q -> inf; monotone in between checked (G2, G3), not proved here"
+  },
+  {
+   "n": 50,
+   "law": "Hyperoperation ladder: whole rungs fused",
+   "modules": "HyperLadder",
+   "shape": "half-line",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Whole rungs: k dial"
+  },
+  {
+   "n": 51,
+   "law": "Lie groups: the plane law as a Mobius product",
+   "modules": "GroupsLie",
+   "shape": "conics",
+   "verdict": "disguise",
+   "candidate": "C12",
+   "reason": "Mobius translations' multiplier ratio is q = beta/alpha (anchors, rulecraft-history H15): the d dial in disguise"
+  },
+  {
+   "n": 52,
+   "law": "Number planes a + b u with u^2 = k u - q; quaternions, precession",
+   "modules": "NumberPlane, DiffGeometry, Hypersphere, Precession",
+   "shape": "conics / sphere",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Number planes write u^2 = k u - q, where q is the curvature dial d (a third clashing meaning)"
+  },
+  {
+   "n": 53,
+   "law": "Jet fields R[e]/(e^2 - k e); jet river: Schwarzschild, Kerr, Kerr-Newman",
+   "modules": "JetFields, JetRiver, SpinningRiver",
+   "shape": "curved space",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Jet fields: no swap factor"
+  },
+  {
+   "n": 54,
+   "law": "Order dial: the swap gap is an oriented area; Weyl moves",
+   "modules": "OrderDial, CutIndependence, QuantumAction",
+   "shape": "plane of moves",
+   "verdict": "self",
+   "candidate": "C8",
+   "reason": "The order dial: swap gap = oriented area (Lean order_gap), Weyl phase = area (Lean swap_costs_area, weyl), Moyal at hbar (order-dial H1-H5)"
+  },
+  {
+   "n": 55,
+   "law": "Units and roots: the weight is units, every law is addition plus a corner",
+   "modules": "ShapeDirections, ShapeDependencies, Conventions, PathNames",
+   "shape": "-",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Units and roots: no q"
+  },
+  {
+   "n": 56,
+   "law": "Dial potential, several waves, Dirac checkerboard",
+   "modules": "DialPotential, SeveralWaves, Checkerboard, CheckerboardPotential",
+   "shape": "cube of insertions",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Dial potential and checkerboard: k and d dials"
+  },
+  {
+   "n": 57,
+   "law": "Size weight, fractional boxes, corner weights",
+   "modules": "SizeDialResidual, FractalBoxes, CornerWeights",
+   "shape": "box",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Size weights: r and beta"
+  },
+  {
+   "n": 58,
+   "law": "Holographic gluing: monogamy from the odds",
+   "modules": "HoloGluing, HoloGluingField",
+   "shape": "cube",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Holographic gluing: odds"
+  },
+  {
+   "n": 59,
+   "law": "Force reach, the hidden-circle force, flux-tube dial, Yang-Mills gap",
+   "modules": "ForceReach, NewForce, FluxTubeDial, YangMillsGap",
+   "shape": "conics",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Force reach: plane dial"
+  },
+  {
+   "n": 60,
+   "law": "Tunnelling: barriers compose by o_k",
+   "modules": "Tunnelling",
+   "shape": "conics",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Tunnelling: o_k with k"
+  },
+  {
+   "n": 61,
+   "law": "Riemann rounds: prime cube fold, fused pairs",
+   "modules": "Riemann, RiemannElliptic, RiemannRound3, RiemannRound4",
+   "shape": "cube / conics",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Riemann rounds: no swap factor"
+  },
+  {
+   "n": 62,
+   "law": "Elliptic modulus: kappa = 1 - 2m",
+   "modules": "EllipticModulus",
+   "shape": "torus",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Elliptic modulus kappa = 1 - 2m: the nome is a period, not a swap factor"
+  },
+  {
+   "n": 63,
+   "law": "Beyond one loop: plane-law flows and their walls",
+   "modules": "BeyondOneLoop",
+   "shape": "conics",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Beyond one loop: plane dial"
+  },
+  {
+   "n": 64,
+   "law": "Boolean lattice, fresh look, fuzzy frame",
+   "modules": "BooleanLattice, FreshLook, FuzzyFrame",
+   "shape": "cube",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Boolean lattice: commutative"
+  },
+  {
+   "n": 65,
+   "law": "Warp bubbles and wormholes: energy conditions",
+   "modules": "WarpWormhole",
+   "shape": "strain triangle",
+   "verdict": "no",
+   "candidate": "",
+   "reason": "Warp bubbles: no q"
+  }
+ ]
+}

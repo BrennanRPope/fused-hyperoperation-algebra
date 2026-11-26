@@ -56,10 +56,12 @@ found in print in the write-up's own search; black marks a known result in our p
 | **k**, homothety | Moves the wall −1/k that every scaling shares. k = 0 is addition, 1 the circle operation, −1 "A or B". | hyperoperation-ladder, category-theory, mathlib-map, dial-point-processes, dial-survey, relativity, general-relativity, holographic-entropy-cube, tunnelling, rulecraft-history, semiring-audit, lee-yang, landscape |
 | **d**, curvature dial (reading: curvature −Δ/4) | Bends ∘ₖ into the plane law (a + b + k·ab)/(1 − d·ab). The sign of Δ picks the kind. | landscape, electromagnetism, gravity-from-theory, tunnelling, elliptic-modulus, force-reach, rulecraft-history §7, riemann/round3, conics |
 | **p**, ℓp exponent | Slides the shape from cross-polytope (1) through ball (2) to cube (∞). | shape-dial-survey (Lee–Yang on the ℓp ball, Bell's bound) |
-| **C**, cubic form | Slides round to triangle. Zero exactly for ellipses. | simplex, affine-sphere, shape-dial-survey |
+| **C**, cubic form (derived, not a free dial; see the note below) | Slides round to triangle. Zero exactly for ellipses. | simplex, affine-sphere, shape-dial-survey |
 | **t**, odds | How strongly each element takes part. All t = 1 is the plain power set. | fractional-powerset-dials, fractional-powerset, dial-survey, dial-point-processes, decrement-paths, fractal-dials |
 | **r**, similarity ratio | The zoom of each piece; dimension D comes out as a reading. | fractal-dials |
 | **q**, order dial (or ħ) | Turns order on. The swap gap is an oriented area, the holonomy ω. | order-dial, rulecraft-history |
+
+**C is derived from k and d, not a free dial (Nov 26).** Brennan: "It is derived from k and d." It fits what the laws do: every law (a + b + k·ab)/(1 − d·ab) has a quadratic norm a² + k·ab + d·b², so its unit curve is a conic. Conics are the round end of the cubic-form dial, where C = 0 ([`affine-names/`](../affine-names/) §4, Maschke–Pick–Berwald; every non-degenerate conic is projectively an ellipse). So within the (k, d) laws C never moves off zero: it adds no freedom of its own and only measures shapes the laws don't make. The row stays because the results it labels are real; the figures still draw seven hubs. The other dials each have a survey: [k](../homothety-dial-survey/), [d](../curvature-dial-survey/), [q](../order-dial-survey/), [t](../odds-dial-survey/), [r](../ratio-dial-survey/), and p in [shape-dial-survey](../shape-dial-survey/).
 
 The growth degree β is a setting, not a dial ([`affine-names/`](../affine-names/) §6), so it has no hub here.
 
