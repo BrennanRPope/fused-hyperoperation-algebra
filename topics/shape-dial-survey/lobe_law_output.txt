@@ -1,0 +1,6 @@
+PASS L1 at a = p the normalised lobe excess tends to 1 +/- sin(pi p/2)/p^(p-1), alternating with the lobe's sign  [p=2.5: 1 -> 0.998, kink -0.1789 -> -0.1780; p=3: 1 -> 0.995, kink -0.1111 -> -0.1096; p=3.5: 1 -> 0.990, kink -0.0309 -> -0.0298]
+PASS L2 inside the strip the kink term fades like z^(a-p) with the predicted size  [p=3, a=2.5: kink -0.261 -> -0.260; p=2.5, a=2: kink -0.313 -> -0.313]
+PASS L3 every step of the climb from a = 1 (7 roundnesses, a = 1.5 and three values in the strip): every weighted lobe beats the one before, and the excess stays above the law's floor  [28 cases, smallest ratio 1.044, smallest excess/law 0.86]
+PASS L4 past the edge (p = 3, a = 4.5) the alternating kink term wins far out and a lobe fails to grow, as the law predicts  [first shrinking lobe after z = 43.088993503122666]
+PASS L5 polish: first three lobes by direct quadrature agree with the identity; refined zeros are clean  [agree to all 50 digits (gap 0e+00), residual 1.1e-47]
+5/5 pass, 97 s

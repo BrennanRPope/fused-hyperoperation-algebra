@@ -12,7 +12,7 @@ Page: see `PAGES-INDEX.md` ("Mathlib map").
 
 ## Files
 
-All six modules compile with **no `sorry`** and only the standard axioms
+All seven modules compile with **no `sorry`** and only the standard axioms
 (`propext`, `Classical.choice`, `Quot.sound`); `Check.lean` prints them.
 
 | File | What it links | Main theorems |
@@ -23,6 +23,7 @@ All six modules compile with **no `sorry`** and only the standard axioms
 | `MathlibMap/Jacobson.lean` | `Ring.jacobson` ↔ "never meets a wall" | `wayBack_iff_isUnit`, **`mem_jacobson_iff_wayBack : x ∈ Ring.jacobson R ↔ ∀ k, ∃ b, circK k x b = 0`**, `wayBack_of_isNilpotent`, `wayBack_every_dial_field` |
 | `MathlibMap/Lucas.lean` | core `Patterns.lucas` at Q = 1 ↔ `Polynomial.Chebyshev.S` | `lucas_one_eq_S` |
 | `MathlibMap/LeeYangBand.lean` | **statement only**: the Lee–Yang p-ball rule | `LeeYang.fieldFn`, `LeeYang.Holds`, `LeeYang.Rule`, `LeeYang.OpenBand` (propositions, not proved) |
+| `MathlibMap/LeeYangStep.lean` | **statement only** (DRAFT, Nov 26): the step identity's consequences, from shape-dial-survey section N3 | `LeeYang.StepDown`, `LeeYang.TopStrip`, `LeeYang.TopStripReduces` (propositions, not proved) |
 
 19 theorems plus the `Dial` monoid and its equivalence. Names follow the library's 1.0 names
 (`CircleOp.circ`, `CircleOp.circK`). When the folder was added to the repo (Nov 26), its references to the

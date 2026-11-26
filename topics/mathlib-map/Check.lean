@@ -22,3 +22,6 @@ open MathlibMap
 #print axioms MathlibMap.Dial.ext_val
 #check @MathlibMap.LeeYang.Rule
 #check @MathlibMap.LeeYang.OpenBand
+#check @MathlibMap.LeeYang.StepDown
+#check @MathlibMap.LeeYang.TopStrip
+#check @MathlibMap.LeeYang.TopStripReduces

@@ -36,7 +36,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Shape-dial survey: which proved laws slide into one another</h1>
-<p>Hypercube Composition Theory. Every proved law, tested for whether sliding the shape (with the plane dial fixed) carries it into another. Blue in the pictures is our reading, orange what was already known, grey the cube end.</p></header>
+<p>Affine Composition Theory. Every proved law, tested for whether sliding the shape (with the plane dial fixed) carries it into another. Blue in the pictures is our reading, orange what was already known, grey the cube end.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

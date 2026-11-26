@@ -1,0 +1,14 @@
+    margin 2.5 2.0 {'17.3': 0.116, '39.3': 0.056, '67.5': 0.047}
+    margin 2.5 2.5 {'18.1': 0.232, '36.9': 0.191, '68.3': 0.182}
+    margin 3.0 2.5 {'18.1': 0.237, '36.9': 0.118, '68.3': 0.064}
+    margin 3.0 3.0 {'18.8': 0.32, '37.7': 0.166, '69.1': 0.125}
+    margin 5.0 4.5 {'36.9': 0.848, '68.3': 0.513, '109.2': 0.332}
+    margin 5.0 5.0 {'37.7': 0.995, '69.1': 0.606, '110.0': 0.397}
+    margin 7.0 7.0 {'110.0': 1.068, '157.1': 0.815, '219.9': 0.607}
+PASS S1 far zone: past a radius, the roundness-p function stays within 90% of the ball's size on every tested circle (p = 2.5, 3, 5, 7)  [p=2.5, a=2: from r = 17.3; p=2.5, a=2.5: from r = 18.1; p=3, a=2.5: from r = 18.1; p=3, a=3: from r = 18.8; p=5, a=4.5: from r = 36.9; p=5, a=5: from r = 69.1; p=7, a=7: from r = 157.1]
+PASS S2 near zone: inside the far-zone radius, G at roundness p has exactly as many real zeros as the ball  [p=2.5, a=2: 4 = 4; p=2.5, a=2.5: 4 = 4; p=3, a=2.5: 4 = 4; p=3, a=3: 4 = 4; p=5, a=4.5: 9 = 9; p=5, a=5: 19 = 19; p=7, a=7: 46 = 46]
+PASS S3 shell peeling: the weighted lobes grow from the first one out to the far-zone radius, so G at a changes sign between every pair of zeros of G at a - 1  [smallest growth ratio 1.85]
+PASS S4 whole strip at p = 3 (a from 2.05 to 3 in steps of 0.05): margin under 0.9 on a circle near r = 40 and equal counts inside  [20 values of a, largest margin 0.166]
+PASS S5 polish: lobes by direct quadrature agree with the identity at refined zeros  [rel gap 2.2e-39, 1.21 s]
+
+5 of 5 checks pass  (52.2 s)

@@ -45,3 +45,6 @@ topics/lucas-temperley-lieb/extra_checks.py
 topics/shape-dial-survey/proof_checks.py
 topics/shape-dial-survey/new_laws.py
 topics/shape-dial-survey/interlace_check.py
+topics/shape-dial-survey/identity_check.py
+topics/shape-dial-survey/strip_check.py
+topics/shape-dial-survey/lobe_law_check.py

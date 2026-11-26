@@ -1,0 +1,7 @@
+PASS K1 (a+1) p G_a = (s d/ds + (a+1) p + 1) G_(a+1), by quadrature at 5 (p, a, s)  [max gap 4.5e-17]
+PASS K2 coefficient form: (a+1) p c_k(a) = (2k + kappa) c_k(a+1) for k < 40 (relative)  [max 7.8e-50]
+PASS K3 Rolle: each gap between zeros of G_(a+1) holds exactly one zero of G_a  [40 of 40 pairs]
+     {'p=3, a=1 -> 2': (True, None, 8), 'p=1.5, a=1 -> 2': (False, 1, 0), 'p=1.5, a=0.4 -> 1.4': (True, None, 8)}
+PASS K4 the up-step works exactly where the rule says: values alternate for p = 3 (a+1 = 2 <= p) and p = 1.5, a = 0.4 -> 1.4, and stop alternating for p = 1.5, a = 1 -> 2 (a+1 > p)  [identity vs direct integral 1.7e-17]
+
+4 of 4 checks pass  (19.7 s)

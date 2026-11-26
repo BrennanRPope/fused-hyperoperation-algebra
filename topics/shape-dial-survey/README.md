@@ -1,6 +1,6 @@
 # Shape-dial survey: which proved laws slide into one another (DRAFT)
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "a survey of all of our laws that we've proven to see if the shape dial is able to move from one to
 another, not just these 2, but really all of them." Then: "add a polishing step to all of our methods, as long as it
 doesn't take too much effort from the computer."
@@ -49,7 +49,12 @@ three come from the smooth-to-angular switch (the roundness dial p). The round-t
 dial gave none of their own. The strongest is **Lee–Yang holds for a spin uniform in an n-dimensional p-ball exactly
 when n ≤ 1 + p²** (always, at even whole p), which I didn't find in print. Asked next to prove it: the breaking half is
 proved, and the holding half is proved for n ≤ p + 1 at every p, for the ball, and for p = 4 at whole a; the rest of
-the holding half is still open (section N3, proof). The other two are **Bell's 2√2 is a floor for
+the holding half is still open (section N3, proof). A step identity then showed that Lee–Yang passes from a + 1 down to a
+at every p, so for p ≥ 2 the open part is only the strip p − 1 < a ≤ p (section N3, step identity).
+That strip is now a finite check for each p, by comparing with the ball and peeling one shell. It passes at
+p = 2.5, 3, 5 and 7, but a proof for every p at once is still missing (section N3, top strip). Lobe growth at every a ≤ p
+would close it, and that is now proved far out for every p, with the same kink constant as the ball comparison; an
+explicit radius is still missing (section N3, lobe law). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
 (a short corollary of Fermat's last theorem).
 
@@ -432,6 +437,158 @@ a = 3.5 (orange) alternate along the line.*
 | I3 | no two zeros meet while a ≤ p (tracked in steps of 0.05) | none; first meeting at p = 1.5 is a = 1.7 |
 | I4 | polish: findroot refines each zero (moves of 0.025 at most) and alternation still holds | holds |
 
+### N3, step identity. The link between a and a + 1
+
+Asked next by Brennan: "Look for it." **Short answer: found, and it proves a new step, but it runs the wrong way to close
+the band.** The identity holds at every roundness p. It carries Lee–Yang from a + 1 *down* to a, never up, so the open
+band shrinks to one strip of width 1 just under a = p (for p ≥ 2). That strip is still open.
+
+![Step identity](figures/fig18-lee-yang-step-identity.png)
+
+*Figure 18. Left: at p = 3, each hump of s^κ G at a + 1 (orange) peaks exactly at a zero of G at a (blue), which is the
+identity at work. Middle: what's left after stepping down; the dark strip is the only open part for non-even p, and the
+hatched part follows from it. Right: why the identity won't climb: going from a to a + 1 needs a running integral F to
+flip sign at every zero of G at a. It does at p = 3 (blue) and doesn't at p = 1.5 once a + 1 passes p (red).*
+
+- **The identity.** With κ = (a + 1)p + 1, for every p > 0 and a ≥ 0,
+  **(a + 1) p · G_a(s) = s G′_(a+1)(s) + κ G_(a+1)(s) = s^(1−κ) · d/ds [ s^κ G_(a+1)(s) ]**.
+  It's one integration by parts: x · d/dx of (1 − xᵖ)^(a+1) equals (a + 1)p times ((1 − xᵖ)^(a+1) − (1 − xᵖ)^a).
+  At p = 2 it is the classical Bessel recurrence, which is why the ball was easy.
+- **What it proves (step down).** If every zero of G at a + 1 is real, every zero of G at a is real too, and the two sets
+  of zeros alternate. Proof: write G_(a+1)(s) = φ(s²); φ has only positive zeros u_k and Σ 1/u_k converges. The identity
+  makes G_a proportional to ψ = 2uφ′ + κφ, and ψ/φ = κ + 2 Σ u/(u − u_k). Off the real line its imaginary part is
+  −2 Im(u) Σ u_k/|u − u_k|², which isn't zero, and for u ≤ 0 it is at least κ > 0. So every zero of ψ is a positive u,
+  and every zero of G_a is real. Rolle's theorem on s^κ G_(a+1) puts exactly one zero of G_a between each pair of zeros
+  of G_(a+1). This explains the alternation the sliding check saw.
+- **What it buys.**
+  1. The Lee–Yang set is closed under a → a − 1 at every roundness.
+  2. For non-even p ≥ 2, the open band 1 < a ≤ p now follows from the **top strip p − 1 < a ≤ p** alone. For 1 < p < 2 the
+     band is already narrower than 1, so nothing shrinks.
+  3. For even p, where the rule says every a, it is enough to prove one unit-wide strip at a time, arbitrarily high up.
+     The p = 4 whole-number result doesn't spread: stepping down from whole numbers only reaches whole numbers.
+- **Why it won't climb.** Going up means integrating: s^κ G_(a+1) = (a + 1)p ∫₀^s t^(κ−1) G_a(t) dt. That keeps the
+  zeros real only if the running integral flips sign at every zero of G_a. Far out, the rim's wave makes the lobes grow
+  like s^((a+1)(p−1)), and the centre's steady push grows like s^((a+1)p−p). The wave wins when a + 1 < p (they tie at a + 1 = p),
+  so the climb fails far out precisely where the rule says it breaks. Near the origin the first few lobes still have to be
+  checked, and that is the same "first few zeros" problem in a sharper form. This is an explanation, not a proof.
+- **In print.** I didn't search for the identity separately. It's the kind of parameter-shift relation these Bessel-like
+  functions usually have, so I'd expect it to be known. I haven't seen it used for Lee–Yang, or the top-strip reduction.
+- **Verdict: worth following.** For non-even p ≥ 2 the whole open question is now one strip under a = p, and the right
+  panel suggests the attack: prove the running integral flips sign at the first few zeros when a + 1 ≤ p.
+- **Lean.** `topics/mathlib-map/MathlibMap/LeeYangStep.lean` states StepDown, TopStrip and TopStripReduces against the
+  definitions in `MathlibMap/LeeYangBand.lean`. It is statements only (definitions of propositions, nothing proved), and
+  CI builds it with the rest of the Mathlib map.
+
+**Checks** (`identity_check.py` → `identity_output.txt`, `identity_check.json`, **4 of 4 pass**, 20 s):
+
+| Check | What | Result |
+|---|---|---|
+| K1 | the identity on the functions, by quadrature, at 5 (p, a, s) with p from 1.5 to 5 | gap 5e-17 |
+| K2 | polish: the same identity coefficient by coefficient at 50 digits (exact Beta-function step), k < 40 | gap 8e-50 |
+| K3 | each gap between zeros of G at a + 1 holds exactly one zero of G at a (polished zeros) | 40 of 40 pairs |
+| K4 | the climb's sign test: alternates at p = 3 (a = 1 → 2) and p = 1.5 (a = 0.4 → 1.4), fails at p = 1.5 (a = 1 → 2) | as predicted |
+
+### N3, top strip. The strip p − 1 < a ≤ p through the shape dial
+
+Asked next by Brennan: "yes" (go after the strip). **Short answer: not proved for every p, but now a finite check for
+each p, and that check passes at every p I ran (2.5, 3, 5, 7).** Two of the theory's own moves do the work. Sliding the
+roundness dial to the ball handles everything far from the centre. Peeling one shell (the step identity) handles the
+first few zeros near the centre. What still needs a real proof is a bound that works for all p at once.
+
+![Top strip](figures/fig19-lee-yang-top-strip.png)
+
+*Figure 19. Left: how far the roundness-p function is from the ball's (scaled), on circles of growing radius. Once it's
+below 1 the two have the same zeros inside, and the ball's are all real. Each curve settles at the dotted level, which
+is the centre's kink, |sin(πp/2)|/p^(p−1). Middle: at p = 5, a = 5 the zeros sit in different places near the centre but
+match one for one. Right: peeling one shell, the weighted lobes grow from the very first one.*
+
+- **Move 1: slide the roundness dial to the ball, keeping a fixed.** Near the rim, 1 − xᵖ ≈ p(1 − x) whatever p is, so far
+  out G at roundness p looks like (p/2)^a times the ball's G. The only difference is the kink at the centre. On a
+  circle through a crest of the rim wave, the kink's share settles at |sin(πp/2)|/p^(p−1), which is below 1 for every
+  p > 1. So past some radius, Rouché's theorem gives G_p exactly as many zeros inside as the ball, and the ball's are all
+  real. The same picture shows why the rule stops at a = p: above it, the kink's share on the real axis grows without
+  bound and the comparison fails.
+- **Move 2: peel one shell.** By the step identity, s^κ G_a is a running integral of t^(κ−1) G_(a−1), with κ = ap + 1. If
+  the weighted lobes of G at a − 1 grow one after another, G at a changes sign between every pair of neighbouring zeros
+  of G at a − 1. That puts one zero in each gap, and the count against the ball leaves no room for any other zeros.
+- **What the numbers say.** The far zone starts at radius 17–19 for p = 2.5 and 3, 37–69 for p = 5, and about 157 for
+  p = 7: it grows quickly with p. Inside it the zero counts match the ball's exactly (4, 4, 9, 19 and 46 zeros). The
+  weighted lobes grow from the first lobe in every case, by a factor of at least 1.85 each step. Across the whole strip
+  at p = 3, in steps of 0.05, the margin stays under 0.17 and the counts match.
+- **What's still missing.** Two bounds that hold for every p: an explicit radius where the ball comparison starts (it
+  grows fast with p, so the 1/s corrections need a real estimate), and an inequality showing each weighted lobe beats
+  the one before. The lobes have a wide cushion, so that inequality is the most promising target. To be a proof for a
+  single p, the numbers here would also need interval arithmetic and a step over the continuous range of a.
+- **In print.** Rouché against a Bessel function and Sturm-type lobe arguments are standard tools for zeros of Fourier
+  integrals. I didn't search for this combination applied to p-balls.
+- **Verdict: worth following.** The strip is now a finite, checkable statement for any one roundness, and every case
+  passes. Turning the lobe growth into an inequality would come close to finishing the rule.
+
+**Checks** (`strip_check.py` → `strip_output.txt`, `strip_check.json`, **5 of 5 pass**, 52 s):
+
+| Check | What | Result |
+|---|---|---|
+| S1 | far zone: past a radius, roundness p stays within 90% of the ball on every tested circle | p = 2.5, 3, 5, 7: from r = 17 to 157 |
+| S2 | near zone: inside that radius, real zeros of G_p equal the ball's count | 7 of 7 (4 to 46 zeros) |
+| S3 | peeling a shell: weighted lobes grow from the first, so each gap gets a sign change | smallest growth factor 1.85 |
+| S4 | whole strip at p = 3, a from 2.05 to 3 in steps of 0.05: margin and count | 20 of 20, margin ≤ 0.17 |
+| S5 | polish: zeros refined with findroot; first lobes by direct quadrature against the identity | gap 2e-39 |
+
+### N3, lobe law. Do the weighted lobes always grow?
+
+Asked next by Brennan: "Please" (try to prove the lobe-growth inequality). **Short answer: proved far out for every p,
+not yet from the first lobe.** Far out the lobes follow a simple law, and its safety margin is the same kink share,
+|sin(πp/2)|/p^(p−1), that the ball comparison had. That margin is below 1 for every p > 1, so the lobes grow from some
+point on at every a ≤ p, and the law fails exactly past a = p, where the rule breaks. Near the centre the lobes grow much
+faster than the law needs, so the tight place is far out, not near the centre. What's missing is an explicit radius
+where "far out" starts.
+
+![Lobe law](figures/fig20-lee-yang-lobe-law.png)
+
+*Figure 20. Top left: how much faster each weighted lobe is than the one before, divided by what the weight alone would
+give. It zigzags down onto two lines, 1 ± the kink share, and never goes below the lower one. Top right: why it zigzags.
+The rim wave rides on a small one-signed offset from the centre's kink, so lobes of one sign come out a bit bigger. Bottom
+left: at p = 3 the zigzag closes inside the strip and opens past a = p, until lobes shrink. Bottom right: the law's floor
+at a = p for every roundness, with the smallest value seen over all lobes; every case sits above the floor.*
+
+- **Why lobe growth is the whole job.** Pólya settles a ≤ 1. Peeling one shell, if G at a − 1 has real zeros and every
+  weighted lobe beats the one before, G at a gets a zero in every gap, and the zero count against the ball (exact far out
+  for a ≤ p) leaves room for no others. So lobe growth at every a between 1 and p, for every lobe, climbs in whole steps
+  from Pólya's base to the top and proves the holding side at every p.
+- **The law.** Far out, G at a − 1 is a rim wave of size p^(a−1) Γ(a) t^(−a) plus a one-signed term from the centre's kink,
+  (a − 1) Γ(p + 1) sin(πp/2) t^(−p−1) (Erdélyi's endpoint expansion). The weight t^(ap) makes each lobe bigger by the
+  factor (1 + π/z)^(a(p−1)), about 1 + πa(p − 1)/z. The rim's smaller terms change every lobe in the same smooth way, so
+  they drop out of the ratio. The kink pushes alternate lobes up and down. Put together:
+
+  (L_(k+1)/L_k − 1) · z_k / (π a (p − 1)) = 1 ± B · z_k^(a−p) + O(1/z_k), with
+  B = (a − 1) Γ(p + 1) sin(πp/2) / (a (p − 1) p^(a−1) Γ(a)).
+
+  At a = p this is 1 ± sin(πp/2)/p^(p−1). Below a = p the kink part fades. Above a = p it grows without bound, and
+  lobes start shrinking: the same edge as the rule.
+- **Status.** This proves lobe growth past some radius, for every p and every a ≤ p, using standard asymptotics. The
+  radius isn't explicit. The numbers say the law's floor already holds from the first lobe: across 28 cases (7
+  roundnesses, a from 1.5 to p) every lobe sits above it, approaching from above. So the sharp inequality to prove is
+
+  (L_(k+1)/L_k − 1) · z_k ≥ π a (p − 1) (1 − |B| z_k^(a−p)) for every lobe.
+- **What would finish it.** For one p: explicit error constants in the endpoint expansion, then a finite check of the
+  first lobes. For every p at once, those constants would also have to be uniform in p. For large p the rim becomes a
+  thin layer of width about 1/p shaped like 1 − e^(−y), which is the natural tool there. I didn't do either yet.
+- **In print.** The ball's version is classical: lobes of t^μ J_ν grow when μ > 1/2, by Sturm-type monotonicity (Lorch
+  and Szegő 1963). I didn't find the kink-share law for p-balls.
+- **Verdict: worth following.** The last gap is now one explicit inequality with a named constant, and the same constant
+  shows up in both halves of the argument, which is a good sign this is the right route. For each single p the rest is
+  bookkeeping. A proof for every p at once probably also needs the large-p rim picture.
+
+**Checks** (`lobe_law_check.py` → `lobe_law_output.txt`, `lobe_law_check.json`, **5 of 5 pass**, 97 s):
+
+| Check | What | Result |
+|---|---|---|
+| L1 | at a = p the lobe excess tends to 1 ± sin(πp/2)/p^(p−1), by lobe sign (fit on 68 lobes out to s = 220) | p = 2.5, 3, 3.5: kink −0.1789, −0.1111, −0.0309 measured −0.1780, −0.1096, −0.0298 |
+| L2 | inside the strip the kink term fades like z^(a−p) with the predicted size (out to s = 500) | p = 3, a = 2.5: −0.261 vs −0.260; p = 2.5, a = 2: −0.313 vs −0.313 |
+| L3 | every step of the climb: 7 roundnesses (2.2 to 6), a = 1.5 and three values in the strip, out to s = 120 | 28 of 28: every lobe grows (smallest ratio 1.044) and stays above the floor |
+| L4 | past the edge (p = 3, a = 4.5) the kink wins and a lobe shrinks | first shrinking lobe after s = 43 |
+| L5 | polish: first three lobes by direct quadrature against the identity; refined zeros | agree to all 50 digits |
+
 ---
 
 ## The polishing step
@@ -452,6 +609,9 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 | Lee–Yang: exact zero count in a disc with mpmath | exact | 13.5 s |
 | N3 proof | Lee–Yang proof checks: identity, slope, p = 4 operator, 12 disc counts | exact | 34 s |
 | N3 sliding | Lee–Yang zeros refined with findroot, alternation rechecked | moves ≤ 0.025 | 1.9 s |
+| N3 identity | step identity checked coefficient by coefficient at 50 digits; zeros refined with findroot | exact | under 1 s, of the 20 s run |
+| N3 strip | zeros refined with findroot; lobes by direct quadrature against the identity | gap 2e-39 | 1.2 s |
+| N3 lobe law | first lobes by direct quadrature against the identity; zeros refined | all 50 digits | under 2 s, of the 97 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -465,6 +625,9 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `new_laws.py` → `new_laws.json`: 9 checks for the new-law pass (N1–N3, N5). `figures_new.py` → figures 13–15.
 - `proof_checks.py` → `proof_checks.json`, `proof_checks_output.txt`: 4 checks for the Lee–Yang proof. `figures_proof.py` → figure 16.
 - `interlace_check.py` → `interlace_check.json`; `interlace_summary.py` → `interlace_output.txt`: 4 checks for the sliding route. `figures_interlace.py` → figure 17.
+- `identity_check.py` → `identity_check.json`, `identity_output.txt`: 4 checks for the step identity. `figures_identity.py` → figure 18. `../mathlib-map/MathlibMap/LeeYangStep.lean`: Lean statements, built by CI with the Mathlib map.
+- `strip_check.py` → `strip_check.json`, `strip_output.txt`: 5 checks for the top strip. `figures_strip.py` → figure 19.
+- `lobe_law_check.py` → `lobe_law_check.json`, `lobe_law_output.txt`: 5 checks for the lobe law. `figures_lobe_law.py` → figure 20.
 
 ## References
 
@@ -486,6 +649,8 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
   operators that keep it.
 - A. Erdélyi, Asymptotic Expansions (1956), endpoint expansions of Fourier integrals; B. Ya. Levin, Distribution of
   Zeros of Entire Functions, the Cartwright–Levinson theorem.
+- L. Lorch and G. Szegő, "Higher monotonicity properties of certain Sturm–Liouville functions", Acta Math. 109 (1963):
+  growing lobes of weighted Bessel functions, the ball's version of the lobe law.
 - N. Obreschkoff, Verteilung und Berechnung der Nullstellen reeller Polynome (1963): two real-rooted functions have
   alternating zeros exactly when all their real combinations are real-rooted (Hermite–Kakeya–Obreschkoff).
 - D. K. Dimitrov and P. K. Rusev, "Zeros of entire Fourier transforms", East J. Approx. (2011).
