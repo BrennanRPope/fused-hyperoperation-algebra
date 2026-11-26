@@ -1,0 +1,61 @@
+{
+ "results": [
+  {
+   "name": "C1 Trect: symmetry kept by Navier-Stokes without re-projection (t=10)",
+   "ok": true,
+   "detail": "max rel. error 0.0e+00"
+  },
+  {
+   "name": "C1 K: symmetry kept by Navier-Stokes without re-projection (t=10)",
+   "ok": true,
+   "detail": "max rel. error 3.4e-12"
+  },
+  {
+   "name": "C2 lone vortex cos x + sin y: allowed on K, steady (nonlinear term 0), decays exactly like e^(-nu t)",
+   "ok": true,
+   "detail": "glide-odd error 1.2e-15; nonlinear term 1.2e-14; amplitude at t=20 0.81873075 vs e^-0.2 = 0.81873075"
+  },
+  {
+   "name": "C3 K: energy budget dE/dt = -2 nu * enstrophy",
+   "ok": true,
+   "detail": "max rel. mismatch 1.2e-04"
+  },
+  {
+   "name": "C4 harmonic flows (first Betti number): T2 2, Trect 2, K 1",
+   "ok": true,
+   "detail": "{'T2': 2, 'Trect': 2, 'K': 1}"
+  },
+  {
+   "name": "C5 lowest streamfunction shell (|k|=1): T2 4 modes, Trect 2, K 3 (cos x, sin x, sin y)",
+   "ok": true,
+   "detail": "{\"T2\": {\"1\": 4, \"2\": 4, \"3\": 0, \"4\": 4}, \"Trect\": {\"1\": 2, \"2\": 0, \"3\": 0, \"4\": 4}, \"K\": {\"1\": 3, \"2\": 2, \"3\": 0, \"4\": 1}}"
+  },
+  {
+   "name": "C6 K: mean and skewness of vorticity are 0 for every allowed field; Trect skewness free",
+   "ok": true,
+   "detail": "K mean 5.4e-20, K skew -8.3e-18, Trect skew -0.120"
+  },
+  {
+   "name": "C7 integral of vorticity over a fundamental rectangle: Trect 0 for every cut; K depends on the cut and flips sign after half a turn",
+   "ok": true,
+   "detail": "Trect max |.| 6.4e-18; K range -0.041..0.041; K(a)+K(a+pi) max 1.4e-17"
+  },
+  {
+   "name": "C8 Taylor-Green vortex on T2 decays exactly like e^(-2 nu t)",
+   "ok": true,
+   "detail": "0.81873075 vs 0.81873075"
+  },
+  {
+   "name": "C9 resolution: N=128 and N=256 agree (K, nu=1e-3, t=10)",
+   "ok": true,
+   "detail": "energy rel. diff 1.3e-04, enstrophy rel. diff 2.8e-03"
+  },
+  {
+   "name": "C10 uniform flow along the flipped edge (v = 1) is not allowed on K (projection is 0)",
+   "ok": true,
+   "detail": "max |projection| 0.0e+00"
+  }
+ ],
+ "passed": 11,
+ "total": 11
+}
