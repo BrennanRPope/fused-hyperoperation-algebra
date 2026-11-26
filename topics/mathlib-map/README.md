@@ -12,7 +12,7 @@ Page: see `PAGES-INDEX.md` ("Mathlib map").
 
 ## Files
 
-All thirteen modules compile with **no `sorry`** and only the standard axioms
+All fourteen modules compile with **no `sorry`** and only the standard axioms
 (`propext`, `Classical.choice`, `Quot.sound`); `Check.lean` prints them.
 
 | File | What it links | Main theorems |
@@ -30,8 +30,9 @@ All thirteen modules compile with **no `sorry`** and only the standard axioms
 | `MathlibMap/LeeYangNearZone.lean` | **proved** (DRAFT, Nov 26): stage 1 of moving the near-zone check into Lean, from shape-dial-survey section "N3, near zone"; the far-zone and near-zone computer checks are named hypotheses (`FarCert`, `NearCert`), with the core's `Toolkit` | `taylor_cell` (the Taylor bound on a cell, by the comparison principle), `RunCert.nearAlt` (a run certificate gives alternation), `alt_of_near_far`, `alternates_of_near_far`, `alternatesBelow_range`, `holds_range`, `rule_range` (the rule for every 1.1 ≤ p ≤ 5, from the two certificates); section 5 adds `NearCert58`, `alternatesBelow_range8`, `holds_range8`, `rule_range8` (the same out to p = 8) |
 | `MathlibMap/FaceDial.lean` | **proved** (DRAFT, Nov 26): the roundness dial aimed at a shape's faces, from `topics/shape-dials/`; first written without a Lean toolchain, compiled in CI on Nov 26 with no proof changed | `poly_subset_shape` (the polytope lies inside its shape at every whole-number p), `face_le_of_mem_shape`, `iInter_shape` (the polytope is the intersection of its shapes), `shape_two` (at p = 2 the shape is a ball) |
 | `MathlibMap/DepthDerived.lean` | **proved** (DRAFT, Nov 26): Wythoff depth is derived, not a new dial, from `topics/shape-dials/` section 6; first written without a Lean toolchain, compiled in CI on Nov 26 after two fixes (Mathlib's name `Real.tendsto_one_add_div_rpow_exp`, and a closing `ring`), no statement changed | `argmax_add`, `argmax_smul_add` (the deepest corner of a Minkowski sum of corner shapes), `chance_complement`, `odds_rescale` (odds, not sizes, fix the shape), `face_to_temperature` (the face power tends to the exponential as the offset grows) |
+| `MathlibMap/TopologyShapes.lean` | **proved** (DRAFT, Nov 26): topological shapes, holes and twists as whole-number picks, from `topics/shape-dials/` section 7; first written without a Lean toolchain, compiled clean in CI on Nov 26 with no proof changed | `chi_concat`, `euler_genus_add` (connected sum: Euler genus adds), `curvature_pos_iff`, `curvature_zero_iff`, `curvature_neg_iff` (Gauss–Bonnet forces the curvature's sign to be χ's), `chi_product`, `one_sub_chi_mul` (χ multiplies on products, so 1 − χ composes as x + y − xy) |
 
-53 theorems (19 ring-theory links, 7 for the p = 3 constants, 8 in the Lee–Yang core, 10 for the near zone, 9 for the shape dials) plus the `Dial` monoid and its equivalence. Names follow the library's 1.0 names
+60 theorems (19 ring-theory links, 7 for the p = 3 constants, 8 in the Lee–Yang core, 10 for the near zone, 16 for the shape dials) plus the `Dial` monoid and its equivalence. Names follow the library's 1.0 names
 (`CircleOp.circ`, `CircleOp.circK`). When the folder was added to the repo (Nov 26), its references to the
 pre-1.0 names were ported, and its first three theorems were renamed from `multAdd_eq_circle`,
 `wAdd_one_eq_circle` and `wAdd_scale_circle`.

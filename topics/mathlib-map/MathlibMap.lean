@@ -11,3 +11,4 @@ import MathlibMap.LeeYangCore
 import MathlibMap.LeeYangNearZone
 import MathlibMap.FaceDial
 import MathlibMap.DepthDerived
+import MathlibMap.TopologyShapes

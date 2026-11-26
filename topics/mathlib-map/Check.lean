@@ -61,3 +61,10 @@ open MathlibMap
 #print axioms MathlibMap.DepthDerived.chance_complement
 #print axioms MathlibMap.DepthDerived.odds_rescale
 #print axioms MathlibMap.DepthDerived.face_to_temperature
+#print axioms MathlibMap.TopologyShapes.chi_concat
+#print axioms MathlibMap.TopologyShapes.euler_genus_add
+#print axioms MathlibMap.TopologyShapes.curvature_pos_iff
+#print axioms MathlibMap.TopologyShapes.curvature_zero_iff
+#print axioms MathlibMap.TopologyShapes.curvature_neg_iff
+#print axioms MathlibMap.TopologyShapes.chi_product
+#print axioms MathlibMap.TopologyShapes.one_sub_chi_mul

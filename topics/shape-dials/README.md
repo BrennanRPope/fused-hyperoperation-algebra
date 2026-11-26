@@ -12,8 +12,8 @@ Checks: `checks.py` → `checks_output.txt`, **29 of 29 pass** (numpy, scipy; 28
 Section 6: `depth_checks.py` → `depth_checks_output.txt`, **20 of 20 pass** (7 s); `depth_figures.py` → `figures/fig10`
 … `fig14`; `lean/DepthDerived.lean` (5 theorems; compiles in the Mathlib CI, imported in 1a9260a, no sorry).
 Section 7 (topological shapes, asked for next: "I wonder if we can start adding common topological shapes as well?"):
-`topo_checks.py` → **9 of 9 pass**; `topo_figures.py` → `figures/fig15` … `fig19`; `lean/TopologyShapes.lean` (7 theorems,
-Mathlib CI check pending).
+`topo_checks.py` → **9 of 9 pass**; `topo_figures.py` → `figures/fig15` … `fig19`; `lean/TopologyShapes.lean` (7 theorems;
+compiles in the Mathlib CI with no proof changed, imported in the Mathlib map, no sorry).
 
 ## The short answer
 
