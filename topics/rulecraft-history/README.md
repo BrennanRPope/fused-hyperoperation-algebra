@@ -207,7 +207,7 @@ toolbox for each of its questions about order.
 ## 9. Coupling: rules that read other sliders
 
 A coupled rule nudges one slider toward a target that depends on other sliders: X ← (1 − λ)X + λ(a + bY). This is
-Brennan's coupling idea from architecture, put on the sliders. Three things fall out.
+Brennan's coupling idea from architecture, put on the sliders. Three things fall out, and a last part reads them in programming terms.
 
 ### Which orders really differ
 
@@ -265,6 +265,26 @@ strong (p(1 − p)λ²μ² ≥ 4(1 − λ)(1 − μ)), when it flips. That is th
 is the one that settles. Known: the trace is the Fricke identity for a commutator (Q4). Ours: the reading, and the
 flip between running forward and passing-and-repealing. The pictures show the linear part only; the targets add a
 fixed offset on top.
+
+### In programming terms
+
+Each rule taken alone is a pure function from sliders to sliders. Applied to the society, it is a side effect: a write
+to shared state. Side effects are what make order matter, and the model lines up with the programming picture one for
+one:
+
+| Rulecraft | programming |
+|---|---|
+| a rule | a write to shared state, X = (1 − λ)X + λ·target |
+| a history | a fold of those functions over the rule list (a reducer; event sourcing) |
+| two rules clash | interfering effects: two writes to one slider with different targets, or one rule reading what another writes (Bernstein's conditions, 1966) |
+| same-target rules commute and fuse | commutative effects, like two increments on a counter |
+| strength 1 | a plain overwrite: the last writer wins |
+| strength below 1 | a partial overwrite; the stick-breaking split says how much of each write survives |
+| a coupled rule | a hidden input: it "writes X" but also reads Y; made explicit, the order follows from the data flow, and each loop-free way of pointing the clashes is one wiring |
+| a two-way loop | effects feeding back; the five zones are what the feedback does, and the settle point depends only on the rules, not on the path |
+
+Known: all of the programming side. Ours: that the slider model matches it term for term, so a Rulecraft package can
+be checked the way code is checked for order dependence, by listing what each rule reads and writes.
 
 ## Verdict
 
