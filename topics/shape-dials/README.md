@@ -6,7 +6,7 @@ the sixth fundamental dial?" and "I'm unclear on how this will yield the higher 
 `polar-coordinates/` (the roundness dial p: cross-polytope at 1, ball at 2, cube at ∞), `simplex/` section 7 (the
 round-to-triangle routes), `exceptional-shapes/` (24-cell, 600-cell, 120-cell) and `shape-dial-survey/` (Lee–Yang).
 Checks: `checks.py` → `checks_output.txt`, **29 of 29 pass** (numpy, scipy; 28 s). Pictures: `figures.py` →
-`figures/`. Lean: `lean/FaceDial.lean` (4 theorems, written for the Mathlib project `mathlib-map/`; CI result pending).
+`figures/`. Lean: `lean/FaceDial.lean` (4 theorems, written for the Mathlib project `mathlib-map/`; compiled clean in the Mathlib CI build on Nov 26, no proof changed).
 
 ## The short answer
 
@@ -147,7 +147,7 @@ and so matches the p dial on every other shape.
 - **Lean** (`lean/FaceDial.lean`, Mathlib): the shape at whole-number p as a set; `poly_subset_shape` (the polytope
   is inside every shape), `face_le_of_mem_shape` (the 1/p sharpening bound, without roots), `iInter_shape` (the
   polytope is exactly what all the shapes share: the sharp end of the dial), `shape_two` (p = 2 is a ball when the
-  normals sum to zero and form a tight frame). Written without a local Lean; CI result pending.
+  normals sum to zero and form a tight frame). Written without a local Lean; compiled clean in the Mathlib CI build on Nov 26, no proof changed.
 
 ## 5. Leads, each judged on its own merits
 

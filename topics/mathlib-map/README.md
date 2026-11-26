@@ -12,7 +12,7 @@ Page: see `PAGES-INDEX.md` ("Mathlib map").
 
 ## Files
 
-All eleven modules compile with **no `sorry`** and only the standard axioms
+All twelve modules compile with **no `sorry`** and only the standard axioms
 (`propext`, `Classical.choice`, `Quot.sound`); `Check.lean` prints them.
 
 | File | What it links | Main theorems |
@@ -28,8 +28,9 @@ All eleven modules compile with **no `sorry`** and only the standard axioms
 | `MathlibMap/LeeYangP3Constants.lean` | **proved** (DRAFT, Nov 26): the whole-number constants behind the p = 3 certificate, from shape-dial-survey section "N3, p = 3 constants" | `one_sub_le_one_sub_cube`, `abs_log_le`, `pow_abs_log_le`, `integral_le_factorial` (∫₀¹ \|log(1 − x³)\|^k ≤ k!, with Euler's integral and integrability as hypotheses), `factorials_used`, `near_zone_error_terms`, `far_zone_whole_numbers` |
 | `MathlibMap/LeeYangCore.lean` | **proved** (DRAFT, Nov 26): the shared core of the p = 1, 2, 3 proofs, from shape-dial-survey section "N3, refactor"; the cited theorems (Pólya, Krein, the break) are fields of a `Toolkit` structure | `holds_of_alternatesBelow`, `rule_of_alternatesBelow`, `holds_one`, `holds_two`, `holds_three`, `rule_three`, `not_evenWhole_three`, `holding_half_of_alternation` |
 | `MathlibMap/LeeYangNearZone.lean` | **proved** (DRAFT, Nov 26): stage 1 of moving the near-zone check into Lean, from shape-dial-survey section "N3, near zone"; the far-zone and near-zone computer checks are named hypotheses (`FarCert`, `NearCert`), with the core's `Toolkit` | `taylor_cell` (the Taylor bound on a cell, by the comparison principle), `RunCert.nearAlt` (a run certificate gives alternation), `alt_of_near_far`, `alternates_of_near_far`, `alternatesBelow_range`, `holds_range`, `rule_range` (the rule for every 1.1 ≤ p ≤ 5, from the two certificates) |
+| `MathlibMap/FaceDial.lean` | **proved** (DRAFT, Nov 26): the roundness dial aimed at a shape's faces, from `topics/shape-dials/`; first written without a Lean toolchain, compiled in CI on Nov 26 with no proof changed | `poly_subset_shape` (the polytope lies inside its shape at every whole-number p), `face_le_of_mem_shape`, `iInter_shape` (the polytope is the intersection of its shapes), `shape_two` (at p = 2 the shape is a ball) |
 
-41 theorems (19 ring-theory links, 7 for the p = 3 constants, 8 in the Lee–Yang core, 7 for the near zone) plus the `Dial` monoid and its equivalence. Names follow the library's 1.0 names
+45 theorems (19 ring-theory links, 7 for the p = 3 constants, 8 in the Lee–Yang core, 7 for the near zone, 4 for the shape dials) plus the `Dial` monoid and its equivalence. Names follow the library's 1.0 names
 (`CircleOp.circ`, `CircleOp.circK`). When the folder was added to the repo (Nov 26), its references to the
 pre-1.0 names were ported, and its first three theorems were renamed from `multAdd_eq_circle`,
 `wAdd_one_eq_circle` and `wAdd_scale_circle`.
