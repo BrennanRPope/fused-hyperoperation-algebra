@@ -1,0 +1,21 @@
+PASS Jones-Wenzl p_1 (built from 'idempotent, killed by every cup-cap'): idempotent, and its closed trace equals the Lucas weight U_2(k = delta, d = 1)   trace = delta
+PASS Jones-Wenzl p_2 (built from 'idempotent, killed by every cup-cap'): idempotent, and its closed trace equals the Lucas weight U_3(k = delta, d = 1)   trace = (delta - 1)*(delta + 1)
+PASS Jones-Wenzl p_3 (built from 'idempotent, killed by every cup-cap'): idempotent, and its closed trace equals the Lucas weight U_4(k = delta, d = 1)   trace = delta*(delta**2 - 2)
+PASS Jones-Wenzl p_4 (built from 'idempotent, killed by every cup-cap'): idempotent, and its closed trace equals the Lucas weight U_5(k = delta, d = 1)   trace = (delta**2 - delta - 1)*(delta**2 + delta - 1)
+PASS Jones-Wenzl p_5 (built from 'idempotent, killed by every cup-cap'): idempotent, and its closed trace equals the Lucas weight U_6(k = delta, d = 1)   trace = delta*(delta - 1)*(delta + 1)*(delta**2 - 3)
+PASS U_m(k, d) = d^((m-1)/2) * U_m(k / sqrt(d), 1) for m = 1..11: the plane dial (k, d) is loop value delta = k / sqrt(d)
+PASS TL_1 Gram determinant (exact) vanishes exactly at the positive silent layers of U_2..U_2   roots 
+PASS TL_2 Gram determinant (exact) vanishes exactly at the positive silent layers of U_2..U_3   roots 1.000000
+PASS TL_3 Gram determinant (exact) vanishes exactly at the positive silent layers of U_2..U_4   roots 1.000000, 1.414214
+PASS TL_4 Gram matrix (numeric, 14 x 14) is singular exactly at the positive silent layers of U_2..U_5   smallest relative |eig|: 7.5e-15 at the layers, 3.6e-05 elsewhere
+PASS TL_5 Gram matrix (numeric, 42 x 42) is singular exactly at the positive silent layers of U_2..U_6   smallest relative |eig|: 2.1e-15 at the layers, 1.2e-06 elsewhere
+PASS TL_6 Gram matrix (numeric, 132 x 132) is singular exactly at the positive silent layers of U_2..U_7   smallest relative |eig|: 1.5e-15 at the layers, 3.2e-08 elsewhere
+PASS TL_2: Gram matrix positive above delta = 2cos(pi/3) = 1.000000 and not positive just below it
+PASS TL_3: Gram matrix positive above delta = 2cos(pi/4) = 1.414214 and not positive just below it
+PASS TL_4: Gram matrix positive above delta = 2cos(pi/5) = 1.618034 and not positive just below it
+PASS TL_5: Gram matrix positive above delta = 2cos(pi/6) = 1.732051 and not positive just below it
+PASS TL_6: Gram matrix positive above delta = 2cos(pi/7) = 1.801938 and not positive just below it
+PASS Lucas weights U_1..U_{n+1} are all >= 0 exactly when k >= 2cos(pi/(n+1)), the same threshold as the Gram matrix (n = 2..8)
+PASS 4-ended tangles (TL_2): every element obeys N^2 = kN - D with k^2 - 4D = (delta*y)^2 >= 0, so with real coefficients they never reach inside the parabola (elliptic)
+PASS 6-ended tangles (TL_3): N = e1e2 - e2e1 obeys N^3 = (1 - delta^2) N, so on its 2-dimensional block N^2 = -(delta^2 - 1): k = 0, d = delta^2 - 1, inside the parabola for delta > 1
+ALL PASS

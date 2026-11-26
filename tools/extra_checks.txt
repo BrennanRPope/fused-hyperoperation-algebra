@@ -39,3 +39,6 @@ topics/corner-weights/lean/identities_sympy_check.py
 topics/height-flow/height_entropy.py
 topics/height-flow/horn_invariants.py
 topics/polar-recast/hec5/hec5_checks.py
+topics/quantum-action/lean_identities_check.py
+topics/simplex/shape_dial_checks.py
+topics/lucas-temperley-lieb/extra_checks.py

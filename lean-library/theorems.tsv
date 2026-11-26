@@ -2691,6 +2691,28 @@ FusedAlgebra.Topics.QAcross.QDial	QDial.qnum_three_at_dial	propext
 FusedAlgebra.Topics.QAcross.QDial	QDial.qnum_zero	
 FusedAlgebra.Topics.QAcross.QDial	QDial.tate_glue_n	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.QAcross.QDial	QDial.tate_glue_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.M2.ext'	propext
+FusedAlgebra.Topics.QuantumAction	QuantumAction.M2.ext'_iff	propext
+FusedAlgebra.Topics.QuantumAction	QuantumAction.Move.ext'	propext
+FusedAlgebra.Topics.QuantumAction	QuantumAction.Move.ext'_iff	propext
+FusedAlgebra.Topics.QuantumAction	QuantumAction.boost_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.boost_keeps_form	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.galilean_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.k_is_a_slide	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.mul_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.mul_inv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.mul_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.newton_from_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.one_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.parallel_no_cost	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.quad_loop	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.regge2d_flip	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.regge2d_sphere	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.regge2d_total	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.swap_costs_area	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.swap_same_place	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.triangle_loop	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.QuantumAction	QuantumAction.triangle_loop_reversed	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.QuantumNoise	QuantumNoise.amplitude_damping	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.QuantumNoise	QuantumNoise.bit_flip	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.QuantumNoise	QuantumNoise.call_rule_gap	propext, Classical.choice, Quot.sound

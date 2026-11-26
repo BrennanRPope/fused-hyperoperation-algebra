@@ -1,0 +1,67 @@
+
+==============================================================================
+1. THREE COORDINATE SYSTEMS ON ONE SIMPLEX: barycentric, stick, angle
+==============================================================================
+[PASS] S1 stick-breaking: running total of pieces = v1 o_{-1} v2 o_{-1} ... (the core law at k=-1): worst error 4.4e-16 over 2000 random sticks
+[PASS] S2 stick map cube -> simplex is one-to-one (inverse v_m = p_m/(1-P_{m-1}) lands in (0,1)): worst round-trip error 3.8e-16
+[PASS] S3 stick fraction v = cos^2(angle): stick-breaking is hyperspherical coordinates of sqrt(p): worst error 3.3e-16
+[PASS] S4 uniform simplex = independent Beta(1, n-m) stick fractions (n=4): largest KS 0.0018; E[p1 p2] = 0.0500 (exact 0.0500)
+
+==============================================================================
+2. THE SIMPLEX AND THE SPHERE: square roots (Fisher) and forgotten phases (Born)
+==============================================================================
+[PASS] F1 Fisher length of the two-outcome simplex is pi: 3.1415926536
+[PASS] F2 Fisher distance on the simplex = 2 x the angle between sqrt(p) and sqrt(q) (sphere of radius 2): worst gap 9.4e-07 over 300 pairs
+[PASS] F3 n=2: Fisher volume of the simplex = half the unit sphere S^1: 3.141593 vs 3.141593
+[PASS] F3 n=3: Fisher volume of the simplex = half the unit sphere S^2: 6.283185 vs 6.283185
+[PASS] F3 n=4: Fisher volume of the simplex = half the unit sphere S^3: 9.869604 vs 9.869604
+[PASS] F4 n=2: random complex amplitudes give probabilities uniform on the simplex (Archimedes' hat-box): KS distance to uniform marginal 0.0037
+[PASS] F4 n=3: random complex amplitudes give probabilities uniform on the simplex (Archimedes' hat-box): KS distance to uniform marginal 0.0021
+[PASS] F5 real amplitudes (no phase) give the arcsine law 1/(pi sqrt(p(1-p))) instead of uniform: KS 0.0012
+[PASS] F6 Levy: time-positive fraction of a random walk has uniform simplex angle (arcsine law): KS to uniform angle 0.0182 (20000 walks of 2000 steps)
+[PASS] F7 the quantum angle between sqrt(p) and sqrt(q) is half the Fisher distance (Wootters 1981): worst 1.2e-14
+
+==============================================================================
+3. THE SIMPLEX'S OWN RADIUS: log-ratios, Bayes, Gibbs
+==============================================================================
+[PASS] R1 Bayes / perturbation on the simplex is the core law at k=+1 on (odds - 1): worst relative error 3.3e-15
+[PASS] R2 the simplex's log-ratio coordinate (Aitchison) is our ruler L_1 applied to odds - 1: worst 2.7e-13
+[PASS] R3 repeated evidence moves the belief in equal straight steps in log-ratio coordinates: worst deviation 4.4e-15
+[PASS] R4 Gibbs weights: beta=0 at the centre, beta large at the lowest-energy corner: beta=0 [0.333 0.333 0.333], beta=1 [0.607 0.302 0.091], beta=50 [1. 0. 0.]
+[PASS] R5 temperature dial: hot free-energy ball is round, cold one is the simplex (radius ratio 1 -> 2): max/min radius: beta=0.0001: 1.0033, beta=1.0: 1.3950, beta=10.0: 1.8751, beta=1000.0: 1.9986 (triangle exact 2)
+[PASS] R6 the curvature (Hessian) of entropy on the simplex is the Fisher metric: worst relative gap 3.1e-06
+[PASS] R7 replicator equation is the Fisher-metric gradient of mean fitness (Shahshahani): worst 1.1e-16
+
+==============================================================================
+4. e LIVES ON THE SIMPLEX: corner volumes, orderings, the e-page layers
+==============================================================================
+[PASS] E1 n=2: corner simplex of the unit cube has volume 1/n!: 0.49923 vs 0.50000
+[PASS] E1 n=3: corner simplex of the unit cube has volume 1/n!: 0.16606 vs 0.16667
+[PASS] E1 n=4: corner simplex of the unit cube has volume 1/n!: 0.04120 vs 0.04167
+[PASS] E1 n=5: corner simplex of the unit cube has volume 1/n!: 0.00814 vs 0.00833
+[PASS] E2 the 4-cube splits into 24 equal simplices, one per ordering of the coordinates (Kuhn): 24 pieces, shares 0.0409 to 0.0426 (exact 0.0417)
+[PASS] E3 volumes summed over every dimension: corner simplex -> e, cross-polytope -> e^2, ball -> e^pi(1+erf sqrt pi): simplex 2.718281828459 (e 2.718281828459); cross 7.3890560989 (e^2 7.3890560989); ball 45.9993260894 vs 45.9993260894; cube diverges
+[PASS] E4 average number of random numbers in [0,1] needed to pass 1 is e (sum of simplex volumes): 2.7186 vs e = 2.7183
+[PASS] E5 e-page layer 1 -> 1/1! = corner 1-simplex volume: n=10,100,10^4: 1.00000, 1.00000, 1.000000; 1/1! = 1.000000
+[PASS] E5 e-page layer 2 -> 1/2! = corner 2-simplex volume: n=10,100,10^4: 0.45000, 0.49500, 0.499950; 1/2! = 0.500000
+[PASS] E5 e-page layer 3 -> 1/3! = corner 3-simplex volume: n=10,100,10^4: 0.12000, 0.16170, 0.166617; 1/3! = 0.166667
+[PASS] E5 e-page layer 5 -> 1/5! = corner 5-simplex volume: n=10,100,10^4: 0.00252, 0.00753, 0.008325; 1/5! = 0.008333
+[PASS] E6 sum over dimensions of vol(t * corner simplex) = e^t: 5.473947391727 vs 5.473947391727
+
+==============================================================================
+5. HILBERT'S DISTANCE ON THREE SHAPES: ball = relativity, simplex = Bayes, square
+==============================================================================
+[PASS] H1 segment: Hilbert distance = rapidity, and Einstein addition (our plane law k=0, d=-1) adds it: worst 1.1e-14
+[PASS] H2 a coin's odds update and Einstein velocity addition are one law: odds = (1+v)/(1-v): worst 4.6e-12
+[PASS] H3 simplex: Hilbert distance = half the spread (max - min) of the log-ratios: worst 1.4e-13
+[PASS] H4 simplex: Bayes updates (perturbations) are distance-preserving shifts: worst 2.3e-13
+[PASS] H5 simplex Hilbert geometry is flat (a normed space): tempering a belief by t scales its distance by t: worst 4.5e-09 (bisection precision near the edge)
+[PASS] H6 ball: Hilbert distance = hyperbolic distance (Klein model) = relativistic velocity space: worst 3.1e-15
+[PASS] H7 ball: velocity addition for perpendicular velocities misses commuting by the Wigner angle arccos((gu+gv)/(1+gu gv)): worst 2.7e-14
+[PASS] H8 ball: that rotation angle is exactly the area of the velocity triangle (swap rule turn = d x area, d=-1): worst 6.6e-14
+[PASS] H9 simplex: Bayes updates commute exactly, so the leftover rotation is zero (no precession): worst 0.0e+00
+[PASS] H10 square: Hilbert distance is NOT the larger of the two axis rapidities (no product rule): gap from max-of-axes ranges -0.000 to 0.588
+[PASS] H11 square: in its own rapidity chart, Hilbert balls change shape as the centre moves (not flat): largest radius change 0.151
+
+==============================================================================
+TOTAL: 44/44 checks pass

@@ -1,0 +1,2 @@
+PASS Kauffman crossing sigma = A + A^-1 e (loop value -A^2 - A^-2) obeys sigma^2 = k sigma - d with k = A - A^-3, d = -A^-2 (the Hecke relation)
+   invariant k^2/d = -(A - 1)**2*(A + 1)**2*(A**2 + 1)**2/A**4 ; discriminant k^2 - 4d = (A**4 + 1)**2/A**6 (zero only at A^4 = -1)

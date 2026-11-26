@@ -5,3 +5,4 @@ lean-library/build/
 *.olean
 *.ilean
 topics/*/lean/build/
+topics/three-body/libtb.so

@@ -1,0 +1,25 @@
+[PASS] A1 Lagrange: shape never moves on the shape sphere (spread 1.3e-13); sits at [-0.  0.  1.]
+[PASS] A2 Lagrange: normalized configuration runs along one Hopf circle of S³ (min |<u0,u>| = 1.000000000000)
+[PASS] A3 Lagrange: each body's velocities lie on one circle (max misfit 8.3e-15), so on Fock's sphere they lie on one great circle (3rd/1st singular value 1.2e-14); implied p0 = √(−2E) = 1.224745
+[PASS] A1 Euler: shape never moves on the shape sphere (spread 1.0e-15); sits at [-0.5       0.866025  0.      ]
+[PASS] A2 Euler: normalized configuration runs along one Hopf circle of S³ (min |<u0,u>| = 1.000000000000)
+[PASS] A3 Euler: each body's velocities lie on one circle (max misfit 1.2e-14), so on Fock's sphere they lie on one great circle (3rd/1st singular value 1.4e-14); implied p0 = √(−2E) = 1.369306
+[PASS] A4 figure-eight: velocities stay within 7.8% of one circle, sweeping a 220° arc back and forth (winds -0 times round the origin), so the momenta rock on a piece of one great circle of Fock's sphere instead of going round it
+[PASS] A5 other Suvakov orbits: no other orbit tested comes close: worst-fit circles miss by butterfly I 8.0×, butterfly II 4.6×, moth I 2.9×, butterfly III 8.5×, moth II 4.1×, moth III 7.4×, goggles 5.2×, dragonfly 6.1×, yin-yang Ia 7.9×, yin-yang Ib 7.2× of their radius
+[PASS] B1 angular momentum: Šuvakov starts have zero angular momentum
+[PASS] B2 half-area law: 448 closed shape loops of one long chaotic orbit: the triangle's net turn equals −½ × enclosed solid angle on the unit shape sphere to within 7.1e-05 rad (median 8.1e-06; gaps come from closing each loop to 0.002)
+[PASS] C1 E<0: velocity circle has radius² − centre² = +1.000000 = −2E, so Fock's sphere has curvature d ∝ −E (sphere)
+[PASS] C1 E=0: velocity circle has radius² − centre² = -0.000000 = −2E, so Fock's sphere has curvature d ∝ −E (flat)
+[PASS] C1 E>0: velocity circle has radius² − centre² = -1.000000 = −2E, so Fock's sphere has curvature d ∝ −E (hyperbolic)
+[PASS] D1 circle: 32/40 random starts fall to the lowest action 19.604328: Lagrange's rotating triangle (|L| = 2.0801)
+[PASS] D2 figure-eight: 8/40 fall to action 24.371926 with L = 0: the figure-eight (ODE return after one period 3.1e-06, limited by 30 harmonics)
+[PASS] D3 nothing else that is real: 0 other stopping points; none integrates back to its start (they are artefacts of the truncation)
+[PASS] E0 grid: 449773 starts, each run to T = 40
+[PASS] E0b minima: 607 local minima below 0.08 (both kinds) shot to exact orbits; 230 converged to 1e-8
+[PASS] E1 absolute minima: 66 distinct periodic orbits refined to 1e-8; 57 have a loop type in Li–Liao's 695-family list; others: T=17.16 word length 16, T=20.19 word length 24, T=20.56 word length 12, T=23.86 word length 14, T=31.58 word length 38, T=32.81 word length 48, T=32.84 word length 18, T=33.03 word length 48, T=33.46 word length 14
+[PASS] E2b half-area law on every periodic orbit: each of the 66 periodic orbits encloses a shape-sphere area whose half is a whole number of turns (max miss 1.1e-08 rad), as the swap rule demands for an orbit that comes back unturned
+[PASS] E2c the unlisted orbits are real: an independent integrator (scipy DOP853) brings each unlisted orbit back to within 8e-08; closest passes between two bodies 0.0025, 0.0044, 0.0030, 0.0038, 0.0078, 0.0130, 0.0024, 0.0104, 0.0026 (start spacing 1)
+[PASS] E2d unlisted loop types: 8 distinct loop types among the 9 unlisted orbits: AABAbaBABBab; AABAbaBABBabab; ABaBaBabABabAbAb; ABABabABAbabaBABab; AABabABababABabABBAbabaB; ABABabaBAbabABAbaBABabABAbaBABabaBAbab; AABababABABababABBAbaabABBAbabaBABAbabaBAABabbaB; AABababABABababABBAbaabABABabbaBABAbaabABABabbaB
+[PASS] E2 rotating minima: 0 relative periodic orbits: every rotation-free minimum in this slice shot back to an orbit that returns unturned
+
+23 of 23 pass

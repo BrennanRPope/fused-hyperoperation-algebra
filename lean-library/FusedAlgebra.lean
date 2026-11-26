@@ -136,5 +136,6 @@ import FusedAlgebra.Topics.BeyondOneLoop
 import FusedAlgebra.Topics.CornerWeights
 import FusedAlgebra.Topics.Precession
 import FusedAlgebra.Topics.Hypersphere
+import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

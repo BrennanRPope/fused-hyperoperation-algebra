@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 circle-operation laws, so each new proof starts from the same foundation.
 
-**Status (Nov 26, 2026):** all 137 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3272 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 26, 2026):** all 138 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 3294 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -165,6 +165,7 @@ Topics (each imports the foundation):
 | `Topics/CornerWeights` | corner-weights/lean/CornerWeights.lean | 12 theorems, first compile Nov 25: the cube's corners are the principal minors of one matrix, det(I + tM); Cauchy minors give pair weights only, with no three-body term; Lucas weights from a 2×2 dial; KdV pair factor as velocity subtraction |
 | `Topics/Precession` | precession/lean/Precession.lean | 23 theorems, first compile Nov 25 (DRAFT topic): swap = turn for the circle operation on quaternions, Rodrigues, gyroscope torque at 90°, Larmor keeps length and tilt, spinning-BTZ drag speeds stack by multiplying temperature ratios |
 | `Topics/Hypersphere` | hypersphere/lean/Hypersphere.lean | 23 theorems, first compile Nov 26 (DRAFT topic): quaternion units, Fock's map, Kepler's tilt, n² states, orbit = gyroscope for the electric case, Dirac's defect, PPN coefficients, the exact split of 1 − 6M/r; eight Rat evaluations moved from `decide` to `unfold; grind`, names updated to 1.0 |
+| `Topics/QuantumAction` | quantum-action/lean/QuantumAction.lean | 18 theorems + 2 ext lemmas, first compile Nov 26 (DRAFT topic): phase-space moves (Heisenberg group), swap costs the parallelogram area, closed loops give enclosed area, one boost dial for Fermat/Newton/Einstein, the k part as a change of ruler, 2D Regge deficits; `mul_one` and `one_mul` needed a closing `grind` |
 | `Topics/Conventions` | names-review/lean/Conventions.lean | 7 theorems, first compile Nov 25: the weight-to-probability sign flip, both ring-theory circle conventions on the dial, (weights compose by k, probabilities by −k) and related notation facts; recommendations only, nothing renamed |
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |

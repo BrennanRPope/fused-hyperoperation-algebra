@@ -1,0 +1,69 @@
+== 1. The method reproduces the two ends ==
+[PASS] V1 disk: Khat = -1 everywhere (Klein model of hyperbolic space)  [-1.     -1.     -0.9997 -0.9996]
+[PASS] V2 triangle: Khat = 0 everywhere (flat)  [7.00e-05 1.30e-04 8.00e-05 1.36e-03]
+[PASS] V3 chi = area of polar body: disk gives pi/(1-|y|^2)^(3/2)  4.390510
+[PASS] V4 disk centre metric = 3 x identity (normalisation behind Khat = 3K)  [[3. 0.]
+ [0. 3.]]
+[PASS] V5 disk of radius 0.2: still Khat = -1 (size = plane dial, does not touch shape)  [-1.     -0.9999]
+[PASS] V5 disk of radius 5.0: still Khat = -1 (size = plane dial, does not touch shape)  [-1.     -0.9999]
+
+== 2. Shape dial with the plane dial fixed: Minkowski path disk -> triangle ==
+   t=   0: centre Khat = -1.0000
+   t=0.25: centre Khat = -0.8881
+   t= 0.5: centre Khat = -0.6308
+   t=0.75: centre Khat = -0.3173
+   t= 1.0: centre Khat = +0.0001
+[PASS] M1 centre Khat runs from -1 to 0  
+[PASS] M2 and moves monotonically in between  [-1.    -0.888 -0.631 -0.317  0.   ]
+   t=0.5 along the axis (corner side +y, edge side -y): [-0.631 -0.713 -0.616 -0.817 -0.498]
+[PASS] M3 at t=0.5 Khat is a field, not a number: spread across the body > 0.3  range -0.817 .. -0.498
+[PASS] M4 no single plane-dial setting can copy this (any d gives a constant Khat on a round body)  
+
+== 3. Second path: triangle cut by a disk of radius s ==
+   s= 0.5: centre Khat = -1.0000
+   s= 0.6: centre Khat = -0.9483
+   s= 0.7: centre Khat = -0.7559
+   s= 0.8: centre Khat = -0.4981
+   s= 0.9: centre Khat = -0.2383
+   s=0.97: centre Khat = -0.0689
+   s= 1.0: centre Khat = +0.0001
+[PASS] C1 cut path also runs -1 -> 0 monotonically  
+
+== 4. Temperature: free-energy body (1/beta) log mean exp(-beta x) <= 1, hot = disk, cold = triangle ==
+   beta=  0.001: centre Khat = -0.999645
+   beta=   0.01: centre Khat = -0.996521
+   beta=    0.1: centre Khat = -0.965398
+   beta=      1: centre Khat = -0.688728
+   beta=      3: centre Khat = -0.371233
+   beta=     10: centre Khat = -0.136276
+   beta=     30: centre Khat = -0.048348
+   beta=    100: centre Khat = -0.014821
+   beta=    300: centre Khat = -0.005015
+   beta=   1000: centre Khat = -0.001405
+[PASS] T1 hot end is round (Khat -> -1)  
+[PASS] T2 cold end is the triangle (Khat -> 0)  
+[PASS] T3 the fade is smooth and monotone (no jump, no overshoot)  
+[PASS] T4 cold tail ~ -c/beta (turn per area ~ 1/beta)  [-1.482 -1.505 -1.405]
+[PASS] T5 hot start ~ -1 + c*beta  [0.355 0.348 0.346]
+
+== 5. Regular polygons and l^p balls: only the triangle is flat at its centre ==
+   regular  3-gon: centre Khat = +0.0001
+[PASS] P1 triangle centre = 0  
+   regular  4-gon: centre Khat = -1.0000
+[PASS] P4 4-gon centre = -1 (symmetry kills the cubic form there)  
+   regular  5-gon: centre Khat = -1.0000
+[PASS] P5 5-gon centre = -1 (symmetry kills the cubic form there)  
+   regular  6-gon: centre Khat = -1.0000
+[PASS] P6 6-gon centre = -1 (symmetry kills the cubic form there)  
+   regular  8-gon: centre Khat = -1.0000
+[PASS] P8 8-gon centre = -1 (symmetry kills the cubic form there)  
+   regular 12-gon: centre Khat = -1.0000
+[PASS] P12 12-gon centre = -1 (symmetry kills the cubic form there)  
+[PASS] L1.5 l^1.5 ball: centre -1, elsewhere inside [-1, 0]  [-1.    -0.939 -0.509]
+[PASS] L4 l^4 ball: centre -1, elsewhere inside [-1, 0]  [-1.    -0.903 -0.847]
+[PASS] L10 l^10 ball: centre -1, elsewhere inside [-1, 0]  [-1.    -0.792 -0.537]
+
+== 6. Random bodies: Khat always lies between -1 (round) and 0 (triangle) ==
+[PASS] B1 every sampled point has -1 <= Khat <= 0  262 points, min -0.9994, max -0.0010
+
+26/26 checks pass

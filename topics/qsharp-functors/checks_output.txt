@@ -1,0 +1,66 @@
+==============================================================================
+1. THE BODY: single-qubit gates as points of S^3 in our coordinates
+==============================================================================
+[PASS] B1 unit quaternions multiply exactly as SU(2) gates (i,j,k <-> -i sigma_x,y,z): worst error 2.3e-16
+[PASS] B2 k=+1.0: gates are the sphere |1+kx|=1 (centre -1/k, radius 1/|k|, identity at x=0); a o_k b = gate product: radius error 2.2e-16, stays on sphere 5.6e-16, matches gate product 7.9e-16
+[PASS] B2 k=+0.5: gates are the sphere |1+kx|=1 (centre -1/k, radius 1/|k|, identity at x=0); a o_k b = gate product: radius error 4.4e-16, stays on sphere 4.4e-16, matches gate product 5.7e-16
+[PASS] B2 k=-1.0: gates are the sphere |1+kx|=1 (centre -1/k, radius 1/|k|, identity at x=0); a o_k b = gate product: radius error 2.2e-16, stays on sphere 5.6e-16, matches gate product 9.0e-16
+[PASS] B2 k=+2.0: gates are the sphere |1+kx|=1 (centre -1/k, radius 1/|k|, identity at x=0); a o_k b = gate product: radius error 1.1e-16, stays on sphere 6.7e-16, matches gate product 7.8e-16
+[PASS] B2 k=+0.1: gates are the sphere |1+kx|=1 (centre -1/k, radius 1/|k|, identity at x=0); a o_k b = gate product: radius error 3.6e-15, stays on sphere 6.7e-16, matches gate product 1.0e-15
+[PASS] B3 as k -> 0 the gate sphere flattens onto Re x = 0 and o_k becomes plain adding of generators (error ~ k): errors 1.51e-01, 7.56e-02, 3.78e-02, 1.89e-02, 9.46e-03; halving k halves error (ratios 1.99, 2.00, 2.00, 2.00)
+[PASS] B3b plane dial of the gate sphere: d = 1/R^2 = k^2 (R = 1/|k| from B2): k=1: d=1; k=0.5: d=0.25; k->0: flat (d=0)
+[PASS] B4 a Bloch turn by theta sits at distance theta/2 from the identity on S^3; a full 2pi turn lands on -1 (distance pi): 2pi turn -> [-1.  0.  0.  0.]; turn 1.1 about (1,2,3) -> distance 0.5500 = 1.1/2
+
+==============================================================================
+2. CLIFFORD GATES ARE CORNERS OF OUR SHAPES ON S^3
+==============================================================================
+[PASS] C1 single-qubit Clifford group (H, S) on S^3 = 48 points: 8 cross-polytope + 16 tesseract + 24 dual 24-cell: 48 points: {'cross-polytope (16-cell)': 8, 'dual 24-cell': 24, 'tesseract': 16}
+[PASS] C2 the Paulis (with +-1) are exactly the 8 corners of the cross-polytope (+-1, +-i, +-j, +-k): [(np.float64(-1.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)), (np.float64(0.0), np.float64(-1.0), np.float64(0.0), np.float64(0.0)), (np.float64(0.0), np.float64(0.0), np.float64(-1.0), np.float64(0.0)), (np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(-1.0)), (np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(1.0)), (np.float64(0.0), np.float64(0.0), np.float64(1.0), np.float64(0.0)), (np.float64(0.0), np.float64(1.0), np.float64(0.0), np.float64(0.0)), (np.float64(1.0), np.float64(0.0), np.float64(0.0), np.float64(0.0))]
+[PASS] C3 the axis-cycling Cliffords (X->Y->Z) sit on tesseract corners (+-1 +-i +-j +-k)/2; H and S on the dual 24-cell: (HS)^2 -> [ 0.5  0.5 -0.5  0.5], H -> [0.     0.7071 0.     0.7071], S -> [0.7071 0.     0.     0.7071]
+[PASS] C4 T is off every corner (cos pi/8 + sin pi/8 k), and H with T keeps producing new points (no finite polytope): distance from T to nearest Clifford corner 0.390; words of length <= 14 give 1398 distinct points
+
+==============================================================================
+3. ADJOINT: the o_k inverse, which is the mirror through the real axis
+==============================================================================
+[PASS] A1 on the gate sphere the o_k inverse of x is its conjugate x-bar, for every k, and that is U-dagger: worst |x o_k x-bar|, |inverse - x-bar| 1.8e-15; worst |U(x-bar) - U(x)^dagger| 0.0e+00
+[PASS] A2 x -> x-bar is a mirror: fixes the real axis (1 and -1), reverses the other three; determinant -1 on R^4: fixed points on S^3: only +1 (identity) and -1 (the 2pi turn)
+[PASS] A3 the antipode -u is NOT the adjoint: it acts on every state exactly like u (a global phase -1); the mirror x-bar undoes u: Bloch after u [-0.585 -0.229 -0.778], after -u [-0.585 -0.229 -0.778], after u then x-bar [-0.701 -0.433 -0.567] = start [-0.701 -0.433 -0.567]
+[PASS] A4 the mirror reverses order: conj(x o_k y) = y-bar o_k x-bar, not x-bar o_k y-bar (Q#'s 'adjoint invert'): reversed order error 9.2e-16; same order misses by up to 2.85
+[PASS] A5 a five-step body: its Adjoint = the steps' adjoints in reverse order: exact
+[PASS] A6 self-adjoint gates (Q#'s 'adjoint self': X, Y, Z, H) are exactly the sphere of i's (Re = 0), where mirror = antipode: X: self-adjoint True, on sphere of i's True; Y: self-adjoint True, on sphere of i's True; Z: self-adjoint True, on sphere of i's True; H: self-adjoint True, on sphere of i's True; S: self-adjoint False, on sphere of i's False; T: self-adjoint False, on sphere of i's False; random: self-adjoint False, on sphere of i's False
+
+==============================================================================
+4. CONTROLLED: multiply x by a corner projector of the control cube
+==============================================================================
+[PASS] K1 Controlled is a homomorphism: C(UV) = C(U) C(V) (Q#'s 'controlled distribute'): worst 2.5e-16
+[PASS] K2 in our coordinates Controlled is x -> P1 (x) x, for every k, and it keeps o_k because P1 P1 = P1: exact (1.3e-15); with e*e != e it breaks: half projector 0.5 P1 misses by 1.82, nilpotent [[0,1],[0,0]] misses by 7.28
+[PASS] K3 two controls = the top corner (1,1) of the control square: CC-U = 1 + P1(x)P1(x)(U-1): exact
+[PASS] K4 the 2^n control patterns are the cube's corners: their projectors are disjoint and sum to 1 (= product of (P0+P1)): n = 3: 8 corners
+[PASS] K5 'control on a OR b' is our union rule o_{-1} applied to the two control projectors: P_a o_{-1} P_b = 1 - P0(x)P0, a projector
+
+==============================================================================
+5. DO ADJOINT AND CONTROLLED COMMUTE, AND WHY
+==============================================================================
+[PASS] D1 Adjoint(Controlled U) = Controlled(Adjoint U), exactly: worst 0.0e+00
+[PASS] D2 which property does which job: an oblique idempotent E (E E = E, E-dagger != E) still distributes, but stops commuting with Adjoint and stops being unitary: distributes True; Adjoint/Controlled mismatch 1.90; unitarity miss 3.80. So P1*P1 = P1 gives 'distribute', P1-dagger = P1 gives the commuting
+[PASS] D3 and the other way round: e = P1/2 (e-dagger = e, e e != e) commutes with Adjoint but does not distribute: Adjoint/Controlled mismatch 0.0e+00; distribute miss 0.53
+
+==============================================================================
+6. CONTROLLED AND THE HOPF CIRCLE (testing the voice-call hypothesis)
+==============================================================================
+[PASS] H1 a global phase is invisible alone (same Bloch point, moved only along the Hopf circle): phase 0.9
+[PASS] H2 ...but Controlled(global phase) = a turn of the CONTROL about Z by that phase (phase kickback): C(e^{i phi} 1) = diag(1, e^{i phi}) (x) 1
+[PASS] H3 target in an eigenstate: it moves only along its own Hopf circle and the circle's angle becomes the control's Z turn: control Bloch [ 0.254 -0.967  0.   ] = |+> turned by arg(lambda) = -1.314
+[PASS] H4 'Controlled acts on one Hopf fiber' as stated: NO. For a typical target, branch 1's Bloch point moves (not just its phase) and the control gets entangled: 2000/2000 random targets moved off their fiber; mean control Bloch length 0.663 (1 = no entanglement)
+[PASS] H5 with C^2 = H (q = a + j b), every single-qubit gate is left multiplication by a unit quaternion (complex-linear, SU(2)): left action = gates, right action by e^{i phi} = global phase
+[PASS] H6 two qubits on S^7 -> S^4 (quaternionic Hopf): Controlled-U maps each S^3 fiber to another fiber, keeps the control height |q0|^2-|q1|^2, and turns the rest by left multiplication by U: fiber invariance 6.3e-16; height kept 5.6e-16; w -> U w 3.6e-16
+[PASS] H7 where the hypothesis does hold: with the control surely 1 (the pole of S^4), Controlled-U moves the state only within its own S^3 fiber: worst 5.6e-16; at the control-0 pole it does nothing; in between it turns S^4 about the control axis
+
+==============================================================================
+7. THE SWAP RULE: two small turns, undone in swapped order, leave a turn of their area
+==============================================================================
+[PASS] W1 gate commutator Rx(a) Ry(b) Rx(-a) Ry(-b) = a turn about Z of size a*b (turn = area, dial 1 on the Bloch sphere): turn/area 0.99938, axis z-part +0.9981; turn/area 0.99986, axis z-part +0.9996; turn/area 0.99999, axis z-part +1.0000
+[PASS] W2 order matters by exactly k times the commutator: x o_k y - y o_k x = k[x, y]: worst 1.1e-15
+[PASS] W3 Trotter: splitting a Hamiltonian into two steps of size k misses by (k^2/2)|[A,B]|, i.e. dial d = k^2 times the swap-rule commutator: ratios 0.9952, 0.9997, 1.0000 -> 1
+
+37 of 37 checks pass
