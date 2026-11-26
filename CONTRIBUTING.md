@@ -1,11 +1,20 @@
 # Contributing to Fused Hyperoperation Algebra
 
-Thank you for helping. The project has one design principle, and the rules below all come from it.
+Thank you for helping. The project's first design principle is to build on published work, and the rules below come from it. The other four are listed after it.
 
 ## Design principle: build on published work first
 
 Follow the existing literature wherever possible: its names, notation, conventions and results. Don't invent new ones.
 Anything that goes beyond the literature is welcome, but it has to be labeled clearly as new.
+
+## The other design principles (Brennan, Nov 26, 2026)
+
+- **New facts go to the goals.** Try each not-in-print result against quantum gravity and the theory of everything
+  first, then the Millennium problems, and record the outcome in `topics/new-facts-levers/`.
+- **Look at the dial map first.** For any problem, find the neighbouring work on `topics/dial-map/` before starting.
+- **Neighbours include Mathlib.** Search Mathlib's Lean proofs, not just papers, for lemmas to depend on or borrow;
+  record useful links in `topics/mathlib-map/`.
+- **Watch for new dials** in the affine-composition vein, and add any you find to the dial map.
 
 ## What every change needs
 

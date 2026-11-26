@@ -14,9 +14,9 @@ Brennan Pope's math theory, with the proofs, checks, figures and write-ups gathe
 
 Brennan set it up this way on Nov 26 ([why](topics/theory-name/README.md)). The theory was called Hypercube Composition Theory on Nov 25, 2026, and the whole project was Fused Mult-Add Algebra before that. The repository keeps the algebra's name; the citation files and version number wait for the 1.0 name question.
 
-## Design principle
+## Design principles
 
-**Build on existing published work first.** This project follows the literature wherever it can: its names, its
+**1. Build on existing published work first.** This project follows the literature wherever it can: its names, its
 notation, its sign conventions and its results. It does not invent its own. Brennan's words: "I prefer to use existing
 work to try to figure this out as opposed to just inventing new stuff."
 
@@ -26,6 +26,22 @@ In practice:
 - Names follow the literature, so mult-add is the *circle operation* of ring theory. Where one of our names still
   means something else elsewhere, [NAMING-COLLISIONS.md](NAMING-COLLISIONS.md) says so.
 - When an idea turns out to be a case of an existing theory, we say so and use that theory's language.
+
+**2. Try every new fact against the main goals.** Each result marked "not found in print" is tried as a lever on
+quantum gravity and the theory of everything first, then on the Millennium problems, and the outcome is written down,
+including "no lead". [topics/new-facts-levers](topics/new-facts-levers/README.md) keeps that record.
+
+**3. Look at the dial map first.** For any problem, start from the [dial map](topics/dial-map/README.md) to find the
+neighbouring work: the dials and results next to it, and what they already settled. Brennan's words: "for any problem
+to find neighboring work."
+
+**4. Neighbours include Mathlib.** The neighbour search covers Mathlib's Lean proofs as well as the literature. In
+programming terms they are functions we can depend on or borrow instead of writing our own (Brennan: "functions that
+we need that we might be able to just borrow"). [topics/mathlib-map](topics/mathlib-map/README.md) records the links
+found so far.
+
+**5. Watch for new dials.** Always be on the lookout for a new dial that fits the model, in the same vein of affine
+composition, and add it to the dial map when one turns up.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how this applies to changes and pull requests, and [FORKING.md](FORKING.md)
 for forking or reusing this work.

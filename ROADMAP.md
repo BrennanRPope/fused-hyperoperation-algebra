@@ -14,11 +14,16 @@ closed or written down as a named extension that would not change the base.**
 The long-range aim, a framework that can explain all of known physics and all of known math, sits beyond 1.0. The
 "After 1.0" list below tracks it, one named gap at a time.
 
-## Design principle (a 1.0 criterion)
+## Design principles (the first is a 1.0 criterion)
 
 Build on existing published work first, follow the literature's names, notation and conventions, and label anything
 beyond it as new (Brennan, Nov 25, 2026). 1.0 requires that every write-up has an Assumptions section and a
 Known vs new section with sources, and that CONTRIBUTING.md, the pull request template and FORKING.md say so.
+
+Four more principles guide the work (Brennan, Nov 26, 2026): try every not-in-print fact against quantum gravity and
+the theory of everything first, then the Millennium problems; look at the dial map first for neighbouring work; search
+Mathlib's Lean proofs as well as the literature, as functions to depend on or borrow; and watch for new dials in the
+affine-composition vein. See the README's Design principles.
 
 ## The checklist
 
