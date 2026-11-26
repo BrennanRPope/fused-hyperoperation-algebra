@@ -1,0 +1,18 @@
+PASS A1 frozen bath, any number of levels: two events glue by p + q + k p q with k = -E[h^2]/E[h]^2, the same for every pair of doses (k is flat)   k = (-h0**2*w0 - h1**2*w1 - h2**2*w2)/(h0**2*w0**2 + 2*h0*h1*w0*w1 + 2*h0*h2*w0*w2 + h1**2*w1**2 + 2*h1*h2*w1*w2 + h2**2*w2**2)
+PASS A2 three events: (true union) - (p1 o p2 o p3) = p1 p2 p3 (E[h^3]E[h] - E[h^2]^2)/E[h]^4
+PASS A3 Cauchy-Schwarz: the defect is >= 0 always and zero only for one 'on' level plus an 'off' level (the mixture cure model, k = -1/pi); random 2-4 level baths with all levels on never close   smallest defect over 20000 random baths with every level on: 3.02e-10 > 0
+PASS B1 frozen bath where exposures add hazard: a 3-level bath gives an associative law (it is conjugate to adding exposures)   worst associativity gap 2.2e-16
+PASS B2 geometric frailty (levels 1, 2, 3, ... weights (1-theta) theta^(n-1)) gives exactly the plane law with k = -(1 + theta), d = theta (the Ali-Mikhail-Haq copula)
+PASS B3 add a cured share (zero-modified geometric frailty): still a plane law   k = (-theta - 1)/pi0, d = theta/pi0**2
+PASS B4 gamma frailty (Clayton copula): q(p) = (1 - p)^(1 + theta), a quadratic only at theta = 1 (exponential frailty: k = -2, d = 1, on the parabola k^2 = 4d)
+PASS B5 the geometric line k + d = -1 touches the parabola k^2 = 4d exactly at theta = 1
+PASS B6 for hazard exposures the bilinear term is again -E[h^2]/E[h]^2: for the geometric ladder -(1 + theta), matching B2
+PASS C1 Haldane map (no interference): r' = 1 - 2r, the plane law k = -2, d = 0
+PASS C2 Kosambi map: r' = 1 - 4 r^2, the plane law k = 0, d = -4: a bend, not a new law
+PASS C3 every plane-dial map function with r -> 1/2 lies on the line d = -2k - 4; its coincidence c(r) = (1 - r')/(2r) = -(k + d r)/2 is linear (Felsenstein 1979: c = K - 2(K - 1) r)
+PASS C4 chi-square m = 1 (the running two-phase hidden state): r' is not a quadratic in r, so it is off the plane dial   best quadratic misses by 0.026 (r' runs 0 to 1)
+PASS C5 a plane law also 'drifts' when read through one-dial k: k_eff(x) = (k + 2dx)/(1 - dx^2); Kosambi runs from 0 to -2 exactly like the chi-square model, so drift alone does not mean leaving the family
+PASS D1 Wu's one-state weight: Bose (g = 0) and Fermi (g = 1) have honest counts; every g strictly between (1/4, 1/3, 1/2, 2/3, 3/4) has a negative count, so it is not a frozen mixture of honest states   first negative count at x^n: g=0.0: n=None, g=0.25: n=9, g=0.3333333333333333: n=7, g=0.5: n=5, g=0.6666666666666666: n=4, g=0.75: n=3, g=1.0: n=None
+PASS D2 semions (g = 1/2): Z = (x/2 + sqrt(1 + x^2/4))^2, and (ln Z)' = 1/sqrt(1 + x^2/4)
+PASS D3 Wu's k = 1/n - 1/x runs from 2g - 1 when sparse to g when crowded (g = 0.3)
+ALL PASS (17 of 17)
