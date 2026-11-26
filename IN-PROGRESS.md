@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,584 theorems in 160 modules, Nov 26 ~19:00 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,602 theorems in 161 modules, Nov 26 ~20:40 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -37,3 +37,5 @@ When syncing again, copy the current state of every folder and update INDEX.md.
 Nov 26 (late): `topics/dial-audit/` added as DRAFT (which dials are fundamental, plus the derived-dial mixing chart in DERIVED-DIALS.md).
 
 Nov 26 (late): `MathlibMap/DepthDerived.lean` (shape-dials section 6, Wythoff depth derived) built clean in the Mathlib CI job after two fixes (Mathlib's name `Real.tendsto_one_add_div_rpow_exp` and a closing `ring`, no statement changed), and now gates: the Mathlib map is 13 modules and 53 theorems, with no staged drafts left.
+
+Nov 26 (late): `topics/riemann/round7/` added as DRAFT (the quantum toolkit, solved shapes, the hypothesis restated for sixteen fields; not a lead; 46 checks); `RiemannRound7` compiled into the library, all 18 theorems, no proof changed.

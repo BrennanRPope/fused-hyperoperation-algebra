@@ -1,0 +1,9 @@
+(a) petersen: eigenvalues [3.0, 1.0, 1.0, 1.0, 1.0, 1.0, -2.0, -2.0, -2.0, -2.0]; Ramanujan bound 2 sqrt2 = 2.8284; Ramanujan True; Ihara root moduli range [0.7071, 0.7071] vs 1/sqrt2 = 0.7071
+(a) necklace10: eigenvalues [3.0, 2.9511, 2.9511, 2.8096, 2.8096, 2.5948, 2.5948, 2.3585, 2.3585, 2.2361, 1.0, 0.8233, 0.8233, 0.4264, 0.4264, -0.0477, -0.0477, -0.5351, -0.5351, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.4159, -1.4159, -1.7619, -1.7619, -2.0212, -2.0212, -2.1817, -2.1817, -2.2361]; Ramanujan bound 2 sqrt2 = 2.8284; Ramanujan False; Ihara root moduli range [0.5273, 0.9482] vs 1/sqrt2 = 0.7071
+(b) y^2=x^3+x+1, 301 primes < 2000: all a_p^2 <= 4p: True; largest |a_p|/(2 sqrt p) = 0.9917 at p = 1627
+(c) petersen ferro J=0.5: |z| of Lee-Yang zeros in [1.000000, 1.000000]
+(c) petersen antiferro J=-0.5: |z| of Lee-Yang zeros in [0.009778, 102.271597]
+(c) necklace3 ferro J=0.5: |z| of Lee-Yang zeros in [1.000000, 1.000000]
+(c) necklace3 antiferro J=-0.5: |z| of Lee-Yang zeros in [0.010534, 94.928422]
+(d) zeta local factor 1 - u: (k, d) = (-1, 0), Delta = 1 > 0, root at |u| = 1 (Re s = 0): the local test says nothing.
+    Ramanujan-Petersson for a weight-2 newform: factor 1 - a_p u + p u^2 with Delta <= 0 (Deligne); its global L-function RH is open.

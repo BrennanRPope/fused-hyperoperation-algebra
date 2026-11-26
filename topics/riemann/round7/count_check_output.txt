@@ -1,0 +1,6 @@
+x2+5y2 [500,520]: total by argument principle 37.000, on the line (fine scan) 27, off line 10.00
+x2+5y2 [900,920]: total by argument principle 41.000, on the line (fine scan) 25, off line 16.00
+x2+5y2 [1300,1320]: total by argument principle 42.000, on the line (fine scan) 32, off line 10.00
+DH [500,540]: total by argument principle 38.000, on the line (fine scan) 34, off line 4.00
+DH [1500,1540]: total by argument principle 45.000, on the line (fine scan) 41, off line 4.00
+x2+y2 [500,520]: total by argument principle 32.000, on the line (fine scan) 32, off line 0.00

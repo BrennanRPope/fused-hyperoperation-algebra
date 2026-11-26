@@ -1,0 +1,16 @@
+(a) identity Z_q = (q;q)_inf sum_k q^k/(q;q)_k G_k at beta = 2
+  q=0.3: exact 1.6786848176; direct partial sums gap ['3.14e-03', '1.62e-03', '8.36e-04', '4.30e-04']
+  q=-0.5: exact 1.6034350553; direct partial sums gap ['1.15e-03', '5.58e-04', '2.70e-04', '1.31e-04']
+  q=0.7: exact 1.7430687902; direct partial sums gap ['7.62e-03', '4.29e-03', '2.40e-03', '1.33e-03']
+(b) q = -1 end: claim Z_-1 = (1+P(b))/(1-P(2b))
+  closed form 1.5733874607; gaps ['6.95e-04', '3.24e-04', '1.48e-04', '6.81e-05']
+  coefficient rule mismatches n<3000: 0
+  Boltzmann (q=1) Hagedorn wall P(b)=1 at b = 1.3994333 ; q=-1 pole 1-P(2b)=0 at b = 0.69971666
+(c) exponent: log Z_q ~ gamma log(1/(b-1)) + log A,  predicted gamma = 1/(1-q), A -> (q;q)_inf
+  q=-0.5: local slope 0.666495 vs 1/(1-q) = 0.666667;  amplitude 1.44633 vs (q;q)_inf 1.21072
+  q=+0.0: local slope 0.999998 vs 1/(1-q) = 1.000000;  amplitude 1.00003 vs (q;q)_inf 1.00000
+  q=+0.3: local slope 1.428565 vs 1/(1-q) = 1.428571;  amplitude 0.54825 vs (q;q)_inf 0.61265
+  q=+0.5: local slope 1.999989 vs 1/(1-q) = 2.000000;  amplitude 0.22938 vs (q;q)_inf 0.28879
+  q=+0.7: local slope 3.333312 vs 1/(1-q) = 3.333333;  amplitude 0.02617 vs (q;q)_inf 0.04232
+(d) energy E = -dlogZ/db and heat capacity C = b^2 dE/db... computing curves
+saved prime_gas.json

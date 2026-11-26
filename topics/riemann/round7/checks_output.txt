@@ -1,0 +1,48 @@
+PASS identity at beta=2, q=0.3: partial-sum gap halves per doubling  ['3.1e-03', '1.6e-03', '8.4e-04', '4.3e-04']
+PASS identity at beta=2, q=-0.5: partial-sum gap halves per doubling  ['1.2e-03', '5.6e-04', '2.7e-04', '1.3e-04']
+PASS identity at beta=2, q=0.7: partial-sum gap halves per doubling  ['7.6e-03', '4.3e-03', '2.4e-03', '1.3e-03']
+PASS q=-1 closed form (1+P(b))/(1-P(2b)): gap halves
+PASS q=-1 coefficient rule, n < 3000
+PASS Hagedorn wall P(b) = 1 at 1.39943  1.3994333
+PASS exponent 1/(1-q) at q=-0.5  0.666495 vs 0.666667
+PASS exponent 1/(1-q) at q=0.0  0.999998 vs 1.000000
+PASS exponent 1/(1-q) at q=0.3  1.428565 vs 1.428571
+PASS exponent 1/(1-q) at q=0.5  1.999989 vs 2.000000
+PASS exponent 1/(1-q) at q=0.7  3.333312 vs 3.333333
+PASS amplitude (q;q)_inf exp(c0) at q=0.3  0.54820 vs 0.54825
+PASS amplitude (q;q)_inf exp(c0) at q=0.5  0.22935 vs 0.22938
+PASS amplitude (q;q)_inf exp(c0) at q=0.7  0.02616 vs 0.02617
+PASS no Fisher zeros for q=0.2 in 0.505<Re<1.6, 1<Im<50
+PASS no Fisher zeros for q=0.5 in 0.505<Re<1.6, 1<Im<50
+PASS no Fisher zeros for q=0.8 in 0.505<Re<1.6, 1<Im<50
+PASS q=-0.5: one Fisher zero beside each of the first 10 Riemann zeros, all Re > 1/2
+PASS q=-0.8: one Fisher zero beside each of the first 10 Riemann zeros, all Re > 1/2
+PASS BBM intertwining for zeta
+PASS DH functional equation
+PASS DH zero 0.808517+85.6993i: psi(0)=0, intertwining, E non-real
+PASS DH zero 0.650830+114.1633i: psi(0)=0, intertwining, E non-real
+PASS DH zero 0.574356+166.4793i: psi(0)=0, intertwining, E non-real
+PASS DH zero 0.724258+176.7025i: psi(0)=0, intertwining, E non-real
+PASS x^2+5y^2 genus formula = direct lattice sum at s=2
+PASS x^2+5y^2 zero matches round 6
+PASS zeta: KS to GUE below 0.035 and far below two-GUE
+PASS x^2+y^2: KS to two-GUE below 0.035, to GUE above 0.12
+PASS x^2+5y^2 on-line zeros fit neither (rescaled KS > 0.08 both)
+PASS DH on-line zeros fit neither (rescaled KS > 0.08 both)
+PASS Euler-product cases lose no zeros (|deficit| < 2)
+PASS x^2+5y^2: 498 of 1855 off the line in [500,1400]
+PASS DH: 176 of 1987 off the line in [500,2300]
+PASS argument-principle windows: off-line counts even, x^2+y^2 none  {'x2+5y2 500-520': 10, 'x2+5y2 900-920': 16, 'x2+5y2 1300-1320': 10, 'DH 500-540': 4, 'DH 1500-1540': 4, 'x2+y2 500-520': 0}
+PASS vectorised Hurwitz zeta vs mpmath  1.3e-09
+PASS primes < 3000 rebuild the first 10 zeros to 0.05
+PASS zeros rebuild log of prime powers to 0.01
+PASS cyclotomic identity at s = 3
+PASS Witt numbers t=2: 2,1,2,3,6,9,18,30
+PASS whole multiplicities exactly at whole t (grid -2..4)
+PASS Petersen: Ihara roots on |u| = 1/sqrt2
+PASS necklace: not Ramanujan, roots leave the circle
+PASS Hasse for y^2=x^3+x+1, p < 2000
+PASS Lee-Yang ferro zeros on |z|=1
+PASS Lee-Yang antiferro zeros off the circle
+
+46 of 46 checks pass

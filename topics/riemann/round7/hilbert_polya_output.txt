@@ -1,0 +1,11 @@
+BBM: Delta psi_s(x) - x^-s = 2.03e-31
+     psi_s(0) at rho_1 = 6.67e-16 ; E = i(2 rho-1) = (-28.2694502835 + 0.0j)
+DH functional equation |Lam(s)-Lam(1-s)|/|Lam(s)| = 1.2e-30
+DH zero (0.808517182457 + 85.6993484854j): |f| 2.13e-30, psi(0)=2.13e-30, intertwining err 6.59e-30, E = (-171.398697 + 0.6170343649j)
+DH zero (0.65083008061 + 114.163342731j): |f| 4.09e-30, psi(0)=4.09e-30, intertwining err 3.93e-30, E = (-228.3266855 + 0.3016601612j)
+DH zero (0.574356050451 + 166.479305913j): |f| 7.54e-30, psi(0)=7.54e-30, intertwining err 3.53e-30, E = (-332.9586118 + 0.1487121009j)
+DH zero (0.724257694627 + 176.702461243j): |f| 3.82e-30, psi(0)=3.82e-30, intertwining err 7.23e-30, E = (-353.4049225 + 0.4485153893j)
+x^2+5y^2 genus formula at s=2: 2.50242224134866  direct: 2.50242224134866
+x^2+5y^2 zero (0.932969697485 + 15.6682495313j)  E = (-31.33649906 + 0.865939395j)
+Berry-Keating smooth count, conductor 1 (zeta) at T=200: 79.193247
+Berry-Keating smooth count, conductor 5 (DH) at T=200: 130.42325
