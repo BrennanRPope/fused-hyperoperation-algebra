@@ -1,0 +1,11 @@
+14 big boxes, 2448 nodes
+nodes done 99s
+interpolation error bounds: {'strip 0 c in [0,1]': '7.5e-10', 'strip 0 c in [1,2]': '1.0e-09', 'strip 1 c in [0,1]': '7.2e-10', 'strip 1 c in [1,2]': '9.6e-10', 'strip 1 c in [2,3]': '1.4e-09', 'strip 2 c in [0,1]': '7.0e-10', 'strip 2 c in [1,2]': '9.2e-10', 'strip 2 c in [2,3]': '1.4e-09', 'strip 2 c in [3,4]': '2.2e-09', 'strip 3 c in [0,1]': '6.7e-10', 'strip 3 c in [1,2]': '8.5e-10', 'strip 3 c in [2,3]': '1.2e-09', 'strip 3 c in [3,4]': '2.0e-09', 'strip 3 c in [4,5]': '3.4e-09'}
+3237 small boxes
+small boxes done 200s
+PASS Z1 every zero of G at b in [0, TN] is isolated, on boxes covering 1.1 <= p <= 5 and 0 <= b <= p - 1  [3276 boxes after splitting, zeros per box 8 to 24]
+PASS Z2 G at a = b + 1 has a definite sign at every such zero, alternating
+PASS Z3 every box reaches a zero past the far zone's T*, so near and far zones share a zero
+PASS Z4 polish: the surrogate's enclosure contains the directly integrated G at 12 random points  [largest enclosure width 3.9e-09]
+PASS Z5 boxes containing p = 3 are certified, as the separate p = 3 certificate says  [81 boxes, zero counts [8, 9, 14, 15]]
+5/5 pass, 202 s
