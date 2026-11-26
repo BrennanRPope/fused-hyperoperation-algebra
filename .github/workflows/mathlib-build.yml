@@ -72,3 +72,27 @@ jobs:
         if: steps.port.outputs.present == 'true'
         working-directory: lean-library-mathlib
         run: lake build Tesseract
+
+      # topics/mathlib-map: links from the core library (lean-library/) to Mathlib's definitions
+      # (circle operation, quasispectrum, Neumann series, Jacobson radical, Chebyshev), plus the
+      # Lee–Yang band as a statement only. Same Lean and Mathlib versions as the port above.
+      - name: Mathlib map, download mathlib's prebuilt cache
+        if: hashFiles('topics/mathlib-map/lakefile.toml') != ''
+        working-directory: topics/mathlib-map
+        run: lake exe cache get
+
+      - name: Mathlib map, build
+        if: hashFiles('topics/mathlib-map/lakefile.toml') != ''
+        working-directory: topics/mathlib-map
+        run: |
+          lake build 2>&1 | tee /tmp/mathlib-map-build.log
+          test "${PIPESTATUS[0]}" -eq 0
+          if grep -q "declaration uses 'sorry'" /tmp/mathlib-map-build.log; then echo "sorry found"; exit 1; fi
+
+      - name: Mathlib map, check axioms and sorry
+        if: hashFiles('topics/mathlib-map/lakefile.toml') != ''
+        working-directory: topics/mathlib-map
+        run: |
+          lake env lean Check.lean 2>&1 | tee /tmp/mathlib-map-check.log
+          test "${PIPESTATUS[0]}" -eq 0
+          if grep -q "sorryAx" /tmp/mathlib-map-check.log; then echo "sorry found"; exit 1; fi

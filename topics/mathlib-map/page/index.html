@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathlib map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a technical findings page, verdict first
+   IDEA a precision instrument: the dial k as one long scale, Mathlib's piece marked by the pointer
+   PICTURE the live dial scale up top, then the dependency map of the circle operation
+   COLOUR aluminium ground, black ink, one orange pointer; night #141517
+   TYPE Geist 500 + Geist, Geist Mono for Lean names
+   LAYOUT title and verdict across the top, scale full width beneath, readouts below; stacks on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#e9eaec,#141517);--ink:light-dark(#141517,#e9eaec);--mute:light-dark(#5c5f66,#a3a6ad);--panel:light-dark(#ffffff,#1d1f23);--rule:light-dark(#c9cbcf,#34373d);--or:#ff4f00;--orsoft:light-dark(#ffe3d6,#3a1e12)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.55 Geist,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-weight:500;font-size:clamp(36px,5vw,52px);line-height:1.05;letter-spacing:-.02em;margin:0 0 14px}
+h2{font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;letter-spacing:-.015em;margin:0 0 12px;text-wrap:balance}
+h3{font-size:17px;margin:22px 0 6px}
+p{max-width:70ch;margin:0 0 12px}
+.verdict{font-size:clamp(18px,2vw,21px);line-height:1.45;max-width:62ch}
+.verdict b{font-weight:500;background:var(--orsoft);padding:0 .15em}
+.fig{position:relative;height:190px;margin:18px 0 6px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig text{font:13px Geist,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+.read{display:grid;grid-template-columns:repeat(auto-fit,minmax(12em,1fr));gap:10px;margin-top:10px}
+.read div{background:var(--panel);border:1px solid var(--rule);padding:12px 14px}
+.read b{display:block;font-size:clamp(26px,3vw,34px);font-weight:500;line-height:1.1;font-variant-numeric:tabular-nums}
+.read span{color:var(--mute);font-size:14px}
+nav.scroll{display:flex;gap:18px;overflow-x:auto;padding:12px max(5vw,16px);border-block:1px solid var(--rule);background:var(--panel);white-space:nowrap}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;flex:none}nav a:hover{color:var(--or)}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;z-index:2}}
+a{color:inherit;text-decoration-color:var(--or);text-underline-offset:2px}
+code,.mono{font-family:"Geist Mono",ui-monospace,monospace;font-size:.88em;overflow-wrap:anywhere}
+.shot{background:#fff;border:1px solid var(--rule);padding:clamp(6px,1.4vw,16px);margin:12px 0}
+.shot img{display:block;width:100%;height:auto;max-width:100%}
+.cap{color:var(--mute);font-size:14px;margin-top:-4px}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(16px,3vw,36px);align-items:start}
+@media(max-width:820px){.two{grid-template-columns:minmax(0,1fr)}}
+.tbl{overflow-x:auto;margin:10px 0 4px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-weight:500;color:var(--mute);border-bottom:1.5px solid var(--ink);padding:8px 10px 6px 0}
+td{border-bottom:1px solid var(--rule);padding:9px 10px 9px 0;vertical-align:top}
+.tag{display:inline-block;font-size:13px;font-weight:500;padding:1px 8px;white-space:nowrap}
+.t-ex{background:var(--or);color:#fff}.t-st{background:var(--ink);color:var(--bg)}.t-ab{border:1px solid var(--mute);color:var(--mute)}
+.grp td{font-weight:500;padding-top:22px;border-bottom:1.5px solid var(--ink)}
+ol.rank{padding-left:1.4em;margin:12px 0}ol.rank li{margin:0 0 14px;max-width:78ch}
+.ang{font-weight:500}.yes{color:var(--or)}
+pre{background:var(--panel);border:1px solid var(--rule);padding:14px;overflow-x:auto;font:13.5px/1.5 "Geist Mono",monospace;margin:8px 0}
+.copy{font:500 15px Geist,sans-serif;min-height:44px;padding:0 16px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.copy:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.foot{color:var(--mute);font-size:14px}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--mute)}.stack td:empty{display:none}.grp td{padding-inline-start:0}.grp td::before{content:none}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<header class="band"><div class="wrap">
+<h1>Mathlib map</h1>
+<p class="verdict">Mathlib already holds our law at k = 1: it is Mathlib's <b>circle operation</b> x ∘ y = x + y + xy, and about 1,550 of its theorems are built on it. Five new Lean files, all compiled with no sorry, add the rest of the dial: every k ≠ 0 is the same monoid, the walls an element meets as k turns are exactly its <b>quasispectrum</b> (flipped by λ ↦ −1/λ), and the <b>Jacobson radical</b> is exactly what never meets a wall.</p>
+<div class="fig" id="dial" role="img" aria-label="The dial k as a scale: k equals 1 is Mathlib's circle operation, every nonzero k is the same monoid, and an element's walls sit at minus one over each point of its quasispectrum."><svg></svg></div>
+<div class="read">
+<div><b>≈1,550</b><span>Mathlib theorems in 53 files use the circle operation</span></div>
+<div><b>1,259</b><span>of Mathlib's 8,736 files import it</span></div>
+<div><b>19</b><span>new theorems, 5 files, no sorry, standard axioms</span></div>
+<div><b>9</b><span>open problems ranked, 2 of them ours</span></div>
+</div>
+</div></header>
+<nav class="scroll"><a href="#board">Verdict board</a><a href="#circle">Built on ∘</a><a href="#links">The new links</a><a href="#open">Open problems</a><a href="#push">Ready to push</a></nav>
+
+<section class="band" id="board"><div class="wrap">
+<h2>Eight exact matches, a dozen of the same shape, nine missing</h2>
+<p>Each match judged on its own. "Ours" says what our Lean already does with it: the Mathlib port on main, the new links in <code>mathlib-map</code>, or nothing yet.</p>
+<div class="tbl"><table class="stack" id="matches"><thead><tr><th>Mathlib</th><th>Match</th><th>What it is to us</th><th>Ours</th></tr></thead><tbody></tbody></table></div>
+</div></section>
+
+<section class="band" id="circle" style="background:var(--panel)"><div class="wrap">
+<h2>The circle operation is a trunk, not a twig</h2>
+<p>Mathlib defines ∘ in two files and then builds a large cone on it: the Unitization (adding a unit to a ring that lacks one), the Neumann series, spectrum theory and order, and the whole non-unital continuous functional calculus, which in turn feeds square roots, absolute values and positive parts of operators, and C*-algebra structure. Numbers in the circles are theorems that mention ∘, quasiregularity or the quasispectrum directly, grouped by file. Orange arrows are where our new links attach.</p>
+<div class="shot"><img src="figures/f2-circle-dependents.png" alt="Dependency map: the circle operation, 79 theorems in 2 files, feeds Unitization 227, spectrum and order 245, and the Neumann series 112; Unitization and spectrum feed the non-unital functional calculus 459, which feeds operator functions 268 and C*-structure 159."></div>
+<p>Our Mathlib port already reached the root: it proves the circle operation is the monoid on <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Algebra/Spectrum/Quasispectrum.html"><code>PreQuasiregular</code></a> and has the scaling identity k·(a ∘ₖ b) = (ka) ∘ (kb). It did not yet touch anything above the root. The new files reach the quasispectrum and the Neumann series, which opens the cone: any theorem there about quasispectra is now a theorem about where our dial hits walls.</p>
+</div></section>
+
+<section class="band" id="links"><div class="wrap">
+<h2>Walls are the quasispectrum, and the Jacobson radical never hits one</h2>
+<p>Say a has a <em>way back</em> at dial k when some b gives a ∘ₖ b = 0 from both sides. Turning k, a loses its way back only at isolated settings, its walls. For a matrix A these are the k where det(1 + kA) = 0, so k = −1/λ for each eigenvalue λ. The Lean theorem says this in any algebra over a field: no way back at k exactly when −1/k is in Mathlib's quasispectrum of a.</p>
+<div class="shot"><img src="figures/f3-walls.png" alt="Left: the absolute determinant of one plus k A drops to zero at k = −2, −0.5 and 1, the walls for eigenvalues 0.5, 2 and −1; a band near zero is safe by the Neumann series. Right: in the complex k plane the walls lie outside the Neumann disc of radius 0.40 and the wall-free disc of radius 0.50."></div>
+<p class="cap">Matrix with eigenvalues 2, 0.5 and −1 and an off-diagonal shear. Mathlib's Neumann series guarantees no wall while ‖k‖‖A‖ &lt; 1; the true wall-free disc is set by the spectral radius, which Mathlib's Gelfand formula computes.</p>
+<div class="two">
+<div class="shot"><img src="figures/f4-jacobson-grid.png" alt="Grid of elements of Z mod 12 against dials; orange cells mark walls; rows 0 and 6 have none."></div>
+<div>
+<p>Mathlib's <code>Ring.mem_jacobson_iff</code> says x is in the Jacobson radical when 1 + xy is a unit for every y. Read on the dial, y is the setting k: x is in the radical exactly when it has a way back at every dial. In ℤ/12 only 0 and 6 pass. In a field only 0 does, and every nilpotent passes in any ring.</p>
+<div class="tbl"><table class="stack"><thead><tr><th>File</th><th>Theorem</th></tr></thead><tbody id="thms"></tbody></table></div>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="open" style="background:var(--panel)"><div class="wrap">
+<h2>Lee–Yang's open band is the best target; the famous problems are out of reach</h2>
+<p>Rules that hold in every case checked but have no proof, ours and known ones in fields our dials touch. Ranked by how much a proof would matter and how close our tools look; the placement is judgment, not measurement.</p>
+<div class="two">
+<div class="shot"><img src="figures/f5-open-problems.png" alt="Scatter of nine open problems: Lee–Yang band and soft min-cut are closest; Riemann hypothesis and Navier–Stokes matter most and are farthest."></div>
+<ol class="rank" id="rank"></ol>
+</div>
+<h3>The Lee–Yang band, stated in Lean</h3>
+<p>The proof stays with the shape-dial work. This is the statement only: it defines the rule and its open band as propositions over Mathlib's interval integral, compiles with no sorry, and proves nothing about them.</p>
+<div class="two">
+<div><button class="copy" id="cp" type="button">Copy statement</button><pre id="lean"></pre></div>
+<div class="shot"><img src="figures/lee-yang-proof-map.png" alt="Proof map of the Lee–Yang p-ball rule: proved holding regions, proved breaking region, and the grey open gap between a equals 1 and a equals p."></div>
+</div>
+<p class="cap">Status as reported by the shape-dial work: breaking side proved; holding proved for a ≤ 1 (Pólya 1918), the round ball, and p = 4 with whole a; open for p not even with 1 &lt; a ≤ p, and even p ≥ 4 outside those cases. All zeros were real in the 12 cases counted. <a href="https://claude.ai/artifact/SZRvP6UP2HoqQLjVxGdj7U">Shape-dial survey</a>.</p>
+</div></section>
+
+<section class="band" id="push"><div class="wrap">
+<h2>Ready to push: one new folder, nothing else touched</h2>
+<p><code>math-theory/mathlib-map/</code> holds five linking modules (<code>CircleOperation</code>, <code>Walls</code>, <code>Neumann</code>, <code>Jacobson</code>, <code>Lucas</code>), a sixth, <code>LeeYangBand</code>, that only states the Lee–Yang rule, <code>Check.lean</code>, a README and the figures. All six compile with no sorry. It depends on Mathlib (pinned to <code>v4.37.0-rc1</code>, like the port) and on the core library at <code>../lean-library</code>. It compiled here against Mathlib master of Nov 25, 2026 on the same toolchain, because the Mathlib cache was unreachable; a CI build on the pinned tag should confirm it, and the folder is not yet in CI. No names in the library were changed.</p>
+<pre>lake exe cache get
+lake build
+lake env lean Check.lean</pre>
+<p class="foot">Theorem counts come from searching Mathlib master (Nov 25, 2026) for the circle-operation names; they count statements that mention them directly, not everything that depends on them.</p>
+</div></section>
+
+<script>
+{
+const D='https://leanprover-community.github.io/mathlib4_docs/Mathlib/';
+const M=[
+['Exact: Mathlib already has it'],
+['PreQuasiregular, IsQuasiregular','Algebra/Algebra/Spectrum/Quasispectrum','ex','Our law at k = 1; every unit dial is the same monoid','Port + new'],
+['quasispectrum','Algebra/Algebra/Spectrum/Quasispectrum','ex','The walls of the dial, flipped by λ ↦ −1/λ','New'],
+['Neumann series (summable_iterate_mul_iff_isQuasiregular)','Analysis/SpecificLimits/Normed','ex','No wall while ‖k‖‖a‖ < 1','New'],
+['Ring.jacobson, Ring.mem_jacobson_iff','RingTheory/Jacobson/Ideal','ex','Elements that never hit a wall at any dial','New'],
+['Polynomial.Chebyshev.S','RingTheory/Polynomial/Chebyshev','ex','Our Lucas sequence at Q = 1','New'],
+['QuadraticAlgebra','Algebra/QuadraticAlgebra/Basic','ex','Plane numbers, all settings of the plane dial','Port'],
+['Zsqrtd, GaussianInt','NumberTheory/Zsqrtd/Basic','ex','Whole-number points of the plane dial (π work)','Port'],
+['hyperoperation','Data/Nat/Hyperoperation','ex','The rungs','Port'],
+['Same shape: a link could be written'],
+['CliffordAlgebra equivalences','LinearAlgebra/CliffordAlgebra/Equivs','st','ℝ, ℂ and quaternions as Clifford algebras: three plane-dial settings in one family','None'],
+['Quaternion','Algebra/Quaternion','st','Two plane dials at once','None'],
+['DualNumber, TrivSqZeroExt','Algebra/DualNumber','st','The d = 0 point of the plane dial, where ε² = 0','None'],
+['PiLp, lp','Analysis/Normed/Lp/PiLp','st','The roundness dial p (cube ↔ ball ↔ cross-polytope)','None'],
+['Uniform convexity','Analysis/Convex/Uniform','st','How round a p-ball is; Bell along the dial reads off this (James constant, which Mathlib lacks)','None'],
+['CoxeterMatrix.H₄, E₈','GroupTheory/Coxeter/Matrix','st','Symmetry groups of the 600-cell and of E8; the polytopes themselves are absent','None'],
+['RootPairing, root systems','LinearAlgebra/RootSystem/Basic','st','E8 and the 24-cell bridges','None'],
+['Bessel functions','Analysis/SpecialFunctions/Bessel','st','Lee–Yang at p = 2; Mathlib has no real-zeros theorem for them yet','None'],
+['Descartes rule of signs','Algebra/Polynomial/RuleOfSigns','st','Counts real zeros, a tool for real-rootedness questions','None'],
+['Gelfand formula, spectralRadius','Analysis/Normed/Algebra/Spectrum','st','Radius 1/ρ of the wall-free disc','None'],
+['Hermite polynomials','RingTheory/Polynomial/Hermite/Basic','st','Real-rooted family next to the Lee–Yang question','None'],
+['Binary entropy','Analysis/SpecialFunctions/BinaryEntropy','st','Entropy dial at two outcomes','None'],
+['Missing from Mathlib'],
+['Tsallis q-sum, q-logarithm','','ab','Our law at k = 1 − q on the additive side','None'],
+['Copulas','','ab','Dial-weighted joins of distributions','None'],
+['Split-complex numbers by name','','ab','Covered only as a QuadraticAlgebra setting','Port'],
+['The 600-cell as a polytope','','ab','Corner set the swap rule cannot wear down','None'],
+['Laguerre–Pólya class, real-rootedness','','ab','The language of the Lee–Yang proof','None'],
+['Pólya 1918 sine-transform theorem','','ab','Proves Lee–Yang for a ≤ 1','None'],
+['James constant','','ab','Bell bound along the roundness dial','None'],
+['Lee–Yang theorem','','ab','Our open band sits inside it','None'],
+['Gaussian binomials, q-Pochhammer','','ab','q-counting along the dial','None']];
+const tg={ex:['t-ex','Exact'],st:['t-st','Same shape'],ab:['t-ab','Missing']};
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+document.querySelector('#matches tbody').innerHTML=M.map(r=>r.length===1?`<tr class="grp"><td colspan="4">${esc(r[0])}</td></tr>`:`<tr><td>${r[1]?`<a href="${D}${r[1]}.html"><code>${esc(r[0])}</code></a>`:`<code>${esc(r[0])}</code>`}</td><td><span class="tag ${tg[r[2]][0]}">${tg[r[2]][1]}</span></td><td>${esc(r[3])}</td><td>${esc(r[4])}</td></tr>`).join('');
+const T=[['CircleOperation','Dial.equivCircle : Dial R k ≃* PreQuasiregular R'],['CircleOperation','wayBack_iff_isQuasiregular'],['Walls','not_hasWayBack_iff_mem_quasispectrum'],['Walls','not_hasWayBack_iff_mem_spectrum'],['Neumann','hasWayBack_of_norm_mul_lt_one'],['Jacobson','mem_jacobson_iff_wayBack'],['Jacobson','wayBack_of_isNilpotent'],['Lucas','lucas_one_eq_S']];
+document.getElementById('thms').innerHTML=T.map(r=>`<tr><td>${r[0]}</td><td><code>${esc(r[1])}</code></td></tr>`).join('');
+const R=[
+['O1 Lee–Yang p-ball band (ours).','Field function ∫₀¹(1 − xᵖ)ᵃ cos(sx) dx has only real zeros iff a ≤ p or p even; open for 1 < a ≤ p.',1,'Real angle: our roundness dial is where the rule was found and it organises the cases, but the proof tools are classical (Pólya, Laguerre–Pólya), not ours. Proof left to the shape-dial work.'],
+['O2 Soft min-cut keeps the entropy rules (ours).','Log-sum-exp min-cut at h > 0 keeps subadditivity, monogamy and the five-region rules for positive weights, numerically only.',1,'Real angle: it is a statement about our own construction. Likeliest route: correlation inequalities of the GHS or FKG kind.'],
+['K3 Group algebras in characteristic 0 are Jacobson semisimple.','Open for ℚ[G] and number fields; Rickart proved it over ℂ.',1,'Modest angle: in our terms no nonzero element keeps its way back at every dial, and Rickart\'s proof is exactly our walls plus Neumann argument. Over ℚ there is no norm, so something new is needed.'],
+['K5 Holographic entropy cone beyond five parties.','Known up to five regions; six and up open.',0,'Partial angle through O2 only: if soft min-cut keeps the rules, it is a new family of test states, not a proof.'],
+['K4 Independence polynomials of trees are unimodal.','Conjectured 1987; log-concavity already fails at 26 vertices.',0,'Speculative: the dial gas at k = 0 is the independence polynomial, and its Lee–Yang side is our territory, but unimodality is a coefficient question our tools do not reach.'],
+['K2 Köthe conjecture.','Krempa\'s form: a polynomial ring over a nil ring is quasiregular, our law at k = 1. Stated in Lean in DeepMind\'s formal-conjectures.',0,'No real angle: the language matches exactly, but our model adds no new leverage.'],
+['J Jacobson conjecture (⋂ Jⁿ = 0 for Noetherian rings).','Also in formal-conjectures.',0,'No real angle beyond the vocabulary.'],
+['K1 Riemann hypothesis via Pólya and de Bruijn–Newman.','Same shape as O1: a cosine transform that should have only real zeros.',0,'No real angle: the shape match is real, but nothing in our model touches the zeta function\'s kernel.'],
+['K6 Navier–Stokes.','Millennium problem.',0,'No: settled earlier as not close.']];
+document.getElementById('rank').innerHTML=R.map(r=>`<li><b>${esc(r[0])}</b> ${esc(r[1])} <span class="ang ${r[2]?'yes':''}">${esc(r[3])}</span></li>`).join('');
+const L=`noncomputable def fieldFn (p a : ℝ) (s : ℂ) : ℂ :=
+  ∫ x in (0 : ℝ)..1, (((1 - x ^ p) ^ a : ℝ) : ℂ) * Complex.cos (s * x)
+
+/-- every zero of the field function is real -/
+def Holds (p a : ℝ) : Prop := ∀ s : ℂ, fieldFn p a s = 0 → s.im = 0
+
+def EvenWhole (p : ℝ) : Prop := ∃ m : ℕ, p = 2 * m
+
+/-- the rule, as found numerically -/
+def Rule : Prop :=
+  ∀ p a : ℝ, 1 ≤ p → 0 ≤ a → (Holds p a ↔ (a ≤ p ∨ EvenWhole p))
+
+/-- the open band -/
+def OpenBand : Prop :=
+  (∀ p a : ℝ, 1 ≤ p → 1 < a → a ≤ p → ¬ EvenWhole p → Holds p a) ∧
+  (∀ p a : ℝ, 4 ≤ p → EvenWhole p → 0 ≤ a → Holds p a)`;
+const pre=document.getElementById('lean');pre.textContent=L;
+const cp=document.getElementById('cp');
+cp.addEventListener('click',()=>{navigator.clipboard?.writeText(L).then(()=>{cp.textContent='Copied'},()=>{cp.textContent='Select and copy below'}).catch(()=>{cp.textContent='Select and copy below'})});
+const box=document.getElementById('dial'),s=box.querySelector('svg');
+const walls=[-0.5,-2,2.5];
+const draw=()=>{const W=s.clientWidth,H=s.clientHeight,nar=W<560,m=nar?14:30,x0=m,x1=W-m,y=H*0.55,lo=-3,hi=3,X=k=>x0+(k-lo)/(hi-lo)*(x1-x0);
+let g='';
+g+=`<rect x="${x0}" y="${y-10}" width="${x1-x0}" height="20" fill="var(--orsoft)"/>`;
+g+=`<line x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" stroke="var(--ink)" stroke-width="1.5"/>`;
+for(let k=lo;k<=hi+1e-9;k+=0.25){const big=Math.abs(k-Math.round(k))<1e-9,xx=X(k);g+=`<line x1="${xx}" x2="${xx}" y1="${y-(big?12:6)}" y2="${y+(big?12:6)}" stroke="var(--ink)" stroke-width="${big?1.5:0.8}"/>`;if(big&&(!nar||k%2===0||k===1))g+=`<text x="${xx}" y="${y+30}" text-anchor="middle">${k<0?'−'+(-k):k}</text>`}
+const z=X(0);g+=`<circle cx="${z}" cy="${y}" r="5" fill="var(--bg)" stroke="var(--ink)" stroke-width="1.5"/>`;
+g+=`<text x="${z}" y="${y+48}" text-anchor="middle">${nar?'k = 0: plain +':'k = 0: plain addition'}</text>`;
+walls.forEach(w=>{const xx=X(w);g+=`<line x1="${xx}" x2="${xx}" y1="${y-22}" y2="${y+14}" stroke="var(--ink)" stroke-width="3" stroke-dasharray="3 3"/>`});
+g+=`<text x="${X(-2)}" y="${y-30}" text-anchor="middle">wall</text>`;
+const p=X(1);g+=`<path d="M${p} ${y-8} l-9 -26 h18 z" fill="var(--or)"/><text x="${p}" y="${y-44}" text-anchor="middle" style="font-weight:500">${nar?'k = 1: Mathlib ∘':'k = 1: Mathlib\'s circle operation'}</text>`;
+g+=`<text x="${x0}" y="18">${nar?'shaded: every k ≠ 0, one monoid':'shaded: every k ≠ 0 is the same monoid (Dial.equivCircle)'}</text>`;
+g+=`<text x="${x1}" y="${H-6}" text-anchor="end">${nar?'walls: k = −1/λ, λ in quasispectrum':'dashed walls for one element: k = −1/λ for each λ in its quasispectrum (here 2, 0.5, −0.4)'}</text>`;
+s.innerHTML=g};
+const ro=new ResizeObserver(draw);ro.observe(s);draw();
+}
+</script>
+</body>
+</html>
