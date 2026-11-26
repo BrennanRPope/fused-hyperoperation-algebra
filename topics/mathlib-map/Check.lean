@@ -49,6 +49,9 @@ open MathlibMap
 #print axioms MathlibMap.LeeYang.alternatesBelow_range
 #print axioms MathlibMap.LeeYang.holds_range
 #print axioms MathlibMap.LeeYang.rule_range
+#print axioms MathlibMap.LeeYang.alternatesBelow_range8
+#print axioms MathlibMap.LeeYang.holds_range8
+#print axioms MathlibMap.LeeYang.rule_range8
 #print axioms MathlibMap.FaceDial.poly_subset_shape
 #print axioms MathlibMap.FaceDial.face_le_of_mem_shape
 #print axioms MathlibMap.FaceDial.iInter_shape

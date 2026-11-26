@@ -109,15 +109,3 @@ jobs:
           test "${PIPESTATUS[0]}" -eq 0
           if grep -q "declaration uses 'sorry'" /tmp/depth-derived.log; then echo "sorry found"; exit 1; fi
 
-      # LeeYangNearZone section 5 (out to p = 8): the draft with section 5 lives in
-      # topics/shape-dial-survey/lean/; this step builds it in place of the required copy.
-      - name: Mathlib map, staged draft LeeYangNearZone section 5 (reported, not yet required)
-        if: hashFiles('topics/shape-dial-survey/lean/LeeYangNearZone.lean') != ''
-        continue-on-error: true
-        working-directory: topics/mathlib-map
-        run: |
-          cp ../shape-dial-survey/lean/LeeYangNearZone.lean MathlibMap/LeeYangNearZone.lean
-          lake build MathlibMap.LeeYangNearZone 2>&1 | tee /tmp/near-zone-8.log
-          test "${PIPESTATUS[0]}" -eq 0
-          if grep -q "declaration uses 'sorry'" /tmp/near-zone-8.log; then echo "sorry found"; exit 1; fi
-

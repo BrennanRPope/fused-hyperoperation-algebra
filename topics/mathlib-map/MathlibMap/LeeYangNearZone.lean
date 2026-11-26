@@ -351,4 +351,34 @@ theorem rule_range (T : Toolkit) {Tstar : ℝ → ℝ} (hF : FarCert Tstar) (hN 
   fun p hp1 hp5 hne =>
     rule_of_alternatesBelow T (by linarith) hne (alternatesBelow_range hF hN hp1 hp5)
 
+/-! ### 5. Out to roundness 8 -/
+
+/-- near_zone_p.py with NZ_RANGE=5-8 (cited): the same run certificates for 5 ≤ p ≤ 8 and 0 < b ≤ p − 1. -/
+def NearCert58 (Tstar : ℝ → ℝ) : Prop :=
+  ∀ p b : ℝ, 5 ≤ p → p ≤ 8 → 0 < b → b ≤ p - 1 →
+    Differentiable ℝ (G p b) ∧
+    ∃ R : RunCert (G p b) (G p (b + 1)), ∃ z, Tstar p ≤ z ∧ z ≤ R.y (R.N - 1) ∧ G p b z = 0
+
+theorem alternatesBelow_range8 {Tstar : ℝ → ℝ} (hF : FarCert Tstar) (hN : NearCert Tstar)
+    (hN8 : NearCert58 Tstar) {p : ℝ} (hp1 : 11 / 10 ≤ p) (hp8 : p ≤ 8) : AlternatesBelow p := by
+  by_cases h5 : p ≤ 5
+  · exact alternatesBelow_range hF hN hp1 h5
+  · intro b hb0 hbp
+    obtain ⟨hd, R, z, hz⟩ := hN8 p b (le_of_lt (not_le.mp h5)) hp8 hb0 hbp
+    exact alternates_of_near_far (R.nearAlt hd) (hF p b hp1 hp8 hb0 hbp) ⟨z, hz⟩
+
+/-- Lee–Yang for every a ≤ p at every roundness 1.1 ≤ p ≤ 8. -/
+theorem holds_range8 (T : Toolkit) {Tstar : ℝ → ℝ} (hF : FarCert Tstar) (hN : NearCert Tstar)
+    (hN8 : NearCert58 Tstar) :
+    ∀ p a : ℝ, 11 / 10 ≤ p → p ≤ 8 → 0 ≤ a → a ≤ p → Holds p a :=
+  fun p a hp1 hp8 ha0 hap =>
+    holds_of_alternatesBelow T (by linarith) (alternatesBelow_range8 hF hN hN8 hp1 hp8) a ha0 hap
+
+/-- **The rule for every roundness 1.1 ≤ p ≤ 8** that isn't an even whole number. -/
+theorem rule_range8 (T : Toolkit) {Tstar : ℝ → ℝ} (hF : FarCert Tstar) (hN : NearCert Tstar)
+    (hN8 : NearCert58 Tstar) :
+    ∀ p : ℝ, 11 / 10 ≤ p → p ≤ 8 → ¬ EvenWhole p → ∀ a : ℝ, 0 ≤ a → (Holds p a ↔ a ≤ p) :=
+  fun p hp1 hp8 hne =>
+    rule_of_alternatesBelow T (by linarith) hne (alternatesBelow_range8 hF hN hN8 hp1 hp8)
+
 end MathlibMap.LeeYang
