@@ -1,0 +1,33 @@
+== A. The reach classes come from one reading, Delta = k^2 - 4d
+PASS  A1 Delta>0 (k=3, d=1): the decaying field falls at rate sqrt(Delta)/2, reach 2/sqrt(Delta)   [rate 1.11803399 vs 1.11803399]
+PASS  A2 Delta=0: no length scale; the field is a straight line (power law), unlimited reach   [w constant for zero slope]
+PASS  A3 Delta<0: the law's ruler x = -u'/(d u) blows up and returns every 2 pi/sqrt(-Delta) (zeros of w): a closed direction, rungs n sqrt(-Delta)   [zero spacing 2.37480 vs 2.37482]
+== B. The rung class is one more direction at short range
+PASS  B1 the tower with every rung coupled equally sums to coth: 1 + 2 sum_{n>=1} e^{-n x} = coth(x/2)
+PASS  B2 tower sum = exact field of a point source on space x circle (method of images), circle length 2 pi R   [worst rel. diff 1.71e-31 at 30 digits]
+PASS  B3 effective dimension of that force: 4 well inside the circle size, 3 far outside   [D_eff(0.01 R) = 4.0000, D_eff(40 R) = 3.0000]
+PASS  B3b the step from 4 to 3 is centred near r = 4.1 R, i.e. about 2/3 of the circle length 2 pi R   [D_eff = 3.5 at r = 4.131 R]
+PASS  B4 far away the tower looks like one Yukawa term of strength alpha = 2 (rungs +n and -n); a torus of d circles gives 2d   [alpha = 2; 2-torus 4, 3-torus 6 (Kehagias-Sfetsos 2000: 2n)]
+PASS  B5 the law's rung spacing sqrt(-Delta) and circle length 2 pi/sqrt(-Delta) are the same statement: R = 1/sqrt(-Delta)
+== C. The screened class: a massive carrier adds a Yukawa term
+PASS  C1 a Yukawa term shows as a bump in D_eff (up for alpha > 0, down for alpha < 0), back to 3 at both ends   [alpha=1: peak 3.399 at r = 2.42 lambda; alpha=-0.3: 2.813]
+PASS  C2 the bump's place is set by the range (about 2 lambda) for every alpha: the theory fixes the range, not the strength   [1.0: 2.42, 0.3: 2.15, -0.3: 1.83]
+PASS  C3 Eot-Wash 2020: gravitational-strength Yukawa needs lambda < 38.6 um, i.e. carrier mass > 5.1 meV (their quoted number)   [5.11 meV]
+PASS  C3b and the largest extra dimension has radius < 30 um, i.e. lightest rung > 6.6 meV   [6.58 meV]
+== D. The flux exponent drifting at low field: s = 3/2 is deep-MOND gravity
+PASS  D1 s = 3/2 in D-language is exponent q = s/(s-1) = 3 in field language: Legendre of |D|^{3/2}/(3/2) is |E|^3/3
+PASS  D2 deep-MOND field equation div(|grad phi| grad phi / a0) = 4 pi G rho gives g = sqrt(G M a0)/r and v^4 = G M a0
+PASS  D3 the action |grad phi|^q d^Dx is unchanged by stretching space exactly when q = D (3D: q = 3, the deep-MOND action)
+PASS  D4 with the simple interpolating function, gravity's D_eff is 3 at high acceleration and falls to 2 at low acceleration   [D_eff(0.01) = 3.000, D_eff(10^4) = 2.000]
+PASS  D5 s = 3/2 is also the 3D confinement threshold of the flux-tube page: deep MOND sits on that border (log potential)
+== E. The roundness dial p: a force from a non-round distance
+PASS  E1 for p != 2 the force's strength around a circle has no 1st, 2nd or 3rd harmonic; the first change is four-lobed (cos 4 theta)   [p=1.5: 0.0628, p=2.2: 0.0150, p=3.0: 0.0577, p=4.0: 0.0947]
+PASS  E2 p = 2 is exactly round
+PASS  E3 near round the four-lobed size grows in step with p - 2   [ratio 0.525]
+== F. Order on, no mass, no tube: a long-range non-abelian force
+PASS  F1 such a force confines (becomes a tube) unless it carries many matter fields: one-loop b0 = 11N/3 - 2nf/3 stays > 0 up to nf = 16 for SU(3), 10 for SU(2)   [SU(2): 10, SU(3): 16, SU(4): 21]
+== P. Polishing
+PASS  P1 B2 again at 50 digits   [0.0]
+PASS  P2 B3b crossover is stable under a finer derivative step   [4.13112 vs 4.13112]
+
+TOTAL: 24 pass, 0 fail

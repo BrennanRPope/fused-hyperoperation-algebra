@@ -1,0 +1,15 @@
+== G. Strength from a closed direction: electromagnetism as gravity's circle (Kaluza-Klein)
+PASS  G0 4D gravity alone: static masses have weight m1 m2 / 2; light past a mass has twice that per unit energy (gamma = 1)
+PASS  G1 two copies with the same circle charge feel no net force; opposite charges attract at 8 times the tensor weight   [like 0, opposite 4*E1*E2]
+PASS  G2 split into 4D pieces: the vector (electric) part is 4 times gravity's, the scalar part 3 times, for the copies   [vector/tensor 4, scalar/tensor 3]
+PASS  G3 so the electric strength is fixed: alpha = e^2/(4 pi) = 4 G / R^2 (hbar = c = 1), i.e. e = sqrt(16 pi G)/R, Klein's relation
+PASS  G4 in our reading, R = 1/sqrt(-Delta): alpha = 4 G |Delta|. The same reading that spaces the rungs sets the strength
+PASS  G5 with the measured alpha = 1/137.036 the circle's radius is R = 2 l_P sqrt(137) = 23.4 Planck lengths = 3.8e-34 m   [R = 3.784e-34 m = 23.41 l_P]
+PASS  G5b the first charged copy weighs hbar c / R = (sqrt(alpha)/2) M_P = 5.2e17 GeV, charge e; copy n has charge n e (charge comes in whole units)   [5.215e+17 GeV]
+PASS  G6 one circle predicts a new force on ordinary matter: the circle's size as a field, with strength exactly 1/3 of gravity   [alpha_scalar = 1/3]
+PASS  G6b n circles: strength n/(n+2) (Brans-Dicke omega = -(n-1)/n); light bending gives gamma = 1/(n+1)   [n=1: 1/3, gamma 1/2, n=2: 1/2, gamma 1/3, n=6: 3/4, gamma 1/7]
+PASS  G6c consistency: a scalar of strength a gives gamma = (1 - a)/(1 + a); a = n/(n+2) gives 1/(n+1)
+PASS  G7 if that force reached far it would be ruled out: Cassini measured gamma - 1 = (2.1 +- 2.3)e-5; one circle gives gamma - 1 = -1/2   [21740 standard errors away]
+PASS  G7b so the circle's size must be held fixed, which gives the new force a mass and a short range; for strength 1 the lab limit is 38.6 um   [range not set by the theory]
+
+PART G TOTAL: 12 pass, 0 fail
