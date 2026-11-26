@@ -1,0 +1,40 @@
+==============================================================================
+1. KNOWN: Kepler orbits and hydrogen share the 3-sphere (Fock 1935, Moser 1970)
+==============================================================================
+[PASS] K1 Kepler's hidden symmetry: L² + A'² = 1/(−2E) and L·A = 0 (energy set by one SO(4) size): worst error 6.7e-16
+[PASS] K2 hydrogen: level n has n² = (2j+1)² states, j = (n−1)/2, the two SU(2) halves of S³: n = 1..29
+[PASS] K3 Fock map: each Kepler orbit's momenta lie on one great circle (plane through the centre): worst off-plane ratio 1.7e-10
+
+==============================================================================
+2. WHAT BREAKS THE SPHERE: perihelion precession, measured by direct simulation
+==============================================================================
+[PASS] P1 special relativity alone (c = 40.0): advance per orbit = 2π(1/√(1 − (k/cL)²) − 1): simulated 0.00242547, formula 0.00242547
+[PASS] P1 special relativity alone (c = 3.0): advance per orbit = 2π(1/√(1 − (k/cL)²) − 1): simulated 0.31000577, formula 0.31000577
+[PASS] P2 c = 40.0: advance = area of the velocity-space disc of speed-radius k/L (hyperbolic, curvature −1/c²): disc area/c² 0.00242547, simulated advance 0.00242547
+[PASS] P2 c = 3.0: advance = area of the velocity-space disc of speed-radius k/L (hyperbolic, curvature −1/c²): disc area/c² 0.31000577, simulated advance 0.31000577
+[PASS] P3 Thomas, circular orbit at 0.3c: one lap round velocity space turns a gyroscope by 2π(γ − 1): transported -0.30338, 2π(γ−1) wrapped 0.30338
+[PASS] P3 Thomas, circular orbit at 0.8c: one lap round velocity space turns a gyroscope by 2π(γ − 1): transported 2.09439, 2π(γ−1) wrapped -2.09440
+[PASS] P4 advance ÷ (hodograph area/c²): special relativity +1, scalar gravity −1, general relativity +6: SR (1/r force): 1.0002, scalar (Nordström): -0.9998, GR (Schwarzschild): 6.0127
+[PASS] P5 GR: coefficient 6 at every eccentricity (0, 0.5, 0.9), weak field: 6.0011, 6.0012, 6.0013
+[PASS] P5b GR is an area law only at first order: at strong field the coefficient drifts: c = 5: coefficient 8.893
+[PASS] P6 Mercury: 6 × (hodograph disc area)/c² per orbit = 42.98″ per century: 42.981″/century; hodograph radius 48.92 km/s
+[PASS] P7 on Fock's unit sphere every orbit is a great circle and bounds half the sphere (2π): the same for all orbits: so the area that sets precession is NOT on Fock's sphere; it is in velocity space
+[PASS] P8 seen on the momentum sphere: the orbit's circle tilts round the energy axis by the advance each lap: circle turns 0.31000 per lap; perihelion advance 0.31001
+
+==============================================================================
+3. HYDROGEN FINE STRUCTURE FROM THE SAME AREA
+==============================================================================
+[PASS] F1 Dirac's hydrogen levels rebuilt from one number per κ: the velocity-disc area of radius αc/κ: worst difference 0.0e+00 eV over all levels n ≤ 7
+[PASS] F2 2P3/2 − 2P1/2 splitting from the area law = Dirac's 10.950 GHz (α⁴mc²/32); measured 10.969 GHz, the 0.2% rest is QED (electron's anomalous moment): 10.9497 GHz
+[PASS] F3 κ = 2 orbit: Sommerfeld advance per lap = the same disc area (≈ πα²/κ² = 4.18e-5 rad): 4.182393e-05 rad
+[PASS] F4 quantum defect δ = κ·x/(1+x), x = (advance per lap)/2π, exactly: κ = 1..5
+[PASS] F5 limit: 2S1/2 and 2P1/2 share κ = 1, so the area law leaves them degenerate (the Lamb shift needs QED): measured Lamb shift 1.058 GHz is outside this law
+
+==============================================================================
+4. RATIOS
+==============================================================================
+[PASS] R1 circular orbit: Sommerfeld's advance per lap = Thomas's turn per lap, exactly, at any speed: β = 0.1, 0.5, 0.9
+[PASS] R2 GR: the orbit turns twice as much as its gyroscope at weak field (ratio → 2), not exactly: ratios [2.0, 2.0075, 2.5015, 3.5578] at M/r = 1e-6 … 0.1
+[PASS] R3 orbit vs gyroscope: GR 6 vs 3 (twice), Nordström −1 vs −1 (equal, like the electric case): known PPN formulas; matches simulated +6.013 and −0.9998 (P4)
+
+23 of 23 checks pass

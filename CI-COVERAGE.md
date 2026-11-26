@@ -5,7 +5,7 @@ Audit of Nov 25, 2026, done when everything was put on main. [CI](.github/workfl
 ## Checked on every push
 
 - **Core Lean library** (`lean-library/`): every module builds with core Lean 4; every theorem uses only the three standard axioms and no `sorry`; ASSUMPTIONS.md and theorems.tsv are current.
-- **Every topic's own Lean file** (`tools/topic_lean.py`): each `topics/**/*.lean` is compiled on its own against the library, with sibling modules compiled first. 124 of 136 build. The 12 that don't are old first drafts whose compiled versions are in the library. They are listed with reasons in [tools/topic_lean_known.tsv](tools/topic_lean_known.tsv), and any other failure turns CI red.
+- **Every topic's own Lean file** (`tools/topic_lean.py`): each `topics/**/*.lean` is compiled on its own against the library, with sibling modules compiled first. 125 of 137 build. The 12 that don't are old first drafts whose compiled versions are in the library. They are listed with reasons in [tools/topic_lean_known.tsv](tools/topic_lean_known.tsv), and any other failure turns CI red.
 - **Mathlib version** (`lean-library-mathlib/`, through [mathlib-build.yml](.github/workflows/mathlib-build.yml)): the port of the original 62 modules and the proof-complexity study build with Mathlib's prebuilt cache; standard axioms only, no `sorry`; every original theorem has a row in the port's name tables (`tools/port_notes.py`); `tools/CheckNames.lean` reports any "ported" row whose name doesn't resolve.
 - **Numeric checks** (`tools/run_checks.py`): every `topics/**/checks*.py`, plus the 37 check scripts with other names listed in [tools/extra_checks.txt](tools/extra_checks.txt), each compared with its saved output.
 

@@ -135,5 +135,6 @@ import FusedAlgebra.Topics.BooleanLattice
 import FusedAlgebra.Topics.BeyondOneLoop
 import FusedAlgebra.Topics.CornerWeights
 import FusedAlgebra.Topics.Precession
+import FusedAlgebra.Topics.Hypersphere
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

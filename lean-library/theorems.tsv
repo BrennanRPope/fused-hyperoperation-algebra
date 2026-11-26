@@ -1873,6 +1873,29 @@ FusedAlgebra.Topics.GroupsLie	GroupsLie.tmul_comm	propext, Classical.choice, Quo
 FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_one_theta	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GroupsLie	GroupsLie.twist_example	
+FusedAlgebra.Topics.Hypersphere	Hypersphere.circular_L_v	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.deg_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.dirac_defect	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.fock_on_sphere	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.gr_geodetic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.gr_orbit_twice_gyro	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.gr_perihelion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.gyro_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.i_mul_j	
+FusedAlgebra.Topics.Hypersphere	Hypersphere.i_sq	
+FusedAlgebra.Topics.Hypersphere	Hypersphere.isco_two_v	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.j_mul_i	
+FusedAlgebra.Topics.Hypersphere	Hypersphere.kepler_tilt	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.nordstrom_geodetic	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.nordstrom_orbit_eq_gyro	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.nordstrom_perihelion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.norm_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.orbit_fractions_fuse	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.orbit_minus_gyro	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.orbit_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.photon_sphere_v	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.sommerfeld_eq_thomas	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Hypersphere	Hypersphere.tangent_sq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Infinities	Infinities.cantor	propext
 FusedAlgebra.Topics.Infinities	Infinities.circOnes_succ	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Infinities	Infinities.evalL_addL	propext, Classical.choice, Quot.sound

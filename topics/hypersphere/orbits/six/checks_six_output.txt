@@ -1,0 +1,28 @@
+==============================================================================
+1. EXACT ALGEBRA (sympy)
+==============================================================================
+[PASS] S1 GR orbit: 1 - 6M/r = (1 - 2M/r)(1 - 4v²) exactly, v = local orbital speed: identity in x = M/r
+[PASS] S2 GR gyroscope (Gravity Probe B page): 1 - 3M/r = (1 - 2M/r)(1 - v²) exactly, same space factor: identity in x = M/r
+[PASS] S3 the orbit's velocity disc reaches light speed (2v = c) exactly at the innermost stable orbit r = 6M: v = c/2 there
+[PASS] S4 the gyroscope's velocity disc reaches light speed (v = c) exactly at the photon sphere r = 3M: v = c there
+[PASS] S5 ANY static round metric: T = (N - 4v²)/B, N = 3 + rA''/A' (Newton's closure number from the clock rate): symbolic in A(r), B(r)
+
+==============================================================================
+2. SPECIAL RELATIVITY IN ANY POTENTIAL (numeric, exact to rounding)
+==============================================================================
+[PASS] S6 electric-type orbit in ANY potential V: T = N - v², N = 3 + rV''/V' (Newton's closure number): 5 potentials × 2 radii, worst error 8.9e-16
+
+==============================================================================
+3. SIMULATED ORBITS (geodesics, small eccentricity)
+==============================================================================
+[PASS] S7 Schwarzschild: simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 4.3e-06 (kick 1e-3, so small eccentricity)
+[PASS] S7 clock warp only (B = 1): simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 5.0e-06 (kick 1e-3, so small eccentricity)
+[PASS] S7 Reissner–Nordström Q = 0.6: simulated advance per lap = 2π(1/√T − 1), T = (N − 4v²)/B: r = 10, 14, 25, 60 M; worst relative error 2.6e-06 (kick 1e-3, so small eccentricity)
+
+==============================================================================
+4. FIRST ORDER AND WHAT IT MEANS
+==============================================================================
+[PASS] S8 the 6 = 2 (space curvature, as for the gyroscope) + 4 (velocity disc of radius 2v, four times Thomas's area): 2.00000 + 4.00000 = 6.00000
+[PASS] S9 Mercury from the split: (1 − 2M/p)(1 − 4v²) per orbit gives 42.98″ per century (first-order test only): 42.98″/century
+
+11 of 11 checks pass

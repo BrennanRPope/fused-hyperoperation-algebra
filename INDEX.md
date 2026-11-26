@@ -30,12 +30,13 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: fractional steps of the height flow: only whole steps stay real chances. | `topics/fractional-steps/` | — |
 | DRAFT: parabolic fingerprints: where the rung step's exact fingerprint shows up. | `topics/parabolic-fingerprints/` | — |
 | DRAFT: everything proved, recast in the polar coordinates; 5-region holographic sign check. | `topics/polar-recast/` | — |
+| DRAFT: laws from the hypersphere (i, π, e; orbits and hydrogen on one 3-sphere; gravity's 6 split). | `topics/hypersphere/` | `Topics/Hypersphere` |
 
 ## The library and tools
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,249 theorems, 136 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,272 theorems, 137 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |

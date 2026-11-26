@@ -1,0 +1,90 @@
+==============================================================================
+0. SET-UP: polar coordinates u = r * omega, radius adds, sphere multiplies
+==============================================================================
+[PASS] H0a dim 1: norm multiplies, so log-radius adds: worst relative error 0.0e+00
+[PASS] H0a dim 2: norm multiplies, so log-radius adds: worst relative error 4.5e-16
+[PASS] H0a dim 4: norm multiplies, so log-radius adds: worst relative error 4.8e-16
+[PASS] H0a dim 8: norm multiplies, so log-radius adds: worst relative error 4.4e-16
+[PASS] H0b dim 16 (sedenions): norm does NOT multiply, the polar split breaks: largest relative miss 0.450
+[PASS] H0c dim 2: lift 1+ka turns the core law into multiplication; radius L_k adds: lift error 4.4e-16, radius error 3.9e-16
+[PASS] H0c dim 4: lift 1+ka turns the core law into multiplication; radius L_k adds: lift error 2.2e-16, radius error 3.3e-16
+[PASS] H0c dim 8: lift 1+ka turns the core law into multiplication; radius L_k adds: lift error 1.1e-16, radius error 1.7e-16
+[PASS] H0d core law is associative in dims 2 and 4, not in dim 8 (octonions): worst associator: dim2 3.6e-15, dim4 5.3e-15, dim8 55.19
+[PASS] H0e core law stops commuting in dim 4 (quaternions): largest a∘b − b∘a = 12.02
+
+==============================================================================
+1. i AND pi FROM THE SPHERE (Brennan's first test)
+==============================================================================
+[PASS] I1 dim 2: every unit tangent v at 1 squares to -1 (a sphere S^0 of i's): worst |v^2 + 1| = 0.0e+00
+[PASS] I1 dim 4: every unit tangent v at 1 squares to -1 (a sphere S^2 of i's): worst |v^2 + 1| = 4.4e-16
+[PASS] I1 dim 8: every unit tangent v at 1 squares to -1 (a sphere S^6 of i's): worst |v^2 + 1| = 4.4e-16
+[PASS] I1b dial route: d|1 + k x|/dx at 0 = Re(k x), so 'keeps size' = 'tangent to the sphere at 1': worst mismatch 1.4e-06
+[PASS] I2 dim 2: exp(t v) first reaches -1 at t = pi; series exp(pi v) = -1: hit at t = 3.14159, |exp(pi v) + 1| = 3.3e-16
+[PASS] I2 dim 4: exp(t v) first reaches -1 at t = pi; series exp(pi v) = -1: hit at t = 3.14159, |exp(pi v) + 1| = 8.7e-16
+[PASS] I2 dim 8: exp(t v) first reaches -1 at t = pi; series exp(pi v) = -1: hit at t = 3.14159, |exp(pi v) + 1| = 7.5e-16
+[PASS] I3 S^1: half a great circle (1 to -1) has length pi: length 3.141592653557
+[PASS] I3 S^2: half a great circle (1 to -1) has length pi: length 3.141592653557
+[PASS] I3 S^3: half a great circle (1 to -1) has length pi: length 3.141592653557
+[PASS] I3 S^5: half a great circle (1 to -1) has length pi: length 3.141592653557
+[PASS] I3 S^7: half a great circle (1 to -1) has length pi: length 3.141592653557
+[PASS] I4 S^3: chaining N steps of size pi/N along any unit i lands on -1, error ~ 1/N: errors 5.1e-02, 4.9e-03, 4.9e-04
+[PASS] I5 Poisson: (∫e^{-x²}dx)² = ∫∫e^{-r²} r dr dθ = pi (the 2π is the circle's length): 3.141592653589793 and 3.141592653589794
+[PASS] I5b |S^{n-1}| = 2 pi^{n/2}/Gamma(n/2) reproduces (∫e^{-x²})^n for n = 1..8: all eight agree
+[PASS] I6 S^3: a full 2π turn in space is a half great circle on S^3: q = -1, vectors unchanged: q = [-1.  0.  0.  0.]
+[PASS] I7 S^3: ij = k and ji = -k (the seed of the swap rule): 
+
+==============================================================================
+2. e: CUBE, SIMPLEX, SPHERE
+==============================================================================
+[PASS] E1 cube corner simplex = 1/n! of the cube = chance that n random numbers come out sorted: n=1: 1.00000/1.00000 vs 1.00000; n=2: 0.49911/0.50039 vs 0.50000; n=3: 0.16668/0.16786 vs 0.16667; n=4: 0.04159/0.04118 vs 0.04167; n=5: 0.00850/0.00820 vs 0.00833; n=6: 0.00136/0.00145 vs 0.00139
+[PASS] E2 sum over all dimensions of the corner simplex volume = e: 2.718281828459045
+[PASS] E3 random-sum puzzle: average number of tries to pass 1 is e: 2.71839 ± 0.00062 vs e = 2.71828
+[PASS] E4 balls: V(B^{2m}) = pi^m × (1/m!) (angles × simplex), sum over even dims = e^pi: sum = 23.140692632779, e^pi = 23.140692632779; all dims 45.999326 = e^pi(1+erf√pi) 45.999326
+[PASS] E4b to get e itself from balls you must shrink them to disc area 1 (r = 1/√pi): 2.718281828459045
+[PASS] E5 one coordinate of a random point on the sphere of radius √n tends to the bell curve e^{-t²/2}: max density errors 3.1e-02, 3.0e-03, 2.8e-04, 3.0e-05
+[PASS] E5b the sphere's (1 - t²/n)^{n/2} is the dial chain (1 + k x/N)^N with k = -1/2, x = t², N = n/2: at t² = 2.3: error 1.0e-05
+
+==============================================================================
+3. RUNGS
+==============================================================================
+[PASS] R1 on the sphere the radius log|u| is 0, so the rung-3 law 'take the radius twice' has nothing to act on: log|q| = -1.1e-16; log(log|q|) = -inf
+[PASS] R2 rung 3 survives on the sphere only as 'angle × real exponent': (q^s)^t = q^{st}: 
+
+==============================================================================
+4. PLANE DIAL d = 1/R²: SPHERE, PLANE, IMAGINARY SPHERE
+==============================================================================
+[PASS] P1 sphere radius R: angle sum − pi = (+1/R²) × area: excess 0.33013, area/R² 0.33080 ± 0.00101
+[PASS] P2 hyperbolic plane (sphere of imaginary radius): angle sum − pi = (−1/R²) × area: defect 0.39874, area 0.39872
+[PASS] P3 Lambert's imaginary sphere: spherical cosine law at R = i reproduces the measured hyperbolic triangle: cos(c/i) = 1.4761748201, rhs = 1.4761748201 (imag 0.0e+00)
+
+==============================================================================
+5. SWAP RULE: TURN = d × AREA ON THE SPHERE
+==============================================================================
+[PASS] W1 S^3: swapping turns a (about x) and b (about y) leaves a turn about z of size a·b = area: turn/(ab) = 0.999380, 0.999944, 0.999994
+[PASS] W2 Hopf fibration: spin-½ Berry phase = −½ × solid angle on the Bloch sphere: θ=0.4: -0.24799 vs -0.24799; θ=1.0: -1.44418 vs -1.44418; θ=2.0: 1.83423 vs 1.83423
+[PASS] W3 sphere R=1.0: carrying an arrow around a latitude turns it by cap area / R²: turn 1.90565, area/R² (mod 2π) 1.90565
+[PASS] W3 sphere R=3.0: carrying an arrow around a latitude turns it by cap area / R²: turn 1.90565, area/R² (mod 2π) 1.90565
+
+==============================================================================
+6. PROBABILITY ON THE SPHERE
+==============================================================================
+[PASS] Q1 Archimedes' hat box: the height of a random point on S² is uniform: max/min bin = 1.0160
+[PASS] Q2 spin-½ Born probability (1 + n·m)/2 = area fraction of a cap (Archimedes): Born 0.9000, cap 0.8997
+[PASS] Q3 orthogonal hemispheres: P(A∪B) = p ∘₋₁ q (the 2^n orthants are the cube's corners): union 0.7497, p∘q 0.7500
+[PASS] Q3b smaller orthogonal caps are NOT independent: the union rule fails: union 0.3661 vs p∘q 0.3530
+[PASS] Q4 points on S^5 ⊂ C³: squared radii lie on the triangle s₁+s₂+s₃ = 1, uniformly (mean 1/3 each): means [0.3333 0.3333 0.3335], P(s₁<½) = 0.7501 (uniform: 0.75)
+[PASS] Q4b ball in C³ -> squared radii fill the solid corner simplex; polydisc -> they fill the cube: P(sum ≤ ½): ball 0.1251 (simplex 0.125), polydisc 0.0210 (cube 0.0208)
+
+==============================================================================
+7. PHYSICS
+==============================================================================
+[PASS] EM1 point charge: flux through the cube = 6 face integrals = 4pi; on the sphere it is 4pi r² × 1/r²: 6 × 2.0943951024 = 12.5663706144, 4π = 12.5663706144
+[PASS] EM2 in n space dimensions the field is 1/(|S^{n-1}| r^{n-1}); the constant 4pi is the sphere's area: 
+[PASS] SR1 celestial sphere: a boost along z scales tan(θ/2) by 1/Doppler; a turn about z adds to the angle: worst error 3.9e-13
+[PASS] SR2 velocity addition = Doppler factors multiply = core law at k = 1 on x = D − 1 (Bondi's k-calculus): D(v1⊕v2) = 4.760952, D1·D2 = 4.760952
+[PASS] SR3 Penrose–Terrell: boosted circle of directions is still a circle (points stay on one plane): smallest/largest singular value 6.8e-17
+[PASS] G1 Kepler (Fock/Moser): each orbit's momenta, mapped to S^3, lie on one great circle: singular values [40.14189795 37.29112534  0.          0.        ] (rank 2 = a plane through the centre)
+[PASS] G2 hydrogen level n has n² states = harmonics of degree n−1 on S^3 (Fock 1935): [1, 4, 9, 16, 25, 36, 49]
+[PASS] G3 de Sitter: temperature = 1 / (great-circle length of the 4-sphere); plane dial d = Λ/3 = 1/R²: R = 1.647e+26 m, T = 2.21e-30 K
+
+57 of 57 checks pass
