@@ -1,0 +1,58 @@
+[PASS] A1 union rule at every k: -k(a o_k b) - [1-(1+ka)(1+kb)] simplifies to 0
+[PASS] A2 cylinders: union area / M = a o_(-1/M) b: 200 random boxes, worst gap 8.9e-16
+[PASS] A3 union (Monte Carlo): estimate 3.2760, formula 3.2800
+[PASS] A3 intersection (Monte Carlo): estimate 1.1197, formula 1.1200
+[PASS] A3 symmetric difference (Monte Carlo): estimate 2.1563, formula 2.1600
+[PASS] A3 difference A minus B (Monte Carlo): estimate 0.4814, formula 0.4800
+[PASS] A4 three cylinders = a o b o c at k = -1: estimate 0.8950, a o b o c = 0.8950
+[PASS] A4b corner sum of the 3-cube at k = -1 = inclusion-exclusion: corner sum 0.895000
+[PASS] A5 idempotent elements are 0 and the wall -1/k: solutions [0, -1/k]
+[PASS] A6 De Morgan on the box: what the union misses is the product of the two complements: 0.720000 vs 0.720000
+[PASS] B1 chi(A x R  u  R x B) / chi(R) = a o_(+1) b, since chi(R) = -1: 300 random pairs of sets on the open line, exact integers, worst gap 0
+[PASS] B2 three cylinders in R^3 give a o_1 b o_1 c: 100 random triples, worst gap 0
+[PASS] B3 k = -1/chi(ambient): 1 pts + 0 open = chi 1, k = -1.0; 2 pts + 1 open = chi 1, k = -1.0; 1 pts + 1 open = chi 0, k = None; 0 pts + 1 open = chi -1, k = 1.0; 1 pts + 2 open = chi -1, k = 1.0; 2 pts + 5 open = chi -3, k = 0.3333333333333333
+[PASS] C1 grown box minus unit square = a o_1 b: exact
+[PASS] C2 Minkowski shell of the ball = vol * n-fold o_1: shell 5.0097, vol*((1+x)^3-1) = 5.0140
+[PASS] D1 two unit disks: union area = a o_k(d) a with k(d) = -lens/area^2: identity holds at every separation (it is inclusion-exclusion with the overlap renamed)
+[PASS] D2 coincident disks sit on the wall: k(0) = -1/pi, so the wall -1/k = pi = the disk itself
+[PASS] D3 hemispheres: k(theta) = -2(1 - theta/pi), k = -1 at right angles: 0.00: -1.997 vs -2.000; 0.79: -1.500 vs -1.500; 1.57: -0.998 vs -1.000; 2.36: -0.499 vs -0.500
+[PASS] E1 Venn of three disks: union = inclusion-exclusion: union 6.1425
+[PASS] E2 three disks are not a o b o c: the defect is the triple-overlap mismatch: union 6.1425, a o b o c 5.9066, defect 0.2359 (= triple 0.8627 - k^2 abc 0.6028 up to the unequal pair overlaps)
+[PASS] F1 p = 1: cube n corner simplex = 1/n!: n = 0..9
+[PASS] F2 p = 1: sum of orthant volumes = Mittag-Leffler E_(1/p)(Gamma(1+1/p)) = average draws: series 2.718282, Mittag-Leffler 2.718282, draws 2.7172 +- 0.0016
+[PASS] F2 p = 2: sum of orthant volumes = Mittag-Leffler E_(1/p)(Gamma(1+1/p)) = average draws: series 3.925771, Mittag-Leffler 3.925771, draws 3.9243 +- 0.0031
+[PASS] F2 p = 3: sum of orthant volumes = Mittag-Leffler E_(1/p)(Gamma(1+1/p)) = average draws: series 5.161105, Mittag-Leffler 5.161105, draws 5.1592 +- 0.0045
+[PASS] F3 p = 2 closed form e^(pi/4)(1 + erf(sqrt(pi)/2)): 3.9257708131
+[PASS] G1 k = -0.5000: average draws until the o_k-composite passes 1 = (1+k)^(1/k) + k/(1+k): draws 3.0000 +- 0.0019, formula 3.000000, sum of volumes 3.000000
+[PASS] G1 k = 0.5000: average draws until the o_k-composite passes 1 = (1+k)^(1/k) + k/(1+k): draws 2.5841 +- 0.0014, formula 2.583333, sum of volumes 2.583333
+[PASS] G1 k = 1.0000: average draws until the o_k-composite passes 1 = (1+k)^(1/k) + k/(1+k): draws 2.5008 +- 0.0013, formula 2.500000, sum of volumes 2.500000
+[PASS] G1 k = 1.7183: average draws until the o_k-composite passes 1 = (1+k)^(1/k) + k/(1+k): draws 2.4233 +- 0.0012, formula 2.421693, sum of volumes 2.421693
+[PASS] G1 k = 3.0000: average draws until the o_k-composite passes 1 = (1+k)^(1/k) + k/(1+k): draws 2.3364 +- 0.0011, formula 2.337401, sum of volumes 2.337401
+[PASS] G2 k -> 0 gives e: 2.71828181
+[PASS] G3 k = e - 1 gives Vandervelde's (e-1)/e + e^(1/(e-1)) (Math. Intelligencer 2008): 2.4216929557
+[PASS] G4 k = 1, n = 2: area under the hyperbola (1+x)(1+y) <= 2 is 2 ln 2 - 1: 0.3862943611
+[PASS] G5 limits: k -> -1 gives infinity, k -> infinity gives 2: E(-1+1e-9) = 21.72, E(1e9) = 2.00000
+[PASS] G6 at k = 1/m the count is the compound-interest staircase (1+1/m)^m plus 1/(m+1): m = 1..39; k = 1 gives 5/2 = 2.500000, k = -1/2 gives 3 = 3.000000
+[PASS] H1 n = 2: vol(cube + tB) = sum C(n,j) kappa_(n-j) t^(n-j): estimate 3.1029, Steiner 3.1027
+[PASS] H1 n = 3: vol(cube + tB) = sum C(n,j) kappa_(n-j) t^(n-j): estimate 3.7620, Steiner 3.7613
+[PASS] I1 vol(cube n {sum <= s}) by corner inclusion-exclusion (n = 4, s = 2): Monte Carlo 0.5003, formula 0.5000
+[PASS] I2 {|x_i| <= 1, sum|x_i| <= 2} in 4D has volume 8 (the 24-cell with vertices (+-1,+-1,0,0)): 16 x 0.5000 = 8.0000
+[PASS] I3 vertex counts: n = 3 gives 12 (cuboctahedron), n = 4 gives 24 (24-cell): 12, 24
+[PASS] I4 slabs of the cube between sum = j-1 and j are Eulerian numbers / n! (Laplace): n = 1..7
+[PASS] J1 Tsirelson's CHSH = 2 sqrt 2 has no realization by sets with ordinary sizes: CHSH 2.8284; linear program with sizes >= 0 is infeasible (Bell, Pitowsky's correlation polytope)
+[PASS] J2 it does have a realization with signed sizes (Abramsky-Brandenburger 2011, Thm 5.5): least total negative size 0.2071 (total size 1.0000)
+[PASS] J3 corners of the 4-cube give CHSH in {-2, 2}: [-2, 2]
+[PASS] K1 coordinator's algebra: union a o_k b, XOR a o_2k b, AND -k ab, A minus B a + k ab, complement -1/k - a: all five exact
+[PASS] K2 of the 16 Boolean operations, exactly four are commutative, associative and non-constant: ['AND', 'OR', 'XNOR', 'XOR']
+[PASS] K3 AND and XNOR are OR and XOR seen in the mirror (the complement, a reflection about -1/(2k)): conjugation by the complement
+[PASS] K4 De Morgan in sizes: complement(a o_k b) = complement(a) AND complement(b): exact
+[PASS] K5 distributivity fails on numbers by -k^2 abc(1 + ka): zero only for crisp a (0 or the wall): gap = -a*b*c*k**2*(a*k + 1)
+[PASS] K5b it holds exactly when the two pieces use the dial of their shared ambient A: k' = -1/a: a AND (b o_k c) = (a AND b) o_(-1/a) (a AND c)
+[PASS] K5c Monte Carlo: P(A and (B or C)) = (AB) o_(-1/P_A) (AC), not (AB) o_(-1) (AC): MC 0.3694; shared-ambient dial 0.3690; plain k = -1 0.4014
+[PASS] K6 A minus B is an action: a minus (b o_k c) = (a minus b) minus c: (A minus B) minus C = A minus (B or C)
+[PASS] K6b the order-style family a + q b + k ab is associative only at q = 1 (the union): solutions [{q: 1}]
+[PASS] K7 the asymmetry of difference is the odds ratio: (A minus B)/(B minus A) = odds(A)/odds(B): odds in units: a/(1 + ka)
+[PASS] K8 n-fold XOR is the o_(-2) fold = Matsui's piling-up lemma: 0.485600 vs 0.485600
+[PASS] K9 pair dial below -1 <=> odds ratio above 1 (positive overlap); = -1 <=> independent (the saddle surface): 2000 random correlated pairs
+
+56/56 checks pass

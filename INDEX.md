@@ -8,6 +8,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
+| DRAFT: set operations on shapes as a core technique. The fused law is a union of independent slabs at k = −1/M; correlated shapes carry a pair dial; OR, XOR, AND and XNOR are the only commutative associative Boolean operations and sit at k, 2k and their complement mirrors; the e result is cube ∩ corner shape, moved by the ℓp exponent (Mittag-Leffler value) and by k (E(k) = (1 + k)^(1/k) + k/(1 + k), not found in print). | `topics/shape-set-operations/` | — |
 | DRAFT: the height flow read as a running coupling. Early verdict: behaves exactly like a marginal coupling, but so does any map with a double fixed point; no physics test found. Merged into the height-flow stream (`topics/height-flow/`). | `topics/height-running-coupling/` | — |
 | Height flow: entropy family, running coupling and invariants. Invariants part DRAFT: the two-loop number of the height-s map is exactly 1/(3s), and the two half-height maps differ by the horn coefficient times \|sin πs\|. Entropy family is a modest catalogue entry (inside Tempesta's group-entropy framework); running coupling has no physics test; telling maps apart by the horn map is the known Écalle–Voronin theorem. | `topics/height-flow/` | — |
 | DRAFT: Lucas corner weights U_m(k, d) for the two-dial plane law. Early verdict: the weights are known Lucas sequences and the corner formula is probably folklore. Merged into the corner-weights stream. | `topics/lucas-weights/` | — |
