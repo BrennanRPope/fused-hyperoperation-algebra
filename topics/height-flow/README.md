@@ -48,7 +48,7 @@ picture: **orange = known, blue = ours** unless a legend says otherwise.
 
 ### What it is
 
-The supernatural logarithm ln_s(X) = E^{−s}(X − 1) = E^{1−s}(log X).
+The hypernatural logarithm ln_s(X) = E^{−s}(X − 1) = E^{1−s}(log X).
 In Tempesta's language it is a **group logarithm** with G = E^{1−s}, and its law is
 our operation one rung down: **ln_s(XY) = B_{1−s}(ln_s X, ln_s Y)** (checked).
 

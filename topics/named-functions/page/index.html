@@ -28,14 +28,14 @@ ul li{margin:.25em 0}code{font-size:14px;overflow-wrap:anywhere}
 .small{font-size:14px;color:var(--mute)}
 @media(max-width:600px){table{font-size:13px}}
 </style></head><body><div class="wrap">
-<div class="draft">DRAFT · Nov 26 2026 · Hypercube Composition Theory</div>
+<div class="draft">DRAFT · Nov 26 2026 · Affine Composition Theory</div>
 <h1>The hypernatural logarithm lives on every conic, and its inverse is the hypernatural exponential</h1>
 <p class="lede">Brennan asked whether the hypernatural logarithm (formerly the supernatural logarithm) exists on shapes other than the hypercube, what its inverse should be called, and which other functions the theory keeps using deserve names.</p>
 <nav class="nav"><a href="#shapes">Shapes</a><a href="#inverse">The inverse</a><a href="#names">Candidates</a><a href="#bell">Bell numbers at height</a><a href="#rename">Files to rename</a></nav>
 
 <div class="answer">
 <p><b>Shapes.</b> Yes on every conic of the plane dial except plain addition; on the simplex it is the same function's other half; on the ℓp balls it adds nothing new, because there the rung height is the p dial itself.</p>
-<p><b>Inverse.</b> Call it the <b>hypernatural exponential</b>, exp⁽ˢ⁾(t) = 1 + Eˢ(t). "Natural exponential function" is a real textbook name for eˣ, and the closest published family already pairs hyperlogarithm with hyperexponential.</p>
+<p><b>Inverse.</b> Adopted (Brennan, Nov 26): the <b>hypernatural exponential</b>, exp⁽ˢ⁾(t) = 1 + Eˢ(t). "Natural exponential function" is a real textbook name for eˣ, and the closest published family already pairs hyperlogarithm with hyperexponential.</p>
 <p><b>Candidates.</b> Nine recurring combinations beyond the operations catalog: seven already have names to adopt, two need ours.</p>
 </div>
 
@@ -87,13 +87,7 @@ ul li{margin:.25em 0}code{font-size:14px;overflow-wrap:anywhere}
 <figure><img src="figures/fig5-bell-at-height.png" alt="Curves of b_n(s) through Bell numbers"><figcaption>The n-th derivative of exp⁽ˢ⁾ at 0 is a polynomial in the height s. At whole heights it counts nested groupings: one way at height 1, Bell numbers at 2, groupings of groupings at 3.</figcaption></figure>
 <p>The height counts something. The polynomials themselves are known (Comtet's triangle), and the whole-height counts are E. T. Bell's numbers of higher order. Reading them as the derivatives of the hypernatural exponential is ours. It is worth following because it gives height a counting meaning; the open question is what, if anything, a fractional height counts. Not checked yet.</p>
 
-<h2 id="rename">Files that still say "supernatural logarithm"</h2>
-<ul>
-<li>fractional-rungs/e-every-height: README (7), figures.py (1)</li>
-<li>height-flow: README (1), figures.py (1), height_entropy.py (2)</li>
-<li>operations-catalog: README (1)</li>
-<li>polar-recast: README (3), literature/superlog_shapes.py (2)</li>
-<li>bridge-survey: bridges.csv (2), bridges.json (5), raw/math.tsv (1), raw/shapes-applied.tsv (1)</li>
-</ul>
+<h2 id="rename">Renamed: supernatural is now hypernatural</h2>
+<p>The rename is applied in twelve files across five folders: fractional-rungs/e-every-height, height-flow, operations-catalog, polar-recast and bridge-survey. Figure titles were redrawn. Pages built from those folders still show the old name until they are republished.</p>
 <p class="small">Checks: 33 of 33 pass (40-digit arithmetic, about 6 seconds, every flow value polished by comparing n and 2n steps). Folder: math-theory/named-functions. Known: generators, regular iteration, formal group laws, Cayley–Klein trig, Bell numbers, the probabilistic sum. Ours: the hypernatural exponential and ×⁽ˢ⁾ names, the shape test, the parabola slide flow, the ℓp height = p dial reading, and the height-up, dials-down notation.</p>
 </div></body></html>

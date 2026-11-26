@@ -36,7 +36,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Bridge survey: every place the theory lands on an established field</h1>
-<p>Hypercube Composition Theory. 739 bridges into 20 fields, each marked known, our reading, possibly new or tested and failed; 16 more found by grouping the shapes; five predicted bridges written down before anyone checks them. Blue = known, magenta = possibly new, purple = found in the shape grouping, orange = predicted.</p></header>
+<p>Affine Composition Theory. 739 bridges into 20 fields, each marked known, our reading, possibly new or tested and failed; 16 more found by grouping the shapes; five predicted bridges written down before anyone checks them. Blue = known, magenta = possibly new, purple = found in the shape grouping, orange = predicted.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

@@ -1,4 +1,4 @@
-"""Entropies built from the supernatural logarithm, tested.
+"""Entropies built from the hypernatural logarithm, tested.
 
 ln_s(X) = E^-s(X - 1) = E^(1-s)(log X)      (E(x) = e^x - 1, E^r its regular iteration)
 So ln_s is a "group logarithm" in Tempesta's sense with G = E^r, r = 1 - s, and the
@@ -6,7 +6,7 @@ formal group law G(G^-1 x + G^-1 y) = B_r(x, y), the rung-r operation.
 
 Forms tested (r = 1 - s throughout):
   T_s(p)       = sum p_i ln_s(1/p_i)                 trace form (Tempesta's universal-group form)
-  H_{s,a}(p)   = ln_s(D_a(p)) = E^r(R_a(p))          supernatural log of the Hill number
+  H_{s,a}(p)   = ln_s(D_a(p)) = E^r(R_a(p))          hypernatural log of the Hill number
                                                      (= Jensen-Tempesta's non-trace form, eq. 14)
   Z_{s,a}(p)   = ln_s(sum p^a)/(1-a)                 Tempesta's Z-entropy with this G
   Esc_{s,q}(p) = sum P_i ln_s(1/p_i), P = p^q/sum p^q   escort form

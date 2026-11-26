@@ -1,6 +1,6 @@
 # DRAFT · Named functions: the hypernatural pair, what each shape carries, and the names that already exist
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra). The rename to hypernatural logarithm is adopted (Brennan's yes); the name hypernatural exponential is proposed here, not adopted, and the rename is not yet applied across the files listed in section 4.
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan (timeline, Nov 26): find "really useful functions like the supernatural logarithm", where "functions" is loose and "could be an operation with a generator", and see "if there's any other ones that could be identified and named"; "our system needs to be coherent and … probably will have some functions and operations that are unique"; "check the literature to see if there's already a name" for the inverse, and whether "natural exponent" is a real term. Then: the supernatural logarithm is renamed the **hypernatural logarithm**, and "is it also a concept that exists in the other shapes?"
 Builds on `operations-catalog/` (23 moves, already named; not repeated here), `fractional-rungs/e-every-height/` (the log itself), `polar-recast/` section on the super log, `why-i/cayley-klein/`, `combinatorics/`, `affine-names/` (dial letters k, d, p, C; curvature is the reading −Δ/4).
 Checks: `checks.py` → `checks_output.txt`, **33 of 33 pass** (mpmath, 40 digits; about 6 seconds). Generic height flows: `flows.py`. Pictures: `figures.py` → `figures/`. No Lean in this pass. Colour key: **blue = ours, orange = existing name, grey = the cube.**
@@ -81,7 +81,7 @@ polar-recast found that **no shape carries the cube's ln⁽ˢ⁾**: the rung-s o
 
 ## 2. The inverse and the notation
 
-**Recommended name: hypernatural exponential, exp⁽ˢ⁾(t) = 1 + Eˢ(t).** Reasons:
+**Adopted name (Brennan, Nov 26): hypernatural exponential, exp⁽ˢ⁾(t) = 1 + Eˢ(t).** Reasons it was recommended:
 
 1. It mirrors a real pair. Textbooks call eˣ the natural exponential function, the inverse of the natural log (Stewart §6.3; Whitman calculus §9.3).
 2. The nearest published family pairs the words the same way. Bagayoko and van der Hoeven ("Surreal numbers as hyperseries", arXiv 2310.14879, 2023) define the **hyperlogarithm of strength γ**, L_γ, and its inverse, the **hyperexponential of strength γ**, E_γ. For whole γ = n, L_n is log applied n times. Theirs differ from ours in two ways: strengths are ordinals only, and they are not fused (their L₂ is log log X; our ln⁽²⁾ is log(1 + log X), which keeps the curve through (1, 0) with slope 1). The word "natural" carries both differences: base e, and the fusing. Cite them as the nearest prior work.
@@ -130,18 +130,17 @@ polar-recast found that **no shape carries the cube's ln⁽ˢ⁾**: the rung-s o
 
 ---
 
-## 4. Files that still say "supernatural logarithm"
+## 4. Rename to "hypernatural logarithm": applied Nov 26
 
-For the rename to "hypernatural logarithm" (not edited here):
+"Supernatural" was replaced by "hypernatural" in these twelve files (case kept; figure titles regenerated):
 
-- `fractional-rungs/e-every-height/README.md` (7 mentions), `fractional-rungs/e-every-height/figures.py` (1)
+- `fractional-rungs/e-every-height/README.md` (7 mentions, plus a rename note under the title), `fractional-rungs/e-every-height/figures.py` (1)
 - `height-flow/README.md` (1), `height-flow/figures.py` (1), `height-flow/height_entropy.py` (2)
 - `operations-catalog/README.md` (1)
 - `polar-recast/README.md` (3), `polar-recast/literature/superlog_shapes.py` (2)
 - `bridge-survey/bridges.csv` (2), `bridge-survey/bridges.json` (5), `bridge-survey/raw/math.tsv` (1), `bridge-survey/raw/shapes-applied.tsv` (1)
-- Task notes (not published): two working-notes files under `.task-notes/`.
-- Pages: the e-every-height page and any published page built from the folders above; the Dial names page if it mentions it.
-- Project memory and the repo copy of these folders.
+
+Not changed here: published pages built from those folders (the e-every-height page and any other that names it), two task-notes files, project memory, and the repo copy until the push thread pushes.
 
 ## Polish
 

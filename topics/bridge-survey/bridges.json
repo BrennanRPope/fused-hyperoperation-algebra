@@ -7297,18 +7297,18 @@
 },
 {
 "id": "M261",
-"our_side": "e at every rung height e_s = 1 + E^s(1) and the supernatural log ln_s",
+"our_side": "e at every rung height e_s = 1 + E^s(1) and the hypernatural log ln_s",
 "their_side": "Tsallis q-logarithm (agrees to second order, differs at third)",
 "field": "analysis",
 "verdict": "POSSIBLY-NEW",
 "source_cited": "Tsallis 1988; Borges 2004; Bennett 1915 (nearest for B_s)",
 "folders": "fractional-rungs; e; information-theory; README.md (repo root)",
-"note": "Ours: e_s, 1/n error law, ln_s(XY) = B_(1-s)(ln_s X, ln_s Y), composition ln_(s+t) = ln_s(1 + ln_t) which Tsallis lacks; proposed height-composable entropy family; height 1 only height where no-event floor hits 0 exactly; our side in full: e at every rung height e_s = 1 + E^s(1) (n-cube build) and the supernatural log ln_s(X) = E^-s(X - 1); their side in full: Tsallis q-logarithm (agrees at s = q = 0, 1 and to second order, bend -s; differs at third order)",
+"note": "Ours: e_s, 1/n error law, ln_s(XY) = B_(1-s)(ln_s X, ln_s Y), composition ln_(s+t) = ln_s(1 + ln_t) which Tsallis lacks; proposed height-composable entropy family; height 1 only height where no-event floor hits 0 exactly; our side in full: e at every rung height e_s = 1 + E^s(1) (n-cube build) and the hypernatural log ln_s(X) = E^-s(X - 1); their side in full: Tsallis q-logarithm (agrees at s = q = 0, 1 and to second order, bend -s; differs at third order)",
 "src": "math",
 "node": "Analysis & dynamics",
 "hub": "Cube corners & weights",
 "v": "POSSIBLY-NEW",
-"key": "e at every rung height e s   1   e s 1  and the supernatural log ln s tsallis q logarithm  agrees to second order  differs at third ",
+"key": "e at every rung height e s   1   e s 1  and the hypernatural log ln s tsallis q logarithm  agrees to second order  differs at third ",
 "dup": false
 },
 {
@@ -8833,7 +8833,7 @@
 },
 {
 "id": "S47",
-"our_side": "Supernatural log ln_s is the logarithm of the height-s formal group law B_s",
+"our_side": "Hypernatural log ln_s is the logarithm of the height-s formal group law B_s",
 "their_side": "Lazard's formal group law framework",
 "field": "algebra",
 "verdict": "FRAMING",
@@ -8844,7 +8844,7 @@
 "node": "Formal groups & algebra",
 "hub": "Rungs & height flow",
 "v": "FRAMING",
-"key": "supernatural log ln s is the logarithm of the height s formal group law b s lazard s formal group law framework",
+"key": "hypernatural log ln s is the logarithm of the height s formal group law b s lazard s formal group law framework",
 "dup": false
 },
 {

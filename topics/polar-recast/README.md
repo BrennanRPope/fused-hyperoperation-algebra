@@ -1,6 +1,6 @@
 # DRAFT · Everything we have proved, read in the polar coordinates
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "Please look at every thing we have proved in the lens of the polar hyper coordinate
 system", and then: "And please use the right shape for the job."
 
@@ -402,9 +402,9 @@ a circle below addition and a hyperbola above it. Middle: the rung leaves that s
 which is zero only at heights 0 and 1. Right: the same fixed-point sum for CP² with five random torus weights; the
 two shapes give one number every time, and rung 2 wobbles.*
 
-Builds on `../fractional-rungs/e-every-height/` (the supernatural log ln_s(X) = E^−s(X − 1), E = e^x − 1).
+Builds on `../fractional-rungs/e-every-height/` (the hypernatural log ln_s(X) = E^−s(X − 1), E = e^x − 1).
 
-- **The supernatural log is a radius, in exactly our sense.** Each rung operation B_s(x, y) = E^s(E^−s x + E^−s y)
+- **The hypernatural log is a radius, in exactly our sense.** Each rung operation B_s(x, y) = E^s(E^−s x + E^−s y)
   is a one-dimensional formal group law, and its logarithm is E^−s. So ln_s is the radius of the height-s operation,
   just as log(1 + kx)/k is the radius of the dial-k operation. The framework is known (Lazard); applying it to
   B_s is ours.
@@ -415,7 +415,7 @@ Builds on `../fractional-rungs/e-every-height/` (the supernatural log ln_s(X) = 
 - **Shapes are rigid; rungs are not.** Any ruler defines a genus. Musin's theorem says the rigid ones are exactly the
   plane-dial shapes, and the right panel shows rung 2 failing it numerically.
 - **Where the super log comes from: changing shape.** Climbing one rung is conjugating by e^x − 1, which carries the
-  height-s operation to height s + 1. That is the change from one shape to the next. The supernatural log is that
+  height-s operation to height s + 1. That is the change from one shape to the next. The hypernatural log is that
   change done s times. What makes "s times" unique for fractional s is the pinch point at zero, the parabolic fixed
   point behind our horn fingerprints (Szekeres, Écalle). That part is known.
 - **A consequence (ours, short argument).** For fractional s the operation B_s has no convergent power series at 0.

@@ -137,7 +137,7 @@ E^t is "do eˣ − 1 t times" for real t. Known: regular iteration at a paraboli
 
 ![Figure 14](figures/fig14-height-s-operation.png)
 
-B_s(a, b) = E^s(E^(−s)a + E^(−s)b) is (E^s)₊(+): addition transported by the height flow. Its corner weight at 0 is s (`regular_iteration_output.txt`). **No standard name was found for this family.** **Proposed shorthand (ours): a +⁽ˢ⁾ b**, "addition at height s", with +⁽⁰⁾ = + and +⁽¹⁾ = ∘₁. The superscript matches E^s and keeps it apart from the dial subscript in ∘ₖ (a +⁽²⁾ b is not a ∘₂ b). The reason to change: B₂ in a mathematician's eye is the Bernoulli number 1/6, and the library already has `Bernoulli` theorems. The supernatural logarithm lnₛ(x) = E^(−s)(x − 1) from the other thread is then simply the logarithm of +⁽ˢ⁾ composed with the inverse lift.
+B_s(a, b) = E^s(E^(−s)a + E^(−s)b) is (E^s)₊(+): addition transported by the height flow. Its corner weight at 0 is s (`regular_iteration_output.txt`). **No standard name was found for this family.** **Proposed shorthand (ours): a +⁽ˢ⁾ b**, "addition at height s", with +⁽⁰⁾ = + and +⁽¹⁾ = ∘₁. The superscript matches E^s and keeps it apart from the dial subscript in ∘ₖ (a +⁽²⁾ b is not a ∘₂ b). The reason to change: B₂ in a mathematician's eye is the Bernoulli number 1/6, and the library already has `Bernoulli` theorems. The hypernatural logarithm lnₛ(x) = E^(−s)(x − 1) from the other thread is then simply the logarithm of +⁽ˢ⁾ composed with the inverse lift.
 
 ![Figure 15](figures/fig15-climb.png)
 

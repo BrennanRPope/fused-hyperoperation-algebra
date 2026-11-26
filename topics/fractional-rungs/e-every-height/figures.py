@@ -66,7 +66,7 @@ ax.annotate("every curve passes (1, 0)\nwith slope 1; its bend there is -s", (1.
 ax.annotate("dots: ln_s(e_s) = 1", (4.2, 1.08), fontsize=10, color=INK)
 ax.set_xlim(0, 7); ax.set_ylim(-2, 3)
 ax.set_xlabel("X"); ax.set_ylabel("ln_s(X) = E^-s(X - 1)")
-ax.set_title("The supernatural logarithm ln_s: one family,\ncontinuous in the height s")
+ax.set_title("The hypernatural logarithm ln_s: one family,\ncontinuous in the height s")
 ax.legend(frameon=False, fontsize=8.5, loc="lower right")
 ax = axs[1]
 X = np.linspace(0.3, 6, 400)

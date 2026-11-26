@@ -36,7 +36,7 @@ for s in [-0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 3.0]:
     y = he.ln_s(s, X)
     ax[0].plot(X, y, color=hcol(s), label=f"s = {s:g}" + {0.0: "  (X − 1)", 1.0: "  (ln X)", 2.0: "  (ln(1+ln X))"}.get(s, ""))
 ax[0].set_ylim(-0.2, 7.5); ax[0].set_xlabel("X  (1/p, or a number of states)"); ax[0].set_ylabel("ln_s(X)")
-ax[0].set_title("A. Supernatural logs on X ≥ 1 (all start at (1, 0), slope 1)")
+ax[0].set_title("A. Hypernatural logs on X ≥ 1 (all start at (1, 0), slope 1)")
 ax[0].legend(fontsize=8.5, loc="upper left")
 t = np.linspace(0, 3, 300); r = 0.5
 ax[1].plot(t, t, color=INK2, lw=1.2, ls=":", label="G(t) = t  (Shannon / Rényi, known)")

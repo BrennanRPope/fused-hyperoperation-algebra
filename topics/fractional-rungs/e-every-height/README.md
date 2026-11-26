@@ -1,4 +1,6 @@
-# e and the supernatural logarithm at every rung height
+# e and the hypernatural logarithm at every rung height
+
+*Renamed Nov 26 2026: "supernatural logarithm" is now the **hypernatural logarithm** (Brennan); its inverse is the **hypernatural exponential** exp⁽ˢ⁾(t) = 1 + Eˢ(t). See `../../named-functions/`.*
 
 *Nov 25, 2026. Brennan asked on a call whether a function gives e at any rung height, continuously, and whether it has a closed form. Checks: `e_every_height.py`, **26 of 26 pass** (`e_every_height_output.txt`). Pictures: `figures.py`. Builds on `../regular_iteration.py` (the flow E^t, 16/16) and `../../e/` (e from the n-cube).*
 
@@ -42,7 +44,7 @@ B_s is addition seen through E^s, so combining x with itself n times at height s
 
 ![closed forms](figures/f4_closed_forms.png)
 
-## The supernatural logarithm
+## The hypernatural logarithm
 
 Brennan's name (informal) for the log that goes with e_s:
 
@@ -57,13 +59,14 @@ It is one family, continuous in the real height s, not a separate log per rung. 
 - **Heights compose:** ln_(s+t)(X) = ln_s(1 + ln_t(X)), and ln_s(e_(s+t)) = e_t − 1 (ours, exact by construction).
 - **It turns ordinary multiplication into the rung-(1 − s) operation:** ln_s(X·Y) = B_(1−s)(ln_s X, ln_s Y). At s = 1 that is "log turns × into +"; at s = 0 it is "X − 1 turns × into a + b + ab" (ours).
 
-![supernatural log family](figures/f3_ln_family.png)
+![hypernatural log family](figures/f3_ln_family.png)
 
-**Name check.** "Supernatural logarithm" is not an established term (web search, Nov 25). Neighbours it must not be confused with:
-- *super-logarithm* (slog): the inverse of tetration, i.e. the Abel function of e^x. Ours is not that; the matching object here is Φ, the Abel function of e^x − 1, our "rung ruler". The relation is ln_s(X) = Ψ(Φ(X − 1) − s): the supernatural log at height s steps down s rungs on that ruler.
+**Name check.** "Hypernatural logarithm" is not an established term (web search, Nov 25). Neighbours it must not be confused with:
+- *super-logarithm* (slog): the inverse of tetration, i.e. the Abel function of e^x. Ours is not that; the matching object here is Φ, the Abel function of e^x − 1, our "rung ruler". The relation is ln_s(X) = Ψ(Φ(X − 1) − s): the hypernatural log at height s steps down s rungs on that ruler.
 - *super-logarithms* in analysis (e.g. Caffarelli–Kohn–Nirenberg papers): infinitely iterated logs. Different.
 - *regular iteration / iterative logarithm*: the machinery underneath (Szekeres, Écalle, Julia). Known.
-- *Tsallis q-logarithm* (1988; q-product, Borges 2004): the closest known cousin (right panel above). Ours and Tsallis' agree exactly at s = q = 0 and s = q = 1, and to second order (same bend −s) at every height; they part at third order (ours u − (s/2)u² + (s²/4 + s/12)u³, Tsallis u − (q/2)u² + (q(q+1)/6)u³). The project already reads Tsallis' family as the corner dial k = 1 − q; the supernatural log is the other direction, height. What Tsallis' family lacks is the composition law ln_(s+t) = ln_s(1 + ln_t).
+- *Tsallis q-logarithm* (1988; q-product, Borges 2004): the closest known cousin (right panel above). Ours and Tsallis' agree exactly at s = q = 0 and s = q = 1, and to second order (same bend −s) at every height; they part at third order (ours u − (s/2)u² + (s²/4 + s/12)u³, Tsallis u − (q/2)u² + (q(q+1)/6)u³). The project already reads Tsallis' family as the corner dial k = 1 − q; the hypernatural log is the other direction, height. What Tsallis' family lacks is the composition law ln_(s+t) = ln_s(1 + ln_t).
+- *Bennett's commutative hyperoperations* (A. A. Bennett, "Note on an operation of the third grade", Annals of Math. 17(2), 1915, 74–75): the nearest prior work for B_s. Bennett climbs rungs by transporting with exp (+, ×, a^(log b), …); ours transports with E = eˣ − 1 = (x ↦ x − 1) ∘ exp, so the identity stays 0 at every height. Known; added Nov 25 from the operations catalog (`../../operations-catalog/`).
 
 ## Where e_s and ln_s could be used across the work
 
@@ -84,7 +87,7 @@ Each line: what swapping in the height-s version means, whether it is real or a 
 ## Known vs ours
 
 - **Known:** regular iteration of e^x − 1 (Szekeres 1958, Écalle, Lévy 1928), divergence of the formal fractional iterates (Baker; Szekeres 1963), Julia's iterative logarithm and its divergent series (Erdős–Jabotinsky 1960), extended Fatou parametrizations, Tsallis q-logarithm and q-product (Tsallis 1988, Borges 2004), resurgence and renormalons.
-- **Ours:** e_s = 1 + E^s(1) from the n-cube build and its 1/n error law; the supernatural logarithm as a named family with bend −s, the composition law, and ln_s(XY) = B_(1−s); applying the entire-in-s argument to e_s and its Taylor coefficients; the comparison with Tsallis; the survey readings (entropy family, running-coupling reading, 2π question, Poisson floor).
+- **Ours:** e_s = 1 + E^s(1) from the n-cube build and its 1/n error law; the hypernatural logarithm as a named family with bend −s, the composition law, and ln_s(XY) = B_(1−s); applying the entire-in-s argument to e_s and its Taylor coefficients; the comparison with Tsallis; the survey readings (entropy family, running-coupling reading, 2π question, Poisson floor).
 - **Not done:** no Lean (the integer-height identities are already covered by `../lean/` and the e page); item 3 is unchecked.
 
 ## Files

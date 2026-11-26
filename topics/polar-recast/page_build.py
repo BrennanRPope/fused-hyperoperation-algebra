@@ -36,7 +36,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Everything we have proved, read in the polar coordinates</h1>
-<p>Hypercube Composition Theory. Every proved family recast in the many-dimensional polar system, each with the shape that fits it, sorted by what the polar view does to it. Orange in the pictures is known math; blue is ours.</p></header>
+<p>Affine Composition Theory. Every proved family recast in the many-dimensional polar system, each with the shape that fits it, sorted by what the polar view does to it. Orange in the pictures is known math; blue is ours.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))
