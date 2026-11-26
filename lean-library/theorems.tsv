@@ -2978,6 +2978,16 @@ FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_disc	propext, 
 FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_factor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_factor_disc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.barrier_sq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.conj_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.conj_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.fused_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.fused_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.heat_pair_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.heat_pair_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.pointwise_fixes_zeros	
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.real_ring	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.turned_ring	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound

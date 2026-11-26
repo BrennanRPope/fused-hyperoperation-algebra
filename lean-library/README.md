@@ -4,7 +4,7 @@ One library for every Lean proof in the project, all built on one base of
 circle-operation laws, so each new proof starts from the same foundation.
 
 **Status (Nov 26, 2026):** all 145 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3519 theorems, none uses `sorry`, and every one uses only
+(no mathlib). 3529 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -177,6 +177,7 @@ Topics (each imports the foundation):
 | `Topics/HyperLadder` | hyperoperation-ladder (written in the library) | 80 theorems, first compile Nov 26 (DRAFT topic): rung n is Goodstein's H_n read through x ↦ 1 + x, uniqueness, Knuth arrows, and every law at every rung: commutative/associative ⟺ rung 1 or 2, identity ⟺ rung 2, distributivity over the rung below exactly (giant rungs by remainders mod 7); the height ladder B_s for any flow; the dial k rescaling. |
 | `Topics/Riemann` | riemann/lean/Riemann.lean | 10 theorems, first compile Nov 26 (DRAFT topic): the prime cube fold lifts to the Euler product, boson cube times fermion cube, the step identity's kernel side and the heat step, reciprocal roots of the local factor, no integer root on the elliptic side |
 | `Topics/RiemannElliptic` | riemann/elliptic-object/lean/EllipticObject.lean | 10 theorems and 1 definition, first compile Nov 26 (DRAFT topic): pairing degree-1 factors never reaches the elliptic side, the Cayley map without division, the pair factor on d = 1, Dickson traces and Li's term |
+| `Topics/RiemannRound3` | riemann/round3/lean/RiemannRound3.lean | 10 theorems, first compile Nov 26 (DRAFT topic, no proof changed; namespace set to `CircleOp.RiemannRound3`): the fused pair and its discriminant, a conjugate pair as a real fused point, the heat flow moving one pair's discriminant along a straight line, the ring averages adding v² or (turned by i) subtracting w², one barrier with a random phase, and pointwise steps keeping every zero |
 | `Topics/ForceReach` | force-reach/lean/ForceReach.lean (6 of 8; the file is stated against Mathlib) | 6 theorems, first compile Nov 26 (DRAFT topic): Δ as the squared spread, drift removal (m² = Δ/4), double root iff Δ = 0, Raychaudhuri as the law, the k = 0 curvature reading, Yukawa's effective dimension; `rung_mass` and `yukawa_reduced` need Mathlib and are left out |
 | `Topics/FluxTubeDial` | force-reach/flux-tube-dial/lean/FluxTubeDial.lean (8 of 9; the file is stated against Mathlib) | 8 theorems, first compile Nov 26 (DRAFT topic): the effective dimension from the field's exponent, Maxwell (s = 2) keeps D and a flux tube (s = 1) gives 1, the confinement threshold s = D/(D − 1) and its 3/2 in three dimensions, the Pagels–Tomboulis power δ = 1/4 lands on 3/2 and the map δ ↦ (2 + 4δ)/(1 + 4δ), confinement below the threshold; `gilbert_s1` needs Mathlib and is left out |
 | `Topics/Tunnelling` | tunnelling/lean/Tunnelling.lean | 10 theorems, first compile Nov 26 (DRAFT topic, no changes): the mean law at curvature K is ∘ with k = −2K, the piling-up lemma, the pair identity, the paths on the sphere, the direct path wins on the hyperbolic side, and the uniqueness of the continuum mean and log laws; the rewind adds the exact ∘ₖ rewind identity and the second rung's k = ±6 for barrier and mixer |
