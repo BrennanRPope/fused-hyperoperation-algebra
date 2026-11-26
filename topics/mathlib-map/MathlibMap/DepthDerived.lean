@@ -50,6 +50,7 @@ theorem chance_complement {t : ℝ} (ht : 0 < t) : (1 / t) / (1 + 1 / t) = 1 - t
   have h1 : 1 + t ≠ 0 := by positivity
   have h2 : t + 1 ≠ 0 := by positivity
   field_simp
+  ring
 
 /-- Resizing the corner shapes by `α`, `β` > 0 is undone by multiplying the odds by `α/β`: the effective
 weights on the original corners keep the ratio `t`, so the shape is the same up to size. -/
@@ -66,7 +67,8 @@ theorem face_to_temperature (y β : ℝ) :
     Tendsto (fun a : ℝ => (1 + y / a) ^ (β * a)) atTop (𝓝 (Real.exp (β * y))) := by
   have h0 : Tendsto (fun x : ℝ => (1 + y / x) ^ x) atTop (𝓝 (Real.exp y)) := by
     first
-    | exact tendsto_one_plus_div_rpow_exp y
+    | exact Real.tendsto_one_add_div_rpow_exp y
+    | exact tendsto_one_add_div_rpow_exp y
     | exact Real.tendsto_one_plus_div_rpow_exp y
   have h : Tendsto (fun a : ℝ => ((1 + y / a) ^ a) ^ β) atTop (𝓝 (Real.exp y ^ β)) :=
     h0.rpow_const (Or.inl (Real.exp_pos y).ne')
