@@ -166,6 +166,10 @@ terms that is the dial family per cell: the cell carries its velocity and its ow
 allowed to curve. Gravitational waves need the same extra structure, since a wave is a ripple in the lattice
 itself.
 
+**Update (Nov 26, `../spinning-river/`):** the turn was added and full Kerr comes out exactly. The lattice the cells
+move through stays flat (in oblate spheroidal coordinates); only the cells' own slices curve. So the limit above is
+about velocity alone, not about the flat lattice.
+
 ## 7. What went in, what came out
 
 ![inputs](figures/fig6_inputs.png)

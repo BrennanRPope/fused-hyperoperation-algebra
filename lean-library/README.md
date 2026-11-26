@@ -4,7 +4,7 @@ One library for every Lean proof in the project, all built on one base of
 circle-operation laws, so each new proof starts from the same foundation.
 
 **Status (Nov 26, 2026):** all 145 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3437 theorems, none uses `sorry`, and every one uses only
+(no mathlib). 3467 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -84,6 +84,7 @@ Topics (each imports the foundation):
 | `Topics/NSContinuum` | ns-continuum/lean/NSContinuum.lean | first compiled here |
 | `Topics/JetFields` | jet-fields/lean/JetFields.lean | |
 | `Topics/JetRiver` | gravity-from-theory/jet-river/lean/JetRiver.lean | 6 theorems, first compile Nov 26 (DRAFT topic): the river cell's second layer Q = 2ab + b² for the gradient diag(a, b, b), its vanishing when 2a = −b (the vacuum case), the Friedmann layer 3H², and Q along a line X + tY; `MultAdd` names updated to `CircleOp` |
+| `Topics/SpinningRiver` | gravity-from-theory/spinning-river/lean/SpinningRiver.lean | 4 theorems, first compile Nov 26 (DRAFT topic): the cell map's shear squares to zero, cell maps compose by adding shears, the shear keeps volume, Kerr's circular-orbit period cleared of roots |
 | `Topics/OsgoodInverse` | osgood-inverse/lean/OsgoodInverse.lean | first compiled here |
 | `Topics/LinearAlgebra` | linear-algebra/lean/LinearAlgebra.lean | first compiled here |
 | `Topics/DialSweep` | linear-algebra/lean/DialSweep.lean | first compiled here |
@@ -174,6 +175,9 @@ Topics (each imports the foundation):
 | `Topics/CutIndependence` | quantum-action/cut-independence/lean/CutIndependence.lean | 14 theorems, first compile Nov 26 (DRAFT topic): the swap rule's q exponents agree for either bracketing, the symmetry respects the swap rule exactly when p = q, Cassini's identity for the dial sequence, quantum dimensions and vertex weights at [2] = 1 and [2] = 0, the step matrix closing (M³ = −1, M² = −1), and 4 − k² = (2 − k)(2 + k) |
 | `Topics/YangMillsGap` | yang-mills-gap/lean/YangMillsGap.lean | 10 theorems, first compile Nov 26 (DRAFT topic): completing the square for 1 + kx + dx², no wall in the circle class (Δ < 0), the abelian plaquette is order-free while non-abelian links leave k²(AB − BA), the parity dial and two ratio checks; `lift_order_gap` expands the products by hand before `grind`, which does not normalize non-commutative products; `wAdd` updated to `circK` |
 | `Topics/HyperLadder` | hyperoperation-ladder (written in the library) | 80 theorems, first compile Nov 26 (DRAFT topic): rung n is Goodstein's H_n read through x ↦ 1 + x, uniqueness, Knuth arrows, and every law at every rung: commutative/associative ⟺ rung 1 or 2, identity ⟺ rung 2, distributivity over the rung below exactly (giant rungs by remainders mod 7); the height ladder B_s for any flow; the dial k rescaling. |
+| `Topics/Riemann` | riemann/lean/Riemann.lean | 10 theorems, first compile Nov 26 (DRAFT topic): the prime cube fold lifts to the Euler product, boson cube times fermion cube, the step identity's kernel side and the heat step, reciprocal roots of the local factor, no integer root on the elliptic side |
+| `Topics/RiemannElliptic` | riemann/elliptic-object/lean/EllipticObject.lean | 10 theorems and 1 definition, first compile Nov 26 (DRAFT topic): pairing degree-1 factors never reaches the elliptic side, the Cayley map without division, the pair factor on d = 1, Dickson traces and Li's term |
+| `Topics/ForceReach` | force-reach/lean/ForceReach.lean (6 of 8; the file is stated against Mathlib) | 6 theorems, first compile Nov 26 (DRAFT topic): Δ as the squared spread, drift removal (m² = Δ/4), double root iff Δ = 0, Raychaudhuri as the law, the k = 0 curvature reading, Yukawa's effective dimension; `rung_mass` and `yukawa_reduced` need Mathlib and are left out |
 | `Topics/Conventions` | names-review/lean/Conventions.lean | 7 theorems, first compile Nov 25: the weight-to-probability sign flip, both ring-theory circle conventions on the dial, (weights compose by k, probabilities by −k) and related notation facts; recommendations only, nothing renamed |
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |

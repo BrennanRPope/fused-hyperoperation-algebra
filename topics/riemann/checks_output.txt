@@ -1,0 +1,22 @@
+PASS A1 fold of ∘ₖ over p^-s lifts to the Euler product (10 rows) | max gap 0.0e+00
+PASS A2 product = zeta^k * G_k (primes < 2e5) | max rel gap 7.6e-07 (prime truncation)
+PASS A3 k=1 is zeta(s)/zeta(2s), k=-1 is 1/zeta(s) at s=2 | k=1 1.5198172 vs 1.5198178; k=-1 0.6079273 vs 0.6079271
+PASS A4 local zeros of the cube sit on Re s = log|k|/log p; none in the strip for |k| <= 1 | residual 4.0e-31; inside the strip: [(2, 3, 0.631), (2, 5, 0.431), (2, 7, 0.356), (2, 11, 0.289), (3, 5, 0.683), (3, 7, 0.565), (3, 11, 0.458)]
+PASS B1 Mertens walk M(10^7) = 1037 and |M(x)| < 0.6 sqrt(x) for 100 <= x <= 10^7 | M(1e7)=1037, max |M|/sqrt x = 0.5671
+PASS C1 genus 1 (y^2=x^3+x+1): every dial point (-a_p, p) is elliptic, Delta <= 0 | 428 primes < 3000, max Delta/4p = -0.0166
+PASS C2 genus 2 (y^2=x^5-x+1): L-polynomial splits into two real quadratics, both elliptic | 75 primes < 400
+PASS C3 point counts obey |N1 - p - 1| <= 4 sqrt p (genus 2) | consistency of the counts
+PASS C4 Frobenius angles follow the Sato–Tate curve (2/pi) sin^2 | chi^2 = 7.3 on 7 dof
+PASS D1 the push: M_1 = int_0^inf Xi = pi Phi(0) > 0 | M_1 = 2.80667940177769, pi Phi(0) = 2.80667940177769
+PASS D2 F_1(x) = (1/x) int_0^x Xi > 0 on [1, 100]; beyond, the wave is far below the push | min F_1 = 0.0281, int_100^140 |Xi| = 6.4e-31
+PASS D3 every zero found of F_1 and F_2 (Re < 60) is off the line, |Im| > 8 | F_1: 9 zeros, Im from 11.76 to 33.33; F_2: 9 zeros
+PASS D4 POLISH argument principle: F_1 has no zeros in [0.5, 60] x [-8, 8] | winding 0.000 (118 s)
+PASS D5 POLISH zeros of F_1 re-found from shifted starts | max move 0.0e+00
+PASS E1 at t = 0 the 18 sign changes of H_0 in [0,150] are the first 18 zeros, x = 2 gamma | max offset 0.115 (grid 0.25)
+PASS E2 for t >= -1.2 all 18 stay real; going down, they leave in pairs | count changes at t = ['-3.95', '-2.75', '-1.85', '-1.25']
+PASS E3 POLISH H_0.2 zero refined from a start off the line lands back on it | zero at (28.1536122884 + 4.43434979217e-57j)
+PASS E4 POLISH half the nodes still give x_1 = 2 gamma_1 | 28.269450283469387581 vs 28.269450283469387581
+PASS F1 even p keeps its zeros coming; non-even p stops, with the tail equal to the kink push | even: [18, 15] zeros in [0,40]; non-even (zeros, tail/push at 40): {'2.5': (1, 1.0025300054271362), '3': (3, 0.9999975391707302), '3.5': (3, 0.9992441008680355), '5': (10, 1.004179120561358)}
+PASS F2 POLISH p = 3: the last two real zeros are a close pair (about to leave the line) | zeros 7.822581766 and 8.148885877
+
+20 of 20 pass, 143 s

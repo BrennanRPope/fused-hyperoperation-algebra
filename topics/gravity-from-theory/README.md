@@ -197,6 +197,14 @@ velocity alone to first order (swirl 2J/r³, frame dragging) but not at second o
 cells must also carry a rotation (Hamilton–Lisle). The Q law is Einstein's known energy constraint (ADM); the old
 bridge survives as one structural input (flat cube lattice, own clocks). 19/19 checks.
 
+**Follow-up 5 (Nov 26): `spinning-river/README.md`.** Give each river cell a turn as well as a velocity and full Kerr
+comes out exactly (field equations to 50 digits, Kerr's curvature invariant). The lattice stays flat, laid out in
+squashed spheres. The turn is forced in size, shape and speed law. The cells obey the same zero-energy rule. The turn
+shows up as a clock gap of 2πa per lap, which is Kerr's known clock effect (T₊ − T₋ = 4πa). The page also maps all 17
+ideas of a frame on our pages along the dial, one law turn = d × area, and adds Larmor's theorem (its ½ is the ½ of
+frame dragging's gyroscope rule) and spinning fluids (sound sees a river; a vortex drags waves but with negative Q,
+and fluids lack the turn, so no fluid makes full Kerr). 22/22 checks.
+
 ### N.4 A dead end checked in passing
 
 The union rule ∘₋₁ is the rule for overlapping shadows, which is Le Sage's 1748 "shadow" theory of gravity: it gives

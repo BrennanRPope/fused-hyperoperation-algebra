@@ -1575,6 +1575,12 @@ FusedAlgebra.Topics.Finance	FinanceCircle.pow_le_pow'	propext, Classical.choice,
 FusedAlgebra.Topics.Finance	FinanceCircle.pow_nonneg'	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Finance	FinanceCircle.power_mean	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Finance	FinanceCircle.sq_nonneg'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ForceReach	CircleOp.ForceReach.curvature_reading_k0	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ForceReach	CircleOp.ForceReach.disc_is_spread_sq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ForceReach	CircleOp.ForceReach.double_root_iff_border	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ForceReach	CircleOp.ForceReach.drift_removal	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ForceReach	CircleOp.ForceReach.raychaudhuri_is_law	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ForceReach	CircleOp.ForceReach.yukawa_deff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractalBoxes	FractalBoxes.code_inj	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractalBoxes	FractalBoxes.code_lt	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractalBoxes	FractalBoxes.cube_layers	propext, Classical.choice, Quot.sound
@@ -2919,6 +2925,26 @@ FusedAlgebra.Topics.RepetitionDial	RepetitionDial.semion_no_constant_k	propext, 
 FusedAlgebra.Topics.RepetitionDial	RepetitionDial.semion_one_density	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RepetitionDial	RepetitionDial.two_thirds_negative	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RepetitionDial	RepetitionDial.unlimited_when_nonpos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.boson_times_fermion	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.cubeFold_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.cubeFold_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.elliptic_no_int_root	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.genus1_p5_elliptic	
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.heat_step_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.int_sq_nonneg	propext
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.localFactor_reciprocal	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.prodL_map_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Riemann	CircleOp.Riemann.step_identity_kernel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.cayley_circle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.dickson_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.genus1_p25_count	
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.genus1_p5_elliptic'	
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.li_term	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.mirror_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_factor_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_product	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound
@@ -3084,6 +3110,10 @@ FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.theta2_free_face	propext, Classi
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.three_body_roads	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_nonneg	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_zero_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.cellMap_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_period	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_layers	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_sq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_congr	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_const	propext, Classical.choice, Quot.sound

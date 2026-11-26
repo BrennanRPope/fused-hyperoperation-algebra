@@ -1,0 +1,57 @@
+== A. The law's own linear form
+PASS  A1 Riccati: x = -u'/(d u), u'' - k u' + d u = 0  =>  x' = 1 + k x + d x^2
+PASS  A2 drift removed: w'' = (k^2 - 4d)/4 * w = (Delta/4) w
+PASS  A3 line class (k=3, d=1): flow reaches its wall exponentially, rate sqrt(Delta)   [rate 2.236037 vs sqrt5 = 2.236068]
+PASS  A4 border (k=2, d=1, Delta=0): approach is a power law, slope -1 (no reach scale)   [log-log slope -0.99661]
+PASS  A5 circle class (k=1, d=1): ruler closes with length 2 pi / sqrt(-Delta)   [3.627598728468]
+PASS  A6 Raychaudhuri theta' = -K - theta^2 is the law x' = 1 + K x^2 (k=0, d=K)
+PASS  A6b its curvature reading -Delta/4 equals the Jacobi curvature K
+PASS  A7 point-source spreads: sin (K>0), r (K=0), sinh (K<0) solve R'' = -K R
+== B. Carrier mass is a reading of the same dials
+PASS  B1 e^{-mr}/(4 pi r) solves nabla^2 phi = m^2 phi (r>0); reduced u = r phi obeys u'' = m^2 u
+PASS  B2 Fourier of 1/(q^2 + m^2) is e^{-mr}/(4 pi r) (4 settings)   [max rel err 1.1e-16]
+PASS  B3 D-dim massive Green's function: exact e^{-mr}/(4 pi r) at D=3; m->0 gives Gamma(D/2-1)/(4 pi^{D/2} r^{D-2})   [max rel dev at m=1e-12: 1.1e-06 (approach is slow, like (mr)^(D-2), at D=2.5)]
+PASS  B3b far decay rate is m in every dimension (after the r^{-(D-1)/2} power)   [0.9999, 1.0000, 1.0002, 1.0006]
+PASS  B4 3D: d ln G / dr = -1/r - m exactly: the power (dimension dial) and the screening add
+PASS  B5 Yukawa: D_eff(r) = 3 + m^2 r^2/(1 + m r): 3 near, grows without bound far   [(m**2*r**2 + 3*m*r + 3)/(m*r + 1)]
+PASS  B5b massless: D_eff = 3 at every r
+PASS  B6 Green's function of -w'' + (Delta/4) w falls at m = sqrt(Delta)/2 (reach 2/sqrt Delta), on a grid   [(3.0,1.0): 1.11803 vs 1.11803; (2.0,0.5): 0.70711 vs 0.70711; (4.0,-1.0): 2.23602 vs 2.23607; (1.0,0.1): 0.38730 vs 0.38730]
+PASS  B7 H^3 (curvature -s^2): s(coth(sr) - 1)/(4 pi) is harmonic (r>0)
+PASS  B7b near the source it is Coulomb 1/(4 pi r)
+PASS  B7c far away it falls like e^{-2 s r}: negative curvature screens with mass (D-1) sqrt(kappa)   [1.4000000000 vs 1.4]
+PASS  B7d e^{-sr}/sinh(sr) is also harmonic on H^3 (same function up to a factor 2 e^{...})
+== C. A closed direction: massless zero mode plus massive rungs
+PASS  C1 images on the circle = sum over rungs n of e^{-|n| sqrt(-Delta) r}/(4 pi r P) = coth(pi r/P)/(4 pi r P)   [max rel err 2.6e-05]
+PASS  C1b rung masses are n sqrt(-Delta): mu = 2 pi / P   [mu = 1.732050807569]
+PASS  C2 far away only rung 0 survives (1/(4 pi r P): 3D Coulomb, infinite reach); rung 1 is e^{-sqrt3 r}   [coth-1 = 6.134e-05]
+== D. Confinement: flux that keeps one open direction
+PASS  D1 dimension dial at D=1: pull 1/(S_1 r^0) = 1/2 per unit charge, constant: potential grows linearly
+PASS  D2 tube pull: wall-mode sum and image sum agree where both converge   [max rel diff 1.9e-04]
+PASS  D2b tube: D_eff runs from 3 near the charge to 1 far away   [D_eff near 3.0000, far 1.000000]
+PASS  D2c tube far pull = flux / (2 x area): constant, so the potential is linear (string tension)   [0.500000000000046]
+PASS  D2d tube: the sideways rungs are massive (rate 2 pi / a for a centred charge): only rung 0 reaches far   [6.2831854602]
+PASS  D3 no constant curvature keeps a point source's area fixed: R' vanishes only at isolated points (sphere's equator)   [sphere K=1: R'=0 at r = [pi/2, 3*pi/2]]
+== E. A tube made by screening sideways (London / Abrikosov)
+PASS  E1 m=0.5: B = Phi m^2 K0(m rho)/(2 pi) carries flux Phi and has rms radius 2/m   [flux 1.000000000006, rms 4.0000000000 vs 4.0]
+PASS  E1 m=1.0: B = Phi m^2 K0(m rho)/(2 pi) carries flux Phi and has rms radius 2/m   [flux 1.000000000000, rms 2.0000000000 vs 2.0]
+PASS  E1 m=2.0: B = Phi m^2 K0(m rho)/(2 pi) carries flux Phi and has rms radius 2/m   [flux 1.000000000000, rms 1.0000000000 vs 1.0]
+PASS  E2 K0(m rho) solves (nabla^2 - m^2) B = 0 off the core (2D radial)
+PASS  E3 sideways tail e^{-m rho}/sqrt(rho): the same mass m as a Yukawa field   [rate 0.99987]
+PASS  E4 tube tension sigma = (Phi^2 m^2 / 4 pi) (m xi) K0(m xi) K1(m xi) ~ (Phi^2 m^2/4 pi) ln(1/(m xi))   [0.37560664/0.37560664; 0.09390166/0.09390166; 1.50242655/1.50242655]
+PASS  E5 one mass sets both: width 2/m and tension ~ m^2 (x log): doubling m gives ~4x tension   [ratio 3.4108]
+== F. The forces placed (reach = hbar c / mc^2)
+   reach of W: 0.00245526 fm
+   reach of Z: 0.00216396 fm
+   reach of pi+-: 1.41382 fm
+   reach of pi0: 1.46193 fm
+   photon: mass below 1e-18 eV  ->  reach above 1.97e+11 m
+   graviton: mass below 2.42e-23 eV  ->  reach above 8.15e+15 m
+   quark string tension sigma ~ (440 MeV)^2 = 981 MeV/fm = 157 kN
+PASS  F1 W reach is under 1/500 of the pion's   [575.8]
+== P. Polishing (30 digits)
+PASS  P1 Fourier Yukawa at 30 digits   [1.43e-31]
+PASS  P2 line-class wall rate = sqrt(Delta) to 30 digits (moved from fit)   [2.2360679774997896964; fit was 2.236037, moved 3.1e-05]
+PASS  P3 tube tension closed form at 30 digits   [1.31e-31]
+PASS  P4 tube flux = Phi at 30 digits   [0.0]
+
+TOTAL: 41 pass, 0 fail

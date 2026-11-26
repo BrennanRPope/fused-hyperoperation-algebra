@@ -155,10 +155,9 @@ same split as our dial's three regimes.
 - `checks.py` → `checks_output.txt`, `results.json` (11 of 11 pass, about 10 s)
 - `polish.py` → `polish_output.txt` (50-digit rerun)
 - `figures.py` → `figures/fig1` … `fig8`
-- `lean/CutIndependence.lean`: 14 theorems (plane associativity, p = q, Cassini for the dial
+- `lean/CutIndependence.lean`: 14 theorems, compiled in the library as `FusedAlgebra.Topics.CutIndependence` (Nov 26, no changes needed) (plane associativity, p = q, Cassini for the dial
   sequence, truncation and w² at the two roots of unity with whole-number [2], the step matrix closing,
-  q = 1 never truncating). Compiled in the shared library on Nov 26 as `FusedAlgebra.Topics.CutIndependence`; every statement also mirrored in
-  `lean_identities_check.py` (11 of 11). The q-binomial theorem and the U_q(sl2) commutator are already
+  q = 1 never truncating). Every statement is also mirrored in `lean_identities_check.py` (11 of 11). The q-binomial theorem and the U_q(sl2) commutator are already
   in the library (`QAcross/QCounting.lean`) and are not repeated.
 
 ## References

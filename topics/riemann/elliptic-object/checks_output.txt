@@ -1,0 +1,33 @@
+PASS G1 pairing lemma: (1 - a u)(1 - b u) = 1 + k u + d u^2 with Delta = k^2 - 4d = (a - b)^2 >= 0 (exact)
+PASS G2 zeta factor paired with its mirror, (1 - u)(1 - p u): Delta = (p - 1)^2 > 0 and k_hat <= -2.12 for all 45 primes < 200   [max k_hat -2.1213]
+PASS G3 complex character with its conjugate: 1 - 2Re(chi(p)) u + u^2 has Delta <= 0 (elliptic) and d = 1, roots on |u| = 1 (Re s = 0); mod 5 and mod 7, 90 factors
+PASS G4 y^2 = x^3 + x + 1: every good prime < 3000 has |a_p| <= 2 sqrt(p) (Hasse), 428 primes
+PASS G5 Cayley map z = 1 - 1/rho: |z| = 1 on Re rho = 1/2, and z(1 - rho) = 1/z(rho) (exact)
+PASS G6 converse: |z| = 1 exactly when Re rho = 1/2 (|rho - 1|^2 - |rho|^2 = 1 - 2 Re rho)
+PASS G7 on the line, k = -(z + 1/z) = -2 + 1/|rho|^2 (exact)
+PASS G8 curvature d - k^2/4 of a pair = g^2/(g^2 + 1/4)^2 with complex height g (rho = 1/2 + i g); real > 0 iff g real (exact)
+PASS G9 5,000 zeros: every Cayley dial point inside the elliptic segment, |k| < 2, and k + 2 = 1/|rho|^2 to 1e-15   [max |k| = 1.9999999663]
+PASS G10 toy off-line zeros: k is not real (Im k != 0) and |z| != 1; toy real zeros in (1/2, 1): k > 2 (hyperbolic)
+PASS G11 trivial zeros s = -2m read through the Cayley map: k < -2 (hyperbolic), approaching -2   [k(m=1) = -2.1667, k(m=40) = -2.000154]
+PASS G12 lambda_1 = 1 + gamma/2 - log(4 pi)/2 to 25 digits (Cauchy integral of log xi, no zeros used)   [0.02309570896612103381431]
+PASS G13 lambda_2 matches the closed form 1 + gamma - gamma^2 - 2 gamma_1 - log 4pi + pi^2/8 (Stieltjes gamma_1)   [0.092345735228046670386]
+PASS G14 lambda_n > 0 for every n = 1..1000 (from zeta itself)   [min 0.023095709]
+PASS G15 the same lambda_n rebuilt from the dial points: 2 sum (1 - T_n(-k/2)) over 5,000 zeros + density tail agrees to 1e-5 relative, n <= 1000   [max rel diff 6.79e-06]
+PASS G16 Chebyshev form = Li form term by term: 2(1 - T_n(1 - 1/(2|rho|^2))) = 2 - z^n - z^-n (n = 37, 200 zeros)   [23.9215130372]
+PASS G17 lambda_n - (n/2)(log n - 1 + gamma - log 2pi) stays within 1 x sqrt(n) for 10 <= n <= 1000 (trend matches)   [max |resid|/sqrt(n) = 0.655]
+PASS G18 the same Chebyshev shape over F_5: #E(F_5^n) = 5^n + 1 - 2*5^(n/2) T_n(a/(2 sqrt 5)), and the Weil bound holds, n = 1..7
+PASS G19 detection toy: a split double zero turns lambda_n negative at n within 30% of (1/eps) log(trend/2), eps ~ delta/gamma^2   [5.0/0.25: 692 vs 664; 5.0/0.45: 346 vs 319; 14.1/0.45: 3907 vs 3855; 14.1/0.25: 7638 vs 7557]
+PASS G20 reach: an off-line pair just above the verified height 3e12 (delta = 0.25) first shows at n > 1e26, far past the 1e5 computed   [n* ~ 2.37e+27]
+PASS G21 probe spin on the primon gas: coherence |zeta(b+it)|/zeta(b) stays above zeta(2b)/zeta(b)^2 for b = 2, 1.5, 1.1 (t in (0, 50])   [2.0: 0.419 >= 0.400, 1.5: 0.208 >= 0.176, 1.1: 0.036 >= 0.013]
+PASS G22 at b = 1/2 the same coherence vanishes at each of the 10 zeros below t = 50 (|zeta| < 1e-15)
+PASS G23 Li split: prime-at-infinity part + finite-primes part = lambda_n to 1e-10 for n = 1..1000
+PASS G24 the prime-at-infinity part is negative exactly for n <= 7 and outweighs |finite-primes part| for every 11 <= n <= 1000; the prime part stays in [-7, 8.5]   [prime part in [-6.95, 8.43]]
+PASS P1 README is marked DRAFT and names the theory (Affine Composition Theory, built on Fused Hyperoperation Algebra)
+PASS P2 every picture the README shows exists, and every picture made is shown   [9 pictures]
+PASS P3 no overclaim phrases in the README
+PASS P4 wording rule: no "downward"/"going down" for the heat flow; "backward heat flow" used
+PASS P5 the README opens with the answer in its first section and says plainly whether it is a lead
+PASS P6 numbers quoted in the README match the data (zeros count, lambda_1, first-negative n of the toys)
+PASS P7 the Lean file says it is compiled in the shared library and has no sorry
+
+31 of 31 pass

@@ -1,0 +1,43 @@
+== K1  The lattice the cells move through is flat space, in the spinning body's natural shape
+[PASS] K1a background (no velocity): every Riemann component vanishes: max |Riemann| = 2.14e-50
+[PASS] K1b it is ordinary flat space dx^2+dy^2+dz^2 in oblate spheroidal coordinates (spheroids of semi-axes sqrt(r^2+a^2), r): the right shape for a spinning body: squashed spheres, a ring of radius a at r = 0
+
+== K2  Each cell: velocity sqrt(2Mr)/rho plus a turn toward the azimuth  ->  the spinning black hole
+[PASS] K2a every field equation of empty space holds (Ricci = 0) at all sample points, M = 1, a = 0.7: max |Ricci| = 4.54e-50
+[PASS] K2b also near the fastest spin, a = 0.99 M: max |Ricci| = 3.34e-50
+[PASS] K2c it is Kerr's curvature, not just some vacuum: R_abcd R^abcd = 48M^2(r^6 - 15r^4a^2c^2 + 15r^2a^4c^4 - a^6c^6)/rho^12: 0.0256583684948 vs 0.0256583684948; 0.00135366975924 vs 0.00135366975924
+
+== K3  The turn is not optional, and its size and shape are forced
+[PASS] K3a velocity alone on the spheroidal lattice fails: the turn is needed: max |Ricci| = 0.531
+[PASS] K3b any other size of turn fails (0.5x, 1.5x), and so does another shape (sin instead of sin^2): {'half the turn': '0.399', '1.5 x the turn': '0.664', 'turn ~ sin(theta) not sin^2': '0.263'}
+[PASS] K3c the speed law is forced too: v^2 = 2Mr/rho^2 (other powers of rho fail): {'speed sqrt(2Mr) (rho^0)': '22.8', 'speed sqrt(2Mr)/rho^2': '2.39'}
+
+== K4  Each cell is still a zero-energy, zero-spin free faller (the velocity rule, unchanged)
+[PASS] K4a g^tt = -1: the cell's 4-velocity u = -dt has unit length, so it falls freely (u = -grad t, |u| = 1): geodesic because u is a unit gradient; E = -u_t = 1: starts from rest far away
+[PASS] K4b u_phi = 0: the cells carry no angular momentum (they are the zero-angular-momentum fallers): u_mu = (-1, 0, 0, 0) by construction
+
+== K5  The map from lattice legs to cell legs: two shears, the dial's flat middle (q = 0)
+[PASS] K5a N - I squares to zero, and the boost and the turn commute and do not interact (E1 E2 = E2 E1 = 0): dual numbers: (1 + eps v)(1 + eps w) = 1 + eps (v + w); amounts v (boost) and v*alpha (turn)
+[PASS] K5b the cell's radial leg = lattice radial leg + v (time leg) - v alpha (azimuth leg), alpha = a sin(theta)/sqrt(r^2+a^2): alpha -> 0 far away and on the axis; largest at the equator near the ring
+
+== K6  At slow spin the turn is last round's swirl 2J/r^3
+[PASS] K6a first order in spin: g_t phi = -(2J/r^3) r^2 sin^2(theta), J = M a (the Lense-Thirring swirl of jet-river J7c): g_tphi' = -2*M*a*sin(theta)**2/r
+[PASS] K6b horizon: g^rr rho^2 = r^2 - 2Mr + a^2, so the horizon is at r = M + sqrt(M^2 - a^2), Kerr's: g^rr rho^2 = -2*M*r + a**2 + r**2
+
+== K7  The cell's time leg w = dt - a sin^2(theta) dphi does not close: a clock gap around the axis
+[PASS] K7a circular equatorial orbits: periods T = 2 pi (r^(3/2)/sqrt(M) +- a) (prograde longer): orbital periods [-2*pi*(-a*m + s**3)/m, 2*pi*(a*m + s**3)/m] with r = s^2, M = m^2
+[PASS] K7b each period is shifted by 2 pi a, the cell clock's gap once around the equator (closed integral of a sin^2 dphi): half the difference = 2*pi*a, clock gap = 2*pi*a; the known gravitomagnetic clock effect T+ - T- = 4 pi a (Cohen & Mashhoon 1993), independent of r and of G
+
+== F1  Larmor's theorem: a magnetic field acts like a turning frame (charges, not gravity)
+[PASS] F1a with the frame turning at Larmor's rate -qB/2m the field disappears up to B^2 (error x4 when B doubles); without the turn the error is first order (x2): Larmor-frame error 4.29e-04 -> 1.80e-03 (ratio 4.18); no turn 1.29e-01 -> 2.58e-01 (ratio 2.00)
+[PASS] F1b the 1/2 in Larmor's rate is the 1/2 in the gyroscope rule of frame dragging (Omega = -curl(h)/2, Part F): magnetic force q v x B = Coriolis 2m v x Omega at Omega = qB/2m; gravity: B_g = curl h, Omega = -B_g/2 (the gravitational Larmor theorem, Mashhoon; known)
+
+== F2  Spinning fluids: sound in a flowing fluid sees exactly a river (the acoustic metric)
+[PASS] F2a for ANY 2D flow, the energy density seen by the cells is the Q layer of the strain: G_nn = det(sym grad u): the same second layer as jet-river, now for the acoustic metric of Unruh (1981)
+[PASS] F2b draining bathtub vortex u_r = -A/r, u_phi = B/r: Q = -(A^2 + B^2)/r^4 < 0: a negative energy density: Q = (-A**2 - B**2)/(x**4 + 2*x**2*y**2 + y**4): the vortex drags sound like frame dragging (horizon at r = A, ergoregion to sqrt(A^2+B^2)), but it is not an empty-space solution of gravity: the analogy is in the velocities, not the field law
+[PASS] F2c a fluid can only make a velocity river (no per-cell turn), so by K3a it cannot make full Kerr: matches the known result that fluid vortices mimic Kerr only on the equatorial slice (Visser & Weinfurtner 2005)
+
+== F3  Foucault's pendulum: the rotating Earth, plus Earth's own (tiny) frame dragging
+[PASS] F3a Foucault turn = Earth's rate x sin(latitude) (on precession page C5-C7); Earth's frame dragging adds a vertical turn 2 sin(lat) GJ/(c^2R^3): the ratio is 2 (I/MR^2)(GM/Rc^2), the same at every latitude: ratio = 4.604e-10; Foucault at 45 deg = 255.3 deg/day, drag part = 154.5 mas/yr
+
+22/22 checks pass
