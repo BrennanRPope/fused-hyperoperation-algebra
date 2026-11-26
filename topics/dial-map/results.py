@@ -2,15 +2,20 @@
 the fused operation, its status, how new it is, and the folder it lives in.
 Every row was read off that folder's README on Nov 26, 2026 (see README.md here)."""
 
-DIALS = [  # letter, name, colour
+DIALS = [  # the seven primaries (dial audit, Nov 26): letter, name, colour
     ("k", "homothety k", "#1f77b4"),
-    ("d", "curvature dial d\n(reading: curvature −Δ/4)", "#d62728"),
+    ("d", "curvature dial d", "#d62728"),
+    ("s", "height s", "#9467bd"),
     ("p", "ℓp exponent p", "#2ca02c"),
-    ("C", "cubic form C", "#9467bd"),
     ("t", "odds t", "#ff7f0e"),
     ("r", "similarity ratio r", "#8c564b"),
     ("q", "order dial q (or ħ)", "#e377c2"),
 ]
+
+# Derived dials, drawn lighter and joined to the primaries they are built from (Brennan, Nov 26:
+# "Show both that way"). The list itself lives in ../dial-audit/derived_dials.py, the one catalogue.
+# A result can name a derived dial by its key here; "C" is the cubic form.
+DERIVED_KEYS = {"C": "cubic form"}
 
 # bin: "op"    = uses a ∘ₖ b = a + b + k·ab itself, or its cube of corners
 #      "plane" = uses the plane law (a + b + k·ab)/(1 − d·ab) or the wider affine/Möbius composition

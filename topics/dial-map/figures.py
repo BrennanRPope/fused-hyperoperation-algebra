@@ -5,7 +5,11 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Polygon
-from results import DIALS, RESULTS
+from results import DIALS, RESULTS, DERIVED_KEYS
+import sys as _sys
+_sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dial-audit"))
+from derived_dials import DERIVED  # the one catalogue of derived dials
+import matplotlib.colors as mcolors
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "figures")
@@ -82,14 +86,16 @@ def fig1():
 
 # ---------------------------------------------------------------- fig 2: the main map
 def fig2():
+    """Seven primaries as the hubs; derived dials drawn lighter on the left, each joined to the primaries
+    it is built from; results on the right, joined to the dials that drive them."""
     order = ["op", "plane", "pic"]
     rows = []
     for b in order:
         rows.append(("HEADER", b))
         rows += [r for r in RESULTS if r[2] == b]
     n = len(rows)
-    fig, ax = plt.subplots(figsize=(17, 0.47 * n + 2.2))
-    ax.set_xlim(-0.05, 1.62); ax.set_ylim(-1.5, n + 1.2); ax.axis("off")
+    fig, ax = plt.subplots(figsize=(21, 0.5 * n + 2.6))
+    ax.set_xlim(-0.62, 1.62); ax.set_ylim(-1.7, n + 1.4); ax.axis("off")
     ys = {}
     yy = n
     for r in rows:
@@ -100,19 +106,59 @@ def fig2():
         else:
             ys[r] = yy
         yy -= 1
-    # dial hubs on the left, spread evenly
+    HX = 0.235
     nd = len(DIALS)
     hub_y = {d[0]: n - 1 - i * (n - 2) / (nd - 1) for i, d in enumerate(DIALS)}
+    # derived dials: target height = mean of their parents' hubs, then spread apart
+    DX = -0.30
+    items = sorted(DERIVED, key=lambda e: (np.mean([hub_y[p_] for p_ in e[2]]), -len(e[2])), reverse=True)
+    ty = [float(np.mean([hub_y[p_] for p_ in e[2]])) for e in items]
+    sep = 1.55
+    for _ in range(500):
+        moved = False
+        for i in range(len(ty) - 1):
+            if ty[i] - ty[i + 1] < sep:
+                push = (sep - (ty[i] - ty[i + 1])) / 2
+                ty[i] += push; ty[i + 1] -= push; moved = True
+        if not moved:
+            break
+    top, bot = n - 1.1, 0.0   # keep the column inside the plot, keeping order and spacing
+    span = ty[0] - ty[-1]
+    if span > top - bot:
+        ty = [bot + (y - ty[-1]) * (top - bot) / span for y in ty]
+    else:
+        shift = max(0, ty[0] - top) - max(0, bot - ty[-1])
+        ty = [y - shift for y in ty]
+    dpos = {}
+    for e, y in zip(items, ty):
+        name, sym, par = e[0], e[1], e[2]
+        mix = np.mean([mcolors.to_rgb(DCOL[p_]) for p_ in par], axis=0)
+        for p_ in par:
+            ax.plot([DX + 0.13, HX - 0.03], [y, hub_y[p_]], color=DCOL[p_], lw=1.0, alpha=0.35, ls=(0, (4, 3)), zorder=1)
+        ax.add_patch(FancyBboxPatch((DX - 0.13, y - 0.42), 0.26, 0.84, boxstyle="round,pad=0.004,rounding_size=0.03",
+                                    fc=(*mix, 0.16), ec=(*mix, 0.6), lw=1.2, zorder=3))
+        ax.text(DX, y + 0.15, name, ha="center", va="center", fontsize=9.6, color="#333", zorder=4)
+        ax.text(DX, y - 0.2, sym + "   from " + " + ".join(par), ha="center", va="center", fontsize=8.4, color="#777", zorder=4)
+        dpos[name] = y
+    ax.text(DX, n + 0.35, "Derived dials (lighter)", ha="center", fontsize=12.5, weight="bold", color="#666")
+    ax.text(DX, n - 0.15, "each joined to the primaries it is built from", ha="center", fontsize=9.5, color="#888")
+    ax.text(HX, n + 0.35, "Primaries", ha="center", fontsize=12.5, weight="bold")
     for letter, name, col in DIALS:
         y = hub_y[letter]
-        ax.scatter([0.235], [y], s=1500, color=col, zorder=5)
-        ax.text(0.235, y, letter, ha="center", va="center", color="white", fontsize=17, weight="bold", zorder=6)
-        ax.text(0.195, y, name, ha="right", va="center", fontsize=10.5, color=col, weight="bold")
-    # edges
+        ax.scatter([HX], [y], s=1500, color=col, zorder=5)
+        ax.text(HX, y, letter, ha="center", va="center", color="white", fontsize=17, weight="bold", zorder=6)
+        ax.text(HX, y - 0.95, name, ha="center", va="center", fontsize=10, color=col, weight="bold", zorder=6,
+                bbox=dict(fc="white", ec="none", pad=1.5))
+    # edges: from a primary hub, or from a derived dial's box (drawn lighter, routed below the hubs)
     for r, y in ys.items():
         for letter in r[1]:
-            ax.plot([0.235, 0.40], [hub_y[letter], y], color=DCOL[letter], lw=1.3, alpha=0.55, zorder=1)
-    # result nodes
+            if letter in DERIVED_KEYS:
+                y0 = dpos[DERIVED_KEYS[letter]]
+                xs = [DX - 0.13, -0.50, -0.50, 0.36, 0.40]
+                yv = [y0, y0, -0.55, -0.55, y]
+                ax.plot(xs, yv, color="#9a9a9a", lw=1.2, alpha=0.7, ls=(0, (4, 3)), zorder=1)
+            else:
+                ax.plot([HX, 0.40], [hub_y[letter], y], color=DCOL[letter], lw=1.3, alpha=0.55, zorder=1)
     for r, y in ys.items():
         name, dials, b, status, new, folder = r
         if status == "lean":
@@ -124,16 +170,17 @@ def fig2():
         ax.text(0.43, y, name, va="center", fontsize=10.6, color=NEWCOL[new],
                 weight="bold" if new == "new" else "normal")
         ax.text(1.60, y, folder, va="center", ha="right", fontsize=9, color="#666", family="DejaVu Sans Mono")
-    # legend (two lines)
-    ly, ly2 = -0.45, -1.05
+    ly, ly2 = -1.0, -1.55
     ax.scatter([0.43], [ly], marker="s", s=90, color="#222"); ax.text(0.445, ly, "proved in Lean", va="center", fontsize=10)
-    ax.scatter([0.62], [ly], marker="o", s=90, color="#222"); ax.text(0.635, ly, "checked (exact or numeric)", va="center", fontsize=10)
-    ax.scatter([0.90], [ly], marker="o", s=90, facecolor="white", edgecolor="#222", lw=1.5)
-    ax.text(0.915, ly, "partly proved, rest open", va="center", fontsize=10)
+    ax.scatter([0.66], [ly], marker="o", s=90, color="#222"); ax.text(0.675, ly, "checked (exact or numeric)", va="center", fontsize=10)
+    ax.scatter([0.98], [ly], marker="o", s=90, facecolor="white", edgecolor="#222", lw=1.5)
+    ax.text(0.995, ly, "partly proved, rest open", va="center", fontsize=10)
+    ax.plot([1.28, 1.33], [ly, ly], color="#9a9a9a", ls=(0, (4, 3)), lw=1.2)
+    ax.text(1.34, ly, "dashed = through a derived dial", va="center", fontsize=10)
     ax.text(0.43, ly2, "green bold = not found in print (write-up's own search)", va="center", fontsize=10, color=NEWCOL["new"], weight="bold")
-    ax.text(0.95, ly2, "black = known result, our placement", va="center", fontsize=10)
-    ax.text(1.28, ly2, "grey = known", va="center", fontsize=10, color=NEWCOL["known"])
-    ax.text(0.0, n + 0.9, "The dial map: each dial, the results it drives, and how much of the fused operation each one really uses",
+    ax.text(1.06, ly2, "black = known result, our placement", va="center", fontsize=10)
+    ax.text(1.45, ly2, "grey = known", va="center", fontsize=10, color=NEWCOL["known"])
+    ax.text(-0.6, n + 1.1, "The dial map: seven primary dials, the derived dials built from them, and the results each drives",
             fontsize=16, weight="bold")
     save(fig, "fig2-dial-map.png")
 
