@@ -1,0 +1,10 @@
+PASS S1 E(0) = e 
+PASS S2 E(1) = 5/2 and E(-1/2) = 3 
+PASS S3 E(e-1) = Vandervelde 2008 2.4216929557
+PASS S4 E(k) matches simulation at k = -1/2, 1/2, 1, e-1 
+PASS S5 draws until sum x^2 > 1 = e^(pi/4)(1 + erf(sqrt(pi)/2)) 3.9258
+PASS S6 draws at p = 1 is e 
+PASS S7 least negative mass = (S - 2)/4 for S = 2.4, 2.8, 2 sqrt 2, 3.2, 3.6, 4 
+PASS S8 no negative mass needed up to S = 2 
+PASS S9 Tsirelson's mass (sqrt2 - 1)/2 is half the k = +1 union half 
+9/9 passed

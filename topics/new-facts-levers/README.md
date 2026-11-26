@@ -11,11 +11,13 @@ annealed sense, and our new numerics show it also holds on average for real rand
 break it. The **corner-sum threshold** grew into something sharper than before: from five regions on it tells geometric
 states from other quantum states (a "geometry window" between −0.382 and −0.354), but the numbers are read off two
 known cones, so it is a small diagnostic, not a step toward quantum gravity's hard parts. **No lever opens a lead on any
-Millennium problem.** One weak conduit goes to the Riemann thread (the Lee–Yang ℓp rule as a test family for Newman's
+Millennium problem.** Four more facts from the set-operations work (section 8) were tried the same way: none opens a
+lead, and two turn out to be in print already. One weak conduit goes to the Riemann thread (the Lee–Yang ℓp rule as a test family for Newman's
 Lee–Yang route).
 
 Files: `checks.py` (20/20 pass, `checks_output.txt`), `figures.py` → `figures/`, `thresholds.py` (the LPs),
-`flowers.py`, `families.py`, `graphsearch.py`, `rtn_check.py` (each saves a `.json`).
+`flowers.py`, `families.py`, `graphsearch.py`, `rtn_check.py` (each saves a `.json`); section 8: `setops_levers.py`,
+`checks_setops.py` (9/9 pass), `fig7.py`.
 Colour key in the pictures: **blue = ours / not found in print**, **orange = already known**, green = a lead.
 
 ![Lever board](figures/fig0-lever-board.png)
@@ -36,6 +38,7 @@ Grepped Nov 26 across `README.md`, `topics/*/README.md`, the survey drafts and `
 | L4 | Lee–Yang on the ℓp ball: all zeros real iff n ≤ 1 + p² (or p even) | `lee-yang/`, `shape-dial-survey/` N3 | searches there | Rule not found; partly proved (breaking side; n ≤ p + 1; p = 4 cases; top strip boxed) |
 | L5 | Fused rewind ladder k = n(n+1) (barrier) and averaged tunnelling composing by ∘ₖ with k = −2K | `tunnelling/` | sources named there | A reading of known pieces (spherical functions; Anderson et al. 1980; Matsui 1993), not a new fact |
 | L6 | e from where the cube meets the corner simplex (Σ 1/n! = e) | `hypersphere/` section 2 | — | **Known**: Freudenthal's staircase triangulation (n! simplices of volume 1/n!) and the random-sum puzzle. Ours is only the sorting "e belongs to the simplex, π and i to the sphere" |
+| L7–L10 | Four facts from the set-operations work: e along the k dial, e along p, k = −1/χ, and the Bell negative size | `shape-set-operations/` | section 8 | One general formula not found (L7); the rest known or readings |
 | — | Smaller items: Lucas-weighted (k, d) corner formula; horn-map constant c₁ ≈ −10.75 − 63.25i of e^x − 1; the dependent-cause gap in decrement paths; the (a, b, 0)-class identification; the Mallows reading | `lucas-weights/`, `dynamical-systems/`, `decrement-paths/`, survey pages | searches there | Small; none touches spacetime, so they were not run through the goals below |
 
 The five-region "one sign in corner weights" pattern from `polar-recast/` was a candidate too, but it is Proposition 3 of
@@ -200,6 +203,51 @@ the Riemann ξ.
 2. **L1:** get the remaining five-region facet orbits (6–8) and the six-region cone to pin the n = 6 geometric threshold.
 3. **L4:** the Riemann thread decides whether the ℓp family is worth using as a calibration set.
 
+## 8. Four more levers from the set-operations work
+
+These come from `shape-set-operations/` (Nov 26), each checked against the literature first and then tried against the
+same goals. Numbers: `setops_levers.py` (saves `setops_levers.json`); checks: `checks_setops.py` (9/9 pass,
+`checks_setops_output.txt`); picture: `fig7.py`.
+
+![Four set-operations levers](figures/fig7-set-operations-levers.png)
+
+*Figure 7. Top left: e along the k dial, with the one published point (Vandervelde's k = e − 1) in orange. Top right:
+e along the ℓp exponent, a problem posed in 1959. Bottom left: the dial set by the Euler characteristic of the whole
+space. Bottom right: the least negative size needed to beat Bell, our LP points on the published line (S − 2)/4.*
+
+| # | Lever | Literature check (Nov 26) | Holds up as new? |
+|---|---|---|---|
+| L7 | E(k) = (1 + k)^(1/k) + k/(1 + k): mean number of draws until x₁ ∘ₖ x₂ ∘ₖ … passes 1 | Vandervelde 2008 has k = e − 1; Geneson (arXiv:1605.00277) has [1, e] draws at every threshold e^t, exactly for t ≤ 1, and only asymptotics for other draw ranges | **General formula not found.** Elementary: it is the renewal equation for ln(1 + kx), whose kernel is eᵘ/k |
+| L8 | E₁/ₚ(Γ(1 + 1/p)): mean draws until Σ xᵖ passes 1; 3.9258 at p = 2 | The problem itself is Newman and Klamkin, *Expectations for sums of powers*, Amer. Math. Monthly 66 (1959); J. D. Cook (2018) discusses it but gives no closed form | **Problem known.** The Mittag-Leffler form and the p = 2 value e^(π/4)(1 + erf(√π/2)) are one line from Dirichlet's volumes and were not seen stated; treat as elementary, likely in that 1959 paper |
+| L9 | k = −1/χ(whole space); restricting to a set A turns the dial to −1/a | Euler characteristic with open cells counting −1: Schanuel 1991, Propp 2003; restricting is conditioning | **A reading of known facts**, not a new fact |
+| L10 | Beating Bell's 2 needs total negative size at least (S − 2)/4 | Morris, Fiderer, Lang and Goldwater, PRA 105, 032202 (2022), quasiprobabilistic CHSH ≤ 2 + 𝒩 (their witness is 4× the negative mass in this setting); the 2021 "nebit" paper (arXiv:2106.07945) gives (√2 − 1)/2 at Tsirelson | **Known.** Our LP (S7) reproduces the line exactly from 2 to 4 |
+
+**Against quantum gravity and the theory of everything.**
+
+- **L7.** A one-dial family of stopping times through e with rational stops (3 at k = −1/2, 5/2 at k = 1). It is a
+  renewal process on a line, with nothing about spacetime, entropy or geometry in it. **No lead.** As mathematics it is
+  still worth a Lean statement and a short note, as the set-operations page says.
+- **L8.** Mittag-Leffler functions are the heat kernels of fractional diffusion, and fractional diffusion is used to model
+  the running spectral dimension in some quantum gravity programmes (multi-fractional spacetimes). Our value is a single
+  number from a counting problem, and its order 1/p is the ball's exponent, not a dimension that runs with scale. The
+  shared function is a shared tool, not a bridge. **No lead.**
+- **L9.** The Euler characteristic weights surfaces in two-dimensional quantum gravity and in string perturbation theory
+  (each surface counts with a power set by χ). Here χ is the size of the fixed space the shapes sit in, and the dial only
+  rescales the overlap term; there is no sum over shapes of space and no dynamics. Restricting to a region turning the
+  dial is Bayes' rule, not the entanglement-wedge rule. **No lead.**
+- **L10.** This is the closest to physics, since it measures how far quantum correlations sit from classical sets. The
+  set-operations page hoped that the k > 0 side of the dial, where sizes must be signed, supplies exactly the negative size
+  quantum mechanics needs. We tested the one number that could tie them: Tsirelson's mass (√2 − 1)/2 is half the k = +1
+  union half √2 − 1 (check S9). But that only restates (S/2)² = 2 at S = 2√2; signed sizes on the k > 0 side reach the
+  no-signalling value 4 just as easily, so nothing in the dial stops at Tsirelson. **No lead as it stands.** It would
+  become one only if a rule native to the dial (for example, signed sizes that must be Euler characteristics of actual
+  cells) were shown to cap CHSH at 2√2; we see no reason to expect that and have not tested it.
+
+**Against the Millennium problems.** None of the four touches Riemann's ξ, a gauge field, a fluid, a complexity lower
+bound, algebraic cycles or elliptic curves. The nearest brushes, each judged and dropped: Mittag-Leffler zeros (L8) are
+studied for their own sake (Wiman), not as a model of ξ; the Euler characteristic (L9) is an alternating sum of Betti
+numbers, far too coarse to say which cohomology classes are algebraic (Hodge). **No lead on any of them.**
+
 ## The polishing step
 
 Three roots are recomputed with mpmath at 30 digits (checks P1–P3): √6 − 3, (√5 − 3)/2 = −1/φ², and the five-region
@@ -216,6 +264,9 @@ quantum root −0.3538307955298137265. Cost under a second.
   were not retrieved.
 - The random-tensor-network check uses complex Gaussian tensors, four small networks, D = 2, 3, 3,000 samples per
   setting; the quenched result is numerical only.
+- Section 8: the negative-size line is checked by LP only for isotropic CHSH correlations with zero marginals; E(k) by
+  closed form, series and 200,000 simulated runs at four values of k. The literature checks were a few web searches each;
+  the Newman–Klamkin paper itself was not read.
 - The Riemann and other Millennium verdicts are judgements, not theorems; the Riemann conduit is inferred and untested.
 
 ## Known vs new
@@ -230,3 +281,7 @@ quantum root −0.3538307955298137265. Cost under a second.
 | Quenched average obeys monogamy on small random networks | **Ours, numerical** | this page, R1–R3, `rtn_check.json` |
 | e from the corner simplex | Known | Freudenthal triangulation; random-sum puzzle |
 | Lee–Yang link to the Riemann hypothesis | Known | Newman 1976 (Proc. AMS 61) |
+| E(k) = (1 + k)^(1/k) + k/(1 + k) for every k | **Not found in print** (k = e − 1 known) | Vandervelde 2008; Geneson arXiv:1605.00277; checks S1–S4 |
+| Draws until Σ xᵖ passes 1 | Known problem; closed form elementary | Newman and Klamkin 1959; checks S5–S6 |
+| k = −1/χ and restricting as conditioning | Known facts, our reading | Schanuel 1991; Propp 2003 |
+| Least negative size (S − 2)/4 to reach CHSH value S | Known | Morris et al. PRA 105, 032202 (2022); arXiv:2106.07945; check S7 |
