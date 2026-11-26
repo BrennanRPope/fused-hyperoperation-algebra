@@ -38,7 +38,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: the simplex as its own shape; the shape dial and temperature (section 7). | `topics/simplex/` | — |
 | DRAFT: the Lucas weights' silent layers are the Temperley–Lieb (Beraha) points. | `topics/lucas-temperley-lieb/` | — |
 | DRAFT: shape-dial survey: which proved laws slide into one another. | `topics/shape-dial-survey/` | — |
-| DRAFT: named functions: the hypernatural logarithm on every shape, the proposed hypernatural exponential, and the existing names to adopt. | `topics/named-functions/` | — |
+| DRAFT: named functions: the hypernatural logarithm on every shape, the hypernatural exponential, and the existing names to adopt. | `topics/named-functions/` | — |
 | DRAFT: the missing shapes: the 24-cell, the 600-cell and E8. | `topics/exceptional-shapes/` | — |
 | DRAFT: every conic section in our framework: the conics are the plane dial. | `topics/conics/` | — |
 | DRAFT: bridge survey: every place the theory lands on an established field (about 739 bridges, 20 fields). | `topics/bridge-survey/` | — |
@@ -115,7 +115,8 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | String theory: what it rests on, G as (coupling)² × length^(D−2), T-duality as the k = 1 inverse | `topics/string-theory/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
 | DRAFT: the four dials named from affine geometry, with lineage (homothety k, curvature dial d, ℓp exponent p, cubic form C) | `topics/affine-names/` | — |
-| Interim theory name: Hypercube Composition Theory (final name still open, ROADMAP item 8) | `topics/names-review/THEORY-NAME.md` | — |
+| Theory name: Affine Composition Theory (picked Nov 26; final 1.0 name still to confirm, ROADMAP item 8); earlier interim name Hypercube Composition Theory | `topics/names-review/THEORY-NAME.md` | — |
+| DRAFT: a name for the whole theory, now that the cube is one shape among many | `topics/theory-name/` | — |
 | Electromagnetism through the circle operation: light sets the dial d = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
 | Size weighting as a dial, and what the circle operation leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |
 

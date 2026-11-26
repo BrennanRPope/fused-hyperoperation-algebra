@@ -1,4 +1,4 @@
-"""DRAFT checks for hypersphere/README.md (Hypercube Composition Theory).
+"""DRAFT checks for hypersphere/README.md (Affine Composition Theory).
 
 Run: python3 checks.py > checks_output.txt
 Needs numpy and scipy. Every check prints PASS or FAIL with the numbers it compared.

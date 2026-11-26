@@ -36,7 +36,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>The dials, named</h1>
-<p>Hypercube Composition Theory. Homothety k, curvature dial d (curvature read as −Δ/4), ℓp exponent p, cubic form C, odds t and similarity ratio r go in; the growth degree β is a setting; holonomy, dimension and curvature come out. One name per dial, with who found it and when.</p></header>
+<p>Affine Composition Theory. Homothety k, curvature dial d (curvature read as −Δ/4), ℓp exponent p, cubic form C, odds t and similarity ratio r go in; the growth degree β is a setting; holonomy, dimension and curvature come out. One name per dial, with who found it and when.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

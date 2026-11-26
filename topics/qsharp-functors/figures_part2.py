@@ -137,7 +137,7 @@ for i, (zx, ours, verdict, c) in enumerate(rows):
     y = len(rows) - i
     ax.add_patch(Rectangle((0, y-0.42), 0.15, 0.84, color=c))
     ax.text(0.3, y, zx, va="center", fontsize=12); ax.text(6.1, y, ours, va="center", fontsize=12); ax.text(11.6, y, verdict, va="center", fontsize=12, weight="bold", color=c)
-for x, h in ((0.3, "ZX-calculus"), (6.1, "Hypercube Composition Theory"), (11.6, "verdict")):
+for x, h in ((0.3, "ZX-calculus"), (6.1, "Affine Composition Theory"), (11.6, "verdict")):
     ax.text(x, len(rows)+0.9, h, fontsize=12, weight="bold")
 ax.set_xlim(0, 14.6); ax.set_ylim(0.3, len(rows)+1.4); ax.axis("off")
 ax.set_title("Our framework next to ZX: orange = the same idea, blue = ours says more, red = only ZX has it", loc="left")

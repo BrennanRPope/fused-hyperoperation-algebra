@@ -1,6 +1,6 @@
 # DRAFT · Q#'s body, Adjoint and Controlled on our shapes
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan (his "Yes." to mapping Q#'s operation forms onto our shapes). Ideas from the voice call, tested
 here as hypotheses: single-qubit operations live on the 3-sphere S³, Adjoint is the "mirror point", and Controlled
 acts on one Hopf fiber.

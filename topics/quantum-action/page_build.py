@@ -36,7 +36,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Quantum action: what action really is</h1>
-<p>Hypercube Composition Theory. Action modeled with our shapes, dials and the swap rule, from phase-space area to 3D quantum gravity. 27 of 27 numerical checks pass; Lean identities checked.</p></header>
+<p>Affine Composition Theory. Action modeled with our shapes, dials and the swap rule, from phase-space area to 3D quantum gravity. 27 of 27 numerical checks pass; Lean identities checked.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

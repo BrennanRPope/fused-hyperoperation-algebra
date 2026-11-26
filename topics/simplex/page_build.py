@@ -36,7 +36,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>The simplex as its own shape</h1>
-<p>Hypercube Composition Theory. The triangle and its higher versions, set up in their own polar coordinates and compared with the cube and the hypersphere. Blue in the pictures is the simplex, orange the sphere, grey the cube.</p></header>
+<p>Affine Composition Theory. The triangle and its higher versions, set up in their own polar coordinates and compared with the cube and the hypersphere. Blue in the pictures is the simplex, orange the sphere, grey the cube.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

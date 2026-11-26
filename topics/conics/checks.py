@@ -1,4 +1,4 @@
-"""Conics in Hypercube Composition Theory: checks. Run: python3 checks.py > checks_output.txt"""
+"""Conics in Affine Composition Theory: checks. Run: python3 checks.py > checks_output.txt"""
 import numpy as np, sympy as sp
 rng = np.random.default_rng(7)
 R = []

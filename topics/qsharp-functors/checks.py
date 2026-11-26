@@ -1,4 +1,4 @@
-"""DRAFT checks for qsharp-functors/README.md (Hypercube Composition Theory).
+"""DRAFT checks for qsharp-functors/README.md (Affine Composition Theory).
 
 Q#'s three operation forms (body, Adjoint, Controlled) tested as moves on our shapes.
 Run: python3 checks.py > checks_output.txt   (needs numpy only)

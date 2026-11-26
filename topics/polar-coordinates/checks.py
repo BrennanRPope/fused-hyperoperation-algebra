@@ -1,4 +1,4 @@
-"""Checks for the polar-coordinates DRAFT (Hypercube Composition Theory).
+"""Checks for the polar-coordinates DRAFT (Affine Composition Theory).
 
 Every claim the README leans on is tested here. Run: python3 checks.py
 Writes checks_output.txt next to this file.

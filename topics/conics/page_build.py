@@ -36,7 +36,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Where every conic section lives</h1>
-<p>Hypercube Composition Theory. Circle, ellipse, parabola, hyperbola and the degenerate conics, placed on the plane dial, the k dial, the roundness dials and the shape dial. Blue is the no-wall (ellipse) type, magenta the one-wall (parabola) type, orange the two-wall (hyperbola) type.</p></header>
+<p>Affine Composition Theory. Circle, ellipse, parabola, hyperbola and the degenerate conics, placed on the plane dial, the k dial, the roundness dials and the shape dial. Blue is the no-wall (ellipse) type, magenta the one-wall (parabola) type, orange the two-wall (hyperbola) type.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

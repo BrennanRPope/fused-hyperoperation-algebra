@@ -1,4 +1,4 @@
-"""Checks for the simplex pass (Hypercube Composition Theory).
+"""Checks for the simplex pass (Affine Composition Theory).
 
 Run:  python3 checks.py > checks_output.txt
 Needs numpy, scipy.

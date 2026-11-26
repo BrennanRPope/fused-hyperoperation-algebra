@@ -1,6 +1,6 @@
 # DRAFT · Starting from the hypersphere: which laws come out, and are polar coordinates simplest there?
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan on a call: "that hypersphere, that is the what I'd like to look and see if we can derive all of
 the fundamental laws from", and whether polar coordinates are simpler on a hypersphere than on the other shapes. He
 added: "I think I and pie both would be easier to derive that way", and then said yes to adding e.

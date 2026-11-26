@@ -30,7 +30,7 @@ Three things made me stop.
 3. **The proofs are pictures of hypercubes.** Which entanglement patterns can come from a geometry is an open
    problem (the "holographic entropy cone", fully known only up to five regions). The standard proof method maps one
    Boolean cube into another while never increasing Hamming distance. In 2025 Bao, Furuya and Naskar argued that
-   this cube-map test is not just sufficient but necessary. That is about as close to "Hypercube Composition Theory
+   this cube-map test is not just sufficient but necessary. That is about as close to "Affine Composition Theory
    applied to quantum gravity" as the literature gets, and nobody has said it in those words.
 
 ## The pictures

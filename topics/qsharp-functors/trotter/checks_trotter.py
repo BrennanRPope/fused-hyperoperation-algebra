@@ -1,4 +1,4 @@
-"""DRAFT checks: are the k^3 and k^4 Trotter error terms rungs or corner terms? (Hypercube Composition Theory)
+"""DRAFT checks: are the k^3 and k^4 Trotter error terms rungs or corner terms? (Affine Composition Theory)
 
 Run: python3 checks_trotter.py > checks_trotter_output.txt   (numpy only; exact fractions for the algebra)
 

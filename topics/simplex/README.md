@@ -1,6 +1,6 @@
 # The simplex as its own shape (DRAFT)
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "let's look at the simplex as well. And use that as another shape that we try to do things with."
 Builds on `polar-coordinates/` and `polar-recast/` and does not repeat them. Checks: `checks.py` → `checks_output.txt`,
 **44 of 44 pass** (numpy, scipy); section 7 (cubic-form dial) adds 26 of 26. Pictures: `figures.py` → `figures/`. No Lean in this pass (no Lean on this machine).

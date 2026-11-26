@@ -1,6 +1,6 @@
 # DRAFT · Newton's orbits and hydrogen's levels on one 3-sphere: does the swap rule's area law give Mercury and fine structure?
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra), a section of
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra), a section of
 `hypersphere/`. Brennan asked to follow the lead "about Newton's orbits and hydrogen's energy levels": do GR's
 perihelion shift (Mercury's 43″ a century) and hydrogen's fine structure both come out as the swap rule's area law
 (turn = d × area) on the 3-sphere they share?

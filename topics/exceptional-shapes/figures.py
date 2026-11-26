@@ -243,6 +243,6 @@ for r, row in enumerate(rows):
     ax.add_patch(plt.Rectangle((-0.1, y - 0.45), 13.4, 0.9, color=row[-1], alpha=0.10))
     for x, t in zip(xs, row[:-1]): ax.text(x, y, t, va="center", fontsize=9)
 ax.text(0, -0.25, "Row colour: orange = known math in our language (bridge), blue = adds something to the theory, red = adds nothing.", fontsize=8.5)
-ax.set_title("Figure 1. What each missing shape does in Hypercube Composition Theory")
+ax.set_title("Figure 1. What each missing shape does in Affine Composition Theory")
 fig.savefig(out + "fig1-sorting-board.png", bbox_inches="tight"); plt.close(fig)
 print("figures done")

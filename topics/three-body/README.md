@@ -1,6 +1,6 @@
 # DRAFT · Three bodies on the 3-sphere: which orbits keep it, and finding orbits as minimums
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan on a call, after the hypersphere pass found Newton's orbits are great circles on S³: "Now that just
 made me think of the three body problem." He said yes to checking whether the special three-body solutions keep a piece
 of the 3-sphere picture, and added: "I'm kind of wondering if there's a way to find other orbits by looking at a minimum

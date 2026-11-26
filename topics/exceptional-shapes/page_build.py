@@ -43,7 +43,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>The missing shapes: the 24-cell, the 600-cell and E8</h1>
-<p>Hypercube Composition Theory. The regular shapes our catalog lacked, tested under our law, the swap rule, polar coordinates and the p dial. The 600-cell adds something; the 24-cell and E8 are bridges to known math; the 120-cell adds nothing new. Orange in the pictures is known math; blue is ours or new to the theory; red does not hold or adds nothing.</p></header>
+<p>Affine Composition Theory. The regular shapes our catalog lacked, tested under our law, the swap rule, polar coordinates and the p dial. The 600-cell adds something; the 24-cell and E8 are bridges to known math; the 120-cell adds nothing new. Orange in the pictures is known math; blue is ours or new to the theory; red does not hold or adds nothing.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

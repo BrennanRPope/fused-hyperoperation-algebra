@@ -1,6 +1,6 @@
 # DRAFT · The dials, named from affine geometry and their own fields
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: rename the dials "now that we know them better, preferring their existing names", names that are
 "useful, not two people's last names", "from the language of shapes", "affine geometrical terms", with "a clear lineage"
 crediting the authors, and "a coherent system, not a Frankenstein monster".

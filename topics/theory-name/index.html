@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Naming the whole theory</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm research memo, conclusion first
+   IDEA: a naming shortlist card, like a ballot
+   PICTURE: the coverage grid, large, in the first screen
+   COLOUR and TYPE: ice ground, ink text, one pink accent; Space Grotesk + Inter
+   LAYOUT: one column, figures full width */
+:root{color-scheme:light dark;--bg:light-dark(#dff1f7,#06222e);--ink:light-dark(#06222e,#e8f4f8);--card:light-dark(#ffffff,#0d3140);--acc:#ff2e7e;--mute:light-dark(#3c5a66,#a9c3cc)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px);max-width:1040px;margin:0 auto}
+h1,h2{font-family:"Space Grotesk",sans-serif;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(32px,5vw,48px);margin:.2em 0 .3em}h2{font-size:26px;margin:1.6em 0 .5em}
+.lede{font-size:19px;max-width:68ch}.small{color:var(--mute);font-size:14px}
+figure{margin:20px 0;background:#fff;border-radius:10px;padding:12px}figure img{width:100%;height:auto;display:block}
+figcaption{color:#3c5a66;font-size:14px;margin-top:6px}
+ol.pick{padding:0;list-style:none;counter-reset:n}
+ol.pick li{counter-increment:n;background:var(--card);border-radius:10px;padding:16px 18px 16px 58px;margin:12px 0;position:relative}
+ol.pick li::before{content:counter(n);position:absolute;left:18px;top:14px;font:600 24px "Space Grotesk";color:var(--acc)}
+ol.pick b{font-family:"Space Grotesk";font-size:19px}
+ul{max-width:72ch}a{color:inherit}code{overflow-wrap:anywhere}
+</style></head><body>
+<div class="band">
+<p class="small">DRAFT · Nov 26, 2026 · Brennan picked this name on Nov 26. It replaces Hypercube Composition Theory (Nov 25) and Fused Hyperoperation Algebra.</p>
+<h1>The theory's name: Affine Composition Theory</h1>
+<p class="lede">The cube is now one setting among round and pointy shapes, so "Hypercube" no longer covers the model. Every dial already has an affine-geometry name, and the core law is literally composing stretches, so <b>Affine Composition Theory</b> covers the most while claiming nothing that isn't proved, including order, which is optional and switched on by a dial.</p>
+<figure><img src="fig1-coverage.png" alt="Grid of which model parts each candidate name covers"><figcaption>Dark blue: the name's words cover it. Light blue: partly. My judgement, not a measurement.</figcaption></figure>
+
+<h2>The short list, best first</h2>
+<ol class="pick">
+<li><b>Affine Composition Theory.</b> Covers the core law, homothety k, the curvature dial d and its readings, the conics, the cubic form C, the affine sphere, and order as something a dial switches on. Leaves out: the ℓp exponent p has no affine name (it is a norm idea that Blaschke's affine perimeter only measures), and for d ≠ 0 the maps being composed are projective rather than affine. No field or book uses the phrase (web search, Nov 26). Neighbour to cite, not a clash: "Calabi composition", a named product of affine spheres.</li>
+<li><b>Conic Composition Theory.</b> The safest true name for the plane: each (k, d) setting is one conic, and our law is its chord rule, the classical group law on a conic. Leaves out the round-to-pointy shapes, C, the simplex and the rungs. "Conic" also means conic optimisation.</li>
+<li><b>Affine Sphere Composition Theory.</b> The one existing shape family that holds round and pointy together: every convex cone has its own affine sphere (Cheng–Yau). Covers both plane dials, C and every shape through its cone. Leaves out the rungs, and it leans on a DRAFT result: our laws on the non-round affine spheres aren't worked out, so today it promises more than is proved.</li>
+<li><b>Unit Ball Composition Theory.</b> The plain name for the ℓp family, cross-polytope to ball to cube. Leaves out the conic plane, C, the rungs, and the simplex, which isn't a norm's ball.</li>
+</ol>
+<figure><img src="fig3-affine-spheres.png" alt="A hyperboloid sheet in a round cone and Titeica's surface in the corner of a cube"><figcaption>Affine spheres come round (cubic form zero) and pointy (Țițeica's xyz = 1 in a cube's corner). This is why candidate 3 is tempting.</figcaption></figure>
+
+<h2>Is composition, and its order, still key?</h2>
+<p>Yes. Order isn't required, but the theory can turn it on when it's needed, and that's already in the repo:</p>
+<ul>
+<li><b>Off at the base:</b> a ∘ₖ b is "stretch by b, then by a", both about one centre, the wall −1/k. Stretches about one centre commute, so the core law gives the same answer either way round.</li>
+<li><b>On by a dial:</b> the q dial (yx = q·xy) runs from order ignored to every order counts; ħ does the same with the same a + b + ab over the Moyal star product, commutative at ħ = 0 (order-dial page, sections 4–5). The checkerboard page runs one chain: dial −1 gives Kac's walk and dial −i gives Feynman's checkerboard, where every ordered sub-chain is a path.</li>
+<li><b>What order costs:</b> an oriented area each time. Move two stretch centres apart and the gap is (c₁ − c₂)(r₁ − 1)(r₂ − 1); in quantum phase space it is the Weyl phase set by the area ab.</li>
+</ul>
+<figure><img src="fig2-composition.png" alt="Same-centre stretches commute; different centres leave a gap"><figcaption>"Composition" stays the right word: the theory composes maps, order is optional, and a dial switches it on.</figcaption></figure>
+<p><b>Does this change the pick?</b> No, it strengthens it. Affine geometry is the geometry that keeps area, and the price of order is an oriented area every place it shows up. One caveat stays: the quantum route goes through the Heisenberg group, not the affine group, so the name doesn't claim quantum mechanics is affine.</p>
+
+<h2>Dropped</h2>
+<ul><li>"Convex composition": reads as the composition rules for convex functions in optimisation.</li>
+<li>"Superellipsoid": a graphics term, and the ball family only.</li>
+<li>"Projective Composition Theory": true for the plane, but the steer was affine names, and projective was only a bridge on the dial-names page.</li></ul>
+
+<h2>Where I'm unsure</h2>
+<ul><li>The phrase searches found no field named by any of the four; that is a web search, not a guarantee.</li>
+<li>Țițeica's surface over the octant and the Cheng–Yau theorem come from Loftin's survey; I didn't re-derive them.</li></ul>
+<p class="small">Checks: 4 of 4 pass (sympy, exact). Sources: <a href="https://arxiv.org/pdf/0809.1186">Loftin, Survey on Affine Spheres</a> · <a href="https://arxiv.org/pdf/math/0311306">Lemmermeyer, Conics</a> · <a href="https://iris.polito.it/handle/11583/2922698">Group law on affine conics (2021)</a> · <a href="https://ar5iv.arxiv.org/html/1401.0860">Calabi composition</a>. Files: math-theory/theory-name.</p>
+</div></body></html>

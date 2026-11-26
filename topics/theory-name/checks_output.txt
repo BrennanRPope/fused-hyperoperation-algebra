@@ -1,0 +1,4 @@
+1 composition of maps closes (all k,d): True
+2 d=0 map is affine, ratio 1+ka: True  fixes -1/k: True
+3 fixed points of M_a: a*(d*x**2 + k*x + 1)
+4 order gap for different centres: (c1 - c2)*(r1 - 1)*(r2 - 1)

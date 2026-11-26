@@ -1,6 +1,6 @@
 # DRAFT · Where every conic section lives in our framework
 
-**DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: look at all of the conic sections, not just one, since "the conics may already be hiding in the
 catalog as the dial itself."
 Builds on `why-i/cayley-klein/` (curvature −Δ/4 = d − k²/4, with Δ = k² − 4d; see `affine-names/`), `polar-recast/` (section 3, the conics as the curvature dial's shape),

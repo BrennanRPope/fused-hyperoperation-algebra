@@ -1,6 +1,10 @@
 # An interim name for the whole theory (checked 2026-11-25)
 
-## Decision (Nov 25, 2026)
+## Decision (Nov 26, 2026): Affine Composition Theory
+
+Brennan picked **Affine Composition Theory** on Nov 26 ("Affine composition theory."), after noting that "hypercube doesn't work anymore because we have hyper shapes now. Both c- round ones and pointy ones." Reasons and the other candidates (Conic, Affine Sphere, Unit Ball Composition Theory): `theory-name/README.md`. Every dial already has an affine-geometry name, and the core law composes stretches about one centre. Order isn't required, but a dial (q, or ħ over the star product) turns it on. The section below is the Nov 25 record and is kept as history.
+
+## Earlier decision (Nov 25, 2026)
 
 The interim name is **Hypercube Composition Theory**. Brennan first kept "Hypercube" with "Laws", then switched to
 "Theory" because "laws don't sound like a body of work". It follows the usual pattern: group theory studies groups, and

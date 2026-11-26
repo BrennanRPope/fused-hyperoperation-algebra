@@ -43,7 +43,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Three bodies on the 3-sphere, and orbits as minimums</h1>
-<p>Hypercube Composition Theory. Which three-body orbits keep a piece of the 3-sphere picture, and what hunting for minimums finds. Orange in the pictures is known math; blue is ours; red does not work.</p></header>
+<p>Affine Composition Theory. Which three-body orbits keep a piece of the 3-sphere picture, and what hunting for minimums finds. Orange in the pictures is known math; blue is ours; red does not work.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

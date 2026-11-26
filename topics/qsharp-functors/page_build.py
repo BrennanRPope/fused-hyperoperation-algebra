@@ -43,7 +43,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 strong{{color:inherit}}
 </style></head><body>
 <header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Q#’s body, Adjoint and Controlled on our shapes</h1>
-<p>Hypercube Composition Theory. Gates on the 3-sphere in our coordinates: the body is our core law, Adjoint is its inverse (a mirror), Controlled multiplies by a corner of the control cube. Orange in the pictures is known math; blue is our reading; red does not hold.</p></header>
+<p>Affine Composition Theory. Gates on the 3-sphere in our coordinates: the body is our core law, Adjoint is its inverse (a mirror), Controlled multiplies by a corner of the control cube. Orange in the pictures is known math; blue is our reading; red does not hold.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))
