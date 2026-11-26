@@ -96,3 +96,15 @@ jobs:
           lake env lean Check.lean 2>&1 | tee /tmp/mathlib-map-check.log
           test "${PIPESTATUS[0]}" -eq 0
           if grep -q "sorryAx" /tmp/mathlib-map-check.log; then echo "sorry found"; exit 1; fi
+
+      # Staged draft: FaceDial.lean (shape-dials) was written without a Lean toolchain. It is built here so
+      # its errors show in the log, without turning CI red. Once it builds, it is imported in
+      # MathlibMap.lean and Check.lean, and this step is removed.
+      - name: Mathlib map, staged draft FaceDial (reported, not yet required)
+        if: hashFiles('topics/mathlib-map/MathlibMap/FaceDial.lean') != ''
+        continue-on-error: true
+        working-directory: topics/mathlib-map
+        run: |
+          lake build MathlibMap.FaceDial 2>&1 | tee /tmp/face-dial.log
+          test "${PIPESTATUS[0]}" -eq 0
+          if grep -q "declaration uses 'sorry'" /tmp/face-dial.log; then echo "sorry found"; exit 1; fi

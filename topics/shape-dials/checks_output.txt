@@ -1,0 +1,31 @@
+[PASS] A1  p = 2 is exactly round for all 34 shapes (after the analytic-centre whitening)  (worst radius spread 4.3e-14)
+[PASS] A2  p = inf is exactly the polytope for every shape  (worst 5.7e-14)
+[PASS] A3  regular shapes need no whitening: their scaled normals are already a tight frame  (worst 2.7e-15)
+[PASS] A4  permutohedra, Birkhoff B3 and hypersimplices are tight too; associahedra, zonotope, cyclic need whitening  (associahedron (3D, Loday), associahedron (4D, Loday), zonotope (3D, 5 random zones), cyclic polytope C(7,3), cyclic polytope C(8,4))
+[PASS] A5  scaled normals sum to zero at the analytic centre for every shape  (4.6e-14)
+[PASS] B1  offset a = 0 exactly for the centrally symmetric shapes, a > 0 otherwise
+[PASS] B2  simplex in d dimensions has a = (d - 1)/2  ([0.5000000000000002, 1.0, 1.5000000000000004, 2.000000000000001, 2.5000000000000004])
+[PASS] B3  odd polygons: a = (sec(pi/n) - 1)/2 (pentagon 0.1180, heptagon 0.0549)  ({'5-gon': 0.118034, '7-gon': 0.054958})
+[PASS] B4  simplex: every corner stays on the boundary at every p (p = 2 is the circumscribed ball)  (6.7e-16)
+[PASS] C1  shapes shrink as p grows (K_q inside K_p for q > p), every shape  (0.0e+00)
+[PASS] C2  rate: r_P <= r_p <= (1 + (m^(1/p) - 1)(a + 1)) r_P in every direction, every shape, p = 2..256  (0 violations)
+[PASS] D1  aimed at the cube, the dial is the existing roundness dial p (l^p ball) up to size, for p in [1, 30]  (1.1e-13)
+[PASS] D2  and its p = 1 end is the cross-polytope (octahedron), as before
+[PASS] E1  p = 2 is the Dikin ellipsoid y'Hy = m(2a+1) of the log barrier at the analytic centre  (2.9e-14)
+[PASS] F1  temperature route = face-power with offset a -> inf and p = beta*a (error falls like 1/a)  (errors [0.17322, 0.04038, 0.00993, 0.00247, 0.00062])
+[PASS] F2  our temperature route reproduces the simplex page's centre turns (-0.69, -0.37, -0.14 at beta 1, 3, 10)  ({1: -0.689, 3: -0.371, 10: -0.136})
+[PASS] F3  at the triangle's own offset (a = 1/2) face-power stays within 1.2% of the temperature route but is not equal to it  (closest-match radius error at most 0.0114)
+[PASS] F4  the blend and trim routes are separate routes too (closest face-power match off by 1.4% to 5.7%)  (blend [np.float64(0.018), np.float64(0.021), np.float64(0.014)], trim [np.float64(0.057), np.float64(0.051), np.float64(0.025)])
+[PASS] F5  centre turn along face-power: exactly -1 at p = 2, rises monotonically toward 0  ([-1.0, -0.967, -0.897, -0.753, -0.549, -0.349, -0.181, -0.074, -0.019])
+[PASS] G1  elliptope: eigenvalues 1 - lambda play the faces; p = 2 is the ball of radius sqrt 3
+[PASS] G2  its four corners (rank-one correlation matrices) stay on the boundary at every p  (2.2e-16)
+[PASS] G3  p = inf is exactly the elliptope (curved sides and four corners)
+[PASS] G4  and it sharpens toward the elliptope as p grows  ({4: 0.4738, 16: 0.1066, 64: 0.026})
+[PASS] H1  qutrit density matrices: the p = 2 shape is exactly the pure-state sphere tr(rho^2) = 1  (6.7e-16)
+[PASS] W1  depth t walks each family through its regular members: B3 cube/cuboctahedron/octahedron, H3, A3, B4 (24-cell at t = 2), F4, H4, A (hypersimplices)
+[PASS] W2  in 2D the depth walks n-gon -> regular 2n-gon -> n-gon; the side count n itself stays a whole number
+[PASS] W3  every point on every depth path is round at p = 2 with no whitening (all paths meet at one ball)  (8.9e-15)
+[PASS] W4  the permutohedron is the A-family seed at the chamber's centre (all mirrors ringed)
+[PASS] W5  offset a moves continuously with depth on the simplex family (1 at tetrahedron, 0 at octahedron)  ({np.float64(0.0): 1.0, np.float64(0.25): 0.634, np.float64(0.5): 0.366, np.float64(0.75): 0.1614, np.float64(1.0): 0.0, np.float64(1.25): 0.1614, np.float64(1.5): 0.366, np.float64(1.75): 0.634, np.float64(2.0): 1.0})
+
+29 of 29 pass, 27.8 s
