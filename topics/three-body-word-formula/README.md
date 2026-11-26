@@ -8,6 +8,8 @@
 
 **What does work is a recipe, and a sharper period law.** The word's letters, read like digits, plus a new rule that gives the period from the word's runs, rebuild 32 of 68 held-out orbits from the word alone. The period rule is the lead worth following: it is 12 times tighter than the known one.
 
+**The twin orbits are real and come in pairs.** One word can carry two orbits because orbits are born in pairs as the masses change; the figure-eight's partner is Simó's known H orbit, and two more pairs are shown merging the same way. **The run rule has a physical reason** (a run of k letters is k close passes of one pair), and it is sharp only near equal masses.
+
 **Brennan's two extra ideas do not add a lead.** In hyperspherical coordinates the period, word length and stability come out no simpler, and gluing three whole hyperspheres loses the words; the one gluing that keeps them is the shape sphere, already known.
 
 ## The question
@@ -75,14 +77,14 @@ We then compared the result with the catalog start, which the recipe never saw.
 Out of 68 held-out orbits, from 4 to 136 letters:
 
 - **32 land on the catalog orbit** (start within a millionth): 27 on the first pass, 5 more on a second, finer pass.
-- **6 land on another closed orbit with exactly the same word** and the same period to 5 or 6 digits, but a different start. For 3 of them the path on the shape sphere is clearly different from the catalog orbit's; for the other 3 we could not rule out that it is the catalog orbit with the bodies relabelled.
+- **6 land on another closed orbit with exactly the same word** and the same period to 4 to 8 digits, but a different start. Section 8 shows every one of them is a genuinely different orbit.
 - **5 close up into an orbit with a different word**, and **25 find nothing** that closes.
 
 Short words work best: 8 of 11 up to 40 letters, 13 of 22 from 41 to 80, and 11 of 35 above 80. Long words fail because the 800 × 800 letter map is too coarse to hold their thin strips; the best guesses for the misses are typically between a ten-thousandth and a few thousandths off, close but outside the polish's reach.
 
 ![The figure-eight and a second closed orbit with the same word](figures/fig8-same-word-two-orbits.png)
 
-**A word does not always name one orbit.** For the figure-eight's word aBAb, the polish also found a second closed orbit (in an earlier run): same word, same scale-free period to 6 digits (9.237681 against 9.237683), a different start (0.3394, 0.5362 against 0.3471, 0.5327), and each body on its own curve instead of all three on one. Polishing from points between the two lands on one or the other, so they are two separate orbits, not a family. We have not checked whether this one is already known.
+**A word does not always name one orbit.** For the figure-eight's word aBAb, the polish also found a second closed orbit (in an earlier run): same word, same scale-free period to 6 digits (9.237681 against 9.237683), a different start (0.3394, 0.5362 against 0.3471, 0.5327), and each body on its own curve instead of all three on one. Polishing from points between the two lands on one or the other, so they are two separate orbits, not a family. Section 8 identifies it: it matches Simó's H orbit, which is known.
 
 ## 5. Invented words: does not work
 
@@ -120,9 +122,55 @@ Brennan also asked whether gluing three hyperspheres together might help. The wo
 
 **Verdict:** gluing whole spheres loses the words. The gluing that keeps them gives back the shape sphere, so it adds nothing new, and it says nothing about the run prices. It does not help.
 
+## 8. The twin orbits: all real, and born in pairs
+
+![Three same-word pairs, and the figure-eight pair followed as one mass changes](figures/fig12-one-word-two-orbits.png)
+
+**Are they copies?** No. Each of the 7 second orbits (the figure-eight's and the 6 from section 4) was compared with its partner under every symmetry of the problem: relabelling the bodies, reflecting, reversing time, rotating, rescaling and shifting the start time. Three fingerprints that none of those change all differ:
+
+- the path on the shape sphere, compared over all 12 relabelled and reflected copies, differs by 3 to 30 times the sampling error;
+- the list of swells and dips of the size R differs;
+- the worst stability multiplier differs, for example 36,900 against 390 for II.C192, and 1.0 against 1.1 for the figure-eight pair.
+
+The action is no help here: for any periodic orbit it works out to exactly 3 times the period, so equal periods force equal actions.
+
+**Are they in the published lists?** None of the 6 is in Li and Liao's list, which has no repeated words: one orbit per word. Three of them have the same period as some other catalog orbit, and those were checked and are different orbits too. The figure-eight's second orbit matches Simó's H orbit, which is known. The 2024 catalog could not be checked from here.
+
+**Why can one word carry two orbits?** Because orbits are born in pairs. We gave the middle body a slightly different mass and followed both orbits of a pair as it changed. The figure-eight and its partner move toward each other and merge, then vanish together, at a middle mass of 1.00004. That turning point is known: a 2002 study (Galán and coauthors) joined the figure-eight to Simó's H orbit in exactly this way. The same happens for two more pairs: II.C73's pair merges at 1.0016 and II.C66's at 1.0093. For the other four the following stalled before the two met, so for them it is likely but not shown.
+
+So the picture is: as the masses change, a pair of orbits appears together at a turning point and then separates. Both keep the same word, because a word cannot change without a collision, and nearly the same period, because they start as one orbit. At equal masses many pairs sit just past their turning point. **That is why the word fixes the period so well but cannot fix the start.**
+
+## 9. Why each run costs a fixed time, and where the rule breaks
+
+![Run durations, close passes per run, and one orbit's pair distances](figures/fig13-why-runs-cost-fixed-time.png)
+
+We cut all 695 catalog orbits into their runs and timed each run directly, at the common energy:
+
+| run length | measured time | spread | fitted price | close passes inside |
+|---|---|---|---|---|
+| 2 | 4.67 | 5.6% | 4.62 | mostly 2 (1 to 4) |
+| 3 | 7.43 | 3.1% | 7.43 | 3, in 99.8% of runs |
+| 4 | 9.92 | 0.9% | 9.97 | 4, in every run |
+| 5 | 12.27 | 1.5% | 12.38 | 5, in every run |
+
+**A run of k letters is k close passes**: one pair swings in close k times while the line-ups keep turning the same way, and each pass takes about 2.5 time units. Long runs are the steadiest because the swinging pair is nearly a binary with a fixed beat. Runs of 2 are the loose ones, figure-eight-like swings with no tight pair, and they carry most of the rule's leftover error. That is the reason the prices add.
+
+![The run rule refitted on orbits outside its fit](figures/fig14-run-rule-outside-the-fit.png)
+
+**Where it breaks.** We tested the rule on two outside lists from the same Shanghai group, 1,349 orbits with a heavier or lighter middle body and 316 free-fall orbits, refitting the prices for each group and testing on orbits left out:
+
+- **Equal masses:** 0.3%, the sharp case.
+- **Middle mass 0.75:** 1.2%, still well ahead of counting letters (3.0%).
+- **Middle mass 0.5:** 2.7%, no better than counting letters (1.9%). The fitted prices become flat, about 1.13 per letter whatever the run, so runs stop mattering.
+- **Middle mass 2 and up:** runs grow to 5 to 34 letters. At 2 neither rule does well (about 6% to 7%); at 4 and above, counting letters is already nearly exact (0.01% to 0.4%), and the run prices only overfit.
+- **Free fall** (bodies start at rest): neither rule works; counting letters misses by 4% to 74% depending on the masses, and the run prices do worse.
+- **Our own 66 orbits:** the rule holds when every line-up is counted (62 of 66 within 1%), and fails when cancelling letters are struck out of the word first.
+
+So the run rule is a sharp law of the equal-mass, start-in-a-line family, with a physical reason behind it. It is not a universal law of three bodies.
+
 ## Should this be followed up?
 
-**The run law, yes.** It is simple, it is 12 times tighter than the known law, it holds on orbits from a different search, and it has a picture behind it: an orbit is built from a few kinds of pieces whose times add. The natural next steps are to test it on the larger 2024 catalogs and with unequal masses or nonzero angular momentum, and to ask why a run of 2 costs 4.62 and a run of 4 costs 9.97.
+**The run law, yes.** It is simple, it is 12 times tighter than the known law, it holds on orbits from a different search, and it has a picture behind it: an orbit is built from a few kinds of pieces whose times add. Section 9 answers why it works (k close passes per run of k) and where it stops (away from equal masses, and in free fall). Still open: the 2024 catalog, nonzero angular momentum (no list with words was reachable), and a formula for the time of one close pass, which would turn the five fitted prices into one derived number.
 
 **A closed formula for the start, no.** The letters behave like digits of a chaotic map, so the start is a limit, not an expression. The recipe above is the constructive answer: word in, orbit out, for about half of the real words we tried (32 of 68, and most of the short ones). Making it reliable for long words needs a finer letter map, not a formula.
 
@@ -134,7 +182,10 @@ Brennan also asked whether gluing three hyperspheres together might help. The wo
 | Known | letters as symbolic dynamics (Tanikawa and Mikkola, and others) | holds, used here |
 | Ours | period = sum of five run prices, 0.28% typical miss | holds on all 695 and on 54 of ours |
 | Ours | word → start recipe: letters, run-law period, polish | 32 of 68 held-out orbits land on the catalog orbit |
-| Ours | a second orbit with the figure-eight's word | found, not checked against newer catalogs |
+| Known | the figure-eight's same-word partner is Simó's H orbit; they meet at a fold as one mass changes (Galán and coauthors, 2002) | reproduced, fold at m3 ≈ 1.00004 |
+| Ours | 6 more same-word pairs, all distinct orbits, not in Li and Liao's list | 2 shown to merge at a fold (m3 ≈ 1.0016, 1.0093) |
+| Ours | a run of k letters = k close passes, each about 2.5 time units | every run of 4, 99.8% of runs of 3 |
+| Does not work | run rule away from equal masses or in free fall | ahead only at m3 = 0.75 |
 | Does not work | word counts → start formula | misses by 15× the gap |
 | Does not work | spliced, invented words → new orbits | 0 of 30 |
 | Known | hypersphere and shape sphere as the home of the words (Montgomery) | holds |
@@ -145,7 +196,7 @@ Brennan also asked whether gluing three hyperspheres together might help. The wo
 
 ## What we could not check
 
-The larger 2024 catalog of Hristov, Hristova and coauthors and the authors' own data pages were out of reach from here, so the run law and the twin orbit were not tested against them.
+The larger 2024 catalog of Hristov, Hristova and coauthors and the authors' own data pages were out of reach from here, so the run law and the twin orbits were not tested against them. No list of orbits with nonzero angular momentum that includes words was reachable either. The 2002 fold paper itself could not be opened; its result is known here from a 2020 paper that describes it.
 
 ## Sources
 
@@ -154,6 +205,10 @@ The larger 2024 catalog of Hristov, Hristova and coauthors and the authors' own 
 - Hristov, Hristova and others, 2024 catalog of periodic three-body orbits, arXiv 2404.16526 (not read; data blocked here).
 - Šuvakov and Dmitrašinović, "Three classes of Newtonian three-body planar periodic orbits", PRL (2013).
 - Tanikawa and Mikkola, symbolic dynamics of the free-fall and planar three-body problems.
+- Li, Jing and Liao, unequal-mass periodic orbits, PASJ (2018), and Li and Liao, free-fall periodic orbits, New Astronomy (2019); data from the same sjtu-liao/three-body repository.
+- Galán, Muñoz-Almaraz, Freire, Doedel and Vanderbauwhede, "Stability and bifurcations of the figure-8 solution of the three-body problem", PRL 88, 241101 (2002); its fold between the figure-eight and Simó's H orbit as described in arXiv 2002.03496 (2020).
 - Montgomery, "The N-body problem, the braid group, and action-minimizing periodic solutions", Nonlinearity (1998), and "Infinitely many syzygies" (2002): the shape sphere, its punctures and the words.
 
-*Code and data: math-theory/three-body-word-formula (hyper.py, hyper_fit.py and hyper_figures.py for the hypersphere and gluing sections, period_runs.py for the run law, predict2.py and retry.py for the recipe, predict_new.py for invented words, figures.py for the pictures).*
+*The raw downloads behind the outside tests (`data/external/`, about 25 MB from the authors' public repositories) are not kept in the repo; `parse_ext.py` reads them, and its parsed output is kept as `data/unequal-mass.json` and `data/free-fall.json`. The compiled libraries are built from their .c files on first use.*
+
+*Code and data: math-theory/three-body-word-formula (twins.py and fold.py for the twin orbits, runcost.py and period_ext.py for the run rule's reason and outside tests, twin_figures.py for their pictures, hyper.py, hyper_fit.py and hyper_figures.py for the hypersphere and gluing sections, period_runs.py for the run law, predict2.py and retry.py for the recipe, predict_new.py for invented words, figures.py for the pictures).*

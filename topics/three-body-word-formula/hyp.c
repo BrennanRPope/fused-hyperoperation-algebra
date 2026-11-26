@@ -33,3 +33,9 @@ int hyper_stats(double p1, double p2, double T, double tol, double hmax, double 
     }
     out[0]=tau; out[1]=arc; out[2]=nmax; out[3]=rmin; out[4]=rmax; out[5]=I/T; out[6]=ns; return ns;
 }
+/* positions at n+1 equally spaced times on [0,T]; out has 6*(n+1) doubles */
+int sample(double p1, double p2, double T, int n, double tol, double *out){
+    double X[12]; suvakov_ic(p1,p2,X); memcpy(out,X,6*sizeof(double));
+    for (int k=1;k<=n;k++){ if (integrate(X,T/n,tol) < 0) return -1; memcpy(out+6*k,X,6*sizeof(double)); }
+    return 0;
+}

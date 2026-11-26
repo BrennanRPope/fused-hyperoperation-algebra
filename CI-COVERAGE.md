@@ -19,6 +19,7 @@ Audit of Nov 25, 2026, done when everything was put on main. [CI](.github/workfl
 - **Scripts left out on purpose:** `topics/proof-engine/film.py` (needs a trace file from a Lean run) and every `figures.py`, `page.py` and `build.py` (they redraw pictures and pages, so there is nothing to compare).
 - **Folders with results but no check script:**
   - `topics/dependency-map/`, `topics/dial-potential/` (the dark-energy search), `topics/proof-gallery/`: analysis and data scripts that print results but don't test them.
+  - `topics/three-body-word-formula/`: long orbit integrations whose results are saved as JSON, with no check script yet.
   - `topics/jet-fields/`, `topics/shape-dependencies/`: their theorems are in the Lean library, which CI builds, but their numbers have no check script.
   - `topics/flt-tracking/`, `topics/mathlib-port-check/`, `topics/mathlib-plan/`, `topics/names-review/`, `topics/p-vs-np/`, `topics/paper-candidates/`: write-ups and reviews with nothing to compute.
 - **Pages and figures** are not rebuilt in CI.
