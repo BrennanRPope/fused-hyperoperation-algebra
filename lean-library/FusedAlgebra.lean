@@ -151,6 +151,7 @@ import FusedAlgebra.Topics.ForceReach
 import FusedAlgebra.Topics.FluxTubeDial
 import FusedAlgebra.Topics.Tunnelling
 import FusedAlgebra.Topics.EllipticModulus
+import FusedAlgebra.Topics.NewForce
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

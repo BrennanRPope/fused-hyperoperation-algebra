@@ -57,3 +57,6 @@ topics/force-reach/lean/check_statements.py
 topics/shape-dial-survey/general_p_far.py
 topics/rulecraft-history/polish.py
 topics/force-reach/flux-tube-dial/lean/check_statements.py
+topics/tunnelling/rewind_checks.py
+topics/force-reach/new-force/strength_checks.py
+topics/force-reach/new-force/lean/check_statements.py

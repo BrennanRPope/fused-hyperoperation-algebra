@@ -2469,6 +2469,20 @@ FusedAlgebra.Topics.NavierStokes	FusedRungs.homochiral_layers	propext
 FusedAlgebra.Topics.NavierStokes	FusedRungs.shell_energy	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NavierStokes	FusedRungs.shell_helicity	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NavierStokes	FusedRungs.sign_cube_layers	
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.dual_exponent_mond	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.gamma_from_strength	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.holder_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.klein_strength	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.like_charges_cancel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.one_circle_gamma	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.one_circle_third	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.opposite_charges_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.scalar_over_tensor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.su2_flavour_bound	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.su3_flavour_bound	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.tower_leading_yukawa	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.tower_sum	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.vector_over_tensor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.complex_point	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.dual_point	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.four_norm	propext, Classical.choice, Quot.sound
@@ -3131,12 +3145,17 @@ FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_nonneg	propext, Classical.ch
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_zero_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.area_law	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.cellMap_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.complex_distance	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.conj_product	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.horizon_rate	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_period	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ray_norm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.rim_at_light	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_layers	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_sq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.strut_push	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.tphi_block	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.velocity_addition	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_congr	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_const	propext, Classical.choice, Quot.sound
@@ -3411,6 +3430,9 @@ FusedAlgebra.Topics.Tunnelling	Tunnelling.hyperbolic_direct_wins	propext, Classi
 FusedAlgebra.Topics.Tunnelling	Tunnelling.mean_law_curvature	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Tunnelling	Tunnelling.pair_identity	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Tunnelling	Tunnelling.piling_up	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Tunnelling	Tunnelling.rewind_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Tunnelling	Tunnelling.rung_two_barrier	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Tunnelling	Tunnelling.rung_two_mixer	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Tunnelling	Tunnelling.sphere_paths	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.C.ext'	propext
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.C.ext'_iff	propext
