@@ -4,9 +4,9 @@
 
 ## The answer
 
-**We ran every pair of the eight dials against Riemann, face power included. Not a lead.** No pair puts zeros on a line that was not already there. The face-power dial gives the clearest picture of why: its zeros sit on Re s = 1/2 only where the shape is exactly round. That happens at p = 2 and, on the hexagon, again at p = 4. Its zeros sit on Re s = 3/4 at p = ∞. At every other setting they scatter, some past Re s = 1.
+**We ran every pair of the seven dials against Riemann, with face power (roundness aimed at a polytope's faces) given its own runs. Not a lead.** No pair puts zeros on a line that was not already there. The face-power dial gives the clearest picture of why: its zeros sit on Re s = 1/2 only where the shape is exactly round. That happens at p = 2 and, on the hexagon, again at p = 4. Its zeros sit on Re s = 3/4 at p = ∞. At every other setting they scatter, some past Re s = 1.
 
-**The dials, fundamental first.** k (homothety), t (odds), s (height), d (curvature), q (order), r (similarity ratio), p (roundness), f (face power). C is derived from k and d, so it is not a dial. Face power is p applied to a polytope's face normals: g(x) = (mean over facets of |⟨n_i, x⟩|^p)^(1/p). On the square it is exactly the roundness dial; on the hexagon it is new.
+**The dials, fundamental first.** k (homothety), t (odds), s (height), d (curvature), q (order), r (similarity ratio), p (roundness). C is derived from k and d, so it is not a dial. Face power is the roundness dial aimed at a polytope's face normals, g(x) = (mean over facets of |⟨n_i, x⟩|^p)^(1/p), as in topics/shape-dials. On the square it is exactly the ℓp roundness; on the hexagon it behaves differently, so we gave it its own column, written f below. That makes 28 pairs: the 21 pairs of the seven dials plus face power with each.
 
 **Which pairs were reused.** 6 of the 28 pairs were done in earlier rounds, so we took their results as they stand:
 
@@ -34,7 +34,7 @@ The other 22 were run here in the order of the first dial, then the second: t+s,
 
 **Triples.** No pair showed anything on RH, so the only triple worth a look was the one behind the round points: curvature with both power dials (d+p+f). The round point at p = 4 needs the regular hexagon. On the skew lattice of x² + xy + 6y² with its own (irregular) Voronoi hexagon, p = 4 is not round and its zeros scatter (figure 4).
 
-![All 28 pairs, read row against column: grey reused, blue our reading, orange known, red where the road stops](figures/fig0-pair-map.png)
+![All 28 pairs (seven dials, plus face power as its own column), read row against column: grey reused, blue our reading, orange known, red where the road stops](figures/fig0-pair-map.png)
 
 ---
 
@@ -118,4 +118,4 @@ Curvature on the lattice side is the lattice's shape.
 - `lattice_pairs.py` → `lattice_pairs.json`: height on the lattice zeta, and flux.
 - `checks.py` → `checks_output.txt`: 24 of 24 pass.
 - `figures.py` → `figures/`: 8 pictures.
-- `lean/RiemannRound6.lean`: 15 statements (Δ scaling, the height detector, the hexagon's moments at p = 2, 4, 6, Wick rotation, the order dial's leading power, and the a⁴ + b⁴ counterexample). Compiled in the shared library as `FusedAlgebra.Topics.RiemannRound6` (namespace `CircleOp.RiemannRound6`; no proof changed).
+- `lean/RiemannRound6.lean`: 15 statements (Δ scaling, the height detector, the hexagon's moments at p = 2, 4, 6, Wick rotation, the order dial's leading power, and the a⁴ + b⁴ counterexample). Compiled in the shared library as `FusedAlgebra.Topics.RiemannRound6` (namespace `CircleOp.RiemannRound6`; no proof changed, no sorry).

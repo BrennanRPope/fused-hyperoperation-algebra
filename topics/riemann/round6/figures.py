@@ -10,7 +10,7 @@ LZ = json.load(open('lattice_zeros.json')); EP = json.load(open('euler_pairs.jso
 LP = json.load(open('lattice_pairs.json')); RB = json.load(open('robustness.json'))
 
 # ---------------- fig0: the pair map
-D = ['k\nhomothety', 't\nodds', 's\nheight', 'd\ncurvature', 'q\norder', 'r\nratio', 'p\nroundness', 'f\nface power']
+D = ['k\nhomothety', 't\nodds', 's\nheight', 'd\ncurvature', 'q\norder', 'r\nratio', 'p\nroundness', 'f\nface power\n(p on faces)']
 code = {}   # (i, j) with i > j : (label, colour)
 reuse = {('d', 'k'): 'R1', ('t', 'k'): 'R1/R3', ('q', 't'): 'R4', ('s', 'k'): 'R5', ('r', 'q'): 'R5', ('p', 's'): 'R5'}
 verdict = {('s', 't'): ('collapses', R), ('d', 't'): ('lines split\nper prime', R), ('q', 'k'): ('power\n1/(1−q)', B),
@@ -38,7 +38,7 @@ for i in range(8):
 for col, lab, yy in [(G_, 'reused from rounds 1, 3, 4, 5', 8.35), (B, 'our reading: structure, nothing on RH', 8.1),
                      (O, 'restates something known', 7.85), (R, 'road stops (collapses, splits, zeros leave)', 7.6)]:
     ax.add_patch(Rectangle((4.3, yy - 0.08), 0.25, 0.18, fc='white', ec=col, lw=1.6)); ax.text(4.65, yy, lab, va='center', fontsize=9)
-ax.set_title('All 28 pairs of the eight dials on Riemann (fundamental first, read row against column)', fontsize=11)
+ax.set_title('All 28 pairs on Riemann: the seven dials plus face power (p on a polytope) as its own column', fontsize=11)
 plt.savefig('figures/fig0-pair-map.png', dpi=150, bbox_inches='tight'); plt.close()
 
 # ---------------- fig1: shapes of the two power dials
