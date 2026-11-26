@@ -1,0 +1,52 @@
+== A. k and d: the first two coordinates of the generator
+PASS A1 the plane law's generator is P(x) = 1 + k x + d x^2  [d*x**2 + k*x + 1]
+PASS A2 dF/db = P(F)/P(b) holds exactly, so (k, d) fix the law and the law fixes (k, d)
+PASS A3 Jacobian of (c1, c2) in (k, d) is the identity: rank 2, neither is built from the other
+PASS A4 changing the unit x -> lam x sends k -> lam k and d -> lam^2 d (same law, new ruler)
+PASS A5 for any law, a unit change sends c_n -> lam^n c_n
+PASS A6 d/k^2 is unchanged by every unit change; it is the plane's one unit-free number (k != 0)
+PASS A7 so is Delta/k^2 = 1 - 4 d/k^2; the curvature -Delta/4 itself scales like 1/unit^2 (a reading, not unit-free)
+PASS A8 Einstein's velocity addition is k = 0, d = -1/c^2; in units with c = 1, d = -1 (only the sign of d is unit-free at k = 0)
+== B. s, the height: rung s of the fused law, in generator coordinates
+   rung-s generator coefficients of the k law:
+    c0 = 1
+    c1 = k*s
+    c2 = k**2*s*(s - 1)/4
+    c3 = -k**3*s*(s - 1)/12
+    c4 = k**4*s*(s - 1)*(s + 4)/144
+    c5 = -k**5*s*(s - 1)*(5*s**2 + 15*s + 22)/2880
+PASS B1 c1 = s*k: the rung-s law's own homothety reading is s times the base k
+PASS B2 c_n = k^n f_n(s) for every n: k is the unit, s is unit-free
+PASS B3 every f_n (n >= 2) carries the factor s(s - 1): the rung laws meet the k line only at s = 0 (addition) and s = 1 (the law itself)  [f2 = s*(s - 1)/4]
+PASS B4 f3 and f4 share only the roots s = 0 and s = 1, so for every other s the rung law has a cubic or quartic term: it is not a (k, d) law  [f3 roots [0, 1], f4 roots [-4, 0, 1]]
+PASS B5 at k = 1, s = 2 the series matches the closed form (1 + x)(1 + ln(1 + x))
+PASS B6 rank test: (c1..c4) of rung s of the plane law have rank 3 in (k, d, s) at 5 random points: s is a third independent number  [[3, 3, 3, 3, 3]]
+PASS B7 rung 1 of the plane law is the plane law itself (generator 1 + kx + dx^2)
+PASS B8 polish (30 digits): max(|f3|, |f4|) stays away from 0 on s in [-3, 3] outside s = 0, 1  [0.00203125]
+== C. p, the roundness: the same height, applied across the axes
+PASS C1 rung s of the Pythagorean sum (a^2 + b^2)^(1/2) is the l_p sum with p = 2^s (200 random cases)
+PASS C2 the l_p unit curve lies on a conic only at p = 2 (smallest singular value of the conic fit)  [{1.5: 0.0337, 2.0: 1.8e-16, 3.0: 0.0394, 4.0: 0.0601}]
+PASS C3 every (k, d) law's unit curve is a conic, so p != 2 shapes are out of the (k, d) family's reach
+PASS C4 the l_p norm is homogeneous, so no unit change moves p: p is unit-free
+PASS C5 rank test: a shape with height s along each axis and roundness p across them has rank 2 in (s, p): both are needed  [[0.21, 0.075, 0.066, 0.015, 0.23]]
+== D. t, the odds: the input of the k = 1 law, one per element
+PASS D1 three odds fused at dial k = (1/k) x the k = 1 fusion of the odds k*t (k is a common odds scale)
+PASS D2 rank test: the corner weights k^(|S|-1) prod t see k (rank 5 = 4 odds + k), but the chance of each subset does not (rank 4): there k is absorbed into the odds  [weights 5, chances 4]
+PASS D3 per-element factor (1 - k z)^(-1/k): log Z = (1/k) f(k z), so only the sign of k survives a unit change (as dial-survey found)
+PASS D4 k = -1/m is literally m one-copy slots, each at odds z/m: (1 + z/m)^m
+PASS D5 'in A or in B' for independent elements has odds t1 o1 t2 and the complement is 1/t (repo's odds_union)
+== E. r, the similarity ratio: odds across pieces plus one zoom
+PASS E1 polish (30 digits): n ratios <-> (dimension D, piece weights w_i = r_i^D on the simplex) is a bijection (30 random fractals)
+PASS E2 rank test: r -> (D, n-1 free weights) has full rank n (10 random cases): r carries n numbers, D plus n-1 relative odds
+PASS E3 N equal pieces weigh exactly 1/N however r is turned, so the uniform part of r is D alone (ratio-dial-survey C3)
+PASS E4 turning one piece moves the weights around the simplex (relative odds change) and moves D  [D 1.1514 -> 1.2822, odds of piece 4 vs 1: 1.6818]
+PASS E5 ratios multiply as the k law's multipliers: (1 + k a)(1 + k b) = 1 + k (a o_k b) (repo's circK lift)
+== F. q, the order dial
+PASS F1 counting shadow: the q-integer [n]_q is the n-fold o_k power of 1 at k = q - 1 (n = 1..8)
+PASS F2 (x + y)^n with yx = q xy has Gaussian binomial coefficients, built from k = q - 1 powers (n <= 7)
+PASS F3 moves built from the plane law: [Kx, Ky] = d Jz, and two small moves fail to commute by a turn = d x area (d = -1, -0.4, 0, 0.3, 1)  [{-1.0: -1.0, -0.4: -0.4, 0.0: 0.0, 0.3: 0.3, 1.0: 1.0}]
+PASS F4 a finite loop: the turn equals curvature x area exactly (Gauss-Bonnet, sphere d = 1)  [excess 0.349069502478, area 0.349069502478]
+PASS F5 clock and shift matrices obey VU = qUV, and rescaling U, V leaves q unchanged: q is unit-free
+PASS F6 for continuous moves the Weyl phase e^(i hbar s t) is unchanged by (hbar, s) -> (1, hbar s): hbar's size is a unit (Stone-von Neumann)
+== G. Summary
+37 of 37 pass

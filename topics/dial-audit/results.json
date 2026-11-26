@@ -1,0 +1,26 @@
+{
+ "A": {
+  "generator": "d*x**2 + k*x + 1",
+  "unit_free": "d/k^2 (k != 0); sign of d (k = 0); sign of k"
+ },
+ "B": {
+  "f": [
+   "1",
+   "s",
+   "s*(s - 1)/4",
+   "-s*(s - 1)/12",
+   "s*(s - 1)*(s + 4)/144",
+   "-s*(s - 1)*(5*s**2 + 15*s + 22)/2880"
+  ]
+ },
+ "verdict": {
+  "k": "fundamental (first generator coefficient); its size is a unit choice, only sign survives a unit change",
+  "d": "fundamental (second generator coefficient); with k: d/k^2 is the unit-free number; curvature -Delta/4 is a reading",
+  "s": "fundamental number (rank 3 with k, d); same operation as p, applied along an axis",
+  "p": "fundamental number (rank 2 with s); it is the height across axes, p = 2^s on the Pythagorean sum",
+  "t": "fundamental as an input (one per element), not a law dial: odds compose by the k = 1 law; k is absorbed into t in subset chances",
+  "r": "partly derived: n ratios = D plus n-1 relative odds; only the overall zoom (equivalently D) is its own",
+  "q": "partly derived: for moves built from the plane law the order turn is d x area; counts see q only as k = q - 1; new only when put in by hand (hbar is then a unit for continuous moves; on a lattice q is a real invariant)"
+ },
+ "passed": "37 of 37"
+}

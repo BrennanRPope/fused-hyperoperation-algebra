@@ -65,6 +65,8 @@ found in print in the write-up's own search; black marks a known result in our p
 
 The growth degree β is a setting, not a dial ([`affine-names/`](../affine-names/) §6), so it has no hub here.
 
+Which of these dials are fundamental, and which derived dials are built from them, is worked out in the [dial audit](../dial-audit/README.md); its [mixing chart](../dial-audit/DERIVED-DIALS.md) catalogues the derived dials by the primaries they come from.
+
 ## 3. How much of the work uses the fused operation
 
 ![A bar split 16, 6, 8](figures/fig6-how-much-is-used.png)

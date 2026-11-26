@@ -33,3 +33,5 @@ The Mathlib version of the Lean library (`lean-library-mathlib/`) was merged int
 The Mathlib map (`topics/mathlib-map/`) was added on Nov 26, ported to the 1.0 names, and wired into the Mathlib CI job on the pinned tag. It was first compiled against Mathlib master (commit `348837d`) because the cache server was out of reach; this machine can't reach the cache either, so the first CI run on the tag is its real build check.
 
 When syncing again, copy the current state of every folder and update INDEX.md.
+
+Nov 26 (late): `topics/dial-audit/` added as DRAFT (which dials are fundamental, plus the derived-dial mixing chart in DERIVED-DIALS.md).

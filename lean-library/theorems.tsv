@@ -914,6 +914,15 @@ FusedAlgebra.Topics.DataCenter	DataCenterFused.spare_fan_helps	propext, Classica
 FusedAlgebra.Topics.DataCenter	DataCenterFused.spread	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DataCenter	DataCenterFused.stack	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DataCenter	DataCenterFused.unit_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.curvature_reading	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.discriminant_scales	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.homothety_moves_with_units	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.odds_absorb_k	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.odds_absorb_k_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.qint_is_circ_power	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.qint_pow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.ratio_unit_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.DialAudit	CircleOp.DialAudit.swap_constant_unit_free	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.boson_superpoisson	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.count_parabola	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DialPointProcesses	DialPointProcesses.count_walls	propext, Classical.choice, Quot.sound
