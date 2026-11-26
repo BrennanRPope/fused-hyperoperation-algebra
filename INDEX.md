@@ -34,6 +34,8 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: Riemann round 3: in fused coordinates the backward heat flow is reversible, but RH needs a sign (pairs cross the wall at t ≈ −0.00094 in the first 5,000 zeros, −0.00071 at Lehmer's pair); the Kerr turn swaps rewind and forward flow (known); a chain of tunnelling barriers is the Euler product (Bohr–Jessen); the Lee–Yang far zone and the Liebig knob don't reach it. No lead. | `topics/riemann/round3/` | `Topics/RiemannRound3` |
 | DRAFT: Riemann round 4: what has to stay positive along the rewind is the local fused discriminant at each extremum (Laguerre's expression of the nearest pair); its exact rate is 8 + D·(log H″)″, which leans on the next rung of the Laguerre ladder; the barrier chain under our dials and the hypernatural log (at an extremum the height drops out) don't tame it. No lead. | `topics/riemann/round4/` | `Topics/RiemannRound4` |
 | DRAFT: Riemann round 5: the untried dial pairs. Homothety and order re-express RH as growth bounds of a known kind (generalized Mertens); the order dial is the homothety dial summed; the height dial and light move the zeros of ζ out of view; flux tubes restate the zero count; the roundness detector is Laguerre's inequality, local only. No lead. | `topics/riemann/round5/` | `Topics/RiemannRound5` |
+| DRAFT: Riemann round 6: every pair of the dials, face power included (22 new pairs, 6 reused). No pair puts zeros on a line that wasn't already there; face power's zeros sit on Re s = 1/2 only where the shape is exactly round. Not a lead. 24 checks. | `topics/riemann/round6/` | `Topics/RiemannRound6` |
+| DRAFT: riemann-neighbours: RH's neighbours on the dial map (Ihara, Weil, Selberg, Lee–Yang, Davenport–Heilbronn, Bost–Connes); the proved ones are all an operator determinant plus positivity on the elliptic side; Mathlib hooks listed; no new dial (Lee–Yang coupling = k on each edge, Bartholdi t = d). Not a lead. 29 checks; dial map section 8. | `topics/riemann-neighbours/` | `Topics/RiemannNeighbours` |
 | DRAFT: shapes beyond the hypercube (associahedron, elliptope, pentagon, double copy). | `topics/beyond-the-cube/` | — |
 | DRAFT: polar coordinates for many dimensions: switching shapes by sliding numbers. | `topics/polar-coordinates/` | — |
 | DRAFT: stronger fusion magnets: the limits are materials and engineering. | `topics/fusion-magnets/` | — |
@@ -79,7 +81,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,560 theorems, 158 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,584 theorems, 160 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |

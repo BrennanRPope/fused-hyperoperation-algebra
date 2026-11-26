@@ -1,0 +1,25 @@
+PASS C1 square p = 2 (zeta L(chi_-4)): every zero on Re 1/2, first zeros 6.0209 and 14.1347 
+PASS C2 square p = inf (8 zeta(2s-1)): every zero on Re 3/4, first at height 14.1347/2 
+PASS C3 hexagon face power: p = 4 gives exactly the p = 2 zeros, all on Re 1/2 
+PASS C4 hexagon p = inf (6 zeta(2s-1)): every zero on Re 3/4 
+PASS C5 square, every p strictly between 2 and inf: some zero at least 0.1 off Re 1/2 12 values of p
+PASS C6 hexagon, every other p: some zero off Re 1/2 by more than 0.02 11 values of p
+PASS C7 ratio dial: the hexagon lattice scaled by 1.7 has the same zeros at p = 3 
+PASS C8 changing the small-x fit and x0 moves no zero by more than 1e-5 (square 2.1, 2.5; hexagon 3) 
+PASS C9 x^2 + 5y^2: engine zeros agree with the exact genus formula zeta L(chi_-20) + L(chi_-4) L(chi_5) to 1e-5 
+PASS C10 x^2 + 5y^2 has a zero off the line at 0.93297 + 15.66825i 
+PASS C11 skew lattice, p = 2: engine zeros agree with Epstein exact theta inversion to 1e-5, and two have Re s > 1 
+PASS C12 curvature runs at p = 3, 4 are stable under a refit (moves < 2e-4); p = inf is not and is set aside 
+PASS C13 odds and ratio scaling: Delta -> t^2 Delta (sign kept), point stays on its parabola d = c k^2 
+PASS C14 curve 37a with odds t: the root line runs 1/2 + log t / log p, spread > 0.25 for t = 1.25 and 0.8 
+PASS C15 height on a degree-2 local factor: fires exactly when Delta < 0 (all grid points), and at every good prime of 37a 
+PASS C16 k + q identity at s = 2: the direct sum closes on it, gap halving per doubling of N 
+PASS C17 k + q leading power: log Z / log zeta extrapolates to 1/(1 - q) within 0.01 for two k 
+PASS C18 k + r: zeta zeros kept exactly while the wall is left of 1/2 (|Z| near the first zero = |zeta prime H| * 1e-6) 
+PASS C19 height collapse: the singular points close on the zeros only as s -> 1 (zeta H and two round lattices) 
+PASS C20 Euler product: representation counts multiplicative at p = 2 (square, hexagon), not at p = 4, 6 on the square or p = 6 on the hexagon 
+PASS C21 design rule: face power is round at even p <= 2n - 2 (square 2; hexagon 2, 4; octagon 2, 4, 6); hexagon p = 4 is the square of p = 2 
+PASS C22 light: Wick-rotated hexagon form is real at every even p, a power of x^2 - y^2 only at p = 2, 4 
+PASS C23 order dial on Q reproduces round 4 (D = 1.39943), and each quadratic field has its own wall 
+PASS C24 flux: discrepancy exponents within 0.06 of 1/2 (round), 1 - 1/p (square), 1 (polytope) {'square_p2.0': 0.467, 'square_p3.0': 0.638, 'square_p4.0': 0.763, 'square_pinf': 1.002, 'hexagon_p4.0': 0.487, 'hexagon_pinf': 1.008}
+24 of 24 checks pass

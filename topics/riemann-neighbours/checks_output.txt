@@ -1,0 +1,67 @@
+[   0.1s] # ---------- B
+[   0.1s] # ---------- W
+[   0.2s] # ---------- L
+[   0.2s] zf = find_zero
+[   1.3s] # ---------- H
+[   1.7s] # ---------- D
+G1_bass_petersen_relerr 7.350769875513957e-16
+G1_petersen_eigs [np.float64(3.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(-2.0), np.float64(-2.0), np.float64(-2.0), np.float64(-2.0)]
+G2_trace_counts [0, 0, 0, 0, 120, 120, 0, 240, 360, 1320, 2640, 3360]
+G2_prime_cycles {'1': 0, '2': 0, '3': 0, '4': 0, '5': 24, '6': 20, '7': 0, '8': 30, '9': 40, '10': 120, '11': 240, '12': 270, '13': 600, '14': 1140, '15': 2200, '16': 4350, '17': 7560, '18': 14260, '19': 27600, '20': 52254}
+G2_fold_equals_det True
+G2_fold_coeffs_31_34 [0, 0, 0, 0]
+G2_det_degree 30
+G3_petersen_khat [np.float64(-0.707107), np.float64(-0.707107), np.float64(-0.707107), np.float64(-0.707107), np.float64(-0.707107), np.float64(1.414214), np.float64(1.414214), np.float64(1.414214), np.float64(1.414214)]
+G3_petersen_nontrivial_mu_abs [np.float64(1.41421356)]
+G3_random_200_ramanujan_fraction 0.775
+B1_bartholdi_relerr 6.649822295125887e-15
+B2_deff {'0': 2, '0.25': 1.6875, '0.5': 1.25, '1.0': 0.0}
+W1_all_hasse True
+W1_n_primes 300
+W2_fp2 {'7': {'direct': 55, 'from_dial_point': 55}, '11': {'direct': 140, 'from_dial_point': 140}, '19': {'direct': 399, 'from_dial_point': 399}, '23': {'direct': 560, 'from_dial_point': 560}, '43': {'direct': 1836, 'from_dial_point': 1836}, '47': {'direct': 2160, 'from_dial_point': 2160}}
+W3_degree_form_min {'5': 1, '7': 1, '101': 1, '499': 1, '1999': 1}
+W3_ap {'5': -3, '7': 3, '101': -3, '499': -30, '1999': 28}
+W4_primes [5, 7, 11, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997, 1009, 1013, 1019, 1021, 1031, 1033, 1039, 1049, 1051, 1061, 1063, 1069, 1087, 1091, 1093, 1097, 1103, 1109, 1117, 1123, 1129, 1151, 1153, 1163, 1171, 1181, 1187, 1193, 1201, 1213, 1217, 1223, 1229, 1231, 1237, 1249, 1259, 1277, 1279, 1283, 1289, 1291, 1297, 1301, 1303, 1307, 1319, 1321, 1327, 1361, 1367, 1373, 1381, 1399, 1409, 1423, 1427, 1429, 1433, 1439, 1447, 1451, 1453, 1459, 1471, 1481, 1483, 1487, 1489, 1493, 1499, 1511, 1523, 1531, 1543, 1549, 1553, 1559, 1567, 1571, 1579, 1583, 1597, 1601, 1607, 1609, 1613, 1619, 1621, 1627, 1637, 1657, 1663, 1667, 1669, 1693, 1697, 1699, 1709, 1721, 1723, 1733, 1741, 1747, 1753, 1759, 1777, 1783, 1787, 1789, 1801, 1811, 1823, 1831, 1847, 1861, 1867, 1871, 1873, 1877, 1879, 1889, 1901, 1907, 1913, 1931, 1933, 1949, 1951, 1973, 1979, 1987, 1993, 1997, 1999]
+L1_ferro_root_abs_dev 1.3322676295501878e-15
+L1_anti_root_abs_dev 1785.2200061607632
+L2_two_dir_identity True
+L3_three_dir_product_form_residual {'0.3': 0.0819, '0.5': 0.1875, '0.9': 0.15389999999999993, '1.0': 0.0}
+L4_ferro_max_dev_from_half 5.551115123125783e-17
+L4_anti_max_dev_from_half 1.7353032848269265
+L4_unscaled_zeros_max_dev_from_0 6.076355245611683e-17
+H1_DH_zero [0.8085171824566374, 85.6993484853776]
+H2_DH_phase_on_line [1.0, 1.0, 1.0]
+D1_L_chi4_first_zero [0.5, 6.020948904697597]
+G4 {'petersen': (1.0000000000000004, True, 0, np.float64(7.350769875513957e-16)), 'random60': (2.673574010711118, True, 0, np.float64(3.969978956549737e-15)), 'twocluster60': (2.948973134621743, False, 2, np.float64(3.87122949559403e-15))}
+ferro zeros 76 anti zeros 45
+PASS G1 Bass determinant formula (Petersen) : rel err 7.4e-16
+PASS G2 the k = -1 fold over prime cycles equals det(I - uB), a polynomial of degree 30
+PASS G3 Petersen: nontrivial non-backtracking eigenvalues have size sqrt 2, all khat in [-2, 2]
+PASS G4 two-cluster graph: lambda2 > 2 sqrt 2 and poles off the circle; random graph: none : lambda2 = 2.9490, off-circle poles 2
+PASS G5 Bass formula on all three graphs
+PASS G6 POLISH: closed non-backtracking walks of length 5 and 6 counted by search match tr B^5, tr B^6 : [120, 120]
+PASS B1 Bartholdi determinant formula holds (t = 0, 0.3, 0.7, 1.4)
+PASS B2 per eigenvalue the bump dial only changes d: d_eff = (1 - t)(q + t)
+PASS W1 Hasse: a_p^2 < 4p for all 300 good primes below 2000 (y^2 = x^3 + x + 1)
+PASS W2 points over F_{p^2} counted directly equal p^2 + 1 - (a_p^2 - 2p) from the dial point
+PASS W3 degree form m^2 - a_p m n + p n^2 is positive definite (minimum 1 over a box)
+PASS W4 4(m^2 + k m n + d n^2) = (2m + k n)^2 + (4d - k^2) n^2 (positive definite exactly on the elliptic side)
+PASS L1 ferromagnetic 9-spin cube: every zero on |z| = 1 : 1.3e-15
+PASS L1b antiferromagnetic: zeros leave the circle
+PASS L2 two directions: 1 + a(z1 + z2) + z1 z2 = 1 + a (z1 o_k z2) with k = 1/a
+PASS L2b uniform field: z^2 + 2az + 1 has discriminant 4a^2 - 4, elliptic side exactly for |a| <= 1
+PASS L3 three directions: weights 1, a^2, a^2, 1 are a product form only at a^2 = 1
+PASS L3b uniform coupling a = 1/2, n = 4..8: Hankel determinants nonzero, so no (k, d) fold gives these weights : 3.30e-02, 5.15e-04, 8.05e-06, 1.26e-07, 1.96e-09
+PASS L4 coupled prime cube (primes to 19), ferromagnetic, z_p = p^(1/2 - s): every zero found has Re s = 1/2 : 76 zeros, max |Re s - 1/2| = 5.6e-17
+PASS L4b antiferromagnetic couplings: zeros leave the line
+PASS L4c without the sqrt p weights the zeros sit on Re s = 0
+PASS L5 POLISH: a ferromagnetic cube zero refined at 40 digits stays on Re s = 1/2 : zero (0.5 + 15.4268777179j)
+PASS H1 Davenport-Heilbronn function: zero off the line at 0.808517 + 85.699348 i : [0.8085171824566374, 85.6993484853776]
+PASS H2 its completed function is real on the critical line (it has a functional equation)
+PASS H3 POLISH: the off-line zero holds at 50 digits : (0.808517182456637 + 85.6993484853776j)
+PASS D1 L(s, chi_-4): first zero on the line at t = 6.0209 (an open neighbour, checked only numerically)
+PASS S1 s^2 - s + lambda: roots are 1/2 +- sqrt(1/4 - lambda), so on Re s = 1/2 exactly when lambda >= 1/4
+PASS S2 Selberg factor as a dial point (k, d) = (-1, lambda): khat = -1/sqrt(lambda), |khat| <= 2 iff lambda >= 1/4
+PASS L6 Lee-Yang coupling = the k dial on each edge: cut weights equal dial-gas weights k_ij = a_ij^-2 after z_i -> z_i * prod_j a_ij (exact, 5 spins, random couplings)
+
+29 of 29 pass

@@ -2987,6 +2987,15 @@ FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_disc	propext, 
 FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_factor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_factor_disc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannElliptic	CircleOp.RiemannElliptic.pair_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.bartholdi_d_eff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.four_normForm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.ihara_discriminant	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.leeYang_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.leeYang_uniform_discriminant	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.normForm_frobenius	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.normForm_frobenius_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.selberg_complete_square	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.selberg_factor_dial	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.barrier_sq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.conj_disc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.conj_pair	propext, Classical.choice, Quot.sound
@@ -3019,6 +3028,21 @@ FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.neff_two	propext, Class
 FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.pair_offline_detected	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.qmulti_11	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.qmulti_21	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.disc_scaling	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.geometric4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.hex_design2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.hex_design4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.hex_p4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.hex_six_along_x	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.hex_six_along_y	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.hstar	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.necklace_four	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.parabola	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.seventeen_is_sum	
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.thirty_four_not_sum	
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.two_is_sum	
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.wick_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound6	CircleOp.RiemannRound6.wick_hex	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound

@@ -156,6 +156,8 @@ import FusedAlgebra.Topics.RiemannRound3
 import FusedAlgebra.Topics.RiemannRound4
 import FusedAlgebra.Topics.RiemannRound5
 import FusedAlgebra.Topics.DialAudit
+import FusedAlgebra.Topics.RiemannRound6
+import FusedAlgebra.Topics.RiemannNeighbours
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated
