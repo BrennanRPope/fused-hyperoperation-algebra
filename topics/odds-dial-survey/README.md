@@ -1,5 +1,7 @@
 # Odds-dial survey: which proved laws slide into one another (DRAFT)
 
+Page: https://claude.ai/artifact/CJPP5L7ex9wpnuQXqRYbEq
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra). Asked for by Brennan:
 "I'd like similar surveys for the other dials as well", after the shape-dial survey ("a survey of all of our laws that
 we've proven to see if the shape dial is able to move from one to another", then "check all laws using the shape dial to

@@ -1,5 +1,7 @@
 # Curvature-dial survey: which proved laws slide into one another (DRAFT)
 
+Page: https://claude.ai/artifact/L31drHBF2SgMgC6hCCg9EE
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "I'd like similar surveys for the other dials as well", the same survey as the shape-dial one ("a
 survey of all of our laws that we've proven to see if the shape dial is able to move from one to another … really all of
