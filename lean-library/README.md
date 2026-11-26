@@ -4,7 +4,7 @@ One library for every Lean proof in the project, all built on one base of
 circle-operation laws, so each new proof starts from the same foundation.
 
 **Status (Nov 26, 2026):** all 145 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3357 theorems, none uses `sorry`, and every one uses only
+(no mathlib). 3437 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -173,6 +173,7 @@ Topics (each imports the foundation):
 | `Topics/FreshLook` | closed-leads-fresh-look/lean/FreshLook.lean | 4 theorems, first compile Nov 26 (DRAFT topic): the phase-average step for tunnelling, the mean resistance law is ∘₂, the norm of the Edwards-parameter-0 law is multiplicative, and pair-product corner weights for equal off-diagonals only at c = 0, 1, −2 |
 | `Topics/CutIndependence` | quantum-action/cut-independence/lean/CutIndependence.lean | 14 theorems, first compile Nov 26 (DRAFT topic): the swap rule's q exponents agree for either bracketing, the symmetry respects the swap rule exactly when p = q, Cassini's identity for the dial sequence, quantum dimensions and vertex weights at [2] = 1 and [2] = 0, the step matrix closing (M³ = −1, M² = −1), and 4 − k² = (2 − k)(2 + k) |
 | `Topics/YangMillsGap` | yang-mills-gap/lean/YangMillsGap.lean | 10 theorems, first compile Nov 26 (DRAFT topic): completing the square for 1 + kx + dx², no wall in the circle class (Δ < 0), the abelian plaquette is order-free while non-abelian links leave k²(AB − BA), the parity dial and two ratio checks; `lift_order_gap` expands the products by hand before `grind`, which does not normalize non-commutative products; `wAdd` updated to `circK` |
+| `Topics/HyperLadder` | hyperoperation-ladder (written in the library) | 80 theorems, first compile Nov 26 (DRAFT topic): rung n is Goodstein's H_n read through x ↦ 1 + x, uniqueness, Knuth arrows, and every law at every rung: commutative/associative ⟺ rung 1 or 2, identity ⟺ rung 2, distributivity over the rung below exactly (giant rungs by remainders mod 7); the height ladder B_s for any flow; the dial k rescaling. |
 | `Topics/Conventions` | names-review/lean/Conventions.lean | 7 theorems, first compile Nov 25: the weight-to-probability sign flip, both ring-theory circle conventions on the dial, (weights compose by k, probabilities by −k) and related notation facts; recommendations only, nothing renamed |
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |

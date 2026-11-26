@@ -143,6 +143,7 @@ import FusedAlgebra.Topics.FuzzyFrame
 import FusedAlgebra.Topics.FreshLook
 import FusedAlgebra.Topics.CutIndependence
 import FusedAlgebra.Topics.YangMillsGap
+import FusedAlgebra.Topics.HyperLadder
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

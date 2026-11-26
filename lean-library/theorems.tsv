@@ -1910,6 +1910,86 @@ FusedAlgebra.Topics.HoloGluing	HoloGluing.ptolemy	propext, Classical.choice, Quo
 FusedAlgebra.Topics.HoloGluingField	HoloGluingField.flip_glue	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.HoloGluingField	HoloGluingField.gluing	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.HoloGluingField	HoloGluingField.shadow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.B_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.B_climb	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.B_comm	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.B_id	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.B_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.B_partner_dist	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.B_zero_height	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.E_add	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.E_cancel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.E_cancel'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.E_fix	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.E_zero	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.exph_lnh	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.lnh_circ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.lnh_compose	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.lnh_exph	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.Flow.lnh_zero	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.arrow_values	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.circK_saddK	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.circ_not_dist_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.circ_sadd_left	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.circ_sadd_right	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.fexpK_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.fexpK_scale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.fexpK_succ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.fexp_circ_left_fails	propext
+FusedAlgebra.Topics.HyperLadder	HyperLadder.fexp_circ_right'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.ftet_fexp_left_fails	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.ftet_fexp_right_fails	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_arrow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_five	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_four	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_mod3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_mod7	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_one_left	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_pos	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_right_dist_fails	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_succ	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_two_mod42	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.hyp_two_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_arrow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_assoc_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_comm_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_diag	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_dist_right_at_ones	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_eq_circ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_eq_fexp	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_eq_fpent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_eq_ftet	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_eq_sadd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_eq_transport	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_identity_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_left_absorb_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_left_dist_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_one_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_one_zero	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_right_dist_fails_high	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_right_dist_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_right_dist_le_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_right_dist_three_fails	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_right_id_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_succ	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_unique	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_zero	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_zero_left	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_zero_one_one	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lad_zero_right	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.lift_zero_not_injective	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.not_transport_of_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.pow_mod7_cycle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.saddK_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.saddK_scale	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.sadd_assoc'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.sadd_comm'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.sadd_not_height	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.tet_two_mod42	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.transport_assoc	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.transport_comm	
+FusedAlgebra.Topics.HyperLadder	HyperLadder.two_pow_mod42	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HyperLadder	HyperLadder.two_pow_mod42'	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Hypersphere	Hypersphere.circular_L_v	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Hypersphere	Hypersphere.deg_eq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Hypersphere	Hypersphere.dirac_defect	propext, Classical.choice, Quot.sound
