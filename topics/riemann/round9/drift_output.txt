@@ -1,0 +1,8 @@
+sharp X=   30: best s train 0.650 test 0.575 | best A train 0.850 test 0.900
+sharp X=  100: best s train 0.625 test 0.600 | best A train 0.875 test 0.875
+sharp X=  300: best s train 0.575 test 0.600 | best A train 0.975 test 0.875
+sharp X= 1000: best s train 0.550 test 0.575 | best A train 0.975 test 0.925
+sharp X= 3000: best s train 0.550 test 0.550 | best A train 1.000 test 0.950
+gauss X=   50: best s train 0.350 test 0.300 | best A train 1.100 test 1.200
+gauss X=  200: best s train 0.425 test 0.375 | best A train 1.050 test 1.100
+gauss X=  500: best s train 0.450 test 0.400 | best A train 1.025 test 1.075

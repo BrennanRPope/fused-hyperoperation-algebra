@@ -1,0 +1,184 @@
+== baselines ==
+smooth law only (Gram midpoint)       train 0.2478 test 0.2852
+== settings: cutoff and taper (dials at truth) ==
+taper=sharp X=5                        train 0.0992  test 0.1571  gram 0.930  near 1.000  ks 0.185
+taper=sharp X=10                       train 0.0779  test 0.1275  gram 0.937  near 1.000  ks 0.147
+taper=sharp X=20                       train 0.0588  test 0.0877  gram 0.942  near 1.000  ks 0.089
+taper=sharp X=50                       train 0.0445  test 0.0677  gram 0.954  near 1.000  ks 0.086
+taper=sharp X=100                      train 0.0353  test 0.0582  gram 0.963  near 1.000  ks 0.087
+taper=sharp X=200                      train 0.0254  test 0.0492  gram 0.970  near 1.000  ks 0.075
+taper=sharp X=500                      train 0.0198  test 0.0403  gram 0.974  near 1.000  ks 0.065
+taper=sharp X=1000                     train 0.0150  test 0.0337  gram 0.979  near 1.000  ks 0.049
+taper=sharp X=3000                     train 0.0108  test 0.0246  gram 0.985  near 1.000  ks 0.036
+taper=fejer X=5                        train 0.1770  test 0.2270  gram 0.923  near 0.976  ks 0.402
+taper=fejer X=10                       train 0.1283  test 0.1893  gram 0.923  near 0.994  ks 0.328
+taper=fejer X=20                       train 0.0909  test 0.1553  gram 0.923  near 1.000  ks 0.274
+taper=fejer X=50                       train 0.0575  test 0.1154  gram 0.925  near 1.000  ks 0.222
+taper=fejer X=100                      train 0.0419  test 0.0913  gram 0.935  near 1.000  ks 0.180
+taper=fejer X=200                      train 0.0323  test 0.0722  gram 0.945  near 1.000  ks 0.143
+taper=fejer X=500                      train 0.0248  test 0.0539  gram 0.952  near 1.000  ks 0.098
+taper=fejer X=1000                     train 0.0206  test 0.0443  gram 0.959  near 1.000  ks 0.075
+taper=fejer X=3000                     train 0.0158  test 0.0343  gram 0.967  near 1.000  ks 0.051
+taper=gauss X=5                        train 0.1526  test 0.2083  gram 0.923  near 0.987  ks 0.369
+taper=gauss X=10                       train 0.1001  test 0.1644  gram 0.923  near 1.000  ks 0.289
+taper=gauss X=20                       train 0.0639  test 0.1252  gram 0.924  near 1.000  ks 0.234
+taper=gauss X=50                       train 0.0358  test 0.0849  gram 0.945  near 1.000  ks 0.170
+taper=gauss X=100                      train 0.0239  test 0.0631  gram 0.958  near 1.000  ks 0.128
+taper=gauss X=200                      train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+taper=gauss X=500                      train 0.0103  test 0.0330  gram 0.978  near 1.000  ks 0.059
+taper=gauss X=1000                     train 0.0074  test 0.0256  gram 0.985  near 1.000  ks 0.044
+best on training zeros: gauss|1000 0.007439472321847578 -> test 0.025611833020976076
+== settings: extension angle, amplitude, phase ==
+alpha=-3.142                           train 0.5413  test 0.5369  gram 0.502  near 0.542  ks 0.164
+alpha=-1.000                           train 0.0989  test 0.1393  gram 0.924  near 1.000  ks 0.099
+alpha=-0.500                           train 0.0506  test 0.0802  gram 0.957  near 1.000  ks 0.094
+alpha=-0.200                           train 0.0251  test 0.0539  gram 0.965  near 1.000  ks 0.093
+alpha=0.000                            train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+alpha=0.200                            train 0.0251  test 0.0539  gram 0.965  near 1.000  ks 0.092
+alpha=0.500                            train 0.0506  test 0.0802  gram 0.958  near 1.000  ks 0.093
+alpha=1.000                            train 0.0988  test 0.1393  gram 0.923  near 1.000  ks 0.098
+alpha=3.142                            train 0.5264  test 0.5371  gram 0.502  near 0.540  ks 0.164
+A=0.000                                train 0.2478  test 0.2852  gram 0.923  near 0.923  ks 0.541
+A=0.500                                train 0.1020  test 0.1489  gram 0.923  near 1.000  ks 0.245
+A=0.800                                train 0.0410  test 0.0780  gram 0.937  near 1.000  ks 0.138
+A=0.900                                train 0.0263  test 0.0602  gram 0.950  near 1.000  ks 0.113
+A=1.000                                train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+A=1.100                                train 0.0166  test 0.0420  gram 0.974  near 1.000  ks 0.077
+A=1.200                                train 0.0248  test 0.0453  gram 0.966  near 1.000  ks 0.062
+A=1.500                                train 0.0551  test 0.0807  gram 0.908  near 1.000  ks 0.084
+A=2.000                                train 0.1011  test 0.1541  gram 0.817  near 0.999  ks 0.142
+phi=-1.571                             train 0.3930  test 0.4058  gram 0.885  near 0.838  ks 0.113
+phi=-0.300                             train 0.0434  test 0.0692  gram 0.966  near 1.000  ks 0.091
+phi=-0.100                             train 0.0211  test 0.0501  gram 0.968  near 1.000  ks 0.091
+phi=0.000                              train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+phi=0.100                              train 0.0211  test 0.0501  gram 0.967  near 1.000  ks 0.092
+phi=0.300                              train 0.0434  test 0.0692  gram 0.964  near 1.000  ks 0.093
+phi=1.571                              train 0.3893  test 0.4056  gram 0.887  near 0.838  ks 0.112
+phi=3.142                              train 0.4634  test 0.5064  gram 0.879  near 0.586  ks 0.093
+== settings: growth law (classical dynamics) ==
+growth=xp                              train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+growth=xp_lead                         train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+growth=oscillator                      train 36.0391  test 1736.6699  gram 0.001  near 0.001  ks 0.475
+growth=box                             train 137.7687  test 45177.5758  gram 0.000  near 0.000  ks 0.987
+growth=gammaC                          train 152.0546  test 1733.8313  gram 0.000  near 0.000  ks 0.716
+growth=nopi                            train 75.2696  test 590.9684  gram 0.000  near 0.000  ks 0.260
+== dials ==
+k=-1.0                                 train 0.0768  test 0.1142  gram 0.945  near 1.000  ks 0.081
+k=-0.5                                 train 0.0578  test 0.0923  gram 0.955  near 1.000  ks 0.090
+k=0.0                                  train 0.0412  test 0.0736  gram 0.960  near 1.000  ks 0.093
+k=0.5                                  train 0.0259  test 0.0573  gram 0.964  near 1.000  ks 0.094
+k=0.9                                  train 0.0170  test 0.0483  gram 0.967  near 1.000  ks 0.093
+k=1.0                                  train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+k=1.1                                  train 0.0168  test 0.0470  gram 0.969  near 1.000  ks 0.091
+k=1.5                                  train 0.0282  test 0.0562  gram 0.964  near 1.000  ks 0.087
+k=2.0                                  train 0.0575  test 0.0978  gram 0.945  near 1.000  ks 0.078
+t=0.5                                  train 0.1066  test 0.1552  gram 0.923  near 0.999  ks 0.246
+t=0.8                                  train 0.0427  test 0.0809  gram 0.936  near 1.000  ks 0.141
+t=0.9                                  train 0.0269  test 0.0614  gram 0.949  near 1.000  ks 0.114
+t=0.95                                 train 0.0207  test 0.0535  gram 0.958  near 1.000  ks 0.102
+t=1.0                                  train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+t=1.05                                 train 0.0151  test 0.0434  gram 0.972  near 1.000  ks 0.084
+t=1.1                                  train 0.0173  test 0.0423  gram 0.973  near 1.000  ks 0.076
+t=1.2                                  train 0.0269  test 0.0481  gram 0.962  near 1.000  ks 0.061
+s=0.3                                  train 0.0208  test 0.0361  gram 0.961  near 1.000  ks 0.056
+s=0.4                                  train 0.0120  test 0.0300  gram 0.977  near 1.000  ks 0.047
+s=0.45                                 train 0.0118  test 0.0366  gram 0.976  near 1.000  ks 0.069
+s=0.5                                  train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+s=0.55                                 train 0.0236  test 0.0598  gram 0.956  near 1.000  ks 0.118
+s=0.6                                  train 0.0320  test 0.0729  gram 0.947  near 1.000  ks 0.144
+s=0.7                                  train 0.0502  test 0.0987  gram 0.929  near 1.000  ks 0.190
+s=0.8                                  train 0.0688  test 0.1223  gram 0.923  near 1.000  ks 0.235
+s=1.0                                  train 0.1034  test 0.1607  gram 0.923  near 0.999  ks 0.301
+d=-0.25                                train 0.0246  test 0.0518  gram 0.965  near 1.000  ks 0.087
+d=-0.1                                 train 0.0178  test 0.0473  gram 0.969  near 1.000  ks 0.090
+d=-0.05                                train 0.0167  test 0.0470  gram 0.969  near 1.000  ks 0.091
+d=0.0                                  train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+d=0.05                                 train 0.0169  test 0.0482  gram 0.967  near 1.000  ks 0.093
+d=0.1                                  train 0.0183  test 0.0498  gram 0.966  near 1.000  ks 0.094
+d=0.25                                 train 0.0259  test 0.0573  gram 0.964  near 1.000  ks 0.094
+d=0.5                                  train 0.0436  test 0.0770  gram 0.960  near 1.000  ks 0.093
+d=1.0                                  train 0.0873  test 0.1299  gram 0.945  near 1.000  ks 0.083
+q=0.0                                  train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+q=0.05                                 train 0.0179  test 0.0491  gram 0.966  near 1.000  ks 0.096
+q=0.1                                  train 0.0198  test 0.0511  gram 0.961  near 1.000  ks 0.099
+q=0.25                                 train 0.0272  test 0.0585  gram 0.955  near 1.000  ks 0.112
+q=0.5                                  train 0.0418  test 0.0736  gram 0.943  near 1.000  ks 0.133
+q=1.0                                  train 0.0738  test 0.1080  gram 0.923  near 1.000  ks 0.167
+r=0.9                                  train 0.3522  test 0.3787  gram 0.892  near 0.803  ks 0.128
+r=0.97                                 train 0.3526  test 0.3772  gram 0.892  near 0.814  ks 0.115
+r=0.99                                 train 0.3627  test 0.3755  gram 0.890  near 0.806  ks 0.113
+r=0.999                                train 0.1661  test 0.4114  gram 0.888  near 0.759  ks 0.113
+r=1.0                                  train 0.0163  test 0.0473  gram 0.968  near 1.000  ks 0.092
+r=1.001                                train 0.1660  test 0.4113  gram 0.889  near 0.764  ks 0.113
+r=1.01                                 train 0.3642  test 0.3763  gram 0.891  near 0.810  ks 0.111
+r=1.03                                 train 0.3514  test 0.3762  gram 0.890  near 0.809  ks 0.108
+r=1.1                                  train 0.3461  test 0.3781  gram 0.894  near 0.806  ks 0.096
+p=2 (zeta * L(chi_-4)) test rms 1964.367
+== sensitivities ==
+d score / d k: train -0.0010  test -0.0067
+d score / d t: train -0.0583  test -0.1018
+d score / d s: train +0.1246  test +0.2367
+d score / d d: train +0.0025  test +0.0124
+d score / d r: train -0.0503  test -0.0483
+d score / d alpha: train -0.0001  test -0.0000
+d score / d A: train -0.0548  test -0.0941
+d score / d phi: train -0.0001  test +0.0000
+d score / d q: train +0.0309  test +0.0348
+== next adjustment ==
+step 0: train 0.0140 test 0.0418  s=0.486 A=1.026 alpha=0.000 phi=0.000 t=1.007 k=1.000
+step 1: train 0.0127 test 0.0351  s=0.446 A=1.025 alpha=-0.001 phi=-0.000 t=1.005 k=0.996
+step 2: train 0.0116 test 0.0369  s=0.447 A=0.990 alpha=0.002 phi=0.001 t=0.996 k=0.994
+step 3: train 0.0111 test 0.0348  s=0.438 A=0.995 alpha=-0.003 phi=-0.001 t=0.997 k=0.994
+step 4: train 0.0107 test 0.0344  s=0.425 A=0.970 alpha=0.022 phi=0.005 t=0.990 k=0.992
+step 5: train 0.0102 test 0.0331  s=0.420 A=0.975 alpha=-0.014 phi=-0.003 t=0.991 k=0.992
+== string theory ==
+drop p=2: test 0.1494 (full 0.0473)
+drop p=3: test 0.1185 (full 0.0473)
+drop p=5: test 0.0916 (full 0.0473)
+drop p=7: test 0.0788 (full 0.0473)
+drop p=11: test 0.0663 (full 0.0473)
+drop p=13: test 0.0628 (full 0.0473)
+drop p=29: test 0.0523 (full 0.0473)
+drop p=97: test 0.0479 (full 0.0473)
+{
+"drop_place": {
+"2": {
+"train": {
+"rms": 0.10672674411786495,
+"bias": -0.00031764078120896525,
+"osc": 0.10672627143461133,
+"gram_hit": 0.974,
+"near": 1.0,
+"ks": 0.05611222444889774,
+"nv_err": 0.08405093749999998,
+"pc_err": 0.22342784070030305,
+"missing": 0.0
+},
+"test": {
+"rms": 0.1493751535067163,
+"bias": 9.253156323787088e-05,
+"osc": 0.14937512484702686,
+"gram_hit": 0.9262,
+"near": 1.0,
+"ks": 0.1134226845369074,
+"nv_err": 0.08828218750000005,
+"pc_err": 0.1856670855770259,
+"missing": 0.0
+}
+},
+"3": {
+"train": {
+"rms": 0.08123554655340559,
+"bias": 0.00032607950721808855,
+"osc": 0.0812348921091516,
+"gram_hit": 0.978,
+"near": 1.0,
+"ks": 0.07014028056112226,
+"nv_err": 0.05894299999999991,
+"pc_err": 0.23559852857491845,
+"missing": 0.0
+},
+"test": {
+"rms": 0.11850706402859675,
+"bias": -4.3103053
+elapsed 990.3673672676086

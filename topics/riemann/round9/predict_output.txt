@@ -1,0 +1,8 @@
+G {'rms': 0.28524040408115936, 'mae': 0.2308561739514107, 'near': 0.9228, 'gram': 0.9228}
+L {'rms': 0.39163397268087186, 'mae': 0.3127357134286793, 'near': 0.8016, 'gram': 0.853}
+P {'rms': 0.04731133932087622, 'mae': 0.03032920337200086, 'near': 1.0, 'gram': 0.968}
+PL {'rms': 0.09790664224595351, 'mae': 0.0642858261161816, 'near': 0.9982, 'gram': 0.949}
+P_X3000 {'rms': 0.024617660470703177, 'mae': 0.019510558500369268, 'near': 1.0, 'gram': 0.985}
+Gram's law (index form): 0.9228  Rosser block hit: 1.0
+string block hits: {'rosser_block_hit': 1.0, 'P_block_hit': 1.0, 'PL_block_hit': 0.991, 'P_X3000_block_hit': 0.9904}
+{'G_err_lawful': 0.2047, 'G_err_lawless': 0.3776, 'P_err_lawful': 0.0238, 'P_err_lawless': 0.0668, 'PL_err_lawful': 0.0553, 'PL_err_lawless': 0.1148}

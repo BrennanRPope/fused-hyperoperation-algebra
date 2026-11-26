@@ -160,6 +160,7 @@ import FusedAlgebra.Topics.RiemannRound6
 import FusedAlgebra.Topics.RiemannNeighbours
 import FusedAlgebra.Topics.RiemannRound7
 import FusedAlgebra.Topics.RiemannRound8
+import FusedAlgebra.Topics.RiemannRound9
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

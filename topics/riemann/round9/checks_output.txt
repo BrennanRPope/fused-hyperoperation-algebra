@@ -1,0 +1,36 @@
+[PASS] zeros 1-1000 match the earlier table 
+[PASS] 5500 zeros, strictly increasing 
+[PASS] zero 1 agrees with mpmath.zetazero 
+[PASS] zero 2500 agrees with mpmath.zetazero 
+[PASS] zero 5500 agrees with mpmath.zetazero 
+[PASS] theta asymptotic = siegeltheta at t=20.0 
+[PASS] theta asymptotic = siegeltheta at t=300.0 
+[PASS] theta asymptotic = siegeltheta at t=5000.0 
+[PASS] theta(g_m) = m pi 
+[PASS] g_-1 = 9.6669, g_0 = 17.8456 
+[PASS] S at Gram points is an integer 
+[PASS] zeros in [g_m, g_m+1) = 1 + jump of S 
+[PASS] Hutchinson's first failure: [g125,g126) empty, [g126,g127) has two 
+[PASS] no Rosser failure below zero 5500 (Brent: first at Gram point 13,999,525) 
+[PASS] good Gram point iff S(g_m) even (40 points, against siegelz) 
+[PASS] interval counts 393 / 4715 / 387 / 3 
+[PASS] prime string (X=3000) places zeros 1-10 within 0.05 mean spacings max err 0.0077 spacings
+[PASS] held-out error falls with the cutoff (sharp) 
+[PASS] held-out error falls with the cutoff (fejer) 
+[PASS] held-out error falls with the cutoff (gauss) 
+[PASS] weights learned from 500 zeros within 5% of p^(-m/2)/m (first 10) [1.002 1.004 0.989 0.999 1.    1.025 1.01  0.996 0.997 0.98 ]
+[PASS] Landau dips at log 2 (all zeros) and log 3, log 5 (first 500) 
+[PASS] trap: fit error falls and held-out error rises past 320 settings 
+[PASS] orbit lengths must be log p to about 3e-5 at these heights 
+[PASS] best line drifts toward 1/2 as orbits are added (sharp) 
+[PASS] gauss taper overshoots below 1/2 and comes back 
+[PASS] prime string beats the Gram midpoint on held-out zeros P 0.0473 G 0.2852
+[PASS] Rosser block hit is 1.0 on held-out zeros 
+[PASS] p = 2 roughly doubles the level density 
+[PASS] Fermi primon gas: prod(1+p^-2) = zeta(2)/zeta(4) 
+[PASS] each p-adic place matters (dropping p=2 hurts more than p=97) 
+[PASS] Bose beats Fermi and Boltzmann 
+[PASS] sign flip and time reversal both hurt 
+[PASS] Lean: 12 theorems, no sorry 
+
+34 of 34 pass
