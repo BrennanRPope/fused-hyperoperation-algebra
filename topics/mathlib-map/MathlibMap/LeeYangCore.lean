@@ -76,7 +76,7 @@ theorem rule_of_alternatesBelow (T : Toolkit) {p : ℝ} (hp : 1 ≤ p) (hne : ¬
   constructor
   · intro h
     by_contra hlt
-    exact T.breaks p a hp hne (lt_of_not_le hlt) h
+    exact T.breaks p a hp hne (lt_of_not_ge hlt) h
   · intro hap
     exact holds_of_alternatesBelow T hp halt a ha0 hap
 
