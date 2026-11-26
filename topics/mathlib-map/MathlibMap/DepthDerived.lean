@@ -50,7 +50,6 @@ theorem chance_complement {t : ℝ} (ht : 0 < t) : (1 / t) / (1 + 1 / t) = 1 - t
   have h1 : 1 + t ≠ 0 := by positivity
   have h2 : t + 1 ≠ 0 := by positivity
   field_simp
-  try ring
 
 /-- Resizing the corner shapes by `α`, `β` > 0 is undone by multiplying the odds by `α/β`: the effective
 weights on the original corners keep the ratio `t`, so the shape is the same up to size. -/
@@ -60,14 +59,17 @@ theorem odds_rescale {t α β : ℝ} (ht : 0 < t) (hα : 0 < α) (hβ : 0 < β) 
   have hβ' : β ≠ 0 := hβ.ne'
   have h1 : 1 + t * (α / β) ≠ 0 := by positivity
   field_simp
-  try ring
 
 /-- The simplex gap is exact in one limit only: as the offset `a` grows with `p = β a`, each face's
 power term tends to the exponential, which is the temperature route. -/
 theorem face_to_temperature (y β : ℝ) :
     Tendsto (fun a : ℝ => (1 + y / a) ^ (β * a)) atTop (𝓝 (Real.exp (β * y))) := by
+  have h0 : Tendsto (fun x : ℝ => (1 + y / x) ^ x) atTop (𝓝 (Real.exp y)) := by
+    first
+    | exact tendsto_one_plus_div_rpow_exp y
+    | exact Real.tendsto_one_plus_div_rpow_exp y
   have h : Tendsto (fun a : ℝ => ((1 + y / a) ^ a) ^ β) atTop (𝓝 (Real.exp y ^ β)) :=
-    (Real.tendsto_one_plus_div_rpow_exp y).rpow_const (Or.inl (Real.exp_pos y).ne')
+    h0.rpow_const (Or.inl (Real.exp_pos y).ne')
   rw [← Real.exp_mul, mul_comm y β] at h
   refine h.congr' ?_
   have hlim : Tendsto (fun a : ℝ => 1 + y / a) atTop (𝓝 1) := by
