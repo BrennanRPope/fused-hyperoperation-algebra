@@ -87,6 +87,7 @@ import FusedAlgebra.Topics.AbstractAlgebra
 import FusedAlgebra.Topics.Statistics
 import FusedAlgebra.Topics.NSContinuum
 import FusedAlgebra.Topics.JetFields
+import FusedAlgebra.Topics.JetRiver
 import FusedAlgebra.Topics.OsgoodInverse
 import FusedAlgebra.Topics.LinearAlgebra
 import FusedAlgebra.Topics.DialSweep
@@ -139,6 +140,9 @@ import FusedAlgebra.Topics.Hypersphere
 import FusedAlgebra.Topics.HoloGluing
 import FusedAlgebra.Topics.HoloGluingField
 import FusedAlgebra.Topics.FuzzyFrame
+import FusedAlgebra.Topics.FreshLook
+import FusedAlgebra.Topics.CutIndependence
+import FusedAlgebra.Topics.YangMillsGap
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

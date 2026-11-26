@@ -867,6 +867,20 @@ FusedAlgebra.Topics.CornerWeights	CornerWeights.lucas_two_dets_den	propext, Clas
 FusedAlgebra.Topics.CornerWeights	CornerWeights.lucas_two_dets_num	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.CornerWeights	CornerWeights.plane_resolvent	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.CornerWeights	CornerWeights.size_pair_not_iterated	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CutIndependence	CutIndependence.cassini	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CutIndependence	CutIndependence.dims_r2	
+FusedAlgebra.Topics.CutIndependence	CutIndependence.dims_r3	
+FusedAlgebra.Topics.CutIndependence	CutIndependence.disc_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CutIndependence	CutIndependence.leftoverE_zero_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CutIndependence	CutIndependence.leftoverF_zero_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CutIndependence	CutIndependence.step_closes_r2	
+FusedAlgebra.Topics.CutIndependence	CutIndependence.step_closes_r3	
+FusedAlgebra.Topics.CutIndependence	CutIndependence.swap_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CutIndependence	CutIndependence.u_at_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.CutIndependence	CutIndependence.u_step	
+FusedAlgebra.Topics.CutIndependence	CutIndependence.u_two	propext
+FusedAlgebra.Topics.CutIndependence	CutIndependence.w2_r2	
+FusedAlgebra.Topics.CutIndependence	CutIndependence.w2_r3	
 FusedAlgebra.Topics.DarkSector	DarkSector.circ_ge_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DarkSector	DarkSector.circ_growth_is_exponential	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.DarkSector	DarkSector.corner_le_quarter	propext, Classical.choice, Quot.sound
@@ -1609,6 +1623,10 @@ FusedAlgebra.Topics.FractionalRungs	FractionalRungs.fuse_min	propext, Classical.
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.fuse_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.fuse_succ	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FractionalRungs	FractionalRungs.kdv_weight	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FreshLook	FreshLook.conic_norm_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FreshLook	FreshLook.mean_resistance_circ2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FreshLook	FreshLook.pair_product_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FreshLook	FreshLook.phase_average_key	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.M2.ext'	
 FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.character_op	
 FusedAlgebra.Topics.FunctionalAnalysis	FunctionalAnalysis.cube_zero_qi	propext, Classical.choice, Quot.sound
@@ -2064,6 +2082,12 @@ FusedAlgebra.Topics.JetFields	CircleOp.JetFields.units_circK	propext, Classical.
 FusedAlgebra.Topics.JetFields	CircleOp.JetFields.wall_no_inverse	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.JetFields	CircleOp.JetFields.wmul_assoc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.JetFields	CircleOp.JetFields.wmul_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.JetRiver	CircleOp.JetRiver.e2_addSmul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.JetRiver	CircleOp.JetRiver.friedmann_e2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.JetRiver	CircleOp.JetRiver.river_e2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.JetRiver	CircleOp.JetRiver.river_e2_gauss	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.JetRiver	CircleOp.JetRiver.river_e2_neg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.JetRiver	CircleOp.JetRiver.vacuum_e2	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.KnotTheory	KnotTheory.alexander_T2	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.KnotTheory	KnotTheory.closeD_circ	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.KnotTheory	KnotTheory.closeD_tsum	propext, Classical.choice, Quot.sound
@@ -3311,6 +3335,16 @@ FusedAlgebra.Topics.WhyI	WhyI.same_dial_no_twist	propext, Classical.choice, Quot
 FusedAlgebra.Topics.WhyI	WhyI.survival_two	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WhyI	WhyI.wedge_antisymm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WhyI	WhyI.wedge_self	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.abelian_plaquette_order_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.casimir_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.circle_class_no_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.generator_square	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.half_rung_tie	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.lift_order_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.parity_dial_xor	propext
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.rat_sq_nonneg	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.twisted_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.YangMillsGap	YangMillsGap.u1_rung_ratio	
 FusedAlgebra.Topics.ZoomDial	ZoomDial.half_box_walls	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ZoomDial	ZoomDial.halving_weight	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.ZoomDial	ZoomDial.sumL_flatMap_cons	propext, Classical.choice, Quot.sound
