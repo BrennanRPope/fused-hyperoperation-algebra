@@ -1,0 +1,5 @@
+PASS F1 every bound holds against exact J, J', C, C' (p = 1.25 to 7, c up to 8, s = 10 to 300)  [largest actual/bound E 0.940, E1 0.940, C 1.000, C1 1.000]
+PASS F2 the takeover T*(p) is certified on boxes covering 1.1 <= p <= 8 and every step 0 <= b <= p - 1  [676 boxes, 0 uncertified, every T at or past the monotone point]
+PASS F3 T* certified at p = 1.01, 1.03, 1.05, 10, 12, 16 on step boxes (split where needed)  [p 1.01: 97, p 1.03: 41, p 1.05: 41, p 10.0: 328, p 12.0: 466, p 16.0: 982]
+PASS F4 for 3 <= p <= 8 the certified takeover stays under 4 p^2; at p = 3 it is near the p = 3 certificate's 21  [largest T*/p^2 3.29; p = 3: 26.6]
+4/4 pass, 779 s

@@ -57,7 +57,8 @@ would close it, and that is now proved far out for every p, with the same kink c
 explicit radius is still missing (section N3, lobe law). At p = 3 the gap is closed: Lee–Yang is proved, computer-assisted, for every a ≤ 3 (n ≤ 10), so the
 rule is a theorem there (section N3, p = 3). Its constants are now whole numbers (section N3, p = 3 constants). A refactor puts every proof on
 one Lean core, so the rule at any p follows from one alternation statement. The far-out half of that statement looks uniform
-in p, and the near half is still per p (section N3, refactor). The other two are **Bell's 2√2 is a floor for
+in p, and the near half is still per p (section N3, refactor). The far-out half is now proved for every roundness from 1.1
+to 8, with explicit formulas in p, past a point that grows like p² (section N3, far bounds). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
 (a short corollary of Fermat's last theorem).
 
@@ -263,7 +264,7 @@ dial, and where it made sense the crossing of the first two. What came out:
 |---|---|---|
 | Roundness, crossed with shape | **N1** Bell's 2√2 is a floor for every symmetric shape, and a saddle where the dials cross | Follows from a known theorem (Gao–Lau 1990); the Bell reading wasn't found |
 | Roundness, rational settings | **N2** Fermat for every rational p: only p = 1, 2, ∞ have rational points to spare | Short corollary of Fermat's last theorem; not found stated |
-| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2, p = 3 (computer-assisted) and p = 4 whole a; rest open |
+| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2, p = 3 (computer-assisted) and p = 4 whole a; far zone proved for 1.1 ≤ p ≤ 8; rest open |
 | Roundness | Volume sums E_{1/p}(2Γ(1 + 1/p)) | Immediate from the known volume formula: nothing new |
 | Roundness | Replicator at any p | The same law at every p (u = x^(1/p) is a change of variable, check N5): nothing new |
 | Shape (round ↔ triangle) | The turn fades from −1 to 0; ordering fraction falls 1/4 → 0.229 | Already in `simplex/` §7; no closed form for the ordering fraction |
@@ -742,7 +743,7 @@ every roundness, the same kink share as the lobe law. It's positive for every p 
 - **Verdict: worth following.** The refactor turns "prove the rule" into one family of inequalities about two explicit
   Laplace integrals. The far-out part already shows the same margin at every p. The most useful next step is the
   far-zone bounds as explicit functions of p. That would make the far half a theorem for every p and leave a near
-  zone of a few zeros per p.
+  zone of a few zeros per p. (Done next, for 1.1 ≤ p ≤ 8: section N3, far bounds.)
 
 **Checks** (`general_p_far.py` → `general_p_far_output.txt`, `general_p_far.json`, **4 of 4 pass**, 244 s; numerical
 exploration, not a certificate):
@@ -753,6 +754,63 @@ exploration, not a certificate):
 | R2 | three far-zone tests with exact C and J, 7 roundnesses × 6 steps, s from 2 to 320 | take over at s ≈ 2, 2, 4.0, 4.7, 4.3, 10.3, 20.5 for p = 1.25, 1.5, 2.5, 3, 3.5, 5, 7 |
 | R3 | far-out margin of the tight test against 1 − \|sin(πp/2)\|/p^(p−1) | 0.126/0.126, 0.422/0.423, 0.821/0.821, 0.888/0.889, 0.968/0.969, 0.994/0.998, 0.980/1.000 |
 | R4 | zeros of G at b before the takeover | 0, 0, 1, 1, 1, 3, 6 |
+
+### N3, far bounds. The far-out half as formulas in p
+
+Asked next by Brennan: "work out the far-out bounds as formulas in p." **Short answer: done for every roundness from
+1.1 to 8, by interval arithmetic, with spot checks out to p = 16.** Every constant in the far-zone argument is now a
+formula in p, and **for each p there's a proved point T\*(p) past which the step b → b + 1 always works, at every step
+0 ≤ b ≤ p − 1.** T\*(p) grows like p²: about 16 at p = 2, 26 at p = 3, 74 at p = 5, 150 at p = 7 and 197 at p = 8, so
+never more than 3.3 p² from p = 3 to 8. What's left of the rule for these p is the near zone below T\*(p).
+
+![Far bounds in p](figures/fig23-lee-yang-far-p.png)
+
+*Figure 23. Top: the proved takeover T\*(p) (blue steps, one per box of roundness) against the point where the tests
+really start to hold with the exact pieces (orange). The proof's point is about 3p², and the real one is about 0.4p².
+Near p = 1 the takeover climbs again, because the margin itself shrinks like 2.2 (p − 1)². Bottom left: at p = 3, top
+step, the three proved margins rise to the kink margin 8/9. Bottom right: why the cost is p². The weight y^c e^(−sy)
+peaks near y = p/s, and the bounds only control a window of width about 1/p, because the first zero of w sits at
+2 sin(π/p). So s has to be a few times p² before the weight sits inside the window.*
+
+- **The formulas.** J = p^c Γ(c + 1) (s − iβ)^(−c−1) (1 + E) with β = c(p − 1)/2. The error E has two parts. Inside a
+  window of width κ/(p + 2), the second-order term of log w is kept exactly, (p − 1)(5 − p)/24, and only the third
+  order is bounded. Outside the window, |w/p| ≤ (1 + y²/2)^(p−1) gives a binomial sum. C gets three terms led by
+  c|sin(πp/2)| Γ(p + 1)/s^(p+1). Every piece is a closed expression in p, c and s, with two free knobs κ and λ.
+- **Checked against the exact values** (F1): at p = 1.25 to 7, c up to 8 and s = 10 to 300, every bound holds. The
+  closest the true error comes to its bound is 94% for J; the C bound is exact at c = 1.
+- **Certified** (F2): 676 boxes cover 1.1 ≤ p ≤ 8 and every step. Each box is evaluated with intervals, so it
+  covers every p and every b inside it at once. Boxes split where the margin was thin, mostly near p = 1.1. Every
+  bound decreases in s past (p + 1)/(λ 2^(−1/p)), and every certified T sits past that point, so positive margins at
+  T hold for every larger s.
+- **Spot checks outside that range** (F3): T\* is about 97 at p = 1.01, 41 at p = 1.03 and 1.05, 328 at p = 10, 466 at
+  p = 12 and 982 at p = 16.
+- **Compared with the p = 3 certificate.** Its own bound was 21, from constants fitted to p = 3. The general formulas
+  give about 26 there. That's 5 more, the price of one set of formulas for every p.
+
+**How solid.** The interval runs are rigorous given the formulas. The formulas themselves come from Taylor
+remainders, binomial tails and the contour turn, all derived by hand. F1 checks them numerically at 136 points. None of
+it is in Lean yet. Pólya and Krein are cited as before.
+
+**What it changes.** The per-p input `AlternatesBelow p` now splits cleanly. Past T\*(p) it's proved for every
+1.1 ≤ p ≤ 8. Below T\*(p) it's a near zone of about T\*/π zeros per step: around 8 at p = 3 and 60 at p = 8. At p = 3
+that near zone is already boxed (section N3, p = 3). For other p in the range it's a finite interval computation of
+the same kind, but its size grows like p² per step.
+
+**Verdict: worth following, with a clear limit.** The far half is now a theorem-shaped statement for a whole range of
+p, not one p at a time. The near zone is the bottleneck. A near-zone run like p = 3's over 1.1 ≤ p ≤ 5 is the natural
+next step, and it looks feasible, since the zero count stays under about 25 per step there. Every p at once needs
+something new for large p, because a box check whose size grows like p² can't cover all p. The proved point is 6 to 7
+times the real one, so tighter bounds would shrink the near zone. Turning the path to steepest descent is the
+obvious route, but the zero of w at angle π/p gets in the way for large p.
+
+**Checks** (`far_bounds_p.py` → `far_bounds_p_output.txt`, `far_bounds_p.json`, **4 of 4 pass**, 779 s):
+
+| Check | What | Result |
+|---|---|---|
+| F1 | every bound against exact J, J′, C, C′ by quadrature (p = 1.25 to 7, c ≤ 8, s = 10 to 300) | all hold; closest 0.94 of the bound |
+| F2 | T\*(p) on boxes covering 1.1 ≤ p ≤ 8, every step b in [0, p − 1], interval arithmetic | 676 boxes, all certified |
+| F3 | T\* at p = 1.01, 1.03, 1.05, 10, 12, 16 on step boxes | 97, 41, 41, 328, 466, 982 |
+| F4 | T\*/p² for 3 ≤ p ≤ 8; p = 3 against the certificate's 21 | at most 3.29; 26.6 |
 
 ---
 
@@ -779,6 +837,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 lobe law | first lobes by direct quadrature against the identity; zeros refined | all 50 digits | under 2 s, of the 97 s run |
 | N3 p = 3 | contour formula against the defining integral, 4 spot checks | gap 1e-32 | under 1 s, of the 205 s run |
 | N3 refactor | contour formula at non-whole p against the defining integral | gap 7e-10 | under 1 s, of the 244 s run |
+| N3 far bounds | every far-zone bound against exact quadrature, 136 points | closest 0.94 of the bound | about a minute, of the 779 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -800,6 +859,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `../mathlib-map/MathlibMap/LeeYangP3Constants.lean`: Lean proofs behind the whole-number constants 2 and 6, and the exact fractions.
 - `../mathlib-map/MathlibMap/LeeYangCore.lean`: the shared Lean core (toolkit, core theorem, p = 1, 2, 3 instances), built by CI with the Mathlib map.
 - `general_p_far.py` → `general_p_far.json`, `general_p_far_output.txt`: the far-zone scan across roundness. `figures_refactor.py` → figure 22.
+- `far_bounds_p.py` → `far_bounds_p.json`, `far_bounds_p_output.txt`: the far-zone bounds as formulas in p and the certified takeover T*(p). `figures_far_p.py` → figure 23.
 
 ## References
 
