@@ -245,6 +245,103 @@ def fig7():
     save(fig, "fig7_bathtub.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7):
+# ---------------------------------------------------------------- fig8 the derivation chain (round 7)
+def fig8():
+    fig, ax = plt.subplots(figsize=(13, 5.8))
+    W, H = 0.21, 0.3
+    boxes = {
+        "s1": (0.0, 0.62, "1. Shells turn rigidly\n(assumption)", "each lattice spheroid r turns\nas a whole at its own rate Ω(r)", BLUE),
+        "s2": (0.26, 0.62, "2. Area law (known: Sagnac)", "clock gap around a latitude circle\n= 2 Ω × enclosed area\n→ turn f = Ω (r²+b²) sin²θ", BLUE),
+        "s3": (0.52, 0.62, "3. Circulation law\n(assumption)", "a falling ring of cells keeps its gap\n(cells fall on cones, D2)\n→ Ω(r) = κ / (r²+b²)", PURPLE),
+        "s4": (0.78, 0.62, "4. Frame dragging far away", "match Part F's −2J sin²θ / r\n→ κ = J / M", GREEN),
+        "s5": (0.26, 0.12, "5. Rim at light speed\n(a reading of the dial's edge)", "innermost shell = disk of radius b,\nrim speed κ / b = 1  →  b = κ", ORANGE),
+        "out": (0.52, 0.12, "Output: Kerr, a = J/M", "every empty-space field\nequation holds; clock gap 2πJ/M;\nhorizon turns at Ω_H = a/(r₊²+a²),\nthe shell rate", RED),
+    }
+    for x, y, head, body, col in boxes.values():
+        ax.add_patch(FancyBboxPatch((x, y), W, H, boxstyle="round,pad=0.01", fc=col, alpha=0.13, ec=col, lw=2))
+        ax.text(x + W / 2, y + 0.26, head, ha="center", va="top", fontsize=10.5, weight="bold", color=col)
+        ax.text(x + W / 2, y + 0.1, body, ha="center", va="center", fontsize=9.2)
+    arr = dict(arrowstyle="->", lw=1.8, color="k")
+    for x0 in (0.0, 0.26, 0.52):
+        ax.annotate("", xy=(x0 + 0.26 - 0.015, 0.77), xytext=(x0 + W + 0.015, 0.77), arrowprops=arr)
+    ax.annotate("", xy=(0.52 + W - 0.02, 0.445), xytext=(0.80, 0.595), arrowprops=arr)      # step 4 -> output
+    ax.annotate("", xy=(0.505, 0.27), xytext=(0.485, 0.27), arrowprops=arr)               # step 5 -> output
+    ax.annotate("", xy=(0.56, 0.595), xytext=(0.44, 0.445),
+                arrowprops=dict(arrowstyle="->", lw=1.3, color=ORANGE, ls="--"))          # b = kappa fills in b
+    ax.text(0.505, 0.52, "b = κ", fontsize=9, color=ORANGE, ha="center")
+    ax.text(0.0, 0.42, "still put in by hand:\n• flat spheroidal lattice\n• speed v² = 2Mr/ρ²\n  (from the last page,\n   matched, not derived)",
+            fontsize=9.5, va="top", color=GREY)
+    ax.set_xlim(-0.02, 1.02); ax.set_ylim(0.05, 1.0); ax.axis("off")
+    ax.set_title("Deriving the turn: two assumptions, one known law, one far-field match and one reading;\n"
+                 "the field equations then only confirm", fontsize=12)
+    save(fig, "fig8_turn_derivation.png")
+
+
+# ---------------------------------------------------------------- fig9 the turning shells
+def fig9():
+    M, a = 1.0, 0.7
+    rp = M + np.sqrt(M**2 - a**2)
+    fig, axs = plt.subplots(1, 2, figsize=(13, 5.4))
+    ax = axs[0]
+    th = np.linspace(0, 2 * np.pi, 300)
+    for r in [0.0, 0.5, 1.0, 1.6, 2.4]:
+        A_, C_ = np.sqrt(r**2 + a**2), r
+        col = RED if r == 0 else BLUE
+        ax.plot(A_ * np.cos(th), C_ * np.sin(th), color=col, lw=2.6 if r == 0 else 1.4)
+        speed = a / A_
+        ax.annotate("", xy=(A_, 0.18 + 1.2 * speed), xytext=(A_, 0.18),
+                    arrowprops=dict(arrowstyle="->", color=col, lw=2))
+        ax.text(A_ + 0.04, 0.18 + 1.2 * speed, f"{speed:.2f}c", fontsize=8.5, color=col, va="center")
+    ax.annotate("r = 0 shell: a flat disk\nradius a, rim at c", xy=(-0.35, 0), xytext=(-2.7, -2.6), ha="left",
+                va="bottom", fontsize=9, color=RED, arrowprops=dict(arrowstyle="-", color=RED, lw=0.8))
+    ax.text(-2.7, 3.2, "each spheroid turns rigidly at Ω(r) = a/(r²+a²)\n"
+            "arrow length = speed at the equator, a/√(r²+a²)\n(schematic: the real motion is into the page)",
+            fontsize=9.5, va="top")
+    ax.set_aspect("equal"); ax.set_xlim(-2.8, 3.2); ax.set_ylim(-2.7, 3.3)
+    ax.set_xlabel("distance from axis"); ax.set_ylabel("height along the spin axis")
+    ax.set_title("the flat lattice, shell by shell, turning")
+    ax = axs[1]
+    r = np.linspace(0, 6, 400)
+    ax.plot(r, a / (r**2 + a**2), color=PURPLE, lw=2.6, label="shell rate Ω(r) = a/(r²+a²)  (derived)")
+    ax.plot(r[r > 1.3], 2 * M * a / r[r > 1.3]**3, color=GREEN, lw=1.8, ls="--", label="far-field drag 2J/r³ (Part F)")
+    ax.axvline(rp, color=GREY, ls=":", lw=1.2)
+    OmH = a / (rp**2 + a**2)
+    ax.plot([rp], [OmH], "o", color=RED, ms=8)
+    ax.text(rp + 0.1, OmH + 0.08, f"horizon r₊ = {rp:.2f}:\nΩ_H = a/(r₊²+a²) = {OmH:.3f}\n(Kerr's known horizon spin)",
+            fontsize=9, color=RED)
+    ax.plot([0], [1 / a], "s", color=ORANGE, ms=8)
+    ax.text(0.15, 1.45, "r = 0: rate 1/a, rim speed (1/a)·a = c", fontsize=9, color=ORANGE, va="center")
+    ax.set_ylim(0, 1.6); ax.set_xlabel("spheroid label r (M = 1, a = 0.7)"); ax.set_ylabel("turning rate")
+    ax.legend(fontsize=9, loc="center right"); ax.set_title("one curve: light-speed rim, horizon spin, far-field drag")
+    save(fig, "fig9_turning_shells.png")
+
+
+# ---------------------------------------------------------------- fig10 each assumption matters
+def fig10():
+    import re
+    res = json.load(open(os.path.join(HERE, "results.json")))
+    bad = res["D5c_bad"]
+    good = float(re.search(r"= ([0-9.e+-]+)", res["D5b and it solves every empty-space field equation (M = 1, kappa = b = 0.7)"]["detail"]).group(1))
+    names = {"ring b = 0.5 kappa (rim faster than light)": "ring b = 0.5κ\n(rim faster\nthan light)",
+             "ring b = 1.5 kappa (rim slower than light)": "ring b = 1.5κ\n(rim slower\nthan light)",
+             "gap not kept: Omega ~ 1/r^2": "gap not kept:\nΩ ~ 1/r²",
+             "gap not kept: one rigid rate for all space": "gap not kept:\none rigid rate\nfor all space",
+             "gap drifts with r: f = kappa sin^2 (1 + M/r)": "gap drifts with r:\nf = κ sin²θ (1 + M/r)"}
+    labs = ["derived chain\n(Kerr)"] + [names.get(k, k) for k in bad]
+    vals = [good] + list(bad.values())
+    fig, ax = plt.subplots(figsize=(12, 4.8))
+    ax.bar(range(len(vals)), vals, color=[GREEN] + [RED] * len(bad), alpha=0.8)
+    for i, v in enumerate(vals[1:], 1):
+        ax.text(i, v * 3, f"{v:.2g}", ha="center", fontsize=8.5)
+    ax.text(0, good * 3, f"{good:.1e}", ha="center", fontsize=8.5)
+    ax.set_yscale("log"); ax.set_ylim(1e-52, 1e4)
+    ax.set_xticks(range(len(vals))); ax.set_xticklabels(labs, fontsize=8.5)
+    ax.axhline(1e-30, color=GREY, ls=":")
+    ax.text(-0.45, 3e-30, "zero line (1e-30)", fontsize=8.5, color=GREY, ha="left", va="bottom")
+    ax.set_ylabel("largest empty-space field-equation error |Ricci|")
+    ax.set_title("change any step of the derivation and empty space breaks (M = 1, κ = 0.7)")
+    save(fig, "fig10_each_step_matters.png")
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10):
     f()
 print("figures:", sorted(os.listdir(FIG)))

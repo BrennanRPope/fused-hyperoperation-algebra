@@ -40,4 +40,17 @@
 == F3  Foucault's pendulum: the rotating Earth, plus Earth's own (tiny) frame dragging
 [PASS] F3a Foucault turn = Earth's rate x sin(latitude) (on precession page C5-C7); Earth's frame dragging adds a vertical turn 2 sin(lat) GJ/(c^2R^3): the ratio is 2 (I/MR^2)(GM/Rc^2), the same at every latitude: ratio = 4.604e-10; Foucault at 45 deg = 255.3 deg/day, drag part = 154.5 mas/yr
 
-22/22 checks pass
+== D  Deriving the turn's size and shape instead of testing it
+[PASS] D1a area law: a shell turning rigidly at rate Omega(r) has clock gap 2 Omega A around each latitude circle, A = pi (r^2+b^2) sin^2(theta) the enclosed flat area; so the turn is f = Omega(r)(r^2+b^2) sin^2(theta): gap = 2*pi*(b**2 + r**2)*Omega(r)*sin(theta)**2; the sin^2 shape is the area of a latitude circle (Sagnac's law, at q = 0 exactly)
+[PASS] D1b the K5 turn amount alpha = a sin(theta)/sqrt(r^2+a^2) is exactly the speed of the shell turning at Omega = a/(r^2+a^2): the cell is pushed along the turning shell's time leg: so the 'turn' is a second q = 0 boost, sideways, at the local speed of the lattice shell
+[PASS] D2a for ANY turn function the cells fall along cones (u^theta = 0), so a latitude ring of cells stays a latitude ring: u^r = -sqrt(2)*sqrt(M)*sqrt(r)*sqrt(b**2 + r**2)/(b**2*cos(theta)**2 + r**2)
+[PASS] D2b the gap around a falling ring changes at rate -2 pi u^r df/dr: it is kept exactly when f has no r dependence: a circulation law like Kelvin's for a swirling fluid; with D1: Omega(r)(r^2+b^2) = kappa, so Omega(r) = kappa/(r^2+b^2)
+[PASS] D3 far away g_tphi -> -2 M kappa sin^2(theta)/r; frame dragging (Part F, F4a) needs -2J sin^2(theta)/r, so kappa = J/M: limit r g_tphi = -2*M*kappa*sin(theta)**2; kappa = [J/M]
+[PASS] D4 the r = 0 shell is a flat disk of radius b whose rim moves at kappa/b; the rim at light speed (the dial's edge) means b = kappa: the lattice's ring and the turn are the same length, and every other shell is slower than light: rim speed = kappa/b; with b = kappa: 1 - alpha^2 = rho^2/(r^2+kappa^2) >= 0, zero only on the ring (Kerr's ring source spinning at light speed at its rim: Israel 1970, known)
+[PASS] D5a the derived cell (Omega = kappa/(r^2+kappa^2), kappa = J/M, b = kappa) is identical to the tested one, a = J/M: nothing was fitted: Kerr's a = J/M comes out
+[PASS] D5b and it solves every empty-space field equation (M = 1, kappa = b = 0.7): max |Ricci| = 4.68e-50
+[PASS] D5c each assumption in the chain matters: changing the rim speed or letting the gap drift breaks empty space: {'ring b = 0.5 kappa (rim faster than light)': '0.468', 'ring b = 1.5 kappa (rim slower than light)': '0.618', 'gap not kept: Omega ~ 1/r^2': '0.891', 'gap not kept: one rigid rate for all space': '20.7', 'gap drifts with r: f = kappa sin^2 (1 + M/r)': '2.11'}
+[PASS] D6a the t-phi block: g_tphi^2 - g_tt g_phiphi = sin^2(theta) (r^2 - 2Mr + a^2), which closes at the horizon: = (-2*M*r + a**2 + r**2)*sin(theta)**2
+[PASS] D6b there the dragging rate -g_tphi/g_phiphi equals the lattice shell's rate a/(r+^2 + a^2): Kerr's horizon spin Omega_H is the derived shell rate, read at the horizon: Omega_H = a*(M + sqrt(M**2 - a**2))/(2*M*(2*M**2 + 2*M*sqrt(M**2 - a**2) - a**2))  (the known value a/(r+^2+a^2); also the Carter frame's rate)
+
+33/33 checks pass

@@ -33,13 +33,18 @@ three outside-gravity look-alikes:
 - **Foucault:** this one was already ours. Earth's own frame dragging adds only 4.6 × 10⁻¹⁰ to the pendulum's turn,
   at every latitude.
 
+**Update, round 7 (Part 3): the turn is now derived, not tested.** Two assumptions do it: each lattice shell turns
+rigidly, and a falling ring of cells keeps its clock gap. Add Sagnac's area law and frame dragging's far field, and
+the turn's shape sin²θ and its size a = J/M both come out. Reading the dial's edge as light speed at the innermost
+shell's rim ties the lattice's ring to the turn. The field equations then only confirm. The speed law is still put in.
+
 ![cell legs](figures/fig1_cell_legs.png)
 
 *Fig 1. Left: a non-spinning hole. Each cell's radial leg is pushed by v along its time leg, which is one shear.
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**22/22 pass**, about 20 seconds). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**33/33 pass**, about 30 seconds). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -236,7 +241,97 @@ already checked on our precession page (C5–C7), with the Berry and Hannay phas
 Sagnac effect, and here it is the cell clock's gap.
 
 - **Lead?** Yes. The clock gap is a direct, quantitative reading of "the turn each cell carries". If the theory can say
-  why the gap is a sin²θ per radian, it would derive the turn instead of finding it.
+  why the gap is a sin²θ per radian, it would derive the turn instead of finding it. (Done in Part 3.)
+
+## Part 3. Deriving the turn (round 7)
+
+Asked by Brennan, who answered "Yes" to: "Should I try to derive the turn's size from the dial, so Kerr's clock gap
+becomes an output instead of something we found by testing?"
+
+**Result: the turn's shape and size come out of four short steps, and the field equations then only confirm.** It
+takes two assumptions, one known law, one far-field match and one reading. Kerr's a = J/M is an output, and so is its
+clock gap, 2πJ/M per lap. Nothing is fitted. What is still put in by hand: the flat spheroidal lattice, and the speed
+law v² = 2Mr/ρ² from Part 1, which is still matched by the field equations rather than derived.
+
+![derivation chain](figures/fig8_turn_derivation.png)
+
+*Fig 8. The chain. Blue: the area law gives the shape. Purple: the circulation law gives the rate in each shell.
+Green: frame dragging far away gives the size. Orange: the rim at light speed ties the lattice's ring to the turn.
+Red: the output, Kerr, with every empty-space field equation satisfied.*
+
+### 3.1 Shape: the area law (D1)
+
+Suppose each lattice spheroid turns as a whole, at its own rate Ω(r) (assumption 1: rigid shells). At the dial's flat
+middle, the turning shell's time leg is the lattice time leg pushed sideways by the shell's speed: one more shear.
+Around a latitude circle, that leg's clock gap is exactly 2 × Ω × (the circle's area). This is Sagnac's law, known,
+and at q = 0 it holds exactly, with no γ factor (D1a). The circle's area is π(r² + b²) sin²θ, so
+
+  turn f = Ω(r) · (r² + b²) · sin²θ.
+
+**The sin²θ shape is just the area of a latitude circle.** And Part 1's turn amount, α = a sinθ/√(r² + a²), turns out
+to be exactly the speed of the shell at that point (D1b). So the "turn" is the cell being pushed along the turning
+shell's own time leg.
+
+### 3.2 Rate per shell: the circulation law (D2)
+
+For any turn function, the cells fall along cones of fixed θ (D2a). A latitude ring of cells therefore stays a
+latitude ring as it falls. The ring's clock gap changes at the rate −2π u^r ∂f/∂r (D2b). Assumption 2 is that a
+falling ring keeps its gap. This is a circulation law, like Kelvin's for a swirling fluid. It holds exactly when f
+doesn't depend on r. With 3.1 that forces
+
+  Ω(r) = κ / (r² + b²),  f = κ sin²θ.
+
+### 3.3 Size: frame dragging far away (D3)
+
+Far out, this cell gives g_tφ → −2Mκ sin²θ / r. Part F derived frame dragging's far field, −2J sin²θ / r, and checked
+it against Gravity Probe B and LAGEOS. Matching the two gives **κ = J/M**.
+
+### 3.4 The ring: the rim at light speed (D4)
+
+The innermost shell, r = 0, is a flat disk of radius b. Its rim moves at κ/b. Reading the dial's edge as the fastest
+a shell can go puts the rim at light speed, which gives **b = κ**. The lattice's ring and the turn are then the same
+length, and every other shell moves slower than light: 1 − α² = ρ²/(r² + κ²) ≥ 0, which is zero only on the ring.
+This matches a known picture of Kerr's source: Israel (1970) read it as a flat disk of radius a spanning the ring,
+with its material reaching light speed at the rim (and with negative energy density, so it isn't a realistic star).
+Our r = 0 shell is a lattice shell in flat space, not Israel's material disk. The match is in the radius and the rim
+speed.
+
+### 3.5 The field equations confirm, and every step matters (D5, D6)
+
+The derived cell is identical to Part 1's tested one, with a = J/M (D5a). It solves every empty-space field equation,
+max |Ricci| = 5 × 10⁻⁵⁰ (D5b). Change any step and empty space breaks (D5c):
+
+![each step matters](figures/fig10_each_step_matters.png)
+
+*Fig 10. The largest field-equation error for the derived chain (green) and for five changes to it (red). Those are
+a rim faster or slower than light, two ways of letting the clock gap change between shells, and a gap that drifts
+with r. Log scale; the dotted line is the 10⁻³⁰ "zero" threshold.*
+
+There is also a bonus, which is a check we didn't aim for. At the horizon, Kerr's dragging rate −g_tφ/g_φφ equals the
+derived shell rate a/(r₊² + a²) (D6b). That is Kerr's known horizon spin, Ω_H. It is also the rate of Carter's frame.
+The t–φ block closes exactly there: g_tφ² − g_tt g_φφ = sin²θ (r² − 2Mr + a²) (D6a).
+
+![turning shells](figures/fig9_turning_shells.png)
+
+*Fig 9. Left: the flat lattice, each spheroid turning rigidly at Ω(r) = a/(r² + a²). The arrows show each shell's
+equator speed, and only the r = 0 disk's rim reaches c. Right: one curve carries the light-speed rim at r = 0, Kerr's
+horizon spin at r₊, and frame dragging's 2J/r³ far away.*
+
+### 3.6 What is still assumed, plainly
+
+| step | status |
+|---|---|
+| flat spheroidal lattice | put in (Part 1.1) |
+| speed v² = 2Mr/ρ² | put in, matched by the field equations (K3c); not derived |
+| shells turn rigidly | **assumption 1** |
+| clock gap = 2 Ω × area | known law (Sagnac), exact at q = 0 |
+| a falling ring keeps its gap | **assumption 2** (circulation law) |
+| κ = J/M | derived, from Part F's far field |
+| rim at light speed, b = κ | a **reading** of the dial's edge; the field equations confirm only b = κ works |
+| Kerr, a = J/M, clock gap 2πJ/M, Ω_H | **output**, checked |
+
+The next gap is the speed law. If it can be derived too, perhaps as a Gauss law on the spheroids the way rv² = 2Gm
+came out of the jet river, then Kerr would follow from the lattice shape plus the two assumptions.
 
 ## Verdict, on its own merits
 
@@ -247,20 +342,24 @@ Sagnac effect, and here it is the cell clock's gap.
 - **Opens a lead:** the turn is visible as a clock gap, 2πa per lap, equal to Kerr's clock effect. Deriving that gap
   from the dial, rather than reading it off Doran's metric, would make the turn an output. A second, smaller lead: no
   fluid can make full Kerr because fluids lack the turn.
-- **Not derived:** the turn's form a sin²θ was tested (only it works), not derived from the theory. Gravitational
-  waves are still out of reach.
+- **Derived since (Part 3):** the turn's form a sin²θ and its size a = J/M now come from rigid shells, the circulation
+  law, Sagnac's area law and frame dragging's far field. That makes the clock gap 2πJ/M an output. Kerr's horizon spin
+  comes out as a bonus.
+- **Not derived:** the speed law v² = 2Mr/ρ² and the spheroidal shape of the lattice are still put in. The light-speed
+  rim is a reading. Gravitational waves are still out of reach.
 - **Frames:** one area law runs through all of them, turn = d × area. Thomas, geodetic, Lense–Thirring and Kerr sit at
   d = −1; Foucault, Coriolis, Larmor and Berry at d = +1; the river and the acoustic metric at d = 0. Larmor's theorem
   explains the ½ in frame dragging's gyroscope rule.
 
 ## Files
 
-- `checks.py`: 22 checks (K1–K7 the spinning river, F1–F3 frames), writes `checks_output.txt`, `results.json`.
+- `checks.py`: 33 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn), writes `checks_output.txt`, `results.json`.
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the seven figures in `figures/`.
-- `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`. Compiled in the shared library
-  on Nov 26 as `FusedAlgebra.Topics.SpinningRiver` (all four, as written); it builds on `FusedAlgebra.Topics.JetFields`.
+- `figures.py`: the ten figures in `figures/`.
+- `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
+  `rim_at_light`, `tphi_block`, `horizon_rate`. All eight are compiled in the shared library as
+  `FusedAlgebra.Topics.SpinningRiver` (as written; namespace `CircleOp.SpinningRiver`); it builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -277,3 +376,8 @@ Sagnac effect, and here it is the cell clock's gap.
 | G_nn = det(sym ∇u) for any 2D acoustic river; the bathtub's Q < 0 | **ours** as the Q-layer reading (the energy constraint itself is known) |
 | fluids can't make full Kerr | known (Visser & Weinfurtner 2005); **ours**: the reason is the missing turn |
 | Foucault as holonomy; Earth's drag at 4.6 × 10⁻¹⁰ of it | known physics; the ratio's form 2(I/MR²)(GM/Rc²) worked out here |
+| sin²θ shape as the area of a latitude circle; α as the turning shell's speed | **ours** (D1); Sagnac's law known |
+| circulation law for the cell clock gap, forcing Ω(r) = κ/(r²+b²) | **ours** (D2), an assumption, modelled on Kelvin |
+| κ = J/M from the far field | **ours** as a derivation step; a = J/M itself known |
+| light-speed rim of a flat disk of radius a | known picture (Israel 1970); **ours** as the lattice's r = 0 shell and as the reason b = κ |
+| horizon spin Ω_H = a/(r₊²+a²) = the shell rate; Carter's frame rate | known values; **ours** as the derived shell rate |

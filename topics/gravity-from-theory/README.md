@@ -203,7 +203,11 @@ squashed spheres. The turn is forced in size, shape and speed law. The cells obe
 shows up as a clock gap of 2πa per lap, which is Kerr's known clock effect (T₊ − T₋ = 4πa). The page also maps all 17
 ideas of a frame on our pages along the dial, one law turn = d × area, and adds Larmor's theorem (its ½ is the ½ of
 frame dragging's gyroscope rule) and spinning fluids (sound sees a river; a vortex drags waves but with negative Q,
-and fluids lack the turn, so no fluid makes full Kerr). 22/22 checks.
+and fluids lack the turn, so no fluid makes full Kerr). Round 7 (Part 3 of that page) then derives the turn instead
+of testing it. Shells of the flat lattice turn rigidly, a falling ring of cells keeps its clock gap, and Sagnac's area
+law plus frame dragging's far field give the shape sin²θ and the size a = J/M. A light-speed rim on the innermost
+shell ties the lattice's ring to the turn. Kerr's horizon spin comes out as a bonus. The speed law is still put in.
+33/33 checks.
 
 ### N.4 A dead end checked in passing
 

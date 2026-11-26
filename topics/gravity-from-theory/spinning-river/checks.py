@@ -2,6 +2,7 @@
 
 K: give each river cell a turn as well as a velocity; does the spinning (Kerr) black hole come out exactly?
 F: frame-dragging look-alikes outside black holes (Larmor's theorem, spinning fluids, Foucault, clocks).
+D: derive the turn (area law + circulation law + far-field frame dragging + rim at light speed) instead of testing it.
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -272,6 +273,110 @@ check("F3a Foucault turn = Earth's rate x sin(latitude) (on precession page C5-C
       abs(ratio - 2 * k_I * G * M_E / (R_E * c**2)) < 1e-15,
       f"ratio = {ratio:.3e}; Foucault at 45 deg = {360 * np.sin(np.pi / 4) / 0.99727:.1f} deg/day, "
       f"drag part = {lt_vert_over_sin * np.sin(np.pi / 4) * 3.156e7 * 206264806:.1f} mas/yr")
+
+# ================================================================ D  deriving the turn (round 7)
+log("\n== D  Deriving the turn's size and shape instead of testing it")
+Kp, Bp, Omf = sp.symbols("kappa b Omega", positive=True)
+
+
+def legs2(M=Mn, b=An, f=None, kappa=An):
+    """Lattice = flat spheroidal shells with ring radius b; speed v = sqrt(2Mr)/rho_b; turn function f(r, theta):
+    e1 = g1 + v (g0 - f dphi).  Default f = kappa sin^2(theta)."""
+    rho2 = R**2 + b**2 * sp.cos(TH)**2
+    if f is None:
+        f = kappa * sp.sin(TH)**2
+    g0 = sp.Matrix([1, 0, 0, 0])
+    g1 = sp.Matrix([0, sp.sqrt(rho2) / sp.sqrt(R**2 + b**2), 0, 0])
+    g2 = sp.Matrix([0, 0, sp.sqrt(rho2), 0])
+    g3 = sp.Matrix([0, 0, 0, sp.sqrt(R**2 + b**2) * sp.sin(TH)])
+    v = sp.sqrt(2 * M * R / rho2)
+    e1 = g1 + v * sp.Matrix([1, 0, 0, -f])
+    return g0, e1, g2, g3, v, rho2
+
+
+def metric2(**kw):
+    e0, e1, e2, e3, *_ = legs2(**kw)
+    return -e0 * e0.T + e1 * e1.T + e2 * e2.T + e3 * e3.T
+
+
+# D1 the area law: a rigidly turning shell's clock gap is 2 x rate x area, which gives the sin^2 shape
+Om_r = sp.Function("Omega")(R)
+cylr = sp.sqrt(R**2 + Bp**2) * sp.sin(TH)                       # distance from the axis of a lattice point
+alpha_shell = Om_r * cylr                                       # the shell's speed at that point
+g0b = sp.Matrix([1, 0, 0, 0])
+g3b = sp.Matrix([0, 0, 0, cylr])
+w_shell = g0b - alpha_shell * g3b                               # time leg of the turning shell at the dial's flat middle (q = 0 boost)
+gap_shell = sp.integrate(-w_shell[3], (PH, 0, 2 * sp.pi))
+xx_b = cylr * sp.cos(PH)
+yy_b = cylr * sp.sin(PH)
+area = sp.pi * sp.simplify(xx_b**2 + yy_b**2)                   # area enclosed by the latitude circle, in flat space
+check("D1a area law: a shell turning rigidly at rate Omega(r) has clock gap 2 Omega A around each latitude circle, "
+      "A = pi (r^2+b^2) sin^2(theta) the enclosed flat area; so the turn is f = Omega(r)(r^2+b^2) sin^2(theta)",
+      sp.simplify(gap_shell - 2 * Om_r * area) == 0,
+      f"gap = {sp.simplify(gap_shell)}; the sin^2 shape is the area of a latitude circle (Sagnac's law, at q = 0 exactly)")
+alpha_K5 = As * sp.sin(TH) / sp.sqrt(R**2 + As**2)
+check("D1b the K5 turn amount alpha = a sin(theta)/sqrt(r^2+a^2) is exactly the speed of the shell turning at "
+      "Omega = a/(r^2+a^2): the cell is pushed along the turning shell's time leg",
+      sp.simplify(alpha_shell.subs(Om_r, As / (R**2 + As**2)).subs(Bp, As) - alpha_K5) == 0,
+      "so the 'turn' is a second q = 0 boost, sideways, at the local speed of the lattice shell")
+
+# D2 the circulation law: a falling ring of cells keeps its clock gap  <=>  df/dr = 0
+fgen = sp.Function("f")(R, TH)
+gG = metric2(M=Ms, b=Bp, f=fgen)
+gGi = gG.inv()
+uup = [sp.simplify(-gGi[i, 0]) for i in range(4)]               # u^mu = g^{mu nu} u_nu, u_nu = (-1, 0, 0, 0)
+# change of the gap around a carried latitude ring = closed integral of (L_u w)_phi dphi, w_phi = -f, axisymmetric
+Lw_phi = -sum(uup[i] * sp.diff(fgen, X4[i]) for i in range(4))
+check("D2a for ANY turn function the cells fall along cones (u^theta = 0), so a latitude ring of cells stays a latitude ring",
+      uup[2] == 0, f"u^r = {sp.simplify(uup[1])}")
+check("D2b the gap around a falling ring changes at rate -2 pi u^r df/dr: it is kept exactly when f has no r dependence",
+      sp.simplify(Lw_phi + uup[1] * sp.diff(fgen, R)) == 0,
+      "a circulation law like Kelvin's for a swirling fluid; with D1: Omega(r)(r^2+b^2) = kappa, so Omega(r) = kappa/(r^2+b^2)")
+
+# D3 the size: match the far field to frame dragging (Part F's g_tphi -> -2J sin^2/r)
+gk = metric2(M=Ms, b=Bp, kappa=Kp)
+far = sp.limit(gk[0, 3] * R, R, sp.oo)
+Js = sp.symbols("J", positive=True)
+ksol = sp.solve(sp.Eq(far, -2 * Js * sp.sin(TH)**2), Kp)
+check("D3 far away g_tphi -> -2 M kappa sin^2(theta)/r; frame dragging (Part F, F4a) needs -2J sin^2(theta)/r, "
+      "so kappa = J/M", ksol == [Js / Ms], f"limit r g_tphi = {sp.simplify(far)}; kappa = {ksol}")
+
+# D4 the innermost shell: the disk r = 0 of radius b, rim speed kappa/b
+rim = sp.simplify((Kp / (R**2 + Bp**2) * sp.sqrt(R**2 + Bp**2) * sp.sin(TH)).subs({R: 0, TH: sp.pi / 2}))
+alpha_k = sp.simplify((Kp / (R**2 + Kp**2) * sp.sqrt(R**2 + Kp**2) * sp.sin(TH)))
+check("D4 the r = 0 shell is a flat disk of radius b whose rim moves at kappa/b; the rim at light speed (the dial's edge) "
+      "means b = kappa: the lattice's ring and the turn are the same length, and every other shell is slower than light",
+      sp.solve(sp.Eq(rim, 1), Bp) == [Kp] and sp.simplify(1 - alpha_k**2 - (R**2 + Kp**2 * sp.cos(TH)**2) / (R**2 + Kp**2)) == 0,
+      f"rim speed = {rim}; with b = kappa: 1 - alpha^2 = rho^2/(r^2+kappa^2) >= 0, zero only on the ring "
+      "(Kerr's ring source spinning at light speed at its rim: Israel 1970, known)")
+
+# D5 the derived cell is Kerr; every other choice in the chain fails the field equations
+gD = metric2(M=Ms, b=Js / Ms, kappa=Js / Ms)
+check("D5a the derived cell (Omega = kappa/(r^2+kappa^2), kappa = J/M, b = kappa) is identical to the tested one, a = J/M",
+      sp.simplify(gD - metric(M=Ms, a=As).subs(As, Js / Ms)) == sp.zeros(4, 4), "nothing was fitted: Kerr's a = J/M comes out")
+rD = rmax(metric2())
+check("D5b and it solves every empty-space field equation (M = 1, kappa = b = 0.7)", rD < ZERO, f"max |Ricci| = {mp.nstr(rD, 3)}")
+bad7 = {}
+for lab, kw in [("ring b = 0.5 kappa (rim faster than light)", dict(b=An / 2)),
+                ("ring b = 1.5 kappa (rim slower than light)", dict(b=3 * An / 2)),
+                ("gap not kept: Omega ~ 1/r^2", dict(f=An * (R**2 + An**2) / R**2 * sp.sin(TH)**2)),
+                ("gap not kept: one rigid rate for all space", dict(f=An / (1 + An**2) * (R**2 + An**2) * sp.sin(TH)**2)),
+                ("gap drifts with r: f = kappa sin^2 (1 + M/r)", dict(f=An * sp.sin(TH)**2 * (1 + 1 / R)))]:
+    bad7[lab] = rmax(metric2(**kw))
+check("D5c each assumption in the chain matters: changing the rim speed or letting the gap drift breaks empty space",
+      all(x > mp.mpf("1e-3") for x in bad7.values()), {k: mp.nstr(x, 3) for k, x in bad7.items()})
+results["D5c_bad"] = {k: float(x) for k, x in bad7.items()}
+
+# D6 the horizon turns at the shell rate
+rp_ = Ms + sp.sqrt(Ms**2 - As**2)
+gKa = metric(M=Ms, a=As)
+blockdet = sp.simplify(gKa[0, 3]**2 - gKa[0, 0] * gKa[3, 3])
+OmH = sp.simplify((-gKa[0, 3] / gKa[3, 3]).subs(R, rp_))
+check("D6a the t-phi block: g_tphi^2 - g_tt g_phiphi = sin^2(theta) (r^2 - 2Mr + a^2), which closes at the horizon",
+      sp.simplify(blockdet - sp.sin(TH)**2 * (R**2 - 2 * Ms * R + As**2)) == 0, f"= {sp.factor(blockdet)}")
+check("D6b there the dragging rate -g_tphi/g_phiphi equals the lattice shell's rate a/(r+^2 + a^2): Kerr's horizon spin "
+      "Omega_H is the derived shell rate, read at the horizon", sp.simplify(OmH - As / (rp_**2 + As**2)) == 0,
+      f"Omega_H = {sp.simplify(OmH)}  (the known value a/(r+^2+a^2); also the Carter frame's rate)")
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)
