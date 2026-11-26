@@ -1,0 +1,25 @@
+[PASS] A1: one-loop flow in u = 1/g is u o_k s(t) with k = -g*, and steps compose by o_k (recovered identity)
+[PASS] A2: Sakharov / Bonanno-Reuter running 1/G = 1/G0 + w k^2 is the solution of beta = 2g(1 - w g): the one-loop match IS induced-gravity running
+[PASS] A3: free-parameter count of the one-loop match: 0 fitted (k = -g* comes from the flow itself); it is an identity for EVERY quadratic beta, so it tests nothing about gravity by itself
+[PASS] B1: g/g* = (induced part of 1/G)/(1/G): the one-loop 'probability' is the induced share; its odds = G0 w k^2 grow by e^2 per e-fold
+[PASS] B2: beyond one loop (Litim, lambda=0) the odds no longer grow at one rate: 2.0000 at the IR end, 2.0444 mid-way, 2.0909 = 23/11 at the UV end
+[PASS] B3: exact Litim lambda=0 solution R^(1/2)(1-R)^(-11/23) = e^t confirmed by integrating beta
+[PASS] C:geometric: geometric (linear fractional): rho = 1 - 2 f'''(1)/(3 sigma^4) = 0.0000; exponent of the near-critical family gives theta = eps + rho eps^2 with rho ~ -0.0000
+[PASS] C:Poisson(1): Poisson(1)  [E(x) = e^x - 1]: rho = 1 - 2 f'''(1)/(3 sigma^4) = 0.3333; exponent of the near-critical family gives theta = eps + rho eps^2 with rho ~ 0.3334
+[PASS] C:binary: binary split (0 or 2): rho = 1 - 2 f'''(1)/(3 sigma^4) = 1.0000; exponent of the near-critical family gives theta = eps + rho eps^2 with rho ~ 1.0000
+[PASS] C4: Poisson(1) value equals E's iterative-log invariant rho = -b1/b0^2 = 1/3 (height-running-coupling handoff)
+[PASS] C5: E^n(-1) = -P(Poisson(1) family survives n generations); at n = 2000, n*P/2 = 0.99784 (Kolmogorov 2/(sigma^2 n), known)
+[PASS] C6: geometric (linear fractional) offspring: theta = eps exactly at every eps, rho = 0: the circle op is the one-loop member of the branching ladder
+[PASS] C7: 2+eps gravity (Aida-Kitazawa beta, c = 0): theta = eps + rho eps^2 with rho = 15/(25-c) = 0.6 (fit 0.6000); time unit t = ln k
+[PASS] D1: to match gravity to E you must pick a time unit (factor 9/5) or a matter central charge: c = -20 (one height = ln k) or c = 2.5 (= ln k^2); neither is a natural value
+[PASS] D2: a critical branching law with f'''(1)/sigma^4 = 3/5 reproduces gravity's 3/5; the ladder can hit any rho <= 1, so landing on it is one free number fitting one number
+[PASS] E1: Richards curve dR/dt = 2R(1 - R^p) with p = theta/2 = 23/22 has both end exponents right: 2 at R = 0 and theta = 23/11 at R = 1
+[PASS] E2: shape: max |R_Litim - R_Richards| = 0.0020; max |R_Litim - R_logistic| = 0.0068 (curves aligned at R = 1/2)
+[PASS] E3: but Richards' beta has a g^(45/22) term at g = 0: not a power series, while perturbative gravity's beta is. Same corner failure as the earlier flat coordinate
+[PASS] E4: the Richards curve is the power-mean (soft-max with dial 1/p) of bare and induced stiffness; p = 1 is Sakharov's plain sum
+[PASS] F1: membrane paradigm: horizon shear viscosity 1/(16 pi G) over entropy density 1/(4G) = 1/(4 pi) for every G: the fluid ratio cannot fix G
+[PASS] F2: Jacobson 1995: G = 1/(4 hbar eta) with S = eta A; eta^(-1/2) = 2 l_P; eta itself is not computed
+[PASS] F3: induced gravity: species add in 1/G, so G combines as a parallel sum, which is + seen through x -> 1/x, the same move that makes the one-loop flow o_k in u = 1/g
+[PASS] F4: for fixed G, the cutoff must fall like 1/sqrt(N): Dvali's species scale (known). G's value = choice of molecule size; no pure number in our algebra supplies a length
+
+23/23 checks pass

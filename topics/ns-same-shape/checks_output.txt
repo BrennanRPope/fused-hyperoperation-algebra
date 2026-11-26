@@ -1,0 +1,21 @@
+max entanglement (bits) per field: {'smooth (sine + bump)': 0.879, 'shock (Burgers front)': 0.945, 'cusp |x-x0|^(1/3) (Kolmogorov roughness)': 0.173, 'Leray-type 1/|x-x0| profile': 0.584, 'random-phase k^(-5/3) field': 1.665, 'same, with viscous cutoff at k=512': 1.634}
+max rank (tol 1e-6) vs n: {'smooth (sine + bump)': [7, 7, 7, 7, 7, 7], 'shock (Burgers front)': [2, 3, 4, 5, 5, 5], 'cusp |x-x0|^(1/3) (Kolmogorov roughness)': [6, 6, 6, 6, 6, 6], 'Leray-type 1/|x-x0| profile': [7, 7, 7, 7, 7, 7], 'random-phase k^(-5/3) field': [32, 64, 128, 255, 512, 1022], 'same, with viscous cutoff at k=512': [32, 64, 73, 73, 73, 73]}
+PASS E1 smooth field has low scale entanglement (<1 bit) 
+PASS E2 self-similar cusp (singular) is ALSO low (<1.5 bits) 
+PASS E3 Leray-type singular profile is low (<1.5 bits) 
+PASS E4 random-phase field: energy-weighted entropy stays modest (<2 bits) because energy sits at large scales 
+PASS E7 viscous cutoff caps the rank: it stops growing once scales pass the cutoff [32, 64, 73, 73, 73, 73]
+PASS E5 cusp rank grows slowly with added scales (at most +12 from n=10 to 20) [6, 6, 6, 6, 6, 6]
+PASS E6 random-phase rank grows fast (x8 or more from n=10 to 20) [32, 64, 128, 255, 512, 1022]
+PASS C1 below the line (sigma=0.6) total mass stays O(1) 0.731
+PASS C2 above the line (sigma=2.0) typical mass collapses (<0.05) 0.0000
+PASS C3 mean stays 1 either way (collapse is in the typical value, not the average) 
+PASS C4 one cascade step pair = mult-add a+b+ab 
+PASS H1 ABC flow at k is a curl eigenfield (curl u = k u) 
+PASS H2 same-handed, same-size mode: Lamb vector u x w is exactly zero 
+PASS H3 cross term between modes = (lambda2 - lambda1) u1 x u2 
+PASS H4 two different +1 modes also cancel (nonlinearity needs different eigenvalues) 
+PASS S1 3D Navier-Stokes energy scales as lambda^-1 (supercritical) 
+PASS S2 2D Navier-Stokes energy is scale-invariant (critical) 
+
+17 of 17 checks pass

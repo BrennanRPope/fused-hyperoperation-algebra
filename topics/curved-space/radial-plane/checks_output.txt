@@ -1,0 +1,12 @@
+PASS D1 radial-plane count V2 = (tau^2/2)(1 - K tau^2/24 + ...), K = 2M/r0^3, for every free-fall energy (8 cases)  | max error, in units of M, 5.9e-06
+PASS D2 sphere-weighted count V4 = 2 pi r0^2 tau^2 (1 + (2E^2 - 1) tau^2/(24 r0^2) + ...): the mass drops out except through the energy E (8 cases, flat and black hole)  | max error 3.3e-07
+PASS D3 flat space, exactly: V4 = 2 pi r0^2 tau^2 (1 + (2 gamma^2 - 1) tau^2/(24 r0^2)), gamma = cosh(eta); 2 gamma^2 - 1 = cosh(2 eta)
+PASS D4a the sphere radius bends uniformly: grad grad r = (M/r^2) g
+PASS D4b |grad r|^2 = 1 - 2M/r and box(r^2) = 2, the same as in flat space (a vacuum equation)  | 2
+PASS D4c along the path, T T grad grad (r^2) = 2 rdot^2 - 2M/r  | 2*E**2 + 2*M/r - 2
+PASS D4d sphere bending 1 + 2 rdot^2 - 2M/r, plus the radial-plane dial -2M/r, totals 2E^2 - 1: M cancels  | 2*E**2 - 1
+PASS D4e the river parcel (E = 1, rdot^2 = 2M/r) counts exactly like a hovering observer in empty space (coefficient 1)
+PASS D5 to read M you also need r and rdot from sphere areas: (r/2)(1 - E^2 + rdot^2) = M (the Misner-Sharp mass)
+PASS D6 at the next order (tau/r0)^4 the mass appears directly; zero in flat space (river parcel, E = 1)  | fit a(M/r0) + b(M/r0)^2: 2D a = -0.00833, b = -0.0243; 4D a = -0.001389, b = -0.0122
+
+10 of 10 checks pass

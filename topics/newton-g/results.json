@@ -1,0 +1,8 @@
+{
+ "rho_geometric": 0.0,
+ "rho_Poisson(1)": 0.33333333333333337,
+ "rho_binary": 1.0,
+ "rho_gravity_c0": 0.6,
+ "dR_richards": 0.002032926109503924,
+ "dR_logistic": 0.006800703800142416
+}

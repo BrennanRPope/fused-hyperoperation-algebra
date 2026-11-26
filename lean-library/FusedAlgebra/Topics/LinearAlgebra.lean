@@ -404,7 +404,11 @@ end Field
 section Fused
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- The fused addition (the rung below the circle operation): u + v + 1, zero −1. -/
+/-- The fused addition (the rung below the circle operation): u + v + 1, zero −1.
+  Lineage: one of five earlier names for the rung-1 "or"; the unified, standalone
+    version is `RungOne.sadd` (Foundations.RungOneSemiring), and
+    Foundations.RungOneLineage proves the two agree. Standard name: shifted add, the
+    "or" of the ring (R, a+b+1, a+b+ab) obtained by transport along x ↦ x − 1. -/
 def sadd (u v : R) : R := u + v + 1
 
 /-- A fused-linear map: shift to the box corner, apply M, shift back. -/

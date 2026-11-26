@@ -1,0 +1,35 @@
+{
+ "A1 magnetic pressure at 20 T is ~159 MPa": "159.2 MPa",
+ "A2 doubling B multiplies pressure by 4, fusion power density (fixed beta) by 16": "",
+ "B1 k=-1 fold equals 1 - prod(1-p)": "0.407390 vs 0.407390",
+ "B2 fine-segment fold converges to 1 - exp(-lambda L) (Poisson weakest link)": "0.95024 vs 0.95021",
+ "B3 lift -ln(1-p) turns the k=-1 fold into a plain sum (hazards add)": "",
+ "C1 separable model: corner sum of log Ic is exactly 0": "",
+ "C2 fitted REBCO surface (10-20 T, 20-30 K): corner sum nonzero, so derating factors do not simply multiply": "corner sum of ln Ic = -0.0516",
+ "C3 k=-1 composition of separate deratings vs true combined derating": "dB=0.386, dT=0.303, o_-1 predicts 0.5720, fit gives 0.5935, gap +0.0215",
+ "C4 gap equals (1-dB)(1-dT)(1 - e^corner) exactly": "",
+ "C5 fit gives a plausible 20 K, 20 T current for one tape": "Ic(20 T, 20 K) = 475 A",
+ "D1 stretch ratios multiply: (1+e1)(1+e2)-1 = e1 o_1 e2": "",
+ "D2 cross term for 0.3% and 0.4% strains is 1.2e-5 (0.0012 percentage points)": "",
+ "E1 max <= KS_rho <= max + ln(N)/rho for all tested rho": "",
+ "E2 Lp norm -> max as p grows (SIMSOPT-style Lp penalties)": "L400/max = 1.0048",
+ "E3 Lp(x) = exp(KS_p(ln x)) : Lp is the same dial in log units": "",
+ "F1 modular coil: parallel-transport closing angle = 2pi - tantrix area (mod 2pi, up to orientation)": "closing angle -0.14775 rad, tantrix area -6.43094 sr, mismatch 3.0e-14",
+ "F2 integral of Frenet torsion = same closing angle (mod 2pi)": "int tau ds = +0.14775 rad",
+ "F3 planar coil: tantrix is a great circle, closing angle 0, no twist needed": "0.00e+00 rad",
+ "F4 w=4mm": {
+  "closure_floor": 1.588798328867661e-10,
+  "frenet_twist_peak": 6.141438558693779e-07,
+  "bishop_hardway_peak": 0.0007336992722683605
+ },
+ "F4 w=12mm": {
+  "closure_floor": 1.4299184959808954e-09,
+  "frenet_twist_peak": 5.527294702824402e-06,
+  "bishop_hardway_peak": 0.0022010978168050814
+ },
+ "F4 closure floor is negligible next to local strains (orders of magnitude below 0.2%)": "",
+ "F5 dented coil, 12 mm tape: following the curve's own frame overstrains (twist > 0.2%), untwisted tape stays under": "Frenet-frame twist peak 1.10e-02, untwisted hard-way peak 1.13e-03, min curvature 0.068/m, peak torsion 30.3/m",
+ "coil length m": 13.535256057303284,
+ "closing angle rad": -0.14775136267110012,
+ "tantrix area sr": -6.430936669850715
+}

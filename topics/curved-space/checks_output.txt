@@ -1,0 +1,38 @@
+PASS A1 metric -4dudv/(1-Kuv)^2 has scalar curvature R = 2K (Gaussian curvature K)  | 2*K
+PASS A2 diamond volume V = -(2/K) log(1 - K ab) = 2 L_{-K}(ab): the ruler of the corner ab with dial -K  | inner integral -2*b/(K*b*u - 1)
+PASS A2b flat limit K -> 0 gives V = 2ab (the bare corner)
+PASS A3 on the diagonal tau = (2/sqrt K) artanh(sqrt(K ab)), so K ab = tanh^2(sqrt K tau/2)
+PASS A4 V(tau) = (4/K) log cosh(sqrt K tau/2) = tau^2/2 - K tau^4/48 + ...  | Kp**2*tau**6/720 - Kp*tau**4/48 + tau**2/2
+PASS A4b matches the known small-diamond expansion (Gibbons-Solodukhin) at order tau^4
+PASS A5 for any two points, K x proper time obeys tanh^2(sqrt K tau/2) = x(p,q) (AdS: -tan^2), 18 geodesics shot  | max error 2.11e-14
+PASS A6 x(p,q) is the cross-ratio (u1, u2; 1/(K v1), 1/(K v2)) of four points on a line
+PASS A7 every causal diamond has volume -(2/K) log(1 - x): counting volume is the ruler of the cross-ratio  | max error 2.12e-16
+PASS A8 cut along a light ray: x(whole) = x(left) o_{-1} x(right) (the union rule)
+PASS A8b equivalently the corners compose by o_k with k = -K: c = c1 + c2 - K c1 c2 (flat: corners add)
+PASS A8c the same law for any diamond cut at any light ray u = m
+PASS A9 the AdS3 entanglement gluing x(A,B1B2) = x(A,B1) o_{-1} x(A,B2) is the same cross-ratio identity
+PASS A11 with w = 1/(Kv) the metric is 4 du dw/(K (w-u)^2): the plane of intervals [u, w] (kinematic space)  | 4/(K*(u - w)**2)
+PASS A10 sprinkled points (K = 0.8, 6000 per unit volume): counts in four diamonds match rho V within Poisson noise  | [((0, 0), (0.9, 0.9), 15678, 15661.9, np.float64(0.13)), ((0, 0), (0.45, 0.9), 5928, 5873.4, np.float64(0.71)), ((0.45, 0), (0.9, 0.9), 9750, 9788.4, np.float64(-0.39)), ((0.1, 0.2), (0.8, 0.95), 11249, 11049.2, np.float64(1.9))]
+PASS B1 2D Benincasa-Dowker weights (1, -2, 1) = Moebius function of the 2-cube summed by rank = (-1)^k C(2,k)  | [1, -2, 1]
+PASS B1b and they are the Laguerre polynomial L_2: sum_k c_k s^k/k! = 1 - 2s + s^2/2  | [1, -2, 1/2]
+PASS B2 counting recovers curvature: E[B 1] -> -R/2 = -K as density grows (K = +1, -1, 0)  | {1.0: [-0.9614020361674372, -0.9938950624930777, -0.9991601270370566], -1.0: [1.0372601826532564, 1.006084653134666, 1.0008396010418446], 0.0: [0.0, 0.0, 0.0]}
+PASS B3 flat normalisation: E[B t^2] = -2 = box(t^2) (uses int L2(s) s log s e^-s ds = 1/2)  | -2.0
+PASS B3b where curvature enters the count: the extra factor is the inverse lift 1/(1 - K w) = e^{K V/2}  | the linear term K s/(2 rho) times int L2 s log s = 1/2 gives -K/(4 rho), times 4 rho = -K
+PASS B4 ordering fraction of the n-cube's product order is 2^(1-n); light cone (Myrheim-Meyer) gives 1/2, 0.229, 0.1  | {'cube': {2: 0.5, 3: 0.25, 4: 0.125}, 'light cone': {2: 0.5, 3: 0.22857142857142862, 4: 0.1}, 'monte carlo': {2: 0.50015, 3: 0.249615, 4: 0.124985}}
+PASS B4b the 4D Benincasa-Dowker weights (1, -9, 16, -8) are not the 4-cube's Moebius weights (1, -4, 6, -4, 1)
+PASS C1 for any static metric -f dt^2 + ...: squared drop speeds compose w_ac^2 = w_ab^2 o_{-1} w_bc^2
+PASS C1b with f = 1 - 2M/r: river speed^2 2M/r = w(r0->r)^2 o_{-1} (2M/r0)
+PASS C1c numerical geodesics (Schwarzschild and charged black hole): drop 30M->12M->4M stacks by o_{-1}  | max error 7.9e-13
+PASS C2 in river coordinates light moves at dr/dT = v +- 1: speeds add like the flat dial (q = 0)  | [-sqrt(2)*sqrt(M)/sqrt(r) - 1, -sqrt(2)*sqrt(M)/sqrt(r) + 1]
+PASS C3 de Sitter river v = H r: r(T)/r0 - 1 = E(H T) exactly, and E(a + b) = E(a) o_1 E(b)
+PASS C4 Schwarzschild river: r^{3/2} = (3/2) sqrt(2M) T, a plain translation in r^{3/2}, not E
+PASS C5 Schwarzschild-de Sitter river: r^{3/2} = sqrt(2M)/H sinh(3HT/2), the same law as the LCDM scale factor
+PASS C6 Kruskal U = -e^{-kappa u}, V = e^{kappa v}: t -> t + Delta multiplies V by e^{kappa Delta} and U by its inverse (a boost whose Doppler factor is 1 + E(kappa Delta))
+PASS C6b U V = (1 - r/2M) e^{r/2M} (no t dependence)  | (M - r/2)*exp(r/(2*M))/M
+PASS C7 a source falling in fades as log(1+z) = kappa t + const near the horizon, kappa = 1/(4M)  | fitted slope 0.24926
+PASS C8 circular orbit speed^2 seen by a static observer = flip phi_{-2}(M/r) (Kepler is exact in t, divided by the lift 1 - 2M/r)
+PASS C8b photon sphere M/r = 1/3 gives speed 1; ISCO M/r = 1/6 gives speed 1/2; the flip's wall M/r = 1/2 is the horizon
+PASS C8c flips add their dials: phi_{-2} = phi_{-1} o phi_{-1}
+PASS C9 Schwarzschild's radial plane has R = 4M/r^3, Gaussian curvature 2M/r^3 (the same rate as the loop twist found before)  | 4*M/rr**3
+
+36 of 36 checks pass

@@ -1,0 +1,120 @@
+{
+ "passed": 10,
+ "total": 10,
+ "results": {
+  "P1 u_ij = P(no geodesic links side i to side j), all 9 chords of the hexagon (known: the probability page's clock)": {
+   "ok": true,
+   "detail": "worst deviation 2.37 standard errors"
+  },
+  "P2 P(the two blocks are unlinked) = product of the crossing u's: the channels are independent (Poisson), so gluing is our union rule as an event": {
+   "ok": true,
+   "detail": "worst 1.20 s.e."
+  },
+  "P3 each u-equation, read off simulated frequencies: P(no link i-j) + P(no link between the blocks) = 1": {
+   "ok": true,
+   "detail": "worst 1.11 s.e."
+  },
+  "P4 the probability meaning (ours): for every chord, 'both crossing channels linked' and 'neither linked' are equally likely": {
+   "ok": true,
+   "detail": "worst 1.28 s.e.; e.g. chord 02: both 0.1671, neither 0.1688"
+  },
+  "P5 with independent channels, 'P(both) = P(neither)' holds exactly when u + v = 1: the reading is equivalent to the u-equation, not weaker": {
+   "ok": true,
+   "detail": ""
+  },
+  "R1 at rate lam the sum is u^lam + (1-u)^lam, matching the simulation": {
+   "ok": true,
+   "detail": ""
+  },
+  "R2 the sum is 1 only at rate 1: above 1 for slower clocks, below 1 for faster (the associahedron fixes the clock rate that the probability page chose by hand; ours)": {
+   "ok": true,
+   "detail": ""
+  },
+  "C1 as the side between them shrinks, sides 0 and 2 become surely linked (u -> 0, a facet of the associahedron) and every crossing channel becomes surely unlinked": {
+   "ok": true,
+   "detail": ""
+  },
+  "C2 so two crossing channels can never both be certain, which is why the associahedron's corners are the non-crossing sets of chords (triangulations): the maximal sets of channels that can be certain together (reading ours)": {
+   "ok": true,
+   "detail": ""
+  },
+  "N1 'both equally likely as neither' holds for every chord of 7-, 8- and 9-gons": {
+   "ok": true,
+   "detail": ""
+  }
+ },
+ "both_neither": [
+  {
+   "chord": "02",
+   "both": 0.16705,
+   "neither": 0.16875,
+   "exactly_one": 0.6641999999999999,
+   "u": 0.7886651849178552,
+   "u_block": 0.2113348150821448
+  },
+  {
+   "chord": "03",
+   "both": 0.0986,
+   "neither": 0.10015,
+   "exactly_one": 0.80125,
+   "u": 0.8895599522029438,
+   "u_block": 0.11044004779705618
+  },
+  {
+   "chord": "04",
+   "both": 0.04575,
+   "neither": 0.0468,
+   "exactly_one": 0.9074500000000001,
+   "u": 0.9509239069862636,
+   "u_block": 0.04907609301373639
+  },
+  {
+   "chord": "13",
+   "both": 0.21075,
+   "neither": 0.21195,
+   "exactly_one": 0.5773,
+   "u": 0.7081434474185795,
+   "u_block": 0.2918565525814205
+  },
+  {
+   "chord": "14",
+   "both": 0.09305,
+   "neither": 0.0942,
+   "exactly_one": 0.8127500000000001,
+   "u": 0.8965645028473818,
+   "u_block": 0.10343549715261824
+  },
+  {
+   "chord": "15",
+   "both": 0.22355,
+   "neither": 0.22235,
+   "exactly_one": 0.5541,
+   "u": 0.33286510323858776,
+   "u_block": 0.6671348967614122
+  },
+  {
+   "chord": "24",
+   "both": 0.162,
+   "neither": 0.1589,
+   "exactly_one": 0.6790999999999999,
+   "u": 0.7993798334520158,
+   "u_block": 0.2006201665479842
+  },
+  {
+   "chord": "25",
+   "both": 0.245,
+   "neither": 0.2528,
+   "exactly_one": 0.5022,
+   "u": 0.4629388099064602,
+   "u_block": 0.5370611900935398
+  },
+  {
+   "chord": "35",
+   "both": 0.21915,
+   "neither": 0.21435,
+   "exactly_one": 0.5665,
+   "u": 0.31847703612700146,
+   "u_block": 0.6815229638729985
+  }
+ ]
+}

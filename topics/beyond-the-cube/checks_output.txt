@@ -1,0 +1,46 @@
+
+== A. Classical versus quantum correlations: cube corners, cut polytope, elliptope
+PASS A1 three-variable cut polytope has 4 vertices, the cube corners with x*y*z = +1  | [(-1, -1, 1), (-1, 1, -1), (1, -1, -1), (1, 1, 1)]
+PASS A2a every cut vertex is a valid correlation matrix (inside the elliptope)
+PASS A2b (-1/2,-1/2,-1/2) is in the elliptope (eigenvalues 0, 1.5, 1.5) but outside the tetrahedron (x+y+z = -1.5 < -1)  | [-0.   1.5  1.5]
+PASS A2c volumes: cube 8, elliptope ~ pi^2/2 = 4.935, tetrahedron 8/3  | elliptope 4.921, tetrahedron 2.661; tetrahedron inside elliptope
+PASS A3a CHSH over the cube's corners (deterministic +-1 answers) peaks at 2
+PASS A3b CHSH with unit vectors (elliptope points) reaches 2*sqrt(2) = 2.828  | 2.828427
+PASS A3c 20,000 random unit-vector strategies in 4D never beat 2*sqrt(2) (Tsirelson 1980)  | best 2.6835
+PASS A3d no-signalling box (Popescu-Rohrlich) scores 4
+PASS A4 our union-rule world (p, q, pq) is a saddle surface inside Pitowsky's correlation tetrahedron COR(2)
+
+== B. The associahedron's u-coordinates (binary geometry) and the union rule
+PASS B1 u-equations u_X + prod(u_Y over chords Y crossing X) = 1 hold for n = 5..8, all chords  | max error 5.6e-16; every u in (0,1)
+PASS B2 same equations in our notation: u_X = union (circ_-1) of p_Y = 1 - u_Y over crossing chords  | max error 5.1e-16
+PASS B3 each u_ij is 1 - (AdS3 cross-ratio of polygon sides i and j), the probability-entanglement page's x  | max error 2.2e-16
+PASS B4 gluing: x(A, B1B2) = x(A,B1) circ_-1 x(A,B2) for adjacent B1, B2 (same as that page's H4)  | max error 3.3e-16
+PASS B5 every u-equation = the four-point identity u(a,c) + u(b,d) = 1, with u(b,d) glued from the crossing chords (derivation, ours as written)  | identity error 2.2e-16, gluing error 6.7e-16
+PASS B6a ABHY region in the (X13, X14) plane is a pentagon: 5 feasible vertices, all on the hull
+PASS B6b canonical function of the ABHY pentagon = 1/(X13X14) + 1/(X14X24)... = five-point phi^3 tree amplitude (ABHY 2017)  | max relative error 1.3e-14
+PASS B7 ABHY region for n = 6 is the 3D associahedron: 14 vertices, 21 edges, 9 facets  | 14 vertices, 21 edges
+
+== C. The pentagon as an exact RG flow (Y-system, Lee-Yang)
+PASS C1 Y-system y(n+1) y(n-1) = 1 + y(n) repeats every 5 steps (the pentagon; Zamolodchikov periodicity)  | [ 0.37    2.9    10.5405  3.9795  0.4724  0.37  ]
+PASS C2 fixed point y = golden ratio; Rogers L(1/(1+y)) = pi^2/15 gives c_eff = 2/5 (scaling Lee-Yang model)  | c_eff = 0.4
+PASS C3 the Y-system's factors 1 + y are our lift: (1+ya)(1+yb) = 1 + (ya circ_1 yb)
+
+== D. Double copy: two ordered pieces make a gravity piece
+PASS D1 KLT kernel at 4 points is the inverse of the bi-adjoint (associahedron) matrix: S = -s
+PASS D2 gauge-stripped double copy M = A(1234) S A(1243) = -1/(s t u)-type: fully symmetric in s, t, u  | 1/(s*t*(s + t))
+
+== E. Total positivity: where the amplituhedron lives
+PASS E1 for k > 0 and positive inputs, the corner weights k^m e_m form a totally nonnegative (Polya frequency) sequence  | all minors up to 3x3 of the 5x5 Toeplitz matrix >= 0 (Aissen-Schoenberg-Whitney, Edrei 1952)
+PASS E2 for k < 0 (union side) total positivity fails unless inputs are flipped x -> -x
+
+== F. The budget region {x circ_k y <= 1}: cube at k = -1, simplex at k = 0
+PASS F1 area of the budget square region = ((1+k)ln(1+k) - k)/k^2: 1 at k = -1, 1/2 at k = 0, -> 0 as k grows  | areas k=-0.6: 0.6486, k=1: 0.3863, k=50: 0.0602
+PASS F2 in 3D the same region is the whole cube at k = -1 and the simplex (volume 1/6) at k = 0  | 1.0000, 0.1685
+PASS F3 its boundary is Sugeno's lambda-measure normalisation (1+k gx)(1+k gy) = 1 + k (known, Sugeno 1974)
+
+== G. Birkhoff polytope, permutohedron, zonotope
+PASS G1 the permutohedron is the Birkhoff polytope's shadow under M -> M(1,2,3): 6 distinct corners
+PASS G2 the permutohedron is a zonotope: the Minkowski sum of the 3 segments e_i - e_j is a hexagon
+PASS G3 a doubly stochastic matrix that no unitary produces (not unistochastic): the quantum subset of Birkhoff is smaller
+
+30/30 checks passed

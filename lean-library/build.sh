@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")"
 mods=(
   FusedAlgebra.Base FusedAlgebra.Rungs FusedAlgebra.Cube
-  FusedAlgebra.Foundations.CircleRing FusedAlgebra.Foundations.Independence FusedAlgebra.Foundations.FusedPeano
+  FusedAlgebra.Foundations.CircleRing FusedAlgebra.Foundations.Independence FusedAlgebra.Foundations.FusedPeano FusedAlgebra.Foundations.RungOneSemiring
   FusedAlgebra.Topics.ClosingRate FusedAlgebra.Topics.Consensus FusedAlgebra.Topics.DarkSector
   FusedAlgebra.Topics.DataCenter FusedAlgebra.Topics.E FusedAlgebra.Topics.Finance
   FusedAlgebra.Topics.FusedConstants FusedAlgebra.Topics.FractionalRungs FusedAlgebra.Topics.Infinities FusedAlgebra.Topics.InformationTheory
@@ -25,7 +25,7 @@ mods=(
   FusedAlgebra.Topics.MeasureProbability FusedAlgebra.Topics.ComplexAnalysis FusedAlgebra.Topics.FunctionalAnalysis FusedAlgebra.Topics.DiffGeometry FusedAlgebra.Topics.KnotTheory
   FusedAlgebra.Topics.Dynamics FusedAlgebra.Topics.InformationFull FusedAlgebra.Topics.Numerical FusedAlgebra.Topics.GameTheory FusedAlgebra.Topics.DiamondLattice FusedAlgebra.Topics.DialPointProcesses FusedAlgebra.Topics.SeveralWaves FusedAlgebra.Topics.RuleBreakers \
   FusedAlgebra.Topics.Biology.MolecularBiology FusedAlgebra.Topics.Biology.Metabolism FusedAlgebra.Topics.Biology.CellBiology FusedAlgebra.Topics.Biology.Genetics FusedAlgebra.Topics.Biology.Development FusedAlgebra.Topics.Biology.Physiology FusedAlgebra.Topics.Biology.NeuroScience FusedAlgebra.Topics.Biology.Evolution FusedAlgebra.Topics.Biology.Population FusedAlgebra.Topics.Biology.Ecology FusedAlgebra.Topics.Biology.Behaviour FusedAlgebra.Topics.FractionalPowerset
-  FusedAlgebra.Topics.GeneralRelativity FusedAlgebra.Topics.GRBridges FusedAlgebra.Topics.Electromagnetism FusedAlgebra.Topics.PowersetDials FusedAlgebra.Topics.DialSurvey FusedAlgebra.Topics.SizeDialResidual FusedAlgebra.Topics.DialWall FusedAlgebra.Topics.FractalBoxes FusedAlgebra.Topics.FractalDials FusedAlgebra.Topics.DialPotential FusedAlgebra.Topics.RepetitionDial FusedAlgebra.Topics.ZoomDial FusedAlgebra.Topics.Conventions FusedAlgebra.Topics.PathNames FusedAlgebra.Topics.OrderDial FusedAlgebra.Topics.WhyI FusedAlgebra.Topics.Checkerboard FusedAlgebra.Topics.CheckerboardPotential FusedAlgebra.Topics.EIPi FusedAlgebra.Topics.ShapeDependencies FusedAlgebra.Topics.BooleanLattice FusedAlgebra.Topics.BeyondOneLoop FusedAlgebra.Topics.CornerWeights FusedAlgebra.Topics.Precession FusedAlgebra.Deprecated
+  FusedAlgebra.Topics.GeneralRelativity FusedAlgebra.Topics.GRBridges FusedAlgebra.Topics.WarpWormhole FusedAlgebra.Topics.Electromagnetism FusedAlgebra.Topics.PowersetDials FusedAlgebra.Topics.DialSurvey FusedAlgebra.Topics.SizeDialResidual FusedAlgebra.Topics.DialWall FusedAlgebra.Topics.FractalBoxes FusedAlgebra.Topics.FractalDials FusedAlgebra.Topics.DialPotential FusedAlgebra.Topics.RepetitionDial FusedAlgebra.Topics.ZoomDial FusedAlgebra.Topics.Conventions FusedAlgebra.Topics.PathNames FusedAlgebra.Topics.OrderDial FusedAlgebra.Topics.WhyI FusedAlgebra.Topics.Checkerboard FusedAlgebra.Topics.CheckerboardPotential FusedAlgebra.Topics.EIPi FusedAlgebra.Foundations.RungOneLineage FusedAlgebra.Topics.ShapeDependencies FusedAlgebra.Topics.BooleanLattice FusedAlgebra.Topics.BeyondOneLoop FusedAlgebra.Topics.CornerWeights FusedAlgebra.Topics.Precession FusedAlgebra.Deprecated
   FusedAlgebra Check
 )
 export LEAN_PATH="$PWD/build"

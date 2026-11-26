@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 circle-operation laws, so each new proof starts from the same foundation.
 
-**Status (Nov 25, 2026):** all 134 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3201 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 25, 2026):** all 136 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 3249 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -75,6 +75,8 @@ Topics (each imports the foundation):
 | `Foundations/CircleRing` | axioms/lean/Axioms/MultAddRing.lean | standalone; does not import Base |
 | `Foundations/Independence` | axioms/lean/Axioms/Independence.lean | standalone |
 | `Foundations/FusedPeano` | axioms/lean/Axioms/FusedPeano.lean | standalone |
+| `Foundations/RungOneSemiring` | written here (semiring-audit) | 32 theorems: rung 1, a + b + 1, is a commutative semiring on any commutative semiring, one unified proof of what five topic files proved separately |
+| `Foundations/RungOneLineage` | written here (semiring-audit) | 10 theorems tying the five earlier rung-one proofs to the unified one; pre-1.0 names kept as lineage in its header |
 | `Topics/Pi` | pi/lean/PiFromMultAdd.lean | |
 | `Topics/Calculus` | calculus/lean/FusedCalculus.lean | |
 | `Topics/AbstractAlgebra` | abstract-algebra/lean/AbstractAlgebra.lean | |
@@ -166,6 +168,7 @@ Topics (each imports the foundation):
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |
 | `Topics/GRBridges` | gr-bridges/lean/GRBridges.lean | 22 theorems: Clifford boosts, sandwich the circle operation for matrix weights, Schur factor, Raychaudhuri area terms, river constraint, Brans-Dicke; first compile, one witness fixed |
+| `Topics/WarpWormhole` | warp-bubble/lean/WarpWormhole.lean | 6 theorems, first compile Nov 26 (DRAFT topic): warp-bubble energy as a cross term, shear term, river light, the wormhole cross-ratio split and cocycle, gluing as the union rule; two pre-1.0 names fixed |
 | `Topics/Electromagnetism` | electromagnetism/lean/Electromagnetism.lean | 41 theorems, first compile Nov 25: the wave equation sets the dial d = −1/c², light-cone parts of E and B scale by D and 1/D, D² − 1 composes by the circle operation, invariants and null fields, unit phases as a ✳ ā = 0, plaquettes and discrete Stokes, Born–Infeld cap |
 | `Topics/NavierStokes` | ns-rungs/lean/FusedRungs.lean (Burgers, shell model) | |
 | `Topics/QuantumNoise` | quantum-noise/QuantumNoise.lean | |

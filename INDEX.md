@@ -18,13 +18,21 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: precession. Thomas, Foucault and Berry precession from one swap rule of the circle operation (known physics, cube reading ours); open lead: frame dragging from the swap rule. 23 Lean theorems. | `topics/precession/` | — |
 | DRAFT: semiring audit. ∘ₖ with a + b + 1/k is a known generated semiring in Pap's pseudo-analysis (cite and reuse); renames proposed only. | `topics/semiring-audit/` | — |
 | DRAFT: number-theory geometries as ways to bend the hypercube: tropical (corners), permutohedron (paths), cluster algebras (cube into associahedra). | `topics/number-theory-geometries/` | — |
-| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. | `topics/gravity-from-theory/` | — |
+| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild. | `topics/gravity-from-theory/` | — |
+| DRAFT: curved space from counting (1 + 1 dimensions) and the river; radial-plane follow-up. | `topics/curved-space/` | — |
+| DRAFT: Newton's G lead reopened: Sakharov's induced gravity; second-loop ρ doesn't match. | `topics/newton-g/` | — |
+| DRAFT: maths with the same shape as Navier–Stokes, with spacetime as a turbulent flow. | `topics/ns-same-shape/` | — |
+| DRAFT: warp bubbles, wormholes and artificial gravity through the circle operation. No route; one wormhole reading. | `topics/warp-bubble/` | `Topics/WarpWormhole` |
+| DRAFT: shapes beyond the hypercube (associahedron, elliptope, pentagon, double copy). | `topics/beyond-the-cube/` | — |
+| DRAFT: polar coordinates for many dimensions: switching shapes by sliding numbers. | `topics/polar-coordinates/` | — |
+| DRAFT: stronger fusion magnets: the limits are materials and engineering. | `topics/fusion-magnets/` | — |
+| DRAFT: closed leads re-judged with the fuller theory: six reopened. | `topics/closed-leads-revisit/` | — |
 
 ## The library and tools
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,201 theorems, 134 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,249 theorems, 136 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |

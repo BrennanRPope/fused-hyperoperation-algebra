@@ -172,6 +172,17 @@ velocity geometry.* It would become a derivation if the theory gave a reason tha
 follow dial lines (inertia in velocity space, the way inertia is a straight line in space). We don't have that
 reason.
 
+**Follow-up (Nov 26): `velocity-lines/README.md`.** Brennan asked for that reason. Not found inside the operation
+alone; instead the rule is stated with the theory's dial addition ((−v₀) ⊕_κ v(t) stays on one line), shown to give
+1/r² without assuming three dimensions, to force n = 3 together with Gauss, and to be the same sphere as the
+hydrogen atom (Fock 1935). 13/13 checks.
+
+**Follow-up 2 (Nov 26): `river-rebuild/README.md`.** The river model rebuilt on that rule: the river is the rule's
+zero-energy family (the dial's flat middle), so Newton's escape speed is now an output; with the theory's local
+relativity it is exactly Schwarzschild (γ = β = 1), Mercury 42.98″/century and light bending 1.751″ follow, and rule +
+Einstein picks 3 space dimensions. One bridge from the weak-field rule to the exact river remains an input.
+19/19 checks.
+
 ### N.4 A dead end checked in passing
 
 The union rule ∘₋₁ is the rule for overlapping shadows, which is Le Sage's 1748 "shadow" theory of gravity: it gives

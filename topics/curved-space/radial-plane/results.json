@@ -1,0 +1,152 @@
+{
+ "leading_rows": [
+  {
+   "M": 0,
+   "r0": 10,
+   "E": 1.0,
+   "2D coeff x 24": -3.5934218563700954e-12,
+   "-K": -0.0,
+   "4D coeff x 24 r0^2": 0.9999999996451795,
+   "2E^2-1": 1.0
+  },
+  {
+   "M": 0,
+   "r0": 10,
+   "E": 1.3,
+   "2D coeff x 24": -8.907704203882848e-12,
+   "-K": -0.0,
+   "4D coeff x 24 r0^2": 2.3799999991044802,
+   "2E^2-1": 2.3800000000000003
+  },
+  {
+   "M": 1,
+   "r0": 10,
+   "E": 0.89443,
+   "2D coeff x 24": -0.002000000551951163,
+   "-K": -0.002,
+   "4D coeff x 24 r0^2": 0.5999999729845802,
+   "2E^2-1": 0.5999999999999999
+  },
+  {
+   "M": 1,
+   "r0": 10,
+   "E": 1.0,
+   "2D coeff x 24": -0.0020000025234188186,
+   "-K": -0.002,
+   "4D coeff x 24 r0^2": 0.999999940829528,
+   "2E^2-1": 1.0
+  },
+  {
+   "M": 1,
+   "r0": 6,
+   "E": 1.0,
+   "2D coeff x 24": -0.009259272049376214,
+   "-K": -0.009259259259259259,
+   "4D coeff x 24 r0^2": 0.9999998285370348,
+   "2E^2-1": 1.0
+  },
+  {
+   "M": 1,
+   "r0": 6,
+   "E": 0.8165,
+   "2D coeff x 24": -0.009259257637463034,
+   "-K": -0.009259259259259259,
+   "4D coeff x 24 r0^2": 0.33333328531444945,
+   "2E^2-1": 0.33333333333333326
+  },
+  {
+   "M": 1,
+   "r0": 8,
+   "E": 1.2,
+   "2D coeff x 24": -0.0039062728666074695,
+   "-K": -0.00390625,
+   "4D coeff x 24 r0^2": 1.8799996714148304,
+   "2E^2-1": 1.88
+  },
+  {
+   "M": 1,
+   "r0": 25,
+   "E": 1.0,
+   "2D coeff x 24": -0.0001280001620891305,
+   "-K": -0.000128,
+   "4D coeff x 24 r0^2": 0.9999999877974034,
+   "2E^2-1": 1.0
+  }
+ ],
+ "D1 radial-plane count V2 = (tau^2/2)(1 - K tau^2/24 + ...), K = 2M/r0^3, for every free-fall energy (8 cases)": {
+  "pass": true,
+  "detail": "max error, in units of M, 5.9e-06"
+ },
+ "D2 sphere-weighted count V4 = 2 pi r0^2 tau^2 (1 + (2E^2 - 1) tau^2/(24 r0^2) + ...): the mass drops out except through the energy E (8 cases, flat and black hole)": {
+  "pass": true,
+  "detail": "max error 3.3e-07"
+ },
+ "D3 flat space, exactly: V4 = 2 pi r0^2 tau^2 (1 + (2 gamma^2 - 1) tau^2/(24 r0^2)), gamma = cosh(eta); 2 gamma^2 - 1 = cosh(2 eta)": {
+  "pass": true,
+  "detail": ""
+ },
+ "D4a the sphere radius bends uniformly: grad grad r = (M/r^2) g": {
+  "pass": true,
+  "detail": ""
+ },
+ "D4b |grad r|^2 = 1 - 2M/r and box(r^2) = 2, the same as in flat space (a vacuum equation)": {
+  "pass": true,
+  "detail": "2"
+ },
+ "D4c along the path, T T grad grad (r^2) = 2 rdot^2 - 2M/r": {
+  "pass": true,
+  "detail": "2*E**2 + 2*M/r - 2"
+ },
+ "D4d sphere bending 1 + 2 rdot^2 - 2M/r, plus the radial-plane dial -2M/r, totals 2E^2 - 1: M cancels": {
+  "pass": true,
+  "detail": "2*E**2 - 1"
+ },
+ "D4e the river parcel (E = 1, rdot^2 = 2M/r) counts exactly like a hovering observer in empty space (coefficient 1)": {
+  "pass": true,
+  "detail": ""
+ },
+ "D5 to read M you also need r and rdot from sphere areas: (r/2)(1 - E^2 + rdot^2) = M (the Misner-Sharp mass)": {
+  "pass": true,
+  "detail": ""
+ },
+ "next_order_E1": {
+  "0.0": [
+   -1.552736267827237e-13,
+   -1.455943783634164e-11
+  ],
+  "0.02": [
+   -0.000176419624910366,
+   -3.2640970194842846e-05
+  ],
+  "0.05": [
+   -0.00047748458527617396,
+   -9.98309097272858e-05
+  ],
+  "0.1": [
+   -0.0010764368846147366,
+   -0.0002604385058070668
+  ],
+  "0.2": [
+   -0.0026388167115390477,
+   -0.0007640280855041893
+  ]
+ },
+ "next_order_fit": {
+  "2D": [
+   -0.00833477039075811,
+   -0.024296539894908025
+  ],
+  "4D": [
+   -0.0013887039794150899,
+   -0.012157165450645721
+  ]
+ },
+ "D6 at the next order (tau/r0)^4 the mass appears directly; zero in flat space (river parcel, E = 1)": {
+  "pass": true,
+  "detail": "fit a(M/r0) + b(M/r0)^2: 2D a = -0.00833, b = -0.0243; 4D a = -0.001389, b = -0.0122"
+ },
+ "summary": {
+  "pass": 10,
+  "total": 10
+ }
+}

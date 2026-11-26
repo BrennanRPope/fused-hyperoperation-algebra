@@ -174,6 +174,48 @@ FusedAlgebra.Foundations.Independence	CircFound.Independence.no_M1	propext, Clas
 FusedAlgebra.Foundations.Independence	CircFound.Independence.no_M2	propext, Classical.choice, Quot.sound
 FusedAlgebra.Foundations.Independence	CircFound.Independence.no_M3	propext, Classical.choice, Quot.sound
 FusedAlgebra.Foundations.Independence	CircFound.Independence.no_M4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.fadd_eq	
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.fl_sadd_unified	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.fused_ring_from_unified	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.linearAlgebra_sadd_eq	
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.madd_sadd_from_unified	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.multAdd_eq_circ	
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.multAdd_fadd_distrib_from_unified	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.multAdd_sAdd_distrib_from_unified	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.rungs_sadd_eq	propext
+FusedAlgebra.Foundations.RungOneLineage	RungOneLineage.sAdd_eq	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommRingLaws.add_inv	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommRingLaws.add_zero	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommRingLaws.mul_zero	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommRingLaws.toCommSemiringLawsNoZero	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommSemiringLawsNoZero.add_assoc	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommSemiringLawsNoZero.add_comm	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommSemiringLawsNoZero.left_distrib	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommSemiringLawsNoZero.mul_assoc	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommSemiringLawsNoZero.mul_comm	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommSemiringLawsNoZero.mul_one	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.CommSemiringLawsNoZero.right_distrib	
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.circK_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.circK_pseudoAdd_distrib	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.circ_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.circ_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.circ_neg_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.circ_sadd_distrib	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.circ_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.gen_hom	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.isCommRing	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.isCommRingK	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.isCommSemiringNoZero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.pseudoAdd_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.sadd_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.sadd_circ_distrib	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.sadd_comm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.sadd_inv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.sadd_neg_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.shift_bij	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.shift_circ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.shift_hom	propext, Classical.choice, Quot.sound
+FusedAlgebra.Foundations.RungOneSemiring	RungOne.shift_sadd	propext, Classical.choice, Quot.sound
 FusedAlgebra.Rungs	CircleOp.circ_iter	propext, Classical.choice, Quot.sound
 FusedAlgebra.Rungs	CircleOp.fexp_base_iter	propext, Classical.choice, Quot.sound
 FusedAlgebra.Rungs	CircleOp.fexp_carries_circ	propext, Classical.choice, Quot.sound
@@ -3168,6 +3210,12 @@ FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_on_circle	propext, Classic
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_trivial_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_turns	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.under_light_2d	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.WarpWormhole	WarpWormhole.cross_ratio_cocycle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.WarpWormhole	WarpWormhole.glue_is_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.WarpWormhole	WarpWormhole.river_light	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.WarpWormhole	WarpWormhole.shear_cross_term	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.WarpWormhole	WarpWormhole.tfd_cross_ratio_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.WarpWormhole	WarpWormhole.zero_expansion_cross_term	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WhyI	WhyI.J_keeps_length	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WhyI	WhyI.J_sq_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WhyI	WhyI.J_sq_two	propext, Classical.choice, Quot.sound

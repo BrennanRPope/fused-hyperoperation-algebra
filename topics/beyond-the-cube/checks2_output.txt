@@ -1,0 +1,23 @@
+hexagon arc lengths [0.632 1.268 1.067 0.723 0.303 2.29 ]; 20000 universes, 314.2 geodesics each on average
+
+== P. Each coordinate as a probability
+PASS P1 u_ij = P(no geodesic links side i to side j), all 9 chords of the hexagon (known: the probability page's clock)  | worst deviation 2.37 standard errors
+PASS P2 P(the two blocks are unlinked) = product of the crossing u's: the channels are independent (Poisson), so gluing is our union rule as an event  | worst 1.20 s.e.
+PASS P3 each u-equation, read off simulated frequencies: P(no link i-j) + P(no link between the blocks) = 1  | worst 1.11 s.e.
+PASS P4 the probability meaning (ours): for every chord, 'both crossing channels linked' and 'neither linked' are equally likely  | worst 1.28 s.e.; e.g. chord 02: both 0.1671, neither 0.1688
+PASS P5 with independent channels, 'P(both) = P(neither)' holds exactly when u + v = 1: the reading is equivalent to the u-equation, not weaker
+
+== R. The equations pin the clock's rate
+   rate, simulated sum, exact u^lam + (1-u)^lam: [(0.5, np.float64(1.3478), np.float64(1.3478)), (0.75, np.float64(1.1554), np.float64(1.1486)), (1.0, np.float64(0.9999), np.float64(1.0)), (1.5, np.float64(0.7966), np.float64(0.7975)), (2.0, np.float64(0.6738), np.float64(0.6667))]
+PASS R1 at rate lam the sum is u^lam + (1-u)^lam, matching the simulation
+PASS R2 the sum is 1 only at rate 1: above 1 for slower clocks, below 1 for faster (the associahedron fixes the clock rate that the probability page chose by hand; ours)
+
+== C. Facets as certainty: crossing channels exclude each other's certainty
+   side-1 length, P(link 0-2) exact, P(side 1 linked to 3,4,5) exact, simulated both: [(0.4, np.float64(0.5858), np.float64(0.4142), np.float64(0.564), np.float64(0.416)), (0.15, np.float64(0.8149), np.float64(0.1851), np.float64(0.8133), np.float64(0.1843)), (0.05, np.float64(0.933), np.float64(0.067), np.float64(0.9303), np.float64(0.066)), (0.015, np.float64(0.9793), np.float64(0.0207), np.float64(0.9747), np.float64(0.022))]
+PASS C1 as the side between them shrinks, sides 0 and 2 become surely linked (u -> 0, a facet of the associahedron) and every crossing channel becomes surely unlinked
+PASS C2 so two crossing channels can never both be certain, which is why the associahedron's corners are the non-crossing sets of chords (triangulations): the maximal sets of channels that can be certain together (reading ours)
+
+== N. Same meaning for larger polygons (exact, from the cross-ratios)
+PASS N1 'both equally likely as neither' holds for every chord of 7-, 8- and 9-gons
+
+10/10 checks passed

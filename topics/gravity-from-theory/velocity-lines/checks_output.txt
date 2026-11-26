@@ -1,0 +1,15 @@
+[PASS] V1 power of v=0 for each hodograph circle = 2E (12 random orbits, bound and unbound)  max |power-2E| = 4.8e-11
+[PASS] V1b orbits sharing energy E share one dial kappa = -1/(2E) whatever their angular momentum  kappa = 1.6667
+[PASS] V2a bound orbit: (-v0) (+)_k v(t) keeps one direction when k = -1/(2E); not for other dials  spread 4.6e-09; k x1.7: 3.140; flat k=0: 3.136
+[PASS] V2b unbound orbit: same, with the negative dial k = -1/(2E) < 0 (the boost end)  E = 0.3650, k = -1.3697, spread 2.3e-11; wrong dial 3.139
+[PASS] V3 dial distance travelled = change in eccentric anomaly (uniform motion in the clock dt/r)  max diff 1.8e-09, eccentricity 0.342
+[PASS] V3b its rate is sqrt(-2E)/r  
+[PASS] V4 r = a x lambda(v), lambda = 2/(1 + k|v|^2) the dial chart's scale (position read off the velocity geometry)  a = 1.4981
+[PASS] V5 Kepler's equation n t = s - e sin s, with s the dial arclength  
+[PASS] V6 postulate (velocities run straight in one dial geometry) holds only for 1/r^2; flux law agrees only at n=3  n=2: 1e-01, n=2.5: 2e-01, n=3: 8e-12, n=3.5: 5e-01, n=4: 1e-02
+[PASS] V7 the hodograph centre stays fixed (a circle) iff F(r) = -K/r^2 (Hamilton 1846)  d(centre)/dt ~ (K + F(r(t))*r(t)**2)/r(t)**2
+[PASS] V8 Runge-Lenz A is conserved and {A_x, A_y} = -2H L_z: the dial (-2E) is the bracket coefficient  
+[PASS] V9 a Runge-Lenz-type conserved vector exists for V = -K/r; tried weights fail for V = -K/r^2  
+[PASS] V10 harmonics on the dial 3-sphere: n^2 states at level n; dial kappa = n^2 at hydrogen's E_n = -1/(2n^2)  
+
+13 pass, 0 fail

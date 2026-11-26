@@ -1,0 +1,176 @@
+{
+ "A1 Eulerian energy = e2/8pi equals Alcubierre 1994: -v^2 f'^2 (y^2+z^2)/(32 pi r^2)": {
+  "ok": true,
+  "info": ""
+ },
+ "A2 expansion theta = v_s (x_s/r_s) f'(r_s): sign flips front/back (contraction ahead, expansion behind)": {
+  "ok": true,
+  "info": ""
+ },
+ "A3 strain of a one-direction river: rates (0, +, -): one stretch, one squeeze, product = -(shear)^2 <= 0": {
+  "ok": true,
+  "info": ""
+ },
+ "A4 zero expansion (e1 = 0) forces e2 = -(sum of squares)/2 <= 0 (Natario 2002)": {
+  "ok": true,
+  "info": ""
+ },
+ "A5 total Eulerian energy: closed form = grid = -(1/32pi) int |curl v|^2 (Santiago-Schuster-Visser eq 7.17)": {
+  "ok": true,
+  "info": "-0.06437 -0.06426 -0.06426"
+ },
+ "A5_values": {
+  "E_closed": -0.06436902166080141,
+  "E_grid": -0.06425729018293458,
+  "E_curl": -0.06425729018293458
+ },
+ "A6 irrotational warp (v = grad phi): positive and negative energy cancel (total ~ 0) but negative regions remain": {
+  "ok": true,
+  "info": "total 0.0000, negative part -0.2940, positive part 0.2940"
+ },
+ "A6_values": {
+  "Etot": 2.119670231583592e-05,
+  "Eneg": -0.29395587136186435,
+  "Epos": 0.29397706806418017
+ },
+ "A7 light in the river moves at dx/dt = v - 1 and v + 1 (plain sum: k = 0 between river and coordinates)": {
+  "ok": true,
+  "info": ""
+ },
+ "A8 at one point two velocities compose by the relativity rule (0.6 with 0.7 -> 0.915c), across the river by plain sum": {
+  "ok": true,
+  "info": "0.9155 vs plain 1.3"
+ },
+ "A9 superluminal bubble (v_s = 2): river crosses light speed at r = 1.018 (inside the wall) -> horizon, like r = 2M": {
+  "ok": true,
+  "info": ""
+ },
+ "A9_r_horizon": 1.017681117183344,
+ "A10 thin-wall law E = -v^2 R^2 sigma/36 (geometric units) holds for R = 100 m, sigma = 1/m": {
+  "ok": true,
+  "info": "-277.79 m"
+ },
+ "A10_scale": {
+  "R=100m wall~1m": {
+   "kg": -7.481773382612461e+29,
+   "solar": -0.37615753557629267,
+   "universe": -4.987848921741641e-24
+  },
+  "R=100m wall~1mm": {
+   "kg": -7.48177338261246e+32,
+   "solar": -376.1575355762926,
+   "universe": -4.98784892174164e-21
+  },
+  "R=100m wall~100 Planck": {
+   "kg": -4.629810261517612e+62,
+   "solar": -2.327707522130524e+32,
+   "universe": -3086540174.3450747
+  },
+  "R=10m wall~1m": {
+   "kg": -7.481773382612461e+27,
+   "solar": -0.003761575355762927,
+   "universe": -4.987848921741641e-26
+  }
+ },
+ "A11 Planck-thin wall (Pfenning-Ford regime) needs ~1e62 kg of negative energy per (v/c)^2: >1e8 visible universes": {
+  "ok": true,
+  "info": ""
+ },
+ "B1 planar river: Einstein tensor is -(w^2)''/2 on the two transverse directions and zero otherwise": {
+  "ok": true,
+  "info": "-w(z)*Derivative(w(z), (z, 2)) - Derivative(w(z), z)**2"
+ },
+ "B2 vacuum iff w^2 = 2 g z + c (a uniform field): flat spacetime, an accelerated frame, no tides, costs nothing": {
+  "ok": true,
+  "info": ""
+ },
+ "B3 a floor at fixed height feels a = |w w'|/sqrt(1-w^2); for w^2 = 2gz + c that is g/sqrt(1-2gz-c): the floor must be held (pushed)": {
+  "ok": true,
+  "info": "-w(z)**2*Derivative(w(z), z)**2/(w(z)**2 - 1)"
+ },
+ "B4 real 1 g from mass: infinite plate needs 2.34e+10 kg/m^2; a 10 m ball needs 1.47e+13 kg (a large mountain)": {
+  "ok": true,
+  "info": ""
+ },
+ "B4": {
+  "sigma_plate": 23393916567.74788,
+  "M_sphere10": 14698831285585.857
+ },
+ "B5 rotation: 1 g at 2 rpm needs radius 224 m, at 4 rpm 56 m (g = omega^2 r)": {
+  "ok": true,
+  "info": ""
+ },
+ "B5_radius": {
+  "1": 894.5647303782004,
+  "2": 223.6411825945501,
+  "4": 55.91029564863752,
+  "6": 24.84902028828334
+ },
+ "B6 one year of 1 g thrust: 200,000 small kicks composed by the relativity rule give tanh(g tau/c) = 0.7750 c": {
+  "ok": true,
+  "info": ""
+ },
+ "C1 Morris-Thorne (zero redshift): rho = b'/(8 pi r^2), p_r = -b/(8 pi r^3)": {
+  "ok": true,
+  "info": ""
+ },
+ "C2 rho + p_r = (r b' - b)/(8 pi r^3): negative at the throat whenever it flares out (b'(r0) < 1)": {
+  "ok": true,
+  "info": ""
+ },
+ "C3 bundle area 1 + (a o b): focusing a''/(1+a) + b''/(1+b) = A''/A - 2a'b'/A; at a throat (area minimum) R_kk = -A''/A < 0": {
+  "ok": true,
+  "info": ""
+ },
+ "C4 thin-shell wormhole (Visser 1989): shell rest mass 4 pi a^2 sigma = -2a sqrt(1-2M/a); throat 1 m, no outer mass: -2.69e+27 kg = -1.42 Jupiter masses of negative energy": {
+  "ok": true,
+  "info": ""
+ },
+ "C4_kg_per_m": -2.693438417740486e+27,
+ "C5 two-sided cross-ratio of A (left) and B (right) in the thermofield double = sinh^2(pi l/b)/(sinh^2 + cosh^2(2 pi t/b))": {
+  "ok": true,
+  "info": "8.326672684688674e-16"
+ },
+ "C6 I(A:B) = (c/3) log(odds of the link) = (2c/3) log(sinh(pi l/b)/cosh(2 pi t/b)); wormhole connected iff link probability > 1/2": {
+  "ok": true,
+  "info": ""
+ },
+ "C7 link probability through the throat falls like exp(-4 pi t/beta) at late times (twice the surface-gravity rate)": {
+  "ok": true,
+  "info": "12.566370614359172"
+ },
+ "C8 gluing B1 and B2 next to each other: link probabilities combine by the union rule o_-1, for any four points (pure algebra, not wormhole-specific)": {
+  "ok": true,
+  "info": ""
+ },
+ "C9 shifting the right side by a negative-energy pulse raises the link probability; it reaches 1 exactly when the two points become light-connected (traversable)": {
+  "ok": true,
+  "info": "[np.float64(0.88), np.float64(0.893), np.float64(0.907), np.float64(0.922), np.float64(0.936), np.float64(0.951), np.float64(0.967), np.float64(0.983), np.float64(1.0)]"
+ },
+ "C9": {
+  "a": [
+   4.042738658805224,
+   2.6960013430907335,
+   1.3492640273762433,
+   0.0025267116617533605,
+   -1.344210604052737,
+   -2.6909479197672272,
+   -4.0376852354817165,
+   -5.384422551196208,
+   -6.731159866910698
+  ],
+  "eta": [
+   0.8800419542324255,
+   0.8934658513300177,
+   0.9072951678427356,
+   0.9215485396432065,
+   0.9362457625358899,
+   0.9514078839289271,
+   0.9670573033396431,
+   0.9832178827430019,
+   0.9999150679063082
+  ],
+  "a_crit": -6.737897764675373
+ },
+ "summary": "26 of 26"
+}

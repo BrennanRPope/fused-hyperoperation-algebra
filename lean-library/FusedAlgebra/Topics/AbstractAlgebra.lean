@@ -243,7 +243,11 @@ theorem fin8_weight2_not_cyclic : ∀ a : Fin 8, wpow (2 : Fin 8) a 4 = 0 := by 
 section FusedRing
 variable {R : Type} [Lean.Grind.CommRing R]
 
-/-- Rung 1 on a ring: shifted addition a + b + 1. -/
+/-- Rung 1 on a ring: shifted addition a + b + 1.
+  Lineage: one of five earlier names for the rung-1 "or"; the unified, standalone
+    version is `RungOne.sadd` (Foundations.RungOneSemiring), and
+    Foundations.RungOneLineage proves the two agree. Standard name: shifted add, the
+    "or" of the ring (R, a+b+1, a+b+ab) obtained by transport along x ↦ x − 1. -/
 def fadd (a b : R) : R := a + b + 1
 
 theorem fadd_lift (a b : R) : 1 + fadd a b = (1 + a) + (1 + b) := by unfold fadd; grind
@@ -254,7 +258,11 @@ theorem fadd_group : CommGroupLaws (fadd (R := R)) (-1) :=
     ident := fun a => by unfold fadd; grind
     inv := fun a => ⟨-a - 2, by unfold fadd; grind⟩ }
 
-/-- The circle operation distributes over shifted addition. -/
+/-- The circle operation distributes over shifted addition.
+  Lineage: one of four earlier proofs of the rung-1 distributive law; the unified,
+    standalone proof is `RungOne.circ_sadd_distrib` (Foundations.RungOneSemiring), and
+    Foundations.RungOneLineage rederives this one from it. Standard name: the distributive
+    law of the transported ring (generated semiring with g(x) = 1 + x). -/
 theorem circ_fadd_distrib (a b c : R) : circ a (fadd b c) = fadd (circ a b) (circ a c) := by
   unfold circ fadd; grind
 

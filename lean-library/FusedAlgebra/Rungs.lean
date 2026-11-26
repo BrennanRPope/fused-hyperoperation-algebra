@@ -15,6 +15,11 @@ import FusedAlgebra.Base
 
 namespace CircleOp
 
+/-- Rung 1 on Nat: a + b + 1.
+  Lineage: one of five earlier names for the rung-1 "or"; the unified, standalone
+    version is `RungOne.sadd` (Foundations.RungOneSemiring), and
+    Foundations.RungOneLineage proves the two agree. Standard name: shifted add, the
+    "or" of the ring (R, a+b+1, a+b+ab) obtained by transport along x ↦ x − 1. -/
 def sadd (a b : Nat) : Nat := a + b + 1
 def fexp (a b : Nat) : Nat := (a + 1) ^ (b + 1) - 1
 def tet (x : Nat) : Nat → Nat

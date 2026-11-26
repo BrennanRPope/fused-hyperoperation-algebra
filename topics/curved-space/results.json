@@ -1,0 +1,329 @@
+{
+ "A1 metric -4dudv/(1-Kuv)^2 has scalar curvature R = 2K (Gaussian curvature K)": {
+  "pass": true,
+  "detail": "2*K"
+ },
+ "A2 diamond volume V = -(2/K) log(1 - K ab) = 2 L_{-K}(ab): the ruler of the corner ab with dial -K": {
+  "pass": true,
+  "detail": "inner integral -2*b/(K*b*u - 1)"
+ },
+ "A2b flat limit K -> 0 gives V = 2ab (the bare corner)": {
+  "pass": true,
+  "detail": ""
+ },
+ "A3 on the diagonal tau = (2/sqrt K) artanh(sqrt(K ab)), so K ab = tanh^2(sqrt K tau/2)": {
+  "pass": true,
+  "detail": ""
+ },
+ "A4 V(tau) = (4/K) log cosh(sqrt K tau/2) = tau^2/2 - K tau^4/48 + ...": {
+  "pass": true,
+  "detail": "Kp**2*tau**6/720 - Kp*tau**4/48 + tau**2/2"
+ },
+ "A4b matches the known small-diamond expansion (Gibbons-Solodukhin) at order tau^4": {
+  "pass": true,
+  "detail": ""
+ },
+ "A5 for any two points, K x proper time obeys tanh^2(sqrt K tau/2) = x(p,q) (AdS: -tan^2), 18 geodesics shot": {
+  "pass": true,
+  "detail": "max error 2.11e-14"
+ },
+ "A6 x(p,q) is the cross-ratio (u1, u2; 1/(K v1), 1/(K v2)) of four points on a line": {
+  "pass": true,
+  "detail": ""
+ },
+ "A7 every causal diamond has volume -(2/K) log(1 - x): counting volume is the ruler of the cross-ratio": {
+  "pass": true,
+  "detail": "max error 2.12e-16"
+ },
+ "A8 cut along a light ray: x(whole) = x(left) o_{-1} x(right) (the union rule)": {
+  "pass": true,
+  "detail": ""
+ },
+ "A8b equivalently the corners compose by o_k with k = -K: c = c1 + c2 - K c1 c2 (flat: corners add)": {
+  "pass": true,
+  "detail": ""
+ },
+ "A8c the same law for any diamond cut at any light ray u = m": {
+  "pass": true,
+  "detail": ""
+ },
+ "A9 the AdS3 entanglement gluing x(A,B1B2) = x(A,B1) o_{-1} x(A,B2) is the same cross-ratio identity": {
+  "pass": true,
+  "detail": ""
+ },
+ "A11 with w = 1/(Kv) the metric is 4 du dw/(K (w-u)^2): the plane of intervals [u, w] (kinematic space)": {
+  "pass": true,
+  "detail": "4/(K*(u - w)**2)"
+ },
+ "A10 sprinkled points (K = 0.8, 6000 per unit volume): counts in four diamonds match rho V within Poisson noise": {
+  "pass": true,
+  "detail": "[((0, 0), (0.9, 0.9), 15678, 15661.9, np.float64(0.13)), ((0, 0), (0.45, 0.9), 5928, 5873.4, np.float64(0.71)), ((0.45, 0), (0.9, 0.9), 9750, 9788.4, np.float64(-0.39)), ((0.1, 0.2), (0.8, 0.95), 11249, 11049.2, np.float64(1.9))]"
+ },
+ "A10_rows": [
+  [
+   [
+    0,
+    0
+   ],
+   [
+    0.9,
+    0.9
+   ],
+   15678,
+   15661.9,
+   0.13
+  ],
+  [
+   [
+    0,
+    0
+   ],
+   [
+    0.45,
+    0.9
+   ],
+   5928,
+   5873.4,
+   0.71
+  ],
+  [
+   [
+    0.45,
+    0
+   ],
+   [
+    0.9,
+    0.9
+   ],
+   9750,
+   9788.4,
+   -0.39
+  ],
+  [
+   [
+    0.1,
+    0.2
+   ],
+   [
+    0.8,
+    0.95
+   ],
+   11249,
+   11049.2,
+   1.9
+  ]
+ ],
+ "B1 2D Benincasa-Dowker weights (1, -2, 1) = Moebius function of the 2-cube summed by rank = (-1)^k C(2,k)": {
+  "pass": true,
+  "detail": "[1, -2, 1]"
+ },
+ "B1b and they are the Laguerre polynomial L_2: sum_k c_k s^k/k! = 1 - 2s + s^2/2": {
+  "pass": true,
+  "detail": "[1, -2, 1/2]"
+ },
+ "B2 counting recovers curvature: E[B 1] -> -R/2 = -K as density grows (K = +1, -1, 0)": {
+  "pass": true,
+  "detail": "{1.0: [-0.9614020361674372, -0.9938950624930777, -0.9991601270370566], -1.0: [1.0372601826532564, 1.006084653134666, 1.0008396010418446], 0.0: [0.0, 0.0, 0.0]}"
+ },
+ "B2_values": {
+  "1.0": [
+   -0.9614020361674372,
+   -0.9938950624930777,
+   -0.9991601270370566
+  ],
+  "-1.0": [
+   1.0372601826532564,
+   1.006084653134666,
+   1.0008396010418446
+  ],
+  "0.0": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "B3 flat normalisation: E[B t^2] = -2 = box(t^2) (uses int L2(s) s log s e^-s ds = 1/2)": {
+  "pass": true,
+  "detail": "-2.0"
+ },
+ "B3b where curvature enters the count: the extra factor is the inverse lift 1/(1 - K w) = e^{K V/2}": {
+  "pass": true,
+  "detail": "the linear term K s/(2 rho) times int L2 s log s = 1/2 gives -K/(4 rho), times 4 rho = -K"
+ },
+ "B4 ordering fraction of the n-cube's product order is 2^(1-n); light cone (Myrheim-Meyer) gives 1/2, 0.229, 0.1": {
+  "pass": true,
+  "detail": "{'cube': {2: 0.5, 3: 0.25, 4: 0.125}, 'light cone': {2: 0.5, 3: 0.22857142857142862, 4: 0.1}, 'monte carlo': {2: 0.50015, 3: 0.249615, 4: 0.124985}}"
+ },
+ "B4b the 4D Benincasa-Dowker weights (1, -9, 16, -8) are not the 4-cube's Moebius weights (1, -4, 6, -4, 1)": {
+  "pass": true,
+  "detail": ""
+ },
+ "C1 for any static metric -f dt^2 + ...: squared drop speeds compose w_ac^2 = w_ab^2 o_{-1} w_bc^2": {
+  "pass": true,
+  "detail": ""
+ },
+ "C1b with f = 1 - 2M/r: river speed^2 2M/r = w(r0->r)^2 o_{-1} (2M/r0)": {
+  "pass": true,
+  "detail": ""
+ },
+ "C1c numerical geodesics (Schwarzschild and charged black hole): drop 30M->12M->4M stacks by o_{-1}": {
+  "pass": true,
+  "detail": "max error 7.9e-13"
+ },
+ "C2 in river coordinates light moves at dr/dT = v +- 1: speeds add like the flat dial (q = 0)": {
+  "pass": true,
+  "detail": "[-sqrt(2)*sqrt(M)/sqrt(r) - 1, -sqrt(2)*sqrt(M)/sqrt(r) + 1]"
+ },
+ "C3 de Sitter river v = H r: r(T)/r0 - 1 = E(H T) exactly, and E(a + b) = E(a) o_1 E(b)": {
+  "pass": true,
+  "detail": ""
+ },
+ "C4 Schwarzschild river: r^{3/2} = (3/2) sqrt(2M) T, a plain translation in r^{3/2}, not E": {
+  "pass": true,
+  "detail": ""
+ },
+ "C5 Schwarzschild-de Sitter river: r^{3/2} = sqrt(2M)/H sinh(3HT/2), the same law as the LCDM scale factor": {
+  "pass": true,
+  "detail": ""
+ },
+ "C6 Kruskal U = -e^{-kappa u}, V = e^{kappa v}: t -> t + Delta multiplies V by e^{kappa Delta} and U by its inverse (a boost whose Doppler factor is 1 + E(kappa Delta))": {
+  "pass": true,
+  "detail": ""
+ },
+ "C6b U V = (1 - r/2M) e^{r/2M} (no t dependence)": {
+  "pass": true,
+  "detail": "(M - r/2)*exp(r/(2*M))/M"
+ },
+ "C7 a source falling in fades as log(1+z) = kappa t + const near the horizon, kappa = 1/(4M)": {
+  "pass": true,
+  "detail": "fitted slope 0.24926"
+ },
+ "C7_curve": {
+  "t": [
+   56.02673499161298,
+   19.336137386592785,
+   16.36201722648013,
+   14.537289303309091,
+   13.18249681782629,
+   12.084700504580555,
+   11.149055850313204,
+   10.324974717375376,
+   9.582264826748766,
+   8.901455306276773,
+   8.26925484910264,
+   7.676186156670109,
+   7.115254044390236,
+   6.581148504466805,
+   6.069743953192038,
+   5.577771661990587,
+   5.1025981263049625,
+   4.642070746261817,
+   4.194407686578007,
+   3.7581175575098875,
+   3.3319397241030546,
+   2.914799196099026,
+   2.5057720233077854,
+   2.104058391105053,
+   1.7089614475573147,
+   1.3198704568458561,
+   0.9362472599133982,
+   0.5576152927447957,
+   0.18355060370295728,
+   -0.18632555133241446,
+   -0.5523528572259071,
+   -0.9148370786649327,
+   -1.274054382448095,
+   -1.6302549939045203,
+   -1.9836663068051994,
+   -2.3344955418918962,
+   -2.682932030380223,
+   -3.029149184135897,
+   -3.3733062027032217,
+   -3.715549558231709,
+   -4.056014292069139,
+   -4.3948251509500675,
+   -4.732097585992541,
+   -5.067938633893121,
+   -5.402447696583966,
+   -5.735717233060291,
+   -6.067833374971176,
+   -6.398876475827185,
+   -6.7289216022136555,
+   -7.058038974201861,
+   -7.386294361119891
+  ],
+  "log1pz": [
+   12.899223576073444,
+   3.9413676629811922,
+   3.27672504461127,
+   2.8987725441534598,
+   2.6377061421183714,
+   2.440345042486582,
+   2.283026778532699,
+   2.1531482932530386,
+   2.043201381913467,
+   1.948354566407473,
+   1.8653180522391821,
+   1.791752698431397,
+   1.7259373543653989,
+   1.6665698949033545,
+   1.6126422669525846,
+   1.5633588025116953,
+   1.5180809910466786,
+   1.4762890582827006,
+   1.4375545712898334,
+   1.4015204828454106,
+   1.3678863190242427,
+   1.3363969999167542,
+   1.3068342762177343,
+   1.2790100816657128,
+   1.252761310335127,
+   1.227945668418592,
+   1.2044383465648596,
+   1.1821293260989738,
+   1.1609211801064097,
+   1.140727264613997,
+   1.1214702200433837,
+   1.103080721498779,
+   1.0854964301563088,
+   1.0686611083458752,
+   1.052523868768113,
+   1.0370385343149413,
+   1.0221630896260778,
+   1.0078592091522502,
+   0.9940918493553578,
+   0.9808288949389891,
+   0.9680408508057,
+   0.955700572882823,
+   0.9437830321240815,
+   0.9322651069393538,
+   0.9211254000753427,
+   0.9103440766010569,
+   0.8999027201715922,
+   0.8897842051733298,
+   0.8799725827105273,
+   0.8704529786908405,
+   0.8612115025164905
+  ]
+ },
+ "C8 circular orbit speed^2 seen by a static observer = flip phi_{-2}(M/r) (Kepler is exact in t, divided by the lift 1 - 2M/r)": {
+  "pass": true,
+  "detail": ""
+ },
+ "C8b photon sphere M/r = 1/3 gives speed 1; ISCO M/r = 1/6 gives speed 1/2; the flip's wall M/r = 1/2 is the horizon": {
+  "pass": true,
+  "detail": ""
+ },
+ "C8c flips add their dials: phi_{-2} = phi_{-1} o phi_{-1}": {
+  "pass": true,
+  "detail": ""
+ },
+ "C9 Schwarzschild's radial plane has R = 4M/r^3, Gaussian curvature 2M/r^3 (the same rate as the loop twist found before)": {
+  "pass": true,
+  "detail": "4*M/rr**3"
+ },
+ "summary": {
+  "pass": 36,
+  "total": 36
+ }
+}

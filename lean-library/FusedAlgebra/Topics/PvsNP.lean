@@ -89,14 +89,22 @@ section Semiring
 variable {R : Type} [CommSemiring R]
 open Circ
 
-/-- Shifted add: sAdd a b = a + b + 1 (rung 1 seen on the shifted ruler). -/
+/-- Shifted add: sAdd a b = a + b + 1 (rung 1 seen on the shifted ruler).
+  Lineage: one of five earlier names for the rung-1 "or"; the unified, standalone
+    version is `RungOne.sadd` (Foundations.RungOneSemiring), and
+    Foundations.RungOneLineage proves the two agree. Standard name: shifted add, the
+    "or" of the ring (R, a+b+1, a+b+ab) obtained by transport along x ↦ x − 1. -/
 def sAdd (a b : R) : R := a + b + 1
 
 /-- The shift carries sAdd to +. -/
 theorem sAdd_lift (a b : R) : 1 + sAdd a b = (1 + a) + (1 + b) := by
   unfold sAdd; grind
 
-/-- On the shifted ruler, ◯ distributes over sAdd (the semiring law, moved by x ↦ 1 + x). -/
+/-- On the shifted ruler, ◯ distributes over sAdd (the semiring law, moved by x ↦ 1 + x).
+  Lineage: one of four earlier proofs of the rung-1 distributive law; the unified,
+    standalone proof is `RungOne.circ_sadd_distrib` (Foundations.RungOneSemiring), and
+    Foundations.RungOneLineage rederives this one from it. Standard name: the distributive
+    law of the transported ring (generated semiring with g(x) = 1 + x). -/
 theorem circ_sAdd_distrib (a b c : R) :
     circ a (sAdd b c) = sAdd (circ a b) (circ a c) := by
   unfold circ sAdd; grind

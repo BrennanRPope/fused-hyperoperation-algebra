@@ -1,0 +1,30 @@
+[PASS] A1 ruler log(1+kx)/k turns o_k into + (k=1.0)  (max err 4.4e-16)
+[PASS] A1 ruler log(1+kx)/k turns o_k into + (k=0.5)  (max err 6.7e-16)
+[PASS] A1 ruler log(1+kx)/k turns o_k into + (k=-0.7)  (max err 2.2e-13)
+[PASS] A1 ruler log(1+kx)/k turns o_k into + (k=2.0)  (max err 2.2e-16)
+[PASS] A2 per axis, log(1+a) of a o b is the vector sum
+[PASS] A3 log(1 + a1 o a2 o a3 o a4) = sum of log-radii (the simplex direction)
+[PASS] B1 plane law = product (1+e a)(1+e b), read as slope  (max err 0.0e+00)
+[PASS] B2 norm x^2 + kxy + dy^2 is multiplicative (the radius)  (max err 4.3e-14)
+[PASS] B3 step map has trace^2-4det = a^2(k^2-4d): k^2-4d<0 rotates (angle), >0 has two real fixed points (radius/rapidity), =0 parabolic  ((k=0,d=1):angle, (k=0,d=-1):radius, (k=1,d=1):angle, (k=2,d=1):parabolic, (k=1,d=0):radius, (k=3,d=2):radius, (k=0.5,d=2):angle)
+[PASS] B4 k=0,d=1: arctan a + arctan b = arctan(plane law)
+[PASS] B5 k=0,d=-1: artanh a + artanh b = artanh(plane law) (rapidity)
+[PASS] B6 d=0: the plane law is o_k and the norm is the lift 1+ka
+[PASS] C1 moment map (gradient of soft support fn) lands inside square, triangle, hexagon
+[PASS] C2 turning the angles leaves the moment map fixed
+[PASS] C3 square's moment map = per-axis 1/(1+e^-2u) (cube is a product of segments)
+[PASS] D1 vertex counts 8, 4, 24, 14 (cube, simplex, permutohedron, Loday associahedron)  ({'cube': 8, 'simplex': 4, 'permutohedron': 24, 'associahedron': 14})
+[PASS] D2 Newton polytope of 1 + (x1 o x2 o x3) is the 3-cube, one vertex per tesseract corner
+[PASS] D3 product of polynomials -> Minkowski sum of shapes (vertex sums)
+[PASS] E1 shape weights y on cube corners; our zeta gives Postnikov's z_I; every sum_{i in I} t_i >= z_I is tight
+[PASS] E2 simplex = weight 1 on the full corner
+[PASS] F1 support function = sum_I y_I * max_{i in I} u_i (a weighted sum of maxes)
+[PASS] G1 cube and cross-polytope edges are all type-B roots (e_i, e_i +- e_j)  (cross [(np.float64(-0.0), np.float64(1.0), np.float64(-1.0)), (np.float64(0.0), np.float64(1.0), np.float64(1.0)), (np.float64(1.0), np.float64(-1.0), np.float64(-0.0)), (np.float64(1.0), np.float64(-0.0), np.float64(-1.0)), (np.float64(1.0), np.float64(0.0), np.float64(1.0)), (np.float64(1.0), np.float64(1.0), np.float64(0.0))])
+[PASS] G2 cross-polytope has edges e_i + e_j, not type-A roots: outside the type-A family
+[PASS] H1 p-norm = exp( (1/p) log sum exp(p log|u_i|) ): soft-max of log|u| at temperature 1/p
+[PASS] H2 p -> infinity: p-norm -> max |u_i| (cube's gauge); p = 1 is the cross-polytope's
+[PASS] I1 on the sphere |z|=1 in C^n the squared radii (|z_1|^2..|z_n|^2) fill a simplex
+[PASS] J1 budget region {x o_k y o_k z <= 1} is one simplex in log-radius coordinates at every k (size log(1+k)/k -> infinity as k -> -1, where it is the whole cube)  (k=-0.99: size 4.652, k=-0.5: size 1.386, k=0.3: size 0.875, k=1.0: size 0.693)
+[PASS] K1 our corner compose maps two shapes to a shape (weights stay >= 0) whose facet heights multiply: z(y o y') = z(y) z(y')  (cube∘cube has 16 vertices)
+
+28/28 pass

@@ -110,7 +110,11 @@ theorem circ_comm (a b : N) : circ a b = circ b a := by
   · intro b ih; rw [circ_succ, succ_circ, ih]
 
 /-- Rung 2 distributes over rung 1 exactly, with no correction term:
-    a ◯ (sadd b c) = sadd (a ◯ b) (a ◯ c). Two boxes of the same width, stacked. -/
+    a ◯ (sadd b c) = sadd (a ◯ b) (a ◯ c). Two boxes of the same width, stacked.
+  Lineage: one of four earlier proofs of the rung-1 distributive law; the unified,
+    standalone proof is `RungOne.circ_sadd_distrib` (Foundations.RungOneSemiring), and
+    Foundations.RungOneLineage rederives this one from it. Standard name: the distributive
+    law of the transported ring (generated semiring with g(x) = 1 + x). -/
 theorem circ_sadd (a b c : N) : circ a (sadd b c) = sadd (circ a b) (circ a c) := by
   refine ind (fun c => circ a (sadd b c) = sadd (circ a b) (circ a c)) ?_ ?_ c
   · rw [sadd_zero, circ_succ, circ_zero]
