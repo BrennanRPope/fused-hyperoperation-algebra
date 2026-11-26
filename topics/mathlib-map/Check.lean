@@ -25,3 +25,5 @@ open MathlibMap
 #check @MathlibMap.LeeYang.StepDown
 #check @MathlibMap.LeeYang.TopStrip
 #check @MathlibMap.LeeYang.TopStripReduces
+#check @MathlibMap.LeeYang.RuleAtThree
+#check @MathlibMap.LeeYang.StripAtThree

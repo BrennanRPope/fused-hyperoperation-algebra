@@ -1,0 +1,14 @@
+PASS F1 far zone: for every b in [0, 2] and every s >= 21, the three inequalities hold (|eps| < 1, one simple zero per half-turn, and G at a = b + 1 keeps the sign the phase predicts)  [worst margins 0.960, 0.911, 0.159 over 40 boxes]
+   box [0.0, 0.01] 7 True True 1s
+   box [0.25, 0.26] 7 True True 25s
+   box [0.5, 0.51] 7 True True 51s
+   box [0.75, 0.76] 7 True True 77s
+   box [1.0, 1.01] 7 True True 103s
+   box [1.25, 1.26] 7 True True 128s
+   box [1.5, 1.51] 7 True True 153s
+   box [1.75, 1.76] 7 True True 179s
+PASS N1 near zone: on all 200 boxes of width 0.01 covering b in [0, 2], every zero of G_b in [0, 25] is isolated (sign change plus nonzero slope on its cells)  [7 to 7 zeros per box]
+PASS N2 near zone: G at a = b + 1 has a definite sign at each of those zeros, and the signs alternate
+PASS N3 overlap: in every box the near zone reaches a zero past s = 21, so near and far zones share a zero
+PASS P1 polish: the contour formula reproduces the defining integral (4 spot checks)  [gap 1e-32]
+5/5 pass, 205 s

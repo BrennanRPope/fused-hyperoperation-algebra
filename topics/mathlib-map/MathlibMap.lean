@@ -5,3 +5,4 @@ import MathlibMap.Jacobson
 import MathlibMap.Lucas
 import MathlibMap.LeeYangBand
 import MathlibMap.LeeYangStep
+import MathlibMap.LeeYangP3

@@ -54,7 +54,8 @@ at every p, so for p ≥ 2 the open part is only the strip p − 1 < a ≤ p (se
 That strip is now a finite check for each p, by comparing with the ball and peeling one shell. It passes at
 p = 2.5, 3, 5 and 7, but a proof for every p at once is still missing (section N3, top strip). Lobe growth at every a ≤ p
 would close it, and that is now proved far out for every p, with the same kink constant as the ball comparison; an
-explicit radius is still missing (section N3, lobe law). The other two are **Bell's 2√2 is a floor for
+explicit radius is still missing (section N3, lobe law). At p = 3 the gap is closed: Lee–Yang is proved, computer-assisted, for every a ≤ 3 (n ≤ 10), so the
+rule is a theorem there (section N3, p = 3). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
 (a short corollary of Fermat's last theorem).
 
@@ -260,7 +261,7 @@ dial, and where it made sense the crossing of the first two. What came out:
 |---|---|---|
 | Roundness, crossed with shape | **N1** Bell's 2√2 is a floor for every symmetric shape, and a saddle where the dials cross | Follows from a known theorem (Gao–Lau 1990); the Bell reading wasn't found |
 | Roundness, rational settings | **N2** Fermat for every rational p: only p = 1, 2, ∞ have rational points to spare | Short corollary of Fermat's last theorem; not found stated |
-| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2 and p = 4 whole a; rest open |
+| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2, p = 3 (computer-assisted) and p = 4 whole a; rest open |
 | Roundness | Volume sums E_{1/p}(2Γ(1 + 1/p)) | Immediate from the known volume formula: nothing new |
 | Roundness | Replicator at any p | The same law at every p (u = x^(1/p) is a change of variable, check N5): nothing new |
 | Shape (round ↔ triangle) | The turn fades from −1 to 0; ordering fraction falls 1/4 → 0.229 | Already in `simplex/` §7; no closed form for the ordering fraction |
@@ -589,6 +590,70 @@ at a = p for every roundness, with the smallest value seen over all lobes; every
 | L4 | past the edge (p = 3, a = 4.5) the kink wins and a lobe shrinks | first shrinking lobe after s = 43 |
 | L5 | polish: first three lobes by direct quadrature against the identity; refined zeros | agree to all 50 digits |
 
+### N3, p = 3. A full proof at one roundness
+
+Asked next by Brennan: "yes" (work out p = 3 explicitly, with no gap). **Short answer: proved, computer-assisted.** At
+roundness 3, Lee–Yang holds for every a ≤ 3, that is for a uniform spin in every dimension n ≤ 10, and it breaks for
+every n > 10 (proved earlier). So **the rule n ≤ 1 + p² is now a theorem at p = 3**. The far-out argument takes over at
+s = 21, about the 7th zero, and every zero before that was boxed and checked with error-bounded arithmetic on 200 boxes.
+Two links are cited rather than re-proved: Pólya's 1918 theorem and Krein's partial-fraction theorem.
+
+![p = 3 proof](figures/fig21-lee-yang-p3-proof.png)
+
+*Figure 21. Top left: the climb. Pólya gives a ≤ 1; two whole steps carry it to a = 3, where it stops because the rule
+breaks past it. Top right: every zero of G at b, coloured by the sign of G at b + 1 there. The colours alternate up
+every column, which is what each step needs. Below s = 21 every zero was boxed; above it the explicit inequalities
+take over, and the two zones share a zero in every box. Bottom left: why it alternates. At each zero of G at 2, G at 3
+sits near a crest of its own wave, clear of the small offset from the centre's kink. Bottom right: the three far-zone
+margins, proved positive at s = 21 for every b in [0, 2]; they only grow further out.*
+
+- **What was asked for, and what I used instead.** The plan was to make the lobe law's radius explicit. At p = 3 a
+  cleaner test does the same job: check the *sign of G at b + 1 at each zero of G at b*. Lobe growth was only ever a
+  way to get that sign pattern, and the sign itself is easier to bound.
+- **The climb.** For b in [0, 1], G at b has only real simple zeros (Pólya, section N3 proof, step 1). Suppose G at b
+  has real simple zeros and G at b + 1 alternates in sign at them. Write u = s². Then G at b + 1 over G at b has simple
+  poles at the zeros, its residues all have one sign, and it tends to 0 up the imaginary axis (like 3(b + 1)/y). Krein's
+  theorem for functions of this growth then says the ratio is exactly the sum of its poles, so it maps the upper half
+  plane into one half plane. Such a function has a zero between each pair of poles and nowhere else off the real
+  u axis. One more zero could sit below the first pole, at negative u (an imaginary s), but G is positive on the
+  imaginary axis, so it can't. So G at b + 1 has only real zeros, interlacing those of G at b. Two steps, b in [0, 1]
+  then b in [1, 2], cover a up to 3.
+- **An exact formula far out.** At p = 3, turning the integration path upward from 0 and from 1 gives, exactly,
+  G(s) = C(s) + |J(s)| sin(s − πc/2 + arg J(s)), where C is a small one-signed term from the centre and J a smooth rim
+  amplitude, each a Laplace integral with explicit bounds. It matches the defining integral to 1e−32.
+- **The far zone, s ≥ 21.** With that formula, three inequalities finish the job at every zero past 21: the rim wave
+  beats the centre term (|C|/|J| < 1), so G at b has exactly one simple zero per half-turn; and G at b + 1 is close
+  enough to its predicted crest to keep the sign the phase gives it. Every bound is monotone in s, so checking s = 21
+  with interval arithmetic on 40 boxes in b covers all s ≥ 21. Smallest margins: 0.96, 0.91 and 0.16 (the last one at
+  b near 2, where the step is tightest).
+- **The near zone, s ≤ 25.** On 200 boxes of width 0.01 in b, G at b and G at b + 1 were enclosed with Taylor models in s
+  and in b, evaluated in exact integer arithmetic at 900 bits. In every box there are exactly 7 zeros below 25, each
+  isolated (sign change, nonzero slope), and G at b + 1 has a definite, alternating sign at them. Each box reaches a
+  zero past 21, so the near and far zones overlap.
+- **How solid it is.** Every inequality has explicit slack, and the arithmetic is exact or error-bounded. Two places use
+  ordinary floats with a safety margin rather than ball arithmetic: the two constants ∫log²(1 − x³) and ∫|log³(1 − x³)|
+  (used with slack, 0.75 and 2.11) and some bookkeeping. A fully airtight version would rerun the certificate in Arb
+  ball arithmetic (python-flint), which wasn't available here.
+- **What Lean can hold.** `topics/mathlib-map/MathlibMap/LeeYangP3.lean` (built by CI with the Mathlib map) states the result (`RuleAtThree`, `StripAtThree`) on top of the
+  `LeeYangStep` definitions, with no sorry, because it only states. Proving it in Lean would need Pólya's theorem, Krein's
+  theorem and a verified interval certificate, none of which Mathlib has.
+- **What it says about other p.** Nothing here is special to 3 except the contour formula, which needs p whole. At p = 5
+  or 7 the same certificate should run with more rim terms. At a fractional p the rim needs a different expansion. Every
+  p at once still needs the explicit, uniform version of the lobe law.
+- **Verdict: worth following.** This is the first roundness where the in-between rule is fully proved (p = 2 was already
+  known, p = 4 only at whole a). It shows the route works end to end, and the far-out margins are wide everywhere except
+  near the top of the strip, which is where any general proof will be tight.
+
+**Checks** (`p3_certificate.py` → `p3_certificate_output.txt`, `p3_certificate.json`, **5 of 5 pass**, 85 s):
+
+| Check | What | Result |
+|---|---|---|
+| F1 | far zone: for every b in [0, 2] and every s ≥ 21, the three inequalities hold (interval arithmetic, 40 boxes) | worst margins 0.960, 0.911, 0.159 |
+| N1 | near zone: on 200 boxes covering b in [0, 2], every zero of G at b in [0, 25] is isolated | 7 zeros in every box |
+| N2 | near zone: G at b + 1 has a definite sign at each of those zeros, and the signs alternate | 200 of 200 boxes |
+| N3 | overlap: in every box the near zone reaches a zero past s = 21 | 200 of 200 boxes |
+| P1 | polish: the contour formula against the defining integral, 4 spot checks | gap 1e−32 |
+
 ---
 
 ## The polishing step
@@ -612,6 +677,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 identity | step identity checked coefficient by coefficient at 50 digits; zeros refined with findroot | exact | under 1 s, of the 20 s run |
 | N3 strip | zeros refined with findroot; lobes by direct quadrature against the identity | gap 2e-39 | 1.2 s |
 | N3 lobe law | first lobes by direct quadrature against the identity; zeros refined | all 50 digits | under 2 s, of the 97 s run |
+| N3 p = 3 | contour formula against the defining integral, 4 spot checks | gap 1e-32 | under 1 s, of the 85 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -628,6 +694,8 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `identity_check.py` → `identity_check.json`, `identity_output.txt`: 4 checks for the step identity. `figures_identity.py` → figure 18. `../mathlib-map/MathlibMap/LeeYangStep.lean`: Lean statements, built by CI with the Mathlib map.
 - `strip_check.py` → `strip_check.json`, `strip_output.txt`: 5 checks for the top strip. `figures_strip.py` → figure 19.
 - `lobe_law_check.py` → `lobe_law_check.json`, `lobe_law_output.txt`: 5 checks for the lobe law. `figures_lobe_law.py` → figure 20.
+- `p3_certificate.py` → `p3_certificate.json`, `p3_certificate_output.txt`: the 5-part certificate for p = 3. `figures_p3.py` → figure 21.
+  `../mathlib-map/MathlibMap/LeeYangP3.lean`: the p = 3 statements (statements only), built by CI with the Mathlib map.
 
 ## References
 
@@ -649,6 +717,9 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
   operators that keep it.
 - A. Erdélyi, Asymptotic Expansions (1956), endpoint expansions of Fourier integrals; B. Ya. Levin, Distribution of
   Zeros of Entire Functions, the Cartwright–Levinson theorem.
+- M. G. Krein, on the representation of entire functions of exponential type by their partial fractions (1947); B. Ya.
+  Levin, Lectures on Entire Functions (1996), chapter on the Cartwright class: a ratio of such functions with poles
+  only at real zeros is the sum of its partial fractions.
 - L. Lorch and G. Szegő, "Higher monotonicity properties of certain Sturm–Liouville functions", Acta Math. 109 (1963):
   growing lobes of weighted Bessel functions, the ball's version of the lobe law.
 - N. Obreschkoff, Verteilung und Berechnung der Nullstellen reeller Polynome (1963): two real-rooted functions have
