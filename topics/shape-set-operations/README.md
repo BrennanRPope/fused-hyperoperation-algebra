@@ -171,9 +171,9 @@ is the **average number of uniform draws until x₁ᵖ + x₂ᵖ + … passes 1*
 simulated runs each). Values: e at p = 1; **e^(π/4)(1 + erf(√π/2)) = 3.9258** at p = 2 (F3); 5.1611 at p = 3; it grows
 without bound as p → ∞, because the cube contains itself in every dimension.
 
-**Known:** ℓp ball volumes; John D. Cook's note that the sum of all unit-ball volumes is E₁/₂(√π). **Not found in print
-(quick search, Nov 26):** the general-p draws puzzle with this answer. It follows in one line from known formulas, so
-treat it as elementary. **Lead?** Small. It shows e is the p = 1 point of a continuous family, and it puts the
+**Known:** ℓp ball volumes; John D. Cook's note that the sum of all unit-ball volumes is E₁/₂(√π). **Also in print:** the
+general-p draws puzzle with this answer is Newman and Klamkin (1959), per a later literature check on Nov 26 (I could
+not open the paper myself); it follows in one line from the known ball volumes. **Lead?** Small. It shows e is the p = 1 point of a continuous family, and it puts the
 hypersphere (p = 2) and the cube (p = ∞) on the same curve as the simplex, which is the sorting the hypersphere page
 already made.
 
@@ -242,8 +242,9 @@ The corners of the 4-cube (one yes/no answer per measurement) give CHSH = ±2 (J
 mixtures of corners, so they cap at 2: Bell, and Pitowsky's correlation polytope. Tsirelson's 2√2 has **no** realization
 by sets with sizes ≥ 0 (J1, linear program infeasible) and **does** have one with signed sizes (J2), as Abramsky and
 Brandenburger proved for every no-signalling model (New J. Phys. 13, 113036, 2011, Thm 5.5). The least negative size we
-found is 0.2071 = (√2 − 1)/2, which equals (CHSH − 2)/4 at that point. We infer this linear rule from one point; it is
-likely already in the negative-probability literature and has not been checked here.
+found is 0.2071 = (√2 − 1)/2, which equals (CHSH − 2)/4 at that point. The general rule, negativity (CHSH − 2)/4 for
+any CHSH value, is in print: Morris, Fiderer, Lang and Goldwater, Phys. Rev. A 105, 032202 (2022), arXiv:2105.01685
+(also Γ_min = S/2 − 1 for the total excess mass, arXiv:1406.3088). Our linear program reproduces it at 2√2.
 
 **What this says about the foundation.** Unions of sets with ordinary sizes are exactly classical probability. The fused
 law at k < 0 lives there. The quantum world needs sizes that can go negative, and k > 0 is the side of the dial where
@@ -256,7 +257,7 @@ more than a shared word, i.e. that the k > 0 side of the dial supplies the negat
    the dial from a free number into a property of where the shapes sit, and it locates the classical/quantum split at
    the sign of the size. Next test: build a signed-size slab model at k > 0 and see whether it reaches CHSH > 2.
 2. **E(k) = (1 + k)^(1/k) + k/(1 + k).** Worth a Lean statement and a short note; small. Generalizes a published puzzle.
-3. **E₁/ₚ(Γ(1 + 1/p)) as the draws count along p.** Small and elementary; useful as a picture.
+3. **E₁/ₚ(Γ(1 + 1/p)) as the draws count along p.** Known (Newman and Klamkin 1959); useful as a picture.
 4. **Three-shape defect = I-measure centre.** Known math, a useful reading; it connects the operation's associativity to
    the holographic monogamy result we already have.
 5. **Steiner and cube ∩ cross-polytope.** No new content; bridges only.
@@ -340,7 +341,7 @@ tidy and complete map, not a lead on its own.
 - Section 3's pair dial is defined for any measurable pair; the three-shape statement assumes one common dial.
 - Section 5.1 and 5.2 use uniform draws on [0, 1]; 5.2 needs k > −1. The closed form is derived analytically and
   checked numerically, not in Lean.
-- Section 5.5 uses the standard CHSH setting with fair marginals. The (CHSH − 2)/4 rule is from one point only.
+- Section 5.5 uses the standard CHSH setting with fair marginals. Our linear program checks the (CHSH − 2)/4 rule at one point only; the general rule is Morris et al. 2022.
 - Section 7 uses independent sets except where it says correlated; q was tested in two readings only.
 - Monte Carlo checks use a fixed seed and a 5-standard-error tolerance.
 
@@ -351,15 +352,18 @@ tidy and complete map, not a lead on its own.
 | Union rule for independent events; inclusion–exclusion | known | standard |
 | k = −1/π for a sub-population of size π | known model | mixture cure model (`../where-k-moves/`) |
 | Euler characteristic of an open interval = −1 | known | Schanuel 1991; Propp, arXiv:math/0203289 |
-| k = −1/(size of the ambient) for every size φ, including χ | ours (reading) | — |
+| k = −1/(size of the ambient) for every size φ, including χ | ours (reading of known pieces) | Schanuel 1991; Propp |
 | Pair dial = minus the lift; three-shape defect = I-measure centre | known math, reading ours | Yeung 1991, IEEE Trans. Inf. Theory 37(3) |
 | ℓp ball volumes; sum of ball volumes = Mittag-Leffler | known | Dirichlet; J. D. Cook (2019) |
-| Draws until Σxᵖ > 1 = E₁/ₚ(Γ(1 + 1/p)) | not found in print; elementary | — |
+| Draws until Σxᵖ > 1 = E₁/ₚ(Γ(1 + 1/p)) | known | Newman and Klamkin 1959 (per the Nov 26 levers check) |
 | E(k) = (1 + k)^(1/k) + k/(1 + k) and its generating function | not found in print (k = e − 1 case known) | Vandervelde 2008; Geneson arXiv:1605.00277 |
 | Steiner formula; cube's intrinsic volumes | known | Steiner 1840; Hadwiger 1957 |
 | Irwin–Hall, Eulerian slabs, cuboctahedron, 24-cell | known | Laplace; Coxeter |
 | Four laws among 16 operations; De Morgan; piling-up lemma; conditioning | known | Boolean algebra; Matsui 1993 |
-| Difference as the ∘ₖ action, asymmetry = odds ratio; distributivity via k′ = −1/a | ours (readings) | — |
+| Difference as the ∘ₖ action, asymmetry = odds ratio; distributivity via k′ = −1/a | ours (readings); k′ = −1/a is conditioning, i.e. Bayes | Bayes |
 | CHSH ≤ 2 for sets; signed realizations of no-signalling models | known | Bell 1964; Pitowsky 1989; Abramsky–Brandenburger 2011 |
+| Least negativity (CHSH − 2)/4 | known | Morris et al., Phys. Rev. A 105, 032202 (2022) |
 
-Literature checks were quick web searches on Nov 26, 2026. "Not found in print" means not found in those searches.
+Literature checks were quick web searches on Nov 26, 2026, plus a second check later that day that moved the draws
+puzzle and the CHSH negativity to "known". "Not found in print" means not found in those searches; after both checks,
+only the general E(k) formula and its generating function remain not found.
