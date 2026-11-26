@@ -72,6 +72,42 @@ theorem horizon_rate (V ρ2 M r a c2 s2 : R)
     (V * a * s2) * (r^2 + a^2) = a * ((r^2 + a^2) * s2 + V * a^2 * s2^2) := by
   grind
 
+/-! ### Round 8: deriving the speed law (checks S1–S3) -/
+
+/-- **The complex distance (S1a).** With an element i, i·i = −1, and a lattice point
+    x² + y² = (r² + a²) s², z = r c, c² + s² = 1: the squared distance to the source moved up the
+    axis by i·a is (r − i a c)². -/
+theorem complex_distance (i r a c s2 : R) (hi : i * i = -1) (hc : c^2 + s2 = 1) :
+    (r^2 + a^2) * s2 + (r * c - i * a)^2 = (r - i * a * c)^2 := by grind
+
+/-- **Its real part gives the speed law (S2a).** (r − i a c)(r + i a c) = r² + a² c² = ρ², so
+    M/(r − i a c) = M (r + i a c)/ρ², whose real part is M r/ρ². -/
+theorem conj_product (i r a c : R) (hi : i * i = -1) :
+    (r - i * a * c) * (r + i * a * c) = r^2 + a^2 * c^2 := by grind
+
+/-! ### Round 9: the shifted source's rays (check T1) -/
+
+/-- **The ray has unit length (T1).** For real p, q with k = p + q × p (before dividing by |p|²):
+    |p + q × p|² = (p·p)(1 + q·q) − (p·q)². With p·p − q·q = 1 and p·q = 0 (E = p + iq a complex unit
+    vector) this is (p·p)², so k/|p|² is a unit vector. -/
+theorem ray_norm (p0 p1 p2 q0 q1 q2 : R) :
+    (p0 + (q1 * p2 - q2 * p1))^2 + (p1 + (q2 * p0 - q0 * p2))^2 + (p2 + (q0 * p1 - q1 * p0))^2
+      = (p0^2 + p1^2 + p2^2) * (1 + q0^2 + q1^2 + q2^2) - (p0 * q0 + p1 * q1 + p2 * q2)^2 := by grind
+
+/-! ### Round 11: two bodies at rest (checks B3, B4) -/
+
+/-- **Two bodies combine by velocity addition (B3).** Cross-multiplied form of
+    (1 − u)/(1 + u) = ((1 − u₁)/(1 + u₁))·((1 − u₂)/(1 + u₂)) for u = (u₁ + u₂)/(1 + u₁u₂):
+    on the axis each body's clock factor (1 − u)/(1 + u) multiplies, and the u's add like speeds. -/
+theorem velocity_addition (u1 u2 : R) :
+    ((1 + u1 * u2) - (u1 + u2)) * ((1 + u1) * (1 + u2))
+      = ((1 + u1 * u2) + (u1 + u2)) * ((1 - u1) * (1 - u2)) := by grind
+
+/-- **The strut's push (B4).** With e^γ = (ℓ² − (M₁+M₂)²)/(ℓ² − (M₁−M₂)²) on the strut,
+    (e^−γ − 1)/4 = M₁M₂/(ℓ² − (M₁+M₂)²): the numerators differ by exactly 4 M₁M₂. -/
+theorem strut_push (l M1 M2 : R) :
+    (l^2 - (M1 - M2)^2) - (l^2 - (M1 + M2)^2) = 4 * (M1 * M2) := by grind
+
 end
 
 end CircleOp.SpinningRiver

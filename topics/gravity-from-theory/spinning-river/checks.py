@@ -3,6 +3,10 @@
 K: give each river cell a turn as well as a velocity; does the spinning (Kerr) black hole come out exactly?
 F: frame-dragging look-alikes outside black holes (Larmor's theorem, spinning fluids, Foucault, clocks).
 D: derive the turn (area law + circulation law + far-field frame dragging + rim at light speed) instead of testing it.
+S: derive the speed law and the lattice's shape from one move: the point source shifted up the axis by i*a.
+T: derive the turn from the same move: the shifted source's light rays.
+C: charge on the same shifted source: the charged spinning black hole (Kerr-Newman).
+B: two bodies: why one shear per cell cannot hold two, what does add exactly (Weyl), and the strut force (Newton).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -377,6 +381,426 @@ check("D6a the t-phi block: g_tphi^2 - g_tt g_phiphi = sin^2(theta) (r^2 - 2Mr +
 check("D6b there the dragging rate -g_tphi/g_phiphi equals the lattice shell's rate a/(r+^2 + a^2): Kerr's horizon spin "
       "Omega_H is the derived shell rate, read at the horizon", sp.simplify(OmH - As / (rp_**2 + As**2)) == 0,
       f"Omega_H = {sp.simplify(OmH)}  (the known value a/(r+^2+a^2); also the Carter frame's rate)")
+
+# ================================================================ S  deriving the speed law (round 8)
+log("\n== S  Deriving the speed law (and the lattice's shape) instead of matching it")
+xs, ys, zs = sp.symbols("x y z", real=True)
+cth, sth = sp.cos(TH), sp.sin(TH)
+xo = sp.sqrt(R**2 + As**2) * sth * sp.cos(PH)
+yo = sp.sqrt(R**2 + As**2) * sth * sp.sin(PH)
+zo = R * cth
+
+# S1 the complex shift: a point source moved along the axis by i*a; its distance in oblate coordinates
+D2 = sp.expand(xo**2 + yo**2 + (zo - sp.I * As)**2)
+check("S1a move a point source up the spin axis by i*a (the dial's turning number): its squared distance is exactly "
+      "(r - i a cos(theta))^2 in the lattice's coordinates",
+      sp.simplify(sp.expand(D2 - (R - sp.I * As * cth)**2)) == 0,
+      "so the complex distance is D = r - i a cos(theta): its real part is the lattice label r")
+check("S1b so the lattice's squashed spheres are the level sets of Re D, and D = 0 is the ring r = 0, theta = pi/2 of "
+      "radius a: the same ring round 7 found for the turn (b = kappa), which agrees only when a = J/M",
+      sp.simplify(sp.sqrt((xo**2 + yo**2).subs({R: 0, TH: sp.pi / 2}))) == As,
+      "the lattice's shape and its ring both come from the shift; before this round the shape was put in")
+
+# S2 Newton's potential of the shifted point is the speed law
+Phi_shift = sp.simplify(sp.re(sp.expand(Ms * (R + sp.I * As * cth) / ((R - sp.I * As * cth) * (R + sp.I * As * cth)))))
+check("S2a the shifted point's potential, Re(M/D) = M r/(r^2 + a^2 cos^2 theta)",
+      sp.simplify(Phi_shift - Ms * R / (R**2 + As**2 * cth**2)) == 0, f"Re(M/D) = {Phi_shift}")
+check("S2b and the jet river's rule v^2/2 = -Phi (Phi = -v^2/2, jet-river J6b) then gives v^2 = 2Mr/rho^2: "
+      "exactly the speed law Part 1 matched by testing (K3c)",
+      sp.simplify(2 * Phi_shift - legs(M=Ms, a=As)[4]**2) == 0, "far away Re(M/D) -> M/r, Newton's potential of mass M")
+
+# S3 it is an exact flat-space potential (harmonic), not just in the far field
+hdiag = [(R**2 + As**2 * cth**2) / (R**2 + As**2), R**2 + As**2 * cth**2, (R**2 + As**2) * sth**2]
+sqh = (R**2 + As**2 * cth**2) * sth
+
+
+def lap(F):
+    return sp.simplify(sum(sp.diff(sqh / hdiag[i] * sp.diff(F, q), q) for i, q in enumerate((R, TH, PH))) / sqh)
+
+
+check("S3 Re(M/D) is exactly harmonic on the flat lattice (Laplace's equation holds everywhere off the disk r = 0)",
+      lap(Ms * R / (R**2 + As**2 * cth**2)) == 0, "the empty-space form of the jet river's trace law (Poisson for Phi)")
+
+# S4 harmonic + mass M is not enough: other potentials of mass M fail; the i-shift is what picks Kerr
+dist_origin = sp.sqrt(sp.simplify(xo**2 + yo**2 + zo**2))
+dist_real = sp.sqrt(sp.simplify(sp.expand(xo**2 + yo**2 + (zo - As)**2)))
+cands = {"point at the centre: M/|x|": Ms / dist_origin,
+         "point moved by a real a up the axis": Ms / dist_real,
+         "point moved by i a/2 (ring a/2, not the turn's ring)":
+             sp.re(Ms / sp.sqrt(sp.expand(xo**2 + yo**2 + (zo - sp.I * As / 2)**2)))}
+harm, bad8 = {}, {}
+for lab, Phi_c in cands.items():
+    Fl = sp.lambdify((R, TH, PH, Ms, As), lap(Phi_c) if "i a/2" not in lab else Phi_c, "mpmath")
+    if "i a/2" in lab:      # numeric Laplacian for the complex-shift candidate
+        lapc = sp.lambdify((R, TH, PH, Ms, As), sum(sp.diff(sqh / hdiag[i] * sp.diff(Phi_c, q), q)
+                                                     for i, q in enumerate((R, TH, PH))) / sqh, "mpmath")
+        harm[lab] = max(abs(lapc(*[mp.mpf(P[k]) for k in (1, 2, 3)], 1, mp.mpf("0.7"))) for P in PTS)
+    else:
+        harm[lab] = max(abs(Fl(*[mp.mpf(P[k]) for k in (1, 2, 3)], 1, mp.mpf("0.7"))) for P in PTS)
+    V2c = 2 * Phi_c.subs({Ms: Mn, As: An})
+    e0, e1, e2, e3, v_, rho2_c = legs2(M=Mn, b=An, kappa=An)
+    w_ = sp.Matrix([1, 0, 0, -An * sth**2])
+    e1c = e1 - v_ * w_ + sp.sqrt(V2c) * w_
+    gc = -e0 * e0.T + e1c * e1c.T + e2 * e2.T + e3 * e3.T
+    bad8[lab] = rmax(gc)
+check("S4a each rival is also a flat-space potential of mass M (harmonic, -> M/r far away)",
+      all(h < mp.mpf("1e-25") for h in harm.values()), {k: mp.nstr(h, 3) for k, h in harm.items()})
+check("S4b but with the derived lattice and turn, each rival breaks empty space; only the i*a shift works",
+      all(x > mp.mpf("1e-3") for x in bad8.values()), {k: mp.nstr(x, 3) for k, x in bad8.items()})
+results["S4b_bad"] = {k: float(x) for k, x in bad8.items()}
+
+# ================================================================ T  the turn from the same shift (round 9)
+log("\n== T  The turn from the same shift: the light rays of the shifted source")
+mp.mp.dps = 50
+
+
+def cart_and_jac(r, th, ph, a):
+    A = mp.sqrt(r**2 + a**2)
+    X = mp.matrix([A * mp.sin(th) * mp.cos(ph), A * mp.sin(th) * mp.sin(ph), r * mp.cos(th)])
+    J = mp.matrix([[r / A * mp.sin(th) * mp.cos(ph), A * mp.cos(th) * mp.cos(ph), -A * mp.sin(th) * mp.sin(ph)],
+                   [r / A * mp.sin(th) * mp.sin(ph), A * mp.cos(th) * mp.sin(ph), A * mp.sin(th) * mp.cos(ph)],
+                   [mp.cos(th), -r * mp.sin(th), 0]])
+    return X, J
+
+
+def cross(u, w):
+    return mp.matrix([u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]])
+
+
+def dot(u, w):
+    return sum(u[k] * w[k] for k in range(3))
+
+
+errT1, errT2, errT3, errT2b = 0, 0, 0, 0
+for P in PTS:
+    r, th, ph = (mp.mpf(P[k]) for k in (1, 2, 3))
+    a = mp.mpf("0.7")
+    X, J = cart_and_jac(r, th, ph, a)
+    D = r - 1j * a * mp.cos(th)                                # complex distance (S1a)
+    E = mp.matrix([X[0] / D, X[1] / D, (X[2] - 1j * a) / D])     # its gradient: a complex unit vector, E.E = 1
+    p = mp.matrix([mp.re(E[k]) for k in range(3)])
+    q = mp.matrix([mp.im(E[k]) for k in range(3)])
+    kp = (p + cross(q, p)) / dot(p, p)                          # ray k+ ; the other ray is (p - q x p)/(p.p)
+    km = (p - cross(q, p)) / dot(p, p)
+    errT1 = max(errT1, abs(dot(E, E) - 1), abs(dot(kp, kp) - 1), abs(dot(kp, p) - 1), abs(dot(kp, q)),
+                abs(dot(km, km) - 1), abs(dot(km, p) - 1), abs(dot(km, q)))
+    # the ray as a covector in lattice coordinates: k_i = (dx/dq_i) . k
+    kcov_p = [dot(mp.matrix([J[0, i], J[1, i], J[2, i]]), kp) for i in range(3)]
+    kcov_m = [dot(mp.matrix([J[0, i], J[1, i], J[2, i]]), km) for i in range(3)]
+    rho2n = r**2 + a**2 * mp.cos(th)**2
+    errT2 = max(errT2, abs(kcov_p[0] - rho2n / (r**2 + a**2)), abs(kcov_p[1]), abs(kcov_p[2] + a * mp.sin(th)**2))
+    errT3 = max(errT3, abs(-kcov_m[2] - (-a * mp.sin(th)**2)), abs(-kcov_m[0] + rho2n / (r**2 + a**2)))
+    phihat = mp.matrix([-mp.sin(ph), mp.cos(ph), 0])
+    errT2b = max(errT2b, abs(dot(kp, phihat) + a * mp.sin(th) / mp.sqrt(r**2 + a**2)))
+check("T1 through each point the shifted source sends exactly two real light rays: unit vectors k with k.E = 1, where "
+      "E = grad D is the complex unit direction to the source; they are k = (p +- q x p)/|p|^2, E = p + i q",
+      errT1 < mp.mpf("1e-40"), f"max error {mp.nstr(errT1, 3)}; with no spin (q = 0) both are the ordinary radial ray k = E")
+check("T2 the outgoing ray, written on the lattice, is k = (rho^2/(r^2+a^2)) dr - a sin^2(theta) dphi: radial along the "
+      "shell's normal, plus a sideways part", errT2 < mp.mpf("1e-40"), f"max error {mp.nstr(errT2, 3)}")
+check("T2b the ray leans sideways by exactly alpha = a sin(theta)/sqrt(r^2+a^2), the speed of round 7's turning shell (D1b); "
+      "in the equator's plane every ray is a straight line tangent to the ring of radius a",
+      errT2b < mp.mpf("1e-40"), f"max error {mp.nstr(errT2b, 3)}")
+check("T3 the ingoing ray (the other one, reversed) has the same sideways part, -a sin^2(theta) dphi, and the opposite "
+      "radial part", errT3 < mp.mpf("1e-40"), f"max error {mp.nstr(errT3, 3)}")
+
+# T4 the rule 'push the cell along the ray, without the ray's radial part' gives the turn
+fT = -(-As * sp.sin(TH)**2)                                     # w = dt + (sideways part of the ray) = dt - f dphi
+check("T4 push each cell along its ray's time-and-sideways part, w = dt + (ray minus its radial part): w = dt - a sin^2 dphi, "
+      "exactly round 7's turn f = kappa sin^2(theta) with kappa = a; with no spin it is the plain river, w = dt",
+      sp.simplify(fT - As * sp.sin(TH)**2) == 0, "so the shift gives the turn's shape (sin^2) and size (a) directly")
+
+# T5 one move gives all of Kerr: also in the ray form g = flat + v^2 (dt + k)(dt + k)
+rho2s_ = R**2 + As**2 * cth**2
+eta = sp.diag(-1, rho2s_ / (R**2 + As**2), rho2s_, (R**2 + As**2) * sth**2)
+H = 2 * Ms * R / rho2s_                                          # 2 Re(M/D), S2
+ray = {"rays of the i*a source (Kerr)": sp.Matrix([1, rho2s_ / (R**2 + As**2), 0, -As * sth**2]),
+       "radial ray, no sideways part": sp.Matrix([1, sp.sqrt(rho2s_ / (R**2 + As**2)), 0, 0]),
+       "half the sideways part": sp.Matrix([1, sp.sqrt(rho2s_ / (R**2 + As**2) * (1 - As**2 * sth**2 / 4 / (R**2 + As**2))),
+                                            0, -As / 2 * sth**2])}
+ksres = {}
+for lab, l_ in ray.items():
+    null = sp.simplify((l_.T * eta.inv() * l_)[0])
+    gks = (eta + H * l_ * l_.T).subs({Ms: Mn, As: An})
+    ksres[lab] = (null, rmax(gks))
+check("T5a with the shifted source's rays and speed, the ray form flat + v^2 (dt + k)(dt + k) solves every empty-space "
+      "field equation: one move gives the whole spinning black hole (Kerr-Schild form)",
+      ksres["rays of the i*a source (Kerr)"][0] == 0 and ksres["rays of the i*a source (Kerr)"][1] < ZERO,
+      f"ray null: {ksres['rays of the i*a source (Kerr)'][0] == 0}; max |Ricci| = {mp.nstr(ksres['rays of the i*a source (Kerr)'][1], 3)}")
+check("T5b other light rays with the same speed law fail: a purely radial ray, or half the sideways part",
+      all(ksres[k][0] == 0 and ksres[k][1] > mp.mpf("1e-3") for k in ("radial ray, no sideways part", "half the sideways part")),
+      {k: mp.nstr(ksres[k][1], 3) for k in ("radial ray, no sideways part", "half the sideways part")})
+results["T5_ricci"] = {k: float(v[1]) for k, v in ksres.items()}
+check("T5c and the river cell built from the shift alone (lattice, speed and turn all from i*a) is Part 1's Kerr cell",
+      sp.simplify(metric2(M=Ms, b=As, f=As * sp.sin(TH)**2) - metric(M=Ms, a=As)) == sp.zeros(4, 4),
+      "inputs left: the mass M, the shift i*a (read as spin, a = J/M from frame dragging far away), and the river rules")
+
+# ================================================================ C  charge on the same shifted source (round 10)
+log("\n== C  Charge: the same move for the charged spinning black hole (Kerr-Newman)")
+Qs = sp.symbols("Q", positive=True)
+Qn = sp.Rational(1, 2)
+
+
+def legsQ(M, a, V2, f=None):
+    """river cell on the flat spheroidal lattice (ring a) with speed^2 V2 and turn f (default a sin^2)."""
+    rho2 = R**2 + a**2 * sp.cos(TH)**2
+    if f is None:
+        f = a * sp.sin(TH)**2
+    g0 = sp.Matrix([1, 0, 0, 0])
+    g1 = sp.Matrix([0, sp.sqrt(rho2) / sp.sqrt(R**2 + a**2), 0, 0])
+    g2 = sp.Matrix([0, 0, sp.sqrt(rho2), 0])
+    g3 = sp.Matrix([0, 0, 0, sp.sqrt(R**2 + a**2) * sp.sin(TH)])
+    e1 = g1 + sp.sqrt(V2) * sp.Matrix([1, 0, 0, -f])
+    return -g0 * g0.T + e1 * e1.T + g2 * g2.T + g3 * g3.T
+
+
+def em_residual(g, A, pts=PTS):
+    """max |R_mn - 2(F_ma F_n^a - g_mn F^2/4)| (Einstein-Maxwell, G = 1, Gaussian units) and max |div F|."""
+    f = prepare(g, X4)
+    F = sp.Matrix(4, 4, lambda m, n: sp.diff(A[n], X4[m]) - sp.diff(A[m], X4[n]))
+    dF = [[[sp.diff(F[m, n], X4[c]) for c in range(4)] for n in range(4)] for m in range(4)]
+    fF = sp.lambdify(X4, [F.tolist(), dF], "mpmath")
+    e_ein, e_max = mp.mpf(0), mp.mpf(0)
+    for P in pts:
+        _, Ric, gi = curvature_at(f, P)
+        G_, dG, _ = f(*[mp.mpf(p) for p in P])
+        Fv, dFv = fF(*[mp.mpf(p) for p in P])
+        n = 4
+        Fup = [[sum(gi[m, a_] * gi[k, b_] * Fv[a_][b_] for a_ in range(n) for b_ in range(n)) for k in range(n)] for m in range(n)]
+        F2 = sum(Fv[m][k] * Fup[m][k] for m in range(n) for k in range(n))
+        for m in range(n):
+            for k in range(n):
+                T = 2 * (sum(Fv[m][a_] * Fv[k][b_] * gi[a_, b_] for a_ in range(n) for b_ in range(n)) - G_[m][k] * F2 / 4)
+                e_ein = max(e_ein, abs(Ric[m][k] - T))
+        low = [[[(dG[d][b][c] + dG[d][c][b] - dG[b][c][d]) / 2 for c in range(n)] for b in range(n)] for d in range(n)]
+        Gam = [[[sum(gi[a_, d] * low[d][b][c] for d in range(n)) for c in range(n)] for b in range(n)] for a_ in range(n)]
+        for nu in range(n):
+            div = 0
+            for mu in range(n):
+                for al in range(n):
+                    for be in range(n):
+                        cov = dFv[al][be][mu] - sum(Gam[l][mu][al] * Fv[l][be] + Gam[l][mu][be] * Fv[al][l] for l in range(n))
+                        div += gi[mu, al] * gi[nu, be] * cov
+            e_max = max(e_max, abs(div))
+    return e_ein, e_max
+
+
+# C1 no spin: the jet river's Gauss law with the field's own energy gives the charged black hole (Reissner-Nordstrom)
+rp_s = sp.symbols("rho_p", positive=True)
+field_energy_outside = sp.integrate(Qs**2 / (8 * sp.pi * rp_s**4) * 4 * sp.pi * rp_s**2, (rp_s, R, sp.oo))
+m_of_r = Ms - field_energy_outside
+check("C1a no spin: the electric field Q/r^2 holds energy Q^2/(2r) outside radius r, so the mass inside is "
+      "m(r) = M - Q^2/(2r), and the jet river's Gauss law r v^2 = 2 m(r) gives v^2 = 2M/r - Q^2/r^2",
+      sp.simplify(2 * m_of_r / R - (2 * Ms / R - Qs**2 / R**2)) == 0, f"m(r) = {sp.simplify(m_of_r)}")
+gRN = legsQ(Mn, 0, 2 * Mn / R - Qn**2 / R**2, f=0)
+eRN = em_residual(gRN, sp.Matrix([Qn / R, 0, 0, 0]))
+check("C1b with A = (Q/r) dt that river is the charged black hole: Einstein's equations with the field's energy, and "
+      "Maxwell's equations, hold (M = 1, Q = 0.5)", eRN[0] < ZERO and eRN[1] < ZERO,
+      f"max field-equation error {mp.nstr(eRN[0], 3)}, max Maxwell error {mp.nstr(eRN[1], 3)}")
+
+# C2 shift the charge by i*a: its electric and magnetic fields together, E + iB = -grad(Q/D)
+Rb, cz = sp.symbols("R_big c_z", positive=True)
+ser = sp.series(Qs / sp.sqrt(Rb**2 - 2 * sp.I * As * Rb * cz - As**2), Rb, sp.oo, 3).removeO()
+im2 = sp.simplify(sp.expand(ser).coeff(Rb, -2))
+check("C2 the shifted charge Q/D is one complex potential: its real part is the electric potential, its imaginary "
+      "part far away is Q a cos(theta)/R^2, a magnet of moment Q a. With spin J = M a that is the gyromagnetic "
+      "ratio g = 2 (2M/Q)(moment/J) = 2, the electron's value (known for Kerr-Newman: Carter 1968)",
+      sp.simplify(im2 - sp.I * Qs * As * cz) == 0, f"1/R^2 term of Q/D = {im2}")
+
+# C3 the speed law with charge: v^2 = 2 Re(M/D) - |Q/D|^2
+Dz = R - sp.I * As * cth
+V2_KN = sp.simplify(2 * sp.re(sp.expand(Ms * sp.conjugate(Dz) / (Dz * sp.conjugate(Dz)))) - sp.expand(Qs**2 / (Dz * sp.conjugate(Dz))))
+check("C3 shift both terms: v^2 = 2 Re(M/D) - |Q/D|^2 = (2Mr - Q^2)/rho^2; the field-energy term uses the size |Q/D| of "
+      "the complex potential, because the energy is (E^2 + B^2)/8pi = |E + iB|^2/8pi",
+      sp.simplify(V2_KN - (2 * Ms * R - Qs**2) / (R**2 + As**2 * cth**2)) == 0, f"v^2 = {V2_KN}")
+
+# C4 the charged spinning river: speed from C3, turn and lattice from the shift, field A = Re(Q/D) w
+wleg = sp.Matrix([1, 0, 0, -An * sp.sin(TH)**2])
+rho2n_ = R**2 + An**2 * sp.cos(TH)**2
+V2n = (2 * Mn * R - Qn**2) / rho2n_
+gKN = legsQ(Mn, An, V2n)
+AKN = Qn * R / rho2n_ * wleg
+eKN = em_residual(gKN, AKN)
+check("C4 the charged spinning black hole: field A = Re(Q/D) (dt - a sin^2 dphi), the potential carried on the cell's "
+      "turned time leg; Einstein's equations with the field's energy and Maxwell's equations all hold "
+      "(M = 1, a = 0.7, Q = 0.5)", eKN[0] < ZERO and eKN[1] < ZERO,
+      f"max field-equation error {mp.nstr(eKN[0], 3)}, max Maxwell error {mp.nstr(eKN[1], 3)}")
+grrKN = sp.simplify(legsQ(Ms, As, (2 * Ms * R - Qs**2) / (R**2 + As**2 * cth**2)).inv()[1, 1] * (R**2 + As**2 * cth**2))
+check("C4b its horizon: g^rr rho^2 = r^2 - 2Mr + a^2 + Q^2, Kerr-Newman's", sp.simplify(grrKN - (R**2 - 2 * Ms * R + As**2 + Qs**2)) == 0,
+      f"g^rr rho^2 = {grrKN}")
+
+# C5 rivals
+riv = {"energy from Re(Q/D)^2, not |Q/D|^2": (legsQ(Mn, An, 2 * Mn * R / rho2n_ - (Qn * R / rho2n_)**2), AKN),
+       "field without the turn: A = Re(Q/D) dt": (gKN, Qn * R / rho2n_ * sp.Matrix([1, 0, 0, 0])),
+       "charge left at the centre (not shifted)": (legsQ(Mn, An, 2 * Mn * R / rho2n_ - Qn**2 / (R**2 + An**2 * sp.sin(TH)**2)),
+                                                   Qn / sp.sqrt(R**2 + An**2 * sp.sin(TH)**2) * wleg)}
+rivres = {k: em_residual(*v, pts=PTS[:2]) for k, v in riv.items()}
+check("C5 rivals fail: using Re(Q/D)^2 for the field energy, dropping the turn from the field, or leaving the charge "
+      "unshifted", all(max(e) > mp.mpf("1e-3") for e in rivres.values()),
+      {k: mp.nstr(max(e), 3) for k, e in rivres.items()})
+results["C5_bad"] = {k: float(max(e)) for k, e in rivres.items()}
+results["C4_good"] = float(max(eKN))
+
+# ================================================================ B  two bodies (round 11)
+log("\n== B  Two bodies: can the cell picture hold two black holes at once?")
+import itertools  # noqa: E402
+
+
+def weyl_speciality(g, X, P):
+    """Electric and magnetic parts E, B of the curvature seen by the observer along d/dX0 (orthonormal frame by
+    Gram-Schmidt), Q = E + iB, and the measure |trQ^2^3 - 6 trQ^3^2| / |trQ^2|^3: zero exactly when two of Q's three
+    eigenvalues coincide (algebraically special, as every one-shear vacuum is); of order one for a general field."""
+    f = prepare(g, X)
+    Riem, _, _ = curvature_at(f, P)
+    G = mp.matrix(f(*[mp.mpf(p) for p in P])[0])
+    n = 4
+    Rl = {k: sum(G[k[0], e] * Riem[e, k[1], k[2], k[3]] for e in range(n)) for k in itertools.product(range(n), repeat=4)}
+    ip = lambda u, w: sum(G[i, j] * u[i] * w[j] for i in range(n) for j in range(n))  # noqa: E731
+    es, sg = [], []
+    for k in range(n):
+        w = [mp.mpf(1 if i == k else 0) for i in range(n)]
+        v0 = list(w)
+        for e, s in zip(es, sg):
+            c = ip(v0, e) / s
+            w = [w[i] - c * e[i] for i in range(n)]
+        nn = ip(w, w)
+        es.append([x / mp.sqrt(abs(nn)) for x in w]); sg.append(mp.sign(nn))
+    nz = [(k, val) for k, val in Rl.items() if val != 0]
+
+    def Rf(a, b, c, d):
+        return sum(val * es[a][k[0]] * es[b][k[1]] * es[c][k[2]] * es[d][k[3]] for k, val in nz)
+    eps3 = lambda i, j, k: (i - j) * (j - k) * (k - i) / 2  # noqa: E731
+    Qm = mp.matrix(3, 3)
+    for i in range(3):
+        for j in range(3):
+            Bij = sum(eps3(i, k, l) * Rf(k + 1, l + 1, 0, j + 1) for k in range(3) for l in range(3)) / 2
+            Qm[i, j] = Rf(0, i + 1, 0, j + 1) + 1j * Bij
+    t2 = sum(Qm[i, j] * Qm[j, i] for i in range(3) for j in range(3))
+    Q2 = Qm * Qm
+    t3 = sum(Q2[i, j] * Qm[j, i] for i in range(3) for j in range(3))
+    return abs(t2**3 - 6 * t3**2) / abs(t2)**3
+
+
+# Weyl's coordinates for bodies at rest on one axis: (t, rho, z, phi), flat space dz^2 + drho^2 + rho^2 dphi^2
+tw, rw, zw, pw = sp.symbols("t rho z phi", real=True)
+XW = [tw, rw, zw, pw]
+PW = [(0, 1.2, 0.7, 0.3), (0, 2.5, -1.0, 0.0), (0, 0.8, 4.0, 0.0)]
+
+
+def Rk(zk):
+    return sp.sqrt(rw**2 + (zw - zk)**2)
+
+
+def Ek(zi, zj):
+    return Rk(zi) * Rk(zj) + (zw - zi) * (zw - zj) + rw**2
+
+
+def rods(bodies):
+    """Static black holes at rest on the axis, each a rod of length 2M centred at height c (Weyl 1917; two rods:
+    Bach-Weyl 1922, Israel-Khan 1964). psi = (1/2) ln(-g_tt) is a sum of the rods' Newtonian potentials."""
+    e2psi, e2gam = 1, 1
+    ends = [(c - M, c + M) for M, c in bodies]
+    for (lo, hi), (M, c) in zip(ends, bodies):
+        e2psi *= (Rk(lo) + Rk(hi) - 2 * M) / (Rk(lo) + Rk(hi) + 2 * M)
+        e2gam *= Ek(lo, hi) / (2 * Rk(lo) * Rk(hi))
+    for (l1, h1), (l2, h2) in itertools.combinations(ends, 2):
+        e2gam *= Ek(h1, l2) * Ek(l1, h2) / (Ek(h1, h2) * Ek(l1, l2))
+    return sp.diag(-e2psi, e2gam / e2psi, e2gam / e2psi, rw**2 / e2psi), e2gam
+
+
+g1rod, _ = rods([(1, 3)])
+f1rod = prepare(g1rod, XW)
+r1 = max(ricci_max(f1rod, P) for P in PW[:2])
+s1 = max(weyl_speciality(g1rod, XW, P) for P in PW[:2])
+sK = max(weyl_speciality(metric(), X4, P) for P in [(0, 4.0, 0.9, 0.3), (0, 6.0, 1.3, 0.0)])
+check("B1a one body: the black hole at rest written in Weyl's coordinates (a rod of length 2M on the axis) is empty "
+      "space, and its curvature is algebraically special, as is the spinning one's (two of three curvature eigenvalues "
+      "equal; measure 0). Every one-shear empty space is special: the Goldberg-Sachs theorem",
+      r1 < ZERO and s1 < ZERO and sK < ZERO,
+      f"Ricci {mp.nstr(r1, 3)}; special measure: at rest {mp.nstr(s1, 3)}, spinning {mp.nstr(sK, 3)}")
+g2rod, e2g2 = rods([(1, 3), (sp.Rational(1, 2), -3)])
+f2rod = prepare(g2rod, XW)
+r2 = max(ricci_max(f2rod, P) for P in PW)
+s2 = [weyl_speciality(g2rod, XW, P) for P in PW]
+check("B1b two bodies (masses 1 and 1/2, centres 6 apart): gravity's exact field is empty space off the axis, but its "
+      "curvature is algebraically general, so no single shear per cell can produce it", r2 < ZERO and min(s2[:2]) > 0.01,
+      f"Ricci off the axis {mp.nstr(r2, 3)}; special measure at three points {[mp.nstr(s, 3) for s in s2]} "
+      "(near one body it tends to that body's 0)")
+results["B1_spec"] = [float(s) for s in s2]
+
+# B2 two shears combined: metric sum, leg sum, product of the two cell maps
+tc, xc, yc, zc = sp.symbols("t x y z", real=True)
+XC = [tc, xc, yc, zc]
+etaC = sp.diag(-1, 1, 1, 1)
+PC = [(0, 1.1, 0.4, 0.7), (0, 2.0, -1.3, -0.5)]
+
+
+def shear(M, z0):
+    rr = sp.sqrt(xc**2 + yc**2 + (zc - z0)**2)
+    l_ = sp.Matrix([1, xc / rr, yc / rr, (zc - z0) / rr])
+    H = 2 * M / rr
+    return H, l_, (H / 2) * (etaC * l_) * l_.T          # N^a_m = (H/2) l^a l_m, nilpotent: N N = 0
+
+
+def two_shears(M1, M2, how, d=3):
+    H1, l1, N1 = shear(M1, d)
+    H2, l2, N2 = shear(M2, -d)
+    I4 = sp.eye(4)
+    if how == "sum":
+        return etaC + H1 * l1 * l1.T + H2 * l2 * l2.T
+    E = I4 + N1 + N2 if how == "legs" else (I4 + N1) * (I4 + N2)
+    return E.T * etaC * E
+
+
+combos = {"sum": "add the two metrics", "legs": "add the two shears", "product": "compose the two cell maps"}
+lefts = {}
+for how in combos:
+    for e_ in ((sp.Rational(1, 100), sp.Rational(1, 1000)) if how == "product" else (sp.Rational(1, 100),)):
+        lefts[how, e_] = max(ricci_max(prepare(two_shears(e_, e_, how), XC), P) for P in PC)
+alone = max(ricci_max(prepare(two_shears(sp.Rational(1, 100), 0, "product"), XC), P) for P in PC)
+ratio = (lefts["product", sp.Rational(1, 1000)] / mp.mpf("1e-6")) / (lefts["product", sp.Rational(1, 100)] / mp.mpf("1e-4"))
+check("B2 two shears, one per body (each alone exact): adding the metrics, adding the shears, or composing the two "
+      "cell maps all leave a leftover; it grows as M1*M2 (both masses 10x smaller: leftover 100x smaller), and one "
+      "body alone leaves none", alone < ZERO and all(v > mp.mpf("1e-6") for (h, e_), v in lefts.items() if e_ == sp.Rational(1, 100))
+      and abs(ratio - 1) < 0.02,
+      {**{combos[h] + f" (M = {e_})": mp.nstr(v, 3) for (h, e_), v in lefts.items()}, "one body alone": mp.nstr(alone, 3),
+       "leftover/M^2, M = 1/1000 vs 1/100": mp.nstr(ratio, 4)})
+results["B2_left"] = {combos[h]: float(v) for (h, e_), v in lefts.items() if e_ == sp.Rational(1, 100)}
+
+# B3 what does superpose: Weyl's psi = (1/2) ln(1 - v^2), and on the axis that is Einstein's velocity addition
+zs, M1s, M2s, z1s, z2s, ls = sp.symbols("z M_1 M_2 z_1 z_2 ell", positive=True)
+u1, u2 = M1s / (zs - z1s), M2s / (zs - z2s)
+Eax = (zs - z1s - M1s) / (zs - z1s + M1s) * (zs - z2s - M2s) / (zs - z2s + M2s)
+uu = (u1 + u2) / (1 + u1 * u2)
+check("B3 what does add exactly for bodies at rest is psi = (1/2) ln(1 - v^2) (the log of the river cell's clock rate), "
+      "summed over rods in Weyl's flat space (B1b). On the axis each body's psi is -artanh(u), u = M/(z - c), so the "
+      "two bodies' u combine by Einstein's velocity addition (u1 + u2)/(1 + u1 u2)",
+      sp.simplify((1 - uu) / (1 + uu) - Eax) == 0, "1 - v^2 on the axis = product of the two bodies' (1-u)/(1+u)")
+
+# B4 the strut between them, and Newton's law
+gam0 = sp.lambdify([rw, zw], e2g2, "mpmath")
+ell_, M1n, M2n = 6, mp.mpf(1), mp.mpf("0.5")
+egs = [mp.sqrt(gam0(mp.mpf("1e-12"), mp.mpf(zz))) for zz in (0.0, 1.2, -1.8)]
+F_num = (1 / egs[0] - 1) / 4
+F_IK = M1n * M2n / (ell_**2 - (M1n + M2n)**2)
+check("B4 two bodies at rest need a strut: on the axis between them the field has a constant cone defect e^gamma "
+      "(the same at every height), and the strut's push (e^-gamma - 1)/4 equals the force M1 M2/(l^2 - (M1+M2)^2) "
+      "(Israel-Khan 1964), which far apart is Newton's M1 M2/l^2: the inverse-square law, from the exact field",
+      max(abs(e - egs[0]) for e in egs) < mp.mpf("1e-15") and abs(F_num - F_IK) < mp.mpf("1e-15")
+      and sp.limit(M1s * M2s / (ls**2 - (M1s + M2s)**2) * ls**2, ls, sp.oo) == M1s * M2s,
+      f"e^gamma on the strut {mp.nstr(egs[0], 10)} at three heights; push {mp.nstr(F_num, 12)}, "
+      f"M1M2/(l^2-(M1+M2)^2) = {mp.nstr(F_IK, 12)}, Newton M1M2/l^2 = {mp.nstr(M1n * M2n / ell_**2, 6)}")
+results["B4_force"] = [float(F_num), float(F_IK), float(M1n * M2n / ell_**2)]
+
+# B5 the lead for spin: Kerr's axis values are the shifted source's u = M/(z + i a) in Weyl's z = r - M
+ua = Ms / ((R - Ms) + sp.I * As)
+Eax_K = sp.simplify((1 - ua) / (1 + ua))
+gtt_axis = sp.simplify(metric(M=Ms, a=As)[0, 0].subs(TH, 0))
+check("B5 lead for spin: on the spin axis, in Weyl's coordinate z = r - M, Kerr's Ernst potential is (1 - u)/(1 + u) "
+      "with u = M/(z + i a), a point source shifted by i*a: its real part is the clock factor -g_tt = 1 - v^2 of the "
+      "spinning river, its imaginary part Kerr's twist potential 2Ma/(r^2 + a^2)",
+      sp.simplify(sp.re(sp.expand_complex(Eax_K)) + gtt_axis) == 0
+      and sp.simplify(sp.im(sp.expand_complex(Eax_K)) - 2 * Ms * As / (R**2 + As**2)) == 0,
+      f"(1-u)/(1+u) = {sp.simplify(sp.expand_complex(Eax_K))}")
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

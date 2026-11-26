@@ -9,12 +9,25 @@ Follows `../jet-river/` (the river as a jet field).
 
 ## The result in plain words
 
-**Yes: give each cell a turn as well as a velocity, and the spinning black hole (Kerr) comes out exactly.** Every field
-equation of empty space holds, to 50 digits. The curvature is Kerr's own, not some other vacuum. The turn is forced:
-no turn, half the turn, 1.5 times the turn, or a different shape all break the equations. The lattice the cells move
-through stays flat. It is ordinary flat space laid out in the spinning body's natural shape, squashed spheres. Each
-cell still obeys the same velocity rule as before: it falls freely from rest far away, carrying no angular
-momentum.
+**One move gives the whole spinning black hole.** Take the source of a non-spinning black hole and turn its height on
+the spin axis by i, the dial's rotation number, from 0 to i·a. That one move sets everything the river needs: the flat
+lattice's squashed spheres, each cell's speed, and each cell's turn. Every field equation of empty space then holds,
+to 50 digits, and the curvature is Kerr's own. What is still put in is the mass, the river's rules, and the reading
+that spin is this shift. Frame dragging far away sets its size: a = J/M, spin divided by mass. The shift is known as
+the Newman–Janis shift, and nobody has settled why it works. In this theory i is a setting of the dial, not a trick,
+which makes it a lead.
+
+How it got here:
+
+1. **Tested (Part 1):** a velocity plus a turn for each cell gives Kerr, and only the right turn works.
+2. **Turn derived (Part 3):** from shells that turn rigidly and a clock gap that each falling ring keeps, plus
+   Sagnac's area law and frame dragging.
+3. **Speed and lattice derived (Part 4):** from the complex distance to the shifted source.
+4. **Turn from the same shift (Part 5):** the shifted source's light rays lean sideways by exactly the turn.
+5. **Charge (Part 6):** the same move with a charge gives the charged spinning black hole, and a magnet with the
+   electron's ratio g = 2.
+6. **Two bodies (Part 7):** one shear per cell can't hold two bodies, and two shears don't combine. What adds for
+   bodies at rest is the log of the clock rate, by velocity addition, with a strut whose push is Newton's force.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -33,18 +46,13 @@ three outside-gravity look-alikes:
 - **Foucault:** this one was already ours. Earth's own frame dragging adds only 4.6 × 10⁻¹⁰ to the pendulum's turn,
   at every latitude.
 
-**Update, round 7 (Part 3): the turn is now derived, not tested.** Two assumptions do it: each lattice shell turns
-rigidly, and a falling ring of cells keeps its clock gap. Add Sagnac's area law and frame dragging's far field, and
-the turn's shape sin²θ and its size a = J/M both come out. Reading the dial's edge as light speed at the innermost
-shell's rim ties the lattice's ring to the turn. The field equations then only confirm. The speed law is still put in.
-
 ![cell legs](figures/fig1_cell_legs.png)
 
 *Fig 1. Left: a non-spinning hole. Each cell's radial leg is pushed by v along its time leg, which is one shear.
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**33/33 pass**, about 30 seconds). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**61/61 pass**, about 6 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -321,8 +329,8 @@ horizon spin at r₊, and frame dragging's 2J/r³ far away.*
 
 | step | status |
 |---|---|
-| flat spheroidal lattice | put in (Part 1.1) |
-| speed v² = 2Mr/ρ² | put in, matched by the field equations (K3c); not derived |
+| flat spheroidal lattice | put in (Part 1.1); derived in Part 4 |
+| speed v² = 2Mr/ρ² | put in, matched by the field equations (K3c); derived in Part 4 |
 | shells turn rigidly | **assumption 1** |
 | clock gap = 2 Ω × area | known law (Sagnac), exact at q = 0 |
 | a falling ring keeps its gap | **assumption 2** (circulation law) |
@@ -332,6 +340,283 @@ horizon spin at r₊, and frame dragging's 2J/r³ far away.*
 
 The next gap is the speed law. If it can be derived too, perhaps as a Gauss law on the spheroids the way rv² = 2Gm
 came out of the jet river, then Kerr would follow from the lattice shape plus the two assumptions.
+
+## Part 4. Deriving the speed law, and the lattice's shape (round 8)
+
+Asked by Brennan, who answered "Yes" to: "Should I try to derive the speed law next, so Kerr follows from just the
+lattice's shape and those two assumptions?"
+
+**Result: one move gives both remaining inputs.** Take the non-spinning source and turn its height on the axis by
+the dial's rotation number i, moving it from 0 to i·a. Its distance from each point then becomes the complex number
+D = r − i a cos θ. Three things fall out at once. The real part of D is the lattice label r, so the squashed spheres
+are the level sets of Re D. D = 0 is a ring of radius a, the same ring the turn needed in Part 3. And Newton's
+potential of the moved source, Re(M/D) = Mr/ρ², is exactly the speed law v² = 2Mr/ρ² through the jet river's rule
+v²/2 = −Φ. This is a reading, not a proof: it assumes the spin is that one shift. Within the reading, nothing else
+is put in except the mass M.
+
+![complex shift](figures/fig11_complex_shift.png)
+
+*Fig 11. Left: the one move. The source's height is turned a quarter turn in the complex plane, from 0 to i·a, and
+not slid along the real axis by a (grey, which fails). Right: what that does in real space. Purple shows the level
+sets of Re D, which are the lattice's squashed spheres. Red marks D = 0, the ring of radius a, which is the edge of
+the flat disk r = 0. Blue shows the cell speed² = 2 Re(M/D).*
+
+### 4.1 The complex distance (S1)
+
+Move a point source up the spin axis by i·a. Its squared distance x² + y² + (z − ia)² is exactly (r − i a cos θ)² in
+the lattice's coordinates (S1a, also `complex_distance` in Lean). So the lattice's spheroids are not a choice: they
+are where the shifted source's distance has a fixed real part. The distance vanishes on the ring r = 0, θ = π/2,
+radius a (S1b).
+
+**Two routes meet at one ring.** Part 3 found the turn's ring at radius b = κ = J/M, from frame dragging. Here the
+ring sits at radius a, from the shift. They agree only when a = J/M, and that is Kerr's own relation.
+
+### 4.2 The speed law (S2, S3)
+
+Newton's potential of the moved source is Re(M/D) = M r/(r² + a² cos²θ) (S2a). Far away it is M/r, the ordinary
+potential of mass M. The jet river's rule says the cell's speed sets the potential, Φ = −v²/2 (jet-river J6b). So
+v² = 2Mr/ρ², exactly the law Part 1 found by testing (S2b). Re(M/D) is an exact flat-space potential: Laplace's
+equation holds everywhere off the disk, not just far away (S3). That is the empty-space form of the jet river's
+trace law.
+
+### 4.3 Being a potential of mass M is not enough (S4)
+
+Many flat-space potentials have mass M. A point at the centre, a point slid up the axis by a real a, and a point
+moved by i·a/2 are all harmonic, and all tend to M/r far away (S4a). With the lattice and turn from Part 3, every one
+of them breaks empty space. Only the i·a shift works (S4b).
+
+![only the i shift](figures/fig12_only_the_i_shift.png)
+
+*Fig 12. The largest field-equation error for four speed laws, each a flat-space potential of mass M. Only the
+source moved by i·a gives empty space. The i·a/2 shift fails because its ring (radius a/2) is not the turn's ring.*
+
+### 4.4 What is assumed now, plainly
+
+| piece | status |
+|---|---|
+| spin = the source's height turned by i, from 0 to i·a | **reading** (the dial's rotation number); known as the Newman–Janis shift |
+| lattice's squashed spheres, and their ring | **derived** from the shift (S1) |
+| speed law v² = 2Mr/ρ² | **derived**: the shifted source's potential, through the jet river's v²/2 = −Φ (S2, S3) |
+| shells turn rigidly; a falling ring keeps its clock gap | the two assumptions of Part 3 |
+| a = J/M | derived twice (frame dragging far away, and the two rings meeting) |
+| Kerr | output, checked to 50 digits |
+
+**Lead, on its own merits.** The shift by i·a is known: Newman and Janis (1965) used it to get Kerr from
+Schwarzschild, and Appell (1887) and Newman (1973) read it as a source at a complex position. Kerr's Kerr–Schild
+function 2Mr/ρ² is also known to be this harmonic function. Why the shift works has never had a settled explanation.
+In the theory, i is not a trick: it is the dial's rotation setting. Spin enters the river twice, as a shear at the
+dial's flat middle (the turn, q = 0) and as a quarter turn of the source (q = +1). If the dial can say why those two
+settings go together, that would explain the Newman–Janis shift. That lead is worth following. Part 5 derives the turn from
+the shift as well, so one move gives everything.
+
+## Part 5. The turn from the same shift (round 9)
+
+Asked by Brennan: "Yes fix the sentences and try to get the turn from the same shift".
+
+**Result: the shifted source's own light rays carry the turn.** Through each point, the source moved to i·a sends two
+real light rays, one out and one in. Both lean sideways by the same amount, and that sideways part is −a sin²θ dφ:
+exactly the turn round 7 derived from rigid shells and the circulation law. So the one move of Part 4 gives the
+lattice, the speed and the turn. Together these give the whole spinning black hole, with every field equation of empty
+space holding to 50 digits.
+
+![shifted rays](figures/fig13_shifted_rays.png)
+
+*Fig 13. Rays in the plane of the equator. Left: no spin, so the rays run straight out from the centre. Right: the
+source is moved by i·a, and every ray is a straight line tangent to the ring of radius a. The lean, a/√(r² + a²), is
+the speed of round 7's turning shell.*
+
+### 5.1 The rays of a shifted source (T1–T3)
+
+For a real source, the ray through a point is the unit direction to the source. For the shifted source that direction,
+E = grad D, is a complex unit vector, E = p + i q. A real ray k must be a unit vector with k·E = 1, which means k·p = 1
+and k·q = 0. Those are a circle and a plane, so there are exactly two solutions: k = (p ± q × p)/|p|² (T1). With no
+spin, q = 0 and both are the ordinary radial ray.
+
+On the lattice, the outgoing ray is k = (ρ²/(r²+a²)) dr − a sin²θ dφ. That is a radial part along the shell's normal,
+plus a sideways part (T2). The ingoing ray has the same sideways part and the opposite radial part (T3). The lean is
+exactly α = a sin θ/√(r² + a²), the speed of round 7's turning shell (T2b). In the plane of the equator, every ray is
+a straight line tangent to the ring of radius a.
+
+### 5.2 The turn (T4)
+
+The river rule reads: push each cell along its ray, without the ray's radial part. With no spin the ray is purely
+radial, and this is the plain river, w = dt. With the shift it gives w = dt − a sin²θ dφ. That is round 7's turn
+f = κ sin²θ, with κ = a. This rule is a reading. The calculation behind it is T2.
+
+### 5.3 The whole black hole from one move (T5)
+
+The same rays and speed give Kerr in its ray form, flat + v²(dt + k)(dt + k). This is the known Kerr–Schild form, and
+it solves every empty-space field equation (T5a). Other light rays with the same speed law fail: a purely radial ray,
+and a ray with half the sideways part (T5b). Built from the shift alone, the river cell is Part 1's Kerr cell (T5c).
+
+![one move](figures/fig14_one_move.png)
+
+*Fig 14. One move gives everything. Turning the source's height by i gives the complex distance D. From D come the
+lattice (Re D), the speed (Re M/D) and the turn (the light rays with k·E = 1). Together they give Kerr. Frame dragging
+far away sets a = J/M.*
+
+### 5.4 What is assumed now, plainly
+
+| piece | status |
+|---|---|
+| spin = the source's height turned by i, from 0 to i·a | **reading** (the dial's rotation number); known as the Newman–Janis shift |
+| lattice, speed law, turn | **derived** from the shift (Parts 4 and 5) |
+| push the cell along its ray without the radial part; v²/2 = −Φ | river rules (the second from the jet river) |
+| a = J/M | from frame dragging far away (Part 3) |
+| Kerr | output, checked to 50 digits |
+
+The two assumptions of Part 3 (rigid shells, a kept clock gap) are no longer needed. They now come out as properties
+of the shift's rays: the ray's lean is the rigid shell's speed, and the turn has no r in it.
+
+**Lead, on its own merits.** In this theory, spin is one setting of the dial applied to the source's position. Rotation
+numbers (q = +1) act on where the source is. Shears at the flat middle (q = 0) act on each cell. The first produces
+the second. That two-setting structure is a candidate explanation of why the Newman–Janis shift works, and it is worth
+following. The next tests: charge (Kerr–Newman), where the shift is known to work and the river should follow (done
+in Part 6); then a case where the shift isn't known to work, such as two bodies.
+
+## Part 6. Charge on the same shifted source (round 10)
+
+Asked by Brennan, who answered "Yes" to: "Should I test the same move with charge next, the charged spinning black
+hole?"
+
+**Result: the same move works with charge.** Put a charge Q on the shifted source and change nothing else. The charged
+spinning black hole (Kerr–Newman) comes out. Einstein's equations, now including the electric field's own energy, hold
+to 50 digits, and so do Maxwell's equations. The shifted charge also turns out to be a magnet, with the electron's
+magnetic ratio, g = 2.
+
+![charge](figures/fig15_charge.png)
+
+*Fig 15. Left: the shifted charge's one complex potential, Q/D. Its real part (blue) is the electric potential. Its
+imaginary part (orange) is a magnetic potential, whose far field is a magnet of moment Qa. Right: the largest
+Einstein–Maxwell error for the shifted charge (green) and for three rivals (red). The rivals fail at about 10⁻³ against
+10⁻⁵⁰. Their errors are small only because the charge is small, Q = 0.5.*
+
+### 6.1 No spin first: the field's energy in the jet river's Gauss law (C1)
+
+The jet river's Gauss law says r v² = 2 m(r), where m(r) is the mass inside radius r. A charge's electric field holds
+energy Q²/(2r) outside radius r, so the mass inside is m(r) = M − Q²/(2r). That gives v² = 2M/r − Q²/r² (C1a). With
+the field A = (Q/r) dt, this river is the charged black hole (Reissner–Nordström). Both sets of equations hold (C1b).
+
+### 6.2 Shift the charge: electric and magnetic together (C2)
+
+Moved by i·a, the charge's potential Q/D is one complex number. Its real part is the electric potential Qr/ρ². Its
+imaginary part, Qa cos θ/ρ², is a magnetic potential, which far away is a magnet of moment Qa (C2). The black hole's
+spin is J = Ma, so the ratio of magnetism to spin, in the units used for particles, is g = 2. That is the electron's
+value. For Kerr–Newman this has been known since Carter (1968). Here it comes from the same quarter turn that gives
+the spin.
+
+### 6.3 The speed law with charge (C3)
+
+Shift both terms of 6.1. The mass term becomes 2 Re(M/D), as in Part 4. The field-energy term becomes |Q/D|², the size
+of the complex potential, not its real part. That is because the field's energy counts the electric and magnetic
+parts together: (E² + B²)/8π = |E + iB|²/8π. Together, v² = 2 Re(M/D) − |Q/D|² = (2Mr − Q²)/ρ² (C3).
+
+### 6.4 The charged spinning black hole (C4, C5)
+
+Take that speed, the lattice and turn from the shift, and the field A = Re(Q/D) (dt − a sin²θ dφ). That field is the
+charge's potential carried on the cell's turned time leg. Einstein's equations with the field's energy hold, and so do
+Maxwell's (C4). The horizon sits where r² − 2Mr + a² + Q² = 0, Kerr–Newman's (C4b). Three rivals fail (C5): taking
+the field energy from Re(Q/D)² instead of |Q/D|², dropping the turn from the field, or leaving the charge at the
+centre.
+
+### 6.5 What this adds, on its own merits
+
+- **A real test passed.** The shift was built for spin, and charge was not used to set it up. It then gives the
+  charged case with no new input except Q. The one new choice, |Q/D|² for the field's energy, is forced: the real
+  part fails.
+- **Known vs ours.** The charged spinning black hole was found in 1965 with this same complex trick (Newman and
+  co-workers), and its g = 2 is known (Carter 1968). Ours: the river form built from the shift, the field-energy term
+  as |Q/D|² through the jet river's Gauss law, the field carried on the turned leg, and the rivals failing.
+- **Lead.** The electron's g = 2 is also what Dirac's equation gives, and people have long noticed that Kerr–Newman
+  shares it. In this theory both the spin and the magnetism come from one quarter turn. That is worth following,
+  carefully. With an electron's mass, charge and spin there would be no horizon at all, since the spin and charge are
+  far too large for the mass. That would leave a bare ring about the electron's Compton size. So this is a shared
+  number, not a model of the electron.
+- **Next test, where the shift is not known to work:** two bodies, or a moving one.
+
+## Part 7. Two bodies (round 11)
+
+Asked by Brennan, who answered "Yes!" to: "Should I try a case where the shift isn't known to work, like two bodies?
+It's a much harder test, since even standard gravity has no exact answer for two orbiting bodies." He then asked how
+we could verify it, and whether the gravitational waves detected from colliding black holes could be used.
+
+**Result: the river as it stands can't hold two bodies, and the reason is plain.** One shear per cell only ever makes
+curvature of a special kind, and two bodies' field isn't of that kind. Giving each cell two shears, one per body, also
+fails, however the two are combined. What does add exactly, for bodies at rest, is a different quantity: the log of
+each cell's clock rate. Along the axis between the bodies, those combine by Einstein's velocity-addition rule. The
+exact field then needs a strut to hold the bodies apart, and the strut's push is Newton's inverse-square law once they
+are far apart.
+
+![two bodies](figures/fig16_two_bodies.png)
+
+*Fig 16. Left: two black holes held at rest on one axis, masses 1 and ½, in Weyl's coordinates, where each is a rod
+of length 2M. Blue: ψ = ½ ln(1 − v²), the log of the clock rate, which is the two bodies' ψ added. Orange: the strut
+between them. Right: the strut's push from the exact field (solid) against Newton's M₁M₂/ℓ² (dashed). The red dot is
+measured from the metric in check B4.*
+
+![one shear cannot](figures/fig17_one_shear_cannot.png)
+
+*Fig 17. Left: how far the curvature is from special, where 0 means two of its three stretch rates are equal. One body
+gives 0. Two bodies give values up to 1, except close to one of them. Right: the leftover in the empty-space equations
+when each body brings its own shear, for three ways of combining the two shears. Either body alone leaves none.*
+
+### 7.1 Why one shear per cell can't (B1)
+
+Curvature in empty space stretches and squeezes in three directions, at three rates. For one body, at rest or
+spinning, two of the three rates are equal: the curvature is "algebraically special" (B1a). That is not an accident of
+these examples. Every empty space made by one shear per cell is special: the Goldberg–Sachs theorem, which applies to
+every Kerr–Schild metric, the form the river takes. Two bodies at rest, in gravity's exact solution, are not special:
+the three rates all differ, by an order-one amount away from the bodies (B1b). So no choice of one shear per cell can
+give two bodies.
+
+### 7.2 Two shears, one per body, don't combine (B2)
+
+Each body alone is exact. Put both in, each with its own shear, and combine them three ways: add the two metrics, add
+the two shears, or compose the two cell maps one after the other. All three leave a leftover in the empty-space
+equations (B2). It grows as M₁·M₂: make both masses ten times smaller and the leftover is a hundred times smaller.
+That product is exactly what the interaction between two bodies looks like, so the leftover is the part of gravity
+that comes from the bodies acting on each other, which none of the combinations supplies.
+
+### 7.3 What does add: clock rates, by velocity addition (B3)
+
+For bodies at rest on one axis, Weyl found in 1917 that one quantity does add exactly: ψ = ½ ln(1 − v²), the log of
+the river cell's clock rate. In Weyl's own flat coordinates, ψ is a sum of Newtonian potentials, one per body, each
+spread along a rod of length 2M (B1b). On the axis, each body's ψ is −artanh(u), with u = M/(z − c) its potential.
+Adding artanh's is how speeds combine in relativity, so the two bodies' u's combine by Einstein's rule
+(u₁ + u₂)/(1 + u₁u₂) (B3; Lean `velocity_addition`). So for two bodies the quantity that adds is a clock-rate angle, not
+the cell's speed. In the dial's terms, one body's cell sits at the flat middle, where shears add, while two bodies
+combine at the boost setting, where angles add. That last sentence is a reading, ours.
+
+### 7.4 The strut, and Newton's law (B4)
+
+Two bodies can't stay at rest without something holding them apart, and the exact field shows it. On the axis between
+them, the field has the same cone-shaped defect at every height: a strut. Its push is (e^−γ − 1)/4, which equals
+M₁M₂/(ℓ² − (M₁ + M₂)²) exactly, with ℓ the distance between the centres (B4; Lean `strut_push`). Far apart that is
+Newton's M₁M₂/ℓ², so the inverse-square law comes back out of the exact two-body field. This is known: Bach and Weyl
+(1922) and Israel and Khan (1964). It is the cleanest place where this page meets the inverse-square law of the thread's
+title.
+
+### 7.5 What this means, on its own merits
+
+- **Fails, cleanly:** the river with one shear per cell is a one-body picture. That is a structural fact, not a
+  tuning problem, so two bodies need a new ingredient. Adding a second shear isn't it.
+- **What works:** for bodies at rest, adding clock-rate angles (Weyl) gives the exact field, with a strut whose push is
+  Newton's force. All of that is known. Ours is checking it in this page's terms, the velocity-addition reading on the
+  axis, and the failure of each way of combining shears.
+- **Lead:** the shift's potential M/D also turns up on the axis of the exact spinning black hole, in the form gravity
+  uses for fields that don't change in time. On the axis, in Weyl's coordinate z, Ernst's potential for Kerr is
+  (1 − u)/(1 + u) with u = M/(z + ia): a point source shifted by i·a, the same u as in B3 with c = −ia (B5). A known method
+  (Sibgatullin's) turns values on the axis into a whole field, and the exact two-spinning-body family is known
+  (Kramer and Neugebauer 1980). So the natural next test with spin: combine two shifted sources by velocity addition
+  on the axis, build the field, and see whether it is two spinning black holes with a strut. That is checkable, and
+  a pass would make the shift a rule for combining bodies, not only for making one.
+- **How to verify against nature.** The detected gravitational waves are the real test, and they need moving bodies:
+  1. two bodies at rest: done here, by the known route;
+  2. two spinning bodies at rest on one axis: the lead above;
+  3. slow orbits, the corrections physicists call post-Newtonian, checked against binary pulsars, whose orbits shrink
+     as they give off waves;
+  4. the waveform itself, against the LIGO–Virgo–KAGRA signals, hundreds of them since GW150914 in 2015. The
+     ringdown at the end of each comes from one spinning black hole, which this page already matches.
 
 ## Verdict, on its own merits
 
@@ -345,21 +630,33 @@ came out of the jet river, then Kerr would follow from the lattice shape plus th
 - **Derived since (Part 3):** the turn's form a sin²θ and its size a = J/M now come from rigid shells, the circulation
   law, Sagnac's area law and frame dragging's far field. That makes the clock gap 2πJ/M an output. Kerr's horizon spin
   comes out as a bonus.
-- **Not derived:** the speed law v² = 2Mr/ρ² and the spheroidal shape of the lattice are still put in. The light-speed
-  rim is a reading. Gravitational waves are still out of reach.
+- **Derived since (Part 4):** the speed law v² = 2Mr/ρ² and the lattice's squashed spheres both come from one reading:
+  the source's height turned by i, from 0 to i·a. Other potentials of mass M fail, and the shift's ring is the turn's
+  ring only when a = J/M.
+- **Derived since (Part 5):** the turn comes from the same shift, through its light rays. So one move gives the
+  lattice, the speed and the turn, and Part 3's two assumptions become properties of the rays.
+- **Charge (Part 6):** the same shift with a charge gives Kerr–Newman, with Einstein's and Maxwell's equations
+  holding. The field's energy enters as |Q/D|², and the real part fails. The shifted charge is a magnet with g = 2.
+- **Two bodies (Part 7):** one shear per cell can't hold two bodies (Goldberg–Sachs), and none of three ways of
+  combining two shears works: the leftover grows as M₁·M₂. For bodies at rest, the log of the clock rate adds
+  exactly (Weyl), by velocity addition on the axis, and the strut between them pushes with Newton's force.
+- **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule.
+  Moving bodies, and so gravitational waves, are still out of reach.
 - **Frames:** one area law runs through all of them, turn = d × area. Thomas, geodetic, Lense–Thirring and Kerr sit at
   d = −1; Foucault, Coriolis, Larmor and Berry at d = +1; the river and the acoustic metric at d = 0. Larmor's theorem
   explains the ½ in frame dragging's gyroscope rule.
 
 ## Files
 
-- `checks.py`: 33 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn), writes `checks_output.txt`, `results.json`.
+- `checks.py`: 61 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+  speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies), writes `checks_output.txt`, `results.json`.
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the ten figures in `figures/`.
+- `figures.py`: the seventeen figures in `figures/`.
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
-  `rim_at_light`, `tphi_block`, `horizon_rate`. All eight are compiled in the shared library as
-  `FusedAlgebra.Topics.SpinningRiver` (as written; namespace `CircleOp.SpinningRiver`); it builds on `FusedAlgebra.Topics.JetFields`.
+  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`. All thirteen are compiled in the shared library as
+  `FusedAlgebra.Topics.SpinningRiver` (namespace `CircleOp.SpinningRiver`; round 11's two proofs use `grind` in place of
+  Mathlib's `ring`); it builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -381,3 +678,15 @@ came out of the jet river, then Kerr would follow from the lattice shape plus th
 | κ = J/M from the far field | **ours** as a derivation step; a = J/M itself known |
 | light-speed rim of a flat disk of radius a | known picture (Israel 1970); **ours** as the lattice's r = 0 shell and as the reason b = κ |
 | horizon spin Ω_H = a/(r₊²+a²) = the shell rate; Carter's frame rate | known values; **ours** as the derived shell rate |
+| complex shift by i·a giving Kerr | known (Newman & Janis 1965); complex-position source known (Appell 1887; Newman 1973) |
+| Kerr–Schild function 2Mr/ρ² = 2 Re(M/D), harmonic | known (Kerr & Schild 1965) |
+| shift as the dial's rotation number; deriving the lattice shape and the speed law from it through v²/2 = −Φ | **ours** (S1–S3) |
+| rival potentials of mass M fail; the shift's ring = the turn's ring ⇔ a = J/M | **ours** (S4, S1b with D3–D4) |
+| Kerr congruence as the rays of a complex-point source; Kerr–Schild form | known (Kerr & Schild 1965; Newman 1973) |
+| rays as the real unit k with k·E = 1, E = grad D; their lean = the turning shell's speed; the turn read off as the ray's sideways part | **ours** as written (T1–T4); likely equivalent to known constructions |
+| Kerr–Newman by the complex shift; its g = 2; Reissner–Nordström mass function M − Q²/2r | known (Newman et al. 1965; Carter 1968; standard) |
+| Kerr–Newman river from the shift: field energy as \|Q/D\|² in the jet river's Gauss law, field on the turned leg, rivals failing | **ours** (C1–C5); the river form itself may be in the Doran-coordinate literature |
+| vacuum Kerr–Schild metrics are algebraically special; two static bodies are not | known (Goldberg–Sachs 1962; the Bach–Weyl field is type I) |
+| two-body static field, strut, push M₁M₂/(ℓ² − (M₁+M₂)²) | known (Weyl 1917; Bach & Weyl 1922; Israel & Khan 1964) |
+| three ways of combining two cell shears all fail, leftover ∝ M₁M₂; the velocity-addition reading on the axis; two bodies at the boost setting | **ours** (B2, B3); the first likely known for Kerr–Schild sums |
+| Ernst potential of Kerr on the axis = M/(z − ia); axis data → field (Sibgatullin); double Kerr (Kramer & Neugebauer 1980) | known; **ours** only as the proposed next test |

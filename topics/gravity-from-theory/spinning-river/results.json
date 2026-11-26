@@ -147,5 +147,148 @@
   "D6b there the dragging rate -g_tphi/g_phiphi equals the lattice shell's rate a/(r+^2 + a^2): Kerr's horizon spin Omega_H is the derived shell rate, read at the horizon": {
     "pass": true,
     "detail": "Omega_H = a*(M + sqrt(M**2 - a**2))/(2*M*(2*M**2 + 2*M*sqrt(M**2 - a**2) - a**2))  (the known value a/(r+^2+a^2); also the Carter frame's rate)"
+  },
+  "S1a move a point source up the spin axis by i*a (the dial's turning number): its squared distance is exactly (r - i a cos(theta))^2 in the lattice's coordinates": {
+    "pass": true,
+    "detail": "so the complex distance is D = r - i a cos(theta): its real part is the lattice label r"
+  },
+  "S1b so the lattice's squashed spheres are the level sets of Re D, and D = 0 is the ring r = 0, theta = pi/2 of radius a: the same ring round 7 found for the turn (b = kappa), which agrees only when a = J/M": {
+    "pass": true,
+    "detail": "the lattice's shape and its ring both come from the shift; before this round the shape was put in"
+  },
+  "S2a the shifted point's potential, Re(M/D) = M r/(r^2 + a^2 cos^2 theta)": {
+    "pass": true,
+    "detail": "Re(M/D) = M*r/(a**2*cos(theta)**2 + r**2)"
+  },
+  "S2b and the jet river's rule v^2/2 = -Phi (Phi = -v^2/2, jet-river J6b) then gives v^2 = 2Mr/rho^2: exactly the speed law Part 1 matched by testing (K3c)": {
+    "pass": true,
+    "detail": "far away Re(M/D) -> M/r, Newton's potential of mass M"
+  },
+  "S3 Re(M/D) is exactly harmonic on the flat lattice (Laplace's equation holds everywhere off the disk r = 0)": {
+    "pass": true,
+    "detail": "the empty-space form of the jet river's trace law (Poisson for Phi)"
+  },
+  "S4a each rival is also a flat-space potential of mass M (harmonic, -> M/r far away)": {
+    "pass": true,
+    "detail": "{'point at the centre: M/|x|': '0', 'point moved by a real a up the axis': '0', \"point moved by i a/2 (ring a/2, not the turn's ring)\": '1.58e-51'}"
+  },
+  "S4b but with the derived lattice and turn, each rival breaks empty space; only the i*a shift works": {
+    "pass": true,
+    "detail": "{'point at the centre: M/|x|': '0.373', 'point moved by a real a up the axis': '0.641', \"point moved by i a/2 (ring a/2, not the turn's ring)\": '0.329'}"
+  },
+  "S4b_bad": {
+    "point at the centre: M/|x|": 0.3730483474622252,
+    "point moved by a real a up the axis": 0.641159016669117,
+    "point moved by i a/2 (ring a/2, not the turn's ring)": 0.3290657771152349
+  },
+  "T1 through each point the shifted source sends exactly two real light rays: unit vectors k with k.E = 1, where E = grad D is the complex unit direction to the source; they are k = (p +- q x p)/|p|^2, E = p + i q": {
+    "pass": true,
+    "detail": "max error 6.68e-51; with no spin (q = 0) both are the ordinary radial ray k = E"
+  },
+  "T2 the outgoing ray, written on the lattice, is k = (rho^2/(r^2+a^2)) dr - a sin^2(theta) dphi: radial along the shell's normal, plus a sideways part": {
+    "pass": true,
+    "detail": "max error 8.02e-51"
+  },
+  "T2b the ray leans sideways by exactly alpha = a sin(theta)/sqrt(r^2+a^2), the speed of round 7's turning shell (D1b); in the equator's plane every ray is a straight line tangent to the ring of radius a": {
+    "pass": true,
+    "detail": "max error 6.68e-52"
+  },
+  "T3 the ingoing ray (the other one, reversed) has the same sideways part, -a sin^2(theta) dphi, and the opposite radial part": {
+    "pass": true,
+    "detail": "max error 4.01e-51"
+  },
+  "T4 push each cell along its ray's time-and-sideways part, w = dt + (ray minus its radial part): w = dt - a sin^2 dphi, exactly round 7's turn f = kappa sin^2(theta) with kappa = a; with no spin it is the plain river, w = dt": {
+    "pass": true,
+    "detail": "so the shift gives the turn's shape (sin^2) and size (a) directly"
+  },
+  "T5a with the shifted source's rays and speed, the ray form flat + v^2 (dt + k)(dt + k) solves every empty-space field equation: one move gives the whole spinning black hole (Kerr-Schild form)": {
+    "pass": true,
+    "detail": "ray null: True; max |Ricci| = 7.08e-50"
+  },
+  "T5b other light rays with the same speed law fail: a purely radial ray, or half the sideways part": {
+    "pass": true,
+    "detail": "{'radial ray, no sideways part': '0.693', 'half the sideways part': '0.506'}"
+  },
+  "T5_ricci": {
+    "rays of the i*a source (Kerr)": 7.082826481744318e-50,
+    "radial ray, no sideways part": 0.6931111354003688,
+    "half the sideways part": 0.5059948527262252
+  },
+  "T5c and the river cell built from the shift alone (lattice, speed and turn all from i*a) is Part 1's Kerr cell": {
+    "pass": true,
+    "detail": "inputs left: the mass M, the shift i*a (read as spin, a = J/M from frame dragging far away), and the river rules"
+  },
+  "C1a no spin: the electric field Q/r^2 holds energy Q^2/(2r) outside radius r, so the mass inside is m(r) = M - Q^2/(2r), and the jet river's Gauss law r v^2 = 2 m(r) gives v^2 = 2M/r - Q^2/r^2": {
+    "pass": true,
+    "detail": "m(r) = M - Q**2/(2*r)"
+  },
+  "C1b with A = (Q/r) dt that river is the charged black hole: Einstein's equations with the field's energy, and Maxwell's equations, hold (M = 1, Q = 0.5)": {
+    "pass": true,
+    "detail": "max field-equation error 5.21e-50, max Maxwell error 6.68e-52"
+  },
+  "C2 the shifted charge Q/D is one complex potential: its real part is the electric potential, its imaginary part far away is Q a cos(theta)/R^2, a magnet of moment Q a. With spin J = M a that is the gyromagnetic ratio g = 2 (2M/Q)(moment/J) = 2, the electron's value (known for Kerr-Newman: Carter 1968)": {
+    "pass": true,
+    "detail": "1/R^2 term of Q/D = I*Q*a*c_z"
+  },
+  "C3 shift both terms: v^2 = 2 Re(M/D) - |Q/D|^2 = (2Mr - Q^2)/rho^2; the field-energy term uses the size |Q/D| of the complex potential, because the energy is (E^2 + B^2)/8pi = |E + iB|^2/8pi": {
+    "pass": true,
+    "detail": "v^2 = (2*M*r - Q**2)/(a**2*cos(theta)**2 + r**2)"
+  },
+  "C4 the charged spinning black hole: field A = Re(Q/D) (dt - a sin^2 dphi), the potential carried on the cell's turned time leg; Einstein's equations with the field's energy and Maxwell's equations all hold (M = 1, a = 0.7, Q = 0.5)": {
+    "pass": true,
+    "detail": "max field-equation error 3.01e-50, max Maxwell error 1.67e-51"
+  },
+  "C4b its horizon: g^rr rho^2 = r^2 - 2Mr + a^2 + Q^2, Kerr-Newman's": {
+    "pass": true,
+    "detail": "g^rr rho^2 = -2*M*r + Q**2 + a**2 + r**2"
+  },
+  "C5 rivals fail: using Re(Q/D)^2 for the field energy, dropping the turn from the field, or leaving the charge unshifted": {
+    "pass": true,
+    "detail": "{'energy from Re(Q/D)^2, not |Q/D|^2': '0.00215', 'field without the turn: A = Re(Q/D) dt': '0.00216', 'charge left at the centre (not shifted)': '0.00208'}"
+  },
+  "C5_bad": {
+    "energy from Re(Q/D)^2, not |Q/D|^2": 0.0021522794625024547,
+    "field without the turn: A = Re(Q/D) dt": 0.0021625949399771637,
+    "charge left at the centre (not shifted)": 0.0020796276383168674
+  },
+  "C4_good": 3.00686029885372e-50,
+  "B1a one body: the black hole at rest written in Weyl's coordinates (a rod of length 2M on the axis) is empty space, and its curvature is algebraically special, as is the spinning one's (two of three curvature eigenvalues equal; measure 0). Every one-shear empty space is special: the Goldberg-Sachs theorem": {
+    "pass": true,
+    "detail": "Ricci 3.34e-51; special measure: at rest 1.63e-50, spinning 1.25e-50"
+  },
+  "B1b two bodies (masses 1 and 1/2, centres 6 apart): gravity's exact field is empty space off the axis, but its curvature is algebraically general, so no single shear per cell can produce it": {
+    "pass": true,
+    "detail": "Ricci off the axis 4.19e-50; special measure at three points ['0.0254', '0.997', '1.67e-5'] (near one body it tends to that body's 0)"
+  },
+  "B1_spec": [
+    0.025427638135960145,
+    0.9970471084628216,
+    1.6678492175416764e-05
+  ],
+  "B2 two shears, one per body (each alone exact): adding the metrics, adding the shears, or composing the two cell maps all leave a leftover; it grows as M1*M2 (both masses 10x smaller: leftover 100x smaller), and one body alone leaves none": {
+    "pass": true,
+    "detail": "{'add the two metrics (M = 1/100)': '7.95e-6', 'add the two shears (M = 1/100)': '6.95e-6', 'compose the two cell maps (M = 1/100)': '1.4e-5', 'compose the two cell maps (M = 1/1000)': '1.4e-7', 'one body alone': '2.22e-53', 'leftover/M^2, M = 1/1000 vs 1/100': '1.001'}"
+  },
+  "B2_left": {
+    "add the two metrics": 7.950550264735672e-06,
+    "add the two shears": 6.949681193864034e-06,
+    "compose the two cell maps": 1.4026803629829499e-05
+  },
+  "B3 what does add exactly for bodies at rest is psi = (1/2) ln(1 - v^2) (the log of the river cell's clock rate), summed over rods in Weyl's flat space (B1b). On the axis each body's psi is -artanh(u), u = M/(z - c), so the two bodies' u combine by Einstein's velocity addition (u1 + u2)/(1 + u1 u2)": {
+    "pass": true,
+    "detail": "1 - v^2 on the axis = product of the two bodies' (1-u)/(1+u)"
+  },
+  "B4 two bodies at rest need a strut: on the axis between them the field has a constant cone defect e^gamma (the same at every height), and the strut's push (e^-gamma - 1)/4 equals the force M1 M2/(l^2 - (M1+M2)^2) (Israel-Khan 1964), which far apart is Newton's M1 M2/l^2: the inverse-square law, from the exact field": {
+    "pass": true,
+    "detail": "e^gamma on the strut 0.9440559441 at three heights; push 0.0148148148148, M1M2/(l^2-(M1+M2)^2) = 0.0148148148148, Newton M1M2/l^2 = 0.0138889"
+  },
+  "B4_force": [
+    0.014814814814814815,
+    0.014814814814814815,
+    0.013888888888888888
+  ],
+  "B5 lead for spin: on the spin axis, in Weyl's coordinate z = r - M, Kerr's Ernst potential is (1 - u)/(1 + u) with u = M/(z + i a), a point source shifted by i*a: its real part is the clock factor -g_tt = 1 - v^2 of the spinning river, its imaginary part Kerr's twist potential 2Ma/(r^2 + a^2)": {
+    "pass": true,
+    "detail": "(1-u)/(1+u) = (-2*M + I*a + r)/(I*a + r)"
   }
 }

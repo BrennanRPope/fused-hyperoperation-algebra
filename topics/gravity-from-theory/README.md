@@ -206,8 +206,17 @@ frame dragging's gyroscope rule) and spinning fluids (sound sees a river; a vort
 and fluids lack the turn, so no fluid makes full Kerr). Round 7 (Part 3 of that page) then derives the turn instead
 of testing it. Shells of the flat lattice turn rigidly, a falling ring of cells keeps its clock gap, and Sagnac's area
 law plus frame dragging's far field give the shape sin²θ and the size a = J/M. A light-speed rim on the innermost
-shell ties the lattice's ring to the turn. Kerr's horizon spin comes out as a bonus. The speed law is still put in.
-33/33 checks.
+shell ties the lattice's ring to the turn. Kerr's horizon spin comes out as a bonus. Round 8 (Part 4) derives the
+speed law and the lattice's shape too, from one reading: the source's height turned by the dial's rotation number i,
+from 0 to i·a (known as the Newman–Janis shift). Its complex distance gives the squashed spheres, the same ring as the
+turn's, and v² = 2Mr/ρ² through the jet river's v²/2 = −Φ. Other potentials of mass M fail. Round 9 (Part 5) gets
+the turn from the same shift: the shifted source's light rays lean sideways by exactly the turn, so one move gives the
+lattice, the speed and the turn, and with them all of Kerr. Round 10 (Part 6) adds charge to the same shifted
+source: the charged spinning black hole (Kerr–Newman) comes out, with Einstein's and Maxwell's equations holding,
+the field's energy entering as |Q/D|², and the shifted charge a magnet with g = 2. Round 11 tries two bodies: one
+shear per cell can't hold them (two bodies' curvature isn't algebraically special), and no way of combining two
+shears works (the leftover grows as M₁·M₂). For bodies at rest the log of the clock rate adds exactly (Weyl), by
+velocity addition on the axis, and the strut between them pushes with Newton's M₁M₂/ℓ² far apart. 61/61 checks.
 
 ### N.4 A dead end checked in passing
 
