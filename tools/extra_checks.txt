@@ -64,3 +64,4 @@ topics/rulecraft-history/coupling_checks.py
 topics/rulecraft-history/coupling_polish.py
 topics/shape-dial-survey/even_p_check.py
 topics/shape-dials/depth_checks.py
+topics/shape-dials/topo_checks.py

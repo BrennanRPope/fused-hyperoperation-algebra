@@ -10,3 +10,4 @@ rdata
 pymatching
 cypari2
 pyscf
+scikit-image

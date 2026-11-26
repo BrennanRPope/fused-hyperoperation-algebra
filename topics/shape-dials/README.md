@@ -10,7 +10,10 @@ round-to-triangle routes), `exceptional-shapes/` (24-cell, 600-cell, 120-cell) a
 Checks: `checks.py` → `checks_output.txt`, **29 of 29 pass** (numpy, scipy; 28 s). Pictures: `figures.py` →
 `figures/`. Lean: `lean/FaceDial.lean` (4 theorems, written for the Mathlib project `mathlib-map/`; compiles in the Mathlib CI, imported in 9c08a9d, no sorry).
 Section 6: `depth_checks.py` → `depth_checks_output.txt`, **20 of 20 pass** (7 s); `depth_figures.py` → `figures/fig10`
-… `fig14`; `lean/DepthDerived.lean` (5 theorems; compiled in the Mathlib map on Nov 26 as `MathlibMap/DepthDerived.lean`, no statement changed).
+… `fig14`; `lean/DepthDerived.lean` (5 theorems; compiles in the Mathlib CI, imported in 1a9260a, no sorry).
+Section 7 (topological shapes, asked for next: "I wonder if we can start adding common topological shapes as well?"):
+`topo_checks.py` → **9 of 9 pass**; `topo_figures.py` → `figures/fig15` … `fig19`; `lean/TopologyShapes.lean` (7 theorems,
+Mathlib CI check pending).
 
 ## The short answer
 
@@ -27,6 +30,10 @@ Section 6: `depth_checks.py` → `depth_checks_output.txt`, **20 of 20 pass** (7
 3. **The family (a pick, not a dial).** Which mirror set: simplex family (A), cube family (B), dodecahedron family
    (H3), 120/600-cell family (H4), the 24-cell's own family (F4), or the n-gon family in 2D. These are a finite list,
    the way crystal classes are; no number slides between them. In 2D the side count n is a whole-number setting.
+4. **Holes and twists (picks, not dials; section 7).** Every shape above is topologically one type, a ball. The others
+   are counted by holes (torus 1, pretzel 2, …) and twists (projective plane 1, Klein bottle 2, …), built by gluing the
+   edges of polygons we already have. p rounds a torus without changing it, and the curvature's sign is forced by the
+   count.
 
 ![Two dials on the cube family](figures/fig6-two-dial-map-cube-family.png)
 
@@ -281,6 +288,87 @@ the triangle's faces, with two curves.
 odds) and an elementary inequality (the Bessel step). I tried both against quantum gravity and found no foothold;
 they tidy the dial list rather than open a lead.
 
+## 7. Topological shapes: one ball, then holes and twists
+
+Brennan: "I wonder if we can start adding common topological shapes as well?" … "I think all of these shapes are just
+one type of shape" … "And a hole is another one". Both are the standard view in topology, and the checks bear them out.
+Checks: `topo_checks.py` → `topo_checks_output.txt`, **9 of 9 pass** (3 s). Pictures: `topo_figures.py` →
+`figures/fig15` … `fig19`. Lean: `lean/TopologyShapes.lean` (7 theorems).
+
+**Verdict.** Every shape in sections 1 to 6 is one topological type, a ball (T5: at every p and depth tried, the solid
+has χ = 1 and its surface χ = 2). The other closed surfaces are counted by two whole numbers: **holes** g (handles) and
+**twists** c (crosscaps). These are picks, like the family, not dials: no turning of p, depth or size changes them
+(T5, T6), and the one continuous path that does change a torus's type does it at a single point (T7). Curvature then
+stops being free: its sign is forced by the pick (T3). The dial list stays k, d, p, t, r, q, s.
+
+![Shape types](figures/fig15-shape-types-holes-and-twists.png)
+
+*Figure 15. Top: the ball, then 1, 2 and 3 holes. Bottom: the twist itself (Möbius strip), then the projective plane
+(1 twist) and Klein bottle (2 twists), which must cross themselves when drawn in 3D.*
+
+### 7.1 Built from polygons we already have
+
+Each closed surface is a polygon with its edges glued in pairs, read off a word around the edge (the fundamental
+polygon; classification by Möbius, Jordan, Dyck and Dehn–Heegaard): torus a b a⁻¹ b⁻¹, Klein bottle a b a b⁻¹,
+projective plane a a (or a b a b on the square), genus g as g copies of a b a⁻¹ b⁻¹ in a row, c twists as c copies of a a.
+Then χ = (corners left after gluing) − (edge pairs) + 1, and orientable means every letter appears once each way (T1).
+
+- **Joining adds.** Writing two words one after the other is the connected sum, and 2 − χ adds (T2; Lean `chi_concat`,
+  `euler_genus_add`). Holes give 2 − χ = 2g; twists give 2 − χ = c.
+- **A hole plus a twist is three twists.** Torus # projective plane = three projective planes (Dyck's surface), so once a
+  twist is present, holes and twists are one count (T2).
+
+![Glued polygons](figures/fig16-surfaces-from-glued-polygons.png)
+
+*Figure 16. The square (torus, Klein bottle, projective plane), octagon (2 holes) and hexagon (3 twists), with each
+edge glued to its matching letter in the arrow's direction.*
+
+### 7.2 Which dials reach them
+
+- **Roundness p** rounds a torus's tube and core from diamond-like (p near 1) to round (2) to square (∞) without
+  changing its type (T6). At p = ∞ the flat torus is the cube family's square with opposite sides glued; at p = 2 the
+  product of two circles in 4D is the Clifford torus, which sits on the unit 3-sphere and is flat (T9).
+- **Size and aspect ratio** are not new dials either, but they show where type can change: core radius R against tube
+  radius r gives a ring torus for R > r (1 hole), the horn torus at R = r, and a spindle for R < r whose outer surface has
+  no hole (T7).
+- **Curvature is forced.** The glued corners must add to 360°. Gauss–Bonnet (curvature × area = 2πχ) then fixes the
+  curvature's sign: positive for the sphere and projective plane, flat for the torus and Klein bottle, negative from
+  2 holes or 3 twists on (T3; Lean `curvature_pos_iff`, `curvature_zero_iff`, `curvature_neg_iff`). So the model's
+  curvature reading d − k²/4 has its sign set by the hole and twist count.
+- **χ is a reading the model already has.** It is the face polynomial at t = −1. Face polynomials multiply on products,
+  so χ multiplies (Lean `chi_product`; T8), and 1 − χ composes as x + y − xy, the same rule as the k = −1 fused step
+  (Lean `one_sub_chi_mul`).
+
+![Curvature forced](figures/fig17-curvature-forced-by-holes.png)
+
+*Figure 17. Each gluing polygon fits only one kind of geometry: a hemisphere, the flat square, or hyperbolic polygons
+(drawn in the Poincaré disk) with corners small enough to meet at one point.*
+
+![p on the torus, and the horn](figures/fig18-p-on-the-torus-and-the-horn.png)
+
+*Figure 18. Top: p reshapes the torus but keeps its hole. Bottom: the hole closes only at R = r.*
+
+### 7.3 Against quantum gravity
+
+The two framings here that I found no source for are "holes and twists are picks, not dials" (a reading of the
+classification) and "1 − χ composes like the k = −1 step" (algebra). Both match how 2D gravity and string theory treat
+topology, which is known: the sum over surfaces weights each one by g_s^(−χ) = g_s^(2g − 2), so every added hole costs the
+same odds g_s² ('t Hooft 1974; Polyakov 1981), and the 2D Einstein–Hilbert action ∫R = 4πχ is topological, which is the
+Gauss–Bonnet step above. Neither framing gives a new prediction there.
+
+![Genus expansion](figures/fig19-quantum-gravity-genus-expansion.png)
+
+*Figure 19. The string-theory sum over surfaces: one more hole, one more factor g_s².*
+
+### 7.4 Lead: twists and fluid flow (not run here)
+
+Brennan asked whether a twist yields a result in Navier–Stokes. From known work: on a twisted surface the fluid's
+vorticity has no global sign (it is a pseudo-scalar), so circulation stops matching the integral of vorticity ("Vortex
+dynamics on a Möbius strip", J. Fluid Mech. 2021; a Hamiltonian study of point vortices on the Klein bottle, 2022). The
+number of steady sweeping flows on a flat surface equals the first Betti number: 2 on the torus, 1 on the Klein bottle.
+2D flow stays smooth on any closed surface, and the open 3D problem is posed on ordinary untwisted space, so a twist does
+not bear on it directly. A simulation on the Klein bottle would be its own piece of work.
+
 ## What is known and what is ours
 
 | Piece | Status |
@@ -295,6 +383,12 @@ they tidy the dial list rather than open a lead.
 | Reading depth as odds on the corners, and the formal p-versus-depth reach table | ours, as a framing of known facts |
 | The temperature route is never exactly a circle (Bessel I₃ > 0) | elementary; I found no source stating it |
 | The offset a = (R − 1)/2 making p = 2 exactly round for any shape, corners pinned on the simplex; temperature as the a → ∞ edge | I found no source; elementary, so treat as unchecked rather than new |
+| Closed surfaces from glued polygons; classification by holes and twists; torus # projective plane = 3 projective planes | known (Möbius; Jordan; Dyck 1888; Dehn–Heegaard 1907) |
+| Gauss–Bonnet fixing the sign of curvature; regular hyperbolic 4g-gons | known (Gauss; Bonnet; Poincaré; uniformization) |
+| Clifford torus; horn and spindle tori | known |
+| Genus expansion with weight g_s^(2g − 2) | known ('t Hooft 1974; Polyakov 1981) |
+| Vorticity as a pseudo-scalar on non-orientable surfaces | known (Möbius-strip and Klein-bottle vortex papers) |
+| Holes and twists read as picks, not dials; 1 − χ composing as the k = −1 step | ours, as a framing of known facts |
 
 ## Files
 
@@ -305,6 +399,10 @@ they tidy the dial list rather than open a lead.
 - `depth_checks.py` → `depth_checks_output.txt`, `depth_results.json`: 20 checks (section 6).
 - `depth_figures.py` → `figures/fig10` … `fig14`.
 - `lean/DepthDerived.lean`: 5 theorems for section 6.
+- `topo_shapes.py`: surfaces from gluing words, and the 3D pictures' shapes.
+- `topo_checks.py` → `topo_checks_output.txt`, `topo_results.json`: 9 checks (section 7).
+- `topo_figures.py` → `figures/fig15` … `fig19`.
+- `lean/TopologyShapes.lean`: 7 theorems for section 7.
 
 ## References
 
@@ -320,3 +418,10 @@ they tidy the dial list rather than open a lead.
 - J.-L. Loday, "Realization of the Stasheff polytope", Arch. Math. 83 (2004).
 - F. Ardila, F. Castillo, C. Eur, A. Postnikov, "Coxeter submodular functions and deformations of Coxeter
   permutahedra", Adv. Math. 365 (2020).
+- W. Dyck, "Beiträge zur Analysis situs", Math. Ann. 32 (1888); M. Dehn, P. Heegaard, "Analysis situs", Enzyklopädie
+  der math. Wiss. III (1907).
+- G. 't Hooft, "A planar diagram theory for strong interactions", Nucl. Phys. B 72 (1974); A. M. Polyakov, "Quantum
+  geometry of bosonic strings", Phys. Lett. B 103 (1981).
+- "Vortex dynamics on a Möbius strip", J. Fluid Mech. (2021), arXiv:2102.07697;
+  "A Hamiltonian approach for point vortices on non-orientable surfaces II: the Klein bottle",
+  arXiv:2202.06175.
