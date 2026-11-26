@@ -1,0 +1,182 @@
+[
+ {
+  "tag": "A1",
+  "ok": true,
+  "desc": "G_m(u) = sn dn/cn = u + (1 - 2m) u^3/3 + 2(1 - m + m^2) u^5/15 + ...: the bend reads kappa = 1 - 2m",
+  "extra": ""
+ },
+ {
+  "tag": "A2",
+  "ok": true,
+  "desc": "G'^2 = 1 + 2 kappa G^2 + G^4 with kappa = 1 - 2m: the law's logarithm is int dt / sqrt(1 + 2 kappa t^2 + t^4)",
+  "extra": "max err 6.89e-41 over 5 points, incl. complex u and m"
+ },
+ {
+  "tag": "A3",
+  "ok": true,
+  "desc": "our k = 0 laws are the perfect squares: (1 + d t^2)^2 = 1 + 2d t^2 + d^2 t^4 (kappa = d, quartic coeff = kappa^2)",
+  "extra": ""
+ },
+ {
+  "tag": "A4",
+  "ok": true,
+  "desc": "Edwards addition (x^2 + y^2 = 1 + m x^2 y^2) read in the slope t = x/y is G(u) (+) G(v) = G(u + v)",
+  "extra": "err 2.3e-41"
+ },
+ {
+  "tag": "A5",
+  "ok": true,
+  "desc": "G has two periods, 2K (real) and 2iK' (imaginary): a torus. One period only at m = 0 (pi, turning) and m = 1 (i pi, walls)",
+  "extra": "m = 0.3, err 5.02e-41"
+ },
+ {
+  "tag": "A6",
+  "ok": true,
+  "desc": "Wick rotation u -> iu swaps the two sides: G_m(iu) = i G_{1-m}(u), i.e. kappa -> -kappa",
+  "extra": "err 2.3e-41"
+ },
+ {
+  "tag": "A7",
+  "ok": true,
+  "desc": "at m = 1/2 the torus is square: K = K'",
+  "extra": "K(1/2) = Gamma(1/4)^2/(4 sqrt pi)"
+ },
+ {
+  "tag": "B1",
+  "ok": true,
+  "desc": "slope chart: R(m) = 6/5 - 9/(10 kappa^2) with kappa = 1 - 2m",
+  "extra": "R = 3*(16*m**2 - 16*m + 1)/(10*(2*m - 1)**2)"
+ },
+ {
+  "tag": "B2",
+  "ok": true,
+  "desc": "any odd chart with log' = 1/sqrt(1 + 2 kappa t^2 + eps t^4): R = 6/5 - (9/10) eps/kappa^2 (linear in the scale-free number eps/kappa^2)",
+  "extra": "generator cubic coeff = kappa/3"
+ },
+ {
+  "tag": "B3",
+  "ok": true,
+  "desc": "ends: eps = kappa^2 (our conic laws, tan and tanh) gives 3/10; eps = 0 (arcsin, the sine chart) gives 6/5",
+  "extra": ""
+ },
+ {
+  "tag": "B4",
+  "ok": true,
+  "desc": "x = sn chart: R = 6(1 - m + m^2)/(5(1 + m)^2), the same formula with kappa = -(1+m)/2, eps = m; symmetric under m -> 1/m",
+  "extra": ""
+ },
+ {
+  "tag": "B5",
+  "ok": true,
+  "desc": "slope chart R is Wick-symmetric, R(m) = R(1 - m), a function of m(1 - m) only (as j is)",
+  "extra": ""
+ },
+ {
+  "tag": "B6",
+  "ok": true,
+  "desc": "m = 1/2 (kappa = 0, square torus): G = u + u^5/10 + u^9/120 + ..., only powers u^(4j+1): the class jumps from contact 3 to contact 5",
+  "extra": "iterative residue of the contact-5 class: 5/3 = 1.666667"
+ },
+ {
+  "tag": "B7",
+  "ok": true,
+  "desc": "heights move the fingerprint: R(G^s) = R(G)/s for every real s (sympy, generic m and s)",
+  "extra": ""
+ },
+ {
+  "tag": "B8",
+  "ok": true,
+  "desc": "normal form: G_0.2^(1/2) equals a rescaled elliptic generator at m' = 0.25666787 through u^5 exactly; they part at u^7",
+  "extra": "u^7 gap -0.0080286, u^9 gap -0.0015924; a change of chart absorbs the rest formally, since (contact, R) is a complete formal invariant"
+ },
+ {
+  "tag": "B9",
+  "ok": true,
+  "desc": "the Julia series (iterative logarithm) of G_m diverges at m = 0 and 0.2: heights live on petals, not as convergent series (as for e^x - 1)",
+  "extra": "log10|V_n| at n = 137: 26.4 (m=0), 15.9 (m=0.2); m = 0.2 and 0.8 equal (Wick)"
+ },
+ {
+  "tag": "C1",
+  "ok": true,
+  "desc": "a pendulum of amplitude theta0 has m = sin^2(theta0/2), so the curvature reading is kappa = 1 - 2m = cos(theta0)",
+  "extra": ""
+ },
+ {
+  "tag": "C2",
+  "ok": true,
+  "desc": "integrating the pendulum: the slope reading t = omega sin(theta)/theta_dot is exactly G_m(omega time) (amplitudes 34, 90, 149 deg)",
+  "extra": "max err 5.7e-11"
+ },
+ {
+  "tag": "C3",
+  "ok": true,
+  "desc": "the wall: G has its pole at u = K, the turning point theta_dot = 0 (the pendulum turns back: turning country)",
+  "extra": ""
+ },
+ {
+  "tag": "C4",
+  "ok": true,
+  "desc": "at the separatrix m -> 1 the half period K diverges like ln(4/sqrt(1-m)): relativity's wall is the top reached in infinite time",
+  "extra": "K=5.991589 vs 5.991465; K=10.596635 vs 10.596635; K=15.201805 vs 15.201805"
+ },
+ {
+  "tag": "C5",
+  "ok": true,
+  "desc": "at m = 1 the slope chart is tanh and its law is velocity addition (our k = 0, d = -1)",
+  "extra": "err 3.3e-16"
+ },
+ {
+  "tag": "D1",
+  "ok": true,
+  "desc": "half a height twice is one step: G^(1/2)(G^(1/2)(x)) = G(x) at m = 0.2, 0.5, 0.8",
+  "extra": "max err 7.9e-12"
+ },
+ {
+  "tag": "D2",
+  "ok": true,
+  "desc": "the half height of the m = 0.2 law against the rescaled m' law: close but not equal on [0, 0.8] (the u^7 gap)",
+  "extra": "max gap 1.87e-03 (relative to G - x: 1.48e-01)"
+ },
+ {
+  "tag": "D3",
+  "ok": true,
+  "desc": "heights add: G^s(G^(1-s)) = G for s = 1/2, -1/2, 3/2 at m = 0.8",
+  "extra": "max err 4.0e-14"
+ },
+ {
+  "tag": "E1",
+  "ok": true,
+  "desc": "Jacobi triple product: sum_n q^(n(n-1)/2) z^n = prod (1 - q^n)(1 + z q^(n-1))(1 + q^n/z)",
+  "extra": "err 0.0"
+ },
+ {
+  "tag": "E2",
+  "ok": true,
+  "desc": "prod_j (1 + z q^j) = 1 + (z o1 zq o1 zq^2 o1 ...): theta is the lift of the mult-add fold over the Tate orbit (both ways)",
+  "extra": ""
+ },
+ {
+  "tag": "E3",
+  "ok": true,
+  "desc": "grouping the corners of that infinite cube by size gives Euler's sum z^n q^(n(n-1)/2)/(q;q)_n: corner weight q^(sum of positions)",
+  "extra": ""
+ },
+ {
+  "tag": "E4",
+  "ok": true,
+  "desc": "theta's zeros sit at z = -q^(-j): mult-add's one wall at -1, copied once round each turn of the torus",
+  "extra": ""
+ },
+ {
+  "tag": "E5",
+  "ok": true,
+  "desc": "as q -> 0 only the corners n = 0, 1 survive: tau -> 1 + e^(2kx), our lift, and u -> 2k^2 sech^2(kx), the KdV soliton",
+  "extra": "err 1.61e-23 at q = 1e-25"
+ },
+ {
+  "tag": "E6",
+  "ok": true,
+  "desc": "for q > 0 the same tau is a cnoidal wave: u solves the KdV travelling-wave equation u'' + 3u^2 - c u = A",
+  "extra": "q = 0.2, c = -31.139617, residual 3.19e-27"
+ }
+]

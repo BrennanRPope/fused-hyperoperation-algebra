@@ -1,0 +1,66 @@
+== 1. A barrier is a boost of the dial (twisted-boosts, q = -1)
+PASS 1.1 every delta barrier is B_{-1}(u)·(a phase), with u its reflection amplitude and |u| = tanh(D/2)   [max | |u| - tanh(D/2) | = 2.2e-16]
+PASS 1.2 the odds are the flip of the amplitude squared: t = |u|²/(1 - |u|²) = R/T
+
+== 2. Fixed phase: the band's edges are our k = 0 laws with d = K
+PASS 2.1 hyperbolic edge: max |u| over the phase is (r₁ + r₂)/(1 + r₁r₂), the (k=0, d=−1) law (relativity)   [0.76212266 vs 0.76212266]
+PASS 2.2 hyperbolic edge: min |u| is the same law run in reverse, (r₁ − r₂)/(1 − r₁r₂)
+PASS 2.3 sphere edge: max tan(θ/2) is (a₁ + a₂)/(1 − a₁a₂), the (k=0, d=+1) law (tangent addition)   [1.9488213 vs 1.9488213]
+PASS 2.4 so the curvature reading −Δ/4 = d of the edge law equals the curvature: −1 for barriers, +1 for mixers
+
+== 3. The twist: the extra transmission phase is half the triangle's area
+PASS 3.1 two barriers: transmission phase − (each barrier's phase + the propagation) = ± ½ hyperbolic area   [max error 6.9e-15 over 60 phases]
+PASS 3.2 two mixers: the same excess is ± ½ the spherical triangle's area (Pancharatnam's phase)   [max error 2.9e-15]
+NOTE 3.3 (reading, not a check): both are twisted-boosts' holonomy, ω = q × area, with the phase of X + iY equal to ω/2
+
+== 4. Averaging the law of cosines over the angle: the squared half-chord composes by ∘ₖ, k = −2K
+PASS 4.1 for K = −2, −1, −0.3, 0, 0.5, 1: <t> = t₁ ∘₋₂ₖ t₂ exactly, with t = (1 − cos√K·D)/(2K)   [K=-2.0: 0.213013/0.213013; K=-1.0: 0.192207/0.192207; K=-0.3: 0.178676/0.178676]
+PASS 4.2 at K = −1 this t is the barrier's odds R/T; at K = +1 it is the mixer's switch probability s
+PASS 4.3 mixers: <1 − 2s> = (1 − 2s₁)(1 − 2s₂), i.e. s composes by ∘₋₂ (the piling-up lemma's bias rule)
+PASS 4.4 barriers: <t> = t₁ ∘₂ t₂ (Anderson–Thouless–Abrahams–Fisher), from the same average   [0.7177000000]
+PASS 4.5 rescaling lengths changes |K| and |k| together (k = −2K), so at d = 0 only the sign is physical (F1)
+
+== 5. The log-average picks the stronger path exactly (Jensen): the tropical law
+PASS 5.1 <ln|A + B e^{iφ}|²> = ln max(|A|², |B|²), exactly, for two paths (Jensen 1899)
+PASS 5.2 mixers: <ln(1 − s)> = ln max((1−s₁)(1−s₂), s₁s₂): stay-stay or switch-switch, whichever is likelier
+PASS 5.3 the two paths tie exactly where s₁ + s₂ = 1, because (1−s₁)(1−s₂) − s₁s₂ = 1 − s₁ − s₂: a wall
+NOTE 5.4 (reading of 5.2): below the wall ∘₋₁ holds on s; above it, s₁s₂ takes over
+PASS 5.5 barriers: <ln(1 + t)> = ln(1 + t₁) + ln(1 + t₂) because cosh·cosh > sinh·sinh: the direct path always wins
+PASS 5.6 six different barriers, random spacings: <ln(1 + t)> = Σ ln(1 + tᵢ) (∘₁ along the chain, no wall)   [1.7969 ± 0.0061 vs 1.7873]
+
+== 6. The pair's mean transmission: k = 0 in both geometries, with a wall on the sphere
+PASS 6.1 barriers: 1/<T> − 1 = t₁ + t₂ (plain addition, pair only)
+PASS 6.2 mixers: <1/(1 − s)> = 1/|1 − (s₁ + s₂)|, plain addition with its wall at 1   [2.222222]
+PASS 6.3 both rest on one identity: (1 + c₁c₂)² − (c₁² − 1)(c₂² − 1) = (c₁ + c₂)²
+
+== 7. Many weak elements: the flow ∂ₜ t(1 + εt) ∂ₜ, ε = −K, and which k it keeps exact
+PASS 7.1 the mean of 1 + kt grows exactly (an eigenfunction) only for k = 2ε (or the trivial k = 0)   [[{c: 0, k: 0}, {c: 2*epsilon, k: 2*epsilon}]]
+PASS 7.2 the mean of ln(1 + kt) grows linearly only for k = ε: the typical law   [[{c: 0, k: 0}, {c: epsilon, k: epsilon}]]
+PASS 7.3 among all powers (1 + kt)^α the only exact one is α = 1, k = 2ε: the flow picks k = 2ε and k = ε   [[{alpha: 1, c: 2*epsilon, k: 2*epsilon}]]
+PASS 7.4 at ε = 1 this is Mel'nikov's one-channel equation (DMPK for N = 1); at ε = −1 the zonal heat flow on the sphere
+
+== 8. Three standard averages, three points of the Legendre family; mean T and Legendre's K
+PASS 8.1 <P_ν(1 + 2t)> = P_ν(1 + 2t₁)P_ν(1 + 2t₂) for ν = 1, 2, ½, −½ and a conical ν (product formula)
+PASS 8.2 ν = 1 is the mean law ∘₂; the slope in ν at ν = 0 is ln(1 + t), the typical law ∘₁
+PASS 8.3 transmission T = 2/(1 + z) has Mehler–Fock coefficient 2π/cosh(πλ)
+PASS 8.4 <T> after N identical barriers = ∫ λ tanh(πλ)·2π/cosh(πλ)·P_{−½+iλ}(1+2t₁)ᴺ dλ (Monte Carlo, N = 2, 4, 8)   [N=2: 0.6671±0.0006 vs 0.6667; N=4: 0.4862±0.0007 vs 0.4864; N=8: 0.2876±0.0008 vs 0.2870]
+PASS 8.5 the per-barrier decay of <T> is P_{−½}(1 + 2t₁) = (2/π)·√T₁·K(|r₁|), Legendre's complete elliptic integral   [0.945006330930]
+PASS 8.6 at large N, <T_{N+1}>/<T_N> → P_{−½}(1+2t₁)·(N/(N+1))^{3/2}   [0.94174 vs 0.94147]
+PASS 8.7 weak barriers: rates per unit of typical length are 2 (mean odds), 1 (typical), ¼ (mean T, the bottom of the hyperbolic plane's spectrum)
+
+== 9. Rewinds: single numbers rewind exactly; the full spread loses a comb of components
+PASS 9.1 removing a barrier from the mean odds is the ∘₂ inverse (t − t₁)/(1 + 2t₁): defined for every barrier
+PASS 9.2 on the sphere the same rewind has a wall at s₁ = ½: a 50/50 mixer erases the bias (1 − 2s = 0)
+PASS 9.3 a barrier's character P_{−½+iλ}(1+2t₁) has only real zeros in λ (box count = real count)   [6 real, 6 in the box |Im λ| < 2]
+PASS 9.4 why: Mehler's kernel 1/√(cosh D − cosh σ) increases on [0, D), so Pólya's theorem gives real zeros
+NOTE 9.5 (reading of 8.1 and 9.3): one added barrier multiplies the component at each zero by 0, so no rewind of the spread restores it
+
+== Polish (30 digits)
+polish |<t> - u∘₂v| = 0.0
+polish |<ln(1+t)> - ln(1+u) - ln(1+v)| = 9.86e-32
+polish |1/<T> - 1 - (u+v)| = 2.47e-32
+polish sphere above the wall |<ln(1-s)> - ln(s1 s2)| = 4.93e-31
+polish |P_(-1/2)(1+2u) - (2/π)√T K(|r|)| = 9.86e-32
+PASS P.1 polish: the pair laws and the sphere's wall law hold to 25+ digits
+
+37/37 checks pass

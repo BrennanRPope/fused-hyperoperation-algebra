@@ -1,0 +1,7 @@
+P1 fingerprint from the orbit at m = 0.8: -1.3000391, -1.3000195 (later pair) vs formula -1.3
+   (orbit uses G itself for 2000 steps, then its Taylor polynomial to order 7, accurate below |x| ~ 0.03)
+P2 m = 0.3: int_0^inf dt/sqrt(1 + 2kt^2 + t^4) = 1.713889448178791062, K(m) = 1.713889448178791062, diff 0.0
+P2 m = 0.5: int_0^inf dt/sqrt(1 + 2kt^2 + t^4) = 1.8540746773013719184, K(m) = 1.8540746773013719184, diff 0.0
+P2 m = 0.9: int_0^inf dt/sqrt(1 + 2kt^2 + t^4) = 2.5780921133481731882, K(m) = 2.5780921133481731882, diff 0.0
+P3 G_0.8^(1/2)(0.6) at 50 digits: 0.581642541738036573927452567676 (6248 steps); double routine np.float64(0.5816425417377427); diff 2.94e-13
+   half of the half: 0.564738460369629571319812966942 vs G(0.6) = 0.564738460369629571319812966942, diff 6.59e-38

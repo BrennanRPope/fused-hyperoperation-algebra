@@ -1,0 +1,34 @@
+== A. The flux exponent s
+PASS  A1 pair energy scales exactly as L^{D - (D-1)s} (point charges, finite self-energy)   [exponent D - s*(D - 1)]
+PASS  A1b D=3: s=2 gives 1/L (Coulomb), s=3/2 gives L^0 (log), s=1 gives L (linear)
+PASS  A2 effective dimension D_eff = 1 + (D-1)(s-1): s slides it from D (s=2) down to 1 (s=1)   [D*s - D - s + 2]
+PASS  A3 the potential grows with distance (confines) exactly when s < D/(D-1); 3D: s < 3/2   [threshold D/(D - 1)]
+PASS  A3b self-energy near a point charge is finite exactly when s < D/(D-1) (3D example s=5/4)
+PASS  A4 Pagels-Tomboulis exponent delta maps to s = (2+4 delta)/(1+4 delta): delta=1/4 -> s=3/2 (log), delta->inf -> s=1
+PASS  A5 bundles merge (bunch) iff s < 1, split (spread) iff s > 1; s = 1 is neutral
+PASS  A6 power-law tensions compose as an l_p sum with p = 1/s: c(n1+n2) = (c1^p + c2^p)^(1/p)
+PASS  A7 junction angle 2 arccos(2^{s-1}): 0 at s=1, opens as s falls (s=1/2: 90 deg)   [s=1.0: 0.00 deg, s=0.75: 65.53 deg, s=0.5: 90.00 deg, s=0.25: 107.03 deg]
+== B. s = 1: minimal flow is the straight segment
+PASS  B1 minimal total flux between two charges = their distance (12), and all flux sits on the segment   [cost 12.0, edges used 12]
+PASS  B2 s=1 is additive: three sources to one sink cost the sum of their (grid) distances   [42.0]
+== C. 1 < s < 2 on a grid: the flux narrows toward the segment
+PASS  C1 s=1.5: solver converged   [iterations 1080, energy 1.11138]
+PASS  C1 s=1.25: solver converged   [iterations 3090, energy 2.18214]
+PASS  C2 lower s, narrower flux at the midplane (L=3, N=96)   [rms width s=1.5: 1.231, s=1.25: 0.802]
+PASS  C3 stored N=160 runs (L=4): width/L falls 0.42 -> 0.29 -> 0.18 as s goes 1.5 -> 1.25 -> 1.1   [s=1.5: 0.423, s=1.25: 0.294, s=1.1: 0.176]
+PASS  C4 energy keeps growing with L at every s<2 (2D confines logarithmically already); slope rises toward 1 as s -> 1   [s=1.5: 0.697, s=1.25: 0.818, s=1.1: 0.838]
+   note: with smeared charges (width 0.25) and L only 2..5, the fitted slopes have not yet reached the point-charge value 2 - s; widths/L still shrink with L, so this is short of the scaling regime.
+== D. Real tubes: abelian Higgs vortices with n flux units (units e = v = 1; border at lambda = 1)
+PASS  D1 border lambda = 1: tension is exactly pi n (Bogomol'nyi), plain addition of flux units   [1.0000000, 2.0000000, 3.0000000, 4.0000000]
+PASS  D2 lambda < 1 (type I): E(2) < 2E(1), flux units attract and bunch; lambda > 1 (type II): E(2) > 2E(1)   [0.5: 1.66214 vs 1.73582; 2: 2.41916 vs 2.31352]
+PASS  D3 near the border (lambda 0.5..2) tensions of 1..8 units follow the l_p sum (power n^s) to within 2%   [0.5: 1.6%, 0.75: 0.7%, 1.5: 1.1%, 2.0: 1.9%]
+PASS  D3b far from the border it drifts (lambda 0.1: 4%, 8: 6%): the power law is a near-border description   [0.1: 4.1%, 8: 6.0%]
+PASS  D4 our law o_k with one k (fixed by units 1 and 2) does NOT fit: errors 7% to 100% off the border   [0.1: 36%, 0.25: 27%, 0.5: 16%, 0.75: 7%, 1.5: 13%, 2.0: 23%, 4.0: 57%, 8.0: 104%]
+PASS  D5 the reading s(lambda) = log2(E2/E1) rises steadily through 1 at the border   [0.802, 0.877, 0.937, 0.974, 1.000, 1.037, 1.064, 1.130, 1.196]
+PASS  D6 in these units m_H^2 = lambda and m_V = 1, so kappa = sqrt(lambda/2): border lambda = 1 is kappa = 1/sqrt 2
+   lattice estimates of the QCD dual kappa ~ 1.5-1.7 (SU(2), conventions differ, unsettled) -> lambda ~ 4.5-5.8 -> s ~ 1.15
+== P. Polishing
+PASS  P1 border unit vortex at a finer grid and larger box: pi exactly to 1e-7   [1.0000000025, moved 6.1e-10 from the coarse run]
+PASS  P2 s=1 minimal flow is exact (linear programme, no smoothing)
+
+TOTAL: 25 pass, 0 fail
