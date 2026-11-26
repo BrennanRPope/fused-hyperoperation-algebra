@@ -167,10 +167,10 @@ for n_ in range(2, 5):
     rhs_ = sp.expand(1 + k*Gt + d*Gt**2)
     Gser.append(sp.simplify(rhs_.coeff(t, n_ - 1)/n_))
 rp = sp.simplify(1 - Gser[3]/Gser[2]**2)
-kappa = d - k**2/4
+Delta = k**2 - 4*d
 print("plane dial: G = t + (", Gser[2], ") t^2 + (", sp.factor(Gser[3]), ") t^3;  resit =", sp.factor(rp))
-rep("plane dial: resit(G_{k,d}) = 1/3 - 4d/(3k^2) = -(4/3) kappa/k^2 with kappa = d - k^2/4 (the Cayley-Klein number); zero exactly at kappa = 0",
-    sp.simplify(rp - (sp.Rational(1, 3) - 4*d/(3*k**2))) == 0 and sp.simplify(rp + sp.Rational(4, 3)*kappa/k**2) == 0)
+rep("plane dial: resit(G_{k,d}) = 1/3 - 4d/(3k^2) = (1/3) Delta/k^2 with Delta = k^2 - 4d (the form's discriminant; curvature = -Delta/4); zero exactly at Delta = 0",
+    sp.simplify(rp - (sp.Rational(1, 3) - 4*d/(3*k**2))) == 0 and sp.simplify(rp - sp.Rational(1, 3)*Delta/k**2) == 0)
 
 # ---------- 2. horn maps of e^x - 1 ----------
 hp = {}
@@ -259,7 +259,7 @@ others = [
     ("−log(1 − x)", co_log, lambda z: -mp.log(1 - z), lambda z: -mp.expm1(-z)),
     ("x + x²/2", co_quad, lambda z: z + z**2/2, lambda z: mp.sqrt(1 + 2*z) - 1),
     ("plane dial k = 1, d = −1/4", plane_coeffs(Fr(1), Fr(-1, 4))) + plane(1, -0.25),
-    ("plane dial k = 1, d = 1/4 (κ = 0)", plane_coeffs(Fr(1), Fr(1, 4))) + plane(1, 0.25),
+    ("plane dial k = 1, d = 1/4 (Δ = 0)", plane_coeffs(Fr(1), Fr(1, 4))) + plane(1, 0.25),
 ]
 table = [("e^x − 1 (our height-1 map)", Fr(1, 3), abs(A1E), mp.sqrt(abs(inv)))]
 for name, co, f, finv in others:
@@ -280,9 +280,9 @@ for name, rr, a1, sym in table:
     print(f"   {name:42s} resit = {str(rr):6s}  |A1+| = {mp.nstr(a1, 10):14s} shift-free size sqrt|A1 A_-1| = {mp.nstr(sym, 10)}")
 mob = [t_ for t_ in table if t_[0].startswith("Möbius")][0]
 cut = [t_ for t_ in table if "cut" in t_[0]][0]
-k0 = [t_ for t_ in table if "κ = 0" in t_[0]][0]
+k0 = [t_ for t_ in table if "Δ = 0" in t_[0]][0]
 rep("Möbius x/(1 - x/2): resit 0 and trivial horn map (A1 = 0): it embeds in an analytic flow, unlike e^x - 1", mob[1] == 0 and mob[2] < 1e-12)
-rep("plane dial at kappa = 0 is that Möbius map: every height analytic there", k0[1] == 0 and k0[2] < 1e-12)
+rep("plane dial at Delta = 0 is that Möbius map: every height analytic there", k0[1] == 0 and k0[2] < 1e-12)
 rep("e^x - 1 cut at x^3 has the SAME fading rate and the SAME residue 1/3, yet a different horn map: only the horn map tells them apart",
     cut[1] == Fr(1, 3) and abs(cut[3] - table[0][3]) > 1e-3*table[0][3])
 res["table"] = [[n_, str(r_), str(a_), str(b_)] for n_, r_, a_, b_ in table]

@@ -1,0 +1,25 @@
+PASS  CA1 unit circle k=0, d=1  curvature 1.000000 vs kappa 1.000000, N 1.000000000
+PASS  CA1 unit circle k=1, d=1  curvature 0.750000 vs kappa 0.750000, N 1.000000000
+PASS  CA1 unit circle k=1.3, d=2.1  curvature 1.677500 vs kappa 1.677500, N 1.000000000
+PASS  CA1 unit circle k=0.5, d=-0.7  curvature -0.762500 vs kappa -0.762500, N 1.000000000
+PASS  CA1 unit circle k=2, d=0.2  curvature -0.800000 vs kappa -0.800000, N 1.000000000
+PASS  CA1 unit circle k=-1.1, d=0.9  curvature 0.597500 vs kappa 0.597500, N 1.000000000
+PASS  CA2 ellipse N=1 has (pi/area)^2 = kappa  
+PASS  CA3 kappa=+0.75 gives rotation  det 1.000000000000, trace 1.5389
+PASS  CA3 kappa=+0.00 gives shear  det 1.000000000000, trace 2.0000
+PASS  CA3 kappa=-1.25 gives squeeze  det 1.000000000000, trace 2.8548
+PASS  CA4 T_a fixes the wall -1/k  
+PASS  CA4b in u = 1 + kx the move is u -> (1+ka)u  
+PASS  EQ1 d/dt det(1 + t eps) at 0 = k  
+PASS  EQ1b trace(E0) = 0, so exp(t E0) is equi-affine  
+PASS  RF1 conjugation is a reflection keeping N  
+PASS  RF2 a = -2/k gives ratio -1 (half-turn about the wall)  
+PASS  PR1 points at infinity counted by -4 kappa  
+PASS  PR2 Laguerre angle, kappa > 0  angle (-0.6+7.235384610292325e-17j) (expect ±0.6)
+PASS  PR2b Laguerre angle, kappa < 0 (hyperbolic, log/2)  angle (0.5999999999999999-0j) (expect ±0.6)
+PASS  PR3 one projective swap turns the circle into a hyperbola  
+PASS  DL1 curvature = -Delta/4 = d - k^2/4  
+PASS  DL2 trace-free part squares to Delta/4  
+PASS  DL3 k = 0, d = 1 (round, like i) has Delta < 0; d = -1 (relativity side) has Delta > 0  
+
+23 of 23 pass

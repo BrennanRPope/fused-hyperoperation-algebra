@@ -60,7 +60,7 @@ every path through each midpoint.
 - *Known:* Feynman 1948, Feynman–Hibbs 1965; stationary phase (Kelvin, Stokes); WKB; Ehrenfest 1927. *Ours:* nothing
   beyond this non-Gaussian numerical check.
 
-## 3. The k dial: ħ-like and 1/c²-like are two different dials
+## 3. The homothety dial k (the k dial): ħ-like and 1/c²-like are two different dials
 
 - In relativity, ∘ composes *velocities*, the dial is −1/c², and Galilean physics is k → 0 (C4).
 - In path sums, ∘ composes *weights*, the dial is i/ħ, and classical physics is ħ → 0, which is **|k| → ∞** (C2, C3, B2).

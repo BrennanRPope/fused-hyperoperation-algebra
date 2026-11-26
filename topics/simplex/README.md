@@ -3,7 +3,7 @@
 **DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "let's look at the simplex as well. And use that as another shape that we try to do things with."
 Builds on `polar-coordinates/` and `polar-recast/` and does not repeat them. Checks: `checks.py` → `checks_output.txt`,
-**44 of 44 pass** (numpy, scipy); section 7 (shape dial) adds 26 of 26. Pictures: `figures.py` → `figures/`. No Lean in this pass (no Lean on this machine).
+**44 of 44 pass** (numpy, scipy); section 7 (cubic-form dial) adds 26 of 26. Pictures: `figures.py` → `figures/`. No Lean in this pass (no Lean on this machine).
 Colour key: **blue = the simplex / our readings, orange = the sphere, grey = the cube.**
 
 ## The result in four sentences
@@ -16,7 +16,7 @@ simply (its corner volumes 1/n! add to e), it only **borrows π** from the spher
 with the sphere: one distance rule (Hilbert's) makes the ball into relativity's velocity space, which is curved and
 **precesses**, and makes the simplex into a **flat** space where updates commute and nothing precesses. In one
 dimension the two agree exactly: a coin's log odds is a rapidity. **Update (section 7):** the shape itself is a second
-dial, separate from the plane dial. Sliding from round to triangle fades the leftover turn from −1 to 0, it becomes a
+dial, separate from the curvature dial (the plane dial). Sliding from round to triangle fades the leftover turn from −1 to 0, it becomes a
 pattern across the shape in between, and cooling is one route along this dial.
 
 ![Sorting board](figures/fig9-sorting-board.png)
@@ -157,7 +157,7 @@ leftover turn equals the area of the velocity triangle, for 150 random cases.*
 
 *Figure 8. Left: in one dimension, 0.5c ⊕ 0.6c = 0.846c and "odds ×3 then ×4 = odds 12" are the same two steps on one
 line (rapidity = ½ log odds, H2). Middle: temperature turns a round ball into the simplex (free-energy level sets, R5).
-Right: the polar pass's p dial for comparison.*
+Right: the polar pass's ℓp dial (the roundness dial) for comparison.*
 
 - **In one dimension they are the same law** (H2): put p = (1 + v)/2, and the odds (1 + v)/(1 − v) multiply exactly
   when velocities add Einstein's way. The identity is elementary; I found no source stating it, so treat the
@@ -186,22 +186,22 @@ area; Foertsch–Karlsson for the simplex).
 Harder or no help on the simplex: relativity and precession (need the ball), i and π (need the sphere),
 independent events (need the cube), number theory (torus of angles), Navier–Stokes, Newton's G and Fermat (unchanged).
 
-## 7. The shape dial: a second dial, separate from the plane dial
+## 7. The cubic-form dial (the shape dial): a second dial, separate from the curvature dial
 
-Asked for by Brennan after the first pass: hold the plane dial fixed, slide the shape from round to triangle, and see
+Asked for by Brennan after the first pass: hold the curvature dial fixed, slide the shape from round to triangle, and see
 whether the law still changes; and test whether the leftover turn fades smoothly as temperature drops. Checks:
 `shape_dial.py` (method) and `shape_dial_checks.py` → `shape_dial_checks_output.txt`, **26 of 26 pass**. Pictures:
 `figures_shape_dial.py` → `figures/fig10` … `fig13`.
 
-**Result.** Yes, it is a separate dial. With the plane dial held fixed, sliding the shape from round to triangle
+**Result.** Yes, it is a separate dial. With the curvature dial held fixed, sliding the shape from round to triangle
 moves the leftover turn per unit area from the full Thomas amount (−1) to nothing (0), smoothly and in one direction,
 along every route tried. In between, the turn is no longer one number: it varies from place to place inside the shape,
-and no setting of the plane dial can do that, because the plane dial only scales the turn evenly. Cooling does the same
+and no setting of the curvature dial can do that, because the curvature dial only scales the turn evenly. Cooling does the same
 thing: the turn fades smoothly to zero, about 1.45/β when cold, with no jump.
 
-![Turn maps along the shape dial](figures/fig10-shape-dial-turn-maps.png)
+![Turn maps along the cubic-form dial](figures/fig10-shape-dial-turn-maps.png)
 
-*Figure 10. Plane dial fixed, shape sliding from round to triangle. Colour is the turn per unit area at each point
+*Figure 10. Curvature dial fixed, shape sliding from round to triangle. Colour is the turn per unit area at each point
 (orange = the full Thomas turn, blue = none). The round end turns the same everywhere; in between, the rounded corners
 still turn while the flat sides stop; the triangle turns nowhere.*
 
@@ -218,7 +218,7 @@ round shape. I report the curvature scaled so the round shape gives −1 (writte
   runs from −0.82 near a rounded corner to −0.50 near a flat side.
 - **Temperature (T1–T5).** The free-energy shapes of Figure 8 run from round (hot) to triangle (cold). The centre value
   goes −0.9996, −0.997, −0.965, −0.69, −0.37, −0.14, −0.048, −0.015, −0.005, −0.0014 for β = 0.001 to 1000: about
-  −1 + 0.35β when hot and −1.45/β when cold. So the temperature dial is a route along the shape dial, and the leftover
+  −1 + 0.35β when hot and −1.45/β when cold. So the temperature dial is a route along the cubic-form dial, and the leftover
   turn fades with it. The earlier lead (section 5, lead 1) passes its test.
 - **Only the triangle is flat (P1–P12, L-checks).** Squares, pentagons, hexagons, any regular polygon with four or more
   sides, and the ℓᵖ balls all look perfectly round at their centre (K̂ = −1) and flatten toward their edges. The
@@ -231,10 +231,10 @@ round shape. I report the curvature scaled so the round shape gives −1 (writte
 *Figure 11. Left: the centre turn along two different routes from round to triangle. Right: cooling the free-energy
 shape; dashed and dotted lines are the cold and hot rates.*
 
-**Why it is not the plane dial.** The plane dial d is the overall scale: on the round shape it sets c (d = −1/c²),
+**Why it is not the curvature dial.** The curvature dial d is the overall scale: on the round shape it sets c (d = −1/c²),
 and the turn per unit velocity-area is |d| × K̂, the same at every point. Turning d down to zero gives Galileo: flat,
 but with round unit balls. The triangle is flat with **hexagonal** unit balls (de la Harpe; Foertsch–Karlsson). So the
-two dials reach "no turn" at two different places, and on the triangle the plane dial changes nothing about the turn
+two dials reach "no turn" at two different places, and on the triangle the curvature dial changes nothing about the turn
 at all. One more difference: an addition law (a group of moves that carries every point to every other) exists only at
 the two ends. Round has the three-dimensional Lorentz group, whose boosts don't commute, and the commutator is the
 Thomas turn; the triangle has a two-dimensional group of scalings, which commute. Every shape in between has only
@@ -245,7 +245,7 @@ every point). So between the ends the "law" survives only as the turn field, not
 
 *Figure 12. The two dials side by side. Colour is the centre turn rate |d| × |K̂| (schematic in the shape direction,
 using the blend route). Up and down scales the turn evenly; left to right changes its pattern and ends at a place, flat
-with hexagonal balls, that the plane dial never reaches.*
+with hexagonal balls, that the curvature dial never reaches.*
 
 ![Polygons](figures/fig13-polygons-only-triangle-flat.png)
 
@@ -273,9 +273,9 @@ How the other names offered compare:
 
 **Known versus ours.** Known: Hilbert geometry, Vinberg's characteristic function, Benzécri's space, the Pick form and
 cubic differentials, Calabi's bound (Blaschke metric), homogeneity only at the ellipse and triangle, Thomas turn as hyperbolic area.
-Ours: reading Brennan's shape dial as that space and the leftover turn as its curvature (Vinberg's metric); the numbers along the blend,
+Ours: reading Brennan's cubic-form dial as that space and the leftover turn as its curvature (Vinberg's metric); the numbers along the blend,
 trim and temperature routes; the cold-tail rate 1.45/β (numerical, not derived); the observation that the temperature
-dial is a route on the shape dial, so the free-energy temperature and the Thomas turn are one dial reading. I found no
+dial is a route on the cubic-form dial, so the free-energy temperature and the Thomas turn are one dial reading. I found no
 source giving the curvature of the free-energy family; treat that as unchecked against the literature.
 
 ## Leads, each judged on its own merits
@@ -295,7 +295,7 @@ source giving the curvature of the free-energy family; treat that as unchecked a
 
 ## Next (offered, not started)
 
-- Derive the cold-tail constant 1.45 in section 7 exactly, and repeat the shape dial in three dimensions (ball to
+- Derive the cold-tail constant 1.45 in section 7 exactly, and repeat the cubic-form dial in three dimensions (ball to
   tetrahedron), where the in-between shapes are richer.
 - Lean (Mac Studio): S1 (stick-breaking total = fold of ∘₋₁), R1 (perturbation = ∘₁ on odds − 1), H2 (odds product =
   Einstein addition). All are short ring identities. From section 7, V3 (polar area of a disk = π/(1−|y|²)^{3/2})

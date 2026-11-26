@@ -1,0 +1,14 @@
+H1: PASS  T_a(x) = (1+ka)x + a gives T_a∘T_b = T_(a∘ₖb) (sympy exact), and every T_a fixes x = -1/k: the circle operation is the law of homotheties with centre at the wall -1/k and ratio 1+ka
+H2: PASS  at k = 0, T_a(x) = x + a: translations, the homotheties whose centre has gone to infinity
+H3: PASS  a -> λa turns ∘ₖ into ∘_(k/λ): every k ≠ 0 is the same homothety law seen with another ruler; only k = 0 (translations) versus k ≠ 0 (a finite centre) is affine
+C1: PASS  multiplying by ε has trace k and determinant d; splitting off the homothety (k/2)·I leaves an area-preserving part ε₀ with ε₀² = -κ, κ = d - k²/4 (sympy exact)
+C2: PASS  area factor of 1 + tε is 1 + kt + dt², whose rate at t = 0 is k: k is the homothety (area-growth) part
+C3: PASS  equi-affine curvature of x²+kxy+dy² = y equals 2^(4/3)·κ, κ = d − k²/4 (sign: >0 ellipse, 0 parabola, <0 hyperbola): (0,1): 2.519842 vs 2.519842; (1,1): 1.889882 vs 1.889882; (0,-1): -2.519842 vs -2.519842; (1,-0.5): -1.889882 vs -1.889882; (2,1): 0.000000 vs 0.000000; (-1,0): -0.629961 vs -0.629961
+Note (convention, not a check): κ > 0 round (the sphere's 1/R², eps₀² = −κ like i² = −1), κ = 0 flat, κ < 0 hyperbolic (relativity κ = −1/c²). The repo's d already has this sign when k = 0; the i² = d convention of Yaglom's tables is the mirror
+P1: PASS  Blaschke's apolarity (the cubic form is trace-free against the affine metric) leaves, in 2D, only A cos 3θ + B sin 3θ (sympy exact): the cubic form is a three-lobed field, the same angular pattern as Zernike's trefoil
+P2: PASS  a cubic form is odd under u -> -u, so a shape with a centre of symmetry (every ℓp ball) has cubic form 0 at its centre; this is why the simplex page found every ℓp ball and even polygon 'round at the centre' and only the triangle not
+L1: PASS  Blaschke's affine isoperimetric ratio Ω³/(8π²A) of the ℓp circle: p=1.05: 0.1620, p=1.25: 0.6023, p=1.5: 0.8689, p=2.0: 1.0000, p=3.0: 0.8504, p=5.0: 0.5151, p=21.0: 0.0552; 1 only at p = 2 (ellipse), falling toward 0 at both polygon ends
+L2 (measurement, not counted): polarity test, p versus its partner p/(p−1): 1.5↔3.0: 0.868880 vs 0.850391; 1.25↔5.0: 0.602340 vs 0.515144; 1.05↔21.0: 0.161956 vs 0.055165 — not equal: affine perimeter does tell a ball from its polar, so p and p/(p−1) are different points of the dial (reported, not a failure)
+L3: PASS  Fourier harmonics of the ℓp circle's radius: the first non-round harmonic is 4 (a four-lobed, quartic departure), never 3: p=1.8: |c4| = 8.91e-03, max |c1..c3| = 1.9e-18; p=2.2: |c4| = 7.80e-03, max |c1..c3| = 1.2e-18; p=3.0: |c4| = 3.04e-02, max |c1..c3| = 4.3e-18. The cubic form is the three-lobed departure, so the two shape dials are different directions
+
+10 of 10 pass

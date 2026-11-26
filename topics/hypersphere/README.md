@@ -32,7 +32,7 @@ red = does not work. No Lean was compiled in this pass.
 - **Brennan's hunch holds for round things, with a hard limit.** Polar coordinates split the core law cleanly
   (radius adds, sphere multiplies) only in 1, 2, 4 and 8 dimensions (Hurwitz). And in polar coordinates the sphere
   and the simplex are the same object; the cube is a different one (the polydisc).
-- **Comes out of the sphere, or simpler there:** the plane dial (d is 1/radius²), the swap rule (it is the sphere's
+- **Comes out of the sphere, or simpler there:** the curvature dial (d is 1/radius²), the swap rule (it is the sphere's
   curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
   of Newton's orbits (great circles on S³).
 - **Does not come out:** the rungs (the sphere has no radius to climb), the union rule except on orthogonal
@@ -175,9 +175,9 @@ associative.
 0, so the rung-3 law "take the radius twice" has nothing to act on (R1). Rung 3 survives only as "angle times a real
 exponent", (q^s)^t = q^(st) (R2). The rung tower needs a radius, and the sphere is where there is none.
 
-## 5. The plane dial is the sphere's 1/radius²
+## 5. The curvature dial (the plane dial) is the sphere's 1/radius²
 
-![Plane dial is 1/R²](figures/fig8-plane-dial-is-one-over-radius-squared.png)
+![Curvature dial is 1/R²](figures/fig8-plane-dial-is-one-over-radius-squared.png)
 
 *Figure 8. Sphere, plane and the "sphere of imaginary radius" (hyperbolic). The angle excess of a triangle is d × area.*
 
@@ -186,7 +186,7 @@ On the hyperbolic plane they add to less, by area/R² (P2, measured). So **d = +
 plane and **−1/R²** for hyperbolic space, which Lambert in 1766 called a sphere of imaginary radius: putting R = i into
 the spherical law of cosines gives the hyperbolic one exactly (P3).
 
-This is simpler than any other starting point: the whole plane dial is one number, the sphere's radius, including an
+This is simpler than any other starting point: the whole curvature dial is one number, the sphere's radius, including an
 imaginary radius. It also matches the earlier pages: Λ's dial is the de Sitter radius, d = Λ/3 (G3).
 **Known:** Gauss–Bonnet, Girard, Lambert, Cayley–Klein. **Verdict: simpler, unifies.**
 
@@ -287,7 +287,7 @@ dimensions.** Concretely:
 ## Next (offered, not started)
 
 - Try the double copy's three-piece split for a spinning black hole (Kerr); the non-spinning case is done (orbits section 7).
-- `lean/Hypersphere.lean` compiled into the library as `Topics/Hypersphere` on Nov 26 (quaternions, Fock's map, Kepler's tilt, n² states,
+- Compile `lean/Hypersphere.lean` (written, not compiled here: quaternions, Fock's map, Kepler's tilt, n² states,
   the orbit/gyroscope equality, Dirac's defect, the PPN coefficients, the exact split of 1 − 6M/r and its 2 + 1 + 3 budget, and the double copy's 2 + 2²; 33 theorems). Still to write: E1 (corner simplex = 1/n!) and
   SR2 (Doppler factors and the core law).
 
@@ -297,7 +297,7 @@ dimensions.** Concretely:
 - `checks.py` → `checks_output.txt` (57/57)
 - `figures.py` → `figures/fig1` … `fig12`
 - `orbits/`: Newton's orbits and hydrogen on one 3-sphere (`README.md`, `checks_orbits.py` 23/23, `six/checks_six.py` 11/11, `twov/checks_twov.py` 8/8, `dcopy/checks_dcopy.py` 11/11, figures O1–O9)
-- `lean/Hypersphere.lean`: Lean, compiled into the library as `Topics/Hypersphere` (33 theorems)
+- `lean/Hypersphere.lean`: Lean, not compiled here
 
 ## References
 

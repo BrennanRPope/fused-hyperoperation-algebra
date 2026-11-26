@@ -7,7 +7,7 @@ method; section 9 says what that was and what it cost.
 
 Builds on `hypersphere/` (our law splits as radius × sphere point only in dimensions 1, 2, 4, 8), `qsharp-functors/`
 (Paulis on the cross-polytope, the axis-cycling Cliffords on the tesseract, T on no corner), `polar-coordinates/`
-(the p dial: cross-polytope p = 1, sphere p = 2, cube p = ∞) and `simplex/` (the separate shape dial). Checks:
+(the ℓp dial: cross-polytope p = 1, sphere p = 2, cube p = ∞) and `simplex/` (the separate cubic-form dial). Checks:
 `checks.py` → `checks_output.txt`, **61 of 61 pass** (numpy, scipy; 5.2 s plus 0.5 s of polish). Shared
 constructions: `shapes.py`. Pictures: `figures.py` → `figures/`. Colour key: **orange = known**, **blue = ours or new
 to the theory**, **red = does not hold or adds nothing**. No Lean was compiled (no Lean on this machine).
@@ -34,7 +34,7 @@ theory. The 24-cell and E8 are bridges to known math (four squares, the D4 and E
 - **Polar coordinates.** In polar form on S³ (a point of the sphere S² plus a phase), the 600-cell's shadow on S²
   is the icosahedron, the dodecahedron or the icosidodecahedron, depending on which phase circle you use. So 3D's
   extra regular solids are shadows of 4D's.
-- **The p dial.** Matched by how round they are, the 24-cell sits at the mirror pair p = 4/3 and p = 4 (it is its own
+- **The ℓp dial (the roundness dial).** Matched by how round they are, the 24-cell sits at the mirror pair p = 4/3 and p = 4 (it is its own
   dual), the 600-cell at p = 1.80 on the cornered side, the 120-cell at p = 2.25 on the boxy side. The simplex is
   off the dial altogether, which fits the simplex page's finding that it has its own dial.
 - **Gates.** X, Y and Z sit on 600-cell corners. S and √X (90° turns) and T (45°) sit on no 600-cell corner in any
@@ -139,13 +139,13 @@ that 36° = π/5.
 **Known:** the Hopf fibrations of the 600-cell (Coxeter). **Ours:** that this is our polar split, and that it
 explains 3D's extra regular solids as shadows of 4D's closed corner sets. **Status: proved (counted).**
 
-## 4. Roundness: where they sit on the p dial
+## 4. Roundness: where they sit on the ℓp dial
 
-![p dial positions](figures/fig6-p-dial-positions.png)
+![ℓp dial positions](figures/fig6-p-dial-positions.png)
 
-*Figure 6. The p dial in 4D (grey), with each shape placed by how round it is.*
+*Figure 6. The ℓp dial in 4D (grey), with each shape placed by how round it is.*
 
-The p dial runs cross-polytope (p = 1) → sphere (p = 2) → cube (p = ∞). To place a shape that is not an ℓᵖ ball, I
+The ℓp dial runs cross-polytope (p = 1) → sphere (p = 2) → cube (p = ∞). To place a shape that is not an ℓᵖ ball, I
 match one number, inner radius ÷ outer radius (F1 to F3). In 4D an ℓᵖ ball has ratio 4^(−|½ − 1/p|), which takes
 each value twice, at p and at its mirror partner q with 1/p + 1/q = 1 (Hölder conjugates). Dual shapes trade sides.
 
@@ -160,8 +160,8 @@ A second measure (how much of its outer ball each shape fills, F4) agrees on the
 120-cell (85%) are far rounder than the 24-cell (41%). The exact p values depend on which measure you use, so read
 them as positions, not constants.
 
-**Shape dial (not computed here).** The simplex page found that every centrally symmetric polygon looks round at its
-centre on the shape dial, and only the triangle is flat. All four new shapes are centrally symmetric, so I expect them
+**Cubic-form dial (not computed here).** The simplex page found that every centrally symmetric polygon looks round at its
+centre on the cubic-form dial (the shape dial), and only the triangle is flat. All four new shapes are centrally symmetric, so I expect them
 to look round at their centres too, but I did not run the 4D version.
 
 **Known:** in/out radii, Hölder duality. **Ours:** the placement, and that self-duality means "sits on both sides".
@@ -291,7 +291,7 @@ Total 0.5 s against 5.2 s for the checks: about 9% extra. Every polish agreed wi
 
 ## Next (offered, not started)
 
-- Run the shape dial (Vinberg's turn) on the 24-cell and 600-cell in 4D, to see how fast each flattens toward its
+- Run the cubic-form dial (Vinberg's turn) on the 24-cell and 600-cell in 4D, to see how fast each flattens toward its
   faces.
 - Put the closures and swap ladders in Lean: they are finite, exact checks (24-cell over fractions, 600-cell over
   a + bφ), so they suit the library's no-mathlib style.

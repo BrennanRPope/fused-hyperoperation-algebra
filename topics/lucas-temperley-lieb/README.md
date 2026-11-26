@@ -5,12 +5,12 @@ Temperley–Lieb loop diagrams lose their positive inner product, the Beraha poi
 positivity threshold 2cos(π/(n+1)) is the same number on both sides.
 
 Status: DRAFT, not reviewed, not published. Follows lead R3 in `../closed-leads-revisit/README.md`. Builds on
-`../lucas-weights/HANDOFF.md` (the plane dial and its weights) and answers the open question left in
+`../lucas-weights/HANDOFF.md` (the curvature dial and its weights) and answers the open question left in
 `../knot-theory/README.md` (do 6-ended tangles reach a bend?).
 
 ## The question in plain words
 
-The plane dial (k, d) has layer weights U_m(k, d): U₀ = 0, U₁ = 1, U_m = k·U_{m−1} − d·U_{m−2}. Inside the
+The plane setting (k, d) has layer weights U_m(k, d): U₀ = 0, U₁ = 1, U_m = k·U_{m−1} − d·U_{m−2}. Inside the
 parabola k² < 4d these oscillate, and a layer goes **silent** (U_m = 0) at special settings: at d = 1 they are
 k = 0, 1, √2, φ, √3, ... The closed-leads review noticed this is the same recurrence that drives the
 Temperley–Lieb algebra, the algebra of non-crossing strings where a closed loop counts as a number δ. The test
@@ -22,13 +22,13 @@ n strands, generators e_i = "cap then cup" at positions i, i+1, with e_i² = δe
 Jones–Wenzl projector p_m: the piece of TL_m killed by every e_i. Gram matrix: the table of how two string
 pictures pair up, counting δ per closed loop. Beraha numbers: 4cos²(π/m) = 0, 1, 2, 2.618, 3, ...
 
-## Fig 1. The plane dial is the loop value δ = k/√d
+## Fig 1. The curvature dial (the plane dial) is the loop value δ = k/√d
 
 ![Fig 1](figures/fig1-dial-plane.png)
 
-- Rescaling the weights shows U_m(k, d) = d^((m−1)/2)·U_m(k/√d, 1), so a whole ray of the plane dial carries
+- Rescaling the weights shows U_m(k, d) = d^((m−1)/2)·U_m(k/√d, 1), so a whole ray of the curvature dial carries
   one loop value **δ = k/√d**. Each silent layer is one curve k² = β·d with β a Beraha number.
-- The three regions of the plane dial line up with Jones' index theorem: inside the parabola is the
+- The three regions of the curvature dial line up with Jones' index theorem: inside the parabola is the
   **discrete series** (δ < 2, silent layers at the Beraha points), the parabola itself is **δ = 2** (index 4),
   outside is the **continuous range** δ > 2, where no layer is ever silent. (For d < 0, δ is imaginary; there
   only the line k = 0 is silent, every even layer.)
@@ -66,7 +66,7 @@ pictures pair up, counting δ per closed loop. Beraha numbers: 4cos²(π/m) = 0,
 
 A tangle with 4 ends is an element of TL₂ (bracket space spanned by "straight through" and "cap-cup"). A tangle
 with 6 ends is an element of TL₃. Each element N obeys a square law N² = kN − d, the same law ε² = kε − d that
-defines the plane dial (`lucas-weights`, `plane_is_multAdd_eps`).
+defines the curvature dial (`lucas-weights`, `plane_is_circ_eps`).
 
 - **4 ends (a):** TL₂ is two-dimensional and splits into two idempotents, so every element has
   k² − 4d = (δy)² ≥ 0. It never gets inside the parabola. This is why the knot page only ever saw the dial line.
@@ -88,7 +88,7 @@ defines the plane dial (`lucas-weights`, `plane_is_multAdd_eps`).
 | Gram (meander) determinant is a product of Chebyshev polynomials, zero at the Beraha points | known (Ko–Smolinsky 1991; Di Francesco–Golinelli–Guitter 1997) |
 | Positivity only for δ ≥ 2 or δ = 2cos(π/m) | known (Jones 1983, index rigidity) |
 | Crossing obeys the Hecke relation | known |
-| The plane dial (k, d) read as loop value δ = k/√d, with the three regions as Jones' three ranges | ours as a reading; the math under it is known |
+| The plane setting (k, d) read as loop value δ = k/√d, with the three regions as Jones' three ranges | ours as a reading; the math under it is known |
 | 4-ended tangles never elliptic, 6-ended ones can be (answer to the knot page) | ours as far as we found; a short check, not deep |
 | Positivity rigidity as the same shape as "only whole steps" | ours, a likeness only |
 

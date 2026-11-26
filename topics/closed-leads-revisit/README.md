@@ -85,7 +85,7 @@ read as a branching process: the chance a family line survives n generations fal
 
 ![Fig 4](figures/fig4-silent-layers-beraha.png)
 
-**Fig 4.** The Lucas layer weights U_m at plane dial d = 1. Each is silent (zero) at k = 2cos(πj/m); then
+**Fig 4.** The Lucas layer weights U_m at curvature dial (the plane dial) d = 1. Each is silent (zero) at k = 2cos(πj/m); then
 Q = k² = 4cos²(πj/m), the Beraha numbers.
 
 - **Old closures it covers.** The Beraha cluster test (`lee-yang/`, p = 0.099, closed) and the knot-theory bend
@@ -96,8 +96,8 @@ Q = k² = 4cos²(πj/m), the Beraha numbers.
   U_{m+1} = k·U_m − d·U_{m−1} is the Temperley–Lieb / Jones–Wenzl recurrence with loop value δ = k (in general
   δ = k/√d). So the three regions of the dial plane line up with Jones' index: inside the parabola k² < 4d is the
   discrete series below 4 (silent layers at roots of unity), on the parabola is index 4, outside is the continuous
-  range. That gives the Lucas weights an existing name and ties the knot page's loop value d to our plane dial.
-- **Known versus ours.** Chebyshev polynomials, Temperley–Lieb and Jones' index are known. That our plane dial
+  range. That gives the Lucas weights an existing name and ties the knot page's loop value d to our curvature dial.
+- **Known versus ours.** Chebyshev polynomials, Temperley–Lieb and Jones' index are known. That our curvature dial
   (k, d) is the Temperley–Lieb loop value δ = k/√d is our reading; it needs a literature check before we call it
   new.
 
@@ -290,7 +290,7 @@ Grouped by reason. "Lens" means: does the fuller theory touch what failed? In ev
 | Path integrals as a special case (strong) | why-i/path-integral-strong | Needs H, ħ and a measure; the semiring gives only the stops |
 | Checkerboard turn as Wick rotation | why-i/checkerboard | The dial multiplies turns, not time |
 | Checkerboard with a potential | why-i/checkerboard-potential | Negative V means branching, not probability |
-| d as a second Cayley–Klein dial | why-i/cayley-klein | Collapses to κ = d − k²/4 |
+| d as a second Cayley–Klein dial | why-i/cayley-klein | Collapses to one Cayley–Klein label, −Δ/4 = d − k²/4 |
 | Framework forces gravity | why-i/dial-map | Every one-number law is a ruler change of + |
 | k alone; weight k | dial-survey, shape-directions | Only the sign survives rescaling (with ⊕ₖ, temperature needs an action unit, the same as "ħ cancels") |
 | Twist, choice | dial-survey | No new prediction; not a dial |

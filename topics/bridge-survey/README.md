@@ -1,6 +1,6 @@
 # Bridge survey: every place the theory lands on an established field
 
-DRAFT, Nov 26, 2026. Hypercube Composition Theory (a ∘ₖ b = a + b + k·ab, with the plane dial d).
+DRAFT, Nov 26, 2026. Hypercube Composition Theory (a ∘ₖ b = a + b + k·ab, with the curvature dial d, formerly the plane dial).
 
 **The result in two sentences.** Across all the pages there are about 739 distinct bridges into 20 fields: 338 land on results the write-ups name as known, 247 are our own reading of known pieces, 92 were tested and failed, and 62 are marked possibly new, of which about 20 join two fields (the rest are new small results inside one field). Grouping the results by shape turned up 16 more bridges no page had named, and the strongest bridge the map predicts but nobody has checked is that Hirota's soliton corner weights should pass the same "has a geometry" test as holographic entanglement (P1 below).
 
@@ -73,7 +73,7 @@ These are the ones the write-ups found nowhere in print and that join two fields
 | N11 | The dial game v(S) = (∏(1 + k·xᵢ) − 1)/k has a closed-form Shapley value; k = −1 is the actuarial UDD split. | game-theory | **Small, practical.** A one-knob synergy model. |
 | N12 | Four-ended tangles never fall inside the parabola k² = 4d; six-ended ones can. | lucas-temperley-lieb | **Small.** It answers the knot page's open question. |
 | N13 | In one dimension, Bayes odds multiply exactly when velocities add Einstein's way: log odds = 2 × rapidity. | simplex | **No.** Elementary and likely noticed before; useful as a teaching line. |
-| N14 | A temperature dial slides the free-energy body from the ball (curvature −1) to the simplex (flat). 26 of 26 checks, no write-up yet. | simplex | **Yes, once written up.** It is the shape dial with a geometric meaning. |
+| N14 | A temperature dial slides the free-energy body from the ball (curvature −1) to the simplex (flat). 26 of 26 checks, no write-up yet. | simplex | **Yes, once written up.** It is the cubic-form dial (the shape dial) with a geometric meaning. |
 | N15 | CHSH over p-norm state spaces is 2^(1 + max(1/p, 1 − 1/p)): 2√2 at p = 2, the PR box's 4 at p = 1 and ∞. No write-up; provisional. | shape-dial-survey | **Check the literature first.** Polygon state spaces are studied (generalized probabilistic theories); the p-norm formula may be there. |
 | N16 | Smets' disjunctive rule for belief functions is "facet heights multiply" on shape weights. | polar-coordinates | **Small.** Each half is known; the join is ours. |
 | N17 | Quantum channels sit on one straight line k = −L/(L−1); depolarizing at −d²/(d²−1); the floor at −2 is proved in Lean. | landscape | **Small.** New as a picture. |
@@ -99,7 +99,7 @@ Brennan's point was that grouping by shape might itself have turned up bridges. 
 | G3 | Haldane's addition rule is the piling-up lemma: 1 − 2(r₁ + r₂ − 2r₁r₂) = (1 − 2r₁)(1 − 2r₂). | Trivially true | Both sides are textbook; only the cross-link is new. |
 | G4 | The N-atom Hückel chain polynomial is the Lucas corner weight U_{N+1}(x, 1); its levels 2cos(jπ/(N+1)) are the Beraha points. Rings with all-integer levels exist only for N = 1, 2, 3, 4, 6 (the crystallographic restriction). | Algebra holds | This gives the "probably folklore" Lucas corner formula a literature anchor in chemistry, and ties Hückel theory to Temperley–Lieb. |
 | G5 | Cooperative binding zeros lie on a Lee–Yang circle: |x| = ω^(−(n−1)/2) for n sites with pairwise cooperativity ω (checked for n = 3, 4, 5). The concerted (MWC) model puts its zeros on a different circle, so the zeros tell pairwise and concerted cooperativity apart. | Holds; follows from the Lee–Yang theorem | The Lee–Yang side is a theorem, so the identity is safe. The diagnostic use for binding data looks like the part worth checking. |
-| G6 | In discounting, the horizon n acts as the roundness dial p: the averaged discount factor is an n-norm, and Weitzman's "lowest rate wins" is the p → ∞ limit. | Numbers hold | The norm is Weitzman's own formula; the roundness-dial reading is ours. |
+| G6 | In discounting, the horizon n acts as the ℓp dial (the roundness dial) p: the averaged discount factor is an n-norm, and Weitzman's "lowest rate wins" is the p → ∞ limit. | Numbers hold | The norm is Weitzman's own formula; the roundness-dial reading is ours. |
 | G7 | Actuarial UDD = Shapley is the centroid of the k = −1 base polytope, and each waterfall order is a stick-breaking vertex. | Unchecked | Likely true and likely known to cooperative-game people. |
 | G8 | Rulecraft's spillover dividends are Postnikov's y_I; a positive synergy is a convex game. | Unchecked | Useful for Rulecraft, if it holds. |
 | G9 | The effective dimension n²/‖C‖² of a correlation matrix lives on the elliptope: 1 at the cube corners, n at the identity. | Unchecked | It would give the elliptope its first non-quantum field. |

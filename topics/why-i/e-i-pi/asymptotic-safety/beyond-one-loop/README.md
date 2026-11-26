@@ -18,7 +18,7 @@ As a lead, it stays worth keeping as a **diagnostic lens**, but not as a path to
 
 - **Known math.** A circle-op flow is a Möbius flow. Every Möbius flow, including the plane law a ∘ₖ,d b = (a + b + kab)/(1 − dab), has exponents **+r and −r** at its two walls (check T1). Smooth changes of coordinate cannot change exponents, and in one dimension a hyperbolic fixed point is smoothly linearizable (Sternberg).
 - **So (ours):** the flow of g is a circle-op flow with *both* ends as honest walls exactly when the UV exponent equals G's units: **θ_UV = d − 2**. That makes θ/(d − 2) a coordinate-free test of the lead.
-- **The plane dial d cannot rescue it.** d moves the walls around but always keeps the exponents ±r (T1). The correction changes their ratio, which d cannot do.
+- **The curvature dial (the plane dial) d cannot rescue it.** d moves the walls around but always keeps the exponents ±r (T1). The correction changes their ratio, which d cannot do.
 
 ## 2. The published flows, one by one
 

@@ -15,7 +15,7 @@ Coverage notes:
 ## The map in one picture
 
 ```
-                       roundness dial p (polar-coordinates §7, shape-dial-survey)
+                       ℓp dial (the roundness dial) p (polar-coordinates §7, shape-dial-survey)
    cross-polytope  ----------------->  sphere / ball  ----------------->  cube / polydisc
       (p = 1)                            (p = 2)                           (p = inf)
                                            |  square the coordinates,          |  stick-breaking, k = -1
@@ -40,7 +40,7 @@ Coverage notes:
 | 3 | The cube is the polydisc, i.e. a product of discs read through radii. | hypersphere |
 | 4 | Budget region slides from cube (k = −1) to simplex (k = 0) to the coordinate axes (k → ∞). | beyond-the-cube §1 |
 | 5 | In log-radius coordinates every budget region is one simplex of size log(1+k)/k, so the cube is the simplex pushed to infinity. | polar-coordinates §8 |
-| 6 | The p dial runs cross-polytope (1), then sphere (2), then cube (∞), with the Maslov/tropical limit at p → ∞. | polar-coordinates §7, shape-dial-survey |
+| 6 | The ℓp dial runs cross-polytope (1), then sphere (2), then cube (∞), with the Maslov/tropical limit at p → ∞. | polar-coordinates §7, shape-dial-survey |
 | 7 | Corner weights slide simplex → associahedron → permutohedron → cube (Postnikov generalized permutohedra, y_I = tesseract corner coordinates). | polar-coordinates §6, Fig 7 |
 | 8 | The type-B family holds both cube and cross-polytope. | polar-coordinates §7 |
 | 9 | Hilbert geometry: the ball is relativity's velocity space (Klein model, curved, precesses) and the simplex is flat Bayes geometry. The two coincide in 1D, where log odds = 2 × rapidity. | simplex §5 |
@@ -131,7 +131,7 @@ Every item below is **unnamed, needs checking**. Each one gives the concrete ide
    - The MWC fold, (1 + kx)ⁿ = 1 − k, instead puts its zeros on a circle centred at −1/k.
    - The zero locus therefore tells pairwise cooperativity apart from concerted cooperativity, the same distinction chemistry 11 draws by fitting. It links to biology 1's "Lee–Yang dial gas" helix–coil row and to shape-dial-survey's failed Lee–Yang check J1.
 
-6. **Horizon n is the roundness dial p in discounting.** *Unnamed, needs checking.*
+6. **Horizon n is the ℓp dial p in discounting.** *Unnamed, needs checking.*
    - Econ-forecasting's certainty-equivalent factor is (Σ wᵢ dᵢⁿ)^{1/n}, with dᵢ = 1/(1+rᵢ) per world. That is a weighted n-norm, so the horizon n plays the role of p.
    - "Lowest corner wins" (Weitzman) is then the p → ∞ Maslov/max limit of polar-coordinates §7 and shape-dial-survey M1/M2.
    - Numerically, with rates 1/4/7%: the equivalent rate at n = 1, 10, 100, 1000 is 3.9%, 3.7%, 2.1%, 1.1%, tending to 1%.

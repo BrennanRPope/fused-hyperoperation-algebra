@@ -264,7 +264,7 @@ Partly. What matched: the k = −1 corner basis (the multipartite informations),
 the flip φ₋₁, the height-flow law E, and the tropical "rescale" dial. What did not: the contraction maps themselves
 use the cube as a **metric space** (Hamming distance; image graphs are "partial cubes"), which the project has not
 used. Our corner weights k^rank are distances from the empty corner, and a contraction map that fixes the purifier
-corner never increases rank, but I found nothing deeper than that. The plane dial d and the soliton pair weights did
+corner never increases rank, but I found nothing deeper than that. The curvature dial (the plane dial) d and the soliton pair weights did
 not show up.
 
 ## Known vs ours (second pass)

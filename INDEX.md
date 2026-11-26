@@ -112,6 +112,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | The dial map: the framework does not make gravity a forced step | `topics/why-i/dial-map/` | — |
 | String theory: what it rests on, G as (coupling)² × length^(D−2), T-duality as the k = 1 inverse | `topics/string-theory/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
+| DRAFT: the four dials named from affine geometry, with lineage (homothety k, curvature dial d, ℓp exponent p, cubic form C) | `topics/affine-names/` | — |
 | Interim theory name: Hypercube Composition Theory (final name still open, ROADMAP item 8) | `topics/names-review/THEORY-NAME.md` | — |
 | Electromagnetism through the circle operation: light sets the dial d = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
 | Size weighting as a dial, and what the circle operation leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |

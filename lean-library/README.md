@@ -311,6 +311,19 @@ leading minus was read as part of b8. One statement was false as written and was
 to match its own docstring: order_five_point's last conjunct had w3 * (w3 * w3 * w3), which
 is W3⁴ and evaluates to −2; it now has w3 * w3 * w3 (W3³), and the conjunct is 0 as claimed.
 
+## Dial names in prose and in code
+
+The notes now use affine-geometry names for the dials (see `topics/affine-names/`).
+The Lean names stay as they are; this table maps one to the other. The notes use no κ for a dial;
+in the code, `κ` keeps its existing local meanings (the k dial in `Behaviour`, e² = κ in `CliffordW`).
+
+| Prose name (old name) | Symbol | In the Lean code |
+|---|---|---|
+| homothety dial (k dial) | k | `k` in `circK k a b` (notation `a ◯[k] b`; prose a ∘ₖ b; `wAdd` before 1.0) |
+| curvature dial (plane dial) | d; the curvature is read as −Δ/4 = d − k²/4, with Δ = k² − 4d | `d` |
+| ℓp dial (roundness dial) | p | not in the library yet |
+| cubic-form dial (shape dial) | C | not in the library yet |
+
 ## What was merged
 
 The 19 source files held 449 theorems that compile. About 100 of them were

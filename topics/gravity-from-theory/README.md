@@ -7,7 +7,7 @@ to the speed of light somehow."
 ## The result in three sentences
 
 Frame dragging now comes out of the theory with nothing from gravity put in except Newton's static pull: boost
-Newton's field with the plane dial's boost and a drag term appears, of size 2(1+γ)·U·u/c², whose half-curl is
+Newton's field with the curvature dial's boost and a drag term appears, of size 2(1+γ)·U·u/c², whose half-curl is
 exactly the Lense–Thirring turn, matching Gravity Probe B, LAGEOS and the double pulsar. And yes, it is tied to the
 speed of light: the drag is first order in the dial q = −1/c² and vanishes at the Galilean dial q = 0. The
 inverse-square law does **not** come out: the theory restates it (the box's face layer grows like r²) but supplies
@@ -18,7 +18,7 @@ the orbit's energy.
 ![map](figures/fig7_map.png)
 
 *Fig 7. What frame dragging now rests on. Red: put in (Newton's U = GM/r, which carries G and the three dimensions).
-Green: from the theory (the plane dial and its boost law). Blue: from the general-relativity page (the river gives
+Green: from the theory (the curvature dial and its boost law). Blue: from the general-relativity page (the river gives
 γ = 1). Orange: what follows, each checked against data or an exact solution.*
 
 All numbers below are from `checks.py` (**26/26 pass**). Units G = c = 1 unless stated.
@@ -100,7 +100,7 @@ total error), so the data need the river's γ = 1.
 |---|---|
 | Gravitomagnetism from boosting the static field, factor 4 from a tensor field | known textbook argument (e.g. Ohanian & Ruffini, *Gravitation and Spacetime*) |
 | Lense–Thirring 1918, Schiff 1960 gyroscope precession | known |
-| The drag term is first order in the plane dial and vanishes at q = 0 | ours (dial reading of a known fact) |
+| The drag term is first order in the curvature dial (the plane dial) and vanishes at q = 0 | ours (dial reading of a known fact) |
 | Frame-drag weight 4 = clocks 2 + rulers 2, from the river's circle-operation inverse | ours (reading); γ = 1 itself was derived on the GR page from the river postulate |
 | BTZ static gyroscope J/(2(r² − M)) from the same half-swirl rule | ours (route); the number is GR |
 | "Turn = ½ circulation per area" as the swap rule's shape | ours (framing); the formula is the standard gyroscope rule, checked here, not proved from the algebra |
@@ -151,7 +151,7 @@ velocity geometry) and the circle is a great circle, a straight line there. With
 - Escaping orbits (E > 0): velocities land on a straight line of the d = −1 hyperboloid (N5, residual 5×10⁻¹⁵).
 - The parabola (E = 0) sits at the flat end, d = 0: a circle through v = 0 (N6).
 - The velocity metric that does this (Milnor 1983) is the κ-stereographic chart of the twisted-boosts page with
-  κ = −1/(2E) (N9). **So the plane dial is the orbit's energy, sign included.**
+  κ = −1/(2E) (N9). **So the curvature dial is the orbit's energy, sign included.**
 
 ![only](figures/fig3_only_inverse_square.png)
 
@@ -164,7 +164,7 @@ velocities. Only 1/r² closes and draws circles.*
   1873), stable orbits only for n < 4 (Ehrenfest 1917).
 
 **Status.** All known: Hamilton's hodograph (1846–47), Fock's sphere for the Kepler/hydrogen problem (1935), Moser
-(1970), Milnor, "On the geometry of the Kepler problem" (1983). Ours: that this velocity geometry is the plane dial
+(1970), Milnor, "On the geometry of the Kepler problem" (1983). Ours: that this velocity geometry is the curvature dial
 of the theory, with d = sign(−E).
 
 **Is it a derivation?** Not yet. It is an equivalence: *1/r² ⇔ free orbits move along straight lines of the dial's
@@ -225,7 +225,7 @@ bodies (Maxwell 1875, Poincaré 1908); no shielding is seen. Not followed.
 | Face layer of the lift = half the box surface; falloff 1/r^(n−1) | known (Gauss); cube wording ours | N1–N3 |
 | Hodographs are circles only for 1/r² | known | Hamilton 1846–47 |
 | Velocity geometry of fixed energy has curvature sign −E | known | Fock 1935, Moser 1970, Milnor 1983 |
-| That geometry = the theory's plane dial, κ = −1/(2E) | ours (identification) | N4–N6, N9 |
+| That geometry = the theory's curvature dial, κ = −1/(2E) | ours (identification) | N4–N6, N9 |
 | Closed orbits only at n = 3, stable only n < 4 | known | Bertrand 1873, Ehrenfest 1917 |
 | Boosted Newton field gives the drag term, factor 2(1+γ) | known | textbook gravitomagnetism |
 | Drag ∝ dial q, zero at q = 0 | ours (reading) | F1 |

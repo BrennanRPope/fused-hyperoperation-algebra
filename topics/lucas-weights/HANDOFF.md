@@ -32,7 +32,7 @@ With equal entries this reduces to the library's existing `Patterns.iter_lucas` 
 | Nᵐ = UₘN − dU_(m−1)I | Known (Cayley–Hamilton) | Greene, https://www.d.umn.edu/~jgreene/papers/Lucas_Traces.pdf |
 | tan / tanh of a sum of n terms as odd/even eₘ | Known | ProofWiki "Tangent of Sum of Series of Angles"; MathPages https://www.mathpages.com/home/kmath735/kmath735.htm |
 | Classification of the plane laws by k² − 4d | Known (Coleman & McGuinness 1991, Pacific J. Math 147) | https://msp.org/pjm/1991/147-1/pjm-v147-n1-p02-s.pdf |
-| ε² = kε − d number systems (complex / dual / double) | Known (Yaglom, *Complex Numbers in Geometry*); already in the project's why-i/cayley-klein page (κ = d − k²/4) | |
+| ε² = kε − d number systems (complex / dual / double) | Known (Yaglom, *Complex Numbers in Geometry*); already in the project's why-i/cayley-klein page (curvature −Δ/4 = d − k²/4) | |
 | General (k, d) corner formula, written out | Not found in print in searches on Nov 25 (5 searches: tangent generalizations, rational formal group n-fold sums, Fibonacci tangent analogues, Möbius/commuting matrices, hyperbolic Fibonacci functions). Call it "ours as stated, probably folklore". | |
 | Possibly relevant, unread | Belbachir, "Inverse trigonometric and hyperbolic identities, series and products for Lucas sequences", arXiv 2610.24667 (Oct 2026). Abstract only: one two-term identity; full PDF not checked. | https://arxiv.org/abs/2610.24667 |
 

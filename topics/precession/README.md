@@ -6,7 +6,7 @@ that seems like should be able to be described with this theory."
 ## The result in two sentences
 
 Yes. Every kind of precession we tested comes from one rule of the circle operation: when the two inputs point in
-different directions, swapping their order turns the answer, and over a closed loop that turn equals the plane dial
+different directions, swapping their order turns the answer, and over a closed loop that turn equals the curvature dial (the plane dial)
 d times the area enclosed. With d = −1 (boosts) this is Thomas precession, already matched to Gravity Probe B and the
 double pulsar; with d = +1 (turns) it gives Foucault's pendulum, the tumbling-body phase and Berry's spin phase, and
 the gyroscope's famous 90° is the cross part of the operation's corner. The one thing the theory does not supply is
@@ -15,7 +15,7 @@ turns combine, not where the force comes from.
 
 ![map](figures/fig9_map.png)
 
-*Fig 9. Where each precession sits on the plane dial. Left (d = −1, boosts): Thomas, geodetic, double pulsar, all
+*Fig 9. Where each precession sits on the curvature dial. Left (d = −1, boosts): Thomas, geodetic, double pulsar, all
 from the twisted-boosts page earlier today. Right (d = +1, turns): this page. Middle (d = 0, Galilean): no corner, so
 no precession. Bottom: frame dragging, which needs gravity's own input.*
 
@@ -48,7 +48,7 @@ on any algebra is ours as a framing; it predicts nothing by itself.
 
 ![ends](figures/fig2_one_law_two_ends.png)
 
-*Fig 2. The same composition law at the two ends of the plane dial. Left: turns (d = +1) on the sphere; the
+*Fig 2. The same composition law at the two ends of the curvature dial. Left: turns (d = +1) on the sphere; the
 twist of a triangle is + its area. Right: boosts (d = −1) in the velocity disk; the twist is − its area.*
 
 - **Turns (d = +1).** Two turns with half-angle vectors g and h compose as (1 + g)(1 + h) = 1 + g ∘₁ h, which is
@@ -75,7 +75,7 @@ checked at both ends (C2, C3) and summed round whole loops for seven dial settin
 function, a few lines of code, gives Foucault at d = +1 and Thomas at d = −1 (C5, C8).
 
 **Status.** Holonomy = curvature × area is standard geometry. That a single dial moves it continuously from
-Foucault to Thomas through "no precession" at d = 0 is our reading of the plane dial. It is a clean picture, not a
+Foucault to Thomas through "no precession" at d = 0 is our reading of the curvature dial. It is a clean picture, not a
 new prediction.
 
 ## 4. Foucault's pendulum

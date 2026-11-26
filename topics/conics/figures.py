@@ -32,7 +32,7 @@ ax.annotate("one double wall:\nPARABOLA on the curve d = k²/4", (-2.9, 2.1025),
 ax.text(-3.3, -2.45, "two walls: HYPERBOLA", color=HC, fontsize=12, weight="bold")
 ax.text(3.35, -0.08, "d = 0: the ∘ₖ line (grey band), touching the\nparabola at its tip: hyperbolas except k = 0", color="#555", fontsize=9.5, ha="right", va="top")
 ax.text(-3.35, 1.6+ 2.89-0.1, "", fontsize=1)
-ax.text(3.35, 4.05, "dashed: lines of equal geometry κ = d − k²/4\n(also parabolas)", color="#555", fontsize=9, ha="right", va="top")
+ax.text(3.35, 4.05, "dashed: lines of equal geometry −Δ/4 = d − k²/4\n(also parabolas)", color="#555", fontsize=9, ha="right", va="top")
 pts = [(0, 1, "circle\n(0, 1)", 2.0, 1), (1.3, 2.7, "ellipse\n(1.3, 2.7)", 1.0, 1), (0, 0, "addition\n(0, 0)", 2.0, 1), (2, 1, "parabola\n(2, 1)", 2.0, 1),
        (0, -1, "relativity\n(0, −1/c²), c = 1", 2.0, 1), (-1, 0, "probability\nk = −1", 2.0, -1), (-2.4, 0.9, "hyperbola", 2.0, 1), (2.6, -1.6, "hyperbola", 2.0, -1)]
 for (k0, d0, lab, lm, side) in pts:
@@ -76,7 +76,7 @@ fig.savefig("figures/fig2-chord-rule-is-the-law.png"); plt.close(fig)
 
 # ---------- Fig 3: the levels of the plane number's size: all central conics, degenerate ones included
 fig, axs = plt.subplots(3, 3, figsize=(11, 11))
-rowlab = [("κ > 0 (no wall)", 1), ("κ = 0 (double wall)", 0), ("κ < 0 (two walls)", -1)]
+rowlab = [("Δ < 0 (no wall)", 1), ("Δ = 0 (double wall)", 0), ("Δ > 0 (two walls)", -1)]
 names = {(1, 1): "ellipse (circle)", (1, 0): "a single point", (1, -1): "nothing real\n(imaginary ellipse)",
          (0, 1): "two parallel lines", (0, 0): "a double line", (0, -1): "nothing real",
          (-1, 1): "hyperbola", (-1, 0): "two crossing lines\n= the walls (light cone)", (-1, -1): "the other hyperbola"}
@@ -96,7 +96,7 @@ for i, (rl, kap) in enumerate(rowlab):
         ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.axhline(0, color="#ddd", lw=.6, zorder=0); ax.axvline(0, color="#ddd", lw=.6, zorder=0)
         if j == 0: ax.set_ylabel(rl, fontsize=12, weight="bold", color=c)
         if i == 0: ax.annotate(["size N = 1", "size N = 0", "size N = −1"][j], (0.5, 1.25), xycoords="axes fraction", ha="center", fontsize=12.5, weight="bold")
-fig.suptitle("Figure 3. The size N = X² + κY² of a plane number (after completing the square). Its three levels give every central conic:\n"
+fig.suptitle("Figure 3. The size N = X² − (Δ/4)Y² of a plane number (after completing the square). Its three levels give every central conic:\n"
              "size 1 is the 'unit circle', size 0 is where numbers can't be divided by (the walls).", x=0.01, ha="left", y=1.005, fontsize=12.5)
 fig.savefig("figures/fig3-levels-give-every-central-conic.png"); plt.close(fig)
 
@@ -190,12 +190,12 @@ def ecc(k, d):
     if abs(lm) < 1e-12: return 1.0
     return np.sqrt(1 - lm/lp) if lm > 0 else np.sqrt(1 + abs(lm)/lp)
 e = np.array([ecc(0, x) for x in dd])
-ax.plot(dd, 2**(4/3)*kap, color=MAG, lw=2.6, label="affine curvature = 2^(4/3) · κ (exact)")
+ax.plot(dd, 2**(4/3)*kap, color=MAG, lw=2.6, label="affine curvature = 2^(4/3) · (−Δ/4) (exact)")
 ax.plot(dd, e, color=GREY, lw=2, label="eccentricity e (k = 0 slice)")
 ax.axvline(0, color=PC, lw=1, ls=":"); ax.axhline(0, color="k", lw=.5); ax.axhline(1, color=GREY, lw=.5, ls=":")
-ax.text(0.04, -2.6, "parabola:\nκ = 0, e = 1", color=PC, fontsize=9)
+ax.text(0.04, -2.6, "parabola:\nΔ = 0, e = 1", color=PC, fontsize=9)
 ax.fill_between(dd, -3.2, 3.2, where=dd > 0, color=EC, alpha=.07); ax.fill_between(dd, -3.2, 3.2, where=dd < 0, color=HC, alpha=.07)
-ax.set_ylim(-3.2, 3.2); ax.set_xlabel("d  (with k = 0, so κ = d)"); ax.legend(fontsize=8.8, loc="upper left")
+ax.set_ylim(-3.2, 3.2); ax.set_xlabel("d  (with k = 0, so −Δ/4 = d)"); ax.legend(fontsize=8.8, loc="upper left")
 ax.set_title("the dial is the conic's affine curvature,\nsign and size, straight through the parabola")
 ax = axs[2]
 mu, Lm = 1.0, 1.0

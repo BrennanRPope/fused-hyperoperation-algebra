@@ -124,7 +124,7 @@ Known mathematics, but the one-picture reading may help someone teaching or conn
 
 ## Promising leads
 
-What's left before the framework is frozen at 1.0 is tracked in [ROADMAP.md](ROADMAP.md). The 1.0 names were decided and applied on Nov 25 from the [names and notation review](topics/names-review/README.md); [NAMING-COLLISIONS.md](NAMING-COLLISIONS.md) has the old-to-new table. The theory's interim name is Hypercube Composition Theory ([why](topics/names-review/THEORY-NAME.md)); the final name is still open, and the repo name is unchanged for now.
+What's left before the framework is frozen at 1.0 is tracked in [ROADMAP.md](ROADMAP.md). The 1.0 names were decided and applied on Nov 25 from the [names and notation review](topics/names-review/README.md); [NAMING-COLLISIONS.md](NAMING-COLLISIONS.md) has the old-to-new table. On Nov 26 the dials got names from affine geometry, with their lineage ([DRAFT write-up](topics/affine-names/README.md)): the letters stay k, d, p and C; k is the homothety dial, d the curvature dial (the curvature is read as −Δ/4, with Δ = k² − 4d), p the ℓp exponent (formerly the roundness dial) and C the cubic form (formerly the shape dial). κ is no longer a dial letter, and the Lean names are unchanged. The theory's interim name is Hypercube Composition Theory ([why](topics/names-review/THEORY-NAME.md)); the final name is still open, and the repo name is unchanged for now.
 
 The live leads, each judged on its own merits. "Known" marks what is already established mathematics or physics; anything else is our claim and is labelled as such. This list is updated as each piece of work reports.
 

@@ -45,16 +45,16 @@ wording (first write-up N1–N3 did the whole-number case).
 
 *Fig 2. Left: field lines from a point cross a sphere at right angles and evenly; they cross a cube at a slant.
 Middle: flux through one face of a cube around the source; the centre gets 3√3 ≈ 5.2 times the corner (D4a). Right:
-the p dial (cross-polytope p = 1, sphere p = 2, toward the cube p → ∞), each turned by 0.4 rad; only the sphere lands
+the ℓp dial (cross-polytope p = 1, sphere p = 2, toward the cube p → ∞), each turned by 0.4 rad; only the sphere lands
 on itself (D4b).*
 
 - A point source looks the same from every direction, so its field's level surfaces must survive every turn. On the
-  polar-coordinates page's p dial, only p = 2 does (D4b, deviation 2×10⁻¹⁶ vs 0.07 to 0.25 for the others).
+  polar-coordinates page's ℓp dial (the roundness dial), only p = 2 does (D4b, deviation 2×10⁻¹⁶ vs 0.07 to 0.25 for the others).
 - A cube around the source still catches all of the flux (6 faces × face = 1.000000000000), but unevenly (D4a). So
   the cube gives the right power and the wrong picture.
 - The simplex and the cross-polytope are not used: no point source has their symmetry.
 
-**Status.** Known. Choosing it on the theory's p dial is ours.
+**Status.** Known. Choosing it on the theory's ℓp dial is ours.
 
 ## 3. The theory's cells are cubes, and their field turns round
 
@@ -173,5 +173,5 @@ the dimension dial is ours.
 | 2D hydrogen (S², 2l + 1 levels) | known | Zaslow and Zandler 1967 |
 | 2+1 gravity: no pull outside matter, cones | known | Deser, Jackiw and 't Hooft 1984 |
 | Face layer C(D, D − 1) = D of the lift off the integers | ours (wording) | D1a |
-| Sphere chosen on the theory's p dial; cube for the theory's cells; Gaussian as the box's round power | ours (reading) | D2, D4, D5 |
+| Sphere chosen on the theory's ℓp dial; cube for the theory's cells; Gaussian as the box's round power | ours (reading) | D2, D4, D5 |
 | Flux, velocity rule and Einstein meet only at D = 3 on the dimension dial | ours (framing; pieces known) | D9 |

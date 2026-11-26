@@ -5,9 +5,9 @@ Asked for by Brennan (his "Yes." to mapping Q#'s operation forms onto our shapes
 here as hypotheses: single-qubit operations live on the 3-sphere S³, Adjoint is the "mirror point", and Controlled
 acts on one Hopf fiber.
 
-Builds on `hypersphere/` (i, π and the sphere of i's on S³, plane dial = 1/R², the swap rule as curvature) and
+Builds on `hypersphere/` (i, π and the sphere of i's on S³, curvature dial = 1/R², the swap rule as curvature) and
 `polar-recast/` (corner weights, the right shape per family). Checks: `checks.py` → `checks_output.txt`,
-**37 of 37 pass** (numpy only). Pictures: `figures.py` → `figures/`. Colour key: **orange = known**, **blue = ours** (a
+**39 of 39 pass** (numpy only), plus `trotter/checks_trotter.py` (**19 of 19**) and `zx/checks_zx.py` (**15 of 15**), each ending with a polishing step (section 10). Pictures: `figures.py` → `figures/`. Colour key: **orange = known**, **blue = ours** (a
 reading, not a new theorem), **red = does not hold**. "Proved" below means a short algebraic proof written here and
 checked numerically; no Lean was compiled (no Lean on this machine).
 
@@ -34,6 +34,17 @@ checked numerically; no Lean was compiled (no Lean on this machine).
 - **The Clifford gates are corners of our shapes on S³:** the Paulis are the cross-polytope's 8 corners, the
   axis-cycling Cliffords the tesseract's 16, and H, S and friends the 24 corners of the dual 24-cell. T sits on none.
 
+- **The k³ and k⁴ error terms (section 8): corner terms, not rungs.** Every Trotter error term is a sum over the
+  orderings of the cube's corner (its n! order simplices), each ordering weighted by (−1)^d / (n·C(n−1, d)) where d
+  counts its descents. The orderings with the same weight fill exactly one slab of the cube cut across its long
+  diagonal, and the weights cancel at every level, which is why commuting gates leave no error. Nothing climbs a rung:
+  one log at the start, then plain polynomials.
+- **Next to the ZX-calculus (section 9): mostly the same ideas, no cheaper circuit.** Spider fusion, the adjoint,
+  parity, phase gadgets and phase folding are our core law, mirror, ∘₋₂ and corner expansion. Ours is simpler to state
+  in one place (merging any run of single-qubit gates is one product on S³), unifies AND/OR/XOR controls on one dial,
+  and gives error terms ZX does not. ZX has multi-qubit rewrites (bialgebra, local complementation) we have nothing
+  for. In every circuit tested, both give the same gate counts.
+
 Most of this is standard quantum computing in our language. What is ours is the dictionary: body = ∘ₖ, Adjoint = ∘ₖ
 inverse, Controlled = multiply by a corner projector, the dial k = curvature between Hamiltonians and gates.
 
@@ -54,7 +65,7 @@ on S³; a full 2π turn lands on −1, distance π (B4). This is the hypersphere
 gates fill the sphere |x + 1/k| = 1/|k|. Composing two gates is a ∘ₖ b, and the result stays on the sphere because
 sizes multiply (B2, for k = ±1, 0.5, 2, 0.1). So **the body is ∘ₖ, restricted to one sphere.**
 
-**The dial is curvature.** That sphere has radius 1/|k|, so by the hypersphere page's rule its plane dial is
+**The dial is curvature.** That sphere has radius 1/|k|, so by the hypersphere page's rule its curvature dial (the plane dial) is
 **d = k²**. As k → 0 it flattens onto Re x = 0, and x = (e^{kh} − 1)/k tends to the generator h itself. There ∘ₖ
 becomes plain adding: the error falls exactly in half each time k halves (B3). So one dial runs from **Hamiltonians
 that add** (k = 0, flat) to **gates that multiply** (k ≠ 0, round).
@@ -77,7 +88,7 @@ Generating the single-qubit Clifford group from H and S gives 48 points of S³ (
 | the gates that cycle X → Y → Z | (±1 ± i ± j ± k)/2 | the 16 corners of the **tesseract** |
 | H, S, √X and the rest | two of ±1, ±i, ±j, ±k, over √2 | the 24 corners of the **dual 24-cell** |
 
-The cross-polytope and the tesseract together are the 24-cell (the Hurwitz units). The roundness dial on the
+The cross-polytope and the tesseract together are the 24-cell (the Hurwitz units). The ℓp dial (the roundness dial) on the
 polar-recast page ran cross-polytope → sphere → cube; here those exact shapes sit inside the sphere as the gates that
 are easy to make. T is 0.39 from the nearest corner (C4), and H with T keeps producing new points (1,398 different
 ones from words up to length 14): leaving the corners is what makes a gate set universal.
@@ -201,15 +212,130 @@ step of A then a step of B, each of size k, misses the true gate by (k²/2)·|[A
 gate sphere, the step size k is the dial, k² is the sphere's curvature d, and the miss is d times the swap-rule
 commutator. **Known:** first-order Trotter error. **Ours:** that it is the swap rule with d = k². **Status: proved.**
 
+## 8. The k³ and k⁴ error terms: corner terms, not rungs
+
+Brennan asked whether the higher Trotter error terms (the price of splitting a Hamiltonian into steps) match our rungs
+or our corner terms. **Corner terms.**
+
+![Weights on the cube's slabs](figures/fig10-trotter-weights-live-on-the-cubes-slabs.png)
+
+*Figure 10. A: the 3-cube cut by the planes x+y+z = 1 and 2 into three slabs. B: the six orderings of three gates
+and their weights. C: positive and negative weights cancel at every level.*
+
+**The set-up in our law.** Compose N gates: 1 + k(x₁ ∘ₖ … ∘ₖ xₙ) = (1 + kx₁)⋯(1 + kxₙ), one term per corner of the
+N-cube. The generator of the result (its radius, one log) is where the error lives. Expanding that log exactly, the
+top-level part is a sum over **all N! orderings** of the gates, each with weight
+
+  (−1)^d / (N · C(N−1, d)),  d = the number of descents in the ordering
+
+checked exactly for N = 2 to 6 (E1). For three gates: +1/3 for 123, −1/6 for the four orderings with one descent,
++1/3 for 321. The weights add to zero at every level (E2, N = 2 to 8): if the gates commute, all orderings are the same
+word and the error vanishes, which is "the radius adds".
+
+**Where the shape comes in.** The number of orderings with d descents is the Eulerian number (1, 4, 1; 1, 11, 11, 1;
+…), and n! times the volume of the cube's d-th slab between the planes Σx = d and Σx = d+1 is exactly that number
+(E3, and E3b samples the 4-cube: 1, 11, 11, 1 over 24). So the error weights are **one weight per slab of the cube cut
+across its long diagonal**.
+
+![Trotter terms](figures/fig11-trotter-terms-from-the-corner-weights.png)
+
+*Figure 11. A: the error terms of "A then B". B: the error falls like k² for "A then B" and like k³ for the
+symmetric "½A, B, ½A".*
+
+**The k³ and k⁴ terms.** Feeding "A for time 1, then B for time 1" through those weights gives, word for word (T1–T3):
+
+- k²: ½[A, B]
+- k³: (1/12)([A,[A,B]] + [B,[B,A]])
+- k⁴: −(1/24)[B,[A,[A,B]]]
+
+and a fit of log(e^{kA}e^{kB}) on real qubit gates matches them to 10⁻⁹ (T4). The same weights on three blocks
+(½A, B, ½A) kill the k² term and give the symmetric splitting's k³ term −(1/24)[A,[A,B]] + (1/12)[B,[B,A]] (T5). So
+every Trotter scheme's error is the same corner weights, read on that scheme's time blocks.
+
+![Not rungs](figures/fig12-not-rungs-bernoulli-is-the-simplex-reciprocal.png)
+
+*Figure 12. A: the error's single-B weights against the corner-simplex volumes. B: one step down the rungs at the
+start, none after.*
+
+**Why not rungs.** Every term is a plain polynomial in the gates of degree n (R3): one log turns gates into a
+generator, and nothing after that takes another log or power. One more tie to earlier pages: the part of each term
+with a single B has the Bernoulli weights 1/2, 1/12, 0, −1/720 (R1; that is why the k⁴ term has no [A,[A,[A,B]]]),
+and that series is exactly the reciprocal of the corner-simplex volumes 1/(n+1)! that gave e on the hypersphere page
+(R2).
+
+**Known:** the descent weights are Solomon's Eulerian idempotent (1968), used for the Magnus expansion by Mielnik and
+Plebański (1970) and Strichartz (1987); Eulerian numbers as slab volumes go back to Laplace (Stanley 1977); the
+Bernoulli part of BCH is standard. **Ours:** reading the whole error series on the cube (orderings, slabs, corner
+simplex). **Status: proved and checked; corner terms yes, rungs no.**
+
+## 9. Next to the ZX-calculus
+
+Brennan's aim (from the call): if there is a framework for quantum computing that does not already exist, it might
+make things simpler. The ZX-calculus is the existing graphical language for simplifying circuits, so the test is
+where ours matches it, where it adds nothing, and where it does better.
+
+![ZX dictionary](figures/fig13-zx-dictionary.png)
+
+*Figure 13. ZX's moves next to ours.*
+
+**The same idea (checks M1–M5).**
+
+- ZX spider fusion (phases add) is our core law on the circle.
+- ZX's adjoint (flip the diagram, negate phases) is our mirror plus order reversal.
+- ZX's X-spider computes parity; on projectors our dial already gives the logic: ∘₋₁ = OR, ∘₋₂ = XOR, product = AND
+  (the logic-sets page), and Pauli Z is the k = −2 lift of the projector P1.
+- A CCZ gate is the cube's corner expansion (1/8)∏(1 − Zᵢ): 7 phase gadgets of angle ±π/8, T-count 7, which is how
+  ZX and phase-polynomial methods write it.
+
+![Circuits before and after](figures/fig14-zx-circuits-before-and-after.png)
+
+*Figure 14. Three circuits, before and after, with gate counts.*
+
+**Concrete circuits (C1–C4).**
+
+| Circuit | Before | After | Who finds it |
+|---|---|---|---|
+| CCZ(a,b,c) then CCZ(a,b,d) | T-count 14 | T-count 8 (corners a, b, ab merge into Clifford phases) | ZX and ours equally; known as phase folding |
+| 12-gate single-qubit run | 12 gates | 3 rotations (one product on S³) | ours in one step; ZX needs its Euler-angle rule; every optimizer already does it |
+| Controlled(H S H) | T-count 7 | T-count 3 (only the middle needs control) | both; known (Q#'s within/apply) |
+| Control on a OR b | — | one doubly-controlled gate plus X's | union rule = de Morgan; same cost as AND |
+
+**Where ours says more.** Merging any run of single-qubit gates is one product on S³, where ZX needs a rule with
+trigonometry in it; but standard optimizers already merge this way, so it is simpler to state, not cheaper. AND, OR
+and XOR controls are one dial instead of separate constructions (the ZH-calculus also handles AND natively). And for
+non-commuting phase gadgets our corner weights give the error terms (D1), which ZX rewriting does not produce; that is
+the BCH series of section 8, known math.
+
+**Where ZX has more.** The bialgebra law, local complementation and pivoting rewrite multi-qubit entangling structure
+and cut CNOT and T counts in large circuits. We have nothing for those.
+
+**Verdict:** a clean dictionary to ZX and a unified notation, but in every circuit tested no cheaper circuit than ZX
+or a standard optimizer. A real simplification would have to come from something ZX lacks, and the only candidate here
+is the error side: a rewrite system that carries Trotter error terms along with the circuit.
+
 ---
+
+## 10. Polishing step on every method
+
+Each check script now ends with a cheap polish that swaps an estimate for an exact form, or sharpens a limit. Total cost: about 16 ms across all three scripts.
+
+| Was | Polish | Result | Cost |
+|---|---|---|---|
+| Slab volumes of the 4-cube from 2 million random points (to 3 digits) | Exact Irwin–Hall formula in fractions | 1/24, 11/24, 11/24, 1/24 exactly, also for n = 3, 5 | under 1 ms |
+| k³, k⁴ Trotter terms read off a least-squares fit (to 1e-8) | Exact power series of log(e^{kA}e^{kB}) in rational arithmetic | k², k³, k⁴ match the corner-weight terms with zero error; Strang k² exactly 0 | about 13 ms |
+| Swap-rule turn and Trotter ratio read at the smallest step (miss up to 1e-4) | Richardson extrapolation to step 0 | miss 2e-7 or smaller | under 1 ms |
+| T-counts with a floating tolerance | Angles kept as exact fractions of π | 7 and 14 → 8, no tolerance | under 1 ms |
+| Euler angles for the 12-gate run | One Newton step | unchanged; already exact to rounding | under 1 ms |
+
+The other checks compare exact identities and already agree to about 1e-15, so polishing them changes nothing.
 
 ## Leads, judged on their own merits
 
-1. **The dial k as the knob between Hamiltonians and gates (sections 1 and 7).** Worth following. One parameter
-   turns "add generators" into "multiply gates"; it is the time step, its square is the gate sphere's curvature, and
-   the first-order cost of splitting a Hamiltonian (Trotter error) is that curvature times the swap-rule commutator.
-   The next test has a definite answer either way: do the higher Trotter orders (the k³ and k⁴ terms of
-   Baker–Campbell–Hausdorff) come out as higher rungs or corner terms of our law?
+1. **The dial k as the knob between Hamiltonians and gates (sections 1, 7 and 8).** Tested: the whole Trotter error
+   series is corner terms on the cube (orderings weighted by descents, one weight per slab), not rungs. It is known
+   math in a new picture. What would make it a real lead is section 9's open point: a circuit rewrite system that
+   carries these error terms along, which ZX does not have. Worth trying only if Brennan wants the applied direction.
+5. **ZX comparison (section 9).** A dictionary, not a simplification: same gate counts in every tested circuit.
 2. **Controlled as "multiply by a corner projector" (sections 4 and 5).** Worth following for its reach, not for new
    physics. It says which algebraic facts any "controlled" construction needs (e·e = e for distributing, e† = e for
    Adjoint), and it ties multi-controls and OR-controls to the cube and the union rule we already have. It would make
@@ -220,15 +346,18 @@ commutator. **Known:** first-order Trotter error. **Ours:** that it is the swap 
 
 ## Next (offered, not started)
 
-- Test lead 1 further: the k³ and k⁴ Trotter terms against our rungs and corner terms.
+- Try the open point in section 9: rewrite rules that carry Trotter error terms through a circuit, on a small
+  Hamiltonian-simulation example, and see whether any gate count drops.
 - Write the Lean file for sections 3 to 5 (∘ₖ inverse on the gate sphere, order reversal, idempotent homomorphism,
   the commuting square) on the library's ring structures.
 
 ## Files
 
 - `README.md`: this write-up
-- `checks.py` → `checks_output.txt` (37/37)
-- `figures.py` → `figures/fig1` … `fig9`
+- `checks.py` → `checks_output.txt` (39/39)
+- `figures.py` → `figures/fig1` … `fig9`; `figures_part2.py` → `fig10` … `fig14`
+- `trotter/`: `checks_trotter.py` (19/19), `trotter_lib.py`
+- `zx/`: `checks_zx.py` (15/15)
 - `page_build.py` → `index.html`
 
 ## References
@@ -239,6 +368,10 @@ commutator. **Known:** first-order Trotter error. **Ours:** that it is the swap 
 - R. Cleve, A. Ekert, C. Macchiavello, M. Mosca, "Quantum algorithms revisited", Proc. R. Soc. A 1998 (phase kickback).
 - E. İnönü, E. P. Wigner, "On the contraction of groups and their representations", PNAS 1953.
 - C. M. Dawson, M. A. Nielsen, "The Solovay–Kitaev algorithm", 2005.
+- L. Solomon, "On the Poincaré–Birkhoff–Witt theorem", J. Comb. Theory 1968; B. Mielnik, J. Plebański, "Combinatorial approach to Baker–Campbell–Hausdorff exponents", 1970; R. S. Strichartz, "The Campbell–Baker–Hausdorff–Dynkin formula and solutions of differential equations", J. Funct. Anal. 1987; C. Reutenauer, *Free Lie Algebras*, 1993.
+- R. Stanley, "Eulerian partitions of a unit hypercube", 1977.
+- B. Coecke, R. Duncan, "Interacting quantum observables", 2011 (ZX-calculus); R. Duncan, A. Kissinger, S. Perdrix, J. van de Wetering, "Graph-theoretic simplification of quantum circuits with the ZX-calculus", Quantum 2020; A. Kissinger, J. van de Wetering, "Reducing the number of non-Clifford gates in quantum circuits", PRA 2020; R. Vilmart, "A near-minimal axiomatisation of ZX-calculus for pure qubit quantum mechanics", LICS 2019.
+- M. Amy, D. Maslov, M. Mosca, "Polynomial-time T-depth optimization of Clifford+T circuits via matroid partitioning", 2014 (phase polynomials, phase folding).
 - Microsoft, Q# language documentation: functors Adjoint and Controlled, specializations `adjoint invert`, `adjoint self`, `controlled distribute`.
 
 Page: https://claude.ai/artifact/VeVmLnshwkAUSvqFcvXof4 (slug e7fc20f4-1f9e-4a5e-bdfa-fffe89815177, version 1795656952-2106).

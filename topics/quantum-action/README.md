@@ -21,7 +21,7 @@ the creases of space (Regge), and in 3D quantum gravity that sum really does com
 
 **Strongest lead.** In the one quantum gravity that fully works (3D), turning on the q dial curves every building block
 and adds a cosmological constant, exactly (check E3, correlation 0.999). Our q is the swap rule's face weight and our
-plane dial is 1/R², so this is the place where the theory's own dials land inside a working quantum gravity. The
+curvature dial (the plane dial) is 1/R², so this is the place where the theory's own dials land inside a working quantum gravity. The
 physics is known (Turaev–Viro 1992; Mizoguchi–Tada 1992). It is worth following because it gives a concrete, checkable
 next step: our swap rule yx = q·xy is the "quantum plane", and the quantum-group 6j symbols are its recoupling numbers,
 so we can test whether the identities that make 3D quantum gravity independent of how space is cut up follow from our
@@ -80,7 +80,7 @@ area/ħ. Right: the three readings.*
 
 ![one dial](figures/fig3-one-dial-fermat-newton-einstein.png)
 
-*Fig 3. Paths drawn in the (place, time) plane for three settings of the plane dial d. Dotted: points one unit of that
+*Fig 3. Paths drawn in the (place, time) plane for three settings of the curvature dial d. Dotted: points one unit of that
 plane's "length" from the start (circle, flat line, hyperbola). Right: every wiggle raises the action at every d.*
 
 - One formula covers all three: **S_d = (m/d) ∫ √(1 + d v²) dt**.
@@ -208,7 +208,7 @@ curved (spherical) tetrahedron plus a volume term, plus π/4. Orange dashed: the
   the flat formula it fails (0.03 to 0.75).
 - **Known:** Regge 1961; Ponzano–Regge 1968 (proved by Roberts 1999); Turaev–Viro 1992; Mizoguchi–Tada 1992;
   Taylor–Woodward 2005. **Ours:** reading the deficit as the swap-rule turn, the spin as an action area, and q as our
-  face weight whose plane dial is 1/R².
+  face weight whose curvature dial is 1/R².
 - **Lead: yes, worth following.** Our face weights are q-commuting inputs (yx = q·xy), which is the "quantum plane",
   and the quantum group whose 6j symbols these are is the symmetry of that plane. The identity that makes 3D quantum
   gravity independent of how you cut space into tetrahedra (the Biedenharn–Elliott "pentagon" identity, and the

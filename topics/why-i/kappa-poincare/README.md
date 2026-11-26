@@ -43,7 +43,7 @@ What's ours is only where things sit on the repo's own map. The one physics limi
 ## 3. Where the known laws sit on the repo's plane (K3, K4)
 
 - **Magueijo–Smolin's energy law** works out to (E + E' − 2l·EE')/(1 − l²·EE').
-  - That is the repo's (a + b + kab)/(1 − dab) with k = −2l and d = l². It sits on the line k² = 4d, where the plane's two walls merge into one, i.e. κ = d − k²/4 = 0.
+  - That is the repo's (a + b + kab)/(1 − dab) with k = −2l and d = l². It sits on the line k² = 4d, where the plane's two walls merge into one, i.e. the discriminant Δ = k² − 4d is 0.
   - The double wall sits at E = 1/l, so the invariant Planck energy is exactly the merged wall: E ⊕ 1/l = 1/l. This placement is ours; the formula is Judes–Visser's.
 - **The other placements.**
   - κ-Poincaré massless momenta sit at (k, d) = (−1/κ, 0).

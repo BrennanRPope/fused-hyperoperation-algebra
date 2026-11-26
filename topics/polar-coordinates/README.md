@@ -58,9 +58,9 @@ foundation the rest stands on.
 
 ---
 
-## 2. The plane dial d decides whether an axis is an angle or a radius
+## 2. The curvature dial (the plane dial) d decides whether an axis is an angle or a radius
 
-![Plane dial: angle or radius](figures/fig2-plane-dial-angle-or-radius.png)
+![Curvature dial: angle or radius](figures/fig2-plane-dial-angle-or-radius.png)
 
 *Figure 2. Each panel is the plane of numbers x + yε with ε² = kε − d. The coloured curve is "radius 1"
 (x² + kxy + dy² = 1). Orange dots: start at 1 and compose with the same step again and again. Left, the dots
@@ -189,9 +189,9 @@ our code (`zeta` / `mobius`) runs both the point side and the shape side.
 
 ---
 
-## 7. The p dial: cross-polytope → sphere → cube
+## 7. The ℓp dial (the roundness dial): cross-polytope → sphere → cube
 
-![p dial](figures/fig8-p-dial-cross-polytope-sphere-cube.png)
+![ℓp dial](figures/fig8-p-dial-cross-polytope-sphere-cube.png)
 
 *Figure 8. Left: |u₁|ᵖ + |u₂|ᵖ = 1 for p = 1, 1.5, 2, 4, 12, ∞. Right: p = 1 (octahedron, the
 cross-polytope), p = 2 (sphere), p = ∞ (cube).*
@@ -202,7 +202,7 @@ exp of a soft maximum of log|uᵢ| at temperature 1/p (check H1), and p → ∞ 
 becomes a max (check H2). That is the same limit as the Maslov dequantization page (∘ₖ with ⊕ₖ is a semiring at
 every k).
 
-**Known:** p-norm balls (Lamé curves / superellipses); log-sum-exp → max. **Ours:** linking the p dial to our
+**Known:** p-norm balls (Lamé curves / superellipses); log-sum-exp → max. **Ours:** linking the ℓp dial to our
 Maslov result.
 
 **Where the cross-polytope sits.** It is not in the family of section 6: its edges point along eᵢ + eⱼ, which is

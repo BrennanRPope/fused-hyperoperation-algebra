@@ -2,9 +2,11 @@
 
 Nov 25, 2026. Part of topics/why-i.
 
+*Notation: κ, κ₁ and κ₂ on this page are the Cayley–Klein labels of the literature (Herranz–Ortega–Santander). The dials keep their letters k and d; in the dial names (`affine-names/`) the single label κ is the reading −Δ/4 = d − k²/4, with Δ = k² − 4d.*
+
 **Verdict.** Yes, k is a Cayley–Klein dial, but only one of them at a time. After a change of coordinates it is the curvature label κ = −k²/4 of whatever one-parameter motion the chain composes. Real k is the hyperbolic case (boosts, κ < 0). Zero is the flat case. Imaginary k is the elliptic case (rotations, κ > 0). So our step from k = −1 to k = −i is exactly the Cayley–Klein flip from a boost to a rotation.
 
-The plane's second dial d is **not** the second Cayley–Klein dial. Together, k and d collapse to one value, κ = d − k²/4.
+The plane's second dial d is **not** the second Cayley–Klein dial. Together, k and d collapse to one value, the label κ = d − k²/4 = −Δ/4, where Δ = k² − 4d is the form's discriminant.
 
 No single-number law can hold two Cayley–Klein dials, because all nine plane geometries have motions that don't commute. In higher dimensions there is one label per pair of directions, but only N of them are free; the rest are products of those N. The circle operation does carry every dial when its elements are matrices. There the dials live in the matrices, not in k.
 
@@ -39,7 +41,7 @@ No single-number law can hold two Cayley–Klein dials, because all nine plane g
 
 ## 3. The plane's second dial d is not κ₂ (checks D1–D4)
 
-- **Ours, from two known results:** every law (a + b + kab)/(1 − dab) is the κ-tangent law in disguise, under the same Cayley map, with **κ = d − k²/4** (D1).
+- **Ours, from two known results:** every law (a + b + kab)/(1 − dab) is the κ-tangent law in disguise, under the same Cayley map, with **κ = d − k²/4 = −Δ/4** (D1).
   - So (k, d) are two coordinates on one dial, and lines of equal κ are the parabolas d = κ + k²/4.
   - Coleman and McGuinness's discriminant is k² − 4d = −4κ. It counts the walls: two when κ < 0, none when κ > 0 (D2).
 - **Same geometry, different coordinates (D3):** the repo's relativity point (0, −1/c²), pure ∘ₖ at k = 2/c, and every point on the repo's line d = k²/4 − 1 all have κ = −1/c².

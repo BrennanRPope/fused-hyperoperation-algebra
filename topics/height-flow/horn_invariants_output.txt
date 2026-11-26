@@ -4,7 +4,7 @@ formal E^s = x + ( s/2 ) x^2 + ( s**2/4 - s/12 ) x^3 + ...;  resit(E^s) = 1/(3*s
 PASS resit(E^s) = 1/(3s) at every height s: height times iterative residue is the constant 1/3
 PASS corner dial: resit((e^{kx}-1)/k) = 1/3 for every k (conjugate to e^x - 1 by x -> kx; the dial is invisible locally)
 plane dial: G = t + ( k/2 ) t^2 + ( (2*d + k**2)/6 ) t^3;  resit = -(4*d - k**2)/(3*k**2)
-PASS plane dial: resit(G_{k,d}) = 1/3 - 4d/(3k^2) = -(4/3) kappa/k^2 with kappa = d - k^2/4 (the Cayley-Klein number); zero exactly at kappa = 0
+PASS plane dial: resit(G_{k,d}) = 1/3 - 4d/(3k^2) = (1/3) Delta/k^2 with Delta = k^2 - 4d (the form's discriminant; curvature = -Delta/4); zero exactly at Delta = 0
 upper horn, Im Z = 2.0: Im W ~ 1.444; A0 = (-5.95721e-29 - 2.28782e-28j), A1 = (-0.0854052381401 + 0.02524579954j), A2 = (0.0066198705 + 0.010588299j), fit resid 2.4e-27
 upper horn, Im Z = 2.5: Im W ~ 1.949; A0 = (-4.65877e-32 - 1.88597e-33j), A1 = (-0.0854052381401 + 0.02524579954j), A2 = (0.0066198705 + 0.010588299j), fit resid 2.69e-31
 upper horn, Im Z = 3.0: Im W ~ 2.453; A0 = (2.09748e-32 + 1.25296e-34j), A1 = (-0.0854052381401 + 0.02524579954j), A2 = (0.0066198705 + 0.010588299j), fit resid 2.53e-31
@@ -33,7 +33,7 @@ PASS fractional heights: the two petals' E^s disagree by exactly the horn coeffi
   −log(1 − x): A1 = (-61.52160561 - 18.18579465j), A_-1 = (-0.0001185608638 + 3.50466068e-5j), sqrt|A1 A_-1| = 0.08905843641, strip spread 7.8e-22, fit resid 8.7e-29
   x + x²/2: A1 = (-0.05895043056 + 0.0100098659j), A_-1 = (-8.236560661e+15 - 1.398579567e+15j), sqrt|A1 A_-1| = 22350579.22, strip spread 2.5e-14, fit resid 6.5e-26
   plane dial k = 1, d = −1/4: A1 = (-0.08122593888 + 0.02136822761j), A_-1 = (-2.187093517e+10 - 5753619190.0j), sqrt|A1 A_-1| = 43582.47225, strip spread 1.9e-22, fit resid 4.1e-31
-  plane dial k = 1, d = 1/4 (κ = 0): A1 = (-2.030313223e-24 + 2.315749546e-53j), A_-1 = (-2.030313223e-24 - 2.315749546e-53j), sqrt|A1 A_-1| = 2.030313223e-24, strip spread 1.2, fit resid 1.7e-31
+  plane dial k = 1, d = 1/4 (Δ = 0): A1 = (-2.030313223e-24 + 2.315749546e-53j), A_-1 = (-2.030313223e-24 - 2.315749546e-53j), sqrt|A1 A_-1| = 2.030313223e-24, strip spread 1.2, fit resid 1.7e-31
 germs that all fade like -2/n:
    e^x − 1 (our height-1 map)                 resit = 1/3     |A1+| = 0.08905843641  shift-free size sqrt|A1 A_-1| = 64.15318452
    Möbius x/(1 − x/2)                         resit = 0       |A1+| = 2.030313223e-24 shift-free size sqrt|A1 A_-1| = 2.030313223e-24
@@ -42,9 +42,9 @@ germs that all fade like -2/n:
    −log(1 − x)                                resit = -1/3    |A1+| = 64.15318452    shift-free size sqrt|A1 A_-1| = 0.08905843641
    x + x²/2                                   resit = 1       |A1+| = 0.05979423617  shift-free size sqrt|A1 A_-1| = 22350579.22
    plane dial k = 1, d = −1/4                 resit = 2/3     |A1+| = 0.08398960827  shift-free size sqrt|A1 A_-1| = 43582.47225
-   plane dial k = 1, d = 1/4 (κ = 0)          resit = 0       |A1+| = 2.030313223e-24 shift-free size sqrt|A1 A_-1| = 2.030313223e-24
+   plane dial k = 1, d = 1/4 (Δ = 0)          resit = 0       |A1+| = 2.030313223e-24 shift-free size sqrt|A1 A_-1| = 2.030313223e-24
 PASS Möbius x/(1 - x/2): resit 0 and trivial horn map (A1 = 0): it embeds in an analytic flow, unlike e^x - 1
-PASS plane dial at kappa = 0 is that Möbius map: every height analytic there
+PASS plane dial at Delta = 0 is that Möbius map: every height analytic there
 PASS e^x - 1 cut at x^3 has the SAME fading rate and the SAME residue 1/3, yet a different horn map: only the horn map tells them apart
 
 14 of 14 checks pass

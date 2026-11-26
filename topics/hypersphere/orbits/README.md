@@ -8,8 +8,8 @@ perihelion shift (Mercury's 43″ a century) and hydrogen's fine structure both 
 Checks: `checks_orbits.py` → `checks_orbits_output.txt`, **23 of 23 pass**, and `six/checks_six.py` →
 `six/checks_six_output.txt`, **11 of 11 pass**, and `twov/checks_twov.py` → `twov/checks_twov_output.txt`, **8 of 8 pass**, and
 `dcopy/checks_dcopy.py` → `dcopy/checks_dcopy_output.txt`, **11 of 11 pass** (numpy, scipy; real orbit simulations, not
-formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems), compiled into the
-library as `FusedAlgebra.Topics.Hypersphere` on Nov 26. Colour key as before: **orange = known, blue = ours**.
+formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems), **not
+compiled here**. Colour key as before: **orange = known, blue = ours**.
 
 ## The result in three sentences
 
@@ -37,7 +37,7 @@ gyroscopes into one swap-rule picture, and section 6 says where each piece of th
 
 *Figure O1. A: a relativistic orbit; the ellipse turns a little each lap. B: on Fock's momentum sphere each lap is a
 great circle, and the circle tilts lap by lap. C: the amount it tilts is the area of a disc in relativity's velocity
-space (a sphere of imaginary radius c, the plane dial at d = −1/c²).*
+space (a sphere of imaginary radius c, the curvature dial at d = −1/c²).* (The curvature dial was formerly called the plane dial.)
 
 **Known.** Fock (1935) mapped momentum p to the unit 3-sphere by stereographic projection with radius p0 = √(−2E)
 (Lean `fock_on_sphere`). Each Kepler orbit's momenta then lie on one great circle (check K3), tilted by the
@@ -284,7 +284,7 @@ on known parts.
 
 1. Try the same three-piece split for a spinning black hole (Kerr), whose Kerr–Schild form is also exact.
 2. Read Biedenharn (1983) in full for the R1 equality, and search for the T = (N − 4v²)/B grouping.
-3. ~~Compile `../lean/Hypersphere.lean` in the shared library (33 theorems).~~ Done Nov 26: all 33 compile as `Topics/Hypersphere`.
+3. Compile `../lean/Hypersphere.lean` in the shared library (33 theorems).
 
 ## Files
 

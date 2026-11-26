@@ -2,6 +2,8 @@
 
 Nov 25, 2026. Part of topics/why-i.
 
+*Notation: κ₁ and κ₂ are the Cayley–Klein labels of the literature, and κ in κ-Poincaré is its Planck-energy scale. The dials keep their letters k and d (see `affine-names/`).*
+
 **Verdict.** No. The framework doesn't make the gravity step forced, and this isn't a lead worth following for that goal.
 
 The cube of theories (c, G, ħ) is a classification, not a derivation. Its relativity and quantum edges are backed by stability theorems. Its gravity edge isn't, and the results that do force gravity's form (the spin-2 bootstrap and Lovelock's theorem) are field-theory arguments that a chain of weighted circle operations can't express. What our chains do reach is known structure: matrix chains carry the cosmological-constant dial Λ, and the affine stretch-and-shift law is exactly κ-Poincaré's momentum composition.
@@ -27,7 +29,7 @@ The cube of theories (c, G, ħ) is a classification, not a derivation. Its relat
 
 - **Scalar k alone** turns on one wall at −1/k and the laws on the earlier pages (bounded counting, inclusion–exclusion, Tsallis, primon gases). It is a change of ruler, not a deformation: log(1 + kx)/k turns it back into plain addition (S5, S6).
 - **k imaginary** turns the lift into a unit phase, giving checkerboard amplitudes and gauge phases. Still the same ruler story.
-- **k with d** still gives one Cayley–Klein label, κ = d − k²/4 (Cayley–Klein page). Two walls give velocity addition; no wall gives tangent addition.
+- **k with d** still gives one Cayley–Klein label, −Δ/4 = d − k²/4 (Cayley–Klein page). Two walls give velocity addition; no wall gives tangent addition.
 - **Matrix chains with κ₂ = −1/c²** give Lorentz boosts, Thomas–Wigner rotation and Maxwell invariance. This is a published stable step.
 - **Matrix chains with κ₁** (curvature) give de Sitter, anti-de Sitter and Newton–Hooke. This is the last stable step (S3, S8).
 - **The order dial ħ** gives the Heisenberg phase and Moyal, with i and ħ put in by hand. This is a published stable step.

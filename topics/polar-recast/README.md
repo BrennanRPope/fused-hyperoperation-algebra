@@ -18,7 +18,7 @@ reading, not a new theorem). No Lean was compiled in this pass (no Lean on this 
 The polar view genuinely changes five families and leaves the rest as they were.
 
 - **Gets simpler or unifies:** the core law (composing is adding radii, and the flip disappears), the rungs (each
-  rung is one more radius taken), the plane dial (it is the choice between an angle and a radius, and the
+  rung is one more radius taken), the curvature dial (it is the choice between an angle and a radius, and the
   composition-shape line counts angles 2 → 1 → 0), the swap rule (precession, the cube's face weights and Planck's
   constant become one area law), statistics (each model has its own shape), quantum correlations (round in the usual
   coordinates, straight in angle coordinates) and Lee–Yang (every zero sits at radius 0).
@@ -27,7 +27,7 @@ The polar view genuinely changes five families and leaves the rest as they were.
 - **Unchanged:** Navier–Stokes, the Newton's G lead, curved space by counting, Hopf invariant one, Kummer–Wilson.
 - **Harder, or no help:** Fermat. In radius coordinates every Fermat curve looks like the same line shrunk by n,
   so everything that makes Fermat hard sits in the angles.
-- **Opens a lead:** after the literature pass (section 10), the strongest is that **our plane dial is Hirzebruch's
+- **Opens a lead:** after the literature pass (section 10), the strongest is that **our curvature dial (the plane dial) is Hirzebruch's
   two-parameter genus**, which joins the dial and the swap rule through one number q and hands both a large known
   theory. Entropy as a shape (section 6b) turned out to be already known in its sign form (Hernández-Cuenca, Hubeny
   and Jia), so it is now a picture, not a lead.
@@ -43,7 +43,7 @@ independent switches: the core law and independent events.*
 |---|---|---|
 | 1 Core law and its algebra (374) | **Cube** | 1 + (a∘b∘c) has one term per corner; independent axes, one switch each |
 | 2 Rungs, height, calculus (352) | **Half-line, read again and again** | each rung is one more logarithm of the same axis |
-| 3 Plane dial, composition shapes (576) | **Conics: circle, parabola, hyperbola** | "radius 1" is a circle when the axis is an angle, a hyperbola when it is a radius |
+| 3 Curvature dial, composition shapes (576) | **Conics: circle, parabola, hyperbola** | "radius 1" is a circle when the axis is an angle, a hyperbola when it is a radius |
 | 4 Swap rule: precession, curvature (153) | **Sphere, plane, saddle** | the turn around a loop is curvature × area |
 | 5 Corners, shapes, counting (468) | **Generalized permutohedra** | one weight per corner slides between simplex, cube, associahedron, permutohedron |
 | 6 Probability, information, heat (508) | **Simplex** (one outcome of many); **cube** (independent events); **elliptope** (quantum correlations) | probabilities sum to 1; independence multiplies; quantum correlations sit between the local polytope and the cube |
@@ -96,7 +96,7 @@ by the Écalle–Voronin horn coefficient, as that page found.
 **Known:** iterated logarithms, Abel and Fatou coordinates. **Verdict: simpler; it reorganizes the height-flow
 results but adds nothing to them.**
 
-## 3. Plane dial: an angle or a radius (gets simpler, unifies)
+## 3. Curvature dial: an angle or a radius (gets simpler, unifies)
 
 ![Count of angles](figures/fig3-count-of-angles.png)
 
@@ -140,7 +140,7 @@ The polar view puts three things in one slot, the angle part:
    position and momentum, and the swap phase per unit area tends to 1, that is 1/ħ in these units (D4: 0.9894 at
    j = 5, 0.9998 at j = 320).
 
-So "swapping costs a turn proportional to area" covers the plane dial d (curved space), the face weight q (solitons)
+So "swapping costs a turn proportional to area" covers the curvature dial d (curved space), the face weight q (solitons)
 and ħ (quantum phase space). The sphere-to-plane step is the Inönü–Wigner contraction of rotations to the Heisenberg
 group (Holstein–Primakoff), which is known.
 
@@ -313,11 +313,142 @@ unchanged.
 **Shape: the log axis.** Chemistry (log K, pH, Nernst, Arrhenius), biology and finance (log returns, Fisher's rule)
 were written in radius coordinates all along. Unchanged.
 
+## 10. What the literature already has, and the super logarithm (Nov 26)
+
+*Asked by Brennan on a call: whether any of the polar simplifications yield a lead, and whether there is literature
+built on what we found; then whether the super logarithm falls out of a different shape, or out of changing from
+one shape to another. Checks in `literature/`: `genus_check.py` (all 20 genus values match), `tf_check.py` (357 of
+357), `superlog_shapes.py` (flow identities exact in sympy), `rigidity_check.py`.*
+
+**Spoken result.** The strongest lead is that our curvature dial is a well-known object in topology, Hirzebruch's
+two-parameter genus, and through it the curvature dial and the swap rule turn out to be one number. The super logarithm
+does not fall out of any single shape: every shape in the polar system has a simple ruler, and the rungs between
+whole heights match no shape past the third term. It falls out of the change from one shape to the next, done a
+fractional number of times, and what makes that unique is the pinch point at zero, which is known math.
+
+![Literature board](figures/fig17-literature-board.png)
+
+*Figure 17. Each simplification, what is already known and by whom, what is close or ours, and whether it opens a
+lead.*
+
+### 10a. The curvature dial is Hirzebruch's two-parameter genus (lead)
+
+![Curvature dial is a genus](figures/fig14-plane-dial-is-a-genus.png)
+
+*Figure 14. Left: the plane-dial map, with the named genera at their points. Middle: where q = β/α lands for each
+dial; angle dials put it on the unit circle. Right: the six staircase paths of Gr(2,4), weighted q^area; their sum is
+the genus of that Grassmannian.*
+
+- **Known.** The law (x + y + kxy)/(1 − dxy) is the formal group law of Hirzebruch's two-parameter Todd genus
+  (topologists write it (x + y + μ₁xy)/(1 + μ₂xy), so k = μ₁, d = −μ₂). Its special points are named: d = 0 is the
+  Todd genus (our core law), k = 0 is the signature, and k² = 4d is the Euler characteristic. The χ_y-genus of a
+  Grassmannian is a Gaussian binomial, and Gaussian binomials count staircase paths by area (Pólya 1969). Musin
+  (2011, building on Krichever) proved that the genera rigid under circle actions are exactly these two-parameter
+  ones.
+- **Checked here.** Write 1 + kx + dx² = (1 + αx)(1 + βx). The genus then gives CP^n the q-number with q = β/α, and
+  fixed-point sums on CP², CP³, Gr(2,4) and the flag variety Fl(3) give exactly the q-numbers, q-binomials and
+  q-factorials for five dial settings (20 of 20 values).
+- **Ours (a bridge, not a new theorem).** In the angle case (k² < 4d) α and β are complex conjugates, so q sits
+  on the unit circle and is a turn. In the radius case q is real, and on the straight line q = 1. That is the swap
+  rule's three cases (rotation, boost, Galilean), so **the dial and the swap rule are one number, q = β/α**, and our
+  cube face weights at any dial are genera of Grassmannians.
+- **Is it worth following?** Yes, on its own merits. It gives two of our families a single, large, known home, with
+  tools we can use directly: fixed-point formulas, rigidity, and the elliptic genera (Krichever; Buchstaber–Bunkova)
+  that should sit at the elliptic end of our dial, though I have not checked that. It also makes testable
+  predictions. For example, the permutohedron's corners are the fixed points of the flag variety, so face weights on
+  the permutohedron should be that genus. Next: put the CP^n identity in Lean, and check partial flag varieties
+  against our q-multinomials.
+
+### 10b. Entropy as a shape: already known (correction)
+
+The one-sign pattern of section 6b is Proposition 3 of Hernández-Cuenca, Hubeny and Jia (arXiv:2309.06296). Section
+6b has been corrected. The neighbouring open question is Hubeny and Liu's tripartite-form conjecture (2026). In our
+pictures it says every rule is a stack of upward corner intervals, each starting at a 3-region corner. All 357
+five-region rules split that way. That much was already known up to six regions, so this is a clean drawing of an
+open conjecture, not new evidence.
+
+![Rules split into intervals](figures/fig15-rules-split-into-tripartite-intervals.png)
+
+*Figure 15. Left: one cyclic rule's corners, split into five intervals; each colour is one negative conditional
+tripartite information. Right: every rule in every family splits this way.*
+
+### 10c. The other simplifications
+
+- **Composing adds radii.** Textbook: the logarithm of the multiplicative formal group law. Tsallis' q-sum is the
+  same law (Tsallis 1988; Tempesta's group entropies), and the flip is the known k ↔ −k duality (Tsallis q ↔ 2 − q).
+  No lead.
+- **Rungs as stacked radii.** Known: regular iteration (Szekeres, Écalle). The resemblance to level-index numbers
+  (Clenshaw–Olver 1984) is real. There the level is the number of logs taken (our rung count) and the index is the
+  fractional part. Their in-between values are a linear patch; Clenshaw, Lozier, Olver and Turner (1986) note there
+  is no definitive choice, and Walker (1991) built smooth versions. Our rung ruler is the regular, analytic choice for
+  e^x − 1. That is a small, practical lead (a canonical smooth level-index system), worth it only if someone needs
+  one.
+- **Angle versus radius.** "Wick rotation" is exact only at k = 0: putting x → ix turns tan's law into tanh's by
+  flipping d. For general k the switch is between the two real forms of the same complex group, set by the sign of
+  k² − 4d. Known.
+- **Right shape per family.** Known: moment polytopes (Atiyah, Guillemin–Sternberg), marginal polytopes of
+  exponential families (Wainwright–Jordan), generalized permutohedra (Postnikov), the elliptope (Laurent–Poljak) and
+  the Landau/Masanes boundary. No new lead on its own; the permutohedron as the flag variety's shape feeds 10a.
+- **Lee–Yang, amoebas, solitons.** Known: Lee–Yang 1952; amoebas (Gelfand–Kapranov–Zelevinsky, Mikhalkin);
+  Maslov dequantization; ultradiscrete KdV and the box-ball system. Soliton heights sit close to Kodama–Williams.
+  No new lead.
+
+### 10d. The super logarithm and the shapes
+
+![Super log is the change between shapes](figures/fig16-super-log-is-the-change-between-shapes.png)
+
+*Figure 16. Left: the plane-dial shape that best matches the rung at height s has discriminant exactly s, so it is
+a circle below addition and a hyperbola above it. Middle: the rung leaves that shape at the fourth term by s(s−1)/48,
+which is zero only at heights 0 and 1. Right: the same fixed-point sum for CP² with five random torus weights; the
+two shapes give one number every time, and rung 2 wobbles.*
+
+Builds on `../fractional-rungs/e-every-height/` (the supernatural log ln_s(X) = E^−s(X − 1), E = e^x − 1).
+
+- **The supernatural log is a radius, in exactly our sense.** Each rung operation B_s(x, y) = E^s(E^−s x + E^−s y)
+  is a one-dimensional formal group law, and its logarithm is E^−s. So ln_s is the radius of the height-s operation,
+  just as log(1 + kx)/k is the radius of the dial-k operation. The framework is known (Lazard); applying it to
+  B_s is ours.
+- **No shape carries it.** Every plane-dial shape has an elementary ruler, the log of a fraction of linear terms.
+  The best-matching shape at height s has k = s and d = s(s − 1)/4, so k² − 4d = s exactly (ours, exact in sympy).
+  It then misses at the fourth term by s(s − 1)/48. Only addition (s = 0) and our operation (s = 1) are shapes; rung 2
+  already is not.
+- **Shapes are rigid; rungs are not.** Any ruler defines a genus. Musin's theorem says the rigid ones are exactly the
+  plane-dial shapes, and the right panel shows rung 2 failing it numerically.
+- **Where the super log comes from: changing shape.** Climbing one rung is conjugating by e^x − 1, which carries the
+  height-s operation to height s + 1. That is the change from one shape to the next. The supernatural log is that
+  change done s times. What makes "s times" unique for fractional s is the pinch point at zero, the parabolic fixed
+  point behind our horn fingerprints (Szekeres, Écalle). That part is known.
+- **A consequence (ours, short argument).** For fractional s the operation B_s has no convergent power series at 0.
+  If it had one, its logarithm would converge too, and Baker proved the fractional iterates of e^x − 1 do not. So
+  fractional rungs live on the half-line away from 0, never as a shape around 0.
+- **Not examined.** The roundness dial (Maslov's temperature) moves + toward max, which is a different direction
+  from height. The cube, simplex, sphere and cross-polytope are shapes of where corners sit, and they don't change
+  the operation, so they cannot produce the super log.
+
+**Is it worth following?** It answers the question, but it opens no strong lead. The shapes cannot give a new route
+to the super log, because none of them reaches it. The useful outcome is the clean statement that the super log
+lives in the change between shapes, pinned down by the parabolic point. The one small applied lead is the smooth
+level-index system in 10c.
+
+**Known versus ours, in this section.** Known: Hirzebruch's two-parameter genus and its law; χ_y of Grassmannians
+as Gaussian binomials; Musin/Krichever rigidity; Hernández-Cuenca–Hubeny–Jia Proposition 3; the tripartite-form
+conjecture; formal group laws (Lazard); regular iteration and Baker's divergence; level-index arithmetic. Ours: the
+dial-to-q bridge with the swap rule; the corner-interval drawing; the best-fitting shape at height s (k² − 4d = s)
+and its fourth-order gap; the no-convergent-series consequence for B_s; and the reading of the super log as the
+change between shapes.
+
+**References for this section:** F. Hirzebruch, *Topological Methods in Algebraic Geometry*; O. Musin, "On rigid
+Hirzebruch genera", Moscow Math. J. 2011, arXiv:0809.3063; V. Buchstaber, E. Bunkova, arXiv:1010.0944;
+S. Hernández-Cuenca, V. Hubeny, F. Jia, arXiv:2309.06296; V. Hubeny, Y. Liu, arXiv:2609.22504; T. He, V. Hubeny,
+M. Rangamani, JHEP 07 (2020) 245; C. W. Clenshaw, F. W. J. Olver, "Beyond floating point", J. ACM 1984;
+P. Walker, Math. Comp. 1991; G. Pólya, 1969; P. Tempesta (group entropies).
+
+
 ---
 
 ## Leads, ranked on their own merits (updated after the literature pass)
 
-1. **The plane dial is a genus** (section 10). Worth following: it gives our dial and our swap rule one known home,
+1. **The curvature dial is a genus** (section 10). Worth following: it gives our dial and our swap rule one known home,
    with rigidity and fixed-point formulas we can use, and makes testable predictions about face weights.
 2. **Swap equals area** (4). Now folded into lead 1: the swap rule's q is the dial's ratio of roots.
 3. **Pair weights as heights** (5). Smaller, and close to Kodama–Williams; the open question is resonant solitons.
@@ -326,7 +457,7 @@ were written in radius coordinates all along. Unchanged.
 
 ## Next (offered, not started)
 
-- Lean: the plane dial's logarithm gives CP^n the value q-number (one series identity).
+- Lean: the curvature dial's logarithm gives CP^n the value q-number (one series identity).
 - Check the plane-dial genus on partial flag varieties against our face weights (q-multinomials).
 - Lean (Mac Studio): A2 (flip leaves the radius alone), B2 (rung 3 after two radii), E5 (top corner = I3), E6 (the
   cyclic inequality's corner coefficients). All are short identities.

@@ -177,11 +177,11 @@ invariants tell such maps apart:
 | e^x − 1 | **1/3** = the two-loop ρ of Part 2 | not a translation: \|A₁⁺\| = 0.0890584364122, shift-free size √(A₁A₋₁) = 64.1531845185 | résit: direct from the known formula. Horn numbers: ours; I did not find them published. |
 | E^s (height s) | **1/(3s)** | for whole n: \|A_n(Eⁿ)\| = \|A₁(E)\|/n (n = 2 checked) | 1/(3s) follows from known theory (iterates divide résit); stating it along our height is ours |
 | corner dial (e^{kx} − 1)/k | 1/3 for every k | same as E | conjugate to E by x → kx, so the dial is invisible locally |
-| plane dial (a+b+kab)/(1−dab) | **−(4/3)κ/k²**, κ = d − k²/4 | trivial at κ = 0 (Möbius) | ours (simple algebra); plane law is Coleman–McGuinness 1991 |
+| curvature dial (a+b+kab)/(1−dab) | **(1/3)Δ/k²**, Δ = k² − 4d | trivial at Δ = 0 (Möbius) | ours (simple algebra); plane law is Coleman–McGuinness 1991 |
 
 ![f9](figures/f9_residue_height_and_dial.png)
-*f9. A: height times residue is 1/3 at every height. B: the plane dial moves the
-residue along a line in κ/k² and reaches 0 at κ = 0, where the map is Möbius
+*f9. A: height times residue is 1/3 at every height. B: the curvature dial (the plane dial) moves the
+residue along a line in Δ/k² and reaches 0 at Δ = 0, where the map is Möbius
 and every height is analytic.*
 
 Also checked:
@@ -235,7 +235,7 @@ operation special. It does give the operation a fingerprint: the pair
   - stable across three strips (spread 2e-23);
   - the A₀⁻ relation and the mirror relation hold.
 - The sin πs gap formula is derived and checked numerically but not written as a proof.
-- Horn maps for the plane dial with κ ≠ 0 are computed for one point only.
+- Horn maps for the curvature dial with Δ ≠ 0 are computed for one point only.
 
 ---
 
