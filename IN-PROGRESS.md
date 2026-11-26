@@ -35,3 +35,5 @@ The Mathlib map (`topics/mathlib-map/`) was added on Nov 26, ported to the 1.0 n
 When syncing again, copy the current state of every folder and update INDEX.md.
 
 Nov 26 (late): `topics/dial-audit/` added as DRAFT (which dials are fundamental, plus the derived-dial mixing chart in DERIVED-DIALS.md).
+
+Nov 26 (late): `MathlibMap/DepthDerived.lean` (shape-dials section 6, Wythoff depth derived) built clean in the Mathlib CI job after two fixes (Mathlib's name `Real.tendsto_one_add_div_rpow_exp` and a closing `ring`, no statement changed), and now gates: the Mathlib map is 13 modules and 53 theorems, with no staged drafts left.

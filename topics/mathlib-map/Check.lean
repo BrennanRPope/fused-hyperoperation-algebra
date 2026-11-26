@@ -56,3 +56,8 @@ open MathlibMap
 #print axioms MathlibMap.FaceDial.face_le_of_mem_shape
 #print axioms MathlibMap.FaceDial.iInter_shape
 #print axioms MathlibMap.FaceDial.shape_two
+#print axioms MathlibMap.DepthDerived.argmax_add
+#print axioms MathlibMap.DepthDerived.argmax_smul_add
+#print axioms MathlibMap.DepthDerived.chance_complement
+#print axioms MathlibMap.DepthDerived.odds_rescale
+#print axioms MathlibMap.DepthDerived.face_to_temperature

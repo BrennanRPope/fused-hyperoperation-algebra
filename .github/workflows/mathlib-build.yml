@@ -96,16 +96,3 @@ jobs:
           lake env lean Check.lean 2>&1 | tee /tmp/mathlib-map-check.log
           test "${PIPESTATUS[0]}" -eq 0
           if grep -q "sorryAx" /tmp/mathlib-map-check.log; then echo "sorry found"; exit 1; fi
-
-      # Staged drafts (reported, not yet required). Each was written without a Lean toolchain;
-      # its errors show in this log and the job stays green. Once a step is clean, the file is
-      # promoted (imported in MathlibMap.lean, axioms printed in Check.lean) and its step removed.
-      - name: Mathlib map, staged draft DepthDerived (reported, not yet required)
-        if: hashFiles('topics/mathlib-map/MathlibMap/DepthDerived.lean') != ''
-        continue-on-error: true
-        working-directory: topics/mathlib-map
-        run: |
-          lake build MathlibMap.DepthDerived 2>&1 | tee /tmp/depth-derived.log
-          test "${PIPESTATUS[0]}" -eq 0
-          if grep -q "declaration uses 'sorry'" /tmp/depth-derived.log; then echo "sorry found"; exit 1; fi
-

@@ -66,10 +66,7 @@ power term tends to the exponential, which is the temperature route. -/
 theorem face_to_temperature (y β : ℝ) :
     Tendsto (fun a : ℝ => (1 + y / a) ^ (β * a)) atTop (𝓝 (Real.exp (β * y))) := by
   have h0 : Tendsto (fun x : ℝ => (1 + y / x) ^ x) atTop (𝓝 (Real.exp y)) := by
-    first
-    | exact Real.tendsto_one_add_div_rpow_exp y
-    | exact tendsto_one_add_div_rpow_exp y
-    | exact Real.tendsto_one_plus_div_rpow_exp y
+    exact Real.tendsto_one_add_div_rpow_exp y
   have h : Tendsto (fun a : ℝ => ((1 + y / a) ^ a) ^ β) atTop (𝓝 (Real.exp y ^ β)) :=
     h0.rpow_const (Or.inl (Real.exp_pos y).ne')
   rw [← Real.exp_mul, mul_comm y β] at h

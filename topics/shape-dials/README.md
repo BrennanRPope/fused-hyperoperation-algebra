@@ -10,7 +10,7 @@ round-to-triangle routes), `exceptional-shapes/` (24-cell, 600-cell, 120-cell) a
 Checks: `checks.py` → `checks_output.txt`, **29 of 29 pass** (numpy, scipy; 28 s). Pictures: `figures.py` →
 `figures/`. Lean: `lean/FaceDial.lean` (4 theorems, written for the Mathlib project `mathlib-map/`; compiles in the Mathlib CI, imported in 9c08a9d, no sorry).
 Section 6: `depth_checks.py` → `depth_checks_output.txt`, **20 of 20 pass** (7 s); `depth_figures.py` → `figures/fig10`
-… `fig14`; `lean/DepthDerived.lean` (5 theorems; CI result pending).
+… `fig14`; `lean/DepthDerived.lean` (5 theorems; compiled in the Mathlib map on Nov 26 as `MathlibMap/DepthDerived.lean`, no statement changed).
 
 ## The short answer
 
