@@ -52,3 +52,5 @@ topics/closed-leads-fresh-look/polish.py
 topics/quantum-action/cut-independence/polish.py
 topics/quantum-action/cut-independence/lean_identities_check.py
 topics/yang-mills-gap/lean/check_statements.py
+topics/shape-dial-survey/p3_certificate.py
+topics/force-reach/lean/check_statements.py

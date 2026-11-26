@@ -18,12 +18,15 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: precession. Thomas, Foucault and Berry precession from one swap rule of the circle operation (known physics, cube reading ours); open lead: frame dragging from the swap rule. 23 Lean theorems. | `topics/precession/` | — |
 | DRAFT: semiring audit. ∘ₖ with a + b + 1/k is a known generated semiring in Pap's pseudo-analysis (cite and reuse); renames proposed only. | `topics/semiring-audit/` | — |
 | DRAFT: number-theory geometries as ways to bend the hypercube: tropical (corners), permutohedron (paths), cluster algebras (cube into associahedra). | `topics/number-theory-geometries/` | — |
-| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild; the dimension dial gives 1/r^(D−1) from flux, and the pictures meet only at D = 3. Jet river: for the river, every field equation is the second layer Q of the cell's one-step cube, so the velocity rule for every cell gives exact Schwarzschild; spin works to first order, full Kerr needs cells that also rotate. | `topics/gravity-from-theory/` (`jet-river/`) | — |
+| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild; the dimension dial gives 1/r^(D−1) from flux, and the pictures meet only at D = 3. Jet river: for the river, every field equation is the second layer Q of the cell's one-step cube, so the velocity rule for every cell gives exact Schwarzschild; spin works to first order, full Kerr needs cells that also rotate. Spinning river: give each cell a turn as well as a velocity and full Kerr comes out exactly on a flat lattice; the turn is forced and shows up as Kerr's clock effect (a 2πa clock gap per lap). Also maps every idea of a frame along the dial (turn = d × area), adding Larmor's theorem and spinning fluids. | `topics/gravity-from-theory/` (`jet-river/`, `spinning-river/`) | — |
 | DRAFT: curved space from counting (1 + 1 dimensions) and the river; radial-plane follow-up. | `topics/curved-space/` | — |
 | DRAFT: Newton's G lead reopened: Sakharov's induced gravity; second-loop ρ doesn't match; second pass (Nov 26) closes it again and fixes two slips. | `topics/newton-g/` | — |
 | DRAFT: maths with the same shape as Navier–Stokes, with spacetime as a turbulent flow. | `topics/ns-same-shape/` | — |
 | DRAFT: warp bubbles, wormholes and artificial gravity through the circle operation. No route; one wormhole reading. | `topics/warp-bubble/` | `Topics/WarpWormhole` |
 | DRAFT: Yang–Mills mass gap: gap only in the circle class, = −Δ; four ways a gap closes; 4D Yang–Mills sits at the end of the coupling line; not a lead. | `topics/yang-mills-gap/` | — |
+| DRAFT: force reach: two dials, carrier mass m² = Δ/4 (minus the curvature reading) and open directions (dimension dial D = 1 = flux tube), linked by a keep/end switch. | `topics/force-reach/` | — |
+| DRAFT: the Riemann hypothesis through the theory: our Lee–Yang step identity is Laguerre's operator, our p = 4 trick is one step of the de Bruijn–Newman heat flow, and the k dial on the prime cube is the primon gas fugacity; all keep zeros real in one direction only. Proved: running the step identity upward from Riemann's Ξ throws every zero off the line. Not a lead. | `topics/riemann/` | — |
+| DRAFT: an elliptic object for zeta? Through the Cayley map z = 1 − 1/ρ, Riemann's zeros are dial points on the line d = 1; Li's criterion says each one is elliptic, with the same Chebyshev traces as Weil's bound for curves. Not a lead. | `topics/riemann/elliptic-object/` | — |
 | DRAFT: shapes beyond the hypercube (associahedron, elliptope, pentagon, double copy). | `topics/beyond-the-cube/` | — |
 | DRAFT: polar coordinates for many dimensions: switching shapes by sliding numbers. | `topics/polar-coordinates/` | — |
 | DRAFT: stronger fusion magnets: the limits are materials and engineering. | `topics/fusion-magnets/` | — |
@@ -54,7 +57,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,357 theorems, 145 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,467 theorems, 150 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
@@ -121,7 +124,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | String theory: what it rests on, G as (coupling)² × length^(D−2), T-duality as the k = 1 inverse | `topics/string-theory/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
 | DRAFT: the four dials named from affine geometry, with lineage (homothety k, curvature dial d, ℓp exponent p, cubic form C) | `topics/affine-names/` | — |
-| Theory name: Affine Composition Theory (picked Nov 26; final 1.0 name still to confirm, ROADMAP item 8); earlier interim name Hypercube Composition Theory | `topics/names-review/THEORY-NAME.md` | — |
+| Theory name: Affine Composition Theory, built on Fused Hyperoperation Algebra as its own layer (set Nov 26, `topics/theory-name/LAYERS.md`; final 1.0 name still to confirm, ROADMAP item 8); earlier interim name Hypercube Composition Theory | `topics/names-review/THEORY-NAME.md` | — |
 | DRAFT: a name for the whole theory, now that the cube is one shape among many | `topics/theory-name/` | — |
 | Electromagnetism through the circle operation: light sets the dial d = −1/c² | `topics/electromagnetism/` | [page](https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY) |
 | Size weighting as a dial, and what the circle operation leaves over (the 54.5%) | `topics/size-dial-residual/` | [page](https://claude.ai/artifact/PKMMfy7vXAZRK9cAucwSTg) |
