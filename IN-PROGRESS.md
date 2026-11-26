@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,602 theorems in 161 modules, Nov 26 ~20:40 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,614 theorems in 162 modules, Nov 26 ~22:40 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -43,3 +43,5 @@ Nov 26 (late): `topics/riemann/round7/` added as DRAFT (the quantum toolkit, sol
 Nov 26 (late): shape-dials section 7 (topological shapes, DRAFT; topo_checks 9 of 9) added; `MathlibMap/TopologyShapes.lean` built clean in the Mathlib CI with no proof changed and now gates: the Mathlib map is 14 modules and 60 theorems.
 
 Nov 26 (late): `topics/klein-flow/` added as DRAFT (fluid flow on a Klein bottle; not a lead; checks.py 11 of 11); `MathlibMap/KleinFlow.lean` built clean in the Mathlib CI with no proof changed and now gates: the Mathlib map is 15 modules and 66 theorems.
+
+Nov 26 (late): `topics/riemann/round8/` added as DRAFT (the two open ideas, holes and twists, re-centring the blow-up; not a lead; 33 checks); `RiemannRound8` compiled into the library, all 12 theorems, no proof changed.

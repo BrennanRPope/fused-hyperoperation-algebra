@@ -1,0 +1,12 @@
+symbolic: zddot = -8 sum 1/(zk-zj)^3 for n=3: True
+symbolic: zddot = -8 sum 1/(zk-zj)^3 for n=4: True
+Lax eigenvalues at t=0, max |.| = 0.18753559403021783  (||L0|| = 2.0885673187208624 )
+||L0^n|| = 1.6125824980225974e-10
+t =   0.5: max |zero - eigenvalue of Z0 + t L0| = 2.38e-06
+t =  -0.5: max |zero - eigenvalue of Z0 + t L0| = 1.77e-06
+t =   2.0: max |zero - eigenvalue of Z0 + t L0| = 3.41e-07
+t =  -2.0: max |zero - eigenvalue of Z0 + t L0| = 4.44e-06
+t =  -6.0: max |zero - eigenvalue of Z0 + t L0| = 1.44e-06
+closest pair among first 30: gamma_27, gamma_28, gap 1.2193; naive pair estimate d^2/8 = 0.1858
+rewind: first pair leaves the real line at t = -0.22
+saved

@@ -1,0 +1,35 @@
+PASS q=-0.5 Fisher zero matches round 7 (0.905308+14.068964i)
+PASS rho_1, q=-0.02: Fisher zero within 10% of the a-point displacement
+PASS rho_1, q=+0.02: Fisher zero within 10% of the a-point displacement
+PASS rho_1: q<0 zeros right of the line, q>0 left
+PASS rho_2, q=-0.02: Fisher zero within 10% of the a-point displacement
+PASS rho_2, q=+0.02: Fisher zero within 10% of the a-point displacement
+PASS rho_2: q<0 zeros right of the line, q>0 left
+PASS rho_3, q=-0.02: Fisher zero within 10% of the a-point displacement
+PASS rho_3, q=+0.02: Fisher zero within 10% of the a-point displacement
+PASS rho_3: q<0 zeros right of the line, q>0 left
+PASS a-point zeta = 0.02 near rho_1 recomputed
+PASS CM identity n=3 (symbolic)
+PASS CM identity n=4 (symbolic)
+PASS Lax matrix nilpotent: ||L^n|| < 1e-8
+PASS zeros at time t = eigenvalues of Z0 + t L0 (5 times, < 1e-5)
+PASS first pair to leave the line in the rewind is the closest pair
+PASS two-particle acceleration = -8/d^3
+PASS torus: all 58 zeros on Re s = 1/2
+PASS Klein bottle: none of its zeros on the line
+PASS odd sector: none of its zeros on the line
+PASS every stored Klein zero refines to a true zero within 1e-8
+PASS twisted ladder: Z- Z+ = Z_2l
+PASS sinh/cosh orbit weights reproduce log-derivative
+PASS flat glide weight 1/2 matches heat trace (4 values)
+PASS zeta spacings closer to GUE than GOE
+PASS crosscap cover: chi doubles, genus k-1
+PASS Moebius: zeros on |w+1| = 1
+PASS fused residue k=-1 is 6/pi^2
+PASS fused residue k=1 is 1
+PASS k=2 blow-up order 3/2
+PASS Stieltjes removal: zeros off the line, both sides
+PASS Boltzmann wall at 1.3994333
+PASS (s-1) zeta(s, a) -> 1 for a = 0.3
+
+33 of 33 checks pass

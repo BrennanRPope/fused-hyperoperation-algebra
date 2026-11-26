@@ -3061,6 +3061,18 @@ FusedAlgebra.Topics.RiemannRound7	CircleOp.RiemannRound7.rung_gap	propext, Class
 FusedAlgebra.Topics.RiemannRound7	CircleOp.RiemannRound7.witt_half	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound7	CircleOp.RiemannRound7.witt_three	
 FusedAlgebra.Topics.RiemannRound7	CircleOp.RiemannRound7.witt_two	
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.area_genus	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.cm_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.cover_chi	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.fermi_residue	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.fused_absorb	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.fused_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.glide_det	
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.klein_sectors	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.lax_two_nilpotent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.mobius_circle	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.pair_collision	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound8	CircleOp.RiemannRound8.rung	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound

@@ -1,0 +1,29 @@
+(a) first 100 zeros under w = 1/(s-1): max | |w+1| - 1 | = 1.3e-26  (on the circle |w+1| = 1)
+    zeta(1 + 1/w) at w = 0.1: 1.0004941886  (tends to 1 as w -> 0+: the pole now sits at w = infinity)
+    zeta(1 + 1/w) at w = 0.01: 1.0  (tends to 1 as w -> 0+: the pole now sits at w = infinity)
+    zeta(1 + 1/w) at w = 0.001: 1.0  (tends to 1 as w -> 0+: the pole now sits at w = infinity)
+(b) k = -1.0: residue C_k = prod_p (1-k/p)^(-1/k)(1-1/p) = 0.607927
+(b) k = -0.5: residue C_k = prod_p (1-k/p)^(-1/k)(1-1/p) = 0.659516
+(b) k = +0.5: residue C_k = prod_p (1-k/p)^(-1/k)(1-1/p) = 0.830998
+(b) k = +1.0: residue C_k = prod_p (1-k/p)^(-1/k)(1-1/p) = 1.000000
+(b) k = +1.5: residue C_k = prod_p (1-k/p)^(-1/k)(1-1/p) = 1.373647
+(b) k = +1.9: residue C_k = prod_p (1-k/p)^(-1/k)(1-1/p) = 2.894283
+    (s-1) zeta_k(s) at s = 1+1e-6, k = 0.5: 0.8309992
+    (s-1) zeta_k(s) at s = 1+1e-6, k = -1.0: 0.60792838
+(b) k = 2: log-log slope of zeta_2 near s = 1: [-1.4976, -1.4998, -1.5]  (pole order 3/2)
+(c) zero of zeta - 1/(s-1) near rho_1: (0.479403006224 + 14.0475163828j)   (Re - 1/2 = -2.06e-02)
+(c) zero of zeta - 1/(s-1) near rho_2: (0.507180820934 + 20.9806489534j)   (Re - 1/2 = +7.18e-03)
+(c) zero of zeta - 1/(s-1) near rho_3: (0.489360229139 + 24.9838122121j)   (Re - 1/2 = -1.06e-02)
+(c) zero of zeta - 1/(s-1) near rho_4: (0.512173157283 + 30.4026542181j)   (Re - 1/2 = +1.22e-02)
+(c) zero of zeta - 1/(s-1) near rho_5: (0.487517059344 + 32.9171204992j)   (Re - 1/2 = -1.25e-02)
+(c) zero of zeta - 1/(s-1) near rho_6: (0.503652565302 + 37.5729018888j)   (Re - 1/2 = +3.65e-03)
+(c) zero of zeta - 1/(s-1) near rho_7: (0.502890407994 + 40.9025603908j)   (Re - 1/2 = +2.89e-03)
+(c) zero of zeta - 1/(s-1) near rho_8: (0.492222492758 + 43.3172463709j)   (Re - 1/2 = -7.78e-03)
+(c) zero of zeta - 1/(s-1) near rho_9: (0.509835956242 + 47.9961012814j)   (Re - 1/2 = +9.84e-03)
+(c) zero of zeta - 1/(s-1) near rho_10: (0.493209344181 + 49.7614527184j)   (Re - 1/2 = -6.79e-03)
+    Hurwitz zeta(s, 0.3) * (s-1) at s = 1+1e-6: 1.000003503
+    Hurwitz zeta(s, 0.5) * (s-1) at s = 1+1e-6: 1.000001964
+    Hurwitz zeta(s, 0.8) * (s-1) at s = 1+1e-6: 1.000000965
+(d) q = 1: new pole at beta = 1.399433329; 1/(1-P) at beta = 1.0005: -0.1591 (tends to 0 at beta = 1)
+    its residue: 0.57764863
+saved

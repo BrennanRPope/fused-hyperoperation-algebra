@@ -1,0 +1,22 @@
+(b) Z^-_l Z^+_l = Z_2l: worst relative error over 20 random (l, s): 1.5e-15
+    log-derivative: (-0.258242771029 + 0.139025439878j) vs orbit sum with sinh/cosh weights (-0.258242771029 + 0.139025439878j)
+(c) tau=0.005: Klein - torus/2 = 0.0000148672; glide sum with weight 1/2 = 0.0000148672
+(c) tau=0.02: Klein - torus/2 = 0.0876415025; glide sum with weight 1/2 = 0.0876415025
+(c) tau=0.1: Klein - torus/2 = 0.4807038357; glide sum with weight 1/2 = 0.4807038357
+(c) tau=0.5: Klein - torus/2 = 0.4999999973; glide sum with weight 1/2 = 0.4999999973
+(d) check E_+ E_- = E_GUE: max diff 1.3e-15
+    GOE: integral 1.0000, mean 1.0000
+    GUE: integral 1.0000, mean 1.0000
+    zeta spacings (n=1897, heights 10000-11600): KS to GUE 0.033, KS to GOE 0.103
+    fraction of spacings < 0.25: zeta 0.0105, GUE 0.0164, GOE 0.0499
+    {'surface': 'orientable genus 2', 'chi': -2, 'area_over_pi': 4, 'max_small': 2}
+    {'surface': 'orientable genus 3', 'chi': -4, 'area_over_pi': 8, 'max_small': 4}
+    {'surface': 'orientable genus 4', 'chi': -6, 'area_over_pi': 12, 'max_small': 6}
+    {'surface': 'orientable genus 5', 'chi': -8, 'area_over_pi': 16, 'max_small': 8}
+    {'surface': '3 crosscaps', 'chi': -1, 'area_over_pi': 2, 'max_small': 1}
+    {'surface': '4 crosscaps', 'chi': -2, 'area_over_pi': 4, 'max_small': 2}
+    {'surface': '5 crosscaps', 'chi': -3, 'area_over_pi': 6, 'max_small': 3}
+    {'surface': '6 crosscaps', 'chi': -4, 'area_over_pi': 8, 'max_small': 4}
+    {'surface': '7 crosscaps', 'chi': -5, 'area_over_pi': 10, 'max_small': 5}
+    {'surface': '8 crosscaps', 'chi': -6, 'area_over_pi': 12, 'max_small': 6}
+saved
