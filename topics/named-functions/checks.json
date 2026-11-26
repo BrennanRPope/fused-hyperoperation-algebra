@@ -1,0 +1,112 @@
+{
+ "checks": {
+  "C1 generic regular iteration matches fractional-rungs/regular_iteration.py (25 points)": true,
+  "C2 integer height: E^2(1) = e^(e-1) - 1": true,
+  "C3 heights add: E^0.5(E^0.7(x)) = E^1.2(x)": true,
+  "C4 polish estimate small (x=1, s=1/2)": true,
+  "H1 exp^(s)(ln^(s)(X)) = X at 6 heights, both sides of 1": true,
+  "H2 ln^(1) = ln, exp^(1) = exp": true,
+  "H3 ln^(0)(X) = X - 1;  ln^(2)(X) = log(1 + log X)": true,
+  "H4 x^(1) is ordinary multiplication": true,
+  "H5 x^(0) is X + Y - 1": true,
+  "H6 x^(s) is the lift reading of +^(s): X x^(s) Y = 1 + ((X-1) +^(s) (Y-1)) at s=0.6": true,
+  "H7 cube half (X>1) and share half (X<1) meet at X=1 with slope 1 and bend -s (s=1/2)": true,
+  "S1 rescale: E_k^s(x) = E^s(kx)/k (k=0.37, s=1/2)": true,
+  "S2 simplex side k=-1 (stick-breaking): E_{-1}^s(x) = -E^s(-x), the other half of the same flow": true,
+  "S3 k -> 0: E_k^(1/2)(0.8) -> 0.8, all heights collapse onto plain addition": true,
+  "S4 E_(k,d)(t) = sigma(T_kappa(t)) inverts L_(k,d) and solves E' = 1 + kE + dE^2 (6 conics)": true,
+  "S5 at (k, d) = (1, 0) the conic's exponential is E(t) = e^t - 1": true,
+  "S6 each conic's law is the quasi-sum with generator E_(k,d) (Aczel form)": true,
+  "S7 every conic has a real height flow: half-rung twice = one rung (6 conics)": true,
+  "S8 parabola class: E^s(x) = x/(1 - s(k/2)x) exactly; height is a slide": true,
+  "S9 on every conic, height 1 of the hypernatural log is that conic's own logarithm L_(k,d)": true,
+  "S10 circle (k=0): the flow is odd, tan^(s)(-x) = -tan^(s)(x); first correction is cubic": true,
+  "S11 lp shapes: rung s of the sphere's Pythagoras is the l_(2^s) sum; height = the p dial (p = 2^s)": true,
+  "S12 lp generator x^(1/p) has slope 0 or infinity at 0 (not tangent to identity): no new function, only powers": true,
+  "B1 derivatives of exp^(s) at 0: s=1 all ones, s=2 Bell numbers, s=3 A000258, s=-1 signed (n-1)!": true,
+  "B2 b_2(s) = s and b_3(s) = (3s^2 - s)/2 for real s": true,
+  "B3 b_n(s) = sum_k A008826(n,k) C(s,k) (Comtet's triangle) for n = 3, 4, 5": true,
+  "B4 b_2 is an actual derivative of the flow: (E^0.6(h) - h)/h^2 -> 0.3": true,
+  "N1 E_1 = E, and E_k inverts L_k = log(1+kx)/k": true,
+  "N2 exp(t eps) = e^(kt/2) (C_kappa(t) + S_kappa(t) eps0), eps0 = eps - k/2, kappa = d - k^2/4": true,
+  "N3 tan of the Cayley-Klein pair is the conic's exponential after the slide: T_kappa = S/C": true,
+  "N4 1 combined n times by o_k is the q-integer [n]_q with q = 1 + k": true,
+  "N5 o_{-1} is the probabilistic sum: a + b - ab = 1 - (1-a)(1-b)": true,
+  "N6 the speed of the height flow d/ds E^s at s=0 is Julia's iterative logarithm g^2/2 - g^3/12 + ...": true
+ },
+ "data": {
+  "collapse": [
+   0.01610667500146032,
+   0.001601066667517965,
+   0.00016001066666672926
+  ],
+  "bell_table": {
+   "-1": [
+    1.0,
+    -1.0,
+    2.0,
+    -6.0,
+    24.0,
+    -120.0
+   ],
+   "0": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "0.5": [
+    1.0,
+    0.5,
+    0.125,
+    0.0,
+    0.03125,
+    -0.0546875
+   ],
+   "1": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "1.5": [
+    1.0,
+    1.5,
+    2.625,
+    5.25,
+    11.65625,
+    28.1640625
+   ],
+   "2": [
+    1.0,
+    2.0,
+    5.0,
+    15.0,
+    52.0,
+    203.0
+   ],
+   "2.5": [
+    1.0,
+    2.5,
+    8.125,
+    32.5,
+    153.28125,
+    828.0078125
+   ],
+   "3": [
+    1.0,
+    3.0,
+    12.0,
+    60.0,
+    358.0,
+    2471.0
+   ]
+  },
+  "pass": 33,
+  "total": 33
+ }
+}

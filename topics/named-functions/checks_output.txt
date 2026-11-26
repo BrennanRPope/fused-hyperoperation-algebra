@@ -1,0 +1,35 @@
+PASS C1 generic regular iteration matches fractional-rungs/regular_iteration.py (25 points)   max diff 3.0e-11
+PASS C2 integer height: E^2(1) = e^(e-1) - 1
+PASS C3 heights add: E^0.5(E^0.7(x)) = E^1.2(x)   2.6e-39
+PASS C4 polish estimate small (x=1, s=1/2)   n vs 2n diff 0.0e+00
+PASS H1 exp^(s)(ln^(s)(X)) = X at 6 heights, both sides of 1
+PASS H2 ln^(1) = ln, exp^(1) = exp
+PASS H3 ln^(0)(X) = X - 1;  ln^(2)(X) = log(1 + log X)
+PASS H4 x^(1) is ordinary multiplication
+PASS H5 x^(0) is X + Y - 1
+PASS H6 x^(s) is the lift reading of +^(s): X x^(s) Y = 1 + ((X-1) +^(s) (Y-1)) at s=0.6
+PASS H7 cube half (X>1) and share half (X<1) meet at X=1 with slope 1 and bend -s (s=1/2)   slopes 1.0000000,1.0000000; bends -0.5000,-0.5000
+PASS S1 rescale: E_k^s(x) = E^s(kx)/k (k=0.37, s=1/2)
+PASS S2 simplex side k=-1 (stick-breaking): E_{-1}^s(x) = -E^s(-x), the other half of the same flow
+PASS S3 k -> 0: E_k^(1/2)(0.8) -> 0.8, all heights collapse onto plain addition   1.6e-02, 1.6e-03, 1.6e-04
+PASS S4 E_(k,d)(t) = sigma(T_kappa(t)) inverts L_(k,d) and solves E' = 1 + kE + dE^2 (6 conics)
+PASS S5 at (k, d) = (1, 0) the conic's exponential is E(t) = e^t - 1
+PASS S6 each conic's law is the quasi-sum with generator E_(k,d) (Aczel form)
+PASS S7 every conic has a real height flow: half-rung twice = one rung (6 conics)   hyperbola 7e-39, ellipse 2e-38, parabola 1e-38, circle 2e-26, relativity 2e-26, hyperbola 2e-39
+PASS S8 parabola class: E^s(x) = x/(1 - s(k/2)x) exactly; height is a slide
+PASS S9 on every conic, height 1 of the hypernatural log is that conic's own logarithm L_(k,d)
+PASS S10 circle (k=0): the flow is odd, tan^(s)(-x) = -tan^(s)(x); first correction is cubic
+PASS S11 lp shapes: rung s of the sphere's Pythagoras is the l_(2^s) sum; height = the p dial (p = 2^s)
+PASS S12 lp generator x^(1/p) has slope 0 or infinity at 0 (not tangent to identity): no new function, only powers   exact: G^s(y) = y^(p^-s)
+PASS B1 derivatives of exp^(s) at 0: s=1 all ones, s=2 Bell numbers, s=3 A000258, s=-1 signed (n-1)!
+PASS B2 b_2(s) = s and b_3(s) = (3s^2 - s)/2 for real s
+PASS B3 b_n(s) = sum_k A008826(n,k) C(s,k) (Comtet's triangle) for n = 3, 4, 5
+PASS B4 b_2 is an actual derivative of the flow: (E^0.6(h) - h)/h^2 -> 0.3   0.300004
+PASS N1 E_1 = E, and E_k inverts L_k = log(1+kx)/k
+PASS N2 exp(t eps) = e^(kt/2) (C_kappa(t) + S_kappa(t) eps0), eps0 = eps - k/2, kappa = d - k^2/4
+PASS N3 tan of the Cayley-Klein pair is the conic's exponential after the slide: T_kappa = S/C
+PASS N4 1 combined n times by o_k is the q-integer [n]_q with q = 1 + k
+PASS N5 o_{-1} is the probabilistic sum: a + b - ab = 1 - (1-a)(1-b)
+PASS N6 the speed of the height flow d/ds E^s at s=0 is Julia's iterative logarithm g^2/2 - g^3/12 + ...   0.0193649684 vs 0.0193649704
+
+33 of 33 pass

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hypernatural functions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a careful research notebook, plain and exact
+   IDEA: a field guide plate; each finding is a labelled picture
+   PICTURE: the shape panel leads; every section is a figure with its caption
+   COLOUR and TYPE: white paper, deep ink, blue for ours, orange for existing names; Source Serif titles, Inter body
+   LAYOUT: one reading column up to 980px, figures full column width, tables scroll on phones */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#10141a);--ink:light-dark(#141a22,#e6ebf2);--mute:light-dark(#566170,#9aa6b5);--blue:light-dark(#1f5fbf,#7fb0ff);--orange:light-dark(#b85f00,#ffb15c);--rule:light-dark(#dde3ea,#2a323d);--card:light-dark(#f4f7fb,#18202a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:980px;margin:0 auto;padding:clamp(24px,4vw,56px) max(4vw,16px)}
+h1,h2{font-family:"Source Serif 4",Georgia,serif;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(30px,4.6vw,46px);margin:.2em 0 .3em}h2{font-size:clamp(23px,3vw,30px);margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--rule)}
+.draft{color:var(--orange);font-weight:600;font-size:14px}
+.lede{font-size:18.5px}
+.answer{background:var(--card);border-left:4px solid var(--blue);padding:16px 20px;margin:18px 0;border-radius:6px}
+.answer b{color:var(--blue)}
+figure{margin:22px 0}figure img{width:100%;height:auto;border-radius:6px;border:1px solid var(--rule);background:#fff}
+figcaption{color:var(--mute);font-size:14.5px;margin-top:6px}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14.5px}th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}th{font-weight:600}
+.y{color:var(--blue);font-weight:600}.n{color:var(--orange);font-weight:600}
+.nav{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;margin:12px 0 0}.nav a{color:var(--blue)}
+ul li{margin:.25em 0}code{font-size:14px;overflow-wrap:anywhere}
+.small{font-size:14px;color:var(--mute)}
+@media(max-width:600px){table{font-size:13px}}
+</style></head><body><div class="wrap">
+<div class="draft">DRAFT · Nov 26 2026 · Hypercube Composition Theory</div>
+<h1>The hypernatural logarithm lives on every conic, and its inverse is the hypernatural exponential</h1>
+<p class="lede">Brennan asked whether the hypernatural logarithm (formerly the supernatural logarithm) exists on shapes other than the hypercube, what its inverse should be called, and which other functions the theory keeps using deserve names.</p>
+<nav class="nav"><a href="#shapes">Shapes</a><a href="#inverse">The inverse</a><a href="#names">Candidates</a><a href="#bell">Bell numbers at height</a><a href="#rename">Files to rename</a></nav>
+
+<div class="answer">
+<p><b>Shapes.</b> Yes on every conic of the plane dial except plain addition; on the simplex it is the same function's other half; on the ℓp balls it adds nothing new, because there the rung height is the p dial itself.</p>
+<p><b>Inverse.</b> Call it the <b>hypernatural exponential</b>, exp⁽ˢ⁾(t) = 1 + Eˢ(t). "Natural exponential function" is a real textbook name for eˣ, and the closest published family already pairs hyperlogarithm with hyperexponential.</p>
+<p><b>Candidates.</b> Nine recurring combinations beyond the operations catalog: seven already have names to adopt, two need ours.</p>
+</div>
+
+<h2 id="shapes">Which shapes carry it</h2>
+<figure><img src="figures/fig2-shapes.png" alt="Eight panels, one per shape, showing each shape's hypernatural logarithm at heights −1 to 2"><figcaption>Each panel is one shape's own hypernatural logarithm at heights −1 to 2. The thick curve (height 1) is that shape's ordinary logarithm; height 0 is the straight line. Blue verdict: it exists. Orange: it doesn't, or adds nothing.</figcaption></figure>
+<p>Nothing in the construction needs the cube. A law needs one thing: a generator that touches the identity at the law's zero (G(x) = x + c·x² + … or x + c·x³ + …). Then G can be iterated any real number of times, the law gets a ladder of rungs, and G⁻ˢ is its hypernatural logarithm. The cube's case is G = eˣ − 1.</p>
+<div class="scroll"><table>
+<tr><th>Shape</th><th>Does it have one?</th><th>Why</th></tr>
+<tr><td>Cube (k = 1)</td><td class="y">Yes</td><td>The original: G = eˣ − 1.</td></tr>
+<tr><td>Simplex shares (k = −1)</td><td class="y">Yes, same function</td><td>Stick-breaking a + b − ab climbs by the mirror of eˣ − 1, so it is the X &lt; 1 half of the cube's curve.</td></tr>
+<tr><td>Any other k ≠ 0</td><td class="y">Yes, same function</td><td>Only units change: the flow at k is the cube's flow rescaled.</td></tr>
+<tr><td>Ellipse, hyperbola (k ≠ 0)</td><td class="y">Yes, its own</td><td>Behaves like eˣ − 1: real heights exist, no closed form.</td></tr>
+<tr><td>Parabola class (Δ = 0)</td><td class="y">Yes, exact</td><td>The flow is x/(1 − s(k/2)x): height is just a slide.</td></tr>
+<tr><td>Circle, relativity (k = 0)</td><td class="y">Yes, its own</td><td>Fractional iterates of tan and tanh, symmetric about 0.</td></tr>
+<tr><td>Plain addition (k = d = 0)</td><td class="n">No</td><td>The generator is the identity, so every height is the same line.</td></tr>
+<tr><td>ℓp balls</td><td class="n">No new function</td><td>Pythagoras (aᵖ + bᵖ)^(1/p) climbs by powers: rung s is the ℓ<sub>2^s</sub> sum. Height and the p dial are one dial: cross-polytope at rung 0, sphere at 1, cube at infinite height.</td></tr>
+</table></div>
+<figure><img src="figures/fig3-kd-map.png" alt="The (k, d) plane coloured by the kind of height flow"><figcaption>Where each kind of flow lives on the plane dial. Only the origin, plain addition, has none.</figcaption></figure>
+<figure><img src="figures/fig4-two-halves.png" alt="The hypernatural logarithm near X = 1, cube half and simplex half"><figcaption>The cube half (X &gt; 1, grey) and the simplex half (X &lt; 1, orange) meet at X = 1 with slope 1 and bend −s. At fractional heights they are two regular iterations glued smoothly, not one power series (Baker 1958).</figcaption></figure>
+<p class="small">This fits the earlier polar-recast finding that no shape carries the cube's own function at fractional height: the rung-s law is not any conic's law. What is new is that every conic carries a ladder of its own. They are siblings, not one function.</p>
+
+<h2 id="inverse">What to call the inverse</h2>
+<figure><img src="figures/fig1-hypernatural-pair.png" alt="Hypernatural logarithm and exponential at six heights"><figcaption>Left: the hypernatural logarithm, every height through (1, 0) with slope 1. Right: its inverse, the hypernatural exponential; its value at t = 1 is e at that height.</figcaption></figure>
+<ul>
+<li><b>"Natural exponential function" is real.</b> Calculus textbooks use it for eˣ as the inverse of ln (Stewart's Calculus, section 6.3; the Whitman College calculus text). It is less common than "the exponential function", which is why it sounds odd.</li>
+<li><b>The nearest family in print</b> is the hyperlogarithm and hyperexponential "of strength γ" on the surreal numbers (Bagayoko and van der Hoeven, 2023). For whole strengths these are repeated logs and exps. Ours differ in two ways: real heights, and fused (our height-2 log is log(1 + log X), not log log X, so every curve keeps passing through (1, 0)). The word "natural" carries both.</li>
+<li><b>The super-logarithm pairs differently:</b> its inverse is tetration, the super-exponential. That is the "which rung am I on" direction, our Abel function, not ours.</li>
+<li><b>Never shorten it.</b> "Hyperlogarithm" also means Goncharov's iterated integrals for Feynman integrals, and "hyperexponential" means a probability distribution and a class of functions in differential algebra.</li>
+<li><b>Notation (proposal, ours): height up top, dials below.</b> Write ln⁽ˢ⁾ and exp⁽ˢ⁾ like +⁽ˢ⁾ and Eˢ. The subscript form ln<sub>s</sub> collides with Tsallis's q-logarithm ln<sub>q</sub>, our closest cousin.</li>
+</ul>
+
+<h2 id="names">Candidates, existing names first</h2>
+<figure><img src="figures/fig6-names-map.png" alt="Sheet of names: height objects with superscripts, dial objects with subscripts"><figcaption>The naming system on one sheet. Orange: an existing name to adopt. Blue: ours.</figcaption></figure>
+<div class="scroll"><table>
+<tr><th>Function or operation</th><th>Formula</th><th>Existing name</th><th>Recommendation</th></tr>
+<tr><td>Hypernatural exponential</td><td>1 + Eˢ(t)</td><td>none; nearest: hyperexponential of strength γ</td><td class="y">exp⁽ˢ⁾, ours</td></tr>
+<tr><td>Multiplication at height s</td><td>1 + ((X−1) +⁽ˢ⁾ (Y−1))</td><td>none</td><td class="y">X ×⁽ˢ⁾ Y, ours (×⁽¹⁾ is ×)</td></tr>
+<tr><td>Exponential of ∘ₖ</td><td>(e^(kt) − 1)/k</td><td>exponential of a formal group law</td><td class="n">Eₖ; the climb map E is E₁</td></tr>
+<tr><td>Log and exp of each conic</td><td>L<sub>k,d</sub>, E<sub>k,d</sub></td><td>formal group log and exp; Cayley–Klein tangent inside</td><td class="n">L<sub>k,d</sub>, E<sub>k,d</sub>, inputs k and d</td></tr>
+<tr><td>Exponential of the plane number</td><td>e^(kt/2)(C<sub>κ</sub> + S<sub>κ</sub>ε₀)</td><td>Cayley–Klein cosine and sine</td><td class="n">C<sub>κ</sub>, S<sub>κ</sub>, T<sub>κ</sub>, κ = −Δ/4 a reading</td></tr>
+<tr><td>Inverse of the Abel function</td><td>Ψ = Φ⁻¹</td><td>superfunction; Fatou coordinate</td><td class="n">"superfunction of E"</td></tr>
+<tr><td>Speed of the height flow</td><td>g²/2 − g³/12 + …</td><td>iterative logarithm (Écalle), Julia's function</td><td class="n">itlog E</td></tr>
+<tr><td>Derivatives of exp⁽ˢ⁾ at 0</td><td>bₙ(s)</td><td>Bell numbers of higher order; Comtet's triangle</td><td class="n">Bell numbers at height s</td></tr>
+<tr><td>∘₋₁ on probabilities</td><td>a + b − ab</td><td>probabilistic sum; noisy-OR</td><td class="n">say "probabilistic sum"</td></tr>
+</table></div>
+<figure><img src="figures/fig7-cayley-klein-exp.png" alt="Three paths of exp(t·ε): spiral, slide, runaway"><figcaption>The exponential of the plane number: the homothety k sets growth or shrinking, the curvature reading sets the turn. Round side spirals, parabola only slides, hyperbola side runs off.</figcaption></figure>
+
+<h2 id="bell">A lead worth following: Bell numbers at height s</h2>
+<figure><img src="figures/fig5-bell-at-height.png" alt="Curves of b_n(s) through Bell numbers"><figcaption>The n-th derivative of exp⁽ˢ⁾ at 0 is a polynomial in the height s. At whole heights it counts nested groupings: one way at height 1, Bell numbers at 2, groupings of groupings at 3.</figcaption></figure>
+<p>The height counts something. The polynomials themselves are known (Comtet's triangle), and the whole-height counts are E. T. Bell's numbers of higher order. Reading them as the derivatives of the hypernatural exponential is ours. It is worth following because it gives height a counting meaning; the open question is what, if anything, a fractional height counts. Not checked yet.</p>
+
+<h2 id="rename">Files that still say "supernatural logarithm"</h2>
+<ul>
+<li>fractional-rungs/e-every-height: README (7), figures.py (1)</li>
+<li>height-flow: README (1), figures.py (1), height_entropy.py (2)</li>
+<li>operations-catalog: README (1)</li>
+<li>polar-recast: README (3), literature/superlog_shapes.py (2)</li>
+<li>bridge-survey: bridges.csv (2), bridges.json (5), raw/math.tsv (1), raw/shapes-applied.tsv (1)</li>
+</ul>
+<p class="small">Checks: 33 of 33 pass (40-digit arithmetic, about 6 seconds, every flow value polished by comparing n and 2n steps). Folder: math-theory/named-functions. Known: generators, regular iteration, formal group laws, Cayley–Klein trig, Bell numbers, the probabilistic sum. Ours: the hypernatural exponential and ×⁽ˢ⁾ names, the shape test, the parabola slide flow, the ℓp height = p dial reading, and the height-up, dials-down notation.</p>
+</div></body></html>

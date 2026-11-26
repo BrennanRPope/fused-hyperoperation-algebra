@@ -38,6 +38,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: the simplex as its own shape; the shape dial and temperature (section 7). | `topics/simplex/` | — |
 | DRAFT: the Lucas weights' silent layers are the Temperley–Lieb (Beraha) points. | `topics/lucas-temperley-lieb/` | — |
 | DRAFT: shape-dial survey: which proved laws slide into one another. | `topics/shape-dial-survey/` | — |
+| DRAFT: named functions: the hypernatural logarithm on every shape, the proposed hypernatural exponential, and the existing names to adopt. | `topics/named-functions/` | — |
 | DRAFT: the missing shapes: the 24-cell, the 600-cell and E8. | `topics/exceptional-shapes/` | — |
 | DRAFT: every conic section in our framework: the conics are the plane dial. | `topics/conics/` | — |
 | DRAFT: bridge survey: every place the theory lands on an established field (about 739 bridges, 20 fields). | `topics/bridge-survey/` | — |
