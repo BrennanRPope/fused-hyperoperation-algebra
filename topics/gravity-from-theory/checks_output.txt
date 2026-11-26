@@ -1,0 +1,28 @@
+[PASS] N1 lift layer k^2 = e2(a,b,c) = half the box surface  layer2 = a*b + a*c + b*c
+[PASS] N2 face layer of the n-cube grows like n r^(n-1), n=1..7  
+[PASS] N3 box flux of 1/r^2: 4pi for any box around the source, 0 outside  12.56649 12.56649 12.56649 -0.00002 (4pi = 12.56637)
+[PASS] N4 bound orbit: hodograph lands on a great circle of the sphere when dial = -1/(2E)  E = -0.198750, residual 1.8e-12; wrong dial residual 0.383
+[PASS] N5 unbound orbit (E > 0): hodograph is a geodesic of the hyperboloid (dial negative)  E = 0.477935, residual 5.1e-15
+[PASS] N6 parabolic orbit (E = 0): hodograph is a circle through the origin of velocity space  centre (-0.0000,0.7071) radius 0.7071
+[PASS] N7 only the inverse-square force gives circular hodographs (Hamilton 1846)  p=1.5: 3.0e-01, p=2.0: 2.7e-11, p=2.5: 1.1e+00
+[PASS] N8 apsidal angle pi/sqrt(4-n) in n dimensions: equals pi (closed) only at n = 3  n=2.5: 2.5650 vs 2.5651, n=3.0: 3.1415 vs 3.1416, n=3.5: 4.4434 vs 4.4429
+[PASS] N9 Milnor's velocity metric = kappa-stereographic chart with kappa = -1/(2E)  
+[PASS] F0 two dial boosts compose to one with speed (u+v)/(1 - q u v): the theory's velocity law (twisted-boosts page)  (-u - v)/(q*u*v - 1)
+[PASS] F1a boosted field: h'_tx = -2 G^2 (1+gamma) q U u  (dial boost acting on Newton's field)  h'_tx = -2*U*q*u*(gamma + 1)/(q*u**2 + 1)
+[PASS] F1b flat part stays flat under the dial boost (the boost is a symmetry of the dial's interval)  
+[PASS] F1c frame-dragging term vanishes at the Galilean dial q = 0 (infinite light speed)  
+[PASS] F1d with q = -1/c^2: h'_tx = 2(1+gamma) U u / c^2 to first order in u (clocks 2 + rulers 2gamma)  u*(2*U*gamma/c**2 + 2*U/c**2)
+[PASS] F2 superposed moving mass of a spinning ball: int rho u/|x-x'| = (1/2) J x x / r^3 outside  rel. errors 3.8e-04, 1.4e-04, 1.6e-04
+[PASS] F3 gyroscope turn rate -1/2 curl g = (3(J.r)r - J)/r^3 (Lense-Thirring / Schiff) when gamma = 1  
+[PASS] F3b turn rate = -(1/2) x circulation of g per enclosed area (three loop orientations)  
+[PASS] F4a Kerr's g_t-phi at large r = -2 J sin^2(theta)/r with J = M a: same as the boosted Newton field  
+[PASS] F4b exact Kerr static gyroscope -> J/r^3 at the equator, 2J/r^3 on the axis, far out  r=200: eq 1.0101, axis 2.0101; r=800: eq 1.0025, axis 2.0025
+[PASS] F5 BTZ: half the swirl per area, weighted by the clock rate, is exactly J/(2(r^2 - M))  
+[PASS] F6 node drag of an orbit from the same field = 2J/a^3 (Lense-Thirring 1918), prograde  numeric 1.9998e-06 vs 2.0000e-06
+[PASS] F7a Gravity Probe B frame dragging (gamma = 1): ~39 mas/yr vs 37.2 +/- 7.2 measured  vector 40.8, along measured axis 39.1 (GR quoted 39.2)
+[PASS] F7b LAGEOS node drag (gamma = 1): ~31 mas/yr, the value LAGEOS measured at 99 +/- 5% (Ciufolini & Pavlis 2004)  30.7 mas/yr
+[PASS] F7c a dial-only theory (gamma = 0) gives half: GP-B ~2.6 sigma off, LAGEOS ~10 sigma off (stat.)  GP-B 19.5 mas/yr (2.5 sigma); LAGEOS 50% (10 sigma, ~5 with 10% total error)
+[PASS] F7d double pulsar B: drag weight 2 m1/M = (1+gamma) m1/M; gamma = 1 gives 5.07, gamma = 0 gives 2.16 vs 4.77 +0.66  gamma=1: 5.07, gamma=0: 2.16 (4.0 sigma)
+[PASS] F8 frame dragging ~ (1+gamma)/2 x |q| x G J / r^3 with |q| = 1/c^2: no new constant beyond Newton's G and the dial  
+
+26 pass, 0 fail

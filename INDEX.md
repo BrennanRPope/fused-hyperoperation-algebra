@@ -18,6 +18,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: precession. Thomas, Foucault and Berry precession from one swap rule of the circle operation (known physics, cube reading ours); open lead: frame dragging from the swap rule. 23 Lean theorems. | `topics/precession/` | — |
 | DRAFT: semiring audit. ∘ₖ with a + b + 1/k is a known generated semiring in Pap's pseudo-analysis (cite and reuse); renames proposed only. | `topics/semiring-audit/` | — |
 | DRAFT: number-theory geometries as ways to bend the hypercube: tropical (corners), permutohedron (paths), cluster algebras (cube into associahedra). | `topics/number-theory-geometries/` | — |
+| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. | `topics/gravity-from-theory/` | — |
 
 ## The library and tools
 
