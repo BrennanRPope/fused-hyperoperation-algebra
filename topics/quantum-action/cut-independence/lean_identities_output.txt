@@ -1,0 +1,12 @@
+PASS swap_assoc
+PASS leftover_zero_iff
+PASS u_two
+PASS cassini n<=12
+PASS dims_r3
+PASS dims_r2
+PASS w2_r3, w2_r2
+PASS step_closes_r3
+PASS step_closes_r2
+PASS u_at_two n<=40
+PASS disc_factor
+11/11 pass

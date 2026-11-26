@@ -1,0 +1,25 @@
+PASS A1 same-case pairs (ab, ba, AB, BA) are the common ones; case changes are the reversals {'Ba': 6574, 'ab': 12913, 'bA': 6574, 'AB': 12875, 'BA': 12806, 'Ab': 6505, 'ba': 12844, 'aB': 6505, 'aa': 180, 'BB': 180, 'AA': 180, 'bb': 180}
+PASS A2 runs as same-case blocks reproduce the earlier run table 24/8052/10196/7830/56 {2: 8052, 4: 7830, 1: 24, 3: 10196, 5: 56}
+PASS B1 t = 1: a pure twist sigma1^2 becomes the identity (the dial forgets pure braids) 
+PASS B2 t = -1: letters become the Mobius matrices [[1,2],[0,1]] and [[1,0],[-2,1]] 
+PASS B3 ab is parabolic (trace -2): a run circles the third collision point 
+PASS B4 figure-eight BabA: trace 18 = phi^6 + phi^-6 
+PASS B5 figure-eight Mobius length = 12 ln(phi) (braid entropy 6 ln phi per period) 
+PASS B6 full twist is a scalar under the dial: (sigma1 sigma2)^3 = t^3 I 
+PASS B7 below x = 2/3 the dial shows no growth at all (spectral radius 1) max 1.000000000
+PASS C1 Mobius length is a sum of per-run prices (R2 > 0.999) R2 0.99987 prices [1.799 2.858 3.642 4.186 4.802]
+PASS C2 per letter: Mobius price falls from run 2 to 5, time price rises mobius [1.799 1.429 1.214 1.046 0.96 ] time [1.372 2.308 2.477 2.493 2.476]
+PASS C3 Mobius length per letter vs period per letter: strongly anti-correlated r = -0.922
+PASS D1 time reversal (reverse and invert the word) flips the walk area, on all closed words 311 words
+PASS D2 |area| does not sharpen the run law (held-out change under 10%) 0.1294% -> 0.1270%
+PASS E1 swap rule on the shape sphere: line-up turn = -1/2 enclosed area (mod pi), after polish 123 arcs, worst 1.0e-04 rad
+PASS F1 windings are whole numbers 
+PASS F2 windings = (0, n, -n) with n = net count of a, on the 90 shortest orbits 
+PASS F3 all 7 same-word twins have identical windings 
+PASS G1 which runs sit next to which sharpens the period (held out) 0.1214% -> 0.0281%
+PASS G2 real run order beats all 20 shuffles real 0.0281%, shuffles 0.0348..0.0435%
+PASS G3 dial setting chosen on training data alone stays near x = 0.7 [0.7, 0.7, 0.68, 0.68, 0.68, 0.68, 0.7, 0.7, 0.7, 0.7]
+PASS H1 braid entropy adds under 0.05 held-out R2 to runs for instability 0.336 -> 0.348
+PASS H2 the figure-eight stays nearly stable (largest multiplier < 1.001) 
+
+23 passed, 0 failed

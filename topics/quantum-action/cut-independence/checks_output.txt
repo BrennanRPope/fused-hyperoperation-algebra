@@ -1,0 +1,76 @@
+====================================================================================================
+Q1  The swap rule's plane: (x+y)^n with y x = q x y
+  (x+y)^3 = (1) x^0 y^3 + (q**2 + q + 1) x^1 y^2 + (q**2 + q + 1) x^2 y^1 + (1) x^3 y^0
+[PASS] Q1 swap rule gives q-binomials: coefficient of x^k y^(n-k) in (x+y)^n is the Gauss q-binomial for every n <= 8 (exact)
+====================================================================================================
+Q2  A symmetry that respects the swap rule must carry the swap rule's own q
+  E(yx - q xy) = {(2, 0): p - q}
+  F(yx - q xy) = {(0, 2): p - q}
+[PASS] Q2 symmetry's q = swap rule's q: E and F keep y x - q x y = 0 only when the symmetry's parameter p solves [{p: q}] (exact)
+====================================================================================================
+Q3  That symmetry is U_q(sl2) on every degree n (spin n/2)
+  E on x^a y^b (n=3): [(q**2 - q + 1)*(q**2 + q + 1)/q**2, (q**2 + 1)/q, 1]
+[PASS] Q3 U_q(sl2) relations: K E = q^2 E K and E F - F E = (K - 1/K)/(q - 1/q) hold exactly on degrees 1..6 (spins 1/2..3)
+====================================================================================================
+Q4  Gluing copies with the twisted product rule gives quantum gravity's recoupling numbers
+  unitarity of every spin in its invariant norms: max |G^-1 E^T G - F K| = 3.6e-15
+[PASS] Q4 recoupling = q-6j: 342 recoupling numbers built only from the plane and the twisted product rule (q = 1.3) match sqrt([2j12+1][2j23+1])|q-6j| to 5.6e-16
+====================================================================================================
+Q5  Orthogonality of the q-6j
+  generic q = 1.3: 1523 sums, worst error 1.1e-15
+  q = exp(i pi/3), labels truncated at 2j <= r-2: 8 sums, worst error 4.4e-16
+  q = exp(i pi/4), labels truncated at 2j <= r-2: 36 sums, worst error 1.0e-15
+  q = exp(i pi/5), labels truncated at 2j <= r-2: 120 sums, worst error 8.9e-16
+  q = exp(i pi/6), labels truncated at 2j <= r-2: 329 sums, worst error 2.7e-15
+  q = exp(i pi/7), labels truncated at 2j <= r-2: 784 sums, worst error 1.2e-15
+[PASS] Q5 orthogonality: sum_x [2x+1][2f+1]{a b x; c d f}{a b x; c d g} = delta_fg for q = 1.3 and q = e^(i pi/r), r = 3..7
+====================================================================================================
+Q6  The pentagon (Biedenharn-Elliott) identity
+  generic q = 1.3: 240 admissible label sets, worst error 8.3e-17
+  q = exp(i pi/4): 398 admissible label sets, worst error 4.4e-16
+  q = exp(i pi/5): 163 admissible label sets, worst error 3.3e-16
+  q = exp(i pi/6): 95 admissible label sets, worst error 1.1e-15
+  q = exp(i pi/7): 62 admissible label sets, worst error 1.9e-16
+  control, q = exp(i pi/4) but faces allowed past 2(j1+j2+j3) <= 2(r-2): worst error 1.00
+  control, q = exp(i pi/5) but faces allowed past 2(j1+j2+j3) <= 2(r-2): worst error 0.79
+  control, q = exp(i pi/6) but faces allowed past 2(j1+j2+j3) <= 2(r-2): worst error 1.32
+  control, q = exp(i pi/7) but faces allowed past 2(j1+j2+j3) <= 2(r-2): worst error 0.77
+[PASS] Q6 pentagon identity: Biedenharn-Elliott holds for real q and at roots of unity with the root-of-unity cut on faces, and fails without that cut
+====================================================================================================
+Q7/Q8  Pachner moves as local identities (Turaev-Viro weights)
+  2-3 move, r = 3: 16 boundary labellings (all; 16 nonzero), worst error 4.4e-16
+  2-3 move, r = 4: 132 boundary labellings (all; 132 nonzero), worst error 4.4e-16
+  2-3 move, r = 5: 752 boundary labellings (all; 752 nonzero), worst error 5.6e-16
+  2-3 move, r = 6: 74 boundary labellings (sampled; 74 nonzero), worst error 6.1e-16
+  2-3 move, r = 7: 41 boundary labellings (sampled; 41 nonzero), worst error 4.4e-16
+[PASS] Q7 Pachner 2-3 move: two tetrahedra = sum over the new edge of three tetrahedra, at every tested root of unity
+  1-4 move, r = 3: 8 labellings (all), worst error 2.2e-16; sum/tet = 2.000000 (spread 4.4e-16) vs w^2 = sum [2j+1]^2 = 2.000000 = r/(2 sin^2(pi/r)) = 2.000000
+  1-4 move, r = 4: 36 labellings (all), worst error 7.8e-16; sum/tet = 4.000000 (spread 2.2e-15) vs w^2 = sum [2j+1]^2 = 4.000000 = r/(2 sin^2(pi/r)) = 4.000000
+  1-4 move, r = 5: 120 labellings (all), worst error 4.4e-16; sum/tet = 7.236068 (spread 7.1e-15) vs w^2 = sum [2j+1]^2 = 7.236068 = r/(2 sin^2(pi/r)) = 7.236068
+  1-4 move, r = 6: 69 labellings (sampled), worst error 1.2e-15; sum/tet = 12.000000 (spread 2.1e-14) vs w^2 = sum [2j+1]^2 = 12.000000 = r/(2 sin^2(pi/r)) = 12.000000
+[PASS] Q8 Pachner 1-4 move: one tetrahedron = (1/w^2) sum over four new edges of four tetrahedra; the factor is forced to be w^2 = sum of [2j+1]^2 = r/(2 sin^2(pi/r))
+====================================================================================================
+Q9  Global check: the whole state sum on four triangulations of the 3-sphere
+  r = 3: V=4 E=6 T=2: Z = 0.500000000000; V=5 E=10 T=5: Z = 0.500000000000; V=6 E=14 T=8: Z = 0.500000000000; V=6 E=15 T=9: Z = 0.500000000000;  1/w^2 = 0.500000000000   (0 s)
+  r = 4: V=4 E=6 T=2: Z = 0.250000000000; V=5 E=10 T=5: Z = 0.250000000000; V=6 E=14 T=8: Z = 0.250000000000; V=6 E=15 T=9: Z = 0.250000000000;  1/w^2 = 0.250000000000   (0 s)
+  r = 5: V=4 E=6 T=2: Z = 0.138196601125; V=5 E=10 T=5: Z = 0.138196601125; V=6 E=14 T=8: Z = 0.138196601125; V=6 E=15 T=9: Z = 0.138196601125;  1/w^2 = 0.138196601125   (1 s)
+  r = 6: V=4 E=6 T=2: Z = 0.083333333333; V=5 E=10 T=5: Z = 0.083333333333; V=6 E=14 T=8: Z = 0.083333333333; V=6 E=15 T=9: Z = 0.083333333333;  1/w^2 = 0.083333333333   (6 s)
+[PASS] Q9 same answer on every triangulation: Z(3-sphere) is the same, 1/w^2, for 2, 5, 8 and 9 tetrahedra (a 1-4 move, another 1-4 move, then a 2-3 move), r = 3, 4, 5, 6
+====================================================================================================
+Q10 Why a root of unity: the dial sequence and the vertex weight
+  quantum dimension [n] = u(2n)/u(2), u the dial sequence with k = q^(1/2) + q^(-1/2), d = 1: worst error 2.6e-11
+  first zero of the dial sequence u: n = {3: 6, 5: 10, 8: 16};  first zero of [n]: n = {3: 3, 5: 5, 8: 8};  [n] > 0 below r: True
+  w^2 = sum [2j+1]^2 grows like r^3/(2 pi^2): r=3: 2.0 (1.4622), r=5: 7.2 (1.1427), r=10: 52.4 (1.0336), r=20: 408.6 (1.0083), r=50: 6340.9 (1.0013), r=100: 50677.3 (1.0003), r=200: 405318.1 (1.0001)
+[PASS] Q10 the root of unity is what makes the sum finite: quantum dimensions are the even terms of our dial's own sequence; it first hits zero at step 2r, so [2j+1] first vanishes at 2j+1 = r and the labels stop; as q -> 1 (r -> infinity) the vertex weight w^2 diverges like r^3 (the Ponzano-Regge infinity)
+====================================================================================================
+Q11 Our dials: face weight q = b/a with a + b = k, a b = d = 1, so k = q^(1/2) + q^(-1/2)
+    q = e^(i pi/5): k = 1.902113, d' = d - k^2/4 = +0.095492   (3D quantum gravity with this q: Lambda +)
+   q = e^(i pi/50): k = 1.999013, d' = d - k^2/4 = +0.000987   (3D quantum gravity with this q: Lambda +)
+             q = 1: k = 2.000000, d' = d - k^2/4 = +0.000000   (3D quantum gravity with this q: Lambda 0)
+          q = 1.02: k = 2.000098, d' = d - k^2/4 = -0.000098   (3D quantum gravity with this q: Lambda -)
+           q = 1.3: k = 2.017233, d' = d - k^2/4 = -0.017308   (3D quantum gravity with this q: Lambda -)
+  d' = sin^2(pi/2r) exactly at q = e^(i pi/r): True;  step matrix [[k,-1],[1,0]]^(2r) = -1 (r = 2..39): True;  at q = 1.3 it grows (entry 8.2e+02 after 40 steps)
+  r^2 d' -> pi^2/4, so d' falls like 1/r^2, the way Lambda does: r=20: 2.462332, r=160: 2.467322, r=400: 2.467388, r=4000: 2.467401  (pi^2/4 = 2.467401)
+[PASS] Q11 sign of d - k^2/4 = sign of Lambda: after the ruler change d' = d - k^2/4; roots of unity sit on the sphere side (d' = sin^2(pi/2r) > 0, Lambda > 0), q = 1 on the flat line (Ponzano-Regge, Lambda = 0), real q on the hyperbolic side (Lambda < 0); d' scales as 1/r^2 like Lambda (the constant in front depends on the length unit, so only the scaling is claimed)
+====================================================================================================
+11/11 checks pass   (10.8 s)

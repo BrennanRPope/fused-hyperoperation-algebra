@@ -1,0 +1,63 @@
+== A. Which dial laws close up into a circle (and so have a gap)?
+PASS  A1 circumference k=0.0, d=1.0: 3.141592653590 vs 2pi/sqrt(-Delta)   [Delta=-4.0]
+PASS  A1 circumference k=1.0, d=1.0: 3.627598728468 vs 2pi/sqrt(-Delta)   [Delta=-3.0]
+PASS  A1 circumference k=-2.0, d=3.0: 2.221441469079 vs 2pi/sqrt(-Delta)   [Delta=-8.0]
+PASS  A1 circumference k=3.0, d=4.0: 2.374820823447 vs 2pi/sqrt(-Delta)   [Delta=-7.0]
+PASS  A1 circumference k=0.5, d=0.1: 16.223114703912 vs 2pi/sqrt(-Delta)   [Delta=-0.15000000000000002]
+PASS  A2 the law is addition of rulers modulo the circumference (1000 random pairs)   [worst 2.2e-16]
+PASS  A3 invariant Laplacian eigenvalues are n^2 (-Delta): gap = -Delta = 4 x curvature reading   [worst rel 1.6e-16]
+PASS  A4 border (Delta=0): ruler up to the double wall is 1/eps - 1/11, grows without bound   [quad 99.9091 vs 99.9091]
+PASS  A4 line (Delta=5.0): ruler up to the wall grows without bound   [2.33, 4.39, 6.45]
+PASS  A4 circle operation k=1 (Delta=1.0): ruler up to the wall grows without bound   [7.00, 11.61, 16.21]
+PASS  A5 going once round the circle returns a whole rung to itself and sends a half rung to minus itself
+== B. The plaquette: composition round a square
+PASS  B1 abelian plaquette: order of the four links does not matter   [1.8e-14]
+PASS  B2 log(plaquette)/a^2 -> dA_y - dA_x + [A_x, A_y] at the centre, error shrinks in step with a   [4.2e-03, 2.0e-03, 1.0e-03]
+PASS  B3 the [A_x, A_y] piece (the order gap / holonomy reading) is nonzero here and is a fixed part of F   [|[A,A]| = 0.122 of |F| = 0.249]
+== C. One plaquette, quantum: rung ladder at strong coupling, oscillator at weak
+PASS  C1 U(1) strong coupling: gap -> 2 g^2 x (rung 1 - rung 0) = 2 g^2   [32.0001 vs 32.0]
+PASS  C2 U(1) weak coupling: gap -> 2 (oscillator, sqrt(2 x 2g^2 x 1/g^2))   [1.9887]
+PASS  C3 SU(2) strong coupling: gap -> 2 g^2 x Casimir(1/2) = 1.5 g^2
+PASS  C4 the gap never closes along the whole coupling line (one plaquette); it dips a little in the crossover   [min U(1) 1.756, min SU(2) 1.553]
+PASS  C5 polish: rung cut 60 -> 120 moves the weak gap by < 1e-10
+== D. Two dimensions, exact: rung weights, string tension, zeros
+PASS  D1 SU(2) rung weights c_j = 2(2j+1) I_{2j+1}(beta)/beta (vs Haar integral)   [5.5e-15]
+PASS  D2 on real beta > 0 rung 0 outweighs every other rung (U(1): I_0 > I_n)
+PASS  D3 same for SU(2) per dimension: c_0 > c_j/(2j+1)
+PASS  D4 U(1): sigma_2/sigma_1 -> 2 at strong coupling (counting), slowly: 2 + ln2/ln(2/beta)   [beta=1e-6: 2.0478 vs 2.0478; beta=0.05: 2.1878]
+PASS  D5 ... and -> 4 = 2^2 at weak coupling (Casimir rung ladder)   [4.000]
+PASS  D6 SU(2) weak coupling: sigma_1/sigma_1/2 -> C2(1)/C2(1/2) = 8/3   [2.6666]
+PASS  D7 U(1) sigma_1 ~ 1/(2 beta) at weak coupling: closes only as beta -> infinity
+   N=8: 8 zeros found in the box; smallest |Im beta| = 1.3798
+   N=16: 9 zeros found in the box; smallest |Im beta| = 2.1060
+   N=32: 9 zeros found in the box; smallest |Im beta| = 2.7607
+PASS  D8 zeros found for N = 8, 16, 32 and none on the real axis
+PASS  D9 zeros crowd onto the curve |c_1| = |c_0| (top two rungs tie) as N grows   [0.100, 0.091, 0.054]
+PASS  D10 in a band |Im beta| <= 1 round the whole positive real axis rung 0 is strictly the largest (max |I_1/I_0| < 1)   [max 0.9874]
+PASS  D10b the tie region hugs the imaginary axis: its right edge creeps out only like ln|Im beta| (tie needs e^(-2 Re beta) ~ Re beta / |beta|^2)   [edge at Im=5..160: 2.32, 2.77, 3.25, 3.86, 4.41, 5.03; slope vs ln Im = 0.786]
+PASS  D11 every zero found (N=32) sits within 2.5 of a zero of rung 0's weight, i j_{0,m} = 2.40i, 5.52i, 8.65i, ...   [max distance 2.47]
+== E. A twist shifts the ladder by a fractional rung; the gap closes at half a rung
+PASS  E1 gap = 1 - theta/pi for theta in [0, pi] (units g^2 L / 2)
+PASS  E2 gap closes exactly at theta = pi (half a rung) and reopens after
+PASS  E3 at theta = pi the two lowest levels tie, but the next level sits 2 rungs-worth above them (each vacuum stays gapped)   [levels [0.25 0.25 2.25 2.25]]
+PASS  E4 nearest zero sits on Re theta = pi and its height falls like 1/N (pinch onto the real axis)   [1.9739, 0.9870, 0.4935, 0.2467]
+   (exact: Im theta = 2 pi^2 beta / N x (2/1)... fitted ratio 8.0000)
+== F. Our dial gas on strips: a gap that closes at a continuous phase change
+PASS  F1 at k_c = 3 + 2 sqrt 2 the gap x width is nearly constant (gap closes like 1/W: no gap in the infinite plane)   [0.8100, 0.7952, 0.7907, 0.7887]
+PASS  F2 at k_c, W x gap approaches pi/4 (the conformal value for this model's first excitation)   [0.7887 vs 0.7854]
+PASS  F3 below k_c (disordered side) the gap settles at a positive value as W grows   [0.3416, 0.2824, 0.2582, 0.2465]
+PASS  F4 well above k_c (k = 1.6 k_c, ordered side) the top two levels merge exponentially: two ordered states, not a particle   [6.0e-02, 1.9e-02, 6.5e-03, 2.4e-03, 8.9e-04]
+PASS  F5 ... while the gap above that pair stays open: a + b/W^2 fits agree, limit about 0.9   [from W=8,10: 0.902; from W=10,12: 0.888]
+PASS  F6 polish: W = 12 at k_c keeps W x gap within 1% of W = 10   [0.7877]
+== G. The end of the line: the height flow's gap, exp(-2/x) x^(1/3), zero to every order
+PASS  G1 the number of heights to reach strong coupling is 2/x0 - (1/3) ln x0 + C: e^{-s*} e^{2/x0} x0^{-1/3} settles (drift ~ x0)   [7.5314292, 7.5569602, 7.5699257, 7.5764584, 7.5797372, 7.5813797, 7.5822017]
+PASS  G2 Abel coordinate obeys alpha(e^x - 1) = alpha(x) + 1
+PASS  G3 the gap m(x0) = e^{-s*} beats every power: m/x0^20 falls toward 0 once x0 < 1/32   [6.48e-20, 1.39e-69, 7.64e-175]
+PASS  G4 stepping one height toward weak coupling and zooming by e leaves the gap fixed (the continuum line)   [1.37e-30]
+PASS  G5 the other sign (x < 0) flows to zero coupling: weak at long distance, no gap is generated
+== H. Strong coupling in 3 or 4 dimensions: lowest glueball = a tube of 4 plaquettes
+   U(1): beta = 0.3: u = 0.14834, m = -4 ln u = 7.6331 (rung-1 weight cost x 4 plaquettes)
+   SU(2): beta = 0.3: u = 0.07472, m = -4 ln u = 10.3760 (rung-1 weight cost x 4 plaquettes)
+   (counting argument, not a numerical check; the Hamiltonian version is C1/C3: one plaquette = 4 links in rung 1)
+
+TOTAL: 46 pass, 0 fail

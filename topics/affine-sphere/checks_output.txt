@@ -1,0 +1,39 @@
+PASS S1 (u,u^2+v^2,v)/q lies on x^2+kxy+dy^2+w^2=y for all k,d, and u=v=0 is O  | residual 0
+PASS S2 shear X=x+(k/2)y (det 1) carries the (k,d) surface onto X^2+(d-k^2/4)y^2+w^2=y  | residual 0
+PASS S2b on the curve the shear is the Cayley map T = a/(1+(k/2)a)  | T = 2*u/(k*u + 2)
+PASS S3 (k,d)=(3/5,7/10) c=61/100: xi = -H (x - centre), H = 2^(3/2)(d-k^2/4)  | max err 9.27E-32
+PASS S4 (k,d)=(3/5,7/10): affine normal at O = sqrt2*(-k/2, 1, 0), no d in it  | xi(O) = [-0.42426407, 1.4142136, 0]
+PASS S5 (k,d)=(3/5,7/10): cubic form vanishes (|K|^2_h = 0)  | max |K|^2 3.78E-61
+PASS S3 (k,d)=(-6/5,1/2) c=7/50: xi = -H (x - centre), H = 2^(3/2)(d-k^2/4)  | max err 2.82E-31
+PASS S4 (k,d)=(-6/5,1/2): affine normal at O = sqrt2*(-k/2, 1, 0), no d in it  | xi(O) = [0.84852814, 1.4142136, 0]
+PASS S5 (k,d)=(-6/5,1/2): cubic form vanishes (|K|^2_h = 0)  | max |K|^2 3.56E-61
+PASS S3 (k,d)=(2,1) c=0: xi constant (improper sphere), H = 0  | max err 0
+PASS S4 (k,d)=(2,1): affine normal at O = sqrt2*(-k/2, 1, 0), no d in it  | xi(O) = [-1.4142136, 1.4142136, 0]
+PASS S5 (k,d)=(2,1): cubic form vanishes (|K|^2_h = 0)  | max |K|^2 2.36E-61
+PASS S3 (k,d)=(1/2,1/16) c=0: xi constant (improper sphere), H = 0  | max err 0
+PASS S4 (k,d)=(1/2,1/16): affine normal at O = sqrt2*(-k/2, 1, 0), no d in it  | xi(O) = [-0.35355339, 1.4142136, 0]
+PASS S5 (k,d)=(1/2,1/16): cubic form vanishes (|K|^2_h = 0)  | max |K|^2 5.18E-61
+PASS S3 (k,d)=(1,-1/2) c=-3/4: xi = -H (x - centre), H = 2^(3/2)(d-k^2/4)  | max err 1.68E-31
+PASS S4 (k,d)=(1,-1/2): affine normal at O = sqrt2*(-k/2, 1, 0), no d in it  | xi(O) = [-0.70710678, 1.4142136, 0]
+PASS S5 (k,d)=(1,-1/2): cubic form vanishes (|K|^2_h = 0)  | max |K|^2 4.47E-61
+PASS S3 (k,d)=(-3/2,1/5) c=-29/80: xi = -H (x - centre), H = 2^(3/2)(d-k^2/4)  | max err 5.00E-32
+PASS S4 (k,d)=(-3/2,1/5): affine normal at O = sqrt2*(-k/2, 1, 0), no d in it  | xi(O) = [1.0606602, 1.4142136, 0]
+PASS S5 (k,d)=(-3/2,1/5): cubic form vanishes (|K|^2_h = 0)  | max |K|^2 7.10E-61
+PASS S6 k = -2 xi_x/xi_y at O and d = H/2^(3/2) + k^2/4 recover both dials from the shape  | max error 1.42E-31
+PASS S7 chord conic: xi = -kappa(x - centre), kappa = 2^(4/3)(d-k^2/4); xi(O) = 2^(1/3)(-k/2,1)  | max err 8.15E-32
+PASS S7b any dimension n: H = 4^((n+1)/(n+2)) (d-k^2/4)  | H = 4**((n + 1)/(n + 2))*c
+PASS S8 xyz=1 is an affine sphere centred at 0 (xi = -H x, H constant)  | H = -0.4386913377
+PASS S8b xyz=1 has a nonzero constant cubic form (|K|^2_h same at 3 points)  | |K|^2 = 0.8773826753
+PASS S9 generator X=[[k,1],[-d,0]]: (I+aX)(I+bX) = (1-dab)I + (a+b+kab)X; tr k, det d, det X0 = d-k^2/4
+PASS S9b det on sl(2) is -p^2-q^2+r^2: round side (det>0) is a TWO-sheeted hyperboloid (hyperbolic type), two-wall side a one-sheeted one (indefinite): types do not match the plane dial  | -p**2 - q**2 + r**2
+PASS S10 polish: slope of H against d-k^2/4 is 2^(3/2)  | 15-digit fit err 0.0e+00 (37 s) -> 45-digit re-evaluation err 1.90E-46 (28 s)
+
+table k, d, c, sphere err, lean err, |K|^2
+   ['3/5', '7/10', '61/100', '9.3e-32', '7.0e-32', '3.8e-61']
+   ['-6/5', '1/2', '7/50', '2.8e-31', '7.0e-32', '3.6e-61']
+   ['2', '1', '0', '0.0e+00', '7.0e-32', '2.4e-61']
+   ['1/2', '1/16', '0', '0.0e+00', '7.0e-32', '5.2e-61']
+   ['1', '-1/2', '-3/4', '1.7e-31', '7.0e-32', '4.5e-61']
+   ['-3/2', '1/5', '-29/80', '5.0e-32', '7.0e-32', '7.1e-61']
+
+29/29 checks pass

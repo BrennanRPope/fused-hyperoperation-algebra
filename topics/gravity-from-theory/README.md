@@ -188,6 +188,15 @@ D, so 1/r² at 3 and 1/r at 2 (log potential exactly at D = 2), carried off the 
 rule wants 1/r² at every D, and Einstein gives no pull at D = 2, so the three pictures meet only at D = 3. Right shapes:
 sphere for the field, cube for the theory's cells, Gaussian for non-integer D. 19/19 checks.
 
+**Follow-up 4 (Nov 26): `jet-river/README.md`.** Each river cell carries its jet (velocity and its slopes). For the
+river, every component of Einstein's tensor is the second layer Q of the cell's one-step cube det(I + hS) or its
+slope, so the velocity rule for every cell (each a zero-energy faller, Q = 8πGρ) gives exact Schwarzschild in empty
+space without borrowing Einstein's equation. Q is a pure divergence, so Gauss's law is exact; a uniform ball gives
+Friedmann's equation; the jet's second derivative is the tide, with trace Newton's Poisson equation. Spin works with
+velocity alone to first order (swirl 2J/r³, frame dragging) but not at second order, where the lattice curves and
+cells must also carry a rotation (Hamilton–Lisle). The Q law is Einstein's known energy constraint (ADM); the old
+bridge survives as one structural input (flat cube lattice, own clocks). 19/19 checks.
+
 ### N.4 A dead end checked in passing
 
 The union rule ∘₋₁ is the rule for overlapping shadows, which is Le Sage's 1748 "shadow" theory of gravity: it gives

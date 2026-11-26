@@ -1,0 +1,5 @@
+r = 5 (every admissible labelling): 2-3 move over 752 labellings, worst |difference| = 8.02e-51;  1-4 move over 120 labellings, worst |difference| = 5.35e-51
+r = 7 (sampled admissible labelling): 2-3 move over 22 labellings, worst |difference| = 4.01e-51;  1-4 move over 7 labellings, worst |difference| = 2.67e-51
+r = 5 whole 3-sphere: |Z(2 tets) - 1/w^2| = 2.0e-51, |Z(5 tets) - 1/w^2| = 1.17e-50, Z = 0.138196601125010515179541316563
+   1/w^2 at r = 5 is (5 - sqrt 5)/20 = 0.138196601125010515179541316563
+verdict: every identity holds to ~1e-50 at 50 digits, so the double-precision agreement in checks.py reflects exact identities, not near misses.  (2 s)

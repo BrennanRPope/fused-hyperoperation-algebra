@@ -255,5 +255,6 @@ Roberts 1999; Taylor and Woodward 2005; Lauscher and Reuter 2005. Citations are 
 - `lean/QuantumAction.lean` (18 theorems + 2 ext lemmas, compiled into the library as `FusedAlgebra/Topics/QuantumAction.lean` on Nov 26; two proofs needed a closing `grind`)
 - `lean_identities_check.py` (sympy check of every Lean identity, 10/10)
 - `polish.py` → `polish_output.txt`
+- `cut-independence/` (DRAFT, Nov 26): follow-up to section 7. Cut-independence of 3D quantum gravity follows from the swap rule's q weight at a root of unity (11/11 checks; 14 Lean theorems compiled as `FusedAlgebra.Topics.CutIndependence`). Known mathematics; it closes the question and opens no new direction.
 
 Polish (Nov 26): the Snell crossing point in B4 (bounded Brent search) was refined by Newton on dOPL/dx: x 0.62319978 → 0.62319980, Snell gap 3e-8 → 1e-16, in under a millisecond. No number quoted on this page changes; B4 still passes.

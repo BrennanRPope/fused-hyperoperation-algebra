@@ -1,0 +1,84 @@
+{
+  "J1a layers of the river's strain box": {
+    "pass": true,
+    "detail": "P = -Derivative(v(r), r) - 2*v(r)/r,  Q = (2*r*Derivative(v(r), r) + v(r))*v(r)/r**2 = (r v^2)'/r^2,  R = -v(r)**2*Derivative(v(r), r)/r**2"
+  },
+  "J2a G^t_t = -Q": {
+    "pass": true,
+    "detail": "G^t_t = -(2*r*Derivative(v(r), r) + v(r))*v(r)/r**2"
+  },
+  "J2b G^r_r = -Q": {
+    "pass": true,
+    "detail": "G^r_r = -(2*r*Derivative(v(r), r) + v(r))*v(r)/r**2"
+  },
+  "J2c G^theta_theta = G^phi_phi = -(r^2 Q)'/(2r)": {
+    "pass": true,
+    "detail": "G^th_th = -(r*v(r)*Derivative(v(r), (r, 2)) + r*Derivative(v(r), r)**2 + 2*v(r)*Derivative(v(r), r))/r"
+  },
+  "J2d all off-diagonal components vanish (static river)": {
+    "pass": true,
+    "detail": "so vacuum <=> Q = 0 and (r^2 Q)' = 0 <=> Q = 0"
+  },
+  "einstein_components": {
+    "Gtt": "-(2*r*Derivative(v(r), r) + v(r))*v(r)/r**2",
+    "Grr": "-(2*r*Derivative(v(r), r) + v(r))*v(r)/r**2",
+    "Gthth": "-v(r)*Derivative(v(r), (r, 2)) - Derivative(v(r), r)**2 - 2*v(r)*Derivative(v(r), r)/r"
+  },
+  "J3a Q(grad u) = div F for any 3D field, F = (u (div u) - (u.grad)u)/2": {
+    "pass": true,
+    "detail": "the second layer of the box is a pure divergence"
+  },
+  "J3b over a ball: integral of Q = 4 pi r^2 F_r = 4 pi r v^2": {
+    "pass": true,
+    "detail": "so Q = 8 pi G rho integrates to r v^2 = 2 G m(r): the river speed law with the enclosed mass, exactly"
+  },
+  "J4a all cells at E = 0 (v^2 = 2Gm(r)/r) <=> Q = 8 pi G rho, with m' = 4 pi r^2 rho": {
+    "pass": true,
+    "detail": "Q = 2*G*Derivative(m(r), r)/r**2 = 8 pi G rho"
+  },
+  "J4b empty space: Q = 0 gives r v^2 = constant = 2GM (Schwarzschild's river)": {
+    "pass": true,
+    "detail": "r v^2 = C1/r"
+  },
+  "J4c uniform ball: v = H r, Q = 3H^2 = 8 pi G rho (Friedmann's equation)": {
+    "pass": true,
+    "detail": "inside a uniform dust ball the river is a contracting Friedmann universe"
+  },
+  "J5 a river v^2 = 2m(t)/r breaks the field equations unless dm/dt = 0": {
+    "pass": true,
+    "detail": "{'G[1,0]': 2*Derivative(m(t), t)/r**2, 'G[1,1]': sqrt(2)*m(t)**3*Derivative(m(t), t)/(r**5*(m(t)/r)**(7/2)), 'G[2,2]': sqrt(2)*m(t)**3*Derivative(m(t), t)/(4*r**5*(m(t)/r)**(7/2)), 'G[3,3]': sqrt(2)*m(t)**3*Derivative(m(t), t)/(4*r**5*(m(t)/r)**(7/2))}"
+  },
+  "J6a Riemann tide R(e,u,e,u) = -(DS/Dt + S^2) following the cell, radial and sideways, any v(r)": {
+    "pass": true,
+    "detail": "R_(r u r u) = -v(r)*Derivative(v(r), (r, 2)) - Derivative(v(r), r)**2;  R_(th u th u) = -v(r)*Derivative(v(r), r)/r"
+  },
+  "J6b trace of the tide R_uu = Laplacian of Phi with Phi = -v^2/2 (Newton's Poisson equation, exact)": {
+    "pass": true,
+    "detail": "R_uu = -(r*v(r)*Derivative(v(r), (r, 2)) + r*Derivative(v(r), r)**2 + 2*v(r)*Derivative(v(r), r))/r"
+  },
+  "J6c Schwarzschild river: tides -2M/r^3 along r, +M/r^3 sideways; trace 0": {
+    "pass": true,
+    "detail": "geodesic deviation a = -R(.,u,.,u) xi: stretched along r by 2M/r^3, squeezed sideways by M/r^3"
+  },
+  "J7a dQ/dS = (tr S) I - S": {
+    "pass": true,
+    "detail": "momentum constraint (vacuum): div((tr S) I - S) = 0, the divergence of Q's gradient"
+  },
+  "J7b vector law for a swirl w(r) on any river: G^t_phi = -r (r w'' + 4 w') sin^2/2, so (r^4 w')' = 0, w = 2J/r^3": {
+    "pass": true,
+    "detail": "the Lense-Thirring frame-dragging rate, from the Q layer's vector law (momentum constraint)"
+  },
+  "J7c Schwarzschild river + swirl w = 2J/r^3 satisfies every field equation at first order in spin": {
+    "pass": true,
+    "detail": "frame dragging is a velocity field: inflow v = sqrt(2M/r) plus swirl 2J/r^3 (slow-spin Kerr)"
+  },
+  "J7d Doran's twist term g_r phi = -a v sin^2 also passes: at first order it is only a relabeling phi -> phi + h(r)": {
+    "pass": true,
+    "detail": "r^2 sin^2 h' = -a v; the cell's own rotation shows up only at second order in spin"
+  },
+  "J7e Doran's Kerr river: lattice flat at first order in spin, curved at second: 3R = 2 M a^2 (3 sin^2 - 2)/r^5": {
+    "pass": true,
+    "detail": "3R = 2*M*a**2*epsilon**2*(3*sin(theta)**2 - 2)/r**5; known theorem (Garat & Price 2000): no conformally flat slicing of Kerr exists at all"
+  },
+  "J7e_scalar_curvature": "2*M*a**2*epsilon**2*(3*sin(theta)**2 - 2)/r**5"
+}

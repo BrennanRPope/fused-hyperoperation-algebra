@@ -1,0 +1,11 @@
+F4.3 polish |<rho> - u∘₂v|: 0.0
+F4.4 polish |<ln(1+rho)> - ln(1+u) - ln(1+v)|: 9.86e-32
+F4.5 polish |1/<T> - 1 - (u+v)|: 0.0
+F4.6 polish Legendre product, nu=2, relative error: 1.62e-31
+F4.6 polish Legendre product, nu=0.5, relative error: 1.38e-31
+F4.6 polish Legendre product, nu=(-0.5 + 1.7j), relative error: 1.83e-44
+F4.7 polish mean odds, 6 barriers (Monte Carlo ± 1 s.e. vs exact ∘₂ power): 5.1946 ± 0.0321 vs 5.1953  (-0.02 s.e.)
+F4.8 polish log-mean, 6 barriers (± 1 s.e. vs N ln(1+u)): 1.33783 ± 0.00376 vs 1.33886  (-0.27 s.e.)
+F3.5 polish |Edwards sum - sn(a+b)| at m = 0.8, 30 digits: 4.93e-32
+F1.5 polish |G(u1+u2) - L(G(u1),G(u2))|: 0.0
+polish done in 1.9 s

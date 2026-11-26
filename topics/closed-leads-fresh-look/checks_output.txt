@@ -1,0 +1,48 @@
+
+== F1. What survives rescaling once d is in
+PASS F1.1 rescaling x->lam*x sends (k,d) to (k/lam, d/lam^2)
+PASS F1.2 iterative residue of the (k,d) generator is 1/3 - 4d/(3k^2)   [(-4*d + k**2)/(3*k**2)]
+PASS F1.3 the residue is unchanged by rescaling (depends on d/k^2 only)
+PASS F1.4 with d = 0 it is the constant 1/3 (k alone: only its sign survives)
+PASS F1.5 generator G turns + into the (k,d) law (numeric, k=0.7, d=0.3)
+
+== F2. History from composition: stretch-and-shift reforms
+PASS F2.1 five reforms sharing one centre: all 120 orders give one outcome
+PASS F2.2 five reforms with different centres: 120 orders give 120 outcomes   [120]
+PASS F2.3 swapping two neighbours moves the outcome by (later stretches) x (oriented area)
+PASS F2.4 commutator of two reforms is a pure shift; zero iff their centres agree   [shift = a1*c2 - a2*c1]
+PASS F2.5 worked example: 10% raise and a 500 grant differ by 50 between orders (the corner)
+PASS F2.6 maps x -> A x + C with the invariant metric (dA^2+dC^2)/A^2 form a plane of curvature -1
+PASS F2.7 that metric is unchanged by composing with any reform
+
+== F3. Elliptic functions: one parameter off the plane dial
+PASS F3.1 Edwards parameter 0: the curve a x^2 + y^2 = 1 is our conic law with k = 0, d = a (in slope x/y)
+PASS F3.2 with Edwards parameter on, the law stays on its curve and stays associative (four settings)
+PASS F3.3 j-invariant blows up like 16a/(Edwards parameter) as it -> 0: our laws are the nodal (Tate) limit   [j*e=16.0074 j*e=16.0001 j*e=16.0000]
+PASS F3.4 j-invariant also blows up as Edwards parameter -> a (the other degenerate end)
+PASS F3.5 Edwards law with a = 1 and parameter m is Jacobi's sn addition theorem (x = sn, y = cn/dn)
+PASS F3.6 m = 0 end: sn = sin (round side); m = 1 end: sn = tanh (relativity side)
+PASS F3.7 at m = 1 the law in x = sn is velocity addition, our k = 0, d = -1
+PASS F3.8 the law's own logarithm is Legendre's integral F(arcsin x | m); at m = 0 it is arcsin
+PASS F3.9 sn(x) = x - (1+m)x^3/6 + ...: it touches the identity, so it has fractional iterates (rungs)
+PASS F3.10 for 0 <= m < 1 Jacobi's denominator never vanishes on the real line (no wall in the sn chart)   [min 0.1010]
+
+== F4. Tunnelling: two barriers, one hyperbolic triangle
+PASS F4.1 the two-barrier odds t sweep exactly between t₁∘₂t₂ ∓ 2√(t₁t₂(1+t₁)(1+t₂)) as the spacing changes   [t1=0.4225 t2=0.1600]
+PASS F4.2 1 + 2t = cosh D₁ cosh D₂ − sinh D₁ sinh D₂ cos φ: the hyperbolic law of cosines, with cos φ in [-1,1]
+PASS F4.3 averaged over the spacing, the odds compose by ∘₂ exactly (mean resistance)   [0.7177000000 vs 0.7177000000]
+PASS F4.4 the log-average composes by ∘₁: <ln(1+t)> = ln(1+t₁) + ln(1+t₂), so 'blocked' glues by ∘₋₁ exactly
+PASS F4.5 for one pair, the mean transmission gives plain addition of odds (k = 0): 1/<T> − 1 = t₁ + t₂
+PASS F4.6 every Legendre function P_ν(1+2t) multiplies on average (ν = 2, 3, 1/2, and a conical one)
+PASS F4.7 six barriers, random spacings: mean odds = ∘₂ power ((1+2t₁)^N − 1)/2 (Monte Carlo, 2% tolerance)   [5.2728 vs 5.1953]
+PASS F4.8 six barriers: log-mean grows as N·ln(1+t₁), the typical (∘₁) rate (1% tolerance)   [1.34996 vs 1.33886]
+PASS F4.9 the two growth rates differ: ln(1+2t₁) > ln(1+t₁) (mean resistance runs ahead of typical)
+PASS F4.10 the old test (adjacent slices, no averaging) lands inside the fixed-phase band, not on ∘₁ or ∘₂   [slice ratio off ∘₁ by 0.130]
+
+== F5. Triprotic acids and the pair-only corner weights
+PASS F5.1 a Cauchy matrix's corner weights are pair-only: triple corner = product of the three pair corners
+PASS F5.2 on a line the pair factors obey artanh√w₁₃ = artanh√w₁₂ + artanh√w₂₃ (velocity addition)
+PASS F5.3 so three equal pair factors (the uniform model that fits citric acid's equal gaps) cannot come from a line   [three equal distances on a line is impossible]
+PASS F5.4 symmetric unit-diagonal M with equal off-diagonals gives pair-product corners only at w = 1 (no interaction), w = 0, or the unphysical w = −3
+
+36 of 36 pass   (1.6 s)
