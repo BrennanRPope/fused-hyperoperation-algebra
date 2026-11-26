@@ -4,7 +4,7 @@ One library for every Lean proof in the project, all built on one base of
 circle-operation laws, so each new proof starts from the same foundation.
 
 **Status (Nov 26, 2026):** all 145 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3551 theorems, none uses `sorry`, and every one uses only
+(no mathlib). 3560 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
