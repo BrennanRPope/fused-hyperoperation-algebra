@@ -2,6 +2,9 @@
 
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra (repo: fused-hyperoperation-algebra).
 Follow-up: [`elliptic-object/`](elliptic-object/README.md) tries the "elliptic object" (all local factors elliptic) and the positivity and precession questions.
+
+Round 3: [`round3/`](round3/README.md) tries the fused rewind, the Kerr turn, the barrier chain, the Lee–Yang far zone and the Liebig knob.
+
 Asked for by Brennan (voice): "let's look at the Riemann hypothesis", with the method he set just before: first "from a
 fresh perspective... without looking at existing work", then "a second pass with the existing work".
 Checks: `checks.py` → `checks_output.txt`, **20 of 20 pass** in 144 s, including 7 polish checks (marked POLISH). Pictures: `figures.py` → `figures/`.
