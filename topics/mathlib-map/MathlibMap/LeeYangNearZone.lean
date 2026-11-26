@@ -62,16 +62,22 @@ noncomputable def tpoly (c : ℕ → ℝ) (M x₀ : ℝ) (n : ℕ) (t : ℝ) : �
 noncomputable def tpoly' (c : ℕ → ℝ) (M x₀ : ℝ) (n : ℕ) (t : ℝ) : ℝ :=
   (∑ m ∈ Finset.range n, c m * (t - x₀) ^ m / (m.factorial : ℝ)) + M * (t - x₀) ^ n / (n.factorial : ℝ)
 
+/-- Derivative of the sum part, written as a function of t. -/
+lemma hasDerivAt_sumterm (c : ℕ → ℝ) (x₀ t : ℝ) (n : ℕ) :
+    HasDerivAt (fun t => ∑ m ∈ Finset.range n, c m * (t - x₀) ^ (m + 1) / ((m + 1).factorial : ℝ))
+      (∑ m ∈ Finset.range n, c m * (t - x₀) ^ m / (m.factorial : ℝ)) t := by
+  have := HasDerivAt.sum (u := Finset.range n)
+    (A := fun m t => c m * (t - x₀) ^ (m + 1) / ((m + 1).factorial : ℝ))
+    (A' := fun m => c m * (t - x₀) ^ m / (m.factorial : ℝ)) (x := t)
+    (fun m _ => hasDerivAt_term (c m) x₀ t m)
+  convert this using 1
+  funext y
+  rw [Finset.sum_apply]
+
 lemma hasDerivAt_tpoly (c : ℕ → ℝ) (M x₀ : ℝ) (n : ℕ) (t : ℝ) :
     HasDerivAt (tpoly c M x₀ n) (tpoly' c M x₀ n t) t := by
-  unfold tpoly tpoly'
-  apply HasDerivAt.add
-  · have := HasDerivAt.sum (u := Finset.range n)
-      (A := fun m t => c m * (t - x₀) ^ (m + 1) / ((m + 1).factorial : ℝ))
-      (A' := fun m => c m * (t - x₀) ^ m / (m.factorial : ℝ)) (x := t)
-      (fun m _ => hasDerivAt_term (c m) x₀ t m)
-    exact this
-  · exact hasDerivAt_term M x₀ t n
+  have h := (hasDerivAt_sumterm c x₀ t n).add (hasDerivAt_term M x₀ t n)
+  exact h
 
 lemma tpoly_at (c : ℕ → ℝ) (M x₀ : ℝ) (n : ℕ) : tpoly c M x₀ n x₀ = 0 := by
   simp [tpoly]
@@ -102,8 +108,7 @@ theorem taylor_cell (n : ℕ) : ∀ (g : ℝ → ℝ), AllDiff g → ∀ (x₀ h
       ((hd.continuous.sub continuous_const).continuousOn)
       (fun x _ => ((hd x).hasDerivAt.sub_const (g x₀)).hasDerivWithinAt)
       (by simp [tpoly_at])
-      ((fun x _ => (hasDerivAt_tpoly _ M x₀ 0 x).continuousAt.continuousWithinAt))
-      (fun x _ => (hasDerivAt_tpoly _ M x₀ 0 x).hasDerivWithinAt)
+      (fun x => hasDerivAt_tpoly _ M x₀ 0 x)
       (fun x hx => by
         have := hM x (Ico_subset_Icc_self hx)
         simpa [tpoly', Real.norm_eq_abs, iteratedDeriv_one] using this)
@@ -133,8 +138,7 @@ theorem taylor_cell (n : ℕ) : ∀ (g : ℝ → ℝ), AllDiff g → ∀ (x₀ h
       ((hd.continuous.sub continuous_const).continuousOn)
       (fun x _ => ((hd x).hasDerivAt.sub_const (g x₀)).hasDerivWithinAt)
       (by simp [tpoly_at])
-      ((fun x _ => (hasDerivAt_tpoly _ M x₀ (n + 1) x).continuousAt.continuousWithinAt))
-      (fun x _ => (hasDerivAt_tpoly _ M x₀ (n + 1) x).hasDerivWithinAt)
+      (fun x => hasDerivAt_tpoly _ M x₀ (n + 1) x)
       (fun x hx => by simpa [Real.norm_eq_abs] using hg' x (Ico_subset_Icc_self hx))
     simpa [Real.norm_eq_abs] using key ht
 
