@@ -1,0 +1,28 @@
+== K. fuzzy min cuts (ours): monogamy holds at every softness
+PASS K1 the odd frame v1..v4 is orthogonal, |v_i|^2 = 4
+PASS K2 rotated single-site set S' = {even sign vectors} U {+-2 e_i} (16 points)
+PASS K3 every moment E[a1^n1 a2^n2 a3^n3 a4^n4] over S' is >= 0 (all n_i <= 6): Griffiths' condition   [2401 moments, min 0]
+PASS K4 negating copy 4 sends the Hadamard frame (even patterns) to (v1, v2, v3, -v4)
+PASS K5 pinned terminal j sits at alpha = 2 e_j (it feeds only coordinate j)
+PASS K6 soft I3 = 8 h J_abco, J_abco = 4-body coupling of the terminals' marginal (exact reformulation)   [max err 8.0e-15]
+PASS K7 J_abco <= 0 on 300 random graphs (so I3 <= 0)   [max J 3.33e-16]
+PASS K8 four copies: log prod_even Z = log Z4copy(v1,v2,v3,-v4), log prod_odd Z = log Z4copy(v1,v2,v3,v4)
+PASS K9 the rotation keeps the energy: rotated model gives the same Z4copy for both pins
+PASS K10 adversarial search (60 optimised graphs, up to 4 bulk vertices) never makes soft I3 positive   [best normalized I3 2.8e-18]
+PASS K11 star with 4 legs (Kadanoff decimation): K4 = (1/8)[log cosh 4K - 4 log cosh 2K] <= 0 since cosh^4 2K - cosh 4K = (cosh^2 2K - 1)^2
+PASS K12 Potts (q colours) star: q = 2 never breaks MMI, q = 8 and q = 20 do (the proof needs the two-state symmetry)   [q=2: 1.8e-15, q=3: 1.1e-15, q=8: 5.5e-06, q=20: 2.5e-03]
+PASS K12b explicit graph (positive weights, 2 bulk vertices): 3-state Potts breaks MMI, the same graph with 2 states does not   [I3: 3 states 3.25e-05, 2 states -1.53e-04]
+PASS K13 five-party holographic facets: adversarial search finds no soft-min violation (evidence, not proof)   [I3 (MMI uplift): -0e+00, I4 cyclic: -6e-15, I5: -0e+00, I6: -0e+00, I7: -6e-12]
+== L. the gluing law, proved by shadows (ours)
+PASS L1 Ptolemy on a line: (a2-a1)(b2-b1) + (b1-a2)(b2-a1) = (b1-a1)(b2-a2)
+PASS L2 shadow lemma: 1 - x(A,B) = f(b2)/f(b1), f the Moebius map a1 -> 0, a2 -> oo
+PASS L3 shadows add (telescoping): f(b2)/f(b1) = [f(m)/f(b1)] [f(b2)/f(m)], so 1-x multiplies and x glues by o_{-1}
+PASS L4 the shadow length t of B on A's geodesic (feet found by direct minimisation) obeys e^-t = 1 - x   [max err 6.8e-08]
+PASS L5 shadows of neighbouring B1, B2 add: t(B1 u B2) = t(B1) + t(B2)   [max err 5.6e-14]
+PASS L6 with delta = distance between the two geodesics: x = sech^2(delta/2), 1 - x = tanh^2(delta/2)   [max err 4.5e-15]
+PASS L7 RT mutual information = (c/3) max(0, log X), X = odds = csch^2(delta/2): connected iff delta < 2 arcsinh 1   [max err 8.7e-14]
+PASS L8 monogamy for A next to B1, B2: phi(t) = max(0, log(e^t - 1)) is superadditive (I3 <= 0), 20000 pairs
+PASS L9 the step behind L8: (e^s - 1)(e^u - 1) <= e^(s+u) - 1 because the gap is (e^s - 1) + (e^u - 1) = X o_1 Y - XY
+PASS L10 conformal factors cancel: with d(u,v) = (w(v)-w(u)) rho(u) rho(v) the cross-ratio only sees w (circle: w = tan(theta/2); BTZ: w = e^(2 pi u/beta))
+
+24/24 checks pass

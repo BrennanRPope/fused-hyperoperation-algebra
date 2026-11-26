@@ -3,8 +3,8 @@
 One library for every Lean proof in the project, all built on one base of
 circle-operation laws, so each new proof starts from the same foundation.
 
-**Status (Nov 26, 2026):** all 138 modules compile with core Lean 4.37.0-rc1
-(no mathlib). 3304 theorems, none uses `sorry`, and every one uses only
+**Status (Nov 26, 2026):** all 141 modules compile with core Lean 4.37.0-rc1
+(no mathlib). 3323 theorems, none uses `sorry`, and every one uses only
 Lean's three standard axioms. `Check.lean` verifies this on every build.
 
 ## Build
@@ -166,6 +166,9 @@ Topics (each imports the foundation):
 | `Topics/Precession` | precession/lean/Precession.lean | 23 theorems, first compile Nov 25 (DRAFT topic): swap = turn for the circle operation on quaternions, Rodrigues, gyroscope torque at 90°, Larmor keeps length and tilt, spinning-BTZ drag speeds stack by multiplying temperature ratios |
 | `Topics/Hypersphere` | hypersphere/lean/Hypersphere.lean | 33 theorems, first compile Nov 26 (DRAFT topic): quaternion units, Fock's map, Kepler's tilt, n² states, orbit = gyroscope for the electric case, Dirac's defect, PPN coefficients, the exact split of 1 − 6M/r, the double copy's 2 + 2²; Rat evaluations moved from `decide` to `unfold; grind`, names updated to 1.0 |
 | `Topics/QuantumAction` | quantum-action/lean/QuantumAction.lean | 18 theorems + 2 ext lemmas, first compile Nov 26 (DRAFT topic): phase-space moves (Heisenberg group), swap costs the parallelogram area, closed loops give enclosed area, one boost dial for Fermat/Newton/Einstein, the k part as a change of ruler, 2D Regge deficits; `mul_one` and `one_mul` needed a closing `grind` |
+| `Topics/HoloGluing` | holographic-entropy-cube/lean/HoloGluing.lean | 11 theorems, first compile Nov 26 (DRAFT topic): Ptolemy's relation, the shadow numerator, the AdS₃ gluing law with denominators cleared, complements multiply under ∘₋₁, odds glue by ∘₁, the height-flow identity, conformal factors cancel, the monogamy step on Rat; names updated to 1.0 |
+| `Topics/HoloGluingField` | holographic-entropy-cube/lean/HoloGluingField.lean | 3 theorems, first compile Nov 26 (DRAFT topic): the shadow lemma, the gluing law and the flip to ∘₁ with division on any field; `gluing` splits the divisions into inverses before `grind` |
+| `Topics/FuzzyFrame` | holographic-entropy-cube/lean/FuzzyFrame.lean | 5 theorems, first compile Nov 26 (DRAFT topic): the finite facts of the fuzzy-cut monogamy proof (orthogonal odd frame, the copy-4 flip, nonnegative moments up to exponent 3, pinned terminals); `moments_nonneg` by `decide +kernel` |
 | `Topics/Conventions` | names-review/lean/Conventions.lean | 7 theorems, first compile Nov 25: the weight-to-probability sign flip, both ring-theory circle conventions on the dial, (weights compose by k, probabilities by −k) and related notation facts; recommendations only, nothing renamed |
 | `Topics/PathNames` | names-review/lean/PathNames.lean | 5 theorems, first compile Nov 25: facts behind the "path theory" naming-collision notes; nothing renamed |
 | `Topics/GeneralRelativity` | general-relativity/lean/GeneralRelativity.lean | first compiled here; one false statement (infall_light) corrected before merge |
@@ -323,6 +326,13 @@ in the code, `κ` keeps its existing local meanings (the k dial in `Behaviour`, 
 | curvature dial (plane dial) | d; the curvature is read as −Δ/4 = d − k²/4, with Δ = k² − 4d | `d` |
 | ℓp dial (roundness dial) | p | not in the library yet |
 | cubic-form dial (shape dial) | C | not in the library yet |
+| odds (per-element dial) | t; the chance t/(1 + t) is a reading | `t`, `s` in `PowersetDials`, `DialSurvey` |
+| similarity ratio (zoom dial) | r; the dimension D is a reading | `ZoomDial` (`zoom_is_twist`, `zoom_compose`) |
+| growth degree (size dial), a setting | β | `SizeDialResidual` works with the weight w = 2^(−β) |
+| holonomy (twist), a reading | ω | `TwistedBoosts`; the order gap a·e − b·c is `order_gap` in `OrderDial` |
+
+Some Lean names say "twist" where the prose now says homothety (`weight_is_twist`, `zoom_is_twist`, `twisted_half`):
+there a weight w acts as the homothety dial k = w. They stay as they are.
 
 ## What was merged
 

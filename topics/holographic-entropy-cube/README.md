@@ -290,3 +290,149 @@ not show up.
 2. **Lift the ladder beyond three intervals.** For n neighbouring intervals the cross-ratios still glue by ∘₋₁; test
    whether the five-region rules reduce to ∘₁ inequalities in the same way.
 3. **Lean.** Both the contraction maps (finite) and the X ∘₁ Y ≥ XY step are small enough for the core-Lean library.
+
+---
+
+# Third pass (Nov 25, night): two proofs (DRAFT)
+
+**The result in plain words.** Both claims are now proved, not just argued. First, softened ("fuzzy") minimal cuts
+can never break the monogamy rule, at any softness and on any network with positive weights, so this piece of the
+geometry survives being blurred. Second, in the simplest curved space, gluing two neighbouring regions combines
+their cross-ratios by our union rule ∘₋₁ because the regions' "shadows" on a minimal surface simply add end to end.
+
+Files: `checks3.py` (24/24 pass, output in `checks3_output.txt`), `figures3.py` (Figs 13–17), `lean/` (three Lean
+files, **compiled into the shared library on Nov 26**: see part 3).
+
+## Part 1. The gluing law, proved by shadows (ours)
+
+**Assumptions.** Vacuum AdS₃ (or the planar BTZ black hole, which is the same space in other coordinates), and the
+Ryu–Takayanagi formula: the entropy of a boundary region is (c/6) × the length of its minimal geodesic, and for two
+intervals one takes the shorter of the two ways of pairing the endpoints. Nothing else.
+
+**Statement.** Let A = (a₁, a₂) and let B = (b₁, b₂) be cut at m into neighbours B₁ = (b₁, m), B₂ = (m, b₂). With
+the cross-ratio x(A,B) = (a₂−a₁)(b₂−b₁) / ((b₁−a₁)(b₂−a₂)),
+
+  **x(A, B₁B₂) = x(A,B₁) ∘₋₁ x(A,B₂) = x₁ + x₂ − x₁x₂.**
+
+**Proof (Fig 13).** Drop each endpoint of B onto A's minimal geodesic γ_A along the geodesic that meets γ_A at a right
+angle. Call the stretch of γ_A between the two feet the *shadow* of B, with hyperbolic length t(A,B).
+
+1. *Shadow lemma: 1 − x(A,B) = e^(−t(A,B)).* Move a₁ to 0 and a₂ to ∞ with a Möbius map f (this changes no
+   lengths and no cross-ratios). γ_A becomes the vertical axis. The right-angle geodesic from a boundary point at
+   distance h from the origin is the quarter circle of radius h, landing at height h. On the vertical axis length
+   is log(height ratio), so t = log h(b₁)/h(b₂). Ptolemy's relation for four points on a line,
+   (a₂−a₁)(b₂−b₁) + (b₁−a₂)(b₂−a₁) = (b₁−a₁)(b₂−a₂), turns 1 − x into exactly h(b₂)/h(b₁).
+2. *Gluing.* The shadows of B₁ and B₂ lie on the same geodesic and meet at m's foot, so t(B₁B₂) = t(B₁) + t(B₂).
+   Exponentiate: 1 − x₁₂ = (1 − x₁)(1 − x₂). That is the definition of ∘₋₁ read backwards
+   (1 − (x ∘₋₁ y) = (1 − x)(1 − y): "complements multiply", like the union of independent events). ∎
+
+**What follows (Fig 14).** Everything is one number in three coordinates. If δ is the distance between the minimal
+geodesics of A and B, then x = sech²(δ/2), the odds X = x/(1−x) = csch²(δ/2), and the shadow t = −2 log tanh(δ/2),
+with X = eᵗ − 1. So the shadows add (+), the odds glue by ∘₁ (the height-flow law, via the flip φ₋₁) and the
+cross-ratios glue by ∘₋₁. With RT, the mutual information is I(A:B) = (c/3)·max(0, log X); A and B share
+entanglement exactly when δ < 2 arcsinh 1 ≈ 1.76. Monogamy for A next to B₁, B₂ is then one line:
+(e^s − 1)(e^u − 1) ≤ e^(s+u) − 1, the gap being X + Y, so I₃ = −(c/3) log(1 + 1/X + 1/Y) ≤ 0 when all three
+connect, and I₃ ≤ 0 in the other phases because log(eᵗ − 1) only grows. The same holds for the BTZ black hole
+because conformal factors cancel from every cross-ratio (check L10).
+
+**Checks.** L1–L3 are the algebra (sympy). L4 finds the feet of the perpendiculars by direct minimisation (no
+Möbius map) and confirms e^(−t) = 1 − x. L5: shadows add. L6: x = sech²(δ/2). L7: RT mutual information equals
+(c/3) max(0, log csch²(δ/2)). L8–L9: monogamy. L10: conformal factors cancel.
+
+## Part 2. Fuzzy min cuts never break monogamy (ours)
+
+**Setting.** Take any network with positive edge weights, boundary regions A, B, C and the rest O. Replace the
+minimal cut by a softened one at softness h: S_h(T) = −h log Σ exp(−cut/h), summing over all ways to label the
+inside nodes, with T on one side and the rest on the other (minus the same with T empty). As h → 0 this is the
+min cut (the holographic entropy of a graph model). For h > 0 it is the free-energy cost of a domain wall in a
+ferromagnetic Ising magnet at temperature h, and (in Hayden et al.'s 2016 dictionary, up to normalisation) the
+"annealed" second Rényi entropy of a random tensor network whose bond dimension is D = e^(weight/h).
+
+**Theorem (ours as far as we could find).** For every such network and every h > 0,
+S_AB + S_BC + S_AC ≥ S_A + S_B + S_C + S_ABC (monogamy of mutual information). Because regions can be any sets of
+nodes, the "uplifted" five-party rule (S_ABC + S_ADE + S_BCDE ≥ S_A + S_BC + S_DE + S_ABCDE) follows too.
+
+**Proof (Fig 16).**
+1. *Reformulate.* Glue each region into one node; treat A, B, C, O as four Ising spins and sum out everything else.
+   The result is the four spins' joint weight, exp(Σ J_U s^U) over even sets U (the magnet has no field, so odd
+   terms vanish). Monogamy turns out to be exactly J_ABCO ≤ 0: the four-body coupling the network induces among
+   its four terminals is never positive (check K6: I₃ = 8h·J_ABCO). Written out, it is an inequality between 8
+   boundary pinnings: Z(++++)Z(++−−)Z(+−+−)Z(+−−+) ≤ Z(+++−)Z(++−+)Z(+−++)Z(−+++).
+2. *Four copies.* A product of four Z's is one Z of four independent copies. Stacking the four "even" pinnings
+   pins each terminal to a column of the 4×4 Hadamard matrix; stacking the "odd" ones pins them to the odd frame
+   v₁ = (+,+,+,−), v₂ = (+,+,−,+), v₃ = (+,−,+,+), v₄ = (−,+,+,+). Negating copy 4 everywhere is a symmetry and
+   turns the Hadamard frame into (v₁, v₂, v₃, −v₄) (check K4). So the claim is Z(v₁,v₂,v₃,+v₄) ≥ Z(v₁,v₂,v₃,−v₄).
+3. *Rotate.* Write each 4-copy spin in the orthogonal frame: αᵢ = vᵢ·σ/2. The energy σ·σ′ = Σ αᵢαᵢ′ is unchanged,
+   terminal j now pushes only coordinate αⱼ, and the 16 spin values become the 8 even sign vectors
+   (α₁α₂α₃α₄ = +1) plus the 8 points ±2eᵢ. Every moment of that set is ≥ 0 (checks K2, K3, K5, K9).
+4. *Griffiths.* Z(+v₄) − Z(−v₄) = 2Z′·⟨sinh(push on α₄)⟩, a series of odd monomials with positive coefficients.
+   With ferromagnetic couplings, positive pushes on α₁, α₂, α₃ and nonnegative single-site moments, Griffiths'
+   first inequality (Ginibre's general form) makes each such average ≥ 0. In pictures: A, B and C push α₁, α₂, α₃
+   up, and the parity rule α₄ = α₁α₂α₃ makes α₄ lean up too. ∎
+
+**What is known and what is ours.** The four-copy-and-rotate technique is Ellis–Monroe–Newman's (Commun. Math. Phys.
+46, 1976), from their proof of the GHS inequality; Griffiths' first inequality is from 1967 (Ginibre 1970 for
+general single-site measures). Strong subadditivity of these fuzzy entropies is standard (it is the FKG lattice
+property of the terminals' marginal). Applying the technique to the 8-pinning inequality, and so to holographic
+monogamy for Ising free energies and annealed tensor-network Rényi-2 entropies at any bond dimension, I did not find
+in the literature (searched: random tensor networks at finite bond dimension, holographic entropy cone, annealed
+Rényi entropies and domain walls, effective multi-spin couplings of Ising marginals). Treat "ours" as "not found",
+not as "certainly new".
+
+**The two-state symmetry is essential.** With 3 or more spin states (Potts magnets, the natural analogue for higher
+Rényi entropies of tensor networks) the same fuzzy cut does break monogamy: check K12b gives an explicit network with
+positive weights where 3 states give I₃ = +3.3·10⁻⁵ and 2 states give −1.5·10⁻⁴; on a single hub, 8 and 20 states
+break it (Fig 15b). Single-hub Ising also reproduces Kadanoff's decimation sign: the generated four-spin coupling
+(1/8)[log cosh 4K − 4 log cosh 2K] is ≤ 0 because cosh⁴2K − cosh 4K = (cosh²2K − 1)² (check K11).
+
+**Five regions (evidence only, Fig 17).** Optimising weights to break each of the five-party facets from
+Hernández-Cuenca 2019 (items 3–7 of his table; I could not retrieve item 8) found nothing positive (check K13).
+Item 3 is proved by the theorem above; items 4–7 remain open for fuzzy cuts.
+
+**What it means physically.** The rule that entanglement can't be shared freely (monogamy) is the signature of a
+geometric, Einstein-like bulk. It survives turning the sharp minimal surface into a thermal ensemble of domain walls,
+that is, away from the strict large-D (classical-gravity) limit of a random tensor network, as long as the replica
+symmetry is the two-state one that Rényi-2 has. It is a small, exact statement about "fuzzy geometry" keeping one
+of its defining rules.
+
+**Our dials.** The softness h is the tropical (Maslov) dial: h → 0 sends log-sum-exp to min, which is the rescale
+dial already in the project. The proof itself lives at the k = −1 corner: I₃ is the k = −1 corner sum, and in spin
+language it is the single top coefficient J_ABCO.
+
+## Part 3. Lean (compiled Nov 26)
+
+`lean/HoloGluing.lean` (core Lean 4.37, the library's style, `grind`, no `sorry`) states with denominators cleared:
+Ptolemy's relation, the shadow numerator, the gluing law, "complements multiply" for ∘₋₁, the odds gluing by ∘₁,
+the height-flow identity, cancellation of conformal factors, and the monogamy step
+max(1,X)·max(1,Y) ≤ max(1, X ∘₁ Y) on Rat. `lean/HoloGluingField.lean` has the same laws with division.
+`lean/FuzzyFrame.lean` checks the finite facts of the fuzzy proof by `decide` (orthogonal frame, the copy-4 flip,
+nonnegative moments up to exponent 3, where the pinned terminals sit).
+
+**Compiled.** The three files were written on a machine that couldn't download Lean. On Nov 26 they were ported to the 1.0
+names and compiled into the shared library as `FusedAlgebra/Topics/HoloGluing`, `HoloGluingField` and `FuzzyFrame`
+(19 theorems, no `sorry`, standard axioms only). Two proofs needed help: `HoloGluingField.gluing` splits the divisions
+into inverses before `grind`, and `FuzzyFrame.moments_nonneg` uses `decide +kernel`.
+
+**Which steps can't be formalized in this library.** The Ryu–Takayanagi formula (a physical assumption), the
+hyperbolic-geometry part of the shadow lemma (core Lean has no hyperbolic plane, logarithms or exponentials), and
+Griffiths' first inequality for general graphs (a real but sizeable formalization; Mathlib would make it feasible).
+
+## Known vs ours (third pass)
+
+| Piece | Status | Source |
+|---|---|---|
+| Ptolemy's relation, cross-ratio invariance, perpendicular feet on a geodesic | Known (classical) | — |
+| Holographic MI in AdS₃ = (c/3) max(0, log odds) | Known | Headrick 2010 (arXiv:1006.0047) |
+| The shadow lemma 1 − x = e^(−t) and the proof of gluing by adding shadows; x = sech²(δ/2) as the ∘₋₁ rung | **Ours (proof; the facts are elementary hyperbolic geometry)** | checks L1–L10, Figs 13–14 |
+| Four-copy rotation, Griffiths/Ginibre inequalities | Known | Ellis–Monroe–Newman 1976; Griffiths 1967; Ginibre 1970 |
+| Fuzzy entropies obey SSA | Known in substance (FKG) | — |
+| Fuzzy entropies obey MMI for every graph and softness (J_ABCO ≤ 0) | **Ours (proof; not found in the literature)** | checks K1–K10, Figs 15–16 |
+| 3-state Potts version breaks MMI | **Ours (explicit counterexample)** | check K12b |
+| Five-party facets for fuzzy cuts | **Open (numerical evidence only)** | check K13, Fig 17 |
+| Rényi-2 of random tensor networks ↔ Ising free energies | Known | Hayden et al. 2016 (arXiv:1601.01694) |
+
+## Next, if wanted
+
+1. Try the same four-copy idea on the cyclic five-party rule (it needs a 2⁵-copy frame; whether one with the right
+   parity structure exists is the question).
+2. Write the fuzzy-monogamy theorem as a short note (nothing goes out without your yes).

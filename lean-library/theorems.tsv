@@ -1664,6 +1664,11 @@ FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_fixed	propext, Classical
 FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_gap	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_kiss	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.FusedConstants	FusedConstants.slide_step	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.FuzzyFrame	FuzzyFrame.flip_copy4	
+FusedAlgebra.Topics.FuzzyFrame	FuzzyFrame.last_is_neg_v4	
+FusedAlgebra.Topics.FuzzyFrame	FuzzyFrame.moments_nonneg	
+FusedAlgebra.Topics.FuzzyFrame	FuzzyFrame.oddFrame_orthogonal	
+FusedAlgebra.Topics.FuzzyFrame	FuzzyFrame.pinned_alpha	
 FusedAlgebra.Topics.GRBridges	GRBridges.M2.ext'	propext
 FusedAlgebra.Topics.GRBridges	GRBridges.aether_constraint	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GRBridges	GRBridges.backward_part_circ	propext, Classical.choice, Quot.sound
@@ -1873,6 +1878,20 @@ FusedAlgebra.Topics.GroupsLie	GroupsLie.tmul_comm	propext, Classical.choice, Quo
 FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_one_theta	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GroupsLie	GroupsLie.twist_example	
+FusedAlgebra.Topics.HoloGluing	HoloGluing.complement_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.conformal	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.gluing_cleared	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.height_flow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.le_circK_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.monogamy_glued	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.odds_glue	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.of_complement_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.oneSub_numer	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.one_le_phase	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluing	HoloGluing.ptolemy	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluingField	HoloGluingField.flip_glue	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluingField	HoloGluingField.gluing	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HoloGluingField	HoloGluingField.shadow	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Hypersphere	Hypersphere.circular_L_v	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Hypersphere	Hypersphere.deg_eq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Hypersphere	Hypersphere.dirac_defect	propext, Classical.choice, Quot.sound

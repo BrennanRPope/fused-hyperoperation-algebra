@@ -12,7 +12,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | Height flow: entropy family, running coupling and invariants. Invariants part DRAFT: the two-loop number of the height-s map is exactly 1/(3s), and the two half-height maps differ by the horn coefficient times \|sin πs\|. Entropy family is a modest catalogue entry (inside Tempesta's group-entropy framework); running coupling has no physics test; telling maps apart by the horn map is the known Écalle–Voronin theorem. | `topics/height-flow/` | — |
 | DRAFT: Lucas corner weights U_m(k, d) for the two-dial plane law. Early verdict: the weights are known Lucas sequences and the corner formula is probably folklore. Merged into the corner-weights stream. | `topics/lucas-weights/` | — |
 | DRAFT: which parts of the cube can carry a weight? Square faces as a reordering cost give soliton pair weights (known vertex-operator picture; cube framing ours) | `topics/cube-weights/` | — |
-| DRAFT: the holographic entropy cone as the cube corner sum at k = −1 (physics published; cube reading ours; one open lead: a softened min cut keeps monogamy) | `topics/holographic-entropy-cube/` | — |
+| DRAFT: the holographic entropy cone as the cube corner sum at k = −1 (physics published; cube reading ours; third pass: softened min cuts keep monogamy, proved; AdS3 gluing proved by shadows; 19 Lean theorems) | `topics/holographic-entropy-cube/` | — |
 | DRAFT: is probability entanglement? Time, small loops, the helix and the union rule. Mostly known results; one lead: the AdS₃ cross-ratio read as a clock's tick probability, which explains why ∘₋₁ appears there. A hidden loop or helix still hits Bell's wall. Section 9 (second pass): gluing by ∘₋₁ holds in heated, excited, squeezed and spinning states; the dial moves only when a bath is forgotten. | `topics/probability-entanglement/` | — |
 | DRAFT: how quantum paths add up to everyday laws, and path sums as database aggregates. The circle operation does the bookkeeping along a path, but the canceling that gives Newton's laws is ordinary addition, so no new physics. Two tidy pieces: one dial map of path aggregates (counting, least action, quantum, statistical), and the height flow as a critical family tree. | `topics/quantum-to-classical/` | — |
 | DRAFT: precession. Thomas, Foucault and Berry precession from one swap rule of the circle operation (known physics, cube reading ours); open lead: frame dragging from the swap rule. 23 Lean theorems. | `topics/precession/` | — |
@@ -47,7 +47,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,304 theorems, 138 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,323 theorems, 141 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
