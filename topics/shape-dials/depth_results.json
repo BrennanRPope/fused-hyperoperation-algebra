@@ -1,0 +1,117 @@
+{
+ "M1": {
+  "ok": true,
+  "desc": "For every family, the kaleidoscope shape of any seed is the Minkowski sum of the corner shapes, weighted by the seed's barycentric coordinates (support functions agree)",
+  "detail": "7 families A3 B3 H3 A4 B4 F4 H4, random seeds, 2000 directions each, max error 5.3e-15"
+ },
+ "M2": {
+  "ok": true,
+  "desc": "Along the depth path, the shape at depth k + f is (1 - f)\u00b7corner_k + f\u00b7corner_(k+1), Minkowski sum, up to size",
+  "detail": "A3 B3 H3 B4 F4, 9 depths each, max error 2.8e-15"
+ },
+ "M3": {
+  "ok": true,
+  "desc": "The lemma behind M1: when the seed and the direction both lie in the chamber, the identity wins the maximum, so the support function is linear in the seed (Kostant convexity, standard)",
+  "detail": "6 families, 20 random pairs each, max error 1.1e-16"
+ },
+ "H1": {
+  "ok": true,
+  "desc": "Face side: the same shape is the intersection of the corner shapes' polars, each scaled by the ratio <seed, corner> (cube \u2229 scaled octahedron = truncated cube)",
+  "detail": "A3 B3 H3 A4 B4 F4, random seeds, max radial error 1.2e-14"
+ },
+ "O1": {
+  "ok": true,
+  "desc": "The depth fraction f is the chance reading t/(1 + t) of an odds t = f/(1 - f) between two corners",
+  "detail": "B3, f = 0.3, t = 3/7"
+ },
+ "O2": {
+  "ok": true,
+  "desc": "Resizing the corner shapes changes no shape, only multiplies the odds by a fixed factor (a Bayes factor): depth fractions depend on a size convention, odds ratios do not",
+  "detail": "corners scaled 2 and 0.5, odds 3/7 -> 1.7143, same shape (ratio spread 4.4e-16)"
+ },
+ "O3": {
+  "ok": true,
+  "desc": "The odds complement 1/t is the mirror of the depth path (f -> 1 - f)",
+  "detail": ""
+ },
+ "O4": {
+  "ok": true,
+  "desc": "Equal odds on every corner of the simplex family give the permutohedron: Perm(n) = \u0394(1,n) + \u0394(2,n) + \u2026 + \u0394(n,n), the hypersimplices summed",
+  "detail": "n = 3..6, max error 3.6e-15"
+ },
+ "G1": {
+  "ok": true,
+  "desc": "The associahedron (not a kaleidoscope shape) is a Minkowski sum of simplex faces with odds 1 each (Postnikov 2009; Loday 2004)",
+  "detail": "Loday realisation, n = 3..5, max error 3.6e-15"
+ },
+ "G2": {
+  "ok": true,
+  "desc": "Every zonotope is a weighted Minkowski sum of segments",
+  "detail": ""
+ },
+ "I1": {
+  "ok": true,
+  "desc": "For 1 < p < \u221e every face-power shape is strictly convex: the Hessian of \u03a3|a + n_i\u00b7x|^p is a positive sum of n_i n_i\u1d40 and the normals span, so no flat facet exists and no finite p gives a polytope",
+  "detail": "5 solids, p = 1.5, 3, 10, 40: normals rank 3 for all, smallest face value on the boundary 6.28e-05 > 0"
+ },
+ "I2": {
+  "ok": true,
+  "desc": "No setting of p on any listed solid gives an in-between (truncated) depth shape: p in (1, \u221e) is strictly convex (I1), p = \u221e gives the solid itself, and p = 1 gives the polar of a zonotope, whose faces are centrally symmetric, while every truncation's polar has triangular faces",
+  "detail": "p = 1 bodies: tetrahedron -> 12 corners, 14 faces; cube -> 6 corners, 8 faces; octahedron -> 12 corners, 14 faces; icosahedron -> 90 corners, 92 faces; dodecahedron -> 30 corners, 32 faces; cuboctahedron -> 18 corners, 32 faces; icosidodecahedron -> 90 corners, 152 faces",
+  "p1_matches": {
+   "tetrahedron": [
+    "B3 depth 1"
+   ],
+   "cube": [
+    "A3 depth 1",
+    "B3 depth 2"
+   ],
+   "octahedron": [
+    "B3 depth 1"
+   ],
+   "dodecahedron": [
+    "H3 depth 1"
+   ]
+  }
+ },
+ "I3": {
+  "ok": true,
+  "desc": "But p = 1 does land on some whole-depth shapes (a crossing, not containment): it gives the polar of a zonotope, and three of those are kaleidoscope shapes (cube -> octahedron, octahedron -> cuboctahedron, dodecahedron -> icosidodecahedron)",
+  "detail": "tetrahedron at p = 1 has the combinatorics of B3 depth 1; cube at p = 1 has the combinatorics of A3 depth 1, B3 depth 2; octahedron at p = 1 has the combinatorics of B3 depth 1; dodecahedron at p = 1 has the combinatorics of H3 depth 1"
+ },
+ "I4": {
+  "ok": true,
+  "desc": "Depth never reaches a rounded shape: every depth shape is a polytope (the convex hull of a finite orbit), while p = 2 is a ball for every shape",
+  "detail": "by construction; checked in W2 of checks.py that p = 2 is round"
+ },
+ "I5": {
+  "ok": true,
+  "desc": "Odds on all corners reach shapes no depth setting reaches: equal odds on the cube family's three corners give the truncated cuboctahedron (48 corners), off every depth path (24 corners at most)",
+  "detail": "omnitruncation 48 corners; depth path at most 24"
+ },
+ "S1": {
+  "ok": true,
+  "desc": "Face-power on the triangle at p = 2 is exactly a circle (the circumscribed one)",
+  "detail": "radius spread 0.0e+00"
+ },
+ "S2": {
+  "ok": true,
+  "desc": "The temperature route is never exactly a circle at finite \u03b2: on any circle its function has a cos 3\u03b8 term with coefficient 6\u00b7I\u2083(\u03b2\u03c1) > 0 (Bessel), so a level set cannot be a circle",
+  "detail": "I\u2083(z) > 0 for all z > 0 (series with positive terms); checked on 200 values 1e-4..1e3"
+ },
+ "S3": {
+  "ok": true,
+  "desc": "Measured: the temperature boundary's 3-fold content is nonzero at every \u03b2, hot or cold",
+  "detail": "\u03b2=0.01: 8.33e-03, \u03b2=0.1: 2.64e-02, \u03b2=1: 8.08e-02, \u03b2=10: 1.35e-01, \u03b2=100: 1.38e-01"
+ },
+ "S4": {
+  "ok": true,
+  "desc": "At the triangle's own offset the two routes are different families: at equal 3-fold content their 6-fold content differs, so no change of speed turns one into the other",
+  "detail": "largest 6-fold gap 4.48e-03 at matched 3-fold content, over 58 matched pairs"
+ },
+ "S5": {
+  "ok": true,
+  "desc": "Exact in one limit only: face-power with offset a and p = \u03b2\u00b7a tends to the temperature shape as a \u2192 \u221e, error falling like 1/a ((1 + y/a)^(\u03b2a) \u2192 e^(\u03b2y))",
+  "detail": "a=1: 6.6e-01, a=4: 1.6e-01, a=16: 3.9e-02, a=64: 9.8e-03, a=256: 2.4e-03"
+ }
+}

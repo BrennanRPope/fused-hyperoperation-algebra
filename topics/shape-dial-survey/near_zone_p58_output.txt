@@ -1,0 +1,32 @@
+21 big boxes, 7056 nodes
+  big box 21/21 460s
+  big box 20/21 929s
+  big box 19/21 1418s
+  big box 18/21 1873s
+  big box 17/21 2328s
+  big box 16/21 2785s
+  big box 15/21 3237s
+  big box 14/21 3702s
+  big box 13/21 3934s
+  big box 12/21 4170s
+  big box 11/21 4394s
+  big box 10/21 4623s
+  big box 9/21 4833s
+  big box 8/21 5043s
+  big box 7/21 5254s
+  big box 6/21 5371s
+  big box 5/21 5497s
+  big box 4/21 5624s
+  big box 3/21 5754s
+  big box 2/21 5883s
+  big box 1/21 6006s
+nodes done 6006s
+interpolation error bounds: {'strip 0 c in [0,1]': '7.7e-15', 'strip 0 c in [1,2]': '7.7e-15', 'strip 0 c in [2,3]': '7.7e-15', 'strip 0 c in [3,4]': '7.7e-15', 'strip 0 c in [4,5]': '7.8e-15', 'strip 0 c in [5,6]': '8.0e-15', 'strip 1 c in [0,1]': '7.7e-15', 'strip 1 c in [1,2]': '7.7e-15', 'strip 1 c in [2,3]': '7.7e-15', 'strip 1 c in [3,4]': '7.7e-15', 'strip 1 c in [4,5]': '7.7e-15', 'strip 1 c in [5,6]': '7.7e-15', 'strip 1 c in [6,7]': '7.7e-15', 'strip 2 c in [0,1]': '7.7e-15', 'strip 2 c in [1,2]': '7.7e-15', 'strip 2 c in [2,3]': '7.7e-15', 'strip 2 c in [3,4]': '7.7e-15', 'strip 2 c in [4,5]': '7.7e-15', 'strip 2 c in [5,6]': '7.7e-15', 'strip 2 c in [6,7]': '7.7e-15', 'strip 2 c in [7,8]': '7.7e-15'}
+6630 small boxes
+small boxes done 6908s
+PASS Z1 every zero of G at b in [0, TN] is isolated, on boxes covering 5.0 <= p <= 8.0 and 0 <= b <= p - 1  [6630 boxes after splitting, zeros per box 33 to 65]
+PASS Z2 G at a = b + 1 has a definite sign at every such zero, alternating
+PASS Z3 every box reaches a zero past the far zone's T*, so near and far zones share a zero
+PASS Z4 polish: the surrogate's enclosure contains the directly integrated G at 12 random points  [largest enclosure width 2.9e-14]
+PASS Z5 the top step b = p - 1 is covered with no gap in p  [120 boxes touch the top step]
+5/5 pass, 6913 s

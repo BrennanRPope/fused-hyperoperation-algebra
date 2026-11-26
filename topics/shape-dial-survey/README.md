@@ -59,8 +59,9 @@ rule is a theorem there (section N3, p = 3). Its constants are now whole numbers
 one Lean core, so the rule at any p follows from one alternation statement. The far-out half of that statement looks uniform
 in p, and the near half is still per p (section N3, refactor). The far-out half is now proved for every roundness from 1.1
 to 8, with explicit formulas in p, past a point that grows like p² (section N3, far bounds). With the near zone boxed
-for 1.1 ≤ p ≤ 5, **the rule is now proved, computer-assisted, for every roundness from 1.1 to 5**, apart from
-non-whole a > 4 at p = 4 (section N3, near zone). The other two are **Bell's 2√2 is a floor for
+for 1.1 ≤ p ≤ 8, **the rule is now proved, computer-assisted, for every roundness from 1.1 to 8**, apart from a > p
+at the even roundness 4, 6 and 8 (at p = 4 only non-whole a is left) (sections N3, near zone, and N3, near zone to
+p = 8). The reasoning from the two certificates to the rule is proved in Lean (section N3, near zone in Lean). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
 (a short corollary of Fermat's last theorem).
 
@@ -266,7 +267,7 @@ dial, and where it made sense the crossing of the first two. What came out:
 |---|---|---|
 | Roundness, crossed with shape | **N1** Bell's 2√2 is a floor for every symmetric shape, and a saddle where the dials cross | Follows from a known theorem (Gao–Lau 1990); the Bell reading wasn't found |
 | Roundness, rational settings | **N2** Fermat for every rational p: only p = 1, 2, ∞ have rational points to spare | Short corollary of Fermat's last theorem; not found stated |
-| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2, p = 3 (computer-assisted) and p = 4 whole a; far zone proved for 1.1 ≤ p ≤ 8; **rule proved for every 1.1 ≤ p ≤ 5** (computer-assisted; at p = 4 only up to a = 4 and at whole a); rest open |
+| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2, p = 3 (computer-assisted) and p = 4 whole a; far zone proved for 1.1 ≤ p ≤ 8; **rule proved for every 1.1 ≤ p ≤ 8** (computer-assisted, reasoning in Lean; at p = 4, 6, 8 only up to a = p, plus whole a at p = 4); rest open |
 | Roundness | Volume sums E_{1/p}(2Γ(1 + 1/p)) | Immediate from the known volume formula: nothing new |
 | Roundness | Replicator at any p | The same law at every p (u = x^(1/p) is a change of variable, check N5): nothing new |
 | Shape (round ↔ triangle) | The turn fades from −1 to 0; ordering fraction falls 1/4 → 0.229 | Already in `simplex/` §7; no closed form for the ordering fraction |
@@ -848,8 +849,8 @@ the near zone (blue, up to the end of each strip's grid) and the far zone (green
 
 **How solid.** The node values are exact. The interpolation bounds are proved by hand. The box sweep runs in
 double-precision floats, with a worst-case rounding bound added at every step, but without directed rounding. Z4
-checks the surrogate against direct quadrature at random points: every value lands inside its enclosure. As with the
-far bounds, none of this is in Lean. Pólya (base step b ≤ 1) and Krein (the climb) are cited as before, and the step
+checks the surrogate against direct quadrature at random points: every value lands inside its enclosure. The numbers aren't in Lean, but the
+reasoning that turns them into the rule now is (section N3, near zone in Lean). Pólya (base step b ≤ 1) and Krein (the climb) are cited as before, and the step
 identity carries the result down from a + 1 to a.
 
 **What it changes.** For 1.1 ≤ p ≤ 5 the per-p input `AlternatesBelow p` is now fully checked: near zone here, far zone
@@ -873,6 +874,130 @@ rather than Python-checked.
 | Z3 | every box reaches a zero past the far zone's T\*(p) | all boxes |
 | Z4 | surrogate against direct quadrature at 12 random points (polish) | all inside; widest enclosure 3.9e-9 |
 | Z5 | boxes containing p = 3 are certified | 81 boxes |
+
+### N3, near zone to p = 8. The rule proved out to roundness 8
+
+The next gap on the list. **Short answer: closed. The near zone passes for every roundness from 5 to 8, so the rule
+is now proved, computer-assisted, for every p from 1.1 to 8: the zeros are real exactly when a ≤ p, that is
+n ≤ 1 + p², which at p = 8 is every ball dimension up to 65.** The leftovers are the even roundness 4, 6 and 8, where
+the rule says real zeros for every a. Below a = p they're proved like every other p. Above a = p they're still open,
+except at whole a for p = 4. 6,630 new boxes cover 5 ≤ p ≤ 8 and every step 0 ≤ b ≤ p − 1, each with 33 to 65 zeros,
+and every one passes on the first try, with no splitting.
+
+![Near zone to p = 8](figures/fig25-lee-yang-near-p8.png)
+
+*Figure 25. Top: every box from both runs in (p, b), coloured by how many zeros it isolates. The red lines are the even
+roundness, where the rule wants every a and the part above a = p is still open. Bottom left: one of the hardest boxes,
+p = 7.95 at the top step, with each curve divided by the local size of its wiggles. At each of the 32 zeros of G at b
+shown, G at b + 1 has a sign, and the signs alternate. Bottom right: near zone (blue, to the end of each strip's grid)
+and far zone (green, from T\*(p)) overlap at every p from 1.1 to 8.*
+
+- **Same method, more digits.** The run is the 1.1 to 5 code with a range switch. Node values use 420 bits instead of
+  200, Taylor models 10 derivatives instead of 7, and 24 interpolation nodes in c instead of 16. That buys an
+  interpolation error under 8 × 10^(−15), which is needed because G near the end of the grid is about 10^(−9) at p = 8.
+- **Cost.** About 1 hour 40 minutes for the exact node values (21 big boxes, cached so a run can resume) and 15
+  minutes for the boxes, on 4 cores. The near zone grows like p², so this is about as far as the method goes cheaply.
+- **Lean.** The Lean file now has `NearCert58`, the matching named input for this run, and `rule_range8`: the rule for
+  every 1.1 ≤ p ≤ 8 that isn't an even whole number, from the same far bounds.
+
+**How solid.** As for 1.1 to 5: exact node values, hand-proved interpolation bounds, a float sweep with a worst-case
+rounding bound but no directed rounding, and Z4 checking the surrogate against direct quadrature.
+
+**Verdict: worth it, and the method's natural stopping point.** It doubles the proved range at modest cost. Past 8 the
+zero count per step and the grid both keep growing like p², so every p at once still needs a new idea: a far bound that
+takes over much earlier, or an argument that doesn't count zeros. The even roundness above a = p is the other real gap.
+At p = 4 it reduces to a cleaner question: since multiplying by (1 + x²) is safe (Laguerre), it's enough to show real
+zeros for (1 − x²)^c (1 + x²)^θ with θ the fractional part of c, between 0 and 1. Numerically the zeros just slide as θ
+goes from 0 to 1, with no collisions, but I have no proof.
+
+**Checks** (`near_zone_p.py` with `NZ_RANGE=5-8` → `near_zone_p58_output.txt`, `near_zone_p58.json`, **5 of 5 pass**,
+6,913 s):
+
+| Check | What | Result |
+|---|---|---|
+| Z1 | every zero of G at b in [0, end of grid] isolated, on boxes covering 5 ≤ p ≤ 8 and 0 ≤ b ≤ p − 1 | 6,630 boxes, 33 to 65 zeros each |
+| Z2 | G at b + 1 has a definite sign at each such zero, and the signs alternate | all boxes |
+| Z3 | every box reaches a zero past the far zone's T\*(p) | all boxes |
+| Z4 | surrogate against direct quadrature at 12 random points (polish) | all inside; widest enclosure 2.9e-14 |
+| Z5 | the top step b = p − 1 is covered with no gap in p | 120 boxes touch it |
+
+### N3, near zone in Lean. The reasoning machine-checked, the numbers cited
+
+Asked next by Brennan: "Move it into Lean." Then, on how to build it: "No, use CI." **Short answer: the reasoning is in
+Lean and builds against Mathlib in CI with no `sorry`; the box numbers stay as named inputs.** `LeeYangNearZone.lean`
+proves everything between the two Python runs and the rule: a Taylor bound on a cell, one zero per run of cells,
+alternation from a run certificate, the join of the near and far zones, and `rule_range`, the rule for every
+1.1 ≤ p ≤ 5 on the shared core (and `rule_range8` out to p = 8, from the run in the section above). What Lean takes on trust is exactly two named statements, `NearCert` (the boxes) and
+`FarCert` (the far bounds), plus the toolkit the core already cites (Pólya, Krein, the break).
+
+![Near zone in Lean](figures/fig26-lee-yang-near-lean.png)
+
+*Figure 26. Left: what the Lean file proves (blue) and what it takes as inputs (orange). The arrows are Lean
+theorems. Right: the cell bound on a real cell of width 1/8 at p = 3. Lean's bound keeps G inside the blue band, which
+stays above zero, so G is positive on the whole cell without sampling it.*
+
+- **Taylor cell bound** (`taylor_cell`). If the (n + 1)-st derivative of G stays under M on a cell, then G moves by at
+  most the Taylor terms plus M u^(n+1)/(n+1)! across it. This is the bound the box check uses on every cell.
+- **One zero per run** (`RunCert.nearAlt`). A run whose ends have opposite signs and whose slope keeps one sign holds
+  exactly one zero (intermediate value plus strict monotonicity). With no zeros in the gaps, the next step's signs at
+  consecutive zeros are the run signs, which flip. That is `Alternates` up to the end of the grid.
+- **Near + far** (`alternates_of_near_far`). The far zone gives alternation from T\*(p) on. A zero of G past T\*(p)
+  but inside the grid makes the two pieces overlap, so every positive zero is covered.
+- **The rule** (`holds_range`, `rule_range`). Fed into the core theorem, this gives Lee–Yang for every a ≤ p at every
+  1.1 ≤ p ≤ 5, and the full "iff a ≤ p" for every such p that isn't an even whole number.
+
+**How solid.** The file is required in CI and its axioms are printed by `Check.lean`. The first build had 5 errors,
+all in the Taylor bound (one Mathlib lemma takes its arguments in a different shape now). One fix round made it clean.
+
+**What it changes.** The trust in the rule on 1.1 ≤ p ≤ 5 now sits in two places only: the Python box run and the
+hand-derived far bounds. Everything that turns those into the theorem is machine-checked.
+
+**Verdict: done as far as it's worth going for now.** Putting the box arithmetic itself into Lean isn't practical with
+this method. A full sweep is about 10^11 exact big-number operations, on a grid of about 7.6 million values, which is
+far beyond what Lean's kernel can check in reasonable time. A different near-zone method (fewer, smarter enclosures)
+would be needed first. The far bounds in Lean are a bigger job: they rest on contour integrals and Gamma-function
+estimates that Mathlib only partly has.
+
+### N3, even roundness above a = p. Reduced at p = 4, open at 6 and 8
+
+The next gap on the list. **Short answer: not closed, but p = 4 now reduces to one cleaner family, and the evidence for
+it is strong.** At even roundness the rule says the zeros stay real for every a, so no finite box run can finish the
+job: the climb would have to go on forever. At p = 4, write c = m + θ with m whole and 0 ≤ θ < 1. Then
+(1 − x⁴)^c = (1 − x²)^c (1 + x²)^θ · (1 + x²)^m, and each factor 1 + x² is the operator 1 − D², which keeps real zeros
+(Laguerre). **So it is enough to show real zeros for (1 − x²)^c (1 + x²)^θ with θ between 0 and 1.** At θ = 0 that is the
+round ball (Bessel), the known whole-a case, and θ = 1 is one operator step from it.
+
+![Even roundness](figures/fig27-lee-yang-even-p.png)
+
+*Figure 27. Left: the reduction. Middle and right: how far each of the first 12 zeros moves as θ goes from 0 to 1, at
+c = 8 and c = 20. Every zero moves down, and lower zeros move further, so neighbours drift apart rather than together.
+Nothing can collide, so no pair can leave the real line.*
+
+- **What the numbers show** (E4). At c from 4.2 to 35 and 21 values of θ, the count of real zeros never changes, every
+  zero moves down as θ grows, and lower zeros always move further than higher ones. That last pattern is the useful
+  one: if it holds in general, the gaps only widen, and real zeros follow by continuity from θ = 0.
+- **Why this doesn't reach p = 6 or 8** (E5). Their extra factors, 1 + x² + x⁴ and 1 + x⁴, turn into operators with
+  non-real roots, so they aren't safe to apply. Even whole a is still open there above a = p.
+- **Dead end, for the record.** Approximating (1 + x²)^θ by safe factors fails for a structural reason: safe factors
+  come in whole units, and a fractional amount can't be built from whole ones in the limit.
+
+**How solid.** The reduction is a proof, given Laguerre's theorem (already cited for the whole-a case). E1 and E2 check
+it exactly and against quadrature. The rest is numerical evidence on a grid, not a proof.
+
+**Verdict: worth following at p = 4, as a self-contained problem.** It's now a question about Bessel-type transforms
+with one extra smooth factor, and the pattern in figure 27 (lower zeros move further) suggests a proof by tracking
+zeros in θ. That needs a sign argument for the θ-derivative at each zero, which I don't have yet. For p = 6 and 8 I see no
+route short of a new idea.
+
+**Checks** (`even_p_check.py` → `even_p_check_output.txt`, `even_p_check.json`, **5 of 5 pass**, 57 s):
+
+| Check | What | Result |
+|---|---|---|
+| E1 | (1 + x²) step is the operator 1 − D², coefficient by coefficient | gap 3e-41 |
+| E2 | G at p = 4 equals (1 − D²)^m applied to the reduced family, against quadrature | gap 9e-12 |
+| E3 | Bessel series for the reduced family against quadrature: same zeros up to s = 30 | shift 1e-5 |
+| E4 | c = 4.2 to 35, θ = 0 to 1: zero count fixed, all zeros move down, closest pair | ≥ 3.16 everywhere |
+| E5 | p = 6 factor gives an operator with non-real roots | 4 of 4 non-real |
 
 ---
 
@@ -901,6 +1026,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 refactor | contour formula at non-whole p against the defining integral | gap 7e-10 | under 1 s, of the 244 s run |
 | N3 far bounds | every far-zone bound against exact quadrature, 136 points | closest 0.94 of the bound | about a minute, of the 779 s run |
 | N3 near zone | surrogate enclosures against direct quadrature, 12 random points | all inside, widest 3.9e-9 | about 2 s, of the 202 s run |
+| N3 near zone to p = 8 | the same, for 5 ≤ p ≤ 8 | all inside, widest 2.9e-14 | about 3 s, of the 6,913 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -924,6 +1050,9 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `general_p_far.py` → `general_p_far.json`, `general_p_far_output.txt`: the far-zone scan across roundness. `figures_refactor.py` → figure 22.
 - `far_bounds_p.py` → `far_bounds_p.json`, `far_bounds_p_output.txt`: the far-zone bounds as formulas in p and the certified takeover T*(p). `figures_far_p.py` → figure 23.
 - `near_zone_p.py` → `near_zone_p.json`, `near_zone_p_output.txt`: the near zone boxed for every 1.1 ≤ p ≤ 5, so the rule is proved there with the far bounds. `figures_near_p.py` → figure 24.
+- `near_zone_p.py` with `NZ_RANGE=5-8` → `near_zone_p58.json`, `near_zone_p58_output.txt`: the near zone for 5 ≤ p ≤ 8. `figures_near_p58.py` → figure 25.
+- `../mathlib-map/MathlibMap/LeeYangNearZone.lean`: the near-zone reasoning in Lean (Taylor cell bound, run certificates, near + far, `rule_range`), required in CI. `figures_near_lean.py` → figure 26.
+- `even_p_check.py` → `even_p_check.json`, `even_p_check_output.txt`: the p = 4 reduction above a = 4 and its numerical evidence. `figures_even_p.py` → figure 27.
 
 ## References
 

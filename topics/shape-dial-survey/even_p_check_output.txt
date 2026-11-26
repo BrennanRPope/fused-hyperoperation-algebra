@@ -1,0 +1,12 @@
+PASS E1 F(alpha, theta + 1) = (1 - D^2) F(alpha, theta), coefficient by coefficient  [worst relative gap 2.62e-41]
+PASS E2 G at p = 4 equals (1 - D^2)^m F(c, theta) (series against quadrature)  [worst relative gap 8.9e-12]
+PASS E3 Bessel series for F against direct quadrature: same zeros up to s = 30  [largest zero shift 1.4e-05]
+   alpha 4.2: 14 zeros, all move down: True, closest pair 3.156
+   alpha 5.5: 15 zeros, all move down: True, closest pair 3.161
+   alpha 8: 16 zeros, all move down: True, closest pair 3.173
+   alpha 12: 18 zeros, all move down: True, closest pair 3.189
+   alpha 20: 22 zeros, all move down: True, closest pair 3.214
+   alpha 35: 30 zeros, all move down: True, closest pair 3.243
+PASS E4 zeros of F(alpha, theta) slide down as theta goes 0 -> 1, count fixed, never closer than 3.1  [closest pair anywhere 3.156]
+PASS E5 at p = 6 the factor 1 + x^2 + x^4 gives 1 - D^2 + D^4, whose roots are not real  [4 of 4 roots non-real]
+5/5 pass, 57 s
