@@ -48,4 +48,4 @@ Nov 26 (late): `topics/riemann/round8/` added as DRAFT (the two open ideas, hole
 
 Nov 26 (late): `topics/riemann/round9/` added as DRAFT (the Hilbert–Pólya string probe, with a Gram's-law literature companion; not a lead; 34 checks); `RiemannRound9` compiled into the library, all 12 theorems, no proof changed.
 
-Nov 26 (late): shape-dial survey section N3, even roundness from Pólya's end (DRAFT): every even p settled for every a (coefficient rescaling by 1/Γ, a multiplier sequence); `even_p_proof_check.py` 4 of 4 (852 s), in CI's extra checks; figure 28; page rebuilt.
+Nov 26 (late): shape-dial survey section N3, even roundness from Pólya's end (DRAFT): every even p settled for every a (coefficient rescaling by 1/Γ, a multiplier sequence); `even_p_proof_check.py` 4 of 4 (852 s), in CI's extra checks; figure 28; page rebuilt. Still open on Lee–Yang: only the holding side (a ≤ p) at non-even p past 8; non-even p from 1.1 to 8 is proved (computer-assisted), the breaking side a > p is proved at non-even p, and every even p is proved for every a.
