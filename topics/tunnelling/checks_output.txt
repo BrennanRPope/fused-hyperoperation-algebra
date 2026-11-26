@@ -53,7 +53,9 @@ PASS 9.1 removing a barrier from the mean odds is the ∘₂ inverse (t − t₁
 PASS 9.2 on the sphere the same rewind has a wall at s₁ = ½: a 50/50 mixer erases the bias (1 − 2s = 0)
 PASS 9.3 a barrier's character P_{−½+iλ}(1+2t₁) has only real zeros in λ (box count = real count)   [6 real, 6 in the box |Im λ| < 2]
 PASS 9.4 why: Mehler's kernel 1/√(cosh D − cosh σ) increases on [0, D), so Pólya's theorem gives real zeros
-NOTE 9.5 (reading of 8.1 and 9.3): one added barrier multiplies the component at each zero by 0, so no rewind of the spread restores it
+NOTE 9.5 (reading of 8.1 and 9.3, corrected): one added barrier multiplies the component at each zero by 0, but a finite
+          chain's spectrum is entire in λ, so those values are fixed by their neighbours: ill-conditioned, not lost.
+          The wall-free rewind is on the fused ladder; see rewind_checks.py.
 
 == Polish (30 digits)
 polish |<t> - u∘₂v| = 0.0

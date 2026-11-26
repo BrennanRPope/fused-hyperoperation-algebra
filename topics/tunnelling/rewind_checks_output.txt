@@ -1,0 +1,30 @@
+== 1. The fused ladder carries the whole spread
+PASS 1.1 adding a barrier to any spread: ⟨g_n⟩ → ⟨g_n⟩ ∘ₖ g_n(t₁) with k = n(n + 1), for n = 1..24 (independent 2-D quadrature)   [max relative error 1.97e-41]
+PASS 1.2 rung 1 is the mean law ∘₂ (g₁ = t); the homotheties run 2, 6, 12, 20, … = the hyperbolic plane's eigenvalues n(n + 1)
+
+== 2. The rewind is each rung's ∘ₖ inverse, and a barrier never puts a wall in the way
+PASS 2.1 rewinding every rung by (G − g)/(1 + k g) returns the initial spread's ladder exactly   [max relative error 2.19e-41]
+PASS 2.2 the divisor 1 + k g_n(t₁) is P_n(1 + 2t₁) ≥ 1 for every barrier and rung: no wall, ever   [t₁ = ¼: 1.5, 2.875, 6.188, 14.09, 33.08, …]
+PASS 2.3 so each rung's rewind shrinks errors (divides by ≥ 1); information is kept at every rung
+PASS 2.4 the spread's edges rewind by the (k = 0, d = −1) inverse on amplitudes (relativity's velocity subtraction)
+
+== 3. Rebuilding the spread from the rewound ladder
+PASS 3.1 with exact moments the rebuilt initial spread converges: max error at 6, 10, 16, 24 rungs falls   [6: 0.15, 10: 0.00071, 16: 9.0e-9, 24: 1.8e-15]
+PASS 3.2 with noisy forward data the rewind shrinks each rung's error by exactly 1/P_n(1 + 2t₁) ≤ 1 (absolute error)   [ε=1e-06: largest after/before 0.667, ε=1e-10: largest after/before 0.667]
+NOTE 3.2b the relative error can grow by |G|/|G − g| (here at most ×1.2), because the barrier's own
+          part g is subtracted from the signal; the absolute error, which is what the rebuild sees, only shrinks.
+PASS 3.3 the hard step is the old moment problem: the usable number of rungs grows as the noise falls   [ε=1e-06: best 4 rungs, error 0.68; ε=1e-10: best 8 rungs, error 0.019]
+
+== 4. The oscillating spectrum: what the earlier draft got wrong
+PASS 4.1 in the conical (oscillating) spectrum a barrier multiplies by |P₋½₊ᵢλ| ≤ 1, so a rewind there divides by ≤ 1 and blows up near zeros
+NOTE 4.2 (correction): a finite chain's spread has bounded support, so its Mehler–Fock transform is entire in λ and its
+          values at the character's zeros are fixed by the values around them. Nothing is lost; it is only ill-conditioned there.
+          The fused ladder (whole n) is the coordinate system where the same rewind is wall-free and error-shrinking.
+
+== 5. Mixers (the sphere): the same ladder has walls, and a 50/50 mixer forgets for real
+PASS 5.1 mixers: ⟨h_ℓ⟩ composes by ∘ₖ with k = −ℓ(ℓ + 1), h_ℓ(s) = (1 − P_ℓ(1 − 2s))/(ℓ(ℓ + 1))
+PASS 5.2 the divisor 1 − ℓ(ℓ + 1)h_ℓ(s₁) = P_ℓ(1 − 2s₁) has zeros: a wall on rung ℓ wherever s₁ sits on one
+PASS 5.3 two different input spreads give the identical output after a 50/50 mixer (rungs 1–8): every odd rung is erased
+PASS 5.4 barriers have no such point: P_n(1 + 2t₁) ≥ 1, so two different input spreads always give different outputs
+
+14/14 checks pass

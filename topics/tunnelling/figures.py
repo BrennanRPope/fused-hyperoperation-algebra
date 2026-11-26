@@ -198,9 +198,9 @@ lam = np.linspace(0, 12, 600)
 ch = np.array([float(mp.re(mp.legenp(-0.5 + 1j*l, 0, zc, type=3))) for l in lam])
 ax[0].plot(lam, ch, color="k", lw=1.6); ax[0].axhline(0, color=GREY, lw=0.6)
 zs = [lam[i] for i in range(len(lam) - 1) if ch[i]*ch[i + 1] < 0]
-ax[0].plot(zs, [0]*len(zs), "o", color=RED, ms=6, label="erased components")
+ax[0].plot(zs, [0]*len(zs), "o", color=RED, ms=6, label="zeros: badly conditioned, not lost")
 ax[0].set_xlabel("spectral parameter λ"); ax[0].set_ylabel("barrier character, t₁ = 1")
-ax[0].set_title("(a) one barrier multiplies each component\n of the spread by this; zeros are erased", fontsize=10)
+ax[0].set_title("(a) one barrier multiplies each oscillating\n component of the spread by this", fontsize=10)
 ax[0].legend(fontsize=8, frameon=False)
 X, Y = np.meshgrid(np.linspace(0.05, 8, 160), np.linspace(-1.5, 1.5, 80))
 Z = np.zeros_like(X)
@@ -219,7 +219,7 @@ ax[2].text(0.52, 1.8, "wall: a 50/50 mixer\ncannot be rewound", color=RED, fonts
 ax[2].set_xlabel("s₁ or t₁"); ax[2].set_ylabel("factor on the mean")
 ax[2].set_title("(c) single numbers rewind exactly, except\n through a wall", fontsize=10)
 ax[2].legend(fontsize=7.5, frameon=False, loc="lower left")
-fig.suptitle("Fig 5. Rewinds: the mean and the typical value rewind; the full spread loses a comb of components", fontsize=11)
+fig.suptitle("Fig 5. The oscillating spectrum: real zeros, but a finite chain loses nothing there (see Fig 7 for the clean rewind)", fontsize=11)
 fig.tight_layout(); fig.savefig("figures/fig5-rewinds.png", dpi=150); plt.close(fig)
 
 # ---------------------------------------------------------------- Fig 6: the dial line

@@ -274,7 +274,9 @@ Dc = math.acosh(zc); sgrid = np.linspace(0, Dc*0.999, 400)
 ker = 1/np.sqrt(np.cosh(Dc) - np.cosh(sgrid))
 check("9.4 why: Mehler's kernel 1/√(cosh D − cosh σ) increases on [0, D), so Pólya's theorem gives real zeros",
       np.all(np.diff(ker) > 0))
-print("NOTE 9.5 (reading of 8.1 and 9.3): one added barrier multiplies the component at each zero by 0, so no rewind of the spread restores it")
+print("NOTE 9.5 (reading of 8.1 and 9.3, corrected): one added barrier multiplies the component at each zero by 0, but a finite"
+      "\n          chain's spectrum is entire in λ, so those values are fixed by their neighbours: ill-conditioned, not lost."
+      "\n          The wall-free rewind is on the fused ladder; see rewind_checks.py.")
 
 # ------------------------------------------------------------------ polish at 30 digits
 print("\n== Polish (30 digits)")

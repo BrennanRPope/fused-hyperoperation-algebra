@@ -1,6 +1,7 @@
 /-
   Affine Composition Theory · tunnelling (DRAFT, Nov 26 2026).
-  First compiled in the shared library on Nov 26 2026, as FusedAlgebra.Topics.Tunnelling.
+  First compiled in the shared library on Nov 26 2026, as FusedAlgebra.Topics.Tunnelling (the three rewind
+  identities added the same day).
   Core Lean 4 (no mathlib), same style as closed-leads-fresh-look/lean/FreshLook.lean. Polynomial identities over Int only; the averages themselves (Jensen, the Legendre product formula) are
   checked numerically in ../checks.py, not here.
 
@@ -15,6 +16,10 @@
      outweighs the double reflection and the typical law ∘₁ has no wall.
   6–7. continuum_mean_unique, continuum_log_unique: the coefficient conditions from the flow ∂ₜ t(1 + εt) ∂ₜ force
      k(k − 2ε) = 0 for an exact mean law and k(k − ε) = 0 for an exact log law.
+  8. rewind_identity (added with the fused-ladder rewind): (a ∘ₖ b) − b = a(1 + kb), so the
+     rewind (c − b)/(1 + kb) is exact wherever 1 + kb ≠ 0. For a barrier on rung n, 1 + kb = P_n(1 + 2t₁) ≥ 1.
+  9–10. rung_two_barrier, rung_two_mixer: 2P₂(1 + 2t) = 2 + 12(t + t²) and 2P₂(1 − 2s) = 2 − 12(s − s²)
+     (with 2P₂(x) = 3x² − 1), the second rung's k = ±6 in polynomial form.
 -/
 namespace Tunnelling
 
@@ -48,5 +53,17 @@ theorem continuum_mean_unique (k c e : Int) (h₀ : k = c) (h₁ : 2 * e * k = c
 theorem continuum_log_unique (k c e : Int) (h₀ : k = c) (h₁ : 2 * e * k = 2 * c * k) :
     k * (k - e) = 0 := by
   subst h₀; grind
+
+theorem rewind_identity (k a b : Int) :
+    (a + b + k * a * b) - b = a * (1 + k * b) := by
+  grind
+
+theorem rung_two_barrier (t : Int) :
+    3 * (1 + 2 * t) * (1 + 2 * t) - 1 = 2 + 12 * (t + t * t) := by
+  grind
+
+theorem rung_two_mixer (s : Int) :
+    3 * (1 - 2 * s) * (1 - 2 * s) - 1 = 2 - 12 * (s - s * s) := by
+  grind
 
 end Tunnelling

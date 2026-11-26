@@ -2,8 +2,9 @@
 
 Nov 26, 2026. Brennan asked to work on the tunnelling lead that `closed-leads-fresh-look/` (F4) reopened, and to
 explore it freely: "just trying out the model and maybe seeing if there's anything that comes of it".
-Checks: `checks.py` → `checks_output.txt`, **37/37 pass** (numpy, scipy, mpmath, sympy; key laws polished to 30
-digits). Pictures: `figures.py` → `figures/`. Lean: `lean/Tunnelling.lean`, 7 polynomial identities, compiled in the shared library as
+Checks: `checks.py` → `checks_output.txt`, **37/37 pass**; rewinds: `rewind_checks.py` → `rewind_checks_output.txt`,
+**14/14 pass** (numpy, scipy, mpmath, sympy; key laws polished to 30
+digits). Pictures: `figures.py` → `figures/`. Lean: `lean/Tunnelling.lean`, 10 polynomial identities (3 added with the rewind), compiled in the shared library as
 `FusedAlgebra.Topics.Tunnelling` (as written).
 
 ## What came out, in one paragraph
@@ -16,8 +17,8 @@ over the phase, probabilities compose by ∘ₖ with **k = −2K**; and the log-
 which is the tropical (max) arithmetic. On the sphere that last law has a **wall** at s₁ + s₂ = 1; in the hyperbolic
 plane it has none, which is why "blocked" glues by ∘₋₁ exactly along any chain of barriers. Two more things fell
 out: the mean transmission of a chain falls per barrier by **Legendre's elliptic integral K of the reflection
-amplitude**, and **rewinds** work for single numbers but not for the full spread, which loses a comb of
-components whose positions are all real.
+amplitude**, and **a barrier keeps everything**: the full spread rewinds exactly on a ladder of fused laws ∘ₖ with
+k = n(n + 1), none of which ever has a wall, while a 50/50 mixer erases half that ladder for real.
 
 ---
 
@@ -124,24 +125,65 @@ mean transmission, P₋½(1 + 2t), equals (2/π)·√T·K(|r|) (dots). (c) Mean 
   link to the elliptic lead (`closed-leads-fresh-look/` F3): tunnelling reaches Legendre's K through the
   mean transmission, where F3 reached it through Jacobi's addition law.
 
-## 5. Rewinds
+## 5. Rewinds, done with the fused ladder
 
+Brennan: "Try rewinding using the fused operations" and "The goal of fusing is to keep information". Checks:
+`rewind_checks.py` → `rewind_checks_output.txt`, **14/14 pass** (40 digits). Pictures: `rewind_figures.py`.
+
+**The result: a barrier keeps everything.** The spread of a chain's odds is carried, with nothing lost, by a ladder of
+fused laws, one per whole rung n. Removing a barrier is each rung's ∘ₖ inverse, and no rung ever has a wall. Mixers
+(the sphere) use the same ladder with k < 0, and there the walls are real: a 50/50 mixer erases every odd rung.
+
+![Fig 7](figures/fig7-rewind-divisors.png)
+
+**Fig 7.** (a) Removing a barrier with odds t divides each rung's error by P_n(1 + 2t), which is never below 1 and
+grows fast up the ladder. (b) For a mixer with crossing chance s the divisor is |P_ℓ(1 − 2s)|, which hits 0: on that
+rung the mixer has a wall. At s = ½ every odd rung's divisor is 0.
+
+- **The ladder (1.1, 1.2).** For each whole n let g_n(t) = (P_n(1 + 2t) − 1)/(n(n + 1)), which starts as t + ….
+  Adding a barrier with odds t₁ to *any* spread sends ⟨g_n⟩ to ⟨g_n⟩ ∘ₖ g_n(t₁), with **k = n(n + 1) = 2, 6, 12,
+  20, …**. Rung 1 is the mean law ∘₂ from Section 1. The homotheties are the hyperbolic plane's Laplacian
+  eigenvalues. Checked against an independent 2-D average to 41 digits for n = 1 to 24.
+- **The rewind (2.1 to 2.4).** Undo each rung by (G − g)/(1 + k g). The divisor 1 + k g_n(t₁) equals P_n(1 + 2t₁) ≥ 1,
+  so there is never a wall and every rung's absolute error shrinks. The spread's two edges rewind by the
+  (k = 0, d = −1) inverse on amplitudes, which is relativity's velocity subtraction.
+- **Why nothing is lost.** The rungs are a fixed linear mix of the spread's power moments, and a spread on a bounded
+  range is fixed by its moments (Hausdorff). So the ladder is a complete record, and the rewind runs on that record
+  exactly.
+- **Where it gets hard (3.1 to 3.3).** Turning the rewound ladder back into a curve is the classical moment problem.
+  With exact data the rebuilt spread converges fast (error 0.15, 7 × 10⁻⁴, 9 × 10⁻⁹, 2 × 10⁻¹⁵ at 6, 10, 16, 24
+  rungs). With noisy data the rewind itself still only shrinks the error (by exactly 1/P_n), but the usable number of
+  rungs is set by the noise: 4 rungs at one part in 10⁶, 8 at one part in 10¹⁰. That limit belongs to moments, not to
+  the barrier.
+
+![Fig 8](figures/fig8-rewind-rebuild.png)
+
+**Fig 8.** (a) A spread before the last barrier, and the spread rewound from 4, 8 and 14 rungs. (b) Rebuild error
+against rungs used: exact data keeps improving; noisy data turns around where the moment problem takes over.
+(c) Two different spreads (dashed) go into a 50/50 mixer and come out identical (solid).
+
+- **Mixers forget for real (5.1 to 5.4).** On the sphere h_ℓ(s) = (1 − P_ℓ(1 − 2s))/(ℓ(ℓ + 1)) composes by ∘ₖ with
+  **k = −ℓ(ℓ + 1)**, and the divisor P_ℓ(1 − 2s₁) has zeros. A 50/50 mixer zeroes every odd rung: it forgets which
+  port the light came in by, so two spreads that differ only in that come out the same. A barrier has no such point.
 ![Fig 5](figures/fig5-rewinds.png)
 
-**Fig 5.** (a) Adding one barrier multiplies each spectral component of the spread by P₋½₊ᵢλ(1 + 2t₁); at its zeros
-(red) the component is erased. (b) The same function over complex λ: every zero is on the real line. (c) Rewinding the
-mean divides by 1 + 2t₁ for barriers (never zero) and by 1 − 2s₁ for mixers (zero at s₁ = ½: the wall).
+**Fig 5.** (a) In the oscillating (conical) spectrum one barrier multiplies each component by P₋½₊ᵢλ(1 + 2t₁).
+(b) Over complex λ every zero of that factor is on the real line. (c) Single numbers: the mean rewinds by dividing by
+1 + 2t₁ for barriers and by 1 − 2s₁ for mixers, which has a wall at s₁ = ½.
 
-- **Single numbers rewind (9.1, 9.2).** Removing a barrier from the mean odds is the ∘₂ inverse (t − t₁)/(1 + 2t₁),
-  always defined. On the sphere the same rewind has a wall: a 50/50 mixer erases the bias and cannot be undone.
-- **The full spread does not (9.3, 9.4).** Each barrier's character P₋½₊ᵢλ(1 + 2t₁) has only real zeros in λ (box
-  count equals real count), because Mehler's kernel is increasing and Pólya's 1918 theorem applies. So every barrier
-  erases a comb of components exactly, and no rewind of the spread can bring them back.
-- **Fit with the project.** This matches the Riemann work's finding that our exact rewinds are single-number flows:
-  here the mean and the typical value rewind; the distribution does not. In the continuum the flow is backward heat
-  flow on the hyperbolic plane (Section 6), the same obstruction in another geometry.
-- **Known versus ours.** Pólya's theorem and the conical functions are known; applying them to "which parts of a
-  barrier chain's statistics can be rewound" is ours, and modest.
+- **Correction to the first draft.** It said each barrier erases a comb of spectral components that no rewind can
+  restore. That was wrong. A barrier does multiply the oscillating (conical) components by P₋½₊ᵢλ(1 + 2t₁), whose
+  zeros are all real (Pólya, still true). But a finite chain's spread sits on a bounded range, so its spectrum is an
+  entire function of λ, and its values at those zeros are fixed by the values around them. Nothing is lost there; it
+  is only badly conditioned. The ladder and the conical spectrum are the same character P_ν(1 + 2t₁), at whole ν
+  (≥ 1, a clean rewind) and at ν = −½ + iλ (≤ 1, oscillating). Fusing picks the coordinates where the rewind is
+  clean.
+- **Fit with the project.** The Riemann pages found that our exact rewinds are single-number flows. That still holds,
+  with a twist: here a whole countable family of single-number flows, one ∘ₖ per rung, carries the full spread. Single
+  numbers (9.1, 9.2 in `checks.py`) are rung 1 of it.
+- **Known versus ours.** The product rule ⟨P_n⟩ → ⟨P_n⟩ P_n(1 + 2t₁) is the known spherical-function property of the
+  hyperbolic plane, and Hausdorff's moment theorem is classical. Reading each rung as our fused law with
+  k = n(n + 1), the barrier/mixer contrast as walls on the same ladder, and the correction above are ours.
 
 ## 6. The continuum flow picks k
 
@@ -169,8 +211,10 @@ transmission at k = 0.
    areas: interferometers, random networks, and possibly decoding, where the same max appears.
 3. **Legendre's K in the mean transmission (open, small).** A clean bridge between tunnelling and the elliptic lead.
    Next: see whether the other conical points of the ladder have similar closed forms.
-4. **Rewinds (closed for now).** Single numbers rewind, the spread does not; consistent with the Riemann pages and
-   not a new road.
+4. **Rewinds on the fused ladder (open, promising).** Barriers keep the whole spread on rungs ∘ₖ, k = n(n + 1), each
+   rewound with no wall; mixers have walls, and a 50/50 mixer erases the odd rungs. This corrects the first draft.
+   Next: test the ladder on other averaged processes (random walks on spheres and hyperbolic space, the Riemann
+   pages' heat flows) to see whether "fuse on the whole-number characters" is a general way to keep information.
 5. **The curvature reading (a note for the design rule).** The averaged laws carry their curvature's sign in k, not
    in −Δ/4. Worth one sentence on the dial pages.
 
