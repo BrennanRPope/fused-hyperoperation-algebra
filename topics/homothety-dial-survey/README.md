@@ -60,7 +60,9 @@ The leads, judged each on its own merits, in order:
    expansion (C1) all slide and are all known.
 8. **Holographic corner sums (C11)** give the one new in-between number: the weighted sum of three regions' entropies is
    ≥ 0 for every quantum state exactly when k ≥ √6 − 3 ≈ −0.551 (proved in two lines, sharp at the perfect tensor). Not
-   found in print, but it says little about geometry. **A small sharp fact, not a lead.**
+   found in print, but at three regions it says nothing about geometry. **A small sharp fact, not a lead.** Pushed to
+   more regions (`new-facts-levers/`, Nov 26): −1/φ² at four, and at five it splits geometric states (−0.382) from all
+   quantum states (−0.354, a Reed–Solomon GHZ state), though the numbers are read off known cones.
 
 **New laws at in-between settings (section N).** The in-between values that matter are the pinned-scale ladders above,
 and all but one are known. The one I found no print for is the holographic threshold √6 − 3 (N3). The three
@@ -284,6 +286,13 @@ statement at k = −1; the perfect tensor sets the threshold k* = √6 − 3.*
   min-cut graphs obey both signs (L4). Polished in L5.
 - **Verdict: partly.** The new threshold holds for **every** quantum state, not just geometric ones, so it says nothing
   about geometry. A small sharp fact; not a lead.
+- **Follow-up (Nov 26, `new-facts-levers/`).** Tried against quantum gravity and the Millennium problems. With more
+  regions the threshold moves: n = 4 gives (√5 − 3)/2 = −1/φ² for every quantum state; at **n = 5 geometric and quantum
+  states split**: every geometric state is ≥ 0 for k ≥ −0.382, while a Reed–Solomon GHZ state (any two parties hold the
+  whole secret) goes negative up to k = −0.354. So a negative corner sum in that window rules out a geometric dual. Both
+  numbers are exact (LPs met by real states). Literature: the numbers were not found, but they are read straight off the
+  symmetrized quantum and holographic cones (Pippenger; Fadel and Hernández-Cuenca 2022; Czech and Shuai 2021), so this is
+  a small diagnostic, not new physics. No Millennium problem is touched. **Verdict unchanged: not a lead.**
 
 ---
 
@@ -319,6 +328,11 @@ See C10. The alphabet size is a setting of k on [−2, −1], accumulating at �
 See C11. **Proved; not found in print; small.** What it might be for: a quick sanity test of entropy data from three
 regions (a negative value at some k ≥ −0.5505 means the numbers can't come from any quantum state). That is weaker than
 subadditivity itself, so the use is mostly as a sharp constant.
+
+**Follow-up (Nov 26).** The same family at five regions is a geometry test: a negative value for k between −0.382 and
+−0.354 means the numbers can't come from a geometric (holographic) state, though they can come from a quantum one. The
+thresholds follow from known cones, so "not found in print" now reads "not found as stated; a corollary of known
+structure". See `new-facts-levers/` section 2.
 
 ### N4. What k = ±2 are
 
@@ -385,7 +399,7 @@ rest of the checks are exact (sympy) or at machine precision.
 | Lee–Yang for k ≥ 1 on graphs | Known | Lee–Yang 1952 |
 | Alphabet ladder −q/(q − 1) | Pieces known; reading ours | Jukes–Cantor 1969; symmetric channels |
 | Split of [0, 1] laws at k = −1 | Ours, elementary | this page, C4 |
-| Holographic threshold √6 − 3 | **Ours, proved; not found** in one search | this page, C11 |
+| Holographic threshold √6 − 3; at five regions −0.382 (geometric) vs −0.354 (quantum) | **Ours as stated, proved; a corollary of the symmetrized cones** (Fadel–Hernández-Cuenca 2022; Czech–Shuai 2021) | this page, C11; `new-facts-levers/` |
 | Order-3 orbit of the ladders | ST in PSL(2, ℤ), the cross-ratio's order-3 rotation (known); that the ladders are one orbit is ours | this page, N5 |
 
 Searches run (Nov 26, 2026): "Sundt Jewell 1981 (a,b,0) class only Poisson binomial negative binomial Katz 1965

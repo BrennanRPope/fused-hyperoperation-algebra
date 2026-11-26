@@ -76,7 +76,9 @@ copies, the scrambled error (q − 1)/q, the top value 1, one half).</p>
    expansion (C1) all slide and are all known.</li>
 <li><strong>Holographic corner sums (C11)</strong> give the one new in-between number: the weighted sum of three regions' entropies is
    ≥ 0 for every quantum state exactly when k ≥ √6 − 3 ≈ −0.551 (proved in two lines, sharp at the perfect tensor). Not
-   found in print, but it says little about geometry. <strong>A small sharp fact, not a lead.</strong></li>
+   found in print, but at three regions it says nothing about geometry. <strong>A small sharp fact, not a lead.</strong> Pushed to
+   more regions (<code>new-facts-levers/</code>, Nov 26): −1/φ² at four, and at five it splits geometric states (−0.382) from all
+   quantum states (−0.354, a Reed–Solomon GHZ state), though the numbers are read off known cones.</li>
 </ol>
 <p><strong>New laws at in-between settings (section N).</strong> The in-between values that matter are the pinned-scale ladders above,
 and all but one are known. The one I found no print for is the holographic threshold √6 − 3 (N3). The three
@@ -269,6 +271,13 @@ statement at k = −1; the perfect tensor sets the threshold k</em> = √6 − 3
   min-cut graphs obey both signs (L4). Polished in L5.</li>
 <li><strong>Verdict: partly.</strong> The new threshold holds for <strong>every</strong> quantum state, not just geometric ones, so it says nothing
   about geometry. A small sharp fact; not a lead.</li>
+<li><strong>Follow-up (Nov 26, <code>new-facts-levers/</code>).</strong> Tried against quantum gravity and the Millennium problems. With more
+  regions the threshold moves: n = 4 gives (√5 − 3)/2 = −1/φ² for every quantum state; at <strong>n = 5 geometric and quantum
+  states split</strong>: every geometric state is ≥ 0 for k ≥ −0.382, while a Reed–Solomon GHZ state (any two parties hold the
+  whole secret) goes negative up to k = −0.354. So a negative corner sum in that window rules out a geometric dual. Both
+  numbers are exact (LPs met by real states). Literature: the numbers were not found, but they are read straight off the
+  symmetrized quantum and holographic cones (Pippenger; Fadel and Hernández-Cuenca 2022; Czech and Shuai 2021), so this is
+  a small diagnostic, not new physics. No Millennium problem is touched. <strong>Verdict unchanged: not a lead.</strong></li>
 </ul>
 <hr />
 <h2>N. New laws at in-between settings</h2>
@@ -340,6 +349,10 @@ before they turn negative (C5). <strong>Known; worth stating once in the repo un
 <p>See C11. <strong>Proved; not found in print; small.</strong> What it might be for: a quick sanity test of entropy data from three
 regions (a negative value at some k ≥ −0.5505 means the numbers can't come from any quantum state). That is weaker than
 subadditivity itself, so the use is mostly as a sharp constant.</p>
+<p><strong>Follow-up (Nov 26).</strong> The same family at five regions is a geometry test: a negative value for k between −0.382 and
+−0.354 means the numbers can't come from a geometric (holographic) state, though they can come from a quantum one. The
+thresholds follow from known cones, so "not found in print" now reads "not found as stated; a corollary of known
+structure". See <code>new-facts-levers/</code> section 2.</p>
 <h3>N4. What k = ±2 are</h3>
 <p>On the bare line ±2 are not special. They become special when a chance is pinned: k = −2 is the binary alphabet (wall
 at 1/2, XOR), and k = +2 is the hyperbolic average at unit curvature (no wall). The cluster of laws at k = 2 that
@@ -446,9 +459,9 @@ rest of the checks are exact (sympy) or at machine precision.</p>
 <td>this page, C4</td>
 </tr>
 <tr>
-<td>Holographic threshold √6 − 3</td>
-<td><strong>Ours, proved; not found</strong> in one search</td>
-<td>this page, C11</td>
+<td>Holographic threshold √6 − 3; at five regions −0.382 (geometric) vs −0.354 (quantum)</td>
+<td><strong>Ours as stated, proved; a corollary of the symmetrized cones</strong> (Fadel–Hernández-Cuenca 2022; Czech–Shuai 2021)</td>
+<td>this page, C11; <code>new-facts-levers/</code></td>
 </tr>
 <tr>
 <td>Order-3 orbit of the ladders</td>

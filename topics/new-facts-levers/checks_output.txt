@@ -1,0 +1,21 @@
+PASS T1 n=3 vN-LP threshold -0.5505102572
+PASS T1b n=3 SA+MMI-LP threshold equals vN-LP -0.5505102572
+PASS T2 n=4 vN-LP threshold -0.3819660113
+PASS T2b n=4 SA+MMI-LP threshold equals vN-LP -0.3819660113
+PASS T3 n=5 vN-LP threshold -0.3538307955
+PASS T3b n=5 SA+MMI-LP threshold equals vN-LP -0.3538307955
+PASS T4 n=6 vN-LP threshold -0.2881734520
+PASS T4b n=6 SA+MMI-LP threshold equals vN-LP -0.2881734520
+PASS H1 n=5 holographic (SA+MMI+facets 3-5) threshold = (sqrt5-3)/2 -0.3819660113
+PASS H2 perfect tensor on 4 regions is in that cone 
+PASS H3 MDS-GHZ vector is outside the holographic cone (breaks facets 4 and 5) max violation 2.0
+PASS H4 MDS-GHZ vector is inside the von Neumann cone 
+PASS H5 at k=-0.36: MDS-GHZ corner sum < 0, perfect tensor > 0 -0.0578, 0.1270
+PASS Q1 Reed-Solomon state has S_I = min(|I|, 2, 6-|I|) (units of log 5) 
+PASS P1 n=3 root = sqrt6 - 3 -0.5505102572168219018027159
+PASS P2 n=4 root = (sqrt5 - 3)/2 = -1/phi^2 -0.3819660112501051517954132
+PASS P3 n=5 quantum root (MDS-GHZ) -0.353830795529813726502245
+PASS R1 two-node network D=2: annealed Renyi-2 I3 <= 0 (the theorem) -0.0167
+PASS R2 same network: quenched mean I3 <= 0 -0.0229
+PASS R3 same network: some single samples break monogamy fraction 0.336
+20/20 passed
