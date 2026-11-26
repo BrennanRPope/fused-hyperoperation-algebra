@@ -60,8 +60,9 @@ one Lean core, so the rule at any p follows from one alternation statement. The 
 in p, and the near half is still per p (section N3, refactor). The far-out half is now proved for every roundness from 1.1
 to 8, with explicit formulas in p, past a point that grows like p² (section N3, far bounds). With the near zone boxed
 for 1.1 ≤ p ≤ 8, **the rule is now proved, computer-assisted, for every roundness from 1.1 to 8**, apart from a > p
-at the even roundness 4, 6 and 8 (at p = 4 only non-whole a is left) (sections N3, near zone, and N3, near zone to
-p = 8). The reasoning from the two certificates to the rule is proved in Lean (section N3, near zone in Lean). The other two are **Bell's 2√2 is a floor for
+at the even roundness 4, 6 and 8 (sections N3, near zone, and N3, near zone to p = 8). **That even gap is now closed:
+at every even roundness the rule holds for every a, proved with no zero counting from Pólya's 1923 theorem and Laguerre's
+theorem** (section N3, even roundness from Pólya's end). What's left is the holding side at non-even p past 8. The reasoning from the two certificates to the rule is proved in Lean (section N3, near zone in Lean). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
 (a short corollary of Fermat's last theorem).
 
@@ -267,7 +268,7 @@ dial, and where it made sense the crossing of the first two. What came out:
 |---|---|---|
 | Roundness, crossed with shape | **N1** Bell's 2√2 is a floor for every symmetric shape, and a saddle where the dials cross | Follows from a known theorem (Gao–Lau 1990); the Bell reading wasn't found |
 | Roundness, rational settings | **N2** Fermat for every rational p: only p = 1, 2, ∞ have rational points to spare | Short corollary of Fermat's last theorem; not found stated |
-| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2, p = 3 (computer-assisted) and p = 4 whole a; far zone proved for 1.1 ≤ p ≤ 8; **rule proved for every 1.1 ≤ p ≤ 8** (computer-assisted, reasoning in Lean; at p = 4, 6, 8 only up to a = p, plus whole a at p = 4); rest open |
+| Roundness | **N3** Lee–Yang holds iff a ≤ p (n ≤ 1 + p² for a uniform spin), always at even p | Not found in print; break proved, holding proved for n ≤ p + 1, p = 2, p = 3 (computer-assisted) and p = 4 whole a; far zone proved for 1.1 ≤ p ≤ 8; **rule proved for every 1.1 ≤ p ≤ 8** (computer-assisted, reasoning in Lean); **every even p proved for every a** (Pólya 1923 + Laguerre, no counting); open: a ≤ p at non-even p > 8 |
 | Roundness | Volume sums E_{1/p}(2Γ(1 + 1/p)) | Immediate from the known volume formula: nothing new |
 | Roundness | Replicator at any p | The same law at every p (u = x^(1/p) is a change of variable, check N5): nothing new |
 | Shape (round ↔ triangle) | The turn fades from −1 to 0; ordering fraction falls 1/4 → 0.229 | Already in `simplex/` §7; no closed form for the ordering fraction |
@@ -960,6 +961,8 @@ estimates that Mathlib only partly has.
 
 ### N3, even roundness above a = p. Reduced at p = 4, open at 6 and 8
 
+*Superseded by the next section, which settles every even p.*
+
 The next gap on the list. **Short answer: not closed, but p = 4 now reduces to one cleaner family, and the evidence for
 it is strong.** At even roundness the rule says the zeros stay real for every a, so no finite box run can finish the
 job: the climb would have to go on forever. At p = 4, write c = m + θ with m whole and 0 ≤ θ < 1. Then
@@ -999,6 +1002,91 @@ route short of a new idea.
 | E4 | c = 4.2 to 35, θ = 0 to 1: zero count fixed, all zeros move down, closest pair | ≥ 3.16 everywhere |
 | E5 | p = 6 factor gives an operator with non-real roots | 4 of 4 non-real |
 
+### N3, even roundness from Pólya's end. Every even p settled, with no counting
+
+Asked for by Brennan: "an idea for p past 8 that we could hopefully use for lower values of p as well". **Result: at every
+even roundness (p = 2, 4, 6, 8, 10, …) the rule is now proved for every a, with no zero counting at all.** That closes
+the even part of the gap (p = 4, 6 and 8 above a = p) and covers every even p past 8 at once. The proof rests on two
+classical theorems, Pólya's 1923 theorem and Laguerre's theorem on multiplier sequences, and one line of algebra. Non-even
+p past 8 is still open on the holding side (a ≤ p).
+
+![Even roundness proof](figures/fig28-lee-yang-even-proof.png)
+
+*Figure 28. A: the scaling factor q. Its zeros (red) all sit on the negative side, and the values that get used (green)
+sit at k = 0, 1, 2, … B: phase picture of G at p = 10, a = 25, far above a = p. Zeros are where all the colours meet,
+and every one is on the real line. C: the contrast, p = 2.5 and a = 5. Past the crossover, zeros pair off the line. D: the
+map now. Every even line is green from bottom to top. E and F: the fused-integral test (below). The fused version keeps
+G's real zeros and adds new ones off the line.*
+
+- **The idea.** Start at the top edge of the map, a → ∞, where Pólya already did the work. His 1923 theorem: the wave
+  transform of e^(−y^p) has only real zeros exactly when p is an even whole number. Then come down in a in one move.
+- **The one line of algebra.** Write both functions as power series in s. The k-th coefficient of
+  G_a(s) = ∫₀¹ (1 − x^p)^a cos(sx) dx is the k-th coefficient of Pólya's F_p(s) = ∫₀^∞ e^(−y^p) cos(sy) dy times
+  **q(k) = Γ(a + 1)/Γ(2k/p + a + 1 + 1/p)**. That follows from u = x^p, which turns every moment into a Beta integral.
+- **Why that keeps the zeros real.** q is 1 over a Gamma function of a straight line in k. That makes it an entire function
+  whose zeros are all real and all negative (figure 28 A). Laguerre's theorem says multiplying the k-th coefficient by
+  such a function's value at k keeps every zero real. Baricz and Singh (2018, Theorem 1) prove the same fact for exactly
+  this family, in the form that the Wright function Σ z^k/(k! Γ(ρk + β)) has only negative real zeros for ρ, β > 0.
+  Working in w = s² makes the bookkeeping exact: Pólya's function has real zeros in s, so its series in w has only
+  negative zeros, and the scaled series keeps that.
+- **What it is, in dial terms.** 1/Γ is an infinite product of straight-line factors. Each factor is one copy of the
+  step that carries a + 1 down to a (section N3, step identity), Laguerre's operator. So G at any a is Pólya's function
+  passed through infinitely many of those safe steps. The step identity was the same move with one factor.
+- **Why it stops at even p.** It needs Pólya's function to have real zeros to start from, and that holds only at even
+  whole p. At other p, Pólya's function already has zeros off the line, and no other starting point I tried has the
+  right moments: the ratio of moments brings Gammas into the numerator, and those aren't safe.
+- **It's an extension of the old p = 4 route.** The earlier section reduced p = 4 to one family and stalled at p = 6
+  and 8. This section replaces that route for every even p.
+
+**The fused-integral test** (asked for by Brennan via the main chat: is fusing the integral with ∘ₖ "the idea we need at
+higher levels of p"). Short answer: **no, it's only a reparametrisation, but the instinct for products was right.** When
+the strips shrink, the ∘ₖ-fused integral becomes (e^(k·G) − 1)/k. On the real line G is real, so that vanishes exactly
+where G does: the same real zeros. Off the line it also vanishes wherever k·G = 2πi·n, which adds new zeros off the line
+(figure 28 E against F). So it can't show zeros are real, because the fused function has zeros that aren't. The product
+that does the work is on the coefficient side: the Weierstrass product of 1/Γ, one safe factor per step.
+
+**What it uses, set against Riemann's kernel Φ** (asked for by the main chat). Riemann's Ξ is the wave transform of
+Φ(t) = Σ (2π²n⁴e^(9t) − 3πn²e^(5t)) exp(−πn²e^(4t)), so it's the same kind of question.
+
+| What the proof uses | p-ball weight | Riemann's Φ |
+|---|---|---|
+| A starting kernel with only real zeros, with known moments | e^(−y^p), p even (Pólya 1923) | none known to fit; Pólya's simplified Φ* has real zeros (1926) |
+| Moments = starting moments × q(k), q entire with only negative zeros | yes: q = 1/Γ, exact | unknown: Φ's moments have no closed form |
+| Log-concavity, decay rate, counting | not used | — |
+
+**So the method transfers, the specific step doesn't.** Writing Ξ's coefficients as a safe rescaling of a known
+real-zero function is an old route to the Riemann hypothesis (Pólya; Csordas, Norfolk and Varga proved the first
+necessary inequalities for Ξ's coefficients in 1986). What our case adds is a worked instance where the rescaling is
+exactly 1/Γ. A concrete test for the Riemann thread: take the ratio of Φ's moments to Φ*'s and check it against the
+necessary conditions for a safe rescaling (Turán and higher Laguerre inequalities). Passing would be a lead; failing
+kills that starting point.
+
+**The wobble, in plain words.** Far out, each zero of G sits near a rung of an evenly spaced ladder (spacing π) set by
+the wave from the rim. The small push from the kink at the centre nudges each zero off its rung: that nudge is the
+wobble. Measured against the rung spacing, it grows like s^(a − p). Below a = p it dies away, so the zeros stay real.
+Above a = p (non-even p) it grows until neighbouring zeros run into each other, pair up and leave the line. At even p
+there is no kink, so there is no wobble from the centre. On the Riemann side the matching pair is the smooth count
+N(T) (the ladder) and S(T) (the wobble), but S(T) is a running count fed by every prime, not one power law.
+
+**How solid.** The proof is complete given Pólya 1923 and Laguerre's theorem (both classical, cited, not in Lean). H1
+checks the coefficient identity to 80 digits. H3 counts every zero in a box at p = 10 and 12, on both sides of a = p, and
+all are real. H4 shows the same count finding zeros off the line where the rule says it should. I haven't found this
+proof stated anywhere, but it's short enough that it may be known.
+
+**Verdict: worth following.** It turns the even half of the rule into a theorem for every even p, and it gives a clean
+template: find a real-zero kernel at the edge of the map, then show the rest is a safe coefficient rescaling of it. For
+non-even p past 8, the next step is a starting kernel other than Pólya's. The top strip (section N3, top strip) is the
+only place one is needed, because the step identity carries everything below it.
+
+**Checks** (`even_p_proof_check.py` → `even_p_proof_check_output.txt`, `even_p_proof_check.json`, **4 of 4 pass**, 852 s):
+
+| Check | What | Result |
+|---|---|---|
+| H1 | coefficient identity, series against direct quadrature, 7 cases incl. non-even p | gap ≤ 1e-79 |
+| H2 | the Wright function behind q has only negative real zeros, p = 4, 8, 12 | 17 of 17, 21 of 21, 10 of 10 zeros in the disc are negative real |
+| H3 | p = 10 (a = 3, 10, 25) and p = 12 (a = 6, 30): zeros in the box &#124;Re s&#124; < 36, &#124;Im s&#124; < 6 | all real (16 to 20 each) |
+| H4 | contrast: p = 2.5, a = 5 and p = 1.5, a = 2.5 | 12 and 20 zeros off the line |
+
 ---
 
 ## The polishing step
@@ -1027,6 +1115,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 far bounds | every far-zone bound against exact quadrature, 136 points | closest 0.94 of the bound | about a minute, of the 779 s run |
 | N3 near zone | surrogate enclosures against direct quadrature, 12 random points | all inside, widest 3.9e-9 | about 2 s, of the 202 s run |
 | N3 near zone to p = 8 | the same, for 5 ≤ p ≤ 8 | all inside, widest 2.9e-14 | about 3 s, of the 6,913 s run |
+| N3 even from Pólya | coefficient identity against direct quadrature, 7 cases | gap ≤ 1e-79 | about 10 s, of the 852 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -1053,6 +1142,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `near_zone_p.py` with `NZ_RANGE=5-8` → `near_zone_p58.json`, `near_zone_p58_output.txt`: the near zone for 5 ≤ p ≤ 8. `figures_near_p58.py` → figure 25.
 - `../mathlib-map/MathlibMap/LeeYangNearZone.lean`: the near-zone reasoning in Lean (Taylor cell bound, run certificates, near + far, `rule_range`), required in CI. `figures_near_lean.py` → figure 26.
 - `even_p_check.py` → `even_p_check.json`, `even_p_check_output.txt`: the p = 4 reduction above a = 4 and its numerical evidence. `figures_even_p.py` → figure 27.
+- `even_p_proof_check.py` → `even_p_proof_check.json`, `even_p_proof_check_output.txt`: the even-p proof from Pólya's end (coefficient identity, Wright zeros, zero counts at p = 10 and 12, non-even contrast). `figures_even_proof.py` → figure 28.
 
 ## References
 
@@ -1069,6 +1159,14 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - F. Hirzebruch, the two-parameter genus; R. Stanley and V. Danilov, h-vectors of toric shapes.
 - D. Myrheim (1978) and D. Meyer (1988), ordering fraction and dimension of causal sets.
 - T. D. Lee and C. N. Yang (1952); C. Newman (1974); G. Pólya on (1 − t)^a.
+- G. Pólya, "On the zeros of an integral function represented by Fourier's integral", Messenger of Math. 52 (1923),
+  185–188: the wave transform of e^(−t^p) has only real zeros exactly at even whole p.
+- Á. Baricz and S. Singh, "Zeros of some special entire functions", Proc. AMS 146 (2018), 2207–2216, arXiv:1702.00626:
+  the Wright function Σ z^k/(k! Γ(ρk + β)) has only negative real zeros for ρ, β > 0.
+- J. Kamimoto, H. Ki and Y.-O. Kim, Proc. AMS 128 (2000), 189–194: the zeros for e^(−x^(2m)) are real and simple.
+- B. Kuttner, J. London Math. Soc. 19 (1944); B. I. Golubov, Anal. Math. 7 (1981); T. Gneiting, Proc. AMS 129 (2001),
+  2309–2318: when (1 − |x|^λ)^κ is positive definite; Golubov's lower bound k(λ) ≥ λ is our line a = p.
+- G. Csordas, T. Norfolk and R. Varga, Trans. AMS 296 (1986): the Turán inequalities for the Riemann ξ function.
 - G. Pólya, "Über die Nullstellen gewisser ganzer Funktionen", Math. Z. 2 (1918): sine and cosine transforms of
   positive nondecreasing weights have only real zeros. E. Laguerre and G. Pólya on the Laguerre–Pólya class and the
   operators that keep it.

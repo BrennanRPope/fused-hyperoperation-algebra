@@ -47,3 +47,5 @@ Nov 26 (late): `topics/klein-flow/` added as DRAFT (fluid flow on a Klein bottle
 Nov 26 (late): `topics/riemann/round8/` added as DRAFT (the two open ideas, holes and twists, re-centring the blow-up; not a lead; 33 checks); `RiemannRound8` compiled into the library, all 12 theorems, no proof changed.
 
 Nov 26 (late): `topics/riemann/round9/` added as DRAFT (the Hilbert–Pólya string probe, with a Gram's-law literature companion; not a lead; 34 checks); `RiemannRound9` compiled into the library, all 12 theorems, no proof changed.
+
+Nov 26 (late): shape-dial survey section N3, even roundness from Pólya's end (DRAFT): every even p settled for every a (coefficient rescaling by 1/Γ, a multiplier sequence); `even_p_proof_check.py` 4 of 4 (852 s), in CI's extra checks; figure 28; page rebuilt.

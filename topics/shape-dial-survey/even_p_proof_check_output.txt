@@ -1,0 +1,90 @@
+{'p': 4, 'radius': 200, 'total_in_disc': 17.0, 'negative_real': 17}
+{'p': 8, 'radius': 200, 'total_in_disc': 21.0, 'negative_real': 21}
+{'p': 12, 'radius': 100, 'total_in_disc': 10.0, 'negative_real': 10}
+{'p': 10, 'a': 3, 'box_total': 20.0, 'real': 20}
+{'p': 10, 'a': 10, 'box_total': 18.0, 'real': 18}
+{'p': 10, 'a': 25, 'box_total': 16.0, 'real': 16}
+{'p': 12, 'a': 6, 'box_total': 18.0, 'real': 18}
+{'p': 12, 'a': 30, 'box_total': 16.0, 'real': 16}
+{'p': 2.5, 'a': 5, 'box_total': 18.0, 'real': 6}
+{'p': 1.5, 'a': 2.5, 'box_total': 20.0, 'real': 0}
+{
+ "H1_relative_gaps": [
+  6.184974759594926e-90,
+  8.634079987111732e-88,
+  3.2844807707430613e-83,
+  9.582936313904442e-80,
+  7.187295826695142e-83,
+  8.475499705485619e-88,
+  2.6267539123156807e-82
+ ],
+ "H1_pass": true,
+ "H2": [
+  {
+   "p": 4,
+   "radius": 200,
+   "total_in_disc": 17.0,
+   "negative_real": 17
+  },
+  {
+   "p": 8,
+   "radius": 200,
+   "total_in_disc": 21.0,
+   "negative_real": 21
+  },
+  {
+   "p": 12,
+   "radius": 100,
+   "total_in_disc": 10.0,
+   "negative_real": 10
+  }
+ ],
+ "H2_pass": true,
+ "H3_H4": [
+  {
+   "p": 10,
+   "a": 3,
+   "box_total": 20.0,
+   "real": 20
+  },
+  {
+   "p": 10,
+   "a": 10,
+   "box_total": 18.0,
+   "real": 18
+  },
+  {
+   "p": 10,
+   "a": 25,
+   "box_total": 16.0,
+   "real": 16
+  },
+  {
+   "p": 12,
+   "a": 6,
+   "box_total": 18.0,
+   "real": 18
+  },
+  {
+   "p": 12,
+   "a": 30,
+   "box_total": 16.0,
+   "real": 16
+  },
+  {
+   "p": 2.5,
+   "a": 5,
+   "box_total": 18.0,
+   "real": 6
+  },
+  {
+   "p": 1.5,
+   "a": 2.5,
+   "box_total": 20.0,
+   "real": 0
+  }
+ ],
+ "H3_pass": true,
+ "H4_pass": true,
+ "seconds": 852.3
+}
