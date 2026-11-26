@@ -7,7 +7,7 @@ of the 3-sphere picture, and added: "I'm kind of wondering if there's a way to f
 of some sort."
 
 Builds on `hypersphere/` (Kepler orbits as great circles, the plane dial as 1/radius²) and `precession/` (the swap rule:
-turn = dial × enclosed area). Checks: `checks.py` → `checks_output.txt`, **23 of 23 pass** (numpy, scipy; the C integrator
+turn = dial × enclosed area). Checks: `checks.py` → `checks_output.txt`, **23 of 23 pass** (E1 and E2d there report the first reading, 57 listed and 9 not; the polished reading in section 9 is 60 and 6) (numpy, scipy; the C integrator
 `tb.c` is built as `libtb.so`). Landscape: `run_landscape.py` then `refine_minima.py`. Pictures: `figures.py` → `figures/`.
 Colour key: **orange = known, blue = ours** (a reading, a check or a find, not a new theorem), red = does not work.
 No Lean in this pass. Build the integrator first: `gcc -O3 -fopenmp -shared -fPIC -o libtb.so tb.c -lm`. `landscape.npz` (16 MB) can be
@@ -33,11 +33,16 @@ regenerated in about 6½ minutes; Li and Liao's word list is downloaded into `da
 - **Minimums do find orbits.** That is how the figure-eight was first found (Moore 1993, by sliding a braid down in
   action; proved by Chenciner and Montgomery in 2000). Our action search lands on exactly two orbits, Lagrange's circle
   and the figure-eight (D1, D2). A second kind of minimum, how close an orbit comes back to its start, found 66 periodic
-  orbits in 6½ minutes; 57 match the published 695-family list (Li and Liao 2017) by their loop type on the shape
-  sphere, and **9 orbits of 8 loop types are not in that list** (E1, E2c, E2d). All 9 slalom very close past a collision,
-  which is probably why a search tuned for collisionless orbits missed them. We have not checked later catalogs.
-- **Is it a lead?** Yes, a modest and concrete one: hunting minimums on the shape sphere turns up real orbits outside
-  the main published list, cheaply, and the swap rule tells you for free how much each one turns. It is not a new law.
+  orbits in 6½ minutes. **Polished (section 9):** a Newton step on half a lap, in 34-digit arithmetic, closes all 66
+  exactly, to 26 to 32 digits, in about 10 minutes. Re-reading each loop type at finer sampling corrected 11 words, so
+  **60 match the published 695-family list** (Li and Liao 2017) and **6 orbits of 6 loop types are not in it** (the first
+  reading said 57 and 9). All 6 slalom very close past a collision, which is probably why a search tuned for
+  collisionless orbits missed them. **Checked against later catalogs (E3): none of the 6 should be called new.** A 2024
+  search on exactly our starting line (Hristov and Hristova) lists 211,524 solutions up to the same period range, and is
+  very likely to contain all 6; its files could not be downloaded from here.
+- **Is it a lead?** A small one, and not as an orbit-finder: the 6 orbits are real but almost certainly already
+  catalogued by a much bigger 2024 search. What stays is the swap rule giving each orbit's turn for free, and the
+  figure-eight's arc. It is not a new law.
   The 3-sphere does not solve the three-body problem; it organizes it.
 
 ---
@@ -169,7 +174,7 @@ by all three bodies a third of a lap apart, written with 30 waves, 40 random sta
 *Figure 9. Every pixel is one start: three bodies in a line at −1, 0, +1, pushed (p₁, p₂), (p₁, p₂), (−2p₁, −2p₂), with zero
 spin. A: how close it comes back to its start within time 40 (dark is closer). B: when. Each dark streak hides a periodic
 orbit. Orange rings: orbits whose loop type is in Li and Liao's 2017 list. Cyan rings: periodic orbits whose loop type is
-not. The cyan ones sit in basins far smaller than a pixel, which is why they look pale here.*
+not, after the re-reading in section 9 (6 rings). The cyan ones sit in basins far smaller than a pixel, which is why they look pale here.*
 
 This is Šuvakov and Dmitrašinović's method (2013), and Li and Liao ran it on a 4000 × 4000 grid in 2017, finding 695
 families. Ours: a 700 × 700 grid (449,773 starts), each run to time 40 by our own integrator, 6½ minutes on four cores.
@@ -177,28 +182,96 @@ We measured the return two ways: plainly, and with the overall turn removed (dis
 catch orbits that come back turned.
 
 - 607 local minima, 230 shot to an exact orbit (return below 10⁻⁸), **66 distinct periodic orbits** (E0b, E1).
-- **57 have loop types in the 695-family list** (27 different families, including the figure-eight, butterflies, moths,
-  goggles, dragonfly, yin-yang, bumblebee).
-- **9 orbits, of 8 loop types, are not in it.** A second integrator (scipy's DOP853) brings each back to within 10⁻⁷, so
-  they are real (E2c).
+- **60 have loop types in the 695-family list** (polished; 32 different families, including the figure-eight,
+  butterflies, moths, goggles, dragonfly, yin-yang, bumblebee). The first reading said 57 in 27 families; see section 9.
+- **6 orbits, of 6 loop types, are not in it** (polished; the first reading said 9 of 8 types). Each closes to 27 to 31
+  digits after polishing, so they are real (section 9; E2c had already brought each back to within 10⁻⁷).
 - The turn-free search found nothing extra: every such minimum here shot back to an orbit that returns unturned (E2).
 
 ![Unlisted orbits](figures/fig10-unlisted-orbits.png)
 
-*Figure 10. The 8 unlisted loop types (left: real space; right: the loop on the shape sphere). Periods 17 to 33.*
+*Figure 10. The 6 loop types not in Li and Liao's list, drawn from the polished orbits with the re-read words (left: real
+space; right: the loop on the shape sphere). Periods 17 to 33. The first reading had 8 types here; three of those orbits
+(T = 20.19, 20.56, 32.84) turned out to be in the list once their words were read in full (section 9).*
 
-**What they have in common:** every one passes very close to a collision, between 0.0024 and 0.013 of the starting
-spacing, and five of the eight words contain aa or bb, meaning the loop circles one collision twice in a row. Li and Liao integrated in
+![The six polished unlisted orbits](figures/fig10b-unlisted-polished.png)
+
+*Figure 10b. The 6 polished orbits whose loop types are not in Li and Liao's list, in real space (one colour per body).*
+
+**What they have in common:** every one passes very close to a collision (a few thousandths of the starting spacing or
+less), and two of the six words contain aa or bb, meaning the loop circles one collision twice in a row. Li and Liao integrated in
 ordinary double precision first and say they lost orbits to numerical noise, so close-passing orbits are the likeliest to
-slip through. **Not checked:** Šuvakov's online gallery, his 2014 "slalom" orbits near the figure-eight, or Liao's later
-catalogs. Until we check those, call these "not in the 2017 list", not "new".
+slip through.
+
+### E3. Checked against later catalogs
+
+*This check was made on the first reading's 9 unlisted orbits. After the polish and re-reading (section 9), 6 of them
+are still unlisted, and everything below holds for those 6: all are unstable and all fall in the 2024 extended list's range.*
+
+| Catalog | Same starting line? | Covers our periods? | Could hold our 9? | Result |
+|---|---|---|---|---|
+| Šuvakov and Dmitrašinović 2013; Šuvakov 2014 (slalom) | yes | yes | yes | 2013 orbits are all inside Li and Liao's list; the 2014 slalom orbits are powers of the figure-eight, and our 9 words are not powers |
+| Dmitrašinović, Hudomal, Shibayama, Sugita 2018 (20 orbits) | yes | yes | no | stable orbits only, and all 9 of ours are unstable |
+| Rose 2016 thesis | yes | partly | no | its table lists stable orbits only |
+| Hristov, Hristova, Tanikawa 2025 (971 starts, 685 solutions) | yes | yes (T* < 800) | no | stable orbits only |
+| Hristov and Hristova 2024, main list (12,431 starts, 6,333 solutions, T* < 70) | yes, exactly ours | 2 of our 9 (T* 42.2 and 53.9) | yes | file could not be downloaded from this session |
+| Hristov and Hristova 2024, extended list (421,562 starts, 211,524 solutions, T* < 200) | yes, exactly ours | all 9 (our T* run 42 to 119) | yes | file could not be downloaded from this session |
+
+**Stability (ours):** the largest Floquet multiplier of each of the 9 runs from 9.9 to 12,700, so every one is linearly
+unstable. That is why none of the stable-orbit catalogs can hold them.
+
+**Verdict:** the 2024 lists searched exactly our starting line, rediscovered every Li and Liao orbit, and below T* = 70
+hold 6,333 solutions where our search found 45 orbits. With that density, all 9 are very likely in them. Without the
+files we cannot say which row each one is, so the honest label is "not in the 2017 list; almost certainly in the 2024
+list", and none should be called new.
+
+## 9. Polishing every orbit
+
+![Polishing every orbit](figures/fig12-polishing-every-orbit.png)
+
+*Figure 12. A: how far each orbit misses its half-lap mirror test, at each stage. B: correct digits for each orbit,
+before (grey, ordinary double precision) and after (coloured) the polish.*
+
+Brennan asked for a polishing step on every search. Here it is the step Hristov and Hristova (2024) used after their
+search: Newton's method on the periodicity condition, done in high precision.
+
+- **Half a lap is enough.** Our starting line (three bodies in a row, outer two moving alike) is a mirror point: flip the
+  picture through the centre, swap the outer bodies and run time backwards, and the start is unchanged. So an orbit
+  through it is periodic exactly when, at half its period, it reaches another such mirror point: body 3 at the centre and
+  the outer two moving alike along their line. That is 3 conditions on 3 unknowns (the two pushes and the half period).
+  Half a lap also means half the time for errors to grow, which matters because every one of these orbits is unstable.
+- **How.** A Taylor-series integrator (order 39) written in C, in 34-digit arithmetic (`polish/taylor.h`, `polish.c`),
+  and Newton's method with a finite-difference Jacobian, first in ordinary precision, then three steps in 34 digits.
+  Each quad step roughly doubles the correct digits (Figure 12A).
+- **Result.** All 66 orbits close: after one full lap each returns to its start within 10⁻²⁶. Correct digits, from two
+  runs at different integrator tolerances, are 26 to 32 (median 29). Cost: 10 minutes on four cores (32 CPU minutes),
+  the slowest orbit 86 seconds.
+- **Did it change anything?** Periods moved by at most 2.5 × 10⁻⁸ and starting pushes by at most 3 × 10⁻¹⁰, so no period
+  and no turn changed (the half-area law still holds on every orbit). One thing did change, found while checking the
+  polished orbits:
+
+![Loop types re-read](figures/fig13-loop-types-re-read.png)
+
+*Figure 13. A: the number of letters in each changed loop word as the sampling gets finer. B: why: at a close pass the
+pair whips round between two samples, so the line-ups made during the turn were never counted.*
+
+- **11 loop words were cut short.** The words were read from line-ups (moments when the three bodies are in a row)
+  sampled 3,000 times per unit time. At the closest passes the near pair turns faster than that, and line-ups were
+  missed. Read at 48,000 samples, every word stops changing (the three hardest were checked to 768,000).
+- **Verdicts that changed:** three orbits first called unlisted are in Li and Liao's list (T = 20.19 is II.C64, T = 20.56
+  is II.C4, T = 32.84 is the cube of II.C1, the yin-yang). Five listed orbits belong to different families than first
+  read (T = 16.39 and 26.32: II.C3, not I.B2; T = 27.82: I.B10, not I.A2; T = 34.71: I.A14, not I.A2; T = 41.13: I.B15,
+  not I.A10). Three unlisted orbits stay unlisted with longer words. Totals: 60 listed, 6 not.
+- **Files:** `polish/polished.json` (each orbit to 34 digits), `polish/polish_output.txt`, `polish/words_all.json`,
+  `polish/words_converge.json`, `polish/words_hard3.json`; scripts `polish/analyze.py`, `words_check.py`,
+  `words_converge.py`, `words_all.py`, `figures_polish.py`. Build the polisher with
+  `gcc -O3 -o polish polish/polish.c -lquadmath -lm`.
 
 ## Is it a lead?
 
-1. **Yes, modestly: minimums on the shape sphere find real orbits outside the main published list.** Our cheap search
-   found 8 loop types missing from Li and Liao's 695. Worth following because it is concrete and checkable: compare with
-   the later catalogs, then push the same search to longer times and other starting lines. It extends a catalog; it does
-   not explain the three-body problem.
+1. **Not as an orbit-finder.** Our cheap search found 6 loop types missing from Li and Liao's 695 (polished), but a 2024 search on
+   the same starting line lists about 3,000 times as many solutions over the same periods, so these are almost
+   certainly known (E3). Closest-return hunting works; it just isn't ahead of the field here.
 2. **The swap rule covers the three-body turn.** Known physics, but it joins the precession stream to the three-body
    problem on a geometry we are sure of (the Hopf fibration). Useful for the unified picture, not a new prediction.
 3. **The figure-eight's near-great-circle arc.** A clean observation. Worth a short look at whether it is a coincidence
@@ -208,7 +281,8 @@ catalogs. Until we check those, call these "not in the 2017 list", not "new".
 
 ## Next (offered, not started)
 
-- Check the 8 unlisted loop types against Šuvakov's gallery and Liao's later catalogs.
+- Match the 6 orbits row by row against Hristov and Hristova's 2024 files (needs those files downloaded on a machine that
+  can reach their site).
 - Moore's original idea, aimed at the gaps: list the short loop types (words up to 8 or 10 letters) that no catalog has,
   and slide a loop of each type downhill in action to see which ones hold an orbit.
 - The rotating-frame action search, where many more choreographies are known, to see whether the dial (energy sign) sorts

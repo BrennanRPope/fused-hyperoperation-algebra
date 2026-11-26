@@ -1,0 +1,11 @@
+Polish of the stationary-point location (checks.py B1): linear -> cubic + Newton zero of the phase gradient
+
+hbar=0.08 : stationary point 0.172161880 (linear; stored 0.172161880) -> 0.172161879 (cubic+Newton); shift -1.2e-09; offset from Newton 3.97e-05 -> 3.97e-05
+hbar=0.04 : stationary point 0.172132096 (linear; stored 0.172132096) -> 0.172132095 (cubic+Newton); shift -3.7e-10; offset from Newton 9.92e-06 -> 9.92e-06
+hbar=0.02 : stationary point 0.172124653 (linear; stored 0.172124653) -> 0.172124653 (cubic+Newton); shift -1.6e-10; offset from Newton 2.48e-06 -> 2.48e-06
+hbar=0.01 : stationary point 0.172122792 (linear; stored 0.172122792) -> 0.172122792 (cubic+Newton); shift -1.1e-10; offset from Newton 6.18e-07 -> 6.18e-07
+
+max offset 4.0e-05 -> 4.0e-05 (polished); README quotes 'offsets <= 4e-5': unchanged at that precision
+offset ratio between successive halvings of hbar: [4.   4.   4.01] (about 4, i.e. offset ~ hbar^2: a real
+finite-hbar shift of the stationary point, not interpolation error). Verdict B1 unchanged.
+CPU time: 2.7 s

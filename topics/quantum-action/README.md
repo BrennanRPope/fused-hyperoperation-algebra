@@ -254,3 +254,6 @@ Roberts 1999; Taylor and Woodward 2005; Lauscher and Reuter 2005. Citations are 
 - `figures.py` → `figures/fig1` … `fig11`
 - `lean/QuantumAction.lean` (18 theorems + 2 ext lemmas, compiled into the library as `FusedAlgebra/Topics/QuantumAction.lean` on Nov 26; two proofs needed a closing `grind`)
 - `lean_identities_check.py` (sympy check of every Lean identity, 10/10)
+- `polish.py` → `polish_output.txt`
+
+Polish (Nov 26): the Snell crossing point in B4 (bounded Brent search) was refined by Newton on dOPL/dx: x 0.62319978 → 0.62319980, Snell gap 3e-8 → 1e-16, in under a millisecond. No number quoted on this page changes; B4 still passes.

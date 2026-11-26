@@ -86,7 +86,19 @@ def history(Om, shape="exp", par=0.0, phi0=0.0):
 
     # Omega_phi at z=10 for a cosmological constant is (1-Om)/(Om*11^3 + 1-Om); bracket around it
     y_l = math.sqrt((1 - Om) / (Om * (1 + Z_START) ** 3 + 1 - Om))
-    lo, hi = math.log(y_l) - 3, math.log(y_l) + 3
+    lo, w = math.log(y_l) - 3, 3.0
+    # The top of the bracket (20x the Lambda value) can roll a hump-shaped field off its hump, and then the probe
+    # itself fails even though the solution is fine.  Shrink the top until the probe runs (fix of Nov 26: before it,
+    # whole regions of the hilltop and cosine fits scored 1e9 and the grid stopped at that wall).
+    while True:
+        try:
+            m_hi = miss(math.log(y_l) + w)
+            if not math.isfinite(m_hi): raise ValueError("probe not finite")
+            break
+        except Exception:
+            w *= 0.7
+            if w < 0.05: raise
+    hi = math.log(y_l) + w
     lyi = brentq(miss, lo, hi, xtol=1e-12)
     s = solve(math.exp(lyi))
     x, y = s.y[0], s.y[1]
@@ -117,10 +129,18 @@ def chi2s(E):
 
 def fit_grid(shape, which, grid, phi0):
     """For the hump-shaped potentials: scan the shape parameter on a grid, Om fitted at each point."""
-    best = None
-    for p in grid:
+    best, ib, grid = None, 0, list(grid)
+    for i, p in enumerate(grid):
         r = fit(shape, float(p), which, phi0=phi0)
         if best is None or r["chi2"] < best["chi2"]:
+            best, ib = r, i
+    # polish (Nov 26): Brent on the shape parameter between the best grid point's neighbours, Om refitted at each
+    lo, hi = grid[max(ib - 1, 0)], grid[min(ib + 1, len(grid) - 1)]
+    if hi > lo:
+        rr = minimize_scalar(lambda p: fit(shape, float(p), which, phi0=phi0)["chi2"], bounds=(lo, hi),
+                             method="bounded", options={"xatol": 1e-4})
+        r = fit(shape, float(rr.x), which, phi0=phi0)
+        if r["chi2"] < best["chi2"]:
             best = r
     best["k_fit"] = 2
     return best

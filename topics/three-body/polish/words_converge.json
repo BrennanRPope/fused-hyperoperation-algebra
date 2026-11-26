@@ -1,0 +1,138 @@
+[
+ {
+  "id": 15,
+  "T": 17.15797207586674,
+  "rmin": 0.00217,
+  "old_word": "aBAbAbAbaBaBaBAb",
+  "old_match": null,
+  "words": {
+   "3000": "aBAbAbaBAbaBAbaBaBAb",
+   "12000": "aBAbAbaBAbaBAbaBaBAb",
+   "48000": "aBAbAbaBAbaBAbaBaBAb",
+   "192000": "aBAbAbaBAbaBAbaBaBAb"
+  },
+  "converged": true,
+  "new_word": "aBAbAbaBAbaBAbaBaBAb",
+  "new_match": null,
+  "new_power": 1
+ },
+ {
+  "id": 27,
+  "T": 23.85589354880656,
+  "rmin": 0.00108,
+  "old_word": "abAABAbaBABBab",
+  "old_match": null,
+  "words": {
+   "3000": "abAABAbaBABBab",
+   "12000": "abABAbabABabABAbaBABabABabaBABab",
+   "48000": "abABAbabABabABAbaBABabABabaBABab",
+   "192000": "abABAbabABabABAbaBABabABabaBABab"
+  },
+  "converged": true,
+  "new_word": "abABAbabABabABAbaBABabABabaBABab",
+  "new_match": null,
+  "new_power": 1
+ },
+ {
+  "id": 31,
+  "T": 26.31938487902957,
+  "rmin": 0.00106,
+  "old_word": "BAbabABABabaBA",
+  "old_match": "I.B2",
+  "words": {
+   "3000": "BAbabABABabaBA",
+   "12000": "aBABAbabABABabaBABAb",
+   "48000": "aBABAbabABABabaBABAb",
+   "192000": "aBABAbabABABabaBABAb"
+  },
+  "converged": true,
+  "new_word": "aBABAbabABABabaBABAb",
+  "new_match": "II.C3",
+  "new_power": 1
+ },
+ {
+  "id": 35,
+  "T": 27.823414329328777,
+  "rmin": 0.00107,
+  "old_word": "abABABab",
+  "old_match": "I.A2",
+  "words": {
+   "3000": "abABAbabaBABab",
+   "12000": "abABABabaBABAbabaBABAbabABABab",
+   "48000": "abABABabaBABAbabaBABAbabABABab",
+   "192000": "abABABabaBABAbabaBABAbabABABab"
+  },
+  "converged": true,
+  "new_word": "abABABabaBABAbabaBABAbabABABab",
+  "new_match": "I.B10",
+  "new_power": 1
+ },
+ {
+  "id": 42,
+  "T": 32.84084064923508,
+  "rmin": 0.0015,
+  "old_word": "abABAbaBABAbaBABab",
+  "old_match": null,
+  "words": {
+   "3000": "abABAbaBABAbaBABab",
+   "12000": "abABAbaBABababABAbaBABababABAbaBABab",
+   "48000": "abABAbaBABababABAbaBABababABAbaBABab",
+   "192000": "abABAbaBABababABAbaBABababABAbaBABab"
+  },
+  "converged": true,
+  "new_word": "abABAbaBABababABAbaBABababABAbaBABab",
+  "new_match": "II.C1",
+  "new_power": 3
+ },
+ {
+  "id": 46,
+  "T": 33.46291820761866,
+  "rmin": 0.00089,
+  "old_word": "abAABAbaBABBab",
+  "old_match": null,
+  "words": {
+   "3000": "abAABBab",
+   "12000": "abAABAbaBABababABAbaBABBab",
+   "48000": "abABAbaBABabABAbaBABababABAbaBABabABAbaBABab",
+   "192000": "abABAbaBABabABAbaBABababABAbaBABabABAbaBABab"
+  },
+  "converged": true,
+  "new_word": "abABAbaBABabABAbaBABababABAbaBABabABAbaBABab",
+  "new_match": null,
+  "new_power": 1
+ },
+ {
+  "id": 51,
+  "T": 34.71201536617363,
+  "rmin": 0.00107,
+  "old_word": "abABABab",
+  "old_match": "I.A2",
+  "words": {
+   "3000": "abABABab",
+   "12000": "abABAbabaBABAbabABABabaBABAbabaBABab",
+   "48000": "abABAbabaBABAbabABABabaBABAbabaBABab",
+   "192000": "abABAbabaBABAbabABABabaBABAbabaBABab"
+  },
+  "converged": true,
+  "new_word": "abABAbabaBABAbabABABabaBABAbabaBABab",
+  "new_match": "I.A14",
+  "new_power": 1
+ },
+ {
+  "id": 65,
+  "T": 41.1260553588728,
+  "rmin": 0.00239,
+  "old_word": "abABAbabABAbabABABabaBABabaBABab",
+  "old_match": "I.A10",
+  "words": {
+   "3000": "BAbabABAbabABABabaBABabaBA",
+   "12000": "abABAbabABAbabABAbabaBABabaBABabaBABab",
+   "48000": "abABAbabABAbabABAbabaBABabaBABabaBABab",
+   "192000": "abABAbabABAbabABAbabaBABabaBABabaBABab"
+  },
+  "converged": true,
+  "new_word": "abABAbabABAbabABAbabaBABabaBABabaBABab",
+  "new_match": "I.B15",
+  "new_power": 1
+ }
+]

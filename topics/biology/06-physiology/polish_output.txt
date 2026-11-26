@@ -1,0 +1,6 @@
+Peak power of Hill's muscle law (a/F0 = 0.25)
+  closed form            F/F0 = 0.3090169943749475
+  before (bounded Brent) F/F0 = 0.3090169802505620   off by -1.4e-08
+  after  (Newton, 3 steps) F/F0 = 0.3090169943749475   off by +0.0e+00
+  digits gained: about 8; wall time 0.009 ms
+  page numbers (from the closed form): F/F0 = 0.309, v/vmax = 0.309, power 0.095 -> no change

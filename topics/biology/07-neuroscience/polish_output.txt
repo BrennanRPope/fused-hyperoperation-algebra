@@ -1,0 +1,9 @@
+Best bilinear k for V12 = EPSP + IPSP + k*EPSP*IPSP on the model dendrite (30 pairs)
+  exact lens k (formula)              = 0.217154807019 /mV
+  before (least_squares, results.json) = 0.217211623426 /mV
+  after  (closed-form least squares)   = 0.217211623426 /mV   (Newton step from it moves +2.8e-17)
+  change +3.49e-14 /mV; no change at the printed 4 decimals
+  digits: before agreed with the exact optimum to 12.8 significant digits; after to machine precision
+  bilinear misses the shunting term by 1.74% rms before, 1.74% after
+  wall time: rebuilding the 30 triples 0.010 s, the polish itself 0.049 ms
+  verdict unchanged: |kb - k|/k = 0.0003 < 0.05

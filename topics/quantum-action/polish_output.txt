@@ -1,0 +1,6 @@
+B4 Fermat/Snell: crossing point of the least optical path
+  before (bounded Brent, xatol 1e-12): x = 0.6231997798491405   n1 sin a1 = 0.528899839194, n2 sin a2 = 0.528899870939, gap -3.17e-08
+  after  (Newton on dOPL/dx, 6 steps): x = 0.6231997970978063   n1 sin a1 = 0.528899849738, n2 sin a2 = 0.528899849738, gap -1.11e-16
+  change in x: +1.72e-08; Snell gap 3.2e-08 -> 1.1e-16 (about 8 more correct digits in x)
+  wall time of the polish: 0.029 ms
+  verdict unchanged: Snell's law holds at the least optical path (the check's 1e-6 tolerance was already met).

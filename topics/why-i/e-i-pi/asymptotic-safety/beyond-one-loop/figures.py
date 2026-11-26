@@ -105,6 +105,22 @@ NV = np.concatenate([np.arange(0, 60, 0.5), np.logspace(np.log10(60), 6, 200)]);
 for N in NV:
     bt = eh_beta(-4*N, 2*N); vcur = newton(bt, vcur, 30); TH.append(np.sort_complex(-np.linalg.eigvals(jac(bt, vcur))))
 TH = np.array(TH)
+# polish (Nov 26): find where the pair turns real by bisection on the discriminant (as polish.py does) and put that
+# point on the path, instead of labelling the first real grid point
+_Dl = lambda J: (np.trace(J)/2)**2 - np.linalg.det(J)
+_ir = int(np.argmax(np.all(np.abs(TH.imag) < 1e-9, axis=1)))
+_lo, _hi = NV[_ir - 1], NV[_ir]; _vs = v0.copy()
+for _N in NV[:_ir]: _vs = newton(eh_beta(-4*_N, 2*_N), _vs, 30)
+_d = lambda n: _Dl(jac(eh_beta(-4*n, 2*n), newton(eh_beta(-4*n, 2*n), _vs, 40)))
+_dlo = _d(_lo)
+for _ in range(60):
+    _m = 0.5*(_lo + _hi); _dm = _d(_m)
+    if np.sign(_dm) == np.sign(_dlo): _lo, _dlo = _m, _dm
+    else: _hi = _m
+    if _hi - _lo < 1e-9*_hi: break
+NSTAR = 0.5*(_lo + _hi); _bt = eh_beta(-4*NSTAR, 2*NSTAR)
+_th = np.sort_complex(-np.linalg.eigvals(jac(_bt, newton(_bt, _vs, 40)))).real.astype(complex)
+NV = np.insert(NV, _ir, NSTAR); TH = np.insert(TH, _ir, _th, axis=0)
 ax = Axes(f, 110, 70, 640, 460, (1, 4.5), (-3.5, 3.5))
 ax.frame(xticks=[1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5], yticks=[-3, -2, -1, 0, 1, 2, 3], xlabel="Re θ", ylabel="Im θ", grid=True)
 ax.hline(0, color="#bbb")
@@ -120,7 +136,7 @@ for N, lab in [(1e4, "10⁴"), (1e6, "10⁶")]:
     i = np.argmin(np.abs(NV - N)); [ax.dot(z.real, 0, 4, color=PURPLE) for z in TH[i]]
 ax.dot(2, 0, 8, color=BLUE, fill="none"); ax.dot(4, 0, 8, color=BLUE, fill="none")
 ax.text(2.0, -0.35, "2 = d − 2", size=12, color=BLUE, anchor="middle"); ax.text(4.0, -0.35, "4 = d", size=12, color=BLUE, anchor="middle")
-ireal = np.argmax(np.all(np.abs(TH.imag) < 1e-9, axis=1)); ax.text(TH[ireal, 0].real, 0.3, f"real from N_V ≈ {NV[ireal]:.0f}", size=12, color=DARK, anchor="middle")
+ireal = np.argmax(np.all(np.abs(TH.imag) < 1e-9, axis=1)); ax.text(TH[ireal, 0].real, 0.3, f"real from N_V ≈ {NSTAR:.0f}", size=12, color=DARK, anchor="middle")
 cpr = [(1.475, 3.043), (1.689, 2.486), (2.205, 3.214), (2.425, 1.270), (1.752, 2.069)]
 for a, b in cpr: ax.dot(a, b, 4, color=GRAY); ax.dot(a, -b, 4, color=GRAY)
 ax.text(2.45, 1.45, "pure gravity, five cutoffs", size=11, color=GRAY); ax.text(2.45, 1.2, "(CPR 2008 Table II): all complex", size=11, color=GRAY)

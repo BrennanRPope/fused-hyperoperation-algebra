@@ -61,8 +61,8 @@ C3                                    -huge    -huge 61919.3  ruled out Light's 
 
 ---- Round 2: 20 guesses (search so far: 40 guesses, look-elsewhere 5.3 bits)
 id                                     bits      net  max|z|  verdict   guess
-quint:cosine:free                       9.8      4.4     0.0  alive     Dial today on a circle (q < 0, compact dial), period free
-                                       full fit: slope/width 1.0363636363636364, Ωm 0.304, Δχ² vs Λ +3.33, w0 -0.951; held-out Δχ² (SN→BAO + BAO→SN) +13.54
+quint:cosine:free                      10.6      5.2     0.0  alive     Dial today on a circle (q < 0, compact dial), period free
+                                       full fit: slope/width 0.889694617108663, Ωm 0.304, Δχ² vs Λ +4.80, w0 -0.889; held-out Δχ² (SN→BAO + BAO→SN) +14.64
 quint:exp:0.516                         8.8      3.5     0.0  alive     Dial today, exponential slope 0.516
                                        full fit: slope/width 0.5165, Ωm 0.303, Δχ² vs Λ +3.02, w0 -0.959; held-out Δχ² (SN→BAO + BAO→SN) +12.23
 tree_lam:2/5·π^-1                       7.0     -6.1     0.4  alive     Higgs from a grammar quartic: lam = 2/5·π^-1
@@ -85,13 +85,13 @@ flat:MPl_red:lam                        0.6     -7.3     3.3  ruled out Dial fla
                                        mH/v      pred 0.522117  z = +3.29  (+0.6 bits)
 flat:string:lam                         0.5     -7.4     3.3  ruled out Dial flat at the string scale
                                        mH/v      pred 0.521895  z = +3.32  (+0.5 bits)
-quint:hilltop:free                      0.4     -4.9     0.0  alive     Dial today near the top of its hump (hilltop), width free
-                                       full fit: slope/width 1.0545454545454547, Ωm 0.304, Δχ² vs Λ +0.14, w0 -0.998; held-out Δχ² (SN→BAO + BAO→SN) +0.56
 yt:7/2·π^-1                             0.0    -13.0     3.1  ruled out Top from a grammar Yukawa: yt2 = 7/2·π^-1
                                        mt/v      pred 0.746353  z = +3.13  (+0.0 bits)
 flat:MPl_red:beta                      -7.5    -15.4     5.9  ruled out Dial flat and level at the MPl_red scale
                                        mH/v      pred 0.526058  z = +5.93  (-16.5 bits)
                                        mt/v      pred 0.702821  z = +0.63  (+9.0 bits)
+quint:hilltop:free                    -10.6    -15.9     3.1  ruled out Dial today near the top of its hump (hilltop), width free
+                                       full fit: slope/width 0.4969437297507391, Ωm 0.305, Δχ² vs Λ +4.53, w0 -0.859; held-out Δχ² (SN→BAO + BAO→SN) -14.67
 quint:exp:1.117                       -20.4    -25.7     3.1  ruled out Dial today, exponential slope 1.117
                                        full fit: slope/width 1.1165, Ωm 0.304, Δχ² vs Λ +0.38, w0 -0.805; held-out Δχ² (SN→BAO + BAO→SN) -28.30
 SR:mH² + mZ² + mt² = 1·v²             -52.1    -66.2     9.1  ruled out Sum rule mH² + mZ² + mt² = 1·v²
@@ -180,8 +180,8 @@ Held-out and chance checks
   m_t from a grammar Yukawa: best real hit Top at the dial's unit (7.0 bits). Random targets do as well 39% of the time.
   Flat dial at M_Pl (λ = 0): m_H = 128.68 ± 1.04 GeV (NNLO fit; our two-loop run 128.59) vs measured 125.2 ± 0.11: +3.3σ
   Flat and level at M_Pl (λ = β_λ = 0): m_H = 133.11 ± 0.74, m_t = 174.78 ± 0.70 GeV (held out: measured m_t 172.57 ± 0.29, +2.9σ)
-  With measured inputs: λ turns negative at μ ≈ 3.67e+10 GeV; β_λ is smallest at μ ≈ 2.52e+17 GeV (λ there -0.0106); λ(M_Pl) = -0.0103
-  Exponential slope from all data: best λ = 0.80, 1σ range 0.61 to 0.96; √(2/3) = 0.816; Λ (λ = 0) is Δχ² = 4.8 worse
-  Of 43 simple slopes √(p/q), p, q ≤ 8, 13 fall inside that 1σ range
+  With measured inputs: λ turns negative at μ ≈ 3.62e+10 GeV; β_λ is smallest at μ ≈ 2.52e+17 GeV (λ there -0.0106); λ(M_Pl) = -0.0103
+  Exponential slope from all data: best λ = 0.818, 1σ range 0.612 to 0.974 (polished; grid reading 0.80, 0.61 to 0.96); √(2/3) = 0.816; Λ (λ = 0) is Δχ² = 4.85 worse
+  Of 43 simple slopes √(p/q), p, q ≤ 8, 14 fall inside that 1σ range
   Conformal dial (slope n·√(2/3)) couples to matter with α0² = 1/6, so PPN γ = 1 − 2α0²/(1+α0²) = 5/7 = 0.7143: Cassini puts that 12423σ away unless the force is screened
-  So the conformal slope survives only if the dial is screened in the solar system (as f(R) gravity must be), or if the dial is dark-only, in which case the slope is free (best 0.80)
+  So the conformal slope survives only if the dial is screened in the solar system (as f(R) gravity must be), or if the dial is dark-only, in which case the slope is free (best 0.82)

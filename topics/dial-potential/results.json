@@ -636,37 +636,37 @@
     "free_params": 1,
     "fitted_on": [],
     "choice_bits": 0.0,
-    "bits": 9.764527867496657,
-    "net_bits": 4.442599772609294,
+    "bits": 10.560227381859486,
+    "net_bits": 5.238299286972123,
     "ruled_out": false,
     "max_abs_z": 0.0,
     "rows": [],
     "extra": {
      "train_sn": {
-      "par": 1.0363636363636364,
-      "Om": 0.3186537001965042,
-      "heldout_chi2": 13.667269634606075,
+      "par": 0.9228219657095097,
+      "Om": 0.3068772425562375,
+      "heldout_chi2": 9.16687921279115,
       "heldout_chi2_lcdm": 24.12572881625153,
-      "w0": -0.9530196552490183
+      "w0": -0.9105493915822007
      },
      "train_bao": {
-      "par": 1.0363636363636364,
-      "Om": 0.30037446706037163,
-      "heldout_chi2": 1403.5257494822145,
+      "par": 0.8028423401807286,
+      "Om": 0.31010555496029774,
+      "heldout_chi2": 1406.9230661541224,
       "heldout_chi2_lcdm": 1406.6038002222776,
-      "w0": -0.9503410983779703
+      "w0": -0.7929501214136581
      },
      "full": {
-      "par": 1.0363636363636364,
-      "Om": 0.30350688725768477,
-      "chi2": 1412.8059939448772,
+      "par": 0.889694617108663,
+      "Om": 0.3036027820493281,
+      "chi2": 1411.337634653908,
       "chi2_lcdm": 1416.1382194103942,
-      "dchi2": 3.3322254655170127,
-      "w0": -0.9508138198444754,
-      "wa_proxy": -0.07805209375467514
+      "dchi2": 4.80058475648616,
+      "w0": -0.8887504118954733,
+      "wa_proxy": -0.17925974867265038
      },
-     "heldout_dchi2_sum": 13.536509921708646,
-     "cosmo_bits": 9.764527867496657,
+     "heldout_dchi2_sum": 14.63958367161567,
+     "cosmo_bits": 10.560227381859486,
      "cosmo_z": 0.0
     },
     "meta": {
@@ -1009,56 +1009,6 @@
     }
    },
    {
-    "id": "quint:hilltop:free",
-    "family": "quint_shape",
-    "name": "Dial today near the top of its hump (hilltop), width free",
-    "shape": "V0 (1 \u2212 \u03c6\u00b2/2\u03bc\u00b2)",
-    "coupling": "k couples only to itself and gravity",
-    "geometry": "the 1D sombrero: field sits near the hump at k = 0 and starts to roll",
-    "grade": "B",
-    "free_params": 1,
-    "fitted_on": [],
-    "choice_bits": 0.0,
-    "bits": 0.4037149246845307,
-    "net_bits": -4.918213170202832,
-    "ruled_out": false,
-    "max_abs_z": 0.0,
-    "rows": [],
-    "extra": {
-     "train_sn": {
-      "par": 1.0545454545454547,
-      "Om": 0.33116739009988655,
-      "heldout_chi2": 23.707516251252695,
-      "heldout_chi2_lcdm": 24.12572881625153,
-      "w0": -0.9984182086772738
-     },
-     "train_bao": {
-      "par": 1.0545454545454547,
-      "Om": 0.297581505649667,
-      "heldout_chi2": 1406.4623450636864,
-      "heldout_chi2_lcdm": 1406.6038002222776,
-      "w0": -0.9982337974317633
-     },
-     "full": {
-      "par": 1.0545454545454547,
-      "Om": 0.3041796457795263,
-      "chi2": 1415.9946118536513,
-      "chi2_lcdm": 1416.1382194103942,
-      "dchi2": 0.1436075567428361,
-      "w0": -0.9982721582379989,
-      "wa_proxy": -0.002825828007313236
-     },
-     "heldout_dchi2_sum": 0.5596677235901062,
-     "cosmo_bits": 0.4037149246845307,
-     "cosmo_z": 0.0
-    },
-    "meta": {
-     "shape": "hilltop",
-     "par": null,
-     "lam": null
-    }
-   },
-   {
     "id": "yt:7/2\u00b7\u03c0^-1",
     "family": "yt",
     "name": "Top from a grammar Yukawa: yt2 = 7/2\u00b7\u03c0^-1",
@@ -1119,6 +1069,56 @@
     "meta": {
      "scale": "MPl_red",
      "beta": true
+    }
+   },
+   {
+    "id": "quint:hilltop:free",
+    "family": "quint_shape",
+    "name": "Dial today near the top of its hump (hilltop), width free",
+    "shape": "V0 (1 \u2212 \u03c6\u00b2/2\u03bc\u00b2)",
+    "coupling": "k couples only to itself and gravity",
+    "geometry": "the 1D sombrero: field sits near the hump at k = 0 and starts to roll",
+    "grade": "B",
+    "free_params": 1,
+    "fitted_on": [],
+    "choice_bits": 0.0,
+    "bits": -10.579858435537465,
+    "net_bits": -15.901786530424829,
+    "ruled_out": true,
+    "max_abs_z": 3.1,
+    "rows": [],
+    "extra": {
+     "train_sn": {
+      "par": 0.5172315814221804,
+      "Om": 0.31231086764906596,
+      "heldout_chi2": 10.395542240297905,
+      "heldout_chi2_lcdm": 24.12572881625153,
+      "w0": -0.9049454115386106
+     },
+     "train_bao": {
+      "par": 0.43481762079006586,
+      "Om": 0.32872973513948583,
+      "heldout_chi2": 1435.0007848888636,
+      "heldout_chi2_lcdm": 1406.6038002222776,
+      "w0": -0.4031247511525445
+     },
+     "full": {
+      "par": 0.4969437297507391,
+      "Om": 0.30525207197561294,
+      "chi2": 1411.6109129170043,
+      "chi2_lcdm": 1416.1382194103942,
+      "dchi2": 4.527306493389915,
+      "w0": -0.8589262850204749,
+      "wa_proxy": -0.26385512973845615
+     },
+     "heldout_dchi2_sum": -14.666798090632296,
+     "cosmo_bits": -10.579858435537465,
+     "cosmo_z": 3.1
+    },
+    "meta": {
+     "shape": "hilltop",
+     "par": null,
+     "lam": null
     }
    },
    {
@@ -2502,10 +2502,14 @@
    "mt_err": 0.7038368495650135,
    "ier": 1
   },
-  "lambda_negative_from": 36718642012.99254,
-  "beta_min_at": 2.5168799772648915e+17,
-  "lambda_at_beta_min": -0.010637732010204135,
-  "lambda_MPl_measured_inputs": -0.01026360807262127
+  "lambda_negative_from": 36205618642.205536,
+  "beta_min_at": 2.5170035182935792e+17,
+  "lambda_at_beta_min": -0.010637732012988853,
+  "lambda_MPl_measured_inputs": -0.01026360807262127,
+  "grid_reading": {
+   "lambda_negative_from": 36718642012.99254,
+   "beta_min_at": 2.5168799772648915e+17
+  }
  },
  "slope_profile": {
   "lam": [
@@ -2546,15 +2550,24 @@
    1451.0283332229678,
    1471.1652368049276
   ],
-  "best": 0.8,
+  "best": 0.8177083115447195,
+  "chi2_best": 1411.2874180897995,
   "one_sigma": [
-   0.613,
-   0.965
-  ]
+   0.6118765981676063,
+   0.9741551199238941
+  ],
+  "grid_reading": {
+   "best": 0.8,
+   "one_sigma": [
+    0.613,
+    0.965
+   ]
+  }
  },
  "slope_geo_hits": {
   "n": 43,
   "inside": [
+   0.612372,
    0.632456,
    0.654654,
    0.707107,
@@ -2631,5 +2644,5 @@
   }
  },
  "n_guesses": 71,
- "runtime_s": 107.80553150177002
+ "runtime_s": 183.5092375278473
 }

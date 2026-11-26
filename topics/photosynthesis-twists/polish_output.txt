@@ -1,0 +1,8 @@
+Polish of the grid argmin in quarter_turns_test.py (best two-way spread on the 3.2 eV line)
+
+spread_V    grid 0.740 -> closed form 0.740000000000000  (finer local grid 0.740000); no change
+dG_OH       grid 0.860 -> closed form 0.860000000000000  (finer local grid 0.860000); no change
+descriptor  grid 1.600 -> closed form 1.600000000000000  (finer local grid 1.600000); no change
+
+The grid happened to contain the exact optimum (0.86, 1.60), so 0.74 V is exact, not grid-limited.
+CPU time: 0.058 s

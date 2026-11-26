@@ -1,0 +1,26 @@
+Soybean (n = 412)
+  free fit  before: K=17.5619 r=0.213781 t0=57.0057 nu=2.5415846169  RSS=2056.216955
+            after : K=17.5619 r=0.21378 t0=57.0057 nu=2.5415676581  RSS=2056.216955  (3 LM steps)
+            nu change -1.70e-05; RSS change -5.39e-09; nu at 2 decimals 2.54 -> 2.54  (no change)
+  p(logistic): before 0.00477, after 0.00477
+  p(Gompertz): before 1.75e-08, after 1.75e-08
+  p(von Bertalanffy): before 1.94e-11, after 1.94e-11
+  time 0.01 s
+Loblolly (n = 84)
+  free fit  before: K=86.7631 r=0.0579611 t0=5.18325 nu=-0.8074145960  RSS=229.4020854
+            after : K=86.763 r=0.0579614 t0=5.18328 nu=-0.8074113940  RSS=229.4020854  (4 LM steps)
+            nu change +3.20e-06; RSS change -2.19e-09; nu at 2 decimals -0.81 -> -0.81  (no change)
+  p(logistic): before 0, after 1.57e-17
+  p(Gompertz): before 1.36e-07, after 1.36e-07
+  p(von Bertalanffy): before 0.000529, after 0.000529
+  time 0.01 s
+Orange (n = 35)
+  free fit  before: K=193.871 r=0.00273751 t0=721.764 nu=0.9254517265  RSS=17479.33994
+            after : K=193.868 r=0.00273774 t0=721.784 nu=0.9256428635  RSS=17479.33993  (8 LM steps)
+            nu change +1.91e-04; RSS change -6.20e-06; nu at 2 decimals 0.93 -> 0.93  (no change)
+  p(logistic): before 0.969, after 0.969
+  p(Gompertz): before 0.575, after 0.575
+  p(von Bertalanffy): before 0.434, after 0.434
+  time 0.01 s
+total wall time 0.27 s
+verdicts (p > 0.05 or not) unchanged

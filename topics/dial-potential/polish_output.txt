@@ -1,0 +1,26 @@
+data loaded in 0.8 s
+
+1. Exponential slope from all data (profile chi2, Om refitted at each slope)
+   copy agrees with stored profile: chi2(0) 1416.13822 vs 1416.13822, chi2(0.8) 1411.29733 vs 1411.29733
+   best slope      0.8000 (grid + straight-line interpolation) -> 0.8177 (polished)
+   1-sigma range   0.613 to 0.965 -> 0.612 to 0.974
+   chi2 at best    1411.2973 -> 1411.2874;  Lambda (slope 0) worse by 4.841 -> 4.851
+   simple slopes sqrt(p/q), p,q <= 8, inside 1 sigma: 13 of 43 -> 14 of 43
+   sqrt(2/3) = 0.8165 is 0.0012 from the polished best slope
+   cost 23.7 s (443 cosmology solves)
+
+2. Hump-shaped potentials, shape parameter fitted (search.py: 12-point grid, Om refitted at each)
+   cosine   copy agrees: chi2 at stored point 1412.8060 (fixed bracket 1412.8060) vs 1412.8060
+   cosine   parameter 1.0364 -> 0.8897;  Om 0.3035 -> 0.3036;  w0 -0.951 -> -0.889;  delta chi2 vs Lambda 3.33 -> 4.80 (polished, fixed bracket)
+   cosine   the unchanged history() at that point returns failure (1e9);  cost 6.6 s (87 solves)
+   hilltop  copy agrees: chi2 at stored point 1415.9946 (fixed bracket 1415.9946) vs 1415.9946
+   hilltop  parameter 1.0545 -> 0.4970;  Om 0.3042 -> 0.3053;  w0 -0.998 -> -0.859;  delta chi2 vs Lambda 0.14 -> 4.53 (polished, fixed bracket)
+   hilltop  the unchanged history() at that point returns failure (1e9);  cost 8.5 s (109 solves)
+
+3. Standard Model running with measured inputs (search.py: read off a 2000-point grid)
+   copy agrees: lambda(M_Pl) -0.010264 vs stored -0.010264
+   lambda turns negative at mu = 3.672e+10 GeV (first grid point past zero) -> 3.6206e+10 GeV (polished)
+   beta_lambda smallest at   mu = 2.517e+17 GeV (grid argmin |beta|) -> 2.5170e+17 GeV where beta = 0 (polished); lambda there -0.0106 -> -0.0106
+   cost 0.3 s
+
+total wall time 39.9 s, CPU 39.2 s

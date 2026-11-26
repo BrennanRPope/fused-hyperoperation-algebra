@@ -70,7 +70,7 @@ So graviton loops are what turn the plane elliptic (L7). Λ is not the plane's d
 
 **Walking from pure gravity to large N (ours, illustrative hybrid).** This uses the Litim graviton terms plus DEP's matter coefficients for N_V gauge fields:
 
-- The exponents start at 1.475 ± 3.043i, turn real near N_V ≈ 870, and land on {2, 4} (L8).
+- The exponents start at 1.475 ± 3.043i, turn real near N_V ≈ 846 (polished), and land on {2, 4} (L8).
 - The leftover shrinks like 1/N_V, but with a large coefficient (≈ 1100/N_V), because near λ\* = 3/8 the graviton terms carry powers of 1/(1 − 2λ\*) = 4 (L9).
 - The hybrid mixes two cutoff schemes, so the crossing point is illustrative. The endpoint matches DEP's own full result.
 
@@ -146,3 +146,5 @@ Builds on: [asymptotic-safety](../README.md), [g-dials](../../g-dials/README.md)
 ## Follow-up: e at a different rung height
 
 Does using e at height s (e_s) close the 4.5% gap? No: s = 1.101 fits 23/11 but misses every second published number, and only s = 1 keeps G constant at low energy. See [`height-dial/README.md`](height-dial/README.md).
+
+Polish (Nov 26): the N_V where the UV exponents turn real (L8) was the first point of a grid with ~15% steps; bisection on the discriminant of the stability matrix gives 872 → 846.03 (the old text rounded the grid value to 870), in 0.24 s of CPU (`polish.py`, `polish_output.txt`). Figure b4 now marks the crossing found the same way (`figures.py` bisects on the discriminant; label ≈ 846).

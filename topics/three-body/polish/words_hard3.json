@@ -1,0 +1,29 @@
+{
+ "14": {
+  "w192k": "abABAbabaBAbabaBABab",
+  "w768k": "abABAbabaBAbabaBABab",
+  "converged": true,
+  "match": [
+   "II.C3",
+   1
+  ]
+ },
+ "20": {
+  "w192k": "aBABabABABabABABabABAb",
+  "w768k": "aBABabABABabABABabABAb",
+  "converged": true,
+  "match": [
+   "II.C4",
+   1
+  ]
+ },
+ "46": {
+  "w192k": "abABAbaBABabABAbaBABababABAbaBABabABAbaBABab",
+  "w768k": "abABAbaBABabABAbaBABababABAbaBABabABAbaBABab",
+  "converged": true,
+  "match": [
+   null,
+   1
+  ]
+ }
+}

@@ -166,3 +166,5 @@ operations-catalog and running-coupling pages; check before any paper.
 
 - `checks.py` → `checks_output.txt` (36/36), `results.json`
 - `figures.py` → `figures/fig1` … `fig9`
+
+Polish (Nov 26): the stationary points in B1 were re-found with a cubic plus Newton instead of linear interpolation on the grid; they moved by at most 1.2·10⁻⁹, so "offsets ≤ 4·10⁻⁵" is confirmed (4.0·10⁻⁵ → 4.0·10⁻⁵). The offsets fall by a factor 4.00 each time ħ halves, so they are a real ħ² shift of the stationary point, not grid error. Cost 2.7 s of CPU (`polish.py`, `polish_output.txt`).

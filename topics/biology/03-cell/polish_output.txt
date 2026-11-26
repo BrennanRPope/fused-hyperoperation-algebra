@@ -1,0 +1,30 @@
+glymet (n = 113)
+  alpha  before -0.323069  after -0.323127  (7 LM steps; RSS 1.7108577 -> 1.710857699)
+         95% range  before -0.75 to 0.45 (grid)   after -0.757 to 0.460
+         p(Loewe) before 0.343 after 0.343;  p(HSA) before 3.36e-06 after 5.75e-06
+  odds k before 0.123740  after 0.123741  (13 LM steps)
+         95% range  before -0.15 to 0.70 (grid)   after -0.178 to 0.745
+         p(Bliss) before 0.0129 after 0.0129
+  time 8.4 s
+acidiq (n = 180)
+  alpha  before -0.941540  after -0.941528  (8 LM steps; RSS 0.07433931558 -> 0.07433931554)
+         95% range  before -0.95 to -0.85 (grid)   after -0.992 to -0.830
+         p(Loewe) before 7.98e-12 after 7.98e-12;  p(HSA) before 0.00539 after 0.00476
+  odds k before -0.090101  after -0.090099  (23 LM steps)
+         95% range  before -0.10 to -0.10 (grid)   after -0.112 to -0.059
+         p(Bliss) before 4.9e-12 after 4.9e-12
+  time 28.0 s
+mecter (n = 102)
+  alpha  before -0.976411  after -0.976420  (8 LM steps; RSS 0.07525297763 -> 0.0752529776)
+         95% range  before -1.00 to -0.80 (grid)   after -1.002 to -0.772
+         p(Loewe) before 1.74e-05 after 1.74e-05;  p(HSA) before 0.486 after 0.486
+  odds k before -0.139756  after -0.139720  (28 LM steps)
+         95% range  before -0.20 to 0.15 (grid)   after -0.241 to 0.175
+         p(Bliss) before 0.000177 after 0.000177
+  time 9.8 s
+main fits: wall time 46.2 s
+glymet with plateau: c 0.025 -> 0.0250, alpha -0.33 -> -0.3290 (main fit -0.3231; shift -0.006), p(HSA, -0.5, Loewe) ['8e-06', '0.52', '0.34'] -> ['8e-06', '0.52', '0.34']
+acidiq with plateau: c 0.031 -> 0.0311, alpha -0.95 -> -0.9534 (main fit -0.9415; shift -0.012), p(HSA, -0.5, Loewe) ['0.01', '8e-09', '4.4e-16'] -> ['0.01', '8e-09', '5.2e-16']
+mecter with plateau: c -0.029 -> -0.0292, alpha -0.98 -> -0.9781 (main fit -0.9764; shift -0.002), p(HSA, -0.5, Loewe) ['0.46', '0.0011', '7.6e-06'] -> ['0.46', '0.0011', '7.6e-06']
+robustness refits: 18.7 s
+total wall time 64.9 s

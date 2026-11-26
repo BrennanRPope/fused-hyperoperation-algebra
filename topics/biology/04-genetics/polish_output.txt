@@ -1,0 +1,8 @@
+replay of checks.py's simulations: 29.0 s
+  sync check against checks_output.txt: r12 0.2749 (printed 0.2749), c(m=1) 0.758 (0.758), c(m=4) 0.463 (0.463), c at 10/25/50 cM 0.09, 0.63, 0.97 (0.09, 0.63, 0.97)
+best lens-law K for the chi-square m = 4 model
+  before (bounded Brent, xatol 1e-5): K = -0.8333805729   sum sq 6.284561047844e-05   worst miss 0.004568
+  after  (Newton, 10 steps)        : K = -0.8333805083   sum sq 6.284561047844e-05   worst miss 0.004568
+  change in K +6.5e-08 (search was good to about 7 significant digits; Newton to ~12)
+  page numbers: best K -0.83 -> -0.83, worst miss 0.0046 -> 0.0046, Kosambi miss 0.0172: no change
+  polish time 0.42 ms; total wall time 29.0 s

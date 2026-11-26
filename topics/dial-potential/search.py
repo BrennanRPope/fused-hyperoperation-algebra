@@ -607,12 +607,24 @@ def main():
     i0 = np.argmax(lam < 0) if np.any(lam < 0) else None
     bet = np.array([R.betas(0, ys[:, j])[4] for j in range(ys.shape[1])])
     jb = int(np.argmin(np.abs(bet[200:]))) + 200
+    # polish (Nov 26): root-find the crossings between grid points instead of reading the grid
+    from scipy.optimize import brentq as _bq
+    mu_grid_neg, mu_grid_bmin = float(mus[i0]), float(mus[jb])
+    lmu = _bq(lambda L: R.lambda_at(MH, MT, AS, math.exp(L))[0], math.log(mus[i0 - 1]), math.log(mus[i0]), xtol=1e-12)
+    mus = mus.copy(); mus[i0] = math.exp(lmu)
+    fb = lambda L: R.lambda_at(MH, MT, AS, math.exp(L))[1]
+    a_, b_ = math.log(mus[jb - 1]), math.log(mus[min(jb + 1, len(mus) - 1)])
+    if fb(a_) * fb(b_) < 0:
+        lb_ = _bq(fb, a_, b_, xtol=1e-12)
+        lam_b_ = R.lambda_at(MH, MT, AS, math.exp(lb_))[0]
+        mus[jb] = math.exp(lb_); lam = lam.copy(); lam[jb] = lam_b_
     say(f"  With measured inputs: λ turns negative at μ ≈ {mus[i0]:.2e} GeV; β_λ is smallest at μ ≈ {mus[jb]:.2e} GeV "
         f"(λ there {lam[jb]:+.4f}); λ(M_Pl) = {lam[-1]:+.4f}")
     res["flat_dial"] = {"lambda0": fd, "lambda_beta0": fdb, "lambda_negative_from": float(mus[i0]),
                         "beta_min_at": float(mus[jb]), "lambda_at_beta_min": float(lam[jb]),
-                        "lambda_MPl_measured_inputs": float(lam[-1])}
-    np.savez(os.path.join(HERE, "running.npz"), mu=mus, y=ys)
+                        "lambda_MPl_measured_inputs": float(lam[-1]),
+                        "grid_reading": {"lambda_negative_from": mu_grid_neg, "beta_min_at": mu_grid_bmin}}
+    np.savez(os.path.join(HERE, "running.npz"), mu=R.run(MH, MT, AS, R.MPL_FULL, n=2000)[0], y=ys)
 
     # 3. how well is the exponential slope pinned down?  profile chi2 over lambda (Om refitted)
     prof = []
@@ -621,11 +633,26 @@ def main():
         prof.append((float(lam_), f["chi2"]))
     lams = np.array([p_[0] for p_ in prof]); ch = np.array([p_[1] for p_ in prof])
     fine = np.linspace(0, 1.6, 1601); chf = np.interp(fine, lams, ch)
-    i_ = int(np.argmin(chf)); inside = fine[chf <= chf[i_] + 1]
-    say(f"  Exponential slope from all data: best λ = {fine[i_]:.2f}, 1σ range {inside.min():.2f} to {inside.max():.2f}; "
-        f"√(2/3) = {math.sqrt(2/3):.3f}; Λ (λ = 0) is Δχ² = {ch[0] - chf[i_]:.1f} worse")
-    res["slope_profile"] = {"lam": lams.tolist(), "chi2": ch.tolist(), "best": float(fine[i_]),
-                            "one_sigma": [float(inside.min()), float(inside.max())]}
+    i_ = int(np.argmin(chf)); inside_grid = fine[chf <= chf[i_] + 1]
+    # polish (Nov 26): Brent for the minimum and root-finds for the two 1σ ends, on the profile itself
+    from scipy.optimize import minimize_scalar as _ms, brentq as _bq
+    pf = lambda l: cosmo_fit("exp", float(l), "both")["chi2"]
+    j_ = int(np.argmin(ch))
+    r_ = _ms(pf, bounds=(lams[max(j_ - 1, 0)], lams[min(j_ + 1, len(lams) - 1)]), method="bounded",
+             options={"xatol": 1e-5})
+    lbest, cbest = float(r_.x), float(pf(r_.x))
+    kL = max(k for k in range(j_ + 1) if ch[k] > cbest + 1)
+    kR = min(k for k in range(j_, len(lams)) if ch[k] > cbest + 1)
+    s_lo = _bq(lambda l: pf(l) - cbest - 1, lams[kL], lbest, xtol=1e-5)
+    s_hi = _bq(lambda l: pf(l) - cbest - 1, lbest, lams[kR], xtol=1e-5)
+    inside = np.array([s_lo, s_hi])
+    say(f"  Exponential slope from all data: best λ = {lbest:.3f}, 1σ range {s_lo:.3f} to {s_hi:.3f} (polished; "
+        f"grid reading {fine[i_]:.2f}, {inside_grid.min():.2f} to {inside_grid.max():.2f}); "
+        f"√(2/3) = {math.sqrt(2/3):.3f}; Λ (λ = 0) is Δχ² = {ch[0] - cbest:.2f} worse")
+    res["slope_profile"] = {"lam": lams.tolist(), "chi2": ch.tolist(), "best": lbest, "chi2_best": cbest,
+                            "one_sigma": [float(s_lo), float(s_hi)],
+                            "grid_reading": {"best": float(fine[i_]),
+                                             "one_sigma": [float(inside_grid.min()), float(inside_grid.max())]}}
     # chance that a 'geometric' slope n·sqrt(2/3) or sqrt(n/m)-type value lands inside the 1σ range
     geo = sorted({round(math.sqrt(p_ / q_), 6) for p_ in range(1, 9) for q_ in range(1, 9)})
     hits = [g_ for g_ in geo if inside.min() <= g_ <= inside.max()]
@@ -639,7 +666,7 @@ def main():
     say(f"  Conformal dial (slope n·√(2/3)) couples to matter with α0² = 1/6, so PPN γ = 1 − 2α0²/(1+α0²) = 5/7 = {gam:.4f}: "
         f"Cassini puts that {abs(zg):.0f}σ away unless the force is screened")
     say(f"  So the conformal slope survives only if the dial is screened in the solar system (as f(R) gravity must be), "
-        f"or if the dial is dark-only, in which case the slope is free (best {fine[i_]:.2f})")
+        f"or if the dial is dark-only, in which case the slope is free (best {lbest:.2f})")
     res["conformal_gamma"] = {"gamma": gam, "z": zg}
 
     # 5. the 'light dial' bound in words

@@ -1,0 +1,8 @@
+Polish of checks.py L8: where the UV exponents turn real (hybrid Litim graviton + DEP matter, N_V gauge fields)
+
+grid answer (first grid point with real exponents): N_V ~ 872   (previous grid point 757.7, still complex)
+bisection on the discriminant: N_V* = 846.0336
+same with finite-difference step 1e-5 instead of 1e-7 in jac: 846.0337  (agree to 5.3e-05)
+so 'turn real near N_V ~ 872' -> 'near N_V ~ 846' (polished)
+Verdict unchanged: they still turn real at a finite N_V and still head to {2, 4}.
+CPU time: 0.24 s

@@ -15,3 +15,5 @@ Builds on math-theory/information-theory/ (page SBsWmduwSNADpPVbeRDq2v, InfoFuse
 
 ## Verdict
 No new lead on its own merits; the pass explains where each weight comes from and makes information theory a derived branch of the measure picture. Worth revisiting only if a bent landscape law describes a real coding cost.
+
+Polish (Nov 26): the Z-channel cascade capacities in check 7 (bounded search at xatol 1e-5) re-maximised to 1e-14 and checked against the closed form log₂(1 + (1−p)p^(p/(1−p))), p = 1 − 0.7ⁿ: confirmed 0.504, 0.314, 0.206, 0.138, 0.094, 0.065 (largest error 2×10⁻¹² bits before, 2×10⁻¹⁶ after), under 0.01 s; `polish.py`, `polish_output.txt`.

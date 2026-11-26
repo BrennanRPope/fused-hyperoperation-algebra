@@ -1,0 +1,10 @@
+Z-channel cascade capacities (bits): before (optimizer at xatol 1e-5) -> after (tight search and closed form)
+  hop 1: printed 0.504 | xatol 1e-5 0.503691933484510 | polished 0.503691933484817 | closed form 0.503691933484817 | printed value unchanged at 3 decimals
+  hop 2: printed 0.314 | xatol 1e-5 0.313971842912998 | polished 0.313971842913000 | closed form 0.313971842913000 | printed value unchanged at 3 decimals
+  hop 3: printed 0.206 | xatol 1e-5 0.205903532011168 | polished 0.205903532013309 | closed form 0.205903532013309 | printed value unchanged at 3 decimals
+  hop 4: printed 0.138 | xatol 1e-5 0.138410683224968 | polished 0.138410683226992 | closed form 0.138410683226992 | printed value unchanged at 3 decimals
+  hop 5: printed 0.094 | xatol 1e-5 0.094367201107527 | polished 0.094367201108477 | closed form 0.094367201108477 | printed value unchanged at 3 decimals
+  hop 6: printed 0.065 | xatol 1e-5 0.064904534499594 | polished 0.064904534499829 | closed form 0.064904534499829 | printed value unchanged at 3 decimals
+  largest error at xatol 1e-5: 2.1e-12 bits (an error of 1e-5 in u costs ~1e-10 in C at a smooth maximum); after polish 1.7e-16; digits gained ~4
+  verdict (capacity falls every hop) unchanged; no printed digit changes
+wall time 0.003 s

@@ -1,0 +1,9 @@
+Polish of the fast-soliton peak positions (checks.py 3b): grid argmax -> Newton on the closed-form u'(x) = 0
+
+peak before (T=-25): -64.000000 -> -64.000000000000
+peak after  (T=+25): 65.833000 -> 65.832921335992
+observed jump: 1.833000 -> 1.832921335992   predicted -log(A)/k2 = 1.832921335992
+gap to prediction: 7.9e-05 -> 1.3e-14  (about 10 more digits of agreement)
+checks_output quotes 'observed 1.8330, predicted 1.8329'; polished observed = 1.8329
+The 1e-4 gap was the 0.001 grid; the tropical offset holds to machine precision at T = +-25.
+CPU time: 0.08 s

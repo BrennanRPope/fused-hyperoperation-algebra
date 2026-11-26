@@ -1,0 +1,13 @@
+checks.py feeding-experiment fits (data rebuilt in 1.5 s; Gillespie rate 0.7866)
+  fitted k  before 0.5550201348  after 0.5550201059  change -2.9e-08  (no change at 2 decimals)
+  AIC dial before -185.051576  after -185.051576  change -1.1e-13
+  AIC BD   before -122.852161  after -122.852161  change -3.7e-10
+  AIC CM   before -175.336447  after -175.336447  change -5.7e-14
+  verdict unchanged: dial AIC lowest = True; |k - 0.5| < 0.25 = True
+  polish time 2.6 ms
+  identify 30 trials, 10% noise     before 0.2339 to 0.9790   after 0.2339 to 0.9790   (no change at 2 decimals)
+  identify 30 trials, 25% noise     before 0.0245 to 3.1307   after 0.0245 to 3.1307   (no change at 2 decimals)
+  identify 120 trials, 10% noise    before 0.3382 to 0.7195   after 0.3382 to 0.7195   (no change at 2 decimals)
+  identify 120 trials, 25% noise    before 0.1500 to 1.5944   after 0.1500 to 1.5944   (no change at 2 decimals)
+  identify polish time 1.2 s
+total wall time 2.7 s
