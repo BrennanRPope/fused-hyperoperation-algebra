@@ -1,0 +1,26 @@
+PASS C1 sympy: ladder identity, exact rate of D, lone-pair D = s^2-4p, min Laguerre = D/2, sin steady, lone-pair flow D0+8t, lone-pair ladder rates 4 vs 8   [ladder_pde, De_rate, quad_De_equals_Delta, quad_minL_half_Delta, sin_steady, quad_flow, quad_rewind_rates]
+PASS C2 toy: the rate formula 8 + D*kappa matches a numerical derivative of D at t = 0 to 1e-5   [6.955620 vs 6.955624]
+PASS C3 toy: D crosses 0 at the merger (t = -0.011712), within 5% of the lone pair and within 0.5% of the one-point prediction   [merge -0.011712, pred -0.011688, lone -0.01125]
+PASS C4 D = -8 Xi/Xi'' > 0 at all 1,318 extrema (zeros 1 to 1,000 and the Lehmer window), and D <= gap^2 at each   [D/gap^2 in [0.301, 0.9996]]
+PASS C5 D read off Xi matches D from the zeros, 8/sum 1/(x-z)^2 (5,000 zeros plus tail), to 1e-4 at six extrema   [max rel 3.5e-06]
+PASS C6 one point of Xi predicts the merger time of Lehmer's pair to 1e-5 and of zeros 922/923 to 1e-3 (vs round-3 full rewinds)   [-0.0007112046 vs -0.0007112037; -0.0131915 vs -0.0131931]
+PASS C7 (log Xi'')'' < 0 at all 1,318 extrema; 487 of 999 and 163 of 319 have D|kappa| > 8 (gap opens under the rewind)
+PASS C8 Polymath toy: bare margin < 0 at t = 0 for every x (-212 at 6e10); mollified margin at 6e10 < 0 at t = 0.175 and > 0 at t = 0.2
+PASS C9 letters: order gap 0 at c = 0 (shared centre) and equal to 2^-s - 3^-s at c = 1, s = 1/2 + 14.1347i   [-0.0905+0.3605j]
+PASS C10 order dial, primes 2 and 3 at s = 2: q = 0 gives the Euler product, q = 1 the free words, closed form agrees at q = 0.3, 0.7
+PASS C11 q = 1 wall with every prime: sigma0 = 1.39943 (prime zeta = 1); with primes 2, 3 only: 0.78788
+PASS C12 order-dial growth exponent rises with q (0, 0.32, 0.86, 1.96) and is within 5% of q/(1-q) at q = 0.25   [0.00, 0.32, 0.86, 1.96]
+PASS C13 link dial: spread grows like (1/2) mean(k^2) log log X for each family (10%); k = 0 stays flat   [0.497/0.500, 0.497/0.500, 0.492/0.501, 0.000/0.000, 0.716/0.720]
+PASS C14 topological word: first inner merger is Lehmer's pair (fused at gap 0.02 near gamma 7005.08); to t = -0.4: >= 50 mergers and 0 syzygies   [70 mergers]
+PASS C15 Lehmer window ODE: D from the window's zeros within 0.5% of D from Xi; its zero time equals round 3's merger to 1e-6   [0.0014177 vs 0.0014206]
+PASS C16 hypernatural log: height-s Laguerre is s f'^2 - f f'', the height drops out at an extremum, and degree-n Laguerre holds on random real-rooted polynomials (n = 3, 5, 8)
+PASS C17 critical height h* = Xi Xi''/Xi'^2 stays below 3/4 on 0 < gamma < 5355 (max 0.705, below the first zero); zeros-based h* matches Xi itself to 2%   [max 0.7048, N_eff 3.39]
+PASS P1 README is marked DRAFT and names the theory (Affine Composition Theory, built on Fused Hyperoperation Algebra)
+PASS P2 every picture the README shows exists, and every picture made is shown   [9 pictures]
+PASS P3 no overclaim phrases in the README
+PASS P4 wording rule: "backward heat flow" and "rewind" used; no "downward"/"going down" for the flow
+PASS P5 the README opens with the answer and says plainly whether it is a lead
+PASS P6 numbers quoted in the README match the data
+PASS P7 the Lean file says it is compiled in the shared library, has 12 theorems and no sorry
+
+24 of 24 checks pass

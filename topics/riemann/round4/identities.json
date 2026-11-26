@@ -1,0 +1,9 @@
+{
+ "ladder_pde": true,
+ "De_rate": true,
+ "quad_De_equals_Delta": true,
+ "quad_minL_half_Delta": true,
+ "sin_steady": true,
+ "quad_flow": true,
+ "quad_rewind_rates": true
+}

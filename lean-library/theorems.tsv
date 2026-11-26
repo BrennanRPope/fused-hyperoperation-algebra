@@ -2988,6 +2988,18 @@ FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.heat_pair_gap	propext, 
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.pointwise_fixes_zeros	
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.real_ring	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.turned_ring	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.height_free_at_extremum	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.height_is_degree	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.laguerre_ladder	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.letter_centre	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.letter_order_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.link_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.local_disc_rate	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.pair_flow_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.pair_ladder_rates	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.pair_laguerre	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.pair_local_disc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.sin_steady	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound
