@@ -7,8 +7,8 @@
     Proved in shape-dial-survey section "N3, p = 3" by: Pólya (a ≤ 1); a climb b → b + 1 for every b in [0, 2],
     where G at b + 1 alternates in sign at the zeros of G at b and Krein's partial-fraction theorem rules out
     complex zeros; the alternation is a computer certificate (p3_certificate.py): explicit inequalities for
-    s ≥ 21 and error-bounded Taylor models on 200 boxes for s ≤ 25. Two constants there use floats with a
-    safety margin, not ball arithmetic.
+    s ≥ 21 and error-bounded Taylor models on 200 boxes for s ≤ 25. Every constant there is a whole number or an
+    exact fraction (L2 ≤ 2, L3 ≤ 6; see LeeYangP3Constants.lean).
   Formalising it would need: Krein's theorem, Pólya's theorem, and the certificate's arithmetic in Lean.
 -/
 import MathlibMap.LeeYangStep

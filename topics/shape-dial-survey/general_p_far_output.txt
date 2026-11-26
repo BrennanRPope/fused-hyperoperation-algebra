@@ -1,0 +1,12 @@
+PASS R1 the contour formula holds at non-whole roundness (p = 1.5, 2.5, 3, 3.7, 5.3)  [largest gap 7e-10]
+   p = 1.25: takeover s ~ 0.0, far margin 0.126 vs kink margin 0.126
+   p = 1.5: takeover s ~ 0.0, far margin 0.422 vs kink margin 0.423
+   p = 2.5: takeover s ~ 4.0, far margin 0.821 vs kink margin 0.821
+   p = 3.0: takeover s ~ 4.7, far margin 0.888 vs kink margin 0.889
+   p = 3.5: takeover s ~ 4.3, far margin 0.968 vs kink margin 0.969
+   p = 5.0: takeover s ~ 10.3, far margin 0.994 vs kink margin 0.998
+   p = 7.0: takeover s ~ 20.5, far margin 0.980 vs kink margin 1.000
+PASS R2 with the exact contour pieces, all three far-zone inequalities hold at every sampled s past a takeover point, for 7 roundnesses and 6 steps each  [takeover s: p=1.25: 0.0, p=1.5: 0.0, p=2.5: 4.0, p=3.0: 4.7, p=3.5: 4.3, p=5.0: 10.3, p=7.0: 20.5]
+PASS R3 far out (s > 200, top step b = p - 1) the tight margin is the kink margin 1 - |sin(pi p/2)|/p^(p-1), for p <= 5  [p=1.25: 0.126 vs 0.126, p=1.5: 0.422 vs 0.423, p=2.5: 0.821 vs 0.821, p=3.0: 0.888 vs 0.889, p=3.5: 0.968 vs 0.969, p=5.0: 0.994 vs 0.998, p=7.0: 0.980 vs 1.000]
+PASS R4 near zone: zeros of G at b below the takeover point, the part a certificate still boxes (most over b)  [p=1.25: 0, p=1.5: 0, p=2.5: 1, p=3.0: 1, p=3.5: 1, p=5.0: 3, p=7.0: 6]
+4/4 pass, 244 s

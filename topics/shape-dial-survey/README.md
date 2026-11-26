@@ -55,7 +55,9 @@ That strip is now a finite check for each p, by comparing with the ball and peel
 p = 2.5, 3, 5 and 7, but a proof for every p at once is still missing (section N3, top strip). Lobe growth at every a ≤ p
 would close it, and that is now proved far out for every p, with the same kink constant as the ball comparison; an
 explicit radius is still missing (section N3, lobe law). At p = 3 the gap is closed: Lee–Yang is proved, computer-assisted, for every a ≤ 3 (n ≤ 10), so the
-rule is a theorem there (section N3, p = 3). The other two are **Bell's 2√2 is a floor for
+rule is a theorem there (section N3, p = 3). Its constants are now whole numbers (section N3, p = 3 constants). A refactor puts every proof on
+one Lean core, so the rule at any p follows from one alternation statement. The far-out half of that statement looks uniform
+in p, and the near half is still per p (section N3, refactor). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
 (a short corollary of Fermat's last theorem).
 
@@ -630,10 +632,10 @@ margins, proved positive at s = 21 for every b in [0, 2]; they only grow further
   and in b, evaluated in exact integer arithmetic at 900 bits. In every box there are exactly 7 zeros below 25, each
   isolated (sign change, nonzero slope), and G at b + 1 has a definite, alternating sign at them. Each box reaches a
   zero past 21, so the near and far zones overlap.
-- **How solid it is.** Every inequality has explicit slack, and the arithmetic is exact or error-bounded. Two places use
-  ordinary floats with a safety margin rather than ball arithmetic: the two constants ∫log²(1 − x³) and ∫|log³(1 − x³)|
-  (used with slack, 0.75 and 2.11) and some bookkeeping. A fully airtight version would rerun the certificate in Arb
-  ball arithmetic (python-flint), which wasn't available here.
+- **How solid it is.** Every constant is now a whole number or an exact fraction, and every number after the exact
+  integer sums is an outward-rounded interval, so no step leans on float rounding or an ad hoc margin (section N3,
+  p = 3 constants). What isn't machine-checked is the analytic side: the contour formula and its remainder bounds were
+  derived by hand and checked numerically, and Pólya and Krein are cited.
 - **What Lean can hold.** `topics/mathlib-map/MathlibMap/LeeYangP3.lean` (built by CI with the Mathlib map) states the result (`RuleAtThree`, `StripAtThree`) on top of the
   `LeeYangStep` definitions, with no sorry, because it only states. Proving it in Lean would need Pólya's theorem, Krein's
   theorem and a verified interval certificate, none of which Mathlib has.
@@ -644,7 +646,7 @@ margins, proved positive at s = 21 for every b in [0, 2]; they only grow further
   known, p = 4 only at whole a). It shows the route works end to end, and the far-out margins are wide everywhere except
   near the top of the strip, which is where any general proof will be tight.
 
-**Checks** (`p3_certificate.py` → `p3_certificate_output.txt`, `p3_certificate.json`, **5 of 5 pass**, 85 s):
+**Checks** (`p3_certificate.py` → `p3_certificate_output.txt`, `p3_certificate.json`, **5 of 5 pass**, 85 s; rerun below):
 
 | Check | What | Result |
 |---|---|---|
@@ -653,6 +655,104 @@ margins, proved positive at s = 21 for every b in [0, 2]; they only grow further
 | N2 | near zone: G at b + 1 has a definite sign at each of those zeros, and the signs alternate | 200 of 200 boxes |
 | N3 | overlap: in every box the near zone reaches a zero past s = 21 | 200 of 200 boxes |
 | P1 | polish: the contour formula against the defining integral, 4 spot checks | gap 1e−32 |
+
+### N3, p = 3 constants. Whole numbers instead of decimals
+
+Asked next by Brennan: "Let's check them in Lean", and whether the constants can be ratios or whole numbers. **Short
+answer: yes, all of them.** The two decimals with a safety margin, 0.75 and 2.11, are replaced by the whole numbers
+**2 and 6**, and the certificate still passes. Every other constant was already a whole number or an exact fraction.
+Lean checks the comparison that gives 2 and 6.
+
+- **Where the 2 and the 6 come from.** The certificate needs bounds on L2 = ∫₀¹ log²(1 − x³) dx and
+  L3 = ∫₀¹ |log(1 − x³)|³ dx. On [0, 1], 1 − x ≤ 1 − x³, so |log(1 − x³)| ≤ |log(1 − x)|, and
+  ∫₀¹ |log(1 − x)|^k dx = k! (Euler's integral). So **L2 ≤ 2! = 2 and L3 ≤ 3! = 6**. They're looser than the true values,
+  but the boxes are small enough that the slack doesn't matter.
+- **The true values aren't fractions.** Numerically L2 = 18 − √3 π − 9 log 3 + π²/4 + (9/4) log² 3 + (√3/2) π log 3 − ψ′(1/3)
+  (found by integer-relation search and matched to 80 digits, not proved). As fraction brackets from the series
+  −log(1 − x³) = Σ x^(3k)/k: **747/1000 < L2 < 748/1000** and **1051/500 < L3 < 263/125**.
+- **Every constant, in whole-number or fraction form:**
+
+| Constant | Was | Now |
+|---|---|---|
+| L2 (second c-derivative) | 0.75 | **2** (= 2!) |
+| L3 (third c-derivative) | 2.11 | **6** (= 3!) |
+| far-zone remainders | 720, 5040, 362880, 3628800 | unchanged: 6!, 7!, 9!, 10! |
+| far zone starts at | 21 | 21 |
+| near zone reaches | 25 | 25 |
+| cell width in s | 1/8 | 1/8 |
+| box half-width in b | 1/200 | 1/200 |
+| central-difference step | 10⁻¹² | 1/10¹² |
+| error terms in b | about 1e−5 | δ²·L2/2 = **1/40000**, η²·L3/6 = **1/10²⁴** |
+| float safety margins (1e−25, 1e−13 relative) | used | **removed**, replaced by interval error bounds |
+
+- **A slip it caught.** The old near-zone code took the b-derivative from two rounded floats, and it never charged for
+  that rounding (up to about 5e−7 per value). The new code takes the difference of the exact integers first. No box
+  changed its verdict.
+- **What Lean holds** (`topics/mathlib-map/MathlibMap/LeeYangP3Constants.lean`, built by CI with the Mathlib map): the pointwise comparison 1 − x ≤ 1 − x³ and the log comparison,
+  for every power k; the integral comparison ∫₀¹ |log(1 − x³)|^k ≤ k!, with Euler's integral and integrability passed in
+  as hypotheses; and the exact fractions above. Euler's integral itself is classical, and Mathlib has it as the Gamma
+  integral. I haven't done the change of variables that connects the two. **Still outside Lean:** the 200 boxes and
+  the far-zone inequalities, which are rigorous interval computations in Python, the contour formula's remainder bounds,
+  and Pólya and Krein.
+
+**Checks** (`p3_certificate.py`, rerun with the whole-number constants and interval bookkeeping, **5 of 5 pass**, 205 s):
+the same F1, N1, N2, N3 and P1 as above, with the same results. The run is slower because of the interval
+bookkeeping.
+
+### N3, refactor. One core for every roundness
+
+Asked next by Brennan: refactor the p = 1, 2, 3 proofs the way you'd refactor code, centralize what they share, and aim
+at every p. **Short answer: refactored, not yet proved for every p.** Every proof so far uses the same three cited
+tools and the same induction. The Lean core proves that induction once, so **the rule at any roundness p now follows
+from a single statement, "G at b + 1 alternates at the zeros of G at b, for every step 0 < b ≤ p − 1."** p = 1, 2 and 3
+are short instances. For every p at once, the far-out half of that statement looks uniform: same formula, same margin
+at every p. The near half grows with p and is still a per-p check.
+
+![Refactor](figures/fig22-lee-yang-refactor.png)
+
+*Figure 22. Top: the refactor as a call graph. A toolkit of cited facts and one per-p input feed a core theorem
+proved in Lean, and each known roundness is an instance. Bottom left: with the exact contour pieces, without the
+certificate's remainder bounds, the three far-zone tests hold from s ≈ 2 at p ≤ 1.5 up to s ≈ 20 at p = 7. The
+p = 3 certificate's 21 came from its loose bounds, not from the math. Orange numbers count the zeros before the
+takeover, which still need boxing. Bottom right: far out, the tight test's margin is 1 − |sin(πp/2)|/p^(p−1) at
+every roundness, the same kink share as the lobe law. It's positive for every p > 1 and equals 1 at even p.*
+
+- **What was shared.** Pólya's base (a ≤ 1), a climb in whole steps (b → b + 1, by Krein's theorem, once G at b + 1
+  alternates at the zeros of G at b), and the break past a = p. The p = 1 proof is just the base. The p = 2 proof is
+  the climb with Bessel interlacing as the input. The p = 3 proof is the climb with the certificate as the input.
+- **The core, in Lean** (`topics/mathlib-map/MathlibMap/LeeYangCore.lean`, built by CI with the Mathlib map). A `Toolkit` structure holds the three cited facts. Then, proved:
+  `holds_of_alternatesBelow` (base + climb + alternation give Lee–Yang for every a ≤ p, by induction on ⌈a⌉),
+  `rule_of_alternatesBelow` (add the break to get the rule as an iff), the instances `holds_one`, `holds_two`,
+  `holds_three` and `rule_three`, and `holding_half_of_alternation`. The last one says that alternation at every p would
+  give the holding half everywhere.
+- **What's left per p, exactly.** One statement, `AlternatesBelow p`. Splitting it the way the p = 3 certificate does:
+  - *Far zone:* the exact contour formula G = C + |J| sin(s − πc/2 + arg J) holds at every roundness, not only whole
+    p (checked at p = 1.5, 2.5, 3.7, 5.3). With it, the three far-zone tests hold past a takeover point at all 7
+    roundnesses scanned, and the tight one tends to the kink margin, which is positive for every p > 1. To make this a
+    theorem for every p, the remainder bounds on C and J need to be explicit functions of p. At p = 3 that was a page
+    of Watson-type bounds, and nothing in it looked special to 3.
+  - *Near zone:* the zeros before the takeover. That's 0 at p ≤ 1.5, 1 at p = 2.5 to 3.5, 3 at p = 5 and 6 at p = 7, so it
+    grows with p. It's a finite box check for any bounded range of p. Large p needs its own argument, probably the
+    thin rim layer from the lobe law.
+  - *Near p = 1:* the margin goes to 0 as p → 1, but there the climb is tiny (b ≤ p − 1) and the tests hold from the
+    start in the scan, so it looks harmless. It needs care in a uniform proof.
+- **What's cited rather than in Lean.** Pólya 1918, Krein's theorem, the break, Bessel interlacing (p = 2) and the
+  p = 3 certificate. p = 4 at whole a used Laguerre's operator instead, so it isn't an instance of this core yet.
+  Running the certificate at p = 4 would make it one.
+- **Verdict: worth following.** The refactor turns "prove the rule" into one family of inequalities about two explicit
+  Laplace integrals. The far-out part already shows the same margin at every p. The most useful next step is the
+  far-zone bounds as explicit functions of p. That would make the far half a theorem for every p and leave a near
+  zone of a few zeros per p.
+
+**Checks** (`general_p_far.py` → `general_p_far_output.txt`, `general_p_far.json`, **4 of 4 pass**, 244 s; numerical
+exploration, not a certificate):
+
+| Check | What | Result |
+|---|---|---|
+| R1 | contour formula against the defining integral at non-whole roundness | p = 1.5, 2.5, 3, 3.7, 5.3: gap ≤ 7e−10 |
+| R2 | three far-zone tests with exact C and J, 7 roundnesses × 6 steps, s from 2 to 320 | take over at s ≈ 2, 2, 4.0, 4.7, 4.3, 10.3, 20.5 for p = 1.25, 1.5, 2.5, 3, 3.5, 5, 7 |
+| R3 | far-out margin of the tight test against 1 − \|sin(πp/2)\|/p^(p−1) | 0.126/0.126, 0.422/0.423, 0.821/0.821, 0.888/0.889, 0.968/0.969, 0.994/0.998, 0.980/1.000 |
+| R4 | zeros of G at b before the takeover | 0, 0, 1, 1, 1, 3, 6 |
 
 ---
 
@@ -677,7 +777,8 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 identity | step identity checked coefficient by coefficient at 50 digits; zeros refined with findroot | exact | under 1 s, of the 20 s run |
 | N3 strip | zeros refined with findroot; lobes by direct quadrature against the identity | gap 2e-39 | 1.2 s |
 | N3 lobe law | first lobes by direct quadrature against the identity; zeros refined | all 50 digits | under 2 s, of the 97 s run |
-| N3 p = 3 | contour formula against the defining integral, 4 spot checks | gap 1e-32 | under 1 s, of the 85 s run |
+| N3 p = 3 | contour formula against the defining integral, 4 spot checks | gap 1e-32 | under 1 s, of the 205 s run |
+| N3 refactor | contour formula at non-whole p against the defining integral | gap 7e-10 | under 1 s, of the 244 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -696,6 +797,9 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `lobe_law_check.py` → `lobe_law_check.json`, `lobe_law_output.txt`: 5 checks for the lobe law. `figures_lobe_law.py` → figure 20.
 - `p3_certificate.py` → `p3_certificate.json`, `p3_certificate_output.txt`: the 5-part certificate for p = 3. `figures_p3.py` → figure 21.
   `../mathlib-map/MathlibMap/LeeYangP3.lean`: the p = 3 statements (statements only), built by CI with the Mathlib map.
+- `../mathlib-map/MathlibMap/LeeYangP3Constants.lean`: Lean proofs behind the whole-number constants 2 and 6, and the exact fractions.
+- `../mathlib-map/MathlibMap/LeeYangCore.lean`: the shared Lean core (toolkit, core theorem, p = 1, 2, 3 instances), built by CI with the Mathlib map.
+- `general_p_far.py` → `general_p_far.json`, `general_p_far_output.txt`: the far-zone scan across roundness. `figures_refactor.py` → figure 22.
 
 ## References
 
@@ -720,6 +824,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - M. G. Krein, on the representation of entire functions of exponential type by their partial fractions (1947); B. Ya.
   Levin, Lectures on Entire Functions (1996), chapter on the Cartwright class: a ratio of such functions with poles
   only at real zeros is the sum of its partial fractions.
+- G. N. Watson, A Treatise on the Theory of Bessel Functions (1944), §15.22: interlacing of the zeros of J_ν and J_(ν+1).
 - L. Lorch and G. Szegő, "Higher monotonicity properties of certain Sturm–Liouville functions", Acta Math. 109 (1963):
   growing lobes of weighted Bessel functions, the ball's version of the lobe law.
 - N. Obreschkoff, Verteilung und Berechnung der Nullstellen reeller Polynome (1963): two real-rooted functions have

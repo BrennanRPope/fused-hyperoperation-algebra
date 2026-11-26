@@ -12,9 +12,10 @@ Proof structure (README, section N3, p = 3):
              C_c(s) = -int_0^inf Im(1+iy^3)^c e^(-sy) dy,  J_c(s) = int_0^inf y^c (3+3iy-y^2)^c e^(-sy) dy,
            with Watson-type remainder bounds; every bound is monotone in s, so checking s = T2 covers [T2, inf).
       NEAR (0 <= s <= 25): every zero of G_b isolated and the sign of G_a there fixed, on boxes of width 0.01 in b,
-           using Taylor models in s (|d^j G/ds^j| <= 1/(j+1)) and in b (|d^2 G/db^2| <= L2, |d^3 G/db^3| <= L3).
-Arithmetic: exact big-integer Horner at dyadic s, coefficients to 2^-900 by exact recurrences; interval
-arithmetic (mpmath.iv) for the far-zone inequalities; float bookkeeping with explicit slack.
+           using Taylor models in s (|d^j G/ds^j| <= 1/(j+1)) and in b (|d^2 G/db^2| <= L2 = 2, |d^3 G/db^3| <= L3 = 6).
+Arithmetic: exact big-integer Horner at dyadic s, coefficients to 2^-900 from interval moments; every other
+number is an outward-rounded interval (mpmath.iv). Every constant is a whole number or an exact fraction:
+L2 = 2, L3 = 6, eta = 1/10^12, cell 1/8, box half-width 1/200, T2 = 21, TN = 25.
 """
 import json, time, math
 from fractions import Fraction as Fr
@@ -24,9 +25,10 @@ RES = []; OUT = {}
 def check(name, ok, detail=""):
     RES.append(bool(ok)); print(("PASS " if ok else "FAIL ") + name + (f"  [{detail}]" if detail else ""), flush=True)
 t0 = time.perf_counter()
-L2, L3 = 0.75, 2.11            # int_0^1 log^2(1-x^3) = 0.74752..., int |log(1-x^3)|^3 = 2.10389...
+L2, L3 = 2, 6   # whole-number bounds: int_0^1 log^2(1-x^3) <= int_0^1 log^2(1-x) = 2!, int |log(1-x^3)|^3 <= 3! = 6
+                # (pointwise 1 - x <= 1 - x^3 on [0, 1], then Euler's integral int_0^1 (-log u)^k du = k!)
 T2, TN, H, NT = 21, 25, Fr(1, 8), 150   # far zone from T2; near zone to TN; cell width; series length
-P = 900; DER = 7; SLACK = 1e-25
+P = 900; DER = 7
 
 # ---------- FAR ZONE: interval check of the explicit inequalities at s = T2 over b-boxes ----------
 def far_margins(bl, bh, t):
@@ -62,55 +64,68 @@ check(f"F1 far zone: for every b in [0, 2] and every s >= {T2}, the three inequa
       all(min(f["margins"]) > 0 for f in far),
       f"worst margins {', '.join(f'{w:.3f}' for w in OUT['far']['worst'])} over {nb} boxes")
 
-# ---------- NEAR ZONE: exact-arithmetic Taylor models ----------
+# ---------- NEAR ZONE: exact-arithmetic Taylor models, rigorous bookkeeping ----------
+# Every number after the exact integer Horner sums is an outward-rounded interval (mpmath.iv), so no step relies on
+# float rounding or an ad hoc margin.
 mp.mp.prec = 1000
-def moments(c):  # m_n(c) = B((n+1)/3, c+1)/3 for n = 0..NT+DER, c rational; m_(n+3) = m_n (n+1)/(n+3c+4)
+def moments(c):  # intervals m_n(c) = B((n+1)/3, c+1)/3 for n = 0..NT+DER, c rational; m_(n+3) = m_n (n+1)/(n+3c+4)
     iv.prec = 1000; cc = iv.mpf(c.numerator)/c.denominator
-    base = [iv.gamma(iv.mpf(n + 1)/3)*iv.gamma(cc + 1)/(3*iv.gamma(iv.mpf(n + 1)/3 + cc + 1)) for n in range(3)]
-    m = [mp.mpf(x.mid) for x in base]; cm = mp.mpf(c.numerator)/c.denominator
-    for n in range(3, NT + DER + 1): m.append(m[n - 3]*(n - 2)/(n - 2 + 3*cm + 3))
+    m = [iv.gamma(iv.mpf(n + 1)/3)*iv.gamma(cc + 1)/(3*iv.gamma(iv.mpf(n + 1)/3 + cc + 1)) for n in range(3)]
+    for n in range(3, NT + DER + 1): m.append(m[n - 3]*(n - 2)/(n - 2 + 3*cc + 3))
     return m
-FACT = [mp.factorial(n) for n in range(NT + 1)]
-def deriv_ints(m):  # integer coefficients of d^j G/ds^j = sum_n Re(i^(n+j)) s^n m_(n+j)/n!, scaled by 2^P
-    out = []
+FACT = [math.factorial(n) for n in range(NT + 1)]
+def deriv_ints(c):
+    """Integer coefficients k of d^j G/ds^j = sum_n Re(i^(n+j)) s^n m_(n+j)/n!, scaled by 2^P, with a proof that
+    |k - true*2^P| <= 1 for every coefficient (rounding 1/2 plus the moment interval's width)."""
+    m = moments(c); out = []
     for j in range(DER):
         row = []
         for n in range(NT + 1):
             k = (n + j) % 4; sgn = 1 if k == 0 else (-1 if k == 2 else 0)
-            row.append(int(mp.nint(sgn*m[n + j]/FACT[n]*mp.mpf(2)**P)) if sgn else 0)
+            if not sgn: row.append(0); continue
+            x = m[n + j]*mp.mpf(2)**P/FACT[n]
+            ki = int(mp.nint(x.mid))
+            assert (x - ki).a > -1 and (x - ki).b < 1   # coefficient error below 1 unit of 2^-P
+            row.append(sgn*ki)
         out.append(row)
     return out
-def horner(row, num, den):  # exact: sum row_n num^n den^(NT-n), then divide
+def horner(row, num, den):  # exact: sum row_n num^n den^(NT-n)
     acc = 0; dpow = 1
     for n in range(NT, -1, -1):
         acc = acc*num + row[n]*dpow; dpow *= den
     return acc
-def err_bound(t):  # truncation + rounding, per value
-    t = max(float(t), 1.0)
-    tail = math.exp((NT + 1)*math.log(t) - math.lgamma(NT + 2))/(1 - t/(NT + 2))
-    rnd = 2.0**(-P + 1)*(NT + 1)*math.exp(NT*math.log(t))*1.5
-    return tail + rnd + SLACK
-def values(rows, t):  # list over j of float approximations at rational t (dyadic)
-    num, den = t.numerator, t.denominator; scale = mp.mpf(2)**P*mp.mpf(den)**NT
-    return [float(mp.mpf(horner(r, num, den))/scale) for r in rows]
+iv.prec = 120
+def err_bound(t):  # rigorous: truncation tail (|m| <= 1) + coefficient error (1 unit of 2^-P each), as an interval
+    T = iv.mpf(max(t, Fr(1)).numerator)/max(t, Fr(1)).denominator
+    tail = T**(NT + 1)/math.factorial(NT + 1)/(1 - T/(NT + 2))
+    coef = (NT + 1)*T**NT/iv.mpf(2)**P
+    return (tail + coef).b
 ETA = Fr(1, 10**12)
 def box_enclosures(c0, delta, ts):
-    """For G_c with c in [c0 - delta, c0 + delta]: at each grid s, enclosure (mid, rad) of d^j G/ds^j, j < DER."""
-    R0, Rp, Rm = (deriv_ints(moments(c)) for c in (c0, c0 + ETA, c0 - ETA))
-    d, eta = float(delta), float(ETA); res = {}
+    """For G_c with c in [c0 - delta, c0 + delta]: at each grid s, enclosure (mid, rad) of d^j G/ds^j, j < DER.
+    c-direction: G(c) = G(c0) + (c - c0) G'(c0) + (c - c0)^2/2 G''(xi), |G''| <= L2; G'(c0) from an exact central
+    difference with error eta^2 L3/6 + (value errors)/eta."""
+    R0, Rp, Rm = (deriv_ints(c) for c in (c0, c0 + ETA, c0 - ETA))
+    d = iv.mpf(delta.numerator)/delta.denominator; eta = iv.mpf(ETA.numerator)/ETA.denominator; res = {}
     for t in ts:
-        e = err_bound(t); v0, vp, vm = values(R0, t), values(Rp, t), values(Rm, t)
-        enc = []
+        num, den = t.numerator, t.denominator; scale = iv.mpf(2)**P*iv.mpf(den)**NT
+        e = err_bound(t); enc = []
         for j in range(DER):
-            D = (vp[j] - vm[j])/(2*eta); Drad = eta**2*L3/6 + e/eta
-            enc.append((v0[j], d*(abs(D) + Drad) + d*d*L2/2 + e + 1e-13*abs(v0[j])))
+            h0, hp, hm = horner(R0[j], num, den), horner(Rp[j], num, den), horner(Rm[j], num, den)
+            v0 = iv.mpf(h0)/scale; D = iv.mpf(hp - hm)/scale/(2*eta)
+            Drad = eta**2*L3/6 + e/eta
+            rad = d*(abs(D).b + Drad) + d*d*L2/2 + e
+            enc.append((v0, rad.b))
         res[t] = enc
     return res
-def cell_range(enc, j, h):  # enclosure of d^j G/ds^j over [t, t + h], from the Taylor data at t
-    h = float(h); mid, rad = enc[j]
-    var = sum((abs(enc[j + m][0]) + enc[j + m][1])*h**m/math.factorial(m) for m in range(1, DER - j))
-    var += h**(DER - j)/(math.factorial(DER - j)*(DER + 1))
-    return mid - rad - var, mid + rad + var
+def cell_range(enc, j, h):  # enclosure (lo, hi) of d^j G/ds^j over [t, t + h], from the Taylor data at t
+    hh = iv.mpf(h.numerator)/h.denominator; v0, rad = enc[j]
+    var = sum((abs(enc[j + m][0]) + enc[j + m][1])*hh**m/math.factorial(m) for m in range(1, DER - j))
+    var += hh**(DER - j)/(math.factorial(DER - j)*(DER + 1))
+    return (v0 - rad - var).a, (v0 + rad + var).b
+def definite(enc):  # sign of the value at a grid point, or 0 if the enclosure contains 0
+    v0, rad = enc[0]
+    return 1 if (v0 - rad).a > 0 else (-1 if (v0 + rad).b < 0 else 0)
 def certify_box(b0, delta):
     ts = [H*k for k in range(int(TN/H) + 1)]
     Eb = box_enclosures(b0, delta, ts); Ea = box_enclosures(b0 + 1, delta, ts)
@@ -123,12 +138,12 @@ def certify_box(b0, delta):
         k2 = k
         while k2 < len(cells) and not cells[k2][1]: k2 += 1
         tl, tr = cells[k][0], cells[k2 - 1][0] + H
-        sl = Eb[tl][0]; sr = Eb[tr][0]
-        definite = (abs(sl[0]) > sl[1]) and (abs(sr[0]) > sr[1]) and (sl[0]*sr[0] < 0)
+        sl, sr = definite(Eb[tl]), definite(Eb[tr])
+        dfn = sl != 0 and sr != 0 and sl*sr < 0
         mono = all((lambda r: r[0] > 0 or r[1] < 0)(cell_range(Eb[cells[i][0]], 1, H)) for i in range(k, k2))
         ga = [cell_range(Ea[cells[i][0]], 0, H) for i in range(k, k2)]
         sgn = 1 if all(r[0] > 0 for r in ga) else (-1 if all(r[1] < 0 for r in ga) else 0)
-        if not (definite and mono and sgn): ok = False
+        if not (dfn and mono and sgn): ok = False
         zeros.append(dict(cell=[float(tl), float(tr)], Ga_sign=sgn)); k = k2
     alt = ok and all(zeros[i]["Ga_sign"]*zeros[i + 1]["Ga_sign"] < 0 for i in range(len(zeros) - 1))
     reach = any(z["cell"][0] >= T2 for z in zeros)

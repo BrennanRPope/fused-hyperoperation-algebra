@@ -27,3 +27,18 @@ open MathlibMap
 #check @MathlibMap.LeeYang.TopStripReduces
 #check @MathlibMap.LeeYang.RuleAtThree
 #check @MathlibMap.LeeYang.StripAtThree
+#print axioms LeeYangP3Constants.one_sub_le_one_sub_cube
+#print axioms LeeYangP3Constants.abs_log_le
+#print axioms LeeYangP3Constants.pow_abs_log_le
+#print axioms LeeYangP3Constants.integral_le_factorial
+#print axioms LeeYangP3Constants.factorials_used
+#print axioms LeeYangP3Constants.near_zone_error_terms
+#print axioms LeeYangP3Constants.far_zone_whole_numbers
+#print axioms MathlibMap.LeeYang.holds_of_alternatesBelow
+#print axioms MathlibMap.LeeYang.rule_of_alternatesBelow
+#print axioms MathlibMap.LeeYang.holds_one
+#print axioms MathlibMap.LeeYang.holds_two
+#print axioms MathlibMap.LeeYang.holds_three
+#print axioms MathlibMap.LeeYang.rule_three
+#print axioms MathlibMap.LeeYang.not_evenWhole_three
+#print axioms MathlibMap.LeeYang.holding_half_of_alternation
