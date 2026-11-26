@@ -8,7 +8,7 @@ our laws that we've proven to see if the shape dial is able to move from one to 
 see if a new law emerges and what it might be for", with "a polishing step ... as long as it doesn't take too much
 effort from the computer". This page turns the homothety k (the circle operation a ∘ₖ b = a + b + k·ab) with the
 curvature dial d held at 0 and every other dial fixed.
-Checks: `checks.py` → `checks_output.txt`, **65 of 65 pass** (numpy, scipy, sympy, mpmath; about 2 seconds), including
+Checks: `checks.py` → `checks_output.txt`, **67 of 67 pass** (numpy, scipy, sympy, mpmath; about 2 seconds), including
 5 polish checks at 30 digits that cost **0.03 seconds in all**. Law list: `laws.py` → `laws.json`. Pictures:
 `figures.py` → `figures/`. No Lean in this pass. Colour key: **blue = our reading, orange = already known, grey =
 endpoints and background.**
@@ -64,8 +64,9 @@ The leads, judged each on its own merits, in order:
 
 **New laws at in-between settings (section N).** The in-between values that matter are the pinned-scale ladders above,
 and all but one are known. The one I found no print for is the holographic threshold √6 − 3 (N3). The three
-whole-number ladders form one orbit of an order-3 map k ↦ −1/(1 + k) (N5); I found no meaning behind that, so it stays a
-curiosity.
+whole-number ladders form one orbit of the order-3 map k ↦ −1/(1 + k) (N5). That map has a name: it is ST, the standard
+order-3 element of the modular group PSL(2, ℤ), and in λ = −k it is λ ↦ 1/(1 − λ), the order-3 rotation of the cross-ratio
+(anharmonic) group. So the three ladders are one cross-ratio with its four points cycled. Known group; the reading is ours.
 
 ![The k dial: three stops on the bare line, whole-number stops once the scale is pinned](figures/fig0-hero-k-dial.png)
 
@@ -301,7 +302,7 @@ because rescaling carries any k to any other of the same sign. So every in-betwe
 | k = 1 on graphs | Lee–Yang threshold | **Known** (Lee–Yang 1952); checked (I1–I3) |
 | k = √6 − 3 | corner sum of three regions' entropies turns sign-definite | **Proved** here (two lines, L6); **not found in my search** |
 | k = n(n + 1), −ℓ(ℓ + 1) | the tunnelling page's rewind ladder | From `tunnelling/`, not re-checked here |
-| the three ladders | one orbit of k ↦ −1/(1 + k) | **Checked algebra** (N1); no meaning found |
+| the three ladders | one orbit of ST: k ↦ −1/(1 + k), the cross-ratio's order-3 rotation | **Checked algebra** (N1, N3, N4); known group, reading ours |
 
 ### N1. The −1/m ladder
 
@@ -325,13 +326,22 @@ On the bare line ±2 are not special. They become special when a chance is pinne
 at 1/2, XOR), and k = +2 is the hyperbolic average at unit curvature (no wall). The cluster of laws at k = 2 that
 `lee-yang/` found (leverage, Euler cusp, rung 2) are not d = 0 laws or are unit choices, as that page said.
 
-### N5. One orbit of an order-3 map (curiosity)
+### N5. One orbit of ST, the cross-ratio's order-3 rotation
 
 ![N5](figures/fig13-three-ladders-orbit.png)
 
 *Figure 13. k ↦ −1/(1 + k) has order 3 and sends copies −1/m to alphabet −m/(m − 1) to q-numbers m − 1 and back.*
 
-The map acts on the wall w = −1/k as w ↦ 1 − 1/w, the order-3 part of the cross-ratio symmetry. I looked for a map that
+**Its name.** As a Möbius map, k ↦ −1/(1 + k) has matrix [[0, −1], [1, 1]] = ST, with S = [[0, −1], [1, 0]] and
+T = [[1, 1], [0, 1]], the standard generators of the modular group PSL(2, ℤ). (ST)³ = −I, so it has order 3 there (check
+N3). Written in λ = −k it is λ ↦ 1/(1 − λ), the order-3 rotation of the anharmonic group: the six values λ, 1 − λ, 1/λ,
+1/(1 − λ), (λ − 1)/λ, λ/(λ − 1) that one cross-ratio takes when its four points are permuted. The ladders become 1/q,
+q/(q − 1) and 1 − q, one orbit of that rotation (check N4). So the three ladders are one cross-ratio with its four points
+cycled. **Known:** the modular group and the anharmonic group (both classical; the anharmonic group goes back to
+Cayley's and Klein's study of the cross-ratio). **Ours:** that the copies, alphabet and q-number ladders are one such
+orbit.
+
+The map also acts on the wall w = −1/k as w ↦ 1 − 1/w, the same order-3 rotation. I looked for a map that
 carries one ladder's law to another's with its meaning attached and found none (N2: the copies law and the alphabet law
 disagree on the same inputs, and every k ≠ 0 is isomorphic to every other by scaling, so an isomorphism alone says
 nothing). **Checked; not a lead unless such a map turns up.**
@@ -376,7 +386,7 @@ rest of the checks are exact (sympy) or at machine precision.
 | Alphabet ladder −q/(q − 1) | Pieces known; reading ours | Jukes–Cantor 1969; symmetric channels |
 | Split of [0, 1] laws at k = −1 | Ours, elementary | this page, C4 |
 | Holographic threshold √6 − 3 | **Ours, proved; not found** in one search | this page, C11 |
-| Order-3 orbit of the ladders | Ours, a checked curiosity | this page, N5 |
+| Order-3 orbit of the ladders | ST in PSL(2, ℤ), the cross-ratio's order-3 rotation (known); that the ladders are one orbit is ours | this page, N5 |
 
 Searches run (Nov 26, 2026): "Sundt Jewell 1981 (a,b,0) class only Poisson binomial negative binomial Katz 1965
 recursion"; "Panjer class (a,b,0) Sundt Jewell 1981 Further results on recursive evaluation of compound distributions";

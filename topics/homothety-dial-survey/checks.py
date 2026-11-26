@@ -412,6 +412,19 @@ p1, p2 = 0.2, 0.35
 copies = circ(-1 / 3, p1, p2); alpha = circ(-3 / 2, p1, p2)
 check("N2 no shared value: at m = 3 the copies law and the alphabet law disagree on the same inputs (no identity map)",
       abs(copies - alpha) > 1e-3, f"{copies:.4f} vs {alpha:.4f}")
+# the order-3 map is ST in PSL(2, Z), and in lambda = -k the order-3 rotation of the cross-ratio (anharmonic) group
+Sm, Tm = sp.Matrix([[0, -1], [1, 0]]), sp.Matrix([[1, 1], [0, 1]])
+STm = Sm * Tm
+kk3, lam = sp.symbols("kk3 lam")
+mob = lambda M, z: (M[0, 0] * z + M[0, 1]) / (M[1, 0] * z + M[1, 1])
+check("N3 k -> -1/(1+k) is ST = [[0,-1],[1,1]] in PSL(2,Z), and (ST)^3 = -I (order 3 in PSL(2,Z))",
+      sp.simplify(mob(STm, kk3) - phi(kk3)) == 0 and STm ** 3 == -sp.eye(2))
+lam_map = sp.simplify(-phi(-lam))
+qS = sp.Symbol("q", positive=True)
+lad = [1 / qS, qS / (qS - 1), 1 - qS]   # lambda = -k for the copies, alphabet and q-number ladders
+check("N4 in lambda = -k the map is lambda -> 1/(1 - lambda), the order-3 cross-ratio rotation, cycling 1/q -> q/(q-1) -> 1 - q",
+      sp.simplify(lam_map - 1 / (1 - lam)) == 0
+      and all(sp.simplify(lam_map.subs(lam, lad[i]) - lad[(i + 1) % 3]) == 0 for i in range(3)))
 
 npass = sum(R)
 print(f"polish costs (s): " + ", ".join(f"{kk_}: {v:.3f}" for kk_, v in POLISH.items()) + f"; total {sum(POLISH.values()):.3f}")

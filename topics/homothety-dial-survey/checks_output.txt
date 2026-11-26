@@ -63,5 +63,7 @@ PASS L6 proof step: with SA (P <= 2s) and Araki-Lieb (3T >= P - s), sum >= (s/3)
 PASS L5 polish: k* = sqrt(6) - 3 to 30 digits
 PASS N1 the map k -> -1/(1+k) has order 3 and cycles copies -1/m -> alphabet -m/(m-1) -> m - 1 -> -1/m
 PASS N2 no shared value: at m = 3 the copies law and the alphabet law disagree on the same inputs (no identity map)  [0.5267 vs 0.4450]
-polish costs (s): C9: 0.002, G5: 0.000, H4: 0.017, I4: 0.015, L5: 0.000; total 0.034
-65 of 65 pass
+PASS N3 k -> -1/(1+k) is ST = [[0,-1],[1,1]] in PSL(2,Z), and (ST)^3 = -I (order 3 in PSL(2,Z))
+PASS N4 in lambda = -k the map is lambda -> 1/(1 - lambda), the order-3 cross-ratio rotation, cycling 1/q -> q/(q-1) -> 1 - q
+polish costs (s): C9: 0.002, G5: 0.000, H4: 0.018, I4: 0.015, L5: 0.000; total 0.035
+67 of 67 pass
