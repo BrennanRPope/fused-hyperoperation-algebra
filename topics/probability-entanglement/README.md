@@ -261,7 +261,7 @@ bath: a two-state bath turns ∘₋₁ into ∘ₖ′ with k′ = −(1 + e^{β(
 | **Spinning** (β_L ≠ β_R) | Splits into a left and a right clock, each at half speed: x = y_L ∘₋₁ y_R | Holds | P1, P2 |
 | **Chemical potential** | μ drops out; only the Fermi velocity sets the thermal length | Holds | P3 |
 | **Compression at low heat** | Heavy matter squeezed to the black-hole threshold keeps the reach at exactly half the circle; cold dense fermions hold until the hole spacing nears the block size | Holds | K1–K5 |
-| **Tunnelling** (optional) | Barrier exponents add, so "blocked" glues by ∘₋₁ up to an edge term that fades (13% → 2%) | Approximately | T1 |
+| **Tunnelling** (optional) | Barrier exponents add, so "blocked" glues by ∘₋₁ up to an edge term that fades (13% → 2%). Corrected Nov 26: for separated barriers averaged over the loop phase the gluing is exact, ∘₁ on the typical odds and ∘₂ on the mean (closed-leads-fresh-look F4; tunnelling/) | Exactly, once phase-averaged | T1 |
 
 ### What breaks and what replaces it
 

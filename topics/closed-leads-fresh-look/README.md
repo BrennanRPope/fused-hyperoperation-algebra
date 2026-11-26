@@ -244,6 +244,8 @@ matrix with points on a line, the distances add, so three equal pair factors are
 
 ## Part 4. Correct the record (four sentences)
 
+Applied on Nov 26, on Brennan's yes: each page now carries the corrected sentence with a pointer back here.
+
 | Page | What it says | What it should say |
 |---|---|---|
 | `dial-survey/` | Only the sign of k survives rescaling | For k alone. With d, the number d/k² survives, and the iterative residue reads it (F1) |
