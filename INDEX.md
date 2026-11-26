@@ -20,7 +20,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: number-theory geometries as ways to bend the hypercube: tropical (corners), permutohedron (paths), cluster algebras (cube into associahedra). | `topics/number-theory-geometries/` | — |
 | DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild; the dimension dial gives 1/r^(D−1) from flux, and the pictures meet only at D = 3. | `topics/gravity-from-theory/` | — |
 | DRAFT: curved space from counting (1 + 1 dimensions) and the river; radial-plane follow-up. | `topics/curved-space/` | — |
-| DRAFT: Newton's G lead reopened: Sakharov's induced gravity; second-loop ρ doesn't match. | `topics/newton-g/` | — |
+| DRAFT: Newton's G lead reopened: Sakharov's induced gravity; second-loop ρ doesn't match; second pass (Nov 26) closes it again and fixes two slips. | `topics/newton-g/` | — |
 | DRAFT: maths with the same shape as Navier–Stokes, with spacetime as a turbulent flow. | `topics/ns-same-shape/` | — |
 | DRAFT: warp bubbles, wormholes and artificial gravity through the circle operation. No route; one wormhole reading. | `topics/warp-bubble/` | `Topics/WarpWormhole` |
 | DRAFT: shapes beyond the hypercube (associahedron, elliptope, pentagon, double copy). | `topics/beyond-the-cube/` | — |

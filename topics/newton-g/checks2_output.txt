@@ -1,0 +1,23 @@
+[PASS] P1: log of the plane law: L(x) = x - k x^2/2 + (k^2 - d) x^3/3 + ...; so E = L^-1 has a2 = k/2, a3 = k^2/6 + d/3 and rho = 1 - a3/a2^2 = 1/3 - 4d/(3k^2)
+[PASS] P2: rho measured from the flow (theta = eps + rho eps^2) equals 1/3 - 4d/(3k^2) at 8 points of the (k, d) plane; worst gap 2.7e-06
+[PASS] P3: on the parabola d = k^2/4 the rung step is exactly the Moebius map x/(1 - kx/2): theta = eps at every eps, rho = 0 (the one-loop, circle-op class)
+[PASS] P4: sliding the shape dial k from 1 toward 0 with d = 0 leaves rho = 1/3 (values 0.333333, 0.333333, 0.333333, 0.333333): the slide is a rescaling
+[PASS] P5: rho depends on k and d only through d/k^2 (k = 2, d = -0.8 gives the same 0.600000 as k = 1, d = -0.2)
+[PASS] P6: gravity's rho = 3/5 sits at d/k^2 = -1/5 (discriminant/k^2 = 9/5), on the hyperbola side; nothing in the plane picks that point (see P7)
+[PASS] P7: sign of rho = conic type: ellipse side (spheres) rho < 0, parabola 0, hyperbola side rho > 0. Named points give 0, 1/3, 2/3, 1, -1/3; gravity's 3/5 is none of them, and every sphere-like point has the wrong sign
+[PASS] P8: moving d at fixed k is, for rho, the same as changing the clock: E_{k,d} with discriminant/k^2 = c has rho = c/3, the value E itself has when one height spans c e-folds (Q1)
+[PASS] Q1: measured per e-fold, E's rho is (ln r)/3 when one height step spans an energy ratio r: r = 2: 0.2309, r = e: 0.3334, r = e^2: 0.6667, r = 6: 0.5973, r = e^(9/5): 0.6000
+[PASS] Q2: E matches gravity's 3/5 only at r = e^(9/5) = 6.0496, i.e. one height = 9/5 e-folds (one e-fold = 5/9 of a height). [Corrects the first pass's wording, which had this inverted.]
+[PASS] Q3: near miss, flagged as numerology: an integer blocking ratio r = 6 gives 0.5973 (0.45% from 3/5); r is one free number chosen to hit one target, and 3/5 itself is one scheme's two-loop value
+[PASS] Q4: the parabola point rho = 0 is the only clock-free value: the Moebius step has rho = 0 for every r. Only the sign of rho survives a change of clock
+[PASS] H1: the rung ruler (Abel function of E) is -2/x + rho ln|x| + const: with rho = 1/3 it settles (last step 4.9e-07); with rho = 0 it drifts by (1/3) ln 10 = 0.7675 per decade of rungs (seen 0.7675)
+[PASS] H2: gravity's RG time t(g) = int dg/beta(g) has the same pole-plus-log form with log coefficient -rho; so comparing the two rulers is comparing rho, and the ruler's unit is again the clock r. The hypernatural ruler adds no new number
+[PASS] A1: audit: the first pass wrote k = -g*. In base dials k = -(n-2)/w (inputs w, dimension n); g* = 12pi/23 is the read-out wall. Same number, now in the right direction
+[PASS] A2: audit: the Richards / l^p curve's p = 23/22 was set from Litim's exponent theta (a reading). So its two end rates match by construction; only the in-between closeness is a result
+[PASS] A3: audit: the odds G0 w k^2 is the base dial (one per scale); the share R = t/(1 + t) is its reading. The first pass called R the 'probability' first; reworded
+[PASS] A4: audit: rho = 1/3 - 4d/(3k^2) is a reading (output). The clock r and the matter central charge are inputs. No reading in the design rule can set an input, so no dial argument can fix the clock
+[PASS] N1: polished: largest gap to the exact Litim crossover is 0.00203 for the l^p curve (at t = -0.725) and 0.00680 for the logistic (at t = +0.861); the first pass's 0.0020 and 0.0068 stand
+[PASS] N2: polished constants: g* = 12pi/23 = 1.639092, theta = 23/11 = 2.090909, B1 = -11/(3pi), B2 = 1/(12pi)
+[PASS] N3: polished: 2D gravity's rho from Aida-Kitazawa's beta, three-point fit 0.60000 (exact 15/25 = 3/5)
+
+21/21 checks pass

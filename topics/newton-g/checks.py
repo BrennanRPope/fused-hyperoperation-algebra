@@ -69,9 +69,9 @@ out["rho_gravity_c0"] = 0.6
 # ===== D. numerology test =====
 cfac = 0.6/(1/3)
 c_lnk = 25 - 15*3          # 15/(25-c) = 1/3
-c_lnk2 = 25 - 15/(2/3)     # E-step = ln k^2 => rho_E in ln k units = 2/3
+c_lnk2 = 25 - 15/(2/3)     # one E step = 2 e-folds (r = e^2) => rho_E per e-fold = 2/3
 check("D1", abs(cfac - 1.8) < 1e-12 and c_lnk == -20 and abs(c_lnk2 - 2.5) < 1e-12,
-      "to match gravity to E you must pick a time unit (factor 9/5) or a matter central charge: c = -20 (one height = ln k) or c = 2.5 (= ln k^2); neither is a natural value")
+      "to match gravity to E you must pick a time unit (factor 9/5) or a matter central charge: c = -20 (one height = 1 e-fold, r = e) or c = 2.5 (one height = 2 e-folds, r = e^2); neither is a natural value")
 # offspring law that would hit 3/5: f'''(1)/sigma^4 = 3/5
 check("D2", abs(rho_branching(1, 0.6) - 0.6) < 1e-12,
       "a critical branching law with f'''(1)/sigma^4 = 3/5 reproduces gravity's 3/5; the ladder can hit any rho <= 1, so landing on it is one free number fitting one number")

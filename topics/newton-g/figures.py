@@ -52,10 +52,10 @@ c = np.linspace(-40, 12.4, 400); a.plot(c, 15/(25 - c), color=RED, width=2.5)
 a.hline(1/3, color=BLUE, dash="6,4"); a.hline(2/3, color=BLUE, dash="2,4")
 a.dot(-20, 1/3, color=BLUE); a.dot(2.5, 2/3, color=BLUE); a.dot(0, 0.6, color=RED)
 a.frame(xticks=[(v, str(v)) for v in [-40, -30, -20, -10, 0, 10, 20]], yticks=[0, 1/3, 0.6, 2/3, 1], fmt="{:.2f}", xlabel="matter central charge c", ylabel="rho")
-a.text(-39, 0.30, "E, one height = ln k", size=12, color=BLUE); a.text(-39, 0.70, "E, one height = ln k^2", size=12, color=BLUE)
+a.text(-39, 0.36, "E, one height = 1 e-fold (r = e)", size=12, color=BLUE); a.text(-39, 0.70, "E, one height = 2 e-folds (r = e^2)", size=12, color=BLUE)
 a.text(-19, 0.25, "needs c = -20", size=12, color=BLUE); a.text(3.5, 0.74, "needs c = 2.5", size=12, color=BLUE)
 a.text(1, 0.53, "pure gravity: 3/5", size=12, color=RED); a.text(-12, 0.95, "gravity: rho = 15/(25 - c)", size=13, color=RED)
-f.lines(690, 90, "Free numbers available:\n- the clock (height vs ln k): any factor\n- matter content c\n- for branching: the offspring law\n\nOne target number (3/5).\nEach knob alone hits it.\nNone lands on a natural value.\n\nVerdict: no test, so\nno evidence either way.", size=13)
+f.lines(690, 90, "Free numbers available:\n- the clock r (energy ratio per height)\n- matter content c\n- for branching: the offspring law\n\nOne target number (3/5).\nEach knob alone hits it.\nNone lands on a natural value.\n\nVerdict: no test, so\nno evidence either way.", size=13)
 f.save("figures/n3-numerology.svg")
 
 # ---------- n4: shape ----------
