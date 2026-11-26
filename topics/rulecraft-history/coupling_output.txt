@@ -1,0 +1,13 @@
+PASS K1 coupled rule after the rule it reads, minus before: x-gap = lam mu b (s - y); y-gap 0
+PASS K2 b = 0 (x's rule does not read y): the two rules commute
+PASS K3 40 random rule packages (3 to 6 rules on 2 to 5 sliders, exact): conflict = same slider with different targets, or one reads what the other writes; distinct outcomes over all orders = acyclic orientations of the conflict graph = |chromatic polynomial at -1|; e.g. [(5, 7, 54, 54), (3, 3, 6, 6), (3, 2, 4, 4), (4, 5, 18, 18), (6, 11, 288, 288), (3, 3, 6, 6)]
+PASS K4 everything conflicts -> 5! = 120 histories; nothing conflicts -> 1; separate groups multiply (path of 3 and triangle: 4 x 6 = 24)
+PASS K5 one round (x's rule, then y's): trace = 2 - lam - mu + lam mu b c, det = (1-lam)(1-mu)
+PASS K6 with b c = 0, Delta = (lam - mu)^2: real; Delta grows with b c > 0, so a spiral (Delta < 0) needs b c < 0, a balancing loop
+PASS K7 200000 random two-way couplings with |b|, |c| <= 1: 39104 spiral, every one with b c < 0 (0 exceptions)
+PASS K8 reading the turn as a (k, d) setting (k = -trace, d = det): Delta = k^2 - 4d is the turn's discriminant
+PASS K9 one-way coupling: going round the loop leaves the shear [[1, b*lambda*mu/(mu - 1)], [0, 1]] (pure coupling residue; identity iff b = 0)
+PASS K10 two-way coupling: trace of the loop's linear part minus 2 = b*c*lambda**2*mu**2*(b*c - 1)/((lambda - 1)*(mu - 1)) (zero iff b c = 0 or b c = 1)
+PASS K11 enact f, enact g, repeal f, repeal g: the residue has det 1; it squeezes (trace > 2) whenever the loop balances (b c < 0), and for a gentle reinforcing loop (0 < b c < 1) it is rotation type unless both rules are strong (b c (1 - b c) l^2 u^2 >= 4 (1-l)(1-u)) [{'squeeze': 29897, 'rotation': 19076, 'flip': 1027}]
+
+11 of 11 coupling checks pass

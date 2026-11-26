@@ -1,0 +1,10 @@
+PASS Q1 eight seven-rule packages (5040 orders each, exact): distinct outcomes = |chi(-1)| every time; [(1920, 1920), (1440, 1440), (1152, 1152), (240, 240), (540, 540), (576, 576), (36, 36), (1920, 1920)]
+PASS Q2 exact: Delta(p) = (lam - mu)^2 + lam mu p (2(2 - lam - mu) + lam mu p), every term >= 0 when p = b c >= 0 and 0 < lam, mu < 1, so no spiral without a balancing loop
+PASS Q3 Delta = 0 at p = [(lambda + mu - 2*sqrt((lambda - 1)*(mu - 1)) - 2)/(lambda*mu), (lambda + mu + 2*sqrt((lambda - 1)*(mu - 1)) - 2)/(lambda*mu)]; between these roots (both <= 0) the turns spiral
+PASS Q4 the loop residue's trace is the Fricke identity tr[A,B] = trA^2 + trB^2 + trAB^2 - trA trB trAB - 2 applied to the two rules scaled to det 1 (known; only the reading is ours)
+PASS Q5 Jury: 1 - tr + det = lam mu (1 - p) and 1 + tr + det = lam mu p + (2 - lam)(2 - mu): settles iff -(2-lam)(2-mu)/(lam mu) < p < 1
+PASS Q6 five zones on p = b c, in order: growing swings | overshoot each turn | spiral | smooth settle | runaway (cuts -(2-l)(2-u)/lu, -(sqrt(1-l)+sqrt(1-u))^2/lu, -(sqrt(1-l)-sqrt(1-u))^2/lu, 1); 100000 samples agree with the eigenvalues {0: 62178, 1: 2412, 2: 30512, 3: 3351, 4: 1547}
+PASS Q6b equal strengths (lam = mu): the spiral zone starts at p = 0, so every balancing loop spirals
+PASS Q7 run long, the pair settles at x* = (a + b s)/(1 - b c) for every strength and either order: order and strength shape the path, the loop sets the destination
+
+8 of 8 coupling polish checks pass

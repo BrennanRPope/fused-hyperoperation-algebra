@@ -2,7 +2,9 @@
 
 **DRAFT, 26 Nov 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra). Follows up lead F2 of [`closed-leads-fresh-look/`](../closed-leads-fresh-look/README.md). Checks:
 [`checks.py`](checks.py) (24 of 24 pass, [output](checks_output.txt)); polishing pass [`polish.py`](polish.py) (4 of 4,
-[output](polish_output.txt)); pictures [`figures.py`](figures.py).
+[output](polish_output.txt)); pictures [`figures.py`](figures.py). Coupling (section 9):
+[`coupling_checks.py`](coupling_checks.py) (11 of 11, [output](coupling_output.txt)), [`coupling_polish.py`](coupling_polish.py)
+(8 of 8, [output](coupling_polish_output.txt)), pictures [`coupling_figures.py`](coupling_figures.py).
 
 **What Rulecraft is, for this page.** Rulecraft is Brennan's book on designing who decides what. Its society model
 describes a society by *sliders*: numeric settings on a 0-to-1 scale with labelled ends (categorical ones are mixes that
@@ -19,10 +21,12 @@ clean results. Four are the ones worth following:
 2. **The best order is "sort by target", whatever the strengths**; outcomes fall in a ladder over the orders.
 3. **A memory exponent α turns decision gravity into three regimes**, split at α = 1/2 and α = 1.
 4. **The curvature reading Δ counts the anchors a family of rules respects**: two, one at infinity, or none.
+5. **When rules read other sliders (coupling), a package's clashes say how many histories it really has**, and two
+   rules that read each other fall into one of five behaviours set by a single number, the loop product b·c (section 9).
 
 The math under all of it is known (the affine group, stick-breaking, Robbins–Monro, Bernoulli convolutions, Möbius
 maps). What is ours is the reading, and the fact that a society applying rules one at a time is running the same
-recursion as stochastic gradient descent, so results from machine learning carry straight over to Rulecraft (section 7).
+recursion as stochastic gradient descent, so results from machine learning carry straight over to Rulecraft (section 8).
 
 ---
 
@@ -200,6 +204,68 @@ rules one at a time is running incremental gradient descent on its stakeholders'
 This is the "useful in other areas" result, though the traffic runs mostly the other way: Rulecraft can borrow a mature
 toolbox for each of its questions about order.
 
+## 9. Coupling: rules that read other sliders
+
+A coupled rule nudges one slider toward a target that depends on other sliders: X ← (1 − λ)X + λ(a + bY). This is
+Brennan's coupling idea from architecture, put on the sliders. Three things fall out.
+
+### Which orders really differ
+
+![Six clash graphs on five rules with their history counts, and the average count against n! as packages grow](figures/fig9-histories-from-clashes.png)
+
+Two rules **clash** when they write the same slider toward different targets, or when one reads a slider the other
+writes. Draw a dot for each rule and a line for each clash. Then the number of genuinely different outcomes over all n!
+orders is the number of ways to point every line one way without making a loop, which is |χ(−1)|, the clash graph's
+chromatic polynomial at −1 up to sign. Separate groups multiply. For five rules: no clashes gives 1 history, a chain
+gives 16, a cycle 30, everything clashing all 120 (checks K3, K4, Q1: exact on 40 packages of 3 to 6 rules and 8 packages
+of 7 rules, 5040 orders each). The count is for typical numbers; a coincidence between rules can only merge histories,
+so |χ(−1)| is always the most there can be.
+
+Known: acyclic orientations counted by |χ(−1)| (Stanley 1973); orders up to swapping non-clashing neighbours are the
+trace monoid of Cartier and Foata (1969); "the order of these two matters" is what software design calls connascence of
+execution order (Page-Jones). Ours: the clash rule for sliders, and the reading that each separate group of a package's
+clash graph can be decided on its own, while inside a group the history size is computable before anyone votes.
+
+### Two rules that read each other
+
+![The five zones on the loop product b·c, a trajectory from each zone, and the zone map at equal strengths](figures/fig10-five-zones.png)
+
+Let X's rule read Y with weight b and Y's rule read X with weight c, and let them take turns. Only the **loop product
+p = b·c** matters (p < 0 is a balancing loop, p > 0 a reinforcing one), and it falls into five zones:
+
+| zone on p = b·c | what society does |
+|---|---|
+| p < −(2 − λ)(2 − μ)/(λμ) | swings wider every turn |
+| up to −(√(1−λ) + √(1−μ))²/(λμ) | overshoots every turn, settling |
+| up to −(√(1−λ) − √(1−μ))²/(λμ) | spirals in |
+| up to 1 | settles smoothly |
+| p > 1 | runs away |
+
+With equal strengths the spiral zone starts right at p = 0, so **every balancing loop between equally strong rules
+spirals**; and no reinforcing loop ever spirals (Q2, exact). Wherever the pair settles, it settles at
+**x\* = (a + b s)/(1 − b c), whatever the strengths and whichever rule goes first**: order and strength shape the path,
+the loop alone sets the destination (Q7). Reading the turn as a (k, d) setting with k = −trace and d = det, the spiral
+test is exactly Δ < 0, the "no anchors" case of section 7 (K8).
+
+Known: taking turns is the Gauss–Seidel iteration, with strength as relaxation (successive over-relaxation, Young
+1950); the zone edges follow from the Jury stability criterion; 1/(1 − loop) is the feedback gain formula; balancing
+loops oscillating is standard system dynamics. Ours: the reading for Rulecraft. The book's thermostat is a balancing
+loop, so it should expect a swing before it settles, and a wider swing every turn once the loop is too strong for the
+strengths; lock-in is a reinforcing loop with b·c > 1.
+
+### Pass two rules and repeal them
+
+![Type of the leftover after pass-and-repeal over b·c and strength, and the leftover's path over 40 cycles](figures/fig11-pass-and-repeal.png)
+
+Enact f, enact g, repeal f, repeal g. With one-way coupling the world comes back off by a shear (K9): a fixed offset
+that adds up every cycle. With two-way coupling the leftover has determinant 1 and trace
+2 + p(p − 1)λ²μ²/((1 − λ)(1 − μ)) (K10, K11). A **balancing loop leaves a squeeze**, so the leftovers grow every cycle;
+a gentle **reinforcing loop leaves a rotation**, so the leftovers wheel round and stay small, unless both rules are
+strong (p(1 − p)λ²μ² ≥ 4(1 − λ)(1 − μ)), when it flips. That is the opposite of taking turns, where the balancing loop
+is the one that settles. Known: the trace is the Fricke identity for a commutator (Q4). Ours: the reading, and the
+flip between running forward and passing-and-repealing. The pictures show the linear part only; the targets add a
+fixed offset on top.
+
 ## Verdict
 
 **Opens a lead, mainly for the book; two readings are worth carrying into the theory.**
@@ -210,12 +276,15 @@ toolbox for each of its questions about order.
   rule set that pulls toward different targets has history with a computable size.
 - For the theory: the k = −1 law turns out to be the law of same-target rules (adding a third field to the k = −1
   cluster), and Δ gains a plain meaning as the number of anchors a family of rules respects.
+- Coupling (section 9) is the most usable new piece for Rulecraft: count a package's clash graph to see how much its
+  history matters, and read any two rules that read each other off one number, b·c, with the settle point fixed by the
+  loop alone. The math is known (Stanley, Gauss–Seidel, Jury, Fricke); the slider reading is ours.
 - Not a lead: section 5 as mathematics (known, and the open problems there are hard and not ours); section 7's
   hyperbolic plane (known).
 
-**Next steps, if wanted.** Two-slider rules, where a rule's target depends on another slider (coupling, Brennan's
-central idea in architecture), which brings real holonomy; and fitting α to a real rule history (for example the
-centralization slider of the United States that the notes already sketch).
+**Next steps, if wanted.** Fitting α to a real rule history (for example the centralization slider of the United
+States that the notes already sketch); and finding a real pair of rules that read each other, to see whether its swing
+matches the zone that b·c predicts.
 
 ## Records and corrections
 
@@ -234,4 +303,8 @@ Romer and Rosenthal (1978). Ali, Bernheim, Bloedel and Console Battilana, AER 11
 (1995). Trotter (1959). Smith, Dherin, Barrett and De, "On the origin of implicit regularization in SGD", ICLR 2021
 (arXiv 2101.12176). Camuto et al., "Fractal structure and generalization properties of stochastic optimization
 algorithms", arXiv 2106.04881. Proskurnikov and Tempo, arXiv 1801.06719. Cao and Cortez, arXiv 2408.01624. Solomyak
-(1995); Hochman (2014); Varjú, JAMS (2019).
+(1995); Hochman (2014); Varjú, JAMS (2019). Stanley, "Acyclic orientations of graphs", *Discrete Math.* 5 (1973).
+Cartier and Foata, *Problèmes combinatoires de commutation et réarrangements*, LNM 85 (1969). Page-Jones, *What every
+programmer should know about object-oriented design* (1995), on connascence. Young, *Iterative methods for solving
+partial difference equations of elliptic type* (thesis, 1950). Jury, *Theory and application of the z-transform
+method* (1964). Fricke and Klein (1897) on the trace identity.
