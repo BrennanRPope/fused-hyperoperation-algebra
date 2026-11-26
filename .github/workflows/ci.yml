@@ -64,7 +64,9 @@ jobs:
         run: python -m pip install -r tools/requirements-checks.txt
 
       - name: Run every topics/**/checks*.py (and tools/extra_checks.txt) and compare with the saved output
-        run: python tools/run_checks.py --jobs 4 --timeout 1500
+        # biology/03-cell takes about 13 minutes on a normal runner and doubled on a slow one (run 27),
+        # so the per-script limit is 50 minutes; the job's own limit stays 90.
+        run: python tools/run_checks.py --jobs 4 --timeout 3000
 
       - name: Topic write-ups still missing an Assumptions section (report only)
         if: always()
