@@ -28,14 +28,15 @@ ax[0].axhline(0, color=INK2, lw=0.8)
 ax[0].set_xlabel("height s"); ax[0].set_ylabel("iterative residue  résit")
 ax[0].set_ylim(-0.05, 1.6); ax[0].legend(fontsize=8.5)
 ax[0].set_title("A. Height × residue = 1/3 at every height")
-x = np.linspace(-1.2, 3.2, 200)
-ax[1].plot(x, x/3, color=BLUE, label="plane dial: résit = Δ/(3k²)")
-pts = [(1.0, "e^x − 1  (d = 0)", ORANGE), (2.0, "k = 1, d = −1/4", AQUA), (0.0, "Δ = 0: Möbius,\ntrivial horns", VIOLET)]
+x = np.linspace(-0.55, 0.55, 200)
+res_ = lambda x: 1/3 - 4*x/3
+ax[1].plot(x, res_(x), color=BLUE, label="plane dial: résit = 1/3 − 4d/(3k²)")
+pts = [(0.0, "e^x − 1  (d = 0)", ORANGE), (-0.25, "k = 1, d = −1/4", AQUA), (0.25, "k² = 4d: Möbius,\ntrivial horns", VIOLET)]
 for xx, lab, c in pts:
-    ax[1].plot([xx], [xx/3], "o", ms=9, color=c, mec="white", mew=2, zorder=3)
-    ax[1].annotate(lab, (xx, xx/3), xytext=(10, -22), textcoords="offset points", fontsize=8.5, color=INK)
+    ax[1].plot([xx], [res_(xx)], "o", ms=9, color=c, mec="white", mew=2, zorder=3)
+    ax[1].annotate(lab, (xx, res_(xx)), xytext=(12, 8), textcoords="offset points", fontsize=8.5, color=INK)
 ax[1].axhline(0, color=INK2, lw=0.8); ax[1].axvline(0, color=INK2, lw=0.8)
-ax[1].set_xlabel("Δ / k²   (Δ = k² − 4d; the curvature is −Δ/4)"); ax[1].set_ylabel("iterative residue  résit")
+ax[1].set_xlabel("d / k²   (the base dials; résit is 0 on the line k² = 4d)"); ax[1].set_ylabel("iterative residue  résit")
 ax[1].legend(fontsize=8.5, loc="upper left")
 ax[1].set_title("B. The plane dial moves the residue; the corner dial does not")
 save(fig, "f9_residue_height_and_dial.png")
@@ -57,7 +58,7 @@ T = H["table"]
 short = {"e^x − 1 (our height-1 map)": "e^x − 1 (ours)", "Möbius x/(1 − x/2)": "Möbius",
          "x + x²/2 + x³/6 (e^x − 1 cut at x³)": "e^x − 1 cut at x³", "x·e^(x/2)": "x·e^(x/2)",
          "−log(1 − x)": "−log(1 − x)", "x + x²/2": "x + x²/2",
-         "plane dial k = 1, d = −1/4": "plane k=1, d=−1/4", "plane dial k = 1, d = 1/4 (Δ = 0)": None}
+         "plane dial k = 1, d = −1/4": "plane k=1, d=−1/4", "plane dial k = 1, d = 1/4 (k² = 4d)": None}
 floor = 1e-3
 for name, r, a1, sf in T:
     lab = short.get(name, name)

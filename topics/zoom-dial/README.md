@@ -17,7 +17,7 @@ Closed: the fractal dials table moves "zoom" from missing to has-it (one new inp
 
 ## Known vs new (honest)
 - All known: Moran 1946 (the equation), Hutchinson 1981 (self-similar sets), Lapidus and van Frankenhuijsen, *Fractal Geometry, Complex Dimensions and Zeta Functions* (2013), whose geometric zeta function for self-similar strings is this word series and whose poles are the complex dimensions.
-- New only as packaging: the chain zoom → twist → k = 0 sum → k = −1 word series → wall, which ties the fractal dials to the repetition result (item 1) and the size dial. Not a discovery.
+- New only as packaging: the chain zoom → homothety → k = 0 sum → k = −1 word series → wall, which ties the fractal dials to the repetition result (item 1) and the size dial. Not a discovery.
 
 ## Figures
 - fig1-zoom-is-weight.png: half boxes A and D drawn to depth 3, each piece labelled with its weight r^D; every depth adds to 1.

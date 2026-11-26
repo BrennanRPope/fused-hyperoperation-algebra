@@ -59,11 +59,11 @@ amap = lambda T: T/(1 - (k/2)*T)
 lhs = amap((T1 + T2)/(1 - kap*T1*T2)); rhs = F.subs({a: amap(T1), b: amap(T2)})
 rec("B3", sp.simplify(lhs - rhs) == 0 and
     sp.expand((x1 + k*y1/2)**2 + kap*y1**2 - N(x1, y1)) == 0,
-    "completing the square (X = x + ky/2) is the Cayley map a = T/(1-(k/2)T): N = X^2 + κY^2, law -> (T1+T2)/(1-κT1T2), κ = d - k^2/4")
+    "completing the square (X = x + ky/2) is the Cayley map a = T/(1-(k/2)T): N = X^2 + (d - k^2/4)Y^2, law -> (T1+T2)/(1-(d - k^2/4)T1T2), in the base dials k, d")
 X_, Y_ = sp.symbols('X Y')
 f_e = sp.factor_list(X_**2 + Y_**2); f_p = sp.factor_list(X_**2); f_h = sp.factor_list(X_**2 - Y_**2)
 rec("B4", len(f_e[1]) == 1 and f_p[1][0][1] == 2 and len(f_h[1]) == 2,
-    "radius-0 level N = 0 over the reals: κ>0 only the point 0 (X^2+Y^2 irreducible); κ=0 a double line X^2; κ<0 two crossing lines (X-Y)(X+Y)")
+    "radius-0 level N = 0 over the reals: Delta<0 only the point 0 (X^2+Y^2 irreducible); Delta=0 a double line X^2; Delta>0 two crossing lines (X-Y)(X+Y)")
 ok = True
 for kk, dd in [(0, -1), (-1, 0), (1, -2), (3, 1)]:
     w = np.roots([dd, kk, 1]) if dd != 0 else np.array([-1/kk])
@@ -148,7 +148,7 @@ for kk, dd in [(0, 1), (1, 1), (0, 0.25), (2, 1), (0, -1), (1, -0.5), (-1, 0), (
     pred = 2**(4/3)*kap
     rows.append((kk, dd, kap, vals[0], vals[1], pred))
     ok &= all(abs(v - pred) < 1e-8 for v in vals)
-rec("D1", ok, "equi-affine curvature of the chord conic is constant and equals 2^(4/3)·κ, κ = d - k^2/4 "
+rec("D1", ok, "equi-affine curvature of the chord conic is constant and equals 2^(4/3)·(d - k^2/4), the reading 2^(4/3)·(-Delta/4) "
     + "; ".join(f"(k,d)=({r[0]},{r[1]}): {r[3]:.6f} vs {r[5]:.6f}" for r in rows))
 def ecc(kk, dd):
     ev = np.linalg.eigvalsh([[1, kk/2], [kk/2, dd]])

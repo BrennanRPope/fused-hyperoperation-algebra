@@ -175,7 +175,7 @@ a2.plot(xs, xs, color=GREY, ls=':', lw=1)
 a2.plot([0], [0], 'o', color=BLUE, ms=9); a2.text(0.08, -0.5, 'centre of f', color=BLUE, fontsize=9)
 a2.plot([1], [1], 'o', color=RED, ms=9); a2.text(1.05, 0.55, 'centre of g', color=RED, fontsize=9)
 a2.annotate('', (-1.5, f(g(-1.5))), (-1.5, g(f(-1.5))), arrowprops=dict(arrowstyle='<->', color='k', lw=1.5))
-a2.text(-1.45, (f(g(-1.5))+g(f(-1.5)))/2, '  gap = a·d − b·c = 1·(−1) − 1·0\n  the same everywhere: a pure shift', fontsize=9, va='center')
+a2.text(-1.45, (f(g(-1.5))+g(f(-1.5)))/2, '  gap = a·e − b·c = 1·(−1) − 1·0\n  the same everywhere: a pure shift', fontsize=9, va='center')
 a2.set_xlim(-3, 2); a2.set_ylim(-9, 6); a2.grid(alpha=0.3); a2.legend(fontsize=9, loc='lower right'); a2.set_xlabel('x')
 a2.set_title('Different centres ⇒ order matters.\nThe gap is the wedge of (stretch, shift) pairs.')
 fig.suptitle('Composition is the home: the commuting slice through the wall is the circle operation; the full stretch-and-shift (affine) group is where order begins.\n(Known group; circle-operation reading ours.)', fontsize=11, y=1.06)
@@ -205,7 +205,7 @@ fig.savefig(OUT + 'fig8-route-to-quantum.png', bbox_inches='tight'); plt.close(f
 # ---------- fig9: one wedge, three places ----------
 fig, axs = plt.subplots(1, 3, figsize=(12.5, 4.3))
 specs = [('Clifford (vectors)', 'x ∘₁ y − y ∘₁ x = 2 x∧y', 'x', 'y', BLUE),
-         ('Affine maps (stretch, shift)', 'f∘g − g∘f shift = a·d − b·c', '(a, c)', '(b, d)', PURPLE),
+         ('Affine maps (stretch, shift)', 'f∘g − g∘f shift = a·e − b·c', '(a, c)', '(b, e)', PURPLE),
          ('Heisenberg (shift, boost)', 'phase = (a₁b₂ − a₂b₁)/2ħ', '(a₁, b₁)', '(a₂, b₂)', ORANGE)]
 for ax, (t, form, l1, l2, col) in zip(axs, specs):
     u = np.array([1.6, 0.4]); v = np.array([0.5, 1.3])

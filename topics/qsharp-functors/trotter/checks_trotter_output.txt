@@ -1,0 +1,37 @@
+==============================================================================
+1. THE LEFTOVER IS A SUM OVER THE CUBE'S ORDERINGS (exact)
+==============================================================================
+[PASS] E1 N=2: generator of x_1 o ... o x_2, top level = sum over all 2 orderings, weight (-1)^d / (N C(N-1,d)), d = descents: weights by d: d=0: 1/2, d=1: -1/2
+[PASS] E1 N=3: generator of x_1 o ... o x_3, top level = sum over all 6 orderings, weight (-1)^d / (N C(N-1,d)), d = descents: weights by d: d=0: 1/3, d=1: -1/6, d=2: 1/3
+[PASS] E1 N=4: generator of x_1 o ... o x_4, top level = sum over all 24 orderings, weight (-1)^d / (N C(N-1,d)), d = descents: weights by d: d=0: 1/4, d=1: -1/12, d=2: 1/12, d=3: -1/4
+[PASS] E1 N=5: generator of x_1 o ... o x_5, top level = sum over all 120 orderings, weight (-1)^d / (N C(N-1,d)), d = descents: weights by d: d=0: 1/5, d=1: -1/20, d=2: 1/30, d=3: -1/20, d=4: 1/5
+[PASS] E1 N=6: generator of x_1 o ... o x_6, top level = sum over all 720 orderings, weight (-1)^d / (N C(N-1,d)), d = descents: weights by d: d=0: 1/6, d=1: -1/30, d=2: 1/60, d=3: -1/60, d=4: 1/30, d=5: -1/6
+[PASS] E2 the weights add to zero at every level N >= 2: so when the inputs commute, the radius adds exactly (no error): N = 2..8
+[PASS] E3 how many orderings carry each weight: Eulerian numbers (1,4,1), (1,11,11,1), (1,26,66,26,1) = n! x volumes of the cube's slabs d <= x_1+...+x_n <= d+1: {3: [1, 4, 1], 4: [1, 11, 11, 1], 5: [1, 26, 66, 26, 1]}
+[PASS] E3b sampling the 4-cube: slab volumes 1/24, 11/24, 11/24, 1/24: [ 1.001 11.001 10.995  1.004] / 24
+
+==============================================================================
+2. THE k^3 AND k^4 TROTTER TERMS FROM THOSE CORNER WEIGHTS
+==============================================================================
+[PASS] T1 k^2 term from the corner weights = (1/2)[A,B]: {('A', 'B'): Fraction(1, 2), ('B', 'A'): Fraction(-1, 2)}
+[PASS] T2 k^3 term from the corner weights = (1/12)([A,[A,B]] + [B,[B,A]])  (exact, as words): 6 words agree
+[PASS] T3 k^4 term from the corner weights = -(1/24)[B,[A,[A,B]]]  (exact, as words): 4 words agree
+[PASS] T4 numerically on qubit gates: the fitted k^3 and k^4 parts of log(e^{kA} e^{kB}) match the corner-weight terms: k^3 miss 1.5e-11, k^4 miss 2.2e-09 (sizes 0.445, 0.067)
+[PASS] T5 symmetric (Strang) splitting: the same corner weights on three time blocks kill the k^2 term and give the k^3 term -(1/24)[A,[A,B]] + (1/12)[B,[B,A]]: k^2 term {}; k^3 matches as words and numerically (9.5e-12)
+
+==============================================================================
+3. RUNGS: does any higher term need another log (a higher rung)?
+==============================================================================
+[PASS] R1 the part of each term with one B is (B_m/m!) ad_A^m B: Bernoulli numbers, so the k^4 single-B part is 0: n=2: 1/2; n=3: 1/12; n=4: 0; n=5: -1/720; n=6: 0
+[PASS] R2 those Bernoulli weights are the reciprocal series of the corner-simplex volumes 1/(n+1)! (the series that gives e): (z/(e^z-1)) x ((e^z-1)/z) = 1 to order 6
+[PASS] R3 every order is a plain polynomial in the gates (words of length n): one log at the start, none inside. Not a new rung.: orders 2..5
+
+==============================================================================
+POLISH: replace each estimate above with an exact closed form (cheap)
+==============================================================================
+[PASS] P1 polish E3b: exact slab volumes of the n-cube = Eulerian number / n!, no sampling: n=4: ['1/24', '11/24', '11/24', '1/24']
+[PASS] P2 polish T4: exact k-series of log(e^{kA} e^{kB}) (rational arithmetic, no fit): its k^3 and k^4 parts equal the corner-weight terms with zero error: k^2, k^3, k^4 agree exactly
+[PASS] P3 polish T5: exact k-series for Strang splitting: k^2 part is exactly 0 and the k^3 part equals the corner-weight term with zero error: exact
+POLISH cost: 13.7 ms in total (the sampling it replaces drew 2,000,000 points)
+
+19 of 19 checks pass

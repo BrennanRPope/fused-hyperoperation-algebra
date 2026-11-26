@@ -37,13 +37,14 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 
 <div class="band">
 <h1>The five dials come down to two, plus a picture and a setting</h1>
-<p class="lede">Of the five dials, only two are independent numbers: the weight <b>k</b> and the <b>one-dial-per-element</b> t. The prime dial is a slice of the per-element dial, the twist is k seen in two dimensions, and choice is a setting, not a number. The one new thing in this pass is what happens when k acts on per-element dials: k becomes "how many copies of an element are allowed", and on the primes that gives one family running from ζ(s)/ζ(2s) to ζ(s), with necklace counts as exponents.</p>
+<p style="font-size:14.5px;opacity:.85"><b>Names (Nov 26):</b> k is the <b>homothety</b>, the per-element dial t is the <b>odds</b>, and the twist is the <b>holonomy</b> ω, a reading of the dials and two directions. See the Dial names page, section 6.</p>
+<p class="lede">Of the five dials, only two are independent numbers: the weight <b>k</b> and the <b>odds</b> t, one dial per element. The prime dial is a slice of the odds dial, the holonomy (the twist) is a reading of k in two dimensions, and choice is a setting, not a number. The one new thing in this pass is what happens when k acts on the odds dials: k becomes "how many copies of an element are allowed", and on the primes that gives one family running from ζ(s)/ζ(2s) to ζ(s), with necklace counts as exponents.</p>
 <p class="mute">Quick survey, Nov 25, 2026, with a follow-up on the wall and Lee–Yang. 55 of 55 checks pass; 33 new Lean theorems compile in the shared library (2,930 total, no sorry).</p>
 <div class="fig" id="map" role="img" aria-label="Map of the five dials and the identities that link them"><svg id="ms"></svg></div>
 </div>
 
 <div class="band" style="padding-top:0">
-<nav class="scroll"><a href="#k">1. k</a><a href="#twist">2. Twist</a><a href="#elem">3. Per element</a><a href="#prime">4. Primes</a><a href="#choice">5. Choice</a><a href="#two">k on elements</a><a href="#wall">Wall and Lee–Yang</a><a href="#same">Same dial</a><a href="#proofs">Proofs</a></nav>
+<nav class="scroll"><a href="#k">1. k</a><a href="#twist">2. Holonomy</a><a href="#elem">3. Odds</a><a href="#prime">4. Primes</a><a href="#choice">5. Choice</a><a href="#two">k on elements</a><a href="#wall">Wall and Lee–Yang</a><a href="#same">Same dial</a><a href="#proofs">Proofs</a></nav>
 
 <h2 id="k">1. The k dial</h2>
 <p><b>What it is.</b> a ∘ₖ b = a + b + k·ab, with 1 + k(a ∘ₖ b) = (1 + ka)(1 + kb). In units λ times bigger, weight k reads as k·λ, so on bare numbers only the sign of k survives: k &gt; 0 is the circle operation ∘₁ (called mult-add before 1.0), k = 0 is addition, k &lt; 0 is "union of chances".</p>
@@ -51,10 +52,10 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <p><b>What following it gives.</b> On its own, nothing more: a one-parameter family whose only invariant is a sign is fully classified. Its size starts to matter only once elements carry their own dials, because then the dial values fix the units (section "k on elements").</p>
 <p class="verdict"><b>Not a lead by itself.</b> It's the axis the other dials are measured against. The separate search for a potential on k is the place where its size could get a physical meaning.</p>
 
-<h2 id="twist">2. The twist</h2>
-<p><b>What it is.</b> Composing two boosts in different directions leaves a turn e<sup>iω</sup> with tan(ω/2) = q(u×v)/(1 − d·u·v). That's d times the signed area of the velocity triangle: Gauss–Bonnet with curvature d.</p>
+<h2 id="twist">2. The holonomy (the twist)</h2>
+<p><b>What it is.</b> Composing two boosts in different directions leaves a turn e<sup>iω</sup> with tan(ω/2) = d(u×v)/(1 − d·u·v). That's d times the signed area of the velocity triangle: Gauss–Bonnet with curvature d.</p>
 <p><b>Connects to.</b> Thomas precession (1926), Wigner rotation (1939). Already matched data on the twisted-boosts page: Gravity Probe B's 6.6 arcsec/yr and the double pulsar's spin precession.</p>
-<p><b>What following it gives.</b> The project's firmest geometric underpinning: d is curvature, and the twist is how curvature shows up. But the twist has no setting of its own. It vanishes exactly when d·(u×v) = 0, so it's fixed by d and the directions. And the exact fusion inside it (−p = (−p<sub>space</sub>) ∘₁ (−p<sub>velocity</sub>)) is an identity of general relativity, so no measurement can split the two.</p>
+<p><b>What following it gives.</b> The project's firmest geometric underpinning: d is curvature, and the holonomy is how curvature shows up. But the holonomy has no setting of its own: it is a reading. It vanishes exactly when d·(u×v) = 0, so it's fixed by d and the directions. And the exact fusion inside it (−p = (−p<sub>space</sub>) ∘₁ (−p<sub>velocity</sub>)) is an identity of general relativity, so no measurement can split the two.</p>
 <p class="verdict"><b>Not a separate dial, and no new prediction.</b> Worth keeping as the geometric anchor your rule asks for, not as a path to follow further.</p>
 
 <h2 id="elem">3. One dial per element</h2>
@@ -64,7 +65,7 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <p class="verdict lead"><b>A lead, but only paired with k.</b> On its own it's the measure-theory shadow of the fractional power set. With k acting on it, it produces new structure (below).</p>
 
 <h2 id="prime">4. The prime dial</h2>
-<p><b>What it is.</b> The per-element dial on the set of primes with t<sub>p</sub> = p<sup>−s</sup>. That's a one-parameter slice of dial 3, not a new dial. ∏(1 + p<sup>−s</sup>) = ζ(s)/ζ(2s), the squarefree numbers.</p>
+<p><b>What it is.</b> The odds dial on the set of primes with t<sub>p</sub> = p<sup>−s</sup>. That's a one-parameter slice of dial 3, not a new dial. ∏(1 + p<sup>−s</sup>) = ζ(s)/ζ(2s), the squarefree numbers.</p>
 <p><b>Connects to.</b> The fermionic primon gas (Julia 1990, Spector 1990): s is inverse temperature, energies are log p, and s = 1 is the Hagedorn point where it boils.</p>
 <p><b>What following it gives.</b> Alone, known number theory. With k it becomes the two-dial family below, which is the clearest place two dials interact.</p>
 <p class="verdict"><b>Same dial as 3, on primes.</b> Its value is as the test bed for k on elements.</p>
@@ -72,10 +73,10 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <h2 id="choice">5. The choice dial</h2>
 <p><b>What it is.</b> How much of the axiom of choice holds. The earlier pass found a short ladder, by which rung goes flat on infinite sizes: successor flat is weak, addition flat is stronger, multiplication flat is full choice (Tarski 1924), and the exponent is never flat.</p>
 <p><b>Connects to.</b> The Howard–Rubin map of choice principles. That map branches: the Boolean prime ideal theorem and dependent choice are independent of each other, so choice grades form a partial order, not a number line.</p>
-<p><b>What following it gives.</b> The setting where a true fractional power set might exist: without choice, sizes can fall forever, so the halving obstruction goes away. k only switches between rungs there, and the twist does nothing, because size arithmetic commutes.</p>
+<p><b>What following it gives.</b> The setting where a true fractional power set might exist: without choice, sizes can fall forever, so the halving obstruction goes away. k only switches between rungs there, and the holonomy does nothing, because size arithmetic commutes.</p>
 <p class="verdict lead"><b>Not a dial, but the path through it is a lead.</b> The open question is the fractional power set in ZF; the next step stays a permutation model whose orbit counts grow like e<sup>c√n</sup>.</p>
 
-<h2 id="two">k acting on per-element dials</h2>
+<h2 id="two">k acting on the odds dials</h2>
 <p>Give one element weight k and dial z. It contributes (1 − kz)<sup>−1/k</sup>, whose z<sup>e</sup> coefficient is (1)(1 + k)(1 + 2k)…(1 + (e−1)k)/e!. That reads as how many copies of the element are allowed:</p>
 <table class="stack"><thead><tr><th>k</th><th>Copies of an element</th><th>On the primes</th></tr></thead><tbody>
 <tr><td>−1</td><td>At most one: subsets, the power set</td><td>ζ(s)/ζ(2s), squarefree numbers</td></tr>
@@ -113,9 +114,9 @@ svg .fk{fill:var(--pink)}svg .sm{stroke:var(--mute)}.wfig{overflow-x:auto;margin
 <h2 id="same">Same dial in disguise</h2>
 <ul>
 <li><b>Colour count and k:</b> the Potts colour count and the knot gluing number are k + 1, the same dial shifted.</li>
-<li><b>Twist and d:</b> the twist is d × area, fixed by the curvature d and the directions.</li>
-<li><b>Prime dial and per-element dial:</b> the slice t<sub>p</sub> = p<sup>−s</sup> on the primes.</li>
-<li><b>Per-element dial and fractional exponent:</b> t = 2<sup>α</sup> − 1; dials combine by the circle operation when exponents add.</li>
+<li><b>Holonomy and d:</b> the holonomy (twist) is d × area, a reading fixed by the curvature d and the directions.</li>
+<li><b>Prime dial and odds:</b> the slice t<sub>p</sub> = p<sup>−s</sup> on the primes.</li>
+<li><b>Odds and fractional exponent:</b> t = 2<sup>α</sup> − 1; dials combine by the circle operation when exponents add.</li>
 <li><b>k on elements and point processes:</b> "copies allowed" is the fermion/Poisson/boson dial already found in point processes.</li>
 <li><b>Choice:</b> independent of all of them, and not numeric.</li>
 </ul>
@@ -132,8 +133,8 @@ const C = [[-1.0, 0.60793], [-0.95, 0.61249], [-0.9, 0.61717], [-0.85, 0.62197],
 const ms = document.getElementById('ms'), cs = document.getElementById('cs');
 const nodes = [
  {id:'k', t:'1. k', s:'weight on ab', x:.5, y:.16, lead:false},
- {id:'tw', t:'2. Twist', s:'= d × area', x:.14, y:.5, lead:false},
- {id:'el', t:'3. Per element t', s:'t = odds', x:.5, y:.56, lead:true},
+ {id:'tw', t:'2. Holonomy', s:'= d × area', x:.14, y:.5, lead:false},
+ {id:'el', t:'3. Odds t', s:'t = odds', x:.5, y:.56, lead:true},
  {id:'pr', t:'4. Primes', s:'t = p^-s', x:.86, y:.56, lead:false},
  {id:'ch', t:'5. Choice', s:'a setting', x:.86, y:.14, lead:true},
  {id:'al', t:'Exponent α', s:'t = 2^α − 1', x:.18, y:.88, lead:false}

@@ -96,7 +96,7 @@ for i, (rl, kap) in enumerate(rowlab):
         ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.axhline(0, color="#ddd", lw=.6, zorder=0); ax.axvline(0, color="#ddd", lw=.6, zorder=0)
         if j == 0: ax.set_ylabel(rl, fontsize=12, weight="bold", color=c)
         if i == 0: ax.annotate(["size N = 1", "size N = 0", "size N = −1"][j], (0.5, 1.25), xycoords="axes fraction", ha="center", fontsize=12.5, weight="bold")
-fig.suptitle("Figure 3. The size N = X² − (Δ/4)Y² of a plane number (after completing the square). Its three levels give every central conic:\n"
+fig.suptitle("Figure 3. The size N = X² + (d − k²/4)Y² of a plane number (after completing the square). Its three levels give every central conic:\n"
              "size 1 is the 'unit circle', size 0 is where numbers can't be divided by (the walls).", x=0.01, ha="left", y=1.005, fontsize=12.5)
 fig.savefig("figures/fig3-levels-give-every-central-conic.png"); plt.close(fig)
 

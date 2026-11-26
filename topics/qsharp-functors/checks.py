@@ -309,5 +309,35 @@ for k in (0.2, 0.05, 0.0125):
 check("W3 Trotter: splitting a Hamiltonian into two steps of size k misses by (k^2/2)|[A,B]|, i.e. dial d = k^2 times the swap-rule commutator",
       abs(rat[-1] - 1) < 1e-2, "ratios " + ", ".join(f"{r:.4f}" for r in rat) + " -> 1")
 
+
+print(); print("="*78); print("POLISH: sharpen the two limit checks (W1, W3) by extrapolation; the rest are exact to rounding"); print("="*78)
+import time
+t0 = time.perf_counter()
+def romberg(vals, orders):  # vals at h, h/2, h/4, ...; remove error terms h^p for each p in orders
+    v = list(vals)
+    for p in orders:
+        v = [(2**p*v[i+1] - v[i])/(2**p - 1) for i in range(len(v)-1)]
+    return v[-1]
+# W1: scale (a, b) = t (0.1, 0.07), t halving; turn/area -> 1, axis z-part -> 1
+tr, zz = [], []
+for j in range(4):
+    a, b = 0.1/2**j, 0.07/2**j
+    C = rot([1, 0, 0], a)@rot([0, 1, 0], b)@rot([1, 0, 0], -a)@rot([0, 1, 0], -b)
+    q = Q(C); tr.append(2*math.acos(np.clip(q[0], -1, 1))/(a*b)); zz.append(abs(q[3])/np.linalg.norm(q[1:]))
+ext_t, ext_z = romberg(tr, [1, 2, 3]), romberg(zz, [1, 2, 3])
+check("P1 polish W1: Richardson extrapolation of turn/area and the axis direction to zero size gives 1 and the Z axis",
+      abs(ext_t - 1) < 1e-6 and abs(ext_z - 1) < 1e-6, f"raw at smallest size: {tr[-1]:.6f}, {zz[-1]:.6f}; extrapolated: miss {abs(ext_t-1):.1e}, {abs(ext_z-1):.1e}")
+# W3: ratio |e^{kA}e^{kB} - e^{k(A+B)}| / ((k^2/2)|[A,B]|) at k halving
+rat2 = []
+for j in range(4):
+    k = 0.2/2**j
+    err = qmul(qexp_full(k*A), qexp_full(k*B)) - qexp_full(k*(A + B))
+    rat2.append(np.linalg.norm(err)/(k*k*np.linalg.norm(comm_AB)/2))
+ext = romberg(rat2, [1, 2, 3])
+check("P2 polish W3: Richardson extrapolation of the Trotter ratio to k = 0 gives 1",
+      abs(ext - 1) < 1e-6, f"raw at k = {0.2/8}: {rat2[-1]:.6f}; extrapolated: miss {abs(ext-1):.1e}")
+print("NOTE the other 35 checks compare exact identities and already agree to rounding (worst ~1e-15), so a polish would change nothing.")
+print(f"POLISH cost: {1000*(time.perf_counter() - t0):.1f} ms in total")
+
 print(); n_pass = sum(ok for _, ok in results)
 print(f"{n_pass} of {len(results)} checks pass")

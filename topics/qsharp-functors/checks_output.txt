@@ -63,4 +63,12 @@
 [PASS] W2 order matters by exactly k times the commutator: x o_k y - y o_k x = k[x, y]: worst 1.1e-15
 [PASS] W3 Trotter: splitting a Hamiltonian into two steps of size k misses by (k^2/2)|[A,B]|, i.e. dial d = k^2 times the swap-rule commutator: ratios 0.9952, 0.9997, 1.0000 -> 1
 
-37 of 37 checks pass
+==============================================================================
+POLISH: sharpen the two limit checks (W1, W3) by extrapolation; the rest are exact to rounding
+==============================================================================
+[PASS] P1 polish W1: Richardson extrapolation of turn/area and the axis direction to zero size gives 1 and the Z axis: raw at smallest size: 0.999990, 0.999971; extrapolated: miss 2.0e-07, 4.1e-08
+[PASS] P2 polish W3: Richardson extrapolation of the Trotter ratio to k = 0 gives 1: raw at k = 0.025: 0.999925; extrapolated: miss 1.7e-07
+NOTE the other 35 checks compare exact identities and already agree to rounding (worst ~1e-15), so a polish would change nothing.
+POLISH cost: 0.8 ms in total
+
+39 of 39 checks pass

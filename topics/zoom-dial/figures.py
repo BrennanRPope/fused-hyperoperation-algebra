@@ -76,7 +76,7 @@ fig.tight_layout(); fig.savefig(os.path.join(HERE, "fig3-complex-dimensions.png"
 
 # ---------- Fig 4: how the zoom dial plugs into what the framework already has
 fig, ax = plt.subplots(figsize=(12, 3.9)); ax.axis("off"); ax.set_xlim(0, 12); ax.set_ylim(0, 4)
-boxes = [(0.2, "zoom r on a piece", "new input"), (2.6, "weight r^s\n(a zoom is a twist,\nk = r^D)", "weight = twist (Base)"),
+boxes = [(0.2, "zoom r on a piece", "new input"), (2.6, "weight r^s\n(a zoom acts as the\nhomothety k = r^D)", "weight = homothety (Base)"),
          (5.0, "pieces side by side\nadd: x(s) = Σ rᵢˢ", "k = 0 (plain add)"), (7.4, "zoom again and again:\nall words = 1/(1 − x)", "k = −1 (any number\nof times)"),
          (9.8, "dimension D: the wall\nx(D) = 1; wobble:\ncomplex wall points", "output")]
 for xb, txt, tag in boxes:

@@ -1,0 +1,35 @@
+==============================================================================
+1. WHERE OURS AND ZX SAY THE SAME THING
+==============================================================================
+[PASS] M1 ZX spider fusion (phases add) = our core law on the circle: lifts e^{ia} multiply, angles add: Z-spiders fuse; same for X-spiders
+[PASS] M2 ZX adjoint (flip the diagram, negate every phase) = our mirror + order reversal: 7-gate run
+[PASS] M3 on projectors our dial gives the logic: o_-1 = OR, o_-2 = XOR (parity), product = AND (logic-sets page): on |00>,|01>,|10>,|11>
+[PASS] M4 Pauli Z is the k = -2 lift of the projector P1, and Z_a Z_b is the lift of the XOR projector: ZX's X-spider parity is our o_-2: Z = 1 - 2 P1;  Z_a Z_b = 1 - 2 (P_a o_-2 P_b)
+[PASS] M5 CCZ = the cube's corner expansion (1/8) prod(1 - Z_i): 7 phase gadgets of angle +-pi/8, T-count 7 (the standard ZX / phase-polynomial count): T-count 7
+
+==============================================================================
+2. CONCRETE CIRCUITS, BEFORE AND AFTER
+==============================================================================
+[PASS] C1 two CCZs sharing controls a, b: corners {a}, {b}, {ab} appear in both with the same sign and merge into Clifford phases; T-count 14 -> 8: merged corners ['a', 'ab', 'b']; T-count after 8 (known result: phase folding; ZX finds the same by spider fusion of gadgets)
+[PASS] C2 a 12-gate single-qubit run is one product on S^3 (one quaternion), i.e. 3 rotations Rz Ry Rz; 12 -> 3: angles -1.490, 2.662, -2.975 (every circuit optimizer does this too; inside ZX it needs the Euler-angle rule)
+[PASS] C3 'control on a OR b' from the union rule = U, then undo on the 00 corner = one doubly-controlled gate plus cheap X's: same cost as an AND control, no saving: OR = NOT(AND(NOT, NOT)): de Morgan
+[PASS] C4a controlled-H as Clifford+T uses 2 T gates: CH = (S H T) CNOT (T-dag H S-dag) on the target
+[PASS] C4b controlled-S from the corner expansion: 3 gadgets of angle +-pi/8, T-count 3: T-count 3
+[PASS] C4c C(H S H) = (1 x H) C(S) (1 x H): only the middle needs the control (the corner commutes with conjugation); T-count 2+3+2 = 7 -> 3: known: Q#'s within/apply does exactly this
+
+==============================================================================
+3. WHERE ONE SIDE SAYS SOMETHING THE OTHER DOES NOT
+==============================================================================
+[PASS] D1 two non-commuting Pauli-gadget steps: our corner weights (the BCH terms) give the error, which ZX rewriting does not produce: error / ((t^2/2)|[A,B]|) = 0.999, 1.000, 1.000
+NOTE ZX has rules ours does not: the bialgebra law (copy vs parity across wires), local complementation and pivoting,
+     which rewrite multi-qubit entangling structure and reduce CNOT and T counts in large circuits. We have no counterpart.
+
+==============================================================================
+POLISH: exact phase bookkeeping and an extrapolated error ratio (cheap)
+==============================================================================
+[PASS] P1 polish M5 and C1: T-counts recounted with exact fractions of pi: CCZ 7, folded pair 14 -> 8: Clifford corners after merging: ['a', 'ab', 'b']
+[PASS] P2 polish C2: one Newton step on the three angles leaves them unchanged to rounding (the closed-form angles were already exact): residual before 4.5e-16, after 2.1e-16
+[PASS] P3 polish D1: Richardson extrapolation of error / ((t^2/2)|[A,B]|) to t = 0 gives 1: raw at t = 0.025: 0.99998; extrapolated: miss 1.3e-08
+POLISH cost: 1.4 ms in total
+
+15 of 15 checks pass

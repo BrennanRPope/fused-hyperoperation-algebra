@@ -35,8 +35,8 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 .scroll{{overflow-x:auto}} code{{overflow-wrap:anywhere;font-size:.92em}} hr{{border:0;border-top:1px solid var(--line);margin:2em 0}}
 strong{{color:inherit}}
 </style></head><body>
-<header><span class="tag">DRAFT · Nov 26, 2026</span><h1>The four dials, named from affine geometry</h1>
-<p>Hypercube Composition Theory. Homothety k, affine curvature κ, ℓp exponent p and cubic form C: one name per dial, each from affine geometry, with who found it and when.</p></header>
+<header><span class="tag">DRAFT · Nov 26, 2026</span><h1>The dials, named</h1>
+<p>Hypercube Composition Theory. Homothety k, curvature dial d (curvature read as −Δ/4), ℓp exponent p, cubic form C, odds t and similarity ratio r go in; the growth degree β is a setting; holonomy, dimension and curvature come out. One name per dial, with who found it and when.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)
 print(len(html))

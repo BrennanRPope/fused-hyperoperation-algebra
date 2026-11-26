@@ -1,7 +1,7 @@
 PASS K1 a Cayley-Klein 'rotation' with label kappa composes its tangent T = S_kappa/C_kappa by (x + y)/(1 - kappa x y): circle for kappa > 0, line for 0, hyperbola for kappa < 0 (Yaglom; Herranz-Ortega-Santander 2000)
 PASS K2 [ours, a short derivation] the Cayley map a = T/(1 - (k/2) T) turns kappa-tangent addition into a o_k b exactly, with kappa = -k^2/4: real k gives kappa < 0, k = 0 gives kappa = 0, imaginary k gives kappa > 0
 PASS K3 the hidden coordinate log(1 + k a)/k is the Cayley-Klein arc length (rapidity, angle) theta: the additive coordinate is the same
-PASS K4 the lift 1 + k a is a unit phase e^(2 i sqrt(kappa) theta) when kappa > 0 (imaginary k) and a positive number e^(k theta) when kappa < 0 (real k): our k = -i is the elliptic (rotation) case, k = -1 the hyperbolic (boost) case
+PASS K4 the lift 1 + k a is e^(k theta): a unit phase when k is imaginary (label kappa = -k^2/4 > 0) and a positive number when k is real (kappa < 0): our k = -i is the elliptic (rotation) case, k = -1 the hyperbolic (boost) case
 PASS K5 velocity addition is the kappa = -1/c^2 law (Levy-Leblond 1976); with k = 2/c the lift 1 + k a is the squared Doppler factor (Bondi's k-calculus); c = 1 gives a = u/(1 - u), and the repo's a = 2u/(1 - u) is the same law rescaled (k = 1)
 PASS D1 [ours, from two known results] every law (a + b + k ab)/(1 - d ab) is the kappa-tangent law in disguise, with kappa = d - k^2/4 (the same Cayley map). So (k, d) is two coordinates on ONE dial; lines of equal kappa are the parabolas d = kappa + k^2/4
 PASS D2 the walls of the (k, d) law (real roots of 1 + k x + d x^2, Coleman-McGuinness's discriminant k^2 - 4d = -4 kappa) are two for kappa < 0, none for kappa > 0: only the sign of kappa is a real invariant, as in Cayley-Klein

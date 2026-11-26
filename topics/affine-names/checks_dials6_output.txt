@@ -1,0 +1,14 @@
+PASS T1 independent union: chance 1-(1-p)(1-q) has odds t o_1 s, the homothety law at k = 1
+PASS T2 complement is t -> 1/t, the chance goes to 1 - chance; with t = tan(theta) this is the mirror in the diagonal theta -> 90 deg - theta
+PASS T3 the union half of the full set is t = sqrt2 - 1 = tan 22.5 deg: halves add to 45 deg
+PASS T4 Fermi-Dirac: a mode's odds of being filled n/(1-n) = z e^(-beta eps), fugacity times Boltzmann factor (Lewis's fugacity)
+PASS R1 Moran's equation sum r_i^D = 1 gives D as an output: half box 1/2, Cantor log2/log3, gasket log3/log2  | 0.500000, 0.630930, 1.584963
+PASS R2 ratios compose by multiplying (a piece of a piece has ratio r1 r2) and the weight r^D multiplies with them
+PASS R3 a weight w acts as the homothety dial: w (a o_w b) = (w a) o_1 (w b), the library's wAdd_scale
+PASS R4 the size measure's doubling weight 2^(-beta) is ratio 1/2 at dimension D = beta
+PASS B1 plain half keeps Li_(beta+1)(-1/2)/Li_(beta+1)(-1): 58.50, 54.52, 52.42, 51.29 % for beta = 0..3  | 58.50, 54.52, 52.42, 51.29
+PASS B2 the repetition share 2^(-beta) is 1 - eta(beta+1)/zeta(beta+1): 7/8 Stefan-Boltzmann at beta = 3
+PASS W1 two stretch-and-shift maps (a, c), (b, e): stretches commute; the shifts differ by a e - b c, the oriented area (a wedge)
+PASS W2 the twist is the phase between the two orders of the dial boost law (u + v)/(1 - q conj(u) v), q = d at k = 0: tan(omega/2) = q (u x v)/(1 - q u.v)  | omega = 0.057881
+
+12 of 12 pass

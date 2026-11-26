@@ -2,13 +2,15 @@
 
 Page: https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr (source index.html)
 
+*Names (Nov 26, see `affine-names/` section 6): the per-element dial t is the **odds**; the twist is the **holonomy** ω, a reading of the curvature dial and two directions. The two base numbers this survey found, k and t, are the homothety and the odds.*
+
 - checks.py -> checks_output.txt: 40 of 40 pass (sympy, mpmath). results.json holds Z_k(2), the C_k curve, direct counts.
 - lean/DialSurvey.lean: 18 theorems, core Lean 4.37, no sorry. Merged and compiled in the shared library as
   Topics/DialSurvey (clean build: 111 modules, 2,801 theorems).
 
 ## Findings
-1. Only two independent numeric dials: k and the per-element dial t. Prime dial = per-element dial on primes
-   with t_p = p^-s. Twist = d x area (twisted boosts), fixed by the curvature d and directions. Choice = a setting (partial order), not a number.
+1. Only two independent numeric dials: k and the per-element dial t (the odds). Prime dial = per-element dial on primes
+   with t_p = p^-s. Twist (the holonomy ω) = d x area (twisted boosts), a reading fixed by the dials and directions. Choice = a setting (partial order), not a number.
 2. k: only sign survives rescaling (units_change_weight). Also Tsallis q-algebra with k = 1 - q_T. No lead by itself.
 3. Per-element t is odds: union of independent random subsets has odds t ∘₁ s; complement t -> 1/t. Uniform t = 2^a - 1
    is the fractional exponent through the circle-operation ruler (exponent_ruler).

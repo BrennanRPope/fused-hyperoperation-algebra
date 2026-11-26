@@ -1,4 +1,4 @@
-# DRAFT · The four dials, named from affine geometry
+# DRAFT · The dials, named from affine geometry and their own fields
 
 **DRAFT, Nov 26 2026.** Part of Hypercube Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: rename the dials "now that we know them better, preferring their existing names", names that are
@@ -6,8 +6,8 @@ Asked for by Brennan: rename the dials "now that we know them better, preferring
 crediting the authors, and "a coherent system, not a Frankenstein monster".
 Builds on `conics/` (section 4, affine curvature), `simplex/` (section 7, the shape dial), `shape-dial-survey/`
 (the three shape routes) and `names-review/` (the circle operation ∘ₖ and the letter d).
-Checks: `checks.py` → `checks_output.txt`, **10 of 10 pass**; `checks_more.py` (section 5 and the Δ reading) **23 of 23** (sympy exact where a closed form exists, numpy and scipy
-otherwise). Pictures: `figures.py` and `figures_more.py` → `figures/`.
+Checks: `checks.py` → `checks_output.txt`, **10 of 10 pass**; `checks_more.py` (section 5 and the Δ reading) **23 of 23**; `checks_dials6.py` (section 6) **12 of 12** (sympy exact where a closed form exists, numpy and scipy
+otherwise). Pictures: `figures.py`, `figures_more.py` and `figures_dials6.py` → `figures/`.
 
 ## The names
 
@@ -41,6 +41,29 @@ it.
 **What changes and what doesn't.** Only words in the prose change. Lean names and code identifiers stay as they are
 (a comment maps them), so nothing breaks. The letter d stays in every formula where it already appears: it is
 Coleman and McGuinness's second number, and −Δ/4 = d − k²/4 is what it means geometrically.
+
+## The design rule: base dials in, readings out
+
+**Rule (Brennan, Nov 26).** Every formula and function in the theory takes the **base dials** as its inputs. Anything
+built from them is a **reading**, and readings are outputs only: they can name a region, be plotted or be reported, but
+no formula takes one as an input where the base dials would do.
+
+| Inputs | Outputs only (readings) |
+|---|---|
+| **Base dials:** homothety k, curvature dial d, ℓp exponent p, cubic form C; the odds t (one per element) and the similarity ratio r (one per piece), section 6 | discriminant Δ = k² − 4d; curvature −Δ/4 = d − k²/4; the conic's type; the Pick invariant J |
+| **Settings** the problem fixes before anything is counted: the size measure's growth degree β (section 6), the scale ħ, the directions of two moves | similarity dimension D; the chance t/(1 + t); the effective homothety 2^(−β) of a size measure; the holonomy ω (twist); dimensions, residues and walls in general |
+
+**Why.** A reading forgets things. Δ is the same along a whole parabola of (k, d) settings, so a formula fed Δ cannot
+tell those settings apart, and a result written in Δ cannot be checked by plugging in the dials. With one list of
+inputs, every result in every folder takes the same numbers, and a reading is never mistaken for a dial.
+
+**What it changed (audit, Nov 26).** Three folders had formulas fed by a reading, and they now take k and d:
+- the height-flow residue is résit = 1/3 − 4d/(3k²), not Δ/(3k²) (`height-flow/`, its chart and its check code);
+- the norm after completing the square is X² + (d − k²/4)Y², not X² − (Δ/4)Y² (`conics/`, its figure and checks);
+- the Cayley–Klein page gives each plane its own k_ab with the label κ_ab = −k_ab²/4 read off it, and its lift as
+  e^(kθ), not k from κ (`why-i/cayley-klein/`).
+
+Where a page sorts by a reading ("Δ < 0 is the ellipse side"), that is a reading reported, and it stays.
 
 ---
 
@@ -174,6 +197,49 @@ unit circle, and the table's matching of each transformation to a dial.
 
 ---
 
+## 6. The other four dials: odds, similarity ratio, growth degree, holonomy
+
+Brennan asked (Nov 26) for the same treatment for t, r, β and the twist. Each keeps the name and letter of the field it
+already lives in, and each is sorted by the design rule above. The dial survey (`dial-survey/`) found only two
+independent numbers in the scalar law, k and t; the rest are per-piece inputs, settings or readings, and this section
+says which.
+
+| Old name | New name | Letter | Role | What it does, in shapes | Lineage (short) |
+|---|---|---|---|---|---|
+| per-element dial t | **odds** | **t** | base dial, one per element | t = tan θ is a slope. Two independent elements join by t ∘₁ s, and the complement is 1/t, the mirror in the diagonal (T1–T3). The chance t/(1 + t) is a reading. | Cardano's odds (written c. 1564, printed 1663); Lewis's fugacity (1901), where a mode's odds of being filled is fugacity × Boltzmann factor (T4); Berkson's logit, the log of the odds (1944) |
+| zoom dial r | **similarity ratio** (contraction ratio) | **r** | base dial, one per piece | A piece is a shrunken copy, a homothety with ratio r. Ratios multiply down a tree, and the weight r^D acts as the homothety dial k (R2, R3). The dimension D is a reading: it solves Σ rᵢᴰ = 1 (R1). | Moran's equation (1946); Hutchinson's self-similar sets with ratios rᵢ (1981); Mandelbrot's similarity dimension D (1977); Lapidus and van Frankenhuijsen's complex dimensions (2000s) |
+| size dial β | **growth degree** (degree of polynomial growth) | **β** | setting of the size measure | How fast the count of elements up to size X grows, like X^β: 0 sharp count, 1 the naturals, 2 the plane, 3 space. Its doubling weight 2^(−β) is ratio 1/2 at D = β (R4), and the repetition share it leaves is 2^(−β), 1/8 in space, the Stefan–Boltzmann 7/8 (B1, B2). | Weyl's law (1911); Fermi–Dirac integrals of order β (Fermi and Dirac 1926; tabulated by McDougall and Stoner 1938); growth of groups (Milnor 1968, Bass 1972, Gromov 1981) |
+| twist | **holonomy** | **ω** | reading (output) | The turn picked up going round a loop, equal to curvature × enclosed area. In the order dial it is the oriented area a e − b c between two moves, which is exactly what makes order matter (W1). For boosts, tan(ω/2) = d(u × v)/(1 − d u·v) at k = 0, read off the curvature dial and two directions (W2). | Gauss's curvature × area for triangles (1827), Bonnet (1848); Grassmann's oriented area (1844); Thomas (1926) and Wigner (1939) for boosts; Cartan's holonomy (1926); Weyl's form of the Heisenberg relations (1927) |
+
+![The other four dials](figures/fig6-other-dials.png)
+
+*Figure 6. Left to right: the odds as a slope, with the union half √2 − 1 (22.5°) and its complement mirrored in the
+diagonal; the similarity ratios of three fractals going in and their dimensions D coming out at the wall Σ rᵢᴰ = 1;
+counts growing like X^β, with the doubling weight each β leaves; two moves and the oriented area between them, which the
+holonomy measures.*
+
+- **Why these names.** Each is the word that field already uses for exactly this number, and each has a shape: a slope,
+  a shrunken copy, a growth rate, a turn round a loop. The similarity ratio is a homothety ratio, so it sits next to k.
+  The holonomy measures area, the one thing equi-affine geometry keeps, so it sits next to d.
+- **"Twist" means one thing now.** Two notes used "twist" for the homothety dial k ("a size weight w is the twist
+  k = w"). They now say homothety; twist means only the holonomy.
+- **Letters kept.** t, r, β and ω are the letters these dials already have, so no note changes letter except where it
+  clashed: the dimension is written D, not d, and the second shift in the order dial is e, not d (see the clash table).
+- **Checks:** `checks_dials6.py` → `checks_dials6_output.txt`, **12 of 12 pass** (sympy, numpy, mpmath).
+
+### Clashes, checked
+
+| Letter | Clashes with | What we do |
+|---|---|---|
+| t | time; the half-velocity tanh(φ/2) in `twisted-boosts/` | kept; the half-velocity is that page's own letter |
+| p (as a probability) | the ℓp exponent p | the chance is written t/(1 + t), a reading; p stays only for primes and the multifractal weights the literature writes p |
+| r | radius in the polar notes; interest rate in the order dial's compounding example | kept; each is local to its page |
+| d (as a dimension) | the curvature dial d | dimension is D (Mandelbrot's letter) in `zoom-dial/` and `fractal-dials/` |
+| d (as a shift) | the curvature dial d | the order dial's second shift is e |
+| β | inverse temperature 1/kT; the generalized-uncertainty β in `why-i/e-i-pi/g-dials/` | kept; growth degree is a setting and never sits in the same formula as 1/kT |
+| ω | angular frequency; a cube root of 1 | kept; the symplectic area form is also written ω, which fits |
+| q | two meanings already: q = k + 1 (`dial-survey/`, Tsallis) and the landscape q of `twisted-boosts/`, which is d at k = 0 | flagged, not changed here |
+
 ## Lineage
 
 ![Lineage](figures/fig4-lineage.png)
@@ -225,6 +291,7 @@ differentials. Frits Zernike's trefoil (1934) is the optics bridge.
 | EQ1, RF1–RF2 | area rate k, trace-free part keeps area; conjugation is a mirror keeping \|z\|; a = −2/k is the half-turn | pass |
 | PR1–PR3 | points at infinity counted by the sign of Δ; Laguerre angle for Δ < 0 and Δ > 0; one projective swap turns a circle into a hyperbola | pass |
 | DL1–DL3 | curvature = −Δ/4 = d − k²/4; trace-free part squares to Δ/4; the repo's round side (k = 0, d = 1) has Δ < 0 | pass |
+| T1–T4, R1–R4, B1–B2, W1–W2 | odds join by ∘₁ and the complement is 1/t; Fermi–Dirac odds; Moran's D for three fractals; ratios multiply; a weight acts as k; growth-degree halves and the 2^(−β) share; the order gap is the oriented area; the boost twist formula | pass |
 
 ## Letters, checked against the sources
 
@@ -242,8 +309,8 @@ sign). Those identifiers stay; the notes no longer use κ for a dial.
 
 ## What this pass does not settle
 
-- The other dials (zoom, order, repetition, size, temperature, corner weights) were not asked about and keep their
-  names.
+- Section 6 names the odds, similarity ratio, growth degree and holonomy. The repetition, temperature and corner-weight
+  dials were not asked about and keep their names. The two meanings of q are flagged, not fixed.
 - The dates for Fubini and Pick are given as "1910s" because I did not reach their original papers.
 - I did not reach Laguerre's 1853 paper, Mayer–Myller (1933) or Țițeica's 1907 centro-affine paper; they are cited
   through Olver's notes and the papers below.
@@ -279,3 +346,13 @@ sign). Those identifiers stay; the notes no longer use κ for a dial.
 - I. M. Yaglom, *A Simple Non-Euclidean Geometry and Its Physical Basis* (Springer, 1979).
 - Encyclopedia of Mathematics, "Affine differential geometry" and "Homothety" (letters: equi-affine curvature k, general-affine
   curvature κ, cubic form ψ; homothety ratio k).
+- G. Cardano, *Liber de ludo aleae* (written c. 1564, printed 1663); G. N. Lewis, "The law of physico-chemical change",
+  Proc. Amer. Acad. Arts Sci. 37 (1901); J. Berkson, J. Amer. Statist. Assoc. 39 (1944).
+- P. A. P. Moran, Proc. Cambridge Philos. Soc. 42 (1946); J. E. Hutchinson, "Fractals and self similarity", Indiana Univ.
+  Math. J. 30 (1981); B. Mandelbrot, *Fractals: Form, Chance and Dimension* (1977); M. Lapidus and M. van Frankenhuijsen,
+  *Fractal Geometry, Complex Dimensions and Zeta Functions* (2006, 2nd ed. 2013).
+- H. Weyl, Math. Ann. 71 (1912; announced 1911); J. McDougall and E. C. Stoner, Phil. Trans. A 237 (1938); J. Milnor,
+  J. Diff. Geom. 2 (1968); H. Bass, Proc. London Math. Soc. 25 (1972); M. Gromov, Publ. Math. IHÉS 53 (1981).
+- C. F. Gauss, *Disquisitiones generales circa superficies curvas* (1827); O. Bonnet, J. École Polytech. 19 (1848);
+  H. Grassmann, *Die lineale Ausdehnungslehre* (1844); L. H. Thomas, Nature 117 (1926); E. Wigner, Ann. Math. 40 (1939);
+  É. Cartan, Acta Math. 48 (1926); H. Weyl, Z. Phys. 46 (1927).

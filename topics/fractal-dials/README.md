@@ -1,8 +1,10 @@
 # Hidden dials of a half box
 
+*Names (Nov 26, see `affine-names/` section 6): dimension is written D (d is the curvature dial); the per-element dial t is the **odds**; the zoom r is the **similarity ratio**.*
+
 **Result.** Many fractals share dimension ½. Six known dials tell them apart: zoom, placement,
 wobble, weights, topology and branching growth. The circle operation ∘₁ (called mult-add before 1.0) already has the two that matter for
-counting (dimension = fractional circle power; weights = per-element dial t = p/(1−p)), has the
+counting (dimension = fractional circle power; weights = the odds t, with the chance p = t/(1+t) a reading), has the
 growth dial separately (rung flow at t = ½), and has a cousin of wobble (complex dimensions act like
 a phase on the zoom, resembling twist or a Clifford rotor). It is missing one clean dial: a zoom
 (size) dial, which would make dimension an output, D = log(pieces)/log(1/zoom). Placement and
@@ -20,11 +22,11 @@ no new lead on the iterating half. All dials here are known math. No line for th
 
 | Fractal dial | In the circle operation | Status |
 |---|---|---|
-| dimension D | fractional power (1+a)^D | has it |
-| weights p : 1−p (D_q, f(α)) | per-element t = p/(1−p) | has it |
+| dimension D | fractional power (1+a)^D | has it (a reading) |
+| weights p : 1−p (D_q, f(α)) | odds t; the literature's p = t/(1+t) is a reading | has it |
 | branching growth | rung flow at t = ½ | has it, separately |
-| wobble / complex dimensions | phase on zoom; like twist, Clifford rotor | partial (analogy) |
-| zoom ratio r | none: the circle operation has no size | missing: one candidate |
+| wobble / complex dimensions | phase on zoom; like the holonomy (twist), Clifford rotor | partial (analogy) |
+| zoom ratio r (similarity ratio) | none: the circle operation has no size (filled since by `zoom-dial/`) | missing: one candidate |
 | placement (lacunarity, Minkowski content) | geometry | outside |
 | topology (touching, gluing) | silent below D = 1 | outside |
 

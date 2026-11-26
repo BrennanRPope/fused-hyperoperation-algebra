@@ -29,7 +29,7 @@ No single-number law can hold two Cayley–Klein dials, because all nine plane g
 - **The Cayley map** a = T/(1 − (k/2)T) turns κ-tangent addition into a ∘ₖ b exactly, with **κ = −k²/4** (ours, a short derivation; K2).
   - Only the sign of κ is a true invariant. Its size is a choice of units, both in Cayley–Klein and for ∘ₖ.
 - **The hidden coordinate** log(1 + ka)/k is the Cayley–Klein arc length, meaning the rapidity or the angle (K3).
-- **The lift 1 + ka** is a positive number e^(kθ) when k is real. It is a unit phase e^(2i√κ θ) when k is imaginary (K4). So the quantum setting k = −i composes phases on a circle, and the random setting k = −1 composes positive factors on a hyperbola.
+- **The lift 1 + ka** is a positive number e^(kθ) when k is real. The same e^(kθ) is a unit phase when k is imaginary (K4). So the quantum setting k = −i composes phases on a circle, and the random setting k = −1 composes positive factors on a hyperbola.
 - **Velocity addition** is the κ = −1/c² law. With k = 2/c the lift is the squared Doppler factor (Bondi's k-calculus, a name clash to watch). With c = 1 this gives a = u/(1 − u); the repo's a = 2u/(1 − u) is the same law with a rescaled, which makes k = 1 (K5). Only the sign of κ is invariant, so this is a choice of units.
 - **Which κ is it?** A single chain composes one kind of motion, so k is the label of that motion:
   - composing boosts (the relativity page): κ₂, the signature;
@@ -42,7 +42,7 @@ No single-number law can hold two Cayley–Klein dials, because all nine plane g
 ## 3. The plane's second dial d is not κ₂ (checks D1–D4)
 
 - **Ours, from two known results:** every law (a + b + kab)/(1 − dab) is the κ-tangent law in disguise, under the same Cayley map, with **κ = d − k²/4 = −Δ/4** (D1).
-  - So (k, d) are two coordinates on one dial, and lines of equal κ are the parabolas d = κ + k²/4.
+  - So (k, d) are two coordinates on one dial, and lines of equal κ are the parabolas on which d − k²/4 stays fixed.
   - Coleman and McGuinness's discriminant is k² − 4d = −4κ. It counts the walls: two when κ < 0, none when κ > 0 (D2).
 - **Same geometry, different coordinates (D3):** the repo's relativity point (0, −1/c²), pure ∘ₖ at k = 2/c, and every point on the repo's line d = k²/4 − 1 all have κ = −1/c².
 - **Why no scalar law can carry κ₂ (D4):** every one of the nine plane groups, Galilean included, has motions that don't commute. Every scalar law is commutative.
@@ -52,7 +52,7 @@ No single-number law can hold two Cayley–Klein dials, because all nine plane g
 ## 4. Higher dimensions (checks N1–N4)
 
 - **Labels must be products (N1).** The motion generators J_ab (one per pair of directions) close into a Lie algebra only when κ_ac = κ_ab·κ_bc. Then every label is a product of N dials. With an independent label for each pair they don't close, for N = 2, 3 and 4. So the picture of "one dial for each pair of directions" isn't quite right: each pair has a label, but only N of them are free.
-- **Ours (N2).** Each pair's one-parameter group is a scalar ∘ₖ chain with its own k_ab = 2√(−κ_ab). So a chain across the planes carries all the labels, with the k's tied together by k_ac² = −k_ab²·k_bc²/4.
+- **Ours (N2).** Each pair's one-parameter group is a scalar ∘ₖ chain with its own dial k_ab, and its label is the reading κ_ab = −k_ab²/4. So a chain across the planes carries all the labels, with the k's tied together by k_ac² = −k_ab²·k_bc²/4. (The check starts from the literature's labels and recovers each k_ab, because it is a bridge into their system; checks K2–K4 run the other way, from k.)
 - **Matrices carry everything (N3).** With matrix elements, ∘ₖ (with A = G − 1) is the group law of every Cayley–Klein group, all dials included.
 - **The i step (N4).** Multiplying k by i flips the sign of that plane's κ. That is the Cayley–Klein analytic continuation, a "Wick rotation" of that one plane.
 

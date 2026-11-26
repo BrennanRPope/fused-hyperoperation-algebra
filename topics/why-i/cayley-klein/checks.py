@@ -13,9 +13,11 @@ def C_(t, kap):  # kappa-cosine
     s = np.sqrt(complex(kap)); return np.cos(s*t) if kap != 0 else 1.0 + 0*t
 def S_(t, kap):  # kappa-sine
     s = np.sqrt(complex(kap)); return np.sin(s*t)/s if kap != 0 else t + 0j
-def kofkappa(kap): return 2*np.sqrt(complex(-kap))                   # [ours] k = 2 sqrt(-kappa), i.e. kappa = -k^2/4
+def kappa_of_k(k): return (-(k**2)/4).real                          # [ours] the label is a reading of the dial: kappa = -k^2/4
+def k_of_label(kap): return 2*np.sqrt(complex(-kap))                # only for N2, which starts from the literature's own labels
 def mob(T, k): return T/(1 - (k/2)*T)                                # Cayley/Moebius map, a = T + O(T^2)
-KAPS = [-0.7, -0.25, 0.0, 0.25, 0.5]
+KAPS = [-0.7, -0.25, 0.0, 0.25, 0.5]                                 # the literature's labels, for K1 (their functions)
+KS = [2*np.sqrt(0.7), 1.0, 0.0, 1j, 1j*np.sqrt(2)]                    # our dial k (base input) for K2-K4; labels -0.7 ... 0.5
 
 # ---------- K. one dial: k is the Cayley-Klein kappa of a one-parameter group ----------
 ok = True
@@ -29,29 +31,29 @@ for kap in KAPS:
 check("K1 a Cayley-Klein 'rotation' with label kappa composes its tangent T = S_kappa/C_kappa by (x + y)/(1 - kappa x y): "
       "circle for kappa > 0, line for 0, hyperbola for kappa < 0 (Yaglom; Herranz-Ortega-Santander 2000)", ok)
 ok = True
-for kap in KAPS:
-    k = kofkappa(kap)
+for k in KS:
+    kap = kappa_of_k(k)
     for _ in range(50):
         x, y = rng.uniform(-.5, .5, 2)
         ok &= np.isclose(mob(tanadd(x, y, kap), k), circ(mob(x, k), mob(y, k), k))
 check("K2 [ours, a short derivation] the Cayley map a = T/(1 - (k/2) T) turns kappa-tangent addition into a o_k b exactly, with "
       "kappa = -k^2/4: real k gives kappa < 0, k = 0 gives kappa = 0, imaginary k gives kappa > 0", ok)
 ok = True
-for kap in [-0.7, -0.25, 0.25, 0.5]:
-    k = kofkappa(kap)
+for k in [KS[0], KS[1], KS[3], KS[4]]:
+    kap = kappa_of_k(k)
     for t in rng.uniform(-.6, .6, 20):
         a = mob(S_(t, kap)/C_(t, kap), k)
         ok &= np.isclose(np.log(1 + k*a)/k, t)
 check("K3 the hidden coordinate log(1 + k a)/k is the Cayley-Klein arc length (rapidity, angle) theta: the additive coordinate is the same", ok)
 ok = True
-for kap in [0.25, 0.5]:
-    k = kofkappa(kap); T = rng.uniform(-3, 3, 50)
+for k in [KS[3], KS[4]]:
+    kap = kappa_of_k(k); T = rng.uniform(-3, 3, 50)
     ok &= np.allclose(np.abs(1 + k*mob(T, k)), 1)
-for kap in [-0.25, -0.7]:
-    k = kofkappa(kap); T = rng.uniform(-.9, .9, 50)/np.sqrt(-kap)
+for k in [KS[1], KS[0]]:
+    kap = kappa_of_k(k); T = rng.uniform(-.9, .9, 50)/np.sqrt(-kap)
     ok &= np.all(np.isreal(1 + k*mob(T, k))) and np.all((1 + k*mob(T, k)).real > 0)
-check("K4 the lift 1 + k a is a unit phase e^(2 i sqrt(kappa) theta) when kappa > 0 (imaginary k) and a positive number e^(k theta) when "
-      "kappa < 0 (real k): our k = -i is the elliptic (rotation) case, k = -1 the hyperbolic (boost) case", ok)
+check("K4 the lift 1 + k a is e^(k theta): a unit phase when k is imaginary (label kappa = -k^2/4 > 0) and a positive number when "
+      "k is real (kappa < 0): our k = -i is the elliptic (rotation) case, k = -1 the hyperbolic (boost) case", ok)
 c = 3.0; ok = True
 for _ in range(50):
     u, v = rng.uniform(-.95*c, .95*c, 2)
@@ -123,7 +125,7 @@ ok = True
 for N in [2, 3]:
     kaps = np.array([-0.6, 0.8, -0.3][:N]); L = ck_labels(kaps); G = gens(L, N)
     for (a, b), M in G.items():
-        k = kofkappa(L[(a, b)])
+        k = k_of_label(L[(a, b)])
         for _ in range(5):
             t1, t2 = rng.uniform(-.5, .5, 2)
             R1, R2, R12 = expm(t1*M), expm(t2*M), expm((t1 + t2)*M)

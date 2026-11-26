@@ -1,5 +1,7 @@
 # Composition, order and the collection laws (Nov 25, 2026)
 
+*Names (Nov 26, see `affine-names/` section 6): the twist is the **holonomy** ω, a reading: the turn picked up round a loop, measured here by the oriented area a·e − b·c. The second map's shift is e (not d, which is the curvature dial). In the compounding example, r and d are finance's rate and deposit.*
+
 **Result.** Composition is a sound frame for the whole framework: the circle operation ∘₁ (called mult-add before 1.0) is exactly composition of stretches that share one centre (the wall −1/k), and order starts to matter the moment two maps have different centres, by an amount that is always an oriented area (a wedge). The route to quantum mechanics is real but not forced: compose shifts with multiplications on *functions* and you get the Heisenberg group, whose phase is the same corner area ab; the i and the size ħ have to be put in by hand.
 
 Brennan's questions this answers (Nov 25, voice): map computer science data structures onto set theory and the framework; look at algebras that drop commutativity or associativity; "is composition itself a fundamental quality of this theory?"; use category theory as the frame; and "composition of set operations ... might yield some really interesting results in our infinities question".
@@ -15,8 +17,8 @@ A category is just objects plus arrows that compose, with composition always ass
 ![Left: a fan of stretches through one centre. Right: two stretches with different centres, whose two orders differ by a constant gap](figures/fig7-centres-and-order.png)
 
 - **The circle operation is composition.** Read a as the map x ↦ (1 + ka)x + a. Doing b then a gives the map for a ∘ₖ b (the existing `T_comp` in [groups-lie](../groups-lie/), and here `app_comp`, `k_slice`). Every one of those maps fixes the same point, the wall −1/k (left picture). Maps that share a centre commute, which is why the circle operation doesn't care about order.
-- **The full home is the stretch-and-shift (affine) group.** Let the stretch a and the shift c vary separately: (a, c) is x ↦ (1 + a)x + c. Composing gives (a ∘₁ b, c + (1 + a)d): **the stretches still combine by the circle operation, and only the shifts pick up order** (`comp`, `stretch_order_free`).
-- **The cost of order is a wedge.** The two orders differ by a pure shift equal to a·d − b·c, the oriented area spanned by (a, c) and (b, d) (`order_gap`). Two maps commute exactly when that area is zero, which is exactly when they share a centre (`commute_iff`). The circle operation's family is one such commuting slice.
+- **The full home is the stretch-and-shift (affine) group.** Let the stretch a and the shift c vary separately: (a, c) is x ↦ (1 + a)x + c. Composing gives (a ∘₁ b, c + (1 + a)e): **the stretches still combine by the circle operation, and only the shifts pick up order** (`comp`, `stretch_order_free`).
+- **The cost of order is a wedge.** The two orders differ by a pure shift equal to a·e − b·c, the oriented area spanned by (a, c) and (b, e) (`order_gap`). Two maps commute exactly when that area is zero, which is exactly when they share a centre (`commute_iff`). The circle operation's family is one such commuting slice.
 - **The whole landscape is composition too.** Every law (a + b + p·ab)/(1 − d·ab) is a one-parameter family of Möbius maps x ↦ (αx + β)/(γx + δ) composing (check I7; proved as `mob` products in groups-lie). The circle operation is the slice that fixes infinity (the affine maps). Lie's vector fields α + βx + γx² are the arrows' directions; translation and stretch don't commute ([1, x] = 1, check I9).
 
 *Known:* all of it. The affine group, Möbius one-parameter groups (Lie, Klein) and "formal group laws are one-parameter groups" are textbook. *Ours:* reading the circle operation as the commuting slice through the wall, and the order gap as the same wedge seen in Clifford's work (section 5).
@@ -89,7 +91,7 @@ But a closely related route does work:
 - With real growth e^(bx) instead of e^(ibx), the cost is the factor e^(ab) (check J3); on sequences it is the q-commutation of section 4 with q = λ^a (`weyl`, check J1). So the order dial q *is* "swap an addition with a multiplication".
 - In symmetric (Weyl) order the phase is half the wedge, (a₁b₂ − a₂b₁)/2ħ: an oriented area again (check J4).
 
-![Three parallelograms: Clifford's commutator 2x∧y, the affine order gap ad − bc, and the Heisenberg phase, all an oriented area](figures/fig9-one-wedge-three-places.png)
+![Three parallelograms: Clifford's commutator 2x∧y, the affine order gap ae − bc, and the Heisenberg phase, all an oriented area](figures/fig9-one-wedge-three-places.png)
 
 **ħ as the order dial, with grouping kept.** The circle operation over the Moyal star product (the product of quantum phase space) is associative for every ħ, its order error is iħ times the Poisson bracket to leading order, and at ħ = 0 it is the ordinary circle operation (checks H1–H5). So the framework's quantum version needs no new formula: run the same a + b + ab on quantum inputs, and ħ sets how much order matters.
 

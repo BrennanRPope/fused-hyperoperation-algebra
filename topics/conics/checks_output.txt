@@ -6,15 +6,15 @@ A5: PASS  the walls (roots of 1+ka+da^2) are exactly the directions where the ch
 A6: PASS  dial origin (0,0): chord conic is the parabola y = x^2 and the chord rule is plain addition
 B1: PASS  norm N = x^2+kxy+dy^2 of x+y·eps is multiplicative (eps^2 = k eps - d)
 B2: PASS  multiplying plane numbers composes their directions a = y/x by the plane law: the unit conic N = 1 carries the law
-B3: PASS  completing the square (X = x + ky/2) is the Cayley map a = T/(1-(k/2)T): N = X^2 + κY^2, law -> (T1+T2)/(1-κT1T2), κ = d - k^2/4
-B4: PASS  radius-0 level N = 0 over the reals: κ>0 only the point 0 (X^2+Y^2 irreducible); κ=0 a double line X^2; κ<0 two crossing lines (X-Y)(X+Y)
+B3: PASS  completing the square (X = x + ky/2) is the Cayley map a = T/(1-(k/2)T): N = X^2 + (d - k^2/4)Y^2, law -> (T1+T2)/(1-(d - k^2/4)T1T2), in the base dials k, d
+B4: PASS  radius-0 level N = 0 over the reals: Delta<0 only the point 0 (X^2+Y^2 irreducible); Delta=0 a double line X^2; Delta>0 two crossing lines (X-Y)(X+Y)
 B5: PASS  the walls are the asymptote directions of the unit hyperbola N = 1 (N(1,w) = 0), i.e. its light cone
 B6: PASS  flat dial: N(1,a) = 1 for every a at (0,0): the unit 'circle' x^2 = 1 is two parallel lines x = ±1 and multiplication slides along x = 1
 C1: PASS  the law's ruler ∫da/(1+ka+da^2) = Cayley's distance: (1/√disc)·log cross-ratio with the two walls (hyperbolic; d=0 gives log(1+ka)/k), arctan with no real walls (elliptic), a/(1+ka/2) with a double wall (parabolic)
 C2: PASS  Hilbert's distance inside a circle (ellipse) = the hyperbolic distance of the Klein model (30 random pairs)
 C3: PASS  Hilbert's distance inside the parabola y > x^2 equals that inside the disc after the projective map (x,y) -> (2x/(y+1), (y-1)/(y+1)): the parabola gives the same hyperbolic plane
 C4: PASS  inside one branch of y^2-x^2 = 1 maps to a half-disc (the line at infinity becomes a diameter); its Hilbert distance differs from the disc's (1.3013 vs 0.5928), so one branch alone is not the hyperbolic plane; both branches together are
-D1: PASS  equi-affine curvature of the chord conic is constant and equals 2^(4/3)·κ, κ = d - k^2/4 (k,d)=(0,1): 2.519842 vs 2.519842; (k,d)=(1,1): 1.889882 vs 1.889882; (k,d)=(0,0.25): 0.629961 vs 0.629961; (k,d)=(2,1): 0.000000 vs 0.000000; (k,d)=(0,-1): -2.519842 vs -2.519842; (k,d)=(1,-0.5): -1.889882 vs -1.889882; (k,d)=(-1,0): -0.629961 vs -0.629961; (k,d)=(3,1): -3.149803 vs -3.149803
+D1: PASS  equi-affine curvature of the chord conic is constant and equals 2^(4/3)·(d - k^2/4), the reading 2^(4/3)·(-Delta/4) (k,d)=(0,1): 2.519842 vs 2.519842; (k,d)=(1,1): 1.889882 vs 1.889882; (k,d)=(0,0.25): 0.629961 vs 0.629961; (k,d)=(2,1): 0.000000 vs 0.000000; (k,d)=(0,-1): -2.519842 vs -2.519842; (k,d)=(1,-0.5): -1.889882 vs -1.889882; (k,d)=(-1,0): -0.629961 vs -0.629961; (k,d)=(3,1): -3.149803 vs -3.149803
 D2: PASS  (k,d) and (λk, λ^2 d) are the same law (a -> λa), but the chord conics' eccentricities differ (λ=2: 0.6325 vs 0.8803): eccentricity is a ruler choice
 D3: PASS  sign(e^2 - 1) = sign(k^2 - 4d) on 300 random dials: the dial fixes ellipse/parabola/hyperbola, not e itself
 D4: PASS  Kepler: e^2 - 1 = 2EL^2/mu^2 (50 random states): energy (the plane dial, per gravity-from-theory) sets the type; angular momentum sets e

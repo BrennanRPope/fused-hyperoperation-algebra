@@ -4,6 +4,8 @@ Task: Brennan's "mini dials" idea from the voice call: each element gets its own
 
 Page: published as an artifact (see PAGES-INDEX.md, "power set dials"); source index.html here.
 
+*Names (Nov 26, see `affine-names/` section 6): each element's dial t is its **odds** (a base dial); its chance p = t/(1+t), written p below, is a reading, and that p is not the ℓp exponent.*
+
 ## Files
 - checks.py / checks_output.txt: 34 of 34 pass (fractions, brute-force OR-convolution, zeta/Mobius uniqueness, complement, Bernoulli simulation).
 - primes_check.py / primes_output.txt: sieve to 10^7; zeta(s)/zeta(2s) at s=2,3; growth exponent of three halves of the primes.

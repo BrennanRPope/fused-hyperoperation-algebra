@@ -68,13 +68,13 @@ the question directly: the dial plane is a map of the conics.
 ![Levels](figures/fig3-levels-give-every-central-conic.png)
 
 *Figure 3. Every plane number has a size N = x² + kxy + dy² that multiplies. After completing the square it reads
-X² − (Δ/4)Y². Its levels 1, 0 and −1 give every conic centred at the origin, the degenerate ones included.*
+X² + (d − k²/4)Y². Its levels 1, 0 and −1 give every conic centred at the origin, the degenerate ones included.*
 
 - **Size multiplies, and multiplying composes directions by our law** (B1, B2). So the plane law is the law of the
   "unit circle" N = 1, read by direction a = y/x.
-- **Completing the square is the Cayley map** (B3). X = x + ky/2 turns N into X² − (Δ/4)Y² with Δ = k² − 4d, and the
+- **Completing the square is the Cayley map** (B3). X = x + ky/2 turns N into X² + (d − k²/4)Y², in the base dials, and the
   slope change it causes, a = T/(1 − (k/2)T), is exactly the Cayley map the Cayley–Klein page used. A two-line
-  algebra fact, but it explains that page's formula: the curvature −Δ/4 is what is left after completing the square.
+  algebra fact, but it explains that page's formula: the curvature −Δ/4 = d − k²/4 is what is left after completing the square.
 - **Size 1:** ellipse (circle after rescaling) when Δ < 0; **two parallel lines** X = ±1 when Δ = 0; hyperbola when
   Δ > 0. So the flat setting's "unit circle" is **not a parabola**. It is a pair of parallel lines, and multiplying by
   1 + tε slides along one of them (a Galilean shear) (B6). The parabola lives in section 1's conic instead, which is
