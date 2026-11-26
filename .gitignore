@@ -6,3 +6,5 @@ lean-library/build/
 *.ilean
 topics/*/lean/build/
 topics/three-body/libtb.so
+topics/three-body-word-formula/libtbw.so
+topics/three-body-word-formula/libhyp.so

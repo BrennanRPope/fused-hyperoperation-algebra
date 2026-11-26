@@ -1,0 +1,37 @@
+{
+ "corr": {
+  "same-direction pairs": 0.9622248530851167,
+  "doubled letters": -0.5521479810369743,
+  "switches a<->b": 0.5521479810369746,
+  "figure-eight syllables": -0.8538238994911892
+ },
+ "sd_ratio_plain": 0.07516240156724242,
+ "cv_same-direction": {
+  "sd": 0.020696983900843666,
+  "frac_within_1pct": 0.9107913669064748
+ },
+ "cv_doubled": {
+  "sd": 0.06301354386935216,
+  "frac_within_1pct": 0.26762589928057556
+ },
+ "cv_switches": {
+  "sd": 0.0630135438693521,
+  "frac_within_1pct": 0.26762589928057556
+ },
+ "cv_f8": {
+  "sd": 0.039351508973073726,
+  "frac_within_1pct": 0.7151079136690648
+ },
+ "cv_all four": {
+  "sd": 0.019669715427667732,
+  "frac_within_1pct": 0.943884892086331
+ },
+ "fit_all_coeffs": {
+  "same-direction pairs": 0.917859726474498,
+  "doubled letters": 0.4624767965591226,
+  "switches a<->b": 0.6761074890860977,
+  "figure-eight syllables": 0.06162642178009018,
+  "const": 1.1385842856452175
+ },
+ "frac_within_1pct_plain": 0.13381294964028778
+}

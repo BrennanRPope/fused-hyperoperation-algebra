@@ -32,6 +32,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: everything proved, recast in the polar coordinates; 5-region holographic sign check. | `topics/polar-recast/` | — |
 | DRAFT: laws from the hypersphere (i, π, e; orbits and hydrogen on one 3-sphere; gravity's 6 split, including the double copy). | `topics/hypersphere/` | `Topics/Hypersphere` |
 | DRAFT: three bodies on the 3-sphere; orbits found as action minimums. | `topics/three-body/` | — |
+| DRAFT: from a three-body orbit's word to its start: a run-based period rule (12 times tighter than the known one), a word-to-orbit recipe, hyperspherical and glued-sphere tests. | `topics/three-body-word-formula/` | — |
 | DRAFT: quantum action: action is area; the q dial in 3D quantum gravity. | `topics/quantum-action/` | `Topics/QuantumAction` |
 | DRAFT: Q#'s body, Adjoint and Controlled on our shapes. | `topics/qsharp-functors/` | — |
 | DRAFT: the simplex as its own shape; the shape dial and temperature (section 7). | `topics/simplex/` | — |

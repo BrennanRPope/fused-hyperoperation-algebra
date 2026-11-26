@@ -86,3 +86,4 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - missing shapes: 24-cell, 600-cell, 120-cell, E8 (600-cell = first corner set the swap rule can't wear down, brings φ; 24-cell/E8 bridges; 120-cell nothing new; only 3 families above 4D confirmed; polish 9%) ApXetwgjv4y63N5FyDZRuv — exceptional-shapes/
 - conic sections (every dial setting is one conic x²+kxy+dy²=y; chord rule = plane law; walls = points at infinity; degenerate conics = size-0 level; ruler = Cayley distance; parabola = same Hilbert plane as ellipse; affine curvature = 2^(4/3)κ; lead: plane dial + shape dial = affine sphere's curvature + Pick form) 8w865aE77KKzSDKLgcKXkC — conics/
 - bridge survey (739 bridges in 20 fields; 62 possibly new; 16 found in the shape grouping; 5 predicted, P1 soliton weights pass the holographic test) H6sF7t9v3j9jqQpfb9dkiR — bridge-survey/
+- three-body words to orbits 4XwMVSYz1u3ynpFqproreH (word → start; run law; hypersphere; glued spheres)
