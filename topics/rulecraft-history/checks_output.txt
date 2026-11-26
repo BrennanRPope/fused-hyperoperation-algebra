@@ -1,0 +1,26 @@
+PASS H1 affine map Ax+C has centre C/(1-A); nudge form (1-l)x+l t with l=1-A, t=C/(1-A)
+PASS H1b any affine self-map of [0,1] with 0<A<1 has its centre inside [0,1] (20000 samples)
+PASS H2 same target: composite strength = l1 + l2 - l1 l2 (our law at k=-1)
+PASS H3 (rule 1 then 2) - (rule 2 then 1) = l1 l2 (t2 - t1), whatever x
+PASS H4a starting point keeps share prod(1 - l_i), the same for every order
+PASS H4b weight on target i = l_i * prod over LATER rules (1 - l_j): stick-breaking read backward in time
+PASS H4c weights sum to the k=-1 fold of all strengths (order-free)
+PASS H5a highest outcome = rules sorted by target ascending, lowest = descending (300 random sets of 5, exact)
+PASS H5b putting a higher target earlier always lowers the outcome: strictly monotone on the weak order of S5
+PASS H6 order effect at second order = 1/2 sum_pairs l_i l_j (t_later - t_earlier) (BCH term)
+PASS H7a interleaving in n steps: gap ratios -> 2 per doubling (gap ~ 1/n) [numeric] [1.926, 1.98, 1.995, 1.999, 2.0, 2.0]
+PASS H7b limit = simultaneous rule: rates add, target = rate-weighted mean [numeric] 0.455639 vs 0.455633
+PASS H8 alternating rules settle into a 2-cycle; swing = l1 l2 (t2-t1)/(l1+l2-l1 l2) = order gap / total pull
+PASS H9a strength 0.7: no reachable position strictly between 0.3 and 0.7 (the forbidden middle)
+PASS H9b strength l > 1/2: the two rules map [0,1] onto [0,1-l] and [l,1], leaving (1-l, l) empty; at l = 0.7: (0, 3/10), (7/10, 1)
+PASS H9c strength 1 - 1/phi (about 0.382): positions overlap (no forbidden band) yet the law is singular (Erdos 1939, cited not checked); 1976 distinct points at depth 14 vs 2^14 = 16384
+PASS H10 repeal-by-inverse stays in [0,1] iff l t <= x <= 1 - l(1-t); window width 1-l
+PASS H11 repeal now = never had it exactly when rule 0 is moved to the end first; mismatch = -36/175
+PASS H12 origin forgotten iff sum l_n = inf: share at alpha=0.5,1 -> ~0; alpha=1.5,2 stays >0 [numeric] {0.5: '1.98e-312', 1.0: '6.26e-05', 1.5: '2.56e-01', 2.0: '5.79e-01'}
+PASS H13 strength 1/n makes the slider the plain average of every target so far (Polya / Arthur)
+PASS H14 reform space in (dose, target) coordinates has curvature -1
+PASS H15 the map x -> x (+) c fixes exactly the roots of 1 + k x + d x^2 (two when Delta = k^2 - 4d > 0, none when < 0)
+PASS H16 rules from one family (same anchors) commute; a nudge-to-1 rule and an odds rule with other anchors do not
+PASS H17 x (+) c at k = -1, d = 0 is the nudge toward 1 with strength c
+
+24 of 24 checks pass

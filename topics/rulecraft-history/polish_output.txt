@@ -1,0 +1,6 @@
+PASS P1 n = 6, strengths from 0.001 to 0.999, tied targets allowed: sorted order is best; swaps of equal targets change nothing (exact, 60 x 720 orders)
+PASS P2 pendulum swing at 50 digits: |b - a| = 0.3
+PASS P3 symmetric phase-in -> simultaneous rule; Richardson estimate differs by 8.8e-17
+PASS P4 alpha = 1.5, c = 0.6: sum of strengths = 0.6 zeta(1.5) = 1.5674252 (finite), so the start keeps share >= exp(-sum/(1-0.6)) > 0
+
+4 of 4 polishing checks pass
