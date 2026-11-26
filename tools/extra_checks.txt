@@ -38,3 +38,4 @@ topics/twisted-boosts/gpb/gpb_checks.py
 topics/corner-weights/lean/identities_sympy_check.py
 topics/height-flow/height_entropy.py
 topics/height-flow/horn_invariants.py
+topics/polar-recast/hec5/hec5_checks.py

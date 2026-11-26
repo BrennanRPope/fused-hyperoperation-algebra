@@ -18,7 +18,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: precession. Thomas, Foucault and Berry precession from one swap rule of the circle operation (known physics, cube reading ours); open lead: frame dragging from the swap rule. 23 Lean theorems. | `topics/precession/` | — |
 | DRAFT: semiring audit. ∘ₖ with a + b + 1/k is a known generated semiring in Pap's pseudo-analysis (cite and reuse); renames proposed only. | `topics/semiring-audit/` | — |
 | DRAFT: number-theory geometries as ways to bend the hypercube: tropical (corners), permutohedron (paths), cluster algebras (cube into associahedra). | `topics/number-theory-geometries/` | — |
-| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild. | `topics/gravity-from-theory/` | — |
+| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild; the dimension dial gives 1/r^(D−1) from flux, and the pictures meet only at D = 3. | `topics/gravity-from-theory/` | — |
 | DRAFT: curved space from counting (1 + 1 dimensions) and the river; radial-plane follow-up. | `topics/curved-space/` | — |
 | DRAFT: Newton's G lead reopened: Sakharov's induced gravity; second-loop ρ doesn't match. | `topics/newton-g/` | — |
 | DRAFT: maths with the same shape as Navier–Stokes, with spacetime as a turbulent flow. | `topics/ns-same-shape/` | — |
@@ -27,6 +27,9 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: polar coordinates for many dimensions: switching shapes by sliding numbers. | `topics/polar-coordinates/` | — |
 | DRAFT: stronger fusion magnets: the limits are materials and engineering. | `topics/fusion-magnets/` | — |
 | DRAFT: closed leads re-judged with the fuller theory: six reopened. | `topics/closed-leads-revisit/` | — |
+| DRAFT: fractional steps of the height flow: only whole steps stay real chances. | `topics/fractional-steps/` | — |
+| DRAFT: parabolic fingerprints: where the rung step's exact fingerprint shows up. | `topics/parabolic-fingerprints/` | — |
+| DRAFT: everything proved, recast in the polar coordinates; 5-region holographic sign check. | `topics/polar-recast/` | — |
 
 ## The library and tools
 

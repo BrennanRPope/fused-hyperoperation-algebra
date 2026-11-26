@@ -1,0 +1,36 @@
+== D1  Surface = derivative of volume, for the cube and the sphere, at any D
+[PASS] D1a cube face layer C(D, D-1) = D for every real D: the lift's face layer D·a^(D-1) = d/da (a^D): extends off the integers
+[PASS] D1b sphere: d/dr (V_D r^D) = S_D r^(D-1): both shapes: area ~ r^(D-1), so the pull ~ 1/r^(D-1) whatever the shape; only the constant differs
+
+== D2  The Gaussian route: one axis's heat kernel to the D-th power, integrated over time
+[PASS] D2a potential G = Gamma(D/2-1)/(4 pi^(D/2) r^(D-2)) (shown at D = 7/2): G(7/2) = gamma(3/4)/(4*pi**(7/4)*r**(3/2))
+[PASS] D2b pull = 1/(S_D r^(D-1)) for every D > 2: pull = r**(1 - D)*gamma(D/2)/(2*pi**(D/2)); D = 3 gives 1/(4*pi*r**2)
+[PASS] D2c G solves Laplace's equation away from the source at every D: G'' + (D-1)/r G' = 0
+[PASS] D3a pull is continuous through D = 2: 1/(2 pi r): 1/(2*pi*r)
+[PASS] D3b potential has a pole at D = 2; what is left is -ln(r)/(2 pi): d/dr(finite part) = -1/(2*pi*r)
+
+== D4  Right shape for the field: the sphere
+[PASS] D4a cube around a point source: total flux 1, but 3*sqrt(3) times stronger at face centres than corners: 6 x face = 1.000000000000, centre/corner = 5.196152
+[PASS] D4b p dial: only p = 2 (sphere) is unchanged by every turn: {1: '2.51e-01', 1.5: '6.65e-02', 2: '2.22e-16', 4: '1.04e-01', 12: '1.96e-01'}
+
+== D5  Right shape for the theory's cells: the cube (lattice); its field turns round far away
+[PASS] D5a 3D lattice: axis-vs-diagonal mismatch shrinks with distance, and 4 pi r G -> 1: near: 4 pi r G = 1.0815, 0.9485; far: 1.0018, 0.9989
+[PASS] D5b 2D lattice: potential grows like ln(r)/(2 pi), so the pull is 1/(2 pi r): a(20,0) = 0.73409 vs 0.73413; a(14,14) = 0.73255 vs 0.73252
+
+== D6  The velocity-line rule does not move with the dial: it always wants 1/r^2
+[PASS] D6a flux pull 1/r^(D-1) gives straight velocity lines only at D = 3: {2.0: '3.6e-01', 2.5: '3.5e-01', 3.0: '7.5e-12', 3.5: '7.7e-01'}
+[PASS] D6b in 2D, the rule's pull (1/r^2) has straight velocity lines; the flux pull (1/r) does not: 1/r^2: 7.5e-12; 1/r: 3.6e-01
+[PASS] D6c the rule's velocity sphere is one dimension up: S^D; level counts 2l+1 (D = 2), (l+1)^2 (D = 3): 2D: 1, 3, 5, ... (2D hydrogen, Zaslow-Zandler 1967); 3D: 1, 4, 9, ... (Fock 1935)
+
+== D7  Orbits across the dial: apsidal angle pi/sqrt(4 - D) for near-circular orbits (pull 1/r^(D-1))
+[PASS] D7a apsidal angle matches pi/sqrt(4 - D): {2.0: '2.2214 vs 2.2214', 2.5: '2.5651 vs 2.5651', 3.0: '3.1416 vs 3.1416', 3.5: '4.4434 vs 4.4429'}
+[PASS] D7b stable circular orbits need D < 4 (Ehrenfest 1917): pi/sqrt(4 - D) blows up at D = 4; above it circular orbits are unstable
+
+== D8  Einstein's river in 2+1: empty space has a constant river speed, so no pull
+[PASS] D8a 2+1 river: G^t_t = -(v^2)'/(2r): G^t_t = -v(r)*Derivative(v(r), r)/r
+[PASS] D8b one formula for D = 2, 3, 4: G^t_t = -(D-1)/(2 r^(D-1)) (r^(D-2) v^2)': D = 3, 4 from ../river-rebuild R5a, R6a; vacuum: v^2 ~ r^(2-D) (D > 2), v^2 constant (D = 2)
+
+== D9  Where the three pictures agree on the dial
+[PASS] D9 flux, rule and Einstein agree only at D = 3: {2: {'flux': 1, 'rule': 2, 'einstein': None}, 3: {'flux': 2, 'rule': 2, 'einstein': 2}, 4: {'flux': 3, 'rule': 2, 'einstein': 3}}
+
+19/19 checks pass

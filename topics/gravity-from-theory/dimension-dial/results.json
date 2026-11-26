@@ -1,0 +1,133 @@
+{
+  "D1a cube face layer C(D, D-1) = D for every real D": {
+    "pass": true,
+    "detail": "the lift's face layer D\u00b7a^(D-1) = d/da (a^D): extends off the integers"
+  },
+  "D1b sphere: d/dr (V_D r^D) = S_D r^(D-1)": {
+    "pass": true,
+    "detail": "both shapes: area ~ r^(D-1), so the pull ~ 1/r^(D-1) whatever the shape; only the constant differs"
+  },
+  "D2a potential G = Gamma(D/2-1)/(4 pi^(D/2) r^(D-2)) (shown at D = 7/2)": {
+    "pass": true,
+    "detail": "G(7/2) = gamma(3/4)/(4*pi**(7/4)*r**(3/2))"
+  },
+  "D2b pull = 1/(S_D r^(D-1)) for every D > 2": {
+    "pass": true,
+    "detail": "pull = r**(1 - D)*gamma(D/2)/(2*pi**(D/2)); D = 3 gives 1/(4*pi*r**2)"
+  },
+  "D2c G solves Laplace's equation away from the source at every D": {
+    "pass": true,
+    "detail": "G'' + (D-1)/r G' = 0"
+  },
+  "D3a pull is continuous through D = 2: 1/(2 pi r)": {
+    "pass": true,
+    "detail": "1/(2*pi*r)"
+  },
+  "D3b potential has a pole at D = 2; what is left is -ln(r)/(2 pi)": {
+    "pass": true,
+    "detail": "d/dr(finite part) = -1/(2*pi*r)"
+  },
+  "S_D_values": {
+    "1": 2.0,
+    "2": 6.283185307179586,
+    "2.5": 9.228821642162403,
+    "3": 12.566370614359172,
+    "3.5": 16.132334336031022,
+    "4": 19.739208802178716
+  },
+  "D4a cube around a point source: total flux 1, but 3*sqrt(3) times stronger at face centres than corners": {
+    "pass": true,
+    "detail": "6 x face = 1.000000000000, centre/corner = 5.196152"
+  },
+  "D4b p dial: only p = 2 (sphere) is unchanged by every turn": {
+    "pass": true,
+    "detail": "{1: '2.51e-01', 1.5: '6.65e-02', 2: '2.22e-16', 4: '1.04e-01', 12: '1.96e-01'}"
+  },
+  "D5a 3D lattice: axis-vs-diagonal mismatch shrinks with distance, and 4 pi r G -> 1": {
+    "pass": true,
+    "detail": "near: 4 pi r G = 1.0815, 0.9485; far: 1.0018, 0.9989"
+  },
+  "D5b 2D lattice: potential grows like ln(r)/(2 pi), so the pull is 1/(2 pi r)": {
+    "pass": true,
+    "detail": "a(20,0) = 0.73409 vs 0.73413; a(14,14) = 0.73255 vs 0.73252"
+  },
+  "lattice": {
+    "near": [
+      1.0815162940966334,
+      0.9485084570644441
+    ],
+    "far": [
+      1.0017710188301572,
+      0.9988611446265501
+    ],
+    "a2_axis": 0.7340877304641622,
+    "a2_diag": 0.7325473509912755
+  },
+  "D6a flux pull 1/r^(D-1) gives straight velocity lines only at D = 3": {
+    "pass": true,
+    "detail": "{2.0: '3.6e-01', 2.5: '3.5e-01', 3.0: '7.5e-12', 3.5: '7.7e-01'}"
+  },
+  "D6b in 2D, the rule's pull (1/r^2) has straight velocity lines; the flux pull (1/r) does not": {
+    "pass": true,
+    "detail": "1/r^2: 7.5e-12; 1/r: 3.6e-01"
+  },
+  "D6c the rule's velocity sphere is one dimension up: S^D; level counts 2l+1 (D = 2), (l+1)^2 (D = 3)": {
+    "pass": true,
+    "detail": "2D: 1, 3, 5, ... (2D hydrogen, Zaslow-Zandler 1967); 3D: 1, 4, 9, ... (Fock 1935)"
+  },
+  "D7a apsidal angle matches pi/sqrt(4 - D)": {
+    "pass": true,
+    "detail": "{2.0: '2.2214 vs 2.2214', 2.5: '2.5651 vs 2.5651', 3.0: '3.1416 vs 3.1416', 3.5: '4.4434 vs 4.4429'}"
+  },
+  "D7b stable circular orbits need D < 4 (Ehrenfest 1917)": {
+    "pass": true,
+    "detail": "pi/sqrt(4 - D) blows up at D = 4; above it circular orbits are unstable"
+  },
+  "apsidal": {
+    "2.0": [
+      2.2214228949325228,
+      2.221441469079183
+    ],
+    "2.5": [
+      2.5650759346782004,
+      2.565099660323728
+    ],
+    "3.0": [
+      3.141592653478983,
+      3.141592653589793
+    ],
+    "3.5": [
+      4.443383182526507,
+      4.442882938158366
+    ]
+  },
+  "D8a 2+1 river: G^t_t = -(v^2)'/(2r)": {
+    "pass": true,
+    "detail": "G^t_t = -v(r)*Derivative(v(r), r)/r"
+  },
+  "D8b one formula for D = 2, 3, 4: G^t_t = -(D-1)/(2 r^(D-1)) (r^(D-2) v^2)'": {
+    "pass": true,
+    "detail": "D = 3, 4 from ../river-rebuild R5a, R6a; vacuum: v^2 ~ r^(2-D) (D > 2), v^2 constant (D = 2)"
+  },
+  "D9 flux, rule and Einstein agree only at D = 3": {
+    "pass": true,
+    "detail": "{2: {'flux': 1, 'rule': 2, 'einstein': None}, 3: {'flux': 2, 'rule': 2, 'einstein': 2}, 4: {'flux': 3, 'rule': 2, 'einstein': 3}}"
+  },
+  "table": {
+    "2": {
+      "flux": 1,
+      "rule": 2,
+      "einstein": null
+    },
+    "3": {
+      "flux": 2,
+      "rule": 2,
+      "einstein": 2
+    },
+    "4": {
+      "flux": 3,
+      "rule": 2,
+      "einstein": 3
+    }
+  }
+}

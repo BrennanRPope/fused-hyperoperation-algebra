@@ -1,0 +1,40 @@
+== A. Core laws: the ruler is the radius ==
+PASS A1 composing adds radii: L_k(a o_k b) = L_k a + L_k b   [max err 1.0e-15]
+PASS A2 the flip leaves the radius alone: L_-k(phi_k x) = L_k x   [max err 1.1e-16]
+PASS A3 the n-th power is n times the radius   [max err 8.9e-16]
+PASS A4 the wall -1/k sits at radius minus infinity (k=1: L(-1+1e-12))
+PASS A5 certainty at k=-1 sits at radius plus infinity (L_-1(1-1e-12))
+PASS A6 1 + (x1 o x2 o x3) has one term per cube corner (Newton polytope = cube)
+
+== B. Rungs: each rung is one more radius ==
+PASS B1 the height flow E(x)=e^x-1 undoes the radius: L_1(E(t)) = t
+PASS B2 rung 3 (fused exponent) is plain addition after taking the radius twice
+PASS B3 the radius map log(1+x) has a parabolic fixed point at 0 (slope 1)   [so fractional rungs need Ecalle-Voronin, as the height-flow page found]
+
+== C. The plane dial: angle or radius ==
+PASS C1 sign of k^2-4d decides wrap-around (angle) vs run-to-a-wall (radius)   [399/399]
+PASS C2 Clifford square -1 -> angle (cos, sin); +1 -> radius (cosh, sinh); 0 -> straight (1 + t e)
+
+== D. Swapping order costs a turn proportional to area ==
+PASS D1 turn/area: rotations (sphere, d=+1) vs boosts (hyperbolic, d=-1) vs Galilean (flat, d=0)   [+1.0000, -1.0000, 0e+00]
+PASS D2 face weights: Gaussian binomial = sum over lattice paths of q^(area)
+PASS D3 quantum clock/shift (VU = qUV): (U+V)^n expands with the same q-binomials
+PASS D4 spin sphere -> quantum plane: phase/area tends to a constant (hbar = 1) as the sphere grows   [j=5: -0.9894, j=20: -0.9973, j=80: -0.9993, j=320: -0.9998]
+
+== E. The right shape for each family ==
+PASS E1 rankings: expected ranks of a Plackett-Luce model lie in the permutohedron   [min slack -2.05e-12]
+PASS E2 KdV 2-soliton: the slow wave's jump = log(pair weight)/k2, as the tropical (polar) grid predicts   [measured -2.1970, predicted -2.1972]
+PASS E3 Lee-Yang: all zeros of a ferromagnet's partition function sit at log-radius 0 (pure angle)   [max |log|z|| 1.1e-15]
+PASS E4 quantum correlations: round in E, straight in angle coordinates (|sum of asin E| <= pi)   [max excess -1.10e-01; largest CHSH seen 2.496 <= 2.828]
+PASS E5 entropy as a shape: top corner weight = I3, and alternate hexagon sides differ by I3   [GHZ, 4 qubits (bits): I3=+1, sides=['1', '0', '1', '0', '1', '0']; AME(4,3), perfect tensor (trits): I3=-2, sides=['0', '2', '0', '2', '0', '2']; classical copies A=B=C: I3=+1, sides=['1', '0', '1', '0', '1', '0']; classical XOR C=A+B: I3=-1, sides=['0', '1', '0', '1', '0', '1']]
+PASS E6 5-party holographic cyclic inequality written in corner weights (computed, see detail)   [nonzero corner coefficients: ABD:-1, ACD:-1, ACE:-1, BCE:-1, BDE:-1, ABCD:-1, ABCE:-1, ABDE:-1, ACDE:-1, BCDE:-1, ABCDE:-1]
+PASS E7 the same inequality in the shape's own (Minkowski) weights touches no single or pair corner   [pairs = segments are untouched; only simplices of 3 or more parties]
+    MMI for 3 parties in corner weights: I3 = y_ABC <= 0 (one corner).
+
+== F. Fermat in polar coordinates ==
+PASS F1 every Fermat curve x^n+y^n=1 has the line's radius picture shrunk by n (n lives only in the angles)
+
+== G. Temperature is the roundness dial ==
+PASS G1 free energy -> lowest energy as T -> 0, within T log n (the Maslov / p -> infinity limit)
+
+24/24 pass

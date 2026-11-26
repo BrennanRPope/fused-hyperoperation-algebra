@@ -75,3 +75,6 @@ Parent task u4a32564ac49a3dc7a985ee689b18dee0.
 - electromagnetism (EM sets the dial, fields on the light cone, gauge loops, F as wedge, Maxwell as one equation) A71iTBsgUHZSkcbNUrEacY
 - hidden dials of a half box (fractal dials vs the circle operation: has dimension+t, missing zoom) NOT YET PUBLISHED (daily new-page cap) — fractal-dials/index.html
 - shape dependencies (do shapes depend on shapes? proof bodies order yes, whole laws no, composition shapes exact line + 21 Lean theorems) NOT YET PUBLISHED (daily new-page cap) — shape-dependencies/index.html
+- same shape as Navier–Stokes (+ spacetime as turbulence; chirality family, scale entanglement, AdS cascades) AWGTyPpeHENN7K1YJej3MA
+- polar recast of everything proved (right shape per family; entropy-as-shape lead) 1cR9uVT7Zk8ywD6n6qZZoM
+- hypersphere (laws from the hypersphere; i, π, e) DeJHL2BEQf8aeWWtUq6HDM

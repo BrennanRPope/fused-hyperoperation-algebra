@@ -1,0 +1,15 @@
+MMI        : 20/20 split into upward intervals from 3-region corners
+MMI lifted : 45/45 split into upward intervals from 3-region corners
+cyclic     : 72/72 split into upward intervals from 3-region corners
+new (10)   : 10/10 split into upward intervals from 3-region corners
+new (60a)  : 60/60 split into upward intervals from 3-region corners
+new (60b)  : 60/60 split into upward intervals from 3-region corners
+new (90)   : 90/90 split into upward intervals from 3-region corners
+total 357 / 357
+MMI e.g. [('BCD', '')]
+MMI lifted e.g. [('ABD', ''), ('ADE', 'B')]
+cyclic e.g. [('ABC', ''), ('ABD', 'C'), ('ADE', 'B'), ('BCE', 'A'), ('CDE', 'AB')]
+new (10) e.g. [('ABE', 'C'), ('ACD', ''), ('BCE', 'D'), ('BDE', 'A')]
+new (60a) e.g. [('ABC', ''), ('ABC', ''), ('ABE', 'C'), ('ACD', 'B'), ('BCE', 'A'), ('BDE', 'C'), ('CDE', 'A'), ('CDE', 'B')]
+new (60b) e.g. [('ABC', ''), ('ACD', 'B'), ('ADE', 'C'), ('BCE', 'A')]
+new (90) e.g. [('ABC', ''), ('ABD', ''), ('ABE', 'CD'), ('BCD', 'A'), ('BCD', 'A'), ('CDE', 'B')]

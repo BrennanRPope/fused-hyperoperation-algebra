@@ -183,6 +183,11 @@ relativity it is exactly Schwarzschild (γ = β = 1), Mercury 42.98″/century a
 Einstein picks 3 space dimensions. One bridge from the weak-field rule to the exact river remains an input.
 19/19 checks.
 
+**Follow-up 3 (Nov 26): `dimension-dial/README.md`.** The dimension dial gives pull 1/(S_D r^(D−1)) from flux at every
+D, so 1/r² at 3 and 1/r at 2 (log potential exactly at D = 2), carried off the integers by the Gaussian. The velocity
+rule wants 1/r² at every D, and Einstein gives no pull at D = 2, so the three pictures meet only at D = 3. Right shapes:
+sphere for the field, cube for the theory's cells, Gaussian for non-integer D. 19/19 checks.
+
 ### N.4 A dead end checked in passing
 
 The union rule ∘₋₁ is the rule for overlapping shadows, which is Le Sage's 1748 "shadow" theory of gravity: it gives

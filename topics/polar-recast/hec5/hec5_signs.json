@@ -1,0 +1,177 @@
+{
+ "1": {
+  "name": "SA",
+  "instances": 15,
+  "paper_orbit": 15,
+  "stats": {
+   "one sign, lowest corner grade 2": 10,
+   "minkowski weights equal corner weights": 5,
+   "one sign, lowest corner grade 1": 5
+  },
+  "example": {
+   "one sign, lowest corner grade 2": {
+    "AC": -1
+   },
+   "one sign, lowest corner grade 1": {
+    "D": 2,
+    "AD": 1,
+    "BD": 1,
+    "CD": 1,
+    "DE": 1,
+    "ABD": 1,
+    "ACD": 1,
+    "ADE": 1,
+    "BCD": 1,
+    "BDE": 1,
+    "CDE": 1,
+    "ABCD": 1,
+    "ABDE": 1,
+    "ACDE": 1,
+    "BCDE": 1,
+    "ABCDE": 1
+   }
+  }
+ },
+ "2": {
+  "name": "MMI",
+  "instances": 20,
+  "paper_orbit": 20,
+  "stats": {
+   "one sign, lowest corner grade 3": 20,
+   "minkowski weights equal corner weights": 10
+  },
+  "example": {
+   "one sign, lowest corner grade 3": {
+    "ABE": -1,
+    "ACE": -1,
+    "ADE": -1,
+    "ABCE": -1,
+    "ABDE": -1,
+    "ACDE": -1,
+    "ABCDE": -1
+   }
+  }
+ },
+ "3": {
+  "name": "MMI lifted",
+  "instances": 45,
+  "paper_orbit": 45,
+  "stats": {
+   "one sign, lowest corner grade 3": 45,
+   "minkowski weights equal corner weights": 15
+  },
+  "example": {
+   "one sign, lowest corner grade 3": {
+    "ABC": -1,
+    "ACE": -1,
+    "BCD": -1,
+    "CDE": -1,
+    "ABCD": -1,
+    "ABCE": -1,
+    "ACDE": -1,
+    "BCDE": -1,
+    "ABCDE": -1
+   }
+  }
+ },
+ "4": {
+  "name": "cyclic",
+  "instances": 72,
+  "paper_orbit": 72,
+  "stats": {
+   "one sign, lowest corner grade 3": 72,
+   "minkowski weights equal corner weights": 12
+  },
+  "example": {
+   "one sign, lowest corner grade 3": {
+    "ADE": -1,
+    "BCE": -1,
+    "BDE": -1,
+    "ABDE": -1,
+    "BCDE": -1
+   }
+  }
+ },
+ "5": {
+  "name": "new (10)",
+  "instances": 10,
+  "paper_orbit": 10,
+  "stats": {
+   "one sign, lowest corner grade 3": 10,
+   "minkowski weights equal corner weights": 0
+  },
+  "example": {
+   "one sign, lowest corner grade 3": {
+    "ABD": -1,
+    "ACD": -1,
+    "ADE": -1,
+    "BCE": -1,
+    "ABCD": -1,
+    "ABDE": -1,
+    "ACDE": -1
+   }
+  }
+ },
+ "6": {
+  "name": "new (60a)",
+  "instances": 60,
+  "paper_orbit": 60,
+  "stats": {
+   "one sign, lowest corner grade 3": 60,
+   "minkowski weights equal corner weights": 0
+  },
+  "example": {
+   "one sign, lowest corner grade 3": {
+    "ABC": -1,
+    "ABD": -1,
+    "ABE": -1,
+    "ACE": -2,
+    "BDE": -2,
+    "CDE": -1,
+    "ABCE": -2,
+    "ABDE": -2,
+    "ACDE": -1,
+    "BCDE": -1
+   }
+  }
+ },
+ "7": {
+  "name": "new (60b)",
+  "instances": 60,
+  "paper_orbit": 60,
+  "stats": {
+   "one sign, lowest corner grade 3": 60,
+   "minkowski weights equal corner weights": 0
+  },
+  "example": {
+   "one sign, lowest corner grade 3": {
+    "ABC": -1,
+    "ADE": -1,
+    "BCD": -1,
+    "CDE": -1,
+    "ABCD": -1,
+    "ACDE": -1,
+    "BCDE": -1
+   }
+  }
+ },
+ "8": {
+  "name": "new (90)",
+  "instances": 90,
+  "paper_orbit": 90,
+  "stats": {
+   "one sign, lowest corner grade 3": 90,
+   "minkowski weights equal corner weights": 0
+  },
+  "example": {
+   "one sign, lowest corner grade 3": {
+    "ABE": -1,
+    "ACD": -1,
+    "BCE": -1,
+    "BDE": -1,
+    "ABDE": -1,
+    "BCDE": -1
+   }
+  }
+ }
+}

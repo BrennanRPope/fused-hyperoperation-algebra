@@ -1,0 +1,245 @@
+{
+ "result": {
+  "MMI": [
+   20,
+   20
+  ],
+  "MMI lifted": [
+   45,
+   45
+  ],
+  "cyclic": [
+   72,
+   72
+  ],
+  "new (10)": [
+   10,
+   10
+  ],
+  "new (60a)": [
+   60,
+   60
+  ],
+  "new (60b)": [
+   60,
+   60
+  ],
+  "new (90)": [
+   90,
+   90
+  ]
+ },
+ "examples": {
+  "MMI": {
+   "corners": {
+    "BCD": -1
+   },
+   "tiling": [
+    [
+     "BCD",
+     ""
+    ]
+   ]
+  },
+  "MMI lifted": {
+   "corners": {
+    "ABD": -1,
+    "ADE": -1,
+    "ABDE": -1
+   },
+   "tiling": [
+    [
+     "ABD",
+     ""
+    ],
+    [
+     "ADE",
+     "B"
+    ]
+   ]
+  },
+  "cyclic": {
+   "corners": {
+    "ABC": -1,
+    "ABD": -1,
+    "ADE": -1,
+    "BCE": -1,
+    "CDE": -1,
+    "ABCD": -1,
+    "ABCE": -1,
+    "ABDE": -1,
+    "ACDE": -1,
+    "BCDE": -1,
+    "ABCDE": -1
+   },
+   "tiling": [
+    [
+     "ABC",
+     ""
+    ],
+    [
+     "ABD",
+     "C"
+    ],
+    [
+     "ADE",
+     "B"
+    ],
+    [
+     "BCE",
+     "A"
+    ],
+    [
+     "CDE",
+     "AB"
+    ]
+   ]
+  },
+  "new (10)": {
+   "corners": {
+    "ABE": -1,
+    "ACD": -1,
+    "BCE": -1,
+    "BDE": -1,
+    "ABCE": -1,
+    "ABDE": -1,
+    "BCDE": -1
+   },
+   "tiling": [
+    [
+     "ABE",
+     "C"
+    ],
+    [
+     "ACD",
+     ""
+    ],
+    [
+     "BCE",
+     "D"
+    ],
+    [
+     "BDE",
+     "A"
+    ]
+   ]
+  },
+  "new (60a)": {
+   "corners": {
+    "ABC": -2,
+    "ABE": -1,
+    "ACD": -1,
+    "BCE": -1,
+    "BDE": -1,
+    "CDE": -2,
+    "ABCD": -1,
+    "ABCE": -2,
+    "ACDE": -1,
+    "BCDE": -2
+   },
+   "tiling": [
+    [
+     "ABC",
+     ""
+    ],
+    [
+     "ABC",
+     ""
+    ],
+    [
+     "ABE",
+     "C"
+    ],
+    [
+     "ACD",
+     "B"
+    ],
+    [
+     "BCE",
+     "A"
+    ],
+    [
+     "BDE",
+     "C"
+    ],
+    [
+     "CDE",
+     "A"
+    ],
+    [
+     "CDE",
+     "B"
+    ]
+   ]
+  },
+  "new (60b)": {
+   "corners": {
+    "ABC": -1,
+    "ACD": -1,
+    "ADE": -1,
+    "BCE": -1,
+    "ABCD": -1,
+    "ABCE": -1,
+    "ACDE": -1
+   },
+   "tiling": [
+    [
+     "ABC",
+     ""
+    ],
+    [
+     "ACD",
+     "B"
+    ],
+    [
+     "ADE",
+     "C"
+    ],
+    [
+     "BCE",
+     "A"
+    ]
+   ]
+  },
+  "new (90)": {
+   "corners": {
+    "ABC": -1,
+    "ABD": -1,
+    "ABE": -1,
+    "BCD": -2,
+    "CDE": -1,
+    "ABCD": -2,
+    "ABCE": -1,
+    "ABDE": -1,
+    "BCDE": -1,
+    "ABCDE": -1
+   },
+   "tiling": [
+    [
+     "ABC",
+     ""
+    ],
+    [
+     "ABD",
+     ""
+    ],
+    [
+     "ABE",
+     "CD"
+    ],
+    [
+     "BCD",
+     "A"
+    ],
+    [
+     "BCD",
+     "A"
+    ],
+    [
+     "CDE",
+     "B"
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,10 @@
+flow check f_1 = e^x-1: True | f_s o f_t = f_(s+t): True
+ln_s series (u = X-1): (1)u^1 + (-s/2)u^2 + (s*(3*s + 1)/12)u^3 + (-s*(2*s + 1)*(3*s + 1)/48)u^4 + (s*(45*s**3 + 65*s**2 + 30*s + 4)/720)u^5
+third-order fit: k = s , d = s*(s - 1)/4 , k^2 - 4d = s
+fourth-order gap (rung minus best conic): s*(s - 1)/48
+  s=-1: k^2-4d=-1, gap4=1/24
+  s=-1/2: k^2-4d=-1/2, gap4=1/64
+  s=0: k^2-4d=0, gap4=0
+  s=1/2: k^2-4d=1/2, gap4=-1/192
+  s=1: k^2-4d=1, gap4=0
+  s=2: k^2-4d=2, gap4=1/24
