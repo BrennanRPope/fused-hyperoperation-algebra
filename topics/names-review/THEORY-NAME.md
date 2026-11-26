@@ -2,7 +2,7 @@
 
 ## Decision (Nov 26, 2026): Affine Composition Theory
 
-Brennan picked **Affine Composition Theory** on Nov 26 ("Affine composition theory."), after noting that "hypercube doesn't work anymore because we have hyper shapes now. Both c- round ones and pointy ones." Reasons and the other candidates (Conic, Affine Sphere, Unit Ball Composition Theory): `theory-name/README.md`. Every dial already has an affine-geometry name, and the core law composes stretches about one centre. Order isn't required, but a dial (q, or ħ over the star product) turns it on. The section below is the Nov 25 record and is kept as history.
+Brennan picked **Affine Composition Theory** on Nov 26 ("Affine composition theory."), after noting that "hypercube doesn't work anymore because we have hyper shapes now. Both c- round ones and pointy ones." Reasons and the other candidates (Conic, Affine Sphere, Unit Ball Composition Theory): `theory-name/README.md`. Every dial already has an affine-geometry name, and the core law composes stretches about one centre. Order isn't required, but a dial (q, or ħ over the star product) turns it on. Brennan then raised that the name "loses the fused aspect", and settled it the same day: **Fused Hyperoperation Algebra stays as its own layer, and Affine Composition Theory is built on it** ("Set it up that way"). The algebra holds the operation, its laws, the rungs and the Lean library. The theory holds the shapes, dials, readings, order dial and physics. The dependency runs one way. The repo keeps the algebra's name. Details: `theory-name/LAYERS.md`. The section below is the Nov 25 record and is kept as history.
 
 ## Earlier decision (Nov 25, 2026)
 

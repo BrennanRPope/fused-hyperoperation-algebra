@@ -2,7 +2,7 @@
 
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 
-**Decision (Nov 26, 2026): Brennan picked Affine Composition Theory** ("Affine composition theory."). It replaces the interim name Hypercube Composition Theory (Nov 25), which replaced Fused Hyperoperation Algebra.
+**Decision (Nov 26, 2026): Brennan picked Affine Composition Theory** ("Affine composition theory."). It replaces the interim name Hypercube Composition Theory (Nov 25), which replaced Fused Hyperoperation Algebra. Then, the same day, to keep "fused": Fused Hyperoperation Algebra stays as its own layer, and the theory is built on it (`LAYERS.md`).
 Asked for by Brennan on a voice call: "hypercube doesn't work anymore because we have hyper shapes now. Both c- round ones and pointy ones." He said yes to looking for a name, and asked: "do we still feel like composition, the order of composition, is a key part of this theory?"
 Prose across the topic folders now says Affine Composition Theory. The repo name, CITATION.cff and .zenodo.json are unchanged.
 Builds on `names-review/THEORY-NAME.md` (the Nov 25 interim-name review, not repeated), `affine-names/`, `affine-sphere/`, `conics/`, `order-dial/`, `shape-dial-survey/`, `named-functions/`.
