@@ -54,3 +54,6 @@ topics/quantum-action/cut-independence/lean_identities_check.py
 topics/yang-mills-gap/lean/check_statements.py
 topics/shape-dial-survey/p3_certificate.py
 topics/force-reach/lean/check_statements.py
+topics/shape-dial-survey/general_p_far.py
+topics/rulecraft-history/polish.py
+topics/force-reach/flux-tube-dial/lean/check_statements.py

@@ -161,7 +161,7 @@ to one of our conic laws.
   parameter off the plane, and every structural question we ask (rungs, hypernatural logarithm, walls) can be asked
   there. Next steps: compute the elliptic rung ladder and see how its fingerprint moves with m; and, for the corner
   weights, note that KdV solitons are the m → 1 limit of cnoidal waves, so the soliton corner weights should continue
-  to m < 1 as theta-function weights (known KdV theory, not yet tied to our cube).
+  to m < 1 as theta-function weights (known KdV theory, not yet tied to our cube). Followed up in [`elliptic-modulus/`](../elliptic-modulus/README.md) (DRAFT).
 - **Naming.** "Edwards parameter" and "Jacobi's modulus m" are the existing names. The literature writes the Edwards
   parameter as d, which clashes with our curvature dial, so this page writes it out in words. It is not added to the
   dial list; if it is adopted, the design rule makes it an input.
@@ -205,6 +205,7 @@ value as the ∘₁ power; dots are simulated barriers.
   and whether the curvature dial d is what sets the geometry of the barrier triangle.
 - **Inputs and readings.** The inputs are each barrier's odds t₁, t₂ (base dials) and the loop phase φ (a setting).
   The pair's odds t and the lengths D are readings.
+- Worked up in [`tunnelling/`](../tunnelling/README.md) (Nov 26).
 
 ### F5. "Triprotic acids reject the dial's fold" (chemistry)
 
