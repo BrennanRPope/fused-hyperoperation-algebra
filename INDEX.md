@@ -18,22 +18,26 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: precession. Thomas, Foucault and Berry precession from one swap rule of the circle operation (known physics, cube reading ours); open lead: frame dragging from the swap rule. 23 Lean theorems. | `topics/precession/` | — |
 | DRAFT: semiring audit. ∘ₖ with a + b + 1/k is a known generated semiring in Pap's pseudo-analysis (cite and reuse); renames proposed only. | `topics/semiring-audit/` | — |
 | DRAFT: number-theory geometries as ways to bend the hypercube: tropical (corners), permutohedron (paths), cluster algebras (cube into associahedra). | `topics/number-theory-geometries/` | — |
-| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild; the dimension dial gives 1/r^(D−1) from flux, and the pictures meet only at D = 3. | `topics/gravity-from-theory/` | — |
+| DRAFT: gravity from the theory. Frame dragging from boosting Newton's field with the plane dial (matches Gravity Probe B, LAGEOS, the double pulsar); the inverse-square law is restated, not derived. Follow-ups: a velocity-line rule gives 1/r² and n = 3, and the river rebuilt on it is exactly Schwarzschild; the dimension dial gives 1/r^(D−1) from flux, and the pictures meet only at D = 3. Jet river: for the river, every field equation is the second layer Q of the cell's one-step cube, so the velocity rule for every cell gives exact Schwarzschild; spin works to first order, full Kerr needs cells that also rotate. | `topics/gravity-from-theory/` (`jet-river/`) | — |
 | DRAFT: curved space from counting (1 + 1 dimensions) and the river; radial-plane follow-up. | `topics/curved-space/` | — |
 | DRAFT: Newton's G lead reopened: Sakharov's induced gravity; second-loop ρ doesn't match; second pass (Nov 26) closes it again and fixes two slips. | `topics/newton-g/` | — |
 | DRAFT: maths with the same shape as Navier–Stokes, with spacetime as a turbulent flow. | `topics/ns-same-shape/` | — |
 | DRAFT: warp bubbles, wormholes and artificial gravity through the circle operation. No route; one wormhole reading. | `topics/warp-bubble/` | `Topics/WarpWormhole` |
+| DRAFT: Yang–Mills mass gap: gap only in the circle class, = −Δ; four ways a gap closes; 4D Yang–Mills sits at the end of the coupling line; not a lead. | `topics/yang-mills-gap/` | — |
 | DRAFT: shapes beyond the hypercube (associahedron, elliptope, pentagon, double copy). | `topics/beyond-the-cube/` | — |
 | DRAFT: polar coordinates for many dimensions: switching shapes by sliding numbers. | `topics/polar-coordinates/` | — |
 | DRAFT: stronger fusion magnets: the limits are materials and engineering. | `topics/fusion-magnets/` | — |
 | DRAFT: closed leads re-judged with the fuller theory: six reopened. | `topics/closed-leads-revisit/` | — |
+| DRAFT: closed leads, looked at fresh from our own tools: three open (tunnelling as a hyperbolic triangle, elliptic functions one parameter off the plane dial, history as oriented area). | `topics/closed-leads-fresh-look/` | — |
 | DRAFT: fractional steps of the height flow: only whole steps stay real chances. | `topics/fractional-steps/` | — |
 | DRAFT: parabolic fingerprints: where the rung step's exact fingerprint shows up. | `topics/parabolic-fingerprints/` | — |
 | DRAFT: everything proved, recast in the polar coordinates; 5-region holographic sign check. | `topics/polar-recast/` | — |
 | DRAFT: laws from the hypersphere (i, π, e; orbits and hydrogen on one 3-sphere; gravity's 6 split, including the double copy). | `topics/hypersphere/` | `Topics/Hypersphere` |
 | DRAFT: three bodies on the 3-sphere; orbits found as action minimums. | `topics/three-body/` | — |
 | DRAFT: from a three-body orbit's word to its start: a run-based period rule (12 times tighter than the known one, sharp only near equal masses), a word-to-orbit recipe, twin orbits born in pairs, hyperspherical and glued-sphere tests. | `topics/three-body-word-formula/` | — |
+| DRAFT: three bodies with our order tools: swap rule gives the line-up turns exactly (known, Montgomery); the period is nearly order-blind (run prices add); a run is a cusp trip on the modular surface; which runs sit side by side trims the period miss from 0.12% to 0.03%; nothing separates same-word twins or predicts stability. | `topics/three-body-order/` | — |
 | DRAFT: quantum action: action is area; the q dial in 3D quantum gravity. | `topics/quantum-action/` | `Topics/QuantumAction` |
+| DRAFT: cut-independence from the swap rule's q weights: Turaev–Viro cut-independence at a root of unity (known; closes the question, no new direction). | `topics/quantum-action/cut-independence/` | [page](https://claude.ai/artifact/MXTC6qoA3CgW2TYPYpbN57) |
 | DRAFT: Q#'s body, Adjoint and Controlled on our shapes. | `topics/qsharp-functors/` | — |
 | DRAFT: the simplex as its own shape; the shape dial and temperature (section 7). | `topics/simplex/` | — |
 | DRAFT: the Lucas weights' silent layers are the Temperley–Lieb (Beraha) points. | `topics/lucas-temperley-lieb/` | — |
@@ -41,6 +45,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | DRAFT: named functions: the hypernatural logarithm on every shape, the hypernatural exponential, and the existing names to adopt. | `topics/named-functions/` | — |
 | DRAFT: the missing shapes: the 24-cell, the 600-cell and E8. | `topics/exceptional-shapes/` | — |
 | DRAFT: every conic section in our framework: the conics are the plane dial. | `topics/conics/` | — |
+| DRAFT: one affine sphere for both plane dials: x² + kxy + dy² + w² = y is an affine sphere for every (k, d), H = 2^(3/2)(d − k²/4). | `topics/affine-sphere/` | [page](https://claude.ai/artifact/WWHeXcS3M5kVgQ94WRaNM3) |
 | DRAFT: bridge survey: every place the theory lands on an established field (about 739 bridges, 20 fields). | `topics/bridge-survey/` | — |
 | DRAFT: the polishing step: a cheap refinement after every number search, and what it changed. | `topics/polish-audit/` | — |
 
@@ -48,7 +53,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,323 theorems, 141 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,357 theorems, 145 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
