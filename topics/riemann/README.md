@@ -7,6 +7,8 @@ Round 3: [`round3/`](round3/README.md) tries the fused rewind, the Kerr turn, th
 
 Round 4: what has to stay positive along the rewind (the local fused discriminant at each extremum, its exact rate), and the barrier chain under our dials and the hypernatural log: [`round4/`](round4/README.md).
 
+Round 5: the dial pairs not yet tried (height with homothety, ratio with order, height with roundness), plus light and flux tubes: [`round5/`](round5/README.md).
+
 Asked for by Brennan (voice): "let's look at the Riemann hypothesis", with the method he set just before: first "from a
 fresh perspective... without looking at existing work", then "a second pass with the existing work".
 Checks: `checks.py` → `checks_output.txt`, **20 of 20 pass** in 144 s, including 7 polish checks (marked POLISH). Pictures: `figures.py` → `figures/`.

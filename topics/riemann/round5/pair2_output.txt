@@ -1,0 +1,2 @@
+{'moran_dimension': 1.3994333287263303, 'complex_dimensions_min_re': 1.3994333, 'complex_dimensions_max_re': 1.3994333, 'qmultinomial_bruteforce_maxerr': 8.881784197001252e-16, 'order_dial_identity_s2': {'0.3': {'direct': 1.678675008098193, 'formula': 1.6786848175642866}, '0.6': {'direct': 1.7239026299980487, 'formula': 1.7239302392989948}, '0.9': {'direct': 1.7917784583935292, 'formula': 1.791972311037411}}, 'Zq_formula_s2_q0.6': 1.7239302376253876}
+1 [(1.3994333, 0.0)]

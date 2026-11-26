@@ -3000,6 +3000,16 @@ FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.pair_ladder_rates	prope
 FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.pair_laguerre	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.pair_local_disc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound4	CircleOp.RiemannRound4.sin_steady	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.bends_meet_twice	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.boost_keeps_xp	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.light_same_speed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.lk_factor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.lk_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.necklace_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.neff_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.pair_offline_detected	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.qmulti_11	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound5	CircleOp.RiemannRound5.qmulti_21	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound

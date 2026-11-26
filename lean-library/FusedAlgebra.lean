@@ -154,6 +154,7 @@ import FusedAlgebra.Topics.EllipticModulus
 import FusedAlgebra.Topics.NewForce
 import FusedAlgebra.Topics.RiemannRound3
 import FusedAlgebra.Topics.RiemannRound4
+import FusedAlgebra.Topics.RiemannRound5
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

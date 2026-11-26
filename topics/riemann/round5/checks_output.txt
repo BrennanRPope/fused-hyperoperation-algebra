@@ -1,0 +1,25 @@
+PASS C1 Abel function of E(x) = e^x - 1: coefficients -1/36 and 1/540; E^(1) and E^(1/2) twice agree with E to 1e-12   [7.4e-13]
+PASS C2 homothety log: l_k(zeta) equals 1 - prod(1 - k p^-2), over k, at s = 2 for k = 0.5, 1, 2, 3 (1e-14); its series bends like height 1 + k
+PASS C3 height log of zeta breaks at a value X_s < 0 for s < 1, rising to 0 as s -> 1 (-2.52 at s = 0.05, -0.0062 at 0.99); X_2 = 1/e
+PASS C4 the break points are a-points of zeta off the line: real ones at sigma = 0.6748 (s = 0.05) and 0.5846 (s = 0.1), complex ones all left of the line   [s=0.5: 12 left, closest 0.158, s=0.8: 13 left, closest 0.053, s=0.95: 13 left, closest 0.012]
+PASS C5 generalized Mertens to 1e7: growth slope 0.51 at k = 1 and 0.62, 0.63 at k = 2, 3 (log factor from the order-k poles); k = 1/2 tracks its Selberg-Delange main term (ratio 1.18 to 1.19)   [k=0.5: 0.870, k=1.0: 0.507, k=2.0: 0.617, k=3.0: 0.626]
+PASS C6 prime fractal (one square per prime, side 1/p): Moran dimension 1.39943 (prime zeta = 1)   [1.399433]
+PASS C7 complex dimensions (P(s) = 1, Re s > 1): the only one with t < 60 on the grid is D itself; Newton from 597 starts finds none with 0 < t < 200; at sigma = 1.2 the disc of values has radius 1.52 > 1 (so they exist higher up) while P(1.2 + it) stays 0.23 from 1 for t < 200   [closest approach at sigma 1.02: 0.130]
+PASS C8 order dial: q-multinomial equals q^(inversions) summed over orderings (brute force, 12 cases)   [8.9e-16]
+PASS C9 order-dial identity (Z_q as a sum of homothety cubes) at s = 2, q = 0.3, 0.6, 0.9: the direct sum climbs to the formula as n grows (gap halves with each doubling, 1e-5 or better at n = 8e5 with the tail added); necklace form agrees at q = 0.6   [q=0.3: -5.6e-08, q=0.6: -5.0e-07, q=0.9: -1.1e-05]
+PASS C10 on the critical line |Z_q| dips at every zeta zero in 10 < t < 35 (q = 0.5, 0.3): the order dial keeps the zeros, as branch points   [q=0.5: dips to 0.154, median 1.12, q=0.3: dips to 0.130, median 1.19]
+PASS C11 heat flow and its Wick rotation from Phi: the first zero moves along the line by v t and straight off it by v tau, v = -0.57963, to 1e-8 at small time   [v -0.579631 vs zeros -0.579603]
+PASS C12 Berry-Keating: area under the boost hyperbola is E log(E/(l_x l_p)) - E + l_x l_p (sympy), and the zero count follows it with mean residual below 0.05   [mean 0.0080, max 1.15]
+PASS C13 flux-tube reading: local dimension of the zero count tracks log(T/2pi)/(log(T/2pi) - 1) within 0.1 above T = 200, falling to 1.18   [max dev 0.099]
+PASS C14 detector: h* goes above 1 only for the kernels with non-real zeros (p = 2.5, 3), and stays below 0.28 for p = 4, 6, 8   [p=2.5: 1.932, p=3.0: 1.834, p=4.0: 0.273, p=6.0: 0.201, p=8.0: 0.175]
+PASS C15 each detector peak sits next to a non-real zero's real part (within 1)   [7.89 vs 7.21; 12.16 vs 11.47]
+PASS C16 the Riemann kernel's h* (round 4) stays at 0.705, below the detector line at 1
+PASS P1 README is marked DRAFT and names the theory (Affine Composition Theory, built on Fused Hyperoperation Algebra)
+PASS P2 every picture the README shows exists, and every picture made is shown   [8 pictures]
+PASS P3 no overclaim phrases in the README
+PASS P4 wording rule: "backward heat flow" and "rewind" used; no "downward"/"going down" for the flow
+PASS P5 the README opens with the answer, says plainly whether it is a lead, and gives the order and why C was dropped
+PASS P6 numbers quoted in the README match the data
+PASS P7 the Lean file says it is compiled in the shared library, has 10 theorems and no sorry
+
+23 of 23 checks pass
