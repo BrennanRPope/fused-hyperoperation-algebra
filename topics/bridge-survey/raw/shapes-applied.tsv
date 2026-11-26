@@ -1,0 +1,275 @@
+id	our_side	their_side	field	verdict	source_cited	folders	note
+S01	Stick-breaking: running total of pieces = fold of the k = -1 law; stick fractions v = cos^2 of sphere angles	Stick-breaking construction of the Dirichlet process; hyperspherical coordinates	probability / geometry	FRAMING	Sethuraman 1994	simplex	Cube, simplex and sphere angles as three charts of one thing; write-up: real bridge, not a new theorem
+S02	k = +1 on the simplex: odds-minus-1 compose by the core law; log-ratio is our ruler	Bayes' rule as Aitchison perturbation; geometry of compositional data	statistics	FRAMING	Aitchison 1982-86; Bayes odds form	simplex	Ours: build / add / move reading of k = -1, 0, +1 on one shape
+S03	Simplex with square roots is an orthant of a radius-2 sphere	Fisher-Rao / Bhattacharyya distance; statistical distance = angle between states	information geometry	KNOWN	Fisher; Rao; Bhattacharyya; Wootters 1981	simplex	Bridge used to compare simplex with hypersphere
+S04	Random complex amplitudes squared land evenly on the simplex	Archimedes' hat-box theorem (general form); Born rule; moment map of CP^n	quantum / geometry	KNOWN	Archimedes; moment map of complex projective space	simplex; hypersphere; shape-dial-survey	Simplex = sphere with phases forgotten (shape-dial D1)
+S05	Real amplitudes crowd the simplex edges; random-walk lead time uniform in simplex angle	Arcsine law (Levy)	probability	KNOWN	Levy 1939	simplex	
+S06	Corner simplex of the n-cube has volume 1/n!; the cube is n! of them; volumes sum to e	Freudenthal (staircase) triangulation; random-sum puzzle (mean count to pass 1 is e)	combinatorics / geometry	KNOWN	staircase triangulation (write-up names it)	simplex; hypersphere	Ours: sorting e to the simplex, pi and i to the sphere
+S07	Summed volumes: cross-polytope e^2, ball e^pi(1+erf sqrt pi), any p-ball a Mittag-Leffler value	Unit-ball volume formulas; Mittag-Leffler function	geometry	KNOWN	none beyond 'all known' (simplex sec. 4)	simplex; shape-dial-survey	Mittag-Leffler form (G4) appears only as a check label in shape-dial-survey, no write-up
+S08	Hilbert distance on a segment = rapidity; Einstein addition = plane law at k = 0, d = -1	Hilbert projective metric; relativistic rapidity	geometry / relativity	KNOWN	Hilbert metric (standard)	simplex	
+S09	Hilbert geometry of the ball	Klein model of hyperbolic space = relativistic velocity space	geometry / relativity	KNOWN	Klein model	simplex	
+S10	Hilbert geometry of the simplex is flat (normed, hexagonal balls); Bayes updates are isometric shifts	Simplex is the only convex body whose Hilbert geometry is a normed space	convex geometry	KNOWN	Foertsch & Karlsson 2005; de la Harpe 1993	simplex; shape-dial-survey	shape-dial B2/B3: only triangle and disk can move their centre (check labels)
+S11	Thomas-Wigner angle = hyperbolic triangle area = our swap rule turn = d x area with d = -1	Thomas precession as hyperbolic area	relativity	FRAMING	Rhodes & Semon 2004	simplex; precession (cited)	Ours: placing the Thomas angle on the swap-rule line
+S12	1D: odds multiply exactly when velocities add Einstein's way (log odds = 2 x rapidity)	Bayes odds update vs relativistic velocity addition	statistics / relativity	POSSIBLY-NEW	none found	simplex; shape-dial-survey (B1); statistics	Write-up: elementary, no source found, 'treat as likely noticed before'
+S13	Relativity (ball) and Bayes (simplex) as one Hilbert rule on two shapes: one precesses, one commutes	Klein-model relativity; Foertsch-Karlsson flat simplex	geometry / relativity / statistics	FRAMING	Rhodes & Semon 2004; Foertsch & Karlsson 2005	simplex	Lead 1 of simplex page; each half known
+S14	Replicator equation on the simplex = Fisher-metric uphill flow of mean fitness	Shahshahani metric	biology / evolution	KNOWN	Shahshahani 1979	simplex; shape-dial-survey (E1, E2)	shape-dial E1/E2 (check labels only): replicator as sqrt(p) = imaginary-time evolution; Fisher's theorem = energy-drop rule
+S15	Temperature dial: free-energy body slides round ball -> simplex; canonical curvature fades smoothly -1 -> 0	Vinberg characteristic function / canonical projective metric	convex geometry	POSSIBLY-NEW	Vinberg metric (in script docstring)	simplex (shape_dial_checks_output.txt)	No write-up verdict: test of simplex lead 1, 26/26 pass; only the triangle is flat among regular polygons and l^p balls
+S16	Zero set of the box polynomial in log-radius coordinates = coordinate hyperplanes; each shape's grid = its normal fan	Amoebas; tropical hypersurfaces; normal fans	algebraic / tropical geometry	FRAMING	Gelfand, Kapranov & Zelevinsky 1994	polar-coordinates	Ours: the cube as Newton polytope of the box coordinate
+S17	Ruler log(1+kx)/k turns the core law into addition	Logarithm of the multiplicative formal group law	algebra	KNOWN	textbook	polar-coordinates; polar-recast	
+S18	Plane law = multiplying x + y*eps with eps^2 = k*eps - d; norm x^2+kxy+dy^2 multiplies; sign of k^2-4d: angle or radius	Elliptic / parabolic / hyperbolic plane numbers; rational formal group laws	algebra / geometry	KNOWN	Yaglom 1968; Coleman & McGuinness 1991	polar-coordinates; simple-laws; landscape	Ours: 'd picks angle or radius per axis'
+S19	Many-dimensional polar: squared Hopf radii fill a simplex, angles a torus	Hopf coordinates; action-angle coordinates	geometry	KNOWN	standard	polar-coordinates; hypersphere	
+S20	Moment map sends the log-radius grid into each shape; the square's 4 charts = ToricCharts.lean corners	Moment maps; Delzant polytopes	symplectic / toric geometry	FRAMING	Atiyah 1982; Guillemin & Sternberg 1982; Delzant 1988	polar-coordinates; tesseract	Ours: match with tesseract corners
+S21	Cube = Newton polytope of 1 + a o b o c; composing = Minkowski sum of segments	Newton polytopes; Ostrowski's theorem	algebraic geometry	FRAMING	Ostrowski; Loday 2004; Postnikov 2009	polar-coordinates	Ours: cube = Newt(1 + a o b o c)
+S22	Tesseract corner coordinates = Postnikov's y_I; our zeta = Postnikov's facet heights z_I	Generalized permutohedra (y and z coordinates, Moebius inversion)	combinatorics	FRAMING	Postnikov 2009	polar-coordinates; tesseract	Core result of the polar page; one piece of code runs point side and shape side
+S23	Shape family = weighted sums of simplices	Polymatroids; cores of convex cooperative games	combinatorics / game theory	KNOWN	Postnikov 2009 (secs 6, 9)	polar-coordinates; number-theory-geometries	
+S24	p-norm = exp of soft-max of log|u| at temperature 1/p; p -> inf is the max	Log-sum-exp -> max; Maslov dequantization	tropical math	FRAMING	Litvinov & Maslov 1996-	polar-coordinates; shape-dial-survey (M1, M2)	Ours: link of p dial to our Maslov result
+S25	Cube and cross-polytope both in the signed (type-B) family; signs = our flip	Coxeter submodular functions / deformations of Coxeter permutahedra	combinatorics	KNOWN	Ardila, Castillo, Eur & Postnikov 2020	polar-coordinates	
+S26	Budget region x o_k y <= 1 is one simplex of size log(1+k)/k in log-radius coordinates	(none: our own region)	geometry	POSSIBLY-NEW	none	polar-coordinates; beyond-the-cube	Ours; 'the cube is the simplex pushed off to infinity'
+S27	Corner compose (OR) on shape weights: facet heights multiply, z(y o y') = z(y) z(y')	Smets' disjunctive rule (belief functions multiply); cores	evidence theory / combinatorics	POSSIBLY-NEW	Smets 1993	polar-coordinates	Each half known; 'did not find the two put together'; marked ours
+S28	Flip phi_k is invisible to the radius (radius of phi_k(x) read at -k = radius of x)	Tsallis q <-> 2 - q duality	statistical physics	KNOWN	Tsallis 1988; Tempesta	polar-recast	Write-up: one-line consequence; duality known (sec 10c)
+S29	Rung 3 becomes addition after taking the radius twice (log log)	Iterated logarithms	analysis	KNOWN	standard	polar-recast	
+S30	Radius map log(1+x) has a parabolic fixed point at 0, so fractional rungs are not unique	Abel / Fatou coordinates; Ecalle-Voronin horn	dynamics	KNOWN	Szekeres; Ecalle	polar-recast; rung-shape	
+S31	Composition-shape order counts angles: plane 0, cylinder 1, torus 2	Degenerations of cubic curves	algebraic geometry	FRAMING	Silverman III.2.5	polar-recast; shape-dependencies; shape-directions	Ours: the sentence 'the composition-shape order counts angles'
+S32	Clifford generator squaring to -1/+1/0 = angle/radius/straight axis	Clifford signature (p, q, r)	algebra	KNOWN	standard	polar-recast	
+S33	Swap rule one area law: precession turn = d x area; cube face weight q^area; hbar as phase per area	Gauss-Bonnet; noncommutative torus; Inonu-Wigner contraction (Holstein-Primakoff)	geometry / quantum	FRAMING	Inonu & Wigner 1953; Holstein & Primakoff 1940	polar-recast	Ours: d and q are the same slot; folded into the genus lead
+S34	Corner weights as heights: KdV two-soliton contour = tropical grid of cube lifted by pair weight (jog = log A / k)	KP solitons and tropical curves	integrable systems	FRAMING	Kodama & Williams 2014	polar-recast	Small lead; resonant solitons open
+S35	Each statistics model has its own shape: bits -> cube, categorical -> simplex, rankings -> permutohedron	Marginal polytopes of exponential families; Plackett-Luce	statistics	KNOWN	Wainwright & Jordan 2008	polar-recast	
+S36	Entropy of subsets is a shape in the polar family; top corner weight = tripartite information I3	Entropy is a polymatroid; co-information atom	information theory	KNOWN	Fujishige 1978; Yeung 1991	polar-recast	
+S37	Holographic inequalities never touch single-region or pair corners	Superbalance of holographic entropy inequalities	quantum gravity / information	KNOWN	He, Hubeny & Rangamani 2020; He, Headrick & Hubeny 2019	polar-recast	Link to the exploration page's cube corner sum at k = -1 is ours
+S38	All 357 five-region holographic rules are one-sign ('net carved') in corner weights	Sign rule in the I-basis	quantum gravity / information	KNOWN	Hernandez-Cuenca, Hubeny & Jia arXiv:2309.06296 (Prop 3); Hernandez-Cuenca 2019	polar-recast (hec5)	Earlier marked ours, corrected after literature pass; 372-rule reproduction is ours
+S39	Every rule's corner group splits into upward intervals from 3-region corners	Tripartite-form conjecture	quantum gravity / information	KNOWN	Hubeny & Liu arXiv:2609.22504	polar-recast (literature)	Known up to six regions; a drawing of an open conjecture
+S40	Quantum correlations become straight in angle coordinates: |sum +- arcsin E| <= pi	Landau / Masanes boundary of the quantum correlation set	quantum foundations	KNOWN	Landau 1988; Masanes 2003	polar-recast	
+S41	Lee-Yang zeros sit at log-radius 0 (pure angle)	Lee-Yang circle theorem	statistical physics	KNOWN	Lee & Yang 1952	polar-recast	
+S42	Fermat curves in radius coordinates are one line shrunk by n; all content is in the angles	Fermat's Last Theorem	number theory	NEGATIVE		polar-recast	Polar view does not help with Fermat
+S43	Plane dial (a+b+kab)/(1-dab) is Hirzebruch's two-parameter genus; d=0 Todd, k=0 signature, k^2=4d Euler	Hirzebruch two-parameter (Todd / chi_y) genus formal group law; rigid genera	algebraic topology	KNOWN	Hirzebruch; Musin 2011 (after Krichever); Polya 1969	polar-recast (literature); landscape	k = mu1, d = -mu2; 20 of 20 genus values checked
+S44	Dial and swap rule are one number q = beta/alpha (on unit circle when angle, real when radius); face weights = genera of Grassmannians	Fixed-point formulas of the chi_y genus; Gaussian binomials	algebraic topology	POSSIBLY-NEW	Hirzebruch; Musin 2011	polar-recast (literature)	Top lead of polar-recast; elliptic end (Krichever, Buchstaber-Bunkova) unchecked
+S45	Rung ruler as a canonical smooth level-index number system	Level-index arithmetic	numerical analysis	FRAMING	Clenshaw & Olver 1984; Clenshaw, Lozier, Olver & Turner 1986; Walker 1991	polar-recast	Small practical lead
+S46	Angle vs radius switch = Wick rotation only at k = 0; in general two real forms of one complex group	Wick rotation	physics / Lie theory	KNOWN	standard	polar-recast	
+S47	Supernatural log ln_s is the logarithm of the height-s formal group law B_s	Lazard's formal group law framework	algebra	FRAMING	Lazard	polar-recast (literature)	Framework known; applying it to B_s ours
+S48	Best plane-dial shape at rung height s has k^2 - 4d = s, misses at 4th order by s(s-1)/48	(none)	algebra	POSSIBLY-NEW	none	polar-recast (literature); shape-directions (gap -s(s-1)/12 in its normalisation)	Ours, exact in sympy
+S49	Rung 2 fails rigidity; only plane-dial shapes are rigid genera	Musin's theorem on rigid Hirzebruch genera	algebraic topology	FRAMING	Musin 2011	polar-recast (literature)	Numerical
+S50	Fractional rung operation B_s has no convergent series at 0	Baker: fractional iterates of e^x - 1 diverge	analysis	POSSIBLY-NEW	Baker 1958	polar-recast (literature); landscape (gap 5)	'Ours, short argument'; landscape states the forbidden zone with Erdos-Jabotinsky 1960
+S51	Region x o_k y <= 1: whole cube at k=-1, simplex at k=0, shrinks to axes; edge (1+kx)(1+ky)=1+k	Sugeno lambda-measure rule	fuzzy measure theory	FRAMING	Sugeno 1974	beyond-the-cube	Picture ours; possible home for Haldane crowding, unchecked
+S52	Classical correlations = cut polytope on cube corners; union rule exact on independence saddle P(AB)=pq	Cut polytope / Pitowsky correlation polytope	quantum foundations	FRAMING	Pitowsky 1989	beyond-the-cube	Placement ours
+S53	2 sqrt 2 is where the elliptope pokes out of the cube-corner polytope	Tsirelson bound; elliptope	quantum foundations	KNOWN	Tsirelson 1980; Laurent & Poljak 1995	beyond-the-cube; shape-dial-survey (C1)	
+S54	Elliptope's 2D points cos(theta_i - theta_j) = our circle class	Quantum needs phases	quantum foundations	FRAMING		beyond-the-cube	Write-up: probably only a restatement
+S55	Associahedron canonical form = tree-level phi^3 amplitude	ABHY positive geometry	particle physics	KNOWN	Arkani-Hamed, Bai, He & Yan 2017	beyond-the-cube	
+S56	Associahedron u-equations: each u_X = union (k = -1 fold) of p_Y over crossing chords	u-equations / dihedral coordinates	particle physics / moduli spaces	FRAMING	Arkani-Hamed, He & Lam 2019; Brown 2009	beyond-the-cube	Equations known; union-rule reading ours
+S57	Whole associahedron = one four-point identity plus k = -1 gluing	(as above)	particle physics	POSSIBLY-NEW		beyond-the-cube	Derivation ours as written; 'likely familiar to experts'
+S58	u = 1 - cross-ratio = AdS3 random-geodesic linking probability; gluing is k = -1 in both	AdS3 / Crofton geodesic measure	quantum gravity / geometry	POSSIBLY-NEW		beyond-the-cube; probability-entanglement (cited)	Ours
+S59	u = P(no geodesic links sides i, j) in a Poisson geodesic soup; gluing = independence	Crofton measure; Poisson processes	integral geometry	KNOWN		beyond-the-cube (3b)	Write-up marks known
+S60	Each u-equation: P(both crossing channels linked) = P(neither linked)	(none)	integral geometry / particle physics	POSSIBLY-NEW		beyond-the-cube (3b)	Ours, simulated for 6- to 9-gons
+S61	u-equations force the geodesic clock rate to 1 (u^lam + (1-u)^lam = 1 only at lam = 1)	(none)	integral geometry	POSSIBLY-NEW		beyond-the-cube (3b)	Ours; open: does rate 1 pick a central charge
+S62	Associahedron corners = largest sets of channels certain together	Non-crossing chord sets	combinatorics	POSSIBLY-NEW		beyond-the-cube (3b)	Reading ours
+S63	Pentagon Y-system y(n+1)y(n-1)=1+y(n), factors 1+y = our lift; c_eff = 2/5 via Rogers dilogarithm	Scaling Lee-Yang model Y-system	2D QFT	KNOWN	Zamolodchikov 1991; Kirillov 1995	beyond-the-cube; number-theory-geometries	Ours only noting the lift; testbed past one loop
+S64	Associahedron data -> gravity via KLT kernel	Double copy	quantum gravity	KNOWN	KLT 1986; Cachazo, He & Yuan 2014; Mizera 2017	beyond-the-cube	Door, unchecked by us
+S65	Corner weights k^m e_m are a Polya frequency sequence for k > 0; dial moves along the moment curve	Total positivity; cyclic polytope; amplituhedron	combinatorics / physics	KNOWN	Aissen, Schoenberg & Whitney 1952; Edrei 1952; Arkani-Hamed & Trnka 2013	beyond-the-cube	Placement ours; restatement for the gaps
+S66	Permutohedron = zonotope, shadow of Birkhoff; quantum part of Birkhoff smaller	Birkhoff polytope; zonotopes	combinatorics	KNOWN	Birkhoff 1946; Postnikov 2009	beyond-the-cube	Restatement
+S67	No shape reaches Navier-Stokes stretching corner, frame dragging, or a value for G	(gaps)	physics	NEGATIVE	Tao (averaged NS, cited)	beyond-the-cube	Shapes rearrange terms; they do not change size estimates
+S68	Exact composition-shape line: addition root; mult-add = addition + corner; no-wall law = two walls turned by i; torus pinches	Formal group laws; singular cubics	algebraic geometry	KNOWN	Silverman III.2.5	shape-dependencies	21 Lean theorems
+S69	Proof bodies form an order stick -> square -> box -> cube	How proofs are written bottom-up	meta	NEGATIVE		shape-dependencies	Not a lead about laws
+S70	39 whole science laws by proof shape	Textbook dependency order	physics	NEGATIVE		shape-dependencies	No order: as many links down as up
+S71	One-input laws have exactly three global shapes by number of periods (0, 1, 2); torsion counts 1, n, n^2	Classification of one-dimensional complex groups	complex analysis	KNOWN	standard	shape-directions	
+S72	Nome = the one continuous direction (rank-2 lattice mod scale, j-invariant)	Tate curve	elliptic curves	KNOWN	Tate	shape-directions	
+S73	Rung jets meet the plane on D = s to third order; fourth-order gap -s(s-1)/12	(none)	algebra	POSSIBLY-NEW		shape-directions	'What is ours: the third-order identity D = s, and the fourth-order gap'
+S74	KP two-wave pair weight forced to be the cross ratio of the waves' points	Hirota's condition / KP multi-solitons	integrable systems	KNOWN	Hirota	shape-directions	
+S75	g waves: pair weights outrun points by (g-2)(g-3)/2, same excess as Riemann period matrices over curves	Schottky problem; Shiota's theorem	algebraic geometry	KNOWN	Shiota 1986; Riemann	shape-directions	
+S76	Four-wave rule; graphs without a 4-cycle obey it; one shared weight fits 4 waves only at k = -2 (tetrahedron)	Degenerate face of the Schottky problem	integrable systems	FRAMING	Shiota 1986	shape-directions	Write-up: past this is known ground; explicit 393-term rule computed here
+S77	Whole numbers: weight's primes split additive (p | k) from multiplicative	Sekiguchi-Oort-Suwa	arithmetic geometry	KNOWN	Sekiguchi, Oort & Suwa	shape-directions	
+S78	Boost twist = curvature x area, no new dial	Helmholtz-Lie	Lie theory	KNOWN	Helmholtz; Lie	shape-directions	
+S79	Mult-add a + b + ab	Circle operation of ring theory	algebra	KNOWN	ring theory (names follow literature)	design-principle; tesseract; boolean-lattice	
+S80	Lens law: walls lens M(x) turns (a+b+kab)/(1-qab) into multiplication	One-parameter Mobius groups	algebra	KNOWN	standard	landscape; patterns	
+S81	The landscape plane = cubic curves with a double point (node / cusp / acnode)	Singular cubics and their groups	algebraic geometry	KNOWN	Silverman ch. III	landscape	
+S82	Two-walled gap holds logistic, epidemics, drag, Kalman variance; logistic at midpoint = velocity addition	Riccati growth laws	ODEs / control / ecology	KNOWN	Verhulst 1838; Kalman & Bucy 1961	landscape	Composition error 1e-13
+S83	Turning gap: slope addition; Schrodinger log-slope composes by the lens law; country flips at E = V	Riccati form of the wave equation; Prufer angle	quantum mechanics	KNOWN	Prufer 1926	landscape	
+S84	Border: cusp, wave turning point, Euler characteristic at (2, 1); chi_y line q = k - 1	Hirzebruch chi_y genus	algebraic topology	KNOWN	Hirzebruch 1966; Albanese notes	landscape	
+S85	Channels on the straight line k = -L/(L-1), depolarizing -d^2/(d^2-1); floor at -2, exit into complex walls	Symmetric and depolarizing channels	information theory	POSSIBLY-NEW		landscape	'Possibly new as a picture'; floor proved in Lean
+S86	Fractional rungs: forbidden zone for analytic laws	Baker's theorem; Erdos-Jabotinsky	analysis	KNOWN	Baker 1958; Erdos & Jabotinsky 1960	landscape	Stating it as a forbidden zone is possibly new as a picture
+S87	KdV collision weight: sqrt A = (1-r)/(1+r), the speed-of-light lens	Sine-Gordon tanh^2 phase shift	integrable systems	KNOWN	Hirota 1971	landscape	Corrects earlier note: KdV is not on the rung curve
+S88	Unit-invariant shape number s = k^2/(k^2-4q): every law looks like rung s	(none)	algebra	POSSIBLY-NEW		landscape	'Possibly new as a picture'
+S89	Landscape countries agree with proof-gallery shape families	(internal)	meta	FRAMING		landscape; proof-gallery	Mostly expected by construction
+S90	Three countries = the three kinds of 2x2 step	Classification of Mobius maps	algebra	KNOWN	1800s	patterns	
+S91	n-fold sum of any law = Lucas-sequence ratio, P = 2+ka, Q = 1+ka+qa^2	Lucas sequences, addition rule, Cassini	number theory	FRAMING	Lucas 1878	patterns	New only as placement; proved in Lean
+S92	Fibonacci law at (-1,-1); golden walls (disc 5) = resistor ladder; 5-cycle forces golden trace; Beraha numbers	Fibonacci; crystallographic restriction; Beraha numbers	number theory	KNOWN	Beraha, Kahane & Weiss; classical	patterns; simple-laws	
+S93	Elliptic laws count by elliptic divisibility sequences; Lucas = their pinched edge	Elliptic divisibility sequences / division polynomials	number theory	KNOWN	Ward 1948	patterns	
+S94	Order-5 torsion family pinches at b = -phi^-5; Rogers-Ramanujan continued fraction	Tate normal form; Mazur torsion	number theory	KNOWN	Klein; Ramanujan; Mazur	patterns	
+S95	Golden ratio as a recurring constant across pages	Constant census vs scrambled null	meta	NEGATIVE		patterns	phi at chance level; e family above chance (explained by the ruler)
+S96	q as one force across pages	(two different q's)	meta	NEGATIVE		patterns; shape-directions	Curvature q vs gluing q; parallels hold only within each
+S97	One dial on the tesseract: x^2=0 dual numbers/jets, x^2=x mult-add, e^2=+-1 Clifford (Maxwell as one equation)	Dual numbers; idempotent algebra; spacetime algebra	algebra / physics	FRAMING	Hestenes 1966	tesseract	Each row known; one dial is ours
+S98	KdV soliton log corner weights, Moebius-inverted, live only in grade 2 (pairwise)	Hirota's formula; cumulants	integrable systems	KNOWN	Hirota 1971	tesseract	
+S99	Inclusion-exclusion = Moebius function of the Boolean lattice	Rota's Moebius theory	combinatorics	KNOWN	Rota 1964	tesseract; boolean-lattice	
+S100	Parity = the single top corner with +-1 inputs; majority = ab+ac+bc-2abc	Boolean Fourier-Walsh analysis	computer science	KNOWN	standard	tesseract	
+S101	Chain terms sit on B_n; dial weights rank-m corner by k^(m-1)	Elementary symmetric generating function	combinatorics	KNOWN	Newton & Girard	boolean-lattice	
+S102	Plane's two dials: rank-m corner weight = Lucas number U_m(k, d)	Tangent / tanh of a sum (two special cases)	combinatorics	POSSIBLY-NEW	ProofWiki tangent-of-sum; Coleman & McGuinness 1991	boolean-lattice	'Ours as stated; probably folklore'
+S103	Orderings = maximal chains = permutohedron vertices; all paths = ordered set partitions (faces)	Permutohedral fan face poset	combinatorics	KNOWN	Ardila, Denham & Huh 2020	boolean-lattice	
+S104	Moebius function = 1 + way back of eta under the circle op; dial gives chain polynomial at -k	Hall's theorem; Stanley chain / zeta polynomials	combinatorics	KNOWN	Hall 1936; Stanley EC1 3.8.5	boolean-lattice	Link of dial to Euler characteristics unchecked
+S105	Ordered corner sums = strict iterated sums; splitting a chain multiplies	Path signature; Chen's identity; quasi-shuffle	stochastic analysis	KNOWN	Chen 1957; Ree 1958; Hoffman 2000; Diehl, Ebrahimi-Fard & Tapia 2020	boolean-lattice	Deformed quasi-shuffle match unchecked
+S106	Box coordinates / union product = zeta transform / subset convolution	Fast subset convolution	algorithms	KNOWN	Yates 1937; Bjorklund et al. 2007	boolean-lattice; tesseract	
+S107	Our dial k^|S| heights are the uncut origin of the cube's secondary fan (74 triangulations)	Regular subdivisions; secondary polytope	tropical geometry	FRAMING	Gelfand, Kapranov & Zelevinsky 1994; De Loera, Rambau & Santos 2010	number-theory-geometries	Placement ours; lead
+S108	q-dial layer heights q^C(m,2) = the level-slab cell (tetrahedron, octahedron, tetrahedron)	Cauchy q-binomial theorem	tropical geometry	POSSIBLY-NEW	Cauchy	number-theory-geometries	'Ours'
+S109	Sign of k = sub- / modular / supermodular	Sugeno lambda-measure sign rule	fuzzy measures	KNOWN	Sugeno 1974; Grabisch 2016	number-theory-geometries	
+S110	Path vectors make a permutohedron that grows from a point as |k| grows; base polytope (k<0) / core (k>0)	Edmonds base polytope; Shapley core of convex games	optimization / game theory	POSSIBLY-NEW	Edmonds 1970; Shapley 1971; Postnikov 2009	number-theory-geometries	Pieces known; one-dial family picture ours, probably folklore
+S111	Centre of the path polytope = Shapley value	Shapley value	game theory	KNOWN	Shapley	number-theory-geometries; game-theory (cited)	
+S112	Uncoupled cluster swap graph = cube; coupling bends it to pentagon, hexagon, associahedron	Cluster algebras; generalized associahedra	algebra	KNOWN	Fomin & Zelevinsky 2002-03; Chapoton, Fomin & Zelevinsky 2002	number-theory-geometries; beyond-the-cube	
+S113	Y-system factors 1+y = lift of o_1; Rogers dilogarithm around pentagon = pi^2/2	Abel five-term identity; Bloch group	number theory	KNOWN	Abel	number-theory-geometries	
+S114	Landscape laws are heights 1 and infinity; y^2 = x^3 - x has height 2 at p = 3 mod 4	Formal group height	arithmetic geometry	KNOWN	Lubin & Tate 1965; Honda 1970; Silverman ch. IV	number-theory-geometries	Placement ours
+S115	Dial = lambda-ring parameter: lambda_t(x+y) = 1 + t(x o_t y)	Borger's field with one element (lambda-rings)	arithmetic geometry	FRAMING	Borger 2009	number-theory-geometries	
+S116	Cube = q -> 1 limit of the subspace lattice (not a dial setting)	Tits' field with one element	combinatorics	KNOWN	Tits 1957	number-theory-geometries	
+S117	Ruler log|1+kx| summed over all places = 0; Weil height subadditive	Product formula; Weil height	number theory	KNOWN	standard	number-theory-geometries	Not a lead
+S118	Landscape sorted by p^2 - 4q = hyperbolic / parabolic / elliptic modular classes	Modular group; class numbers	number theory	KNOWN	Gauss	number-theory-geometries	Not a lead
+S119	Polar split 'radius adds, sphere multiplies' exists only in dimensions 1, 2, 4, 8	Hurwitz composition algebras; Hopf invariant one	algebra / topology	KNOWN	Hurwitz 1898; Adams 1960	hypersphere	Reading ours
+S120	i = unit tangent at 1 of the size-keeping lift; pi = distance to -1	Composition-algebra quadratic identity	algebra	KNOWN	Hamilton	hypersphere	Restatement of dial route
+S121	On S^3 one i becomes a sphere of non-commuting i's; 2 pi turn = spinor sign	Quaternions; spinors	algebra / physics	KNOWN	Hamilton 1843	hypersphere	
+S122	Sphere's coordinate marginal (1 - t^2/n)^(n/2) = our dial chain at k = -1/2	Poincare-Borel lemma	probability	KNOWN	Poincare; Borel; Diaconis & Freedman 1987	hypersphere	
+S123	Sphere and simplex are one object in polar coordinates; cube = polydisc	Moment maps; Reinhardt domains	complex geometry	KNOWN	Archimedes (smallest case)	hypersphere; simplex; polar-coordinates	
+S124	Rungs on the hypersphere	(rung tower needs a radius)	analysis	NEGATIVE		hypersphere	
+S125	Plane dial d = 1/R^2 (imaginary radius = hyperbolic); Lambda dial d = Lambda/3	Gauss-Bonnet; Lambert's sphere of imaginary radius; de Sitter	geometry / cosmology	KNOWN	Lambert 1766; Gauss-Bonnet	hypersphere	
+S126	Swap rule = sphere's curvature; spin-1/2 Berry phase	Berry phase; Hopf fibration	geometry / quantum	KNOWN	Berry 1984; Hopf 1931	hypersphere	
+S127	Union rule holds only for orthogonal hemispheres (orthants = cube corners)	Born rule as cap area	probability / quantum	KNOWN	Archimedes; Bell 1966	hypersphere	Partial
+S128	Celestial sphere: a boost scales radii by Doppler, a turn adds angles; Doppler factors multiply = core law in x = D - 1	Lorentz group as Mobius maps on the sky; Bondi k-calculus	relativity	FRAMING	Penrose 1959; Penrose & Rindler 1984; Bondi 1964	hypersphere	
+S129	Kepler orbits are great circles of S^3; same S^3 gives hydrogen's n^2	Fock symmetry; Moser regularization	mechanics / quantum	KNOWN	Fock 1935; Moser 1970	hypersphere	
+S130	Gravity 1 - 6M/r = (1 - 2M/r)(1 - (2v)^2); electric orbit turn per lap = area on velocity sphere = Dirac fine structure	Schwarzschild ISCO factor; Dirac fine structure; Thomas turn	general relativity / atomic physics	POSSIBLY-NEW	Dirac; Biedenharn (cited in orbits/)	hypersphere (orbits/)	Lead; why gravity doubles the speed is open
+S131	Sphere fixes a value for G	(Newton's G)	gravity	NEGATIVE		hypersphere	
+S132	Coulomb's 4 pi = sphere area	Gauss's law	electromagnetism	KNOWN	Gauss	hypersphere	
+S133	Rung sheet = regular iteration of e^x - 1; only one smooth filling	Szekeres regular iteration; commutative hyperoperations	dynamics	KNOWN	Szekeres 1958; Ecalle; Bennett 1915	rung-shape	
+S134	Rung s run n times gives growth strictly between n^c and 2^n	Hardy orders of infinity; half-exponentials	analysis	KNOWN	Hardy	rung-shape	
+S135	Rung sheet with area gauge (1/2 at addition, 2 ln 2 - 1 at mult-add); surface E^s(d E^-s(a)) joins cube count and rung	(none)	analysis	POSSIBLY-NEW		rung-shape	'Possibly new, small'
+S136	Mult-add graph is a saddle (curvature -s^2/9 for rung s); complex rung loop	(reading)	geometry	FRAMING		rung-shape	A reading of the sheet, not the sheet
+S137	Every landscape point = mult-add in number system u^2 = ku - q read as a slope; countries = Euclid / Galileo / Einstein	Clifford-Study plane numbers; Yaglom's Galilean geometry	geometry	KNOWN	Clifford; Study; Yaglom 1979	simple-laws	Reading the whole plane through them is new
+S138	Mult-add's unit circle (1+x)(1+y) = 1 = Boyle's hyperbola; lever balance same curve	Boyle's law; lever	physics (history)	FRAMING		simple-laws	
+S139	Law of cosines = the line q = 1; past the border cos -> cosh; tilted-axes rotation = (2 cos theta, 1)	Law of cosines; relativistic triangles	geometry	KNOWN		simple-laws	
+S140	Lenses distance d apart: P1 + P2 - d P1 P2 = dial k = -d; field-lens wall	Ray-transfer matrices	optics	KNOWN		simple-laws	
+S141	Resistor ladder sections: walls at the golden ratio; Fibonacci ratios	Infinite resistor ladder	electricity	KNOWN		simple-laws; patterns	
+S142	Telegraph line sits at the speed-of-light corner (0, -1) in matching-resistance units	Transmission-line matching	electricity	KNOWN		simple-laws	Named on the page
+S143	Galileo's odd numbers and Kepler III as gnomons / cube layers	Euclid II.4; Kepler's third law	physics (history)	KNOWN	Euclid	simple-laws	
+S144	Rényi order q = p-norm exponent p, k = 1 - q; cube log-partition = o_1 fold, simplex = o_0 fold (softmax)	Rényi / Tsallis entropies	information theory	FRAMING	Rényi = L_k(Tsallis) (InfoFused)	shape-dial-survey	No write-up; verdict provisional from check label
+S145	CHSH over p-norm state spaces = 2^(1 + max(1/p, 1-1/p)); polygons fall 4 -> 2 sqrt 2	Tsirelson bound; PR box	quantum foundations	POSSIBLY-NEW		shape-dial-survey	No write-up; verdict provisional; p = 2 Tsirelson, p = 1, inf PR box 4
+S146	Continuous norm-keeping maps exist only at p = 2 (rotations) and, on positive vectors, p = 1 (stochastic)	Isometries of l^p spaces	functional analysis	KNOWN		shape-dial-survey	No write-up; verdict provisional
+S147	3D h-vectors: simplex [4]_q, cube (1+q)^3, permutohedron Eulerian, associahedron Narayana; genus at Euler point = vertex count	h-vectors; Hirzebruch genus at q = 1	combinatorics / topology	KNOWN		shape-dial-survey	No write-up; verdict provisional; at core law (q = 0) every shape gives 1
+S148	Light-cone ordering fraction: triangle 1/4 (cube product order), round 0.229	Causal-set ordering fraction	quantum gravity	FRAMING		shape-dial-survey	No write-up; 0.229 matches the curved-space page
+S149	Lee-Yang zeros for p-shape spins	Lee-Yang circle theorem	statistical physics	NEGATIVE		shape-dial-survey	No write-up; J1 FAIL (p = 1 ball, n = 3: 12 zeros, 0 on line)
+A01	Fragment coefficients combine c_AB = c_A * c_B under the mult-add law	Product ansatz for separable wavefunctions / size extensivity	quantum chemistry	FRAMING		chemistry	chapter 1
+A02	CISD is the k = 0 (additive) fold; coupled cluster is the log ruler	CISD vs coupled-cluster exponential ansatz	quantum chemistry	KNOWN	Szabo-Ostlund; Bartlett-Musial	chemistry	chapter 1
+A03	Only k = 1 is size-consistent; k = 1/2 drifts with fragment count	Size-consistency of truncated CI	quantum chemistry	POSSIBLY-NEW		chemistry	the dial-graded drift statement is ours; size-consistency itself is known
+A04	Spin multiplicities fold as corner counts	Spin multiplicity 2S+1 and coupling	quantum chemistry	FRAMING		chemistry	chapter 1
+A05	Invariant mass is a law of cosines on q = 1; Lavoisier = border at c = 1	Relativistic invariant mass; mass conservation	physics / chemistry	FRAMING		chemistry	chapter 2
+A06	Binding angle theta = Z alpha, sin theta = alpha gives ionisation energy	Dirac hydrogen ground state E = mc^2 sqrt(1 - (Z alpha)^2)	atomic physics	FRAMING		chemistry	chapter 2
+A07	Charge phases as turning angles	Ion charge states	chemistry	FRAMING		chemistry	chapter 2
+A08	n^2 shell sizes from a hidden 4D rotation	Hydrogen SO(4) symmetry	atomic physics	KNOWN	Fock 1935	chemistry	chapter 3
+A09	Periods as doubled squares (Janet left-step table)	Janet left-step periodic table	chemistry	KNOWN	Janet 1928	chemistry	chapter 3
+A10	All 20 Madelung exceptions fall within one diagonal	Madelung rule exceptions	chemistry	POSSIBLY-NEW		chemistry	chapter 3; pattern claim, not checked against literature
+A11	Shell counts as q-integers	q-deformed periodic table	chemistry	KNOWN	Negadi-Kibler	chemistry	chapter 3
+A12	Orbital overlap read as a cosine	Overlap integral	quantum chemistry	FRAMING		chemistry	chapter 4
+A13	Huckel chain at (x, 1): band, band edge and gap are the three countries	Huckel chain spectrum / tight-binding band	quantum chemistry	FRAMING		chemistry	chapter 4
+A14	Aromatic 4n+2 and Mobius 4n rules from ring turns	Huckel rule; Frost circle; Mobius aromaticity	quantum chemistry	KNOWN	Huckel 1931; Frost-Musulin 1953; Heilbronner 1964	chemistry	chapter 4
+A15	One-dial bond-order ladder	Bond order vs bond length	chemistry	NEGATIVE		chemistry	fails outside carbon
+A16	Step losses compose at k = -1; yield set by tree depth	Overall yield of multistep synthesis	chemistry	FRAMING		chemistry	chapter 5
+A17	Isotope patterns as polynomial powers	Isotope distribution polynomials	mass spectrometry	KNOWN		chemistry	chapter 5
+A18	van der Waals 1/Z - 1 = alpha * (-beta) under the law	van der Waals compressibility	physical chemistry	FRAMING		chemistry	chapter 6
+A19	Mayer clusters are cube corners	Mayer cluster expansion	statistical mechanics	FRAMING		chemistry	chapter 6
+A20	Cubic equation-of-state discriminants 0, 1, 8	Cubic EOS (vdW, RK, PR) critical structure	physical chemistry	FRAMING		chemistry	chapter 6
+A21	Equilibrium constant K - 1 composes by mult-add	Coupled equilibria	physical chemistry	FRAMING		chemistry	chapter 7
+A22	Dial = Boltzmann factor; covariance xy(k-1)/Z^2	Two-site interaction partition function	statistical mechanics	FRAMING		chemistry	chapter 7
+A23	Diacid dial omega = 4 x 10^-(delta pKa)	Statistical factor of 4 for diacids	physical chemistry	KNOWN	Bjerrum 1923	chemistry	chapter 8
+A24	Two-site binding polynomial zeros on |x| = 1/sqrt(omega)	Binding polynomial zeros	biophysical chemistry	KNOWN		chemistry	chapter 8; see grouping (iii) on Lee-Yang
+A25	n-site fold = MWC with L = k - 1	Monod-Wyman-Changeux allostery	biochemistry	FRAMING	MWC 1965	chemistry	chapter 8
+A26	First-order kinetics is the k = -1 fold	First-order rate law	kinetics	FRAMING		chemistry	chapter 9
+A27	Second-order kinetics = (a+b-2ab)/(1-ab) at (-2, 1)	Second-order integrated rate law	kinetics	POSSIBLY-NEW		chemistry	chapter 9; see grouping (iii) item 1
+A28	Order-n kinetics is the Tsallis q-exponential	Tsallis q-logarithm ln_q(xy) = ln_q x + ln_q y + (1-q) ln_q x ln_q y	kinetics / statistical physics	KNOWN	Tsallis 1988	chemistry	chapter 9
+A29	Order-n law osculates the plane at (-n, n(n-1)/2)	Order-n integrated rate law	kinetics	POSSIBLY-NEW		chemistry	chapter 9
+A30	Temperature steps compose Arrhenius factors	Arrhenius law	kinetics	KNOWN		chemistry	chapter 9
+A31	Equilibrium ratios multiply; Luther averaging	Luther's rule for potentials	electrochemistry	FRAMING		chemistry	chapter 10
+A32	Butler-Volmer at alpha = 1 as a law instance	Butler-Volmer equation	electrochemistry	FRAMING		chemistry	chapter 10
+A33	Two redox sites separated by 35.6 mV statistical gap	Statistical separation of two-electron potentials	electrochemistry	KNOWN		chemistry	chapter 10
+A34	Photosynthesis stage losses at k = -1; Z-scheme 31.6%	Photosynthetic energy loss chain	biochemistry	FRAMING		chemistry	chapter 10
+A35	Kok S-state clock	Kok cycle of oxygen evolution	biochemistry	KNOWN		chemistry	chapter 10
+A36	Chained acid constants; k = -1 groups	Polyprotic acid equilibria	physical chemistry	FRAMING		chemistry	chapter 11
+A37	Triprotic fold pins log 3 spacing	Measured triprotic pKa spacings	physical chemistry	NEGATIVE		chemistry	real acids show equal gaps, not the fold's
+A38	Enantiomeric excess adds as velocities at (0, -1); Horeau	Horeau amplification	stereochemistry	FRAMING		chemistry	chapter 12
+A39	Hammett substituent effects as dial steps	Hammett equation	physical organic chemistry	FRAMING		chemistry	chapter 12
+A40	Ring polynomials are Chebyshev	Chebyshev polynomials for ring/chain spectra	quantum chemistry	KNOWN		chemistry	chapter 12
+A41	Yonetani-Theorell dial k = 1/alpha; Loewe = 0, Bliss = 1	Yonetani-Theorell two-inhibitor plot	enzymology	FRAMING		chemistry	chapter 13
+A42	Binding schemes cannot pass Loewe on the isobole	Isobologram	pharmacology	FRAMING		chemistry	chapter 13
+A43	Proofreading; Michaelis-Menten = Langmuir	Kinetic proofreading; Langmuir isotherm	enzymology	KNOWN		chemistry	chapter 13
+A44	Helix-coil = Lee-Yang dial gas, k = 1/sigma, measured 10^2-10^4	Zimm-Bragg helix-coil model	biophysics	FRAMING	Zimm-Bragg 1959	biology	small lead noted
+A45	Two-site binding; Hill coefficient 2 sqrt(omega)/(1+sqrt(omega))	Adair / KNF two-site cooperativity	biochemistry	KNOWN	Adair 1925; KNF 1966	biology	
+A46	Allosteric fold	MWC model	biochemistry	KNOWN	MWC 1965	biology	
+A47	Proofreading as an 'or' composition	Kinetic proofreading	biochemistry	KNOWN		biology	
+A48	Error accumulation wall	Eigen error threshold; Drake's rule	evolution	KNOWN	Eigen 1971; Drake 1991	biology	
+A49	Two-substrate dial k = K_ia/K_a	Cleland bisubstrate kinetics	enzymology	KNOWN	Cleland 1963	biology	
+A50	Crossing point of plots = wall	Intersection point in Lineweaver-Burk families	enzymology	KNOWN		biology	
+A51	Liebig minimum	Liebig's law of the minimum	ecology	NEGATIVE		biology	off the dial
+A52	Combination index = v1 *_alpha v2; HSA at alpha = -1 is the wall	Chou-Talalay combination index	pharmacology	KNOWN	Chou-Talalay 1984	biology	
+A53	Bliss independence = law on effect odds	Bliss independence	pharmacology	KNOWN	Bliss 1939	biology	
+A54	Real mixtures at alpha = -0.32, -0.94, -0.98	Measured mixture interactions	ecotoxicology	FRAMING	Cedergreen; Sorensen 2007	biology	see grouping (iii) item 15
+A55	Linear-quadratic split dose	LQ model of fractionated radiation	radiobiology	NEGATIVE		biology	does not fit the law
+A56	Recombination r1 *_-2 r2; wall at r = 1/2	Haldane map function	genetics	KNOWN	Haldane 1919	biology	
+A57	Map-function line 2k+q = -4; Haldane (-2,0), Kosambi (0,-4)	Map-function families	genetics	KNOWN	Felsenstein 1979	biology	see grouping (iii) item 2
+A58	Gene-environment RERI = k e1 e2	Relative excess risk due to interaction	epidemiology	KNOWN		biology	
+A59	Richards growth 1 + mpow(x, -1/nu); logistic = inverse	Richards growth curve	growth biology	FRAMING	Richards 1959	biology	
+A60	Hill muscle law as a level set of the law	Hill force-velocity hyperbola	physiology	FRAMING	Hill 1938	biology	
+A61	Antagonists combine with Paton-Rang omega	Paton-Rang antagonist model	pharmacology	KNOWN	Paton-Rang 1965	biology	
+A62	Organ extraction in series	Hepatic/organ extraction ratios	pharmacokinetics	KNOWN		biology	
+A63	Exact lens law for two synapses	Synaptic summation	neuroscience	POSSIBLY-NEW	Hao 2009	biology	packaging claim; Hao 2009 may already have it
+A64	One compartment at (-2, 1); reversal potential = wall	Shunting conductance summation	neuroscience	KNOWN		biology	see grouping (iii) item 1
+A65	Hao rule = dial part	Hao et al. dendritic arithmetic rule	neuroscience	KNOWN	Hao 2009	biology	
+A66	Selection acts on odds; epistasis nulls	Selection on odds; multiplicative/additive epistasis	population genetics	KNOWN		biology	see grouping (iii) item 11
+A67	Linear global epistasis is path-consistent only on the dial	Global epistasis models	evolution	POSSIBLY-NEW		biology	
+A68	Mutation load	Haldane-Muller load	population genetics	KNOWN	Haldane 1937; Muller 1950	biology	
+A69	Chain-binomial epidemics; herd immunity	Reed-Frost model	epidemiology	KNOWN		biology	
+A70	Seasons compose Beverton-Holt maps	Beverton-Holt recruitment	fisheries	KNOWN	Beverton-Holt 1957	biology	
+A71	Predator interference family from BD (k = 0) to Crowley-Martin (k = 1)	Beddington-DeAngelis and Crowley-Martin responses	ecology	POSSIBLY-NEW		biology	
+A72	Tsallis diversity = ln_q of Hill number; wall = ceiling 1/(q-1)	Tsallis entropy and Hill numbers	ecology	KNOWN	Tsallis 1988; Jost 2006	biology	
+A73	Stressor interaction nulls	Multiple-stressor additive/multiplicative nulls	ecology	KNOWN		biology	
+A74	Learning update as law step	Rescorla-Wagner rule	psychology	KNOWN	Rescorla-Wagner 1972	biology	
+A75	Hyperbolic discounting dial 0, exponential dial 1; subadditivity = corner	Discounting models; subadditive discounting	behavioural economics	KNOWN	Mazur 1987; Read 2001	biology	
+A76	Dial-kappa discounting family	Generalized discount functions	behavioural economics	POSSIBLY-NEW		biology	
+A77	Kok clock eigenvalue 0.056 + 0.888i; reversed = cytochrome c oxidase	Kok four-flash oscillation; CcO cycle	biochemistry	FRAMING		photosynthesis-twists	
+A78	Clock direction invisible in flash pattern	Flash-yield patterns	biochemistry	FRAMING		photosynthesis-twists	
+A79	Inverse lambda -> 1/lambda forbidden	Perron-Frobenius theorem	linear algebra	KNOWN		photosynthesis-twists	
+A80	Polygon family of clocks 1, 2, 4, 8	Multi-electron catalytic cycles	biochemistry	FRAMING		photosynthesis-twists	
+A81	Quarter-turn = scaling relation; symmetry index; bifunctional 0.74 V	OER/ORR scaling relations	electrocatalysis	KNOWN	Rossmeisl-Norskov; Govindarajan 2018; Busch 2016	photosynthesis-twists	
+A82	Claim counts are one mult-add power	Panjer (a,b,0) class	actuarial science	KNOWN	Panjer 1981; Sundt-Jewell 1981; Willmot 1988	actuarial	
+A83	Dimension line: cube, orthant, limit	Claim-count families	actuarial science	POSSIBLY-NEW		actuarial	
+A84	Independent risks compose M - 1 by mult-add; cumulants	MGF products; Thiele cumulants	actuarial science	KNOWN	Thiele 1889	actuarial	
+A85	Interest compounding	Compound interest	finance	KNOWN		actuarial	
+A86	Heavy tails, alpha about 1.4	Hill tail estimator	actuarial science	KNOWN	Hill 1975	actuarial	
+A87	Tail of 1/distance = dimension d	Hilbert-Serre growth	algebra	KNOWN		actuarial	
+A88	Ruin probability	Lundberg-Cramer; subexponential ruin	actuarial science	KNOWN	Lundberg 1903; Cramer 1930; Embrechts-Veraverbeke 1982	actuarial	
+A89	Decrements as path through cube; UDD = Shapley; constant force = log coordinates	Multiple-decrement tables	actuarial science	POSSIBLY-NEW		actuarial	see grouping (iii) item 7
+A90	Mortality = surface/volume	Allometric mortality scaling	biology / actuarial	KNOWN		actuarial	
+A91	Attack success r^z; 51% = identity point	Nakamoto double-spend analysis	distributed systems	KNOWN	Nakamoto; Rosenfeld	consensus	
+A92	1/3 fault threshold	Byzantine fault tolerance bound	distributed systems	KNOWN	Castro-Liskov 1999; Malkhi-Reiter	consensus	
+A93	Committees as cube layers	Committee sampling / binomial quorums	distributed systems	KNOWN		consensus	
+A94	Delegated majority 3p^2 - 2p^3	Majority-of-three amplification	distributed systems	KNOWN		consensus	
+A95	Slashing, churn, VDF delays	Verifiable delay functions	cryptography	KNOWN	Pietrzak 2019; Wesolowski 2019	consensus	
+A96	Fused stake x time and log weight	Stake-weighting schemes	distributed systems	NEGATIVE		consensus	fail
+A97	Selfish mining threshold	Selfish mining	distributed systems	KNOWN	Eyal-Sirer 2014	consensus	
+A98	Power chain folds on odds; TUE = ITUE x PUE	TUE metric	datacenter engineering	KNOWN	Patterson 2013	datacenter-energy	
+A99	PUE = (1+p)(1+c) corner	Energy Logic cascade	datacenter engineering	KNOWN	Energy Logic	datacenter-energy	testable
+A100	Unit rule sqrt(k(k+1))	Geometric-mean sizing	engineering	KNOWN		datacenter-energy	
+A101	Fans as cube layers	Fan affinity laws	engineering	KNOWN		datacenter-energy	
+A102	Setpoint and stacking rules	Cooling setpoint economics	datacenter engineering	FRAMING		datacenter-energy	
+A103	Fisher real rate as subtraction; volatility drag; Gordon pole	Fisher equation; Gordon growth model	economics	KNOWN		econ-forecasting	
+A104	Averaging discount factors: lowest corner wins	Declining certainty-equivalent discount rate	economics	KNOWN	Weitzman 1998; Newell-Pizer 2003; Arrow et al. 2013	econ-forecasting	see grouping (iii) item 6
+A105	Lost dimension as forecast	Absorption ratio	finance	NEGATIVE	Kritzman 2011	econ-forecasting	fails as forecast
+A106	Growth-of-growth pole	Finite-time singularity	economics	NEGATIVE	Sornette	econ-forecasting	
+A107	Insurance fails below tail dimension 1	Diversification with infinite-mean risks	economics	KNOWN	Ibragimov-Jaffee-Walden 2009	econ-forecasting	
+A108	Spillover = straddling corners / Harsanyi dividends	Harsanyi dividends; externalities	economics / game theory	FRAMING	Harsanyi 1959; Oates; Olson	rulecraft	see grouping (iii) item 8
+A109	Pigouvian tax on the cube	Pigouvian tax	economics	KNOWN		rulecraft	
+A110	Wisdom corner	Collective judgment	social choice	FRAMING		rulecraft	
+A111	Event horizon at -1	Irreversible collapse	policy	FRAMING		rulecraft	
+A112	Debt trap r minus g	r - g debt dynamics; Piketty	economics	KNOWN	Piketty	rulecraft	
+A113	Synergy sign A	Benedict's synergy	anthropology	FRAMING		rulecraft	
+A114	Fused influence pricing	Lobbying/influence models	political economy	FRAMING		rulecraft	
+A115	Society tensor = factorial design	Factorial experimental design	statistics	KNOWN	Yates 1937	rulecraft	
+A116	Order of reforms	Reform sequencing	political economy	FRAMING		rulecraft	
+A117	Decision gravity	Decision models	policy	NEGATIVE		rulecraft	
+A118	Boolean logic on 0/1; XOR at k = -2	Boolean arithmetic	logic	KNOWN		statistics	
+A119	P(A or B) = p (+)_k q with k = -lift	Frechet bounds / union probability	probability	KNOWN	Frechet	statistics	
+A120	t = 1 + k generating-function dial; piling-up	Piling-up lemma	probability / cryptography	KNOWN		statistics	see grouping (iii) item 3
+A121	Poisson and normal as E-images	Levy-Khintchine	probability	KNOWN		statistics	
+A122	Cumulants; CLT rate 1/n	Cumulants; central limit theorem	statistics	KNOWN		statistics	
+A123	Bayes on odds; pooling = (0, -1)	Weight of evidence; log-odds pooling	statistics	KNOWN	Good; Turing	statistics	
+A124	Dependence line k + q = -1	Ali-Mikhail-Haq copula; Hamacher t-norms	statistics / fuzzy logic	POSSIBLY-NEW	AMH 1978; Hamacher 1978	statistics	new as a landscape line
+A125	Clayton generator = Tsallis q-log	Clayton copula	statistics	KNOWN		statistics	

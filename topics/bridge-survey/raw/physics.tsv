@@ -1,0 +1,197 @@
+id	our_side	their_side	field	verdict	source_cited	folders	note
+P01	Velocity addition is the circle operation; rapidity is the log of the lift	Relativistic velocity addition; Doppler factors multiply (Bondi k-calculus)	special relativity	KNOWN	Einstein 1905; Bondi k-calculus; Fizeau drag	relativity; gr-bridges; electromagnetism; hypersphere; navier-stokes; why-i/cayley-klein	Core bridge. Fizeau drag appears only in a navier-stokes script docstring (no write-up there)
+P02	Relativity is one point (0, -1/c^2) of the (k,d) landscape, walls at +-c	Lorentz velocity law inside the Galilean-to-Lorentz family	special relativity	FRAMING	Coleman-McGuinness 1991	relativity; action	
+P03	Boosts act on the sky sphere as radius times Doppler, turn as angle	Lorentz group as Moebius maps; Penrose-Terrell appearance	special relativity	FRAMING	Penrose 1959; Terrell 1959	hypersphere	
+P04	Dial-boost twist = d x velocity-triangle area; Thomas turn = disc area	Thomas-Wigner rotation; hyperbolic velocity space; Ungar gyrogroups	special relativity	FRAMING	Thomas 1926; Wigner 1939; Borel 1913; Ungar	twisted-boosts; precession; gr-bridges	Matches Gravity Probe B geodetic and double-pulsar numbers
+P05	Sommerfeld advance per lap = velocity-disc area = Thomas turn of same-L orbit	Sommerfeld fine-structure precession and Thomas precession	special relativity	POSSIBLY-NEW	Implied by Biedenharn 1983 (via Vickers 2018) but not stated as an equality	hypersphere/orbits	Write-up calls it a small new observation
+P06	Dirac fine-structure levels from one velocity-disc area per kappa	Dirac 1928 hydrogen fine structure	quantum mechanics	FRAMING	Dirac 1928; Sommerfeld 1916	hypersphere/orbits	Exact rewrite, no new prediction
+P07	Collinear massless momenta compose by the circle operation at k = -1/kappa	kappa-Poincare momentum addition; wall = maximum momentum	quantum gravity	KNOWN	Lukierski et al. 1991-92; Majid-Ruegg 1994; Kowalski-Glikman 2002	why-i/kappa-poincare; why-i/dial-map; string-theory	Clean tie to Planck-scale kinematics
+P08	Magueijo-Smolin law sits on the merged-wall line	Doubly special relativity (Magueijo-Smolin)	quantum gravity	FRAMING	Magueijo-Smolin 2002; Judes-Visser 2002	why-i/kappa-poincare	
+P09	Order gap of the chains = torsion of momentum space	Relative locality	quantum gravity	FRAMING	Amelino-Camelia, Freidel, Kowalski-Glikman, Smolin 2011	why-i/kappa-poincare	
+P10	Associative chains cannot reach Snyder's momentum law	Snyder non-associative momentum addition	quantum gravity	NEGATIVE	Snyder 1947	why-i/kappa-poincare	
+P11	Minimum-length tangent law at elliptic point (0, beta), mirror of kappa-Poincare	String generalized uncertainty principle; Kempf-Mangano-Mann algebra	quantum gravity	FRAMING	Kempf-Mangano-Mann 1995; Amati-Ciafaloni-Veneziano 1987-89	string-theory	Coordinate-dependent; 'rho adds' is our choice
+P12	Matrix circle operation covers all Cayley-Klein groups; Lambda as a dial	Kinematical groups (Bacry-Levy-Leblond); contractions	special relativity	KNOWN	Levy-Nahas 1967; Bacry-Levy-Leblond 1968	why-i/cayley-klein; why-i/dial-map	
+P13	k slides the curvature: kappa = d - k^2/4	Cayley-Klein curvature label of one-parameter motions	special relativity	FRAMING	Yaglom; Herranz et al.; Coleman-McGuinness 1991	action; why-i/cayley-klein	action write-up calls the slide ours
+P14	A scalar law carries only one Cayley-Klein dial	Two-dial plane groups need non-commuting motions	special relativity	NEGATIVE		why-i/cayley-klein	
+P15	S_d = (m/d) integral sqrt(1+d v^2) unifies Fermat, Newton, Einstein	Kinematical groups and their free-particle actions	classical mechanics	FRAMING	Bacry-Levy-Leblond 1968	action	Symmetry of the action is the plane law
+P16	Rodrigues composition is the circle operation at k=1 on half-angle vectors	Rodrigues rotation-composition formula	classical mechanics	KNOWN	Rodrigues 1840	precession	
+P17	Swap rule: turn = d x area, one family from Foucault (d=+1) to Thomas (d=-1)	Holonomy/Gauss-Bonnet; Foucault, Berry, Larmor, Coriolis	classical mechanics	FRAMING	Gauss-Bonnet; Foucault 1851; Berry 1984; Hopf 1931	precession; hypersphere; action; warp-bubble	Berry phase = half twist
+P18	Swap commutator 2k(u x v) gives the gyroscope's 90-degree response	Euler and Lagrange top	classical mechanics	FRAMING	Euler; Lagrange	precession	Torque rate still needs Newton
+P19	Rigid-body phase from circle-operation twists	Montgomery rigid-body geometric phase	classical mechanics	FRAMING	Montgomery 1991	precession	
+P20	Zero-spin three-body turn = -1/2 shape-sphere area	Three-body geometric phase	classical mechanics	FRAMING	Montgomery 1996	three-body	
+P21	Coil tape closing turn = swap rule at d=+1	Calugareanu-White-Fuller twist/writhe theorem	other (engineering)	FRAMING	Calugareanu 1959; White 1969; Fuller 1971	fusion-magnets	No payoff for magnet strength
+P22	Cube/simplex as moment polytopes; quantum states = lattice points	Duistermaat-Heckman, Delzant, Archimedes hat-box	classical mechanics	FRAMING	Atiyah, Guillemin-Sternberg 1982; Duistermaat-Heckman 1982; Delzant 1988	action; hypersphere	
+P23	Lagrange and Euler three-body orbits keep both velocity spheres	Classical central configurations	classical mechanics	FRAMING	Wintner 1941	three-body	
+P24	Figure-eight momenta within 7.8% of a Fock great-circle arc	Chenciner-Montgomery figure-eight orbit	classical mechanics	POSSIBLY-NEW		three-body	Approximate observation only
+P25	Action minimization finds circle and figure-eight orbits	Variational periodic three-body orbits	classical mechanics	KNOWN	Moore 1993; Chenciner-Montgomery 2000	three-body; action	
+P26	Closest-return search finds 9 orbits / 8 loop types	Three-body periodic-orbit catalogues	classical mechanics	POSSIBLY-NEW	Not in Li-Liao 2017 list; later catalogues unchecked	three-body	
+P27	Other three-body orbits do not follow great circles	Fock-sphere picture of Kepler motion	classical mechanics	NEGATIVE		three-body	
+P28	hbar = 1/(j d): flat limit of the spin sphere; phase = j x turn	Berry phase j*Omega; Inonu-Wigner / Holstein-Primakoff contraction	quantum mechanics	FRAMING	Berry 1984; Inonu-Wigner 1953; Holstein-Primakoff 1940	action	
+P29	Swapping phase-space moves costs area/hbar	Weyl relations; Heisenberg group	quantum mechanics	KNOWN	Weyl 1927	action	
+P30	Half quantum in action rules	Maslov index	quantum mechanics	KNOWN	Keller 1958; Maslov 1965	action	
+P31	Kepler orbits live on S^3; hydrogen n^2 degeneracy	Fock's S^3 symmetry of hydrogen	quantum mechanics	KNOWN	Fock 1935; Moser 1970	hypersphere; gravity-from-theory/velocity-lines; action; three-body	
+P32	Runge-Lenz bracket {Ax,Ay} = -2E Lz: -2E as the dial	SO(4)/E(3)/SO(3,1) symmetry of Kepler problem	quantum mechanics	FRAMING	Pauli 1926; Bargmann 1936	gravity-from-theory	
+P33	Born rule = cap area on the Bloch sphere	Archimedes hat-box; Bell's hidden-variable model	quantum mechanics	KNOWN	Archimedes; Bell 1966	hypersphere	
+P34	Union rule holds only on orthogonal hemispheres	Quantum probabilities as sphere areas	probability	NEGATIVE		hypersphere	
+P35	Twist sign = sign of i; twist plus one ingredient forces i	Stone-von Neumann; Kostant-Souriau; Stueckelberg real QM	quantum mechanics	KNOWN	Stone-von Neumann; Kostant-Souriau; Hestenes; Stueckelberg 1960	why-i	
+P36	Order dial group = hyperbolic half-plane; dial lines through i	Upper half-plane geometry of SL(2,R) Borel subgroup	quantum mechanics	FRAMING	Milnor 1976	why-i	
+P37	Crossing the wall flips the sign of frequency	Gelfand-Naimark positivity	quantum mechanics	FRAMING	Gelfand-Naimark 1947	why-i	
+P38	Weighted chain = product integral; k = -i/hbar gives propagator, real k heat kernel	Volterra product integral; Feynman path integral; Feynman-Kac; Wick rotation	quantum mechanics	FRAMING	Volterra 1887; Feynman 1948; Kac 1949; Wick 1954	why-i; thermodynamics	Wick rotation = (k,d) -> (ik,-d)
+P39	Checkerboard (k=-i) and Kac telegraph (k=-1) are one chain; potential as an element	Feynman checkerboard; Kac telegraph equation	quantum mechanics	FRAMING	Feynman-Hibbs 1965; Gaveau-Jacobson-Kac-Schulman 1984; Ichinose 1982	why-i/checkerboard; why-i/checkerboard-potential	
+P40	Trotter error is led by the twist	Trotter product formula	quantum mechanics	KNOWN	Trotter 1959	why-i	
+P41	Boost/shift twist size = mass	Bargmann central extension of Galilei group	quantum mechanics	KNOWN	Bargmann 1954; Levy-Leblond 1963	why-i	
+P42	Poisson bracket = wedge ad - bc; only quadratics close	Groenewold-van Hove theorem	quantum mechanics	FRAMING	Groenewold 1946; van Hove 1951	why-i	
+P43	Order dial algebra = Klauder affine group; Brownian measure on half-plane	Affine coherent states; Daubechies-Klauder-Paul path integral	quantum mechanics	KNOWN	Daubechies-Klauder-Paul 1987	why-i	
+P44	Curvature trade: hbar cancels	Semiclassical curvature corrections	quantum mechanics	POSSIBLY-NEW		why-i	Small
+P45	Path integral on half-plane via Selberg trace; Lefschetz thimble = dial turn	Selberg trace formula; Picard-Lefschetz path integrals	quantum mechanics	FRAMING	Selberg; Picard-Lefschetz	why-i	Write-up lists as a lead
+P46	Conformal factor tied to caustic divergence	Caustics in path integrals	quantum mechanics	POSSIBLY-NEW		why-i/e-i-pi/chain-resolves	Untested
+P47	Imaginary dial forced by reversibility and by caustics	Morse index; stationary-phase selection	quantum mechanics	FRAMING	Morse 1934; Gray-Taylor 2007	why-i/e-i-pi/chain-resolves	
+P48	Local tomography K_AB = K_A K_B as the circle operation; J tensor J hidden real parameter	Hardy / Masanes-Mueller reconstructions	quantum mechanics	FRAMING	Hardy 2001; Masanes-Mueller 2011	why-i	
+P49	Roles of i sorted into four dial directions	Real vs complex quantum theory test	quantum mechanics	FRAMING	Renou et al. 2021	why-i	
+P50	Wave equation invariant under dial boost only at d = -1/c^2; E,B scale by D, 1/D	Lorentz invariance of Maxwell; c^2 eps0 mu0 = 1	electromagnetism	KNOWN	Maxwell 1865; Einstein 1905	electromagnetism	
+P51	Loop phase = charge x flux, like loop turn = curvature x area	Aharonov-Bohm effect; lattice gauge plaquettes	electromagnetism	KNOWN	Aharonov-Bohm 1959	electromagnetism; why-i/path-integral-strong	
+P52	grad F = J with F the wedge part of grad A	Spacetime-algebra Maxwell equation	electromagnetism	KNOWN	Hestenes 1966	electromagnetism	
+P53	EM linear, gravity nonlinear = commuting phases vs non-commuting boosts	Abelian vs non-abelian gauge structure	electromagnetism	FRAMING		electromagnetism	
+P54	Born-Infeld shares the wall shape, not the composition law	Born-Infeld nonlinear electrodynamics	electromagnetism	NEGATIVE	Born-Infeld 1934; ATLAS light-by-light bound	electromagnetism	
+P55	Clock and radial-ruler deficits are circle inverses; gamma = 1	River model; g_tt g_rr = -1	general relativity	FRAMING	Painleve 1921; Gullstrand 1922; Hamilton-Lisle 2008; Jacobson 2007	general-relativity; gr-bridges; gravity-from-theory	Light bends twice the Newtonian amount
+P56	River rebuilt on velocity-line rule is exact Schwarzschild	Schwarzschild metric; PPN gamma = beta = 1; Mercury 42.98 arcsec	general relativity	FRAMING	Schwarzschild 1916; PPN formalism	gravity-from-theory/river-rebuild	One weak-field-to-exact bridge still an input
+P57	Spherical dust Einstein = Newton in the river; Hubble river gives Friedmann	Newtonian cosmology	cosmology	KNOWN	Milne-McCrea 1934	general-relativity; gr-bridges	
+P58	GP-B factor sqrt(1-3M/r) = space twist composed with velocity twist	Geodetic precession	general relativity	FRAMING	de Sitter 1916; Everitt et al. 2011	twisted-boosts; general-relativity; hypersphere	
+P59	Double-pulsar spin-orbit coefficient from three twists	Relativistic spin precession in binary pulsars	general relativity	FRAMING	Breton et al. 2008	twisted-boosts; gravity-from-theory	Drag weight (1+gamma)m1/M
+P60	1 - 6M/r = (1 - 2M/r)(1 - (2v)^2): ISCO at 2v = c, photon sphere at v = c	Schwarzschild epicyclic frequency, ISCO, photon sphere	general relativity	POSSIBLY-NEW	Grouping not checked against literature	hypersphere/orbits; curved-space	Radii themselves known; the factorization is the observation
+P61	t-r plane holonomy rapidity = (2M/r^3) x area	Riemann curvature as loop holonomy	general relativity	FRAMING		general-relativity; curved-space	
+P62	First-order perihelion = integer x hodograph area / c^2; velocity-line turn 6 x area	GR perihelion advance 6 pi GM/(c^2 p); PPN	general relativity	FRAMING	Einstein 1915; PPN formalism	gravity-from-theory/river-rebuild; hypersphere/orbits	
+P63	Precession is not an area on Fock's sphere; perihelion not an exact area sum	GR perihelion advance	general relativity	NEGATIVE		hypersphere/orbits	
+P64	Dial boosts close on -q x rotation; local version gives Einstein	Hojman-Kuchar-Teitelboim hypersurface algebra	general relativity	KNOWN	Hojman-Kuchar-Teitelboim 1976	general-relativity	
+P65	Letting q vary in the bracket; beta = 1 - 2 rho/rho_c as a lift	Deformed covariance; signature change in loop quantum cosmology	quantum gravity	KNOWN	Bojowald-Paily; Mielczarek	general-relativity; why-i/e-i-pi/asymptotic-safety	Carroll point as wall is our reading; write-up flags as lead
+P66	One number per place as the dial	Nordstrom scalar gravity	general relativity	NEGATIVE	Nordstrom 1913; Freund-Nambu 1968; Cassini bound	general-relativity; gr-bridges	Light bending wrong
+P67	River carries no gravitational waves	Gravitational radiation	general relativity	NEGATIVE		general-relativity; gr-bridges	
+P68	Place-only dial works in 2D, blocked in 3D+; direction dial = metric	Schur's theorem; Liouville gravity	general relativity	FRAMING	Schur 1886	gr-bridges	
+P69	Sandwich law a + b + a k b; weight plus twist fields	Gauge-theory gravity	general relativity	KNOWN	Lasenby-Doran-Gull 1998	gr-bridges	
+P70	Light-bundle area (1+a)(1+b); cross term = focusing	Raychaudhuri equation; Jacobson thermodynamic Einstein	general relativity	FRAMING	Raychaudhuri 1955; Jacobson 1995	gr-bridges	
+P71	Unruh temperature from Doppler flow; horizon boost 1 + E(kappa t)	Unruh effect; Kruskal coordinates	general relativity	FRAMING	Unruh 1976; Kruskal 1960	gr-bridges; curved-space	
+P72	Horizon patches joined by Tsallis rule give Renyi black-hole temperature	Renyi entropy of black holes	general relativity	KNOWN	Biro-Czinner 2013	gr-bridges	Area law not produced
+P73	Sombrero xi phi^2 R as induced gravity	Zee induced gravity	general relativity	NEGATIVE	Zee 1979	gr-bridges	Needs xi ~ 1e32
+P74	River = teleparallel frame; energy constraint = strain cross terms	Teleparallel gravity; ADM constraint	general relativity	FRAMING	Aldrovandi-Pereira; ADM 1959	gr-bridges; warp-bubble	
+P75	Einstein + Lambda forced once a direction dial exists	Lovelock's theorem	general relativity	KNOWN	Lovelock 1971	gr-bridges; why-i/dial-map	
+P76	River promoted to a field	Einstein-aether theory	general relativity	KNOWN	Jacobson-Mattingly 2001; Oost-Mukohyama-Wang 2018	gr-bridges	
+P77	Self-coupling via transverse-traceless part	Deser bootstrap to Einstein	general relativity	KNOWN	Deser 1970	gr-bridges	
+P78	Dial touching curvature	Brans-Dicke theory	general relativity	KNOWN	Brans-Dicke 1961; Cassini bound	gr-bridges	
+P79	BTZ static gyroscope J/(2(r^2-M)); T_R/T_L = lift of horizon drag	BTZ black hole temperatures and frame dragging	general relativity	FRAMING	Banados-Teitelboim-Zanelli 1992	precession; gravity-from-theory	Not found quoted, but routine
+P80	Diamond volume = 2 x ruler at -K; cuts compose by circle operation at -K	Causal-diamond volumes in curved space	general relativity	FRAMING	Gibbons-Solodukhin 2007	curved-space	
+P81	Drop speeds squared stack by union rule in any static spacetime	Gravitational redshift factors multiply	general relativity	FRAMING		curved-space	
+P82	Radial-plane sphere-weighted count 2E^2 - 1; mass cancels	Causal-diamond volume corrections	general relativity	POSSIBLY-NEW	Possibly in Berthiere-Gibbons-Solodukhin	curved-space/radial-plane	Elementary
+P83	Warp energy = cross term of river strain; total -(swirl)^2/32 pi	Natario warp drives; zero-swirl theorem	general relativity	FRAMING	Natario 2002; Santiago-Schuster-Visser	warp-bubble; gr-bridges	
+P84	No softer warp budget or FTL route from the theory	Energy-condition violation of warp drives	general relativity	NEGATIVE	Santiago-Schuster-Visser; Fuchs et al. 2024 (subluminal only)	warp-bubble	Positive-energy drives work only below c
+P85	Boosted Newton field gives drag 2(1+gamma)Uu/c^2; half-curl = Lense-Thirring	Gravitomagnetism; Lense-Thirring precession	gravity	FRAMING	Lense-Thirring 1918; Schiff 1960; Ohanian-Ruffini	gravity-from-theory	Derivation route ours; vanishes at Galilean dial
+P86	1/r^(D-1) = face layer of the lift; Coulomb 4 pi	Gauss's law in D dimensions	gravity	FRAMING	Gauss	gravity-from-theory/dimension-dial; hypersphere	
+P87	Kepler hodograph = straight line on dial sphere, kappa = -1/(2E)	Hamilton hodograph; Fock/Moser regularization	gravity	FRAMING	Hamilton 1847; Fock 1935; Moser 1970; Milnor 1983	gravity-from-theory; gravity-from-theory/velocity-lines; three-body	kappa = -1/(2E) identification ours
+P88	Only 1/r^2 closes orbits; apsidal angle pi/sqrt(4-n)	Bertrand's theorem	gravity	KNOWN	Bertrand 1873	gravity-from-theory	
+P89	Velocity rule, flux, and Einstein meet only at D = 3	Ehrenfest dimension argument; Tangherlini; 3D gravity has no pull	gravity	FRAMING	Ehrenfest 1917; Tangherlini 1963; Deser-Jackiw-'t Hooft 1984	gravity-from-theory/velocity-lines; gravity-from-theory/dimension-dial	
+P90	Velocity-line rule cannot give the 2D pull	Logarithmic potential in 2D	gravity	NEGATIVE		gravity-from-theory/dimension-dial	
+P91	Cube-cell lattice Green's function becomes round 1/r	Lattice Green's function asymptotics	gravity	FRAMING	Watson 1939; McCrea-Whipple 1940	gravity-from-theory	
+P92	No dial or shape fixes Newton's G	Value of G (string: G ~ g_s^2 l_s^8; holography G = pi/(2N^2))	gravity	NEGATIVE	Polchinski 1998; Maldacena 1997	newton-g; hypersphere; why-i/e-i-pi; why-i/e-i-pi/g-dials; why-i/dial-map; string-theory	1/N of matrix chains proposed as nearest G dial, untested
+P93	One-loop G flow in 1/g = circle operation, k = -g*, wall = UV fixed point	Asymptotic-safety one-loop running; Sakharov induced gravity	quantum gravity	FRAMING	Weinberg 1979; Reuter 1998; Bonanno-Reuter; Sakharov 1967; Visser 2002	newton-g; why-i/e-i-pi/asymptotic-safety; action	Generic for any flow of this shape; entropy per area 1/(4g*) small, ours
+P94	Circle-operation running beyond one loop	Litim cutoff exponent theta = 23/11; complex exponents	quantum gravity	NEGATIVE	Litim 2004	why-i/e-i-pi/asymptotic-safety/beyond-one-loop; why-i/e-i-pi/asymptotic-safety/beyond-one-loop/height-dial	Height s = 1.10 fits 23/11 but misses others by 11-42%
+P95	Dimension-flow curves are two-wall curves composing by velocity addition	Spectral-dimension flow in AS, CDT, Calcagni multiscale	quantum gravity	POSSIBLY-NEW	Curves from Lauscher-Reuter 2005; Ambjorn-Jurkiewicz-Loll 2005; Calcagni	why-i/e-i-pi/asymptotic-safety	Write-up: ours, exact
+P96	Planck/de Sitter length ratio squared = G hbar Lambda / c^3	Published G dials (BF-theory coupling, stability-forced short length)	quantum gravity	POSSIBLY-NEW		why-i/e-i-pi/g-dials; why-i/e-i-pi/asymptotic-safety	Open whether the short length is the Planck length
+P97	Barbero-Immirzi gamma = +-i sits at the lift's wall	Ashtekar self-dual variables	quantum gravity	FRAMING	Ashtekar 1986; Barbero 1995; Immirzi 1997	why-i/e-i-pi/g-dials	
+P98	Branching ladder rho = 1 - 2f'''(1)/(3 sigma^4); 2D gravity rho = 15/(25-c)	Two-loop numbers in 2D quantum gravity	quantum gravity	FRAMING	Aida-Kitazawa	newton-g	
+P99	Matching our rho = 1/3 to gravity's 3/5	Two-loop gravity running	quantum gravity	NEGATIVE		newton-g; height-running-coupling	Needs a free clock rescaling
+P100	Semiring / Richards curve as G running	Richards growth curve	quantum gravity	NEGATIVE	Richards 1959	newton-g	Non-analytic
+P101	Regge deficit = d x area swap-rule turn	Regge calculus	quantum gravity	FRAMING	Regge 1961	action	
+P102	Spins as areas in 6j asymptotics	Ponzano-Regge model	quantum gravity	FRAMING	Ponzano-Regge 1968; Roberts 1999	action	
+P103	Face weight q acts as the cosmological constant	Turaev-Viro state sum	quantum gravity	FRAMING	Turaev-Viro 1992; Mizoguchi-Tada 1992	action	Write-up's strongest lead (correlation 0.999)
+P104	AdS3 entanglement gluing = circle operation at k = -1; MI = log E(t)	Kinematic-space cross-ratio identity; holographic mutual information	quantum gravity	FRAMING	Headrick 2010; Czech et al. 2015	curved-space; holographic-entropy-cube; probability-entanglement	
+P105	AdS3 cross-ratio = chance a Poisson clock on modular time ticks	Modular flow; holographic mutual information	quantum gravity	POSSIBLY-NEW	Modular flow known (Casini-Huerta-Myers 2011)	probability-entanglement	Write-up's lead; can fail a test in excited states
+P106	Wormhole cross-ratio = link probability; open iff > 1/2; -> 1 when traversable	ER = EPR; traversable wormholes	quantum gravity	FRAMING	Maldacena-Susskind 2013; Gao-Jafferis-Wall 2017	warp-bubble	Restates known results
+P107	Multipartite informations = cube corner sum at k = -1	Holographic entropy cone; MMI	quantum gravity	FRAMING	McGill 1954; Hayden-Headrick-Maloney 2011; Bao et al. 2015	holographic-entropy-cube	k = -1 is the only value removing the cutoff part
+P108	MMI for neighbouring intervals as X o1 Y >= XY	Monogamy of mutual information	quantum gravity	FRAMING	Hayden-Headrick-Maloney 2011	holographic-entropy-cube	Short proof ours for this family
+P109	Soft min cut (log-sum-exp) keeps MMI and five-region inequalities	Holographic entropy-cone inequalities	quantum gravity	POSSIBLY-NEW	Not found; closest Bao-Furuya-Naskar 2025	holographic-entropy-cube	Numeric, unproven; write-up's strongest lead
+P110	2D causal-set weights (1,-2,1) = 2-cube Moebius weights	Benincasa-Dowker causal-set d'Alembertian	quantum gravity	FRAMING	Benincasa-Dowker 2010; Aslanbeigi-Saravani-Sorkin 2014	curved-space	
+P111	Cube order as the light cone above 2D	Myrheim-Meyer dimension estimator	quantum gravity	NEGATIVE	Myrheim 1978; Meyer 1988	curved-space	
+P112	T-duality R <-> alpha'/R = circle inverse at k = 1; self-dual radius = identity	String T-duality; radius as O(1,1) boost	quantum gravity	FRAMING	Kikkawa-Yamasaki 1984; Sakai-Senda 1986; Narain 1986	string-theory	
+P113	Order dial group = Borel half of SL(2); i = self-dual coupling g_s = 1	S-duality on the coupling half-plane	quantum gravity	FRAMING	Font et al. 1990; Sen 1994	string-theory	S-duality itself lies outside our group
+P114	Lambda river = E; de Sitter horizon boost	de Sitter in free-fall coordinates; Kruskal	cosmology	FRAMING	Kruskal 1960	curved-space; dark-sector	dark-sector: Lambda = mult-add growth
+P115	E as mass inflow	Matter-dominated expansion	cosmology	NEGATIVE		curved-space	
+P116	de Sitter temperature on the sphere; Hawking 2 pi in the dial ledger	Gibbons-Hawking temperature	cosmology	KNOWN	Gibbons-Hawking 1977	hypersphere; why-i	
+P117	Redshifts compose by the circle operation	(1+z) factors multiply	cosmology	KNOWN	standard cosmology	dark-sector; data-that-doesnt-fit	
+P118	LCDM H^2 as weighted cube 1 + Omega_m(z o z o z)	Friedmann equation	cosmology	FRAMING	Friedmann	dark-sector	Rung 3 cannot carry expansion
+P119	Free layer weights	DESI w ~ -0.9	cosmology	FRAMING	DESI 2025	dark-sector	
+P120	Fused laws without Lambda	Supernova/BAO fits	cosmology	NEGATIVE		dark-sector	Delta chi^2 >= 83 worse
+P121	Mult-add gravity for galaxy rotation	SPARC rotation-curve gap	cosmology	NEGATIVE		dark-sector	Closes only 1-5%
+P122	MOND simple mu = minus the circle-operation inverse	MOND interpolation function	cosmology	FRAMING	Milgrom 1983	dark-sector	
+P123	Dial as rolling field: potential exponential in ln k, Delta chi^2 ~ 4.8	Evolving dark energy hint	cosmology	FRAMING	DESI 2025	dial-potential	Slope match not meaningful; needs screening; write-up keeps as lead
+P124	Dial as the Higgs	Higgs mass 125.2 GeV	other (particle physics)	NEGATIVE		dial-potential	Best version 128.7, misses by 3.3 sigma
+P125	Number formulas for masses; dial as varying alpha	Particle masses; fine-structure constant	other (particle physics)	NEGATIVE		dial-potential	Hits at chance level
+P126	Cross terms for neutron lifetime, Hubble tension, dipole, lithium	Standing data anomalies	other (particle physics and cosmology)	NEGATIVE		data-that-doesnt-fit	No write-up; read from script output: cross terms far too small
+P127	Air-shower cascade as k-fold circle operation	Heitler-Matthews shower model; muon puzzle	other (particle astrophysics)	FRAMING	Heitler 1954; Matthews 2005	data-that-doesnt-fit	No write-up; script only
+P128	Partition functions combine at k = +1	Independent subsystems multiply partition functions	thermodynamics	KNOWN	standard statistical mechanics	thermodynamics	
+P129	Third law and residual entropy on the cube	Pauling ice entropy	thermodynamics	FRAMING	Pauling 1935	thermodynamics	
+P130	Fermion cube and boson inverse	Fermi/Bose Koszul duality	statistical physics	KNOWN	Koszul duality (standard)	thermodynamics	
+P131	Fermi function = tanh velocity addition; negative temperature past the wall	Fermi-Dirac occupation; negative absolute temperature	statistical physics	KNOWN	Ramsey 1956	thermodynamics	
+P132	Kaniadakis entropy placed on the landscape	Kaniadakis kappa-statistics	statistical physics	FRAMING	Kaniadakis 2001	thermodynamics	
+P133	Lee-Yang/Asano gluing of circle-operation squares; ring zeros on an arc	Lee-Yang circle theorem; Asano contraction	statistical physics	FRAMING	Lee-Yang 1952; Asano 1970; Ruelle	thermodynamics; lee-yang	Lean-verified ring zeros
+P134	Landscape laws cluster at Beraha dial values	Beraha numbers in Potts zeros	statistical physics	NEGATIVE	Beraha	lee-yang; diamond-lattice	3 hits, all at k=2; p ~ 0.1
+P135	Phase changes fill-then-spill like rungs	Latent-heat plateau (Potts, Baxter)	statistical physics	NEGATIVE	Baxter 1973	lee-yang	Same picture, different mechanisms
+P136	Diamond step = square in t, then square in the lift; Q moves one wall	Diamond hierarchical lattice Potts map	statistical physics	FRAMING	Berker-Ostlund 1979; Tsallis-Levy 1981	diamond-lattice	
+P137	Fixed points t = 1/y, Q = (y-1)^2(y+1); nu = ln2/(2 ln(2/(1+t*)))	Diamond-lattice Potts fixed points and exponents	statistical physics	POSSIBLY-NEW	Fixed cubic and closed forms in Chang-Roeder-Shrock 2020	diamond-lattice	y-parametrization and slope formula not found written; elementary
+P138	Stokes plates on the border parabola	Stokes' parallel-plate reflection formula	statistical physics	FRAMING	Stokes 1862	thermodynamics	
+P139	Work-fluctuation identity in dial form	Jarzynski equality	thermodynamics	KNOWN	Jarzynski 1997	thermodynamics	
+P140	Nishimori tanh K = 1 - 2p; Ising series bonds at k = -2; Kramers-Wannier = velocity lens	Nishimori line; Kramers-Wannier duality	statistical physics	KNOWN	Kramers-Wannier 1941; Nishimori 1981	thermodynamics; entropy-noise; quantum-to-classical	sqrt2 - 1 self-dual point
+P141	Tsallis k = Carnot 1 - T0/T; engines in series by union rule; Curzon-Ahlborn half step	Carnot efficiency; endoreversible engines	thermodynamics	FRAMING	Curzon-Ahlborn 1975; Baez 2011	entropy-noise; thermodynamics	
+P142	Height flow E = critical Poisson(1) branching; fades like 2/n	Critical Galton-Watson survival	probability	FRAMING	Kolmogorov 1938	quantum-to-classical; newton-g	
+P143	alpha-determinantal processes are the dial k = alpha; void = dial fold	Fermion/Poisson/boson point processes	statistical physics	KNOWN	Shirai-Takahashi 2003; Hough-Krishnapur-Peres-Virag; Maunoury 2016	dial-point-processes	Variance linear in k (Morris 1982); existence lattice k = -1/m
+P144	High-dimensional sphere marginal = dial chain k = -1/2	Poincare-Borel lemma; Maxwell distribution	statistical physics	FRAMING	Poincare; Borel	hypersphere	
+P145	Height flow as running coupling: rho = 1/3, renormalon exponent 2 pi rho	't Hooft scheme; renormalons; RG as functional iteration	other (quantum field theory)	FRAMING	Curtright-Zachos 2011; Beneke 1999; Ecalle; Dudko-Sauzin	height-flow; height-running-coupling	Generic for double-zero maps; singularities on imaginary axis
+P146	SSH loop winding as circle-operation product of steps	SSH winding number; Zak phase	other (condensed matter)	FRAMING	Su-Schrieffer-Heeger 1979; Zak 1989	ssh-chain	No write-up; script only
+P147	Tsallis entropy = weighted circle operation at k = 1 - q	Tsallis nonadditive entropy; q-sum	information theory	KNOWN	Tsallis 1988; Nivanen-Le Mehaute-Wang 2003	entropy-noise; thermodynamics	
+P148	Integer heights of E give named entropies; fractional heights ours	Tempesta group entropies (Tsallis q=0, Shannon/Renyi)	information theory	FRAMING	Tempesta 2011, 2016	height-flow	Catalogue entry
+P149	Qubit noise channels compose by weighted circle operation (T1 -1, depolarizing -4/3)	Channel composition; randomized-benchmarking decay	information theory	FRAMING		quantum-noise	
+P150	Pauli channels form a tetrahedron	Pauli-channel simplex	information theory	KNOWN	Fujiwara-Algoet 1999; King-Ruskai 2001	quantum-noise	
+P151	Spin echo = circle-operation inverse	Hahn echo	information theory	FRAMING	Hahn 1950	quantum-noise	
+P152	Error correction as flow to the clean corner	Threshold theorem	information theory	KNOWN	Aharonov-Ben-Or 1997; Knill-Laflamme-Zurek 1998	quantum-noise	
+P153	Shor code threshold box 9.67% / 7.47%	Code thresholds	information theory	POSSIBLY-NEW		quantum-noise	Weak
+P154	Weight enumerators from cube signs	MacWilliams identity	information theory	FRAMING	MacWilliams 1963	quantum-noise	
+P155	Cube gives the surface-code threshold	Surface-code threshold	information theory	NEGATIVE		quantum-noise	
+P156	l1/l2/linf balls kiss at six midpoints	Unital-qubit-channel norm structure	information theory	FRAMING	King 2002; Ruskai 2003	entropy-noise	
+P157	Syndromes as cube body diagonals; half-bit threshold	Syndrome decoding; Nishimori-Nemoto threshold	information theory	KNOWN	Nishimori-Nemoto 2002	entropy-noise	Body-diagonal reading is framing
+P158	Union rule holds iff parts share no information; miss <= sqrt(2I)	Mutual information bounds on correlations	information theory	FRAMING	Wolf-Verstraete-Hastings-Cirac 2008	probability-entanglement	Gluing = conditional-MI chain rule in every state
+P159	Forgotten two-state bath moves dial to k' = -1/(Fermi occupation)	Superstatistics; frailty models	statistical physics	POSSIBLY-NEW		probability-entanglement	Toy
+P160	Loop read coarsely gives arbitrary odds; chaotic clock Poisson	Method of arbitrary functions	probability	FRAMING	Poincare; Hopf; Keller; Hirata 1993	probability-entanglement	
+P161	Hidden loop/helix as source of quantum odds	Bell / Tsirelson bounds	quantum mechanics	NEGATIVE	Bell	probability-entanglement	Hits Bell's wall, nothing stops at 2 sqrt2
+P162	Circle operation plus partner forms a semiring at every k; log-sum-exp	Maslov dequantization; tropical/semiring path algebra	quantum mechanics	FRAMING	Maslov; Litvinov; Carre; Green-Karvounarakis-Tannen 2007	quantum-to-classical; action	Classical limit at |k| -> infinity
+P163	Union rule as semiring sum	Distributivity requirement	quantum mechanics	NEGATIVE	Valiant 1979	quantum-to-classical	
+P164	One dial line from quantum to classical to relativistic	Classical limit structure	quantum mechanics	NEGATIVE		quantum-to-classical	
+P165	Decoherence 1 - V^2 = union rule over records	Decoherence by environment records	quantum mechanics	FRAMING	Joos-Zeh 1985; Zurek 2003	quantum-to-classical	
+P166	k = -1 hazards compose as Kaplan-Meier	Product-limit estimator	probability	KNOWN	Gill-Johansen 1990	why-i	
+P167	Twist accumulated along a path	Levy area; path signature	probability	KNOWN	Chen 1957; Lyons 1998	why-i	
+P168	Mandelbrot cascade = chain of circle operations at k = 1	Multiplicative cascades	probability	FRAMING	Kahane-Peyriere 1976	ns-continuum	
+P169	Sugeno lambda-measure = dial k = lambda	Sugeno fuzzy measures	probability	KNOWN	Sugeno 1974	dial-point-processes	Same wall rule as point processes
+P170	Cole-Hopf = rung-2 log; empty corner merges shocks	Burgers equation linearization	fluids	KNOWN	Hopf 1950; Cole 1951	ns-rungs	
+P171	Rung-3 flow Y log Y = 2D vorticity double-exponential growth	Osgood uniqueness; Kiselev-Sverak bound	fluids	FRAMING	Wolibner 1933; Yudovich 1963; Kiselev-Sverak 2014	ns-rungs	
+P172	A rung for vortex stretching	3D Navier-Stokes blow-up rate	fluids	NEGATIVE	Giga-Kohn; Beale-Kato-Majda 1984	ns-rungs	Blow-up = rung 2 on a log-time clock
+P173	Cross-handed dial in helical shell toy: any eps > 0 blows up, t* ~ eps^-1.8	Helical decomposition; homochiral turbulence	fluids	POSSIBLY-NEW	Alexakis-Biferale lambda_c ~ 0.3 known; Biferale-Titi	ns-rungs; ns-continuum; ns-same-shape	Toy model
+P174	Homochiral Navier-Stokes in the self-dual family: infinite invariants?	Homochiral NS (Biferale-Titi)	fluids	POSSIBLY-NEW		ns-same-shape	Open question
+P175	Stretch-cube far corner = enstrophy production	Betchov relation	fluids	KNOWN	Betchov 1956	ns-continuum	
+P176	Entanglement across scales as the key	Low-rank self-similar blow-up	fluids	NEGATIVE	Ali-Nouy 2023	ns-same-shape	
+P177	Dimension continuum = dissipation continuum	Hyperdissipation (Lions)	fluids	NEGATIVE	Lions 1969	ns-continuum	
+P178	Dyadic cells 2^n - 1 = 1 o 1 o ... o 1	Katz-Pavlovic dyadic model	fluids	FRAMING	Katz-Pavlovic 2005	ns-continuum	
+P179	NS supercritical gap = one rung of E; fractional rungs fill it	Tao's averaged-NS supercriticality gap	fluids	FRAMING	Tao 2009	ns-continuum	
+P180	Dyadic model breaks at n = 4 (gamma = 1/3)	Dyadic shell-model regularity	fluids	POSSIBLY-NEW		ns-continuum	Numerical
+P181	Acoustic metric; quaternion u*w = -helicity + Lamb vector	Analog gravity; Lamb vector	fluids	KNOWN	Unruh 1981	navier-stokes	No write-up; script docstrings only
+P182	Membrane fluid: our NS results carry to horizon fluid	Fluid/gravity correspondence	fluids	KNOWN	Bredberg-Keeler-Lysov-Strominger 2011	newton-g	
+P183	Two-soliton tau function = weighted circle-operation cube	Hirota bilinear tau function	integrable systems	KNOWN	Hirota 1971; Date-Jimbo-Kashiwara-Miwa	solitons-rungs; ns-rungs; corner-weights	Exact; pair factor = vertex-operator ordering cost
+P184	Theta function at q = 0 gives the soliton cube	Degeneration of theta functions / period matrix	integrable systems	KNOWN	Krichever 1977; Dubrovin; Mumford	solitons-rungs	
+P185	Cnoidal wave = sum of soliton copies; triple product = circle op over q-orbit	Jacobi triple product; Toda/Boyd imbricate series	integrable systems	FRAMING	Jacobi 1829; Toda; Boyd 1984	solitons-rungs	
+P186	One whole rung step = log tau readback	Hirota log-derivative	integrable systems	FRAMING	Hirota 1971	solitons-rungs	
+P187	Fractional rung steps as soliton steps	Three-soliton road	integrable systems	NEGATIVE		solitons-rungs	Splits from rung flow at three bodies
+P188	Tropical creases of soliton patterns	Tropical KP solitons	integrable systems	KNOWN	Dimakis-Mueller-Hoissen 2013	solitons-rungs	
+P189	Soliton road log counts connected graphs	Riddell-Uhlenbeck cluster expansion	integrable systems	KNOWN	Riddell-Uhlenbeck 1953	solitons-rungs	
+P190	Union rule = series reliability; corner sum = 2x2 factorial interaction	Weakest-link reliability; Yates interaction contrast	other (engineering)	KNOWN	Yates 1937	fusion-magnets	Corner-sum check handy for derating budgets
+P191	Semiring dial for aggregating limits	Kreisselmeier-Steinhauser aggregation; Lp norms	other (engineering)	KNOWN	Kreisselmeier-Steinhauser	fusion-magnets	
+P192	Theory tools for stronger fusion magnets	REBCO magnet limits	other (engineering)	NEGATIVE		fusion-magnets	No new way found
+P193	Velocity-sphere e, i, pi; S^3 as sphere of i's; spinor sign	Unit quaternions; spin-1/2 double cover	quantum mechanics	KNOWN	Hamilton (quaternions)	hypersphere; why-i/e-i-pi	Dial reading of e, i, pi is framing
+P194	Polar split exists only in dimensions 1, 2, 4, 8	Hurwitz / Adams theorems	other (mathematical physics)	FRAMING	Hurwitz 1898; Adams 1960	hypersphere	
+P195	Newtonian binding as the circle operation	ADM mass of bound systems	gravity	NEGATIVE	Arnowitt-Deser-Misner 1960	why-i/dial-map	Only first order
+P196	Dial map makes gravity a forced step	Spin-2 bootstrap; Lovelock	gravity	NEGATIVE		why-i/dial-map	Gravity edge lacks a stability theorem
