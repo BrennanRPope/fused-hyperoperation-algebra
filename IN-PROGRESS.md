@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,938 theorems in 183 modules, Nov 27 ~16:00 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,942 theorems in 183 modules, Nov 27 ~16:30 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -151,3 +151,5 @@ Nov 27: `topics/gravity-from-theory/spinning-river/` round 25 (DRAFT): the one m
 Nov 27: `topics/gravity-from-theory/spinning-river/` round 26 (DRAFT): the equator split, where push (L²), twist (−2aL) and Newton's ring (a²) together make (L − a)² (equator_split.py, fig 34); 117 checks; 5 theorems added to Topics.SpinningRiver, the two generic stiffness ones with (2 : K) ≠ 0 (library 3,938).
 Nov 27: `topics/why-i/rotations-force-i/` (DRAFT): `Averages.lean` (11 theorems) and `AveragesPE.lean` (12) registered in the library as FusedAlgebra.Topics.Averages and FusedAlgebra.Topics.AveragesPE (namespaces CircleOp.Averages and CircleOp.AveragesPE, no proof changed; library 3,938). The topic files, main.tex, SUBMIT-STEPS.md and arxiv-source.tar.gz were already in the repo from 776fdf1 and match the paper's session; the shared folder's checks_output.txt (a failed run without SymPy) was not copied, so the repo keeps 32/32.
 Nov 27: `topics/new-ties/` round 20 (DRAFT, patch 0019): an independent recheck of Theorems 18.1 and 19.1 to 19.3 from their statements alone (all hold), and the 19-adic step for five letters: every unbounded factor-19 case is one two-logarithm form, bounded by a published theorem and settled exactly for a fixed front by a digit argument; checks20.py 7. Five letters itself not proved.
+Nov 27: `topics/gravity-from-theory/spinning-river/` round 27 (DRAFT): charge (Kerr–Newman) sits in mass's slot in every piece, as the mass less the field's energy outside r (kn_split.py, fig 35); 121 checks; 4 theorems added to Topics.SpinningRiver, charged_radial_stiffness with (2 : K) ≠ 0 and kn_ratio_three_sources with V ≠ 0 (library 3,942).
+Nov 27: `topics/hypersphere/` orbits sections 11 and 12 (DRAFT, from the hypersphere session): the pair rule at the next order becomes a ladder (division-algebras/magic/order2/, checks_order2.py 7/7, figure D6), and two comparable black holes at second order, from P. K. Gupta's 2PN Lagrangian (division-algebras/magic/twobody2/, checks_twobody2.py 6/6, figure D7 regenerated here with figure_twobody2.py); both picked up by CI; READMEs merged, keeping the repo's Lean wording and DRAFT labels. `sources/gupta-2609.07413.md` (the transcription, equations, equation labels and full citation only, no paper text, PDF or TeX) brought onto main from branch `sources-gupta` by cherry-picking 5644124.
