@@ -42,7 +42,11 @@ red = does not work. Lean: `lean/Hypersphere.lean`, compiled in the shared libra
   2(n − 1) for neutral ones, where n = 1 to 4 counts the charges; the algebras only decide which n are allowed.
   With charges pointing different ways, the turn comes only from pairs of a black hole's charges; one charge
   alone never turns an orbit (orbits section 9). For two comparable black holes the rule survives at first order,
-  with each body's pairs weighted by its share of the mass (orbits section 10).
+  with each body's pairs weighted by its share of the mass (orbits section 10). At the next order it becomes a
+  ladder: pairs act first, triples join at second order, all four at third; around a two-charge black hole the orbit
+  is an exact precessing ellipse at every order (orbits section 11).
+  For two comparable black holes at second order, one-charge pairs still close at every mass ratio, and the mass
+  ratio only enters multiplied by the turn pairs already give (orbits section 12).
 - **Comes out of the sphere, or simpler there:** the curvature (1/radius², which is the curvature dial d at k = 0), the
   swap rule (turn = curvature × area is the sphere's curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
   of Newton's orbits (great circles on S³).
@@ -368,7 +372,9 @@ magic square of gravity theories are worked out in the orbits section 8.
 - `division-algebras/` (DRAFT): why 1, 2, 4, 8 (`checks_div.py`, `checks_shape.py`, both pass; `figure_div.py` → figures D1, D2)
 - `division-algebras/magic/` (DRAFT): orbits across the magic square (`checks_magic.py` 7/7, `figure_magic.py` → figure D3) and
   with misaligned charges (`stu.py`, `misalign.py`, `checks_misalign.py` 6/6, `figure_misalign.py` → figure D4), and
-  for two comparable bodies (`twobody/`, `checks_twobody.py` 6/6, `figure_twobody.py` → figure D5)
+  for two comparable bodies (`twobody/`, `checks_twobody.py` 6/6, `figure_twobody.py` → figure D5), and at the next
+  order (`order2/`, `checks_order2.py` 7/7, `figure_order2.py` → figure D6), and for two comparable bodies at second
+  order (`twobody2/`, `checks_twobody2.py` 6/6, `figure_twobody2.py` → figure D7)
 - `lean/Hypersphere.lean`: 33 theorems, compiled in the shared library as `FusedAlgebra.Topics.Hypersphere`
 
 ## References

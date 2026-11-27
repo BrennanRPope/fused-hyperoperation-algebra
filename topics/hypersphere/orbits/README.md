@@ -13,7 +13,9 @@ Checks: `checks_orbits.py` → `checks_orbits_output.txt`, **23 of 23 pass**, an
 `dcopy/checks_dcopy.py` → `dcopy/checks_dcopy_output.txt`, **11 of 11 pass**, and
 `../division-algebras/magic/checks_magic.py`, **7 of 7 pass** (section 8), and
 `../division-algebras/magic/checks_misalign.py`, **6 of 6 pass** (section 9), and
-`../division-algebras/magic/twobody/checks_twobody.py`, **6 of 6 pass** (section 10) (numpy, scipy; real orbit simulations, not
+`../division-algebras/magic/twobody/checks_twobody.py`, **6 of 6 pass** (section 10), and
+`../division-algebras/magic/order2/checks_order2.py`, **7 of 7 pass** (section 11), and
+`../division-algebras/magic/twobody2/checks_twobody2.py`, **6 of 6 pass** (section 12) (numpy, scipy; real orbit simulations, not
 formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems),
 compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, no statement changed). Colour key as before: **orange = known, blue = ours**.
 
@@ -36,6 +38,11 @@ compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, n
    one charge alone never turns an orbit (exact Kepler, every order), and n − 1 is n(n − 1)/2 pairs added up.
 6. **For two comparable black holes (section 10)** the pair rule survives at first order: each body's own pairs count,
    weighted by its share of the mass, and the orbit closes exactly when both bodies carry a single charge.
+7. **At the next order (section 11)** the pair rule survives and becomes a ladder: pairs of charges act at first
+   order, triples join at second, all four at third. Around a two-charge black hole the orbit is an exact
+   precessing ellipse at every order; around a one-charge one it never turns.
+8. **For two comparable black holes at second order (section 12)** one-charge pairs still close at every mass ratio,
+   and the mass ratio only enters multiplied by the first-order turn from pairs (for bodies with n equal charges).
 
 **Does it open a lead?** Yes. For the electric force it turns the Coulomb orbit and Dirac's fine structure into one
 swap-rule area. For gravity the 6 is no longer put in by hand: it is an exact product of the same two twists the
@@ -368,13 +375,111 @@ taken both ways round. Checks: `../division-algebras/magic/twobody/checks_twobod
   and 1.49 for the three test cases, against 0, 3 and 3/2 predicted (Y6).
 
 **Limits.** First order only (1PN). The straight-line law is guaranteed there; at the next order (2PN) the mass
-ratio enters in new ways and the rule is untested. The bodies are extremal (BPS-type) black holes modelled as point
+ratio enters in new ways; section 12 tests it for bodies with equal charges. The bodies are extremal (BPS-type) black holes modelled as point
 particles, within the four-charge family.
 **Is it new?** The straight-line structure is known (Damour and Esposito-Farèse 1992), and the single-charge case is
 known (Caron-Huot and Zahraee 2019; Davis and Melville 2023 for the a = √3 tuning). I have not found the two-body
 turn for multi-charge (1/4- and 1/8-BPS) black holes, or the closes-exactly-when-both-single statement, written down.
 **Does it open a lead?** A modest one. It confirms the pair rule is not an artefact of a small visitor, but at
 first order it follows from known structure, so the real test of the hidden symmetry is the second order.
+
+## 11. The next order: the pair rule grows into a ladder
+
+![The pair rule at the next order](../figures/figD6-the-pair-rule-at-the-next-order.png)
+
+*Figure D6. A to D: ten laps of the same kind of visitor around black holes with one, two, three and four charges,
+from the exact orbit equation in strong gravity (no approximation). E: the second-order turn split into the pairs
+coming back squared (green) and the new part from triples of charges (blue). F: the rule, order by order.*
+
+Brennan's go-ahead to follow the leads, and the coordinator's yes to "test the pair rule at the next order", since
+section 10 named the second order as the real test of the hidden symmetry. Method: for a small visitor (section 9's
+setup) the orbit around a four-charge black hole can be solved exactly, so the second order is read off an exact
+equation rather than built up term by term. Checks: `../division-algebras/magic/order2/checks_order2.py`,
+**7 of 7 pass**.
+
+**The result: the rule survives, and it turns out to be the first rung of a ladder.**
+
+- **One exact orbit equation.** With u = 1/r, the visitor's charge shares wⱼ, signs sⱼ = ±1 (with or against the black
+  hole's charge j), D = E − Σ wⱼsⱼ and H = Π(1 + kᵢu):
+  L²(du/dφ)² = D²H + 2D Σⱼ wⱼsⱼ H/Hⱼ + Σ over j ≠ l of wⱼwₗ(sⱼsₗ − 1) H/(HⱼHₗ) − L²u².
+  The right side is a polynomial in u whose degree is the number of charges, and its coefficients are built from
+  the charges one at a time, in pairs, in triples and all four together (Z2, all 16 sign patterns).
+- **The ladder.** Pairs of charges first appear at first order (section 9's rule), triples at second order, and the
+  product of all four at third order. At second order the turn per lap is
+  π[T·K²/L² + (T₂ + T₂ₑ·w)·K⁴/L⁴], with **T₂ = ¾T² + 3·(triples)/K³** and T₂ₑ = −(how the pairs term changes with
+  energy)/K². So the pairs come back squared and the triples are the only new ingredient (Z5, 30 cases). Three
+  equal charges: 3 + 3/2 = 9/2. Four: 27/4 + 9/2 = 45/4 (Fig D6 E). The third rung was checked too: the product of
+  all four charges first moves the turn at third order, by (product term)/K⁴ × (15/2 − 3w) × K⁶/L⁶; an exact
+  orbit with four unequal charges gives 47.84, 47.40, 47.29 as L doubles, against 47.25 (Z7).
+- **Two charges: the pair rule is the whole story, at every order.** The equation is then quadratic, so the orbit is
+  an exact precessing ellipse with turn per lap 2π(1/√(1 − D²k₁k₂/L²) − 1), in closed form even in strong gravity
+  (Z3, matched to 15 digits; Fig D6 B).
+- **One charge: never turns, at any order** (Z4, strong gravity, turn below 10⁻¹⁹; Fig D6 A), as section 9 found.
+- **Checked against Einstein.** The same second-order machinery gives Damour and Schäfer's test-mass result for
+  Schwarzschild exactly (Z1), and integrating a three-charge orbit at large L lands on the predicted second-order
+  coefficient, 35.03 then 35.006 as L doubles, against 35 (Z6).
+
+In section 1's picture: the number of charges sets how far the orbit is from Fock's sphere. One charge keeps the
+sphere (Kepler). Two charges keep a circle's worth of it (the orbit is still a sine wave in 1/r, just stretched).
+Three or four make the orbit an elliptic function, the same kind as Schwarzschild's.
+
+**Limits.** Small visitor only; section 12 takes up two comparable masses. Visitors are pieces riding together, as in
+section 9.
+**Is it new?** The black holes, the visitors and the second-order formula's Schwarzschild limit are known. I have not
+found the polynomial orbit equation, the pairs-then-triples ladder, or the closed-form rosette around a two-charge
+black hole written down. The nearest known results are the no-precession ones for single charges (Caron-Huot and
+Zahraee 2019; de Neeling and others 2023).
+**Does it open a lead?** Yes. It gives an exact reason why one charge keeps Kepler and two keep a rosette: the
+degree of one polynomial. The natural next step was the comparable-mass second order (section 12).
+
+## 12. Two comparable black holes at second order: one charge still closes
+
+![Two black holes at second order](../figures/figD7-two-black-holes-at-second-order.png)
+
+*Figure D7. A: the second-order turn coefficient as the mass moves from one body to the other, for two black holes
+with opposite charges and 1, 2, 3 or 4 equal charges each. B: the part that depends on the mass ratio, divided by the
+first-order turn; ν is the product of the two mass shares (1/4 at equal masses). C and D: both bodies' paths at
+equal masses, simulated from the second-order equations.*
+
+Brennan asked for the comparable-mass case after section 11 left it open, and had his Mac Studio fetch the published
+second-order (2PN) two-body Lagrangian for charged dilaton black holes (Gupta 2026, arXiv:2609.07413), transcribed
+in `sources/gupta-2609.07413.md` at the repo root. Method: replace the accelerations with the Newtonian
+equations of motion, pass to the Hamiltonian with total momentum zero, solve for the radial momentum, and take the
+periastron advance from the radial action, expanded around Kepler. Checks:
+`../division-algebras/magic/twobody2/checks_twobody2.py`, **6 of 6 pass**.
+
+**What the paper covers.** One vector field and one scalar, so each body carries charges all pointing the same
+way. In the four-charge family that means black holes with n equal charges (dilaton coupling a = √3, 1, 1/√3, 0
+for n = 1, 2, 3, 4). Here the two bodies have opposite charges, so they attract, as section 11's visitor did.
+
+**The result: the pair rule survives at second order for comparable masses, in every case the paper covers.**
+
+- **Two one-charge black holes still close, at every mass ratio** (W3, Fig D7 C). Nothing turns at first or second
+  order.
+- **The mass ratio enters only multiplied by the first-order turn.** For n = 2, 3, 4,
+  T₂ = T₂(small visitor) + (3/2)·ν·T and T₂ₑ = T₂ₑ(small visitor) + ν·T, where T is the first-order turn from pairs
+  (1, 2, 3). So all three fall on one curve when divided by T (Fig D7 B), and where pairs give nothing, the mass
+  ratio adds nothing (W4). At equal masses the turn is a little larger than for a small visitor: 9/8 against 3/4 for
+  two charges each, 99/8 against 45/4 for four.
+- **This is special to these black holes.** In Einstein's theory the same term is −15ν, not (3/2)·6·ν (W5).
+- **Three independent checks hold the pipeline in place.** It reproduces Einstein's second-order two-body advance
+  (Damour and Schäfer) at four mass ratios (W1). In the small-visitor limit it reproduces section 11's exact results
+  for n = 1, 2, 3, 4 (W2), which also checks the transcription's velocity and acceleration terms, the part the
+  transcription could not check itself. Simulated equal-mass orbits land on the predicted coefficients, and the
+  one-charge orbit's leftover turn falls about 64 times each time L doubles, the size of the third-order terms the
+  equations leave out (W6).
+
+**Limits.** Bodies with charges pointing different ways, or with different numbers of charges, need a second-order
+Lagrangian with several vector fields, which is not available; the comparable-mass test of the full pair rule (and of
+triples) is still open there. Extremal black holes as point particles; conservative dynamics only (no radiation).
+The transcription's readings of δ₂, ε₂ and the exchanged Λ's do not matter here (β = β′ = 0 for these black holes).
+**Is it new?** The Lagrangian is Gupta's. That two one-charge black holes do not precess is known in N = 8
+supergravity (Caron-Huot and Zahraee 2019, from scattering), and fits Davis and Melville's cancellation argument.
+I have not found the periastron advance for n = 2, 3, 4 at second order, or the ν·T rule, written down; I have not
+checked whether Gupta's paper computes an advance, since the transcription records none.
+**Does it open a lead?** Yes, a modest one. It says the hidden symmetry is tied to pairs of charges for comparable
+masses too, not only for a small visitor. The sharp next test needs a several-field second-order Lagrangian, so that
+misaligned and mixed-charge pairs can be tried.
 
 ## Known vs ours
 
@@ -396,6 +501,10 @@ first order it follows from known structure, so the real test of the hidden symm
 - **Known, string theory:** the double copy (KLT 1986; Monteiro–O'Connell–White 2014; Gonzo–Shi 2021); no precession
   in N = 8 supergravity (Caron-Huot–Zahraee 2019).
 - **Known, now read as discs:** v = c/2 at the innermost stable orbit, v = c at the photon sphere.
+- **Ours, exact (small visitor):** the polynomial orbit equation around a four-charge black hole; the ladder
+  T₂ = ¾T² + 3·(triples)/K³; the closed-form rosette around a two-charge black hole (Z2–Z7).
+- **Ours, from Gupta's published Lagrangian:** the second-order advance for two comparable black holes with n equal,
+  opposite charges, T₂ = T₂(visitor) + (3/2)νT, T₂ₑ = T₂ₑ(visitor) + νT; one-charge pairs close (W1–W6).
 - **Does not work:** the precession as an area on Fock's sphere (P7); GR's perihelion as one exact sum of areas
   (P5b); the split for eccentric orbits in closed form.
 
@@ -411,7 +520,11 @@ first order it follows from known structure, so the real test of the hidden symm
 `general.py`, `srnum.py`, `nordnum.py`), `twov/` (`checks_twov.py` 8/8, `checks_twov_output.txt`, `derive.py`,
 `figure_twov.py`), `dcopy/` (`checks_dcopy.py` 11/11, `checks_dcopy_output.txt`, `results_dcopy.json`, `derive.py`,
 `numcheck.py`, `figure_dcopy.py`), `../division-algebras/magic/twobody/` (`pn1.py`, `check_def_probe.py`, `stu2.py`,
-`orbit1pn.py`, `checks_twobody.py` 6/6, `checks_twobody_output.txt`, `results_twobody.json`, `figure_twobody.py`), and
+`orbit1pn.py`, `checks_twobody.py` 6/6, `checks_twobody_output.txt`, `results_twobody.json`, `figure_twobody.py`),
+`../division-algebras/magic/order2/` (`turn2.py`, `poly.py`, `explore2.py`, `checks_order2.py` 7/7,
+`checks_order2_output.txt`, `results_order2.json`, `figure_order2.py`), `../division-algebras/magic/twobody2/`
+(`gupta_halves.txt`, `pn2.py`, `orbit2pn.py`, `explore_pn2.py`, `checks_twobody2.py` 6/6, `checks_twobody2_output.txt`,
+`results_twobody2.json`, `figure_twobody2.py`), and
 `../lean/Hypersphere.lean`.
 
 ## References
@@ -423,7 +536,10 @@ M. Khuri and T. Ortín, arXiv:hep-th/9512177; G. Gibbons and K. Maeda 1988; D. G
 (2014); W. Goldberger and A. Ridgway 2017, arXiv:1611.03493; F.-L. Julié, arXiv:1711.10769; M. Khalil and others,
 arXiv:1809.03109; T. Damour and G. Esposito-Farèse, Class. Quantum Grav. 9, 2093 (1992); A.-C. Davis and
 S. Melville, "Orbital precession and hidden symmetries in scalar-tensor theories", arXiv:2307.06331. D. de Neeling, D. Roest, M. Seri, H. Waalkens, "Extremal black holes as relativistic
-systems with Kepler dynamics", Regul. Chaotic Dyn. 2024, arXiv:2303.13291 (section 9).
+systems with Kepler dynamics", Regul. Chaotic Dyn. 2024, arXiv:2303.13291 (section 9). T. Damour and G. Schäfer,
+Nuovo Cimento B 101, 127 (1988) (second-order periastron advance); P. K. Gupta, arXiv:2609.07413 (second-order
+two-body Lagrangian for Einstein–Maxwell–dilaton binaries, sections 11–12; transcribed in
+`sources/gupta-2609.07413.md` at the repo root).
 
 V. Fock, Z. Phys. 98, 145 (1935). W. Pauli, Z. Phys. 36, 336 (1926). V. Bargmann, Z. Phys. 99, 576 (1936).
 J. Moser, Comm. Pure Appl. Math. 23, 609 (1970). W. R. Hamilton, Proc. R. Irish Acad. 3, 344 (1847).

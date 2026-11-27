@@ -1,0 +1,8 @@
+PASS  Z1 second-order turn formula reproduces Einstein's test-mass result (Damour-Schafer): 6, 105/2, -15  (6, 105/2, -15)
+PASS  Z2 the exact orbit equation is a polynomial in 1/r of degree = number of charges (all 16 sign patterns)  
+PASS  Z3 around a two-charge black hole the orbit is an exact precessing ellipse; its turn is closed-form at all orders  [('[1, 2, 0, 0]', 0.8073031678046305, 0.8073031678046295), ('[1, 1, 0, 0]', 0.3402261100051429, 0.3402261100051429), ('[3, 1, 0, 0]', 0.2333974699749668, 0.2333974699749668)]
+PASS  Z4 around a one-charge black hole the turn is exactly zero in strong field too  1.4421e-20
+PASS  Z5 second order: T2 = 3/4 T^2 + 3 p3/K^3 (p3 = triples of charges only) and T2e = -(dp2/dE)/K^2, all cases  30 cases
+PASS  Z6 exact integration of a three-charge orbit at large L matches the second-order prediction  pred 35.00000, L=200: 35.02550, L=400: 35.00637
+PASS  Z7 the product of all four charges first moves the turn at third order, as the exact equation says (four unequal charges)  pred 47.25000, L=100: 47.83768, L=200: 47.39584, L=400: 47.28639
+ALL PASS
