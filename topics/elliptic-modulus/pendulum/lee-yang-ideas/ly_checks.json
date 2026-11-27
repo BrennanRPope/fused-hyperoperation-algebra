@@ -1,0 +1,57 @@
+[
+ [
+  "L1 ring zeros: sin(theta/2) = sqrt(m) cos(psi_j/2), theta = pi - arg zeta, m = 1 - 1/k",
+  true,
+  "4.82502926502093e-13"
+ ],
+ [
+  "L2 edge: pi - theta0 = arccos(1 - 2/k) (the Lee-Yang page's gap edge)",
+  true,
+  "4.440892098500626e-16"
+ ],
+ [
+  "L3 zero density = cos(theta/2) x pendulum dwell density (KS distance, n = 20001)",
+  true,
+  "4.998964824887153e-05"
+ ],
+ [
+  "L3b edge pile-up: zeros within eps of the edge ~ eps^(1/2)",
+  true,
+  "0.500836516254032"
+ ],
+ [
+  "L4 k -> infinity: zeros uniform on the whole circle (separatrix)",
+  true,
+  "4.9896753136602356e-05"
+ ],
+ [
+  "L5 bands: k>1 swing, k<0 over the top (spill to +real exactly where sqrt(m)cos > 1), 0<k<1 negative real",
+  true,
+  "[(-1.0, 20, 20), (-3.0, 14, 14)]"
+ ],
+ [
+  "I2 halfway-line idea: zeros do not sit at |t| = 1 (spread of log10|t|)",
+  true,
+  "2.4416495914005187"
+ ],
+ [
+  "D1 dial gas = Ising: k = e^(4J), zero field at z = 1/k^2 (3x3 torus, exact sum)",
+  true,
+  "3.552713678800501e-15"
+ ],
+ [
+  "D2 k_O = 4k/(k-1)^2 equals 1 at k = 3 +- 2sqrt2",
+  true,
+  "(1.0, 0.9999999999999983)"
+ ],
+ [
+  "D3 duality k <-> k* swaps k_O and 1/k_O (swinging <-> over the top), fixed at k_c",
+  true,
+  "[(6.0, 5.6634), (10.0, 3.7054), (30.0, 2.093)]"
+ ],
+ [
+  "D4 Fisher zeros approach |k_O| = 1 (median | |k_O|-1 |, data vs random-phase null)",
+  true,
+  "{4: (0.133, 0.32), 5: (0.1, 0.332), 6: (0.086, 0.331)}"
+ ]
+]

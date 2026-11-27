@@ -8,7 +8,7 @@ So this page plays with the model one parameter off the plane dial and reports w
 Builds on F3, [`elliptic/`](../elliptic/) (Tate's curve, the node), [`named-functions/`](../named-functions/) (generators,
 heights, the hypernatural logarithm), [`height-flow/`](../height-flow/) (the fingerprint), [`corner-weights/`](../corner-weights/).
 
-**Checks:** `checks.py` → `checks_output.txt`, **30 of 30 pass** (sympy exact; mpmath 40 digits; about 30 s); section 7 adds `pendulum/pendulum_checks.py`, **12 of 12 pass**.
+**Checks:** `checks.py` → `checks_output.txt`, **30 of 30 pass** (sympy exact; mpmath 40 digits; about 30 s); section 7 adds `pendulum/pendulum_checks.py`, **12 of 12 pass**; section 8 adds `pendulum/lee-yang-ideas/ly_checks.py`, **11 of 11 pass**.
 **Polish:** `polish.py` → `polish_output.txt` (the fingerprint read off a 200,000-step orbit; wall distances by quadrature;
 a half height at 50 digits). **Lean:** `lean/EllipticModulus.lean`, **11 theorems, compiled** in the shared library as
 `FusedAlgebra.Topics.EllipticModulus`, no `sorry`. **Pictures:** `figures.py` → `figures/`. Heights: `heights.py`; series: `series.py`, `numseries.py`.
@@ -46,6 +46,9 @@ here (a = 1); it is written out because its usual letter, d, is our curvature di
 8. **The pendulum picture, worked out (Nov 27).** Our curvature reading is the pendulum's energy, κ = 1 − 2E/E_top. The
    reading is exactly 1 at half the time to the turning point, on every swing. Past the separatrix the wall is replaced
    by a cap, √m − √(m − 1). Our conic laws, tan and tanh, are exactly the border between swinging and going over the top.
+9. **Checked against Lee–Yang zeros (Nov 27).** A ring's Lee–Yang zeros are a pendulum's swing: the Yang–Lee edge is the
+   turning point (m = 1 − 1/k) and the zeros crowd like the pendulum's dwell time, times cos(θ/2). The 2D dial gas's
+   transition k = 3 + 2√2 is the separatrix of Onsager's modulus 4k/(k − 1)². Mostly known mathematics, newly read.
 
 ---
 
@@ -266,7 +269,67 @@ Dashed green: the halfway lines, where the reading has size exactly 1.
   meaning (turning back), gives the region past relativity a meaning (going over the top, capped), and places the conic
   plane exactly on the border between them. It also hands statistical physics a familiar shape to compare with: the
   separatrix's logarithmic blow-up of K(m) is the same function behind Onsager's logarithmic specific heat in the 2D
-  Ising model. Whether that is more than a resemblance in our setting is a question for the Lee–Yang work, not checked here.
+  Ising model. Section 8 checks this: the 2D dial gas's transition is that separatrix.
+
+---
+
+## 8. The pendulum ideas checked against Lee–Yang zeros (Nov 27)
+
+Asked for by Brennan (thread, Nov 27): "Can we go ahead and check it?", about the three Lee–Yang ideas at the end of the
+pendulum report. Checks: `pendulum/lee-yang-ideas/ly_checks.py` → `ly_checks_output.txt`, **11 of 11 pass** (about 9 s).
+It reads the Lee–Yang page's `dialgas.py` and `fisher_zeros.pkl` and changes nothing there. Lean:
+`pendulum/lee-yang-ideas/lean/PendulumLeeYang.lean`, **5 theorems, compiled** (core Lean, no import). Pictures:
+`ly_figures.py` → Figs 9–10. Background: [`lee-yang/`](../lee-yang/) (the dial gas Z = Σ z^|S| k^e(S), ζ = kz).
+
+![Fig 9](figures/fig9-ring-zeros-as-a-pendulum.png)
+
+**Fig 9.** (a) A ring's Lee–Yang zeros on the circle |ζ| = 1, drawn as a pendulum hanging from the wall ζ = −1. The
+zeros fill a swing; the Yang–Lee edge is the turning point. (b) How the zeros crowd toward the edge (dots, a 40,001-site
+ring) against cos(θ/2) times the pendulum's dwell time (solid) and the dwell time alone (dotted). (c) The ring's three
+regimes, coloured as the pendulum's three energy bands.
+
+- **Idea 3, the zeros bunch like a pendulum lingering: holds exactly for a ring.** Measure the angle from the wall,
+  θ = π − arg ζ. The ring's zeros sit at **sin(θ/2) = √m · cos(ψⱼ/2)** with ψⱼ equally spaced and **m = 1 − 1/k** (L1,
+  10⁻¹²; Lean `ring_zero_pendulum`). That is the pendulum's own amplitude law sin(θ/2) = √m · (a clock), so:
+  - **the Yang–Lee edge is a turning point**, at sin²(θ₀/2) = 1 − 1/k. This is the Lee–Yang page's edge arccos(1 − 2/k)
+    read from the other end (L2; Lean `ring_edge_amplitude`);
+  - **the zero density is cos(θ/2) times the pendulum's dwell time** at that swing (L3, a KS distance of 5·10⁻⁵ over
+    20,001 zeros; Lean `density_identity`). Both pile up like (θ₀ − θ)^(−1/2) at the edge (L3b);
+  - **the separatrix is k → ∞**: the swing reaches the top and the zeros spread evenly round the whole circle (L4).
+- **The ring's regimes are the pendulum's energy bands** (L5, Fig 9c). k > 1 (0 < m < 1) is swinging: zeros on part of the
+  circle. k < 0 (m > 1) is going over the top: zeros fill the circle to ζ = +1, and exactly those that would pass the top
+  spill onto the positive real axis. 0 < k < 1 (m < 0) is the Wick image: the zeros leave the circle for the negative axis.
+- **Idea 2, a unit circle: half right.** The Lee–Yang circle |ζ| = 1 is the pendulum's circle of real angles: the wall
+  ζ = −1 is the pendulum at rest at the bottom and the zero-field point ζ = +1 is the top. But the halfway line |t| = 1 has
+  no role: the zeros' slope readings are spread over more than two decades (I2). That part of the idea is dropped.
+
+![Fig 10](figures/fig10-dial-gas-on-the-pendulum-dial.png)
+
+**Fig 10.** (a) The 2D dial gas's zero-field (Fisher) zeros on 4×4, 5×5 and 6×6 tori, in the dial k, against the curve
+|k − 1|² = 4|k| where Onsager's modulus has size 1. (b) Along the real dial: Onsager's modulus k_O = 4k/(k − 1)² crosses 1
+at k_c = 3 + 2√2, and the pendulum's time to the top K blows up there.
+
+- **Idea 1, the transition as the separatrix: holds, and it is known physics in our dial's words.** The dial gas is the
+  Ising model as a lattice gas, with k = e^(4J) and zero field at z = 1/k² (D1, exact on a 3×3 torus; Lean
+  `lattice_gas_edge`; Lee and Yang 1952). Onsager's elliptic modulus is then **k_O = 4k/(k − 1)²**, equal to 1 exactly at
+  **k = 3 ± 2√2** (D2; Lean `onsager_separatrix`), the Lee–Yang page's 2D transitions. So the 2D transition is the
+  pendulum's separatrix. On the ordered side (k > k_c) the modulus is below 1, swinging; on the disordered side it is
+  above 1, going over the top. Kramers–Wannier duality is the reciprocal modulus, so it swaps the two (D3). The Fisher
+  zeros close in on the curve |k_O| = 1, the line where swinging and going over swap: median distance 0.13, 0.10, 0.09
+  for L = 4, 5, 6, against about 0.33 for the same zeros at random angles (D4). The logarithmic peak of K at k_c is
+  Onsager's logarithmic specific heat.
+- **The two dimensions use the modulus differently.** In 1D, m = 1 − 1/k and the separatrix is k = ∞, the 1D chain's only
+  critical point (zero temperature). In 2D, k_O = 4k/(k − 1)² and the separatrix is k_c. Both transitions are separatrices,
+  but "swinging" means disordered in 1D and ordered in 2D, so the bands are not one phase map.
+- **Known versus ours.** The ring's zero density is Lee and Yang's own formula (1952); the lattice-gas map, Onsager's
+  modulus, its logarithm, Kramers–Wannier duality and the Fisher circles are textbook (Onsager 1944; Fisher 1965). Ours:
+  reading the ring's zeros as a pendulum (edge = turning point with m = 1 − 1/k, density = cos(θ/2) × dwell time, the
+  three regimes as the three energy bands), and writing Onsager's modulus in the dial as 4k/(k − 1)² so the 2D transition
+  sits on the pendulum dial.
+- **Verdict: two of the three ideas hold, and they make one picture; mostly known mathematics, newly read.** The ring part
+  is exact and easy to see: a Lee–Yang arc is a swing. It is worth keeping as the pendulum page's bridge to the Lee–Yang
+  page. It does not by itself open a new Lee–Yang result. The natural next test would be whether 2D zero densities on
+  the Lee–Yang circle also follow a pendulum's dwell time at some swing set by k_O; not done here.
 
 ---
 
@@ -288,7 +351,10 @@ Dashed green: the halfway lines, where the reading has size exactly 1.
 `pendulum_kappa`, `theta_fold_three`. Section 7: `pendulum/lean/EllipticPendulum.lean`, 7 identities over Int (core Lean,
 no import): `kappa_is_energy`, `halfway_condition`, `halfway_root`, `cap_partner`, `cap_is_root`, `quartic_palindromic`,
 `complementary_time`; compiled in the shared library as `FusedAlgebra.Topics.EllipticPendulum` (namespace
-`CircleOp.EllipticPendulum`), no proof changed.
+`CircleOp.EllipticPendulum`), no proof changed. Section 8: `pendulum/lee-yang-ideas/lean/PendulumLeeYang.lean`, 5 identities
+over Int (core Lean, no import): `lattice_gas_edge`, `onsager_separatrix`, `ring_edge_amplitude`, `ring_zero_pendulum`,
+`density_identity`. Compiled in the shared library on Nov 27 as `FusedAlgebra.Topics.PendulumLeeYang` (namespace
+`CircleOp.PendulumLeeYang`), no proof changed.
 
 ## Files
 
@@ -297,3 +363,5 @@ no import): `kappa_is_energy`, `halfway_condition`, `halfway_root`, `cap_partner
 `julia_growth.py`, `julia_growth.json`; `figures.py`, `figures/`; `lean/EllipticModulus.lean`.
 Section 7: `pendulum/pendulum_checks.py`, `pendulum/pendulum_checks_output.txt`, `pendulum/pendulum_checks.json`,
 `pendulum/figures_pendulum.py` (Figs 6–8), `pendulum/lean/EllipticPendulum.lean`.
+Section 8: `pendulum/lee-yang-ideas/ly_checks.py`, `ly_checks_output.txt`, `ly_checks.json`, `ly_figures.py` (Figs 9–10),
+`lean/PendulumLeeYang.lean`.
