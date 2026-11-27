@@ -1,0 +1,11 @@
+== W. Growing the corners from rest with the law's kicks
+PASS W1 at q = +1 a kick by a acts on the 3-sphere as x -> g x g with g halfway to a: half the kick on each side (500 random pairs)  | worst 4.4e-16
+PASS W2 grow from rest with 12 kicks of 72 degrees toward an icosahedron's corners: it closes after 3 rounds at exactly 120 corners, each with 12 nearest neighbours 36 degrees away: the 600-cell's corners  | corners after each round [1, 13, 57, 120, 120]; same 120 in the kick's sphere form; nearest-neighbour angle 36.000000 to 36.000000 deg
+PASS W3 of all kick sizes from 6 to 180 degrees (2-degree steps) only 72 and 144 degrees close up, both onto those 120 corners (180 degrees just swaps rest and its opposite)  | closing sizes [(72, 120), (144, 120), (180, 2)]; 144 degrees gives the same 120 corners: True; every other size passed 3000 points
+PASS W4 kicks the size of the nearest-neighbour step (36 degrees) never close: the count grows about 11 times per round  | corners after each round [1, 13, 145, 1527, 16089, 170490]
+
+== Y. Glue the grown corners and read the curvature back
+PASS W5 glue the grown corners wherever the law's distance is smallest (36 degrees): 720 edges and 600 flat tetrahedra, 5 round every edge, every deficit 2 pi - 5 x the dihedral angle  | step 36.000000 deg; 720 edges, 600 tetrahedra; deficit 0.1283882205 rad on every edge
+PASS W6 refine with the law's half kicks and read back with Regge: the action tends to Einstein's 6 pi^2 at second order, and with a cosmological constant Lambda rho^2 -> 1  | level 0 (600 tets): 58.08146, off 1.919%, Lambda rho^2 1.10380; level 1 (4800 tets): 58.87590, off 0.577%, Lambda rho^2 1.02955; level 2 (38400 tets): 59.12891, off 0.150%, Lambda rho^2 1.00754; level 3 (307200 tets): 59.19524, off 0.038%, Lambda rho^2 1.00189
+
+6 passed, 0 failed
