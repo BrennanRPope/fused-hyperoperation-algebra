@@ -61,3 +61,5 @@ Nov 27: `topics/riemann/unified-hypothesis/` added as DRAFT (one hypothesis for 
 Nov 27: shape-dial survey section N3, pendulum (DRAFT): the elliptic thread's pendulum picture tested against the Lee–Yang work. The dial gas transition is exactly the pendulum's separatrix, and the halfway-line and edge-crowding ideas hold in their simplest form; all known physics, none reaches non-even p past 8. `pendulum_leeyang_check.py` 13 of 13 (about 95 s), in CI's extra checks; figure 29; page rebuilt.
 
 Nov 27: `topics/riemann/round10/` added as DRAFT (the repo's prime results against the zeros, the prime lifecycle, hyper integrals; not a lead; 28 checks, picked up by CI as checks.py); `RiemannRound10` compiled into the library, 8 theorems; `newton2` now gets 0 ≤ (a − b)² from Int.mul_nonneg (core Lean has no Int.mul_self_nonneg), statement unchanged. `inputs/` working copies not committed.
+
+Nov 27: `topics/chaos-composition/` follow-up (DRAFT): the order dial q as a switch for entropy (checks J1–J5, figure 11, 52 checks in all) and a three-body note; from the chaos thread's patch, applied as written; no Lean change.

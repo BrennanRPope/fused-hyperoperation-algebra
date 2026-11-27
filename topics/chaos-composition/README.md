@@ -5,7 +5,7 @@
 Asked for by Brennan: chaos next, "in the same frame", after he chose category theory as the frame for the composition
 work ("Yeah, I want to use category theory as the frame for the composition work").
 
-Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **47 of 47 pass** (sympy, numpy, mpmath).
+Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **52 of 52 pass** (sympy, numpy, mpmath).
 Lean: [`lean/ChaosComposition.lean`](lean/ChaosComposition.lean), **23 theorems**, core Lean 4.37, no `sorry`, standard
 axioms only; compiled in the shared library as `FusedAlgebra.Topics.ChaosComposition` (namespace `CircleOp.ChaosComposition`; imports `Dynamics` and `OrderDial`), all 23 theorems, no proof changed.
 Pictures: [`figures.py`](figures.py) → [`figures/`](figures/). Colour key: **orange = known, blue = known pieces in our
@@ -29,12 +29,15 @@ two maps, but chaos can't happen without order.**
    2 + √2. The counting is Cartier–Foata's (1969); stating it for affine maps through their centres is ours, as far as
    three searches found. It needs the maps to stay apart: with large slopes, accidental coincidences cut the count.
 
-Three smaller results:
+Four smaller results:
 
 - **The circle-operation dial makes no chaos of its own.** Every dial square x ∘ₖ x is the same dynamical system as
   x ∘₁ x, orbit for orbit, in other units. The whole dial sits at one point of the logistic family, r = 2, the first
   superstable map. Chaos at r = 4 is the same squaring run on the circle |1 + x| = 1 and folded by the circle inverse,
   along whole orbits (Lean).
+- **Turning the order dial partway gives no partial chaos.** Weigh each word by q to its out-of-order count, as the
+  order-dial page did. For every q below 1 the weighted count grows only linearly, so the entropy is 0; at q = 1 it is
+  log 2. For chaos the dial is a switch (§6, figure 11). Elementary; probably folklore.
 - **Feigenbaum is still unconnected.** Period doubling is "compose with yourself, then change units": the same two
   moves as the dial, but applied to maps, not numbers. The dial square is the first curve in the cascade, not its limit.
 - **Your data-structure question, answered for chaos.** Chaos is iterating `tail` on an infinite list. A finite orbit is
@@ -211,6 +214,43 @@ F'2). Exact counts of composites for slopes 1/10, 1/11, 1/13, 1/17 match the tra
 giving 986 composites where the trace count is 987 (F'4). The same kind of accident at special slopes is Garsia's
 (1962) for Bernoulli convolutions. The right panel of figure 7 shows one: at s = 1/φ the count grows like φⁿ, not 2ⁿ (F5).
 
+### Turning the order dial partway
+
+![Left: the growth rate of the weighted count for six values of q. Right: long-run entropy against q, a step at q = 1](figures/fig11-order-dial-switch.png)
+
+*Figure 11. Left: (1/n)·log of the weighted count of two-letter words, each word weighted by q to its number of
+out-of-order pairs. Every q below 1 tracks the list rate log 2 for a while (longer the closer q is to 1), then falls to
+0. Right: the long-run entropy is 0 for every q below 1, log 2 at q = 1, and unbounded above 1. The green levels, the
+amounts between 0 and log 2 in table form above, come from which maps share a centre, not from q.*
+
+The [order-dial](../order-dial/README.md) page found a smooth dial between bag and list: weigh each arrangement by q to
+its number of out-of-order pairs. At q = 0 only the sorted order counts (the bag), at q = 1 every order counts (the
+list). Brennan asked (Nov 27) whether chaos is that same turn of the dial. It is at the two ends: a shared centre is the
+q = 0 end, with n + 1 composites, and different centres are the q = 1 end, with 2ⁿ. Partway along, though, the dial
+gives no partial chaos.
+
+- **The weighted count.** Summed over all two-letter words of length n, the weights give W_n(q) = Σₖ [n choose k]_q,
+  a sum of Gaussian binomials (the Rogers–Szegő polynomial at 1; check J1). W_n(0) = n + 1 and W_n(1) = 2ⁿ (J2).
+- **Below 1, entropy 0.** Each factor (1 − qⁿ⁻ⁱ) on top of a Gaussian binomial is at most 1, so for 0 ≤ q < 1 every
+  [n choose k]_q is at most 1/((1 − q)(1 − q²)(1 − q³)⋯), a fixed number for each q. So n + 1 ≤ W_n(q) ≤ (n + 1) times
+  that number: linear growth and entropy 0 (J3). Close to 1 it takes a long time to show. At q = 0.99 the rate is still
+  0.67 at n = 20 but 0.04 at n = 4000 (J4).
+- **Above 1, faster than any exponential.** For q > 1 the count grows like q^(n²/4) (J5).
+- **Why it is a switch.** The out-of-order count is a count of *pairs*, so its weight scales like n², not n. Any q ≠ 1
+  either crushes or swamps the 2ⁿ words. In the language of thermodynamic formalism (Ruelle), it is a long-range pair
+  interaction, not a local one, and only the local kind gives a smooth pressure. Dynamics also has no fractional
+  version of "these two words give the same map": two composites are equal or they aren't. So the in-between amounts of
+  chaos come from a different knob, which pairs of maps commute (the trace monoid above), and they come in fixed steps
+  (φ², 2 + √2, 2 + √3), not a smooth slide.
+
+**What entropy measures.** Topological entropy says how much chaos exists somewhere in a system, not whether a typical
+orbit is chaotic. In the period-3 window of the logistic map the entropy is log φ (check G), yet almost every start
+settles onto the stable three-cycle; the chaos lives on a thin set. Whether typical orbits are chaotic is the Lyapunov
+exponent's job (§4). This page uses entropy because it is the measure that becomes a count of compositions.
+
+*Known vs new:* Gaussian binomials and their bound are classical (Gauss; Andrews, *The Theory of Partitions*). The
+reading "the order dial is a switch for entropy" is ours and is a few lines, so it is probably folklore.
+
 ## 7. Streams, Gray code and loops: the data-structure view
 
 ![Left: doubling drops the leading binary digit. Right: the logistic orbit with its above/below-half record](figures/fig8-streams.png)
@@ -254,6 +294,12 @@ Brennan's first question in this thread was about data structures. Chaos answers
 - **Small not-in-print item:** entropy of affine branches from their centre pattern (§6). It is a direct use of
   Cartier–Foata, so it is small; it needs separation, and it is checked numerically, not proved in Lean.
 - **Nothing new on Feigenbaum,** and the dial adds no chaos of its own: it is one system at r = 2.
+- **The order dial is a switch for chaos (§6, Nov 27).** Partway turns give entropy 0. In-between amounts of chaos come
+  only from which maps share a centre. Not a lead: it closes the question of whether q gives a smooth amount of chaos.
+- **Three bodies: nothing added.** The frame restates known physics: two bodies are integrable (their flows commute),
+  three are not (Poincaré). The order tools were already tried on three bodies in [three-body-order](../three-body-order/README.md),
+  which found no strong lead. Three-body words have no commuting letters, so the trace-monoid count has nothing to
+  act on.
 - **Next, if wanted:** prove the trace-monoid count in Lean for the free-product case; or try the same lens on random
   compositions (random dynamical systems), where the order of the maps is drawn by chance and the Lyapunov exponent
   becomes Furstenberg's.
@@ -273,6 +319,9 @@ Brennan's first question in this thread was about data structures. Chaos answers
 - Lyapunov exponents (C1, C2, E3), the lap-count entropies (G1–G3), Feigenbaum's δ and α (D3, D4) and the
   bifurcation picture are numerical. The lap counts use a grid of 2²⁰ points; G2 and G3 read growth ratios at n = 10–12.
 - Mathlib names in §8 are from memory, not re-checked today.
+- The order-dial switch (§6): the bound for q < 1 is a short proof written out above, and it is checked numerically
+  for q = 0.5, 0.9 and 0.99 up to n = 4000 (J3). The rates in J4 and the q^(n²/4) growth in J5 are numerical. The q
+  weighting counts words, not distinct maps, so it is a weighted count, not the entropy of any one dynamical system.
 
 ## Known vs new
 
@@ -292,6 +341,7 @@ Brennan's first question in this thread was about data structures. Chaos answers
 | Doubling = shift; itinerary = map to the final coalgebra of streams | Known | Rutten 2000 |
 | Gray-code itinerary of the logistic map at r = 4 | Known | kneading theory (Milnor and Thurston) |
 | Pollard rho; Floyd cycle finding | Known | Pollard 1975; Knuth vol. 2 §3.1 |
+| Order dial q is a switch for entropy: 0 for q < 1, log 2 at q = 1, faster than exponential above | Classical bound (Gaussian binomials); the reading is ours, probably folklore | Andrews, *The Theory of Partitions* (1976); checks J1–J5 |
 
 **Searches for the not-in-print item (Nov 27):** "iterated function system affine maps common fixed point commuting trace
 monoid growth entropy Cartier-Foata"; "semigroup generated by affine contractions free product of free abelian semigroups
@@ -302,9 +352,9 @@ centre-pattern formula. Because it follows in a few lines from Cartier–Foata, 
 
 ## Files
 
-- `checks.py` → `checks_output.txt`: 47 checks in sections A–I (A: dial as units; B: fold; C: Lyapunov; D: period
-  doubling; E: order invisible; F, F': branch growth and centre patterns; G: laps; H: Pollard rho; I: streams and Gray code).
-- `figures.py` → `figures/fig1` to `fig10`.
+- `checks.py` → `checks_output.txt`: 52 checks in sections A–J (A: dial as units; B: fold; C: Lyapunov; D: period
+  doubling; E: order invisible; F, F': branch growth and centre patterns; G: laps; H: Pollard rho; I: streams and Gray code; J: the order dial q).
+- `figures.py` → `figures/fig1` to `fig11`.
 - `lean/ChaosComposition.lean`: 23 theorems (copy of the library module `FusedAlgebra/Topics/ChaosComposition.lean`).
 
 ## References

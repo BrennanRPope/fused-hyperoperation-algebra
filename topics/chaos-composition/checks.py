@@ -336,5 +336,51 @@ for n in range(40):
     ok &= sym == (bits[n] ^ bits[n + 1])
 check("I3 logistic r = 4 itinerary (x > 1/2 or not) is the Gray code b(n) xor b(n+1) of the angle's digits", ok)
 
+# ---------------------------------------------------------------- J. the order dial q
+print("J. Turning the order dial q partway: entropy is a switch at q = 1")
+import itertools
+qs_ = sp.symbols('q')
+
+
+def W_rs(n, qq):
+    """sum over 0/1 words of length n of q^(out-of-order pairs) = sum_k [n,k]_q (Rogers-Szego at 1):
+    W_{m+1} = 2 W_m - (1 - q^m) W_{m-1}."""
+    a, b = mp.mpf(1), mp.mpf(2)
+    if n == 0:
+        return a
+    for m in range(1, n):
+        a, b = b, 2 * b - (1 - mp.mpf(qq) ** m) * a
+    return b
+
+
+def W_brute(n):
+    return sp.expand(sum(qs_ ** sum(1 for i in range(n) for j in range(i + 1, n) if wd[i] > wd[j])
+                         for wd in itertools.product([0, 1], repeat=n)))
+
+
+def W_gauss(n):
+    tot = 0
+    for kk in range(n + 1):
+        num = sp.Mul(*[(1 - qs_ ** (n - i)) for i in range(kk)]); den = sp.Mul(*[(1 - qs_ ** (i + 1)) for i in range(kk)])
+        tot += sp.cancel(num / den)
+    return sp.expand(tot)
+
+
+check("J1 weighted word count = sum of Gaussian binomials (n = 7, symbolic in q)", sp.expand(W_brute(7) - W_gauss(7)) == 0)
+check("J2 the dial's ends: q = 0 gives n + 1 (bag), q = 1 gives 2^n (list), n = 1..10",
+      all(W_gauss(n).subs(qs_, 0) == n + 1 and W_gauss(n).subs(qs_, 1) == 2 ** n for n in range(1, 11)))
+mp.mp.dps = 30
+okb = True
+for qq in (0.5, 0.9, 0.99):
+    for n in (50, 400, 4000):
+        wv = W_rs(n, qq); okb &= (n + 1 <= wv <= (n + 1) / mp.qp(qq))
+check("J3 for q < 1: n + 1 <= W_n(q) <= (n + 1)/(q;q)_inf, so growth is linear and entropy is 0 (q = .5, .9, .99)", okb)
+r99 = [float(mp.log(W_rs(n, 0.99)) / n) for n in (20, 4000)]
+check("J4 q = 0.99 tracks the list early (rate > 0.6 at n = 20) and falls away later (< 0.05 at n = 4000)",
+      r99[0] > 0.6 and r99[1] < 0.05, f"{r99[0]:.3f}, {r99[1]:.3f}")
+r11 = [float(mp.log(W_rs(n, 1.1)) / n ** 2) for n in (100, 400)]
+check("J5 for q > 1 the count grows like q^(n^2/4): log W / n^2 -> log(q)/4 (q = 1.1), faster than any exponential",
+      abs(r11[1] - math.log(1.1) / 4) < abs(r11[0] - math.log(1.1) / 4) < 0.002, f"{r11[1]:.5f} vs {math.log(1.1)/4:.5f}")
+
 print()
 print(f"{sum(results)} of {len(results)} pass")

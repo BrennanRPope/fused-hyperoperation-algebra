@@ -138,7 +138,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | The repetition dial: copies per element fall out of k (1/k cells); crowding between elements stays outside | `topics/repetition-dial/` | — |
 | The zoom dial: size as one new input; dimension comes out at the wall (Moran's equation) | `topics/zoom-dial/` | — |
 | Composition, order and the collection laws: the circle operation as stretches about one centre, order cost as a wedge, the route to quantum, no functor half power set | `topics/order-dial/` | — |
-| DRAFT: chaos as repeated self-composition: dynamical systems as functors, order invisible to iteration but needed for entropy, centre patterns and trace monoids, streams and Pollard rho. 47 checks. | `topics/chaos-composition/` | `Topics/ChaosComposition` |
+| DRAFT: chaos as repeated self-composition: dynamical systems as functors, order invisible to iteration but needed for entropy, centre patterns and trace monoids, the order dial q as a switch for entropy, streams and Pollard rho. 52 checks. | `topics/chaos-composition/` | `Topics/ChaosComposition` |
 | Why quantum needs i: the twist fixes i's sign; path integrals as the weighted circle chain at an imaginary dial | `topics/why-i/` | — |
 | Path integrals in a stronger sense: the three published pieces that make the chain a real path integral | `topics/why-i/path-integral-strong/` | — |
 | Feynman's checkerboard and Kac's telegraph as one weighted circle chain (k = −i and k = −1) | `topics/why-i/checkerboard/` | — |

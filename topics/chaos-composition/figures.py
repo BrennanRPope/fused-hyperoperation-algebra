@@ -348,3 +348,42 @@ ax.text(-0.98, 0.25, 'red is the circle-dial square (r = 2); it is the first cur
         fontsize=9, color=RED)
 fig.tight_layout(); fig.savefig(OUT + 'fig10-renormalization.png', bbox_inches='tight'); plt.close(fig)
 print('figures written')
+
+
+# ---------- fig11: turning the order dial q partway ----------
+def W_rs(n, qq):
+    a, b = mp.mpf(1), mp.mpf(2)
+    for m in range(1, n):
+        a, b = b, 2 * b - (1 - mp.mpf(qq) ** m) * a
+    return b
+
+
+mp.mp.dps = 30
+fig, axs = plt.subplots(1, 2, figsize=(13, 5.2))
+ax = axs[0]
+ns = np.unique(np.round(np.logspace(0, np.log10(5000), 60)).astype(int))
+for qq, col, lab in [(1, BLUE, 'q = 1 (list): rate log 2 forever'), (0.999, PURPLE, 'q = 0.999'), (0.99, GREEN, 'q = 0.99'),
+                     (0.9, ORANGE, 'q = 0.9'), (0.5, RED, 'q = 0.5'), (0, GREY, 'q = 0 (bag): n + 1')]:
+    ys = [math.log(n + 1) / n if qq == 0 else (math.log(2) if qq == 1 else float(mp.log(W_rs(n, qq)) / n)) for n in ns]
+    ax.semilogx(ns, ys, '-', color=col, lw=2, label=lab)
+ax.axhline(math.log(2), color=BLUE, ls=':', lw=1)
+ax.set_xlabel('word length n'); ax.set_ylabel('(1/n) · log(weighted count of words)')
+ax.set_title('Partway along the dial, the count looks like a list for a while,\nthen falls back: every q below 1 ends at rate 0')
+ax.legend(fontsize=9, loc='lower left'); ax.set_ylim(0, 0.8)
+ax.text(1.5, 0.74, 'log 2', color=BLUE, fontsize=9)
+ax = axs[1]
+ax.plot([0, 1], [0, 0], '-', color=ORANGE, lw=4)
+ax.plot([1], [math.log(2)], 'o', color=BLUE, ms=11)
+ax.plot([1], [0], 'o', color='white', mec=ORANGE, mew=2, ms=9)
+ax.annotate('', xy=(1.45, 1.45), xytext=(1.3, 0.95), arrowprops=dict(arrowstyle='-|>', color=RED, lw=2))
+ax.text(1.04, 0.62, 'q > 1: grows like q^(n²/4),\nfaster than any exponential', color=RED, fontsize=9.5)
+ax.text(0.05, 0.08, 'q < 1: entropy 0 (bag-like)', color=ORANGE, fontsize=10)
+ax.text(0.62, math.log(2) + 0.05, 'q = 1: log 2 (list)', color=BLUE, fontsize=10)
+for val, lab in [(math.log(PHI ** 2), 'φ²: 3 maps, 2 share'), (math.log(2 + 2 ** .5), '2+√2'), (math.log(2 + 3 ** .5), '2+√3')]:
+    ax.axhline(val, color=GREEN, ls='--', lw=1, xmin=0.0, xmax=0.33)
+    ax.text(0.02, val + 0.02, lab, color=GREEN, fontsize=8.5)
+ax.text(0.53, 1.30, 'green: in-between amounts come\nfrom which maps share a centre\n(fig 7), not from q', color=GREEN, fontsize=8.5, va='top')
+ax.set_xlim(0, 1.5); ax.set_ylim(-0.05, 1.5)
+ax.set_xlabel('order dial q (weight per out-of-order pair)'); ax.set_ylabel('long-run entropy')
+ax.set_title('For chaos, the order dial is a switch at q = 1')
+fig.tight_layout(); fig.savefig(OUT + 'fig11-order-dial-switch.png', bbox_inches='tight'); plt.close(fig)

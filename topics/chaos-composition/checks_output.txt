@@ -55,5 +55,11 @@ I. Doubling is tail on binary streams; folding makes Gray code
 PASS I1 the n-th doubling of 0.b1b2b3... is 0.b(n+1)b(n+2)...: doubling = tail
 PASS I2 points 2^-30 apart separate by a factor 2 per step, reaching size 1/2 at step 29
 PASS I3 logistic r = 4 itinerary (x > 1/2 or not) is the Gray code b(n) xor b(n+1) of the angle's digits
+J. Turning the order dial q partway: entropy is a switch at q = 1
+PASS J1 weighted word count = sum of Gaussian binomials (n = 7, symbolic in q)
+PASS J2 the dial's ends: q = 0 gives n + 1 (bag), q = 1 gives 2^n (list), n = 1..10
+PASS J3 for q < 1: n + 1 <= W_n(q) <= (n + 1)/(q;q)_inf, so growth is linear and entropy is 0 (q = .5, .9, .99)
+PASS J4 q = 0.99 tracks the list early (rate > 0.6 at n = 20) and falls away later (< 0.05 at n = 4000)  [0.670, 0.042]
+PASS J5 for q > 1 the count grows like q^(n^2/4): log W / n^2 -> log(q)/4 (q = 1.1), faster than any exponential  [0.02393 vs 0.02383]
 
-47 of 47 pass
+52 of 52 pass
