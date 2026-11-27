@@ -1,0 +1,124 @@
+{
+ "Q1_lemma_15_1": {
+  "ok": true,
+  "pairs": 400,
+  "b_formula_failures": 0,
+  "cut_failures": 0,
+  "return_failures": 0
+ },
+ "Q2_front_relations": {
+  "ok": true,
+  "words": 400,
+  "failures": 0,
+  "mK_eq_lN_and_ml_eq_lm": true
+ },
+ "Q3_canonical_form_keeps_fingerprint": {
+  "ok": true,
+  "words": 107616,
+  "fingerprint_changes": 0,
+  "not_idempotent": 0
+ },
+ "Q4_kappa15_record": {
+  "ok": true,
+  "words": 29246206,
+  "distinct_fingerprints": 5170048,
+  "clashes": 0,
+  "unit_shapes": [
+   "K",
+   "KN",
+   "N",
+   "NN"
+  ],
+  "independent_counts_1_to_9": [
+   1,
+   2,
+   7,
+   24,
+   82,
+   280,
+   956,
+   3264,
+   11144
+  ]
+ },
+ "Q5_theorem_15_5": {
+  "ok": true,
+  "words_checked": 3782,
+  "unit_words_with_two_NK_letters": [
+   "NN"
+  ],
+  "powers_of_19_of_form_1_plus_2x5y": []
+ },
+ "Q6_corollary_15_4": {
+  "ok": true,
+  "pairs_with_equal_psi": 68443,
+  "pairs_breaking_canonical_form": 0,
+  "ratios_seen": [
+   "1/2",
+   "10/19",
+   "19/10",
+   "19/20",
+   "2",
+   "20/19",
+   "200/361",
+   "361/200"
+  ],
+  "unif14_unit_returns": [
+   "1",
+   "1/2",
+   "10/19",
+   "19/10",
+   "19/20",
+   "2",
+   "20/19",
+   "200/361",
+   "361/200"
+  ],
+  "psi14_ratios": [
+   "1/2",
+   "10/19",
+   "19/20",
+   "20/19",
+   "200/361"
+  ],
+  "max_abs_v19": 2
+ },
+ "Q7_sparse15_record": {
+  "ok": true,
+  "words": 3196127,
+  "plan": [
+   {
+    "NK_letters": 1,
+    "longest_run": 0,
+    "words": 1
+   },
+   {
+    "NK_letters": 2,
+    "longest_run": 300,
+    "words": 90902
+   },
+   {
+    "NK_letters": 3,
+    "longest_run": 35,
+    "words": 1774224
+   },
+   {
+    "NK_letters": 4,
+    "longest_run": 9,
+    "words": 1331000
+   }
+  ],
+  "clashes": 0,
+  "unit_psi_words": [
+   "N",
+   "NN"
+  ]
+ },
+ "Q8_planted_clashes_found": {
+  "ok": true,
+  "clashes_without_canonical_form": 69568,
+  "clashes_with_wrong_canonical_form": 31520,
+  "clashes_with_canonical_form": 0
+ },
+ "all_pass": true
+}

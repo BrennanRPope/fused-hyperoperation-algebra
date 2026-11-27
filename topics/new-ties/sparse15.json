@@ -1,0 +1,33 @@
+{
+ "plan": [
+  {
+   "NK_letters": 1,
+   "longest_run": 0,
+   "words": 1
+  },
+  {
+   "NK_letters": 2,
+   "longest_run": 300,
+   "words": 90902
+  },
+  {
+   "NK_letters": 3,
+   "longest_run": 35,
+   "words": 1774224
+  },
+  {
+   "NK_letters": 4,
+   "longest_run": 9,
+   "words": 1331000
+  }
+ ],
+ "words": 3196127,
+ "distinct_fingerprints": 3182694,
+ "clashes_after_canonical_form": 0,
+ "clash_examples": [],
+ "unit_psi_words": [
+  "N",
+  "NN"
+ ],
+ "unit_psi_count": 2
+}

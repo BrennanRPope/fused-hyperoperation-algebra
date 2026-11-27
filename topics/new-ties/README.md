@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] | 13.4, Y9 |
 
 ---
 
@@ -2078,3 +2078,133 @@ list of short psi-collisions.
 **What it does not do:** prove the theorem. It is not a lead toward a proof by itself; it would become one if someone found
 a quantity that is bounded along every trip and has finitely many values. That is the missing piece, and none of the sizes
 tried here (real, 2-adic, 5-adic, 19-adic) is such a quantity.
+
+## 19. Round 15 (DRAFT): looking for a quantity that stays bounded off the line
+
+Asked for by Brennan (Nov 27, with the overnight go-ahead in section 18), with the thread chosen as: look for a quantity
+that stays bounded on every path off the line, be exact about what's proved and what's only searched, and aim for a new
+theorem. Scripts: [`kappa15.py`](kappa15.py) → [`kappa15.json`](kappa15.json), [`sparse15.py`](sparse15.py) →
+[`sparse15.json`](sparse15.json). Checks: [`checks15.py`](checks15.py) → [`checks15_output.txt`](checks15_output.txt),
+**8 of 8 pass**. Pictures: [`figures15.py`](figures15.py). No new Lean. Everything below was worked out by Claude in this
+round; nothing here has been checked by a person yet.
+
+### 19.1 The answer in five sentences
+
+**There is no such quantity among the real sizes, and that is now a theorem: every path off the line is pinned to one
+straight line set by two numbers, psi(P) and psi(Q) (Lemma 15.1).** So the whole question is arithmetic, and it comes down
+to one statement about the single number psi(w) of each word: two words have the same psi up to powers of 2, 5 and 19 only
+when three explicit front relations make them so (Conjecture 15.3). If that holds, no bad pair ever has a second collision,
+for any a, so the original break is exactly s_F (Corollary 15.4, by hand). The conjecture's first case, words with at most
+two N or K letters, is proved by hand (Theorem 15.5), and the rest is searched two ways, with no exception among 29.2 million
+words to 14 letters and 3.2 million words with long runs of l and m. **It is not a proof:** the general case is an equation
+in powers of 2, 5 and 19 with unboundedly many terms, the same wall as Round 14, but now stated as one clean conjecture.
+
+### 19.2 Real sizes give one line per pair, not a bounded quantity
+
+Notation as in section 18: a word's map is w(y) = s_w y + t_w and psi(w) = t_w / s_w. On a trip off the line, after reading
+words P (from h) and Q (from g), the neighbour map is T = Q^{-1} o P, written T(y) = a y + b.
+
+**Lemma 15.1 (by hand).** T(y) = a y + a psi(P) - psi(Q) with a = s_P / s_Q. So every state lies on the line
+b = psi(P) a - psi(Q). The real cut (b <= 1/9 and b + a/9 >= 0) is the same as
+psi(Q)/(psi(P) + 1/9) <= a <= (psi(Q) + 1/9)/psi(P), and the trip is back on the line (b = 0) exactly when a = psi(Q)/psi(P).
+
+*Why:* Q^{-1}(P(y)) = (s_P y + t_P - t_Q)/s_Q; write t = psi s. Checked exactly on 400 random pairs (Q1).
+
+![Figure 47](figures/fig47-one-line-per-pair.png)
+
+*Figure 47. A: rescaled by psi(Q), every pair is the same line y = x - 1, and coming back is the single point x = 1. The real
+cut keeps a pair alive only within about 1/(9 psi(Q)) of that point, and psi grows with every N or K letter, so the real
+sizes squeeze trips toward the return point instead of away from it. That is why no bounded, finitely-valued quantity can
+come from them. What decides is whether psi(Q)/psi(P) is a stretch at all (made of 2, 5 and 19 only); in the sample pairs
+it is only for NN vs KN and NmN vs KmN, both front relations. B: the size ratios the front relations can make have 19-adic
+size between -2 and 2; a bad pair's second collision needs a >= 13.*
+
+So the quantity worth tracking is not a size but a **fingerprint**: write psi(w) as a fraction and remove every factor 2, 5
+and 19. Call what is left kappa(w). A trip can come back only if kappa(P) = kappa(Q), because a stretch has fingerprint 1.
+
+### 19.3 Where equal fingerprints come from
+
+**Proposition 15.2 (by hand).** For every word w:
+
+- psi(Kw) = psi(Nw), and psi(NNw) = psi(KNw) = psi(Nmw) = psi(Kmw) = psi(w) + 20/s_w;
+- mK = lN and ml = lm as maps;
+- leading l and m do not change psi; a trailing l multiplies psi by 200/19 and a trailing m by 20.
+
+*Why:* psi(xw) = psi(w) + d_x/s_w and psi(wx) = psi(w)/s_x + d_x (section 18). Checked exactly on 400 random words (Q2).
+
+These give a **canonical form**: drop leading l and m; make the first letter N; if the second letter is N, make it m;
+rewrite mK to lN and ml to lm until nothing changes; drop trailing l and m. The canonical form has the same fingerprint as
+the word (checked on all 107,616 reduced words to 10 letters ending in N or K, Q3).
+
+**Conjecture 15.3 (open, searched).** Two reduced words have the same fingerprint only if they have the same canonical form.
+
+This is stronger than Conjecture 14.4 (a return needs psi(Q)/psi(P) to be a stretch, not just any product of 2, 5 and 19),
+and it implies 14.4 by the argument of Corollary 15.4.
+
+**Corollary 15.4 (by hand, assuming Conjecture 15.3).** No bad pair has a second collision, for any a. So the original
+break is exactly s_F.
+
+*Why:* by Theorem 14.1 a second collision is h = Nu and g = Nv or Kv with psi(h) = psi(g) and s_h/s_g = rho, where rho has
+19-adic size a >= 13. Equal psi gives equal fingerprints, so by 15.3 the same canonical form. The canonical moves keep psi
+exactly except the trailing strip, which multiplies by (200/19)^L 20^M; since 200/19 and 20 are multiplicatively independent,
+equal psi forces equal trailing counts L and M. So h and g differ only by the front moves and by mK/lN, ml/lm swaps. The
+swaps keep s; the front moves change only the first two letters, among N, K, NN, KN, Nm, Km, whose sizes have 19-adic
+sizes 1, 0, 2, 1, 1, 0 (as 1/s). So s_h/s_g has 19-adic size between -2 and 2, never a >= 13. Checked on every pair of
+reduced words to 9 letters with equal psi (68,443 pairs): all share the canonical form before the trailing strip, and their
+size ratios are exactly the 9 return stretches of Conjecture 14.4 and of unif14.json (Q6).
+
+### 19.4 The first case, proved
+
+**Theorem 15.5 (by hand).** Among words ending in N or K with at most two N or K letters, psi is a product of powers of 2, 5
+and 19 (fingerprint 1) only for N, K, NN and KN, with any leading l, m. So no such word shares a fingerprint with N.
+
+*Why:* with one N or K letter, psi = 1. With two, psi = 1 + c, where c = r (200/19)^L 20^M, r = 19 for a final N and 10 for
+a final K, and L, M count the l and m letters between them. If L = M = 0: 1 + 19 = 20 (a unit: NN, KN) and 1 + 10 = 11
+(not). If L + M >= 1, c has 2-adic size at least 2 and 5-adic size at least 1, so the numerator of 1 + c is odd and not a
+multiple of 5; it would have to be a power of 19.
+- If c has 19 in its denominator, c = A/19^e with A prime to 19, and the numerator 19^e + A is prime to 19, so it would be
+  1, which it is not.
+- If c = 19^f A with f >= 1, then 1 + c is 1 more than a multiple of 19, so again it would be 1.
+- If f = 0, then 1 + 2^x 5^y = 19^E is impossible modulo 3 (2 and 5 are -1 and 19 is 1 modulo 3, so the left side is 0 or 2).
+
+Checked by brute force for every such word with runs up to 60 and every 1 + 2^x 5^y with x <= 300, y <= 300 (Q5); the
+search to 14 letters finds no other unit words at all (Q4).
+
+### 19.5 What the searches found
+
+![Figure 48](figures/fig48-fingerprint-search.png)
+
+*Figure 48. A: every reduced word up to 14 letters, starting with N or K, in exact integer arithmetic: 29,246,206 words,
+14,623,104 ending in N or K, 5,170,048 fingerprints and exactly 5,170,048 canonical forms at the end, and the two counts agree
+at every length, so no clash (Q4, with an independent recount to 9 letters). At most 4 words share a fingerprint. B: words
+with 2, 3 or 4 N/K letters and l, m runs of up to 300, 35 and 9 letters (up to 602 letters long), the shape a bad pair's
+words take as a grows: 3,196,127 words, no clash (Q7). With the canonical form switched off, or with its second-letter rule
+left out, the same detector finds tens of thousands of clashes at once (Q8), so a clash would have been seen.*
+
+![Figure 49](figures/fig49-proved-vs-searched.png)
+
+*Figure 49. Green, solid: proved by hand. Orange, dashed: searched only, or open. Everything between the searches and the
+goal is proved; the one missing link is Conjecture 15.3.*
+
+### 19.6 Where it stops
+
+Conjecture 15.3 for words with k letters N or K asks that a sum of k products of 2, 5 and 19 never equal another such sum,
+up to a product of 2, 5 and 19, except through the front relations. For each fixed k this is a unit equation of the kind
+the subspace theorem (Evertse, Schlickewei and Schmidt, 2002) makes finite, but not explicit, and k is unbounded. Theorem 15.5
+does k <= 2 by hand with congruences modulo 3 and 19. The natural next step is k = 3 by the same kind of argument; the sparse
+search says there is no exception there with runs up to 35, and a case analysis like 19.4 may finish it. A proof for every k
+would need a new idea.
+
+### 19.7 Is it a lead?
+
+**Yes, a lead toward a theorem, of a specific kind.** The open part of the original break is now one self-contained
+statement about a single function on words, Conjecture 15.3, whose consequence for the original break is proved
+(Corollary 15.4), whose first case is proved (Theorem 15.5), and which holds in two independent searches with no exception.
+It also explains why the earlier routes stalled: Lemma 15.1 shows the real sizes can never stop a trip. It does not prove
+the theorem, and the remaining step is hard in a known way.
+
+### 19.8 Who proved what, round 15
+
+Lemma 15.1, Proposition 15.2, Corollary 15.4 (from Conjecture 15.3) and Theorem 15.5: proved by hand by Claude this round,
+and checked by computer (Q1 to Q6). Conjecture 15.3: searched by computer only. Not checked by a person, and not checked
+against the literature this round.

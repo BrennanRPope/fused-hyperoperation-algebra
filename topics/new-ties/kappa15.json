@@ -1,0 +1,82 @@
+{
+ "n": 14,
+ "words": 29246206,
+ "words_per_length": [
+  2,
+  8,
+  28,
+  96,
+  328,
+  1120,
+  3824,
+  13056,
+  44576,
+  152192,
+  519616,
+  1774080,
+  6057088,
+  20680192
+ ],
+ "distinct_fingerprints_by_length": [
+  1,
+  2,
+  7,
+  24,
+  82,
+  280,
+  956,
+  3264,
+  11144,
+  38048,
+  129904,
+  443520,
+  1514272,
+  5170048
+ ],
+ "words_ending_in_N_or_K_by_length": [
+  2,
+  6,
+  20,
+  68,
+  232,
+  792,
+  2704,
+  9232,
+  31520,
+  107616,
+  367424,
+  1254464,
+  4283008,
+  14623104
+ ],
+ "distinct_canonical_forms_by_length": [
+  1,
+  2,
+  7,
+  24,
+  82,
+  280,
+  956,
+  3264,
+  11144,
+  38048,
+  129904,
+  443520,
+  1514272,
+  5170048
+ ],
+ "most_words_sharing_one_fingerprint": 4,
+ "fingerprints_shared_by_several_words": 5170048,
+ "clashes_after_canonical_form": 0,
+ "clash_examples": [],
+ "unit_psi_shapes": {
+  "N": 1,
+  "K": 1,
+  "NN": 1,
+  "KN": 1
+ },
+ "unit_psi_by_NK_letters": {
+  "1": 2,
+  "2": 2
+ }
+}
