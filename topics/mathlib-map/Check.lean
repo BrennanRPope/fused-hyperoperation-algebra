@@ -74,3 +74,8 @@ open MathlibMap
 #print axioms MathlibMap.KleinFlow.relation_odd_on_klein
 #print axioms MathlibMap.KleinFlow.quartic_moment
 #print axioms MathlibMap.KleinFlow.lone_vortex_maximises
+#print axioms MathlibMap.KleinBox.glide_glide
+#print axioms MathlibMap.KleinBox.glideLin_det
+#print axioms MathlibMap.KleinBox.tube_z_flips
+#print axioms MathlibMap.KleinBox.tube_x_flips
+#print axioms MathlibMap.KleinBox.tube_y_keeps

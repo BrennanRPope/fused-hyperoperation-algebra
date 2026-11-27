@@ -1,0 +1,12 @@
+PASS P1-K: inviscid energy drift over 40 steps = 2.3e-10
+PASS P1-TR: inviscid energy drift over 40 steps = 2.5e-10
+PASS P2: glide defect after t = 2: 1.5e-15
+PASS P3: glide(glide(f)) == f on the grid
+PASS P4-K: 2D enstrophy monotone, gain 1.000000
+PASS P4-TR: 2D enstrophy monotone, gain 1.000000
+PASS P5: max |base_K - base_TR| = 0.0e+00
+PASS P6: max |k.u| / max |u| = 7.1e-17
+PASS P7: h = 1/16, a = 1: 3D share 0.50 -> 2.5e-06, gain 1.000
+PASS P8: cube, a = 1, t <= 2.5: gain 1.5042 (N=64) vs 1.5036 (N=96), diff 0.04% (163s)
+PASS P9: cube, small seed: 3D growth 32.098 (N=64) vs 32.051 (N=96)
+11 of 11 pass

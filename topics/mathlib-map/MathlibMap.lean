@@ -13,3 +13,4 @@ import MathlibMap.FaceDial
 import MathlibMap.DepthDerived
 import MathlibMap.TopologyShapes
 import MathlibMap.KleinFlow
+import MathlibMap.KleinBox

@@ -12,7 +12,7 @@ Page: see `PAGES-INDEX.md` ("Mathlib map").
 
 ## Files
 
-All fifteen modules compile with **no `sorry`** and only the standard axioms
+The fifteen earlier modules compile (KleinBox, staged Nov 27, waits for its first CI build) with **no `sorry`** and only the standard axioms
 (`propext`, `Classical.choice`, `Quot.sound`); `Check.lean` prints them.
 
 | File | What it links | Main theorems |
@@ -32,8 +32,9 @@ All fifteen modules compile with **no `sorry`** and only the standard axioms
 | `MathlibMap/DepthDerived.lean` | **proved** (DRAFT, Nov 26): Wythoff depth is derived, not a new dial, from `topics/shape-dials/` section 6; first written without a Lean toolchain, compiled in CI on Nov 26 after two fixes (Mathlib's name `Real.tendsto_one_add_div_rpow_exp`, and a closing `ring`), no statement changed | `argmax_add`, `argmax_smul_add` (the deepest corner of a Minkowski sum of corner shapes), `chance_complement`, `odds_rescale` (odds, not sizes, fix the shape), `face_to_temperature` (the face power tends to the exponential as the offset grows) |
 | `MathlibMap/TopologyShapes.lean` | **proved** (DRAFT, Nov 26): topological shapes, holes and twists as whole-number picks, from `topics/shape-dials/` section 7; first written without a Lean toolchain, compiled clean in CI on Nov 26 with no proof changed | `chi_concat`, `euler_genus_add` (connected sum: Euler genus adds), `curvature_pos_iff`, `curvature_zero_iff`, `curvature_neg_iff` (Gauss–Bonnet forces the curvature's sign to be χ's), `chi_product`, `one_sub_chi_mul` (χ multiplies on products, so 1 − χ composes as x + y − xy) |
 | `MathlibMap/KleinFlow.lean` | **proved** (DRAFT, Nov 26): fluid flow on a Klein bottle, from `topics/klein-flow/`; first written without a Lean toolchain, compiled clean in CI on Nov 26 with no proof changed | `sum_eq_zero_of_odd`, `sum_comp_eq_zero_of_odd` (the twist makes total spin and every odd spin moment zero), `uniform_flow_klein_iff` (one steady sweep instead of two), `relation_odd_on_klein` (a steady flow's ω = F(ψ) has F odd), `quartic_moment`, `lone_vortex_maximises` (on the lowest shell the mixed quartic part peaks at the round lone vortex) |
+| `MathlibMap/KleinBox.lean` | **staged** (DRAFT, Nov 27): the Klein bottle × circle inside the periodic box, from `topics/klein-flow/periodic-box/`; written without a Lean toolchain, first CI build pending | `glide_glide` (gliding twice is the 2π shift, so the box unfolds), `glideLin_det` (the glide reverses orientation), `tube_z_flips`, `tube_x_flips`, `tube_y_keeps` (which vortex tubes come back reversed) |
 
-66 theorems (19 ring-theory links, 7 for the p = 3 constants, 8 in the Lee–Yang core, 10 for the near zone, 16 for the shape dials, 6 for the Klein-bottle flow) plus the `Dial` monoid and its equivalence. Names follow the library's 1.0 names
+71 theorems (19 ring-theory links, 7 for the p = 3 constants, 8 in the Lee–Yang core, 10 for the near zone, 16 for the shape dials, 6 for the Klein-bottle flow, 5 for the Klein box) plus the `Dial` monoid and its equivalence. Names follow the library's 1.0 names
 (`CircleOp.circ`, `CircleOp.circK`). When the folder was added to the repo (Nov 26), its references to the
 pre-1.0 names were ported, and its first three theorems were renamed from `multAdd_eq_circle`,
 `wAdd_one_eq_circle` and `wAdd_scale_circle`.

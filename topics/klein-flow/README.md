@@ -7,7 +7,9 @@ Asked for by Brennan: "So it would be interesting to see if a twist yields a res
 Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **11 of 11 pass** (about 75 s, numpy). Runs:
 [`ensemble.py`](ensemble.py) (decaying turbulence), [`upward.py`](upward.py) (the upward-flow test), solver
 [`flow.py`](flow.py). Pictures: [`figures.py`](figures.py) → [`figures/`](figures/). Lean:
-[`lean/KleinFlow.lean`](lean/KleinFlow.lean) (6 theorems, no `sorry`; staged for the shared Lean build; compile status in the repo).
+[`lean/KleinFlow.lean`](lean/KleinFlow.lean) (6 theorems, no `sorry`; compiles in the Mathlib CI, imported in cd17d0d).
+
+**Follow-up (Nov 27):** [periodic-box/](periodic-box/README.md) dials this setup to Clay's periodic box: the twist unfolds into the box one way, the height dial's wall does not move with the twist, and the twist lets 3D disturbances in faster by keeping period-doubled ones.
 
 ## The plain result
 
