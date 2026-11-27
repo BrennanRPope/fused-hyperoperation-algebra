@@ -1,0 +1,64 @@
+{
+ "carter": {
+  "R_equals_mino_form": true,
+  "R_on_orbit": true,
+  "dR_on_orbit": true,
+  "mass_x2_term_stiffness": true,
+  "radial_stiffness": true,
+  "vertical_stiffness": true,
+  "sum_2Mr": true
+ },
+ "jet_on_orbit": {
+  "kp_times_sqrtD": "1",
+  "kp_equals_P_over_Delta": "True",
+  "turning_rate_over_r_v_kp": "1",
+  "x_over_r_kp": "-q + v"
+ },
+ "law": {
+  "T_r_from_stiffness_minus_law": "0",
+  "T_theta_from_stiffness_minus_law": "0",
+  "T_r_law_minus_known": "0",
+  "T_theta_law_minus_known": "0",
+  "q2_coefficient_radial": "-3",
+  "q2_coefficient_vertical": "3",
+  "D_q2_coefficient": "0"
+ },
+ "jet_pieces": {
+  "E alone": {
+   "exact": "-v**2*(v**2 + 1)/(2*v**2 - 1)**4",
+   "a2M": "-1"
+  },
+  "E + push of E": {
+   "exact": "3*v**2*(8*v**4 - 7*v**2 + 1)/(2*v**2 - 1)**2",
+   "a2M": "3"
+  },
+  "E + twist": {
+   "exact": "-4*v**2*(3*v**2 - 1)/(2*v**2 - 1)**3",
+   "a2M": "-4"
+  },
+  "E + push of E + twist": {
+   "exact": "12*v**6*(v - 1)*(v + 1)/(2*v**2 - 1)**2",
+   "a2M": "0"
+  },
+  "all (the one jet)": {
+   "exact": "0",
+   "a2M": "0"
+  }
+ },
+ "flight": {
+  "u=0.1, chi=0.9": [
+   1.8055938187505411,
+   1.8055938167802388
+  ],
+  "u=0.1, chi=-0.9": [
+   10.048294711518365,
+   10.04829396875954
+  ]
+ },
+ "q2_term_at_v_0.1_to_0.4": [
+  -3.0,
+  -3.0,
+  -3.0,
+  -3.0
+ ]
+}

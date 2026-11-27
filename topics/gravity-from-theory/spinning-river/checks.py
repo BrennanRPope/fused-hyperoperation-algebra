@@ -14,6 +14,15 @@ O: two spinning bodies in orbit: the slow-orbit field from three river rules, or
 KS: Kerr's orbit factor 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 split into its pieces, by the double copy and by the rules
    (round 16, kerr_split.py -> kerr_split.json).
 TW: why the shifted source's tower of shapes leaves a single -3 (round 17, tower.py -> tower.json).
+TL: orbits tilted out of the equator: Kepler in the shift's distance is equatorial only; Laplace's rule in Newton
+   and in Kerr (round 18, tilt.py -> tilt.json).
+PL: Kerr's orbits over the poles against the shifted source's exact polar law (round 19, polar.py -> polar.json).
+PX: Kerr's polar orbit split into the field's pieces: frame dragging twice, or the shape meeting the mass? (round 20,
+    polar_split.py -> polar_split.json).
+JB: the river's push and twist combined as one jet (Brennan's jet rule) or as two velocities (round 21,
+    jet_boost.py -> jet_boost.json).
+WL: one law for both wobbles of an equatorial orbit, and why the push's +28 equals the twist's 28 (round 22,
+    wobble_law.py -> wobble_law.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1215,6 +1224,299 @@ check("TW5 gravity does the same in the same radius: Kerr's radial motion in r i
       f"T from the quartic: {ca_['T']}; period check {ca_['period_minus_kepler_plus_gap']}; "
       f"raw-frequency series {Traw_}")
 results["TW_tower"] = {k_: twj_[k_] for k_ in ("staircase_in_r", "rivals_in_r", "in_frequency")}
+
+# ================================================================ TL1-TL5  tilted orbits: is Kepler in r equatorial only? (round 18)
+# Round 17: in the equator Kepler's law holds exactly in the shift's distance r. Does it off the equator? tilt.py.
+import tilt as tl_  # noqa: E402
+tlj_ = json.load(open(os.path.join(HERE, "tilt.json")))
+eq_ = tl_.equator_rates()
+rr_, aa_, MM_ = tl_.r, tl_.a, tl_.M
+check("TL1 in the equator the shifted source obeys Kepler in r and Laplace's rule: Omega^2 = M/r^3, the radial factor "
+      "is 1 - 3a^2/r^2 and the up-and-down factor nu^2/Omega^2 is 1 + 3a^2/r^2, both exact, so the two add to exactly 2 "
+      "(empty space off the ring). In oblate coordinates the pull is -M r/(r^2 + a^2 cos^2 theta), which separates",
+      sp.simplify(eq_["omega2_r"] - MM_/rr_**3) == 0 and sp.simplify(eq_["T_r"] - (1 - 3*aa_**2/rr_**2)) == 0
+      and sp.simplify(eq_["V_r"] - (1 + 3*aa_**2/rr_**2)) == 0 and eq_["laplace"] == 2 and tl_.oblate_potential_ok(),
+      f"Omega^2 {eq_['omega2_r']}; radial {eq_['T_r']}; vertical {eq_['V_r']}; sum {eq_['laplace']}")
+
+
+def tl_direct_(av, rv, frac, laps=6):
+    """Fly the spherical orbit in ordinary 3D space under -M Re 1/|x - i a z_hat| and time its up-and-down beat."""
+    Mv = 1.0
+    Leq = tl_.L_equator(mp.mpf(Mv), mp.mpf(av), mp.mpf(rv))
+    L = float(mp.mpf(frac)*Leq)
+    s = tl_.sphere(mp.mpf(Mv), mp.mpf(av), mp.mpf(rv), mp.mpf(L))
+    c = float(mp.sin(mp.radians(s["tilt_deg"])))          # cos(theta) at the turning latitude
+    rho = np.sqrt(rv**2 + av**2)*np.sqrt(1 - c**2); zz = rv*c
+
+    def f(t, y):
+        x, yy, z, vx, vy, vz = y
+        d = np.sqrt(complex(x*x + yy*yy + (z - 1j*av)**2))
+        g = -Mv*np.array([x, yy, z - 1j*av])/d**3
+        return [vx, vy, vz, g[0].real, g[1].real, g[2].real]
+
+    def up(t, y):
+        return y[2]
+    up.direction = 1
+    sol = solve_ivp(f, [0, laps*2*np.pi/float(s["Om_th"])*1.05], [rho, 0, zz, 0, L/rho, 0], rtol=1e-12, atol=1e-12,
+                    events=up, dense_output=True)
+    te = sol.t_events[0]
+    per = (te[-1] - te[0])/(len(te) - 1)
+    ts = np.linspace(0, sol.t[-1], 4000); Y = sol.sol(ts)
+    Rq = Y[0]**2 + Y[1]**2 + Y[2]**2
+    rq = np.sqrt((Rq - av**2 + np.sqrt((Rq - av**2)**2 + 4*av**2*Y[2]**2))/2)    # oblate radius along the path
+    return float(s["tilt_deg"]), 2*np.pi/per, float(s["Om_th"]), float(np.max(np.abs(rq - rv)))
+
+
+dts_ = [tl_direct_(0.8, 3.0, f_) for f_ in ("0.7", "0.3")]
+check("TL2 the tilted orbits are real: the spherical orbits from the separated equations, flown directly in ordinary "
+      "3D space at about 43 and 71 degrees of tilt, keep r fixed (to 1e-7) and beat up and down at the predicted rate "
+      "(to 1e-6)",
+      all(abs(w_ - q_)/q_ < 1e-6 and dr_ < 1e-7 for _, w_, q_, dr_ in dts_),
+      f"(tilt deg, flown rate, predicted rate, max |r - r0|): {dts_}")
+sph_ = tlj_["spheres"]
+r3_ = sph_["a=0.8, r=3.0"]["rows"]; r5_ = sph_["a=0.8, r=5.0"]["rows"]
+pol_ok_ = all(abs(v_["rows"][-1]["Om_th2"] - v_["polar_exact"]) < 1e-5 for v_ in sph_.values())
+ser_ = [sp.Rational(c_) for c_ in tlj_["polar_series"]]
+check("TL3 Kepler's period law in r is equatorial only: as an orbit at fixed r tilts from the equator to the pole, "
+      "Omega_theta^2 r^3/M falls from 1 + 3a^2/r^2 (1.213 at a = 0.8, r = 3) to the polar value, and Omega_phi^2 r^3/M "
+      "dips from 1 to 0.868 and back. The polar orbit is exact: Omega^2 r^3/M = (pi/2)^2/(2K(k) - E(k))^2 with k = a/r, "
+      "complete elliptic integrals, an endless series 1 - 3k^2/2 + 33k^4/32 - 41k^6/64 + ...",
+      abs(r3_[0]["Om_th2"] - sph_["a=0.8, r=3.0"]["equator_vertical"]) < 1e-3 and abs(r3_[0]["Om_ph2"] - 1) < 1e-3
+      and min(x_["Om_ph2"] for x_ in r3_) < 0.87 and min(x_["Om_ph2"] for x_ in r5_) < 0.96 and pol_ok_
+      and ser_ == [1, sp.Rational(-3, 2), sp.Rational(33, 32), sp.Rational(-41, 64), sp.Rational(2757, 8192)],
+      f"a=0.8,r=3 (tilt, Om_th^2, Om_ph^2): {[(round(x_['tilt_deg'], 1), round(x_['Om_th2'], 4), round(x_['Om_ph2'], 4)) for x_ in r3_]}; "
+      f"polar exact {sph_['a=0.8, r=3.0']['polar_exact']}; series {ser_}")
+en_ = [x_["energy"] for x_ in r3_]
+check("TL4 what survives off the equator: Kepler's energy law. An orbit with no spin about the axis has exactly "
+      "E = -M/(2r) and K = M r in the shift's distance, so its radial motion is Kepler's; tilting toward the pole "
+      "moves -2rE/M from 0.929 (equator, a = 0.8, r = 3) up to exactly 1",
+      tlj_["polar_energy_minus_kepler"] == "0" and tlj_["polar_K_minus_Mr"] == "0"
+      and all(en_[i_] < en_[i_ + 1] for i_ in range(len(en_) - 1)) and abs(en_[-1] - 1) < 1e-5
+      and max(x_["residual"] for x_ in r3_ + r5_) < 1e-20,
+      f"-2rE/M along the tilt: {[round(e_, 5) for e_ in en_]}")
+kv_ = tl_.kerr_vertical(); s_, ch_ = kv_["s"], kv_["chi"]
+check("TL5 Kerr in the equator: the up-and-down factor is (Omega_theta/Omega_phi)^2 = 1 - 4 chi u^(3/2) + 3 chi^2 u^2 "
+      "(its -4 is Lense-Thirring's nodal turn 2J/r^3), and radial plus vertical is exactly 2 - 6u + 4 chi u^(3/2): "
+      "the shape term cancels, as Laplace's rule demands of a Newtonian body in empty space. Both of Kerr's shape "
+      "terms, -3 chi^2 u^2 and +3 chi^2 u^2, are the shifted source's -3a^2/r^2 and +3a^2/r^2",
+      sp.expand(kv_["V"] - (1 - 4*ch_*s_**3 + 3*ch_**2*s_**4)) == 0
+      and sp.expand(kv_["sum"] - (2 - 6*s_**2 + 4*ch_*s_**3)) == 0
+      and sp.expand(kv_["V"] + kv_["T"]).coeff(ch_, 2) == 0
+      and sp.simplify((3*ch_**2*s_**4).subs({ch_: aa_/MM_, s_: sp.sqrt(MM_/rr_)}) - 3*aa_**2/rr_**2) == 0,
+      f"vertical {kv_['V']}; sum {kv_['sum']}")
+results["TL_tilt"] = {"spheres": sph_, "polar_series": tlj_["polar_series"], "kerr": tlj_["kerr"]}
+
+# ================================================================ PL1-PL4  Kerr's orbits over the poles (round 19)
+# Round 18 found the shifted source's exact polar law. Does Kerr's polar orbit follow it, in the same radius? polar.py.
+import polar as pl_  # noqa: E402
+plj_ = json.load(open(os.path.join(HERE, "polar.json")))
+pc_ = pl_.constants()
+rP_, MP_, aP_ = pl_.r, pl_.M, pl_.a
+xP_ = sp.symbols("x", positive=True)
+RP_ = (pc_["E2"]*(xP_**2 + aP_**2)**2 - (xP_**2 - 2*MP_*xP_ + aP_**2)*(xP_**2 + aP_**2*pc_["E2"] + pc_["Q"]))
+check("PL1 Kerr's polar orbits (no spin about the axis) at fixed Boyer-Lindquist r have exact constants E^2 and Q "
+      "(Carter's R = R' = 0), and their up-and-down rate is a complete elliptic integral with modulus "
+      "m = (a^2/r^2)((r^2+a^2)^2 - 4Mr^3)/((r^2+a^2)^2 - 4Ma^2 r). With M -> 0 the modulus is a^2/r^2 and the "
+      "radial-to-polar prefactor is 1 + a^2/r^2, the shifted source's; with a -> 0 it is Schwarzschild's 1 - 6M/r",
+      sp.simplify(RP_.subs(xP_, rP_)) == 0 and sp.simplify(sp.diff(RP_, xP_).subs(xP_, rP_)) == 0
+      and sp.simplify(pc_["m"].subs(MP_, 0) - aP_**2/rP_**2) == 0
+      and sp.simplify(pc_["pref"].subs(MP_, 0) - (1 + aP_**2/rP_**2)) == 0
+      and sp.simplify(pc_["pref"].subs(aP_, 0) - (1 - 6*MP_/rP_)) == 0,
+      f"E^2 = {pc_['E2']}; Q = {pc_['Q']}; m = {pc_['m']}")
+fl_ = pl_.fly(1.0, 0.9, 6.0)
+fls_ = plj_["flights"]
+check("PL2 the exact rate is right: polar orbits flown with Hamilton's equations of the exact Kerr-Schild metric in "
+      "Cartesian coordinates (no Carter separation used) keep r fixed to 1e-8 and beat up and down at the exact rate "
+      "to 1e-9 (a = 0.9, r = 6; a = 0.5, r = 8; and a = 0.8 around M = 0.05, r = 3)",
+      all(abs(f_["flown"] - f_["exact"])/f_["exact"] < 1e-9 and f_["max_dr"] < 1e-8 and abs(f_["H0"] + 0.5) < 1e-10
+          for f_ in fls_ + [fl_]),
+      f"rerun a=0.9, r=6: flown {fl_['flown']}, exact {fl_['exact']}, max |dr| {fl_['max_dr']}; stored "
+      f"{[(f_['flown'], f_['exact']) for f_ in fls_]}")
+srs_ = plj_["series"]
+nw_ok_ = ([row_[0] for row_ in srs_["omega_theta2"]] == srs_["newton_omega_theta2"]
+          and [row_[0] for row_ in srs_["ratio"]] == srs_["newton_ratio"])
+check("PL3 at Newtonian strength Kerr follows the shifted source exactly, at every order in k = a/r: the u^0 part of "
+      "Kerr's Omega_theta^2 r^3/M is 1 - 3k^2/2 + 33k^4/32 - 41k^6/64 + 2757k^8/8192, the shifted source's "
+      "(pi/2)^2/(2K - E)^2, and the u^0 part of (Omega_r/Omega_theta)^2 is (1 + k^2)(2K(k)/pi)^2, through k^8. Kerr's "
+      "polar orbit sees the shifted source's whole tower of shapes, at the same distance r",
+      nw_ok_, f"Kerr u^0 rows {[row_[0] for row_ in srs_['omega_theta2']]} and {[row_[0] for row_ in srs_['ratio']]}; "
+      f"Newton {srs_['newton_omega_theta2']} and {srs_['newton_ratio']}")
+om_ = srs_["omega_theta2"]; ra_ = srs_["ratio"]
+deg_ok_ = all(all(om_[j_][i_] == "0" for i_ in range(j_ + 1, 4)) for j_ in range(1, 3)) and om_[3][3] != "0"
+check("PL4 beyond Newton, over the poles the a^2 terms and the mass terms mix: -4 u k^2 in Omega_theta^2 r^3/M and "
+      "+15 u k^2 in (Omega_r/Omega_theta)^2 (for a black hole, k = chi u, so these are chi^2 u^3). In Omega_theta^2 r^3/M "
+      "the k^(2j) part is a polynomial of degree j in u (seen through u^3). In the equator, in the same radius, Kerr's ratio 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 "
+      "has no such term: there the shape stops at Newton's",
+      om_[1][1] == "-4" and ra_[1][1] == "15" and ra_[1][2] == "-12" and deg_ok_,
+      f"Omega_theta^2 r^3/M rows (k^0..k^8, u^0..u^3): {om_}; ratio rows {ra_}")
+results["PL_polar"] = {"series": srs_, "flights": [{k_: v_ for k_, v_ in f_.items() if k_ != "path"} for f_ in fls_]}
+
+# ================================================================ PX1-PX4  Kerr's polar orbit split into the field's pieces (round 20)
+# Is Kerr's extra polar term frame dragging felt twice, or the shape meeting the mass? Same pieces as KS1. polar_split.py.
+import polar_split as px_  # noqa: E402
+pxj_ = json.load(open(os.path.join(HERE, "polar_split.json")))
+z_px_, nz_px_ = px_.twist_drops_out()
+dphi_px_, dchk_px_ = px_.node_rate_split()
+nf_px_ = px_.node_from_flight(1.0, 0.9, 6.0)
+ne_px_ = float(px_.node_rate_exact(1.0, 0.9, 6.0)[0])
+lt_px_ = pxj_["node_vs_lense_thirring"]
+check("PX1 over the poles the twist pieces (S = -aL/(r^2+a^2), so S.S, E.S, P.S) vanish when L = 0: they drop out of the "
+      "radial and polar motion, so frame dragging cannot be felt twice there. They only turn the orbit's plane, at "
+      "d(phi)/d(lambda) = 2MraE/Delta exactly, all of it from E.S and P.S. Kerr-Schild orbits flown in Cartesian "
+      "coordinates turn at that rate to 1e-8, and far out the rate is Lense-Thirring's 2J/r^3",
+      z_px_ and nz_px_ and dchk_px_ == 0 and abs(nf_px_[0] - ne_px_)/ne_px_ < 1e-8
+      and abs(lt_px_[-1][1]/lt_px_[-1][2] - 1) < 1e-3 and "wES" in str(dphi_px_) and "wPS" in str(dphi_px_),
+      f"node rate with dials {dphi_px_}; flown {nf_px_[0]} vs exact {ne_px_}; r = 200: {lt_px_[-1][1]} vs 2J/r^3 "
+      f"{lt_px_[-1][2]}")
+d1_px_, d2_px_, cee_px_ = px_.ee_alone_exact()
+check("PX2 the E.E piece alone (the river's time part, no push, no twist) gives over the poles exactly the shifted "
+      "source's law at every M: prefactor 1 + a^2/r^2 and modulus a^2/r^2, with E^2 = r/(r+M) and Carter's "
+      "constant Mr^2/(r+M)",
+      d1_px_ == 0 and d2_px_ == 0 and sp.simplify(cee_px_["E2"] - px_.r/(px_.r + px_.M)) == 0,
+      f"E^2 = {cee_px_['E2']}, Kc = {cee_px_['Kc']}")
+st_px_ = {k_: {kk_: [[sp.Rational(v_) for v_ in row_] for row_ in vv_] for kk_, vv_ in v_.items()}
+          for k_, v_ in pxj_["settings"].items()}
+rw_px_ = {k_: px_.series_rows({"EE": 1, "PP": int("PP" in k_), "EP": int("EP" in k_)}) for k_ in ("EE+EP", "EE+PP")}
+same_px_ = all([[sp.Rational(str(v_)) for v_ in row_] for row_ in rw_px_[k_]["ratio"]] == st_px_[k_]["ratio"]
+               for k_ in rw_px_)
+
+
+def col_px_(k_, kk_, j_=1):
+    return [st_px_[k_][kk_][i_][j_] for i_ in range(3)]
+
+
+dEP_ = [x_ - y_ for x_, y_ in zip(col_px_("EE+EP", "ratio"), col_px_("EE", "ratio"))]
+dPP_ = [x_ - y_ for x_, y_ in zip(col_px_("EE+PP", "ratio"), col_px_("EE", "ratio"))]
+full_ = col_px_("EE+PP+EP", "ratio")
+mEP_ = px_.polar_constants({"EE": 1, "EP": 1, "PP": 0})["m"]
+mPP_ = px_.polar_constants({"EE": 1, "PP": 1, "EP": 0})["m"]
+check("PX3 the polar mixed terms come from the river's push (E.P and P.P), with E.P carrying most of it: at first order "
+      "in M the k^2 u term of (Omega_r/Omega_theta)^2 is 0 from E.E, +16 from E.P and -1 from P.P, adding to Kerr's "
+      "+15; in Omega_theta^2 r^3/M the k^2 u term is +8 from E.E and -12 from E.P, giving Kerr's -4, and P.P adds "
+      "nothing. E.P also moves the elliptic modulus off a^2/r^2; P.P does not",
+      same_px_ and dEP_[1] == 16 and dPP_[1] == -1 and full_[1] == 15 and dEP_[1] + dPP_[1] == full_[1]
+      and col_px_("EE+PP", "omega_theta2") == col_px_("EE", "omega_theta2")
+      and col_px_("EE+EP", "omega_theta2")[1] == -4 and col_px_("EE", "omega_theta2")[1] == 8
+      and sp.simplify(mPP_ - px_.a**2/px_.r**2) == 0 and sp.simplify(mEP_ - px_.a**2/px_.r**2) != 0,
+      f"ratio u-columns: EE {col_px_('EE', 'ratio')}, E.P adds {dEP_}, P.P adds {dPP_}, full {full_}; modulus with "
+      f"E.P: {sp.factor(mEP_)}")
+eq_px_ = {k_: float(v_[1]) for k_, v_ in pxj_["equator_k2_and_k2u"].items()}
+pc_px_ = {"PP": 8, "EP": 20, "SS": -16, "ES": -12, "PS": 0}
+add_px_ = all(abs(v_ - sum(pc_px_[p_] for p_ in k_.split("+")[1:])) < 1e-9 for k_, v_ in eq_px_.items())
+k2_px_ = all(abs(float(v_[0]) + 3) < 1e-9 for v_ in pxj_["equator_k2_and_k2u"].values())
+re_px_ = {k_: float(px_.equator_k2u({p_: int(p_ in k_.split("+")) for p_ in pc_px_})[1])
+          for k_ in ("EE+PP+EP", "EE+SS+ES", "EE+PP+EP+SS+ES+PS")}
+check("PX4 in the equator the same shape-meeting-mass term (k^2 u, which is chi^2 u^3 for a black hole, in the radial "
+      "to orbital rate ratio) is pushed in by E.P (+20) and P.P (+8) and taken out exactly by the twist, S.S (-16) and "
+      "E.S (-12); P.S adds nothing. The pieces add in all 32 settings, and the full field's total is 0, which is why "
+      "Kerr's equatorial ratio stops at Newton's shape while its polar one does not",
+      add_px_ and k2_px_ and abs(re_px_["EE+PP+EP"] - 28) < 1e-9 and abs(re_px_["EE+SS+ES"] + 28) < 1e-9
+      and abs(re_px_["EE+PP+EP+SS+ES+PS"]) < 1e-9,
+      f"k^2 u by setting: {eq_px_}; recomputed {re_px_}")
+results["PX_polar_split"] = {"equator_k2u": eq_px_, "settings": pxj_["settings"], "node_flight": nf_px_,
+                             "node_exact": ne_px_}
+
+# ================================================================ JB1-JB4  push and twist: one jet or two velocities? (round 21)
+# Brennan's jet rule: where velocities combine, use the jet. Push and twist composed as one jet add the cross piece P.S
+# to the field; added as two velocities they don't. jet_boost.py.
+import jet_boost as jb_  # noqa: E402
+jbj_ = json.load(open(os.path.join(HERE, "jet_boost.json")))
+vac_ = jb_.vacuum()
+check("JB1 the river's push and twist are two shears into the same (radial) leg, so as jets they compose into one "
+      "shear, in either order, with no leftover. Squared into the field, that one jet carries the cross piece 2P.S, which "
+      "adding the push and twist as two separate velocities leaves out. Only the one jet is Kerr: Ricci ~ 1e-50 at 50 "
+      "digits, against ~ 1e-3 to 1e-2 near the hole for two velocities, whether the pieces are added in the metric or "
+      "in its inverse",
+      jb_.composition() and str(jb_.jet_minus_two_velocities()) == "2*P*S"
+      and all(max(v_) < 1e-40 for k_, v_ in vac_.items() if k_.startswith("one jet"))
+      and all(min(v_) > 1e-4 for k_, v_ in vac_.items() if k_.startswith("two velocities")),
+      f"max Ricci at three points: {vac_}")
+s1_jb_, u_jb_ = jb_.spin_term_exact({})
+s2_jb_, _ = jb_.spin_term_exact({"PS": 0})
+tw_jb_ = jbj_["spin_tower_chi_u15_u25_u35"]
+near_ = lambda x_, y_: all(abs(p_ - q_) < 1e-6 for p_, q_ in zip(x_, y_))
+check("JB2 in the equator the one jet stops Kerr's spin term at 8 chi u^(3/2): exactly, to first order in the spin. "
+      "Two velocities multiply it by (1 - 2u)(1 - 3u), adding -40 chi u^(5/2) + 48 chi u^(7/2). The tower comes from "
+      "the twist's E.S meeting the push E.P, and the jet's P.S, which acts only with the push, takes it out: +40, -48",
+      sp.simplify(s1_jb_ - 8*sp.sqrt(u_jb_)) == 0
+      and sp.simplify(s2_jb_ - 8*sp.sqrt(u_jb_)*(1 - 2*u_jb_)*(1 - 3*u_jb_)) == 0
+      and near_(tw_jb_["EE+PP+EP+SS+ES+PS"], [8, 0, 0]) and near_(tw_jb_["EE+PP+EP+SS+ES"], [8, -40, 48])
+      and near_(tw_jb_["EE+PP+EP+PS"], [0, 40, -48]) and near_(tw_jb_["EE+ES"], [8, 0, 0])
+      and near_(tw_jb_["EE+PS"], [0, 0, 0]),
+      f"spin term per unit a (r = 1, M = u): one jet {s1_jb_}, two velocities {sp.factor(s2_jb_)}; tower "
+      f"(chi u^1.5, u^2.5, u^3.5): full {tw_jb_['EE+PP+EP+SS+ES+PS']}, no P.S {tw_jb_['EE+PP+EP+SS+ES']}, "
+      f"push + P.S {tw_jb_['EE+PP+EP+PS']}")
+cg_ = jb_.clock_gap_fn({}); cg2_ = jb_.clock_gap_fn({"PS": 0}); h_jb_ = mp.mpf("1e-12")
+gap_ = lambda f_, rv_: float((f_(mp.mpf(rv_), 1, h_jb_) - f_(mp.mpf(rv_), 1, -h_jb_))/(2*h_jb_))
+gaps_ = [(rv_, gap_(cg_, rv_), gap_(cg2_, rv_)) for rv_ in (6, 10, 30)]
+sh_ = jbj_["shape_tower_k2"]
+check("JB3 the one jet keeps Part 1's clock gap: each circular equatorial orbit is shifted by exactly 2 pi a per lap "
+      "at every radius (Kerr's clock effect). Two velocities shift it by 2 pi a (1 - 4M/r) (small spin), which vanishes "
+      "at r = 4M. The one jet also keeps Kerr's shape term exactly -3k^2 (k = a/r); two velocities add "
+      "+108 k^2 u^2 - 240 k^2 u^3 + 192 k^2 u^4 + ...",
+      all(abs(g1_ - 1) < 1e-12 and abs(g2_ - (1 - 4/rv_)) < 1e-12 for rv_, g1_, g2_ in gaps_)
+      and sh_["one jet"] == ["-3", "0", "0", "0", "0"] and sh_["two velocities"] == ["-3", "0", "108", "-240", "192"],
+      f"clock shift per unit a (r, one jet, two velocities): {gaps_}; k^2 tower {sh_}")
+po_ = jb_.push_on_orbit()
+pn_ = jb_.polar_node_rates()
+r20_ = jbj_["round20_by_jet_layer"]
+check("JB4 round 20's chi^2 u^3 cancellation in the equator does not come from the one jet: P.S adds 0 to it, and "
+      "grouped by the jet's layers it is 2E.J = +8 against J.J = -8. Where the one jet lives: on an orbit the push "
+      "answers the energy seen by the shell turning at a/(r^2+a^2), so k.p = (r^2+a^2)(E - aL/(r^2+a^2))/Delta; with "
+      "two velocities the push sees E alone. Over the poles (L = 0) the radial, polar and clock motion are the same "
+      "either way, and only the plane's turning tells them apart: 2MraE/Delta with one jet (Kerr), 2MraE/(r^2+a^2) with "
+      "two velocities, slower by Delta/(r^2+a^2)",
+      abs(r20_["full without PS"]) < 1e-9 and r20_["2E.J = 2EP + 2ES"] == 8 and r20_["J.J = PP + SS + 2PS"] == -8
+      and po_[1] == 0 and pn_[2] == "0" and pn_[3] == "0" and pn_[5]
+      and abs(dict(pn_[6])[6] - 0.6740016299918501) < 1e-12,
+      f"push on the orbit {po_[0]}; polar node rates one jet {pn_[0]}, two velocities {pn_[1]}, ratio {pn_[4]}; "
+      f"ratio at a = 0.9M: {pn_[6]}")
+results["JB_jet_boost"] = {k_: jbj_[k_] for k_ in ("spin_term_per_a", "shape_tower_k2", "clock_gap", "polar",
+                                                  "round20_by_jet_layer")}
+
+# ================================================================ WL1-WL4  one law for both wobbles (round 22)
+# Why the push's +28 equals the twist's 28 in the equator: spin squared can enter the wobbles only as (v - q)^2.
+# wobble_law.py.
+import wobble_law as wl_  # noqa: E402
+c_wl_ = wl_.carter()
+check("WL1 in Mino time the equatorial orbit's radial equation is r^4 (E^2 - 1) + 2 M r^3 - K0 r^2 + 2 M r x^2, with "
+      "K0 = L^2 + a^2 (1 - E^2) and x = L - aE (Carter's radial function, rearranged). The mass meets the orbit as "
+      "2 M r^3 (Newton) and 2 M r x^2; the second is one power of r, so it adds no radial stiffness. On every circular "
+      "orbit the stiffnesses are M (r - 3x^2/r) in-and-out and M (r + 3x^2/r) up-and-down: they add to 2 M r, with "
+      "no spin in it (symbolic, exact)",
+      all(c_wl_.values()), f"{c_wl_}")
+j_wl_ = wl_.jet_on_orbit()
+l_wl_ = wl_.law()
+check("WL2 on the circular orbit the river's jet energy is exact and simple: E + P + S (energy, push, twist) = 1/sqrt(D), "
+      "D = 1 - 3v^2 + 2qv (v = sqrt(M/r), q = a/r), which is Carter's P/Delta. The orbit's Mino turning rate is "
+      "r v k.p and its angular momentum about the spin is x = r (v - q) k.p. Dividing the stiffnesses by the turning "
+      "rate squared: (Omega_r/Omega_phi)^2 = D - 3(v - q)^2 and (Omega_theta/Omega_phi)^2 = D + 3(v - q)^2, which are "
+      "Kerr's known 1 - 6v^2 + 8qv - 3q^2 and 1 - 4qv + 3q^2",
+      sp.simplify(j_wl_["kp_times_sqrtD"] - 1) == 0 and j_wl_["kp_equals_P_over_Delta"]
+      and sp.simplify(j_wl_["turning_rate_over_r_v_kp"] - 1) == 0
+      and sp.simplify(j_wl_["x_over_r_kp"] - (wl_.v - wl_.q)) == 0
+      and all(l_wl_[k_] == 0 for k_ in ("T_r_from_stiffness_minus_law", "T_theta_from_stiffness_minus_law",
+                                        "T_r_law_minus_known", "T_theta_law_minus_known")),
+      f"jet on orbit {j_wl_}; law {l_wl_}")
+jp_wl_ = wl_.jet_pieces()
+a2m_ = {k_: sp.Rational(v_["a2M"]) for k_, v_ in jp_wl_.items()}
+check("WL3 why +28 = 28: D holds the spin only to the first power, so spin squared enters the wobbles only through "
+      "(v - q)^2, the angular momentum about the spin, squared. The (a/r)^2 term is therefore exactly -3 in-and-out and "
+      "+3 up-and-down at every strength, with no (a/r)^2 (M/r)^n term for any n >= 1; round 20's push +28 against "
+      "twist -28 is the n = 1 case. The split itself is bookkeeping: cutting the jet energy on the orbit instead gives "
+      "E alone -1, push of E +4, twist -3, push of the twist 0, again summing to 0",
+      l_wl_["D_q2_coefficient"] == 0 and l_wl_["q2_coefficient_radial"] == -3
+      and l_wl_["q2_coefficient_vertical"] == 3
+      and a2m_["E alone"] == -1 and a2m_["E + push of E"] == 3 and a2m_["E + twist"] == -4
+      and a2m_["E + push of E + twist"] == 0 and jp_wl_["all (the one jet)"]["exact"] == "0",
+      f"a^2 M parts of 1/(k.p)^2 as pieces are added: {a2m_}")
+fl_wl_ = {f"u={u_}, chi={c_}": wl_.flight(u_, c_) for u_, c_ in ((0.1, 0.9), (0.1, -0.9))}
+check("WL4 in flight: a slightly eccentric orbit integrated with Hamilton's equations of the exact Kerr-Schild field "
+      "turns per lap by 2 pi (1/sqrt(D - 3(v - q)^2) - 1), with the spin and against it (r = 10M, a = +-0.9M; "
+      "against the spin this is just outside the innermost stable orbit at 8.72M)",
+      all(abs(s_ - p_) < 1e-5*abs(p_) for s_, p_ in fl_wl_.values()),
+      f"(flown, law) radians per lap: {fl_wl_}")
+results["WL_wobble_law"] = {"carter": c_wl_, "jet_pieces": jp_wl_, "flight": fl_wl_}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

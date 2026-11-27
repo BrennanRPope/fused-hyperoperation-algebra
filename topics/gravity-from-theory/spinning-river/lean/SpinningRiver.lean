@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 and 17 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 22 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -185,6 +185,116 @@ theorem shifted_orbit_factor (R a r : K) (hr : r^2 = R^2 - a^2) (h : r ≠ 0) :
   have h1 : R^2 - a^2 = r^2 := hr.symm
   have hr2 : r^2 ≠ 0 := by intro h0; apply h; grind
   rw [h1]
+  grind
+
+/-- **Round 18: Laplace's rule around the shifted source (check TL1).** In the equator Newton's radial factor
+(R² − 4a²)/(R² − a²) and up-and-down factor (R² + 2a²)/(R² − a²) add to exactly 2: empty space off the ring. -/
+theorem shifted_laplace (R a : K) (h : R^2 - a^2 ≠ 0) :
+    (R^2 - 4 * a^2) / (R^2 - a^2) + (R^2 + 2 * a^2) / (R^2 - a^2) = 2 := by
+  grind
+
+/-- **Round 18: Kerr's radial plus vertical factor (check TL5).** With s² = M/r, Kerr's equatorial radial factor
+1 − 6s² + 8χs³ − 3χ²s⁴ and up-and-down factor 1 − 4χs³ + 3χ²s⁴ add to 2 − 6s² + 4χs³: the shape term cancels. -/
+theorem kerr_laplace_sum (s χ : K) :
+    (1 - 6 * s^2 + 8 * χ * s^3 - 3 * χ^2 * s^4) + (1 - 4 * χ * s^3 + 3 * χ^2 * s^4)
+      = 2 - 6 * s^2 + 4 * χ * s^3 := by
+  grind
+
+/-- **Round 19: Kerr's polar orbits at Newtonian strength (check PL1).** With M = 0, the radial-to-polar prefactor of
+Kerr's polar orbit, (r² + a²)³/(r²(r² + a²)²), is the shifted source's 1 + a²/r². -/
+theorem kerr_polar_prefactor_newton (r a : K) (hr : r ≠ 0) (h : r^2 + a^2 ≠ 0) :
+    (r^2 + a^2)^3 / (r^2 * (r^2 + a^2)^2) = 1 + a^2 / r^2 := by
+  have hr2 : r^2 ≠ 0 := by intro h0; apply hr; grind
+  grind
+
+/-- **Round 19: the same prefactor without spin (check PL1)** is Schwarzschild's 1 − 6M/r. -/
+theorem kerr_polar_prefactor_schwarzschild (r M : K) (hr : r ≠ 0) :
+    (r^6 - 6 * M * r^5) / (r^2 * r^4) = 1 - 6 * M / r := by
+  grind
+
+/-- **Round 20: the river's time part alone, over the poles (check PX2).** With only the E·E piece, a polar
+orbit has radial rate² `M(r²+a²)/(r+M)` and Carter constant `Mr²/(r+M)`; their ratio is the shifted
+source's prefactor `1 + a²/r²`, at every strength `M`. -/
+theorem ee_alone_polar_prefactor (r a M : K) (hr : r ≠ 0) (hM : M ≠ 0) (hrM : M + r ≠ 0) :
+    (M * (a^2 + r^2) / (M + r)) / (M * r^2 / (M + r)) = 1 + a^2 / r^2 := by
+  have hr2 : r^2 ≠ 0 := by intro h0; apply hr; grind
+  grind
+
+/-- **Round 20: and its elliptic modulus (check PX2)** `m = (1 − E²) a²/Kc` with `E² = r/(r+M)` is the
+shifted source's `a²/r²`. -/
+theorem ee_alone_polar_modulus (r a M : K) (hr : r ≠ 0) (hM : M ≠ 0) (hrM : M + r ≠ 0) :
+    (1 - r / (M + r)) * a^2 / (M * r^2 / (M + r)) = a^2 / r^2 := by
+  have hr2 : r^2 ≠ 0 := by intro h0; apply hr; grind
+  grind
+
+/-- **Round 20: the equator's cancellation (check PX4).** The shape-meeting-mass term the push brings in
+(E·P +20, P·P +8) is taken out exactly by the twist (S·S −16, E·S −12). -/
+theorem equator_push_twist_cancel : (20 : Int) + 8 + (-16) + (-12) = 0 := by decide
+
+/-- **Round 20: over the poles the twist is absent (check PX3)**, so the push's E·P +16 and P·P −1 stand:
+Kerr's +15. -/
+theorem polar_push_total : (0 : Int) + 16 + (-1) = 15 := by decide
+
+/-- **Round 21: what the jet rule adds (check JB1).** Push and twist as one jet give the field `(E + P + S)²`;
+added as two velocities they give `(E + P)² + (E + S)² − E²`. The difference is the cross piece `2PS`. -/
+theorem jet_minus_two_velocities (E P S : K) :
+    (E + P + S)^2 - ((E + P)^2 + (E + S)^2 - E^2) = 2 * P * S := by
+  grind
+
+/-- **Round 21: the push on an orbit answers the turning shell (check JB4).** With one jet the push on a circular
+or spherical orbit is `2Mr(E + S)/Δ`, so `k·p = E + S + 2Mr(E + S)/Δ = (r² + a²)(E + S)/Δ`, with
+`Δ = r² + a² − 2Mr` and `S = −aL/(r² + a²)`. -/
+theorem jet_push_on_orbit (E S r a M : K) (hD : r^2 + a^2 - 2 * M * r ≠ 0) :
+    E + S + 2 * M * r * (E + S) / (r^2 + a^2 - 2 * M * r)
+      = (r^2 + a^2) * (E + S) / (r^2 + a^2 - 2 * M * r) := by
+  grind
+
+/-- **Round 21: two velocities' spin tower (check JB2).** The spin term times `(1 − 2u)(1 − 3u)` adds
+`−40 χu^{5/2} + 48 χu^{7/2}` to Kerr's `8 χu^{3/2}`. -/
+theorem two_velocity_spin_factor (u : K) : 8 * ((1 - 2 * u) * (1 - 3 * u)) = 8 - 40 * u + 48 * u^2 := by
+  grind
+
+/-- **Round 21: over the poles, two velocities turn the plane slower by `Δ/(r² + a²)` (check JB4).** -/
+theorem polar_turning_ratio (r a M : K) (h : r^2 + a^2 ≠ 0) :
+    (r^2 + a^2 - 2 * M * r) / (r^2 + a^2) = 1 - 2 * M * r / (r^2 + a^2) := by
+  grind
+
+/-! Round 22: one law for both wobbles of a circular equatorial orbit (wobble_law.py). v = √(M/r), q = a/r,
+D = 1 − 3v² + 2qv, x = L − aE. -/
+
+/-- In-and-out wobble: D − 3(v − q)² is Kerr's 1 − 6v² + 8qv − 3q². -/
+theorem kerr_radial_wobble (v q : K) :
+    (1 - 3 * v^2 + 2 * q * v) - 3 * (v - q)^2 = 1 - 6 * v^2 + 8 * q * v - 3 * q^2 := by
+  grind
+
+/-- Up-and-down wobble: D + 3(v − q)² is Kerr's 1 − 4qv + 3q². -/
+theorem kerr_vertical_wobble (v q : K) :
+    (1 - 3 * v^2 + 2 * q * v) + 3 * (v - q)^2 = 1 - 4 * q * v + 3 * q^2 := by
+  grind
+
+/-- The circular orbit's binding: D − (E√D)² = v²(1 − (2v − q)²), with E√D = 1 − 2v² + qv. -/
+theorem circular_binding (v q : K) :
+    (1 - 3 * v^2 + 2 * q * v) - (1 - 2 * v^2 + q * v)^2 = v^2 * (1 - (2 * v - q)^2) := by
+  grind
+
+/-- Mino-time radial stiffness on a circular orbit. (The library adds the hypothesis 2 ≠ 0: in characteristic 2
+both orbit conditions lose their M-terms and the identity fails; the topic file's linear_combination uses 1/2.) With e = E² − 1 and K0 = L² + a²(1 − E²), the orbit sits where
+R/r = r³e + 2Mr² − K0 r + 2Mx² and R' = 4r³e + 6Mr² − 2K0 r + 2Mx² vanish; then r·(−R''/2) = Mr² − 3Mx². -/
+theorem mino_radial_stiffness (r e M K0 x : K)
+    (h0 : r^3 * e + 2 * M * r^2 - K0 * r + 2 * M * x^2 = 0)
+    (h1 : 4 * r^3 * e + 6 * M * r^2 - 2 * K0 * r + 2 * M * x^2 = 0)
+    (h2 : (2 : K) ≠ 0) :
+    r * K0 - 6 * r^3 * e - 6 * M * r^2 = M * r^2 - 3 * M * x^2 := by
+  have h : 2 * ((r * K0 - 6 * r^3 * e - 6 * M * r^2) - (M * r^2 - 3 * M * x^2)) = 0 := by grind
+  grind
+
+/-- Mino-time up-and-down stiffness on the same orbit: r·K0 = Mr² + 3Mx² (with 2 ≠ 0, as above). -/
+theorem mino_vertical_stiffness (r e M K0 x : K)
+    (h0 : r^3 * e + 2 * M * r^2 - K0 * r + 2 * M * x^2 = 0)
+    (h1 : 4 * r^3 * e + 6 * M * r^2 - 2 * K0 * r + 2 * M * x^2 = 0)
+    (h2 : (2 : K) ≠ 0) :
+    r * K0 = M * r^2 + 3 * M * x^2 := by
+  have h : 2 * (r * K0 - (M * r^2 + 3 * M * x^2)) = 0 := by grind
   grind
 end Field
 

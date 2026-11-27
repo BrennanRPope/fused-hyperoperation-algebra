@@ -46,6 +46,25 @@ How it got here:
 11. **Why only one −3 (Part 12):** Kepler's law holds exactly in the shift's own radius, the distance along a tangent
    to Kerr's ring. In that radius the whole tower of shapes is one term, each shape cancelling what the ones below
    leave, and gravity keeps the same law plus the clock gap.
+12. **Tilted orbits (Part 13):** Kepler's period law in that radius holds only in the equator; tilted orbits feel the
+   whole tower again. What survives: Kepler's energy law for orbits with no spin about the axis, and Laplace's rule in
+   the equator. Kerr obeys the same rule there: its radial and up-and-down shape terms cancel, and both are the
+   shifted source's.
+13. **Orbits over the poles (Part 14):** Kerr's polar orbit follows the shifted source's exact polar law at Newtonian
+   strength, at every order in a/r and in the same radius. Beyond Newton it adds terms in a²M/r³ that the equator
+   doesn't have.
+14. **What those polar terms are (Part 15):** not frame dragging felt twice. Over the poles the spin's twist only turns
+   the orbit's plane, at Lense–Thirring's rate. The extra terms are the river's push meeting the mass. The river's time
+   part alone gives the shifted source's polar law exactly, and in the equator the twist cancels the push's terms
+   exactly, which is why the equator's shape stays Newton's.
+15. **Push and twist as one jet (Part 16):** by Brennan's jet rule the push and the twist compose into one boost, and
+   the field gets one extra piece, push meeting twist. That piece isn't what cancels Part 15's terms, but it is what
+   keeps the field empty space, the clock gap at 2πa at every radius, Kerr's spin term at 8χu^{3/2}, and the polar
+   plane turning at full strength near the hole.
+16. **Why the push's +28 equals the twist's 28 (Part 17):** one exact law for both wobbles of an equatorial orbit,
+   D − 3(v − q)² in-and-out and D + 3(v − q)² up-and-down (v = √(M/r), q = a/r, D = 1 − 3v² + 2qv). Spin squared can
+   enter only through (v − q)², the orbit's turning measured against the hole's, so the shape term stays Newton's −3
+   at every strength. The mass meets that turning with one power of r, so it never adds stiffness.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -70,7 +89,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**85/85 pass**, about 18 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**106/106 pass**, about 21 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -884,7 +903,7 @@ General relativity's 2PN field of two point bodies is published in harmonic coor
 them against its Eqs. (2.4)–(2.5) and its values of Ŵᵢᵢ and the dressed mass at a body, Eqs. (4.7)–(4.8):
 g₀₀ = −1 + 2V − 2V² + 8(X̂ + V_iV_i + V³/6), g₀ᵢ = −4Vᵢ − 8R̂ᵢ, gᵢⱼ = δᵢⱼ(1 + 2V + 2V²) + 4Ŵᵢⱼ, with X̂, R̂ᵢ and
 Ŵᵢⱼ sourced partly by the field itself. The paper's equations are also on main, copied from its arXiv source
-([`topics/gravity-from-theory/sources/bfp1998-2pn-metric.md`](../sources/bfp1998-2pn-metric.md)). Checked during the work on one moving body: these formulas give
+(`topics/gravity-from-theory/sources/bfp1998-2pn-metric.md`). Checked during the work on one moving body: these formulas give
 the moving black hole that Part 9's rules use (that check is not in `checks.py` yet).
 
 Subtracting the rules' field from that one leaves the difference D = general relativity − rules. Every piece of D is
@@ -1207,7 +1226,7 @@ measurements, not about a choice of radius.
   gap (Part 1).
 - **Lead?** Yes, for this theory. "Kepler holds in the distance to the shifted source" is a one-line property that
   fixes Kerr's whole tower of shapes, and the clock gap is the only correction gravity makes to it. Two tests follow:
-  whether the same holds off the equator (where the shift's distance is complex), and whether the rules of Part 8 can
+  whether the same holds off the equator (where the shift's distance is complex; Part 13: it doesn't), and whether the rules of Part 8 can
   be phrased so a moving body's field keeps Kepler in its own shifted distance. A practical side: for an orbit around
   a spinning object, a measured T that departs from 1 − 6x̃ + 8χx̃^{3/2} − 3χ²x̃² is a sign that its higher shapes
   are not Kerr's.
@@ -1219,6 +1238,474 @@ measurements, not about a choice of radius.
   Keres 1967; Israel 1970), with a Carter-like constant for Kerr's pattern of shapes (Mirshekari & Will, arXiv 2010), and as the
   unique Newtonian potential with Kerr's separability (Glampedakis & Apostolatos 2013); Carter's separation of Kerr geodesics (Carter 1968); the circular-orbit energy,
   angular momentum and period 1/Ω = r^{3/2}/√M + a (Bardeen, Press & Teukolsky 1972).
+
+## Part 13. Orbits tilted out of the equator (round 18)
+
+Asked at the end of Part 12, and Brennan said yes: Kepler's law holds exactly in the distance to the shifted source
+for orbits in the equator. Does it also hold for orbits tilted out of the equator?
+
+**Result: no. Kepler's period law in the shift's distance is an equatorial property, and tilted orbits feel the
+tower of shapes again.** Around the shifted source, every orbit can still keep a fixed distance r: it rides on one
+squashed shell, while its tilted plane slowly turns. But its periods drift from Kepler's as it tilts. Its up-and-down
+rate falls from 1 + 3a²/r² times Kepler's (in the equator) to an elliptic-integral law at the pole, and its rate
+around the axis dips below Kepler's and comes back. Two things survive exactly. Off the equator, an orbit with no
+spin about the axis keeps Kepler's energy law, E = −M/(2r). In the equator, the radial and up-and-down factors add
+to exactly 2, which is Laplace's rule for empty space. Kerr does the same thing in its own equator: radial plus
+up-and-down is exactly 2 − 6u + 4χu^{3/2}, and the shape term cancels. Both of Kerr's shape terms, −3χ²u² and
++3χ²u², are the shifted source's −3a²/r² and +3a²/r², term for term.
+
+![tilted orbits](figures/fig26_tilt.png)
+
+*Fig 26. (a) An orbit tilted 43°, flown in ordinary space around the shifted source (a = 0.8, r = 3): it stays on one
+squashed shell, a fixed distance r from the shifted source, while its plane slowly turns. (b) Its up-and-down rate
+(purple) and its rate around the axis (orange), squared and divided by Kepler's M/r³, against tilt: both equal
+Kepler's (green) only in the equator. The dot is 1 + 3a²/r², the square the exact polar value. (c) What survives
+in the equator: radial plus up-and-down. The shape term cancels, in Newton and in Kerr alike. (d) What survives off
+the equator: the energy reaches Kepler's −M/(2r) exactly for polar orbits.*
+
+### 13.1 The orbits, and where Kepler fails (TL2, TL3)
+
+In its own squashed (oblate) coordinates the shifted source pulls with −Mr/(r² + a²cos²θ). The motion separates
+into a radial part and an up-and-down part, as Euler's problem of two fixed centres does. So orbits at one fixed r
+exist at every tilt. Their rates follow by quadrature. Flying two of them directly in ordinary 3D space (43° and 71°
+of tilt) keeps r fixed to 10⁻¹⁰ and gives the same up-and-down beat to 10⁻¹¹.
+
+At a = 0.8, r = 3, the squared rates over Kepler's run:
+
+| highest latitude reached | 0° | 24° | 43° | 57° | 71° | 84° | 90° |
+|---|---|---|---|---|---|---|---|
+| up and down, Ω_θ² r³/M | 1.213 | 1.157 | 1.058 | 0.982 | 0.929 | 0.902 | 0.898 |
+| around the axis, Ω_φ² r³/M | 1.000 | 0.967 | 0.914 | 0.880 | 0.868 | 0.881 | 0.898 |
+
+The polar orbit is exact in closed form. Its period is Kepler's times (2/π)(2K(k) − E(k)), with k = a/r and K, E the
+complete elliptic integrals. In powers of k that is Ω² r³/M = 1 − 3k²/2 + 33k⁴/32 − 41k⁶/64 + 2757k⁸/8192 − …, an
+endless series. So in a tilted orbit every shape of the tower counts again.
+
+### 13.2 What survives (TL1, TL4)
+
+- **Kepler's energy law, at the pole.** An orbit with no spin about the axis has exactly E = −M/(2r), and its radial
+  motion obeys Kepler's own equation in r. Only the timing changes, because a clock runs on Σ = r² + a²cos²θ. As the
+  orbit tilts from the equator to the pole, −2rE/M climbs from 0.929 to exactly 1.
+- **Laplace's rule, in the equator.** The up-and-down factor is exactly ν²/Ω² = 1 + 3a²/r², so radial plus
+  up-and-down is exactly (1 − 3a²/r²) + (1 + 3a²/r²) = 2. This is Laplace's equation for empty space read in the
+  equator, and it holds because the shifted source is empty everywhere off its ring.
+
+### 13.3 Kerr's equator (TL5)
+
+Kerr's up-and-down factor in its equator follows from Carter's equation for small tilts:
+(Ω_θ/Ω_φ)² = 1 − 4χu^{3/2} + 3χ²u². Its −4 is Lense and Thirring's turning of the orbit's plane, 2J/r³. Adding the
+radial factor gives
+
+  (1 − 6u + 8χu^{3/2} − 3χ²u²) + (1 − 4χu^{3/2} + 3χ²u²) = 2 − 6u + 4χu^{3/2}, exactly.
+
+The shape term cancels, as Laplace's rule requires of a Newtonian body in empty space. The terms that don't cancel
+are the mass (−6u) and the spin's twist (+4χu^{3/2}), the parts of gravity with no Newtonian counterpart. And both
+of Kerr's shape terms equal the shifted source's, since χ²u² = a²/r². So in its own equator, Kerr's shape acts
+exactly like Newton's shifted source, in both directions of motion, at every radius.
+
+### 13.4 What this means, on its own merits
+
+- **What it settles:** Part 12's lead is narrower than it looked. "Kepler holds in the distance to the shifted
+  source" is true in the equator only. The shifted source's other directions are not Kepler's, so that property
+  alone can't be what fixes Kerr's tower of shapes off the equator.
+- **What it adds:** in the equator, Kerr's shape is the shifted source's shape exactly, in radial and up-and-down
+  motion alike. That is a stronger match than Part 12 had, since two independent rates agree, and the cancellation in
+  their sum is Laplace's rule. Off the equator the shifted source gives a definite, exact prediction to compare with:
+  the polar elliptic law.
+- **Lead?** Still a lead, a narrower one. In Kerr the shape enters as χ²u² = a²/r², so it is small wherever the
+  field is weak, and Kerr's polar orbits mix it with the mass and spin terms. Whether Kerr's polar orbits carry the
+  shifted source's elliptic law in their shape terms is the natural test. (Part 14: at Newtonian strength they do, in
+  the same radius; beyond Newton Kerr adds terms the equator doesn't have.)
+- **Ours:** the tilt curves at fixed r, the exact polar law (2/π)(2K − E) for the shifted source, Kepler's energy law
+  holding exactly for polar orbits in r, and the reading of Kerr's radial-plus-vertical sum as Laplace's rule with
+  both shape terms equal to the shifted source's. We didn't find these stated, but parts may be known, and the polar
+  law probably follows from the two-centre literature.
+- **Known:** separability of the two-centre problem in oblate coordinates (Euler; Jacobi), and for this source (Vinti
+  1959; Israel 1970); Laplace's equation in the equatorial plane, κ² + ν² − 2Ω² = 4πGρ (standard galactic dynamics,
+  e.g. Binney & Tremaine); Kerr's vertical and radial epicyclic frequencies (Okazaki, Kato & Fukue 1987; Kato 1990);
+  the plane's turning 2J/r³ (Lense & Thirring 1918); Carter's equations (Carter 1968).
+
+## Part 14. Kerr's orbits over the poles (round 19)
+
+Asked at the end of Part 13. Brennan was asleep and had let the project pick which leads to follow, and this one was
+picked: does Kerr's orbit over the poles follow the shifted source's exact polar law, in the same radius? The answer
+decides whether Kerr's shape matches the shifted source everywhere or only in the equator.
+
+**Result: everywhere at Newtonian strength, and only in the equator beyond it.** Kerr's polar orbit (one with no
+spin about the axis) at fixed Boyer–Lindquist radius r has an exact up-and-down rate in elliptic integrals. Its
+Newtonian part is exactly the shifted source's polar law, at every order in a/r: 1 − 3k²/2 + 33k⁴/32 − 41k⁶/64 + …,
+with k = a/r. So the same radius r is the shift's distance over the poles as well as in the equator, and Kerr's polar
+orbit feels the shifted source's whole tower of shapes. Beyond Newton, though, Kerr adds terms the shifted source
+doesn't have, where a² mixes with the mass: the first is −4(a/r)²(M/r). In the equator, in the same radius, no such
+term appears, and Kerr's shape stops at Newton's −3a²/r². For a real black hole (a ≤ M) the extra terms are
+4χ²(M/r)³, one power of M/r smaller than the shape term (3/2)χ²(M/r)².
+
+![Kerr's polar orbits](figures/fig27_polar.png)
+
+*Fig 27. (a) A polar orbit around a black hole spinning at a = 0.9M, at r = 6M, flown directly in Kerr's field: it
+passes over both poles, and the spin drags its plane around (right). (b) Kerr's up-and-down rate against a/r at three
+field strengths, and the shifted source's law (dashed): as the field weakens Kerr approaches it. (c) Kerr's polar rate
+term by term: the Newtonian column (green) is exactly the shifted source's, and the other columns (orange) are new.
+(d) For a black hole spinning at χ = 0.9, the shape term the shifted source gives and what Kerr adds beyond it.*
+
+### 14.1 The exact polar orbit (PL1, PL2)
+
+Setting Carter's radial function and its slope to zero with no spin about the axis gives the orbit's constants
+exactly:
+
+  E² = rΔ² / [(r² + a²)(r³ + a²r − 3Mr² + Ma²)],  Q = Mr²[(r² + a²)² − 4Ma²r] / [(r² + a²)(r³ + a²r − 3Mr² + Ma²)].
+
+The up-and-down motion is then a complete elliptic integral with modulus
+
+  m = (a²/r²)·[(r² + a²)² − 4Mr³] / [(r² + a²)² − 4Ma²r],
+
+which is the shifted source's a²/r² when M → 0. The radial-to-polar ratio is
+
+  (Ω_r/Ω_θ)² = [(r² + a²)³ − 2Mr(3r⁴ − 2a²r² + 3a⁴)] / [r²((r² + a²)² − 4Ma²r)] · (2K(m)/π)²,
+
+which gives the shifted source's (1 + a²/r²)(2K/π)² when M → 0 and Schwarzschild's 1 − 6M/r when a → 0. As a check
+that uses none of Carter's separation, three polar orbits flown with Hamilton's equations of the exact Kerr–Schild
+metric, in Cartesian coordinates, keep r fixed to about 10⁻⁹ and beat up and down at the exact rate to a few parts
+in 10¹⁰.
+
+### 14.2 The Newtonian column and the rest (PL3, PL4)
+
+Written as a double series in k = a/r and u = M/r, Kerr's polar Ω_θ² r³/M is:
+
+| | Newton (u⁰) | u¹ | u² | u³ |
+|---|---|---|---|---|
+| (a/r)² | −3/2 | −4 | 0 | 0 |
+| (a/r)⁴ | 33/32 | 27/2 | 9/2 | 0 |
+| (a/r)⁶ | −41/64 | −207/8 | −45/2 | −7 |
+
+The Newtonian column is the shifted source's polar law through (a/r)⁸, and so is the Newtonian column of the ratio
+(Ω_r/Ω_θ)². The other columns are new: the (a/r)^{2j} row is a polynomial of degree j in u. In the ratio the first
+new term is +15(a/r)²(M/r). In the equator, Kerr's ratio 1 − 6u + 8χu^{3/2} − 3χ²u² has no (a/r)²(M/r) term at all.
+
+That the Newtonian column matches is expected: far from a spinning hole, its pull is the shifted source's (Part 4;
+Israel 1970). What the check adds is that the match happens in the same radius r at the pole as in the equator, to
+every order in a/r. What the extra columns are, the spin's twist acting twice or the shape mixing with the mass, isn't
+settled here. For an orbit with no spin about the axis, a term from the twist has to come in squared, as a²M/r³,
+which is the same form as these terms. (Part 15: they are the shape meeting the mass, through the river's push; the
+twist drops out of these rates entirely.)
+
+### 14.3 What this means, on its own merits
+
+- **What it settles:** the shifted source is Kerr's shape in every direction at Newtonian strength, in the same
+  radius. The equator is special in a narrower way: only there does Kerr add nothing beyond the shifted source's shape.
+- **Lead?** Yes, a sharper one. Rounds 16 and 17 explained the equator with the Kerr–Schild pieces (energy, the rays'
+  push, their twist) and Kepler in the shift's distance. The polar orbit now gives a clean target: terms in a²M/r³ that
+  the equator lacks. Splitting the polar orbit into the same pieces would show whether they come from the twist acting
+  twice (frame dragging, which turns the polar orbit's plane, Fig 27a) or from the shape meeting the mass. That would
+  say whether "the shift gives the shape" holds beyond Newton or needs the twist added. (Part 15: the shape meeting the mass, through
+  the push.)
+- **Ours:** the comparison itself: Kerr's polar orbit's Newtonian column equal to the shifted source's elliptic law in
+  the same radius, through (a/r)⁸, the table of extra terms and their absence in the equator, and the independent
+  Kerr–Schild flights. The closed forms of E², Q, m and the ratio for L = 0 follow from Carter's equations and are
+  probably in the literature on spherical and polar Kerr orbits; we didn't search exhaustively.
+- **Known:** Kerr's spherical orbits (Wilkins 1972) and their frequencies in elliptic integrals (Schmidt 2002;
+  Fujita & Hikida 2009); Carter's equations (Carter 1968); the linearized Kerr pull as the shifted source's
+  (Israel 1970).
+
+## Part 15. Kerr's polar orbit, split into the field's pieces (round 20)
+
+Asked at the end of Part 14, and picked overnight under Brennan's go-ahead to follow worthy leads: are Kerr's extra
+polar terms in a²M/r³ the spin's twist acting twice, or the shift's shape meeting the mass? The test is the one
+Part 11 used. Write Kerr's orbits in the exact Kerr–Schild mass shell, put a dial on each piece of the field, and turn
+the pieces on and off.
+
+**Result: the shape meeting the mass, through the river's push.** In the shell the field enters through one product,
+k·p = E + P + S: the orbit's energy E (the river's time part), its radial momentum P (the push along the rays) and
+S = −aL/(r² + a²) (the rays' twist). An orbit over the poles has no spin about the axis, L = 0, so S = 0 and every twist
+piece (S·S, E·S, P·S) drops out of its radial motion, its up-and-down motion and its clock, exactly. The twist can't act
+twice there because it doesn't act at all on those rates. All it does is turn the orbit's plane, at exactly the rate
+frame dragging predicts. The extra terms come from the push: E·P brings +16 of Kerr's +15(a/r)²(M/r) and P·P brings −1.
+The E·E piece alone gives the shifted source's polar law exactly, at every strength. In the equator the push brings
+the same kind of term (+28), and there the twist takes out exactly that much. That's why Kerr's equatorial shape
+stops at Newton's and its polar shape doesn't.
+
+![Kerr's polar orbit split](figures/fig28_polar_split.png)
+
+*Fig 28. (a) The (a/r)²(M/r) term in the squared ratio of radial to orbital rate, piece by piece, over the poles
+(solid) and in the equator (hatched). Over the poles the twist pieces are gone and the push's +16 − 1 is Kerr's +15.
+In the equator the push's +20 + 8 is cancelled by the twist's −16 − 12. (b) A polar orbit at a = 0.9M, r = 6M, flown
+in the exact field, seen from above the pole: the point where it crosses the equator moves about 44° per lap. (c) That
+turning rate, exact (blue), flown (red dot) and Lense–Thirring's 2J/r³ (dashed); inset: their ratio, within 4% at
+r = 6M. (d) The elliptic modulus that sets the up-and-down period: the shifted source's a²/r² with the river's time
+part alone, lowered by about 4M/r once the push meets it.*
+
+### 15.1 The twist only turns the plane (PX1)
+
+The shell in oblate coordinates, with a weight on each piece, is
+
+  Σ(2H + 1) = (r² + a²)p_r² + p_θ² + L²Σ/((r² + a²)sin²θ) − (E² − 1)Σ − 2Mr(E + P + S)²,
+
+and it separates for every setting of the weights. With L = 0 the radial and polar equations contain no twist weight at
+all; with L ≠ 0 they do. The plane's turning rate in Mino time is
+
+  dφ/dλ = 2EMar·[2Mr w_EP w_PS + w_ES(r² + a² − 2Mr w_PP)] / [(r² + a²)(r² + a² − 2Mr w_PP)],
+
+which is exactly 2MraE/Δ with every piece on, and comes only from E·S and P·S. Polar orbits flown with Hamilton's
+equations of the exact Kerr–Schild metric in Cartesian coordinates turn at this rate to a few parts in 10¹⁰ (a = 0.9,
+r = 6; a = 0.5, r = 8). Far out it is Lense–Thirring's 2J/r³: at r = 200M the two agree to 3 parts in 10⁵.
+
+### 15.2 The river's time part alone is the shifted source (PX2)
+
+With only E·E on, a polar orbit has E² = r/(r + M), Carter constant Mr²/(r + M), radial-to-polar prefactor exactly
+1 + a²/r² and modulus exactly a²/r², for every M. That is the shifted source's polar law (Part 13), with no expansion.
+So the Newtonian match of Part 14 isn't an approximation that happens to hold at weak field: the time part of the river
+carries the shifted source's shape exactly, and the corrections come from somewhere else.
+
+### 15.3 The push makes the polar terms (PX3)
+
+The (a/r)²(M/r) coefficients, with E·E always on:
+
+| setting | in Ω_θ² r³/M | in (Ω_r/Ω_θ)² |
+|---|---|---|
+| E·E alone | +8 | 0 |
+| + E·P | −4 | +16 |
+| + P·P | +8 | −1 |
+| all (Kerr) | −4 | +15 |
+
+At this order the pieces add: 16 − 1 = 15. P·P changes nothing in the up-and-down rate and leaves the modulus at
+a²/r²; E·P moves the modulus to a²((r² + a²)² + 4Ma²r)/(r²((r² + a²)² + 4Mr³)), lower by about 4M/r. So E·P, the
+cross term between the orbit's energy and its push along the rays, carries nearly all of it. Its weight 2Mr/Σ is the
+river's v², the speed from the velocity rule, so E·P is exactly where the river's velocity combines with the orbit's
+own motion. That is the place Brennan's jet rule for combining velocities would act. The Kerr–Schild shell already
+combines them exactly, as the square (k·p)², so this round needed no separate velocity-addition step; whether the jet
+rule reproduces that square is a separate question. (Part 16: it does; composing push and twist as one jet gives
+exactly the square, including its cross piece P·S.)
+
+### 15.4 Why the equator is different (PX4)
+
+In the equator the orbit spins about the axis, S ≠ 0, and all six pieces act. The coefficient of (a/r)²(M/r), which
+is χ²u³ for a black hole, in the squared ratio of radial to orbital rate:
+
+| E·E | E·P | P·P | S·S | E·S | P·S | total |
+|---|---|---|---|---|---|---|
+| 0 | +20 | +8 | −16 | −12 | 0 | 0 |
+
+The pieces add exactly in all 32 settings, and the (a/r)² coefficient is −3 in every one. So the push puts in +28 and
+the twist takes out −28. Over the poles there is no twist to take it out, and +15 is left.
+
+### 15.5 What this means, on its own merits
+
+- **What it settles:** Kerr's extra polar terms are not frame dragging felt twice. Over the poles the twist doesn't
+  touch the radial or up-and-down motion at all; it only turns the plane, at Lense–Thirring's rate far out. The extra
+  terms are the shape meeting the mass through the river's push, mostly the energy-push cross term E·P.
+- **What it adds:** a cleaner picture of "the shift gives the shape". The river's time part alone gives the shifted
+  source's shape exactly, at every strength, over the poles. Beyond Newton the push adds terms, and in the equator the
+  twist cancels them exactly. So the equator's clean Newtonian shape (Part 12) is a cancellation between push and twist,
+  not an absence of mass-shape mixing.
+- **Lead?** Yes. The cancellation is exact and integer (+20 + 8 = 16 + 12), which asks for a reason. One candidate:
+  in the equator a circular orbit's twist S and push P are tied together by the orbit's own spin L, and the cancellation
+  may be the statement that the twist and push combine into a single boost there. That is the kind of combination
+  Brennan's jet rule describes, and it's the next thing to test. (Part 16: the one jet is real and does a lot, but this
+  cancellation doesn't come from it.)
+- **Ours:** the piece-by-piece split of Kerr's polar orbit; the twist dropping out of r, θ and t for L = 0 and its
+  turning rate written by piece; E·E alone giving the shifted source's polar law exactly; the polar and equatorial
+  tables of (a/r)²(M/r) by piece and the exact push-twist cancellation in the equator. We didn't find these stated.
+- **Known:** the polar orbit's plane turning (Lense & Thirring 1918; for Kerr, through Carter's equations, Wilkins
+  1972 and Schmidt 2002), the Kerr–Schild form and its separability (Kerr & Schild 1965; Carter 1968).
+
+## Part 16. Push and twist: one jet, or two velocities? (round 21)
+
+Asked at the end of Part 15, and picked under Brennan's overnight go-ahead. Brennan's jet rule says that wherever
+velocities combine, we should use the jet instead (the frame-dragging work is why: velocity alone got the spin right
+only to first order). In the equator the push brings +28 and the twist takes out 28. Is that because the push and the
+twist combine into one boost, one jet, rather than adding as two separate velocities?
+
+**Result: the jet rule holds up, but it isn't what makes that cancellation.** Each cell's push and twist are two shears
+into the same leg, so as jets they compose into one shear: a single ray, time + push + twist. The field is that ray
+squared, (E + P + S)². Adding the push and the twist as two separate velocities instead gives
+(E + P)² + (E + S)² − E², which is the same except for one piece: the cross piece 2P·S, push meeting twist. So P·S is
+exactly what the jet rule adds. It contributes nothing to round 20's (a/r)²(M/r) cancellation. Everywhere else it is
+needed:
+
+- **Empty space:** only the one jet satisfies Einstein's equations. Two velocities leave curvature behind, about 10⁻²
+  near the hole.
+- **The spin term:** Kerr's spin term in the equator stops at 8χu^{3/2}. With two velocities it is multiplied by
+  (1 − 2u)(1 − 3u), which adds −40χu^{5/2} + 48χu^{7/2}.
+- **The clock gap:** Part 1's clock gap stays 2πa per lap at every radius. With two velocities it shrinks to
+  2πa(1 − 4M/r) and vanishes at r = 4M.
+- **The shape term:** it stays exactly −3a²/r². Two velocities add +108(a/r)²(M/r)² and more.
+- **Over the poles:** the cross piece is the strong-field part of the plane's turning. Two velocities turn it slower by
+  Δ/(r² + a²), which is 0.67 at r = 6M around a hole spinning at a = 0.9M.
+
+![push and twist as one jet](figures/fig29_jet_boost.png)
+
+*Fig 29. (a) The field is one ray squared: nine tiles, six different pieces. Adding the push and the twist as two
+velocities drops the red tiles, P·S. (b) In the equator, Kerr's spin term and clock gap (grey) against two velocities:
+the spin term is multiplied by (1 − 2u)(1 − 3u) (red) and the clock gap by 1 − 4M/r (orange; dots computed from the
+orbits). (c) The spin term's coefficients. "Push" here means E·E, E·P and P·P on. The twist through E·S, with the push
+on, leaves a tower; through P·S it takes the tower out, term for term. (d) Over the poles, the plane's turning rate
+with one jet (Kerr) and with two velocities, and Lense–Thirring's 2J/r³. Inset: two velocities ÷ one jet =
+Δ/(r² + a²).*
+
+### 16.1 One jet, squared (JB1)
+
+The push shear N_P moves the radial leg along the time leg, and the twist shear N_S moves it along the azimuth leg.
+Both land in the radial leg, so N_P N_S = N_S N_P = 0 and
+
+  (I + aN_P)(I + bN_S) = (I + bN_S)(I + aN_P) = I + aN_P + bN_S,
+
+one shear, in either order. At the dial's flat middle, composing jets is exact addition of the velocity layers, with no
+leftover. The field built from that one jet is the ray squared, and the ray's square holds the cross piece. Two
+velocities added as separate fields don't have it. Checked at 50 digits, the one jet is empty space (Ricci about 10⁻⁵⁰).
+Two velocities are not: Ricci is 2 × 10⁻² at r = 3.1M and 8 × 10⁻⁴ at r = 8M for a = 0.9M. That holds whether the
+pieces are added in the metric or in its inverse.
+
+### 16.2 In the equator (JB2, JB3)
+
+To first order in the spin, exactly:
+
+| | one jet (Kerr) | two velocities |
+|---|---|---|
+| spin term in T | 8χu^{3/2} | 8χu^{3/2}(1 − 2u)(1 − 3u) |
+| clock shift per lap | 2πa at every radius | 2πa(1 − 4M/r) |
+| shape term in T | −3(a/r)² | −3(a/r)² + 108(a/r)²u² − 240(a/r)²u³ + 192(a/r)²u⁴ + … |
+
+The spin tower shows which piece does the work. The twist's E·S alone gives Kerr's 8χu^{3/2} and nothing more. Once the
+push is on (E·P and P·P), E·S also brings −40χu^{5/2} + 48χu^{7/2} + …. The jet's P·S does nothing without the push,
+and with it brings +40χu^{5/2} − 48χu^{7/2} + …, cancelling the tower term for term. So the twist has to ride on the
+same jet as the push, or the push drags the spin term with it.
+
+The clock gap matters most here. Part 1 read the 2πa clock gap as the turn's gap around each cell, and Part 3 derived
+it. This round shows that at strong field the gap stays 2πa only because the turn and the push compose as one jet.
+Added as two velocities, the gap would depend on the radius.
+
+### 16.3 Round 20's cancellation is not the jet (JB4)
+
+P·S adds exactly 0 to the (a/r)²(M/r) term, so the +28 against −28 survives with two velocities. Grouped by the jet's
+layers, with J = P + S as the jet's velocity layer, it is the first layer 2E·J = +20 − 12 = +8 against the second
+J·J = 8 − 16 + 0 = −8. That grouping is suggestive, but it doesn't need the cross piece. Why the push's +28 equals the
+twist's 28 is still open. (Part 17: spin squared can enter the wobbles only as (v − q)², so the cancellation is forced.)
+
+### 16.4 Where the one boost lives (JB4)
+
+On a circular or spherical orbit, the push the orbit feels is
+
+  P = 2Mr(E + S)/Δ with one jet,  P = 2MrE/Δ with two velocities.
+
+E + S = E − Ω_s L, with Ω_s = a/(r² + a²), is the orbit's energy as seen from the shell turning at Part 3's shell
+rate. So with one jet the river pushes on the energy seen from the turning shell, and the whole field term is a single
+boost: k·p = (r² + a²)(E − Ω_s L)/Δ. With two velocities the push sees the bare energy E.
+
+Over the poles L = 0, so S = 0: the radial, up-and-down and clock motion are the same either way. Only the plane's
+turning tells them apart:
+
+  one jet: dφ/dλ = 2MraE/Δ (Kerr's),  two velocities: 2MraE/(r² + a²),
+
+slower by Δ/(r² + a²) = 1 − 2Mr/(r² + a²). Far out the two agree with Lense–Thirring. Near the hole they differ by a
+third at r = 6M and by about half at r = 4M. So the cross piece is the strong-field part of frame dragging over the
+poles.
+
+### 16.5 What this means, on its own merits
+
+- **What it settles:** the jet rule is right for the river's push and twist. Composing them as one jet is exactly what
+  Kerr does, and adding them as two velocities breaks empty space, the clock gap's 2πa, the spin term's stop at
+  8χu^{3/2} and the strong-field turning of polar orbits. The specific cancellation of round 20 isn't from it.
+- **What it adds:** a concrete reason for Brennan's rule in the gravity work. Every place where the spin meets the mass
+  at strong field (the clock gap, the spin term, the polar plane's turning) is held in place by the jet's cross piece.
+  The clock gap of Part 1 becomes a statement about composition: turn and push as one shear.
+- **Lead?** Yes. The jet rule now has a sharp, checked role here, and it says where to look next. One open question is
+  left from both rounds: why the push's +28 equals the twist's 28 in the equator, since it isn't the cross piece
+  (answered in Part 17).
+- **Ours:** the one-jet versus two-velocities test on the Kerr–Schild pieces; the closed forms (1 − 2u)(1 − 3u),
+  1 − 4M/r and Δ/(r² + a²); the shape tower +108, −240, +192; the push answering E − Ω_s L; and the reading of P·S as
+  the content of the jet rule. We didn't find these stated.
+- **Known:** Kerr–Schild's single null ray and that its square is exact (Kerr & Schild 1965); Kerr's clock effect
+  (Cohen & Mashhoon 1993); Kerr's epicyclic frequencies (Okazaki, Kato & Fukue 1987; Kato 1990); the polar plane's
+  turning (Lense & Thirring 1918; for Kerr, through Carter's equations, Wilkins 1972 and Schmidt 2002); shears at the
+  dial's flat middle composing additively (our earlier pages).
+
+## Part 17. Why the push's +28 equals the twist's 28 (round 22)
+
+*DRAFT, round 22 (Nov 27, 2026). Script: `wobble_law.py`. Checks: WL1–WL4.*
+
+Part 15 found that in the equator the river's push puts +28 into the (a/r)²(M/r) term of the orbit factor and the
+twist takes out exactly 28. Part 16 showed that the one jet's cross piece isn't the reason. This part finds the
+reason. It's one exact law for both wobbles of a circular orbit in the equator, and in it spin squared can enter
+only one way.
+
+**In one line:** the in-and-out wobble is D − 3(v − q)² and the up-and-down wobble is D + 3(v − q)². Here v = √(M/r),
+q = a/r, and D = 1 − 3v² + 2qv. D holds the spin only to the first power, so spin squared can only come from (v − q)²,
+and there its size is fixed at ∓3 whatever the strength. Round 20's +28 = 28 is the first case of that.
+
+![one law for both wobbles](figures/fig30_wobble_law.png)
+
+*Fig 30. (a) Both wobbles against the spin q = a/r, at four strengths: in-and-out solid, up-and-down dashed. Every
+curve bends by the same ∓3q², so the curves for stronger fields are the same parabolas slid over. (b) The two wobbles'
+stiffness in Mino time, a = ±0.9M. They always average to exactly Mr (they add to 2Mr). The mass only moves stiffness
+from one to the other, by 3Mx²/r, where x = L − aE is the orbit's turning measured against the hole's. In-and-out
+reaches zero at the innermost stable orbit. (c) The river's jet energy on the orbit: energy less the twist (grey),
+the twist (blue, what it takes off), and the push (orange). The stack lands exactly on 1/√D (black marks).
+(d) Two ways to cut the same (a/r)²(M/r) term. Round 20's cut of the field gives +20, +8, −16, −12, 0. Cutting the
+jet energy on the orbit gives −1, +4, −3, 0. Different shares, same zero.*
+
+### 17.1 The mass meets the orbit's spin-relative turning only once (WL1)
+
+Carter's radial function for the equator can be rearranged so that each place the mass appears is visible. In Mino
+time λ (dτ = r² dλ):
+
+  (dr/dλ)² = r⁴(E² − 1) + 2Mr³ − K₀r² + 2Mr·x²,  K₀ = L² + a²(1 − E²),  x = L − aE.
+
+The mass appears twice. 2Mr³ is Newton's pull. 2Mr·x² is the relativistic term that gives Schwarzschild its −6M/r,
+and it sees the spin only through x, the orbit's turning measured against the hole's own. Because that term has only
+one power of r, it adds nothing to the radial stiffness. On every circular orbit the two Mino-time stiffnesses come out
+as
+
+  in-and-out  M(r − 3x²/r),  up-and-down  M(r + 3x²/r).
+
+They add to 2Mr, with no spin at all. The mass and the spin don't make stiffness together. They only decide how the
+fixed total of 2Mr is shared between the two directions (Fig 30b).
+
+### 17.2 The jet on the orbit (WL2)
+
+Along the circular orbit, the river's jet energy is energy + push + twist, k·p = E + P + S. It comes out exactly
+1/√D, which is Carter's P/Δ. It also sets the orbit's other two numbers: the Mino turning rate is r·v·k·p, and
+x = r(v − q)·k·p. Dividing each stiffness by the turning rate squared:
+
+  (Ω_r/Ω_φ)² = D − 3(v − q)²,  (Ω_θ/Ω_φ)² = D + 3(v − q)²,
+
+which expand to Kerr's known 1 − 6v² + 8qv − 3q² and 1 − 4qv + 3q². In Schwarzschild (q = 0) it reads
+(1 − 3v²) − 3v² = 1 − 6v².
+
+### 17.3 Why +28 = 28 (WL3)
+
+D has the spin only to the first power (2qv). So spin squared reaches the wobbles only through (v − q)². Its q² part is
+exactly 1 at every v, so the (a/r)² term is exactly −3 in-and-out and +3 up-and-down at every strength. No
+(a/r)²(M/r)ⁿ term survives for any n. Round 20's +28 against −28 is n = 1, and Part 16's one-jet shape tower
+[−3, 0, 0, 0, 0] is the rest.
+
+The split by piece is bookkeeping. Cut the same zero a different way and the shares change. On the exact orbit, the
+jet energy's (a/r)²(M/r) part, added piece by piece, is E alone −1, push of E +4, twist −3, push of the twist 0
+(Fig 30d). Neither cut means "push" and "twist" are two effects that happen to balance. They are two halves of one
+quantity, x = L − aE, and its square.
+
+### 17.4 In flight (WL4)
+
+A slightly eccentric orbit integrated with Hamilton's equations of the exact Kerr–Schild field turns per lap by
+2π(1/√(D − 3(v − q)²) − 1). At r = 10M with a = +0.9M it turns 1.8055938 radians per lap (flown) against 1.8055938
+(law). Against the spin (a = −0.9M, just outside the innermost stable orbit at 8.72M) it turns 10.048295 against
+10.048294.
+
+### 17.5 What this means, on its own merits
+
+- **What it settles:** the equator's clean shape term isn't a lucky cancellation between push and twist. It's forced.
+  The mass couples to the spin only through x = L − aE, and only with one power of r, so it never adds stiffness. On
+  the orbit the jet energy holds the spin only to the first power.
+- **What it adds:** one law for both wobbles, D ∓ 3(v − q)², and a sum rule. In Mino time the in-and-out and up-and-down
+  stiffnesses always add to 2Mr. The jet energy along the orbit is 1/√D exactly, so the river's jet is what sets the
+  orbit's clock here too.
+- **Lead?** Yes. It explains Parts 15 and 16's open question exactly, and it points at Part 14's polar puzzle. Over the
+  poles L = 0, so x = −aE is all spin, and the same coupling 2Mr·x² would put a²M terms in directly. That may be
+  what Part 14 found and the equator lacks. Testing it is the natural next round.
+- **Ours, as far as we found:** the rearranged radial form with the stiffnesses M(r ∓ 3x²/r) and their sum 2Mr; the law
+  D ∓ 3(v − q)² with k·p = 1/√D on the orbit; the reading of round 20's +28 = 28 as its first case; the jet-energy cut.
+  A short search didn't turn these up, but they follow quickly from Carter's equations, so they may be known.
+- **Known:** Carter's separation (1968); Kerr's circular orbits (Bardeen, Press & Teukolsky 1972); the epicyclic
+  frequencies themselves (Okazaki, Kato & Fukue 1987; Kato 1990); Mino time (Mino 2003).
 
 ## Verdict, on its own merits
 
@@ -1261,6 +1748,27 @@ measurements, not about a choice of radius.
   r = √(R² − a²) and has T = 1 − 3a²/r² exactly; the tower of shapes cancels step by step, rivals with Kerr's
   quadrupole never stop, and Kerr keeps Kepler in r plus the clock gap. Against the measured period with the clock
   gap taken off, Kerr's T is finite.
+- **Tilted orbits (Part 13):** Kepler's period law in r is equatorial only; the polar orbit's period is Kepler's times
+  (2/π)(2K − E), an endless series in a/r. Kepler's energy law survives for polar orbits, and Laplace's rule in the
+  equator. Kerr's equatorial radial plus up-and-down factor is exactly 2 − 6u + 4χu^{3/2}: its shape terms cancel and
+  equal the shifted source's.
+- **Orbits over the poles (Part 14):** Kerr's polar orbit has an exact rate in elliptic integrals whose Newtonian part
+  is the shifted source's polar law through (a/r)⁸, in the same radius. Beyond Newton it has terms in a²M/r³ (first
+  −4(a/r)²(M/r)) that the equator lacks.
+- **Kerr's polar orbit split (Part 15):** those terms are the shape meeting the mass through the river's push (E·P
+  +16, P·P −1 of the +15), not the twist acting twice: with no spin about the axis the twist drops out of the radial,
+  up-and-down and clock rates and only turns the plane, at 2MraE/Δ (Lense–Thirring far out). The river's time part
+  alone gives the shifted source's polar law exactly. In the equator the twist cancels the push's terms exactly
+  (+20 + 8 − 16 − 12 = 0).
+- **Push and twist as one jet (Part 16):** composing them as one jet (Brennan's jet rule) gives the field's cross piece
+  P·S; adding them as two velocities drops it. That piece adds nothing to Part 15's cancellation, but without it the
+  field isn't empty space, the spin term picks up (1 − 2u)(1 − 3u), the clock gap shrinks to 2πa(1 − 4M/r), the shape
+  term grows a tower, and polar orbits turn slower by Δ/(r² + a²). With one jet the push answers the orbit's energy
+  seen from the turning shell, E − aL/(r² + a²).
+- **Why +28 = 28 (Part 17):** both wobbles of an equatorial orbit obey one exact law, D ∓ 3(v − q)², with the jet
+  energy on the orbit exactly 1/√D. Spin squared enters only through (v − q)², so the (a/r)² term is ∓3 at every
+  strength; round 20's cancellation is its first case, and the split by piece is bookkeeping. In Mino time the two
+  stiffnesses always add to 2Mr.
 - **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule. The
   waves' back-push and the wave formula are put in from known results. 2PN is reached for circular orbits with the
   fourth rule (Part 10); 2.5PN and beyond, and the merger, are still out of reach.
@@ -1270,9 +1778,9 @@ measurements, not about a choice of radius.
 
 ## Files
 
-- `checks.py`: 85 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 106 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -1285,6 +1793,20 @@ measurements, not about a choice of radius.
   15 seconds).
 - `tower.py`: Part 12, the shifted source's tower of shapes, the staircase, the rivals, the version against measured
   frequency, and Kerr from Carter's quartic; writes `tower.json` (about 10 seconds).
+- `tilt.py`: Part 13, orbits at fixed r at every tilt around the shifted source, the exact polar law, Laplace's rule
+  in the equator, and Kerr's equatorial up-and-down factor; writes `tilt.json` (a few seconds).
+- `polar.py`: Part 14, Kerr's polar orbits: exact constants and rates, the double series against the shifted source's
+  law, and flights in Kerr–Schild coordinates; writes `polar.json` (about a minute).
+- `polar_split.py`: Part 15, Kerr's orbits with a dial on each piece of the Kerr–Schild shell: the twist dropping out
+  for polar orbits, the plane's turning rate by piece and from flights, E·E alone, the polar series by setting, and the
+  equatorial (a/r)²(M/r) term in all 32 settings (uses `kerr_split.py` and `polar.py`); writes `polar_split.json`
+  (about a minute).
+- `jet_boost.py`: Part 16, push and twist as one jet or as two velocities: the shear composition, the field equations
+  for both, the equatorial spin term, shape term and clock gap, the spin tower in all 32 settings, the push on an
+  orbit, and the polar plane's turning; writes `jet_boost.json` (a few minutes).
+- `wobble_law.py`: Part 17, one law for both wobbles: Carter's radial function rearranged, the Mino-time stiffnesses
+  and their sum, the jet energy on the orbit, the law against Kerr's known ratios, the jet-energy cut, and two flights
+  (uses `kerr_split.py`); writes `wobble_law.json` (about 5 seconds, under 200 MB).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -1292,13 +1814,14 @@ measurements, not about a choice of radius.
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the twenty-five figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`).
+- `figures.py`: the thirty figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
-  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`. Written without a Lean
+  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness`. Written without a Lean
   toolchain; the repo copy is the shared library's `FusedAlgebra.Topics.SpinningRiver` (namespace
-  `CircleOp.SpinningRiver`, `ring`, `linear_combination` and `rw` written as `grind`), which compiles clean,
-  rounds 13 to 17 included from Nov 27. It builds on `FusedAlgebra.Topics.JetFields`.
+  `CircleOp.SpinningRiver`, `ring`, `field_simp`, `linear_combination` and `rw` written as `grind`), which compiles clean,
+  rounds 13 to 22 included from Nov 27. The two Mino stiffness theorems carry one extra hypothesis there, 2 ≠ 0
+  (they are false in characteristic 2). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -1349,3 +1872,10 @@ measurements, not about a choice of radius.
 | T's numbers piece by piece in the exact Kerr–Schild mass shell (E·E: −3, P·P: −2, 2E·P: −4, 2E·S: +8); 8 = 2 × 4 and 4 = 2² × 1 from first- and second-order doubling; the −3 as the shifted source's Newtonian pull, q = 1 from the shift; the √2·a ring at c/√2; the product form and c/2 landmark failing for Kerr | **ours** (KS1–KS7) |
 | shifted source as Euler's two centres M/2 at ±i·a, separable (Vinti 1959; Keres 1967; Israel 1970), unique with Kerr's separability; Carter's quartic; circular-orbit period 1/Ω = r^{3/2}/√M + a | known (Mirshekari & Will, arXiv 2010; Glampedakis & Apostolatos 2013; Carter 1968; Bardeen, Press & Teukolsky 1972) |
 | Newton's orbit factor 1 − 3a²/r² and Kepler in r for the shifted source; r as the tangent distance to the ring; the staircase; the rivals' series; Kepler in r fixing the source; the E·E piece exact; Kerr's T finite against the period with the clock gap taken off | **ours** (TW1–TW5), not found in the papers checked |
+| two-centre orbits separable in oblate coordinates; Laplace's equation in the equatorial plane, κ² + ν² − 2Ω² = 4πGρ; Kerr's vertical epicyclic frequency; the plane's turning 2J/r³ | known (Euler; Jacobi; Binney & Tremaine; Okazaki, Kato & Fukue 1987; Kato 1990; Lense & Thirring 1918) |
+| Kepler's period law in r failing off the equator (the tilt curves at fixed r); the polar law (2/π)(2K − E); Kepler's energy law exact for polar orbits in r; Kerr's radial + vertical sum read as Laplace's rule, with both shape terms the shifted source's | **ours** (TL1–TL5), not found stated; the polar law likely follows from the two-centre literature |
+| Kerr's spherical orbits and their frequencies in elliptic integrals; linearized Kerr's pull as the shifted source's | known (Wilkins 1972; Schmidt 2002; Fujita & Hikida 2009; Israel 1970) |
+| Kerr's polar orbit's Newtonian column = the shifted source's elliptic polar law in the same radius, through (a/r)⁸; the table of a²M/r³ terms and their absence in the equator; the Kerr–Schild flights | **ours** (PL1–PL4); the L = 0 closed forms are probably in the spherical-orbit literature |
+| Kerr's polar orbit split by Kerr–Schild piece: the twist dropping out of r, θ and t for L = 0 and turning the plane at 2MraE/Δ from E·S and P·S; E·E alone giving the shifted source's polar law exactly; the (a/r)²(M/r) terms by piece (poles: E·P +16, P·P −1; equator: +20 + 8 − 16 − 12 = 0) | **ours** (PX1–PX4); the plane's turning itself known (Lense & Thirring 1918; Wilkins 1972; Schmidt 2002) |
+| push and twist as one jet against two velocities: the cross piece P·S as the jet rule's content; two velocities failing vacuum, the spin term × (1 − 2u)(1 − 3u), the clock gap × (1 − 4M/r), the shape tower +108, −240, +192, polar turning × Δ/(r² + a²); the push answering E − aL/(r² + a²) | **ours** (JB1–JB4); Kerr–Schild's single null ray, the clock effect and polar frame dragging themselves known (Kerr & Schild 1965; Cohen & Mashhoon 1993; Wilkins 1972) |
+| one law for both wobbles of an equatorial orbit, D ∓ 3(v − q)², with k·p = 1/√D, x = r(v − q)k·p and Mino turning rate r v k·p on the orbit; Carter's radial function rearranged so the mass meets x = L − aE only as 2Mr·x²; Mino stiffnesses M(r ∓ 3x²/r) adding to 2Mr; round 20's +28 = 28 as the first case; the jet-energy cut −1, +4, −3, 0 | **ours** as far as a short search found (WL1–WL4); Carter's separation, the circular orbits, the epicyclic frequencies and Mino time known (Carter 1968; Bardeen, Press & Teukolsky 1972; Okazaki, Kato & Fukue 1987; Kato 1990; Mino 2003) |

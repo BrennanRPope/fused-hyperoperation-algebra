@@ -722,5 +722,855 @@
         "615/512"
       ]
     }
+  },
+  "TL1 in the equator the shifted source obeys Kepler in r and Laplace's rule: Omega^2 = M/r^3, the radial factor is 1 - 3a^2/r^2 and the up-and-down factor nu^2/Omega^2 is 1 + 3a^2/r^2, both exact, so the two add to exactly 2 (empty space off the ring). In oblate coordinates the pull is -M r/(r^2 + a^2 cos^2 theta), which separates": {
+    "pass": true,
+    "detail": "Omega^2 M/r**3; radial -3*a**2/r**2 + 1; vertical 3*a**2/r**2 + 1; sum 2"
+  },
+  "TL2 the tilted orbits are real: the spherical orbits from the separated equations, flown directly in ordinary 3D space at about 43 and 71 degrees of tilt, keep r fixed (to 1e-7) and beat up and down at the predicted rate (to 1e-6)": {
+    "pass": true,
+    "detail": "(tilt deg, flown rate, predicted rate, max |r - r0|): [(42.69263877565132, np.float64(0.19798691440294006), 0.19798691440699615, 8.385692140677747e-11), (70.75349318073, np.float64(0.18547045040806914), 0.1854704504109504, 6.317746326089946e-11)]"
+  },
+  "TL3 Kepler's period law in r is equatorial only: as an orbit at fixed r tilts from the equator to the pole, Omega_theta^2 r^3/M falls from 1 + 3a^2/r^2 (1.213 at a = 0.8, r = 3) to the polar value, and Omega_phi^2 r^3/M dips from 1 to 0.868 and back. The polar orbit is exact: Omega^2 r^3/M = (pi/2)^2/(2K(k) - E(k))^2 with k = a/r, complete elliptic integrals, an endless series 1 - 3k^2/2 + 33k^4/32 - 41k^6/64 + ...": {
+    "pass": true,
+    "detail": "a=0.8,r=3 (tilt, Om_th^2, Om_ph^2): [(0.7, 1.2133, 1.0), (7.4, 1.2075, 0.9965), (16.6, 1.1844, 0.9829), (23.7, 1.1567, 0.9669), (34.2, 1.105, 0.9379), (42.7, 1.0584, 0.9135), (50.3, 1.0172, 0.8939), (57.4, 0.9817, 0.8795), (64.2, 0.9521, 0.8707), (70.8, 0.9288, 0.8679), (77.2, 0.9119, 0.8713), (83.6, 0.9017, 0.8814), (86.8, 0.8992, 0.889), (89.4, 0.8984, 0.8963), (89.9, 0.8983, 0.8981)]; polar exact 0.8983260611829931; series [1, -3/2, 33/32, -41/64, 2757/8192]"
+  },
+  "TL4 what survives off the equator: Kepler's energy law. An orbit with no spin about the axis has exactly E = -M/(2r) and K = M r in the shift's distance, so its radial motion is Kepler's; tilting toward the pole moves -2rE/M from 0.929 (equator, a = 0.8, r = 3) up to exactly 1": {
+    "pass": true,
+    "detail": "-2rE/M along the tilt: [0.9289, 0.9303, 0.93582, 0.9424, 0.95449, 0.96516, 0.9744, 0.98222, 0.98862, 0.9936, 0.99716, 0.99929, 0.99982, 0.99999, 1.0]"
+  },
+  "TL5 Kerr in the equator: the up-and-down factor is (Omega_theta/Omega_phi)^2 = 1 - 4 chi u^(3/2) + 3 chi^2 u^2 (its -4 is Lense-Thirring's nodal turn 2J/r^3), and radial plus vertical is exactly 2 - 6u + 4 chi u^(3/2): the shape term cancels, as Laplace's rule demands of a Newtonian body in empty space. Both of Kerr's shape terms, -3 chi^2 u^2 and +3 chi^2 u^2, are the shifted source's -3a^2/r^2 and +3a^2/r^2": {
+    "pass": true,
+    "detail": "vertical 3*chi**2*s**4 - 4*chi*s**3 + 1; sum 4*chi*s**3 - 6*s**2 + 2"
+  },
+  "TL_tilt": {
+    "spheres": {
+      "a=0.8, r=3.0": {
+        "L_equator": 1.8552188649959975,
+        "rows": [
+          {
+            "L_frac": "0.9999",
+            "tilt_deg": 0.7356236427820064,
+            "Om_th2": 1.2132743368885408,
+            "Om_ph2": 0.9999648371380948,
+            "energy": 0.9289031104,
+            "residual": 1.9974867303598025e-32
+          },
+          {
+            "L_frac": "0.99",
+            "tilt_deg": 7.369869869701245,
+            "Om_th2": 1.2074568320924242,
+            "Om_ph2": 0.9965032902469472,
+            "energy": 0.930304,
+            "residual": 9.591208283232306e-32
+          },
+          {
+            "L_frac": "0.95",
+            "tilt_deg": 16.60399818005869,
+            "Om_th2": 1.1844219071038735,
+            "Om_ph2": 0.9829161538527167,
+            "energy": 0.9358222222222222,
+            "residual": 1.0692639914531265e-31
+          },
+          {
+            "L_frac": "0.9",
+            "tilt_deg": 23.7057761000737,
+            "Om_th2": 1.1567046111084163,
+            "Om_ph2": 0.96685121421136,
+            "energy": 0.9424,
+            "residual": 3.773344029308243e-32
+          },
+          {
+            "L_frac": "0.8",
+            "tilt_deg": 34.178704883943446,
+            "Om_th2": 1.1049677829091038,
+            "Om_ph2": 0.9379170400980046,
+            "energy": 0.9544888888888889,
+            "residual": 3.1054820649743634e-32
+          },
+          {
+            "L_frac": "0.7",
+            "tilt_deg": 42.69263877565132,
+            "Om_th2": 1.058368093462887,
+            "Om_ph2": 0.9134962142414735,
+            "energy": 0.9651555555555555,
+            "residual": 1.439543756872987e-31
+          },
+          {
+            "L_frac": "0.6",
+            "tilt_deg": 50.29445339469553,
+            "Om_th2": 1.0171709939513933,
+            "Om_ph2": 0.8939188783032634,
+            "energy": 0.9744,
+            "residual": 5.142384994361359e-33
+          },
+          {
+            "L_frac": "0.5",
+            "tilt_deg": 57.38449812275967,
+            "Om_th2": 0.9816552639911927,
+            "Om_ph2": 0.8795412221128445,
+            "energy": 0.9822222222222222,
+            "residual": 8.955831178751798e-32
+          },
+          {
+            "L_frac": "0.4",
+            "tilt_deg": 64.16500986403442,
+            "Om_th2": 0.9521022010304085,
+            "Om_ph2": 0.8707357336122066,
+            "energy": 0.9886222222222222,
+            "residual": 1.401477146583393e-31
+          },
+          {
+            "L_frac": "0.3",
+            "tilt_deg": 70.75349318073,
+            "Om_th2": 0.9287807753423017,
+            "Om_ph2": 0.86787656482896,
+            "energy": 0.9936,
+            "residual": 1.4662582343443163e-31
+          },
+          {
+            "L_frac": "0.2",
+            "tilt_deg": 77.22424929303877,
+            "Om_th2": 0.9119295646971712,
+            "Om_ph2": 0.8713204316599608,
+            "energy": 0.9971555555555556,
+            "residual": 1.868302009747425e-31
+          },
+          {
+            "L_frac": "0.1",
+            "tilt_deg": 83.62748323413183,
+            "Om_th2": 0.9017374464080082,
+            "Om_ph2": 0.881384754051576,
+            "energy": 0.9992888888888889,
+            "residual": 2.7248159620784233e-32
+          },
+          {
+            "L_frac": "0.05",
+            "tilt_deg": 86.81559267254424,
+            "Om_th2": 0.8991795734016229,
+            "Om_ph2": 0.8889826540578906,
+            "energy": 0.9998222222222222,
+            "residual": 6.812039905196058e-33
+          },
+          {
+            "L_frac": "0.01",
+            "tilt_deg": 89.36323585834467,
+            "Om_th2": 0.8983602102266494,
+            "Om_ph2": 0.8963167156828091,
+            "energy": 0.9999928888888889,
+            "residual": 1.8960098864743745e-31
+          },
+          {
+            "L_frac": "0.001",
+            "tilt_deg": 89.93632406860897,
+            "Om_th2": 0.8983264026769617,
+            "Om_ph2": 0.8981219507479434,
+            "energy": 0.9999999288888889,
+            "residual": 1.2895167518390724e-32
+          }
+        ],
+        "equator_vertical": 1.2133333333333334,
+        "polar_exact": 0.8983260611829931
+      },
+      "a=0.8, r=5.0": {
+        "L_equator": 2.2933113177237843,
+        "rows": [
+          {
+            "L_frac": "0.9999",
+            "tilt_deg": 0.7808645244226827,
+            "Om_th2": 1.0767776913493878,
+            "Om_ph2": 0.999985736462561,
+            "energy": 0.974405119744,
+            "residual": 8.954332992834575e-33
+          },
+          {
+            "L_frac": "0.99",
+            "tilt_deg": 7.8186030068009735,
+            "Om_th2": 1.0745791191706708,
+            "Om_ph2": 0.9985830609396893,
+            "energy": 0.97490944,
+            "residual": 8.238778688028141e-32
+          },
+          {
+            "L_frac": "0.95",
+            "tilt_deg": 17.573557204989054,
+            "Om_th2": 1.0658981688602576,
+            "Om_ph2": 0.993106546702295,
+            "energy": 0.976896,
+            "residual": 1.0558704510641856e-31
+          },
+          {
+            "L_frac": "0.9",
+            "tilt_deg": 25.0151264516788,
+            "Om_th2": 1.0555066893016716,
+            "Om_ph2": 0.9866959249326985,
+            "energy": 0.979264,
+            "residual": 7.949822523799845e-32
+          },
+          {
+            "L_frac": "0.8",
+            "tilt_deg": 35.84642447379951,
+            "Om_th2": 1.036280699108977,
+            "Om_ph2": 0.9753547061880272,
+            "energy": 0.983616,
+            "residual": 9.570735194035714e-32
+          },
+          {
+            "L_frac": "0.7",
+            "tilt_deg": 44.49584240148344,
+            "Om_th2": 1.019172941905997,
+            "Om_ph2": 0.9660391020604926,
+            "energy": 0.987456,
+            "residual": 7.540630221947921e-32
+          },
+          {
+            "L_frac": "0.6",
+            "tilt_deg": 52.08617825572178,
+            "Om_th2": 1.004232132576117,
+            "Om_ph2": 0.9588106439326631,
+            "energy": 0.990784,
+            "residual": 9.18757465539313e-32
+          },
+          {
+            "L_frac": "0.5",
+            "tilt_deg": 59.050701121748574,
+            "Om_th2": 0.9915036862650775,
+            "Om_ph2": 0.9537284951827429,
+            "energy": 0.9936,
+            "residual": 5.070200641342247e-32
+          },
+          {
+            "L_frac": "0.4",
+            "tilt_deg": 65.61274663858235,
+            "Om_th2": 0.981028577144052,
+            "Om_ph2": 0.9508482380853324,
+            "energy": 0.995904,
+            "residual": 9.788254803323013e-32
+          },
+          {
+            "L_frac": "0.3",
+            "tilt_deg": 71.90749815969528,
+            "Om_th2": 0.9728422126876156,
+            "Om_ph2": 0.9502206416965862,
+            "energy": 0.997696,
+            "residual": 1.9553225965557916e-31
+          },
+          {
+            "L_frac": "0.2",
+            "tilt_deg": 78.02665835044475,
+            "Om_th2": 0.9669733862319825,
+            "Om_ph2": 0.9518904742820031,
+            "energy": 0.998976,
+            "residual": 8.646292788023275e-32
+          },
+          {
+            "L_frac": "0.1",
+            "tilt_deg": 84.03874958641488,
+            "Om_th2": 0.9634433734551957,
+            "Om_ph2": 0.9558954295058619,
+            "energy": 0.999744,
+            "residual": 1.7559949415152377e-31
+          },
+          {
+            "L_frac": "0.05",
+            "tilt_deg": 87.02249251408911,
+            "Om_th2": 0.9625598384344345,
+            "Om_ph2": 0.958783198709546,
+            "energy": 0.999936,
+            "residual": 1.286634494792154e-31
+          },
+          {
+            "L_frac": "0.01",
+            "tilt_deg": 89.40469704991844,
+            "Om_th2": 0.9622770196566687,
+            "Om_ph2": 0.9615211645349003,
+            "energy": 0.99999744,
+            "residual": 2.049144160214474e-32
+          },
+          {
+            "L_frac": "0.001",
+            "tilt_deg": 89.94047052297694,
+            "Om_th2": 0.9622653524691954,
+            "Om_ph2": 0.9621897538683316,
+            "energy": 0.9999999744,
+            "residual": 1.3480429588541635e-31
+          }
+        ],
+        "equator_vertical": 1.0768,
+        "polar_exact": 0.9622652346184478
+      }
+    },
+    "polar_series": [
+      "1",
+      "-3/2",
+      "33/32",
+      "-41/64",
+      "2757/8192"
+    ],
+    "kerr": {
+      "vertical": "3*chi**2*s**4 - 4*chi*s**3 + 1",
+      "T": "-3*chi**2*s**4 + 8*chi*s**3 - 6*s**2 + 1",
+      "sum": "4*chi*s**3 - 6*s**2 + 2"
+    }
+  },
+  "PL1 Kerr's polar orbits (no spin about the axis) at fixed Boyer-Lindquist r have exact constants E^2 and Q (Carter's R = R' = 0), and their up-and-down rate is a complete elliptic integral with modulus m = (a^2/r^2)((r^2+a^2)^2 - 4Mr^3)/((r^2+a^2)^2 - 4Ma^2 r). With M -> 0 the modulus is a^2/r^2 and the radial-to-polar prefactor is 1 + a^2/r^2, the shifted source's; with a -> 0 it is Schwarzschild's 1 - 6M/r": {
+    "pass": true,
+    "detail": "E^2 = r*(-2*M*r + a**2 + r**2)**2/((a**2 + r**2)*(M*a**2 - 3*M*r**2 + a**2*r + r**3)); Q = M*r**2*(-4*M*a**2*r + a**4 + 2*a**2*r**2 + r**4)/((a**2 + r**2)*(M*a**2 - 3*M*r**2 + a**2*r + r**3)); m = a**2*(-4*M*r**3 + a**4 + 2*a**2*r**2 + r**4)/(r**2*(-4*M*a**2*r + a**4 + 2*a**2*r**2 + r**4))"
+  },
+  "PL2 the exact rate is right: polar orbits flown with Hamilton's equations of the exact Kerr-Schild metric in Cartesian coordinates (no Carter separation used) keep r fixed to 1e-8 and beat up and down at the exact rate to 1e-9 (a = 0.9, r = 6; a = 0.5, r = 8; and a = 0.8 around M = 0.05, r = 3)": {
+    "pass": true,
+    "detail": "rerun a=0.9, r=6: flown 0.06642012391425718, exact 0.06642012389920539, max |dr| 1.9360086866981874e-09; stored [(0.06642012391425718, 0.06642012389920539), (0.04402214034908343, 0.044022140346723915), (0.04070189253558246, 0.04070189253642619)]"
+  },
+  "PL3 at Newtonian strength Kerr follows the shifted source exactly, at every order in k = a/r: the u^0 part of Kerr's Omega_theta^2 r^3/M is 1 - 3k^2/2 + 33k^4/32 - 41k^6/64 + 2757k^8/8192, the shifted source's (pi/2)^2/(2K - E)^2, and the u^0 part of (Omega_r/Omega_theta)^2 is (1 + k^2)(2K(k)/pi)^2, through k^8. Kerr's polar orbit sees the shifted source's whole tower of shapes, at the same distance r": {
+    "pass": true,
+    "detail": "Kerr u^0 rows ['1', '-3/2', '33/32', '-41/64', '2757/8192'] and ['1', '3/2', '27/32', '39/64', '3963/8192']; Newton ['1', '-3/2', '33/32', '-41/64', '2757/8192'] and ['1', '3/2', '27/32', '39/64', '3963/8192']"
+  },
+  "PL4 beyond Newton, over the poles the a^2 terms and the mass terms mix: -4 u k^2 in Omega_theta^2 r^3/M and +15 u k^2 in (Omega_r/Omega_theta)^2 (for a black hole, k = chi u, so these are chi^2 u^3). In Omega_theta^2 r^3/M the k^(2j) part is a polynomial of degree j in u (seen through u^3). In the equator, in the same radius, Kerr's ratio 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 has no such term: there the shape stops at Newton's": {
+    "pass": true,
+    "detail": "Omega_theta^2 r^3/M rows (k^0..k^8, u^0..u^3): [['1', '0', '0', '0'], ['-3/2', '-4', '0', '0'], ['33/32', '27/2', '9/2', '0'], ['-41/64', '-207/8', '-45/2', '-7'], ['2757/8192', '10091/256', '15729/256', '195/4']]; ratio rows [['1', '-6', '0', '0'], ['3/2', '15', '-12', '0'], ['27/32', '-429/16', '54', '-33'], ['39/64', '1203/32', '-1179/8', '429/2'], ['3963/8192', '-200649/4096', '39921/128', '-102207/128']]"
+  },
+  "PL_polar": {
+    "series": {
+      "omega_theta2": [
+        [
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-3/2",
+          "-4",
+          "0",
+          "0"
+        ],
+        [
+          "33/32",
+          "27/2",
+          "9/2",
+          "0"
+        ],
+        [
+          "-41/64",
+          "-207/8",
+          "-45/2",
+          "-7"
+        ],
+        [
+          "2757/8192",
+          "10091/256",
+          "15729/256",
+          "195/4"
+        ]
+      ],
+      "ratio": [
+        [
+          "1",
+          "-6",
+          "0",
+          "0"
+        ],
+        [
+          "3/2",
+          "15",
+          "-12",
+          "0"
+        ],
+        [
+          "27/32",
+          "-429/16",
+          "54",
+          "-33"
+        ],
+        [
+          "39/64",
+          "1203/32",
+          "-1179/8",
+          "429/2"
+        ],
+        [
+          "3963/8192",
+          "-200649/4096",
+          "39921/128",
+          "-102207/128"
+        ]
+      ],
+      "newton_omega_theta2": [
+        "1",
+        "-3/2",
+        "33/32",
+        "-41/64",
+        "2757/8192"
+      ],
+      "newton_ratio": [
+        "1",
+        "3/2",
+        "27/32",
+        "39/64",
+        "3963/8192"
+      ]
+    },
+    "flights": [
+      {
+        "M": 1.0,
+        "a": 0.9,
+        "r": 6.0,
+        "flown": 0.06642012391425718,
+        "exact": 0.06642012389920539,
+        "laps": 17,
+        "max_dr": 1.9360086866981874e-09,
+        "H0": -0.4999999999999999
+      },
+      {
+        "M": 1.0,
+        "a": 0.5,
+        "r": 8.0,
+        "flown": 0.04402214034908343,
+        "exact": 0.044022140346723915,
+        "laps": 16,
+        "max_dr": 5.753966192401094e-10,
+        "H0": -0.5
+      },
+      {
+        "M": 0.05,
+        "a": 0.8,
+        "r": 3.0,
+        "flown": 0.04070189253558246,
+        "exact": 0.04070189253642619,
+        "laps": 13,
+        "max_dr": 9.645040321970555e-11,
+        "H0": -0.5
+      }
+    ]
+  },
+  "PX1 over the poles the twist pieces (S = -aL/(r^2+a^2), so S.S, E.S, P.S) vanish when L = 0: they drop out of the radial and polar motion, so frame dragging cannot be felt twice there. They only turn the orbit's plane, at d(phi)/d(lambda) = 2MraE/Delta exactly, all of it from E.S and P.S. Kerr-Schild orbits flown in Cartesian coordinates turn at that rate to 1e-8, and far out the rate is Lense-Thirring's 2J/r^3": {
+    "pass": true,
+    "detail": "node rate with dials 2*E*M*a*r*(2*M*r*wEP*wPS + wES*(-2*M*r*wPP + a**2 + r**2))/((a**2 + r**2)*(-2*M*r*wPP + a**2 + r**2)); flown 0.008030107061182228 vs exact 0.00803010705838967; r = 200: 2.2499314300100032e-07 vs 2J/r^3 2.2500000000000002e-07"
+  },
+  "PX2 the E.E piece alone (the river's time part, no push, no twist) gives over the poles exactly the shifted source's law at every M: prefactor 1 + a^2/r^2 and modulus a^2/r^2, with E^2 = r/(r+M) and Carter's constant Mr^2/(r+M)": {
+    "pass": true,
+    "detail": "E^2 = r/(M + r), Kc = M*r**2/(M + r)"
+  },
+  "PX3 the polar mixed terms come from the river's push (E.P and P.P), with E.P carrying most of it: at first order in M the k^2 u term of (Omega_r/Omega_theta)^2 is 0 from E.E, +16 from E.P and -1 from P.P, adding to Kerr's +15; in Omega_theta^2 r^3/M the k^2 u term is +8 from E.E and -12 from E.P, giving Kerr's -4, and P.P adds nothing. E.P also moves the elliptic modulus off a^2/r^2; P.P does not": {
+    "pass": true,
+    "detail": "ratio u-columns: EE [0, 0, 0], E.P adds [-4, 16, -209/8], P.P adds [-2, -1, -11/16], full [-6, 15, -429/16]; modulus with E.P: a**2*(4*M*a**2*r + a**4 + 2*a**2*r**2 + r**4)/(r**2*(4*M*r**3 + a**4 + 2*a**2*r**2 + r**4))"
+  },
+  "PX4 in the equator the same shape-meeting-mass term (k^2 u, which is chi^2 u^3 for a black hole, in the radial to orbital rate ratio) is pushed in by E.P (+20) and P.P (+8) and taken out exactly by the twist, S.S (-16) and E.S (-12); P.S adds nothing. The pieces add in all 32 settings, and the full field's total is 0, which is why Kerr's equatorial ratio stops at Newton's shape while its polar one does not": {
+    "pass": true,
+    "detail": "k^2 u by setting: {'EE': 9.59381522003593e-31, 'EE+PS': 3.25411840571489e-30, 'EE+ES': -12.0, 'EE+ES+PS': -12.0, 'EE+SS': -16.0, 'EE+SS+PS': -16.0, 'EE+SS+ES': -28.0, 'EE+SS+ES+PS': -28.0, 'EE+EP': 19.9999999999999, 'EE+EP+PS': 19.9999999999999, 'EE+EP+ES': 7.99999999999996, 'EE+EP+ES+PS': 7.99999999999988, 'EE+EP+SS': 3.99999999999986, 'EE+EP+SS+PS': 3.99999999999987, 'EE+EP+SS+ES': -8.00000000000004, 'EE+EP+SS+ES+PS': -8.00000000000012, 'EE+PP': 8.0, 'EE+PP+PS': 7.99999999999999, 'EE+PP+ES': -4.0, 'EE+PP+ES+PS': -4.00000000000001, 'EE+PP+SS': -8.0, 'EE+PP+SS+PS': -8.00000000000001, 'EE+PP+SS+ES': -20.0, 'EE+PP+SS+ES+PS': -20.0, 'EE+PP+EP': 28.0, 'EE+PP+EP+PS': 28.0, 'EE+PP+EP+ES': 16.0, 'EE+PP+EP+ES+PS': 16.0, 'EE+PP+EP+SS': 12.0, 'EE+PP+EP+SS+PS': 12.0, 'EE+PP+EP+SS+ES': 9.6e-15, 'EE+PP+EP+SS+ES+PS': 7.92137986411074e-30}; recomputed {'EE+PP+EP': 28.0, 'EE+SS+ES': -28.0, 'EE+PP+EP+SS+ES+PS': 7.921379864110744e-30}"
+  },
+  "PX_polar_split": {
+    "equator_k2u": {
+      "EE": 9.59381522003593e-31,
+      "EE+PS": 3.25411840571489e-30,
+      "EE+ES": -12.0,
+      "EE+ES+PS": -12.0,
+      "EE+SS": -16.0,
+      "EE+SS+PS": -16.0,
+      "EE+SS+ES": -28.0,
+      "EE+SS+ES+PS": -28.0,
+      "EE+EP": 19.9999999999999,
+      "EE+EP+PS": 19.9999999999999,
+      "EE+EP+ES": 7.99999999999996,
+      "EE+EP+ES+PS": 7.99999999999988,
+      "EE+EP+SS": 3.99999999999986,
+      "EE+EP+SS+PS": 3.99999999999987,
+      "EE+EP+SS+ES": -8.00000000000004,
+      "EE+EP+SS+ES+PS": -8.00000000000012,
+      "EE+PP": 8.0,
+      "EE+PP+PS": 7.99999999999999,
+      "EE+PP+ES": -4.0,
+      "EE+PP+ES+PS": -4.00000000000001,
+      "EE+PP+SS": -8.0,
+      "EE+PP+SS+PS": -8.00000000000001,
+      "EE+PP+SS+ES": -20.0,
+      "EE+PP+SS+ES+PS": -20.0,
+      "EE+PP+EP": 28.0,
+      "EE+PP+EP+PS": 28.0,
+      "EE+PP+EP+ES": 16.0,
+      "EE+PP+EP+ES+PS": 16.0,
+      "EE+PP+EP+SS": 12.0,
+      "EE+PP+EP+SS+PS": 12.0,
+      "EE+PP+EP+SS+ES": 9.6e-15,
+      "EE+PP+EP+SS+ES+PS": 7.92137986411074e-30
+    },
+    "settings": {
+      "EE": {
+        "omega_theta2": [
+          [
+            "1",
+            "-4",
+            "12"
+          ],
+          [
+            "-3/2",
+            "8",
+            "-30"
+          ],
+          [
+            "33/32",
+            "-63/8",
+            "303/8"
+          ]
+        ],
+        "ratio": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "3/2",
+            "0",
+            "0"
+          ],
+          [
+            "27/32",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "EE+EP": {
+        "omega_theta2": [
+          [
+            "1",
+            "0",
+            "-12"
+          ],
+          [
+            "-3/2",
+            "-4",
+            "50"
+          ],
+          [
+            "33/32",
+            "27/2",
+            "-935/8"
+          ]
+        ],
+        "ratio": [
+          [
+            "1",
+            "-4",
+            "16"
+          ],
+          [
+            "3/2",
+            "16",
+            "-88"
+          ],
+          [
+            "27/32",
+            "-209/8",
+            "233"
+          ]
+        ]
+      },
+      "EE+PP": {
+        "omega_theta2": [
+          [
+            "1",
+            "-4",
+            "12"
+          ],
+          [
+            "-3/2",
+            "8",
+            "-30"
+          ],
+          [
+            "33/32",
+            "-63/8",
+            "303/8"
+          ]
+        ],
+        "ratio": [
+          [
+            "1",
+            "-2",
+            "0"
+          ],
+          [
+            "3/2",
+            "-1",
+            "0"
+          ],
+          [
+            "27/32",
+            "-11/16",
+            "0"
+          ]
+        ]
+      },
+      "EE+PP+EP": {
+        "omega_theta2": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-3/2",
+            "-4",
+            "0"
+          ],
+          [
+            "33/32",
+            "27/2",
+            "9/2"
+          ]
+        ],
+        "ratio": [
+          [
+            "1",
+            "-6",
+            "0"
+          ],
+          [
+            "3/2",
+            "15",
+            "-12"
+          ],
+          [
+            "27/32",
+            "-429/16",
+            "54"
+          ]
+        ]
+      }
+    },
+    "node_flight": [
+      0.008030107061182228,
+      0.00803010705838967
+    ],
+    "node_exact": 0.00803010705838967
+  },
+  "JB1 the river's push and twist are two shears into the same (radial) leg, so as jets they compose into one shear, in either order, with no leftover. Squared into the field, that one jet carries the cross piece 2P.S, which adding the push and twist as two separate velocities leaves out. Only the one jet is Kerr: Ricci ~ 1e-50 at 50 digits, against ~ 1e-3 to 1e-2 near the hole for two velocities, whether the pieces are added in the metric or in its inverse": {
+    "pass": true,
+    "detail": "max Ricci at three points: {'one jet (lower)': [4.0091470651382935e-51, 1.3363823550460978e-51, 8.018294130276587e-51], 'two velocities (lower)': [0.018435733200167306, 0.002266014557671705, 0.0007513643500077449], 'one jet (upper)': [5.345529420184391e-51, 5.345529420184391e-51, 7.350102952753538e-50], 'two velocities (upper)': [0.023493030843850238, 0.009801378632372244, 0.0012616351809767062]}"
+  },
+  "JB2 in the equator the one jet stops Kerr's spin term at 8 chi u^(3/2): exactly, to first order in the spin. Two velocities multiply it by (1 - 2u)(1 - 3u), adding -40 chi u^(5/2) + 48 chi u^(7/2). The tower comes from the twist's E.S meeting the push E.P, and the jet's P.S, which acts only with the push, takes it out: +40, -48": {
+    "pass": true,
+    "detail": "spin term per unit a (r = 1, M = u): one jet 8*sqrt(u), two velocities 8*sqrt(u)*(2*u - 1)*(3*u - 1); tower (chi u^1.5, u^2.5, u^3.5): full [8.0, -5.009424234229773e-33, 2.791624561932558e-28], no P.S [8.0, -40.0, 48.0], push + P.S [2.371999447030385e-38, 40.0, -48.0]"
+  },
+  "JB3 the one jet keeps Part 1's clock gap: each circular equatorial orbit is shifted by exactly 2 pi a per lap at every radius (Kerr's clock effect). Two velocities shift it by 2 pi a (1 - 4M/r) (small spin), which vanishes at r = 4M. The one jet also keeps Kerr's shape term exactly -3k^2 (k = a/r); two velocities add +108 k^2 u^2 - 240 k^2 u^3 + 192 k^2 u^4 + ...": {
+    "pass": true,
+    "detail": "clock shift per unit a (r, one jet, two velocities): [(6, 1.0, 0.3333333333333333), (10, 1.0, 0.6), (30, 1.0, 0.8666666666666667)]; k^2 tower {'one jet': ['-3', '0', '0', '0', '0'], 'two velocities': ['-3', '0', '108', '-240', '192']}"
+  },
+  "JB4 round 20's chi^2 u^3 cancellation in the equator does not come from the one jet: P.S adds 0 to it, and grouped by the jet's layers it is 2E.J = +8 against J.J = -8. Where the one jet lives: on an orbit the push answers the energy seen by the shell turning at a/(r^2+a^2), so k.p = (r^2+a^2)(E - aL/(r^2+a^2))/Delta; with two velocities the push sees E alone. Over the poles (L = 0) the radial, polar and clock motion are the same either way, and only the plane's turning tells them apart: 2MraE/Delta with one jet (Kerr), 2MraE/(r^2+a^2) with two velocities, slower by Delta/(r^2+a^2)": {
+    "pass": true,
+    "detail": "push on the orbit {'one jet': 2*M*r*(E*a**2 + E*r**2 - L*a)/((a**2 + r**2)*(-2*M*r + a**2 + r**2)), 'two velocities': 2*E*M*r/(-2*M*r + a**2 + r**2)}; polar node rates one jet 2*E*M*a*r/(-2*M*r + a**2 + r**2), two velocities 2*E*M*a*r/(a**2 + r**2), ratio (-2*M*r + a**2 + r**2)/(a**2 + r**2); ratio at a = 0.9M: [[3, 0.38837920489296635], [4, 0.5240928019036288], [6, 0.6740016299918501], [10, 0.8016069834341831], [20, 0.9002020907661984], [50, 0.96001295580232], [100, 0.9800016198687906]]"
+  },
+  "JB_jet_boost": {
+    "spin_term_per_a": {
+      "one jet": "8*sqrt(u)",
+      "two velocities": "8*sqrt(u)*(2*u - 1)*(3*u - 1)"
+    },
+    "shape_tower_k2": {
+      "one jet": [
+        "-3",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "two velocities": [
+        "-3",
+        "0",
+        "108",
+        "-240",
+        "192"
+      ]
+    },
+    "clock_gap": {
+      "one jet": {
+        "a=0.5": [
+          [
+            6,
+            1.0
+          ],
+          [
+            10,
+            1.0
+          ],
+          [
+            30,
+            1.0
+          ],
+          [
+            100,
+            1.0
+          ]
+        ],
+        "per unit a, small spin": [
+          [
+            4,
+            1.0
+          ],
+          [
+            6,
+            1.0
+          ],
+          [
+            10,
+            1.0
+          ],
+          [
+            30,
+            1.0
+          ],
+          [
+            100,
+            1.0
+          ]
+        ]
+      },
+      "two velocities": {
+        "a=0.5": [
+          [
+            6,
+            0.3432217573785887
+          ],
+          [
+            10,
+            0.6022325041841035
+          ],
+          [
+            30,
+            0.8667457547503957
+          ],
+          [
+            100,
+            0.9600020471418635
+          ]
+        ],
+        "per unit a, small spin": [
+          [
+            4,
+            1.132812499999995e-25
+          ],
+          [
+            6,
+            0.3333333333333333
+          ],
+          [
+            10,
+            0.6
+          ],
+          [
+            30,
+            0.8666666666666667
+          ],
+          [
+            100,
+            0.96
+          ]
+        ]
+      }
+    },
+    "polar": {
+      "node_rate_one_jet": "2*E*M*a*r/(-2*M*r + a**2 + r**2)",
+      "node_rate_two_velocities": "2*E*M*a*r/(a**2 + r**2)",
+      "one_minus_2MraE_over_Delta": "0",
+      "two_minus_2MraE_over_r2a2": "0",
+      "ratio_two_over_one": "(-2*M*r + a**2 + r**2)/(a**2 + r**2)",
+      "r_theta_clock_free_of_PS": true,
+      "ratio_numbers_a0.9": [
+        [
+          3,
+          0.38837920489296635
+        ],
+        [
+          4,
+          0.5240928019036288
+        ],
+        [
+          6,
+          0.6740016299918501
+        ],
+        [
+          10,
+          0.8016069834341831
+        ],
+        [
+          20,
+          0.9002020907661984
+        ],
+        [
+          50,
+          0.96001295580232
+        ],
+        [
+          100,
+          0.9800016198687906
+        ]
+      ]
+    },
+    "round20_by_jet_layer": {
+      "2E.J = 2EP + 2ES": 8,
+      "J.J = PP + SS + 2PS": -8,
+      "full": 7.92137986411074e-30,
+      "full without PS": 9.6e-15
+    }
+  },
+  "WL1 in Mino time the equatorial orbit's radial equation is r^4 (E^2 - 1) + 2 M r^3 - K0 r^2 + 2 M r x^2, with K0 = L^2 + a^2 (1 - E^2) and x = L - aE (Carter's radial function, rearranged). The mass meets the orbit as 2 M r^3 (Newton) and 2 M r x^2; the second is one power of r, so it adds no radial stiffness. On every circular orbit the stiffnesses are M (r - 3x^2/r) in-and-out and M (r + 3x^2/r) up-and-down: they add to 2 M r, with no spin in it (symbolic, exact)": {
+    "pass": true,
+    "detail": "{'R_equals_mino_form': True, 'R_on_orbit': True, 'dR_on_orbit': True, 'mass_x2_term_stiffness': True, 'radial_stiffness': True, 'vertical_stiffness': True, 'sum_2Mr': True}"
+  },
+  "WL2 on the circular orbit the river's jet energy is exact and simple: E + P + S (energy, push, twist) = 1/sqrt(D), D = 1 - 3v^2 + 2qv (v = sqrt(M/r), q = a/r), which is Carter's P/Delta. The orbit's Mino turning rate is r v k.p and its angular momentum about the spin is x = r (v - q) k.p. Dividing the stiffnesses by the turning rate squared: (Omega_r/Omega_phi)^2 = D - 3(v - q)^2 and (Omega_theta/Omega_phi)^2 = D + 3(v - q)^2, which are Kerr's known 1 - 6v^2 + 8qv - 3q^2 and 1 - 4qv + 3q^2": {
+    "pass": true,
+    "detail": "jet on orbit {'kp_times_sqrtD': 1, 'kp_equals_P_over_Delta': True, 'turning_rate_over_r_v_kp': 1, 'x_over_r_kp': -q + v}; law {'T_r_from_stiffness_minus_law': 0, 'T_theta_from_stiffness_minus_law': 0, 'T_r_law_minus_known': 0, 'T_theta_law_minus_known': 0, 'q2_coefficient_radial': -3, 'q2_coefficient_vertical': 3, 'D_q2_coefficient': 0}"
+  },
+  "WL3 why +28 = 28: D holds the spin only to the first power, so spin squared enters the wobbles only through (v - q)^2, the angular momentum about the spin, squared. The (a/r)^2 term is therefore exactly -3 in-and-out and +3 up-and-down at every strength, with no (a/r)^2 (M/r)^n term for any n >= 1; round 20's push +28 against twist -28 is the n = 1 case. The split itself is bookkeeping: cutting the jet energy on the orbit instead gives E alone -1, push of E +4, twist -3, push of the twist 0, again summing to 0": {
+    "pass": true,
+    "detail": "a^2 M parts of 1/(k.p)^2 as pieces are added: {'E alone': -1, 'E + push of E': 3, 'E + twist': -4, 'E + push of E + twist': 0, 'all (the one jet)': 0}"
+  },
+  "WL4 in flight: a slightly eccentric orbit integrated with Hamilton's equations of the exact Kerr-Schild field turns per lap by 2 pi (1/sqrt(D - 3(v - q)^2) - 1), with the spin and against it (r = 10M, a = +-0.9M; against the spin this is just outside the innermost stable orbit at 8.72M)": {
+    "pass": true,
+    "detail": "(flown, law) radians per lap: {'u=0.1, chi=0.9': (1.8055938187505411, 1.8055938167802388), 'u=0.1, chi=-0.9': (10.048294711518365, 10.04829396875954)}"
+  },
+  "WL_wobble_law": {
+    "carter": {
+      "R_equals_mino_form": true,
+      "R_on_orbit": true,
+      "dR_on_orbit": true,
+      "mass_x2_term_stiffness": true,
+      "radial_stiffness": true,
+      "vertical_stiffness": true,
+      "sum_2Mr": true
+    },
+    "jet_pieces": {
+      "E alone": {
+        "exact": "-v**2*(v**2 + 1)/(2*v**2 - 1)**4",
+        "a2M": "-1"
+      },
+      "E + push of E": {
+        "exact": "3*v**2*(8*v**4 - 7*v**2 + 1)/(2*v**2 - 1)**2",
+        "a2M": "3"
+      },
+      "E + twist": {
+        "exact": "-4*v**2*(3*v**2 - 1)/(2*v**2 - 1)**3",
+        "a2M": "-4"
+      },
+      "E + push of E + twist": {
+        "exact": "12*v**6*(v - 1)*(v + 1)/(2*v**2 - 1)**2",
+        "a2M": "0"
+      },
+      "all (the one jet)": {
+        "exact": "0",
+        "a2M": "0"
+      }
+    },
+    "flight": {
+      "u=0.1, chi=0.9": [
+        1.8055938187505411,
+        1.8055938167802388
+      ],
+      "u=0.1, chi=-0.9": [
+        10.048294711518365,
+        10.04829396875954
+      ]
+    }
   }
 }

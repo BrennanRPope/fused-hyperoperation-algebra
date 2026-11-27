@@ -1047,11 +1047,435 @@ def fig25():
     save(fig, "fig25_tower.png")
 
 
+def fig26():
+    tj = json.load(open(os.path.join(HERE, "tilt.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    av, rv = 0.8, 3.0
+    # (a) the picture: one tilted orbit flown around the shifted source, seen from the side
+    ax = axs[0, 0]
+    ax.set_aspect("equal"); ax.set_xlim(-4.6, 4.6); ax.set_ylim(-4.3, 4.9); ax.axis("off")
+    th = np.linspace(0, 2*np.pi, 400)
+    ax.plot(np.sqrt(rv**2 + av**2)*np.sin(th), rv*np.cos(th), color=GREY, lw=1.0, ls="--")
+    rows = tj["spheres"]["a=0.8, r=3.0"]["rows"]
+    row = [x for x in rows if x["L_frac"] == "0.7"][0]
+    c = np.sin(np.radians(row["tilt_deg"]))
+    L = float(row["L_frac"])*tj["spheres"]["a=0.8, r=3.0"]["L_equator"]
+    rho = np.sqrt(rv**2 + av**2)*np.sqrt(1 - c**2); zz = rv*c
+
+    def f(t, y):
+        x, yy, z, vx, vy, vz = y
+        d = np.sqrt(complex(x*x + yy*yy + (z - 1j*av)**2))
+        g = -np.array([x, yy, z - 1j*av])/d**3
+        return [vx, vy, vz, g[0].real, g[1].real, g[2].real]
+    sol = solve_ivp(f, [0, 900], [rho, 0, zz, 0, L/rho, 0], rtol=1e-10, atol=1e-10, max_step=0.05)
+    ax.plot(sol.y[0], sol.y[2], color=BLUE, lw=0.5, alpha=0.45)
+    ax.plot([-av, av], [0, 0], color="k", lw=3)
+    ax.text(0, -0.45, "Kerr's ring\n(edge on)", ha="center", va="top", fontsize=8.3)
+    ax.text(-4.5, 3.75, "an orbit tilted 43°, flown in ordinary space around the shifted source:\n"
+            "it stays on one oblate shell (dashed), a fixed distance r = 3 from the shifted source,\n"
+            "while its tilted plane slowly turns, so the path fills a band",
+            fontsize=8.7)
+    ax.text(-4.5, -4.1, "on that shell, only the equator keeps Kepler's period (Ω² = M/r³);\n"
+            "tilted, the orbit feels the whole tower of shapes again", fontsize=8.7, color=BLUE)
+    ax.set_title("(a) a tilted orbit (side view, a = 0.8, r = 3)", fontsize=10.5, pad=12)
+    # (b) the rates against tilt
+    ax = axs[0, 1]
+    for key, ls in (("a=0.8, r=3.0", "-"), ("a=0.8, r=5.0", "--")):
+        d = tj["spheres"][key]; rr = d["rows"]
+        tilt = [x["tilt_deg"] for x in rr]
+        ax.plot(tilt, [x["Om_th2"] for x in rr], ls, color=PURPLE, lw=2,
+                label=f"up and down, Ω_θ² r³/M  ({key.split(', ')[1]})")
+        ax.plot(tilt, [x["Om_ph2"] for x in rr], ls, color=ORANGE, lw=2,
+                label=f"around the axis, Ω_φ² r³/M  ({key.split(', ')[1]})")
+        ax.plot([0], [d["equator_vertical"]], "o", color=PURPLE, ms=6)
+        ax.plot([90], [d["polar_exact"]], "s", color=PURPLE, ms=6)
+    ax.axhline(1, color=GREEN, lw=2.2, label="Kepler's law in r")
+    ax.text(2, 1.225, "1 + 3a²/r²  (exact)", fontsize=8.6, color=PURPLE)
+    ax.text(58, 0.835, "pole: (π/2)² / (2K − E)², k = a/r\n= 1 − 3k²/2 + 33k⁴/32 − …", fontsize=8.6, color=PURPLE)
+    ax.set_xlabel("tilt: highest latitude the orbit reaches (degrees)"); ax.set_ylabel("rate² × r³/M")
+    ax.set_xlim(0, 92); ax.set_ylim(0.8, 1.26)
+    ax.legend(fontsize=7.8, loc="upper right")
+    ax.set_title("(b) Kepler's period law in r holds only in the equator", fontsize=10.5)
+    # (c) Laplace's rule: radial + vertical, Newton and Kerr
+    ax = axs[1, 0]
+    ax.set_xlim(-3.4, 4.2); ax.set_ylim(-0.6, 7.8); ax.axis("off")
+    cols = ["1", "u = M/r\n(mass)", "χ u³ᐟ²\n(spin)", "χ² u² = a²/r²\n(shape)"]
+    for j, lab in enumerate(cols):
+        ax.text(j + 0.5, 7.05, lab, ha="center", fontsize=8.6, weight="bold")
+    table = [("Newton, shifted source", None),
+             ("radial  (Ω_r/Ω)²", [1, 0, 0, -3]), ("up and down  (Ω_θ/Ω)²", [1, 0, 0, 3]), ("sum", [2, 0, 0, 0]),
+             ("Kerr, exact", None),
+             ("radial  (Ω_r/Ω_φ)²", [1, -6, 8, -3]), ("up and down  (Ω_θ/Ω_φ)²", [1, 0, -4, 3]),
+             ("sum", [2, -6, 4, 0])]
+    for i, (lab, vals) in enumerate(table):
+        y = 6.6 - i*0.85
+        if vals is None:
+            ax.text(-3.3, y, lab, fontsize=9.2, weight="bold", va="center", color=BLUE)
+            continue
+        ax.text(-0.1, y, lab, ha="right", va="center", fontsize=8.8)
+        for j, v in enumerate(vals):
+            colr = GREEN if (lab == "sum" and j == 3) else (GREY if v == 0 else (PURPLE if j == 3 else ORANGE))
+            ax.add_patch(FancyBboxPatch((j + 0.08, y - 0.33), 0.84, 0.66, boxstyle="round,pad=0.02",
+                                        fc=colr, alpha=0.35 if (lab == "sum" and j == 3) else 0.15, ec=colr))
+            ax.text(j + 0.5, y, f"{v:+d}" if v else "0", ha="center", va="center", fontsize=9.5,
+                    weight="bold" if lab == "sum" else None)
+    ax.text(-3.3, -0.45, "the shape term cancels in radial + vertical, in Newton and in Kerr alike (green):\n"
+            "Laplace's rule for empty space; Kerr's two shape terms are the shifted source's, term for term",
+            fontsize=8.6)
+    ax.set_title("(c) what survives exactly in the equator: radial + vertical", fontsize=10.5, pad=12)
+    # (d) Kepler's energy law survives for orbits with no spin about the axis
+    ax = axs[1, 1]
+    for key, ls in (("a=0.8, r=3.0", "-"), ("a=0.8, r=5.0", "--")):
+        rr = tj["spheres"][key]["rows"]
+        ax.plot([x["tilt_deg"] for x in rr], [x["energy"] for x in rr], ls, color=BLUE, lw=2,
+                label=f"energy −2rE/M  ({key.split(', ')[1]})")
+    ax.axhline(1, color=GREEN, lw=2.2, label="Kepler's energy law in r: E = −M/(2r)")
+    ax.plot([90], [1], "s", color=GREEN, ms=7)
+    ax.text(40, 0.94, "polar orbits (no spin about the axis):\nE = −M/(2r) exactly, radial motion is Kepler's,\n"
+            "yet the period is not (panel b)", fontsize=8.8, color=BLUE)
+    ax.set_xlabel("tilt: highest latitude the orbit reaches (degrees)"); ax.set_ylabel("−2 r E / M")
+    ax.set_xlim(0, 92); ax.legend(fontsize=8.3, loc="lower right")
+    ax.set_title("(d) what survives off the equator: Kepler's energy law, at the pole", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig26_tilt.png")
+
+
+def fig27():
+    import mpmath as mpm
+    import polar as pl
+    pj = json.load(open(os.path.join(HERE, "polar.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    # (a) a polar orbit flown in Kerr, side view and top view
+    ax = axs[0, 0]
+    fl = pj["flights"][0]
+    x, y, z = (np.array(v) for v in fl["path"])
+    ax.plot(x, z, color=BLUE, lw=0.6, alpha=0.6)
+    ax.plot(y + 15.5, x, color=PURPLE, lw=0.6, alpha=0.6)
+    rp = 1 + np.sqrt(1 - 0.81)
+    th = np.linspace(0, 2*np.pi, 200)
+    for cx, cy in ((0, 0), (15.5, 0)):
+        ax.fill(cx + np.sqrt(rp**2 + 0.81)*np.cos(th), cy + rp*np.sin(th) if cx == 0 else cy + np.sqrt(rp**2 + 0.81)*np.sin(th),
+                color="k", alpha=0.85)
+    ax.set_aspect("equal"); ax.axis("off"); ax.set_xlim(-8, 23); ax.set_ylim(-9.5, 9.5)
+    ax.text(0, -7.6, "side view", ha="center", fontsize=9, color=BLUE)
+    ax.text(15.5, -7.6, "from above the pole", ha="center", fontsize=9, color=PURPLE)
+    ax.text(-7.8, 8.6, "a polar orbit around a black hole spinning at a = 0.9M, r = 6M, flown directly in Kerr's field:\n"
+            "it passes over both poles; the spin drags its plane around (right)", fontsize=8.6)
+    ax.set_title("(a) an orbit over the poles", fontsize=10.5, pad=12)
+    # (b) the up-and-down rate against a/r: Kerr approaches the shifted source's law as the field weakens
+    ax = axs[0, 1]
+    kk = np.array(pj["curves"]["k"])
+    ax.plot(kk, pj["curves"]["shifted source (Newton)"], "k--", lw=2.2, label="shifted source (Newton): (π/2)²/(2K − E)²")
+    for uv, col in ((0.01, GREEN), (0.03, ORANGE), (0.1, RED)):
+        ax.plot(kk, pj["curves"][f"Kerr, u = {uv}"], color=col, lw=2, label=f"Kerr, M/r = {uv}")
+        kbh = uv                                    # a = M: the fastest a black hole can spin
+        ax.plot([kbh], [float(pl.omega_theta_exact(uv, kbh, 1.0)**2/uv)], "o", color=col, ms=6)
+    ax.text(0.02, 0.56, "dots: a = M, the fastest spin a black hole can have;\npast them the curves use a > M only to "
+            "make the shape large", fontsize=8.4)
+    ax.set_xlabel("k = a / r   (r: Boyer–Lindquist radius = the shift's distance)"); ax.set_ylabel("Ω_θ² r³ / M")
+    ax.legend(fontsize=8.3, loc="lower left"); ax.set_ylim(0.3, 1.05)
+    ax.set_title("(b) Kerr's polar rate approaches the shifted source's law", fontsize=10.5)
+    # (c) the double series: Newtonian column = shifted source; other columns = mass and a² mixing
+    ax = axs[1, 0]
+    ax.set_xlim(-2.2, 4.3); ax.set_ylim(-2.3, 6.4); ax.axis("off")
+    om = pj["series"]["omega_theta2"]
+    heads = ["Newton\n(u⁰)", "× M/r\n(u¹)", "× (M/r)²\n(u²)", "× (M/r)³\n(u³)"]
+    for j, h in enumerate(heads):
+        ax.text(j + 0.5, 5.75, h, ha="center", fontsize=8.6, weight="bold")
+    rowlab = ["1", "(a/r)²", "(a/r)⁴", "(a/r)⁶", "(a/r)⁸"]
+    from fractions import Fraction as Fr
+    for i, row in enumerate(om):
+        yv = 4.9 - i*0.95
+        ax.text(-0.15, yv, rowlab[i], ha="right", va="center", fontsize=9.5)
+        for j, v in enumerate(row):
+            fv = Fr(v)
+            colr = GREEN if j == 0 else (GREY if fv == 0 else ORANGE)
+            ax.add_patch(FancyBboxPatch((j + 0.06, yv - 0.38), 0.88, 0.76, boxstyle="round,pad=0.02", fc=colr,
+                                        alpha=0.25 if fv != 0 else 0.12, ec=colr))
+            ax.text(j + 0.5, yv, "0" if fv == 0 else (f"{float(fv):+.4g}" if fv.denominator > 64 else str(fv)),
+                    ha="center", va="center", fontsize=8.8)
+    ax.text(-2.1, -0.85, "Kerr's polar Ω_θ² r³/M, term by term. Green: exactly the shifted source's polar law.\n"
+            "Orange: the a² terms mixing with the mass, which Newton's shifted source doesn't have.\n"
+            "In the equator, the same radius gives Kerr's shape as −3a²/r² and nothing more.", fontsize=8.6)
+    ax.set_title("(c) Newton's column is the shifted source; the rest is new", fontsize=10.5, pad=12)
+    # (d) for a real black hole: how big each part is
+    ax = axs[1, 1]
+    chi = 0.9
+    rs = np.logspace(np.log10(6), 3, 60)
+    shape, left = [], []
+    for rv in rs:
+        F = float(pl.omega_theta_exact(1.0, chi, rv)*rv**1.5)**2
+        Nw = float(pl.newton_polar(chi/rv))
+        shape.append(abs(Nw - 1)); left.append(abs(F - Nw))
+    ax.loglog(rs, shape, color=GREEN, lw=2.2, label="shape, as the shifted source gives it: |law − 1| ≈ (3/2) χ² (M/r)²")
+    ax.loglog(rs, left, color=ORANGE, lw=2.2, label="what Kerr adds beyond it: ≈ 4 χ² (M/r)³")
+    ax.loglog(rs, 1.5*chi**2/rs**2, ":", color=GREEN, lw=1); ax.loglog(rs, 4*chi**2/rs**3, ":", color=ORANGE, lw=1)
+    ax.set_xlabel("orbit radius r / M   (black hole spinning at χ = 0.9)"); ax.set_ylabel("size of the term in Ω_θ² r³/M")
+    ax.legend(fontsize=8.3, loc="lower left")
+    ax.set_title("(d) for a black hole the extra terms fall one power of r faster", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig27_polar.png")
+
+
+def fig28():
+    import mpmath as mpm
+    import sympy as sy
+    import polar_split as ps
+    sj = json.load(open(os.path.join(HERE, "polar_split.json")))
+    pj = json.load(open(os.path.join(HERE, "polar.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    # (a) the shape-meeting-mass term, piece by piece, over the poles and in the equator
+    ax = axs[0, 0]
+    pieces = ["E·E\n(time)", "E·P\n(push × time)", "P·P\n(push)", "S·S\n(twist)", "E·S\n(twist × time)", "P·S\n(twist × push)"]
+    pole = [0, 16, -1, 0, 0, 0]
+    equ = [0, 20, 8, -16, -12, 0]
+    xs = np.arange(len(pieces))
+    cols = [GREY, ORANGE, ORANGE, BLUE, BLUE, BLUE]
+    ax.bar(xs - 0.2, pole, 0.38, color=cols, alpha=0.95, edgecolor="k", lw=0.6, label="over the poles")
+    ax.bar(xs + 0.2, equ, 0.38, color=cols, alpha=0.4, edgecolor="k", lw=0.6, hatch="//", label="in the equator")
+    for xv, v in zip(xs - 0.2, pole):
+        ax.text(xv, v + (0.8 if v >= 0 else -2.2), f"{v:+d}" if v else "0", ha="center", fontsize=8.6)
+    for xv, v in zip(xs + 0.2, equ):
+        ax.text(xv, v + (0.8 if v >= 0 else -2.2), f"{v:+d}" if v else "0", ha="center", fontsize=8.6)
+    for xv in (3, 4, 5):
+        ax.text(xv - 0.2, 2.6, "gone:\nL = 0", ha="center", fontsize=7.6, color=BLUE)
+    ax.axhline(0, color="k", lw=0.8)
+    ax.set_xticks(xs); ax.set_xticklabels(pieces, fontsize=8.4)
+    ax.set_ylabel("coefficient of (a/r)²(M/r) in (radial rate ÷ orbit rate)²")
+    ax.set_ylim(-20, 26)
+    ax.text(-0.45, 22.3, "totals: over the poles 16 − 1 = +15 (Kerr's term);  in the equator 20 + 8 − 16 − 12 = 0",
+            fontsize=8.7, weight="bold")
+    ax.legend(fontsize=8.4, loc="lower left")
+    ax.set_title("(a) the extra polar term is the river's push, not the twist", fontsize=10.5)
+    # (b) the plane turning: top view of the flown polar orbit, with its equator crossings
+    ax = axs[0, 1]
+    fl = pj["flights"][0]
+    x, y, z = (np.array(v) for v in fl["path"])
+    n = len(x)
+    for i in range(n - 1):
+        ax.plot(x[i:i + 2], y[i:i + 2], color=plt.cm.viridis(i/n), lw=0.9)
+    rp = 1 + np.sqrt(1 - 0.81)
+    th = np.linspace(0, 2*np.pi, 200)
+    ax.fill(np.sqrt(rp**2 + 0.81)*np.cos(th), np.sqrt(rp**2 + 0.81)*np.sin(th), color="k", alpha=0.85)
+    ii = np.where((z[:-1] < 0) & (z[1:] >= 0))[0]
+    for j, i in enumerate(ii[:8]):
+        ax.plot([0, 1.25*x[i]], [0, 1.25*y[i]], color=plt.cm.viridis(i/n), lw=1.4, ls="--")
+        ax.plot(x[i], y[i], "o", color=plt.cm.viridis(i/n), ms=5)
+    ax.annotate("", xy=(5.3, 5.3), xytext=(7.4, 1.6),
+                arrowprops=dict(arrowstyle="->", color=RED, lw=1.8, connectionstyle="arc3,rad=0.25"))
+    ax.text(7.6, 3.4, "spin and\nplane turn\nthe same way", fontsize=8.5, color=RED)
+    ax.set_aspect("equal"); ax.axis("off"); ax.set_xlim(-8.5, 10.5); ax.set_ylim(-11.2, 8.8)
+    ax.text(-8.4, -11.0, "seen from above the pole (a = 0.9M, r = 6M); dashed lines mark where the orbit\n"
+            "crosses the equator going up, early (dark) to late (yellow). The crossing moves\n"
+            "about 44° per lap: the twist turns the plane but leaves r, θ and the clock alone", fontsize=8.4)
+    ax.set_title("(b) the twist only turns the polar orbit's plane", fontsize=10.5)
+    # (c) the turning rate: exact, flown, and Lense-Thirring far out
+    ax = axs[1, 0]
+    rs = np.logspace(np.log10(6), np.log10(300), 50)
+    ex = [float(ps.node_rate_exact(1.0, 0.9, rv)[0]) for rv in rs]
+    ax.loglog(rs, ex, color=BLUE, lw=2.2, label="exact (from dφ/dλ = 2MraE/Δ in Mino time), all from E·S and P·S")
+    ax.loglog(rs, 2*0.9/rs**3, "k--", lw=1.4, label="Lense–Thirring (1918): 2J/r³")
+    nf = sj["node_flights"]
+    ax.plot([6.0], [nf[0][0]], "o", color=RED, ms=8, label="flown in the exact field (a = 0.9, r = 6)")
+    ax.set_xlabel("orbit radius r / M   (spin a = 0.9 M)"); ax.set_ylabel("turning rate of the plane (radians per unit of time t, M = 1)")
+    ax.legend(fontsize=8.4, loc="lower left")
+    ins = ax.inset_axes([0.6, 0.6, 0.36, 0.33])
+    ins.semilogx(rs, np.array(ex)/(2*0.9/rs**3), color=BLUE, lw=1.8)
+    ins.axhline(1, color="k", ls="--", lw=1); ins.set_ylim(0.95, 1.005)
+    ins.set_title("exact ÷ Lense–Thirring", fontsize=8); ins.tick_params(labelsize=7)
+    ax.set_title("(c) how fast the plane turns: Lense–Thirring far out, exact everywhere", fontsize=10.5)
+    # (d) the push also moves the elliptic modulus; the push alone doesn't
+    ax = axs[1, 1]
+    rr, MM, aa = ps.r, ps.M, ps.a
+    mEP = ps.polar_constants({"EE": 1, "EP": 1, "PP": 0})["m"]
+    mFull = ps.polar_constants({"EE": 1, "EP": 1, "PP": 1})["m"]
+    fEP = sy.lambdify((rr, MM, aa), mEP/(aa**2/rr**2)); fF = sy.lambdify((rr, MM, aa), mFull/(aa**2/rr**2))
+    rs2 = np.linspace(5, 40, 200)
+    ax.axhline(1, color=GREY, lw=2.2, label="E·E alone, or with P·P: m = a²/r², the shifted source's")
+    ax.plot(rs2, fEP(rs2, 1.0, 0.9), color=ORANGE, lw=2.2, label="with E·P: m moves")
+    ax.plot(rs2, fF(rs2, 1.0, 0.9), color=RED, lw=1.6, ls="--", label="the full field (Kerr)")
+    ax.set_xlabel("orbit radius r / M   (spin a = 0.9 M)"); ax.set_ylabel("modulus m ÷ (a/r)²")
+    ax.legend(fontsize=8.4, loc="lower right")
+    ax.text(10, 0.5, "m sets the up-and-down period through K(m).\nThe push meeting the river's time part\n"
+            "lowers it by a fraction of about 4M/r", fontsize=8.5)
+    ax.set_title("(d) the push meeting time also reshapes the period itself", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig28_polar_split.png")
+
+
+def fig29():
+    import polar_split as ps
+    jj = json.load(open(os.path.join(HERE, "jet_boost.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    # (a) the one jet, squared: six pieces; the cross piece P.S exists only if push and twist are one jet
+    ax = axs[0, 0]
+    ax.set_xlim(-1.6, 4.6); ax.set_ylim(-1.9, 4.3); ax.set_aspect("equal"); ax.axis("off")
+    labs = ["E\n(time)", "P\n(push)", "S\n(twist)"]
+    cols = {"EE": GREY, "EP": ORANGE, "PP": ORANGE, "ES": BLUE, "SS": BLUE, "PS": RED}
+    for i in range(3):
+        ax.text(i + 0.5, 3.45, labs[i], ha="center", va="center", fontsize=9.5, weight="bold")
+        ax.text(-0.35, 2.5 - i, labs[i], ha="center", va="center", fontsize=9.5, weight="bold")
+    nm = ["E", "P", "S"]
+    for i in range(3):
+        for j in range(3):
+            key = "".join(sorted([nm[i], nm[j]], key=lambda c: "EPS".index(c)))
+            c = cols[key]
+            ax.add_patch(FancyBboxPatch((j + 0.05, 2.05 - i), 0.9, 0.9, boxstyle="round,pad=0.02", fc=c,
+                                        alpha=0.55 if key == "PS" else 0.25, ec=c, lw=2.2 if key == "PS" else 1))
+            ax.text(j + 0.5, 2.5 - i, f"{nm[i]}·{nm[j]}", ha="center", va="center", fontsize=10,
+                    weight="bold" if key == "PS" else "normal")
+    ax.text(3.2, 2.95, "one jet:\n(E + P + S)²\nall nine tiles", fontsize=9.2, va="top")
+    ax.text(3.2, 1.6, "two velocities:\n(E + P)² + (E + S)² − E²\nthe red tiles missing", fontsize=9.2, va="top",
+            color=RED)
+    ax.text(-1.5, -0.35, "The push and the twist are two shears into the same leg of each cell, so as jets they\n"
+            "compose into one shear, a single ray k = time + push + twist. The field is that ray squared.\n"
+            "Its cross piece P·S, push meeting twist, is the only thing the jet rule adds; without it\n"
+            "the field is no longer empty space (Ricci ~ 10⁻² near the hole instead of 10⁻⁵⁰).", fontsize=8.6,
+            va="top")
+    ax.set_title("(a) one jet, squared: the cross piece P·S is the jet rule's", fontsize=10.5, pad=10)
+    # (b) equator: the spin term and the clock gap, one jet vs two velocities
+    ax = axs[0, 1]
+    rr = np.linspace(2.0, 40, 400); u = 1/rr
+    ax.axhline(1, color=GREY, lw=2.6, label=r"one jet (Kerr): spin term $8\chi u^{3/2}$ and clock gap $2\pi a$, at every radius")
+    ax.plot(rr, (1 - 2*u)*(1 - 3*u), color=RED, lw=2.2, label="two velocities, spin term: × (1 − 2u)(1 − 3u)")
+    ax.plot(rr, 1 - 4*u, color=ORANGE, lw=2.2, ls="--", label="two velocities, clock gap: × (1 − 4M/r)")
+    gp = jj["clock_gap"]["two velocities"]["per unit a, small spin"]
+    ax.plot([g[0] for g in gp if 4 < g[0] <= 40], [g[1] for g in gp if 4 < g[0] <= 40], "o", color=ORANGE, ms=6)
+    ax.axhline(0, color="k", lw=0.6)
+    for x0, lab, yv in ((3, "r = 3M: spin term 0", -0.3), (4, "r = 4M: clock gap 0", -0.42)):
+        ax.axvline(x0, color="k", lw=0.6, ls=":"); ax.text(x0 + 0.4, yv, lab, fontsize=8)
+    ax.set_xlim(2, 40)
+    ax.set_xlabel("orbit radius r / M   (equator, small spin)"); ax.set_ylabel("÷ Kerr's value")
+    ax.set_ylim(-0.5, 1.25); ax.legend(fontsize=8.3, loc="lower right")
+    ax.set_title("(b) in the equator, two velocities spoil the spin term and the clock gap", fontsize=10.5)
+    # (c) the spin tower piece by piece
+    ax = axs[1, 0]
+    tw = jj["spin_tower_chi_u15_u25_u35"]
+    groups = [("push + E·S\n(twist meets time)", tw["EE+PP+EP+ES"]), ("push + P·S\n(twist meets push)", tw["EE+PP+EP+PS"]),
+              ("all six pieces\n(one jet)", tw["EE+PP+EP+SS+ES+PS"]), ("all but P·S\n(two velocities)", tw["EE+PP+EP+SS+ES"])]
+    xs = np.arange(len(groups)); wbar = 0.26
+    for k, (lab, col) in enumerate(((r"$\chi u^{3/2}$", GREY), (r"$\chi u^{5/2}$", RED), (r"$\chi u^{7/2}$", PURPLE))):
+        vals = [g[1][k] for g in groups]
+        ax.bar(xs + (k - 1)*wbar, vals, wbar, color=col, alpha=0.8, label=lab)
+        for xv, v in zip(xs + (k - 1)*wbar, vals):
+            ax.text(xv, v + (2 if v >= 0 else -6), f"{v:+.0f}" if abs(v) > 1e-6 else "0", ha="center", fontsize=8.2)
+    ax.axhline(0, color="k", lw=0.8)
+    ax.set_xticks(xs); ax.set_xticklabels([g[0] for g in groups], fontsize=8.6)
+    ax.set_ylabel("coefficient in (radial rate ÷ orbit rate)²"); ax.set_ylim(-60, 78)
+    ax.legend(fontsize=8.4, loc="upper center", ncol=3, title="spin term", title_fontsize=8.4)
+    ax.set_title("(c) the twist through E·S leaves a tower; through P·S it takes it out", fontsize=10.5)
+    # (d) over the poles: the plane's turning, one jet vs two velocities
+    ax = axs[1, 1]
+    rs = np.logspace(np.log10(3), np.log10(300), 80); av = 0.9
+    one = np.array([float(ps.node_rate_exact(1.0, av, rv)[0]) for rv in rs])
+    ratio = (rs**2 - 2*rs + av**2)/(rs**2 + av**2)
+    ax.loglog(rs, one, color=GREY, lw=2.6, label="one jet (Kerr): from 2MraE/Δ")
+    ax.loglog(rs, one*ratio, color=RED, lw=2.2, label="two velocities: from 2MraE/(r² + a²)")
+    ax.loglog(rs, 2*av/rs**3, "k--", lw=1.2, label="Lense–Thirring 2J/r³")
+    ax.set_xlabel("orbit radius r / M   (polar orbit, spin a = 0.9 M)")
+    ax.set_ylabel("turning rate of the plane (radians per unit of time t, M = 1)")
+    ax.legend(fontsize=8.4, loc="lower left")
+    ins = ax.inset_axes([0.58, 0.58, 0.38, 0.35])
+    ins.semilogx(rs, ratio, color=RED, lw=1.8); ins.axhline(1, color=GREY, lw=1.6)
+    ins.set_title("two velocities ÷ one jet = Δ/(r² + a²)", fontsize=8); ins.tick_params(labelsize=7)
+    ins.plot([6], [(36 - 12 + 0.81)/36.81], "o", color=RED, ms=4); ins.text(7, 0.6, "0.67 at r = 6M", fontsize=7)
+    ax.set_title("(d) over the poles, the cross piece is the strong-field part of the plane's turning", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig29_jet_boost.png")
+
+
 def sp_frac(s):
     from fractions import Fraction as Fr
     return Fr(s)
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25):
+# ---------------------------------------------------------------- fig30 round 22: one law for both wobbles
+def fig30():
+    wl = json.load(open(os.path.join(HERE, "wobble_law.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    # (a) the two wobbles as functions of the spin, at several strengths: every curve has the same bend
+    ax = axs[0, 0]
+    qs = np.linspace(-0.45, 0.45, 300)
+    cols = [GREY, BLUE, PURPLE, RED]
+    for c, uu in zip(cols, (0.0, 0.04, 0.08, 0.12)):
+        vv = np.sqrt(uu); Dd = 1 - 3*uu + 2*qs*vv
+        ax.plot(qs, Dd - 3*(vv - qs)**2, color=c, lw=2.2, label=("M/r → 0 (Newton)" if uu == 0 else f"M/r = {uu:g}"))
+        ax.plot(qs, Dd + 3*(vv - qs)**2, color=c, lw=1.6, ls="--")
+    ax.text(0.05, 1.55, "up-and-down:  D + 3(v − q)²", fontsize=9.5, color="k")
+    ax.text(0.05, -0.7, "in-and-out (solid):  D − 3(v − q)²", fontsize=9.5, color="k")
+    ax.text(0.05, 1.42, "(dashed)", fontsize=9, color="k")
+    ax.axhline(0, color="k", lw=0.6)
+    ax.set_xlabel("spin seen from the orbit,  q = a/r   (negative: orbit runs against the spin)")
+    ax.set_ylabel("(wobble rate ÷ orbit rate)²")
+    ax.legend(fontsize=8.5, loc="lower center", ncol=4)
+    ax.set_title("(a) one law for both wobbles: the bend in q is ∓3 at every strength\n"
+                 "(the curves for stronger fields are the same parabolas, slid over)", fontsize=10.5)
+    # (b) Mino-time stiffness: a seesaw that always adds to 2Mr
+    ax = axs[0, 1]
+    rr = np.linspace(1.6, 20, 400)
+    for aa, ls, nm in ((0.9, "-", "with the spin (a = 0.9M)"), (-0.9, ":", "against the spin (a = −0.9M)")):
+        vv = np.sqrt(1/rr); qq = aa/rr
+        x2r2 = (vv - qq)**2/(1 - 3*vv**2 + 2*qq*vv)
+        ok = (1 - 3*vv**2 + 2*qq*vv) > 0.02
+        ax.plot(rr[ok], 1 - 3*x2r2[ok], color=ORANGE, ls=ls, lw=2.2, label=f"in-and-out, {nm}")
+        ax.plot(rr[ok], 1 + 3*x2r2[ok], color=BLUE, ls=ls, lw=2.2, label=f"up-and-down, {nm}")
+    ax.axhline(1, color=GREY, lw=1.2); ax.axhline(0, color="k", lw=0.6)
+    ax.text(11.5, 0.9, "average: exactly 1 (the two add to 2Mr)", fontsize=9, color=GREY)
+    ax.annotate("innermost stable orbit\n2.32M", (2.32, 0), (3.2, -0.45), fontsize=8, arrowprops=dict(arrowstyle="->"))
+    ax.annotate("8.72M", (8.72, 0), (9.6, -0.4), fontsize=8, arrowprops=dict(arrowstyle="->"))
+    ax.set_ylim(-0.6, 2.6); ax.set_xlim(1.6, 20)
+    ax.set_xlabel("orbit radius r / M")
+    ax.set_ylabel("stiffness in Mino time ÷ Mr  =  1 ∓ 3 x²/r²")
+    ax.legend(fontsize=8, loc="upper right")
+    ax.set_title("(b) the mass meets the orbit's spin-relative turning x = L − aE only as 2Mr·x²,\n"
+                 "one power of r, so it moves stiffness from in-and-out to up-and-down and adds none", fontsize=10.5)
+    # (c) the river's jet energy on the orbit: energy + push + twist = 1/sqrt(D), spin to the first power only
+    ax = axs[1, 0]
+    radii = np.array([3.0, 4.0, 6.0, 10.0, 20.0]); aa = 0.9
+    vv = np.sqrt(1/radii); qq = aa/radii; Dd = 1 - 3*vv**2 + 2*qq*vv
+    Ek = (1 - 2*vv**2 + qq*vv)/np.sqrt(Dd); Lk = radii*vv*(1 - 2*qq*vv + qq**2)/np.sqrt(Dd)
+    Sk = -aa*Lk/(radii**2 + aa**2); Pk = 2*radii*(Ek + Sk)/(radii**2 - 2*radii + aa**2)
+    xs = np.arange(len(radii)); wdt = 0.6
+    ax.bar(xs, Ek + Sk, wdt, color=GREY, label="E (energy), less the twist")
+    ax.bar(xs + wdt/2 + 0.07, -Sk, 0.12, bottom=Ek + Sk, color=BLUE,
+           label="S (the rays' twist): takes this much off E")
+    ax.bar(xs, Pk, wdt, bottom=Ek + Sk, color=ORANGE, alpha=0.9, label="P (the river's push, on the orbit)")
+    ax.plot(xs, 1/np.sqrt(Dd), "k_", ms=34, mew=2.5, label="1/√D,  D = 1 − 3v² + 2qv")
+    for i in range(len(radii)):
+        ax.text(xs[i], Ek[i] + Sk[i] + Pk[i] + 0.04, f"{Ek[i] + Pk[i] + Sk[i]:.3f}", ha="center", fontsize=8.5)
+    ax.set_xticks(xs); ax.set_xticklabels([f"r = {int(r_)}M" for r_ in radii])
+    ax.set_ylabel("jet energy k·p = E + P + S on the circular orbit")
+    ax.set_ylim(0, 2.25); ax.legend(fontsize=8.3, loc="upper right")
+    ax.set_title("(c) on the orbit, energy + push + twist lands exactly on 1/√D (a = 0.9M, prograde)\n"
+                 "x = L − aE comes out as r(v − q)·k·p, the turning rate as r v·k·p", fontsize=10.5)
+    # (d) two ways to cut the a^2 M term; both sum to zero, the law says why
+    ax = axs[1, 1]
+    cut1 = [("2E·P", 20, ORANGE), ("P·P", 8, ORANGE), ("S·S", -16, BLUE), ("2E·S", -12, BLUE), ("2P·S", 0, RED)]
+    jp = wl["jet_pieces"]
+    e0 = float(sp_frac(jp["E alone"]["a2M"])); e1 = float(sp_frac(jp["E + push of E"]["a2M"]))
+    e2 = float(sp_frac(jp["E + twist"]["a2M"]))
+    cut2 = [("E alone", e0, GREY), ("push of E", e1 - e0, ORANGE), ("twist", e2 - e0, BLUE), ("push of twist", 0, RED)]
+    xs1 = np.arange(len(cut1))
+    ax.bar(xs1, [c[1] for c in cut1], 0.7, color=[c[2] for c in cut1])
+    for xx, c in zip(xs1, cut1):
+        ax.text(xx, c[1] + (1.0 if c[1] >= 0 else -2.4), f"{c[1]:+g}", ha="center", fontsize=9)
+    ax.set_xticks(xs1); ax.set_xticklabels([c[0] for c in cut1], fontsize=8.5)
+    ax.set_xlim(-0.6, 9.4); ax.axhline(0, color="k", lw=0.8); ax.set_ylim(-22, 27)
+    ax.text(2, 23, "round 20: cut the field\n(a/r)²(M/r) in T, sum 0", ha="center", fontsize=9)
+    ins = ax.inset_axes([0.56, 0.1, 0.42, 0.62])
+    xs2 = np.arange(len(cut2))
+    ins.bar(xs2, [c[1] for c in cut2], 0.7, color=[c[2] for c in cut2])
+    for xx, c in zip(xs2, cut2):
+        ins.text(xx, c[1] + (0.2 if c[1] >= 0 else -0.55), f"{c[1]:+g}", ha="center", fontsize=8.5)
+    ins.set_xticks(xs2); ins.set_xticklabels([c[0] for c in cut2], fontsize=7.5); ins.tick_params(labelsize=7)
+    ins.axhline(0, color="k", lw=0.8); ins.set_ylim(-4.5, 5.5)
+    ins.set_title("cut the jet energy on the orbit:\n(a/r)²(M/r) in 1/(k·p)², sum 0", fontsize=8.5)
+    ax.set_ylabel("share of the (a/r)²(M/r) term")
+    ax.set_title("(d) different cuts give different shares and the same zero: the shares are bookkeeping;\n"
+                 "the reason is that spin squared can only enter as (v − q)²", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig30_wobble_law.png")
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30):
     f()
 print("figures:", sorted(os.listdir(FIG)))
