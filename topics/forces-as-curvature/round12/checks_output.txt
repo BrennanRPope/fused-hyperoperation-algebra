@@ -1,0 +1,16 @@
+== Z. The law with 3D velocities sets its own distances and midpoints
+PASS Z1 (exact) with 3D velocities (pure quaternions) the law stays 3D: u (+) v = [(1 - 2q u.v - q|v|^2) u + (1 + q|u|^2) v] / (1 - 2q u.v + q^2 |u|^2 |v|^2); at q = -1 this is Ungar's Mobius addition
+PASS Z2 the law's own boosts keep the law's own distance d = 2 arctan|(-a)(+)b| (q = +1) or 2 artanh|(-a)(+)b| (q = -1): 500 random triples each  | q = +1: 8.9e-16; q = -1: 7.7e-14
+PASS Z3 the law's distance is the true distance of the round 3-sphere (q = +1) and of hyperbolic 3-space (q = -1), checked against the embedded spaces without the law  | 3-sphere 8.3e-16; hyperbolic 2.0e-14
+PASS Z4 the law's half kick g / (1 + sqrt(1 + q|g|^2)) lands exactly halfway: the midpoint is half the distance from each end  | q = +1: 6.7e-16; q = -1: 1.2e-14
+
+== Y. A 3-sphere glued from pieces whose sizes come only from the law
+PASS Y1 sizes from the law (q = +1): every edge's length is the law's distance, every new corner a half kick; Regge's action tends to (1/2) x integral of R = 6 pi^2 (R = 6q) at second order  | level 0 (600 tets): 58.08146, off 1.919%; level 1 (4800 tets): 58.87590, off 0.577%; level 2 (38400 tets): 59.12891, off 0.150%; level 3 (307200 tets): 59.19524, off 0.038%
+PASS Y2 turning the dial to q = 1/4 with the same corners: the action tends to 6 pi^2 / sqrt(q) = 12 pi^2, a sphere of radius 2, so the law's q is the curvature  | level 0: 116.16293 (vs 118.43525); level 1: 117.75181 (vs 118.43525); level 2: 118.25781 (vs 118.43525); level 3: 118.39049 (vs 118.43525)
+PASS Y3 with a cosmological constant, the law-built sphere's best size gives Lambda rho^2 -> 1, as Einstein's equations do  | level 0: 1.10380; level 1: 1.02955; level 2: 1.00754; level 3: 1.00189
+
+== X. Both ends of the dial: the deficit's sign follows q
+PASS X1 at q = 0 (no curvature) the 20 law-built tetrahedra round a corner close up exactly: zero deficit on all 12 edges from the centre  | worst 4.4e-16
+PASS X2 at every other q the deficit is q x (a fixed number) x size^2: positive (gaps, like a sphere) for q > 0, negative (overlaps, saddle-like) for q < 0, the same number at both ends  | q = +1.00: deficit / (q size^2) = 0.33467; q = +0.25: deficit / (q size^2) = 0.33468; q = -0.25: deficit / (q size^2) = 0.33469; q = -1.00: deficit / (q size^2) = 0.33470
+
+9 passed, 0 failed
