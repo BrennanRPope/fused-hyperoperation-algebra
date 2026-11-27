@@ -1,6 +1,6 @@
 name = "FusedAlgebraMathlib"
 version = "0.1.0"
-defaultTargets = ["FusedAlgebra", "ProofComplexity"]
+defaultTargets = ["FusedAlgebra", "ProofComplexity", "MathlibCandidates"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -28,6 +28,11 @@ roots = ["ProofComplexity"]
 relaxedAutoImplicit = true
 weak.linter.mathlibStandardSet = false
 maxSynthPendingDepth = 1
+
+# Files written in Mathlib's style as candidates to send to Mathlib (DRAFT; no PR planned yet).
+# MathlibCandidates/README.md lists them. Same options as FusedAlgebra.
+[[lean_lib]]
+name = "MathlibCandidates"
 
 # The one topic file that imports Mathlib directly (topics/tesseract/TesseractCoords.lean), built
 # from where it lives. Not a default target: CI builds it in its own report-only step.

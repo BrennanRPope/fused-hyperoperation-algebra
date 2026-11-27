@@ -115,8 +115,14 @@ Contribution culture: upstream accepts AI-assisted code (there is an `FLT/Slop/`
 Frey model is proved minimal with good or multiplicative reduction over every DVR, and mathlib's
 split condition is shown to match the circle-operation node law (away from 2: split exactly when
 B − A is a square mod the prime). The torsion `group_theory_lemma` and the Galois action laws were
-carried over from the fork. The Tate curve is not done (mathlib has none), and nothing was sent
-upstream.
+carried over from the fork. Nothing was sent upstream.
+
+**Update, Nov 27, 2026 (later):** item 4 is started. Brennan asked for the Tate curve as a Mathlib
+candidate; it is in [`lean-library-mathlib/MathlibCandidates/`](../../lean-library-mathlib/MathlibCandidates/)
+(DRAFT, built by CI): the formal curve over `R⟦q⟧`, `c₄ = E₄`, `c₆ = −E₆`, `Δ = q · unit`, split
+multiplicative reduction over `k⸨q⸩`, and the link to Mathlib's modular forms `E₄`, `E₆`, `Δ`.
+The uniformisation `K^×/q^ℤ ≅ E_q(K)`, where the node law would appear as the `q = 0` end, is
+not done.
 
 Paths are in the upstream repo unless marked.
 

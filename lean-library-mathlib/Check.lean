@@ -1,5 +1,6 @@
 import FusedAlgebra
 import ProofComplexity
+import MathlibCandidates
 import Lean
 
 /-!
@@ -38,5 +39,9 @@ elab "#check_fused_library" : command => checkLibrary `FusedAlgebra
 /-- Check the proof-complexity study. -/
 elab "#check_proof_complexity" : command => checkLibrary `ProofComplexity
 
+/-- Check the Mathlib candidates (the Tate curve). -/
+elab "#check_mathlib_candidates" : command => checkLibrary `MathlibCandidates
+
 #check_fused_library
 #check_proof_complexity
+#check_mathlib_candidates

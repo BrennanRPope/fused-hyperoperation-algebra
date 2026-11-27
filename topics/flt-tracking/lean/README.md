@@ -43,8 +43,11 @@ the check that the fork's two proofs still build on a newer mathlib than either 
 
 ## Not done
 
-- **Tate curve.** Mathlib has no Tate curve, so the "circle-operation law as a q-deformation"
-  lead stays a lead. The split-node bridge above is the part that can be stated today.
+- **Tate curve.** Now started, as a Mathlib candidate in
+  [`lean-library-mathlib/MathlibCandidates/`](../../../lean-library-mathlib/MathlibCandidates/)
+  rather than here, so CI builds it. It has the formal curve, its invariants and its split
+  multiplicative reduction, but not the uniformisation, so the "circle-operation law as a
+  q-deformation" lead stays a lead.
 - **Upstream contribution.** `group_theory_lemma` and the Galois laws are still `sorry` in
   Buzzard's repository. Sending them upstream would mean a public PR from Brennan's account; not
   done, and the fork may get there first.

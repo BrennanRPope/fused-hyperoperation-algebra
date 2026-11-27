@@ -1,5 +1,7 @@
 # Mathlib port: what it takes to merge (FHA 1.0 checklist, item 3) — Nov 25, 2026
 
+> **Update (Nov 27): a Mathlib-candidates library.** `lean-library-mathlib/MathlibCandidates/` holds files written in Mathlib's own style to offer to Mathlib later, starting with the Tate curve (asked for by Brennan). CI builds it as a default target and `Check.lean` checks its axioms. Still no pull request to Mathlib; the Tate curve overlaps Buzzard's FLT project and should be merged with it first.
+>
 > **Update (Nov 25, ~22:30 UTC): merged into main.** Brennan asked for everything on main, so `mathlib-port` was merged and main's CI now builds `lean-library-mathlib/` (the port plus the proof-complexity study) on every push. Still no pull request to Mathlib.
 >
 > **Earlier update (Nov 25, ~22:00 UTC): the build check is in place and green.** The Mathlib build workflow (`.github/workflows/mathlib-build.yml`) now runs on the `mathlib-port` branch too (commit 86b5ae3 on that branch). Its first push run built the port with mathlib's cache on GitHub and checked it: 1,970 theorems, standard axioms only, no `sorry` ([run 3](https://github.com/BrennanRPope/fused-hyperoperation-algebra/actions/runs/45708349981)). The branch is still not merged, and no pull request to Mathlib is planned until the theory is more complete (Brennan). Step 2 below is done; the "can't be built in this cloud" point still holds for this workspace, but GitHub builds it.

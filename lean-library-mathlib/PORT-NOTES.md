@@ -20,6 +20,9 @@ Lean 4.37.0-rc1 with mathlib v4.37.0-rc1. The core-Lean library is untouched.
   known results, copied unchanged from `topics/proof-complexity/lean/` on main). It is a separate
   library in the same package, with its own options matching where it was first compiled, and
   `Check.lean` checks it the same way. It is not part of the port and has no name table.
+- Also built here since Nov 27: the Mathlib candidates (`MathlibCandidates/`, DRAFT), files in
+  Mathlib's style meant to be offered to Mathlib later, starting with the Tate curve. Same options
+  as the port; `Check.lean` checks it the same way. Not part of the port; see its README.
 
 These checks alone do not establish that each ported statement says exactly what the original
 said. Where a statement was restated, generalised, strengthened or given an extra hypothesis,
