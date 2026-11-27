@@ -8,7 +8,7 @@ So this page plays with the model one parameter off the plane dial and reports w
 Builds on F3, [`elliptic/`](../elliptic/) (Tate's curve, the node), [`named-functions/`](../named-functions/) (generators,
 heights, the hypernatural logarithm), [`height-flow/`](../height-flow/) (the fingerprint), [`corner-weights/`](../corner-weights/).
 
-**Checks:** `checks.py` → `checks_output.txt`, **30 of 30 pass** (sympy exact; mpmath 40 digits; about 30 s).
+**Checks:** `checks.py` → `checks_output.txt`, **30 of 30 pass** (sympy exact; mpmath 40 digits; about 30 s); section 7 adds `pendulum/pendulum_checks.py`, **12 of 12 pass**.
 **Polish:** `polish.py` → `polish_output.txt` (the fingerprint read off a 200,000-step orbit; wall distances by quadrature;
 a half height at 50 digits). **Lean:** `lean/EllipticModulus.lean`, **11 theorems, compiled** in the shared library as
 `FusedAlgebra.Topics.EllipticModulus`, no `sorry`. **Pictures:** `figures.py` → `figures/`. Heights: `heights.py`; series: `series.py`, `numseries.py`.
@@ -43,6 +43,9 @@ here (a = 1); it is written out because its usual letter, d, is our curvature di
 7. **Theta is the lift copied round the torus.** Jacobi's theta function is the product of our lifts 1 + zqʲ along
    Tate's orbit, a corner sum over an infinite cube, and its zeros are the circle operation's one wall at −1, copied once per turn.
    As q → 0 only two corners survive and it becomes the lift 1 + z and the KdV soliton.
+8. **The pendulum picture, worked out (Nov 27).** Our curvature reading is the pendulum's energy, κ = 1 − 2E/E_top. The
+   reading is exactly 1 at half the time to the turning point, on every swing. Past the separatrix the wall is replaced
+   by a cap, √m − √(m − 1). Our conic laws, tan and tanh, are exactly the border between swinging and going over the top.
 
 ---
 
@@ -202,6 +205,71 @@ positions. (c) The same τ as a KdV wave, u = 2∂²ₓ log τ: cnoidal for q = 
 
 ---
 
+## 7. The pendulum picture, worked out (Nov 27)
+
+Asked for by Brennan (thread, Nov 26): "Let's work on the pendulum picture here." Checks: `pendulum/pendulum_checks.py` →
+`pendulum/pendulum_checks_output.txt`, **12 of 12 pass** (mpmath 30 digits; the pendulum itself integrated with scipy at
+10⁻¹²). Lean: `pendulum/lean/EllipticPendulum.lean`, **7 theorems, compiled** in the shared library as `FusedAlgebra.Topics.EllipticPendulum`, standard axioms only. Pictures:
+`pendulum/figures_pendulum.py` → Figs 6–8. Time is in units where ω = 1.
+
+![Fig 6](figures/fig6-phase-plane.png)
+
+**Fig 6.** (a) Every pendulum on one sheet, angle across and speed up. Each closed or wavy curve is one energy, coloured by
+our curvature reading. The green curves are the slope reading t = sin θ/θ′, which is a sine curve on this sheet; the bold
+one is t = 1. The red axis θ′ = 0 is the wall: the pendulum turns back and the reading is infinite. White dots mark t = 1
+on each swing. (b) The whole energy line.
+
+- **Our dial is the energy.** Writing E for the energy measured from the bottom and E_top for the energy that just reaches
+  the top, Jacobi's modulus is m = E/E_top, so **κ = 1 − 2E/E_top** (C1 again; Lean `kappa_is_energy`). The dial is linear in
+  energy: κ = +1 at rest, 0 at half the top energy (the 90° swing), −1 at the top.
+- **The reading draws itself on the sheet.** The level curves of the slope reading are sine curves θ′ = sin θ/t, all
+  through the bottom and the top. So the whole slope chart is one family of curves laid over the energy curves, and the
+  law is "add times along one energy curve, read where you land".
+- **Halfway to the wall the reading is exactly 1, on every swing.** The law has a mirror: **G(u)·G(K − u) = 1** (P1, 10⁻³⁰;
+  Lean `complementary_time`). Time from the bottom and time left to the turning point give readings t and 1/t. So t = 1
+  at exactly half the time to the turning point, at the angle **cos θ\* = 2 cos(θ₀/2) − 1** (P4, from the integrated
+  pendulum; Lean `halfway_condition`, `halfway_root`). For a tiny swing this is θ₀/√2; on the separatrix it is the top,
+  reached only after infinite time. In complex time the same mirror says the reading has size exactly 1 on the whole
+  vertical line halfway to the wall (P2).
+- **Over the top the wall goes away and a cap comes in.** Past the separatrix (m > 1) the pendulum never stops, so the
+  reading never blows up. It swings between ±(√m − √(m − 1)), always below 1 (P5 matches the integrated pendulum to 10⁻¹²;
+  P6 the cap to 10⁻³⁰; P8 its period 2K(1/m)/√m). The cap and its partner 1/cap are the roots of the law's quartic
+  1 + 2κt² + t⁴, which reads the same backwards (P7; Lean `cap_partner`, `cap_is_root`, `quartic_palindromic`).
+- **Wick swaps caps and walls.** In imaginary time going over the top becomes m < 0 (κ > 1), and there the real-time
+  reading has walls again (P12). So the energy line has three bands (Fig 6b): κ < −1 capped, −1 < κ < 1 walls at the
+  turning points, κ > 1 walls again as the imaginary-time image of the capped band.
+
+![Fig 7](figures/fig7-three-motions.png)
+
+**Fig 7.** (a) The reading against time. Swinging (grey) runs into a wall at every turn; the separatrix (orange, tanh)
+creeps up to 1; going over the top (purple) stays under a cap. (b) Below the separatrix the time to the wall K(m), and to
+t = 1, K(m)/2, both blow up at the separatrix; above it the cap falls from 1. (c) The mirror on a log scale: every swing's
+curve is point-symmetric about (half the time to the wall, t = 1).
+
+![Fig 8](figures/fig8-complex-time.png)
+
+**Fig 8.** Walls (red) and zeros (green) of the reading in complex time. When swinging, the real time line runs straight
+into walls. Over the top it slips between two rows of walls. The separatrix is where the real line stops hitting them.
+Dashed green: the halfway lines, where the reading has size exactly 1.
+
+- **Our conic laws are the border between swinging and going over the top.** The one number an odd quartic law keeps under
+  rescaling is ε/κ² (section 3), and here it is 1/κ². It is above 1 for every swing (walls at turning points) and below 1
+  on the capped band and its Wick image. It equals 1 at exactly two places, the two ends of the swinging band, and those
+  are our conic laws: tan at the tiny swing and tanh at the separatrix. So the conic plane is where elliptic laws change
+  from one behaviour to the other.
+- **Known versus ours.** The pendulum's phase portrait, its energy, its modulus, the separatrix and the quarter-period
+  shift formulas that give G(u)·G(K − u) = 1 are textbook. Ours, and not found in a short look: the curvature reading as
+  the energy, the slope reading drawn as sine curves on the phase sheet, "t = 1 at half the time to the turning point"
+  with cos θ\* = 2 cos(θ₀/2) − 1, the cap √m − √(m − 1) as the over-the-top replacement for the wall, and the conic laws as
+  the border between the two behaviours. Each is elementary once seen.
+- **Verdict: opens a lead, for the theory's own picture more than for new mathematics.** It gives the walls a physical
+  meaning (turning back), gives the region past relativity a meaning (going over the top, capped), and places the conic
+  plane exactly on the border between them. It also hands statistical physics a familiar shape to compare with: the
+  separatrix's logarithmic blow-up of K(m) is the same function behind Onsager's logarithmic specific heat in the 2D
+  Ising model. Whether that is more than a resemblance in our setting is a question for the Lee–Yang work, not checked here.
+
+---
+
 ## What was not done
 
 - **k ≠ 0.** The slide σ carries all of this to k ≠ 0, but there an elliptic law has the same fingerprint as some conic
@@ -217,10 +285,15 @@ positions. (c) The same τ as a KdV wave, u = 2∂²ₓ log τ: cnoidal for q = 
 `lean/EllipticModulus.lean`, 11 identities over Int with denominators cleared, compiled in the shared library as
 `FusedAlgebra.Topics.EllipticModulus` (the old name `MultAdd.multAdd` updated to `CircleOp.circ`): `wick_flips_kappa`, `slope_log_quartic`, `conic_is_square`, `fingerprint_general`,
 `slope_numerator`, `slope_numerator_wick`, `height_scales_fingerprint`, `normal_form_inverse`, `slope_monotone_sos`,
-`pendulum_kappa`, `theta_fold_three`.
+`pendulum_kappa`, `theta_fold_three`. Section 7: `pendulum/lean/EllipticPendulum.lean`, 7 identities over Int (core Lean,
+no import): `kappa_is_energy`, `halfway_condition`, `halfway_root`, `cap_partner`, `cap_is_root`, `quartic_palindromic`,
+`complementary_time`; compiled in the shared library as `FusedAlgebra.Topics.EllipticPendulum` (namespace
+`CircleOp.EllipticPendulum`), no proof changed.
 
 ## Files
 
 `checks.py`, `checks_output.txt`, `checks.json`; `polish.py`, `polish_output.txt`; `series.py` (exact series),
 `numseries.py` (high-precision series, Julia field, flows), `heights.py` (fractional heights on the real line),
 `julia_growth.py`, `julia_growth.json`; `figures.py`, `figures/`; `lean/EllipticModulus.lean`.
+Section 7: `pendulum/pendulum_checks.py`, `pendulum/pendulum_checks_output.txt`, `pendulum/pendulum_checks.json`,
+`pendulum/figures_pendulum.py` (Figs 6–8), `pendulum/lean/EllipticPendulum.lean`.

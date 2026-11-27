@@ -1321,6 +1321,13 @@ FusedAlgebra.Topics.EllipticModulus	EllipticModulus.slope_numerator	propext, Cla
 FusedAlgebra.Topics.EllipticModulus	EllipticModulus.slope_numerator_wick	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticModulus	EllipticModulus.theta_fold_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticModulus	EllipticModulus.wick_flips_kappa	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticPendulum	CircleOp.EllipticPendulum.cap_is_root	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticPendulum	CircleOp.EllipticPendulum.cap_partner	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticPendulum	CircleOp.EllipticPendulum.complementary_time	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticPendulum	CircleOp.EllipticPendulum.halfway_condition	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticPendulum	CircleOp.EllipticPendulum.halfway_root	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticPendulum	CircleOp.EllipticPendulum.kappa_is_energy	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EllipticPendulum	CircleOp.EllipticPendulum.quartic_palindromic	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.cayley_hamilton	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.circ_is_1x1	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.circle_moments	

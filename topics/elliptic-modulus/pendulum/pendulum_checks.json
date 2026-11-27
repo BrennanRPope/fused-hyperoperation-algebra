@@ -1,0 +1,62 @@
+[
+ [
+  "P1 G(u)G(K-u)=1 (complementary time)",
+  true,
+  "7.89e-31"
+ ],
+ [
+  "P2 |G| = 1 on Re u = K/2",
+  true,
+  "1.97e-31"
+ ],
+ [
+  "P3 bookkeeping: kappa = 1 - 2E/E_top with E from the bottom, E_top = 2 omega^2",
+  true,
+  "2.220446049250313e-16"
+ ],
+ [
+  "P4 t = 1 at half time to the wall; cos th* = 2cos(th0/2) - 1",
+  true,
+  "1.0862422072932532e-12"
+ ],
+ [
+  "P5 over the top: sin th / th' = G_m(t), m > 1",
+  true,
+  "1.585511236190662e-12"
+ ],
+ [
+  "P6 cap max G = sqrt(m) - sqrt(m-1)",
+  true,
+  "1.97e-31"
+ ],
+ [
+  "P7 cap solves 1 + 2 kappa t^2 + t^4 = 0, partner 1/t",
+  true,
+  "2.02e-28"
+ ],
+ [
+  "P8 over the top G has real period 2K(1/m)/sqrt m",
+  true,
+  "1.97e-31"
+ ],
+ [
+  "P9 sn-chart fingerprint symmetric m -> 1/m",
+  true,
+  "1.97e-31"
+ ],
+ [
+  "P10 dwell density ~ (th0-th)^(-1/2) at the wall",
+  true,
+  "-0.5000094579914167"
+ ],
+ [
+  "P11 separatrix: G -> tanh, cap -> 1",
+  true,
+  "('6.55e-12', '1.0e-6')"
+ ],
+ [
+  "P12 Wick swaps caps and walls (m>1 <-> m<0); m<0 has a wall at K(m)",
+  true,
+  "('2.47e-32', '1.17e-12')"
+ ]
+]

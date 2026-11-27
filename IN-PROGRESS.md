@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,626 theorems in 163 modules, Nov 26 ~23:20 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,633 theorems in 164 modules, Nov 27 ~00:30 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -51,3 +51,5 @@ Nov 26 (late): `topics/riemann/round9/` added as DRAFT (the Hilbert–Pólya str
 Nov 26 (late): shape-dial survey section N3, even roundness from Pólya's end (DRAFT): every even p settled for every a (coefficient rescaling by 1/Γ, a multiplier sequence); `even_p_proof_check.py` 4 of 4 (852 s), in CI's extra checks; figure 28; page rebuilt. Still open on Lee–Yang: only the holding side (a ≤ p) at non-even p past 8; non-even p from 1.1 to 8 is proved (computer-assisted), the breaking side a > p is proved at non-even p, and every even p is proved for every a.
 
 Nov 27: `topics/hypersphere/` cleaned up under Affine Composition Theory (DRAFT; README and orbits README restructured; checks 57, 23, 11, 8 and 11 rerun and passing; fig2 and fig8 renamed). Its Lean file came back with `decide` on 14 Rat facts and a local ◯ notation that clashes with Base; those were put back to the library's compiling proofs and notation, with no statement changed, and `Topics/Hypersphere` recompiles (33 theorems).
+
+Nov 27: `topics/elliptic-modulus/` section 7, the pendulum picture (DRAFT; `pendulum/pendulum_checks.py` 12 of 12, in CI's extra checks; figs 6–8); `EllipticPendulum` compiled into the library, all 7 theorems, no proof changed. The shared copy's README had older wording (mult-add, pre-library compile notes); the repo's newer wording was kept and the shared copy's older `lean/EllipticModulus.lean` was not taken.
