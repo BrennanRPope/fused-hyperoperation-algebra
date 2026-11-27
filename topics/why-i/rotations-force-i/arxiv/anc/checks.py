@@ -334,4 +334,32 @@ check("T6b the shift rule A4 follows from composites: booking a constant to A or
       "an H-dependent shift turn would give two different joint generators for it; local operators act faithfully on the "
       "balanced product W, so A(H + c) - A(H) is the same for every H (Lean: Booking.shift_independent)", ok)
 
+ok = True
+# A1 from stability: without antisymmetry, A3 and A4 still allow B = JH + E with E^2 = 0, E anticommuting with J.
+# Shifting the energy zero to the level lam leaves the generator E there, whose flow 1 + tE grows without bound.
+J = Jstd(2); E = np.kron(np.array([[0., 1.], [0., 0.]]), np.diag([1., -1.]))   # J-antilinear and nilpotent
+lam = 1.3; H = lam*np.eye(4); B = lam*J + E
+ok &= np.allclose(E @ J, -J @ E) and np.allclose(E @ E, 0) and not np.allclose(E.T, -E)
+ok &= all(np.allclose((B + c*J) @ (B + c*J), -(H + c*np.eye(4)) @ (H + c*np.eye(4))) for c in np.linspace(-3, 3, 13))
+ok &= np.allclose(expm(100*(B - lam*J)), np.eye(4) + 100*E) and np.linalg.norm(np.eye(4) + 100*E, 2) > 99
+def sym_commuting(Jm):                              # basis of the symmetric matrices S with SJ = JS (the observables, A5)
+    n = Jm.shape[0]; basis = []
+    for i in range(n):
+        for j in range(i, n):
+            S = np.zeros((n, n)); S[i, j] = S[j, i] = 1; basis.append(S)
+    M = np.array([(S @ Jm - Jm @ S).ravel() for S in basis]).T
+    u, sv, vt = np.linalg.svd(M); null = vt[np.sum(sv > 1e-9):]
+    return [sum(c*S for c, S in zip(row, basis)) for row in null]
+def commutant_dim(ops):                             # dimension of the real matrices commuting with every op
+    n = ops[0].shape[0]; I = np.eye(n)
+    M = np.vstack([np.kron(O, I) - np.kron(I, O.T) for O in ops])
+    return n*n - np.linalg.matrix_rank(M, tol=1e-9)
+ok &= commutant_dim(sym_commuting(Jstd(2))) == 2      # orthogonal J: observables pin everything down to a + bJ
+P = rng.normal(size=(4, 4)); Jbad = P @ Jstd(2) @ np.linalg.inv(P)             # J^2 = -1 but not orthogonal
+ok &= np.allclose(Jbad @ Jbad, -np.eye(4)) and commutant_dim(sym_commuting(Jbad)) > 2   # observables too few
+check("T3e antisymmetry (A1) from stability: without A1, A3 and A4 allow B = JH + E with E^2 = 0, and shifting the "
+      "energy zero to the level leaves the generator E, whose flow 1 + tE grows without bound; with E = 0, a J that is "
+      "not orthogonal leaves too few observables to fix states up to a + bJ, so completeness up to phase forces J^T = -J "
+      "(Lean: Stability.shift_to_level, nilpotent_flow, transpose_turn)", ok)
+
 print(f"\n{sum(r[1] for r in results)}/{len(results)} pass")

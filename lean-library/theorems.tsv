@@ -3420,6 +3420,10 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_sq	propext, Class
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.strut_push	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.tphi_block	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.velocity_addition	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Stability	CircleOp.Stability.JH_antisymm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Stability	CircleOp.Stability.nilpotent_flow	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Stability	CircleOp.Stability.shift_to_level	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Stability	CircleOp.Stability.transpose_turn	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_congr	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Statistics	StatFused.Ex_const	propext, Classical.choice, Quot.sound
