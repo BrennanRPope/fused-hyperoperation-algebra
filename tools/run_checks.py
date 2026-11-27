@@ -14,6 +14,9 @@ the repo's topics/<topic> before the script runs, so the repo copy is what gets 
 Numeric checks are evidence, not proofs; the Lean library is where proofs live.
 A script listed in tools/checks_needing_packages.txt with a Python module CI does not install is
 reported as SKIP (not a failure) while that module can't be imported; it runs as soon as it can.
+A check line listed in tools/checks_known_stale.txt (it tests a snapshot of a file that a later round
+changed, such as an older theorem count in a topic's Lean file) is reported as STALE, not counted as a
+failure, and lowers the saved pass count by one. Every other line still has to pass.
 
 Usage: python3 tools/run_checks.py [--jobs N] [--timeout SECONDS] [paths...]
 """
@@ -53,7 +56,7 @@ def pass_count(text):
     return best
 
 
-def run_one(script, timeout):
+def run_one(script, timeout, stale_ids=()):
     expected_file = script.with_name(script.stem + "_output.txt")
     expected = expected_file.read_text(errors="replace") if expected_file.exists() else None
     t0 = time.time()
@@ -74,14 +77,20 @@ def run_one(script, timeout):
         problems.append(f"exit code {p.returncode}: {tail[:300]}")
     fails = [l.strip() for l in p.stdout.splitlines()
              if FAIL_LINE.match(l) or (FAILED_COUNT.search(l) and not PASS_LINE.match(l))]
+    stale = [l for l in fails if any(re.match(rf"(FAIL|FAILED)\s+{re.escape(i)}\b", l) for i in stale_ids)]
+    fails = [l for l in fails if l not in stale]
     if fails:
         problems.append(f"{len(fails)} failing line(s), first: {fails[0][:200]}")
     if expected is not None:
         want, got = pass_count(expected), pass_count(p.stdout)
+        if want is not None:
+            want -= len(stale)
         if want is not None and (got is None or got < want):
             problems.append(f"pass count {got} is below the saved {want}")
     note = "; ".join(problems) if problems else (
         f"ok ({pass_count(p.stdout)} pass)" if pass_count(p.stdout) is not None else "ok")
+    if stale:
+        note += f"; STALE (known, see tools/checks_known_stale.txt): {'; '.join(l[:120] for l in stale)}"
     return script, not problems, note, dt
 
 
@@ -119,9 +128,16 @@ def main():
         else:
             kept.append(s)
     scripts = kept
+    stale_ids = {}
+    stale_file = ROOT / "tools" / "checks_known_stale.txt"
+    if stale_file.exists():
+        for line in stale_file.read_text().splitlines():
+            parts = line.split()
+            if parts and not line.startswith("#"):
+                stale_ids.setdefault((ROOT / parts[0]).resolve(), []).append(parts[1])
     results = []
     with cf.ThreadPoolExecutor(a.jobs) as ex:
-        for script, ok, note, dt in ex.map(lambda s: run_one(s, a.timeout), scripts):
+        for script, ok, note, dt in ex.map(lambda s: run_one(s, a.timeout, stale_ids.get(s.resolve(), ())), scripts):
             rel = script.relative_to(ROOT)
             print(f"{'PASS' if ok else 'FAIL'}  {rel}  ({dt:.0f}s)  {note}", flush=True)
             results.append(ok)

@@ -1330,8 +1330,9 @@ rounds 3–4, where the maps are Möbius rather than straight-line.
 `replace_shortens`. They pin down the concrete break and the termination step of P10. The covering and counting steps
 are in the prose proof and the interval checks.
 All 41 also compile clean in the shared library (`FusedAlgebra.Topics.NewTies`, namespace `CircleOp.NewTies`, no proof
-changed), mirrored on Nov 27. In the repo's CI, `checks5.py` and `checks6.py` are skipped while python-flint isn't
-installed there (listed in `tools/checks_needing_packages.txt`); `checks7.py` to `checks9.py` run.
+changed), mirrored on Nov 27. In the repo's CI, `checks5.py` to `checks9.py` all run (CI installs python-flint).
+The Lean lines of rounds 5 and 6 (V7, V11) test the 16- and 22-theorem file of those rounds, so CI reports them as
+known stale (`tools/checks_known_stale.txt`); `checks9.py` Y11 checks the current 41-theorem build.
 
 ### 13.8 Who proved what, round 9
 
