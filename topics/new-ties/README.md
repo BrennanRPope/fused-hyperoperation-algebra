@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -262,7 +262,8 @@ results, not read) claim the exact-overlaps conjecture on the line, which would 
 - **The plane.** Turning-and-shrinking maps z ↦ c + λ(z − c) with complex λ commute exactly when they share a centre, so
   the same count and formula hold with |λ| in place of s and min(2, D*) as the cap. Upper bound proved the same way;
   the lower bound needs Hochman's higher-dimensional theorem, whose extra conditions we haven't checked. Numerically it
-  fits (Figure 8): D* = 1.191, box counting 1.194, Moran 1.251.
+  fits (Figure 8): D* = 1.191, box counting 1.194, Moran 1.251. [Round 7: the lower bound is now proved; the true dimension
+  is between 1.19061 and 1.19064, and exactly D* for a nearby example; see section 11.]
 - **Plane laws (k, d).** Each law's maps are Möbius maps fixing that law's two walls, so maps from one law commute and
   the count is the same shared-centre count (G6, two examples). The dimension is not given by this closed formula,
   because Möbius maps don't shrink by one fixed factor; it needs Bowen's equation with derivatives. Open.
@@ -874,3 +875,140 @@ lower bound at ±3 are ours (DRAFT). The dimension statements still rest on Solo
 | No collisions at walls ±3 for the allowed class | **Ours** (DRAFT) | 10.4, V6–V8 |
 | Dimension at ±3 at least 0.426, unconditional | **Ours**, resting on Solomyak–Takahashi | 10.4, V9 |
 | No collisions at ±3 for every word | Open (checked to length 14) | 10.4, V10 |
+
+---
+
+## 11. Round 7 (DRAFT): the true size of the plane union fractal
+
+Brennan said "Let's keep going!", and the biggest open piece was the plane (complex) union fractal of round 2, whose
+size was only estimated at about 1.19. Script: `plane.py` → `plane.json`. Checks: `checks7.py`, 14/14 (W1–W13).
+Figures 19–22. Lean: seven more theorems, 29 in all, all build.
+
+### 11.1 The answer in two sentences
+
+The original plane union fractal's dimension is now proved to lie between 1.19061 and 1.19064, a range under 0.00003
+wide that sits right under the formula's D* = 1.190636. For a nearby example (classes 2 and 3 shrink by 3/10 instead of
+1/3) the dimension is proved to equal the formula exactly, D* = 1.12928, with every step proved.
+
+### 11.2 The examples and the theorem
+
+Maps z ↦ c + λ(z − c) turn and shrink about a centre c; maps with the same centre commute, maps with different centres
+don't. The words are the trace monoid M = ℕ² ∗ ℕ ∗ ℕ: runs alternating between three classes.
+
+| Class | Centre | Original (round 2) | Modified (round 7) |
+|---|---|---|---|
+| 1 | 0 | a: (1+i)/4 (turns 45°), b: 3/10 | same |
+| 2 | 1 | i/3 | 3i/10 |
+| 3 | i | 1/3 | 3/10 |
+
+**Theorem P7 (DRAFT, ours, resting on Hochman 2015).** Let K be the attractor of a finite set of turn-and-shrink maps
+with Gaussian-rational (more generally algebraic) λ and c, grouped into classes by centre, with at least two classes
+and some product of first-return pieces turning by an angle other than 0° or 180°. Let D* be the root of
+1 + Σ_classes (Π(1 − |λ|^s) − 1) = 0. Then:
+
+1. dim K ≤ D* always (round 2).
+2. If different words of M give different maps, dim K = min(2, D*).
+3. If only the words whose class-1 runs lie in a set U never collide, dim K ≥ min(2, s_U), where s_U is the root of
+   S_U(s) · (Q(s) − 1) = 1, with S_U the sum of |λ_u|^s over u in U and Q the growth series of the other classes.
+
+**Proof.** (1) is the round-2 covering argument; similarities have no distortion. For (2) and (3), use round 2's
+first-return pieces S = {u·v : u a nonempty class-1 run, v a nonempty word in the other classes}. They generate a free
+monoid inside M, so if no words collide, the finite sets S_L (runs up to length L) have no exact overlaps. Their
+coefficients are Gaussian rationals, and the piece a·(class-3 map) turns by 45°, so the pieces fix no line (W8, Lean
+`rot45_no_invariant_line`). Hochman's Corollary 1.7 (arXiv:1503.09043) says an algebraic, linearly irreducible
+self-similar system with no exact overlaps has dimension min(d, similarity dimension). So dim K ≥ min(2, s-dim S_L) for
+every L. The similarity dimensions increase to the root of (P₁ − 1)(Q − 1) = 1, which is D* because
+1/P_M = 1/P₁ + 1/Q − 1 for a free product (W7, Lean `first_return_threshold`). For (3), take u in U only. ∎
+
+We read the statements of Hochman's Theorem 1.4 and Corollaries 1.6–1.7 and his definitions of linear irreducibility,
+exact overlaps and algebraic systems; we did not check his proof.
+
+### 11.3 No collisions: three steps
+
+Suppose two different words give the same map, and take a shortest such pair.
+
+1. **The outer run has the same class in both words (complex ping-pong).** There is an invariant disc B, and covers of
+   the three class pieces X₁, X₂, X₃ by discs with exact rational centres and radii, such that no disc of one class
+   meets a disc of another (Figure 19; W1, W2: smallest gap 0.24 for the original, 0.31 for the modified). Every
+   non-identity run of class j sends every class piece into X_j. Start both words at a point of a class piece whose
+   class differs from both words' innermost (first-applied) runs; the image lands in the piece of the outer class.
+2. **Cancel.** Runs of classes 2 and 3 are powers of one map, so one can be taken off both words. In class 1, take off
+   the common a's and b's. What's left is either impossible by step 1, or **a^d · g′ = b^e · h′** with d, e ≥ 1, where
+   g′ and h′ have outer runs in class 2 or 3 (or are empty). Class-1 maps are z ↦ λz, so this says
+   h′(z) = ρ · g′(z) for every z, with ρ = λ₁^d · λ₂^(−e).
+3. **The last step.**
+   - *Modified example: 3-adic, all words.* Measure how many times 3 divides each number (3 stays prime in the Gaussian
+     integers, Lean `gauss_mod3_no_zero_divisors`). Every coefficient has no 3 in its denominator, so every map keeps
+     3-adic integers. A class-2 map is 1 + (3i/10)(z − 1), so it sends any 3-adic integer to 1 plus a multiple of 3,
+     and class 3 likewise to i. So g′(1) and h′(1) are 3-adic units (valuation 0). But λ₁ = (1+i)/4 is a unit and
+     λ₂ = 3/10 has one factor 3, so ρ has valuation −e ≤ −1. Then h′(1) = ρ · g′(1) is impossible (Figure 20; W3, W4;
+     Lean `units_mod3`, `three_adic_levels_differ`). ∎
+   - *Original example: geometry, for e ≤ 6.* Here classes 2 and 3 grow 3-adically (1/3), and no prime works (W4 shows
+     the 3-adic values spread over 19 levels). Instead, h′(z₀) and g′(z₀) both lie in X₂ ∪ X₃, so ρ would be a ratio of
+     two points of the covers. An exact disc test rules this out for every d whenever e ≤ 6: pairs with small d are
+     checked disc by disc, and for larger d the ratio is too small (Lean `tail_bound`, `sqrt_two_upper`; W10). So words
+     whose class-1 runs have at most 6 b's never collide. For e ≥ 7 a few pairs, the first (d, e) = (8, 7), land inside
+     the covers (Figure 21, red; W11). Those are the only cases left open.
+
+The trace counts match the number of different maps for every word up to length 11 in both examples, 2,107,560 at
+length 11 (W5, hashed mod two primes; a match mod p proves the maps differ over the Gaussian rationals).
+
+### 11.4 The numbers
+
+| Example | Proved dimension | Formula D* (certified) | Earlier estimates |
+|---|---|---|---|
+| Original | **1.19061 to 1.19064** (class-1 runs with ≤ 6 b's; 1.0186 from pure a-runs alone) | 1.190635 to 1.190636 | box count 1.194; Moran 1.251 |
+| Modified | **exactly D* = 1.12928** | 1.129279 (bracket width 10⁻⁶) | — |
+
+All brackets use interval arithmetic (mpmath); the covers use exact fractions with √2 bounded by 99/70.
+
+![Figure 19](figures/fig19-plane-pieces.png)
+
+*Figure 19. The two plane union fractals, coloured by the class of the last map applied, with the certified disc
+covers of the three class pieces (faint circles) and the invariant disc (dashed). No circle of one colour meets a circle
+of another.*
+
+![Figure 20](figures/fig20-three-adic.png)
+
+*Figure 20. The arithmetic step. In the modified example every word whose outer run is class 2 or 3 sends 1 to a
+3-adic unit (one bar), and the ratio ρ shifts the valuation by e ≥ 1. In the original the values spread out.*
+
+![Figure 21](figures/fig21-last-step-original.png)
+
+*Figure 21. The original example's last step. Grey: ratios of points of the class-2 and class-3 pieces. Green: the
+ratios ρ = λ₁^d λ₂^(−e) with e ≤ 6, all certified outside the covers. Red: the few with e ≥ 7 that land inside, the
+only open cases.*
+
+![Figure 22](figures/fig22-plane-size.png)
+
+*Figure 22. What is proved. The original's range is too narrow to draw as a bar; the diamond marks it.*
+
+### 11.5 Lead or not
+
+**A solid result, but a consolidation, not a new lead.** For: the plane version of the formula is now a theorem with
+an example where every step is proved, and the round-2 example is pinned to five decimals. The proof mixes complex
+ping-pong with 3-adic arithmetic, and step 3 is short. Against: the mechanism is Hochman's, as on the line. Closing the
+original's last 0.00003 would need a new idea for a handful of ratio cases, and it changes no conclusion.
+
+### 11.6 Lean
+
+`lean/NewTies.lean` now has 29 theorems and builds with Lean 4.37.0-rc1, with no sorry and standard axioms only
+(`lean/compile_output.txt`). New this round: `gauss_mod3_no_zero_divisors`, `units_mod3`, `three_adic_levels_differ`,
+`sqrt_two_upper`, `tail_bound`, `rot45_no_invariant_line`, `first_return_threshold`. They cover the arithmetic. The disc
+covers are certified in Python with exact fractions, and the 3-adic and complex geometry is in the prose proof.
+
+### 11.7 Who proved what, round 7
+
+Ping-pong, cancellation and p-adic valuations are standard tools. Theorem P7's reduction, the modified example and its
+3-adic proof, the certified covers, and the e ≤ 6 exclusion for the original are ours (DRAFT). Both dimension
+statements rest on Hochman's Corollary 1.7 (arXiv:1503.09043), whose proof we did not check.
+
+### Known vs new, round 7
+
+| Item | Status | Source |
+|---|---|---|
+| Algebraic + irreducible + no exact overlaps ⇒ dim = min(d, s-dim) | Known (Hochman 2015, Cor. 1.7) | cited |
+| Plane formula: dim K = min(2, D*) when no words collide | **Ours** (DRAFT), resting on Hochman | 11.2 |
+| Modified example: no collisions, dim = D* = 1.12928 | **Ours** (DRAFT) | 11.3, W1–W7 |
+| Original example: dim between 1.19061 and 1.19064 | **Ours** (DRAFT) | 11.3, W10–W12 |
+| Original example: no collisions for every word | Open (checked to length 11) | 11.3, W5, W11 |

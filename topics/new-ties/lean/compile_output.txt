@@ -21,4 +21,11 @@ Lean (version 4.37.0-rc1, x86_64-unknown-linux-gnu, commit 0b77e12952ad39077d80d
 'NewTies.four_pow_odd_mod_five' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.four_pow_even_mod_five' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.window_miss' does not depend on any axioms
+'NewTies.gauss_mod3_no_zero_divisors' depends on axioms: [propext]
+'NewTies.units_mod3' does not depend on any axioms
+'NewTies.three_adic_levels_differ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.sqrt_two_upper' does not depend on any axioms
+'NewTies.tail_bound' does not depend on any axioms
+'NewTies.rot45_no_invariant_line' does not depend on any axioms
+'NewTies.first_return_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
 exit status 0

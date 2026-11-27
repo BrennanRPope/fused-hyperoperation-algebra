@@ -1,0 +1,16 @@
+PASS  W1 ORIG: invariant disc and pairwise-disjoint class covers (exact fractions)  covers [163, 55, 55] discs, smallest gap 0.239
+PASS  W2 MOD: invariant disc and pairwise-disjoint class covers (exact fractions)  covers [163, 55, 55] discs, smallest gap 0.306
+PASS  W3 MOD 3-adic facts: coefficients 3-integral, classes 2/3 shrink 3-adically, v3(lam1)=0, v3(lam2)=1, v3(rho)=-beta  
+PASS  W4 random words (outer run class 2 or 3) at z = 1: MOD always a 3-adic unit, ORIG not  MOD {'0': 2828}, ORIG 19 valuations
+PASS  W5 different words give different maps, every word up to length 11, both examples (hashed mod 2 primes)  length 11: 2,107,560 elements each
+PASS  W6 trace-monoid counts agree with direct enumeration of reduced words  
+PASS  W7 ORIG: certified D* bracket holds the root; first-return pieces have (P1-1)(Q-1)=1 there  D* in [1.190635, 1.190636]
+PASS  W7 MOD: certified D* bracket holds the root; first-return pieces have (P1-1)(Q-1)=1 there  D* in [1.129279, 1.129279]
+PASS  W8 the piece a·(class-3 map) turns by 45 degrees, so the pieces fix no line (Hochman's irreducibility)  
+PASS  W9 random words land in the cover of their outer class and in no other  600 words
+PASS  W10 ORIG last step: lam1^d lam2^-e is no ratio of class-2/3 points, all d >= 1, e <= 6 (exact)  25 pairs exact, size bound beyond
+PASS  W11 the disc test cannot exclude (d, e) = (8, 7): a genuinely open case for this method  |rho| = 1.1163
+PASS  W12 ORIG proved range: 1.0186 (pure a-runs) <= 1.19061 (b-runs <= 6) <= dim <= D* <= 1.19064  [1.190612, 1.190636]
+PASS  W13 both D* values are below 2  
+
+14/14 pass

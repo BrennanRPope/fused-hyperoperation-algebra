@@ -1,0 +1,16 @@
+{
+ "W1 ORIG: invariant disc and pairwise-disjoint class covers (exact fractions)": true,
+ "W2 MOD: invariant disc and pairwise-disjoint class covers (exact fractions)": true,
+ "W3 MOD 3-adic facts: coefficients 3-integral, classes 2/3 shrink 3-adically, v3(lam1)=0, v3(lam2)=1, v3(rho)=-beta": true,
+ "W4 random words (outer run class 2 or 3) at z = 1: MOD always a 3-adic unit, ORIG not": true,
+ "W5 different words give different maps, every word up to length 11, both examples (hashed mod 2 primes)": true,
+ "W6 trace-monoid counts agree with direct enumeration of reduced words": true,
+ "W7 ORIG: certified D* bracket holds the root; first-return pieces have (P1-1)(Q-1)=1 there": true,
+ "W7 MOD: certified D* bracket holds the root; first-return pieces have (P1-1)(Q-1)=1 there": true,
+ "W8 the piece a\u00b7(class-3 map) turns by 45 degrees, so the pieces fix no line (Hochman's irreducibility)": true,
+ "W9 random words land in the cover of their outer class and in no other": true,
+ "W10 ORIG last step: lam1^d lam2^-e is no ratio of class-2/3 points, all d >= 1, e <= 6 (exact)": true,
+ "W11 the disc test cannot exclude (d, e) = (8, 7): a genuinely open case for this method": true,
+ "W12 ORIG proved range: 1.0186 (pure a-runs) <= 1.19061 (b-runs <= 6) <= dim <= D* <= 1.19064": true,
+ "W13 both D* values are below 2": true
+}

@@ -148,4 +148,38 @@ theorem four_pow_even_mod_five (j : Nat) : 4 ^ (2 * j) % 5 = 1 := by
     3/4 < 12/13 (cleared of fractions). -/
 theorem window_miss : 12 * 5 * 3 ^ 5 > 13 * 4 ^ 5 ∧ 13 * 5 * 3 ^ 6 < 12 * 4 ^ 6 ∧ 13 * 3 < 12 * 4 := by decide
 
+/-! ## Round 7: the plane union fractal -/
+
+/-- Gaussian integers mod 3 have no zero divisors (3 stays prime in ℤ[i], so ℤ[i]/3 is the field with 9 elements).
+    This is what makes the 3-adic valuation of a Gaussian rational well defined and additive. -/
+theorem gauss_mod3_no_zero_divisors :
+    ∀ a b c d : Fin 3, (a ≠ 0 ∨ b ≠ 0) → (c ≠ 0 ∨ d ≠ 0) → (a * c - b * d ≠ 0 ∨ a * d + b * c ≠ 0) := by decide
+
+/-- The numbers in the multipliers other than 3 are 3-adic units: 10, 4, and 1 + i (its norm is 2). The centres
+    0, 1, i are distinct mod 3 (1 − i has norm 2). -/
+theorem units_mod3 : 10 % 3 ≠ 0 ∧ 4 % 3 ≠ 0 ∧ 2 % 3 ≠ 0 := by decide
+
+/-- The modified example's class-2 and class-3 maps, 1 + (3i/10)(z − 1) and i + (3/10)(z − i), send every 3-adic
+    integer z to 1 (resp. i) plus a multiple of 3, so to a 3-adic unit; class-1 maps multiply by (1+i)/4 or 3/10,
+    keeping 3-adic integers. Then g′(1) has valuation 0, while λ₁^α λ₂^(−β) has valuation −β: -/
+theorem three_adic_levels_differ (β : Int) (hβ : 1 ≤ β) : (0 : Int) - β ≠ 0 := by omega
+
+/-- Upper bound for √2 used in every disc radius: (99/70)² > 2. -/
+theorem sqrt_two_upper : 99 * 99 > 2 * 70 * 70 := by decide
+
+/-- The size bound that ends the original example's last step for long a-runs: for d ≥ 8 and e ≤ 6,
+    |λ₁|^d (10/3)^e · 1.15 ≤ (99/280)^8 (10/3)^6 · 1.15 < 0.59, and 0.59 is below every |w| − r on the class-2/3
+    covers, 1.15 above every |w| + r (plane.py, C7). Cleared of fractions: -/
+theorem tail_bound : 99 ^ 8 * 10 ^ 6 * 115 < 59 * 280 ^ 8 * 3 ^ 6 := by decide
+
+/-- Linear irreducibility for Hochman's theorem: a 45° turn, matrix [[1, −1], [1, 1]] up to scale, has
+    characteristic polynomial t² − 2t + 2, whose discriminant is negative, so it fixes no line. -/
+theorem rot45_no_invariant_line : (-2 : Int) * (-2) - 4 * 1 * 2 < 0 := by decide
+
+/-- First-return pieces: with p = 1/P₁ and q = 1/Q (the reciprocal growth series of class 1 and of the rest),
+    (1/p − 1)(1/q − 1) = 1 exactly when p + q = 1, i.e. at the root of the trace-monoid formula. Cleared of the
+    denominators pq: -/
+theorem first_return_threshold (p q : Int) : (1 - p) * (1 - q) = p * q ↔ p + q = 1 := by
+  constructor <;> intro h <;> grind
+
 end NewTies
