@@ -1,0 +1,16 @@
+{
+ "mertens": {
+  "M_at_1e8": 1928.0,
+  "max_abs_M_over_sqrt_x_from_1e3": 0.4627286901166685,
+  "at_x": 30919091
+ },
+ "squarefree": {
+  "err_at_1e8": -16.185402669012547,
+  "max_abs_err_over_x_quarter_above_1e3": 0.8508653548756786
+ },
+ "second_layer": {
+  "mean_A_logweighted_1e4_1e8": -1.419740256183968,
+  "mean_B_logweighted_1e4_1e8": -0.17882921257691542,
+  "A_ever_positive_1e4_1e8": false
+ }
+}

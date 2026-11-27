@@ -75,3 +75,5 @@ Nov 27: `topics/negative-odds/` added as DRAFT (the wall at −1, negative odds 
 Nov 27: `topics/new-ties/` rounds 2 and 3 added as DRAFT (the union-fractal dimension as a theorem on the line, the plane, a learning-rule scenario, and plane laws on tangent lines of d = k²/4; 22 + 18 checks, picked up by CI as checks2.py and checks3.py; 12 Lean theorems compiled into the library as FusedAlgebra.Topics.NewTies, namespace CircleOp.NewTies, no proof changed; library now 3,717 theorems in 170 modules).
 
 Nov 27: `topics/new-ties/` round 4 added as DRAFT (section 7: off the tangent line the true dimension is min(1, δ), with proved brackets for δ; 13 checks, picked up by CI as checks4.py; one more Lean theorem, two_law_threshold, compiled into Topics.NewTies; library now 3,718 theorems in 170 modules).
+
+Nov 27: `topics/riemann/known-tools/` added as DRAFT (the five known pieces applied to the zeros; the heat-flow rewind kept as a measuring tool; 13 checks, picked up by CI as checks.py; no Lean).

@@ -1,0 +1,15 @@
+PASS N-body rewind of the closest pair matches the pair formula within 2%  -9.402e-04 vs -9.365e-04
+PASS low pair: formula collision lies in the direct rewind's step (td, td + 0.25]  -3.95, -4.0
+PASS closest pair gives a lower bound between -1e-3 and 0  -9.36e-04 at gamma 5229.20
+PASS forward flow: gap variance falls
+PASS forward flow: smallest gap grows
+PASS forward flow: no gap below half the mean at t = 0.2
+PASS M(1e8) = 1928 (known value)
+PASS |M(x)|/sqrt x < 1 for 1e3 <= x <= 1e8
+PASS squarefree error / x^(1/4) stays below 1.5 from 1e3 to 1e8
+PASS pi(x) < li(x) on the whole sample 1e4..1e8
+PASS second layer: log-mean moves from below -1 to within 0.3 of 0 when 1/2 li(sqrt x) is added back
+PASS bath parents: local Lambda never falls as J grows (Lambda_Phi <= Lambda_P)  [-4.0, -3.9, -3.5, -2.6, -1.3, 0.7, 3.2, 4.0]
+PASS J = 0 reproduces Phi's low collision within one scan step of the formula
+
+13 of 13 checks pass
