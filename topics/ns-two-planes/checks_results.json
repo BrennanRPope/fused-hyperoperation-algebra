@@ -1,0 +1,52 @@
+[
+ {
+  "name": "C1 exact algebra (algebra.py)",
+  "ok": true,
+  "note": "13 of 13 pass"
+ },
+ {
+  "name": "C2 a flat flow alone never grows its total spin",
+  "ok": true,
+  "note": "largest peak/start over 12 flat runs = 1.000000; stays exactly flat"
+ },
+ {
+  "name": "C3 two crossing flat flows grow total spin in all 12 runs",
+  "ok": true,
+  "note": "0.01 twisted: 1.04, 1.21, 1.26; 0.01 untwisted: 1.16, 1.23, 1.23; 0.005 twisted: 1.65, 1.75, 1.86; 0.005 untwisted: 1.88, 1.84, 1.93"
+ },
+ {
+  "name": "C4 most energy leaves the two planes by t = 8",
+  "ok": true,
+  "note": "off-plane share at t=8: 0.53 to 0.75"
+ },
+ {
+  "name": "C5 the twist does not tame the crossing (9 seeds, viscosity 0.005, peak by t = 4)",
+  "ok": true,
+  "note": "twisted lower in 6 of 9; differences -0.24, -0.09, -0.07, +0.15, +0.10, -0.16, +0.00, -0.09, -0.16; means 1.90 vs 1.96"
+ },
+ {
+  "name": "C6 k setting on the crossing: peak spin rises with k (k = 0, 0.1, 0.25, 0.5, 1)",
+  "ok": true,
+  "note": "twisted: 1.00, 1.00, 1.00, 1.06, 1.65; untwisted: 1.01, 1.02, 1.04, 1.17, 1.88"
+ },
+ {
+  "name": "C7 k = 0: planes stay nearly flat and spin does not grow",
+  "ok": true,
+  "note": "peak/start 1.000, 1.015; off-plane share 0.035, 0.112 (the leak is the out-of-plane part fed through the shared line)"
+ },
+ {
+  "name": "C8 grid check: 64\u00b3 and 96\u00b3 agree on total spin within 3% at every time",
+  "ok": true,
+  "note": "peak 4.699 vs 4.697; largest gap 0.6%; peak spin 17.9 vs 18.0"
+ },
+ {
+  "name": "C9 twisted part: about a quarter of a random flow, closed under the nonlinear term",
+  "ok": true,
+  "note": "share 0.275; sector -1 self-interaction lands in twisted part: 1.000"
+ },
+ {
+  "name": "C10 Klein pair: the flat part alone does no stretching; all of it involves the bend",
+  "ok": true,
+  "note": "max |P(flat,flat,flat)| = 1.1e-29 vs max total 12.55; flat share of spin 0.51 -> 0.08"
+ }
+]

@@ -1,0 +1,33 @@
+{
+ "random field: energy share by sector (1, i, -1, -i)": [
+  0.2750187351999534,
+  0.23948501753586307,
+  0.24601122972832046,
+  0.23948501753586307
+ ],
+ "sectors add back to the field (error)": 2.168404344971009e-19,
+ "nonlinear term of sector 0: share landing in sectors 0..3": [
+  0.9999999815434275,
+  9.228284576740243e-09,
+  3.5229853288304314e-15,
+  9.22828457673995e-09
+ ],
+ "nonlinear term of sector 1: share landing in sectors 0..3": [
+  4.1889328887292195e-15,
+  9.75351080463535e-09,
+  0.9999999804929739,
+  9.753511004308809e-09
+ ],
+ "nonlinear term of sector 2: share landing in sectors 0..3": [
+  0.9999999767430031,
+  1.1628494219218609e-08,
+  8.348910558125637e-15,
+  1.1628494219219596e-08
+ ],
+ "nonlinear term of sector 3: share landing in sectors 0..3": [
+  4.188932841338586e-15,
+  9.753511692226462e-09,
+  0.9999999804929726,
+  9.753511492552622e-09
+ ]
+}

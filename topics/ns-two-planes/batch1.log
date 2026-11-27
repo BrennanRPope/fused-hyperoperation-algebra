@@ -1,0 +1,44 @@
+twist invariance error 1.9978614478811695e-15
+twisted k=1.0 nu=0.01 N=64 seed=0: Z0=2.856 Zmax=2.966 at t=0.91, wmax0=6.88 wmax_peak=11.08, off-plane energy end=0.652, 35s
+untwisted k=1.0 nu=0.01 N=64 seed=0: Z0=2.959 Zmax=3.447 at t=1.21, wmax0=6.73 wmax_peak=14.47, off-plane energy end=0.646, 33s
+A k=1.0 nu=0.01 N=64 seed=0: Z0=1.428 Zmax=1.428 at t=0.00, wmax0=5.25 wmax_peak=5.25, off-plane energy end=0.000, 28s
+B k=1.0 nu=0.01 N=64 seed=0: Z0=1.530 Zmax=1.530 at t=0.00, wmax0=5.54 wmax_peak=5.54, off-plane energy end=0.000, 26s
+twist invariance error 3.2695420497970205e-15
+twisted k=1.0 nu=0.01 N=64 seed=1: Z0=3.036 Zmax=3.662 at t=1.31, wmax0=6.37 wmax_peak=10.04, off-plane energy end=0.718, 32s
+untwisted k=1.0 nu=0.01 N=64 seed=1: Z0=3.294 Zmax=4.040 at t=1.20, wmax0=6.38 wmax_peak=14.01, off-plane energy end=0.605, 33s
+A k=1.0 nu=0.01 N=64 seed=1: Z0=1.518 Zmax=1.518 at t=0.00, wmax0=5.08 wmax_peak=5.08, off-plane energy end=0.000, 25s
+B k=1.0 nu=0.01 N=64 seed=1: Z0=1.776 Zmax=1.776 at t=0.00, wmax0=5.76 wmax_peak=5.76, off-plane energy end=0.000, 24s
+twist invariance error 1.7179870533414001e-15
+twisted k=1.0 nu=0.01 N=64 seed=2: Z0=4.946 Zmax=6.239 at t=1.02, wmax0=6.93 wmax_peak=15.45, off-plane energy end=0.644, 27s
+untwisted k=1.0 nu=0.01 N=64 seed=2: Z0=4.243 Zmax=5.236 at t=1.11, wmax0=7.71 wmax_peak=13.88, off-plane energy end=0.533, 29s
+A k=1.0 nu=0.01 N=64 seed=2: Z0=2.473 Zmax=2.473 at t=0.00, wmax0=5.81 wmax_peak=5.81, off-plane energy end=0.000, 23s
+B k=1.0 nu=0.01 N=64 seed=2: Z0=1.771 Zmax=1.771 at t=0.00, wmax0=5.75 wmax_peak=5.75, off-plane energy end=0.000, 24s
+twist invariance error 1.9978614478811695e-15
+twisted k=1.0 nu=0.005 N=64 seed=0: Z0=2.856 Zmax=4.699 at t=4.12, wmax0=6.88 wmax_peak=17.95, off-plane energy end=0.747, 41s
+untwisted k=1.0 nu=0.005 N=64 seed=0: Z0=2.959 Zmax=5.554 at t=2.92, wmax0=6.73 wmax_peak=21.38, off-plane energy end=0.740, 41s
+A k=1.0 nu=0.005 N=64 seed=0: Z0=1.428 Zmax=1.428 at t=0.00, wmax0=5.25 wmax_peak=5.25, off-plane energy end=0.000, 29s
+B k=1.0 nu=0.005 N=64 seed=0: Z0=1.530 Zmax=1.530 at t=0.00, wmax0=5.54 wmax_peak=5.54, off-plane energy end=0.000, 28s
+twist invariance error 3.2695420497970205e-15
+twisted k=1.0 nu=0.005 N=64 seed=1: Z0=3.036 Zmax=5.305 at t=1.82, wmax0=6.37 wmax_peak=16.87, off-plane energy end=0.726, 40s
+untwisted k=1.0 nu=0.005 N=64 seed=1: Z0=3.294 Zmax=6.046 at t=1.82, wmax0=6.38 wmax_peak=19.18, off-plane energy end=0.689, 41s
+A k=1.0 nu=0.005 N=64 seed=1: Z0=1.518 Zmax=1.518 at t=0.00, wmax0=5.08 wmax_peak=5.08, off-plane energy end=0.000, 27s
+B k=1.0 nu=0.005 N=64 seed=1: Z0=1.776 Zmax=1.776 at t=0.00, wmax0=5.76 wmax_peak=5.76, off-plane energy end=0.000, 28s
+twist invariance error 1.7179870533414001e-15
+twisted k=1.0 nu=0.005 N=64 seed=2: Z0=4.946 Zmax=9.190 at t=1.41, wmax0=6.93 wmax_peak=21.29, off-plane energy end=0.753, 33s
+untwisted k=1.0 nu=0.005 N=64 seed=2: Z0=4.243 Zmax=8.175 at t=2.11, wmax0=7.71 wmax_peak=21.72, off-plane energy end=0.674, 35s
+A k=1.0 nu=0.005 N=64 seed=2: Z0=2.473 Zmax=2.473 at t=0.00, wmax0=5.81 wmax_peak=5.81, off-plane energy end=0.000, 26s
+B k=1.0 nu=0.005 N=64 seed=2: Z0=1.771 Zmax=1.771 at t=0.00, wmax0=5.75 wmax_peak=5.75, off-plane energy end=0.000, 28s
+twist invariance error 1.9978614478811695e-15
+twisted k=0.0 nu=0.005 N=64 seed=0: Z0=2.856 Zmax=2.856 at t=0.00, wmax0=6.88 wmax_peak=7.00, off-plane energy end=0.035, 88s
+untwisted k=0.0 nu=0.005 N=64 seed=0: Z0=2.959 Zmax=3.002 at t=1.12, wmax0=6.73 wmax_peak=7.02, off-plane energy end=0.112, 118s
+twist invariance error 1.9978614478811695e-15
+twisted k=0.1 nu=0.005 N=64 seed=0: Z0=2.856 Zmax=2.856 at t=0.00, wmax0=6.88 wmax_peak=7.69, off-plane energy end=0.096, 145s
+untwisted k=0.1 nu=0.005 N=64 seed=0: Z0=2.959 Zmax=3.013 at t=1.11, wmax0=6.73 wmax_peak=7.40, off-plane energy end=0.166, 186s
+twist invariance error 1.9978614478811695e-15
+twisted k=0.25 nu=0.005 N=64 seed=0: Z0=2.856 Zmax=2.856 at t=0.00, wmax0=6.88 wmax_peak=9.65, off-plane energy end=0.259, 132s
+untwisted k=0.25 nu=0.005 N=64 seed=0: Z0=2.959 Zmax=3.082 at t=1.21, wmax0=6.73 wmax_peak=9.41, off-plane energy end=0.345, 197s
+twist invariance error 1.9978614478811695e-15
+twisted k=0.5 nu=0.005 N=64 seed=0: Z0=2.856 Zmax=3.018 at t=1.51, wmax0=6.88 wmax_peak=11.26, off-plane energy end=0.450, 133s
+untwisted k=0.5 nu=0.005 N=64 seed=0: Z0=2.959 Zmax=3.462 at t=1.81, wmax0=6.73 wmax_peak=11.54, off-plane energy end=0.579, 174s
+twist invariance error 4.928185813696496e-15
+twisted k=1.0 nu=0.005 N=128 seed=0: Z0=3.039 Zmax=7.591 at t=2.60, wmax0=5.45 wmax_peak=22.60, off-plane energy end=0.720, 1239s

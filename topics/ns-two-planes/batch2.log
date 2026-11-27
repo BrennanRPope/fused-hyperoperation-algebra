@@ -1,0 +1,6 @@
+twist invariance error 1.9978614478811695e-15
+twisted k=1.0 nu=0.005 N=64 seed=0: Z0=2.856 Zmax=2.914 at t=0.30, wmax0=6.88 wmax_peak=6.88, off-plane energy end=0.051, 2s
+twist invariance error 6.222137180992964e-15
+twisted k=1.0 nu=0.005 N=96 seed=0: Z0=2.856 Zmax=4.697 at t=4.21, wmax0=6.86 wmax_peak=18.03, off-plane energy end=0.745, 252s
+twist invariance error 1.9978614478811695e-15
+twisted k=1.0 nu=0.005 N=64 seed=0: Z0=2.856 Zmax=4.184 at t=2.10, wmax0=6.88 wmax_peak=17.94, off-plane energy end=0.351, 13s

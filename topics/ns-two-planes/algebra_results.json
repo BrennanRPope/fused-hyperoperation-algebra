@@ -1,0 +1,54 @@
+{
+ "A1 both flat flows are incompressible": {
+  "pass": true,
+  "note": ""
+ },
+ "A2 crossing term = (u1_y) d_y u2 + (u2_y) d_y u1  (only the shared line enters)": {
+  "pass": true,
+  "note": ""
+ },
+ "A3a P1 spin points along z (its normal), P2 spin along x (its normal)": {
+  "pass": true,
+  "note": ""
+ },
+ "A3b each flat flow alone has zero stretching": {
+  "pass": true,
+  "note": ""
+ },
+ "A3c all stretching is crossing: x: w2x*d_x u1x, y: w2x*d_x u1y + w1z*d_z u2y, z: w1z*d_z u2z": {
+  "pass": true,
+  "note": ""
+ },
+ "A3d no spin along the shared line at the start (w_y = 0)": {
+  "pass": true,
+  "note": "the y line of stretching is pure tilting: it makes spin along the shared line"
+ },
+ "A4 crossing is a harmless pressure gradient only when BOTH flows are flat along the shared line": {
+  "pass": true,
+  "note": "then both are just shears along y and the sum is a one-direction flow; otherwise the crossing spins the fluid"
+ },
+ "A5 two-wave ABC (A,B,0): layered P1 wave + layered P2 wave is an exact Navier-Stokes solution": {
+  "pass": true,
+  "note": "Beltrami: spin = velocity, so the nonlinear term is a pure gradient (Arnold/Childress, known)"
+ },
+ "A7a the twist carries any flat P1 flow onto a flat P2 flow (velocity in yz, constant in x)": {
+  "pass": true,
+  "note": ""
+ },
+ "A7b twice the twist (a half turn) brings it back to a flat P1 flow": {
+  "pass": true,
+  "note": ""
+ },
+ "A7c the twist is a rigid motion with no fixed point and g^4 = shift by 2pi along y": {
+  "pass": true,
+  "note": "so the quotient of the box by g is a flat 3-manifold (the quarter-turn space, Conway-Rossetti \"tetracosm\")"
+ },
+ "A7d planes made from one flat flow by each turn twist: half 1, third 3, quarter 2, sixth 3": {
+  "pass": true,
+  "note": "only the quarter turn makes exactly two crossing planes, and they are perpendicular"
+ },
+ "A6 numeric split of a random incompressible field: layered xy + layered yz + strict xz flow (y-average)": {
+  "pass": true,
+  "note": "reconstruction error 2.2e-16; P1 part has u_z = 0e+00, P2 part has u_x = 0e+00; energy share of the strict xz flow = 0.0949"
+ }
+}
