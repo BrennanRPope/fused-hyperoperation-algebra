@@ -1,0 +1,5 @@
+none 0 wpeak 70.521/28.994 at t=2.01  Zpeak/Z0 1.465  tail 4.85e-04  defects0 [0. 0.] defects1 [0. 0.]  1263s
+t-g+ 0 wpeak 71.006/29.073 at t=1.81  Zpeak/Z0 1.473  tail 5.25e-04  defects0 [0.    0.093] defects1 [0.    0.758]  1303s
+none 0 wpeak 151.462/28.994 at t=1.61  Zpeak/Z0 5.712  tail 1.80e-02  defects0 [0. 0.] defects1 [0. 0.]  1470s
+t-g+ 0 wpeak 145.853/29.073 at t=1.60  Zpeak/Z0 5.897  tail 1.94e-02  defects0 [0.    0.093] defects1 [0.    1.051]  1528s
+none 0 wpeak 232.818/28.994 at t=1.70  Zpeak/Z0 4.279  tail 1.94e-03  defects0 [0. 0.] defects1 [0. 0.]  5297s

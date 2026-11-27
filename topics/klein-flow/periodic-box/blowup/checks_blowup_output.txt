@@ -1,0 +1,10 @@
+PASS B1 pair is in both the Klein and torus classes: glide defect 2.6e-16, shift defect 5.7e-16
+PASS B2 Klein-only seed keeps the glide, breaks the shift; torus-only the reverse: K-only (2.1e-16, 0.07), TR-only (0.08, 5.7e-16)
+PASS B3 every run stays in its class to the end: end defects 5e-14, 1e-14, 3e-14, 4e-14, 3e-14, 3e-14
+PASS B4 energy never rises in any run: largest step-to-step rise 0.0e+00 of start
+PASS B5 nu=0.002 runs resolved at N=128: outer-shell energy 4.1e-03
+PASS B6 nu=0.001: N=128 and N=192 agree on total spin (enstrophy) within 5% at every time: largest gap 2.2%, N=192 outer shell 1.9e-03
+OPEN B9: peak spin not settled, 151.5 at 128 vs 232.8 at 192; the 256 run will decide
+PASS B7 Kerr crossing: the three viscosities meet at one time: spread 2.1% at t = 1.46
+PASS B8 same seed gives the same run: peak 26.9567382447 twice
+8 of 8 pass, 1 open
