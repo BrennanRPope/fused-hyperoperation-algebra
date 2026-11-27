@@ -143,6 +143,14 @@ theorem fourth_rule_point_term (a : R) :
     ((1 - a) * (a * (1 - a)) - (1 - a)^2 * (a * (1 - a))
       - 3 * a * (1 - a)^2) = -(a * (1 - a)^2 * (3 - a)) := by grind
 
+/-- **Round 15: the leftover derived (check O11)**, everything times 4 to stay in a ring. A body's potential
+is M/r plus, from the delay, −(M/2) s with s = a·n its own acceleration along the direction to the field point;
+write u = 1/r, so 2 × V = 2Mu − Ms. The cross term of g₀₀'s −2V² is then −4 times the acceleration piece already
+in X̂, Xacc = −(M²/2) s u (4 Xacc = −2M² s u). So g₀₀'s self part is 8 Xacc − 4 Xacc, which is the
+"quarter point term" of round 14. -/
+theorem own_field_squared (M s u : R) :
+    -2 * ((2 * M * u - M * s)^2 - (2 * M * u)^2 - (M * s)^2) = -4 * (-2 * M^2 * s * u) := by grind
+
 end
 
 end CircleOp.SpinningRiver

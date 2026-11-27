@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,870 theorems in 181 modules, Nov 27 ~06:35 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,871 theorems in 181 modules, Nov 27 ~07:50 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -118,3 +118,4 @@ Nov 27: `topics/klein-flow/periodic-box/` added as DRAFT from the Klein flow thr
 Nov 27: `topics/entropy-topology/` added as DRAFT from the entropy plus topology thread's patch (Conley index, Lefschetz and Nielsen counts, Shub's floor; checks.py 30, picked up by CI; 10 figures; no Lean). Its new-facts-levers section and levers were renumbered to section 11, L13 and L14, because union-find had already taken section 10 and L12.
 Nov 27: from the closed-leads session: `topics/decrement-paths/` and `topics/q-deformation-dial/` READMEs now say DecrementPaths.lean, QDeformationDial.lean and TwoBaseLetters.lean build clean (CI run 45955736148); the INDEX and PAGES-INDEX rows say the same.
 Nov 27: `topics/force-reach/new-force/` section 13, part N (does the hold put a sphere at the fundamental length? It can, but anywhere in the window too: the particle content picks where): sphere_hold_checks.py 8, listed in tools/extra_checks.txt; figure h15; NewForce.lean now 44 statements in the topic file.
+Nov 27: `topics/gravity-from-theory/spinning-river/` round 15 (DRAFT): the leftover point term derived as a speeding-up body's own field squared, so the 2PN miss is 0 at all six mass ratios and the orbit's size matches the known 2PN law; the field confirmed against Blanchet, Faye and Ponsot (1998); 73 checks; `own_field_squared` added to Topics.SpinningRiver (library 3,871 theorems).

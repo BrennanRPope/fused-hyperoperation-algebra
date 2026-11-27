@@ -8,8 +8,9 @@ T: derive the turn from the same move: the shifted source's light rays.
 C: charge on the same shifted source: the charged spinning black hole (Kerr-Newman).
 B: two bodies: why one shear per cell cannot hold two, what does add exactly (Weyl), and the strut force (Newton).
 O: two spinning bodies in orbit: the slow-orbit field from three river rules, orbits decaying, spins, the waves;
-   O7-O8 test the rules at the next level of detail (2PN) through body 1's clock rate; O9-O10 add the field's own
-   energy as a fourth rule and measure what is left.
+   O7-O8 test the rules at the next level of detail (2PN) through body 1's clock rate; O9-O12 add the field's own
+   energy as a fourth rule; O11 derives what was left (the speeding-up body's own field squared); O12
+   checks g00 at a body against the published 2PN field term by term.
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1032,6 +1033,47 @@ check("O10 adding the field's own energy as a fourth rule closes most of the 2PN
       f"{sp.nsimplify(live_.subs(fr_.F_VALUES))}")
 results["O10_stages"] = {r: {k_: pr_[r][k_] for k_ in ("miss_rules", "miss_closed", "miss_with_f", "miss_with_point_term")}
                          for r in fr_.RATIOS}
+
+# ================================================================ O11  the leftover derived (round 15)
+# g00 has -2V^2. Each body's V is M/r plus, from retardation, -(M/2) a.n with a the body's own acceleration.
+# The cross term of the two in -2V^2 is +2 M^2 a.(x-y)/r^2 = -4 Xacc. Round 14 left it out.
+eps_ = sp.symbols("eps", positive=True); R1_, R2_ = sp.symbols("R1 R2", positive=True)
+point_ok = True
+for r in fr_.RATIOS:
+    m1_ = sp.Rational(r); m2_ = 1 - m1_; exr_ = fr_.closed_pieces(r)
+    for b_, (ma_, mb_, sg_) in ((1, (m1_, m2_, 1)), (2, (m2_, m1_, -1))):
+        val_ = sp.simplify((fr_.OWN_SQUARE_WEIGHT*exr_[b_]["Xacc"][0]).subs({R1_: m2_, R2_: m1_}).coeff(eps_, 6))
+        grd_ = sp.simplify((fr_.OWN_SQUARE_WEIGHT*exr_[b_]["Xacc"][1]).subs({R1_: m2_, R2_: m1_}).coeff(eps_, 6))
+        # 8 x point term: value 8*(1/4) m_a m_b^2, x-gradient 8*(-1/4) m_a m_b^2 (sign flips at body 2)
+        point_ok &= (val_ == 2*ma_*mb_**2) and (grd_ == -2*sg_*ma_*mb_**2)
+json_ok = all(frj_["own_square_closes"].values()) and all(frj_["r12_matches_known"].values())
+z13o_, sol13o_ = no_.redshift(third, 6, res_hook=fr_.make_hook(
+    ex13_, fextra={b_: tuple(sp.sympify(fr_.f_terms(third, 1 - third)[b_][w_]).subs(fr_.F_VALUES) for w_ in (0, 1))
+                   for b_ in (1, 2)}, own_square=True), return_sol=True)
+a14_, a24_ = sp.symbols("a14 a24")
+live_o_ok = (sp.simplify(z13o_[3] - no_.truth(third)[3]) == 0 and
+             sp.nsimplify(sol13o_[a14_] + sol13o_[a24_]) == fr_.harmonic_r12_known(third))
+check("O11 the leftover is derived: it is the speeding-up body's own field squared. In g00's -2V^2, each body's "
+      "Newtonian M/r times its own retardation part -(M/2) a.n gives +2 M^2 a.(x-y)/r^2 = -4 Xacc, left out in round "
+      "14. At Newtonian order its value and x-gradient at body a are +2 and -2 times m_a m_b^2/r12^3 (/r12^4), exactly "
+      "8 times the point term, at all six ratios. With it the x^3 clock-rate miss is 0 at all six ratios, and the "
+      "orbit size r12 at omega = 1 matches the known harmonic 2PN relation "
+      "omega^2 = (m/r^3)[1 + (nu - 3) g + (6 + 41 nu/4 + nu^2) g^2] at all six (an independent observable)",
+      point_ok and json_ok and live_o_ok,
+      f"closes {frj_['own_square_closes']}; r12 matches {frj_['r12_matches_known']}; live 1/3: miss "
+      f"{sp.simplify(z13o_[3] - no_.truth(third)[3])}, r12 x^2 {sp.nsimplify(sol13o_[a14_] + sol13o_[a24_])}")
+results["O11_own_square"] = {r: {k_: pr_[r][k_] for k_ in ("miss_with_own_square", "r12_x2_with_own_square",
+                                                         "r12_x2_known_harmonic")} for r in fr_.RATIOS}
+
+# ================================================================ O12  term by term against the paper (round 15)
+g00d_ = {r: fr_.g00_vs_bfp(r) for r in ("1/2", "2/5")}
+g00d14_ = fr_.g00_vs_bfp("1/2", own_square=False)
+check("O12 term by term against the paper: with the speeding-up body's own field squared, our g00 at body 1 along the "
+      "solved circular orbit equals Blanchet, Faye & Ponsot's (1998) Eq. (7.6a) exactly through 2PN, at m1 = 1/2 and "
+      "2/5 (scratch runs also at 1/3); without it (round 14) it misses by -2 m1 m2^2 x^3, the point term",
+      all(v_ == 0 for v_ in g00d_.values()) and sp.simplify(g00d14_ + sp.Rational(1, 4)*eps_**6) == 0,
+      f"differences {g00d_}; round 14 at 1/2: {g00d14_}")
+results["O12_g00_vs_bfp"] = {k_: str(v_) for k_, v_ in g00d_.items()}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

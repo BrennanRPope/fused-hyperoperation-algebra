@@ -508,5 +508,49 @@
       "miss_with_f": "78/625",
       "miss_with_point_term": "0"
     }
+  },
+  "O11 the leftover is derived: it is the speeding-up body's own field squared. In g00's -2V^2, each body's Newtonian M/r times its own retardation part -(M/2) a.n gives +2 M^2 a.(x-y)/r^2 = -4 Xacc, left out in round 14. At Newtonian order its value and x-gradient at body a are +2 and -2 times m_a m_b^2/r12^3 (/r12^4), exactly 8 times the point term, at all six ratios. With it the x^3 clock-rate miss is 0 at all six ratios, and the orbit size r12 at omega = 1 matches the known harmonic 2PN relation omega^2 = (m/r^3)[1 + (nu - 3) g + (6 + 41 nu/4 + nu^2) g^2] at all six (an independent observable)": {
+    "pass": true,
+    "detail": "closes {'1/3': True, '1/2': True, '1/4': True, '2/3': True, '1/5': True, '2/5': True}; r12 matches {'1/3': True, '1/2': True, '1/4': True, '2/3': True, '1/5': True, '2/5': True}; live 1/3: miss 0, r12 x^2 1547/1458"
+  },
+  "O11_own_square": {
+    "1/3": {
+      "miss_with_own_square": "0",
+      "r12_x2_with_own_square": "1547/1458",
+      "r12_x2_known_harmonic": "1547/1458"
+    },
+    "1/2": {
+      "miss_with_own_square": "0",
+      "r12_x2_with_own_square": "43/36",
+      "r12_x2_known_harmonic": "43/36"
+    },
+    "1/4": {
+      "miss_with_own_square": "0",
+      "r12_x2_with_own_square": "229/256",
+      "r12_x2_known_harmonic": "229/256"
+    },
+    "2/3": {
+      "miss_with_own_square": "0",
+      "r12_x2_with_own_square": "1547/1458",
+      "r12_x2_known_harmonic": "1547/1458"
+    },
+    "1/5": {
+      "miss_with_own_square": "0",
+      "r12_x2_with_own_square": "4291/5625",
+      "r12_x2_known_harmonic": "4291/5625"
+    },
+    "2/5": {
+      "miss_with_own_square": "0",
+      "r12_x2_with_own_square": "1433/1250",
+      "r12_x2_known_harmonic": "1433/1250"
+    }
+  },
+  "O12 term by term against the paper: with the speeding-up body's own field squared, our g00 at body 1 along the solved circular orbit equals Blanchet, Faye & Ponsot's (1998) Eq. (7.6a) exactly through 2PN, at m1 = 1/2 and 2/5 (scratch runs also at 1/3); without it (round 14) it misses by -2 m1 m2^2 x^3, the point term": {
+    "pass": true,
+    "detail": "differences {'1/2': 0, '2/5': 0}; round 14 at 1/2: -eps**6/4"
+  },
+  "O12_g00_vs_bfp": {
+    "1/2": "0",
+    "2/5": "0"
   }
 }

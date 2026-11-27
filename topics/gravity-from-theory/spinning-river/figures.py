@@ -817,9 +817,9 @@ def fig23():
     # left: the stages at m1 = 1/3
     ax = axs[0]
     row = pr["1/3"]
-    vals = [float(Fr(row[k])) for k in ("miss_rules", "miss_closed", "miss_with_f", "miss_with_point_term")]
-    labels = ["three\nrules", "+ field\nenergy,\nclosed form", "+ field acting\non field\n(4 integrals)",
-              "+ one point-\nlike term\nper body"]
+    vals = [float(Fr(row[k])) for k in ("miss_rules", "miss_closed", "miss_with_f", "miss_with_own_square")]
+    labels = ["three\nrules", "+ field\nenergy,\nclosed form", "+ field on\nfield\n(4 integrals)",
+              "+ own field\nsquared\n(round 15)"]
     cols = [RED, ORANGE, BLUE, GREEN]
     ax.bar(range(4), vals, 0.6, color=cols)
     for i, v in enumerate(vals):
@@ -839,7 +839,10 @@ def fig23():
         for k, v in pr.items():
             held = k == "2/5"
             ax.plot(float(Fr(k)), float(Fr(v[key])), "o", ms=6.5, mfc="white" if held else c, mec=c, zorder=5)
-    ax.plot(a, 0*a, color=GREEN, lw=1.8, label="+ one point-like term per body: 0 at every ratio")
+    ax.plot(a, 0*a, color=GREEN, lw=1.8, label="+ own field squared (derived): 0 at every ratio")
+    for k, v in pr.items():
+        ax.plot(float(Fr(k)), float(Fr(v["miss_with_own_square"])), "o", ms=6.5,
+                mfc="white" if k == "2/5" else GREEN, mec=GREEN, zorder=5)
     ax.plot([], [], "o", mfc="white", mec="k", label="m₁ = 2/5: never used in a fit")
     ax.axhline(0, color="k", lw=0.5)
     ax.set_xlabel("m₁ / m"); ax.set_ylabel("miss in the x³ coefficient of z₁")
@@ -856,13 +859,16 @@ def fig23():
     ax.text(5.0, 8.15, "the field's energy between the bodies is itself a source", ha="center", fontsize=9, color=PURPLE)
     ax.add_patch(Circle((8.0, 6.3), 0.75, fc="none", ec=GREEN, ls="--", lw=1.6))
     ax.add_patch(Circle((2.0, 6.3), 0.9, fc="none", ec=GREEN, ls="--", lw=1.6))
-    ax.text(5.0, 4.6, "leftover: a tiny extra point source at each body (dashed)", ha="center", fontsize=8.5, color=GREEN)
+    ax.annotate("", xy=(6.9, 6.3), xytext=(7.55, 6.3), arrowprops=dict(arrowstyle="-|>", color=GREEN, lw=1.6))
+    ax.annotate("", xy=(3.15, 6.3), xytext=(2.5, 6.3), arrowprops=dict(arrowstyle="-|>", color=GREEN, lw=1.6))
+    ax.text(5.0, 4.2, "each body speeds up toward the other (arrows); its field shifts with it (dashed),\n"
+            "and that shift times its own field is the last piece", ha="center", fontsize=8.3, color=GREEN)
     boxes = [(0.1, 2.6, "known: general relativity's 2PN field (Blanchet, Faye & Ponsot 1998);\nFock's function ln(r₁ + r₂ + r₁₂); Hadamard's finite part", GREY),
-             (0.1, 1.2, "ours: rules + field energy rebuilds the gap piece by piece;\nwhat is left is exactly m_a m_b²/(4 r₁₂² r_b) at each body,\nmost likely how a product of fields is valued at a point", BLUE)]
+             (0.1, 1.2, "ours: rules + field energy rebuild the 2PN field piece by piece;\nthe last piece is a body's own field squared: the gap is 0 at\nevery ratio, and the orbit size matches the known 2PN law", BLUE)]
     for x_, y_, t_, c_ in boxes:
         ax.text(x_, y_, t_, fontsize=8.6, color=c_, va="bottom",
                 bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=c_, alpha=0.95))
-    ax.set_title("a fourth rule: gravity's own energy gravitates", fontsize=10.5)
+    ax.set_title("a fourth rule: gravity's own energy gravitates, gap closed", fontsize=10.5)
     save(fig, "fig23_fourth_rule.png")
 
 

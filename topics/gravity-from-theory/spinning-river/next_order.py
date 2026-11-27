@@ -236,7 +236,7 @@ def regularized_field(m1, order=6, kappa=1, multiply=True):
 
 
 # ---------------------------------------------------------------- circular orbit and the redshift
-def redshift(m1, order=6, kappa=1, multiply=True, verbose=False, res_hook=None):
+def redshift(m1, order=6, kappa=1, multiply=True, verbose=False, res_hook=None, return_sol=False):
     """z1 coefficients of x^0..x^(order/2) from the rules, for body mass m1 (total mass 1)."""
     m1 = sp.nsimplify(m1); m2 = 1 - m1
     res = regularized_field(m1, order, kappa, multiply)
@@ -293,7 +293,7 @@ def redshift(m1, order=6, kappa=1, multiply=True, verbose=False, res_hook=None):
     cs = [sp.nsimplify(sp.simplify(z1.coeff(e, 2*k))) for k in range(order//2 + 1)]
     if verbose:
         print('m1 =', m1, 'rules:', cs, 'truth:', truth(m1)[:len(cs)], flush=True)
-    return cs
+    return (cs, sol) if return_sol else cs
 
 
 def mismatch_formula(m1):
