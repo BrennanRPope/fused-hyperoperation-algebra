@@ -1,0 +1,19 @@
+corners grown by the law (round 13): 120; space pieces at levels 0-3: [600, 4800, 38400, 307200]  (4 s)
+
+== L. One slab of spacetime
+PASS L1 each slab is a flat piece of Minkowski spacetime: its 4 struts all have length^2 = -tau^2 (they last a proper time tau), its walls are flat, and its 4-volume from 4 glued simplices equals the stacked-pieces formula  | 200 pieces; strut length^2 -0.016900 (= -tau^2 = -0.016900); wall faces have rank 2; 4-volume agrees to 1.6e-15
+PASS L2 Schlafli's identity holds in every slab, with time inside: sum of (area x change of ordinary angle) over the timelike hinges equals sum of (area x change of boost) over the spacelike ones. This fixes how the two kinds of curvature add, with nothing fitted  | 40 random slabs, random wiggles of every corner: off by at most 3.2e-09 of either side; with the other sign it misses by at least 100%
+space pieces grouped by shape: [1, 2, 9, 54] shapes at levels 0-3  (11 s)
+
+== M. Gluing slabs into an expanding universe
+PASS M1 a slab that doesn't change size: no boosts anywhere, and its action is (proper time) x (round 11's space curvature sum), tending to Einstein's 6 pi^2 a tau at second order  | level 0: 57.131 x tau, 96.476% of 6 pi^2; level 1: 58.643 x tau, 99.029% of 6 pi^2; level 2: 59.070 x tau, 99.751% of 6 pi^2; level 3: 59.181 x tau, 99.938% of 6 pi^2; grouping by shape matches the full sum to 6e-17
+PASS M2 a growing slab: the spacelike hinges' boosts give the kinetic term -6 pi^2 a (da)^2 / tau, with Einstein's minus sign, tending to it at second order (it is quadratic in the growth rate)  | level 0: 79.77% of it; level 1: 94.20% of it; level 2: 98.50% of it; level 3: 99.62% of it; the same to within 0.23% for growth rates da/tau of 0.1, 0.2 and 0.4
+
+== N. Einstein's equations with a cosmological constant, read back from the glued slabs
+PASS N1 varying the struts (the lapse) gives the Friedmann constraint; a slab at rest solves it at the throat a^2 = 3/Lambda, tending to it at second order, the same number as round 11's Lambda rho^2  | level 0: throat 1.06810; level 1: throat 1.01808; level 2: throat 1.00458; level 3: throat 1.00115
+PASS N2 start the glued universe at the size de Sitter has at t = 0.5 and let the Friedmann constraint grow it slab by slab to t = 1.5: it follows de Sitter's a = cosh(t sqrt(Lambda/3)), the gap falling about 4x per level of refinement; at level 3 what is left comes from the space pieces, not the time step  | worst gap with tau = 0.05: level 1 1.094%, level 2 0.227%, level 3 0.060%; level 3 with tau = 0.1, 0.05, 0.025: 0.294%, 0.060%, 0.056%
+PASS N3 the remaining Regge equations (vary each slice's size with the struts held), never used to grow the solution, hold too: what is left is set by the time step alone, the same at every level and falling about 8x when the step halves  | level 1, tau 0.05: 0.0068% of one slab's term; level 2, tau 0.05: 0.0064% of one slab's term; level 3, tau 0.05: 0.0063% of one slab's term; level 3, tau 0.1: 0.0467% of one slab's term; level 3, tau 0.025: 0.0008% of one slab's term
+PASS N4 caveat: started exactly at rest at the throat, the slabs still follow de Sitter, but the gap only halves when the time step halves, because the first step off the bounce comes out tau^2 where de Sitter has tau^2 / 2  | level 3, out to t = 1.5: worst gap 5.10% with tau = 0.1, 2.59% with tau = 0.05; first step 1.005 and 1.002 x tau^2
+PASS N5 the glued slabs follow de Sitter only while each piece is small next to the horizon (sqrt(3/Lambda)): at level 1 the gap stays under 1% while pieces are under half the horizon, then grows, and the constraint has no growing solution once pieces are about 2 horizons across  | level 1 piece edge 0.386 x a; gap 0.52% while pieces < 0.5 horizon; 17% at the last step (t = 2.2), pieces 2.06 horizons; level 3 pieces are 0.091 x a
+
+9 passed, 0 failed  (26 s)
