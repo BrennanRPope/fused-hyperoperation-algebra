@@ -1,0 +1,236 @@
+% DRAFT for arXiv (quant-ph). Not submitted.
+% Before submitting: fill in the author block, read every line, confirm the acknowledgment,
+% and remove the DRAFT line under the title.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\one}{\mathbb{1}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{Only energy differences matter:\\ a single imaginary unit for quantum dynamics over the reals}
+\author{Brennan Pope\\ \small [affiliation] \quad \small [email]}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{center}\textbf{DRAFT --- not for distribution}\end{center}
+
+\begin{abstract}
+In quantum theory over a real Hilbert space, each norm-preserving, energy-conserving dynamics carries its own complex structure, so the existence of a quarter turn $J$ with $J^2=-\one$ does not by itself single out complex quantum theory. We show that one further physical requirement, that a constant shift of the energy zero changes the dynamics only by a fixed common rotation, forces a single complex structure $J$ shared by every Hamiltonian, with $A(H)=JH/\hbar$ and $[J,H]=0$ for all $H$. The proof takes five lines and uses only antisymmetry of the generator and the Planck--Einstein relation in the form $A(H)^2=-H^2/\hbar^2$; energy conservation, $[A(H),H]=0$, then follows rather than being assumed. Consequences: real quantum theory with all symmetric operators as observables violates the requirement, and so does quaternionic quantum theory with quaternion-linear dynamics; and applied to two non-interacting subsystems, the same requirement gives $J_A\otimes\one=\one\otimes J_B$ on joint states, which reduces the real tensor product to the complex (balanced) tensor product, where local tomography holds. Finally, we test the three recent real formulations of quantum theory that reproduce all multipartite predictions. With their dynamics taken as the image of the complex dynamics, each satisfies all of our assumptions and contains the shared $J$ explicitly, so their agreement with experiment is explained by the theorem rather than in tension with it.
+\end{abstract}
+
+\section{Introduction}
+
+Why does quantum mechanics use complex numbers? A common intuition is that quantum time evolution is a rotation and rotations need an imaginary unit. That intuition is incomplete. Norm preservation makes the generator of time evolution antisymmetric on a real Hilbert space, and every antisymmetric operator comes with a natural complex structure on its non-degenerate part (its polar part, the ``positive-frequency'' complex structure \cite{AshtekarMagnon,Aste,Vaughan}). Real quantum theory therefore already has a $J$ for each dynamics. What it lacks is a \emph{single} $J$, common to all Hamiltonians and commuting with every observable, which is what the imaginary unit of complex quantum theory provides. Stueckelberg postulated such a universal $J$ \cite{Stueckelberg}; Moretti and Oppio derived one for relativistic elementary systems from Poincar\'e symmetry \cite{MorettiOppio}.
+
+The question has become sharper since Renou \emph{et al.} showed that real quantum theory with the standard real tensor product makes different predictions from complex quantum theory in a network scenario \cite{Renou}, a difference confirmed experimentally \cite{Chen,Li}. Real formulations with modified composition rules have since been proposed that reproduce all multipartite predictions \cite{HoffreumonWoods,BarriosHita,MaioliCuradoGazeau}, while others argue that such formulations carry a hidden complex structure \cite{BangChoBaek} or require nonlocal maps \cite{FengRenVedral}.
+
+Here we give a short argument that isolates the physical requirement that makes the complex structure universal. It is the elementary fact that only energy differences are physical: shifting a Hamiltonian by a constant, $H\mapsto H+c\one$, should change the dynamics only by a common rotation, $A(H+c\one)=A(H)+cA(\one)$. Together with the Planck--Einstein relation, this forces $A(H)=JH/\hbar$ with one $J$ for every $H$ (Theorem~\ref{thm:main}). The same requirement, applied to a shift of total energy in a composite system, fixes the composition rule (Proposition~\ref{prop:composite}).
+
+\section{Setting and assumptions}
+
+Let the state space be $\R^n$ with the standard inner product, states being unit vectors. Observables are symmetric matrices. Let $\mathcal{H}$ be the set of Hamiltonians, a set of symmetric matrices that contains $\one$ and is closed under $H\mapsto H+c\one$ for real $c$. Each $H\in\mathcal{H}$ generates linear dynamics $\dot\psi = A(H)\psi$. We assume, for all $H\in\mathcal{H}$:
+
+\begin{itemize}
+\item[(A0)] Every observable can serve as a Hamiltonian: every observable lies in $\mathcal{H}$.
+\item[(A1)] \emph{Norm preservation:} $A(H)^{T}=-A(H)$.
+\item[(A2)] \emph{Energy conservation:} $[A(H),H]=0$.
+\item[(A3)] \emph{Planck--Einstein:} $A(H)^2=-H^2/\hbar^2$. Given (A1) and (A2), which follows (Theorem~\ref{thm:main}), this says that on each energy eigenspace of $H$, with energy $E$, the dynamics is a rotation at angular frequency $|E|/\hbar$.
+\item[(A4)] \emph{Only energy differences matter:} $A(H+c\one)=A(H)+c\,A(\one)$ for every real $c$.
+\end{itemize}
+
+(A1) and (A2) are the standard requirements of reversible, energy-conserving evolution \cite{Vaughan}. We list (A2) because it is standard, but it is not an independent assumption: Theorem~\ref{thm:main} derives it from (A3) and (A4). (A4) says that a constant shift of the energy zero has no effect beyond a common rotation of all states, the same for every $H$. (A3) fixes only the magnitude of each rotation rate; (A4) is what ties the sense of rotation to the sign of the energy. Complex quantum theory, written over the reals with $i$ replaced by a real orthogonal $J$ with $J^2=-\one$, satisfies (A0)--(A4) with $A(H)=JH/\hbar$ and observables the symmetric matrices commuting with $J$.
+
+\section{One complex structure for all Hamiltonians}
+
+\begin{theorem}\label{thm:main}
+Under (A1), (A3) and (A4), there is a single real matrix $J$ with $J^T=-J$ and $J^2=-\one$ such that, for every $H\in\mathcal{H}$,
+\begin{equation}
+[J,H]=0 \qquad\text{and}\qquad A(H)=\frac{1}{\hbar}JH .
+\end{equation}
+In particular energy conservation (A2) holds, $n$ is even, and $\hbar\dot\psi = JH\psi$, which is the Schr\"odinger equation $i\hbar\dot\psi=H\psi$ with $i\leftrightarrow -J$.
+\end{theorem}
+
+\begin{proof}
+(i) Set $J:=\hbar A(\one)$. By (A3) with $H=\one$, $J^2=-\one$, and by (A1), $J^T=-J$. A real matrix with $J^2=-\one$ exists only for even $n$.
+
+(ii) Fix $H$ and set $B:=\hbar A(H)$. By (A4), $\hbar A(H+c\one)=B+cJ$. Applying (A3) to $H+c\one$ gives $(B+cJ)^2=-(H+c\one)^2$ for all $c$. Comparing powers of $c$:
+\begin{equation}\label{eq:coeffs}
+B^2=-H^2,\qquad BJ+JB=-2H .
+\end{equation}
+
+(iii) Since $J^2=-\one$, $J(BJ+JB)-(BJ+JB)J=J^2B-BJ^2=0$, so by \eqref{eq:coeffs} $[J,H]=0$. Likewise $B(BJ+JB)-(BJ+JB)B=B^2J-JB^2=-[H^2,J]=0$, so $[B,H]=0$, which is (A2).
+
+(iv) Write $B=JH+E$. Since $J$ is antisymmetric, $H$ is symmetric and they commute, $JH$ is antisymmetric, so $E$ is antisymmetric. From \eqref{eq:coeffs} and $J^2=-\one$, $JE+EJ=(JB+BJ)-(J^2H+JHJ)=-2H+2H=0$, and $[E,H]=[B,H]-[JH,H]=0$. Then
+\begin{equation}
+B^2=(JH)^2+JHE+EJH+E^2=-H^2+JHE-JEH+E^2=-H^2+E^2 ,
+\end{equation}
+using $EJ=-JE$ and $EH=HE$. By \eqref{eq:coeffs}, $E^2=0$.
+
+(v) For antisymmetric $E$, $\tr(E^TE)=-\tr(E^2)=0$, so $E=0$.
+\end{proof}
+
+Figure~\ref{fig:lever} illustrates the role of (A4). If $H$ is driven by a complex structure $J_H$ different from the $J$ that implements the energy shift, the Planck--Einstein condition (A3) holds at $c=0$ but fails as soon as the energy zero moves.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.6\textwidth]{figures/fig1-energy-zero.pdf}
+\caption{The energy-zero argument on $\R^4$. Here $H$ has two doubly degenerate levels and $B=J_HH$ with $J_H$ commuting with $H$. Plotted is the violation of (A3), $\|(B+cJ)^2+(H+c\one)^2\|$, as the energy zero is shifted by $c$. When the shift is implemented by $J=J_H$ the violation is zero for all $c$; when it is implemented by a different complex structure $J\neq J_H$, it grows linearly in $|c|$.}
+\label{fig:lever}
+\end{figure}
+
+\begin{remark}[A weaker form of (A4)]
+(A4) follows from the apparently weaker requirement that a shift of the energy zero changes the generator by an amount that depends on the shift but not on $H$, $A(H+c\one)=A(H)+f(c)$, with $f$ continuous. Indeed $f(c+c')=f(c)+f(c')$, so $f(c)=cF$; and since $0=\one-\one\in\mathcal{H}$, (A1) and (A3) give $A(0)^2=0$ with $A(0)$ antisymmetric, hence $A(0)=0$ and $F=A(\one)$.
+\end{remark}
+
+\begin{remark}[Why (A4) has content]
+Without (A4), (A1)--(A3) hold for any antisymmetric generator with no kernel: given such an $A$, take $H=\hbar\sqrt{-A^2}$ and $J_H=A|A|^{-1}$, so that $A=J_HH/\hbar$ \cite{Aste,Vaughan}. Different Hamiltonians may then come with different complex structures. For example, on $\R^4$ let $J_0$ rotate the coordinate planes $(1,2)$ and $(3,4)$, let $P$ exchange the second and third basis vectors, and take $H_1=\mathrm{diag}(1,1,2,2)$ with $A(H_1)=J_0H_1/\hbar$ and $H_2=PH_1P^T$ with $A(H_2)=(PJ_0P^T)H_2/\hbar$. Each satisfies (A1)--(A3), but $PJ_0P^T$ rotates the planes $(1,3)$ and $(2,4)$, so the two complex structures differ. The polar construction also shows what goes wrong physically: it assigns each dynamics the Hamiltonian $\hbar\sqrt{-A^2}\ge0$, reading every energy as $|E|$ and reversing the sense of rotation of negative-energy levels. A real theory that reads its complex structure off each dynamics in this way makes the energy zero observable. (A4) is the requirement that it is not.
+\end{remark}
+
+\section{Consequences for real and quaternionic quantum theory}
+
+\begin{corollary}\label{cor:real}
+Real quantum theory, in which every symmetric matrix on $\R^n$ is an observable, cannot satisfy (A0)--(A4).
+\end{corollary}
+
+\begin{proof}
+By (A0) and Theorem~\ref{thm:main}, $J$ commutes with every symmetric matrix. The only matrices commuting with all symmetric matrices are multiples of $\one$, and no multiple of $\one$ squares to $-\one$.
+\end{proof}
+
+Theorem~\ref{thm:main} together with (A0) places every observable in the set of symmetric matrices commuting with $J$. Identifying $(\R^n,J)$ with $\C^{n/2}$, with $J$ acting as multiplication by $i$, these are exactly the complex Hermitian matrices on $\C^{n/2}$. We add a maximality assumption:
+
+\begin{itemize}
+\item[(A5)] Every symmetric matrix commuting with $J$ is an observable.
+\end{itemize}
+
+\begin{proposition}\label{prop:complex}
+Under (A0)--(A5), the observables are exactly the complex Hermitian matrices on $\C^{n/2}$ and the dynamics is $\dot\psi=-\frac{i}{\hbar}H\psi$: the theory is complex quantum theory.
+\end{proposition}
+
+\begin{remark}[Quaternions]
+In quaternionic quantum theory \cite{Adler}, written over the reals, observables are the symmetric matrices commuting with the three anticommuting complex structures $R_i,R_j,R_k$ (right multiplication by $i,j,k$), and generators of dynamics are required to be quaternion-linear, i.e.\ to commute with $R_i,R_j,R_k$ as well. For two or more quaternionic levels, the real matrices commuting with every quaternionic Hermitian observable are spanned by $\one,R_i,R_j,R_k$, and the only quaternion-linear ones among them are multiples of $\one$. So no admissible $J$ exists and, by Theorem~\ref{thm:main} and (A0), quaternionic quantum theory violates (A4): in it, the energy zero is not a convention. If quaternion-linearity of the dynamics is dropped and $A(H)=R_iH/\hbar$ is used, (A0)--(A4) hold with $J=R_i$, but (A5) fails: a quaternionic two-level system on $\R^8$ has $6$ independent observables, while $16$ symmetric matrices commute with $J$. Restoring them gives complex quantum theory.
+\end{remark}
+
+\section{Composite systems}
+
+Consider two systems with state spaces $\R^{n_A},\R^{n_B}$ and complex structures $J_A,J_B$ given by Theorem~\ref{thm:main}. Let the joint state space $W$ be a subspace of $\R^{n_A}\otimes\R^{n_B}$, and assume:
+
+\begin{itemize}
+\item[(A6)] The joint system satisfies (A1)--(A4) with its own complex structure $J_{AB}$, and for non-interacting subsystems a Hamiltonian of $A$ alone, $H_A\otimes\one$, generates $A(H_A)\otimes\one$ on $W$ (and likewise for $B$).
+\item[(A7)] $W$ is the largest subspace of $\R^{n_A}\otimes\R^{n_B}$ compatible with (A6).
+\end{itemize}
+A joint space built as a quotient of $\R^{n_A}\otimes\R^{n_B}$, as in Ref.~\cite{BarriosHita}, is covered by identifying the quotient with the orthogonal complement of the kernel.
+
+\begin{proposition}\label{prop:composite}
+Under (A6), $J_A\otimes\one=\one\otimes J_B=J_{AB}$ on $W$. Under (A7), $W$ is the $(-1)$-eigenspace of $J_A\otimes J_B$, of real dimension $n_An_B/2$. With $J_{AB}$ as its complex structure, it is the complex tensor product $\C^{n_A/2}\otimes_{\C}\C^{n_B/2}$, on which $J_A\otimes J_B=-\one$, and products of local observables span all joint observables (local tomography).
+\end{proposition}
+
+\begin{proof}
+A constant shift of the total energy, $c\one_{AB}$, can be written as $(c\one_A)\otimes\one_B$ or as $\one_A\otimes(c\one_B)$. By (A6) and Theorem~\ref{thm:main} for the subsystems, these shifts change the joint generator by $c(J_A\otimes\one)/\hbar$ and by $c(\one\otimes J_B)/\hbar$ respectively, while Theorem~\ref{thm:main} for the joint system says both changes equal $cJ_{AB}/\hbar$. Hence $J_A\otimes\one=\one\otimes J_B=J_{AB}$ on $W$.
+
+The operators $J_A\otimes\one$ and $\one\otimes J_B$ commute and square to $-\one$, so $K:=J_A\otimes J_B=(J_A\otimes\one)(\one\otimes J_B)$ is a symmetric involution with $\tr K=(\tr J_A)(\tr J_B)=0$. If $(J_A\otimes\one)v=(\one\otimes J_B)v$, then $Kv=(J_A\otimes\one)^2v=-v$. Conversely, if $Kv=-v$, then applying $J_A\otimes\one$ gives $-(\one\otimes J_B)v=-(J_A\otimes\one)v$. So the largest $W$ is the $(-1)$-eigenspace of $K$, of dimension $n_An_B/2$. Under the identification of $(\R^{n_X},J_X)$ with $\C^{n_X/2}$, the real tensor product decomposes as $(\C^{n_A/2}\otimes_\C\C^{n_B/2})\oplus(\C^{n_A/2}\otimes_\C\overline{\C^{n_B/2}})$, with $K=-\one$ on the first summand and $K=+\one$ on the second. Local dynamics $(J_AH_A)\otimes\one$ commutes with $K$ and so preserves $W$. On the complex tensor product, products of Hermitian matrices on the factors span all Hermitian matrices on the product, which is local tomography \cite{Hardy,MasanesMuller}.
+\end{proof}
+
+Without (A6), on the full real tensor product $J_A\otimes\one\neq\one\otimes J_B$, and $J_A\otimes J_B$ is a joint observable invisible to local measurements, the extra parameter responsible for the failure of local tomography in real quantum theory and probed in Refs.~\cite{Renou,Chen,Li}. Figure~\ref{fig:counts} compares the counts for two two-level systems. Proposition~\ref{prop:composite} recovers the ``balanced tensor product'' identified by Bang, Cho and Baek in recent real formulations \cite{BangChoBaek}, here as a consequence of the energy-zero requirement.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.6\textwidth]{figures/fig2-local-tomography.pdf}
+\caption{Real dimension of the joint observables compared with the span of products of local observables, for two two-level systems. Real tensor product: $10$ joint versus $9$ local (one joint parameter is invisible locally). Complex (balanced) product: $16$ and $16$. Quaternionic: $28$ joint quaternionic Hermitian observables versus $6\times6=36$ products, so the local products cannot all be joint observables.}
+\label{fig:counts}
+\end{figure}
+
+\section{The recent real formulations}\label{sec:real}
+
+Three recent proposals reproduce all predictions of complex quantum theory, including the network predictions of Ref.~\cite{Renou}, using real matrices: Hoffreumon and Woods \cite{HoffreumonWoods}, Barrios Hita \emph{et al.} \cite{BarriosHita}, and Maioli, Curado and Gazeau \cite{MaioliCuradoGazeau}. We test each against (A0)--(A7), using the definitions as each paper states them. None of the three defines a Hamiltonian flow; each maps unitaries to real orthogonal (and, where stated, symplectic) matrices, and we take the dynamics to be the image of the complex one, $e^{-iHt}\mapsto\exp(-tJ\,\Gamma(H))$, where $\Gamma$ is the paper's map from complex to real matrices and $J=\Gamma(i\one)$.
+
+\begin{itemize}
+\item \emph{Hoffreumon--Woods.} Observables are $\Gamma(H)=\one\otimes\operatorname{Re}H+J\otimes\operatorname{Im}H$, and their Lemma~B.6 characterizes the image as exactly the symmetric matrices commuting with $J_n=J\otimes\one$. So (A5) holds with the shared $J=J_n$. Their composition rule (their Eq.~B.34), $\Gamma(M_1)\boxtimes\Gamma(M_2)=\tfrac12[\Gamma(M_1)\otimes\Gamma(M_2)-\Gamma(iM_1)\otimes\Gamma(iM_2)]$, equals $\Pi\,(\Gamma(M_1)\otimes\Gamma(M_2))$ with $\Pi=\tfrac12(\one-J_n\otimes J_n)$, since $\Gamma(iM)=J_n\Gamma(M)$. $\Pi$ is the projector onto the $(-1)$-eigenspace of $J_n\otimes J_n$, which is the space $W$ of Proposition~\ref{prop:composite}.
+\item \emph{Barrios Hita et al.} Each system lives on $\R^d\otimes\R^2_F$, and observables have the form $\operatorname{Re}\Pi\otimes\one+\operatorname{Im}\Pi\otimes J_F$, which are exactly the symmetric matrices commuting with $J=\one\otimes J_F$. Their composite is the quotient of the real tensor product by a kernel spanned, on each pair of flags, by $|00\rangle+|11\rangle$ and $|01\rangle-|10\rangle$. This kernel is the $(+1)$-eigenspace of $J\otimes J$, so the quotient is $W$. This is the balanced tensor product identified by Bang, Cho and Baek \cite{BangChoBaek}.
+\item \emph{Maioli--Curado--Gazeau.} Their map is $\gamma^{-1}(L)=\one\otimes\operatorname{Re}L+\tau\otimes\operatorname{Im}L$, with multiplication by $i$ represented by $J=\tau\otimes\one$, $\tau^2=-\one$. Their composition rule is $L_A\otimes_K L_B=\gamma^{-1}(\gamma(L_A)\otimes_{\C}\gamma(L_B))$, the real form of the complex tensor product, which commutes with $J$.
+\end{itemize}
+
+In all three, (A1)--(A4) hold with the stated dynamics, (A5) holds, and the composite is exactly $W$, so (A6) and (A7) hold. Each therefore carries, explicitly, one complex structure $J$ commuting with every observable and every generator and shared by subsystems through $J\otimes\one=\one\otimes J$. Theorem~\ref{thm:main} and Proposition~\ref{prop:composite} explain why: these features are not choices made by the authors but are forced by the conventionality of the energy zero. Conversely, the one real theory that lacks a shared $J$, real quantum theory with all symmetric observables and the plain tensor product, is the theory ruled out experimentally \cite{Renou,Chen,Li}, and by Corollary~\ref{cor:real} it is also the one in which the energy zero is observable. Each claim in this section was checked numerically against the papers' stated formulas (Appendix).
+
+\section{Euclidean formulations and reflection positivity}\label{sec:rp}
+
+Assumption (A4) can be motivated from the Euclidean side. Suppose the dynamics of each $H\in\mathcal{H}$ comes from a Euclidean theory, a positive real semigroup $e^{-\tau H}$, by Osterwalder--Schrader reconstruction and continuation $\tau\to it$ \cite{OS1,OS2}. We show that every theory obtained this way satisfies (A1)--(A4). (A4) then holds automatically for any theory with a Euclidean formulation.
+
+\paragraph{Reflection positivity for a transfer matrix.}
+Let $T$ be a real $n\times n$ matrix, and give a path $x_0\to x_1\to\dots\to x_N$ in $\{1,\dots,n\}$ the weight $\prod_j T_{x_{j+1}x_j}$. Let $\theta$ reverse time, $x_j\mapsto x_{N-j}$, with complex conjugation on functionals, and let $\mathcal{A}_+$ be the functionals of the later half of the path. Reflection positivity is $\langle\theta F,F\rangle\ge 0$ for all $F\in\mathcal{A}_+$. For reflection through a site ($N$ even) it holds if and only if $T$ is symmetric, since then $\langle\theta F,F\rangle=\sum_x|g_F(x)|^2$. For reflection through a link ($N$ odd) it holds if and only if, in addition, $T\ge 0$, since then $\langle\theta F,F\rangle=g_F^{T}Tg_F$. This is the standard transfer-matrix criterion \cite{OsterwalderSeiler,FILS,GlimmJaffe}. For $T=\one-\epsilon H/\hbar$ it holds for small $\epsilon$ whenever $H$ is symmetric. For the implicit step $T=(\one+\epsilon H/\hbar)^{-1}$ it holds at every $\epsilon>0$ if and only if $H\ge0$. In either case, reconstruction gives the real Hilbert space $\R^n$ and the semigroup $e^{-\tau H/\hbar}$. With a complex weight $T=\one+z\epsilon H$, reflection positivity fails for every $z\notin\R$ and every $H\neq 0$. The simplest pairing is then $(z\epsilon H_{12})^2$, which is not real, and at $z=-i/\hbar$ it is negative. In real time the role of positivity is taken over by unitarity.
+
+\begin{proposition}\label{prop:rp}
+Let $\mathcal{H}$ be a set of real symmetric $n\times n$ matrices containing $\one$ and closed under $H\mapsto H+c\one$. Define the real-time dynamics of each $H$ by continuing its Euclidean semigroup, $e^{-\tau H/\hbar}\mapsto e^{-itH/\hbar}$, on the complexification $\C^n\cong\R^{2n}$. Written over the reals, with $i$ represented by $J=\begin{pmatrix}0&-\one\\ \one&0\end{pmatrix}$ and $H$ acting as $H\oplus H$, the generator is $A(H)=-J(H\oplus H)/\hbar$. It satisfies (A1)--(A4) with the single complex structure $-J$.
+\end{proposition}
+
+\begin{proof}
+$J$ is antisymmetric, squares to $-\one$ and commutes with $H\oplus H$, so $A(H)$ is antisymmetric (A1) and commutes with $H\oplus H$ (A2), and $A(H)^2=J^2(H\oplus H)^2/\hbar^2=-(H\oplus H)^2/\hbar^2$ (A3). The continuation acts on the time parameter, not on $H$, so $A(H)$ is linear in $H$ with one coefficient $-J/\hbar$, and $A(H+c\one)=A(H)+cA(\one)$ (A4).
+\end{proof}
+
+The content of the proposition is in the last step. On the Euclidean side, a shift of the energy zero multiplies every path weight by the same positive number $e^{-c\tau/\hbar}$, for every $H$. That is trivially a convention there. The continuation carries this common positive factor to a common rotation $e^{-ict/\hbar}$, which is (A4). The imaginary unit is needed exactly at the continuation, since $e^{-itH/\hbar}$ is real for all $t$ only if $H=0$. It enters as one scalar, the same for every $H$.
+
+\begin{corollary}\label{cor:rp}
+Real quantum theory in which every symmetric matrix is an observable and a Hamiltonian is not the continuation of any family of reflection-positive Euclidean theories.
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{prop:rp} such a continuation satisfies (A1)--(A4). By Corollary~\ref{cor:real} real quantum theory does not.
+\end{proof}
+
+Theorem~\ref{thm:main} therefore applies to every theory with a reflection-positive Euclidean formulation, and the shared $J$ it produces is the imaginary unit of the Wick rotation. The scope is that of the rest of the paper: finite-dimensional state spaces with given Hamiltonians. For field theories the proposition applies whenever a reflection-positive Euclidean measure exists, but constructing such a measure is the hard part of constructive field theory, and we do not address it here. We have not found this link between reflection positivity and the energy-zero requirement stated in the literature we reviewed. The step is short, and we would welcome references.
+
+\section{Relation to prior work}
+
+That an energy-conserving, norm-preserving real dynamics carries a complex structure is known: the positive-frequency complex structure of Ashtekar and Magnon \cite{AshtekarMagnon}, discussed for finite-dimensional real quantum theory by Aste \cite{Aste} and Vaughan \cite{Vaughan}; Gibbons and Pohle note that a Hamiltonian picks out a complex structure \cite{GibbonsPohle}. These results give a $J$ per dynamics and, as Vaughan notes, do not exclude quaternions. Myrheim's real-Hilbert-space formulation imposes $[J,H]=0$ rather than deriving it \cite{Myrheim}. A universal $J$ commuting with all observables was postulated by Stueckelberg \cite{Stueckelberg} and derived from Poincar\'e symmetry for elementary relativistic systems by Moretti and Oppio \cite{MorettiOppio}. The present argument instead uses only time translations together with the freedom to shift the energy zero, and does not require relativistic symmetry. We have not found the energy-zero argument of Theorem~\ref{thm:main}, or its use for composites in Proposition~\ref{prop:composite}, in the literature we reviewed, but we would welcome references.
+
+\section{Discussion}
+
+Rotation alone does not force complex numbers: every rotation dynamics has a quarter turn of its own. What forces a single imaginary unit is the requirement that the zero of energy be a convention. In real quantum theory with all symmetric observables, shifting the energy zero would be observable, since no quarter turn commutes with every observable. Section~\ref{sec:real} makes the status of the recent debate \cite{HoffreumonWoods,BarriosHita,MaioliCuradoGazeau,BangChoBaek,FengRenVedral} precise. Every real formulation that matches experiment, as stated by its authors, satisfies (A0)--(A7) and contains the shared $J$ and the complex tensor product. Whether such a theory should be called ``real'' is then a question of terminology. The physical content, a single complex structure shared by all dynamics and all subsystems, is not optional.
+
+The assumptions can be weakened in obvious directions (infinite dimensions, unbounded Hamiltonians) that we do not pursue here. (A4) is the load-bearing assumption. It says the shift of the energy zero acts as $c\,A(\one)$, the same common rotation for every $H$. For theories with a reflection-positive Euclidean formulation it is not an extra assumption: Proposition~\ref{prop:rp} shows that the Wick rotation supplies it, with the rotation's own imaginary unit as the shared $J$.
+
+\section*{Acknowledgments}
+[To confirm before submitting: The author used an AI assistant for literature search, symbolic and numerical checks, and drafting. The author has checked every step and every reference and takes full responsibility for the content.]
+
+\appendix
+\section{Checks}
+Each step was verified with a short script (supplied as an ancillary file, \texttt{anc/checks.py}). It checks, in exact arithmetic with SymPy and numerically with NumPy: that complex quantum theory satisfies (A1)--(A4); the polar complex structure of a single dynamics and the counterexample in the Remark after Theorem~\ref{thm:main}; the unique solution $B=JH$ on $\R^4$ for generic and degenerate $H$, with the antisymmetric part forced to zero; that the commutant of all symmetric matrices is one-dimensional; the quaternionic counts, and that no quaternion-linear $J$ commutes with all quaternionic observables; the dimension and local-tomography counts of Proposition~\ref{prop:composite} for $1\times1$, $2\times2$ and $2\times3$ complex levels; and, for Section~\ref{sec:real}, that the observables of Refs.~\cite{HoffreumonWoods,BarriosHita} are exactly the symmetric matrices commuting with their $J$, that the image of $e^{-iHt}$ is $\exp(-tJ\Gamma(H))$, that the Hoffreumon--Woods product equals $\Pi(\Gamma(M_1)\otimes\Gamma(M_2))$ and restricts on $W$ to the complex tensor product, that the Barrios Hita kernel is the $(+1)$-eigenspace of $J\otimes J$, and that the Maioli--Curado--Gazeau rule is the real form of the complex tensor product commuting with $J$; and that steps (ii)--(iii) of the proof force $[J,H]=0$ and $[B,H]=0$ for any $J$ with $J^2=-\one$. All 22 checks pass. Steps (ii)--(iv) of the proof, including the derivation of (A2), are also checked in Lean~4 over an arbitrary ring without 2-torsion (ancillary file \texttt{anc/EnergyShift.lean}).
+
+\begin{thebibliography}{99}
+\bibitem{AshtekarMagnon} A.~Ashtekar and A.~Magnon, ``Quantum fields in curved space-times,'' Proc.\ R.\ Soc.\ Lond.\ A \textbf{346}, 375 (1975).
+\bibitem{Aste} A.~Aste, ``Origin of the complex structure of quantum mechanics,'' arXiv:1905.12894 (2019).
+\bibitem{Vaughan} M.~P.~Vaughan, ``The requirement of (at least) complex structure for quantum mechanics,'' arXiv:2609.23041 (2026).
+\bibitem{Stueckelberg} E.~C.~G.~Stueckelberg, ``Quantum theory in real Hilbert space,'' Helv.\ Phys.\ Acta \textbf{33}, 727 (1960).
+\bibitem{MorettiOppio} V.~Moretti and M.~Oppio, ``Quantum theory in real Hilbert space: How the complex Hilbert space structure emerges from Poincar\'e symmetry,'' arXiv:1611.09029.
+\bibitem{Renou} M.-O.~Renou \emph{et al.}, ``Quantum theory based on real numbers can be experimentally falsified,'' Nature \textbf{600}, 625 (2021).
+\bibitem{Chen} M.-C.~Chen \emph{et al.}, ``Ruling out real-valued standard formalism of quantum theory,'' Phys.\ Rev.\ Lett.\ \textbf{128}, 040403 (2022).
+\bibitem{Li} Z.-D.~Li \emph{et al.}, Phys.\ Rev.\ Lett.\ \textbf{128}, 040402 (2022).
+\bibitem{HoffreumonWoods} T.~Hoffreumon and M.~P.~Woods, ``Quantum theory does not need complex numbers,'' arXiv:2504.02808 (2025).
+\bibitem{BarriosHita} P.~Barrios Hita, A.~Trushechkin, H.~Kampermann, M.~Epping and D.~Bru\ss, ``Quantum mechanics based on real numbers: A consistent description,'' Phys.\ Rev.\ Lett.\ \textbf{136}, 240202 (2026); arXiv:2503.17307.
+\bibitem{MaioliCuradoGazeau} A.~C.~Maioli, E.~M.~F.~Curado and J.-P.~Gazeau, ``Quantum mechanics over real numbers fully reproduces standard quantum theory,'' arXiv:2604.19482 (2026).
+\bibitem{BangChoBaek} J.~Bang, K.~Cho and K.~Baek, ``Hidden complex structure in quotient-space real quantum mechanics,'' arXiv:2607.05865 (2026).
+\bibitem{FengRenVedral} T.~Feng, C.~Ren and V.~Vedral, ``Locality implies complex numbers in quantum mechanics,'' arXiv:2504.07808 (2025).
+\bibitem{GibbonsPohle} G.~W.~Gibbons and H.-J.~Pohle, ``Complex numbers, quantum mechanics and the beginning of time,'' arXiv:gr-qc/9302002 (1993).
+\bibitem{Myrheim} J.~Myrheim, ``Quantum mechanics on a real Hilbert space,'' arXiv:quant-ph/9905037 (1999).
+\bibitem{Adler} S.~L.~Adler, \emph{Quaternionic Quantum Mechanics and Quantum Fields} (Oxford University Press, 1995).
+\bibitem{Hardy} L.~Hardy, ``Quantum theory from five reasonable axioms,'' arXiv:quant-ph/0101012 (2001).
+\bibitem{MasanesMuller} Ll.~Masanes and M.~P.~M\"uller, ``A derivation of quantum theory from physical requirements,'' New J.\ Phys.\ \textbf{13}, 063001 (2011).
+\bibitem{OS1} K.~Osterwalder and R.~Schrader, ``Axioms for Euclidean Green's functions,'' Commun.\ Math.\ Phys.\ \textbf{31}, 83 (1973).
+\bibitem{OS2} K.~Osterwalder and R.~Schrader, ``Axioms for Euclidean Green's functions II,'' Commun.\ Math.\ Phys.\ \textbf{42}, 281 (1975).
+\bibitem{OsterwalderSeiler} K.~Osterwalder and E.~Seiler, ``Gauge field theories on a lattice,'' Ann.\ Phys.\ \textbf{110}, 440 (1978).
+\bibitem{FILS} J.~Fr\"ohlich, R.~Israel, E.~H.~Lieb and B.~Simon, ``Phase transitions and reflection positivity. I,'' Commun.\ Math.\ Phys.\ \textbf{62}, 1 (1978).
+\bibitem{GlimmJaffe} J.~Glimm and A.~Jaffe, \emph{Quantum Physics: A Functional Integral Point of View}, 2nd ed.\ (Springer, 1987).
+\end{thebibliography}
+
+\end{document}

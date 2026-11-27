@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,761 theorems in 172 modules, Nov 27 ~03:55 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,779 theorems in 173 modules, Nov 27 ~03:50 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -90,3 +90,4 @@ Nov 27: `topics/hat-primes/` added as DRAFT (the hat monotile against the primes
 Nov 27: `topics/riemann/physical-model/` (the zeros under heat flow as a Burgers gas's poles; 13 checks) and `topics/riemann/dial-wick/` (the d → −d Wick turn into the shock picture; 15 checks) added as DRAFT; both picked up by CI as checks.py; no Lean; not leads.
 Nov 27: `topics/why-i/reflection-positivity/` added as DRAFT (reflection positivity holds on the real dial axis, fails off it, and the Wick turn gives (A4); 15 checks, picked up by CI as checks.py; includes paper-section-DRAFT.tex, the arXiv paper's main.tex unchanged); 23 Lean theorems compiled into the library as FusedAlgebra.Topics.ReflectionPositivity (namespace CircleOp.ReflectionPositivity; MultAdd, wAdd and wAdd_lift renamed to CircleOp, circK and circK_lift, no proof changed); library now 3,755 theorems in 172 modules.
 Nov 27: `topics/force-reach/new-force/` part I added (section 9, the new force up close; DRAFT): investigate_checks.py 17 of 17, wired into CI after hold_strength_checks.py (extra_checks now 68); figures h9 to h11 new, h1 to h8 regenerated; 6 new Lean statements (26 in the topic file, check_statements ALL PASS) mirrored into the library's Topics.NewForce over any field, proved by grind; library 3,761 theorems in 172 modules.
+Nov 27: `topics/why-i/rotations-force-i/` added as DRAFT on Brennan's word that drafts can go in the public repo (the quantum paper: write-up, figures, arxiv/main.tex with the reflection positivity section and (A2) derived, arxiv figures and anc/; arxiv-source.tar.gz left out as a copy of the same files). checks_output.txt regenerated here with SymPy and SciPy, 22 of 22 (the shared copy held a note asking for a rerun); both checks.py copies picked up by CI. lean/EnergyShift.lean, 18 theorems, compiled into the library as FusedAlgebra.Topics.EnergyShift (namespace CircleOp.EnergyShift, no proof changed); library now 3,779 theorems in 173 modules; topic Lean 158 of 170.

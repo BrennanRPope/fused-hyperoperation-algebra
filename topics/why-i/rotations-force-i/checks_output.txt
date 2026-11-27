@@ -1,0 +1,24 @@
+PASS Q0 ordinary quantum mechanics, written in real numbers with i -> J, satisfies A1-A4 with A(H) = J H / hbar
+PASS T1 in odd dimension every rotation generator has a frozen direction (det = 0), so no J with J^2 = -1 exists: a single real energy level (a line) can't turn; turning needs a plane
+PASS T1b every rotation generator splits space into turning planes, each with a +/- pair of frequencies (Aste 2019; Vaughan 2026)
+PASS T2 for one dynamics, A1-A3 always hold with H = hbar sqrt(-A^2) and J = A |A|^-1 (positive-frequency J: Segal, Ashtekar-Magnon; Aste 2019; Vaughan 2026): rotations alone give a J, nothing more
+PASS C2 counterexample without A4: two Hamiltonians on R^4, each satisfying A1-A3 with its own quarter turn, and the two quarter turns differ (real quantum theory has no shared i)
+PASS T3 symbolic, R^4: once [J, H] = 0, the conditions B J + J B = -2H, [B, H] = 0 and B^2 = -H^2 have the single solution B = J H (the leftover E anticommuting with J is forced to zero)  | leftover after linear steps: []
+PASS T3b the last step: for antisymmetric E, |E|^2 = trace(E^T E) = -trace(E^2), so E^2 = 0 forces E = 0
+PASS T3a symbolic, R^4, degenerate energy (H = lam I): the linear conditions leave a 2-parameter family B = lam J + E with E anticommuting with J; the Planck-Einstein condition B^2 = -H^2 then forces E = 0 over the reals  | free after linear steps: [b3, b4]; entries of B^2 + H^2: [-b3**2 - b4**2, -b3**2 - b4**2]
+PASS T3c numerically: such a perturbation keeps rotations (A1) and conservation (A2) but breaks Planck-Einstein (A3): two states of the same energy would turn at different rates
+PASS T4 in real quantum theory every symmetric matrix is an observable, and only multiples of the identity commute with all of them: no quarter turn J can commute with every observable, so A4 (with A3) fails
+PASS C3 without A5: a theory with quaternionic observables and the common turn J = R_i meets A1-A4, but its observables (6 per quaternionic 2-level system) are fewer than the 16 symmetric operators commuting with J; A5 adds the rest and gives complex quantum theory  | commute with J: 16, with all of i, j, k: 6
+PASS C3b genuine quaternionic QM (generators quaternion-linear, as in Adler) fails A4 already: the operators commuting with every quaternionic observable are spanned by 1, R_i, R_j, R_k, and of these only multiples of 1 are quaternion-linear, so no quaternion-linear J can implement the energy shift; the C3 theory meets A1-A4 only by giving up quaternion-linearity  | commutant of observables: 4; also quaternion-linear: 1
+PASS T5 with A5, the observables are exactly the complex Hermitian matrices: (n/2)^2 of them on R^n
+PASS T6 composites: requiring the energy-zero turn to be the same whichever part it's booked to (J x 1 = 1 x J) cuts the real product down to the complex tensor product; there J x J = -1 is fixed, and products of local observables span every joint observable (local tomography holds); this is the 'balanced tensor product' of Bang-Cho-Baek 2026  | 1x1: dim 2, span 1/1; 2x2: dim 8, span 16/16; 2x3: dim 12, span 36/36
+PASS C4 without A6: on the plain real product R^2 x R^2 the two bookings differ (J x 1 != 1 x J), and J x J is a free hidden parameter, the extra joint quarter turn of the e-i-pi page
+PASS T7 in the framework's terms: the chain of steps 1 + (t/N) J H/hbar keeps size to second order and builds exp(tJH/hbar); a real dial stretches at first order. The theorem says the dial direction J must be one and the same for every Hamiltonian and every part of the world
+PASS R1 Hoffreumon-Woods single system: observables are exactly the symmetric matrices commuting with J = J (x) 1 (A5 holds), i maps to J, and the image of e^{-iHt} is exp(-t J Gamma(H)), so A1-A4 hold with one shared J
+PASS R2 Hoffreumon-Woods composition (Eq. B.34): Gamma(M1) [box] Gamma(M2) = Pi (Gamma(M1) (x) Gamma(M2)) with Pi = (1 - J (x) J)/2, the projector onto W = {J (x) 1 = 1 (x) J}; on W it is the complex tensor product, so A6 holds
+PASS R3 Barrios Hita et al.: observables Re(Pi) (x) I + Im(Pi) (x) J_F are the symmetric matrices commuting with J = 1 (x) J_F (A5), and the quotient kernel is exactly the J (x) J = +1 space, so the composite (the quotient) is W, the complex tensor product (A6)
+PASS R4 Maioli-Curado-Gazeau: their composition rule (Eq. 32) is the real form of the complex tensor product and commutes with J = tau (x) 1, so their theory too carries one shared J and composes as W
+PASS R5 why A4 matters: reading each dynamics with its own positive-frequency J makes energies |E| and flips the turn of negative-energy levels, so the physics would depend on the energy zero; A4 rules this out
+PASS T3d energy conservation (A2) follows from A3 and A4: the c^2 and c^1 terms of (B + cJ)^2 = -(H + cI)^2 force [J,H] = 0, and then the c^0 term forces [B,H] = 0, for any J with J^2 = -1 and any B (Lean: EnergyShift.A2_redundant)
+
+22/22 pass

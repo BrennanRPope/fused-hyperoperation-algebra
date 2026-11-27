@@ -1368,6 +1368,24 @@ FusedAlgebra.Topics.EllipticS3	EllipticS3.sphere_moments
 FusedAlgebra.Topics.EllipticS3	EllipticS3.split_frob_fixes	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.sq_nonneg_rat	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.turning_no_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.A2_from_A3_A4	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.A2_redundant	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.E_anticomm_J	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.E_comm_H	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.E_sq_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.J_comm_H	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.J_comm_anticomm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.add_comm'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.coeffs_of_shifts	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.comm_sq	
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.dbl_sub	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.eq_neg_of_add	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.eq_of_sub	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.lin_a	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.lin_x	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.shift_square_coeffs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.sq_minus	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EnergyShift	CircleOp.EnergyShift.sq_plus	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.deligne_b3	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.disjoint_commute	
 FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.graeffe_period3	propext, Classical.choice, Quot.sound
