@@ -202,8 +202,9 @@ more useful", "when I say more useful, more applicable to other scenarios."
 
 Checks: [`checks2.py`](checks2.py) → [`checks2_output.txt`](checks2_output.txt), **22 of 22 pass**. Numbers:
 [`round2.py`](round2.py) → `round2.json`. Pictures: [`figures2.py`](figures2.py). Lean:
-[`lean/NewTies.lean`](lean/NewTies.lean), 10 theorems (12 after round 3), core Lean, no `sorry`, **not compiled here** (the Lean download
-is blocked in this workspace); it needs a compile in the shared library before anyone counts it.
+[`lean/NewTies.lean`](lean/NewTies.lean), 10 theorems (12 after round 3), core Lean, no `sorry`. Not compiled in the
+workspace that wrote it; **compiled clean on Nov 27 in the shared library** as `FusedAlgebra.Topics.NewTies` (namespace
+`CircleOp.NewTies`), all 12 theorems including the three `decide` counts, no proof changed.
 
 ### The result in plain words
 
@@ -302,7 +303,7 @@ elementary; the exact count and the dimension are what the formula adds.
 **A modest lead, now on firmer ground.** For: a real theorem on the line (given Hochman), the same picture in the plane,
 the counting part for every plane law, and a scenario where it applies exactly. Against: the mechanism is Hochman's and
 Cartier–Foata's; ours is the closed formula, the free-piece proof and the reading. Next, if wanted: (1) compile the Lean
-file; (2) the plane lower bound via Hochman's higher-dimensional theorem; (3) Bowen's equation for the plane laws, to see
+file (done: it compiles in the shared library); (2) the plane lower bound via Hochman's higher-dimensional theorem; (3) Bowen's equation for the plane laws, to see
 whether the shared-centre count still sets a clean dimension there.
 
 ### Known vs new, round 2
@@ -408,8 +409,8 @@ depends on how close those points are. The formula is then a ceiling, not the an
 ### 6.7 Lean
 
 Two more identities are in `lean/NewTies.lean`: `fixes_wall` (the map fixes w exactly when d·w² + k·w + 1 = 0) and
-`wall_line_tangent` (the wall line touches the border). That makes 12 theorems in the file. **Still not compiled**: the
-Lean download is blocked here, and the file has no Mathlib import, so the repo CI (which builds Mathlib files) may skip it: build it by hand with `lean lean/NewTies.lean`.
+`wall_line_tangent` (the wall line touches the border). That makes 12 theorems in the file. Not compiled where this was written; **compiled clean on Nov 27 in the shared library**
+build (`FusedAlgebra.Topics.NewTies`), and the topic file itself is built by CI's topic Lean step.
 
 ### 6.8 Lead or not
 
