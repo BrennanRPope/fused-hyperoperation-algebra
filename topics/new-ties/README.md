@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1319,7 +1319,7 @@ kept apart they can only happen inside a class of two or more maps.
 **Yes, a real one.** It turns a published "almost every parameter" theorem into an exact description of where the
 formula fails, with a computable drop, and it comes with a worked example where everything but the last digits is
 proved. What would take it further: (1) prove the example's size equals the family bound 0.47048 (show no other
-collision occurs), which would give the first exact size of a broken case; (2) list which equations can occur inside
+collision occurs), which would give the first exact size of a broken case [Round 10 update: done for a dense set of breaks, and the original is pinned to within 1.4 × 10⁻⁷; section 14]; (2) list which equations can occur inside
 the separated region, so the breaking set is described surface by surface; (3) the same picture for the plane laws of
 rounds 3–4, where the maps are Möbius rather than straight-line.
 
@@ -1350,4 +1350,181 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9) | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] | 13.4, Y9 |
+
+---
+
+## 14. Round 10 (DRAFT): the exact size of a break, without counting
+
+Asked for by Brennan (Nov 27): "What's not proved yet: the break's exact size … Let's define it exactly", then
+"Without having to count". Script: [`exact.py`](exact.py) → `exact.json`. Checks: [`checks10.py`](checks10.py) →
+[`checks10_output.txt`](checks10_output.txt), **12 of 12 pass**. Pictures: [`figures10.py`](figures10.py).
+Lean: 53 theorems, builds, no sorry.
+
+### 14.1 The answer in three sentences
+
+**The exact size of a break is now proved, by a short argument with no counting, for a dense set of breaks:** it is the
+root of one explicit equation (the family bound of Round 9). For a concrete break, the "3-adic break", that root is
+0.4232693, where the formula guessed 0.4531865. The original 19/200 break is not covered (its two numerators share no
+prime), but the same argument now pins its size between 0.47048331 and 0.47048344, where Round 9 had 0.4367 to 0.4705.
+
+### 14.2 Theorem P12
+
+*Setting.* On the line: centres 0, 1, 2; class 1 = {λ, μ} about 0; one map ν about 1 (letter N); one map κ about 2
+(letter K); all multipliers in (0, 1). The **collision surface** is λ = μ(2 − κ), ν = κ/(2 − κ). Every point of it
+breaks the formula, because (aλ)(νw) = (aμ)(κw) for every class-1 run a and every N/K word w (Lean:
+`surface_slopes`, `surface_intercept`).
+
+**Theorem P12 (DRAFT, ours).** Take a rational point (μ, κ) of the collision surface with
+
+- **(I) separate landing zones:** 2λ < 1 − ν and 1 + ν < 2 − 2κ;
+- **(II) enough push:** (2 − κ)(1 − κ) > 1, i.e. κ < (3 − √5)/2 ≈ 0.382 (Lean: `push_general` for κ ≤ 1/3);
+- **(P) a shared prime:** some odd prime p divides the numerators of both μ and κ.
+
+Then
+
+  **dim K = min(1, s_F) exactly**, where s_F is the root of  (P₁ − 1)(Q − 1) − P₁ Q (μκ)^s = 1,
+  with P₁ = 1/((1 − λ^s)(1 − μ^s)) and Q = 1/(1 − ν^s − κ^s).
+
+And s_F < D*, so the size really drops (Round 9). Points with (P) are dense in the region where (I) and (II) hold
+(numerators divisible by p are dense), so the exact formula holds on a dense subset of that part of the surface.
+
+### 14.3 The proof
+
+**Step 0: the reduced pieces.** Round 9's first-return pieces are u·v with u a nonempty class-1 run and v a nonempty
+N/K word. Throw away the duplicated family, the pieces whose run u contains μ and whose word v starts with K. Call what
+is left S′. Every thrown-away piece equals a kept one as a map, so nothing is lost, and Round 9's covering argument
+(Theorem P10) gives dim K ≤ s_F, where s_F is where the weight of S′ crosses 1. That weight is
+(Λ − 1)(Q − 1) + Λ(M − 1)ν^s Q with Λ = 1/(1 − λ^s), M = 1/(1 − μ^s), which equals the formula above (check X4).
+What is left is the lower bound: show that **different words in S′ never give the same map.**
+
+**Step 1: cancel.** Suppose two different words in S′ give the same map. Cancel their longest common beginning (maps are
+invertible). Class-1 letters commute, so what can be left at the front is one of three shapes:
+
+1. one side starts with a class-1 letter and the other with N or K (or is empty);
+2. both start with N/K letters, one with N and the other with K;
+3. one side is λ^a g′ and the other μ^b h′ with a, b ≥ 1, where g′ and h′ start with N or K.
+
+In shape 3 the rule that defines S′ matters: the μ-side's run contained μ, so h′ starts with **N**.
+
+**Step 2: zones (hypothesis I).** Every map sends [0, 2] into itself. A word whose last-applied (outermost) letter is
+about 0, about 1 or about 2 lands in the zone [0, 2λ], [1 − ν, 1 + ν] or [2 − 2κ, 2]. By (I) these are disjoint, so
+shapes 1 and 2 are impossible (an empty word is the identity, which no nonempty word equals).
+
+**Step 3: the shared prime forces equal powers (hypothesis P).** Every multiplier is divisible by p, so every letter is
+the constant map "its centre" mod p. So g′(1) ≡ 1 or 2 and h′(1) ≡ 1 mod p: both are p-adic units (p is odd). The two
+sides send 1 to λ^a g′(1) and μ^b h′(1), with p-adic valuations a·v_p(λ) and b·v_p(μ). On the surface
+v_p(λ) = v_p(μ) ≥ 1, so **a = b** (Lean: `equal_powers`).
+
+**Step 4: the push (hypothesis II).** With a = b, the equation says h′ = ρ·g′ with ρ = (λ/μ)^a = (2 − κ)^a ≥ 2 − κ.
+h′ lands in the N-zone. If g′ starts with N, ρ·g′ lands in ρ·[1 − ν, 1 + ν], which starts past 1 + ν because
+(2 − κ)(1 − ν) > 1 + ν, and that is (II) (with ν = κ/(2 − κ) it reads (2 − κ)(1 − κ) > 1). If g′ starts with K, ρ·g′
+lands beyond 2 − 2κ > 1 + ν. Either way no overlap (Lean: `push_grows`, `push_clear`). So shape 3 is impossible too.
+Figure 31 is this step.
+
+**Step 5: Hochman.** Take the finitely many pieces of S′ of length at most L. By Steps 1–4 they have no exact overlaps,
+and their multipliers are rational, so Hochman's theorem (Ann. Math. 2014, algebraic parameters, no exact overlaps)
+gives their attractor dimension min(1, s_L), where s_L is the root of their weight. Their attractor sits inside K, and
+s_L rises to s_F as L grows. So dim K ≥ min(1, s_F). With Step 0, **dim K = min(1, s_F).** ∎
+
+No step counts maps. The only numbers computed are the certified root s_F and certified checks of (I) and (II).
+
+![Figure 31](figures/fig31-no-second-collision.png)
+
+*Figure 31. Steps 2 and 4 for the 3-adic break. Top: the three landing zones are disjoint. Bottom: a second collision
+would need a copy of a zone stretched by ρ ≥ 1.925 to overlap the N-zone, and it lands clear of it.*
+
+### 14.4 The 3-adic break: an exact number
+
+μ = 3/80 and κ = 3/40 put λ = 231/3200 and ν = 3/77 on the surface. Every multiplier has exactly one factor of 3. The
+two routes (231/3200 about 0)∘(3/77 about 1) and (3/80 about 0)∘(3/40 about 2) are the same map z ↦ (9z + 222)/3200.
+(I) holds (462·77 < 74·3200 and 80·40 < 74·77), and (II) holds (77·37 > 40·40). All are exact checks, in Lean too.
+
+| | value | status |
+|---|---|---|
+| the formula's guess D* | 0.4531865 | certified (interval arithmetic) |
+| **the true size** | **0.4232693** (in [0.42326931, 0.42326932]) | **proved exact** (P12) plus a certified root |
+| collision-free subsystem (old-style lower bound) | 0.3918 | certified, superseded |
+
+![Figure 32](figures/fig32-exact-vs-bracket.png)
+
+*Figure 32. Left: the original break went from a bracket of width 0.034 (grey) to one of width 0.00000014 (green, a thin
+line at this scale). Right: the 3-adic break's size is exact, 0.030 below the formula.*
+
+### 14.5 Where on the surface this applies
+
+Hypotheses (I) and (II) hold on a large part of the surface: κ up to 0.38 and μ up to about 0.24 (Figure 33). Inside it,
+every rational point whose two numerators share an odd prime is exactly solved. Such points crowd in on every point.
+For example, μ_p = p/(20p + 1) and κ_p = p/(10p + 1) are exactly solved for every odd prime p and close in on the
+original break (1/20, 1/10). Their exact sizes 0.46572 (p = 3), 0.46760, 0.46841, …, 0.47047 (p = 1009) climb toward
+0.4704834 (check X9). That is a picture, not a proof for the limit point: dimension need not be continuous.
+
+![Figure 33](figures/fig33-where-exact.png)
+
+*Figure 33. The collision surface over (μ, κ). Coloured: (I) and (II) hold, so P12 applies at every point with a shared
+odd prime; colour is the proved loss D* − s_F (0.012 to 0.072). Star: the 3-adic break. Cross: the original break.
+Rings: exactly solved points closing in on it.*
+
+### 14.6 The original break: pinned, not exact
+
+For the original (19/200, 1/20, 1/19, 1/10) both numerators of μ and κ are 1, so Step 3 has no prime to work with. Without
+it, a and b need not be equal and the stretch is ρ = λ^a/μ^b = 1.9^a · 20^(b−a). That can land in one of two bad windows,
+[0.9, 1.11] (the N-zone against itself) or [0.474, 0.585] (the K-zone against the N-zone), where Step 4 says nothing.
+The first time this happens is a = 13, b = 10: λ¹³/μ¹⁰ ≈ 0.5257 (Lean: `original_first_bad`; Figure 34).
+
+So run the same proof on the reduced pieces whose class-1 run has **at most 12 copies of λ**. In Step 1, a is at most the
+λ-power of a run, so a ≤ 12, and no ratio with a ≤ 12 hits a window (exact check for every b). That subsystem has no
+exact overlaps, and Hochman gives a certified lower bound:
+
+  **0.47048331 ≤ dim K ≤ 0.47048344** (gap at most 1.4 × 10⁻⁷).
+
+This is not exact. What is missing is only the runs with 13 or more copies of λ (weight about λ^(13s) ≈ 6 × 10⁻⁷). The
+first bad ratio is suggestive: ρ ≈ 10/19 would make "ρ times the K-map" equal the N-map exactly. 10/19 is never a ratio
+of powers of 19/200 and 1/20, so no new collision is forced, but the ratio comes close. Closing the gap needs a different
+argument for those runs: a deeper look inside the zones, or a 2-adic, 5-adic or 19-adic step.
+
+![Figure 34](figures/fig34-original-windows.png)
+
+*Figure 34. For the original break, each dot is a possible stretch λ^a/μ^b. Blue dots miss the bad windows, so
+Step 4 still works. The first red dot is at a = 13, so the proof covers runs with up to 12 copies of λ.*
+
+### 14.7 Lean
+
+`lean/NewTies.lean` now has **53 theorems** and builds with Lean 4.37.0-rc1, with no sorry and standard axioms only.
+New this round: `surface_slopes`, `surface_intercept` (every surface point collides), `threeadic_slopes`,
+`threeadic_intercept`, `threeadic_valuations`, `threeadic_zones`, `threeadic_push` (the example's hypotheses),
+`push_general` ((II) for κ ≤ 1/3), `equal_powers` (Step 3), `push_grows`, `push_clear` (Step 4), and
+`original_first_bad` (where the original's proof stops). Steps 1 and 5 are in the prose. Step 5 cites Hochman.
+
+### 14.8 Is it a lead?
+
+**Yes, still a real one, and it got stronger.** Round 9 showed where the formula breaks and that the size drops. Round 10
+says *exactly what the size becomes*, as the root of a closed equation, on a dense set of breaks, by a half-page argument:
+cancel, separate, use a shared prime, push. What it contributes: an exact dimension for self-similar sets with exact
+overlaps of this shared-centre kind, at points where the naive formula is provably wrong, plus a near-exact answer for
+the original example. What would take it further:
+
+1. **Close the original break**, by handling runs with 13 or more copies of λ (14.6).
+2. **Remove (P)**: prove the formula at every rational point of the surface, or find a point where a second collision
+   really happens. If one exists, the size there drops below s_F.
+3. **Other surfaces**: breaks that involve longer words, or two classes of two maps, using the same four steps.
+
+### 14.9 Who proved what, round 10
+
+Cancelling a common prefix, ping-pong zones, p-adic units and "pass to a subsystem with no exact overlaps, then apply
+Hochman" are standard tools. The general strategy of computing a dimension through a free subsystem is in the spirit of
+the finite-type and weak-separation literature (Ngai–Wang, Lau–Ngai). We did not run a fresh literature search this
+round. Ours (DRAFT): the reduced language S′ for shared-centre breaks, Theorem P12 with its shared-prime step, the exact
+value 0.4232693 for the 3-adic break, the bounded-run lower bound and the bracket [0.47048331, 0.47048344] for the
+original break. Hochman's theorem is used as stated; we did not check its proof.
+
+### Known vs new, round 10
+
+| Item | Status | Source |
+|---|---|---|
+| Hochman: algebraic parameters + no exact overlaps ⇒ dim = min(1, similarity dim) | Known | Hochman 2014 |
+| P12: exact size s_F on the collision surface under (I), (II), (P) | **Ours** (DRAFT) | 14.2–14.3, X1–X8 |
+| 3-adic break: exact size 0.4232693 (formula 0.4531865) | **Ours** (DRAFT) | 14.4, X3 |
+| Exactly solved points are dense where (I), (II) hold | **Ours** (DRAFT) | 14.5, X9, X11 |
+| Original break: 0.47048331 ≤ dim ≤ 0.47048344 | **Ours** (DRAFT), not exact | 14.6, X10 |
+| Original break: size exactly 0.4704834 | Open (Round 9's conjecture, now within 1.4 × 10⁻⁷) | 14.6 |

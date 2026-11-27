@@ -1,4 +1,4 @@
-Lean (version 4.37.0-rc1, x86_64-unknown-linux-gnu, commit 0b77e12952ad39077d80d8bd6b66d601f225c321, Release)
+Lean 4.37.0-rc1, core only. Built 2026-11-27. 53 theorems, exit 0, no sorry.
 'NewTies.hom_centre' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.union_is_stretch' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.same_centre_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -40,4 +40,15 @@ Lean (version 4.37.0-rc1, x86_64-unknown-linux-gnu, commit 0b77e12952ad39077d80d
 'NewTies.example_collision' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.example_in_box' does not depend on any axioms
 'NewTies.replace_shortens' depends on axioms: [propext, Classical.choice, Quot.sound]
-exit status 0
+'NewTies.surface_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.surface_intercept' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.threeadic_slopes' does not depend on any axioms
+'NewTies.threeadic_intercept' does not depend on any axioms
+'NewTies.threeadic_valuations' does not depend on any axioms
+'NewTies.threeadic_zones' does not depend on any axioms
+'NewTies.threeadic_push' does not depend on any axioms
+'NewTies.push_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.equal_powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.push_grows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.push_clear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.original_first_bad' does not depend on any axioms

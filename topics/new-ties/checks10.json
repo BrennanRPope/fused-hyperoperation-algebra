@@ -1,0 +1,62 @@
+[
+ {
+  "name": "X1 3-adic break on the surface: (231/3200 about 0) o (3/77 about 1) = (3/80 about 0) o (3/40 about 2), every multiplier has 3-adic valuation 1",
+  "ok": true,
+  "detail": "['9/3200', '111/1600']"
+ },
+ {
+  "name": "X2 hypotheses of Theorem P12: zones disjoint (I), push (II), shared odd prime 3 (P)",
+  "ok": true,
+  "detail": "[3]"
+ },
+ {
+  "name": "X3 certified: exact dimension in [0.4232693, 0.4232694], D* in [0.4531865, 0.4531866], drop > 0.0299",
+  "ok": true,
+  "detail": "([0.4232693171632027, 0.42326931775058363], [0.45318651705980306, 0.4531865177489818])"
+ },
+ {
+  "name": "X4 the reduced-piece weight equals Round 9's family weight f - P1 Q (mu kappa)^s",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "X5 sanity (not used in the proof): all reduced words up to length 8 give different maps; counts match the family model",
+  "ok": true,
+  "detail": "(6527, [4, 14, 48, 164, 560, 1912, 6528, 22288, 76096])"
+ },
+ {
+  "name": "X6 p-adic step: 400 random words with outer letter N or K send 1 to a 3-adic unit (exact)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "X7 push: rho = (77/40)^a moves the N-zone and the K-zone clear of the N-zone for a = 1..40 (exact; grows with a)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "X8 sanity: random pairs of different reduced words give different maps (exact)",
+  "ok": true,
+  "detail": "2996"
+ },
+ {
+  "name": "X9 exact points p/(20p+1), p/(10p+1) (p = 3 ... 1009) increase toward the original's family bound",
+  "ok": true,
+  "detail": "[0.4657216, 0.4675976, 0.4684132, 0.4691608, 0.4693631, 0.4703385, 0.4704689]"
+ },
+ {
+  "name": "X10 original break: no shared odd prime; first bad pair (a, b) = (13, 10); new certified lower bound within 2e-7 of the family bound and far above Round 9's 0.4367",
+  "ok": true,
+  "detail": "([0.47048330852533593, 0.4704833091001534], [0.4704834395837236, 0.47048344015854104])"
+ },
+ {
+  "name": "X11 on the whole grid where (I) and (II) hold, the exact size is strictly below D* (drop > 0.01)",
+  "ok": true,
+  "detail": "3477"
+ },
+ {
+  "name": "X12 Lean: 53 theorems build with core Lean 4.37, no sorry",
+  "ok": true,
+  "detail": "Lean 4.37.0-rc1, core only. Built 2026-11-27. 53 theorems, exit 0, no sorry."
+ }
+]
