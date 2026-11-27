@@ -59,6 +59,8 @@ The two sectors add up to the torus. We checked both formulas against direct lat
 
 ![Spectral-zeta zeros: square torus on the line, Klein bottle and its odd sector off it; turning the twist on moves every zero off](figures/fig3-klein-twist.png)
 
+Follow-up (Nov 27): [`../klein-gram/`](../klein-gram/README.md) runs the Gram test and the prime drift on these three zetas. Gram's law doesn't see the zeros leave the line (the odd sector passes it more often than the torus); the drift shows only in the prime count.
+
 ### 3b. On a hyperbolic surface: the twist flips the transverse ladder
 
 For a closed geodesic of length ℓ that preserves orientation, Selberg's factor is ∏_k (1 − e^(−(s+k)ℓ)), and its trace-formula weight is 1/(2 sinh(ℓ/2)) = e^(−ℓ/2) Σ_k e^(−kℓ). For a glide reflection, which is the twist, the transverse directions flip. The linearised return map then has eigenvalues −e^(±ℓ), so |det(1 − P)|^(1/2) = 2 cosh(ℓ/2), and the ladder picks up the sign (−1)^k:

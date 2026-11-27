@@ -133,6 +133,8 @@ Each entry says how solid it is (**proved in Lean**, **exact computation**, **nu
 
 10. **Proving through the circle operation does not make proofs shorter.** Six known results (subset expansion, inclusion–exclusion, the signed corner count of a cube, the binomial theorem, the geometric series and tangent addition) were each proved three ways against Mathlib: Mathlib's own proof, through the circle operation, and a control with the same proof plan and the operation taken out. The operation route never beat the control on any yardstick; Mathlib's proof was the shortest every time, and dependency depth was about the same for all three. Where the operation route beat Mathlib, the saving came from the textbook proof plan, not the operation. ([write-up](topics/proof-complexity/README.md))
 
+11. **Gram's law can't detect zeros off the line.** On the twisted halves of the square torus's spectral zeta, every zero is off the line, yet the half that keeps the twist's flipped tones passes Gram's test more often (74%) than the torus with every zero on the line (56%), and the other half less often (46%). The pass rate follows the first Dirichlet coefficient: the mean Gram value is exactly 8, 3 and 5. Only the prime count tells them apart, and that is von Koch's equivalence. *Status:* numeric, 18 checks, to height 2000. *New?* The mean values 3 and 5 are a short consequence of Titchmarsh's and Weishäupl's mean-value theorems; not found stated. [`topics/riemann/klein-gram/`](topics/riemann/klein-gram/)
+
 ### Known results, usefully reframed
 
 Known mathematics, but the one-picture reading may help someone teaching or connecting fields. No novelty is claimed.

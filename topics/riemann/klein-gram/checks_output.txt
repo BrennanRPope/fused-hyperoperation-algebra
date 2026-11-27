@@ -1,0 +1,19 @@
+PASS C1 klein sector formula = lattice sum at s=3 1.34390572 vs 1.34390572
+PASS C1 odd sector formula = lattice sum at s=3 3.31500790 vs 3.31500790
+PASS C2 Z_K + Z_O = Z_T 
+PASS C3 vectorised Klein zeta matches mpmath (t up to 1500) max rel err 1.5e-07
+PASS C4 every winding number is an integer to 0.05 worst 0.000
+PASS C5 torus: zeros in the strip = sign changes on the line (all on the line to height 600) 812 vs 812
+PASS C6 Gram share with one zero: Klein < torus < odd half (to height 600) torus 0.605, klein 0.487, odd 0.773
+PASS C7 Klein and odd half keep one zero per Gram interval on average right of Re = -1 {'klein': np.float64(1.0123), 'odd': np.float64(1.0099)}
+PASS C8 far-left band density = log 2 / pi per unit height (Klein) 0.2056 vs 0.2206
+PASS C9 mean Gram values 8, 3, 5 (torus, Klein, odd half) over 3473 Gram points torus 7.998, klein 2.999, odd 4.999
+PASS C10 lattice count: N_K = N_T/2 - [floor sqrt X odd], N_O = N_T/2 + [...] for X <= 2e5 
+PASS C11 torus prime count = Gaussian-prime von Mangoldt (n <= 2000) max err 1.4e-14
+PASS C12 Klein log-derivative is nonzero at 10 = 2*5 (no Euler product) c(10) = -9.2103
+PASS C13 a Klein zero with Re > 1 (mpmath) rho = 1.285516+447.214651j
+PASS C14 odd half vanishes at s = 0 
+PASS C15 explicit formula rebuilds Klein drift from its zeros to 2% (X = 2e5..1e6) [0.9989, 1.0, 0.9999, 1.0005, 0.9991]
+PASS C16 Klein prime drift outgrows X (|psi - X| > X at X = 1e6) 1.001e+07
+PASS C17 Riemann-Siegel Z(t) matches mpmath max err 9.9e-07
+18/18 pass

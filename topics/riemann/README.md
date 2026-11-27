@@ -9,6 +9,8 @@ Round 4: what has to stay positive along the rewind (the local fused discriminan
 
 Round 5: the dial pairs not yet tried (height with homothety, ratio with order, height with roundness), plus light and flux tubes: [`round5/`](round5/README.md).
 
+Gram test and prime drift on the torus and Klein bottle (Nov 27): [`klein-gram/`](klein-gram/README.md).
+
 Asked for by Brennan (voice): "let's look at the Riemann hypothesis", with the method he set just before: first "from a
 fresh perspective... without looking at existing work", then "a second pass with the existing work".
 Checks: `checks.py` → `checks_output.txt`, **20 of 20 pass** in 144 s, including 7 polish checks (marked POLISH). Pictures: `figures.py` → `figures/`.
