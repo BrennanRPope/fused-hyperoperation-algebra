@@ -25,6 +25,10 @@ WL: one law for both wobbles of an equatorial orbit, and why the push's +28 equa
     wobble_law.py -> wobble_law.json).
 PC: Kerr's orbits as Newton's orbits around the ring-shifted mass plus one mass term, and the source of the polar
     (a/r)^2 (M/r)^n terms (round 23, polar_coupling.py -> polar_coupling.json).
+RT: is the one mass term the river's push? Time part, push and twist shares, and the orbit's shape per unit energy
+    (round 25, river_term.py -> river_term.json).
+EQ: the equator split three ways: which piece of the field gives each term of round 22's D - 3(v - q)^2
+    (round 26, equator_split.py -> equator_split.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1564,6 +1568,83 @@ check("PC4 in flight: slightly perturbed polar orbits integrated in Cartesian co
       [(f_["k"], f_["delta"], f_["flown_ratio2"], f_["law"], f_["rel_err"]) for f_ in fl_pc_])
 results["PC_polar_coupling"] = {"newton_plus_one": n1_pc_, "stiffness_law": sl_pc_, "polar": pk_pc_,
                                 "flights": fl_pc_}
+
+
+# ================================================================ RT1-RT4  the one mass term, piece by piece (round 25)
+import river_term as rt_  # noqa: E402
+pi_rt_ = rt_.piece_identities()
+check("RT1 in the Kerr-Schild shell with a dial on each piece of (k.p)^2 (k.p = E + P + S), the river's time part "
+      "alone is exactly Newton's ring with mass M E^2: R_EE = R_Newton(M -> M E^2), and the up-and-down equation "
+      "has no dial. E.P and P.S give only M^2 terms, which cancel P.P's own M^2 terms exactly; the M^2 part vanishes "
+      "for every setting whose pieces form one square (alpha E + beta P + gamma S)^2 and not for E.P alone "
+      "(symbolic, exact, any orbit)",
+      all(pi_rt_[k_] for k_ in ("shell_with_all_pieces_is_carter", "kerr_is_newton_plus_one_term",
+                                 "time_part_is_newton_with_mass_M_E2", "M2_part_vanishes_with_all_pieces",
+                                 "M2_part_vanishes_for_any_square", "M2_part_nonzero_for_EP_alone")),
+      {k_: v_ for k_, v_ in pi_rt_.items() if isinstance(v_, bool)})
+check("RT2 round 23's one term is shared by three pieces: 2Mr(K - a^2) = 2Mr(E^2 - 1)(r^2 + a^2) (time part) + "
+      "2Mr[C - (E^2 - 1) r^2 - a^2 L^2/(r^2 + a^2)] (push, P.P) + 2Mr[a^2 L^2/(r^2 + a^2) - 2aEL] (twist, S.S and "
+      "2E.S). The clock 2Mr P/Delta splits into time 2MrE, twist, push 4M^2 r^2 E/Delta and push-twist pieces; the "
+      "turning term comes from the twist pieces only. Per unit energy (C -> C/E^2, L -> L/E, Newton's energy "
+      "1 - 1/E^2), Kerr's radial function is E^2 times Newton's ring (mass M) + push + twist, and the clock and turning "
+      "are E times their per-unit-energy forms (symbolic, exact)",
+      all(pi_rt_[k_] for k_ in ("one_term_split_time_push_twist", "first_order_PP_is_push_share_SS_ES_twist",
+                                 "clock_full_is_round23", "clock_pieces_add_up", "turning_full_is_round23",
+                                 "turning_pieces_add_up", "turning_has_no_time_or_push_alone_piece",
+                                 "kerr_per_unit_energy_is_newton_plus_push_plus_twist", "clock_per_unit_energy",
+                                 "turning_per_unit_energy")),
+      pi_rt_["shares"])
+ph_rt_ = rt_.polar_homogeneity()
+k2_rt_ = rt_.polar_k2_table()
+uu_ = rt_.u
+sy_ = lambda x_: sp.sympify(x_, locals={"u": uu_})
+k2ok_ = (sp.simplify(sy_(k2_rt_["time part only"]["ratio_k2"]) - sp.Rational(3, 2)) == 0
+         and sy_(k2_rt_["time part only"]["ratio_k0"]) == 1
+         and sp.simplify(sy_(k2_rt_["push only"]["ratio_k2"]) - sp.Rational(3, 2)*(1 + 10*uu_ - 8*uu_**2)) == 0
+         and sp.simplify(sy_(k2_rt_["push only"]["ratio_k0"]) - (1 - 6*uu_)) == 0
+         and sp.simplify(sy_(k2_rt_["Kerr (time + push)"]["_exact"][3]) + (8*uu_ + 3)/2) == 0
+         and sp.simplify(sy_(k2_rt_["push only"]["_exact"][3]) + (8*uu_ + 3)/2) != 0
+         and sp.simplify(sy_(k2_rt_["time part only"]["_exact"][3]) + (8*uu_ + 3)/2) != 0)
+check("RT3 over the poles the time part's share changes no rate ratio: on spherical polar orbits R and Theta are of "
+      "degree one in (E^2 - 1, Q, Newton's mass), so the elliptic modulus and omega_r^2/Q don't depend on Newton's "
+      "mass. With the time share alone the ratio stays Newton's (1 and 3/2 exactly); with the push share alone it is "
+      "Kerr's at every order in u (1 - 6u and (3/2)(1 + 10u - 8u^2)). The coordinate-time rate Omega_theta^2 needs both "
+      "(Kerr's -(3/2 + 4u) only with both, since the time part sets the clock)",
+      all(ph_rt_[k_] for k_ in ("degree_one", "m_free_of_mu", "omega_r2_over_Q_free_of_mu")) and k2ok_,
+      {n_: (d_["ratio_k0"], d_["ratio_k2"], d_["omega_theta2_k2_series"]) for n_, d_ in k2_rt_.items()})
+ec_rt_ = [rt_.eccentric_polar(1.0, 0.9, 6.0, 10.0), rt_.eccentric_polar(1.0, 0.5, 7.0, 14.0)]
+check("RT4 in flight: eccentric polar orbits (a = 0.9M, r from 6M to 10M; a = 0.5M, r from 7M to 14M) flown with "
+      "Hamilton's equations of the exact Kerr-Schild metric in Cartesian coordinates, in Mino time, beat (radial "
+      "against up-and-down) at the ratio of Newton's ring + push with the constants divided by E^2, to 1e-9; Newton's "
+      "ring alone with the same turning points is far off",
+      all(abs(e_["ratio_flown"]/e_["ratio_newton_ring_plus_push"] - 1) < 1e-9
+          and abs(e_["ratio_kerr_quadrature"]/e_["ratio_newton_ring_plus_push"] - 1) < 1e-9
+          and abs(e_["ratio_newton_ring_alone"]/e_["ratio_flown"] - 1) > 0.1 for e_ in ec_rt_),
+      [{k_: v_ for k_, v_ in e_.items() if k_.startswith("ratio")} for e_ in ec_rt_])
+results["RT_river_term"] = {"pieces": pi_rt_, "homogeneity": ph_rt_, "polar_k2": k2_rt_, "eccentric": ec_rt_}
+
+# ================================================================ EQ1-EQ3  the equator split three ways (round 26)
+import equator_split as eq_  # noqa: E402
+sp_eq_ = eq_.split()
+check("EQ1 at the equator (Q = 0), per unit energy, Kerr's radial function is Newton's ring + push + twist, and the "
+      "push's 2MrL^2, the twist's -4MraL and the ring's 2Mra^2 complete one square: R = e r^4 + 2M(1 - e) r^3 - "
+      "(L^2 - e a^2) r^2 + 2Mr(L - a)^2. With the push alone or the twist alone the a^2 L^2/(r^2 + a^2) parts don't "
+      "cancel and R is not a polynomial (symbolic, exact)",
+      all(sp_eq_.values()), sp_eq_)
+gs_eq_ = eq_.generic_stiffness()
+check("EQ2 for any radial function e r^4 + 2 alpha r^3 - W r^2 + 2 beta r on a circular orbit, the radial stiffness "
+      "is alpha r - 3 beta/r and W = alpha r + 3 beta/r: the sign flip behind round 22's law. Kerr per unit energy "
+      "has alpha = M(1 - e) and beta = M (L - a)^2 (symbolic, exact)",
+      all(gs_eq_.values()), gs_eq_)
+ra_eq_ = eq_.ratios()
+check("EQ3 the equatorial rate ratio (Omega_r/Omega_phi)^2 piece by piece (v^2 = M/r, q = a/r): Newton's ring alone "
+      "gives exactly 1 - 3q^2; ring + push brings -6v^2 and +28 q^2 v^2; ring + twist brings +8qv and -28 q^2 v^2; "
+      "all three give exactly round 22's D - 3(v - q)^2 = 1 - 6v^2 + 8qv - 3q^2 (exact for ring and Kerr, series to "
+      "v^10 for the partial cases; every orbit checked circular)",
+      all(ra_eq_["checks"].values()) and all(ra_eq_[n_]["circular_ok"] for n_ in eq_.CASES),
+      {**ra_eq_["checks"], **{n_: ra_eq_[n_]["series_in_chi_v"] for n_ in eq_.CASES}})
+results["EQ_equator_split"] = {"split": sp_eq_, "stiffness": gs_eq_,
+                               "ratios": {k_: v_ for k_, v_ in ra_eq_.items() if k_ != "curves"}}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

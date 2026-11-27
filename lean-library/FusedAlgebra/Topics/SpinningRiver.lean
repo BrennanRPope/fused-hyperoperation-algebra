@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 to 23 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 26 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -355,6 +355,85 @@ theorem spherical_vertical_stiffness (r e M W Kc a Q : K) (h2 : (2 : K) ≠ 0)
 theorem polar_k2_law (u : K) :
     3 * (1 - 4 * u) * (1 - 6 * u) + 12 * u * (5 - 8 * u) = 3 * (1 + 10 * u - 8 * u^2) := by
   grind
+
+/-! ### Round 25: the one mass term, piece by piece
+
+The Kerr–Schild shell with the field entering through (k·p)², k·p = E + P + S (time part, push, twist). -/
+
+/-- **The river's time part alone is Newton's ring with mass M E²**: −(r² + a²)·C_r, with C_r multiplied through by
+r² + a², is Newton's radial function with M replaced by M E². -/
+theorem time_part_is_heavier_newton (r a M E L C : K) :
+    -(-(a^2 * L^2) - (r^2 + a^2) * ((E^2 - 1) * r^2) + (r^2 + a^2) * C - 2 * M * r * E^2 * (r^2 + a^2)) =
+      (r^2 + a^2) * ((E^2 - 1) * r^2 + 2 * (M * E^2) * r - C) + a^2 * L^2 := by
+  grind
+
+/-- **The one term is shared three ways** (multiplied through by r² + a²): time part 2Mr(E² − 1)(r² + a²), push
+2Mr[C − (E² − 1)r² − a²L²/(r² + a²)], twist 2Mr[a²L²/(r² + a²) − 2aEL], with K = C − L² + (L − aE)². -/
+theorem one_term_split (r a M E L C : K) :
+    (r^2 + a^2) * (2 * M * r * ((C - L^2 + (L - a * E)^2) - a^2)) =
+      (r^2 + a^2) * (2 * M * r * (E^2 - 1) * (r^2 + a^2))
+        + 2 * M * r * (C * (r^2 + a^2) - (E^2 - 1) * r^2 * (r^2 + a^2) - a^2 * L^2)
+        + 2 * M * r * (a^2 * L^2 - 2 * a * E * L * (r^2 + a^2)) := by
+  grind
+
+/-- **The push's second-order parts cancel when the pieces form one square**: with weights from (αE + βP + γS)²,
+the B² term (from E·P and P·S) equals P·P times the rest. -/
+theorem river_square_cancels (α β γ E S : K) :
+    (α * β * E + β * γ * S)^2 = β^2 * (α^2 * E^2 + γ^2 * S^2 + 2 * (α * γ) * E * S) := by
+  grind
+
+/-- **The clock term split** (multiplied through by (r² + a²)Δ, Δ = r² + a² − 2Mr): time 2MrE, twist 2MrS,
+push 4M²r²E/Δ, push–twist 4M²r²S/Δ, with S = −aL/(r² + a²). -/
+theorem clock_split (r a M E L : K) :
+    2 * M * r * (E * (r^2 + a^2) - a * L) * (r^2 + a^2) =
+      2 * M * r * E * ((r^2 + a^2) * (r^2 + a^2 - 2 * M * r)) + 2 * M * r * (-(a * L)) * (r^2 + a^2 - 2 * M * r)
+        + 4 * M^2 * r^2 * E * (r^2 + a^2) + 4 * M^2 * r^2 * (-(a * L)) := by
+  grind
+
+/-- **Per unit energy, Kerr is Newton's ring + push + twist**: with C̃ = C/E², L̃ = L/E and Newton's energy
+1 − 1/E², E² times [Newton (mass M) + 2Mr(C̃ − (1 − 1/E²)r² − 2aL̃)] is Carter's radial function. -/
+theorem kerr_per_unit_energy (r a M E L C : K) (hE : E ≠ 0) :
+    E^2 * ((r^2 + a^2) * ((1 - 1 / E^2) * r^2 + 2 * M * r - C / E^2) + a^2 * (L / E)^2
+        + 2 * M * r * (C / E^2 - (1 - 1 / E^2) * r^2 - 2 * a * (L / E))) =
+      (E * (r^2 + a^2) - a * L)^2 - (r^2 - 2 * M * r + a^2) * (r^2 + (C - L^2 + (L - a * E)^2)) := by
+  grind
+
+/-- **Round 26, per unit energy at the equator**: Newton's ring plus push plus twist adds up to
+(r² + a²)(e r⁴ + 2M(1 − e) r³ − (L² − e a²) r² + 2M r (L − a)²). -/
+theorem equator_split_per_unit_energy (r a M e L : K) :
+    (r^2 + a^2) * (e * r^4 + 2 * M * r^3 - (L^2 - e * a^2) * r^2 + 2 * M * r * a^2)
+        + ((r^2 + a^2) * (-(2 * M * e * r^3) + 2 * M * r * L^2) - 2 * M * r * a^2 * L^2)
+        + ((r^2 + a^2) * (-(4 * M * r * a * L)) + 2 * M * r * a^2 * L^2) =
+      (r^2 + a^2) * (e * r^4 + 2 * M * (1 - e) * r^3 - (L^2 - e * a^2) * r^2 + 2 * M * r * (L - a)^2) := by
+  grind
+
+/-- The square's three sources: the ring's a², the push's L², the twist's −2aL. -/
+theorem square_from_three_sources (a L : K) : a^2 + L^2 - 2 * a * L = (L - a)^2 := by
+  grind
+
+/-- **The stiffness law for any radial function** e r⁴ + 2αr³ − W r² + 2βr on a circular orbit (R/r = 0 and
+R' = 0 at r): r·(−R''/2) = αr² − 3β. Needs 2 ≠ 0. Kerr per unit energy: α = M(1 − e), β = M(L − a)². -/
+theorem generic_radial_stiffness (r e α W β : K) (h2 : (2 : K) ≠ 0)
+    (h0 : e * r^3 + 2 * α * r^2 - W * r + 2 * β = 0)
+    (h1 : 4 * e * r^3 + 6 * α * r^2 - 2 * W * r + 2 * β = 0) :
+    r * (W - 6 * e * r^2 - 6 * α * r) = α * r^2 - 3 * β := by
+  have h : 2 * (r * (W - 6 * e * r^2 - 6 * α * r) - (α * r^2 - 3 * β)) = 0 := by grind
+  grind
+
+/-- ... and rW = αr² + 3β: the same two pieces with the opposite sign of 3β. -/
+theorem generic_vertical_stiffness (r e α W β : K) (h2 : (2 : K) ≠ 0)
+    (h0 : e * r^3 + 2 * α * r^2 - W * r + 2 * β = 0)
+    (h1 : 4 * e * r^3 + 6 * α * r^2 - 2 * W * r + 2 * β = 0) :
+    r * W = α * r^2 + 3 * β := by
+  have h : 2 * (r * W - (α * r^2 + 3 * β)) = 0 := by grind
+  grind
+
+/-- **Round 22's law, term by term**: Newton's ring's 1 − 3q², the push's −6v² and the twist's +8qv make
+D − 3(v − q)², with D = 1 − 3v² + 2qv. -/
+theorem equator_ratio_three_sources (v q : K) :
+    (1 - 3 * q^2) + (-(6 * v^2)) + 8 * q * v = (1 - 3 * v^2 + 2 * q * v) - 3 * (v - q)^2 := by
+  grind
+
 end Field
 
 end CircleOp.SpinningRiver

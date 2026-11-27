@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
-from matplotlib.patches import Circle, FancyBboxPatch, Polygon  # noqa: E402
+from matplotlib.patches import Circle, FancyBboxPatch, Polygon, Rectangle  # noqa: E402
 from scipy.integrate import solve_ivp  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -1604,6 +1604,153 @@ def fig32():
                  "the stiffness law in K form and the exact polar coefficients were not found", fontsize=12.5)
     save(fig, "fig32_novelty_check.png")
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32):
+
+# ---------------------------------------------------------------- fig33 the one mass term, piece by piece (round 25)
+def fig33():
+    rt = json.load(open(os.path.join(HERE, "river_term.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 11.6))
+    # (a) the three shares of the radial term along a tilted orbit's constants, as functions of r
+    ax = axs[0, 0]
+    Mv, av, Ev, Lv, Qv = 1.0, 0.9, 0.95, 2.0, 9.0
+    Cv = Qv + Lv**2
+    Kv = Qv + (Lv - av*Ev)**2
+    rr = np.linspace(2.5, 12, 300)
+    Dn = rr**2 + av**2
+    time_s = 2*Mv*rr*(Ev**2 - 1)*Dn
+    push_s = 2*Mv*rr*(Cv - (Ev**2 - 1)*rr**2 - av**2*Lv**2/Dn)
+    twist_s = 2*Mv*rr*(av**2*Lv**2/Dn - 2*av*Ev*Lv)
+    ax.plot(rr, push_s, color=ORANGE, lw=2.2, label="push P·P:  2Mr[C − (E²−1)r² − a²L²/(r²+a²)]")
+    ax.plot(rr, twist_s, color=PURPLE, lw=2.2, label="twist S·S + 2E·S:  2Mr[a²L²/(r²+a²) − 2aEL]")
+    ax.plot(rr, time_s, color=BLUE, lw=2.2, label="time part E·E:  2Mr(E²−1)(r²+a²)  (M → ME²)")
+    ax.plot(rr, 2*Mv*rr*(Kv - av**2), color="k", lw=2.6, ls="--", label="sum = round 23's one term 2Mr(K − a²)")
+    ax.axhline(0, color=GREY, lw=0.6)
+    ax.set_xlabel("r / M"); ax.set_ylabel("term in R(r)")
+    ax.set_title("(a) The one term is shared by three pieces of the river\n"
+                 "(a tilted orbit: a = 0.9M, E = 0.95, L = 2M, Q = 9M²); E·P and P·S add nothing net")
+    ax.legend(fontsize=8.6, loc="upper left")
+    # (b) over the poles: the (a/r)^2 part of (Omega_r/Omega_theta)^2, exact in u, by share
+    ax = axs[0, 1]
+    uu = np.linspace(0, 0.16, 200)
+    ax.plot(uu, 1.5 + 0*uu, color=BLUE, lw=2.4, label="Newton's ring, and time part alone: 3/2 exactly")
+    ax.plot(uu, 1.5*(1 + 10*uu - 8*uu**2), color=ORANGE, lw=5, alpha=0.45, label="push alone")
+    ax.plot(uu, 1.5*(1 + 10*uu - 8*uu**2), color="k", lw=1.6, ls="--", label="Kerr: (3/2)(1 + 10u − 8u²)")
+    ax.set_xlabel("u = M/r"); ax.set_ylabel("(a/r)² coefficient of (Ω_r/Ω_θ)²")
+    ax.set_title("(b) Over the poles the push alone gives Kerr's orbit shape\n"
+                 "(the k⁰ part too: 1 − 6u from the push; the time part leaves 1)")
+    ax.legend(fontsize=9, loc="upper left")
+    # (c) an eccentric polar orbit flown in the exact Kerr-Schild metric
+    ax = axs[1, 0]
+    e0 = rt["eccentric"][0]
+    P3 = np.array(e0["path"]).T
+    V3 = np.gradient(P3, axis=0)
+    nrm = np.cross(P3, V3)                                          # the orbit's plane (it drifts slowly)
+    e1 = np.cross([0, 0, 1], nrm); e1 /= np.linalg.norm(e1, axis=1)[:, None]
+    ax.plot(np.sum(P3*e1, axis=1), P3[:, 2], color=BLUE, lw=0.9)
+    ax.plot([-av, av], [0, 0], color="k", lw=4, solid_capstyle="round")
+    ax.set_aspect("equal"); ax.set_xlim(-11, 25); ax.set_ylim(-11, 11)
+    ax.set_xlabel("in the orbit's (slowly turning) plane / M"); ax.set_ylabel("z / M")
+    txt = ("radial : up-and-down rate (Mino time)\n"
+           f"  flown in exact Kerr        {e0['ratio_flown']:.10f}\n"
+           f"  Newton's ring + push       {e0['ratio_newton_ring_plus_push']:.10f}\n"
+           f"  Newton's ring alone        {e0['ratio_newton_ring_alone']:.4f}")
+    ax.text(0.62, 0.35, txt, transform=ax.transAxes, fontsize=8.5, family="monospace",
+            bbox=dict(fc="white", ec=GREY, alpha=0.9))
+    ax.set_title(f"(c) An eccentric orbit over the poles (a = {av}M, r from {e0['r1']:.0f}M to {e0['r2']:.0f}M),\n"
+                 "flown in Cartesian Kerr–Schild coordinates: it beats at Newton's ring + push")
+    # (d) what each piece does
+    ax = axs[1, 1]; ax.axis("off")
+    rows = [("time part  E·E", BLUE, "Newton's pull exactly, per unit energy\n(mass M E² per unit rest mass)\n"
+             "+ the clock's 2MrE (redshift)"),
+            ("push  P·P", ORANGE, "all of the orbit's shape over the poles:\n1 − 6u, +15, −12, every order\n"
+             "+ clock 4M²r²E/Δ"),
+            ("twist  S·S, 2E·S", PURPLE, "the turning (plane drift); joins the\nshape off the poles; clock −2MraL/(r²+a²)"),
+            ("E·P, P·S", GREY, "only M² terms, cancelled by P·P's own,\nbecause the field enters as one square (k·p)²")]
+    for i, (name, col, what) in enumerate(rows):
+        y0 = 0.86 - i*0.23
+        ax.add_patch(FancyBboxPatch((0.0, y0 - 0.08), 0.3, 0.13, boxstyle="round,pad=0.01", fc=col, ec="none",
+                                    alpha=0.85, transform=ax.transAxes))
+        ax.text(0.15, y0 - 0.015, name, ha="center", va="center", color="white", fontweight="bold", fontsize=10.5,
+                transform=ax.transAxes)
+        ax.text(0.34, y0 - 0.015, what, va="center", fontsize=9.8, transform=ax.transAxes)
+    ax.set_title("(d) What each piece of the river does in Kerr's orbits")
+    fig.suptitle("Round 25: Kerr's one mass term is shared by the river's time part, push and twist; "
+                 "per unit energy the time part is just Newton,\nso over the poles the push alone makes "
+                 "every relativistic change to the orbit's shape", fontsize=12.5)
+    fig.tight_layout(rect=[0, 0, 1, 0.94], h_pad=2.5)
+    save(fig, "fig33_river_term.png")
+
+# ---------------------------------------------------------------- fig34 the equator split three ways (round 26)
+def fig34():
+    eqd = json.load(open(os.path.join(HERE, "equator_split.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(18.5, 6.9), gridspec_kw={"width_ratios": [1.0, 1.15, 1.05]})
+    # (a) the square (L - a)^2 = L^2 - 2aL + a^2, each part from its own piece of the river
+    ax = axs[0]
+    Lb, ab = 3.0, 0.9
+    ax.add_patch(Rectangle((0, 0), Lb, Lb, fc=ORANGE, ec=ORANGE, alpha=0.35))
+    ax.add_patch(Rectangle((Lb - ab, 0), ab, Lb, fc="none", ec=PURPLE, hatch="///", lw=1.5))
+    ax.add_patch(Rectangle((0, Lb - ab), Lb, ab, fc="none", ec=PURPLE, hatch="\\\\\\", lw=1.5))
+    ax.add_patch(Rectangle((Lb - ab, Lb - ab), ab, ab, fc=BLUE, ec=BLUE, alpha=0.75))
+    ax.add_patch(Rectangle((0, 0), Lb - ab, Lb - ab, fc="none", ec="k", lw=3))
+    ax.text((Lb - ab)/2, (Lb - ab)/2, "(L − a)²\nround 22's coupling x²", ha="center", va="center", fontsize=11.5,
+            fontweight="bold")
+    ax.text((Lb - ab)/2, Lb - ab/2, "−aL  (twist)", ha="center", va="center", color=PURPLE, fontsize=10.5,
+            fontweight="bold", bbox=dict(fc="white", ec="none", alpha=0.85))
+    ax.text(Lb - ab/2, (Lb - ab)/2, "−aL  (twist)", ha="center", va="center", color=PURPLE, fontsize=10.5,
+            fontweight="bold", rotation=90, bbox=dict(fc="white", ec="none", alpha=0.85))
+    ax.text(Lb - ab/2, Lb - ab/2, "+a²\nring", ha="center", va="center", color="white", fontsize=10,
+            fontweight="bold")
+    ax.annotate("", xy=(0, -0.22), xytext=(Lb, -0.22), arrowprops=dict(arrowstyle="<->", color=ORANGE, lw=1.6))
+    ax.text(Lb/2, -0.42, "whole square L²: from the push", ha="center", color=ORANGE, fontsize=10.5,
+            fontweight="bold")
+    ax.text(Lb/2, -0.95, "per unit energy at the equator:\n"
+            "R = e r⁴ + 2M(1 − e) r³ − (L² − e a²) r² + 2Mr (L − a)²", ha="center", fontsize=10)
+    ax.set_xlim(-0.2, Lb + 0.2); ax.set_ylim(-1.3, Lb + 0.15); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_title("(a) The push's L², the twist's −2aL and Newton's ring's a²\n"
+                 "complete one square; only all three make (L − a)²")
+    # (b) the rate ratio along circular orbits at a = 0.9M
+    ax = axs[1]
+    cv = eqd["ratios"]["curves"]
+    rr = np.array(cv["r"])
+    sty = [("Newton's ring (time part)", BLUE, "-", "Newton's ring alone:  1 − 3q²  (exact)"),
+           ("ring + push", ORANGE, "-", "ring + push:  1 − 6v² − 3q² + 28q²v² − …"),
+           ("ring + twist", PURPLE, "-", "ring + twist:  1 + 8qv − 3q² − 28q²v² + …"),
+           ("Kerr (all)", "k", "-", "all three (Kerr):  D − 3(v − q)²  (exact)")]
+    for key, col, ls, lab in sty:
+        ax.plot(rr, cv[key], color=col, ls=ls, lw=2.6 if key == "Kerr (all)" else 2.0, label=lab)
+    vv, qq = np.sqrt(1/rr), cv["a"]/rr
+    ax.plot(rr[::9], (1 - 3*vv**2 + 2*qq*vv - 3*(vv - qq)**2)[::9], ls="none", marker="o", ms=7, mfc="none",
+            mec=RED, mew=1.4, label="round 22's law D − 3(v − q)², drawn over it")
+    ax.axhline(1, color=GREY, lw=0.7, ls=":")
+    ax.set_xlabel("orbit radius r / M   (a = 0.9M, prograde)")
+    ax.set_ylabel("(Ω_r / Ω_φ)²   (radial wobble rate / orbit rate, squared)")
+    ax.set_title("(b) The radial wobble of a circular equatorial orbit,\nwith each piece of the field switched on")
+    ax.legend(fontsize=9, loc="lower right")
+    # (c) which piece gives which term
+    ax = axs[2]; ax.axis("off")
+    rows = [("−3q²", BLUE, "Newton's spinning ring (the time part):\nring alone gives exactly 1 − 3q²"),
+            ("−6v²", ORANGE, "the push: the 2M r³ term loses M e,\nso α = M(1 − e)"),
+            ("+8qv", PURPLE, "the twist: −2aL inside the square\nβ = M(L − a)²"),
+            ("±28 q²v²", GREY, "half-squares: push alone +28,\ntwist alone −28; they cancel together")]
+    for i, (name, col, what) in enumerate(rows):
+        y0 = 0.90 - i*0.18
+        ax.add_patch(FancyBboxPatch((0.0, y0 - 0.07), 0.27, 0.12, boxstyle="round,pad=0.01", fc=col, ec="none",
+                                    alpha=0.85, transform=ax.transAxes))
+        ax.text(0.135, y0 - 0.01, name, ha="center", va="center", color="white", fontweight="bold", fontsize=12,
+                transform=ax.transAxes)
+        ax.text(0.31, y0 - 0.01, what, va="center", fontsize=10, transform=ax.transAxes)
+    ax.text(0.0, 0.0, "For any R = e r⁴ + 2α r³ − W r² + 2β r on a circular orbit:\n"
+            "   radial stiffness  α r − 3β/r,     vertical  W = α r + 3β/r\n"
+            "so the ∓ in round 22's D ∓ 3(v − q)² is the sign of 3β,\n"
+            "and (Ω_r/Ω_φ)² = 1 − 6v² + 8qv − 3q²  (v² = M/r, q = a/r)",
+            fontsize=10, transform=ax.transAxes, bbox=dict(fc="white", ec=GREY))
+    ax.set_title("(c) Which piece of the field gives each term\nof round 22's law")
+    fig.suptitle("Round 26: at the equator, as over the poles, Kerr's orbit is Newton's ring + push + twist; "
+                 "the push brings L², the twist −2aL, the ring a²,\nand the square (L − a)² behind "
+                 "D ∓ 3(v − q)² closes only with all three", fontsize=12.5)
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    save(fig, "fig34_equator_split.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34):
     f()
 print("figures:", sorted(os.listdir(FIG)))
