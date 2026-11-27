@@ -1,0 +1,30 @@
+PASS lpf share of 11 at 1e8 within 1% of (1/p)prod(1-1/q)  rel 0.0000
+PASS lpf share of 101 at 1e8 within 1% of (1/p)prod(1-1/q)  rel 0.0036
+PASS lpf share of 1009 still above its limit at 1e8 (slow approach)
+PASS Mertens: open fraction * log p at 1e5 within 0.5% of e^-gamma  0.56128
+PASS wheel overcount at 1e5 within 0.5% of 2e^-gamma  1.12257 vs 1.12292
+PASS record gaps above 1e3 stay below (log p)^2  0.739
+PASS Landau spike at p = 11 within 2% of 1  0.9976
+PASS Landau spike at p = 101 within 2% of 1  0.9901
+PASS variance share of log|zeta| grows with the primes kept  0.166 -> 0.784
+PASS prime 2 alone carries 10-25% of the variance near t = 5000
+PASS small-gap fraction: zeros < wheel < primes  0.087 < 0.258 < 0.358
+PASS Chebyshev bias: non-squares ahead for >99.9% of primes to 1e8, mod 4 and mod 3
+PASS rung-2 hyper integral -> (e^(k int f)-1)/k at k = 1.0  rel 2.1e-05
+PASS rung-2 hyper integral -> (e^(k int f)-1)/k at k = -0.5  rel 2.9e-06
+PASS rung-2 hyper integral -> (e^(k int f)-1)/k at k = 2.0  rel 7.3e-05
+PASS rung-3 (exponent) hyper integral -> exp(int log log(1+f))
+PASS rung-2 fold over primes at s = 2.0 equals zeta(s)/zeta(2s) - 1  0.519817652
+PASS rung-3 fold over primes at s = 2.0 runs to 0 (log hugely negative)
+PASS rung-2 fold over primes at s = 3.0 equals zeta(s)/zeta(2s) - 1  0.181564949
+PASS rung-3 fold over primes at s = 3.0 runs to 0 (log hugely negative)
+PASS matrix rung-2 product -> ordered exponential, error ~ 1/n
+PASS det of the matrix product -> exp(int tr S)
+PASS Q and R jet layers total ~ 1/n (vanish in the limit)
+PASS sum of prime layers at k = 1 equals zeta(2)/zeta(4)
+PASS alternating sum at k = -1 equals 1/zeta(2)
+PASS layer 2 matches the direct sum over p < q
+PASS Newton's inequalities e_m^2 >= (1+1/m) e_(m-1) e_(m+1) at s = 2.0, m = 1..9
+PASS Newton's inequalities e_m^2 >= (1+1/m) e_(m-1) e_(m+1) at s = 3.0, m = 1..9
+
+28 of 28 checks pass

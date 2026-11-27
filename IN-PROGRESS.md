@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,663 theorems in 166 modules, Nov 27 ~01:00 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,671 theorems in 167 modules, Nov 27 ~00:45 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -59,3 +59,5 @@ Nov 27: `topics/chaos-composition/` added as DRAFT (chaos as repeated self-compo
 Nov 27: `topics/riemann/unified-hypothesis/` added as DRAFT (one hypothesis for the Lee–Yang p-ball rule and RH, Newman's Λ; the real-rooted parent hunt; not a lead; 18 checks); `RiemannUnified` compiled into the library, 7 theorems, two sign proofs changed from grind to Int.mul_pos, statements unchanged. `tools/run_checks.py` no longer reads a PASS line ("… 12 fail Turán") as a failure count.
 
 Nov 27: shape-dial survey section N3, pendulum (DRAFT): the elliptic thread's pendulum picture tested against the Lee–Yang work. The dial gas transition is exactly the pendulum's separatrix, and the halfway-line and edge-crowding ideas hold in their simplest form; all known physics, none reaches non-even p past 8. `pendulum_leeyang_check.py` 13 of 13 (about 95 s), in CI's extra checks; figure 29; page rebuilt.
+
+Nov 27: `topics/riemann/round10/` added as DRAFT (the repo's prime results against the zeros, the prime lifecycle, hyper integrals; not a lead; 28 checks, picked up by CI as checks.py); `RiemannRound10` compiled into the library, 8 theorems; `newton2` now gets 0 ≤ (a − b)² from Int.mul_nonneg (core Lean has no Int.mul_self_nonneg), statement unchanged. `inputs/` working copies not committed.

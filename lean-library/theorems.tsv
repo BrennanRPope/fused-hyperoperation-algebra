@@ -3026,6 +3026,14 @@ FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.normForm_froben
 FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.normForm_frobenius_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.selberg_complete_square	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannNeighbours	CircleOp.RiemannNeighbours.selberg_factor_dial	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.fold_at_minus_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.jet2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.jet3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.newton2	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.rung3_log_mult	propext
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.wheel210	
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.wheel30	
+FusedAlgebra.Topics.RiemannRound10	CircleOp.RiemannRound10.wheel6	
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.barrier_sq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.conj_disc	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound3	CircleOp.RiemannRound3.conj_pair	propext, Classical.choice, Quot.sound
