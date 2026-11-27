@@ -1,0 +1,104 @@
+{
+ "8": [
+  {
+   "frame": 0,
+   "odd_share": 0.5243336796865825,
+   "cohn_minroot": 1.2951709799401454,
+   "circle_dev": 0.0,
+   "ferro": true,
+   "speed_per_height": 0.26585848669756734
+  },
+  {
+   "frame": 1,
+   "odd_share": 0.8085499894138676,
+   "cohn_minroot": 1.229892218433566,
+   "circle_dev": 2.220446049250313e-16,
+   "ferro": true,
+   "speed_per_height": 0.07110621740672853
+  },
+  {
+   "frame": 2,
+   "odd_share": 0.7253792668949326,
+   "cohn_minroot": 1.139740891115997,
+   "circle_dev": 1.1102230246251565e-16,
+   "ferro": true,
+   "speed_per_height": 0.47055417921993103
+  },
+  {
+   "frame": 3,
+   "odd_share": 0.6391172967510224,
+   "cohn_minroot": 1.069965617036693,
+   "circle_dev": 2.220446049250313e-16,
+   "ferro": true,
+   "speed_per_height": 0.31174898943105717
+  }
+ ],
+ "10": [
+  {
+   "frame": 0,
+   "odd_share": 0.4722401174536964,
+   "cohn_minroot": 1.2096925014144027,
+   "circle_dev": 2.220446049250313e-16,
+   "ferro": true,
+   "speed_per_height": 0.3027818647227926
+  },
+  {
+   "frame": 1,
+   "odd_share": 0.8090585296257989,
+   "cohn_minroot": 1.133962671253057,
+   "circle_dev": 5.551115123125783e-16,
+   "ferro": true,
+   "speed_per_height": 0.039931239445347995
+  },
+  {
+   "frame": 2,
+   "odd_share": 0.7106664833321197,
+   "cohn_minroot": 1.0518865526106809,
+   "circle_dev": 3.3306690738754696e-16,
+   "ferro": true,
+   "speed_per_height": 0.6505137911765121
+  },
+  {
+   "frame": 3,
+   "odd_share": 0.6562583116034433,
+   "cohn_minroot": 0.9912352991887592,
+   "circle_dev": 2.220446049250313e-16,
+   "ferro": true,
+   "speed_per_height": 0.44247691972103076
+  }
+ ],
+ "12": [
+  {
+   "frame": 0,
+   "odd_share": 0.4298544970877237,
+   "cohn_minroot": 1.149944592933594,
+   "circle_dev": 4.440892098500626e-16,
+   "ferro": true,
+   "speed_per_height": 0.21274072505429134
+  },
+  {
+   "frame": 1,
+   "odd_share": 0.8097720642300358,
+   "cohn_minroot": 1.0643348934701038,
+   "circle_dev": 1.3322676295501878e-15,
+   "ferro": true,
+   "speed_per_height": 0.1419971607528142
+  },
+  {
+   "frame": 2,
+   "odd_share": 0.6987996479411812,
+   "cohn_minroot": 0.9921712139026958,
+   "circle_dev": 8.881784197001252e-16,
+   "ferro": true,
+   "speed_per_height": 0.4237904315094003
+  },
+  {
+   "frame": 3,
+   "odd_share": 0.6134314276473798,
+   "cohn_minroot": 0.9431252212529406,
+   "circle_dev": 1.1102230246251565e-15,
+   "ferro": true,
+   "speed_per_height": 0.5784934889291569
+  }
+ ]
+}
