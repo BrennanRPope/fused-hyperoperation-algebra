@@ -1,0 +1,14 @@
+PASS X1 Lemma A' algebra (invariance exact; separation iff e(4D+delta) < delta)  (0, 0)
+PASS X2 explicit discs invariant and disjoint for 200 random dense-family members  200/200
+PASS X3 MOD passes B with good prime 3; ORIG has none  
+PASS X4 G2 example passes Lemma A' (0.1414 < 0.1502), certified A and B  {'eps': 0.1414213562373095, 'bound': 0.15022110482233483}
+PASS X5 F1: all 33 members passing A and B collision-free  40 sampled, B 40
+PASS X5 F2: all 25 members passing A and B collision-free  40 sampled, B 40
+PASS X5 F3: all 27 members passing A and B collision-free  40 sampled, B 40
+PASS X6 G4 passes A (explicit and certified), B with primes 3 and 5, collision-free to 7  [0.5835656070709228, 0.5835662007331848]
+PASS X7 G5 dense family: all members pass Lemma A', B, irreducibility (plane) and the collision check  {'members': 42, 'explicit_A': 42, 'B': 42, 'collision_free': 42, 'plane_irreducible': 18, 'plane_members': 18}
+PASS X8 kernels of dimension >= 2 contain a mixed-sign vector (300 random valuation matrices)  
+PASS X9 the recipe gives exactly the valuation pattern Corollary P9 needs (100 members)  
+PASS X10 the family is dense: every random target in the box is within 1/1000 of a member  8.83543105295731e-05
+PASS X11 README section 12 cites Barany-Verma, Barany-Szvak and Kittle-Kogler and marks the line formula known  
+13/13 pass

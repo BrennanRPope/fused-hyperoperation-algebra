@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -126,7 +126,7 @@ since rational data keep distinct maps far enough apart. *Round 2 (section 5) wr
 
 ### Is it a lead?
 
-**A modest lead, worth one more step.** For: it is a closed formula we did not find stated, it is exact where tested,
+**A modest lead, worth one more step.** *[Round 8 correction: the formula is in print for generic parameters on the line, Bárány and Verma 2025; see section 12.]* For: it is a closed formula we did not find stated, it is exact where tested,
 it predicts a visible effect (the commuting discount), and it is built from base pieces only. Against: it is a special
 case of a known general theory (dimension of self-similar sets is set by the semigroup the maps generate, and here that
 semigroup is a trace monoid), so it adds a clean formula, not a new mechanism. Next steps, in order: (1) write the lower
@@ -182,7 +182,7 @@ speed". It is two lines of calculus once the parabola is known.
 | Trace monoid count, Cartier–Foata polynomial | Known | Cartier and Foata 1969 |
 | Exact overlaps and dimension of self-similar sets | Known | Hochman, Annals of Math. 180 (2014); Ngai and Wang 2001 |
 | Moran's equation | Known | Moran 1946 |
-| Dimension formula 1 + Σ[∏(1 − sᵢ^D) − 1] = 0 for maps sharing centres in classes | **Not found in print** (two searches); upper bound proved here, equality numerical | this page, checks U1–U11 |
+| Dimension formula 1 + Σ[∏(1 − sᵢ^D) − 1] = 0 for maps sharing centres in classes | ~~Not found in print~~ **[Round 8 correction] Known on the line for generic parameters**: Bárány and Verma, arXiv:2507.05835 (2025); a three-map case in Bárány and Szvák, Math. Nachr. 294 (2021). Our earlier searches missed them. | this page, checks U1–U11; section 12 |
 | The commuting discount (Figure 5) | Ours, numerical consequence of the formula | this page |
 | Heat-type engines' gap closes at rate e^(−β); discriminant 4 = curvature −1 | Ours; two lines from known forms | this page, checks C1–C5; Schmiedl and Seifert 2008 |
 | Monogamy as a non-positive triple overlap | Known (restatement) | Hayden, Headrick, Maloney 2013 |
@@ -313,7 +313,7 @@ whether the shared-centre count still sets a clean dimension there.
 |---|---|---|
 | Hochman's theorem: algebraic parameters, no exact overlaps ⇒ dim = min(1, s-dim) | Known | Hochman 2014 (as stated in his ICM survey) |
 | Normal form in free products; Cartier–Foata weighted count | Known | standard; Cartier and Foata 1969 |
-| Theorem: dim K = min(1, D*) for shared-centre classes (algebraic, no accidental collisions) | **Not found in print**; our proof from known pieces | this page, L1–L4 |
+| Theorem: dim K = min(1, D*) for shared-centre classes (algebraic, no accidental collisions) | ~~Not found in print~~ **[Round 8 correction] Partly known**: the same formula holds for generic parameters (Bárány and Verma 2025). Ours: the proof route through free first-return pieces, and the exact cases | this page, L1–L4; section 12 |
 | Plane version, counting for plane laws | Ours; plane dimension numerical | G3–G6 |
 | Rescorla–Wagner as stretches about the target | Known form (Rescorla and Wagner 1972) | — |
 | Exact state count and bits-per-trial for mixed-rate learners | Ours (as stated); elementary consequence | S1–S3 |
@@ -1012,3 +1012,188 @@ statements rest on Hochman's Corollary 1.7 (arXiv:1503.09043), whose proof we di
 | Modified example: no collisions, dim = D* = 1.12928 | **Ours** (DRAFT) | 11.3, W1–W7 |
 | Original example: dim between 1.19061 and 1.19064 | **Ours** (DRAFT) | 11.3, W10–W12 |
 | Original example: no collisions for every word | Open (checked to length 11) | 11.3, W5, W11 |
+
+---
+
+## 12. Round 8 (DRAFT): what's in print, and the exact size for whole families
+
+Brennan asked whether we had actually contributed, then "can we show this more generally, for a larger range of
+cases?" This round answers both. Script: `general.py` → `general.json`. Checks: `checks8.py`, 13/13 (X1–X11).
+Figures 23–26. Lean: eight more theorems, 37 in all, all build.
+
+### 12.1 The answer in two sentences
+
+The exact size (dimension = the formula's D*) is now proved for a dense set of parameters, for any number of classes
+with any number of maps in each, on the line and in the plane, as long as every map shrinks by more than a set factor.
+On the line the formula was already known for "almost every" choice of parameters (Bárány and Verma 2025), but that
+kind of theorem can't decide any one example; ours names the examples and proves them, and the plane version is not in
+print as far as we can find.
+
+### 12.2 What's in print
+
+A second, wider search (Nov 27) found work our first two searches missed. It changes how earlier rounds should be read,
+and the earlier tables are now marked "[Round 8 correction]".
+
+| Paper | What it proves | What it leaves open |
+|---|---|---|
+| Bárány and Szvák, Math. Nachr. 294 (2021) 657–671, arXiv:1902.04028 | Three maps αx, βx, γx + 1 − γ (two share centre 0): dimension solves α^s + β^s + γ^s − α^sβ^s = 1 for α outside a set of dimension 0 | Which α are exceptional |
+| Bárány and Verma, arXiv:2507.05835 (2025, preprint) | Line, any grouping into classes by centre: the same D* equation, for parameters outside an exceptional set of smaller dimension; also the measures | Any specific example; the plane |
+| Kittle and Kogler, arXiv:2610.10511 (Oct 2026, preprint) | Every finite system of maps on the line with no exact overlaps has dimension min(1, similarity dimension) | Deciding whether a given system has exact overlaps |
+| Hochman, Annals 180 (2014); arXiv:1503.09043 (2015) | Algebraic parameters, no exact overlaps ⇒ dim = min(d, similarity dimension); in the plane also needs "no fixed line" | Same |
+| Rapaport, arXiv:2001.01332; Solomyak (2024); Christodoulou and Jurga (Trans. AMS 2026) | Algebraic contractions; Möbius and projective systems (relevant to rounds 3–4) | — |
+
+Not found in print: the plane version (Theorem P7), the plane laws P1–P4, any proof that specific examples have no
+collisions, the certified numbers, and reading the words as a trace monoid. So on the line the open question was
+never the formula but **which examples it holds for**, and that is what this round answers.
+
+### 12.3 Theorem P8: one test that rules out collisions
+
+Setting: maps z ↦ c + λ(z − c) with rational (line) or Gaussian-rational (plane) c and λ, |λ| < 1, grouped into classes
+by centre c₁, …, c_N. A prime p is **good for class i** when no centre or multiplier has p in its denominator, every
+multiplier of every other class is divisible by p, and every other centre differs from c_i by a p-adic unit.
+
+**Theorem P8 (DRAFT, ours).** Different words give different maps if:
+
+- **(A) separation.** Some set Y is sent into itself by every map, and the class pieces X_i = ∪ g(Y), over non-identity
+  words g in class i alone, are pairwise disjoint; and
+- **(B) arithmetic.** For each class with two or more maps, the valuations of its multipliers at its good primes admit
+  no integer relation Σ w_m v_p(λ_m) = 0 (for all good p) in which some w_m are positive and some negative.
+
+**Proof.** Take a shortest pair of different words W, W′ giving the same map.
+
+1. *Same outer class.* For any y in Y, W(y) = s(rest(y)) with rest(y) in Y and s W's outer (last-applied) run, so W(y)
+   lies in the piece of W's outer class. The pieces are disjoint, so both words end in the same class i.
+2. *Cancel.* Write W = u·g′ and W′ = u′·h′, with u, u′ the outer class-i runs and g′, h′ the rest. Class-i maps commute,
+   so take the common part of u and u′ off both (maps are invertible). By shortness the exponent vectors of u and u′
+   now have disjoint supports. If one is empty, the words have different outer classes, ruled out by step 1. So both
+   are nonempty, and w = exponents(u) − exponents(u′) has mixed signs. (A class with one map can't get here.) The
+   equal maps say h′(z) − c_i = ρ·(g′(z) − c_i) for every z, with ρ = Π λ_m^(w_m).
+3. *The good prime.* Take z = c_j with j ≠ i, and p good for i. Every map keeps p-adic integers. If g′ is empty,
+   g′(z) − c_i = c_j − c_i, a unit. Otherwise g′'s outer map has some centre c_k ≠ c_i and a multiplier divisible by p,
+   so g′(z) ≡ c_k mod p and g′(z) − c_i is again a unit (Lean `good_prime_unit`). Same for h′. So v_p(ρ) = 0 for every
+   good p: w is a mixed-sign relation, which (B) forbids. ∎
+
+**Testing (B) is linear algebra.** The relations form a subspace K. If dim K = 0, (B) holds. If dim K = 1, (B) holds
+exactly when K's spanning vector is one-signed. If dim K ≥ 2, (B) fails: K minus 0 is connected, it can't sit inside
+the two sign-orthants without meeting both (K = −K), and a mixed rational vector exists because mixed is an open
+condition (X8). So a class of k maps needs good primes whose valuations have rank at least k − 1.
+
+**Lemma A′ (separation for free).** Let δ and D be the smallest and largest distances between centres, and suppose every
+|λ| ≤ ε with ε(4D + δ) < δ. Then (A) holds with Y the disc about c₁ of radius R = D(1 + ε)/(1 − ε).
+*Proof.* A map with centre c_j sends Y into the disc about c₁ of radius D(1 + ε) + εR = R. A non-identity class-j word
+shrinks by at most ε about c_j, so X_j lies in the disc about c_j of radius ε(R + D) = 2εD/(1 − ε). Two such discs miss
+when 4εD/(1 − ε) < δ, which is ε(4D + δ) < δ (X1, X2; Lean `lemmaA_invariant`, `lemmaA_key`). ∎
+
+### 12.4 Corollary P9: a dense family for every pattern of class sizes
+
+**Corollary P9 (DRAFT, ours).** Fix N ≥ 2 integer centres on the line (or Gaussian-integer centres in the plane) and
+class sizes k₁, …, k_N ≥ 1. Give each class i its own k_i − 1 odd primes (all different; in the plane take primes
+≡ 3 mod 4), none dividing a difference of centres. Choose multipliers λ_{i,1}, …, λ_{i,k_i}, with none of these primes
+in a denominator, such that:
+
+1. every |λ| < δ/(4D + δ);
+2. every multiplier is divisible by every prime of every other class;
+3. for m < k_i, λ_{i,m} is divisible by class i's m-th prime and by none of its other primes, and λ_{i,k_i} by none.
+
+Then different words give different maps. So on the line dim K = min(1, D*) (round 2's theorem, resting on Hochman
+2014; Kittle and Kogler's corollary gives it too), and in the plane, if some multiplier is not real,
+dim K = min(2, D*) (Theorem P7, resting on Hochman 2015). Such multipliers are dense in the box |λ| < δ/(4D + δ).
+
+*Proof.* (A) is Lemma A′. For (B), class i's own primes are good for it by (2), and at them the valuation matrix has its
+m-th prime dividing only the m-th multiplier, so every relation vanishes on the first k_i − 1 coordinates and is a
+multiple of the last unit vector, one-signed (Lean `diagonal_kernel`). Extra good primes only shrink the relations.
+Density: each condition fixes a residue class mod a product of the chosen primes, and fractions m/2ⁿ with m in a fixed
+class come within that product over 2ⁿ of any target (Lean `exists_near`; X10). ∎
+
+Figure 23 shows the recipe for one member; X9 checks it on 100. For centres 0, 1, …, N − 1 on the line the box is
+|λ| < 1/(4N − 3), and the primes need only be at least N (Lean `centres_distinct_mod`).
+
+![Figure 23](figures/fig23-prime-recipe.png)
+
+*Figure 23. Corollary P9's recipe for one member with classes of sizes 3, 2 and 1. Class 1 gets two primes (3 and 5),
+class 2 one (7), class 3 none. Each multiplier carries its own prime once, its classmates' primes never, and all the
+other classes' primes. That pattern is what makes every collision impossible.*
+
+![Figure 25](figures/fig25-dense-slice.png)
+
+*Figure 25. One slice of the family on the line: class 1's two multipliers λ and μ vary, classes 2 and 3 are fixed at
+3/32. Every dot has its dimension proved equal to D* (colour). Only denominator 2⁷ is drawn; finer denominators fill
+the dashed box.*
+
+### 12.5 How far the test reaches beyond the dense family
+
+Lemma A′ is the cautious way to get (A). The certified disc covers of round 7 (exact fractions, any number of classes)
+reach much larger multipliers, and with them larger dimensions. We sampled three random families and certified each
+member (`general.py`, G3), then confirmed no collisions by hashing every word up to length 6 or 7 mod two primes.
+
+| Family | Setting | Members | Pass (B) | Pass (A) and (B) | Collision-free (checked) | D* of passing members |
+|---|---|---|---|---|---|---|
+| F1 | plane, centres 0, 1, i; class 1 has two maps | 40 | 40 | 33 | 33 of 33 | 0.62 to 1.41 |
+| F2 | plane, 4 classes, centres 0, 1, i, 1 + i | 40 | 40 | 25 | 25 of 25 | 0.88 to 1.48 |
+| F3 | line, centres 0, 1, 2 | 40 | 40 | 27 | 27 of 27 | 0.62 to 1.06 |
+| G4 | line, two classes of two maps, good primes 3 and 5 | 1 | 1 | 1 | yes | 0.58357 |
+| G5 | Corollary P9, 14 class patterns, line and plane | 42 | 42 | 42 | 42 of 42 | 0.38 to 0.69 |
+
+Every member that passes has its dimension proved equal to min(d, D*). A member that fails (A) is not shown to collide;
+the test is just silent there. The round-7 examples: MOD passes (B) at the prime 3; ORIG has no good prime at all,
+which is why round 7 needed geometry for it (X3).
+
+![Figure 24](figures/fig24-family-pass.png)
+
+*Figure 24. Every sampled member, placed by how large its biggest multiplier is compared with Lemma A′'s bound (left of
+the dashed line, separation is automatic) and by its formula value D*. Green: the test proves no collisions and the
+exact size. Red: no certified cover found, so the test is silent. Blue: Corollary P9's dense family.*
+
+![Figure 26](figures/fig26-plane-member.png)
+
+*Figure 26. A plane member of the dense family (classes of sizes 2, 2, 1), coloured by the class of the last map. The
+coloured discs are Lemma A′'s class discs and never meet; the zoom shows small turned copies of the whole.*
+
+### 12.6 What this means in plain terms
+
+Before this round we had two worked examples. Now there is a recipe: pick centres, pick how many maps share each
+centre, give each class a few primes, and choose small multipliers carrying those primes in the right pattern. Every
+such system obeys the formula exactly, with a proof, and such systems sit arbitrarily close to any small-multiplier
+system you name. With certified covers the same test also handles bigger multipliers one example at a time, in seconds.
+
+### 12.7 What it contributes, and what would make it a lead
+
+**What's proved and ours:** Theorem P8 (a checkable no-collision test for any number of classes, line or plane),
+Lemma A′, Corollary P9 (an explicit dense family for every pattern, with proofs), and 128 more certified examples. On the
+line this complements Bárány and Verma: their theorem says the formula holds outside a small exceptional set; ours
+names explicit parameters proved to be outside it. In the plane, Theorem P7 with P9 is, as far as we can find, the
+first statement of the formula and the first proved cases.
+
+**What would make it a lead:** (1) dropping the smallness condition, for instance proving that every system meeting (A)
+by any route and (B) obeys the formula, with (A) checked by the round-7 covers; (2) a converse, showing which rational
+parameters do collide, which would describe Bárány and Verma's exceptional set explicitly; (3) the round-6 open case,
+±3 for all words, which (B) can't reach because no good prime exists there. Item (2) is the most interesting to experts,
+because nobody can currently name the exceptional parameters.
+
+### 12.8 Lean
+
+`lean/NewTies.lean` now has 37 theorems and builds with Lean 4.37.0-rc1, with no sorry and standard axioms only
+(`lean/compile_output.txt`). New this round: `lemmaA_invariant`, `lemmaA_key`, `two_maps_one_prime`, `diagonal_kernel`,
+`good_prime_unit`, `centres_distinct_mod`, `exists_near`, `g4_small`. They cover the algebra of Lemma A′, the kernel step
+for Corollary P9's recipe, the good-prime congruence and the density step. The p-adic and geometric steps are in the
+prose proof and the Python checks.
+
+### 12.9 Who proved what, round 8
+
+Ping-pong, cancellation, p-adic valuations and the Chinese remainder theorem are standard tools. Theorem P8, Lemma A′,
+Corollary P9 and the certified family members are ours (DRAFT). The dimension statements rest on Hochman's theorems
+(2014 on the line, Corollary 1.7 of arXiv:1503.09043 in the plane), and on the line also follow from Kittle and Kogler's
+corollary; we read those statements and did not check their proofs. The line formula itself, for generic parameters,
+is Bárány and Verma's (2025), with a three-map case in Bárány and Szvák (2021).
+
+### Known vs new, round 8
+
+| Item | Status | Source |
+|---|---|---|
+| Line formula for generic parameters | **Known** (Bárány and Verma 2025; three maps: Bárány and Szvák 2021) | 12.2 |
+| No exact overlaps ⇒ dim = min(1, s), every line system | Known (Kittle and Kogler 2026, preprint) | 12.2 |
+| Theorem P8: valuation-and-separation test for no collisions | **Ours** (DRAFT) | 12.3, X3–X8 |
+| Lemma A′: separation when ε(4D + δ) < δ | **Ours** (DRAFT, elementary) | 12.3, X1, X2 |
+| Corollary P9: explicit dense family, every pattern, line and plane | **Ours** (DRAFT) | 12.4, X7, X9, X10 |
+| 128 certified family members and G4 | **Ours** (DRAFT) | 12.5, X5–X7 |
+| Plane formula and its proved cases | **Ours** (DRAFT); not found in print | 11, 12.4 |

@@ -28,4 +28,12 @@ Lean (version 4.37.0-rc1, x86_64-unknown-linux-gnu, commit 0b77e12952ad39077d80d
 'NewTies.tail_bound' does not depend on any axioms
 'NewTies.rot45_no_invariant_line' does not depend on any axioms
 'NewTies.first_return_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.lemmaA_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.lemmaA_key' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.two_maps_one_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.diagonal_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.good_prime_unit' depends on axioms: [propext]
+'NewTies.centres_distinct_mod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.exists_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.g4_small' does not depend on any axioms
 exit status 0

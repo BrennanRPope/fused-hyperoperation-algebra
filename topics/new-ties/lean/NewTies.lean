@@ -182,4 +182,50 @@ theorem rot45_no_invariant_line : (-2 : Int) * (-2) - 4 * 1 * 2 < 0 := by decide
 theorem first_return_threshold (p q : Int) : (1 - p) * (1 - q) = p * q ↔ p + q = 1 := by
   constructor <;> intro h <;> grind
 
+
+/-! ### Round 8: a general no-collision test (README section 12) -/
+
+/-- Lemma A′, invariance: with ε = a/b, the disc about c₁ of radius R is sent into itself by every map exactly at
+    R(1 − ε) = D(1 + ε). Cleared of fractions: -/
+theorem lemmaA_invariant (a b D R : Int) : D * (b + a) + a * R = b * R ↔ R * (b - a) = D * (b + a) := by
+  constructor <;> intro h <;> grind
+
+/-- Lemma A′, separation: the class pieces sit in discs of radius ε(R + D) = 2εD/(1 − ε) about their centres, so they
+    are disjoint when 4εD/(1 − ε) < δ, which is ε(4D + δ) < δ. Cleared of fractions (ε = a/b): -/
+theorem lemmaA_key (a b D δ : Int) : 4 * a * D < δ * (b - a) ↔ a * (4 * D + δ) < b * δ := by
+  constructor <;> intro h <;> grind
+
+/-- Test (B) for a class of two maps and one good prime, valuations (0, v) with v ≥ 1: every integer relation
+    w₁·0 + w₂·v = 0 has w₂ = 0, so the relations are the multiples of (1, 0), one-signed. -/
+theorem two_maps_one_prime (w₁ w₂ v : Int) (hv : 1 ≤ v) (h : w₁ * 0 + w₂ * v = 0) : w₂ = 0 := by
+  have : w₂ * v = 0 := by grind
+  rcases Int.mul_eq_zero.mp this with h | h <;> omega
+
+/-- Corollary P9's recipe: λ_j carries its own prime p_j (valuation ≥ 1) and the others' valuations there are 0, so a
+    relation must vanish on the first k − 1 coordinates and is a multiple of the last unit vector, one-signed.
+    The case k = 3: -/
+theorem diagonal_kernel (w₁ w₂ a b : Int) (ha : 1 ≤ a) (hb : 1 ≤ b) (h₁ : w₁ * a = 0) (h₂ : w₂ * b = 0) :
+    w₁ = 0 ∧ w₂ = 0 := by
+  rcases Int.mul_eq_zero.mp h₁ with h | h <;> rcases Int.mul_eq_zero.mp h₂ with k | k <;> omega
+
+/-- The good-prime step: a word whose outer map has centre c_j and a multiplier divisible by p sends a p-integral
+    point to c_j + p·t, which differs from c_i by c_j − c_i mod p, a unit. -/
+theorem good_prime_unit (cj ci p t : Int) : (cj - ci + p * t) % p = (cj - ci) % p := by
+  simp [Int.add_mul_emod_self_left]
+
+/-- Centres 0, 1, …, N − 1 are pairwise distinct mod every prime p ≥ N. -/
+theorem centres_distinct_mod (a b p : Nat) (hab : a < b) (hbp : b < p) : (b - a) % p ≠ 0 := by
+  rw [Nat.mod_eq_of_lt (by omega)]; omega
+
+/-- Density of the family: every residue class mod P has a member in every window of length P, so the fractions
+    m/2ⁿ with m in a prescribed class come within P/2ⁿ of any target. -/
+theorem exists_near (T r P : Int) (hP : 0 < P) : ∃ m, m % P = r % P ∧ T ≤ m ∧ m < T + P := by
+  refine ⟨T + (r - T) % P, ?_, ?_, ?_⟩
+  · rw [Int.add_emod, Int.emod_emod_of_dvd _ (Int.dvd_refl P), ← Int.add_emod]; congr 1; omega
+  · have := Int.emod_nonneg (r - T) (by omega : P ≠ 0); omega
+  · have := Int.emod_lt_of_pos (r - T) hP; omega
+
+/-- The example with two two-map classes (G4): every multiplier is below the Lemma A′ bound 1/9 for centres 0, 1, 2. -/
+theorem g4_small : 5 * 9 < 56 ∧ 15 * 9 < 196 ∧ 3 * 9 < 56 := by decide
+
 end NewTies
