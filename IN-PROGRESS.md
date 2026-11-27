@@ -65,3 +65,5 @@ Nov 27: `topics/riemann/round10/` added as DRAFT (the repo's prime results again
 Nov 27: `topics/chaos-composition/` follow-up (DRAFT): the order dial q as a switch for entropy (checks J1–J5, figure 11, 52 checks in all) and a three-body note; from the chaos thread's patch, applied as written; no Lean change.
 
 Nov 27: `topics/entropy-knots/` added as DRAFT (entropy and knot theory for finding zeros and stable orbits; all known pieces, not a lead; 25 checks, picked up by CI as checks.py; 8 figures); `EntropyKnots` compiled into the library, 12 theorems, namespace renamed to CircleOp.EntropyKnots (the library's convention), no proof changed. From the study thread's patch on d352e71.
+
+Nov 27: `topics/carnot-cascade/` added as DRAFT (reopen S1: only Curzon–Ahlborn is a knob image of Carnot; the low-dissipation family is one parabola on the dial; cascading pulls every max-power rule back to Curzon–Ahlborn; 22 checks, picked up by CI as checks.py).

@@ -1,0 +1,49 @@
+== A. Knob images of Carnot ==
+  [PASS] A1: eta = 1 - tau^lam composes by the union rule across a cascade (any lam)
+  [PASS] A2: Curzon-Ahlborn 1 - sqrt(tau) is lam = 1/2; two half-steps make Carnot
+  [PASS] A3: eta_C/2, eta_C/(2 - eta_C), eta_C/(2 - eta_C/2) are NOT cascade-stable (not knob images)
+
+== B. Low-dissipation engines at maximum power, derived ==
+  [PASS] B1: the stated times are a stationary point of the power
+  [PASS] B2: eta* = eta_C (1 + a)/(2(1 + a) - eta_C)
+  [PASS] B3: brute-force maximum of the power agrees to 1e-6 (9 cases)
+  [PASS] B4: entropy-type, symmetric (rho = 1, a = sqrt(tau)): exactly Curzon-Ahlborn
+  [PASS] B5: heat-type (a constant): eta* = eta_C/(2 - g eta_C), g = 1/(1 + a)
+  [PASS] B6: g = 0 gives eta_C/2, g = 1 gives eta_C/(2 - eta_C) (the two bounds)
+
+== C. The heat-type family on the plane dial ==
+   d eta/d beta = (eta*g + 1)*(eta*g - 2*eta + 1)/2
+  [PASS] C1: d eta/d beta = (1/2)(1 + (2g - 2) eta - g(2 - g) eta^2): a plane law for every g
+  [PASS] C2: the family is the parabola d = k^2/4 - 1 (discriminant k^2 - 4d = 4 for every g)
+  [PASS] C3: ends: g = 0 at parity (k, d) = (-2, 0); g = 1 at the velocity point (0, -1); g = 1/2 at (-1, -3/4)
+  [PASS] C4: Curzon-Ahlborn: d eta/d beta = (1 - eta)/2, the union line at half speed (not on the parabola)
+  [PASS] C5: every family member is a Moebius function of tau
+  [PASS] C6: lower edge composes by parity x + y - 2xy; upper edge by velocity addition (x + y)/(1 + xy)
+
+== D. Riccati test: which finite-time efficiencies are plane laws? ==
+   Carnot                                     residual 1.5e-40
+   Curzon-Ahlborn                             residual 3.4e-41
+   lower bound eta_C/2                        residual 7.5e-41
+   upper bound eta_C/(2-eta_C)                residual 1.1e-41
+   heat-type, symmetric eta_C/(2-eta_C/2)     residual 5.7e-42
+   entropy-type rho = 0.1                     residual 6.7e-03
+   entropy-type rho = 10                      residual 4.9e-02
+   ecological (Angulo-Brown 1991)             residual 3.6e-02
+   Feynman ratchet (Tu 2008)                  residual 3.8e-02
+  [PASS] D1: on the dial: Carnot, Curzon-Ahlborn, both bounds, the heat-type symmetric case
+  [PASS] D2: off the dial (residual > 1e-4): entropy-type rho != 1, ecological, Feynman ratchet
+
+== E. Fine cascades of max-power stages ==
+   lower eta_C/2            n=1: 0.40000  n=10^5: 0.552785   (Curzon-Ahlborn 0.552786)
+   upper eta_C/(2-eta_C)    n=1: 0.66667  n=10^5: 0.552788   (Curzon-Ahlborn 0.552786)
+   heat-type symmetric      n=1: 0.50000  n=10^5: 0.552786   (Curzon-Ahlborn 0.552786)
+   entropy-type rho=10      n=1: 0.47944  n=10^5: 0.552786   (Curzon-Ahlborn 0.552786)
+   Feynman ratchet          n=1: 0.57047  n=10^5: 0.552786   (Curzon-Ahlborn 0.552786)
+  [PASS] E1: every family tends to Curzon-Ahlborn under fine cascading (to 1e-4 at n = 10^5)
+  [PASS] E2: splitting raises the lower edge and lowers the upper edge (n = 2 vs n = 1)
+  [PASS] E3: Curzon-Ahlborn itself does not move under any split (n = 1, 2, 7, 50)
+   slopes d eta/d beta at beta = 0: {'Curzon-Ahlborn': 0.5, 'lower bound eta_C/2': 0.5, 'upper bound eta_C/(2-eta_C)': 0.5, 'heat-type, symmetric eta_C/(2-eta_C/2)': 0.5, 'entropy-type rho = 0.1': 0.5, 'entropy-type rho = 10': 0.5, 'ecological (Angulo-Brown 1991)': 0.75, 'Feynman ratchet (Tu 2008)': 0.5}
+  [PASS] E4: the reason: every max-power efficiency has slope 1/2 at small eta_C (linear response)
+  [PASS] E5: the ecological efficiency (not a max-power point) has slope 3/4, so its fine cascade tends to 1 - tau^(3/4)
+
+22/22 checks pass
