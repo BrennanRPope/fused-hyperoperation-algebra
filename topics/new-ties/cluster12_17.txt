@@ -1,0 +1,1 @@
+k 17 budget 2000 open 0.0103164063 of 0.019 pieces 2491 hits 0 seconds 286

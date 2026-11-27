@@ -1,0 +1,6 @@
+k 9 budget 2000 open 0.0190000000 of 0.019 pieces 16 hits 0 seconds 2
+k 11 budget 2000 open 0.0148437500 of 0.019 pieces 58 hits 0 seconds 6
+k 13 budget 2000 open 0.0127656250 of 0.019 pieces 199 hits 0 seconds 20
+k 15 budget 2000 open 0.0114111328 of 0.019 pieces 698 hits 0 seconds 79
+k 17 budget 2000 open 0.0103164063 of 0.019 pieces 2491 hits 0 seconds 286
+k 19 budget 2000 open 0.0092611084 of 0.019 pieces 8914 hits 0 seconds 1104

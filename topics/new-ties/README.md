@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1319,7 +1319,7 @@ kept apart they can only happen inside a class of two or more maps.
 **Yes, a real one.** It turns a published "almost every parameter" theorem into an exact description of where the
 formula fails, with a computable drop, and it comes with a worked example where everything but the last digits is
 proved. What would take it further: (1) prove the example's size equals the family bound 0.47048 (show no other
-collision occurs), which would give the first exact size of a broken case [Round 10 update: done for a dense set of breaks, and the original is pinned to within 1.4 × 10⁻⁷; section 14] [Round 11 update: the original is pinned to within 1.8 × 10⁻⁴⁸¹¹, not exact; section 15]; (2) list which equations can occur inside
+collision occurs), which would give the first exact size of a broken case [Round 10 update: done for a dense set of breaks, and the original is pinned to within 1.4 × 10⁻⁷; section 14] [Round 11 update: the original is pinned to within 1.8 × 10⁻⁴⁸¹¹, not exact; section 15] [Round 12 update: every bad pair in proved ranges covering 72.7% of the windows is settled for all run lengths; still not exact; section 16]; (2) list which equations can occur inside
 the separated region, so the breaking set is described surface by surface; (3) the same picture for the plane laws of
 rounds 3–4, where the maps are Möbius rather than straight-line.
 
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] | 13.4, Y9 |
 
 ---
 
@@ -1536,7 +1536,8 @@ Scripts: [`original.py`](original.py) → `original_descent.json`, log [`origina
 [`original_bracket.py`](original_bracket.py) → `original_bracket.json`. Checks: [`checks11.py`](checks11.py) →
 [`checks11_output.txt`](checks11_output.txt), **8 of 8 pass**. Pictures: [`figures11.py`](figures11.py).
 Lean: three-line facts written in [`lean/Round11.lean`](lean/Round11.lean) but **not built** (no Lean toolchain could
-be installed in this session); `NewTies.lean` is unchanged at 53 built theorems.
+be installed in this session); `NewTies.lean` is unchanged at 53 built theorems. [Round 12 update: the coordinator reports that `Round11.lean` builds clean in the repo and is now the
+library module Topics.NewTies11.]
 
 ### 15.1 The answer in four sentences
 
@@ -1638,7 +1639,7 @@ theorem.** It contributes three things:
 
 It would close the original break, and become a theorem, with any one of:
 
-1. **A uniform argument for σ near 1.** For example, show that the search tree's shape stops depending on a once
+1. [Round 12 update: tried in section 16, as ranges of stretches; it proves 72.7% of the windows and provably cannot reach a measure-zero line-up set.] **A uniform argument for σ near 1.** For example, show that the search tree's shape stops depending on a once
    |σ − 1| is small, and handle that shape symbolically. The node counts in Figure 35 stay small and repeat in bands,
    which hints at this.
 2. **A p-adic idea that survives bare-N stretches.** For example, work with blocks N^j as single letters and use a
@@ -1663,3 +1664,157 @@ the reduction of the original break to one equation per bad pair, the exact sett
 | Original break: dim within 1.8 × 10⁻⁴⁸¹¹ of 0.47048343986308… | **Ours** (DRAFT), certified | 15.4, X8 |
 | Exactness ⇔ no second collision anywhere among the reduced pieces | **Ours** (DRAFT), from Rounds 9–10 | 15.1 |
 | Original break: size exactly 0.4704834… | **Open** | 15.5 |
+
+## 16. Round 12 (DRAFT): whole ranges of bad pairs at once, and where that stops
+
+Asked for by Brennan (Nov 27): "I really want this to be a new theorem. Can we use a best fit rule to find the line as a
+step function and then test to see if the function works?" Scripts: [`cover12.py`](cover12.py) → `cover12.json`, log
+[`cover12_output.txt`](cover12_output.txt); [`cluster12.py`](cluster12.py) → `cluster12_*.txt`. Checks:
+[`checks12.py`](checks12.py) → [`checks12_output.txt`](checks12_output.txt), **9 of 9 pass**. Pictures:
+[`figures12.py`](figures12.py). No new Lean this round.
+
+### 16.1 The answer in five sentences
+
+**The step-function idea works, and it gives a real theorem, but not the whole one.** Theorem 12.1: no bad pair whose
+stretch ρ lies in an explicit union of 1,861 ranges has a second collision, for every number of copies of λ, not
+just up to 10,000. Those ranges cover 73.5% of the N window and 72.0% of the K window, so in the long run at least
+72.7% of all bad pairs are settled at once. Theorem 12.2 (proved by hand) says exactly where the method must stop: a
+range search can only get stuck at stretches where two points of the fractal line up, x = ρ·y, and that set R is closed
+with measure zero. But R is nearly one-dimensional inside the clusters, so finer and finer steps only nibble at it, and
+the original break is still not proved exact.
+
+Testing the steps is not cheating. Each step is guessed (by halving), then proved by an exact search that is valid for
+every stretch in the step at once. A wrong guess just fails to prove; it can never prove something false.
+
+### 16.2 How one search covers a whole range
+
+Round 11 settled one bad pair at a time: a search for words h′, g′ with h′ = ρ·g′, peeling letters off the front and
+cutting dead branches. The new step keeps ρ as an unknown:
+
+- **The map stays exact in ρ.** After any sequence of peels the current map is A(ρ) = (ρS, ρT + U), slope and offset,
+  with S, T, U exact fractions. Peeling is the same algebra as before.
+- **A branch is cut only if it is dead for every ρ in the range.** The tests ("A(I) misses I", "A(I) does not cover
+  I", "A(I) is not inside I") involve a maximum of two linear functions of ρ, a minimum of two, or one linear function.
+  Those are convex, concave or linear, so checking the two ends of the range is exact.
+- **A step is proved** when every branch is cut and no branch ends in the identity. Then no stretch in the range has a
+  solution, and in particular no bad pair with its stretch there has a second collision.
+- **The step function itself** comes from halving: start from 64 equal ranges per window, try each one with a budget
+  of 4,000 nodes, and halve whatever fails, down to width 2⁻¹⁷ ≈ 7.6 × 10⁻⁶.
+
+![Figure 38](figures/fig38-step-function.png)
+
+*Figure 38. The step function. Each blue step is a range of stretches proved free of a second collision by one search
+tree, drawn at the height of that tree's size. Red is not proved. The red parts are clusters near 0.9·(20/19)^k and their
+mirrors, and the black ticks at the bottom show why: they are points where two pieces of the fractal line up. The K window is a scaled copy of the N window, because
+N = (10/19)·K as maps. No proved range needed more than 273 search nodes.*
+
+### 16.3 Theorem 12.1 (DRAFT, computer-assisted): every bad pair in the proved ranges
+
+**Theorem 12.1.** Let C be the union of the 1,861 ranges listed in `cover12.json` (they cover 73.5% of
+[0.9, 10/9] and 72.0% of [9/19, 100/171], the same to three digits whether measured in ρ or in log ρ). If (a, b) is a bad pair with
+λ^a/μ^b in C, then μ^b·h′ = λ^a·g′ has no solution in reduced words. So that pair gives no second collision.
+
+*Proof.* For each range the search above cut every branch, in exact rational arithmetic, with no hit, so no ρ in the
+range has a solution. ∎
+
+**Corollary 12.1a (how many pairs).** Order the bad pairs by a. The share whose stretch lies in C tends to the
+log-measure share of C, which is 72.7%. *Why:* each a gives at most one b per window (each window is narrower than one
+step of b in log ρ), and a·log λ mod log 20 is equidistributed (Weyl), because log λ / log μ is irrational (19 divides
+λ's numerator and not μ's). Check Y5 sees it already among the 1,406 pairs with a ≤ 10,000: 1,030 of them (73.3%) lie
+in C, against 72.7% predicted.
+
+Together with Round 11, **the only bad pairs still open have a > 10,000 and a stretch outside C.**
+
+### 16.4 Theorem 12.2 (DRAFT, by hand): where the steps must pile up
+
+Call R the set of ratios x/y where x is a point of the fractal coded by an infinite reduced word starting with N, and
+y one coded by an infinite reduced word starting with N or K. (In the y-model the fractal is the attractor Λ of the four
+letters, which is K rescaled.)
+
+**Theorem 12.2.** (1) R is closed and has Lebesgue measure zero; its dimension is at most 2·s_F ≈ 0.941. (2) If a closed
+range J avoids R, halving J often enough always reaches ranges whose searches all finish. (3) At a point of R where two
+pieces touch at an endpoint, such as 18/19, the search never finishes on any range containing it.
+
+*Proof.* (1) The codings form a closed set of infinite words, and coding is continuous, so the two point sets are compact
+and so is R. Λ is a self-similar set, so its box dimension equals its Hausdorff dimension (Falconer), which is at most
+s_F < 1/2 by Round 9's covering argument. So Λ × Λ has upper box dimension at most 2s_F < 1. The map (x, y) ↦ x/y is
+Lipschitz there, because y ≥ 1/19. Its image therefore has upper box dimension below 1 and measure zero, and R sits
+inside it.
+(2) Suppose halving never finishes. Then there are nested ranges shrinking to some ρ₀ in J whose search trees are
+infinite. Each tree branches finitely, so each has an infinite uncut branch (König). Passing to a subsequence on which
+the first n choices agree, for every n, gives one infinite pair of words (h, g) whose prefixes are never cut at ρ₀. The
+"is it cut" tests are strict, so "not cut" passes to the limit. A branch with one word finished cannot go on forever:
+if h is finished, covering I needs slope at least 1 and each g-peel divides the slope by at least 10; if g is finished,
+fitting inside I needs slope at most 1 and each h-peel multiplies it by at least 10. So both words are infinite, and
+h_n(I) meets ρ₀·g_n(I) for every n while both shrink to points. That means h(∞) = ρ₀·g(∞), so ρ₀ is in R, which is a
+contradiction.
+(3) At 18/19 the identity N(N(0)) = (18/19)·N(1/9) makes the left end of the piece NN touch the right end of the
+scaled piece N. The branch h = NN m^n, g = N K^n keeps the touching point for every n, so it is never cut (check Y6). Its
+states never repeat: after peeling NNm^(p−2) and NK^(q−1) the slope is ρ·19·20^(p−2)/10^(q−1), and these are all
+different. ∎
+
+So the picture Brennan asked for is exactly right: **on any closed range that avoids R, finitely many steps do it; the
+steps get shorter and shorter only as they approach R.** Checks Y3 and Y8 confirm that no touching point and no sampled
+ratio point of R falls inside a proved step.
+
+![Figure 39](figures/fig39-cluster-zoom.png)
+
+*Figure 39. One cluster up close. The red gaps sit on the black ticks, the points of R; between them, steps close.
+18/19 is one of the touching points.*
+
+### 16.5 Why this does not finish the proof
+
+- **A bigger search does not help.** In a cluster, raising the budget from 2,000 to 8,000 nodes leaves exactly the same
+  ranges unproved (check Y9). An unproved range contains a point of R, so no budget is enough.
+- **Finer steps help, but very slowly.** The unproved share of the cluster 0.944–0.963 falls like (width)^0.083
+  (Figure 40). That is what a set of dimension about 0.92 does, consistent with the bound 0.941. Halving the unproved
+  share would take ranges about 4,000 times narrower.
+- **Bad pairs keep landing near R.** The stretches of bad pairs are dense, and R has points in every cluster. So
+  infinitely many bad pairs sit in unproved ranges, however fine the steps.
+- **A 2D search fails for a clear reason.** I also tried letting the offset vary freely, so a region in the (slope,
+  offset) plane could be proved at once and loops could be closed. It fails right away: every 2D region near the
+  clusters contains real solutions, and those are not collisions only because their ρ is not of the form λ^a/μ^b. A
+  proof has to keep ρ on the line it starts on.
+
+![Figure 40](figures/fig40-cluster-shrinks.png)
+
+*Figure 40. Finer ranges prove more of a cluster, but slowly. The fitted power says the line-up set R behaves like a set
+of dimension about 0.92 there.*
+
+### 16.6 Is it a lead?
+
+**Yes. This round gives a new theorem, not just more cases.** It contributes three things:
+
+1. **Theorem 12.1:** 72.7% of all bad pairs (in the long run, by log measure) have no second collision, for every
+   number of copies of λ. Round 11 needed one search per pair and stopped at 10,000.
+2. **Theorem 12.2:** a sharp description of where any search of this kind must fail. It fails on a closed,
+   measure-zero line-up set R, and only there.
+3. **A clean statement of what is left:** the original break is exact if and only if no bad pair with stretch outside C
+   has a second collision, and every such pair is either decidable by a finite search (stretch off R) or sits exactly on R.
+
+It would become the full theorem with one of these:
+
+1. **Bad stretches stay a safe distance from R.** For example dist(λ^a/μ^b, R) ≥ c·e^(−Ca). Then each pair's search has
+   depth O(a), and a symbolic version of the search could handle all pairs at once.
+2. **A uniform argument at the line-ups.** Near a touching point the search follows two infinite tails, such as m^n
+   against K^n at 18/19. If the side branches off every tail could be cut uniformly, the clusters would close. The
+   catch is that R has infinitely many touching points, not finitely many.
+3. **A second collision found.** That would show the size drops below 0.4704834, which is a result in its own right.
+
+### 16.7 Who proved what, round 12
+
+Interval (parametric) branch-and-bound is a standard technique. König's lemma, Weyl equidistribution, Falconer's
+"box = Hausdorff for self-similar sets", and box dimension of products and Lipschitz images are all known. Ours (DRAFT):
+the range version of the peel-and-prune search, the certificate covering 72.7% of the windows (Theorem 12.1 and its
+corollary), the line-up set R and Theorem 12.2, the diagnosis in 16.5, and the 2D negative result. No fresh literature
+search this round.
+
+### Known vs new, round 12
+
+| Item | Status | Source |
+|---|---|---|
+| Branch-and-bound over a parameter range; König; Weyl; box = Hausdorff for self-similar sets | Known | standard |
+| Theorem 12.1: no second collision for every bad pair with stretch in C (72.7% by log measure), all a | **Ours** (DRAFT), computer-assisted, exact | 16.3, Y1–Y4, Y7 |
+| Corollary 12.1a: in the long run at least 72.7% of bad pairs are settled | **Ours** (DRAFT) | 16.3, Y5 |
+| Theorem 12.2: range searches get stuck only on the closed, measure-zero line-up set R (dim ≤ 2s_F) | **Ours** (DRAFT), by hand | 16.4, Y3, Y6, Y8 |
+| Original break: size exactly 0.4704834… | **Open** | 16.5 |

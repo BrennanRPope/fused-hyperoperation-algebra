@@ -1,0 +1,3 @@
+N proved 0.7348 (log 0.7348) pieces 9861 open intervals 479 hits 0
+K proved 0.7201 (log 0.7201) pieces 5275 open intervals 262 hits 0
+time 1731.9

@@ -1,0 +1,64 @@
+{
+ "Y1_agree_with_round11": {
+  "ok": true,
+  "pairs": 120,
+  "agree": 120
+ },
+ "Y2_planted": {
+  "ok": true,
+  "trials": 120,
+  "found": 50,
+  "inconclusive": 70,
+  "false_ok": 0,
+  "unreduced_collision_found": true,
+  "unreduced_status": "big"
+ },
+ "Y3_touching_points_unproved": {
+  "ok": true,
+  "touching_points": 4260,
+  "in_proved_pieces": 0,
+  "examples": [
+   "9/19",
+   "68409/144400",
+   "72006859/151984800",
+   "1710250/3609639",
+   "36009/76000"
+  ]
+ },
+ "Y4_independent_reproof": {
+  "ok": true,
+  "sampled": 300,
+  "reproved": 300,
+  "big": 0,
+  "hit": 0
+ },
+ "Y5_bad_pairs_in_proved_set": {
+  "ok": true,
+  "bad_pairs_a_le_10000": 1406,
+  "in_proved": 1030,
+  "fraction": 0.732574679943101,
+  "log_measure_prediction": 0.7274742954301008
+ },
+ "Y6_hard_spot_18_19": {
+  "ok": true,
+  "identity": "N(N(0)) = (18/19) N(1/9)",
+  "branch": "h = NN m^n, g = N K^n",
+  "n_max": 200
+ },
+ "Y8_attractor_ratios_unproved": {
+  "ok": true,
+  "cylinder_pairs_in_windows": 3000,
+  "inside_proved": 0
+ },
+ "Y9_budget_does_not_help": {
+  "ok": true,
+  "region": "[0.947, 0.9485]",
+  "open_pieces_2000": 212,
+  "open_pieces_8000": 212,
+  "open_measure": 0.0012421875
+ },
+ "Y7_tiling": {
+  "ok": true
+ },
+ "all_pass": true
+}
