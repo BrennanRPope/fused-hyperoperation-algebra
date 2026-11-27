@@ -6,7 +6,7 @@ Asked by Brennan (Nov 26): "I really want to prove quantum mechanics requires co
 
 Method: published work first. Anything not found in the sources is labeled *ours*.
 
-Checks: `checks.py`, 22/22 pass (`checks_output.txt`). Figures: `figures.py` writes `figures/r1`–`r6`.
+Checks: `checks.py`, 23/23 pass (`checks_output.txt`). Figures: `figures.py` writes `figures/r1`–`r6`.
 
 ---
 
@@ -37,7 +37,7 @@ States are real unit vectors in ℝⁿ. Observables are symmetric matrices, and 
 | A1 | A(H) is antisymmetric: **every step is a rotation** | Brennan's premise; continuous reversibility (Hardy; Masanes–Müller) |
 | A2 | A(H) commutes with H: **energy is conserved** | Noether; Stone. **Not needed: it follows from A3 and A4 (step 3)** |
 | A3 | A(H)² = −H²/ħ²: **a state of energy E turns at rate E/ħ** | Planck–Einstein |
-| A4 | A(H + c) = A(H) + c·A(1): **only energy differences matter** | the zero of energy is a convention |
+| A4 | A(H + c) = A(H) + c·A(1): **only energy differences matter** | the zero of energy is a convention. **Also derivable: it follows from how two systems combine (below)** |
 
 ### Proof
 
@@ -53,6 +53,12 @@ Checks:
 - **T3:** on ℝ⁴, with all six entries of B left unknown, B = JH is the only solution.
 - **T3a:** the degenerate case H = λ·1 leaves a two-parameter family after the linear steps. The Planck–Einstein condition then gives −(b₃² + b₄²) = 0, which kills it over the reals.
 - **T3c:** a perturbation E that keeps A1 and A2 breaks A3. Two states of the same energy would then turn at different rates.
+
+### The shift rule comes from composites
+
+Put two non-interacting systems side by side and add a constant c to their total energy. Booked to A or booked to B, it is **the same joint Hamiltonian**: (H_A + c)⊗1 + 1⊗H_B = H_A⊗1 + 1⊗(H_B + c). If the joint dynamics depends only on the joint Hamiltonian, and non-interacting parts evolve independently, the two bookings must change the dynamics the same way. One side depends only on H_A and the other only on H_B, so **neither can depend on its Hamiltonian at all**. That is A4 (with A1 and A3 making the change linear in c). The only extra input is that local changes are visible in the joint system, which holds for both the plain and the balanced tensor product. Check T6b; Lean `Booking.shift_independent`.
+
+So the energy zero being a convention is not a postulate: **a constant in the total energy can't belong to either part.**
 
 ### What it costs real quantum mechanics
 
@@ -136,16 +142,18 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 
 ## Checks
 
-`python3 checks.py` gives 21/21 PASS (sympy and numpy):
+`python3 checks.py` gives 23/23 PASS (sympy and numpy):
 
 - Q0: complex QM satisfies A1–A4.
 - T1, T1b: odd dimension; turning planes.
 - T2: positive-frequency J.
 - C2: two Hamiltonians with different J's.
 - T3, T3a, T3b, T3c: the proof, generic and degenerate.
+- T3d: energy conservation (A2) follows from A3 and A4.
 - T4: real QM fails A4.
 - C3, C3b, T5: quaternions (variant and genuine); complex Hermitian count.
 - T6, C4: composites and local tomography.
+- T6b: the shift rule A4 follows from composites.
 - T7: the dial chain.
 - R1–R5: the three recent real formulations tested against every assumption (§6), and why A4 has content.
 
@@ -155,7 +163,7 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 - A0, that any observable can be some Hamiltonian, is needed for §2's conclusion about observables. Without it, J only commutes with the Hamiltonians.
 - A4 is read as A(H + c) = A(H) + c·A(1), so a shift of the energy zero adds a fixed turn and nothing else.
 - The symbolic check T3 is on ℝ⁴ only. The proof in §2 holds in any finite dimension, and its last step is checked in general by T3b.
-- The algebraic core is in `lean/EnergyShift.lean` (18 theorems in core Lean, any ring, no matrices needed; a copy sits in `arxiv/anc/`). It compiled clean on Nov 27 in the shared library as `FusedAlgebra.Topics.EnergyShift`. Step (v), E antisymmetric with E² = 0 ⇒ E = 0, uses the transpose and trace, so it stays with the paper and the sympy checks.
+- Lean: `lean/Booking.lean` (4 theorems) checks the booking argument for A4. `lean/EnergyShift.lean` (18 theorems, core Lean) checks proof steps 2–4, including the derivation of A2, in any ring without 2-torsion. Step 5, the trace argument, needs matrix algebra from mathlib, so the sympy check T3b stands in for it. Both Lean files compiled clean on Nov 27 in the shared library, as `FusedAlgebra.Topics.EnergyShift` and `FusedAlgebra.Topics.Booking`.
 - The literature placement comes from abstracts and the papers I opened. Vaughan's date, and whether the energy-zero lever is already published, aren't confirmed.
 
 ## Files

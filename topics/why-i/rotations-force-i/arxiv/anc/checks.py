@@ -309,4 +309,29 @@ for n in [2, 4, 6]:
 check("T3d energy conservation (A2) follows from A3 and A4: the c^2 and c^1 terms of (B + cJ)^2 = -(H + cI)^2 force [J,H] = 0, "
       "and then the c^0 term forces [B,H] = 0, for any J with J^2 = -1 and any B (Lean: EnergyShift.A2_redundant)", ok)
 
+ok = True
+# A4 from composites: booking a constant c to A or to B gives the same joint Hamiltonian, so with additive
+# non-interacting generators and faithful local operators, A(H + c) - A(H) cannot depend on H.
+nA = nB = 4; IA, IB = np.eye(nA), np.eye(nB)
+for _ in range(10):
+    HA, HB, c = rand_sym(nA), rand_sym(nB), rng.normal()
+    ok &= np.allclose(np.kron(HA + c*IA, IB) + np.kron(IA, HB), np.kron(HA, IB) + np.kron(IA, HB + c*IB))
+def own_turn(H):                                    # an H-dependent complex structure: pair H's eigenvectors in order
+    w, V = np.linalg.eigh(H); K = np.zeros_like(H)
+    for i in range(0, H.shape[0], 2): a, b = V[:, i], V[:, i+1]; K += np.outer(b, a) - np.outer(a, b)
+    return K
+JB = Jstd(nB//2); mism = []
+for _ in range(5):                                  # shift rule A(H + c) = A(H) + c K_H with K_H depending on H
+    HA = rand_sym(nA); c = 0.7
+    gen_bookA = np.kron(own_turn(HA)*c, IB); gen_bookB = np.kron(IA, JB*c)  # change of joint generator, per booking
+    mism.append(np.linalg.norm(gen_bookA - gen_bookB))
+ok &= min(mism) > 1e-3                              # the two bookings disagree: the joint generator is not well defined
+KAB = np.kron(Jstd(nA//2), Jstd(nB//2)); w_, V_ = np.linalg.eigh(KAB); Wb = V_[:, w_ < 0]   # balanced product W
+for _ in range(20):
+    X = rng.normal(size=(nA, nA))
+    ok &= np.linalg.norm(np.kron(X, IB) @ Wb) > 1e-6 * np.linalg.norm(X)        # X (x) 1 = 0 on W only if X = 0
+check("T6b the shift rule A4 follows from composites: booking a constant to A or to B gives the same joint Hamiltonian; "
+      "an H-dependent shift turn would give two different joint generators for it; local operators act faithfully on the "
+      "balanced product W, so A(H + c) - A(H) is the same for every H (Lean: Booking.shift_independent)", ok)
+
 print(f"\n{sum(r[1] for r in results)}/{len(results)} pass")

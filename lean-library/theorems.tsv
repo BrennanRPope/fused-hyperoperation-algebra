@@ -461,6 +461,10 @@ FusedAlgebra.Topics.Biology.Population	Population.bh_room	propext, Classical.cho
 FusedAlgebra.Topics.Biology.Population	Population.hassell_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Biology.Population	Population.interventions	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Biology.Population	Population.survival_assoc	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Booking	CircleOp.Booking.booking	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Booking	CircleOp.Booking.shift_additive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Booking	CircleOp.Booking.shift_independent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Booking	CircleOp.Booking.sub_eq_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BooleanLattice	BooleanLattice.chain4_corners	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BooleanLattice	BooleanLattice.incl_excl3	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BooleanLattice	BooleanLattice.nchain3_corners	propext, Classical.choice, Quot.sound

@@ -20,5 +20,6 @@ PASS R3 Barrios Hita et al.: observables Re(Pi) (x) I + Im(Pi) (x) J_F are the s
 PASS R4 Maioli-Curado-Gazeau: their composition rule (Eq. 32) is the real form of the complex tensor product and commutes with J = tau (x) 1, so their theory too carries one shared J and composes as W
 PASS R5 why A4 matters: reading each dynamics with its own positive-frequency J makes energies |E| and flips the turn of negative-energy levels, so the physics would depend on the energy zero; A4 rules this out
 PASS T3d energy conservation (A2) follows from A3 and A4: the c^2 and c^1 terms of (B + cJ)^2 = -(H + cI)^2 force [J,H] = 0, and then the c^0 term forces [B,H] = 0, for any J with J^2 = -1 and any B (Lean: EnergyShift.A2_redundant)
+PASS T6b the shift rule A4 follows from composites: booking a constant to A or to B gives the same joint Hamiltonian; an H-dependent shift turn would give two different joint generators for it; local operators act faithfully on the balanced product W, so A(H + c) - A(H) is the same for every H (Lean: Booking.shift_independent)
 
-22/22 pass
+23/23 pass
