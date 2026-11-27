@@ -16,4 +16,8 @@ PASS 15. with N <= 2 terms the first term dominates (1 > 1/sqrt2), so no slice o
 PASS 16. zeta's own slice loses at most 2 zeros for N = 3..8 (against theta/pi); random angles lose about 8 at N = 7   [zeta [0, 0, 1, -1, 1, 2], random mean 10.7]
 PASS 17. turning only the prime-2 angle away from 0 loses zeros at every other angle tried (N = 6): zeta sits at a sharp point   [[-1, 9, 7, 8, 5, 6, 3, 8, 4, 6, 8, 8]]
 PASS 18. angles needed at height t = primes up to sqrt(t/2pi): 5 at t = 1000, 78 at t = 10^6, never bounded 
-18 of 18 pass (13 s)
+PASS 19. a gap's margin (smallest prime-angle turn that loses its two zeros, first order) follows the gap: correlation of logs > 0.75   [0.837 over 948 gaps]
+PASS 20. at the 10 most fragile gaps true |Z| peaks are small (median < 0.5); at 10 random gaps they are not (median > 1): Lehmer-type near misses   [0.26 vs 1.29]
+PASS 21. the typical gap margin is about one radian and drifts down with height (median at N = 3 above N = 14)   [1.44 -> 0.81]
+PASS 22. at t = 564.3 the slice touches zero without crossing where zeta has two zeros; turning prime 2 by -0.0003 makes the pair   [true zeros [564.161, 564.506]]
+22 of 22 pass (15 s)

@@ -156,7 +156,7 @@ the Euler-product pages.
 
 ## Follow-up: a hidden space built from all the primes
 
-Brennan asked for the hidden space the zeros would need. It is in [`hidden-space/`](hidden-space/README.md): two known halves (the profinite integers for adding, the prime torus for multiplying, joined by the adeles). The primes are a window of size zero in the first; the zeros are a slice of the second, which needs one angle per prime up to √(t/2π) and so is never finite. Zeta's slice sits at a sharp point (turn any prime's angle and zeros leave the line), a picture of RH as stability, not a proof. No new lead; 18 more checks.
+Brennan asked for the hidden space the zeros would need. It is in [`hidden-space/`](hidden-space/README.md): two known halves (the profinite integers for adding, the prime torus for multiplying, joined by the adeles). The primes are a window of size zero in the first; the zeros are a slice of the second, which needs one angle per prime up to √(t/2π) and so is never finite. Zeta's slice sits at a sharp point (turn any prime's angle and zeros leave the line), a picture of RH as stability, not a proof. Its stability margin is about a radian per gap and a few hundredths at the worst gaps, set by close pairs of zeros (Lehmer's phenomenon). No new lead; 22 more checks.
 
 ## Assumptions
 

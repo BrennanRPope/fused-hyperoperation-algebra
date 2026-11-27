@@ -102,4 +102,34 @@ check('turning only the prime-2 angle away from 0 loses zeros at every other ang
 # 18 torus size
 check('angles needed at height t = primes up to sqrt(t/2pi): 5 at t = 1000, 78 at t = 10^6, never bounded',
       sp.primepi(int(sqrt(1000 / (2 * pi)))) == 5 and sp.primepi(int(sqrt(10**6 / (2 * pi)))) == 78)
+# 19-22 stability margin of zeta's slice (margin.py, margin_local.py)
+rows = []
+for Nn in range(3, 15):
+    T0, T1 = 2 * pi * Nn**2 + 0.3, 2 * pi * (Nn + 1)**2 - 0.3
+    tt = np.arange(T0, T1, 0.001); ns = np.arange(1, Nn + 1)
+    ph = th(tt)[None, :] - tt[None, :] * np.log(ns)[:, None]
+    f = (ns[:, None]**-0.5 * np.cos(ph)).sum(0)
+    D = np.array([(-(ns**-0.5) * np.array([sp.multiplicity(p, int(k)) for k in ns]))[:, None] * np.sin(ph) for p in sp.primerange(2, Nn + 1)]).sum(1)
+    sc = np.nonzero(np.sign(f[1:]) != np.sign(f[:-1]))[0]
+    for a, b in zip(sc[:-1], sc[1:]):
+        k = a + 1 + np.argmax(np.abs(f[a + 1:b + 1]))
+        rows.append((Nn, tt[k], abs(f[k]), abs(f[k]) / np.abs(D[:, k]).max(), (tt[b] - tt[a]) * log(tt[k] / (2 * pi)) / (2 * pi)))
+Rm = np.array(rows)
+cg = np.corrcoef(np.log(Rm[:, 3]), np.log(Rm[:, 4]))[0, 1]
+check('a gap\'s margin (smallest prime-angle turn that loses its two zeros, first order) follows the gap: correlation of logs > 0.75',
+      cg > 0.75, f'{cg:.3f} over {len(Rm)} gaps')
+o = np.argsort(Rm[:, 3])[:10]
+tp = [abs(float(mp.siegelz(Rm[i, 1]))) for i in o]
+rp = [abs(float(mp.siegelz(x))) for x in np.random.default_rng(5).choice(Rm[:, 1], 10, replace=False)]
+check('at the 10 most fragile gaps true |Z| peaks are small (median < 0.5); at 10 random gaps they are not (median > 1): Lehmer-type near misses',
+      np.median(tp) < 0.5 and np.median(rp) > 1, f'{np.median(tp):.2f} vs {np.median(rp):.2f}')
+med = [np.median(Rm[Rm[:, 0] == k, 3]) for k in (3, 14)]
+check('the typical gap margin is about one radian and drifts down with height (median at N = 3 above N = 14)', 0.5 < med[1] < med[0] < 2, f'{med[0]:.2f} -> {med[1]:.2f}')
+Nn = 9; tt = np.arange(563.9, 564.8, 0.0005); ns = np.arange(1, 10)
+e2 = np.array([sp.multiplicity(2, int(k)) for k in ns])
+def g(dd): return (ns[:, None]**-0.5 * np.cos(th(tt)[None, :] - tt[None, :] * np.log(ns)[:, None] + dd * e2[:, None])).sum(0)
+nz = lambda v: int(np.sum(np.sign(v[1:]) != np.sign(v[:-1])))
+zt = Z[(Z > 563.9) & (Z < 564.8)]
+check('at t = 564.3 the slice touches zero without crossing where zeta has two zeros; turning prime 2 by -0.0003 makes the pair',
+      nz(g(0)) == 0 and nz(g(-3e-4)) == 2 and len(zt) == 2, f'true zeros {np.round(zt, 3).tolist()}')
 print(f'{sum(res)} of {len(res)} pass ({time.time() - t00:.0f} s)')

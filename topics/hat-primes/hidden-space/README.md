@@ -1,7 +1,7 @@
 # DRAFT: a hidden space built from all the primes
 
 *Follow-up to [the hat tile and primes](../README.md). Nov 27 2026. Numbers are evidence, not proofs;
-18 of 18 checks pass (`checks.py`); `lean/HiddenSpace.lean` has 2 statements, not yet compiled.*
+22 of 22 checks pass (`checks.py`); `lean/HiddenSpace.lean` has 2 statements, not yet compiled.*
 
 ## The answer first
 
@@ -21,6 +21,10 @@ the zeros**:
   angle away from zeta's own and zeros go missing (they move off the line). That is RH pictured as a
   stability fact, tied to zeta's functional equation; Davenport–Heilbronn (1936) shows that tie alone
   can't prove it.
+- **Its stability margin (asked for next) is Lehmer's phenomenon.** A typical gap survives a turn of
+  about one radian, but the fragile ones go at a few hundredths, and they are exactly where zeta has
+  two zeros unusually close together. Known in spirit (Lehmer 1956; Rodgers and Tao 2020 proved that if RH
+  holds, it holds with no room to spare); no lead.
 - **Where the halves meet** is the adeles (Tate 1950) and Connes' adele class space (1999). The repo's
   Riemann rounds 9 and 10 already found that this join gives the functional equation and needs every
   prime, but not the zeros.
@@ -111,9 +115,34 @@ torus for multiplying, the adeles where they meet. The tests show what each half
 3. The join (adeles) gives the functional equation, which is exactly what makes zeta's slice the sharp
    point that keeps its zeros. Turning that into a proof is the open problem.
 
-If Brennan wants one thing to push: measure how far the prime angles can turn before the first zero is
-lost, as N grows. That gives a "stability margin" for zeta's slice. It is a numerical study and most
-likely ties to known Gram's-law statistics, so check the literature before calling anything new.
+## 4. The stability margin of zeta's slice
+
+Brennan asked how far the prime angles can turn before zeros leave the line. Two ways to measure it,
+over heights 57 to 1,414 (N = 3 to 14 terms, 948 gaps between zeros):
+
+- **Whole windows** (one height band at a time): the smallest turn of one prime's angle that loses or
+  makes a pair of zeros is 0.01 to 0.27 radians, and prime 2 is almost always the most sensitive
+  (it touches the most terms). One band (N = 9) has a margin of 0.00003: at t = 564.3 the slice touches
+  zero without crossing, exactly where zeta has two close zeros (564.16 and 564.51) that the slice
+  misses and Riemann–Siegel's corrections put back.
+- **Gap by gap** (first order: the peak between two zeros, divided by how fast a turn moves it): the
+  typical margin is about one radian, drifting down with height (median 1.44 at N = 3, 0.81 at N = 14).
+
+![Fig 8](figures/fig8-stability-margin.png)
+
+**What sets it: close pairs.** A gap's margin follows how close its two zeros are (correlation of logs
+0.84). The slice's weak peaks are zeta's own weak peaks (correlation 0.92): at the 40 most fragile gaps
+the true peak of |Z| has median 0.36, against 1.65 at random gaps. These are Lehmer's near misses: two
+zeros so close that Z barely gets across the axis between them (Lehmer 1956).
+
+![Fig 9](figures/fig9-what-sets-the-margin.png)
+
+**Is it a lead? No.** The margin is the Lehmer phenomenon seen through the torus. What it would take
+for the margin to stay above zero forever is known to be delicate: in the de Bruijn–Newman heat flow,
+Rodgers and Tao (2020) proved Λ ≥ 0, so if RH holds it holds with no room to spare, and close pairs keep
+pushing the margin toward zero. The repo's Riemann rounds 4 and 8 already worked with that flow. The
+fresh part is only the reading: the slack in RH, measured as a turn of a prime's angle, is about a
+radian per gap and a few hundredths at the worst gaps up to t = 1,414, with prime 2 the weak direction.
 
 ## Assumptions
 
@@ -138,12 +167,16 @@ likely ties to known Gram's-law statistics, so check the literature before calli
 | Finite-torus Fourier quasicrystals | known | Kurasov, Sarnak (2020) |
 | Torus dimension π(√(t/2π)) as the size of the zeros' hidden space | **framing**; likely known in spirit | read off Riemann–Siegel here |
 | Zeta's slice is a sharp point: other slices lose zeros | **measurement**, not found in a quick search; explanation known in spirit | measured here; Davenport–Heilbronn (1936) for the limit |
+| Margin of zeta's slice (turn of a prime angle that loses zeros): ~1 rad per gap, set by close pairs | **measurement**; not found in a quick search; mechanism known | measured here; Lehmer (1956); Csordas, Smith, Varga (1994) |
+| RH, if true, has no slack (Λ ≥ 0) | known | Rodgers, Tao (2020) |
 | Adeles join the halves; gives the functional equation | known | Tate (1950); Connes (1999); repo Riemann rounds 9–10 |
 
 ## Files
 
 `additive.py` (Ẑ measurements, writes `additive.json`) · `multiplicative.py` (torus measurements, writes
-`multiplicative.json`, `mult_curves.npz`) · `figures.py` · `checks.py` (18 checks, about 15 s) ·
+`multiplicative.json`, `mult_curves.npz`) · `figures.py` · `margin.py` (window margins, writes `margin.json`, `margin_output.txt`) ·
+`margin_local.py` (gap margins, writes `margin_local.json`, `margin_local.npz`) · `figures_margin.py` ·
+`checks.py` (22 checks, about 30 s) ·
 `lean/HiddenSpace.lean`.
 
 ## Sources
@@ -168,5 +201,9 @@ likely ties to known Gram's-law statistics, so check the literature before calli
 - H. Davenport, H. Heilbronn (1936), functions with a functional equation and zeros off the line.
 - J. Tate, thesis (1950); A. Connes, *Trace formula in noncommutative geometry and the zeros of the
   Riemann zeta function* (1999).
+- D. H. Lehmer, *On the roots of the Riemann zeta-function*, Acta Math. 95 (1956) (close pairs of zeros).
+- G. Csordas, W. Smith, R. S. Varga, *Lehmer pairs of zeros, the de Bruijn–Newman constant Λ, and the
+  Riemann hypothesis*, Constr. Approx. 10 (1994).
+- B. Rodgers, T. Tao, *The de Bruijn–Newman constant is non-negative*, Forum Math. Pi 8 (2020), arXiv 1801.05914.
 - F. Dyson, *Birds and Frogs*, Notices AMS (2009); J. C. Lagarias, *Mathematical quasicrystals and the
   problem of diffraction* (2000).
