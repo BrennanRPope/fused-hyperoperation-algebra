@@ -192,4 +192,39 @@ theorem sphere_hold_leftover : (-2 : ℝ) + 8 / 9 = -10 / 9 := by norm_num
 /-- Strength against the vacuum-energy size: α ∝ s^(−10/3) and s ∝ K^(1/5) give α ∝ K^(−2/3). -/
 theorem sphere_strength_exponent : (-10 / 3 : ℝ) * (1 / 5) = -2 / 3 := by norm_num
 
+/-! ### Part O: does our law pick one winding on the hidden sphere? -/
+
+/-- The circle wrapped n times on the sphere gives curvature R = (16ρ² − a²n²)/(8ρ⁴). Check: n = 1, ρ = a/2 is the round
+3-sphere, where the numerator 3a² over 8(a/2)⁴ = a⁴/2 gives 6/a². -/
+theorem wound_round_sphere (a : ℝ) : (16 * (a / 2) ^ 2 - a ^ 2) * 16 = 6 * (8 * a ^ 2) := by ring
+
+/-- The winding's hold V = −2/(aρ⁴) + an²/(8ρ⁶) turns where 64ρ² = 6a²n², i.e. at ρ² = 3a²n²/32. -/
+theorem winding_rest (a n : ℝ) : 64 * (3 * a ^ 2 * n ^ 2 / 32) = 6 * a ^ 2 * n ^ 2 := by ring
+
+/-- The lifted sphere arrows average 2ρ²/3 + a²n²/12, which at the rest point is 7a²n²/48. -/
+theorem winding_arrow_average (a n : ℝ) :
+    (2 / 3) * (3 * a ^ 2 * n ^ 2 / 32) + a ^ 2 * n ^ 2 / 12 = 7 * a ^ 2 * n ^ 2 / 48 := by ring
+
+/-- So the sphere force over the circle force is a²/(7a²n²/48) = 48/(7n²). -/
+theorem winding_strength_ratio (a n : ℝ) (ha : a ≠ 0) (hn : n ≠ 0) :
+    (48 / (7 * n ^ 2)) * (7 * a ^ 2 * n ^ 2 / 48) = a ^ 2 := by
+  field_simp <;> ring
+
+/-- At the rest point the curvature is still positive: ρ²R = 2 − a²n²/(8ρ²) = 2 − 32/24 = 2/3 (no massless fermions). -/
+theorem winding_curvature_positive : (2 : ℝ) - 32 / (8 * 3) = 2 / 3 := by norm_num
+
+/-! ### Part P: more than one dial on the wound sphere -/
+
+/-- Several wound circles enter only through W, the winding direction's squared length: the sphere rests where 64ρ² = 6W. -/
+theorem several_circles_rest (W : ℝ) : 64 * (3 * W / 32) = 6 * W := by ring
+
+/-- The lifted arrows then average 2ρ²/3 + W/12 = 7W/48, so the strength ratio is 48/(7N) with N = W/|v|². -/
+theorem several_circles_average (W : ℝ) : (2 / 3) * (3 * W / 32) + W / 12 = 7 * W / 48 := by ring
+
+/-- N = 3 is not a sum of two squares (a square 2-torus can't reach it); squares above 2² already exceed 3. -/
+theorem three_not_sum_two_squares : ∀ a < 3, ∀ b < 3, a ^ 2 + b ^ 2 ≠ 3 := by decide
+
+/-- N = 3 is a cube's body diagonal, 1² + 1² + 1², or a hexagonal torus's long diagonal, 1² + 1·1 + 1². -/
+theorem three_from_cube_or_hexagon : (1 : ℕ) ^ 2 + 1 ^ 2 + 1 ^ 2 = 3 ∧ (1 : ℕ) ^ 2 + 1 * 1 + 1 ^ 2 = 3 := by norm_num
+
 end FusedAlgebra.Topics.NewForce

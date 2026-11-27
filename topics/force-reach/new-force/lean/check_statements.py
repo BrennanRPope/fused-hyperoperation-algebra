@@ -96,4 +96,25 @@ ntests = {
 }
 for nm, e in ntests.items():
     g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
+a_, n_ = sp.symbols('a n', positive=True)
+otests = {
+    'wound_round_sphere': (16*(a_/2)**2 - a_**2)*16 - 6*(8*a_**2),
+    'wound_round_sphere (R = 6/a^2)': (16*(a_/2)**2 - a_**2)/(8*(a_/2)**4) - 6/a_**2,
+    'winding_rest': 64*(3*a_**2*n_**2/32) - 6*a_**2*n_**2,
+    'winding_rest (V\'(rho*) = 0)': sp.diff(-2/(a_*r_**4) + a_*n_**2/(8*r_**6), r_).subs(r_, n_*a_*sp.sqrt(R(3, 32))),
+    'winding_arrow_average': R(2, 3)*(3*a_**2*n_**2/32) + a_**2*n_**2/12 - 7*a_**2*n_**2/48,
+    'winding_strength_ratio': (48/(7*n_**2))*(7*a_**2*n_**2/48) - a_**2,
+    'winding_curvature_positive': 2 - R(32, 24) - R(2, 3),
+}
+for nm, e in otests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
+W_ = sp.symbols('W', positive=True)
+ptests = {
+    'several_circles_rest': 64*(3*W_/32) - 6*W_,
+    'several_circles_average': R(2, 3)*(3*W_/32) + W_/12 - 7*W_/48,
+    'three_not_sum_two_squares': 0 if all(a*a + b*b != 3 for a in range(3) for b in range(3)) else 1,
+    'three_from_cube_or_hexagon': (1 + 1 + 1 - 3)**2 + (1 + 1 + 1 - 3)**2,
+}
+for nm, e in ptests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
 print('ALL PASS' if ok else 'SOME FAIL')

@@ -65,6 +65,8 @@ topics/force-reach/new-force/repel_checks.py
 topics/force-reach/new-force/other_forces_checks.py
 topics/force-reach/new-force/leads_checks.py
 topics/force-reach/new-force/sphere_hold_checks.py
+topics/force-reach/new-force/sphere_winding_checks.py
+topics/force-reach/new-force/sphere_dials_checks.py
 topics/force-reach/new-force/lean/check_statements.py
 topics/rulecraft-history/coupling_checks.py
 topics/rulecraft-history/coupling_polish.py

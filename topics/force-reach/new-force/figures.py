@@ -614,3 +614,111 @@ ax.legend(fontsize=8.5, loc="lower right")
 ax.set_title("C. Small size changes, big strength changes: the Standard\nModel's strengths need spheres 1.11 to 1.22 times the edge (N1, N2)", fontsize=10.5)
 fig.suptitle("h15. Does what holds the circle also hold a sphere at the fundamental length?", fontsize=12.5)
 fig.tight_layout(); fig.savefig("figures/h15_sphere_hold.png", dpi=150); plt.close(fig)
+
+# ---------------- h16: does our law pick one winding on the hidden sphere? (part O) ----------------
+ro = RES
+fig = plt.figure(figsize=(15, 12))
+ax = fig.add_subplot(2, 2, 1, projection="3d")
+tt = np.linspace(0, 2*np.pi, 400)
+cmap = plt.get_cmap("viridis")
+for th0, nphi, hc in [(0.5, 8, "#1f77b4"), (0.95, 8, "#2ca02c"), (1.4, 8, "#d62728")]:
+    for k in range(nphi):
+        ph0 = 2*np.pi*k/nphi
+        z1 = np.cos(th0/2)*np.exp(1j*tt); z2 = np.sin(th0/2)*np.exp(1j*(tt + ph0))
+        den = 1 - z2.imag
+        ax.plot(z1.real/den, z1.imag/den, z2.real/den, color=hc, lw=1.2)
+ax.set_box_aspect((1, 1, 1), zoom=1.4); ax.set_xlim(-1.9, 1.9); ax.set_ylim(-1.9, 1.9); ax.set_zlim(-1.9, 1.9); ax.set_axis_off(); ax.view_init(elev=55, azim=30)
+ax.set_title("A. The circle wrapped once around the sphere (n = 1): above each point\nof the sphere sits one circle, and every circle links every other\n(three rings of points on the sphere shown, eight circles each)", fontsize=10.5)
+ax = fig.add_subplot(2, 2, 2)
+x = np.linspace(0.12, 1.6, 600)
+for nv, c in [(1, "#1f77b4"), (2, "#2ca02c"), (3, "#d62728")]:
+    Vv = -2/x**4 + nv**2/(8*x**6); xs = nv*math.sqrt(3/32)
+    sc = -1/(-2/xs**4 + nv**2/(8*xs**6))
+    ax.plot(x, Vv*sc, color=c, lw=2, label=f"n = {nv}: rests at ρ = {xs:.2f} × circle")
+    ax.plot([xs], [-1], "o", color=c, ms=7)
+ax.plot(x, -2/x**4*(1/(2/0.6**4)), color="gray", ls="--", lw=1.5, label="n = 0 (no wrapping): no rest point")
+ax.set_ylim(-1.6, 2.5); ax.set_xlim(0, 1.6); ax.axhline(0, color="k", lw=0.6)
+ax.set_xlabel("sphere radius ρ in units of the circle's radius a"); ax.set_ylabel("hold energy (scaled so each minimum sits at −1)")
+ax.legend(fontsize=9, loc="upper right")
+ax.set_title("B. The winding holds the sphere by itself, at ρ = 0.306 n a,\nwith no particle count in it (O1, O2)", fontsize=10.5)
+ax = fig.add_subplot(2, 2, 3)
+nn = np.linspace(0.3, 4.3, 300)
+ax.plot(nn, 48/(7*nn**2), color="k", lw=2, label="winding's prediction: α_SU(2)/α_circle = 48/(7n²)")
+ni = np.arange(1, 5); ax.plot(ni, 48/(7*ni**2), "ko", ms=8, label="whole windings n = 1 to 4")
+invY, inv2, invEM = ro["O_SM_inv_Y_2_EM"]
+meas = [("hypercharge, unit 1/6", 36*invY/inv2, "#8c564b"), ("hypercharge, unit 1/2", 4*invY/inv2, "#e377c2"),
+        ("electric, unit e/3", 9*invEM/inv2, "#7f7f7f"), ("electric, unit e (part G)", invEM/inv2, "#17becf")]
+for lab, v, c in meas:
+    nv = math.sqrt(48/(7*v))
+    ax.axhline(v, color=c, ls=":", lw=1.6)
+    ax.plot([nv], [v], "s", color=c, ms=7)
+    ax.text(4.25, v*1.06, f"measured, {lab}: needs n = {nv:.2f}", fontsize=8.5, color=c, ha="right")
+ax.set_yscale("log"); ax.set_ylim(0.3, 70); ax.set_xlim(0.2, 4.4)
+ax.set_xlabel("winding n"); ax.set_ylabel("ratio of strengths, sphere force / circle force")
+ax.legend(fontsize=9, loc="lower left")
+ax.set_title("C. The winding fixes the ratio of the two strengths, but no whole\nwinding meets the measured ratio, however the charge unit is read (O3, O4, O5)", fontsize=10.5)
+ax = fig.add_subplot(2, 2, 4)
+fl = ro["O_rho_and_a_over_l7"]
+ks = sorted(int(k) for k in fl)
+ax.plot(ks, [fl[str(k)][0] for k in ks], "o-", color="#ff7f0e", lw=2, ms=8, label="sphere radius / fundamental length")
+ax.plot(ks, [fl[str(k)][1] for k in ks], "s--", color="#1f77b4", lw=1.5, ms=7, label="circle radius / fundamental length")
+ax.axhline(1, color="k", ls="--"); ax.axhspan(0, 1, color="gray", alpha=0.12)
+ax.text(1.9, 0.35, "below the fundamental length:\nnot trustworthy", fontsize=9, color="gray")
+for k in ks:
+    ax.annotate(f"{fl[str(k)][0]:.2f}", (k, fl[str(k)][0]), xytext=(k + 0.06, fl[str(k)][0] - 0.16), fontsize=9, color="#ff7f0e")
+ax.set_xticks(ks); ax.set_ylim(0, 2.8); ax.set_xlim(0.8, 3.4)
+ax.set_xlabel("winding n"); ax.set_ylabel("size in fundamental lengths")
+ax.legend(fontsize=9, loc="upper right")
+ax.text(1.55, 2.05, "positive curvature at the rest point:\nno massless fermions (O7), and the\ncircle's hold must now beat a −1/a⁵ pull (O8)", fontsize=9, color="#d62728")
+ax.set_title("D. With the circle's size from part G, n = 1 puts the sphere below\nthe fundamental length; n = 2 sits just above it (O6)", fontsize=10.5)
+fig.suptitle("h16. Does our law pick one winding on the hidden sphere?", fontsize=12.5)
+fig.tight_layout(); fig.savefig("figures/h16_sphere_winding.png", dpi=150); plt.close(fig)
+
+# ---------------- h17: more than one dial on the wound sphere (part P) ----------------
+rp = RES
+fig = plt.figure(figsize=(19, 6.4))
+ax = fig.add_subplot(1, 3, 1)
+import itertools as _it
+rows = [("one circle", {a*a for a in range(1, 4)}),
+        ("two square circles", {a*a + b*b for a in range(4) for b in range(4)} - {0}),
+        ("two circles at 60° (hexagonal)", {a*a + a*b + b*b for a in range(-3, 4) for b in range(-3, 4)} - {0}),
+        ("three square circles (cube)", {a*a + b*b + c*c for a, b, c in _it.product(range(3), repeat=3)} - {0}),
+        ("four square circles (tesseract)", {a*a + b*b + c*c + d*d for a, b, c, d in _it.product(range(3), repeat=4)} - {0})]
+for i, (lab, S) in enumerate(rows):
+    y = len(rows) - 1 - i
+    for Nn in range(1, 10):
+        ax.add_patch(Rectangle((Nn - 0.42, y - 0.38), 0.84, 0.76, color="#2ca02c" if Nn in S else "#eeeeee"))
+    ax.text(0.45, y, lab, ha="right", va="center", fontsize=9.5)
+ax.axvline(3, color="#17becf", lw=2, ls=":"); ax.text(3.0, len(rows) - 0.35, "N = 3", color="#17becf", ha="center", fontsize=9.5)
+ax.set_xlim(-3.3, 9.6); ax.set_ylim(-0.7, len(rows) - 0.1); ax.set_yticks([]); ax.set_xticks(range(1, 10))
+ax.set_xlabel("N, the winding direction's squared length (in circle units)")
+ax.set_title("A. More dials, more whole numbers: which N each torus\ncan reach (green). Only N enters the strengths (P1 to P3, P5)", fontsize=10.5)
+ax = fig.add_subplot(1, 3, 2)
+NN = np.linspace(0.1, 7, 300)
+ax.plot(NN, 48/(7*NN), color="k", lw=2, label="prediction: sphere force / circle force = 48/(7N)")
+ax.plot(range(1, 7), [48/(7*m) for m in range(1, 7)], "ko", ms=7, label="whole N")
+cols = ["#8c564b", "#bcbd22", "#e377c2", "#9467bd", "#ff7f0e", "#7f7f7f", "#17becf"]
+for (lab, Nv), c in zip(rp["P_N_needed"].items(), cols):
+    r = 48/(7*Nv); m, e = rp["P_best_whole_N"][lab]
+    ax.plot([Nv], [r], "s", color=c, ms=8)
+    ax.text(Nv*1.04 + 0.05, r*1.04, f"{lab}: N = {Nv:.2f} ({100*e:+.1f}% at N = {m})", fontsize=8.3, color=c)
+ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlim(0.1, 14); ax.set_ylim(0.6, 70)
+ax.set_xlabel("N"); ax.set_ylabel("ratio of strengths")
+ax.legend(fontsize=8.8, loc="lower left")
+ax.set_title("B. Each measured reading (square) against whole N: only the\nelectric-e reading lands close, N = 3 at +2.5% (P4); chance of\nsuch a near-hit somewhere is about even (P7)", fontsize=10.5)
+ax = fig.add_subplot(1, 3, 3, projection="3d")
+for s_ in _it.product([0, 1], repeat=3):
+    for k in range(3):
+        if s_[k] == 0:
+            e_ = list(s_); e_[k] = 1
+            ax.plot(*zip(s_, e_), color="gray", lw=1.2)
+ax.plot([0, 1], [0, 1], [0, 1], color="#17becf", lw=3.5)
+ax.text2D(0.05, 0.88, "winding along the body diagonal: N = 3", transform=ax.transAxes, color="#17becf", fontsize=10)
+for k, lab in enumerate(["circle 1", "circle 2", "circle 3"]):
+    e_ = [0, 0, 0]; e_[k] = 1.08; ax.text(*e_, lab, fontsize=9, color="gray")
+fl = rp["P_N3_rho_and_a_over_lD"]
+ax.text2D(0.02, 0.02, f"sphere at rest: {fl['cube (9D)'][0]:.2f} fundamental lengths (cube),\n{fl['hexagonal (8D)'][0]:.2f} (hexagonal torus): below 1, not trustworthy (P6)", transform=ax.transAxes, fontsize=9.5, color="#d62728")
+ax.set_axis_off(); ax.view_init(elev=22, azim=-55)
+ax.set_title("C. N = 3 means three equal circles wound once each (a cube,\nglued at opposite faces, wound along its body diagonal); but it\nputs the sphere below the fundamental length (P5, P6)", fontsize=10.5)
+fig.suptitle("h17. More than one dial on the wound sphere", fontsize=12.5)
+fig.tight_layout(); fig.savefig("figures/h17_more_dials.png", dpi=150); plt.close(fig)
