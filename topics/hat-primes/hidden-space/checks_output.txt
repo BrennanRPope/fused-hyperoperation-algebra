@@ -1,0 +1,19 @@
+PASS 1. the 15 x 14 grid (n mod 15, n mod 14) gives every residue mod 210 its own cell (Chinese remainder) 
+PASS 2. primes above 7 (to 10^6) land only in the 48 cells coprime to 210, within 4% of even   [spread 0.038]
+PASS 3. window size product (1 - 1/p) for p up to sqrt(10^9), times log 10^9, is 2 e^-gamma to 0.5% (Mertens 1874)   [1.1225 vs 1.1229]
+PASS 4. the window overshoots the true prime share at x = 10^9 by more than 5% (pi(10^9) = 50,847,534)   [ratio 1.0653]
+PASS 5. log-weighted primes to 10^6: Fourier coefficient at 1/q equals mu(q)/phi(q) for q <= 30 (prime number theorem in progressions)   [max error 1.4e-03]
+PASS 6. at an irrational frequency (sqrt2 - 1) there is no spot   [8.0e-04]
+PASS 7. pair correlations of log-weighted primes to 10^6 match the Hardy-Littlewood singular series within 6% (h even <= 40); odd h ~ 0   [max deviation 0.009]
+PASS 8. the spots add up to the singular series: sum over q of (mu(q)/phi(q))^2 c_q(h) = S(h) (Ramanujan expansion, q <= 1500)   [1.8e-04]
+PASS 9. total brightness of spots with q <= 10^5 is log Q + gamma + sum log p/(p(p-1)) = log Q + 1.3325 (within 0.01)   [1.3326 vs 1.3326]
+PASS 10. mean of Lambda^2 to 10^6 is log N - 1 (within 0.02), so spots up to q ~ N/10 hold all of it   [-1.0125]
+PASS 11. counted per prime, twin pairs thin out (so the plain counting spectrum is flat: Humeniuk-Ramsey-Strungaru 2024)   [0.167, 0.128, 0.104]
+PASS 12. the theta(t) formula used matches mpmath siegeltheta (t = 30, 300, 1400)   [1.6e-11]
+PASS 13. the torus slice (Riemann-Siegel main sum) gives 98% of the first 1,000 zeros exactly one partner, median error < 0.05 gap   [0.982, median 0.034]
+PASS 14. two-angle slice (n = 1, 2) on t in [25, 56]: its 8 zeros sit within 0.1 gap of the 8 true zeros   [max 0.077]
+PASS 15. with N <= 2 terms the first term dominates (1 > 1/sqrt2), so no slice of the torus can lose a zero there 
+PASS 16. zeta's own slice loses at most 2 zeros for N = 3..8 (against theta/pi); random angles lose about 8 at N = 7   [zeta [0, 0, 1, -1, 1, 2], random mean 10.7]
+PASS 17. turning only the prime-2 angle away from 0 loses zeros at every other angle tried (N = 6): zeta sits at a sharp point   [[-1, 9, 7, 8, 5, 6, 3, 8, 4, 6, 8, 8]]
+PASS 18. angles needed at height t = primes up to sqrt(t/2pi): 5 at t = 1000, 78 at t = 10^6, never bounded 
+18 of 18 pass (13 s)

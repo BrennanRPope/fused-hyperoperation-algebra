@@ -154,6 +154,10 @@ the Euler-product pages.
   (Pisot numbers), but one whose hidden space carries every prime, like the sieves. That narrows where to look; it does
   not open a road to the Riemann hypothesis by itself, and the Riemann page's verdict stands.
 
+## Follow-up: a hidden space built from all the primes
+
+Brennan asked for the hidden space the zeros would need. It is in [`hidden-space/`](hidden-space/README.md): two known halves (the profinite integers for adding, the prime torus for multiplying, joined by the adeles). The primes are a window of size zero in the first; the zeros are a slice of the second, which needs one angle per prime up to √(t/2π) and so is never finite. Zeta's slice sits at a sharp point (turn any prime's angle and zeros leave the line), a picture of RH as stability, not a proof. No new lead; 18 more checks.
+
 ## Assumptions
 
 - The hat patches come from our port of Kaplan's metatile construction (hatviz). We check them directly: no overlaps
