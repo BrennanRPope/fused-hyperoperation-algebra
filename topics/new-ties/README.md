@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] | 13.4, Y9 |
 
 ---
 
@@ -1794,7 +1794,7 @@ of dimension about 0.92 there.*
 
 It would become the full theorem with one of these:
 
-1. **Bad stretches stay a safe distance from R.** For example dist(λ^a/μ^b, R) ≥ c·e^(−Ca). Then each pair's search has
+1. [Round 13 update: tested in section 17; it holds with enormous room for every a ≤ 10⁶, but the distances behave like random numbers', so a proof for all a is out of reach.] **Bad stretches stay a safe distance from R.** For example dist(λ^a/μ^b, R) ≥ c·e^(−Ca). Then each pair's search has
    depth O(a), and a symbolic version of the search could handle all pairs at once.
 2. **A uniform argument at the line-ups.** Near a touching point the search follows two infinite tails, such as m^n
    against K^n at 18/19. If the side branches off every tail could be cut uniformly, the clusters would close. The
@@ -1818,3 +1818,154 @@ search this round.
 | Corollary 12.1a: in the long run at least 72.7% of bad pairs are settled | **Ours** (DRAFT) | 16.3, Y5 |
 | Theorem 12.2: range searches get stuck only on the closed, measure-zero line-up set R (dim ≤ 2s_F) | **Ours** (DRAFT), by hand | 16.4, Y3, Y6, Y8 |
 | Original break: size exactly 0.4704834… | **Open** | 16.5 |
+
+## 17. Round 13 (DRAFT): how close bad stretches come to the line-up set
+
+Asked for by Brennan (Nov 27): "Great idea!", in reply to "Should I test whether bad stretches always stay a safe
+distance from the line-up set? It's the most direct route to the full theorem." Scripts: [`rdist13.py`](rdist13.py)
+(distance to R), [`dist13.py`](dist13.py) → `dist13.json`, [`control13.py`](control13.py) → `control13.json` (both
+large and not committed; compact versions in [`dist13_summary.json`](dist13_summary.json) and
+[`control13_summary.json`](control13_summary.json) from [`summarize13.py`](summarize13.py)), [`safe13.py`](safe13.py) and
+[`resolve13.py`](resolve13.py) → [`safe13.json`](safe13.json), [`bracket13.py`](bracket13.py) →
+[`bracket13.json`](bracket13.json). Checks: [`checks13.py`](checks13.py) →
+[`checks13_output.txt`](checks13_output.txt), **6 of 6 pass**. Pictures: [`figures13.py`](figures13.py). No new Lean.
+
+### 17.1 The answer in five sentences
+
+**There is no fixed safe distance, but every bad pair we checked stays far above the floor a proof would need, and that
+alone settles a hundred times more of them than before.** Theorem 13.1 (by hand): a second collision forces the stretch
+to lie exactly on the line-up set R, so a bad pair is settled as soon as its distance to R is shown to be positive.
+Theorem 13.2 (computer-assisted): that distance is positive, in fact at least a^(−14.5), for all 140,680 bad pairs
+with a ≤ 1,000,000, which pins the original break's size to about 480,965 digits instead of Round 11's 4,810. But the
+distance keeps shrinking (closest approach 2⁻⁶³ by a = 55, 2⁻¹³⁷ by a = 1,119, 2⁻²⁵⁴ by a = 771,011), and bad
+stretches come near R exactly as often as random numbers do. So they behave like random points, which heuristically
+means none ever lands on R, but turning that into a proof is a problem of the same type as Erdős's open conjecture
+about powers of 2 in base 3.
+
+### 17.2 Theorem 13.1 (DRAFT, by hand): a collision lands on R
+
+R is Round 12's line-up set: the ratios x/y with x a point of the fractal coded by an infinite reduced word starting
+with N, and y one starting with N or K (first letter outermost; after m only m or N may follow).
+
+**Theorem 13.1.** (1) If a bad pair (a, b) has a second collision, its stretch ρ = λ^a/μ^b lies in R. (2) ρ lies in R
+exactly when the two pieces of the fractal coded m^b N… and l^a N… or l^a K… share a point.
+
+*Proof.* (1) A second collision is a pair of finite reduced words h (starting with N) and g (starting with N or K) with
+h = ρ·g as maps; this is the search's end state h⁻¹ ∘ ρ ∘ g = identity. Add the tail m^∞ to both (m may follow any
+letter, and 0 is its fixed point). Then x = h(0) and y = g(0) are fractal points of the required kinds, and x = ρ·y,
+so ρ = x/y is in R. (2) ρ = x/y means μ^b·x = λ^a·y, that is m^b(x) = l^a(y), and the words m^b N…, l^a N… and
+l^a K… are all reduced. ∎
+
+So **a positive distance from R settles a pair**. The converse fails: R also holds points that are not collisions,
+such as 18/19, where two pieces only touch.
+
+Two facts halve the work. R splits as R_N ∪ R_K by the first letter of y, R_N fills out exactly the N window
+[0.9, 10/9], and R_K = (10/19)·R_N fills out the K window, because K = (19/10)·N as maps. And a bad pair (a, b) in the
+K window has a twin (a+1, b+1) in the N window, with stretch λ/μ = 1.9 times larger and distance to R exactly 1.9
+times larger. So every near miss shows up twice (the paired dots in Figure 41), and the two windows are one problem.
+
+### 17.3 Measuring the distance, two ways
+
+- **Distance by branch and bound** (`rdist13.py`). Cover R by pairs of fractal pieces u, v. A pair can only produce
+  ratios in [min u / max v, max u / min v], which gives a lower bound on the distance, and the genuine point u(0)/v(0)
+  gives an upper bound. Split the most promising pair, best first, until the two bounds are within a factor 2. It
+  never needed more than 3,019 pieces, takes about 2 ms per pair, and costs the same for any a. Arithmetic is to 120
+  digits, which is at least 10³³ times finer than every bound reported; the 12 closest pairs were redone in exact
+  rational arithmetic and agree (check Z4).
+- **Safe radius by the Round 12 range search** (`safe13.py`, `resolve13.py`). Run the range search without its memo on
+  [ρ − 2⁻ᵏ, ρ + 2⁻ᵏ] for k = 4, 5, …; without the memo, a point of R in the range would give an infinite branch, so
+  the first k that finishes proves there is no point of R within 2⁻ᵏ. This was done for all 1,406 pairs with
+  a ≤ 10,000, in exact arithmetic. The two methods never contradict each other and agree within a factor 4 on the 30
+  closest pairs (check Z5).
+
+![Figure 41](figures/fig41-distance-to-R.png)
+
+*Figure 41. How close each bad pair's stretch comes to R, against a. Higher means closer. Red: the closest approach so
+far, which keeps climbing, so there is no fixed safe distance. Dashed: where the closest of that many random stretches
+would be expected. Green crosses: the safe radius proved by the range search for a ≤ 10,000, on top of the blue dots.*
+
+### 17.4 Theorem 13.2 (DRAFT, computer-assisted): a hundred times further
+
+**Theorem 13.2.** Every one of the 140,680 bad pairs with a ≤ 1,000,000 has dist(λ^a/μ^b, R) ≥ a^(−14.5) > 0, so none
+has a second collision. The original break's size therefore lies within 6.0 × 10⁻⁴⁸⁰⁹⁶⁶ of
+s_F = 0.47048343986308286742….
+
+*Proof.* The lower bounds of 17.3 (`dist13.json`, summarized in `dist13_summary.json`) and Theorem 13.1 settle every
+pair. Round 11's bracket argument (Hochman 2014 applied to the pieces with runs of at most k copies of λ, with the pairs
+outside the windows handled by Round 10) then applies with k = 10⁶. The gap is bounded by the mean value theorem in
+interval arithmetic (`bracket13.py`); the same script at k = 10,000 reproduces Round 11's 1.77 × 10⁻⁴⁸¹¹. ∎
+
+### 17.5 Is there a safe floor?
+
+- **No fixed floor.** The closest approach keeps shrinking as a grows (Figure 41).
+- **But far above the floor Round 12 asked for.** Section 16.6 said a floor like c·e^(−Ca) would do. Every pair with
+  a ≤ 10⁶ is at least 2^(−1.43a) away, and every pair with a > 1,000 at least 2^(−0.13a), so the exponential floor
+  holds with enormous room. Even the polynomial floor a^(−14.5) holds.
+- **Exactly like random numbers.** 50,000 random stretches in the same windows sit at the same distances (Figure 42).
+  Below 2⁻¹⁰: 49.6% of bad pairs and 49.7% of random stretches. Below 2⁻⁸⁰: 1.67% and 1.67%. Below 2⁻¹⁵⁰: 0.100% and
+  0.098%.
+- **R acts like a set of dimension about 0.94.** The share below δ falls like δ^0.09 at moderate δ and δ^0.058 far
+  out. A random point near a set of dimension d does that with exponent 1 − d, so d ≈ 0.94, matching the upper bound
+  2·s_F ≈ 0.941 of Theorem 12.2. This suggests (heuristic, not proved) that the bound is sharp.
+- **What randomness predicts.** The closest of 140,680 random stretches would be about 2⁻²⁷¹; the bad pairs reached
+  2⁻²⁵⁴. If the pattern continues, the expected number of bad pairs closer than a^(−t) is finite exactly when t > 17.1,
+  and the expected number landing exactly on R is zero. So the heuristic says: the break is exact, and from some point
+  on every bad pair keeps a distance of at least a^(−17.1−ε).
+
+![Figure 42](figures/fig42-bad-vs-random.png)
+
+*Figure 42. The share of stretches closer to R than 2⁻ᵏ. Bad pairs (blue) and random stretches (orange) lie on top of
+each other: as far as distance to R goes, the bad stretches behave like random numbers.*
+
+![Figure 43](figures/fig43-near-misses.png)
+
+*Figure 43. Where the near misses sit. Each window shows the same pattern (the K window is the N window scaled by
+10/19). Near misses happen inside the clusters, where R is thick; between them the stretches are far from R, which is
+where Round 12's ranges already closed.*
+
+### 17.6 What number theory could promise
+
+- **One point at a time: yes.** For any single algebraic point x of R (18/19, or any finite ratio h(0)/g(0)), Baker's
+  theorem on linear forms in logarithms bounds |a·log λ − b·log μ − log x| below by a power of a. So the bad stretches
+  keep a polynomially shrinking distance from that point, the same shape as the data. But R has uncountably many
+  points, most of them not algebraic, so this does not cover R.
+- **Almost every rotation: yes, but not ours.** For a fixed set of measure zero, almost every rotation number gives an
+  orbit that never touches it, since the bad rotation numbers form a countable union of null sets. Our rotation number
+  is the specific number log λ / log 20, so this is evidence, not proof.
+- **Ours: the same type as known open problems.** Whether one specific multiplicative orbit avoids one specific
+  Cantor-like set is the shape of Erdős's conjecture that 2ⁿ has a digit 2 in base 3 for every n > 8, and of
+  Furstenberg's ×2, ×3 questions. The nearest proved results (Shmerkin 2019 and Wu 2019 on Furstenberg's intersection
+  conjecture) bound the dimension of intersections of such sets, not whether a single orbit point lands in one.
+
+### 17.7 Is it a lead?
+
+**Yes, in two ways, and the route itself hits a known wall.**
+
+1. **Theorem 13.2 is a concrete gain.** No second collision for any run of up to a million copies of λ (Round 11 stopped
+   at 10,000), and the size pinned to about 480,965 digits. The method costs about 2 ms per pair whatever a is, so it
+   goes as far as anyone cares to run it.
+2. **Theorem 13.1 is a clean target for others.** The original break is exact if the fractal pieces m^b N… and
+   l^a N…/l^a K… never share a point for a bad pair. That is a question about one fractal and one orbit, and it can be
+   attacked without our search.
+3. **The distance route cannot finish the proof with current tools.** Bad stretches look exactly like random numbers
+   near R, so no argument about how close they get will tell them apart from the random case. What would make it a
+   lead: an argument that uses the exact arithmetic of a collision, the identity h = ρ·g between maps with rational
+   coefficients (for example the size of its terms in 19-adic or 5-adic terms), rather than closeness. Or a structural
+   fact that the points of R near the orbit are algebraic of bounded height, so that Baker's theorem applies.
+
+### 17.8 Who proved what, round 13
+
+Branch and bound, the mean value theorem, interval arithmetic, Baker's theorem, the countable-union argument, Erdős's
+ternary conjecture and the Shmerkin and Wu theorems are all known. Ours (DRAFT): Theorem 13.1, the two-sided distance
+algorithm for R, Theorem 13.2 with the 480,965-digit bracket, the random-control comparison and the dimension estimate
+for R. No fresh literature search this round beyond recalling those standard results.
+
+### Known vs new, round 13
+
+| Item | Status | Source |
+|---|---|---|
+| Branch and bound; mean value theorem; Baker's theorem; Erdős ternary conjecture (open); Shmerkin, Wu 2019 | Known | standard |
+| Theorem 13.1: a second collision puts the stretch on R; R as shared points of two fractal pieces | **Ours** (DRAFT), by hand | 17.2, Z1, Z2 |
+| Theorem 13.2: no second collision for any bad pair with a ≤ 10⁶; size within 6.0 × 10⁻⁴⁸⁰⁹⁶⁶ | **Ours** (DRAFT), computer-assisted | 17.3–17.4, Z3–Z6 |
+| Bad stretches approach R like random numbers; R behaves like dimension ≈ 0.94 | **Ours** (DRAFT), measured | 17.5, Figures 41–43 |
+| A uniform safe floor for all a, hence an exact original break | **Open** | 17.6 |
