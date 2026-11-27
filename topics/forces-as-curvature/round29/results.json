@@ -1,0 +1,95 @@
+{
+ "D1": {
+  "R7": "6/b(t)**2 + 6*Derivative(b(t), (t, 2))/(N(t)**2*b(t)) + 6*Derivative(b(t), t)**2/(N(t)**2*b(t)**2) + 6*Derivative(a(t), (t, 2))/(N(t)**2*a(t)) + 18*Derivative(a(t), t)*Derivative(b(t), t)/(N(t)**2*a(t)*b(t)) + 6*Derivative(a(t), t)**2/(N(t)**2*a(t)**2) - 6*Derivative(N(t), t)*Derivative(b(t), t)/(N(t)**3*b(t)) - 6*Derivative(N(t), t)*Derivative(a(t), t)/(N(t)**3*a(t))",
+  "el_zero": true,
+  "lam": 1.8257418583505538,
+  "V_sign": -1
+ },
+ "D2": {
+  "rho_plus_3p": "-2*V + 2*phidot**2",
+  "V_min_over_curv": "2/7",
+  "lam_flux": 2.556038601690775
+ },
+ "D3": {
+  "w": "-1/3",
+  "lam": 1.4142135623730951
+ },
+ "D4": {
+  "rows": [
+   {
+    "name": "cosmological constant",
+    "lam": 0.0,
+    "status": "measured baseline",
+    "Om": 0.30421089988476413,
+    "chi2": 1416.1382194103942,
+    "w0": -1.0000000000000075,
+    "wa": 6.847329538391778e-16,
+    "dchi2_vs_LCDM": 0.0
+   },
+   {
+    "name": "best fit (dial-potential search)",
+    "lam": 0.8177083115447195,
+    "status": "fitted",
+    "Om": 0.30296847861352183,
+    "chi2": 1411.2874180897995,
+    "w0": -0.8967814894243724,
+    "wa": -0.14868646637123864,
+    "dchi2_vs_LCDM": -4.850801320594655
+   },
+   {
+    "name": "conformal sqrt(2/3)",
+    "lam": 0.816496580927726,
+    "status": "chosen, not forced by the law",
+    "Om": 0.3029688611242928,
+    "chi2": 1411.28746603229,
+    "w0": -0.8970936017295632,
+    "wa": -0.14825323212185662,
+    "dchi2_vs_LCDM": -4.850753378104173
+   },
+   {
+    "name": "slice curvature sqrt 2 (D3)",
+    "lam": 1.4142135623730951,
+    "status": "forced by that reading",
+    "Om": 0.3093253613084911,
+    "chi2": 1438.28316830771,
+    "w0": -0.6811938530723677,
+    "wa": -0.4215383214862838,
+    "dchi2_vs_LCDM": 22.14494889731577
+   },
+   {
+    "name": "hidden-sphere curvature sqrt(10/3) (D1), sign flipped",
+    "lam": 1.8257418583505538,
+    "status": "forced; real sign V<0 cannot accelerate",
+    "Om": 0.3413470358186388,
+    "chi2": 1544.9855357355189,
+    "w0": -0.4777830972908603,
+    "wa": -0.629603645155269,
+    "dchi2_vs_LCDM": 128.84731632512467
+   },
+   {
+    "name": "meron on hidden sphere 7/sqrt(15/2) (D2)",
+    "lam": 2.556038601690775,
+    "status": "forced by that reading",
+    "Om": null,
+    "chi2": null,
+    "w0": null,
+    "wa": null,
+    "err": "f(a) and f(b) must have different signs",
+    "dchi2_vs_LCDM": null
+   }
+  ],
+  "band": [
+   0.6118765981676063,
+   0.9741551199238941
+  ],
+  "accel_edge": 1.4142135623730951
+ },
+ "D5": {
+  "w0": -0.8967814894243724,
+  "wa": -0.14868646637123864
+ },
+ "summary": {
+  "passed": 5,
+  "failed": 0
+ }
+}
