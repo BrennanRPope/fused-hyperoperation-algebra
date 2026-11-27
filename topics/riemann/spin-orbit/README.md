@@ -108,12 +108,16 @@ radiation at all. That is a restatement, with nothing new to compute.
 Not a route to RH. Primes as spins break at the coupling (zero), the rates (never commensurate) and the drift (none).
 Zeros as spins fit every piece, and the one piece that fails is RH itself.
 
+Follow-up: [LAMBDA.md](LAMBDA.md) asks whether the two-family locking forces Λ ≤ 0. It doesn't. It squeezes RH from
+both sides, but the squeeze closes at t = 0 only at infinite height.
+
 ## Files
 
 - `spinorbit.py`, `spinorbit.json`, `spinorbit_traj.npz`: leans of primes and pairs at the zeros, height windows, the
   capture runs.
 - `figs.py`: `fig_primes_as_spins.png`, `fig_zeros_as_spins.png` (II-b reads `../known-tools/rewind_snaps.npz`).
-- `checks.py`, `checks_output.txt`: 12 of 12 pass.
+- `squeeze.py`, `squeeze.json`, `figures/fig_squeeze.png`: forward capture against backward breaking (LAMBDA.md).
+- `checks.py`, `checks_output.txt`: 16 of 16 pass (S1–S4 cover the squeeze).
 - No Lean: the statements are about flows and sums over zeros.
 
 Uses `../round9/zeros.json` and `../known-tools/rewind_snaps.npz`.

@@ -10,5 +10,9 @@ PASS inserted pair y0 = 0.6 at gamma 3535: captured, formula within 10%, inside 
 PASS inserted pair y0 = 1.0 at gamma 3535: captured, formula within 10%, inside de Bruijn's bound  0.283 vs 0.264, bound 0.500
 PASS inserted pair y0 = 0.6 at gamma 1650: captured, formula within 10%, inside de Bruijn's bound  0.128 vs 0.121, bound 0.180
 PASS both rewind families are populated (each between 30% and 70% of pairs)  0.514
+PASS S1 forward: capture of a beta = 1 zero at 3e12 is positive and below Platt-Trudgian's 0.2 (heuristic)  0.0424
+PASS S2 backward: broken share grows like tau^1.5 (GUE small-gap law), slope within 0.3  slope 1.50
+PASS S3 backward: broken share is about half the GUE prediction (ratio 0.3 to 0.8)  ratio 0.50
+PASS S4 squeeze: at fixed tau = 0.001 the broken share grows with height  5.2e-05 -> 0.046
 
-12 of 12 checks pass
+16 of 16 checks pass

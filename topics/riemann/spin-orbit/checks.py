@@ -23,4 +23,18 @@ for c in R["capture"]:
        f"{c['t_capture_nbody']:.3f} vs {c['t_formula']:.3f}, bound {c['debruijn_bound']:.3f}")
 K = np.load("../known-tools/rewind_snaps.npz"); x = K["S"] * K["d0"]**2 / 2
 ck("both rewind families are populated (each between 30% and 70% of pairs)", 0.3 < (x < 1).mean() < 0.7, f"{(x<1).mean():.3f}")
+
+# ---- squeeze (LAMBDA.md) ----
+Q = json.load(open("squeeze.json")); B = Q["backward"]
+tc_ = Q["tcap_at_3e12_beta1"]
+ck("S1 forward: capture of a beta = 1 zero at 3e12 is positive and below Platt-Trudgian's 0.2 (heuristic)",
+   0 < tc_ < 0.2 and all(0 < v < 0.2 for v in Q["tcap_at_3e12_beta1_S_range"]), f"{tc_:.4f}")
+tau = np.array(B["taus"]); fr = np.array(B["broken_fraction"]); pr = np.array(B["gue_small_gap_prediction"])
+m = (fr > 0.003) & (fr < 0.1)
+slope = np.polyfit(np.log(tau[m]), np.log(fr[m]), 1)[0]
+ck("S2 backward: broken share grows like tau^1.5 (GUE small-gap law), slope within 0.3", abs(slope - 1.5) < 0.3, f"slope {slope:.2f}")
+ratio = np.median(fr[m] / pr[m])
+ck("S3 backward: broken share is about half the GUE prediction (ratio 0.3 to 0.8)", 0.3 < ratio < 0.8, f"ratio {ratio:.2f}")
+a, b = Q["broken_fraction_tau1e-3_at_1e3_1e22"]
+ck("S4 squeeze: at fixed tau = 0.001 the broken share grows with height", b > 100 * a, f"{a:.1e} -> {b:.3f}")
 print(f"\n{sum(res)} of {len(res)} checks pass")
