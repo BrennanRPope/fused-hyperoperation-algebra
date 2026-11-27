@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,683 theorems in 168 modules, Nov 27 ~01:30 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,705 theorems in 169 modules, Nov 27 ~02:20 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -69,3 +69,5 @@ Nov 27: `topics/entropy-knots/` added as DRAFT (entropy and knot theory for find
 Nov 27: `topics/carnot-cascade/` added as DRAFT (reopen S1: only Curzon–Ahlborn is a knob image of Carnot; the low-dissipation family is one parabola on the dial; cascading pulls every max-power rule back to Curzon–Ahlborn; 22 checks, picked up by CI as checks.py).
 
 Nov 27: `topics/new-ties/` added as DRAFT (new-ties: union fractal (dimension from shared centres) and discriminant 4 = Carnot speed; 24 checks, picked up by CI as checks.py; no Lean in this pass).
+
+Nov 27: `topics/negative-odds/` added as DRAFT (the wall at −1, negative odds and the arrow of time; 37 checks, picked up by CI as checks.py; 22 Lean theorems compiled into the library as FusedAlgebra.Topics.NegativeOdds, namespace CircleOp.NegativeOdds, after renaming the old MultAdd names to CircleOp, library now 3,705 theorems in 169 modules).

@@ -7,7 +7,9 @@ link the two concepts together ... it may even be literally fundamentally the sa
 
 Checks: `checks.py` → `checks_output.txt`, **37 of 37 pass** (exact fractions, numpy, a Poisson simulation).
 Lean: `lean/NegativeOdds.lean`, **22 theorems**, core Lean 4.37.0-rc1 against `FusedAlgebra.Base`, compiles clean, no
-`sorry`. Pictures: `figures.py` → `figures/`.
+`sorry`. In the shared library as `FusedAlgebra.Topics.NegativeOdds` (namespace `CircleOp.NegativeOdds`). On adding it, the
+old names `MultAdd`, `multAdd` and `multAdd_lift` became the library's current `CircleOp`, `circ` and `circ_lift`; no
+statement or proof step changed otherwise. Pictures: `figures.py` → `figures/`.
 
 ## The result in two sentences
 

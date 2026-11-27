@@ -22,7 +22,7 @@ import FusedAlgebra.Base
 
 namespace NegativeOdds
 
-open MultAdd
+open CircleOp
 open Lean.Grind
 
 set_option linter.unusedSectionVars false
@@ -36,24 +36,24 @@ def odds (p : K) : K := p / (1 - p)
 /-- Rewind: the undo of an item (the quasi-inverse, "way back"). -/
 def rewind (t : K) : K := -t / (1 + t)
 /-- Intersection of independent events, through the complement mirror. -/
-def inter (t s : K) : K := 1 / multAdd (1 / t) (1 / s)
+def inter (t s : K) : K := 1 / circ (1 / t) (1 / s)
 
 /-! ## 1. The law and the wall -/
 
 /-- Union of independent events: odds compose by mult-add. -/
 theorem odds_union (p q : K) (hp : 1 - p ≠ 0) (hq : 1 - q ≠ 0) :
-    odds (1 - (1 - p) * (1 - q)) = multAdd (odds p) (odds q) := by
-  unfold odds multAdd; grind
+    odds (1 - (1 - p) * (1 - q)) = circ (odds p) (odds q) := by
+  unfold odds circ; grind
 
 /-- The wall swallows every stack. -/
-theorem wall_absorbs (s : K) : multAdd (-1) s = -1 := by unfold multAdd; grind
+theorem wall_absorbs (s : K) : circ (-1) s = -1 := by unfold circ; grind
 
 /-- The complement mirror fixes the wall. -/
 theorem mirror_fixes_wall : (1 : K) / (-1) = -1 := by grind
 
 /-- The wall also swallows intersection (for any nonzero odds). -/
 theorem wall_absorbs_inter (s : K) (_hs : s ≠ 0) : inter (-1) s = -1 := by
-  unfold inter multAdd; grind
+  unfold inter circ; grind
 
 /-- The mirror is the complement. -/
 theorem prob_mirror (t : K) (h0 : t ≠ 0) (h1 : 1 + t ≠ 0) : prob (1 / t) = 1 - prob t := by
@@ -62,8 +62,8 @@ theorem prob_mirror (t : K) (h0 : t ≠ 0) (h1 : 1 + t ≠ 0) : prob (1 / t) = 1
 /-! ## 2. Rewinds and the sign sector -/
 
 /-- Rewinding cancels. -/
-theorem rewind_cancels (t : K) (h : 1 + t ≠ 0) : multAdd t (rewind t) = 0 := by
-  unfold multAdd rewind; grind
+theorem rewind_cancels (t : K) (h : 1 + t ≠ 0) : circ t (rewind t) = 0 := by
+  unfold circ rewind; grind
 
 /-- The undo of odds t has chance −t. -/
 theorem prob_rewind (t : K) (h : 1 + t ≠ 0) : prob (rewind t) = -t := by
@@ -77,14 +77,14 @@ theorem rewind_rewind (t : K) (h : 1 + t ≠ 0) : rewind (rewind t) = t := by
 theorem anti_chance_example : (1/4 : Rat) + (-1/3) - (1/4) * (-1/3) = 0 := by grind
 
 /-- 200% twice is never: t = −2 is its own undo. -/
-theorem two_hundred_twice : multAdd (-2 : K) (-2) = 0 := by unfold multAdd; grind
+theorem two_hundred_twice : circ (-2 : K) (-2) = 0 := by unfold circ; grind
 
 theorem prob_minus_two (h : (1 : K) + (-2) ≠ 0) : prob (-2 : K) = 2 := by
   unfold prob; grind
 
 /-- Two items past the wall give a positive lift (the sign bit cancels in pairs). -/
-theorem past_wall_pair (a b : Rat) (ha : a < -1) (hb : b < -1) : 0 < 1 + multAdd a b := by
-  rw [multAdd_lift]
+theorem past_wall_pair (a b : Rat) (ha : a < -1) (hb : b < -1) : 0 < 1 + circ a b := by
+  rw [circ_lift]
   have h : 0 < (-(1 + a)) * (-(1 + b)) := Rat.mul_pos (by grind) (by grind)
   grind
 
