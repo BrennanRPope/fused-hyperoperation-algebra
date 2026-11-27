@@ -1,0 +1,39 @@
+=== Theorem 17.1 ===
+Matveev constants: C3=4.7033e+11  C4=5.1493e+13 (x logK)  C5=4.2166e+15 (x logK x logTpre)
+r-casework for Lambda1 != 0 / type-B D != 0: ok
+T3 facts (type A odd & prime to 5, eps3 <= 0.11*10^-H1, g3 bound) ok on sample H1<=40,H2<=6
+a priori (Matveev 3/4/5 logs): Hs=max(H1+H2,H') <= 1.1226e+62
+   pieces: {'X1': '2.9613e+13', 'X2': '9.0000e+01', 'X2B': '9.1000e+01', 'Y': '2.9613e+13', 'logK': '1.5690e+14', 'X4': '5.0868e+29', 'X5': '1.1226e+62'}  (2-adic version of X2 would be 104)
+round 1: Hs<=112263800768019602327749878392324351981562360989063162867220480 X0=336791402304058806983249635176973055944687082967189488601661445
+   step1 3-log LLL: C=10^196 log10 c=65.33 -> min(H1,H')<=129
+   step2 (5-adic, |D|<=3.143e+62): typeA min(H2,H')<=90 ; typeB min(H1,H')<=91
+   V-short: H'<=129 -> 8644 fingerprints K, 4-log LLL each (C=10^[259], min log10 c=63.47): H1<=194 ; 2-adic dlog: H2<=194
+   W-short: H1<=129 H2<=90 (typeB H1<=91) -> H'<=506
+   new Hs<=506   (213.3s)
+round 2: Hs<=506 X0=1523
+   step1 3-log LLL: C=10^18 log10 c=6.08 -> min(H1,H')<=11
+   step2 (5-adic, |D|<=1419): typeA min(H2,H')<=5 ; typeB min(H1,H')<=6
+   V-short: H'<=11 -> 89 fingerprints K, 4-log LLL each (C=10^[21], min log10 c=4.55): H1<=15 ; 2-adic dlog: H2<=17
+   W-short: H1<=11 H2<=5 (typeB H1<=6) -> H'<=39
+   new Hs<=39   (0.1s)
+round 3: Hs<=39 X0=122
+   step1 3-log LLL: C=10^15 log10 c=4.91 -> min(H1,H')<=9
+   step2 (5-adic, |D|<=111.2): typeA min(H2,H')<=3 ; typeB min(H1,H')<=4
+   V-short: H'<=9 -> 64 fingerprints K, 4-log LLL each (C=10^[17], min log10 c=3.89): H1<=12 ; 2-adic dlog: H2<=14
+   W-short: H1<=9 H2<=3 (typeB H1<=4) -> H'<=30
+   new Hs<=30   (0.0s)
+round 4: Hs<=30 X0=95
+   step1 3-log LLL: C=10^14 log10 c=4.67 -> min(H1,H')<=8
+   step2 (5-adic, |D|<=86.04): typeA min(H2,H')<=3 ; typeB min(H1,H')<=4
+   V-short: H'<=8 -> 53 fingerprints K, 4-log LLL each (C=10^[16], min log10 c=3.69): H1<=11 ; 2-adic dlog: H2<=12
+   W-short: H1<=8 H2<=3 (typeB H1<=4) -> H'<=28
+   new Hs<=28   (0.0s)
+round 5: Hs<=28 X0=89
+   step1 3-log LLL: C=10^14 log10 c=4.67 -> min(H1,H')<=8
+   step2 (5-adic, |D|<=80.44): typeA min(H2,H')<=3 ; typeB min(H1,H')<=4
+   V-short: H'<=8 -> 53 fingerprints K, 4-log LLL each (C=10^[16], min log10 c=3.69): H1<=11 ; 2-adic dlog: H2<=12
+   W-short: H1<=8 H2<=3 (typeB H1<=4) -> H'<=28
+   new Hs<=28   (0.0s)
+final box for exact check: H1<=11, H2<=12
+exact check: 9256 three-letter words (H1<=11,H2<=12) vs 1709 two-letter words (H'<=56, enough since H'<log10(1.9K)): collisions []  (0.0s)
+Theorem 17.1 holds by this computation: True

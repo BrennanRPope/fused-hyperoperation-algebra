@@ -1,0 +1,6 @@
+discrete-log bound >= brute-force max on 1128 cases
+  true near-relation H=30, lattice bound H<=38 (must be >= 30)
+  true near-relation H=30, lattice bound H<=39 (must be >= 30)
+  true near-relation H=12, lattice bound H<=12 (must be >= 12)
+  true near-relation H=40, lattice bound H<=46 (must be >= 40)
+de Weger implementation does not exclude genuine solutions

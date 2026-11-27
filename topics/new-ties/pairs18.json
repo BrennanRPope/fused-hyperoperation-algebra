@@ -1,0 +1,82 @@
+{
+ "a_priori": {
+  "C3": 470330840449.59973,
+  "C4": 51493098636659.55,
+  "a1": 204262088677.1799,
+  "aT": 1082589069989.9143,
+  "a21": 2.4210121890207307e+25,
+  "aS": 4.281854903707858e+25,
+  "X_star": 211714242406981847467469832192,
+  "check": "g(X) = X - aS (1 + log(6X+6))^2 > 0 and increasing for X >= X_star"
+ },
+ "rounds": [
+  {
+   "X": 211714242406981847467469832192,
+   "X0": 1270285454441891084804818993158,
+   "C_digits_3d": 99,
+   "m11": 65,
+   "prefixes_checked": 2276,
+   "m21": 99,
+   "worst_prefix": "NmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmN",
+   "m2": 43,
+   "short_word_sum_s": 164,
+   "other_word_sum": 293,
+   "new_X": 293,
+   "seconds": 57.8
+  },
+  {
+   "X": 293,
+   "X0": 1764,
+   "C_digits_3d": 18,
+   "m11": 11,
+   "prefixes_checked": 89,
+   "m21": 17,
+   "worst_prefix": "NK",
+   "m2": 4,
+   "short_word_sum_s": 28,
+   "other_word_sum": 53,
+   "new_X": 53,
+   "seconds": 2.1
+  },
+  {
+   "X": 53,
+   "X0": 324,
+   "C_digits_3d": 15,
+   "m11": 9,
+   "prefixes_checked": 64,
+   "m21": 14,
+   "worst_prefix": "NK",
+   "m2": 3,
+   "short_word_sum_s": 23,
+   "other_word_sum": 44,
+   "new_X": 44,
+   "seconds": 1.6
+  },
+  {
+   "X": 44,
+   "X0": 270,
+   "C_digits_3d": 15,
+   "m11": 9,
+   "prefixes_checked": 64,
+   "m21": 14,
+   "worst_prefix": "NK",
+   "m2": 3,
+   "short_word_sum_s": 23,
+   "other_word_sum": 44,
+   "new_X": 44,
+   "seconds": 1.5
+  }
+ ],
+ "final_bound": 44,
+ "exact_check": {
+  "H1_plus_H2_up_to": 44,
+  "three_letter_words": 226965,
+  "type_B_words": 1079,
+  "distinct_fingerprints": 226965,
+  "clashes": [],
+  "planted_mK_words": 386100,
+  "planted_found": 386100,
+  "planted_matched_wrong_word": []
+ },
+ "seconds": 64.5
+}

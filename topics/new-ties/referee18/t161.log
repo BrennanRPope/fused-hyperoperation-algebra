@@ -1,0 +1,16 @@
+=== Theorem 16.1 ===
+v2(19^E-1), v5(19^E-1) formulas verified for E<=3000
+T_pre facts verified for H1<80
+Case I exceptions to (a,b)=(2,1) for H1<=300: [((0, 0, 'K', 0, 0, 'N'), 1, 1, 21), ((0, 1, 'N', 0, 0, 'N'), 3, 1, 181)]
+Case I: valuation-forced (L1,M1) checked for c<200: solutions []
+Case I: for c>=20, 19^c exceeds the largest RHS allowed by the 5-adic bound -> no solutions (elementary).
+Matveev n=3 constant C3 = 4.703308e+11
+Case II Matveev a priori bound: E <= 4939235701113  (4.9392e+12)
+  reduction: E<=4939235701113  X0=9878471402233  C=10^47  log10(c)=15.53  ->  E<=45
+  reduction: E<=45  X0=97  C=10^14  log10(c)=4.67  ->  E<=11
+  reduction: E<=11  X0=29  C=10^13  log10(c)=4.47  ->  E<=10
+  reduction: E<=10  X0=27  C=10^13  log10(c)=4.47  ->  E<=10
+Case II final bound: E <= 10
+Case II structural check (E<=10, L1<=2, small u2, x3=N): solutions []
+brute: all 3486 words with H1+H2<=13 (covers psi<19^11): fingerprint-1 words: []
+Theorem 16.1 holds by this computation: True

@@ -1,0 +1,6 @@
+map facts ok
+closed forms ok (702 three-letter words)
+two-letter g = [x=N, L>=1] verified up to H=60
+16.2: 2626 two-letter words with H<=70, fingerprints distinct
+16.1/17.1: 18090 three-letter words with H1,H2<=14: none with kappa 1, none collide with two-letter words H<=70
+raw words up to length 8: 3264 fingerprints, problems: 0

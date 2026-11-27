@@ -1,0 +1,10 @@
+=== Theorem 16.2 ===
+D=0 impossible: (v2(rP), v5(rP), v19(r)-g) injective on words H<=300 (and by the hand argument in general)
+Matveev n=4 constant (without the log K factor): 5.149310e+13
+a priori: long word H <= 145840558666175552 (1.4584e+17), short word H_S <= 29, log K <= 156.7
+round 1: H<=145840558666175552, X0=437521675998526657, short words with v2(rP)<=59: 339 lattices, C=10^[79], min log10 c=18.83 -> long H<=59  (0.7s)
+round 2: H<=59, X0=178, short words with v2(rP)<=7: 10 lattices, C=10^[18], min log10 c=4.27 -> long H<=12  (0.0s)
+round 3: H<=12, X0=37, short words with v2(rP)<=5: 6 lattices, C=10^[15], min log10 c=3.24 -> long H<=10  (0.0s)
+round 4: H<=10, X0=31, short words with v2(rP)<=5: 6 lattices, C=10^[14], min log10 c=3.09 -> long H<=9  (0.0s)
+round 5: H<=9, X0=28, short words with v2(rP)<=5: 6 lattices, C=10^[14], min log10 c=3.09 -> long H<=9  (0.0s)
+final bound H<=9 ; exact check: all 64 two-letter words with H<=9 have distinct fingerprints

@@ -1,0 +1,56 @@
+{
+ "passed": 10,
+ "total": 10,
+ "checks": [
+  {
+   "check": "Q1 F2: v19(T3) <= 2 for every three-letter word (mod-19 casework, then directly for gaps up to 30)",
+   "passed": true,
+   "detail": "8 tie cases, sums of leading units mod 19 never 0; 277202 words computed, v19 counts {0: 2852, 1: 44640, 2: 229710}"
+  },
+  {
+   "check": "Q2 Type A: T3 and T_pre prime to 10; Type B: delta = 2^e2 5^e5 <= 40, e2 = 3 only for NmNN",
+   "passed": true,
+   "detail": "141376 Type A words (gaps <= 25), 0 exceptions; Type B prefixes up to 80: deltas {10: 1, 20: 3399, 40: 1}"
+  },
+  {
+   "check": "Q3 error terms: Type A eps <= 0.11 * 10^-H1, eps2 <= 0.1 * 10^-H2; Type B eps <= 0.106 * 10^-H1 (exact, gaps <= 20)",
+   "passed": true,
+   "detail": "largest eps 10^H1 = 0.11000 (A), eps2 10^H2 = 0.00909, eps 10^H1 = 0.10526 (B); 0 exceptions"
+  },
+  {
+   "check": "Q4 100 * 20^(H1+H2) <= T3 <= 401 * 200^(H1+H2) and the {2,5,19}-part of T3 is at most 14440",
+   "passed": true,
+   "detail": "141752 words (gaps <= 25), 0 exceptions"
+  },
+  {
+   "check": "Q5 prefix lemma (19^L / (rP) determines a reduced gap and letter), Lambda11 != 0 (1 + eps determines the word) and T_pre is never a product of 2s, 5s and 19s",
+   "passed": true,
+   "detail": "902 gap-letter pairs (gaps <= 40), 0 coincidences; 18090 words (gaps <= 14), 0 equal 1 + eps; 0 unit prefixes"
+  },
+  {
+   "check": "Q6 v2(19^D - 1) = 1 or 2 + v2(D), v5(19^D - 1) = 0 or 1 + v5(D) (|D| <= 3000); v2(r3 P2) >= 2 H2, v5(r3 P2) >= max(H2, 1)",
+   "passed": true,
+   "detail": "0 and 0 exceptions"
+  },
+  {
+   "check": "Q7 D-step congruence on Type A words",
+   "passed": true,
+   "detail": "43264 words (gaps <= 18), 0 exceptions"
+  },
+  {
+   "check": "Q8 bound chain reproduced (Matveev start, lattice rounds, final bound)",
+   "passed": true,
+   "detail": "X* = 2.117e+29, then 293 -> 53 -> 44 -> 44, final bound 44 (64 s)"
+  },
+  {
+   "check": "Q9 the lattice lower bound is a true lower bound (|x| <= 60: the brute minimum over the whole box is above it)",
+   "passed": true,
+   "detail": "lattice bound 4.542e-09, smallest found 5.989e-04"
+  },
+  {
+   "check": "Q10 every reduced three-letter word with H1 + H2 <= final bound has its own fingerprint; mK words found as their reduced forms; raw words from the maps: equal fingerprint means equal psi",
+   "passed": true,
+   "detail": "226965 words up to H1 + H2 = 44, 226965 distinct; 386100/386100 planted found; 15750 raw words (gaps <= 5 letters), 702 fingerprints, 0 with two psi"
+  }
+ ]
+}
