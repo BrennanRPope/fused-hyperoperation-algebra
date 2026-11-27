@@ -178,4 +178,18 @@ theorem circle_edge_cubed (a : ℝ) : (4 * Real.pi ^ 2) ^ 2 * 4 * a = 64 * (a * 
 theorem sphere_edge_cubed (a : ℝ) :
     (8 * Real.pi ^ 2) ^ 2 * 4 * (216 * a) = 216 * (256 * a * Real.pi ^ 4) := by ring
 
+/-! ### Part N: does the hold put a sphere at the fundamental length? -/
+
+/-- The sphere's hold U = −2/ρ⁴ + K/ρ⁹ turns at ρ⁵ = 9K/8: there 8/ρ⁵ = 9K/ρ¹⁰, i.e. 8·(9K/8) = 9K. -/
+theorem sphere_hold_rest (K : ℝ) : 8 * (9 * K / 8) = 9 * K := by ring
+
+/-- Its curvature there: ρ⁶U'' = −40 + 90·(8/9) = 40 > 0, a minimum. -/
+theorem sphere_hold_minimum : (-40 : ℝ) + 90 * (8 / 9) = 40 := by norm_num
+
+/-- The leftover 4D vacuum energy: ρ⁴U = −2 + 8/9 = −10/9. -/
+theorem sphere_hold_leftover : (-2 : ℝ) + 8 / 9 = -10 / 9 := by norm_num
+
+/-- Strength against the vacuum-energy size: α ∝ s^(−10/3) and s ∝ K^(1/5) give α ∝ K^(−2/3). -/
+theorem sphere_strength_exponent : (-10 / 3 : ℝ) * (1 / 5) = -2 / 3 := by norm_num
+
 end FusedAlgebra.Topics.NewForce

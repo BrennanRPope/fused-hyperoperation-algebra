@@ -568,3 +568,49 @@ ax.set_xlim(-3.6, 3.2); ax.set_ylim(-1.9, 2.0); ax.set_aspect("equal"); ax.axis(
 ax.set_title("D. Lead 2: why a sphere's force has its own strength rule,\nand the coincidence at the top edge (M1, M3, M5)", fontsize=10.5)
 fig.suptitle("h14. Chasing the two possible leads: the cap on extra dimensions, and strength windows", fontsize=12.5)
 fig.tight_layout(); fig.savefig("figures/h14_chasing_the_leads.png", dpi=150); plt.close(fig)
+
+# ---------------- h15: does the hold put a sphere at the fundamental length? (part N) ----------------
+rn = RES
+fig, axs = plt.subplots(1, 3, figsize=(18, 6.2))
+u7 = float(rn["N_unit_over_l7"]); Kw = rn["N_K_window"]
+ax = axs[0]
+rr = np.linspace(0.08, 1.6, 600)
+for Kv, c in [(1e-5, "#d62728"), (Kw[0], "#2ca02c"), (float(rn["N_K_weak"]), "#e377c2"), (Kw[1], "#1f77b4")]:
+    Uv = -2/rr**4 + Kv/rr**9; rs = (9*Kv/8)**0.2
+    ax.plot(rr*u7, Uv*rs**4, color=c, lw=2, label=f"K = {Kv:.3g}: rests at {rs*u7:.2f} fundamental lengths")
+    ax.plot([rs*u7], [-10/9], "o", color=c, ms=7)
+ax.axvline(1, color="k", ls="--"); ax.text(1.03, -2.85, "fundamental length", fontsize=9)
+ax.axvspan(0, 1, color="gray", alpha=0.12); ax.text(0.08, -2.6, "below the fundamental\nlength: not trustworthy", fontsize=9, color="gray")
+ax.set_xlim(0, 3.4); ax.set_ylim(-3, 2)
+ax.set_xlabel("sphere radius (fundamental lengths)"); ax.set_ylabel("hold energy (scaled so each minimum sits at −10/9)")
+ax.legend(fontsize=8.5, loc="upper right")
+ax.set_title("A. A sphere holds itself: its curvature pulls it in,\nits vacuum energy (size K) pushes out. K picks the size (N3, N4)", fontsize=10.5)
+ax = axs[1]
+Kk = np.logspace(-3, 1.5, 300); sK = u7*(9*Kk/8)**0.2
+aK = float(rn["N_alpha_edge"])*sK**(-10/3)
+ax.plot(Kk, 1/aK, color="k", lw=2.5, label="hold → strength: 1/α grows as K^(2/3)")
+ax.axvspan(Kw[0], Kw[1], color="#ff7f0e", alpha=0.15, label="K that puts the sphere in the window")
+ax.axvspan(1e-3, Kw[0], color="gray", alpha=0.12)
+for x, lab, c in zip(RES["M_SM_inv_at_KK"], ["hypercharge", "weak", "strong"], ["#8c564b", "#e377c2", "#7f7f7f"]):
+    Kx = (8/9)*(((1/x)/float(rn["N_alpha_edge"]))**(-0.3)/u7)**5
+    ax.plot([Kx], [x], "o", color=c, ms=7); ax.annotate(f"{lab} 1/{x:.0f}", (Kx, x), xytext=(Kx*3, x*0.62 if lab != "strong" else x*1.35), fontsize=8.5, color=c, arrowprops=dict(arrowstyle="->", color=c))
+kd = rn["N_K_per_dof"]
+ax.text(1.2e-3, 330, f"rough: one particle gives K ≈ {kd[1]:.0e} to {kd[0]:.0e},\nso the window needs about 900 to 110,000\nextra fermion states (N5)", fontsize=9, color="#d62728")
+ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlim(1e-3, 30); ax.set_ylim(10, 1500)
+ax.set_xlabel("vacuum-energy size K (set by the particle content)"); ax.set_ylabel("1/α of the sphere's force")
+ax.legend(fontsize=8.5, loc="lower right")
+ax.set_title("B. So the strength is set by the particle content:\nα ∝ K^(−2/3), not by our law (N4, N5, N7)", fontsize=10.5)
+ax = axs[2]
+sv = np.linspace(1, float(rn["N_s_window"][1]), 300)
+ax.plot(sv, 1/(float(rn["N_alpha_edge"])*sv**(-10/3)), color="#ff7f0e", lw=2.5, label="sphere's strength, α = α_edge × s^(−10/3)")
+for x, y, lab, c in zip(rn["N_s_SM"], RES["M_SM_inv_at_KK"], ["hypercharge", "weak", "strong"], ["#8c564b", "#e377c2", "#7f7f7f"]):
+    dx, fy, ha = {"hypercharge": (0.04, 0.9, "left"), "weak": (0.05, 0.84, "left"), "strong": (-0.03, 1.12, "right")}[lab]
+    ax.plot([x], [y], "o", color=c, ms=7); ax.text(x + dx, y*fy, f"{lab}: s = {x:.2f}", fontsize=8.5, color=c, ha=ha)
+ax.axhline(1/float(rn["N_alpha_edge"]), color="#d62728", ls=":"); ax.text(1.6, 21, "edge: 1/25.1, near supersymmetric unification", fontsize=8.5, color="#d62728")
+ax.text(1.3, 300, "the whole window, 1/25 to 1/634,\nis a sphere between 1 and 2.64\nfundamental lengths: every allowed\nstrength is 'near the edge' (N1, N2)", fontsize=9)
+ax.set_yscale("log"); ax.set_ylim(15, 900)
+ax.set_xlabel("sphere radius s (fundamental lengths)"); ax.set_ylabel("1/α")
+ax.legend(fontsize=8.5, loc="lower right")
+ax.set_title("C. Small size changes, big strength changes: the Standard\nModel's strengths need spheres 1.11 to 1.22 times the edge (N1, N2)", fontsize=10.5)
+fig.suptitle("h15. Does what holds the circle also hold a sphere at the fundamental length?", fontsize=12.5)
+fig.tight_layout(); fig.savefig("figures/h15_sphere_hold.png", dpi=150); plt.close(fig)

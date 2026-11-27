@@ -84,4 +84,16 @@ ltests = {
 }
 for nm, e in ltests.items():
     g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
+K_, r_ = sp.symbols('K rho', positive=True)
+U_ = -2/r_**4 + K_/r_**9; rs_ = (R(9, 8)*K_)**R(1, 5)
+ntests = {
+    'sphere_hold_rest': 8*(9*K_/8) - 9*K_,
+    'sphere_hold_rest (U\'(rho*) = 0)': sp.diff(U_, r_).subs(r_, rs_),
+    'sphere_hold_minimum': -40 + 90*R(8, 9) - 40,
+    'sphere_hold_minimum (rho*^6 U\'\' = 40)': sp.diff(U_, r_, 2).subs(r_, rs_)*rs_**6 - 40,
+    'sphere_hold_leftover': -2 + R(8, 9) + R(10, 9),
+    'sphere_strength_exponent': R(-10, 3)*R(1, 5) + R(2, 3),
+}
+for nm, e in ntests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
 print('ALL PASS' if ok else 'SOME FAIL')
