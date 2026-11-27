@@ -61,6 +61,11 @@ def run_one(script, timeout, stale_ids=()):
     expected = expected_file.read_text(errors="replace") if expected_file.exists() else None
     t0 = time.time()
     env = dict(os.environ, MPLBACKEND="Agg", PYTHONHASHSEED="0")
+    # Checks run side by side (--jobs), so each one gets a single math-library
+    # thread; otherwise numpy/scipy threads oversubscribe the cores and some
+    # checks slow from seconds to past the timeout. Results are unchanged.
+    for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+        env.setdefault(var, "1")
     try:
         cmd = [sys.executable, script.name]
         if WORK_PREFIX in script.read_text(errors="replace"):
