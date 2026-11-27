@@ -12,7 +12,7 @@ Brennan Pope's math theory, with the proofs, checks, figures and write-ups gathe
 - **Fused Hyperoperation Algebra** (the algebra): the fused operation a ∘ₖ b = a + b + k·ab and the plane law (a + b + k·ab)/(1 − d·ab), their laws, the hyperoperation rungs with the hypernatural logarithm and exponential, and the Lean library. It stands alone.
 - **Affine Composition Theory** (the theory), built on the algebra: the shapes, the dials as settings and their readings, conics and affine spheres, the order dial and the physics bridges. Order isn't required, but a dial (q, or ħ over the star product) turns it on.
 
-Brennan set it up this way on Nov 26 ([why](topics/theory-name/README.md)). The theory was called Hypercube Composition Theory on Nov 25, 2026, and the whole project was Fused Mult-Add Algebra before that. The repository keeps the algebra's name; the citation files and version number wait for the 1.0 name question.
+Brennan set it up this way on Nov 26 ([why](topics/theory-name/README.md)). The theory was called Hypercube Composition Theory on Nov 25, 2026, and the whole project was Fused Mult-Add Algebra before that. The repository and the citation files keep the algebra's name, and version 1.0 waits for the name question.
 
 ## Design principles
 

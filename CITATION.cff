@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "Fused Hyperoperation Algebra"
 type: software
-version: 0.1.0
+version: 0.2.0
 doi: 10.5281/zenodo.24539305
 authors:
   - family-names: Pope
