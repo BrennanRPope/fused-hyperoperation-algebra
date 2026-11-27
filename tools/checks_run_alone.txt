@@ -1,0 +1,4 @@
+# Check scripts that run on their own, after all the others, because they need most of a
+# 16 GB CI runner's memory. Running them beside other checks ran the runner out of memory
+# and killed the job (runs 45977272477 and 45982420477). Path, then peak memory measured here.
+topics/new-ties/checks12.py  11.4GB

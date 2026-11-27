@@ -135,12 +135,29 @@ def main():
             parts = line.split()
             if parts and not line.startswith("#"):
                 stale_ids.setdefault((ROOT / parts[0]).resolve(), []).append(parts[1])
+    # Scripts that need most of the runner's memory (tools/checks_run_alone.txt) run after the
+    # pool, one at a time, so they never share the machine with other checks.
+    alone = set()
+    alone_file = ROOT / "tools" / "checks_run_alone.txt"
+    if alone_file.exists():
+        for line in alone_file.read_text().splitlines():
+            parts = line.split()
+            if parts and not line.startswith("#"):
+                alone.add((ROOT / parts[0]).resolve())
+    pooled = [s for s in scripts if s.resolve() not in alone]
+    later = [s for s in scripts if s.resolve() in alone]
     results = []
+
+    def report(script, ok, note, dt):
+        rel = script.relative_to(ROOT)
+        print(f"{'PASS' if ok else 'FAIL'}  {rel}  ({dt:.0f}s)  {note}", flush=True)
+        results.append(ok)
+
     with cf.ThreadPoolExecutor(a.jobs) as ex:
-        for script, ok, note, dt in ex.map(lambda s: run_one(s, a.timeout, stale_ids.get(s.resolve(), ())), scripts):
-            rel = script.relative_to(ROOT)
-            print(f"{'PASS' if ok else 'FAIL'}  {rel}  ({dt:.0f}s)  {note}", flush=True)
-            results.append(ok)
+        for r in ex.map(lambda s: run_one(s, a.timeout, stale_ids.get(s.resolve(), ())), pooled):
+            report(*r)
+    for s in later:
+        report(*run_one(s, a.timeout, stale_ids.get(s.resolve(), ())))
     bad = results.count(False)
     print(f"\n{len(results) - bad} of {len(results)} check scripts pass.")
     sys.exit(1 if bad else 0)
