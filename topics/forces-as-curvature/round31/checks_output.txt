@@ -1,0 +1,19 @@
+== H1. The law's hidden 3-sphere read along one family of its circles: a 2-sphere with one unit of flux
+PASS H1 (exact; textbook Hopf 1931) the law's hidden 3-sphere of dial q splits exactly into circles (orbits of one of its own rotations, z -> z e^{is/2}) over a 2-sphere of radius 1/(2 sqrt q), i.e. the law's 2-sphere at dial 4q, plus a connection A = cos(theta) dphi along the circles. That connection is a magnetic monopole through the 2-sphere with exactly one unit of flux. So round 9's assumption (a), a hidden 2-sphere with flux, follows from the hidden 3-sphere the weak force already uses  | pulled-back metric = (1/4q)[dth^2 + sin^2 th dph^2 + (dps + cos th dph)^2]: True; base curvature 4*q; flux / circle length = -1; circles are orbits of e^(is/2): True
+== H2. Rounds 9 and 10 in this light: the law's twist is flux 2 (the 2-sphere's own frame), charge 1/2 makes it the Hopf flux 1
+PASS H2 (exact; textbook) the law's twist round the closed velocity sphere is the 2-sphere's own frame-turning, flux = Euler number 2 (round 9). Round 10's bookkeeping charge 1/2 halves it to 1, which is exactly the Hopf flux of H1. On the 3-sphere a function of weight m along the circles (e^{-i m psi}, m a half-integer since a circle is 4 pi long) sees flux 2m, so round 10's charge 1/2 is weight 1/2 along the hidden 3-sphere's circles and round 9's charge 1 is weight 1  | Euler number 2; charge 1/2 x 2 = 1 = Hopf flux 1
+== H3. Every charge sector of the hidden 3-sphere: massless matter by hand (round 7's operator, unchanged)
+   flux -4: left 0 right 4; multiplet spin [1.5]
+   flux -3: left 0 right 3; multiplet spin [1.0]
+   flux -2: left 0 right 2; multiplet spin [0.5]
+   flux -1: left 0 right 1; multiplet spin [0.0]
+   flux +0: left 0 right 0; multiplet spin []
+   flux +1: left 1 right 0; multiplet spin [0.0]
+   flux +2: left 2 right 0; multiplet spin [0.5]
+   flux +3: left 3 right 0; multiplet spin [1.0]
+   flux +4: left 4 right 0; multiplet spin [1.5]
+PASS H3 (exact spectra; textbook Wu-Yang monopole harmonics) on the 2-sphere under the hidden 3-sphere, matter of weight m along the circles sees flux n = 2m and has |n| massless modes, all of one hand, set by the sign of n, and they form a multiplet of the 2-sphere's rotations of spin (|n|-1)/2. Flux 1 (round 10) gives a single mode; flux 2 (round 9's charge 1) gives a doublet, the shape of the weak force's left-handed pairs  | -4: L0 R4; -3: L0 R3; -2: L0 R2; -1: L0 R1; +0: L0 R0; +1: L1 R0; +2: L2 R0; +3: L3 R0; +4: L4 R0; flux 2 multiplet spin [0.5]
+== H4. Can the hidden 3-sphere's geometry alone pick one hand?
+PASS H4 (exact count; textbook Witten 1981) the hidden 3-sphere carries every weight m together with -m (conjugate functions), so every flux n comes with -n, so its geometry gives the left-handed modes of sector n and the right-handed modes of sector -n in equal numbers: net handedness 0. One hand survives only if matter is kept in one sign of charge, which is round 10's bookkeeping (the law's division by the complex corner): a choice the law suggests, not one geometry forces. The symmetry left over by reading the 3-sphere along its circles is SU(2) x U(1) (textbook: the round 3-sphere's SU(2) x SU(2) with one U(1) kept), the weak and hypercharge pattern; which hand is called left is a convention (orientation)  | sectors -4..4: net left - right = 0; with only the law's sector (flux 1): 1; leftover symmetry SU(2) x U(1)
+
+4 passed, 0 failed  (0 s)

@@ -1,0 +1,100 @@
+{
+ "H1": {
+  "metric_matches": true,
+  "base_curvature": "4*q",
+  "chern": -1
+ },
+ "H2": {
+  "euler": 2
+ },
+ "H3": [
+  {
+   "flux": -4,
+   "left": 0,
+   "right": 4,
+   "spin_left": [],
+   "spin_right": [
+    1.5
+   ]
+  },
+  {
+   "flux": -3,
+   "left": 0,
+   "right": 3,
+   "spin_left": [],
+   "spin_right": [
+    1.0
+   ]
+  },
+  {
+   "flux": -2,
+   "left": 0,
+   "right": 2,
+   "spin_left": [],
+   "spin_right": [
+    0.5
+   ]
+  },
+  {
+   "flux": -1,
+   "left": 0,
+   "right": 1,
+   "spin_left": [],
+   "spin_right": [
+    0.0
+   ]
+  },
+  {
+   "flux": 0,
+   "left": 0,
+   "right": 0,
+   "spin_left": [],
+   "spin_right": []
+  },
+  {
+   "flux": 1,
+   "left": 1,
+   "right": 0,
+   "spin_left": [
+    0.0
+   ],
+   "spin_right": []
+  },
+  {
+   "flux": 2,
+   "left": 2,
+   "right": 0,
+   "spin_left": [
+    0.5
+   ],
+   "spin_right": []
+  },
+  {
+   "flux": 3,
+   "left": 3,
+   "right": 0,
+   "spin_left": [
+    1.0
+   ],
+   "spin_right": []
+  },
+  {
+   "flux": 4,
+   "left": 4,
+   "right": 0,
+   "spin_left": [
+    1.5
+   ],
+   "spin_right": []
+  }
+ ],
+ "H4": {
+  "net_all": 0,
+  "net_law_sector": 1,
+  "leftover": "SU(2) x U(1)"
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0
+ }
+}
