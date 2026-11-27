@@ -91,7 +91,7 @@ well-studied family, and gives no new identity.
 
 Asked by Brennan (Nov 27): "Yes" to building it, then "Because you could hold one base constant" and "At 1/2
 perhaps?". `two_base_checks.py`: **13/13 pass** (exact fractions and sympy). `TwoBaseLetters.lean`: 9 theorems for
-Mathlib, not yet built.
+Mathlib, **builds clean** (CI run 45955736148).
 
 ![Fig 4](fig4-hold-one-base.png)
 
@@ -287,7 +287,7 @@ exclusion, and explains the 1/2 as an area. It still gives no new MZV relations.
 - `QDeformationDial.lean` (13 theorems, Mathlib, builds clean in CI run 45946216764).
 - `figures.py` → fig1 to fig3.
 - `two_base_checks.py` → `two_base_checks_output.txt`, `two_base_checks.json` (13/13).
-- `TwoBaseLetters.lean` (9 theorems, Mathlib, unbuilt).
+- `TwoBaseLetters.lean` (9 theorems, Mathlib, builds clean in CI run 45955736148).
 - `two_base_figures.py` → fig4, fig5, fig6.
 - `border_checks.py` → `border_checks_output.txt`, `border_checks.json` (9/9).
 - `slope_proof_checks.py` → `slope_proof_checks_output.txt`, `slope_proof_checks.json` (9/9); fig7 from `two_base_figures.py`.

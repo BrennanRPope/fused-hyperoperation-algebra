@@ -7,8 +7,8 @@ becomes a plane law, and uniform timing stops giving the Shapley split. To first
 
 Status: DRAFT, not reviewed, not published. Follows lead R6 in `../closed-leads-revisit/README.md`. Reopens the
 note in `../actuarial/` that the decrement-path identity was "the best candidate once [Mathlib is] reachable".
-The Lean file here is written for the Mathlib library but **not built**: there is no Lean on the machine that wrote
-it. 25 of 25 Python checks pass.
+The Lean file here is written for the Mathlib library and **builds clean** in CI's report-only Mathlib step (run
+45955736148, Nov 27, after three rounds of repair). 25 of 25 Python checks pass.
 
 ## The question in plain words
 
@@ -91,7 +91,7 @@ small, but it is the same size as the whole difference between the two textbook 
 
 The step from the equal corner split to the Shapley value is Harsanyi's theorem. For 2 and 3 causes the library
 already proves it in core Lean (`GameTheory.shapley2_union`, `GameTheory.shapley3_corners`); for general n it is
-cited, not proved here. **Not built.** The proofs are first drafts and may need repair on the first Mathlib build.
+cited, not proved here. **Builds clean** (CI run 45955736148).
 
 ## Is this a lead worth following?
 
@@ -126,7 +126,7 @@ Run `python3 checks.py` (sympy and numpy). Output in `checks_output.txt`, result
 ## Files
 
 `checks.py`, `checks_output.txt`, `checks.json`, `figures.py`, `figures/fig1-paths.png`, `figures/fig2-corner-split.png`,
-`figures/fig3-every-dial.png`, `figures/fig4-dependent.png`, `DecrementPaths.lean` (unbuilt), this README.
+`figures/fig3-every-dial.png`, `figures/fig4-dependent.png`, `DecrementPaths.lean` (builds clean), this README.
 
 ## Sources
 
