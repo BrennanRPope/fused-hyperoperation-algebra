@@ -1,0 +1,14 @@
+PASS V1 real ping-pong at walls ±2 (J1, J2 disjoint, 0 in neither): J1=['11/13', '1'], J2=['-1', '-4/5']
+PASS V1 real ping-pong at walls ±3 (J1, J2 disjoint, 0 in neither): J1=['7/9', '1'], J2=['-1', '-5/7']
+PASS V1 real ping-pong at walls ±12 (J1, J2 disjoint, 0 in neither): J1=['41/63', '1'], J2=['-1', '-14/25']
+PASS V2 walls ±3: (3/4)^n, 5(3/4)^n, (3/4)^n/5 all miss the real window [12/13, 13/12]
+PASS V3 2-adic criterion (v2(kappa) >= 1, |1-kappa|_2 = 1) holds for every even Q up to 40 and no odd Q
+PASS V4 exhaustive (runs up to 4, exponents up to 2/4): every word ending in law 2 lands on ONE 2-adic level, Q = 2, 4, 6, 12: {2: [-2], 4: [-3], 6: [-2], 12: [-3]}
+PASS V5 at walls ±3 the same words spread over several 2-adic levels (why the 2-adic proof can't work there): [-10, -7, -6, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 11, 13]
+PASS V6 walls ±3: walls distinct mod 5; an odd c-run sends points near 3 to infinity mod 5 (not 1, not 3)
+PASS V7 exhaustive: words in the allowed class at walls ±3 land at 5-adic size 1 or 5 only: [-1, 0]
+PASS V8 an even c-run on a single letter can land deeper (b then c^8: size 25; b then c^18: size 125), so this proof needs the class restriction: {2: -1, 4: -1, 6: -1, 8: -2, 12: -1, 14: -1, 16: -1, 18: -3}
+PASS V9 certified: dimension at walls ±3 is at least 0.4259 (free sub-system, Collatz-Wielandt): {'t_low': '213/500', 'float': 0.4261219443887797, 'certified': True, 'margin': 0.0006027188119129107}
+PASS V10 the length-14 exact counts (round 5) match the shared-centre count for all three examples
+PASS V11 Lean NewTies.lean builds: 22 theorems, no sorry, standard axioms only: 22 theorems
+13/13 pass

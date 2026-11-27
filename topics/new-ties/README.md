@@ -620,7 +620,7 @@ cited theorems:
   **dim K is between 0.5551 and 0.5585** (certified, V5), against the line-case formula D* = 0.7236.
 
 This is the first union fractal off the tangent line whose dimension is pinned down with no unchecked assumption of
-ours. The round-4 examples (multiplier 1/5 has no 2-adic pull) are not covered by this criterion.
+ours. The round-4 examples (multiplier 1/5 has no 2-adic pull) are not covered by this criterion. [Round 6: walls ±2 and ±12 are now proved by another 2-adic argument, and walls ±3 for a large free part; see section 10.]
 
 ### 8.3 Lean builds
 
@@ -726,3 +726,151 @@ coverage, random sets) has a union-fractal state space, with the exact count and
 | Densities of Boolean combinations of independent sets are affine | Known (elementary probability) | — |
 | The seven fixed-centre Boolean steps; XOR = union in a half box; the Boolean family = union fractals | **Ours** (elementary; not found in one search) | 9.2–9.3, V8–V9 |
 | Fair coins give binary expansion | Known | classical |
+
+---
+
+## 10. Round 6 (DRAFT): no accidental collisions for the original examples
+
+Brennan said "Yes, prove it": prove that different words never give the same map for the original examples (walls ±2,
+±3 and ±12), not only for the round-5 family. Script: `nocollide.py`. Checks: `checks6.py`, 13/13 (V1–V11). Figures
+17–18. Lean: six more theorems, 22 in all, all build.
+
+### 10.1 The answer in two sentences
+
+At walls ±2 and ±12 it is now proved for every word: different words always give different maps, so those two
+dimensions (0.3810 to 0.3818 and 0.5581 to 0.5599) rest only on the cited theorem. At walls ±3 it is proved for a large
+part of the system, which proves the dimension is between 0.426 and 0.4418; whether it holds for every word at ±3 is
+still open (no collisions up to length 14).
+
+### 10.2 The examples, and the first two steps (all three walls)
+
+Law 1 has walls 1 (attracting) and Q (repelling) and letters a, b with multipliers 1/5 and 3/20. Law 2 has walls −1 and −Q
+and one letter c with multiplier 1/4. In the coordinate z₁ = (y − 1)/(y − Q) a run of law 1 is z₁ ↦ λz₁, and in
+z₂ = (y + 1)/(y + Q) a run of law 2 is z₂ ↦ 4^(−k) z₂. Words are runs alternating between the laws; a and b commute.
+
+Suppose two different words give the same map, and take a shortest such pair.
+
+1. **The last run (the one applied last) has the same law in both words.** Every law-1 run sends [−1, 1] into
+   J₁ = [7/9, 1] (walls ±3; [11/13, 1] at ±2, [41/63, 1] at ±12) and every law-2 run into J₂ = [−1, −5/7]. These are
+   disjoint and miss 0, so evaluating at 0 tells which law came last (V1).
+2. **Cancel.** If both last runs are law 2, they are powers of c; take one c off both and get a shorter pair. If both are
+   law 1 and both contain an a (or both a b), take it off. So in a shortest pair the last runs are a^α and b^β with
+   α, β ≥ 1, and what's left, u₁ and u₂, ends in law 2 (or is empty). The two maps differ by the ratio map C, which
+   multiplies z₁ by ρ = 5^α · (3/20)^β. (If one remainder is empty, evaluating at 1 gives a contradiction: C fixes 1,
+   but a word ending in law 2 sends 1 into J₂.)
+
+So everything comes down to showing u₁ and u₂ can't satisfy u₁ = C ∘ u₂.
+
+### 10.3 Theorem P5: every even Q, all words (DRAFT, ours)
+
+**Statement.** For every even whole number Q ≥ 2 (so walls ±2 and ±12), different words of the trace monoid give
+different maps.
+
+**Proof of the last step.** Work in the 2-adic numbers and start every word at the point −Q. Let κ = 4Q/(Q + 1)², the
+cross-ratio of the four walls. For even Q, κ is divisible by 8 and 1 − κ is a 2-adic unit (Lean `even_Q_square_odd`;
+V3 checks every even Q to 40, and that no odd Q passes). Then three facts hold:
+
+1. Every law-1 run keeps the point from coming 2-adically close to −1. Runs containing b multiply z₁ by at least 4 in
+   2-adic size, which puts the point at a fixed 2-adic distance from −1. A run of a's alone multiplies z₁ by
+   5^(−α) ≡ 1 (mod 4), which barely moves it (Lean `five_pow_mod_four`).
+2. Every law-2 run then multiplies z₂ by at least 4 in 2-adic size, so it pulls the point into a small 2-adic ball
+   around −Q.
+3. On that ball z₁ has one fixed 2-adic size.
+
+So every word that ends in law 2, and the empty word, sends −Q to the same 2-adic level of z₁ (Figure 17). But C
+multiplies z₁ by ρ, whose 2-adic size is 4^β with β ≥ 1. So u₁(−Q) and C(u₂(−Q)) are on different levels, which
+contradicts u₁ = C ∘ u₂ (Lean `levels_differ`). ∎
+
+V4 checks the single level directly on all 1,188 words with up to four runs at Q = 2, 4, 6 and 12.
+
+![Figure 17](figures/fig17-two-adic-levels.png)
+
+*Figure 17. Each bar is the share of words (ending in the second law) that land at a given 2-adic level of z₁ when started
+at −Q. At walls ±2 and ±12 every word lands on one level, and the ratio map C moves any point at least two levels to
+the right, so two different words can never agree. At walls ±3 the words spread over 17 levels, so this proof can't
+work there.*
+
+### 10.4 Walls ±3: what's proved, and what's in the way
+
+**Why the 2-adic proof fails at ±3.** For odd Q the cross-ratio κ is not divisible by 2 (at ±3, κ = 3/4). A run with
+exactly one b can then put the point arbitrarily close to −1 in the 2-adic sense, because the powers 5^(−α) come
+arbitrarily close to any number that is 1 mod 4. The next law-2 run then sends it to almost any 2-adic level (V5,
+Figure 17, right).
+
+**Theorem P6 (walls ±3, DRAFT, ours).** Different words give different maps whenever every law-2 run other than the last-applied run
+is either odd, or even with a length not divisible by 10 and sitting directly on a law-1 run of at least two letters.
+
+**Proof of the last step.** Two places do the work.
+
+- **5-adic.** The four walls are different mod 5. Every law-1 run multiplies z₁ by at least 5 in 5-adic size, so it lands
+  5-adically near 3. An odd c-run multiplies z₂ by 4^(−k) ≡ −1 (mod 5) (Lean `four_pow_odd_mod_five`), which sends
+  points near 3 to points near infinity, where z₁ has 5-adic size 1 (V6). An allowed even c-run multiplies z₂ by a number
+  that is 1 mod 5 but not mod 25 (Lean `four_pow_even_mod_five`), which leaves z₁ at size exactly 5 because the run
+  underneath moved it at least two levels. So every allowed word ending in law 2, started at −3, lands at 5-adic size 1
+  or 5 (V7 checks this on every allowed word with up to four runs). C multiplies z₁ by 5-adic size 5^(β−α), so if α and
+  β differ by 2 or more, the two sides can't agree.
+- **Real.** If α and β differ by at most 1, then ρ is (3/4)^β, 5·(3/4)^β or (3/4)^β/5. For u₁ = C ∘ u₂, ρ would have to
+  lie between 12/13 and 13/12, because both sides land in J₂, where z₁ only ranges from 6/13 to 1/2. None of the three
+  families ever does: 5·(3/4)⁵ ≈ 1.19 and 5·(3/4)⁶ ≈ 0.89 straddle the window (V2, Lean `window_miss`). ∎
+
+Without the restriction the 5-adic levels spread too. For example, b followed by c⁸ lands at size 25 and b followed by
+c¹⁸ at size 125 (V8).
+
+**What this proves about the dimension.** Pieces made of one law-1 run followed by one allowed law-2 run form a free
+system (P6), with the same walls and algebraic numbers, so Theorem P3 applies to it as it stands. Its fractal sits inside
+the full one. Rerunning the certified lower bound of round 5 with the excluded runs left out gives
+
+  **dim K at walls ±3 is at least 0.426** (213/500, certified by a Collatz–Wielandt vector in ball arithmetic, V9),
+
+with no assumption of ours. The upper end, 0.4418, never needed the no-collision condition. Allowing every even run would
+give 0.4405, the round-5 lower end, so the excluded runs account for the whole gap.
+
+**What's still open at ±3.** Whether every word at ±3 gives a different map. Any collision would have to use the
+excluded pattern (an even c-run on a single letter, or a c-run whose length is a multiple of 10) somewhere before its last run, and
+none exists up to length 14 (round 5, V10). The 2-adic obstruction above is real. Exponents can be tuned to make 2-adic
+coincidences arbitrarily good, so a proof for all words at ±3 would need a new idea, not a longer computation. This has
+the flavour of known hard freeness problems for 2×2 rational matrices. We have not found it in print for this family.
+
+### 10.5 The original examples' dimensions, as they stand now
+
+| Walls | Proved (resting only on Solomyak–Takahashi) | If no collisions at ±3 | Line-case formula D* |
+|---|---|---|---|
+| ±2 | **0.3810 to 0.3818** | — | 0.6104 |
+| ±3 | **0.426 to 0.4418** | 0.4405 to 0.4418 | 0.6104 |
+| ±12 | **0.5581 to 0.5599** | — | 0.6104 |
+
+![Figure 18](figures/fig18-unconditional-dimensions.png)
+
+*Figure 18. Green: what is now proved with no assumption of ours. At ±2 and ±12 the bands are the round-5 certified
+brackets, made unconditional by Theorem P5. At ±3 the lower end comes from the free part of the system (Theorem P6).
+Orange: the tighter ±3 range that would follow from no collisions at ±3.*
+
+### 10.6 Lead or not
+
+**A consolidation, not a new lead.** For: two of the three original examples now have fully proved dimensions. The proof
+is short (real ping-pong, cancellation, one 2-adic level). It covers every even Q at once, and the third example is pinned
+within 0.016. Against: it is specific to these multipliers. The open case at ±3 looks hard, and solving it would only
+tighten one number by 0.015.
+
+### 10.7 Lean
+
+`lean/NewTies.lean` now has 22 theorems and builds with Lean 4.37.0-rc1, with no sorry and standard axioms only. Output
+is in `lean/compile_output.txt` (V11). New this round: `five_pow_mod_four`, `even_Q_square_odd`, `levels_differ`,
+`four_pow_odd_mod_five`, `four_pow_even_mod_five` and `window_miss`. They cover the arithmetic steps. The p-adic geometry
+is in the prose proof, and core Lean has no p-adic numbers.
+
+### 10.8 Who proved what, round 6
+
+Real and p-adic ping-pong are standard tools. Theorem P5 and its proof, Theorem P6 and its proof, and the certified
+lower bound at ±3 are ours (DRAFT). The dimension statements still rest on Solomyak and Takahashi's theorem
+(IMRN 2021), whose proof we did not check.
+
+### Known vs new, round 6
+
+| Item | Status | Source |
+|---|---|---|
+| Ping-pong in the reals and p-adics | Known tools | standard |
+| No collisions at walls ±2, ±12 (every even Q) | **Ours** (DRAFT) | 10.3, V3–V4 |
+| No collisions at walls ±3 for the allowed class | **Ours** (DRAFT) | 10.4, V6–V8 |
+| Dimension at ±3 at least 0.426, unconditional | **Ours**, resting on Solomyak–Takahashi | 10.4, V9 |
+| No collisions at ±3 for every word | Open (checked to length 14) | 10.4, V10 |

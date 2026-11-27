@@ -1,0 +1,67 @@
+[
+ {
+  "name": "V1 real ping-pong at walls \u00b12 (J1, J2 disjoint, 0 in neither)",
+  "ok": true,
+  "detail": "J1=['11/13', '1'], J2=['-1', '-4/5']"
+ },
+ {
+  "name": "V1 real ping-pong at walls \u00b13 (J1, J2 disjoint, 0 in neither)",
+  "ok": true,
+  "detail": "J1=['7/9', '1'], J2=['-1', '-5/7']"
+ },
+ {
+  "name": "V1 real ping-pong at walls \u00b112 (J1, J2 disjoint, 0 in neither)",
+  "ok": true,
+  "detail": "J1=['41/63', '1'], J2=['-1', '-14/25']"
+ },
+ {
+  "name": "V2 walls \u00b13: (3/4)^n, 5(3/4)^n, (3/4)^n/5 all miss the real window [12/13, 13/12]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "V3 2-adic criterion (v2(kappa) >= 1, |1-kappa|_2 = 1) holds for every even Q up to 40 and no odd Q",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "V4 exhaustive (runs up to 4, exponents up to 2/4): every word ending in law 2 lands on ONE 2-adic level, Q = 2, 4, 6, 12",
+  "ok": true,
+  "detail": "{2: [-2], 4: [-3], 6: [-2], 12: [-3]}"
+ },
+ {
+  "name": "V5 at walls \u00b13 the same words spread over several 2-adic levels (why the 2-adic proof can't work there)",
+  "ok": true,
+  "detail": "[-10, -7, -6, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 11, 13]"
+ },
+ {
+  "name": "V6 walls \u00b13: walls distinct mod 5; an odd c-run sends points near 3 to infinity mod 5 (not 1, not 3)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "V7 exhaustive: words in the allowed class at walls \u00b13 land at 5-adic size 1 or 5 only",
+  "ok": true,
+  "detail": "[-1, 0]"
+ },
+ {
+  "name": "V8 an even c-run on a single letter can land deeper (b then c^8: size 25; b then c^18: size 125), so this proof needs the class restriction",
+  "ok": true,
+  "detail": "{2: -1, 4: -1, 6: -1, 8: -2, 12: -1, 14: -1, 16: -1, 18: -3}"
+ },
+ {
+  "name": "V9 certified: dimension at walls \u00b13 is at least 0.4259 (free sub-system, Collatz-Wielandt)",
+  "ok": true,
+  "detail": "{'t_low': '213/500', 'float': 0.4261219443887797, 'certified': True, 'margin': 0.0006027188119129107}"
+ },
+ {
+  "name": "V10 the length-14 exact counts (round 5) match the shared-centre count for all three examples",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "V11 Lean NewTies.lean builds: 22 theorems, no sorry, standard axioms only",
+  "ok": true,
+  "detail": "22 theorems"
+ }
+]

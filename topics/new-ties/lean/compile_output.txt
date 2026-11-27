@@ -15,4 +15,10 @@ Lean (version 4.37.0-rc1, x86_64-unknown-linux-gnu, commit 0b77e12952ad39077d80d
 'NewTies.valuations_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.xor_is_half_box_union' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.and_from_or' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.five_pow_mod_four' depends on axioms: [propext]
+'NewTies.even_Q_square_odd' depends on axioms: [propext]
+'NewTies.levels_differ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.four_pow_odd_mod_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.four_pow_even_mod_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.window_miss' does not depend on any axioms
 exit status 0

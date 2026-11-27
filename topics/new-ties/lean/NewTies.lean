@@ -110,4 +110,42 @@ theorem xor_is_half_box_union (a x : Int) : 2 * (a + x - 2 * a * x) = 2 * a + 2 
 /-- De Morgan for densities: intersecting with density a is complement ∘ union with density 1 − a ∘ complement. -/
 theorem and_from_or (a x : Int) : 1 - ((1 - a) + (1 - x) - (1 - a) * (1 - x)) = a * x := by grind
 
+/-! ## 10. No accidental collisions for the original examples (round 6) -/
+
+/-- 2-adic step for even walls: every power of 5 is 1 more than a multiple of 4, so a run of the letter a alone
+    (multiplier 5^(-α)) moves z₁ by a factor that is 1 mod 4 and cannot leave the 2-adic ball the proof uses. -/
+theorem five_pow_mod_four (n : Nat) : 5 ^ n % 4 = 1 := by
+  induction n with
+  | zero => decide
+  | succ n ih => rw [Nat.pow_succ, Nat.mul_mod, ih]
+
+/-- For even Q the number (Q + 1)² is odd, so κ = 4Q/(Q + 1)² has 2-adic valuation 2 + v₂(Q) ≥ 3. -/
+theorem even_Q_square_odd (Q : Nat) (h : Q % 2 = 0) : (Q + 1) * (Q + 1) % 2 = 1 := by
+  rw [Nat.mul_mod, Nat.add_mod, h]
+
+/-- The last step of the 2-adic proof: every remainder lands at one 2-adic level s, and the ratio map shifts the
+    level by 2β with β ≥ 1, so the two sides of a supposed collision can't both be at level s. -/
+theorem levels_differ (s β : Int) (hβ : 1 ≤ β) : s + 2 * β ≠ s := by omega
+
+/-- 5-adic step at walls ±3: an odd run of the letter c multiplies z₂ by 4^(−k) ≡ −1 (mod 5) ... -/
+theorem four_pow_odd_mod_five (j : Nat) : 4 ^ (2 * j + 1) % 5 = 4 := by
+  induction j with
+  | zero => decide
+  | succ j ih =>
+    have : 2 * (j + 1) + 1 = (2 * j + 1) + 2 := by omega
+    rw [this, Nat.pow_add, Nat.mul_mod, ih]
+
+/-- ... and an even run multiplies it by 4^(−k) ≡ 1 (mod 5). -/
+theorem four_pow_even_mod_five (j : Nat) : 4 ^ (2 * j) % 5 = 1 := by
+  induction j with
+  | zero => decide
+  | succ j ih =>
+    have : 2 * (j + 1) = 2 * j + 2 := by omega
+    rw [this, Nat.pow_add, Nat.mul_mod, ih]
+
+/-- The real-number step at walls ±3: the ratios (3/4)^n, 5·(3/4)^n and (3/4)^n/5 all miss the window
+    [12/13, 13/12]. Since each family decreases in n, it is enough that 5·(3/4)^5 > 13/12, 5·(3/4)^6 < 12/13 and
+    3/4 < 12/13 (cleared of fractions). -/
+theorem window_miss : 12 * 5 * 3 ^ 5 > 13 * 4 ^ 5 ∧ 13 * 5 * 3 ^ 6 < 12 * 4 ^ 6 ∧ 13 * 3 < 12 * 4 := by decide
+
 end NewTies
