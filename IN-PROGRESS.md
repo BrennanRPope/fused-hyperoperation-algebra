@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,945 theorems in 183 modules, Nov 27 ~17:20 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,948 theorems in 183 modules, Nov 27 ~18:00 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -157,3 +157,6 @@ Nov 27: `topics/new-ties/` round 21 (DRAFT, patch 0020): the levels 1, 2, 4, 8 a
 Nov 27: `topics/klein-flow/periodic-box/blowup/` 256³ follow-up (DRAFT): res256.py, runs/res256_none_s0.json and res256.log, fig I (peak on three grids). Check B9 fails by its stated test (peak spin 192³ vs 256³ differs by 25.8% against a 10% limit); new check B10 passes (enstrophy within 0.6%). checks_blowup.py reports 9 of 10 and exits 1, so CI's topic checks go red on it; it was not skipped, excluded or recast. Open: the peak at ν = 0.001 is not grid-converged.
 Nov 27: `topics/gravity-from-theory/spinning-river/` round 28 (DRAFT): the shadow split; the time part alone is Newton's pull on light and makes no shadow, the push makes the photon sphere and the shadow's size, the twist its shift and D shape (shadow_split.py, fig 36); 125 checks; 3 theorems added to Topics.SpinningRiver, push_photon_sphere with (2 : K) ≠ 0 and r ≠ 0 (library 3,945).
 Nov 27: `topics/new-ties/` round 22 (DRAFT, patch 0021): an independent session redid Proposition 21.1, Lemmas 21.3 and 21.4, Theorem 21.5 and the Conjecture 21.2 search from their statements alone (all hold, with wording fixes); Conjecture 21.2 is proved by hand for two numbers against one (only 19 + 1 = 20), and two against two, Theorem 16.2 extended to a cone of ratios, is searched to 300 digits; checks22.py 5. Conjecture 21.2 in general is open.
+Nov 27: `topics/gravity-from-theory/spinning-river/` round 29 (DRAFT): the Sun's echo delay split, half from the time part and half from the push, so γ = 1 (echo_compare.py/.json, fig 37, Part 23). The prediction (echo_predict.py, echo_prediction.json) was committed on its own as 3028033 at 17:22:22 UTC; the comparison ran at about 17:20, with the prediction files unchanged since; Cassini's value was known beforehand. 129 checks; 3 theorems added to Topics.SpinningRiver (library 3,948).
+Nov 27: `topics/wall-shapes/` added (DRAFT): 25 walls in four shapes, the phase budget (depth theorem, sector law) and the Ruelle 2010 link to the Knauf-chain wall; checks.py (13) runs in CI by the checks*.py glob.
+Nov 27: `topics/forces-as-curvature/` added (DRAFT, new files): rounds 1–4 (checks.py, 61, frozen 17:54 UTC), with rounds 5 (hidden SU(3), 10 checks, frozen 17:59), 6 (field equations from loops, 10, frozen 18:04), 7 (twist and handedness on the 3-sphere, 6, frozen 18:07), 8 (Einstein and Maxwell from loops, 5, frozen 18:11) and 9 (flux from the twist, 7, frozen 18:16) as subfolders `round5/` to `round9/`; each round's "follows" line now points to the subfolders. All six check scripts run in CI by the checks*.py glob. Not in Lean.
