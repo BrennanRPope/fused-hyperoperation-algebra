@@ -1,0 +1,23 @@
+PASS A1 the figure-eight is a fixed point of the section map (one hit per period), residual < 1e-11
+PASS A2 section-map Jacobian and the reduced variational block give the same Floquet traces (to 1e-6)
+PASS A3 figure-eight is E-E: all four multipliers on the unit circle, arguments ±0.0529 and ±1.8730
+PASS A4 det of the section Jacobian is 1 (volume preserving) to 1e-6
+PASS A5 692 of 695 catalog orbits integrated; 108 pass the precision margin
+PASS A6 correction: the earlier finite-difference instability numbers (three-body-order/stability.json) are too high by more than 1 (in log) for 78 of 239 orbits
+PASS B1 parity law: i(F^n) = (-1)^#H * ((-1)^(n+1))^#IH on all 108 robust orbits, n = 1..4
+PASS B2 E-E, H-H, IH-IH and complex-unstable points have index +1 for every iterate 1..8 (random examples)
+PASS B3 value-only degree counter: right sign on 6 random linear maps, and degree 2 for (z1^2, z2)
+PASS B4 value-only index of F^k settles on 14 of the 15 well-refined orbits (residual < 1e-8) and always matches sign det(I - DF^k)
+PASS B5 live, from map values only: figure-eight index +1, its twin (Simo H orbit) index -1
+PASS B6 of the 52 robust orbits with index pair (+,+) only 4 are E-E (the rest H-H 26, CU 15, IH-IH 7)
+PASS C1 figure-eight E-E (index +1), its twin E-H (index -1)
+PASS C2 the fold pair: trace 1.9972 (elliptic) for the eight, 2.0084 (hyperbolic) for its twin
+PASS C3 5 of the 7 same-word pairs have opposite indices (II.C66 and II.C75 do not)
+PASS C4 in opposite-index pairs the +1 member is the less unstable one in 3 of 5 (so +1 does not mark the stabler twin)
+PASS D1 every start within 1e-3 of the figure-eight stays within 50x its distance for 300 returns
+PASS D2 every start near the H-H and complex-unstable orbits leaves, at all four radii
+PASS E1 Greene's residue of each pair squares by the logistic rule R -> 4R(1 - R) (curated orbits)
+PASS E2 iterating an elliptic pair is the tangent law (d = +1) on x = tan(theta/2); a hyperbolic pair is velocity addition (d = -1) on x = tanh(mu/2)
+PASS E3 a pair's index factor sign(2 - trace) = sign of its curvature dial d: + for elliptic, - for hyperbolic
+
+21 of 21 pass
