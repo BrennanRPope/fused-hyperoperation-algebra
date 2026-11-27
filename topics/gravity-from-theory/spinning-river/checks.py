@@ -7,7 +7,8 @@ S: derive the speed law and the lattice's shape from one move: the point source 
 T: derive the turn from the same move: the shifted source's light rays.
 C: charge on the same shifted source: the charged spinning black hole (Kerr-Newman).
 B: two bodies: why one shear per cell cannot hold two, what does add exactly (Weyl), and the strut force (Newton).
-O: two spinning bodies in orbit: the slow-orbit field from three river rules, orbits decaying, spins, the waves.
+O: two spinning bodies in orbit: the slow-orbit field from three river rules, orbits decaying, spins, the waves;
+   O7-O8 test the rules at the next level of detail (2PN) through body 1's clock rate.
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -953,6 +954,34 @@ check("O6 the waves of GW150914 (chirp mass about 30 solar masses as seen at the
       0.12 < tau_(35.0) - tau_(150.0) < 0.25 and 6 < ncyc < 11 and 230 < f_ring < 270,
       f"run-up {tau_(35.0) - tau_(150.0):.3f} s, {ncyc:.1f} cycles; ring-down {f_ring:.0f} Hz")
 results["O6"] = {"t35_150": float(tau_(35.0) - tau_(150.0)), "cycles": float(ncyc), "f_ring": float(f_ring)}
+
+# ================================================================ O7, O8  the next level of detail (round 13)
+# Body 1's clock rate z1 = 1/u^t on a circular orbit, as a series in x = (m omega)^(2/3): it does not depend on
+# coordinates. Truth from the first law (Le Tiec, Blanchet & Whiting 2012) with the known 2PN energy and angular
+# momentum; the rules' value from their two-body field, each body moving on a geodesic with its own infinite part
+# removed by Hadamard's finite part (next_order.py; Blanchet, Faye & Ponsot's method). Total mass 1.
+import next_order as no_  # noqa: E402
+third = sp.Rational(1, 3)
+z_third = no_.redshift(third, order=6)
+z_test = no_.redshift(0, order=6)
+z_add = no_.redshift(third, order=6, multiply=False)
+tf_, m1_sym = no_.truth_from_first_law()
+truth_ok = all(sp.simplify(tf_[k].subs(m1_sym, third) - no_.truth(third)[k]) == 0 for k in range(4))
+check("O7 the test of the next level is sound: general relativity's clock rate of body 1 follows from the first law "
+      "(checked symbolically); the rules' field gives the same through the first correction (1PN, x^2) for body 1 at "
+      "1/3 of the mass, and the same through 2PN (x^3) for a test mass (m1 -> 0). Adding the clock rates instead of "
+      "multiplying them leaves body 1's clock rate unchanged through 2PN: rule B shapes the field between the bodies "
+      "but drops out of what each body feels",
+      truth_ok and z_third[:3] == no_.truth(third)[:3] and z_test == no_.truth(0) and z_add == z_third,
+      f"m1 = 1/3: rules {z_third[:3]}, truth {no_.truth(third)[:3]}; test mass {z_test}; rates added {z_add}")
+miss_ = sp.simplify(z_third[3] - no_.truth(third)[3])
+check("O8 at 2PN the three rules miss: for body 1 at 1/3 of the mass the x^3 coefficient of its clock rate is "
+      "+1205/2916 against general relativity's -3523/2916. Over seven mass ratios (next_order.json) the miss is "
+      "m1 m2 (23 m1^2 - 50 m1 + 36)/3 = nu (15/2 + 9 Delta/2 - 23 nu/3), nonzero already at first order in the "
+      "lighter mass",
+      miss_ == no_.mismatch_formula(third) == sp.Rational(394, 243) and z_third[3] == sp.Rational(1205, 2916),
+      f"rules {z_third[3]}, truth {no_.truth(third)[3]}, miss {miss_} (formula {no_.mismatch_formula(third)})")
+results["O8_z1"] = {"rules": [str(c) for c in z_third], "truth": [str(c) for c in no_.truth(third)]}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

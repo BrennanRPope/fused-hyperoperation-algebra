@@ -32,6 +32,10 @@ How it got here:
    seen through each other's clocks) give gravity's slow-orbit field exactly. The orbits turn and decay as binary
    pulsars show, the spins don't line up but sort into two families, and the wave's run-up and ring-down come out.
    The merger is still a gap.
+8. **The next level of detail (Part 9):** the three rules fail at 2PN. A clock riding on one body runs at the wrong
+   rate at that order, by a formula in the mass ratio. The bodies only feel each other's own fields, and the clock
+   rule turns out to shape only the field between them. What's missing is likely the field's own energy between the
+   bodies, or the field of a body that is speeding up.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -56,7 +60,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**67/67 pass**, about 8 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**69/69 pass**, about 10 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -736,11 +740,108 @@ computed here.
   this order.
 - **Put in, not derived:** the waves' back-push on the orbit and the quadrupole formula for the wave. Both should
   follow from rule A carried one step further, and that is a separate test.
-- **Not shown:** that the three rules keep working at the next order. The natural test is 2PN: whether clock rates still
-  multiply there, or something new is needed. The cubic cross terms of the product already match one part of the known
-  2PN field, but other parts enter at that order too. That is checkable with the same method as O1.
+- **Tested since (Part 9):** whether the three rules keep working at the next order, 2PN. They don't: body 1's clock
+  rate comes out wrong at x³. Rule B turns out to shape only the field between the bodies, not their motion.
 - **Still out of reach:** the merger. Matching the detected waveforms end to end would need the rules at higher order
   plus numerical relativity.
+
+## Part 9. The next level of detail (round 13)
+
+Asked by Brennan, who tapped "Test it" on: "Should it test the next level of detail? That's the first place the three
+rules could fail."
+
+**Result: the three rules fail at the next level of detail (2PN).** They give body 1's clock rate exactly at the first
+correction beyond Newton, and exactly at the next one when body 1 is too light to pull back. With two real masses the
+next correction comes out wrong, by ν(15/2 + 9Δ/2 − 23ν/3) in the x³ coefficient (ν = m₁m₂/m², Δ = (m₂ − m₁)/m, with
+m = m₁ + m₂). The test also shows why. Each body only feels the other body's own field, lagged and dressed. The clock
+rule B, which Part 8 needed for the field, drops out of what the bodies feel. What general relativity adds at this
+order must come from the field between the bodies, or from the field of a body that is speeding up, and the rules
+have neither.
+
+![next order](figures/fig22_next_order.png)
+
+*Fig 22. Left: body 1's clock rate z₁ on a circular orbit, term by term, for body 1 at ⅓ of the mass. The Newton and
+1PN terms match general relativity. The 2PN term is off by 1.62, with the wrong sign. Middle: the 2PN term across the
+mass ratio. Grey is general relativity, the red dots are the rules, the dashed curve is the fitted miss, and the open
+dot was computed after the fit and lands on it. At m₁ → 0 the two agree. Right: what each body feels, and the two
+candidates for what is missing.*
+
+### 9.1 The test: a clock on the orbit (O7)
+
+Fields depend on the coordinates you write them in, so comparing two fields term by term needs the same coordinates on
+both sides. Part 8 had that, because the 1PN field is published in harmonic coordinates (Blanchet, Faye and Ponsot
+1998). The 2PN field is in the same paper, but its source couldn't be fetched from this session. So this round compares
+something that doesn't depend on coordinates: the rate of a clock riding on body 1 around a circular orbit, as a
+function of the orbit's frequency. Write it z₁ = 1/u^t and expand it in x = (mω)^(2/3), so x is about v².
+
+- **General relativity's answer:** the first law of binary mechanics (Le Tiec, Blanchet and Whiting 2012) gives
+  z₁ = 1 + ∂E/∂m₁ − ω ∂J/∂m₁ at fixed ω. The orbit's energy E and angular momentum J are known to 2PN. Out comes
+  z₁ = 1 − (m₂(2m₁ + 3m₂)/2) x − … through x³ (checked symbolically in O7).
+- **The rules' answer:** build the field of two bodies on a circle from the rules (`next_order.py`). Each body's own
+  field is the moving mass's field, lagged at light speed, with its own nonlinear part (a moving black hole's).
+  Clock factors multiply, the drag and space parts add, and each mass is dressed by the field it sits in. Then let
+  each body move on a free-fall path of that field, with its own infinite part removed by Hadamard's finite part, the
+  method Blanchet, Faye and Ponsot use. Solve for the circular orbit order by order, and read off body 1's clock rate.
+  Everything is exact fractions.
+
+The method passes both checks it should pass. Through x² it gives general relativity's clock rate for every mass ratio,
+as it must, since Part 8's field is exact there. Through x³ it gives the exact answer for a test mass (m₁ → 0), as it
+must, since then body 1 only rides in body 2's own field, which is a black hole's.
+
+### 9.2 The miss (O8)
+
+With two real masses the x³ term is wrong. For body 1 at ⅓ of the mass the rules give +1205/2916 and general
+relativity gives −3523/2916. Over seven mass ratios the miss is exactly
+
+  rules − general relativity = m₁m₂(23m₁² − 50m₁ + 36)/3 = ν(15/2 + 9Δ/2 − 23ν/3)   (total mass 1).
+
+That formula was fitted to six mass ratios (it is fixed by five, and the sixth agrees), then confirmed on a seventh,
+m₁ = 2/5, computed afterwards (984/625 both ways). The two ways of writing it are one identity (Lean `two_pn_miss`).
+The miss is already there at first order in the lighter mass: about 12m₁ when m₁ is small. So it is not a small
+correction that only shows up for equal masses. It is the light body's own pull on the heavy one, at 2PN.
+
+### 9.3 Why: the bodies don't feel rule B (O7)
+
+Swapping rule B for its rival, adding the clock rates instead of multiplying them, leaves body 1's clock rate unchanged
+through 2PN, to every digit. The reason is how the infinite part of a body's own field is removed. The leading product
+of the two fields, the cross term 4U₁U₂, goes as 1/r₁ near body 1 times something smooth, and the finite part of that
+averages to zero over directions. The higher products drop out of the clock rate too, as the run shows. So:
+
+- **Rule B shapes the field between the bodies** (that is where Part 8's O1 needed it, at random points of space),
+  **but not their motion.** "Each rule is needed" in Part 8 holds for the field, not for the orbits.
+- **What a body feels** is the other body's own field, lagged (rule A) and with its mass dressed (rule C), plus its
+  own field's finite part. At 1PN that is enough. At 2PN it isn't.
+- **The space rule doesn't matter either:** multiplying or adding the two bodies' space stretch (the 4U₁U₂ term in the
+  space part) gives the same clock rate (next_order.json, kappa0).
+
+So whatever general relativity has at 2PN that the rules lack must survive the finite part at a body. Two pieces do,
+and the rules have neither:
+
+1. **Gravity's own field energy between the bodies, acting as a source.** In general relativity the field's energy
+   also pulls. Between two bodies that gives a term that isn't a product of the two fields at the same point but is
+   spread out between them, built from ln(r₁ + r₂ + r₁₂) (r₁₂ the distance between the bodies). A spread-out term
+   doesn't drop out at a body the way a product does.
+2. **The extra field of a body that is speeding up.** Each body here carries the field of a body moving at constant
+   velocity. On a circle the bodies accelerate, and at 2PN the nonlinear part of the field feels that.
+
+Which of the two closes the gap, or whether both are needed, can't be told apart without general relativity's 2PN field
+itself, which this session couldn't fetch.
+
+### 9.4 What this means, on its own merits
+
+- **The three rules as they stand stop at 1PN.** That is an honest limit. The slow-orbit field and everything Part 8
+  built on it (orbit turning, spin wobble, pulsar decay with the back-push put in) are untouched. Effects that need 2PN,
+  like the last orbits before a merger, are not given by the rules.
+- **Ours:** the test itself (the rules' field run through the clock-rate comparison), the miss formula, and the
+  finding that rule B drops out of the motion. The extension of the rules to 2PN is also ours, and it involves choices:
+  each body's own nonlinear field is a moving black hole's with no acceleration terms, and the parts of the field that
+  aren't clock rates add.
+- **Known:** the first law and the clock rate (Le Tiec, Blanchet and Whiting 2012; Detweiler 2008), the 2PN energy and
+  angular momentum (Blanchet's review), Hadamard's finite part for point bodies (Blanchet, Faye and Ponsot 1998), and
+  that 2PN gravity has field-energy terms spread between the bodies.
+- **The next test:** add gravity's own field energy as a fourth rule (the spread-out term between the bodies) and see
+  whether the miss closes. If it does, the rules become "fields are sent out, rates multiply, masses are dressed, and
+  the field's own energy is a source", which is general relativity's own structure, written in the river's terms.
 
 ## Verdict, on its own merits
 
@@ -767,26 +868,35 @@ computed here.
 - **Two bodies in orbit (Part 8):** three rules give gravity's slow-orbit field of two moving bodies exactly, and
   each is needed. Clock-rate multiplication, found for bodies at rest, carries over. The known orbits, spin wobbles,
   pulsar decay rates and spin resonances follow. Spins don't line up on average.
+- **The next level (Part 9):** the three rules fail at 2PN. Body 1's clock rate on a circular orbit is right through
+  1PN and for a test mass, and wrong at 2PN by ν(15/2 + 9Δ/2 − 23ν/3). Rule B drops out of the bodies' motion
+  entirely, so "each is needed" holds for the field, not the orbits. The likely missing piece is gravity's own field
+  energy between the bodies.
 - **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule. The
-  waves' back-push and the wave formula are put in from known results. Beyond slow-orbit order, and the merger, are
-  still out of reach.
+  waves' back-push and the wave formula are put in from known results. 2PN and beyond, and the merger, are still out of
+  reach.
 - **Frames:** one area law runs through all of them, turn = d × area. Thomas, geodetic, Lense–Thirring and Kerr sit at
   d = −1; Foucault, Coriolis, Larmor and Berry at d = +1; the river and the acoustic metric at d = 0. Larmor's theorem
   explains the ½ in frame dragging's gyroscope rule.
 
 ## Files
 
-- `checks.py`: 67 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
-  speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit), writes
-  `checks_output.txt`, `results.json`.
+- `checks.py`: 69 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+  speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
+  next level of detail), writes `checks_output.txt`, `results.json`.
+- `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
+  `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
+  swaps; about 5 minutes).
 - `orbits.py`: orbits, spins and the spin ensemble for Part 8; `python3 orbits.py` writes `orbits.json` (80 pairs,
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the twenty-one figures in `figures/` (Figs 19–21 need `orbits.json`).
+- `figures.py`: the twenty-two figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
-  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`. Written without a Lean
-  toolchain, so not yet compiled; it builds on `FusedAlgebra.Topics.JetFields`.
+  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`. Written without a Lean
+  toolchain; the repo copy is the shared library's `FusedAlgebra.Topics.SpinningRiver` (namespace
+  `CircleOp.SpinningRiver`, `ring` written as `grind`), which compiles clean, `two_pn_miss` included from Nov 27. It
+  builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -824,3 +934,7 @@ computed here.
 | that field as exactly three rules: light-speed lag, clock rates multiply, dressed masses; each needed | **ours** (O1) |
 | spin precession as geodetic turn + half the curl of the drag field | known (Barker & O'Connell 1975; Kidder 1995); **ours** only as assembled from our pages' pieces (O2) |
 | pulsar decay and double-pulsar wobble; spin-orbit resonances; GW150914 run-up and Kerr ringdown | known (Weisberg & Huang 2016; Breton et al. 2008; Schnittman 2004; Abbott et al. 2016; Berti, Cardoso & Will 2006) |
+| first law of binary mechanics; clock rate z₁ = 1/u^t; 2PN circular-orbit energy and angular momentum | known (Le Tiec, Blanchet & Whiting 2012; Detweiler 2008; Blanchet's Living Review) |
+| Hadamard's finite part for point bodies; 2PN field-energy terms spread between the bodies | known (Blanchet, Faye & Ponsot 1998) |
+| the rules' 2PN extension, run through the clock-rate test; the miss ν(15/2 + 9Δ/2 − 23ν/3); exact at 1PN and for a test mass | **ours** (O7, O8) |
+| rule B (and the space rule) drop out of the bodies' motion through 2PN; B shapes only the field between them | **ours** (O7) |

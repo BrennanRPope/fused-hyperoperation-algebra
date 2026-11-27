@@ -349,5 +349,27 @@
     "t35_150": 0.1669073776198374,
     "cycles": 8.69973975108448,
     "f_ring": 249.91206974959528
+  },
+  "O7 the test of the next level is sound: general relativity's clock rate of body 1 follows from the first law (checked symbolically); the rules' field gives the same through the first correction (1PN, x^2) for body 1 at 1/3 of the mass, and the same through 2PN (x^3) for a test mass (m1 -> 0). Adding the clock rates instead of multiplying them leaves body 1's clock rate unchanged through 2PN: rule B shapes the field between the bodies but drops out of what each body feels": {
+    "pass": true,
+    "detail": "m1 = 1/3: rules [1, -8/9, -209/243], truth [1, -8/9, -209/243]; test mass [1, -3/2, -9/8, -27/16]; rates added [1, -8/9, -209/243, 1205/2916]"
+  },
+  "O8 at 2PN the three rules miss: for body 1 at 1/3 of the mass the x^3 coefficient of its clock rate is +1205/2916 against general relativity's -3523/2916. Over seven mass ratios (next_order.json) the miss is m1 m2 (23 m1^2 - 50 m1 + 36)/3 = nu (15/2 + 9 Delta/2 - 23 nu/3), nonzero already at first order in the lighter mass": {
+    "pass": true,
+    "detail": "rules 1205/2916, truth -3523/2916, miss 394/243 (formula 394/243)"
+  },
+  "O8_z1": {
+    "rules": [
+      "1",
+      "-8/9",
+      "-209/243",
+      "1205/2916"
+    ],
+    "truth": [
+      "1",
+      "-8/9",
+      "-209/243",
+      "-3523/2916"
+    ]
   }
 }

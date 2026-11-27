@@ -743,6 +743,71 @@ def fig21():
     save(fig, "fig21_wave.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21):
+def fig22():
+    from fractions import Fraction as Fr
+    nj = json.load(open(os.path.join(HERE, "next_order.json")))
+
+    def truth3(a):
+        b = 1 - a
+        return -b * (54*a**5 + 224*a**4*b + 356*a**3*b**2 + 284*a**2*b**3 + 124*a*b**4 + 27*b**5) / 16
+
+    def miss(a):
+        return a * (1 - a) * (23*a**2 - 50*a + 36) / 3
+    fig, axs = plt.subplots(1, 3, figsize=(16, 5.4), gridspec_kw={"width_ratios": [0.85, 1.1, 1.25]})
+    # left: level by level, m1 = 1/3
+    ax = axs[0]
+    row = nj["two_pn"]["1/3"]
+    rules = [float(Fr(c)) for c in row["rules"]][1:]
+    tru = [float(Fr(c)) for c in row["truth"]][1:]
+    xs_ = np.arange(3)
+    ax.bar(xs_ - 0.18, tru, 0.36, color=GREY, label="general relativity (first law)")
+    ax.bar(xs_ + 0.18, rules, 0.36, color=[GREEN, GREEN, RED], label="three rules")
+    for i in range(3):
+        ok = abs(rules[i] - tru[i]) < 1e-12
+        ax.text(i, max(rules[i], tru[i], 0) + 0.12, "same" if ok else "off by\n" + f"{rules[i] - tru[i]:.2f}",
+                ha="center", fontsize=9, color=GREEN if ok else RED)
+    ax.axhline(0, color="k", lw=0.6)
+    ax.set_xticks(xs_); ax.set_xticklabels(["x\n(Newton)", "x²\n(1PN)", "x³\n(2PN)"])
+    ax.set_ylim(-1.6, 1.0); ax.set_ylabel("coefficient in body 1's clock rate z₁")
+    ax.legend(fontsize=8.5, loc="lower left")
+    ax.set_title("one level at a time (body 1 = ⅓ of the mass)", fontsize=10.5)
+    # middle: the x^3 coefficient across mass ratio
+    ax = axs[1]
+    a = np.linspace(0, 1, 301)
+    ax.plot(a, truth3(a), color=GREY, lw=2.2, label="general relativity")
+    ax.plot(a, truth3(a) + miss(a), color=RED, lw=1.6, ls="--", label="three rules: fit through the dots")
+    for k, v in nj["two_pn"].items():
+        a_ = float(Fr(k)); y_ = float(Fr(v["rules"][3]))
+        held = k == "2/5"
+        ax.plot(a_, y_, "o", ms=7, mfc="white" if held else RED, mec=RED, zorder=5)
+    ax.plot([], [], "o", mfc=RED, mec=RED, label="three rules, computed")
+    ax.plot([], [], "o", mfc="white", mec=RED, label="computed after the fit (m₁ = 2/5): on the curve")
+    ax.annotate("a body too light to pull back\n(test mass): exact", (0, truth3(0.0)), (0.22, -0.8), fontsize=8.5,
+                arrowprops=dict(arrowstyle="->", color=GREEN), color=GREEN)
+    ax.set_xlabel("m₁ / m,  with m = m₁ + m₂   (ν = m₁m₂/m²,  Δ = (m₂ − m₁)/m)"); ax.set_ylabel("x³ coefficient of z₁ (2PN)")
+    ax.set_ylim(-1.9, 0.6)
+    ax.legend(fontsize=8.2, loc="lower right")
+    ax.set_title("at 2PN the rules miss by  ν(15/2 + 9Δ/2 − 23ν/3)", fontsize=10.5)
+    # right: what each body feels, and what is missing
+    ax = axs[2]
+    ax.set_xlim(0, 10); ax.set_ylim(0, 10); ax.axis("off")
+    ax.add_patch(Circle((2.0, 6.0), 0.55, fc=BLUE, alpha=0.85)); ax.text(2.0, 6.0, "m₁", ha="center", va="center", color="w")
+    ax.add_patch(Circle((8.0, 6.0), 0.4, fc=ORANGE, alpha=0.85)); ax.text(8.0, 6.0, "m₂", ha="center", va="center", color="w")
+    ax.add_patch(FancyBboxPatch((3.3, 4.9), 3.4, 2.2, boxstyle="round,pad=0.1", fc=PURPLE, alpha=0.12, ec=PURPLE, ls="--"))
+    ax.text(5.0, 6.0, "field energy\nbetween them\n(missing?)", ha="center", va="center", fontsize=9, color=PURPLE)
+    ax.annotate("", (2.6, 7.3), (7.6, 7.3), arrowprops=dict(arrowstyle="->", color=GREEN, lw=1.8))
+    ax.text(5.0, 7.6, "m₁ feels m₂'s own field, lagged and dressed: kept", ha="center", fontsize=8.8, color=GREEN)
+    ax.text(5.0, 8.9, "rule B (rates multiply) shapes the field between the bodies,\nbut drops out of what each body feels",
+            ha="center", fontsize=8.8, color=GREY)
+    boxes = [(0.1, 2.35, "1PN: rules = general relativity, and the test-mass limit is exact at 2PN", GREEN),
+             (0.1, 1.15, "2PN: missing piece, one of (or both):\n  • gravity's own field energy between the bodies acting as a source\n  • the extra field of a body that is accelerating", RED)]
+    for x_, y_, t_, c_ in boxes:
+        ax.text(x_, y_, t_, fontsize=8.8, color=c_, va="bottom",
+                bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=c_, alpha=0.95))
+    ax.set_title("why: the bodies only feel each other's own fields", fontsize=10.5)
+    save(fig, "fig22_next_order.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22):
     f()
 print("figures:", sorted(os.listdir(FIG)))

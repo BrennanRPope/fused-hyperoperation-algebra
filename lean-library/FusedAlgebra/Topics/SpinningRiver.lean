@@ -118,6 +118,14 @@ theorem clock_multiply (a b : R) :
     (1 - 2 * a + 2 * a^2) * (1 - 2 * b + 2 * b^2)
       = 1 - 2 * (a + b) + 2 * (a + b)^2 - 4 * (a * b) * (a + b) + 4 * (a^2 * b^2) := by grind
 
+/-- **Round 13: the 2PN miss, two ways of writing it** (times 6, to stay in a ring). With total
+mass 1, body 1 of mass a and body 2 of mass 1 − a, the three rules' redshift coefficient of x³ is
+off by a(1 − a)(23a² − 50a + 36)/3. In the usual variables ν = a(1 − a) and Δ = (1 − a) − a that is
+ν(15/2 + 9/2·Δ − 23ν/3). -/
+theorem two_pn_miss (a : R) :
+    2 * a * (1 - a) * (23 * a^2 - 50 * a + 36)
+      = a * (1 - a) * (45 + 27 * ((1 - a) - a) - 46 * (a * (1 - a))) := by grind
+
 end
 
 end CircleOp.SpinningRiver
