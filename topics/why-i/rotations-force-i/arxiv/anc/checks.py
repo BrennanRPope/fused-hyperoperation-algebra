@@ -583,4 +583,40 @@ check("T10 (A4) from measured averages: complex QM meets (A0'); the antisymmetri
       "dropping continuity lets a class of Hamiltonians run backwards, and dropping (T0) lets the imaginary unit turn with H, "
       "and each keeps (A1), (A3) and (A0') while breaking (A4); with no antisymmetric commutant (real theory) a shift must add nothing, which (A3) forbids", ok)
 
+# ---------- 12. (A3') with measured averages: (A3) from E0, and no gap ----------
+ok = True
+E0 = 0.7
+Aoff = lambda Hm: J6c @ (Hm - E0*np.eye(Hm.shape[0]))/hbar                       # energies measured from E0
+ok &= np.allclose(Aoff(Hc) @ Aoff(Hc), -(Hc - E0*I6c) @ (Hc - E0*I6c)/hbar**2)   # (A3') with g(E)^2 = (E - E0)^2/hbar^2
+ok &= avg_same(Aoff, Hc, 0.8, obs6) and skew_commutant_dim(obs6) == 1            # (A0') and (T0)
+ok &= np.allclose(Aoff(Hc + 0.8*I6c), Aoff(Hc) + 0.8*J6c/hbar)                    # (A4_w) with K = J/hbar
+ok &= not np.allclose(Aoff(Hc + 0.8*I6c), Aoff(Hc) + 0.8*Aoff(I6c))              # but not (A4), which forces A(0) = 0
+# the gapped rule: J = R_i, H quaternion-linear, A(H) = (J(H - E0) + mu R_j)/hbar
+mu = 0.5; I8 = np.eye(8)
+Ag = lambda Hm: (Ri_ @ (Hm - E0*I8) + mu*Rj_)/hbar
+Hg = qherm2(2.0, -1.0, (0.3, 0.5, -0.2, 0.4))
+ok &= np.allclose(Ag(Hg).T, -Ag(Hg))
+ok &= np.allclose(Ag(Hg) @ Ag(Hg), -((Hg - E0*I8) @ (Hg - E0*I8) + mu**2*I8)/hbar**2)   # (A3') with a gap
+ok &= np.allclose(Ag(Hg + 0.8*I8), Ag(Hg) + 0.8*Ri_/hbar)                         # (A4_w) holds, (A4) does not
+ok &= not np.allclose(Ag(Hg + 0.8*I8), Ag(Hg) + 0.8*Ag(I8))
+def jcomm_obs(Jm, k=4):                                                           # symmetric matrices commuting with Jm
+    out = []
+    for _ in range(k):
+        O = rand_sym(Jm.shape[0]); out.append((O + Jm @ O @ Jm.T)/2)
+    return out
+obsg = jcomm_obs(Ri_)
+ok &= skew_commutant_dim(obsg) == 1                                               # (T0) holds
+ok &= not avg_same(Ag, Hg, 0.8, obsg)                                             # but (A0') fails: the shift is visible
+# why: the second derivative of V_t = e^{tX} e^{-tY} at 0 is [Y, D] + D^2, and here [Y, D] has a part outside the commutant
+Yg = Ag(Hg); Dg = 0.8*Ri_/hbar; V2 = Yg @ Dg - Dg @ Yg + Dg @ Dg
+ok &= np.allclose(V2, 0.8*mu*(Rj_ @ Ri_ - Ri_ @ Rj_)/hbar**2 + Dg @ Dg)
+ok &= not all(np.allclose(V2 @ O, O @ V2) for O in obsg)
+dt = 1e-4; Vt = lambda t: expm_np(t*Ag(Hg + 0.8*I8)) @ expm_np(-t*Yg)
+ok &= np.allclose((Vt(dt) - 2*np.eye(8) + Vt(-dt))/dt**2, V2, atol=1e-4)          # finite-difference check of that formula
+# without a gap the dynamics commutes with J, as the proof derives
+ok &= np.allclose(Aoff(Hc) @ J6c, J6c @ Aoff(Hc))
+check("T11 with the weaker (A3'): A(H) = J(H - E0)/hbar meets (A1), (A3'), (A0'), (T0) and (A4_w) but not (A4), which "
+      "forces A(0) = 0; the gapped rule meets (A1), (A3'), (T0) and (A4_w) but fails (A0'), because the second derivative "
+      "[Y, D] + D^2 of e^{tA(H+c)} e^{-tA(H)} leaves the commutant", ok)
+
 print(f"\n{sum(r[1] for r in results)}/{len(results)} pass")
