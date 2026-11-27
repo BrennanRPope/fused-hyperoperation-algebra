@@ -176,6 +176,8 @@ import FusedAlgebra.Topics.Stability
 import FusedAlgebra.Topics.PlanckEinstein
 import FusedAlgebra.Topics.NoGap
 import FusedAlgebra.Topics.Unseen
+import FusedAlgebra.Topics.Averages
+import FusedAlgebra.Topics.AveragesPE
 import FusedAlgebra.Topics.PendulumLeeYang
 import FusedAlgebra.Topics.HiddenSpace
 import FusedAlgebra.Topics.NewTies11
