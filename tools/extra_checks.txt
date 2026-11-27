@@ -67,3 +67,4 @@ topics/shape-dials/depth_checks.py
 topics/shape-dials/topo_checks.py
 topics/shape-dial-survey/even_p_proof_check.py
 topics/elliptic-modulus/pendulum/pendulum_checks.py
+topics/shape-dial-survey/pendulum_leeyang_check.py

@@ -1,0 +1,124 @@
+{
+ "results": [
+  {
+   "name": "L1 k_c = 3+2sqrt2 <=> sinh2K = 1 <=> k_O = 1 (m = 1); 3-2sqrt2 is K = -K_c",
+   "passed": true,
+   "detail": "sinh2K_c-1 = 1.97e-31, k_O(k_c)-1 = -9.86e-32, k_O(k_a)-1 = -1.18e-30"
+  },
+  {
+   "name": "L2a Onsager integral = (1 + k_O) x pendulum quarter period at m = k_O^2 (Landen), both sides of k_c",
+   "passed": true,
+   "detail": "max gap 2.76e-27 over k = 1.5..50"
+  },
+  {
+   "name": "L2b dial gas torus (z = k^-2) matches Onsager-via-pendulum <ss>: within 1e-3 at L=6 for k = 2, 10, 20; closing in at k = 3 (nearer k_c)",
+   "passed": true,
+   "detail": "k=2: Onsager 0.18233, torus L=4,5,6 0.19037,0.18403,0.18270; k=3: Onsager 0.31356, torus L=4,5,6 0.36328,0.33438,0.32231; k=10: Onsager 0.94242, torus L=4,5,6 0.94191,0.94216,0.94230; k=20: Onsager 0.98823, torus L=4,5,6 0.98816,0.98822,0.98823"
+  },
+  {
+   "name": "L3a ordered side: Yang M^8 = 1 - m; Kramers-Wannier dual sends m -> 1/m (swinging <-> over the top)",
+   "passed": true,
+   "detail": "max err 3.16e-30"
+  },
+  {
+   "name": "L3b Onsager k1 = 2 sqrt(k_O)/(1+k_O) is the same at k_O and 1/k_O (one integral serves both phases)",
+   "passed": true,
+   "detail": "max err 9.86e-32"
+  },
+  {
+   "name": "L4 couplings sinh2K1 = -i sn(iu, k_O), sinh2K2 = same at K'-u: product 1/k_O; equal (isotropic) at u = K'/2; tan at k_c",
+   "passed": true,
+   "detail": "max err 3.94e-31, tan err 0.0"
+  },
+  {
+   "name": "L5 dial gas Fisher zeros close in on |k_O| = 1 (|m| = 1, the separatrix in complex energy) as L grows, well inside random scatter",
+   "passed": true,
+   "detail": "L=4: median ||k_O|-1| 0.133 vs random 0.325 (16 zeros); L=5: median ||k_O|-1| 0.100 vs random 0.324 (20 zeros); L=6: median ||k_O|-1| 0.086 vs random 0.309 (36 zeros)"
+  },
+  {
+   "name": "L6a pendulum: |G| = 1 on the halfway lines Re u = +-K/2 (real time) and Im u = K'/2 (imaginary time); all 4N zeros of G^2N + 1 lie on them (N = 3)",
+   "passed": true,
+   "detail": "m=0.2: 12 roots found, 12 on halfway lines, max ||G|-1| 2.0e-31; m=0.7: 12 roots found, 12 on halfway lines, max ||G|-1| 2.0e-31; m=0.95: 12 roots found, 12 on halfway lines, max ||G|-1| 2.0e-31"
+  },
+  {
+   "name": "L6b 1D Ising ring: every Lee-Yang zero has |w| = 1 and cos(theta/2) = sqrt(1-1/k) cos(pi(2j+1)/2N) (equal-time samples of a swing)",
+   "passed": true,
+   "detail": "max err 1.9e-12 over N = 8,16,32 and k = 2,5,20"
+  },
+  {
+   "name": "L7a 1D crowding: count within d of the arc end grows like d^{1/2} (density exponent sigma = -1/2, the turning-point linger)",
+   "passed": true,
+   "detail": "fitted count exponent 0.489"
+  },
+  {
+   "name": "L7b the swing size is set by temperature, not system size: c = sqrt(1-1/k) -> 1 only as k -> infinity; N only refines the sampling",
+   "passed": true,
+   "detail": "c(k=2) = 0.707, c(k=20) = 0.975, c independent of N (L6b)"
+  },
+  {
+   "name": "L7c antiferro k = 1/2 (m = 1 - 1/k < 0): ring zeros leave |w| = 1 and lie on the negative real axis",
+   "passed": true,
+   "detail": "max |Im w| 0.0e+00, |w| range 0.173..5.789"
+  },
+  {
+   "name": "L7d p-ball single spin (p = 4, a = 3): zeros evenly spaced, spacing closing on pi from above; no arc, no crowding",
+   "passed": true,
+   "detail": "17 zeros in (0, 60); last spacings 3.1645, 3.1618, 3.1596"
+  }
+ ],
+ "onsager_rows": [
+  [
+   2,
+   0.1823274908949963,
+   [
+    0.1903656057036316,
+    0.18403442524580138,
+    0.182698915459986
+   ]
+  ],
+  [
+   3,
+   0.3135597496908249,
+   [
+    0.3632778233084423,
+    0.33437500946968324,
+    0.32230511112038535
+   ]
+  ],
+  [
+   10,
+   0.9424246948852417,
+   [
+    0.94191362147753,
+    0.9421587208381993,
+    0.9422978303890283
+   ]
+  ],
+  [
+   20,
+   0.9882286818820897,
+   [
+    0.9881648198775658,
+    0.9882204410109137,
+    0.9882276181697924
+   ]
+  ]
+ ],
+ "fisher": {
+  "4": [
+   0.1334312163975146,
+   0.3248946099104111,
+   16
+  ],
+  "5": [
+   0.10044127171446765,
+   0.324009111978172,
+   20
+  ],
+  "6": [
+   0.08600582582991312,
+   0.30892129594981327,
+   36
+  ]
+ }
+}

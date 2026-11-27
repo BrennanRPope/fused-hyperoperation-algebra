@@ -64,7 +64,7 @@ at the even roundness 4, 6 and 8 (sections N3, near zone, and N3, near zone to p
 at every even roundness the rule holds for every a, proved with no zero counting from Pólya's 1923 theorem and Laguerre's
 theorem** (section N3, even roundness from Pólya's end). What's left is the holding side at non-even p past 8. The reasoning from the two certificates to the rule is proved in Lean (section N3, near zone in Lean). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
-(a short corollary of Fermat's last theorem).
+(a short corollary of Fermat's last theorem). The elliptic thread's pendulum picture was then tested against the Lee–Yang work: the dial gas transition is exactly the pendulum's separatrix and the other two ideas hold in their simplest form, but all three are known physics and none reaches the open p-ball case (section N3, pendulum).
 
 ![The three shape dials](figures/fig0-three-shape-dials.png)
 
@@ -1087,6 +1087,94 @@ only place one is needed, because the step identity carries everything below it.
 | H3 | p = 10 (a = 3, 10, 25) and p = 12 (a = 6, 30): zeros in the box &#124;Re s&#124; < 36, &#124;Im s&#124; < 6 | all real (16 to 20 each) |
 | H4 | contrast: p = 2.5, a = 5 and p = 1.5, a = 2.5 | 12 and 20 zeros off the line |
 
+### N3, pendulum. The pendulum picture against the Lee–Yang work
+
+Asked for by Brennan (Nov 27): "Let's work on the pendulum picture here and then try to translate to Lee yang", sent here
+from the elliptic thread, which worked out the pendulum (`../elliptic-modulus/` section 7). That thread proposed three ideas
+to test. Checks: `pendulum_leeyang_check.py` → `pendulum_leeyang_check_output.txt`, `pendulum_leeyang_check.json`, **13 of
+13 pass** (mpmath 30 digits, 90 for the p-ball zeros; the dial gas data are the torus counts and Fisher zeros already in
+`../lee-yang/`). Pictures: `figures_pendulum_leeyang.py` → figure 29.
+
+![Pendulum against Lee–Yang](figures/fig29-pendulum-lee-yang.png)
+
+**Figure 29.** (A) The pendulum's energy dial m along the dial gas temperature k: over the top (m > 1) when disordered,
+swinging (m < 1) when ordered, the separatrix exactly at k_c = 3 + 2√2. (B) The dial gas on the torus against Onsager's
+answer, written with the pendulum's quarter period. (C) The dial gas's complex-temperature zeros close in on the curve
+|m| = 1. (D) The pendulum reading in complex time: it has size 1 on the halfway lines, and the zeros of a two-term sum
+sit on them. (E) The 1D Ising ring's Lee–Yang zeros are equal-time snapshots of a swing; the zeros crowd at the arc's end
+the way a swing lingers at its turning point. (F) The two couplings of an uneven Ising lattice run along the pendulum's
+imaginary time and are equal halfway.
+
+**The short answer.** All three ideas are right in a precise sense, and all three are known physics in pendulum language.
+None of them touches the open part of our p-ball rule (non-even p past 8), because a single spin in a p-ball has no
+phases, no arc and no crowding.
+
+**Idea 1: the dial gas transition is the separatrix. True, exactly.**
+- The dial gas is the Ising lattice gas with k = e^(4K). Onsager's modulus is k_O = 1/sinh²2K = 4k/(k − 1)², and with
+  the pendulum's dial set to **m = k_O²**, the transition k_c = 3 + 2√2 is exactly m = 1, the separatrix (L1). The other
+  root, 3 − 2√2, is the antiferromagnet at the same strength.
+- Onsager's elliptic integral is (1 + k_O) times the pendulum's quarter period at m = k_O² (Landen's identity, L2a, to
+  10⁻²⁷), and the dial gas on the 6 × 6 torus matches it to 10⁻³ away from k_c (L2b, Fig 29B).
+- On the ordered side Yang's magnetisation obeys **M⁸ = 1 − m** (L3a). Kramers–Wannier duality sends m to 1/m, so it swaps
+  swinging and going over the top, and Onsager's integral is the same on both sides (L3b).
+- New to the picture: an uneven lattice's two couplings are **sinh 2K₁ = −i sn(iu, k_O)** and the same at K′ − u, so they
+  run along the pendulum's *imaginary* time, with product 1/k_O and equal at halfway, u = K′/2 (L4, Fig 29F). At the
+  critical point they become tan u and cot u, the pendulum's tiny-swing law.
+- The complex-temperature (Fisher) zeros of the dial gas close in on |k_O| = 1 as the torus grows, median distance 0.133,
+  0.100, 0.086 for L = 4, 5, 6 against 0.31 for random points (L5, Fig 29C). That curve is the separatrix |m| = 1 in
+  complex energy.
+
+All of this is Onsager (1944), Kramers–Wannier (1941), Yang (1952), Fisher (1965) and Baxter's elliptic parametrisation.
+The pendulum gives it one picture: ordered = swinging, disordered = over the top, critical = the separatrix.
+
+**Idea 2: Lee–Yang zeros on |z| = 1 match the halfway lines. True as a shape, not as a map.**
+- The pendulum reading G(u) = sn dn / cn has size exactly 1 on the halfway lines: Re u = ±K/2 (halfway to the wall in
+  real time) and, new here, Im u = K′/2 (halfway in imaginary time). All 4N zeros of G^(2N) + 1 sit on them (L6a, Fig 29D).
+- The 1D Ising ring has the same form. Z = det^(N/2)·(g^N + g^(−N)) with g = λ₊/√det, and |g| = 1 is exactly the Lee–Yang
+  arc (L6b).
+- Both are one general fact: zeros of a sum of two terms whose product is fixed lie where the terms have equal size
+  (Beraha–Kahane–Weiss 1975). The pendulum is one example, not the reason. No exact map from magnetic field to pendulum
+  time is known for the 2D lattice, where the field problem is unsolved.
+- For our p-ball rule this is already the mechanism: zeros stay real while the two rim waves dominate, and leave when the
+  kink term grows to their size (the wobble). So idea 2 restates what we have rather than adding a tool.
+
+**Idea 3: crowding at the arc's end is the turning-point linger. True in 1D, with one correction; not in 2D.**
+- On the 1D ring the Lee–Yang zeros are **cos(θ/2) = c·cos(π(2j + 1)/(2N))** with **c = √(1 − 1/k)** (L6b, to 10⁻¹¹). That
+  is a swing of size c photographed at N equal times, so the zeros crowd at the arc's end with density exponent −1/2,
+  exactly a turning-point linger (L7a, Fig 29E).
+- The correction: **colder means a bigger swing; a bigger system only takes more snapshots** (L7b). The swing is full,
+  c = 1 and the gap closed, only at zero temperature. The motion is a plain harmonic swing (cosine), not the full
+  pendulum (sn).
+- Below k = 1 (antiferro) the swing size squared goes negative, the pendulum's imaginary-time band, and the zeros leave
+  the circle for the negative real axis (L7c).
+- In 2D the edge exponent is −1/6 (Fisher 1978, Cardy 1985), not −1/2, so a simple turning point doesn't describe it.
+- A single spin in a p-ball has no arc: its zeros are evenly spaced, gaps closing on π (L7d at p = 4, a = 3).
+
+**Verdict.**
+- **Idea 1 opens a lead for the pictures, not for new mathematics.** It is exact, and the imaginary-time couplings with
+  "isotropic = halfway" tie it to the elliptic thread's mirror. It is a good way to explain the dial gas, but it is all known.
+- **Idea 2 doesn't open a lead.** It is the general equal-size rule, and our wobble analysis already uses it.
+- **Idea 3 doesn't open a lead past 1D.** It is exactly right there, with the swing set by temperature, but it fails in 2D.
+- **None reaches the open p-ball question.** That needs a real-zero starting point on the top strip at non-even p past 8,
+  as before.
+
+**Checks** (`pendulum_leeyang_check.py`, **13 of 13 pass**, about 95 s):
+
+| Check | What | Result |
+|---|---|---|
+| L1 | k_c = 3 + 2√2 ⇔ sinh 2K = 1 ⇔ m = 1; 3 − 2√2 is −K_c | exact to 10⁻³⁰ |
+| L2a | Onsager integral = (1 + k_O) × pendulum quarter period (Landen), k = 1.5 to 50 | gap 3e-27 |
+| L2b | dial gas torus L = 4, 5, 6 against Onsager ⟨σσ⟩ at k = 2, 3, 10, 20 | within 1e-3 at L = 6 away from k_c; closing in at k = 3 |
+| L3a, b | M⁸ = 1 − m; Kramers–Wannier m ↔ 1/m; one Onsager integral for both sides | 3e-30, 1e-31 |
+| L4 | couplings −i sn(iu), product 1/k_O, equal at K′/2, tan at k_c | 4e-31 |
+| L5 | Fisher zeros against \|k_O\| = 1 | median 0.133, 0.100, 0.086 for L = 4, 5, 6; random 0.31 |
+| L6a | \|G\| = 1 on the halfway lines; all 12 zeros of G⁶ + 1 on them, m = 0.2, 0.7, 0.95 | 12 of 12 each |
+| L6b | 1D ring zeros on \|w\| = 1 at the harmonic positions, N = 8, 16, 32, k = 2, 5, 20 | 2e-12 |
+| L7a | edge crowding exponent | count grows like d^0.489 (density −1/2) |
+| L7b | swing size set by k, not N | c = 0.707 (k = 2), 0.975 (k = 20) |
+| L7c | antiferro k = 1/2: zeros on the negative real axis | \|Im w\| = 0, \|w\| from 0.17 to 5.8 |
+| L7d | p-ball single spin p = 4, a = 3: zero gaps | 17 zeros in (0, 60), gaps 3.164, 3.162, 3.160 |
+
 ---
 
 ## The polishing step
@@ -1116,6 +1204,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 near zone | surrogate enclosures against direct quadrature, 12 random points | all inside, widest 3.9e-9 | about 2 s, of the 202 s run |
 | N3 near zone to p = 8 | the same, for 5 ≤ p ≤ 8 | all inside, widest 2.9e-14 | about 3 s, of the 6,913 s run |
 | N3 even from Pólya | coefficient identity against direct quadrature, 7 cases | gap ≤ 1e-79 | about 10 s, of the 852 s run |
+| N3 pendulum | 1D ring zeros by high-precision polynomial roots against the closed form | 2e-12 | about 5 s, of the 95 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -1143,6 +1232,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `../mathlib-map/MathlibMap/LeeYangNearZone.lean`: the near-zone reasoning in Lean (Taylor cell bound, run certificates, near + far, `rule_range`), required in CI. `figures_near_lean.py` → figure 26.
 - `even_p_check.py` → `even_p_check.json`, `even_p_check_output.txt`: the p = 4 reduction above a = 4 and its numerical evidence. `figures_even_p.py` → figure 27.
 - `even_p_proof_check.py` → `even_p_proof_check.json`, `even_p_proof_check_output.txt`: the even-p proof from Pólya's end (coefficient identity, Wright zeros, zero counts at p = 10 and 12, non-even contrast). `figures_even_proof.py` → figure 28.
+- `pendulum_leeyang_check.py` → `pendulum_leeyang_check.json`, `pendulum_leeyang_check_output.txt`: the pendulum picture against the Lee–Yang work (dial gas transition as the separatrix, halfway lines, edge crowding). `figures_pendulum_leeyang.py` → figure 29.
 
 ## References
 
@@ -1189,3 +1279,13 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - N. Obreschkoff, Verteilung und Berechnung der Nullstellen reeller Polynome (1963): two real-rooted functions have
   alternating zeros exactly when all their real combinations are real-rooted (Hermite–Kakeya–Obreschkoff).
 - D. K. Dimitrov and P. K. Rusev, "Zeros of entire Fourier transforms", East J. Approx. (2011): survey of Pólya's methods.
+- L. Onsager, Phys. Rev. 65 (1944) 117; C. N. Yang, Phys. Rev. 85 (1952) 808; H. A. Kramers and G. H. Wannier, Phys. Rev.
+  60 (1941) 252: the 2D Ising solution, its magnetisation and its duality.
+- M. E. Fisher, "The nature of critical points", Lectures in Theoretical Physics 7C (1965): complex-temperature zeros on
+  the circles |sinh 2K| = 1.
+- R. J. Baxter, Exactly Solved Models in Statistical Mechanics (1982), chapters 7 and 10: the elliptic parametrisation of
+  the couplings.
+- S. Beraha, J. Kahane and N. J. Weiss, Proc. Natl. Acad. Sci. 72 (1975) 4209 and later papers: zeros of sums of powers
+  lie where the two largest terms have equal size.
+- M. E. Fisher, Phys. Rev. Lett. 40 (1978) 1610; J. L. Cardy, Phys. Rev. Lett. 54 (1985) 1354: the Yang–Lee edge, exponent
+  −1/2 in 1D and −1/6 in 2D.
