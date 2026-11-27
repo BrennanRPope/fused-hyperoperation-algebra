@@ -1,0 +1,10 @@
+PASS Q1 two-letter words: 19-adic size g' <= 1 and T' prime to 10 (all reduced words but NN, gaps up to 200): 20501 words, 0 exceptions
+PASS Q2 psi = T3 / 19^(L1+L2) matches the letters as maps; Type A: T3, T_pre prime to 10; Type B: at most 2 twos and 1 five except NmNN: 400 random words, 0 mismatches; 141376 Type A words, 0 bad; 376 Type B words, exceptions []
+PASS Q3 small terms and sizes (all words with gaps up to 20; V up to 60): eps3 <= 0.11 10^-H1 (equality only for NKK; log(1 + eps) < eps keeps every Lambda strictly below), eps2 < 0.1 10^-H2, epsB < 0.106 10^-H1, eps' <= 0.1 10^-H', g3 <= 2.02 + 1.8 (H1+H2), |g3 - L1 - L2| <= 4X + 3: largest scaled values: eps3 0.11, eps2 0.009091, epsB 0.1053, epsV 0.1, g3 2, |m| 40
+PASS Q4 non-vanishing: 19^L + rP is a product of 2s, 5s, 19s only for NN (gaps up to 300; Theorem 15.5 proves it), and the three equations behind Lambda_B = 0 have no solution: S-unit T's: ['NN']; solutions of the Type B system with values below 40: 0 (the hand proof: Eq1 - 2 Eq2 gives L1 - L' = c' - c, Eq3 gives L1 - L' = 1 - c + c')
+PASS Q5 2-adic: v2(19^D - 1) <= 2 + log2 D (D <= 20,000); K 19^(g3-L1-L2) = 1 mod 2^v2(r3 P2) (Type A, gaps up to 14); exact 2-adic log bound >= the true maximum (300 random K, M <= 400): 0, 0 and 0 failures; the 2-adic bound was exactly the true maximum in 300 of 300
+PASS Q6 bound chain reproduced (a priori X* = 1.146e+62; rounds [416, 32, 25, 25]; final 25): first round's universal lattice step and rounds 2-4 redone: [32, 25, 25]
+PASS Q7 exact comparison below the final bound H <= 25: 141752 three-letter words against 376 two-letter words: 0 clashes; planted N N u2 x3 words found 350 of 350
+PASS Q8 independent search from the maps (three-letter gaps up to 9, two-letter gaps up to 40): 4160 words, 0 clashes
+PASS Q9 Round 16 survives the log-form correction (the Matveev starts move by at most 1 and the lattice steps land inside the ranges Round 16 checked exactly): corrected starts E <= 5063612202248, H <= 6453509010813, H <= 1.532e+17; after LLL: E <= 10 (Round 16 checked 10), H <= 7 (7), short words H <= 30 (30), long word H <= 39 (39)
+9/9 checks pass
