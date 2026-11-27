@@ -1,0 +1,11 @@
+PASS F1 oscillator: Krein sign +, theta = phi, crossing index +1 s=1 theta=1.100 mu=1
+PASS F2 iteration formula = crossing count (stable test systems, both Krein types) 12 of 12
+PASS F3 (-1)^mu(m-th lap) = fixed-point index of F^m, m = 1..4 692 of 692 orbits
+PASS F4 elliptic pairs match the Floquet class 
+PASS F5 straight line exactly when no elliptic pair 403 straight, 289 bend
+PASS F6 decode from integers 
+PASS F7 separation inside the (+1,+1) group 52 orbits, 4 stable
+PASS F8 mu(2) - 2 mu(1) parity counts elliptic pairs 
+PASS F9 the eight: E-E, Krein signs (-, +), line bends first at lap 4 angles [0.0529, 1.873], L = [0, 0, 0, 2, 2, 2]
+PASS F10 19 refined stable orbits: 10 mixed, 9 definite {'E-E': 19, 'residual > 1e-9': 49, 'E-H': 2, 'no refinement': 1}
+10 of 10 pass

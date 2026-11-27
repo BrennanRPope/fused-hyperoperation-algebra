@@ -6,7 +6,8 @@ unstable twin where knot type can't, in the logistic, standard and Hénon maps, 
 return map" as worth following (high). Asked for by Brennan on Nov 27 ("Yes" to that follow-up).
 
 Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **21 of 21 pass** (numpy, sympy, gcc;
-a few seconds; it reads the saved JSON and recomputes the key numbers live). No Lean module. Pictures:
+a few seconds; it reads the saved JSON and recomputes the key numbers live); section 8 adds
+[`checks_cz.py`](checks_cz.py) → [`checks_cz_output.txt`](checks_cz_output.txt), **10 of 10 pass**. No Lean module. Pictures:
 [`figures.py`](figures.py) → [`figures/`](figures/). Colour key where it applies: **orange = known, blue = our reading
 of known pieces, green = not found in print** (nothing on this page is green).
 
@@ -65,6 +66,9 @@ Conley–Zehnder index and its iterates (Bott's formula; Long's index iteration 
 rotation that grows irregularly with the iterate, a hyperbolic pair a fixed even or odd amount, so E-E and H-H part
 ways. It is computable rigorously (Joung and van Koert 2024 do it for the restricted three-body problem). A test on
 the Li–Liao catalog, and a check of whether the per-pair dial sign can be read from it, would be the follow-up.
+**Done in [section 8](#8-follow-up-the-index-pair-by-pair-conleyzehnder-iteration):** it does separate stable from
+unstable on all 692 orbits, but as the known Bott–Long theory, carrying the same information as the multipliers plus
+their Krein signs.
 
 ## 1. The return map
 
@@ -228,6 +232,87 @@ d-signs and so loses them in four dimensions. No new dial: k = 0 throughout and 
   degree in Mathlib, so the value-only count has no Lean home.
 - **three-body-order:** item 7 above; its stability numbers should be replaced by `floquet.json` here.
 
+## 8. Follow-up: the index pair by pair (Conley–Zehnder iteration)
+
+*Added Nov 27, after the first draft, on the go-ahead to follow the lead named above.*
+
+**Answer: yes, the per-pair index tells every stable orbit from every unstable one, on all 692 catalog orbits. It
+does so because it is built from the same unit-circle multipliers as the Floquet class: this is the known
+iteration theory of Bott (1956) and Long (2000), written in integers.** What it adds to round one is a clear reason
+why round one failed, and the Krein signs, which say which stable orbits can turn complex-unstable.
+
+![Figure 8](figures/fig8-cz-iterates.png)
+
+*Figure 8. Left: the Conley–Zehnder index of the m-th lap minus m times the index of one lap. With only hyperbolic
+pairs (H-H, and the complex quartet) it is exactly 0 for every m. Any elliptic pair bends the line: an E-H orbit
+bends at lap 2, and the figure-eight at lap 4. Right: the figure-eight's index minus its mean growth splits into one
+sawtooth per elliptic pair (Long's formula); pair 1 sits at angle 0.053 with Krein sign −, pair 2 at 1.873 with sign +.*
+
+1. **What was computed.** For each orbit, the index of the m-th lap, μ(m), for m = 1 to 60, from Long's iteration
+   formula: μ(m) = m(μ(1) − r) + 2 Σⱼ ⌈m θⱼ / 2π⌉ − r, with r the number of elliptic pairs and θⱼ each pair's
+   multiplier angle turned to (0, 2π) by its Krein sign. Our sign convention and the formula were checked against
+   direct crossing counts (Robbin–Salamon) on 359 test paths: all agree, 2 only after a finer time grid near a
+   resonance (F1, F2). The value of μ(m) depends on a choice of frame along the orbit, but only through a term
+   m × (an even number), so everything used here is free of that choice: bend(m) = μ(m) − m μ(1).
+2. **It separates.** bend(m) = 0 for every m exactly when the orbit has no elliptic pair. All 403 such orbits stay on
+   the straight line for 60 laps; all 289 with an elliptic pair leave it (F5). One elliptic pair shows at lap 2
+   every time, since bend(2) is then odd (F8). Two show by lap 2 in 37 of 71 stable orbits and by lap 30 in all of
+   them; the figure-eight shows at lap 4. Among the 52 safe orbits whose fixed-point index is +1 at every lap, the 4
+   stable ones bend and the other 48 never do (figure 9, F7). The integers μ(1..60) alone give back the number of
+   elliptic pairs for all 692 orbits (F6).
+3. **Round one sits inside it.** (−1)^μ(m) equals the fixed-point index of F^m for all 692 orbits and m = 1 to 4
+   (F3). So the round-one index is the parity of the Conley–Zehnder index, and parity is exactly what forgets
+   whether two pairs are both elliptic or both hyperbolic. The topological object that keeps the full degree is local
+   Floer homology (Floer; Ginzburg and Gürel): its Euler characteristic is the fixed-point index, and for a
+   nondegenerate point it sits in degree μ. It is defined at elliptic points too, because a nondegenerate elliptic
+   point is an isolated fixed point even though it is not an isolated invariant set (section 5). It was not computed
+   here; it needs the symplectic structure, not just map values.
+4. **The dial reading, pair by pair** (figure 10). An elliptic pair is the tangent-law dial x = tan(θ/2); its m-th
+   lap is x = tan(mθ/2), which winds round the projective line and adds 2 to the index each time it passes x = 0,
+   the identity. A hyperbolic pair is the velocity-addition dial x = tanh(μ/2), which leaves 0 and never comes back,
+   so it only adds a fixed amount per lap. The Krein sign is the direction the elliptic dial winds. Round one's
+   failure, the product (+1)(+1) = (−1)(−1), is undone by reading the dials one at a time. This is our reading of
+   known pieces.
+5. **Krein signs of the stable orbits** (figure 11). Refining the 71 catalog E-E orbits as fixed points of F
+   confirms 19 (residual below 10⁻⁹ and still E-E); 49 do not refine that far in double precision, 2 turn out E-H
+   and 1 fails. Of the 19, 10 are mixed (the two pairs have opposite signs) and 9 definite (F10). By Krein's theorem
+   a definite stable orbit cannot turn complex-unstable under a small Hamiltonian change, and a mixed one can, when
+   its two angles meet. The figure-eight is mixed, but its two angles are 1.82 apart, far from meeting; its nearer
+   edge is the small angle 0.053 next to +1, the direction of its fold with Simó's H orbit (section 4).
+
+![Figure 9](figures/fig9-separation.png)
+
+*Figure 9. Left: the 52 safe orbits whose fixed-point index is +1 at every lap. Round one gives all of them the same
+index; the lap test bends only for the 4 stable ones (numbers: the lap where it first bends). Right: the lap where
+the line first bends, for the 71 stable catalog orbits.*
+
+![Figure 10](figures/fig10-dial-pole.png)
+
+*Figure 10. Left: the figure-eight's pair 2 as a tangent-law dial, lap by lap; it passes x = 0 at laps 4, 7 and 11,
+where its index jumps. Right: a hyperbolic pair as a velocity-addition dial never returns to 0.*
+
+![Figure 11](figures/fig11-krein.png)
+
+*Figure 11. Left: the multipliers of the 19 confirmed stable orbits on the unit circle, coloured by Krein sign
+(outer ring mixed orbits, inner ring definite). Right: each orbit's two distances to losing stability: to a Krein
+collision (gap between its angles; only mixed orbits can be lost this way) and to +1 or −1.*
+
+**Is it a lead?** For telling stable from unstable three-body orbits, the per-pair index works completely and is
+ready to be made rigorous: it is a list of integers, and certifying it needs only enclosures of the angles tight
+enough to place each m θ / 2π between integers up to the lap where the line bends (lap 4 for the eight). But it is
+the known theory, and it carries the same information as the multipliers plus their Krein signs. It says nothing
+about stability over long times, which still needs KAM. Grades:
+
+- **Worth following: low** as a new way to read stability (it is the standard one); **moderate** as the bookkeeping
+  for a proof pipeline, and for the Krein signs, which say which stable orbits can be lost by a collision.
+- **Could reach a proof: high** for linear stability of a given orbit, but that is not new (Roberts; Kapela and Simó
+  did the eight); **low** for stability over long times.
+
+**What would make something new here:** the mean index with a frame that comes from the geometry (the shape sphere)
+rather than an arbitrary one, compared with the word. If each close pass adds a fixed rotation, the mean index would
+count runs the way the period rule does ([three-body-word-formula](../three-body-word-formula/README.md)). That is
+a testable question; it was not tested here.
+
 ## Assumptions
 
 - **Equal masses, G = 1, zero angular momentum**, planar. Energy fixed per orbit at its Li–Liao start.
@@ -242,6 +327,12 @@ d-signs and so loses them in four dimensions. No new dial: k = 0 throughout and 
   only for the figure-eight through Kapela and Simó's proof. The staying test is a picture, not a proof.
 - **Twins:** pairing by identical word, from the earlier page; why II.C66 and II.C75 break the sign rule was not traced.
 - **"Stable" means linearly stable** (E-E) throughout. Long-time stability needs KAM on top.
+- **Section 8:** Long's iteration formula is a theorem for nondegenerate monodromies whose unit-circle multipliers
+  are simple; that holds for every orbit used. Indices are computed from it, not from crossing counts on the
+  three-body orbits themselves; the formula and our Krein convention were checked against crossing counts only on
+  test systems. Only quantities free of the choice of frame (bend(m), parity, the sawtooth part) are reported. Catalog
+  classes are at catalog precision; only 19 of the 71 stable orbits were confirmed by refinement. The decode uses
+  60 laps. The local Floer homology statement is quoted from the literature, not computed.
 
 ## Known vs new
 
@@ -263,6 +354,21 @@ d-signs and so loses them in four dimensions. No new dial: k = 0 throughout and 
 | Reduced 4D section map of the planar problem at L = 0, value-only 4D degree counts on it | Our computation | this page |
 | Catalog tally: 4 E-E among 52 orbits with index +1 at every iterate | Our computation | checks A5, B6 |
 | Floquet pair as a dial point (tangent law / velocity addition); index = product of d-signs | Our reading of known pieces (Chebyshev, half-angle addition) | this page |
+| Iteration formula for the index of iterates (sawtooth per elliptic pair) | Known | Bott 1956 (CPAM); Long 2000 (Adv. Math. 154); Long 2002 (book) |
+| Krein signature; mixed pairs can collide and leave the circle, definite ones cannot | Known | Krein 1950; Gelfand and Lidskii 1955; Moser 1958 |
+| Index and stability for symmetric orbits, applied to the figure-eight | Known | Hu and Sun 2009 (CMP 290); Hu, Portaluri and Yang 2020 (dihedral Bott formula) |
+| Morse index alone does not decide stability (ten symmetric orbits; the eight has Morse index 2 over a period) | Known | Berti, Canneori, Ciccarelli, De Blasi, Introna and Polimeni 2025 (arXiv 2511.17234) |
+| Odd index forces instability (relative equilibria) | Known | Hu and Sun 2009 (C. R. Acad. Sci.); Barutello and Portaluri 2014 |
+| Local Floer homology; Euler characteristic = fixed-point index | Known | Floer; Ginzburg and Gürel 2010 |
+| Catalog test: lap test separates 692 of 692; round-one index = parity of the iterate index | Our computation of known theory | checks F3–F8 |
+| Krein signs of 19 confirmed stable catalog orbits; the figure-eight is mixed (angles 0.053 sign −, 1.873 sign +) | Our computation; the eight's signs not found in print in our searches | checks F9–F10 |
+| Per-pair index as the winding of the dial through its identity | Our reading of known pieces | section 8 |
+
+**Searches for section 8 (Nov 27):** "Long precise iteration formulae Maslov-type index ellipticity closed
+characteristics"; "Hu Sun index and stability of symmetric periodic orbits figure-eight"; "Morse index odd implies
+linearly unstable periodic orbit n-body Portaluri"; "Krein signature Floquet multipliers figure-eight three-body".
+No paper found computes the figure-eight's Krein signs or runs the lap test on a large catalog; both are direct uses of
+the known theory.
 
 **Searches (Nov 27):** "fixed point index iterates symplectic map elliptic-elliptic hyperbolic-hyperbolic"; "figure-eight
 three-body linear stability Floquet multipliers Roberts Kapela Simó"; "Conley index isolating block three-body problem
@@ -284,3 +390,9 @@ the method, not the numbers, in what I could read.
 - `analysis.py` → `analysis.json`: the tally and the isolation test.
 - `checks.py` → `checks_output.txt`: 21 checks (A the map, B the index, C twins, D isolation, E dials).
 - `figures.py` → `figures/fig1`–`fig7`.
+- `cz.py`: Krein-normalised pair angles, the iterate index from Long's formula, the decode from integers, and an
+  independent Robbin–Salamon crossing count for test systems.
+- `czcatalog.py` → `cz.json`: the iterate data of the 692 orbits. `krein_test.py` → `krein.json`: refined stable
+  orbits and their Krein signs. `cz_summary.py` → `cz_summary.json`.
+- `checks_cz.py` → `checks_cz_output.txt`: 10 checks (F1–F10), a few seconds.
+- `figures_cz.py` → `figures/fig8`–`fig11`.

@@ -1,0 +1,409 @@
+{
+ "fate": {
+  "E-E": 19,
+  "residual > 1e-9": 49,
+  "E-H": 2,
+  "no refinement": 1
+ },
+ "orbits": [
+  {
+   "cls": "I.A1",
+   "word": "BabA",
+   "T": 6.325913982924369,
+   "residual": 2.1538326677728037e-14,
+   "krein": "mixed",
+   "phi": [
+    0.05292154026423349,
+    1.87297059842341
+   ],
+   "s": [
+    -1,
+    1
+   ],
+   "theta": [
+    6.230263766915352,
+    1.87297059842341
+   ],
+   "collision_gap": 1.8200490581591764,
+   "edge_gap": 0.05292154026423349
+  },
+  {
+   "cls": "I.A5",
+   "word": "BAbabABAbabaBABabaBA",
+   "T": 20.74906500997824,
+   "residual": 1.5079404391826756e-10,
+   "krein": "definite",
+   "phi": [
+    0.008414672897228963,
+    1.0730185522351954
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    6.2747706342823575,
+    5.210166754944391
+   ],
+   "collision_gap": 1.0646038793379664,
+   "edge_gap": 0.008414672897228963
+  },
+  {
+   "cls": "I.A8",
+   "word": "BabaBABabaBABabABAbabABAbabA",
+   "T": 33.8677507240067,
+   "residual": 2.467981374820738e-11,
+   "krein": "definite",
+   "phi": [
+    0.22646054571910826,
+    1.7437730483095315
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    6.056724761460478,
+    4.539412258870055
+   ],
+   "collision_gap": 1.5173125025904233,
+   "edge_gap": 0.22646054571910826
+  },
+  {
+   "cls": "I.A13",
+   "word": "BabaBAbabABAbaBABabABAbaBABabaBAbabA",
+   "T": 53.47149142469494,
+   "residual": 2.432099521776365e-10,
+   "krein": "definite",
+   "phi": [
+    0.36728589187614796,
+    1.36002822235117
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    5.915899415303438,
+    4.923157084828416
+   ],
+   "collision_gap": 0.992742330475022,
+   "edge_gap": 0.36728589187614796
+  },
+  {
+   "cls": "I.A17",
+   "word": "BabABaaBAbaBAbaBBabABabABabAAbaBAbaBAbbABabA",
+   "T": 63.534352978724534,
+   "residual": 1.9415802299249663e-11,
+   "krein": "mixed",
+   "phi": [
+    0.20425031744703753,
+    0.8617289600148988
+   ],
+   "s": [
+    1,
+    -1
+   ],
+   "theta": [
+    0.20425031744703753,
+    5.421456347164687
+   ],
+   "collision_gap": 0.6574786425678614,
+   "edge_gap": 0.20425031744703753
+  },
+  {
+   "cls": "I.A18",
+   "word": "BabaBAbabABabABAbaBABabABAbaBABabABabaBAbabA",
+   "T": 66.35197368597164,
+   "residual": 6.31089180913591e-10,
+   "krein": "mixed",
+   "phi": [
+    0.055699522722729246,
+    2.6152718599451994
+   ],
+   "s": [
+    -1,
+    1
+   ],
+   "theta": [
+    6.227485784456857,
+    2.6152718599451994
+   ],
+   "collision_gap": 2.55957233722247,
+   "edge_gap": 0.055699522722729246
+  },
+  {
+   "cls": "I.A63",
+   "word": "BabABaaBAbaBAbaBAbbABabABabAAbaBAbaBAbaBBabABabABabAAbaBAbaBAbaBBabABabABaaBAbaBAbaBAbbABabA",
+   "T": 128.93112290308275,
+   "residual": 3.992761676840928e-11,
+   "krein": "mixed",
+   "phi": [
+    0.020336016744011733,
+    2.312820152451116
+   ],
+   "s": [
+    1,
+    -1
+   ],
+   "theta": [
+    0.020336016744011733,
+    3.97036515472847
+   ],
+   "collision_gap": 2.292484135707104,
+   "edge_gap": 0.020336016744011733
+  },
+  {
+   "cls": "I.A97",
+   "word": "BabABaaBAbaBAbaBBabABabABaaBAbaBAbaBBabABabABaaBAbaBAbaBBabABabABabAAbaBAbaBAbbABabABabAAbaBAbaBAbbABabABabAAbaBAbaBAbbABabA",
+   "T": 164.87772317401388,
+   "residual": 9.76595915247458e-10,
+   "krein": "mixed",
+   "phi": [
+    0.23024241303756793,
+    1.3583537919766566
+   ],
+   "s": [
+    -1,
+    1
+   ],
+   "theta": [
+    6.052942894142018,
+    1.3583537919766566
+   ],
+   "collision_gap": 1.1281113789390886,
+   "edge_gap": 0.23024241303756793
+  },
+  {
+   "cls": "I.B1",
+   "word": "BabaBAbabA",
+   "T": 14.894305172247277,
+   "residual": 4.3076653355456074e-13,
+   "krein": "definite",
+   "phi": [
+    0.9991077610696983,
+    3.090581391460535
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    5.284077546109888,
+    3.1926039157190513
+   ],
+   "collision_gap": 2.0914736303908366,
+   "edge_gap": 0.05101126212925822
+  },
+  {
+   "cls": "I.B2",
+   "word": "BAbabABABabaBA",
+   "T": 13.86712343538556,
+   "residual": 4.801803399345772e-11,
+   "krein": "mixed",
+   "phi": [
+    0.010909301704420246,
+    2.379620500911331
+   ],
+   "s": [
+    -1,
+    1
+   ],
+   "theta": [
+    6.272276005475166,
+    2.379620500911331
+   ],
+   "collision_gap": 2.3687111992069108,
+   "edge_gap": 0.010909301704420246
+  },
+  {
+   "cls": "I.B5",
+   "word": "BabABAbaBAbaBABabA",
+   "T": 28.66927093407249,
+   "residual": 2.398759057502107e-13,
+   "krein": "definite",
+   "phi": [
+    0.5568851866346657,
+    0.6814152929724063
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    5.726300120544921,
+    5.60177001420718
+   ],
+   "collision_gap": 0.12453010633774064,
+   "edge_gap": 0.5568851866346657
+  },
+  {
+   "cls": "I.B11",
+   "word": "BabABabAAbaBAbaBAbaBAbaBBabABabA",
+   "T": 46.06689972486933,
+   "residual": 9.281464485866309e-13,
+   "krein": "definite",
+   "phi": [
+    1.757795561229671,
+    1.822103539831514
+   ],
+   "s": [
+    1,
+    1
+   ],
+   "theta": [
+    1.757795561229671,
+    1.822103539831514
+   ],
+   "collision_gap": 0.06430797860184301,
+   "edge_gap": 1.3194891137582792
+  },
+  {
+   "cls": "I.B15",
+   "word": "BAbabABAbabABAbabABABabaBABabaBABabaBA",
+   "T": 41.126055351187425,
+   "residual": 9.733601147310367e-10,
+   "krein": "mixed",
+   "phi": [
+    0.003366476783571355,
+    1.2201021199596098
+   ],
+   "s": [
+    -1,
+    1
+   ],
+   "theta": [
+    6.279818830396015,
+    1.2201021199596098
+   ],
+   "collision_gap": 1.2167356431760386,
+   "edge_gap": 0.003366476783571355
+  },
+  {
+   "cls": "I.B20",
+   "word": "BAbabABAbabABAbabABAbabABABabaBABabaBABabaBABabaBA",
+   "T": 54.86068196122527,
+   "residual": 2.564729164494056e-10,
+   "krein": "mixed",
+   "phi": [
+    0.022372293157668248,
+    0.5429306059545003
+   ],
+   "s": [
+    -1,
+    1
+   ],
+   "theta": [
+    6.260813014021918,
+    0.5429306059545003
+   ],
+   "collision_gap": 0.5205583127968321,
+   "edge_gap": 0.022372293157668248
+  },
+  {
+   "cls": "I.B28",
+   "word": "BabABAbaBAbaBAbabABabABabABAbaBAbaBABabABabABabaBAbaBAbaBABabA",
+   "T": 98.64945957624334,
+   "residual": 2.1398241083895295e-10,
+   "krein": "definite",
+   "phi": [
+    0.30573205599319786,
+    3.1201399675347803
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    5.977453251186389,
+    3.163045339644806
+   ],
+   "collision_gap": 2.8144079115415823,
+   "edge_gap": 0.021452686055012826
+  },
+  {
+   "cls": "I.B64",
+   "word": "BabABAbaBAbabABabABabaBAbaBAbabABabABAbaBAbaBABabABabaBAbaBAbabABabABabaBAbaBABabA",
+   "T": 125.96501687724567,
+   "residual": 2.887134743512412e-10,
+   "krein": "mixed",
+   "phi": [
+    0.46817433161341754,
+    1.7453627249724712
+   ],
+   "s": [
+    1,
+    -1
+   ],
+   "theta": [
+    0.46817433161341754,
+    4.537822582207115
+   ],
+   "collision_gap": 1.2771883933590538,
+   "edge_gap": 0.46817433161341754
+  },
+  {
+   "cls": "I.B67",
+   "word": "BabABabAAbaBAbaBAbaBAbbABabABabABabAAbaBAbaBAbaBAbaBBabABabABabABaaBAbaBAbaBAbaBBabABabA",
+   "T": 125.20963758763075,
+   "residual": 7.933706072757561e-11,
+   "krein": "mixed",
+   "phi": [
+    1.405101856312799,
+    2.7829105564739027
+   ],
+   "s": [
+    1,
+    -1
+   ],
+   "theta": [
+    1.405101856312799,
+    3.5002747507056835
+   ],
+   "collision_gap": 1.3778087001611037,
+   "edge_gap": 0.3586820971158904
+  },
+  {
+   "cls": "I.B72",
+   "word": "BabABAbaBAbaBAbabABabABabaBAbaBAbabABabABabABAbaBAbaBABabABabABabaBAbaBAbabABabABabaBAbaBAbaBABabA",
+   "T": 157.2189925239278,
+   "residual": 8.226309547199397e-10,
+   "krein": "definite",
+   "phi": [
+    0.04475418559537979,
+    0.7631667754247989
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    6.238431121584206,
+    5.520018531754787
+   ],
+   "collision_gap": 0.7184125898294191,
+   "edge_gap": 0.04475418559537979
+  },
+  {
+   "cls": "I.B163",
+   "word": "BabABabaBAbaBAbaBABabABabABAbaBAbaBABabABabABabaBAbaBAbaBAbabABabABabABAbaBAbaBABabABabABAbaBAbaBAbabABabA",
+   "T": 170.70963658082073,
+   "residual": 1.0214840084898924e-10,
+   "krein": "definite",
+   "phi": [
+    1.707760819118137,
+    1.9242322628102462
+   ],
+   "s": [
+    -1,
+    -1
+   ],
+   "theta": [
+    4.575424488061449,
+    4.35895304436934
+   ],
+   "collision_gap": 0.21647144369210913,
+   "edge_gap": 1.217360390779547
+  }
+ ]
+}
