@@ -13,9 +13,12 @@
      logistic map squared (a Graeffe step): μ(t²) = (1 − t − t²)(1 + t − t²).
   4. Positive 3-braids: Deligne's Möbius polynomial 1 − 2t + t³ = (1 − t)(1 − t − t²).
   5. Maps acting on disjoint coordinates commute (why far-apart strand maps form a trace monoid).
+
+  First compiled in the shared library on Nov 27, as FusedAlgebra.Topics.EntropyKnots
+  (namespace CircleOp.EntropyKnots, the library's convention; no proof changed).
 -/
 
-namespace EntropyKnots
+namespace CircleOp.EntropyKnots
 
 set_option linter.unusedSectionVars false
 
@@ -117,4 +120,4 @@ theorem disjoint_commute {α β γ : Type} (f : α → α) (g : γ → γ) (p : 
     (fun q : α × β × γ => (f q.1, q.2.1, q.2.2)) ((fun q : α × β × γ => (q.1, q.2.1, g q.2.2)) p) =
     (fun q : α × β × γ => (q.1, q.2.1, g q.2.2)) ((fun q : α × β × γ => (f q.1, q.2.1, q.2.2)) p) := rfl
 
-end EntropyKnots
+end CircleOp.EntropyKnots

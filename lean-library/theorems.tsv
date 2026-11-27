@@ -1368,18 +1368,18 @@ FusedAlgebra.Topics.EllipticS3	EllipticS3.sphere_moments
 FusedAlgebra.Topics.EllipticS3	EllipticS3.split_frob_fixes	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.sq_nonneg_rat	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EllipticS3	EllipticS3.turning_no_wall	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.deligne_b3	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.disjoint_commute	
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.graeffe_period3	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.indepPath_four	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.indepPath_three	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.indepPath_two	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.jw_chebyshev	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.jw_four	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.jw_three	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.jw_two	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.markov3_det	propext, Classical.choice, Quot.sound
-FusedAlgebra.Topics.EntropyKnots	EntropyKnots.path_jones_wenzl	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.deligne_b3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.disjoint_commute	
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.graeffe_period3	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.indepPath_four	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.indepPath_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.indepPath_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.jw_chebyshev	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.jw_four	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.jw_three	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.jw_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.markov3_det	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.EntropyKnots	CircleOp.EntropyKnots.path_jones_wenzl	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EntropyNoise	EntropyNoise.alarm_one_coin	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EntropyNoise	EntropyNoise.alarm_polar	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.EntropyNoise	EntropyNoise.ball_in_cube	propext, Classical.choice, Quot.sound

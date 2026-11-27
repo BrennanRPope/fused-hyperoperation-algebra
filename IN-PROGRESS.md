@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,671 theorems in 167 modules, Nov 27 ~00:45 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,683 theorems in 168 modules, Nov 27 ~01:30 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -63,3 +63,5 @@ Nov 27: shape-dial survey section N3, pendulum (DRAFT): the elliptic thread's pe
 Nov 27: `topics/riemann/round10/` added as DRAFT (the repo's prime results against the zeros, the prime lifecycle, hyper integrals; not a lead; 28 checks, picked up by CI as checks.py); `RiemannRound10` compiled into the library, 8 theorems; `newton2` now gets 0 ≤ (a − b)² from Int.mul_nonneg (core Lean has no Int.mul_self_nonneg), statement unchanged. `inputs/` working copies not committed.
 
 Nov 27: `topics/chaos-composition/` follow-up (DRAFT): the order dial q as a switch for entropy (checks J1–J5, figure 11, 52 checks in all) and a three-body note; from the chaos thread's patch, applied as written; no Lean change.
+
+Nov 27: `topics/entropy-knots/` added as DRAFT (entropy and knot theory for finding zeros and stable orbits; all known pieces, not a lead; 25 checks, picked up by CI as checks.py; 8 figures); `EntropyKnots` compiled into the library, 12 theorems, namespace renamed to CircleOp.EntropyKnots (the library's convention), no proof changed. From the study thread's patch on d352e71.
