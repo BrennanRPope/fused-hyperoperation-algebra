@@ -1,0 +1,467 @@
+{
+ "four_vs_one": {
+  "sum_h_bound": 2,
+  "words_checked": 105,
+  "with_fingerprint_1": []
+ },
+ "pairs": {
+  "42": {
+   "a_priori": {
+    "pair": "4v2",
+    "A": 4.280495508913164e+25,
+    "K": 2,
+    "X_star": 214164566459936956820469317632,
+    "check": "X - A (1 + log(9X+20))^K > 0 and increasing for X >= X_star"
+   },
+   "rounds": [
+    {
+     "X": 214164566459936956820469317632,
+     "a": 65,
+     "c": 43,
+     "b": 99,
+     "b_method": "LLL",
+     "b_prefixes": 2276,
+     "short_W_sum": 207,
+     "short_V_sum": 99,
+     "V_bound_if_W_short": 369,
+     "W_bound_if_V_short": 178,
+     "new_X": 369,
+     "seconds": 56.2
+    },
+    {
+     "X": 369,
+     "a": 11,
+     "c": 5,
+     "b": 17,
+     "b_method": "LLL",
+     "b_prefixes": 89,
+     "short_W_sum": 33,
+     "short_V_sum": 17,
+     "V_bound_if_W_short": 61,
+     "W_bound_if_V_short": 33,
+     "new_X": 61,
+     "seconds": 1.9
+    },
+    {
+     "X": 61,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "short_W_sum": 27,
+     "short_V_sum": 14,
+     "V_bound_if_W_short": 50,
+     "W_bound_if_V_short": 27,
+     "new_X": 50,
+     "seconds": 1.5
+    },
+    {
+     "X": 50,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "short_W_sum": 27,
+     "short_V_sum": 14,
+     "V_bound_if_W_short": 50,
+     "W_bound_if_V_short": 27,
+     "new_X": 50,
+     "seconds": 1.5
+    }
+   ],
+   "final_X": 50,
+   "boxes": {
+    "W": [
+     [
+      9,
+      14,
+      4
+     ]
+    ],
+    "Z": [
+     [
+      14
+     ]
+    ],
+    "YZ": 50,
+    "YW": 27
+   }
+  },
+  "43": {
+   "a_priori": {
+    "pair": "4v3",
+    "A": 4.494769268768361e+53,
+    "K": 4,
+    "X_star": 208120438353637188326075934991081137276626042021762831927476224,
+    "check": "X - A (1 + log(9X+20))^K > 0 and increasing for X >= X_star"
+   },
+   "rounds": [
+    {
+     "X": 208120438353637188326075934991081137276626042021762831927476224,
+     "a": 131,
+     "c": 90,
+     "b": 2286933397752594176,
+     "b_method": "Matveev",
+     "b_prefixes": 8909,
+     "d": 135,
+     "short_W_sum": 2286933397752594442,
+     "short_V_sum": 2286933397752594311,
+     "V_bound_if_W_short": 4044720232317816780,
+     "W_bound_if_V_short": 4044720232317816548,
+     "new_X": 4044720232317816780,
+     "seconds": 1.3
+    },
+    {
+     "X": 4044720232317816780,
+     "a": 43,
+     "c": 28,
+     "b": 65,
+     "b_method": "LLL",
+     "b_prefixes": 1033,
+     "d": 42,
+     "short_W_sum": 150,
+     "short_V_sum": 108,
+     "V_bound_if_W_short": 269,
+     "W_bound_if_V_short": 195,
+     "new_X": 269,
+     "seconds": 24.7
+    },
+    {
+     "X": 269,
+     "a": 11,
+     "c": 5,
+     "b": 17,
+     "b_method": "LLL",
+     "b_prefixes": 89,
+     "d": 8,
+     "short_W_sum": 36,
+     "short_V_sum": 28,
+     "V_bound_if_W_short": 68,
+     "W_bound_if_V_short": 53,
+     "new_X": 68,
+     "seconds": 2.1
+    },
+    {
+     "X": 68,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "d": 8,
+     "short_W_sum": 31,
+     "short_V_sum": 23,
+     "V_bound_if_W_short": 59,
+     "W_bound_if_V_short": 44,
+     "new_X": 59,
+     "seconds": 1.5
+    },
+    {
+     "X": 59,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "d": 6,
+     "short_W_sum": 29,
+     "short_V_sum": 23,
+     "V_bound_if_W_short": 55,
+     "W_bound_if_V_short": 44,
+     "new_X": 55,
+     "seconds": 1.6
+    },
+    {
+     "X": 55,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "d": 6,
+     "short_W_sum": 29,
+     "short_V_sum": 23,
+     "V_bound_if_W_short": 55,
+     "W_bound_if_V_short": 44,
+     "new_X": 55,
+     "seconds": 1.5
+    }
+   ],
+   "final_X": 55,
+   "boxes": {
+    "W": [
+     [
+      9,
+      14,
+      4
+     ],
+     [
+      9,
+      6,
+      4
+     ],
+     [
+      9,
+      14,
+      6
+     ],
+     [
+      14,
+      6,
+      4
+     ]
+    ],
+    "Z": [
+     [
+      14,
+      6
+     ],
+     [
+      14,
+      4
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      9,
+      14
+     ],
+     [
+      9,
+      6
+     ],
+     [
+      9,
+      4
+     ]
+    ],
+    "YZ": 55,
+    "YW": 44
+   }
+  },
+  "44": {
+   "a_priori": {
+    "pair": "4v4",
+    "A": 5.59232067424592e+95,
+    "K": 7,
+    "X_star": 48233894599819408799268196172604210702991042696931242210269217339480840529497511590364301720485282635769209421824,
+    "check": "X - A (1 + log(9X+20))^K > 0 and increasing for X >= X_star"
+   },
+   "rounds": [
+    {
+     "X": 48233894599819408799268196172604210702991042696931242210269217339480840529497511590364301720485282635769209421824,
+     "a": 231,
+     "c": 162,
+     "b": 7207112139162707968,
+     "b_method": "Matveev",
+     "b_prefixes": 27259,
+     "d": 243,
+     "f1": 22536000367701713148649947137155279093760,
+     "f1_method": "Matveev P(2,2)",
+     "f2": 224298779042505061715008134049693696,
+     "f2_method": "Matveev P(3,1)",
+     "short_sum": 22536000367701713148657154249294441801971,
+     "other_bound": 39857661238556928181988999338808850314553,
+     "new_X": 39857661238556928181988999338808850314553,
+     "seconds": 11.6
+    },
+    {
+     "X": 39857661238556928181988999338808850314553,
+     "a": 87,
+     "c": 59,
+     "b": 132,
+     "b_method": "LLL",
+     "b_prefixes": 4003,
+     "d": 89,
+     "f1": 57708071052944737304576,
+     "f1_method": "Matveev P(2,2)",
+     "f2": 2521784035772678656,
+     "f2_method": "Matveev P(3,1)",
+     "short_sum": 57708071052944737304797,
+     "other_bound": 102063751740762699124492,
+     "new_X": 102063751740762699124492,
+     "seconds": 108.8
+    },
+    {
+     "X": 102063751740762699124492,
+     "a": 51,
+     "c": 34,
+     "b": 78,
+     "b_method": "LLL",
+     "b_prefixes": 1429,
+     "d": 51,
+     "f1": 78,
+     "f1_method": "exact S11 (950950 pairs)",
+     "f2": 76,
+     "f2_method": "exact S02 (950950 suffixes)",
+     "short_sum": 207,
+     "other_bound": 371,
+     "new_X": 371,
+     "seconds": 164.3
+    },
+    {
+     "X": 371,
+     "a": 11,
+     "c": 5,
+     "b": 17,
+     "b_method": "LLL",
+     "b_prefixes": 89,
+     "d": 8,
+     "f1": 13,
+     "f1_method": "exact S11 (1458 pairs)",
+     "f2": 11,
+     "f2_method": "exact S02 (1458 suffixes)",
+     "short_sum": 39,
+     "other_bound": 74,
+     "new_X": 74,
+     "seconds": 2.0
+    },
+    {
+     "X": 74,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "d": 8,
+     "f1": 13,
+     "f1_method": "exact S11 (1080 pairs)",
+     "f2": 11,
+     "f2_method": "exact S02 (1080 suffixes)",
+     "short_sum": 35,
+     "other_bound": 66,
+     "new_X": 66,
+     "seconds": 1.5
+    },
+    {
+     "X": 66,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "d": 6,
+     "f1": 10,
+     "f1_method": "exact S11 (700 pairs)",
+     "f2": 9,
+     "f2_method": "exact S02 (700 suffixes)",
+     "short_sum": 32,
+     "other_bound": 61,
+     "new_X": 61,
+     "seconds": 1.5
+    },
+    {
+     "X": 61,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "d": 6,
+     "f1": 10,
+     "f1_method": "exact S11 (700 pairs)",
+     "f2": 8,
+     "f2_method": "exact S02 (700 suffixes)",
+     "short_sum": 31,
+     "other_bound": 59,
+     "new_X": 59,
+     "seconds": 1.4
+    },
+    {
+     "X": 59,
+     "a": 9,
+     "c": 4,
+     "b": 14,
+     "b_method": "LLL",
+     "b_prefixes": 64,
+     "d": 6,
+     "f1": 10,
+     "f1_method": "exact S11 (700 pairs)",
+     "f2": 8,
+     "f2_method": "exact S02 (700 suffixes)",
+     "short_sum": 31,
+     "other_bound": 59,
+     "new_X": 59,
+     "seconds": 1.5
+    }
+   ],
+   "final_X": 59,
+   "boxes": {
+    "W": [
+     [
+      9,
+      14,
+      4
+     ],
+     [
+      9,
+      6,
+      4
+     ],
+     [
+      9,
+      10,
+      4
+     ],
+     [
+      14,
+      10,
+      6
+     ],
+     [
+      9,
+      14,
+      6
+     ],
+     [
+      9,
+      14,
+      8
+     ],
+     [
+      8,
+      6,
+      4
+     ],
+     [
+      14,
+      6,
+      4
+     ],
+     [
+      9,
+      10,
+      6
+     ],
+     [
+      14,
+      10,
+      4
+     ]
+    ],
+    "Y": 59
+   }
+  }
+ },
+ "exact_check": {
+  "short_box_words": 2762934,
+  "short_table_distinct": 666435,
+  "planted_disguised_words": 1926110,
+  "planted_found": 1926110,
+  "planted_wrong": [],
+  "two_letter_streamed_up_to": 50,
+  "two_letter_words": 1376,
+  "three_letter_streamed_up_to": 55,
+  "three_letter_words": 516782,
+  "four_letter_streamed_up_to": 59,
+  "four_letter_words": 106624096,
+  "clashes": [],
+  "seconds": 55.6
+ },
+ "seconds": 441.6,
+ "peak_memory_MB": 157
+}

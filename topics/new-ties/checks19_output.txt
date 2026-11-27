@@ -1,0 +1,11 @@
+PASS Q1 F3: v19(T) <= 3 for every four-letter word (casework, then directly); five letters: cancellations exist and v19 grows: four letters: 226 tie patterns, tied units never add to 0 mod 19; 78964 words with gap sum <= 14: v19 counts {0: 2720, 1: 16730, 2: 35672, 3: 23842}; five letters: 12 of 3838 tie patterns cancel, e.g. NlNllNlNN; N K l K K m^M N has v19 = [3, 4, 5] for M = 0, 38, 5092
+PASS Q2 2^e2 5^e5 <= 80 for four letters (S <= 80 * 19^3 = 548,720): 144228 words (gap sum <= 16), 0 exceptions; largest 80, at ['NKmNN']
+PASS Q3 T = Q_p T(prefix) + 19^A_p T(suffix); 0 < log(1 + eta) < 0.112 * 10^-h_p; 10^n 20^(sum h) <= T <= 1.12 * 19^n * 200^(sum h): 8005 splits of 4000 random words, 0 exceptions; largest eta * 10^h / 0.112 = 0.897
+PASS Q4 suffix-step congruence (and e2(T) = e, e5(T) = f) at every split; v2(r_p P_p) >= 2 h_p, v5(r_p P_p) >= h_p: 101571 splits tested (2546 skipped as trivial cases), 0 exceptions
+PASS Q5 the exact 2-adic discrete logarithm step equals brute force (|m| <= M): 14944 (ratio, M) cases, 0 exceptions
+PASS Q6 Lemma N: 19^L/(rP) determines the item; different suffixes with one fingerprint differ by 20/19; parity: 1952 items, 0 collisions; 1291 suffix lists, 36 equal-fingerprint pairs, ratios {'19/20': 36}; the parity a2 - 2 a5 + a19 is odd for every 19^L/(rP) and for 20/19
+PASS Q7 a priori bounds from Matveev's theorem and the closed-form D-step: 4v2: X* = 2.142e+29 (A = 4.28e+25, power 2); 4v3: X* = 2.081e+62 (A = 4.49e+53, power 4); 4v4: X* = 4.823e+112 (A = 5.59e+95, power 7)
+PASS Q8 bound chains reproduced: 42: 369 -> 61 -> 50 -> 50 (final 50); 43: 4044720232317816780 -> 269 -> 68 -> 59 -> 55 -> 55 (final 55); 44: 371 -> 74 -> 66 -> 61 -> 59 -> 59 (final 59) (264 s)
+PASS Q9 the four-logarithm lattice bound is a true lower bound (prefix N l m N, |x| <= 9, whole box): lattice bound 5.074e-10, smallest found 2.500e-04
+PASS Q10 the exact comparison: no clash in pairs19.json, planted words found; all words with 1 to 4 letters up to small gap sums distinct; raw four-letter words from the maps: equal fingerprint means equal psi: pairs19.json: 2762934 short-box words against 1376 two-, 516782 three- and 106624096 four-letter words, 0 clashes, 1926110/1926110 planted found; independent: 19459 words, 0 clashes; 2548 raw words (gaps <= 2 letters), 648 fingerprints, 0 with two psi
+10/10 checks pass
