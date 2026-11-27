@@ -43,4 +43,15 @@ htests = {
 }
 for nm, e in htests.items():
     g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
+
+itests = {
+    'every_rung_four_thirds': R(2, 3)/R(1, 2) - R(4, 3),
+    'zero_rung_split': 1 + R(1, 3) - R(4, 3),
+    'copies_extreme': 1 + 3 - 4,
+    'circle_swell_ratio': R(1, 3)/R(2, 3) - R(1, 2),
+    'alpha_dip': -2*R(2, 3) + R(4, 3),
+    'inflaton_tail_eps': R(1, 2)*R(2, 3) - R(1, 3),
+}
+for nm, e in itests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
 print('ALL PASS' if ok else 'SOME FAIL')

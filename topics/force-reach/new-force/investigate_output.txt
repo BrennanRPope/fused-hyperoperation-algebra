@@ -1,0 +1,20 @@
+== I. The new force up close
+PASS  I1 the carrier is one particle, the circle's size (spin 0, no circle charge), with mass about 6e15 GeV from part H's hold; above it sit the charged copies at n x 5.2e17 GeV with charge n e   [carrier 6.15e+15 GeV, copies n x 5.215e+17 GeV]
+PASS  I2 who feels it, relative to gravity: ordinary matter 1/3, copies 3 (nine times more), light 0 (a passing light ray isn't pulled by it)   [matter 1/3, copies 3, light 0]
+PASS  I3 light still notices it another way: alpha = 4G/R^2 (part G) makes electric strength depend on the circle's size, d ln alpha / d ln R = -2, so the carrier also couples to electric and magnetic fields
+PASS  I4 between two masses with no circle charge, every rung gives 4/3 of Newton (5D static weight 2/3 vs 4D 1/2); the zero rung's 4/3 is gravity 1 plus the new force 1/3
+PASS  I4b so V r / (G m1 m2) = 1 + (1/3) e^(-r/lambda) + (4/3)(coth(r/2R) - 1); with an unheld circle (lambda -> infinity) it is exactly (4/3) coth(r/2R), the 5D image sum: the new force is what makes the zero rung match the others
+PASS  I4c three regimes: below the circle (23 l_P) gravity is five-dimensional; just outside it (about 5 R) it reaches 4/3 of Newton and then eases back as the new force fades (1.12 at the range, about 2000 l_P); far beyond the range it is plain Newton. The window is only about 85 circle-sizes wide   [at 5R: 1.3323; at the range: 1.1226; at 50 ranges: 1.000000; range / R = 85]
+PASS  I5 the field near a mass: the circle swells. Linear 5D gravity gives h_55 / h_00 = 1/2 for a static mass, so dR/R = (2/3) G M e^(-r/lambda) / (r c^2) with G the far-away Newton constant
+PASS  I5b and the electric strength dips there by d alpha / alpha = -2 dR/R = -(4/3) G M e^(-r/lambda) / (r c^2); at the surface of the Sun (if the range were long) that would be -2.8e-6   [Sun: G M / (R c^2) = 2.12e-6]
+PASS  I6 only black holes smaller than the range (horizon < 2000 l_P, mass < about 0.02 g) feel the swollen circle at their horizon; every astrophysical black hole is far bigger   [mass limit 2.2e-02 g]
+PASS  I7 each copy sits exactly on the extreme-black-hole line of this theory: charge^2 / (G mass^2) = alpha R^2 / G = 4 = 1 + a^2 with a^2 = 3, the Kaluza-Klein black hole's dilaton coupling (Gibbons and Maeda 1988). That is why like copies feel no net force (G1)
+PASS  I8 a black hole radiates the carrier only once its Hawking temperature passes 6e15 GeV, i.e. below about 2e-3 g, in the last instant of evaporation; copies only near the Planck mass   [carrier below 1.7e-03 g, copies below 2.0e-05 g]
+PASS  I9 during inflation the carrier is far heavier than the expansion rate (6e15 vs at most 4.7e13 GeV, from r < 0.036): it sits still at its minimum, so it leaves no fluctuations and no leftover energy   [m / H_inf = 131]
+PASS  I10 nor can it drive inflation itself: along its tail the slope parameter is epsilon = 1/3, far above the 0.01 that slow roll needs (and its minimum has negative energy)   [epsilon -> 1/3]
+PASS  I11 if it were ever shaken, it would settle when the universe was about 6e16 GeV hot and decay in about 1e-34 s (order of magnitude), long before anything observable: no relic carrier, no change to alpha since then   [settles at 6.6e+16 GeV (above the hottest inflation allows, 1.4e+16 GeV); lifetime ~ 3e-34 s]
+PASS  I12 relic copies (rough estimate): stable by charge, so if made they'd be heavy charged relics, the old 'pyrgon' problem (Kolb and Slansky 1984). Pair production is negligible if the universe was never hotter than about 2e16 GeV, and inflation's limit already keeps it below 1.4e16 GeV   [safe below ~1.9e+16 GeV; inflation max 1.4e+16 GeV]
+PASS  I13 colliders: the carrier is 4e11 times and the first copy 4e13 times beyond the LHC's 14 TeV   [4.4e+11, 3.7e+13]
+PASS  I13b the hold's leftover vacuum energy is about -2.5e-9 in Planck units, about 1e114 times the observed dark energy and of the wrong sign: something else must cancel it (the cosmological constant problem)   [-2.5e-09 vs observed 1.4e-123]
+
+PART I TOTAL: 17 pass, 0 fail

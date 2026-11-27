@@ -101,4 +101,24 @@ theorem sphere_shape_factor : (4 : ℝ) / (2 / 3) = 6 := by norm_num
 /-- Strong force with 5 flavours: b₀ = 11·3/3 − 2·5/3 = 23/3. -/
 theorem strong_b0_five : (11 * 3 / 3 : ℝ) - 2 * 5 / 3 = 23 / 3 := by norm_num
 
+/-! ### Part I: the new force up close -/
+
+/-- Each rung between static masses: 5D weight 2/3 over 4D weight 1/2 is 4/3. -/
+theorem every_rung_four_thirds : (2 / 3 : ℝ) / (1 / 2) = 4 / 3 := by norm_num
+
+/-- The zero rung's 4/3 is gravity (1) plus the new force (1/3). -/
+theorem zero_rung_split : (1 : ℝ) + 1 / 3 = 4 / 3 := by norm_num
+
+/-- Copies sit on the extreme-black-hole line: charge²/(G mass²) = 1 + a² = 1 + 3 = 4. -/
+theorem copies_extreme : (1 : ℝ) + 3 = 4 := by norm_num
+
+/-- Near a static mass the circle swells: h₅₅/h₀₀ = (1/3)/(2/3) = 1/2. -/
+theorem circle_swell_ratio : (1 / 3 : ℝ) / (2 / 3) = 1 / 2 := by norm_num
+
+/-- Electric strength dips twice as much: −2 · (2/3) = −4/3. -/
+theorem alpha_dip : (-2 : ℝ) * (2 / 3) = -4 / 3 := by norm_num
+
+/-- The circle's potential tail e^{−√(2/3) σ} has slope parameter (1/2)(2/3) = 1/3. -/
+theorem inflaton_tail_eps : (1 / 2 : ℝ) * (2 / 3) = 1 / 3 := by norm_num
+
 end FusedAlgebra.Topics.NewForce

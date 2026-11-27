@@ -89,4 +89,31 @@ omit [IsCharP K 0] in
 theorem strong_b0_five : (11 * 3 / 3 : K) - 2 * 5 / 3 = 23 / 3 := by grind
 end Hold
 
+/-! ### Part I: the new force up close (added Nov 27 from the topic file's Part I; same
+statements over any field of characteristic 0, proved by grind in place of norm_num) -/
+section PartI
+variable {K : Type} [Field K] [IsCharP K 0]
+
+omit [IsCharP K 0] in
+/-- Each rung between static masses: 5D weight 2/3 over 4D weight 1/2 is 4/3. -/
+theorem every_rung_four_thirds : (2 / 3 : K) / (1 / 2) = 4 / 3 := by grind
+
+/-- The zero rung's 4/3 is gravity (1) plus the new force (1/3). -/
+theorem zero_rung_split : (1 : K) + 1 / 3 = 4 / 3 := by grind
+
+omit [IsCharP K 0] in
+/-- Copies sit on the extreme-black-hole line: charge²/(G mass²) = 1 + a² = 1 + 3 = 4. -/
+theorem copies_extreme : (1 : K) + 3 = 4 := by grind
+
+/-- Near a static mass the circle swells: h₅₅/h₀₀ = (1/3)/(2/3) = 1/2. -/
+theorem circle_swell_ratio : (1 / 3 : K) / (2 / 3) = 1 / 2 := by grind
+
+omit [IsCharP K 0] in
+/-- Electric strength dips twice as much: −2 · (2/3) = −4/3. -/
+theorem alpha_dip : (-2 : K) * (2 / 3) = -4 / 3 := by grind
+
+/-- The circle's potential tail e^{−√(2/3) σ} has slope parameter (1/2)(2/3) = 1/3. -/
+theorem inflaton_tail_eps : (1 / 2 : K) * (2 / 3) = 1 / 3 := by grind
+end PartI
+
 end CircleOp.NewForce

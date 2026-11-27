@@ -246,3 +246,112 @@ ax.legend(fontsize=8, loc="upper right")
 ax.set_title("C. The strong force's strength comes from its material\nand one scale Λ (check S4)", fontsize=10.5)
 fig.suptitle("h8. Ways to derive a force's strength: its shape (quality) sets the number in front, its particles (material) set how it runs", fontsize=12)
 fig.tight_layout(); fig.savefig("figures/h8_strength_shape_and_material.png", dpi=150); plt.close(fig)
+
+# ---------------- h9: what carries it and what feels it (part I)
+res_ = json.load(open("results.json"))
+lam_ = float(res_["H_range_lP_NF2"]); Rl_ = 2*math.sqrt(137.035999084); mrad_ = float(res_["I_radion_GeV"]); M1_ = float(res_["I_copy1_GeV"])
+fig, axs = plt.subplots(1, 2, figsize=(13, 5.0), gridspec_kw={"width_ratios": [1.3, 1]})
+ax = axs[0]
+levels = [(1.4e4, "LHC collision energy (14 TeV)", "gray"), (4.7e13, "fastest possible inflation (H, from r < 0.036)", "#9467bd"),
+          (mrad_, "the carrier: the circle's size (spin 0, no charge)", "#2ca02c")] + \
+         [(n*M1_, "copies n = 1, 2, 3 (charges e, 2e, 3e)" if n == 2 else "", "#1f77b4") for n in (1, 2, 3)] + [(1.22e19, "Planck mass", "k")]
+for v, lab_, c_ in levels:
+    ax.hlines(math.log10(v), 0, 1, color=c_, lw=2.5)
+    if lab_:
+        ax.text(1.04, math.log10(v), lab_, va="center", fontsize=9, color=c_)
+ax.set_xlim(0, 2.6); ax.set_ylim(3, 20); ax.set_xticks([])
+ax.set_ylabel("mass or energy (log10 GeV)")
+ax.text(0.5, 9, "a gap of 10¹¹:\nnothing from this\ntheory down here", ha="center", fontsize=9, color="gray")
+ax.set_title("A. The ladder: one neutral carrier, then charged copies\n(checks I1, I9, I13)", fontsize=10.5)
+ax = axs[1]
+who = ["ordinary\nmatter", "a copy\n(charge ne)", "a light ray\n(passing)", "electric\nstrength α"]
+vals_ = [1/3, 3, 0, 0]
+ax.bar(range(4), vals_, color=["#7f7f7f", "#1f77b4", "#ff7f0e", "#ffffff"], edgecolor="k")
+for i, v in enumerate(vals_[:3]):
+    ax.text(i, v + 0.08, ["1/3", "3", "0"][i], ha="center", fontsize=11, fontweight="bold")
+ax.text(3, 0.5, "changes with\nthe circle:\nα ∝ 1/R²", ha="center", fontsize=9)
+ax.set_xticks(range(4)); ax.set_xticklabels(who, fontsize=9); ax.set_ylim(0, 3.6)
+ax.set_ylabel("pull of the new force, relative to gravity's")
+ax.set_title("B. Who feels it (checks I2, I3)", fontsize=10.5)
+fig.suptitle("h9. What carries the new force and what feels it", fontsize=12)
+fig.tight_layout(); fig.savefig("figures/h9_carrier_and_couplings.png", dpi=150); plt.close(fig)
+
+# ---------------- h10: the force and its field up close (part I)
+fig, axs = plt.subplots(1, 3, figsize=(16, 5.0))
+ax = axs[0]
+rr = np.exp(np.linspace(math.log(1), math.log(2e5), 600))
+fl = lambda r: 1 + math.exp(-r/lam_)/3 + 4/3*(1/math.tanh(r/(2*Rl_)) - 1)
+ax.plot(rr, [fl(r) for r in rr], color="#2ca02c", lw=2.5, label="gravity plus the new force (circle held)")
+ax.plot(rr, [4/3/math.tanh(r/(2*Rl_)) for r in rr], color="#1f77b4", ls="--", lw=1.6, label="if the circle were free: (4/3) coth(r/2R)")
+ax.axhline(1, color="gray", lw=1); ax.axhline(4/3, color="gray", lw=0.8, ls=":")
+ax.axvline(Rl_, color="k", ls=":", lw=1); ax.axvline(lam_, color="#d62728", ls=":", lw=1)
+ax.text(Rl_*1.1, 2.75, "circle\n23 l_P", fontsize=9); ax.text(lam_*1.1, 2.75, "range\n~2000 l_P", fontsize=9, color="#d62728")
+ax.text(3e4, 1.05, "Newton", fontsize=9, color="gray"); ax.text(3e4, 1.36, "4/3 Newton", fontsize=9, color="gray")
+ax.text(1.3, 2.3, "5D gravity\n(grows as R/r)", fontsize=9)
+ax.set_xscale("log"); ax.set_ylim(0.9, 3.0)
+ax.set_xlabel("distance between two masses (Planck lengths)"); ax.set_ylabel("V r / (G m₁ m₂): pull relative to Newton")
+ax.legend(fontsize=8, loc="center right")
+ax.set_title("A. The force law: 5D inside the circle, 4/3 just outside,\nNewton beyond the range (checks I4 to I4c)", fontsize=10.5)
+ax = axs[1]
+Ft_ = lambda r: (lambda h: -(fl(r + h)/(r + h) - fl(r - h)/(r - h))/(2*h))(1e-5*r)
+ax.plot(rr, [deff_of(Ft_, r) for r in rr], color="#2ca02c", lw=2.5)
+ax.axhline(3, color="gray", lw=1); ax.axhline(4, color="gray", lw=0.8, ls=":")
+ax.axvline(Rl_, color="k", ls=":", lw=1); ax.axvline(lam_, color="#d62728", ls=":", lw=1)
+ax.text(1.3, 4.05, "4: one extra direction", fontsize=9); ax.text(3e4, 3.03, "3", fontsize=9)
+ax.text(3e3, 3.5, "small bump: the new\nforce switching off", ha="center", fontsize=9, color="#d62728")
+ax.set_xscale("log"); ax.set_ylim(2.8, 4.3)
+ax.set_xlabel("distance (Planck lengths)"); ax.set_ylabel("effective dimension D_eff")
+ax.set_title("B. The same in the D_eff reading: a step at the circle,\na bump at the range (section 3's fingerprints together)", fontsize=10.5)
+ax = axs[2]
+g_ = np.linspace(-3*lam_, 3*lam_, 401); XX, YY = np.meshgrid(g_, g_); RRr = np.sqrt(XX**2 + YY**2) + lam_/50
+field = np.exp(-RRr/lam_)/(RRr/lam_)
+im = ax.imshow(np.log10(field), extent=[-3, 3, -3, 3], origin="lower", cmap="Greens", vmin=-3, vmax=1.7)
+th_ = np.linspace(0, 2*math.pi, 200); ax.plot(np.cos(th_), np.sin(th_), color="#d62728", lw=1.5)
+ax.text(0.75, 0.75, "one range", color="#d62728", fontsize=9)
+ax.plot([0], [0], "ko", ms=5); ax.text(0.12, -0.25, "mass", fontsize=9)
+cb = fig.colorbar(im, ax=ax, fraction=0.046); cb.set_label("log10 of how much the circle swells (relative)")
+ax.set_xlabel("distance (ranges)"); ax.set_ylabel("distance (ranges)")
+ax.set_title("C. The field: the circle swells near a mass,\ndR/R = (2/3) G M e^(−r/λ)/(r c²); α dips twice as much (I5)", fontsize=10.5)
+fig.suptitle("h10. The new force up close, at its own range", fontsize=12)
+fig.tight_layout(); fig.savefig("figures/h10_force_up_close.png", dpi=150); plt.close(fig)
+
+# ---------------- h11: indirect traces (part I)
+fig, axs = plt.subplots(1, 3, figsize=(16, 5.0))
+ax = axs[0]
+Ms = np.linspace(0, 4, 50)
+ax.fill_between(Ms, 0, 2*Ms, color="#cfe8cf", label="black holes allowed: charge ≤ 2 √G × mass")
+ax.plot(Ms, 2*Ms, color="k", lw=1.5, label="extreme black holes (a = √3)")
+ax.plot([1, 2, 3], [2, 4, 6], "o", color="#1f77b4", ms=9, label="the copies n = 1, 2, 3")
+ax.set_xlabel("mass (units of the first copy)"); ax.set_ylabel("charge (units of √G × first copy's mass)")
+ax.set_xlim(0, 4); ax.set_ylim(0, 8); ax.legend(fontsize=8.5, loc="upper left")
+ax.set_title("A. Each copy sits exactly on the extreme-black-hole line,\nso like copies feel no net force (checks I7, G1)", fontsize=10.5)
+ax = axs[1]
+Tlev = [(1.4e4, "LHC"), (4.7e13, "inflation's H, at most"), (1.41e16, "hottest the universe could\nhave been after inflation"),
+        (float(res_["I_relic_copy_Tsafe_GeV"]), "copies made only above about here\n(rough)"), (mrad_, "carrier mass"),
+        (float(res_["I_settle_T_GeV"]), "carrier settles if shaken"), (M1_, "first copy")]
+order_ = sorted(Tlev, key=lambda t: -t[0])
+ylab = {}
+for j, (v, lab_) in enumerate(order_[:5]):
+    ylab[lab_] = 18.0 - j
+ylab[order_[5][1]] = 12.6; ylab[order_[6][1]] = math.log10(order_[6][0])
+for v, lab_ in Tlev:
+    theory = ("copy" in lab_ or "carrier" in lab_ or "copies" in lab_)
+    ax.plot([0], [math.log10(v)], "o", color="#d62728" if theory else "k", ms=7)
+    ax.plot([0.02, 0.25], [math.log10(v), ylab[lab_]], color="gray", lw=0.7)
+    ax.text(0.28, ylab[lab_], lab_.replace("\n", " "), ha="left", va="center", fontsize=8.5, color="#d62728" if theory else "k")
+ax.axvline(0, color="gray", lw=1); ax.set_xlim(-0.2, 1.6); ax.set_xticks([]); ax.set_ylim(3, 18.6)
+ax.set_ylabel("energy or temperature (log10 GeV)")
+ax.set_title("B. Early universe: the copies are too heavy ever to have been made;\nthe carrier, if made, decays at once (I9, I11, I12)", fontsize=10.5)
+ax = axs[2]
+ss = np.linspace(-0.5, 6, 400)
+epsf = lambda s_: 0.5*((-6*(-math.sqrt(2/3))*math.exp(-math.sqrt(2/3)*s_) + (-6*math.sqrt(2/3))*math.exp(-6*math.sqrt(2/3)*s_)) /
+                       (-6*math.exp(-math.sqrt(2/3)*s_) + math.exp(-6*math.sqrt(2/3)*s_)))**2
+ax.plot(ss, [epsf(s_) for s_ in ss], color="#2ca02c", lw=2.5, label="slope parameter ε of the circle's potential")
+ax.axhline(1/3, color="#2ca02c", ls=":", lw=1); ax.text(4.2, 0.36, "tail: ε → 1/3", fontsize=9)
+ax.axhline(0.01, color="#d62728", ls="--", label="slow roll needs ε < 0.01")
+ax.set_yscale("log"); ax.set_ylim(1e-3, 1e2)
+ax.set_xlabel("circle size field σ (reduced Planck units; R = R* e^(√(2/3) σ))"); ax.set_ylabel("ε")
+ax.legend(fontsize=8.5, loc="upper right")
+ax.set_title("C. The circle's size can't be the inflaton: its potential\nis too steep everywhere along the tail (I10)", fontsize=10.5)
+fig.suptitle("h11. Indirect traces: black holes, the early universe and inflation", fontsize=12)
+fig.tight_layout(); fig.savefig("figures/h11_indirect_traces.png", dpi=150); plt.close(fig)

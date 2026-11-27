@@ -2549,13 +2549,18 @@ FusedAlgebra.Topics.NegativeOdds	CircleOp.NegativeOdds.turn_order_three	propext,
 FusedAlgebra.Topics.NegativeOdds	CircleOp.NegativeOdds.two_hundred_twice	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NegativeOdds	CircleOp.NegativeOdds.wall_absorbs	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NegativeOdds	CircleOp.NegativeOdds.wall_absorbs_inter	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.alpha_dip	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.circle_swell_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.copies_extreme	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.dual_exponent_mond	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.every_rung_four_thirds	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.gamma_from_strength	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.hold_curvature	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.hold_leftover	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.hold_mass_factor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.hold_turning_point	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.holder_pair	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.inflaton_tail_eps	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.klein_strength	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.like_charges_cancel	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.one_circle_gamma	propext, Classical.choice, Quot.sound
@@ -2569,6 +2574,7 @@ FusedAlgebra.Topics.NewForce	CircleOp.NewForce.su3_flavour_bound	propext, Classi
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.tower_leading_yukawa	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.tower_sum	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.vector_over_tensor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.zero_rung_split	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.commute_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_three	propext, Classical.choice, Quot.sound

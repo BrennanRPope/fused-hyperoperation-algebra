@@ -2,13 +2,15 @@
 
 *Nov 26, 2026. Follow-up to the force-reach and flux-tube-dial pages. Brennan: "So I'm trying to figure out if there is anything that might produce a new force we are unaware of", then "Not produce but predict".*
 
-Checks: `checks.py` → `checks_output.txt`, **24 / 24 pass**; `strength_checks.py` → `strength_output.txt`, **12 / 12**; `hold_strength_checks.py` → `hold_strength_output.txt`, **20 / 20**. Run them in that order: `checks.py` rewrites `results.json` and the other two add their G, H and S keys. Numpy, scipy, sympy, mpmath; under a minute. Pictures: `figures.py` → `figures/h1` to `h8`. Lean: `lean/NewForce.lean`, 20 pure-algebra statements, every one checked true by `lean/check_statements.py`.
+Checks: `checks.py` → `checks_output.txt`, **24 / 24 pass**; `strength_checks.py` → `strength_output.txt`, **12 / 12**; `hold_strength_checks.py` → `hold_strength_output.txt`, **20 / 20**; `investigate_checks.py` → `investigate_output.txt`, **17 / 17**. Run them in that order: `checks.py` rewrites `results.json` and the others add their G, H, S and I keys. Numpy, scipy, sympy, mpmath; under a minute. Pictures: `figures.py` → `figures/h1` to `h11`. Lean: `lean/NewForce.lean`, 26 pure-algebra statements, every one checked true by `lean/check_statements.py`.
 
-*Revised twice. First after Brennan's push-back: "Look harder please. The strength is something that could be derived at least in the special case from our work on electromagnetism", "I'm hoping it could generalize", and the reminder of the spinning black hole's frame dragging (section 6). Then, Nov 26 evening, after he said yes to finding what holds the circle, and added: "I'd really like to look at ways to derive the strength", "The strength seems related to the material or quality of the force", "So there are probably other variables at work" (sections 7 and 8).*
+*Revised twice. First after Brennan's push-back: "Look harder please. The strength is something that could be derived at least in the special case from our work on electromagnetism", "I'm hoping it could generalize", and the reminder of the spinning black hole's frame dragging (section 6). Then, Nov 26 evening, after he said yes to finding what holds the circle, and added: "I'd really like to look at ways to derive the strength", "The strength seems related to the material or quality of the force", "So there are probably other variables at work" (sections 7 and 8). Then, Nov 27: "Let's investigate the new force more closely" (section 9).*
 
 ## The result in two sentences
 
 **Yes, in the special case: if electromagnetism's phase circle is read as gravity's closed direction (our rung class, Δ < 0), its strength is fixed, α = 4G|Δ|, which puts the circle at about 21 to 23 Planck lengths, makes every charge a whole multiple of e, and predicts a new force on ordinary matter at exactly 1/3 of gravity's strength.** What holds the circle is its own vacuum energy plus one more term, and any hold built only from the circle and gravity gives that new force a range of about 2000 Planck lengths, 10²⁷ times shorter than any lab can probe: the force is real in this picture but invisible.
+
+**Up close (section 9):** the new force is carried by one particle, the circle's size, with mass about 6 × 10¹⁵ GeV. Ordinary matter feels it at 1/3 of gravity, the charged copies at 3 times gravity, and a passing light ray not at all, though electric strength itself shifts where the circle swells. Between the circle and the range, gravity is up to 4/3 of Newton. Every indirect trace checked (inflation, the early universe, relics, colliders, black holes) comes out invisible. The one striking fact is that each copy sits exactly on the extreme-black-hole line, which is known physics.
 
 **Ways to derive a strength, in general (section 8):** Brennan's "material or quality" splits cleanly. The quality is the shape of the force's hidden space, which sets the number in front (α = s·G/size², s = 4 for a circle, 6 for a sphere). The material is the set of particles the force carries, which sets how the strength changes with energy (for the strong force, all of it, given one scale). The other variables at work are exactly those: one size, one shape and the particle content.
 
@@ -124,6 +126,45 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 
 **The other variables, then:** a force's strength is set by gravity's G, one size (|Δ|), one shape factor (its quality) and its particles (its material). Our law supplies the size and whether the force is abelian; it doesn't yet supply the shape or the particle content. Those are where the other variables live.
 
+### 9. The new force up close (part I)
+
+*Brennan asked to investigate the new force more closely without naming an angle, so this takes four: what carries it and what feels it, what it does at its own range, its indirect traces, and what our framework adds.*
+
+![What carries it and who feels it](figures/h9_carrier_and_couplings.png)
+*h9. A: the ladder of particles this picture adds: one neutral carrier, then charged copies, all far above any collider. B: how strongly each kind of thing feels the new force, relative to gravity.*
+
+**What carries it and what feels it (I1 to I3).**
+- **The carrier** is one particle: the circle's size, spin 0, with no circle charge. Part H's hold gives it a mass of about **6 × 10¹⁵ GeV**. Above it sit the charged copies, n × 5.2 × 10¹⁷ GeV with charge n·e.
+- **Who feels it:** ordinary matter at **1/3** of gravity; the copies at **3** times gravity, nine times more; a passing light ray **not at all** (light bending is unchanged by it).
+- **Light still notices it another way.** Since α = 4G/R² (part G), electric strength depends on the circle's size: d ln α / d ln R = −2. So the carrier also couples to electric and magnetic fields, through the strength of the charge itself.
+
+![The force up close](figures/h10_force_up_close.png)
+*h10. A: gravity between two masses at every distance. Inside the circle it is five-dimensional; just outside, the new force adds 1/3; past the range it is Newton. The dashed line is what an unheld circle would give. B: the same in the D_eff reading. C: the field around a mass: the circle swells, and electric strength dips.*
+
+**What it does at its own range (I4 to I6).**
+- **Every rung adds 4/3 (I4).** Between masses with no circle charge, each heavy rung pulls with 4/3 of Newton (the 5D weight 2/3 over the 4D weight 1/2). The zero rung's 4/3 is gravity's 1 plus the new force's 1/3.
+- **So the new force is what makes the ladder whole (I4b).** V·r/(G m₁m₂) = 1 + (1/3)e^{−r/λ} + (4/3)(coth(r/2R) − 1). With an unheld circle this is exactly (4/3)coth(r/2R), the 5D image sum from section 2. Without the 1/3, the zero rung wouldn't match the others.
+- **Three regimes (I4c).** Inside the circle (23 l_P) gravity is five-dimensional. Just outside, at about 5R, it reaches 4/3 of Newton, then eases back as the new force fades: 1.12 at the range, plain Newton beyond. The window is only about 85 circle-sizes wide.
+- **The field picture (I5, I5b).** Near a mass the circle swells: linear 5D gravity gives h₅₅/h₀₀ = 1/2, so dR/R = (2/3)·GM e^{−r/λ}/(rc²). Electric strength dips twice as much: dα/α = −(4/3)·GM e^{−r/λ}/(rc²). If the range were long, that would be −2.8 × 10⁻⁶ at the Sun's surface.
+- **Black holes (I6).** Only a black hole whose horizon fits inside the range (below about 0.02 g) feels the swollen circle at its horizon. Every astrophysical black hole is vastly bigger.
+
+![Indirect traces](figures/h11_indirect_traces.png)
+*h11. A: each copy sits exactly on the extreme-black-hole line. B: energies in the early universe: the copies are too heavy to have been made, and the carrier, if made, decays at once. C: the circle's potential is too steep to drive inflation.*
+
+**Indirect traces (I7 to I13).**
+- **The copies are extreme black holes (I7).** For each copy, charge²/(G·mass²) = αR²/G = 4 = 1 + a² with a² = 3. That is exactly the extreme Kaluza–Klein black hole (Gibbons and Maeda 1988), and it is why like copies feel no net force (G1). Holzhey and Wilczek (1992) showed that extreme black holes of this kind behave like elementary particles, so here the copies and the smallest charged black holes are the same objects. This is the one striking fact in this section, and it is known: it is also the textbook example of the "weak gravity" pattern (Arkani-Hamed, Motl, Nicolis and Vafa 2007).
+- **Hawking radiation (I8).** A black hole radiates the carrier only once it is hotter than 6 × 10¹⁵ GeV, below about 2 × 10⁻³ g, in the last instant of evaporation. It radiates copies only near the Planck mass.
+- **Inflation (I9, I10).** The carrier is at least 130 times heavier than the fastest expansion inflation allows (H < 4.7 × 10¹³ GeV, from r < 0.036), so it sits still: no fluctuations, no leftover energy, no "moduli problem". It can't drive inflation itself: along its tail the slope parameter is ε = 1/3, far above the 0.01 that slow roll needs.
+- **Early universe (I11).** If it were ever shaken, the carrier would settle at about 6 × 10¹⁶ GeV and decay in about 10⁻³⁴ s (order of magnitude). There is no relic carrier and no change to α since then.
+- **Relic copies (I12, rough).** Copies are stable by charge, so if made they would be heavy charged relics: the old "pyrgon" problem (Kolb and Slansky 1984). A rough estimate says pair production is negligible if the universe was never hotter than about 2 × 10¹⁶ GeV, and inflation's limit already keeps it below 1.4 × 10¹⁶ GeV. So no dark matter comes from the ladder, and none of it is left to find.
+- **Colliders (I13).** The carrier is 4 × 10¹¹ times and the first copy 4 × 10¹³ times beyond the LHC's 14 TeV.
+- **The vacuum term (I13b).** The hold's leftover vacuum energy is about −2.5 × 10⁻⁹ in Planck units, about 10¹¹⁴ times the observed dark energy and of the wrong sign. Something else must cancel it.
+
+**What our framework adds (judged on its own merits).**
+- **Known:** everything above is standard Kaluza–Klein physics: the radion and its couplings, the 4/3 per massive rung, the extreme a = √3 black holes, the moduli and pyrgon problems.
+- **Ours, and modest:** the force law written as our rung tower (coth from section 2) plus the new force's 1/3, which shows the 1/3 is exactly what makes the zero rung match the rest; the D_eff fingerprint of the whole thing (a step at the circle, a bump at the range); and the copies as rungs of our law landing on the extreme-black-hole line because α = 4G|Δ|.
+- **Lead or not:** not a lead. The investigation confirms that this new force is consistent and invisible: nothing in it can be tested, and every trace checked comes out below observation. It would only become testable if something gave the hold a much smaller scale, which our law doesn't.
+
 ---
 
 ## Pass 2: what is known, and where experiments stand
@@ -140,6 +181,7 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 | Rungs, order off, read as light itself (section 6) | Kaluza (1921), Klein (1926); the scalar: Jordan (1947), Thiry (1948), Brans–Dicke (1961) | the free scalar is ruled out by Cassini, γ − 1 = (2.1 ± 2.3) × 10⁻⁵ (Bertotti, Iess, Tortora 2003); a held circle gives a short-range force, Eöt-Wash range < 38.6 µm at gravity's strength |
 | What holds the circle (section 7) | Casimir energy of the hidden circle: Appelquist and Chodos (1983); held spheres: Candelas and Weinberg (1984); circles held with extra terms: Ponton and Poppitz (2001) | the held-circle force is too short-range for any experiment; the leftover 4D vacuum energy is the cosmological constant problem |
 | Strength from shape and material (section 8) | gauge couplings from hidden-space symmetries (Weinberg 1983, Witten 1981); couplings and circumferences computed together (Candelas and Weinberg 1984); running and dimensional transmutation (Gross–Wilczek, Politzer 1973); the near-miss of the three strengths (unification literature; string scale near 5 × 10¹⁷ GeV, Kaplunovsky 1988) | simple shapes don't match the measured strengths at one size |
+| The new force up close (section 9) | the radion: Appelquist–Chodos (1983); extreme Kaluza–Klein black holes: Gibbons–Maeda (1988), Holzhey–Wilczek (1992); stable copies: Kolb–Slansky (1984); weak gravity pattern: Arkani-Hamed, Motl, Nicolis, Vafa (2007) | invisible: inflation's limit r < 0.036 (BICEP/Keck 2021) keeps the universe too cool to make copies; carrier far beyond colliders |
 | Flux exponent 3/2 at weak fields | deep MOND (Bekenstein–Milgrom 1984, AQUAL); scale invariance (Milgrom 2009) | an active debate about galaxies; not settled |
 
 **Known vs ours:**
@@ -171,6 +213,7 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 - **A3:** I first tested the period of the field w for Δ < 0. The law's ruler x = −u′/(d u) blows up at the zeros of w, which come twice per period of w. The check now tests the zero spacing, 2π/√(−Δ), as the first page states.
 - **B1:** sympy could not simplify coth against exponentials until it was rewritten in exponentials. The identity itself was never in doubt.
 - **S5, S6:** my hand estimate put the weak–strong meeting at 5 × 10¹⁷ GeV, close to the circle's copy scale. The check says 9.7 × 10¹⁶ GeV, which turns a near-match into a miss (shape factor 340, not about 13). The claim was corrected to what the check found.
+- **I4c, I6:** I first claimed a clean 4/3 plateau at the geometric mean of the circle and the range (it is 1.30 there; the window is only 85 circle-sizes wide), and a black-hole mass limit of 2 × 10⁻⁵ g (that was kilograms; it is 0.02 g). Both claims were corrected to what the checks found.
 - **H2:** the first run compared mpmath numbers at a tolerance tighter than mpmath's working precision; the formula was right, the tolerance was fixed.
 - **Lean:** the SU(2) flavour statement first claimed b₀ < 0 at 11 flavours; it is exactly 0 there, so the statement now says that.
 
@@ -179,8 +222,9 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 - `checks.py` → `checks_output.txt`, `results.json`: parts A (classes), B (rungs), C (screened), D (deep MOND), E (roundness), F (order on), P (polish).
 - `strength_checks.py` → `strength_output.txt`, and G keys added to `results.json`: part G (strength from the closed direction). Run after `checks.py`.
 - `hold_strength_checks.py` → `hold_strength_output.txt`, and H and S keys added to `results.json`: parts H (what holds the circle) and S (strength from shape and material). Run last.
-- `figures.py` → `figures/h1` to `h8`.
-- `lean/NewForce.lean` (20 statements), `lean/check_statements.py`.
+- `investigate_checks.py` → `investigate_output.txt`, and I keys added to `results.json`: part I (the new force up close). Run last.
+- `figures.py` → `figures/h1` to `h11`.
+- `lean/NewForce.lean` (26 statements), `lean/check_statements.py`.
 
 ## Sources (pass 2, checked Nov 26)
 
@@ -197,6 +241,11 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 - S. Weinberg, "Charges from extra dimensions", Phys. Lett. B 125 (1983) 265 (the Killing-vector coupling rule; cited from memory, not opened here).
 - E. Ponton, E. Poppitz, "Casimir energy and radius stabilization in five and six dimensional orbifolds", JHEP 06 (2001) 019, arXiv hep-ph/0105021.
 - V. Kaplunovsky, Nucl. Phys. B 307 (1988) 145: string unification scale near 5 × 10¹⁷ GeV.
+- G. W. Gibbons, K. Maeda, Nucl. Phys. B 298 (1988) 741: charged black holes with a dilaton; a = √3 is the Kaluza–Klein case.
+- C. Holzhey, F. Wilczek, "Black holes as elementary particles", Nucl. Phys. B 380 (1992) 447, arXiv hep-th/9202014: extreme dilaton holes behave like particles; for a > 1 their temperature is formally infinite.
+- E. W. Kolb, R. Slansky, "Dimensional reduction in the early universe: Where have the massive particles gone?", Phys. Lett. B 135 (1984) 378: stable Kaluza–Klein modes ("pyrgons") can overclose the universe.
+- N. Arkani-Hamed, L. Motl, A. Nicolis, C. Vafa, "The string landscape, black holes and gravity as the weakest force", JHEP 06 (2007) 060.
+- BICEP/Keck Collaboration, PRL 127 (2021) 151301: r < 0.036.
 
 - J. G. Lee, E. G. Adelberger, T. S. Cook, S. M. Fleischer, B. R. Heckel, "New Test of the Gravitational 1/r² Law at Separations down to 52 µm", PRL 124, 101101 (2020), arXiv 2002.11761: λ < 38.6 µm; extra dimension radius < 30 µm; dilaton or heavy graviton > 5.1 meV.
 - A. Kehagias, K. Sfetsos, "Deviations from the 1/r² Newton law due to extra dimensions", Phys. Lett. B 472 (2000) 39, arXiv hep-ph/9905417: α = 2n (torus), n + 1 (sphere).
