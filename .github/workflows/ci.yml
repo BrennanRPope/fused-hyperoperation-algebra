@@ -63,6 +63,11 @@ jobs:
       - name: Install check libraries
         run: python -m pip install -r tools/requirements-checks.txt
 
+      - name: Rebuild data files too large to commit (new-ties dist13.json, 15 MB, read by checks13.py)
+        # About 3 minutes on 4 cores. The repo keeps dist13_summary.json; topics/new-ties/.gitignore keeps
+        # the full file out.
+        run: cd topics/new-ties && python dist13.py 1000000 4
+
       - name: Run every topics/**/checks*.py (and tools/extra_checks.txt) and compare with the saved output
         # biology/03-cell takes about 13 minutes on a normal runner and doubled on a slow one (run 27),
         # so the per-script limit is 50 minutes; the job's own limit stays 90.
