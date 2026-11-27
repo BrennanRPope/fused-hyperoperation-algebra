@@ -314,6 +314,34 @@ FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tateRel_refl
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tateRel_symm	
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tateRel_trans	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.AbstractAlgebra	AbstractAlgebra.tate_glue	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.Scalars.central	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.Scalars.map_add	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.Scalars.map_mul	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.Scalars.map_neg	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.Scalars.map_one	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.beta_ne_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.comm_of_invariant	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.flipped_unit	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.lin	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.map_sub	
+FusedAlgebra.Topics.Averages	CircleOp.Averages.map_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.no_dynamics_without_phase	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.shift_coeff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.shift_nonzero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.sigma_from_shifts	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Averages	CircleOp.Averages.smul_smul	
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.J_comm_diff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.Z_of_ZJ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.affine_of_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.delta_additive	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.energy_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.same_sign	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.scalar_line_expand	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.scalar_line_solve	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.second_deriv	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.shift_linear	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.theta_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.AveragesPE	CircleOp.AveragesPE.trace_comm_zero	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.dep_extra	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.dep_v	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.BeyondOneLoop	BeyondOneLoop.gaussian_boost	propext, Classical.choice, Quot.sound
@@ -3489,19 +3517,25 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.boost_push	propext, Cla
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.cellMap_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.circular_binding	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.clock_multiply	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.clock_split	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.complex_distance	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.conj_product	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ee_alone_polar_modulus	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ee_alone_polar_prefactor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.equator_push_twist_cancel	
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.equator_ratio_three_sources	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.equator_split_per_unit_energy	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.fourth_rule_point_term	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.fourth_rule_residual	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.generic_radial_stiffness	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.generic_vertical_stiffness	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.horizon_rate	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.jet_minus_two_velocities	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.jet_push_on_orbit	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_clock_newton_plus_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_factor_pieces	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_laplace_sum	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_per_unit_energy	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_period	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_polar_is_newton	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_polar_prefactor_newton	propext, Classical.choice, Quot.sound
@@ -3513,6 +3547,7 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_turning_newton_plu
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_vertical_wobble	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.mino_radial_stiffness	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.mino_vertical_stiffness	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.one_term_split	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.own_field_squared	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_k2_law	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_push_total	
@@ -3520,13 +3555,16 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_turning_ratio	pro
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ray_norm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.rim_at_light	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ring_speed	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.river_square_cancels	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_layers	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_sq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shifted_laplace	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shifted_orbit_factor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.spherical_radial_stiffness	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.spherical_vertical_stiffness	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.square_from_three_sources	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.strut_push	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.time_part_is_heavier_newton	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.tphi_block	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.two_pn_miss	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.two_velocity_spin_factor	propext, Classical.choice, Quot.sound

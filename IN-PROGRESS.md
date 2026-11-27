@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,900 theorems in 181 modules, Nov 27 ~14:15 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,938 theorems in 183 modules, Nov 27 ~16:00 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -147,3 +147,6 @@ Nov 27: `topics/klein-flow/periodic-box/blowup/` (DRAFT): blow-up hunt in the tw
 Nov 27: `topics/new-ties/` round 19 (DRAFT, patch 0018): Conjecture 15.3 holds for every pair of words with at most four N/K letters each (computer-assisted, with a by-hand bound on the factors 19); at five letters that bound fails for one family, so the next length needs a 19-adic linear-forms step; checks19.py 10. Not a proof of the full conjecture.
 Nov 27: `topics/gravity-from-theory/spinning-river/` round 23 (DRAFT): Kerr's orbit equations in Mino time are Newton's for the shifted source plus one mass term each (polar_coupling.py, fig 31); 110 checks; 8 theorems added to Topics.SpinningRiver (library 3,900), the two spherical stiffness ones with 2 ≠ 0.
 Nov 27: `topics/gravity-from-theory/spinning-river/` round 24 (DRAFT): a novelty check of round 23 (Part 18 revised, section 18.6, fig 32); no new checks or Lean.
+Nov 27: `topics/gravity-from-theory/spinning-river/` round 25 (DRAFT): the one mass term split into the river's time part, push and twist (river_term.py, fig 33); 114 checks; 5 theorems added to Topics.SpinningRiver (library 3,905).
+Nov 27: `topics/gravity-from-theory/spinning-river/` round 26 (DRAFT): the equator split, where push (L²), twist (−2aL) and Newton's ring (a²) together make (L − a)² (equator_split.py, fig 34); 117 checks; 5 theorems added to Topics.SpinningRiver, the two generic stiffness ones with (2 : K) ≠ 0 (library 3,938).
+Nov 27: `topics/why-i/rotations-force-i/` (DRAFT): `Averages.lean` (11 theorems) and `AveragesPE.lean` (12) registered in the library as FusedAlgebra.Topics.Averages and FusedAlgebra.Topics.AveragesPE (namespaces CircleOp.Averages and CircleOp.AveragesPE, no proof changed; library 3,938). The topic files, main.tex, SUBMIT-STEPS.md and arxiv-source.tar.gz were already in the repo from 776fdf1 and match the paper's session; the shared folder's checks_output.txt (a failed run without SymPy) was not copied, so the repo keeps 32/32.
