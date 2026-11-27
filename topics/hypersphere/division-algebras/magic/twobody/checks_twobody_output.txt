@@ -1,0 +1,7 @@
+PASS  Y1 1PN two-body turn: Einstein gives 6, and the mass ratio enters only through X_A C_A + X_B C_B  T = -(C_A*X_A - C_B*X_A + C_B + s**2 - 6*s - v**2 + 8*v - 7)/(s - v + 1)**2
+PASS  Y2 matches Damour-Esposito-Farese's scalar-tensor periastron formula (two bodies), and that formula matches an exact probe in the JNW field  1/2 0 probe T = 14/5  DEF = 14/5  K/M = 5/3 vs 1+s = 5/3 | 1/3 2 probe T = 310/169  DEF = 310/169  K/M = 13/9 vs 1+s = 13/9 | -1/4 -3/2 probe T = 16  DEF = 16  K/M = 2/3 vs 1+s = 2/3
+PASS  Y3 Newton's third law: the pull per unit source mass is the same both ways (12 random pairs)  
+PASS  Y4 exact probe turns in both directions equal the pair rule, so the two-body turn is each body's pairs weighted by its mass share  
+PASS  Y5 the orbit closes at first order exactly when both bodies carry a single charge (any directions, any masses)  251 attracting pairs tested
+PASS  Y6 integrating the first-order two-body equations at equal masses gives the predicted turn  {'one charge each (sectors 1, opposite)': ('0', np.float64(-0.0011)), 'four charges vs four opposite': ('3', np.float64(2.9994)), 'four charges vs one opposite': ('3/2', np.float64(1.4907))}
+ALL PASS

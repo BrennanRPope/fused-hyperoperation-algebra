@@ -12,7 +12,8 @@ Checks: `checks_orbits.py` → `checks_orbits_output.txt`, **23 of 23 pass**, an
 `six/checks_six_output.txt`, **11 of 11 pass**, and `twov/checks_twov.py` → `twov/checks_twov_output.txt`, **8 of 8 pass**, and
 `dcopy/checks_dcopy.py` → `dcopy/checks_dcopy_output.txt`, **11 of 11 pass**, and
 `../division-algebras/magic/checks_magic.py`, **7 of 7 pass** (section 8), and
-`../division-algebras/magic/checks_misalign.py`, **6 of 6 pass** (section 9) (numpy, scipy; real orbit simulations, not
+`../division-algebras/magic/checks_misalign.py`, **6 of 6 pass** (section 9), and
+`../division-algebras/magic/twobody/checks_twobody.py`, **6 of 6 pass** (section 10) (numpy, scipy; real orbit simulations, not
 formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems),
 compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, no statement changed). Colour key as before: **orange = known, blue = ours**.
 
@@ -33,6 +34,8 @@ compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, n
    neutral case; N = 8's known zero is the n = 1 BPS case.
 5. **With charges pointing different ways (section 9)** the turn comes only from pairs of the black hole's charges:
    one charge alone never turns an orbit (exact Kepler, every order), and n − 1 is n(n − 1)/2 pairs added up.
+6. **For two comparable black holes (section 10)** the pair rule survives at first order: each body's own pairs count,
+   weighted by its share of the mass, and the orbit closes exactly when both bodies carry a single charge.
 
 **Does it open a lead?** Yes. For the electric force it turns the Coulomb orbit and Dirac's fine structure into one
 swap-rule area. For gravity the 6 is no longer put in by hand: it is an exact product of the same two twists the
@@ -335,6 +338,44 @@ independence at two charges written down. **Does it open a lead?** Yes, a concre
 symmetry lives (one field keeps Kepler, pairs break it). Next would be two equal masses, using the known first-order
 two-body formulas (Julié 2017; Khalil and others 2018), to see whether the pair rule survives beyond a small visitor.
 
+## 10. Two comparable black holes: the pair rule survives, weighted by mass
+
+![Pair rule for two bodies](../figures/figD5-pair-rule-for-two-comparable-black-holes.png)
+
+*Figure D5. A: the turn per lap as the mass moves from one body to the other, for four pairs of black holes.
+B and C: both bodies' paths at equal masses, from the first-order two-body equations (strong field, so the turn
+shows). D: the rule.*
+
+Section 9 used a small visitor. Here both bodies are four-charge black holes of any size, each charge pointing either
+way. Method: the first-order (1PN) two-body Lagrangian for bodies that trade gravitons, scalars and vectors (Einstein–
+Infeld–Hoffmann, Damour–Esposito-Farèse, Darwin), with every term where one body's field acts twice left general;
+the periastron advance worked out exactly; those terms then fixed from the exact small-visitor orbits of section 9,
+taken both ways round. Checks: `../division-algebras/magic/twobody/checks_twobody.py`, **6 of 6 pass**.
+
+**The result: the pair rule holds for any masses, with each body's pairs weighted by its share of the mass.**
+
+- **The turn slides in a straight line.** For any two bodies, T = X_A·T(B round A) + X_B·T(A round B), where X is
+  each body's share of the mass and the two T's are section 9's small-visitor answers. Nothing else depends on the
+  mass ratio (Y1). This is the structure of Damour and Esposito-Farèse's scalar-tensor formula, which the check
+  reproduces exactly, two bodies and all (Y2).
+- **So turning still comes from pairs of charges inside one body.** A body with one charge adds nothing. At equal
+  masses, a four-charge black hole against a one-charge one turns at 3/2, half of the 3 a small visitor would see
+  (Fig D5 A, C). Two charges against two opposite gives 1 at every mass ratio; four against four gives 3.
+- **The orbit closes exactly when both bodies have a single charge**, whatever their directions and masses
+  (251 attracting pairs, Y5). Any body with two or more charges makes the orbit turn. The single-charge case is
+  Caron-Huot and Zahraee's no-precession result for half-BPS pairs, found here by a different route.
+- **Simulated, not just derived.** Integrating the first-order two-body equations at equal masses gives 0.00, 3.00
+  and 1.49 for the three test cases, against 0, 3 and 3/2 predicted (Y6).
+
+**Limits.** First order only (1PN). The straight-line law is guaranteed there; at the next order (2PN) the mass
+ratio enters in new ways and the rule is untested. The bodies are extremal (BPS-type) black holes modelled as point
+particles, within the four-charge family.
+**Is it new?** The straight-line structure is known (Damour and Esposito-Farèse 1992), and the single-charge case is
+known (Caron-Huot and Zahraee 2019; Davis and Melville 2023 for the a = √3 tuning). I have not found the two-body
+turn for multi-charge (1/4- and 1/8-BPS) black holes, or the closes-exactly-when-both-single statement, written down.
+**Does it open a lead?** A modest one. It confirms the pair rule is not an artefact of a small visitor, but at
+first order it follows from known structure, so the real test of the hidden symmetry is the second order.
+
 ## Known vs ours
 
 - **Known:** Fock's 3-sphere and SO(4) (Fock 1935, Pauli 1926, Bargmann 1936), Moser regularization (1970),
@@ -369,7 +410,9 @@ two-body formulas (Julié 2017; Khalil and others 2018), to see whether the pair
 `six/` (`checks_six.py` 11/11, `checks_six_output.txt`, `results_six.json`, `figures_six.py`, `explore.py`,
 `general.py`, `srnum.py`, `nordnum.py`), `twov/` (`checks_twov.py` 8/8, `checks_twov_output.txt`, `derive.py`,
 `figure_twov.py`), `dcopy/` (`checks_dcopy.py` 11/11, `checks_dcopy_output.txt`, `results_dcopy.json`, `derive.py`,
-`numcheck.py`, `figure_dcopy.py`), and `../lean/Hypersphere.lean`.
+`numcheck.py`, `figure_dcopy.py`), `../division-algebras/magic/twobody/` (`pn1.py`, `check_def_probe.py`, `stu2.py`,
+`orbit1pn.py`, `checks_twobody.py` 6/6, `checks_twobody_output.txt`, `results_twobody.json`, `figure_twobody.py`), and
+`../lean/Hypersphere.lean`.
 
 ## References
 
@@ -378,7 +421,8 @@ Magic square and supersymmetric black holes (section 8): L. Borsten, M. J. Duff,
 M. Khuri and T. Ortín, arXiv:hep-th/9512177; G. Gibbons and K. Maeda 1988; D. Garfinkle, G. Horowitz, A. Strominger
 1991; S. Caron-Huot and Z. Zahraee, JHEP 07 (2019) 179, arXiv:1810.04694; S. Caron-Huot and J. Henn, PRL 113, 161601
 (2014); W. Goldberger and A. Ridgway 2017, arXiv:1611.03493; F.-L. Julié, arXiv:1711.10769; M. Khalil and others,
-arXiv:1809.03109. D. de Neeling, D. Roest, M. Seri, H. Waalkens, "Extremal black holes as relativistic
+arXiv:1809.03109; T. Damour and G. Esposito-Farèse, Class. Quantum Grav. 9, 2093 (1992); A.-C. Davis and
+S. Melville, "Orbital precession and hidden symmetries in scalar-tensor theories", arXiv:2307.06331. D. de Neeling, D. Roest, M. Seri, H. Waalkens, "Extremal black holes as relativistic
 systems with Kepler dynamics", Regul. Chaotic Dyn. 2024, arXiv:2303.13291 (section 9).
 
 V. Fock, Z. Phys. 98, 145 (1935). W. Pauli, Z. Phys. 36, 336 (1926). V. Bargmann, Z. Phys. 99, 576 (1936).
