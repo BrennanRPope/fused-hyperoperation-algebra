@@ -83,7 +83,7 @@ The prior-art audit (`../forces-as-curvature/prior-art-audit/README.md`) already
 
 ## For the dial map (Brennan's call)
 
-If wanted, `DERIVED-DIALS.md` could gain one row: **torsion: derived. The law's order gap at second order; zero where inputs commute, k × bracket on chains, zero on the sphere sum; its continuous form is the order-dial mutation λ = 1 − f/2.** Not added here.
+At Brennan's word (Nov 27), `DERIVED-DIALS.md` gained one row: **torsion: derived. The law's order gap at second order; zero where inputs commute, k × bracket on chains, zero on the sphere sum; its continuous form is the order-dial mutation λ = 1 − f/2.**
 
 ## What this doesn't do
 

@@ -36,6 +36,7 @@ A colour wheel works because each secondary colour mixes two *neighbouring* prim
 | holonomy | ω | d + q | d × the area two moves span (Gauss–Bonnet) | a reading of d and two directions | twisted-boosts; dial-audit F3, F4 |
 | counting q | [n]_q | q + k | the n-fold ∘ₖ power of 1 at k = q − 1 (Jackson 1910) | k in disguise | dial-audit F1, F2, Lean qint_is_circ_power |
 | face weight | β/α | q + d | the order survey’s face weight q = β/α | a reading of the curvature dial | order-dial-survey |
+| torsion | T | k | the law's order gap a ⊕ b − b ⊕ a at second order: k × the bracket on chains, zero on the 3-sphere sum √x·y·√x and on every commuting law | fixed by the law's own rules (grouping, −(a⊕b) = (−a)⊕(−b)); in-between values are the order-dial mutation λ = 1 − f/2 and break grouping | torsion-dial T1–T8 |
 
 The ℓp sum is left out on purpose: it is a *relation* between two primaries (rung s of the Pythagorean sum is ℓp with p = 2^s), not a new dial built from them.
 
