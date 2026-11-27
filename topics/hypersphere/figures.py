@@ -68,11 +68,11 @@ ax.set_aspect("equal"); ax.set_xlim(-2.8, 2.8); ax.set_ylim(-3.2, 2.8); ax.axis(
 ax.set_title("C. S³ flattened (seen from −1): every\ndirection out of 1 is an i, every one reaches −1 at π")
 save(fig, "fig1-i-and-pi-on-the-sphere.png")
 
-# ---------------------------------------------------------------- fig2 dial route vs sphere route
+# ---------------------------------------------------------------- fig2 k route vs sphere route
 fig, ax = plt.subplots(figsize=(13, 4.6))
 ax.axis("off")
-rows = [("", "Dial route (Nov 25 page)", "Sphere route (this page)", "Verdict"),
-        ("i", "chain a step at dial k; its size is\n1 + Re(k)·ε; keeping size forces Re k = 0",
+rows = [("", "k route (Nov 25 page)", "Sphere route (this page)", "Verdict"),
+        ("i", "chain ∘ₖ steps at homothety k; size is\n1 + Re(k)·ε; keeping size forces Re k = 0",
          "the sphere is the set of size-1 lifts;\nits tangent at 1 is i, and i² = −1", "same fact, one line shorter"),
         ("π", "the k = i flow first lands on the\nwall's mirror point at x = π",
          "distance from 1 to the opposite\npoint −1, in every dimension", "same fact, shorter"),
@@ -89,8 +89,8 @@ for r_i, row in enumerate(rows):
         ax.text(x, y, cell, va="top", fontsize=11, weight="bold" if r_i == 0 or c_i == 0 else "normal", color=col)
         x += colw[c_i]
     y -= 0.22 if r_i else 0.12
-ax.set_title("Figure 2. i and π: the sphere states the dial's facts more simply; the new content comes from S³")
-save(fig, "fig2-dial-route-vs-sphere-route.png")
+ax.set_title("Figure 2. i and π: the sphere states the k route's facts more simply; the new content comes from S³")
+save(fig, "fig2-k-route-vs-sphere-route.png")
 
 # ---------------------------------------------------------------- fig3 e from cube and simplex
 fig = plt.figure(figsize=(15, 4.8))
@@ -156,7 +156,7 @@ for n, c in ((5, "#9ec5e8"), (20, "#5a9bd5"), (200, OURS)):
     axs[1].plot(t, d, color=c, label=f"one coordinate on the sphere of radius √{n}")
 axs[1].plot(t, np.exp(-t * t / 2) / math.sqrt(2 * math.pi), "k--", label="bell curve e^{−t²/2}/√(2π)")
 axs[1].legend(fontsize=9); axs[1].set_xlabel("t")
-axs[1].set_title("B. In high dimension the sphere's (1 − t²/n)^{n/2}\nbecomes e^{−t²/2}: the dial chain again, at k = −½")
+axs[1].set_title("B. In high dimension the sphere's (1 − t²/n)^{n/2}\nbecomes e^{−t²/2}: the ∘ₖ chain again, at k = −½")
 save(fig, "fig5-e-on-the-sphere.png")
 
 # ---------------------------------------------------------------- fig6 ball <-> simplex, polydisc <-> cube
@@ -205,8 +205,8 @@ ax.set_title("Figure 7. 'Radius adds, sphere multiplies' needs a multiplication 
              "It exists only in 1, 2, 4 and 8 dimensions (Hurwitz 1898); in 3, 5, 6, 7 there is none to test")
 save(fig, "fig7-polar-split-only-in-1-2-4-8.png")
 
-# ---------------------------------------------------------------- fig8 plane dial = 1/R^2
-fig, axs = plt.subplots(1, 4, figsize=(17, 4.4))
+# ---------------------------------------------------------------- fig8 curvature = 1/R^2
+fig, axs = plt.subplots(1, 4, figsize=(19, 4.6), gridspec_kw={"wspace": 0.35})
 def tri_sphere(ax):
     t = np.linspace(0, 2 * np.pi, 300); ax.plot(np.cos(t), np.sin(t), color=GREY)
     ax.fill([-0.55, 0.6, 0.05], [-0.35, -0.3, 0.6], color=OURS, alpha=0.25)
@@ -215,10 +215,10 @@ def tri_sphere(ax):
         xs = np.linspace(0, 1, 50)
         ax.plot((1 - xs) ** 2 * a[0] + 2 * xs * (1 - xs) * m[0] + xs ** 2 * b[0],
                 (1 - xs) ** 2 * a[1] + 2 * xs * (1 - xs) * m[1] + xs ** 2 * b[1], color=OURS, lw=2)
-    ax.set_title("sphere, radius R\nangles add to more than π\nd = +1/R²")
+    ax.set_title("sphere, radius R\nangles add to more than π\ncurvature +1/R²")
 def tri_flat(ax):
     ax.fill([-0.55, 0.6, 0.05], [-0.35, -0.3, 0.6], color=GREY, alpha=0.25, ec="black")
-    ax.set_title("plane, R = ∞\nangles add to π\nd = 0")
+    ax.set_title("plane, R = ∞\nangles add to π\ncurvature 0")
 def tri_saddle(ax):
     t = np.linspace(0, 2 * np.pi, 300); ax.plot(np.cos(t), np.sin(t), color=GREY, ls=":")
     pts = [(-0.55, -0.35), (0.6, -0.3), (0.05, 0.6)]
@@ -227,17 +227,17 @@ def tri_saddle(ax):
         xs = np.linspace(0, 1, 50)
         ax.plot((1 - xs) ** 2 * a[0] + 2 * xs * (1 - xs) * m[0] + xs ** 2 * b[0],
                 (1 - xs) ** 2 * a[1] + 2 * xs * (1 - xs) * m[1] + xs ** 2 * b[1], color=KNOWN, lw=2)
-    ax.set_title("'sphere of imaginary radius' iR\n(hyperbolic) angles add to less than π\nd = −1/R²")
+    ax.set_title("'sphere of imaginary radius' iR (hyperbolic)\nangles add to less than π\ncurvature −1/R²")
 for ax, f in zip(axs[:3], (tri_sphere, tri_flat, tri_saddle)):
     f(ax); ax.set_aspect("equal"); ax.axis("off"); ax.set_xlim(-1.1, 1.1); ax.set_ylim(-1.1, 1.1)
 d = np.linspace(-1, 1, 5)
-axs[3].plot(d, d, color=OURS, label="excess / area = d")
+axs[3].plot(d, d, color=OURS, label="excess / area = curvature")
 axs[3].plot([0.25, -1], [0.33013 / (4 * 0.33080), -0.39874 / 0.39872], "o", color=KNOWN, label="measured triangles")
 axs[3].legend(fontsize=9)
-axs[3].set_xlabel("plane dial d = 1/R²"); axs[3].set_ylabel("(angle sum − π) ÷ area")
-axs[3].set_title("one line: angle excess = d × area\n(dots: sphere R = 2 and hyperbolic, checks P1, P2)")
-fig.suptitle("Figure 8. The plane dial d is the sphere's 1/radius². Flat is R = ∞; hyperbolic is an imaginary radius (Lambert 1766)", y=1.04)
-save(fig, "fig8-plane-dial-is-one-over-radius-squared.png")
+axs[3].set_xlabel("curvature = 1/R²  (the curvature dial d, at k = 0)"); axs[3].set_ylabel("(angle sum − π) ÷ area")
+axs[3].set_title("one line: angle excess = curvature × area\n(dots: sphere R = 2 and hyperbolic, P1, P2)")
+fig.suptitle("Figure 8. Curvature is the sphere's 1/radius² (d at k = 0). Flat is R = ∞; hyperbolic is an imaginary radius (Lambert 1766)", y=1.04)
+save(fig, "fig8-curvature-is-one-over-radius-squared.png")
 
 # ---------------------------------------------------------------- fig9 swap rule on the sphere
 fig = plt.figure(figsize=(14, 5))
@@ -325,13 +325,13 @@ save(fig, "fig11-kepler-orbits-are-great-circles.png")
 fig, ax = plt.subplots(figsize=(14, 6.6))
 ax.axis("off")
 rows = [
-    ("i", "simpler to state", "same content as the dial route on S¹; S³ adds a sphere of i's"),
+    ("i", "simpler to state", "same content as the k route on S¹; S³ adds a sphere of i's"),
     ("π", "simpler to state", "distance from 1 to −1 in every dimension; S³: 2π turn = −1 (spin)"),
     ("e", "not from the sphere", "right shape: the simplex in the cube's corner (1/n!); sphere gives e^π"),
-    ("core law", "comes out, limited", "radius adds, sphere multiplies: only dims 1, 2, 4, 8"),
+    ("circle operation ∘ₖ", "comes out, limited", "radius adds, sphere multiplies: only dims 1, 2, 4, 8"),
     ("rungs", "does not come out", "the sphere has radius 0; rung 3 survives only as angle × number"),
-    ("plane dial d", "simpler, unifies", "d = 1/R²: sphere, plane, imaginary sphere on one line"),
-    ("swap rule", "comes out directly", "turn = area / R² is the sphere's curvature; spin = half weight"),
+    ("curvature", "simpler, unifies", "1/R² (d at k = 0): sphere, plane, imaginary sphere on one line"),
+    ("swap rule", "comes out directly", "turn = curvature × area is the sphere's curvature; spin = half weight"),
     ("probability", "partly", "Born rule = cap area; union rule only for orthogonal hemispheres (cube)"),
     ("electromagnetism", "simpler", "4π in Coulomb = sphere's area; cube gives the same flux with 6 integrals"),
     ("special relativity", "simpler, unifies", "sky as sphere: boost = radius, turn = angle; Doppler factors multiply"),

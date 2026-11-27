@@ -2,12 +2,16 @@
   Laws from the hypersphere: the exact algebra behind the hypersphere page and its orbits section
   ===============================================================================================
 
-  DRAFT. Companion checks: ../checks.py (57 checks) and ../orbits/checks_orbits.py (21 checks).
+  DRAFT. Part of Affine Composition Theory, built on Fused Hyperoperation Algebra (this library).
+  Names: the circle operation a ∘ₖ b = a + b + k·ab is `CircleOp.circ` in code (`MultAdd.multAdd` before 1.0), written
+  a ◯ b here, the Lean glyph the 1.0 rename plan recommends (names-review/RENAME-PLAN.md); it was called mult-add
+  before 1.0.
+  Companion checks: ../checks.py (57 checks), ../orbits/checks_orbits.py (23), ../orbits/six (11),
+  ../orbits/twov (8) and ../orbits/dcopy (11).
   Core Lean 4.37.0-rc1 only (no mathlib), no `sorry`. Imports Base only.
-  First compiled in the shared library on Nov 26. Every proof is `grind`, `decide` or a short
-  induction; the facts that evaluate Rat definitions or Rat numerals (sections 7 to 9) use
-  `unfold …; grind` or `grind`, because `decide` can't evaluate Rat arithmetic in core Lean.
-  Names updated to 1.0 (CircleOp.circ, called MultAdd.multAdd before 1.0).
+  First compiled in the shared library on Nov 26; recompiled Nov 27 after the Affine Composition Theory clean-up.
+  Every proof is `grind`, `decide` or a short induction; the facts that evaluate Rat definitions or Rat numerals
+  (sections 7 to 9) use `unfold …; grind` or `grind`, because `decide` can't evaluate Rat arithmetic in core Lean.
 
   What is here, and what is known vs ours:
     1. Quaternions (known: Hamilton 1843; Euler's four-square identity 1748).
@@ -29,16 +33,19 @@
     8. Gravity's 6, split exactly (ours as a split; the frequencies are textbook; ../orbits/six/checks_six.py):
        for a near-circular Schwarzschild orbit, (radial ÷ angular frequency)² = 1 − 6M/r =
        (1 − 2M/r)(1 − 4v²), v the local orbital speed, beside the gyroscope's 1 − 3M/r = (1 − 2M/r)(1 − v²).
-       Same space factor; the orbit's velocity factor runs at 2v. Both fuse by the circle operation.
+       Same space factor; the orbit's velocity factor runs at 2v. The fractions combine by the circle operation ∘₁.
        The general rule T = (N − 4v²)/B for any static metric is checked symbolically in sympy, not here.
        The 4v² is v² (special relativity) + 3v² (gravity pulls on energy): ../orbits/twov/checks_twov.py.
+    9. Gravity's 6 through the double copy (ours, on known parts; ../orbits/dcopy/checks_dcopy.py): the Kerr–Schild
+       probe shell has (k·p)² = E² + 2E·p + p²; the pieces add 0, 4 and 2, so 6 = 2 + 2² and 1 + 3 = 2².
+       (There k is the light-like Kerr–Schild direction, not the homothety.)
 -/
 import FusedAlgebra.Base
 
 namespace Hypersphere
 open CircleOp
 
-local infixl:65 " ✳ " => circ
+-- a ◯ b = a + b + a·b is the library's own notation for `circ` (FusedAlgebra.Base), opened with CircleOp.
 
 /-! ## 1. Quaternions over the integers -/
 
@@ -177,9 +184,9 @@ theorem gyro_split (x : Rat) (h2 : 1 - 2 * x ≠ 0) :
     (1 - 2 * x) * (1 - vsq x) = 1 - 3 * x := by
   unfold vsq; grind
 
-/-- The orbit's fractions fuse by the circle operation: −6x = (−2x) ✳ (−4v²). -/
+/-- The orbit's fractions combine by the circle operation: −6x = (−2x) ◯ (−4v²). -/
 theorem orbit_fractions_fuse (x : Rat) (h2 : 1 - 2 * x ≠ 0) :
-    -(6 * x) = (-(2 * x)) ✳ (-(4 * vsq x)) := by
+    -(6 * x) = (-(2 * x)) ◯ (-(4 * vsq x)) := by
   show -(6 * x) = -(2 * x) + -(4 * vsq x) + -(2 * x) * -(4 * vsq x)
   unfold vsq; grind
 

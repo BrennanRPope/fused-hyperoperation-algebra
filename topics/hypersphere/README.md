@@ -1,14 +1,17 @@
 # DRAFT · Starting from the hypersphere: which laws come out, and are polar coordinates simplest there?
 
-**DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
+**DRAFT, Nov 26 2026.** Part of Affine Composition Theory, the theory built on Fused Hyperoperation Algebra (repo:
+fused-hyperoperation-algebra). The algebra supplies the circle operation a ∘ₖ b = a + b + k·ab (called mult-add before
+1.0); the theory supplies the shapes and dials. The hypersphere is the round setting of the ℓp exponent, **p = 2**
+(between the cross-polytope at p = 1 and the cube at p = ∞).
 Asked for by Brennan on a call: "that hypersphere, that is the what I'd like to look and see if we can derive all of
 the fundamental laws from", and whether polar coordinates are simpler on a hypersphere than on the other shapes. He
 added: "I think I and pie both would be easier to derive that way", and then said yes to adding e.
 
-Builds on `polar-coordinates/` and `polar-recast/` and does not repeat them; compares with `why-i/e-i-pi/` (the dial
-route to e, i and π). Checks: `checks.py` → `checks_output.txt`, **57 of 57 pass** (numpy, scipy). Pictures:
+Builds on `polar-coordinates/` and `polar-recast/` and does not repeat them; compares with `why-i/e-i-pi/` (the k route
+to e, i and π: chaining small steps of the circle operation at homothety k). Checks: `checks.py` → `checks_output.txt`, **57 of 57 pass** (numpy, scipy). Pictures:
 `figures.py` → `figures/`. Colour key: **orange = known, blue = ours** (a reading or bridge, not a new theorem),
-red = does not work. No Lean was compiled in this pass.
+red = does not work. Lean: `lean/Hypersphere.lean`, compiled in the shared library as `FusedAlgebra.Topics.Hypersphere`: all 33 theorems, no sorry. To compile, the Nov 27 version took back the library's earlier proofs for 14 Rat facts (`unfold …; grind` or `grind`, since `decide` can't evaluate Rat in core Lean), opens `CircleOp` and uses the library's own ◯ notation; no statement changed.
 
 ## The short answer
 
@@ -23,17 +26,17 @@ red = does not work. No Lean was compiled in this pass.
   The 6 is 2 (space) + 1 (special relativity) + 3 (gravity pulling on energy). Through string theory's double copy
   it is 2 + 2²: gravity's coupling is the electric one squared, and the 2 in 2v is the 2 of that square.
 - **i and π** come out of the sphere in one line each: i is the step that stays on the sphere (its tangent at 1), and
-  π is the distance from 1 to the opposite point −1. That is the same content as the dial route, stated more simply.
+  π is the distance from 1 to the opposite point −1. That is the same content as the k route, stated more simply.
   The new content comes from the 3-sphere: there i becomes a whole sphere of i's that do not commute, which is where
   spin and the swap rule live.
 - **e** does not come from the sphere. Its right shape is the **simplex in the cube's corner**: that corner piece has
   volume 1/n!, and adding them over every dimension gives e. The sphere gives e^π instead, and the e inside it is the
   same simplex, hidden in the sphere's squared radii.
-- **Brennan's hunch holds for round things, with a hard limit.** Polar coordinates split the core law cleanly
+- **Brennan's hunch holds for round things, with a hard limit.** Polar coordinates split the circle operation cleanly
   (radius adds, sphere multiplies) only in 1, 2, 4 and 8 dimensions (Hurwitz). And in polar coordinates the sphere
   and the simplex are the same object; the cube is a different one (the polydisc).
-- **Comes out of the sphere, or simpler there:** the curvature dial (d is 1/radius²), the swap rule (it is the sphere's
-  curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
+- **Comes out of the sphere, or simpler there:** the curvature (1/radius², which is the curvature dial d at k = 0), the
+  swap rule (turn = curvature × area is the sphere's curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
   of Newton's orbits (great circles on S³).
 - **Does not come out:** the rungs (the sphere has no radius to climb), the union rule except on orthogonal
   hemispheres, and Newton's G.
@@ -47,15 +50,15 @@ red = does not work. No Lean was compiled in this pass.
 *Figure 7. "Radius adds, sphere multiplies" needs a multiplication that keeps size. It exists only in 1, 2, 4 and 8
 dimensions.*
 
-Our polar coordinates take the lift u = 1 + kx, which turns the core law into multiplication, and read it as a
+Our polar coordinates take the lift u = 1 + kx, which turns the circle operation into multiplication, and read it as a
 radius and an angle. With inputs that are points in n dimensions, the natural polar form is **u = r·ω: one radius r
 and one point ω on the unit hypersphere S^(n−1).** The hypersphere is exactly the set where the radius log r is 0.
 
-For this to split the core law into two independent pieces, the multiplication must keep size, |uv| = |u||v|. Then
+For this to split the circle operation into two independent pieces, the multiplication must keep size, |uv| = |u||v|. Then
 log r adds and the sphere points multiply (checks H0a, H0c). That happens only for the real numbers, complex numbers,
 quaternions and octonions, dimensions 1, 2, 4 and 8 (Hurwitz 1898). Check H0b finds sedenions (16) missing by 45%.
 
-| Dimension | Sphere | The sphere under the core law |
+| Dimension | Sphere | The sphere under the circle operation |
 |---|---|---|
 | 1 | S⁰ (two points) | the sign; commutative |
 | 2 | S¹ (circle) | a group, commutative: our usual angle |
@@ -65,7 +68,7 @@ quaternions and octonions, dimensions 1, 2, 4 and 8 (Hurwitz 1898). Check H0b fi
 
 **Known:** Hurwitz's theorem; Adams's Hopf-invariant-one theorem (our library already has that family) says only
 S⁰, S¹, S³, S⁷ carry any continuous multiplication with a unit. **Ours:** reading it as the exact list of dimensions
-where our core law has a polar form of "one radius plus one sphere".
+where the circle operation has a polar form of "one radius plus one sphere".
 
 ## 1. i and π: Brennan's first test
 
@@ -77,20 +80,20 @@ that stay on it form a whole sphere of i's. C: S³ flattened from −1: every di
 
 **i.** On the unit sphere of the lift, the steps that keep size are the tangent directions at 1, the ones with no real
 part. In every size-keeping algebra such a step of length 1 squares to −1 (check I1). So "i² = −1" is not an extra
-rule: it is what "a step tangent to the sphere" means. The dial route said the same thing in another way: a step of size
+rule: it is what "a step tangent to the sphere" means. The k route said the same thing in another way: a step of size
 1 + Re(k)·ε keeps size only when Re k = 0. Check I1b shows the two conditions are identical.
 
 **π.** Walk along any i: exp(t·i) = cos t + i sin t stays on the sphere at unit speed and first reaches −1 at t = π
 (I2), and half a great circle has length π on every sphere S¹ to S⁷ (I3). Euler's identity by chaining also works on
 S³ along any i: N steps of size π/N land on −1 with error falling like 1/N (I4).
 
-![Dial route vs sphere route](figures/fig2-dial-route-vs-sphere-route.png)
+![k route vs sphere route](figures/fig2-k-route-vs-sphere-route.png)
 
 *Figure 2. The two routes side by side.*
 
 **Simpler, or just a restatement? Said plainly:** on the circle it is a restatement. The sphere route is shorter
 because the sphere is, by definition, the set of size-1 lifts, so the size-keeping condition is built in instead of
-derived. It proves nothing the dial route did not.
+derived. It proves nothing the k route did not.
 
 What the sphere adds, beyond the circle:
 
@@ -99,10 +102,10 @@ What the sphere adds, beyond the circle:
 2. **π and spin.** A full 2π turn in space is a half great circle on S³: the unit quaternion goes from 1 to −1 while
    every vector comes back unchanged (I6). That is the spinor sign, and π is its distance on S³.
 3. **√π.** The circle's length 2π gives the Gaussian integral: (∫e^(−x²)dx)² = ∫∫e^(−r²) r dr dθ = π (I5, Poisson's
-   trick), and the area of every sphere, 2π^(n/2)/Γ(n/2), follows (I5b). The dial route never reached this π.
+   trick), and the area of every sphere, 2π^(n/2)/Γ(n/2), follows (I5b). The k route never reached this π.
 
 **Known:** all of it (Hamilton; the quadratic identity of composition algebras; Poisson). **Ours:** the comparison with
-the dial page. **Verdict: simpler to state, same content on the circle; real new content only on S³.**
+the k-route page. **Verdict: simpler to state, same content on the circle; real new content only on S³.**
 
 ## 2. e: the cube, the simplex and the sphere
 
@@ -135,8 +138,8 @@ high-dimensional sphere follows the bell curve.*
 - The 1/m! inside π^m/m! is the simplex again. In polar coordinates a ball's squared radii fill the corner simplex,
   and the π^m comes from the angles (section 3). So the sphere only reaches e by borrowing the simplex.
 - In high dimension, one coordinate of a random point on the sphere of radius √n follows the bell curve e^(−t²/2)
-  (E5, Poincaré and Borel). The sphere's (1 − t²/n)^(n/2) is our dial chain (1 + kx/N)^N at k = −½ (E5b). So this is
-  e by the dial route, seen on the sphere.
+  (E5, Poincaré and Borel). The sphere's (1 − t²/n)^(n/2) is the circle operation's chain (1 + kx/N)^N at k = −½
+  (E5b). So this is e by the k route, seen on the sphere.
 
 **Which shape is right for e?** The **simplex, sitting in the cube's corner.** The cube is what you cut, and its
 n! pieces are why 1/n! appears; the simplex is the piece. The sphere gives e^π, and its e comes from that simplex. So
@@ -165,9 +168,9 @@ an angle on every axis), and the cube is the other kind (independent axes). This
 states: the squared radii are probabilities on the simplex, the angles are phases. **Known:** moment maps and
 Reinhardt domains; Archimedes' hat-box theorem is the smallest case (Q1). **Verdict: unifies.**
 
-## 4. The core law and the rungs
+## 4. The circle operation and the rungs
 
-**Core law: comes out, limited** (section 0). On the hypersphere itself the radius is 0, so composing points of the
+**The circle operation: comes out, limited** (section 0). On the hypersphere itself the radius is 0, so composing points of the
 sphere is pure angle; in dimension 2 that is our usual angle, in 4 it is S³ where order matters, in 8 it is not
 associative.
 
@@ -175,19 +178,22 @@ associative.
 0, so the rung-3 law "take the radius twice" has nothing to act on (R1). Rung 3 survives only as "angle times a real
 exponent", (q^s)^t = q^(st) (R2). The rung tower needs a radius, and the sphere is where there is none.
 
-## 5. The curvature dial (the plane dial) is the sphere's 1/radius²
+## 5. Curvature is the sphere's 1/radius²
 
-![Curvature dial is 1/R²](figures/fig8-plane-dial-is-one-over-radius-squared.png)
+![Curvature is 1/R²](figures/fig8-curvature-is-one-over-radius-squared.png)
 
-*Figure 8. Sphere, plane and the "sphere of imaginary radius" (hyperbolic). The angle excess of a triangle is d × area.*
+*Figure 8. Sphere, plane and the "sphere of imaginary radius" (hyperbolic). The angle excess of a triangle is
+curvature × area.*
 
 Draw a triangle on a sphere of radius R: its angles add to more than π, by exactly area/R² (P1, measured by sampling).
-On the hyperbolic plane they add to less, by area/R² (P2, measured). So **d = +1/R²** for the sphere, **0** for the
-plane and **−1/R²** for hyperbolic space, which Lambert in 1766 called a sphere of imaginary radius: putting R = i into
+On the hyperbolic plane they add to less, by area/R² (P2, measured). So the curvature is **+1/R²** for the sphere,
+**0** for the plane and **−1/R²** for hyperbolic space, which Lambert in 1766 called a sphere of imaginary radius: putting R = i into
 the spherical law of cosines gives the hyperbolic one exactly (P3).
 
-This is simpler than any other starting point: the whole curvature dial is one number, the sphere's radius, including an
-imaginary radius. It also matches the earlier pages: Λ's dial is the de Sitter radius, d = Λ/3 (G3).
+In the theory's names (as on `affine-names/`), the curvature is a reading of two dials, d − k²/4, the homothety k and
+the curvature dial d. At k = 0 it is d itself, so there **d = 1/R²**. This is simpler than any other starting point:
+the whole curvature is one number, the sphere's radius, including an imaginary radius. It also matches the earlier
+pages: Λ sets the de Sitter radius, d = Λ/3 at k = 0 (G3).
 **Known:** Gauss–Bonnet, Girard, Lambert, Cayley–Klein. **Verdict: simpler, unifies.**
 
 ## 6. The swap rule is the sphere's curvature
@@ -203,7 +209,7 @@ an arrow, for spin ½ at half weight, and for swapping two small turns on S³.*
 - **Spin ½:** the Berry phase round a loop on the Bloch sphere is −½ × the solid angle (W2). This is the Hopf
   fibration S¹ → S³ → S²: the circle above each point of S² is the phase, the i direction.
 
-So the swap rule "turn = d × area", which the precession page found, is simply the sphere's curvature, and it comes
+So the swap rule "turn = curvature × area", which the precession page found, is simply the sphere's curvature, and it comes
 out directly. **Known:** Gauss–Bonnet, Lie brackets, Berry 1984, Hopf 1931. **Verdict: comes out directly.**
 
 ## 7. Probability
@@ -231,7 +237,7 @@ Doppler factor; a circle of stars stays a circle.*
 
 Draw the sky as a sphere and flatten it stereographically. Then a boost along the line of sight multiplies every
 radius by the Doppler factor, and a turn about that line adds to every angle (SR1). Two boosts along one line multiply
-their Doppler factors, which is velocity addition; written as x = D − 1 it is our core law at k = 1 (SR2). A circle of
+their Doppler factors, which is velocity addition; written as x = D − 1 it is the circle operation ∘₁ (SR2). A circle of
 stars stays a circle after any boost (SR3, Penrose–Terrell).
 
 **Known:** the Lorentz group acting on the sky as Möbius maps (Penrose 1959; Penrose–Rindler); Doppler factors
@@ -263,8 +269,8 @@ great circle.*
 **Yes for anything round or turning, no for independent switches, and the clean form only exists in 1, 2, 4 and 8
 dimensions.** Concretely:
 
-- On the sphere, polar coordinates are one radius plus one point of the sphere, and the core law splits into "radius
-  adds, sphere multiplies". In 2 dimensions that is the ordinary polar form. In 4 it is S³, which is where spin, the
+- On the sphere, polar coordinates are one radius plus one point of the sphere, and the circle operation splits into
+  "radius adds, sphere multiplies". In 2 dimensions that is the ordinary polar form. In 4 it is S³, which is where spin, the
   sphere of i's and the swap rule live. In 3, 5, 6 and 7 dimensions there is no such split at all.
 - The cube's polar form is a radius and an angle per axis; it works in every dimension, but its angles never mix, so
   it has no swap rule. That is why the cube is right for independent switches and wrong for rotation.
@@ -277,7 +283,7 @@ dimensions.** Concretely:
    For the electric force that one area is exactly the orbit's turn per lap, Dirac's fine structure and the Thomas
    turn of a gyroscope. For gravity, 1 − 6M/r = (1 − 2M/r)(1 − (2v)²) exactly: the gyroscope's space factor times a
    velocity disc at twice the speed, and that 'twice' is 1 + 3: special relativity plus gravity pulling on energy.
-   The double copy shows 1 + 3 is one square, 2², from the cross term of (E + p)² (orbits section 7).
+   The double copy shows 1 + 3 is one square, 2², from the cross term of (E + p)² (orbits section 6).
 2. **i, π and spin from S³ (section 1).** Worth following as structure, not as a new derivation: S³ is where one i
    becomes many and order starts to matter, which is the step from classical to quantum turning.
 3. **Sphere = simplex with angles (section 3).** Settles the hypertriangle question and gives quantum states'
@@ -286,10 +292,8 @@ dimensions.** Concretely:
 
 ## Next (offered, not started)
 
-- Try the double copy's three-piece split for a spinning black hole (Kerr); the non-spinning case is done (orbits section 7).
-- Compile `lean/Hypersphere.lean` (written, not compiled here: quaternions, Fock's map, Kepler's tilt, n² states,
-  the orbit/gyroscope equality, Dirac's defect, the PPN coefficients, the exact split of 1 − 6M/r and its 2 + 1 + 3 budget, and the double copy's 2 + 2²; 33 theorems). Still to write: E1 (corner simplex = 1/n!) and
-  SR2 (Doppler factors and the core law).
+- Try the double copy's three-piece split for a spinning black hole (Kerr); the non-spinning case is done (orbits section 6).
+- Lean still to write: E1 (corner simplex = 1/n!) and SR2 (Doppler factors and the circle operation). The 33 written theorems (quaternions, Fock's map, Kepler's tilt, n² states, the orbit/gyroscope equality, Dirac's defect, the PPN coefficients, the exact split of 1 − 6M/r and its 2 + 1 + 3 budget, and the double copy's 2 + 2²) are compiled.
 
 ## Files
 
@@ -297,7 +301,7 @@ dimensions.** Concretely:
 - `checks.py` → `checks_output.txt` (57/57)
 - `figures.py` → `figures/fig1` … `fig12`
 - `orbits/`: Newton's orbits and hydrogen on one 3-sphere (`README.md`, `checks_orbits.py` 23/23, `six/checks_six.py` 11/11, `twov/checks_twov.py` 8/8, `dcopy/checks_dcopy.py` 11/11, figures O1–O9)
-- `lean/Hypersphere.lean`: Lean, not compiled here
+- `lean/Hypersphere.lean`: 33 theorems, compiled in the shared library as `FusedAlgebra.Topics.Hypersphere`
 
 ## References
 

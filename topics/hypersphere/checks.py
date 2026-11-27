@@ -65,7 +65,7 @@ for _ in range(2000):
 check("H0b dim 16 (sedenions): norm does NOT multiply, the polar split breaks", worst16 > 0.05,
       f"largest relative miss {worst16:.3f}")
 
-# H0c: the core law in n dimensions, a o_k b = a + b + k ab, lift 1 + k a multiplies
+# H0c: the circle operation in n dimensions, a o_k b = a + b + k ab, lift 1 + k a multiplies
 for n in (2, 4, 8):
     k = 0.7
     a, b = rng.normal(size=n) * 0.5, rng.normal(size=n) * 0.5
@@ -73,7 +73,7 @@ for n in (2, 4, 8):
     lhs = mul(unit(n) + k * a, unit(n) + k * b)
     rhs = unit(n) + k * comp
     L = lambda x: math.log(norm(unit(n) + k * x)) / k
-    check(f"H0c dim {n}: lift 1+ka turns the core law into multiplication; radius L_k adds",
+    check(f"H0c dim {n}: lift 1+ka turns the circle operation into multiplication; radius L_k adds",
           np.allclose(lhs, rhs) and abs(L(comp) - L(a) - L(b)) < 1e-12,
           f"lift error {np.max(np.abs(lhs - rhs)):.1e}, radius error {abs(L(comp) - L(a) - L(b)):.1e}")
 
@@ -91,13 +91,13 @@ for n in (2, 4, 8):
         y = ok_compose(n, 1.0, a, ok_compose(n, 1.0, b, c))
         worst = max(worst, np.max(np.abs(x - y)))
     assoc[n] = worst
-check("H0d core law is associative in dims 2 and 4, not in dim 8 (octonions)",
+check("H0d circle operation is associative in dims 2 and 4, not in dim 8 (octonions)",
       assoc[2] < 1e-10 and assoc[4] < 1e-10 and assoc[8] > 1e-3,
       f"worst associator: dim2 {assoc[2]:.1e}, dim4 {assoc[4]:.1e}, dim8 {assoc[8]:.2f}")
 
 comm4 = max(np.max(np.abs(ok_compose(4, 1, a, b) - ok_compose(4, 1, b, a)))
             for a, b in ((rng.normal(size=4), rng.normal(size=4)) for _ in range(50)))
-check("H0e core law stops commuting in dim 4 (quaternions)", comm4 > 1e-2, f"largest a∘b − b∘a = {comm4:.2f}")
+check("H0e circle operation stops commuting in dim 4 (quaternions)", comm4 > 1e-2, f"largest a∘b − b∘a = {comm4:.2f}")
 
 print()
 print("=" * 78)
@@ -115,7 +115,7 @@ for n in (2, 4, 8):
     check(f"I1 dim {n}: every unit tangent v at 1 squares to -1 (a sphere S^{n - 2} of i's)",
           worst < 1e-12, f"worst |v^2 + 1| = {worst:.1e}")
 
-# I1b: the dial route's size-keeping condition is the same as tangency at 1
+# I1b: the k route's size-keeping condition is the same as tangency at 1
 worst = 0.0
 for _ in range(1000):
     kk = complex(*rng.normal(size=2))
@@ -123,7 +123,7 @@ for _ in range(1000):
     eps = 1e-7
     dsize = (abs(1 + kk * x * eps) - 1) / eps
     worst = max(worst, abs(dsize - (kk * x).real))
-check("I1b dial route: d|1 + k x|/dx at 0 = Re(k x), so 'keeps size' = 'tangent to the sphere at 1'",
+check("I1b k route: d|1 + k x|/dx at 0 = Re(k x), so 'keeps size' = 'tangent to the sphere at 1'",
       worst < 1e-5, f"worst mismatch {worst:.1e}")
 
 
@@ -504,7 +504,7 @@ b1, b2 = 0.6, 0.7
 Dop = lambda b: math.sqrt((1 + b) / (1 - b))
 badd = (b1 + b2) / (1 + b1 * b2)
 x1, x2 = Dop(b1) - 1, Dop(b2) - 1
-check("SR2 velocity addition = Doppler factors multiply = core law at k = 1 on x = D − 1 (Bondi's k-calculus)",
+check("SR2 velocity addition = Doppler factors multiply = the circle operation ∘₁ on x = D − 1 (Bondi's k-calculus)",
       abs(Dop(badd) - Dop(b1) * Dop(b2)) < 1e-12 and abs((x1 + x2 + x1 * x2) - (Dop(badd) - 1)) < 1e-12,
       f"D(v1⊕v2) = {Dop(badd):.6f}, D1·D2 = {Dop(b1) * Dop(b2):.6f}")
 
@@ -559,7 +559,7 @@ hbar, c, kB = 1.054571817e-34, 2.99792458e8, 1.380649e-23
 Lam = 1.1056e-52
 Rds = math.sqrt(3 / Lam)
 T = hbar * c / (2 * math.pi * kB * Rds)
-check("G3 de Sitter: temperature = 1 / (great-circle length of the 4-sphere); plane dial d = Λ/3 = 1/R²",
+check("G3 de Sitter: temperature = 1 / (great-circle length of the 4-sphere); curvature dial d = Λ/3 = 1/R² (k = 0)",
       1e-30 < T < 1e-29 and abs(1 / Rds ** 2 - Lam / 3) < 1e-60, f"R = {Rds:.3e} m, T = {T:.2e} K")
 
 print()
