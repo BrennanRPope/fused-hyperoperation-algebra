@@ -56,7 +56,7 @@ def pass_count(text):
     return best
 
 
-def run_one(script, timeout, stale_ids=()):
+def run_one(script, timeout, stale_ids=(), cap_threads=True):
     expected_file = script.with_name(script.stem + "_output.txt")
     expected = expected_file.read_text(errors="replace") if expected_file.exists() else None
     t0 = time.time()
@@ -64,8 +64,11 @@ def run_one(script, timeout, stale_ids=()):
     # Checks run side by side (--jobs), so each one gets a single math-library
     # thread; otherwise numpy/scipy threads oversubscribe the cores and some
     # checks slow from seconds to past the timeout. Results are unchanged.
-    for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
-        env.setdefault(var, "1")
+    # The heavy scripts in tools/checks_all_threads.txt and the run-alone scripts
+    # keep every core instead (cap_threads=False).
+    if cap_threads:
+        for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+            env.setdefault(var, "1")
     try:
         cmd = [sys.executable, script.name]
         if WORK_PREFIX in script.read_text(errors="replace"):
@@ -149,6 +152,24 @@ def main():
             parts = line.split()
             if parts and not line.startswith("#"):
                 alone.add((ROOT / parts[0]).resolve())
+    # The slowest scripts (tools/checks_all_threads.txt) keep every math-library thread and get
+    # twice the per-script timeout; each line is a path, then its single-thread time in CI.
+    heavy = set()
+    heavy_file = ROOT / "tools" / "checks_all_threads.txt"
+    if heavy_file.exists():
+        for line in heavy_file.read_text().splitlines():
+            parts = line.split()
+            if parts and not line.startswith("#"):
+                p = (ROOT / parts[0]).resolve()
+                if not p.exists():
+                    sys.exit(f"tools/checks_all_threads.txt lists {parts[0]}, which does not exist")
+                heavy.add(p)
+
+    def run(s):
+        big = s.resolve() in heavy
+        return run_one(s, a.timeout * (2 if big else 1), stale_ids.get(s.resolve(), ()),
+                       cap_threads=not big)
+
     pooled = [s for s in scripts if s.resolve() not in alone]
     later = [s for s in scripts if s.resolve() in alone]
     results = []
@@ -159,10 +180,11 @@ def main():
         results.append(ok)
 
     with cf.ThreadPoolExecutor(a.jobs) as ex:
-        for r in ex.map(lambda s: run_one(s, a.timeout, stale_ids.get(s.resolve(), ())), pooled):
+        for r in ex.map(run, pooled):
             report(*r)
+    # Run-alone scripts have the machine to themselves, so they keep every core.
     for s in later:
-        report(*run_one(s, a.timeout, stale_ids.get(s.resolve(), ())))
+        report(*run_one(s, a.timeout, stale_ids.get(s.resolve(), ()), cap_threads=False))
     bad = results.count(False)
     print(f"\n{len(results) - bad} of {len(results)} check scripts pass.")
     sys.exit(1 if bad else 0)

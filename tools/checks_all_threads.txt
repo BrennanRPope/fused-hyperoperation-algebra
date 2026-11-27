@@ -1,0 +1,8 @@
+# Check scripts that keep every math-library thread inside the pool and get twice the
+# per-script timeout. With one thread each (as every other pooled check has), these four
+# took most of run 46066647703's two hours and the job hit its time limit. No check is
+# skipped or changed. Path, then the script's single-thread time in that run.
+topics/gravity-from-theory/spinning-river/checks.py  2760s
+topics/hypersphere/division-algebras/magic/twobody2/checks_kinetic.py  2704s
+topics/size-dial-residual/checks.py  1881s
+topics/biology/03-cell/checks.py  1650s
