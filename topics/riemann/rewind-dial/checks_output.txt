@@ -1,0 +1,16 @@
+PASS R1 n=10, angle 0: all 26 zeros in the box on the line (all |Re z| below 1e-8)
+PASS R1 n=12, angle 0: all 31 zeros in the box on the line (all |Re z| below 1e-8)
+PASS R2 first-order formula dz/dangle = -z G/F' matches a numerical step (max diff 1.2e-03)
+PASS R3 full rewind: at first order every zero moves straight off the line (|Im dz/dangle| < 1e-12, |Re| up to 40.3)
+PASS R4 off-line speed / height does not shrink with chain length (median ['0.27', '0.30', '0.21', '0.23'])
+PASS R5 n=10, angle 5 deg: 88% of zeros already off the line
+PASS R5 n=12, angle 5 deg: 94% of zeros already off the line
+PASS R6 odd-half rewind: at first order every zero slides along the line (|Re dz/dangle| max 1.0e-14)
+PASS R7 odd-half rewind n=8: every zero on the line at all 10 angles (all |Re z| below 1e-8; 13 to 19 zeros per frame)
+PASS R7 odd-half rewind n=10: every zero on the line at all 10 angles (all |Re z| below 1e-8; 14 to 21 zeros per frame)
+PASS R7 odd-half rewind n=12: every zero on the line at all 10 angles (all |Re z| below 1e-8; 15 to 22 zeros per frame)
+PASS R8 the odd half is 98.3% single-spin links (an uneven field), the rest odd many-spin links
+PASS R9 full rewind at 90 deg is the temperature view: F = 2 Z_Knauf(3/2 - z)
+PASS R10 n=10 at 90 deg: zeros sit next to 3/2 + i*gamma for the first zeta zeros (distances ['0.024', '0.064', '0.026', '0.006', '0.030'])
+PASS R11 full rewind n=10: zeros within 0.05 of the line at 5/45/90 deg: [5, 5, 5] of about 25
+15/15 passed
