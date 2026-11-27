@@ -1,0 +1,8 @@
+K1 law = kappa-stereographic addition (kappa = q); q = -1 is Ungar's Mobius addition: PASS  real part 2.8e-16, vs kappa-add 1.7e-14, vs Ungar 0.0e+00 (500 random cases)
+K2 tide 3/2(qbar - q_loc) = 4 pi G (rhobar - rho) = textbook tidal split: PASS  residuals 0, 0
+K3 Schwarzschild split exact; not general (SdS ISCO speed differs from 1/2): PASS  Schwarzschild ISCO r=6.000000, v=0.5000000000; SdS (Lambda=1e-4, M=1) ISCO r=6.069126, v=0.494337
+K4 conformal time span of closed de Sitter = pi: PASS  span = pi
+K5 residue 1 - (2/3)kappa = classical 1 - b/a^2: PASS  symbolic identity
+K6 plane law = two-parameter Todd FGL (mu1 = k, mu2 = -d): PASS  symbolic identity
+
+6 / 6 pass

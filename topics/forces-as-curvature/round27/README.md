@@ -1,6 +1,6 @@
 # Round 27: hunting for a gravity prediction from the law
 
-*DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 26 (`../round26/`). Runs alongside the prior-art audit (not yet in this repository), whose Predictions section points here. Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, under a second; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f34`. Colour key: **blue = the law, red = ruled out, green = agrees, amber = open, grey = reference**.*
+*DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 26 (`../round26/`). Runs alongside the prior-art audit (`../prior-art-audit/`), whose Predictions section points here. Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, under a second; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f34`. Colour key: **blue = the law, red = ruled out, green = agrees, amber = open, grey = reference**.*
 
 Brennan chose this over settling the 1997 dispute about spinning twist bubbles, asking to fold it into the audit: "Please merge this work as well". The audit keeps the novelty sort for the whole theory. This round tests gravity candidates: places where the law fixes a number that textbook physics leaves free, or where the two give different numbers. For each: does the law force it or is it only chosen, is it already known or measured, and what data would decide it.
 
@@ -75,7 +75,7 @@ Brennan chose this over settling the 1997 dispute about spinning twist bubbles, 
 
 ## What this doesn't do
 
-- **It doesn't search the whole theory.** The audit (not yet in this repository) does that and will pass on any candidates it finds outside gravity. This round covers gravity and cosmology.
+- **It doesn't search the whole theory.** The audit (`../prior-art-audit/`) does that and will pass on any candidates it finds outside gravity. This round covers gravity and cosmology.
 - **The DESI value is read from a secondary source.** I couldn't open DESI's own table. The value 0.0023 ± 0.0011 is quoted, with its sign convention, by arXiv:2505.00659 citing DESI DR2 Results II (arXiv:2503.14738). Planck's 0.001 ± 0.002 is from the Planck abstract.
 - **The closed-slices test depends on a choice.** If one doesn't require matter's rest slices to be the law's 3-spheres, the law says nothing about Ω_k's sign.
 - **Gaussian errors only.** The real likelihoods aren't exactly Gaussian. That could move the 2.1σ somewhat, but not the 343σ.
