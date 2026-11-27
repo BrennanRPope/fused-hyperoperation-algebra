@@ -134,14 +134,12 @@ theorem second_circle_cap (R₁ : ℝ) :
     4 * Real.pi ^ 2 * R₁ * (R₁ ^ 3 / (4 * Real.pi ^ 2)) = R₁ ^ 4 := by
   have h : (4 * Real.pi ^ 2 : ℝ) ≠ 0 := by positivity
   field_simp
-  ring
 
 /-- The cap as a ratio of the two circles: R₂/R₁ ≤ R₁²/(4π²). -/
 theorem cap_ratio (R₁ : ℝ) (hR : R₁ ≠ 0) :
     (R₁ ^ 3 / (4 * Real.pi ^ 2)) / R₁ = R₁ ^ 2 / (4 * Real.pi ^ 2) := by
   have h : (4 * Real.pi ^ 2 : ℝ) ≠ 0 := by positivity
   field_simp
-  ring
 
 /-- A 1/3 force on matter but not light: light bends by (1 + γ)/2 = 3/4 of the expected amount. -/
 theorem light_bends_three_quarters :
@@ -158,7 +156,6 @@ theorem bz_b1_sixteen : (102 : ℝ) - 38 * 16 / 3 = -302 / 3 := by norm_num
 /-- The frozen strength: α* = −4π b₀/b₁ = 4π/302 at 16 flavours. -/
 theorem bz_alpha_sixteen : -4 * Real.pi * (1 / 3) / (-302 / 3 : ℝ) = 4 * Real.pi / 302 := by
   field_simp
-  ring
 
 /-- A square torus does not mix the two photons: ε = cos(π/2) = 0. -/
 theorem square_torus_no_mixing : Real.cos (Real.pi / 2) = 0 := Real.cos_pi_div_two

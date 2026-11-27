@@ -2,7 +2,7 @@
 
 *Nov 26, 2026. Follow-up to the force-reach and flux-tube-dial pages. Brennan: "So I'm trying to figure out if there is anything that might produce a new force we are unaware of", then "Not produce but predict".*
 
-Checks: `checks.py` → `checks_output.txt`, **24 / 24 pass**; `strength_checks.py` → `strength_output.txt`, **12 / 12**; `hold_strength_checks.py` → `hold_strength_output.txt`, **20 / 20**; `investigate_checks.py` → `investigate_output.txt`, **17 / 17**; `repel_checks.py` → `repel_output.txt`, **17 / 17**; `other_forces_checks.py` → `other_forces_output.txt`, **14 / 14**. Run them in that order: `checks.py` rewrites `results.json` and the others add their G, H, S, I, J and K keys. Numpy, scipy, sympy, mpmath; under a minute. Pictures: `figures.py` → `figures/h1` to `h13`. Lean: `lean/NewForce.lean`, 35 pure-algebra statements, every one checked true by `lean/check_statements.py`.
+Checks: `checks.py` → `checks_output.txt`, **24 / 24 pass**; `strength_checks.py` → `strength_output.txt`, **12 / 12**; `hold_strength_checks.py` → `hold_strength_output.txt`, **20 / 20**; `investigate_checks.py` → `investigate_output.txt`, **17 / 17**; `repel_checks.py` → `repel_output.txt`, **17 / 17**; `other_forces_checks.py` → `other_forces_output.txt`, **14 / 14**. They run in any order or in parallel: each writes its own `results_<part>.json`, shared inputs come from `new_force_core.py`, and `figures.py` merges them into `results.json`. Numpy, scipy, sympy, mpmath; under a minute. Pictures: `figures.py` → `figures/h1` to `h13`. Lean: `lean/NewForce.lean`, 35 pure-algebra statements, every one checked true by `lean/check_statements.py`.
 
 *Revised twice. First after Brennan's push-back: "Look harder please. The strength is something that could be derived at least in the special case from our work on electromagnetism", "I'm hoping it could generalize", and the reminder of the spinning black hole's frame dragging (section 6). Then, Nov 26 evening, after he said yes to finding what holds the circle, and added: "I'd really like to look at ways to derive the strength", "The strength seems related to the material or quality of the force", "So there are probably other variables at work" (sections 7 and 8). Then, Nov 27: "Let's investigate the new force more closely" (section 9), and "Is it possible the new force is actually the inverse? A very large distance and a very weak repelling force?", "Is it possible gravity is being confused with this force?", "If we have two forces that acts over long distances but maybe over different kinds of materials?" (section 10), and "I'd also like to find out more information on the other unknown forces as well" (section 11).*
 
@@ -263,13 +263,14 @@ Brennan: "I'd also like to find out more information on the other unknown forces
 
 ## Files
 
-- `checks.py` → `checks_output.txt`, `results.json`: parts A (classes), B (rungs), C (screened), D (deep MOND), E (roundness), F (order on), P (polish).
-- `strength_checks.py` → `strength_output.txt`, and G keys added to `results.json`: part G (strength from the closed direction). Run after `checks.py`.
-- `hold_strength_checks.py` → `hold_strength_output.txt`, and H and S keys added to `results.json`: parts H (what holds the circle) and S (strength from shape and material). Run last.
-- `investigate_checks.py` → `investigate_output.txt`, and I keys added to `results.json`: part I (the new force up close).
-- `repel_checks.py` → `repel_output.txt`, and J keys added to `results.json`: part J (the inverse, and passing for gravity). 
-- `other_forces_checks.py` → `other_forces_output.txt`, and K keys added to `results.json`: part K (the other unknown forces). Run last.
-- `figures.py` → `figures/h1` to `h13`.
+- `new_force_core.py`: shared inputs (circle size, the size carrier's range and mass, inflation's bound) and the atomic JSON writer, so no check reads another's output.
+- `checks.py` → `checks_output.txt`, `results_A.json`: parts A (classes), B (rungs), C (screened), D (deep MOND), E (roundness), F (order on), P (polish).
+- `strength_checks.py` → `strength_output.txt`, writing `results_G.json`: part G (strength from the closed direction).
+- `hold_strength_checks.py` → `hold_strength_output.txt`, writing `results_HS.json`: parts H (what holds the circle) and S (strength from shape and material).
+- `investigate_checks.py` → `investigate_output.txt`, writing `results_I.json`: part I (the new force up close).
+- `repel_checks.py` → `repel_output.txt`, writing `results_J.json`: part J (the inverse, and passing for gravity). 
+- `other_forces_checks.py` → `other_forces_output.txt`, writing `results_K.json`: part K (the other unknown forces).
+- `figures.py` → `figures/h1` to `h13`, after merging every `results_<part>.json` into `results.json`.
 - `lean/NewForce.lean` (35 statements), `lean/check_statements.py`.
 
 ## Sources (pass 2, checked Nov 26)

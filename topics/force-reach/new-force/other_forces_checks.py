@@ -4,7 +4,7 @@ K2 unlimited reach, order on (a long-range non-abelian force: the conformal wind
 K3 rungs, order on (copies of W bosons or gluons);
 K4 tube, order off (abelian confinement: flux tubes, and cosmic strings as their fundamental form);
 K5 a base dial that varies in space and hides from tests (screening).
-Run after repel_checks.py: appends K_ keys to results.json, writes other_forces_output.txt."""
+Independent of the other scripts (shared inputs from new_force_core.py): writes K_ keys to results_K.json and other_forces_output.txt."""
 import math, json
 import numpy as np
 import sympy as sp
@@ -17,7 +17,8 @@ def check(name, ok, detail=""):
     NP[0 if ok else 1] += 1
     log(("PASS  " if ok else "FAIL  ") + name + (f"   [{detail}]" if detail else ""))
 lP = 1.616255e-35; MP = 1.220890e19; Mbar = MP/math.sqrt(8*math.pi); hbarc_eVm = 1.973269804e-7
-prev = json.load(open("results.json"))
+from new_force_core import radion_GeV, copy1_GeV, lab_over_range, write_json_atomic
+prev = {"H_lab_over_range": lab_over_range(), "I_copy1_GeV": copy1_GeV(), "I_radion_GeV": radion_GeV()}   # shared inputs, recomputed
 
 log("== K. The other unknown forces, one cell at a time")
 # ---------------- K1 screened, order off
@@ -107,5 +108,5 @@ check("K5 a field that varies in space can hide from tests if dense matter makes
       shift < 1e-80, f"rho/(Mbar^2 m^2) = {shift:.1e}")
 
 log(f"\nPART K TOTAL: {NP[0]} pass, {NP[1]} fail")
-prev.update(OUT); json.dump(prev, open("results.json", "w"), indent=1)
+write_json_atomic("results_K.json", OUT)
 open("other_forces_output.txt", "w").write("\n".join(lines) + "\n")

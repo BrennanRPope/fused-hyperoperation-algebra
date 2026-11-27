@@ -6,6 +6,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 plt.rcParams.update({"font.size": 10})
+from new_force_core import merged_results
+RES = merged_results()          # merges results_*.json from every check script into results.json
 
 def deff_of(F, r, h=1e-4):
     lr = math.log(r); a, b = abs(F(math.exp(lr + h))), abs(F(math.exp(lr - h)))
@@ -89,7 +91,7 @@ for p, c in [(1.5, "#9467bd"), (2.0, "k"), (3.0, "#ff7f0e")]:
     axp.plot(th, F/np.mean(F), color=c, lw=2, label=f"p = {p}")
 axp.set_ylim(0.8, 1.15); axp.set_yticklabels([]); axp.legend(fontsize=8, loc="lower left", bbox_to_anchor=(-0.15, -0.12))
 axp.set_title("A: strength of the pull at one distance, all directions", fontsize=10)
-R = json.load(open("results.json"))["E_cos4_amplitude"]
+R = RES["E_cos4_amplitude"]
 ps = sorted(float(k) for k in R)
 axs[1].plot(ps, [R[str(p)] for p in ps], "o", color="#ff7f0e", ms=8)
 axs[1].set_xlabel("roundness dial p (2 = round)"); axs[1].set_ylabel("size of the four-lobed (cos 4θ) part")
@@ -250,7 +252,7 @@ fig.suptitle("h8. Ways to derive a force's strength: its shape (quality) sets th
 fig.tight_layout(); fig.savefig("figures/h8_strength_shape_and_material.png", dpi=150); plt.close(fig)
 
 # ---------------- h9: what carries it and what feels it (part I)
-res_ = json.load(open("results.json"))
+res_ = RES
 lam_ = float(res_["H_range_lP_NF2"]); Rl_ = 2*math.sqrt(137.035999084); mrad_ = float(res_["I_radion_GeV"]); M1_ = float(res_["I_copy1_GeV"])
 fig, axs = plt.subplots(1, 2, figsize=(13, 5.0), gridspec_kw={"width_ratios": [1.3, 1]})
 ax = axs[0]
@@ -359,7 +361,7 @@ fig.suptitle("h11. Indirect traces: black holes, the early universe and inflatio
 fig.tight_layout(); fig.savefig("figures/h11_indirect_traces.png", dpi=150); plt.close(fig)
 
 # ---------------- h12: the inverse (part J) ----------------
-rj = json.load(open("results.json"))
+rj = RES
 fig, axs = plt.subplots(2, 2, figsize=(13.5, 10))
 ax = axs[0, 0]
 pairs = [("matter + matter", [1, 1/3, 0]), ("matter + copy", [1, 1, 0]), ("copy + copy\n(like charges)", [1, 3, -4])]
@@ -422,7 +424,7 @@ fig.suptitle("h12. Could the new force be the inverse, a very weak, very long-ra
 fig.tight_layout(); fig.savefig("figures/h12_the_inverse.png", dpi=150); plt.close(fig)
 
 # ---------------- h13: the other unknown forces (part K)
-rk = json.load(open("results.json"))
+rk = RES
 fig, axs = plt.subplots(2, 3, figsize=(17.5, 10.5))
 ax = axs[0, 0]
 r_ = np.logspace(-1.3, 1.7, 400)

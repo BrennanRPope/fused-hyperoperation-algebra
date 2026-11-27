@@ -1,0 +1,18 @@
+{
+ "K_alpha_cassini_longrange": 1.25e-05,
+ "K_alpha_moon": 3e-11,
+ "K_lambda_moon_m": [
+  95565000.0,
+  382260000.0
+ ],
+ "K_BZ_alpha_SU3_16": 0.04161049872304362,
+ "K_BZ_edge_SU3": 8.052631578947368,
+ "K_BZ_edge_SU2": 5.551020408163265,
+ "K_KKgluon_GeV": 5.214698523211681e+17,
+ "K_KKgluon_over_LHC": 158021167370050.94,
+ "K_vortex_tension_over_pi": 0.9999971039996223,
+ "K_string_eta_max_GeV_CMB": 1756136536578900.2,
+ "K_string_eta_max_GeV_PTA": 48706464071930.516,
+ "K_Gmu_at_copy_scale": 0.011462654611158297,
+ "K_density_shift_ratio": 1.9214659284145425e-86
+}

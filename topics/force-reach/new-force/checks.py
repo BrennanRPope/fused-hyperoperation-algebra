@@ -159,5 +159,6 @@ rc2 = brentq(lambda r: deff_of(Fe, r, 5e-5) - 3.5, 0.5, 20)
 check("P2 B3b crossover is stable under a finer derivative step", abs(rc2 - rc) < 1e-3, f"{rc:.5f} vs {rc2:.5f}")
 
 OUT["pass"], OUT["fail"] = R["pass"], R["fail"]
-json.dump(OUT, open("results.json", "w"), indent=1)
+from new_force_core import write_json_atomic
+write_json_atomic("results_A.json", OUT)
 print(f"\nTOTAL: {R['pass']} pass, {R['fail']} fail")

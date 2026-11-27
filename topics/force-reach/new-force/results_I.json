@@ -1,0 +1,16 @@
+{
+ "I_radion_GeV": 6149965815177808.0,
+ "I_copy1_GeV": 5.214698523211681e+17,
+ "I_window_lP": [
+  23.412475228732223,
+  1985.1980266083829
+ ],
+ "I_bh_mass_limit_g": 0.021605323590028754,
+ "I_bh_emits_carrier_below_g": 0.001719133087748253,
+ "I_Hinf_max_GeV": 47038382500084.68,
+ "I_Vquarter_max_GeV": 1.4085906675409932e+16,
+ "I_settle_T_GeV": 6.6165043780692456e+16,
+ "I_lifetime_s_est": 2.811962185661925e-34,
+ "I_relic_copy_Tsafe_GeV": 1.8690675710436136e+16,
+ "I_vacuum_left_over_MP4": -2.524018183709408e-09
+}

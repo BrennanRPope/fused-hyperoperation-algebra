@@ -1,7 +1,7 @@
 """Part I of the new-force DRAFT (Nov 27 2026): the new force up close.
 I1-I3 what carries it and what feels it; I4-I6 the force and its field at its own range;
 I7-I13 indirect traces (early universe, inflation, colliders, relics, black holes, the vacuum term).
-Run after checks.py, strength_checks.py, hold_strength_checks.py: appends I_ keys to results.json.
+Independent of the other scripts (shared inputs from new_force_core.py): writes I_ keys to results_I.json.
 Writes investigate_output.txt. Order-of-magnitude estimates are labelled as such."""
 import math, json
 import sympy as sp
@@ -16,8 +16,8 @@ def check(name, ok, detail=""):
 
 lP = 1.616255e-35; MP = 1.220890e19; Mbar = MP/math.sqrt(8*math.pi); hbar_GeVs = 6.582119569e-25
 ainv = 137.035999084; R_lP = 2*math.sqrt(ainv)
-res_prev = json.load(open("results.json"))
-lam_lP = float(res_prev["H_range_lP_NF2"])          # radion range from part H (2 fermions)
+from new_force_core import range_lP, write_json_atomic
+lam_lP = range_lP(2)[0]                             # radion range from part H (2 fermions), recomputed
 m_rad = MP/lam_lP                                   # GeV
 M1 = MP/R_lP                                        # first copy, GeV (= sqrt(alpha)/2 M_P)
 
@@ -117,7 +117,7 @@ check("I12 relic copies (rough estimate): stable by charge, so if made they'd be
 # ---- I13 colliders and the vacuum term
 check("I13 colliders: the carrier is 4e11 times and the first copy 4e13 times beyond the LHC's 14 TeV",
       m_rad/1.4e4 > 1e11 and M1/1.4e4 > 1e13, f"{m_rad/1.4e4:.1e}, {M1/1.4e4:.1e}")
-C2 = float(res_prev.get("H_range_lP_NF2") and 3*float(mp.zeta(5))*3/(64*math.pi**6))
+C2 = range_lP(2)[1]
 Vleft = 5*C2/R_lP**4          # in units of 1/lP^4 = MP^4
 rho_obs = 1.4e-123           # observed dark energy density in Planck units (MP^4, non-reduced), approx.
 OUT["I_vacuum_left_over_MP4"] = -Vleft
@@ -126,4 +126,4 @@ check("I13b the hold's leftover vacuum energy is about -2.5e-9 in Planck units, 
 
 log(""); log(f"PART I TOTAL: {NP[0]} pass, {NP[1]} fail")
 open("investigate_output.txt", "w").write("\n".join(lines) + "\n")
-res_prev.update(OUT); json.dump(res_prev, open("results.json", "w"), indent=1, default=str)
+write_json_atomic("results_I.json", OUT)

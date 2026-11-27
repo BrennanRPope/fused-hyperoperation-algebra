@@ -4,7 +4,7 @@ J1-J3 which carriers repel, and what each kind of body feels from the circle's p
 J4-J6 a second, bigger circle: its strength, and how big our law lets it be;
 J7-J8 the dark energy angle (a micron-sized circle) and that circle's own size-carrier;
 J9-J10 could a second long-range force pass for gravity (light bending, free fall of different materials).
-Run after investigate_checks.py: appends J_ keys to results.json, writes repel_output.txt.
+Independent of the other scripts (shared inputs from new_force_core.py): writes J_ keys to results_J.json and repel_output.txt.
 Order-of-magnitude estimates are labelled as such."""
 import math, json
 import sympy as sp
@@ -19,7 +19,8 @@ def check(name, ok, detail=""):
 
 lP = 1.616255e-35; MP = 1.220890e19; Mbar = MP/math.sqrt(8*math.pi); hbarc_eVm = 1.973269804e-7
 ainv = 137.035999084; R1 = 2*math.sqrt(ainv)                 # first circle, Planck lengths (part G)
-prev = json.load(open("results.json"))
+from new_force_core import radion_GeV, inflation_bounds, write_json_atomic
+prev = {"I_radion_GeV": radion_GeV(), "I_Vquarter_max_GeV": inflation_bounds()[1]}   # shared inputs, recomputed
 
 def X(p1, p2, D):
     eta = sp.diag(*([-1] + [1]*(D - 1))); E1, E2 = p1[0], p2[0]
@@ -118,5 +119,5 @@ check("J10b what does pass both tests is a long-range force on a different mater
       mm[2] == 0 and m2copy > float(prev["I_Vquarter_max_GeV"]), f"copy {m2copy:.1e} GeV > {float(prev['I_Vquarter_max_GeV']):.1e} GeV")
 
 log(f"\nPART J TOTAL: {NP[0]} pass, {NP[1]} fail")
-prev.update(OUT); json.dump(prev, open("results.json", "w"), indent=1)
+write_json_atomic("results_J.json", OUT)
 open("repel_output.txt", "w").write("\n".join(lines) + "\n")

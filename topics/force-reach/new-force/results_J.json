@@ -1,0 +1,33 @@
+{
+ "J_weights": {
+  "matter-matter": [
+   "1",
+   "1/3",
+   "0"
+  ],
+  "matter-copy": [
+   "1",
+   "1",
+   "0"
+  ],
+  "copy-copy": [
+   "1",
+   "3",
+   "-4"
+  ]
+ },
+ "J_naive_alpha_50um": 4.1796483600399996e-61,
+ "J_R2_max_lP": 325.07401549393404,
+ "J_R2_min_lP": 9.740973365498983,
+ "J_alpha2_min": 3.785257943049817e-05,
+ "J_alpha2_max": 0.042155600447133394,
+ "J_copy2_min_GeV": 3.755729285667196e+16,
+ "J_l6_at_50um_lP": 231242042.9805278,
+ "J_rhoL_quarter_meV": 2.240593759340122,
+ "J_R_dark_energy_m": 8.831378187032379e-06,
+ "J_R_dark_energy_over_cap": 1.6808785908104166e+27,
+ "J_radion_DE_eV": 1.1291903441530257e-32,
+ "J_radion_DE_range_m": 1.7475085703819889e+25,
+ "J_eta_estimate": 0.0006759560739707392,
+ "J_eta_over_microscope": 168989018492.68478
+}

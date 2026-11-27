@@ -1,7 +1,7 @@
 """Parts H and S of the new-force DRAFT (Nov 26-27 2026).
 H: what could hold the hidden circle's size fixed, and the range that gives the new force.
 S: ways to derive a force's strength: from its shape (hidden space) and its material (particle content).
-Run after checks.py and strength_checks.py: appends H_ and S_ keys to results.json.
+Independent of the other scripts: writes H_ and S_ keys to results_HS.json.
 Writes hold_strength_output.txt."""
 import math, json
 import sympy as sp
@@ -156,8 +156,5 @@ check("S7 refinement of part G: EM's strength at the copy scale is 1/alpha = 107
 
 log(""); log(f"PARTS H, S TOTAL: {NP[0]} pass, {NP[1]} fail")
 open("hold_strength_output.txt", "w").write("\n".join(lines) + "\n")
-try:
-    res = json.load(open("results.json"))
-except Exception:
-    res = {}
-res.update(OUT); json.dump(res, open("results.json", "w"), indent=1, default=str)
+from new_force_core import write_json_atomic
+write_json_atomic("results_HS.json", OUT)

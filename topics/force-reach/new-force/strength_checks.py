@@ -1,9 +1,9 @@
 """Part G: a force's strength from a closed direction (the rung class read as electromagnetism's circle).
-Run: python3 strength_checks.py   (sympy, numpy). Appends to results.json."""
+Run: python3 strength_checks.py   (sympy, numpy). Writes results_G.json."""
 import json, math
 import sympy as sp
 R = {"pass": 0, "fail": 0}
-OUT = json.load(open("results.json"))
+OUT = {}
 def check(name, ok, info=""):
     R["pass" if ok else "fail"] += 1
     print(("PASS  " if ok else "FAIL  ") + name + (f"   [{info}]" if info else ""))
@@ -77,5 +77,6 @@ check("G7b so the circle's size must be held fixed, which gives the new force a 
       True, "range not set by the theory")
 OUT["G_scalar_strengths"] = {str(n): str(res[n][0]) for n in res}
 OUT["G_pass"], OUT["G_fail"] = R["pass"], R["fail"]
-json.dump(OUT, open("results.json", "w"), indent=1)
+from new_force_core import write_json_atomic
+write_json_atomic("results_G.json", OUT)
 print(f"\nPART G TOTAL: {R['pass']} pass, {R['fail']} fail")
