@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,942 theorems in 183 modules, Nov 27 ~16:30 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,945 theorems in 183 modules, Nov 27 ~17:20 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -155,3 +155,4 @@ Nov 27: `topics/gravity-from-theory/spinning-river/` round 27 (DRAFT): charge (K
 Nov 27: `topics/hypersphere/` orbits sections 11 and 12 (DRAFT, from the hypersphere session): the pair rule at the next order becomes a ladder (division-algebras/magic/order2/, checks_order2.py 7/7, figure D6), and two comparable black holes at second order, from P. K. Gupta's 2PN Lagrangian (division-algebras/magic/twobody2/, checks_twobody2.py 6/6, figure D7 regenerated here with figure_twobody2.py); both picked up by CI; READMEs merged, keeping the repo's Lean wording and DRAFT labels. `sources/gupta-2609.07413.md` (the transcription, equations, equation labels and full citation only, no paper text, PDF or TeX) brought onto main from branch `sources-gupta` by cherry-picking 5644124.
 Nov 27: `topics/new-ties/` round 21 (DRAFT, patch 0020): the levels 1, 2, 4, 8 are the four letters' powers of 2 and come from the example's chosen numbers (no cap on lengths); Conjecture 21.2, that 1 + 19 = 20 is the only balance of 2-5-19 numbers with word-shaped sides, is searched and proved by hand to imply Conjecture 15.3 at every length; checks21.py 6. Conjecture 21.2 itself is open.
 Nov 27: `topics/klein-flow/periodic-box/blowup/` 256³ follow-up (DRAFT): res256.py, runs/res256_none_s0.json and res256.log, fig I (peak on three grids). Check B9 fails by its stated test (peak spin 192³ vs 256³ differs by 25.8% against a 10% limit); new check B10 passes (enstrophy within 0.6%). checks_blowup.py reports 9 of 10 and exits 1, so CI's topic checks go red on it; it was not skipped, excluded or recast. Open: the peak at ν = 0.001 is not grid-converged.
+Nov 27: `topics/gravity-from-theory/spinning-river/` round 28 (DRAFT): the shadow split; the time part alone is Newton's pull on light and makes no shadow, the push makes the photon sphere and the shadow's size, the twist its shift and D shape (shadow_split.py, fig 36); 125 checks; 3 theorems added to Topics.SpinningRiver, push_photon_sphere with (2 : K) ≠ 0 and r ≠ 0 (library 3,945).

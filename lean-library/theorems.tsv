@@ -3556,6 +3556,8 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.own_field_squared	prope
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_k2_law	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_push_total	
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_turning_ratio	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.push_photon_sphere	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.push_shadow_radius	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ray_norm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.rim_at_light	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ring_speed	propext, Classical.choice, Quot.sound
@@ -3569,6 +3571,7 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.spherical_vertical_stif
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.square_from_three_sources	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.strut_push	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.time_part_is_heavier_newton	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.time_part_light	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.tphi_block	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.two_pn_miss	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.two_velocity_spin_factor	propext, Classical.choice, Quot.sound
