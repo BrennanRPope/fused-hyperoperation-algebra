@@ -1,0 +1,14 @@
+== U. The law's corner carries exactly half the twist
+PASS U1 (exact) the twist is the corner's conjugate over the corner, T = c*/c, so the corner's phase is minus half the twist
+PASS U2 (exact) the law's factorization B(u)B(v) = c . B(u (+) v) . diag(T, 1) (from twisted-boosts)
+PASS U3 500 random pairs: law's bookkeeping leaves diag(T, 1) (det T); spinor bookkeeping leaves a pure rotation diag(T^1/2, T^-1/2) (det 1)  | 4.6e-16, 1.2e-15
+
+== V. Round a closed loop on the velocity sphere (q = +1)
+PASS V1 law's bookkeeping round a loop: top component turns by the enclosed area, bottom not at all; spinor bookkeeping's common phase stays 0  | cap 0.3: area 0.2806, top turns 0.2806; cap 0.9: area 2.3775, top turns 2.3775; cap 1.5: area 5.8387, top turns 5.8387; cap 2.2: area 9.9808, top turns 9.9808
+PASS V2 so on top of spin (+-1/2 of the area), the law's object carries a common phase of +1/2 of the area: charge 1/2 under the twist  | cap 0.3: common phase 0.1403 = area/2 0.1403; cap 0.9: common phase 1.1887 = area/2 1.1887; cap 1.5: common phase 2.9194 = area/2 2.9194; cap 2.2: common phase 4.9904 = area/2 4.9904
+PASS V3 over the whole closed sphere that common phase adds to 1/2 x 4 pi = 2 pi: exactly 1 whole turn, so it is a consistent flux  | 1 turn
+
+== W. What that charge gives: massless modes on the hidden velocity sphere
+PASS W1 law's bookkeeping (charge 1/2, flux 1): exactly one massless mode, one-handed; ordinary spinor bookkeeping: none  | law L1 R0; spinor L0 R0
+
+7 passed, 0 failed
