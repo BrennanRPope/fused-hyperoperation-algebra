@@ -2,6 +2,8 @@
 
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 25 (`../round25/`) on the same merged stream: the weak force's twist and gravity's tide. Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**, about 80 s; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f33`. Colour key: **blue = the law and its gravity, purple = the magnetic tide, orange = the weak force's twist, grey = reference**.*
 
+> **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the n = 3 wave on closed de Sitter is solved exactly for every n by Abbassi, Khodagholizadeh and Abbassi, Eur. Phys. J. C 73:2592 (2013), arXiv:1207.0876 (audit check K4).
+
 Brennan merged the two threads because he expected them to depend on each other: "Merge the work streams because I think these will be interdependent". This round takes round 25's first next step, as part of his standing goal to "keep pushing until we are able to build them all in spacetime". Round 25 only had slices at rest, which carry the "electric" half of the tide (stretch and squeeze). The question here: what makes the other, "magnetic" half, and how do gravitational waves and the weak force's twist fit on the law's 3-sphere?
 
 ## Verdict first
@@ -70,7 +72,7 @@ Brennan merged the two threads because he expected them to depend on each other:
 | Chern–Pontryagin invariant of a rotating hole ∝ J M cos θ / r⁷ at first order | **Textbook** | Cherubini, Bini, Capozziello and Ruffini 2002 |
 | Einstein–Yang–Mills in anisotropic (Bianchi) cosmologies | **Textbook** in kind | Darian and Künzle 1996 (Bianchi I); Jin and Maeda 2005 (class A, including IX) |
 | A pure-gauge field (f = 0, 2) has no stress, so its ripples source nothing at first order | **Textbook** | |
-| The lowest wave on the law's de Sitter swings once, then freezes, because of round 22's π of conformal time | **Ours** (a reading of the textbook mode in the law's terms) | |
+| The lowest wave on the law's de Sitter swings once, then freezes, because of round 22's π of conformal time | **Ours** as a reading only; the mode is solved for every n by Abbassi, Khodagholizadeh and Abbassi 2013 (prior-art audit) (a reading of the textbook mode in the law's terms) | |
 | The couplings (3, −6) at the law's f = 1; the law's meron as the point on the twist line that radiates | **Ours** (computed here) | |
 
 ## Corrections to round 25

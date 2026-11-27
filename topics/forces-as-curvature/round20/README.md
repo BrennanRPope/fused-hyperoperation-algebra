@@ -2,6 +2,8 @@
 
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 19 (`../round19/`) and joins it to rounds 14–16's slabs (`../round16/`), using the twisted-boost law (`../../twisted-boosts/`). Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, about 5 seconds; numpy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f27`. Colour key: **blue = the law, orange = light, grey = reference**.*
 
+> **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the law with a Lorentzian norm giving de Sitter is in print: Nesterov and Sabinin, Phys. Rev. D 62, 081501(R) (2000), hep-th/0010159. Where this page says it hasn't been found written in this form, read it as known.
+
 Rounds 18 and 19 found that the law's two signs are two groups: at q > 0 the 3-sphere's rotations, at q < 0 the Lorentz boosts. Round 16 needed two dials of opposite sign for space and for time (k² = −q_v·q_s). This round keeps the law exactly as it is, with one dial q, and changes only its dot product to the Lorentzian one, a·b = −a₀b₀ + a₁b₁ + a₂b₂ + a₃b₃, on 4D points (t, x, y, z). It is part of Brennan's standing goal to "keep pushing until we are able to build them all in spacetime".
 
 ## Verdict first
@@ -55,7 +57,7 @@ Rounds 18 and 19 found that the law's two signs are two groups: at q > 0 the 3-s
 | de Sitter and anti-de Sitter as pseudo-spheres; SO(1,4) symmetry; local Lorentz frames | **Textbook** | Hawking & Ellis 1973 |
 | The conformally flat chart, metric 4η/(1 + qη)², Ricci = 3q·g, Λ = 3q | **Textbook** | standard |
 | de Sitter's global slicing, radius cosh(kt)/k | **Textbook** | de Sitter 1917 |
-| Möbius addition continued to an indefinite dot product | **Expected** (follows by continuation; not found written this way) | — |
+| Möbius addition continued to an indefinite dot product | **Textbook** (in print, found by the prior-art audit; this round first marked it expected, not found written this way) | Nesterov & Sabinin, Phys. Rev. D 62, 081501(R) (2000) |
 | The same law on spacetime giving space +q, time −q, light untouched | **Ours** (computed) | D3 |
 | Round 16's sign rule as the signature; its Λ = 3q matched | **Ours** | D3, D4 |
 

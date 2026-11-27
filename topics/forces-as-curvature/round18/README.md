@@ -2,6 +2,8 @@
 
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 17 (`../round17/`) and uses round 13's law-grown corners and round 10's charge-½ twist, with the twisted-boost law (`../../twisted-boosts/`). Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, about 5 seconds; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f25`. Colour key: **blue = the law, orange = the mirror or the other order, grey = reference**.*
 
+> **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the closed form of the 3D law used here is the κ-addition of the constant-curvature machine-learning papers, with κ = q (Bachmann, Bécigneul and Ganea, ICML 2020, arXiv:1911.05076, Eq. 2; audit check K1).
+
 Round 17 found that the law's charge-½ twist is a lowest photon on the 3-sphere the law grows. It named its own weak link: two different 3-spheres were matched by the standard ℝ⁴ = ℂ², not by the law. One is the space the law grows from its 3D form (rounds 12–13). The other is the group of its 2D boosts (round 10). This round compares the law's own operations directly. It is part of Brennan's standing goal to "keep pushing until we are able to build them all in spacetime".
 
 ## Verdict first

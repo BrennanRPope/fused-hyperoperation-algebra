@@ -61,7 +61,7 @@ These are the ones the write-ups found nowhere in print and that join two fields
 | # | Bridge | Folder | Lead worth following? |
 |---|---|---|---|
 | N1 | A soft (log-sum-exp) min cut is a ferromagnetic Ising free energy, and it obeys monogamy of mutual information on every graph. The proof uses Griffiths–Ginibre inequalities; five-party facets are numerical only. | exploration, holographic-entropy-cube | **Yes.** It is a proof, not a pattern, and it ties a standard tool of statistical mechanics to the holographic entropy cone. The next step is the five-party inequalities. |
-| N2 | 1 − 6M/r = (1 − 2M/r)(1 − (2v)²) for any static round spacetime; the innermost stable orbit sits at 2v = c and the photon sphere at v = c. Not yet checked against the literature. | hypersphere/orbits, curved-space | **Yes.** It gives a sharp test with a known answer to compare against: does Kerr split the same way (P2)? |
+| N2 | 1 − 6M/r = (1 − 2M/r)(1 − (2v)²) in Schwarzschild (not for every static round spacetime: in Schwarzschild–de Sitter the innermost stable orbit's local speed is 0.4943, not ½; prior-art audit check K3); the innermost stable orbit sits at 2v = c and the photon sphere at v = c. Not yet checked against the literature. | hypersphere/orbits, curved-space | **Yes.** It gives a sharp test with a known answer to compare against: does Kerr split the same way (P2)? |
 | N3 | The Sommerfeld fine-structure advance per lap equals the Thomas turn of the circular orbit with the same angular momentum. Verdict from the hypersphere thread: implied by Biedenharn 1983 (via Vickers) but not stated as an equality. | hypersphere/orbits | **Small.** A clean equality worth a paragraph, not a programme. |
 | N4 | The AdS₃ cross-ratio as the chance that a steady random clock on one region's own time ticks while sweeping the other region. | probability-entanglement | **Yes.** It can fail a sharp test in excited states, so it is falsifiable. |
 | N5 | 1 − cross-ratio as a random-geodesic linking probability; each associahedron equation then reads "both channels linked as often as neither", and that forces the clock to tick at rate 1. | beyond-the-cube | **Yes, modest.** The open question is whether rate 1 picks out a central charge. |
@@ -143,6 +143,19 @@ This is the honest version of the voice-call test: a framework that keeps landin
 - **Every field touches at least four of the seven hubs.** That is the "one shape everywhere" claim seen as a graph.
 - **Fluids is the thinnest field** (13 bridges, touching only four hubs), and three of its possibly-new rows are toy models. That matches the Navier–Stokes verdict on its own pages: mapped, not close.
 - **Known fields stay known.** Where the operation is already a standard object (formal groups, K-theory, Euler products), each bridge is a re-sighting of known mathematics, and the survey found nothing to change those verdicts.
+
+
+## Corrections from the prior-art audit (DRAFT, Nov 27)
+
+The [prior-art audit](../forces-as-curvature/prior-art-audit/) (section 8) found these rows marked possibly new already in print. They are relabelled known here; the table data, counts and figures above have not been regenerated yet.
+
+- A76 (dial-κ discounting family) and P180 (dyadic model breaks at 1/3): Cajueiro, Physica A 364 (2006); Cheskidov, Trans. AMS (2008).
+- P153 (Shor-code threshold box): Rahn, Doherty and Mabuchi, Phys. Rev. A 66, 032304 (2002), Table I.
+- M25 (set model of the dial, tagged Option): Spivak, arXiv:2202.00534, Eq. 8.
+- M224 (critical Poisson(1) Galton–Watson process not embeddable in continuous time): Karlin and McGregor, Trans. AMS 132 (1968).
+- S44 (the plane law as the two-parameter Todd-genus formal group law): Buchstaber and Panov, *Toric Topology* (audit check K6).
+- NF8 (Bell numbers at height s): OEIS A008826; Comtet 1974, p. 148.
+- N2 is narrowed to Schwarzschild (audit check K3); its row above is reworded.
 
 ## Files
 

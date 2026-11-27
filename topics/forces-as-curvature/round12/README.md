@@ -2,6 +2,8 @@
 
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows rounds 1–11 (rounds 1–9 in the repo under `topics/forces-as-curvature/` and its subfolders; rounds 10 and 11 in `../round10/` and `../round11/`) and uses the twisted-boost law from `../../twisted-boosts/`. Checks: `checks.py` → `checks_output.txt` (**9 / 9 pass**, about 13 s; numpy and sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f19`. Colour key: **blue = the law, orange = Regge read-back, grey = reference**.*
 
+> **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the closed form of the 3D law here is the κ-addition of the constant-curvature machine-learning papers, with κ = q (Bachmann, Bécigneul and Ganea, ICML 2020, arXiv:1911.05076, Eq. 2; audit check K1).
+
 ## Verdict first
 
 Round 11 glued spacetime from flat pieces whose sizes came from a sphere we chose. This round lets the twisted-boost law size the pieces itself, and then reads the curvature back with Regge's method. The pieces are sized as follows:

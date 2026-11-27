@@ -2,6 +2,8 @@
 
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 24 (`../round24/`) and joins two open threads: round 23's missing tidal pull (`../round23/`) and the weak and strong forces' hidden spaces from rounds 4–5 (`../` §6d, `../round5/`), now put on the law's expanding 3-sphere slices (rounds 18–22). Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**, about 16 s; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f32`. Colour key: **blue = the law, orange = the weak force's twist and its energy, grey = reference**.*
 
+> **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the tide formula 3/2 (q̄ − q_loc) is Sussman's (Class. Quantum Grav. 2013, arXiv:1209.1962, Eqs. 40a/42a; audit check K2): the tide as the gap between mean and local density, with the names changed. It moves from ours to textbook; the table below is marked to match.
+
 Brennan asked to merge the two threads because he expected them to depend on each other: "Merge the work streams because I think these will be interdependent". This is part of his standing goal to "keep pushing until we are able to build them all in spacetime". The questions: what does the weak and strong forces' twist look like on the law's expanding slices, can a dial that varies from place to place, together with that twist, make the tidal pull, and where do the two meet?
 
 ## Verdict first
@@ -90,7 +92,7 @@ Brennan asked to merge the two threads because he expected them to depend on eac
 | Spherical tidal (Weyl) part ∝ m/r³ − (4π/3)ρ | **Textbook** | standard spherical symmetry (e.g. Ψ₂ in the Newman–Penrose formalism) |
 | Purely magnetic round SU(2) field and its energy | **Textbook** | Witten 1977; Bartnik and McKinnon 1988 |
 | The law's transport is Levi-Civita on its 3-sphere; its f = 1 is the meron | **Ours** (a reading of textbook facts; round 18 gave the identification) | |
-| Tide = 3/2 (averaged q − local q); chain twist → q → tide | **Ours** (a rewriting of the textbook relation in the law's terms) | |
+| Tide = 3/2 (averaged q − local q); chain twist → q → tide | **Textbook** for the tide formula (moved from ours after the prior-art audit); the chain is our reading of it in the law's terms | Sussman, Class. Quantum Grav. 2013, arXiv:1209.1962, Eqs. 40a/42a |
 
 ## What this doesn't do
 
