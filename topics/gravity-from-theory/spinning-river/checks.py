@@ -32,6 +32,8 @@ EQ: the equator split three ways: which piece of the field gives each term of ro
 KN: charge on the spinning hole: which piece of the river gives each charge term (round 27, kn_split.py ->
     kn_split.json).
 SH: the black hole's shadow piece by piece (round 28, shadow_split.py -> shadow_split.json).
+EC: the radar echo past the Sun piece by piece, predicted before comparing (round 29, echo_predict.py ->
+    echo_prediction.json, then echo_compare.py -> echo_compare.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1735,6 +1737,47 @@ check("SH4 Sgr A*: with mass and distance from stellar orbits alone (GRAVITY 201
       "Horizon Telescope's 2022 ring (51.8 +- 2.3) and shadow (48.7 +- 7.0); the time part alone predicts none",
       all(all(v_.values()) for v_ in sh4_.values()), {**sh4_, "eht": ev_sh_})
 results["SH_shadow_split"] = {"identities": id_sh_, "bending": bd_sh_, "eht": ev_sh_}
+
+# ================================================================ EC1-EC4  the radar echo past the Sun (round 29)
+import echo_predict as ep_  # noqa: E402
+import echo_compare as ec_  # noqa: E402
+lf_ec_ = ep_.leg_formula()
+check("EC1 light time past a mass, per leg, to first order in M, with the push at strength lambda (k.p = E + lambda P, "
+      "the field still one square): sqrt(r^2 - r0^2) + M[(1 + lambda^2) ln((r + sqrt(r^2 - r0^2))/r0) + "
+      "sqrt((r - r0)/(r + r0))] plus a clock relabelling 2 lambda M ln r that cancels from anything path-dependent. "
+      "The time part gives the 1 (slow clocks), the push lambda^2; Newton's corpuscle gives -1 (symbolic, exact; "
+      "40-digit spot checks of the antiderivatives)",
+      all(v_ for k_, v_ in lf_ec_.items() if k_ != "b^2(r0)"), lf_ec_)
+ph_ec_ = ep_.perihelion_dial()
+bd_ec_ = ep_.bending_checks()
+check("EC2 the same dial sets the perihelion advance, 6 lambda^2 (pi M/a per orbit), and the bending, 2(1 + lambda^2) M/b: "
+      "one dial ties delay, bending and perihelion (beta + gamma = 2); with separate weights mu (EP) and nu (PP) the "
+      "perihelion factor is (2 mu^2 + nu)/3 and the delay's nu, so it is the square that ties them (symbolic; bending "
+      "integrated at b = 1e5 M to 1e-4)",
+      ph_ec_["general_is_1-2(2mu^2+nu)v^2"] and ph_ec_["square_dial_is_1-6lam^2v^2"]
+      and all(abs(r_["deflection_x_b_over_2M"] - r_["predicted_1+lam2"]) < 1e-4 for r_ in bd_ec_),
+      {"perihelion": ph_ec_, "bending": bd_ec_})
+se_ec_ = ep_.sun_exact_checks()
+tw_ec_ = ep_.twist_delay()
+check("EC3 at the Sun (ray at 1.6 solar radii, out to 1.016 AU) the exact light times of the time part and of time part "
+      "+ push match the first-order formula to within 20 M^2/r0 (centimetres in 10-20 km); the twist adds -8 M a/b one "
+      "way for a prograde equatorial ray (exact Kerr, 40 digits, 3 geometries), which for the Sun's spin is about 0.02 ns "
+      "round trip",
+      all(abs(r_["difference_m"]) < 20*r_["M2_over_r0_m"] for r_ in se_ec_)
+      and all(abs(r_["half_difference_over_Ma/r0"] + 8) < 0.05 for r_ in tw_ec_["rows"])
+      and 1e-11 < tw_ec_["sun_round_trip_s_at_1.6Rsun"] < 1e-10,
+      {"sun": se_ec_, "twist": tw_ec_})
+pr_ec_ = json.load(open(os.path.join(HERE, "echo_prediction.json")))
+cm_ec_ = ec_.compare()
+check("EC4 the prediction written first (echo_prediction.json: dials lambda = tau = 1 from rounds 7-8, no measured delay "
+      "used; gamma = 1; shadow-only dials gamma = 0.71-1.13) against Cassini 2002 (Bertotti, Iess & Tortora 2003: "
+      "gamma = 1 + (2.1 +- 2.3) x 10^-5): within 1 sigma; inside the shadow-only range; the time part alone (gamma = 0) "
+      "and Newton's corpuscle (gamma = -2) excluded; the twist below Cassini's resolution",
+      (not pr_ec_["uses_any_measured_delay_or_gamma"]) and pr_ec_["prediction"]["gamma_predicted"] == 1.0
+      and abs(cm_ec_["derived_dials"]["pull_in_sigma"]) < 1.0 and cm_ec_["shadow_only"]["cassini_inside"]
+      and cm_ec_["time_part_alone"]["pull_in_sigma"] > 1e4 and cm_ec_["twist"]["twist_over_resolution"] < 0.1,
+      cm_ec_)
+results["EC_echo_split"] = {"prediction": pr_ec_["prediction"], "compare": cm_ec_}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

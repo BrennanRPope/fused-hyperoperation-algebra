@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 to 28 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 29 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -491,6 +491,22 @@ theorem push_photon_sphere (r b M : K) (h2 : (2 : K) ≠ 0) (hr : r ≠ 0)
 impact parameter satisfies b² = 3r² = 27M², so the shadow's radius on the sky is √27 M. -/
 theorem push_shadow_radius (r b M : K) (h1 : 3 * r^2 - b^2 = 0) (hr3 : r - 3 * M = 0) :
     b^2 = 27 * M^2 := by
+  grind
+
+/-- **What the push adds to light** (round 29, no spin): Schwarzschild's null radial function r⁴ − b²r² + 2Mb²r is
+the time part's r⁴ + 2Mr³ − b²r² (Newton's light) plus the push's −2Mr(r² − b²). -/
+theorem push_null_term (r M b : K) :
+    r^4 - b^2 * r^2 + 2 * M * b^2 * r = (r^4 + 2 * M * r^3 - b^2 * r^2) - 2 * M * r * (r^2 - b^2) := by
+  grind
+
+/-- **One dial, two tests** (round 29): with the push at strength λ (k·p = E + λP), the perihelion factor
+(2 + 2γ − β)/3 is λ² and the delay gives γ = λ², so β + γ = 2 whatever λ is. -/
+theorem one_dial_beta_gamma (β γ l : K) (hp : 2 + 2 * γ - β = 3 * l^2) (hg : γ = l^2) : β + γ = 2 := by
+  grind
+
+/-- **The square ties perihelion to the push** (round 29): the perihelion coefficient 2(2μ² + ν) from the EP weight μ
+and the PP weight ν becomes 6λ² when the field is one square (μ = λ, ν = λ²). -/
+theorem square_dial_perihelion (l : K) : 2 * (2 * l^2 + l^2) = 6 * l^2 := by
   grind
 
 end Field

@@ -84,6 +84,10 @@ How it got here:
 21. **The shadow, piece by piece (Part 22):** the time part alone is Newton's pull on light: it bends rays by
    Newton's half and traps none, so it makes no shadow. The push makes the horizon, the photon sphere and the
    shadow's size, which matches Sgr A*'s; the twist shifts the shadow and gives Kerr's D shape.
+22. **The radar echo, predicted first (Part 23):** the time part gives half the Sun's radar delay (slow clocks), the
+   push the other half (extra path), the twist 0.02 ns. Written down before comparing, with the dials from Parts 3–4:
+   γ = 1. Cassini measured 1.000021 ± 0.000023; Kerr predicts the same, so this confirms the push, not the river over
+   Kerr.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -108,7 +112,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**125/125 pass**, about 25 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**129/129 pass**, about 25 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2244,6 +2248,99 @@ calibrated simulations, which is why the shadow's error bar is larger.
 - **Known:** Soldner's and Einstein's half bending (1801, 1911), Einstein's full bending (1915), the photon sphere
   and √27 M, Bardeen's Kerr shadow (1973), and the EHT results (2019, 2022).
 
+## Part 23. The radar echo past the Sun, predicted before comparing (round 29)
+
+*DRAFT, round 29 (Nov 27, 2026). Scripts: `echo_predict.py` (the prediction), then `echo_compare.py` (the
+comparison). Checks: EC1–EC4.*
+
+A radar signal that grazes the Sun comes back late: the Shapiro delay, about a quarter of a millisecond for a grazing
+round trip. Brennan asked for it split into the river's time part, push and twist, and asked for the prediction to be
+written down first, with the dial settings fixed from earlier results, and compared with the Cassini spacecraft's
+measurement only afterwards.
+
+**In one line:** the time part gives half the delay (clocks run slow near the Sun), the push gives the other half (the
+extra stretch of path), and the twist, from the Sun's own spin, adds about 0.02 ns. Written down first: γ = 1, so the
+two halves are equal. Cassini measured γ = 1.000021 ± 0.000023. Kerr predicts the same.
+
+![The radar echo past the Sun, piece by piece](figures/fig37_echo_split.png)
+
+*Fig 37. (a) The extra round-trip time across a solar conjunction (illustrative geometry), by piece. Blue: the time
+part. Orange: the push. Black: all pieces. Green dashed: Newton's corpuscle, light that speeds up as it falls, which
+would arrive early. (b) The prediction, written at 17:19 UTC before the comparison, against Cassini; the zoom shows
+γ − 1 in units of 10⁻⁵. (c) One dial, the push's strength λ, sets the delay, the bending, the perihelion advance and
+the shadow's size; the purple band is what Sgr A*'s shadow alone allows, the red line what Cassini allows.*
+
+### 23.1 The dials, fixed first
+
+The shell's field is f(k·p)² with k·p = E + P + S. A dial that changes the strength of the push or the twist and keeps
+the field one square (the Kerr–Schild form, and Part 16's one-jet rule) is k·p = E + λP + τS. The river as Parts 3
+and 4 derived it is λ = τ = 1 (exact Kerr), and every round since, the shadow included, used it unchanged. Nothing in
+it was fitted to a delay. As a second, data-only setting, Sgr A*'s shadow (Part 22) allows λ = 0.84 to 1.06.
+
+`echo_predict.py` holds no measured delay, no measured γ and no Cassini number. It wrote `echo_prediction.json` at
+17:19:48 UTC (script sha256 d3204647…), and the two files were committed on their own as 3028033 at 17:22:22
+UTC. `echo_compare.py` was written and run at about 17:20, after the prediction file and its hash existed but two
+minutes before that commit landed; the prediction file is unchanged since (same hash). One caveat: Cassini's value has been public since 2003, and it was looked up before
+Brennan's request to predict first. The timestamp shows that the dials and the prediction come from earlier work and
+use no delay data, not that the number was unknown.
+
+### 23.2 The delay, piece by piece (EC1, EC3)
+
+For each leg of the trip, from the closest approach r₀ out to r, to first order in M:
+
+  t = √(r² − r₀²) + M [ (1 + λ²) ln((r + √(r² − r₀²))/r₀) + √((r − r₀)/(r + r₀)) ]
+
+plus a clock relabelling 2λM ln r that cancels from anything that depends on the path.
+
+- **Time part:** the 1. Its light follows Newton's path (Part 22) but its clocks run slow near the Sun, so the light
+  is late. Newton's corpuscle follows the same path but speeds up, and gives −1: it would arrive early.
+- **Push:** the λ², the extra stretch of path. In the usual bookkeeping (Eddington's γ, delay ∝ 1 + γ), the river says
+  γ = λ²: the push's share over the time part's, whose size Newton's mass fixes.
+- **Twist:** linear in the Sun's spin and opposite for rays passing on its two sides: −8Ma/b one way for an equatorial
+  ray (exact Kerr at 40 digits). With the Sun's spin (a = J/Mc ≈ 325 m, from helioseismology) that is about 0.02 ns
+  round trip at 1.6 solar radii.
+
+At the Sun the exact light times match this formula to centimetres in 10 to 20 km.
+
+### 23.3 One dial, four effects (EC2)
+
+The same λ sets the bending, 2(1 + λ²)M/b (Part 22's half and half), and the perihelion advance, λ² times Einstein's
+6πM/a per orbit (Newton's ring alone gives none). So one dial ties the delay, the bending and the perihelion. In the
+usual parameters that reads β + γ = 2. It is the square that ties them: with separate weights on the push's two terms
+the perihelion factor would be (2μ² + ν)/3 and the delay's ν, free to disagree.
+
+### 23.4 Predicted, then compared (EC4)
+
+| | γ (the push's share) |
+|---|---|
+| Newton's corpuscle | −2 |
+| time part alone | 0 |
+| dials from Sgr A*'s shadow alone | 0.71–1.13 |
+| **dials from Parts 3–4, written first** | **1** |
+| Cassini 2002, measured (Bertotti, Iess & Tortora 2003, [Nature 425, 374](https://ui.adsabs.harvard.edu/abs/2003Natur.425..374B/abstract)) | 1.000021 ± 0.000023 |
+
+- The prediction is 0.9σ from the measurement.
+- The shadow-only range contains it, and Cassini narrows it about 9,000-fold: λ = 1.0000105 ± 0.0000115.
+- The time part alone and Newton's corpuscle are excluded by tens of thousands of standard deviations.
+- The twist's 0.02 ns is about 130 times below what Cassini could resolve (about 3 ns in the delay).
+
+### 23.5 What this means, on its own merits
+
+- **What the agreement shows:** the push has to be there at full strength. With the dials fixed by the river's own
+  derivation and no delay data, the river said the two halves are equal, and they are, to 2 parts in 100,000.
+- **What it doesn't show:** anything that tells the river from general relativity. All pieces at λ = τ = 1 are exactly
+  Kerr, which predicts γ = 1 too, and the derivation that set the dials was built to reproduce Kerr. Cassini measures
+  only the sum of the two halves, so the split itself (slow clocks plus extra path) is a reading, not a separate
+  measurement.
+- **Lead?** Not a new one. The honest gain is the one-dial structure: if the push's strength could differ from 1, the
+  river ties the delay, the bending and the perihelion together (β + γ = 2), a relation some rival theories break.
+  Measured values fit it, but so does general relativity. A prediction that could separate the river from Kerr has
+  to come from somewhere the river is not exactly Kerr, which so far it always is.
+- **Ours, as far as a short search found:** the piece-by-piece split of the delay (time part's slow clocks, push's
+  extra path, twist's spin term) and the one-dial family k·p = E + λP with its tie β + γ = 2.
+- **Known:** the Shapiro delay (Shapiro 1964), its half from clocks and half from space in Eddington's γ, the
+  gravitomagnetic delay from a body's spin, and Cassini's measurement.
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -2330,9 +2427,9 @@ calibrated simulations, which is why the shadow's error bar is larger.
 
 ## Files
 
-- `checks.py`: 125 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 129 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2375,6 +2472,12 @@ calibrated simulations, which is why the shadow's error bar is larger.
 - `shadow_split.py`: Part 22, light rays in the shell with each piece switched on: the horizon factor, bending at
   a = 0, the photon orbits and shadow outlines for a = 0.5, 0.9, 0.998M at tilts of 90°, 50° and 17° against
   Bardeen's formula, and Sgr A*'s sizes; writes `shadow_split.json` (about 1.5 minutes).
+- `echo_predict.py`: Part 23's prediction, written before the comparison and holding no measured delay: the light time
+  past a mass with the push at strength λ, the same dial in the perihelion and the bending, exact light times at the
+  Sun, the twist's spin term, and the push dial allowed by the shadow alone; writes `echo_prediction.json` (about 10
+  seconds).
+- `echo_compare.py`: Part 23's comparison of `echo_prediction.json` with Cassini (Bertotti, Iess & Tortora 2003);
+  writes `echo_compare.json` (instant).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2382,8 +2485,8 @@ calibrated simulations, which is why the shadow's error bar is larger.
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the thirty-six figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`).
+- `figures.py`: the thirty-seven figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2394,9 +2497,9 @@ calibrated simulations, which is why the shadow's error bar is larger.
   `square_from_three_sources`, `generic_radial_stiffness`, `generic_vertical_stiffness`,
   `equator_ratio_three_sources`; round 27 adds `kn_ring_plus_one_term`, `kn_equator_split`,
   `charged_radial_stiffness`, `kn_ratio_three_sources`; round 28 adds `time_part_light`, `push_photon_sphere`,
-  `push_shadow_radius` (written here, checked in sympy).
-  Rounds 18–28's theorems all compile in the library (as `Topics.SpinningRiver`; `ring`, `field_simp`,
-  `linear_combination` and `mul_left_cancel₀` written as `grind`). It builds on `FusedAlgebra.Topics.JetFields`.
+  `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion` (written here,
+  checked in sympy). Rounds 18–29's theorems all compile in the library (as `Topics.SpinningRiver`; `ring`,
+  `field_simp`, `linear_combination` and `mul_left_cancel₀` written as `grind`). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -2459,3 +2562,4 @@ calibrated simulations, which is why the shadow's error bar is larger.
 | the equator split per unit energy into Newton's ring, push and twist; the square (L − a)² closing from the push's L², the twist's −2aL and the ring's a²; each term of 1 − 6v² + 8qv − 3q² read as one piece (−3q² ring, −6v² push, +8qv twist), the ±28 as half-squares | **ours** as far as a short search found (EQ1–EQ3); Kerr's epicyclic frequencies (Okazaki, Kato & Fukue 1987; Kato 1990) known; the stiffness law for a quartic radial function elementary |
 | charge entering every piece of the shell in mass's slot (2Mr → 2Mr − Q², the mass less the field's energy outside r); the time part as Newton's pull of that mass function; Kerr–Newman's equatorial ratio as the exact sum [1 − 3q² + s²(1 + q²)/V²] + [−6v² + 3s² − s⁴/V²] + [8qV] by piece | **ours** as far as a short search found (KN1–KN4); Kerr–Newman, its Kerr–Schild form, Carter's separation, the mass function and the Reissner–Nordström and Kerr–Newman epicyclic frequencies known |
 | the shadow piece by piece: the time part alone as Newton's light (bending exactly 2 arctan(M/b), no capture, no shadow), the horizon factor only with the push, ring + push's centred squashed shadow, the twist's sideways shift and D shape | **ours** as far as a short search found (SH1–SH4); the half-and-half of light bending (Soldner 1801, Einstein 1911/1915, Eddington's γ), the photon sphere, Bardeen's Kerr shadow (1973) and the EHT measurements known |
+| the radar echo piece by piece: the time part's half as slow clocks, the push's as extra path (γ = λ²), the twist's −8Ma/b; one push dial tying delay, bending and perihelion (β + γ = 2); the prediction written before comparing with Cassini | **ours** as far as a short search found (EC1–EC4); the Shapiro delay (1964), its clocks-plus-space halves in Eddington's γ, the spin (gravitomagnetic) delay and Cassini's γ (2003) known |

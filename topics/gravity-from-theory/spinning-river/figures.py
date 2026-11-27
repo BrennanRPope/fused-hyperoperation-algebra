@@ -1902,6 +1902,83 @@ def fig36():
 
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36):
+# ---------------------------------------------------------------- fig37 the radar echo past the Sun, predicted then compared (round 29)
+def fig37():
+    pr = json.load(open(os.path.join(HERE, "echo_prediction.json")))
+    cm = json.load(open(os.path.join(HERE, "echo_compare.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(18.5, 6.6), gridspec_kw={"width_ratios": [1.1, 1.0, 1.0]})
+    # (a) round-trip extra delay across a solar conjunction, by piece (illustrative geometry)
+    ax = axs[0]
+    GMc3 = 1.32712440018e20/2.99792458e8**3
+    AU, RS = 1.495978707e11, 6.957e8
+    r1, r2 = 1.016*AU, 7.4*AU
+    days = np.linspace(-10, 10, 801)
+    vb = 29.8e3*r2/(r1 + r2)                              # sweep speed of the ray past the Sun (illustrative)
+    bb = np.sqrt((1.6*RS)**2 + (vb*days*86400)**2)
+    one = 2*GMc3*np.log(4*r1*r2/bb**2)*1e6                 # round trip, per unit of (1 + lambda^2), microseconds
+    ax.fill_between(days, 0, one, color=BLUE, alpha=0.35, label="time part: clocks run slow near the Sun")
+    ax.fill_between(days, one, 2*one, color=ORANGE, alpha=0.35, label="push: the extra stretch of path")
+    ax.plot(days, 2*one, color="k", lw=2, label="all pieces (the river = Kerr): predicted")
+    ax.plot(days, -one, color=GREEN, lw=1.8, ls="--", label="Newton's corpuscle (speeds up, arrives early)")
+    ax.axhline(0, color=GREY, lw=0.8)
+    ax.set_xlabel("days from conjunction"); ax.set_ylabel("extra round-trip time (microseconds)")
+    ax.set_ylim(-220, 300)
+    ax.legend(fontsize=8.6, loc="upper right")
+    ax.text(0.02, 0.03, "illustrative geometry: Earth 1.016 AU, far station 7.4 AU,\nclosest ray 1.6 solar radii. "
+            "Twist (the Sun's spin): ±0.02 ns", transform=ax.transAxes, fontsize=8.5,
+            bbox=dict(fc="white", ec=GREY, alpha=0.9))
+    ax.set_title("(a) The echo's extra time past the Sun, by piece:\nhalf from the time part, half from the push")
+    # (b) predicted first, then compared
+    ax = axs[1]
+    g_lo, g_hi = pr["shadow_dial"]["gamma_range_lambda2"]
+    rows = [("Newton's corpuscle", -2.0, None, GREEN), ("time part alone", 0.0, None, BLUE),
+            ("dials from the shadow alone", g_lo, g_hi, PURPLE), ("dials from rounds 7-8 (written first)", 1.0, None, "k"),
+            ("Cassini 2002 (measured)", 1 + 2.1e-5, 2.3e-5, RED)]
+    for i, (lab, lo, hi, col) in enumerate(rows):
+        y = len(rows) - 1 - i
+        if hi is None:
+            if lo < -0.25:
+                ax.annotate("", xy=(-0.25, y), xytext=(-0.05, y), arrowprops=dict(arrowstyle="->", color=col, lw=2))
+                ax.text(-0.04, y - 0.12, "γ = −2, off the scale", color=col, fontsize=9, va="top")
+            else:
+                ax.plot([lo], [y], "o", color=col, ms=10)
+        elif col == RED:
+            ax.plot([lo], [y], "o", color=col, ms=9)
+        else:
+            ax.plot([lo, hi], [y, y], color=col, lw=9, solid_capstyle="butt", alpha=0.75)
+        ax.text(-0.22, y + 0.25, lab, fontsize=10, color=col)
+    ax.set_xlim(-0.25, 1.35); ax.set_ylim(-0.6, len(rows) - 0.2); ax.set_yticks([])
+    ax.set_xlabel("γ: the push's share of the delay, over the time part's")
+    ins = ax.inset_axes([0.55, 0.64, 0.42, 0.22])
+    ins.axvspan(2.1 - 2.3, 2.1 + 2.3, color=RED, alpha=0.25)
+    ins.axvline(2.1, color=RED, lw=1.5); ins.axvline(0, color="k", lw=2)
+    ins.set_xlim(-6, 8); ins.set_yticks([]); ins.tick_params(labelsize=8)
+    ins.set_xlabel("(γ − 1) × 10⁵", fontsize=8.5)
+    ins.set_title("zoom: prediction 0, Cassini 2.1 ± 2.3", fontsize=8.5)
+    ax.set_title("(b) Predicted first (" + pr["written_utc"][11:16] + " UTC), then compared:\n"
+                 "γ = 1 from the dials; Cassini 1.000021 ± 0.000023")
+    # (c) one dial, four measurements
+    ax = axs[2]
+    lam = np.linspace(0, 1.3, 300)
+    ax.plot(lam, (1 + lam**2)/2, color=BLUE, lw=2.2, label="delay and bending: (1 + λ²)/2")
+    ax.plot(lam, lam**2, color=ORANGE, lw=2.2, label="perihelion advance: λ²")
+    tab = np.array(pr["shadow_dial"]["bc_table"])
+    ax.plot(tab[:, 0], tab[:, 1]/np.sqrt(27), color="k", lw=2.2, label="shadow size (none at λ = 0)")
+    l_lo, l_hi = pr["shadow_dial"]["lambda_range"]
+    ax.axvspan(l_lo, l_hi, color=PURPLE, alpha=0.15, label="λ allowed by Sgr A*'s shadow")
+    ax.axvline(cm["lambda_measured"][0], color=RED, lw=1.6, label="λ from Cassini (1 ± 0.00001)")
+    ax.axhline(1, color=GREY, lw=0.8, ls=":")
+    ax.set_xlim(0, 1.3); ax.set_ylim(0, 1.8)
+    ax.set_xlabel("λ: the push's strength (rounds 7-8: λ = 1)"); ax.set_ylabel("effect ÷ its value at λ = 1")
+    ax.legend(fontsize=8.6, loc="upper left")
+    ax.set_title("(c) One dial sets the delay, the bending,\nthe perihelion and the shadow")
+    fig.suptitle("Round 29: the radar echo past the Sun, piece by piece. The time part (slow clocks) gives half the "
+                 "delay, the push (extra path) the other half,\nthe twist ±0.02 ns. Written down before comparing: "
+                 "γ = 1. Cassini measured 1.000021 ± 0.000023 (Kerr predicts the same)", fontsize=12.5)
+    fig.tight_layout(rect=[0, 0, 1, 0.93])
+    save(fig, "fig37_echo_split.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37):
     f()
 print("figures:", sorted(os.listdir(FIG)))

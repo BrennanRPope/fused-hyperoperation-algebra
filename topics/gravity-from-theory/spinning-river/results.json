@@ -7512,5 +7512,89 @@
         7.0
       ]
     }
+  },
+  "EC1 light time past a mass, per leg, to first order in M, with the push at strength lambda (k.p = E + lambda P, the field still one square): sqrt(r^2 - r0^2) + M[(1 + lambda^2) ln((r + sqrt(r^2 - r0^2))/r0) + sqrt((r - r0)/(r + r0))] plus a clock relabelling 2 lambda M ln r that cancels from anything path-dependent. The time part gives the 1 (slow clocks), the push lambda^2; Newton's corpuscle gives -1 (symbolic, exact; 40-digit spot checks of the antiderivatives)": {
+    "pass": true,
+    "detail": "{'b^2(r0)': 'r0**2*(-2*M*lambda**2 + 2*M + r0)/(-2*M*lambda**2 + r0)', 'outgoing_first_order_is_1+lam2_log_plus_clock': True, 'incoming_mirror': True, 'd/dr ln((r+s)/r0) = 1/s': True, 'd/dr sqrt((r-r0)/(r+r0)) = r0/((r+r0) s)': True, 'newton_corpuscle_first_order_is_-log_plus_sqrt': True}"
+  },
+  "EC2 the same dial sets the perihelion advance, 6 lambda^2 (pi M/a per orbit), and the bending, 2(1 + lambda^2) M/b: one dial ties delay, bending and perihelion (beta + gamma = 2); with separate weights mu (EP) and nu (PP) the perihelion factor is (2 mu^2 + nu)/3 and the delay's nu, so it is the square that ties them (symbolic; bending integrated at b = 1e5 M to 1e-4)": {
+    "pass": true,
+    "detail": "{'perihelion': {'ratio_first_order': '-4*mu**2*v2 - 2*nu*v2 + 1', 'general_is_1-2(2mu^2+nu)v^2': True, 'square_dial_is_1-6lam^2v^2': True}, 'bending': [{'lambda': 0.0, 'b': 100000.0, 'deflection_x_b_over_2M': 0.9999999999666667, 'predicted_1+lam2': 1.0}, {'lambda': 0.5, 'b': 100000.0, 'deflection_x_b_over_2M': 1.2500125174712533, 'predicted_1+lam2': 1.25}, {'lambda': 1.0, 'b': 100000.0, 'deflection_x_b_over_2M': 2.0000589069956733, 'predicted_1+lam2': 2.0}]}"
+  },
+  "EC3 at the Sun (ray at 1.6 solar radii, out to 1.016 AU) the exact light times of the time part and of time part + push match the first-order formula to within 20 M^2/r0 (centimetres in 10-20 km); the twist adds -8 M a/b one way for a prograde equatorial ray (exact Kerr, 40 digits, 3 geometries), which for the Sun's spin is about 0.02 ns round trip": {
+    "pass": true,
+    "detail": "{'sun': [{'lambda': 0.0, 'exact_excess_m': 9749.406182737997, 'first_order_excess_m': 9749.40813434967, 'difference_m': -0.0019516116720084862, 'M2_over_r0_m': 0.001958837774532845}, {'lambda': 1.0, 'exact_excess_m': 18032.992938559204, 'first_order_excess_m': 18032.96608727015, 'difference_m': 0.026851289051160313, 'M2_over_r0_m': 0.001958837774532845}], 'twist': {'rows': [{'r0': 1000, 'r1': 1000000.0, 'r2': 1000000.0, 'half_difference_over_Ma/r0': -8.027214821243724}, {'r0': 2000, 'r1': 1000000.0, 'r2': 3000000.0, 'half_difference_over_Ma/r0': -8.010246293830052}, {'r0': 5000, 'r1': 10000000.0, 'r2': 10000000.0, 'half_difference_over_Ma/r0': -8.004227685345159}], 'coefficient': -8, 'sun_a_m': 325.44313631347535, 'sun_a_over_M': 0.22039659892201263, 'sun_one_way_s_at_1.6Rsun': 1.1520534872081492e-11, 'sun_round_trip_s_at_1.6Rsun': 2.3041069744162985e-11}}"
+  },
+  "EC4 the prediction written first (echo_prediction.json: dials lambda = tau = 1 from rounds 7-8, no measured delay used; gamma = 1; shadow-only dials gamma = 0.71-1.13) against Cassini 2002 (Bertotti, Iess & Tortora 2003: gamma = 1 + (2.1 +- 2.3) x 10^-5): within 1 sigma; inside the shadow-only range; the time part alone (gamma = 0) and Newton's corpuscle (gamma = -2) excluded; the twist below Cassini's resolution": {
+    "pass": true,
+    "detail": "{'prediction_written_utc': '2026-11-27T17:19:48+00:00', 'prediction_sha256': 'd3204647d9a74fd0269ca7ef5211c41b1036d51ac4b0355031873fc534844b75', 'prediction_used_measured_delay': False, 'cassini': {'gamma_minus_1': 2.1e-05, 'sigma': 2.3e-05, 'source': 'Bertotti, Iess & Tortora 2003, Nature 425, 374'}, 'derived_dials': {'gamma_predicted': 1.0, 'pull_in_sigma': 0.9130434782629895}, 'push_over_time_part_measured': [1.000021, 2.3e-05], 'lambda_measured': [1.0000104999448756, 1.15e-05], 'shadow_only': {'gamma_range': [0.711940097028995, 1.1298961498597802], 'cassini_inside': True, 'narrowing_factor': 9086.00114849533}, 'time_part_alone': {'gamma': 0.0, 'pull_in_sigma': 43479.17391304348}, 'newton_corpuscle': {'gamma': -2.0, 'pull_in_sigma': 130435.69565217392}, 'twist': {'round_trip_s': 2.3041069744162985e-11, 'cassini_delay_resolution_s': 2.9919084026456633e-09, 'twist_over_resolution': 0.007701128057191989}}"
+  },
+  "EC_echo_split": {
+    "prediction": {
+      "gamma_predicted": 1.0,
+      "rule": "gamma = lambda^2, dials lambda = tau = 1 from rounds 7-8",
+      "gamma_from_shadow_alone": "lambda^2 within the shadow_dial range (no use of rounds 7-8's setting)",
+      "one_dial_relation": "perihelion factor (2 + 2 gamma - beta)/3 = lambda^2 and gamma = lambda^2, so beta + gamma = 2 for any push strength, if the field stays one square",
+      "delay_split": {
+        "time_part": 0.5,
+        "push": 0.5,
+        "twist": "linear in the Sun's spin, opposite on the two sides, about 8 GM J/(c^4 M b) one way (well below a part in a million of the total)"
+      },
+      "illustrative_geometry": {
+        "r_earth_AU": 1.016,
+        "r_far_AU": 7.4,
+        "b_solar_radii": 1.6
+      },
+      "round_trip_delay_s": {
+        "time_part": 0.00013008433989929963,
+        "push": 0.00013008433989929963,
+        "total": 0.00026016867979859927,
+        "twist_round_trip": 2.3041069744162985e-11
+      },
+      "doppler_note": "Cassini-style tracking measures d/dt of the round-trip delay; its relativistic part is proportional to (1 + gamma) = 1 + lambda^2, so the prediction for it is the same gamma."
+    },
+    "compare": {
+      "prediction_written_utc": "2026-11-27T17:19:48+00:00",
+      "prediction_sha256": "d3204647d9a74fd0269ca7ef5211c41b1036d51ac4b0355031873fc534844b75",
+      "prediction_used_measured_delay": false,
+      "cassini": {
+        "gamma_minus_1": 2.1e-05,
+        "sigma": 2.3e-05,
+        "source": "Bertotti, Iess & Tortora 2003, Nature 425, 374"
+      },
+      "derived_dials": {
+        "gamma_predicted": 1.0,
+        "pull_in_sigma": 0.9130434782629895
+      },
+      "push_over_time_part_measured": [
+        1.000021,
+        2.3e-05
+      ],
+      "lambda_measured": [
+        1.0000104999448756,
+        1.15e-05
+      ],
+      "shadow_only": {
+        "gamma_range": [
+          0.711940097028995,
+          1.1298961498597802
+        ],
+        "cassini_inside": true,
+        "narrowing_factor": 9086.00114849533
+      },
+      "time_part_alone": {
+        "gamma": 0.0,
+        "pull_in_sigma": 43479.17391304348
+      },
+      "newton_corpuscle": {
+        "gamma": -2.0,
+        "pull_in_sigma": 130435.69565217392
+      },
+      "twist": {
+        "round_trip_s": 2.3041069744162985e-11,
+        "cassini_delay_resolution_s": 2.9919084026456633e-09,
+        "twist_over_resolution": 0.007701128057191989
+      }
+    }
   }
 }

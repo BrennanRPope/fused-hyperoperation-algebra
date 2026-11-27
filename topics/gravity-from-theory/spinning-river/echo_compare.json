@@ -1,0 +1,43 @@
+{
+ "prediction_written_utc": "2026-11-27T17:19:48+00:00",
+ "prediction_sha256": "d3204647d9a74fd0269ca7ef5211c41b1036d51ac4b0355031873fc534844b75",
+ "prediction_used_measured_delay": false,
+ "cassini": {
+  "gamma_minus_1": 2.1e-05,
+  "sigma": 2.3e-05,
+  "source": "Bertotti, Iess & Tortora 2003, Nature 425, 374"
+ },
+ "derived_dials": {
+  "gamma_predicted": 1.0,
+  "pull_in_sigma": 0.9130434782629895
+ },
+ "push_over_time_part_measured": [
+  1.000021,
+  2.3e-05
+ ],
+ "lambda_measured": [
+  1.0000104999448756,
+  1.15e-05
+ ],
+ "shadow_only": {
+  "gamma_range": [
+   0.711940097028995,
+   1.1298961498597802
+  ],
+  "cassini_inside": true,
+  "narrowing_factor": 9086.00114849533
+ },
+ "time_part_alone": {
+  "gamma": 0.0,
+  "pull_in_sigma": 43479.17391304348
+ },
+ "newton_corpuscle": {
+  "gamma": -2.0,
+  "pull_in_sigma": 130435.69565217392
+ },
+ "twist": {
+  "round_trip_s": 2.3041069744162985e-11,
+  "cassini_delay_resolution_s": 2.9919084026456633e-09,
+  "twist_over_resolution": 0.007701128057191989
+ }
+}
