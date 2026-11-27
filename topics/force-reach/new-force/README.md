@@ -2,18 +2,20 @@
 
 *Nov 26, 2026. Follow-up to the force-reach and flux-tube-dial pages. Brennan: "So I'm trying to figure out if there is anything that might produce a new force we are unaware of", then "Not produce but predict".*
 
-Checks: `checks.py` → `checks_output.txt`, **24 / 24 pass**, and `strength_checks.py` → `strength_output.txt`, **12 / 12 pass** (run `checks.py` first: it rewrites `results.json`, and `strength_checks.py` adds its G keys). Numpy, scipy, sympy, mpmath; a few seconds. Pictures: `figures.py` → `figures/h1` to `h6`. Lean: `lean/NewForce.lean`, 14 pure-algebra statements, every one checked true by `lean/check_statements.py`; all 14 are compiled in the shared library as `FusedAlgebra.Topics.NewForce` (core Lean, over any field of characteristic 0 or ordered field).
+Checks: `checks.py` → `checks_output.txt`, **24 / 24 pass**; `strength_checks.py` → `strength_output.txt`, **12 / 12**; `hold_strength_checks.py` → `hold_strength_output.txt`, **20 / 20**. Run them in that order: `checks.py` rewrites `results.json` and the other two add their G, H and S keys. Numpy, scipy, sympy, mpmath; under a minute. Pictures: `figures.py` → `figures/h1` to `h8`. Lean: `lean/NewForce.lean`, 20 pure-algebra statements, every one checked true by `lean/check_statements.py`.
 
-*Revised after Brennan's push-back: "Look harder please. The strength is something that could be derived at least in the special case from our work on electromagnetism", "I'm hoping it could generalize", and the reminder of the spinning black hole's frame dragging. The first version said "not yet". Section 6 is what looking harder gave.*
+*Revised twice. First after Brennan's push-back: "Look harder please. The strength is something that could be derived at least in the special case from our work on electromagnetism", "I'm hoping it could generalize", and the reminder of the spinning black hole's frame dragging (section 6). Then, Nov 26 evening, after he said yes to finding what holds the circle, and added: "I'd really like to look at ways to derive the strength", "The strength seems related to the material or quality of the force", "So there are probably other variables at work" (sections 7 and 8).*
 
 ## The result in two sentences
 
-**Yes, in the special case: if electromagnetism's phase circle is read as gravity's closed direction (our rung class, Δ < 0), its strength is fixed, α = 4G|Δ|, which with the measured α puts the circle at 23.4 Planck lengths, makes every charge a whole multiple of e, and predicts a new force on ordinary matter at exactly 1/3 of gravity's strength.** That new force is ruled out at long range by the Cassini light-bending test, so it must have a short range, and the theory doesn't set that range: the open question is what holds the circle's size fixed.
+**Yes, in the special case: if electromagnetism's phase circle is read as gravity's closed direction (our rung class, Δ < 0), its strength is fixed, α = 4G|Δ|, which puts the circle at about 21 to 23 Planck lengths, makes every charge a whole multiple of e, and predicts a new force on ordinary matter at exactly 1/3 of gravity's strength.** What holds the circle is its own vacuum energy plus one more term, and any hold built only from the circle and gravity gives that new force a range of about 2000 Planck lengths, 10²⁷ times shorter than any lab can probe: the force is real in this picture but invisible.
+
+**Ways to derive a strength, in general (section 8):** Brennan's "material or quality" splits cleanly. The quality is the shape of the force's hidden space, which sets the number in front (α = s·G/size², s = 4 for a circle, 6 for a sphere). The material is the set of particles the force carries, which sets how the strength changes with energy (for the strong force, all of it, given one scale). The other variables at work are exactly those: one size, one shape and the particle content.
 
 ![Strength from the closed direction](figures/h6_strength_from_circle.png)
 *h6. A: one extra circle splits into gravity, an electric force and a scalar force (the circle's size). Copies with the same circle charge feel no net force; ordinary matter feels gravity plus 1/3 more from the scalar. B: the electric strength falls as 1/R²; the measured α picks R = 23.4 Planck lengths. C: n circles give a scalar of strength n/(n+2); if it reached far, light bending would be γ = 1/(n+1), against Cassini's γ = 1.*
 
-**Lead or not, on its own merits:** the physics is Kaluza–Klein (1921, 1926) and Jordan–Thiry–Brans–Dicke, so the derived numbers are known, not new. What is ours is where it sits: the same reading Δ that spaces the rungs sets the strength, and our design rule (base dials are constant inputs) asks for a frozen circle, which is exactly what Cassini demands. The prediction is only half finished: a real, testable number needs the mechanism that freezes the circle, because that mechanism sets the new force's range. That is the next question if Brennan wants to keep going. Not proposed as a Promising-leads entry until it gives a range.
+**Lead or not, on its own merits:** the physics is Kaluza–Klein (1921, 1926), Jordan–Thiry–Brans–Dicke, Appelquist–Chodos (1983) and Candelas–Weinberg (1984), so the derived numbers are known, not new. What is ours is where it sits: the same reading Δ that spaces the rungs sets the strength, and our design rule (base dials are constant inputs) asks for a held circle, which is what Cassini demands. Section 7 turns the open question into a clean negative prediction: no lab will see this new force, and if a 1/3-gravity force does turn up at microns, this reading would need a new small scale that our law doesn't have. Section 8's test, one hidden space setting all strengths, fails for the simplest shapes. Neither is a lead on its own; the open question that remains is which hidden shape, and our dials don't pick one. No Promising-leads entry proposed.
 
 The first version's map (h1) is still the context: it shows which kinds of new force our readings allow. Section 6 fills in the strength for one cell.
 
@@ -87,6 +89,41 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 - **The order-on column** (not checked here, from the literature): a closed direction that is a sphere instead of a circle gives a non-abelian force, again with strength set by G and the sphere's size. Witten (1981) found that the full set SU(3) × SU(2) × U(1) needs at least 7 extra dimensions, and that this route can't give the weak force's left-handedness on its own. That is where the generalization stops working cleanly.
 - **What is not generalized:** the ratio of strengths to gravity, 4 (vector) and 3 (scalar), is fixed by D = 5. In D = 4 + n it becomes n/(n+2) for the scalar, as in h6 panel C.
 
+### 7. What holds the circle, and the new force's range (part H)
+
+![What holds the circle](figures/h7_what_holds_the_circle.png)
+*h7. A: the circle's vacuum energy alone pushes it to grow or shrink; with a negative 5D vacuum energy added, it has a resting size R*. B: the range that hold gives the new force, on a ladder of distances. C: any hold whose only scales are the circle and gravity gives range R²/(κ l_P); reaching the lab would need κ near 10⁻²⁸.*
+
+- **It can't be held by fiat (H1).** If the circle's size is simply set constant, its own field equation reads R₅₅ = (κ²/4)F², which is not zero for any electric field. Jordan (1947) and Thiry (1948) found this. So our "dials are constant" rule needs something physical behind it.
+- **Its own vacuum energy (H2, H2b).** Every field on the circle has a vacuum (Casimir) energy, and it comes from the same image sum as the rung tower in section 2: −Γ(D/2)ζ(D)/(π^{D/2}L^{D−1}) per degree of freedom. The formula matches the mode sum in the test case D = 2 (−π/6L). In 5D it is 3ζ(5)/(64π⁶R⁴) per degree of freedom (Appelquist and Chodos 1983).
+- **Alone it doesn't hold (H3).** The vacuum energy goes as 1/R⁶ in the 4D frame, with no turning point. Gravity's own share pulls the circle to shrink, as Appelquist and Chodos found.
+- **With one more term it does (H4, H4b).** Add a 5D vacuum energy. A resting size exists only when that energy is negative and the circle carries more fermions than bosons. At rest the circle's size, as a field, has mass² = 20C/(M̄²R⁴) and leaves a 4D vacuum energy −5C/R⁴ that something else must cancel (the usual cosmological constant problem, not solved here). The same normalisation gives the field's pull on matter as 1/3 of gravity (H4c), matching section 6.
+- **The range (H5, H5b).** With the circle at 23.4 Planck lengths and the smallest workable content (2 fermions), the range is **about 2000 Planck lengths, 3 × 10⁻³² m**. More particles only shorten it: 2 to 64 fermions all give 10⁻³³ to 10⁻³¹ m. Using section 8's refined circle (20.7 Planck lengths) changes it by about a fifth.
+- **The general point (H6, H6b, H7).** Any hold whose only scales are the circle and gravity gives mass κ l_P/R², so range R²/(κ l_P). A natural hold has κ near 1. Reaching the Eöt-Wash limit of 38.6 µm would need κ ≈ 2 × 10⁻²⁸, a tuning of about one part in 10²⁷. At 1 µm the new force is suppressed by exp(−3 × 10²⁵).
+
+**What it means:** our law has only two scales here, the circle and gravity. So the theory predicts the new force but also predicts that nobody will see it. That is testable in the negative: a short-range force at 1/3 of gravity's strength found at microns would mean a new small scale is at work, which our dials don't contain.
+
+### 8. Ways to derive a force's strength: its quality and its material (part S)
+
+![Strength from shape and material](figures/h8_strength_shape_and_material.png)
+*h8. A: the shape of the hidden space sets the number in front of G/size². B: run with the Standard Model's particles, the weak and strong strengths meet near 10¹⁷ GeV, but copies of a circle or sphere with that strength would sit 8 times higher, and hypercharge misses. C: with the strong force, the particles it carries set its strength at every energy, given one scale.*
+
+**Quality: the shape of the hidden space (S1 to S3).**
+- A general rule for hidden-space forces: g² = 16πG/⟨|K|²⟩, where ⟨|K|²⟩ is the average squared length of the symmetry's motion, the distance a unit charge is carried per radian. For a circle this gives α = 4G/R², section 6's result, now from a second route.
+- A sphere's rotations carry a non-abelian SU(2) force (the order dial on). Their average squared length is 2R²/3, so **α = 6G/R²**.
+- So the force's quality sets the number in front: α = s·G/size², with s = 4 for a circle and 6 for a sphere. In our dials, the size is |Δ| and the order dial picks circle-like (abelian) or sphere-like (non-abelian).
+
+**Material: the particles a force carries (S4).**
+- The strength changes with energy at a rate set by the particles: b₀ = 11N/3 − 2n_f/3 (section 5). For the strong force this sets everything: α_s(μ) = 2π/(b₀ ln(μ/Λ)). From α_s(M_Z) = 0.118 with 5 flavours, Λ = 88 MeV at one loop.
+- So two forces of the same quality but different material have different strengths at every distance, from one shared starting point (h8 C).
+
+**Both together: does one hidden space give all three strengths? (S5 to S7)**
+- Run with the Standard Model's particles (one loop), the weak and strong strengths meet at **9.7 × 10¹⁶ GeV**, with 1/α = 47. Hypercharge (in the unified normalisation) misses, at 1/α = 36.
+- If one hidden space set both at its copy scale, the meeting point would fix its shape factor: s = α(M_P/μ*)² ≈ **340**. A circle gives 4 and a sphere 6, so their copies would sit near 8 × 10¹⁷ GeV, 8 times above the meeting point. The simplest shapes fail. A factor of 340 would need the force's symmetry to move charges about 9 times less far than the hidden space's largest size, a fit and not a prediction.
+- A refinement of section 6: the strength that sets the circle is EM's strength at the copy scale (1/α = 107), not at rest (137). The circle is then 20.7 Planck lengths, not 23.4.
+
+**The other variables, then:** a force's strength is set by gravity's G, one size (|Δ|), one shape factor (its quality) and its particles (its material). Our law supplies the size and whether the force is abelian; it doesn't yet supply the shape or the particle content. Those are where the other variables live.
+
 ---
 
 ## Pass 2: what is known, and where experiments stand
@@ -101,22 +138,28 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 | A dial that varies in space | promoting a constant to a field: Brans–Dicke (1961), dilaton, chameleon (Khoury–Weltman 2004) | MICROSCOPE 2022: equivalence principle holds to about 10⁻¹⁵ |
 | Roundness p ≠ 2 | rotation (Lorentz) violation, Standard-Model Extension | tabulated by Kostelecký and Russell (updated yearly); tight bounds, not converted to p here |
 | Rungs, order off, read as light itself (section 6) | Kaluza (1921), Klein (1926); the scalar: Jordan (1947), Thiry (1948), Brans–Dicke (1961) | the free scalar is ruled out by Cassini, γ − 1 = (2.1 ± 2.3) × 10⁻⁵ (Bertotti, Iess, Tortora 2003); a held circle gives a short-range force, Eöt-Wash range < 38.6 µm at gravity's strength |
+| What holds the circle (section 7) | Casimir energy of the hidden circle: Appelquist and Chodos (1983); held spheres: Candelas and Weinberg (1984); circles held with extra terms: Ponton and Poppitz (2001) | the held-circle force is too short-range for any experiment; the leftover 4D vacuum energy is the cosmological constant problem |
+| Strength from shape and material (section 8) | gauge couplings from hidden-space symmetries (Weinberg 1983, Witten 1981); couplings and circumferences computed together (Candelas and Weinberg 1984); running and dimensional transmutation (Gross–Wilczek, Politzer 1973); the near-miss of the three strengths (unification literature; string scale near 5 × 10¹⁷ GeV, Kaplunovsky 1988) | simple shapes don't match the measured strengths at one size |
 | Flux exponent 3/2 at weak fields | deep MOND (Bekenstein–Milgrom 1984, AQUAL); scale invariance (Milgrom 2009) | an active debate about galaxies; not settled |
 
 **Known vs ours:**
-- **Known:** every cell's physics, the coth sum (the image method), α = 2n, the deep-MOND law and its scale invariance, the flavour counts, and all of section 6's numbers (Klein's relation, R ≈ 23 l_P, charge quantization, the 1/3 scalar, γ = 1/(n+1)).
+- **Known:** every cell's physics, the coth sum (the image method), α = 2n, the deep-MOND law and its scale invariance, the flavour counts, all of section 6's numbers (Klein's relation, R ≈ 23 l_P, charge quantization, the 1/3 scalar, γ = 1/(n+1)), the Casimir hold and its Planck-short radion, the hidden-space coupling rule and the running.
 - **Ours:**
   - the map itself, built from our readings, and the D_eff fingerprints in h2;
   - rungs = dimension dial (one more direction at short range);
   - EM's q = +1 circle placed in the rung class, so one reading gives both the rung spacing and the strength, α = 4G|Δ|;
   - our design rule (base dials are constant inputs) asks for a frozen circle, which is what Cassini requires. Plain Kaluza–Klein can't freeze it: the circle's size is pushed by the electric field itself (Jordan, Thiry). So whatever holds it is extra, and it would set the range;
+  - the general scaling in section 7: with only the circle and gravity available, range = R²/(κ l_P), so a natural hold gives about 2000 Planck lengths and the lab needs a 10²⁷ tuning;
+  - Brennan's "material or quality" mapped onto our dials: size = |Δ|, quality = the order dial plus a shape factor, material = the particle content;
   - deep MOND landing exactly on the flux-tube page's confinement border.
 
   I did not find the placements written this way in a short search, but the physics behind each is standard.
 
 ## What this does not do
 
-- It does not set the new force's range. The strength (1/3 of gravity) is derived; the range needs a mechanism that holds the circle, and the law doesn't supply one. Without a range, the new force can't yet be tested at one place.
+- It does not derive the hold from our law. Section 7 uses a 5D vacuum energy as the second term; the law only says the circle should be constant. The range result depends only on the hold using no scale but the circle and gravity.
+- It does not solve the leftover 4D vacuum energy (the cosmological constant problem).
+- Section 8's running is one loop with the Standard Model's particles only; two loops or new particles move the meeting point.
 - It does not make the electron a copy: copies have g = 1 and a mass near 10¹⁷ GeV.
 - It does not derive Newton's G. Section 6 fixes α relative to G; G itself is still an input (newton-g page).
 - It does not show the theory forbids any cell of the map. An empty cell is allowed, not required.
@@ -127,14 +170,17 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 
 - **A3:** I first tested the period of the field w for Δ < 0. The law's ruler x = −u′/(d u) blows up at the zeros of w, which come twice per period of w. The check now tests the zero spacing, 2π/√(−Δ), as the first page states.
 - **B1:** sympy could not simplify coth against exponentials until it was rewritten in exponentials. The identity itself was never in doubt.
+- **S5, S6:** my hand estimate put the weak–strong meeting at 5 × 10¹⁷ GeV, close to the circle's copy scale. The check says 9.7 × 10¹⁶ GeV, which turns a near-match into a miss (shape factor 340, not about 13). The claim was corrected to what the check found.
+- **H2:** the first run compared mpmath numbers at a tolerance tighter than mpmath's working precision; the formula was right, the tolerance was fixed.
 - **Lean:** the SU(2) flavour statement first claimed b₀ < 0 at 11 flavours; it is exactly 0 there, so the statement now says that.
 
 ## Files
 
 - `checks.py` → `checks_output.txt`, `results.json`: parts A (classes), B (rungs), C (screened), D (deep MOND), E (roundness), F (order on), P (polish).
 - `strength_checks.py` → `strength_output.txt`, and G keys added to `results.json`: part G (strength from the closed direction). Run after `checks.py`.
-- `figures.py` → `figures/h1` to `h6`.
-- `lean/NewForce.lean` (14 statements), `lean/check_statements.py`.
+- `hold_strength_checks.py` → `hold_strength_output.txt`, and H and S keys added to `results.json`: parts H (what holds the circle) and S (strength from shape and material). Run last.
+- `figures.py` → `figures/h1` to `h8`.
+- `lean/NewForce.lean` (20 statements), `lean/check_statements.py`.
 
 ## Sources (pass 2, checked Nov 26)
 
@@ -146,6 +192,11 @@ These aren't new forces. They are the other ways our dials could show up in a fo
 - A. Hosoya, K. Ishikawa, Y. Ohkuwa, K. Yamagishi (1984), g = 1 for Kaluza–Klein states, as cited in arXiv hep-th/9801072.
 - B. Carter, Phys. Rev. 174 (1968) 1559: g = 2 for Kerr–Newman.
 - E. Witten, "Search for a realistic Kaluza–Klein theory", Nucl. Phys. B 186 (1981) 412.
+- T. Appelquist, A. Chodos, "Quantum Effects in Kaluza-Klein Theories", PRL 50 (1983) 141; "Quantum dynamics of Kaluza-Klein theories", PRD 28 (1983) 772: the circle's Casimir energy pulls it toward Planck size.
+- P. Candelas, S. Weinberg, "Calculation of gauge couplings and compact circumferences from self-consistent dimensional reduction", Nucl. Phys. B 237 (1984) 397: held curved hidden spaces, couplings computed; many matter fields needed for small couplings.
+- S. Weinberg, "Charges from extra dimensions", Phys. Lett. B 125 (1983) 265 (the Killing-vector coupling rule; cited from memory, not opened here).
+- E. Ponton, E. Poppitz, "Casimir energy and radius stabilization in five and six dimensional orbifolds", JHEP 06 (2001) 019, arXiv hep-ph/0105021.
+- V. Kaplunovsky, Nucl. Phys. B 307 (1988) 145: string unification scale near 5 × 10¹⁷ GeV.
 
 - J. G. Lee, E. G. Adelberger, T. S. Cook, S. M. Fleischer, B. R. Heckel, "New Test of the Gravitational 1/r² Law at Separations down to 52 µm", PRL 124, 101101 (2020), arXiv 2002.11761: λ < 38.6 µm; extra dimension radius < 30 µm; dilaton or heavy graviton > 5.1 meV.
 - A. Kehagias, K. Sfetsos, "Deviations from the 1/r² Newton law due to extra dimensions", Phys. Lett. B 472 (2000) 39, arXiv hep-ph/9905417: α = 2n (torus), n + 1 (sphere).

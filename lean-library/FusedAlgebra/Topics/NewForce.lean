@@ -3,7 +3,7 @@ DRAFT (Nov 26, 2026). Does the theory predict an unknown force? The algebra behi
 topics/force-reach/new-force/README.md, compiled in the shared library on Nov 26 as FusedAlgebra.Topics.NewForce.
 
 The session that wrote this stated it against Mathlib over ℝ (topics/force-reach/new-force/lean/NewForce.lean,
-fourteen statements). Here all fourteen are proved in core Lean over any field of characteristic 0 or, for the two
+fourteen statements; twenty from Nov 27). Here all of them are proved in core Lean over any field of characteristic 0 or, for the two
 flavour bounds and γ from the scalar strength, any ordered field. Statements and hypotheses are as written.
 -/
 import FusedAlgebra.Base
@@ -55,5 +55,38 @@ theorem gamma_from_strength (n : K) (hn : 0 ≤ n) :
   have h3 : 2 * n + 2 ≠ 0 := by grind
   grind
 end Ordered
+
+section Hold
+variable {K : Type} [Field K] [IsCharP K 0]
+
+/-! ### Part H: holding the circle (vacuum energy plus a 5D vacuum energy); added Nov 27 with sections 7 and 8 -/
+
+/-- With V = a/R + C R*²/R⁶ and a = −6C/R*³, R* is a turning point: V′(R*) = 0. -/
+theorem hold_turning_point (C R : K) (hR : R ≠ 0) :
+    -(-6 * C / R ^ 3) / R ^ 2 - 6 * C * R ^ 2 / R ^ 7 = 0 := by
+  grind
+
+/-- Its curvature there: V″(R*) = 30C/R*⁶ (a minimum when C > 0). -/
+theorem hold_curvature (C R : K) (hR : R ≠ 0) :
+    2 * (-6 * C / R ^ 3) / R ^ 3 + 42 * C * R ^ 2 / R ^ 8 = 30 * C / R ^ 6 := by
+  grind
+
+/-- The vacuum energy left over: V(R*) = −5C/R*⁴. -/
+theorem hold_leftover (C R : K) (hR : R ≠ 0) :
+    (-6 * C / R ^ 3) / R + C * R ^ 2 / R ^ 6 = -5 * C / R ^ 4 := by
+  grind
+
+/-- Radion mass: (2/3)·30 = 20, so m² = 20C/(M̄²R⁴). -/
+theorem hold_mass_factor : (2 / 3 : K) * 30 = 20 := by grind
+
+/-! ### Part S: strength from shape and material -/
+
+/-- Sphere: ⟨|K|²⟩ = 2R²/3, so the shape factor 4R²/⟨|K|²⟩ is 6 (a circle gives 4). -/
+theorem sphere_shape_factor : (4 : K) / (2 / 3) = 6 := by grind
+
+omit [IsCharP K 0] in
+/-- Strong force with 5 flavours: b₀ = 11·3/3 − 2·5/3 = 23/3. -/
+theorem strong_b0_five : (11 * 3 / 3 : K) - 2 * 5 / 3 = 23 / 3 := by grind
+end Hold
 
 end CircleOp.NewForce

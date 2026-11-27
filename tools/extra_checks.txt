@@ -59,6 +59,7 @@ topics/rulecraft-history/polish.py
 topics/force-reach/flux-tube-dial/lean/check_statements.py
 topics/tunnelling/rewind_checks.py
 topics/force-reach/new-force/strength_checks.py
+topics/force-reach/new-force/hold_strength_checks.py
 topics/force-reach/new-force/lean/check_statements.py
 topics/rulecraft-history/coupling_checks.py
 topics/rulecraft-history/coupling_polish.py

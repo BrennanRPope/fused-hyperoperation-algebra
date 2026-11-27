@@ -1,7 +1,6 @@
 /-
   Does the theory predict an unknown force? (DRAFT, Nov 26 2026)
-  Stated against Mathlib and not compiled as written (CI builds no Mathlib copy of it). All fourteen statements
-  are compiled in core Lean in lean-library/FusedAlgebra/Topics/NewForce.lean.
+  Uncompiled here: no Lean toolchain in this container.
   Every statement is checked true by check_statements.py.
   Pure algebra over ℝ (ring, field_simp, norm_num).
 -/
@@ -70,5 +69,36 @@ theorem gamma_from_strength (n : ℝ) (hn : 0 ≤ n) :
 
 /-- One circle: γ − 1 = −1/2. -/
 theorem one_circle_gamma : (1 : ℝ) / (1 + 1) - 1 = -1 / 2 := by norm_num
+
+/-! ### Part H: holding the circle (vacuum energy plus a 5D vacuum energy) -/
+
+/-- With V = a/R + C R*²/R⁶ and a = −6C/R*³, R* is a turning point: V′(R*) = 0. -/
+theorem hold_turning_point (C R : ℝ) (hR : R ≠ 0) :
+    -(-6 * C / R ^ 3) / R ^ 2 - 6 * C * R ^ 2 / R ^ 7 = 0 := by
+  field_simp
+  ring
+
+/-- Its curvature there: V″(R*) = 30C/R*⁶ (a minimum when C > 0). -/
+theorem hold_curvature (C R : ℝ) (hR : R ≠ 0) :
+    2 * (-6 * C / R ^ 3) / R ^ 3 + 42 * C * R ^ 2 / R ^ 8 = 30 * C / R ^ 6 := by
+  field_simp
+  ring
+
+/-- The vacuum energy left over: V(R*) = −5C/R*⁴. -/
+theorem hold_leftover (C R : ℝ) (hR : R ≠ 0) :
+    (-6 * C / R ^ 3) / R + C * R ^ 2 / R ^ 6 = -5 * C / R ^ 4 := by
+  field_simp
+  ring
+
+/-- Radion mass: (2/3)·30 = 20, so m² = 20C/(M̄²R⁴). -/
+theorem hold_mass_factor : (2 / 3 : ℝ) * 30 = 20 := by norm_num
+
+/-! ### Part S: strength from shape and material -/
+
+/-- Sphere: ⟨|K|²⟩ = 2R²/3, so the shape factor 4R²/⟨|K|²⟩ is 6 (a circle gives 4). -/
+theorem sphere_shape_factor : (4 : ℝ) / (2 / 3) = 6 := by norm_num
+
+/-- Strong force with 5 flavours: b₀ = 11·3/3 − 2·5/3 = 23/3. -/
+theorem strong_b0_five : (11 * 3 / 3 : ℝ) - 2 * 5 / 3 = 23 / 3 := by norm_num
 
 end FusedAlgebra.Topics.NewForce

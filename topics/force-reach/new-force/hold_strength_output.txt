@@ -1,0 +1,25 @@
+== H. What holds the circle, and the range of the new force
+PASS  H1 a circle held at fixed size by fiat contradicts 5D gravity: the circle's own field equation reads R_55 = (kappa^2/4) F^2, nonzero for any electric field   [R_55 = -E**2*kappa**2/2]
+PASS  H2 the image-sum formula for the circle's vacuum energy, -Gamma(D/2) zeta(D) / (pi^(D/2) L^(D-1)), matches the mode sum in the test case D = 2: -pi/(6L)   [mode sum -pi/(6*L)]
+PASS  H2b in 5D with L = 2 pi R that is 3 zeta(5) / (64 pi^6 R^4) per degree of freedom (Appelquist and Chodos 1983)   [5.0558e-05]
+PASS  H3 the vacuum energy alone can't hold the circle: C/R^6 has no turning point, so the circle shrinks (C < 0) or grows (C > 0)
+PASS  H4 adding a 5D vacuum energy gives a minimum, but only for a negative 5D vacuum energy and a repulsive Casimir term (more fermions than bosons)   [a = -6*C/R_star**3, V'' = 30*C/R_star**6]
+PASS  H4b the circle's size as a field has mass^2 = 20 C / (Mbar^2 R^4) at that minimum, and leaves a 4D vacuum energy -5C/R^4 that must be cancelled separately   [m^2 = 20*C/(Mbar**2*R_star**4), V_min = -5*C/R_star**4]
+PASS  H4c the same field normalisation gives its pull on matter: coupling beta = 1/sqrt(6), strength 2 beta^2 = 1/3 of gravity, matching G6
+PASS  H5 with the circle at 23.4 Planck lengths (part G) and the smallest repulsive content (2 fermions), the new force's range is about 2000 Planck lengths = 3e-32 m   [range = 1985 lP = 3.21e-32 m, C = 1.517e-04]
+PASS  H5b more particles only shorten it: 2 to 64 fermions all give ranges between 1e-33 and 1e-31 m   [2: 3.2e-32 m, 4: 1.7e-32 m, 8: 1.1e-32 m, 16: 7.2e-33 m, 64: 3.5e-33 m]
+PASS  H6 the Eot-Wash limit (38.6 um for a force of gravity's strength) is about 1e27 times longer than this range   [1.20e+27]
+PASS  H6b any hold whose only scales are the circle and gravity gives range = R^2 / (kappa lP); reaching 38.6 um would need kappa = 5e-28, a tuning of about 1 part in 1e27   [kappa needed = 2.3e-28]
+PASS  H7 so at any distance a lab can reach the new force is gone: at 1 micron its pull is suppressed by exp(-r/range) = exp(-3e25)   [r/range at 1 um = 3.1e+25]
+
+== S. Ways to derive a force's strength: its shape and its material
+PASS  S1 the hidden-space rule for strength: g^2 = 16 pi G / <|K|^2>, the average squared length of the force's symmetry motion. For a circle it gives alpha = 4 G / R^2, part G's result
+PASS  S2 a sphere of radius R carries a non-abelian SU(2) force (its rotations); the average squared rotation length is 2R^2/3, so alpha = 6 G / R^2   [<|K|^2> = 2*R**2/3]
+PASS  S3 so the force's 'quality' (the shape of its hidden space) sets the number in front: circle 4, sphere 6, times G / size^2   [shape factor s in alpha = s G / R^2]
+PASS  S4 the strong force's strength is fixed by its material and one scale: alpha_s(mu) = 2 pi / (b0 ln(mu/Lambda)), b0 = 11N/3 - 2nf/3. From alpha_s(MZ) = 0.118 with 5 flavours, Lambda = 88 MeV (one loop)   [Lambda = 87.8 MeV]
+PASS  S5 run with the Standard Model's particles (one loop), the weak and strong strengths meet at about 1e17 GeV, with 1/alpha = 47   [meet at 9.71e+16 GeV, 1/alpha = 47.0]
+PASS  S5b the third (hypercharge, unified normalisation) misses: 1/alpha_1 = 36 there, not 47   [1/alpha_1 = 36.4]
+PASS  S6 if one hidden space sets both strengths at its copy scale 1/R, the meeting point fixes its shape factor: s = alpha (M_P/mu*)^2 = 340, far from a circle's 4 or a sphere's 6. Simple shapes fail: their copies would sit near 8e17 GeV, 8 times above the meeting point   [s = 336.2; copy scale for that alpha: circle 8.9e+17 GeV, sphere 7.3e+17 GeV]
+PASS  S7 refinement of part G: EM's strength at the copy scale is 1/alpha = 107, not 137, so the circle is 20.7 Planck lengths, not 23.4   [1/alpha_em(5.2e17 GeV) = 106.8, R = 20.7 lP]
+
+PARTS H, S TOTAL: 20 pass, 0 fail

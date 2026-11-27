@@ -159,3 +159,90 @@ ax.legend(fontsize=8.5, loc="upper left")
 ax.set_title("C. The predicted new force must be short-range\n(the theory doesn't set the range; checks G6 to G7b)", fontsize=10.5)
 fig.suptitle("h6. Strength derived in the special case: electromagnetism read as gravity's closed direction", fontsize=12)
 fig.tight_layout(); fig.savefig("figures/h6_strength_from_circle.png", dpi=150); plt.close(fig)
+
+# ---------------- h7: what holds the circle, and the range it gives (part H)
+fig, axs = plt.subplots(1, 3, figsize=(16, 5.0))
+ax = axs[0]
+Rg = np.linspace(0.55, 3.0, 400)
+ax.plot(Rg, 1/Rg**6, color="#1f77b4", lw=2, label="vacuum energy alone, repulsive: the circle grows")
+ax.plot(Rg, -1/Rg**6, color="#d62728", lw=2, label="vacuum energy alone, attractive: the circle shrinks")
+ax.plot(Rg, -6/Rg + 1/Rg**6, color="#2ca02c", lw=2.8, label="plus a negative 5D vacuum energy: held at R*")
+ax.plot([1], [-5], "o", color="k", ms=7)
+ax.annotate("held here; leaves a 4D vacuum\nenergy −5C/R*⁴ to cancel", (1, -5), xytext=(1.35, -2.0), fontsize=9,
+            arrowprops=dict(arrowstyle="->"))
+ax.set_ylim(-7, 4); ax.set_xlabel("circle radius R / R*"); ax.set_ylabel("energy of the circle (units of C/R*⁴)")
+ax.legend(fontsize=8, loc="lower right")
+ax.set_title("A. Its own vacuum energy can't hold the circle;\nwith a second term it can (checks H3, H4)", fontsize=10.5)
+
+ax = axs[1]
+marks = [(lP_m := 1.616255e-35, "Planck length"), (3.784e-34, "circle radius\n(part G)"),
+         (3.21e-32, "new force's range\n(this hold)"), (8.4e-16, "proton"), (38.6e-6, "lab limit\n(Eöt-Wash, 38.6 µm)")]
+pos = [(0.30, "center"), (-0.08, "center"), (0.08, "left"), (-0.08, "center"), (0.08, "center")]
+for (v, lab_), (dy, ha_) in zip(marks, pos):
+    ax.plot([math.log10(v)], [0], "o", ms=9, color="#d62728" if "new force" in lab_ else "k")
+    ax.text(math.log10(v) + (0.3 if ha_ == "left" else 0), dy, lab_, ha=ha_, va="bottom" if dy > 0 else "top", fontsize=9)
+ax.plot([math.log10(1.616255e-35)]*2, [0.02, 0.28], color="gray", lw=0.8)
+ax.axhline(0, color="gray", lw=1)
+ax.annotate("", xy=(math.log10(38.6e-6), -0.42), xytext=(math.log10(3.21e-32), -0.42),
+            arrowprops=dict(arrowstyle="<->", lw=1.8))
+ax.text((math.log10(38.6e-6) + math.log10(3.21e-32))/2, -0.47, "a factor of 10²⁷", ha="center", va="top", fontsize=10, fontweight="bold")
+ax.set_ylim(-0.65, 0.5); ax.set_xlim(-36, -2); ax.set_yticks([])
+ax.set_xlabel("distance (log10 of metres)")
+ax.set_title("B. The new force's range is about 2000 Planck lengths,\nfar below anything a lab can reach (checks H5 to H7)", fontsize=10.5)
+
+ax = axs[2]
+ks = np.logspace(-30, 0.5, 300)
+ax.plot(ks, (23.41**2/ks)*1.616255e-35, color="#9467bd", lw=2.5, label="range = R² / (κ l_P), circle at 23.4 l_P")
+ax.axhline(38.6e-6, color="#d62728", ls="--", label="lab limit, 38.6 µm")
+ax.plot([0.276], [3.21e-32], "o", color="k", ms=7)
+ax.annotate("vacuum-energy hold: κ ≈ 0.3", (0.276, 3.21e-32), xytext=(1e-16, 1e-25), fontsize=9, arrowprops=dict(arrowstyle="->"))
+ax.plot([2.3e-28], [38.6e-6], "s", color="#d62728", ms=7)
+ax.annotate("κ ≈ 2e-28 would be needed\nto reach the lab", (2.3e-28, 38.6e-6), xytext=(1e-24, 1e-10), fontsize=9, arrowprops=dict(arrowstyle="->"))
+ax.set_xscale("log"); ax.set_yscale("log")
+ax.set_xlabel("strength κ of the hold (mass = κ l_P / R²)"); ax.set_ylabel("range of the new force (m)")
+ax.legend(fontsize=8.5, loc="lower left")
+ax.set_title("C. Any hold built only from the circle and gravity\ngives a Planck-short range (check H6b)", fontsize=10.5)
+fig.suptitle("h7. What holds the circle: its own vacuum energy, with help. The new force is then real but far too short-range to see", fontsize=12)
+fig.tight_layout(); fig.savefig("figures/h7_what_holds_the_circle.png", dpi=150); plt.close(fig)
+
+# ---------------- h8: ways to derive strength: shape and material (part S)
+fig, axs = plt.subplots(1, 3, figsize=(16, 5.0))
+ax = axs[0]
+names = ["circle\n(abelian, like light)", "sphere\n(non-abelian SU(2))", "needed for the weak\nand strong forces"]
+vals = [4, 6, 336]
+ax.bar(range(3), vals, color=["#1f77b4", "#2ca02c", "#d62728"])
+for i, v in enumerate(vals):
+    ax.text(i, v*1.15, f"{v}", ha="center", fontsize=11, fontweight="bold")
+ax.set_yscale("log"); ax.set_ylim(1, 2000); ax.set_xticks(range(3)); ax.set_xticklabels(names, fontsize=9)
+ax.set_ylabel("shape factor s in α = s G / size²")
+ax.set_title("A. Quality: the hidden space's shape sets\nthe number in front (checks S1 to S3, S6)", fontsize=10.5)
+
+ax = axs[1]
+MZ_ = 91.1876; aem_inv_ = 127.951; s2w_ = 0.23122
+a1_ = 0.6*aem_inv_*(1 - s2w_); a2_ = aem_inv_*s2w_; a3_ = 1/0.1180
+mus = np.logspace(math.log10(MZ_), 19.1, 300)
+for ai, bi, c_, lab_ in [(a1_, 41/10, "#7f7f7f", "hypercharge (unified scale)"), (a2_, -19/6, "#1f77b4", "weak, SU(2)"), (a3_, -7.0, "#d62728", "strong, SU(3)")]:
+    ax.plot(mus, ai - bi/(2*math.pi)*np.log(mus/MZ_), color=c_, lw=2.2, label=lab_)
+ax.axvline(9.71e16, color="k", ls=":", lw=1.3)
+ax.text(9.71e16/1.5, 22, "weak and strong meet: 9.7e16 GeV", ha="right", fontsize=8.5)
+ax.axvspan(7.3e17, 8.9e17, color="#2ca02c", alpha=0.25)
+ax.text(7e17/1.4, 6, "green band: copies of a circle or sphere\nwith that strength sit at 8e17 GeV", ha="right", fontsize=8.5)
+ax.set_xscale("log"); ax.set_ylim(0, 70)
+ax.set_xlabel("energy (GeV)"); ax.set_ylabel("1 / strength (1/α)")
+ax.legend(fontsize=8.5, loc="upper left")
+ax.set_title("B. Material: the particles each force carries\nchange its strength with energy (checks S5, S6)", fontsize=10.5)
+
+ax = axs[2]
+mus2 = np.logspace(0, 4, 300)
+for nf, c_ in [(3, "#ff7f0e"), (5, "#d62728"), (6, "#8c564b"), (16, "#9467bd")]:
+    b0_ = 11 - 2*nf/3
+    Lam_ = MZ_*math.exp(-2*math.pi/(b0_*0.1180))
+    ax.plot(mus2, 2*math.pi/(b0_*np.log(mus2/Lam_)), color=c_, lw=2.2,
+            label=f"{nf} flavours: b0 = {b0_:.2f}, Λ = {Lam_*1000:.3g} MeV" if Lam_ > 1e-6 else f"{nf} flavours: b0 = {b0_:.2f}")
+ax.axvline(MZ_, color="gray", ls=":", lw=1); ax.text(MZ_*1.1, 0.06, "all matched at the Z mass", fontsize=8.5)
+ax.set_xscale("log"); ax.set_ylim(0.05, 0.4)
+ax.set_xlabel("energy (GeV)"); ax.set_ylabel("strong strength α_s")
+ax.legend(fontsize=8, loc="upper right")
+ax.set_title("C. The strong force's strength comes from its material\nand one scale Λ (check S4)", fontsize=10.5)
+fig.suptitle("h8. Ways to derive a force's strength: its shape (quality) sets the number in front, its particles (material) set how it runs", fontsize=12)
+fig.tight_layout(); fig.savefig("figures/h8_strength_shape_and_material.png", dpi=150); plt.close(fig)

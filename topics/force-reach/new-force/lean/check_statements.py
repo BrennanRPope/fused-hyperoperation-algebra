@@ -31,4 +31,16 @@ gtests = {
 for nm, e in gtests.items():
     g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
 # the pieces match the field-theory split in strength_checks.py (G1, G2)
+
+C_, R_ = sp.symbols('C R', positive=True)
+htests = {
+    'hold_turning_point': -(-6*C_/R_**3)/R_**2 - 6*C_*R_**2/R_**7,
+    'hold_curvature': 2*(-6*C_/R_**3)/R_**3 + 42*C_*R_**2/R_**8 - 30*C_/R_**6,
+    'hold_leftover': (-6*C_/R_**3)/R_ + C_*R_**2/R_**6 + 5*C_/R_**4,
+    'hold_mass_factor': R(2, 3)*30 - 20,
+    'sphere_shape_factor': 4/R(2, 3) - 6,
+    'strong_b0_five': R(33, 3) - R(10, 3) - R(23, 3),
+}
+for nm, e in htests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
 print('ALL PASS' if ok else 'SOME FAIL')

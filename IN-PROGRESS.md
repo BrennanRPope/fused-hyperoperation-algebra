@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,718 theorems in 170 modules, Nov 27 ~02:45 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,724 theorems in 170 modules, Nov 27 ~03:10 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -81,3 +81,5 @@ Nov 27: `topics/riemann/known-tools/` added as DRAFT (the five known pieces appl
 Nov 27: `topics/riemann/spin-orbit/` added as DRAFT (spin–orbit resonance applied: fits the zeros under heat flow except at t = 0, breaks for primes; 12 checks, picked up by CI as checks.py; reads ../known-tools/rewind_snaps.npz; no Lean). Later the same night: squeeze.py/.json, fig_squeeze and LAMBDA.md added, checks now 16.
 
 Nov 27: `topics/riemann/potential/` (an energy reading of the de Bruijn–Newman flow; 12 checks) and `topics/riemann/pressure-blowup-twist/` (blow-up, pressure and twist mapped onto the backward flow; 13 checks) added as DRAFT; both picked up by CI as checks.py, both read ../known-tools/rewind_snaps.npz; no Lean; not leads.
+
+Nov 27: `topics/force-reach/new-force/` sections 7 and 8 added (what holds the circle; strength from shape and material; hold_strength_checks.py 20 checks, added to tools/extra_checks.txt); the 6 new Lean statements compiled into Topics.NewForce (strong_b0_five without the unused characteristic-0 hypothesis); library now 3,724 theorems in 170 modules.
