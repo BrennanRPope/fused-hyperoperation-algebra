@@ -196,6 +196,11 @@ between two runs seems to cost a little more or less depending on how tight the 
 The braid entropy (the t = −1 reading) is the natural order quantity to try against instability. Monodromy was built
 from short segments, so even very unstable orbits are measured.
 
+*[Correction, Nov 27: these finite-difference instability numbers (`stability.json`) are too high by more than 1 (in log)
+for 78 of the 239 orbits. Exact numbers from the variational equations are in
+[three-body-conley](../three-body-conley/README.md) (`floquet.json`, check A6). The fits below (check H1) have not been
+rerun with them yet.]*
+
 - Run counts explain about a third of the spread in instability (held-out R² 0.34); braid entropy adds 0.01 (check
   H1). On its own it explains almost nothing.
 - Almost every orbit (238 of 239) is far less unstable than its braid entropy. That is no contradiction: braid
