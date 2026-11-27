@@ -1,0 +1,15 @@
+PASS K1 backward collision: gap ∝ (time left)^½, gap² = 8 × time left  exponent 0.4977, gap²/time 7.998
+PASS K2 under the threshold the chosen pair collapses, at the frozen-crowd time within 10%  13 runs
+PASS K3 over the threshold the chosen pair survives, but some other pair still collapses (every run)  8 runs above, 23 total
+PASS K4 about half of our zeros' neighbour pairs sit under the threshold  0.514
+PASS K5 inward pressure −a·z: the settled zeros are the scaled Hermite zeros (Stieltjes)  1.5e-14
+PASS K6 pressure = zoom e^(−as) + clock t = (e^(2as) − 1)/(2a), exact  4.9e-14
+PASS K7 with pressure a, running backward forever only reaches t = −1/(2a)
+PASS K8 the force that would hold ζ's zeros still at t = 0 flips sign often and exceeds the smooth drift  0.61, 1.67
+PASS K9 that force shrinks as heat time goes on (relaxation toward the crystal)  1.31 > 1.11 > 0.80
+PASS K10 untwisted heat flow keeps every zero on the line
+PASS K11 any twist θ > 0 moves zeros off the line at once, starting speed ∝ sin θ (within 15%)  [6.1, 6.17, 6.42]
+PASS K12 under complex heat time: Σz conserved, Σz² = Σz₀² + 2N(N−1)t exactly
+PASS K13 removing the twist returns the zeros exactly to the line (it is the same family, run back)  2.2e-13
+
+13 of 13 checks pass
