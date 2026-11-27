@@ -1,0 +1,9 @@
+import FLTLeads
+#print axioms FreyMinimal.isMinimal_of_valuation_c₄_eq_one
+#print axioms FreyMinimal.frey_hasGood_or_hasMultiplicative
+#print axioms FreyMinimal.frey_isMinimal
+#print axioms FreyMinimal.frey_hasMultiplicative_iff
+#print axioms FreyMinimal.frey_hasSplit_iff
+#print axioms FreyMinimal.frey_hasSplit_iff_isSquare
+#print axioms group_theory_lemma
+#print axioms WeierstrassCurve.galoisRepresentation

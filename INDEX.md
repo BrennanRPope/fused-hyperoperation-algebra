@@ -185,6 +185,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | Fermat | `topics/fermat/` | [page](https://claude.ai/artifact/Q3GveFG3TjJSeqrYbXEouL) |
 | Fermat's Last Theorem in pieces | `topics/fermat/` | [page](https://claude.ai/artifact/9wdazdAULhiQ32uXPpgKLa) |
 | Tracking the Lean FLT project (Buzzard; futarchy-fi fork) | `topics/flt-tracking/` | no page yet |
+| FLT leads checked in Lean with mathlib (Frey model minimal at every prime; split node = circle-operation law; torsion lemma) | `topics/flt-tracking/lean/` | no page yet |
 | Elliptic curves lead | `topics/elliptic/` | [page](https://claude.ai/artifact/JhsmEQaHNRhZ9t5Ph5RZ6y) |
 | The birth of a prime (Claude Doc) | `topics/primes/` | [page](https://claude.ai/artifact/SisvRHEDreffPYfN8mD1ch) |
 | q across knots, primes, counting and physics | `topics/q-across/` | [page](https://claude.ai/artifact/9AtexUZrzvsPfzSA7g91dL) |

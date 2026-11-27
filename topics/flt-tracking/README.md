@@ -111,6 +111,13 @@ Contribution culture: upstream accepts AI-assisted code (there is an `FLT/Slop/`
 
 ## 3. Things to reuse in our own proofs
 
+**Status, Nov 27, 2026:** items 1 to 3 are done and build with mathlib; see [`lean/`](lean/). The
+Frey model is proved minimal with good or multiplicative reduction over every DVR, and mathlib's
+split condition is shown to match the circle-operation node law (away from 2: split exactly when
+B − A is a square mod the prime). The torsion `group_theory_lemma` and the Galois action laws were
+carried over from the fork. The Tate curve is not done (mathlib has none), and nothing was sent
+upstream.
+
 Paths are in the upstream repo unless marked.
 
 1. **Minimality criterion**: `FLT/Mathlib/AlgebraicGeometry/EllipticCurve/Reduction.lean`,
