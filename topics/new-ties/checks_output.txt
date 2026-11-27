@@ -1,0 +1,25 @@
+PASS  U1 union size: a+x-ax/M = M*(1-(1-a/M)(1-x/M))  
+PASS  U2 centre of every union map in box M is M (full box)  
+PASS  U3 order gap = a1*a2*(1/M2-1/M1)... zero iff M1=M2  a1*a2*(M1 - M2)/(M1*M2)
+PASS  U4 distinct composites = trace counts, A: two in box 1, one in box 3  last 46368 of 177147 words
+PASS  U5 distinct composites = trace counts, B: two boxes, two maps each  last 887040 of 4194304 words
+PASS  U6 distinct composites = trace counts, C: three boxes, one map each  last 177147 of 177147 words
+PASS  U7 distinct composites = trace counts, D: three in box 1, one in box 5  last 395033 of 4194304 words
+PASS  U8 one map per box: trace root = Moran root  
+PASS  U9 D_n decreasing to D* from above, A: two in box 1, one in box 3  D_11=0.6176, D*=0.6104
+PASS  U9 D_n decreasing to D* from above, B: two boxes, two maps each  D_11=0.6752, D*=0.6660
+PASS  U9 D_n decreasing to D* from above, C: three boxes, one map each  D_11=0.6184, D*=0.6184
+PASS  U9 D_n decreasing to D* from above, D: three in box 1, one in box 5  D_11=0.6990, D*=0.6882
+PASS  U10 1/n extrapolation of D_n lands on D* (within 0.005), A: two in box 1, one in box 3  extrap 0.6104 vs D* 0.6104, Moran 0.6797
+PASS  U10 1/n extrapolation of D_n lands on D* (within 0.005), B: two boxes, two maps each  extrap 0.6660 vs D* 0.6660, Moran 0.7514
+PASS  U10 1/n extrapolation of D_n lands on D* (within 0.005), C: three boxes, one map each  extrap 0.6184 vs D* 0.6184, Moran 0.6184
+PASS  U10 1/n extrapolation of D_n lands on D* (within 0.005), D: three in box 1, one in box 5  extrap 0.6883 vs D* 0.6882, Moran 0.7936
+PASS  U11 box count nearer D* than Moran, A: two in box 1, one in box 3  box 0.6316, D* 0.6104, Moran 0.6797
+PASS  U11 box count nearer D* than Moran, B: two boxes, two maps each  box 0.6655, D* 0.6660, Moran 0.7514
+PASS  U11 box count nearer D* than Moran, D: three in box 1, one in box 5  box 0.6866, D* 0.6882, Moran 0.7936
+PASS  C1 discriminant k^2-4d = 4 for every gamma (curvature reading -Delta/4 = -1)  
+PASS  C2 Riccati: d eta/d beta = (1/2)(1+k eta+d eta^2)  
+PASS  C3 gap to the wall ~ C*e^{-beta}: (wall-eta)e^beta -> 2/(2-gamma)^2  2/(gamma**2 - 4*gamma + 4)
+PASS  C4 Curzon-Ahlborn closes at half rate: (1-eta_CA)e^{beta/2} = 1  
+PASS  C5 linear rate at a wall = (1/2)|P'(wall)| = (1/2)sqrt(Delta)  
+24/24 pass
