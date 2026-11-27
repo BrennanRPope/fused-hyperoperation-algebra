@@ -202,7 +202,7 @@ more useful", "when I say more useful, more applicable to other scenarios."
 
 Checks: [`checks2.py`](checks2.py) → [`checks2_output.txt`](checks2_output.txt), **22 of 22 pass**. Numbers:
 [`round2.py`](round2.py) → `round2.json`. Pictures: [`figures2.py`](figures2.py). Lean:
-[`lean/NewTies.lean`](lean/NewTies.lean), 10 theorems, core Lean, no `sorry`, **not compiled here** (the Lean download
+[`lean/NewTies.lean`](lean/NewTies.lean), 10 theorems (12 after round 3), core Lean, no `sorry`, **not compiled here** (the Lean download
 is blocked in this workspace); it needs a compile in the shared library before anyone counts it.
 
 ### The result in plain words
@@ -316,3 +316,115 @@ whether the shared-centre count still sets a clean dimension there.
 | Rescorla–Wagner as stretches about the target | Known form (Rescorla and Wagner 1972) | — |
 | Exact state count and bits-per-trial for mixed-rate learners | Ours (as stated); elementary consequence | S1–S3 |
 | Exact-overlaps conjecture on the line | Reported proved, not checked | Kittle and Kogler 2026 (arXiv:2610.10511, from a search result) |
+
+---
+
+## 6. Round 3 (DRAFT): the plane laws, which ones keep the formula
+
+Brennan asked to work out the dimension for the plane laws (k, d) next. This section does that. Everything here is
+DRAFT. The checks are in `checks3.py` (18/18 pass, output in `checks3_output.txt`), the numbers in `planelaws.py`
+and `planelaws_sweep.py`, the pictures in `figures3.py`.
+
+### 6.1 The answer in two sentences
+
+Laws that share a wall lie on one straight line in the (k, d) plane, and that line touches the border d = k²/4. When all
+the maps share their repelling wall (they sit on one such tangent line), the union fractal straightens out into the line
+case and the formula D* is exact; when they don't, D* is still a proved upper bound, and the true dimension is lower,
+climbing back toward D* as the repelling walls move away.
+
+### 6.2 The setup
+
+A plane law with dials k, d combines a and x as x ↦ (x + a + k·a·x)/(1 − d·a·x). For fixed a that is a Möbius map, matrix
+[[1 + k·a, a], [−d·a, 1]]. Its two fixed points, the **walls**, are the roots of d·x² + k·x + 1 = 0, the same for every a.
+So every map of one law has the same two walls, one attracting and one repelling. That is the plane-law version of a
+shared centre: maps of one law commute, maps of different laws don't (unless they share both walls).
+
+The union rule of rounds 1–2 is the line d = 0, where one wall has gone off to infinity.
+
+### 6.3 Tangent lines (new reading)
+
+Fix a wall w. The laws that have w as a wall are the (k, d) with d·w² + k·w + 1 = 0, a straight line. That line touches
+the border d = k²/4 (where the two walls merge) at exactly one point, k = −2/w, d = 1/w² (T1, and Lean `wall_line_tangent`:
+k²w² + 4kw + 4 = (kw + 2)²). So:
+
+- **Each wall is a tangent line of the border.** Every law off the border sits on two tangent lines, one for each wall.
+- The d = 0 axis is the tangent line "at infinity": the affine laws all share the wall ∞. That is why the line case works.
+- Velocity addition (k = 0, d = 1) and the union rule in the unit box (k = −1, d = 0) both lie on the tangent line for the
+  wall 1 (T3).
+
+![Figure 11](figures/fig11-tangent-lines.png)
+
+*Figure 11. The (k, d) plane. Grey curve: the border d = k²/4. Coloured lines: laws sharing the wall w, one line per w,
+each touching the border once. The horizontal axis d = 0 is the shared wall ∞ (the affine case).*
+
+### 6.4 Result P1: on a common tangent line, the formula is exact
+
+**Statement (DRAFT, ours).** Take several plane laws that share their repelling wall w, with distinct attracting walls,
+and any number of maps per law. Change coordinates by y = 1/(x − w). Every map becomes a straight-line map, and its slope
+is its multiplier at its attracting wall (T4–T5, exact fractions). So the union fractal is exactly a round-2 union
+fractal on the line, and its dimension is min(1, D*) with D* computed from the multipliers, under the same hypothesis as
+round 2 (algebraic parameters, no accidental collisions).
+
+**Why.** In the y coordinate the shared wall w goes to ∞, so every map fixes ∞
+and is affine. This is standard; what's ours is reading it on the dial plane as "lie on one tangent line".
+
+**Check.** Two laws with repelling wall 3 and attracting walls 1 and −1; the first law gives two maps (multipliers 1/5 and 3/20), the second one map (multiplier 1/4): box count 0.605 vs D* 0.610 (T7). The
+cruder bound from the largest derivative gives 0.95 (T8), so the straightening is doing real work.
+
+### 6.5 Result P2: off a common tangent, D* is an upper bound
+
+**Statement (DRAFT, ours).** Take plane laws with different repelling walls. Suppose each law's repelling wall lies
+outside the convex hull of all the attracting walls (beyond its own attracting wall). Then on that hull every map
+contracts by at most its multiplier at its attracting wall, so dim ≤ min(1, D*) (T10, from
+f′(x) = λ·(f(x) − q)² / (x − q)², with q the repelling wall).
+
+The count of distinct composites is still the shared-centre count from round 1 (T6, T9), so only the sizes change, not
+the combinatorics. The true dimension is the critical exponent of the Poincaré series over the trace monoid (Bowen's
+equation). There is no closed form; we computed it.
+
+| Repelling walls | Measured dim (box) | Poincaré estimate D_n | D* (upper bound) |
+|---|---|---|---|
+| ±2 | 0.395 | 0.396 | 0.610 |
+| ±3 | 0.445 | 0.454 | 0.610 |
+| ±12 | 0.555 | 0.568 | 0.610 |
+| shared (3) | 0.605 | — | 0.610 |
+
+Sweep (T12): same maps, first law repelling from q and second from −q, D_n = 0.340, 0.392, 0.451, 0.507, 0.545, 0.567, 0.587, 0.602, 0.612 for
+q = 1.5, 2, 3, 5, 8, 12, 20, 40, 100. It climbs to D* as the walls move to infinity, which is the line case again.
+
+![Figure 12](figures/fig12-plane-laws.png)
+
+*Figure 12. Left: two union fractals with the same multipliers and the same attracting walls 1 and −1. Top: both laws
+repel from 3 (shared wall, formula exact). Bottom: they repel from 3 and −3 (no shared wall, smaller). Right: dimension
+against how far the repelling walls ±q are, rising toward the formula's value, which is the upper bound.*
+
+### 6.6 What this means in plain terms
+
+The shared-centre count (how many different results you can get) works for every plane law. The size formula works
+exactly when everything is pushed away from one common point, which on the dial map means "all on one tangent line". When
+the maps are pulled toward different points, the pieces bend and get smaller than the formula says, by an amount that
+depends on how close those points are. The formula is then a ceiling, not the answer.
+
+### 6.7 Lean
+
+Two more identities are in `lean/NewTies.lean`: `fixes_wall` (the map fixes w exactly when d·w² + k·w + 1 = 0) and
+`wall_line_tangent` (the wall line touches the border). That makes 12 theorems in the file. **Still not compiled**: the
+Lean download is blocked here, and the file has no Mathlib import, so the repo CI (which builds Mathlib files) may skip it: build it by hand with `lean lean/NewTies.lean`.
+
+### 6.8 Lead or not
+
+**The lead continues, modestly.** For: a clean, checkable classification of which plane laws keep the formula (exact on a
+common tangent line, upper bound off it), and the tangent-line picture is a new and simple way to read the (k, d) map.
+Against: the straightening is a standard Möbius fact, and off the tangent line there is no closed formula, only a bound
+and numbers. Next, if wanted: (1) prove the lower bound off the tangent line (it needs a nonlinear version of Hochman's
+theorem, which exists for some analytic families); (2) the plane lower bound for complex similarities.
+
+### Known vs new, round 3
+
+| Item | Status | Source |
+|---|---|---|
+| Möbius maps with a common fixed point conjugate to affine maps | Known | standard |
+| Bowen's equation / Poincaré critical exponent for conformal IFS | Known | Bowen 1979; Mauldin and Urbański |
+| Laws sharing a wall lie on a tangent line of d = k²/4 | **Ours** (elementary) | T1, `wall_line_tangent` |
+| P1: exact formula on a common tangent line | **Ours** (from round 2 + standard conjugation) | T4–T7 |
+| P2: D* upper bound off the tangent line, numbers and sweep | **Ours** (bound proved, values numerical) | T9–T12 |

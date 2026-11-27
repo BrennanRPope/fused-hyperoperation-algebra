@@ -9,6 +9,7 @@
   5. With one map per box the dimension equation is Moran's.
   6. A small exact count: three integer stretches, two sharing a centre, give 3, 8, 21 distinct composites
      (the shared-centre count), not 3, 9, 27.
+  7. Plane laws: a law's maps fix w exactly when d·w² + k·w + 1 = 0, and that line is tangent to the border.
 -/
 namespace NewTies
 
@@ -75,5 +76,15 @@ def words : Nat → List (Int × Int)
 theorem count_one : (words 1).eraseDups.length = 3 := by decide
 theorem count_two : (words 2).eraseDups.length = 8 := by decide
 theorem count_three : (words 3).eraseDups.length = 21 := by decide
+
+/-! ## 7. Plane laws: sharing a wall is a tangent line -/
+
+/-- The plane-law map x ↦ (x + a + kax)/(1 − dax) fixes w exactly when d·w² + k·w + 1 = 0 (cleared of the fraction). -/
+theorem fixes_wall (k d a w : Int) :
+    w * (1 - d * a * w) - (w + a + k * a * w) = -(a * (d * w * w + k * w + 1)) := by grind
+
+/-- On the border 4d = k², the wall line d·w² + k·w + 1 = 0 becomes (k·w + 2)² = 0 (times 4): a double root,
+    so the laws sharing the wall w form the tangent line to the border at k = −2/w. -/
+theorem wall_line_tangent (k w : Int) : k * k * w * w + 4 * (k * w) + 4 = (k * w + 2) * (k * w + 2) := by grind
 
 end NewTies

@@ -1,0 +1,19 @@
+PASS  T1 laws sharing wall w lie on d w^2 + k w + 1 = 0, tangent to the border d = k^2/4 at k = -2/w  
+PASS  T2 the map (x+a+kax)/(1-dax) fixes w exactly when d w^2 + k w + 1 = 0  
+PASS  T3 velocity addition and the union rule share the wall 1 (tangent line at k=-2, d=1)  
+PASS  T4 shared wall 3: after y = 1/(x-3) every map is a straight-line map  
+PASS  T5 ... and its slope is the map's multiplier at the attracting wall (inverse, as the line maps run outward in y)  [(Fraction(1, 5), Fraction(1, 5)), (Fraction(3, 20), Fraction(3, 20)), (Fraction(1, 4), Fraction(1, 4))]
+PASS  T6 shared wall: count = shared-centre count  
+PASS  T7 shared wall: box count within 0.02 of D*(multipliers)  box 0.6049, D* 0.6104
+PASS  T8 shared wall: sup |f'| bound is loose (> D*), so the straightening is what gives the exact value  
+PASS  T9 no shared wall, near: count = shared-centre count  
+PASS  T10 no shared wall, near: sup |f'| on the hull equals the multiplier, so D* is a proved upper bound  
+PASS  T11 no shared wall, near: measured dimension below D*  box 0.4449, D_n 0.4537, D* 0.6104
+PASS  T9 no shared wall, far: count = shared-centre count  
+PASS  T10 no shared wall, far: sup |f'| on the hull equals the multiplier, so D* is a proved upper bound  
+PASS  T11 no shared wall, far: measured dimension below D*  box 0.5549, D_n 0.5682, D* 0.6104
+PASS  T9 no shared wall, close: count = shared-centre count  
+PASS  T10 no shared wall, close: sup |f'| on the hull equals the multiplier, so D* is a proved upper bound  
+PASS  T11 no shared wall, close: measured dimension below D*  box 0.3951, D_n 0.3957, D* 0.6104
+PASS  T12 sweep: D_n rises toward D* as the repelling walls move away  0.340 0.392 0.451 0.507 0.545 0.567 0.587 0.602 0.612
+18/18 pass
