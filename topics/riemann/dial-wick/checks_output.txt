@@ -1,0 +1,17 @@
+PASS  W1 quarter turn exact: G_t(w) = H_t(iw): 0.0
+PASS  W2 turned frame runs FORWARD heat dG/dt = +G_ww: 4.4717508369024727e-07
+PASS  W3 phi = G_t(x) > 0 on t in [-1,1], |x| <= 60 (physical Burgers, RH or not): 0.12286721155765407
+PASS  W4 u = -2G'/G solves u_t + u u_x = u_xx (viscosity +1): {'max_abs': 7.628824742061946e-11, 'scale': 0.0004132925945921073}
+PASS  W5 poles of u on the centreline at 2*gamma_1..5: 7.438741053533704e-05
+PASS  W6 magnetisation m(h) = G'/G increasing in h (variance > 0) for t = -0.3, 0, 0.3: {'-0.3': 0.3322760228150342, '0.0': 0.3332747619499252, '0.3': 0.3342758736831262}
+PASS  W7 toy c + e^t cos z: off the line before ln c, real after: 0.4054651081081644
+PASS  W8 toy in the turned frame: pole columns merge on the centreline at t = ln c; Lee-Yang iff t >= ln c: {'0.0': False, '0.3': False, '0.4054651081081644': True, '0.6': True}
+PASS  W9 turned-frame pole law dw/dt = -2 sum 1/(w_j - w_k) matches exact heat flow: 2.2214450252534253e-14
+PASS  W10 side pole columns merge in finite time (forward heat, turned frame): 0.147
+PASS  W11 metric half turn: v = (1-d)/2 Hol + (1+d)/2 conj(Hol) (d = metric value): 2.482534153247273e-16
+PASS  W12 ripple growth = d * 2(pi q - q^2/2) on a crystal (exact ring sums): 2.7501933378576518e-14
+PASS  W13 off-line pair: captured for d < 0 (time ~ 1/|d|), frozen at d = 0, escapes for d > 0: {'-1.0': {'y_end': 0.0010000000000022888, 't_end': 0.035759989240324884}, '-0.5': {'y_end': 0.0010000000000000846, 't_end': 0.07181650074124692}, '0.0': {'y_end': 0.3, 't_end': 0.12}, '1.0': {'y_end': 0.8772631520385219, 't_end': 0.12}}
+PASS  W14 viscosity(theta) = -e^{-2i theta}: -1, i, +1 at 0, pi/4, pi/2; PDE check at pi/4: 3.0251656327801227e-07
+PASS  W15 x -> ix turns the plane law at d into the law at -d (tan addition <-> tanh addition): 0.0
+
+15/15 checks pass

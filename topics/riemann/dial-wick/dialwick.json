@@ -1,0 +1,114 @@
+{
+ "quarter_turn": {
+  "G_equals_H_of_iw_relerr": 0.0,
+  "forward_heat_relerr": 4.4717508369024727e-07
+ },
+ "physical_every_t": {
+  "min_G_over_grid": 0.12286721155765407,
+  "Phi_min_on_quad": 0.0,
+  "t_range": [
+   -1,
+   1
+  ],
+  "x_range": [
+   -60,
+   60
+  ]
+ },
+ "burgers_residual": {
+  "max_abs": 7.628824742061946e-11,
+  "scale": 0.0004132925945921073
+ },
+ "poles_on_centerline": {
+  "heights": [
+   28.26945028324211,
+   42.04407929503072,
+   50.02171491513751,
+   60.84976496966857,
+   65.87004878858947
+  ],
+  "two_gamma": [
+   28.269450284,
+   42.044079278,
+   50.02171516,
+   60.849752252,
+   65.870123176
+  ],
+  "max_err": 7.438741053533704e-05
+ },
+ "magnetisation": {
+  "increasing_in_h_all_t": true,
+  "m_at_h40": {
+   "-0.3": 0.3322760228150342,
+   "0.0": 0.3332747619499252,
+   "0.3": 0.3342758736831262
+  },
+  "spin_range_max_u": 1.4
+ },
+ "toy": {
+  "c": 1.5,
+  "Lambda": 0.4054651081081644,
+  "off_line_before": true,
+  "real_after": true,
+  "pole_column_x_at_t_minus0p4": 1.4444696205998802,
+  "columns_merge_at_x0": true,
+  "lee_yang_at": {
+   "0.0": false,
+   "0.3": false,
+   "0.4054651081081644": true,
+   "0.6": true
+  }
+ },
+ "rotated_pole_ode": {
+  "max_err": 2.2214450252534253e-14,
+  "s": 0.05,
+  "rule": "dw/dt = -2 sum 1/(w_j - w_k)  (viscous Burgers pole law, forward)"
+ },
+ "rotated_merger": {
+  "merge_time": 0.147
+ },
+ "kappa_split_identity_err": 2.482534153247273e-16,
+ "kappa_minus1_is_zeta_law": 2.2887833992611187e-16,
+ "kappa_dispersion": {
+  "max_relerr": 2.7501933378576518e-14,
+  "law": "vertical ripple grows at kappa * 2(pi q - q^2/2); horizontal ripple decays at 2(pi q - q^2/2) for every kappa"
+ },
+ "kappa_pair": {
+  "-1.0": {
+   "y_end": 0.0010000000000022888,
+   "t_end": 0.035759989240324884
+  },
+  "-0.5": {
+   "y_end": 0.0010000000000000846,
+   "t_end": 0.07181650074124692
+  },
+  "0.0": {
+   "y_end": 0.3,
+   "t_end": 0.12
+  },
+  "0.5": {
+   "y_end": 0.5836810662452157,
+   "t_end": 0.12
+  },
+  "1.0": {
+   "y_end": 0.8772631520385219,
+   "t_end": 0.12
+  },
+  "capture_time_formula_kappa_-1": "lone pair: y^2/2 = 0.045 (crowd delays slightly)"
+ },
+ "viscosity_phase": {
+  "0": [
+   -1.0,
+   0.0
+  ],
+  "0.7853981633974483": [
+   -6.123233995736766e-17,
+   1.0
+  ],
+  "1.5707963267948966": [
+   1.0,
+   1.2246467991473532e-16
+  ]
+ },
+ "viscosity_phase_check_relerr": 3.0251656327801227e-07
+}

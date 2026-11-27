@@ -1,0 +1,36 @@
+{
+ "burgers_poles": {
+  "max_err": 1.315059172668498e-13,
+  "s": 0.15
+ },
+ "burgers_front_slope": {
+  "0.8": 5.963918044824467,
+  "0.4": 24.709555058860367,
+  "0.2": 99.6406914669395,
+  "0.08": 621.8584425665855
+ },
+ "calogero_moser": {
+  "max_rel_err_accel": 1.2223404666388145e-16,
+  "energy": 9.094947017729282e-13,
+  "identity_sumF2": 3.410605131648481e-13,
+  "energy_offline": 5.684352728092187e-14
+ },
+ "dipole_match": 8.326672684688674e-17,
+ "gradient_is_antiholomorphic": 5.397243798697167e-10,
+ "lorentzian_gradient": 2.6057212768642317e-10,
+ "collapse": {
+  "one_over_r": {
+   "T": 0.035618295110844855,
+   "exponent": 0.49975805009106355
+  },
+  "one_over_r2": {
+   "T": 0.011117210373194538,
+   "exponent": 0.3331111691906646
+  }
+ },
+ "hill": {
+  "median_dstar_over_gap": 1.014508846858419,
+  "share_inside": 0.5135479178032369,
+  "median_dstar_over_meangap_at_gamma_2700": null
+ }
+}
