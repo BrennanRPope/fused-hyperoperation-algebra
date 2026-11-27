@@ -67,3 +67,5 @@ Nov 27: `topics/chaos-composition/` follow-up (DRAFT): the order dial q as a swi
 Nov 27: `topics/entropy-knots/` added as DRAFT (entropy and knot theory for finding zeros and stable orbits; all known pieces, not a lead; 25 checks, picked up by CI as checks.py; 8 figures); `EntropyKnots` compiled into the library, 12 theorems, namespace renamed to CircleOp.EntropyKnots (the library's convention), no proof changed. From the study thread's patch on d352e71.
 
 Nov 27: `topics/carnot-cascade/` added as DRAFT (reopen S1: only Curzon–Ahlborn is a knob image of Carnot; the low-dissipation family is one parabola on the dial; cascading pulls every max-power rule back to Curzon–Ahlborn; 22 checks, picked up by CI as checks.py).
+
+Nov 27: `topics/new-ties/` added as DRAFT (new-ties: union fractal (dimension from shared centres) and discriminant 4 = Carnot speed; 24 checks, picked up by CI as checks.py; no Lean in this pass).
