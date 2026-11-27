@@ -73,4 +73,15 @@ ktests = {
 }
 for nm, e in ktests.items():
     g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
+a_ = sp.symbols('a', positive=True); th_, rho_ = sp.symbols('theta rho', positive=True)
+ltests = {
+    'mwgc_ratio_sq': R(4*137, 2*137) - 2,
+    'sphere_arrow_average': 2*sp.pi*R(4, 3) - R(2, 3)*4*sp.pi,
+    'sphere_arrow_average (integral)': sp.integrate(sp.sin(th_)**3, (th_, 0, sp.pi)) - R(4, 3),
+    'sphere_strength_six': 4/R(2, 3) - 6,
+    'circle_edge_cubed': (4*sp.pi**2)**2*4*a_ - 64*a_*sp.pi**4,
+    'sphere_edge_cubed': (8*sp.pi**2)**2*4*216*a_ - 216*256*a_*sp.pi**4,
+}
+for nm, e in ltests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
 print('ALL PASS' if ok else 'SOME FAIL')

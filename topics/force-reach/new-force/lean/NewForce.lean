@@ -160,4 +160,22 @@ theorem bz_alpha_sixteen : -4 * Real.pi * (1 / 3) / (-302 / 3 : ℝ) = 4 * Real.
 /-- A square torus does not mix the two photons: ε = cos(π/2) = 0. -/
 theorem square_torus_no_mixing : Real.cos (Real.pi / 2) = 0 := Real.cos_pi_div_two
 
+/-! ### Parts L and M: chasing the two possible leads -/
+
+/-- Our floor 1/R1 = MP/√(4·137) and the magnetic weak-gravity ceiling g·M̄P = MP/√(2·137) differ by √2: squared, 2. -/
+theorem mwgc_ratio_sq : (4 * 137 : ℝ) / (2 * 137) = 2 := by norm_num
+
+/-- On a sphere the rotation arrow's squared length ρ² sin²θ averages 2ρ²/3: ∫ sin³θ dθ = 4/3, times 2π, over 4π. -/
+theorem sphere_arrow_average : 2 * Real.pi * (4 / 3) = (2 / 3 : ℝ) * (4 * Real.pi) := by ring
+
+/-- So a sphere's force has α = 4G/(2ρ²/3) = 6G/ρ². -/
+theorem sphere_strength_six : (4 : ℝ) / (2 / 3) = 6 := by norm_num
+
+/-- Circle edge: x = 4/R2², R2³ = 4π²R1, R1² = 4/α give x³·(4π²)²·4 = 64α, i.e. x³ = α/π⁴. -/
+theorem circle_edge_cubed (a : ℝ) : (4 * Real.pi ^ 2) ^ 2 * 4 * a = 64 * (a * Real.pi ^ 4) := by ring
+
+/-- Sphere edge: x = 6/ρ², ρ³ = 8π²R1 give x³ = 216α/(256π⁴), i.e. x = 6(α/(256π⁴))^(1/3). -/
+theorem sphere_edge_cubed (a : ℝ) :
+    (8 * Real.pi ^ 2) ^ 2 * 4 * (216 * a) = 216 * (256 * a * Real.pi ^ 4) := by ring
+
 end FusedAlgebra.Topics.NewForce

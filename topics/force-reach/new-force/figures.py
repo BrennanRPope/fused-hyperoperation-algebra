@@ -507,3 +507,64 @@ ax.legend(fontsize=8.5, loc="lower left")
 ax.set_title("F. A tilted torus: the hidden circle's photon mixes with ours,\ngiving its copies a small electric charge (K1c, K1d)", fontsize=10.5)
 fig.suptitle("h13. The other unknown forces on the map, one cell at a time", fontsize=12.5)
 fig.tight_layout(); fig.savefig("figures/h13_other_unknown_forces.png", dpi=150); plt.close(fig)
+
+# ---------------- h14: chasing the two possible leads (parts L, M) ----------------
+rl = RES
+fig, axs = plt.subplots(2, 2, figsize=(14, 10.5))
+ax = axs[0, 0]
+ns = np.arange(1, 8); Rm_m = np.array([float(rl["L_Rmax_m"][str(n)]) for n in ns])
+ax.bar(ns, Rm_m, color="#2ca02c", alpha=0.8, label="largest size our law allows (electric circle stays a circle)")
+for n, r in zip(ns, Rm_m):
+    ax.text(n, r*12, f"{r/1.616255e-35:.0f} l_P" if r/1.616255e-35 >= 10 else f"{r/1.616255e-35:.1f} l_P", ha="center", fontsize=8.5)
+ax.axhspan(0.1e-6/2, 10e-6/2, color="#9467bd", alpha=0.25, label="the dark dimension (0.1 to 10 µm across)")
+ax.axhline(30e-6, color="gray", ls="--", label="Eöt-Wash 2020: every extra dimension below 30 µm")
+ax.axhline(1.616255e-35*float(rl["G_circle_radius_lP"]), color="#1f77b4", ls=":", label="our electric circle, 23.4 l_P")
+ax.text(4, 1e-18, "gap of 1e25 to 1e27:\na dark-dimension signal\nwould rule out electromagnetism\nas gravity's circle (L4)", ha="center", fontsize=9.5, color="#d62728")
+ax.set_yscale("log"); ax.set_ylim(1e-35, 1e-2); ax.set_xticks(ns)
+ax.set_xlabel("number of extra dimensions besides the electric circle"); ax.set_ylabel("radius (m)")
+ax.legend(fontsize=8.5, loc="upper right")
+ax.set_title("A. Lead 1: our law forbids large extra dimensions of any number;\nall must stay below about 5e-33 m (L1)", fontsize=10.5)
+ax = axs[0, 1]
+marks = [(10.7e3, "CMS: no extra-dimension signal below 10.7 TeV", "gray"),
+         (float(rl["L_MD_min_GeV"]), "our floor: 1/R1 = 5.2e17 GeV (L2)", "#2ca02c"),
+         (float(rl["L_MWGC_ceiling_GeV"]), "magnetic weak-gravity ceiling, g × reduced Planck mass\n= 7.4e17 GeV, exactly √2 higher (L3, known)", "#ff7f0e"),
+         (1.22089e19, "Planck\nmass,\n1.2e19\nGeV", "k")]
+ax.axvspan(float(rl["L_MD_min_GeV"]), float(rl["L_MWGC_ceiling_GeV"]), color="#2ca02c", alpha=0.3)
+ax.axvspan(1e2, float(rl["L_MD_min_GeV"]), color="#d62728", alpha=0.06)
+for i, (x, t, c) in enumerate(marks):
+    ax.axvline(x, color=c, lw=2); ax.text(x*(1.6 if i in (0, 3) else 0.55), 0.88 - 0.2*i, t, color=c, fontsize=9, ha="left" if i in (0, 3) else "right", va="top")
+ax.text(3e5, 0.1, "red: where any extra-dimension or\nquantum-gravity signal would falsify\nelectromagnetism-as-circle", fontsize=9, color="#d62728")
+ax.set_xscale("log"); ax.set_xlim(1e2, 1e20); ax.set_ylim(0, 1); ax.set_yticks([])
+ax.set_xlabel("energy (GeV)")
+ax.set_title("B. Lead 1: where gravity must change: no lower than 5.2e17 GeV.\nWith the (conjectured) ceiling, a window just √2 wide", fontsize=10.5)
+ax = axs[1, 0]
+cw = rl["M_circle_window"]; sw = rl["M_sphere_window"]
+ax.barh(1, np.log10(1/cw[0]) - np.log10(1/cw[1]), left=np.log10(1/cw[1]), height=0.5, color="#1f77b4", alpha=0.4)
+ax.barh(0, np.log10(1/sw[0]) - np.log10(1/sw[1]), left=np.log10(1/sw[1]), height=0.5, color="#ff7f0e", alpha=0.4)
+ax.text(np.log10(1/cw[0]) + 0.05, 1, "second circle (abelian):\n1/23.7 to 1/26,400", va="center", fontsize=9)
+ax.text(np.log10(1/sw[0]) + 0.05, 0, "2-sphere (SU(2)-like):\n1/25.1 to 1/634", va="center", fontsize=9)
+sm = rl["M_SM_inv_at_KK"]
+for x, c in zip(sm, ["#8c564b", "#e377c2", "#7f7f7f"]):
+    ax.plot([np.log10(x)], [-0.75], "v", color=c, ms=10)
+ax.text(1.05, -1.1, f"Standard Model at 5.2e17 GeV (one loop): hypercharge 1/{sm[0]:.0f} (brown),\nweak 1/{sm[1]:.0f} (pink), strong 1/{sm[2]:.0f} (gray)", fontsize=8.5, va="top")
+ax.axvline(np.log10(137.036), color="#1f77b4", ls=":"); ax.text(np.log10(137.036) + 0.03, 1.45, "electromagnetism 1/137", fontsize=8.5, color="#1f77b4")
+ax.set_yticks([]); ax.set_ylim(-1.9, 1.8); ax.set_xlim(1.0, 5.75)
+ax.set_xticks([1, 2, 3, 4, 5]); ax.set_xticklabels(["1/10", "1/100", "1/1,000", "1/10,000", "1/100,000"])
+ax.set_xlabel("strength α (weaker to the right)")
+ax.set_title("C. Lead 2: our law fixes each extra force's strength to a window;\nthe Standard Model's strengths at 5.2e17 GeV (▼, one loop) land inside (M2, M4)", fontsize=10.5)
+ax = axs[1, 1]
+t = np.linspace(0, 2*np.pi, 200)
+ax.plot(np.cos(t) - 2.2, np.sin(t), color="#1f77b4", lw=2)
+for a in np.linspace(0, 2*np.pi, 12, endpoint=False):
+    ax.annotate("", (np.cos(a + 0.35) - 2.2, np.sin(a + 0.35)), (np.cos(a) - 2.2, np.sin(a)), arrowprops=dict(arrowstyle="->", color="#1f77b4"))
+ax.text(-2.2, -1.45, "circle: every arrow has length R\nα = 4G/R²", ha="center", fontsize=9.5, color="#1f77b4")
+ax.add_patch(matplotlib.patches.Circle((1.4, 0), 1, fill=False, color="#ff7f0e", lw=2))
+for z in [-0.8, -0.4, 0, 0.4, 0.8]:
+    rz = math.sqrt(1 - z**2); ax.plot(1.4 + rz*np.cos(t), z + 0.18*rz*np.sin(t), color="#ff7f0e", lw=0.6, alpha=0.6)
+    ax.annotate("", (1.4 + 0.5*rz, z - 0.17*rz), (1.4 - 0.1*rz, z - 0.18*rz), arrowprops=dict(arrowstyle="->", color="#ff7f0e", lw=0.6 + 2*rz))
+ax.text(1.4, -1.45, "sphere: arrows long at the equator, zero at the poles\nsquared length averages 2ρ²/3, so α = 6G/ρ² (M1)", ha="center", fontsize=9.5, color="#ff7f0e")
+ax.text(-0.4, 1.45, f"top edges, where the hidden sizes reach the fundamental length:\n1/23.7 (circle), 1/25.1 (sphere); supersymmetric unification ≈ 1/{rl['M_MSSM_alphaU_inv']:.0f} (one loop)\na coincidence to note, not evidence (M5)", ha="center", fontsize=9, color="#d62728")
+ax.set_xlim(-3.6, 3.2); ax.set_ylim(-1.9, 2.0); ax.set_aspect("equal"); ax.axis("off")
+ax.set_title("D. Lead 2: why a sphere's force has its own strength rule,\nand the coincidence at the top edge (M1, M3, M5)", fontsize=10.5)
+fig.suptitle("h14. Chasing the two possible leads: the cap on extra dimensions, and strength windows", fontsize=12.5)
+fig.tight_layout(); fig.savefig("figures/h14_chasing_the_leads.png", dpi=150); plt.close(fig)

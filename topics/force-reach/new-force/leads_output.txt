@@ -1,0 +1,16 @@
+== L. Lead 1: the cap on a second circle, what it predicts and how to test it
+PASS  L1 the cap for one extra circle reproduces part J: R2 <= R1^3/(4 pi^2) = 325 l_P   [325 l_P]
+PASS  L1b for any number of extra dimensions the largest allowed size falls, from 325 l_P (one) towards R1/(2 pi) = 3.7 l_P (many): every extra dimension is below 6e-33 m. Our law forbids large extra dimensions of any number   [n=1: 325.1 l_P, n=2: 34.8 l_P, n=3: 16.5 l_P, n=4: 11.4 l_P, n=5: 9.1 l_P, n=6: 7.8 l_P, n=7: 7.1 l_P]
+PASS  L2 so gravity's true strength scale can be no lower than 1/R1 = 5.2e17 GeV, whatever hides in the extra space. CMS excludes ADD below 10.7 TeV (2 dimensions, 137/fb); our law puts it 5e13 times higher: no extra-dimension signal at any collider   [5.215e+17 GeV, 4.9e+13 x the CMS limit]
+PASS  L3 the magnetic weak-gravity ceiling for electromagnetism is g x reduced Planck mass = 7.4e17 GeV, exactly sqrt(2) above our floor (MP/sqrt(4 x 137) against MP/sqrt(2 x 137)). Floor and ceiling together pin the scale where gravity changes to 5.2e17 to 7.4e17 GeV   [ceiling 7.375e+17 GeV, ratio 1.414214]
+PASS  L4 the dark dimension (0.1 to 10 um, still allowed: Eot-Wash finds every extra dimension below 30 um) is 1e25 to 1e27 times over our cap. A short-range gravity signal at microns, or any collider sign of extra dimensions, would rule out electromagnetism as gravity's circle   [2e+25 to 2e+27 x the cap]
+
+== M. Lead 2: does our law fix a strength or a scale?
+PASS  M1 on a sphere of radius rho the rotation arrow has length rho sin(theta); its square averages 2 rho^2/3, so the sphere's SU(2)-like force has alpha = 4G/(2 rho^2/3) = 6G/rho^2 (a circle of radius R gives 4G/R^2)   [<|K|^2> = 2*rho**2/3]
+PASS  M2 our law fixes each extra force's strength to a window: a second circle 1/26,400 to 1/23.7; a 2-sphere (radius 12.3 to 61.7 l_P, gravity spread over 7 dimensions) 1/634 to 1/25.1. Neither can be arbitrarily weak or strong   [circle 1/26418 to 1/23.7; sphere 1/634 to 1/25.1]
+PASS  M3 the top edges in closed form: a second circle at most (alpha/pi^4)^(1/3), a sphere at most 6 (alpha/(256 pi^4))^(1/3); both grow only as the cube root of electromagnetism's strength   [circle alpha**(1/3)/pi**(4/3), sphere 3*2**(1/3)*alpha**(1/3)/(4*pi**(4/3))]
+PASS  M4 a loose test that could have failed: the Standard Model's three strengths at 5.2e17 GeV (one loop) are 1/35, 1/48 and 1/49, inside both windows. Strong-force-sized (1/3) or very weak (1/10,000) values would have missed the sphere window   [1/alpha = 35.3, 47.9, 48.9]
+PASS  M5 a coincidence to note, not evidence: with superpartners at 1 TeV the three strengths meet near 1e16 GeV at about 1/26 (one loop; two-loop studies give about 2e16 GeV and 1/24 to 1/25), close to the top edges, 1/23.7 (circle) and 1/25.1 (sphere). The edge is where the hidden sizes equal the fundamental length   [M_U = 9.8e+15 GeV, 1/alpha_U = 26.0 (strong 25.4); edges 23.7, 25.1]
+PASS  M5b why it stays a coincidence for now: the edge depends on alpha only as a cube root, the windows are wide, and a smooth hidden space cannot give the left-handed particles of the Standard Model (known: Witten 1981, which also shows the smallest such space has 7 dimensions, CP2 x S2 x S1)
+
+PARTS L+M TOTAL: 11 pass, 0 fail
