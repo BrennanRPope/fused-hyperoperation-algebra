@@ -1476,6 +1476,85 @@ def fig30():
     fig.tight_layout()
     save(fig, "fig30_wobble_law.png")
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30):
+# ---------------------------------------------------------------- fig31 Kerr = Newton's ring + one mass term (round 23)
+def fig31():
+    pc = json.load(open(os.path.join(HERE, "polar_coupling.json")))
+    cv = pc["curves"]
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    # (a) the picture: Newton's field of the ring-shifted mass, and a polar orbit around it
+    ax = axs[0, 0]
+    aa, r0 = 0.6, 1.0
+    th = np.linspace(0, 2*np.pi, 400)
+    for rr, al in ((0.75, 0.25), (1.0, 1.0), (1.4, 0.25)):
+        ax.plot(np.sqrt(rr**2 + aa**2)*np.sin(th), rr*np.cos(th), color=(BLUE if al == 1 else GREY),
+                lw=(2.6 if al == 1 else 0.9), ls=("-" if al == 1 else ":"))
+    ax.plot([-aa, aa], [0, 0], color="k", lw=4, solid_capstyle="round")
+    ax.plot([-aa, aa], [0, 0], "o", color="k", ms=7)
+    ax.annotate("the ring: Newton's mass shifted to z = ±ia\n(seen edge-on; Euler's two-centre problem)",
+                xy=(aa*0.6, 0), xytext=(-0.3, -0.5), fontsize=9, arrowprops=dict(arrowstyle="->", color="k"))
+    ax.annotate("a polar orbit at fixed r (over both poles)", xy=(0.55, 0.85), xytext=(0.65, 1.15), fontsize=9,
+                color=BLUE, arrowprops=dict(arrowstyle="->", color=BLUE))
+    eqs = ("Kerr, in Mino time, term by term:\n"
+           "  in-and-out:   Newton + 2Mr (K − a²)\n"
+           "  up-and-down:  Newton, nothing added\n"
+           "  clock:        E·Newton + 2Mr P/Δ\n"
+           "  turning:      Newton + (a/(r²+a²))·2Mr P/Δ")
+    ax.text(-1.65, -1.62, eqs, fontsize=9.2, family="monospace", va="top",
+            bbox=dict(boxstyle="round", fc="white", ec=GREY))
+    ax.set_xlim(-1.75, 1.85); ax.set_ylim(-2.75, 1.5); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_title("(a) Kerr's orbits are Newton's orbits around the spinning ring,\n"
+                 "plus one term that carries the mass (K = Carter's constant)", fontsize=10.5)
+    # (b) one Kerr polar orbit's radial function: Newton's part alone has no double root; the one term supplies it
+    ax = axs[0, 1]
+    Rs = cv["R_split"]; xs = np.array(Rs["r"])
+    sc = xs**4
+    ax.plot(xs, np.array(Rs["newton"])/sc, color=GREY, lw=2, ls="--", label="Newton's part (ring field), same constants")
+    ax.plot(xs, np.array(Rs["extra"])/sc, color=ORANGE, lw=2, label="the one term  2Mr (K − a²)")
+    ax.plot(xs, np.array(Rs["kerr"])/sc, color=BLUE, lw=2.6, label="Kerr = the sum")
+    ax.axhline(0, color="k", lw=0.7); ax.axvline(Rs["r0"], color=BLUE, lw=0.8, ls=":")
+    ax.text(Rs["r0"] + 0.15, 0.03, "orbit at r = 6M:\nthe sum just touches zero", fontsize=9, color=BLUE)
+    ax.set_xlabel("r / M"); ax.set_ylabel("R(r) / r⁴   (radial speed² in Mino time, scaled)")
+    ax.set_ylim(-0.13, 0.1)
+    ax.legend(fontsize=8.5, loc="lower right")
+    ax.set_title("(b) one Kerr orbit over the poles (a = 0.9M, r = 6M): Newton's part alone stays below zero;\n"
+                 "the mass term lifts the sum until it just touches zero at the orbit", fontsize=10.5)
+    # (c) the (a/r)^2 part of (Omega_r/Omega_theta)^2, exact in M/r, with pieces of the one term switched off
+    ax = axs[1, 0]
+    us = np.array(cv["u"])
+    sty = [("Kerr", BLUE, "-", "Kerr:  (3/2)(1 + 10u − 8u²)"),
+           ("2MrQ off", RED, "--", "only the binding part of x²:  (3/2)(1 + 4u)"),
+           ("binding part of x^2 off", PURPLE, "-.", "only 2MrQ:  (3/2)(1 + 2u)(1 + 4u)"),
+           ("whole term 2Mr(K-a^2) off", GREY, ":", "whole term off:  3/2  (Newton's ring)")]
+    for key, c, ls, lab in sty:
+        ax.plot(us, cv["ratio_k2: " + key], color=c, ls=ls, lw=2.3, label=lab)
+    ax.set_xlabel("field strength  u = M/r"); ax.set_ylabel("coefficient of (a/r)² in (Ω_r/Ω_θ)²")
+    ax.legend(fontsize=8.5, loc="upper left")
+    ax.set_title("(c) over the poles, x² = a²E² is only part of the source: its binding part\n"
+                 "gives 6 of round 19's 15; Schwarzschild's half, 2MrQ, gives the other 9", fontsize=10.5)
+    # (d) bookkeeping of the mixed terms
+    ax = axs[1, 1]
+    groups = [("(a/r)²(M/r)\nin (Ω_r/Ω_θ)²", [("2MrQ", 9, PURPLE), ("binding of x²", 6, RED), ("total", 15, BLUE)]),
+              ("(a/r)²(M/r)²\nin (Ω_r/Ω_θ)²", [("2MrQ", 12, PURPLE), ("binding of x²", 0, RED), ("together", -24, ORANGE),
+                                             ("total", -12, BLUE)]),
+              ("(a/r)²(M/r)\nin Ω_θ² r³/M", [("radial term", -10.5, PURPLE), ("clock terms", 6.5, GREEN),
+                                            ("total", -4, BLUE)])]
+    x0 = 0; xt = []; xl = []
+    for gname, bars in groups:
+        for i, (nm, val, c) in enumerate(bars):
+            ax.bar(x0 + i, val, 0.75, color=c, alpha=(1.0 if nm in ("total",) else 0.7))
+            ax.text(x0 + i, val + (0.6 if val >= 0 else -2.0), f"{val:+g}", ha="center", fontsize=8.8)
+            xt.append(x0 + i); xl.append(nm)
+        ax.text(x0 + (len(bars) - 1)/2, 19, gname, ha="center", fontsize=8.8)
+        x0 += len(bars) + 1.2
+    ax.axhline(0, color="k", lw=0.8)
+    ax.set_xticks(xt); ax.set_xticklabels(xl, fontsize=8, rotation=35, ha="right")
+    ax.set_ylim(-28, 24.5); ax.set_ylabel("coefficient")
+    ax.set_title("(d) where round 19's mixed terms come from: all from the one term (and, for\n"
+                 "the coordinate-time rate, the clock); switch both off and Newton's law returns", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig31_newton_plus_one.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31):
     f()
 print("figures:", sorted(os.listdir(FIG)))

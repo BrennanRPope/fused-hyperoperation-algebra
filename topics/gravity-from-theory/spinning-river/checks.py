@@ -23,6 +23,8 @@ JB: the river's push and twist combined as one jet (Brennan's jet rule) or as tw
     jet_boost.py -> jet_boost.json).
 WL: one law for both wobbles of an equatorial orbit, and why the push's +28 equals the twist's 28 (round 22,
     wobble_law.py -> wobble_law.json).
+PC: Kerr's orbits as Newton's orbits around the ring-shifted mass plus one mass term, and the source of the polar
+    (a/r)^2 (M/r)^n terms (round 23, polar_coupling.py -> polar_coupling.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1517,6 +1519,51 @@ check("WL4 in flight: a slightly eccentric orbit integrated with Hamilton's equa
       all(abs(s_ - p_) < 1e-5*abs(p_) for s_, p_ in fl_wl_.values()),
       f"(flown, law) radians per lap: {fl_wl_}")
 results["WL_wobble_law"] = {"carter": c_wl_, "jet_pieces": jp_wl_, "flight": fl_wl_}
+
+# ================================================================ PC1-PC4  Kerr = Newton's ring + one mass term (round 23)
+# Is the coupling 2Mr x^2 (x = -aE over the poles) the source of round 19's (a/r)^2 (M/r)^n terms? polar_coupling.py.
+import polar_coupling as pc_  # noqa: E402
+n1_pc_, rf_pc_ = pc_.newton_plus_one(), pc_.ring_field()
+check("PC1 Kerr's orbit equations in Mino time are Newton's equations for the ring-shifted mass (Euler's problem with "
+      "the centres at z = +-ia, in oblate spheroidal coordinates, potential -M r/(r^2 + a^2 cos^2 theta)) with "
+      "E^2 - 1 in place of twice Newton's energy, plus one mass term per equation: radial R_Kerr = R_Newton + "
+      "2 M r (K - a^2) with K Carter's constant; polar Theta_Kerr = Theta_Newton exactly; clock dt/dlam = E Sigma + "
+      "2 M r P/Delta; turning dphi/dlam = Newton's + (a/(r^2 + a^2)) 2 M r P/Delta. In Schwarzschild the radial term "
+      "is 2 M r (Q + L^2), the textbook term behind perihelion precession (symbolic, exact, any orbit)",
+      all(n1_pc_.values()) and all(rf_pc_.values()), f"{n1_pc_}; ring field {rf_pc_}")
+sl_pc_ = pc_.stiffness_law()
+tab_pc_ = pc_.dials()
+pk_pc_ = pc_.polar_checks(tab_pc_)
+check("PC2 the stiffness law of round 22 holds for every spherical orbit: omega_r^2 = M (r - 3K/r) + 4 a^2 Q/r^2 and "
+      "the r^2 coefficient W = M (r + 3K/r) - 2 a^2 Q/r^2 (equator: K = x^2, Q = 0). Over the poles W = Q (1 + m), so "
+      "(Omega_r/Omega_theta)^2 = (1 + m)(2K(m)/pi)^2 B with B = omega_r^2/W exactly 1 at Newtonian strength; this "
+      "reproduces round 19's prefactor and its whole series table",
+      all(sl_pc_.values()) and all(pk_pc_[k_] for k_ in ("pref_equals_omega_r2_over_Q_round19",
+                                                          "omega_r2_law_holds_on_polar_orbit", "W_equals_Q(1+m)",
+                                                          "B_is_1_at_Newton", "kerr_rows_match_round19",
+                                                          "kerr_omega_theta2_k2u_is_-4")),
+      f"stiffness law {sl_pc_}; polar {pk_pc_}")
+check("PC3 the answer: x^2 = a^2 E^2 is only part of the source. Its a^2 part (2 M a^2 r) is the ring's oblateness and "
+      "is Newtonian; its binding part 2 M a^2 r (E^2 - 1) gives 6 of round 19's +15 (a/r)^2 (M/r), and 2 M r Q (the "
+      "Schwarzschild half) gives the other 9; at (a/r)^2 (M/r)^2 the -12 is 12 + 0 - 24 (the two halves together). With "
+      "the whole term 2 M r (K - a^2) off every mixed term of the ratio vanishes, and with the clock terms off too "
+      "Newton's polar laws return exactly. At order (a/r)^2 and every order in u: ratio = 1 - 6u + (a/r)^2 (3/2)"
+      "(1 + 10u - 8u^2), Omega_theta^2 r^3/M = 1 - (a/r)^2 (3/2 + 4u); the -4 is -21/2 (radial term) + 13/2 (clock)",
+      all(pk_pc_[k_] for k_ in ("k2_law", "newton_returns_ratio", "newton_returns_omega_theta2",
+                                 "whole_term_off_kills_mixed_ratio_terms", "split_k2u_ratio_15=9+6",
+                                 "split_k2u_omega_theta2_-4=-21/2+13/2"))
+      and pk_pc_["split_k2u2_ratio"] == ["-12", "12", "0"]
+      and sp.simplify(tab_pc_["Kerr"]["omega_theta2_k2_exact"] + (8*pc_.u + 3)/2) == 0,
+      {n_: (str(d_["ratio_k2_exact"]), str(d_["omega_theta2_k2_exact"])) for n_, d_ in tab_pc_.items()})
+fl_pc_ = [pc_.ring_flight(x_, delta=d_) for d_ in (1e-5, 1e-6) for x_ in (0.3, 0.6, 0.9)]
+check("PC4 in flight: slightly perturbed polar orbits integrated in Cartesian coordinates in Newton's field of the "
+      "ring-shifted mass (complex shift, no separation used) beat at (1 + k^2)(2K(k^2)/pi)^2, R_Newton's prediction, "
+      "for a/r = 0.3, 0.6, 0.9; the small gap shrinks tenfold with a tenfold smaller kick",
+      all(f_["rel_err"] < 2e-5 for f_ in fl_pc_[3:])
+      and all(8 < a_["rel_err"]/b_["rel_err"] < 12 for a_, b_ in zip(fl_pc_[:3], fl_pc_[3:])),
+      [(f_["k"], f_["delta"], f_["flown_ratio2"], f_["law"], f_["rel_err"]) for f_ in fl_pc_])
+results["PC_polar_coupling"] = {"newton_plus_one": n1_pc_, "stiffness_law": sl_pc_, "polar": pk_pc_,
+                                "flights": fl_pc_}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

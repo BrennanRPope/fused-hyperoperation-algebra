@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 to 22 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 23 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -295,6 +295,65 @@ theorem mino_vertical_stiffness (r e M K0 x : K)
     (h2 : (2 : K) ≠ 0) :
     r * K0 = M * r^2 + 3 * M * x^2 := by
   have h : 2 * (r * K0 - (M * r^2 + 3 * M * x^2)) = 0 := by grind
+  grind
+
+/-! Round 23: Kerr's orbits are Newton's orbits around the ring-shifted mass plus one mass term
+(polar_coupling.py). P = E(r² + a²) − aL, Δ = r² − 2Mr + a², Carter's K = Q + (L − aE)², s = sin θ, c = cos θ. -/
+
+/-- **Radial: Kerr = Newton's ring + 2Mr(K − a²).** Carter's R = P² − Δ(r² + K) equals Newton's radial function
+for the ring-shifted mass in Mino time, (r² + a²)((E² − 1)r² + 2Mr − (Q + L²)) + a²L², plus one term. -/
+theorem kerr_radial_newton_plus_one (r a M E L Q : K) :
+    (E * (r^2 + a^2) - a * L)^2 - (r^2 - 2 * M * r + a^2) * (r^2 + (Q + (L - a * E)^2)) =
+      ((r^2 + a^2) * ((E^2 - 1) * r^2 + 2 * M * r - (Q + L^2)) + a^2 * L^2)
+        + 2 * M * r * ((Q + (L - a * E)^2) - a^2) := by
+  grind
+
+/-- **Polar: Kerr's Θ is Newton's**, multiplied through by s²: Q − c²(a²(1 − E²) + L²/s²) = (Q + L²) +
+(E² − 1)a²c² − L²/s². -/
+theorem kerr_polar_is_newton (Q L a E s c : K) (hsc : s^2 + c^2 = 1) :
+    Q * s^2 - c^2 * (a^2 * (1 - E^2) * s^2 + L^2) = (Q + L^2) * s^2 + (E^2 - 1) * a^2 * c^2 * s^2 - L^2 := by
+  grind
+
+/-- **Clock: Kerr = E × Newton's + 2MrP/Δ**, multiplied through by Δ. -/
+theorem kerr_clock_newton_plus_one (r a M E L s c : K) (hsc : s^2 + c^2 = 1) :
+    (r^2 + a^2) * (E * (r^2 + a^2) - a * L) - (r^2 - 2 * M * r + a^2) * (a * (a * E * s^2 - L)) =
+      (r^2 - 2 * M * r + a^2) * (E * (r^2 + a^2 * c^2)) + 2 * M * r * (E * (r^2 + a^2) - a * L) := by
+  grind
+
+/-- **Turning: Kerr = Newton's + (a/(r² + a²))·2MrP/Δ**, multiplied through by (r² + a²)Δ: the L/s² parts cancel. -/
+theorem kerr_turning_newton_plus_one (r a M E L : K) :
+    a * (E * (r^2 + a^2) - a * L) * (r^2 + a^2) - a * E * (r^2 - 2 * M * r + a^2) * (r^2 + a^2)
+        + a^2 * L * (r^2 - 2 * M * r + a^2) = 2 * M * r * a * (E * (r^2 + a^2) - a * L) := by
+  grind
+
+/-- Carter's R in Mino form for every orbit: r⁴(E² − 1) + 2Mr³ − W r² + 2MrK − a²Q, W = Q + L² − a²(E² − 1). -/
+theorem kerr_radial_mino_form (r a M E L Q : K) :
+    (E * (r^2 + a^2) - a * L)^2 - (r^2 - 2 * M * r + a^2) * (r^2 + (Q + (L - a * E)^2)) =
+      r^4 * (E^2 - 1) + 2 * M * r^3 - (Q + L^2 - a^2 * (E^2 - 1)) * r^2 + 2 * M * r * (Q + (L - a * E)^2)
+        - a^2 * Q := by
+  grind
+
+/-- **The stiffness law for every spherical orbit** (round 22's, now with Q): if R and R' vanish at r, then
+r²·(−R''/2) = Mr³ − 3MKr + 4a²Q. Needs 2 ≠ 0. -/
+theorem spherical_radial_stiffness (r e M W Kc a Q : K) (h2 : (2 : K) ≠ 0)
+    (h0 : r^4 * e + 2 * M * r^3 - W * r^2 + 2 * M * r * Kc - a^2 * Q = 0)
+    (h1 : 4 * r^3 * e + 6 * M * r^2 - 2 * W * r + 2 * M * Kc = 0) :
+    r^2 * (W - 6 * r^2 * e - 6 * M * r) = M * r^3 - 3 * M * Kc * r + 4 * a^2 * Q := by
+  have h : 2 * (r^2 * (W - 6 * r^2 * e - 6 * M * r) - (M * r^3 - 3 * M * Kc * r + 4 * a^2 * Q)) = 0 := by grind
+  grind
+
+/-- ... and r²W = Mr³ + 3MKr − 2a²Q (the r² coefficient; over the poles W = Q(1 + m)). Needs 2 ≠ 0. -/
+theorem spherical_vertical_stiffness (r e M W Kc a Q : K) (h2 : (2 : K) ≠ 0)
+    (h0 : r^4 * e + 2 * M * r^3 - W * r^2 + 2 * M * r * Kc - a^2 * Q = 0)
+    (h1 : 4 * r^3 * e + 6 * M * r^2 - 2 * W * r + 2 * M * Kc = 0) :
+    r^2 * W = M * r^3 + 3 * M * Kc * r - 2 * a^2 * Q := by
+  have h : 2 * (r^2 * W - (M * r^3 + 3 * M * Kc * r - 2 * a^2 * Q)) = 0 := by grind
+  grind
+
+/-- Over the poles at order (a/r)², doubled: 3(1 − 4u)(1 − 6u) + 12u(5 − 8u) = 3(1 + 10u − 8u²), i.e.
+(3/2)(1 − 4u)(1 − 6u) + 6u(5 − 8u) = (3/2)(1 + 10u − 8u²) wherever 2 ≠ 0. -/
+theorem polar_k2_law (u : K) :
+    3 * (1 - 4 * u) * (1 - 6 * u) + 12 * u * (5 - 8 * u) = 3 * (1 + 10 * u - 8 * u^2) := by
   grind
 end Field
 

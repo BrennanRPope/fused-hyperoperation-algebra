@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,892 theorems in 181 modules, Nov 27 ~13:20 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,900 theorems in 181 modules, Nov 27 ~14:15 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -145,3 +145,4 @@ Nov 27: `topics/gravity-from-theory/spinning-river/` rounds 18 to 22 (DRAFT): ti
 Nov 27: `topics/riemann/cusp-tail/` (DRAFT): a Knauf chain's zero wobble is mostly its cusp, shape A·n^(1−ρ); fitting it out leaves zeros about 0.0005 off the line at lengths 29 to 33; corrects length-smoothing's swing law; checks.py 13.
 Nov 27: `topics/klein-flow/periodic-box/blowup/` (DRAFT): blow-up hunt in the twisted class; Kerr's antiparallel tubes pinch and relax, the twist's nudges move the pinch 0 to 2%; peak spin at nu = 0.001 not settled between the 128³ and 192³ grids (check B9 open until a 256³ run); checks_blowup.py 8 pass, 1 open; figures F to H.
 Nov 27: `topics/new-ties/` round 19 (DRAFT, patch 0018): Conjecture 15.3 holds for every pair of words with at most four N/K letters each (computer-assisted, with a by-hand bound on the factors 19); at five letters that bound fails for one family, so the next length needs a 19-adic linear-forms step; checks19.py 10. Not a proof of the full conjecture.
+Nov 27: `topics/gravity-from-theory/spinning-river/` round 23 (DRAFT): Kerr's orbit equations in Mino time are Newton's for the shifted source plus one mass term each (polar_coupling.py, fig 31); 110 checks; 8 theorems added to Topics.SpinningRiver (library 3,900), the two spherical stiffness ones with 2 ≠ 0.
