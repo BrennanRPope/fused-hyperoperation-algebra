@@ -40,6 +40,8 @@ red = does not work. Lean: `lean/Hypersphere.lean`, compiled in the shared libra
   gravity is not more complete in any other ℓp shape: only p = 2 keeps rotations and angular momentum.
 - **Across string theory's magic square (orbits section 8).** Orbits turn by n − 1 per lap for BPS bodies and
   2(n − 1) for neutral ones, where n = 1 to 4 counts the charges; the algebras only decide which n are allowed.
+  With charges pointing different ways, the turn comes only from pairs of a black hole's charges; one charge
+  alone never turns an orbit (orbits section 9).
 - **Comes out of the sphere, or simpler there:** the curvature (1/radius², which is the curvature dial d at k = 0), the
   swap rule (turn = curvature × area is the sphere's curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
   of Newton's orbits (great circles on S³).
@@ -363,7 +365,8 @@ magic square of gravity theories are worked out in the orbits section 8.
 - `figures.py` → `figures/fig1` … `fig12`
 - `orbits/`: Newton's orbits and hydrogen on one 3-sphere (`README.md`, `checks_orbits.py` 23/23, `six/checks_six.py` 11/11, `twov/checks_twov.py` 8/8, `dcopy/checks_dcopy.py` 11/11, figures O1–O9)
 - `division-algebras/` (DRAFT): why 1, 2, 4, 8 (`checks_div.py`, `checks_shape.py`, both pass; `figure_div.py` → figures D1, D2)
-- `division-algebras/magic/` (DRAFT): orbits across the magic square (`checks_magic.py` 7/7, `figure_magic.py` → figure D3)
+- `division-algebras/magic/` (DRAFT): orbits across the magic square (`checks_magic.py` 7/7, `figure_magic.py` → figure D3) and
+  with misaligned charges (`stu.py`, `misalign.py`, `checks_misalign.py` 6/6, `figure_misalign.py` → figure D4)
 - `lean/Hypersphere.lean`: 33 theorems, compiled in the shared library as `FusedAlgebra.Topics.Hypersphere`
 
 ## References

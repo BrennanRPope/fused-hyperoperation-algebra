@@ -11,7 +11,8 @@ is the reading d − k²/4, which is d itself at k = 0. Relativity's velocity sp
 Checks: `checks_orbits.py` → `checks_orbits_output.txt`, **23 of 23 pass**, and `six/checks_six.py` →
 `six/checks_six_output.txt`, **11 of 11 pass**, and `twov/checks_twov.py` → `twov/checks_twov_output.txt`, **8 of 8 pass**, and
 `dcopy/checks_dcopy.py` → `dcopy/checks_dcopy_output.txt`, **11 of 11 pass**, and
-`../division-algebras/magic/checks_magic.py`, **7 of 7 pass** (section 8) (numpy, scipy; real orbit simulations, not
+`../division-algebras/magic/checks_magic.py`, **7 of 7 pass** (section 8), and
+`../division-algebras/magic/checks_misalign.py`, **6 of 6 pass** (section 9) (numpy, scipy; real orbit simulations, not
 formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems),
 compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, no statement changed). Colour key as before: **orange = known, blue = ours**.
 
@@ -30,6 +31,8 @@ compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, n
 4. **Across string theory's magic square of gravity theories (section 8)** the turn counts the bodies' charges, not
    the algebras: BPS bodies turn n − 1 per lap and neutral ones 2(n − 1), for n = 1 to 4 charges. GR's 6 is the n = 4
    neutral case; N = 8's known zero is the n = 1 BPS case.
+5. **With charges pointing different ways (section 9)** the turn comes only from pairs of the black hole's charges:
+   one charge alone never turns an orbit (exact Kepler, every order), and n − 1 is n(n − 1)/2 pairs added up.
 
 **Does it open a lead?** Yes. For the electric force it turns the Coulomb orbit and Dirac's fine structure into one
 swap-rule area. For gravity the 6 is no longer put in by hand: it is an exact product of the same two twists the
@@ -296,6 +299,42 @@ written down, though they may follow from those papers' formulas.
 not a magic cancellation of N = 8 alone. Worth testing next: two black holes with different charge directions (the
 case Caron-Huot and Zahraee also covered), to see whether the line n − 1 becomes a rule about the angle between charges.
 
+## 9. Misaligned charges: turning comes from pairs of charges
+
+![Pairs of charges](../figures/figD4-turning-comes-from-pairs-of-charges.png)
+
+*Figure D4. A: around a two-charge black hole, the turn for every direction of the visitor's charge. B: the same
+visitor around a one-charge black hole (closes) and a four-charge one (turns). C: the rule, one pair per line.*
+
+Brennan said yes to testing bodies whose charges point in different directions, to see whether n − 1 becomes a rule
+about the angle between them. Setup: N = 8's four-charge black holes (the STU family), checked as exact solutions;
+visitors made of up to four charge pieces, each pointing with or against the black hole's matching charge; all 185
+combinations around 1-, 2-, 3- and 4-charge black holes, then the general rule solved exactly. Checks:
+`../division-algebras/magic/checks_misalign.py`, **6 of 6 pass**.
+
+**The result: n − 1 is not an angle rule; it is a pair rule.**
+
+- **One charge never turns an orbit.** Around a one-charge (half-BPS) black hole, every visitor, whatever its charges
+  point, moves on an exact Kepler ellipse, at every order (X4). This extends two known results: Caron-Huot and Zahraee
+  2018 (half-BPS pairs, any misalignment) and de Neeling, Roest, Seri and Waalkens 2023 (a = √3, all orders).
+- **Each pair of the black hole's charges turns it.** With the black hole's charges kᵢ, the visitor's share wⱼ on
+  charge j, and xⱼ = 2wⱼ for a piece pointing opposite (0 for one pointing the same way):
+  T·K² = 2 Σ over pairs i < j of kᵢkⱼ [xᵢ(1 − wⱼ) + xⱼ(1 − wᵢ) + xᵢxⱼ], with K = Σ kⱼxⱼ (X3). For n equal charges
+  and a visitor exactly opposite, the n(n − 1)/2 pairs add up to n − 1.
+- **Two charges: the angle does not matter.** Around a two-charge black hole, every direction of the visitor's
+  charge that pulls at all gives the same turn, 1 (Fig D4 A).
+- **One-charge visitor against charge j:** T = (sum of the other charges)/kⱼ (X5).
+
+In section 1's picture: with one charge, everything the visitor feels is built from one field (one harmonic function
+H), and the orbit keeps Fock's 3-sphere symmetry exactly. The product of two charges' fields is what breaks it.
+
+**Limits.** Small visitor only (probe limit); visitors are pieces riding together, and pieces pointing opposite ways
+are not stable bound states; charge directions within the four-charge family only, not all 56 of N = 8.
+**Is it new?** The ingredients are known (as above, and section 8). I have not found the pair rule or the angle
+independence at two charges written down. **Does it open a lead?** Yes, a concrete one: it says where the hidden
+symmetry lives (one field keeps Kepler, pairs break it). Next would be two equal masses, using the known first-order
+two-body formulas (Julié 2017; Khalil and others 2018), to see whether the pair rule survives beyond a small visitor.
+
 ## Known vs ours
 
 - **Known:** Fock's 3-sphere and SO(4) (Fock 1935, Pauli 1926, Bargmann 1936), Moser regularization (1970),
@@ -339,7 +378,8 @@ Magic square and supersymmetric black holes (section 8): L. Borsten, M. J. Duff,
 M. Khuri and T. Ortín, arXiv:hep-th/9512177; G. Gibbons and K. Maeda 1988; D. Garfinkle, G. Horowitz, A. Strominger
 1991; S. Caron-Huot and Z. Zahraee, JHEP 07 (2019) 179, arXiv:1810.04694; S. Caron-Huot and J. Henn, PRL 113, 161601
 (2014); W. Goldberger and A. Ridgway 2017, arXiv:1611.03493; F.-L. Julié, arXiv:1711.10769; M. Khalil and others,
-arXiv:1809.03109.
+arXiv:1809.03109. D. de Neeling, D. Roest, M. Seri, H. Waalkens, "Extremal black holes as relativistic
+systems with Kepler dynamics", Regul. Chaotic Dyn. 2024, arXiv:2303.13291 (section 9).
 
 V. Fock, Z. Phys. 98, 145 (1935). W. Pauli, Z. Phys. 36, 336 (1926). V. Bargmann, Z. Phys. 99, 576 (1936).
 J. Moser, Comm. Pure Appl. Math. 23, 609 (1970). W. R. Hamilton, Proc. R. Irish Acad. 3, 344 (1847).

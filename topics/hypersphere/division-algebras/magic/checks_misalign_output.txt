@@ -1,0 +1,7 @@
+PASS X1: four-charge black hole (charges 1, 2, 3, 1/2) satisfies Einstein, scalar and Maxwell equations (worst 0.0e+00)
+PASS X2: n equal charges, visitor exactly opposite: T = n - 1 = 0, 1, 2, 3 again (matches the dilaton black holes of section 8)
+PASS X3: pair rule, exact for any charges and any visitor: T K^2 = 2 sum_{i<j} k_i k_j [x_i(1-w_j) + x_j(1-w_i) + x_i x_j], K = sum k_j x_j, x_j = w_j(1-s_j)
+PASS X4: a one-charge (half-BPS) black hole: for all 80 visitor charge mixes the radial equation is exactly Kepler's (quadratic in 1/r, angular term untouched), so orbits close exactly at every order
+PASS X5: one-charge visitor opposite charge j of a black hole with charges (1, 2, 3, 1/2): T = (other charges)/k_j = 11/2, 9/4, 7/6, 12
+PASS X6: simulated orbits agree with the rule for three mixed cases (worst relative gap 1.4e-04)
+6/6 pass
