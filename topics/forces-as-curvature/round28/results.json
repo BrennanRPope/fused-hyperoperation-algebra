@@ -1,0 +1,46 @@
+{
+ "S1": {
+  "friedmann": {
+   "1": [
+    "0",
+    "0"
+   ],
+   "0": [
+    "0",
+    "0"
+   ],
+   "-1": [
+    "0",
+    "0"
+   ]
+  },
+  "on_hyperboloid": {
+   "1": "0",
+   "0": "0",
+   "-1": "0"
+  }
+ },
+ "S2": {
+  "1": "H**2/cosh(H*t)**2",
+  "0": "0",
+  "-1": "-H**2/sinh(H*t)**2"
+ },
+ "S3": {
+  "k_today": "a0**2*(8*pi*G*rho0 - 3*H0**2 + Lambda)/3",
+  "examples": {
+   "closed": "2",
+   "flat": "0",
+   "open": "-1/4"
+  }
+ },
+ "S4": {
+  "torsion_component": "2*(f - 1)",
+  "law_torsion_zero": true,
+  "cosmic_flat_twist_GeV": 1.5723266932270915e-43,
+  "bound_GeV": 1e-31
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0
+ }
+}
