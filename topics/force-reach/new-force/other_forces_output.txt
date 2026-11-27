@@ -1,0 +1,17 @@
+== K. The other unknown forces, one cell at a time
+PASS  K1 a massive new force (Delta > 0, order off): our law sets its range 2/sqrt(Delta) and its shape (a bump in D_eff), not its strength; at gravity's strength Eot-Wash (2020) needs range below 38.6 um, i.e. a carrier above 5.1 meV   [5.11 meV]
+PASS  K1b where it stands far out (pass 2): about 3e-11 of gravity near the Moon's distance (perigee, 15-60 Earth radii), about 1e-5 for a scalar of unlimited reach (Cassini); our size carrier (strength 1/3, range 3e-32 m) sits 1e27 to the left of every test
+PASS  K1c a second circle's photon is a 'dark photon', and a tilted torus mixes it with ours: the kinetic matrix is the torus metric, so the mixing is eps = cos(angle between the circles); square torus, no mixing   [eps = cos(theta)]
+PASS  K1d after mixing, a copy that only moves round the hidden circle picks up a small charge under ours in proportion to cos(theta) (the inverse metric's off-diagonal; Holdom 1986 for a massless hidden photon): tilt makes 'millicharged' copies   [G^12 = -cos(theta)/(R1*R2*sin(theta)**2)]
+PASS  K2 a long-range non-abelian force exists below the 16.5-flavour line too: from about 8 flavours (two loops, SU(3)) its strength stops running and freezes at a fixed value; for SU(2) from about 5.6 up to 11   [SU(3) window 8.05 to 16.5, SU(2) 5.55 to 11.0]
+PASS  K2b at 16 flavours of SU(3) the frozen strength is alpha* = 4 pi b0/|b1| = 0.042 (Banks-Zaks): set by the particle count alone, with no size and no shape   [alpha* = 0.0416]
+PASS  K2c starting weak (0.01) or strong (0.12) at short distance, the strength flows to the same 0.042 far away: the long-range strength forgets the shape and size of where it started   [0.0412, 0.0416]
+PASS  K2d with the strength frozen there is no length scale, so the force is exactly Coulomb-like, felt only by particles carrying the hidden charge (a 'dark' conformal sector; known: Caswell 1974, Banks-Zaks 1982, Georgi's unparticles 2007)   [beta(alpha*) = 0 exactly]
+PASS  K3 copies of W bosons or gluons on our circle (rungs, order on): at n x 5.2e17 GeV, carrying the colour charge themselves, and they only meet when the rung numbers add up (n1 + n2 = n3, momentum round the circle conserved)
+PASS  K3b where it stands: the LHC rules out Kaluza-Klein gluons below about 3.3 TeV (CMS, 13 TeV, in a warped model); ours sit 1.6e14 times higher   [1.58e+14]
+PASS  K4 the abelian tube: a magnetic flux tube at the self-dual point carries tension exactly pi v^2 per unit of flux (solved numerically; Manton-Sutcliffe units, = 2 pi eta^2 for a canonical field eta), so two charges joined by it feel a constant pull (D_eff = 1)   [tension / (pi v^2) = 1.0000]
+PASS  K4b the fundamental form of this cell is a cosmic string: Planck's CMB limit G mu < 1.3e-7 caps the breaking scale at 1.8e15 GeV; pulsar timing's G mu < 1e-10 (Nambu-Goto loops, weaker with field-theory loops) at 5e13 GeV   [1.76e+15 GeV, 4.87e+13 GeV]
+PASS  K4c a string with the circle's own scale (5.2e17 GeV) would have G mu = 0.011, 1e5 times over the CMB limit; nothing in our law makes one, and inflation would dilute any made before it (stated, not derived)   [G mu = 0.011]
+PASS  K5 a field that varies in space can hide from tests if dense matter makes it heavy (chameleon, Khoury-Weltman 2004); for our size carrier, ordinary density changes its mass-squared by 1 part in 1e86: no hiding, and none needed at its range   [rho/(Mbar^2 m^2) = 1.9e-86]
+
+PART K TOTAL: 14 pass, 0 fail

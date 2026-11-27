@@ -121,4 +121,46 @@ theorem alpha_dip : (-2 : ℝ) * (2 / 3) = -4 / 3 := by norm_num
 /-- The circle's potential tail e^{−√(2/3) σ} has slope parameter (1/2)(2/3) = 1/3. -/
 theorem inflaton_tail_eps : (1 / 2 : ℝ) * (2 / 3) = 1 / 3 := by norm_num
 
+/-! ### Part J: the inverse, and passing for gravity -/
+
+/-- Beyond the size-carrier's range two like copies feel gravity (+1) and the vector (−4): a push of 3. -/
+theorem like_copies_far_repel : (1 : ℝ) + 0 - 4 = -3 := by norm_num
+
+/-- Matter (size charge² 1/3) and a copy (size charge² 3): the cross weight is (1/3)·3 = 1. -/
+theorem matter_copy_size : (1 / 3 : ℝ) * 3 = 1 := by norm_num
+
+/-- At the cap R₂ = R₁³/(4π²) the first circle equals the 6D fundamental length: 4π²R₁R₂ = R₁⁴. -/
+theorem second_circle_cap (R₁ : ℝ) :
+    4 * Real.pi ^ 2 * R₁ * (R₁ ^ 3 / (4 * Real.pi ^ 2)) = R₁ ^ 4 := by
+  have h : (4 * Real.pi ^ 2 : ℝ) ≠ 0 := by positivity
+  field_simp
+  ring
+
+/-- The cap as a ratio of the two circles: R₂/R₁ ≤ R₁²/(4π²). -/
+theorem cap_ratio (R₁ : ℝ) (hR : R₁ ≠ 0) :
+    (R₁ ^ 3 / (4 * Real.pi ^ 2)) / R₁ = R₁ ^ 2 / (4 * Real.pi ^ 2) := by
+  have h : (4 * Real.pi ^ 2 : ℝ) ≠ 0 := by positivity
+  field_simp
+  ring
+
+/-- A 1/3 force on matter but not light: light bends by (1 + γ)/2 = 3/4 of the expected amount. -/
+theorem light_bends_three_quarters :
+    (1 / 2 : ℝ) * (1 + (1 - 1 / 3) / (1 + 1 / 3)) = 3 / 4 := by norm_num
+
+/-! ### Part K: the other unknown forces -/
+
+/-- SU(3) with 16 flavours: b₀ = 11 − 32/3 = 1/3, still asymptotically free. -/
+theorem bz_b0_sixteen : (11 * 3 / 3 : ℝ) - 2 * 16 / 3 = 1 / 3 := by norm_num
+
+/-- SU(3) with 16 flavours: b₁ = 102 − 38·16/3 = −302/3 < 0, so a fixed point exists. -/
+theorem bz_b1_sixteen : (102 : ℝ) - 38 * 16 / 3 = -302 / 3 := by norm_num
+
+/-- The frozen strength: α* = −4π b₀/b₁ = 4π/302 at 16 flavours. -/
+theorem bz_alpha_sixteen : -4 * Real.pi * (1 / 3) / (-302 / 3 : ℝ) = 4 * Real.pi / 302 := by
+  field_simp
+  ring
+
+/-- A square torus does not mix the two photons: ε = cos(π/2) = 0. -/
+theorem square_torus_no_mixing : Real.cos (Real.pi / 2) = 0 := Real.cos_pi_div_two
+
 end FusedAlgebra.Topics.NewForce

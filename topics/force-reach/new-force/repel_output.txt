@@ -1,0 +1,20 @@
+== J. The inverse: a weak, long-range repulsion? And could it pass for gravity?
+PASS  J1 sign by spin: for two like copies the spin-2 (gravity) and spin-0 (size) pieces pull, +1 and +3; the spin-1 piece pushes, -4. Only a spin-1 carrier can repel like things   [tensor +1, scalar 3, vector -4]
+PASS  J2 the circle's pieces grab different 'materials': matter-matter feels size 1/3, no vector; matter-copy size 1, no vector; copy-copy size 3, vector -4 (like charges)   [matter-matter [1, 1/3, 0], matter-copy [1, 1, 0], copy-copy [1, 3, -4]]
+PASS  J3 so the 'inverse' is already in the circle: beyond the size-carrier's range (2000 l_P) like copies push apart at 3 x their gravity with unlimited range; inside it they feel nothing (1 + 3 - 4 = 0). For our circle that push is electromagnetism   [far: like -3, opposite +5; alpha/(G M1^2) = 4.000]
+PASS  J4 a second circle gives a second spin-1 force by the same rule, alpha2 = 4 G / R2^2: a bigger circle means a weaker force, unlimited range, felt only by that circle's own copies; their charge-to-mass ratio is 4 at every size
+PASS  J4b the hand estimate from the last reply: a 50 um circle gives alpha2 = 4.2e-61, 1.4e22 times weaker than gravity between two protons (this ignores J5)   [alpha2 4.18e-61, proton gravity 5.91e-39]
+PASS  J5 the one-circle reading is self-consistent: the 5D fundamental length is 5.3 l_P, below the circle's 23.4 l_P   [l5 = 5.28 l_P]
+PASS  J5b with a second circle the fundamental length grows, l6 = (4 pi^2 R1 R2)^(1/4); keeping the first circle above it caps the second at R1^3/(4 pi^2) = 325 l_P (and above 9.7 l_P)   [9.74 l_P < R2 < 325.1 l_P]
+PASS  J5c so the weakest second force our law allows is alpha2 = 1/26,400, about 190 times weaker than electromagnetism, not 1e-61; its lightest copy weighs 3.8e16 GeV   [1/alpha2 from 23.7 to 26418; EM/alpha2_min = 193; copy 3.76e+16 GeV]
+PASS  J5d a 50 um circle would push the fundamental length to 2.3e8 l_P, ten million times the electric circle: the first circle could not be a circle at all   [l6 = 2.31e+08 l_P vs R1 = 23.4]
+PASS  J6 same cap written as a ratio: the second circle can be at most R1^2/(4 pi^2) = 13.9 times the electric circle; a strong electric force forbids a big hidden circle   [R2/R1 <= 13.88]
+PASS  J7 the cosmic version: a circle of about 9 um with two more fermions than bosons running round it would leave exactly the observed dark energy, (2.24 meV)^4, with the right sign (known: the 'dark dimension', Montero-Vafa-Valenzuela 2022)   [R = 8.8 um, rho^(1/4) = 2.24 meV]
+PASS  J7b it passes gravity tests (Yukawa range below 38.6 um, Lee et al 2020) but our law forbids it alongside an electric circle: 1.7e27 times over the J5 cap   [1.7e+27 x the cap]
+PASS  J8 the same hold formula reproduces part I's carrier for the electric circle (6.15e15 GeV); for a 9 um circle it gives 1e-32 eV, a few times the Hubble rate, reaching 1.7e25 m   [1.1e-32 eV = 7.9 H0, range 1.7e+25 m]
+PASS  J8b a 1/3-gravity force reaching that far makes light bend with gamma = 1/2 in the solar system, which Cassini excludes by 21,740 standard errors: a big circle also needs a much firmer hold (known: Arkani-Hamed, Dimopoulos, March-Russell 1999)
+PASS  J9 to hide inside gravity a force must grab light and matter in the same ratio as gravity does; ours grabs matter (1/3) but not light, so light bends by (1 + gamma)/2 = 3/4 of the expected amount
+PASS  J10 different materials (rough): titanium and platinum carry 2e-3 and 4e-3 of their mass as electric energy, so a long-range size force would make them fall differently by about 7e-4; MICROSCOPE finds below about 4e-15 (2022)   [f_Ti 2.0e-03, f_Pt 4.0e-03, eta ~ 7e-04, 2e+11 x the limit]
+PASS  J10b what does pass both tests is a long-range force on a different material that ordinary matter does not carry at all, like a second circle's force on its own copies (J2: matter feels no vector); in our law those copies are 3.8e16 GeV or heavier, above the most energy the early universe could have had (part I: inflation's scale below 1.4e16 GeV), so few if any were made (rough)   [copy 3.8e+16 GeV > 1.4e+16 GeV]
+
+PART J TOTAL: 17 pass, 0 fail

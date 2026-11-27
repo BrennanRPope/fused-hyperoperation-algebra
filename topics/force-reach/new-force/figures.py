@@ -1,5 +1,7 @@
 import math, json
 import numpy as np, matplotlib
+import matplotlib.patches
+from scipy.integrate import solve_ivp
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
@@ -15,7 +17,7 @@ rows = ["unlimited reach\n(Δ = 0, massless)", "screened\n(Δ > 0, massive carri
 cols = ["order off (abelian:\ncarriers don't carry the charge)", "order on (non-abelian:\ncarriers carry the charge)"]
 cells = {
     (0, 0): ("known", "light (electromagnetism)\n\n(gravity also has unlimited reach, but it is\nspin 2 and self-coupled: it sits outside\nthis two-column split)"),
-    (0, 1): ("open", "EMPTY: a long-range non-abelian force.\nOnly stays long-range with many matter\nfields (SU(3): 17+ flavours); otherwise\nit confines. Searched as 'dark QCD'."),
+    (0, 1): ("open", "EMPTY: a long-range non-abelian force.\nStays long-range only with many matter\nfields (SU(3): about 8+ flavours, frozen\nstrength; 17+, free); otherwise it confines."),
     (1, 0): ("open", "EMPTY among fundamental forces\n(pion exchange sits here, but it comes\nfrom the strong force). Searched as\nfifth forces, dark photon, Z'."),
     (1, 1): ("known", "weak force (W, Z)"),
     (2, 0): ("open", "EMPTY: evenly spaced heavier copies of\nlight or gravity = one hidden extra\ndirection (Kaluza–Klein). Searched in\nshort-range gravity tests."),
@@ -355,3 +357,151 @@ ax.legend(fontsize=8.5, loc="upper right")
 ax.set_title("C. The circle's size can't be the inflaton: its potential\nis too steep everywhere along the tail (I10)", fontsize=10.5)
 fig.suptitle("h11. Indirect traces: black holes, the early universe and inflation", fontsize=12)
 fig.tight_layout(); fig.savefig("figures/h11_indirect_traces.png", dpi=150); plt.close(fig)
+
+# ---------------- h12: the inverse (part J) ----------------
+rj = json.load(open("results.json"))
+fig, axs = plt.subplots(2, 2, figsize=(13.5, 10))
+ax = axs[0, 0]
+pairs = [("matter + matter", [1, 1/3, 0]), ("matter + copy", [1, 1, 0]), ("copy + copy\n(like charges)", [1, 3, -4])]
+w = 0.25; cols_ = ["#1f77b4", "#2ca02c", "#d62728"]; labs_ = ["gravity (spin 2)", "circle's size (spin 0)", "circle's vector (spin 1)"]
+for i, (nm, v) in enumerate(pairs):
+    for k in range(3):
+        ax.bar(i + (k - 1)*w, v[k], w, color=cols_[k], label=labs_[k] if i == 0 else None)
+        if v[k] != 0:
+            ax.text(i + (k - 1)*w, v[k] + (0.12 if v[k] > 0 else -0.35), f"{v[k]:+.2g}" if k != 1 or i else "+1/3", ha="center", fontsize=9)
+ax.axhline(0, color="k", lw=0.8)
+ax.set_xticks(range(3)); ax.set_xticklabels([p[0] for p in pairs])
+ax.set_ylabel("strength, in units of the pair's gravity\n(+ pulls together, − pushes apart)"); ax.set_ylim(-5, 4.2)
+ax.legend(fontsize=9, loc="lower left")
+ax.set_title("A. Only the spin-1 piece pushes, and only copies carry it.\nOrdinary matter never feels a push from the circle (J1, J2)", fontsize=10.5)
+ax = axs[0, 1]
+lam_ = float(rj["H_range_lP_NF2"]); rr = np.logspace(1.3, 5, 400)
+ax.plot(rr, 1 + 3*np.exp(-rr/lam_) - 4, color="#d62728", lw=2.5, label="two like copies: 1 + 3e^(−r/λ) − 4")
+ax.plot(rr, 1 + (1/3)*np.exp(-rr/lam_), color="#1f77b4", lw=2.5, label="two lumps of matter: 1 + (1/3)e^(−r/λ)")
+ax.axhline(0, color="k", lw=0.8); ax.axvline(lam_, color="gray", ls=":")
+ax.text(lam_*1.1, 0.6, "size carrier's range λ ≈ 2000 l_P", fontsize=9, color="gray")
+ax.text(25, -2.0, "beyond λ: a push of 3 × gravity,\nwith no end to its reach\n(this is electromagnetism\nfor our circle's copies)", fontsize=9, color="#d62728", va="top")
+ax.set_xscale("log"); ax.set_ylim(-3.6, 2.0)
+ax.set_xlabel("distance r (Planck lengths; the tower of rungs near the circle size is left out)"); ax.set_ylabel("net force / gravity")
+ax.legend(fontsize=9, loc="upper right")
+ax.set_title("B. The 'inverse' is already in the circle: a short-range pull\nand an unlimited-range push, from the same circle (J3)", fontsize=10.5)
+ax = axs[1, 0]
+R2 = np.logspace(0, 31, 400)
+ax.plot(R2, 4/R2**2, color="k", lw=2, label="coupling rule α2 = 4G/R2²")
+lo, hi = float(rj["J_R2_min_lP"]), float(rj["J_R2_max_lP"])
+ax.axvspan(lo, hi, color="#2ca02c", alpha=0.2, label=f"allowed with an electric circle: {lo:.1f} to {hi:.0f} l_P")
+ax.axvspan(hi, 1e31, color="#d62728", alpha=0.08)
+ax.text(1e11, 1e-15, "forbidden: the electric circle would be\nsmaller than the fundamental length (J5)", fontsize=9, color="#d62728")
+R1_ = float(rj["G_circle_radius_lP"])
+ax.plot([R1_], [1/137.036], "o", color="#1f77b4", ms=8); ax.annotate("our electric circle, α = 1/137", (R1_, 1/137.036), xytext=(1e5, 1e-2), fontsize=9, arrowprops=dict(arrowstyle="->", color="#1f77b4"), color="#1f77b4")
+ax.plot([hi], [4/hi**2], "o", color="#2ca02c", ms=8); ax.annotate("weakest allowed: α2 = 1/26,400", (hi, 4/hi**2), xytext=(1e5, 1e-7), fontsize=9, arrowprops=dict(arrowstyle="->", color="#2ca02c"), color="#2ca02c")
+R50_ = 50e-6/1.616255e-35; Rde_ = float(rj["J_R_dark_energy_m"])/1.616255e-35
+ax.plot([R50_], [4/R50_**2], "s", color="#d62728", ms=7); ax.annotate("50 µm: my first hand estimate, 1e-61", (R50_, 4/R50_**2), xytext=(1e12, 1e-52), fontsize=9, arrowprops=dict(arrowstyle="->", color="#d62728"), color="#d62728")
+ax.plot([Rde_], [4/Rde_**2], "^", color="#9467bd", ms=8); ax.annotate("9 µm: dark energy size (J7)", (Rde_, 4/Rde_**2), xytext=(1e12, 1e-42), fontsize=9, arrowprops=dict(arrowstyle="->", color="#9467bd"), color="#9467bd")
+ax.axvline(38.6e-6/1.616255e-35, color="gray", ls="--"); ax.text(38.6e-6/1.616255e-35/2, 1e-28, "gravity tests:\nbelow 38.6 µm", fontsize=8.5, color="gray", ha="right")
+ax.set_xscale("log"); ax.set_yscale("log"); ax.set_ylim(1e-63, 10); ax.set_xlim(1, 1e31)
+ax.set_xlabel("second circle's radius R2 (Planck lengths)"); ax.set_ylabel("strength of its push α2")
+ax.legend(fontsize=8.5, loc="lower left")
+ax.set_title("C. A second circle: bigger means weaker, but our law caps it\nat 14 × the electric circle, so the weakest push is 1/26,400 (J4-J6)", fontsize=10.5)
+ax = axs[1, 1]
+Rm = np.logspace(-35, -2, 400)
+c5_ = 3*1.0369277551433699/(64*math.pi**6)
+ax.plot(Rm, (2*c5_)**0.25*1.973269804e-7/Rm, color="#9467bd", lw=2.5, label="a circle's vacuum energy, (energy density)^(1/4),\ntwo more fermions than bosons")
+ax.axhline(float(rj["J_rhoL_quarter_meV"])*1e-3, color="k", ls="--", label="observed dark energy, 2.24 meV")
+ax.axvspan(hi*1.616255e-35, 1e-2, color="#d62728", alpha=0.08)
+ax.plot([Rde_*1.616255e-35], [float(rj["J_rhoL_quarter_meV"])*1e-3], "^", color="#9467bd", ms=9)
+ax.annotate("crosses at 8.8 µm\n(the known 'dark dimension')", (Rde_*1.616255e-35, 2.24e-3), xytext=(1e-17, 3e-6), fontsize=9, arrowprops=dict(arrowstyle="->"))
+ax.plot([R1_*1.616255e-35], [(2*c5_)**0.25*1.973269804e-7/(R1_*1.616255e-35)], "o", color="#1f77b4", ms=8)
+ax.annotate("our electric circle", (R1_*1.616255e-35, (2*c5_)**0.25*1.973269804e-7/(R1_*1.616255e-35)), xytext=(1e-29, 1e26), fontsize=9, color="#1f77b4", arrowprops=dict(arrowstyle="->", color="#1f77b4"))
+ax.text(1e-35, 1e1, "red: sizes our law forbids for a\nsecond circle (everything above 5e-33 m)", fontsize=9, color="#d62728")
+ax.set_xscale("log"); ax.set_yscale("log"); ax.set_ylim(1e-6, 1e28)
+ax.set_xlabel("circle radius (m)"); ax.set_ylabel("energy scale (eV)")
+ax.legend(fontsize=8.5, loc="upper right")
+ax.set_title("D. The cosmic push: a 9 µm circle would give dark energy's size,\nbut our law can't hold one next to the electric circle (J7)", fontsize=10.5)
+fig.suptitle("h12. Could the new force be the inverse, a very weak, very long-range push?", fontsize=12)
+fig.tight_layout(); fig.savefig("figures/h12_the_inverse.png", dpi=150); plt.close(fig)
+
+# ---------------- h13: the other unknown forces (part K)
+rk = json.load(open("results.json"))
+fig, axs = plt.subplots(2, 3, figsize=(17.5, 10.5))
+ax = axs[0, 0]
+r_ = np.logspace(-1.3, 1.7, 400)
+ax.plot(r_, np.ones_like(r_), color="k", lw=2, label="light: unlimited reach (known)")
+ax.plot(r_, (1 + r_)*np.exp(-r_), color="#ff7f0e", lw=2, label="massive new force: dies past its range")
+ax.plot(r_, 1/np.tanh(r_/2) + (r_/2)/np.sinh(r_/2)**2, color="#2ca02c", lw=2, label="copies (rungs): stronger inside the circle")
+ax.plot(r_, np.ones_like(r_)*1.0, color="#9467bd", lw=2, ls="--", label="long-range non-abelian, frozen strength:\nCoulomb-like at every distance")
+ax.plot(r_, 0.1*r_**2, color="#8c564b", lw=2, label="tube: constant pull, never lets go")
+ax.set_xscale("log"); ax.set_yscale("log"); ax.set_ylim(1e-3, 1e3)
+ax.set_xlabel("distance (in units of the force's own length: range, circle size or tube width)")
+ax.set_ylabel("force × distance², relative to plain 1/r²")
+ax.legend(fontsize=8, loc="upper left")
+ax.set_title("A. How each unknown force falls off with distance", fontsize=10.5)
+ax = axs[0, 1]
+ax.plot([3.2e-32], [1/3], "o", color="#d62728", ms=9); ax.annotate("our size carrier\n(strength 1/3, range 3e-32 m)", (3.2e-32, 1/3), xytext=(1e-30, 1e-6), fontsize=9, color="#d62728", arrowprops=dict(arrowstyle="->", color="#d62728"))
+ax.fill_between([38.6e-6, 1e12], [1, 1], [1e3, 1e3], color="gray", alpha=0.25)
+ax.plot([38.6e-6], [1], "s", color="k"); ax.text(38.6e-6, 3, "Eöt-Wash 2020: at strength 1,\nrange must be below 38.6 µm", fontsize=8.5, ha="center")
+lm = rk["K_lambda_moon_m"]; ax.fill_between(lm, [3e-11]*2, [1e3]*2, color="#1f77b4", alpha=0.3)
+ax.text(lm[0], 1e-12, "Moon's perigee:\nbelow 3e-11", fontsize=8.5, color="#1f77b4", ha="center")
+ax.fill_between([1.5e11, 1e13], [rk["K_alpha_cassini_longrange"]]*2, [1e3]*2, color="#2ca02c", alpha=0.3)
+ax.text(1.5e11, 2e-6, "Cassini: a scalar reaching\nbeyond the Sun, below 1e-5", fontsize=8.5, color="#2ca02c", ha="right")
+ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlim(1e-35, 1e13); ax.set_ylim(1e-14, 1e3)
+ax.set_xlabel("range λ (m)"); ax.set_ylabel("strength α, relative to gravity")
+ax.set_title("B. A massive new force: our law sets the range, not the strength.\nShaded: ruled out (three anchors from pass 2, not full curves) (K1)", fontsize=10.5)
+ax = axs[0, 2]
+for N, c_, AF in [(3, "#d62728", 16.5), (2, "#1f77b4", 11.0)]:
+    lo_e = float(rk["K_BZ_edge_SU3"] if N == 3 else rk["K_BZ_edge_SU2"])
+    nf = np.linspace(lo_e + 0.02, AF - 1e-3, 300)
+    b0 = 11*N/3 - 2*nf/3; b1 = 34*N**2/3 - nf*(10*N/3 + (N**2 - 1)/N)
+    ax.plot(nf, -4*np.pi*b0/b1, color=c_, lw=2.5, label=f"SU({N}): frozen strength α*, {lo_e:.1f} to {AF:g} flavours")
+ax.plot([16], [rk["K_BZ_alpha_SU3_16"]], "o", color="#d62728"); ax.annotate("16 flavours: α* = 0.042\n(Banks–Zaks)", (16, rk["K_BZ_alpha_SU3_16"]), xytext=(12.0, 4e-3), fontsize=9, arrowprops=dict(arrowstyle="->"))
+ax.text(0.4, 0.03, "left of each curve:\nthe force confines\n(tube cell, like the\nstrong force)", fontsize=8.5, color="#8c564b")
+ax.axhspan(0.3, 1, color="gray", alpha=0.12); ax.text(0.3, 0.5, "above about 0.3 two loops can't be trusted", fontsize=8, color="gray")
+ax.set_yscale("log"); ax.set_ylim(1e-3, 1); ax.set_xlim(0, 18)
+ax.set_xlabel("number of matter flavours (the 'material')"); ax.set_ylabel("long-range strength α*")
+ax.legend(fontsize=8.5, loc="lower left")
+ax.set_title("C. A long-range non-abelian force: in this window the material alone\nsets the strength, forgetting size and shape (two loops; K2)", fontsize=10.5)
+ax = axs[1, 0]
+def vtx(c, rmax=8.0):
+    rhs = lambda r, s: [(1 - s[1])*s[0]/r, r*(1 - s[0]**2)/2]
+    return solve_ivp(rhs, [1e-4, rmax], [c*1e-4, 1e-8/4], rtol=1e-11, atol=1e-13, dense_output=True)
+lo, hi = 0.1, 2.0
+for _ in range(80):
+    c = 0.5*(lo + hi); s_ = vtx(c, 12.0)
+    if s_.status != 0 or np.max(s_.y[0]) > 1: hi = c
+    else: lo = c
+s_ = vtx(0.5*(lo + hi)); rv = np.linspace(1e-3, 7, 300); fv, av = s_.sol(rv)
+ax.plot(rv, fv, color="#1f77b4", lw=2.5, label="field strength |φ|/v (zero at the core)")
+ax.plot(rv, av, color="#2ca02c", lw=2.5, label="enclosed flux / one flux unit")
+ax.plot(rv, (1 - fv**2)/2/0.5, color="#d62728", lw=2.5, label="magnetic field (relative to centre)")
+ax.text(3.0, 0.2, f"tension = π v² per flux unit\n(solved: {rk['K_vortex_tension_over_pi']:.4f} × π v²)", fontsize=9.5)
+ax.set_xlabel("distance from the tube's axis (in units of 1/(e v))"); ax.set_ylim(0, 1.1)
+ax.legend(fontsize=8.5, loc="center right", bbox_to_anchor=(1, 0.55))
+ax.set_title("D. The abelian tube: a flux tube with a fixed tension per length.\nIts fundamental form is a cosmic string (K4)", fontsize=10.5)
+ax = axs[1, 1]
+lev = [(1.4e4, "LHC collision energy", "k"), (3.3e3, "Kaluza–Klein gluons ruled out below\n3.3 TeV (CMS, warped model)", "k"),
+       (rk["K_string_eta_max_GeV_CMB"], "cosmic strings: breaking scale\nbelow 1.8e15 GeV (CMB)", "#8c564b"),
+       (rk["K_string_eta_max_GeV_PTA"], "below 5e13 GeV (pulsar timing,\nNambu–Goto loops)", "#8c564b"),
+       (rk["K_KKgluon_GeV"], "first copy of W or gluon on our circle", "#d62728"), (2*rk["K_KKgluon_GeV"], "second copy", "#d62728"), (1.22e19, "Planck energy", "k")]
+for v, lab_, c_ in lev:
+    ax.plot([0], [math.log10(v)], "o", color=c_, ms=7)
+order = sorted(lev, key=lambda t: t[0]); ys = {}
+yl = [3.0, 4.8, 13.2, 15.2, 17.2, 18.1, 19.2]
+for (v, lab_, c_), yy in zip(order, yl):
+    ax.plot([0.02, 0.22], [math.log10(v), yy], color="gray", lw=0.7)
+    ax.text(0.25, yy, lab_, fontsize=8.5, va="center", color=c_)
+ax.axvline(0, color="gray"); ax.set_xlim(-0.2, 1.7); ax.set_ylim(1.8, 20); ax.set_xticks([])
+ax.set_ylabel("energy (log10 GeV)")
+ax.set_title("E. Copies of W or gluons, and cosmic strings, against\nwhere experiments reach (K3, K4)", fontsize=10.5)
+ax = axs[1, 2]
+th_ = np.linspace(0.05, np.pi/2, 200)
+ax.plot(np.degrees(th_), np.cos(th_), color="#9467bd", lw=2.5, label="mixing between our photon and the\nhidden circle's photon, ε = cos θ")
+ins = ax.inset_axes([0.5, 0.45, 0.45, 0.45])
+t0 = np.radians(60); ins.add_patch(matplotlib.patches.Polygon([[0, 0], [1, 0], [1 + 0.6*math.cos(t0), 0.6*math.sin(t0)], [0.6*math.cos(t0), 0.6*math.sin(t0)]], closed=True, fill=False, lw=2))
+ins.annotate("", (1, 0), (0, 0), arrowprops=dict(arrowstyle="->", color="#1f77b4", lw=2)); ins.text(0.45, -0.12, "our circle", fontsize=8, color="#1f77b4")
+ins.annotate("", (0.6*math.cos(t0), 0.6*math.sin(t0)), (0, 0), arrowprops=dict(arrowstyle="->", color="#d62728", lw=2)); ins.text(-0.12, 0.45, "hidden\ncircle", fontsize=8, color="#d62728", ha="right")
+ins.text(0.18, 0.08, "θ", fontsize=10); ins.set_xlim(-0.6, 1.5); ins.set_ylim(-0.25, 0.7); ins.axis("off")
+ax.set_xlabel("angle θ between the two circles (degrees)"); ax.set_ylabel("mixing ε")
+ax.legend(fontsize=8.5, loc="lower left")
+ax.set_title("F. A tilted torus: the hidden circle's photon mixes with ours,\ngiving its copies a small electric charge (K1c, K1d)", fontsize=10.5)
+fig.suptitle("h13. The other unknown forces on the map, one cell at a time", fontsize=12.5)
+fig.tight_layout(); fig.savefig("figures/h13_other_unknown_forces.png", dpi=150); plt.close(fig)

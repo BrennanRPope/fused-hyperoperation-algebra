@@ -54,4 +54,23 @@ itests = {
 }
 for nm, e in itests.items():
     g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
+
+R1s = sp.symbols('R1', positive=True)
+jtests = {
+    'like_copies_far_repel': 1 + 0 - 4 + 3,
+    'matter_copy_size': R(1, 3)*3 - 1,
+    'second_circle_cap': 4*sp.pi**2*R1s*(R1s**3/(4*sp.pi**2)) - R1s**4,
+    'cap_ratio': (R1s**3/(4*sp.pi**2))/R1s - R1s**2/(4*sp.pi**2),
+    'light_bends_three_quarters': R(1, 2)*(1 + (1 - R(1, 3))/(1 + R(1, 3))) - R(3, 4),
+}
+for nm, e in jtests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
+ktests = {
+    'bz_b0_sixteen': R(33, 3) - R(32, 3) - R(1, 3),
+    'bz_b1_sixteen': 102 - R(38*16, 3) + R(302, 3),
+    'bz_alpha_sixteen': -4*sp.pi*R(1, 3)/R(-302, 3) - 4*sp.pi/302,
+    'square_torus_no_mixing': sp.cos(sp.pi/2),
+}
+for nm, e in ktests.items():
+    g = sp.simplify(e) == 0; ok &= g; print(('PASS ' if g else 'FAIL ') + nm)
 print('ALL PASS' if ok else 'SOME FAIL')
