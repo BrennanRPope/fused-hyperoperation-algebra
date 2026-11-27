@@ -85,7 +85,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,633 theorems, 164 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,656 theorems, 165 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
@@ -136,6 +136,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | The repetition dial: copies per element fall out of k (1/k cells); crowding between elements stays outside | `topics/repetition-dial/` | — |
 | The zoom dial: size as one new input; dimension comes out at the wall (Moran's equation) | `topics/zoom-dial/` | — |
 | Composition, order and the collection laws: the circle operation as stretches about one centre, order cost as a wedge, the route to quantum, no functor half power set | `topics/order-dial/` | — |
+| DRAFT: chaos as repeated self-composition: dynamical systems as functors, order invisible to iteration but needed for entropy, centre patterns and trace monoids, streams and Pollard rho. 47 checks. | `topics/chaos-composition/` | `Topics/ChaosComposition` |
 | Why quantum needs i: the twist fixes i's sign; path integrals as the weighted circle chain at an imaginary dial | `topics/why-i/` | — |
 | Path integrals in a stronger sense: the three published pieces that make the chain a real path integral | `topics/why-i/path-integral-strong/` | — |
 | Feynman's checkerboard and Kac's telegraph as one weighted circle chain (k = −i and k = −1) | `topics/why-i/checkerboard/` | — |

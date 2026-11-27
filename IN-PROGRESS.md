@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,633 theorems in 164 modules, Nov 27 ~00:30 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,656 theorems in 165 modules, Nov 27 ~00:45 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -53,3 +53,5 @@ Nov 26 (late): shape-dial survey section N3, even roundness from Pólya's end (D
 Nov 27: `topics/hypersphere/` cleaned up under Affine Composition Theory (DRAFT; README and orbits README restructured; checks 57, 23, 11, 8 and 11 rerun and passing; fig2 and fig8 renamed). Its Lean file came back with `decide` on 14 Rat facts and a local ◯ notation that clashes with Base; those were put back to the library's compiling proofs and notation, with no statement changed, and `Topics/Hypersphere` recompiles (33 theorems).
 
 Nov 27: `topics/elliptic-modulus/` section 7, the pendulum picture (DRAFT; `pendulum/pendulum_checks.py` 12 of 12, in CI's extra checks; figs 6–8); `EllipticPendulum` compiled into the library, all 7 theorems, no proof changed. The shared copy's README had older wording (mult-add, pre-library compile notes); the repo's newer wording was kept and the shared copy's older `lean/EllipticModulus.lean` was not taken.
+
+Nov 27: `topics/chaos-composition/` added as DRAFT (chaos as repeated self-composition, category-theory frame; 47 checks); `ChaosComposition` compiled into the library, all 23 theorems, no proof changed. Applied from the order-dial thread's patch on 592f0d6; its build.sh, import and generated-table hunks were redone on current main.

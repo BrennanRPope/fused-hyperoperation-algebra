@@ -537,6 +537,29 @@ FusedAlgebra.Topics.CategoryTheory	CategoryTheory.toPair_natural
 FusedAlgebra.Topics.CategoryTheory	CategoryTheory.toPair_ofPair	
 FusedAlgebra.Topics.CategoryTheory	CategoryTheory.torus_cells	
 FusedAlgebra.Topics.CategoryTheory	CategoryTheory.wedge_smash	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.affine_centre_transfer	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.affine_orders	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.dial_iter_units	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.doubling_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.iter_add	
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.iter_msq_ne_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.iter_semiconj	
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.iter_slope	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.iter_succ'	
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.logistic_iter_fold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.msq_ne_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.order_invisible	
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.order_is_a_shift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.order_periodic	
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.order_periodic_back	
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.periodic_semiconj	
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.quadratic_lift	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.runB_affine	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.runB_free	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.runT_count	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.runT_perm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.stretchRun_eq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.ChaosComposition	CircleOp.ChaosComposition.stretchRun_perm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Checkerboard	Checkerboard.circ_chain	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Checkerboard	Checkerboard.circ_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Checkerboard	Checkerboard.counts_five	propext, Classical.choice, Quot.sound

@@ -248,6 +248,21 @@ bound, algebraic cycles or elliptic curves. The nearest brushes, each judged and
 studied for their own sake (Wiman), not as a model of ξ; the Euler characteristic (L9) is an alternating sum of Betti
 numbers, far too coarse to say which cohomology classes are algebraic (Hodge). **No lead on any of them.**
 
+## 9. One lever from the chaos work (Nov 27)
+
+**L11. Entropy of affine branches from their shared centres** ([chaos-composition](../chaos-composition/README.md) §6).
+Affine maps commute exactly when they share a centre, so a family of branches is a trace monoid (Cartier–Foata), and its
+entropy is log of 1 over the smallest root of 1 + Σ[(1 − t)^m − 1], one term per centre class. Not found in print as an
+affine statement in three searches; a few lines from Cartier–Foata, so likely folklore.
+
+- **Quantum gravity.** The natural conduit is counting histories up to reordering of independent events: a trace is a
+  causal order (Viennot's heaps of pieces are posets, as causal sets are). That conduit is already in use: heaps of
+  pieces solve two-dimensional Lorentzian (causal) dynamical triangulations (Di Francesco, Guitter and Kristjansen,
+  Nucl. Phys. B 567, 2000; cited from memory, not re-read). The affine statement adds only a way to realise a given
+  commutation pattern by maps, which says nothing about spacetime. **No lead.**
+- **Millennium problems.** None touches entropy of branch monoids. The nearest is P vs NP through counting (trace
+  monoids are easy to count), which goes the wrong way for a hardness result. **No lead.**
+
 ## The polishing step
 
 Three roots are recomputed with mpmath at 30 digits (checks P1–P3): √6 − 3, (√5 − 3)/2 = −1/φ², and the five-region
@@ -285,3 +300,4 @@ quantum root −0.3538307955298137265. Cost under a second.
 | Draws until Σ xᵖ passes 1 | Known problem; closed form elementary | Newman and Klamkin 1959; checks S5–S6 |
 | k = −1/χ and restricting as conditioning | Known facts, our reading | Schanuel 1991; Propp 2003 |
 | Least negative size (S − 2)/4 to reach CHSH value S | Known | Morris et al. PRA 105, 032202 (2022); arXiv:2106.07945; check S7 |
+| L11: entropy of affine branches from shared centres (trace monoid) | **Not found in print**; corollary of Cartier–Foata; no lever | `chaos-composition/` checks F'1–F'4 |
