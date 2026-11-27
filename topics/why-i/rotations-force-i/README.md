@@ -6,7 +6,7 @@ Asked by Brennan (Nov 26): "I really want to prove quantum mechanics requires co
 
 Method: published work first. Anything not found in the sources is labeled *ours*.
 
-Checks: `checks.py`, 29/29 pass (`checks_output.txt`). Figures: `figures.py` writes `figures/r1`–`r6`.
+Checks: `checks.py`, 31/31 pass (`checks_output.txt`). Figures: `figures.py` writes `figures/r1`–`r6`.
 
 ---
 
@@ -161,7 +161,7 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 
 ## Checks
 
-`python3 checks.py` gives 29/29 PASS (sympy and numpy):
+`python3 checks.py` gives 31/31 PASS (sympy and numpy):
 
 - Q0: complex QM satisfies A1–A4.
 - T1, T1b: odd dimension; turning planes.
@@ -179,6 +179,7 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 - C3, C3b, T5: quaternions (variant and genuine); complex Hermitian count.
 - T6, C4: composites and local tomography.
 - T6b: the shift rule A4 follows from composites.
+- T6c: in the composite rule (C), independence of non-interacting parts does the work: J|H|/ħ meets everything else and still breaks A4. Faithfulness means composition excludes no state of a part.
 - T7: the dial chain.
 - R1–R5: the three recent real formulations tested against every assumption (§6), and why A4 has content.
 

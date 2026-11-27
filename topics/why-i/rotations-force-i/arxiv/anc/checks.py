@@ -495,4 +495,92 @@ check("T9 (A5) is independent: with A(H) = JH, superselection and quaternionic o
       "span{1, gamma_1..gamma_7} on C^8 is Jordan-closed and passes (T) with 8 observables instead of 64; only locally "
       "tomographic composites with Jordan-closed joint observables exclude it", ok)
 
+# ---------- 10. What (C) asks: independence does the work, faithfulness = no local state excluded ----------
+ok = True
+nA, nB = 4, 4
+JA, JB = Jstd(2), Jstd(2)
+K = np.kron(JA, JB); wv, wV = np.linalg.eigh(K); Wb = wV[:, wv < 0]               # balanced product: J_A x J_B = -1
+def absH(Hm):                                                                     # |H| through the spectral decomposition
+    w_, V_ = np.linalg.eigh(Hm); return V_ @ np.diag(np.abs(w_)) @ V_.T
+HA = realify(herm_eigs([-1.0, 2.0])); HB = realify(herm_eigs([-0.5, 0.3]))
+polA = lambda Hm: JA @ absH(Hm)/hbar                                              # the rule A(H) = J|H|/hbar
+ok &= np.allclose(polA(HA).T, -polA(HA)) and np.allclose(polA(HA) @ polA(HA), -HA @ HA/hbar**2)   # A1, A3
+ok &= not np.allclose(polA(HA + 1.5*np.eye(4)), polA(HA) + 1.5*JA/hbar)          # but not A4
+Hj = np.kron(HA, np.eye(4)) + np.kron(np.eye(4), HB)
+Jw = np.kron(JA, np.eye(4))
+Gj = Jw @ absH(Hj)/hbar                                                           # joint rule, a function of the joint H alone
+Pw = Wb @ Wb.T
+ok &= np.allclose(Pw @ Gj @ Pw, Gj @ Pw)                                          # it keeps W
+ok &= np.allclose((Gj @ Gj) @ Wb, -(Hj @ Hj) @ Wb/hbar**2)                       # A3 for the joint system on W
+add = np.kron(polA(HA), np.eye(4)) + np.kron(np.eye(4), JB @ absH(HB)/hbar)
+ok &= not np.allclose(Gj @ Wb, add @ Wb)                                          # only independence (additivity) fails
+# faithfulness: X (x) 1 vanishes on W  <=>  X kills the support of every reduced state of A
+def reduced_A(w): M = w.reshape(nA, nB); return M @ M.T
+supp = np.hstack([reduced_A(Wb @ rng.normal(size=Wb.shape[1])) for _ in range(6)])
+ok &= np.linalg.matrix_rank(supp, tol=1e-9) == nA                                # supports span: no state of A excluded
+Wsmall = np.kron(np.eye(4)[:, :2], np.eye(4))                                     # a joint space that excludes half of A
+Z = np.diag([0., 0, 1, 1])
+ok &= np.allclose(np.kron(Z, np.eye(4)) @ Wsmall, 0)                             # faithfulness fails there,
+supp2 = np.hstack([reduced_A(Wsmall @ rng.normal(size=Wsmall.shape[1])) for _ in range(6)])
+ok &= np.linalg.matrix_rank(supp2, tol=1e-9) == 2 and np.allclose(Z @ supp2, 0)  # exactly because those states are excluded
+check("T6c (C)'s work is done by independence: J|H|/hbar is a function of the joint Hamiltonian, keeps the balanced "
+      "product, meets A1 and A3 and faithfulness, yet fails additivity and A4; faithfulness holds exactly when the "
+      "supports of A's reduced states span A's state space (composition excludes no state of A)", ok)
+
+
+# ---------- 11. (A4) from measured averages: (A0') with (T0) and continuity replaces (A4) ----------
+ok = True
+m3 = 3; J6c = Jstd(m3); I6c = np.eye(2*m3)
+def ev(Xg, t): return expm_np(t*Xg)
+def expm_np(Mx):                                                                  # matrix exponential by eigendecomposition
+    w_, V_ = np.linalg.eig(Mx); return np.real(V_ @ np.diag(np.exp(w_)) @ np.linalg.inv(V_))
+def avg_same(Ag, Hm, c, obs, trials=4):                                          # (A0'): shifting the energy zero changes no average
+    good = True
+    for _ in range(trials):
+        psi = rng.normal(size=Hm.shape[0]); psi /= np.linalg.norm(psi); t = rng.normal()
+        a = ev(Ag(Hm + c*np.eye(Hm.shape[0])), t) @ psi; b = ev(Ag(Hm), t) @ psi
+        good &= all(np.isclose(a @ O @ a, b @ O @ b) for O in obs)
+    return good
+obs6 = [realify(rand_herm(m3)) for _ in range(4)]
+Hc = realify(rand_herm(m3))
+ok &= avg_same(lambda Hm: J6c @ Hm/hbar, Hc, 0.8, obs6)                          # complex QM meets (A0')
+# the sign step: with B = JH, (B + beta J)^2 = -(H + c)^2 only for beta = c
+Bc = J6c @ Hc; c0 = 0.8
+ok &= np.allclose((Bc + c0*J6c) @ (Bc + c0*J6c), -(Hc + c0*I6c) @ (Hc + c0*I6c))
+ok &= not np.allclose((Bc - c0*J6c) @ (Bc - c0*J6c), -(Hc + c0*I6c) @ (Hc + c0*I6c))
+# without continuity: each class of Hamiltonians may run backwards, A(H) = s(H) J H / hbar
+K0 = realify(np.diag([1., -1, 0]).astype(complex))                                # traceless, so s is constant on H + c 1
+sgn = lambda Hm: 1.0 if np.trace(Hm @ K0) >= 0 else -1.0
+Ab = lambda Hm: sgn(Hm)*J6c @ Hm/hbar
+Hneg = realify(np.diag([-1., 2, 0.5]).astype(complex)); ok &= sgn(Hneg) < 0
+ok &= np.allclose(Ab(Hneg).T, -Ab(Hneg)) and np.allclose(Ab(Hneg) @ Ab(Hneg), -Hneg @ Hneg/hbar**2)   # A1, A3
+ok &= avg_same(Ab, Hneg, 0.8, obs6)                                               # (A0') and (T) hold
+ok &= not np.allclose(Ab(Hneg + 0.8*I6c), Ab(Hneg) + 0.8*Ab(I6c))                 # (A4) fails; s jumps, so A is not continuous
+# without (T): quaternionic observables, with an imaginary unit that turns continuously with H
+Ri_, Rj_ = (np.kron(np.eye(2), rmat(e)) for e in [(0, 1, 0, 0), (0, 0, 1, 0)])
+def qherm2(a, d, q):
+    qc = (q[0], -q[1], -q[2], -q[3]); return np.block([[a*np.eye(4), qmat(q)], [qmat(qc), d*np.eye(4)]])
+qobs2 = [qherm2(1, 0, (0, 0, 0, 0)), qherm2(0, 1, (0, 0, 0, 0))] + [qherm2(0, 0, e) for e in [(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)]]
+Kq = qherm2(1, -1, (0, 0, 0, 0))                                                  # traceless: theta is constant on H + c 1
+Aq = lambda Hm: (np.cos(np.trace(Hm @ Kq)/8)*Ri_ + np.sin(np.trace(Hm @ Kq)/8)*Rj_) @ Hm/hbar
+Hq = qherm2(2.0, -1.0, (0.3, 0.5, -0.2, 0.4))
+ok &= np.allclose(Aq(Hq).T, -Aq(Hq)) and np.allclose(Aq(Hq) @ Aq(Hq), -Hq @ Hq/hbar**2)   # A1, A3
+ok &= avg_same(Aq, Hq, 0.8, qobs2)                                                # (A0'), and A is continuous in H
+ok &= not np.allclose(Aq(Hq + 0.8*np.eye(8)), Aq(Hq) + 0.8*Aq(np.eye(8)))          # (A4) fails, because (T0) fails
+# (T0): the antisymmetric matrices commuting with every observable; dimension 0 (real), 1 (complex), 3 (quaternionic)
+def skew_commutant_dim(obs):
+    n = obs[0].shape[0]; basis = []
+    for a in range(n):
+        for b in range(a + 1, n):
+            E = np.zeros((n, n)); E[a, b], E[b, a] = 1, -1; basis.append(E)
+    Mlin = np.array([np.concatenate([(X @ O - O @ X).ravel() for O in obs]) for X in basis]).T
+    return len(basis) - np.linalg.matrix_rank(Mlin, tol=1e-9)
+ok &= skew_commutant_dim([rand_sym(4) for _ in range(4)]) == 0
+ok &= skew_commutant_dim(obs6) == 1 and skew_commutant_dim(qobs2) == 3
+# real theory, all symmetric observables: a shift that adds nothing to A(H) breaks (A3) at the shifted Hamiltonian
+Hr = rand_sym(4); ok &= not np.allclose((Hr + 0.8*np.eye(4)) @ (Hr + 0.8*np.eye(4)), Hr @ Hr)
+check("T10 (A4) from measured averages: complex QM meets (A0'); the antisymmetric commutant of the observables has dimension 0, 1, 3 for real, complex, quaternionic; given (A3), a shift that only adds a multiple of J must add cJ; "
+      "dropping continuity lets a class of Hamiltonians run backwards, and dropping (T0) lets the imaginary unit turn with H, "
+      "and each keeps (A1), (A3) and (A0') while breaking (A4); with no antisymmetric commutant (real theory) a shift must add nothing, which (A3) forbids", ok)
+
 print(f"\n{sum(r[1] for r in results)}/{len(results)} pass")
