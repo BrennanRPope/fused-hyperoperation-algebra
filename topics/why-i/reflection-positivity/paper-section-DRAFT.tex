@@ -1,0 +1,46 @@
+% DRAFT section for rotations-force-i/arxiv/main.tex. Not merged into main.tex.
+% Suggested place: a new section after "The recent real formulations" (Section~\ref{sec:real})
+% and before "Relation to prior work". Bibliography entries to add are at the end, commented.
+% Checks: math-theory/why-i/reflection-positivity/checks.py (R1--R15); Lean file
+% ReflectionPositivity.lean (23 theorems, core Lean).
+
+\section{Euclidean formulations and reflection positivity}\label{sec:rp}
+
+Assumption (A4) can be motivated from the Euclidean side. Suppose the dynamics of each $H\in\mathcal{H}$ comes from a Euclidean theory, a positive real semigroup $e^{-\tau H}$, by Osterwalder--Schrader reconstruction and continuation $\tau\to it$ \cite{OS1,OS2}. We show that every theory obtained this way satisfies (A1)--(A4). (A4) then holds automatically for any theory with a Euclidean formulation.
+
+\paragraph{Reflection positivity for a transfer matrix.}
+Let $T$ be a real $n\times n$ matrix, and give a path $x_0\to x_1\to\dots\to x_N$ in $\{1,\dots,n\}$ the weight $\prod_j T_{x_{j+1}x_j}$. Let $\theta$ reverse time, $x_j\mapsto x_{N-j}$, with complex conjugation on functionals, and let $\mathcal{A}_+$ be the functionals of the later half of the path. Reflection positivity is $\langle\theta F,F\rangle\ge 0$ for all $F\in\mathcal{A}_+$. For reflection through a site ($N$ even) it holds if and only if $T$ is symmetric, since then $\langle\theta F,F\rangle=\sum_x|g_F(x)|^2$. For reflection through a link ($N$ odd) it holds if and only if, in addition, $T\ge 0$, since then $\langle\theta F,F\rangle=g_F^{T}Tg_F$. This is the standard transfer-matrix criterion \cite{OsterwalderSeiler,FILS,GlimmJaffe}. For $T=\one-\epsilon H/\hbar$ it holds for small $\epsilon$ whenever $H$ is symmetric. For the implicit step $T=(\one+\epsilon H/\hbar)^{-1}$ it holds at every $\epsilon>0$ if and only if $H\ge0$. In either case, reconstruction gives the real Hilbert space $\R^n$ and the semigroup $e^{-\tau H/\hbar}$. With a complex weight $T=\one+z\epsilon H$, reflection positivity fails for every $z\notin\R$ and every $H\neq 0$. The simplest pairing is then $(z\epsilon H_{12})^2$, which is not real, and at $z=-i/\hbar$ it is negative. In real time the role of positivity is taken over by unitarity.
+
+\begin{proposition}\label{prop:rp}
+Let $\mathcal{H}$ be a set of real symmetric $n\times n$ matrices containing $\one$ and closed under $H\mapsto H+c\one$. Define the real-time dynamics of each $H$ by continuing its Euclidean semigroup, $e^{-\tau H/\hbar}\mapsto e^{-itH/\hbar}$, on the complexification $\C^n\cong\R^{2n}$. Written over the reals, with $i$ represented by $J=\begin{pmatrix}0&-\one\\ \one&0\end{pmatrix}$ and $H$ acting as $H\oplus H$, the generator is $A(H)=-J(H\oplus H)/\hbar$. It satisfies (A1)--(A4) with the single complex structure $-J$.
+\end{proposition}
+
+\begin{proof}
+$J$ is antisymmetric, squares to $-\one$ and commutes with $H\oplus H$, so $A(H)$ is antisymmetric (A1) and commutes with $H\oplus H$ (A2), and $A(H)^2=J^2(H\oplus H)^2/\hbar^2=-(H\oplus H)^2/\hbar^2$ (A3). The continuation acts on the time parameter, not on $H$, so $A(H)$ is linear in $H$ with one coefficient $-J/\hbar$, and $A(H+c\one)=A(H)+cA(\one)$ (A4).
+\end{proof}
+
+The content of the proposition is in the last step. On the Euclidean side, a shift of the energy zero multiplies every path weight by the same positive number $e^{-c\tau/\hbar}$, for every $H$. That is trivially a convention there. The continuation carries this common positive factor to a common rotation $e^{-ict/\hbar}$, which is (A4). The imaginary unit is needed exactly at the continuation, since $e^{-itH/\hbar}$ is real for all $t$ only if $H=0$. It enters as one scalar, the same for every $H$.
+
+\begin{corollary}\label{cor:rp}
+Real quantum theory in which every symmetric matrix is an observable and a Hamiltonian is not the continuation of any family of reflection-positive Euclidean theories.
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{prop:rp} such a continuation satisfies (A1)--(A4). By Corollary~\ref{cor:real} real quantum theory does not.
+\end{proof}
+
+Theorem~\ref{thm:main} therefore applies to every theory with a reflection-positive Euclidean formulation, and the shared $J$ it produces is the imaginary unit of the Wick rotation. The scope is that of the rest of the paper: finite-dimensional state spaces with given Hamiltonians. For field theories the proposition applies whenever a reflection-positive Euclidean measure exists, but constructing such a measure is the hard part of constructive field theory, and we do not address it here. We have not found this link between reflection positivity and the energy-zero requirement stated in the literature we reviewed. The step is short, and we would welcome references.
+
+% --- bibliography entries to add (checked against secondary sources on Nov 27, 2026; confirm before submitting) ---
+% \bibitem{OS1} K.~Osterwalder and R.~Schrader, ``Axioms for Euclidean Green's functions,'' Commun.\ Math.\ Phys.\ \textbf{31}, 83 (1973).
+% \bibitem{OS2} K.~Osterwalder and R.~Schrader, ``Axioms for Euclidean Green's functions II,'' Commun.\ Math.\ Phys.\ \textbf{42}, 281 (1975).
+% \bibitem{OsterwalderSeiler} K.~Osterwalder and E.~Seiler, ``Gauge field theories on a lattice,'' Ann.\ Phys.\ \textbf{110}, 440 (1978).
+% \bibitem{FILS} J.~Fr\"ohlich, R.~Israel, E.~H.~Lieb and B.~Simon, ``Phase transitions and reflection positivity. I,'' Commun.\ Math.\ Phys.\ \textbf{62}, 1 (1978).
+% \bibitem{GlimmJaffe} J.~Glimm and A.~Jaffe, \emph{Quantum Physics: A Functional Integral Point of View}, 2nd ed.\ (Springer, 1987).
+% Optional survey: A.~Jaffe, ``Reflection positivity then and now,'' arXiv:1802.07880 (2018).
+%
+% Also suggested: one sentence in the abstract, after the composite-systems sentence:
+%   "For theories with a Euclidean formulation, the requirement follows from reflection positivity:
+%    the Wick rotation of any reflection-positive family satisfies it with the rotation's own i."
+% and in the Discussion, replace "(A4) is the load-bearing assumption. It is natural, but it is an
+% assumption" with a pointer to Proposition~\ref{prop:rp} for theories with a Euclidean formulation.

@@ -1,0 +1,17 @@
+PASS  R1 chain multiplier = product of slice multipliers: max diff 1.1e-16
+PASS  R2 sum over paths = T^N: max diff 4.4e-16
+PASS  R3 site RP holds for every real k: worst violation 6.0e-16 over k in [-6, -3, -2, -1, -0.3, 0.4, 2, 4, 7]
+PASS  R4 link RP holds iff every slice multiplier is >= 0: window [-2, 4]; inside worst 2.5e-16; outside smallest 8.1e-04
+PASS  R5 sign of lowest Gram eigenvalue = sign of lowest eigenvalue of T: 33 dial values from -3 to 5
+PASS  R6 off the real axis RP fails (site and link): smallest violation 2.76e-02 over k in [1j, (-0-1j), (-1+0.05j), (-1+0.3j), (0.5-0.2j), (-0-2j)]
+PASS  R7 off-axis pairing is not even real: <theta F,F> = 0.0538-0.0355j;  |T - T*| = 0.221
+PASS  R8 rewind slices: RP at every step size iff H >= 0 (at k = -1): H>=0 worst 3.6e-16; H with E=-1: fine at small steps, fails from eps=2 (wall at eps=1)
+PASS  R9 continuum slices e^(k eps H): link RP at every real k: worst 3.5e-16
+PASS  R10 reversible Markov chain RP; one-way cycle not: reversible 1.1e-17; cycle 2.62e-01
+PASS  R11 Wick-continued RP family satisfies (A1)-(A4) with one shared J: worst error 1.1e-16 over 6 Hamiltonians
+PASS  R12 continued evolution is never real for H != 0: smallest max|Im| = 0.590
+PASS  R13 Euclidean energy shift = common factor e^(-ct) for every H: factor 0.670320
+PASS  R14 two real-QM dynamics carry different J's: |J1 - J2| = 1
+PASS  R15 positive-multiplier side of the wall is a subgroup; the wall absorbs: k = -2.0, wall at a = 0.5
+
+15/15 checks pass
