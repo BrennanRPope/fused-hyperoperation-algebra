@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched. Round 16 (section 20): two more cases of that conjecture are now theorems (computer-assisted, with Matveev's bound and lattice reduction): no three-letter word has fingerprint 1, and no two two-letter words share one; longer words still rest on the searches.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] [Round 16 update: still open; Conjecture 15.3 now proved for all pairs with at most two N/K letters and for three letters against one, section 20] | 13.4, Y9 |
 
 ---
 
@@ -2208,3 +2208,133 @@ the theorem, and the remaining step is hard in a known way.
 Lemma 15.1, Proposition 15.2, Corollary 15.4 (from Conjecture 15.3) and Theorem 15.5: proved by hand by Claude this round,
 and checked by computer (Q1 to Q6). Conjecture 15.3: searched by computer only. Not checked by a person, and not checked
 against the literature this round.
+
+## 20. Round 16 (DRAFT): the fingerprint conjecture for three letters, and every pair of two-letter words
+
+Asked for by Brennan (Nov 27, with the overnight go-ahead in section 18), with the thread chosen as: try to prove
+Conjecture 15.3 for words with three N or K letters, and see whether the method generalizes. Scripts:
+[`baker16.py`](baker16.py) → [`baker16.json`](baker16.json), [`pairs16.py`](pairs16.py) → [`pairs16.json`](pairs16.json).
+Checks: [`checks16.py`](checks16.py) → [`checks16_output.txt`](checks16_output.txt), **7 of 7 pass**. Pictures:
+[`figures16.py`](figures16.py). No new Lean. The reductions below were worked out by Claude in this round; the two deep
+tools they rest on are published theorems (section 20.6); nothing here has been checked by a person yet.
+
+### 20.1 The answer in five sentences
+
+**Two new cases of the conjecture are now theorems (computer-assisted).** No word with three N or K letters has
+fingerprint 1, so none can stand in for N (Theorem 16.1). No two different reduced words with two N or K letters share a
+fingerprint (Theorem 16.2), so together with Theorem 15.5 the conjecture holds for every pair of words with at most two
+N/K letters. Both proofs go the same way: the sizes at 2, 5 and 19 force all but two terms of the equation to be small, then
+a published lower bound for linear forms in logarithms (Matveev) caps the exponents at about 10^12 to 10^17, lattice
+reduction cuts that to a few dozen, and exact arithmetic checks the rest (Figures 50 and 51). It does not yet reach three
+letters against two or three, or longer words, which still rest on the searches (Figure 52).
+
+### 20.2 Theorem 16.1: three letters never give fingerprint 1
+
+Take a word x1 u1 x2 u2 x3 (x1 = N without loss; leading l, m do not change psi and trailing ones multiply it by a power of
+2, 5 and 19). Let u_i hold L_i letters l and M_i letters m, A_i = (200/19)^L_i 20^M_i, P_i = 2^(3L_i+2M_i) 5^(2L_i+M_i),
+and r = 19 for N, 10 for K. By the recursion of section 18,
+
+  psi = 1 + r3 A2 (1 + r2 A1),  that is,  19^(L1+L2) psi = 19^(L1+L2) + r3 19^L1 P2 + r2 r3 P1 P2.
+
+**Theorem 16.1 (computer-assisted).** psi is never a product of powers of 2, 5 and 19.
+
+*Proof.* Two cases.
+
+- **Case I: x3 = N and u2 is empty.** Then psi = 20 + c with c = 19 r2 A1. Comparing 2-adic sizes, psi has at most two
+  factors 2 unless v2(c) = 2, and at most one factor 5 unless v5(c) = 1; those exceptions are the words N m N N and N K N
+  (psi = 7240 and 210, not units). So psi = 2^al 5^be 19^ga with al <= 2, be <= 1, and
+  Lambda = log(psi / c) = log(1 + 20/c) is a positive linear form in log 2, log 5, log 19, smaller than 10^-H / 9 with
+  H = L1 + M1, and with coefficients at most 3H + 5.
+- **Case II: otherwise.** Then psi - 1 = r3 A2 (1 + r2 A1) has positive 2-adic and 5-adic size, so psi is odd and prime to 5:
+  psi = 19^E with E >= 1. Now the sizes at each prime pin the word down:
+  - at 2 and 5: the factors 2 and 5 of r3 P2 all divide 19^E - 1, and v2(19^E - 1) <= 2 + log2 E, v5(19^E - 1) <= 1 + log5 E
+    (Q3), so the second gap u2 is short: L2 and M2 grow at most like log E;
+  - at 19: 19^E - 1 is prime to 19, which forces L1 <= 2.
+  So in 19^(L1+L2+E) = 19^(L1+L2) + r3 19^L1 P2 + r2 r3 P1 P2 the first two terms on the right are at most polynomial in E,
+  and Lambda = log(19^(L1+L2+E) / (r2 r3 P1 P2)) lies strictly between 0 and 2 (1 + 380 E^2) / 19^E.
+
+In both cases Lambda is a nonzero linear form in log 2, log 5 and log 19 that is exponentially small in the exponents.
+Matveev's theorem bounds the exponents: E <= 5.1 × 10^12 in Case II, H <= 6.5 × 10^12 in Case I. Lattice reduction
+(LLL, de Weger's lemma, exact arithmetic) cuts this to E <= 10 and H <= 7 in three rounds. An exact check of every case
+below those bounds (204 candidates) finds no solution. ∎ As a separate check, brute force over all 114,244 three-letter
+words with runs up to 12 finds no unit psi (Q1).
+
+![Figure 50](figures/fig50-why-no-three-letter-unit.png)
+
+*Figure 50. Why it works. A three-letter word with psi = 19^E would need a power of 19 to match a product of 2s and 5s to
+about E decimal places (red). Powers of 19 never come within more than a few places of such products (blue, the nearest
+match for each E). The two curves part at E of about 5. Matveev's theorem and the lattice reduction make "never" exact for
+every E, not just the ones drawn.*
+
+### 20.3 Theorem 16.2: no two two-letter words share a fingerprint
+
+A reduced word with two N/K letters is N l^L m^M x, with x = K only when M = 0 (because mK = lN). Its psi is T / 19^L with
+T = 19^L + r P, and its fingerprint is K = T / 19^g, g = v19(T). (T is prime to 10 except for NN, whose fingerprint is 1.)
+
+**Theorem 16.2 (computer-assisted).** Different reduced two-letter words have different fingerprints. With Theorem 15.5,
+Conjecture 15.3 holds for every pair of words with at most two N/K letters.
+
+*Proof.* Suppose two words share K.
+1. K = 19^(L-g) + rP/19^g for each word. If D = (L - g) - (L' - g') is 0, the second terms agree, and unique factorisation
+   gives the same word or the pair mK ~ lN, which is not reduced. So D is not 0.
+2. **The 2-adic step.** K is 19^(L-g) modulo 2^mu, mu = v2(rP), and likewise for the other word, so 19^D is 1 modulo
+   2^min(mu, mu'). Hence min(mu, mu') <= 2 + log2 |D|. So one of the two words is short: H_s = L + M <= 1 + log2(|D|)/2,
+   while |D| <= 3H + 2 for the longer one's H.
+3. For the longer word, Lambda = log(19^g K / (rP)) = log(1 + 19^L / (rP)) lies in (0, 10^-H / 10). This is a linear form
+   in log 19, log 2, log 5 and log K, where K comes from the short word.
+
+Matveev's theorem (four logarithms) gives H <= 1.5 × 10^17, so H_s <= 30. For each of the 526 short words, an LLL
+reduction with its own K cuts H to at most 39. An exact comparison of all 860 two-letter words with H <= 39 finds no shared
+fingerprint. ∎ No clash either among 2,627 words up to H = 70 (Q5).
+
+![Figure 51](figures/fig51-bounds-funnel.png)
+
+*Figure 51. The bounds at each stage. A: Theorem 16.1, from Matveev's 5 trillion to 10 in three lattice reductions, then 204
+exact cases. B: Theorem 16.2, from 1.5 × 10^17 to at most 39 with one lattice per short word, then 860 words compared
+exactly.*
+
+**Corollary 16.3 (by hand, from 15.5, 16.1 and 16.2).** A second collision for a bad pair cannot use two words that each
+have at most two N/K letters, or a word with three against one with one. *Why:* equal psi gives equal fingerprints, so the
+same canonical form, and then the argument of Corollary 15.4 caps the 19-adic size of the size ratio at 2 < 13.
+
+### 20.4 Where the conjecture stands
+
+![Figure 52](figures/fig52-where-the-conjecture-stands.png)
+
+*Figure 52. Pair types by number of N/K letters. Green: proved (Theorems 15.5, 16.1, 16.2). Orange: searched only, with no
+exception (every word to 14 letters, and 2 to 4 N/K letters with l, m runs up to 300, 35 and 9).*
+
+### 20.5 Does the method generalize?
+
+**For each fixed number of N/K letters, probably yes, with more work. For all lengths at once, no.** This is an assessment,
+not a proof. The method works when the 2-, 5- and 19-adic sizes force all but two terms to be small. Each new N/K letter
+adds a term, and the terms of psi have increasing 2- and 5-adic sizes along the word, so the same congruences peel off one
+gap at a time. Two things change past the cases done here:
+- **p-adic bounds are needed.** In three letters against two, the 2-adic step needs v2(19^m K - 1) for a fixed K that is not
+  1. That is bounded only by a p-adic lower bound for linear forms in logarithms (Yu's theorem), not by the simple formula
+  used here.
+- **The casework multiplies.** Runs of bare N letters (empty gaps) do not raise the 2- and 5-adic sizes, so each pattern of
+  empty gaps is its own case.
+
+Each fixed length then becomes a finite, if growing, computation. The whole conjecture is an equation with unboundedly many
+terms, and these tools give bounds that grow with the number of terms. So the full statement, and with it the exact size of
+the original break, still needs a new idea or a structure these words have that general sums of powers do not.
+
+### 20.6 Is it a lead?
+
+**Yes.** For the first time, part of the open statement is proved outright rather than searched. The proved cases are the
+ones the searches say are the most constrained, and the method is a standard, checkable one. It also shows that
+three-letters-against-two is the next case within reach, with p-adic bounds added. It is not the full theorem, and the step
+from fixed lengths to all lengths is the same wall as before.
+
+### 20.7 Who proved what, round 16
+
+- **Published theorems used:**
+  - Matveev's lower bound for linear forms in logarithms (E. M. Matveev, 2000), in the form of Bugeaud, Mignotte and Siksek
+    (2006, Theorem 9.4).
+  - LLL lattice reduction (Lenstra, Lenstra and Lovász, 1982).
+  - de Weger's reduction lemma (B. M. M. de Weger, 1989).
+- **Claude, this round:** the reductions in 20.2 and 20.3 (the cases, the 2-, 5- and 19-adic steps, and the bounds on the
+  small terms), the computations, and Corollary 16.3. Everything is computer-checked (Q1 to Q7); the LLL output is
+  checked exactly for reducedness.
+- **Not yet:** checked by a person, or checked against the literature on S-unit equations.

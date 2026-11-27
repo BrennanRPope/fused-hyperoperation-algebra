@@ -1,0 +1,8 @@
+Q1_baker16_record PASS {'matveev_E': 5063612202247, 'matveev_H': 6453509010813, 'final_E': 10, 'final_H': 7, 'exact_solutions': [], 'brute_force_words': 114244}
+Q2_reduction_16_1 PASS {'words': 300, 'failures': 0}
+Q3_valuation_facts PASS {'E_checked': 3000, 'failures': 0, 'v19_failures': 0}
+Q4_lll_sound PASS {'C_digits': 51, 'new_bound': 31, 'note': 'reduce_once asserts exact LLL-reducedness'}
+Q5_pairs16_record PASS {'small_words': 526, 'largest_final_bound': 39, 'words_checked_in_proof': 860, 'extra_words_H_le_70': 2627, 'extra_clashes': 0}
+Q6_two_adic_step PASS {'pairs': 300, 'pairs_with_D_nonzero': 290, 'failures': 0}
+Q7_planted_clash_found PASS {'planted_mK_lN_clashes': 66, 'lll_toy_reduced': True}
+ALL PASS 7 / 7

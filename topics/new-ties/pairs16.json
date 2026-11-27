@@ -1,0 +1,47 @@
+{
+ "matveev": {
+  "constant_without_A4": 51493098636659.55,
+  "H_big_bound": 153219953206899280,
+  "H_small_bound": 30
+ },
+ "small_words": 526,
+ "largest_final_bound": 39,
+ "worst_small_words": [
+  {
+   "word": "NmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmN",
+   "K": 20401094656000000000000000000000000000001,
+   "final_H_bound": 39,
+   "rounds": 3
+  },
+  {
+   "word": "NlmmmmmmmmmmmmmmmmmmmmmmmmmmmmmN",
+   "K": 10737418240000000000000000000000000000001,
+   "final_H_bound": 39,
+   "rounds": 3
+  },
+  {
+   "word": "NllmmmmmmmmmmmmmmmmmmmmmmmmmmmmN",
+   "K": 107374182400000000000000000000000000000019,
+   "final_H_bound": 39,
+   "rounds": 3
+  },
+  {
+   "word": "NmmmmmmmmmmmmmmmmmmmmmmmmmmmmmN",
+   "K": 1020054732800000000000000000000000000001,
+   "final_H_bound": 38,
+   "rounds": 3
+  },
+  {
+   "word": "NlmmmmmmmmmmmmmmmmmmmmmmmmmmmmN",
+   "K": 536870912000000000000000000000000000001,
+   "final_H_bound": 38,
+   "rounds": 3
+  }
+ ],
+ "exact_check": {
+  "H_up_to": 39,
+  "words": 860,
+  "clashes": []
+ },
+ "seconds": 178.4
+}
