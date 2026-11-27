@@ -47,6 +47,9 @@ try:
         dd = abs(wc.max() - wd)/wd
         check('B9 nu=0.001: peak spin settles, N=192 vs N=256 within 10%', dd < 0.1,
               'peak %.1f (128) / %.1f (192) / %.1f (256); 192 vs 256 differ by %.1f%%' % (wa.max(), wc.max(), wd, 100*dd))
+        mm = tc <= td.max() + 1e-9; zd = np.interp(tc[mm], td, np.array(d['Z'])); dz2 = np.max(np.abs(zd - Zc[mm])/zd)
+        check('B10 nu=0.001: N=192 and N=256 agree on total spin (enstrophy) within 5% at every time', dz2 < 0.05,
+              'largest gap %.1f%%, N=256 outer shell %.1e' % (100*dz2, d['tailmax']))
     else:
         res.append(dict(name='B9 nu=0.001: is peak spin settled between grids?', ok=None, status='open',
                         detail='peak spin not settled, %.1f at 128 vs %.1f at 192; the 256 run will decide' % (wa.max(), wc.max())))

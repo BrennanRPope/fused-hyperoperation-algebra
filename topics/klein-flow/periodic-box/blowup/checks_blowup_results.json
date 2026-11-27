@@ -36,10 +36,16 @@
   "status": "pass"
  },
  {
-  "name": "B9 nu=0.001: is peak spin settled between grids?",
-  "ok": null,
-  "status": "open",
-  "detail": "peak spin not settled, 151.5 at 128 vs 232.8 at 192; the 256 run will decide"
+  "name": "B9 nu=0.001: peak spin settles, N=192 vs N=256 within 10%",
+  "ok": false,
+  "detail": "peak 151.5 (128) / 232.8 (192) / 313.8 (256); 192 vs 256 differ by 25.8%",
+  "status": "fail"
+ },
+ {
+  "name": "B10 nu=0.001: N=192 and N=256 agree on total spin (enstrophy) within 5% at every time",
+  "ok": true,
+  "detail": "largest gap 0.6%, N=256 outer shell 7.1e-04",
+  "status": "pass"
  },
  {
   "name": "B7 Kerr crossing: the three viscosities meet at one time",

@@ -4,8 +4,8 @@ Nov 27, 2026. Asked for by Brennan, after the periodic-box round (`../README.md`
 blow up proofso let's explore that as well". (The earlier round said the twisted class is a place to *search* for
 blow-up, Clay's option D; it never offered a proof. This round runs that search on the best-known candidate.)
 
-Checks: `checks_blowup.py` → `checks_blowup_output.txt` (**8 of 8 pass, 1 open**: B9, whether peak spin is settled between grids, is marked OPEN until the 256³ run decides it). Runs: `tubes.py` (one run), `batch.sh`,
-`batch2.sh`. Pictures: `fig_pair.py`, `fig_classes.py`, `fig_nu.py` → `../figures/figF…figH`. DRAFT: everything is
+Checks: `checks_blowup.py` → `checks_blowup_output.txt` (**9 of 10 pass**; B9 fails: peak spin does not settle between the 192³ and 256³ grids, section 3). Runs: `tubes.py` (one run), `batch.sh`,
+`batch2.sh`. Pictures: `fig_pair.py`, `fig_classes.py`, `fig_nu.py`, `fig_grids.py` → `../figures/figF…figI`. 256³ run: `res256.py` (resumes from a checkpoint). DRAFT: everything is
 known work unless marked **ours**; the "ours" items are runs, not theorems.
 
 ## The result in plain words
@@ -21,17 +21,18 @@ way it does in the plain box.**
 - **ours:** across three viscosities, the curves of √viscosity × total spin all cross at one time (t ≈ 1.5), on both
   grids. That crossing is the signature Kerr (2018) found for vortex reconnection that does *not* blow up, and it shows
   up here with or without the twist.
-- **One thing stays open.** At the lowest viscosity the peak spin read off the grid is not settled: 151 on the 128³
-  grid, 233 on the 192³ grid, because the pinch gets thinner than the coarse grid can see. Total spin agrees on the two
-  grids to 2%. So the verdict rests on total spin, and the peak itself needs a finer grid before anyone leans on it.
+- **The peak does not settle.** At the lowest viscosity the peak spin read off the grid is 151, 233 and 314 on the
+  128³, 192³ and 256³ grids (Figure I): it climbs with every finer grid. Total spin agrees across all three to within 2%.
+  The pinch makes a sheet thinner than even the finest grid, so every peak on this page is a lower bound. The verdict
+  rests on total spin, which has settled.
 
 ## What this contributes, graded two ways
 
 | | Verdict | Why |
 |---|---|---|
-| Worth following? | **Not this candidate, as far as these grids can tell.** The twisted class stays a fair place to search, but antiparallel tubes are now tested there and look regular. | The twist's own disturbances do nothing to the pinch (Figure G), and total spin shows Kerr's convergent, non-singular crossing on two grids (Figure H), agreeing with Hou and Li's much larger runs of Kerr's data. The unsettled peak at the lowest viscosity is the one loose end. |
+| Worth following? | **Not this candidate, as far as these grids can tell.** The twisted class stays a fair place to search, but antiparallel tubes are now tested there and look regular. | The twist's own disturbances do nothing to the pinch (Figure G), and total spin shows Kerr's convergent, non-singular crossing on two grids (Figure H), agreeing with Hou and Li's much larger runs of Kerr's data. The peak at the lowest viscosity never settles (151, 233, 314 on three grids), so it is a lower bound, not a value. |
 | Could it reach a proof? | **No.** | The one working route to a blow-up proof is computer-assisted: find a self-similar collapsing profile, then prove it stable (Chen and Hou, Euler with a boundary). Nothing here shows a collapsing profile, so there is none to prove. |
-| What would make it a lead | A flow in the twisted class whose peak spin keeps speeding up as viscosity shrinks, settled on two grids, with the twist's own disturbances doing the work. The nearest check: rerun viscosity 0.001 on a 256³ grid and see whether the peak keeps climbing past 233. | |
+| What would make it a lead | A flow in the twisted class whose peak spin keeps speeding up as viscosity shrinks, settled on two grids, with the twist's own disturbances doing the work. Settling the peak needs a grid several times finer near the sheet (a rough viscous estimate puts the sheet near 0.003 wide, against 0.025 for the 256³ grid), so an adaptive grid or about 2000³ points: far beyond this machine. | |
 
 What each piece contributes:
 
@@ -93,9 +94,23 @@ cross near t = 1.47, Kerr's signature of a finite, viscosity-independent reconne
 the coarse one. On the left the finer grid reads a much higher peak, 233 against 151: the peak is not settled.*
 
 Resolution: at viscosity 0.004 and 0.002 the outer shell of the 128³ grid holds under 0.5% of the energy. At 0.001
-it holds 1.8%, so that run was repeated on 192³ (outer shell 0.2%, 88 minutes): total spin agrees with 128³ to 2.2% at
-every time, but peak spin on the grid does not. Check B9 records this as an open question, not a pass or a fail: a
-256³ run is under way and will decide it. Until then, read the left panel's 0.001 curves as lower bounds.
+it holds 1.8%, so that run was repeated on 192³ (88 minutes) and 256³ (4.8 hours, with checkpoints).
+
+![three grids](../figures/figI-peak-on-three-grids.png)
+
+*Figure I. Viscosity 0.001, pair alone, on three grids. Left: peak spin read off the grid. Middle: total spin. Right:
+the highest peak against grid size. Total spin lies on one curve (within 2.2% from 128³ to 192³ and 0.6% from 192³ to
+256³), but the peak climbs 151, 233, 314 with no sign of levelling off.*
+
+What this shows: the pinch packs its spin into a sheet thinner than 2π/256 ≈ 0.025, so a grid point lands near its
+centre only by luck, and finer grids keep finding higher values. A rough viscous estimate, √(viscosity / strain), puts
+the sheet near 0.003 wide, about eight times thinner than the finest grid. Check B9 tested whether the peak settles
+between 192³ and 256³ (within 10%), and it **fails** (26% apart).
+
+What it doesn't show: a peak that grows with the grid is the ordinary sign of a feature smaller than the grid, not
+of blow-up. Total spin, the measure Kerr's crossing test uses, has settled (checks B6 and B10). But because every peak
+here is a lower bound, these runs also can't say how the true peak grows as viscosity shrinks, so they don't rule out
+a faster rise either.
 
 ## 4. Known and ours
 
@@ -123,11 +138,12 @@ at the end of every run).
 | B4 energy never rises in any run | pass | largest step-to-step rise 0.0e+00 of start |
 | B5 nu=0.002 runs resolved at N=128 | pass | outer-shell energy 4.1e-03 |
 | B6 nu=0.001: N=128 and N=192 agree on total spin (enstrophy) within 5% at every time | pass | largest gap 2.2%, N=192 outer shell 1.9e-03 |
-| B9 nu=0.001: is peak spin settled between grids? | **open** | peak spin not settled, 151.5 at 128 vs 232.8 at 192; the 256 run will decide |
+| B9 nu=0.001: peak spin settles, N=192 vs N=256 within 10% | **fail** | peak 151.5 (128) / 232.8 (192) / 313.8 (256); 192 vs 256 differ by 25.8% |
+| B10 nu=0.001: N=192 and N=256 agree on total spin (enstrophy) within 5% at every time | pass | largest gap 0.6%, N=256 outer shell 7.1e-04 |
 | B7 Kerr crossing: the three viscosities meet at one time | pass | spread 2.1% at t = 1.46 |
 | B8 same seed gives the same run | pass | peak 26.9567382447 twice |
 
 ## Files
 
-`tubes.py` (setup and one run), `batch.sh`, `batch2.sh` (the runs; call with `bash`), `fig_pair.py`, `fig_classes.py`,
-`fig_nu.py`, `checks_blowup.py`. Run data in `runs/` (not committed).
+`tubes.py` (setup and one run), `batch.sh`, `batch2.sh` (the runs; call with `bash`), `res256.py` (the 256³ run),
+`fig_pair.py`, `fig_classes.py`, `fig_nu.py`, `fig_grids.py`, `checks_blowup.py`. Run data in `runs/` (not committed).

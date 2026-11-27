@@ -186,4 +186,4 @@ initial field and is then kept by the equations.
 
 `blowup/README.md` (DRAFT, Nov 27): Kerr's antiparallel tubes run inside the twisted class. The twist's own
 period-doubled nudges move the pinch by 0 to 2%, and total spin shows Kerr's known non-blow-up crossing on two grids;
-peak spin at the lowest viscosity is not settled (151 on 128³, 233 on 192³). Figures F to H in `figures/`.
+peak spin at the lowest viscosity never settles (151, 233, 314 on 128³, 192³, 256³), so it is a lower bound. Figures F to I in `figures/`.
