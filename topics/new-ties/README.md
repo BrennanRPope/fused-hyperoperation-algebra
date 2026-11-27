@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched. Round 16 (section 20): two more cases of that conjecture are now theorems (computer-assisted, with Matveev's bound and lattice reduction): no three-letter word has fingerprint 1, and no two two-letter words share one; longer words still rest on the searches. Round 17 (section 21): three letters against two is now a theorem too (computer-assisted, Matveev's bound, lattice reduction and an exact 2-adic logarithm, without Yu's p-adic theorem); three against three and longer words still rest on the searches. Round 18 (section 22): three against three is a theorem too (computer-assisted, with a new by-hand bound on the factors 19 in the numerator), so the conjecture now holds for every pair of words with at most three N/K letters each, and an independent recheck confirms Rounds 16 and 17; four letters and longer still rest on the searches. Round 19 (section 23): four letters is done too (computer-assisted, with a by-hand bound on the factors 19 for four letters), so the conjecture holds for every pair of words with at most four N/K letters each; at five letters that bound fails (proved for one family), so the next length needs a 19-adic tool such as Yu's theorem, not just more computation. Round 20 (section 24): an independent session redid rounds 18 and 19 from the statements alone and confirms them; at five letters every unbounded case has one two-logarithm 19-adic form, which a published bound and an exact digit argument handle, so five letters looks like a bigger run of the same method rather than a new idea (judgement, not run).* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched. Round 16 (section 20): two more cases of that conjecture are now theorems (computer-assisted, with Matveev's bound and lattice reduction): no three-letter word has fingerprint 1, and no two two-letter words share one; longer words still rest on the searches. Round 17 (section 21): three letters against two is now a theorem too (computer-assisted, Matveev's bound, lattice reduction and an exact 2-adic logarithm, without Yu's p-adic theorem); three against three and longer words still rest on the searches. Round 18 (section 22): three against three is a theorem too (computer-assisted, with a new by-hand bound on the factors 19 in the numerator), so the conjecture now holds for every pair of words with at most three N/K letters each, and an independent recheck confirms Rounds 16 and 17; four letters and longer still rest on the searches. Round 19 (section 23): four letters is done too (computer-assisted, with a by-hand bound on the factors 19 for four letters), so the conjecture holds for every pair of words with at most four N/K letters each; at five letters that bound fails (proved for one family), so the next length needs a 19-adic tool such as Yu's theorem, not just more computation. Round 20 (section 24): an independent session redid rounds 18 and 19 from the statements alone and confirms them; at five letters every unbounded case has one two-logarithm 19-adic form, which a published bound and an exact digit argument handle, so five letters looks like a bigger run of the same method rather than a new idea (judgement, not run). Round 21 (section 25): Brennan's levels 1, 2, 4, 8 are really the four letters' powers of 2, but they come from the example's chosen numbers and cannot cap the lengths; and one statement about 2, 5 and 19, that 1 + 19 = 20 is the only balance with word-shaped sides (searched, open), is proved to give the conjecture at every length.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] [Round 16 update: still open; Conjecture 15.3 now proved for all pairs with at most two N/K letters and for three letters against one, section 20] [Round 17 update: still open; Conjecture 15.3 now also proved for three N/K letters against two, section 21] [Round 18 update: still open; Conjecture 15.3 now proved for every pair with at most three N/K letters each, section 22] [Round 19 update: still open; Conjecture 15.3 now proved for every pair with at most four N/K letters each, section 23] [Round 20 update: still open; rounds 18 and 19 independently rechecked, and the 19-adic step for five letters scoped and done for the family that broke the bound, section 24] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] [Round 16 update: still open; Conjecture 15.3 now proved for all pairs with at most two N/K letters and for three letters against one, section 20] [Round 17 update: still open; Conjecture 15.3 now also proved for three N/K letters against two, section 21] [Round 18 update: still open; Conjecture 15.3 now proved for every pair with at most three N/K letters each, section 22] [Round 19 update: still open; Conjecture 15.3 now proved for every pair with at most four N/K letters each, section 23] [Round 20 update: still open; rounds 18 and 19 independently rechecked, and the 19-adic step for five letters scoped and done for the family that broke the bound, section 24] [Round 21 update: still open; reduced at every length to one statement about 2, 5 and 19 (Conjecture 21.2, searched, open), section 25] | 13.4, Y9 |
 
 ---
 
@@ -3036,3 +3036,168 @@ conjecture is still proved only up to four letters, and the original break still
   Proposition 20.3, the application in Proposition 20.2, the feasibility judgement, and checks Q1 to Q7 (the family's
   numbers redone with separate code).
 - **Not yet:** checked by a person; the five-letter theorems themselves are not proved.
+
+## 25. Round 21 (DRAFT): the levels 1, 2, 4, 8, and one statement about 2, 5 and 19 for every length
+
+*DRAFT, Nov 27. Brennan asked whether the powers behind the problem give an idea for every length, and whether they follow
+the division-algebra levels 1, 2, 4, 8 (real numbers, complex numbers, quaternions, octonions). If they did, there would
+be one more level and then none, because Hurwitz's theorem allows no normed division algebra past dimension 8, and that
+might cap the problem. Files: `explore21.py` + `explore21.json`, `checks21.py` (6 checks), `figures21.py`, figures 68 to 70.*
+
+### 25.1 The answer in five sentences
+
+The 1, 2, 4, 8 is really in the numbers: the four letters N, K, m, l stretch by 19, 10, 20 and 200, and their powers of 2
+are exactly 1, 2, 4 and 8 (Figure 68A). It comes from the example's chosen multipliers, not from the problem: on the
+collision surface the four powers of 2 are always 1, 2^a, 2^b, 2^(a+b), so they double only for the choice made in 13.4,
+and the other known break gives 1, 8, 16, 128 (Proposition 21.1). It labels the four letters, which are all in use already
+(l is the 8), not lengths or dimensions, so it cannot cap the lengths and there is no higher level to come: a coincidence,
+not a lead. The powers do give something for every length: a word's terms step down by fixed ratios, and among all
+balanced sums of products of 2, 5 and 19, the only one whose two sides step down that way is 1 + 19 = 20 (searched to
+4 terms a side and 10^15; without that shape there are 18,852 such sums to 10^9). Proved by hand: if that holds for every
+size (Conjecture 21.2), Conjecture 15.3 holds at every length (Theorem 21.5); this moves the open step to one clean
+statement, it does not remove it.
+
+### 25.2 The levels 1, 2, 4, 8
+
+![Figure 68](figures/fig68-one-two-four-eight.png)
+
+*Figure 68. A: the power of 2 in each letter's stretch 1/s, for the break of 13.4 (blue: 1, 2, 4, 8) and the 3-adic break
+of section 14 (grey: 1, 8, 16, 128). B: on the collision surface the four powers are 1, 2^a, 2^b, 2^(a+b); only a = 1, b = 2
+doubles.*
+
+**Proposition 21.1 (by hand).** On the collision surface (13.4) nu = kappa/(2 - kappa) and lambda = mu (2 - kappa). If
+1/kappa has a >= 1 factors of 2 and 1/mu has b, then the stretches 1/nu, 1/kappa, 1/mu, 1/lambda (letters N, K, m, l) have
+0, a, b and a + b factors of 2.
+
+*Why:* write kappa = p/(2^a q) with p and q odd; then 2 - kappa = (2^(a+1) q - p)/(2^a q) has an odd numerator, so the same
+2-adic size as kappa, so nu has 2-adic size 0 and lambda has the sizes of mu and kappa added. Checked on 810 surface points
+(Q1). The break of 13.4 has kappa = 1/10 (a = 1) and mu = 1/20 (b = 2), so 1, 2, 4, 8; its powers of 5 are 1, 5, 5, 25,
+which do not double. The 3-adic break has kappa = 3/40 (a = 3) and mu = 3/80 (b = 4), so 1, 8, 16, 128.
+
+**What the levels would predict, and why they don't.** Hurwitz's theorem is about multiplying vectors in R^n with the
+length multiplying too; it stops at n = 8. Nothing here multiplies vectors: every number in this problem is a rational
+number on a line (the topic's plane version is a second setting, not a next level), and the 1, 2, 4, 8 is attached to the
+four letters, which every word of every length uses. If the levels capped the lengths, something should stop or start
+after some length. Nothing does:
+- the one built-in collision, N N w = N m w (Proposition 15.2), holds for every w; checked at every length to 25 (Q2);
+- the 129,904 canonical words up to 11 letters have 129,904 different fingerprints (Q2), and Figure 48 has the same to
+  14 letters: lengths 9 to 14 behave exactly like 1 to 8;
+- the "8" is already taken by the letter l, so no level is waiting.
+
+So this is a coincidence of the example's numbers (my judgement, with the reasons above). The hypersphere thread's
+division-algebra checks are about that topic's products and norms; I found no bridge from them to these words.
+
+### 25.3 Every collision is a balanced sum of products of 2, 5 and 19
+
+By Theorem 14.1, psi(w) is a sum of terms tau_0 > tau_1 > ..., one for each N or K, where tau_i is the product of 1/s over
+the letters after the i-th N or K. The ratio of neighbouring terms is the product of s over the letters from just after one
+N or K up to and including the next:
+
+  tau_(i+1)/tau_i = 19^L / (r 200^L 20^M),   L letters l, M letters m, r = 19 (next letter N) or 10 (next letter K),
+
+a **word ratio**, at most 1/10. Two words have the same fingerprint when S' psi(W) = S psi(W') for products S, S' of 2, 5
+and 19; clearing the powers of 19 in the denominators, that is a **balance**: a sum of products of 2, 5 and 19 equal to
+another such sum. Call a list **word-shaped** if, largest first, each neighbouring ratio is a product of one or more word
+ratios. Any sub-list of a word's terms is word-shaped (Q5).
+
+**Conjecture 21.2 (open, searched).** Let two word-shaped lists of products of 2, 5 and 19 have equal sums, with no
+smaller balance inside (no nonempty proper part of the numbers, taken from both sides, balances). Then either each list
+is one number, the same, or the lists are 19c, c and 20c.
+
+![Figure 69](figures/fig69-only-nineteen-plus-one.png)
+
+*Figure 69. A: primitive balances (up to scaling): 18,852 with each side merely 10-lacunary (numbers up to 10^9, 3 terms a
+side), exactly one with each side word-shaped (up to 10^15, 4 terms a side). B: four of them on a log scale; only
+19 + 1 = 20 has both sides stepping down by word ratios.*
+
+What the search found (`explore21.py`, Q3 and Q4):
+- word-shaped balances, every list of up to 4 numbers a side with numbers up to 10^15 (11,722,261 sums): only 19 + 1 = 20;
+- balances with each side only 10-lacunary, up to 3 a side and 10^9: 18,852, e.g. 76 + 5 = 80 + 1, 125 + 4 = 128 + 1,
+  361 + 20 = 380 + 1, 380 + 19 + 1 = 400;
+- balances whose sides only obey the 2- and 5-size rule of a word (going down a side, the powers of 2 and of 5 never grow),
+  up to 3 a side and 10^8: 319, e.g. 380 + 19 + 1 = 400 and 125 + 5 = 128 + 2.
+
+The last line answers the coordinator's question whether the 2-adic and 5-adic sizes together with the 19-adic one
+constrain every length at once: the 2- and 5-sizes alone do not; what kills those 319 is that every step of a word carries
+a factor 19 or 10, which is a joint condition on all three primes.
+
+### 25.4 Conjecture 21.2 gives every length
+
+**Lemma 21.3 (by hand).** Let W and W' be canonical words (19.3) with S' psi(W) = S psi(W'), and suppose Conjecture 21.2
+holds for the smallest balance inside that contains the largest term. Then the leading terms agree: S' tau_0 = S tau'_0.
+
+*Proof.* Write the balance as sum of a_i = sum of b_j with a_i = S' tau_i, b_j = S tau'_j, and say the largest number is
+x = a_0 >= b_0 (the other case is the same). Among the parts of the balance that balance and contain x, take a smallest,
+P. Nothing smaller inside P balances (otherwise the rest of P balances too, and one of the two holds x), and each side of
+P is a sub-list of one word's terms, so word-shaped. By 21.2, P is one number each side or 19c, c against 20c.
+- One each side: x = b_j <= b_0 <= x, so a_0 = b_0.
+- 19c, c against 20c: since x is the largest, x = 20c, so 19c and c are among the b's. As b_0 <= 20c and the b's drop by
+  at least 10 at each step, 19c = b_0 (otherwise b_0 >= 190c). Then c = b_j with b_j/b_0 = 1/19. That needs j = 1
+  (b_2 <= b_0/100) and a word ratio of exactly 1/19, and the only one is "the next letter is N, with nothing between":
+  each l adds 1 to the 19-adic size and a final N takes 1 away, so there is no l and the final letter is N, and then the
+  2-adic size rules out any m. So W' starts N N, which a canonical word never does. ∎
+
+**Lemma 21.4 (by hand).** Let W = N u and W' = N u' be canonical words with t_u = t_(u') and the same canonical form,
+c(u) = c(u'). Then u = u'.
+
+*Proof.* Write u = l^a m^b y v with y the second N or K of W, and u' = l^(a') m^(b') y' v'. From t_(xw) = s_x t_w + t_x
+and t_x = s_x for N and K, t_u = lambda^a mu^b (s_y/s_N) t_(Nv). The canonical form of u is that of N v; if v starts with N
+the front move N N -> N m keeps psi and divides s by 20/19, and the swaps and the trailing strip keep t, so
+t_(Nv) = (20/19)^d t_(c(u)) with d = 1 if v starts with N and 0 if not. So the hypotheses give
+
+  lambda^(a - a') mu^(b - b') (s_y/s_(y')) (20/19)^(d - d') = 1.
+
+Comparing the powers of 19, 2 and 5 (lambda = 19/(2^3 5^2), mu = 1/(2^2 5), s_N/s_K = 10/19), the only solutions are
+a = a', b = b', y = y', d = d', or a - a' = +-1, b - b' = -+1 with y and y' different, and the latter puts an m right
+before a K (for example u' = l^(a-1) m^(b+1) K ...), which a canonical word never has (mK -> lN). So a, b, y and d agree.
+If d = 0, c(u) is N v itself, so v = v'. If d = 1, v = N z and c(u) is N m z with the m pushed right: past the l's at the
+start of z (ml -> lm), then it stops before an m or an N, giving N l^j m z_2, or it meets a K, giving N l^(j+1) N z_3 (and
+if z is empty, c(u) = N). The shapes differ at the letter after the l's and each gives z back, so z = z'. ∎ (Q6 also
+checks the statement directly on all 38,047 canonical words N u up to 10 letters.)
+
+**Theorem 21.5 (by hand).** If Conjecture 21.2 holds, Conjecture 15.3 holds for every pair of words. More precisely, 21.2
+for lists of at most k and k' numbers gives 15.3 for every pair of words with at most k and k' letters N or K.
+
+*Proof.* By induction on the number of N and K letters. It is enough to take W and W' canonical (the canonical form keeps
+the fingerprint) with S' psi(W) = S psi(W'). Lemma 21.3 gives S'/s_u = S/s_(u') (tau_0 = 1/s_u for W = N u), and since
+psi(N u) = psi(u) + 1/s_u, also S' psi(u) = S psi(u'). If u is empty, psi(u') = 0, so u' has no N or K, and being the
+tail of a canonical word it is empty: W = W'. Otherwise u and u' have the same fingerprint and one N or K fewer, so by
+induction c(u) = c(u'); and t_u = psi(u) s_u = psi(u') s_(u') = t_(u') from the two equations. Lemma 21.4 gives u = u'. The
+balances used never have more numbers than the words have N or K letters. ∎
+
+![Figure 70](figures/fig70-all-lengths-reduction.png)
+
+*Figure 70. The chain of Theorem 21.5. Green: proved by hand in this round, with Proposition 15.2 and the canonical form
+of 19.3. Orange: Conjecture 21.2, open for all sizes and searched to 4 numbers a side and 10^15.*
+
+### 25.5 Where it stops
+
+Conjecture 21.2 is a statement about balances with any number of terms. For a fixed number it is a unit equation, which
+the subspace theorem makes finite but not explicit, and the bottom of a balance can be peeled off by 2- and 5-adic sizes
+one step at a time, but each step costs a logarithm, as in rounds 16 to 19; the 319 balances above show that the 2- and
+5-sizes alone cannot do it. 21.2 is also stronger than 15.3 (it allows any word-shaped lists, not only a word's terms),
+so a counterexample to 21.2 would not disprove 15.3. What is new is the shape of the problem: the identity 1 + 19 = 20,
+the same one behind N N = N m, is the only balance a collision can use, and the words enter only through the shape of
+neighbouring ratios.
+
+### 25.6 Is it a lead?
+
+- **The levels 1, 2, 4, 8: no.** The pattern is real but comes from the example's choice kappa = 1/10, mu = 1/20, labels
+  the four letters and not lengths, and changes with the break; Hurwitz's bound has no counterpart here.
+- **Conjecture 21.2: a modest lead.** It is one statement about the primes 2, 5 and 19 with no words in it, it implies
+  the conjecture at every length by an argument proved here, and the search finds nothing against it. Proving it for
+  every size still needs a new idea of the kind 19.6 describes; fixed sizes of it are the kind of case rounds 16 to 19
+  did by computer, and would give an independent route to those results.
+
+### 25.7 Who proved what
+
+| Piece | Who |
+|---|---|
+| Pointing at the levels 1, 2, 4, 8 and asking whether they cap the problem | **Brennan** |
+| Finding where 1, 2, 4, 8 sits in the numbers (the letters' powers of 2), Proposition 21.1 | **Ours** (DRAFT), by hand, Q1 |
+| Words of every length behave alike past 8 letters | Proposition 15.2 and Figure 48 (round 15), Q2 here |
+| Conjecture 21.2 and its search | **Ours** (DRAFT), computed, Q3 and Q4 |
+| Lemmas 21.3 and 21.4, Theorem 21.5 (21.2 implies 15.3 at every length) | **Ours** (DRAFT), by hand, with Q5 and Q6 checking the facts used; not independently refereed |
+| Theorem 14.1, Proposition 15.2, the canonical form, Conjecture 15.3 | Rounds 14 and 15 (sections 18 and 19) |
+| Hurwitz's theorem (1898) | Classical, cited only |
+| The subspace theorem (Evertse, Schlickewei and Schmidt 2002) | Published, cited only |
