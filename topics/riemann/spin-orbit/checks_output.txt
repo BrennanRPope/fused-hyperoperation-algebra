@@ -1,0 +1,14 @@
+PASS every prime 2..31 leans toward 180 deg at the zeros (mean cos < 0)
+PASS the lean matches Landau's formula within 0.001 for every prime 2..31
+PASS the lean is largest near p = 7 (log p / sqrt p peaks at e^2)
+PASS no pair of primes locks: |mean cos(gamma log p/q)| < 0.0005 for all six pairs
+PASS random heights show no lean for p = 2 (|mean| < 3 standard errors)
+PASS the p = 2 lean fades with height (first window more negative than last)
+PASS the p = 2 lean in every window is within 2 standard errors of -(log 2/sqrt 2)/log(gamma/2pi)
+PASS inserted pair y0 = 0.3 at gamma 3535: captured, formula within 10%, inside de Bruijn's bound  0.041 vs 0.041, bound 0.045
+PASS inserted pair y0 = 0.6 at gamma 3535: captured, formula within 10%, inside de Bruijn's bound  0.135 vs 0.133, bound 0.180
+PASS inserted pair y0 = 1.0 at gamma 3535: captured, formula within 10%, inside de Bruijn's bound  0.283 vs 0.264, bound 0.500
+PASS inserted pair y0 = 0.6 at gamma 1650: captured, formula within 10%, inside de Bruijn's bound  0.128 vs 0.121, bound 0.180
+PASS both rewind families are populated (each between 30% and 70% of pairs)  0.514
+
+12 of 12 checks pass

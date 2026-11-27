@@ -77,3 +77,5 @@ Nov 27: `topics/new-ties/` rounds 2 and 3 added as DRAFT (the union-fractal dime
 Nov 27: `topics/new-ties/` round 4 added as DRAFT (section 7: off the tangent line the true dimension is min(1, δ), with proved brackets for δ; 13 checks, picked up by CI as checks4.py; one more Lean theorem, two_law_threshold, compiled into Topics.NewTies; library now 3,718 theorems in 170 modules).
 
 Nov 27: `topics/riemann/known-tools/` added as DRAFT (the five known pieces applied to the zeros; the heat-flow rewind kept as a measuring tool; 13 checks, picked up by CI as checks.py; no Lean).
+
+Nov 27: `topics/riemann/spin-orbit/` added as DRAFT (spin–orbit resonance applied: fits the zeros under heat flow except at t = 0, breaks for primes; 12 checks, picked up by CI as checks.py; reads ../known-tools/rewind_snaps.npz; no Lean; the squeeze files still being written in the shared folder are not included).
