@@ -1,0 +1,9 @@
+ratio-test cross-check mismatches: 0
+numbers: 2600
+edges: 110862
+word-shaped lists: 1656668  distinct sums: 1532250  t=4.2s
+primitive word-shaped balances with gcd 1: 2
+   ([20], [19, 1])
+   ([1], [1])
+examples other than {c}={c} and {19c,c}={20c}: 0  total time 4.7s
+peak RSS MB: 423

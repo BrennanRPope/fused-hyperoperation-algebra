@@ -1,0 +1,6 @@
+Q1: PASS  2, 19/10, 1/20 form a basis (determinant 1); 240 word ratios with L, M <= 14 are 2 u^e w^f, each once; products of up to 4 of them fill exactly the 160 cone points with F <= 8, which match the A, B, E form and round 21's word-shaped test
+Q2: PASS  1 + 2^A 5^B is never a power of 19 (A, B >= 1, below 60 and 40; it is 0 or 2 mod 3); 1 + 19^e is a product of 2 and 5 only for e = 1 (e < 400; for odd e, v2 = 2 and v5 = 1 + v5(e)); among 34,990 cone ratios to 10^60, 1 + rho is a unit only for rho = 1/19
+Q3: PASS  no two cone ratios to 10^60 share the fingerprint of 1 + rho (34,990 ratios); explore22.json: none to 10^300 (4,241,264 ratios); for two-letter words (H < 25) that fingerprint is psi's, and rho has j = 1
+Q4: PASS  sides of 3 against 1, 2 or 3 with d1 d2 <= 10^20: 2,956 equal-fingerprint pairs, all non-primitive; explore22.json to 10^35: 2,890,174 three-number sides, 17,607 pairs, none primitive
+Q5: PASS  referee22/REPORT.md gives items 1, 3, 4, 5 as holding (3 with wording fixes) and item 2 reproduced; 6 search logs present
+5/5 checks pass

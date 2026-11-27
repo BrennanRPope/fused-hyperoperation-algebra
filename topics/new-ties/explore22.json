@@ -1,0 +1,27 @@
+{
+ "C": {
+  "digits": 35,
+  "cone_elements": 7140,
+  "three_sides": 2890174,
+  "equal_fingerprint_pairs": 17607,
+  "not_primitive": 17607,
+  "primitive_found": [],
+  "n_primitive": 0,
+  "seconds": 18
+ },
+ "B": {
+  "digits": 300,
+  "cone_elements": 4241264,
+  "unit_sums": [
+   [
+    1,
+    19,
+    1,
+    -1,
+    1
+   ]
+  ],
+  "collisions": [],
+  "seconds": 24
+ }
+}

@@ -1,0 +1,10 @@
+Thm 14.1 + recursion on all 87381 words up to length 8: failures 0
+Prop 15.2 identities on 3000 random tails: failures 0
+canon on all 349525 words up to length 9: fingerprint changed 0 ; not idempotent 0
+local description of canonical words = canon(w)==w test, lengths 1..10: agree
+canonical words by length: [1, 1, 5, 17, 58, 198, 676, 2308, 7880, 26904, 91856, 313616]
+rewriting mK->lN, ml->lm: random order vs fixed order on 20000 words: differ 0
+canonical words up to length 13: first two terms in ratio 1/19, or a ratio > 1/10: 0
+Item 1: random rational kappa, mu with a>=0 ( 138283 cases): failures 0
+Item 1: with a<0 the pattern (0,a,b,a+b) fails in 60524 random cases (so a>=0 is needed; a>=1 is more than needed)
+Item 1 example: nu, kappa, mu, lambda = 1/19 1/10 1/20 19/200 ; 2^v2(1/.) = [1, 2, 4, 8] ; equal to s_N, s_K, s_m, s_l: True

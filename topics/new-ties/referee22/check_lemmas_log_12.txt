@@ -1,0 +1,11 @@
+canonical words up to length 12 : 443520  t=2.7s
+invariant v2(s)-2v5(s)-v19(s) = #N/K on 20000 sampled canonical words: failures 0
+fingerprint classes: 443520 ; classes with two or more canonical words: 0 []
+non-canonical NN vs Nm: psi 20 20 ; terms [Fraction(19, 1), Fraction(1, 1)] [Fraction(20, 1)] ; minimal part with largest: [([Fraction(19, 1), Fraction(1, 1)], [Fraction(20, 1)])] -> leading terms 19 vs 20 differ: canonical hypothesis is needed
+minimal part containing the largest is primitive: tested 4001 parts, non-primitive 0
+Lemma 21.4: groups (canon(u), t_u): 443520 ; groups with two different u: 0 []
+  for comparison: canon(u) classes 129905 holding 443520 distinct u; largest class size 140
+  without the canonical hypothesis (all u up to length 8 ending in N/K): 9199 groups with several u; shortest: [['lN', 'mK'], ['KlN', 'KmK'], ['NlN', 'NmK'], ['lNK', 'mKK'], ['lNN', 'mKN'], ['llN', 'lmK', 'mlK']]
+15.3 on all 87381 words up to length 8: fingerprint classes 3265 ; classes with two canonical forms 0
+tau_0 = 1/s_u and psi(Nu) = tau_0 + psi(u) on 5000 canonical words: failures 0
+done t=14.7s

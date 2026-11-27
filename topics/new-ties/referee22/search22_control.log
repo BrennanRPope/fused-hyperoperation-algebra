@@ -1,0 +1,5 @@
+numbers <= 10^7: 333
+(a) word-shaped, <=3 a side, <=10^7: primitive gcd-1 balances: [((1,), (1,)), ((19, 1), (20,))]
+(b) loosened to ratios <= 1/10: primitive gcd-1 balances found: 14448 ; first few: [((1,), (1,)), ((19, 1), (20,)), ((76, 5), (80, 1)), ((125, 4), (128, 1)), ((125, 5), (128, 2)), ((125, 8), (128, 5)), ((125, 10, 1), (128, 8)), ((190, 19, 1), (200, 10))]
+    of which not word-shaped on some side: 14446
+peak RSS MB: 274

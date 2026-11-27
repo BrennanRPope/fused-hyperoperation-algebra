@@ -18,7 +18,9 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched. Round 16 (section 20): two more cases of that conjecture are now theorems (computer-assisted, with Matveev's bound and lattice reduction): no three-letter word has fingerprint 1, and no two two-letter words share one; longer words still rest on the searches. Round 17 (section 21): three letters against two is now a theorem too (computer-assisted, Matveev's bound, lattice reduction and an exact 2-adic logarithm, without Yu's p-adic theorem); three against three and longer words still rest on the searches. Round 18 (section 22): three against three is a theorem too (computer-assisted, with a new by-hand bound on the factors 19 in the numerator), so the conjecture now holds for every pair of words with at most three N/K letters each, and an independent recheck confirms Rounds 16 and 17; four letters and longer still rest on the searches. Round 19 (section 23): four letters is done too (computer-assisted, with a by-hand bound on the factors 19 for four letters), so the conjecture holds for every pair of words with at most four N/K letters each; at five letters that bound fails (proved for one family), so the next length needs a 19-adic tool such as Yu's theorem, not just more computation. Round 20 (section 24): an independent session redid rounds 18 and 19 from the statements alone and confirms them; at five letters every unbounded case has one two-logarithm 19-adic form, which a published bound and an exact digit argument handle, so five letters looks like a bigger run of the same method rather than a new idea (judgement, not run). Round 21 (section 25): Brennan's levels 1, 2, 4, 8 are really the four letters' powers of 2, but they come from the example's chosen numbers and cannot cap the lengths; and one statement about 2, 5 and 19, that 1 + 19 = 20 is the only balance with word-shaped sides (searched, open), is proved to give the conjecture at every length.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched. Round 16 (section 20): two more cases of that conjecture are now theorems (computer-assisted, with Matveev's bound and lattice reduction): no three-letter word has fingerprint 1, and no two two-letter words share one; longer words still rest on the searches. Round 17 (section 21): three letters against two is now a theorem too (computer-assisted, Matveev's bound, lattice reduction and an exact 2-adic logarithm, without Yu's p-adic theorem); three against three and longer words still rest on the searches. Round 18 (section 22): three against three is a theorem too (computer-assisted, with a new by-hand bound on the factors 19 in the numerator), so the conjecture now holds for every pair of words with at most three N/K letters each, and an independent recheck confirms Rounds 16 and 17; four letters and longer still rest on the searches. Round 19 (section 23): four letters is done too (computer-assisted, with a by-hand bound on the factors 19 for four letters), so the conjecture holds for every pair of words with at most four N/K letters each; at five letters that bound fails (proved for one family), so the next length needs a 19-adic tool such as Yu's theorem, not just more computation. Round 20 (section 24): an independent session redid rounds 18 and 19 from the statements alone and confirms them; at five letters every unbounded case has one two-logarithm 19-adic form, which a published bound and an exact digit argument handle, so five letters looks like a bigger run of the same method rather than a new idea (judgement, not run). Round 21 (section 25): Brennan's levels 1, 2, 4, 8 are really the four letters' powers of 2, but they come from the example's chosen numbers and cannot cap the lengths; and one statement about 2, 5 and 19, that 1 + 19 = 20 is the only balance with word-shaped sides (searched, open), is proved to give the conjecture at every length. Round 22 (section 26): an independent session confirms round 21's
+reduction; of the one statement, two numbers against one is proved by hand (only 19 + 1 = 20), two against two is
+Theorem 16.2 extended to a simple cone of ratios and holds to 300 digits, and the general case is still open.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1350,7 +1352,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] [Round 16 update: still open; Conjecture 15.3 now proved for all pairs with at most two N/K letters and for three letters against one, section 20] [Round 17 update: still open; Conjecture 15.3 now also proved for three N/K letters against two, section 21] [Round 18 update: still open; Conjecture 15.3 now proved for every pair with at most three N/K letters each, section 22] [Round 19 update: still open; Conjecture 15.3 now proved for every pair with at most four N/K letters each, section 23] [Round 20 update: still open; rounds 18 and 19 independently rechecked, and the 19-adic step for five letters scoped and done for the family that broke the bound, section 24] [Round 21 update: still open; reduced at every length to one statement about 2, 5 and 19 (Conjecture 21.2, searched, open), section 25] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] [Round 16 update: still open; Conjecture 15.3 now proved for all pairs with at most two N/K letters and for three letters against one, section 20] [Round 17 update: still open; Conjecture 15.3 now also proved for three N/K letters against two, section 21] [Round 18 update: still open; Conjecture 15.3 now proved for every pair with at most three N/K letters each, section 22] [Round 19 update: still open; Conjecture 15.3 now proved for every pair with at most four N/K letters each, section 23] [Round 20 update: still open; rounds 18 and 19 independently rechecked, and the 19-adic step for five letters scoped and done for the family that broke the bound, section 24] [Round 21 update: still open; reduced at every length to one statement about 2, 5 and 19 (Conjecture 21.2, searched, open), section 25] [Round 22 update: still open; that reduction independently rechecked, and 21.2 proved for two numbers against one, section 26] | 13.4, Y9 |
 
 ---
 
@@ -3066,8 +3068,9 @@ of section 14 (grey: 1, 8, 16, 128). B: on the collision surface the four powers
 doubles.*
 
 **Proposition 21.1 (by hand).** On the collision surface (13.4) nu = kappa/(2 - kappa) and lambda = mu (2 - kappa). If
-1/kappa has a >= 1 factors of 2 and 1/mu has b, then the stretches 1/nu, 1/kappa, 1/mu, 1/lambda (letters N, K, m, l) have
-0, a, b and a + b factors of 2.
+1/kappa has 2-adic valuation a >= 0 and 1/mu has b, then the stretches 1/nu, 1/kappa, 1/mu, 1/lambda (letters N, K, m, l)
+have 2-adic valuations 0, a, b and a + b. [Round 22: the referee's wording; round 21 had a >= 1 and "factors of 2", but
+a >= 0 is enough and b and a + b need not be counts of factors.]
 
 *Why:* write kappa = p/(2^a q) with p and q odd; then 2 - kappa = (2^(a+1) q - p)/(2^a q) has an odd numerator, so the same
 2-adic size as kappa, so nu has 2-adic size 0 and lambda has the sizes of mu and kappa added. Checked on 810 surface points
@@ -3126,10 +3129,11 @@ a factor 19 or 10, which is a joint condition on all three primes.
 **Lemma 21.3 (by hand).** Let W and W' be canonical words (19.3) with S' psi(W) = S psi(W'), and suppose Conjecture 21.2
 holds for the smallest balance inside that contains the largest term. Then the leading terms agree: S' tau_0 = S tau'_0.
 
-*Proof.* Write the balance as sum of a_i = sum of b_j with a_i = S' tau_i, b_j = S tau'_j, and say the largest number is
-x = a_0 >= b_0 (the other case is the same). Among the parts of the balance that balance and contain x, take a smallest,
-P. Nothing smaller inside P balances (otherwise the rest of P balances too, and one of the two holds x), and each side of
-P is a sub-list of one word's terms, so word-shaped. By 21.2, P is one number each side or 19c, c against 20c.
+*Proof.* W and W' are nonempty (psi = 0 only for a word with no N or K, and then both are empty). Write the balance as
+sum of a_i = sum of b_j with a_i = S' tau_i, b_j = S tau'_j, and say the largest number is x = a_0 >= b_0 (the other case
+is the same). Take a balancing subfamily P that contains x and is minimal by inclusion (it need not be unique). P is
+primitive: a proper balancing part Q of P cannot contain x, and then P minus Q is a smaller balancing part containing x.
+Each side of P is a sub-list of one word's terms, so word-shaped. By 21.2, P is one number each side or 19c, c against 20c.
 - One each side: x = b_j <= b_0 <= x, so a_0 = b_0.
 - 19c, c against 20c: since x is the largest, x = 20c, so 19c and c are among the b's. As b_0 <= 20c and the b's drop by
   at least 10 at each step, 19c = b_0 (otherwise b_0 >= 190c). Then c = b_j with b_j/b_0 = 1/19. That needs j = 1
@@ -3156,7 +3160,9 @@ if z is empty, c(u) = N). The shapes differ at the letter after the l's and each
 checks the statement directly on all 38,047 canonical words N u up to 10 letters.)
 
 **Theorem 21.5 (by hand).** If Conjecture 21.2 holds, Conjecture 15.3 holds for every pair of words. More precisely, 21.2
-for lists of at most k and k' numbers gives 15.3 for every pair of words with at most k and k' letters N or K.
+for balances with one side at most k numbers and the other at most k' gives 15.3 for every pair of words with at most k
+and k' letters N or K. (This reduces 15.3 to 21.2; since 21.2 is only searched, it does not make 15.3 a theorem at any
+new size.)
 
 *Proof.* By induction on the number of N and K letters. It is enough to take W and W' canonical (the canonical form keeps
 the fingerprint) with S' psi(W) = S psi(W'). Lemma 21.3 gives S'/s_u = S/s_(u') (tau_0 = 1/s_u for W = N u), and since
@@ -3197,7 +3203,140 @@ neighbouring ratios.
 | Finding where 1, 2, 4, 8 sits in the numbers (the letters' powers of 2), Proposition 21.1 | **Ours** (DRAFT), by hand, Q1 |
 | Words of every length behave alike past 8 letters | Proposition 15.2 and Figure 48 (round 15), Q2 here |
 | Conjecture 21.2 and its search | **Ours** (DRAFT), computed, Q3 and Q4 |
-| Lemmas 21.3 and 21.4, Theorem 21.5 (21.2 implies 15.3 at every length) | **Ours** (DRAFT), by hand, with Q5 and Q6 checking the facts used; not independently refereed |
+| Lemmas 21.3 and 21.4, Theorem 21.5 (21.2 implies 15.3 at every length) | **Ours** (DRAFT), by hand, with Q5 and Q6 checking the facts used; independently rechecked in round 22 (section 26) |
 | Theorem 14.1, Proposition 15.2, the canonical form, Conjecture 15.3 | Rounds 14 and 15 (sections 18 and 19) |
 | Hurwitz's theorem (1898) | Classical, cited only |
 | The subspace theorem (Evertse, Schlickewei and Schmidt 2002) | Published, cited only |
+
+## 26. Round 22 (DRAFT): an independent recheck of round 21, and the smallest cases of Conjecture 21.2
+
+*Round 22, DRAFT. Brennan's go-ahead after round 21 ("Yes let's do it!!"). Code: `explore22.py`, `checks22.py` (5/5, a few
+seconds, under 0.1 GB), `figures22.py`; the referee's files are in `referee22/`. Pictures: Figures 71 and 72.*
+
+### 26.1 The short answer
+
+An independent session redid Proposition 21.1, Lemmas 21.3 and 21.4, Theorem 21.5 and the search for Conjecture 21.2 from
+their statements alone, and confirms all of them (with wording fixes, now applied in section 25). So the reduction of
+Conjecture 15.3 at every length to Conjecture 21.2 now stands rechecked. Of 21.2 itself, the smallest open case, two
+numbers against one, is now proved by hand (Proposition 22.1): 19 + 1 = 20 is the only such balance. Two against two turns
+out to be a direct extension of Theorem 16.2 (two two-letter words), and nothing is found to 300 digits; three-number
+sides show nothing new to 35 digits. Every larger size is still a computation of the round-16 kind at best, and all sizes
+at once still need a new idea.
+
+### 26.2 The recheck
+
+The referee worked from a brief with the statements only and did not open section 25 or the round-21 code
+(`referee22/BRIEF.md`, `referee22/REPORT.md`).
+
+| Item | Verdict | Extra |
+|---|---|---|
+| Proposition 21.1 | Holds | a >= 0 is enough; 138,283 random cases |
+| Search for 21.2 | Reproduced, nothing new | 4 a side to 10^15, 5 a side to 10^12, 6 a side to 10^10 |
+| Lemma 21.3 | Holds, with wording fixes | the minimal balancing part is primitive; W, W' nonempty |
+| Lemma 21.4 | Holds | all 443,520 canonical words to length 12 checked |
+| Theorem 21.5 | Holds | still conditional on 21.2 |
+
+The referee also checked that all 443,520 canonical words up to 12 letters have different fingerprints (round 21 had
+129,904 up to 11), and that the number phi(s) = v2(s) - 2 v5(s) - v19(s) of a word counts its N and K letters.
+
+### 26.3 The word-shaped ratios form a cone
+
+**Proposition 22.2 (by hand).** Write u = 19/10 and w = 1/20. Every product of 2, 5 and 19 is 2^j u^E w^F for exactly one
+triple of integers (j, E, F) (the change of coordinates has determinant 1). A word ratio is 2 u^e w^f with f >= 1 and
+-1 <= e <= f - 1, and each such pair (e, f) is exactly one word ratio: e = f - 1 is "l^e, then K", and e <= f - 2 is
+"l^(e+1) m^(f-e-2), then N" ("l^L m^M, then K" with M >= 1 is the same number as "l^(L+1) m^(M-1), then N", the move
+mK = lN). So a product of j word ratios is 2^j u^E w^F with
+
+  F >= j   and   -j <= E <= F - j,
+
+and every such point is reached. In plain powers: rho = 19^E / (2^A 5^B) is a product of word ratios exactly when
+B <= A <= 2B, E <= A - B and E <= 2B - A - 1, and then j = 2B - A - E (the referee's phi, counted on 1/rho).
+
+*Why:* since 10 * 20 = 200, 2 u^L w^(L+M+1) = 19^L / (10 * 200^L 20^M), the K step, and dividing by u gives
+19^(L-1) / (200^L 20^M), the N step. Adding j pairs (e_i, f_i), each with f_i >= 1 and -1 <= e_i <= f_i - 1, gives
+exactly F >= j and -j <= E <= F - j. Writing F = B - E and j = 2B - A - E turns these into the plain-power form.
+Checked: 240 word ratios each appear once; products of up to 4 fill exactly the 160 cone points with F <= 8, which agree
+with round 21's word-shaped test (Q1).
+
+![Figure 71](figures/fig71-the-cone.png)
+
+*Figure 71. A: the cone of Proposition 22.2 in the coordinates (E, F), one layer for each number j of word ratios
+multiplied; N, K, mN, lN and lK marked. B: the case split of Proposition 22.1, which leaves only 1 + 19 = 20.*
+
+### 26.4 Two numbers against one
+
+**Proposition 22.1 (by hand).** If a + a rho = b with a, b products of 2, 5 and 19 and rho word-shaped, then rho = 1/19,
+so the balance is 19c + c = 20c.
+
+*Proof.* We need 1 + rho to be a product of 2, 5 and 19. Write rho = 19^E / (2^A 5^B) in the cone (so A >= B, and B >= 1
+unless A = B = 0).
+- E >= 1: then B >= 2, and 1 + rho = (19^E + 2^A 5^B)/(2^A 5^B), whose numerator has no factor 2, 5 or 19 and is more
+  than 1. No.
+- E = 0: then B >= 1, and the numerator 1 + 2^A 5^B is 0 or 2 mod 3 (as 2 and 5 are -1 mod 3), while a power of 19 is
+  1 mod 3. No.
+- E = -e < 0 with B >= 1: the numerator 1 + 19^e 2^A 5^B has no factor 2, 5 or 19 and is more than 1. No.
+- rho = 1/19^e: we need 1 + 19^e = 2^x 5^y. For e even, 1 + 19^e is 2 mod 8 and 2 mod 5, so x = 1, y = 0, impossible.
+  For e odd, 19^e + 1 = 20 (19^(e-1) - 19^(e-2) + ... + 1) and the second factor is a sum of e odd numbers, so odd:
+  x = 2; by lifting the exponent, y = v5(19 + 1) + v5(e) = 1 + v5(e), and 5^(v5(e)) <= e. So 19^e + 1 <= 4 * 5 e = 20 e, which forces e = 1. ∎
+
+Checked: the facts used, for e < 400 and A, B in range, and directly among 34,990 cone ratios up to 10^60 (Q2).
+
+### 26.5 Two numbers against two
+
+A balance a(1 + rho) = b(1 + rho') with no smaller balance inside means 1 + rho and 1 + rho' have the same fingerprint
+(Section 25.3; one number each side matching is the trivial case, and 19 + 1 = 20 cannot sit inside a 2-against-2
+balance, since it would leave one number against none). With rho = n/d in lowest terms, the fingerprint of 1 + rho is that
+of n + d, so 2 against 2 says exactly:
+
+  **the map rho -> fingerprint(n + d) is one-to-one on the cone** (except that rho = 1/19 gives fingerprint 1, which 22.1
+  already covers).
+
+On the layer j = 1, rho is a single word ratio, and a word with two N/K letters has psi = tau_0 (1 + rho); so on that
+layer the statement is Theorem 16.2 (different two-letter words have different fingerprints), with Theorem 15.5 for the
+unit case. Q3 checks that the j = 1 fingerprints are those of psi. So
+2 against 2 is Theorem 16.2 extended from one layer of the cone to all of it. It is a four-term unit equation
+(n + d = S (n' + d')): finite by the subspace theorem, but with no explicit bound in general. The round-16 method (a
+2-adic step, Matveev's bound and lattice reduction) would handle it one layer at a time, and the case "rho = 1/(19^e 2^A
+5^B)" has e unbounded and needs the two-logarithm 19-adic step of round 20 as well. That is feasible but heavy, and it
+would not prove anything new about Conjecture 15.3, which round 19 already proved up to 4 letters against 4.
+
+**Search** (`explore22.py B`): all 4,241,264 cone ratios with numerator and denominator up to 10^300 have different
+fingerprints of n + d, and 1 + rho is a unit only for rho = 1/19 (Q3).
+
+### 26.6 Three numbers on a side
+
+A three-number side, scaled so its largest number is 1, is 1 + rho_1 + rho_1 rho_2 with rho_1, rho_2 in the cone. The
+search (`explore22.py C`) took every pair with d1 d2 up to 10^35 (2,890,174 sides) and compared fingerprints against each
+other and against all one- and two-number sides: 17,607 pairs share a fingerprint, and every one has a smaller balance
+inside (it contains 19 + 1 = 20), so none is primitive (Q4). This adds depth to round 21's search (4 a side, numbers to
+10^15) on three-number sides only.
+
+![Figure 72](figures/fig72-where-21-2-stands.png)
+
+*Figure 72. Conjecture 21.2 by the sizes of its two sides. Dark green: proved (1 against 1 is trivial, 2 against 1 is
+Proposition 22.1). Lighter: searched with nothing found; the label gives the bound on the numbers (* = on d1 d2). Sizes 5
+and 6 are the referee's searches.*
+
+### 26.7 Where it stops, and is it a lead?
+
+- **Proved:** Theorem 21.5 is now independently rechecked, so all lengths really do reduce to Conjecture 21.2. Of 21.2,
+  sizes (1, 1) and (2, 1) are proved by hand.
+- **Not proved:** (2, 2) is a clean extension of Theorem 16.2 but needs the Baker and lattice machinery plus a 19-adic
+  step; (3, *) and up are unit equations with more terms, harder at each size. A proof of every size at once needs an
+  idea that sees the factor 19 or 10 at every step of a word, which neither the subspace theorem nor the 2- and 5-sizes
+  supply (section 25.5).
+- **Lead?** Still a modest one. The recheck makes the reduction solid, and the cone (22.2) gives the problem a simple
+  shape that the next attempt can use; but nothing in this round brings an all-sizes proof closer, and it is not yet a new
+  theorem about the original break.
+
+### 26.8 Who proved what
+
+| Piece | Who |
+|---|---|
+| The go-ahead to push on round 21 | **Brennan** |
+| Recheck of Proposition 21.1, Lemmas 21.3 and 21.4, Theorem 21.5 and the 21.2 search, with wording fixes | Independent referee session (DRAFT), `referee22/` |
+| Proposition 22.2 (the cone) | **Ours** (DRAFT), by hand, Q1; not independently refereed |
+| Proposition 22.1 (2 against 1) | **Ours** (DRAFT), by hand, Q2; not independently refereed |
+| 2 against 2 is Theorem 16.2 on the whole cone; searches to 10^300 and (three a side) 10^35 | **Ours** (DRAFT), computed, Q3 and Q4 |
+| Theorems 15.5 and 16.2, the 19-adic step | Rounds 15, 16 and 20 |
+| Lifting the exponent; the subspace theorem; Matveev's bound | Classical / published, cited only |
