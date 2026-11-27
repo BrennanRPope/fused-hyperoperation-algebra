@@ -43,7 +43,7 @@ table{{border-collapse:collapse;font-size:14.5px;width:100%}} th,td{{border-bott
 .scroll{{overflow-x:auto}} code{{overflow-wrap:anywhere;font-size:.92em}} hr{{border:0;border-top:1px solid var(--line);margin:2em 0}}
 strong{{color:inherit}}
 </style></head><body>
-<header><span class="tag">DRAFT · Nov 26, 2026</span><h1>Starting from the hypersphere: which laws come out?</h1>
+<header><span class="tag">DRAFT · updated Nov 27, 2026</span><h1>Starting from the hypersphere: which laws come out?</h1>
 <p>Affine Composition Theory. i, π and e first, then each fundamental result and the physics, started from the hypersphere in our polar coordinates. Orange in the pictures is known math; blue is ours; red does not work.</p></header>
 <main><article>{body}</article></main></body></html>'''
 open(out, "w").write(html)

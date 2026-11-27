@@ -19,7 +19,14 @@ def halves():
     for line in open(os.path.join(HERE, 'gupta_halves.txt')):
         if '=' in line and not line.startswith('#'):
             k, v = line.split('=', 1); out[k.strip()] = sp.sympify(v.strip(), locals=ns)
-    return out['ell_1PN'], out['ell_2PN']
+    l2 = out['ell_2PN'] + (CORRECTION if CORRECTED else 0)
+    return out['ell_1PN'], l2
+# Correction (ours, fokker2.py): the paper's static G^2 m1 m2 q1 q2 / r^3 coefficient breaks the no-force rule for
+# extremal pairs; an independent static calculation (fokker2.py) agrees with every other static term of the paper and
+# differs here only, by this amount in the half ell_2 (so 12 (1 - a^2 al1 al2) in L).  Set CORRECTED = False for the
+# paper as printed.
+CORRECTED = True
+CORRECTION = 6*G**2*m1*m2*q1*q2*(1 - a**2*al1*al2)/r**3
 def image(ex):
     ex = ex.subs({L1s: 7 + 10*gb + sp.Rational(7, 2)*gb**2 - 2*d2 + 2*bb1, L2s: 8 + 10*gb + sp.Rational(7, 2)*gb**2 - 2*d2 + 4*bb1})
     sw = {m1: m2, m2: m1, q1: q2, q2: q1, al1: al2, al2: al1, be1: be2, be2: be1, bb1: bb2, bb2: bb1, d1: d2, d2: d1, e1: e2, e2: e1,

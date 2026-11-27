@@ -1,6 +1,6 @@
 # DRAFT · Newton's orbits and hydrogen's levels on one 3-sphere: does the swap rule give Mercury and fine structure?
 
-**DRAFT, Nov 26 2026.** Part of Affine Composition Theory, the theory built on Fused Hyperoperation Algebra (repo:
+**DRAFT, Nov 26 2026; sections 12–13 corrected and added Nov 27 2026.** Part of Affine Composition Theory, the theory built on Fused Hyperoperation Algebra (repo:
 fused-hyperoperation-algebra); a section of `hypersphere/`. Brennan asked to follow the lead "about Newton's orbits and
 hydrogen's energy levels": do GR's perihelion shift (Mercury's 43″ a century) and hydrogen's fine structure both come
 out of the swap rule, **turn = curvature × area** (from `precession/`), on the 3-sphere they share?
@@ -15,8 +15,9 @@ Checks: `checks_orbits.py` → `checks_orbits_output.txt`, **23 of 23 pass**, an
 `../division-algebras/magic/checks_misalign.py`, **6 of 6 pass** (section 9), and
 `../division-algebras/magic/twobody/checks_twobody.py`, **6 of 6 pass** (section 10), and
 `../division-algebras/magic/order2/checks_order2.py`, **7 of 7 pass** (section 11), and
-`../division-algebras/magic/twobody2/checks_twobody2.py`, **6 of 6 pass** (section 12) (numpy, scipy; real orbit simulations, not
-formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems),
+`../division-algebras/magic/twobody2/checks_twobody2.py`, **6 of 6 pass** (section 12), and, for section 13 and the
+correction, `twobody2/checks_static.py` **9 of 9**, `twobody2/checks_kinetic.py` **3 of 3**, `twobody2/checks_bps.py`
+**6 of 6**, `twobody2/checks_mixed2.py` **5 of 5** (numpy, scipy; real orbit simulations, not formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems),
 compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, no statement changed). Colour key as before: **orange = known, blue = ours**.
 
 ## The result
@@ -41,9 +42,14 @@ compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, n
 7. **At the next order (section 11)** the pair rule survives and becomes a ladder: pairs of charges act at first
    order, triples join at second, all four at third. Around a two-charge black hole the orbit is an exact
    precessing ellipse at every order; around a one-charge one it never turns.
-8. **For two comparable black holes at second order (section 12)** one-charge pairs still close at every mass ratio,
-   and the mass ratio only enters multiplied by the first-order turn from pairs (for bodies with n equal charges).
-   **DRAFT: under correction.** The printed 2PN Lagrangian this relied on has an error in its static charge term; a corrected section is coming.
+8. **The published second-order equations for these black holes have one wrong term (section 12).** Gupta's
+   2PN Lagrangian (arXiv:2609.07413) makes two extremal like-charged black holes push on each other, which they do
+   not; one static term is off. With it corrected, two comparable one-charge black holes **do** turn at second order
+   (T₂ = 9ν/2, so 9/8 at equal masses); they close only as a small visitor. This retracts the earlier version of
+   section 12, which said they close.
+9. **Charges pointing different ways, comparable masses, second order (section 13).** The first-order turn and the
+   energy part of the second-order turn are the two small-visitor results weighted by mass share, plus νT, on every
+   pair tried. The rest needs one new number per pair (κ), for which I have no formula yet.
 
 **Does it open a lead?** Yes. For the electric force it turns the Coulomb orbit and Dirac's fine structure into one
 swap-rule area. For gravity the 6 is no longer put in by hand: it is an exact product of the same two twists the
@@ -433,56 +439,106 @@ Zahraee 2019; de Neeling and others 2023).
 **Does it open a lead?** Yes. It gives an exact reason why one charge keeps Kepler and two keep a rosette: the
 degree of one polynomial. The natural next step was the comparable-mass second order (section 12).
 
-## 12. Two comparable black holes at second order: one charge still closes
-
-**DRAFT: under correction.** The printed 2PN Lagrangian this relied on has an error in its static charge term; a corrected section is coming.
+## 12. Two comparable black holes at second order: a wrong term, and one charge turns after all
 
 ![Two black holes at second order](../figures/figD7-two-black-holes-at-second-order.png)
 
-*Figure D7. A: the second-order turn coefficient as the mass moves from one body to the other, for two black holes
-with opposite charges and 1, 2, 3 or 4 equal charges each. B: the part that depends on the mass ratio, divided by the
-first-order turn; ν is the product of the two mass shares (1/4 at equal masses). C and D: both bodies' paths at
-equal masses, simulated from the second-order equations.*
+*Figure D7 (corrected). A: the second-order turn coefficient as the mass moves from one body to the other, for two
+black holes with opposite charges and 1, 2, 3 or 4 equal charges each. B: the part that depends on the mass ratio;
+ν is the product of the two mass shares (1/4 at equal masses). C: two equal one-charge black holes, simulated from the
+corrected second-order equations at small J so the slow turn shows; the grey rays mark closest approach lap by lap.
+D: the same for four charges each.*
 
-Brennan asked for the comparable-mass case after section 11 left it open, and had his Mac Studio fetch the published
-second-order (2PN) two-body Lagrangian for charged dilaton black holes (Gupta 2026, arXiv:2609.07413), transcribed
-in `sources/gupta-2609.07413.md` at the repo root. Method: replace the accelerations with the Newtonian
-equations of motion, pass to the Hamiltonian with total momentum zero, solve for the radial momentum, and take the
-periastron advance from the radial action, expanded around Kepler. Checks:
-`../division-algebras/magic/twobody2/checks_twobody2.py`, **6 of 6 pass**.
+**Correction (Nov 27 2026).** The first version of this section, pushed as DRAFT, said two one-charge black holes
+still close at every mass ratio and that the mass ratio enters as (3/2)νT. Both came from Gupta's Lagrangian as
+printed, and that Lagrangian has a wrong static term. They are retracted; the numbers below replace them.
 
-**What the paper covers.** One vector field and one scalar, so each body carries charges all pointing the same
-way. In the four-charge family that means black holes with n equal charges (dilaton coupling a = √3, 1, 1/√3, 0
-for n = 1, 2, 3, 4). Here the two bodies have opposite charges, so they attract, as section 11's visitor did.
+Brennan asked for the comparable-mass case after section 11, and had his Mac Studio fetch Gupta's second-order (2PN)
+Lagrangian for charged dilaton black holes (arXiv:2609.07413), transcribed in `sources/gupta-2609.07413.md` at the repo root. Method
+as before: replace the accelerations with the Newtonian equations of motion, pass to the Hamiltonian with total
+momentum zero, and take the periastron advance from the radial action. The paper covers one vector field and one
+scalar, so each body's charges point the same way: in the four-charge family, black holes with n equal charges
+(dilaton coupling a² = 3, 1, 1/3, 0 for n = 1, 2, 3, 4).
 
-**The result: the pair rule survives at second order for comparable masses, in every case the paper covers.**
+**The wrong term.** I built the static part of the 2PN Lagrangian from scratch (Fokker action in d dimensions,
+`twobody2/fokker2.py`) and compared it term by term (`checks_static.py`, 9 of 9 pass). Every first-order static term
+agrees, and every second-order one agrees up to the freedom in the spatial metric's shape, except one: the
+G²m₁m₂q₁q₂/r³ coefficient, which in the full Lagrangian is off by **12(1 − a²α₁α₂)G²m₁m₂q₁q₂/r³** (S4). The printed
+term breaks a rule any correct version must keep: two extremal black holes with like charges feel no static force.
+As printed they feel one, of size 12(a² − 1)(1 + a²)²G³m₁²m₂²/r³, for every coupling except a = 1 (S6; Fig D8 D).
+Corrected, there is none, for every coupling (S7). `pn2.py` now adds the correction by default (`CORRECTED = True`).
 
-- **Two one-charge black holes still close, at every mass ratio** (W3, Fig D7 C). Nothing turns at first or second
-  order.
-- **The mass ratio enters only multiplied by the first-order turn.** For n = 2, 3, 4,
-  T₂ = T₂(small visitor) + (3/2)·ν·T and T₂ₑ = T₂ₑ(small visitor) + ν·T, where T is the first-order turn from pairs
-  (1, 2, 3). So all three fall on one curve when divided by T (Fig D7 B), and where pairs give nothing, the mass
-  ratio adds nothing (W4). At equal masses the turn is a little larger than for a small visitor: 9/8 against 3/4 for
-  two charges each, 99/8 against 45/4 for four.
-- **This is special to these black holes.** In Einstein's theory the same term is −15ν, not (3/2)·6·ν (W5).
-- **Three independent checks hold the pipeline in place.** It reproduces Einstein's second-order two-body advance
-  (Damour and Schäfer) at four mass ratios (W1). In the small-visitor limit it reproduces section 11's exact results
-  for n = 1, 2, 3, 4 (W2), which also checks the transcription's velocity and acceleration terms, the part the
-  transcription could not check itself. Simulated equal-mass orbits land on the predicted coefficients, and the
-  one-charge orbit's leftover turn falls about 64 times each time L doubles, the size of the third-order terms the
-  equations leave out (W6).
+**The rest of the paper's equations hold up.** Everything else that this section depends on now has an independent
+check, apart from one block.
+- The velocity terms linear in one coupling are exactly right: the charge–charge block equals the time-symmetric
+  Fokker exchange of a photon, and the G-linear block equals graviton plus scalar exchange, up to a total time
+  derivative (`checks_kinetic.py`, 3 of 3, each with a control that a small change is caught).
+- The order-G²v² terms give the known moduli-space metric for slow extremal like-charged pairs (Shiraishi 1993:
+  flat at a² = 3, two-body only at a² = 1), for six couplings and every mass ratio (`checks_bps.py`, 6 of 6).
+- Einstein's theory (Damour–Schäfer) at four mass ratios, and section 11's exact small-visitor results for
+  n = 1–4, come out exactly (W1, W2).
+- **Not independently checked:** the order-G velocity terms carrying two charges (G m q² v²) in combinations other
+  than slow like-charged pairs. They pass the small-visitor limits and the mass-energy rule (section 13, M2), but I
+  have not derived them.
 
-**Limits.** Bodies with charges pointing different ways, or with different numbers of charges, need a second-order
-Lagrangian with several vector fields, which is not available; the comparable-mass test of the full pair rule (and of
-triples) is still open there. Extremal black holes as point particles; conservative dynamics only (no radiation).
-The transcription's readings of δ₂, ε₂ and the exchanged Λ's do not matter here (β = β′ = 0 for these black holes).
-**Is it new?** The Lagrangian is Gupta's. That two one-charge black holes do not precess is known in N = 8
-supergravity (Caron-Huot and Zahraee 2019, from scattering), and fits Davis and Melville's cancellation argument.
-I have not found the periastron advance for n = 2, 3, 4 at second order, or the ν·T rule, written down; I have not
-checked whether Gupta's paper computes an advance, since the transcription records none.
-**Does it open a lead?** Yes, a modest one. It says the hidden symmetry is tied to pairs of charges for comparable
-masses too, not only for a small visitor. The sharp next test needs a several-field second-order Lagrangian, so that
-misaligned and mixed-charge pairs can be tried.
+**The result, corrected (checks_twobody2.py, 6 of 6).**
+- **Two one-charge black holes turn at second order when their masses are comparable** (W3; Fig D7 A, C):
+  T = 0 and T₂ₑ = 0, but **T₂ = 9ν/2**, so 9/8 at equal masses. They close only in the small-visitor limit, as
+  section 11 found. A simulated equal-mass orbit gives 1.136 then 1.128 as J doubles, against 1.125 (W6).
+- **For n equal charges, T₂ = T₂(visitor) + (9/2 − 3T)ν and T₂ₑ = T₂ₑ(visitor) + νT**, with T = n − 1 the first-order
+  turn from pairs (W4; Fig D7 B). The 9/2 is the corrected static term; without it the rule would be (3/2)νT.
+- **Einstein's theory is different:** −15ν there (W5).
+
+**Assumptions.** Extremal black holes as point particles; conservative dynamics (no radiation); harmonic gauge;
+Gupta's transcribed Lagrangian with one term corrected; the G m q² velocity terms taken from the paper.
+**Known vs new.** Known: the Lagrangian (Gupta 2026); no precession for one-charge (half-BPS) pairs in N = 8
+supergravity at first order for any masses and at every order for a small visitor (Caron-Huot and Zahraee 2019),
+with no precession confirmed through third order in G from scattering. New here: the wrong static term and its
+correction, and the corrected comparable-mass advances. The one-charge T₂ = 9ν/2 is an order-G⁴ effect (it comes
+from the fourth-order scattering coefficient), where the N = 8 question is, as far as I found, still open; if the
+unchecked block above is right, the no-precession property of one-charge pairs fails there at comparable masses.
+**Does it open a lead?** Yes, two. The error is worth reporting to the author (Brennan's call). And the one-charge
+result makes a sharp prediction for N = 8 supergravity at fourth order in G, testable by anyone with the
+fourth-order amplitude or by deriving the one unchecked block.
+
+## 13. Charges pointing different ways, comparable masses, second order
+
+![Misaligned charges at second order](../figures/figD8-misaligned-charges-at-second-order.png)
+
+*Figure D8. A: the second-order turn across the mass ratio for seven pairs whose charges point different ways
+(charges listed per body); the circles are section 11's exact small-visitor values. B: the energy part of the
+second-order turn, after removing the mass-share average of the two visitors, against νT: every pair at every mass
+ratio sits on the line. C: the one new number per pair, κ, beside the same-direction pairs. D: the static term that
+was wrong, as printed and corrected.*
+
+Brennan asked to build the second-order equations for black holes whose charges point different ways, and the
+coordinator asked to check them against Gupta's same-direction case and the small-visitor limit. Method: lift the
+corrected Lagrangian to the four-charge (STU) family, four photons and three scalars (`twobody2/multi.py`). The lift
+leaves one split of the G q₁²q₂² terms free; matching the independent static calculation for nine pairs fixes it
+(g₁ = s₁; S9), and with that the lifted static terms equal ours for every pair tried. Checks:
+`twobody2/checks_mixed2.py`, **5 of 5 pass**.
+
+**The result: three rules, one of them still without a formula.** With X the first body's mass share,
+ν = X(1 − X), and (A|B) meaning a small A going round B:
+- **Both small-visitor limits come out exactly** at X → 0 and X → 1, for all seven pairs (M1; circles in Fig D8 A).
+- **The first-order turn and the energy part of the second-order turn follow mass shares:**
+  T = X·T(B|A) + (1 − X)·T(A|B), and T₂ₑ = X·T₂ₑ(B|A) + (1 − X)·T₂ₑ(A|B) + νT on every pair (M2; Fig D8 B). The νT
+  is what the relation between total energy and relative energy requires, so this is a consistency check passed.
+- **The energy-free part needs one number per pair:** T₂ = X·T₂(B|A) + (1 − X)·T₂(A|B) + ν(κ − 3T/2), with κ the same
+  at every mass ratio (M3). For the seven pairs κ = 57/4, 21/4, 9/4, 105/4, 1632/625, 359/108, 12 (Fig D8 C). For n
+  equal opposite charges κ = 3(4 − n)/2, matching section 12 (M4). I tried simple formulas in the charges for κ and
+  none fits all pairs.
+- **A simulated orbit agrees:** two equal-mass black holes with charges (1,1,0,0) and (0,−1,−1,0) give 4.108 then
+  4.115 as J doubles, against 4.112 (M5).
+
+**Assumptions.** As section 12, plus the lift: each photon couples to the scalars as in the STU model, and the
+three-scalar, four-photon terms follow from Gupta's one-field terms by the same exchange structure, with the free
+split fixed by the static match.
+**Known vs new.** Known: the small-visitor limits (section 11, ours); the same-direction case (section 12). New:
+the comparable-mass second-order equations for misaligned charges, and the three rules above. Not found written down
+anywhere I looked.
+**Does it open a lead?** A modest one. The pair rule's mass-share form survives at second order for everything except
+κ. A formula for κ would say whether the hidden symmetry has a comparable-mass form; I don't have one.
 
 ## Known vs ours
 
@@ -506,8 +562,15 @@ misaligned and mixed-charge pairs can be tried.
 - **Known, now read as discs:** v = c/2 at the innermost stable orbit, v = c at the photon sphere.
 - **Ours, exact (small visitor):** the polynomial orbit equation around a four-charge black hole; the ladder
   T₂ = ¾T² + 3·(triples)/K³; the closed-form rosette around a two-charge black hole (Z2–Z7).
-- **Ours, from Gupta's published Lagrangian:** the second-order advance for two comparable black holes with n equal,
-  opposite charges, T₂ = T₂(visitor) + (3/2)νT, T₂ₑ = T₂ₑ(visitor) + νT; one-charge pairs close (W1–W6).
+- **Ours, a correction to a published result:** Gupta's 2PN Lagrangian (arXiv:2609.07413) has a wrong static
+  G²m₁m₂q₁q₂/r³ term; as printed it gives extremal like-charged black holes a static force (S1–S9). Its other
+  velocity terms linear in one coupling, and its order-G²v² terms for slow like-charged pairs, check out exactly
+  (`checks_kinetic.py`, `checks_bps.py`).
+- **Ours, from the corrected Lagrangian:** for two comparable black holes with n equal, opposite charges,
+  T₂ = T₂(visitor) + (9/2 − 3T)ν, T₂ₑ = T₂ₑ(visitor) + νT; one-charge pairs turn, T₂ = 9ν/2 (W1–W6). The earlier
+  (3/2)νT rule and "one-charge pairs close" are retracted.
+- **Ours, misaligned charges at second order:** the lifted equations and the mass-share rules for T and T₂ₑ, with
+  one constant κ per pair in T₂ (M1–M5).
 - **Does not work:** the precession as an area on Fock's sphere (P7); GR's perihelion as one exact sum of areas
   (P5b); the split for eccentric orbits in closed form.
 
@@ -515,6 +578,9 @@ misaligned and mixed-charge pairs can be tried.
 
 1. Try the same three-piece split for a spinning black hole (Kerr), whose Kerr–Schild form is also exact.
 2. Read Biedenharn (1983) in full for the R1 equality, and search for the T = (N − 4v²)/B grouping.
+3. Derive the one unchecked block of the 2PN Lagrangian (the G m q² velocity terms) independently, which would settle
+   whether one-charge pairs really turn at comparable masses (section 12).
+4. Look for a formula for κ (section 13), starting from its dependence on the charge overlaps.
 
 ## Files
 
@@ -527,7 +593,9 @@ misaligned and mixed-charge pairs can be tried.
 `../division-algebras/magic/order2/` (`turn2.py`, `poly.py`, `explore2.py`, `checks_order2.py` 7/7,
 `checks_order2_output.txt`, `results_order2.json`, `figure_order2.py`), `../division-algebras/magic/twobody2/`
 (`gupta_halves.txt`, `pn2.py`, `orbit2pn.py`, `explore_pn2.py`, `checks_twobody2.py` 6/6, `checks_twobody2_output.txt`,
-`results_twobody2.json`, `figure_twobody2.py`), and
+`results_twobody2.json`, `figure_twobody2.py`; for the correction and section 13: `fokker2.py`, `checks_static.py` 9/9,
+`checks_kinetic.py` 3/3, `checks_bps.py` 6/6, `multi.py`, `checks_mixed2.py` 5/5, their `_output.txt` files,
+`results_mixed2.json`, `figure_mixed2.py`), and
 `../lean/Hypersphere.lean`.
 
 ## References
@@ -542,7 +610,10 @@ S. Melville, "Orbital precession and hidden symmetries in scalar-tensor theories
 systems with Kepler dynamics", Regul. Chaotic Dyn. 2024, arXiv:2303.13291 (section 9). T. Damour and G. Schäfer,
 Nuovo Cimento B 101, 127 (1988) (second-order periastron advance); P. K. Gupta, arXiv:2609.07413 (second-order
 two-body Lagrangian for Einstein–Maxwell–dilaton binaries, sections 11–12; transcribed in
-`sources/gupta-2609.07413.md` at the repo root).
+`sources/gupta-2609.07413.md` at the repo root; one static term corrected here, section 12). K. Shiraishi, "Moduli space metric for
+maximally-charged dilaton black holes", Nucl. Phys. B 402, 399 (1993), arXiv:1407.5377 (slow-pair check, section 12).
+A. D. Fokker, Z. Phys. 58, 386 (1929); J. A. Wheeler and R. P. Feynman, Rev. Mod. Phys. 21, 425 (1949)
+(time-symmetric exchange, section 12).
 
 V. Fock, Z. Phys. 98, 145 (1935). W. Pauli, Z. Phys. 36, 336 (1926). V. Bargmann, Z. Phys. 99, 576 (1936).
 J. Moser, Comm. Pure Appl. Math. 23, 609 (1970). W. R. Hamilton, Proc. R. Irish Acad. 3, 344 (1847).

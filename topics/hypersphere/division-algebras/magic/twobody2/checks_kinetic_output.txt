@@ -1,0 +1,4 @@
+PASS  EM (q1q2, G=0): Gupta's block minus Fokker exchange is a total derivative (EL max 0); control with v1^2 v2^2/(100 r) added detected (EL max 3.782); control with a total derivative added passes (EL max 0)
+PASS  graviton (G-linear, no scalar): Gupta's block minus Fokker exchange is a total derivative (EL max 0); control with v1^2 v2^2/(100 r) added detected (EL max 0.7467); control with a total derivative added passes (EL max 0)
+PASS  scalar (G-linear, coefficient of alpha1 alpha2): Gupta's block minus Fokker exchange is a total derivative (EL max 0); control with v1^2 v2^2/(100 r) added detected (EL max 2.228); control with a total derivative added passes (EL max 0)
+ALL PASS

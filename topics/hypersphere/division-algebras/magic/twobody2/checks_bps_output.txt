@@ -1,0 +1,7 @@
+PASS  a = 0: no static pull (0); order G: -3, -3 (metric -3); order G^2 invariant 2A2 + B2 = 12 (metric 12), same at every mass ratio
+PASS  a = 1/2: no static pull (0); order G: -11/4, -11/4 (metric -11/4); order G^2 invariant 2A2 + B2 = 11 (metric 11), same at every mass ratio
+PASS  a = 3/4: no static pull (0); order G: -39/16, -39/16 (metric -39/16); order G^2 invariant 2A2 + B2 = 39/4 (metric 39/4), same at every mass ratio
+PASS  a = 4/3: no static pull (0); order G: -11/9, -11/9 (metric -11/9); order G^2 invariant 2A2 + B2 = 44/9 (metric 44/9), same at every mass ratio
+PASS  a = sqrt(3): no static pull (0); order G: 0, 0 (metric 0); order G^2 invariant 2A2 + B2 = 0 (metric 0), same at every mass ratio
+PASS  a = sqrt(2): no static pull (0); order G: -1, -1 (metric -1); order G^2 invariant 2A2 + B2 = 4 (metric 4), same at every mass ratio
+ALL PASS

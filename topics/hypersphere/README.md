@@ -45,8 +45,10 @@ red = does not work. Lean: `lean/Hypersphere.lean`, compiled in the shared libra
   with each body's pairs weighted by its share of the mass (orbits section 10). At the next order it becomes a
   ladder: pairs act first, triples join at second order, all four at third; around a two-charge black hole the orbit
   is an exact precessing ellipse at every order (orbits section 11).
-  For two comparable black holes at second order, one-charge pairs still close at every mass ratio, and the mass
-  ratio only enters multiplied by the turn pairs already give (orbits section 12).
+  For two comparable black holes at second order, the published equations (Gupta 2026) turned out to have one wrong
+  static term; corrected, one-charge pairs do turn at comparable masses (T₂ = 9ν/2), retracting the earlier "still
+  close" (orbits section 12). With charges pointing different ways the mass-share rule survives at second order
+  except for one constant per pair (orbits section 13).
 - **Comes out of the sphere, or simpler there:** the curvature (1/radius², which is the curvature dial d at k = 0), the
   swap rule (turn = curvature × area is the sphere's curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
   of Newton's orbits (great circles on S³).
@@ -357,6 +359,12 @@ magic square of gravity theories are worked out in the orbits section 8.
 3. **Sphere = simplex with angles (section 3).** Settles the hypertriangle question and gives quantum states'
    geometry in our shape language. Known; useful for the write-up, not a new result.
 4. **Relativity on the sky's polar grid (section 8).** A clean reading of known physics; no new prediction.
+5. **A wrong term in a published Lagrangian, and an N = 8 prediction (orbits sections 12–13).** Gupta's 2PN
+   Lagrangian for charged dilaton black holes gives extremal like-charged pairs a static force; one term is off and we
+   have the correction, with the rest of the equations checked independently except one block. Corrected, two
+   comparable one-charge black holes turn at second order, which would be a fourth-order-in-G departure from the
+   no-precession property of half-BPS pairs in N = 8 supergravity (open in the literature as far as I found).
+   A useful negative result about the paper, and a sharp test for N = 8 supergravity.
 
 ## Next (offered, not started)
 
@@ -374,7 +382,8 @@ magic square of gravity theories are worked out in the orbits section 8.
   with misaligned charges (`stu.py`, `misalign.py`, `checks_misalign.py` 6/6, `figure_misalign.py` → figure D4), and
   for two comparable bodies (`twobody/`, `checks_twobody.py` 6/6, `figure_twobody.py` → figure D5), and at the next
   order (`order2/`, `checks_order2.py` 7/7, `figure_order2.py` → figure D6), and for two comparable bodies at second
-  order (`twobody2/`, `checks_twobody2.py` 6/6, `figure_twobody2.py` → figure D7)
+  order (`twobody2/`, `checks_twobody2.py` 6/6, `figure_twobody2.py` → figure D7; `checks_static.py` 9/9,
+  `checks_kinetic.py` 3/3, `checks_bps.py` 6/6, `checks_mixed2.py` 5/5, `figure_mixed2.py` → figure D8)
 - `lean/Hypersphere.lean`: 33 theorems, compiled in the shared library as `FusedAlgebra.Topics.Hypersphere`
 
 ## References

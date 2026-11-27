@@ -1,0 +1,10 @@
+PASS  S1 Newton + Coulomb + scalar at zeroth order  al1*al2*m1*m2 + m1*m2 - q1*q2
+PASS  S2 the independent calculation reproduces every first-order static term of the paper  
+PASS  S3 second-order static terms with three powers of one body (and four) agree with the paper up to the 3-metric shape n11 n12  difference (3,1) = -n11 n12/3
+PASS  S4 in the both-bodies-twice terms the only difference beyond the 3-metric shape is 12 (1 - a^2 al1 al2) G^2 m1 m2 q1 q2 / r^3 (not of n12^2 or n11 n22 form)  paper - ours = 2 n12^2 - -12*m1*m2*q1*q2*(a**2*al1*al2 - 1)
+PASS  S5 with that one term corrected, the paper's static terms equal ours up to the 3-metric shape  
+PASS  S6 printed paper: two extremal same-sign black holes feel a static second-order force for every coupling except a = 1  static energy term 12*m1**2*m2**2*(a - 1)*(a + 1)*(a**2 + 1)**2
+PASS  S7 ours (and the corrected paper): no static force between extremal same-sign black holes, every coupling, first and second order  
+PASS  S8 four-charge (STU) bodies, charges pointing different ways: no static force at first or second order whenever n12 = 0 (independent calculation)  (1, 0, 0, 0)|(0, 1, 0, 0): n12=0, static2=0; (1, 0, 0, 0)|(0, -1, 0, 0): n12=0, static2=0; (1, 2, 3, 0)|(2, 0, 1, 1): n12=0, static2=0; (1, 1, 0, 0)|(1, 1, 0, 0): n12=0, static2=0; (0, 0, 0, 2)|(-1, -1, -1, 0): n12=0, static2=0; (1, 0, 0, 0)|(-1, 0, 0, 0): n12=2, static2=56; (1, 2, 0, 0)|(0, -1, -3, 0): n12=4, static2=240; (1, 1, 1, 1)|(-2, 0, -1, 0): n12=6, static2=328; (5, 1, 2, 3)|(-1, -4, -2, -1): n12=32, static2=6240
+PASS  S9 the lifted multi-field equations (multi.py, corrected term, g1 = s1) equal the independent static calculation for all 9 pairs  
+ALL PASS
