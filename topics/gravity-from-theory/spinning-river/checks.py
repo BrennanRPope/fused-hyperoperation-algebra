@@ -31,6 +31,7 @@ EQ: the equator split three ways: which piece of the field gives each term of ro
     (round 26, equator_split.py -> equator_split.json).
 KN: charge on the spinning hole: which piece of the river gives each charge term (round 27, kn_split.py ->
     kn_split.json).
+SH: the black hole's shadow piece by piece (round 28, shadow_split.py -> shadow_split.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1680,6 +1681,60 @@ check("KN4 independent of the river's pieces: Kerr-Newman's own Carter equations
       all(c_["diff"] < 1e-15 for c_ in cn_kn_), cn_kn_)
 results["KN_charge_split"] = {"split": sp_kn_, "stiffness": gs_kn_,
                               "ratios": {k_: v_ for k_, v_ in ra_kn_.items() if k_ != "curves"}, "carter": cn_kn_}
+
+# ================================================================ SH1-SH4  the black hole's shadow, piece by piece (round 28)
+import shadow_split as sh_  # noqa: E402
+id_sh_ = sh_.identities()
+check("SH1 light rays (null, E = 1): all pieces together give Kerr's null radial function; the horizon factor "
+      "r^2 + a^2 - 2Mr appears only when the push is on (time part alone and ring + twist give r^2 + a^2: no horizon); "
+      "at a = 0 the time part alone is Newton's light, R = r^2(r^2 + 2Mr - b^2), with no photon sphere, and time part "
+      "+ push is Schwarzschild's, photon sphere r = 3M, b = sqrt(27) M (symbolic, exact)",
+      all(id_sh_[k_] for k_ in ("all_pieces_is_kerr_null", "horizon_only_with_push", "a0_time_part_is_newton_light",
+                                 "a0_push_is_schwarzschild", "a0_time_part_no_photon_sphere",
+                                 "a0_push_photon_sphere_3M_sqrt27M")), id_sh_)
+bd_sh_ = sh_.bending()
+b_last_ = bd_sh_[-1]
+ser3_ = 4/b_last_["b"] + 15*np.pi/(4*b_last_["b"]**2) + 128/(3*b_last_["b"]**3)
+check("SH2 bending of light past the hole (a = 0, rays integrated numerically): the time part alone bends by exactly "
+      "2 arctan(M/b), Newton's (Soldner's) value, at every b; time part + push gives Schwarzschild's deflection "
+      "(series 4M/b + 15 pi M^2/4b^2 + 128 M^3/3b^3 at b = 1000M); the time part's share tends to one half",
+      all(abs(d_["time_part"] - 2*np.arctan(1/d_["b"])) < 1e-9 for d_ in bd_sh_)
+      and abs(b_last_["full"] - ser3_) < 1e-9 and abs(b_last_["time_over_full"] - 0.5) < 2e-3
+      and all(bd_sh_[i_]["time_over_full"] < bd_sh_[i_ + 1]["time_over_full"] for i_ in range(len(bd_sh_) - 1)),
+      {"rows": bd_sh_, "series_b1000_3_terms": ser3_})
+sd_sh_ = sh_.shadows()
+nopush_ = [k_ for k_ in sd_sh_ if "time part" in k_ or "ring + twist" in k_]
+rp_ = [k_ for k_ in sd_sh_ if "ring + push" in k_]
+kr_ = [k_ for k_ in sd_sh_ if "Kerr (all)" in k_]
+sh3_ = {"no_horizon_or_shadow_without_push": all(not sd_sh_[k_]["horizon"] and not sd_sh_[k_]["shadow"] for k_ in nopush_),
+        "ring_plus_push_centred": all(abs(sd_sh_[k_]["centre"]) < 1e-9 for k_ in rp_),
+        "ring_plus_push_edge_on_shorter_than_2sqrt27": all(sd_sh_[k_]["height"] < 2*np.sqrt(27) - 1e-3
+                                                          for k_ in rp_ if ", i=90," in k_),
+        "kerr_matches_bardeen_alpha": all(abs(sd_sh_[k_]["alpha_min"] - sd_sh_[k_]["bardeen_alpha_min"]) < 1e-3 and
+                                          abs(sd_sh_[k_]["alpha_max"] - sd_sh_[k_]["bardeen_alpha_max"]) < 1e-3 for k_ in kr_),
+        "kerr_matches_bardeen_height": all(abs(sd_sh_[k_]["height"] - sd_sh_[k_]["bardeen_height"]) < 1e-6 for k_ in kr_),
+        "kerr_edge_on_height_2sqrt27": all(abs(sd_sh_[k_]["height"] - 2*np.sqrt(27)) < 1e-6 for k_ in kr_ if ", i=90," in k_),
+        "twist_shifts_centre": all(sd_sh_[k_]["centre"] > 0.5*float(k_.split(",")[0][2:])*np.sin(np.radians(
+            float(k_.split(",")[1].split("=")[1]))) for k_ in kr_)}
+check("SH3 the shadow (a = 0.5, 0.9, 0.998M; tilt 90, 50, 17 degrees): without the push there is no horizon and no "
+      "shadow; ring + push gives a centred, squashed shadow; adding the twist gives Kerr's shadow, which matches "
+      "Bardeen's closed form (edges to 1e-3, height to 1e-6; edge-on height exactly 2 sqrt(27) M) and is shifted "
+      "toward the side moving away from us",
+      all(sh3_.values()), {**sh3_, **{k_: {x_: y_ for x_, y_ in sd_sh_[k_].items() if x_ != "outline"} for k_ in sd_sh_}})
+ev_sh_ = sh_.eht(sd_sh_)
+ring_ = ev_sh_["EHT_2022_ring_diameter_uas"]; shad_ = ev_sh_["EHT_2022_shadow_diameter_uas"]
+def _overlap(lo_, hi_, c_, e_):
+    return lo_ <= c_ + e_ and hi_ >= c_ - e_
+sh4_ = {nm_: {"kerr_overlaps_ring": _overlap(*ev_sh_[nm_]["kerr_range_uas"], *ring_),
+              "kerr_overlaps_shadow": _overlap(*ev_sh_[nm_]["kerr_range_uas"], *shad_),
+              "push_a0_in_shadow": abs(ev_sh_[nm_]["push_shadow_a0_uas"] - shad_[0]) < shad_[1],
+              "time_part_none": ev_sh_[nm_]["time_part_alone_uas"] == 0.0}
+        for nm_ in ("GRAVITY 2019 (VLTI)", "Do et al. 2019 (Keck)")}
+check("SH4 Sgr A*: with mass and distance from stellar orbits alone (GRAVITY 2019 or Keck, Do et al. 2019) the push's "
+      "shadow (2 sqrt(27) GM/c^2D, about 51-52 microarcseconds) and Kerr's range over spin and tilt overlap the Event "
+      "Horizon Telescope's 2022 ring (51.8 +- 2.3) and shadow (48.7 +- 7.0); the time part alone predicts none",
+      all(all(v_.values()) for v_ in sh4_.values()), {**sh4_, "eht": ev_sh_})
+results["SH_shadow_split"] = {"identities": id_sh_, "bending": bd_sh_, "eht": ev_sh_}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

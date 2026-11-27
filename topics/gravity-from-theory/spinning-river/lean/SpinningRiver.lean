@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 to 27 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 28 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -470,6 +470,27 @@ theorem kn_ratio_three_sources (v V q s : K) (hV : V ≠ 0) (hv : v^2 = V^2 + s^
     (1 - 3 * q^2 + s^2 * (1 + q^2) / V^2) + (-(6 * v^2) + 3 * s^2 - s^4 / V^2) + 8 * q * V =
       (1 - 3 * V^2 + 2 * q * V) - 3 * (V - q)^2 + s^2 / V^2 * (1 + q^2 - s^2 - 3 * V^2) := by
   rw [hv]
+  grind
+
+/-- **Light past the hole, time part alone** (round 28, a = 0, null ray, E = 1): with A = r² and
+C = −r² + b² − 2Mr the radial function −A·C is r²(r² + 2Mr − b²), Newton's pull on light. Its only turning
+points are where r² + 2Mr = b², so it has no photon sphere and no shadow; the bending is 2 arctan(M/b). -/
+theorem time_part_light (r M b : K) :
+    -(r^2) * (-(r^2) + b^2 - 2 * M * r) = r^2 * (r^2 + 2 * M * r - b^2) := by
+  grind
+
+/-- **The push makes the photon sphere** (round 28, a = 0): time part + push give Schwarzschild's
+R = r³ − b²(r − 2M) (divided by r). A circular light orbit (R = R' = 0, r ≠ 0) sits at r = 3M.
+Needs 2 ≠ 0. -/
+theorem push_photon_sphere (r b M : K) (h2 : (2 : K) ≠ 0) (hr : r ≠ 0)
+    (h0 : r^3 - b^2 * (r - 2 * M) = 0) (h1 : 3 * r^2 - b^2 = 0) : r = 3 * M := by
+  have h : r^2 * (2 * (r - 3 * M)) = 0 := by grind
+  grind
+
+/-- **The push sets the shadow's size** (round 28, a = 0): at the photon sphere r = 3M the critical
+impact parameter satisfies b² = 3r² = 27M², so the shadow's radius on the sky is √27 M. -/
+theorem push_shadow_radius (r b M : K) (h1 : 3 * r^2 - b^2 = 0) (hr3 : r - 3 * M = 0) :
+    b^2 = 27 * M^2 := by
   grind
 
 end Field

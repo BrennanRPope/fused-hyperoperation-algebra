@@ -1815,6 +1815,93 @@ def fig35():
     save(fig, "fig35_charge_split.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35):
+# ---------------------------------------------------------------- fig36 the black hole's shadow, piece by piece (round 28)
+def fig36():
+    shd = json.load(open(os.path.join(HERE, "shadow_split.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(18.5, 6.9), gridspec_kw={"width_ratios": [1.15, 1.0, 1.0]})
+    # (a) light rays bent by the time part alone and by time part + push (no spin)
+    ax = axs[0]
+    for bv, lw in ((5.6, 2.0), (8.0, 1.8), (14.0, 1.6)):
+        for rhs, col, ls in ((lambda ph, y: [y[1], 1/bv**2 - y[0]], BLUE, "-"),
+                             (lambda ph, y: [y[1], -y[0] + 3*y[0]**2], ORANGE, "-")):
+            x0 = -40.0
+            ph0 = np.arctan2(bv, x0); u0 = 1/np.hypot(x0, bv)
+            du0 = -u0*np.cos(ph0)/np.sin(ph0)*0 + (x0/np.hypot(x0, bv))/np.hypot(x0, bv)*0
+            # straight incoming line y = bv: u = sin(ph)/bv, du/dph = cos(ph)/bv
+            sol = solve_ivp(rhs, [ph0, ph0 - 7], [np.sin(ph0)/bv, np.cos(ph0)/bv], max_step=0.002, rtol=1e-10,
+                       events=lambda ph, y: y[0] - 1/45.0)
+            ph, uu = sol.t, sol.y[0]
+            bad = np.nonzero(uu <= 0)[0]          # stop where the ray reaches infinity (u = 0)
+            n = bad[0] if len(bad) else len(uu)
+            ph, uu = ph[:n], uu[:n]
+            rr = 1/uu
+            ax.plot(rr*np.cos(ph), rr*np.sin(ph), color=col, ls=ls, lw=lw)
+    ax.add_patch(Circle((0, 0), 2, color="k"))
+    ax.add_patch(Circle((0, 0), 3, fill=False, ec=ORANGE, ls=":", lw=1.2))
+    ax.plot([], [], color=BLUE, lw=2, label="time part alone: Newton's pull on light, bends 2M/b")
+    ax.plot([], [], color=ORANGE, lw=2, label="time part + push (Schwarzschild): 4M/b")
+    ax.set_xlim(-40, 30); ax.set_ylim(-22, 22); ax.set_aspect("equal")
+    ax.set_xlabel("x / M"); ax.set_ylabel("y / M")
+    bd = shd["bending"]
+    txt = "deflection (radians)        time part   full\n" + "\n".join(
+        f"  b = {d['b']:<6g} M            {d['time_part']:.5f}   {d['full']:.5f}" for d in bd[1:])
+    ax.text(0.02, 0.03, txt, transform=ax.transAxes, fontsize=8.3, family="monospace",
+            bbox=dict(fc="white", ec=GREY, alpha=0.9))
+    ax.legend(fontsize=8.8, loc="upper left")
+    ax.set_title("(a) Light rays past the hole (no spin): the time part alone\nbends them half as much and swallows none")
+    # (b) the shadow, edge-on, a = 0.9M
+    ax = axs[1]
+    th = np.linspace(0, 2*np.pi, 400)
+    ax.plot(np.sqrt(27)*np.cos(th), np.sqrt(27)*np.sin(th), color=GREY, ls="--", lw=1.4,
+            label="no spin: radius √27 M (the push's)")
+    for key, col, lab in (("a=0.9, i=90, ring + push", ORANGE, "time part + push (no twist)"),
+                          ("a=0.9, i=90, Kerr (all)", "k", "all three (Kerr)")):
+        o = np.array(shd["shadows"][key]["outline"])
+        xs = np.r_[o[:, 0], o[::-1, 0]]; ys = np.r_[o[:, 1], -o[::-1, 1]]
+        ax.fill(xs, ys, color=col, alpha=0.12 if col == "k" else 0.18)
+        ax.plot(xs, ys, color=col, lw=2.2, label=lab)
+    ax.annotate("", xy=(shd["shadows"]["a=0.9, i=90, Kerr (all)"]["centre"], 5.9), xytext=(0, 5.9),
+                arrowprops=dict(arrowstyle="->", color=PURPLE, lw=2))
+    ax.text(2.3, 5.75, "twist: centre\nshifts ≈ 2a", color=PURPLE, ha="left", va="center", fontsize=10,
+            fontweight="bold")
+    ax.plot(0, 0, "+", color="k", ms=10)
+    ax.text(-7.8, 6.6, "time part alone, or time part + twist:\nno horizon, so no shadow at all", fontsize=9.3,
+            color=BLUE, bbox=dict(fc="white", ec=BLUE, alpha=0.9))
+    ax.set_xlim(-8.5, 8.5); ax.set_ylim(-8.8, 8.5); ax.set_aspect("equal")
+    ax.set_xlabel("α / M  (on the sky; spin axis up)"); ax.set_ylabel("β / M")
+    ax.legend(fontsize=8.8, loc="lower left")
+    ax.set_title("(b) The shadow seen edge-on, spin a = 0.9M: the push\nmakes it, the twist shifts it into Kerr's D shape")
+    # (c) Sgr A*: sizes against the EHT's 2022 measurement
+    ax = axs[2]
+    ev = shd["eht"]
+    gr = ev["GRAVITY 2019 (VLTI)"]; kk = ev["Do et al. 2019 (Keck)"]
+    rows = [("time part alone", [0.0, 0.0], BLUE),
+            ("push, no spin (√27 M × 2)", [kk["push_shadow_a0_uas"], gr["push_shadow_a0_uas"]], ORANGE),
+            ("Kerr, spin 0.5 to 0.998, tilt ≤ 50°", [min(kk["kerr_range_uas"]), max(gr["kerr_range_uas"])], "k"),
+            ("EHT 2022: ring", [51.8 - 2.3, 51.8 + 2.3], RED),
+            ("EHT 2022: shadow", [48.7 - 7.0, 48.7 + 7.0], RED)]
+    for i, (lab, (lo, hi), col) in enumerate(rows):
+        y = len(rows) - 1 - i
+        if hi - lo < 0.3:
+            ax.plot([lo], [y], "o", color=col, ms=10)
+        else:
+            ax.plot([lo, hi], [y, y], color=col, lw=9, solid_capstyle="butt", alpha=0.8)
+        ax.text(-1, y + 0.28, lab, fontsize=10, color=col if col != "k" else "k")
+    ax.axvspan(51.8 - 2.3, 51.8 + 2.3, color=RED, alpha=0.08)
+    ax.set_yticks([]); ax.set_xlim(-2, 60); ax.set_ylim(-0.6, len(rows) - 0.2)
+    ax.set_xlabel("diameter on the sky (microarcseconds)")
+    ax.text(0.98, 0.03, f"mass and distance from stellar orbits only:\nGM/(c²D) = {kk['theta_g_uas']:.2f}–"
+            f"{gr['theta_g_uas']:.2f} μas", transform=ax.transAxes, ha="right", fontsize=9,
+            bbox=dict(fc="white", ec=GREY))
+    ax.set_title("(c) Sgr A*, the Milky Way's black hole: the time part\nalone predicts no shadow; the push's matches")
+    fig.suptitle("Round 28: the black hole's shadow piece by piece. The time part is Newton's pull on light (half the "
+                 "bending, no shadow);\nthe push makes the horizon, the photon sphere and the shadow's size; the "
+                 "twist shifts it and gives Kerr's D shape", fontsize=12.5)
+    fig.tight_layout(rect=[0, 0, 1, 0.94])
+    save(fig, "fig36_shadow_split.png")
+
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36):
     f()
 print("figures:", sorted(os.listdir(FIG)))

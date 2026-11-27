@@ -81,6 +81,9 @@ How it got here:
 20. **Charge, piece by piece (Part 21):** charge sits in mass's slot in every piece (2Mr → 2Mr − Q², the mass less
    the field's energy). Its leading term is Newton's pull of the field's energy (time part), its relativistic
    terms are the push's, and the twist's 8qv becomes 8qV; checked against Kerr–Newman's own equations.
+21. **The shadow, piece by piece (Part 22):** the time part alone is Newton's pull on light: it bends rays by
+   Newton's half and traps none, so it makes no shadow. The push makes the horizon, the photon sphere and the
+   shadow's size, which matches Sgr A*'s; the twist shifts the shadow and gives Kerr's D shape.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -105,7 +108,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**121/121 pass**, about 24 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**125/125 pass**, about 25 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2143,6 +2146,104 @@ The same law, written against Part 17's: D_V − 3(V − q)² + (s²/V²)(1 + q�
 - **Known:** Kerr–Newman (Newman et al. 1965), its Kerr–Schild form and Carter's separation (Carter 1968), the mass
   function M − Q²/(2r), and the circular-orbit and epicyclic frequencies of Reissner–Nordström and Kerr–Newman.
 
+## Part 22. The black hole's shadow, piece by piece (round 28)
+
+*DRAFT, round 28 (Nov 27, 2026). Script: `shadow_split.py`. Checks: SH1–SH4.*
+
+Parts 19 to 21 split orbits of matter into the river's three pieces: the time part (Newton's spinning ring), the push
+and the twist. Brennan asked for the same split of the black hole's shadow, the dark outline the Event Horizon
+Telescope photographed. A shadow is made of light, so this is the split for rays (null paths, E = 1), in the same
+Kerr–Schild shell.
+
+**In one line:** the time part alone is Newton's pull on light. It bends rays exactly as Newton would, half of
+Einstein's bending, and it swallows none, so it makes no shadow at all. The push makes the horizon, the photon sphere
+and the shadow's size. The twist shifts the shadow sideways and gives Kerr's D shape.
+
+![The black hole's shadow, piece by piece](figures/fig36_shadow_split.png)
+
+*Fig 36. (a) Rays past a hole with no spin, aimed at b = 5.6, 8 and 14M. Blue: the time part alone, Newton's pull on
+light. Orange: time part + push, which is Schwarzschild. The dotted circle is the photon sphere at 3M, which only the
+push makes. (b) The shadow seen edge-on at spin a = 0.9M. Orange: ring + push, centred and squashed. Black: all three
+(Kerr), shifted toward the side moving away from us. Dashed: the no-spin shadow, radius √27 M. (c) Sgr A*'s size on
+the sky with its mass and distance from stellar orbits alone, against the Event Horizon Telescope's 2022 measurement.*
+
+### 22.1 Bending: the time part is Newton's half (SH1, SH2)
+
+With no spin, the time part alone gives the radial function R = r²(r² + 2Mr − b²). That is light moving at c in
+Newton's gravity: the ray follows Newton's hyperbola and bends by exactly 2 arctan(M/b), about 2M/b far out. Rays
+integrated numerically agree with 2 arctan(M/b) to 1e-11 at every b. Adding the push gives Schwarzschild's
+R = r⁴ − b²r(r − 2M) and Einstein's bending, 4M/b + 15πM²/4b² + 128M³/3b³ + …
+
+| impact parameter b | time part alone | time part + push | ratio |
+|---|---|---|---|
+| 20M | 0.09992 rad | 0.23614 rad | 0.423 |
+| 100M | 0.02000 rad | 0.04122 rad | 0.485 |
+| 1000M | 0.00200 rad | 0.00401 rad | 0.4985 |
+
+Far out, the time part gives half and the push the other half. This is the known half-and-half of light bending
+(Soldner 1801 and Einstein 1911 got the Newtonian half; Einstein 1915 the full value; in the usual bookkeeping the
+second half comes from the curvature of space, Eddington's γ). Here the push plays the role of space's half. Close in,
+the push dominates: at b = 8M it gives about 70% of the bending.
+
+### 22.2 No time-part shadow; the push makes the horizon (SH1, SH3)
+
+- **Time part alone:** R = r²(r² + 2Mr − b²) has a turning point at r = −M + √(M² + b²) for every b > 0, so every
+  ray that misses the centre comes back out. Nothing is captured, there is no photon sphere, and there is no shadow.
+- **The horizon factor** r² + a² − 2Mr appears only when the push is on. The time part alone, and ring + twist, give
+  r² + a²: no horizon, so no shadow, at every spin and tilt computed.
+- **Time part + push, no spin:** exactly Schwarzschild. Light can circle at r = 3M, and rays aimed inside
+  b = √27 M ≈ 5.196M fall in, so the shadow is a disc of radius √27 M.
+
+### 22.3 Spin: the twist shifts the shadow and makes the D (SH3)
+
+With spin, ring + push still makes a shadow (it has the horizon), but a centred and squashed one: edge-on at
+a = 0.9M it is 10.22M wide and 9.67M tall, shorter than the no-spin 2√27 M = 10.39M. Adding the twist gives Kerr's
+shadow:
+
+- it moves toward the side of the hole that turns away from us, by roughly 2a sin i (1.99M edge-on at a = 0.9M;
+  0.60M at a tilt of 17°);
+- the side turning toward us flattens into Kerr's D;
+- the edge-on height comes back to exactly 2√27 M at every spin, as in Bardeen's formula.
+
+Kerr's shadow from the shell matches Bardeen's closed form (1973) to about 1e-4 in its edges and 1e-9 in its height,
+for a = 0.5, 0.9 and 0.998M at tilts of 90°, 50° and 17°.
+
+### 22.4 Sgr A* (SH4)
+
+With mass and distance from stellar orbits alone, Sgr A*'s angular scale GM/(c²D) is 5.01 μas (GRAVITY
+Collaboration 2019, A&A 625, L10: M = 4.152 × 10⁶ suns, D = 8178 pc) or 4.94 μas (Do et al. 2019, Science 365, 664:
+3.975 × 10⁶ suns, 7946 pc). Then:
+
+| | predicted diameter |
+|---|---|
+| time part alone | no shadow (0) |
+| time part + push, no spin (2√27 GM/c²D) | 51.3–52.1 μas |
+| Kerr, spin 0.5 to 0.998, tilt ≤ 50° | 47.8–51.5 μas |
+| **measured, EHT 2022:** emission ring | 51.8 ± 2.3 μas |
+| **measured, EHT 2022:** shadow | 48.7 ± 7.0 μas |
+
+The measurements are from the Event Horizon Telescope's Sgr A* Paper I
+([arXiv:2311.08680](https://arxiv.org/pdf/2311.08680)); M87*'s Paper VI
+([ApJ 875 L6](https://ui.adsabs.harvard.edu/abs/2019ApJ...875L...6E/abstract)) found the same agreement there. The
+ring the EHT sees is light emitted near the shadow, not the shadow's edge itself; turning one into the other uses
+calibrated simulations, which is why the shadow's error bar is larger.
+
+### 22.5 What this means, on its own merits
+
+- **What it settles:** the shadow is the push's. The time part, Newton's pull on light, can bend light but can never
+  trap it; trapping needs the push's horizon and photon sphere. The size the EHT measured is the push's size, and the
+  twist only moves and reshapes it. So a measured shadow of the right size is a direct, picture-level confirmation
+  that gravity has the push, not only Newton's pull.
+- **What it adds:** a clean rule for light that matches the one for orbits: the time part gives the Newtonian half,
+  the push everything that makes a black hole black, the twist the spin's sideways effects.
+- **Lead?** It confirms the picture rather than opening a new question. All three pieces together are exactly Kerr,
+  so the measured shadow can't tell the river from standard general relativity; what it tests is that each piece is
+  needed. The far-field half-and-half is the known split of light bending in new clothes.
+- **Ours, as far as a short search found:** the piece-by-piece attribution of the shadow (no time-part shadow, the
+  horizon only with the push, the twist's shift and D shape) in the Kerr–Schild shell.
+- **Known:** Soldner's and Einstein's half bending (1801, 1911), Einstein's full bending (1915), the photon sphere
+  and √27 M, Bardeen's Kerr shadow (1973), and the EHT results (2019, 2022).
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -2229,9 +2330,9 @@ The same law, written against Part 17's: D_V − 3(V − q)² + (s²/V²)(1 + q�
 
 ## Files
 
-- `checks.py`: 121 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 125 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2271,6 +2372,9 @@ The same law, written against Part 17's: D_V − 3(V − q)² + (s²/V²)(1 + q�
 - `kn_split.py`: Part 21, the shell with charge (2Mr → 2Mr − Q²) against Kerr–Newman, the equatorial split, the
   rate ratio with each piece switched on, and a numerical check on Kerr–Newman's own equations; writes
   `kn_split.json` (about 2 minutes).
+- `shadow_split.py`: Part 22, light rays in the shell with each piece switched on: the horizon factor, bending at
+  a = 0, the photon orbits and shadow outlines for a = 0.5, 0.9, 0.998M at tilts of 90°, 50° and 17° against
+  Bardeen's formula, and Sgr A*'s sizes; writes `shadow_split.json` (about 1.5 minutes).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2278,8 +2382,8 @@ The same law, written against Part 17's: D_V − 3(V − q)² + (s²/V²)(1 + q�
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the thirty-five figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`).
+- `figures.py`: the thirty-six figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2289,8 +2393,9 @@ The same law, written against Part 17's: D_V − 3(V − q)² + (s²/V²)(1 + q�
   `river_square_cancels`, `clock_split`, `kerr_per_unit_energy`; round 26 adds `equator_split_per_unit_energy`,
   `square_from_three_sources`, `generic_radial_stiffness`, `generic_vertical_stiffness`,
   `equator_ratio_three_sources`; round 27 adds `kn_ring_plus_one_term`, `kn_equator_split`,
-  `charged_radial_stiffness`, `kn_ratio_three_sources` (written here, checked in sympy).
-  Rounds 18–27's theorems all compile in the library (as `Topics.SpinningRiver`; `ring`, `field_simp`,
+  `charged_radial_stiffness`, `kn_ratio_three_sources`; round 28 adds `time_part_light`, `push_photon_sphere`,
+  `push_shadow_radius` (written here, checked in sympy).
+  Rounds 18–28's theorems all compile in the library (as `Topics.SpinningRiver`; `ring`, `field_simp`,
   `linear_combination` and `mul_left_cancel₀` written as `grind`). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
@@ -2353,3 +2458,4 @@ The same law, written against Part 17's: D_V − 3(V − q)² + (s²/V²)(1 + q�
 | the one term split into the river's time part (Newton's ring with mass M E²), push and twist; E·P and P·S cancelling because the pieces form one square; Kerr per unit energy as Newton's ring + push + twist; over the poles the push alone giving every relativistic change to the orbit's shape (1 − 6u, (3/2)(1 + 10u − 8u²)); the eccentric flight check | **ours** as far as a short search found (RT1–RT4); the Kerr–Schild form and its linearity in M (Kerr & Schild 1965), the river picture (Hamilton & Lisle 2008) and the normalization freedom of geodesics known |
 | the equator split per unit energy into Newton's ring, push and twist; the square (L − a)² closing from the push's L², the twist's −2aL and the ring's a²; each term of 1 − 6v² + 8qv − 3q² read as one piece (−3q² ring, −6v² push, +8qv twist), the ±28 as half-squares | **ours** as far as a short search found (EQ1–EQ3); Kerr's epicyclic frequencies (Okazaki, Kato & Fukue 1987; Kato 1990) known; the stiffness law for a quartic radial function elementary |
 | charge entering every piece of the shell in mass's slot (2Mr → 2Mr − Q², the mass less the field's energy outside r); the time part as Newton's pull of that mass function; Kerr–Newman's equatorial ratio as the exact sum [1 − 3q² + s²(1 + q²)/V²] + [−6v² + 3s² − s⁴/V²] + [8qV] by piece | **ours** as far as a short search found (KN1–KN4); Kerr–Newman, its Kerr–Schild form, Carter's separation, the mass function and the Reissner–Nordström and Kerr–Newman epicyclic frequencies known |
+| the shadow piece by piece: the time part alone as Newton's light (bending exactly 2 arctan(M/b), no capture, no shadow), the horizon factor only with the push, ring + push's centred squashed shadow, the twist's sideways shift and D shape | **ours** as far as a short search found (SH1–SH4); the half-and-half of light bending (Soldner 1801, Einstein 1911/1915, Eddington's γ), the photon sphere, Bardeen's Kerr shadow (1973) and the EHT measurements known |
