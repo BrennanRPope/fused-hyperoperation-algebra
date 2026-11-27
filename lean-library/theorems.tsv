@@ -2827,6 +2827,11 @@ FusedAlgebra.Topics.Patterns	Patterns.step_is_law	propext, Classical.choice, Quo
 FusedAlgebra.Topics.Patterns	Patterns.step_num	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Patterns	Patterns.step_trace	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Patterns	Patterns.wall_absorbs	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PendulumLeeYang	CircleOp.PendulumLeeYang.density_identity	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PendulumLeeYang	CircleOp.PendulumLeeYang.lattice_gas_edge	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PendulumLeeYang	CircleOp.PendulumLeeYang.onsager_separatrix	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PendulumLeeYang	CircleOp.PendulumLeeYang.ring_edge_amplitude	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PendulumLeeYang	CircleOp.PendulumLeeYang.ring_zero_pendulum	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Pi	PiCircle.G.ext'	propext
 FusedAlgebra.Topics.Pi	PiCircle.G.ext'_iff	propext
 FusedAlgebra.Topics.Pi	PiCircle.circ_self_zero	propext, Classical.choice, Quot.sound
@@ -3447,6 +3452,8 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.cellMap_mul	propext, Cl
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.clock_multiply	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.complex_distance	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.conj_product	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.fourth_rule_point_term	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.fourth_rule_residual	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.horizon_rate	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.kerr_period	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.ray_norm	propext, Classical.choice, Quot.sound
