@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1319,7 +1319,7 @@ kept apart they can only happen inside a class of two or more maps.
 **Yes, a real one.** It turns a published "almost every parameter" theorem into an exact description of where the
 formula fails, with a computable drop, and it comes with a worked example where everything but the last digits is
 proved. What would take it further: (1) prove the example's size equals the family bound 0.47048 (show no other
-collision occurs), which would give the first exact size of a broken case [Round 10 update: done for a dense set of breaks, and the original is pinned to within 1.4 × 10⁻⁷; section 14]; (2) list which equations can occur inside
+collision occurs), which would give the first exact size of a broken case [Round 10 update: done for a dense set of breaks, and the original is pinned to within 1.4 × 10⁻⁷; section 14] [Round 11 update: the original is pinned to within 1.8 × 10⁻⁴⁸¹¹, not exact; section 15]; (2) list which equations can occur inside
 the separated region, so the breaking set is described surface by surface; (3) the same picture for the plane laws of
 rounds 3–4, where the maps are Möbius rather than straight-line.
 
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] | 13.4, Y9 |
 
 ---
 
@@ -1504,7 +1504,7 @@ cancel, separate, use a shared prime, push. What it contributes: an exact dimens
 overlaps of this shared-centre kind, at points where the naive formula is provably wrong, plus a near-exact answer for
 the original example. What would take it further:
 
-1. **Close the original break**, by handling runs with 13 or more copies of λ (14.6).
+1. **Close the original break**, by handling runs with 13 or more copies of λ (14.6). [Round 11 update: done up to 10,000 copies; the rest is open, section 15]
 2. **Remove (P)**: prove the formula at every rational point of the surface, or find a point where a second collision
    really happens. If one exists, the size there drops below s_F.
 3. **Other surfaces**: breaks that involve longer words, or two classes of two maps, using the same four steps.
@@ -1528,3 +1528,138 @@ original break. Hochman's theorem is used as stated; we did not check its proof.
 | Exactly solved points are dense where (I), (II) hold | **Ours** (DRAFT) | 14.5, X9, X11 |
 | Original break: 0.47048331 ≤ dim ≤ 0.47048344 | **Ours** (DRAFT), not exact | 14.6, X10 |
 | Original break: size exactly 0.4704834 | Open (Round 9's conjecture, now within 1.4 × 10⁻⁷) | 14.6 |
+
+## 15. Round 11 (DRAFT): the original break, closed run by run but not exactly
+
+Asked for by Brennan (Nov 27), answering "Should I try to close the original break exactly next?" with "Yes".
+Scripts: [`original.py`](original.py) → `original_descent.json`, log [`original_output.txt`](original_output.txt);
+[`original_bracket.py`](original_bracket.py) → `original_bracket.json`. Checks: [`checks11.py`](checks11.py) →
+[`checks11_output.txt`](checks11_output.txt), **8 of 8 pass**. Pictures: [`figures11.py`](figures11.py).
+Lean: three-line facts written in [`lean/Round11.lean`](lean/Round11.lean) but **not built** (no Lean toolchain could
+be installed in this session); `NewTies.lean` is unchanged at 53 built theorems.
+
+### 15.1 The answer in four sentences
+
+**The original break is not closed exactly.** What is now proved: no second collision happens in any run with up to
+10,000 copies of λ. Each of the 1,406 "bad pairs" Round 10 could not handle was settled by an exact search in rational
+arithmetic. So the size agrees with the predicted 0.4704834398630828674… to about 4,810 decimal places (proved bracket width
+1.8 × 10⁻⁴⁸¹¹). What still stands between that and "exactly 0.4704834…" is the infinitely many bad pairs beyond 10,000.
+No single argument covers them yet, and section 15.5 says why.
+
+Exactness is the same question as "no second collision": with no second collision Round 10's Step 5 gives the size
+exactly, and if a second collision existed anywhere among the reduced pieces, Round 9's covering argument would push the
+size strictly below s_F.
+
+### 15.2 A simpler picture of the maps
+
+Rescale by y = z/18, so [0, 2] becomes I = [0, 1/9]. The four letters become
+
+  l: y ↦ λy,  m: y ↦ μy,  N: y ↦ (y + 1)/19,  K: y ↦ (y + 1)/10.
+
+Two things become visible. First, **N is exactly 10/19 times K**, as functions. That is why the first bad ratio sits next
+to 10/19 (Round 10, 14.6). Second, every word is "a scaling plus a sum": its slope is the product of its letters' slopes,
+and its value at 0 is the sum of the partial products at its N and K positions. All of these are fractions built from
+2, 5 and 19 only, and each term is at most a tenth of the one before.
+
+### 15.3 How each bad pair is settled
+
+After Round 10's cancelling (14.3, Step 1), a second collision needs reduced words h′ and g′ with **μ^b·h′ = λ^a·g′**,
+where h′ starts with N, g′ starts with N or K, and the stretch ρ = λ^a/μ^b lies in a bad window ([0.9, 1.11] or
+[0.474, 0.585]). For a fixed pair (a, b) this is one equation, h′ = ρ·g′, and the script searches for every solution:
+
+- **Peel letters off the front.** If h = x·h₁ then h₁ = x⁻¹∘A∘g; if g = y·g₁ then h = (A∘y)∘g₁. Every solution is a path
+  of such steps, starting from A = "multiply by ρ".
+- **Cut a branch** when it cannot lead anywhere. Every word maps I into I. So if A(I) misses I there is no solution. If h is
+  used up, A(I) must cover I; if g is used up, A(I) must sit inside I.
+- **Walk only reduced words.** The letters' bookkeeping enforces: λ before μ inside a run, a run containing μ is never
+  followed by K, and a word never ends inside a run. Check X2 compares this with a direct parse of every word up to length 7.
+- **Remember visited states**, so the walk cannot loop.
+
+"No collision" is returned only when **every branch was cut**. That is a proof for that pair, with no floating point and
+no length limit on the words.
+
+The search is not guaranteed to finish in general: two different infinite words can share a limit point, and the search
+can follow such a pair forever. For every one of the 1,406 bad pairs it did finish, within 3,774 nodes and depth 99.
+Two checks guard against a silent bug. A second search, written separately (breadth-first, another peeling rule), agrees
+on 246 pairs (X5). And the search finds planted collisions: 300 of 300 random ones, plus the known collision of the
+unreduced pieces (X6).
+
+![Figure 35](figures/fig35-bad-pairs-settled.png)
+
+*Figure 35. Top: the stretch of every bad pair with up to 10,000 copies of λ. They come in long runs: (14k, 11k) drifts
+through the N window as k grows, because λ¹⁴/μ¹¹ ≈ 0.99876. Bottom: how big each exact search was. Every one ended with
+all branches cut, so none of these pairs gives a second collision.*
+
+### 15.4 The bracket
+
+The reduced pieces whose runs have at most 10,000 copies of λ have no exact overlaps: Round 10's push handles every pair
+outside the windows, and 15.3 handles every pair inside. Hochman's theorem then gives a lower bound. Round 9's covering
+argument gives the upper bound s_F. Both roots are certified with interval arithmetic at 4,980 digits (X8 also re-derives
+Round 10's bracket from the same code):
+
+  **0.47048343986308286742625771445802570830… − 1.8 × 10⁻⁴⁸¹¹ ≤ dim K ≤ s_F = 0.47048343986308286742625771445802570830…**
+
+![Figure 36](figures/fig36-gap-by-round.png)
+
+*Figure 36. The gap between what is proved below and above, round by round: 0.034 (Round 9), 1.3 × 10⁻⁷ (Round 10),
+1.8 × 10⁻⁴⁸¹¹ (now). Still a gap, so still not exact.*
+
+### 15.5 Why it does not close
+
+One more cancel turns each bad pair into: **can h + 1 = σ·(g + 1)** for two reduced words h and g, where σ = ρ or 19ρ/10?
+
+- **σ is never 1.** Its 19-adic valuation is a or a + 1 (X7; Lean `rho_ne_one`, unbuilt). That rules out the trivial
+  solution, not the others.
+- **σ comes as close to 1 as you like.** log λ / log μ is irrational, so the ratios λ^a/μ^b are dense. Within 10,000 the
+  closest is a = 2413, b = 1896, |σ − 1| ≈ 1.6 × 10⁻⁴ (Figure 37). Near σ = 1 a zone argument has no room to push.
+- **Real sizes alone cannot decide it.** If σ were allowed to be any real number near 1, the equation would have solutions
+  for a dense set of σ. So any proof has to use the arithmetic of the actual σ, as the search does one pair at a time.
+- **The prime-by-prime arguments stall.** Round 10's p-adic step needs a prime dividing both numerators, and here both are 1. At 19,
+  N divides by 19, so N's pull the valuation the wrong way. At 2 and 5, a run of bare N's leaves the valuation unchanged
+  and can make terms cancel (1 + 1/19 = 20/19 is divisible by 4, and longer stretches of N's pick up more factors of 2). In each case the "smallest
+  term wins" argument breaks on bare-N stretches.
+
+In number-theory terms, each bad pair is an S-unit equation (S = {2, 5, 19}) with an unbounded number of terms. The
+general finiteness theorems for such equations fix the number of terms, so they do not apply directly.
+
+![Figure 37](figures/fig37-why-not-uniform.png)
+
+*Figure 37. How close σ gets to 1, pair by pair (grey), and the closest so far (red). It keeps dropping, so no fixed
+margin separates σ from 1, and each new pair has to be searched on its own.*
+
+### 15.6 Is it a lead?
+
+**Yes, the line of work is still a lead. This round's contribution is a sharper fact plus a clear obstacle, not a new
+theorem.** It contributes three things:
+
+1. A proof that no second collision occurs in any run of up to 10,000 copies of λ.
+2. A size pinned to 4,810 digits, against Round 10's 7.
+3. An exact reformulation of what is left: one S-unit-type equation per bad pair.
+
+It would close the original break, and become a theorem, with any one of:
+
+1. **A uniform argument for σ near 1.** For example, show that the search tree's shape stops depending on a once
+   |σ − 1| is small, and handle that shape symbolically. The node counts in Figure 35 stay small and repeat in bands,
+   which hints at this.
+2. **A p-adic idea that survives bare-N stretches.** For example, work with blocks N^j as single letters and use a
+   valuation at a prime dividing 19^j − 1.
+3. **A second collision found.** If some bad pair beyond 10,000 really collides, the size is strictly below 0.4704834.
+   That would be a surprise and a result in its own right.
+
+### 15.7 Who proved what, round 11
+
+The peel-and-prune search is a standard exact method (it is how one decides whether two words in a contracting
+semigroup coincide). Hochman 2014 is used as stated. S-unit equations and their finiteness theorems (Evertse,
+Schlickewei, Schmidt) are known, and we only point out that they do not apply directly. Ours (DRAFT): the y-model,
+the reduction of the original break to one equation per bad pair, the exact settlement of all 1,406 bad pairs with up to
+10,000 copies of λ, the bracket of width 1.8 × 10⁻⁴⁸¹¹, and the diagnosis in 15.5. No fresh literature search this round.
+
+### Known vs new, round 11
+
+| Item | Status | Source |
+|---|---|---|
+| Hochman: algebraic parameters + no exact overlaps ⇒ dim = min(1, similarity dim) | Known | Hochman 2014 |
+| No second collision in runs of up to 10,000 copies of λ (all 1,406 bad pairs) | **Ours** (DRAFT), computer-assisted, exact | 15.3, X2–X6 |
+| Original break: dim within 1.8 × 10⁻⁴⁸¹¹ of 0.47048343986308… | **Ours** (DRAFT), certified | 15.4, X8 |
+| Exactness ⇔ no second collision anywhere among the reduced pieces | **Ours** (DRAFT), from Rounds 9–10 | 15.1 |
+| Original break: size exactly 0.4704834… | **Open** | 15.5 |

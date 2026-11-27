@@ -1,0 +1,13 @@
+  a = 1000 pairs 833 bad 142 1.3 s
+  a = 2000 pairs 1654 bad 278 9.6 s
+  a = 3000 pairs 2457 bad 421 32.8 s
+  a = 4000 pairs 3309 bad 560 71.6 s
+  a = 5000 pairs 4095 bad 702 150.9 s
+  a = 6000 pairs 4939 bad 844 270.8 s
+  a = 7000 pairs 5749 bad 983 424.5 s
+  a = 8000 pairs 6565 bad 1126 698.4 s
+  a = 9000 pairs 7404 bad 1264 1013.3 s
+  a = 10000 pairs 8189 bad 1406 1434.2 s
+O2/O3: bad pairs 1406 checked 8189 all no-collision True worst {'nodes': 3774, 'depth': 40, 'a': 7238, 'b': 5687, 'rho': 0.5260662274625595}
+O4: planted collisions found 300 / 300 ; unreduced language a=b=1: collision ('K', 'N')
+total 1434.7 s

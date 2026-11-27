@@ -1,0 +1,9 @@
+PASS X1 y-model: letters map I = [0, 1/9] into itself, N = (10/19) K, windows [9/10, 10/9] and [9/19, 100/171] 
+PASS X2 the search walks exactly the reduced words (all words up to length 7 compared with a direct parse) []
+PASS X3 first bad pair is (13, 10); the search's b-range covers every stretch in (0.3, 3.5) for a <= AMAX (13, 10)
+PASS X4 every bad pair with a <= AMAX: descent says no-collision; recount of bad pairs agrees 1406 bad pairs, recount 1406, AMAX 10000
+PASS X5 independent breadth-first search agrees on every bad pair with a <= 1500 and 40 random larger ones 246 pairs
+PASS X6 sanity: 300 planted collisions all found; the unreduced language's known collision found ['collision', ['K', 'N']]
+PASS X7 sigma != 1: v19(sigma) = a or a + 1 for the bad pairs (first 400) 
+PASS X8 bracket: k = 12 gives Round 10's [0.4704833085, 0.4704834402] (to Round 10's 1e-9 tolerance); the new bracket lies inside and its gap is 10^(-4810) [0.47048330863530724, 0.4704834398630829]
+8/8 pass
