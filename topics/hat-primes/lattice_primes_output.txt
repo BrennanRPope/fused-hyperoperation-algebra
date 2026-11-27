@@ -1,0 +1,93 @@
+hats 129314 corners 755884
+N=   4 inert    anchors share 0.999-1.001 chi2=0.0/3 empty=0 | corners 0.636-2.092 chi2=300686.9 empty=0
+N=   3 ramified anchors share 1.000-1.000 chi2=0.0/2 empty=0 | corners 0.436-2.126 chi2=479035.9 empty=0
+N=  25 inert    anchors share 0.994-1.005 chi2=0.6/24 empty=0 | corners 0.998-1.003 chi2=1.2 empty=0
+N=   7 split    anchors share 1.000-1.000 chi2=0.0/6 empty=0 | corners 0.999-1.001 chi2=0.2 empty=0
+N=   7 split    anchors share 1.000-1.000 chi2=0.0/6 empty=0 | corners 1.000-1.000 chi2=0.1 empty=0
+N=  13 split    anchors share 0.997-1.006 chi2=0.8/12 empty=0 | corners 0.998-1.001 chi2=0.4 empty=0
+N=  13 split    anchors share 0.996-1.004 chi2=0.7/12 empty=0 | corners 0.999-1.001 chi2=0.3 empty=0
+N=  19 split    anchors share 0.996-1.004 chi2=0.5/18 empty=0 | corners 0.998-1.003 chi2=0.9 empty=0
+N=  19 split    anchors share 0.998-1.002 chi2=0.1/18 empty=0 | corners 0.994-1.005 chi2=6.4 empty=0
+N=  31 split    anchors share 0.996-1.007 chi2=1.1/30 empty=0 | corners 0.998-1.005 chi2=2.5 empty=0
+N=  31 split    anchors share 0.988-1.016 chi2=8.1/30 empty=0 | corners 0.993-1.007 chi2=10.7 empty=0
+N=  37 split    anchors share 0.997-1.005 chi2=0.5/36 empty=0 | corners 0.996-1.003 chi2=2.0 empty=0
+N=  37 split    anchors share 0.987-1.019 chi2=8.9/36 empty=0 | corners 0.994-1.007 chi2=9.5 empty=0
+N=  43 split    anchors share 0.992-1.007 chi2=1.9/42 empty=0 | corners 0.998-1.003 chi2=1.6 empty=0
+N=  43 split    anchors share 0.995-1.008 chi2=1.2/42 empty=0 | corners 0.997-1.003 chi2=1.5 empty=0
+{
+ "n_anchors": 129313,
+ "frac_squarefree_hat_anchors": 0.7779882919737382,
+ "union_composite_of_local_rates": 0.22138805259324879,
+ "one_minus_union": 0.7786119474067512,
+ "inv_zetaK2": 0.7780944891751803,
+ "zetaK2": 1.2851909554841479,
+ "L2_chi_minus3": 0.7813024128964854,
+ "frac_squarefree_all_lattice_points": 0.778117417746558,
+ "n_lattice_points": 691582,
+ "local_rates_first": [
+  [
+   2,
+   "inert",
+   0.06240671858204511
+  ],
+  [
+   3,
+   "ramified",
+   0.11112571821858591
+  ],
+  [
+   5,
+   "inert",
+   0.0015853007818239465
+  ],
+  [
+   7,
+   "split",
+   0.020291850007346516
+  ],
+  [
+   7,
+   "split",
+   0.020608910163711306
+  ],
+  [
+   11,
+   "inert",
+   5.4132221818378664e-05
+  ],
+  [
+   13,
+   "split",
+   0.00591587852729424
+  ],
+  [
+   13,
+   "split",
+   0.0059081453527487565
+  ],
+  [
+   17,
+   "inert",
+   7.733174545482667e-06
+  ],
+  [
+   19,
+   "split",
+   0.0027607433127373117
+  ],
+  [
+   19,
+   "split",
+   0.0027916760109192424
+  ],
+  [
+   31,
+   "split",
+   0.0010053126909127467
+  ]
+ ],
+ "frac_prime_hat_anchors": 0.16284393027823746,
+ "frac_prime_lattice": 0.1495238453285366
+}
+region control {'n_hex_centres': 179149, 'share_with_anchor': 0.721818151371205, 'prime_share_all': 0.16304863549336027, 'prime_share_anchors': 0.16284518957877397, 'prime_share_empty_centres': 0.16357653102175135, 'squarefree_share_all': 0.7781009104153526, 'squarefree_share_anchors': 0.7779882919737382, 'squarefree_share_empty': 0.778393129464644}
+orientations {'0': 18892, '0R': 2712, '120': 18724, '120R': 2789, '180': 18724, '180R': 2776, '240': 18925, '240R': 2776, '300': 18892, '300R': 2700, '60': 18692, '60R': 2712}
