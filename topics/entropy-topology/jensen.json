@@ -1,0 +1,1534 @@
+{
+ "gamma": [
+  "0.497120778188314109912773739685",
+  "0.0028714930393931796919062345622",
+  "0.0000154315022587897508612932239369",
+  "0.0000000780333263798931630004461305479",
+  "3.74271239188512860130494087159e-10",
+  "1.71281551876300322606392298163e-12",
+  "7.51383992379523527716345518105e-15",
+  "3.17141819570768756352011038413e-17",
+  "1.29185056556074522761087689566e-19",
+  "5.09156738561752121762820142764e-22",
+  "1.94589859131591553506202913236e-24",
+  "7.22500731404880098720398451099e-27",
+  "2.61049024367296087791454926089e-29",
+  "9.19186056438394618648954989402e-32",
+  "3.15823464072327222498173730834e-34",
+  "1.06010417154692985774327114962e-36",
+  "3.47992566957465462363487894452e-39",
+  "1.11820251634576663346912397878e-41",
+  "3.52026526910594722299776160797e-44",
+  "1.08662188515907169010114897202e-46",
+  "3.29113472442808828151842868783e-49",
+  "9.78743070716965282985735009051e-52",
+  "2.85968162265513757009776959613e-54",
+  "8.21378931511284045305958106463e-57",
+  "2.32049231336939448789026463121e-59",
+  "6.45127919474063468215438038219e-62",
+  "1.76581511756159632574503049755e-64",
+  "4.76069469065897798152580061028e-67",
+  "1.26474148591697591128054618146e-69",
+  "3.31214838688002080773707697812e-72",
+  "8.55372270711083800161258487238e-75",
+  "2.17916442397653595875855953282e-77",
+  "5.47845874307388125367490993438e-80",
+  "1.35955604841094103982970172039e-82",
+  "3.33147180965277769713172601224e-85",
+  "8.06304675549354425476714674625e-88",
+  "1.92798702598959802564220587575e-90",
+  "4.55578696363046072132534374689e-93",
+  "1.06410510221865977460219404644e-95"
+ ],
+ "xi_half": "0.497120778188314109912773739685",
+ "rows": [
+  {
+   "d": 1,
+   "n": 0,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 1,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 2,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 3,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 4,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 5,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 6,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 7,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 8,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 9,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 10,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 11,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 12,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 13,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 14,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 15,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 16,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 17,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 18,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 19,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 20,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 21,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 22,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 23,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 24,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 25,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 26,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 27,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 28,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 29,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 1,
+   "n": 30,
+   "real_roots": 1,
+   "newton_degree": 1
+  },
+  {
+   "d": 2,
+   "n": 0,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 1,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 2,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 3,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 4,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 5,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 6,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 7,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 8,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 9,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 10,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 11,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 12,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 13,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 14,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 15,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 16,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 17,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 18,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 19,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 20,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 21,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 22,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 23,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 24,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 25,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 26,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 27,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 28,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 29,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 2,
+   "n": 30,
+   "real_roots": 2,
+   "newton_degree": 0
+  },
+  {
+   "d": 3,
+   "n": 0,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 1,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 2,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 3,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 4,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 5,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 6,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 7,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 8,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 9,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 10,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 11,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 12,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 13,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 14,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 15,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 16,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 17,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 18,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 19,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 20,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 21,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 22,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 23,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 24,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 25,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 26,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 27,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 28,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 29,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 3,
+   "n": 30,
+   "real_roots": 3,
+   "newton_degree": -1
+  },
+  {
+   "d": 4,
+   "n": 0,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 1,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 2,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 3,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 4,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 5,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 6,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 7,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 8,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 9,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 10,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 11,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 12,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 13,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 14,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 15,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 16,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 17,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 18,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 19,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 20,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 21,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 22,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 23,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 24,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 25,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 26,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 27,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 28,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 29,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 4,
+   "n": 30,
+   "real_roots": 4,
+   "newton_degree": -2
+  },
+  {
+   "d": 5,
+   "n": 0,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 1,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 2,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 3,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 4,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 5,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 6,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 7,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 8,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 9,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 10,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 11,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 12,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 13,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 14,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 15,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 16,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 17,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 18,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 19,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 20,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 21,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 22,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 23,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 24,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 25,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 26,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 27,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 28,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 29,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 5,
+   "n": 30,
+   "real_roots": 5,
+   "newton_degree": -3
+  },
+  {
+   "d": 6,
+   "n": 0,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 1,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 2,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 3,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 4,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 5,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 6,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 7,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 8,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 9,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 10,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 11,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 12,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 13,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 14,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 15,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 16,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 17,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 18,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 19,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 20,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 21,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 22,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 23,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 24,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 25,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 26,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 27,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 28,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 29,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 6,
+   "n": 30,
+   "real_roots": 6,
+   "newton_degree": -4
+  },
+  {
+   "d": 7,
+   "n": 0,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 1,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 2,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 3,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 4,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 5,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 6,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 7,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 8,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 9,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 10,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 11,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 12,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 13,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 14,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 15,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 16,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 17,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 18,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 19,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 20,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 21,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 22,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 23,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 24,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 25,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 26,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 27,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 28,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 29,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 7,
+   "n": 30,
+   "real_roots": 7,
+   "newton_degree": -5
+  },
+  {
+   "d": 8,
+   "n": 0,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 1,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 2,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 3,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 4,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 5,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 6,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 7,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 8,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 9,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 10,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 11,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 12,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 13,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 14,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 15,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 16,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 17,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 18,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 19,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 20,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 21,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 22,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 23,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 24,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 25,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 26,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 27,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 28,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 29,
+   "real_roots": 8,
+   "newton_degree": -6
+  },
+  {
+   "d": 8,
+   "n": 30,
+   "real_roots": 8,
+   "newton_degree": -6
+  }
+ ]
+}

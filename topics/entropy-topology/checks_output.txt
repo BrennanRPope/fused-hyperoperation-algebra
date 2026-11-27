@@ -1,0 +1,31 @@
+PASS A1 x o x = 1/N(1/x): the dial square is Newton's method on q(y) = y^2 + k y + d (exact) 
+PASS A2 m-fold self-composition = Koenig's root-finding method of order m on q, m = 2..6 (m = 3 is Halley) 
+PASS A3 under z = (y - e1)/(y - e2) every m-fold power is z -> z^m (e1, e2 the roots of q), m = 2..6 
+PASS A4 fixed points of x o x: x (1 + k x + d x^2) = 0, so besides 0 they are the zeros of the dial polynomial x*(d*x**2 + k*x + 1)
+PASS A5 multiplier 2 at 0 (a repeller), multiplier 0 at each zero of 1 + kx + dx^2 (superattracting) 
+PASS A6 on the wall Delta = k^2 - 4d = 0 a zero meets a pole and x o x drops to the Mobius map 2x/(1 - kx/2) -4*x/(k*x - 2)
+PASS B1 circle degree of the m-fold power on RP^1: m when Delta < 0, 1 on the wall, m mod 2 when Delta > 0 (12 dial points, m = 1..6) 
+PASS B2 Lefschetz: sum of fixed-point indices of x o x = 1 - degree at every off-wall dial point (L = 1 - 2 = -1 elliptic, 1 - 0 = 1 hyperbolic) 
+PASS B3 Nielsen: x o x has exactly 2^j - 1 points of period dividing j when Delta < 0 and exactly 3 when Delta > 0 (j = 1..8) elliptic [1, 3, 7, 15, 31, 63, 127, 255], hyperbolic [3, 3, 3, 3, 3, 3, 3, 3]
+PASS B4 entropy of x o x: log 2 when Delta < 0, 0 when Delta > 0 (backward orbit of the repeller) rate 0.693147; hyperbolic counts [1, 2, 2, 2, 2]
+PASS B5 Conley-Morse graph along k = 1: two attractors at the real zeros and a repeller at 0 for d < 1/4; one Morse set, the whole circle, for d > 1/4 Morse-set counts [(np.float64(-1.0), 3), (np.float64(0.2), 3), (np.float64(0.25), 2), (np.float64(0.3), 1), (np.float64(1.0), 1)]
+PASS B6 velocity addition (k = 0, d = -1/c^2): composing a speed with itself is Newton finding the light speeds +-c; the jet at c has slope 0 (quadratic convergence) slope at c 0.0e+00, e_{n+1}/e_n^2 -> 0.1667 (= 1/2c = 0.1667)
+PASS B7 tangent law (k = 0, d = 1): the jet along a typical orbit grows like 2^n, Lyapunov exponent log 2 0.69315
+PASS C1 the circle degree of real Newton's method is 2 - r, r = number of distinct real roots (3300 random polynomials, degree 2..12) 3300 of 3300
+PASS C2 repeated roots count once: degree = 2 - (number of distinct real roots) (random polynomials of degree 2 or more, many with multiple roots) 193 of 193
+PASS C3 the backward orbit of infinity grows at exactly log|2 - r| (the Lefschetz floor) in 7 examples y^2+1 0.6931; (y^2+1)(y^2+4) 0.6931; quartic, 4 real 0.6931; quintic, 5 real 1.0986; sextic, 6 real 1.3863; sextic, 4 real 0.6931; sextic, 0 real 0.6931
+PASS C4 all roots real: turning points of N^j grow no faster than (n-2)^j, so h = log(n - 2), the floor (Hurley-Martin), 12 random cases n=7 1.610/1.609, n=5 1.099/1.099, n=7 1.610/1.609, n=4 0.693/0.693 ...
+PASS C5 one real root (y^3 - 2y + 2): circle degree 1 gives floor 0, yet turning points grow at about 0.6 per step: the excess over the floor comes from the folds rate 0.609
+PASS C6 sextic, no real roots (degree 2, floor log 2): with no folds there are no turning points (h = log 2 exactly); with folds the turning points grow at about 0.90 > log 2 rate 0.904 vs log 2 = 0.693
+PASS D1 period-3 twins at r = 3.835: one pattern (knot type), fixed-point indices of f^3 +1 (stable) and -1 (unstable) (1, 2, 0), multipliers [np.float64(-0.395), np.float64(2.321)]
+PASS D2 continuation: the index of the isolating interval [0.44, 0.58] stays 0 across the birth at 1 + sqrt 8 (read from the two endpoints only) orbits present from r = 3.829
+PASS D3 all 65 windows (periods 2..9): the stable orbit has index +1; 60 have a same-pattern twin, always of index -1 no twin (born by period doubling): [(2, 3.2361), (4, 3.4986), (8, 3.5546), (6, 3.8446), (8, 3.9609)]
+PASS D4 standard map K = 0.9: in every Birkhoff pair the two orbits share their cyclic order (braid type), yet (index of F^n, index of F^2n) is (+1,+1) elliptic, (-1,-1) hyperbolic, (+1,-1) inverse hyperbolic 50 pairs (periods 1..13, 8 not converged), types {'hyperbolic': 50, 'elliptic': 40, 'inverse hyperbolic': 10}
+PASS D5 the index is the parity of the action's Morse index: i(F^n) = (-1)^(Morse + 1) for all those orbits; the minimizer (Morse 0) is always hyperbolic 
+PASS D6 area-preserving Henon map (cos a = 0.24): the same index pair classifies every orbit found 9 orbits, {'elliptic': 2, 'hyperbolic': 5, 'inverse hyperbolic': 2}
+PASS E1 one composition x -> x o a is a Mobius map, a circle homeomorphism of degree sign(1 + k a + d a^2): entropy 0 for every single element (60 random) 
+PASS E2 Shub bound sharp on the elliptic side: real entropy of x o x = log 2 = log|degree| = log(algebraic degree), the Gromov-Lyubich ceiling; hyperbolic side: real 0 under complex log 2 
+PASS F1 Jensen data: gamma(0) = xi(1/2) = 0.4971207781883141... 0.497120778188314109
+PASS F2 all 248 Jensen polynomials of Xi with d <= 8, n <= 30 are hyperbolic and their real Newton maps have circle degree 2 - d 
+PASS F3 losing real roots means crossing a double-root wall: along a quartic family the Newton degree only jumps (by 2) where two roots merge degrees met [-2, 0, 2]; jumps at s = [-0.394, 0.41, 3.248]
+30 of 30 pass

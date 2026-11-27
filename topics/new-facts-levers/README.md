@@ -276,6 +276,23 @@ on |w| = 1 exactly when k ≥ 1. The union-find reading is not found in print (o
   family must be built by attractive unions with the field on the total, never sums; that narrows the spin-build target
   but supplies no limit at σ = ½. **No lead.**
 
+## 11. Two levers from the entropy-topology work (Nov 27)
+
+**L13. The dial square is Newton's method** ([entropy-topology](../entropy-topology/README.md) §1). With x = 1/y,
+x ∘ x = (2x + kx²)/(1 − dx²) is Newton's method on y² + ky + d, and the m-fold power is König's method of order m.
+Not found as a group-law statement; it is two known conjugacies to z ↦ zᵐ meeting, so likely folklore.
+
+**L14. Real Newton's method has circle degree 2 − r** (same page §4), r = distinct real roots, from the Lefschetz
+index sum. Not found stated; Saari and Urenko (1984) treat real Newton as a circle map and were not read in full.
+
+- **Quantum gravity.** The one physical reading is L13 at k = 0, d = −1/c²: composing a speed with itself is Newton's
+  method converging quadratically to c. That restates "boosts saturate at c" and says nothing about curved spacetime or
+  quantization. **No lead.**
+- **Millennium problems.** L14 turns Pólya's criterion (RH ⇔ every Jensen polynomial of Ξ is hyperbolic) into "every
+  Jensen Newton map has circle degree 2 − d". That is an equivalent restatement. It would become a lever only with a
+  continuation argument that no Jensen polynomial meets a double-root wall, which is the de Bruijn–Newman question
+  (Λ ≥ 0, Rodgers–Tao). **Restatement, not a lead.** Nothing touches the other problems.
+
 ## The polishing step
 
 Three roots are recomputed with mpmath at 30 digits (checks P1–P3): √6 − 3, (√5 − 3)/2 = −1/φ², and the five-region
@@ -315,3 +332,5 @@ quantum root −0.3538307955298137265. Cost under a second.
 | Least negative size (S − 2)/4 to reach CHSH value S | Known | Morris et al. PRA 105, 032202 (2022); arXiv:2106.07945; check S7 |
 | L11: entropy of affine branches from shared centres (trace monoid) | **Not found in print**; corollary of Cartier–Foata; no lever | `chaos-composition/` checks F'1–F'4 |
 | L12: Asano's Lee–Yang proof read as union-find; k = 1 as the dial gas's switch | **Reading not found in print**; renaming of Asano 1970; no lever | `union-find/` checks C1–C9 |
+| L13: dial square = Newton on y² + ky + d; m-fold = König order m | **Not found as a group-law statement**; likely folklore; no lever | `entropy-topology/` checks A1–A3 |
+| L14: real Newton circle degree = 2 − r | **Not found stated**; two lines from Lefschetz; restates Pólya's RH criterion, no lever | `entropy-topology/` checks C1–C2, F2 |
