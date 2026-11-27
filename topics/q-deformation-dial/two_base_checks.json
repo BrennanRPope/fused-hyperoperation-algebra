@@ -1,0 +1,67 @@
+[
+ {
+  "id": "T1 jet letters q^((s-1)n)/[n]_q^s with q = 1 + N satisfy z_i<>z_j = z_(i+j) - N z_(i+j-1) exactly (4 random dials)",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T2 the jet letter product is commutative and associative (i, j, l = 1..3)",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T2b triple product z1<>z1<>z1 = z3 - 2N z2 + (kN - d) z1: d enters as a number at third order",
+  "pass": true,
+  "note": "matches the plane law, whose first d term is the x^2 y coefficient (Q3)"
+ },
+ {
+  "id": "T3 truncated sums multiply by the jet quasi-shuffle, e.g. H(2)H(2) = 2H(2,2) + H(4) - N H(3) (M = 1..6, depth up to 2x1)",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T4 the jet q-MZV is the pair (Bradley at q1 = 1 + alpha, Bradley at q2 = 1 + beta); k = q1 + q2 - 2, d = (q1 - 1)(q2 - 1)",
+  "pass": true,
+  "note": "for alpha != beta real, Q[N]/(N^2 - kN + d) = Q x Q, so off the border the jet carries exactly two q-MZVs"
+ },
+ {
+  "id": "T5 holding one base at 1 (d = 0): the jet q-MZV = (Bradley's q-MZV at q = 1 + k, the ordinary MZV)",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T6 holding one base at c gives the line d = (c-1)k - (c-1)^2, tangent to the border d = k^2/4 at k = 2(c-1)",
+  "pass": true,
+  "note": "c = 1: the line d = 0, tangent at the origin. c = 1/2: d = -k/2 - 1/4, tangent at (k, d) = (-1, 1/4)"
+ },
+ {
+  "id": "T7 at q2 = 1/2 Bradley's letters are 2^(n-s)/(2^n - 1)^s",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T7b at q = 1/2, Bradley's zeta_q(2) = (1/4) sum sigma(m)/2^m = (1/4) Zudilin's zeta_q(2): 0.686008472189872",
+  "pass": true,
+  "note": "Zudilin 2002 credits Duverney with its irrationality for q = 1/p"
+ },
+ {
+  "id": "T7c the other normalization at q = 1/2: sum 1/(2^n - 1) = sum d(m)/2^m, the Erdos-Borwein constant 1.606695152415",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T8 on the border d = k^2/4 the jet q-MZV is (zeta_q, d zeta_q/dq) at q = 1 + k/2: the value and its derivative",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T9 complex pair (k, d) = (0, 1): the jet q-MZV is Bradley's at q = 1 + i (real part a, imaginary part b)",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "T10 negative control: replacing the jet -N by the number -k breaks the letter product when d != 0",
+  "pass": true,
+  "note": ""
+ }
+]

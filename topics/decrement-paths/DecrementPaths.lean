@@ -185,15 +185,15 @@ theorem const_force_split (μ : ι → ℝ) (j : ι) (hM : ∑ i, μ i ≠ 0) :
     intro t _
     have h := (((hasDerivAt_id' t).const_mul (∑ i, μ i)).neg.exp.neg).div_const (∑ i, μ i)
     refine h.congr_deriv ?_
-    try simp only [Pi.neg_apply, id]
+    simp only [Pi.neg_apply]
     rw [mul_one, mul_neg, neg_neg, mul_div_assoc, div_self hM, mul_one]
   rw [intervalIntegral.integral_eq_sub_of_hasDerivAt hd
     (Continuous.intervalIntegrable (by fun_prop) _ _)]
   simp only [mul_one, mul_zero, neg_zero, Real.exp_zero]
   ring
 
-/-- The total on the constant-force path is 1 − e^{−M}: so the split is in proportion to the μ. -/
 omit [DecidableEq ι] in
+/-- The total on the constant-force path is 1 − e^{−M}: so the split is in proportion to the μ. -/
 theorem const_force_total (μ : ι → ℝ) :
     total (fun i => 1 - Real.exp (-(μ i * 1))) = 1 - Real.exp (-∑ i, μ i) := by
   unfold total

@@ -73,3 +73,6 @@ topics/shape-dial-survey/even_p_proof_check.py
 topics/elliptic-modulus/pendulum/pendulum_checks.py
 topics/shape-dial-survey/pendulum_leeyang_check.py
 topics/carnot-cascade/jet_checks.py
+topics/q-deformation-dial/two_base_checks.py
+topics/q-deformation-dial/border_checks.py
+topics/q-deformation-dial/slope_proof_checks.py

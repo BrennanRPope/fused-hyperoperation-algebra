@@ -1,0 +1,47 @@
+[
+ {
+  "id": "B1 off q = 1 the jet adds nothing new: zeta_q(2,1) = zeta_q(3) (Bradley's q-Euler) and so do their q-derivatives (q = 0.3, 0.5, 0.8)",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "B2 the jet of a letter at q = 1: d/dq z_s(n) = (s/2 - 1)/n^(s-1) + (s/2)/n^s  (n = 1..8, s = 1..5)",
+  "pass": true,
+  "note": "so the jet's second slot is delta = (weight/2) * identity + a lowering operator z_s -> (s/2 - 1) z_(s-1)"
+ },
+ {
+  "id": "B3 second slot of H(2)H(2) = 2H(2,2) + H(4) - N H(3) at the origin: 2 H(2) dH(2) = 2 dH(2,2) + dH(4) - H(3)  (M = 1..8, exact)",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "B4 true slope of zeta_q(s) at q = 1 equals the jet's (s/2 - 1)zeta(s-1) + (s/2)zeta(s) for s = 3, 4, 5; at s = 2 it is zeta(2) + 1/2, and the jet alone gives zeta(2)",
+  "pass": true,
+  "note": "s=2: true 2.1449341, jet 1.6449341, gap +0.5000000; s=3: true 2.6255523, jet 2.6255524, gap -0.0000001; s=4: true 3.3667026, jet 3.3667034, gap -0.0000007; s=5: true 4.2158019, jet 4.2158042, gap -0.0000023"
+ },
+ {
+  "id": "B5a (s/2 - 1) zeta(s - 1) -> 1/2 as s -> 2: the 1/2 is a residue, zero times a pole",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "B5b depth 2, front 2: true slope of zeta_q(2,2) = 2 zeta(2,2) + zeta(2)/2 (jet alone: 2 zeta(2,2)): 2.4459514 vs 2.4459519",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "B5c depth 2, no front 2: true slope = jet slope for (3,1) and (3,2): 0.9207512 vs 0.9207515, 0.9778966 vs 0.9778972",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "B6 the rule passes Bradley's q-Euler: slope of zeta_q(2,1) = slope of zeta_q(3) = zeta(2)/2 + 3 zeta(3)/2, and the divergent zeta(1) cancels",
+  "pass": true,
+  "note": ""
+ },
+ {
+  "id": "B7 negative control: the plain jet slope of zeta_q(2,2) misses the true one by zeta(2)/2 = 0.8224670",
+  "pass": true,
+  "note": ""
+ }
+]
