@@ -1,0 +1,28 @@
+A. Union-find's cost and the hyperoperation tower
+PASS A1 Ackermann A(n, m) = 2 [n] (m + 3) - 3 (rungs 0-3, m <= 6; rung 4, m <= 1: A(4,1) = 2^^4 - 3 = 65533)  [A(4,1) = 65533]
+PASS A2 so A(n, m) = (fused rung n)(1, m + 2) - 2: Ackermann is the fused ladder at a = 1
+PASS A3 each alpha_k undoes one rung: alpha_1(2m) = m, alpha_2(2^m) = m, alpha_3(2^^m) = m (m <= 5)
+PASS A4 for n = 10^80 (about the atoms in the universe): alpha_2 = 266, alpha_3 = log* = 5, alpha_4 = 4, alpha_5 = 3  [[266, 5, 4, 3]]
+PASS A5 inverse Ackermann alpha(n) = least k with A(k, k) >= n is 4 for 10^80 and for 2^65535 (A(3,3) = 61, A(4,2) = 2^65536 - 3)
+B. Union-find: the partition ignores order, the cost does not
+PASS B1 40 random orders (and directions) of the same 45 unions give one partition
+PASS B2 ... but different trees: naive linking depth ranges over several values  [depths 5-11]
+PASS B3 worst order for naive linking: a chain of depth n - 1 (n = 64)
+PASS B4 union by rank alone keeps depth <= log2 n (n = 4096)  [depth 5]
+PASS B5 rank + path compression: under 2 pointer steps per operation, flat from n = 2^10 to 2^17  [0.958 -> 0.970]
+PASS B6 naive linking on the chain: cost per operation grows like n (x8 in n gives about x8 in cost)  [63.7 -> 511.7]
+C. Lee-Yang on the dial gas, built by union steps (Asano)
+PASS C1 one edge's geometry: |w + a|^2 - |1 + a w|^2 = (1 - a^2)(|w|^2 - 1), so for a <= 1 the map w -> -(1 + a w)/(w + a) sends the outside of the circle inside
+PASS C2 the dial edge 1 + z1 + z2 + k z1 z2 (= 1 + z1 (+)_k z2) at z = w/sqrt(k) is 1 + (w1 + w2)/sqrt(k) + w1 w2: the Lee-Yang edge with a = k^(-1/2), so a <= 1 exactly when k >= 1
+PASS C3 Asano contraction (keep a vertex's copies all-in or all-out, then glue them) of the product of edge factors gives sum_S a^(edges leaving S) w^S, the dial gas at z_v = k^(-d_v/2) w_v
+PASS C4 Lee-Yang circle: for k = 1.5, 3, 10 on 7 graphs (ring, Petersen, grid, K5, three random), every zero has |w| = 1  [max ||w| - 1| = 0.0e+00]
+PASS C5 regular graphs give one circle in z: |z| = k^(-d/2) (Petersen d = 3, k = 3; 4x4 torus d = 4, k = 2 gives 1/4, the lee-yang page's k^-2)
+PASS C6 at k = 1 (the free gas) the gas is exactly (1 + w)^N: every zero at w = -1 (Petersen, N = 10)
+PASS C7 below k = 1 (repulsive) zeros leave the circle (ring C8 and Petersen at k = 0.5, 0.2)  [min deviation 4.671]
+PASS C8 Petersen built by 20 union steps from 15 loose edges (30 copies), k = 3: zeros on |w| = 1 at every stage, one fewer zero per union  [max dev 1.1e-16]
+PASS C9 10 random union orders build the same final gas, exactly (grid 3x3, a = 1/2)
+D. Products and unions keep the circle; sums do not
+PASS D1 a sum (mixture) breaks it: (1 + w)^4 + (1 - w)^4 has zeros at |w| = sqrt2 - 1 and sqrt2 + 1, off the circle
+PASS D2 a product (two systems side by side, no union) keeps every zero on the circle
+
+22 of 22 pass

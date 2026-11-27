@@ -263,6 +263,19 @@ affine statement in three searches; a few lines from Cartier–Foata, so likely 
 - **Millennium problems.** None touches entropy of branch monoids. The nearest is P vs NP through counting (trace
   monoids are easy to count), which goes the wrong way for a hardness result. **No lead.**
 
+## 10. Union-find and the Lee–Yang circle (Nov 27)
+
+**L12. Asano's proof read as union-find; k = 1 as the switch on the dial gas** ([union-find](../union-find/README.md)).
+Each union glues two copies of a vertex and keeps the terms where they agree; on the dial gas every stage keeps its zeros
+on |w| = 1 exactly when k ≥ 1. The union-find reading is not found in print (one search) but is a renaming of Asano 1970.
+
+- **Quantum gravity.** Gluing local pieces into a whole while a positivity property survives is the shape of tensor
+  network and spin-foam gluing, but there the glued objects are not multi-affine polynomials and no circle theorem is in
+  play. **No lead.**
+- **Millennium problems.** Riemann is the only conduit (Newman's Lee–Yang form). The reading says the missing finite
+  family must be built by attractive unions with the field on the total, never sums; that narrows the spin-build target
+  but supplies no limit at σ = ½. **No lead.**
+
 ## The polishing step
 
 Three roots are recomputed with mpmath at 30 digits (checks P1–P3): √6 − 3, (√5 − 3)/2 = −1/φ², and the five-region
@@ -301,3 +314,4 @@ quantum root −0.3538307955298137265. Cost under a second.
 | k = −1/χ and restricting as conditioning | Known facts, our reading | Schanuel 1991; Propp 2003 |
 | Least negative size (S − 2)/4 to reach CHSH value S | Known | Morris et al. PRA 105, 032202 (2022); arXiv:2106.07945; check S7 |
 | L11: entropy of affine branches from shared centres (trace monoid) | **Not found in print**; corollary of Cartier–Foata; no lever | `chaos-composition/` checks F'1–F'4 |
+| L12: Asano's Lee–Yang proof read as union-find; k = 1 as the dial gas's switch | **Reading not found in print**; renaming of Asano 1970; no lever | `union-find/` checks C1–C9 |
