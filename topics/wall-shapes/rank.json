@@ -1,0 +1,188 @@
+{
+ "rank 1 (ratios 1/3)": {
+  "rank": 1,
+  "dstar": 1.2618595071429146,
+  "rows": [
+   {
+    "level": 3,
+    "words": 64,
+    "distinct_words": 50,
+    "neighbour_maps": 8
+   },
+   {
+    "level": 4,
+    "words": 256,
+    "distinct_words": 157,
+    "neighbour_maps": 8
+   },
+   {
+    "level": 5,
+    "words": 1024,
+    "distinct_words": 480,
+    "neighbour_maps": 8
+   },
+   {
+    "level": 6,
+    "words": 4096,
+    "distinct_words": 1451,
+    "neighbour_maps": 8
+   },
+   {
+    "level": 7,
+    "words": 16384,
+    "distinct_words": 4366,
+    "neighbour_maps": 8
+   },
+   {
+    "level": 8,
+    "words": 65536,
+    "distinct_words": 13113,
+    "neighbour_maps": 8
+   },
+   {
+    "level": 9,
+    "words": 262144,
+    "distinct_words": 39356,
+    "neighbour_maps": 8
+   },
+   {
+    "level": 10,
+    "words": 1048576,
+    "distinct_words": 118087,
+    "neighbour_maps": 8
+   }
+  ]
+ },
+ "rank 1 (ratios 1/3, 1/9)": {
+  "rank": 1,
+  "dstar": 1.1561828010105366,
+  "rows": [
+   {
+    "level": 3,
+    "words": 61,
+    "distinct_words": 45,
+    "neighbour_maps": 6
+   },
+   {
+    "level": 4,
+    "words": 217,
+    "distinct_words": 135,
+    "neighbour_maps": 6
+   },
+   {
+    "level": 5,
+    "words": 773,
+    "distinct_words": 405,
+    "neighbour_maps": 6
+   },
+   {
+    "level": 6,
+    "words": 2753,
+    "distinct_words": 1215,
+    "neighbour_maps": 6
+   },
+   {
+    "level": 7,
+    "words": 9805,
+    "distinct_words": 3645,
+    "neighbour_maps": 6
+   },
+   {
+    "level": 8,
+    "words": 34921,
+    "distinct_words": 10935,
+    "neighbour_maps": 6
+   },
+   {
+    "level": 9,
+    "words": 124373,
+    "distinct_words": 32805,
+    "neighbour_maps": 6
+   },
+   {
+    "level": 10,
+    "words": 442961,
+    "distinct_words": 98415,
+    "neighbour_maps": 6
+   }
+  ]
+ },
+ "rank 2 (ratios 1/2, 1/3)": {
+  "rank": 2,
+  "dstar": 1.6055248444243277,
+  "rows": [
+   {
+    "level": 3,
+    "words": 472,
+    "distinct_words": 186,
+    "neighbour_maps": 214
+   },
+   {
+    "level": 4,
+    "words": 2704,
+    "distinct_words": 760,
+    "neighbour_maps": 620
+   },
+   {
+    "level": 5,
+    "words": 15136,
+    "distinct_words": 2368,
+    "neighbour_maps": 1372
+   },
+   {
+    "level": 6,
+    "words": 84160,
+    "distinct_words": 8638,
+    "neighbour_maps": 3942
+   },
+   {
+    "level": 7,
+    "words": 472960,
+    "distinct_words": 32551,
+    "neighbour_maps": 11860
+   }
+  ]
+ },
+ "rank 3 (ratios 1/2, 1/3, 1/5)": {
+  "rank": 3,
+  "dstar": 1.4870694440796264,
+  "rows": [
+   {
+    "level": 3,
+    "words": 322,
+    "distinct_words": 236,
+    "neighbour_maps": 498
+   },
+   {
+    "level": 4,
+    "words": 1741,
+    "distinct_words": 1082,
+    "neighbour_maps": 1672
+   },
+   {
+    "level": 5,
+    "words": 8743,
+    "distinct_words": 3873,
+    "neighbour_maps": 4434
+   },
+   {
+    "level": 6,
+    "words": 42922,
+    "distinct_words": 15310,
+    "neighbour_maps": 13342
+   },
+   {
+    "level": 7,
+    "words": 216469,
+    "distinct_words": 59214,
+    "neighbour_maps": 42304
+   },
+   {
+    "level": 8,
+    "words": 1130902,
+    "distinct_words": 215614,
+    "neighbour_maps": 104206
+   }
+  ]
+ }
+}

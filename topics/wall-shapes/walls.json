@@ -1,0 +1,308 @@
+[
+ {
+  "name": "New ties: 19+1=20",
+  "topic": "new-ties",
+  "stopped": "Every length reduces to Conjecture 21.2 (2, 5, 19 balance only in 19+1=20). Each size is closed by Baker/LLL/2-adic search; no bound covers all lengths.",
+  "dial": "s",
+  "operation": "sum of prime powers",
+  "break_type": "number theory",
+  "shapes": [
+   "II",
+   "III"
+  ],
+  "proved": "each size: ours (Baker-type bounds are Baker, LLL is Lenstra-Lenstra-Lovasz); all lengths: open"
+ },
+ {
+  "name": "New ties: S-unit terms grow",
+  "topic": "new-ties",
+  "stopped": "Length n gives an S-unit equation with n terms; Evertse-Schlickewei-Schmidt counts depend on n, so no uniform finish.",
+  "dial": "s",
+  "operation": "sum",
+  "break_type": "number theory",
+  "shapes": [
+   "II",
+   "III"
+  ],
+  "proved": "count bound: Evertse-Schlickewei-Schmidt 2002"
+ },
+ {
+  "name": "New ties: v19 at five letters",
+  "topic": "new-ties",
+  "stopped": "The 19-adic valuation is unbounded at five letters, so the 2-adic trick that closed shorter words does not.",
+  "dial": "s",
+  "operation": "sum",
+  "break_type": "number theory",
+  "shapes": [
+   "II",
+   "III"
+  ],
+  "proved": "ours (explicit families)"
+ },
+ {
+  "name": "Riemann: local vs global",
+  "topic": "riemann",
+  "stopped": "The elliptic object is correct near each point but does not glue to a global positivity statement.",
+  "dial": "k",
+  "operation": "zeta product",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "ours (numerical + by hand)"
+ },
+ {
+  "name": "Riemann: rewind",
+  "topic": "riemann",
+  "stopped": "Running de Bruijn-Newman (backward heat flow) below t=0 loses real zeros.",
+  "dial": "t",
+  "operation": "heat flow",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "Rodgers-Tao 2020 (Lambda >= 0)"
+ },
+ {
+  "name": "Riemann: even half",
+  "topic": "riemann",
+  "stopped": "The flip-odd half keeps every zero on the line; the flip-even half pushes zeros off.",
+  "dial": "k",
+  "operation": "even/odd split",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "ours (numerical, n = 8 to 14)"
+ },
+ {
+  "name": "Riemann: Knauf chain is many-body",
+  "topic": "riemann",
+  "stopped": "The chain is ferromagnetic but many-body, so pair Lee-Yang theorems do not apply; the magnetic circle holds only above a temperature threshold (fits near beta = 2), and RH sits at beta = 3/2.",
+  "dial": "p",
+  "operation": "spin chain",
+  "break_type": "positivity",
+  "shapes": [
+   "I",
+   "III"
+  ],
+  "proved": "chain: Knauf 1993; threshold numbers ours; why: Ruelle 2010 Thm 9 (all-temperature Lee-Yang forces pair interactions)"
+ },
+ {
+  "name": "Riemann: limit one-sidedness",
+  "topic": "riemann",
+  "stopped": "Mirror construction puts all finite zeros on the line, but the limit's one-sidedness is equivalent in strength to RH.",
+  "dial": "k",
+  "operation": "mirror",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "known restatement (de Branges / Lagarias)"
+ },
+ {
+  "name": "Riemann: cusp tail",
+  "topic": "riemann",
+  "stopped": "Best lead; no proof.",
+  "dial": "k",
+  "operation": "cusp",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "open"
+ },
+ {
+  "name": "Lee-Yang p-ball, odd p > 8",
+  "topic": "shape-dial-survey",
+  "stopped": "Even p proved (Polya multiplier); p <= 8 proved one p at a time (boxes); no uniform near zone for non-even p > 8 because of the gamma factors in the numerator.",
+  "dial": "p",
+  "operation": "single-site measure",
+  "break_type": "positivity",
+  "shapes": [
+   "I",
+   "III"
+  ],
+  "proved": "even p: Polya; p <= 8: ours"
+ },
+ {
+  "name": "Lee-Yang p-ball, every p",
+  "topic": "shape-dial-survey",
+  "stopped": "Hermite-Biehler start for every p (Kumaraswamy characteristic function) unproved.",
+  "dial": "p",
+  "operation": "single-site measure",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "open"
+ },
+ {
+  "name": "Reflection positivity off the real axis",
+  "topic": "rp",
+  "stopped": "RP holds for real k, fails off it (negative at k = -i). The remaining assumptions are independent (charge clock, mean-energy clock, superselection, spin factor V7).",
+  "dial": "k",
+  "operation": "link window 1 + k eps E >= 0",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "ours (counterexamples)"
+ },
+ {
+  "name": "Klein flow peak spin",
+  "topic": "klein",
+  "stopped": "Peak spin keeps rising with the grid (151 -> 233 -> 313.8, check B9 fails) while enstrophy converges.",
+  "dial": "d",
+  "operation": "flow",
+  "break_type": "growth",
+  "shapes": [
+   "III"
+  ],
+  "proved": "ours (numerical)"
+ },
+ {
+  "name": "Frame drag",
+  "topic": "frame-drag",
+  "stopped": "An exact rewrite of Kerr; nothing beyond it.",
+  "dial": "k",
+  "operation": "rotation",
+  "break_type": "topology",
+  "shapes": [
+   "IV"
+  ],
+  "proved": "ours"
+ },
+ {
+  "name": "Quantum needs i",
+  "topic": "why-i",
+  "stopped": "No path measure at imaginary k; hbar enters only as area/hbar.",
+  "dial": "k",
+  "operation": "path sum",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "Cameron 1960 (no Feynman measure)"
+ },
+ {
+  "name": "Fractal boxes: iterating",
+  "topic": "fractal-boxes",
+  "stopped": "Iterating needs a half-exponential: not unique, no exp-log solution.",
+  "dial": "s",
+  "operation": "iteration",
+  "break_type": "growth",
+  "shapes": [
+   "III"
+  ],
+  "proved": "known (Kneser; no exp-log half-exponential)"
+ },
+ {
+  "name": "Fractal boxes: many ratios",
+  "topic": "fractal-boxes",
+  "stopped": "Finite type for one ratio (rank 1); neighbour types grow when ratios are independent (rank 2 and 3).",
+  "dial": "s",
+  "operation": "stretch group",
+  "break_type": "number theory",
+  "shapes": [
+   "II"
+  ],
+  "proved": "rank 1: Ngai-Wang 2001; our counts in rank.json"
+ },
+ {
+  "name": "Hyperoperation ladder",
+  "topic": "hyperoperation-ladder",
+  "stopped": "Commutative and associative only at rungs 1 and 2; fractional heights form a different ladder.",
+  "dial": "r",
+  "operation": "rung",
+  "break_type": "growth",
+  "shapes": [
+   "III",
+   "IV"
+  ],
+  "proved": "classical (rung 3 not associative)"
+ },
+ {
+  "name": "Hypersphere product",
+  "topic": "hypersphere",
+  "stopped": "A size-keeping product exists only in dimensions 1, 2, 4, 8; only p = 2 keeps every property.",
+  "dial": "p",
+  "operation": "product",
+  "break_type": "topology",
+  "shapes": [
+   "IV"
+  ],
+  "proved": "Hurwitz 1898; Adams 1960"
+ },
+ {
+  "name": "Conley index",
+  "topic": "conley",
+  "stopped": "The index cannot read stability (parity law).",
+  "dial": "k",
+  "operation": "flow",
+  "break_type": "topology",
+  "shapes": [
+   "IV"
+  ],
+  "proved": "ours (parity law)"
+ },
+ {
+  "name": "Dial audit",
+  "topic": "dial-audit",
+  "stopped": "Scalar laws carry only kappa = d - k^2/4.",
+  "dial": "k, d",
+  "operation": "scalar law",
+  "break_type": "topology",
+  "shapes": [
+   "IV"
+  ],
+  "proved": "ours (by hand)"
+ },
+ {
+  "name": "New force reach",
+  "topic": "force-reach",
+  "stopped": "The hold does not single out l_D; its strength is set by particle content.",
+  "dial": "d",
+  "operation": "screening",
+  "break_type": "growth",
+  "shapes": [
+   "IV"
+  ],
+  "proved": "ours"
+ },
+ {
+  "name": "G stability",
+  "topic": "G notes",
+  "stopped": "No stability theorem.",
+  "dial": "k",
+  "operation": "law",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "open"
+ },
+ {
+  "name": "Three bodies",
+  "topic": "pairs-vs-triples census",
+  "stopped": "Pairs solve in closed form, three do not.",
+  "dial": "k",
+  "operation": "composition",
+  "break_type": "growth",
+  "shapes": [
+   "III"
+  ],
+  "proved": "classical (Poincare)"
+ },
+ {
+  "name": "Negatives: Gram, pendulum swap, half-area, temperature mirror",
+  "topic": "riemann",
+  "stopped": "Gram's law fails; the dual frame breaks; -1/2 is a value at a point, not a location; mirror is RH-strength in the limit.",
+  "dial": "k",
+  "operation": "various",
+  "break_type": "positivity",
+  "shapes": [
+   "I"
+  ],
+  "proved": "ours"
+ }
+]

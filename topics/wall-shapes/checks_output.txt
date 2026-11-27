@@ -1,0 +1,14 @@
+PASS D1 Branden/Rayleigh identity beta*gamma - alpha*delta = k^2(1+kc)
+PASS D2 line test: n=2 real stable iff W>=0; n>=3 only at W=0
+PASS D3 exact Gaussian-integer witnesses in the upper half-plane for n=3,4 and W>0, W<0
+PASS D4 sector law: W>0 missed iff n*alpha<=2pi, W<0 missed iff n*alpha<=pi
+PASS D5 Cayley dictionary: two-spin Lee-Yang = x1 x2 = tanh J
+PASS D6 pure n-body parity: closed-form zeros; on circle only n=2, J>0
+PASS D7 4-body J4 -> infinity: |z| = sqrt2 -+ 1
+PASS D8 pairs + 4-body: line test agrees with the diagonal map at sample points
+PASS D9 pair floor J2 = ln3/8 as J4 -> infinity (N=4)
+PASS D10 all 4-body couplings, no pairs (N=5..10): Lee-Yang fails hot (small J4), holds cold (J4=2)
+PASS W1 catalogue: 25 walls, each with a kind of break and at least one shape
+PASS R1 rank 1 systems: neighbour maps constant across levels (finite type)
+PASS R2 rank 2 and 3 systems: neighbour maps grow more than tenfold
+13 of 13 pass
