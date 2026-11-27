@@ -63,6 +63,7 @@ topics/force-reach/new-force/hold_strength_checks.py
 topics/force-reach/new-force/investigate_checks.py
 topics/force-reach/new-force/repel_checks.py
 topics/force-reach/new-force/other_forces_checks.py
+topics/force-reach/new-force/leads_checks.py
 topics/force-reach/new-force/lean/check_statements.py
 topics/rulecraft-history/coupling_checks.py
 topics/rulecraft-history/coupling_polish.py
@@ -77,3 +78,4 @@ topics/carnot-cascade/jet_checks.py
 topics/q-deformation-dial/two_base_checks.py
 topics/q-deformation-dial/border_checks.py
 topics/q-deformation-dial/slope_proof_checks.py
+topics/shape-dial-survey/hb_check.py

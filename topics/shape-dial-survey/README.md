@@ -62,7 +62,7 @@ to 8, with explicit formulas in p, past a point that grows like p² (section N3,
 for 1.1 ≤ p ≤ 8, **the rule is now proved, computer-assisted, for every roundness from 1.1 to 8**, apart from a > p
 at the even roundness 4, 6 and 8 (sections N3, near zone, and N3, near zone to p = 8). **That even gap is now closed:
 at every even roundness the rule holds for every a, proved with no zero counting from Pólya's 1923 theorem and Laguerre's
-theorem** (section N3, even roundness from Pólya's end). What's left is the holding side at non-even p past 8. The reasoning from the two certificates to the rule is proved in Lean (section N3, near zone in Lean). The other two are **Bell's 2√2 is a floor for
+theorem** (section N3, even roundness from Pólya's end). What's left is the holding side at non-even p past 8. A candidate starting point for it now works the same way at every p: G is the imaginary part of one function F, and if F has no zeros on or below the real line, G's zeros are all real. That holds in every check from p = 1.2 to 20.5, with a margin that grows with p, but it isn't proved yet (section N3, a starting point at every p). The reasoning from the two certificates to the rule is proved in Lean (section N3, near zone in Lean). The other two are **Bell's 2√2 is a floor for
 every symmetric shape** (it follows from a known 1990 Banach-space theorem) and **Fermat for every rational roundness**
 (a short corollary of Fermat's last theorem). The elliptic thread's pendulum picture was then tested against the Lee–Yang work: the dial gas transition is exactly the pendulum's separatrix and the other two ideas hold in their simplest form, but all three are known physics and none reaches the open p-ball case (section N3, pendulum).
 
@@ -1175,6 +1175,72 @@ The pendulum gives it one picture: ordered = swinging, disordered = over the top
 | L7c | antiferro k = 1/2: zeros on the negative real axis | \|Im w\| = 0, \|w\| from 0.17 to 5.8 |
 | L7d | p-ball single spin p = 4, a = 3: zero gaps | 17 zeros in (0, 60), gaps 3.164, 3.162, 3.160 |
 
+### N3, a starting point at every p. One function whose zeros stay off the real line
+
+Asked by Brennan (Nov 27): "Yes", to "Should I go after non-even p past 8 next, by looking for a real-zero starting point on
+the top strip?" Checks: `hb_check.py` → `hb_check_output.txt`, `hb_check.json`, **6 of 6 pass** (numpy, 5,000-point
+Gauss–Legendre; series at 40 digits for B1). Pictures: `figures_hb.py` → figure 30.
+
+**Short answer: a candidate starting point that works the same way at every p, even or not, and it holds in every check
+from p = 1.2 to 20.5. It isn't proved yet.** If it is proved, the rule's holding side follows at every p at once, with no
+zero counting. Its safety margin grows with p, so p past 8 is where it is strongest.
+
+![Starting point at every p](figures/fig30-lee-yang-hermite-biehler.png)
+
+**Figure 30.** (A) The weight read from the rim. (B) At p = a = 10, every zero of F sits about 20 above the real line, and
+there are none below it. (C) Zero heights move with a: they climb below a = p, level off at a = p, and sink above it (thin
+black lines are the formula). (D) The cushion: how far F's nearest zero is from the real line, across the top strip. It
+grows with p. (E) Above a = p the zeros cross the line, at even p too, where G stays real, so the test is sufficient
+but not necessary. (F) What a proof would settle.
+
+- **The function.** Read the weight from the rim. X = U^(1/p), with U drawn from Beta(1, a), has density
+  a p x^(p−1)(1 − xᵖ)^(a−1) (statisticians call this the Kumaraswamy distribution). Its characteristic function
+  F(w) = E[e^(iwX)] satisfies **s · G_a(s) = Im F(s)** on the real line (B1, gap 1e-13). That is one integration by parts.
+- **Why it would be enough.** F is bounded above the real line and grows like e^(|Im w|) below it. If it has **no zeros on
+  or below the real line**, the Hermite–Biehler theorem (in Levin's form for functions of exponential type) says Re F
+  and Im F have only real zeros, and that the two sets alternate. So every zero of G_a is real. B2 shows the alternation
+  at p = a = 9.5: 60 zeros of Re F and 59 of Im F on (0, 200), all alternating.
+- **What the checks say.** Across the top strip (a = p and a = p − 0.75; a = p/2 below p = 2), F has no zeros in the box
+  |Re w| < 250, −15 < Im w < 0, at p = 1.2, 1.5, 2.5, 3, 5, 7, 9.5, 10.5, 12.5, 15.3 and 20.5 (B3, argument principle, 22 of
+  22 cases zero). Above a = p it fails, as it should: p = 2.5, a = 5 has zeros below the line (B5).
+- **Where F's zeros sit.** Two ends compete. The rim gives p^a Γ(a + 1) e^(iw)(iw)^(−a), and the centre gives
+  a Γ(p + 1)(−iw)^(−p). They balance at height **h = ln(p^a Γ(a + 1) / (a Γ(p + 1))) + (p − a) ln|w|**.
+  - At a = p this is **(p − 1) ln p**, which is positive for every p > 1 (B4: the far zeros match it at p = 2.5 to 15.3).
+  - Below a = p the zeros climb away from the line.
+  - Above a = p they sink like −(a − p) ln|w| (B5 fits a slope of −0.601 against −0.6) and cross the line far out. So the
+    test fails exactly where the rule breaks, at every p.
+- **The cushion grows with p.** F's nearest zero is about 1.4 above the line at p = 2.5, 6.4 at p = 5, 19 at p = 10 and 36
+  at p = 15.3 (Fig 30D). Below p = 2 it is thin (0.03 at p = 1.2), but that range is already proved. The real-line method has the opposite trouble: its far zone starts near 3p² and its near zone
+  gets costlier with p.
+- **Even p.** Above a = p the zeros of F cross the line at even p too (at p = 4, a = 6, near |w| = 143, as the formula
+  predicts), though G stays real there (B6). So this is a sufficient test, not a characterisation. That is fine: the
+  Pólya route already covers even p.
+- **What's still missing.** A proof that F has no zeros on or below the real line when a ≤ p.
+  1. Far out, the rim term beats the centre term below the line by at least a factor p^(p−1) at a = p, so this part
+     should yield to explicit bounds like the existing far bounds.
+  2. Near the centre, the argument principle needs F only on the real line (plus a far arc), where |F| stays well away
+     from zero. That gives a per-p certificate whose margin grows with p.
+  3. For a proof at every p at once there is a structural fact to build on. Y = 1 − X has density c·y^(a−1)·k(y) with k
+     falling from 1 to 0, so F below the line is an average of incomplete gamma functions. The plain bound from this
+     works only for a ≤ 1 (Pólya's case), so the near zone needs a sharper idea.
+- **In print.** F is a Fox–Wright function, ₁Ψ₁. The nearest work I found is Popov and Sedletskii on zeros of
+  Mittag-Leffler-type functions in half-planes. I found nothing on zeros of the Kumaraswamy characteristic function, or
+  this use of Hermite–Biehler for p-balls.
+- **Verdict: worth following.** It turns the holding side at every p into one statement: F has no zeros in a half-plane.
+  The margin grows with p, the reverse of the current method's trouble, and the test fails exactly at a = p. Next step:
+  the far bound below the line, then a real-line certificate at p = 9 to 12 to see how cheap it is.
+
+**Checks** (`hb_check.py`, **6 of 6 pass**):
+
+| Check | What | Result |
+|---|---|---|
+| B1 | s G_a(s) = Im F(s), against 40-digit quadrature at 3 points | gap 9e-14 |
+| B2 | Hermite–Biehler consequence at p = a = 9.5: zeros of Re F and Im F alternate on (0, 200) | 60 and 59, alternating |
+| B3 | no zeros of F in the box below the line, 22 strip cases, p = 1.2 to 20.5 | 22 of 22 have none |
+| B4 | at a = p the far zeros settle at (p − 1) ln p | p = 2.5 to 15.3 |
+| B5 | above a = p: slope −(a − p), and zeros below the line at p = 2.5, a = 5 | slope −0.601 |
+| B6 | even p = 4, a = 6: zeros of F below the line, crossing near \|w\| = 143, while G stays real | as predicted |
+
 ---
 
 ## The polishing step
@@ -1205,6 +1271,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 | N3 near zone to p = 8 | the same, for 5 ≤ p ≤ 8 | all inside, widest 2.9e-14 | about 3 s, of the 6,913 s run |
 | N3 even from Pólya | coefficient identity against direct quadrature, 7 cases | gap ≤ 1e-79 | about 10 s, of the 852 s run |
 | N3 pendulum | 1D ring zeros by high-precision polynomial roots against the closed form | 2e-12 | about 5 s, of the 95 s run |
+| N3 every-p start | zeros of F refined by Newton to the noise floor (about 1e-5 in position) | heights match (p − 1) ln p | about 60 s, of the 355 s run |
 
 **Total: 1.3 seconds** for the survey's checks and **19.4 seconds** for the new-law pass, on top of their own runs.
 
@@ -1233,6 +1300,7 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
 - `even_p_check.py` → `even_p_check.json`, `even_p_check_output.txt`: the p = 4 reduction above a = 4 and its numerical evidence. `figures_even_p.py` → figure 27.
 - `even_p_proof_check.py` → `even_p_proof_check.json`, `even_p_proof_check_output.txt`: the even-p proof from Pólya's end (coefficient identity, Wright zeros, zero counts at p = 10 and 12, non-even contrast). `figures_even_proof.py` → figure 28.
 - `pendulum_leeyang_check.py` → `pendulum_leeyang_check.json`, `pendulum_leeyang_check_output.txt`: the pendulum picture against the Lee–Yang work (dial gas transition as the separatrix, halfway lines, edge crowding). `figures_pendulum_leeyang.py` → figure 29.
+- `hb_check.py` → `hb_check.json`, `hb_check_output.txt`: the every-p starting point (s·G = Im F, Hermite–Biehler, no zeros of F below the real line across the top strip, zero heights). `figures_hb.py` → figure 30.
 
 ## References
 
@@ -1289,3 +1357,8 @@ Every numerical fit or search now ends with a cheap exact step, and its cost is 
   lie where the two largest terms have equal size.
 - M. E. Fisher, Phys. Rev. Lett. 40 (1978) 1610; J. L. Cardy, Phys. Rev. Lett. 54 (1985) 1354: the Yang–Lee edge, exponent
   −1/2 in 1D and −1/6 in 2D.
+- B. Ya. Levin, Lectures on Entire Functions (1996), the Hermite–Biehler theorem for functions of exponential type; L. de
+  Branges, Hilbert Spaces of Entire Functions (1968).
+- A. Yu. Popov and A. M. Sedletskii, "Distribution of roots of Mittag-Leffler functions", J. Math. Sci. (2013).
+- P. Kumaraswamy, J. Hydrology 46 (1980); M. C. Jones, Statistical Methodology 6 (2009): the distribution with density
+  a p x^(p−1)(1 − xᵖ)^(a−1).
