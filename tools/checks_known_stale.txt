@@ -4,6 +4,7 @@
 # The files these lines tested are still checked elsewhere in CI: topic Lean files by tools/topic_lean.py,
 # and the library mirror by lean-library/build.sh.
 # new-ties rounds 5 and 6 read lean/compile_output.txt and expect the 16- and 22-theorem NewTies.lean of
-# those rounds; rounds 7 to 9 grew the file to 41 theorems (checks9 Y11 checks the current build).
+# those rounds; rounds 7 to 9 grew the file to 41 theorems and round 10 to 53, so checks9 Y11 (41) is stale too.
 topics/new-ties/checks5.py V7
 topics/new-ties/checks6.py V11
+topics/new-ties/checks9.py Y11

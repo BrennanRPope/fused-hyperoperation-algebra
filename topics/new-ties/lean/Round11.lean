@@ -1,6 +1,8 @@
 /-! Round 11 (DRAFT): small facts for README section 15.
     NOT BUILT this round: the Lean toolchain could not be installed in this session. These are written to be
-    core-only like NewTies.lean and should be checked with `lean Round11.lean` before anyone relies on them. -/
+    core-only like NewTies.lean and should be checked with `lean Round11.lean` before anyone relies on them.
+    Built with Lean 4.37 (core only) in the repo on Nov 27: all five check, no proof changed. In the library as
+    FusedAlgebra.Topics.NewTies11 (namespace CircleOp.NewTies11). -/
 
 namespace NewTies11
 

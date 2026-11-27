@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,831 theorems in 176 modules, Nov 27 ~06:15 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,870 theorems in 181 modules, Nov 27 ~06:35 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -105,3 +105,9 @@ Nov 27: `topics/new-ties/` rounds 5 to 9 added as DRAFT from the new-ties sessio
 Nov 27: `topics/force-reach/new-force/` parts J and K added (sections 10 and 11, DRAFT): repel_checks.py (17) and other_forces_checks.py (14) follow investigate_checks.py in tools/extra_checks.txt (70 entries); figures h12, h13, h1 to h11 redrawn. Eight of the nine new Lean statements are mirrored into Topics.NewForce over any field of characteristic 0 (Real.pi stated as any c); square_torus_no_mixing (cos(π/2) = 0) needs the real cosine and stays in the topic file, which imports Mathlib.
 
 Nov 27: `lean-library-mathlib/MathlibCandidates/` added as DRAFT (a new default target of the Mathlib build, checked by Check.lean): the Tate curve over R⟦q⟧ (`TateCurve.lean`: c₄ = E₄, c₆ = −E₆, 1728Δ = E₄³ − E₆², Δ = q · unit, split multiplicative reduction over k⸨q⸩) and `TateCurve/ModularForms.lean` (E₄, E₆ and Δ are the q-expansions of Mathlib's modular forms). From the FLT tracking thread; not sent to Mathlib.
+Nov 27: four Riemann follow-ups added as DRAFT from the riemann session's patches: `topics/riemann/pendulum-zeta/` (13 checks), `knauf-field/` (16), `chain-fix/` (19) and `rewind-dial/` (15), each picked up by CI as checks.py; no Lean.
+Nov 27: `topics/new-ties/` rounds 10 and 11 added as DRAFT from patches 0009 and 0010 (sections 14 and 15; checks10 at 12, checks11 at 8). NewTies.lean is now 53 theorems, all mirrored into the library as Topics.NewTies; Round11.lean (5 theorems, written unbuilt) builds clean here and is in the library as Topics.NewTies11. checks9's Y11 line (41 theorems) is now listed in tools/checks_known_stale.txt.
+Nov 27: `topics/hat-primes/hidden-space/` added as DRAFT from hat-primes patches 0002 to 0004 (the hidden space built from all the primes, its stability margin, gap-minimizing functions; 29 checks). HiddenSpace.lean (2 theorems) builds clean and is in the library as Topics.HiddenSpace. margin_formula.* and margin_high.* in the shared folder aren't referenced by the README or checks, so they were left out; the caches patch_level4.npz and hat_diffraction_L4.npy stay out on purpose.
+Nov 27: `topics/why-i/rotations-force-i/` third follow-up (DRAFT, nothing submitted): Planck–Einstein from "the rate depends only on the energy", composites rule out the gap, A0 replaced by the energy-zero principle for measurements, A5 renamed "No superselection", abstract cut, prior-work citations; checks at 29 (regenerated here, 29/29); PlanckEinstein (12), NoGap (6) and Unseen (2) compiled into the library after Stability; arxiv-source.tar.gz rebuilt by the paper's session.
+Nov 27: `topics/hypersphere/division-algebras/` added as DRAFT (why only 1, 2, 4, 8 and whether gravity is better in another ℓp shape; checks_div.py and checks_shape.py, both pass, picked up by CI; figures D1 and D2).
+Nov 27: `topics/q-deformation-dial/`: the three saved outputs for two_base_checks, border_checks and slope_proof_checks added (they were missed in the first copy).

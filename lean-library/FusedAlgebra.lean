@@ -173,7 +173,12 @@ import FusedAlgebra.Topics.ReflectionPositivity
 import FusedAlgebra.Topics.EnergyShift
 import FusedAlgebra.Topics.Booking
 import FusedAlgebra.Topics.Stability
+import FusedAlgebra.Topics.PlanckEinstein
+import FusedAlgebra.Topics.NoGap
+import FusedAlgebra.Topics.Unseen
 import FusedAlgebra.Topics.PendulumLeeYang
+import FusedAlgebra.Topics.HiddenSpace
+import FusedAlgebra.Topics.NewTies11
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

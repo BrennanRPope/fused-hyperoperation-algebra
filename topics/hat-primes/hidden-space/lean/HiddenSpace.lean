@@ -1,6 +1,7 @@
 /-
   Hidden space built from all the primes (DRAFT, Nov 27 2026). Core Lean 4 only, no imports, no `sorry`.
-  NOT COMPILED where it was written (no Lean toolchain there).
+  NOT COMPILED where it was written (no Lean toolchain there). Built with Lean 4.37 in the repo on Nov 27,
+  no proof changed; in the library as FusedAlgebra.Topics.HiddenSpace (namespace CircleOp.HiddenSpace).
 
   The finite piece of the hidden space seen through 2, 3, 5, 7 is the residues mod 210.
   1. The grid (n mod 14, n mod 15) gives each residue its own cell (Chinese remainder).

@@ -13,7 +13,7 @@
 
   First compiled in the shared library on Nov 27, as FusedAlgebra.Topics.NewTies
   (namespace CircleOp.NewTies, the library's convention; no proof changed).
-  Rounds 5 to 9 mirrored into the library on Nov 27 the same way.
+  Rounds 5 to 10 mirrored into the library on Nov 27 the same way.
 -/
 namespace CircleOp.NewTies
 
@@ -248,5 +248,59 @@ theorem example_in_box : 19 * 9 < 200 ∧ 1 * 9 < 20 ∧ 1 * 9 < 19 ∧ 1 * 9 < 
 
 /-- Theorem P10's reduction terminates: replacing a factor of a word by a shorter one shortens the word. -/
 theorem replace_shortens (a b x y : Nat) (h : x < y) : a + x + b < a + y + b := by omega
+
+
+/-! ### Round 10: the exact size of a break (README section 14) -/
+
+/-- Every point of the collision surface collides. With κ = k/d, λ = μ(2d − k)/d and ν = k/(2d − k):
+    the slopes agree, λν = μκ (cleared of fractions) … -/
+theorem surface_slopes (m d k : Int) : (m * (2 * d - k)) * k * d = m * k * (d * (2 * d - k)) := by grind
+
+/-- … and the intercepts agree, λ(1 − ν) = 2μ(1 − κ), i.e. (2d − k)(2d − 2k)·d = 2(d − k)·d·(2d − k). -/
+theorem surface_intercept (d k : Int) : (2 * d - k) * (2 * d - 2 * k) * d = 2 * (d - k) * d * (2 * d - k) := by grind
+
+/-- The 3-adic break: μ = 3/80, κ = 3/40, λ = 231/3200, ν = 3/77. Slopes: λν = μκ. -/
+theorem threeadic_slopes : 231 * 3 * (80 * 40) = 3 * 3 * (3200 * 77) := by decide
+
+/-- Intercepts: λ(1 − ν) = (231/3200)(74/77) equals 2μ(1 − κ) = 2(3/80)(37/40). -/
+theorem threeadic_intercept : 231 * 74 * (80 * 40) = 2 * 3 * 37 * (3200 * 77) := by decide
+
+/-- Each multiplier has 3-adic valuation exactly 1: the numerator has one factor 3, the denominator none. -/
+theorem threeadic_valuations :
+    231 = 3 * 77 ∧ 77 % 3 ≠ 0 ∧ 3200 % 3 ≠ 0 ∧ 80 % 3 ≠ 0 ∧ 40 % 3 ≠ 0 := by decide
+
+/-- Hypothesis (I) for the 3-adic break: the landing zones [0, 2λ], [1 − ν, 1 + ν], [2 − 2κ, 2] are disjoint:
+    2λ < 1 − ν is 462·77 < 74·3200, and 1 + ν < 2 − 2κ is 80·40 < 74·77. -/
+theorem threeadic_zones : 462 * 77 < 74 * 3200 ∧ 80 * 40 < 74 * 77 := by decide
+
+/-- Hypothesis (II) for the 3-adic break: (2 − κ)(1 − κ) > 1 is 77·37 > 40·40. -/
+theorem threeadic_push : 40 * 40 < 77 * 37 := by decide
+
+/-- Hypothesis (II) holds whenever 0 < κ ≤ 1/3 (κ = k/d): (2d − k)(d − k) > d·d. -/
+theorem push_general (d k : Int) (hk : 0 < k) (hd : 3 * k ≤ d) : d * d < (2 * d - k) * (d - k) := by
+  have h1 : 0 ≤ d * (d - 3 * k) := Int.mul_nonneg (by omega) (by omega)
+  have h2 : 0 < k * k := Int.mul_pos hk hk
+  have e : (2 * d - k) * (d - k) = d * d + d * (d - 3 * k) + k * k := by grind
+  omega
+
+/-- The p-adic step: if a·v = b·v with v ≥ 1 (the valuations of λ^a and μ^b at the shared prime are equal),
+    then a = b. -/
+theorem equal_powers (a b v : Nat) (hv : 1 ≤ v) (h : a * v = b * v) : a = b :=
+  Nat.eq_of_mul_eq_mul_right (by omega) h
+
+/-- The push only grows with the power: x ≤ x^a for x ≥ 1 and a ≥ 1 (so ρ = (2 − κ)^a ≥ 2 − κ). -/
+theorem push_grows (x a : Nat) (ha : 1 ≤ a) : x ≤ x ^ a := Nat.le_self_pow (by omega) x
+
+/-- Pushing a zone clear: if ρ₀·lo > hi (the stretched zone starts beyond the target zone), the same holds for
+    every larger stretch ρ ≥ ρ₀ (lo ≥ 0). -/
+theorem push_clear (r r0 lo hi : Int) (h0 : r0 ≤ r) (hlo : 0 ≤ lo) (h : hi < r0 * lo) : hi < r * lo := by
+  have : r0 * lo ≤ r * lo := Int.mul_le_mul_of_nonneg_right h0 hlo
+  omega
+
+/-- The original break has no shared odd prime (both numerators are 1), and the argument first fails at
+    a = 13, b = 10: ρ = λ¹³/μ¹⁰ = 19¹³·20¹⁰/200¹³ lies in the window [9/19, 100/171] where ρ·(K-zone) can meet
+    the N-zone. -/
+theorem original_first_bad :
+    9 * 200 ^ 13 ≤ 19 * (19 ^ 13 * 20 ^ 10) ∧ 171 * (19 ^ 13 * 20 ^ 10) ≤ 100 * 200 ^ 13 := by decide
 
 end CircleOp.NewTies

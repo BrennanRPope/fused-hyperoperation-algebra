@@ -2001,6 +2001,8 @@ FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.period_13
 FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.period_7	
 FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.refl_first	
 FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.union_rule	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.HiddenSpace	CircleOp.HiddenSpace.crt_grid_210	
+FusedAlgebra.Topics.HiddenSpace	CircleOp.HiddenSpace.window_210	
 FusedAlgebra.Topics.HoloGluing	HoloGluing.complement_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.HoloGluing	HoloGluing.conformal	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.HoloGluing	HoloGluing.gluing_cleared	propext, Classical.choice, Quot.sound
@@ -2612,6 +2614,7 @@ FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_one	propext, Classical.choice
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_two	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.diagonal_kernel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.equal_powers	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.even_Q_square_odd	propext
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.example_collision	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.example_in_box	
@@ -2632,12 +2635,23 @@ FusedAlgebra.Topics.NewTies	CircleOp.NewTies.levels_differ	propext, Classical.ch
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.lower_bound_key	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.moran_special	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.order_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.original_first_bad	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.push_clear	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.push_general	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.push_grows	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.replace_shortens	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.rot45_no_invariant_line	
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.same_centre_commute	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.sqrt_two_upper	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.surface_intercept	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.surface_slopes	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.tail_bound	
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.three_adic_levels_differ	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.threeadic_intercept	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.threeadic_push	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.threeadic_slopes	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.threeadic_valuations	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.threeadic_zones	
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.two_law_threshold	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.two_maps_one_prime	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.union_is_stretch	propext, Classical.choice, Quot.sound
@@ -2646,6 +2660,17 @@ FusedAlgebra.Topics.NewTies	CircleOp.NewTies.valuations_separate	propext, Classi
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.wall_line_tangent	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.window_miss	
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.xor_is_half_box_union	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies11	CircleOp.NewTies11.bad_pair_14_11	
+FusedAlgebra.Topics.NewTies11	CircleOp.NewTies11.family_ratio	
+FusedAlgebra.Topics.NewTies11	CircleOp.NewTies11.pow200_mod19	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies11	CircleOp.NewTies11.rho_ne_one	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies11	CircleOp.NewTies11.ymodel_N_K	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NoGap	CircleOp.NoGap.cancel_turn	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NoGap	CircleOp.NoGap.gap_sum_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NoGap	CircleOp.NoGap.gap_to_odd	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NoGap	CircleOp.NoGap.gap_to_odd'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NoGap	CircleOp.NoGap.gap_zero	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NoGap	CircleOp.NoGap.two_zero	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.complex_point	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.dual_point	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.four_norm	propext, Classical.choice, Quot.sound
@@ -2877,6 +2902,18 @@ FusedAlgebra.Topics.Pi	PiCircle.quarter_twice
 FusedAlgebra.Topics.Pi	PiCircle.slope_one_four	
 FusedAlgebra.Topics.Pi	PiCircle.slope_one_twice	
 FusedAlgebra.Topics.Pi	PiCircle.term_shrink	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.B_comm_H	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.J_comm_H	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.J_comm_anticomm	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.M_anticomm_J	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.M_sq	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.add_comm'	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.comm_mul	
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.comm_sq	
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.dbl_sub	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.eq_of_sub	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.planck_einstein	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.PlanckEinstein	CircleOp.PlanckEinstein.rate_sq_quadratic	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.PowersetDials	PowersetDials.W_compl	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.PowersetDials	PowersetDials.W_ones	propext, Classical.choice
 FusedAlgebra.Topics.PowersetDials	PowersetDials.W_replicate_one	propext, Classical.choice, Quot.sound
@@ -3782,6 +3819,8 @@ FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_on_circle	propext, Classic
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_trivial_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.twist_turns	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.TwistedBoosts	TwistedBoosts.under_light_2d	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Unseen	CircleOp.Unseen.comm_of_quarter	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.Unseen	CircleOp.Unseen.invariant_of_comm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WarpWormhole	WarpWormhole.cross_ratio_cocycle	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WarpWormhole	WarpWormhole.glue_is_union	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.WarpWormhole	WarpWormhole.river_light	propext, Classical.choice, Quot.sound
