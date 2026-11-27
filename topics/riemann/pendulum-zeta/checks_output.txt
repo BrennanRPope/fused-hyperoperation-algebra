@@ -1,0 +1,14 @@
+PASS P1 Jacobi theta θ(x) = √(2K/π) at x = K′/K (five swings, to 15 digits) 
+PASS P2 Legendre: d(K′/K)/dm = −π/(4m(1−m)K²), so Riemann's integral over x is an integral over swings 
+PASS P3 the 90° swing is the square torus: m = ½ gives K′/K = 1 (u = 0) 
+PASS P4 swapping K and K′ (m ↔ 1−m) sends u to −u 
+PASS P5 Φ per degree of swing is mirror-symmetric about 90° and peaks at 90° 
+PASS P6 the Epstein formula (Chowla–Selberg) matches the brute lattice sum at s = 3 
+PASS P7 the 90° swing's Epstein zeta is 4ζ(s)β(s) 
+PASS P8 class-number-one swing amplitudes: y = 3 is exactly 30° (m = sin²15°) 
+PASS P9 real off-line zero enters at torus ratio √y = 7.0555 (Bateman–Grosswald: 7.0556) √y* = 7.05551
+PASS P10 no zeros off the line up to height 30 at the Euler-product swings y = 1, 2, 3, 4, 7 
+PASS P11 zeros off the line below height 30 at y = 1.5, 2.5, 5, 6, 8, 10, 15 
+PASS P12 off-line counts are even (zeros pair as σ and 1 − σ) 
+PASS P13 completed Epstein Λ(s) = (√y/π)^s Γ(s) Z(s) is real on the line and symmetric 
+13/13 pass
