@@ -43,6 +43,7 @@ compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, n
    precessing ellipse at every order; around a one-charge one it never turns.
 8. **For two comparable black holes at second order (section 12)** one-charge pairs still close at every mass ratio,
    and the mass ratio only enters multiplied by the first-order turn from pairs (for bodies with n equal charges).
+   **DRAFT: under correction.** The printed 2PN Lagrangian this relied on has an error in its static charge term; a corrected section is coming.
 
 **Does it open a lead?** Yes. For the electric force it turns the Coulomb orbit and Dirac's fine structure into one
 swap-rule area. For gravity the 6 is no longer put in by hand: it is an exact product of the same two twists the
@@ -433,6 +434,8 @@ Zahraee 2019; de Neeling and others 2023).
 degree of one polynomial. The natural next step was the comparable-mass second order (section 12).
 
 ## 12. Two comparable black holes at second order: one charge still closes
+
+**DRAFT: under correction.** The printed 2PN Lagrangian this relied on has an error in its static charge term; a corrected section is coming.
 
 ![Two black holes at second order](../figures/figD7-two-black-holes-at-second-order.png)
 
