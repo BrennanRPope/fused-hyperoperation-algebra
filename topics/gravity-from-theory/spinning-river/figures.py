@@ -1555,6 +1555,55 @@ def fig31():
     save(fig, "fig31_newton_plus_one.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31):
+
+# ---------------------------------------------------------------- fig32 round 24 novelty check: what is already in print
+def fig32():
+    rows = [
+        ("1", "Kerr = Newton's ring + one term", None, None),
+        ("", "in-and-out: Kerr − Newton is one linear term, 2Mr(K − a²)", "print",
+         "Eleni & Apostolatos, arXiv:1912.03499, Eq. 37 + §5.4: \"differs … only on the linear term\"\n(the compact 2Mr(K − a²) is not written; it follows by subtraction)"),
+        ("", "up-and-down: Kerr = Newton exactly", "print", "Eleni & Apostolatos 2019, Eq. 38, §3.2 and §5.4"),
+        ("", "clock: dt/dλ = E·Σ + 2Mr P/Δ", "none", "none of the papers read states it"),
+        ("", "turning: Newton + (a/(r²+a²))·2Mr P/Δ", "none", "none of the papers read states it"),
+        ("", "reading: one 2Mr term per equation, nothing else", "none", "none of the papers read states it"),
+        ("2", "The stiffness law, every spherical orbit", None, None),
+        ("", "−R''/2 on spherical orbits in closed form", "close",
+         "Teo 2021, Eqs. 3.2, 3.9, 4.1 (same value, written with r, Q and √Υ);\nSchmidt 2002, Eqs. 47, 51 (unreduced, in E, L, Q)"),
+        ("", "the K form  M(r − 3K/r) + 4a²Q/r²", "none", "none of the papers read states it"),
+        ("", "W = M(r + 3K/r) − 2a²Q/r² and the sum 2Mr + 2a²Q/r²", "none", "none of the papers read states it"),
+        ("", "equator: zero of the stiffness at r² = 3x²", "print", "Glampedakis & Kennefick 2002, Eq. 23 at e = 0 (the zero only)"),
+        ("", "over the poles: W = Q(1 + m), ratio (1+m)(2K(m)/π)²·B", "none", "none of the papers read states it"),
+        ("3", "Exact (a/r)² parts and the splits", None, None),
+        ("", "first terms (3/2)(1 + 10u …) and −(3/2 + 4u …)", "close",
+         "Sago & Fujita 2015, Eqs. A5–A6; arXiv:2411.09700, Eq. 2.23 at x = 0\n(post-Newtonian series, cut off)"),
+        ("", "the −8u² term, and that both stop there exactly", "none", "none of the papers read states it"),
+        ("", "splits 15 = 9 + 6, −12 = 12 + 0 − 24, −4 = −21/2 + 13/2", "none", "none of the papers read states it"),
+    ]
+    style = {"print": (GREY, "in print"), "close": (ORANGE, "close"), "none": (GREEN, "not found: ours")}
+    fig, ax = plt.subplots(figsize=(15, 9.6))
+    n = len(rows)
+    y = n
+    for num, what, st, where in rows:
+        if st is None:
+            ax.text(0.0, y, f"Claim {num}.  {what}", fontsize=12.5, fontweight="bold", va="center")
+            ax.plot([0, 15], [y - 0.45, y - 0.45], color=GREY, lw=0.6)
+        else:
+            col, lab = style[st]
+            ax.text(0.35, y, what, fontsize=10.2, va="center")
+            ax.add_patch(FancyBboxPatch((6.55, y - 0.32), 1.75, 0.64, boxstyle="round,pad=0.02",
+                                        fc=col, ec="none", alpha=0.85))
+            ax.text(7.425, y, lab, fontsize=9.5, ha="center", va="center", color="white", fontweight="bold")
+            ax.text(8.55, y, where, fontsize=8.8, va="center", color=("#333333" if st != "none" else GREEN))
+        y -= 1
+    ax.text(0.35, n + 1.1, "what round 23 claimed", fontsize=10, color=GREY, style="italic")
+    ax.text(7.425, n + 1.1, "verdict", fontsize=10, color=GREY, style="italic", ha="center")
+    ax.text(8.55, n + 1.1, "where (equation numbers)", fontsize=10, color=GREY, style="italic")
+    ax.set_xlim(-0.1, 15.2); ax.set_ylim(0.3, n + 1.6); ax.axis("off")
+    ax.set_title("Round 24: which of round 23's results are already in print?\n"
+                 "Kerr's in-and-out and up-and-down equations as Newton's ring were posted in 2019; "
+                 "the stiffness law in K form and the exact polar coefficients were not found", fontsize=12.5)
+    save(fig, "fig32_novelty_check.png")
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32):
     f()
 print("figures:", sorted(os.listdir(FIG)))

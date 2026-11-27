@@ -69,7 +69,8 @@ How it got here:
    shifted source, plus 2Mr(K − a²) in the in-and-out equation (K is Carter's constant; in Schwarzschild this is the
    term behind perihelion precession), nothing in the up-and-down one, and 2Mr·P/Δ terms in the clock and the turning.
    Part 14's polar a²M/r³ terms all come from that one term: 6 of the 15 from the spin part of x², 9 from its
-   Schwarzschild half. With it off, Newton's polar law is exact.
+   Schwarzschild half. With it off, Newton's polar law is exact. Round 24 found the in-and-out and up-and-down parts
+   already in print (Eleni & Apostolatos 2019); the clock and turning terms and the stiffness law in K form were not.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -1826,13 +1827,63 @@ The small gap comes from the kick (10⁻⁶ of the speed). It shrinks tenfold wh
   time part alone gives the ring's polar law exactly, and that the push makes the mixed terms. So the natural next
   test is whether the one term 2Mr(K − a²) is exactly what the river's push adds. If it is, the spinning river reads
   plainly: the shifted source is Newton, and the push is all of relativity.
-- **Ours, as far as a short search found:** the exact one-term difference in each Mino-time equation; the stiffness
-  law for every spherical orbit; the polar factorization (1 + m)(2K(m)/π)²·B; the exact (a/r)² parts and the split
-  15 = 9 + 6, −12 = 12 + 0 − 24, −4 = −21/2 + 13/2. These follow in a few lines from Carter's equations, so they may
-  be known.
-- **Known:** the ring-shifted source as Euler's two-centre problem, separable in oblate coordinates, and its likeness
-  to Kerr (Vinti 1959; Keres 1967; Israel 1970; Will 2009; Glampedakis & Apostolatos 2013); Carter's separation (1968);
-  Mino time (Mino 2003); Kerr's spherical orbits (Wilkins 1972; Schmidt 2002); Schwarzschild's 2ML²/r³ term.
+- **Ours, after the full check in 18.6:** the clock and turning terms and the one-term-per-equation reading; the
+  stiffness law in K form, with W and the sum rule; the polar factorization (1 + m)(2K(m)/π)²·B; the −8u² term and the
+  fact that both (a/r)² parts stop there exactly; the splits 15 = 9 + 6, −12 = 12 + 0 − 24, −4 = −21/2 + 13/2.
+- **Known:** Kerr's in-and-out and up-and-down equations as Euler's (Eleni & Apostolatos, arXiv:1912.03499, Eqs. 37–38
+  and §5.4: the radial ones "differ … only on the linear term"); the ring-shifted source as Euler's two-centre problem,
+  separable in oblate coordinates (Vinti 1959; Keres 1967; Israel 1970; Will 2009; Glampedakis & Apostolatos 2013);
+  Carter's separation (1968); Mino time (Mino 2003); −R''/2 on spherical orbits in another closed form (Teo 2021);
+  the first terms of the (a/r)² parts as post-Newtonian series (Sago & Fujita 2015); Schwarzschild's 2ML²/r³ term.
+
+### 18.6 Is it already in print? (round 24)
+
+*DRAFT, round 24 (Nov 27, 2026). A literature check, not a calculation: no new checks. About twenty papers were read
+past their abstracts. Equations are cited, not copied.*
+
+![What is already in print](figures/fig32_novelty_check.png)
+
+*Fig 32. Each part of round 23's three claims, rated in print (grey), close (orange) or not found (green), with the
+equation where it appears.*
+
+**Claim 1, Kerr = Newton's ring + one term: half in print.** Eleni and Apostolatos ("A Newtonian analogue of Kerr
+black hole", arXiv:1912.03499) write the ring's equations in Kerr's form. Their Eq. (37) is our Newton radial function
+with e = 2E and C = Q + L², and §5.4 sets it beside Kerr's and says the two differ "only on the linear term". The
+difference, 2Mr(K − a²), follows by subtracting their two printed coefficients, though they don't write it. Their
+Eq. (38) and §3.2 give the up-and-down equation as Kerr's exactly. Not found anywhere: the clock E·Σ + 2Mr·P/Δ, the
+turning term, and the reading that each equation gains exactly one 2Mr term. Kopeikin (arXiv:1806.04547, Eq. 2) shows
+the Newton radial form is classical Vinti theory, and Bronicki, Cárdenas-Avendaño and Stein (arXiv:2203.08841, Eq. 9)
+write Euler's problem in Mino-like time. Glampedakis & Apostolatos 2013 compare wave equations, not orbits, and Will
+2009 and Mirshekari & Will 2011 give the conserved quantity without a Kerr comparison.
+
+**Claim 2, the stiffness law: close.** Teo (Gen. Rel. Grav. 2021, arXiv:2007.04022, Eqs. 3.2, 3.9 and 4.1) gives R''
+on every spherical orbit in closed form, written with r, Q and a square root √Υ. It is the same value: checked
+numerically on both branches, and its polar zero at a = 0.5 sits at r = 5.8417M, a root of Stein and Warburton's
+polar separatrix (arXiv:1912.07609, Eq. 37). Schmidt (2002, Eqs. 47 and 51) writes the same quantity unreduced, in E,
+L and Q. Glampedakis and Kennefick (2002, Eq. 23 at e = 0) give the equatorial zero r² = 3x². Not found: the form
+M(r − 3K/r) + 4a²Q/r² in Carter's constant, W and the sum rule ω_r² + W = 2Mr + 2a²Q/r², and W = Q(1 + m) over the
+poles. Fujita and Hikida (2009, Eq. 15) solve the general orbit but don't take the spherical limit, and exclude polar
+orbits.
+
+**Claim 3, the exact (a/r)² parts and splits: close.** The first two terms in u of both are inside published
+post-Newtonian series: Sago and Fujita (2015, Eqs. A5–A6) give (3/2)(1 + 10u + …), and arXiv:2411.09700 (Eq. 2.23 at
+x = 0) gives −(3/2 + 4u + …), cut off. Not found: the −8u² term, the fact that both stop there exactly, and the
+splits. Wilkins (1972) and Teo's 2003 photon paper could not be read.
+
+**What it would take to write up.** The surviving core is one short result: on every Kerr spherical orbit the two
+Mino-time stiffnesses are M(r ∓ 3K/r) + (4, −2)a²Q/r², they add to 2Mr + 2a²Q/r², and over the poles they give the
+exact, terminating (a/r)² coefficients (3/2)(1 + 10u − 8u²) and −(3/2 + 4u). A note of about four pages would need:
+the derivation from R = R′ = 0 in a few lines; a proof that it equals Teo's Eq. (4.1); the polar factorization and
+the exact coefficients, set against Sago and Fujita's series; the clock and turning terms as the completion of Eleni
+and Apostolatos's comparison; and the flight check of 18.4. Before that, read Wilkins 1972, Teo 2003 and the papers
+that cite Teo 2021, since one of those could already hold the K form. It is a clean simplification, not new physics,
+so it suits a short paper or arXiv note. Publishing is Brennan's decision.
+
+**Lead, on its own merits.** The check takes away round 23's headline: Kerr as Newton's ring plus a change in one
+term was published in 2019. That supports this page's reading rather than weakening it, because two groups reached
+the same picture from different starting points. What stays ours is smaller: the clock and turning terms, and the
+stiffness law in Carter's constant. The real lead is still the next test, whether the one term is exactly the river's
+push.
 
 ## Verdict, on its own merits
 
@@ -1899,7 +1950,9 @@ The small gap comes from the kick (10⁻⁶ of the speed). It shrinks tenfold wh
 - **Kerr = Newton's ring + one term (Part 18):** in Mino time Kerr's radial equation is Newton's for the shifted source
   plus 2Mr(K − a²), the up-and-down equation is Newton's exactly, and the clock and turning add 2Mr·P/Δ terms. The
   stiffness law holds for every orbit at fixed r. Part 14's polar mixed terms all come from the one term (15 = 9 + 6,
-  −12 = 12 + 0 − 24), not from x² alone, whose a² part is Newton's. Next: is the one term the river's push?
+  −12 = 12 + 0 − 24), not from x² alone, whose a² part is Newton's. Round 24: the radial and polar parts are in
+  print (Eleni & Apostolatos 2019); the clock and turning terms, the K-form stiffness law and the exact polar
+  coefficients were not found. Next: is the one term the river's push?
 - **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule. The
   waves' back-push and the wave formula are put in from known results. 2PN is reached for circular orbits with the
   fourth rule (Part 10); 2.5PN and beyond, and the merger, are still out of reach.
@@ -1949,7 +2002,7 @@ The small gap comes from the kick (10⁻⁶ of the speed). It shrinks tenfold wh
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the thirty-one figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+- `figures.py`: the thirty-two figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
   Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
@@ -2016,4 +2069,4 @@ The small gap comes from the kick (10⁻⁶ of the speed). It shrinks tenfold wh
 | Kerr's polar orbit split by Kerr–Schild piece: the twist dropping out of r, θ and t for L = 0 and turning the plane at 2MraE/Δ from E·S and P·S; E·E alone giving the shifted source's polar law exactly; the (a/r)²(M/r) terms by piece (poles: E·P +16, P·P −1; equator: +20 + 8 − 16 − 12 = 0) | **ours** (PX1–PX4); the plane's turning itself known (Lense & Thirring 1918; Wilkins 1972; Schmidt 2002) |
 | push and twist as one jet against two velocities: the cross piece P·S as the jet rule's content; two velocities failing vacuum, the spin term × (1 − 2u)(1 − 3u), the clock gap × (1 − 4M/r), the shape tower +108, −240, +192, polar turning × Δ/(r² + a²); the push answering E − aL/(r² + a²) | **ours** (JB1–JB4); Kerr–Schild's single null ray, the clock effect and polar frame dragging themselves known (Kerr & Schild 1965; Cohen & Mashhoon 1993; Wilkins 1972) |
 | one law for both wobbles of an equatorial orbit, D ∓ 3(v − q)², with k·p = 1/√D, x = r(v − q)k·p and Mino turning rate r v k·p on the orbit; Carter's radial function rearranged so the mass meets x = L − aE only as 2Mr·x²; Mino stiffnesses M(r ∓ 3x²/r) adding to 2Mr; round 20's +28 = 28 as the first case; the jet-energy cut −1, +4, −3, 0 | **ours** as far as a short search found (WL1–WL4); Carter's separation, the circular orbits, the epicyclic frequencies and Mino time known (Carter 1968; Bardeen, Press & Teukolsky 1972; Okazaki, Kato & Fukue 1987; Kato 1990; Mino 2003) |
-| Kerr's Mino-time equations as Newton's for the ring-shifted mass plus one mass term each (radial 2Mr(K − a²), polar none, clock and turning 2Mr·P/Δ); the stiffness law M(r ∓ 3K/r) + (4, −2)a²Q/r² for every spherical orbit; the polar factor (1 + m)(2K(m)/π)²·B; the exact (a/r)² parts (3/2)(1 + 10u − 8u²) and −(3/2 + 4u); the splits 15 = 9 + 6, −12 = 12 + 0 − 24, −4 = −21/2 + 13/2 | **ours** as far as a short search found (PC1–PC4); the ring as Euler's two-centre problem and its likeness to Kerr known (Vinti 1959; Keres 1967; Israel 1970; Will 2009; Glampedakis & Apostolatos 2013), Schwarzschild's 2ML²/r³ term textbook |
+| Kerr's Mino-time equations as Newton's for the ring-shifted mass plus one mass term each (radial 2Mr(K − a²), polar none, clock and turning 2Mr·P/Δ); the stiffness law M(r ∓ 3K/r) + (4, −2)a²Q/r² for every spherical orbit; the polar factor (1 + m)(2K(m)/π)²·B; the exact (a/r)² parts (3/2)(1 + 10u − 8u²) and −(3/2 + 4u); the splits 15 = 9 + 6, −12 = 12 + 0 − 24, −4 = −21/2 + 13/2 | **known** for the radial and polar equations (Eleni & Apostolatos, arXiv:1912.03499, Eqs. 37–38, §5.4; the 2Mr(K − a²) form follows by subtraction); **close** for −R''/2 on spherical orbits (Teo 2021, Eqs. 3.2, 3.9, 4.1, another form) and the first terms of the (a/r)² parts (Sago & Fujita 2015, A5–A6); **ours** after round 24's check (PC1–PC4, Fig 32): the clock and turning terms, the K form with W and the sum rule, the polar factor, the −8u² term and exact termination, the splits. Ring as Euler's problem known (Vinti 1959; Israel 1970; Will 2009) |
