@@ -1,0 +1,15 @@
+== L. Strong force: loop action -> Yang-Mills action -> Yang-Mills equations (4D, Euclidean, SU(3))
+PASS L1 Wilson's loop action sum(1 - Re tr U/3) / a^4 -> (g^2/12) F^a F^a: the Yang-Mills action density  | rel. error 1.2e-04 at a = 0.01, order 2.00
+PASS L2 leaving out the k.ab ([A,A]) part gives the wrong action by an order-one amount  | 2.2603 vs 7.1089
+PASS L3 the force on one link (sum over its 6 loops) x g/a^3 -> D_mu F_mu nu: varying the loop action gives the Yang-Mills equations  | rel. error 6.6e-05 at a = 0.01 (two sizes), order 2.00, sign -1
+PASS L4 an exact solution (constant field in one colour direction): every link feels zero force  | 3.3e-18
+PASS L5 rounds 4-5's constant field made only of k.ab is not at rest: its force is the [A,[A,A]] term, nonzero  | |D F| = 0.1418, loops agree to 3.3e-05
+
+== M. Gravity: curvature from loops as an action for an expanding universe; varying it gives Friedmann's equations
+PASS M1 curvature of an expanding universe from loops = 6(a''/a + a'^2/a^2)  | 3.0146171 vs 3.0146172
+PASS M2 varying the loop action in the clock rate N gives 6 a a'^2 - 2 Lambda a^3: Friedmann's first equation, H^2 = Lambda/3  | 0.160609 vs 0.160608
+PASS M3 varying it in the size a gives 6a'^2 + 12 a a'' - 6 Lambda a^2: Friedmann's second equation  | 0.875803 vs 0.876015
+PASS M4 de Sitter expansion a = e^{Ht}, H = sqrt(Lambda/3), makes the loop action stationary both ways  | dS/dN 8.8e-07, dS/da -2.2e-04 (vs 1.219 for H x 1.2)
+PASS M5 sweep of expansion rates: only H = sqrt(Lambda/3) is stationary; the loop answer follows Friedmann at every rate  | 0.6H:-0.769, 0.8H:-0.570, 1.0H:+0.000, 1.2H:+1.219, 1.4H:+3.529
+
+10 passed, 0 failed

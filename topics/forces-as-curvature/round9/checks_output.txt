@@ -1,0 +1,12 @@
+== R. The law's twist at the rotation end (q = +1) is a closed sphere's worth of flux
+PASS R1 every one of 5120 small velocity triangles: the law's twist = its area on the unit sphere (K = q = +1)  | worst 3.1e-17
+PASS R2 total twist over the closed velocity sphere = 4 pi: a flux of 2 whole turns (2 x 2 pi)  | total / 2pi = 2.000000000000
+PASS R3 the twist can't be smoothed away: going round the equator, the two charts' frames differ by a turn that winds 2 times  | winding -2.000000
+PASS R4 relativity's end (q = -1): the law's twist over a patch of the open velocity disc = minus its area, exactly; the disc's area grows without bound toward light speed, so there is no whole-number flux  | |u|<0.5: disc -0.7 turns, |u|<0.8: disc -3.6 turns, |u|<0.9: disc -8.5 turns, |u|<0.95: disc -18.5 turns, |u|<0.99: disc -98.5 turns
+
+== T. Matter that feels the twist as a charge, on the hidden velocity sphere
+PASS T1 matter feeling the twist only through geometry (its spin, charge 0): no massless modes, as round 7
+PASS T2 matter with a charge c under the law's twist (flux 2c): 2c massless modes, all one hand (c = 1/2: one; c = 1: two)  | c=+0.0: L0 R0; c=+0.5: L1 R0; c=+1.0: L2 R0; c=-0.5: L0 R1
+PASS T3 the opposite charge gives the opposite hand
+
+7 passed, 0 failed

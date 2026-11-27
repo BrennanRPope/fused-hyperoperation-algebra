@@ -1,0 +1,23 @@
+== Q. Gravity: a generic 4D metric, all 10 components varying; vary the loop action -> Einstein's equations
+PASS Q1 generic metric (all 10 components vary): curvature scalar from loops = textbook formula  | -21.7395327 vs -21.7394481 (relative 3.9e-06)
+PASS Q2 the whole Ricci tensor from loops = textbook formula (10 components)  | max diff 6.9e-05 of largest 11.65
+   g_00: loops -0.429842   Einstein -0.429836
+   g_01: loops -0.026572   Einstein -0.026571
+   g_02: loops +0.115609   Einstein +0.115609
+   g_03: loops +0.132607   Einstein +0.132605
+   g_11: loops -0.116502   Einstein -0.116503
+   g_12: loops +0.002898   Einstein +0.002900
+   g_13: loops +0.117510   Einstein +0.117506
+   g_22: loops -0.152258   Einstein -0.152254
+   g_23: loops +0.705554   Einstein +0.705546
+   g_33: loops -0.095795   Einstein -0.095802
+PASS Q3 nudging each of the 10 metric components: change in the loop action = -sqrt(g) G^{mu nu} (Einstein's equations)  | worst difference 1.1e-05 of the largest
+
+== S. Light: the 5D chain of round 3 (flat 4D + potential A); vary the loop action in A -> Maxwell's equations
+PASS S1 5D curvature from loops = -(kappa^2/4) F_{mu nu} F_{mu nu} for a varying field (round 3 had a uniform one)  | -0.0731399 vs -0.0731399
+   A_1: loops +0.013480   Maxwell +0.013480
+   A_2: loops +0.018796   Maxwell +0.018796
+   A_3: loops -0.003993   Maxwell -0.003993
+PASS S2 nudging the potential A: change in the 5D loop action = kappa^2 d_mu F_{mu nu} (Maxwell's equations)  | worst difference 4.8e-07 of the largest
+
+5 passed, 0 failed

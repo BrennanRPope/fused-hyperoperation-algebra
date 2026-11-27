@@ -1,0 +1,83 @@
+
+== A. The circle operation on matrices
+PASS A1 lift turns o_k into the matrix product (k=1.0)  | 2.2e-16
+PASS A2 associative on matrices (k=1.0)  | 2.2e-16
+PASS A3 way back undoes a value (k=1.0)  | 1.7e-16
+PASS A4 loop identity a o b o abar o bbar = k[a,b](1+k abar)(1+k bbar) (k=1.0)  | 4.2e-16
+PASS A1 lift turns o_k into the matrix product (k=-0.7)  | 2.2e-16
+PASS A2 associative on matrices (k=-0.7)  | 2.2e-16
+PASS A3 way back undoes a value (k=-0.7)  | 2.8e-16
+PASS A4 loop identity a o b o abar o bbar = k[a,b](1+k abar)(1+k bbar) (k=-0.7)  | 4.7e-16
+PASS A1 lift turns o_k into the matrix product (k=0.3j)  | 1.1e-16
+PASS A2 associative on matrices (k=0.3j)  | 2.2e-16
+PASS A3 way back undoes a value (k=0.3j)  | 8.9e-17
+PASS A4 loop identity a o b o abar o bbar = k[a,b](1+k abar)(1+k bbar) (k=0.3j)  | 2.5e-16
+PASS A5 values that commute: the four-step loop leaves nothing
+PASS A6 small loop: leftover/eps^2 -> k[A,B], error falls like eps  | 1.0e+00, 9.2e-02, 9.1e-03
+
+== B. Plaquettes for U(1), SU(2), SU(3): the k*ab term is the self-interaction
+PASS B1 U(1) electromagnetism: plaquette/eps^2 -> dA - dA + k[A,A], two loop sizes (error order 2.00)  | err 3.1e-06 at eps 0.01
+PASS B2 U(1) electromagnetism: no self-interaction term (values commute)
+PASS B3 U(1) electromagnetism: loop lift stays unitary (det 1 for SU)
+PASS B1 SU(2) weak: plaquette/eps^2 -> dA - dA + k[A,A], two loop sizes (error order 1.98)  | err 8.4e-04 at eps 0.01
+PASS B2 SU(2) weak: leaving out k[A,A] misses by an order-one amount  | miss 2.98 vs F size 3.25
+PASS B3 SU(2) weak: loop lift stays unitary (det 1 for SU)
+PASS B1 SU(3) strong: plaquette/eps^2 -> dA - dA + k[A,A], two loop sizes (error order 2.01)  | err 2.4e-04 at eps 0.01
+PASS B2 SU(3) strong: leaving out k[A,A] misses by an order-one amount  | miss 2.30 vs F size 2.10
+PASS B3 SU(3) strong: loop lift stays unitary (det 1 for SU)
+
+== B4. Size of the self-interaction: adjoint Casimir C_A from commutators
+PASS B4 SU(2): f^acd f^bcd = C_A delta^ab with C_A = 2
+PASS B4 SU(3): f^acd f^bcd = C_A delta^ab with C_A = 3
+PASS B5 SU(3): quark charge C_F = 4/3
+PASS B6 ALEPH four-jet C_A = 2.93 +- 0.60: within 1 sigma of 3, 4.9 sigma from 0 (abelian)
+PASS B6 OPAL four-jet C_A = 3.02 +- 0.55: within 1 sigma of 3, 5.5 sigma from 0 (abelian)
+
+== C. Gravity: the same loop on the Lorentz (tangent-frame) ring, Schwarzschild
+PASS C1 all 6 planes x 16 entries: loop leftover/area = -R^a_{b mu nu} (one sign for all)  | max error 3.4e-07 (Riemann entries up to 3.33e-01)
+PASS C2 every loop lift keeps the metric at the base point (it is a Lorentz transformation)  | 2.7e-13
+PASS C3 a loop in the t-r plane returns a boost; in the theta-phi plane, a rotation
+PASS C4 six sectional curvatures from loops match exact, 2.6 <= r <= 20  | max error x r^3 = 1.9e-05
+PASS C5 the loops read the mass directly: K(t-r) = K(theta-phi) = +2M/r^3, the other four planes -M/r^3  | K = R_{mu nu mu nu}/(g_mu mu g_nu nu), signature -+++
+PASS C6 summing the planes through one direction gives zero (Ricci = 0 outside the mass)  | 1.5e-07
+PASS C7 components: Riemann = Ricci + Weyl gives 1=1+0 (2D), 6=6+0 (3D), 20=10+10 (4D)
+
+== D. Gravity Probe B: one chain of identical link values around the orbit
+PASS D1 chain of n identical steps -> expm: angle per orbit = 2 pi (1 - sqrt(1-3M/r)) exactly  | 6603.88 mas/yr
+PASS D2 finite chains of 2^m identical Lorentz steps converge to it like 1/n^2  | n=2^10: 21893395.3, n=2^14: 92099.6, n=2^18: 6937.8, n=2^22: 6605.2, n=2^26: 6603.9
+PASS D3 against Gravity Probe B: 6603.9 vs 6601.8 +- 18.3 mas/yr  | +0.11 sigma
+
+== E. Aharonov-Bohm: the U(1) chain round a solenoid, field zero on the path
+PASS E1 loop phase = q*flux/hbar, same for a circle and an off-centre ellipse
+PASS E2 a loop that does not enclose the solenoid gets no phase
+PASS E3 electrons round one superconducting flux quantum h/2e: phase = pi (Tonomura 1986 saw a half-fringe shift)
+
+== F. Twist: one 5x5 chain (turn + shift) gives curvature AND torsion together
+PASS F1 Levi-Civita (GR): turn block = -R, shift column = 0 (no twist)  | turn err 3.4e-07, shift 9.1e-08
+PASS F2 teleparallel (Weitzenbock): turn block = 0 (no curvature), shift column = +T (all twist)  | turn 1.2e-09, shift err 2.4e-07
+PASS F3 the twist that carries the mass: T^t_{rt} = M/(r^2 (1-2M/r)) = hovering acceleration M/(r^2 sqrt f) over sqrt f  | T^t_rt = M/(r*(-2*M + r))
+PASS F4 trade: Weitzenbock = Levi-Civita + contorsion K_abc = (T_abc + T_bac + T_cab)/2, built from the twist alone  | 4.4e-16
+PASS F5 twist with M = 0 in these round frames is not zero (frame artefact): T^theta_{r theta} = 1/r
+PASS F6 in frame components the twist is T^a = d e^a, linear like electromagnetism's F = dA (no k*ab term)
+
+== G. Frame dragging = twist of the static observers' time leg (de^0), Gravity Probe B
+PASS G1 gyroscope drift = -(c/2) x twist of the time leg = Lense-Thirring (G/c^2 r^3)(3(J.n)n - J)  | rel err 5.9e-10
+PASS G2 polar-orbit average of the time-leg twist = G J / (2 c^2 r^3)  | 40.80 mas/yr (closed form 40.80)
+PASS G3 against Gravity Probe B frame dragging: 40.8 vs 37.2 +- 7.2 mas/yr (GP-B's own GR figure 39.2)  | +0.50 sigma
+PASS G4 without the Earth's spin the time leg has no twist (Newton's pull sits in T^0_0i, not here)  | 0.0e+00
+
+== H. One 5D chain carries both gravity and light (Kaluza 1921, Klein 1926)
+PASS H1 5D curvature scalar = -(kappa^2/4) F^2 with flat 4D: light appears as curvature of the fifth direction  | R5 = -B**2*kappa**2/2
+PASS H2 all 10 planes x 25 entries of the 5D curvature come out of loops of one 5x5 chain  | max error 8.4e-08
+PASS H3 contracting the loop-measured curvature gives R5 = -B^2/2: the field's energy, read off loops  | -0.1800000 vs -0.18
+PASS H4 a straight line in 5D is a cyclotron circle in 4D: closes after 2 pi/(kappa p_w B), radius v/(kappa p_w B)  | gap 2.9e-04, radius 0.6250 vs 0.6250
+
+== I. Non-abelian Kaluza-Klein: SU(2) from a hidden 3-sphere; the self-interaction is the sphere's twist
+PASS I0 hard-coded right-invariant forms match dg g^-1  | 8.7e-11
+PASS I1 the sphere's symmetry fields have constant products R_a.R_b = (rho^2/4) delta_ab  | 5.6e-17
+PASS I2 the sphere's symmetries don't commute: [R_1, R_2] = c R_3 with c = +-1 (SU(2)'s bracket)  | c = +1.000000
+PASS I3 7D curvature from loops = R(S^3) - (rho^2/16) F^a F^a, with F^3_xy = c1 c2 made ONLY of the [A,A] term  | 3.52442 vs 3.52442
+PASS I4 same constant field, hidden torus (commuting symmetries): every loop closes, no field at all  | largest leftover/area 0.0e+00
+PASS I5 sweep: sphere's field term follows -(rho^2/8)(c1 c2)^2; torus stays flat
+
+61 passed, 0 failed

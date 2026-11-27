@@ -1,0 +1,13 @@
+== J. The strong force's group from a hidden SU(3) space (12 x 12 chain)
+PASS J0 SU(3) bracket: f_123 = 1, f_458 = sqrt(3)/2, and sum_ab f_abc f_abd = 3 delta_cd (colour factor C_A = 3)  | C_A = 3.000000000000
+PASS J1 right-invariant forms from the series (e^M - 1)/M match dg g^-1  | 7.6e-11
+PASS J2 the hidden space's 8 symmetry fields have constant products R_a.R_b = (rho^2/4) delta_ab  | 2.8e-16
+PASS J3 the symmetry fields don't commute, with SU(3)'s own bracket: [R_a, R_b] = s f_abc R_c, one sign s for all pairs  | s = +1.000000, +1.000000, +1.000000; worst 1.5e-11
+PASS J4 no field: curvature of the hidden SU(3) space from loops = 8 C_A / rho^2, so C_A read off the geometry = 3  | R = 14.201184 vs 14.201183; C_A = 3.000000
+PASS J5 12D curvature from loops = R(SU3) - (rho^2/16) F^a F^a, field made ONLY of the [A,A] term (lambda_4 dx, lambda_5 dy)  | 14.175306 vs 14.175305
+PASS J6 where that field lands: 1/4 in colour 3, 3/4 in colour 8 (the direction an SU(2) space doesn't have)  | colour 8 share 0.7500
+PASS J7 same constant field on a flat 8-torus (commuting symmetries): every loop closes, no field at all  | largest leftover/area 0.0e+00
+PASS J8 sweep: the field term follows -(rho^2/8)(c1 c2)^2 at every strength  | 0.00:+0.00000, 0.21:-0.00932, 0.35:-0.02588, 0.42:-0.03726, 0.63:-0.08384
+PASS J9 colour factor from the hidden space's curvature vs LEP four-jet values  | ALEPH 2.93+-0.6 (0.12 sigma), OPAL 3.02+-0.55 (0.04 sigma)
+
+10 passed, 0 failed

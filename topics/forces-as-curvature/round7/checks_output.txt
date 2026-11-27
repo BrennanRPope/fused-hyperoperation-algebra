@@ -1,0 +1,13 @@
+== N. Dirac operator on the hidden 3-sphere, untwisted (t = 0) and twisted toward the flat, parallelizing twist (t = 1)
+PASS N1 untwisted 3-sphere: eigenvalues +-(n + 3/2)/r with multiplicity (n+1)(n+2) (Baer 1996), built from spin matrices  | smallest |lambda| = 1.500000 (Lichnerowicz bound 3/(2r))
+PASS N2 full parallelizing twist (t = 1, the sphere's curvature twisted away): exactly 2 massless modes appear, the constant spinors  | zero modes 2; untwisted: 0
+PASS N3 zero modes appear only at special twist strengths, t = 1 + 4j/3 and 1 - 4(j+1)/3  | t = -1.000, 1.000, 1.667, 2.333, 3.000; elsewhere smallest |lambda| >= 0.0150
+
+== O. Handedness needs an even number of hidden directions: hidden S^3 x S^1, chirality = 1 x tau_3
+PASS O1 hidden S^3 x S^1 at every twist strength: massless modes, when the twist makes any, come as many left- as right-handed  | t=0.00: L0 R0; t=0.50: L0 R0; t=1.00: L2 R2; t=1.67: L6 R6; t=-1.00: L2 R2; t=2.00: L0 R0
+
+== P. The textbook way out: magnetic flux through a hidden 2-sphere (Randjbar-Daemi, Salam, Strathdee 1983)
+PASS P1 no flux: the 2-sphere's Dirac eigenvalues are +-(l+1)/r, no massless modes  | lowest 1.000000, 2.000000
+PASS P2 flux n through the hidden 2-sphere: n massless modes, ALL of one handedness (net handedness = n = the flux)  | n=0: L0 R0; n=1: L1 R0; n=2: L2 R0; n=3: L3 R0; n=4: L4 R0
+
+6 passed, 0 failed
