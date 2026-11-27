@@ -3115,6 +3115,13 @@ FusedAlgebra.Topics.RiemannRound9	CircleOp.RiemannRound9.three_exact	propext, Cl
 FusedAlgebra.Topics.RiemannRound9	CircleOp.RiemannRound9.time_reversal_double	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound9	CircleOp.RiemannRound9.turing_squeeze	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RiemannRound9	CircleOp.RiemannRound9.two_exact	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannUnified	CircleOp.RiemannUnified.antiderivative_offline	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannUnified	CircleOp.RiemannUnified.half_filling	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannUnified	CircleOp.RiemannUnified.rolle_gaps	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannUnified	CircleOp.RiemannUnified.three_level_threshold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannUnified	CircleOp.RiemannUnified.turan_control	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannUnified	CircleOp.RiemannUnified.two_spin_antiferro	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.RiemannUnified	CircleOp.RiemannUnified.two_spin_ferro	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.cycle_two_breaks	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.RuleBreakers	RuleBreakers.diamond_rule	propext, Classical.choice, Quot.sound

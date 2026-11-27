@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,656 theorems in 165 modules, Nov 27 ~00:45 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,663 theorems in 166 modules, Nov 27 ~01:00 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -55,3 +55,5 @@ Nov 27: `topics/hypersphere/` cleaned up under Affine Composition Theory (DRAFT;
 Nov 27: `topics/elliptic-modulus/` section 7, the pendulum picture (DRAFT; `pendulum/pendulum_checks.py` 12 of 12, in CI's extra checks; figs 6–8); `EllipticPendulum` compiled into the library, all 7 theorems, no proof changed. The shared copy's README had older wording (mult-add, pre-library compile notes); the repo's newer wording was kept and the shared copy's older `lean/EllipticModulus.lean` was not taken.
 
 Nov 27: `topics/chaos-composition/` added as DRAFT (chaos as repeated self-composition, category-theory frame; 47 checks); `ChaosComposition` compiled into the library, all 23 theorems, no proof changed. Applied from the order-dial thread's patch on 592f0d6; its build.sh, import and generated-table hunks were redone on current main.
+
+Nov 27: `topics/riemann/unified-hypothesis/` added as DRAFT (one hypothesis for the Lee–Yang p-ball rule and RH, Newman's Λ; the real-rooted parent hunt; not a lead; 18 checks); `RiemannUnified` compiled into the library, 7 theorems, two sign proofs changed from grind to Int.mul_pos, statements unchanged. `tools/run_checks.py` no longer reads a PASS line ("… 12 fail Turán") as a failure count.

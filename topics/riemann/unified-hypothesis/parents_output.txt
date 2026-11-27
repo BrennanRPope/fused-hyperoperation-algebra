@@ -1,0 +1,33 @@
+H0 real zeros up to 150: 18 [14.125, 21.025, 25.0, 30.425, 32.925] 19s
+heat    0.02                   real zeros up to 150:  18 (H0: 18)  first [28.3, 42.05, 50.05]  47s
+heat    0.05                   real zeros up to 150:  18 (H0: 18)  first [28.3, 42.1, 50.05]  78s
+heat    0.1                    real zeros up to 150:  18 (H0: 18)  first [28.35, 42.1, 50.1]  109s
+heat    0.2                    real zeros up to 150:  18 (H0: 18)  first [28.4, 42.2, 50.15]  139s
+heat    0.4                    real zeros up to 150:  18 (H0: 18)  first [28.5, 42.35, 50.25]  168s
+factor  0.25                   real zeros up to 150:   0 (H0: 18)  first []  191s
+factor  0.3                    real zeros up to 150:   0 (H0: 18)  first []  226s
+factor  0.39269908169872414    real zeros up to 150:   4 (H0: 18)  first [33.55, 91.45, 110.15]  257s
+factor  0.45                   real zeros up to 150:   6 (H0: 18)  first [31.9, 47.2, 50.05]  289s
+factor  0.6                    real zeros up to 150:  10 (H0: 18)  first [30.1, 44.5, 51.1]  319s
+factor  1.0                    real zeros up to 150:  18 (H0: 18)  first [28.85, 42.85, 50.55]  341s
+factor  2.0                    real zeros up to 150:  18 (H0: 18)  first [28.4, 42.25, 50.15]  364s
+bath    0.5                    real zeros up to 150:  18 (H0: 18)  first [28.35, 42.15, 50.1]  391s
+bath    1.0                    real zeros up to 150:  18 (H0: 18)  first [28.55, 42.45, 50.3]  416s
+bath    2.0                    real zeros up to 150:  12 (H0: 18)  first [29.5, 43.7, 51.05]  436s
+bath    3.0                    real zeros up to 150:  10 (H0: 18)  first [31.3, 46.25, 51.35]  456s
+bath    4.0                    real zeros up to 150:   2 (H0: 18)  first [34.65, 92.95]  476s
+bath    6.0                    real zeros up to 150:   0 (H0: 18)  first []  500s
+child3  (0.05, 1.0)            real zeros up to 150:  18 (H0: 18)  first [28.25, 42.0, 50.0]  525s
+child3  (0.15, 1.0)            real zeros up to 150:  18 (H0: 18)  first [28.2, 41.95, 49.95]  556s
+child3  (0.25, 1.0)            real zeros up to 150:  18 (H0: 18)  first [28.1, 41.85, 49.9]  586s
+child3  (0.35, 1.0)            real zeros up to 150:  18 (H0: 18)  first [28.05, 41.8, 49.8]  616s
+H0 rectangle {'R': 141.625, 'total': 17, 'real': 17}
+antiderivative parent, left half {'R': 141.625, 'total': 0, 'real_sign_changes': 0, 'value_far_left': -1.4033397008888462, 'minus_2L': -1.4033397008888462}
+antiderivative parent, right half {'total': 17}
+fused k=0.5 Y=3.0: zeros in rectangle 3 (H0 real zeros 17)
+fused k=0.5 Y=6.0: zeros in rectangle 3 (H0 real zeros 17)
+fused k=1.0 Y=3.0: zeros in rectangle 1 (H0 real zeros 17)
+fused k=1.0 Y=6.0: zeros in rectangle 3 (H0 real zeros 17)
+fused k=2.0 Y=3.0: zeros in rectangle 1 (H0 real zeros 17)
+fused k=2.0 Y=6.0: zeros in rectangle 3 (H0 real zeros 17)
+elapsed 1148.7371516227722

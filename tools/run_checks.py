@@ -26,6 +26,8 @@ COUNT_PATTERNS = [
     re.compile(r"(?:all\s+)?(\d+)\s+(?:checks?\s+)?(?:pass|passed|PASS)\b", re.I),
 ]
 FAIL_LINE = re.compile(r"^\s*(FAIL|FAILED)\b")
+# A line that itself reports a pass ("PASS ... 12 fail Turán") is not a failure count.
+PASS_LINE = re.compile(r"^\s*(PASS|OK)\b")
 WORK_PREFIX = "/mnt/project-files/math-theory/"
 RUNNER = (
     "import sys\n"
@@ -68,7 +70,8 @@ def run_one(script, timeout):
     if p.returncode != 0:
         tail = " | ".join(out.strip().splitlines()[-3:])
         problems.append(f"exit code {p.returncode}: {tail[:300]}")
-    fails = [l.strip() for l in p.stdout.splitlines() if FAIL_LINE.match(l) or FAILED_COUNT.search(l)]
+    fails = [l.strip() for l in p.stdout.splitlines()
+             if FAIL_LINE.match(l) or (FAILED_COUNT.search(l) and not PASS_LINE.match(l))]
     if fails:
         problems.append(f"{len(fails)} failing line(s), first: {fails[0][:200]}")
     if expected is not None:

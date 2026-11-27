@@ -1,0 +1,19 @@
+PASS float64 Riemann kernel puts the first 5 zeros at 2γ (to 1e-4)
+PASS p-ball: Λ < 0 at all 51 measured points with a ≤ p
+PASS p-ball: even p above the line (a > p) also has Λ < 0 (p = 2, 4, 6)
+PASS p-ball at a = p: Λ sits within 0.1 above-or-at the far threshold log|B|
+PASS triangle p = a = 1 flagged (double zeros, Λ = 0)
+PASS Ξ has 18 real zeros below z = 150
+PASS heat parents keep all 18 low zeros
+PASS factor parents: c ≥ 1 keeps 18, c ≤ 0.6 loses zeros
+PASS bath parents: J ≤ 1 keeps 18, J ≥ 2 loses zeros
+PASS three-level children keep all 18 low zeros, even below w = 1/4
+PASS antiderivative parent: 8 off-line zeros (at −z) confirmed by Newton (moved < 1e-4, |P(z)+L| < 1e-8; the three tested at 40 digits agree)
+PASS Φ/Φ* moment ratio fails Turán at k = 1 and Jensen degree 2
+PASS Gaussian base (p = 2) passes Turán for k ≤ 119 and Jensen to degree 40
+PASS Pólya bumps p = 4, 6, 8, 12 fail Turán at k = 1
+PASS controls: p-ball/Pólya passes, 1/(k+1) fails
+PASS two-level bath averaged at f = 1/2 keeps zeros real (both kernels)
+PASS two-level bath at f ≠ 1/2 moves every found zero into the upper half-plane
+PASS two spins: no real zeros for J ≤ 0, real zeros for J > 0 (both kernels)
+18 of 18 pass
