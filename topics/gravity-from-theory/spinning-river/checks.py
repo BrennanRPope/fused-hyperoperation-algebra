@@ -7,6 +7,7 @@ S: derive the speed law and the lattice's shape from one move: the point source 
 T: derive the turn from the same move: the shifted source's light rays.
 C: charge on the same shifted source: the charged spinning black hole (Kerr-Newman).
 B: two bodies: why one shear per cell cannot hold two, what does add exactly (Weyl), and the strut force (Newton).
+O: two spinning bodies in orbit: the slow-orbit field from three river rules, orbits decaying, spins, the waves.
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -801,6 +802,157 @@ check("B5 lead for spin: on the spin axis, in Weyl's coordinate z = r - M, Kerr'
       sp.simplify(sp.re(sp.expand_complex(Eax_K)) + gtt_axis) == 0
       and sp.simplify(sp.im(sp.expand_complex(Eax_K)) - 2 * Ms * As / (R**2 + As**2)) == 0,
       f"(1-u)/(1+u) = {sp.simplify(sp.expand_complex(Eax_K))}")
+
+# ================================================================ O  two spinning bodies in orbit (round 12)
+log("\n== O  Two spinning bodies orbiting each other: the slow-orbit field from the river's rules, orbits, spins, waves")
+import random  # noqa: E402
+
+from orbits import ensemble, flux_ratio, periastron_advance  # noqa: E402
+
+eps_ = sp.symbols("epsilon", positive=True)
+Xo = sp.Matrix(sp.symbols("x1:4", real=True))
+Yo = [sp.Matrix(sp.symbols(f"y{k}_1:4", real=True)) for k in (1, 2)]
+Vo = [sp.Matrix(sp.symbols(f"v{k}_1:4", real=True)) for k in (1, 2)]
+mo = list(sp.symbols("m1 m2", positive=True))
+nrm = lambda u: sp.sqrt(u.dot(u))  # noqa: E731
+ro = [nrm(Xo - Yo[k]) for k in (0, 1)]
+no = [(Xo - Yo[k]) / ro[k] for k in (0, 1)]
+r12o = nrm(Yo[0] - Yo[1])
+n12o = (Yo[0] - Yo[1]) / r12o
+acco = [-mo[1] * n12o / r12o**2, mo[0] * n12o / r12o**2]
+
+
+def bfp_metric():
+    """The published slow-orbit (1PN) field of two moving bodies, harmonic gauge (Blanchet, Faye & Ponsot 1998)."""
+    g00, g0, gs = -1, sp.zeros(3, 1), 1
+    for a, b in ((0, 1), (1, 0)):
+        ra, rb, ma, mb, va = ro[a], ro[b], mo[a], mo[b], Vo[a]
+        g00 += (2 * ma / ra + ma / ra * (4 * va.dot(va) - no[a].dot(va)**2) - 2 * ma**2 / ra**2
+                + ma * mb * (-2 / (ra * rb) - ra / (2 * r12o**3) + ra**2 / (2 * rb * r12o**3) - 5 / (2 * ra * r12o)))
+        g0 += -4 * ma * va / ra
+        gs += 2 * ma / ra
+    return g00, g0, gs
+
+
+def river_rules_metric(lag=True, multiply=True, dressed=True):
+    """Rule A: each body's own far field (the river's 2m/r, frame dragging from its motion as in Part F), carried
+    outward at light speed. Rule B: clock rates multiply between bodies (check B3), each body keeping its own clock
+    factor 1 - 2U + 2U^2. Rule C: each body's mass is seen through the other body's clock, m_a -> m_a (1 - U_b)."""
+    U = []
+    for a, b in ((0, 1), (1, 0)):
+        ma = mo[a] * (1 - (mo[b] / r12o if dressed else 0))
+        va, ra = Vo[a], ro[a]
+        h00 = (4 * ma * (1 + va.dot(va) / 2) / ra + 4 * mo[a] * va.dot(va) / ra) / 2   # (hbar^00 + hbar^ii)/2
+        if lag:      # the field left the body a moment ago: + d^2/dt^2 (m r_a)
+            h00 += mo[a] * ((va.dot(va) - no[a].dot(va)**2) / ra - no[a].dot(acco[a]))
+        U.append(h00 / 2)
+    if multiply:
+        g00 = -(1 - 2 * U[0] + 2 * U[0]**2) * (1 - 2 * U[1] + 2 * U[1]**2)
+    else:
+        g00 = -(1 - 2 * U[0] + 2 * U[0]**2 - 2 * U[1] + 2 * U[1]**2)
+    g0 = sum((-4 * mo[k] * Vo[k] / ro[k] for k in (0, 1)), sp.zeros(3, 1))
+    return g00, g0, 1 + 2 * mo[0] / ro[0] + 2 * mo[1] / ro[1]
+
+
+def pn_diff(rule_kw, seed):
+    """Largest mismatch, through slow-orbit order (m ~ eps^2, v ~ eps), at a random configuration (40 digits)."""
+    rnd = random.Random(seed)
+    P = {c: sp.Float(rnd.uniform(-3, 3), 40) for vec in [Xo] + Yo for c in vec}
+    P.update({c: sp.Float(rnd.uniform(-1, 1), 40) * eps_ for vv in Vo for c in vv})
+    P.update({mm: sp.Float(rnd.uniform(0.2, 2), 40) * eps_**2 for mm in mo})
+    Bm, Rm = bfp_metric(), river_rules_metric(**rule_kw)
+
+    def worst(e, k):
+        p = sp.Poly(sp.expand(sp.sympify(e).subs(P)), eps_)
+        return max([abs(c) for d, c in zip(p.monoms(), p.coeffs()) if d[0] <= k] + [sp.Float(0)])
+    return max(worst(Rm[0] - Bm[0], 4), max(worst(Rm[1][i] - Bm[1][i], 3) for i in range(3)), worst(Rm[2] - Bm[2], 2))
+
+
+d_all = max(pn_diff({}, s_) for s_ in (1, 2, 3))
+d_drop = {nm: min(pn_diff(kw, s_) for s_ in (1, 2, 3)) for nm, kw in
+          (("no light-speed lag", {"lag": False}), ("clock rates added, not multiplied", {"multiply": False}),
+           ("masses not seen through the other's clock", {"dressed": False}))}
+check("O1 three river rules give gravity's slow-orbit field of two moving bodies exactly (Blanchet-Faye-Ponsot 1998, "
+      "harmonic gauge; the field that fixes Einstein-Infeld-Hoffmann motion): A each body's own far field carried at light "
+      "speed, B clock rates multiply (B3), C each mass seen through the other's clock. Dropping any one breaks it",
+      d_all < mp.mpf("1e-25") and all(v_ > mp.mpf("1e-3") for v_ in d_drop.values()),
+      {"all three rules": mp.nstr(d_all, 3), **{k: mp.nstr(v_, 3) for k, v_ in d_drop.items()}})
+results["O1_drop"] = {k: float(v_) for k, v_ in d_drop.items()}
+results["O1_all"] = float(d_all)
+
+# O2 spin precession from that field
+Xg = sp.Matrix(sp.symbols("x1:4", real=True))
+Yg = sp.Matrix(sp.symbols("y1:4", real=True))
+u1g, w2g, S2g = (sp.Matrix(sp.symbols(f"{c}1:4", real=True)) for c in ("u", "w", "S"))
+m2g = sp.symbols("m2", positive=True)
+dg_ = Xg - Yg
+rg_ = sp.sqrt(dg_.dot(dg_))
+Ug = m2g / rg_
+gvec = -4 * m2g * w2g / rg_ - 2 * S2g.cross(dg_) / rg_**3
+grad_ = lambda f: sp.Matrix([sp.diff(f, c) for c in Xg])  # noqa: E731
+curl_ = lambda F: sp.Matrix([sp.diff(F[2], Xg[1]) - sp.diff(F[1], Xg[2]), sp.diff(F[0], Xg[2]) - sp.diff(F[2], Xg[0]),  # noqa: E731
+                             sp.diff(F[1], Xg[0]) - sp.diff(F[0], Xg[1])])
+Om_ = sp.Rational(3, 2) * u1g.cross(grad_(Ug)) - curl_(gvec) / 2
+ng_ = dg_ / rg_
+known_ = m2g / rg_**2 * (sp.Rational(3, 2) * ng_.cross(u1g) - 2 * ng_.cross(w2g)) + (3 * ng_ * ng_.dot(S2g) - S2g) / rg_**3
+check("O2 each spin's wobble in that field: (3/2) v1 x grad U (the geodetic turn: 1 from curved space + 1/2 Thomas, "
+      "both on our pages) plus half the curl of the frame-dragging field from body 2's motion (Part F) and spin (the "
+      "shift's far field) gives the known spin-orbit and spin-spin precession (Barker-O'Connell; Kidder 1995); on a "
+      "circular orbit Omega_1 = (2 + 3 m2/(2 m1)) L/r^3 + [3 n (n.S2) - S2]/r^3",
+      sp.simplify(Om_ - known_) == sp.zeros(3, 1), "exact (symbolic)")
+
+# O3 orbits: the closest point turns by 6 pi M/p per orbit; the waves' back-push carries off the quadrupole flux
+adv = {nu_: periastron_advance(nu_, 1000.0, 0.4) for nu_ in (0.0, 0.25)}
+flx = {r0_: flux_ratio(0.25, r0_) for r0_ in (40.0, 80.0)}
+check("O3 orbits from that field (Einstein-Infeld-Hoffmann motion, plus the waves' back-push at 2.5PN): the closest "
+      "point turns by 6 pi M/(a(1 - e^2)) per orbit whatever the mass ratio, and the energy the orbit loses matches the "
+      "quadrupole formula (32/5) nu^2 M^5/r^5, better the wider the orbit",
+      all(abs(a_ / p_ - 1) < 0.005 for a_, p_ in adv.values()) and abs(flx[80.0] - 1) < 0.01 and abs(flx[80.0] - 1) < abs(flx[40.0] - 1),
+      {**{f"turn per orbit / 6piM/p, mass ratio nu = {k}": f"{a_ / p_:.4f}" for k, (a_, p_) in adv.items()},
+       **{f"energy loss / quadrupole formula, r = {k:g} M": f"{v_:.4f}" for k, v_ in flx.items()}})
+results["O3"] = {"adv": {str(k): v_ for k, v_ in adv.items()}, "flux": {str(k): v_ for k, v_ in flx.items()}}
+
+# O4 against binary pulsars (numbers these formulas give; G = c = 1, masses in seconds)
+Tsun, day_, yr_ = 4.925490947e-6, 86400.0, 365.25 * 86400.0
+mp_, mc_, Pb_, e_ = 1.438, 1.390, 0.322997448918 * day_, 0.6171340          # Hulse-Taylor, Weisberg & Huang 2016
+fe_ = (1 + 73 / 24 * e_**2 + 37 / 96 * e_**4) / (1 - e_**2)**3.5
+Pdot = -(192 * np.pi / 5) * Tsun**(5 / 3) * (Pb_ / (2 * np.pi))**(-5 / 3) * fe_ * mp_ * mc_ * (mp_ + mc_)**(-1 / 3)
+mA_, mB_, Pb2_, e2_ = 1.338185, 1.248868, 0.1022515592973 * day_, 0.087777023   # double pulsar, Kramer et al. 2021
+OmB = (2 * np.pi / Pb2_)**(5 / 3) * Tsun**(2 / 3) * mA_ * (4 * mB_ + 3 * mA_) / (2 * (mA_ + mB_)**(4 / 3) * (1 - e2_**2))
+OmB_deg = np.degrees(OmB) * yr_
+check("O4 against binary pulsars: the orbit of the Hulse-Taylor pulsar shrinks at dP/dt = -2.402e-12 by the "
+      "quadrupole formula (observed/predicted 0.9983 +- 0.0016, Weisberg & Huang 2016); pulsar B of the double pulsar "
+      "wobbles at (2 + 3 mA/(2 mB)) L/r^3 averaged = 5.07 deg/yr (observed 4.77 +0.66/-0.65, Breton et al. 2008)",
+      abs(Pdot + 2.402e-12) < 0.002e-12 and abs(OmB_deg - 4.77) < 0.66,
+      f"dP/dt = {Pdot:.4e}; spin wobble {OmB_deg:.3f} deg/yr")
+results["O4"] = {"Pdot": Pdot, "OmB_deg": OmB_deg}
+
+# O5 spins that start different: do they line up?  (light ensemble here; orbits.py makes the long one)
+e_start, e_end = ensemble(0.9, 40, 300.0, seed0=0)
+c0, c1 = np.cos(np.radians(e_start[:, 0])), np.cos(np.radians(e_end[:, 0]))
+lo_ = e_start[:, 1] < e_start[:, 2]
+check("O5 spins that start pointing different ways (40 inspirals, mass ratio 0.9, spins 0.8, r = 300 M to 10 M): on "
+      "average they do not line up with each other (mean cosine of the angle between them stays near 0), but they "
+      "sort: when the heavier spin starts closer to the orbit's axis, their shadows on the orbit plane end closer "
+      "together than when it starts farther (spin-orbit resonances, Schnittman 2004)",
+      abs(c1.mean()) < 0.25 and np.median(e_end[lo_, 3]) < np.median(e_end[~lo_, 3]),
+      f"mean cos(angle between spins): start {c0.mean():.3f}, end {c1.mean():.3f}; median end angle between shadows: "
+      f"heavier spin starts closer {np.median(e_end[lo_, 3]):.0f} deg, farther {np.median(e_end[~lo_, 3]):.0f} deg")
+results["O5"] = {"mean_cos_start": float(c0.mean()), "mean_cos_end": float(c1.mean())}
+
+# O6 the wave: GW150914's run-up at leading order, and the ring-down of the final spinning hole
+Mc_ = 30 * Tsun
+tau_ = lambda f: 5 / 256 * Mc_**(-5 / 3) * (np.pi * f)**(-8 / 3)  # noqa: E731
+ncyc = Mc_**(-5 / 3) / (32 * np.pi**(8 / 3)) * (35.0**(-5 / 3) - 150.0**(-5 / 3))
+Mf_, af_ = 62 * 1.09 * Tsun, 0.67
+f_ring = (1.5251 - 1.1568 * (1 - af_)**0.1292) / (2 * np.pi * Mf_)
+check("O6 the waves of GW150914 (chirp mass about 30 solar masses as seen at the detector): from 35 to 150 Hz the "
+      "leading-order run-up takes about 0.17 s and about 9 cycles (published: about 0.2 s and 8 cycles); the final "
+      "spinning hole (62 solar masses, spin 0.67) rings at about 250 Hz (Kerr's fundamental tone, fit of Berti, Cardoso "
+      "& Will 2006). The merger in between needs a full simulation",
+      0.12 < tau_(35.0) - tau_(150.0) < 0.25 and 6 < ncyc < 11 and 230 < f_ring < 270,
+      f"run-up {tau_(35.0) - tau_(150.0):.3f} s, {ncyc:.1f} cycles; ring-down {f_ring:.0f} Hz")
+results["O6"] = {"t35_150": float(tau_(35.0) - tau_(150.0)), "cycles": float(ncyc), "f_ring": float(f_ring)}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

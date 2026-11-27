@@ -48,7 +48,7 @@ Exact result (sympy, F1a):
 - At q = 0 it is zero (F1c): with an infinite light speed, a moving mass drags nothing.
 - With q = −1/c², to first order in u: h′_tx = 2(1 + γ) U u / c² (F1d).
 - γ = 1 comes from the general-relativity page's river: one boost through the river slows clocks and shrinks radial
-  rulers by circle-operation inverse amounts (the operation was called mult-add before 1.0), the same reason light bends twice the Newtonian amount. So the factor 4 in
+  rulers by mult-add inverse amounts, the same reason light bends twice the Newtonian amount. So the factor 4 in
   frame dragging is "half from clocks, half from rulers", exactly like light bending.
 
 **Brennan's speed-of-light question.** Yes. Frame dragging is the boost's corner term −q·u acting on Newton's field,
@@ -101,7 +101,7 @@ total error), so the data need the river's γ = 1.
 | Gravitomagnetism from boosting the static field, factor 4 from a tensor field | known textbook argument (e.g. Ohanian & Ruffini, *Gravitation and Spacetime*) |
 | Lense–Thirring 1918, Schiff 1960 gyroscope precession | known |
 | The drag term is first order in the curvature dial (the plane dial) and vanishes at q = 0 | ours (dial reading of a known fact) |
-| Frame-drag weight 4 = clocks 2 + rulers 2, from the river's circle-operation inverse | ours (reading); γ = 1 itself was derived on the GR page from the river postulate |
+| Frame-drag weight 4 = clocks 2 + rulers 2, from the river's mult-add inverse | ours (reading); γ = 1 itself was derived on the GR page from the river postulate |
 | BTZ static gyroscope J/(2(r² − M)) from the same half-swirl rule | ours (route); the number is GR |
 | "Turn = ½ circulation per area" as the swap rule's shape | ours (framing); the formula is the standard gyroscope rule, checked here, not proved from the algebra |
 
@@ -216,7 +216,7 @@ source: the charged spinning black hole (Kerr–Newman) comes out, with Einstein
 the field's energy entering as |Q/D|², and the shifted charge a magnet with g = 2. Round 11 tries two bodies: one
 shear per cell can't hold them (two bodies' curvature isn't algebraically special), and no way of combining two
 shears works (the leftover grows as M₁·M₂). For bodies at rest the log of the clock rate adds exactly (Weyl), by
-velocity addition on the axis, and the strut between them pushes with Newton's M₁M₂/ℓ² far apart. 61/61 checks.
+velocity addition on the axis, and the strut between them pushes with Newton's M₁M₂/ℓ² far apart. Round 12 puts two spinning bodies in orbit: three rules (each body's field sent out at light speed, clock rates multiply, each mass seen through the other's clock) give gravity's slow-orbit two-body field exactly, and each rule is needed. The known orbit turning, spin wobbles, pulsar decay rates and spin resonances follow; spins that start different don't line up on average but sort into two families. The waves' back-push is put in from the known result, the wave's run-up and ring-down are computed, and the merger is a gap. 67/67 checks.
 
 ### N.4 A dead end checked in passing
 

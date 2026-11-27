@@ -108,6 +108,16 @@ theorem velocity_addition (u1 u2 : R) :
 theorem strut_push (l M1 M2 : R) :
     (l^2 - (M1 - M2)^2) - (l^2 - (M1 + M2)^2) = 4 * (M1 * M2) := by grind
 
+
+/-! ### Round 12: two moving bodies (check O1) -/
+
+/-- **Clock rates multiply (O1, rule B).** Each body alone slows clocks by 1 − 2U + 2U² at slow-orbit order.
+    Multiplying the two bodies' factors gives the one-body form with U = U₁ + U₂, cross term 4U₁U₂ included,
+    plus only terms of higher order (U₁U₂ times another U). -/
+theorem clock_multiply (a b : R) :
+    (1 - 2 * a + 2 * a^2) * (1 - 2 * b + 2 * b^2)
+      = 1 - 2 * (a + b) + 2 * (a + b)^2 - 4 * (a * b) * (a + b) + 4 * (a^2 * b^2) := by grind
+
 end
 
 end CircleOp.SpinningRiver

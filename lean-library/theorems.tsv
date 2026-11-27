@@ -1972,6 +1972,13 @@ FusedAlgebra.Topics.GroupsLie	GroupsLie.tmul_comm	propext, Classical.choice, Quo
 FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GroupsLie	GroupsLie.tnorm_one_theta	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.GroupsLie	GroupsLie.twist_example	
+FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.hats_fib_sq	
+FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.hats_first	
+FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.period_11	
+FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.period_13	
+FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.period_7	
+FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.refl_first	
+FusedAlgebra.Topics.HatPrimes	CircleOp.HatPrimes.union_rule	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.HoloGluing	HoloGluing.complement_mul	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.HoloGluing	HoloGluing.conformal	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.HoloGluing	HoloGluing.gluing_cleared	propext, Classical.choice, Quot.sound
@@ -3350,6 +3357,7 @@ FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_nonneg	propext, Classical.ch
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_zero_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.area_law	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.cellMap_mul	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.clock_multiply	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.complex_distance	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.conj_product	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.horizon_rate	propext, Classical.choice, Quot.sound

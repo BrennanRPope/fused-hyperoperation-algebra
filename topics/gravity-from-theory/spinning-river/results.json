@@ -290,5 +290,64 @@
   "B5 lead for spin: on the spin axis, in Weyl's coordinate z = r - M, Kerr's Ernst potential is (1 - u)/(1 + u) with u = M/(z + i a), a point source shifted by i*a: its real part is the clock factor -g_tt = 1 - v^2 of the spinning river, its imaginary part Kerr's twist potential 2Ma/(r^2 + a^2)": {
     "pass": true,
     "detail": "(1-u)/(1+u) = (-2*M + I*a + r)/(I*a + r)"
+  },
+  "O1 three river rules give gravity's slow-orbit field of two moving bodies exactly (Blanchet-Faye-Ponsot 1998, harmonic gauge; the field that fixes Einstein-Infeld-Hoffmann motion): A each body's own far field carried at light speed, B clock rates multiply (B3), C each mass seen through the other's clock. Dropping any one breaks it": {
+    "pass": true,
+    "detail": "{'all three rules': '2.3e-41', 'no light-speed lag': '0.0566', 'clock rates added, not multiplied': '0.247', \"masses not seen through the other's clock\": '0.25'}"
+  },
+  "O1_drop": {
+    "no light-speed lag": 0.05663125114070865,
+    "clock rates added, not multiplied": 0.24654092020059212,
+    "masses not seen through the other's clock": 0.24952151023569588
+  },
+  "O1_all": 2.2958874039497803e-41,
+  "O2 each spin's wobble in that field: (3/2) v1 x grad U (the geodetic turn: 1 from curved space + 1/2 Thomas, both on our pages) plus half the curl of the frame-dragging field from body 2's motion (Part F) and spin (the shift's far field) gives the known spin-orbit and spin-spin precession (Barker-O'Connell; Kidder 1995); on a circular orbit Omega_1 = (2 + 3 m2/(2 m1)) L/r^3 + [3 n (n.S2) - S2]/r^3": {
+    "pass": true,
+    "detail": "exact (symbolic)"
+  },
+  "O3 orbits from that field (Einstein-Infeld-Hoffmann motion, plus the waves' back-push at 2.5PN): the closest point turns by 6 pi M/(a(1 - e^2)) per orbit whatever the mass ratio, and the energy the orbit loses matches the quadrupole formula (32/5) nu^2 M^5/r^5, better the wider the orbit": {
+    "pass": true,
+    "detail": "{'turn per orbit / 6piM/p, mass ratio nu = 0.0': '1.0014', 'turn per orbit / 6piM/p, mass ratio nu = 0.25': '1.0005', 'energy loss / quadrupole formula, r = 40 M': '1.0243', 'energy loss / quadrupole formula, r = 80 M': '1.0066'}"
+  },
+  "O3": {
+    "adv": {
+      "0.0": [
+        0.022310321540072366,
+        0.02227815284866846
+      ],
+      "0.25": [
+        0.02230788522477262,
+        0.02229777739160796
+      ]
+    },
+    "flux": {
+      "40.0": 1.024256489099747,
+      "80.0": 1.0065521920093545
+    }
+  },
+  "O4 against binary pulsars: the orbit of the Hulse-Taylor pulsar shrinks at dP/dt = -2.402e-12 by the quadrupole formula (observed/predicted 0.9983 +- 0.0016, Weisberg & Huang 2016); pulsar B of the double pulsar wobbles at (2 + 3 mA/(2 mB)) L/r^3 averaged = 5.07 deg/yr (observed 4.77 +0.66/-0.65, Breton et al. 2008)": {
+    "pass": true,
+    "detail": "dP/dt = -2.4021e-12; spin wobble 5.074 deg/yr"
+  },
+  "O4": {
+    "Pdot": -2.402101850560251e-12,
+    "OmB_deg": 5.074004619602729
+  },
+  "O5 spins that start pointing different ways (40 inspirals, mass ratio 0.9, spins 0.8, r = 300 M to 10 M): on average they do not line up with each other (mean cosine of the angle between them stays near 0), but they sort: when the heavier spin starts closer to the orbit's axis, their shadows on the orbit plane end closer together than when it starts farther (spin-orbit resonances, Schnittman 2004)": {
+    "pass": true,
+    "detail": "mean cos(angle between spins): start -0.089, end -0.056; median end angle between shadows: heavier spin starts closer 60 deg, farther 136 deg"
+  },
+  "O5": {
+    "mean_cos_start": -0.08880154234985223,
+    "mean_cos_end": -0.05633135163781483
+  },
+  "O6 the waves of GW150914 (chirp mass about 30 solar masses as seen at the detector): from 35 to 150 Hz the leading-order run-up takes about 0.17 s and about 9 cycles (published: about 0.2 s and 8 cycles); the final spinning hole (62 solar masses, spin 0.67) rings at about 250 Hz (Kerr's fundamental tone, fit of Berti, Cardoso & Will 2006). The merger in between needs a full simulation": {
+    "pass": true,
+    "detail": "run-up 0.167 s, 8.7 cycles; ring-down 250 Hz"
+  },
+  "O6": {
+    "t35_150": 0.1669073776198374,
+    "cycles": 8.69973975108448,
+    "f_ring": 249.91206974959528
   }
 }

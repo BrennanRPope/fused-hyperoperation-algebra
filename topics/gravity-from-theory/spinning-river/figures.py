@@ -595,6 +595,154 @@ def fig17():
     save(fig, "fig17_one_shear_cannot.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17):
+def fig18():
+    res = json.load(open(os.path.join(HERE, "results.json")))
+    fig, axs = plt.subplots(1, 2, figsize=(13.5, 5.6), gridspec_kw={"width_ratios": [1.15, 1]})
+    ax = axs[0]
+    ax.set_xlim(0, 10); ax.set_ylim(0, 10); ax.axis("off")
+    ax.add_patch(Circle((2.2, 5.0), 0.55, fc=BLUE, alpha=0.8)); ax.text(2.2, 5.0, "m₁", ha="center", va="center", color="w")
+    ax.add_patch(Circle((7.8, 5.0), 0.4, fc=ORANGE, alpha=0.8)); ax.text(7.8, 5.0, "m₂", ha="center", va="center", color="w")
+    ax.annotate("", (2.2, 6.4), (2.2, 5.6), arrowprops=dict(arrowstyle="->", color=BLUE, lw=2))
+    ax.annotate("", (7.8, 3.6), (7.8, 4.4), arrowprops=dict(arrowstyle="->", color=ORANGE, lw=2))
+    ax.text(2.2, 6.6, "v₁", ha="center", color=BLUE); ax.text(7.8, 3.2, "v₂", ha="center", color=ORANGE)
+    for r_ in (1.2, 1.9, 2.6):
+        ax.add_patch(Circle((2.2, 5.0), r_, fc="none", ec=BLUE, ls="-", lw=0.8, alpha=0.4))
+    boxes = [(0.2, 8.3, "A  each body's own far field, sent out at light speed\n    (where it was a moment ago, not where it is now)", BLUE),
+             (0.2, 1.4, "B  clock rates multiply:  rate = (rate from m₁) × (rate from m₂)\n    (the same rule as two bodies at rest, Part 7)", GREEN),
+             (0.2, 0.0, "C  each mass is seen through the other's clock:\n    m₁ looks like m₁ (1 − m₂/r₁₂)", PURPLE)]
+    for x_, y_, t_, c_ in boxes:
+        ax.text(x_, y_, t_, fontsize=9.6, color=c_, va="bottom",
+                bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=c_, alpha=0.95))
+    ax.set_title("three rules for two moving bodies")
+    ax = axs[1]
+    drop = res["O1_drop"]
+    labs = ["all three\nrules"] + ["drop A\n(no light-speed lag)", "drop B\n(rates added)", "drop C\n(masses not dressed)"]
+    vals = [1e-40] + [drop["no light-speed lag"], drop["clock rates added, not multiplied"],
+                     drop["masses not seen through the other's clock"]]
+    ax.bar(range(4), vals, color=[GREEN, RED, RED, RED], alpha=0.8)
+    for i, v in enumerate(vals):
+        ax.text(i, v * 3, "0 to rounding\n(40 digits)" if i == 0 else f"{v:.2g}", ha="center", fontsize=8.8)
+    ax.set_yscale("log"); ax.set_ylim(1e-42, 1e2)
+    ax.set_xticks(range(4)); ax.set_xticklabels(labs, fontsize=8.8)
+    ax.set_ylabel("largest mismatch with gravity's published\nslow-orbit field (Blanchet-Faye-Ponsot 1998)")
+    ax.set_title("the three rules give the published field exactly;\nleaving any one out breaks it")
+    save(fig, "fig18_three_rules.png")
+
+
+def fig19():
+    from orbits import orbit
+    res = json.load(open(os.path.join(HERE, "results.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(16, 5.4), gridspec_kw={"width_ratios": [1.2, 1, 0.9]}, constrained_layout=True)
+    s = orbit(0.25, 50.0, 0.5, 1e6, rstop=6.0)
+    t = np.linspace(0, s.t[-1], 60000)
+    Y = s.sol(t)
+    r = np.hypot(Y[0], Y[1])
+    idx = [i for i in range(1, len(r) - 1) if r[i] < r[i - 1] and r[i] <= r[i + 1]]
+    ax = axs[0]
+    k6 = idx[6]
+    ax.plot(Y[0][:k6], Y[1][:k6], color=BLUE, lw=0.8)
+    ax.plot(0, 0, "k+")
+    ang = np.degrees(np.unwrap(np.arctan2(Y[1][idx[:7]], Y[0][idx[:7]])))
+    for i in [0] + idx[:6]:
+        ax.plot([0, Y[0][i]], [0, Y[1][i]], color=RED, lw=1.2)
+    ax.text(0.02, 0.02, f"red: closest points, turning about {np.diff(ang).mean():.0f}° per lap", color=RED,
+            transform=ax.transAxes, fontsize=9)
+    ax.set_aspect("equal"); ax.set_xlabel("x / M"); ax.set_ylabel("y / M")
+    ax.set_title(f"the first six laps (equal masses, swinging between\n{r[0]:.0f} M and {r[:k6].max():.0f} M): the oval turns round")
+    ax = axs[1]
+    ax.plot(t, r, color=BLUE, lw=0.6)
+    ax.set_xlabel("time / M"); ax.set_ylabel("separation r / M")
+    ax.set_title(f"the waves carry energy away: {len(idx)} laps later the orbit\nhas shrunk and rounded off, and the bodies merge")
+    ax = axs[2]
+    obs = [(0.9983, 0.0016, "Hulse-Taylor pulsar:\norbit shrinking\n(Weisberg & Huang 2016)"),
+           (4.77 / res["O4"]["OmB_deg"], 0.66 / res["O4"]["OmB_deg"], "double pulsar B:\nspin wobble\n(Breton et al. 2008)")]
+    for i, (v, e, lab) in enumerate(obs):
+        ax.errorbar(i, v, yerr=e, fmt="o", color=BLUE, capsize=6)
+        ax.text(i + 0.08, v + e + 0.02, lab, fontsize=8.3, ha="center", va="bottom")
+    ax.axhline(1, color=GREEN, lw=1.5); ax.text(1.45, 1.01, "prediction", color=GREEN, fontsize=9, ha="right")
+    ax.set_xlim(-0.6, 1.6); ax.set_ylim(0.7, 1.45); ax.set_xticks([])
+    ax.set_ylabel("observed / predicted")
+    ax.set_title("against real binary pulsars\n(predicted: dP/dt = −2.402e-12; 5.07°/yr)")
+    save(fig, "fig19_orbit_decays.png")
+
+
+def fig20():
+    from orbits import inspiral_spins, spin_angles, unit
+    data = json.load(open(os.path.join(HERE, "orbits.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(15.5, 5.0))
+    ax = axs[0]
+    s = inspiral_spins(0.7, 0.8, 0.8, unit(30, 0), unit(120, 90), r0=200.0, r1=10.0, npts=1500)
+    A = np.array([spin_angles(s.y[:, k]) for k in range(s.y.shape[1])])
+    for j, (lab, c) in enumerate([("between the two spins", PURPLE), ("heavier spin to orbit axis", BLUE),
+                                  ("lighter spin to orbit axis", ORANGE), ("between their shadows on the orbit plane", GREY)]):
+        ax.plot(s.t, A[:, j], color=c, lw=1.4 if j < 3 else 0.6, label=lab)
+    ax.set_xscale("log"); ax.invert_xaxis(); ax.set_ylim(0, 185)
+    ax.set_xlabel("separation r / M  (orbit shrinking →)"); ax.set_ylabel("angle (degrees)")
+    ax.legend(fontsize=7.8, loc="upper left")
+    ax.set_title("one pair (mass ratio 0.7, spins 0.8, from 200 M):\nthe spins wobble round the orbit's axis as it shrinks")
+    st, en = np.array(data["start"]), np.array(data["end"])
+    ax = axs[1]
+    bins = np.linspace(-1, 1, 11)
+    c0, c1 = np.cos(np.radians(st[:, 0])), np.cos(np.radians(en[:, 0]))
+    ax.hist(c0, bins, color=GREY, alpha=0.5, label=f"start (r = 1000 M), mean {c0.mean():+.2f}")
+    ax.hist(c1, bins, histtype="step", color=PURPLE, lw=2, label=f"end (r = 10 M), mean {c1.mean():+.2f}")
+    ax.set_xlabel("cosine of the angle between the two spins\n(+1 = lined up, −1 = opposite)"); ax.set_ylabel("pairs (of 80)")
+    ax.legend(fontsize=8.2, loc="upper center"); ax.set_ylim(0, max(np.histogram(c0, bins)[0].max(), np.histogram(c1, bins)[0].max()) + 6)
+    ax.set_title("80 pairs started pointing every which way:\non average they do not line up")
+    ax = axs[2]
+    lo = st[:, 1] < st[:, 2]
+    b2 = np.linspace(0, 180, 10)
+    ax.hist(en[lo, 3], b2, color=BLUE, alpha=0.6,
+            label=f"heavier spin starts nearer the axis ({lo.sum()} pairs; median {np.median(en[lo, 3]):.0f}°)")
+    ax.hist(en[~lo, 3], b2, color=ORANGE, alpha=0.6,
+            label=f"heavier spin starts farther ({(~lo).sum()} pairs; median {np.median(en[~lo, 3]):.0f}°)")
+    for m_, c_ in ((np.median(en[lo, 3]), BLUE), (np.median(en[~lo, 3]), ORANGE)):
+        ax.axvline(m_, color=c_, ls="--")
+    ax.set_xlabel("angle between the spins' shadows on the orbit plane at r = 10 M (degrees)")
+    ax.set_ylabel("pairs"); ax.legend(fontsize=7.8, loc="upper center")
+    ax.set_ylim(0, ax.get_ylim()[1] * 1.35)
+    ax.set_title("but they sort into two families\n(near 0°, or near 180°: spin-orbit resonances)")
+    save(fig, "fig20_spins.png")
+
+
+def fig21():
+    Tsun = 4.925490947e-6
+    Mc = 30 * Tsun
+    f0, f1 = 35.0, 150.0
+    tau = lambda f: 5 / 256 * Mc**(-5 / 3) * (np.pi * f)**(-8 / 3)  # noqa: E731
+    T = tau(f0) - tau(f1)
+    tt = np.linspace(0, T, 20000)
+    tc_left = tau(f1) + T - tt                    # time left to the formal coalescence
+    f = (5 / (256 * tc_left))**(3 / 8) * Mc**(-5 / 8) / np.pi
+    phase = 2 * np.pi * np.cumsum(f) * (tt[1] - tt[0])
+    h = (f / f1)**(2 / 3) * np.cos(phase)
+    Mf, af = 62 * 1.09 * Tsun, 0.67
+    fr = (1.5251 - 1.1568 * (1 - af)**0.1292) / (2 * np.pi * Mf)
+    Q = 0.7 + 1.4187 * (1 - af)**(-0.4990)
+    td = Q / (np.pi * fr)
+    gap = 0.006
+    tr = np.linspace(0, 6 * td, 2000)
+    hr = np.exp(-tr / td) * np.cos(2 * np.pi * fr * tr)
+    fig, axs = plt.subplots(2, 1, figsize=(13, 7.2), sharex=True, gridspec_kw={"height_ratios": [1.3, 1]})
+    ax = axs[0]
+    ax.plot(tt, h, color=BLUE, lw=0.9, label="run-up: two bodies spiralling in (leading-order quadrupole formula)")
+    ax.axvspan(T, T + gap, color=GREY, alpha=0.25)
+    ax.text(T + gap / 2, 1.95, "merger: needs a full supercomputer\nsimulation (not done here)", ha="center", va="top", fontsize=8.5,
+            bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=GREY))
+    ax.plot(T + gap + tr, hr, color=RED, lw=1.2, label=f"ring-down: the merged spinning hole's own tone ({fr:.0f} Hz)")
+    ax.set_ylim(-1.4, 2.05); ax.set_xlim(T - 0.08, T + gap + 6 * td + 0.004)
+    ax.set_ylabel("wave strain (shape only;\nheights matched by hand)")
+    ax.legend(fontsize=8.5, loc="lower left")
+    ax.set_title("the wave from a GW150914-like collision (30 solar-mass chirp mass; final hole 62 solar masses, spin 0.67)")
+    ax = axs[1]
+    ax.plot(tt, f, color=BLUE, label=f"run-up frequency: 35 → 150 Hz in {T:.2f} s, about 9 cycles")
+    ax.axvspan(T, T + gap, color=GREY, alpha=0.25)
+    ax.plot([T + gap, T + gap + 6 * td], [fr, fr], color=RED, lw=2, label=f"ring-down {fr:.0f} Hz, fades in {1e3 * td:.0f} ms")
+    ax.set_ylim(20, 300); ax.set_xlabel("time (s) since the wave passed 35 Hz (last 0.08 s of the run-up shown)")
+    ax.set_ylabel("frequency (Hz)"); ax.legend(fontsize=8.5, loc="upper left")
+    save(fig, "fig21_wave.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21):
     f()
 print("figures:", sorted(os.listdir(FIG)))

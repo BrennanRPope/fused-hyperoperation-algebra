@@ -28,6 +28,10 @@ How it got here:
    electron's ratio g = 2.
 6. **Two bodies (Part 7):** one shear per cell can't hold two bodies, and two shears don't combine. What adds for
    bodies at rest is the log of the clock rate, by velocity addition, with a strut whose push is Newton's force.
+7. **Two spinning bodies in orbit (Part 8):** three rules (fields sent at light speed, clock rates multiply, masses
+   seen through each other's clocks) give gravity's slow-orbit field exactly. The orbits turn and decay as binary
+   pulsars show, the spins don't line up but sort into two families, and the wave's run-up and ring-down come out.
+   The merger is still a gap.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -52,7 +56,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**61/61 pass**, about 6 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**67/67 pass**, about 8 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -614,9 +618,129 @@ title.
   1. two bodies at rest: done here, by the known route;
   2. two spinning bodies at rest on one axis: the lead above;
   3. slow orbits, the corrections physicists call post-Newtonian, checked against binary pulsars, whose orbits shrink
-     as they give off waves;
+     as they give off waves (done in Part 8);
   4. the waveform itself, against the LIGO–Virgo–KAGRA signals, hundreds of them since GW150914 in 2015. The
      ringdown at the end of each comes from one spinning black hole, which this page already matches.
+
+## Part 8. Two spinning bodies in orbit (round 12)
+
+Asked by Brennan, who said "Yes" to two spinning bodies on one axis, then asked instead: "Please try two spinning
+bodies in a spinning orbit around each other". He added: "I'd be interested to see if the spins start lining up to
+each other if they start different", "And then we need to simulate the orbits decaying", and "And at some point the
+merge will create a graviton wave".
+
+**Result: three river rules give gravity's field for two bodies in a slow orbit, exactly.** The rules: each body
+sends out its own far field at light speed, clock rates multiply, and each mass is seen through the other body's
+clock. Leave any one out and the field is wrong. From that field the oval orbit turns and the spins wobble at the
+known rates. Adding the waves' known back-push (put in, not yet derived from the rules), the orbit shrinks at the rate
+measured in real binary pulsars. All of this downstream is standard physics. Spins that start pointing different ways **do not line up on average**.
+They sort into two families instead. The wave's run-up and the merged hole's ring-down come out. The merger in
+between needs a supercomputer simulation and is not done here.
+
+![three rules](figures/fig18_three_rules.png)
+
+*Fig 18. Left: the three rules for two moving bodies. Right: the largest mismatch with gravity's published slow-orbit
+field (Blanchet, Faye and Ponsot 1998) at random points, to 40 digits. With all three rules it is zero to rounding.
+Dropping any one leaves an order-one error.*
+
+### 8.1 The field of two moving bodies, from three rules (O1)
+
+Gravity has no exact two-body solution, but when the bodies move slowly compared with light it has a field good to
+the first correction beyond Newton. That is the "1PN" field that fixes the Einstein–Infeld–Hoffmann motion, and it is
+what binary pulsars test. Check O1 builds it from three rules and compares it term by term, at random configurations
+with 40-digit arithmetic:
+
+1. **A, light-speed lag:** each body's own far field is the field of one moving mass, sent out at light speed. The
+   field at a point comes from where the body was a moment ago, not where it is now.
+2. **B, clock rates multiply:** the rate from body 1 times the rate from body 2. This is the same rule Part 7 found for
+   bodies at rest (B3). In the slow-orbit form it supplies the cross term 4U₁U₂ exactly (Lean `clock_multiply`).
+3. **C, dressed masses:** each mass is seen through the other's clock, m₁ → m₁(1 − m₂/r₁₂).
+
+The frame-dragging part of the field is the one from Part F: −4mv/r for each moving body, plus each spin's own drag.
+All three rules together match to 2 × 10⁻⁴¹. Without A the mismatch is 0.06, without B 0.25, without C 0.25.
+
+### 8.2 The spins wobble (O2)
+
+Each spin turns in this field by two pieces already on our pages: the geodetic turn, (3/2) v × ∇U (1 from curved space
+plus ½ from Thomas), and half the curl of the frame-dragging field. Together they give the known spin-orbit and
+spin-spin precession exactly (Barker and O'Connell; Kidder 1995), symbolically. On a circular orbit, spin 1 turns
+about the orbit's axis at (2 + 3m₂/(2m₁)) L/r³.
+
+### 8.3 The orbit turns, shrinks and rounds off (O3, O4)
+
+![orbit decays](figures/fig19_orbit_decays.png)
+
+*Fig 19. Left: the first six laps of an oval orbit of two equal masses. Red: the closest points, turning about 24° per
+lap. Middle: the separation over the whole run. The waves carry energy off, so the swing between near and far dies out
+and the bodies spiral together. Right: real binary pulsars, observed over predicted.*
+
+The motion follows from the field, plus the waves' back-push on the bodies (the 2.5PN term), integrated numerically.
+The back-push is not derived from the rules here: it is the known term (harmonic gauge), put in, with its sign checked
+by energy balance.
+
+- **Turning:** the closest point moves on by 6πM/p per lap, p the orbit's width parameter, whatever the mass ratio
+  (O3: 1.0014 and 1.0005 of that, for mass ratios 0 and 1, at p ≈ 840 M). This is Mercury's turning, for two bodies.
+- **Shrinking:** the energy the orbit loses matches the quadrupole formula (32/5) ν²M⁵/r⁵ to 0.7% at r = 80 M and 2.4%
+  at 40 M, closer the wider the orbit, as it should be (O3).
+- **Against real pulsars (O4):** for the Hulse–Taylor pulsar the formula gives dP/dt = −2.402 × 10⁻¹², and the
+  measured value is 0.9983 ± 0.0016 of that (Weisberg and Huang 2016). For pulsar B of the double pulsar the spin
+  wobble comes out at 5.07° per year, and the measured value is 4.77 ± 0.66° (Breton et al. 2008).
+
+### 8.4 Do two spins that start different line up? (O5)
+
+![spins](figures/fig20_spins.png)
+
+*Fig 20. Left: one pair, mass ratio 0.7, both spins 0.8 of the maximum, from 200 M down to 10 M. Both spins wobble
+around the orbit's axis while the orbit's axis itself wobbles. Middle: 80 pairs started with spins pointing every which
+way at r = 1000 M, and the angle between their spins at the start and at r = 10 M. Right: the angle between the
+spins' shadows on the orbit plane at 10 M, split by which spin started nearer the orbit's axis.*
+
+No, not on average. The mean cosine of the angle between the two spins was −0.04 at the start and −0.08 at the end:
+no drift toward lined up. But the spins do sort. When the heavier body's spin starts nearer the orbit's axis, the
+spins' shadows on the orbit plane end up close together (median 41°). When it starts farther, they end up nearly
+opposite (median 138°). These are the spin-orbit resonances found by Schnittman (2004), and they come out of the
+precession in 8.2 with no extra input. A quick version runs in O5 (40 pairs, mass ratio 0.9); `orbits.py` makes the
+80-pair run in Fig 20.
+
+### 8.5 The wave (O6)
+
+![wave](figures/fig21_wave.png)
+
+*Fig 21. The wave from a collision like GW150914. Blue: the run-up as the two bodies spiral in, at leading order.
+Grey: the merger, which needs a full supercomputer simulation and is not done here. Red: the merged spinning hole's
+own tone. The run-up uses the known quadrupole formula, not a derivation from the rules. The heights of the two pieces
+are matched by hand; only their shapes and frequencies are computed.*
+
+The waves that shrink the orbit are what the detectors see. A "graviton wave" in the request is this wave: the graviton
+is its quantum particle, the way a photon is light's. The classical wave is what LIGO measures, and that is what is
+computed here.
+
+- **Run-up:** from 35 to 150 Hz the leading-order formula gives 0.17 s and 8.7 cycles, against about 0.2 s and 8 cycles
+  published for GW150914.
+- **Ring-down:** the merged hole (62 solar masses, spin 0.67) rings at 250 Hz and fades in about 4 ms. That is Kerr's
+  fundamental tone of a spinning black hole, the one this page builds (Part 5). The number is from the known fit of
+  Berti, Cardoso and Will (2006), not computed here.
+- **The merger:** the last few orbits and the collision itself are fully nonlinear. Only numerical relativity can do
+  them, so that piece is a gap here.
+- **The real data:** the detector data could not be downloaded from this session, so no direct comparison with the
+  recorded signal was made.
+
+### 8.6 What this means, on its own merits
+
+- **Ours:** the decomposition into three rules, and especially that the clock-multiplication rule found for bodies at
+  rest (Part 7) carries over to moving bodies and gives the interaction term with nothing added. Reading the light-speed
+  lag as "each body's field is sent out" is the obvious picture, but writing the 1PN field as exactly these three rules
+  is not something we found stated.
+- **Known:** everything downstream: the 1PN field itself, the motion, the precession, the decay, the pulsar numbers, the
+  resonances and the ringdown. These are textbook general relativity, and they come out because the field is exact at
+  this order.
+- **Put in, not derived:** the waves' back-push on the orbit and the quadrupole formula for the wave. Both should
+  follow from rule A carried one step further, and that is a separate test.
+- **Not shown:** that the three rules keep working at the next order. The natural test is 2PN: whether clock rates still
+  multiply there, or something new is needed. The cubic cross terms of the product already match one part of the known
+  2PN field, but other parts enter at that order too. That is checkable with the same method as O1.
+- **Still out of reach:** the merger. Matching the detected waveforms end to end would need the rules at higher order
+  plus numerical relativity.
 
 ## Verdict, on its own merits
 
@@ -640,23 +764,29 @@ title.
 - **Two bodies (Part 7):** one shear per cell can't hold two bodies (Goldberg–Sachs), and none of three ways of
   combining two shears works: the leftover grows as M₁·M₂. For bodies at rest, the log of the clock rate adds
   exactly (Weyl), by velocity addition on the axis, and the strut between them pushes with Newton's force.
-- **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule.
-  Moving bodies, and so gravitational waves, are still out of reach.
+- **Two bodies in orbit (Part 8):** three rules give gravity's slow-orbit field of two moving bodies exactly, and
+  each is needed. Clock-rate multiplication, found for bodies at rest, carries over. The known orbits, spin wobbles,
+  pulsar decay rates and spin resonances follow. Spins don't line up on average.
+- **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule. The
+  waves' back-push and the wave formula are put in from known results. Beyond slow-orbit order, and the merger, are
+  still out of reach.
 - **Frames:** one area law runs through all of them, turn = d × area. Thomas, geodetic, Lense–Thirring and Kerr sit at
   d = −1; Foucault, Coriolis, Larmor and Berry at d = +1; the river and the acoustic metric at d = 0. Larmor's theorem
   explains the ½ in frame dragging's gyroscope rule.
 
 ## Files
 
-- `checks.py`: 61 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
-  speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies), writes `checks_output.txt`, `results.json`.
+- `checks.py`: 67 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+  speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit), writes
+  `checks_output.txt`, `results.json`.
+- `orbits.py`: orbits, spins and the spin ensemble for Part 8; `python3 orbits.py` writes `orbits.json` (80 pairs,
+  about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the seventeen figures in `figures/`.
+- `figures.py`: the twenty-one figures in `figures/` (Figs 19–21 need `orbits.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
-  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`. All thirteen are compiled in the shared library as
-  `FusedAlgebra.Topics.SpinningRiver` (namespace `CircleOp.SpinningRiver`; round 11's two proofs use `grind` in place of
-  Mathlib's `ring`); it builds on `FusedAlgebra.Topics.JetFields`.
+  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`. Written without a Lean
+  toolchain, so not yet compiled; it builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -690,3 +820,7 @@ title.
 | two-body static field, strut, push M₁M₂/(ℓ² − (M₁+M₂)²) | known (Weyl 1917; Bach & Weyl 1922; Israel & Khan 1964) |
 | three ways of combining two cell shears all fail, leftover ∝ M₁M₂; the velocity-addition reading on the axis; two bodies at the boost setting | **ours** (B2, B3); the first likely known for Kerr–Schild sums |
 | Ernst potential of Kerr on the axis = M/(z − ia); axis data → field (Sibgatullin); double Kerr (Kramer & Neugebauer 1980) | known; **ours** only as the proposed next test |
+| two-body 1PN field (harmonic gauge); EIH motion; 6πM/p; quadrupole decay; 2.5PN back-push | known (Einstein, Infeld & Hoffmann 1938; Blanchet, Faye & Ponsot 1998; Peters & Mathews 1963; Iyer & Will 1993) |
+| that field as exactly three rules: light-speed lag, clock rates multiply, dressed masses; each needed | **ours** (O1) |
+| spin precession as geodetic turn + half the curl of the drag field | known (Barker & O'Connell 1975; Kidder 1995); **ours** only as assembled from our pages' pieces (O2) |
+| pulsar decay and double-pulsar wobble; spin-orbit resonances; GW150914 run-up and Kerr ringdown | known (Weisberg & Huang 2016; Breton et al. 2008; Schnittman 2004; Abbott et al. 2016; Berti, Cardoso & Will 2006) |
