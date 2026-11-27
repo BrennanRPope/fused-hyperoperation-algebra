@@ -79,3 +79,5 @@ Nov 27: `topics/new-ties/` round 4 added as DRAFT (section 7: off the tangent li
 Nov 27: `topics/riemann/known-tools/` added as DRAFT (the five known pieces applied to the zeros; the heat-flow rewind kept as a measuring tool; 13 checks, picked up by CI as checks.py; no Lean).
 
 Nov 27: `topics/riemann/spin-orbit/` added as DRAFT (spin–orbit resonance applied: fits the zeros under heat flow except at t = 0, breaks for primes; 12 checks, picked up by CI as checks.py; reads ../known-tools/rewind_snaps.npz; no Lean). Later the same night: squeeze.py/.json, fig_squeeze and LAMBDA.md added, checks now 16.
+
+Nov 27: `topics/riemann/potential/` (an energy reading of the de Bruijn–Newman flow; 12 checks) and `topics/riemann/pressure-blowup-twist/` (blow-up, pressure and twist mapped onto the backward flow; 13 checks) added as DRAFT; both picked up by CI as checks.py, both read ../known-tools/rewind_snaps.npz; no Lean; not leads.

@@ -1,0 +1,14 @@
+PASS P1 Jensen: excess log energy >= 0 for 200 random rings, 0 for the crystal min 0.153
+PASS P2 real configuration: W falls monotonically, dW/dt = -2 sum F^2 rel err 1.8e-03
+PASS P3 dW/dt = -2 Re sum F_j^2 holds off the line too (so its sign can flip); at the ring start it is POSITIVE numeric -33.234049, formula -33.234049; ring start dW/dt = 13.41
+PASS P4 ring: start below crystal, rises to capture, falls after, ends at crystal start 465.567, crystal 466.877, end 466.878
+PASS P5 lifting an off-line pair higher keeps lowering W (no minimum off the line) W: -388.08 -> -518.82
+PASS P6 ring capture time within 10% of the frozen-crowd pair formula run 0.1153, formula 0.1141
+PASS P7 our zeros: excess energy falls 0 -> .01 -> .05 -> .2 [0.0138, 0.0129, 0.0106, 0.0059]
+PASS P8 at t = 0 our zeros are GUE-like (between crystal and GUE, 10x below Poisson) ours 0.0138, GUE 0.0187, Poisson 0.159
+PASS P9 closest pair: gap^2 hits 0 at t_c (energy spike), t_c < 0 t_c -9.365e-04
+PASS P10 every height band's latest collision is at t < 0 (no spike after 0 among our zeros) 
+PASS P11 toy Li numbers: a negative one exists before capture, none after 
+PASS P12 toy: the off-line height y shrinks to 0 at capture (de Bruijn's height² falls) 
+
+12/12 pass
