@@ -1,0 +1,11 @@
+PASS  S1 first zero x1 = 28.27: neither 2x1 nor 3x1 is a zero (independent Ising/uniform spins ruled out): (4.311, 1.846)
+PASS  S2 two Ising spins: all zeros real for J >= 0, real zeros lost for J < 0: {'-0.4': 8, '-0.1': 12, '0.0': 18, '0.1': 18, '0.5': 18}
+PASS  S3 with a ferromagnetic link the zeros break the 3x rule: [1.328301932283717, 3.6158683446663393]
+PASS  S4 Phi(u) = sum_n n^{-1/2} phi1(u + ln(n)/2) (a mixture of shifts): 2.5965191498600616e-15
+PASS  S5 Phi is even: 2.4823547279951488e-15
+PASS  S6 the single bump phi1 goes negative; only the total Phi is >= 0: (-0.39185476181045625, -2.408250577028357e-15)
+PASS  S7 sum over coprime a,b of a^-x b^-y = zeta(x) zeta(y)/zeta(x+y) (x=2.5, y=3.1; truncated sum): 8.225142015438815e-06
+PASS  S8 the symmetric primon gas's total weight blows up as sigma -> 1: {'1.5': 5.6773559924505115, '1.2': 22.60162330449922, '1.05': 271.4822866500379}
+PASS  S9 every finite gas (primes <= P, sigma = 1/2) is zero-free on the imaginary field axis and tracks log|zeta|^2: {'10': (-4.55, 0.78), '100': (-6.44, 0.897), '1000': (-8.28, 0.924), '10000': (-10.36, 0.902)}
+
+9/9 checks pass

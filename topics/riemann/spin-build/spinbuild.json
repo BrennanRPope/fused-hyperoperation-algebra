@@ -1,0 +1,173 @@
+{
+ "first_zeros_z": [
+  28.26945028346939,
+  42.04407927754311,
+  50.02171516029138,
+  60.849752251719025,
+  65.87012317547838,
+  75.17235631765135
+ ],
+ "three_x_rule": [
+  {
+   "x": 28.26945028346939,
+   "2x": 56.53890056693878,
+   "nearest_to_2x": 60.849752251719025,
+   "miss_2x": 4.310851684780246,
+   "3x": 84.80835085040817,
+   "nearest_to_3x": 86.65414656183,
+   "miss_3x": 1.8457957114218289
+  },
+  {
+   "x": 42.04407927754311,
+   "2x": 84.08815855508622,
+   "nearest_to_2x": 81.837438024295,
+   "miss_2x": 2.2507205307912272,
+   "3x": 126.13223783262933,
+   "nearest_to_3x": 130.2250880961632,
+   "miss_3x": 4.092850263533876
+  },
+  {
+   "x": 50.02171516029138,
+   "2x": 100.04343032058276,
+   "nearest_to_2x": 99.5476649553446,
+   "miss_2x": 0.4957653652381566,
+   "3x": 150.06514548087415,
+   "nearest_to_3x": 151.40938139816785,
+   "miss_3x": 1.3442359172937017
+  },
+  {
+   "x": 60.849752251719025,
+   "2x": 121.69950450343805,
+   "nearest_to_2x": 121.66355704921962,
+   "miss_2x": 0.03594745421843015,
+   "3x": 182.54925675515707,
+   "nearest_to_3x": 184.98379854111698,
+   "miss_3x": 2.434541785959908
+  },
+  {
+   "x": 65.87012317547838,
+   "2x": 131.74024635095677,
+   "nearest_to_2x": 130.2250880961632,
+   "miss_2x": 1.5151582547935618,
+   "3x": 197.61036952643514,
+   "nearest_to_3x": 197.66238843638737,
+   "miss_3x": 0.052018909952238346
+  },
+  {
+   "x": 75.17235631765135,
+   "2x": 150.3447126353027,
+   "nearest_to_2x": 151.40938139816785,
+   "miss_2x": 1.0646687628651534,
+   "3x": 225.51706895295405,
+   "nearest_to_3x": 223.74931835398527,
+   "miss_3x": 1.7677505989687745
+  },
+  {
+   "x": 81.837438024295,
+   "2x": 163.67487604859,
+   "nearest_to_2x": 165.82076170817206,
+   "miss_2x": 2.1458856595820635,
+   "3x": 245.51231407288498,
+   "nearest_to_3x": 245.89365858710516,
+   "miss_3x": 0.38134451422018856
+  },
+  {
+   "x": 86.65414656183,
+   "2x": 173.30829312366,
+   "nearest_to_2x": 174.85054922625045,
+   "miss_2x": 1.5422561025904429,
+   "3x": 259.96243968549004,
+   "nearest_to_3x": 245.89365858710516,
+   "miss_3x": 14.068781098384875
+  }
+ ],
+ "three_x_rule_fails_at_first_zero": true,
+ "two_spin": {
+  "-0.4": {
+   "real_zeros": 8,
+   "expected_all": 17.44338176287173
+  },
+  "-0.1": {
+   "real_zeros": 12,
+   "expected_all": 17.44338176287173
+  },
+  "0.0": {
+   "real_zeros": 18,
+   "expected_all": 17.44338176287173
+  },
+  "0.1": {
+   "real_zeros": 18,
+   "expected_all": 17.44338176287173
+  },
+  "0.5": {
+   "real_zeros": 18,
+   "expected_all": 17.44338176287173
+  }
+ },
+ "two_spin_note": "all zeros real (count = (a+b) zmax/pi) iff J >= 0; J < 0 loses real zeros in complex pairs",
+ "two_spin_J0.5_first_zeros": [
+  1.328301932283717,
+  3.6158683446663393,
+  5.471150555758322,
+  7.947814713739617
+ ],
+ "two_spin_J0.5_breaks_3x": true,
+ "mixture_identity_maxerr": 2.5965191498600616e-15,
+ "Phi_even_err": 2.4823547279951488e-15,
+ "phi1_min": -0.39185476181045625,
+ "phi1_negative_below_u": -0.18249999999999988,
+ "Phi_min": -2.408250577028357e-15,
+ "coprime_identity_relerr": 8.225142015438815e-06,
+ "total_weight_zeta2_over_zeta2s": {
+  "1.5": 5.6773559924505115,
+  "1.2": 22.60162330449922,
+  "1.05": 271.4822866500379
+ },
+ "total_weight_diverges_at_sigma_1": "zeta(sigma)^2/zeta(2 sigma) has a double pole at sigma = 1",
+ "finite_volume": {
+  "10": {
+   "min_logZ": -4.553064298845307,
+   "corr_with_log_zeta2": 0.7804836939597324
+  },
+  "100": {
+   "min_logZ": -6.441429147941474,
+   "corr_with_log_zeta2": 0.8968650942745966
+  },
+  "1000": {
+   "min_logZ": -8.278609327684862,
+   "corr_with_log_zeta2": 0.9240366235560302
+  },
+  "10000": {
+   "min_logZ": -10.359783131733836,
+   "corr_with_log_zeta2": 0.902028365977702
+  }
+ },
+ "finite_volume_note": "Z_P(it) = prod |1 - p^{-1/2 - it}|^{-2} times constants: positive (no zeros) for every P",
+ "conditions": {
+  "newman_spin_Phi": {
+   "symmetric": "yes",
+   "ferromagnetic": "unknown (= RH)",
+   "field_linear": "yes",
+   "measure_exists": "yes"
+  },
+  "symmetric_primon_gas_sigma_half": {
+   "symmetric": "yes",
+   "ferromagnetic": "yes (free, J = 0)",
+   "field_linear": "yes",
+   "measure_exists": "NO (only for sigma > 1; sigma = 1 is its phase transition)"
+  },
+  "knauf_chain": {
+   "symmetric": "yes (Ising spins)",
+   "ferromagnetic": "yes (proved, Knauf 1993)",
+   "field_linear": "NO (s is inverse temperature, not field)",
+   "measure_exists": "yes at finite length"
+  },
+  "independent_ising_uniform": {
+   "symmetric": "yes",
+   "ferromagnetic": "yes (J = 0)",
+   "field_linear": "yes",
+   "measure_exists": "yes",
+   "fails": "3x / 2x rule at the first zero"
+  }
+ }
+}
