@@ -1,0 +1,188 @@
+{
+ "W1": {
+  "rows": [
+   {
+    "flux": -6,
+    "weight": -3.0,
+    "left": 0,
+    "right": 6,
+    "spin": 2.5
+   },
+   {
+    "flux": -5,
+    "weight": -2.5,
+    "left": 0,
+    "right": 5,
+    "spin": 2.0
+   },
+   {
+    "flux": -4,
+    "weight": -2.0,
+    "left": 0,
+    "right": 4,
+    "spin": 1.5
+   },
+   {
+    "flux": -3,
+    "weight": -1.5,
+    "left": 0,
+    "right": 3,
+    "spin": 1.0
+   },
+   {
+    "flux": -2,
+    "weight": -1.0,
+    "left": 0,
+    "right": 2,
+    "spin": 0.5
+   },
+   {
+    "flux": -1,
+    "weight": -0.5,
+    "left": 0,
+    "right": 1,
+    "spin": 0.0
+   },
+   {
+    "flux": 1,
+    "weight": 0.5,
+    "left": 1,
+    "right": 0,
+    "spin": 0.0
+   },
+   {
+    "flux": 2,
+    "weight": 1.0,
+    "left": 2,
+    "right": 0,
+    "spin": 0.5
+   },
+   {
+    "flux": 3,
+    "weight": 1.5,
+    "left": 3,
+    "right": 0,
+    "spin": 1.0
+   },
+   {
+    "flux": 4,
+    "weight": 2.0,
+    "left": 4,
+    "right": 0,
+    "spin": 1.5
+   },
+   {
+    "flux": 5,
+    "weight": 2.5,
+    "left": 5,
+    "right": 0,
+    "spin": 2.0
+   },
+   {
+    "flux": 6,
+    "weight": 3.0,
+    "left": 6,
+    "right": 0,
+    "spin": 2.5
+   }
+  ],
+  "leftform": [
+   [
+    2.5,
+    3.0
+   ],
+   [
+    2.0,
+    2.5
+   ],
+   [
+    1.5,
+    2.0
+   ],
+   [
+    1.0,
+    1.5
+   ],
+   [
+    0.5,
+    1.0
+   ],
+   [
+    0.0,
+    0.5
+   ],
+   [
+    0.0,
+    0.5
+   ],
+   [
+    0.5,
+    1.0
+   ],
+   [
+    1.0,
+    1.5
+   ],
+   [
+    1.5,
+    2.0
+   ],
+   [
+    2.0,
+    2.5
+   ],
+   [
+    2.5,
+    3.0
+   ]
+  ]
+ },
+ "W2": {
+  "ratio": {
+   "Q": "1/6",
+   "u^c": "-4/3",
+   "d^c": "2/3",
+   "L": "-1/2",
+   "e^c": "2"
+  }
+ },
+ "W3": {
+  "sm": {
+   "grav": "0",
+   "Y3": "0",
+   "T2Y": "0",
+   "doublets": "4",
+   "witten_ok": "True"
+  },
+  "premise": {
+   "grav": "c*n1/2 + 2*c*n2 + 9*c*n3/2 + 8*c*n4",
+   "Y3": "c**3*n1/8 + 2*c**3*n2 + 81*c**3*n3/8 + 32*c**3*n4",
+   "T2Y": "c*n2/2 + 3*c*n3 + 10*c*n4",
+   "doublets": "n2",
+   "witten_ok": "False"
+  },
+  "round9": {
+   "grav": "2*c",
+   "Y3": "2*c**3",
+   "T2Y": "c/2",
+   "doublets": "1",
+   "witten_ok": "False"
+  }
+ },
+ "W4": {
+  "equal_lengths": true,
+  "sin2_law": "1/2",
+  "mu_star": 5.3692339865783475e+20,
+  "spread": [
+   3.595373279318398e+20,
+   8.033187344248887e+20
+  ],
+  "a2inv": 29.58204,
+  "aYinv": 98.36796000000001,
+  "MPl": 1.22e+19
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0
+ }
+}
