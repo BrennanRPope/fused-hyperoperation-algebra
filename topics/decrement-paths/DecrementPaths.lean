@@ -1,5 +1,5 @@
 /-
-  Decrement paths (DRAFT, version 2)
+  Decrement paths (DRAFT, version 3)
   ==================================
 
   Part of Fused Hyperoperation Algebra. Page and checks: ../ (decrement-paths).
@@ -7,6 +7,8 @@
   machine that wrote it has no Lean. Version 2: the lemma names that failed in the first CI run
   (finset product rule, finset continuity, integral of a finset sum) are replaced by small induction
   proofs here (hasDerivAt_prod', continuous_prod', continuous_sum', integral_sum').
+  Version 3: two proof steps fixed after the second CI run (the fundamental theorem step in
+  `path_total`, and a leftover negated-function goal in `const_force_split`). Statements unchanged.
 
   A policy can end by several causes in a year, with absolute rates qᵢ. The point
   p(t) = (chance each cause has struck by time t) runs through the cube from 0 to q.
@@ -42,6 +44,7 @@ noncomputable def rate (p p' : ι → ℝ → ℝ) (j : ι) : ℝ :=
 
 /-! ### Helpers, proved by induction so they do not depend on Mathlib's big-operator calculus names -/
 
+omit [Fintype ι] in
 /-- Product rule for a finite product. -/
 theorem hasDerivAt_prod' (s : Finset ι) (g g' : ι → ℝ → ℝ) (t : ℝ)
     (hg : ∀ i ∈ s, HasDerivAt (g i) (g' i t) t) :
@@ -69,6 +72,7 @@ theorem hasDerivAt_prod' (s : Finset ι) (g g' : ι → ℝ → ℝ) (t : ℝ)
     rw [Finset.sum_insert ha, Finset.erase_insert ha, hrest]
     ring
 
+omit [Fintype ι] in
 theorem continuous_prod' (s : Finset ι) (g : ι → ℝ → ℝ) (hg : ∀ i ∈ s, Continuous (g i)) :
     Continuous (fun x => ∏ i ∈ s, g i x) := by
   revert hg
@@ -126,9 +130,11 @@ theorem path_total (p p' : ι → ℝ → ℝ)
       fun i _ => continuous_const.sub (hcp i)).mul (hc j)
   unfold rate
   rw [← integral_sum' univ (fun j t => (∏ i ∈ univ.erase j, (1 - p i t)) * p' j t) hterm]
-  apply intervalIntegral.integral_eq_sub_of_hasDerivAt
-  · intro t _; exact hasDerivAt_total p p' t (fun i => hp i t)
-  · exact (continuous_sum' _ _ hterm).intervalIntegrable _ _
+  have hd : ∀ t ∈ Set.uIcc (0 : ℝ) 1, HasDerivAt (fun s => total (fun i => p i s))
+      (∑ j, (∏ i ∈ univ.erase j, (1 - p i t)) * p' j t) t :=
+    fun t _ => hasDerivAt_total p p' t (fun i => hp i t)
+  exact intervalIntegral.integral_eq_sub_of_hasDerivAt hd
+    ((continuous_sum' _ _ hterm).intervalIntegrable _ _)
 
 /-- UDD: on the straight path pᵢ t = t qᵢ, cause j gets every corner S ∪ {j} of the cube,
     worth (−1)^|S| qⱼ ∏_S qᵢ, divided equally among its |S| + 1 members. -/
@@ -179,6 +185,7 @@ theorem const_force_split (μ : ι → ℝ) (j : ι) (hM : ∑ i, μ i ≠ 0) :
     intro t _
     have h := (((hasDerivAt_id' t).const_mul (∑ i, μ i)).neg.exp.neg).div_const (∑ i, μ i)
     refine h.congr_deriv ?_
+    try simp only [Pi.neg_apply, id]
     rw [mul_one, mul_neg, neg_neg, mul_div_assoc, div_self hM, mul_one]
   rw [intervalIntegral.integral_eq_sub_of_hasDerivAt hd
     (Continuous.intervalIntegrable (by fun_prop) _ _)]
@@ -186,6 +193,7 @@ theorem const_force_split (μ : ι → ℝ) (j : ι) (hM : ∑ i, μ i ≠ 0) :
   ring
 
 /-- The total on the constant-force path is 1 − e^{−M}: so the split is in proportion to the μ. -/
+omit [DecidableEq ι] in
 theorem const_force_total (μ : ι → ℝ) :
     total (fun i => 1 - Real.exp (-(μ i * 1))) = 1 - Real.exp (-∑ i, μ i) := by
   unfold total
