@@ -1,0 +1,6 @@
+n=0 items (1 letters), gap sum <= 0: 1 words  (0s)
+n=1 items (2 letters), gap sum <= 38: 818 words  (0s)
+n=2 items (3 letters), gap sum <= 45: 246422 words  (0s)
+n=3 items (4 letters), gap sum <= 49: 39039480 words  (10s)
+total 39286721 words; repeated hashes: 0; re-checking 1 target hashes exactly
+exact re-check: 1 hash classes, problems: none  (21s)

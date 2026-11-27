@@ -1,0 +1,4 @@
+n=2 items (3 letters), gap sum <= 33: 80291 words  (0s)
+total 80291 words; repeated hashes: 0; re-checking 1 target hashes exactly
+exact re-check: 0 hash classes, problems: none  (0s)
+80291 three-letter words, gap sum<=33, distinct fingerprints, none equal 1 (pure big-int check)

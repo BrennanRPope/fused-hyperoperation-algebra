@@ -1,0 +1,31 @@
+==== kappa(P)=kappa(Q): 2 items vs 2 items (3 vs 3 letters) Theorem 18.1
+Matveev a priori (cascade): Hs <= 6.438e+45
+round: Hs=6.438e+45  X0=B=1.931e+46
+   A: 3-log LLL (C=10^145): min(H1,H1') <= 95
+   [P=2 items, Q=2] B: 4751 heads, 4-log LLL each (C=10^[192]): X2max=143, max(H1+X2)=237
+   B1: P short, box 237 -> 422
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth 1), 1 nodes; short P box sum <= 172, short Q box sum <= 220, Matveev fallbacks -> none; -> 392
+   2-adic vanishing cases met: 2, resolutions [('equal', True)]
+   new Hs <= 422   (3.0s)
+round: Hs=422  X0=B=1276
+   A: 3-log LLL (C=10^16): min(H1,H1') <= 9
+   [P=2 items, Q=2] B: 64 heads, 4-log LLL each (C=10^[19]): X2max=13, max(H1+X2)=22
+   B1: P short, box 22 -> 42
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 1 nodes; short P box sum <= 14, short Q box sum <= 18, Matveev fallbacks -> none; -> 35
+   2-adic vanishing cases met: 2, resolutions [('equal', True)]
+   new Hs <= 42   (0.0s)
+round: Hs=42  X0=B=136
+   A: 3-log LLL (C=10^13): min(H1,H1') <= 7
+   [P=2 items, Q=2] B: 43 heads, 4-log LLL each (C=10^[15]): X2max=10, max(H1+X2)=17
+   B1: P short, box 17 -> 33
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 1 nodes; short P box sum <= 10, short Q box sum <= 13, Matveev fallbacks -> none; -> 26
+   2-adic vanishing cases met: 2, resolutions [('equal', True)]
+   new Hs <= 33   (0.0s)
+round: Hs=33  X0=B=109
+   A: 3-log LLL (C=10^13): min(H1,H1') <= 7
+   [P=2 items, Q=2] B: 43 heads, 4-log LLL each (C=10^[15]): X2max=10, max(H1+X2)=17
+   B1: P short, box 17 -> 33
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 1 nodes; short P box sum <= 10, short Q box sum <= 13, Matveev fallbacks -> none; -> 26
+   2-adic vanishing cases met: 2, resolutions [('equal', True)]
+   new Hs <= 33   (0.0s)
+rounds: ['6.438e+45', '422', '42', '33']

@@ -1,0 +1,426 @@
+{
+ "patterns": {
+  "ties": 3838,
+  "cancel": 12,
+  "list": [
+   {
+    "word": "NlNllNlN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     19,
+     19,
+     19,
+     19
+    ],
+    "Ls": [
+     1,
+     2,
+     1,
+     0
+    ],
+    "A3": 4,
+    "free_front_gaps": 3,
+    "u_at_zero": "1608003819",
+    "form": "g = 5 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NlNlllNN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     19,
+     19,
+     19,
+     19
+    ],
+    "Ls": [
+     1,
+     3,
+     0,
+     0
+    ],
+    "A3": 4,
+    "free_front_gaps": 3,
+    "u_at_zero": "1608000380",
+    "form": "g = 5 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NlNllNK m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     19,
+     19,
+     10,
+     19
+    ],
+    "Ls": [
+     1,
+     2,
+     0,
+     0
+    ],
+    "A3": 3,
+    "free_front_gaps": 2,
+    "u_at_zero": "80400209",
+    "form": "g = 4 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NlNlKlN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     19,
+     10,
+     19,
+     19
+    ],
+    "Ls": [
+     1,
+     1,
+     1,
+     0
+    ],
+    "A3": 3,
+    "free_front_gaps": 2,
+    "u_at_zero": "80403819",
+    "form": "g = 4 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NlNllKN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     19,
+     10,
+     19,
+     19
+    ],
+    "Ls": [
+     1,
+     2,
+     0,
+     0
+    ],
+    "A3": 3,
+    "free_front_gaps": 2,
+    "u_at_zero": "80400380",
+    "form": "g = 4 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NlNlKK m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     19,
+     10,
+     10,
+     19
+    ],
+    "Ls": [
+     1,
+     1,
+     0,
+     0
+    ],
+    "A3": 2,
+    "free_front_gaps": 1,
+    "u_at_zero": "4020209",
+    "form": "g = 3 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NKllNlN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     10,
+     19,
+     19,
+     19
+    ],
+    "Ls": [
+     0,
+     2,
+     1,
+     0
+    ],
+    "A3": 3,
+    "free_front_gaps": 2,
+    "u_at_zero": "88003819",
+    "form": "g = 4 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NKlllNN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     10,
+     19,
+     19,
+     19
+    ],
+    "Ls": [
+     0,
+     3,
+     0,
+     0
+    ],
+    "A3": 3,
+    "free_front_gaps": 2,
+    "u_at_zero": "88000380",
+    "form": "g = 4 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NKllNK m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     10,
+     19,
+     10,
+     19
+    ],
+    "Ls": [
+     0,
+     2,
+     0,
+     0
+    ],
+    "A3": 2,
+    "free_front_gaps": 1,
+    "u_at_zero": "4400209",
+    "form": "g = 3 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NKlKlN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     10,
+     10,
+     19,
+     19
+    ],
+    "Ls": [
+     0,
+     1,
+     1,
+     0
+    ],
+    "A3": 2,
+    "free_front_gaps": 1,
+    "u_at_zero": "4403819",
+    "form": "g = 3 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NKllKN m^M N  (free: m-counts of the N-items)",
+    "rs": [
+     10,
+     10,
+     19,
+     19
+    ],
+    "Ls": [
+     0,
+     2,
+     0,
+     0
+    ],
+    "A3": 2,
+    "free_front_gaps": 1,
+    "u_at_zero": "4400380",
+    "form": "g = 3 + v19(M - mu(u)),  20^mu = -1/u"
+   },
+   {
+    "word": "NKlKKm^M N",
+    "rs": [
+     10,
+     10,
+     10,
+     19
+    ],
+    "Ls": [
+     0,
+     1,
+     0,
+     0
+    ],
+    "A3": 1,
+    "free_front_gaps": 0,
+    "u_at_zero": "220209",
+    "form": "g = 2 + v19(M - mu(u)),  20^mu = -1/u"
+   }
+  ]
+ },
+ "identity_words": 312,
+ "family": {
+  "word": "N K l K K m^M N",
+  "A3": 1,
+  "u": "220209",
+  "u_mod_361": 360,
+  "mu_mod_19_10": 5000503198492,
+  "mu_digits_low_first": [
+   0,
+   2,
+   14,
+   3,
+   11,
+   17,
+   3,
+   8,
+   9,
+   15,
+   6,
+   11,
+   3,
+   10,
+   9,
+   0,
+   11,
+   15,
+   5,
+   0,
+   5,
+   8,
+   15,
+   14,
+   3,
+   11,
+   6,
+   9,
+   16,
+   15
+  ],
+  "g_at_0_38_5092": [
+   3,
+   4,
+   5
+  ],
+  "first_M_for_g": {
+   "2": 0,
+   "3": 0,
+   "4": 38,
+   "5": 5092,
+   "6": 25669,
+   "7": 1459200,
+   "8": 43552883,
+   "9": 184690526,
+   "10": 7335664438,
+   "11": 160187731807,
+   "12": 5000503198492,
+   "13": 41786900745298
+  },
+  "brute_force": {
+   "B": 100000,
+   "brute": [
+    6,
+    25669
+   ],
+   "digits": [
+    6,
+    25669
+   ]
+  }
+ },
+ "reduction": {
+  "G": 30,
+  "fronts": 13517,
+  "by_B": {
+   "2": {
+    "max_g": 9,
+    "at": {
+     "word": "NlmmmmNllmmmmmmmmmmmNlmmmmmmmmmmmmN m^43 N",
+     "M_digits": 2,
+     "A3": 4
+    },
+    "hist": {
+     "-1": 9715,
+     "0": 3612,
+     "1": 187,
+     "2": 3
+    }
+   },
+   "100": {
+    "max_g": 87,
+    "at": {
+     "word": "NKlllmmmmmmmmmmmmmmmmmmmmmmmNmmmmmN m^M N",
+     "M_digits": 100,
+     "A3": 3
+    },
+    "hist": {
+     "-1": 12207,
+     "0": 1230,
+     "1": 75,
+     "2": 4,
+     "4": 1
+    }
+   },
+   "200": {
+    "max_g": 164,
+    "at": {
+     "word": "NlmmmNllmmmmmmmmNlmmmmmmmmmmmmN m^M N",
+     "M_digits": 200,
+     "A3": 4
+    },
+    "hist": {
+     "0": 2196,
+     "-1": 11198,
+     "1": 116,
+     "2": 7
+    }
+   },
+   "300": {
+    "max_g": 242,
+    "at": {
+     "word": "NlmmmmmmmmmmmmmNllmmmNlmmmN m^M N",
+     "M_digits": 300,
+     "A3": 4
+    },
+    "hist": {
+     "-1": 9309,
+     "0": 4024,
+     "1": 178,
+     "2": 6
+    }
+   }
+  },
+  "note": "hist keys: k_max - ceil(log_19 B), i.e. how far the exact maximum is above the generic log_19 B; max_g is A3 + 1 + k_max"
+ },
+ "bugeaud_laurent_max_over_fronts": {
+  "2": 97231.2,
+  "100": 5780200.8,
+  "200": 23450932.7,
+  "300": 53013369.8
+ },
+ "bl_family": {
+  "log10 M = 0": 10770.1,
+  "log10 M = 10": 10770.1,
+  "log10 M = 12": 10770.1,
+  "log10 M = 13": 10770.1,
+  "log10 M = 20": 25178.9,
+  "log10 M = 50": 161711.8,
+  "log10 M = 100": 652696.0,
+  "log10 M = 200": 2622523.9,
+  "log10 M = 300": 5909497.9
+ },
+ "bl_vs_front": {
+  "0": {
+   "log_u": 21.2,
+   "bl_g_at_M_1e100": 1119335.7,
+   "per_unit_log_u": 52803.0,
+   "exact_max_g_M_upto_1e100": 83
+  },
+  "10": {
+   "log_u": 51.2,
+   "bl_g_at_M_1e100": 2680141.9,
+   "per_unit_log_u": 52397.0,
+   "exact_max_g_M_upto_1e100": 83
+  },
+  "30": {
+   "log_u": 111.1,
+   "bl_g_at_M_1e100": 5779943.4,
+   "per_unit_log_u": 52040.9,
+   "exact_max_g_M_upto_1e100": 83
+  },
+  "100": {
+   "log_u": 320.8,
+   "bl_g_at_M_1e100": 16537390.9,
+   "per_unit_log_u": 51555.8,
+   "exact_max_g_M_upto_1e100": 83
+  },
+  "300": {
+   "log_u": 919.9,
+   "bl_g_at_M_1e100": 46985670.1,
+   "per_unit_log_u": 51076.2,
+   "exact_max_g_M_upto_1e100": 83
+  },
+  "1000": {
+   "log_u": 3016.9,
+   "bl_g_at_M_1e100": 152469967.1,
+   "per_unit_log_u": 50538.2,
+   "exact_max_g_M_upto_1e100": 83
+  }
+ },
+ "time_s": 232.8
+}

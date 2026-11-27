@@ -1,0 +1,12 @@
+ord(19 mod 16000) = 800
+small items: 9
+n=1 items (2 letters): (e2,e5) pairs reached: [(0, 0)]  capped: set()
+   max 2^e2 5^e5 = 1, reached by (all-small words only?) [((0, 0), 808, False)]
+   max e2 = 0, max e5 = 0
+n=2 items (3 letters): (e2,e5) pairs reached: [(0, 0), (1, 1), (2, 1), (3, 1)]  capped: set()
+   max 2^e2 5^e5 = 40, reached by (all-small words only?) [((3, 1), 1, True)]
+   max e2 = 3, max e5 = 1
+n=3 items (4 letters): (e2,e5) pairs reached: [(0, 0), (1, 1), (2, 1), (3, 1), (4, 1)]  capped: set()
+   max 2^e2 5^e5 = 80, reached by (all-small words only?) [((4, 1), 1, True)]
+   words with max: [((0, 0, 'K'), (0, 1, 'N'), (0, 0, 'N'))]  big-item paths: []
+   max e2 = 4, max e5 = 1

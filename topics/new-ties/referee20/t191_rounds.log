@@ -1,0 +1,35 @@
+==== kappa(P)=kappa(Q): 3 items vs 1 items (4 vs 2 letters) Theorem 19.1
+Matveev a priori (cascade): Hs <= 6.438e+45
+round: Hs=6.438e+45  X0=B=1.931e+46
+   A: 3-log LLL (C=10^145): min(H1,H1') <= 95
+   [P=3 items, Q=1] B: 4751 heads, 4-log LLL each (C=10^[192]): X2max=143, max(H1+X2)=237
+   B1 (P items 1,2 bounded): 2-adic tree (depth 1), 1 nodes; short P box sum <= 314, short Q box sum <= 77, Matveev fallbacks -> none; -> 558
+   B2: Q short, box 143 -> 256
+   [P=1 items] P short at once: box 95 -> 171
+   2-adic vanishing cases met: 1, resolutions [('impossible', True)]
+   new Hs <= 558   (2.9s)
+round: Hs=558  X0=B=1684
+   A: 3-log LLL (C=10^16): min(H1,H1') <= 9
+   [P=3 items, Q=1] B: 64 heads, 4-log LLL each (C=10^[19]): X2max=13, max(H1+X2)=22
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 1 nodes; short P box sum <= 27, short Q box sum <= 5, Matveev fallbacks -> none; -> 50
+   B2: Q short, box 13 -> 26
+   [P=1 items] P short at once: box 9 -> 19
+   2-adic vanishing cases met: 1, resolutions [('impossible', True)]
+   new Hs <= 50   (0.0s)
+round: Hs=50  X0=B=160
+   A: 3-log LLL (C=10^13): min(H1,H1') <= 7
+   [P=3 items, Q=1] B: 43 heads, 4-log LLL each (C=10^[15]): X2max=10, max(H1+X2)=17
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 1 nodes; short P box sum <= 20, short Q box sum <= 3, Matveev fallbacks -> none; -> 38
+   B2: Q short, box 10 -> 20
+   [P=1 items] P short at once: box 7 -> 15
+   2-adic vanishing cases met: 1, resolutions [('impossible', True)]
+   new Hs <= 38   (0.0s)
+round: Hs=38  X0=B=124
+   A: 3-log LLL (C=10^13): min(H1,H1') <= 7
+   [P=3 items, Q=1] B: 43 heads, 4-log LLL each (C=10^[15]): X2max=10, max(H1+X2)=17
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 1 nodes; short P box sum <= 20, short Q box sum <= 3, Matveev fallbacks -> none; -> 38
+   B2: Q short, box 10 -> 20
+   [P=1 items] P short at once: box 7 -> 15
+   2-adic vanishing cases met: 1, resolutions [('impossible', True)]
+   new Hs <= 38   (0.0s)
+rounds: ['6.438e+45', '558', '50', '38']

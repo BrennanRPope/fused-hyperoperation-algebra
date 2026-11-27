@@ -1,0 +1,45 @@
+==== kappa(P)=kappa(Q): 3 items vs 3 items (4 vs 4 letters) Theorem 19.3 (4 vs 4)
+Matveev a priori (cascade): Hs <= 1.550e+79
+round: Hs=1.550e+79  X0=B=4.649e+79
+   A: 3-log LLL (C=10^246): min(H1,H1') <= 163
+   [P=3 items, Q=3] B: 13693 heads, 4-log LLL each (C=10^[325]): X2max=243, max(H1+X2)=405
+   B1 (P items 1,2 bounded): 2-adic tree (depth 1), 6075 nodes; short P box sum <= 543, short Q box sum <= -1, Matveev fallbacks -> 1.570e+19; -> 15697481203859218432
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth 1), 12149 nodes; short P box sum <= 300, short Q box sum <= 380, Matveev fallbacks -> 9.415e+18; -> 9414500226042724352
+   2-adic vanishing cases met: 7, resolutions [('equal', True), ('impossible', False)]
+   new Hs <= 15697481203859218432   (27.5s)
+round: Hs=1.570e+19  X0=B=4.709e+19
+   A: 3-log LLL (C=10^66): min(H1,H1') <= 43
+   [P=3 items, Q=3] B: 1033 heads, 4-log LLL each (C=10^[85]): X2max=63, max(H1+X2)=105
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 40968 nodes; short P box sum <= 146, short Q box sum <= 38, Matveev fallbacks -> none; -> 263
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 360601 nodes; short P box sum <= 84, short Q box sum <= 104, Matveev fallbacks -> none; -> 189
+   2-adic vanishing cases met: 1635, resolutions [('equal', True), ('impossible', False)]
+   new Hs <= 263   (57.4s)
+round: Hs=263  X0=B=799
+   A: 3-log LLL (C=10^15): min(H1,H1') <= 9
+   [P=3 items, Q=3] B: 64 heads, 4-log LLL each (C=10^[18]): X2max=12, max(H1+X2)=21
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 218 nodes; short P box sum <= 32, short Q box sum <= 10, Matveev fallbacks -> none; -> 61
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 915 nodes; short P box sum <= 18, short Q box sum <= 21, Matveev fallbacks -> none; -> 42
+   2-adic vanishing cases met: 79, resolutions [('equal', True), ('impossible', False)]
+   new Hs <= 61   (0.0s)
+round: Hs=61  X0=B=193
+   A: 3-log LLL (C=10^13): min(H1,H1') <= 7
+   [P=3 items, Q=3] B: 43 heads, 4-log LLL each (C=10^[16]): X2max=11, max(H1+X2)=18
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 138 nodes; short P box sum <= 26, short Q box sum <= 8, Matveev fallbacks -> none; -> 51
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 523 nodes; short P box sum <= 16, short Q box sum <= 20, Matveev fallbacks -> none; -> 40
+   2-adic vanishing cases met: 59, resolutions [('equal', True), ('impossible', False)]
+   new Hs <= 51   (0.0s)
+round: Hs=51  X0=B=163
+   A: 3-log LLL (C=10^13): min(H1,H1') <= 7
+   [P=3 items, Q=3] B: 43 heads, 4-log LLL each (C=10^[15]): X2max=10, max(H1+X2)=17
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 125 nodes; short P box sum <= 25, short Q box sum <= 8, Matveev fallbacks -> none; -> 49
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 427 nodes; short P box sum <= 16, short Q box sum <= 19, Matveev fallbacks -> none; -> 38
+   2-adic vanishing cases met: 51, resolutions [('equal', True), ('impossible', False)]
+   new Hs <= 49   (0.0s)
+round: Hs=49  X0=B=157
+   A: 3-log LLL (C=10^13): min(H1,H1') <= 7
+   [P=3 items, Q=3] B: 43 heads, 4-log LLL each (C=10^[15]): X2max=10, max(H1+X2)=17
+   B1 (P items 1,2 bounded): 2-adic tree (depth full), 125 nodes; short P box sum <= 25, short Q box sum <= 8, Matveev fallbacks -> none; -> 49
+   B2 (P item 1, Q item 1 bounded): 2-adic tree (depth full), 427 nodes; short P box sum <= 16, short Q box sum <= 19, Matveev fallbacks -> none; -> 38
+   2-adic vanishing cases met: 51, resolutions [('equal', True), ('impossible', False)]
+   new Hs <= 49   (0.0s)
+rounds: ['1.550e+79', '1.570e+19', '263', '61', '51', '49']

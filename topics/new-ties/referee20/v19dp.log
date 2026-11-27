@@ -1,0 +1,10 @@
+n=1 items (2 letters), mod 19^3: reachable v19 classes (v: #residues) {0: 6498, 1: 342}
+   zero mod 19^3 reachable: False  -> max v19(T_1) = 1
+n=2 items (3 letters), mod 19^4: reachable v19 classes (v: #residues) {0: 123462, 1: 6498, 2: 342}
+   zero mod 19^4 reachable: False  -> max v19(T_2) = 2
+n=3 items (4 letters), mod 19^5: reachable v19 classes (v: #residues) {0: 2345778, 1: 123462, 2: 6498, 3: 342}
+   zero mod 19^5 reachable: False  -> max v19(T_3) = 3
+brute force n=1 (41 words, small L,M): max v19 = 1
+brute force n=2 (1722 words, small L,M): max v19 = 2
+brute force n=3 (10622 words, small L,M): max v19 = 3
+time 1.7s

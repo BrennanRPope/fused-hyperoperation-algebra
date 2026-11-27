@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched. Round 16 (section 20): two more cases of that conjecture are now theorems (computer-assisted, with Matveev's bound and lattice reduction): no three-letter word has fingerprint 1, and no two two-letter words share one; longer words still rest on the searches. Round 17 (section 21): three letters against two is now a theorem too (computer-assisted, Matveev's bound, lattice reduction and an exact 2-adic logarithm, without Yu's p-adic theorem); three against three and longer words still rest on the searches. Round 18 (section 22): three against three is a theorem too (computer-assisted, with a new by-hand bound on the factors 19 in the numerator), so the conjecture now holds for every pair of words with at most three N/K letters each, and an independent recheck confirms Rounds 16 and 17; four letters and longer still rest on the searches. Round 19 (section 23): four letters is done too (computer-assisted, with a by-hand bound on the factors 19 for four letters), so the conjecture holds for every pair of words with at most four N/K letters each; at five letters that bound fails (proved for one family), so the next length needs a 19-adic tool such as Yu's theorem, not just more computation.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000. Round 15 (section 19): no quantity built from real sizes can stop a trip off the line (proved); the whole question is now one conjecture about the fingerprint of a single number per word, which would make the original break exact, is proved for words with up to two N or K letters, and has no exception among 32 million words searched. Round 16 (section 20): two more cases of that conjecture are now theorems (computer-assisted, with Matveev's bound and lattice reduction): no three-letter word has fingerprint 1, and no two two-letter words share one; longer words still rest on the searches. Round 17 (section 21): three letters against two is now a theorem too (computer-assisted, Matveev's bound, lattice reduction and an exact 2-adic logarithm, without Yu's p-adic theorem); three against three and longer words still rest on the searches. Round 18 (section 22): three against three is a theorem too (computer-assisted, with a new by-hand bound on the factors 19 in the numerator), so the conjecture now holds for every pair of words with at most three N/K letters each, and an independent recheck confirms Rounds 16 and 17; four letters and longer still rest on the searches. Round 19 (section 23): four letters is done too (computer-assisted, with a by-hand bound on the factors 19 for four letters), so the conjecture holds for every pair of words with at most four N/K letters each; at five letters that bound fails (proved for one family), so the next length needs a 19-adic tool such as Yu's theorem, not just more computation. Round 20 (section 24): an independent session redid rounds 18 and 19 from the statements alone and confirms them; at five letters every unbounded case has one two-logarithm 19-adic form, which a published bound and an exact digit argument handle, so five letters looks like a bigger run of the same method rather than a new idea (judgement, not run).* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] [Round 16 update: still open; Conjecture 15.3 now proved for all pairs with at most two N/K letters and for three letters against one, section 20] [Round 17 update: still open; Conjecture 15.3 now also proved for three N/K letters against two, section 21] [Round 18 update: still open; Conjecture 15.3 now proved for every pair with at most three N/K letters each, section 22] [Round 19 update: still open; Conjecture 15.3 now proved for every pair with at most four N/K letters each, section 23] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] [Round 15 update: still open; would follow from Conjecture 15.3 (fingerprints), proved for up to two N/K letters, section 19] [Round 16 update: still open; Conjecture 15.3 now proved for all pairs with at most two N/K letters and for three letters against one, section 20] [Round 17 update: still open; Conjecture 15.3 now also proved for three N/K letters against two, section 21] [Round 18 update: still open; Conjecture 15.3 now proved for every pair with at most three N/K letters each, section 22] [Round 19 update: still open; Conjecture 15.3 now proved for every pair with at most four N/K letters each, section 23] [Round 20 update: still open; rounds 18 and 19 independently rechecked, and the 19-adic step for five letters scoped and done for the family that broke the bound, section 24] | 13.4, Y9 |
 
 ---
 
@@ -2766,7 +2766,7 @@ is odd for every 19^L/(rP) and odd for 20/19 (Q6), so the second case is impossi
 amount). In the first case 19^L/(rP) is the same for both, and that fixes the item (the prefix lemma of 22.4; Q6), so the
 words are equal. If m = 0 in a back step with kappa(sigma) = kappa(sigma'), the same algebra (K minus the 19-power part,
 times the 2- and 5-parts) gives T(front) / T'(front) a product of 2s, 5s and 19s and then Lambda = 0, which is the first
-case. ∎ This lemma leans on the earlier computer-assisted theorems for at most three letters.
+case. ∎ This lemma leans on the earlier computer-assisted theorems for at most three letters, so they come first (18.1 before 19.3, 17.1 before 19.2), and on Proposition 15.2 (psi(NNw) = psi(Nmw)) for the leading N N case. [Round 20: wording added after the independent recheck, 24.2.]
 
 ### 23.4 Theorems 19.1 to 19.3
 
@@ -2876,3 +2876,163 @@ letters). It still does not make the original break exact, which needs every len
   computations, and Corollary 19.4. Everything is computer-checked (Q1 to Q10); each lattice output is checked exactly for
   reducedness. Not checked by an independent session this round.
 - **Not yet:** checked by a person, or checked against the literature on S-unit equations.
+
+## 24. Round 20 (DRAFT): an independent recheck of rounds 18 and 19, and the 19-adic step for five letters
+
+*DRAFT, Nov 27. Done under Brennan's overnight go-ahead, at the coordinator's suggestion: first an independent recheck of
+Theorems 18.1 and 19.1 to 19.3, then a scoping of the 19-adic route that section 23.6 said five letters would need. Files:
+`referee20/` (the referee's brief, scripts, logs and report), `adic20.py` + `adic20.json` + `adic20_notes.md`,
+`checks20.py` (7 checks), `figures20.py`, figures 64 to 67.*
+
+### 24.1 The answer in five sentences
+
+An independent session, given only the definitions and the statements, redid Theorems 18.1, 19.1, 19.2 and 19.3 with its
+own code and its own case splits: **all hold**, with no counterexample and no false step (Figure 64). At five letters the
+factor-19 bound fails in exactly 12 patterns, and **all 12 have one shape**: T = 19^A3 (1 + 20^M u), so g = A3 + 1 +
+v19(M - mu(u)), a two-logarithm 19-adic form with one integer exponent. A published two-logarithm bound (Bugeaud and
+Laurent 1996) covers it, so Yu's many-logarithm theorem is not needed; it bounds g for every M, but linearly in the size of
+the front and about ten thousand times too big. For a fixed front, a simple 19-adic digit argument gives the **exact**
+largest g over all M up to any bound B, and it is always within 4 of A3 + 1 + log_19 B (Figures 65 and 66). So the 19-adic
+step is feasible and cheap, and five letters looks like a bigger run of the round-19 method, not a new idea (my judgement,
+Figure 67); I did not run it.
+
+### 24.2 The independent recheck
+
+**How it was done.** As in round 18: a separate Claude session (a subagent) got only `referee20/BRIEF.md`: the letters as
+maps, psi, the fingerprint, reduced words, the earlier theorems it could take as proved (15.5, 16.1, 16.2, 17.1), and the
+statements to recheck (F2, Theorem 18.1, F3, the 2- and 5-part bound, Lemma N, Theorems 19.1 to 19.3, and the five-letter
+family). It did not open sections 22 and 23, pairs18/19, checks18/19 or figures18/19. It wrote its own Matveev bounds, its
+own lattice steps (python-flint's LLL, each output checked exactly), its own 2-adic tree and its own hashed exact
+comparison. Its report is `referee20/REPORT.md` (saved by this thread, unchanged), with scripts and logs beside it; they
+need mpmath and python-flint and are not part of the repository's checks.
+
+| Item | Referee | Ours |
+|---|---|---|
+| F2: v19(T) <= 2 for three letters | holds (exact residues mod 19^4) | by hand |
+| F3: v19(T) <= 3 for four letters | holds (exact residues mod 19^5) | by hand + 226 cases |
+| 2^e2 5^e5 <= 80 for four letters, only N K m N N | holds (exact residues mod 2^7 5^3) | by hand |
+| 18.1, three against three | start 6.4e45; rounds 422, 42, 33; 80,291 words, no clash | every gap <= 44; 226,965 words |
+| 19.1, four against two | start 6.4e45; rounds 558, 50, 38 | start 2.1e29; 369, 61, 50, 50 |
+| 19.2, four against three | start 2.8e62; rounds 765, 59, 47, 45 | start 2.1e62; 4.0e18, 269, 68, 59, 55, 55 |
+| 19.3, four against four | start 1.55e79; rounds 1.57e19, 263, 61, 51, 49; 39,039,480 words, no clash | start 4.8e112; ...; 59; 106,624,096 words |
+| the five-letter family | holds; first M with g = 3, 4, 5, 6: 0, 38, 5,092, 25,669 | 3, 4, 5 at 0, 38, 5,092 |
+
+The referee bounds the gap sum of each word, we bound each gap, so the counts are not comparable; each side's exact check
+covers its own last bound. As an extra check it ran the comparison at our bound 59 and got exactly our 106,624,096
+four-letter words, with all two- and three-letter words to 60 added: no clash, and only N has fingerprint 1. Its start for
+four against four is smaller than ours (1.55e79 against 4.8e112) because it splits the first steps differently; a start only
+has to be finite.
+
+**What it found in the write-up, and what we do about it.** None is an error in a result.
+1. *Order of proof.* Lemma N leans on the shorter theorems, so 18.1 must come before 19.3 and 17.1 before 19.2. That is the
+   order in which they are proved here; section 23.3 now says so (the lemma's last sentence).
+2. *The rewrite N N z -> N (z + m) is used and not stated.* Lemma N's second case ("a leading N N in place of N m") uses it.
+   It keeps psi exactly: it is Proposition 15.2 (psi(NNw) = psi(Nmw)), which we now cite there.
+3. *Fingerprint 1 in 19.1 needs no Baker theory* (T = S <= 548,720 forces gap sum <= 2). Agreed; that is how 23.4 proves it.
+4. *Everything rests on the S bounds* (F2, F3 and the 2- and 5-part bound): they feed the size step, the 2-adic step and
+   the exact check. Agreed; the referee rechecked all three by a different method (exact residues), which is the strongest
+   kind of confirmation we have for them.
+
+![Figure 64](figures/fig64-independent-recheck-18-19.png)
+
+*Figure 64. Our bounds against the referee's. A: the starting bounds from Matveev's theorem (round 18 has no single start).
+B: the lattice rounds after the first; solid ours (every gap), dashed the referee's (gap sum).*
+
+### 24.3 The 19-adic form for five letters
+
+**Proposition 20.1 (by hand, with the casework of 23.6).** Of the 3,838 tie patterns for five letters, the 12 whose leading
+units cancel modulo 19 all have tied terms 0, 1 and 4 and a bare last N (no l before it). In each, the front x1 x2 x3 has
+fixed letters and fixed l-counts adding to A3, and the only free gaps are M (the m's before the last N) and the m-counts of
+the front's N-items (0 to 3 of them). Writing T3 for the front's T, v19(T3) = A3 - 1, u = T3 / 19^(A3 - 1) = -1 modulo 19,
+and exactly
+
+  T = 19^A3 + 19 · 20^M · T3 = 19^A3 (1 + 20^M u),   so   **g = A3 + 1 + v19(M - mu(u)),  where 20^mu = -1/u in Z_19.**
+
+*Why:* the expansion of 23.2 with the tie pattern fixed; 20 = 1 + 19, so 20^x runs over 1 + 19 Z_19 and v19(20^x - 1) =
+1 + v19(x). Every other five-letter word has g equal to its smallest term size, at most 4. (Checked: Q1, and the identity on
+600 random words with T and mu computed independently, Q2.) In logarithms the form is Lambda = M log_19 20 + log_19(-u): two
+19-adic logarithms, one integer exponent, and u depends only on the front. Round 19's family N K l K K m^M N is the pattern
+with no free front gap (A3 = 1, u = 220,209). The 12 patterns are in Figure 66.
+
+### 24.4 What the published bound gives
+
+**Proposition 20.2 (a published theorem, applied).** For every word of the 12 patterns whose u is not a product of 2s and 5s
+(true for all 13,517 fronts of 24.5),
+g <= A3 + 0.337 · E^2 · log 20 · max(log u, log 19), with E = max(log E' + log log 19 + 0.4, 10, 10 log 19) and
+E' = M / max(log u, log 19) + 1 / log 20.
+
+This is the two-logarithm p-adic bound of Bugeaud and Laurent (1996) with p = 19, eta1 = 20, b1 = M, eta2 = -u, b2 = 1,
+degree 1 (20 and -u are 19-units, both 1 mod 19, and multiplicatively independent because u has a prime factor other than 2
+and 5, checked for every front used; Q6). **We took its exact form and constant from two later papers that restate it (arXiv 2401.06555, Lemma 2.2, and
+arXiv 2606.18500, Theorem 2.3), which agree; we did not see the 1996 paper.** Some citations have p^f - 1 = 18 where these
+have 1; that reading makes every bound 18 times larger and changes nothing below. For the family it gives g <= 10,771 for
+every M up to 10^13 and g <= 652,697 for M up to 10^100.
+
+So the bound is **linear in the size of the front** and only polylogarithmic in M. On its own it is useless for the size step
+(it would let 19^g grow like a power of the front), but it is exactly what the first, Matveev, stage needs: g enters the
+front-step forms only as the coefficient of log 19, so a bound like this keeps the starting bounds finite.
+
+### 24.5 The digit step: the exact answer for a fixed front
+
+**The argument (by hand).** For a fixed front, mu is a fixed 19-adic number. v19(M - mu) >= k means M = mu modulo 19^k. So
+over 0 <= M <= B, the largest v19(M - mu) is the largest k with (mu mod 19^k) <= B, and it is reached at M = mu mod 19^k.
+Computing mu modulo 19^k is a 19-adic discrete logarithm, done digit by digit and checked by exponentiation.
+
+**Proposition 20.3 (computed, exact).**
+- For N K l K K m^M N: the first M with g = 4, 5, 6, 7, 8 are 38; 5,092; 25,669; 1,459,200; 43,552,883 (each checked on T
+  itself), and the largest g over M <= 10^100, 10^200, 10^300 is 80, 159 and 236 (Q4; also redone with independent code).
+- For every front of the 12 patterns whose free front gaps add up to at most 30 (13,517 fronts): the largest g over
+  M <= 10^2, 10^100, 10^200, 10^300 is 9, 87, 164 and 242, and each is reached. For every front, the largest k is within 4 of
+  log_19 B (Q5, Figure 66B).
+- The digit argument agrees with brute force for every front with free front gaps <= 2 and every M <= 3,000 (Q3), and for
+  the family up to M = 10^5.
+
+![Figure 65](figures/fig65-nineteen-adic-step-family.png)
+
+*Figure 65. A: the family's records (orange) lie on 2 + log_19 M (dashed), as they would for a random 19-adic mu: g grows,
+but only like log M. B: the published bound (grey) holds for every M but is about ten thousand times the true maximum
+(green), which the digit step gives exactly for M up to any B.*
+
+![Figure 66](figures/fig66-twelve-patterns.png)
+
+*Figure 66. A: the 12 cancelling patterns (red: round 19's family). B: for every front, how far the exact maximum of
+v19(M - mu) over M <= B sits above log_19 B: never more than 4.*
+
+### 24.6 Is five letters feasible? (my judgement, not proved)
+
+Yes, as far as the 19s go. The chain would be: Proposition 20.2 as the input to Matveev's theorem for 5 against 1 to 5 (my
+rough guess for the start of 5 against 5 is 10^150 to 10^250, extrapolated, not computed); lattice rounds on the fronts and
+2-adic steps on the backs as in round 19; then, once a round has fixed the front, the digit step gives the exact g for every
+M up to the round's bound, in milliseconds, so 19^g costs the size step only about log B, an additive amount, and the size
+step closes as before (Q7). What remains is the round-19 work again, bigger: a by-hand 2- and 5-part bound for five letters,
+the trees with a third middle gap, and an exact check of about 10^10 words (100 to 300 times round 19's), which is hours in
+this Python and needs care with memory. That is a larger run of a method that works, not a new idea. All lengths at once
+would still need something uniform that I do not see (22.5, 23.6).
+
+![Figure 67](figures/fig67-road-to-five-letters.png)
+
+*Figure 67. What a proof for five letters needs. Green: done this round. Grey: the round-19 method again, bigger.*
+
+**A correction to 23.6.** It said five letters would need Yu's p-adic theorem and a 19-adic lattice reduction. Neither is
+needed: every unbounded case is a two-logarithm form, so the older two-logarithm bound suffices, and for a fixed front the
+reduction is the digit step above, with no lattice. Its estimate g <= C + C' log X is right for a fixed front (the log is
+log_19 of the bound on M), but not uniformly over all fronts, where the published bound grows with the front's size.
+
+### 24.7 Is it a lead?
+
+**Yes, and it got firmer.** Two things moved. The four-letter theorems now have an independent confirmation, by a different
+case split and different code, which is the strongest check short of a person. And the obstacle at five letters turned out to
+be small: one form, a published bound and a digit argument, all now in hand for the family that broke the bound. The
+conjecture is still proved only up to four letters, and the original break still needs every length (section 19).
+
+### 24.8 Who proved what, round 20
+
+- **The referee (an independent Claude session, this round):** the recheck of F2, F3, the 2- and 5-part bound, Lemma N,
+  Theorems 18.1 and 19.1 to 19.3 and the family, with its own code (`referee20/`). It used Matveev's theorem (BMS 2006,
+  Theorem 9.4), LLL (python-flint) with exact checks, and its own 2-adic and exact steps.
+- **Published theorem used:** the two-logarithm p-adic bound of Y. Bugeaud and M. Laurent (J. Number Theory 61, 1996), in
+  the form restated in arXiv 2401.06555 (Lemma 2.2) and arXiv 2606.18500 (Theorem 2.3); the paper itself not seen.
+- **Claude, this thread and a worker it started:** the 12-pattern shape and Proposition 20.1, the digit argument and
+  Proposition 20.3, the application in Proposition 20.2, the feasibility judgement, and checks Q1 to Q7 (the family's
+  numbers redone with separate code).
+- **Not yet:** checked by a person; the five-letter theorems themselves are not proved.

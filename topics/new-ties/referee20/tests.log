@@ -1,0 +1,3 @@
+psi/T, eps and 2-adic tail congruence: ok
+vmax2 >= brute-force max: ok
+lll3(100) = 6, consistent with brute force

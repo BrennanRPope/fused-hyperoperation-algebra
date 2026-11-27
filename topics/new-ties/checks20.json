@@ -1,0 +1,64 @@
+{
+ "results": [
+  {
+   "name": "Q1 five-letter casework: cancelling patterns all of one shape",
+   "ok": true,
+   "detail": "3838 tie patterns, 12 cancel, all with tied terms 0, 1, 4 and a bare last N; four letters: 226 ties, 0 cancel"
+  },
+  {
+   "name": "Q2 T = 19^A3 (1 + 20^M u) and g = A3 + 1 + v19(M - mu(u))",
+   "ok": true,
+   "detail": "600 random words of the 12 patterns, T and mu computed independently, 0 exceptions"
+  },
+  {
+   "name": "Q3 the digit argument equals brute force",
+   "ok": true,
+   "detail": "63 fronts (free front gaps <= 2), every M <= 3000: exact max g agrees; largest 8"
+  },
+  {
+   "name": "Q4 the family N K l K K m^M N",
+   "ok": true,
+   "detail": "u = 220209 = -1 mod 361; first M with g = 4..8: [38, 5092, 25669, 1459200, 43552883] (checked on T itself); max g for M <= 10^100, 10^200, 10^300: {100: 80, 200: 159, 300: 236}"
+  },
+  {
+   "name": "Q5 Proposition 20.3: the maxima are reached, and no front with free front gaps <= 12 beats them",
+   "ok": true,
+   "detail": "1422 fronts (all with free front gaps <= 12, plus the fronts where adic20.json says each maximum is reached; the full run over all 13,517 fronts with gaps <= 30 is adic20.py all, about 4 min); max g for M <= 10^2, 10^100, 10^200, 10^300: {2: 9, 100: 87, 200: 164, 300: 242} (adic20.json: {2: 9, 100: 87, 200: 164, 300: 242}); largest k - ceil(log_19 B) = 4"
+  },
+  {
+   "name": "Q6 the two-logarithm 19-adic bound, applied",
+   "ok": true,
+   "detail": "constant 24*19/(18 (log 19)^4) = 0.3370; family: g <= 10770 for M <= 10^13, <= 652696 for M <= 10^100 (x 18 under the conservative reading); 337 fronts: u is a 19-unit, -1 mod 19, with a prime factor other than 2 and 5"
+  },
+  {
+   "name": "Q7 the size step survives a logarithmic g",
+   "ok": true,
+   "detail": "with g <= A3 + 1 + log_19 B + 4 (A3 <= 4), 19^g changes the other word's gap-sum bound by at most {100: 86, 200: 163, 300: 240} for B = 10^100, 10^200, 10^300: an additive amount, not a factor"
+  }
+ ],
+ "family": {
+  "u": 220209,
+  "first_M": [
+   38,
+   5092,
+   25669,
+   1459200,
+   43552883
+  ],
+  "maxima": {
+   "100": 80,
+   "200": 159,
+   "300": 236
+  }
+ },
+ "q5": {
+  "fronts": 1422,
+  "max_g": {
+   "2": 9,
+   "100": 87,
+   "200": 164,
+   "300": 242
+  },
+  "largest_excess_over_ceil_log19B": 4
+ }
+}
