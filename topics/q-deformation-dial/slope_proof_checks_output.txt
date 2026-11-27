@@ -1,0 +1,10 @@
+PASS P1 Bradley's letter is u^s n^-s h_s(nt) with h_s(x) = ((x/2)/sinh(x/2))^s e^((1 - s/2)x)  (s, n = 1..5)
+PASS P2 h_s(x) = 1 + (1 - s/2)x + O(x^2) (s = 1..6); h_2 = 1 - x^2/12 + ...; u = 1 - t/2 + O(t^2)
+PASS P3 |h_s(x) - 1 - (1 - s/2)x| <= C min(x, x^2) with C < 2 (s = 1..6); 0 < h_s <= 1 for s >= 2; h_1(x) <= 1 + x
+PASS P4a g(x) = (h_2(x) - 1)/x^2 is increasing, from -1/12 at 0 to 0 at infinity (so its Riemann sums converge)
+PASS P4b the integral of g over (0, infinity) is exactly -1/2: the 1/2 in the slope is this area
+PASS P4c Riemann sums t * sum_n g(nt) (tail beyond 80 added) -> -1/2: -0.499583, -0.499958, -0.499996
+PASS P5 the proof's hypothesis is the same as 'does not start with 2, 1' (all words of depth <= 4, letters <= 4)
+PASS P6 slope rule vs measured slope on 11 words of depth 1 to 3 (largest gap 1.4e-06)
+PASS P7 negative control: without the front-2 term every word starting with 2 misses by at least 0.3
+9/9 pass
