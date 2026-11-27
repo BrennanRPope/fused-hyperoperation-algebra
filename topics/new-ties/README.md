@@ -438,7 +438,8 @@ theorem, which exists for some analytic families); (2) the plane lower bound for
 
 Brennan asked to prove the true size off the tangent line, where round 3 had only a ceiling and numbers. This section
 does it. Everything here is DRAFT. Checks: `checks4.py` (13/13 pass, output in `checks4_output.txt`). Bounds:
-`offline.py`. Level-n cross-check: `dn_levels.py`. Pictures: `figures4.py`.
+`offline.py`. Level-n cross-check: `dn_levels.py`. Pictures: `figures4.py`. Lean: one more
+theorem, `two_law_threshold`, in `lean/NewTies.lean` (13 in all), compiled clean on Nov 27 in the shared library.
 
 ### 7.1 The answer in two sentences
 

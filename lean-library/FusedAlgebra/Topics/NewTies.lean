@@ -90,4 +90,12 @@ theorem fixes_wall (k d a w : Int) :
     so the laws sharing the wall w form the tangent line to the border at k = −2/w. -/
 theorem wall_line_tangent (k w : Int) : k * k * w * w + 4 * (k * w) + 4 = (k * w + 2) * (k * w + 2) := by grind
 
+/-! ## 8. Off the tangent line: the two-law threshold -/
+
+/-- Two laws with block weights x₁, x₂: the switching matrix [[0, x₁], [x₂, 0]] has spectral radius 1 exactly when
+    x₁·x₂ = 1, which is the same as x₁/(1+x₁) + x₂/(1+x₂) = 1 (cleared of fractions). -/
+theorem two_law_threshold (x₁ x₂ : Int) :
+    (1 + x₁) * (1 + x₂) = x₁ * (1 + x₂) + x₂ * (1 + x₁) ↔ x₁ * x₂ = 1 := by
+  constructor <;> intro h <;> grind
+
 end CircleOp.NewTies

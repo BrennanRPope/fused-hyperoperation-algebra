@@ -2566,6 +2566,7 @@ FusedAlgebra.Topics.NewTies	CircleOp.NewTies.lower_bound_key	propext, Classical.
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.moran_special	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.order_gap	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.same_centre_commute	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.two_law_threshold	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.union_is_stretch	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.wall_line_tangent	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.complex_point	propext, Classical.choice, Quot.sound

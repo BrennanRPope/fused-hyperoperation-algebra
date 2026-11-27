@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,717 theorems in 170 modules, Nov 27 ~02:35 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,718 theorems in 170 modules, Nov 27 ~02:45 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -73,3 +73,5 @@ Nov 27: `topics/new-ties/` added as DRAFT (new-ties: union fractal (dimension fr
 Nov 27: `topics/negative-odds/` added as DRAFT (the wall at −1, negative odds and the arrow of time; 37 checks, picked up by CI as checks.py; 22 Lean theorems compiled into the library as FusedAlgebra.Topics.NegativeOdds, namespace CircleOp.NegativeOdds, after renaming the old MultAdd names to CircleOp, library now 3,705 theorems in 169 modules).
 
 Nov 27: `topics/new-ties/` rounds 2 and 3 added as DRAFT (the union-fractal dimension as a theorem on the line, the plane, a learning-rule scenario, and plane laws on tangent lines of d = k²/4; 22 + 18 checks, picked up by CI as checks2.py and checks3.py; 12 Lean theorems compiled into the library as FusedAlgebra.Topics.NewTies, namespace CircleOp.NewTies, no proof changed; library now 3,717 theorems in 170 modules).
+
+Nov 27: `topics/new-ties/` round 4 added as DRAFT (section 7: off the tangent line the true dimension is min(1, δ), with proved brackets for δ; 13 checks, picked up by CI as checks4.py; one more Lean theorem, two_law_threshold, compiled into Topics.NewTies; library now 3,718 theorems in 170 modules).
