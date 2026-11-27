@@ -1,0 +1,91 @@
+{
+ "pass": 17,
+ "total": 17,
+ "checks": [
+  {
+   "id": "A1 fold under x+y+kxy = sum over corners S of k^(|S|-1) prod x_S, n = 1..6",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A1b same thing as (prod(1 + k x_i) - 1)/k",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A2 rank-only weights from one two-input law must be W_m = W_2^(m-1) (here W3 = W2^2)",
+   "pass": true,
+   "note": "re-check of cube-weights A2"
+  },
+  {
+   "id": "B1 Sugeno lambda-measure from singletons: order-free, and A,B disjoint -> g(AuB)=gA+gB+lam gA gB",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2 its Mobius transform (Harsanyi dividends) is lam^(|S|-1) prod g_i, n = 2..5",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C1 single-box stable Grothendieck G_1 = 1 - prod(1 - x_i) = the union rule (k = -1 fold)",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C2 every k: fold_k(x) = -G_1(-k x)/k, i.e. the beta-Grothendieck single box with beta = k",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "D1 weight-k quasi-shuffle (a u)*(b v) = a(u*bv) + b(au*v) + k[ab](u*v) is associative and commutative",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "D2 weight k = the Diehl-Ebrahimi-Fard-Tapia deformation with the linear f(t) = k t (a rescaling of weight 1)",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "D3 [x1]*...*[xn] at weight k: each merged block of m letters carries k^(m-1) (n = 1..5)",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "D4 one-letter part of the product of (1 + [x_i]) at weight k = the fold under x+y+kxy",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "E1 Psi_{L_k}, L_k = log(1+kt)/k, turns the weight-k quasi-shuffle into the shuffle (Hoffman's log)",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "E2 Psi_{(e^{kt}-1)/k} turns the shuffle into the weight-k quasi-shuffle (Hoffman's exp)",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "E3 they are inverse (Psi_f Psi_g = Psi_(f o g), Hoffman-Ihara Thm 3.1)",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "E4 the series in Hoffman's log is our flat coordinate L_k: L_k(x o_k y) = L_k x + L_k y",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "E5 Yamamoto's t-interpolation map is Psi_f with f = x/(1 - kx): a block of m letters gets k^(m-1); inverse f = x/(1 + kx)",
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "F1 controls: wrong k in the log, a wrong series, and a wrong corner weight each break the identity",
+   "pass": true,
+   "note": ""
+  }
+ ]
+}

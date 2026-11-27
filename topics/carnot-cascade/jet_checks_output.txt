@@ -1,0 +1,6 @@
+PASS J1 every heat-type bound has the same velocity layer tanh(beta/2); gamma sits only in the scale 1 + (gamma-1) eta
+PASS J2 the jet 1 + x N_g with N_g = (gamma-1) I + J multiplies to the S1 plane law (k, d) = (2gamma-2, -gamma(2-gamma))
+PASS J3 mixing stages with different gamma: jets commute (no turn) and the velocity is tanh(sum beta / 2)
+PASS J4 contrast: the same two end laws written as companion matrices do not commute, so the common J is a real choice
+
+4/4 pass

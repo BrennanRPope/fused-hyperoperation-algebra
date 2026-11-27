@@ -70,6 +70,31 @@ Carnot, Curzon–Ahlborn, both bounds and the symmetric heat-type case fit the R
 entropy-type low-dissipation rule away from symmetry, the ecological efficiency and Feynman's ratchet miss by 10⁻²
 or more (checks D). So the dial does not swallow everything: it picks out the heat-type family and Curzon–Ahlborn.
 
+## Fig 5. The same family as a jet (added Nov 27)
+
+Brennan asked that wherever velocity addition shows up, we consider the jet instead (the frame-dragging work is why:
+velocity alone got spin right only to first order). Here the upper bound tanh(β/2) uses velocity addition, so we wrote
+each bound as a two-layer jet, 1 + η·N with N = (γ − 1)·I + J and J² = I.
+
+![The heat-type family as jets](fig5-jet-view.png)
+
+*Fig 5. Left: the five heat-type bounds look different. Middle: the jet's velocity layer u = η*/(1 + (γ − 1)η*) is
+the same curve tanh(β/2) for every γ. Right: γ lives only in the scale layer s = 1 + (γ − 1)η*.*
+
+- **One velocity, many scales (J1):** every heat-type bound has the same velocity layer, η_C/(2 − η_C) = tanh(β/2).
+  The dissipation ratio γ changes only the scale layer. So the parabola of Fig 2 is one velocity addition carried
+  with different scales.
+- **It is the S1 dial point (J2):** N has trace 2γ − 2 and determinant −γ(2 − γ), exactly the (k, d) of Fig 2, and
+  multiplying jets gives the plane law.
+- **No turn (J3):** stages with different γ multiply as commuting jets, and the total velocity is tanh(Σβ/2).
+  In frame dragging the jet's extra layer was a turn, and it mattered. Here the extra layer is a scale, and the turn
+  is zero, because every N shares one J. Writing the same laws as companion matrices does not commute (J4), so the
+  shared J is the real content.
+
+Known vs ours: plane laws with the same discriminant are Möbius conjugates of one another, which is standard. Reading
+the Schmiedl–Seifert family as one velocity with a γ-dependent scale layer is ours. Checks: `jet_checks.py`,
+4 of 4 pass; figure from `jet_figure.py`.
+
 ## Is this a lead worth following?
 
 Not much further. The lead's own question gets a clean no: only Curzon–Ahlborn is a knob image. What turned up
