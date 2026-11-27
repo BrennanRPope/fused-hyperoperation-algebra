@@ -2572,6 +2572,10 @@ FusedAlgebra.Topics.NegativeOdds	CircleOp.NegativeOdds.two_hundred_twice	propext
 FusedAlgebra.Topics.NegativeOdds	CircleOp.NegativeOdds.wall_absorbs	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NegativeOdds	CircleOp.NegativeOdds.wall_absorbs_inter	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.alpha_dip	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.bz_alpha_sixteen	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.bz_b0_sixteen	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.bz_b1_sixteen	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.cap_ratio	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.circle_swell_ratio	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.copies_extreme	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.dual_exponent_mond	propext, Classical.choice, Quot.sound
@@ -2584,11 +2588,15 @@ FusedAlgebra.Topics.NewForce	CircleOp.NewForce.hold_turning_point	propext, Class
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.holder_pair	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.inflaton_tail_eps	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.klein_strength	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.light_bends_three_quarters	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.like_charges_cancel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.like_copies_far_repel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.matter_copy_size	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.one_circle_gamma	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.one_circle_third	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.opposite_charges_add	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.scalar_over_tensor	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewForce	CircleOp.NewForce.second_circle_cap	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.sphere_shape_factor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.strong_b0_five	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.su2_flavour_bound	propext, Classical.choice, Quot.sound
@@ -3447,6 +3455,7 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_layers	propext, C
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.shear_sq	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.strut_push	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.tphi_block	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.two_pn_miss	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.velocity_addition	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Stability	CircleOp.Stability.JH_antisymm	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.Stability	CircleOp.Stability.nilpotent_flow	propext, Classical.choice, Quot.sound
