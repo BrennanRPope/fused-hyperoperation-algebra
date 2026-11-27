@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,732 theorems in 171 modules, Nov 27 ~03:20 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,755 theorems in 172 modules, Nov 27 ~03:50 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -88,3 +88,4 @@ Nov 27: `topics/gravity-from-theory/spinning-river/` round 12 (two spinning bodi
 
 Nov 27: `topics/hat-primes/` added as DRAFT (the hat monotile against the primes; 18 checks, picked up by CI as checks.py; F(2n+3)² hats per supertile flagged possibly new pending a literature check, not a lead entry); 7 Lean theorems compiled into the library as FusedAlgebra.Topics.HatPrimes, namespace CircleOp.HatPrimes, no proof changed; library now 3,732 theorems in 171 modules.
 Nov 27: `topics/riemann/physical-model/` (the zeros under heat flow as a Burgers gas's poles; 13 checks) and `topics/riemann/dial-wick/` (the d → −d Wick turn into the shock picture; 15 checks) added as DRAFT; both picked up by CI as checks.py; no Lean; not leads.
+Nov 27: `topics/why-i/reflection-positivity/` added as DRAFT (reflection positivity holds on the real dial axis, fails off it, and the Wick turn gives (A4); 15 checks, picked up by CI as checks.py; includes paper-section-DRAFT.tex, the arXiv paper's main.tex unchanged); 23 Lean theorems compiled into the library as FusedAlgebra.Topics.ReflectionPositivity (namespace CircleOp.ReflectionPositivity; MultAdd, wAdd and wAdd_lift renamed to CircleOp, circK and circK_lift, no proof changed); library now 3,755 theorems in 172 modules.

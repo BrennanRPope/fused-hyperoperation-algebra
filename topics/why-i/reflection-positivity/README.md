@@ -1,6 +1,6 @@
 # Reflection positivity for the framework (Nov 27, 2026)
 
-DRAFT. Part of topics/why-i. Not pushed.
+DRAFT. Part of topics/why-i.
 
 **Answer.** Both, split by the dial. On the real dial axis, reflection positivity **must hold** for any chain of symmetric (reversible) slices. Mirroring through a site it holds at every real k. Mirroring across a slice it holds exactly when every slice multiplier 1 + kεE is nonnegative. With the framework's rewind slices that becomes, at every step size, exactly the positive-energy condition k·E ≤ 0. Off the real axis it **cannot hold**. For any Im k ≠ 0 the simplest pairing ⟨θF, F⟩ is not even a real number, and at Feynman's dial k = −i/ħ it is a negative number. Osterwalder–Schrader is the bridge between the two. Turning the dial from the real axis to the imaginary one brings in i as **one scalar shared by every Hamiltonian**, and that is exactly the paper's assumption (A4). So the answer strengthens the paper. For any theory that has a reflection-positive Euclidean side, (A4) is derived rather than assumed. Real quantum theory with all symmetric observables can't be the Wick rotation of any reflection-positive family.
 
@@ -10,7 +10,7 @@ The transfer-matrix criterion is known (references in §8). The dial reading, th
 
 ## 1. What the question means for us
 
-A chain of weighted-circle steps has a multiplier that is the product of the slice multipliers (Base: `wAdd_lift`):
+A chain of weighted-circle steps has a multiplier that is the product of the slice multipliers (Base: `circK_lift`):
 
   1 + k·(a_N ∘ₖ … ∘ₖ a₁) = (1 + k·a_N) ⋯ (1 + k·a₁).
 
@@ -107,5 +107,5 @@ Connes and Consani (arXiv:2006.13771) prove Weil positivity for the single archi
 - `rp.py`: slices, brute-force Gram matrices, and the violation measure.
 - `checks.py` → `checks_output.txt`: checks R1–R15, all pass.
 - `figures.py` → `figures/f1…f7`.
-- `lean/ReflectionPositivity.lean`: 23 theorems, core Lean, no sorry. Library path `FusedAlgebra/Topics/ReflectionPositivity.lean`. Add it to `build.sh` and `FusedAlgebra.lean` after `EIPi`.
+- `lean/ReflectionPositivity.lean`: 23 theorems, core Lean, no sorry. Library path `FusedAlgebra/Topics/ReflectionPositivity.lean`. Compiled clean on Nov 27 in the shared library as `FusedAlgebra.Topics.ReflectionPositivity` (namespace `CircleOp.ReflectionPositivity`; library now 3,755 theorems in 172 modules). The topic copy's `MultAdd`, `wAdd` and `wAdd_lift` were renamed to the library's `CircleOp`, `circK` and `circK_lift`; no proof changed.
 - `paper-section-DRAFT.tex`: a new section for `rotations-force-i/arxiv/main.tex`. main.tex itself is untouched.

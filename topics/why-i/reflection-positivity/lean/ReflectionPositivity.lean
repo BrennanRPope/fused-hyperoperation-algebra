@@ -20,7 +20,7 @@
 -/
 import FusedAlgebra.Base
 
-namespace MultAdd
+namespace CircleOp
 namespace ReflectionPositivity
 
 open Lean.Grind
@@ -37,8 +37,8 @@ theorem slices_lift (k a : Rat) (n : Nat) : 1 + k * wpow k a n = (1 + k * a) ^ n
   wpow_lift k a n
 
 /-- Two different slices: the multiplier of the pair is the product. -/
-theorem two_slices_lift (k a b : Rat) : 1 + k * wAdd k a b = (1 + k * a) * (1 + k * b) :=
-  wAdd_lift k a b
+theorem two_slices_lift (k a b : Rat) : 1 + k * circK k a b = (1 + k * a) * (1 + k * b) :=
+  circK_lift k a b
 
 /-! ## 2. Site reflection: a sum of squares -/
 
@@ -248,8 +248,8 @@ theorem shift_rotation_shared (h₁ h₂ c : Rat) :
 /-! ## 8. The identity's side of the wall -/
 
 theorem positive_side_closed (k a b : Rat) (ha : 0 < 1 + k * a) (hb : 0 < 1 + k * b) :
-    0 < 1 + k * wAdd k a b := by
-  rw [wAdd_lift]; exact Rat.mul_pos ha hb
+    0 < 1 + k * circK k a b := by
+  rw [circK_lift]; exact Rat.mul_pos ha hb
 
 /-- The ∘ₖ inverse −a/(1 + k·a) stays on the positive side: its multiplier is 1/(1 + k·a). -/
 theorem positive_side_inverse (k a : Rat) (ha : 0 < 1 + k * a) :
@@ -258,8 +258,8 @@ theorem positive_side_inverse (k a : Rat) (ha : 0 < 1 + k * a) :
   have e : 1 + k * (-a / (1 + k * a)) = (1 + k * a)⁻¹ := by grind
   exact ⟨e, by rw [e]; exact Rat.inv_pos.mpr ha⟩
 
-theorem wall_absorbs (k b : Rat) (hk : k ≠ 0) : wAdd k (-1 / k) b = -1 / k := by
-  unfold wAdd; grind
+theorem wall_absorbs (k b : Rat) (hk : k ≠ 0) : circK k (-1 / k) b = -1 / k := by
+  unfold circK; grind
 
 end ReflectionPositivity
-end MultAdd
+end CircleOp

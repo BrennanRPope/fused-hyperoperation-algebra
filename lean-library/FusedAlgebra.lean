@@ -169,6 +169,7 @@ import FusedAlgebra.Topics.EntropyKnots
 import FusedAlgebra.Topics.NegativeOdds
 import FusedAlgebra.Topics.NewTies
 import FusedAlgebra.Topics.HatPrimes
+import FusedAlgebra.Topics.ReflectionPositivity
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated

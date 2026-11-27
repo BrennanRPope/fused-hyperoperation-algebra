@@ -97,7 +97,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,732 theorems, 171 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,755 theorems, 172 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
 | Proof shape gallery | `topics/proof-gallery/` | [page](https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ) |
@@ -163,6 +163,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 | k as the Cayley–Klein curvature dial (κ = −k²/4) | `topics/why-i/cayley-klein/` | — |
 | The circle operation as κ-Poincaré momentum addition | `topics/why-i/kappa-poincare/` | — |
 | The dial map: the framework does not make gravity a forced step | `topics/why-i/dial-map/` | — |
+| DRAFT: reflection positivity on the dial: holds on the real axis (positive energy, k·E ≤ 0, for rewind slices), fails off it, and the Wick turn gives one i for every Hamiltonian, the paper's (A4). 15 checks; 23 Lean theorems in the library as Topics.ReflectionPositivity | `topics/why-i/reflection-positivity/` | — |
 | String theory: what it rests on, G as (coupling)² × length^(D−2), T-duality as the k = 1 inverse | `topics/string-theory/` | — |
 | Names and notation review before the 1.0 freeze (recommendations only) | `topics/names-review/` | — |
 | DRAFT: the four dials named from affine geometry, with lineage (homothety k, curvature dial d, ℓp exponent p, cubic form C) | `topics/affine-names/` | — |
