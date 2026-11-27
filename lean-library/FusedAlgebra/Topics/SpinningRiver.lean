@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 to 26 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 27 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -432,6 +432,44 @@ theorem generic_vertical_stiffness (r e α W β : K) (h2 : (2 : K) ≠ 0)
 D − 3(v − q)², with D = 1 − 3v² + 2qv. -/
 theorem equator_ratio_three_sources (v q : K) :
     (1 - 3 * q^2) + (-(6 * v^2)) + 8 * q * v = (1 - 3 * v^2 + 2 * q * v) - 3 * (v - q)^2 := by
+  grind
+
+/-- **Kerr–Newman is Newton's ring around the mass function plus one term**: Carter's Kerr–Newman radial function
+equals Newton's spinning ring with 2mr = 2Mr − Q², plus (2Mr − Q²)(K − a²), K = C − L² + (L − aE)². -/
+theorem kn_ring_plus_one_term (r a M Q E L C : K) :
+    (E * (r^2 + a^2) - a * L)^2 - (r^2 - 2 * M * r + a^2 + Q^2) * (r^2 + (C - L^2 + (L - a * E)^2)) =
+      (r^2 + a^2) * ((E^2 - 1) * r^2 + (2 * M * r - Q^2) - C) + a^2 * L^2
+        + (2 * M * r - Q^2) * ((C - L^2 + (L - a * E)^2) - a^2) := by
+  grind
+
+/-- **Round 26's equator split with charge** (multiplied through by D = r² + a², f = 2Mr − Q²): Newton's ring
+e r⁴ + f r² − (L² − e a²) r² + f a², the push −f e r² + f L² − f a²L²/D and the twist −2faL + f a²L²/D add up to
+e r⁴ + f(1 − e) r² − (L² − e a²) r² + f(L − a)². -/
+theorem kn_equator_split (r a M Q e L : K) :
+    (r^2 + a^2) * (e * r^4 + (2 * M * r - Q^2) * r^2 - (L^2 - e * a^2) * r^2 + (2 * M * r - Q^2) * a^2)
+        + ((r^2 + a^2) * (-((2 * M * r - Q^2) * e * r^2) + (2 * M * r - Q^2) * L^2)
+            - (2 * M * r - Q^2) * a^2 * L^2)
+        + ((r^2 + a^2) * (-(2 * (2 * M * r - Q^2) * a * L)) + (2 * M * r - Q^2) * a^2 * L^2) =
+      (r^2 + a^2) * (e * r^4 + (2 * M * r - Q^2) * (1 - e) * r^2 - (L^2 - e * a^2) * r^2
+        + (2 * M * r - Q^2) * (L - a)^2) := by
+  grind
+
+/-- **The stiffness law with a constant term** e r⁴ + 2αr³ − W r² + 2βr − γ (R = R' = 0 at r):
+r²·(−R''/2) = αr³ − 3βr + 4γ. Kerr–Newman per unit energy: α = M(1 − e), β = M(L − a)², γ = Q²(L − a)².
+(Round 23's spherical law with a²K → γ.) Needs 2 ≠ 0. -/
+theorem charged_radial_stiffness (r e α W β γ : K) (h2 : (2 : K) ≠ 0)
+    (h0 : e * r^4 + 2 * α * r^3 - W * r^2 + 2 * β * r - γ = 0)
+    (h1 : 4 * e * r^3 + 6 * α * r^2 - 2 * W * r + 2 * β = 0) :
+    r^2 * (W - 6 * e * r^2 - 6 * α * r) = α * r^3 - 3 * β * r + 4 * γ := by
+  have h : 2 * (r^2 * (W - 6 * e * r^2 - 6 * α * r) - (α * r^3 - 3 * β * r + 4 * γ)) = 0 := by grind
+  grind
+
+/-- **Kerr–Newman's equatorial law, three sources**: Newton's ring 1 − 3q² + s²(1 + q²)/V², the push
+−6v² + 3s² − s⁴/V² and the twist 8qV (v² = V² + s²) make Kerr's law in V plus one charge term. -/
+theorem kn_ratio_three_sources (v V q s : K) (hV : V ≠ 0) (hv : v^2 = V^2 + s^2) :
+    (1 - 3 * q^2 + s^2 * (1 + q^2) / V^2) + (-(6 * v^2) + 3 * s^2 - s^4 / V^2) + 8 * q * V =
+      (1 - 3 * V^2 + 2 * q * V) - 3 * (V - q)^2 + s^2 / V^2 * (1 + q^2 - s^2 - 3 * V^2) := by
+  rw [hv]
   grind
 
 end Field

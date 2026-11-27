@@ -78,6 +78,9 @@ How it got here:
 19. **The equator split three ways (Part 20):** same rule at the equator. The push brings L², the twist −2aL and
    Newton's ring a², and only all three make the square (L − a)² behind D ∓ 3(v − q)². So in Kerr's
    1 − 6v² + 8qv − 3q² the −3q² is Newton's ring, −6v² the push and +8qv the twist; the ±28 are half-squares.
+20. **Charge, piece by piece (Part 21):** charge sits in mass's slot in every piece (2Mr → 2Mr − Q², the mass less
+   the field's energy). Its leading term is Newton's pull of the field's energy (time part), its relativistic
+   terms are the push's, and the twist's 8qv becomes 8qV; checked against Kerr–Newman's own equations.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -102,7 +105,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**117/117 pass**, about 22 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**121/121 pass**, about 24 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2066,6 +2069,80 @@ cross term), but in the radial function they add exactly.
 - **Known:** Kerr's epicyclic frequencies (Okazaki, Kato & Fukue 1987; Kato 1990), the Kerr–Schild form (Kerr & Schild
   1965) and the river picture (Hamilton & Lisle 2008).
 
+## Part 21. Charge on the spinning hole, piece by piece (round 27)
+
+*DRAFT, round 27 (Nov 27, 2026). Script: `kn_split.py`. Checks: KN1–KN4.*
+
+Parts 19 and 20 found that, counted per unit energy, Kerr's orbits are Newton's spinning ring (the river's time part)
+plus the push plus the twist, in both planes. Part 6 put charge on the same shifted source and got the charged spinning
+black hole (Kerr–Newman). Brennan asked whether the charged hole's extra terms come from the push alone.
+
+**In one line:** no, and nothing new is needed. Charge sits in mass's slot in every piece. Its leading term is Newton's
+pull of the electric field's energy, in the time part. Its relativistic terms are the push's, and the twist's 8qv
+becomes 8qV, with V the charged hole's orbit speed.
+
+![Charge on the spinning hole, piece by piece](figures/fig35_charge_split.png)
+
+*Fig 35. (a) The one change charge makes: every piece feels the mass function M − Q²/(2r), the hole's mass less its
+field's energy outside r. (b) The radial wobble of circular equatorial orbits (a = 0.5M, Q = 0.6M) with each piece
+switched on. Red circles are Kerr–Newman's own equations solved numerically, with no river pieces. The dashed line is
+Kerr at the same spin with no charge. (c) Which piece gives each term.*
+
+### 21.1 One slot (KN1)
+
+In the Kerr–Schild shell the field 2Mr(k·p)² becomes (2Mr − Q²)(k·p)², and all pieces together give Kerr–Newman's
+radial function exactly. That replacement is M → M − Q²/(2r), the mass function Part 6 got from the field's energy in
+the jet river's Gauss law. So:
+
+- the time part alone is Newton's spinning ring around M − Q²/(2r) (times E², as in Part 19). Per unit energy it is
+  Newton's pull of the hole plus the pull of its field's energy, and nothing else;
+- Kerr–Newman = that ring + (2Mr − Q²)(K − a²), Part 18's one term with the same replacement;
+- the second-order terms still cancel exactly because the field is one square.
+
+### 21.2 At the equator (KN2)
+
+Part 20's split carries over with 2Mr → f = 2Mr − Q² in each piece:
+
+  Newton's ring   e r⁴ + f r² − (L² − e a²) r² + f a²
+  push            −f e r² + f L² − f a²L²/(r² + a²)
+  twist           −2f aL + f a²L²/(r² + a²)
+  sum             e r⁴ + f(1 − e) r² − (L² − e a²) r² + f (L − a)²
+
+The square (L − a)² closes as before. Charge adds one constant, γ = Q²(L − a)², and the radial stiffness becomes
+αr − 3β/r + 4γ/r², which is Part 18's law for spherical orbits with a²K replaced by γ.
+
+### 21.3 Which piece gives which term (KN3, KN4)
+
+With v² = M/r, q = a/r, s = Q/r and V² = M/r − Q²/r² (Newton's circular speed around the mass function), the
+equatorial ratio is exactly
+
+  (Ω_r/Ω_φ)² = [1 − 3q² + s²(1 + q²)/V²] + [−6v² + 3s² − s⁴/V²] + [8qV]
+                Newton's ring (time part)     push                     twist
+
+- The first bracket is exactly what the time part alone gives. Its charge term s²/V² = Q²/(Mr − Q²) is Newton's
+  pull of the field's energy.
+- At a = 0 the first two brackets are exactly Reissner–Nordström's law.
+- The push or the twist alone still make the ±28 q²v² half-squares, which cancel together.
+- Kerr–Newman's own equations in Boyer–Lindquist form, solved numerically for the circular orbit at 40 digits, give
+  the same ratio to 1e-17 (Fig 35b, red circles).
+
+The same law, written against Part 17's: D_V − 3(V − q)² + (s²/V²)(1 + q² − s² − 3V²), with D_V = 1 − 3V² + 2qV.
+
+### 21.4 What this means, on its own merits
+
+- **What it settles:** charge follows mass's rule. Its Newtonian part (the field's energy, pulling like mass) is in
+  the time part, and its relativistic parts are in the push and the twist. Every term of the charged hole's
+  equatorial law has one source, exactly.
+- **What it adds:** Part 6's field-energy mass function is now seen at work in orbits: it is the whole of charge's
+  effect on the river, entering each piece the same way.
+- **Lead?** It confirms the picture rather than opening a new question. The one honest open end it points to is the
+  same as before: the river's three pieces and the field's energy are read off the shift (Part 4), not derived.
+- **Ours, as far as a short search found:** the piece-by-piece split with charge, the three-source form of the
+  equatorial ratio, and charge's leading term as the time part's Newtonian pull of the field's energy. They follow in
+  a few lines from Parts 19 and 20, so parts may be known.
+- **Known:** Kerr–Newman (Newman et al. 1965), its Kerr–Schild form and Carter's separation (Carter 1968), the mass
+  function M − Q²/(2r), and the circular-orbit and epicyclic frequencies of Reissner–Nordström and Kerr–Newman.
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -2140,6 +2217,9 @@ cross term), but in the radial function they add exactly.
 - **The equator split three ways (Part 20):** the same rule at the equator. The push's L², the twist's −2aL and the
   ring's a² complete the square (L − a)², so each term of D − 3(v − q)² has one source: −3q² the ring, −6v² the push,
   +8qv the twist. Every term in Kerr's orbit equations now traces to a piece of the river, in both planes.
+- **Charge, piece by piece (Part 21):** charge follows mass's rule: one replacement 2Mr → 2Mr − Q² in every piece.
+  Its Newtonian part (the field's energy) is in the time part, its relativistic terms in the push, and the twist's
+  8qv becomes 8qV; the charged hole's equatorial law is the exact sum of the three.
 - **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule. The
   waves' back-push and the wave formula are put in from known results. 2PN is reached for circular orbits with the
   fourth rule (Part 10); 2.5PN and beyond, and the merger, are still out of reach.
@@ -2149,9 +2229,9 @@ cross term), but in the radial function they add exactly.
 
 ## Files
 
-- `checks.py`: 117 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 121 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2188,6 +2268,9 @@ cross term), but in the radial function they add exactly.
 - `equator_split.py`: Part 20, the equatorial radial function per unit energy split into Newton's ring, push and
   twist, the stiffness law for any quartic, and the rate ratio with each piece switched on; writes
   `equator_split.json` (about 10 seconds).
+- `kn_split.py`: Part 21, the shell with charge (2Mr → 2Mr − Q²) against Kerr–Newman, the equatorial split, the
+  rate ratio with each piece switched on, and a numerical check on Kerr–Newman's own equations; writes
+  `kn_split.json` (about 2 minutes).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2195,8 +2278,8 @@ cross term), but in the radial function they add exactly.
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the thirty-four figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`).
+- `figures.py`: the thirty-five figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2205,8 +2288,9 @@ cross term), but in the radial function they add exactly.
   without a Lean toolchain here. Round 25 adds `time_part_is_heavier_newton`, `one_term_split`,
   `river_square_cancels`, `clock_split`, `kerr_per_unit_energy`; round 26 adds `equator_split_per_unit_energy`,
   `square_from_three_sources`, `generic_radial_stiffness`, `generic_vertical_stiffness`,
-  `equator_ratio_three_sources` (written here, checked in sympy).
-  Rounds 18–26's theorems all compile in the library (as `Topics.SpinningRiver`; `ring`, `field_simp`,
+  `equator_ratio_three_sources`; round 27 adds `kn_ring_plus_one_term`, `kn_equator_split`,
+  `charged_radial_stiffness`, `kn_ratio_three_sources` (written here, checked in sympy).
+  Rounds 18–27's theorems all compile in the library (as `Topics.SpinningRiver`; `ring`, `field_simp`,
   `linear_combination` and `mul_left_cancel₀` written as `grind`). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
@@ -2268,3 +2352,4 @@ cross term), but in the radial function they add exactly.
 | Kerr's Mino-time equations as Newton's for the ring-shifted mass plus one mass term each (radial 2Mr(K − a²), polar none, clock and turning 2Mr·P/Δ); the stiffness law M(r ∓ 3K/r) + (4, −2)a²Q/r² for every spherical orbit; the polar factor (1 + m)(2K(m)/π)²·B; the exact (a/r)² parts (3/2)(1 + 10u − 8u²) and −(3/2 + 4u); the splits 15 = 9 + 6, −12 = 12 + 0 − 24, −4 = −21/2 + 13/2 | **known** for the radial and polar equations (Eleni & Apostolatos, arXiv:1912.03499, Eqs. 37–38, §5.4; the 2Mr(K − a²) form follows by subtraction); **close** for −R''/2 on spherical orbits (Teo 2021, Eqs. 3.2, 3.9, 4.1, another form) and the first terms of the (a/r)² parts (Sago & Fujita 2015, A5–A6); **ours** after round 24's check (PC1–PC4, Fig 32): the clock and turning terms, the K form with W and the sum rule, the polar factor, the −8u² term and exact termination, the splits. Ring as Euler's problem known (Vinti 1959; Israel 1970; Will 2009) |
 | the one term split into the river's time part (Newton's ring with mass M E²), push and twist; E·P and P·S cancelling because the pieces form one square; Kerr per unit energy as Newton's ring + push + twist; over the poles the push alone giving every relativistic change to the orbit's shape (1 − 6u, (3/2)(1 + 10u − 8u²)); the eccentric flight check | **ours** as far as a short search found (RT1–RT4); the Kerr–Schild form and its linearity in M (Kerr & Schild 1965), the river picture (Hamilton & Lisle 2008) and the normalization freedom of geodesics known |
 | the equator split per unit energy into Newton's ring, push and twist; the square (L − a)² closing from the push's L², the twist's −2aL and the ring's a²; each term of 1 − 6v² + 8qv − 3q² read as one piece (−3q² ring, −6v² push, +8qv twist), the ±28 as half-squares | **ours** as far as a short search found (EQ1–EQ3); Kerr's epicyclic frequencies (Okazaki, Kato & Fukue 1987; Kato 1990) known; the stiffness law for a quartic radial function elementary |
+| charge entering every piece of the shell in mass's slot (2Mr → 2Mr − Q², the mass less the field's energy outside r); the time part as Newton's pull of that mass function; Kerr–Newman's equatorial ratio as the exact sum [1 − 3q² + s²(1 + q²)/V²] + [−6v² + 3s² − s⁴/V²] + [8qV] by piece | **ours** as far as a short search found (KN1–KN4); Kerr–Newman, its Kerr–Schild form, Carter's separation, the mass function and the Reissner–Nordström and Kerr–Newman epicyclic frequencies known |

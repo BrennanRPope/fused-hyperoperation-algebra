@@ -29,6 +29,8 @@ RT: is the one mass term the river's push? Time part, push and twist shares, and
     (round 25, river_term.py -> river_term.json).
 EQ: the equator split three ways: which piece of the field gives each term of round 22's D - 3(v - q)^2
     (round 26, equator_split.py -> equator_split.json).
+KN: charge on the spinning hole: which piece of the river gives each charge term (round 27, kn_split.py ->
+    kn_split.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1645,6 +1647,39 @@ check("EQ3 the equatorial rate ratio (Omega_r/Omega_phi)^2 piece by piece (v^2 =
       {**ra_eq_["checks"], **{n_: ra_eq_[n_]["series_in_chi_v"] for n_ in eq_.CASES}})
 results["EQ_equator_split"] = {"split": sp_eq_, "stiffness": gs_eq_,
                                "ratios": {k_: v_ for k_, v_ in ra_eq_.items() if k_ != "curves"}}
+
+# ================================================================ KN1-KN4  charge on the spinning hole, piece by piece (round 27)
+import kn_split as kn_  # noqa: E402
+sp_kn_ = kn_.split()
+check("KN1 charge enters the river's shell in one slot: the field 2Mr (k.p)^2 becomes (2Mr - Q^2)(k.p)^2, and all "
+      "pieces together give Kerr-Newman's radial function. The time part alone is Newton's ring around the mass "
+      "function M - Q^2/(2r) (mass less the field's energy outside r, times E^2); Kerr-Newman = that ring + "
+      "(2Mr - Q^2)(K - a^2); the second-order part vanishes for every setting whose pieces form one square (symbolic, "
+      "exact, any orbit)",
+      all(sp_kn_[k_] for k_ in ("shell_with_all_pieces_is_kerr_newman", "time_part_is_newton_ring_around_mass_function",
+                                 "kerr_newman_is_ring_plus_one_term", "second_order_vanishes_with_all_pieces",
+                                 "second_order_vanishes_for_any_square")),
+      sp_kn_)
+gs_kn_ = kn_.generic_stiffness()
+check("KN2 at the equator, per unit energy, round 26's split carries over with 2Mr -> 2Mr - Q^2 in Newton's ring, "
+      "push and twist: R = e r^4 + 2 alpha r^3 - W r^2 + 2 beta r - gamma with alpha = M(1 - e), beta = M(L - a)^2, "
+      "gamma = Q^2 (L - a)^2, and the radial stiffness is alpha r - 3 beta/r + 4 gamma/r^2 (symbolic, exact)",
+      all(sp_kn_[k_] for k_ in ("equator_ring_is_time_part", "equator_ring_plus_push", "equator_ring_plus_twist",
+                                 "equator_all_three", "equator_square_form", "equator_coefficients_alpha_beta_gamma"))
+      and all(gs_kn_.values()), gs_kn_)
+ra_kn_ = kn_.ratios()
+check("KN3 the equatorial rate ratio (Omega_r/Omega_phi)^2 of Kerr-Newman (v^2 = M/r, q = a/r, s = Q/r, "
+      "V^2 = v^2 - s^2) is exactly [1 - 3q^2 + s^2(1 + q^2)/V^2] (Newton's ring, what the time part alone gives) + "
+      "[-6v^2 + 3s^2 - s^4/V^2] (push) + [8qV] (twist); at a = 0 it is Reissner-Nordstrom's; the push or the twist "
+      "alone still make the +-28 q^2 v^2 half-squares (40-digit checks at 12 random points, series to v^8)",
+      all(ra_kn_["checks"].values()), ra_kn_["checks"])
+cn_kn_ = kn_.carter_numeric()
+check("KN4 independent of the river's pieces: Kerr-Newman's own Carter equations in Boyer-Lindquist form, circular "
+      "orbits found numerically at 40 digits (a = 0.5M, Q = 0.6M, r = 5M, 8M, 13M), give the three-piece ratio to "
+      "1e-15",
+      all(c_["diff"] < 1e-15 for c_ in cn_kn_), cn_kn_)
+results["KN_charge_split"] = {"split": sp_kn_, "stiffness": gs_kn_,
+                              "ratios": {k_: v_ for k_, v_ in ra_kn_.items() if k_ != "curves"}, "carter": cn_kn_}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

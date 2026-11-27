@@ -1751,6 +1751,70 @@ def fig34():
     save(fig, "fig34_equator_split.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34):
+# ---------------------------------------------------------------- fig35 charge on the spinning hole, piece by piece (round 27)
+def fig35():
+    knd = json.load(open(os.path.join(HERE, "kn_split.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(18.5, 6.9), gridspec_kw={"width_ratios": [1.0, 1.15, 1.05]})
+    # (a) the one slot: the mass function M - Q^2/(2r) that every piece now carries
+    ax = axs[0]
+    Qv = knd["ratios"]["curves"]["Q"]
+    rr = np.linspace(0.6, 12, 400)
+    mf = 1 - Qv**2/(2*rr)
+    ax.axhline(1, color="k", lw=1.6, ls="--", label="M (the hole's whole mass)")
+    ax.plot(rr, mf, color=BLUE, lw=2.6, label=f"M − Q²/(2r)  (Q = {Qv}M)")
+    ax.fill_between(rr, mf, 1, color=GREEN, alpha=0.25, label="the electric field's energy outside r")
+    ax.set_xlabel("r / M"); ax.set_ylabel("mass felt at radius r  (units of M)")
+    ax.set_ylim(0.6, 1.08)
+    ax.text(5.2, 0.73, "charge enters every piece in mass's slot:\n2Mr (k·p)²  →  (2Mr − Q²)(k·p)²\n\n"
+            "time part:  Newton's pull of the hole\n                + its field's energy\n"
+            "push, twist:  the same 2Mr → 2Mr − Q²", fontsize=9.6, bbox=dict(fc="white", ec=GREY))
+    ax.legend(fontsize=9, loc="lower right")
+    ax.set_title("(a) Charge doesn't add a new piece: each piece\nfeels the mass less the field's energy outside r")
+    # (b) the radial wobble rate along circular equatorial orbits
+    ax = axs[1]
+    cv = knd["ratios"]["curves"]
+    rr = np.array(cv["r"])
+    sty = [("Newton's ring (time part)", BLUE, "-", "time part alone:  1 − 3q² + s²(1 + q²)/V²  (exact)"),
+           ("ring + push", ORANGE, "-", "ring + push"),
+           ("ring + twist", PURPLE, "-", "ring + twist"),
+           ("Kerr-Newman (all)", "k", "-", "all three (Kerr–Newman)"),
+           ("Kerr (Q = 0)", GREY, "--", "Kerr, same spin, no charge")]
+    for key, col, ls, lab in sty:
+        ax.plot(rr, cv[key], color=col, ls=ls, lw=2.6 if key == "Kerr-Newman (all)" else 2.0, label=lab)
+    for c in knd["carter_numeric"]:
+        ax.plot(c["r"], c["ratio_carter"], "o", ms=9, mfc="none", mec=RED, mew=1.8)
+    ax.plot([], [], "o", ms=9, mfc="none", mec=RED, mew=1.8, label="Kerr–Newman's own equations (numerical)")
+    ax.axhline(1, color=GREY, lw=0.7, ls=":")
+    ax.set_xlabel(f"orbit radius r / M   (a = {cv['a']}M, Q = {cv['Q']}M, prograde)")
+    ax.set_ylabel("(Ω_r / Ω_φ)²   (radial wobble rate / orbit rate, squared)")
+    ax.set_title("(b) The radial wobble of a circular equatorial orbit\naround a charged spinning hole, piece by piece")
+    ax.legend(fontsize=8.6, loc="lower right")
+    # (c) which piece gives which term
+    ax = axs[2]; ax.axis("off")
+    rows = [("+s²(1+q²)/V²", BLUE, "time part: Newton's pull of the field's\nenergy (with Newton's ring 1 − 3q²)"),
+            ("+3s² − s⁴/V²", ORANGE, "push: charge's relativistic terms\n(with Schwarzschild's −6v²)"),
+            ("8qV", PURPLE, "twist: frame dragging at the charged\nhole's orbit speed V (Kerr: 8qv)"),
+            ("±28 q²v²", GREY, "half-squares again: push alone +28,\ntwist alone −28; they cancel together")]
+    for i, (name, col, what) in enumerate(rows):
+        y0 = 0.90 - i*0.18
+        ax.add_patch(FancyBboxPatch((0.0, y0 - 0.07), 0.31, 0.12, boxstyle="round,pad=0.01", fc=col, ec="none",
+                                    alpha=0.85, transform=ax.transAxes))
+        ax.text(0.155, y0 - 0.01, name, ha="center", va="center", color="white", fontweight="bold", fontsize=11.5,
+                transform=ax.transAxes)
+        ax.text(0.35, y0 - 0.01, what, va="center", fontsize=10, transform=ax.transAxes)
+    ax.text(0.0, 0.0, "v² = M/r,  q = a/r,  s = Q/r,  V² = M/r − Q²/r²\n"
+            "(Ω_r/Ω_φ)² = [1 − 3q² + s²(1 + q²)/V²]\n"
+            "               + [−6v² + 3s² − s⁴/V²]  +  [8qV]   exactly\n"
+            "at a = 0 the first two give Reissner–Nordström's law",
+            fontsize=10, transform=ax.transAxes, bbox=dict(fc="white", ec=GREY))
+    ax.set_title("(c) Which piece gives each term\nof the charged hole's law")
+    fig.suptitle("Round 27: charge rides in mass's slot in every piece of the river; its leading term is Newton's "
+                 "pull of the field's energy (time part),\nits relativistic terms are the push's, and the twist's "
+                 "8qv becomes 8qV", fontsize=12.5)
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    save(fig, "fig35_charge_split.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35):
     f()
 print("figures:", sorted(os.listdir(FIG)))

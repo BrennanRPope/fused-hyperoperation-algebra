@@ -7322,5 +7322,96 @@
         "twist_series_head": true
       }
     }
+  },
+  "KN1 charge enters the river's shell in one slot: the field 2Mr (k.p)^2 becomes (2Mr - Q^2)(k.p)^2, and all pieces together give Kerr-Newman's radial function. The time part alone is Newton's ring around the mass function M - Q^2/(2r) (mass less the field's energy outside r, times E^2); Kerr-Newman = that ring + (2Mr - Q^2)(K - a^2); the second-order part vanishes for every setting whose pieces form one square (symbolic, exact, any orbit)": {
+    "pass": true,
+    "detail": "{'shell_with_all_pieces_is_kerr_newman': True, 'time_part_is_newton_ring_around_mass_function': True, 'kerr_newman_is_ring_plus_one_term': True, 'second_order_vanishes_with_all_pieces': True, 'second_order_vanishes_for_any_square': True, 'equator_ring_is_time_part': True, 'equator_ring_plus_push': True, 'equator_ring_plus_twist': True, 'equator_all_three': True, 'equator_square_form': True, 'equator_coefficients_alpha_beta_gamma': True}"
+  },
+  "KN2 at the equator, per unit energy, round 26's split carries over with 2Mr -> 2Mr - Q^2 in Newton's ring, push and twist: R = e r^4 + 2 alpha r^3 - W r^2 + 2 beta r - gamma with alpha = M(1 - e), beta = M(L - a)^2, gamma = Q^2 (L - a)^2, and the radial stiffness is alpha r - 3 beta/r + 4 gamma/r^2 (symbolic, exact)": {
+    "pass": true,
+    "detail": "{'radial': True, 'W': True}"
+  },
+  "KN3 the equatorial rate ratio (Omega_r/Omega_phi)^2 of Kerr-Newman (v^2 = M/r, q = a/r, s = Q/r, V^2 = v^2 - s^2) is exactly [1 - 3q^2 + s^2(1 + q^2)/V^2] (Newton's ring, what the time part alone gives) + [-6v^2 + 3s^2 - s^4/V^2] (push) + [8qV] (twist); at a = 0 it is Reissner-Nordstrom's; the push or the twist alone still make the +-28 q^2 v^2 half-squares (40-digit checks at 12 random points, series to v^8)": {
+    "pass": true,
+    "detail": "{'ring_exact': True, 'kerr_newman_is_ring_plus_push_plus_twist': True, 'reissner_nordstrom_at_a0': True, 'kerr_form_plus_charge_term': True, 'half_squares_pm28': True}"
+  },
+  "KN4 independent of the river's pieces: Kerr-Newman's own Carter equations in Boyer-Lindquist form, circular orbits found numerically at 40 digits (a = 0.5M, Q = 0.6M, r = 5M, 8M, 13M), give the three-piece ratio to 1e-15": {
+    "pass": true,
+    "detail": "[{'r': 5.0, 'E': 0.9162111177131553, 'L': 2.7630738452643406, 'ratio_carter': 0.23509537524281515, 'ratio_three_pieces': 0.23509537524281515, 'diff': 4.1430064946479656e-18}, {'r': 8.0, 'E': 0.9429061710759503, 'L': 3.2181575928072452, 'ratio_carter': 0.4749491176418379, 'ratio_three_pieces': 0.4749491176418379, 'diff': 2.286903584690449e-18}, {'r': 13.0, 'E': 0.96347105430554, 'L': 3.9093819988484335, 'ratio_carter': 0.6530252621038641, 'ratio_three_pieces': 0.6530252621038641, 'diff': 1.2732281629407077e-18}]"
+  },
+  "KN_charge_split": {
+    "split": {
+      "shell_with_all_pieces_is_kerr_newman": true,
+      "time_part_is_newton_ring_around_mass_function": true,
+      "kerr_newman_is_ring_plus_one_term": true,
+      "second_order_vanishes_with_all_pieces": true,
+      "second_order_vanishes_for_any_square": true,
+      "equator_ring_is_time_part": true,
+      "equator_ring_plus_push": true,
+      "equator_ring_plus_twist": true,
+      "equator_all_three": true,
+      "equator_square_form": true,
+      "equator_coefficients_alpha_beta_gamma": true
+    },
+    "stiffness": {
+      "radial": true,
+      "W": true
+    },
+    "ratios": {
+      "Newton's ring (time part)": {
+        "L_circular": "(q**2 + 1)*sqrt(-s**2 + v**2)",
+        "series_q=chi v^2, s=lambda v^2": "lambda**2*v**2 + v**8*(chi**2*lambda**4 + lambda**8) + v**6*(chi**2*lambda**2 + lambda**6) + v**4*(-3*chi**2 + lambda**4) + 1"
+      },
+      "ring + push": {
+        "L_circular": "(q**2 + 1)*sqrt(-q**4*s**2 + q**4*v**2 - q**2*s**4 + 4*q**2*s**2*v**2 - 2*q**2*s**2 - 4*q**2*v**4 + 2*q**2*v**2 - s**2 + v**2)/(q**2 + s**2 - 2*v**2 + 1)",
+        "series_q=chi v^2, s=lambda v^2": "v**8*(chi**2*lambda**4 - 8*chi**2*lambda**2 - 24*chi**2 + lambda**8 - lambda**6) + v**6*(chi**2*lambda**2 + 28*chi**2 + lambda**6 - lambda**4) + v**4*(-3*chi**2 + lambda**4 + 3*lambda**2) + v**2*(lambda**2 - 6) + 1"
+      },
+      "ring + twist": {
+        "L_circular": "(q**2 + 1)*(q*(q**2*s**2 - q**2*v**2 + 2*s**2 - 3*v**2) + sqrt(-q**4*s**2 + q**4*v**2 + q**2*s**4 - 4*q**2*s**2*v**2 - 2*q**2*s**2 + 4*q**2*v**4 + 2*q**2*v**2 - s**2 + v**2))/(q**4*s**2 - q**4*v**2 + 3*q**2*s**2 - 5*q**2*v**2 + q**2 + 1)",
+        "series_q=chi v^2, s=lambda v^2": "-chi*lambda**4*v**7 - 4*chi*lambda**2*v**5 + 8*chi*v**3 + lambda**2*v**2 + v**8*(chi**2*lambda**4 + 8*chi**2*lambda**2 + lambda**8) + v**6*(chi**2*lambda**2 - 28*chi**2 + lambda**6) + v**4*(-3*chi**2 + lambda**4) + 1"
+      },
+      "Kerr-Newman (all)": {
+        "L_circular": "(q*(q**2*s**2 - q**2*v**2 + s**4 - 4*s**2*v**2 + 2*s**2 + 4*v**4 - 3*v**2) + sqrt(-s**2 + v**2)*(q**2 + s**2 - 2*v**2 + 1))/(q**2*s**2 - q**2*v**2 + s**4 - 4*s**2*v**2 + 2*s**2 + 4*v**4 - 4*v**2 + 1)",
+        "series_q=chi v^2, s=lambda v^2": "-chi*lambda**4*v**7 - 4*chi*lambda**2*v**5 + 8*chi*v**3 + v**8*(chi**2*lambda**4 + lambda**8 - lambda**6) + v**6*(chi**2*lambda**2 + lambda**6 - lambda**4) + v**4*(-3*chi**2 + lambda**4 + 3*lambda**2) + v**2*(lambda**2 - 6) + 1"
+      },
+      "checks": {
+        "ring_exact": true,
+        "kerr_newman_is_ring_plus_push_plus_twist": true,
+        "reissner_nordstrom_at_a0": true,
+        "kerr_form_plus_charge_term": true,
+        "half_squares_pm28": true
+      },
+      "exact_law": {
+        "ring": "-3*q**2 + s**2*(q**2 + 1)/(-s**2 + v**2) + 1",
+        "push": "-s**4/(-s**2 + v**2) + 3*s**2 - 6*v**2",
+        "twist": "8*q*sqrt(-s**2 + v**2)"
+      }
+    },
+    "carter": [
+      {
+        "r": 5.0,
+        "E": 0.9162111177131553,
+        "L": 2.7630738452643406,
+        "ratio_carter": 0.23509537524281515,
+        "ratio_three_pieces": 0.23509537524281515,
+        "diff": 4.1430064946479656e-18
+      },
+      {
+        "r": 8.0,
+        "E": 0.9429061710759503,
+        "L": 3.2181575928072452,
+        "ratio_carter": 0.4749491176418379,
+        "ratio_three_pieces": 0.4749491176418379,
+        "diff": 2.286903584690449e-18
+      },
+      {
+        "r": 13.0,
+        "E": 0.96347105430554,
+        "L": 3.9093819988484335,
+        "ratio_carter": 0.6530252621038641,
+        "ratio_three_pieces": 0.6530252621038641,
+        "diff": 1.2732281629407077e-18
+      }
+    ]
   }
 }
