@@ -1,0 +1,26 @@
+PASS A1 superstable windows of period 2..9 number 1,1,2,3,5,9,16,28 (65) {2: 1, 4: 2, 8: 16, 6: 5, 9: 28, 7: 9, 5: 3, 3: 1}
+PASS A2 entropy forced by the orbit pattern = map entropy at its window (all 65) max dev 5.0e-15
+PASS A3 e^-h is a zero of the kneading determinant and of det(I - tA) for every window 
+PASS A4 the log(phi) plateau holds the period-3 window and its period-6 and period-9 sub-windows, all inside [1+sqrt8, 3.8568] [(3, 3.83187), (6, 3.84457), (9, 3.85368)]
+PASS A5 at r = 3.835 the stable and unstable period-3 orbits have the same pattern (same 1D braid type) patterns [[1, 2, 0], [1, 2, 0]], multipliers [2.321, -0.395]
+PASS B1 braid entropy test: sigma1 sigma2^-1 gives log(phi^2) 
+PASS B2 braid entropy test: sigma1^2 sigma2^-1 gives log(2+sqrt3) 
+PASS B3 braid entropy test: sigma1 sigma2 (a rotation) gives 0 
+PASS B4 braid entropy <= pattern entropy for all 65 windows (Thurston-Nielsen floor below the interval floor) 
+PASS B5 of the 62 positive-entropy windows: braid keeps all the entropy in 8, part in 31, none in 23 8 / 31 / 23
+PASS B6 the period-3 window orbit braids as a rotation: braid entropy 0 (period 3 forces chaos on a line, not in the plane) braid [-2, -1]
+PASS B7 every rotation pattern (1,2,...,n-1,0) braids with entropy 0 8 windows
+PASS B8 the period-5 window [1,3,4,2,0] braid has the smallest 5-strand dilatation 1.72208 (Ham-Song 2007) h=0.54353 log(lam)=0.54354
+PASS B9 the period-7 window [1,3,4,5,6,2,0] braid reaches the smallest 7-strand dilatation 1.46557 (Lanneau-Thiffeault 2011) h=0.38243 log(lam)=0.38225
+PASS B10 along r, braid entropy jumps up and down (19 drops > 0.05) while map entropy only rises 
+PASS C1 path P_m (Temperley-Lieb generators): d^(m+1) mu(1/d^2) = U_(m+1)(d/2), m = 1..8 
+PASS C2 path P_m: growth = Beraha number 4cos^2(pi/(m+2)), all zeros real, m = 1..8 
+PASS C3 cycle C_m: growth = 4cos^2(pi/(2m)), m = 3..8 
+PASS C4 affine centre patterns with growth below 4: [1,1],[2,1],[1,1,1],[2,2],[2,1,1] are Beraha B4,B5,B6,B8,B12 
+PASS C5 but [3,1] (the claw) and [4,1] are not Beraha and have complex zeros (Chudnovsky-Seymour: claw-free => real) growth 3.14790, 3.62966
+PASS C6 strand maps (affine maps on neighbouring coordinate pairs) give exactly the trace counts of the path, m = 2..6 {'2': [2, 4, 8, 16, 32], '3': [3, 8, 21, 55, 144], '4': [4, 13, 40, 121, 364], '5': [5, 19, 66, 221, 728], '6': [6, 26, 100, 364, 1288]}
+PASS C7 positive braid words: Burau products at t = 3/7 match Deligne counts for B3+, B4+, B5+ 
+PASS C8 positive 3-braids grow like phi (entropy log phi), positive 4-braids like 2.08679 
+PASS C9 braid relation lowers growth: B3+ 1.618 < 2 (free pair), B4+ 2.087 < 2.618 (path P3), B5+ 2.395 < 3 (path P4) 
+PASS C10 mu_P3(t^2) = (1 - t - t^2)(1 + t - t^2): the trace monoid of three maps (two sharing a centre) is the period-3 window squared 
+25 of 25 pass

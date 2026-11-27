@@ -165,6 +165,7 @@ import FusedAlgebra.Topics.EllipticPendulum
 import FusedAlgebra.Topics.ChaosComposition
 import FusedAlgebra.Topics.RiemannUnified
 import FusedAlgebra.Topics.RiemannRound10
+import FusedAlgebra.Topics.EntropyKnots
 import FusedAlgebra.Topics.QuantumAction
 import FusedAlgebra.Foundations.RungOneLineage
 import FusedAlgebra.Deprecated
