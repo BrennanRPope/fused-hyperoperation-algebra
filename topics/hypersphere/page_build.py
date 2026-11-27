@@ -9,6 +9,7 @@ import os
 if os.path.exists(src + "/orbits/README.md"):
     om = open(src + "/orbits/README.md").read()
     om = re.sub(r'!\[([^\]]*)\]\(figures/', r'![\1](orbits/figures/', om)
+    om = om.replace('](../figures/', '](figures/')
     om = om.replace("\n## ", "\n### ")
     om = re.sub(r'^# DRAFT · ', '## Orbits section · ', om)
     md = md + "\n\n---\n\n" + om

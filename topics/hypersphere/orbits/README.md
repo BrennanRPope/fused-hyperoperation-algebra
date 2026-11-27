@@ -10,7 +10,8 @@ is the reading d − k²/4, which is d itself at k = 0. Relativity's velocity sp
 
 Checks: `checks_orbits.py` → `checks_orbits_output.txt`, **23 of 23 pass**, and `six/checks_six.py` →
 `six/checks_six_output.txt`, **11 of 11 pass**, and `twov/checks_twov.py` → `twov/checks_twov_output.txt`, **8 of 8 pass**, and
-`dcopy/checks_dcopy.py` → `dcopy/checks_dcopy_output.txt`, **11 of 11 pass** (numpy, scipy; real orbit simulations, not
+`dcopy/checks_dcopy.py` → `dcopy/checks_dcopy_output.txt`, **11 of 11 pass**, and
+`../division-algebras/magic/checks_magic.py`, **7 of 7 pass** (section 8) (numpy, scipy; real orbit simulations, not
 formulas fed back). Pictures: `figures_orbits.py` → `figures/`. Lean: `../lean/Hypersphere.lean` (§5–§9, 33 theorems),
 compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, no statement changed). Colour key as before: **orange = known, blue = ours**.
 
@@ -26,6 +27,9 @@ compiled in the shared library as `FusedAlgebra.Topics.Hypersphere` (no sorry, n
    times a disc at v. The 6 reads two ways that agree (section 6): **2 + 1 + 3** in the clock-warp picture (space,
    special relativity, gravity pulling on energy) and **2 + 2²** in string theory's double copy, where gravity's
    coupling is the electric one squared and the 2 in 2v is the 2 of (E + p)². Mercury's 42.98″ follows.
+4. **Across string theory's magic square of gravity theories (section 8)** the turn counts the bodies' charges, not
+   the algebras: BPS bodies turn n − 1 per lap and neutral ones 2(n − 1), for n = 1 to 4 charges. GR's 6 is the n = 4
+   neutral case; N = 8's known zero is the n = 1 BPS case.
 
 **Does it open a lead?** Yes. For the electric force it turns the Coulomb orbit and Dirac's fine structure into one
 swap-rule area. For gravity the 6 is no longer put in by hand: it is an exact product of the same two twists the
@@ -251,6 +255,47 @@ because it is where the double copy is exact and linear.
   2018–19). That fits the table in section 4: scalar forces push the coefficient negative (Nordström −1), and the
   budget can sum to zero. So the 6 is specific to pure general relativity.
 
+## 8. Across the magic square: the turn counts charges, not algebras
+
+![Magic square orbits](../figures/figD3-orbit-turning-across-the-magic-square.png)
+
+*Figure D3. A: turn per lap for bodies carrying n charges. B: the 4-dimensional magic square, where each gravity
+theory is two gauge theories (over C, H or O) multiplied. C: each gauge-theory orbit next to its gravity double.*
+
+Brennan asked how the 1, 2, 4, 8 result could extend string-theory work, and said yes to the pick: work out how far
+orbits turn in each cell of the **magic square**, the table of gravity theories made by multiplying two gauge
+theories built on C, H or O (Borsten, Duff, Hughes and Nagy 2013; Anastasiou and others 2017). Checks:
+`../division-algebras/magic/checks_magic.py`, **7 of 7 pass**: the black holes are verified as exact solutions, then a
+small body is flown around each one (exact equations, plus simulated orbits). Turn per lap is in units of π K²/L²,
+where K is the Newtonian pull, so plain GR gives 6 and Sommerfeld's electric orbit gives 1.
+
+**The result: the turn is set by how many charges the bodies carry, not by which algebras built the theory.**
+In these theories a black hole can carry n = 1, 2, 3 or 4 charges, which fixes how hard the dilaton (the scalar
+partner of the graviton) pulls on it: a = √3, 1, 1/√3, 0, with n = 4/(1 + a²).
+
+- **BPS bodies of opposite charge** (the most supersymmetric ones, which feel no force from their own kind) turn by
+  **n − 1** per lap: 0, 1, 2, 3. The n = 1 case is the half-BPS black hole of N = 8 supergravity, and its 0 matches
+  Caron-Huot and Zahraee 2018 (M4, M5).
+- **Neutral masses** that the dilaton pulls with the same strength turn by **2(n − 1)**: 6, 4, 2, 0. Plain GR is
+  n = 4 (no dilaton pull): 2 × 3 = 6, the same 6 as 2 + 2² in section 6. The double copy of a gauge charge has
+  a = 1, so it turns by 2, in every cell of the square (M6).
+- **The single copy agrees in shape:** in gauge theory a vector adds +1 and a scalar −1 per unit of coupling squared,
+  so Maxwell gives 1 and N = 4's BPS particles give 0 (Caron-Huot and Henn 2014) (M7).
+
+**Does the 2 + 2² split follow the two algebras? No.** The algebras only decide which charges a body *can* carry.
+C ⊗ C (N = 2) has a single vector, so its charged black holes are Reissner–Nordström (a = 0), with BPS turn 3. In
+N = 4 theories such as H ⊗ H, the half-BPS bodies have a = √3 or 1, so they turn 0 or 1. O ⊗ O (N = 8) holds all
+four, so 0 to 3 (which a embed where: Khuri and Ortín 1995). The other cells are not worked out here.
+
+**Is it new?** The ingredients are known: the black holes (Gibbons–Maeda, Garfinkle–Horowitz–Strominger), their
+supersymmetry (Khuri–Ortín), the two-body dynamics of this theory at first order (Julié 2017; Khalil and others 2018)
+and the N = 8 zero. I have not found the compact laws n − 1 and 2(n − 1), or the link from the n = 4 case to GR's 6,
+written down, though they may follow from those papers' formulas.
+
+**Does it open a lead?** A modest one. It explains why N = 8's zero is special: it is the n = 1 end of a straight line,
+not a magic cancellation of N = 8 alone. Worth testing next: two black holes with different charge directions (the
+case Caron-Huot and Zahraee also covered), to see whether the line n − 1 becomes a rule about the angle between charges.
+
 ## Known vs ours
 
 - **Known:** Fock's 3-sphere and SO(4) (Fock 1935, Pauli 1926, Bargmann 1936), Moser regularization (1970),
@@ -288,6 +333,13 @@ because it is where the double copy is exact and linear.
 `numcheck.py`, `figure_dcopy.py`), and `../lean/Hypersphere.lean`.
 
 ## References
+
+Magic square and supersymmetric black holes (section 8): L. Borsten, M. J. Duff, L. J. Hughes, S. Nagy, PRL 112,
+131601 (2014), arXiv:1301.4176; A. Anastasiou and others, "The Mile High Magic Pyramid", arXiv:1711.08476;
+M. Khuri and T. Ortín, arXiv:hep-th/9512177; G. Gibbons and K. Maeda 1988; D. Garfinkle, G. Horowitz, A. Strominger
+1991; S. Caron-Huot and Z. Zahraee, JHEP 07 (2019) 179, arXiv:1810.04694; S. Caron-Huot and J. Henn, PRL 113, 161601
+(2014); W. Goldberger and A. Ridgway 2017, arXiv:1611.03493; F.-L. Julié, arXiv:1711.10769; M. Khalil and others,
+arXiv:1809.03109.
 
 V. Fock, Z. Phys. 98, 145 (1935). W. Pauli, Z. Phys. 36, 336 (1926). V. Bargmann, Z. Phys. 99, 576 (1936).
 J. Moser, Comm. Pure Appl. Math. 23, 609 (1970). W. R. Hamilton, Proc. R. Irish Acad. 3, 344 (1847).

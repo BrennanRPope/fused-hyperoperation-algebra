@@ -1,0 +1,8 @@
+PASS M1: GHS (4 couplings) and JNW (2) satisfy Einstein, dilaton and Maxwell equations (worst residual 1.5e-18)
+PASS M2: an extremal body with dilaton coupling a and charge/mass sqrt(1+a^2) feels no static force from its own kind (BPS)
+PASS M3: Schwarzschild, neutral probe: T = 6 (simulated 6.00013)
+PASS M4: BPS bodies of opposite charge: T = n - 1 = 0, 1, 2, 3 for a = sqrt3, 1, 1/sqrt3, 0 (n = 4/(1+a^2) charges); pull K = 2(1+a^2)M; simulations agree
+PASS M5: half-BPS in N = 8 (a = sqrt3): no turn at all, as Caron-Huot and Zahraee found
+PASS M6: neutral masses with dilaton coupling b: T = 2(n - 1) = 6, 4, 2, 0; GR (b = 0) is 6, the double copy of a colour charge (b = 1) is 2
+PASS M7: single copy: Maxwell 1 (Sommerfeld), scalar alone -1, N = 4 BPS W-bosons 0 (Caron-Huot and Henn): vector +1, scalar -1 per unit coupling squared
+7/7 pass

@@ -38,6 +38,8 @@ red = does not work. Lean: `lean/Hypersphere.lean`, compiled in the shared libra
 - **Why only 1, 2, 4, 8 (new section near the end).** It is one fact with the superstring's spacetimes 3, 4, 6, 10:
   the size-keeping product, plus relativity's 2-dimensional plane. The same theorem forces the round shape, so
   gravity is not more complete in any other ℓp shape: only p = 2 keeps rotations and angular momentum.
+- **Across string theory's magic square (orbits section 8).** Orbits turn by n − 1 per lap for BPS bodies and
+  2(n − 1) for neutral ones, where n = 1 to 4 counts the charges; the algebras only decide which n are allowed.
 - **Comes out of the sphere, or simpler there:** the curvature (1/radius², which is the curvature dial d at k = 0), the
   swap rule (turn = curvature × area is the sphere's curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
   of Newton's orbits (great circles on S³).
@@ -331,7 +333,8 @@ what fills space, not chosen; the orbits section uses both.)
 **Does it open a lead?** It closes one honestly: the sphere is not one choice among shapes for gravity, it is forced.
 The new reading for us is that two of the theory's own settings, p = 2 and the 1, 2, 4, 8 of the polar split, are
 the same constraint as the superstring's dimensions. Baez and Huerta's follow-up papers report a similar rule one
-size up (spacetimes 4, 5, 7, 11, which includes M-theory's 11); not checked here.
+size up (spacetimes 4, 5, 7, 11, which includes M-theory's 11); not checked here. Orbits across string theory's
+magic square of gravity theories are worked out in the orbits section 8.
 **Verdict: unifies (known root, new reading for the theory).**
 
 ## Leads, judged on their own merits
@@ -360,6 +363,7 @@ size up (spacetimes 4, 5, 7, 11, which includes M-theory's 11); not checked here
 - `figures.py` → `figures/fig1` … `fig12`
 - `orbits/`: Newton's orbits and hydrogen on one 3-sphere (`README.md`, `checks_orbits.py` 23/23, `six/checks_six.py` 11/11, `twov/checks_twov.py` 8/8, `dcopy/checks_dcopy.py` 11/11, figures O1–O9)
 - `division-algebras/` (DRAFT): why 1, 2, 4, 8 (`checks_div.py`, `checks_shape.py`, both pass; `figure_div.py` → figures D1, D2)
+- `division-algebras/magic/` (DRAFT): orbits across the magic square (`checks_magic.py` 7/7, `figure_magic.py` → figure D3)
 - `lean/Hypersphere.lean`: 33 theorems, compiled in the shared library as `FusedAlgebra.Topics.Hypersphere`
 
 ## References
