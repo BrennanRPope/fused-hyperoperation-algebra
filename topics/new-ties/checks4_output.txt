@@ -1,0 +1,14 @@
+PASS U1 a block's derivative is lam*((1-z)/(1-lam z))^2 exactly (120 random blocks, fractions)
+PASS U2 every map has positive determinant and sends V=[-1.05,1.05] strictly inside itself (q=1.5..100)
+PASS U3 the 10 first-return pieces S_2 give 1000 different maps for their 1000 words of length 3 (free, walls ±3)  1000
+PASS U4 the bounds are sound on 900 random words started inside the attractor's input region (every input in the assumed region, true derivative between the bounds)  4458 blocks
+PASS U5 walls ±2: 0.3812 <= delta <= 0.3817, width < 0.002, and strictly below D* = 0.6104
+PASS U5 walls ±3: 0.4407 <= delta <= 0.4417, width < 0.002, and strictly below D* = 0.6104
+PASS U5 walls ±12: 0.5583 <= delta <= 0.5597, width < 0.002, and strictly below D* = 0.6104
+PASS U6 walls ±2: D_n falls slowly (D_7 0.4020, D_14 0.3920); the 1/n extrapolation 0.3820 is within 0.002 of the bracket
+PASS U6 walls ±3: D_n falls slowly (D_7 0.4591, D_14 0.4501); the 1/n extrapolation 0.4410 is within 0.002 of the bracket
+PASS U6 walls ±12: D_n falls slowly (D_7 0.5722, D_14 0.5656); the 1/n extrapolation 0.5590 is within 0.002 of the bracket
+PASS U7 repelling walls at ±10^7: bracket closes on D* (line case)  0.61037 0.61037 0.61037
+PASS U8 two laws: spectral radius of [[0,x1],[x2,0]] is 1 exactly when x1/(1+x1)+x2/(1+x2)=1
+PASS U9 sweep: the bracket rises with the distance of the repelling walls and stays below D*  1.5:[0.328,0.329] 2:[0.381,0.382] 3:[0.441,0.442] 5:[0.498,0.499] 8:[0.535,0.537] 12:[0.558,0.560] 20:[0.578,0.579] 40:[0.594,0.594] 100:[0.604,0.604]
+13/13 pass

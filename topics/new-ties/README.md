@@ -374,8 +374,10 @@ cruder bound from the largest derivative gives 0.95 (T8), so the straightening i
 
 ### 6.5 Result P2: off a common tangent, D* is an upper bound
 
-**Statement (DRAFT, ours).** Take plane laws with different repelling walls. Suppose each law's repelling wall lies
-outside the convex hull of all the attracting walls (beyond its own attracting wall). Then on that hull every map
+**Statement (DRAFT, ours).** Take plane laws with different repelling walls. Suppose that for each law no attracting wall
+lies between its attracting wall and its repelling wall (with two laws: the repelling walls sit on opposite sides,
+each beyond its own attracting wall). [Round 4 note: wording tightened; with a third law whose attracting wall sits in
+the middle, a map can stretch by more than its multiplier and D* is no longer a ceiling.] Then on that hull every map
 contracts by at most its multiplier at its attracting wall, so dim ≤ min(1, D*) (T10, from
 f′(x) = λ·(f(x) − q)² / (x − q)², with q the repelling wall).
 
@@ -409,8 +411,8 @@ depends on how close those points are. The formula is then a ceiling, not the an
 ### 6.7 Lean
 
 Two more identities are in `lean/NewTies.lean`: `fixes_wall` (the map fixes w exactly when d·w² + k·w + 1 = 0) and
-`wall_line_tangent` (the wall line touches the border). That makes 12 theorems in the file. Not compiled where this was written; **compiled clean on Nov 27 in the shared library**
-build (`FusedAlgebra.Topics.NewTies`), and the topic file itself is built by CI's topic Lean step.
+`wall_line_tangent` (the wall line touches the border). That makes 12 theorems in the file (13 after round 4). Not compiled where this was written;
+**compiled clean on Nov 27 in the shared library** build (`FusedAlgebra.Topics.NewTies`), and the topic file itself is built by CI's topic Lean step.
 
 ### 6.8 Lead or not
 
@@ -429,3 +431,136 @@ theorem, which exists for some analytic families); (2) the plane lower bound for
 | Laws sharing a wall lie on a tangent line of d = k²/4 | **Ours** (elementary) | T1, `wall_line_tangent` |
 | P1: exact formula on a common tangent line | **Ours** (from round 2 + standard conjugation) | T4–T7 |
 | P2: D* upper bound off the tangent line, numbers and sweep | **Ours** (bound proved, values numerical) | T9–T12 |
+
+---
+
+## 7. Round 4 (DRAFT): the true dimension off the tangent line
+
+Brennan asked to prove the true size off the tangent line, where round 3 had only a ceiling and numbers. This section
+does it. Everything here is DRAFT. Checks: `checks4.py` (13/13 pass, output in `checks4_output.txt`). Bounds:
+`offline.py`. Level-n cross-check: `dn_levels.py`. Pictures: `figures4.py`.
+
+### 7.1 The answer in two sentences
+
+Off the tangent line the dimension is still set by the shared-centre count, but each word is weighted by how much it
+really stretches instead of by its multipliers; that is a theorem, resting on a 2021 theorem of Solomyak and Takahashi.
+We can compute that number with proved bounds to within 0.002, and it is always strictly below the line-case formula:
+0.381 at walls ±2, 0.441 at ±3, 0.559 at ±12, against 0.610.
+
+### 7.2 Result P3: what the dimension is (DRAFT, ours, conditional)
+
+**Setting.** Plane laws, each with an attracting wall and a repelling wall, any number of maps per law, all multipliers
+positive. Let M be the trace monoid of round 1 (maps of one law commute, different laws don't). For a word w in M let
+f_w be its map and ‖f_w′‖ the largest stretch of f_w on the hull of the attracting walls. Define
+
+  **δ = the critical exponent of Σ_{w ∈ M} ‖f_w′‖^t** (the t where this sum switches from infinite to finite).
+
+**Hypotheses.** (H1) the laws' dials and the maps' parameters are algebraic numbers; (H2) there is a closed interval V
+with every attracting wall inside it and every repelling wall outside it (each map then sends V strictly inside itself);
+(H3) no accidental collisions: different words of M give different maps; (H4) at least two laws.
+
+**Statement.** dim K = min(1, δ).
+
+**Proof (four steps).**
+
+1. *Upper bound.* K is covered by the images of the hull under the distinct words of length n. Möbius maps that send V
+   inside itself have bounded distortion on the hull (their poles stay outside V), so each image has length at most a
+   fixed constant times ‖f_w′‖. For t > δ the sum converges, so its tail goes to 0 and the t-dimensional measure of K
+   is 0. So dim K ≤ δ. (Standard covering argument.)
+2. *Free pieces.* Use round 2's first-return pieces: S = {u·v : u a nonempty word of law 1, v a nonempty word in the
+   other laws}. They generate a free monoid inside M (round 2, combinatorial), and every word of M splits uniquely as
+   (other-law prefix)·(word in S)·(law-1 suffix). Because the maps preserve V, their matrices preserve a cone strictly,
+   so stretches multiply up to fixed constants (standard quasi-multiplicativity). The two outer factors have smaller
+   critical exponents (law 1 alone: 0; the other laws: at most that of S, because S contains u·v for every v), so
+   **δ = the critical exponent of the free monoid generated by S**.
+3. *Finite pieces.* Let S_L be the pieces with u and v of length at most L. Their critical exponents δ_L increase to δ.
+   This is the finite-approximation property of pressure for infinite conformal systems (Mauldin and Urbański 1996). It
+   uses only bounded distortion, not any separation condition.
+4. *The cited theorem.* Normalise each matrix of S_L by the square root of its determinant (positive by assumption): the
+   entries stay algebraic. By (H3) and step 2 the matrices generate a free semigroup. They send V strictly inside itself
+   (a strictly invariant cone, i.e. uniform hyperbolicity), and the attractor is not a point (H4). Solomyak and
+   Takahashi (IMRN 2021, Theorem 1.7, with their remark that algebraic entries plus a free semigroup give the strong
+   Diophantine property) then give dim K_L = min(1, δ_L), where their s_A/2 is our δ_L. Since K_L ⊂ K,
+   dim K ≥ min(1, δ_L) for every L, so dim K ≥ min(1, δ). ∎
+
+**Who proved what.** Steps 1–3 are standard tools; step 4 is Solomyak and Takahashi's theorem, applied to pieces that only
+our round-2 construction makes free. The statement for shared-centre plane laws, and the reduction, are ours. We read
+their abstract and the statement of Theorem 1.7 and the algebraic remark (arXiv:1902.11059); we did not check their proof.
+Christodoulou and Jurga (Trans. AMS 2026) extend that theorem; we did not read it. (H3) is checked, not proved: the 10
+pieces of S_2 at walls ±3 give 1000 different maps for their 1000 words of length 3 (U3).
+
+On the tangent line δ equals D* (round 3, P1), so P3 contains P1. In the line case (affine maps) it is round 2's theorem.
+
+### 7.3 Result P4: computing δ, with proved bounds (DRAFT, ours)
+
+A word of M is a chain of **blocks** (maximal runs of one law). A block of law i with multiplier λ, applied at a point y,
+stretches by exactly
+
+  **λ · ((1 − z)/(1 − λz))²**, where z = (y − p)/(y − q) for that law's walls p, q (U1, exact fractions).
+
+So it gets its full multiplier only at its own attracting wall (z = 0), and less the further away it works. After a switch,
+a law's block always receives its input from the previous law's block, which has pushed the point toward the *other*
+attracting wall. At walls ±3, law 1 blocks only ever receive points in [−1, −0.71] and law 2 blocks only in [0.78, 1]
+(Figure 14). Bounding each block's factor above and below by the extreme z over where it can receive points (remembering
+the previous block's law and size) gives two switching matrices; δ lies between the t-values where their spectral
+radius is 1. With two laws and no memory this is the round-2 rule x₁·x₂ = 1 (Lean `two_law_threshold`).
+
+**Statement.** Under the round-3 P2 geometry (for each law no attracting wall lies between its two walls), δ is strictly
+below D* whenever the laws don't all share their repelling wall, and the bounds below are proved.
+
+| Repelling walls | Proved bracket for δ | D* (line case) | Level-n estimate, extrapolated |
+|---|---|---|---|
+| ±2 | 0.3812 to 0.3817 | 0.6104 | 0.382 |
+| ±3 | 0.4407 to 0.4417 | 0.6104 | 0.441 |
+| ±12 | 0.5583 to 0.5597 | 0.6104 | 0.559 |
+| ±10⁷ | 0.61037 (closes) | 0.6104 | — |
+
+**What makes the bracket a proof.** The block formula is exact; the input regions are outer bounds (iterated to a fixed
+point, and checked on 900 random words, U4); sums are cut at block degree 40 with the tail bounded by the pure-multiplier
+tail; and a larger matrix gives a larger spectral radius (Perron–Frobenius). Strictness: every switch costs a factor
+below 1 on an irreducible matrix, so the spectral radius at D* is below 1. Caveat: the arithmetic is double precision, not
+interval arithmetic; the bracket widths are far larger than rounding, but an interval-arithmetic rerun would make it
+airtight.
+
+**Cross-check.** The direct level-n estimates fall slowly, roughly like 1/n (at ±3: 0.459 at n = 7, 0.450 at n = 14).
+Extrapolating linearly in 1/n lands inside or within 0.002 of every bracket (U6). The round-3 box counts (0.395, 0.445,
+0.555) sit a little high or low for the same finite-resolution reason; the brackets replace them.
+
+![Figure 13](figures/fig13-proved-band.png)
+
+*Figure 13. The thin blue band is the proved bracket for the true dimension, against how far away the repelling walls
+are. Dashed: the line-case formula, which is the ceiling. Orange: box counts. Grey: level-n estimates from n = 7 down
+to n = 14, still falling toward the band.*
+
+![Figure 14](figures/fig14-why-smaller.png)
+
+*Figure 14. Why bent maps make a smaller fractal (walls ±3). Top: where each law's blocks receive their points, always
+on the far side, near the other law's wall. Bottom: the stretch a block achieves divided by its multiplier, by where it
+is applied. It is 1 only at its own wall and well below 1 in the shaded regions where blocks really work.*
+
+### 7.4 What this means in plain terms
+
+The count of different outcomes is the same everywhere: the shared-centre count from round 1. What changes off the
+tangent line is how big each outcome's piece is. Each law does its work on points the other law has just pulled away, so
+it never gets to stretch fully, and the fractal is thinner. Now that thinning has an exact meaning and can be computed
+to three decimals with a proof.
+
+### 7.5 Lead or not
+
+**Still a lead, and a better-founded one.** For: the dimension of every shared-centre union fractal on the line and for
+plane laws is now characterised by one theorem (exact formula on a tangent line, a computable critical exponent off it,
+with proved brackets), and the shared-centre count is what feeds both. Against: the hard analysis is Solomyak and
+Takahashi's and Hochman's; ours is the construction that makes their theorems apply, the formulas, and the computations.
+Next, if wanted: (1) rerun the brackets in interval arithmetic; (2) prove (H3) for a family, not just check it; (3) the
+plane (complex) lower bound, which needs a different cited theorem.
+
+### Known vs new, round 4
+
+| Item | Status | Source |
+|---|---|---|
+| dim = min(1, critical exponent) for free algebraic SL₂ projective systems with an invariant interval | Known | Solomyak and Takahashi, IMRN 2021, Thm 1.7 (statement read, proof not checked) |
+| Finite approximation of pressure for infinite conformal systems | Known | Mauldin and Urbański 1996 |
+| Bounded distortion, cone quasi-multiplicativity, covering upper bound | Known | standard |
+| P3: dim K = min(1, δ) for shared-centre plane laws via free first-return pieces | **Ours** (conditional on the cited theorem and H1–H4) | 7.2 |
+| Block stretch formula λ((1−z)/(1−λz))² | Elementary | U1 |
+| P4: proved brackets, strictly below D* off the tangent line | **Ours** (double precision) | U4–U9, `offline.py` |
