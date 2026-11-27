@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033. Round 10 (section 14): the exact size of a break is proved, with no counting, for a dense set of breaks (an example: 0.4232693 where the formula says 0.4531865); the original break is pinned to within 0.00000014. Round 11 (section 15): no second collision in any run of up to 10,000 copies of λ, so the original break's size is pinned to about 4,810 digits; still not exact, and section 15.5 says why. Round 12 (section 16): one search can now prove a whole range of stretches at once, which settles every bad pair whose stretch lies in proved ranges covering 72.7% of the windows, for any number of copies of λ; the search can only get stuck on a measure-zero set where two points of the fractal line up, and that is why the original break is still not exact. Round 13 (section 17): a second collision puts the stretch exactly on that line-up set, and every bad pair with up to a million copies of λ stays a positive distance from it, so the size is pinned to about 480,965 digits; the distances shrink the way random numbers' would, so this route cannot close the proof with current tools. Round 14 (section 18): an arithmetic route through the sizes of the terms at 2, 5 and 19 does not close it either; it reduces every bad pair to one ratio-free question (which stretches a trip off the line can return to), finds only 9 such stretches in every search, and adds a fast third check for a + b ≤ 2,000.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1350,7 +1350,7 @@ their proofs.
 | P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
 | P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
 | Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
-| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] | 13.4, Y9 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9). [Round 10 update: still open, now pinned to [0.47048331, 0.47048344]; exact for a dense set of other breaks, section 14] [Round 11 update: still open; no second collision in runs of up to 10,000 copies of λ, gap 1.8 × 10⁻⁴⁸¹¹, section 15] [Round 12 update: still open; settled at once for every bad pair with stretch in ranges covering 72.7% of the windows, section 16] [Round 13 update: still open; no second collision for any bad pair with a ≤ 10⁶, gap 6.0 × 10⁻⁴⁸⁰⁹⁶⁶, section 17] [Round 14 update: still open; reduced to one ratio-free conjecture (14.4), section 18] | 13.4, Y9 |
 
 ---
 
@@ -1969,3 +1969,112 @@ for R. No fresh literature search this round beyond recalling those standard res
 | Theorem 13.2: no second collision for any bad pair with a ≤ 10⁶; size within 6.0 × 10⁻⁴⁸⁰⁹⁶⁶ | **Ours** (DRAFT), computer-assisted | 17.3–17.4, Z3–Z6 |
 | Bad stretches approach R like random numbers; R behaves like dimension ≈ 0.94 | **Ours** (DRAFT), measured | 17.5, Figures 41–43 |
 | A uniform safe floor for all a, hence an exact original break | **Open** | 17.6 |
+
+## 18. Round 14 (DRAFT): looking for an arithmetic reason a second collision can't happen
+
+Asked for by Brennan (Nov 27): "I'm headed off for bed, you have my authorization to increment the version and follow any
+thread you deem worthy", with the thread chosen as: look for a reason a second collision can't happen, from the exact
+sizes of its terms at the primes 2, 5 and 19. Scripts: [`psi14.py`](psi14.py) → [`psi14.json`](psi14.json),
+[`nb14.py`](nb14.py) → `nb14.json` (not committed, rebuilt in a few seconds), [`unif14.py`](unif14.py) →
+[`unif14.json`](unif14.json). Checks: [`checks14.py`](checks14.py) → [`checks14_output.txt`](checks14_output.txt),
+**7 of 7 pass**. Pictures: [`figures14.py`](figures14.py). No new Lean. Everything below was worked out by Claude in this
+round; nothing here has been checked by a person yet.
+
+### 18.1 The answer in five sentences
+
+**It does not work as a proof.** The exact sizes of the terms do rule things out: they give a clean ratio-free form of the
+problem (Theorem 14.1), forbid some word endings outright (Lemma 14.2), and show that a bad pair has exactly one way to
+leave the line, at the stretch 1/rho, whose 19-adic size is -a (Lemma 14.3). Every collision that has been found, in an
+exhaustive search of 29 million words and in a search over all stretches at once, comes back at one of 9 stretches whose
+19-adic size is between -2 and 2, nowhere near the a >= 13 a bad pair needs (Figures 44 and 46). But turning "only these
+9" into a proof means solving an equation in powers of 2, 5 and 19 with no bound on the number of terms, and neither the
+real sizes nor the prime sizes, alone or together, bound it: the search over all stretches still grows about 3.5 times per
+letter. So the open part is now one ratio-free statement (Conjecture 14.4), of the same kind as Rounds 11 and 13 found.
+
+### 18.2 The ratio-free form
+
+Write a word's map as w(y) = s_w y + t_w (letters as in Round 13: l = (19/200, 0), m = (1/20, 0), N = (1/19, 1/19),
+K = (1/10, 1/10)) and put psi(w) = t_w / s_w = -w^{-1}(0).
+
+**Theorem 14.1 (by hand).** psi(w) is the sum, over the positions i of N and K in w, of R_{>i}, the product of
+1/s_x over the letters after i. It obeys psi(wx) = psi(w)/s_x + d_x and psi(xw) = psi(w) + d_x/s_w (d = 1 for N and K, 0
+for l and m). Two words satisfy h = rho g as maps exactly when psi(h) = psi(g) and s_h/s_g = rho. So the bad pair (a, b)
+has a second collision exactly when some h starting with N and some g have equal psi and s_h/s_g = lambda^a/mu^b.
+
+*Why:* h = rho g means s_h = rho s_g and t_h = rho t_g; divide. The sum formula is the right recursion unrolled.
+
+psi never sees rho: rho only enters through how many of each letter the two words have. Leading l and m letters do not
+change psi, and a common last letter cancels, so it is enough to look at pairs with different last letters.
+
+### 18.3 What the sizes at each prime rule out
+
+**Lemma 14.2 (by hand, 2-adic).** If h ends in l or m then psi(h) is divisible by 4 as a 2-adic number; if g ends in K
+then psi(g) is odd. So a word ending in l or m never has the same psi as one ending in K. *Why:* psi is a 2-adic integer
+(only 19 divides denominators); ending in l multiplies by 200/19, ending in m by 20, and ending in K gives 10 psi + 1.
+Checked on all 107,614 reduced words up to 9 letters (Q2).
+
+**Lemma 14.3 (by hand).** Read h = m^b N... and g = l^a N... (or l^a K...) from the left, one letter at a time, peeling
+from h when the size ratio a of the two prefixes is at least 1 and from g otherwise. The neighbour map
+T = (prefix of g)^{-1} o (prefix of h) stays linear, T(y) = alpha y, until the first N or K is peeled, and that can only
+happen when alpha lies in [9/19, 19/9]. For a bad pair, rho = lambda^a/mu^b lies in the windows of Round 13, and then the
+only possible moment is alpha = mu^b/lambda^a = 1/rho, with 19-adic size -a. *Why:* stopping early on the h side would need
+lambda^(a-i)/rho in [1, 19/9] with i < a, but lambda^(a-i) <= 0.095; on the g side, mu^(j-b)/rho in [9/19, 1) with j < b,
+but mu^(j-b) >= 20. Checked exactly on 6 record pairs and in floating point on all 140,680 bad pairs with a <= 10^6 (Q7).
+
+So a second collision for (a, b) is the same as **one trip off the line, starting at the stretch 1/rho, that comes back to
+the line exactly.** Coming back means b(alpha) = (alpha t_P - t_Q)/s_Q = 0 for the words P and Q read during the trip, so
+alpha = t_Q/t_P, and since alpha is a stretch, t_Q/t_P must have no prime factors other than 2, 5 and 19.
+
+![Figure 45](figures/fig45-neighbour-plane.png)
+
+*Figure 45. Every pair of reduced words, read together from the left, up to 2,000 letters in all, in exact rational
+arithmetic (Q4). Blue: on the line (b = 0). Coloured: off the line. Trips only leave the line inside the shaded window.
+From each of the 8,474 stretches on the line, every trip off it was then followed to its end with no length limit: all end
+within 70 letters and none comes back. By Lemma 14.3 that settles the 160 bad pairs with a + b <= 2,000 (a <= 1,119) in
+about two seconds, a third independent method after Rounds 11 and 13.*
+
+### 18.4 What the searches found
+
+![Figure 44](figures/fig44-psi-collisions.png)
+
+*Figure 44. All 29,246,206 reduced words of up to 14 letters starting with N or K, with psi compared exactly (hashing modulo
+two primes, then rational arithmetic on every candidate; Q3). Only 5 ratios s_h/s_g ever occur: 10/19 (N ~ K), 20/19,
+19/20, 200/361 and 1/2. These are the front relations already known. Their 19-adic sizes run from -2 to 1. A bad pair needs
+L_h + n_g >= 14 letters, so the shortest shapes it could use are inside this search.*
+
+![Figure 46](figures/fig46-all-stretches.png)
+
+*Figure 46. Trips off the line for every stretch alpha at once (unif14.py): instead of fixing alpha, keep the interval of
+alpha for which every step passed the real-size cut. A: the real cut alone lets the search grow about 3.5 times per letter
+(930,746 branches at 11 letters), and 1.28 million of them come back to the line at some real stretch. Asking that the
+stretch be made of 2, 5 and 19 only removes all but 71,232, and those use only **9** stretches, all present by 4 letters and
+none new up to 11 (Q6). B: their 19-adic sizes are between -2 and 2; a bad pair's trip starts at size -a <= -13.*
+
+### 18.5 Where it stops
+
+**Conjecture 14.4 (open).** Every trip off the line that comes back to it does so at one of the 9 stretches
+1, 19/10, 10/19, 20/19, 19/20, 361/200, 200/361, 2, 1/2. (Equivalently: every psi-collision comes from the front relations.)
+
+By Lemma 14.3 this would settle every bad pair at once: no second collision for any a, so the original break is exactly
+s_F. It is checked for trips of up to 11 letters and words of up to 14 letters, uniformly in the stretch.
+
+Why the prime sizes don't prove it: coming back is a vanishing sum of terms that are each a product of 2, 5 and 19, with as
+many terms as the trip has N and K letters. For a fixed number of terms, the subspace theorem (Evertse, Schlickewei and
+Schmidt, 2002) gives finitely many solutions up to scaling, but here the number is unbounded and the scaling is free.
+Term by term, the 2- and 5-adic sizes fall along the word, which gives Lemma 14.2, but long runs of bare N letters have equal
+sizes and never cancel 19-adically, so they survive every prime cut (this is what keeps the search in Figure 46 growing).
+The real sizes say where a trip can go but never that it must stop. A proof would need a new way to combine both ends:
+for example, a finite automaton in the style of the finite type condition (Ngai and Wang, 2001). Figure 46 shows that no
+such automaton exists over all stretches at once, because the set of stretches where trips survive behaves like Round 13's
+line-up set R, of dimension about 0.94.
+
+### 18.6 Is it a lead?
+
+**What it contributes:** the problem is now ratio-free and one-dimensional in the right sense. Every bad pair is one trip
+from one stretch, and the whole question is which stretches trips can return to (Conjecture 14.4). There is also a third,
+fast, exact check of the original collisions (Figure 45: every bad pair with a + b <= 2,000 in about two seconds) and a full
+list of short psi-collisions.
+
+**What it does not do:** prove the theorem. It is not a lead toward a proof by itself; it would become one if someone found
+a quantity that is bounded along every trip and has finitely many values. That is the missing piece, and none of the sizes
+tried here (real, 2-adic, 5-adic, 19-adic) is such a quantity.

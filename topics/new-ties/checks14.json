@@ -1,0 +1,95 @@
+{
+ "Q1": {
+  "ok": true,
+  "mismatches": 0,
+  "random_pairs_that_differ": 397,
+  "positive_case_N_eq_10_19_K": true
+ },
+ "Q2": {
+  "ok": true,
+  "words_checked": 107614,
+  "violations": 0
+ },
+ "Q3": {
+  "ok": true,
+  "words": 29246206,
+  "ratios": [
+   "1/2",
+   "10/19",
+   "19/20",
+   "20/19",
+   "200/361"
+  ],
+  "v19": [
+   -2,
+   -1,
+   -1,
+   0,
+   1
+  ]
+ },
+ "Q4": {
+  "ok": true,
+  "states": 13727,
+  "births": 2236,
+  "trip_states": 12040,
+  "longest_trip": 70,
+  "bad_pairs_covered": 160,
+  "missing": 0
+ },
+ "Q5": {
+  "ok": true,
+  "nontrivial_returns_without_grammar": [
+   [
+    "K",
+    "N"
+   ],
+   [
+    "N",
+    "K"
+   ],
+   [
+    "l",
+    "m"
+   ],
+   [
+    "m",
+    "l"
+   ]
+  ]
+ },
+ "Q6": {
+  "ok": true,
+  "unit_alphas": [
+   "1/2",
+   "10/19",
+   "200/361",
+   "19/20",
+   "1",
+   "20/19",
+   "361/200",
+   "19/10",
+   "2"
+  ],
+  "v19": [
+   -2,
+   -1,
+   -1,
+   0,
+   0,
+   0,
+   1,
+   1,
+   2
+  ],
+  "nodes_at_max": 930746
+ },
+ "Q7": {
+  "ok": true,
+  "exact_pairs": 6,
+  "exact_mismatches": 0,
+  "float_pairs": 140680,
+  "float_mismatches": 0
+ },
+ "all_pass": true
+}
