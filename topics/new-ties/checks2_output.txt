@@ -1,0 +1,23 @@
+PASS  L1 lower bounds increase and stay below D*, A: two in box 1, one in box 3  s-dim(S_10)=0.61031, D*=0.61037
+PASS  L2 lower bound within 0.001 of D* at L=10, A: two in box 1, one in box 3  
+PASS  L3 generator words are all distinct maps (free), A: two in box 1, one in box 3  1000 of 1000
+PASS  L4 squeeze: lower <= D* <= upper D_11, A: two in box 1, one in box 3  
+PASS  L1 lower bounds increase and stay below D*, B: two boxes, two maps each  s-dim(S_10)=0.66597, D*=0.66598
+PASS  L2 lower bound within 0.001 of D* at L=10, B: two boxes, two maps each  
+PASS  L3 generator words are all distinct maps (free), B: two boxes, two maps each  15625 of 15625
+PASS  L4 squeeze: lower <= D* <= upper D_11, B: two boxes, two maps each  
+PASS  L1 lower bounds increase and stay below D*, D: three in box 1, one in box 5  s-dim(S_10)=0.68814, D*=0.68816
+PASS  L2 lower bound within 0.001 of D* at L=10, D: three in box 1, one in box 5  
+PASS  L3 generator words are all distinct maps (free), D: three in box 1, one in box 5  5832 of 5832
+PASS  L4 squeeze: lower <= D* <= upper D_11, D: three in box 1, one in box 5  
+PASS  G1 flips (negative slope) keep the count  
+PASS  G2 flips: D_n above D*  
+PASS  G3 plane: count = shared-centre count  
+PASS  G4 plane: box count nearer D* than Moran  box 1.1942 D* 1.1906 Moran 1.2511
+PASS  G6 Möbius plane laws: count = shared-centre count, union x2 + law k=0,d=-4 (walls +-1/2)  
+PASS  G6 Möbius plane laws: count = shared-centre count, union x2 + velocity addition  
+PASS  G5 Möbius collision example is detected (count falls short)  
+PASS  S1 learning: distinct strengths = every other Fibonacci number  
+PASS  S2 learning: bits kept on average <= most it can keep <= log2 3  
+PASS  S3 learning: growth per trial = golden ratio squared  
+22/22 pass

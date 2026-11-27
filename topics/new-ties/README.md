@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -107,7 +107,7 @@ a smaller number, because those maps stop creating new points when you swap thei
 **What is proved and what is not.** The upper bound is proved: the fractal is covered by its images under the distinct
 maps of length n, so its dimension is at most D_n for every n, and D_n falls to D* (checks U9, U10). That the dimension
 *equals* D* is supported by the box counts (check U11) and is what Hochman's theorem (Annals 2014) leads one to expect,
-since rational data keep distinct maps far enough apart; **we have not written out that lower-bound proof**.
+since rational data keep distinct maps far enough apart. *Round 2 (section 5) writes that lower bound out.*
 
 ![Figure 5](figures/fig5-commuting-discount.png)
 
@@ -192,3 +192,127 @@ or Cartier–Foata. They found Hochman's work and the exact-overlaps literature,
 
 - Hochman, "On self-similar sets with overlaps and inverse theorems for entropy": https://arxiv.org/pdf/1212.1873
 - Hochman, ICM survey "Dimension theory of self-similar sets and measures": https://math.huji.ac.il/~mhochman/preprints/icm-4.pdf
+
+---
+
+## 5. Round 2: more rigorous, and more places it applies (DRAFT)
+
+Asked for by Brennan (voice, Nov 27): "let's just keep looking at this and seeing if we can make it more rigorous and
+more useful", "when I say more useful, more applicable to other scenarios."
+
+Checks: [`checks2.py`](checks2.py) → [`checks2_output.txt`](checks2_output.txt), **22 of 22 pass**. Numbers:
+[`round2.py`](round2.py) → `round2.json`. Pictures: [`figures2.py`](figures2.py). Lean:
+[`lean/NewTies.lean`](lean/NewTies.lean), 10 theorems, core Lean, no `sorry`, **not compiled here** (the Lean download
+is blocked in this workspace); it needs a compile in the shared library before anyone counts it.
+
+### The result in plain words
+
+**On the line the formula is now a theorem.** For straight-line shrinking maps with rational (or algebraic) numbers and
+no accidental collisions, the fractal's dimension is exactly the smaller of 1 and our D*: the upper bound needs nothing,
+and the lower bound comes from a free piece of the fractal plus Hochman's 2014 theorem. **It carries over** to maps that
+flip, to turning maps in the plane (numerically), and its counting part to the plane laws (k, d). **One real scenario
+fits it exactly:** Rescorla–Wagner learning, and any moving average with several rates, where same-target updates
+commute and the learner forgets their order. Still a modest lead: a clean, now-rigorous tool with real uses, not a new
+mechanism.
+
+### 5.1 The theorem
+
+**Setting.** Maps fᵢ(x) = cᵢ + sᵢ(x − cᵢ) on the line with 0 < |sᵢ| < 1, sorted into classes by centre (a union in a box is
+the case cᵢ = box size, sᵢ = 1 − slab/box). Write Pⱼ(D) = ∏ over class j of (1 − |sᵢ|^D) and
+μ(D) = 1 + Σⱼ [Pⱼ(D) − 1]. D* is the root of μ(D) = 0 (at least two classes; one class gives a single point).
+
+**Theorem.** (a) dim K ≤ min(1, D*), always. (b) If every cᵢ and sᵢ is algebraic (for example rational) and different
+shared-centre words never give the same map (no accidental collisions), then dim K = min(1, D*).
+
+**Proof of (a).** Maps with one centre commute (Lean `same_centre_commute`), so every word equals a word of the trace
+monoid. Weighted Cartier–Foata: Σ over traces g of |s_g|^D·tⁿ⁽ᵍ⁾ = 1/μ_D(t), with μ_D(t) = 1 + Σⱼ[∏(1 − t|sᵢ|^D) − 1].
+Each Pⱼ(D) grows with D, so for D > D* we have μ_D(1) > 0; μ_D(t) falls as t grows, so it stays positive on [0, 1] and
+the series converges at t = 1. Its tail at length n goes to 0, and the length-n images cover K, so the D-dimensional
+measure of K is 0. Hence dim K ≤ D for every D > D*. Collisions only shrink the cover, so (a) needs no assumption.
+
+**Proof of (b), lower bound.** Single out class 1. Let N be the monoid of the other classes, and let S be the set of words
+u·v with u a nonempty word in class 1 and v a nonempty element of N. Every element built from S splits uniquely at its
+class-1 blocks (normal form in a free product), so S generates a **free** monoid. Take the finitely many generators S_L
+up to length L. With no accidental collisions, the IFS S_L has no exact overlaps; its numbers are algebraic; so by
+Hochman's theorem (Annals of Math. 180, 2014: on the line, algebraic parameters and no exact overlaps give
+dim = min(1, similarity dimension)) its attractor has dimension min(1, s_L), where Σ over S_L of |s_g|^(s_L) = 1. That
+attractor sits inside K. As L grows the sum fills out to (1/P₁ − 1)(1/Q − 1), with Q = 1 + Σ_{j≥2}(Pⱼ − 1) from Cartier–Foata
+for N (it converges at D* because Q(D*) = 1 − P₁(D*) > 0). Setting it to 1 is the same as P₁ + Q = 1 (Lean
+`lower_bound_key`), which is μ(D) = 0. So s_L rises to D*, and dim K ≥ min(1, D*). ∎
+
+![Figure 7](figures/fig7-squeeze.png)
+
+*Figure 7. The squeeze, computed. Lower bounds from the free piece (solid) climb and upper bounds (dashed) fall onto the
+same line. At L = 10 every lower bound is within 0.0001 of D*. The free piece was checked exactly: e.g. 15,625
+words of its generators give 15,625 different maps.*
+
+**What the hypothesis costs.** "No accidental collisions" can fail at special numbers (the chaos page found one at
+slopes 1/2, 1/3, 1/5; this round found one among Möbius maps at length 4, check G5). For given rational numbers it can
+be checked exactly up to any length, but not for all lengths at once. Kittle and Kogler (2026, reported in search
+results, not read) claim the exact-overlaps conjecture on the line, which would remove the "algebraic" condition.
+
+### 5.2 Where it holds
+
+![Figure 9](figures/fig9-where-it-holds.png)
+
+*Figure 9. Green: proved. Blue: numerical. Orange/grey: the formula does not apply as it stands.*
+
+- **Flips (slopes below 0, past the wall).** Nothing changes: use |s|. Count and upper bound checked (G1, G2).
+- **The plane.** Turning-and-shrinking maps z ↦ c + λ(z − c) with complex λ commute exactly when they share a centre, so
+  the same count and formula hold with |λ| in place of s and min(2, D*) as the cap. Upper bound proved the same way;
+  the lower bound needs Hochman's higher-dimensional theorem, whose extra conditions we haven't checked. Numerically it
+  fits (Figure 8): D* = 1.191, box counting 1.194, Moran 1.251.
+- **Plane laws (k, d).** Each law's maps are Möbius maps fixing that law's two walls, so maps from one law commute and
+  the count is the same shared-centre count (G6, two examples). The dimension is not given by this closed formula,
+  because Möbius maps don't shrink by one fixed factor; it needs Bowen's equation with derivatives. Open.
+- **Commuting that isn't by classes.** For straight-line maps, "commute" is always "same centre", so classes are all
+  there is. Maps that commute without being classes (e.g. acting on separate coordinates) need the general
+  Cartier–Foata polynomial over the commuting graph; not done.
+
+![Figure 8](figures/fig8-plane.png)
+
+*Figure 8. Left: the plane version, four maps about three centres; two share centre 0 and one of those also turns.
+Right: the dimension follows our formula, not Moran's.*
+
+### 5.3 A real scenario: learning rules and moving averages
+
+The Rescorla–Wagner rule (psychology's standard model of conditioning, also the "delta rule" of machine learning) updates
+an associative strength by V ← V + rate·(target − V). That is a stretch about the target with slope 1 − rate: our maps
+exactly, with the target as the centre. Trials that aim at the same target commute, whatever their rates; trials aiming
+at different targets don't. The same holds for any exponential moving average whose smoothing rate changes.
+
+We tested three trial types: reward with a bright cue (rate 0.8), reward with a dim cue (rate 0.85), no reward
+(rate 0.75). Counted exactly: after 11 trials the learner can be in only 46,368 different states, out of 177,147 trial
+histories (every other Fibonacci number, S1). So **the learner's state can carry at most 1.39 bits of history per trial,
+not log₂3 = 1.58**, and with trials in random order it keeps about 1.28 bits per trial (S2). The reachable strengths
+form a fractal of dimension 0.610.
+
+![Figure 10](figures/fig10-learning.png)
+
+*Figure 10. Left: different learned strengths (exact) against trial histories. Right: bits of history the state can
+carry per trial.*
+
+**Why it's useful.** It gives a closed answer to "how much of its past can a moving average or delta-rule learner
+remember, and how finely must you read its state to recover it", and it says what helps: giving each update its own
+target restores order information; varying only the rate does not. That the order of same-target updates is lost is
+elementary; the exact count and the dimension are what the formula adds.
+
+### 5.4 Lead or not
+
+**A modest lead, now on firmer ground.** For: a real theorem on the line (given Hochman), the same picture in the plane,
+the counting part for every plane law, and a scenario where it applies exactly. Against: the mechanism is Hochman's and
+Cartier–Foata's; ours is the closed formula, the free-piece proof and the reading. Next, if wanted: (1) compile the Lean
+file; (2) the plane lower bound via Hochman's higher-dimensional theorem; (3) Bowen's equation for the plane laws, to see
+whether the shared-centre count still sets a clean dimension there.
+
+### Known vs new, round 2
+
+| Item | Status | Source |
+|---|---|---|
+| Hochman's theorem: algebraic parameters, no exact overlaps ⇒ dim = min(1, s-dim) | Known | Hochman 2014 (as stated in his ICM survey) |
+| Normal form in free products; Cartier–Foata weighted count | Known | standard; Cartier and Foata 1969 |
+| Theorem: dim K = min(1, D*) for shared-centre classes (algebraic, no accidental collisions) | **Not found in print**; our proof from known pieces | this page, L1–L4 |
+| Plane version, counting for plane laws | Ours; plane dimension numerical | G3–G6 |
+| Rescorla–Wagner as stretches about the target | Known form (Rescorla and Wagner 1972) | — |
+| Exact state count and bits-per-trial for mixed-rate learners | Ours (as stated); elementary consequence | S1–S3 |
+| Exact-overlaps conjecture on the line | Reported proved, not checked | Kittle and Kogler 2026 (arXiv:2610.10511, from a search result) |
