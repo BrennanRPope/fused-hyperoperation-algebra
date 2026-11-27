@@ -96,3 +96,11 @@ jobs:
           lake env lean Check.lean 2>&1 | tee /tmp/mathlib-map-check.log
           test "${PIPESTATUS[0]}" -eq 0
           if grep -q "sorryAx" /tmp/mathlib-map-check.log; then echo "sorry found"; exit 1; fi
+
+      # Topic Lean files that import Mathlib (tools/topic_lean.py skips them). Each one is compiled
+      # on its own in the Mathlib map's Lake environment (same pinned Lean and Mathlib). Report
+      # only: drafts may not build yet, so this step never blocks main, but the errors are in the log.
+      - name: Topic files that import Mathlib, each built on its own (report only)
+        if: hashFiles('topics/mathlib-map/lakefile.toml') != ''
+        continue-on-error: true
+        run: python3 tools/mathlib_topic_files.py
