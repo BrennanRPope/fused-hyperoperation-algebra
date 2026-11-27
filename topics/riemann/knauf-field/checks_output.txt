@@ -1,0 +1,17 @@
+PASS K1 chain(3) = [1 2 3 3 4 5 5 4] (Stern–Brocot denominators) 
+PASS K2 level multiplicity = Euler totient φ(q) for q ≤ 21 (n = 20) 
+PASS K3 Z_22(3) ≈ ζ(2)/ζ(3) 1.36396 vs 1.36843
+PASS K4 dictionary: Σ n^-p = (p-norm of 1/n)^p 
+PASS K5 Wick turn of temperature: Z(3/2 − h) = Σ φ^(−3/2) e^(h·E), E = ln φ 
+PASS K6 finite chains n = 10..24 have a zero within 0.09 (Re) and 0.06 (Im) of each 3/2 + iγ, γ ≤ 33 sd Re = 0.0206
+PASS K7 the wobble does not shrink: sd(Re) at n = 20..24 is more than half of n = 10..14 0.0257 -> 0.0171
+PASS K8 zeros fall on both sides of the line (finite chains give no zero-free region) 38 of 75 right of 3/2
+PASS K9 RMS error at Re β = 1.5 falls at every step n = 10..24 0.0721 -> 0.0428
+PASS K10 at Re β = 1.2 the error does not visibly fall (last/first > 0.8) ratio 0.88
+PASS K11 ℓ² edge, ζ: Σ_{n≤X} 1/n grows with slope 1 in ln X 0.9997
+PASS K12 ℓ² edge, Knauf: Σ φ(q)²/q³ grows with slope Π(1 − 2/p² + 1/p³) 0.4281 vs 0.4283
+PASS K13 ℓ² edge, Ramanujan τ: Σ τ(n)²/n¹² grows linearly in ln X (slope > 0, steady) 0.3842
+PASS K14 magnetic field zeros of the n = 12 chain miss the unit circle at β = 1.5, 3, 5 
+PASS K15 the lowest finite-size zero creeps toward the transition β = 2 as n grows [(1.77, 1.15), (1.79, 1.04), (1.81, 0.94), (1.83, 0.89)]
+PASS K16 control: Davenport–Heilbronn (no Euler product, same ℓ² edge ½) has a zero at Re ≈ 0.8085, off the line 0.808517+85.699348j
+16/16 pass
