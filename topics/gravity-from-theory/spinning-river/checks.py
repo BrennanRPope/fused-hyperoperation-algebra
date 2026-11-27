@@ -11,6 +11,9 @@ O: two spinning bodies in orbit: the slow-orbit field from three river rules, or
    O7-O8 test the rules at the next level of detail (2PN) through body 1's clock rate; O9-O12 add the field's own
    energy as a fourth rule; O11 derives what was left (the speeding-up body's own field squared); O12
    checks g00 at a body against the published 2PN field term by term.
+KS: Kerr's orbit factor 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 split into its pieces, by the double copy and by the rules
+   (round 16, kerr_split.py -> kerr_split.json).
+TW: why the shifted source's tower of shapes leaves a single -3 (round 17, tower.py -> tower.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -1074,6 +1077,144 @@ check("O12 term by term against the paper: with the speeding-up body's own field
       all(v_ == 0 for v_ in g00d_.values()) and sp.simplify(g00d14_ + sp.Rational(1, 4)*eps_**6) == 0,
       f"differences {g00d_}; round 14 at 1/2: {g00d14_}")
 results["O12_g00_vs_bfp"] = {k_: str(v_) for k_, v_ in g00d_.items()}
+
+# ================================================================ KS1-KS7  Kerr's orbit factor split, two ways (round 16)
+# A slightly eccentric equatorial orbit around a spinning hole turns by 2 pi (1/sqrt(T) - 1) per lap,
+# T = 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 (u = M/r, chi = a/M). Which piece of the field makes each number?
+import kerr_split as ks_  # noqa: E402
+mp.mp.dps = 60
+kj_ = json.load(open(os.path.join(HERE, "kerr_split.json")))
+Tk_ = ks_.orbit_factor(ks_.ks_shell({}))
+ex_ok_ = all(abs(Tk_(mp.mpf(u_), mp.mpf(c_)) - ks_.exact_T(mp.mpf(u_), mp.mpf(c_))) < mp.mpf("1e-50")
+             for u_, c_ in (("0.05", "0.7"), ("0.05", "-0.7"), ("0.1", "0.3")))
+isco_ok_ = all(abs(ks_.exact_T(1/ks_.isco(mp.mpf(c_)), mp.mpf(c_))) < mp.mpf("1e-50") for c_ in ("0.5", "0.9", "-0.5"))
+check("KS1 Kerr's orbit factor from the exact Kerr-Schild mass shell is T = 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 "
+      "(to 50 digits at three points, prograde and retrograde), and it vanishes at Bardeen-Press-Teukolsky's "
+      "innermost stable orbit (an independent formula) at chi = 0.5, 0.9, -0.5", ex_ok_ and isco_ok_,
+      f"T - formula: {kj_['exact']}")
+dc_ = {k_: {kk_: sp.Rational(vv_) for kk_, vv_ in v_.items()} for k_, v_ in kj_["double_copy"].items()}
+add_ok_ = True
+for k_, v_ in dc_.items():
+    on_ = set(k_.split("+")) if k_ != "E2 only" else set()
+    add_ok_ &= (v_["u"] == -2*("PP" in on_) - 4*("EP" in on_) and v_["chi_u15"] == 8*("ES" in on_)
+                and v_["chi2_u2"] == -3)
+live_es_ = ks_.series(ks_.orbit_factor(ks_.ks_shell(dict(EE=1, PP=0, SS=0, EP=0, ES=1, PS=0))))
+live_e2_ = ks_.series(ks_.orbit_factor(ks_.ks_shell(dict(EE=1, PP=0, SS=0, EP=0, ES=0, PS=0))))
+check("KS2 way 1, the double copy: (k.p)^2 = (E + P + S)^2 has six pieces. E.E alone gives u: 0 and chi^2 u^2: -3; "
+      "P.P adds -2u, 2E.P adds -4u, 2E.S adds +8 chi u^(3/2) and nothing else, P.S and S.S add nothing. The numbers "
+      "simply add, in all 32 on/off settings",
+      add_ok_ and len(dc_) == 32 and live_es_["chi_u15"] == 8 and live_es_["u"] == 0 and live_e2_["chi2_u2"] == -3,
+      f"E.E only {kj_['double_copy']['E2 only']}; ES {kj_['double_copy']['ES']}; PP+EP "
+      f"{kj_['double_copy']['PP+EP']}; all {kj_['double_copy']['PP+EP+ES+PS+SS']}")
+sc_ = kj_["single_copy"]
+s2_ = ks_.series(ks_.orbit_factor(ks_.single_shell(0, 2)))
+p2_ = ks_.series(ks_.orbit_factor(ks_.single_shell(2, 0)))
+check("KS3 the single copy -(2M/r)(E + P + S): S gives +4 chi u^(3/2), P gives -1 u, E alone -3 chi^2 u^2. Doubling the "
+      "twist coupling doubles its number (S x 2 -> 8, first order) and doubling the push quadruples it (P x 2 -> -4, "
+      "second order): gravity's 8 = 2 x 4 and its 2E.P's 4 = 2^2 x 1",
+      sc_["P0S1"]["chi_u15"] == "4" and sc_["P1S0"]["u"] == "-1" and sc_["P0S0"]["chi2_u2"] == "-3"
+      and s2_["chi_u15"] == 8 and p2_["u"] == -4, f"single copy {sc_}; S x 2: {s2_}; P x 2: {p2_}")
+pn_ = kj_["pn"]
+vb_, Ub_ = sp.symbols("v U")
+Lb_ = sp.Matrix([[1, -vb_, 0, 0], [-vb_, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])      # boost to first order in v
+hb_ = sp.expand((Lb_.T*sp.diag(2*Ub_, 2*Ub_, 2*Ub_, 2*Ub_)*Lb_)[0, 1])
+check("KS4 way 2, the rules: in slow-motion form the spin number is 8 kappa and the u number -2(2 + 2 gamma - beta). "
+      "Rule A (a moving body's field is its rest field boosted) gives h_0x = -(2U + 2U) v, half from the time part and "
+      "half from the space part, so kappa = 1 and 8 = 4 + 4. With the push off (kappa = 0) the spin number is 0",
+      pn_["Kerr (beta=gamma=kappa=q=1)"]["chi_u15"] == "8" and pn_["no push (kappa=0)"]["chi_u15"] == "0"
+      and pn_["half push (kappa=1/2)"]["chi_u15"] == "4" and pn_["Kerr (beta=gamma=kappa=q=1)"]["u"] == "-6"
+      and pn_["no space warp, no squared clock (beta=gamma=0)"]["u"] == "-4" and hb_ == -4*Ub_*vb_,
+      f"boost h_0x = {hb_}; dials {pn_}")
+Rf_, ab_, Mb_ = sp.symbols("R a M", positive=True)
+shift_U_ = sp.series(Mb_/sp.sqrt(Rf_**2 - ab_**2), Rf_, sp.oo, 5).removeO()   # M/r in the equator, r = sqrt(R^2 - a^2)
+ring_U_ = sp.series(Mb_*sum(sp.legendre(l_, 0)**2*(sp.sqrt(2)*ab_)**l_/Rf_**(l_ + 1) for l_ in range(0, 5)),
+                    Rf_, sp.oo, 5).removeO()
+qk_ = sp.simplify(sp.expand(shift_U_).coeff(Rf_, -3)/(Mb_*ab_**2/2))
+check("KS5 the shape: the -3 chi^2 u^2 is set by the body's quadrupole alone (shape dial q gives -3q: 0, -3, -6), and "
+      "Kerr's q = 1 is the shifted source's own: in the equator M/r = M/R + M a^2/(2 R^3) + ... in flat radius R. The "
+      "rules don't fix q. A ring with Kerr's mass, spin and shape has radius sqrt(2) a and turns at c/sqrt(2)",
+      pn_["no shape (q=0)"]["chi2_u2"] == "0" and pn_["double shape (q=2)"]["chi2_u2"] == "-6" and qk_ == 1
+      and sp.simplify(ring_U_.coeff(Rf_, -3) - Mb_*ab_**2/2) == 0
+      and sp.simplify((ab_/(sp.sqrt(2)*ab_))**2 - sp.Rational(1, 2)) == 0,
+      f"q from the shift = {qk_}; ring's 1/R^3 term {ring_U_.coeff(Rf_, -3)}; ring speed J/(M R) = 1/sqrt(2)")
+sims_ = kj_["simulated"]
+s_live_, p_live_ = ks_.simulate(dict(EE=1, PP=0, SS=0, EP=0, ES=1, PS=0), 0.05, 0.7)
+check("KS6 simulated orbits: integrating Hamilton's equations of the exact Kerr-Schild mass shell (full, E.E + 2E.S "
+      "only, E.E only; chi = +-0.7, u = 0.05), the closest point turns per lap by 2 pi (1/sqrt(T) - 1) to better than "
+      "1e-7", all(v_["rel_diff"] < 1e-7 for v_ in sims_.values()) and abs(s_live_ - p_live_)/abs(p_live_) < 1e-7,
+      f"{ {k_: round(v_['rel_diff'], 12) for k_, v_ in sims_.items()} }; live E.E + 2E.S, chi 0.7: "
+      f"{abs(s_live_ - p_live_)/abs(p_live_):.1e}")
+zs_ = kj_["isco_zamo_speed"]; pg_ = kj_["product_form_gap"]
+check("KS7 what doesn't carry over: the orbit page's product form T = (Delta/r^2)(1 - (2v)^2), Delta/r^2 = "
+      "1 - 2u + chi^2 u^2, with v the speed seen by the local frame turning with the hole, holds for chi = 0 and fails for chi = +-0.5 (off by 0.08 at r = 10M); "
+      "and that speed at the innermost stable orbit is c/2 only at chi = 0 (and in the limit chi -> 1)",
+      abs(float(pg_["r=10,chi=0"])) < 1e-40 and abs(float(pg_["r=10,chi=0.5"])) > 0.05
+      and abs(float(pg_["r=10,chi=-0.5"])) > 0.05 and zs_["0"] == "0.5"
+      and all(abs(float(zs_[c_]) - 0.5) > 0.03 for c_ in ("0.3", "0.6", "0.9", "-0.5", "-0.9")),
+      f"gaps {pg_}; ISCO speeds {zs_}")
+results["KS_kerr_split"] = {"double_copy": kj_["double_copy"]["PP+EP+ES+PS+SS"], "single_copy": sc_,
+                            "isco_zamo_speed": zs_}
+
+# ================================================================ TW1-TW5  why the tower of shapes leaves one -3 (round 17)
+# The shifted source has a whole tower of shapes (Kerr's M (ia)^l), yet T has a single shape term. tower.py.
+import tower as tw_  # noqa: E402
+twj_ = json.load(open(os.path.join(HERE, "tower.json")))
+Rt_, at_, Mt_, rt_ = tw_.R, tw_.a, tw_.M, tw_.r
+Ts_ = tw_.T_newton(tw_.SHIFTED)
+Ts_r_ = sp.simplify(Ts_.subs(Rt_, sp.sqrt(rt_**2 + at_**2)))
+w2_r_ = sp.simplify(tw_.omega2(tw_.SHIFTED).subs(Rt_, sp.sqrt(rt_**2 + at_**2)))
+flat_ = tw_.coeff_list(sp.series(Ts_, at_, 0, 11).removeO(), Rt_)
+check("TW1 Newton around the shifted source: in the equator its pull is -M/sqrt(R^2 - a^2) in flat radius R, which is "
+      "-M/r in the shift's own radius r = sqrt(R^2 - a^2). Kepler's law then holds exactly in r (Omega^2 = M/r^3) and "
+      "the orbit factor is exactly T = 1 - 3a^2/r^2. In flat radius the same T is 1 - 3(a/R)^2 - 3(a/R)^4 - ...: "
+      "every shape contributes, and in r they sum to one term",
+      sp.simplify(Ts_r_ - (1 - 3*at_**2/rt_**2)) == 0 and sp.simplify(w2_r_ - Mt_/rt_**3) == 0
+      and all(c_ == -3 for c_ in flat_), f"T in r: {Ts_r_}; Omega^2 in r: {w2_r_}; flat-radius series {flat_}")
+stair_ = twj_["staircase_in_r"]; alone_ = [sp.Rational(v_) for v_ in twj_["shape_alone_leading"]]
+st_ok_ = True
+for n_ in range(1, 5):
+    row_ = [sp.Rational(v_) for v_ in stair_[f"up to (a/R)^{2*n_}"]]
+    st_ok_ &= all(v_ == 0 for v_ in row_[1:n_]) and row_[n_] == -alone_[n_]
+st_ok_ &= [sp.Rational(v_) for v_ in stair_["up to (a/R)^10"]] == [-3, 0, 0, 0, 0]
+check("TW2 the staircase: cut the shifted source's tower after its n-th shape and T in r keeps a leftover at "
+      "(a/r)^(2n+2); the next shape alone contributes exactly minus that leftover (-15/2, -105/8, -315/16, "
+      "-3465/128), so each shape cancels what the ones below leave, through (a/r)^10",
+      st_ok_, f"each shape alone {twj_['shape_alone_leading']}; staircase {stair_}")
+riv_ = twj_["rivals_in_r"]; frq_ = twj_["in_frequency"]
+check("TW3 rivals with Kerr's mass and quadrupole leave an endless series: quadrupole only gives T = 1 - 3(a/r)^2 + "
+      "15/2 (a/r)^4 - ..., a ring of radius sqrt(2) a gives 1 - 3(a/r)^2 - 15/4 (a/r)^4 - .... Against the measured "
+      "orbital frequency x = (M Omega)^(2/3), the shifted source gives exactly T = 1 - 3 chi^2 x^2 and the rivals "
+      "do not stop either",
+      all(v_ != "0" for v_ in riv_["quadrupole only"][1:] + riv_["ring of radius sqrt(2) a"][1:])
+      and frq_["shifted source"] == ["-3", "0", "0", "0", "0"]
+      and all(v_ != "0" for k_ in ("quadrupole only", "ring of radius sqrt(2) a") for v_ in frq_[k_][1:]),
+      f"in r {riv_}; against frequency {frq_}")
+Phk_ = sp.integrate(Rt_*Mt_/(Rt_**2 - at_**2)**sp.Rational(3, 2), Rt_)
+check("TW4 Kepler in r is the whole story: T = 4 + d ln(Omega^2)/d ln R for any equatorial pull, so T = 1 - 3a^2/r^2 "
+      "for every orbit holds exactly when Omega^2 = M/r^3; and Omega^2 = M/r^3 fixes the pull as the shifted source's",
+      sp.simplify(Phk_ - tw_.SHIFTED) == 0
+      and sp.simplify(Ts_ - (4 + Rt_*sp.diff(sp.log(tw_.omega2(tw_.SHIFTED)), Rt_))) == 0,
+      f"pull from Kepler minus shifted source: {sp.simplify(Phk_ - tw_.SHIFTED)}")
+ca_ = tw_.carter()
+Tee_ = ks_.orbit_factor(ks_.ks_shell(dict(EE=1, PP=0, SS=0, EP=0, ES=0, PS=0)))
+ee_ok_ = all(abs(Tee_(mp.mpf(u_), mp.mpf(c_)) - (1 - 3*mp.mpf(c_)**2*mp.mpf(u_)**2)) < mp.mpf("1e-45")
+             for u_, c_ in (("0.05", "0.7"), ("0.1", "-0.4")))
+xq_, chq_, yq_ = sp.symbols("x chi y", positive=True)
+uq_ = xq_*(1 - chq_*xq_**sp.Rational(3, 2))**sp.Rational(-2, 3)
+Traw_ = sp.expand(sp.series((1 - 6*uq_ + 8*chq_*uq_**sp.Rational(3, 2) - 3*chq_**2*uq_**2).subs(xq_, yq_**2),
+                            yq_, 0, 9).removeO())
+check("TW5 gravity does the same in the same radius: Kerr's radial motion in r is Carter's quartic "
+      "(E^2-1) r^4 + 2M r^3 + (a^2(E^2-1) - L^2) r^2 + 2M (L - aE)^2 r, whose only spin terms are a^2 (shape) and "
+      "L - aE (twist); the exact T = 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 follows from it symbolically, and the "
+      "period is Kepler's in r plus the clock gap, 1/Omega = r^(3/2)/sqrt(M) + a. The Kerr-Schild E.E piece alone "
+      "gives exactly 1 - 3 chi^2 u^2. Against the raw measured frequency T is an endless series "
+      "(-4 chi x^(5/2), +8 chi^2 x^3, ...); with the clock gap 2 pi a taken off the period it is the finite one",
+      ca_["quartic_ok"] and ca_["circular_ok"] and ca_["T_minus_formula"] == 0
+      and ca_["period_minus_kepler_plus_gap"] == 0 and ee_ok_
+      and Traw_.coeff(yq_, 5) == -4*chq_ and Traw_.coeff(yq_, 6) == 8*chq_**2,
+      f"T from the quartic: {ca_['T']}; period check {ca_['period_minus_kepler_plus_gap']}; "
+      f"raw-frequency series {Traw_}")
+results["TW_tower"] = {k_: twj_[k_] for k_ in ("staircase_in_r", "rivals_in_r", "in_frequency")}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

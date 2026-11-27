@@ -151,6 +151,41 @@ in X̂, Xacc = −(M²/2) s u (4 Xacc = −2M² s u). So g₀₀'s self part is 
 theorem own_field_squared (M s u : R) :
     -2 * ((2 * M * u - M * s)^2 - (2 * M * u)^2 - (M * s)^2) = -4 * (-2 * M^2 * s * u) := by grind
 
+/-- **Round 16: Kerr's orbit factor, split (checks KS2–KS4).** In s = √(M/r), Kerr's
+T = 1 − 6s² + 8χs³ − 3χ²s⁴ is the sum of its pieces: −2 from P·P and −4 from 2E·P (−4 = 2² × the single
+copy's −1), +8 from 2E·S (= 2 × the single copy's 4), and −3 from E·E (Newton's pull of the shifted source). -/
+theorem kerr_factor_pieces (s χ : R) :
+    1 - 6 * s^2 + 8 * χ * s^3 - 3 * χ^2 * s^4
+      = 1 + ((-2) + (-1) * 2^2) * s^2 + 2 * 4 * χ * s^3 + (-3) * χ^2 * s^4 := by grind
+
+/-- **Rule A's push (check KS4).** Boosting the rest field h₀₀ = 2U, hₓₓ = 2U to speed v gives
+h₀ₓ = −(h₀₀ + hₓₓ) v: half from the time part, half from the space part. -/
+theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
+
 end
+
+/-! ### Rounds 16 and 17 over a field (the topic file's `section Field`; proved by grind in place of
+linear_combination, mul_eq_zero and rw with sub_div) -/
+section Field
+variable {K : Type} [Field K]
+
+/-- **The ring with Kerr's mass, spin and shape (check KS5).** A ring of radius R with R² = 2a² (Kerr's
+quadrupole) and spin per unit mass R·v = a turns at v² = 1/2, i.e. c/√2. -/
+theorem ring_speed (a Rr v : K) (ha : a ≠ 0) (hR : Rr^2 = 2 * a^2) (hv : Rr * v = a) :
+    2 * v^2 = 1 := by
+  have h : a^2 * (2 * v^2 - 1) = 0 := by grind
+  have ha2 : a^2 ≠ 0 := by intro h0; apply ha; grind
+  grind
+
+/-- **Round 17: the tower of shapes sums to one term (check TW1).** Newton's orbit factor around the shifted
+source is (R² − 4a²)/(R² − a²) in flat radius R. In the shift's own radius r, r² = R² − a², it is exactly
+1 − 3a²/r²: Kerr's whole tower of shapes leaves a single −3. -/
+theorem shifted_orbit_factor (R a r : K) (hr : r^2 = R^2 - a^2) (h : r ≠ 0) :
+    (R^2 - 4 * a^2) / (R^2 - a^2) = 1 - 3 * a^2 / r^2 := by
+  have h1 : R^2 - a^2 = r^2 := hr.symm
+  have hr2 : r^2 ≠ 0 := by intro h0; apply h; grind
+  rw [h1]
+  grind
+end Field
 
 end CircleOp.SpinningRiver

@@ -39,6 +39,13 @@ How it got here:
 9. **A fourth rule (Part 10):** adding gravity's own field energy as a source closes that gap exactly, at every mass
    ratio. The last piece is a speeding-up body's own field multiplied by itself. With it, both body 1's clock rate and
    the orbit's size match general relativity's 2PN answers.
+10. **A spinning hole's orbit, split (Part 11):** each new number in Kerr's orbit factor comes from one piece of the
+   field. The spin's 8 is energy times the rays' twist, electromagnetism's 4 doubled, and equally the push rule's
+   4 + 4. The −3 is Newton's pull of the shifted source, the hole's shape, which the rules leave open and the shift
+   fixes.
+11. **Why only one −3 (Part 12):** Kepler's law holds exactly in the shift's own radius, the distance along a tangent
+   to Kerr's ring. In that radius the whole tower of shapes is one term, each shape cancelling what the ones below
+   leave, and gravity keeps the same law plus the clock gap.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -63,7 +70,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**73/73 pass**, about 17 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**85/85 pass**, about 18 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -996,6 +1003,223 @@ Three checks, the first two exact at m₁ = ⅓, ½, ¼, ⅔, ⅕ and ⅖:
   value at the body is compared that way; its gradient, which the orbit also uses, is checked through the orbit size
   and clock rate.
 
+## Part 11. Kerr's orbit factor, split two ways (round 16)
+
+Asked by Brennan: "And let's try the same three-piece split for a spinning black hole (Kerr), whose Kerr–Schild form
+is also exact." Asked which split, he said "Both": the orbit page's (`../../hypersphere/orbits/`) and the three
+two-body rules of Part 8.
+
+**Result: each new number in a spinning hole's orbit comes from exactly one piece of the field.** A slightly oval
+orbit in the equator turns by 2π(1/√T − 1) per lap, where T = 1 − 6M/r + 8a√M/r^{3/2} − 3a²/r² (exact, known). In
+the double copy, the spin's 8 is energy times the twist of the light rays: electromagnetism's 4, doubled. The −3 is
+Newton's pull of the shifted source, the same in both. In the rules, the 8 is the push of a moving source (4 from the
+time part, 4 from the space part), and the −3 is the hole's shape, which the rules leave open and the shift fixes.
+The orbit page's product form and its 2v = c landmark don't carry over.
+
+![Kerr's orbit factor split](figures/fig24_kerr_split.png)
+
+*Fig 24. (a) Way 1: which piece of (k·p)² makes each number, gravity (solid) beside electromagnetism (hatched).
+(b) Way 2: the spin number is 8κ, with κ the push rule's dial, and the shape number is −3q. (c) Where each number
+lives: the ring that has Kerr's mass, spin and shape has radius √2·a and turns at c/√2. (d) The speed at the
+innermost stable orbit is c/2 only for a hole that doesn't spin.*
+
+Write u = M/r (Boyer–Lindquist r) and χ = a/M, positive for an orbit going the way the hole spins. Then
+
+  T = (radial rate / orbital rate)² = 1 − 6u + 8χu^{3/2} − 3χ²u².
+
+The 6 is Schwarzschild's. The 8 and the 3 are new (KS1: our Kerr–Schild calculation gives this to 50 digits, and T
+is 0 at the known innermost stable orbit).
+
+### 11.1 Way 1: the double copy (KS2, KS3)
+
+Kerr's Kerr–Schild form is exact: flat space plus (2M/r) k k, with k the shifted source's light rays (Part 5). So a
+body of energy E and angular momentum L obeys
+
+  −E² + (flat radial and turning parts) + 1 − (2M/r)(k·p)² = 0,  k·p = E + P + S,
+
+where P is the radial push and S = −aL/(r² + a²) is the rays' twist. (E + P + S)² has six pieces. We put a dial on
+each, switched pieces on and off in all 32 ways, and read T's numbers off exactly. They simply add:
+
+| piece | u | χu^{3/2} | χ²u² |
+|---|---|---|---|
+| E·E (Newton's pull) | 0 | 0 | **−3** |
+| P·P | **−2** | 0 | 0 |
+| 2E·P | **−4** | 0 | 0 |
+| 2E·S | 0 | **+8** | 0 |
+| P·S, S·S | 0 | 0 | 0 |
+| all (Kerr) | −6 | +8 | −3 |
+
+Electromagnetism's version (the single copy, Kerr's field as a spinning charged disk) is linear,
+−(2M/r)(E + P + S). There S gives +4, P gives −1, and E alone gives the same −3. Doubling the twist doubles its
+number (S × 2 → 8): it acts at first order. Doubling the push quadruples its number (P × 2 → −4): it acts at second
+order. Gravity's 2E·S and 2E·P are those doubled couplings. So:
+
+- **The spin's 8 = 2 × 4:** energy times the twist, electromagnetism's spin number doubled.
+- **Schwarzschild's 6 = 2 + 2² × 1:** P·P gives 2, and 2E·P gives 4 = 2² times electromagnetism's 1. That is the
+  orbit page's double-copy reading, 2 + 2², now with the piece named.
+- **The −3:** E·E alone, Newton's own term, gives it in both copies. Newton's closed ellipses stay closed around a
+  point, but the shifted source isn't a point. Seen from the equator its M/r is M/R + Ma²/(2R³) + … in flat radius R,
+  an oblate body's pull. That pull alone turns the orbit forward a little each lap: the −3.
+
+Simulated orbits back this up (KS6). Integrating the exact Kerr–Schild equations of motion with all pieces, with only
+E·E + 2E·S, and with only E·E, at χ = ±0.7 and r = 20M, the closest point turns per lap by 2π(1/√T − 1) to between
+2 × 10⁻¹⁰ and 3 × 10⁻⁸.
+
+### 11.2 Way 2: the rules (KS4, KS5)
+
+The orbit page's 2 + 1 + 3 reading of the 6 (curved space, special relativity, gravity pulling on energy) holds for
+Kerr unchanged, because Kerr's 6 is Schwarzschild's. The clock-warp picture behind it needs a field that doesn't turn,
+though, so for the new numbers we use the slow-motion form that the rules of Part 8 build, with dials:
+
+  g_tt = −1 + 2U − 2βU²,  g_tφ = −2κMa/r,  g_rr = 1 + 2γU,  g_φφ = r²(1 + 2γU),  U = M/r + qMa²/(2r³).
+
+Then the u number is −2(2 + 2γ − β), the spin number is 8κ, and the shape number is −3q. Each new number depends on
+one dial only:
+
+- **The push makes the 8.** Rule A sends a body's field out at light speed, so a moving (here turning) source's field
+  is its rest field boosted. Boosting h₀₀ = 2U and hₓₓ = 2U to speed v gives h₀ₓ = −(2U + 2U)v: half from the time
+  part, half from the space part. That sets κ = 1, so 8 = 4 + 4. With the push off, the spin number is 0.
+- **The shape makes the −3.** It is set by the body's quadrupole alone. The rules take each body's rest field as
+  given, so they don't fix q. Kerr's q = 1 is the shifted source's own (the same Ma²/(2R³) as in 11.1). A ring with
+  Kerr's mass, spin and shape would have radius √2·a and turn at c/√2.
+
+So the 8 is universal for any spinning body with spin Ma: it comes from the push rule and the spin alone. The −3 is
+specific to Kerr's shape, and the shift by i·a (Part 4) is what supplies it.
+
+### 11.3 What doesn't carry over (KS7)
+
+- **The product form.** For Schwarzschild, 1 − 6u = (1 − 2u)(1 − (2v)²), with v the orbit's local speed. For Kerr,
+  with v the speed seen by the frame that turns with the hole, (Δ/r²)(1 − (2v)²) misses T by 0.08 at r = 10M, χ = ½
+  (and by −0.09 going against the spin).
+- **The 2v = c landmark.** For Schwarzschild the innermost stable orbit is where the local speed is c/2. For Kerr it
+  isn't: 0.534c at χ = 0.3, 0.577c at 0.6, 0.625c at 0.9, back down toward 0.5c as χ → 1. Against the spin: 0.456c at
+  χ = 0.5, 0.429c at 0.9.
+
+### 11.4 What this means, on its own merits
+
+- **What it contributes:** both splits give one clean attribution. The spin number is the energy-times-twist cross
+  term, which is the same thing as the push rule. The shape number is Newton's pull of the shifted source. Each number
+  in T can be switched off by one dial and nothing else changes at that order. The double copy's doubling (first order
+  ×2, second order ×4) explains both 8 = 2 × 4 and the orbit page's 4 = 2² × 1.
+- **Lead?** The −3 is a direct, measurable trace of the shift by i·a: it is the shifted source's quadrupole, and the
+  rules alone can't produce it. That ties Part 4's reading of spin as a shift to an orbit number, which is a lead for
+  this theory. Kerr's quadrupole Q = −Ma² is the hole's "no-hair" value; a spinning star has a different q, and its
+  −3q would differ. The 8, on the other hand, is not new: it is the Lense–Thirring turn, and it would be the same for
+  any spinning body.
+- **Not a lead:** the product form and the c/2 landmark are Schwarzschild-only.
+- **Ours:** the piece-by-piece table in the exact Kerr–Schild mass shell, the doubling reading (8 = 2 × 4,
+  4 = 2² × 1), the reading of the −3 as the shifted source's Newtonian pull with q = 1 from the shift, the √2·a ring
+  at c/√2 (worked out here), and the two failures.
+- **Known:** Kerr's epicyclic frequencies and T (Okazaki, Kato & Fukue 1987; Kato 1990), the Kerr–Schild double copy
+  and Kerr's single copy as a spinning charged disk (Monteiro, O'Connell & White 2014), the Lense–Thirring and
+  quadrupole terms in an orbit's turn, and the (2 + 2γ)/4 strength of the gravitomagnetic field in the PPN framework
+  (Will).
+
+## Part 12. Why the tower of shapes leaves only one −3 (round 17)
+
+Asked in Part 11, and Brennan said yes: the shifted source is not a point. From far away it has a whole tower of
+shapes, a quadrupole, a hexadecapole and so on (Kerr's "no-hair" tower M(ia)^l). Yet Kerr's exact orbit factor
+T = 1 − 6u + 8χu^{3/2} − 3χ²u² has one shape term. Why does it stop?
+
+**Result: Kepler's law holds exactly in the shift's own radius, and in that radius the whole tower is one term.**
+Measure distance not from the hole's center but along a tangent to Kerr's ring, r = √(R² − a²). In that radius
+Newton's orbit around the shifted source obeys Kepler's law exactly, Ω² = M/r³, and its orbit factor is exactly
+1 − 3a²/r². In ordinary flat radius R the same orbit factor is 1 − 3(a/R)² − 3(a/R)⁴ − 3(a/R)⁶ − …: every shape
+adds its share, and each higher shape cancels exactly what the ones below it leave over. A body with only Kerr's
+quadrupole, or a ring with the same quadrupole, never stops. Gravity works the same way in the same radius. Kerr's
+radial motion there is a quartic whose only spin terms are a² and the twist, and its period is Kepler's plus Part 1's
+clock gap 2πa. Taking the clock gap off the measured period makes the finite T a statement about measurable
+frequencies.
+
+![why the tower leaves one −3](figures/fig25_tower.png)
+
+*Fig 25. (a) The staircase: T − 1 in the shift's radius r, with the shifted source's tower cut after each shape.
+Each new shape wipes out the leftover of the ones below it; rivals with Kerr's mass and quadrupole never stop.
+(b) One curve, two radii: in flat radius every shape adds −3, in r it is one term. (c) Why: r is the distance along
+a tangent to Kerr's ring, and in r Newton's orbit is exactly Kepler's. (d) For Kerr itself, against the measured
+orbital frequency: with the clock gap taken off the period, the finite form is exact; without it, it misses.*
+
+### 12.1 Newton around the shifted source (TW1, TW4)
+
+In the equator the shifted source pulls with Φ = −M/√(R² − a²): that is −M/r with r² = R² − a², the real distance to
+the point i·a on the axis. Seen from above, r is the length of a tangent from the orbiting body to a ring of radius a,
+which is Kerr's ring. For near-circular orbits in any such pull,
+
+  Ω² = Φ′/R,  T = (radial rate / orbital rate)² = 4 + d ln Ω² / d ln R.
+
+For the shifted source Ω² = M/r³ exactly: Kepler's third law, with r in place of the distance. Then
+
+  T = 1 − 3a²/r²  exactly,  and in flat radius  T = (R² − 4a²)/(R² − a²) = 1 − 3(a/R)² − 3(a/R)⁴ − ….
+
+It works the other way too: asking for Ω² = M/r³ at every radius fixes the pull as the shifted source's (TW4). So
+"only one −3" and "Kepler's law holds in r" are the same statement.
+
+Against the measured orbital frequency, x = (MΩ)^{2/3} = M/r exactly, so T = 1 − 3χ²x² with no reference to any
+radius (TW3).
+
+### 12.2 The staircase (TW2, TW3)
+
+Give the shifted source only its first few shapes and see what is left in r:
+
+| tower cut after | (a/r)² | (a/r)⁴ | (a/r)⁶ | (a/r)⁸ | (a/r)¹⁰ |
+|---|---|---|---|---|---|
+| quadrupole | −3 | +15/2 | −75/4 | +375/8 | … |
+| hexadecapole (2⁴) | −3 | 0 | +105/8 | −735/16 | … |
+| 2⁶-pole | −3 | 0 | 0 | +315/16 | … |
+| 2⁸-pole | −3 | 0 | 0 | 0 | +3465/128 |
+| all shapes | −3 | 0 | 0 | 0 | 0 |
+
+Each shape on its own adds −15/2, −105/8, −315/16, −3465/128 at its order: exactly minus what was left. So the
+hexadecapole is there to cancel what the quadrupole leaves, the 2⁶-pole to cancel what both leave, and so on.
+
+Bodies with Kerr's mass and quadrupole but other higher shapes leave an endless series, in r and against the measured
+frequency:
+
+- **Quadrupole only:** T = 1 − 3(a/r)² + 15/2 (a/r)⁴ − 75/4 (a/r)⁶ + …; against frequency, 1 − 3χ²x² + 15/2 χ⁴x⁴ − ….
+- **A ring of radius √2·a (Part 11's ring):** T = 1 − 3(a/r)² − 15/4 (a/r)⁴ − 15/4 (a/r)⁶ − …; against frequency,
+  1 − 3χ²x² − 15/4 χ⁴x⁴ − ….
+
+### 12.3 Gravity in the same radius (TW5)
+
+Kerr's Boyer–Lindquist radius is the same r. In it, Kerr's equatorial radial motion is Carter's quartic,
+
+  R(r) = (E² − 1)r⁴ + 2Mr³ + (a²(E² − 1) − L²)r² + 2M(L − aE)²r,
+
+whose only spin terms are a² (the shape) and L − aE (the twist). The exact T = 1 − 6u + 8χu^{3/2} − 3χ²u² follows
+from it symbolically. The orbital period is Kepler's in r plus Part 1's clock gap:
+
+  1/Ω = r^{3/2}/√M + a,
+
+and the Kerr–Schild E·E piece of Part 11 on its own gives exactly 1 − 3χ²u², Newton's answer above. In the double
+copy, then, the shape's −3 is exact in its own right, while the other pieces only add exactly once all are on.
+
+Against the raw measured frequency, x = (MΩ)^{2/3}, Kerr's T is an endless series: 1 − 6x + 8χx^{3/2} − 3χ²x² −
+4χx^{5/2} + 8χ²x³ − …. Take the clock gap off the period, 1/Ω̃ = 1/Ω − a, and with x̃ = (MΩ̃)^{2/3} the finite form
+is exact: T = 1 − 6x̃ + 8χx̃^{3/2} − 3χ²x̃². Both the period and a are measurable, so this is a statement about
+measurements, not about a choice of radius.
+
+### 12.4 What this means, on its own merits
+
+- **What it contributes:** a plain reason for the single −3. The shifted source is the one body, symmetric above and below its equator, for
+  which Kepler's law holds exactly, in the tangent distance to its ring. Its tower of shapes is the tower that keeps that
+  law, each shape cancelling the leftovers of the ones below, and gravity keeps the same law in the same radius,
+  plus the clock gap. That ties three earlier pieces together: the shift (Part 4), the ring (Part 3), and the clock
+  gap (Part 1).
+- **Lead?** Yes, for this theory. "Kepler holds in the distance to the shifted source" is a one-line property that
+  fixes Kerr's whole tower of shapes, and the clock gap is the only correction gravity makes to it. Two tests follow:
+  whether the same holds off the equator (where the shift's distance is complex), and whether the rules of Part 8 can
+  be phrased so a moving body's field keeps Kepler in its own shifted distance. A practical side: for an orbit around
+  a spinning object, a measured T that departs from 1 − 6x̃ + 8χx̃^{3/2} − 3χ²x̃² is a sign that its higher shapes
+  are not Kerr's.
+- **Ours:** the exact Newtonian orbit factor 1 − 3a²/r² and Kepler in r for the shifted source, the reading of r as
+  the tangent distance to the ring, the staircase, the rivals' series, Kepler-in-r fixing the source, the E·E piece
+  being exact, and the clock-gap-corrected frequency that makes Kerr's T finite. We didn't find these in the papers
+  we checked, but parts may be known.
+- **Known:** the shifted source as Euler's two fixed centres M/2 at ±i·a, separable in oblate coordinates (Vinti 1959;
+  Keres 1967; Israel 1970), with a Carter-like constant for Kerr's pattern of shapes (Mirshekari & Will, arXiv 2010), and as the
+  unique Newtonian potential with Kerr's separability (Glampedakis & Apostolatos 2013); Carter's separation of Kerr geodesics (Carter 1968); the circular-orbit energy,
+  angular momentum and period 1/Ω = r^{3/2}/√M + a (Bardeen, Press & Teukolsky 1972).
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -1029,6 +1253,14 @@ Three checks, the first two exact at m₁ = ⅓, ½, ¼, ⅔, ⅕ and ⅖:
   (1.62 → 0.44 → 0.13 → 0 at m₁ = ⅓). The last piece is a speeding-up body's own field squared, round 14's
   "quarter point term". The orbit's size then also matches the known 2PN law. The lead held for circular orbits; the
   sources' shape is still read from general relativity, not derived.
+- **A spinning hole's orbit (Part 11):** Kerr's orbit factor 1 − 6u + 8χu^{3/2} − 3χ²u² splits cleanly both ways.
+  The 8 is the energy-times-twist cross term (2 × electromagnetism's 4), which is the push rule's 4 + 4. The −3 is
+  Newton's pull of the shifted source (q = 1), which the rules can't supply. The orbit page's product form and its
+  2v = c landmark don't carry over.
+- **Why only one −3 (Part 12):** Newton's orbit around the shifted source obeys Kepler's law exactly in
+  r = √(R² − a²) and has T = 1 − 3a²/r² exactly; the tower of shapes cancels step by step, rivals with Kerr's
+  quadrupole never stop, and Kerr keeps Kepler in r plus the clock gap. Against the measured period with the clock
+  gap taken off, Kerr's T is finite.
 - **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule. The
   waves' back-push and the wave formula are put in from known results. 2PN is reached for circular orbits with the
   fourth rule (Part 10); 2.5PN and beyond, and the merger, are still out of reach.
@@ -1038,9 +1270,9 @@ Three checks, the first two exact at m₁ = ⅓, ½, ¼, ⅔, ⅕ and ⅖:
 
 ## Files
 
-- `checks.py`: 73 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 85 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -1048,6 +1280,11 @@ Three checks, the first two exact at m₁ = ⅓, ½, ¼, ⅔, ⅕ and ⅖:
   (stages, formulas, the point-term closure, and round 15's own-field-squared stage with the orbit-size check against
   the known 2PN law). Uses `fourth_rule_cache/` (the closed-form pieces at each body); with
   `--fresh` it recomputes them (about 6 minutes per mass ratio).
+- `kerr_split.py`: Part 11, Kerr's orbit factor with a dial on each piece of the field (double copy, single copy,
+  the rules' slow-motion form), the innermost-orbit speeds and simulated orbits; writes `kerr_split.json` (about
+  15 seconds).
+- `tower.py`: Part 12, the shifted source's tower of shapes, the staircase, the rivals, the version against measured
+  frequency, and Kerr from Carter's quartic; writes `tower.json` (about 10 seconds).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -1055,13 +1292,13 @@ Three checks, the first two exact at m₁ = ⅓, ½, ¼, ⅔, ⅕ and ⅖:
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the twenty-three figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`).
+- `figures.py`: the twenty-five figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
-  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`. Written without a Lean
+  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`. Written without a Lean
   toolchain; the repo copy is the shared library's `FusedAlgebra.Topics.SpinningRiver` (namespace
-  `CircleOp.SpinningRiver`, `ring` written as `grind`), which compiles clean, rounds 13 to 15 included from Nov 27. It
-  builds on `FusedAlgebra.Topics.JetFields`.
+  `CircleOp.SpinningRiver`, `ring`, `linear_combination` and `rw` written as `grind`), which compiles clean,
+  rounds 13 to 17 included from Nov 27. It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -1108,3 +1345,7 @@ Three checks, the first two exact at m₁ = ⅓, ½, ¼, ⅔, ⅕ and ⅖:
 | round 14's leftover as one point-like term m_a m_b²/(4 r₁₂² r_b) per body, closing the miss at every ratio | **ours** (O10) |
 | the −2V² cross of a body's M/r with its own acceleration term −(M/2) a·n (the retarded potential) | known (part of the 2PN field; Blanchet, Faye & Ponsot 1998) |
 | identifying the leftover as that cross term, so the rules + field energy close the 2PN clock rate and orbit size exactly, and g₀₀ at a body matches the paper's Eq. (7.6a) | **ours** (O11, O12) |
+| Kerr's epicyclic frequencies, T = 1 − 6u + 8χu^{3/2} − 3χ²u²; Kerr–Schild double copy, Kerr's single copy as a spinning charged disk; Lense–Thirring and quadrupole orbit terms; PPN gravitomagnetic strength (2 + 2γ)/4 | known (Okazaki, Kato & Fukue 1987; Kato 1990; Monteiro, O'Connell & White 2014; Will) |
+| T's numbers piece by piece in the exact Kerr–Schild mass shell (E·E: −3, P·P: −2, 2E·P: −4, 2E·S: +8); 8 = 2 × 4 and 4 = 2² × 1 from first- and second-order doubling; the −3 as the shifted source's Newtonian pull, q = 1 from the shift; the √2·a ring at c/√2; the product form and c/2 landmark failing for Kerr | **ours** (KS1–KS7) |
+| shifted source as Euler's two centres M/2 at ±i·a, separable (Vinti 1959; Keres 1967; Israel 1970), unique with Kerr's separability; Carter's quartic; circular-orbit period 1/Ω = r^{3/2}/√M + a | known (Mirshekari & Will, arXiv 2010; Glampedakis & Apostolatos 2013; Carter 1968; Bardeen, Press & Teukolsky 1972) |
+| Newton's orbit factor 1 − 3a²/r² and Kepler in r for the shifted source; r as the tangent distance to the ring; the staircase; the rivals' series; Kepler in r fixing the source; the E·E piece exact; Kerr's T finite against the period with the clock gap taken off | **ours** (TW1–TW5), not found in the papers checked |

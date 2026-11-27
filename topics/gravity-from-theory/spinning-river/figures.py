@@ -871,7 +871,187 @@ def fig23():
     ax.set_title("a fourth rule: gravity's own energy gravitates, gap closed", fontsize=10.5)
     save(fig, "fig23_fourth_rule.png")
 
+# ---------------------------------------------------------------- fig24 Kerr's orbit factor split, two ways (round 16)
+def fig24():
+    import mpmath as mp_
+    import kerr_split as ks
+    kj = json.load(open(os.path.join(HERE, "kerr_split.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    # (a) the double copy: which piece of (k.p)^2 makes each number, and the single copy beside it
+    ax = axs[0, 0]
+    groups = ["u  (6 in Schwarzschild)", r"$\chi\, u^{3/2}$  (spin)", "χ² u²  (shape)"]
+    x0 = np.arange(3)
+    dbl = [[("P·P", -2, ORANGE), ("2E·P", -4, RED)], [("2E·S", 8, BLUE)], [("E·E", -3, PURPLE)]]
+    sgl = [[("P", -1, RED)], [("S", 4, BLUE)], [("E", -3, PURPLE)]]
+    for i in range(3):
+        b = 0
+        for lab, v, c in dbl[i]:
+            ax.bar(x0[i] + 0.2, v, 0.36, bottom=b, color=c, alpha=0.9)
+            ax.text(x0[i] + 0.2, b + v/2, f"{lab}\n{v:+d}", ha="center", va="center", color="w", fontsize=9)
+            b += v
+        for lab, v, c in sgl[i]:
+            ax.bar(x0[i] - 0.2, v, 0.36, color="white", ec=c, hatch="//", lw=1.5)
+            ax.text(x0[i] - 0.2, v + (0.35 if v > 0 else -0.35), f"{lab}: {v:+d}", ha="center",
+                    va="bottom" if v > 0 else "top", color=c, fontsize=9)
+    ax.axhline(0, color="k", lw=0.6)
+    ax.set_xticks(x0); ax.set_xticklabels(groups, fontsize=9.5); ax.set_ylim(-7.5, 9.8)
+    ax.set_ylabel(r"number in $T = 1 - 6u + 8\chi u^{3/2} - 3\chi^2u^2$")
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(fc="white", ec="k", hatch="//", label="single copy: −(2M/r)(E + P + S)"),
+                       Patch(fc=GREY, label="double copy (gravity): −(2M/r)(E + P + S)²")], fontsize=8.5, loc="upper left")
+    ax.text(1.45, -7.2, "spin: 8 = 2 × 4 (first order, doubled)\nSchwarzschild's 4 = 2² × 1 (second order, quadrupled)\n"
+            "shape: the same −3 in both: Newton's pull of the shifted source", ha="center", va="bottom", fontsize=8.3)
+    ax.set_title("(a) way 1: each number comes from one piece of the field", fontsize=10.5)
+    # (b) the rules: dial the push and the shape
+    ax = axs[0, 1]
+    kap = np.linspace(0, 1.25, 50)
+    ax.plot(kap, 8*kap, color=BLUE, lw=2)
+    ax.plot(kap, -3*kap, color=PURPLE, lw=2)
+    pn = kj["pn"]
+    pts = [(0, float(sp_frac(pn["no push (kappa=0)"]["chi_u15"])), BLUE), (0.5, float(sp_frac(pn["half push (kappa=1/2)"]["chi_u15"])), BLUE),
+           (1, float(sp_frac(pn["Kerr (beta=gamma=kappa=q=1)"]["chi_u15"])), BLUE),
+           (0, float(sp_frac(pn["no shape (q=0)"]["chi2_u2"])), PURPLE), (1, float(sp_frac(pn["Kerr (beta=gamma=kappa=q=1)"]["chi2_u2"])), PURPLE),
+           ]
+    for xx, yy, c in pts:
+        ax.plot(xx, yy, "o", ms=8, color=c, zorder=5)
+    ax.plot(1.25, -3*1.25, alpha=0)
+    ax.axvline(1, color=GREY, ls=":", lw=1)
+    ax.annotate("rule A: a moving body's field is its rest field boosted:\n"
+                "h₀ᵢ = −(2U [time part] + 2U [space part]) v\n→ κ = 1: spin number 4 + 4 = 8",
+                xy=(1, 8), xytext=(0.03, 8.4), fontsize=8.6, color=BLUE, arrowprops=dict(arrowstyle="->", color=BLUE))
+    ax.annotate("Kerr's shape (quadrupole Q = −Ma²): q = 1\nthe rules don't fix q; the shift by i·a does",
+                xy=(1, -3), xytext=(0.03, -4.6), fontsize=8.6, color=PURPLE, arrowprops=dict(arrowstyle="->", color=PURPLE))
+    ax.axhline(0, color="k", lw=0.6); ax.set_xlabel("dial value (κ or q)"); ax.set_ylabel("number in T")
+    ax.text(0.55, 3.0, "spin number = 8κ", color=BLUE, fontsize=9.5)
+    ax.text(0.55, -1.0, "shape number = −3q", color=PURPLE, fontsize=9.5)
+    ax.set_ylim(-5, 10.5)
+    ax.set_title("(b) way 2: the push rule makes the spin number, the shape makes the −3", fontsize=10.5)
+    # (c) the picture
+    ax = axs[1, 0]
+    ax.set_xlim(-5, 5); ax.set_ylim(-4.2, 4.2); ax.set_aspect("equal"); ax.axis("off")
+    th = np.linspace(0, 2*np.pi, 300)
+    ax.plot(1.0*np.cos(th), 0.35*np.sin(th), color=GREY, lw=1.5)
+    ax.text(0, -1.45, "shifted source:\nring of radius a", ha="center", fontsize=8.3, color=GREY)
+    ax.plot(1.414*np.cos(th), 0.5*np.sin(th), color=PURPLE, lw=1.6, ls="--")
+    ax.text(0, 0.75, "same mass, spin and shape:\na ring of radius √2·a\nturning at c/√2", ha="center", va="bottom", fontsize=8.3, color=PURPLE)
+    ax.annotate("", xy=(-0.5, -0.48), xytext=(0.5, -0.48), arrowprops=dict(arrowstyle="-|>", color=PURPLE))
+    rr_ = 3.4 + 0.25*np.cos(0.93*th*3)
+    ax.plot(rr_*np.cos(th*3)[:300], 0.75*rr_*np.sin(th*3)[:300], color=BLUE, lw=1.3)
+    ax.text(-4.8, 3.3, "orbit: the closest point turns each lap", fontsize=8.6, color=BLUE)
+    ax.text(-4.9, -3.3, "E·E: Newton's pull of the shifted source → −3χ²u²\n2E·S: energy × the rays' twist → +8χu³ᐟ²\n"
+            "P·P + 2E·P: energy × radial push, and push² → −6u", fontsize=8.6)
+    ax.set_title("(c) where each number lives", fontsize=10.5)
+    # (d) what doesn't carry over: the ISCO landmark 2v = c
+    ax = axs[1, 1]
+    chis = np.linspace(-0.98, 0.9999, 240)
+    vs = [abs(float(ks.zamo_speed(ks.isco(mp_.mpf(c)), mp_.mpf(c)))) for c in chis]
+    ax.plot(chis, vs, color=RED, lw=2, label="speed at the innermost stable orbit,\nseen by the local frame turning with the hole")
+    ax.axhline(0.5, color=GREY, ls="--", lw=1.2, label="c/2: Schwarzschild's landmark (2v = c)")
+    ax.set_xlabel("spin χ = a/M (negative: orbit against the spin)"); ax.set_ylabel("v / c")
+    ax.legend(fontsize=8.5, loc="lower right"); ax.set_ylim(0.38, 0.68)
+    ax.text(-0.95, 0.64, "the product form 1 − 6u = (1 − 2u)(1 − (2v)²)\nalso fails: off by 0.08 at r = 10M, χ = ½",
+            fontsize=8.6, color=RED)
+    ax.set_title("(d) what doesn't carry over to a spinning hole", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig24_kerr_split.png")
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23):
+# ---------------------------------------------------------------- fig25 why the tower of shapes leaves one -3 (round 17)
+def fig25():
+    from fractions import Fraction as Fr
+    tj = json.load(open(os.path.join(HERE, "tower.json")))
+    fig, axs = plt.subplots(2, 2, figsize=(14.5, 10.5))
+    # (a) the staircase, as a table of numbers
+    ax = axs[0, 0]
+    rows = [("shifted source, cut after its quadrupole", tj["staircase_in_r"]["up to (a/R)^2"]),
+            ("... after its 2⁴-pole (hexadecapole)", tj["staircase_in_r"]["up to (a/R)^4"]),
+            ("... after its 2⁶-pole", tj["staircase_in_r"]["up to (a/R)^6"]),
+            ("... after its 2⁸-pole", tj["staircase_in_r"]["up to (a/R)^8"]),
+            ("the whole shifted source", tj["staircase_in_r"]["up to (a/R)^10"]),
+            ("rival: quadrupole only", tj["rivals_in_r"]["quadrupole only"]),
+            ("rival: ring of radius √2·a", tj["rivals_in_r"]["ring of radius sqrt(2) a"])]
+    ax.set_xlim(-3.6, 5); ax.set_ylim(-1.7, len(rows) + 0.4); ax.axis("off")
+    for j, lab in enumerate(["(a/r)²", "(a/r)⁴", "(a/r)⁶", "(a/r)⁸", "(a/r)¹⁰"]):
+        ax.text(j + 0.5, len(rows) - 0.1, lab, ha="center", fontsize=9.5, weight="bold")
+    for i, (lab, vals) in enumerate(rows):
+        y = len(rows) - 1 - i - 0.5
+        if i == 5:
+            ax.axhline(y + 0.5, xmin=0.02, xmax=0.98, color=GREY, lw=0.8)
+        ax.text(-0.1, y, lab, ha="right", va="center", fontsize=8.8, color=BLUE if i < 5 else RED)
+        for j, v in enumerate(vals):
+            f = Fr(v)
+            c = GREEN if f == 0 else (PURPLE if j == 0 else (ORANGE if i < 5 else RED))
+            ax.add_patch(FancyBboxPatch((j + 0.08, y - 0.38), 0.84, 0.76, boxstyle="round,pad=0.02",
+                                        fc=c, alpha=0.18 if f != 0 else 0.35, ec=c))
+            ax.text(j + 0.5, y, "0" if f == 0 else (f"{float(f):+.4g}" if f.denominator > 16 else str(f)),
+                    ha="center", va="center", fontsize=8.6, color="k")
+    ax.text(-3.4, -1.62, "orbit factor T − 1 in the shift's radius r: each new shape wipes out the leftover\n"
+            "of the ones below it (orange → green); a body with only Kerr's quadrupole never stops", fontsize=8.6)
+    ax.set_title("(a) the staircase: Kerr's shapes cancel one another", fontsize=10.5)
+    # (b) the same T in flat radius R and in the shift's radius r
+    ax = axs[0, 1]
+    q = np.linspace(0, 0.9, 200)            # a/R
+    Tflat = (1 - 4*q**2)/(1 - q**2)
+    ax.plot(q, Tflat, color=BLUE, lw=2.4, label="shifted source: exact T")
+    part = np.ones_like(q)
+    for n in range(1, 6):
+        part = part - 3*q**(2*n)
+        ax.plot(q, part, color=BLUE, lw=0.9, ls=":", alpha=0.8)
+    ax.plot([], [], color=BLUE, lw=0.9, ls=":", label="1 − 3(a/R)² − 3(a/R)⁴ − …, cut after 1 to 5 terms")
+    ax.set_xlabel("a / R   (R: flat radius)"); ax.set_ylabel("orbit factor T")
+    ax.axhline(0, color="k", lw=0.5); ax.set_ylim(-1.6, 1.05)
+    ax2 = ax.twiny()
+    rq = q/np.sqrt(1 - q**2)
+    ax2.set_xlim(ax.get_xlim()); tick_r = np.array([0, 0.25, 0.5, 0.75, 1.0, 1.5])
+    ax2.set_xticks(tick_r/np.sqrt(1 + tick_r**2)); ax2.set_xticklabels([f"{t:g}" for t in tick_r])
+    ax2.set_xlabel("a / r   (r = √(R² − a²): distance to the shifted source)", fontsize=9)
+    ax.text(0.04, -0.9, "in flat radius every shape adds −3,\nin the shift's radius it is one term:\n"
+            "T = 1 − 3a²/r²  and  Ω² = M/r³ (Kepler)", fontsize=9.2, color=BLUE)
+    ax.legend(fontsize=8.3, loc="lower left")
+    ax.set_title("(b) one curve, two radii", fontsize=10.5, pad=34)
+    # (c) the picture
+    ax = axs[1, 0]
+    ax.set_xlim(-5, 5); ax.set_ylim(-4.3, 4.3); ax.set_aspect("equal"); ax.axis("off")
+    th = np.linspace(0, 2*np.pi, 300)
+    A_, R_ = 1.1, 3.4
+    cx, cy = -1.6, 0.4
+    ax.plot(cx + A_*np.cos(th), cy + A_*np.sin(th), color=GREY, lw=1.6)
+    ax.text(cx, cy - A_ - 0.45, "Kerr's ring, radius a (seen from above)", ha="center", fontsize=8.3, color=GREY)
+    tx, ty = cx + A_**2/R_, cy + A_*np.sqrt(R_**2 - A_**2)/R_
+    ax.plot([cx, cx + R_], [cy, cy], color=PURPLE, lw=1.3); ax.text(cx + R_/2, cy - 0.35, "R (flat radius)", color=PURPLE, fontsize=9, ha="center")
+    ax.plot([cx, tx], [cy, ty], color=GREY, lw=1.0, ls=":"); ax.text((cx + tx)/2 - 0.25, (cy + ty)/2, "a", color=GREY)
+    ax.plot([tx, cx + R_], [ty, cy], color=BLUE, lw=2.0); ax.text((tx + cx + R_)/2 + 0.1, (ty + cy)/2 + 0.15, "r", color=BLUE, fontsize=12)
+    ax.plot(cx + R_, cy, "o", color="k"); ax.text(cx + R_ + 0.15, cy - 0.1, "orbiting body", fontsize=8.3)
+    ax.text(-4.8, 3.6, "the shift's radius r = √(R² − a²): the distance along a tangent to Kerr's ring", fontsize=8.6)
+    ax.text(-4.8, 2.9, "in r, Newton's orbit is Kepler's: Ω² = M/r³ exactly,", fontsize=8.8, color=BLUE)
+    ax.text(-4.8, 2.35, "and the only shape number left is −3a²/r²", fontsize=8.8, color=PURPLE)
+    ax.text(-4.8, -2.6, "gravity, in the same r:\n• radial motion is Carter's quartic: only a² (shape) and L − aE (twist)\n"
+            "• period = Kepler's in r + the clock gap: 1/Ω = r³ᐟ²/√M + a\n• so T stops at −3χ²u²", fontsize=8.6)
+    ax.set_title("(c) why: Kepler's law holds in the shift's radius", fontsize=10.5)
+    # (d) the measurable version for Kerr: against the period
+    ax = axs[1, 1]
+    chi = 0.7
+    xs = np.linspace(0.005, 0.12, 200)
+    def T_of_u(u):
+        return 1 - 6*u + 8*chi*u**1.5 - 3*chi**2*u**2
+    u_from_raw = xs*(1 - chi*xs**1.5)**(-2/3)
+    for K, ls in ((4, "--"), (6, "-.")):
+        coeffs = {2: -6, 3: 8*chi, 4: -3*chi**2, 5: -4*chi, 6: 8*chi**2, 7: -4*chi**3, 8: -10*chi**2/3}
+        ser = 1 + sum(c*xs**(k/2) for k, c in coeffs.items() if k <= K)
+        ax.plot(xs, ser - T_of_u(u_from_raw), ls, color=RED, lw=1.4,
+                label=f"raw frequency x: the finite form misses" if K == 4 else "… even with 2 more terms")
+    ax.axhline(0, color=GREEN, lw=2.2, label="clock gap taken off (1/Ω̃ = 1/Ω − a): the finite form is exact")
+    ax.set_xlabel("x = (MΩ)²ᐟ³, a measurable orbital frequency (χ = 0.7)"); ax.set_ylabel("finite form − true T")
+    ax.legend(fontsize=8.3, loc="lower left")
+    ax.set_title("(d) measurable: subtract Part 1's clock gap 2πa from the period", fontsize=10.5)
+    fig.tight_layout()
+    save(fig, "fig25_tower.png")
+
+
+def sp_frac(s):
+    from fractions import Fraction as Fr
+    return Fr(s)
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25):
     f()
 print("figures:", sorted(os.listdir(FIG)))

@@ -552,5 +552,175 @@
   "O12_g00_vs_bfp": {
     "1/2": "0",
     "2/5": "0"
+  },
+  "KS1 Kerr's orbit factor from the exact Kerr-Schild mass shell is T = 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 (to 50 digits at three points, prograde and retrograde), and it vanishes at Bardeen-Press-Teukolsky's innermost stable orbit (an independent formula) at chi = 0.5, 0.9, -0.5": {
+    "pass": true,
+    "detail": "T - formula: {'u=0.05,chi=0.7': '-6.223e-61', 'u=0.05,chi=-0.7': '-4.6673e-61', 'u=0.1,chi=0.3': '-3.5004e-61'}"
+  },
+  "KS2 way 1, the double copy: (k.p)^2 = (E + P + S)^2 has six pieces. E.E alone gives u: 0 and chi^2 u^2: -3; P.P adds -2u, 2E.P adds -4u, 2E.S adds +8 chi u^(3/2) and nothing else, P.S and S.S add nothing. The numbers simply add, in all 32 on/off settings": {
+    "pass": true,
+    "detail": "E.E only {'u': '0', 'chi_u15': '0', 'u2': '0', 'chi2_u2': '-3'}; ES {'u': '0', 'chi_u15': '8', 'u2': '0', 'chi2_u2': '-3'}; PP+EP {'u': '-6', 'chi_u15': '0', 'u2': '0', 'chi2_u2': '-3'}; all {'u': '-6', 'chi_u15': '8', 'u2': '0', 'chi2_u2': '-3'}"
+  },
+  "KS3 the single copy -(2M/r)(E + P + S): S gives +4 chi u^(3/2), P gives -1 u, E alone -3 chi^2 u^2. Doubling the twist coupling doubles its number (S x 2 -> 8, first order) and doubling the push quadruples it (P x 2 -> -4, second order): gravity's 8 = 2 x 4 and its 2E.P's 4 = 2^2 x 1": {
+    "pass": true,
+    "detail": "single copy {'P0S0': {'u': '0', 'chi_u15': '0', 'u2': '0', 'chi2_u2': '-3'}, 'P0S1': {'u': '0', 'chi_u15': '4', 'u2': '0', 'chi2_u2': '-3'}, 'P1S0': {'u': '-1', 'chi_u15': '0', 'u2': '1/2', 'chi2_u2': '-3'}, 'P1S1': {'u': '-1', 'chi_u15': '4', 'u2': '1/2', 'chi2_u2': '-3'}}; S x 2: {'u': 0, 'chi_u15': 8, 'u2': 0, 'chi2_u2': -3}; P x 2: {'u': -4, 'chi_u15': 0, 'u2': 14, 'chi2_u2': -3}"
+  },
+  "KS4 way 2, the rules: in slow-motion form the spin number is 8 kappa and the u number -2(2 + 2 gamma - beta). Rule A (a moving body's field is its rest field boosted) gives h_0x = -(2U + 2U) v, half from the time part and half from the space part, so kappa = 1 and 8 = 4 + 4. With the push off (kappa = 0) the spin number is 0": {
+    "pass": true,
+    "detail": "boost h_0x = -4*U*v; dials {'Kerr (beta=gamma=kappa=q=1)': {'u': '-6', 'chi_u15': '8', 'u2': '18', 'chi2_u2': '-3'}, 'no push (kappa=0)': {'u': '-6', 'chi_u15': '0', 'u2': '18', 'chi2_u2': '-3'}, 'half push (kappa=1/2)': {'u': '-6', 'chi_u15': '4', 'u2': '18', 'chi2_u2': '-3'}, 'no shape (q=0)': {'u': '-6', 'chi_u15': '8', 'u2': '18', 'chi2_u2': '0'}, 'double shape (q=2)': {'u': '-6', 'chi_u15': '8', 'u2': '18', 'chi2_u2': '-6'}, 'no space warp, no squared clock (beta=gamma=0)': {'u': '-4', 'chi_u15': '8', 'u2': '-8', 'chi2_u2': '-3'}}"
+  },
+  "KS5 the shape: the -3 chi^2 u^2 is set by the body's quadrupole alone (shape dial q gives -3q: 0, -3, -6), and Kerr's q = 1 is the shifted source's own: in the equator M/r = M/R + M a^2/(2 R^3) + ... in flat radius R. The rules don't fix q. A ring with Kerr's mass, spin and shape has radius sqrt(2) a and turns at c/sqrt(2)": {
+    "pass": true,
+    "detail": "q from the shift = 1; ring's 1/R^3 term M*a**2/2; ring speed J/(M R) = 1/sqrt(2)"
+  },
+  "KS6 simulated orbits: integrating Hamilton's equations of the exact Kerr-Schild mass shell (full, E.E + 2E.S only, E.E only; chi = +-0.7, u = 0.05), the closest point turns per lap by 2 pi (1/sqrt(T) - 1) to better than 1e-7": {
+    "pass": true,
+    "detail": "{'Kerr, chi=0.7': 2.2e-10, 'Kerr, chi=-0.7': 2.093e-09, 'E2+ES only, chi=0.7': 6.6e-11, 'E2+ES only, chi=-0.7': 2.677e-09, 'E2 only, chi=0.7': 2.7817e-08, 'E2 only, chi=-0.7': 2.7817e-08}; live E.E + 2E.S, chi 0.7: 6.6e-11"
+  },
+  "KS7 what doesn't carry over: the orbit page's product form T = (Delta/r^2)(1 - (2v)^2), Delta/r^2 = 1 - 2u + chi^2 u^2, with v the speed seen by the local frame turning with the hole, holds for chi = 0 and fails for chi = +-0.5 (off by 0.08 at r = 10M); and that speed at the innermost stable orbit is c/2 only at chi = 0 (and in the limit chi -> 1)": {
+    "pass": true,
+    "detail": "gaps {'r=10,chi=0': '7.77877e-62', 'r=10,chi=0.5': '0.081886', 'r=30,chi=0.5': '0.0208894', 'r=10,chi=-0.5': '-0.0948723'}; ISCO speeds {'0': '0.5', '0.3': '0.5341', '0.6': '0.5771', '0.9': '0.6245', '0.99': '0.5969', '0.999999': '0.5059', '-0.5': '0.4563', '-0.9': '0.4291'}"
+  },
+  "KS_kerr_split": {
+    "double_copy": {
+      "u": "-6",
+      "chi_u15": "8",
+      "u2": "0",
+      "chi2_u2": "-3"
+    },
+    "single_copy": {
+      "P0S0": {
+        "u": "0",
+        "chi_u15": "0",
+        "u2": "0",
+        "chi2_u2": "-3"
+      },
+      "P0S1": {
+        "u": "0",
+        "chi_u15": "4",
+        "u2": "0",
+        "chi2_u2": "-3"
+      },
+      "P1S0": {
+        "u": "-1",
+        "chi_u15": "0",
+        "u2": "1/2",
+        "chi2_u2": "-3"
+      },
+      "P1S1": {
+        "u": "-1",
+        "chi_u15": "4",
+        "u2": "1/2",
+        "chi2_u2": "-3"
+      }
+    },
+    "isco_zamo_speed": {
+      "0": "0.5",
+      "0.3": "0.5341",
+      "0.6": "0.5771",
+      "0.9": "0.6245",
+      "0.99": "0.5969",
+      "0.999999": "0.5059",
+      "-0.5": "0.4563",
+      "-0.9": "0.4291"
+    }
+  },
+  "TW1 Newton around the shifted source: in the equator its pull is -M/sqrt(R^2 - a^2) in flat radius R, which is -M/r in the shift's own radius r = sqrt(R^2 - a^2). Kepler's law then holds exactly in r (Omega^2 = M/r^3) and the orbit factor is exactly T = 1 - 3a^2/r^2. In flat radius the same T is 1 - 3(a/R)^2 - 3(a/R)^4 - ...: every shape contributes, and in r they sum to one term": {
+    "pass": true,
+    "detail": "T in r: -3*a**2/r**2 + 1; Omega^2 in r: M/r**3; flat-radius series [-3, -3, -3, -3, -3]"
+  },
+  "TW2 the staircase: cut the shifted source's tower after its n-th shape and T in r keeps a leftover at (a/r)^(2n+2); the next shape alone contributes exactly minus that leftover (-15/2, -105/8, -315/16, -3465/128), so each shape cancels what the ones below leave, through (a/r)^10": {
+    "pass": true,
+    "detail": "each shape alone ['-3', '-15/2', '-105/8', '-315/16', '-3465/128']; staircase {'up to (a/R)^2': ['-3', '15/2', '-75/4', '375/8', '-1875/16'], 'up to (a/R)^4': ['-3', '0', '105/8', '-735/16', '6615/64'], 'up to (a/R)^6': ['-3', '0', '0', '315/16', '-2835/32'], 'up to (a/R)^8': ['-3', '0', '0', '0', '3465/128'], 'up to (a/R)^10': ['-3', '0', '0', '0', '0']}"
+  },
+  "TW3 rivals with Kerr's mass and quadrupole leave an endless series: quadrupole only gives T = 1 - 3(a/r)^2 + 15/2 (a/r)^4 - ..., a ring of radius sqrt(2) a gives 1 - 3(a/r)^2 - 15/4 (a/r)^4 - .... Against the measured orbital frequency x = (M Omega)^(2/3), the shifted source gives exactly T = 1 - 3 chi^2 x^2 and the rivals do not stop either": {
+    "pass": true,
+    "detail": "in r {'quadrupole only': ['-3', '15/2', '-75/4', '375/8', '-1875/16'], 'ring of radius sqrt(2) a': ['-3', '-15/4', '-15/4', '-495/128', '-495/128']}; against frequency {'shifted source': ['-3', '0', '0', '0', '0'], 'quadrupole only': ['-3', '15/2', '-45/2', '595/8', '-1045/4'], 'ring of radius sqrt(2) a': ['-3', '-15/4', '-15/8', '105/128', '615/512']}"
+  },
+  "TW4 Kepler in r is the whole story: T = 4 + d ln(Omega^2)/d ln R for any equatorial pull, so T = 1 - 3a^2/r^2 for every orbit holds exactly when Omega^2 = M/r^3; and Omega^2 = M/r^3 fixes the pull as the shifted source's": {
+    "pass": true,
+    "detail": "pull from Kepler minus shifted source: 0"
+  },
+  "TW5 gravity does the same in the same radius: Kerr's radial motion in r is Carter's quartic (E^2-1) r^4 + 2M r^3 + (a^2(E^2-1) - L^2) r^2 + 2M (L - aE)^2 r, whose only spin terms are a^2 (shape) and L - aE (twist); the exact T = 1 - 6u + 8 chi u^(3/2) - 3 chi^2 u^2 follows from it symbolically, and the period is Kepler's in r plus the clock gap, 1/Omega = r^(3/2)/sqrt(M) + a. The Kerr-Schild E.E piece alone gives exactly 1 - 3 chi^2 u^2. Against the raw measured frequency T is an endless series (-4 chi x^(5/2), +8 chi^2 x^3, ...); with the clock gap 2 pi a taken off the period it is the finite one": {
+    "pass": true,
+    "detail": "T from the quartic: -3*chi**2*s**4 + 8*chi*s**3 - 6*s**2 + 1; period check 0; raw-frequency series -4*chi**3*y**7 - 10*chi**2*y**8/3 + 8*chi**2*y**6 - 3*chi**2*y**4 - 4*chi*y**5 + 8*chi*y**3 - 6*y**2 + 1"
+  },
+  "TW_tower": {
+    "staircase_in_r": {
+      "up to (a/R)^2": [
+        "-3",
+        "15/2",
+        "-75/4",
+        "375/8",
+        "-1875/16"
+      ],
+      "up to (a/R)^4": [
+        "-3",
+        "0",
+        "105/8",
+        "-735/16",
+        "6615/64"
+      ],
+      "up to (a/R)^6": [
+        "-3",
+        "0",
+        "0",
+        "315/16",
+        "-2835/32"
+      ],
+      "up to (a/R)^8": [
+        "-3",
+        "0",
+        "0",
+        "0",
+        "3465/128"
+      ],
+      "up to (a/R)^10": [
+        "-3",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "rivals_in_r": {
+      "quadrupole only": [
+        "-3",
+        "15/2",
+        "-75/4",
+        "375/8",
+        "-1875/16"
+      ],
+      "ring of radius sqrt(2) a": [
+        "-3",
+        "-15/4",
+        "-15/4",
+        "-495/128",
+        "-495/128"
+      ]
+    },
+    "in_frequency": {
+      "shifted source": [
+        "-3",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "quadrupole only": [
+        "-3",
+        "15/2",
+        "-45/2",
+        "595/8",
+        "-1045/4"
+      ],
+      "ring of radius sqrt(2) a": [
+        "-3",
+        "-15/4",
+        "-15/8",
+        "105/128",
+        "615/512"
+      ]
+    }
   }
 }
