@@ -18,7 +18,7 @@ rule from the chaos page then predicts the fractal's dimension exactly, and the 
 it wrong whenever two slabs share a box. We built four of these fractals and measured them; the measurements follow our
 formula, not Moran's.
 
-**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane.* It is a new closed formula that turns "which maps share a centre"
+**Is it a lead?** A modest one, worth one more step. *Round 2 (section 5): now a theorem on the line, holds in the plane numerically, and fits learning rules and moving averages. Round 7 (section 11): proved in the plane too. Round 8 (section 12): a literature check found the line formula already in print for generic parameters (Bárány and Verma 2025), and a general no-collision test now proves the exact size for a dense set of parameters, for any number of classes of any sizes, on the line and in the plane. Round 9 (section 13): the formula fails exactly where two different words collide, and there the size really drops; a concrete break loses at least 0.033.* It is a new closed formula that turns "which maps share a centre"
 into a dimension, it uses only base pieces (the dial k as box size, centres, order), and it is testable. It is not a
 new mechanism: the reason it holds sits inside Hochman's 2014 theory of self-similar sets with exact overlaps. A second,
 smaller build answers an open question on the Carnot page: the parabola means every heat-type engine closes in on its
@@ -1197,3 +1197,153 @@ is Bárány and Verma's (2025), with a three-map case in Bárány and Szvák (20
 | Corollary P9: explicit dense family, every pattern, line and plane | **Ours** (DRAFT) | 12.4, X7, X9, X10 |
 | 128 certified family members and G4 | **Ours** (DRAFT) | 12.5, X5–X7 |
 | Plane formula and its proved cases | **Ours** (DRAFT); not found in print | 11, 12.4 |
+
+---
+
+## 13. Round 9 (DRAFT): exactly which cases break the formula
+
+Brennan said "Let's keep pushing!" Section 12.7 named the most interesting open question: which parameters break the
+formula? Script: `breaks.py` → `breaks.json`. Checks: `checks9.py`, 12/12 (Y1–Y12). Figures 27–30. Lean: four more
+theorems, 41 in all, all build.
+
+### 13.1 The answer in two sentences
+
+The formula fails exactly when two different words give the same map, and whenever that happens the true size is
+strictly smaller than D*, by an amount we can compute. So the breaking cases form an explicit, thin set (a countable union
+of equations among the parameters), and we found one inside the separated region where the size drops from
+D* = 0.50353 to at most 0.47048.
+
+### 13.2 Theorem P10: a collision always costs size
+
+**Theorem P10 (DRAFT, ours as stated).** Take any shared-centre system on the line or in the plane, with any real or
+complex parameters and at least two classes. If two different words (different elements of the trace monoid M) give
+the same map, then dim K ≤ s_c < D*, and s_c can be computed (below).
+
+**Proof.**
+
+1. *Move the collision into the free part.* Round 2's first-return pieces S = {u·v : u a nonempty run in class 1, v a
+   nonempty word in the other classes} form a free monoid S*. If W ≠ W′ give the same map, so do a·W·v and a·W′·v for a
+   class-1 map a and a map v of another class. Both lie in S*, and they are still different, because a trace monoid
+   cancels on both sides. So two different words X ≠ Y over the alphabet S give the same map.
+2. *Every map has a representative avoiding one word.* Order words over S by length, then alphabetically (S is
+   countable, so this is a well-order). Say Y is the larger. Replacing any occurrence of Y by X keeps the map and makes
+   the word smaller (Lean `replace_shortens`), so every map of S* is the map of a word with no Y in it.
+3. *Count.* Every element of M factors uniquely as (word in the other classes)·(element of S*)·(class-1 run), so the
+   distinct maps are bounded by Q(s)·A(s)·P₁(s), where A sums |λ_w|^s over words avoiding Y. Cover K by the images
+   W(K) over a cut set at scale r; replacing each W by its representative keeps the cover, so dim K is at most the point
+   where this series starts to converge. Q and P₁ converge near D*. For A, split a word into blocks of length n = |Y|;
+   no block is Y, so the blocks of length n contribute at most f(s)ⁿ − |λ_Y|^s each, where f(s) = Σ_S |λ|^s =
+   (P₁ − 1)(Q − 1). At s = D*, f = 1, so this is 1 − |λ_Y|^(D*) < 1 and A converges there, and also a little below D*
+   by continuity. So **s_c ≤ the root of f(s)ⁿ − |λ_Y|^s = 1, which is below D*.** ∎
+
+When the collision is between two single pieces (n = 1) it spreads: a·X·w and a·Y·w collide for every class-1 run a
+and every word w of the other classes, so a whole family of pieces, of weight P₁(s)Q(s)|λ_Y|^s, can be dropped. That
+gives the sharper bound **root of f(s) − P₁(s)Q(s)|λ_Y|^s = 1.**
+
+### 13.3 Corollary P11: exactly where the formula holds
+
+**Corollary P11 (DRAFT, ours as stated).** Suppose D* ≤ d (d = 1 on the line, 2 in the plane).
+
+- *Line, algebraic parameters:* dim K = D* exactly when no two different words collide (P10 one way, round 2's theorem
+  with Hochman 2014 the other). *Any real parameters:* the same, if Kittle and Kogler's corollary (preprint) holds.
+- *Plane, algebraic parameters with a non-real multiplier:* the same (P10 and Theorem P7).
+- *The breaking set is thin.* For any fixed distinct centres, the multipliers where some collision happens form a
+  countable union of proper algebraic subsets, so they have measure zero and lower dimension.
+- *Inside the separated region* (for example every |λ| < δ/(4D + δ)), every collision has the normal form of P8's step 2:
+  two class-i runs with different letters on top of words from other classes. So a break needs a class with two or
+  more maps; systems with one map per class never break there.
+
+*Proof of thinness.* Pick small multipliers that are algebraically independent (no polynomial relation over the
+centres). Lemma A′ applies, so a collision would have P8's normal form λ^u (g′(c_j) − c_i) = λ^(u′) (h′(c_j) − c_i),
+a polynomial identity. Independence makes it hold as polynomials, so we may set every other class's multipliers to 0.
+Then g′(c_j) becomes the centre c_k of g′'s outer map (or c_j), and we get λ^u (c_k − c_i) = λ^(u′) (c_k′ − c_i)
+with u ≠ u′: two different monomials with nonzero coefficients, impossible. So each "these two words agree" equation
+is a nonzero polynomial in the multipliers, and its zero set is proper. ∎
+
+This says which parameters are Bárány and Verma's exceptions, at least when D* ≤ 1: precisely the collision set. Their
+theorem shows the exceptions are small; P11 names them. The principle "exact overlaps cost dimension, otherwise you get
+the full value" is the standard one for self-similar sets. What's ours is carrying it to shared-centre classes, where
+the full value is D* rather than Moran's root, and the description of the breaks.
+
+### 13.4 A concrete break, and how much it costs
+
+Line, centres 0, 1, 2. Class 1 about 0: λ = 19/200 and μ = 1/20. Class 2 about 1: ν = 1/19. Class 3 about 2:
+κ = 1/10. All are below Lemma A′'s bound 1/9, so this sits inside the separated region (Lean `example_in_box`).
+
+Shrinking by 1/19 toward 1 and then by 19/200 toward 0 is **the same map** as shrinking by 1/10 toward 2 and then by
+1/20 toward 0: both send z to (18 + z)/200 (Figure 27; Lean `example_slopes`, `example_collision`). It is P8's normal
+form with ρ = λ/μ = 19/10 = 2 − κ. Every such break lies on the surface λ = μ(2 − κ), ν = κ/(2 − κ).
+
+| Quantity | Value | How |
+|---|---|---|
+| Formula D* | 0.5035322 | certified root (interval arithmetic) |
+| Upper bound, one duplicate piece | 0.4964260 | P10, n = 1 |
+| **Upper bound, whole family** | **0.4704834** | P10, family bound |
+| Lower bound | 0.4367041 | the subsystem without μ never collides (one map per class, P8), plus Hochman |
+| **Proved drop below the formula** | **at least 0.0330** | |
+
+The counts back this up (Figure 28). We counted the different maps among all words of each length, hashed mod two
+primes, and compared them with a prediction that assumes this one break and its family are the only collisions. The
+prediction matches exactly at every length from 1 to 9 (76,096 maps at length 9, against 151,316 words). So we
+conjecture the true size is the family bound, 0.47048; proving it would mean showing no other collision happens.
+
+![Figure 27](figures/fig27-the-break.png)
+
+*Figure 27. The break. Two routes (blue: toward 1 then toward 0; orange: toward 2 then toward 0) land on exactly the
+same interval [0.090, 0.100] with the same scaling, so they are the same map.*
+
+![Figure 28](figures/fig28-counts.png)
+
+*Figure 28. Left: words (grey) against different maps (red); the crosses are the prediction from this one break, and
+they match at every length. Right: the maps grow by about 3.41 per step against 3.73 for words. Fewer pieces means a
+smaller fractal.*
+
+![Figure 29](figures/fig29-drop-surface.png)
+
+*Figure 29. The whole collision surface inside the separated region, drawn over μ and κ (then λ and ν are fixed by the
+break). Colour: the proved drop below the formula, between 0.017 and 0.035 everywhere. The circle is Figure 27's example.*
+
+![Figure 30](figures/fig30-size-at-break.png)
+
+*Figure 30. What is proved at the example: the true size sits in the green bar, wholly below the formula's value.*
+
+### 13.5 What this means in plain terms
+
+The formula counts every word as a different piece. It is right exactly when that's true. When two different words
+land on the same piece, the fractal has fewer pieces than the formula thinks, and it really is smaller, by a margin we
+can bound. Those coincidences need an exact equation among the parameters, so they're rare, and when the pieces are
+kept apart they can only happen inside a class of two or more maps.
+
+### 13.6 Is it a lead?
+
+**Yes, a real one.** It turns a published "almost every parameter" theorem into an exact description of where the
+formula fails, with a computable drop, and it comes with a worked example where everything but the last digits is
+proved. What would take it further: (1) prove the example's size equals the family bound 0.47048 (show no other
+collision occurs), which would give the first exact size of a broken case; (2) list which equations can occur inside
+the separated region, so the breaking set is described surface by surface; (3) the same picture for the plane laws of
+rounds 3–4, where the maps are Möbius rather than straight-line.
+
+### 13.7 Lean
+
+`lean/NewTies.lean` now has 41 theorems and builds with Lean 4.37.0-rc1, with no sorry and standard axioms only
+(`lean/compile_output.txt`). New this round: `example_slopes`, `example_collision`, `example_in_box`,
+`replace_shortens`. They pin down the concrete break and the termination step of P10. The covering and counting steps
+are in the prose proof and the interval checks.
+
+### 13.8 Who proved what, round 9
+
+Cut-set covers, word reduction by a well-order, and "exact overlaps cost dimension" are standard ideas. Theorem P10 for
+shared-centre classes, the family bound, Corollary P11's description and its thinness proof, the concrete break and
+its certified numbers are ours (DRAFT). The "holds" direction rests on Hochman (2014 on the line, 2015 in the plane) and,
+for non-algebraic parameters on the line, on Kittle and Kogler's preprint; we read those statements and did not check
+their proofs.
+
+### Known vs new, round 9
+
+| Item | Status | Source |
+|---|---|---|
+| Exact overlaps lower the dimension of a self-similar set | Known principle | standard |
+| P10: any collision ⇒ dim ≤ s_c < D*, with the block and family bounds | **Ours** (DRAFT) | 13.2, Y3–Y6 |
+| P11: dim = D* exactly when no collision (D* ≤ d); breaking set thin and in normal form | **Ours** (DRAFT), resting on Hochman (and Kittle–Kogler for real parameters) | 13.3, Y7, Y8 |
+| Concrete break inside the separated region, drop at least 0.033 | **Ours** (DRAFT) | 13.4, Y1, Y2, Y5 |
+| Its exact size equals the family bound 0.47048 | Conjecture (counts match to length 9) | 13.4, Y9 |

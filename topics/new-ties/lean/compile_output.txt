@@ -36,4 +36,8 @@ Lean (version 4.37.0-rc1, x86_64-unknown-linux-gnu, commit 0b77e12952ad39077d80d
 'NewTies.centres_distinct_mod' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.exists_near' depends on axioms: [propext, Classical.choice, Quot.sound]
 'NewTies.g4_small' does not depend on any axioms
+'NewTies.example_slopes' does not depend on any axioms
+'NewTies.example_collision' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.example_in_box' does not depend on any axioms
+'NewTies.replace_shortens' depends on axioms: [propext, Classical.choice, Quot.sound]
 exit status 0

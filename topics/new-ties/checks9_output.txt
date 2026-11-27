@@ -1,0 +1,13 @@
+PASS Y1 exact collision: (19/200 about 0) o (1/19 about 1) = (1/20 about 0) o (1/10 about 2), inside Lemma A' box  ['1/200', '9/100']
+PASS Y2 certified: D* in [0.50353, 0.50354], family bound below 0.47049, drop at least 0.033  ([0.5035322096897289, 0.5035322103649378], [0.47048343920614577, 0.47048343988135466])
+PASS Y3 f = (P1 - 1)(Q - 1) crosses 1 inside the D* bracket (free-product identity)  ['[1.0000000052666567225938497119689899, 1.0000000052666567225938497119739203]', '[0.99999999871072372235666458720856188, 0.99999999871072372235666458721378808]']
+PASS Y4 order of bounds: family bound < one-piece bound < D*  
+PASS Y5 lower bound (subsystem without mu) below the family bound  0.436704125138931
+PASS Y6 the break spreads to the whole family a.lam.nu.w = a.mu.kappa.w (200 random, exact fractions)  
+PASS Y7 one map per class inside the box: no collisions to length 8 (10 random systems)  
+PASS Y8 random real small parameters: different words never gave equal maps  {'pairs': 2983, 'equal_maps': 0}
+PASS Y9 the one-break-plus-family prediction matches the distinct-map counts at every length 1-9  [4, 14, 48, 164, 560, 1912, 6528, 22288, 76096]
+PASS Y10 every grid point on the collision surface is a break in the box, with drop above 0.017  920 points
+PASS Y11 Lean builds 41 theorems, no sorry  
+PASS Y12 README section 13 states P10, P11 and the example's numbers  
+12/12 pass

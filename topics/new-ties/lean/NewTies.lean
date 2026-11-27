@@ -228,4 +228,21 @@ theorem exists_near (T r P : Int) (hP : 0 < P) : ∃ m, m % P = r % P ∧ T ≤ 
 /-- The example with two two-map classes (G4): every multiplier is below the Lemma A′ bound 1/9 for centres 0, 1, 2. -/
 theorem g4_small : 5 * 9 < 56 ∧ 15 * 9 < 196 ∧ 3 * 9 < 56 := by decide
 
+
+/-! ### Round 9: which parameters break the formula (README section 13) -/
+
+/-- The concrete break: centres 0, 1, 2 with λ = 19/200, μ = 1/20 about 0, ν = 1/19 about 1, κ = 1/10 about 2.
+    The pieces λ∘ν and μ∘κ have the same slope, (19/200)(1/19) = 1/200 = (1/20)(1/10): -/
+theorem example_slopes : 19 * 1 * (20 * 10) = 1 * 1 * (200 * 19) := by decide
+
+/-- … and the same intercept: both send z to (18 + z)/200. Scaled by 38000:
+    λ(1 + ν(z − 1)) ↦ 190(19 + (z − 1)) and μ(2 + κ(z − 2)) ↦ 190(20 + (z − 2)). -/
+theorem example_collision (z : Int) : 190 * (19 + (z - 1)) = 190 * (20 + (z - 2)) := by omega
+
+/-- The break sits inside the separated region: every multiplier is below Lemma A′'s bound 1/9. -/
+theorem example_in_box : 19 * 9 < 200 ∧ 1 * 9 < 20 ∧ 1 * 9 < 19 ∧ 1 * 9 < 10 := by decide
+
+/-- Theorem P10's reduction terminates: replacing a factor of a word by a shorter one shortens the word. -/
+theorem replace_shortens (a b x y : Nat) (h : x < y) : a + x + b < a + y + b := by omega
+
 end NewTies

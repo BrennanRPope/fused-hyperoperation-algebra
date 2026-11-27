@@ -1,0 +1,62 @@
+[
+ {
+  "name": "Y1 exact collision: (19/200 about 0) o (1/19 about 1) = (1/20 about 0) o (1/10 about 2), inside Lemma A' box",
+  "ok": true,
+  "detail": "['1/200', '9/100']"
+ },
+ {
+  "name": "Y2 certified: D* in [0.50353, 0.50354], family bound below 0.47049, drop at least 0.033",
+  "ok": true,
+  "detail": "([0.5035322096897289, 0.5035322103649378], [0.47048343920614577, 0.47048343988135466])"
+ },
+ {
+  "name": "Y3 f = (P1 - 1)(Q - 1) crosses 1 inside the D* bracket (free-product identity)",
+  "ok": true,
+  "detail": "['[1.0000000052666567225938497119689899, 1.0000000052666567225938497119739203]', '[0.99999999871072372235666458720856188, 0.99999999871072372235666458721378808]']"
+ },
+ {
+  "name": "Y4 order of bounds: family bound < one-piece bound < D*",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "Y5 lower bound (subsystem without mu) below the family bound",
+  "ok": true,
+  "detail": "0.436704125138931"
+ },
+ {
+  "name": "Y6 the break spreads to the whole family a.lam.nu.w = a.mu.kappa.w (200 random, exact fractions)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "Y7 one map per class inside the box: no collisions to length 8 (10 random systems)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "Y8 random real small parameters: different words never gave equal maps",
+  "ok": true,
+  "detail": "{'pairs': 2983, 'equal_maps': 0}"
+ },
+ {
+  "name": "Y9 the one-break-plus-family prediction matches the distinct-map counts at every length 1-9",
+  "ok": true,
+  "detail": "[4, 14, 48, 164, 560, 1912, 6528, 22288, 76096]"
+ },
+ {
+  "name": "Y10 every grid point on the collision surface is a break in the box, with drop above 0.017",
+  "ok": true,
+  "detail": "920 points"
+ },
+ {
+  "name": "Y11 Lean builds 41 theorems, no sorry",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "Y12 README section 13 states P10, P11 and the example's numbers",
+  "ok": true,
+  "detail": ""
+ }
+]
