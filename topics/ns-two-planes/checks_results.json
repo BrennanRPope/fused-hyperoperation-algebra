@@ -48,5 +48,40 @@
   "name": "C10 Klein pair: the flat part alone does no stretching; all of it involves the bend",
   "ok": true,
   "note": "max |P(flat,flat,flat)| = 1.1e-29 vs max total 12.55; flat share of spin 0.51 -> 0.08"
+ },
+ {
+  "name": "C11 three-plane algebra (algebra3.py): exact split, spins add up, all stretching on crossing lines, no cyclic twist on the cube",
+  "ok": true,
+  "note": "8 of 8 pass"
+ },
+ {
+  "name": "C12 runs: no plane stretches its own spin; all stretching sits on the three crossing lines (12 runs)",
+  "ok": true,
+  "note": "largest own-plane term / total = 0.0e+00"
+ },
+ {
+  "name": "C13 two-plane starts: the third plane (y, no spin at start) takes at least ~0.3 of the spin gain and ends with ~1/3 of the spin",
+  "ok": true,
+  "note": "gain share of plane y: 0.35, 0.33, 0.40, 0.42, 0.43, 0.40; spin share at t=4: 0.34, 0.32, 0.37, 0.33, 0.34, 0.33"
+ },
+ {
+  "name": "C14 two-plane starts: stretching starts on the shared line y (>0.7 at t=0.4), then spreads to all three lines",
+  "ok": true,
+  "note": "line y early: 0.87, 0.82, 0.75, 0.73, 0.73, 0.74; smallest line share up to the peak: 0.21, 0.16, 0.21, 0.18, 0.15, 0.24"
+ },
+ {
+  "name": "C15 three planes grow more than two at the same energy (every three-plane seed above every two-plane seed)",
+  "ok": true,
+  "note": "two-tw: 1.64, 1.75, 1.86; two-un: 1.88, 1.85, 1.93; three-tw: 2.30, 2.29, 2.14; three-un: 2.18, 2.20, 2.13"
+ },
+ {
+  "name": "C16 the twist does not lower growth with three planes counted (3 seeds)",
+  "ok": true,
+  "note": "twisted minus untwisted: +0.12, +0.08, +0.01; means 2.24 vs 2.17"
+ },
+ {
+  "name": "C17 three-plane starts: every plane's own spin grows (no plane stays quiet), each plane ~1/3 of the gain",
+  "ok": true,
+  "note": "smallest per-plane growth at the peak: 2.1x, 2.1x, 2.0x, 2.0x, 2.1x, 2.1x; gain shares within 0.03 of 1/3"
  }
 ]

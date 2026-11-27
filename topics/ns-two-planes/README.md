@@ -1,13 +1,16 @@
-# DRAFT · Navier–Stokes as two crossing flat flows
+# DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes)
 
 **DRAFT, Nov 27 2026.** Part of Fused Hyperoperation Algebra. Asked for by Brennan: "We might show that navier stokes
 really is 2D, but that the flows are two intersecting planes", then "remember we found some stable vortex stretching
-in the Klein bottle work" and "The idea that reality itself is twisted might be a good tack".
+in the Klein bottle work" and "The idea that reality itself is twisted might be a good tack". Round 2 (section 8):
+"On navier stokes it might be three orthagonal planes".
 
-Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **10 of 10 pass** (seconds; reads the run files). Exact algebra:
+Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **17 of 17 pass** (seconds; reads the run files). Exact algebra:
 [`algebra.py`](algebra.py) (sympy). Runs: [`twoplanes.py`](twoplanes.py) (solver, with the k setting on the crossing),
 [`batch1.sh`](batch1.sh), [`batch2.sh`](batch2.sh), [`batch3.sh`](batch3.sh), [`klein_planes.py`](klein_planes.py) (Klein pair),
-[`twist_sectors.py`](twist_sectors.py). Pictures: [`figures.py`](figures.py) → [`figures/`](figures/).
+[`twist_sectors.py`](twist_sectors.py). Round 2: [`algebra3.py`](algebra3.py) (exact three-plane algebra),
+[`threeplanes.py`](threeplanes.py) (solver with the 27 plane-by-plane stretching terms), [`batch4.sh`](batch4.sh).
+Pictures: [`figures.py`](figures.py), [`figures3.py`](figures3.py) → [`figures/`](figures/).
 Everything is known mathematics unless marked **ours**; the "ours" items are readings, exact identities and runs, not
 theorems about blow-up.
 
@@ -32,6 +35,10 @@ theorems about blow-up.
   flows are exactly the flows that live on the quarter-turn space (Conway–Rossetti's *tetracosm*, one of the ten
   flat 3D spaces). Over 9 seeds the twist trims the growth by only 3% on average (lower in 6 of 9, higher in 3), so
   it does **not** tame the crossing.
+- **Round 2, three planes (section 8):** any 3D flow is exactly three flat flows on three perpendicular planes, with
+  no plane singled out. A plane never stretches its own spin, so all stretching sits on the three crossing lines. In
+  the runs every plane takes its full third, three planes grow more than two (2.1–2.3× vs 1.6–1.9×), the twist still
+  does not help, and no flat twist of the cube cycles the three planes.
 - **Klein link:** the Klein antiparallel pair is one flat flow (the straight pair) plus a bend, and all its stretching
   comes from the bend crossing the flat part (figure 6). What settled there was the **total** spin across grids, never
   the peak.
@@ -184,6 +191,64 @@ reason the feeding stays bounded at every scale, which nothing here supplies yet
    a bound on the shared-line speed alone (a one-velocity-component condition, a known family of criteria) is
    reachable for two-plane data.
 
+
+## 8. Round 2: three perpendicular planes
+
+**Short answer: three planes is the cleaner picture, and it is exact, but it does not tame anything.** No plane is
+singled out, every plane takes its full share of the stretching, and three planes crossing grow more than two.
+
+**The split (exact, checked in `algebra3.py`, figure 8).** Apply the Biot–Savart law to one spin component at a time:
+u = u⁽ˣ⁾ + u⁽ʸ⁾ + u⁽ᶻ⁾, where u⁽ᵐ⁾ comes from the m-th spin component alone. Each piece moves only within the plane
+perpendicular to e_m, so it is a layered flat flow on that plane. Plane m's own spin is the m-th spin component plus a
+gradient; the gradients cancel across the three planes and vanish for strict flat flows. Unlike round 1's two-plane
+split, nothing is left over and no direction is special.
+
+**Which plane stretches what (exact).** Total stretching splits into 27 terms ⟨ω_i ω_j ∂_j u⁽ᵐ⁾_i⟩. Every term with
+i = m is zero, because plane m's flow has no speed along e_m. So **a plane never stretches its own spin**: every unit
+of stretching is one plane's flow acting on another plane's spin, and planes i and m meet on the third axis. All
+stretching therefore sits on the three crossing lines (checks C11, C12).
+
+**Runs (ours, 64³, viscosity 0.005, 3 seeds each, same starting energy 0.5).** Four starts: two flat flows with and
+without the quarter-turn twist (round 1's setup), and three flat flows with and without it.
+
+| question | answer | numbers |
+|---|---|---|
+| Does the third plane carry its own share? | **Yes, its full share.** In two-plane starts plane y has no spin at first and ends holding a third of it | plane y takes 0.33–0.43 of the spin gain up to the peak; spin share 0.32–0.37 at t = 4 (C13, figure 9) |
+| Do the three crossing lines share the stretching? | **Yes, after a start on one line.** Two-plane starts stretch first on their shared line, then spread to all three | line y holds 0.73–0.87 at t = 0.4; every line ≥ 0.15 up to the peak (C14). Three-plane starts: about a third each from the start |
+| Do three planes grow more than two? | **Yes**, at the same energy | peak spin/start: three planes 2.13–2.30, two planes 1.64–1.93; every three-plane seed is above every two-plane seed (C15, figure 10) |
+| Does the twist help when all three planes are counted? | **No.** Twisted is slightly higher, within seed scatter | 2.24 vs 2.17, twisted higher in 3 of 3 seeds by +0.01 to +0.12 (C16) |
+| Does any plane stay quiet? | **No.** Every plane's own spin at least doubles in three-plane starts | each plane takes 1/3 ± 0.03 of the gain (C17) |
+
+**The twist with three planes (exact).** The quarter-turn twist swaps two of the planes and leaves the third (the
+shared line's plane) in place, so it cannot treat all three alike. A twist that cycles x → y → z would need a
+three-fold screw; on the cube box none acts freely (of 1728 shifts tested, 144 close up and none is fixed-point free),
+so there is no flat cube space that cycles the planes. Three-fold twists need a hexagonal box (the tricosm), which
+breaks the right angles. The half-turn space (Hantzsche–Wendt, the didicosm) fits the three-plane frame but keeps each
+plane in place; it only flips signs. So "reality twisted" and "three equal planes" do not combine on the cube.
+
+**Chae–Choe across the three planes (a reading, verify before relying on it).** Their 1999 theorem gives smoothness
+when **two** spin components, taken in a fixed frame, stay controlled in a scale-critical norm. In the three-plane
+picture those components are two planes' own spins (exactly so for strict flat flows; up to the cancelling gradient
+otherwise). So it reads naturally: **if any two of the three planes keep their spin under control, the flow stays
+smooth; a blow-up would need at least two planes' spins to blow up together.** Since a plane never stretches its own
+spin, each plane's spin is fed only from the other two through the crossing lines. The runs show no free lunch here:
+all three planes' spins grow together, at the same rate. Only the abstract of Chae–Choe was checked here; the
+"across a fixed direction" reading comes from a summary of Miller's survey (arXiv:2111.00040).
+
+**Grades.** The split, the zero own-plane terms and the no-cyclic-twist result are exact (known mathematics in
+substance; ours as statements in this language). The shares and the two-versus-three comparison are runs at one
+resolution and one viscosity with 3 seeds; the round-1 grid check (C8) suggests 64³ is enough at this viscosity, but
+it was not repeated for these runs. Nothing here bounds anything.
+
+**What would make it a lead.** A structural reason why two planes cannot feed each other's spin without the third
+plane's flow taking a cut, something like an inequality for the 27 terms that a scale-critical norm of two planes'
+spins can close on. The runs show the three planes grow in lockstep, which is the opposite of what such a reason would
+need, so this is a target, not a hint.
+
+![figure 8](figures/fig8-three-planes-three-lines.png)
+![figure 9](figures/fig9-third-plane-fills-in.png)
+![figure 10](figures/fig10-two-vs-three-planes.png)
+
 ## Checks
 
 | check | result | numbers |
@@ -198,3 +263,10 @@ reason the feeding stays bounded at every scale, which nothing here supplies yet
 | C8 grid check: 64³ and 96³ agree on total spin within 3% at every time | pass | peak 4.699 vs 4.697; largest gap 0.6%; peak spin 17.9 vs 18.0 |
 | C9 twisted part: about a quarter of a random flow, closed under the nonlinear term | pass | share 0.275; sector -1 self-interaction lands in twisted part: 1.000 |
 | C10 Klein pair: the flat part alone does no stretching; all of it involves the bend | pass | max /P(flat,flat,flat)/ = 1.1e-29 vs max total 12.55; flat share of spin 0.51 -> 0.08 |
+| C11 three-plane algebra (algebra3.py): exact split, spins add up, all stretching on crossing lines, no cyclic twist on the cube | pass | 8 of 8 pass |
+| C12 runs: no plane stretches its own spin; all stretching sits on the three crossing lines (12 runs) | pass | largest own-plane term / total = 0.0e+00 |
+| C13 two-plane starts: the third plane (y, no spin at start) takes at least ~0.3 of the spin gain and ends with ~1/3 of the spin | pass | gain share of plane y: 0.35, 0.33, 0.40, 0.42, 0.43, 0.40; spin share at t=4: 0.34, 0.32, 0.37, 0.33, 0.34, 0.33 |
+| C14 two-plane starts: stretching starts on the shared line y (>0.7 at t=0.4), then spreads to all three lines | pass | line y early: 0.87, 0.82, 0.75, 0.73, 0.73, 0.74; smallest line share up to the peak: 0.21, 0.16, 0.21, 0.18, 0.15, 0.24 |
+| C15 three planes grow more than two at the same energy (every three-plane seed above every two-plane seed) | pass | two-tw: 1.64, 1.75, 1.86; two-un: 1.88, 1.85, 1.93; three-tw: 2.30, 2.29, 2.14; three-un: 2.18, 2.20, 2.13 |
+| C16 the twist does not lower growth with three planes counted (3 seeds) | pass | twisted minus untwisted: +0.12, +0.08, +0.01; means 2.24 vs 2.17 |
+| C17 three-plane starts: every plane's own spin grows (no plane stays quiet), each plane ~1/3 of the gain | pass | smallest per-plane growth at the peak: 2.1x, 2.1x, 2.0x, 2.0x, 2.1x, 2.1x; gain shares within 0.03 of 1/3 |

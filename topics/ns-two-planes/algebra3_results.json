@@ -1,0 +1,34 @@
+{
+ "T1 any incompressible flow = three layered flat flows, one per perpendicular plane (no plane singled out)": {
+  "pass": true,
+  "note": "reconstruction error 2.5e-16; each piece has zero velocity along its plane normal (0e+00). It is the Biot-Savart law applied to one spin component at a time (Coulomb gauge vector potential)"
+ },
+ "T2 the three planes' spins add up to the true spin; plane m carries the m-th spin component w_m plus a gradient that cancels across planes": {
+  "pass": true,
+  "note": "errors 1.6e-16, 1.6e-16. For strict flat flows (constant along the normal) the gradient is zero, so plane m's spin is exactly w_m"
+ },
+ "T3a production = sum of the 27 plane terms": {
+  "pass": true,
+  "note": ""
+ },
+ "T3b a plane's own flow never stretches its own spin (all terms with i = m vanish pointwise)": {
+  "pass": true,
+  "note": "plane m's flow has no velocity along e_m, so it cannot stretch w_m; every stretching term pairs two different planes"
+ },
+ "T3c so all stretching is carried by the three crossing lines (planes i and m meet on the third axis)": {
+  "pass": true,
+  "note": "identity checked on a random field (whose net stretching is near 0); the shares in real runs are in threeplanes.py"
+ },
+ "T4a no screw that cycles the three planes (x->y->z) gives a flat space on the cube: 0 of 1728 shifts work": {
+  "pass": true,
+  "note": "the cube lattice has no room for it; three-fold twists need a hexagonal box (the tricosm)"
+ },
+ "T4b the quarter turn swaps planes x and z and maps plane y to itself": {
+  "pass": true,
+  "note": ""
+ },
+ "T4c the half-turn space (Hantzsche-Wendt, three perpendicular screw half-turns) keeps each of the three planes": {
+  "pass": true,
+  "note": "it fits the three-plane frame but never swaps planes; spin of each plane flips sign under the other two turns"
+ }
+}

@@ -1,4 +1,4 @@
-"""DRAFT. Checks for ns-two-planes, from algebra_results.json, twist_sectors.json and runs/*.json.
+"""DRAFT. Checks for ns-two-planes, from algebra_results.json, algebra3_results.json, twist_sectors.json and runs/*.json.
 Run: python3 checks.py  -> checks_output.txt, checks_results.json (a few seconds; run algebra.py, batches first)."""
 import json, os, numpy as np
 L = lambda f: json.load(open(f))
@@ -53,6 +53,46 @@ if os.path.exists('runs/klein_planes.json'):
     fff = max(abs(x['P']['FFF']) for x in kr); tot = max(abs(sum(x['P'].values())) for x in kr)
     check('C10 Klein pair: the flat part alone does no stretching; all of it involves the bend', fff < 1e-6*max(tot, 1),
           f'max |P(flat,flat,flat)| = {fff:.1e} vs max total {tot:.2f}; flat share of spin {kr[0]["plane"]:.2f} -> {min(x["plane"] for x in kr):.2f}')
+
+# ---- Round 2: three perpendicular planes (algebra3.py, threeplanes.py, batch4.sh) ----
+if os.path.exists('algebra3_results.json'):
+    a3 = L('algebra3_results.json')
+    check('C11 three-plane algebra (algebra3.py): exact split, spins add up, all stretching on crossing lines, no cyclic twist on the cube',
+          all(v['pass'] for v in a3.values()), f"{sum(v['pass'] for v in a3.values())} of {len(a3)} pass")
+if os.path.exists('runs/p3_two-un_s0.json'):
+    def lines_of(T):
+        T = np.array(T); return np.array([T[1, :, 2].sum()+T[2, :, 1].sum(), T[0, :, 2].sum()+T[2, :, 0].sum(), T[0, :, 1].sum()+T[1, :, 0].sum()])
+    P3 = {m: [L(f'runs/p3_{m}_s{s}.json')['rows'] for s in range(3)] for m in ['two-tw', 'two-un', 'three-tw', 'three-un']}
+    def stats(r):
+        t = np.array([x['t'] for x in r]); Z = np.array([x['Z'] for x in r]); ip = int(np.argmax(Z))
+        comp = np.array([np.array(x['T']).sum(axis=(1, 2)) for x in r]); ln = np.array([lines_of(x['T']) for x in r])
+        g = np.trapezoid(comp[:ip+1], t[:ip+1], axis=0); G = np.trapezoid(ln[:ip+1], t[:ip+1], axis=0)
+        self_ = max(abs(np.array(x['T'])[i, :, i].sum()) for x in r for i in range(3)); tot = max(abs(np.array(x['T']).sum()) for x in r)
+        return dict(peak=Z[ip]/Z[0], gain=g/g.sum(), line=G/G.sum(), early=ln[2]/ln[2].sum(), self_=self_/tot,
+                    compgrow=np.array(r[ip]['comp_Z'])/np.maximum(np.array(r[0]['comp_Z']), 1e-12), endshare=np.array(r[-1]['comp_Z'])/r[-1]['Z'])
+    S = {m: [stats(r) for r in v] for m, v in P3.items()}
+    allS = [s for v in S.values() for s in v]
+    check('C12 runs: no plane stretches its own spin; all stretching sits on the three crossing lines (12 runs)',
+          max(s['self_'] for s in allS) < 1e-6, f"largest own-plane term / total = {max(s['self_'] for s in allS):.1e}")
+    two = S['two-tw'] + S['two-un']
+    check('C13 two-plane starts: the third plane (y, no spin at start) takes at least ~0.3 of the spin gain and ends with ~1/3 of the spin',
+          all(s['gain'][1] > 0.3 and s['endshare'][1] > 0.3 for s in two),
+          'gain share of plane y: ' + ', '.join(f"{s['gain'][1]:.2f}" for s in two) + '; spin share at t=4: ' + ', '.join(f"{s['endshare'][1]:.2f}" for s in two))
+    check('C14 two-plane starts: stretching starts on the shared line y (>0.7 at t=0.4), then spreads to all three lines',
+          all(s['early'][1] > 0.7 and min(s['line']) > 0.14 for s in two),
+          'line y early: ' + ', '.join(f"{s['early'][1]:.2f}" for s in two) + '; smallest line share up to the peak: ' + ', '.join(f"{min(s['line']):.2f}" for s in two))
+    pk = {m: [s['peak'] for s in v] for m, v in S.items()}
+    check('C15 three planes grow more than two at the same energy (every three-plane seed above every two-plane seed)',
+          min(pk['three-tw'] + pk['three-un']) > max(pk['two-tw'] + pk['two-un']),
+          '; '.join(f"{m}: {', '.join(f'{x:.2f}' for x in v)}" for m, v in pk.items()))
+    d3 = [a - b for a, b in zip(pk['three-tw'], pk['three-un'])]
+    check('C16 the twist does not lower growth with three planes counted (3 seeds)', np.mean(d3) > -0.05 and sum(d < 0 for d in d3) < 3,
+          f"twisted minus untwisted: {', '.join(f'{d:+.2f}' for d in d3)}; means {np.mean(pk['three-tw']):.2f} vs {np.mean(pk['three-un']):.2f}")
+    three = S['three-tw'] + S['three-un']
+    check('C17 three-plane starts: every plane\'s own spin grows (no plane stays quiet), each plane ~1/3 of the gain',
+          all(min(s['compgrow']) > 1.5 and max(abs(s['gain'] - 1/3)) < 0.06 for s in three),
+          'smallest per-plane growth at the peak: ' + ', '.join(f"{min(s['compgrow']):.1f}x" for s in three)
+          + '; gain shares within ' + f"{max(max(abs(s['gain'] - 1/3)) for s in three):.2f} of 1/3")
 lines = [f"{'PASS' if r['ok'] else 'FAIL'} {r['name']}: {r['note']}" for r in res]
 lines.append(f"{sum(r['ok'] for r in res)} of {len(res)} pass")
 open('checks_output.txt', 'w').write('\n'.join(lines) + '\n'); json.dump(res, open('checks_results.json', 'w'), indent=1)
