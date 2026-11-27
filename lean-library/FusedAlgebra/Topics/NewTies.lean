@@ -13,6 +13,7 @@
 
   First compiled in the shared library on Nov 27, as FusedAlgebra.Topics.NewTies
   (namespace CircleOp.NewTies, the library's convention; no proof changed).
+  Rounds 5 to 9 mirrored into the library on Nov 27 the same way.
 -/
 namespace CircleOp.NewTies
 
@@ -97,5 +98,155 @@ theorem wall_line_tangent (k w : Int) : k * k * w * w + 4 * (k * w) + 4 = (k * w
 theorem two_law_threshold (x₁ x₂ : Int) :
     (1 + x₁) * (1 + x₂) = x₁ * (1 + x₂) + x₂ * (1 + x₁) ↔ x₁ * x₂ = 1 := by
   constructor <;> intro h <;> grind
+
+/-! ## 9. No accidental collisions: the two-prime ping-pong example -/
+
+/-- Law 1 of the ping-pong example has multipliers 5/18 and 5/24. A ratio of two of its blocks is
+    (5/18)^m (5/24)^n with whole numbers m, n; its 2-adic and 3-adic valuations are −m − 3n and −2m − n.
+    Both vanish only for m = n = 0, so a law-1 block that is not the identity moves 2-adically or 3-adically. -/
+theorem valuations_separate (m n : Int) (h2 : -m - 3 * n = 0) (h3 : -2 * m - n = 0) : m = 0 ∧ n = 0 := by
+  omega
+
+/-- XOR with an independent set of density a, in a box of size 1, is union in a box of size 1/2:
+    a + x − 2ax (cleared of the fraction 1/2). -/
+theorem xor_is_half_box_union (a x : Int) : 2 * (a + x - 2 * a * x) = 2 * a + 2 * x - 4 * a * x := by grind
+
+/-- De Morgan for densities: intersecting with density a is complement ∘ union with density 1 − a ∘ complement. -/
+theorem and_from_or (a x : Int) : 1 - ((1 - a) + (1 - x) - (1 - a) * (1 - x)) = a * x := by grind
+
+/-! ## 10. No accidental collisions for the original examples (round 6) -/
+
+/-- 2-adic step for even walls: every power of 5 is 1 more than a multiple of 4, so a run of the letter a alone
+    (multiplier 5^(-α)) moves z₁ by a factor that is 1 mod 4 and cannot leave the 2-adic ball the proof uses. -/
+theorem five_pow_mod_four (n : Nat) : 5 ^ n % 4 = 1 := by
+  induction n with
+  | zero => decide
+  | succ n ih => rw [Nat.pow_succ, Nat.mul_mod, ih]
+
+/-- For even Q the number (Q + 1)² is odd, so κ = 4Q/(Q + 1)² has 2-adic valuation 2 + v₂(Q) ≥ 3. -/
+theorem even_Q_square_odd (Q : Nat) (h : Q % 2 = 0) : (Q + 1) * (Q + 1) % 2 = 1 := by
+  rw [Nat.mul_mod, Nat.add_mod, h]
+
+/-- The last step of the 2-adic proof: every remainder lands at one 2-adic level s, and the ratio map shifts the
+    level by 2β with β ≥ 1, so the two sides of a supposed collision can't both be at level s. -/
+theorem levels_differ (s β : Int) (hβ : 1 ≤ β) : s + 2 * β ≠ s := by omega
+
+/-- 5-adic step at walls ±3: an odd run of the letter c multiplies z₂ by 4^(−k) ≡ −1 (mod 5) ... -/
+theorem four_pow_odd_mod_five (j : Nat) : 4 ^ (2 * j + 1) % 5 = 4 := by
+  induction j with
+  | zero => decide
+  | succ j ih =>
+    have : 2 * (j + 1) + 1 = (2 * j + 1) + 2 := by omega
+    rw [this, Nat.pow_add, Nat.mul_mod, ih]
+
+/-- ... and an even run multiplies it by 4^(−k) ≡ 1 (mod 5). -/
+theorem four_pow_even_mod_five (j : Nat) : 4 ^ (2 * j) % 5 = 1 := by
+  induction j with
+  | zero => decide
+  | succ j ih =>
+    have : 2 * (j + 1) = 2 * j + 2 := by omega
+    rw [this, Nat.pow_add, Nat.mul_mod, ih]
+
+/-- The real-number step at walls ±3: the ratios (3/4)^n, 5·(3/4)^n and (3/4)^n/5 all miss the window
+    [12/13, 13/12]. Since each family decreases in n, it is enough that 5·(3/4)^5 > 13/12, 5·(3/4)^6 < 12/13 and
+    3/4 < 12/13 (cleared of fractions). -/
+theorem window_miss : 12 * 5 * 3 ^ 5 > 13 * 4 ^ 5 ∧ 13 * 5 * 3 ^ 6 < 12 * 4 ^ 6 ∧ 13 * 3 < 12 * 4 := by decide
+
+/-! ## Round 7: the plane union fractal -/
+
+/-- Gaussian integers mod 3 have no zero divisors (3 stays prime in ℤ[i], so ℤ[i]/3 is the field with 9 elements).
+    This is what makes the 3-adic valuation of a Gaussian rational well defined and additive. -/
+theorem gauss_mod3_no_zero_divisors :
+    ∀ a b c d : Fin 3, (a ≠ 0 ∨ b ≠ 0) → (c ≠ 0 ∨ d ≠ 0) → (a * c - b * d ≠ 0 ∨ a * d + b * c ≠ 0) := by decide
+
+/-- The numbers in the multipliers other than 3 are 3-adic units: 10, 4, and 1 + i (its norm is 2). The centres
+    0, 1, i are distinct mod 3 (1 − i has norm 2). -/
+theorem units_mod3 : 10 % 3 ≠ 0 ∧ 4 % 3 ≠ 0 ∧ 2 % 3 ≠ 0 := by decide
+
+/-- The modified example's class-2 and class-3 maps, 1 + (3i/10)(z − 1) and i + (3/10)(z − i), send every 3-adic
+    integer z to 1 (resp. i) plus a multiple of 3, so to a 3-adic unit; class-1 maps multiply by (1+i)/4 or 3/10,
+    keeping 3-adic integers. Then g′(1) has valuation 0, while λ₁^α λ₂^(−β) has valuation −β: -/
+theorem three_adic_levels_differ (β : Int) (hβ : 1 ≤ β) : (0 : Int) - β ≠ 0 := by omega
+
+/-- Upper bound for √2 used in every disc radius: (99/70)² > 2. -/
+theorem sqrt_two_upper : 99 * 99 > 2 * 70 * 70 := by decide
+
+/-- The size bound that ends the original example's last step for long a-runs: for d ≥ 8 and e ≤ 6,
+    |λ₁|^d (10/3)^e · 1.15 ≤ (99/280)^8 (10/3)^6 · 1.15 < 0.59, and 0.59 is below every |w| − r on the class-2/3
+    covers, 1.15 above every |w| + r (plane.py, C7). Cleared of fractions: -/
+theorem tail_bound : 99 ^ 8 * 10 ^ 6 * 115 < 59 * 280 ^ 8 * 3 ^ 6 := by decide
+
+/-- Linear irreducibility for Hochman's theorem: a 45° turn, matrix [[1, −1], [1, 1]] up to scale, has
+    characteristic polynomial t² − 2t + 2, whose discriminant is negative, so it fixes no line. -/
+theorem rot45_no_invariant_line : (-2 : Int) * (-2) - 4 * 1 * 2 < 0 := by decide
+
+/-- First-return pieces: with p = 1/P₁ and q = 1/Q (the reciprocal growth series of class 1 and of the rest),
+    (1/p − 1)(1/q − 1) = 1 exactly when p + q = 1, i.e. at the root of the trace-monoid formula. Cleared of the
+    denominators pq: -/
+theorem first_return_threshold (p q : Int) : (1 - p) * (1 - q) = p * q ↔ p + q = 1 := by
+  constructor <;> intro h <;> grind
+
+
+/-! ### Round 8: a general no-collision test (README section 12) -/
+
+/-- Lemma A′, invariance: with ε = a/b, the disc about c₁ of radius R is sent into itself by every map exactly at
+    R(1 − ε) = D(1 + ε). Cleared of fractions: -/
+theorem lemmaA_invariant (a b D R : Int) : D * (b + a) + a * R = b * R ↔ R * (b - a) = D * (b + a) := by
+  constructor <;> intro h <;> grind
+
+/-- Lemma A′, separation: the class pieces sit in discs of radius ε(R + D) = 2εD/(1 − ε) about their centres, so they
+    are disjoint when 4εD/(1 − ε) < δ, which is ε(4D + δ) < δ. Cleared of fractions (ε = a/b): -/
+theorem lemmaA_key (a b D δ : Int) : 4 * a * D < δ * (b - a) ↔ a * (4 * D + δ) < b * δ := by
+  constructor <;> intro h <;> grind
+
+/-- Test (B) for a class of two maps and one good prime, valuations (0, v) with v ≥ 1: every integer relation
+    w₁·0 + w₂·v = 0 has w₂ = 0, so the relations are the multiples of (1, 0), one-signed. -/
+theorem two_maps_one_prime (w₁ w₂ v : Int) (hv : 1 ≤ v) (h : w₁ * 0 + w₂ * v = 0) : w₂ = 0 := by
+  have : w₂ * v = 0 := by grind
+  rcases Int.mul_eq_zero.mp this with h | h <;> omega
+
+/-- Corollary P9's recipe: λ_j carries its own prime p_j (valuation ≥ 1) and the others' valuations there are 0, so a
+    relation must vanish on the first k − 1 coordinates and is a multiple of the last unit vector, one-signed.
+    The case k = 3: -/
+theorem diagonal_kernel (w₁ w₂ a b : Int) (ha : 1 ≤ a) (hb : 1 ≤ b) (h₁ : w₁ * a = 0) (h₂ : w₂ * b = 0) :
+    w₁ = 0 ∧ w₂ = 0 := by
+  rcases Int.mul_eq_zero.mp h₁ with h | h <;> rcases Int.mul_eq_zero.mp h₂ with k | k <;> omega
+
+/-- The good-prime step: a word whose outer map has centre c_j and a multiplier divisible by p sends a p-integral
+    point to c_j + p·t, which differs from c_i by c_j − c_i mod p, a unit. -/
+theorem good_prime_unit (cj ci p t : Int) : (cj - ci + p * t) % p = (cj - ci) % p := by
+  simp [Int.add_mul_emod_self_left]
+
+/-- Centres 0, 1, …, N − 1 are pairwise distinct mod every prime p ≥ N. -/
+theorem centres_distinct_mod (a b p : Nat) (hab : a < b) (hbp : b < p) : (b - a) % p ≠ 0 := by
+  rw [Nat.mod_eq_of_lt (by omega)]; omega
+
+/-- Density of the family: every residue class mod P has a member in every window of length P, so the fractions
+    m/2ⁿ with m in a prescribed class come within P/2ⁿ of any target. -/
+theorem exists_near (T r P : Int) (hP : 0 < P) : ∃ m, m % P = r % P ∧ T ≤ m ∧ m < T + P := by
+  refine ⟨T + (r - T) % P, ?_, ?_, ?_⟩
+  · rw [Int.add_emod, Int.emod_emod_of_dvd _ (Int.dvd_refl P), ← Int.add_emod]; congr 1; omega
+  · have := Int.emod_nonneg (r - T) (by omega : P ≠ 0); omega
+  · have := Int.emod_lt_of_pos (r - T) hP; omega
+
+/-- The example with two two-map classes (G4): every multiplier is below the Lemma A′ bound 1/9 for centres 0, 1, 2. -/
+theorem g4_small : 5 * 9 < 56 ∧ 15 * 9 < 196 ∧ 3 * 9 < 56 := by decide
+
+
+/-! ### Round 9: which parameters break the formula (README section 13) -/
+
+/-- The concrete break: centres 0, 1, 2 with λ = 19/200, μ = 1/20 about 0, ν = 1/19 about 1, κ = 1/10 about 2.
+    The pieces λ∘ν and μ∘κ have the same slope, (19/200)(1/19) = 1/200 = (1/20)(1/10): -/
+theorem example_slopes : 19 * 1 * (20 * 10) = 1 * 1 * (200 * 19) := by decide
+
+/-- … and the same intercept: both send z to (18 + z)/200. Scaled by 38000:
+    λ(1 + ν(z − 1)) ↦ 190(19 + (z − 1)) and μ(2 + κ(z − 2)) ↦ 190(20 + (z − 2)). -/
+theorem example_collision (z : Int) : 190 * (19 + (z - 1)) = 190 * (20 + (z - 2)) := by omega
+
+/-- The break sits inside the separated region: every multiplier is below Lemma A′'s bound 1/9. -/
+theorem example_in_box : 19 * 9 < 200 ∧ 1 * 9 < 20 ∧ 1 * 9 < 19 ∧ 1 * 9 < 10 := by decide
+
+/-- Theorem P10's reduction terminates: replacing a factor of a word by a shorter one shortens the word. -/
+theorem replace_shortens (a b x y : Nat) (h : x < y) : a + x + b < a + y + b := by omega
 
 end CircleOp.NewTies

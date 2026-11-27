@@ -2597,19 +2597,47 @@ FusedAlgebra.Topics.NewForce	CircleOp.NewForce.tower_leading_yukawa	propext, Cla
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.tower_sum	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.vector_over_tensor	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewForce	CircleOp.NewForce.zero_rung_split	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.and_from_or	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.centres_distinct_mod	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.commute_iff	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_one	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_three	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.count_two	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.diagonal_kernel	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.even_Q_square_odd	propext
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.example_collision	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.example_in_box	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.example_slopes	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.exists_near	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.first_return_threshold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.five_pow_mod_four	propext
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.fixes_wall	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.four_pow_even_mod_five	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.four_pow_odd_mod_five	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.g4_small	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.gauss_mod3_no_zero_divisors	propext
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.good_prime_unit	propext
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.hom_centre	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.lemmaA_invariant	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.lemmaA_key	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.levels_differ	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.lower_bound_key	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.moran_special	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.order_gap	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.replace_shortens	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.rot45_no_invariant_line	
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.same_centre_commute	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.sqrt_two_upper	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.tail_bound	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.three_adic_levels_differ	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.two_law_threshold	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.two_maps_one_prime	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.union_is_stretch	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.units_mod3	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.valuations_separate	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NewTies	CircleOp.NewTies.wall_line_tangent	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.window_miss	
+FusedAlgebra.Topics.NewTies	CircleOp.NewTies.xor_is_half_box_union	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.complex_point	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.dual_point	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.NumberPlane	SimpleLaws.four_norm	propext, Classical.choice, Quot.sound

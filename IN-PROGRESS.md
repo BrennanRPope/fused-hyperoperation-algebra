@@ -15,7 +15,7 @@ This repo is a snapshot. Work carries on in other sessions, so any folder may ge
 - `topics/groups-lie/`
 - `topics/information-theory-full/`
 - `topics/knot-theory/`
-- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,787 theorems in 175 modules, Nov 27 ~04:20 UTC)
+- `lean-library/` (grows as topics are proved; the copy here is a clean build of 3,815 theorems in 175 modules, Nov 27 ~04:20 UTC)
 - `topics/lee-yang/`
 - `topics/logic-sets/`
 - `topics/measure-probability/`
@@ -94,3 +94,4 @@ Nov 27: `topics/why-i/rotations-force-i/` added as DRAFT on Brennan's word that 
 Nov 27: `topics/why-i/rotations-force-i/` follow-up: the shift rule (A4) derived from composite systems (main.tex Proposition prop:shift with assumption (C), abstract, intro and Discussion; README section on it; check T6b, 23 of 23 regenerated here); lean/Booking.lean, 4 theorems, compiled into the library as FusedAlgebra.Topics.Booking (namespace CircleOp.Booking, no proof changed); library now 3,783 theorems in 174 modules; topic Lean 160 of 172.
 Nov 27: `topics/why-i/rotations-force-i/` second follow-up: antisymmetry (A1) replaced by stability (main.tex Proposition prop:stable with (S) and (T) and a counterexample paragraph, abstract, intro, Discussion and Checks appendix at 24; README section "Why every step is a rotation"; check T3e, 24 of 24 regenerated here); lean/Stability.lean, 4 theorems, compiled into the library as FusedAlgebra.Topics.Stability (namespace CircleOp.Stability, no proof changed); library now 3,787 theorems in 175 modules; topic Lean 162 of 174.
 Nov 27: `topics/riemann/spin-build/` added as DRAFT (building ζ's spin from simple ferromagnetic Lee–Yang spins; each known model misses a different one of the four conditions; 9 checks, picked up by CI as checks.py; no Lean).
+Nov 27: `topics/new-ties/` rounds 5 to 9 added as DRAFT from the new-ties session's patches 0004 to 0008, on Brennan's word that all draft work goes to the repo (sections 8 to 13; checks5 to checks9 at 14, 13, 14, 13 and 12; checks5.py and checks6.py need python-flint and are skipped in CI through tools/checks_needing_packages.txt until he says yes to installing it). The 28 new Lean theorems are mirrored into Topics.NewTies (41 in all, no proof changed); library now 3,815 theorems in 175 modules.

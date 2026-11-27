@@ -1329,6 +1329,9 @@ rounds 3–4, where the maps are Möbius rather than straight-line.
 (`lean/compile_output.txt`). New this round: `example_slopes`, `example_collision`, `example_in_box`,
 `replace_shortens`. They pin down the concrete break and the termination step of P10. The covering and counting steps
 are in the prose proof and the interval checks.
+All 41 also compile clean in the shared library (`FusedAlgebra.Topics.NewTies`, namespace `CircleOp.NewTies`, no proof
+changed), mirrored on Nov 27. In the repo's CI, `checks5.py` and `checks6.py` are skipped while python-flint isn't
+installed there (listed in `tools/checks_needing_packages.txt`); `checks7.py` to `checks9.py` run.
 
 ### 13.8 Who proved what, round 9
 

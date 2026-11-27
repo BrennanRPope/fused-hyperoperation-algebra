@@ -1,0 +1,6 @@
+# Check scripts that need a Python module CI does not install yet.
+# Format: <script path from the repo root> <module name>
+# run_checks.py reports these as SKIP while the module can't be imported, and runs them once it can.
+# new-ties rounds 5 and 6 use python-flint's ball arithmetic (arb); adding python-flint to CI waits on Brennan's yes.
+topics/new-ties/checks5.py flint
+topics/new-ties/checks6.py flint

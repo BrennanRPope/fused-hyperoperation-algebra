@@ -12,10 +12,12 @@ Some scripts name their working folder as /mnt/project-files/math-theory/<topic>
 helper such as topics/gr-bridges/ga.py, or to write their output). Those paths are rewritten to
 the repo's topics/<topic> before the script runs, so the repo copy is what gets checked.
 Numeric checks are evidence, not proofs; the Lean library is where proofs live.
+A script listed in tools/checks_needing_packages.txt with a Python module CI does not install is
+reported as SKIP (not a failure) while that module can't be imported; it runs as soon as it can.
 
 Usage: python3 tools/run_checks.py [--jobs N] [--timeout SECONDS] [paths...]
 """
-import argparse, concurrent.futures as cf, os, re, subprocess, sys, time
+import argparse, concurrent.futures as cf, importlib.util, os, re, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -102,6 +104,21 @@ def main():
                         sys.exit(f"tools/extra_checks.txt lists {line.strip()}, which does not exist")
                     if p not in scripts:
                         scripts.append(p)
+    needs = {}
+    needs_file = ROOT / "tools" / "checks_needing_packages.txt"
+    if needs_file.exists():
+        for line in needs_file.read_text().splitlines():
+            parts = line.split()
+            if parts and not line.startswith("#"):
+                needs[(ROOT / parts[0]).resolve()] = parts[1]
+    kept = []
+    for s in scripts:
+        mod = needs.get(s.resolve())
+        if mod and importlib.util.find_spec(mod) is None:
+            print(f"SKIP  {s.relative_to(ROOT)}  needs the Python module {mod}, which is not installed", flush=True)
+        else:
+            kept.append(s)
+    scripts = kept
     results = []
     with cf.ThreadPoolExecutor(a.jobs) as ex:
         for script, ok, note, dt in ex.map(lambda s: run_one(s, a.timeout), scripts):
