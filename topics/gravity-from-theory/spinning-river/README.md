@@ -36,6 +36,9 @@ How it got here:
    rate at that order, by a formula in the mass ratio. The bodies only feel each other's own fields, and the clock
    rule turns out to shape only the field between them. What's missing is likely the field's own energy between the
    bodies, or the field of a body that is speeding up.
+9. **A fourth rule (Part 10):** adding gravity's own field energy as a source closes 92% of that gap at every mass
+   ratio. What is left is exactly one small point-like term at each body, most likely a matter of how a product of
+   fields is valued at a point.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -843,6 +846,119 @@ itself, which this session couldn't fetch.
   whether the miss closes. If it does, the rules become "fields are sent out, rates multiply, masses are dressed, and
   the field's own energy is a source", which is general relativity's own structure, written in the river's terms.
 
+## Part 10. A fourth rule: the field's own energy (round 14)
+
+Asked by Brennan, who said "Yes" to: "Should I add gravity's own field energy as a fourth rule and see whether it
+closes the gap?"
+
+**Result: adding gravity's own field energy closes 92% of the 2PN gap, at every mass ratio, and what is left is one
+small point-like term at each body.** The rules plus the field's energy rebuild general relativity's 2PN field piece
+by piece. For body 1 at ⅓ of the mass the miss in the x³ coefficient of its clock rate goes 1.62 → 0.44 → 0.13. The
+last 0.13 is exactly what one extra tiny source at each body, X̂ ⊃ m_a m_b²/(4 r₁₂² r_b), would give, and adding it
+brings the miss to 0 at all six mass ratios. That leftover is not derived yet. The most likely cause is how a product
+of two fields is valued at a point body, a step where the published method has careful rules this page doesn't
+reproduce.
+
+![fourth rule](figures/fig23_fourth_rule.png)
+
+*Fig 23. Left: the miss in body 1's 2PN clock-rate term, step by step, for body 1 at ⅓ of the mass. Red: the three
+rules. Orange: plus the closed-form pieces of the field's energy. Blue: plus the four integrals where the field acts on
+the field. Green: plus one point-like term per body. Middle: the same steps across the mass ratio; dots are computed,
+curves are the formulas, and the open dots (m₁ = 2/5) were never used in a fit. Right: the picture. The field's energy
+between the bodies is itself a source; what is left sits at the bodies.*
+
+### 10.1 What general relativity has that the rules lack
+
+General relativity's 2PN field of two point bodies is published in harmonic coordinates (Blanchet, Faye and Ponsot
+1998). Its paper still couldn't be fetched from this session, so its formulas here are written from the standard form
+of that field: g₀₀ = −1 + 2V − 2V² + 8(X̂ + V_iV_i + V³/6), g₀ᵢ = −4Vᵢ − 8R̂ᵢ, gᵢⱼ = δᵢⱼ(1 + 2V + 2V²) + 4Ŵᵢⱼ, with
+X̂, R̂ᵢ and Ŵᵢⱼ sourced partly by the field itself. Checked during the work on one moving body: these formulas give
+the moving black hole that Part 9's rules use (that check is not in `checks.py` yet).
+
+Subtracting the rules' field from that one leaves the difference D = general relativity − rules. Every piece of D is
+the field's energy acting as a source, and they fall into two kinds:
+
+- **Closed-form pieces** (`fourth_rule_closed.py`): the cross part of Ŵᵢⱼ, of R̂ᵢ and of X̂ (moving and speeding-up
+  bodies), plus 16V₁ₖV₂ₖ. Each is a derivative, with respect to a body's position, of Fock's function
+  g = ln(r₁ + r₂ + r₁₂), whose Laplacian is 1/(r₁r₂): the field of two point sources' energy spread between them.
+  The speeding-up body's own extra field (Part 9's second candidate) is one of these pieces.
+- **The field acting on the field** (`fourth_rule_integrals.py`): the term Ŵᵢⱼ ∂ᵢⱼV in X̂'s source, the 1PN
+  space-space field (itself made of field energy) acting through the Newtonian potential's curvature. With both parts
+  static it gives four products, and these have no closed form here, so they are integrated directly.
+
+### 10.2 The closed-form pieces: 1.62 → 0.44 (O10)
+
+Each closed-form piece is valued at each body with Hadamard's finite part, exactly as Part 9 values the rules, and
+added to the rules' field before the same clock-rate pipeline runs. For body 1 at ⅓ of the mass the miss drops from
+394/243 to 4/9. Over six mass ratios the new miss is exactly
+
+  m₁m₂(5 − 10m₁ + 3m₁²)   (total mass 1),
+
+fitted on three ratios and holding on the other three, including m₁ = 2/5 (222/625), which was never used in a fit.
+So the closed-form pieces take away m₁m₂(14m₁² − 20m₁ + 21)/3 of Part 9's miss.
+
+### 10.3 The field acting on the field (O9)
+
+The four products are T1 = Ŵself₁ : ∂∂V₂, T2 = Ŵself₂ : ∂∂V₁, T3 = Ŵcross : ∂∂V₁, T4 = Ŵcross : ∂∂V₂. Each gives X̂
+and its gradient at body 1 as a Poisson integral over all space, done in two-centre coordinates: the inner integral
+exactly, the outer one numerically after taking out its infinite parts, whose finite part is added exactly. Two
+details matter:
+
+- **The shape of the cut-out.** Ordering the integral around body 1 cuts a thin slab, not a ball, out around body 2.
+  For a leading term A(u)/ρ³ there, ball minus slab is a₂/3 + b/4, where A = c₀ + b u + c₂u² and a₂ = 2c₂/3. The
+  rule was checked on integrands with known answers, and T4 ordered around body 2 instead (a ball there, no
+  correction) gives the same numbers.
+- **The point part.** ∂ᵢⱼ(1/r) has a point part, −(4π/3)δᵢⱼ δ³. At body 2 it picks up the trace of Ŵ there, taken as
+  its average over directions (Hadamard), which adds (1/3)m₂Ŵₖₖ(y₂) times the kernel.
+
+| product | masses | X̂ at body 1 | its gradient | point part (value, gradient) |
+|---|---|---|---|---|
+| T1 | m₁²m₂ | −1/6 | 1/10 | −1/6, 1/6 |
+| T2 | m₁m₂² | 0 | 0 | 0, 0 |
+| T3 | m₁²m₂ | −1/3 | −1/10 | 0, 0 |
+| T4 | m₁m₂² | 1 | −2 | 1/3, −1/3 |
+
+(totals, point part included). So X̂ at body 1 gains (αm₁²m₂ + βm₁m₂²)/r₁₂³ with **α = −1/2, β = 1**, and its gradient
+(γm₁²m₂ + δm₁m₂²)/r₁₂⁴ with **γ = 0, δ = −2**. Every finite part lands on a simple fraction to better than 10⁻⁶. T3's
+value was also checked by direct 3D integration with a small ball cut out (−0.3331 at a cut of 10⁻³). T1's gradient
+from the slab-corrected integral (−1/15 before its point part) agrees with a separate analytic route through the
+inverse Laplacian of Ŵself's gradient (a scratch check, not in the package).
+
+### 10.4 What is left: one point-like term (O10)
+
+With α..δ added, the miss at m₁ = ⅓ is 32/243, and at every mass ratio it is
+
+  m₁m₂²(3 − m₁)/3.
+
+This also follows by pure algebra: a hand derivation at Newtonian order of how the four numbers move body 1's clock
+rate (`fourth_rule.newtonian_map`), added to 10.2's formula, gives the same polynomial (Lean `fourth_rule_residual`),
+and the map matches the pipeline at all six ratios.
+
+The leftover has exactly the shape of one extra point-like source at each body: X̂ ⊃ m_a m_b²/(4 r₁₂² r_b), which is
+β → 5/4 and δ → −9/4. With it the miss is 0 at all six mass ratios (Lean `fourth_rule_point_term`). Equivalently,
+T4's point part would need Ŵcross's trace at body 2 counted 7/4 times instead of once. That trace depends on direction
+there, m₁m₂(1 − u)/r₁₂², so its value at the point is a convention, and that is where we expect the gap to come from.
+Blanchet, Faye and Ponsot treat products of singular fields at a body with specific rules for such terms; with their
+paper in hand, the 1/4 can be checked directly.
+
+### 10.5 What this means, on its own merits
+
+- **What it contributes:** general relativity's 2PN field does split as "the three rules + the field's own energy",
+  and each piece can be added and measured on its own. The closed-form part (Fock's function) does most of the work,
+  the field-on-field part most of the rest, and the remainder is pinned to one number at one place: a quarter of a
+  point term at each body. That is a strong lead for the fourth rule.
+- **What would make it a result:** deriving the 1/4 (from how Ŵcross's trace is valued at a body), or reproducing it
+  from the published 2PN field. Either would close the gap exactly and make the rules "fields are sent out, rates
+  multiply, masses are dressed, and the field's own energy is a source".
+- **Ours:** the split D = general relativity − rules, the step-by-step closing (1.62 → 0.44 → 0.13 at m₁ = ⅓), the
+  formulas for each stage, the four field-on-field numbers as computed here, the slab-to-ball rule, and the finding
+  that the leftover is one point-like term.
+- **Known:** the 2PN harmonic field and its point-body regularization (Blanchet, Faye and Ponsot 1998), Fock's function
+  ln(r₁ + r₂ + r₁₂) (Fock 1939), Hadamard's finite part, and the idea that the field's energy gravitates and rebuilds
+  general relativity (Feynman's lectures; Deser 1970).
+- **Caveat:** the 2PN field's formulas here are written from its standard form, not copied from the paper, which this
+  session still can't fetch. A slip there would show up as exactly this kind of small leftover.
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -872,6 +988,9 @@ itself, which this session couldn't fetch.
   1PN and for a test mass, and wrong at 2PN by ν(15/2 + 9Δ/2 − 23ν/3). Rule B drops out of the bodies' motion
   entirely, so "each is needed" holds for the field, not the orbits. The likely missing piece is gravity's own field
   energy between the bodies.
+- **A fourth rule (Part 10):** adding the field's own energy closes 92% of the 2PN miss at every mass ratio
+  (1.62 → 0.13 at m₁ = ⅓). The leftover is exactly m_a m_b²/(4 r₁₂² r_b) at each body, not yet derived; the likely
+  cause is how a product of fields is valued at a point. A strong lead.
 - **Not derived:** the shift itself (a reading, known as Newman–Janis) and the river's push-along-the-ray rule. The
   waves' back-push and the wave formula are put in from known results. 2PN and beyond, and the merger, are still out of
   reach.
@@ -881,21 +1000,28 @@ itself, which this session couldn't fetch.
 
 ## Files
 
-- `checks.py`: 69 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 71 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O10 the fourth rule), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
+- `fourth_rule.py`: Part 10, the rules plus the field's own energy at six mass ratios; writes `fourth_rule.json`
+  (stages, formulas, the point-term closure). Uses `fourth_rule_cache/` (the closed-form pieces at each body); with
+  `--fresh` it recomputes them (about 6 minutes per mass ratio).
+- `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
+- `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
+  the cross-checks (about 2 minutes, a few more with `--cross`).
 - `orbits.py`: orbits, spins and the spin ensemble for Part 8; `python3 orbits.py` writes `orbits.json` (80 pairs,
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the twenty-two figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`).
+- `figures.py`: the twenty-three figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
-  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`. Written without a Lean
+  `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`. Written without a Lean
   toolchain; the repo copy is the shared library's `FusedAlgebra.Topics.SpinningRiver` (namespace
-  `CircleOp.SpinningRiver`, `ring` written as `grind`), which compiles clean, `two_pn_miss` included from Nov 27. It
+  `CircleOp.SpinningRiver`, `ring` written as `grind`), which compiles clean, rounds 13 and 14 included from Nov 27. It
   builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
@@ -938,3 +1064,6 @@ itself, which this session couldn't fetch.
 | Hadamard's finite part for point bodies; 2PN field-energy terms spread between the bodies | known (Blanchet, Faye & Ponsot 1998) |
 | the rules' 2PN extension, run through the clock-rate test; the miss ν(15/2 + 9Δ/2 − 23ν/3); exact at 1PN and for a test mass | **ours** (O7, O8) |
 | rule B (and the space rule) drop out of the bodies' motion through 2PN; B shapes only the field between them | **ours** (O7) |
+| 2PN harmonic field of two point bodies, its field-energy sources and point-body regularization; Fock's function ln(r₁ + r₂ + r₁₂); the field's energy gravitating (Feynman–Deser) | known (Blanchet, Faye & Ponsot 1998; Fock 1939; Deser 1970) |
+| D = general relativity − rules at 2PN, added piece by piece; the stage formulas m₁m₂(5 − 10m₁ + 3m₁²) and m₁m₂²(3 − m₁)/3; the four field-on-field numbers α..δ as computed here; the slab-to-ball rule | **ours** (O9, O10) |
+| the leftover as one point-like term m_a m_b²/(4 r₁₂² r_b) per body, closing the miss at every ratio | **ours** (O10), not yet derived |

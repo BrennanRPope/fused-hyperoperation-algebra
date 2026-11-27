@@ -808,6 +808,64 @@ def fig22():
     save(fig, "fig22_next_order.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22):
+# ---------------------------------------------------------------- fig23 a fourth rule: the field's own energy (round 14)
+def fig23():
+    from fractions import Fraction as Fr
+    fj = json.load(open(os.path.join(HERE, "fourth_rule.json")))
+    pr = fj["per_ratio"]
+    fig, axs = plt.subplots(1, 3, figsize=(16.5, 5.4), gridspec_kw={"width_ratios": [0.95, 1.15, 1.2]})
+    # left: the stages at m1 = 1/3
+    ax = axs[0]
+    row = pr["1/3"]
+    vals = [float(Fr(row[k])) for k in ("miss_rules", "miss_closed", "miss_with_f", "miss_with_point_term")]
+    labels = ["three\nrules", "+ field\nenergy,\nclosed form", "+ field acting\non field\n(4 integrals)",
+              "+ one point-\nlike term\nper body"]
+    cols = [RED, ORANGE, BLUE, GREEN]
+    ax.bar(range(4), vals, 0.6, color=cols)
+    for i, v in enumerate(vals):
+        ax.text(i, v + 0.04, f"{v:.2f}" if i < 3 else "0", ha="center", fontsize=10, color=cols[i])
+    ax.set_xticks(range(4)); ax.set_xticklabels(labels, fontsize=8.2)
+    ax.set_ylabel("miss in the x³ (2PN) coefficient of z₁"); ax.set_ylim(0, 1.85)
+    ax.text(2, 0.3, "92%\nclosed", ha="center", fontsize=9.5, color=BLUE)
+    ax.set_title("what each step closes (body 1 = ⅓ of the mass)", fontsize=10.5)
+    # middle: the stages across mass ratio
+    ax = axs[1]
+    a = np.linspace(0, 1, 301)
+    curves = [(a*(1 - a)*(23*a**2 - 50*a + 36)/3, RED, "three rules: m₁m₂(23m₁² − 50m₁ + 36)/3", "miss_rules"),
+              (a*(1 - a)*(5 - 10*a + 3*a**2), ORANGE, "+ closed-form field energy: m₁m₂(5 − 10m₁ + 3m₁²)", "miss_closed"),
+              (a*(1 - a)**2*(3 - a)/3, BLUE, "+ field on field: m₁m₂²(3 − m₁)/3", "miss_with_f")]
+    for y, c, lab, key in curves:
+        ax.plot(a, y, color=c, lw=1.8, label=lab)
+        for k, v in pr.items():
+            held = k == "2/5"
+            ax.plot(float(Fr(k)), float(Fr(v[key])), "o", ms=6.5, mfc="white" if held else c, mec=c, zorder=5)
+    ax.plot(a, 0*a, color=GREEN, lw=1.8, label="+ one point-like term per body: 0 at every ratio")
+    ax.plot([], [], "o", mfc="white", mec="k", label="m₁ = 2/5: never used in a fit")
+    ax.axhline(0, color="k", lw=0.5)
+    ax.set_xlabel("m₁ / m"); ax.set_ylabel("miss in the x³ coefficient of z₁")
+    ax.set_ylim(-0.25, 2.55); ax.legend(fontsize=8, loc="upper right")
+    ax.set_title("the same steps at every mass ratio", fontsize=10.5)
+    # right: the picture
+    ax = axs[2]
+    ax.set_xlim(0, 10); ax.set_ylim(0, 10); ax.axis("off")
+    ax.add_patch(Circle((2.0, 6.3), 0.55, fc=BLUE, alpha=0.85)); ax.text(2.0, 6.3, "m₁", ha="center", va="center", color="w")
+    ax.add_patch(Circle((8.0, 6.3), 0.4, fc=ORANGE, alpha=0.85)); ax.text(8.0, 6.3, "m₂", ha="center", va="center", color="w")
+    for k in range(9):
+        xx = 3.0 + 0.5*k; yy = 6.3 + 0.9*np.sin(k*0.9)
+        ax.add_patch(Circle((xx, yy), 0.12 + 0.05*(k % 3), fc=PURPLE, alpha=0.35))
+    ax.text(5.0, 8.15, "the field's energy between the bodies is itself a source", ha="center", fontsize=9, color=PURPLE)
+    ax.add_patch(Circle((8.0, 6.3), 0.75, fc="none", ec=GREEN, ls="--", lw=1.6))
+    ax.add_patch(Circle((2.0, 6.3), 0.9, fc="none", ec=GREEN, ls="--", lw=1.6))
+    ax.text(5.0, 4.6, "leftover: a tiny extra point source at each body (dashed)", ha="center", fontsize=8.5, color=GREEN)
+    boxes = [(0.1, 2.6, "known: general relativity's 2PN field (Blanchet, Faye & Ponsot 1998);\nFock's function ln(r₁ + r₂ + r₁₂); Hadamard's finite part", GREY),
+             (0.1, 1.2, "ours: rules + field energy rebuilds the gap piece by piece;\nwhat is left is exactly m_a m_b²/(4 r₁₂² r_b) at each body,\nmost likely how a product of fields is valued at a point", BLUE)]
+    for x_, y_, t_, c_ in boxes:
+        ax.text(x_, y_, t_, fontsize=8.6, color=c_, va="bottom",
+                bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=c_, alpha=0.95))
+    ax.set_title("a fourth rule: gravity's own energy gravitates", fontsize=10.5)
+    save(fig, "fig23_fourth_rule.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23):
     f()
 print("figures:", sorted(os.listdir(FIG)))

@@ -8,7 +8,8 @@ T: derive the turn from the same move: the shifted source's light rays.
 C: charge on the same shifted source: the charged spinning black hole (Kerr-Newman).
 B: two bodies: why one shear per cell cannot hold two, what does add exactly (Weyl), and the strut force (Newton).
 O: two spinning bodies in orbit: the slow-orbit field from three river rules, orbits decaying, spins, the waves;
-   O7-O8 test the rules at the next level of detail (2PN) through body 1's clock rate.
+   O7-O8 test the rules at the next level of detail (2PN) through body 1's clock rate; O9-O10 add the field's own
+   energy as a fourth rule and measure what is left.
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
 "zero" means below 1e-30.  Run: python3 checks.py   (writes checks_output.txt, results.json)
 """
@@ -982,6 +983,55 @@ check("O8 at 2PN the three rules miss: for body 1 at 1/3 of the mass the x^3 coe
       miss_ == no_.mismatch_formula(third) == sp.Rational(394, 243) and z_third[3] == sp.Rational(1205, 2916),
       f"rules {z_third[3]}, truth {no_.truth(third)[3]}, miss {miss_} (formula {no_.mismatch_formula(third)})")
 results["O8_z1"] = {"rules": [str(c) for c in z_third], "truth": [str(c) for c in no_.truth(third)]}
+
+# ================================================================ O9, O10  a fourth rule: the field's own energy (round 14)
+# What general relativity's 2PN field has and the three rules lack is the field's own energy acting as a source.
+# Its closed-form pieces (fourth_rule_closed.py) and four static field-on-field integrals (fourth_rule_integrals.py)
+# are added to the rules' field and fed through the same clock-rate pipeline (fourth_rule.py -> fourth_rule.json).
+import fourth_rule as fr_  # noqa: E402
+import fourth_rule_integrals as fi_  # noqa: E402
+fint_ = fi_.compute(verbose=False)
+fco_ = fint_["coefficients"]
+rows_ = fint_["rows"]
+num_ok = all(abs(float(sp.Rational(r_["ball_finite_part"])) - float(r_["ball_numeric"])) < 1e-6 for r_ in rows_.values())
+slab_ok = rows_["T1_grad"]["ball_finite_part"] == "-1/15" and rows_["T4_val"]["ball_finite_part"] == "2/3"
+check("O9 the four static field-on-field integrals (the 1PN space-space field acting through the Newtonian "
+      "potential's curvature) come out as exact numbers: X-hat at body 1 gains (alpha m1^2 m2 + beta m1 m2^2)/r12^3 "
+      "with alpha = -1/2, beta = 1, and its gradient (gamma m1^2 m2 + delta m1 m2^2)/r12^4 with gamma = 0, "
+      "delta = -2. Each finite part lands on a simple fraction to better than 1e-6, and the cut-out shape near body 2 "
+      "is corrected by a rule checked on integrands with known answers",
+      fco_ == {"alpha": "-1/2", "beta": "1", "gamma": "0", "delta": "-2"} and num_ok and slab_ok,
+      f"{fco_}; parts {[(k_, r_['total']) for k_, r_ in rows_.items()]}")
+results["O9_integrals"] = fint_
+frj_ = json.load(open(os.path.join(HERE, "fourth_rule.json")))
+pr_ = frj_["per_ratio"]
+m_ = sp.symbols("m1", positive=True)
+closed_f = m_*(1 - m_)*(5 - 10*m_ + 3*m_**2)
+resid_f = m_*(1 - m_)**2*(3 - m_)/3
+alg_ok = (sp.expand(closed_f + fr_.newtonian_map(m_).subs(fr_.F_VALUES) - resid_f) == 0 and
+          sp.expand(closed_f + fr_.newtonian_map(m_).subs({fr_.al: sp.Rational(-1, 2), fr_.be: sp.Rational(5, 4),
+                                                            fr_.ga: 0, fr_.de: sp.Rational(-9, 4)})) == 0)
+table_ok = all(sp.sympify(pr_[r]["miss_closed"]) == closed_f.subs(m_, sp.Rational(r)) and
+               sp.sympify(pr_[r]["miss_with_f"]) == resid_f.subs(m_, sp.Rational(r)) and
+               pr_[r]["miss_with_point_term"] == "0" and pr_[r]["newtonian_map_matches"] for r in fr_.RATIOS)
+# live: rerun mass ratio 1/3 through the pipeline from the cached closed-form pieces
+ex13_ = fr_.closed_pieces("1/3")
+z13_ = no_.redshift(third, 6, res_hook=fr_.make_hook(ex13_, fextra=fr_.f_terms(third, 1 - third)))
+live_ = sp.expand(z13_[3] - no_.truth(third)[3])
+live_ok = (sp.nsimplify(live_.subs(fr_.F_VALUES)) == sp.Rational(32, 243) and
+           sp.nsimplify(live_.subs({fr_.al: 0, fr_.be: 0, fr_.ga: 0, fr_.de: 0})) == sp.Rational(4, 9))
+check("O10 adding the field's own energy as a fourth rule closes most of the 2PN gap. For body 1 at 1/3 of the mass "
+      "the miss in the x^3 clock-rate coefficient goes 394/243 (rules) -> 4/9 (+ closed-form field energy) -> 32/243 "
+      "(+ the four integrals), 92% closed. At six mass ratios the stages follow m1 m2 (5 - 10 m1 + 3 m1^2) (fitted on "
+      "three, holding on the other three, 2/5 never used in any fit) and m1 m2^2 (3 - m1)/3, which also follows by "
+      "algebra from a hand-derived Newtonian map of the four numbers. What is left is exactly one point-like term per "
+      "body, X-hat += m_a m_b^2/(4 r12^2 r_b) (beta -> 5/4, delta -> -9/4), which brings the miss to 0 at every ratio",
+      alg_ok and table_ok and live_ok and all(frj_["closed_formula_holds"].values()),
+      f"stages at 1/3: {pr_['1/3']['miss_rules']} -> {pr_['1/3']['miss_closed']} -> {pr_['1/3']['miss_with_f']} -> "
+      f"{pr_['1/3']['miss_with_point_term']}; closed formula {frj_['closed_formula']}; live 1/3 rerun "
+      f"{sp.nsimplify(live_.subs(fr_.F_VALUES))}")
+results["O10_stages"] = {r: {k_: pr_[r][k_] for k_ in ("miss_rules", "miss_closed", "miss_with_f", "miss_with_point_term")}
+                         for r in fr_.RATIOS}
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)

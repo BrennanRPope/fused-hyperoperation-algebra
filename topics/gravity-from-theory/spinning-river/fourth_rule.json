@@ -1,0 +1,105 @@
+{
+ "ratios": [
+  "1/3",
+  "1/2",
+  "1/4",
+  "2/3",
+  "1/5",
+  "2/5"
+ ],
+ "f_values": {
+  "alpha": "-1/2",
+  "beta": "1",
+  "gamma": "0",
+  "delta": "-2"
+ },
+ "per_ratio": {
+  "1/3": {
+   "truth_x3": "-3523/2916",
+   "miss_rules": "394/243",
+   "miss_closed": "4/9",
+   "miss_with_f_symbolic": "-8*alpha/27 - 16*beta/27 - 16*delta/243 - 64*gamma/243 + 4/9",
+   "miss_with_f": "32/243",
+   "miss_with_point_term": "0",
+   "newtonian_map_matches": true
+  },
+  "1/2": {
+   "truth_x3": "-1069/1024",
+   "miss_rules": "67/48",
+   "miss_closed": "3/16",
+   "miss_with_f_symbolic": "-alpha/2 - beta/2 - delta/12 - gamma/12 + 3/16",
+   "miss_with_f": "5/48",
+   "miss_with_point_term": "0",
+   "newtonian_map_matches": true
+  },
+  "1/4": {
+   "truth_x3": "-84609/65536",
+   "miss_rules": "399/256",
+   "miss_closed": "129/256",
+   "miss_with_f_symbolic": "-3*alpha/16 - 9*beta/16 - 3*delta/64 - 21*gamma/64 + 129/256",
+   "miss_with_f": "33/256",
+   "miss_with_point_term": "0",
+   "newtonian_map_matches": true
+  },
+  "2/3": {
+   "truth_x3": "-9571/11664",
+   "miss_rules": "232/243",
+   "miss_closed": "-2/27",
+   "miss_with_f_symbolic": "-16*alpha/27 - 8*beta/27 - 16*delta/243 + 8*gamma/243 - 2/27",
+   "miss_with_f": "14/243",
+   "miss_with_point_term": "0",
+   "newtonian_map_matches": true
+  },
+  "1/5": {
+   "truth_x3": "-42107/31250",
+   "miss_rules": "2692/1875",
+   "miss_closed": "312/625",
+   "miss_with_f_symbolic": "-16*alpha/125 - 64*beta/125 - 64*delta/1875 - 128*gamma/375 + 312/625",
+   "miss_with_f": "224/1875",
+   "miss_with_point_term": "0",
+   "newtonian_map_matches": true
+  },
+  "2/5": {
+   "truth_x3": "-286299/250000",
+   "miss_rules": "984/625",
+   "miss_closed": "222/625",
+   "miss_with_f_symbolic": "-48*alpha/125 - 72*beta/125 - 48*delta/625 - 24*gamma/125 + 222/625",
+   "miss_with_f": "78/625",
+   "miss_with_point_term": "0",
+   "newtonian_map_matches": true
+  }
+ },
+ "closed_formula": "-m1*(m1 - 1)*(3*m1**2 - 10*m1 + 5)",
+ "closed_formula_fit_on": [
+  "1/3",
+  "1/2",
+  "1/4"
+ ],
+ "closed_formula_holds": {
+  "1/3": true,
+  "1/2": true,
+  "1/4": true,
+  "2/3": true,
+  "1/5": true,
+  "2/5": true
+ },
+ "residual_formula": "m1*(1-m1)**2*(3-m1)/3",
+ "residual_holds": {
+  "1/3": true,
+  "1/2": true,
+  "1/4": true,
+  "2/3": true,
+  "1/5": true,
+  "2/5": true
+ },
+ "residual_by_algebra": "-m1*(m1 - 3)*(m1 - 1)**2/3",
+ "point_term": "X-hat at body a gains (1/4) m_a m_b^2 / (r12^2 r_b): beta -> 5/4, delta -> -9/4",
+ "point_term_closes": {
+  "1/3": true,
+  "1/2": true,
+  "1/4": true,
+  "2/3": true,
+  "1/5": true,
+  "2/5": true
+ }
+}

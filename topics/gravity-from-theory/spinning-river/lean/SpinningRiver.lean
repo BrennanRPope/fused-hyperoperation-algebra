@@ -126,6 +126,23 @@ theorem two_pn_miss (a : R) :
     2 * a * (1 - a) * (23 * a^2 - 50 * a + 36)
       = a * (1 - a) * (45 + 27 * ((1 - a) - a) - 46 * (a * (1 - a))) := by grind
 
+/-- **Round 14: adding gravity's own field energy (check O10)**, times 3 to stay in a ring. With body 1 of
+mass a and body 2 of mass 1 − a, the closed-form field-energy pieces leave the miss a(1 − a)(5 − 10a + 3a²).
+The four static field-on-field numbers α = −1/2, β = 1, γ = 0, δ = −2 change body 1's x³ coefficient by the
+Newtonian-order map in the second bracket. What is left is a(1 − a)²(3 − a)/3. -/
+theorem fourth_rule_residual (a : R) :
+    3 * (a * (1 - a) * (5 - 10 * a + 3 * a^2))
+      + (8 * (1 - a) * (a * (1 - a)) + 16 * (1 - a)^2 * (a * (1 - a)) - 24 * a * (1 - a)^3
+         + 6 * a^2 * (1 - a) - 12 * a * (1 - a)^2)
+      = a * (1 - a)^2 * (3 - a) := by grind
+
+/-- **The leftover is one point-like term (check O10).** Raising β by 1/4 and lowering δ by 1/4 (an extra
+X̂ ⊃ m_a m_b²/(4 r₁₂² r_b) at each body) cancels the residual exactly, for every mass ratio:
+the map at Δβ = 1/4, Δδ = −1/4, times 3, is minus the residual above. -/
+theorem fourth_rule_point_term (a : R) :
+    ((1 - a) * (a * (1 - a)) - (1 - a)^2 * (a * (1 - a))
+      - 3 * a * (1 - a)^2) = -(a * (1 - a)^2 * (3 - a)) := by grind
+
 end
 
 end CircleOp.SpinningRiver

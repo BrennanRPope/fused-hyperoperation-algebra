@@ -1,0 +1,150 @@
+{
+"1": {
+"Wc,0,0": [
+"Mul(Integer(-1), Integer(6), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Integer(0)"
+],
+"Wc,0,1": [
+"Integer(0)",
+"Integer(0)"
+],
+"Wc,0,2": [
+"Integer(0)",
+"Integer(0)"
+],
+"Rc,0": [
+"Integer(0)",
+"Integer(0)"
+],
+"Wc,1,1": [
+"Mul(Integer(6), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Mul(Integer(-1), Integer(3), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1)))"
+],
+"Wc,1,2": [
+"Integer(0)",
+"Integer(0)"
+],
+"Rc,1": [
+"Add(Mul(Integer(-1), Integer(3), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(-1), Integer(9), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(50), Symbol('R1', positive=True)), Mul(Integer(50), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(3), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(150), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(150), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(21), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(100), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(200), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(100), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Wc,2,2": [
+"Mul(Integer(6), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Mul(Integer(-1), Integer(3), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1)))"
+],
+"Rc,2": [
+"Integer(0)",
+"Integer(0)"
+],
+"Xa": [
+"Mul(Integer(6), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Mul(Integer(-1), Integer(6), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1)))"
+],
+"Xb": [
+"Add(Mul(Integer(-1), Integer(3), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(5), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(10), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(5), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(3), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(5), Symbol('R1', positive=True)), Mul(Integer(5), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(12), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(-1), Integer(12), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xc": [
+"Add(Mul(Integer(3), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(10), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(20), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(10), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(-1), Integer(6), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Symbol('R1', positive=True)), Mul(Integer(25), Symbol('R2', positive=True))), Integer(-1))), Mul(Integer(-1), Rational(3, 50), Pow(Symbol('eps', positive=True), Integer(6))))",
+"Add(Mul(Integer(-1), Integer(6), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(3), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xd": [
+"Add(Mul(Integer(-1), Integer(9), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(9), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Symbol('R1', positive=True)), Mul(Integer(25), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(9), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(150), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(150), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(-1), Integer(9), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(100), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xe": [
+"Add(Mul(Integer(12), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(-1), Integer(12), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Symbol('R1', positive=True)), Mul(Integer(25), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(-1), Integer(6), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(6), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xf1c": [
+"Integer(0)",
+"Integer(0)"
+],
+"Xf2c": [
+"Mul(Integer(3), Pow(Symbol('R2', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(100), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Integer(0)"
+],
+"Xacc": [
+"Mul(Integer(-1), Integer(9), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Symbol('R1', positive=True)), Mul(Integer(50), Symbol('R2', positive=True))), Integer(-1)))",
+"Mul(Integer(9), Symbol('R2', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(100), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))"
+],
+"VV": [
+"Integer(0)",
+"Integer(0)"
+]
+},
+"2": {
+"Wc,0,0": [
+"Mul(Integer(-1), Integer(6), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Integer(0)"
+],
+"Wc,0,1": [
+"Integer(0)",
+"Integer(0)"
+],
+"Wc,0,2": [
+"Integer(0)",
+"Integer(0)"
+],
+"Rc,0": [
+"Integer(0)",
+"Integer(0)"
+],
+"Wc,1,1": [
+"Mul(Integer(6), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Mul(Integer(3), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1)))"
+],
+"Wc,1,2": [
+"Integer(0)",
+"Integer(0)"
+],
+"Rc,1": [
+"Add(Mul(Integer(3), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(9), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(50), Symbol('R1', positive=True)), Mul(Integer(50), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(3), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(150), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(150), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(21), Pow(Symbol('eps', positive=True), Integer(5)), Pow(Add(Mul(Integer(100), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(200), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(100), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Wc,2,2": [
+"Mul(Integer(6), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Mul(Integer(3), Pow(Symbol('eps', positive=True), Integer(4)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1)))"
+],
+"Rc,2": [
+"Integer(0)",
+"Integer(0)"
+],
+"Xa": [
+"Mul(Integer(6), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Mul(Integer(6), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1)))"
+],
+"Xb": [
+"Add(Mul(Integer(-1), Integer(3), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(5), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(10), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(5), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(3), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(5), Symbol('R1', positive=True)), Mul(Integer(5), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(-1), Integer(12), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(12), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xc": [
+"Add(Mul(Integer(3), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(10), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(20), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(10), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(-1), Integer(6), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Symbol('R1', positive=True)), Mul(Integer(25), Symbol('R2', positive=True))), Integer(-1))), Mul(Integer(-1), Rational(3, 50), Pow(Symbol('eps', positive=True), Integer(6))))",
+"Add(Mul(Integer(6), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(-1), Integer(3), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xd": [
+"Add(Mul(Integer(-1), Integer(9), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(9), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Symbol('R1', positive=True)), Mul(Integer(25), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(-1), Integer(9), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(150), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(150), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(9), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(100), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xe": [
+"Add(Mul(Integer(12), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))), Mul(Integer(-1), Integer(12), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Symbol('R1', positive=True)), Mul(Integer(25), Symbol('R2', positive=True))), Integer(-1))))",
+"Add(Mul(Integer(6), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(3))), Mul(Integer(75), Pow(Symbol('R1', positive=True), Integer(2)), Symbol('R2', positive=True)), Mul(Integer(75), Symbol('R1', positive=True), Pow(Symbol('R2', positive=True), Integer(2))), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(3)))), Integer(-1))), Mul(Integer(-1), Integer(6), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1))))"
+],
+"Xf1c": [
+"Mul(Integer(3), Pow(Symbol('R1', positive=True), Integer(2)), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(50), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(100), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(50), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))",
+"Integer(0)"
+],
+"Xf2c": [
+"Integer(0)",
+"Integer(0)"
+],
+"Xacc": [
+"Mul(Integer(-1), Integer(2), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Symbol('R1', positive=True)), Mul(Integer(25), Symbol('R2', positive=True))), Integer(-1)))",
+"Mul(Integer(-1), Integer(2), Symbol('R1', positive=True), Pow(Symbol('eps', positive=True), Integer(6)), Pow(Add(Mul(Integer(25), Pow(Symbol('R1', positive=True), Integer(2))), Mul(Integer(50), Symbol('R1', positive=True), Symbol('R2', positive=True)), Mul(Integer(25), Pow(Symbol('R2', positive=True), Integer(2)))), Integer(-1)))"
+],
+"VV": [
+"Integer(0)",
+"Integer(0)"
+]
+}
+}
