@@ -1,0 +1,38 @@
+{
+ "1": {
+  "S1 product keeps size, plane (max err)": 6.528656278878181,
+  "S1 product keeps size, quaternions (max err)": 20.53914886418054,
+  "S2 size change under a full rotation": 0.41421356237309515,
+  "S4 angular momentum drift in a Kepler run": 0.41585639218381143
+ },
+ "1.5": {
+  "S1 product keeps size, plane (max err)": 1.4590168114734485,
+  "S1 product keeps size, quaternions (max err)": 4.45189912925804,
+  "S2 size change under a full rotation": 0.12246204830937302,
+  "S4 angular momentum drift in a Kepler run": 0.1370014827421967
+ },
+ "2": {
+  "S1 product keeps size, plane (max err)": 1.7763568394002505e-15,
+  "S1 product keeps size, quaternions (max err)": 3.552713678800501e-15,
+  "S2 size change under a full rotation": 2.220446049250313e-16,
+  "S4 angular momentum drift in a Kepler run": 1.1231537921929657e-10
+ },
+ "3": {
+  "S1 product keeps size, plane (max err)": 1.4919842088386446,
+  "S1 product keeps size, quaternions (max err)": 3.127823796556841,
+  "S2 size change under a full rotation": 0.12246204830937302,
+  "S4 angular momentum drift in a Kepler run": 0.14963399393560028
+ },
+ "4": {
+  "S1 product keeps size, plane (max err)": 1.6405147620729164,
+  "S1 product keeps size, quaternions (max err)": 4.083009608782689,
+  "S2 size change under a full rotation": 0.18920711500272103,
+  "S4 angular momentum drift in a Kepler run": 0.22974435668851956
+ },
+ "inf": {
+  "S1 product keeps size, plane (max err)": 2.947279139302932,
+  "S1 product keeps size, quaternions (max err)": 4.827691367431196,
+  "S2 size change under a full rotation": 0.4142135623730949,
+  "S4 angular momentum drift in a Kepler run": 0.4711971879469442
+ }
+}

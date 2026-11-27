@@ -1,0 +1,114 @@
+{
+ "props": {
+  "1": {
+   "norm multiplies |xy|=|x||y|": true,
+   "commutative": true,
+   "associative": true,
+   "alternative": true,
+   "power-associative": true,
+   "lift is exact: 1+k(a o b) = (1+ka)(1+kb)": true,
+   "circle op associative": true,
+   "circle op polar split |1+k(a o b)| = |1+ka||1+kb|": true,
+   "superstring 3-psi rule": true
+  },
+  "2": {
+   "norm multiplies |xy|=|x||y|": true,
+   "commutative": true,
+   "associative": true,
+   "alternative": true,
+   "power-associative": true,
+   "lift is exact: 1+k(a o b) = (1+ka)(1+kb)": true,
+   "circle op associative": true,
+   "circle op polar split |1+k(a o b)| = |1+ka||1+kb|": true,
+   "superstring 3-psi rule": true
+  },
+  "4": {
+   "norm multiplies |xy|=|x||y|": true,
+   "commutative": false,
+   "associative": true,
+   "alternative": true,
+   "power-associative": true,
+   "lift is exact: 1+k(a o b) = (1+ka)(1+kb)": true,
+   "circle op associative": true,
+   "circle op polar split |1+k(a o b)| = |1+ka||1+kb|": true,
+   "superstring 3-psi rule": true
+  },
+  "8": {
+   "norm multiplies |xy|=|x||y|": true,
+   "commutative": false,
+   "associative": false,
+   "alternative": true,
+   "power-associative": true,
+   "lift is exact: 1+k(a o b) = (1+ka)(1+kb)": true,
+   "circle op associative": false,
+   "circle op polar split |1+k(a o b)| = |1+ka||1+kb|": true,
+   "superstring 3-psi rule": true
+  },
+  "16": {
+   "norm multiplies |xy|=|x||y|": false,
+   "commutative": false,
+   "associative": false,
+   "alternative": false,
+   "power-associative": true,
+   "lift is exact: 1+k(a o b) = (1+ka)(1+kb)": true,
+   "circle op associative": false,
+   "circle op polar split |1+k(a o b)| = |1+ka||1+kb|": false,
+   "superstring 3-psi rule": false
+  }
+ },
+ "zero_divisor": [
+  1,
+  10,
+  4,
+  15,
+  -1
+ ],
+ "residual": {
+  "1": [
+   1.9187054034899305e-17,
+   7.850462293418876e-17
+  ],
+  "2": [
+   4.2933750941404737e-17,
+   1.415262216750919e-16
+  ],
+  "4": [
+   5.971686473035276e-17,
+   1.6361670521979892e-16
+  ],
+  "8": [
+   7.203273298239221e-17,
+   1.4772675344140568e-16
+  ],
+  "16": [
+   0.25444146501397763,
+   0.42497043348209973
+  ]
+ },
+ "spacetime": {
+  "1": {
+   "spacetime dim": 3,
+   "det is Minkowski norm": true,
+   "signature": "(1,2)",
+   "Lorentz algebra dim (n+2)(n+1)/2": 3
+  },
+  "2": {
+   "spacetime dim": 4,
+   "det is Minkowski norm": true,
+   "signature": "(1,3)",
+   "Lorentz algebra dim (n+2)(n+1)/2": 6
+  },
+  "4": {
+   "spacetime dim": 6,
+   "det is Minkowski norm": true,
+   "signature": "(1,5)",
+   "Lorentz algebra dim (n+2)(n+1)/2": 15
+  },
+  "8": {
+   "spacetime dim": 10,
+   "det is Minkowski norm": true,
+   "signature": "(1,9)",
+   "Lorentz algebra dim (n+2)(n+1)/2": 45
+  }
+ }
+}

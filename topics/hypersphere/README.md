@@ -35,6 +35,9 @@ red = does not work. Lean: `lean/Hypersphere.lean`, compiled in the shared libra
 - **Brennan's hunch holds for round things, with a hard limit.** Polar coordinates split the circle operation cleanly
   (radius adds, sphere multiplies) only in 1, 2, 4 and 8 dimensions (Hurwitz). And in polar coordinates the sphere
   and the simplex are the same object; the cube is a different one (the polydisc).
+- **Why only 1, 2, 4, 8 (new section near the end).** It is one fact with the superstring's spacetimes 3, 4, 6, 10:
+  the size-keeping product, plus relativity's 2-dimensional plane. The same theorem forces the round shape, so
+  gravity is not more complete in any other ℓp shape: only p = 2 keeps rotations and angular momentum.
 - **Comes out of the sphere, or simpler there:** the curvature (1/radius², which is the curvature dial d at k = 0), the
   swap rule (turn = curvature × area is the sphere's curvature), Coulomb's 4π, special relativity (on the sky, a boost is a radius and a turn is an angle) and the shape
   of Newton's orbits (great circles on S³).
@@ -276,6 +279,61 @@ dimensions.** Concretely:
   it has no swap rule. That is why the cube is right for independent switches and wrong for rotation.
 - The simplex and the sphere are the same object in polar coordinates (section 3).
 
+## Why only 1, 2, 4 and 8, and is gravity better in another shape?
+
+Brennan noticed that the circle operation's 1, 2, 4, 8 are the quaternion and octonion sizes, asked whether that and
+the superstring's spacetime sizes 3, 4, 6, 10 are the same fact, guessed that "properties like associativity only
+exist at those levels", and asked: "Is gravity more complete in any other shape?" Checks:
+`division-algebras/checks_div.py` (identities proved symbolically up to 8 dimensions, exact counterexamples at 16)
+and `division-algebras/checks_shape.py`; both pass.
+
+![One root](figures/figD1-one-root-1-2-4-8-and-3-4-6-10.png)
+
+*Figure D1. A: what each doubling of the numbers keeps (R → C → H → O → S). B: superstring spacetimes are
+relativity's plane (orange) plus the algebra (blue). C: the superstring's spinor rule, measured in each algebra.*
+
+**Yes, it is one fact, used twice.** The fact is the size-keeping product, |xy| = |x||y|, which exists only in the
+reals, complex numbers, quaternions and octonions (Hurwitz 1898).
+
+- **The polar split uses it directly.** The circle operation lifts exactly to a product,
+  1 + k(a ∘ₖ b) = (1 + ka)(1 + kb), in all five algebras (checked; note under Fig D1 A). So "radius adds, sphere multiplies" works
+  exactly when the product keeps size: yes in 1, 2, 4, 8, no in 16 (Fig D1 A, first column).
+- **The superstring uses it to build spacetime.** Write a spacetime point as a 2×2 matrix with t ± z on the diagonal
+  and an element x of the algebra off it. Its determinant is (t + z)(t − z) − |x|² = t² − z² − |x|², the
+  spacetime size, with 2 + n dimensions: 3, 4, 6, 10 (Fig D1 B, checked). The extra 2 is relativity's plane, the
+  time and one space direction whose size is t² − z², the setting our earlier pages reach at k = 0, d = −1/c².
+  The superstring also needs one spinor rule (the "3-ψ rule"). It holds exactly in R, C, H, O and fails in the
+  sedenions by about 0.25 (Fig D1 C). **Known:** Baez and Huerta 2009, building on Kugo–Townsend 1983, Sudbery 1984
+  and Evans 1988.
+
+**Brennan's guess, refined.** It is one notch narrower than associativity. Grouping (associativity) is already lost
+at 8: octonions keep only a weaker form called alternativity, and that weaker form is exactly what the spinor rule
+needs (Baez and Huerta say so too). Associativity also exists in other sizes, for example in square matrices, just
+without a size-keeping product. What exists only at 1, 2, 4, 8 is the size-keeping product. The circle operation
+inherits each property from its algebra exactly, through the lift (D1 A).
+
+![Only the sphere](figures/figD2-gravity-needs-the-sphere.png)
+
+*Figure D2. A: the ℓp shapes. B: three things gravity needs, tested for each p. C: one orbit pulled toward the
+sphere's centre, and the same start pulled by the diamond's 1/size.*
+
+**Is gravity more complete in another shape? No: only the sphere keeps what gravity needs.** For p = 1, 1.5, 3, 4
+and ∞, the size of a point changes when you turn it (by 12% to 41%), a Kepler orbit loses 14% to 47% of its angular
+momentum in one run, and no product keeps size (D2 B). At p = 2 all three are exact. The orbit picture shows it:
+the sphere's orbit closes, the diamond's wanders (D2 C).
+**Known:** for p ≠ 2 the only size-keeping linear maps are swaps and sign flips of the axes (Banach; Lamperti
+1958), so there are no smooth rotations and no conserved angular momentum. And a size-keeping product with a unit
+forces both the round shape and the sizes 1, 2, 4, 8 at once (Urbanik and Wright 1960). So in the theory's own
+names, **p = 2 and the polar split's 1, 2, 4, 8 are one theorem**, and the superstring's 3, 4, 6, 10 is that theorem
+plus relativity's plane. (If "shape" means the curvature dial instead, sphere against saddle, the sign is set by
+what fills space, not chosen; the orbits section uses both.)
+
+**Does it open a lead?** It closes one honestly: the sphere is not one choice among shapes for gravity, it is forced.
+The new reading for us is that two of the theory's own settings, p = 2 and the 1, 2, 4, 8 of the polar split, are
+the same constraint as the superstring's dimensions. Baez and Huerta's follow-up papers report a similar rule one
+size up (spacetimes 4, 5, 7, 11, which includes M-theory's 11); not checked here.
+**Verdict: unifies (known root, new reading for the theory).**
+
 ## Leads, judged on their own merits
 
 1. **Gravity and the atom share S³ (section 8). Now tested: see the orbits section below (`orbits/README.md`).**
@@ -301,12 +359,18 @@ dimensions.** Concretely:
 - `checks.py` → `checks_output.txt` (57/57)
 - `figures.py` → `figures/fig1` … `fig12`
 - `orbits/`: Newton's orbits and hydrogen on one 3-sphere (`README.md`, `checks_orbits.py` 23/23, `six/checks_six.py` 11/11, `twov/checks_twov.py` 8/8, `dcopy/checks_dcopy.py` 11/11, figures O1–O9)
+- `division-algebras/` (DRAFT): why 1, 2, 4, 8 (`checks_div.py`, `checks_shape.py`, both pass; `figure_div.py` → figures D1, D2)
 - `lean/Hypersphere.lean`: 33 theorems, compiled in the shared library as `FusedAlgebra.Topics.Hypersphere`
 
 ## References
 
 - A. Hurwitz, "Über die Composition der quadratischen Formen", 1898; J. F. Adams, "On the non-existence of elements of
   Hopf invariant one", Ann. Math. 1960.
+- K. Urbanik and F. B. Wright, "Absolute valued algebras", Proc. AMS 11 (1960) 861–866; J. Lamperti, "On the
+  isometries of certain function-spaces", Pacific J. Math. 1958.
+- J. C. Baez and J. Huerta, "Division Algebras and Supersymmetry I", arXiv:0909.0551 (2009); T. Kugo and
+  P. Townsend, Nucl. Phys. B 1983; A. Sudbery, J. Phys. A 1984; J. M. Evans, Nucl. Phys. B 1988; J. C. Baez,
+  "The Octonions", Bull. AMS 2002.
 - W. R. Hamilton, quaternions, 1843; "The hodograph", 1846.
 - J. H. Lambert, *Theorie der Parallellinien*, 1766.
 - H. Hopf, 1931; M. V. Berry, "Quantal phase factors accompanying adiabatic changes", Proc. R. Soc. A 1984.

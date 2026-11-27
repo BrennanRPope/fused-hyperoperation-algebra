@@ -1,0 +1,7 @@
+p=1    product keeps size: no (err 6.5e+00); rotation keeps size: no (change 0.414); angular momentum kept: no (drift 4.2e-01)  [PASS]
+p=1.5  product keeps size: no (err 1.5e+00); rotation keeps size: no (change 0.122); angular momentum kept: no (drift 1.4e-01)  [PASS]
+p=2    product keeps size: yes (err 1.8e-15); rotation keeps size: yes (change 0.000); angular momentum kept: yes (drift 1.1e-10)  [PASS]
+p=3    product keeps size: no (err 1.5e+00); rotation keeps size: no (change 0.122); angular momentum kept: no (drift 1.5e-01)  [PASS]
+p=4    product keeps size: no (err 1.6e+00); rotation keeps size: no (change 0.189); angular momentum kept: no (drift 2.3e-01)  [PASS]
+p=inf  product keeps size: no (err 2.9e+00); rotation keeps size: no (change 0.414); angular momentum kept: no (drift 4.7e-01)  [PASS]
+ALL PASS: only p=2 keeps all three
