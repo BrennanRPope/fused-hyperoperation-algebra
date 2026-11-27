@@ -1,0 +1,186 @@
+{
+ "written_utc": "2026-11-27T17:19:48+00:00",
+ "uses_any_measured_delay_or_gamma": false,
+ "dial_settings": {
+  "lambda_push": 1,
+  "tau_twist": 1,
+  "set_by": "rounds 7-8 (the river derived from the shift; exact Kerr), used unchanged in rounds 25-28 (river_term.py, equator_split.py, kn_split.py, shadow_split.py)"
+ },
+ "leg_formula": {
+  "b^2(r0)": "r0**2*(-2*M*lambda**2 + 2*M + r0)/(-2*M*lambda**2 + r0)",
+  "outgoing_first_order_is_1+lam2_log_plus_clock": true,
+  "incoming_mirror": true,
+  "d/dr ln((r+s)/r0) = 1/s": true,
+  "d/dr sqrt((r-r0)/(r+r0)) = r0/((r+r0) s)": true,
+  "newton_corpuscle_first_order_is_-log_plus_sqrt": true
+ },
+ "perihelion_dial": {
+  "ratio_first_order": "-4*mu**2*v2 - 2*nu*v2 + 1",
+  "general_is_1-2(2mu^2+nu)v^2": true,
+  "square_dial_is_1-6lam^2v^2": true
+ },
+ "bending_dial": [
+  {
+   "lambda": 0.0,
+   "b": 100000.0,
+   "deflection_x_b_over_2M": 0.9999999999666667,
+   "predicted_1+lam2": 1.0
+  },
+  {
+   "lambda": 0.5,
+   "b": 100000.0,
+   "deflection_x_b_over_2M": 1.2500125174712533,
+   "predicted_1+lam2": 1.25
+  },
+  {
+   "lambda": 1.0,
+   "b": 100000.0,
+   "deflection_x_b_over_2M": 2.0000589069956733,
+   "predicted_1+lam2": 2.0
+  }
+ ],
+ "sun_exact": [
+  {
+   "lambda": 0.0,
+   "exact_excess_m": 9749.406182737997,
+   "first_order_excess_m": 9749.40813434967,
+   "difference_m": -0.0019516116720084862,
+   "M2_over_r0_m": 0.001958837774532845
+  },
+  {
+   "lambda": 1.0,
+   "exact_excess_m": 18032.992938559204,
+   "first_order_excess_m": 18032.96608727015,
+   "difference_m": 0.026851289051160313,
+   "M2_over_r0_m": 0.001958837774532845
+  }
+ ],
+ "twist": {
+  "rows": [
+   {
+    "r0": 1000,
+    "r1": 1000000.0,
+    "r2": 1000000.0,
+    "half_difference_over_Ma/r0": -8.027214821243724
+   },
+   {
+    "r0": 2000,
+    "r1": 1000000.0,
+    "r2": 3000000.0,
+    "half_difference_over_Ma/r0": -8.010246293830052
+   },
+   {
+    "r0": 5000,
+    "r1": 10000000.0,
+    "r2": 10000000.0,
+    "half_difference_over_Ma/r0": -8.004227685345159
+   }
+  ],
+  "coefficient": -8,
+  "sun_a_m": 325.44313631347535,
+  "sun_a_over_M": 0.22039659892201263,
+  "sun_one_way_s_at_1.6Rsun": 1.1520534872081492e-11,
+  "sun_round_trip_s_at_1.6Rsun": 2.3041069744162985e-11
+ },
+ "shadow_dial": {
+  "shadow_radius_bc_over_M_range": [
+   4.160456897277728,
+   5.640035448325374
+  ],
+  "bc_lambda_1": 5.196152422706632,
+  "bc_table": [
+   [
+    0.6,
+    2.727591763277065
+   ],
+   [
+    0.65,
+    3.00372359721795
+   ],
+   [
+    0.7,
+    3.2889122762933996
+   ],
+   [
+    0.75,
+    3.583287131916338
+   ],
+   [
+    0.8,
+    3.8869553545974806
+   ],
+   [
+    0.85,
+    4.20000640856007
+   ],
+   [
+    0.9,
+    4.522515468157146
+   ],
+   [
+    0.95,
+    4.854546108090379
+   ],
+   [
+    1.0,
+    5.196152422706632
+   ],
+   [
+    1.05,
+    5.547380706505057
+   ],
+   [
+    1.1,
+    5.908270795569313
+   ],
+   [
+    1.15,
+    6.27885714541006
+   ],
+   [
+    1.2000000000000002,
+    6.659169702614478
+   ],
+   [
+    1.25,
+    7.049234614174767
+   ],
+   [
+    1.3,
+    7.449074808222167
+   ]
+  ],
+  "lambda_range": [
+   0.8437654277279882,
+   1.062965733154075
+  ],
+  "gamma_range_lambda2": [
+   0.711940097028995,
+   1.1298961498597802
+  ]
+ },
+ "prediction": {
+  "gamma_predicted": 1.0,
+  "rule": "gamma = lambda^2, dials lambda = tau = 1 from rounds 7-8",
+  "gamma_from_shadow_alone": "lambda^2 within the shadow_dial range (no use of rounds 7-8's setting)",
+  "one_dial_relation": "perihelion factor (2 + 2 gamma - beta)/3 = lambda^2 and gamma = lambda^2, so beta + gamma = 2 for any push strength, if the field stays one square",
+  "delay_split": {
+   "time_part": 0.5,
+   "push": 0.5,
+   "twist": "linear in the Sun's spin, opposite on the two sides, about 8 GM J/(c^4 M b) one way (well below a part in a million of the total)"
+  },
+  "illustrative_geometry": {
+   "r_earth_AU": 1.016,
+   "r_far_AU": 7.4,
+   "b_solar_radii": 1.6
+  },
+  "round_trip_delay_s": {
+   "time_part": 0.00013008433989929963,
+   "push": 0.00013008433989929963,
+   "total": 0.00026016867979859927,
+   "twist_round_trip": 2.3041069744162985e-11
+  },
+  "doppler_note": "Cassini-style tracking measures d/dt of the round-trip delay; its relativistic part is proportional to (1 + gamma) = 1 + lambda^2, so the prediction for it is the same gamma."
+ },
+ "script_sha256": "d3204647d9a74fd0269ca7ef5211c41b1036d51ac4b0355031873fc534844b75"
+}
