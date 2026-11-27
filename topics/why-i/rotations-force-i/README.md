@@ -1,4 +1,4 @@
-# Do rotations force quantum mechanics to use complex numbers? (Nov 26, 2026)
+# DRAFT · Do rotations force quantum mechanics to use complex numbers? (Nov 26, 2026)
 
 **Verdict.** Rotations on their own don't force it, because real-number quantum mechanics also evolves by rotations. Add two textbook facts, energy = ħ × turning rate and "only energy differences matter", and a five-line proof follows: every Hamiltonian must turn states with one and the same quarter turn J (J² = −1). That J does the job of i in Schrödinger's equation, and it is shared by the whole world, which rules out real quantum mechanics with independent parts.
 
@@ -6,7 +6,7 @@ Asked by Brennan (Nov 26): "I really want to prove quantum mechanics requires co
 
 Method: published work first. Anything not found in the sources is labeled *ours*.
 
-Checks: `checks.py`, 24/24 pass (`checks_output.txt`). Figures: `figures.py` writes `figures/r1`–`r6`.
+Checks: `checks.py`, 29/29 pass (`checks_output.txt`). Figures: `figures.py` writes `figures/r1`–`r6`.
 
 ---
 
@@ -36,7 +36,7 @@ States are real unit vectors in ℝⁿ. Observables are symmetric matrices, and 
 |---|---|---|
 | A1 | A(H) is antisymmetric: **every step is a rotation** | Brennan's premise; continuous reversibility (Hardy; Masanes–Müller). **Can be replaced by: no state runs away (below)** |
 | A2 | A(H) commutes with H: **energy is conserved** | Noether; Stone. **Not needed: it follows from A3 and A4 (step 3)** |
-| A3 | A(H)² = −H²/ħ²: **a state of energy E turns at rate E/ħ** | Planck–Einstein |
+| A3 | A(H)² = −H²/ħ²: **a state of energy E turns at rate E/ħ** | Planck–Einstein. **Weaker version is enough: the rate only has to be some fixed function of E (see below)** |
 | A4 | A(H + c) = A(H) + c·A(1): **only energy differences matter** | the zero of energy is a convention. **Also derivable: it follows from how two systems combine (below)** |
 
 ### Proof
@@ -60,6 +60,18 @@ Drop A1. The proof still gives one quarter turn J with J² = −1, and B = JH + 
 
 So "no state runs away under any dynamics" already forces A(H) = JH/ħ. Antisymmetry of J then follows from one more fact: the observables can tell all states apart except for the common phase. In plain words, **the only stable dynamics are rotations.** Check T3e; Lean `Stability.shift_to_level`, `nilpotent_flow`, `transpose_turn`.
 
+### Planck–Einstein comes from the energy zero
+
+A3 can be weakened to: **a state of definite energy E turns at some rate that depends only on E**, the same function for every Hamiltonian. Nothing says the rate is E/ħ, and ħ isn't given.
+
+The shift rule then pins the function down. A(x·1) = A(0) + x·A(1), so its square is a polynomial of degree two in x. The squared rate must be quadratic: (E − E₀)²/ħ² + μ²/ħ². That is where ħ comes from, as a constant read off the function. E₀ is the energy where nothing turns, the natural zero.
+
+The extra μ is the only way out. It needs a second quarter turn M on every energy level, anticommuting with J, which is a quaternion-like structure (example: R_i and R_j on ℝ⁸, with rate √((E − E₀)² + μ²)/ħ). A level of real dimension 2 has no room for one, so **one non-degenerate level forces μ = 0** and A(H) = J(H − E₀)/ħ: Planck–Einstein. With maximal observables (A5), such a level always exists. Check T3f; Lean `PlanckEinstein.M_sq`, `planck_einstein`.
+
+**Composites rule out the gap too, with no condition on levels.** On the joint space the extra turn M of either system flips the balanced product into its mirror, so the joint dynamics can't stay on it unless M = 0. Booking a constant to either side also forces **the same ħ for every system**. Check T3g; Lean `NoGap.gap_zero`.
+
+The rule itself can't be dropped: a clock that reads energy plus a multiple of a conserved charge, and one offset by the Hamiltonian's mean energy, pass every other assumption, composites included, but give equal-energy states different rates (check C5). What the rule really says is that **a state's rate is set by its own energy alone**.
+
 ### The shift rule comes from composites
 
 Put two non-interacting systems side by side and add a constant c to their total energy. Booked to A or booked to B, it is **the same joint Hamiltonian**: (H_A + c)⊗1 + 1⊗H_B = H_A⊗1 + 1⊗(H_B + c). If the joint dynamics depends only on the joint Hamiltonian, and non-interacting parts evolve independently, the two bookings must change the dynamics the same way. One side depends only on H_A and the other only on H_B, so **neither can depend on its Hamiltonian at all**. That is A4 (with A1 and A3 making the change linear in c). The only extra input is that local changes are visible in the joint system, which holds for both the plain and the balanced tensor product. Check T6b; Lean `Booking.shift_independent`.
@@ -78,7 +90,8 @@ Once one shared J exists, the observables are symmetric matrices that commute wi
 
 - **Genuine quaternionic QM (Adler 1995) fails A4.** Its dynamics must respect all three quarter turns i, j, k. The only operators commuting with every quaternionic observable are built from those three turns, and none of them respects the other two. So there's no J to carry the energy shift, and the energy zero isn't a convention there (C3b; caught in the rigor pass on Nov 27).
 - **A variant that picks J = R_i meets A1–A4 but hides observables.** It allows 6 observables on a quaternionic two-level system, against 16 symmetric operators that commute with J (C3). That's where one more assumption comes in:
-- **A5, nothing hidden:** every symmetric operator commuting with J is an observable. This is Masanes–Müller's "all effects are allowed" in this setting. With A5, the observables are the complex Hermitian matrices, (n/2)² of them (T5), and the theory is complex quantum mechanics.
+- **A5, nothing hidden:** every symmetric operator commuting with J is an observable. This is Masanes–Müller's "all effects are allowed" in this setting, and the paper reads it as "no superselection". With A5, the observables are the complex Hermitian matrices, (n/2)² of them (T5), and the theory is complex quantum mechanics.
+- **A5 can't be derived from the rest.** Three smaller observable sets keep A0–A4 and stability. Superselection and the quaternionic variant fail completeness up to phase (T), since extra operators commute with every observable. A spin factor, the span of 1 and seven anticommuting γ's on ℂ⁸ (8 observables instead of 64), passes (T), is closed under the Jordan product, and passes the composite assumptions too, because those constrain only the dynamics. Only a rule on joint observables excludes it: products of local observables spanning them (local tomography) and closure under the Jordan product, which Barnum and Wilce (2014) show singles out complex QM. Deriving A5 would trade one assumption for several, so the paper keeps it (Remark "What (A5) excludes"; check T9).
 
 Vaughan (2026) reaches the shared-structure point from normalisation and energy conservation: complex structure "at least", with quaternions not excluded. A4 and A5 close that gap here.
 
@@ -148,7 +161,7 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 
 ## Checks
 
-`python3 checks.py` gives 24/24 PASS (sympy and numpy):
+`python3 checks.py` gives 29/29 PASS (sympy and numpy):
 
 - Q0: complex QM satisfies A1–A4.
 - T1, T1b: odd dimension; turning planes.
@@ -157,6 +170,11 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 - T3, T3a, T3b, T3c: the proof, generic and degenerate.
 - T3d: energy conservation (A2) follows from A3 and A4.
 - T3e: antisymmetry (A1) follows from stability and complete observables.
+- T3f: Planck–Einstein (A3) follows from "the rate depends only on the energy", with ħ coming out as a constant.
+- T3g: composites rule out the gap and force one ħ.
+- C5: composites don't replace the rule: two clocks that pass everything else.
+- T8: A0′ (the energy-zero shift changes no average) does A0's job for observables; without either, the shift is visible.
+- T9: A5 is independent: superselection and quaternionic observables fail completeness, but a spin factor passes everything else.
 - T4: real QM fails A4.
 - C3, C3b, T5: quaternions (variant and genuine); complex Hermitian count.
 - T6, C4: composites and local tomography.
@@ -168,10 +186,11 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 
 - The setting is finite-dimensional, with states as real unit vectors and dynamics linear and generated by A(H).
 - A0, that any observable can be some Hamiltonian, is needed for §2's conclusion about observables. Without it, J only commutes with the Hamiltonians.
+- **A0 can be replaced, for exactly that conclusion, by the energy-zero principle stated for measurements (A0′):** shifting the energy zero changes no measured average, for any state, observable, shift or time. Given A1, A3 and A4, a shift adds the common rotation cos s + J sin s to every evolution, so A0′ says every observable is unchanged by that rotation; at a quarter turn that is JᵀOJ = O, which means O commutes with J, and the converse holds too. A0′ says nothing about which operators can be Hamiltonians, so it doesn't replace A0's other job: in the stability argument for A1, A0 stays. Neither can be dropped: real QM with all symmetric observables but only J-commuting Hamiltonians passes A1–A4, yet shifting the energy zero makes some averages oscillate. Check T8; Lean `Unseen.comm_of_quarter`, `invariant_of_comm`.
 - A4 is read as A(H + c) = A(H) + c·A(1), so a shift of the energy zero adds a fixed turn and nothing else.
 - The symbolic check T3 is on ℝ⁴ only. The proof in §2 holds in any finite dimension, and its last step is checked in general by T3b.
-- Lean: `lean/Stability.lean` (4 theorems) checks the algebra behind replacing A1. `lean/Booking.lean` (4 theorems) checks the booking argument for A4. `lean/EnergyShift.lean` (18 theorems, core Lean) checks proof steps 2–4, including the derivation of A2, in any ring without 2-torsion. Step 5, the trace argument, needs matrix algebra from mathlib, so the sympy check T3b stands in for it. All three Lean files compiled clean on Nov 27 in the shared library, as `FusedAlgebra.Topics.EnergyShift`, `FusedAlgebra.Topics.Booking` and `FusedAlgebra.Topics.Stability`.
-- The literature placement comes from abstracts and the papers I opened. Vaughan's date, and whether the energy-zero lever is already published, aren't confirmed.
+- Lean: `lean/Unseen.lean` (2 theorems) checks the A0′ equivalence. `lean/NoGap.lean` (6 theorems) checks that composites kill the gap. `lean/PlanckEinstein.lean` (12 theorems) checks the algebra behind weakening A3. `lean/Stability.lean` (4 theorems) checks the algebra behind replacing A1. `lean/Booking.lean` (4 theorems) checks the booking argument for A4. `lean/EnergyShift.lean` (18 theorems, core Lean) checks proof steps 2–4, including the derivation of A2, in any ring without 2-torsion. Step 5, the trace argument, needs matrix algebra from mathlib, so the sympy check T3b stands in for it. All six Lean files compile clean in the shared library (no sorry, no proof changed), as `FusedAlgebra.Topics.EnergyShift`, `Booking`, `Stability`, `PlanckEinstein`, `NoGap` and `Unseen`.
+- The literature placement comes from abstracts and the papers I opened. Vaughan's date, and whether the energy-zero lever is already published, aren't confirmed. The closest prior results found (Nov 27) are operational: Alfsen and Shultz's dynamical correspondence and Barnum, Müller and Ududec's "energy is observable" postulate both single out complex QM from a linear map between observables and generators, assumed on all of them inside a Jordan-algebra framework. The theorem here assumes linearity only for shifts of the energy zero, plus Planck–Einstein, and derives the rest. The paper now cites both.
 
 ## Files
 
@@ -191,5 +210,8 @@ I didn't find the energy-zero argument in what I read. It is short enough that i
 - Feng, Ren and Vedral, "Locality implies complex numbers in quantum mechanics", [arXiv:2504.07808](https://arxiv.org/abs/2504.07808) (2025)
 - Renou et al., *Nature* 600, 625 (2021); Chen et al., *PRL* 128, 040403 (2022); Li et al., *PRL* 128, 040402 (2022)
 - Hardy, quant-ph/0101012 (2001); Masanes and Müller, *NJP* 13, 063001 (2011)
+- Barnum and Wilce, "Local tomography and the Jordan structure of quantum theory", *Found. Phys.* 44, 192 (2014), [arXiv:1202.4513](https://arxiv.org/abs/1202.4513)
+- Barnum, Müller and Ududec, "Higher-order interference and single-system postulates characterizing quantum theory", *NJP* 16, 123029 (2014), [arXiv:1403.4147](https://arxiv.org/abs/1403.4147)
+- Alfsen and Shultz, "On orientation and dynamics in operator algebras. Part I", *Commun. Math. Phys.* 194, 87 (1998); Niestegge, [arXiv:1402.0158](https://arxiv.org/abs/1402.0158)
 
 Textbook, not re-fetched: Frobenius (1878); Segal (1950s, positive-frequency complex structure); Ashtekar and Magnon (1975); Adler (1995, quaternionic QM).

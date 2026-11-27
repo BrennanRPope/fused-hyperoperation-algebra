@@ -362,4 +362,137 @@ check("T3e antisymmetry (A1) from stability: without A1, A3 and A4 allow B = JH 
       "not orthogonal leaves too few observables to fix states up to a + bJ, so completeness up to phase forces J^T = -J "
       "(Lean: Stability.shift_to_level, nilpotent_flow, transpose_turn)", ok)
 
+# ---------- 3f. Planck-Einstein from "the rate depends only on the energy" ----------
+ok = True
+Z, Jg = rand_skew(4), rand_skew(4)                  # any A(0) = Z and any A(1) = J
+sq = lambda x: (Z + x*Jg) @ (Z + x*Jg)
+ok &= np.allclose(sq(3) - 3*sq(2) + 3*sq(1) - sq(0), 0)          # third difference vanishes: (Z + xJ)^2 is quadratic in x
+al, be, ga = 2.25, -1.5, 0.25 + 0.0                  # g(E)^2 = al E^2 + be E + ga with ga = al x0^2 (rest term m = 0)
+s = np.sqrt(al); x0 = -be/(2*al); ok &= np.isclose(ga, al*x0**2)
+Hc = rand_herm(3); Hr = realify(Hc); Jr = Jstd(3); I6 = np.eye(6)
+Ag = lambda Hm: s*Jr @ (Hm - x0*np.eye(Hm.shape[0]))                 # the theorem's answer A(H) = J (H - E0) / hbar, hbar = 1/s
+g2 = lambda Hm: al*Hm @ Hm + be*Hm + ga*np.eye(Hm.shape[0])
+ok &= all(np.allclose(Ag(Hr + c*I6) @ Ag(Hr + c*I6), -g2(Hr + c*I6)) for c in np.linspace(-2, 2, 9))
+ok &= np.allclose(Ag(Hr + 0.7*I6), Ag(Hr) + 0.7*s*Jr)                 # shift rule, with A(1) = s J
+m = 0.8; E1, E2 = 0.5, -1.2                           # the quaternion-like way out, m != 0, on R^8 = H^2
+H8 = np.diag([E1]*4 + [E2]*4); B8 = s*Ri @ H8 + m*Rj; I8 = np.eye(8)
+ok &= np.allclose(Rj @ Ri, -Ri @ Rj) and np.allclose(B8.T, -B8) and np.allclose(B8 @ H8, H8 @ B8)
+ok &= all(np.allclose((B8 + c*s*Ri) @ (B8 + c*s*Ri), -(s*s*(H8 + c*I8) @ (H8 + c*I8) + m*m*I8)) for c in np.linspace(-2, 2, 9))
+fr = np.sort(np.abs(np.linalg.eigvals(B8).imag)); want = np.sort([np.sqrt(s*s*E**2 + m*m) for E in [E1]*4 + [E2]*4])
+ok &= np.allclose(fr, want) and not np.allclose(fr, np.sort([s*abs(E) for E in [E1]*4 + [E2]*4]))   # rate sqrt(s^2 E^2 + m^2), not s|E|
+def anti_dim(Jm):                                     # dimension of the antisymmetric M with M J + J M = 0
+    n = Jm.shape[0]; basis = []
+    for i in range(n):
+        for j in range(i + 1, n):
+            X = np.zeros((n, n)); X[i, j], X[j, i] = 1, -1; basis.append(X)
+    Mx = np.array([(X @ Jm + Jm @ X).ravel() for X in basis]).T
+    return len(basis) - np.linalg.matrix_rank(Mx, tol=1e-9)
+ok &= anti_dim(J2) == 0 and anti_dim(Jstd(2)) == 2    # a level of real dimension 2 has no room for M; dimension 4 does
+check("T3f Planck-Einstein from 'the rate depends only on the energy': with the shift rule, A(x 1)^2 is quadratic in x, so "
+      "g(E)^2 = alpha (E - E0)^2 + m^2; A(H) = J (H - E0) sqrt(alpha) solves it with hbar = 1/sqrt(alpha); m != 0 needs a second "
+      "quarter turn anticommuting with J (R_j beside R_i on R^8, rate sqrt(alpha E^2 + m^2)), which a level of real dimension 2 "
+      "cannot hold (Lean: PlanckEinstein.rate_sq_quadratic, M_anticomm_J, M_sq, planck_einstein)", ok)
+
+# ---------- 3g. composites rule out the gap; C5 the energy-only rate rule is still needed ----------
+ok = True
+def nullsp(Mx, tol=1e-9):
+    u, sv, vt = np.linalg.svd(Mx); return vt[np.sum(sv > tol):].T
+Ri4, Rj4, I4q = rmat((0, 1, 0, 0)), rmat((0, 0, 1, 0)), np.eye(4)
+PA, QB = np.kron(Ri4, I4q), np.kron(I4q, Ri4)                     # J_A x 1 and 1 x J_B on R^4 x R^4
+Wb, Wo = nullsp(PA - QB), nullsp(PA + QB)                          # balanced product W and its partner W-
+ok &= Wb.shape[1] == 8 and Wo.shape[1] == 8
+ok &= np.allclose(Wo @ Wo.T @ np.kron(Rj4, I4q) @ Wb, np.kron(Rj4, I4q) @ Wb)   # a gap term sends W into W-
+ok &= np.allclose(Wb @ Wb.T @ PA @ Wb, PA @ Wb)                                  # the J(H - E0) part keeps W
+anti = []
+for i in range(4):
+    for j in range(i + 1, 4):
+        X = np.zeros((4, 4)); X[i, j], X[j, i] = 1, -1; anti.append(X)
+co = nullsp(np.array([(X @ Ri4 + Ri4 @ X).ravel() for X in anti]).T)
+gaps = [sum(c*X for c, X in zip(col, anti)) for col in co.T]        # all antisymmetric M anticommuting with J (R_j, R_k)
+Mx = np.array([(np.kron(X, I4q) @ Wb).ravel() for X in gaps] + [(np.kron(I4q, X) @ Wb).ravel() for X in gaps]).T
+ok &= len(gaps) == 2 and Mx.shape[1] - np.linalg.matrix_rank(Mx, tol=1e-9) == 0   # only M_A = M_B = 0 keeps the joint generator on W
+ok &= not np.allclose(np.kron(Ri4/1.0, I4q) @ Wb, np.kron(I4q, Ri4/2.0) @ Wb)       # booking a constant forces hbar_A = hbar_B
+check("T3g composites rule out the gap: on R^4 x R^4 with J = R_i, each gap term M_A x 1, 1 x M_B sends the balanced product W "
+      "into W-, so the joint generator stays on W only if M_A = M_B = 0; booking a constant also forces one hbar for every system "
+      "(Lean: NoGap.gap_to_odd, gap_sum_zero, gap_zero)", ok)
+
+def herm_eigs(eigs):
+    n = len(eigs); X = rng.normal(size=(n, n)) + 1j*rng.normal(size=(n, n)); U, _ = np.linalg.qr(X)
+    return U @ np.diag(eigs) @ U.conj().T
+def pinch(Hm, Qm, tol=1e-8):                       # keep only the parts of Q inside each energy eigenspace of H
+    w, V = np.linalg.eigh(Hm); out = np.zeros_like(Qm); i = 0
+    while i < len(w):
+        j = i
+        while j < len(w) and abs(w[j] - w[i]) < tol: j += 1
+        P = V[:, i:j] @ V[:, i:j].conj().T; out += P @ Qm @ P; i = j
+    return out
+kap, ok = 0.4, True
+QA, QB2 = np.diag([0., 1, 2]).astype(complex), np.diag([0., 1]).astype(complex)
+clock1 = lambda Hm, Qm: -1j*(Hm + kap*pinch(Hm, Qm))                       # rate = energy + kap x conserved charge
+clock2 = lambda Hm: -1j*((1 + kap)*Hm - kap*np.trace(Hm).real/Hm.shape[0]*np.eye(Hm.shape[0]))   # offset by the mean energy
+for HA, HB in [(herm_eigs([0., 1, 1]), herm_eigs([0., 1])), (herm_eigs(rng.normal(size=3)), herm_eigs(rng.normal(size=2)))]:
+    Ht = np.kron(HA, np.eye(2)) + np.kron(np.eye(3), HB); Qt = np.kron(QA, np.eye(2)) + np.kron(np.eye(3), QB2)
+    for G, GA, GB, sh in [(clock1(Ht, Qt), clock1(HA, QA), clock1(HB, QB2), clock1(HA + 0.7*np.eye(3), QA)),
+                          (clock2(Ht), clock2(HA), clock2(HB), clock2(HA + 0.7*np.eye(3)))]:
+        ok &= np.allclose(G, np.kron(GA, np.eye(2)) + np.kron(np.eye(3), GB))          # composites (C)
+        ok &= np.allclose(G.conj().T, -G) and np.allclose(G @ Ht, Ht @ G)              # A1, A2
+        ok &= np.allclose(sh, GA - 0.7j*np.eye(3))                                      # A4
+r1 = sorted(np.abs(np.linalg.eigvals(clock1(np.diag([1., 1, 0]).astype(complex), QA))))
+ra = abs(np.linalg.eigvals(clock2(np.diag([1., 0, 0])))[0]); rb = abs(np.linalg.eigvals(clock2(np.diag([1., 2, 2])))[0])
+ok &= np.allclose(r1[1:], [1.0, 1.4]) and not np.isclose(ra, rb)    # two E = 1 states turn at different rates
+check("C5 composites do not imply (A3'): a clock that reads energy plus a multiple of a conserved charge, and one offset by the "
+      "Hamiltonian's mean energy, both satisfy A1, A2, A4 and composites, yet give states of equal energy different rates", ok)
+
+# ---------- 8. (A0'): the energy-zero shift changes no measured average ----------
+ok = True
+J6 = Jstd(3); H6 = realify(rand_herm(3)); I6b = np.eye(6)
+rot = lambda t: np.cos(t)*I6b + np.sin(t)*J6                      # the shift's common rotation exp(tJ)
+A0g = lambda Hm: J6 @ Hm / hbar                                  # complex dynamics, Hamiltonians restricted to those commuting with J
+ok &= np.allclose(A0g(H6).T, -A0g(H6)) and np.allclose(A0g(H6) @ H6, H6 @ A0g(H6))
+ok &= np.allclose(A0g(H6) @ A0g(H6), -H6 @ H6/hbar**2) and np.allclose(A0g(H6 + 0.3*I6b), A0g(H6) + 0.3*A0g(I6b))   # A1-A4 hold
+Obad = rand_sym(6); psi6 = rng.normal(size=6); psi6 /= np.linalg.norm(psi6)    # a real-QM observable not commuting with J
+avg = [(rot(t) @ psi6) @ Obad @ (rot(t) @ psi6) for t in np.linspace(0, np.pi, 9)]
+ok &= not np.allclose(J6 @ Obad, Obad @ J6) and np.ptp(avg) > 1e-3        # without (A0) the shift is visible
+Ogood = realify(rand_herm(3))
+ok &= all(np.allclose(rot(t).T @ Ogood @ rot(t), Ogood) for t in np.linspace(0, 2*np.pi, 9))   # commuting observables: unseen at all t
+ok &= np.allclose(J6.T @ Ogood @ J6, Ogood) and not np.allclose(J6.T @ Obad @ J6, Obad)       # the quarter turn alone tells them apart
+check("T8 (A0') replaces (A0): real QM with all symmetric observables but only complex Hamiltonians meets A1-A4, yet a shift of "
+      "the energy zero makes the average of an observable not commuting with J oscillate; invariance of every average under the "
+      "shift's rotation, already under its quarter turn J, is equivalent to [J, O] = 0 (Lean: Unseen.comm_of_quarter, invariant_of_comm)", ok)
+
+# ---------- 9. What (A5) excludes: three smaller observable sets ----------
+ok = True
+Xp = np.array([[0, 1], [1, 0]], complex); Yp = np.array([[0, -1j], [1j, 0]]); Zp = np.diag([1., -1]).astype(complex); Ip = np.eye(2)
+k3 = lambda a, b, c: np.kron(np.kron(a, b), c)
+gam = [k3(Xp, Ip, Ip), k3(Yp, Ip, Ip), k3(Zp, Xp, Ip), k3(Zp, Yp, Ip), k3(Zp, Zp, Xp), k3(Zp, Zp, Yp)]
+G6 = gam[0] @ gam[1] @ gam[2] @ gam[3] @ gam[4] @ gam[5]
+gam.append(next(ph*G6 for ph in [1, 1j, -1, -1j] if np.allclose(ph*G6, (ph*G6).conj().T)))      # seventh gamma
+ok &= all(np.allclose(gam[a] @ gam[b] + gam[b] @ gam[a], 2*(a == b)*np.eye(8)) for a in range(7) for b in range(7))
+V7 = [np.eye(8, dtype=complex)] + gam                            # spin factor: 8 observables on C^8 (A5 asks for 64)
+def in_span(Mx, basis):
+    Bm = np.array([b.ravel() for b in basis]).T; x = np.linalg.lstsq(Bm, Mx.ravel(), rcond=None)[0]; return np.allclose(Bm @ x, Mx.ravel())
+ok &= all(in_span((a @ b + b @ a)/2, V7) for a in V7 for b in V7)                    # Jordan-closed
+J16 = Jstd(8); R7 = [realify(o) for o in V7]
+ok &= commutant_dim(R7) == 2                                                      # (T) holds: only a 1 + b J
+ok &= all(np.allclose((J16 @ H).T, -J16 @ H) and np.allclose((J16 @ H) @ (J16 @ H), -H @ H) for H in R7)   # A(H) = JH: A1, A3
+ok &= len(sym_commuting(J16)) == 64                                               # (A5) would need all 64
+prods = [np.kron(a, b) for a in V7 for b in V7]
+jp = (np.kron(gam[0], gam[0]) @ np.kron(gam[1], gam[1]) + np.kron(gam[1], gam[1]) @ np.kron(gam[0], gam[0]))/2
+ok &= np.allclose(jp, np.kron(gam[0] @ gam[1], gam[0] @ gam[1])) and not in_span(jp, prods)   # local tomography + Jordan closure fail
+Pss = np.diag([1, 1, 0, 0]).astype(complex)                                       # superselection on C^4: two sectors
+def blk(h, sector):                                                               # a 2x2 Hermitian h placed in one sector
+    out = np.zeros((4, 4), complex); out[2*sector:2*sector+2, 2*sector:2*sector+2] = h; return out
+ssel = [realify(blk(h, s_)) for s_ in (0, 1) for h in [np.diag([1, 0]), np.diag([0, 1]), Xp, Yp]]
+ok &= all(np.allclose(realify(Pss) @ S, S @ realify(Pss)) for S in ssel)            # every observable commutes with P
+ok &= commutant_dim(ssel) == 4                                                    # (T) fails: P and JP commute too
+def qherm(a, d, q):                                                                # quaternionic Hermitian 2x2, left action on H^2 = R^8
+    qc = (q[0], -q[1], -q[2], -q[3])
+    return np.block([[a*np.eye(4), qmat(q)], [qmat(qc), d*np.eye(4)]])
+qobs = [qherm(1, 0, (0, 0, 0, 0)), qherm(0, 1, (0, 0, 0, 0))] + [qherm(0, 0, e) for e in [(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)]]
+ok &= all(np.allclose(S, S.T) and np.allclose(S @ Ri, Ri @ S) for S in qobs)       # observables commute with J = R_i
+ok &= commutant_dim(qobs) == 4                                                    # (T) fails: 1, R_i, R_j, R_k
+check("T9 (A5) is independent: with A(H) = JH, superselection and quaternionic observables fail (T), while the spin factor "
+      "span{1, gamma_1..gamma_7} on C^8 is Jordan-closed and passes (T) with 8 observables instead of 64; only locally "
+      "tomographic composites with Jordan-closed joint observables exclude it", ok)
+
 print(f"\n{sum(r[1] for r in results)}/{len(results)} pass")
