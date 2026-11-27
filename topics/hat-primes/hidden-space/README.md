@@ -1,7 +1,7 @@
 # DRAFT: a hidden space built from all the primes
 
 *Follow-up to [the hat tile and primes](../README.md). Nov 27 2026. Numbers are evidence, not proofs;
-22 of 22 checks pass (`checks.py`); `lean/HiddenSpace.lean` has 2 statements, not yet compiled.*
+29 of 29 checks pass (`checks.py`); `lean/HiddenSpace.lean` has 2 statements, not yet compiled.*
 
 ## The answer first
 
@@ -25,6 +25,11 @@ the zeros**:
   about one radian, but the fragile ones go at a few hundredths, and they are exactly where zeta has
   two zeros unusually close together. Known in spirit (Lehmer 1956; Rodgers and Tao 2020 proved that if RH
   holds, it holds with no room to spare); no lead.
+- **Functions that minimize gaps (asked for last), three ways, none a lead.** Turning the prime
+  angles can push zeta's closest zeros apart, but only by leaving zeta. The turn that closes a gap
+  fastest is a clean detector: it picks out Lehmer's famous pair at t = 7005 by itself. And quadratics
+  n² + n + c can make prime values 12% denser than Euler's n² + n + 41 (3.3 times denser than
+  n² + n + 1), and twin prime values 15 times denser than among the integers, exactly as the Bateman–Horn prediction says (section 5).
 - **Where the halves meet** is the adeles (Tate 1950) and Connes' adele class space (1999). The repo's
   Riemann rounds 9 and 10 already found that this join gives the functional equation and needs every
   prime, but not the zeros.
@@ -144,6 +149,72 @@ pushing the margin toward zero. The repo's Riemann rounds 4 and 8 already worked
 fresh part is only the reading: the slack in RH, measured as a turn of a prime's angle, is about a
 radian per gap and a few hundredths at the worst gaps up to t = 1,414, with prime 2 the weak direction.
 
+## 5. Functions that minimize the gaps
+
+Brennan asked for a function that minimizes gaps, and to try three readings of that.
+
+### 5a. Push zeta's zero gaps apart
+
+Take the twisted slice F(t; d) = Σ_{n≤N} n^−½ cos(θ(t) − t log n + Σ_p v_p(n) d_p), where d = 0 is zeta's own
+main sum. In each height band (N = 5 to 12) we searched the angles d for the point whose smallest gap is as
+wide as possible, with the rule that no zero may leave the line (`gaps/apart.py`).
+
+- **It can be done, a little:** the smallest gap rises 1.1 to 2 times (for example 0.29 → 0.51 mean gaps
+  at N = 8), from a turn of only 0.1 to 0.3 radians. The spread of the gaps barely changes: fixing the worst
+  pair makes another pair the worst.
+- **Almost nowhere else works:** only 0 to 3% of random angle settings keep every zero on the line. Zeta
+  sits inside a small pocket where all zeros are real, close to but not at the pocket's widest point.
+- **Why it doesn't help:** the pushed-apart function isn't zeta, so its zeros say nothing about zeta's or
+  the primes'.
+
+![Fig 10](figures/fig10-pushing-zero-gaps-apart.png)
+
+### 5b. Close the gaps as fast as possible
+
+Near the peak P between two zeros, a turn d changes the slice by d · S, with S_p = ∂Z/∂d_p. The fastest
+closing direction is −sign(Z)·S/|S|, and the pair meets after a turn of about
+
+  **m(t) = P / |S|₂**, which works out to about **0.85 × s²** (s = the gap in mean gaps)
+
+(`gaps/closing.py`; first order agrees with exact bisection, median ratio 0.97). Turning all primes at once
+beats turning the best single prime by 1.2 times. Read as a function of height, m(t) is a map of where RH
+is most fragile. Run on zeta itself near t = 7,000 (main sum plus the first Riemann–Siegel correction), its
+minimum is **Lehmer's pair at 7005.06 / 7005.10**, which closes after a turn of 0.0012 radians, 60 times
+smaller than any other gap in the window. Lehmer found that pair in 1956; close pairs like it are what
+Csordas, Smith and Varga (1994) used to bound the de Bruijn–Newman constant. So this is a working
+detector for a known thing, not a lead.
+
+![Fig 11](figures/fig11-fastest-closing-turn.png)
+
+### 5c. Prime values with small gaps
+
+For f(n) = n² + n + c, the Bateman–Horn conjecture (Hardy–Littlewood's Conjecture F, 1923, for quadratics)
+predicts #{n ≤ M : f(n) prime} ≈ C(f) Σ 1/log f(n), with C(f) = Π_p (1 − w(p)/p)/(1 − 1/p) and w(p) the roots
+of f mod p. The average gap between n's with prime values is about log f(n)/C(f), so **the function that
+minimizes the gaps is the one with the biggest C**. In the hidden space of section 1, C measures how much
+of the prime window f's values keep: f avoids the class 0 mod p whenever w(p) = 0. Euler's n² + n + 41
+avoids it for every p below 41, because −163 is a non-residue there (class number one; Rabinowitsch 1913).
+
+We ranked c ≤ 100,000 and sieved n < 1,000,000 for 20 polynomials (`gaps/polys.py`):
+
+- **Best single:** n² + n + 55661, C = 7.46 (3.73 in the usual Hardy–Littlewood units), against Euler's
+  6.64 (3.32, matching OEIS A221712). Mean gap in n: 3.4, against 3.8 for Euler and 11.3 for n² + n + 1.
+- **Best for twin values** f(n), f(n) + 2: n² + n + 46127, twin constant 20.8, which is 15 times the
+  integers' own 1.32.
+- **The prediction holds** to within 0.3% for prime values and 1.6% for twin values, in all 20.
+
+Far bigger constants are known (Jacobson and Williams 2003 found quadratics with much higher prime
+density using huge c), and no quadratic is proven to take even infinitely many prime values. For the
+smallest gaps between primes themselves the real theory is sieve weights: Zhang (2014), Maynard (2015)
+and Polymath (2014) proved infinitely many prime gaps of at most 246. Nothing here touches that.
+
+![Fig 12](figures/fig12-prime-values-with-small-gaps.png)
+
+**Is any of it a lead? No.** 5a only shows that zeta isn't at the best spot of its pocket. 5b is a tidy
+function that maps where RH is most fragile, and it finds Lehmer's pair unaided, but the mechanism is
+known. 5c confirms a 1923 conjecture to 0.3% and recovers known record-type polynomials. The most useful
+by-product is the closing-turn function m(t) ≈ 0.85 s², a quick way to flag Lehmer pairs.
+
 ## Assumptions
 
 - Spectra use the von Mangoldt weights on [1, N] and normalise by N; plain counting gives a flat
@@ -169,6 +240,11 @@ radian per gap and a few hundredths at the worst gaps up to t = 1,414, with prim
 | Zeta's slice is a sharp point: other slices lose zeros | **measurement**, not found in a quick search; explanation known in spirit | measured here; Davenport–Heilbronn (1936) for the limit |
 | Margin of zeta's slice (turn of a prime angle that loses zeros): ~1 rad per gap, set by close pairs | **measurement**; not found in a quick search; mechanism known | measured here; Lehmer (1956); Csordas, Smith, Varga (1994) |
 | RH, if true, has no slack (Λ ≥ 0) | known | Rodgers, Tao (2020) |
+| Pushing zero gaps apart by turning prime angles: 1.1 to 2 times, inside a small pocket | **measurement**; not found in a quick search; no bearing on zeta | measured here |
+| Steepest closing turn m(t) ≈ 0.85 s², finds Lehmer's pair at 7005 | **measurement**; mechanism known | Lehmer (1956); Csordas, Smith, Varga (1994) |
+| Prime density of n² + n + c set by C(f); Euler's 41 and class number one | known (conjectured density) | Euler (1772); Rabinowitsch (1913); Hardy, Littlewood (1923); Bateman, Horn (1962) |
+| High-density quadratics | known; far higher records exist | Jacobson, Williams (2003) |
+| Bounded gaps between primes (246) | known (proven) | Zhang (2014); Maynard (2015); Polymath (2014) |
 | Adeles join the halves; gives the functional equation | known | Tate (1950); Connes (1999); repo Riemann rounds 9–10 |
 
 ## Files
@@ -176,7 +252,8 @@ radian per gap and a few hundredths at the worst gaps up to t = 1,414, with prim
 `additive.py` (Ẑ measurements, writes `additive.json`) · `multiplicative.py` (torus measurements, writes
 `multiplicative.json`, `mult_curves.npz`) · `figures.py` · `margin.py` (window margins, writes `margin.json`, `margin_output.txt`) ·
 `margin_local.py` (gap margins, writes `margin_local.json`, `margin_local.npz`) · `figures_margin.py` ·
-`checks.py` (22 checks, about 30 s) ·
+`gaps/apart.py`, `gaps/closing.py`, `gaps/polys.py` (section 5, each writes its `.json` and `.npz`; `polys.py` takes about 2 minutes) · `gaps/figures_gaps.py` ·
+`checks.py` (29 checks, about 20 s) ·
 `lean/HiddenSpace.lean`.
 
 ## Sources
@@ -207,3 +284,12 @@ radian per gap and a few hundredths at the worst gaps up to t = 1,414, with prim
 - B. Rodgers, T. Tao, *The de Bruijn–Newman constant is non-negative*, Forum Math. Pi 8 (2020), arXiv 1801.05914.
 - F. Dyson, *Birds and Frogs*, Notices AMS (2009); J. C. Lagarias, *Mathematical quasicrystals and the
   problem of diffraction* (2000).
+- L. Euler (1772), n² + n + 41; G. Rabinowitsch, J. reine angew. Math. 142 (1913).
+- P. T. Bateman, R. A. Horn, *A heuristic asymptotic formula concerning the distribution of prime numbers*,
+  Math. Comp. 16 (1962).
+- M. J. Jacobson Jr., H. C. Williams, *New quadratic polynomials with high densities of prime values*,
+  Math. Comp. 72 (2003), 499–519.
+- OEIS A221712, Hardy–Littlewood constant for x² + x + 41.
+- Y. Zhang, *Bounded gaps between primes*, Ann. of Math. 179 (2014); J. Maynard, *Small gaps between
+  primes*, Ann. of Math. 181 (2015); D. H. J. Polymath, *Variants of the Selberg sieve, and bounded
+  intervals containing many primes*, Res. Math. Sci. 1 (2014).

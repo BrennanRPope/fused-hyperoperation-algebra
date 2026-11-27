@@ -113,7 +113,7 @@ for Nn in range(3, 15):
     sc = np.nonzero(np.sign(f[1:]) != np.sign(f[:-1]))[0]
     for a, b in zip(sc[:-1], sc[1:]):
         k = a + 1 + np.argmax(np.abs(f[a + 1:b + 1]))
-        rows.append((Nn, tt[k], abs(f[k]), abs(f[k]) / np.abs(D[:, k]).max(), (tt[b] - tt[a]) * log(tt[k] / (2 * pi)) / (2 * pi)))
+        rows.append((Nn, tt[k], abs(f[k]), abs(f[k]) / np.abs(D[:, k]).max(), (tt[b] - tt[a]) * log(tt[k] / (2 * pi)) / (2 * pi), abs(f[k]) / np.linalg.norm(D[:, k])))
 Rm = np.array(rows)
 cg = np.corrcoef(np.log(Rm[:, 3]), np.log(Rm[:, 4]))[0, 1]
 check('a gap\'s margin (smallest prime-angle turn that loses its two zeros, first order) follows the gap: correlation of logs > 0.75',
@@ -132,4 +132,58 @@ nz = lambda v: int(np.sum(np.sign(v[1:]) != np.sign(v[:-1])))
 zt = Z[(Z > 563.9) & (Z < 564.8)]
 check('at t = 564.3 the slice touches zero without crossing where zeta has two zeros; turning prime 2 by -0.0003 makes the pair',
       nz(g(0)) == 0 and nz(g(-3e-4)) == 2 and len(zt) == 2, f'true zeros {np.round(zt, 3).tolist()}')
+# 23-29 functions that minimize the gaps (gaps/apart.py, gaps/closing.py, gaps/polys.py)
+import json
+Ap = json.load(open('gaps/apart.json'))['8']
+Nn = 8; tt = np.arange(2 * pi * 64 + 0.3, 2 * pi * 81 - 0.3, 0.001); ns = np.arange(1, 9)
+E8 = np.array([[sp.multiplicity(p, int(k)) for p in (2, 3, 5, 7)] for k in ns], float)
+ph8 = th(tt)[None, :] - tt[None, :] * np.log(ns)[:, None]
+def zs(dd):
+    v = (ns[:, None]**-0.5 * np.cos(ph8 + (E8 @ dd)[:, None])).sum(0)
+    i = np.nonzero(np.sign(v[1:]) != np.sign(v[:-1]))[0]; return tt[i]
+def mingap(z): return float(np.min(np.diff(z) * np.log((z[1:] + z[:-1]) / 2 / (2 * pi)) / (2 * pi)))
+z0 = zs(np.zeros(4)); zb = zs(np.array(Ap['best_d']))
+check('pushing gaps apart (N = 8): the saved turn keeps all zeros on the line and widens the smallest gap more than 1.5 times',
+      len(zb) == len(z0) and mingap(zb) > 1.5 * mingap(z0), f'{len(z0)} zeros, {mingap(z0):.3f} -> {mingap(zb):.3f} mean gaps, turn {np.linalg.norm(Ap["best_d"]):.2f} rad')
+rng2 = np.random.default_rng(21)
+kept = np.mean([len(zs(rng2.uniform(-pi, pi, 4))) >= len(z0) for _ in range(200)])
+check('fewer than 5% of random angle settings keep every zero (N = 8): zeta sits in a small pocket', kept < 0.05, f'{100 * kept:.1f}%')
+gain = Rm[:, 3] / Rm[:, 5]; Cm = np.median(Rm[:, 5] / Rm[:, 4]**2)
+check('closing a gap: turning all primes at once (steepest direction) beats the best single prime by 1.1 to 1.4 times (median), and the turn is about 0.6 to 1.1 times the gap squared',
+      1.1 < np.median(gain) < 1.4 and 0.6 < Cm < 1.1, f'gain {np.median(gain):.2f}, turn / gap^2 {Cm:.2f}')
+# Lehmer's pair, from scratch: main sum (N = 33) plus the first Riemann-Siegel correction
+tl = np.arange(7004.9, 7005.3, 0.0002); nl = np.arange(1, 34); psl = list(sp.primerange(2, 34))
+El = np.array([[sp.multiplicity(p, int(k)) for p in psl] for k in nl], float)
+phl = th(tl)[None, :] - tl[None, :] * np.log(nl)[:, None]
+q = np.sqrt(tl / (2 * pi)) - 33; Rl = (-1)**32 * (tl / (2 * pi))**-0.25 * np.cos(2 * pi * (q * q - q - 1 / 16)) / np.cos(2 * pi * q)
+def Zl(dd): return 2 * (nl[:, None]**-0.5 * np.cos(phl + (El @ dd)[:, None])).sum(0) + Rl
+f0 = Zl(np.zeros(len(psl))); k = np.argmin(np.abs(tl - 7005.08))
+Sl = -2 * (El.T @ (nl[:, None]**-0.5 * np.sin(phl))); dirn = -np.sign(f0[k]) * Sl[:, k] / np.linalg.norm(Sl[:, k])
+zt = [float(x) for x in tl[np.nonzero(np.sign(f0[1:]) != np.sign(f0[:-1]))[0]]]
+check("Lehmer's pair: zeta (main sum + first correction) has zeros at 7005.06 and 7005.10; a turn of 0.0010 rad along the steepest direction keeps them, 0.0013 loses them",
+      nz(f0) == 2 and abs(zt[0] - 7005.062) < 0.002 and abs(zt[1] - 7005.100) < 0.002 and nz(Zl(0.0010 * dirn)) == 2 and nz(Zl(0.0013 * dirn)) == 0,
+      f'zeros {np.round(zt, 3).tolist()}')
+def BH(c, PM, twin=False):
+    w2 = 2 if c % 2 == 0 else 0; v = (1 - w2 / 2) / (0.5**(2 if twin else 1))
+    for p in sp.primerange(3, PM):
+        def w(D):
+            Dm = D % p; return 1 if Dm == 0 else (2 if pow(Dm, (p - 1) // 2, p) == 1 else 0)
+        wf = w(1 - 4 * c) + (w(1 - 4 * (c + 2)) if twin else 0)
+        v *= (1 - wf / p) / (1 - 1 / p)**(2 if twin else 1)
+    return v
+c41 = BH(41, 200000)
+check("Euler's n^2 + n + 41: prime for n = 0..39, and its Hardy-Littlewood constant (C/2 in our units) is 3.3198 to 0.2% (OEIS A221712: 3.31977...)",
+      all(sp.isprime(n * n + n + 41) for n in range(40)) and not sp.isprime(40 * 40 + 40 + 41) and abs(c41 / 2 / 3.31977 - 1) < 0.002, f'{c41 / 2:.4f}')
+M2 = 100000
+for cc, twin, tol in ((55661, False, 0.02), (46127, True, 0.06)):
+    C_ = BH(cc, 200000, twin)
+    fv = [n * n + n + cc for n in range(M2)]
+    if not twin:
+        cnt = sum(1 for v in fv if sp.isprime(v)); pred = C_ * sum(1 / log(v) for v in fv)
+        check(f'n^2 + n + {cc}: prime values for n < 100,000 match the Bateman-Horn prediction within 2%, and its constant beats Euler\'s ({C_:.2f} vs {c41:.2f})',
+              abs(cnt / pred - 1) < tol and C_ > c41, f'{cnt} vs {pred:.0f}')
+    else:
+        cnt = sum(1 for v in fv if sp.isprime(v) and sp.isprime(v + 2)); pred = C_ * sum(1 / log(v)**2 for v in fv)
+        check(f'n^2 + n + {cc}: twin prime values (f, f+2) for n < 100,000 match the prediction within 6%; its twin constant {C_:.1f} is 15 times the integers\' 1.32',
+              abs(cnt / pred - 1) < tol and C_ > 15 * 1.3203, f'{cnt} vs {pred:.0f}')
 print(f'{sum(res)} of {len(res)} pass ({time.time() - t00:.0f} s)')
