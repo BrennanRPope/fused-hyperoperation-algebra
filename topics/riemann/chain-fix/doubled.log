@@ -1,0 +1,28 @@
+   n=4 beta=1.5 doubled-chain field zeros: max ||w|-1| = 0.0, min|root P| = 1.68532
+4 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 0.341783
+   n=5 beta=1.5 doubled-chain field zeros: max ||w|-1| = 0.0, min|root P| = 1.53608
+5 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 0.522274
+   n=6 beta=1.5 doubled-chain field zeros: max ||w|-1| = 1.34e-51, min|root P| = 1.43149
+6 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 0.674805
+   n=7 beta=1.5 doubled-chain field zeros: max ||w|-1| = 0.0, min|root P| = 1.35439
+7 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 0.802264
+   n=8 beta=1.5 doubled-chain field zeros: max ||w|-1| = 0.0, min|root P| = 1.29517
+8 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 0.909161
+   n=9 beta=1.5 doubled-chain field zeros: max ||w|-1| = 0.0, min|root P| = 1.24813
+9 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 0.999560
+   n=10 beta=1.5 doubled-chain field zeros: max ||w|-1| = 0.0, min|root P| = 1.20969
+10 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.076734
+   n=11 beta=1.5 doubled-chain field zeros: max ||w|-1| = 0.0, min|root P| = 1.1775
+11 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.143239
+   n=12 beta=1.5 doubled-chain field zeros: max ||w|-1| = 1.34e-51, min|root P| = 1.14994
+12 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.201060
+13 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.251741
+14 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.296494
+15 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.336282
+16 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.371871
+17 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.403884
+18 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.432827
+19 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.459115
+20 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.483095
+21 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.505054
+22 P zero-free in the closed unit disk (so doubled chain is Lee-Yang) for beta >= 1.525237

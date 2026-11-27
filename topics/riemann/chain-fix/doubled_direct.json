@@ -1,0 +1,38 @@
+{
+ "6": {
+  "last_fail": 0.64,
+  "n_fail": 32
+ },
+ "7": {
+  "last_fail": 0.76,
+  "n_fail": 38
+ },
+ "8": {
+  "last_fail": 0.86,
+  "n_fail": 43
+ },
+ "9": {
+  "last_fail": 0.94,
+  "n_fail": 47
+ },
+ "10": {
+  "last_fail": 1.02,
+  "n_fail": 51
+ },
+ "11": {
+  "last_fail": 1.08,
+  "n_fail": 54
+ },
+ "12": {
+  "last_fail": 1.14,
+  "n_fail": 57
+ },
+ "13": {
+  "last_fail": 1.2,
+  "n_fail": 60
+ },
+ "14": {
+  "last_fail": 1.24,
+  "n_fail": 62
+ }
+}

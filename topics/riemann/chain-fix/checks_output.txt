@@ -1,0 +1,20 @@
+PASS C1 every Walsh link of -ln(phi) is >= 0 (n = 6, 8, 10)
+PASS C2 phi(all down) = 1 and phi(all up) = n+1 (n = 4..16)
+PASS C3 doubled chain Z = 2 x Knauf Z exactly (n = 10, beta = 1.5)
+PASS C3 doubled chain Z = 2 x Knauf Z exactly (n = 10, beta = 2.5)
+PASS C3 doubled chain Z = 2 x Knauf Z exactly (n = 10, beta = 3)
+PASS C4 doubled chain unchanged by flipping every spin, compass included
+PASS C5 doubled chain is still ferromagnetic (all 2^11 Walsh links of -H2 >= 0)
+PASS C6 doubled chain has no odd-order links left (no built-in field)
+PASS C7 doubled field polynomial = P(w) + w^(n+1) P(1/w)
+PASS C8 n = 12, beta = 1.5: P has no zeros in |w| <= 1 (min |root| = 1.1499) and every Q zero is on |w| = 1
+PASS C9 Cohn threshold is close to where the circle really fails (within 0.07, n = 6..14)
+PASS C10 n = 12: zeros leave the circle just below the true edge (beta = 1.14)
+PASS C11 flip-averaged threshold rises with every added spin
+PASS C11 doubled threshold rises with every added spin
+PASS C12 doubled chain passes the Cohn test at beta = 3/2 up to n = 20 (threshold 1.4831), not from n = 21 (1.5051)
+PASS C13 flip-averaged n = 12, beta = 1.5: all field zeros on the circle (dev 1.6e-15)
+PASS C14 flip-averaged Z at beta = 3 keeps falling: ['0.0997', '0.0481', '0.0289']
+PASS C15 any weight g(s) on s = +-1 equals c*exp(h*s): a field, nothing smoother
+PASS C16 Knauf Z_22(3) = 1.36396 approaches zeta(2)/zeta(3) = 1.36843 from below
+19/19 passed
