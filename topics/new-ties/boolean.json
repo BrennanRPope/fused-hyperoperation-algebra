@@ -1,0 +1,146 @@
+{
+ "classification": [
+  {
+   "name": "X AND A (intersect)",
+   "density": "a*x",
+   "slope": "a",
+   "centre": "0",
+   "fixed_centre": true
+  },
+  {
+   "name": "X AND NOT A (difference)",
+   "density": "-a*x + x",
+   "slope": "1 - a",
+   "centre": "0",
+   "fixed_centre": true
+  },
+  {
+   "name": "X (do nothing)",
+   "density": "x",
+   "slope": "1",
+   "centre": "none (slope 1)",
+   "fixed_centre": false
+  },
+  {
+   "name": "NOT X AND A",
+   "density": "-a*x + a",
+   "slope": "-a",
+   "centre": "a/(a + 1)",
+   "fixed_centre": false
+  },
+  {
+   "name": "X XOR A (symmetric difference)",
+   "density": "-2*a*x + a + x",
+   "slope": "1 - 2*a",
+   "centre": "1/2",
+   "fixed_centre": true
+  },
+  {
+   "name": "X OR A (union)",
+   "density": "-a*x + a + x",
+   "slope": "1 - a",
+   "centre": "1",
+   "fixed_centre": true
+  },
+  {
+   "name": "NOT (X OR A)",
+   "density": "a*x - a - x + 1",
+   "slope": "a - 1",
+   "centre": "(a - 1)/(a - 2)",
+   "fixed_centre": false
+  },
+  {
+   "name": "X XNOR A",
+   "density": "2*a*x - a - x + 1",
+   "slope": "2*a - 1",
+   "centre": "1/2",
+   "fixed_centre": true
+  },
+  {
+   "name": "X OR NOT A",
+   "density": "a*x - a + 1",
+   "slope": "a",
+   "centre": "1",
+   "fixed_centre": true
+  },
+  {
+   "name": "NOT X (complement)",
+   "density": "1 - x",
+   "slope": "-1",
+   "centre": "1/2",
+   "fixed_centre": true
+  },
+  {
+   "name": "NOT X OR A",
+   "density": "a*x - x + 1",
+   "slope": "a - 1",
+   "centre": "-1/(a - 2)",
+   "fixed_centre": false
+  },
+  {
+   "name": "NOT (X AND A)",
+   "density": "-a*x + 1",
+   "slope": "-a",
+   "centre": "1/(a + 1)",
+   "fixed_centre": false
+  }
+ ],
+ "fused_centre": "[-1/k]",
+ "fused_slope": "a*k + 1",
+ "xor_is_union_in_half_box": true,
+ "and_is_conjugate_of_or": true,
+ "fused_is_multiplication": true,
+ "k0_translation": "1",
+ "fair_coins_Dstar": 1.0,
+ "boolean_fractal": {
+  "boxes": [
+   [
+    "1",
+    [
+     "1/5",
+     "3/20"
+    ]
+   ],
+   [
+    "0",
+    [
+     "3/13"
+    ]
+   ],
+   [
+    "1/2",
+    [
+     "2/11",
+     "-2/13"
+    ]
+   ]
+  ],
+  "counts": [
+   5,
+   23,
+   105,
+   479,
+   2185,
+   9967,
+   45465,
+   207391,
+   946023
+  ],
+  "trace_counts": [
+   5,
+   23,
+   105,
+   479,
+   2185,
+   9967,
+   45465,
+   207391,
+   946025
+  ],
+  "match": false,
+  "D_star": 0.9013037827751289,
+  "D_moran": 0.9481836054390388,
+  "box": 0.836777640796788,
+  "words": 1953125
+ }
+}

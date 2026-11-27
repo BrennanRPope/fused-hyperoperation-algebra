@@ -1,0 +1,15 @@
+PASS V1 walls ±2: certified 0.3810 <= delta <= 0.3818, and t_up < D* (certified sign)
+PASS V1 walls ±3: certified 0.4405 <= delta <= 0.4418, and t_up < D* (certified sign)
+PASS V1 walls ±12: certified 0.5581 <= delta <= 0.5599, and t_up < D* (certified sign)
+PASS V2 ping-pong example (walls ±21/5; multipliers 5/18, 5/24 | 7/24; primes 2, 3; base point 0): criterion (i), (ii), (iii) hold exactly
+PASS V3 ping-pong example: different words give different maps up to length 9 (exact), as the proof says  6765
+PASS V4 ping-pong example: positive determinants, V=[-1.05,1.05] sent strictly inside itself
+PASS V5 ping-pong example: certified 0.5551 <= delta <= 0.5585 < D*
+PASS V6 round-4 examples (walls ±2, ±3, ±12): no collisions up to length 14 (832,040 maps each, modular check)
+PASS V7 Lean: lean/NewTies.lean builds with Lean 4.37.0-rc1, 16 theorems, no sorry, standard axioms only
+PASS V8 of the 12 Boolean steps that depend on x, 7 keep a centre that does not move with a; their centres are 0, 1/2, 1; 6 of them contract (complement does not)  ['0', '1', '1/2']
+PASS V9 XOR is union in a box of size 1/2; AND is OR conjugated by complement; every fused law is multiplication in u = 1 + kx; k = 0 is a translation (slope 1, no fixed point, no fractal)
+PASS V10 OR with densities 4/5, 17/20 and AND with 1/4 is round 1's example A moved by y = (3 - x)/2: same counts to length 11, same D*  D* 0.6104
+PASS V11 OR 1/5 with XOR slopes 1/6, 1/7 collide at length 4 because r s1 s2 - r s2 + s1 - s2 = 0 (a slope coincidence, not a rule)  (r - 1)*(r*s1*s2 - r*s2 + s1 - s2)/2
+PASS V12 three-centre Boolean fractal (OR 4/5, 17/20; AND 3/13; XOR 9/22, 15/26): counts match the shared-centre count up to length 8; first collision at length 9 (2 fewer maps)
+14/14 pass

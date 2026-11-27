@@ -1,0 +1,18 @@
+Lean (version 4.37.0-rc1, x86_64-unknown-linux-gnu, commit 0b77e12952ad39077d80d8bd6b66d601f225c321, Release)
+'NewTies.hom_centre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.union_is_stretch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.same_centre_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.order_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.commute_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.lower_bound_key' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.moran_special' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.count_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.count_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.count_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.fixes_wall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.wall_line_tangent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.two_law_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.valuations_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.xor_is_half_box_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NewTies.and_from_or' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit status 0

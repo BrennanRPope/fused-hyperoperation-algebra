@@ -411,8 +411,7 @@ depends on how close those points are. The formula is then a ceiling, not the an
 ### 6.7 Lean
 
 Two more identities are in `lean/NewTies.lean`: `fixes_wall` (the map fixes w exactly when d·w² + k·w + 1 = 0) and
-`wall_line_tangent` (the wall line touches the border). That makes 12 theorems in the file (13 after round 4). Not compiled where this was written;
-**compiled clean on Nov 27 in the shared library** build (`FusedAlgebra.Topics.NewTies`), and the topic file itself is built by CI's topic Lean step.
+`wall_line_tangent` (the wall line touches the border). That makes 12 theorems in the file (13 after round 4). **Compiled clean on Nov 27 in the shared library** build (`FusedAlgebra.Topics.NewTies`), and the topic file itself is built by CI's topic Lean step. **[Round 5: all theorems build, see 8.3.]**
 
 ### 6.8 Lead or not
 
@@ -488,7 +487,7 @@ with every attracting wall inside it and every repelling wall outside it (each m
 our round-2 construction makes free. The statement for shared-centre plane laws, and the reduction, are ours. We read
 their abstract and the statement of Theorem 1.7 and the algebraic remark (arXiv:1902.11059); we did not check their proof.
 Christodoulou and Jurga (Trans. AMS 2026) extend that theorem; we did not read it. (H3) is checked, not proved: the 10
-pieces of S_2 at walls ±3 give 1000 different maps for their 1000 words of length 3 (U3).
+pieces of S_2 at walls ±3 give 1000 different maps for their 1000 words of length 3 (U3). [Round 5: now checked to length 14 for these examples, and proved for a family, see 8.2.]
 
 On the tangent line δ equals D* (round 3, P1), so P3 contains P1. In the line case (affine maps) it is round 2's theorem.
 
@@ -521,7 +520,7 @@ point, and checked on 900 random words, U4); sums are cut at block degree 40 wit
 tail; and a larger matrix gives a larger spectral radius (Perron–Frobenius). Strictness: every switch costs a factor
 below 1 on an irreducible matrix, so the spectral radius at D* is below 1. Caveat: the arithmetic is double precision, not
 interval arithmetic; the bracket widths are far larger than rounding, but an interval-arithmetic rerun would make it
-airtight.
+airtight. [Round 5: done, see 8.1. The certified brackets are a hair wider.]
 
 **Cross-check.** The direct level-n estimates fall slowly, roughly like 1/n (at ±3: 0.459 at n = 7, 0.450 at n = 14).
 Extrapolating linearly in 1/n lands inside or within 0.002 of every bracket (U6). The round-3 box counts (0.395, 0.445,
@@ -565,3 +564,165 @@ plane (complex) lower bound, which needs a different cited theorem.
 | P3: dim K = min(1, δ) for shared-centre plane laws via free first-return pieces | **Ours** (conditional on the cited theorem and H1–H4) | 7.2 |
 | Block stretch formula λ((1−z)/(1−λz))² | Elementary | U1 |
 | P4: proved brackets, strictly below D* off the tangent line | **Ours** (double precision) | U4–U9, `offline.py` |
+
+---
+
+## 8. Round 5 (DRAFT): airtight bounds, no collisions proved for a family, Lean builds
+
+Brennan asked to make the bounds airtight. Checks: `checks5.py` (14/14 pass, output in `checks5_output.txt`).
+
+### 8.1 Certified brackets
+
+`exact_bounds.py` redoes section 7.3 so that no rounded number enters a claimed inequality. Walls, multipliers, block
+multipliers, input regions and z-ranges are exact fractions (regions rounded outward, which only widens them). Powers
+and sums use ball arithmetic (python-flint's arb, 128 bits), which returns guaranteed enclosures. The spectral-radius
+claims are certified by a test vector v > 0 (the Collatz–Wielandt test): if T·v < v in every entry, the spectral radius
+is below 1 and the sum converges; if T·v > v in every entry, it is above 1 and the sum diverges.
+
+| Repelling walls | Certified bracket for δ | Round 4 (double precision) | D* |
+|---|---|---|---|
+| ±2 | **0.3810 to 0.3818** | 0.3812 to 0.3817 | 0.6104 |
+| ±3 | **0.4405 to 0.4418** | 0.4407 to 0.4417 | 0.6104 |
+| ±12 | **0.5581 to 0.5599** | 0.5583 to 0.5597 | 0.6104 |
+
+That D* lies above each upper end is certified too (the shared-centre function is negative there, V1).
+
+### 8.2 No accidental collisions: proved for a family (DRAFT, ours)
+
+Theorem P3 needed (H3): different words give different maps. Two things are now known.
+
+**For the round-4 examples it holds up to length 14.** All 832,040 maps of length 14 are different at walls ±2, ±3 and
+±12. Checked by exact arithmetic modulo the prime 2⁶¹ − 1: maps that differ there differ for real, and the count can
+never exceed the shared-centre count, so equality rules collisions out (`collisions_modp.py`, V6). This is a check to
+length 14, not a proof for all lengths.
+
+**For a family it is proved, by a two-prime ping-pong.** Criterion: rational walls and multipliers, and primes p₁, …, p_r
+such that
+
+1. every multiplier has negative p-adic valuation for each chosen prime, so in the p-adic numbers every block pulls
+   *toward its repelling wall*;
+2. within each law, the valuation vectors of its multipliers are linearly independent;
+3. for each chosen prime there are disjoint p-adic balls U_i around the repelling walls such that every law-i block sends
+   every other U_j, and a base point x₀, into U_i (an exact check, `pingpong.py`).
+
+**Proof.** Suppose two different words give the same map; take a shortest such pair. Evaluate at x₀ in the p-adic
+numbers: a word lands in the ball of its outermost law, so both outermost blocks have the same law i. If the two
+blocks have the same multiplier, they are the same map, and by (2) the same block, so cancel them and get a shorter
+pair. Otherwise their ratio C is a law-i map other than the identity. By (2) some chosen prime gives C a nonzero
+valuation, so C or its inverse pulls p-adically into U_i. But the two remainders start in another law, so they land in
+some U_j (j ≠ i), or stay at x₀. Neither is in U_i: a contradiction. ∎
+
+**Example where everything holds.** Walls ±21/5 (law 1: attracting 1, repelling 21/5; law 2: attracting −1, repelling
+−21/5), law-1 multipliers 5/18 and 5/24, law-2 multiplier 7/24, primes 2 and 3, base point 0. The criterion holds exactly
+(V2). The valuation step is Lean `valuations_separate`. So (H1)–(H4) all hold, and Theorem P3 gives, resting only on the
+cited theorems:
+
+  **dim K is between 0.5551 and 0.5585** (certified, V5), against the line-case formula D* = 0.7236.
+
+This is the first union fractal off the tangent line whose dimension is pinned down with no unchecked assumption of
+ours. The round-4 examples (multiplier 1/5 has no 2-adic pull) are not covered by this criterion.
+
+### 8.3 Lean builds
+
+The Lean toolchain could be downloaded this time (from GitHub releases; the lean-lang.org host is still blocked).
+`lean/NewTies.lean` builds with Lean 4.37.0-rc1, the repo's pinned version: **16 theorems, no errors, no sorry, only the
+standard axioms** (propext, Classical.choice, Quot.sound). Output in `lean/compile_output.txt` (V7). New this round:
+`valuations_separate`, `xor_is_half_box_union`, `and_from_or`.
+
+### 8.4 Who proved what, round 5
+
+Ball arithmetic is python-flint's; the Collatz–Wielandt test and p-adic ping-pong are standard tools. The certified
+numbers, the criterion and its proof, and the fully covered example are ours (DRAFT). Theorem P3 still rests on
+Solomyak and Takahashi's theorem, whose proof we did not check.
+
+---
+
+## 9. Round 5 (DRAFT): is there a family? Intersect, disjoint and XOR fractals
+
+Brennan asked: "Is this possibly a new family of objects? Intersect fractal… disjoint fractal?" Script: `boolean.py`.
+Checks V8–V12.
+
+### 9.1 The answer in two sentences
+
+They're one family, not several: intersect, union and symmetric difference each pull a set's density toward a fixed
+point (empty, full and half), so mixing them gives exactly our union fractal with centres at 0, 1 and 1/2. A disjoint
+fractal doesn't exist, because adding without overlap is a plain shift with no fixed point, so nothing shrinks.
+
+### 9.2 The Boolean reading
+
+Let X be a random set of density x in a box of size 1, and A an independent random set of density a. Any Boolean
+combination f(X, A) has a density that is a straight-line function of x. Of the 16 possible f, 12 depend on x. Each of
+those pulls x toward a point, its centre. Exactly **7** have a centre that does not move with a (V8):
+
+| Step | New density | Pulls toward |
+|---|---|---|
+| X AND A (intersect), X AND NOT A (difference) | a·x, (1 − a)·x | 0, empty |
+| X XOR A, X XNOR A (symmetric difference) | a + x − 2ax, 1 − a − x + 2ax | 1/2, half |
+| X OR A, X OR NOT A (union) | a + x − ax, 1 − a + ax | 1, full |
+| NOT X (complement) | 1 − x | 1/2, but it doesn't shrink |
+
+Steps with the same centre commute, steps with different centres don't (round 1). So repeated random AND/OR/XOR steps
+are a union fractal with up to three centres, and every theorem from rounds 1–4 applies as it stands (XOR with a > 1/2
+flips, which round 2 already covered). The other four steps (NAND, NOR and two more) have centres that move with a, so
+they don't commute with each other and fall outside the family.
+
+![Figure 15](figures/fig15-boolean-centres.png)
+
+*Figure 15. For each Boolean step that keeps x, the density it pulls toward, against the density a it combines with.
+Thick lines: the steps whose target never moves (empty, half, full). Dashed: steps whose target moves with a.*
+
+### 9.3 How the combining rules fit together
+
+- **XOR is union in a smaller box.** In a box of size 1, XOR with density a is a + x − 2ax, which is exactly union in a
+  box of size 1/2 (Lean `xor_is_half_box_union`). In the fused law a ∘ₖ b = a + b + k·ab, union in a box of size M is
+  k = −1/M, so XOR is k = −2. Every k < 0 is union in a box of size −1/k; k > 0 works the same way with negative
+  parameters (centre −1/k below zero).
+- **Intersect is union seen from the outside.** By De Morgan, intersecting with density a is complement, then union
+  with density 1 − a, then complement (Lean `and_from_or`). It is not one rung up after all: as a step on densities it is
+  the same kind of map, centred at the empty set.
+- **All of them are multiplication in disguise.** Every fused law turns into plain multiplication in the coordinate
+  u = 1 + kx (V9). That is why each one is a stretch about one point.
+- **Disjoint union (k = 0) gives no fractal.** It is x ↦ x + a, a shift with slope 1. Shifts never shrink, have no fixed
+  point, and repeated shifts run off to infinity. So there is no attractor (V9).
+
+### 9.4 Examples
+
+- **Union plus intersect is round 1's example A.** OR with densities 4/5 and 17/20 plus AND with 1/4 is example A moved
+  by y = (3 − x)/2: the same counts to length 11 and the same D* = 0.610 (V10). So the dimension theorem of round 2
+  applies to it as it stands.
+- **All three.** OR with 4/5 and 17/20, AND with 3/13, XOR with 9/22 and 15/26: D* = 0.901. The densities reachable match
+  the shared-centre count up to 8 steps; at 9 steps there are two fewer than the count, from accidental collisions (V12).
+- **Collisions come from parameter coincidences, not from a rule.** With simple slopes they are common. For example
+  OR with slope 1/5 and XOR with slopes 1/6 and 1/7 collide at 4 steps because r·s₁·s₂ − r·s₂ + s₁ − s₂ = 0 for those
+  numbers (V11). Where collisions happen, D* is only a ceiling. So for the XOR member, the no-collision condition is a
+  real hypothesis to check case by case.
+
+![Figure 16](figures/fig16-boolean-fractals.png)
+
+*Figure 16. The densities a set can reach by repeated random Boolean steps. Top: union and intersect (round 1's example A
+after a shift). Bottom: union, intersect and XOR together. Dotted lines: the three centres, empty, half and full.*
+
+### 9.5 New family, renaming, or a mix?
+
+**A mix, and mostly a renaming.** The objects are the union fractals of round 1. Intersect and XOR fractals are members,
+just with the centre at empty or half, and the disjoint fractal does not exist. What is new (as far as one literature
+search shows) is the Boolean reading: exactly which set operations generate union fractals (the seven fixed-centre steps
+above), and that XOR is union in a half-size box. The fair-coin case (AND and OR with density 1/2 give x/2 and (x + 1)/2)
+is binary expansion, which is classical; its D* is 1 and its attractor is all of [0, 1].
+
+**Lead or not.** This is not a lead by itself. It is a useful reading that widens where the theorem applies: any process
+that repeatedly mixes a quantity with fresh independent pieces by AND, OR or XOR (masks, dropout-style corruption,
+coverage, random sets) has a union-fractal state space, with the exact count and dimension from rounds 1–5.
+
+### Known vs new, round 5
+
+| Item | Status | Source |
+|---|---|---|
+| Ball arithmetic; Collatz–Wielandt test; p-adic ping-pong | Known tools | python-flint/arb; standard |
+| Certified brackets for δ | **Ours** | 8.1, V1, V5 |
+| Two-prime ping-pong criterion for no collisions, and its proof | **Ours** (DRAFT) | 8.2, V2 |
+| Fully covered example: dim between 0.5551 and 0.5585 | **Ours**, resting on Solomyak–Takahashi | 8.2, V5 |
+| Lean file builds (16 theorems) | Done | 8.3, V7 |
+| Densities of Boolean combinations of independent sets are affine | Known (elementary probability) | — |
+| The seven fixed-centre Boolean steps; XOR = union in a half box; the Boolean family = union fractals | **Ours** (elementary; not found in one search) | 9.2–9.3, V8–V9 |
+| Fair coins give binary expansion | Known | classical |

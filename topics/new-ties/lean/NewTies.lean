@@ -95,4 +95,19 @@ theorem two_law_threshold (x₁ x₂ : Int) :
     (1 + x₁) * (1 + x₂) = x₁ * (1 + x₂) + x₂ * (1 + x₁) ↔ x₁ * x₂ = 1 := by
   constructor <;> intro h <;> grind
 
+/-! ## 9. No accidental collisions: the two-prime ping-pong example -/
+
+/-- Law 1 of the ping-pong example has multipliers 5/18 and 5/24. A ratio of two of its blocks is
+    (5/18)^m (5/24)^n with whole numbers m, n; its 2-adic and 3-adic valuations are −m − 3n and −2m − n.
+    Both vanish only for m = n = 0, so a law-1 block that is not the identity moves 2-adically or 3-adically. -/
+theorem valuations_separate (m n : Int) (h2 : -m - 3 * n = 0) (h3 : -2 * m - n = 0) : m = 0 ∧ n = 0 := by
+  omega
+
+/-- XOR with an independent set of density a, in a box of size 1, is union in a box of size 1/2:
+    a + x − 2ax (cleared of the fraction 1/2). -/
+theorem xor_is_half_box_union (a x : Int) : 2 * (a + x - 2 * a * x) = 2 * a + 2 * x - 4 * a * x := by grind
+
+/-- De Morgan for densities: intersecting with density a is complement ∘ union with density 1 − a ∘ complement. -/
+theorem and_from_or (a x : Int) : 1 - ((1 - a) + (1 - x) - (1 - a) * (1 - x)) = a * x := by grind
+
 end NewTies
