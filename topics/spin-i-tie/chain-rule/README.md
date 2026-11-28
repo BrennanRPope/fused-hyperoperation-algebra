@@ -64,3 +64,6 @@ has reached what the law can give: the shape, not the principle.
 From memory, not re-fetched: Rényi, Proc. 4th Berkeley Symp. 1, 547 (1961); Aczél and Daróczy, *On Measures of
 Information and their Characterizations* (1975); Faddeev, Uspekhi Mat. Nauk 11, 227 (1956); Tsallis, J. Stat. Phys. 52,
 479 (1988); Pawłowski et al., Nature 461, 1101 (2009). No paper text is stored in this folder.
+
+## Correction (round 6, DRAFT)
+The claim above that every finite dial gives the same circle holds only deep in the guessing tree. The first levels bind too. Rényi order 2 forbids quantum boxes at depth 1 (bias 0.644 < 0.707), as Oughton & Timpson (Entropy, 2024) showed. Under the simple definition used in ../renyi-bound/, orders above about 1.39 fail. See ../renyi-bound/README.md.
