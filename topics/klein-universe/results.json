@@ -1,0 +1,163 @@
+{
+ "U0": {
+  "chi_rec_from_theta_Gpc": 13.87282681778888,
+  "chi_rec_integrated_Gpc": 13.867291412369264,
+  "lss_diameter_Gpc": 27.74565363557776,
+  "particle_horizon_Gpc": 14.147547820414438,
+  "observable_diameter_Gpc": 28.295095640828876,
+  "circle_bound_Gpc": 27.329468831044093,
+  "circle_bound_angle_deg": 9.936367072140724
+ },
+ "U1": {
+  "E7_elements": 377,
+  "E7_reversing": 182,
+  "E2_elements": 377,
+  "E2_reversing": 0
+ },
+ "U2": {
+  "modes": [
+   988,
+   988
+  ],
+  "invariance_error": 3.907985046680551e-14,
+  "pairs": {
+   "Klein glide": {
+    "sep": 0.7615773105863908,
+    "radius_deg": 67.61745766433579,
+    "on_sphere": 4.440892098500626e-16,
+    "sense": 1,
+    "S_same": 0.9999878600240386,
+    "S_opposite": 0.5668550974705079,
+    "n1": [
+     -0.3939192985791677,
+     0.0,
+     0.9191450300180579
+    ],
+    "n2": [
+     -0.3939192985791677,
+     0.0,
+     -0.9191450300180579
+    ]
+   },
+   "Klein slide a": {
+    "sep": 1.6,
+    "radius_deg": 36.86989764584401,
+    "on_sphere": 1.1102230246251565e-16,
+    "sense": -1,
+    "S_same": 0.3447929380696155,
+    "S_opposite": 1.0,
+    "n1": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n2": [
+     -1.0,
+     0.0,
+     0.0
+    ]
+   },
+   "half-turn screw": {
+    "sep": 0.7681145747868608,
+    "radius_deg": 67.41477202508868,
+    "on_sphere": 4.440892098500626e-16,
+    "sense": -1,
+    "S_same": 0.6930369798290871,
+    "S_opposite": 0.9998028979881087,
+    "n1": [
+     -0.3905667329424716,
+     -0.13018891098082386,
+     0.911322376865767
+    ],
+    "n2": [
+     -0.3905667329424716,
+     -0.13018891098082386,
+     -0.911322376865767
+    ]
+   }
+  },
+  "observer": [
+   0.15,
+   0.05,
+   0.1
+  ],
+  "toy": {
+   "a": 1.6,
+   "b": 1.9,
+   "c": 0.7,
+   "chi": 1.0
+  }
+ },
+ "U3": {
+  "brute_vs_formula_worst": 1.1102230246251565e-16,
+  "shortest_loop_min_D": 0.4925,
+  "shortest_loop_min_Gpc": 13.664734415522046,
+  "a_needed_at_shortest_D": 1.7060700454553441,
+  "a_needed_at_shortest_Gpc": 47.336028559238386,
+  "detectable_clone_D": 1.2,
+  "detectable_clone_Gpc": 33.29478436269331,
+  "frac_example": {
+   "a": 2.0,
+   "c": 0.6,
+   "fraction": 0.21883100419947543
+  }
+ },
+ "U4": {
+  "clifford": true,
+  "reflection_rep": true,
+  "reflection_flips_chirality": true,
+  "rotation_keeps_chirality": true,
+  "jarlskog": 3.115723847217115e-05,
+  "ckm_unitarity_error": 6.894828401856294e-18,
+  "epsilon_K": 0.002228
+ },
+ "U5": {
+  "rho_c_GeV4": 3.6735804888825407e-47,
+  "sigma_max_energy_GeV3": 2.5565954634549135e-05,
+  "sigma_max_cmb_GeV3": 3.408793951273218e-10,
+  "sigma_max_energy_MeV": 29.459181172430903,
+  "sigma_max_cmb_MeV": 0.6985544284531949,
+  "sigma_weak_GeV3": 14926912.289848,
+  "ratio_weak_over_cmb": 4.378942377632608e+16
+ },
+ "U6": {
+  "shape_twist_curvature": 0,
+  "shape_twist_torsion": 0,
+  "glide_holonomy_det": -1,
+  "halfturn_holonomy_det": 1,
+  "cartan_density_neutron_kg_m3": 3.052929711943303e+58,
+  "neutron_star_core_kg_m3": 1e+18,
+  "ratio": 3.052929711943303e+40,
+  "lab_torsion_bound_GeV": 1e-31
+ },
+ "U7": {
+  "same_mirror": true,
+  "structures": {
+   "Pin+": 8,
+   "Pin-": 8
+  },
+  "glide_twice_sign": {
+   "Pin+": "1",
+   "Pin-": "-1"
+  },
+  "glide_once_eigenvalues": {
+   "Pin+": [
+    "-1",
+    "1"
+   ],
+   "Pin-": [
+    "-I",
+    "I"
+   ]
+  },
+  "halfturn_twice_sign": "-1",
+  "halfturn_once_eigenvalues": [
+   "-I",
+   "I"
+  ]
+ },
+ "summary": {
+  "passed": 8,
+  "failed": 0
+ }
+}
