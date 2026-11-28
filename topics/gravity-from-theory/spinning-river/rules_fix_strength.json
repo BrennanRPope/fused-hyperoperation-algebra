@@ -1,0 +1,13 @@
+{
+ "boost": {
+  "relativity_form_boost_invariant": true,
+  "lopsided_form_changes": true
+ },
+ "kappa_from_symmetry": "free",
+ "kappa_four_rules_round30": 0,
+ "kappa_lagged_time_part_round32": 0,
+ "kappa_relativity": "41/16",
+ "kappa_consistency_rule": "41/16 (Kraichnan 1955, Deser 1970: gives Einstein's equations)",
+ "field_energy_conserved_off_bodies": true,
+ "round30_claim": "The rules give rational third-level coefficients; relativity has a pi^2 term proportional to nu; so the rules miss at the third level for every nu > 0 and match only at nu = 0."
+}

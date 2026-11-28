@@ -1,0 +1,71 @@
+{
+ "relativity": {
+  "circle_energy": "-205/96",
+  "periastron": "123/32"
+ },
+ "forms": {
+  "ADM (DJS, from -H)": [
+   "-1/64",
+   "3/64",
+   "21/32"
+  ],
+  "harmonic-like": [
+   "41/64",
+   "-123/64",
+   "0"
+  ],
+  "static only": [
+   "0",
+   "0",
+   "41/64"
+  ],
+  "round 31 boost-safe K": [
+   "41/64",
+   "0",
+   "0"
+  ]
+ },
+ "invariants": {
+  "ADM (DJS, from -H)": {
+   "circle_energy": "-205/96",
+   "periastron": "123/32"
+  },
+  "harmonic-like": {
+   "circle_energy": "-205/96",
+   "periastron": "123/32"
+  },
+  "static only": {
+   "circle_energy": "-205/96",
+   "periastron": "123/32"
+  },
+  "round 31 boost-safe K": {
+   "circle_energy": "-205/96",
+   "periastron": "369/64"
+  }
+ },
+ "gr_forms_all_match": true,
+ "round31_misses_periastron": true,
+ "gr_weights_D1D1_D2D2_D1D2_A": {
+  "harmonic_like": [
+   "-41/16",
+   "-41/16",
+   "-41/8",
+   "0"
+  ],
+  "static": [
+   "0",
+   "0",
+   "0",
+   "41/16"
+  ],
+  "differ_by_41_16_d2F_dt2": true,
+  "harmonic_form_matches_v2_minus_3rdot2": true
+ },
+ "static_can_avoid_direct_link_by_mass_count": {
+  "2": true,
+  "3": false,
+  "4": true,
+  "5": false
+ },
+ "time_part_alone_lagged_K": 0
+}

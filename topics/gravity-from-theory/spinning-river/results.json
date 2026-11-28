@@ -7656,5 +7656,37 @@
   "LG5 the weights on D1^2 F, D2^2 F, D1 D2 F, (a.grad) F read off at random points: time part (-1/8, -1/8, -1, 0), lag (-3/8, -3/8, 0, -1/2), sum (-1/2, -1/2, -1, -1/2), the same as -(1/2) d^2F/dt^2": {
     "pass": true,
     "detail": ""
+  },
+  "PI1 relativity's pi^2 is pinned by two invariants: ADM's three pi^2 terms (DJS), the form (41/64) pi^2 G^3 m1^2 m2^2 (v12^2 - 3 rdot^2)/r^3 and the static (41/64) pi^2 G^4 m1^2 m2^2 m/r^4 all give circle energy -(205/96) pi^2 nu x^3 and periastron advance +(123/32) pi^2 nu x^3": {
+    "pass": true,
+    "detail": ""
+  },
+  "PI2 round 31's boost-safe K v12^2 with K = 41/16 gets circles right but the periastron wrong (369/64, not 123/32)": {
+    "pass": true,
+    "detail": ""
+  },
+  "PI3 in round 32's basis relativity's pi^2 is -(41/16)(D1 + D2)^2 F, or equally +(41/16)(a.grad)F: the two differ by (41/16) d^2F/dt^2, and the first is (41/64) pi^2 (v12^2 - 3 rdot^2)/r^3": {
+    "pass": true,
+    "detail": ""
+  },
+  "PI4 the time part meeting the push at rest: every static vertex has 0 or 2 time-part legs, so an odd number of masses (five, the third level) forces a direct body-to-body link; the static third level is second-level pieces times m/r12, with no pi^2": {
+    "pass": true,
+    "detail": ""
+  },
+  "PI5 what the moving meetings must supply is not a time derivative: relativity's (0, 0, 0, 41/16) is not a multiple of d^2F/dt^2's (1, 1, 2, 1), while the lagged time part alone gives a multiple of it (round 32)": {
+    "pass": true,
+    "detail": ""
+  },
+  "FX1 boosts can't fix relativity's strength: (D1 + D2)^2 F is unchanged when both velocities shift by u (F depends only on y1 - y2), while a lopsided (D1^2 + D2^2) F changes; so kappa = 41/16 is free under the jet rule": {
+    "pass": true,
+    "detail": ""
+  },
+  "FX2 the rules the river has give kappa = 0: only plain fractions at the third level (round 30) and a total time derivative from the lagged time part (round 32)": {
+    "pass": true,
+    "detail": ""
+  },
+  "FX3 the first link of the consistency rule: for two moving bodies the field-energy density (grad U)^2/8pi and current -(dU/dt) grad U/4pi obey d/dt(density) + div(current) = 0 off the bodies, so the current (what must drag frames) is fixed by the density with no new number": {
+    "pass": true,
+    "detail": ""
   }
 }

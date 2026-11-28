@@ -2090,8 +2090,8 @@ def fig40():
     # (a) channels of field energy
     ax = axs[0]
     ax.set_xlim(0, 10); ax.set_ylim(0, 10.4); ax.axis("off"); ax.set_aspect("equal")
-    nodes = {"time": (2.0, 7.6, "time part\n(pull, $U$)"), "push": (8.0, 7.6, "push\n(frame dragging)"),
-             "twist": (5.0, 2.2, "twist\n(waves)")}
+    nodes = {"time": (2.0, 7.6, "time part\n(pull, $U$)"), "push": (8.0, 7.6, "push\n(change to\nthe path)"),
+             "twist": (5.0, 2.2, "twist\n(frame\ndragging)")}
     for k, (x, y, t) in nodes.items():
         ax.add_patch(Circle((x, y), 1.25, fc="#eef3fb", ec=GREY, lw=1.5))
         ax.text(x, y, t, ha="center", va="center", fontsize=10.5)
@@ -2138,6 +2138,106 @@ def sp_frac(s):
     return Fraction(s)
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38, fig39, fig40):
+def fig41():
+    pc = json.load(open(os.path.join(HERE, "pi2_channels.json")))
+    fig, axs = plt.subplots(1, 2, figsize=(15.5, 6.6), gridspec_kw={"width_ratios": [1.1, 1.0]})
+    # (a) the two invariants for each form
+    ax = axs[0]
+    names = ["ADM (DJS, from -H)", "harmonic-like", "static only", "round 31 boost-safe K"]
+    short = ["ADM's three\n$\\pi^2$ terms", "$\\frac{41}{64}\\pi^2\\,\\frac{v^2-3\\dot r^2}{r^3}$",
+             "$\\frac{41}{64}\\pi^2\\,\\frac{m}{r^4}$\n(static)", "round 31:\n$K\\,v_{12}^2$, $K=\\frac{41}{16}$"]
+    xs = np.arange(4); bw = 0.36
+    Ev = [-float(sp_frac(pc["invariants"][n]["circle_energy"])) for n in names]
+    Kv = [float(sp_frac(pc["invariants"][n]["periastron"])) for n in names]
+    ax.bar(xs - bw/2, Ev, bw, color="#9ecae1", label="circle energy, $-$coefficient (relativity 205/96)")
+    ax.bar(xs + bw/2, Kv, bw, color=[GREEN, GREEN, GREEN, RED], label="periastron advance (relativity 123/32)")
+    ax.axhline(205/96, color="#3182bd", lw=1.2, ls=":")
+    ax.axhline(123/32, color="k", lw=1.2, ls="--")
+    ax.text(3 + bw/2, Kv[3] + 0.1, "369/64", ha="center", color=RED, fontsize=10)
+    ax.set_xticks(xs); ax.set_xticklabels(short, fontsize=10)
+    ax.set_ylabel("coefficient of $\\pi^2\\nu x^3$"); ax.set_ylim(0, 6.6)
+    ax.legend(fontsize=9, loc="upper left")
+    ax.set_title("(a) Relativity's $\\pi^2$ is one thing: three forms give both orbit numbers,\n"
+                 "round 31's form gets circles but not the periastron")
+    # (b) which meetings can make it
+    ax = axs[1]
+    ax.set_xlim(0, 10); ax.set_ylim(0, 10.4); ax.axis("off"); ax.set_aspect("equal")
+    nodes = {"time": (2.0, 7.4, "time part\n(pull)"), "push": (8.0, 7.4, "push\n(change to\nthe path)"),
+             "twist": (5.0, 2.4, "twist\n(frame\ndragging)")}
+    for k, (x, y, t) in nodes.items():
+        ax.add_patch(Circle((x, y), 1.25, fc="#eef3fb", ec=GREY, lw=1.5))
+        ax.text(x, y, t, ha="center", va="center", fontsize=10)
+    ax.add_patch(Circle((2.0, 9.05), 0.55, fc="none", ec=RED, lw=2.2))
+    ax.text(2.8, 9.4, "time part on itself, moving, with the lag: 0 (round 32)", color=RED, fontsize=9.2, va="center")
+    ax.plot([3.25, 6.75], [7.65, 7.65], color=RED, lw=2.2)
+    ax.text(5.0, 7.95, "at rest: no $\\pi^2$ (odd count)", color=RED, ha="center", fontsize=9.2)
+    ax.plot([3.25, 6.75], [7.15, 7.15], color=GREEN, lw=2.6, ls="--")
+    ax.text(5.0, 6.55, "moving", color=GREEN, ha="center", fontsize=9.5)
+    for (a, b) in (("time", "twist"), ("push", "twist")):
+        xa, ya, _ = nodes[a]; xb, yb, _ = nodes[b]
+        ax.plot([xa, xb], [ya, yb], color=GREEN, lw=2.6, ls="--", zorder=0)
+    ax.text(2.6, 4.7, "moving", color=GREEN, ha="right", fontsize=9.5)
+    ax.text(7.4, 4.7, "moving", color=GREEN, ha="left", fontsize=9.5)
+    ax.text(5.0, 0.35, "green: the only places relativity's $\\frac{41}{16}(a\\cdot\\nabla)F$ can come from\n"
+            "(not yet computed)", ha="center", fontsize=9.5, color=GREEN)
+    ax.set_title("(b) Which meetings can make it: only moving ones\nthat involve the push or the twist")
+    fig.suptitle("Fig 41. What relativity's $\\pi^2$ is, and where the river's pieces can make it (DRAFT)", fontsize=13)
+    fig.tight_layout()
+    save(fig, "fig41_pi2_channels.png")
+
+
+def fig42():
+    fx = json.load(open(os.path.join(HERE, "rules_fix_strength.json")))
+    fig, axs = plt.subplots(1, 2, figsize=(15.5, 6.6), gridspec_kw={"width_ratios": [1.0, 1.05]})
+    # (a) what each rule gives for the strength kappa
+    ax = axs[0]
+    rows = [("the four rules (round 30)", 0.0, RED, "0"),
+            ("field energy of the time part,\nwith the lag (round 32)", float(fx["kappa_lagged_time_part_round32"]), RED, "0"),
+            ("boosts / the jet rule", None, GREY, "any value"),
+            ("field energy pulls, pushes and drags\nlike mass, consistently (Deser)", 41/16, GREEN, "41/16"),
+            ("relativity", 41/16, "k", "41/16")]
+    for i, (name, val, c, lab) in enumerate(rows):
+        y = len(rows) - 1 - i
+        if val is None:
+            ax.annotate("", xy=(3.4, y), xytext=(-0.4, y), arrowprops=dict(arrowstyle="<->", color=GREY, lw=2.4))
+        else:
+            ax.plot([val], [y], "o", ms=13, color=c)
+        ax.text(3.55, y, lab, va="center", fontsize=11, color=c)
+    ax.axvline(41/16, color="k", lw=1, ls=":")
+    ax.set_yticks(range(len(rows))); ax.set_yticklabels([r[0] for r in rows][::-1], fontsize=10)
+    ax.set_xlim(-0.6, 4.4); ax.set_ylim(-0.6, len(rows) - 0.4)
+    ax.set_xlabel("strength $\\kappa$ of relativity's $\\pi^2$ term, $\\kappa\\,(a\\cdot\\nabla)F$")
+    ax.set_title("(a) What fixes the strength: not the rules the river has,\nnot boosts; a consistency rule does")
+    # (b) moving field energy and its current
+    ax = axs[1]
+    n = 220
+    X, Y = np.meshgrid(np.linspace(-3, 3, n), np.linspace(-2.4, 2.4, n))
+    b1, b2 = np.array([-1.0, 0.0]), np.array([1.0, 0.0])
+    w1, w2 = np.array([0.0, 0.5]), np.array([0.0, -0.5])        # equal masses on a circle, at one instant
+    def field(b, w):
+        dx, dy = X - b[0], Y - b[1]; r = np.sqrt(dx*dx + dy*dy) + 1e-9
+        gx, gy = -dx/r**3, -dy/r**3                               # grad (1/r) at the point
+        dUdt = (w[0]*dx + w[1]*dy)/r**3                           # d/dt of 1/|x - b(t)|
+        return gx, gy, dUdt
+    g1x, g1y, d1 = field(b1, w1); g2x, g2y, d2 = field(b2, w2)
+    gx, gy, dU = g1x + g2x, g1y + g2y, d1 + d2
+    dens = (gx**2 + gy**2)/(8*np.pi)
+    Sx, Sy = -dU*gx/(4*np.pi), -dU*gy/(4*np.pi)
+    ax.pcolormesh(X, Y, np.log10(dens + 1e-6), cmap="Blues", shading="auto", vmin=-3, vmax=1)
+    sp_ = np.sqrt(Sx**2 + Sy**2)
+    ax.streamplot(X, Y, Sx, Sy, color=np.log10(sp_ + 1e-9), cmap="Oranges", density=1.3, linewidth=1.0, arrowsize=0.9)
+    for b, w in ((b1, w1), (b2, w2)):
+        ax.add_patch(Circle(b, 0.09, color="k"))
+        ax.annotate("", xy=b + 0.9*w, xytext=b, arrowprops=dict(arrowstyle="->", color="k", lw=2))
+    ax.set_xlim(-3, 3); ax.set_ylim(-2.4, 2.4); ax.set_aspect("equal")
+    ax.set_xticks([]); ax.set_yticks([])
+    ax.set_title("(b) Moving field energy (blue) carries a current (orange)\nfixed by conservation: what must drag frames")
+    fig.suptitle("Fig 42. The strength 41/16 isn't fixed by the river's rules or by boosts, only by a consistency rule (DRAFT)",
+                 fontsize=13)
+    fig.tight_layout()
+    save(fig, "fig42_rules_fix_strength.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38, fig39, fig40, fig41, fig42):
     f()
 print("figures:", sorted(os.listdir(FIG)))

@@ -19,8 +19,8 @@ Answer: no. With the lag, field energy's own channel makes no pi^2 at all, so 41
    the lag "restores the boost-safe shape" was wrong: the lag removes the time part's pi^2 entirely.
 4. So what's left. In a single field with two-derivative field energy, f(U)(dU)^2, a relabeling of the field makes it
    free, and the identity above makes its lagged self-energy local. Relativity's 41/16 has to come from field energy
-   between different parts of the field: the time part meeting the push (gravitomagnetic, frame-dragging) part, and
-   the twist (tensor, wave) part. That is where relativity's own pi^2 sits.
+   between different parts of the field: the time part meeting the push (the spatial part, relativity's change to the
+   path) and the twist (frame dragging). Round 33 (pi2_channels.py) narrows this further.
 
     python3 lagged_field_energy.py     # writes lagged_field_energy.json (seconds)
 """

@@ -100,6 +100,13 @@ How it got here:
 25. **Field energy with the light-speed lag (Part 26):** once field energy lags, its time part's π² cancels
    exactly, leaving a total time derivative. So field energy acting on itself within one part of the field makes no
    π²; relativity's 41/16 has to come from field energy between the pull, the push and the twist.
+26. **What relativity's π² is, and where it can come from (Part 27):** two orbit numbers (circle energy and
+   periastron advance) pin it to one thing, the two bodies' squared-field overlap felt through their acceleration,
+   weight 41/16. The time part meeting the push at rest can't make it, so it must come from moving meetings with the
+   push or the twist.
+27. **What fixes the strength (Part 28):** not the rules the river has (they give 0) and not boosts or the jet rule
+   (the term is boost-invariant on its own, so its strength is free). A consistency rule does: the field's own energy
+   pulls, pushes and drags like mass at every order. That rule is known to give Einstein's equations, and so 41/16.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -124,7 +131,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**144/144 pass**, about 25 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**152/152 pass**, about 25 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2508,6 +2515,9 @@ The 41 is the same 41 as in the self-force value 41π²/32.
   light-speed lag. If applying rule A to field energy gives 41/16, the river makes relativity's π² from its own pieces.
   *Correction (round 32):* it doesn't. With the lag, field energy's time part gives K = 0 (Part 26), so the 41/16 has
   to come from field energy between the time part, the push and the twist.
+  *Correction (round 33):* the boost-safe K v₁₂² form matches circles but not eccentric orbits: its periastron
+  advance is 369/64 π²ν x³, relativity's 123/32. Relativity's π² is (41/64)π²G³m₁²m₂²(v₁₂² − 3ṙ²)/r³, or
+  equivalently a static (41/64)π²G⁴m₁²m₂²m/r⁴ (Part 27).
 - **Ours, as far as a short search found:** the overlap census as a statement of where π² can come from, the
   static-zero and boost-shape arguments in the river's terms, and K = 41/16 as the fifth rule's target.
 - **Known:** Riesz's formula, the 3PN energy and its π², the self-force value 41π²/32, and the π² terms of the 3PN
@@ -2557,8 +2567,10 @@ accelerations kept and read off at random points (LG5).
   case.) Round 31's hope that rule A applied to field energy gives 41/16 is ruled out.
 - **What it points to:** relativity's π² at the third level has to come from field energy between different parts
   of the field: the time part meeting the push, the time part meeting the twist, and the push meeting the twist. In
-  relativity's own calculation those are the cross terms between its scalar, vector and tensor potentials (Blanchet
-  and collaborators' V, V_i, Ŵ_ij), and that is where its π² sits.
+  relativity's own calculation those are the cross terms between its time part (V), its frame-dragging part (V_i,
+  the twist) and its spatial parts (Ŵ_ij and the rest, the push). Part 27 narrows it to the moving meetings.
+  *(Corrected in round 33: Fig 40 first labelled the push as frame dragging and the twist as waves. In this page
+  the twist is frame dragging and the push is relativity's change to the path; the figure is fixed.)*
 - **Lead?** Yes, narrower. Round 31 left the river one number to find; this round rules out the simplest place to
   find it and names the three places left. The next test is to carry the time part, push and twist of field energy
   across each other, which is most of relativity's third-level calculation in the river's pieces.
@@ -2567,6 +2579,124 @@ accelerations kept and read off at random points (LG5).
 - **Known in spirit:** that a single scalar field's two-derivative self-interaction can be removed by a field
   redefinition, and that the 3PN π² terms come from non-linear couplings of the different potentials (Blanchet,
   Damour and Esposito-Farèse; Damour, Jaranowski and Schäfer; Foffa and Sturani).
+
+## Part 27. What relativity's π² is, and where the river's pieces can make it (round 33)
+
+*DRAFT, round 33 (Nov 28, 2026). Script: `pi2_channels.py` → `pi2_channels.json` (seconds, 60 MB). Checks PI1–PI5.
+Lean: `pi_forms_differ_by_time_derivative`, `adm_pi_circle`.*
+
+![Fig 41](figures/fig41_pi2_channels.png)
+
+*Fig 41. (a) Four ways of writing a π² term, tested on two orbits that coordinates can't change: the energy of a
+circular orbit at a given frequency (blue, relativity 205/96) and the periastron advance of a nearly circular one
+(green or red, relativity 123/32). ADM's three π² terms, a velocity form and a purely static form all give both;
+round 31's K v₁₂² gets circles but not the periastron. (b) Which meetings of the river's pieces can make it: the time
+part on itself (round 32) and the time part meeting the push at rest give none (red); only moving meetings with the
+push or the twist are left (green).*
+
+**Result:** not yet a yes or no on 41/16, but the question is now exact. Relativity's π² is one term with one
+weight, the static meetings can't make it, and the time part alone can't either, so all of it has to come from the
+push and the twist meeting the time part while the bodies move.
+
+### 27.1 What relativity's π² is (PI1–PI3)
+
+Coordinates move a π² term around, but two numbers stay put: the energy of circular orbits at a given frequency,
+−(205/96)π²ν x³ (round 30), and the periastron advance of nearly circular orbits, +(123/32)π²ν x³ (Damour,
+Jaranowski and Schäfer). Three forms give both:
+
+- **ADM's three π² terms:** p²/64, −3(n·p)²/64 and −21/(32 r⁴), as in DJS's Hamiltonian.
+- **A velocity form:** (41/64)π² G³m₁²m₂²(v₁₂² − 3ṙ²)/r³, which is −(41/16)(D₁ + D₂)²F in round 32's notation.
+- **A static form:** (41/64)π² G⁴m₁²m₂²m/r⁴, which is +(41/16)(a·∇)F.
+
+The last two differ by (41/16) d²F/dt², a total time derivative. So relativity's π² is one thing: F, the overlap of
+the two bodies' squared fields (π²/4)G³m₁²m₂²/r₁₂, felt through the bodies' acceleration, with weight 41/16. Round
+31's boost-safe K v₁₂² with K = 41/16 gets the circle energy right but gives a periastron advance of 369/64, not
+123/32 (PI2), so it is a different term that happens to agree on circles.
+
+### 27.2 Which meetings can make it (PI4, PI5)
+
+In the split of Einstein's field that matches the river's pieces (time part = the clock part g₀₀, twist = frame
+dragging g₀ᵢ, push = the spatial part):
+
+- **At rest, the time part meeting the push gives no π².** With the bodies still, the time part enters only through
+  ∂φ·∂φ with the spatial metric, so every meeting has an even number of time-part legs. A third-level static term
+  has five masses, an odd number, so it always contains a direct Newtonian link from body to body: a second-level
+  piece (rational, round 14) times m/r₁₂.
+- **The time part on itself, moving, gives none once it lags** (round 32). Its sum is a multiple of d²F/dt², and
+  relativity's (0, 0, 0, 41/16) is not (PI5).
+- **So all of it comes from moving meetings:** the twist meeting the time part, the push meeting the time part
+  while the bodies move, and the twist meeting the push. These are relativity's G³m₁²m₂²v² terms.
+
+### 27.3 What this means, on its own merits
+
+- **What it shows:** the target is now one exact term, (41/16)(a·∇)F, and it can only come from motion meeting the
+  push or the twist. That narrows "where does the river make relativity's π²" to a short, definite list.
+- **What it doesn't show:** whether the river's own rules for those moving meetings give 41/16. Each moving meeting
+  on its own depends on coordinates; only their sum is fixed. Computing it means carrying the river's push and
+  twist through the bodies' motion at the third level, which is the G³ part of relativity's third-level calculation.
+- **Lead?** Yes. It also corrects round 31: the right target is a term felt through acceleration, not a v₁₂² term.
+  The next test is whether the river's rules for the moving meetings (the jet rule of Part 16 and the lag) fix their
+  strength without input from Einstein's equations.
+- **Ours, as far as a short search found:** the two-invariant test of the π² forms, the even-legs argument in the
+  river's split, and the statement of relativity's π² as (41/16)(a·∇)F.
+- **Known:** DJS's ADM Hamiltonian and its π² terms, the 3PN periastron advance, the Kaluza–Klein split of
+  Einstein's field (Kol and Smolkin), and the use of that split for the 3PN two-body problem (Foffa and Sturani 2011,
+  arXiv:1104.1122).
+
+## Part 28. What fixes the strength of the moving meetings (round 34)
+
+*DRAFT, round 34 (Nov 28, 2026). Script: `rules_fix_strength.py` → `rules_fix_strength.json` (seconds). Checks
+FX1–FX3. Lean: `boost_drops_out`.*
+
+![Fig 42](figures/fig42_rules_fix_strength.png)
+
+*Fig 42. (a) The strength κ of relativity's π² term κ(a·∇)F from each source: the river's four rules and its lagged
+field energy give 0 (red); boosts and the jet rule allow any value (grey); a consistency rule, under which the field's
+own energy pulls, pushes and drags exactly as mass does, gives relativity's 41/16 (green). (b) Two equal bodies on a
+circle at one instant: the field's energy density (blue) and the current that carries it as they move (orange), fixed
+by conservation. That current is what has to drag frames.*
+
+**Result:** no. The river's own rules don't fix the strength. The rules it has give zero, and its symmetry leaves the
+strength free. What fixes it is a consistency rule, and that rule is known to lead to Einstein's equations.
+
+### 28.1 Boosts can't fix it (FX1)
+
+The jet rule is about how a body's field looks when it moves, which at this order means shifting every velocity by
+the same amount. Relativity's term is −κ(D₁ + D₂)²F, and (D₁ + D₂)F = (v₁ − v₂)·∇F doesn't change under that shift,
+because F depends only on the separation. So the term is boost-invariant on its own, and boosts say nothing about κ.
+Boosts do fix shapes that aren't invariant, such as (D₁² + D₂²)F, which is how round 31 got its boost-safe shape.
+They also tie velocity terms to the static terms one level down, but those are plain fractions (round 14).
+
+### 28.2 The rules the river has give zero (FX2)
+
+The four rules give only plain fractions at the third level (round 30), and the time part's lagged field energy gives
+a total time derivative (round 32). So with what it has, the river's κ is 0, not 41/16.
+
+### 28.3 What does fix it (FX3)
+
+A consistency rule: the field's own energy pulls, pushes and drags exactly as mass does, at every order, and is
+conserved. It leaves no free number. Once the energy density is set (rounds 14–15 set it for the time part), conservation
+sets the energy current. That current must drag frames like a mass current (the twist), and the twist's energy then
+pulls in turn, and so on. FX3 checks the first link: for two moving bodies, the density (∇U)²/8π and the current
+−(∂U/∂t)∇U/4π satisfy ∂(density)/∂t + ∇·(current) = 0 wherever there is no mass. Carried through every order, this
+rule is known to give exactly Einstein's equations (Kraichnan 1955; Deser 1970), and so κ = 41/16.
+
+### 28.4 What this means, on its own merits
+
+- **What it shows:** the river can't get 41/16 from its symmetries or from the rules it has. It gets it if and only
+  if it adopts the consistency rule for every piece, which makes its two-body field Einstein's at this level.
+- **What it means for the goal:** at the third level, "getting gravity out of the theory" becomes a sharper question:
+  can the river's own picture (the cube geometry, the flow) give a reason why the field's energy must pull, push and
+  drag exactly as mass does? If it can, 41/16 follows from known results. If it can't, the river needs that rule as
+  an input.
+- **Lead?** Yes, as a question about foundations rather than a calculation. Carrying the consistency rule through
+  the moving meetings by hand would only reproduce relativity's third-level calculation, so it isn't worth doing as
+  a test.
+- **Ours, as far as a short search found:** the river-specific framing: κ = 0 from its rules, κ free under its jet
+  rule, and the consistency rule as the one thing that fixes it.
+- **Known:** the self-consistency (bootstrap) derivation of Einstein's equations from a field whose energy
+  gravitates (Kraichnan 1955; Gupta; Feynman's lectures on gravitation; Deser 1970), and that boost invariance
+  constrains post-Newtonian terms only up to boost-invariant pieces.
 
 ## Verdict, on its own merits
 
@@ -2654,9 +2784,9 @@ accelerations kept and read off at random points (LG5).
 
 ## Files
 
-- `checks.py`: 144 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 152 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level, FE1–FE5 a fifth rule, field energy on field energy, LG1–LG5 field energy with the light-speed lag), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level, FE1–FE5 a fifth rule, field energy on field energy, LG1–LG5 field energy with the light-speed lag, PI1–PI5 what relativity's π² is, FX1–FX3 what fixes its strength), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2714,6 +2844,10 @@ accelerations kept and read off at random points (LG5).
   field-energy terms, the boost check and the size relativity needs; writes `fifth_rule.json` (seconds).
 - `lagged_field_energy.py`: Part 26's lagged field energy: the identity, the lag's Laplacian, the time part, the lag's
   change and their sum as a total time derivative; writes `lagged_field_energy.json` (about 15 seconds).
+- `pi2_channels.py`: Part 27's two-invariant test of relativity's π² forms, its weights in round 32's basis and the
+  even-legs count for static meetings; writes `pi2_channels.json` (seconds).
+- `rules_fix_strength.py`: Part 28's boost check, the rules' κ and the field-energy conservation check; writes
+  `rules_fix_strength.json` (seconds).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2721,8 +2855,8 @@ accelerations kept and read off at random points (LG5).
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the forty figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`, Fig 39 `fifth_rule.json`, Fig 40 `lagged_field_energy.json`).
+- `figures.py`: the forty-two figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`, Fig 39 `fifth_rule.json`, Fig 40 `lagged_field_energy.json`, Fig 41 `pi2_channels.json`, Fig 42 `rules_fix_strength.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2735,8 +2869,9 @@ accelerations kept and read off at random points (LG5).
   `charged_radial_stiffness`, `kn_ratio_three_sources`; round 28 adds `time_part_light`, `push_photon_sphere`,
   `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion`; round 30 adds `third_level_phase_weight`, `pi_floor_phase`;
   round 31 adds `boost_safe_shape`, `time_part_circle`; round 32 adds `lag_cancels_shape`,
-  `lagged_sum_is_time_derivative` (not yet compiled). Rounds 27–28's were checked in sympy; rounds 29–31's have
-  compiled in the library.
+  `lagged_sum_is_time_derivative`; round 33 adds `pi_forms_differ_by_time_derivative`, `adm_pi_circle`; round 34
+  adds `boost_drops_out` (rounds 33–34's not yet compiled). Rounds 27–28's were checked in sympy; rounds 29–32's have compiled in the library (round 32's
+  ported there in grind style, so the library's copy differs from this file's).
   Rounds 18–26's theorems have compiled in the library (as `Topics.SpinningRiver`). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
@@ -2804,3 +2939,5 @@ accelerations kept and read off at random points (LG5).
 | two bodies at the third level: the rules' coefficients rational, relativity's π² (zero only for a test body, self-force slope at the small end), the π²-only floor on LIGO's φ₆ predicted first and held against GWTC-4.0 | **ours** as far as a short search found (TH1–TH5); the 3PN energy and its π², the first law, the self-force 41π²/32, the phase coefficients and the GWTC-4.0 bounds known |
 | a fifth rule, field energy on field energy: the only overlap that makes π² (field squared over field squared), zero at rest, the boost-safe shape putting it in relativity's slot, and K = 41/16 as its size | **ours** as far as a short search found (FE1–FE5); Riesz's formula, the 3PN π² terms and the self-force 41π²/32 known |
 | field energy with the light-speed lag: its time part's π² cancels to a total time derivative (four-term bookkeeping), so 41/16 must come from field energy between the pull, push and twist | **ours** in the river's terms (LG1–LG5); that a single scalar's two-derivative self-interaction can be redefined away, and that the 3PN π² comes from couplings between different potentials, known in spirit |
+| what relativity's π² is: one term, (41/16)(a·∇)F, pinned by the circle energy and the periastron advance; static meetings of the time part and the push can't make it, so it must come from moving meetings with the push or the twist | **ours** in the river's terms (PI1–PI5); DJS's Hamiltonian, the 3PN periastron advance and the Kaluza–Klein split known |
+| what fixes the moving meetings' strength: the river's rules give κ = 0, boosts and the jet rule leave it free, and only the consistency rule (field energy pulls, pushes and drags like mass) fixes it at 41/16 | **ours** in the river's terms (FX1–FX3); the bootstrap derivation of Einstein's equations (Kraichnan, Deser) known |

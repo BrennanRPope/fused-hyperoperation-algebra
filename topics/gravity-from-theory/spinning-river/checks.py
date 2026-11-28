@@ -34,6 +34,8 @@ KN: charge on the spinning hole: which piece of the river gives each charge term
 SH: the black hole's shadow piece by piece (round 28, shadow_split.py -> shadow_split.json).
 FE: a fifth rule, field energy acting on field energy: where pi^2 comes from (round 31, fifth_rule.py).
 LG: field energy with the light-speed lag makes no pi^2 (round 32, lagged_field_energy.py).
+PI: what relativity's pi^2 is, and which meetings of the river's pieces can make it (round 33, pi2_channels.py).
+FX: whether the river's own rules fix the moving meetings' strength (round 34, rules_fix_strength.py).
 TH: two bodies at the third level, where the rules must stop matching (round 30, third_level_predict.py,
     then third_level_compare.py against GWTC-4.0).
 EC: the radar echo past the Sun piece by piece, predicted before comparing (round 29, echo_predict.py ->
@@ -1866,6 +1868,49 @@ check("LG5 the weights on D1^2 F, D2^2 F, D1 D2 F, (a.grad) F read off at random
       "lag (-3/8, -3/8, 0, -1/2), sum (-1/2, -1/2, -1, -1/2), the same as -(1/2) d^2F/dt^2",
       w_lg_["time_part"] == ["-1/8", "-1/8", "-1", "0"] and w_lg_["lag"] == ["-3/8", "-3/8", "0", "-1/2"]
       and w_lg_["sum"] == w_lg_["minus_half_d2F_dt2"] == ["-1/2", "-1/2", "-1", "-1/2"])
+
+
+# ---------------------------------------------------------------- PI: what relativity's pi^2 is, and which meetings can make it (round 33)
+import pi2_channels as pi_  # noqa: E402
+pij_ = json.load(open(os.path.join(HERE, "pi2_channels.json")))
+check("PI1 relativity's pi^2 is pinned by two invariants: ADM's three pi^2 terms (DJS), the form "
+      "(41/64) pi^2 G^3 m1^2 m2^2 (v12^2 - 3 rdot^2)/r^3 and the static (41/64) pi^2 G^4 m1^2 m2^2 m/r^4 all give "
+      "circle energy -(205/96) pi^2 nu x^3 and periastron advance +(123/32) pi^2 nu x^3",
+      all(pi_.circle_energy(*pi_.FORMS[k]) == pi_.GR_E and pi_.periastron(*pi_.FORMS[k]) == pi_.GR_K
+          for k in ("ADM (DJS, from -H)", "harmonic-like", "static only")))
+check("PI2 round 31's boost-safe K v12^2 with K = 41/16 gets circles right but the periastron wrong (369/64, not 123/32)",
+      pi_.circle_energy(*pi_.FORMS["round 31 boost-safe K"]) == pi_.GR_E
+      and pi_.periastron(*pi_.FORMS["round 31 boost-safe K"]) == sp.Rational(369, 64))
+gw_ = pi_.gr_weights()
+check("PI3 in round 32's basis relativity's pi^2 is -(41/16)(D1 + D2)^2 F, or equally +(41/16)(a.grad)F: the two differ "
+      "by (41/16) d^2F/dt^2, and the first is (41/64) pi^2 (v12^2 - 3 rdot^2)/r^3",
+      gw_["harmonic_like"] == ["-41/16", "-41/16", "-41/8", "0"] and gw_["static"] == ["0", "0", "0", "41/16"]
+      and gw_["differ_by_41_16_d2F_dt2"] and gw_["harmonic_form_matches_v2_minus_3rdot2"])
+check("PI4 the time part meeting the push at rest: every static vertex has 0 or 2 time-part legs, so an odd number of "
+      "masses (five, the third level) forces a direct body-to-body link; the static third level is second-level pieces "
+      "times m/r12, with no pi^2",
+      pi_.static_parity() == {2: True, 3: False, 4: True, 5: False})
+check("PI5 what the moving meetings must supply is not a time derivative: relativity's (0, 0, 0, 41/16) is not a "
+      "multiple of d^2F/dt^2's (1, 1, 2, 1), while the lagged time part alone gives a multiple of it (round 32)",
+      sp.Matrix([[0, 0, 0, sp.Rational(41, 16)], [1, 1, 2, 1]]).rank() == 2
+      and pij_["time_part_alone_lagged_K"] == 0)
+
+
+# ---------------------------------------------------------------- FX: do the river's rules fix the moving meetings' strength (round 34)
+import rules_fix_strength as fx_  # noqa: E402
+fxj_ = json.load(open(os.path.join(HERE, "rules_fix_strength.json")))
+bc_fx_ = fx_.boost_checks()
+check("FX1 boosts can't fix relativity's strength: (D1 + D2)^2 F is unchanged when both velocities shift by u (F "
+      "depends only on y1 - y2), while a lopsided (D1^2 + D2^2) F changes; so kappa = 41/16 is free under the jet rule",
+      bc_fx_["relativity_form_boost_invariant"] and bc_fx_["lopsided_form_changes"])
+check("FX2 the rules the river has give kappa = 0: only plain fractions at the third level (round 30) and a total "
+      "time derivative from the lagged time part (round 32)",
+      fxj_["kappa_four_rules_round30"] == 0 and fxj_["kappa_lagged_time_part_round32"] == 0
+      and "rational" in fxj_["round30_claim"])
+check("FX3 the first link of the consistency rule: for two moving bodies the field-energy density (grad U)^2/8pi and "
+      "current -(dU/dt) grad U/4pi obey d/dt(density) + div(current) = 0 off the bodies, so the current (what must drag "
+      "frames) is fixed by the density with no new number",
+      fx_.conservation_check())
 
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
