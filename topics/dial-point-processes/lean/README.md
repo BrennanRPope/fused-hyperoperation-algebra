@@ -1,5 +1,7 @@
 # Lean: DialPointProcesses
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 - File: `DialPointProcesses.lean`, namespace `DialPointProcesses`, imports `FusedAlgebra.Base` only.
 - 40 theorems (38 on the topic, 2 small helpers: `prodL_zero_of_mem`, `sq_nonneg'`).
 - Compiles clean with Lean 4.37.0-rc1, core only (no mathlib), no `sorry`.

@@ -1,5 +1,7 @@
 # Riemann, round 5: the dial pairs we had not tried, plus light and flux tubes (DRAFT)
 
+> **Names:** some words or symbols on this page (fused, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Affine Composition Theory, built on Fused Hyperoperation Algebra. DRAFT, Nov 26 2026. Earlier rounds: [round 1](../README.md), [the elliptic object](../elliptic-object/README.md), [round 3](../round3/README.md), [round 4](../round4/README.md).*
 
 ## The answer

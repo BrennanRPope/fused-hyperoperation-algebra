@@ -1,5 +1,7 @@
 # DRAFT · The Yang–Mills mass gap through Affine Composition Theory
 
+> **Names:** some words or symbols on this page (rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 26, 2026. Brennan asked (timeline): "let's look at it from a fresh perspective ... without looking at existing work, and then a second pass with the existing work." Background from the voice call, recorded as his words: "that sounds like rungs to me. This idea of having these gaps ... or phase changes."*
 
 Checks: `checks.py` → `checks_output.txt`, **46 / 46 pass** (numpy, scipy, mpmath, sympy; 14 s). The first run had 10 failures, all from my own thresholds or claims, each fixed by correcting the claim, never by loosening a real test (list in section 4). Pictures: `figures.py` → `figures/`. Lean: `lean/YangMillsGap.lean`, 10 statements, **not compiled** (no Lean toolchain in this container); every statement checked true by `lean/check_statements.py`.

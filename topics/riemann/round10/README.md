@@ -1,5 +1,7 @@
 # DRAFT: Round 10, the repo's prime results against the zeros, the prime lifecycle, and hyper integrals (Nov 27, 2026)
 
+> **Names:** some words or symbols on this page (fused, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Not a lead.** Every prime result in the repo that had not yet been tried on the Riemann zeros either restates the
 sieve or reaches the zeros by a road that is already in print (Montgomery's pair correlation, Rubinstein–Sarnak's
 bias, Cramér's gaps). The life of a prime as N grows runs in six stages, each drawn below, and each matches the

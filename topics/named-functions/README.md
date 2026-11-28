@@ -1,5 +1,7 @@
 # DRAFT · Named functions: the hypernatural pair, what each shape carries, and the names that already exist
 
+> **Names:** some words or symbols on this page (fused, rung, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan (timeline, Nov 26): find "really useful functions like the supernatural logarithm", where "functions" is loose and "could be an operation with a generator", and see "if there's any other ones that could be identified and named"; "our system needs to be coherent and … probably will have some functions and operations that are unique"; "check the literature to see if there's already a name" for the inverse, and whether "natural exponent" is a real term. Then: the supernatural logarithm is renamed the **hypernatural logarithm**, and "is it also a concept that exists in the other shapes?"
 Builds on `operations-catalog/` (23 moves, already named; not repeated here), `fractional-rungs/e-every-height/` (the log itself), `polar-recast/` section on the super log, `why-i/cayley-klein/`, `combinatorics/`, `affine-names/` (dial letters k, d, p, C; curvature is the reading −Δ/4).

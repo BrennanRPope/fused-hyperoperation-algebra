@@ -1,5 +1,7 @@
 # DRAFT: Why do orbits' velocities run straight in the dial geometry? (Nov 26, 2026)
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked by Brennan (voice call), answering "should I look for a reason in the theory why orbits follow those straight
 lines? That would turn the 1/r² link into a real derivation": "That is what I want to look at."
 

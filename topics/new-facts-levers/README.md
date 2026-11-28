@@ -1,5 +1,7 @@
 # New facts as levers: quantum gravity first, then the Millennium problems (DRAFT)
 
+> **Names:** some words or symbols on this page (fused, wall, twist, trace monoid, circle degree) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Why this page exists.** Brennan's design principle (Nov 26, 2026, his words): "if we discover a new fact that is not in
 print, we should try to apply it to our goals, the main goal being quantum gravity and the theory of everything." He
 asked for the k-dial survey's corner-sum threshold to be tried this way, then the other facts we found, and then the

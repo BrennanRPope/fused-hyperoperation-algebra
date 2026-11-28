@@ -1,5 +1,7 @@
 # DRAFT · The elliptic modulus: a pendulum dial between our round side and our relativity side
 
+> **Names:** some words or symbols on this page (⊕, fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra (repo: fused-hyperoperation-algebra).
 Asked for by Brennan (timeline, Nov 26, voice): work on the elliptic functions lead reopened in
 [`closed-leads-fresh-look/`](../closed-leads-fresh-look/) (F3), and "just explore … just trying out the model and maybe seeing if

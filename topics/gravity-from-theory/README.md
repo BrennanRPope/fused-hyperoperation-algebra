@@ -1,5 +1,7 @@
 # DRAFT: Gravity from the theory: frame dragging and the inverse-square law (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (⊕, mult-add, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked by Brennan (voice call): the frame-dragging lead ("Yeah"), and Newton's inverse-square law, "I feel like we
 should be able to derive that also from this theory." Also: "I'm kind of wondering if frame dragging might be related
 to the speed of light somehow."

@@ -1,5 +1,7 @@
 # The theory's shape: the Boolean lattice (the n-cube)
 
+> **Names:** some words or symbols on this page (mult-add, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Verdict.** The shape already has a name. Every term of a chain a₁ ∘ₖ a₂ ∘ₖ … ∘ₖ aₙ sits on one corner of the
 **n-cube**, which order theory calls the **Boolean lattice Bₙ** (the subsets of n things, ordered by inclusion). At
 n = 4 it is the tesseract. Nothing needs coining. The dials do not change the shape: they put a weight on each layer.

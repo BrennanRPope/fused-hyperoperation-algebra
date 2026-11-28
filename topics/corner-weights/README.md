@@ -1,5 +1,7 @@
 # Corner weights: size, pairs, and where the pairs come from
 
+> **Names:** some words or symbols on this page (rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 25, 2026. 54 of 54 checks pass (`checks.py`). Parts marked **DRAFT** are not finished. Pushed Nov 25. The Lean file (`lean/CornerWeights.lean`, 12 theorems) compiles and is in the shared library as `FusedAlgebra.Topics.CornerWeights`.*
 
 ## Verdict

@@ -1,5 +1,7 @@
 # DRAFT · Geometries from number theory, beyond toric, as ways to bend the hypercube
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Asked for by Brennan on a voice call: look at the geometries used in number theory, like toric geometry
 "but different than that", "to maybe get an idea of other ways to deform our hypercube."
 Checks: `checks.py` → `checks_output.txt`, **41 of 41 pass** (numpy, scipy, sympy, mpmath).

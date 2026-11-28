@@ -1,5 +1,7 @@
 # DRAFT · Gram's law and prime drift on the torus and the Klein bottle
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Affine Composition Theory, built on Fused Hyperoperation Algebra. DRAFT, Nov 27 2026. Follows [Riemann round 8 §3a](../round8/README.md) (the twist takes the torus's spectral zeros off the line) and the [Klein-bottle flow pages](../../klein-flow/README.md). Gram's law background: [round 9 §6](../round9/README.md) and its [literature table](../round9/gram-literature.md).*
 
 Asked for by Brennan ("Yes" to running the Gram test and the prime-drift picture on the torus and the Klein bottle as a task of its own). The guess going in: the Klein bottle's zeros left the line, so its Gram intervals should often come up empty, and its count should drift.

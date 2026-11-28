@@ -1,5 +1,7 @@
 # DRAFT · How quantum paths add up to everyday laws, and path sums as database aggregates
 
+> **Names:** some words or symbols on this page (⊕, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Asked for by Brennan on a voice call ("is there any way to use our paths to show how the quantum
 mechanical effects aggregate into real world sized laws"), then widened with his yes to path sums as aggregate
 functions ("is this already a whole branch of math?"). Checks: `checks.py` → `checks_output.txt`, **36/36 pass**

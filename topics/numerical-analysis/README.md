@@ -1,5 +1,7 @@
 # Numerical analysis through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 ## Files
 - index.html: the page (self-contained; figure data from page_data.json inlined).
 - checks.py -> checks_output.txt: 41 checks on real float64 (math.fma, log1p, expm1) against exact

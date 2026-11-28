@@ -1,5 +1,7 @@
 # Hidden dials of a half box
 
+> **Names:** some words or symbols on this page (mult-add, rung, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Names (Nov 26, see `affine-names/` section 6): dimension is written D (d is the curvature dial); the per-element dial t is the **odds**; the zoom r is the **similarity ratio**.*
 
 **Result.** Many fractals share dimension ½. Six known dials tell them apart: zoom, placement,

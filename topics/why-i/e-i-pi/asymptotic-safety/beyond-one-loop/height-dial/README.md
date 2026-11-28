@@ -1,5 +1,7 @@
 # Does e at a different rung height close the 4.5% gap?
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Verdict: no.** Swapping e for e at height s can hit 23/11, at s* = 1.101 (e_s* = e^(23/22) = 2.8447),
 but that is one free number matching one number. With s* held fixed it gets no second published
 number right: Bonanno–Reuter is off by 11%, two loops by 26%, the full Einstein–Hilbert real part by 42%,

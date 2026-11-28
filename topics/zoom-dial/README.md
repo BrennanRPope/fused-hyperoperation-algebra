@@ -1,5 +1,7 @@
 # The zoom dial (FHA 1.0 checklist, item 2) — Nov 25, 2026
 
+> **Names:** some words or symbols on this page (mult-add, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Fills the one gap the fractal-dials page found ("Hidden dials of a half box", math-theory/fractal-dials/): the circle operation ∘₁ (called mult-add before 1.0) had dimension, weights, branching growth and a cousin of wobble, but no zoom (size) dial, so dimension could only be put in by hand.
 
 ## Result in plain words

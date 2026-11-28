@@ -1,5 +1,7 @@
 # Wall shapes (DRAFT)
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Status: DRAFT, Nov 27 2026.** Brennan asked: gather every wall the model has hit, and see whether the shapes of the walls hint at a new idea.
 
 ## The answer first

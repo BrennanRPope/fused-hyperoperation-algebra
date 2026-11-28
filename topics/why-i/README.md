@@ -1,5 +1,7 @@
 # Why does quantum mechanics need i? The twist, path integrals, and what existing work says (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Path integrals, first (Brennan's naming question).** "Path integrals are a special case of the weighted circle operation" is **true in a weaker, precise sense, and false as a blanket claim.** True: chaining the weighted circle operation (called mult-add before 1.0) over many short steps, with order kept, *is* the product integral (Volterra 1887), the time-ordered exponential behind every path integral; expanding that chain is literally a sum over paths; the slicing error is led by the twist; and a path's accumulated twist is its signed area, which becomes Feynman's p·dq phase once size is kept. Set the dial to k = −i/ħ and the chain of energy-times-time steps converges to the quantum propagator; set it real and you get the heat kernel (Feynman–Kac). Not supplied by the framework: the Hamiltonian or action, the size of ħ, and a rigorous measure on paths in real time. So the honest headline is "both are whole-chain compositions; Feynman's path integral is the weighted circle chain at an imaginary dial, with the dynamics put in" (section 5). Every piece is known; the dial reading is ours.
 
 

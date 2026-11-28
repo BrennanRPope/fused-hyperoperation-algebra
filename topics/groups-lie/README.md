@@ -1,5 +1,7 @@
 # Group theory and Lie groups through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Files
 - index.html: the page (self-contained; slide-rule ruler figure, landscape map, dial-as-dilation, finite clock).
 - checks.py → checks_output.txt: 59 of 59 checks pass (sympy, mpmath, numpy).

@@ -1,5 +1,7 @@
 # Bridge survey: every place the theory lands on an established field
 
+> **Names:** some words or symbols on this page (fused, rung, wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 DRAFT, Nov 26, 2026. Affine Composition Theory (formerly Hypercube Composition Theory; a ∘ₖ b = a + b + k·ab, with the curvature dial d, formerly the plane dial).
 
 **The result in two sentences.** Across all the pages there are about 739 distinct bridges into 20 fields: 338 land on results the write-ups name as known, 247 are our own reading of known pieces, 92 were tested and failed, and 62 are marked possibly new, of which about 20 join two fields (the rest are new small results inside one field). Grouping the results by shape turned up 16 more bridges no page had named, and the strongest bridge the map predicts but nobody has checked is that Hirota's soliton corner weights should pass the same "has a geometry" test as holographic entanglement (P1 below).

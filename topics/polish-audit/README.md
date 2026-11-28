@@ -1,5 +1,7 @@
 # DRAFT · Polishing step on every number search (Nov 26)
 
+> **Names:** some words or symbols on this page (rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked for by Brennan: "add a polishing step ... to all of our methods, as long as the polishing step doesn't take too
 much effort from the computer." Each search that stopped at an approximate answer got a cheap refinement (Newton steps,
 a tight re-run from the found point, or a closed-form check), with its cost recorded. Machine note: the polish scripts are numpy-only;

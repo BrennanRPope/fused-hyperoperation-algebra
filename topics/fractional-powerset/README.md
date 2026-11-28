@@ -1,5 +1,7 @@
 # Fractional power set: a dial between X and P(X) (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Task: "Find a fractional power set for any in-between rung" (Brennan's ask: half as a first test, really a family P^t for all t, P^s∘P^t = P^{s+t}, P^1 = P, by size). Also maps grades of the axiom of choice against candidate levers (rung, q, twist, flow position, symmetry group).
 
 Page: published as an artifact (see PAGES-INDEX.md, "fractional power set"); source index.html here.

@@ -1,5 +1,7 @@
 # Mathlib port: what it takes to merge (FHA 1.0 checklist, item 3) — Nov 25, 2026
 
+> **Names:** some words or symbols on this page (⊞, mult-add, fused, Tate q and E₄, E₆) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 > **Update (Nov 27): a Mathlib-candidates library.** `lean-library-mathlib/MathlibCandidates/` holds files written in Mathlib's own style to offer to Mathlib later, starting with the Tate curve (asked for by Brennan). CI builds it as a default target and `Check.lean` checks its axioms. Still no pull request to Mathlib; the Tate curve overlaps Buzzard's FLT project and should be merged with it first.
 >
 > **Update (Nov 25, ~22:30 UTC): merged into main.** Brennan asked for everything on main, so `mathlib-port` was merged and main's CI now builds `lean-library-mathlib/` (the port plus the proof-complexity study) on every push. Still no pull request to Mathlib.

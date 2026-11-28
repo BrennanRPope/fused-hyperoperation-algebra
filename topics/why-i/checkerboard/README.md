@@ -1,5 +1,7 @@
 # Feynman's checkerboard and Kac's telegraph as one weighted-circle chain
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Part of topics/why-i.
 
 **Verdict.** Feynman's checkerboard and Kac's telegraph are the same weighted-circle chain of turn steps. Set the dial to minus one and you get Kac's random walk. Set it to minus i and you get Feynman's checkerboard, with every path counted exactly once at every step size. As the steps shrink, the chain goes to the telegraph equation at one setting and to the Dirac equation at the other. At long times it goes to diffusion at one setting and to Schrödinger's free particle at the other. Those limits are published results. What's new here is writing both models as one chain.

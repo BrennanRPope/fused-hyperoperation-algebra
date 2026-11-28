@@ -1,5 +1,7 @@
 # DRAFT · Union-find, the inverse Ackermann function and the Lee–Yang circle
 
+> **Names:** some words or symbols on this page (⊕, fused, rung, α (inverse Ackermann)) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra. Follows
 [chaos-composition](../chaos-composition/README.md) and the data-structures question. Asked for by Brennan: "Yes" to
 studying the union-find and Ackermann link, then "It could be a tool for the yang lee proof", then "Please work on it".

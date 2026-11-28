@@ -1,5 +1,7 @@
 # DRAFT: Which parts of the cube can carry a weight? (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result in two sentences.** Besides corners, the cube's edges, square faces, higher faces, paths, orientations and Möbius function can all carry weights, but most turn out to be either the corner weights in disguise or the dial k we already have. The one genuinely useful new place is the **square face as a "reordering cost"**: if inputs commute only up to a factor q_ij per pair, the plain circle operation (called mult-add before 1.0; still one associative law) produces exactly the soliton corner weights ∏ q_ij, which is the known vertex-operator picture of solitons and bears directly on the pair-weights stream.
 
 Brennan's question (voice call, Nov 25): "we have this idea of corner weights. Are there any other weights within the structure that could be identified as well?" He said yes to checking edges, faces, paths and the Möbius function.

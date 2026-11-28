@@ -1,5 +1,7 @@
 # Reflection positivity for the framework (Nov 27, 2026)
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 DRAFT. Part of topics/why-i.
 
 **Answer.** Both, split by the dial. On the real dial axis, reflection positivity **must hold** for any chain of symmetric (reversible) slices. Mirroring through a site it holds at every real k. Mirroring across a slice it holds exactly when every slice multiplier 1 + kεE is nonnegative. With the framework's rewind slices that becomes, at every step size, exactly the positive-energy condition k·E ≤ 0. Off the real axis it **cannot hold**. For any Im k ≠ 0 the simplest pairing ⟨θF, F⟩ is not even a real number, and at Feynman's dial k = −i/ħ it is a negative number. Osterwalder–Schrader is the bridge between the two. Turning the dial from the real axis to the imaginary one brings in i as **one scalar shared by every Hamiltonian**, and that is exactly the paper's assumption (A4). So the answer strengthens the paper. For any theory that has a reflection-positive Euclidean side, (A4) is derived rather than assumed. Real quantum theory with all symmetric observables can't be the Wick rotation of any reflection-positive family.

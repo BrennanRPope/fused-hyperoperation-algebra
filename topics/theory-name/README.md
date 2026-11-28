@@ -1,5 +1,7 @@
 # DRAFT · A name for the whole theory, now that the cube is one shape among many
 
+> **Names:** some words or symbols on this page (fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 
 **Decision (Nov 26, 2026): Brennan picked Affine Composition Theory** ("Affine composition theory."). It replaces the interim name Hypercube Composition Theory (Nov 25), which replaced Fused Hyperoperation Algebra. Then, the same day, to keep "fused": Fused Hyperoperation Algebra stays as its own layer, and the theory is built on it (`LAYERS.md`).

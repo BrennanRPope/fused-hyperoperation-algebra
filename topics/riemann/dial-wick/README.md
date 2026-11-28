@@ -1,5 +1,7 @@
 # Dial-Wick: turn a dial into the shock picture, answer there, turn back (DRAFT)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result.** One of our dials does it: the **d dial** (curvature dial). Turning d to −d is a Wick turn (x → i x, tan addition ↔ tanh addition). On ζ's zeros it is a quarter turn of the plane, and it makes the shock picture **physical**: backward heat becomes forward heat, viscosity −1 becomes +1, and the Burgers field has no poles on the real line, at every heat time. In that frame RH says one thing: **all the shock field's poles sit on one vertical line**, the centreline. In physics language, a "spin" whose values have weights Φ(u) obeys the Lee–Yang rule. Turning back is exact, because the quarter turn is a symmetry.
 
 It does **not** settle RH. The turned question is Newman's 1976 Lee–Yang form of RH, which is still open. Being physical turns out to be automatic (it follows from Φ > 0) and holds whether RH is true or false, so it carries no information back. **Not a lead.** What it gives is the right physical picture: rewinding the heat flow = making the spin's coupling antiferromagnetic, and Λ = how much antiferromagnetic coupling ζ's spin can take before it loses the Lee–Yang property.

@@ -1,5 +1,7 @@
 # The dial map, and can the framework make gravity a forced step?
 
+> **Names:** some words or symbols on this page (wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Part of topics/why-i.
 
 *Notation: κ₁ and κ₂ are the Cayley–Klein labels of the literature, and κ in κ-Poincaré is its Planck-energy scale. The dials keep their letters k and d (see `affine-names/`).*

@@ -1,5 +1,7 @@
 # Proof shape gallery
 
+> **Names:** some words or symbols on this page (rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Every theorem in ../lean-library (1,485 on Nov 25) drawn as a circle-operation shape and
 grouped by shape alone. Page: https://claude.ai/artifact/NWREn3Fbw1i5reUMrYaAXZ (private).
 

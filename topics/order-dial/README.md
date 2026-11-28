@@ -1,5 +1,7 @@
 # Composition, order and the collection laws (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, fused, rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Names (Nov 26, see `affine-names/` section 6): the twist is the **holonomy** ω, a reading: the turn picked up round a loop, measured here by the oriented area a·e − b·c. The second map's shift is e (not d, which is the curvature dial). In the compounding example, r and d are finance's rate and deposit.*
 
 **Result.** Composition is a sound frame for the whole framework: the circle operation ∘₁ (called mult-add before 1.0) is exactly composition of stretches that share one centre (the wall −1/k), and order starts to matter the moment two maps have different centres, by an amount that is always an oriented area (a wedge). The route to quantum mechanics is real but not forced: compose shifts with multiplications on *functions* and you get the Heisenberg group, whose phase is the same corner area ab; the i and the size ħ have to be put in by hand.

@@ -1,5 +1,7 @@
 # Similarity-ratio survey: which proved laws slide into one another (DRAFT)
 
+> **Names:** some words or symbols on this page (fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/4bHMeUmaby3Ynms4fxfs1m
 
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).

@@ -1,4 +1,7 @@
 # Electromagnetism through the circle operation (Nov 25, 2026)
+
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/A71iTBsgUHZSkcbNUrEacY (slug 49b926a7-cb25-47e8-9c1f-da8a404822e9, version 1795626602-cf6b;
 source index.html, built by build_page.py from figures/*.svg and results.json)
 

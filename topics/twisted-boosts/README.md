@@ -1,4 +1,7 @@
 # Twisted boosts: non-collinear boosts in the circle-operation picture (Nov 25, 2026)
+
+> **Names:** some words or symbols on this page (⊕, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/3ozW93quvmikMu5TGaKuw4 (source index.html)
 - checks.py: 36/36 pass (checks_output.txt). Exact sympy algebra; numpy against 4x4 Lorentz matrices (2000 random pairs), SO(3) for the sphere end, triangle areas, Thomas precession by composing 20,000 small boosts.
 - lean/TwistedBoosts.lean: 32 theorems, core Lean, imports Base, Thermodynamics, Relativity. Compiled in the shared library as Topics/TwistedBoosts (clean build 1,616 theorems, 54 modules); one proof step fixed there. Statements checked true on 300 random rational cases.

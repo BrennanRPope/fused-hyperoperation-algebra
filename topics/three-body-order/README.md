@@ -1,5 +1,7 @@
 # DRAFT · Three bodies, looked at fresh with our own order tools
 
+> **Names:** some words or symbols on this page (fused, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan on Nov 26: "we do have a way to deal with order in our model so I feel like we should utilize
 that ... I almost think the three body problem analysis we did was so much based on the other work that we forgot to

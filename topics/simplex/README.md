@@ -1,5 +1,7 @@
 # The simplex as its own shape (DRAFT)
 
+> **Names:** some words or symbols on this page (⊕, fused) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "let's look at the simplex as well. And use that as another shape that we try to do things with."
 Builds on `polar-coordinates/` and `polar-recast/` and does not repeat them. Checks: `checks.py` → `checks_output.txt`,

@@ -1,5 +1,7 @@
 # The wall at Re s = 0, and the Lee–Yang comparison (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Follow-up to the dial survey. Z_k(s) = ∏_p (1 − k·p^−s)^(−1/k) = ∏_N ζ(Ns)^(M(k,N)/k),
 with M(k,N) the aperiodic necklace counts.
 

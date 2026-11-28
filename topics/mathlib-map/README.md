@@ -1,5 +1,7 @@
 # Mathlib map: what Mathlib already has that is ours
 
+> **Names:** some words or symbols on this page (wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Verdict.** Mathlib already holds our law at k = 1: it is Mathlib's *circle operation*
 `x ∘ y = x + y + xy` (`PreQuasiregular`, `IsQuasiregular`, `quasispectrum`), and about 1,550 theorems
 in 53 files are built directly on it (Unitization, the Neumann series, spectrum theory, the whole

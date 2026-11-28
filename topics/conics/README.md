@@ -1,5 +1,7 @@
 # DRAFT · Where every conic section lives in our framework
 
+> **Names:** some words or symbols on this page (fused, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: look at all of the conic sections, not just one, since "the conics may already be hiding in the
 catalog as the dial itself."

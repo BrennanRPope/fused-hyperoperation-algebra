@@ -1,5 +1,7 @@
 # Fractional steps of the height flow: continuous, rational, or whole only? (DRAFT)
 
+> **Names:** some words or symbols on this page (rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result in one sentence:** only whole steps work; the rung step has no continuous-time version and no half,
 third or other fractional version that stays a real set of chances.
 

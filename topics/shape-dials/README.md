@@ -1,5 +1,7 @@
 # DRAFT · Shape dials: every angular shape as a first-class citizen, reached by dials
 
+> **Names:** some words or symbols on this page (fused, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra). Asked for by Brennan:
 "Yes I want these shapes as first class citizens in the model and reaching them as simple dials", then "So is this
 the sixth fundamental dial?" and "I'm unclear on how this will yield the higher order shapes as a dial", and then

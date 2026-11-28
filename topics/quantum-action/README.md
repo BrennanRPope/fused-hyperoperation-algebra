@@ -1,5 +1,7 @@
 # DRAFT · Quantum action: what action really is, seen through our shapes, dials and swap rule
 
+> **Names:** some words or symbols on this page (⊕) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 26, 2026. Asked for by Brennan on a voice call: "let's do a deep dive in the concept of action and see how we can model
 it using any of these shapes, basically our entire model, and see if there's any way to get a clearer picture of what
 action really is." He then asked to call it **quantum action** and to fold in quantum gravity ("I'm kind of wondering if

@@ -1,5 +1,7 @@
 # The repetition dial (FHA 1.0 checklist, item 1) — Nov 25, 2026
 
+> **Names:** some words or symbols on this page (mult-add, rung, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Question (Brennan): the framework isn't complete "until we figure out how repetition can fall out of a greater framework". A separate dial is fine "if that's what makes sense". Repetition here means how many times one element may be used, the leftover found on the size-dial page (circle-operation counts each element at most once). The rung kind of repetition (adding repeated is multiplying) is a different thing and already lives in rung flow.
 
 ## Result in plain words

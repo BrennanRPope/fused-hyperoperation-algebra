@@ -1,5 +1,7 @@
 # DRAFT · The dial map: where the theory sits in the order of maths, and what each dial drives
 
+> **Names:** some words or symbols on this page (fused, rung, wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra.
 Asked for by Brennan: one map of the dials and the results each one drives, to answer two questions from the night
 before: is the fused algebra really used, and how did Rulecraft turn into a math lead. He then added: "I want the map to

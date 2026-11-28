@@ -1,5 +1,7 @@
 # DRAFT: The spinning river, and every idea of a frame (Nov 26, 2026)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked by Brennan (voice call). He said "Yeah, that is a, a good idea" to giving each river cell a rotation as well as a
 velocity. He added: "And I'd also like to figure out if there's any other concept of frame. I feel like procession is
 where we started talking about frame dragging at first." He then said "Yes" to widening the search to frame-dragging

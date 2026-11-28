@@ -1,5 +1,7 @@
 # DRAFT: What the known tools do for the Riemann hypothesis (Nov 27, 2026)
 
+> **Names:** some words or symbols on this page (fused, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Every one of the five known pieces applies to the zeros, and one is worth following as a tool: the rewind of the
 heat flow, which turns each pair of zeros into a number that says how close RH comes to failing there.** None of the
 five proves RH, because each reduces it to the same open step: showing the zeros sit exactly at the border Λ = 0.

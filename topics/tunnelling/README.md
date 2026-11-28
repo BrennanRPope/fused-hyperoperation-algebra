@@ -1,5 +1,7 @@
 # DRAFT · Tunnelling, worked up with our own tools
 
+> **Names:** some words or symbols on this page (fused, rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 26, 2026. Brennan asked to work on the tunnelling lead that `closed-leads-fresh-look/` (F4) reopened, and to
 explore it freely: "just trying out the model and maybe seeing if there's anything that comes of it".
 Checks: `checks.py` → `checks_output.txt`, **37/37 pass**; rewinds: `rewind_checks.py` → `rewind_checks_output.txt`,

@@ -1,5 +1,7 @@
 # DRAFT · Shapes beyond the hypercube: which ones close our gaps?
 
+> **Names:** some words or symbols on this page (rung, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 26, 2026. Asked for by Brennan on a voice call: "is it possible that different shapes other than the hypercube
 could help bridge some of the gaps that we're looking at?" He said yes to looking into it.
 Checks: `checks.py` → `checks_output.txt`, **30 of 30 pass** (numpy, scipy, sympy, mpmath). Pictures: `figures.py` →

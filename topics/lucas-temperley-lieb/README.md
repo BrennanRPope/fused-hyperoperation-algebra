@@ -1,5 +1,7 @@
 # The silent layers of the Lucas weights are the Temperley–Lieb points (DRAFT)
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result in one sentence:** yes, exactly: a Lucas weight goes silent at the same dial settings where the
 Temperley–Lieb loop diagrams lose their positive inner product, the Beraha points k²/d = 4cos²(πj/m), and the
 positivity threshold 2cos(π/(n+1)) is the same number on both sides.

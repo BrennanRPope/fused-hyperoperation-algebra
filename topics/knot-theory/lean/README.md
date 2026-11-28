@@ -1,5 +1,7 @@
 # KnotTheory.lean
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 - 45 theorems, core Lean 4.37.0-rc1 (no mathlib), no `sorry`.
 - Compiles clean against the shared library build (/tmp/lib/build copy):
   `LEAN_PATH=/tmp/lib/build lean lean/KnotTheory.lean`. `#print axioms` on tangle_figEight,

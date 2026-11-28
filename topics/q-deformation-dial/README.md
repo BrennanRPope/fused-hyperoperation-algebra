@@ -1,5 +1,7 @@
 # DRAFT: Is the plane dial's d Hoffman–Ihara's q-deformation? (Nov 27, 2026)
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result in two sentences.** No: Hoffman–Ihara's q is our line dial's k (q = 1 + k), and their letter product's
 correction term is exactly the line law, so no q-deformation with number-valued letters can produce d. The plane
 dial's d does have a known home: it switches on a **second base**, and the plane law is the addition law of

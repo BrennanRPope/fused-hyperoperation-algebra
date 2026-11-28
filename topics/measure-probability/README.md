@@ -1,5 +1,7 @@
 # Measure theory and probability through circle-operation
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: index.html (self-contained). Checks: checks.py → checks_output.txt (38/38 pass). Lean: lean/MeasureProbability.lean (36 theorems, compiles clean), lean/README.md.
 
 ## Findings

@@ -1,5 +1,7 @@
 # DRAFT · Blow-up, outside pressure and a twisted heat time, mapped onto the zeros' backward flow (Nov 27, 2026)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked for by Brennan on a voice call, as three linked ideas:
 
 1. Forward-time models where heat piles up at a point might show how ζ's heat flow behaves run backward.

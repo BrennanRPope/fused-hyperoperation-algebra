@@ -1,5 +1,7 @@
 # Round 7: can twisting the hidden space make left-handed matter?
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows rounds 1–6 (the parent folder `../`, `../round5/`, `../round6/`). Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, under 1 s; numpy), numbers in `results.json`. Picture: `figures.py` → `figures/f14`. Colour key: **blue = computed here, orange = marks and the other handedness, grey = reference**.*
 
 ## Verdict first

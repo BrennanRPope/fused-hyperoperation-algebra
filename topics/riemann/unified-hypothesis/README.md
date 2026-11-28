@@ -1,5 +1,7 @@
 # Riemann: one hypothesis for the Lee–Yang p-ball rule and RH, and the hunt for a real-rooted parent (DRAFT)
 
+> **Names:** some words or symbols on this page (fused) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Not a lead.** The unified statement holds up, but it is Newman's framework (1974–76), not something new: every kernel gets one number, the rewind constant Λ, and "all zeros real" means Λ ≤ 0. The p-ball kernels sit strictly below 0 (from −8.5 to −0.07) where the rule holds and jump straight to +∞ where it breaks. Riemann's Φ sits somewhere in [0, 0.2], and RH says exactly 0. Every real-rooted parent we tried for Φ either loses real zeros or turns out to be RH restated. The 5D space needs three inputs (Re z, Im z and heat time), plus the number of coupled spins as a genuine fourth. The spin field turns out to be z itself, and pressure is the height, not an input. A bath keeps the zeros on the line only at half filling, k′ = −2.
 
 Everything here is numerical evidence or a short derivation unless a named proof is cited. Where a result is someone else's, it says who.

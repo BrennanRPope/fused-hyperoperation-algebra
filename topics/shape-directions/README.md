@@ -1,5 +1,7 @@
 # The shape's directions
 
+> **Names:** some words or symbols on this page (mult-add, rung, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/XJxHp4hRkWYBJ45ZWA7pqe
 
 Question (Brennan): is there another whole dimension underneath, like d was?

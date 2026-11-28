@@ -1,5 +1,7 @@
 # LogicSets.lean
 
+> **Names:** some words or symbols on this page (mult-add, fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 - 35 theorems, namespace `LogicSets`, core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 - Imports `FusedAlgebra.Base` and `FusedAlgebra.Rungs` (for `fexp`, `sadd`, `fexp_tower`, `fexp_sadd`).
 - Compiles clean: `LEAN_PATH=/tmp/lib/build lean lean/LogicSets.lean` (Nov 25, 2026). A `#print axioms`

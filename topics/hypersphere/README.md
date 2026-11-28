@@ -1,5 +1,7 @@
 # DRAFT · Starting from the hypersphere: which laws come out, and are polar coordinates simplest there?
 
+> **Names:** some words or symbols on this page (mult-add, fused, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, the theory built on Fused Hyperoperation Algebra (repo:
 fused-hyperoperation-algebra). The algebra supplies the circle operation a ∘ₖ b = a + b + k·ab (called mult-add before
 1.0); the theory supplies the shapes and dials. The hypersphere is the round setting of the ℓp exponent, **p = 2**

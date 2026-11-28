@@ -1,5 +1,7 @@
 # DRAFT · Does one dial set the reach of every force?
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 26, 2026. Brennan asked on a voice call (recorded as his words): "Is it possible that the distance of force... gravity versus weak nuclear force or strong nuclear force. Are those distances somehow one dial?" He said yes to looking for a dial that plays the carrier-mass role, then added: "Or it might be two dials if you're saying there's two different forces at work."*
 
 Checks: `checks.py` → `checks_output.txt`, **41 / 41 pass** (numpy, scipy, sympy, mpmath; about 7 s), including a 30-digit polishing step (part P). The first run had 6 failures, all in my own setups or claims; each was fixed by correcting the setup or the claim (list at the end). Pictures: `figures.py` → `figures/f1` to `f8`. Lean: `lean/ForceReach.lean`, 8 theorems, **not compiled** (no Lean toolchain here); every statement checked true by `lean/check_statements.py`.

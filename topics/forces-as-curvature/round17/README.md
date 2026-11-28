@@ -1,5 +1,7 @@
 # Round 17: electromagnetism as loops on the law's own 3-sphere
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 16 (`../round16/`) and builds on round 13's law-grown 3-sphere and round 10's charge-½ twist (`../round10/`), using the twisted-boost law (`../../twisted-boosts/`). Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, about 4 minutes; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f24`. Colour key: **blue = the law, orange = loop read-back, grey = reference**.*
 
 This is the electromagnetism step that rounds 15 and 16 deferred. It is part of Brennan's standing goal to "keep pushing until we are able to build them all in spacetime". Round 8 got Maxwell's equations by varying a loop action on a smooth background. Here light lives directly on the loops of the glued flat pieces the law grew, with no smooth background. It is a static closed space with no charges.

@@ -1,5 +1,7 @@
 # DRAFT · Fluid flow on a Klein bottle: what one twist does
 
+> **Names:** some words or symbols on this page (wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra.
 Asked for by Brennan: "So it would be interesting to see if a twist yields a result in navier stokes", then
 "Run Klein bottle flow". Follows section 7.4 of [shape dials](../shape-dials/README.md).

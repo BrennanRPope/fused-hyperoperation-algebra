@@ -1,5 +1,7 @@
 # ComplexAnalysis.lean
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 - 39 theorems (35 mathematical plus 3 record-extensionality helpers and one list lemma), core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 - Compile status: compiles clean against the shared library build (`LEAN_PATH=/tmp/lib/build`, imports `FusedAlgebra.Base` only).
   `#print axioms` on fold_bound, trans_compose, fold_wall_iff_int, cayley_tan: propext, Classical.choice, Quot.sound only

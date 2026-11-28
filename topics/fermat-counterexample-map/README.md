@@ -1,5 +1,7 @@
 # Fermat counterexample map
 
+> **Names:** some words or symbols on this page (mult-add, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 What a hypothetical counterexample a^p + b^p = c^p (p ≥ 5 prime) would force, where the
 forced facts collide, and which methods are known not to work. Asked for Nov 25 as a
 counterexample hunt "for method": build up what can't work.

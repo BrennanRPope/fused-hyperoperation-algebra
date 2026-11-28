@@ -1,5 +1,7 @@
 # DRAFT · Entropy plus topology: do they find zeros or stable orbits?
 
+> **Names:** some words or symbols on this page (wall, twist, circle degree) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra. Follows
 [entropy-knots](../entropy-knots/README.md), which found that knot type can't tell a stable orbit from its unstable
 twin. Asked for by Brennan on Nov 27 ("Yes" to "Should I look into it as a new task, starting with the Conley index?"):

@@ -1,5 +1,7 @@
 # DRAFT · Stronger fusion magnets: what limits them, and what the theory can do about it
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 26, 2026. Asked for by Brennan: "I'd like to look at some more applied mathematics and I, I'm interested in figuring
 out how to build uh, magnets that are more strong to help with fusion." Checks: `checks.py` → `checks_output.txt`,
 **20/20 pass** (numpy). Pictures: `figures.py` → `figures/`. Shared models: `lib.py`. Marked DRAFT.

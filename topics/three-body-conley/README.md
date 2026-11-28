@@ -1,5 +1,7 @@
 # DRAFT · The Conley index on a real three-body return map
 
+> **Names:** some words or symbols on this page (wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra. Follows
 [entropy-topology](../entropy-topology/README.md), which found that the Conley index tells a stable orbit from its
 unstable twin where knot type can't, in the logistic, standard and Hénon maps, and graded "test it on a three-body
