@@ -1,6 +1,6 @@
 # Road to 1.0
 
-Last updated: 2026-11-28, 01:30 UTC. Current version: 0.2.0, released Nov 27 (see VERSION and CHANGELOG.md).
+Last updated: 2026-11-28, 08:35 UTC. Current version: 0.3.0, released Nov 28 (see VERSION and CHANGELOG.md).
 
 ## What 1.0 means
 
