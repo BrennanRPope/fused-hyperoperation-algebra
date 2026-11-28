@@ -1,0 +1,8 @@
+Q1 PASS
+Q2 PASS
+Q3 PASS
+Q4 PASS
+Q5 PASS
+Q6 PASS
+6/6 passed
+Monte Carlo phase average 0.7999 vs p+q 0.8000; law k=0.5 gives I3 = 0.00375
