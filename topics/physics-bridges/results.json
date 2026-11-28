@@ -1,0 +1,284 @@
+{
+ "B1": {
+  "SO10": {
+   "dim_dirac": 32,
+   "dim_weyl": 16,
+   "conj": {
+    "1": {
+     "B_Bstar_sign": 1.0,
+     "keeps_hand": false,
+     "majorana": true
+    },
+    "-1": {
+     "B_Bstar_sign": -1.0,
+     "keeps_hand": false,
+     "majorana": false
+    }
+   },
+   "majorana_weyl": false
+  },
+  "SO91": {
+   "dim_dirac": 32,
+   "dim_weyl": 16,
+   "conj": {
+    "1": {
+     "B_Bstar_sign": 1.0,
+     "keeps_hand": true,
+     "majorana": true
+    },
+    "-1": {
+     "B_Bstar_sign": 1.0,
+     "keeps_hand": true,
+     "majorana": true
+    }
+   },
+   "majorana_weyl": true
+  }
+ },
+ "B2": {
+  "content": {
+   "L": 2,
+   "d^c": 3,
+   "u^c": 3,
+   "Q": 6,
+   "e^c": 1,
+   "nu^c": 1
+  },
+  "anomalies": {
+   "TrY": "0",
+   "TrY3": "0",
+   "TrSU2sqY": "0",
+   "TrSU3sqY": "0"
+  },
+  "sin2": "3/8",
+  "X": [
+   "-3",
+   "1",
+   "5"
+  ],
+  "mod16": {
+   "with_nuR": 0,
+   "without_nuR": 13
+  },
+  "states": [
+   {
+    "name": "L",
+    "Y": "-1/2",
+    "Q": "0",
+    "BL": "-1"
+   },
+   {
+    "name": "L",
+    "Y": "-1/2",
+    "Q": "-1",
+    "BL": "-1"
+   },
+   {
+    "name": "d^c",
+    "Y": "1/3",
+    "Q": "1/3",
+    "BL": "-1/3"
+   },
+   {
+    "name": "u^c",
+    "Y": "-2/3",
+    "Q": "-2/3",
+    "BL": "-1/3"
+   },
+   {
+    "name": "d^c",
+    "Y": "1/3",
+    "Q": "1/3",
+    "BL": "-1/3"
+   },
+   {
+    "name": "u^c",
+    "Y": "-2/3",
+    "Q": "-2/3",
+    "BL": "-1/3"
+   },
+   {
+    "name": "Q",
+    "Y": "1/6",
+    "Q": "2/3",
+    "BL": "1/3"
+   },
+   {
+    "name": "Q",
+    "Y": "1/6",
+    "Q": "-1/3",
+    "BL": "1/3"
+   },
+   {
+    "name": "d^c",
+    "Y": "1/3",
+    "Q": "1/3",
+    "BL": "-1/3"
+   },
+   {
+    "name": "u^c",
+    "Y": "-2/3",
+    "Q": "-2/3",
+    "BL": "-1/3"
+   },
+   {
+    "name": "Q",
+    "Y": "1/6",
+    "Q": "2/3",
+    "BL": "1/3"
+   },
+   {
+    "name": "Q",
+    "Y": "1/6",
+    "Q": "-1/3",
+    "BL": "1/3"
+   },
+   {
+    "name": "Q",
+    "Y": "1/6",
+    "Q": "2/3",
+    "BL": "1/3"
+   },
+   {
+    "name": "Q",
+    "Y": "1/6",
+    "Q": "-1/3",
+    "BL": "1/3"
+   },
+   {
+    "name": "e^c",
+    "Y": "1",
+    "Q": "1",
+    "BL": "1"
+   },
+   {
+    "name": "nu^c",
+    "Y": "0",
+    "Q": "0",
+    "BL": "1"
+   }
+  ]
+ },
+ "B3": {
+  "adj_SO10": 45,
+  "adj_SU4": 15,
+  "rep_10_6": 60,
+  "rep_16_4": 64,
+  "rep_16b_4b": 64
+ },
+ "B4": {
+  "bosonic_string": 26,
+  "superstring": 10,
+  "M_theory": 11,
+  "sugra_max_Nahm": 11,
+  "Witten_KK_minimal": 11,
+  "law_S10_internal": 14,
+  "law_S3_internal": 7,
+  "smallest_sphere_with_SO10_isometry": 9,
+  "SO11_dim": 55,
+  "SO10_dim": 45
+ },
+ "B5": {
+  "torsion": true,
+  "curvature": true,
+  "order_gap_rel_err": {
+   "0.0": 1.5086715449221664e-07,
+   "0.5": 0.00010527347919443468,
+   "1.0": 9.953677649762357e-05,
+   "1.5": 0.0001683168450633255,
+   "2.0": 4.675180972611198e-07
+  }
+ },
+ "B6": {
+  "antisym": true,
+  "fano_lines": 7,
+  "order_gap_rel_err": {
+   "0.0": 2.797742170358096e-06,
+   "0.5": 0.0004381058415238757,
+   "1.0": 0.0006153012814475883,
+   "2.0": 1.7643044733061264e-06
+  }
+ },
+ "B7": {
+  "pin_plus": 1.0,
+  "pin_minus": -1.0
+ },
+ "B8": {
+  "frozen": true,
+  "schrodinger_err": 1.5645691375009037e-15,
+  "radius_spread": 1.1546319456101628e-14,
+  "N": 48
+ },
+ "B9": {
+  "2": {
+   "orientable": false,
+   "spin": false,
+   "pin_plus": false,
+   "pin_minus": true
+  },
+  "3": {
+   "orientable": true,
+   "spin": true,
+   "pin_plus": true,
+   "pin_minus": true
+  },
+  "4": {
+   "orientable": false,
+   "spin": false,
+   "pin_plus": true,
+   "pin_minus": false
+  },
+  "5": {
+   "orientable": true,
+   "spin": false,
+   "pin_plus": false,
+   "pin_minus": false
+  },
+  "6": {
+   "orientable": false,
+   "spin": false,
+   "pin_plus": false,
+   "pin_minus": true
+  },
+  "7": {
+   "orientable": true,
+   "spin": true,
+   "pin_plus": true,
+   "pin_minus": true
+  },
+  "8": {
+   "orientable": false,
+   "spin": false,
+   "pin_plus": true,
+   "pin_minus": false
+  },
+  "9": {
+   "orientable": true,
+   "spin": false,
+   "pin_plus": false,
+   "pin_minus": false
+  },
+  "10": {
+   "orientable": false,
+   "spin": false,
+   "pin_plus": false,
+   "pin_minus": true
+  },
+  "11": {
+   "orientable": true,
+   "spin": true,
+   "pin_plus": true,
+   "pin_minus": true
+  },
+  "12": {
+   "orientable": false,
+   "spin": false,
+   "pin_plus": true,
+   "pin_minus": false
+  }
+ },
+ "summary": {
+  "passed": 9,
+  "failed": 0
+ }
+}
