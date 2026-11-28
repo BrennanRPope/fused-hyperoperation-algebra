@@ -3512,7 +3512,9 @@ FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.theta2_free_face	propext, Classi
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.three_body_roads	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_nonneg	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SolitonsRungs	SolitonsRungs.tri_zero_iff	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.adm_pi_circle	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.area_law	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.boost_drops_out	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.boost_push	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.boost_safe_shape	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.cellMap_mul	propext, Classical.choice, Quot.sound
@@ -3558,6 +3560,7 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.one_dial_beta_gamma	pro
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.one_term_split	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.own_field_squared	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.pi_floor_phase	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.pi_forms_differ_by_time_derivative	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_k2_law	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_push_total	
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.polar_turning_ratio	propext, Classical.choice, Quot.sound

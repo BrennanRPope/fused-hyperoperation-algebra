@@ -544,6 +544,21 @@ theorem lagged_sum_is_time_derivative (x y : K) :
     (-(x^2 + y^2) - 8 * x * y) + (-3 * (x^2 + y^2)) = -4 * (x + y)^2 := by
   grind
 
+/-- **Relativity's π² in two forms** (round 33): in the basis (D₁²F, D₂²F, D₁D₂F, (a·∇)F) the velocity form
+(−κ, −κ, −2κ, 0) and the static form (0, 0, 0, κ) differ by −κ(1, 1, 2, 1), a multiple of d²F/dt²; κ = 41/16. -/
+theorem pi_forms_differ_by_time_derivative (κ : K) :
+    (-κ - 0 = -κ * 1) ∧ (-2 * κ - 0 = -κ * 2) ∧ (0 - κ = -κ * 1) := by
+  refine ⟨?_, ?_, ?_⟩ <;> grind
+
+/-- **ADM's π² on a circle** (round 33): the kinetic p²/64 and the static −21/32 = −42/64 add to −41/64. -/
+theorem adm_pi_circle (p : K) : p - 42 * p = -41 * p := by
+  grind
+
+/-- **A boost drops out** (round 34): shifting both velocities by u leaves (v₁ − v₂)·∇F unchanged, since F depends
+only on y₁ − y₂ (its two gradients are g and −g); so relativity's π² strength 41/16 is not fixed by boosts. -/
+theorem boost_drops_out (v1 v2 u g : K) : (v1 + u) * g + (v2 + u) * (-g) = (v1 - v2) * g := by
+  grind
+
 end Field
 
 end CircleOp.SpinningRiver
