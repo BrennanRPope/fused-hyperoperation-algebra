@@ -1,0 +1,9 @@
+M1 PASS
+M2 PASS
+M3 PASS
+M4 PASS
+4/4 passed
+classical: one bit N = 1, two bits N = 3, k=1 law says 3
+complex quantum: one bit N = 3, two bits N = 15, k=1 law says 15
+real quantum: one bit N = 2, two bits N = 9, k=1 law says 8
+quaternionic: one bit N = 5, two bits N = 27, k=1 law says 35

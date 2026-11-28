@@ -1,0 +1,6 @@
+L1 lift PASS
+L2 comm+assoc PASS
+L3 Tsallis composes by the law, k = 1 - q PASS
+L4 coin rule forces k = 0 PASS
+L5 a fair coin has nonzero Tsallis size for q = 2, 3, 1/2 PASS
+5/5 passed

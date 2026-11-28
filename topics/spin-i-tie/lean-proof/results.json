@@ -1,0 +1,7 @@
+{
+ "L1 lift": true,
+ "L2 comm+assoc": true,
+ "L3 Tsallis composes by the law, k = 1 - q": true,
+ "L4 coin rule forces k = 0": true,
+ "L5 a fair coin has nonzero Tsallis size for q = 2, 3, 1/2": true
+}

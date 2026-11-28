@@ -1,0 +1,9 @@
+T1 PASS
+T2 PASS
+T3 PASS
+T4 PASS
+T5 PASS
+T6 PASS
+T7 PASS
+7/7 passed
+T5: best dial on a complex grid = (-2+0j), size-1 error 2.2e-16; next best error 0.025
