@@ -151,6 +151,7 @@ Multiply the steps of a path in the Heisenberg group and the central part record
 - `checks.py` → `checks_output.txt`: 44/44 pass (numpy, sympy, scipy).
 - `figures.py` → `figures/fig1` … `fig14` (PNG, labeled; fig10–14 are the path-integral section).
 - `lean/WhyI.lean`: 21 theorems, core Lean 4, no imports, no `sorry`. Compiled in the shared library as `FusedAlgebra/Topics/WhyI.lean` (standard axioms only).
+- `bridge-paper/` (DRAFT, Nov 28): this paper's widened version, "why quantum needs i, and a small bridge toward gravity": a constant energy shift is invisible only when it commutes with everything, which is why quantum mechanics needs i and exactly where gravity differs. 17 checks, 7 figures; only Part 1 (the short paper's theorem) has steps in Lean. ([write-up](bridge-paper/README.md))
 
 ## Sources
 
