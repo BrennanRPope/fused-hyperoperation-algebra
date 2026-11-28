@@ -1,5 +1,7 @@
 # Game theory through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 ## Files
 - index.html: the page (self-contained, four live SVG figures: multiplicative weights, Kelly growth,
   Elo curve with rulers, the 3-player cube with Shapley bars).

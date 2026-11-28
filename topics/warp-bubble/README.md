@@ -1,5 +1,7 @@
 # DRAFT · Warp bubbles, wormholes and artificial gravity through the circle operation (Nov 25–26, 2026)
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked by Brennan (voice call): "I'm kind of interested in the [Alcubierre] warp bubble ... I don't know if maybe we
 could help advance faster than light travel or at least the idea of bending ... if there's a way to maybe create
 artificial gravity or to bend or create a warp drive I would like to look into that." Then, on the same call: "is

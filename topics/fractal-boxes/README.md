@@ -1,5 +1,7 @@
 # Fractal boxes: does a box of fractional dimension give a fractional power set? (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, fused, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Task: Brennan's yes on the voice call to "Should I look into whether fractal boxes give a consistent fractional power set?" Background: the circle-operation box with sides 1+a, 1+b, ... has 2^n corner pieces, one per subset ("the tesseract is a picture of a power set"). Option tested: a box of fractional dimension D, with 2^D corner pieces. Picture-led write-up at his request ("if I have more pictures to look at, I can help").
 
 Page: https://claude.ai/artifact/NbFUcWVphAGGNvhug8XvwS (source index.html here; build_page.py inlines the SVG plates).

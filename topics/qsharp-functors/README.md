@@ -1,5 +1,7 @@
 # DRAFT · Q#'s body, Adjoint and Controlled on our shapes
 
+> **Names:** some words or symbols on this page (fused, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan (his "Yes." to mapping Q#'s operation forms onto our shapes). Ideas from the voice call, tested
 here as hypotheses: single-qubit operations live on the 3-sphere S³, Adjoint is the "mirror point", and Controlled

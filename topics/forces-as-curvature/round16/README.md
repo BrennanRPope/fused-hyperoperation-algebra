@@ -1,5 +1,7 @@
 # Round 16: does the law's dial q set the fused shift's k?
 
+> **Names:** some words or symbols on this page (fused, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 15 (`../round15/`), whose reading through the fused shift is reused unchanged, and rounds 12–14 (the law-sized and law-grown 3-sphere, and the glued slabs with time in them). Checks: `checks.py` → `checks_output.txt` (**7 / 7 pass**, about 37 s; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f23`. Colour key: **blue = the law, orange = Regge read-back, grey = reference**.*
 
 Brennan's ask (Nov 27, his words): "Test whether q sets k". Round 15 found that, read through the fused shift a → 1 + k·a, the glued universe grows like de Sitter with Λ = 3k², and that at the bounce the space curvature is q = k². The question here is whether the law's curvature dial q actually fixes k, and with it Λ, de Sitter's length and the bounce size, rather than k being put in. It also asks whether q fixes the time step, and whether it fixes the sign of time. Electromagnetism as loops moves to round 17.

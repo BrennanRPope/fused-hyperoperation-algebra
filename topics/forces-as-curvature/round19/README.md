@@ -1,5 +1,7 @@
 # Round 19: is the law at q = −1 the boosts of special relativity?
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 18 (`../round18/`), using the twisted-boost law (`../../twisted-boosts/`) and round 16's finding that the dial is a scale. Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, under a second; numpy), numbers in `results.json`. Picture: `figures.py` → `figures/f26`. Colour key: **blue = the law, orange = textbook special relativity, grey = reference**.*
 
 Round 18 found that at q = +1 the law is the 3-sphere's group product taken symmetrically, x ⊕ y = h·y·h. This round asks the same question at q = −1. Put the law's points on the velocity hyperboloid, write them as 2×2 positive Hermitian matrices (the 4-velocities of special relativity), and let the Lorentz group SL(2,ℂ) stand where SU(2) stood. It is part of Brennan's standing goal to "keep pushing until we are able to build them all in spacetime".

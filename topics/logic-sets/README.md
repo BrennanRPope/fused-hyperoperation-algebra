@@ -1,5 +1,7 @@
 # Logic and set theory through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page title: "Only two notches on the dial keep true and false: OR and XOR" (source index.html, not yet published).
 
 ## Files

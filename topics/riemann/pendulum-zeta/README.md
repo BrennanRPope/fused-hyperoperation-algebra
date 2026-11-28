@@ -1,5 +1,7 @@
 # DRAFT: ζ as a pendulum, and the swing dial
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Status: DRAFT.** Checks: `checks.py` → `checks_output.txt`, 13/13 pass (mpmath 20–50 digits). Nothing here proves RH.
 
 **The plain result.** ζ already is a pendulum. Riemann's own height variable u (the one RH puts a field on) is the

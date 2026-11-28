@@ -1,5 +1,7 @@
 # Beyond one loop: does G's running stay the circle operation?
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 25, 2026. Follows [asymptotic-safety](../README.md), whose strongest lead was that in 1/g the one-loop flow of g = G k² is exactly a ∘ₖ b = a + b + k·ab with k = −g\*. Brennan's ask: follow that lead and make sure it holds. Checks: `checks.py`, 23/23 pass (`checks_output.txt`). Pictures: `figures.py`. Lean: `lean/BeyondOneLoop.lean` (exact identities only; not yet compiled, see below).*
 
 ## Verdict

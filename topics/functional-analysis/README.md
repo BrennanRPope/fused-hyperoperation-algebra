@@ -1,5 +1,7 @@
 # Functional analysis through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Finding: for operators A ∘₁ B = (I + A)(I + B) − I; the way back exists exactly when −1 is not in the spectrum, and
 det(I + K) − 1 is the circle-operation fold of the eigenvalues (the string's determinant is the sine product, zero each time an
 eigenvalue crosses −1). At k = −1 the same fold is the chance of seeing at least one point of a determinantal process.

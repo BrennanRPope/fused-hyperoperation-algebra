@@ -1,5 +1,7 @@
 # Fields of jets in the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/Lg84gxR34iuBqZwQNZWjF3 (slug 9f53fea2-9e95-4578-854c-316b2d06687e)
 Rebuild: python3 figures.py && python3 page/build.py (writes page/index.html from page/template.html + SVGs).
 

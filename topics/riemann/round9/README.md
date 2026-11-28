@@ -1,5 +1,7 @@
 # Riemann, round 9: the Hilbert–Pólya string probe (DRAFT)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Affine Composition Theory, built on Fused Hyperoperation Algebra. DRAFT, Nov 26 2026. Earlier rounds: [round 1](../README.md), [the elliptic object](../elliptic-object/README.md), [round 3](../round3/README.md), [round 4](../round4/README.md), [round 5](../round5/README.md), [round 6](../round6/README.md), [round 7](../round7/README.md), [round 8](../round8/README.md). Companion: [who has studied where and why Gram's law fails](gram-literature.md).*
 
 ## The answer

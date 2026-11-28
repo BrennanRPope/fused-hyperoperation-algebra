@@ -1,5 +1,7 @@
 # DRAFT · The hat tile and the primes: can a never-repeating surface map to the primes?
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra. Not reviewed.
 Asked for by Brennan (Nov 27): "I want to look at the hat tile to see if there is any use for such a shape to help us
 create a non repeating surface that can map to prime numbers in some way."

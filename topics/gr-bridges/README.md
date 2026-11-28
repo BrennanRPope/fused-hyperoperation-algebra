@@ -1,4 +1,7 @@
 # Curved space from the circle operation: four bridges to Einstein
+
+> **Names:** some words or symbols on this page (mult-add, fused, wall, twist, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/LhAbnuPMJnNoq9cRYBz3xc (source index.html, pictures in figures/)
 
 Question (Brennan, Nov 25, voice): can we crack Einstein's field equations? Lead question added on the call:

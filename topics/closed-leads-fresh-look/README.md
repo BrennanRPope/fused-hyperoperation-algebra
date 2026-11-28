@@ -1,5 +1,7 @@
 # DRAFT · Closed leads, looked at fresh from our own tools
 
+> **Names:** some words or symbols on this page (✳, mult-add, fused, rung, wall, twist, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra). Nothing here is
 reviewed or published.
 

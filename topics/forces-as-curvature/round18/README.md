@@ -1,5 +1,7 @@
 # Round 18: are the law's two 3-spheres one?
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 17 (`../round17/`) and uses round 13's law-grown corners and round 10's charge-½ twist, with the twisted-boost law (`../../twisted-boosts/`). Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, about 5 seconds; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f25`. Colour key: **blue = the law, orange = the mirror or the other order, grey = reference**.*
 
 > **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the closed form of the 3D law used here is the κ-addition of the constant-curvature machine-learning papers, with κ = q (Bachmann, Bécigneul and Ganea, ICML 2020, arXiv:1911.05076, Eq. 2; audit check K1).

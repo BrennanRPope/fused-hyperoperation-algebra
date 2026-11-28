@@ -1,4 +1,7 @@
 # Clifford's work through the circle operation (Nov 25, 2026)
+
+> **Names:** some words or symbols on this page (mult-add, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/NU8rLX3jBBeaojcq8g3hMW (slug add9d4ef-0573-4774-a13c-fa98c4cef8e5, version 1795625560-f8f2; source index.html, built by build_page.py from page_template.html + figures/)
 
 Task (Brennan, Nov 25): "let's do a deep dive on Clifford's work and make sure we have an analog for each piece."

@@ -1,5 +1,7 @@
 # DRAFT: a hidden space built from all the primes
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Follow-up to [the hat tile and primes](../README.md). Nov 27 2026. Numbers are evidence, not proofs;
 29 of 29 checks pass (`checks.py`); `lean/HiddenSpace.lean` has 2 statements, not yet compiled.*
 

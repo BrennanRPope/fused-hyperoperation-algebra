@@ -1,5 +1,7 @@
 # Round 6: the field equations from loops
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows the parent folder `../` (rounds 1–4) and `../round5/`. Checks: `checks.py` → `checks_output.txt` (**10 / 10 pass**, about 7 s; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f13`. Colour key: **orange = known, blue = ours, grey = reference line**.*
 
 ## Verdict first

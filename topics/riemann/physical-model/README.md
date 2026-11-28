@@ -1,5 +1,7 @@
 # DRAFT · A real physical model for ζ's zeros under heat flow (Nov 27, 2026)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked for by Brennan: "What is the threshold in physical terms?" "Would an actual wire with beads behave this
 way?" "I'm looking for a physical model." Script: `phys.py` → `phys.json`, `burgers.npz`, `collapse.npz`.
 Pictures: `figs.py` → `figures/`. Checks: `checks.py` → `checks_output.txt`, **13/13 pass**. Companion to

@@ -1,5 +1,7 @@
 # Polar coordinates for many dimensions: switching shapes (DRAFT)
 
+> **Names:** some words or symbols on this page (⊕, fused) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Question (Brennan, Nov 25): most hypercube ideas so far map onto Cartesian coordinates. Would a more polar
 coordinate system, with many dimensions, let shapes be switched between more easily?

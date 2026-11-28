@@ -1,5 +1,7 @@
 # DRAFT · Newton's orbits and hydrogen's levels on one 3-sphere: does the swap rule give Mercury and fine structure?
 
+> **Names:** some words or symbols on this page (fused, rung, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026; sections 12–13 corrected and added Nov 27 2026.** Part of Affine Composition Theory, the theory built on Fused Hyperoperation Algebra (repo:
 fused-hyperoperation-algebra); a section of `hypersphere/`. Brennan asked to follow the lead "about Newton's orbits and
 hydrogen's energy levels": do GR's perihelion shift (Mercury's 43″ a century) and hydrogen's fine structure both come

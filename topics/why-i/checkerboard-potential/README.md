@@ -1,5 +1,7 @@
 # Adding a potential to the checkerboard / telegraph chain
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Part of topics/why-i, after topics/why-i/checkerboard.
 
 **Verdict.** A potential fits the weighted-circle chain as one more element in every tick, and every path is still counted exactly once. As the steps shrink, the chain becomes the Dirac equation with that potential at the quantum setting and the telegraph equation with killing at the random setting. At long times these become Schrödinger's equation with the potential and Feynman–Kac diffusion with killing. The genuine path measure at the quantum setting survives any real potential, because the potential only turns each path's phase and never changes its size.

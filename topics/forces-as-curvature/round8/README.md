@@ -1,5 +1,7 @@
 # Round 8: all of Einstein's equations, and Maxwell's, from varying the loop action
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows rounds 1–7 (the parent folder `../`, `../round5/`, `../round6/`, `../round7/`). Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**, about 60 s; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f15`. Colour key: **orange = textbook formula, blue = from loops, grey = zero line**.*
 
 ## Verdict first

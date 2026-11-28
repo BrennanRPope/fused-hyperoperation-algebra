@@ -1,5 +1,7 @@
 # DRAFT · Dial audit: which of the seven dials are fundamental, and which are derived
 
+> **Names:** some words or symbols on this page (fused, rung, twist, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra.
 Asked for by Brennan (voice, Nov 26): "we should probably look at the other dials to make sure they really are
 fundamental ... what if one is like curvature we found is really K and D together", and "make sure it's really a new

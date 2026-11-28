@@ -1,5 +1,7 @@
 # Knot theory through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Files
 - tangles.py: tangle diagrams (crossing tiles + joins), Kauffman bracket by the state sum over the
   cube, writhe by walking each component, and the (f, g) tangle algebra.

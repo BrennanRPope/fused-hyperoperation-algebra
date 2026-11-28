@@ -1,5 +1,7 @@
 # DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes; round 3: how fast two planes feed each other; round 4: a 3D view of a 4D flow)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Fused Hyperoperation Algebra. Asked for by Brennan: "We might show that navier stokes
 really is 2D, but that the flows are two intersecting planes", then "remember we found some stable vortex stretching
 in the Klein bottle work" and "The idea that reality itself is twisted might be a good tack". Round 2 (section 8):

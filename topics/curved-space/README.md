@@ -1,5 +1,7 @@
 # Curved space from the theory: counting and the river (DRAFT)
 
+> **Names:** some words or symbols on this page (mult-add, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 25 2026. Checks: `checks.py` → `checks_output.txt` (36 of 36 pass, about 5 s), `results.json`.
 Pictures: `figures.py` → `figures/f1 … f8`. Colour key in every picture: **orange = known, blue = ours**.*
 

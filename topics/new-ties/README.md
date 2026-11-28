@@ -1,5 +1,7 @@
 # DRAFT · What ties the new pieces together, and what we can build with them
 
+> **Names:** some words or symbols on this page (fused, rung, wall, trace monoid) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra. Not reviewed.
 Asked for by Brennan (voice, Nov 27): "can we look at some things we've found that are kind of new and see if there's
 anything that kind of ties together?", "I'm trying to see if we can build anything with the new things", and "It doesn't

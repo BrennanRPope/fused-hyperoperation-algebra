@@ -1,5 +1,7 @@
 # Dial survey: a quick pass on the five dials (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (wall, twist, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/LoM7iRCttrFnAi9VGz2kVr (source index.html)
 
 *Names (Nov 26, see `affine-names/` section 6): the per-element dial t is the **odds**; the twist is the **holonomy** ω, a reading of the curvature dial and two directions. The two base numbers this survey found, k and t, are the homothety and the odds.*

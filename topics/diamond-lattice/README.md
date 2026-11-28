@@ -1,5 +1,7 @@
 # The diamond hierarchical lattice on the landscape (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Follow-up of the graph-theory lead: the diamond map t -> F_{Q-2,1-Q}(t^2, t^2) as Q slides along the "or" line k + d = -1.
 
 Files

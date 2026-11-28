@@ -1,5 +1,7 @@
 # Graph theory through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Files
 - index.html: the page (built by build.py from template.html; self-contained).
 - checks.py -> checks_output.txt: 54 checks, all pass (brute-force multivariate Tutte / Potts sums, networkx, numpy, sympy).

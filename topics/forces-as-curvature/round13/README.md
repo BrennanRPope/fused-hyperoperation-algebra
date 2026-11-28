@@ -1,5 +1,7 @@
 # Round 13: the law grows the corners too
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows rounds 1–12 (rounds 1–9 in the repo under `topics/forces-as-curvature/` and its subfolders; rounds 10–12 in `../round10/` … `../round12/`) and uses the twisted-boost law from `../../twisted-boosts/`. Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, about 25 s; numpy), numbers in `results.json`. Picture: `figures.py` → `figures/f20`. Colour key: **blue = the law, orange = Regge read-back, grey = reference**.*
 
 ## Verdict first

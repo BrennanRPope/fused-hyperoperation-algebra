@@ -1,5 +1,7 @@
 # Prerequisites for a G dial, and how our results depend on each other
 
+> **Names:** some words or symbols on this page (mult-add, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Verdict.** Of 22 things any quantum-gravity answer (or a dial for G) has to meet, our results meet 4 outright, meet 7 more only with an input put in by hand, and leave 7 unmet. The biggest missing prerequisite is the **black-hole area law S = A/(4Għ)**. On Jacobson's route to Einstein's equations, the circle operation (called mult-add before 1.0) supplies the area bookkeeping, the focusing and the Unruh temperature, and the entropy per area is the one piece put in from outside. A G dial that cannot produce that number has not done the job. The other unmet ones are structural: no quantum fields, no massless spin-2 carrier, nothing on the ultraviolet (Goroff–Sagnotti), no background independence.
 
 - **Met:** special relativity (Lean-backed), the Hawking and Unruh temperatures (formula level, known physics), gravity-wave speed = c.

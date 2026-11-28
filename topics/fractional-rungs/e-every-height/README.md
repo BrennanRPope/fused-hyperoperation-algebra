@@ -1,5 +1,7 @@
 # e and the hypernatural logarithm at every rung height
 
+> **Names:** some words or symbols on this page (fused, rung, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Renamed Nov 26 2026: "supernatural logarithm" is now the **hypernatural logarithm** (Brennan); its inverse is the **hypernatural exponential** exp⁽ˢ⁾(t) = 1 + Eˢ(t). See `../../named-functions/`.*
 
 *Nov 25, 2026. Brennan asked on a call whether a function gives e at any rung height, continuously, and whether it has a closed form. Checks: `e_every_height.py`, **26 of 26 pass** (`e_every_height_output.txt`). Pictures: `figures.py`. Builds on `../regular_iteration.py` (the flow E^t, 16/16) and `../../e/` (e from the n-cube).*

@@ -1,5 +1,7 @@
 # Dynamical systems through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Files
 - checks.py -> checks_output.txt: 53/53 pass (about 2 minutes; the horn-map section runs
   mpmath at 34 digits). Writes series.json (rung-flow vector field and Abel-ruler coefficients,

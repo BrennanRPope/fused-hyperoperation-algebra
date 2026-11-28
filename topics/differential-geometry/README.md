@@ -1,5 +1,7 @@
 # Differential geometry through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Files
 - index.html: the page (conic-and-chart figure, equal-distance ticks, the circle operation ∘₁ (called mult-add before 1.0) in the upper half plane,
   landscape shaded by curvature, Klein and Poincaré disks).

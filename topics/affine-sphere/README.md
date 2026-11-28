@@ -1,5 +1,7 @@
 # DRAFT · Do the homothety k and the curvature dial d come from one affine sphere?
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory. Asked for by Brennan: "I'd like to see if the K dial and
 the D dial might come from a single shape. an affine sphere." Builds on `conics/` (each plane-dial setting is one conic
 x² + kxy + dy² = y, and its chord rule is the law) and `affine-names/` (names: homothety k, curvature dial d; readings

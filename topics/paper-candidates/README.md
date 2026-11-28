@@ -1,5 +1,7 @@
 # Fused Hyperoperation Algebra: what could become a paper
 
+> **Names:** some words or symbols on this page (rung, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Review of Nov 25, 2026. Every result in the repo README's catalog and the page index was checked against the literature. Verdicts: **known**, **known but newly connected**, or **appears new** (meaning our search found nothing; not a guarantee).
 
 ## Short answer

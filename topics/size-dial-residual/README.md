@@ -1,5 +1,7 @@
 # Size weighting as a dial, and what the circle operation leaves over (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Names (Nov 26, see `affine-names/` section 6): β is the size measure's **growth degree** (degree of polynomial growth), a setting chosen with the measure; "twist" below meant the homothety dial k, and twist now means only the holonomy.*
 
 Task (Brennan, voice call and timeline): is the 54.5% (plain ½ on the naturals by size, not 50%) a hidden dial we missed, and, across the known sets, how much does the circle operation ∘₁ (called mult-add before 1.0) with its dials explain and what is left over? Asked during the work for clear pictures.

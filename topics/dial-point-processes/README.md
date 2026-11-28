@@ -1,5 +1,7 @@
 # Point processes on the dial (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Finding: the α-determinantal processes (Shirai–Takahashi 2003) are the dial with k = α: k = −1 fermions, 0 Poisson,
 +1 bosons. On a region with kernel eigenvalues μᵢ, P(no point) = (1 + k·(μ₁ ∘ₖ μ₂ ∘ₖ …))^(−1/k) = exp(−Σ ℓₖ(μᵢ)),
 ℓₖ the dial's logarithm. Existence: the wall −1/k must stay off the spectrum, and for k < 0 it must be a whole number.

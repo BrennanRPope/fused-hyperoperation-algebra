@@ -1,5 +1,7 @@
 # Tracking the Lean FLT project
 
+> **Names:** some words or symbols on this page (mult-add, twist, Tate q and E₄, E₆) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Checked Nov 25, 2026. Read-only survey: nothing was posted, filed or proposed on either project.
 
 **Short answer.** Buzzard's FLT project still rests on one big open step (the "B4" boss: the Frey

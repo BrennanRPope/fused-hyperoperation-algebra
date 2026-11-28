@@ -1,5 +1,7 @@
 # DRAFT · Dialling the Klein bottle flow to Clay's periodic box
 
+> **Names:** some words or symbols on this page (wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 27, 2026. Asked for by Brennan, after the Klein bottle flow (`../README.md`): "Let's look at clay's periodic box and
 see if that is something we can dial our way to", then "If so, maybe we can transform ours from the working space" and
 "Does that make sense to you?"

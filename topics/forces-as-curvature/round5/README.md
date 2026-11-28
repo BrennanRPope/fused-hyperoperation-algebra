@@ -1,5 +1,7 @@
 # Round 5: the strong force's group built into spacetime from a hidden SU(3) space
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows the parent folder `../` (rounds 1–4). Checks: `checks.py` → `checks_output.txt` (**10 / 10 pass**, about 16 s; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f12`. Colour key: **orange = known, blue = ours, grey = control**.*
 
 ## Verdict first

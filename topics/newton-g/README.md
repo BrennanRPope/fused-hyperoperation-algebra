@@ -1,5 +1,7 @@
 # DRAFT · Newton's G lead, reopened
 
+> **Names:** some words or symbols on this page (rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 25, 2026. Brennan reopened the G lead ("I'd like to start following them, including the G lead"), added that he is looking for "a math that has the same shape, not necessarily a direct underlying identical mechanic", and asked for a strand treating spacetime as a fluid with G as one of its coefficients. Checks: `checks.py`, **23/23 pass** (`checks_output.txt`, numpy only). Pictures: `figures.py` → `figures/n1`–`n6`. **Second look, Nov 26** (Brennan: "let's take a look and use the new tools that we have added since this work was done"): section 7, `checks2.py` **21/21 pass**, `figures2.py` → `figures/n7`–`n10`. Shared code: `gshapes.py`. Earlier work this builds on: [asymptotic-safety](../why-i/e-i-pi/asymptotic-safety/README.md), [beyond-one-loop](../why-i/e-i-pi/asymptotic-safety/beyond-one-loop/README.md), [height-dial](../why-i/e-i-pi/asymptotic-safety/beyond-one-loop/height-dial/README.md), [height-running-coupling](../height-running-coupling/HANDOFF.md), [g-dials](../why-i/e-i-pi/g-dials/README.md).*
 
 ## Verdict in one paragraph

@@ -1,5 +1,7 @@
 # Riemann's neighbours on the dial map (DRAFT, Nov 26 2026)
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Short answer.** In every neighbour where a Riemann-type statement is actually proved (graphs, curves over finite fields, hyperbolic surfaces, Lee–Yang magnets), the proof does the same two things: it makes the prime fold finite (the determinant of an operator, or for Lee–Yang a polynomial on a coupled cube), and then a positivity fact puts every factor on the elliptic side of our (k, d) plane. Our dials can say the positivity half for ζ but not the operator half, which is exactly the old Hilbert–Pólya gap, so this is not a lead toward RH; what it gives us is one picture of the whole family and a list of Mathlib theorems to build on. No new dial turned up: the candidates were existing dials in disguise (the Lee–Yang coupling is k placed on each edge, Bartholdi's weight is d).
 
 Status: DRAFT. Everything numerical here was computed in this folder and checked (`checks.py`: 29 of 29 pass, a few seconds). The proofs we lean on are other people's and are named below. The Lean file is compiled in the shared library as `FusedAlgebra.Topics.RiemannNeighbours` (9 theorems, no proof changed).

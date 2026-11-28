@@ -1,5 +1,7 @@
 # DRAFT: Precession through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked by Brennan (voice call): "I want to be able to describe precession from this theory ... It's just something
 that seems like should be able to be described with this theory."
 

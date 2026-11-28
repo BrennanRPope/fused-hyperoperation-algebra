@@ -1,5 +1,7 @@
 # DRAFT · Does the theory predict a force we don't know about?
 
+> **Names:** some words or symbols on this page (rung, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 26, 2026. Follow-up to the force-reach and flux-tube-dial pages. Brennan: "So I'm trying to figure out if there is anything that might produce a new force we are unaware of", then "Not produce but predict".*
 
 Checks: `checks.py` → `checks_output.txt`, **24 / 24 pass**; `strength_checks.py` → `strength_output.txt`, **12 / 12**; `hold_strength_checks.py` → `hold_strength_output.txt`, **20 / 20**; `investigate_checks.py` → `investigate_output.txt`, **17 / 17**; `repel_checks.py` → `repel_output.txt`, **17 / 17**; `other_forces_checks.py` → `other_forces_output.txt`, **14 / 14**; `leads_checks.py` → `leads_output.txt`, **11 / 11**; `sphere_hold_checks.py` → `sphere_hold_output.txt`, **8 / 8**; `sphere_winding_checks.py` → `sphere_winding_output.txt`, **9 / 9**; `sphere_dials_checks.py` → `sphere_dials_output.txt`, **8 / 8**. They run in any order or in parallel: each writes its own `results_<part>.json`, shared inputs come from `new_force_core.py`, and `figures.py` merges them into `results.json`. Numpy, scipy, sympy, mpmath; under a minute. Pictures: `figures.py` → `figures/h1` to `h17`. Lean: `lean/NewForce.lean`, 53 pure-algebra statements, every one checked true by `lean/check_statements.py`.

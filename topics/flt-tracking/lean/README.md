@@ -1,5 +1,7 @@
 # FLT leads, checked in Lean with mathlib
 
+> **Names:** some words or symbols on this page (Tate q and E₄, E₆) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Built Nov 27, 2026 against Lean and mathlib `v4.37.0-rc1` (the same pins as `lean-library-mathlib/`).
 `lake build` succeeds with no `sorry`; `lake env lean Axioms.lean` shows every main theorem resting
 only on Lean's three standard axioms (`propext`, `Classical.choice`, `Quot.sound`).

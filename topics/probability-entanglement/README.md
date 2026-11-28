@@ -1,5 +1,7 @@
 # DRAFT · Is probability entanglement? Time, small loops, the helix, and our union rule
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Asked for by Brennan on a voice call: "is probability entanglement?", then widened to time from
 entanglement, to his idea of probability as "a very small loop ... like a computer's clock being a mod operator over
 the very last digit of the internal clock", to a whole-path picture where Bohm's shared clock and 't Hooft's

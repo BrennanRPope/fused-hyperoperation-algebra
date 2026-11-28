@@ -1,5 +1,7 @@
 # Negative odds, the wall at −1, and the arrow of time (DRAFT)
 
+> **Names:** some words or symbols on this page (fused, wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra). Asked for by Brennan on a
 voice call: look at the negative side of the odds dial, and especially the point −1, "and see if we can discover anything
 just by looking at that point"; then "the negative might mean a different time, a different arrow of time ... could we

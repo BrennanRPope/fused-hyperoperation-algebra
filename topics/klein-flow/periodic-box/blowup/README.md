@@ -1,5 +1,7 @@
 # DRAFT · Hunting for blow-up inside the twisted class
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 27, 2026. Asked for by Brennan, after the periodic-box round (`../README.md`): "And you said it could used for a
 blow up proofso let's explore that as well". (The earlier round said the twisted class is a place to *search* for
 blow-up, Clay's option D; it never offered a proof. This round runs that search on the best-known candidate.)

@@ -1,5 +1,7 @@
 # Complex analysis through the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Finding: in the complex plane z ∘₁ w is a turn and stretch about the wall −1 by 1 + w; the wall is the branch point of
 log(1 + z), the fixed point of every landscape Möbius flow, and the place a product's pieces land at its zeros.
 

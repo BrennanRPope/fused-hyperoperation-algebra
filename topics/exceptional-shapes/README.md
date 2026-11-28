@@ -1,5 +1,7 @@
 # DRAFT · The missing shapes: the 24-cell, the 600-cell and E8
 
+> **Names:** some words or symbols on this page (fused) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan ("Yes." to testing the regular shapes the catalog was missing: the 24-cell, the 600-cell and its
 dual the 120-cell in 4D, and the E8 lattice in 8D). He also asked, mid-pass, for a light **polishing step** on every

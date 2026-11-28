@@ -1,4 +1,7 @@
 # Special relativity's velocity addition through the circle operation (Nov 25, 2026)
+
+> **Names:** some words or symbols on this page (mult-add, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/S2RVDVVQWR4UAQVtmDQQMq (source index.html)
 - checks.py: 37/37 pass (checks_output.txt)
 - lean/Relativity.lean: 34 theorems, compiled with core Lean 4.37.0-rc1 against the shared library (imports Base, Topics.Thermodynamics). No sorry, standard axioms only. Fold in as FusedAlgebra/Topics/Relativity.lean after Thermodynamics.

@@ -1,5 +1,7 @@
 # Units at different levels: asymptotic safety, dimension flow and G
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 25, 2026. Follows [g-dials](../g-dials/README.md). Brennan's questions: (1) does viewing numbers as multidimensional lattices mean there are different units at different levels; (2) is G a deformation of a spacetime formed from anomalous dimensions. Checks: `checks.py`, 30/30 pass (`checks_output.txt`). Pictures: `figures.py`.*
 
 ## Verdict

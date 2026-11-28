@@ -1,5 +1,7 @@
 # DRAFT · The Riemann hypothesis through Affine Composition Theory
 
+> **Names:** some words or symbols on this page (fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra (repo: fused-hyperoperation-algebra).
 Follow-up: [`elliptic-object/`](elliptic-object/README.md) tries the "elliptic object" (all local factors elliptic) and the positivity and precession questions.
 

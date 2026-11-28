@@ -1,5 +1,7 @@
 # Path integrals in a stronger sense: the extra bit
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Part of topics/why-i.
 
 **Verdict.** Path integrals become a real case of the weighted circle operation once three published pieces are added. The first is a fixed twist size, which plays the role of mass and ħ. The second is the rule that only quadratic generators keep the chain exact. The third is Daubechies and Klauder's Brownian measure, which already lives on the order dial's own half-plane. No published structure fixes the number ħ. The best on offer, our curvature check included, fixes only ratios like area over ħ.

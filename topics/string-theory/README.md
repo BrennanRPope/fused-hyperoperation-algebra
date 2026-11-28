@@ -1,5 +1,7 @@
 # String theory: what it rests on, and what we could borrow (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Verdict.** String theory does give G a dial, but not one our chains can turn: Newton's constant comes out as (coupling)² × (string length)^(D−2), G ∝ g_s² ℓ_s⁸, and the coupling g_s is a weight paid every time the string's surface grows a handle. In holography the same fact reads G = π/(2N²) in AdS units. So a G dial needs two things we don't have: an independent length dial and a dial that counts joinings and splittings. The nearest thing inside our reach is the 1/N of N×N matrix chains, which is a known handle-counting dial ('t Hooft 1974); that is the one lead here worth following toward G.
 
 Two smaller things are worth borrowing as framings, both known math with our placement. **T-duality R ↔ α′/R is exactly the circle-operation inverse at k = 1**, with the self-dual radius as the identity and the wall as R = 0. **The order dial's stretch-and-shift group is the "perturbative" (Borel) half of the SL(2) where string dualities live**, with its do-nothing point i as the self-dual coupling g_s = 1. The dualities themselves sit outside our group.

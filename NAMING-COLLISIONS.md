@@ -4,9 +4,9 @@ Some names and symbols in Fused Hyperoperation Algebra mean something else in st
 computing, or in Lean's mathlib library. This page lists every one we know of, so that a reader who meets one of ours
 (or one of theirs) can tell which meaning is in play.
 
-Version 0.1.0 is already released, and it uses all of the names below. Nothing here renames anything. Renames
-proposed for 1.0 are in [the names review](topics/names-review/README.md). Once 1.0 is out, this page records which meaning each version
-uses.
+Version 0.1.0 used the old names below; the renames decided for 1.0 were applied in v0.2.0, and the table under
+"What changed for 1.0" maps old to new. The rows after it describe the v0.1.0 names, so readers of either version can
+follow. Every topic write-up that uses one of these names links here near its title (added Nov 28, 2026).
 
 Last checked: 2026-11-25, against the repo at commit efa8013 and a fresh copy of mathlib4.
 

@@ -1,5 +1,7 @@
 # Shape-dial survey: which proved laws slide into one another (DRAFT)
 
+> **Names:** some words or symbols on this page (⊕, fused, rung, wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "a survey of all of our laws that we've proven to see if the shape dial is able to move from one to
 another, not just these 2, but really all of them." Then: "add a polishing step to all of our methods, as long as it

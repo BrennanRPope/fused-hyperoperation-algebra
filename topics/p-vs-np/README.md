@@ -1,5 +1,7 @@
 # P vs NP: what can't work, and where the circle operation touches it
 
+> **Names:** some words or symbols on this page (⊕, mult-add, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Lean module: `lean-library/FusedAlgebra/Topics/PvsNP.lean` (20 theorems,
 core Lean 4.37, no mathlib, no `sorry`, standard axioms only; library now 108 modules,
 2,735 theorems).

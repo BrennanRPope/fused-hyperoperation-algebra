@@ -1,5 +1,7 @@
 # Calculus from the circle operation (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (⊕, mult-add) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/VBRCmFrQVwQiXjMxZkY5SY (source index.html here)
 
 - lean/FusedCalculus.lean: 29 theorems, core Lean 4.37.0-rc1, no mathlib, no sorry, standard axioms only

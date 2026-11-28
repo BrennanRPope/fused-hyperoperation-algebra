@@ -1,5 +1,7 @@
 # The circle operation as an axiom: the foundation files
 
+> **Names:** some words or symbols on this page (fused, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Core Lean 4.37.0-rc1, no mathlib, no `sorry`. `./build.sh` builds the shared
 library (if needed) and then these files; `Axioms/Check.lean` confirms every
 theorem uses only Lean's three standard axioms. Last clean build: Nov 25, 2026,

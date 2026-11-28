@@ -1,5 +1,7 @@
 # Do shapes depend on shapes?
 
+> **Names:** some words or symbols on this page (mult-add, wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Question (Brennan): laws depend on other laws, and we group laws by shape. Do certain shapes depend on other shapes?
 
 ## Answer in three levels

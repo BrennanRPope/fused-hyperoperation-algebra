@@ -1,5 +1,7 @@
 # DRAFT · Free exploration: spacetime is the entanglement pattern that passes a hypercube test
 
+> **Names:** some words or symbols on this page (rung, wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Open exploration, asked for by Brennan ("come back with something you find interesting... the goal is
 finding this North Star"). Checks: `checks.py` → `checks_output.txt` (23/23 pass). Pictures: `figures.py` →
 `figures/`. Second pass: `checks2.py` → `checks2_output.txt`, pictures from `figures2.py`. Pushed Nov 25 as a draft (working folder `exploration/`). Marked DRAFT: the computations reproduce known results; the "ours" items below are

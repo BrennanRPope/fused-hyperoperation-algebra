@@ -1,5 +1,7 @@
 # DRAFT · Entropy and knots: do they find zeros or stable orbits?
 
+> **Names:** some words or symbols on this page (wall, trace monoid) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra. Follows
 [chaos-composition](../chaos-composition/README.md) (entropy as a count of compositions, the Cartier–Foata polynomial)
 and [knot-theory](../knot-theory/README.md) (tangle sum as the circle operation at the loop value). Asked for by Brennan

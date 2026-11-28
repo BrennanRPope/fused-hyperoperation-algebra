@@ -1,5 +1,7 @@
 # Round 15: boost loops on the glued slabs, and time as the fused shift
 
+> **Names:** some words or symbols on this page (⊕, fused, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Builds directly on round 14 (`../round14/`), whose slab machinery is reused unchanged, and on the twisted-boost law (`../../twisted-boosts/`) and the fused shift (`fused_shift` in `../../riemann/round8/lean/RiemannRound8.lean`). Checks: `checks.py` → `checks_output.txt` (**7 / 7 pass**, about 27 s; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f22`. Colour key: **blue = the law or the shift, orange = Regge read-back, grey = reference**.*
 
 ## Verdict first

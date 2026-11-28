@@ -1,5 +1,7 @@
 # DRAFT · The dials, named from affine geometry and their own fields
 
+> **Names:** some words or symbols on this page (⊕, fused, wall, twist, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: rename the dials "now that we know them better, preferring their existing names", names that are
 "useful, not two people's last names", "from the language of shapes", "affine geometrical terms", with "a clear lineage"

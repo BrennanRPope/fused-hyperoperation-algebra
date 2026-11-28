@@ -1,5 +1,7 @@
 # The power set with one dial per element (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Task: Brennan's "mini dials" idea from the voice call: each element gets its own dial for how much it takes part. Steered during the work to (1) merging symmetry, then complement symmetry, and whether they match; (2) the primes as an easier test bed (squarefree numbers, zeta); (3) other known sets, looking for common dials.
 
 Page: published as an artifact (see PAGES-INDEX.md, "power set dials"); source index.html here.

@@ -1,5 +1,7 @@
 # Carnot cascade and the finite-time efficiencies (DRAFT)
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result in one sentence:** only Curzon–Ahlborn is a knob image of Carnot. The other known efficiency bounds are not,
 but read in the right coordinate they are all plane laws. The whole low-dissipation family lies on one parabola
 parallel to the border, running from the parity point to the velocity point. Cascading many engines pulls every

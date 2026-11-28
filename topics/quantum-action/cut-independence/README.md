@@ -1,5 +1,7 @@
 # Cut-independence from the swap rule's q weights (DRAFT, Nov 26 2026)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result.** Yes: 3D quantum gravity's rule that the answer doesn't depend on how space is cut into
 tetrahedra follows from our swap rule's face weight q, once q is set to a root of unity. Every link of
 the chain checks out (11 of 11 checks). Four different cuttings of the 3-sphere give the same number to

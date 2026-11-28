@@ -1,5 +1,7 @@
 # DRAFT · Chaos as repeated self-composition (category-theory frame)
 
+> **Names:** some words or symbols on this page (wall, trace monoid) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra. Follows
 [order-dial](../order-dial/README.md) (composition as the frame) and builds on [dynamical-systems](../dynamical-systems/README.md).
 Asked for by Brennan: chaos next, "in the same frame", after he chose category theory as the frame for the composition

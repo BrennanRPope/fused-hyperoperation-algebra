@@ -1,5 +1,7 @@
 # Parabolic fixed points elsewhere: does the rung step's fingerprint show up? (DRAFT)
 
+> **Names:** some words or symbols on this page (rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result in one sentence:** many known systems creep into a fixed point the same way the rung step does, but
 only critical Poisson branching and tetration at the kiss base e^(1/e) carry its exact fingerprint, and the
 diamond lattice and intermittency do not.

@@ -1,5 +1,7 @@
 # Closed leads, re-judged with the fuller theory (DRAFT)
 
+> **Names:** some words or symbols on this page (⊕, fused, rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, 2026-11-25.** Nothing here is a new theorem. Every lead below was already set aside on an earlier
 page; this page asks again, one at a time, whether what we now know changes the verdict. Where a reading is ours
 it says "ours". Pictures are made by `figures.py` from known formulas; nothing is fitted.

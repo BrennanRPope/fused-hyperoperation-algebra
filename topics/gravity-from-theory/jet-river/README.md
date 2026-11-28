@@ -1,5 +1,7 @@
 # DRAFT: The river as a jet field (Nov 26, 2026)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Asked by Brennan (voice call): "it's this idea of a number being represented by multiple dimensions and so that
 could mean all the different i think of the jet is kind of what we talked about as well maybe", and "there's just
 more structure to it i think than just velocity ... not just the first derivative".

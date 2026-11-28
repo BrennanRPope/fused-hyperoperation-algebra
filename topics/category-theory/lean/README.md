@@ -1,5 +1,7 @@
 # CategoryTheory.lean
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 - 36 theorems (plus the explicit isomorphisms `optionThese`, `optionTheseK`, `unitL`, `assoc` as definitions
   carrying their round-trip proofs), namespace `CategoryTheory`, core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 - Imports only `FusedAlgebra.Base`.

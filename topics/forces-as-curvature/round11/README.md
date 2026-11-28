@@ -1,5 +1,7 @@
 # Round 11: spacetime glued from flat pieces (Regge's method)
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows rounds 1–10 (in the repo under `topics/forces-as-curvature/` and its subfolders; round 10 is in `../round10/`) and uses the twisted-boost law from `../../twisted-boosts/`. Checks: `checks.py` → `checks_output.txt` (**9 / 9 pass**, about 5 s; numpy), numbers in `results.json`. Picture: `figures.py` → `figures/f18`. Colour key: **blue = the law, orange = glued flat pieces (Regge), grey = reference**.*
 
 ## Verdict first

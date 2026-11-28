@@ -1,5 +1,7 @@
 # Lean: MeasureProbability.lean
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 - 36 theorems, core Lean 4.37.0-rc1, no mathlib, no `sorry`.
 - Compiles clean: `LEAN_PATH=/tmp/lib/build lean lean/MeasureProbability.lean` (no errors, no warnings).
 - Axioms checked with `#print axioms` on lam_corners, dual_weight, no_norm_past_wall, sure_atom_exists, odds_or, indep_dial, dial_gap_cov, yor, lam_equal_atoms, norm_two_sign: only propext, Classical.choice, Quot.sound.

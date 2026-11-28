@@ -1,5 +1,7 @@
 # Round 10: the law's own bookkeeping gives matter charge ½ under the twist
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows rounds 1–9 (in the repo under `topics/forces-as-curvature/` and its subfolders `round5/` … `round9/`) and uses the twisted-boost law from `../../twisted-boosts/`. Checks: `checks.py` → `checks_output.txt` (**7 / 7 pass**, under 1 s; numpy and sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f17`. Colour key: **blue = the law's bookkeeping, orange = ordinary spinor bookkeeping, grey = reference**.*
 
 ## Verdict first

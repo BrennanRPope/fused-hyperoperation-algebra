@@ -1,5 +1,7 @@
 # DiffGeometry.lean
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 - 32 theorems. Compiles clean with core Lean 4.37.0-rc1 against the shared library build
   (`/tmp/lib/build`): no errors, no warnings, no `sorry`. `#print axioms` on cr_base,
   dial_flat_iff, rmul_form, central_chart and cr_num showed only propext, Classical.choice,

@@ -1,5 +1,7 @@
 # e, i and π from one dial, and where i lives in physics (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Verdict.** In classical physics i is always removable shorthand. It stands for one of four things: a quarter turn, an oriented area, a flipped signature (time measured as an angle), or the fact that causes come before effects. Only in quantum composition is i essential. Composite systems need complex numbers to be described by local measurements (local tomography), and 2021–22 experiments rule out real-number quantum theory, though that is still argued in 2026.
 
 In the dial picture:

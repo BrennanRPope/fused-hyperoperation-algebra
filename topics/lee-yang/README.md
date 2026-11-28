@@ -1,5 +1,7 @@
 # Lee–Yang zeros on the dial (Nov 25, 2026)
 
+> **Names:** some words or symbols on this page (⊕, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: https://claude.ai/artifact/UQQzmkzekxe2hL4m8F8NQL
 
 - dialgas.py: dial gas Z = sum_S z^|S| k^e(S) (one edge = 1 + x (+)_k y); exact counts for rings and tori by transfer matrix.

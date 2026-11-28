@@ -1,5 +1,7 @@
 # Mathlib port check: does the port prove the same things as the originals?
 
+> **Names:** some words or symbols on this page (mult-add, fused, rung) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Checked Nov 25, 2026, against branch `mathlib-port` of BrennanRPope/fused-hyperoperation-algebra
 (folder `lean-library-mathlib/`, head `95bf1f4`), compared with the core-Lean originals it was
 ported from (`lean-library/` as of main `7a51396`). Those 62 original files are byte-identical to

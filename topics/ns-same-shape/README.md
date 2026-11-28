@@ -1,5 +1,7 @@
 # DRAFT · Maths with the same shape as Navier–Stokes (with spacetime as a turbulent flow)
 
+> **Names:** some words or symbols on this page (rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Nov 25, 2026. Asked for by Brennan: "and then navier stokes how close are we on that", then "I'm wanting to look for a
 math that has the same shape not necessarily a direct uh, underlying identical mechanic, but just the same shape", and
 then "I want to go ahead and add space time as a turbulent flow to the uh, to that same effort." Background from his

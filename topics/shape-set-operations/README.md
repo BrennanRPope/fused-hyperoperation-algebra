@@ -1,5 +1,7 @@
 # Set operations on shapes, as a core technique (DRAFT)
 
+> **Names:** some words or symbols on this page (fused, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra).
 Asked for by Brennan: "Intersections of shapes seems like fertile ground and should be a core technique I think",
 "Or really set operations on the shapes", "So the fused hyperoperation is in fact a union at it core in the most

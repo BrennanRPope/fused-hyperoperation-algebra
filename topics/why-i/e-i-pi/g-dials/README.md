@@ -1,5 +1,7 @@
 # Dials for G: what the literature offers
 
+> **Names:** some words or symbols on this page (mult-add, wall, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Nov 25, 2026. Follows [e-i-pi](../README.md) and [chain-resolves](../chain-resolves/README.md), which ended with "G still has no dial". Checks: `checks.py`, 28/28 pass (`checks_output.txt`). Pictures: `figures.py`.*
 
 ## Verdict

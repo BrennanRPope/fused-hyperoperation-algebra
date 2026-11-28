@@ -1,5 +1,7 @@
 # Riemann, round 4: what has to stay positive along the rewind, and the barrier chain under our dials (DRAFT)
 
+> **Names:** some words or symbols on this page (fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *Affine Composition Theory, built on Fused Hyperoperation Algebra. DRAFT, Nov 26 2026. Rounds 1 to 3: [round 1](../README.md), [the elliptic object](../elliptic-object/README.md), [round 3](../round3/README.md).*
 
 ## The answer

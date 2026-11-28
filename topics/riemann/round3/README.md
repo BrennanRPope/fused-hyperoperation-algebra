@@ -1,5 +1,7 @@
 # DRAFT · The Riemann hypothesis, round 3: the fused rewind, the Kerr turn and the barrier chain
 
+> **Names:** some words or symbols on this page (fused, rung, wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 26 2026.** Part of Affine Composition Theory, built on Fused Hyperoperation Algebra.
 Asked for by Brennan: "Please keep working on Riemann hypothesis". In this thread he added: "I do think fused
 hyperoperations could serve the reversibility we are looking for" and "That is the whole point of fusion".

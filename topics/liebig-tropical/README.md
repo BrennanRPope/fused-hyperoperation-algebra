@@ -1,5 +1,7 @@
 # Liebig's law of the minimum: a stop at the end of one knob (DRAFT)
 
+> **Names:** some words or symbols on this page (wall) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **Result in one sentence:** yes, Liebig's minimum is a stop. Turn one knob we already have, the rate knob that
 leaves the multiplicative law unchanged, and the additive growth law slides all the way to Liebig. The old closure
 was right that the one dial can't reach Liebig, but that was a limit of the dial, not of the theory.

@@ -1,5 +1,7 @@
 # Height flow: entropy family, running coupling and invariants
 
+> **Names:** some words or symbols on this page (rung, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 > **Partly DRAFT.** The invariants part (iterative residue and horn maps) is a first pass: its numbers are checked, its write-up isn't final. The entropy family and the running coupling are done.
 
 *Merged stream. Folder renamed from `height-entropy/`. The earlier running-coupling folder

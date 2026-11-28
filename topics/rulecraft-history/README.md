@@ -1,5 +1,7 @@
 # History in Rulecraft: what the model does when rules come one at a time (DRAFT)
 
+> **Names:** some words or symbols on this page (⊕, mult-add, fused, trace monoid) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, 26 Nov 2026.** Part of Affine Composition Theory (repo: fused-hyperoperation-algebra). Follows up lead F2 of [`closed-leads-fresh-look/`](../closed-leads-fresh-look/README.md). Checks:
 [`checks.py`](checks.py) (24 of 24 pass, [output](checks_output.txt)); polishing pass [`polish.py`](polish.py) (4 of 4,
 [output](polish_output.txt)); pictures [`figures.py`](figures.py). Coupling (section 9):

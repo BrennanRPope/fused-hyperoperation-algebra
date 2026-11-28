@@ -1,5 +1,7 @@
 # DRAFT · Every force as curvature (and twist), spacetime included
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Checks: `checks.py` → `checks_output.txt` (**61 / 61 pass**, about 8 s; numpy, scipy, sympy, mpmath), numbers in `results.json`. Pictures: `figures.py` → `figures/f1 … f11`. Colour key: **orange = known, blue = ours**.*
 
 Brennan's asks (Nov 27, his words): "look at the fundamental forces and see how they are all derivable from quantum mechanics so we can use similar tools to derive gravity ... show how the fabric of the universe the curvature of space time can be built from our model and how all of the forces can be viewed as following the curvature of some geometry"; then "keep pushing until we are able to build them all in spacetime"; then "The idea that reality itself is twisted might be a good tack ... And might explain why the two models don't agree".

@@ -1,5 +1,7 @@
 # Information theory through the circle operation: the full pass
 
+> **Names:** some words or symbols on this page (rung, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 Page: index.html (self-contained). Checks: checks.py → checks_output.txt (28/28 pass). Lean: lean/InformationFull.lean (31 theorems, compiles clean), lean/README.md.
 
 Builds on math-theory/information-theory/ (page SBsWmduwSNADpPVbeRDq2v, InfoFused.lean), entropy-noise (1To24w7SazEuaE5Pjsj4YM), quantum-noise (X6u4iNGch19w41ioqJ5VoW), thermodynamics (SKKLwKiEg4nyYGfrw32sp5), q (9AtexUZrzvsPfzSA7g91dL), and the measure-probability page of this pass (its E[X ∘ₖ Y] = EX ∘ₖ EY engine).
