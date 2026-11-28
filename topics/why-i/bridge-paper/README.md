@@ -1,7 +1,5 @@
 # DRAFT: Why quantum needs i, and a small bridge toward gravity (Nov 28, 2026)
 
-> **Names:** some words or symbols on this page (mult-add, fused, Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
-
 **DRAFT. Not versioned, not submitted, not pushed to the repo. Only Part 1 has steps proved in Lean.**
 
 Asked by Brennan on a voice call: "I want to expand the scope of that paper to this whole discussion we've had", "I feel like

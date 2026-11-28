@@ -1,7 +1,5 @@
 # DRAFT · All the quantum–gravity bridges as one study, ours included (Nov 28, 2026)
 
-> **Names:** some words or symbols on this page (Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
-
 **DRAFT. Not versioned, not proved in Lean.** Asked by Brennan on a voice call: "let's look at all of the bridges together as one
 study including this new bridge and see if that can help us give a shape for some more new bridges that might come up."
 
