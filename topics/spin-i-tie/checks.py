@@ -174,7 +174,9 @@ def adj_commutant_dim(mats):
         rows.append(np.array([[np.vdot(T[c], M @ T[bb] - T[bb] @ M).real * 4 for bb in range(3)] for c in range(3)]))
         rows.append(np.array([[np.vdot(T[c], M @ T[bb] - T[bb] @ M).imag * 4 for bb in range(3)] for c in range(3)]))
     s = np.linalg.svd(np.vstack(rows), compute_uv=False)
-    return int(np.sum(s < 1e-6 * max(s[0], 1e-30))) if s[0] > 1e-9 else 3
+    # rank cut: the zero singular value comes out near 1e-6 (relative) from finite-difference noise, the
+    # smallest true nonzero one is about 0.2, so 1e-3 separates them with wide headroom on both sides
+    return int(np.sum(s < 1e-3 * max(s[0], 1e-30))) if s[0] > 1e-9 else 3
 
 
 def cov_const_dim(X, wfun, h=1e-5):
@@ -190,7 +192,10 @@ def cov_const_dim(X, wfun, h=1e-5):
         for i in range(3):
             for j in range(i + 1, 3):
                 mats.append((Fp[i, j] - Fm[i, j]) / (2 * h) + A0[kk] @ F[i, j] - F[i, j] @ A0[kk])
-    if max(np.abs(M).max() for M in mats) < 1e-6:
+    # The pure-gauge field is exactly flat, but nested finite differences (step 1e-5) leave about 1e-6 of
+    # rounding noise, which sat right at the old 1e-6 cut and made S3 flaky. Truly curved fields here are >= 0.9,
+    # so a 1e-3 cut sits about 500x above the noise and about 900x below the signal.
+    if max(np.abs(M).max() for M in mats) < 1e-3:
         return 3  # flat: every constant shift is a convention (vacuum)
     return adj_commutant_dim(mats)
 
