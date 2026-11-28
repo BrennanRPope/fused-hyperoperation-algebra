@@ -1,0 +1,36 @@
+# The slow numeric runs (tools/checks_slow.txt), kept out of per-push CI so that CI stays to the Lean
+# builds and unit-test-style checks. Started by hand from the Actions tab (Run workflow). Every check
+# script is in exactly one of the two runs: ci.yml runs the rest with --quick.
+name: Slow checks
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: slow-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  slow:
+    name: Slow numeric checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: tools/requirements-checks.txt
+
+      - name: Install check libraries
+        run: python -m pip install -r tools/requirements-checks.txt
+
+      - name: Run the slow checks in tools/checks_slow.txt and compare with the saved output
+        # The four slowest keep every math-library thread (tools/checks_all_threads.txt); new-ties
+        # checks12.py runs alone at the end (tools/checks_run_alone.txt).
+        run: python tools/run_checks.py --slow-only --jobs 4 --timeout 3000

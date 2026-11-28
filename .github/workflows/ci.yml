@@ -1,7 +1,7 @@
 # The whole theory, checked on every push and pull request to main.
 # Fails loudly if any Lean proof breaks (core library or the Mathlib version), if any theorem uses `sorry` or an axiom beyond
 # Lean's standard three, if the assumptions ledger is out of date, or if any topic's
-# numeric checks fail. It never tags, releases or touches VERSION.
+# quick numeric checks fail (the slow numeric runs are in slow-checks.yml, started by hand). It never tags, releases or touches VERSION.
 name: CI
 
 on:
@@ -48,9 +48,13 @@ jobs:
           fi
 
   checks:
-    name: Topic checks (numeric evidence)
+    name: Topic checks (quick, unit-test style, part ${{ matrix.shard }} of 3)
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
     steps:
       - uses: actions/checkout@v5
 
@@ -64,14 +68,21 @@ jobs:
         run: python -m pip install -r tools/requirements-checks.txt
 
       - name: Rebuild data files too large to commit (new-ties dist13.json, 15 MB, read by checks13.py)
-        # About 3 minutes on 4 cores. The repo keeps dist13_summary.json; topics/new-ties/.gitignore keeps
-        # the full file out.
-        run: cd topics/new-ties && python dist13.py 1000000 4
+        # About 3 minutes on 4 cores, only in the part that runs checks13.py. The repo keeps
+        # dist13_summary.json; topics/new-ties/.gitignore keeps the full file out.
+        run: |
+          if python tools/run_checks.py --quick --shard ${{ matrix.shard }}/3 --list | grep -qx 'topics/new-ties/checks13.py'; then
+            cd topics/new-ties && python dist13.py 1000000 4
+          else
+            echo "checks13.py is not in this part; nothing to rebuild"
+          fi
 
-      - name: Run every topics/**/checks*.py (and tools/extra_checks.txt) and compare with the saved output
-        # biology/03-cell takes about 13 minutes on a normal runner and doubled on a slow one (run 27),
-        # so the per-script limit is 50 minutes; the job's own limit stays 90.
-        run: python tools/run_checks.py --jobs 4 --timeout 3000
+      - name: Run the quick topics/**/checks*.py (and tools/extra_checks.txt) and compare with the saved output
+        # Per-push CI keeps to unit-test-style checks (Brennan, Nov 27): the slow numeric runs listed in
+        # tools/checks_slow.txt (over about a minute each in CI) run in slow-checks.yml, started by hand.
+        # The Lean builds above are the core of CI.
+        # Split three ways (Brennan, Nov 27): each job runs every third script, so none is left out.
+        run: python tools/run_checks.py --quick --shard ${{ matrix.shard }}/3 --jobs 4 --timeout 600
 
       - name: Topic write-ups still missing an Assumptions section (report only)
         if: always()

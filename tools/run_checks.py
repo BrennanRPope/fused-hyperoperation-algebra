@@ -12,6 +12,10 @@ Some scripts name their working folder as /mnt/project-files/math-theory/<topic>
 helper such as topics/gr-bridges/ga.py, or to write their output). Those paths are rewritten to
 the repo's topics/<topic> before the script runs, so the repo copy is what gets checked.
 Numeric checks are evidence, not proofs; the Lean library is where proofs live.
+With --quick (what CI runs on every push) the slow numeric runs listed in tools/checks_slow.txt are
+left out; --slow-only runs just those (the slow-checks workflow, started by hand). Every script is in
+exactly one of the two runs. --shard K/N runs every N-th script starting at the K-th, so CI splits the
+quick run across N jobs with nothing left out.
 A script listed in tools/checks_needing_packages.txt with a Python module CI does not install is
 reported as SKIP (not a failure) while that module can't be imported; it runs as soon as it can.
 A check line listed in tools/checks_known_stale.txt (it tests a snapshot of a file that a later round
@@ -106,6 +110,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jobs", type=int, default=os.cpu_count() or 2)
     ap.add_argument("--timeout", type=int, default=900)
+    group = ap.add_mutually_exclusive_group()
+    group.add_argument("--quick", action="store_true",
+                       help="leave out the slow scripts in tools/checks_slow.txt (what CI runs on every push)")
+    group.add_argument("--slow-only", action="store_true",
+                       help="run only the slow scripts in tools/checks_slow.txt (the slow-checks workflow)")
+    ap.add_argument("--shard", default="",
+                    help="K/N: run only the K-th of N equal parts (1-based), so CI can split the run across jobs")
+    ap.add_argument("--list", action="store_true", help="print the scripts this run would check, then stop")
     ap.add_argument("paths", nargs="*")
     a = ap.parse_args()
     if a.paths:
@@ -121,6 +133,33 @@ def main():
                         sys.exit(f"tools/extra_checks.txt lists {line.strip()}, which does not exist")
                     if p not in scripts:
                         scripts.append(p)
+    # Slow numeric runs (tools/checks_slow.txt: path, then its time in CI) stay out of the per-push
+    # run (--quick) and run in their own workflow (--slow-only), started by hand. Nothing is dropped:
+    # every script is in exactly one of the two runs.
+    slow = set()
+    slow_file = ROOT / "tools" / "checks_slow.txt"
+    if slow_file.exists():
+        for line in slow_file.read_text().splitlines():
+            parts = line.split()
+            if parts and not line.startswith("#"):
+                p = (ROOT / parts[0]).resolve()
+                if not p.exists():
+                    sys.exit(f"tools/checks_slow.txt lists {parts[0]}, which does not exist")
+                slow.add(p)
+    if a.quick:
+        scripts = [s for s in scripts if s.resolve() not in slow]
+    elif a.slow_only:
+        scripts = [s for s in scripts if s.resolve() in slow]
+    if a.shard:
+        k, n = (int(x) for x in a.shard.split("/"))
+        if not 1 <= k <= n:
+            sys.exit(f"--shard {a.shard}: need 1 <= K <= N")
+        # Every K-th script of the sorted list, so each part gets a spread of topics.
+        scripts = [s for i, s in enumerate(sorted(scripts)) if i % n == k - 1]
+    if a.list:
+        for s in scripts:
+            print(s.relative_to(ROOT))
+        return
     needs = {}
     needs_file = ROOT / "tools" / "checks_needing_packages.txt"
     if needs_file.exists():

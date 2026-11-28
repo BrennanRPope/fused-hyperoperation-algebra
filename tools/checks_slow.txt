@@ -1,0 +1,79 @@
+# Slow numeric runs, kept out of per-push CI (Brennan, Nov 27: keep the CI build to unit-test-style
+# scripts; the Lean proofs are the core). They run in .github/workflows/slow-checks.yml, started by hand.
+# Each line: a path, then its time (CI run 131 on Nov 27, or a local run where CI had no time yet).
+# A script goes here when it takes more than about a minute; every other check runs on every push.
+topics/affine-sphere/checks.py  341s
+topics/biology/03-cell/checks.py  1508s
+topics/biology/04-genetics/checks.py  182s
+topics/combinatorics/checks.py  330s
+topics/conics/checks.py  217s
+topics/consensus/checks.py  343s
+topics/corner-weights/checks.py  114s
+topics/curvature-dial-survey/checks.py  213s
+topics/dial-audit/checks.py  243s
+topics/dial-survey/checks.py  62s
+topics/dial-survey/wall/wall_checks.py  166s
+topics/dynamical-systems/checks.py  314s
+topics/elliptic-modulus/checks.py  65s
+topics/elliptic/rung_test.py  277s
+topics/entropy-knots/checks.py  245s
+topics/entropy-topology/checks.py  171s
+topics/force-reach/new-force/sphere_dials_checks.py  75s
+topics/forces-as-curvature/round13/checks.py  77s
+topics/forces-as-curvature/round14/checks.py  71s
+topics/forces-as-curvature/round15/checks.py  64s
+topics/forces-as-curvature/round16/checks.py  123s
+topics/forces-as-curvature/round17/checks.py  313s
+topics/forces-as-curvature/round24/checks.py  81s local
+topics/forces-as-curvature/round26/checks.py  87s local
+topics/forces-as-curvature/round8/checks.py  105s
+topics/fractional-rungs/e-every-height/e_every_height.py  72s
+topics/fractional-rungs/symbolic_proofs.py  343s
+topics/gr-bridges/checks.py  297s
+topics/gravity-from-theory/spinning-river/checks.py  2971s
+topics/hat-primes/checks.py  416s
+topics/height-flow/horn_invariants.py  233s
+topics/holographic-entropy-cube/checks2.py  69s
+topics/hypersphere/division-algebras/magic/checks_magic.py  86s
+topics/hypersphere/division-algebras/magic/checks_misalign.py  130s
+topics/hypersphere/division-algebras/magic/order2/checks_order2.py  303s
+topics/hypersphere/division-algebras/magic/twobody2/checks_kinetic.py  2813s
+topics/hypersphere/division-algebras/magic/twobody2/checks_mixed2.py  265s
+topics/hypersphere/division-algebras/magic/twobody2/checks_static.py  62s
+topics/hypersphere/division-algebras/magic/twobody2/checks_twobody2.py  181s
+topics/hypersphere/orbits/checks_orbits.py  68s
+topics/klein-flow/checks.py  127s
+topics/klein-flow/periodic-box/checks.py  269s
+topics/lee-yang/checks.py  123s
+topics/new-ties/checks11.py  177s
+topics/new-ties/checks12.py  run alone, 11.4 GB
+topics/new-ties/checks17.py  71s
+topics/new-ties/checks18.py  71s
+topics/new-ties/checks19.py  472s
+topics/new-ties/checks20.py  319s
+topics/physics-bridges/checks.py  98-270s local
+topics/pi/constants_hunt.py  79s
+topics/precession/checks.py  86s
+topics/probability-entanglement/checks2.py  89s
+topics/q-across/flow_check.py  72s
+topics/riemann/checks.py  407s
+topics/shape-dial-survey/checks.py  316s
+topics/shape-dial-survey/even_p_check.py  111s
+topics/shape-dial-survey/even_p_proof_check.py  over 150s local
+topics/shape-dial-survey/general_p_far.py  474s
+topics/shape-dial-survey/hb_check.py  over 150s local
+topics/shape-dial-survey/interlace_check.py  105s
+topics/shape-dial-survey/lobe_law_check.py  430s
+topics/shape-dial-survey/new_laws.py  89s
+topics/shape-dial-survey/p3_certificate.py  603s
+topics/shape-dial-survey/pendulum_leeyang_check.py  96s local
+topics/shape-dial-survey/proof_checks.py  93s
+topics/shape-dial-survey/strip_check.py  120s
+topics/simplex/checks.py  150s
+topics/size-dial-residual/checks.py  1741s
+topics/solitons-rungs/checks.py  62s
+topics/spin-i-tie/clock-test/checks.py  133s local
+topics/topology/checks.py  61s
+topics/tunnelling/rewind_checks.py  317s
+topics/wall-shapes/checks.py  222s
+topics/why-i/dial-map/checks.py  76s
