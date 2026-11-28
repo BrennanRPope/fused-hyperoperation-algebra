@@ -151,6 +151,7 @@ So the hunch "a rotation forces a circle-shaped phase" holds, in the precise tex
 
 ## Files
 
+- `clock-test/` (DRAFT, Nov 28): round 2, one clock for everything. One clock keeps the i but can't make quantum chance alone; a shared clock needs a signal to reach 2√2; a helix of time changes nothing. 22 checks. See [clock-test/README.md](clock-test/README.md).
 - `README.md`: this write-up.
 - `checks.py` → `checks_output.txt`, `results.json`.
 - `figures.py` → `figures/t1-the-tie-at-a-glance.png`, `t2-the-shift-lemma.png`, `t3-one-quarter-turn-survives-at-f1.png`, `t4-rotation-is-a-gauge-turn.png`, `t5-rotation-phase-charge.png`, `t6-quantum-gravity-edge.png`, `t7-scorecard.png`.
