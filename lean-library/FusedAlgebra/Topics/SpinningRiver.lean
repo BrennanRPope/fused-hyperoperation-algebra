@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 to 29 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 30 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -507,6 +507,17 @@ theorem one_dial_beta_gamma (β γ l : K) (hp : 2 + 2 * γ - β = 3 * l^2) (hg :
 /-- **The square ties perihelion to the push** (round 29): the perihelion coefficient 2(2μ² + ν) from the EP weight μ
 and the PP weight ν becomes 6λ² when the field is one square (μ = λ, ν = λ²). -/
 theorem square_dial_perihelion (l : K) : 2 * (2 * l^2 + l^2) = 6 * l^2 := by
+  grind
+
+/-- **The third-level phase weight** (round 30): a change c₆ in the v⁶ term of E′/F moves the 3PN phase coefficient by
+40 c₆/((6 − 8)(6 − 5)) = −20 c₆, and a change δe₃ in the energy moves c₆ by 4 δe₃, so φ₆ moves by −80 δe₃. -/
+theorem third_level_phase_weight (de3 : K) :
+    (6 - 8) * (6 - 5) * (-20 : K) = 40 ∧ -20 * (4 * de3) = -80 * de3 := by
+  constructor <;> grind
+
+/-- **The π² floor** (round 30): missing only relativity's −(205/96)π²ν in the energy moves φ₆ by −(1025/6)π²ν
+(stated with the 96 and the 6 cleared, so it holds in any field). -/
+theorem pi_floor_phase (p2 n : K) : 6 * (-80 * (205 * p2 * n)) = 96 * (-1025 * p2 * n) := by
   grind
 
 end Field
