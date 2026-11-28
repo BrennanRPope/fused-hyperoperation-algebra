@@ -1,0 +1,104 @@
+{
+ "written_utc": "2026-11-28T00:20:45Z",
+ "uses_any_measured_bound": false,
+ "claim": "The rules give rational third-level coefficients; relativity has a pi^2 term proportional to nu; so the rules miss at the third level for every nu > 0 and match only at nu = 0.",
+ "z1_x4_pi2_coefficient_body1": "41*m1*(m1 - 6)*(m1 - 1)**2/192",
+ "z1_lower_orders_match_round13_truth": true,
+ "phase_rule_checks_phi2_phi4": {
+  "2": true,
+  "3": true,
+  "4": true
+ },
+ "floor_prediction": [
+  {
+   "nu": 0,
+   "mass_ratio_q": 0.0,
+   "delta_e3": 0.0,
+   "delta_phi6": 0.0,
+   "fractional_d_phi6": 0.0,
+   "phi6_nonlog": 173.81123372876687
+  },
+  {
+   "nu": 0.01,
+   "mass_ratio_q": 0.0102,
+   "delta_e3": 0.21075717731492902,
+   "delta_phi6": -16.86057418519432,
+   "fractional_d_phi6": -0.11980597543623503,
+   "phi6_nonlog": 140.73233095262526
+  },
+  {
+   "nu": 0.02,
+   "mass_ratio_q": 0.0208,
+   "delta_e3": 0.42151435462985803,
+   "delta_phi6": -33.72114837038864,
+   "fractional_d_phi6": -0.31321414633872663,
+   "phi6_nonlog": 107.66163905611332
+  },
+  {
+   "nu": 0.05,
+   "mass_ratio_q": 0.0557,
+   "delta_e3": 1.053785886574645,
+   "delta_phi6": -84.3028709259716,
+   "fractional_d_phi6": -9.926263528477838,
+   "phi6_nonlog": 8.492910820281153
+  },
+  {
+   "nu": 0.08,
+   "mass_ratio_q": 0.0961,
+   "delta_e3": 1.6860574185194321,
+   "delta_phi6": -134.88459348155456,
+   "fractional_d_phi6": 1.4884108954163018,
+   "phi6_nonlog": -90.62322366555101
+  },
+  {
+   "nu": 0.1,
+   "mass_ratio_q": 0.127,
+   "delta_e3": 2.10757177314929,
+   "delta_phi6": -168.6057418519432,
+   "fractional_d_phi6": 1.0761199604404363,
+   "phi6_nonlog": -156.67931833820455
+  },
+  {
+   "nu": 0.15,
+   "mass_ratio_q": 0.2251,
+   "delta_e3": 3.1613576597239352,
+   "delta_phi6": -252.9086127779148,
+   "fractional_d_phi6": 0.7859688715695128,
+   "phi6_nonlog": -321.77942654761614
+  },
+  {
+   "nu": 0.2,
+   "mass_ratio_q": 0.382,
+   "delta_e3": 4.21514354629858,
+   "delta_phi6": -337.2114837038864,
+   "fractional_d_phi6": 0.6925947324718214,
+   "phi6_nonlog": -486.88138660887967
+  },
+  {
+   "nu": 0.2222,
+   "mass_ratio_q": 0.4999,
+   "delta_e3": 4.683024479937723,
+   "delta_phi6": -374.6419583950178,
+   "fractional_d_phi6": 0.6687568107001558,
+   "phi6_nonlog": -560.206568966058
+  },
+  {
+   "nu": 0.24,
+   "mass_ratio_q": 0.6667,
+   "delta_e3": 5.058172255558296,
+   "delta_phi6": -404.6537804446637,
+   "fractional_d_phi6": 0.6537069952204636,
+   "phi6_nonlog": -619.013997713446
+  },
+  {
+   "nu": 0.25,
+   "mass_ratio_q": 1.0,
+   "delta_e3": 5.268929432873225,
+   "delta_phi6": -421.514354629858,
+   "fractional_d_phi6": 0.6464357425947628,
+   "phi6_nonlog": -652.0591713229209
+  }
+ ],
+ "prediction_summary": "If the rules miss only the pi^2 piece, the 3PN phase coefficient shifts by 0.646 of itself at equal masses and by 1.488 at nu = 0.08 (about 1:9); zero at nu = 0.",
+ "script_sha256": "3c304b0b8a318e3ad4648d244594f1881bb3fd079dcfc20571ec34132bf32782"
+}
