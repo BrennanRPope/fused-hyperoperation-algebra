@@ -2238,6 +2238,65 @@ def fig42():
     save(fig, "fig42_rules_fix_strength.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38, fig39, fig40, fig41, fig42):
+def fig43():
+    ne = json.load(open(os.path.join(HERE, "own_energy_falls.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(19, 6.6), gridspec_kw={"width_ratios": [1.0, 1.0, 1.15]})
+    # (a) how each piece of a bound pair's energy counts, for inertia and for falling (units of |Omega|, steady orbit T = |Omega|/2)
+    ax = axs[0]
+    T, Om = 0.5, -1.0
+    rows = [("inertia\n(how hard to push)", 1*T, 1*Om), ("falling weight\n(how hard it's pulled)", 3*T, 2*Om)]
+    for i, (lab, kt, ko) in enumerate(rows):
+        ax.bar(i, kt, 0.55, color=ORANGE, label="motion energy T" if i == 0 else None)
+        ax.bar(i, ko, 0.55, color=BLUE, label="field (binding) energy $\\Omega$" if i == 0 else None)
+        ax.plot([i - 0.32, i + 0.32], [kt + ko]*2, color="k", lw=3)
+        ax.text(i, kt + 0.08, f"T × {kt/T:g}", ha="center", fontsize=11)
+        ax.text(i, ko*0.78, f"$\\Omega$ × {ko/Om:g}", ha="center", va="center", fontsize=12, color="white")
+        ax.text(i + 0.36, kt + ko, f"net {kt + ko:+g}", va="center", fontsize=11)
+    ax.axhline(0, color="k", lw=0.8)
+    ax.set_xticks([0, 1]); ax.set_xticklabels([r[0] for r in rows], fontsize=11)
+    ax.set_ylabel("energy, in units of the binding energy $|\\Omega|$")
+    ax.set_xlim(-0.6, 1.9); ax.set_ylim(-2.5, 2.0)
+    ax.legend(loc="upper left", fontsize=10)
+    ax.set_title("(a) A bound pair falling: the push makes motion\nweigh ×3, field energy pulling makes binding ×2;\n"
+                 "in a steady orbit the nets agree, so it falls like mass")
+    # (b) eta against beta, river's push gamma = 1, with the measured band
+    ax = axs[1]
+    b = np.linspace(0.996, 1.004, 200)
+    ax.plot(b, (4*b - 1 - 3)*1e3, color=PURPLE, lw=2.5, label="$\\eta = 4\\beta - \\gamma - 3$, push $\\gamma = 1$")
+    em, es = ne["measured"]["eta"]
+    ax.axhspan((em - 2*es)*1e3, (em + 2*es)*1e3, color=GREEN, alpha=0.25, label="the Moon's orbit (lunar laser ranging), 2$\\sigma$")
+    ax.axhline(0, color="k", lw=0.8); ax.axvline(1, color="k", lw=1, ls=":")
+    ax.plot([1], [0], "o", ms=12, color=GREEN)
+    ax.annotate("river: $\\beta = 1$,\nits own energy falls like mass", xy=(1, 0), xytext=(0.9965, 8), fontsize=11,
+                arrowprops=dict(arrowstyle="->", color="k"))
+    ax.set_xlabel("$\\beta$: how strongly field energy pulls (rounds 13-15)")
+    ax.set_ylabel("$\\eta$ (× $10^{-3}$): how differently gravity's own energy falls")
+    ax.legend(loc="lower right", fontsize=10)
+    ax.set_title("(b) Universality forces $\\beta = 1$; the Moon's orbit\nmeasures it to about $10^{-4}$")
+    # (c) the clue map: three legs and what still goes in by hand
+    ax = axs[2]
+    ax.axis("off"); ax.set_xlim(0, 10); ax.set_ylim(0, 10)
+    boxes = [(5, 9.0, "everything rides the river the same way,\nits own energy included", PURPLE),
+             (1.8, 6.4, "PULL, first level\nforces $\\beta = 1$\n(this round, NE2)", GREEN),
+             (5.0, 6.4, "DRAG\nforced by the pull:\nBianchi rule\n(time study twist/;\nround 34 FX3)", GREEN),
+             (8.2, 6.4, "EVERY LEVEL\nJacobson's heat law\non every small horizon\n(time study einstein/)", GREEN),
+             (5, 3.3, "Einstein's equations at every point of the curved river:\nfield energy counts automatically, "
+                      "so $\\kappa = 41/16$\n(needs no value of G)", BLUE),
+             (5, 0.9, "still in by hand: the same entropy per area on every patch,\nand its value (which sets G)", ORANGE)]
+    for x, y, t, c in boxes:
+        ax.text(x, y, t, ha="center", va="center", fontsize=10,
+                bbox=dict(boxstyle="round,pad=0.45", fc="white", ec=c, lw=2.2))
+    for x0 in (1.8, 5.0, 8.2):
+        ax.annotate("", xy=(x0, 7.5), xytext=(5 + (x0 - 5)*0.4, 8.45), arrowprops=dict(arrowstyle="->", color=GREY, lw=1.6))
+    ax.annotate("", xy=(5, 4.05), xytext=(8.2, 5.25), arrowprops=dict(arrowstyle="->", color=GREY, lw=1.6))
+    ax.annotate("", xy=(5, 1.45), xytext=(5, 2.65), arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.6, ls="--"))
+    ax.set_title("(c) The reason, leg by leg: green = derived or known,\nblue = what follows, orange = still put in")
+    fig.suptitle("Fig 43. The river's own energy has to ride the river: that fixes field energy's pull at the first level (DRAFT)",
+                 fontsize=13)
+    fig.tight_layout()
+    save(fig, "fig43_own_energy_falls.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38, fig39, fig40, fig41, fig42, fig43):
     f()
 print("figures:", sorted(os.listdir(FIG)))

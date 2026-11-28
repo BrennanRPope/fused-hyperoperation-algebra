@@ -36,6 +36,7 @@ FE: a fifth rule, field energy acting on field energy: where pi^2 comes from (ro
 LG: field energy with the light-speed lag makes no pi^2 (round 32, lagged_field_energy.py).
 PI: what relativity's pi^2 is, and which meetings of the river's pieces can make it (round 33, pi2_channels.py).
 FX: whether the river's own rules fix the moving meetings' strength (round 34, rules_fix_strength.py).
+NE: whether the river's own energy rides the river, and what that fixes (round 35, own_energy_falls.py).
 TH: two bodies at the third level, where the rules must stop matching (round 30, third_level_predict.py,
     then third_level_compare.py against GWTC-4.0).
 EC: the radar echo past the Sun piece by piece, predicted before comparing (round 29, echo_predict.py ->
@@ -1911,6 +1912,23 @@ check("FX3 the first link of the consistency rule: for two moving bodies the fie
       "current -(dU/dt) grad U/4pi obey d/dt(density) + div(current) = 0 off the bodies, so the current (what must drag "
       "frames) is fixed by the density with no new number",
       fx_.conservation_check())
+
+
+# ---------------------------------------------------------------- NE: does the river's own energy ride the river (round 35)
+import own_energy_falls as ne_  # noqa: E402
+ne_out_ = ne_.main()
+check("NE1 the weights from the river's first-level metric (time part -1 + 2U - 2 beta U^2, push 1 + 2 gamma U): a body "
+      "has L/m = v^2/2 + U + v^4/8 + (gamma + 1/2) U v^2 + (1/2 - beta) U^2",
+      ne_out_["weights"]["matches"])
+check("NE2 a bound pair falling past a far mass weighs m + (2 gamma + 1) T + 2 (2 beta - 1) Omega against inertia "
+      "m + T + Omega; in a steady orbit the ratio is 1 + eta Omega/m with eta = 4 beta - gamma - 3 (Nordtvedt 1968), so "
+      "with the river's push gamma = 1, 'its own energy rides the river too' (eta = 0) forces beta = 1, the field-energy "
+      "strength rounds 13-15 put in by hand",
+      ne_out_["bound_pair"]["weight_ok"] and ne_out_["bound_pair"]["eta_is_nordtvedt"]
+      and ne_out_["eta_river_beta1_gamma1"] == "0" and ne_out_["beta_forced_by_universality_with_gamma1"] == ["1"])
+check("NE3 measured: lunar laser ranging eta = (4.4 +/- 4.5)e-4 (Will 2014) with Cassini gamma - 1 = (2.1 +/- 2.3)e-5 "
+      "gives beta - 1 = (1.2 +/- 1.1)e-4, within 2 sigma of the river's beta = 1",
+      ne_out_["measured"]["beta_minus_1_within_2sigma_of_0"])
 
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))

@@ -107,6 +107,11 @@ How it got here:
 27. **What fixes the strength (Part 28):** not the rules the river has (they give 0) and not boosts or the jet rule
    (the term is boost-invariant on its own, so its strength is free). A consistency rule does: the field's own energy
    pulls, pushes and drags like mass at every order. That rule is known to give Einstein's equations, and so 41/16.
+28. **Why field energy must act like mass (Part 29):** if everything rides the river the same way, the river's own
+   energy included, then at the first level field energy has to pull with exactly the strength rounds 13–15 put in
+   by hand (Nordtvedt's η = 4β − γ − 3 = 0 with the push's γ = 1), and the Moon's orbit measures it to about 10⁻⁴.
+   For every level, the time study's Jacobson route gives the same rule and so 41/16, assuming the same entropy per
+   area on every patch.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -131,7 +136,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**152/152 pass**, about 25 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**155/155 pass**, about 25 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2698,6 +2703,85 @@ rule is known to give exactly Einstein's equations (Kraichnan 1955; Deser 1970),
   gravitates (Kraichnan 1955; Gupta; Feynman's lectures on gravitation; Deser 1970), and that boost invariance
   constrains post-Newtonian terms only up to boost-invariant pieces.
 
+## Part 29. Does the river's own energy ride the river? (round 35)
+
+*DRAFT, round 35 (Nov 28, 2026). Script: `own_energy_falls.py` → `own_energy_falls.json` (seconds). Checks NE1–NE3.
+Lean: `nordtvedt_weight`. Clues from the time study: `../../time-study/einstein/` and `../../time-study/twist/`.*
+
+![Fig 43](figures/fig43_own_energy_falls.png)
+
+*Fig 43. (a) A pair of bodies held together by gravity, falling past a far mass. For inertia, its motion energy T and
+its field (binding) energy Ω each count once. For falling, the push makes motion count three times and field energy
+pulling makes binding count twice. In a steady orbit (T = |Ω|/2) both nets are −½|Ω|, so the pair falls exactly as
+its energy says. (b) How differently gravity's own energy falls, η = 4β − γ − 3, against field energy's pull strength
+β, with the river's push γ = 1. Only β = 1 gives η = 0. The green band is what the Moon's orbit allows. (c) The reason,
+leg by leg, and what is still put in by hand.*
+
+**Result:** yes, at the first level. If everything rides the river the same way, the river's own energy included,
+then field energy has to pull exactly as mass does, with the strength rounds 13–15 had to put in by hand. That is the
+first rung of round 34's consistency rule, and it is measured. For every level, the time study's Jacobson route points
+to the same rule, and that route is known to give Einstein's equations and so 41/16.
+
+### 29.1 The weights (NE1)
+
+Write the river's first-level field with two strengths left open: time part −1 + 2U − 2βU² (β says how strongly
+field energy pulls) and push 1 + 2γU (γ says how strongly the push acts). A body of mass m then has
+L/m = v²/2 + U + v⁴/8 + (γ + ½)Uv² + (½ − β)U². The Uv² term is how the push makes motion heavier in a field; the U²
+term is how field energy pulls.
+
+### 29.2 A bound pair falling (NE2)
+
+Put a pair of bodies (separation r, internal speeds u_a, u_b) far from a mass M, so each feels U = M/R + (partner)/r.
+Everything that multiplies M/R is the pair's falling weight: m + (2γ + 1)T + 2(2β − 1)Ω, where T is its motion energy
+and Ω = −m_a m_b/r its binding energy. Its inertia is its total energy, m + T + Ω (the first-level rules are boost
+invariant; we quote that standard fact rather than recheck it). In a steady orbit 2T + Ω = 0, and the falling weight
+over inertia is 1 + ηΩ/m with η = 4β − γ − 3. That is Nordtvedt's formula (1968), rederived from the river's two
+strengths.
+
+The river's push already has γ = 1 (round 29, Cassini). With that, η = 0 forces β = 1. So "gravity's own energy falls
+like any other energy" is not a separate rule at this level: given the push, universality fixes field energy's pull.
+The same Lagrangian sets the pair's pull on M, so what it weighs and how hard it pulls agree (momentum is conserved).
+
+### 29.3 Measured (NE3)
+
+Lunar laser ranging checks whether the Earth, whose gravitational binding is a larger share of its mass than the
+Moon's, falls toward the Sun differently from the Moon: η = (4.4 ± 4.5) × 10⁻⁴ (Will 2014 review). With Cassini's
+γ − 1 = (2.1 ± 2.3) × 10⁻⁵ (Bertotti, Iess and Tortora 2003), β − 1 = (η + γ − 1)/4 = (1.2 ± 1.1) × 10⁻⁴, within 2σ of
+the river's β = 1. (The Earth and Moon also differ in make-up, so this test assumes ordinary matter falls alike, which
+lab tests check separately.)
+
+### 29.4 Clues from the time study
+
+- **Drag is forced once the pull is.** `time-study/twist/` found that the Bianchi identity, which says composing steps
+  around a small cube has to close, forces a twist whenever a rate pattern moves (B = iE/s, no field equations used).
+  Round 34's FX3 is the same kind of statement for field energy: once its density is set, conservation sets its
+  current, and a current has to drag. So the drag leg needs no number of its own once the pull is fixed.
+- **Every level at once.** `time-study/einstein/` tested Jacobson's 1995 route: on every small horizon through every
+  point, heat in equals temperature times entropy change, with entropy proportional to area. The chain supplies the
+  temperature, the heat law and the patch-by-patch adding. Jacobson's route gives Einstein's equations at every point
+  of the curved field, nonlinear terms included, and those nonlinear terms are exactly the field's own energy pulling,
+  pushing and dragging. So the consistency rule, and with it 41/16, comes out without being put in.
+- **G doesn't matter for 41/16.** The one input the time study couldn't supply is the entropy per area, which sets G.
+  But 41/16 is a pure number in units of G, so it doesn't depend on that value.
+
+### 29.5 What this means, on its own merits
+
+- **What it shows:** at the first level the consistency rule follows from the river's own picture: if the river's own
+  energy rides the river like everything else, field energy must pull with β = 1. That turns rounds 13–15's hand-put
+  strength into a consequence, and the Moon's orbit measures it to about 10⁻⁴.
+- **What it doesn't show yet:** that the same universality fixes the third level's 41/16 directly. The Jacobson route
+  says it does (known), but that route assumes the same entropy per area on every patch, which is a form of the same
+  universality, not a proof of it from the chain.
+- **Lead?** Yes. The question has narrowed from "why must field energy act like mass?" to "why does every small patch
+  of horizon hold the same entropy per area?", and the time study already has the chain's area law (J5) and
+  patch-by-patch adding (J4) as starting points.
+- **Ours, as far as a short search found:** reading the strong equivalence principle as "the river's own energy rides
+  the river", rederiving Nordtvedt's η from the river's two strengths, and joining the time study's Jacobson and
+  Bianchi results to round 34's consistency rule.
+- **Known:** Nordtvedt's η = 4β − γ − 3 (Nordtvedt 1968; Will's book and reviews), the lunar laser ranging and Cassini
+  bounds, Jacobson's derivation (1995), and Will's conjecture that only Einstein's theory satisfies the strong
+  equivalence principle fully.
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -2784,9 +2868,9 @@ rule is known to give exactly Einstein's equations (Kraichnan 1955; Deser 1970),
 
 ## Files
 
-- `checks.py`: 152 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 155 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level, FE1–FE5 a fifth rule, field energy on field energy, LG1–LG5 field energy with the light-speed lag, PI1–PI5 what relativity's π² is, FX1–FX3 what fixes its strength), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level, FE1–FE5 a fifth rule, field energy on field energy, LG1–LG5 field energy with the light-speed lag, PI1–PI5 what relativity's π² is, FX1–FX3 what fixes its strength, NE1–NE3 whether the river's own energy rides the river), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2848,6 +2932,8 @@ rule is known to give exactly Einstein's equations (Kraichnan 1955; Deser 1970),
   even-legs count for static meetings; writes `pi2_channels.json` (seconds).
 - `rules_fix_strength.py`: Part 28's boost check, the rules' κ and the field-energy conservation check; writes
   `rules_fix_strength.json` (seconds).
+- `own_energy_falls.py`: Part 29's weights, the bound pair's η and the measured bounds; writes
+  `own_energy_falls.json` (seconds).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2855,8 +2941,8 @@ rule is known to give exactly Einstein's equations (Kraichnan 1955; Deser 1970),
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the forty-two figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`, Fig 39 `fifth_rule.json`, Fig 40 `lagged_field_energy.json`, Fig 41 `pi2_channels.json`, Fig 42 `rules_fix_strength.json`).
+- `figures.py`: the forty-three figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`, Fig 39 `fifth_rule.json`, Fig 40 `lagged_field_energy.json`, Fig 41 `pi2_channels.json`, Fig 42 `rules_fix_strength.json`, Fig 43 `own_energy_falls.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2870,7 +2956,7 @@ rule is known to give exactly Einstein's equations (Kraichnan 1955; Deser 1970),
   `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion`; round 30 adds `third_level_phase_weight`, `pi_floor_phase`;
   round 31 adds `boost_safe_shape`, `time_part_circle`; round 32 adds `lag_cancels_shape`,
   `lagged_sum_is_time_derivative`; round 33 adds `pi_forms_differ_by_time_derivative`, `adm_pi_circle`; round 34
-  adds `boost_drops_out` (rounds 33–34's not yet compiled). Rounds 27–28's were checked in sympy; rounds 29–32's have compiled in the library (round 32's
+  adds `boost_drops_out`; round 35 adds `nordtvedt_weight` (not yet compiled). Rounds 27–28's were checked in sympy; rounds 29–34's have compiled in the library (round 32's
   ported there in grind style, so the library's copy differs from this file's).
   Rounds 18–26's theorems have compiled in the library (as `Topics.SpinningRiver`). It builds on `FusedAlgebra.Topics.JetFields`.
 
@@ -2941,3 +3027,4 @@ rule is known to give exactly Einstein's equations (Kraichnan 1955; Deser 1970),
 | field energy with the light-speed lag: its time part's π² cancels to a total time derivative (four-term bookkeeping), so 41/16 must come from field energy between the pull, push and twist | **ours** in the river's terms (LG1–LG5); that a single scalar's two-derivative self-interaction can be redefined away, and that the 3PN π² comes from couplings between different potentials, known in spirit |
 | what relativity's π² is: one term, (41/16)(a·∇)F, pinned by the circle energy and the periastron advance; static meetings of the time part and the push can't make it, so it must come from moving meetings with the push or the twist | **ours** in the river's terms (PI1–PI5); DJS's Hamiltonian, the 3PN periastron advance and the Kaluza–Klein split known |
 | what fixes the moving meetings' strength: the river's rules give κ = 0, boosts and the jet rule leave it free, and only the consistency rule (field energy pulls, pushes and drags like mass) fixes it at 41/16 | **ours** in the river's terms (FX1–FX3); the bootstrap derivation of Einstein's equations (Kraichnan, Deser) known |
+| the river's own energy rides the river: Nordtvedt's η rederived from the river's two strengths, so universality with the push's γ = 1 forces field energy's pull β = 1; the time study's Jacobson and Bianchi results joined to the consistency rule | **ours** in the river's terms (NE1–NE3); Nordtvedt's formula, the lunar laser ranging and Cassini bounds, Jacobson 1995 and Will's strong-equivalence conjecture known |

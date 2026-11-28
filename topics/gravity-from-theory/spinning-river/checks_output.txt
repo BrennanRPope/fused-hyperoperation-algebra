@@ -181,5 +181,8 @@
 [PASS] FX1 boosts can't fix relativity's strength: (D1 + D2)^2 F is unchanged when both velocities shift by u (F depends only on y1 - y2), while a lopsided (D1^2 + D2^2) F changes; so kappa = 41/16 is free under the jet rule: 
 [PASS] FX2 the rules the river has give kappa = 0: only plain fractions at the third level (round 30) and a total time derivative from the lagged time part (round 32): 
 [PASS] FX3 the first link of the consistency rule: for two moving bodies the field-energy density (grad U)^2/8pi and current -(dU/dt) grad U/4pi obey d/dt(density) + div(current) = 0 off the bodies, so the current (what must drag frames) is fixed by the density with no new number: 
+[PASS] NE1 the weights from the river's first-level metric (time part -1 + 2U - 2 beta U^2, push 1 + 2 gamma U): a body has L/m = v^2/2 + U + v^4/8 + (gamma + 1/2) U v^2 + (1/2 - beta) U^2: 
+[PASS] NE2 a bound pair falling past a far mass weighs m + (2 gamma + 1) T + 2 (2 beta - 1) Omega against inertia m + T + Omega; in a steady orbit the ratio is 1 + eta Omega/m with eta = 4 beta - gamma - 3 (Nordtvedt 1968), so with the river's push gamma = 1, 'its own energy rides the river too' (eta = 0) forces beta = 1, the field-energy strength rounds 13-15 put in by hand: 
+[PASS] NE3 measured: lunar laser ranging eta = (4.4 +/- 4.5)e-4 (Will 2014) with Cassini gamma - 1 = (2.1 +/- 2.3)e-5 gives beta - 1 = (1.2 +/- 1.1)e-4, within 2 sigma of the river's beta = 1: 
 
-152/152 checks pass
+155/155 checks pass

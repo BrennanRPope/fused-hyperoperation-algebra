@@ -1,0 +1,39 @@
+{
+  "weights": {
+    "lagrangian": "-U**2*beta*epsilon**2 + U**2*epsilon**2/2 + U*epsilon**2*gamma*v**2 + U*epsilon**2*v**2/2 + U*epsilon + epsilon**2*v**4/8 + epsilon*v**2/2 - 1",
+    "matches": true,
+    "coef_Uv2": "gamma + 1/2",
+    "coef_U2": "1/2 - beta"
+  },
+  "bound_pair": {
+    "falling_weight": "-m_a*m_b*(4*beta - 2)/r + m_a + m_b + (2*gamma + 1)*(m_a*u_a**2/2 + m_b*u_b**2/2)",
+    "weight_ok": true,
+    "inertia": "m + T + Omega",
+    "eta": "4*beta - gamma - 3",
+    "eta_is_nordtvedt": true
+  },
+  "eta_river_beta1_gamma1": "0",
+  "beta_forced_by_universality_with_gamma1": [
+    "1"
+  ],
+  "measured": {
+    "eta": [
+      0.00044,
+      0.00045
+    ],
+    "gamma_minus_1": [
+      2.1e-05,
+      2.3e-05
+    ],
+    "beta_minus_1": [
+      0.00011525000000000001,
+      0.00011264684860216906
+    ],
+    "beta_minus_1_within_2sigma_of_0": true
+  },
+  "sources": [
+    "Nordtvedt 1968, Phys. Rev. 169, 1017 and 1014",
+    "Will 2014, Living Rev. Relativ. 17, 4",
+    "Bertotti, Iess, Tortora 2003, Nature 425, 374"
+  ]
+}
