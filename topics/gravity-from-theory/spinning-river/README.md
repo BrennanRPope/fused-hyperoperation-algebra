@@ -92,6 +92,9 @@ How it got here:
    so the rules must stop matching there at every mass ratio except a test body. If the rest matched, the missing π²
    alone would shift LIGO's third-level phase term by 0.65 of itself at equal masses; 66 events allow 0.06 to 0.18.
    The fix it points to: field energy acting on itself.
+24. **A fifth rule, field energy on field energy (Part 25):** of every way two bodies' fields can overlap, only
+   one makes π², field squared over field squared. It vanishes for bodies at rest and appears when they move; a
+   boost-safe version puts it exactly where relativity has it, and needs one number, 41/16, to match its size.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -116,7 +119,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**134/134 pass**, about 25 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**139/139 pass**, about 25 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2439,6 +2442,68 @@ The floor at equal masses, 0.65, is 2.3 to 11 times what these allow.
 - **Known:** the 3PN energy and its π² (Blanchet and collaborators; Damour, Jaranowski and Schäfer), the first law,
   the self-force value 41π²/32, the stationary-phase phase coefficients and the GWTC-4.0 bounds.
 
+## Part 25. A fifth rule: field energy acting on its own field energy (round 31)
+
+*DRAFT, round 31 (Nov 28, 2026). Script: `fifth_rule.py`. Checks FE1–FE5. Lean: `boost_safe_shape`,
+`time_part_circle`.*
+
+![Fig 39](figures/fig39_fifth_rule.png)
+
+*Fig 39. (a) Every way two bodies' fields can overlap, (1/4π)∫ r₁ᵃ r₂ᵇ d³x for a, b = −1 to −6: plain fractions
+(blue), zeros (white), cells that need a logarithm (grey), and one cell, body 1's field squared over body 2's field
+squared, that gives π²/4. (b) The size of the π² term in the third-level energy across mass ratios: relativity's
+(black), a fifth rule of the boost-safe shape at the size relativity needs (green dashes), and field energy's time part
+alone, scaled to agree for a small body (red), which bends away because it also puts π² into a ν² term.*
+
+### 25.1 Where a π² can come from (FE1, FE2)
+
+Every piece of two bodies' fields at this level reduces to overlaps (1/4π)∫ r₁ᵃ r₂ᵇ d³x = R(a, b) r₁₂^(a+b+3)
+(Riesz's formula, continued the way the regularizations used here continue it). R is a plain fraction whenever a or
+b is odd, and among the even ones every finite value is zero except one: R(−2, −2) = π²/4, checked by direct
+integration. That cell is body 1's field squared over body 2's field squared, and a field squared is the size of field
+energy. So:
+
+- **π² first appears when field energy acts on field energy,** with both masses squared (G³ m₁² m₂²). The four rules
+  never reach that cell, which is why Part 24 found them rational.
+- **It is exactly relativity's slot.** Relativity's π² multiplies μν = m₁²m₂²/m³ in the energy and, through the first
+  law, is first order in a small body's mass and absent for a test body (Part 24). A fifth rule can put π² nowhere
+  else.
+
+### 25.2 Bodies at rest: none. Bodies moving: yes (FE3, FE4)
+
+- **At rest,** field energy acting on field energy, ∫ U² (∇U)², has no π² at m₁²m₂²: its overlaps are R(−4, −2)
+  and R(−2, −4), both zero. The π² has to ride on motion.
+- **Moving,** field energy's time part, ∫ U² (∂U/∂t)², does make π²: (π²/4)(G³m₁²m₂²/r³)[−v₁²/8 − v₂²/8 + v₁·v₂ +
+  terms along the line between the bodies].
+- **But that form is lopsided.** Moving the whole pair at a steady speed must not change a π² term (up to a total
+  time derivative), so it can depend on the velocities only through v₁ − v₂. That forces 2α + γ = 0, and the time
+  part alone gives 3/4. On circles it would come to −(1/8 + 3ν/4), putting π² into a ν² term that relativity
+  doesn't have (Fig 39b, red). What restores the balance is the light-speed lag of field energy itself: the river's
+  rule A, applied to field energy as it is to the bodies.
+
+### 25.3 How big it must be (FE5)
+
+With the boost-safe shape, a circle sees one number K: L = K (π²/4) G³m₁²m₂² v₁₂²/r³ shifts the energy by
+−(5π²/6) K ν x³. Relativity's −(205π²/96) ν needs **K = 41/16**, so the term is (41π²/64) G³m₁²m₂² v₁₂²/r³ on circles.
+The 41 is the same 41 as in the self-force value 41π²/32.
+
+### 25.4 What this means, on its own merits
+
+- **What it shows:** relativity's π² does come out of field energy acting on itself, and from nothing earlier. It comes
+  only from moving field energy, and once the rule respects boost symmetry it lands only where relativity has it: the
+  ν term, first order in a small body's mass, nothing for a test body. That is three structural matches with no
+  number fitted.
+- **What it doesn't show:** that the river's own version of the rule gives K = 41/16. Getting K means carrying the
+  lagged, moving field energy (time part, push and twist of field energy) through in full, which is relativity's
+  third-level calculation in the river's pieces. Here K is only the target.
+- **Lead?** Yes, and a sharper one than Part 24's. The fifth rule's whole job on circular orbits is now one number,
+  41/16, and the simple version fails in a specific way that points to the fix: field energy has to carry the
+  light-speed lag. If applying rule A to field energy gives 41/16, the river makes relativity's π² from its own pieces.
+- **Ours, as far as a short search found:** the overlap census as a statement of where π² can come from, the
+  static-zero and boost-shape arguments in the river's terms, and K = 41/16 as the fifth rule's target.
+- **Known:** Riesz's formula, the 3PN energy and its π², the self-force value 41π²/32, and the π² terms of the 3PN
+  two-body Lagrangian (Blanchet and collaborators; Damour, Jaranowski and Schäfer; Foffa and Sturani).
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -2525,9 +2590,9 @@ The floor at equal masses, 0.65, is 2.3 to 11 times what these allow.
 
 ## Files
 
-- `checks.py`: 134 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 139 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level, FE1–FE5 a fifth rule, field energy on field energy), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2581,6 +2646,8 @@ The floor at equal masses, 0.65, is 2.3 to 11 times what these allow.
   across mass ratios; writes `third_level_prediction.json` (seconds).
 - `third_level_compare.py`: Part 24's comparison of `third_level_prediction.json` with the GWTC-4.0 bound on the
   third-level phase term (arXiv:2603.19020, Table 2); writes `third_level_compare.json`.
+- `fifth_rule.py`: Part 25's fifth rule: the overlap census (Riesz), the direct integral, the static and moving
+  field-energy terms, the boost check and the size relativity needs; writes `fifth_rule.json` (seconds).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2588,8 +2655,8 @@ The floor at equal masses, 0.65, is 2.3 to 11 times what these allow.
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the thirty-eight figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`).
+- `figures.py`: the thirty-nine figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`, Fig 39 `fifth_rule.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2600,9 +2667,9 @@ The floor at equal masses, 0.65, is 2.3 to 11 times what these allow.
   `square_from_three_sources`, `generic_radial_stiffness`, `generic_vertical_stiffness`,
   `equator_ratio_three_sources`; round 27 adds `kn_ring_plus_one_term`, `kn_equator_split`,
   `charged_radial_stiffness`, `kn_ratio_three_sources`; round 28 adds `time_part_light`, `push_photon_sphere`,
-  `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion`; round 30 adds `third_level_phase_weight`, `pi_floor_phase`.
-  Rounds 27–28's were checked in sympy; round 29's have compiled in the library; round 30's are written here, not yet
-  compiled.
+  `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion`; round 30 adds `third_level_phase_weight`, `pi_floor_phase`;
+  round 31 adds `boost_safe_shape`, `time_part_circle`. Rounds 27–28's were checked in sympy; rounds 29–30's have compiled in
+  the library; round 31's are written here, not yet compiled.
   Rounds 18–26's theorems have compiled in the library (as `Topics.SpinningRiver`). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
@@ -2668,3 +2735,4 @@ The floor at equal masses, 0.65, is 2.3 to 11 times what these allow.
 | the shadow piece by piece: the time part alone as Newton's light (bending exactly 2 arctan(M/b), no capture, no shadow), the horizon factor only with the push, ring + push's centred squashed shadow, the twist's sideways shift and D shape | **ours** as far as a short search found (SH1–SH4); the half-and-half of light bending (Soldner 1801, Einstein 1911/1915, Eddington's γ), the photon sphere, Bardeen's Kerr shadow (1973) and the EHT measurements known |
 | the radar echo piece by piece: the time part's half as slow clocks, the push's as extra path (γ = λ²), the twist's −8Ma/b; one push dial tying delay, bending and perihelion (β + γ = 2); the prediction written before comparing with Cassini | **ours** as far as a short search found (EC1–EC4); the Shapiro delay (1964), its clocks-plus-space halves in Eddington's γ, the spin (gravitomagnetic) delay and Cassini's γ (2003) known |
 | two bodies at the third level: the rules' coefficients rational, relativity's π² (zero only for a test body, self-force slope at the small end), the π²-only floor on LIGO's φ₆ predicted first and held against GWTC-4.0 | **ours** as far as a short search found (TH1–TH5); the 3PN energy and its π², the first law, the self-force 41π²/32, the phase coefficients and the GWTC-4.0 bounds known |
+| a fifth rule, field energy on field energy: the only overlap that makes π² (field squared over field squared), zero at rest, the boost-safe shape putting it in relativity's slot, and K = 41/16 as its size | **ours** as far as a short search found (FE1–FE5); Riesz's formula, the 3PN π² terms and the self-force 41π²/32 known |

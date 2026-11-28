@@ -2038,6 +2038,51 @@ def fig38():
     save(fig, "fig38_third_level.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38):
+def fig39():
+    fe = json.load(open(os.path.join(HERE, "fifth_rule.json")))
+    import fifth_rule as fr5
+    cen = fr5.census()
+    fig, axs = plt.subplots(1, 2, figsize=(15.5, 6.6), gridspec_kw={"width_ratios": [1.0, 1.15]})
+    # (a) the overlap census
+    ax = axs[0]
+    col = {"rational": "#c6dbef", "pole": "#eeeeee", "pi^2": RED}
+    for key, (val, kind) in cen.items():
+        A, B = map(int, key.split(","))
+        c = col[kind] if not (kind == "rational" and val == "0") else "#ffffff"
+        ax.add_patch(plt.Rectangle((B - 0.5, A - 0.5), 1, 1, fc=c, ec=GREY))
+        txt = {"pole": "log", "pi^2": "$\\pi^2/4$"}.get(kind, val)
+        ax.text(B, A, txt, ha="center", va="center", fontsize=9 if kind != "pi^2" else 12,
+                color="white" if kind == "pi^2" else "k")
+    ax.set_xlim(-6.5, -0.5); ax.set_ylim(-6.5, -0.5)
+    ax.set_xticks(range(-6, 0)); ax.set_yticks(range(-6, 0))
+    ax.set_xlabel("power of distance to body 2,  $r_2^{\\,b}$"); ax.set_ylabel("power of distance to body 1,  $r_1^{\\,a}$")
+    ax.annotate("field squared $\\times$ field squared\n(field energy on field energy)", xy=(-2, -2), xytext=(-5.4, -3.15),
+                fontsize=9.5, arrowprops=dict(arrowstyle="->", color=RED, lw=1.5), color=RED,
+                bbox=dict(fc="white", ec=RED, alpha=0.95))
+    ax.set_aspect("equal")
+    ax.text(-6.4, -7.45, "white 0: zero; grey log: needs a logarithm; blue: a plain fraction", fontsize=8.6)
+    ax.set_title("(a) Every way two bodies' fields can overlap:\none cell makes $\\pi^2$, and it is field energy on field energy")
+    # (b) the pi^2 in the energy across mass ratios
+    ax = axs[1]
+    nu = np.linspace(0, 0.25, 200)
+    gr = 205/96*nu
+    ax.plot(nu, gr, color="k", lw=2.6, label="relativity: $\\pi^2$ only in the $\\nu$ term ($205\\pi^2/96$)")
+    ax.plot(nu, 5/6*41/16*nu, color=GREEN, lw=2, ls="--", label="boost-safe fifth rule with $K = 41/16$ (the size relativity needs)")
+    w = 41/2                                             # time-part-only rule scaled to agree for a small body
+    ax.plot(nu, 5/6*w*(1/8 + 3*nu/4)*nu, color=RED, lw=2, label="field energy's time part alone, scaled to agree for a small body")
+    ax.scatter([0], [0], s=80, color=GREEN, zorder=5)
+    ax.set_xlabel("symmetric mass ratio $\\nu$  (0 = test body, 0.25 = equal masses)")
+    ax.set_ylabel("size of the $\\pi^2$ term in the third-level energy (units of $\\pi^2$)")
+    ax.legend(fontsize=9, loc="upper left")
+    ax.text(0.98, 0.04, "static field energy on field energy: exactly zero $\\pi^2$\nthe four rules: no $\\pi^2$ at all",
+            transform=ax.transAxes, ha="right", fontsize=9, bbox=dict(fc="white", ec=GREY, alpha=0.9))
+    ax.set_title("(b) Moving field energy makes $\\pi^2$; only a boost-safe rule\nputs it where relativity has it")
+    fig.suptitle("Fig 39. A fifth rule, field energy acting on its own field energy: where the $\\pi^2$ comes from (DRAFT)",
+                 fontsize=13)
+    fig.tight_layout()
+    save(fig, "fig39_fifth_rule.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38, fig39):
     f()
 print("figures:", sorted(os.listdir(FIG)))

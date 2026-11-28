@@ -163,5 +163,10 @@
 [PASS] TH3 every coefficient the rules produced at the second level is rational (next_order.json, all ratios), and so are the four field-on-field integrals of the fourth rule: the rules' closed forms cannot make the pi^2: 
 [PASS] TH4 the size floor: missing only the pi^2 piece moves the third-level phase coefficient by -80 delta e3 = -(1025/6) pi^2 nu (power kept as in relativity), 0.65 of itself at equal masses and nothing for a test body: 
 [PASS] TH5 the floor was written before the bound (third_level_prediction.json, no measured bound used) and held against GWTC-4.0's 66-event 3PN bound (arXiv:2603.19020, Table 2: +-0.18 hierarchical, +-0.06 restricted): at equal masses the missing pi^2 alone is 0.65, outside both; a test body is untouched: 
+[PASS] FE1 where a pi^2 can come from: every two-body overlap (1/4pi) int r1^a r2^b, a, b = -1..-6, is rational, zero or a pole except one, R(-2,-2) = pi^2/4, body 1's field squared over body 2's field squared (G^3 m1^2 m2^2): 
+[PASS] FE2 that overlap by direct integration (prolate spheroidal coordinates, r12 = 2): pi^3/2: 
+[PASS] FE3 field energy acting on field energy with the bodies at rest, int U^2 (grad U)^2, has no pi^2 at m1^2 m2^2 (its overlaps are R(-4,-2) and R(-2,-4), both zero); the identity behind the moving case holds: 
+[PASS] FE4 with the bodies moving, field energy's time part, int U^2 (dU/dt)^2, does make pi^2, with velocity weights -1/8, -1/8, 1 (v1^2, v2^2, v1.v2). That breaks boost symmetry (2 alpha + gamma = 3/4, not 0) and on circles gives -(1/8 + 3 nu/4): a nu^2 pi^2 that relativity lacks: 
+[PASS] FE5 with the boost-safe shape a circle sees one number K, L = K (pi^2/4) G^3 m1^2 m2^2 v12^2/r^3, shifting the energy by -(5 pi^2/6) K nu x^3; relativity's -(205 pi^2/96) nu needs K = 41/16: 
 
-134/134 checks pass
+139/139 checks pass

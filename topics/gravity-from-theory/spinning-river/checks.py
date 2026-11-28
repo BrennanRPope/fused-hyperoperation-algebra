@@ -32,6 +32,7 @@ EQ: the equator split three ways: which piece of the field gives each term of ro
 KN: charge on the spinning hole: which piece of the river gives each charge term (round 27, kn_split.py ->
     kn_split.json).
 SH: the black hole's shadow piece by piece (round 28, shadow_split.py -> shadow_split.json).
+FE: a fifth rule, field energy acting on field energy: where pi^2 comes from (round 31, fifth_rule.py).
 TH: two bodies at the third level, where the rules must stop matching (round 30, third_level_predict.py,
     then third_level_compare.py against GWTC-4.0).
 EC: the radar echo past the Sun piece by piece, predicted before comparing (round 29, echo_predict.py ->
@@ -1817,6 +1818,30 @@ check("TH5 the floor was written before the bound (third_level_prediction.json, 
       and tlc_["by_mass_ratio"]["0.25"]["floor_fraction"] > tlc_["measured"]["FTI_hierarchical"][2]
       and tlc_["by_mass_ratio"]["0.25"]["floor_fraction"] > tlc_["measured"]["TIGER_hierarchical"][2]
       and tlc_["test_body"] == 0.0)
+
+
+
+# ---------------------------------------------------------------- FE: a fifth rule, field energy on field energy (round 31)
+import fifth_rule as fe_  # noqa: E402
+cen_fe_ = fe_.census()
+check("FE1 where a pi^2 can come from: every two-body overlap (1/4pi) int r1^a r2^b, a, b = -1..-6, is rational, "
+      "zero or a pole except one, R(-2,-2) = pi^2/4, body 1's field squared over body 2's field squared (G^3 m1^2 m2^2)",
+      [k for k, (v, kd) in cen_fe_.items() if kd == "pi^2"] == ["-2,-2"] and fe_.riesz(-2, -2) == sp.pi**2/4)
+num_fe_ = fe_.numeric_overlap()
+check("FE2 that overlap by direct integration (prolate spheroidal coordinates, r12 = 2): pi^3/2",
+      abs(num_fe_[0] - num_fe_[1]) < 1e-10)
+check("FE3 field energy acting on field energy with the bodies at rest, int U^2 (grad U)^2, has no pi^2 at m1^2 m2^2 "
+      "(its overlaps are R(-4,-2) and R(-2,-4), both zero); the identity behind the moving case holds",
+      fe_.static_part() == 0 and fe_.identity_check())
+al_fe_, be_fe_, ga_fe_ = fe_.moving_time_part()
+check("FE4 with the bodies moving, field energy's time part, int U^2 (dU/dt)^2, does make pi^2, with velocity weights "
+      "-1/8, -1/8, 1 (v1^2, v2^2, v1.v2). That breaks boost symmetry (2 alpha + gamma = 3/4, not 0) and on circles "
+      "gives -(1/8 + 3 nu/4): a nu^2 pi^2 that relativity lacks",
+      (al_fe_, be_fe_, ga_fe_) == (sp.Rational(-1, 8), sp.Rational(-1, 8), 1) and 2*al_fe_ + ga_fe_ != 0
+      and sp.simplify(fe_.circle_bracket(al_fe_, be_fe_, ga_fe_) + sp.Rational(1, 8) + 3*sp.Symbol("nu")/4) == 0)
+check("FE5 with the boost-safe shape a circle sees one number K, L = K (pi^2/4) G^3 m1^2 m2^2 v12^2/r^3, shifting the "
+      "energy by -(5 pi^2/6) K nu x^3; relativity's -(205 pi^2/96) nu needs K = 41/16",
+      fe_.energy_shift_per_K() == -5*sp.pi**2/6 and sp.sympify(json.load(open(os.path.join(HERE, "fifth_rule.json")))["K_GR"]) == sp.Rational(41, 16))
 
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))

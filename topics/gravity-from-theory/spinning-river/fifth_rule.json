@@ -1,0 +1,21 @@
+{
+ "census_pi2_entries": [
+  "-2,-2"
+ ],
+ "R(-2,-2)": "pi**2/4",
+ "numeric_overlap_r12_2": [
+  15.50313834014991,
+  15.50313834014991
+ ],
+ "identity_ok": true,
+ "static_pi2_part": "0",
+ "moving_time_part_alpha_beta_gamma": [
+  "-1/8",
+  "-1/8",
+  "1"
+ ],
+ "boost_safe_time_part": false,
+ "time_part_on_circles": "-3*nu/4 - 1/8",
+ "energy_coefficient_per_K": "-5*pi**2/6",
+ "K_GR": "41/16"
+}
