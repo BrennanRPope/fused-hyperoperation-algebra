@@ -1,0 +1,9 @@
+B1 PASS  Tsallis composes by a+b+k*ab, k=1-q; max err 3.6e-15
+B2 PASS  Renyi adds at every order; max err 2.0e-15
+B3 PASS  lift 1+kS_T = Tr rho^n = Z_n/Z_1^n = exp(k S_R); max err 2.2e-16
+B4 PASS  Dong tension zero only at n=1; in the law's dial k=1-n: T = k/(4*G*(k - 1))
+B5 PASS  Hawking/Unruh T = kappa/2pi from imaginary-time period; Kerr T reduces to 1/(8 pi M) at a=0
+B6 PASS  G_eff = A**(1 - delta)/(4*delta*gamma): constant only at delta=1 (area law)
+B7 PASS  k_eff = 1-q exactly for independent pieces; drifts as correlation grows: +0.000, -0.010, -0.090, -0.360
+B8 PASS  COW phase = (potential difference x time)/hbar; Newtonian gravity inside Schrodinger, no G-hbar mixing
+8/8 passed
