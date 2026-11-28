@@ -1,0 +1,255 @@
+t=0.360 E=0.1250 Z=0.781 gmax=1.73 wmax=1.77 squeeze=0.83 delta=0.5163 n=7.20 1s
+t=0.760 E=0.1250 Z=0.944 gmax=4.09 wmax=1.27 squeeze=3.47 delta=0.0830 n=4.83 3s
+done tg 64 0.0 0.0 t_end 0.84 unresolved (delta*kmax < 1) 3s
+t=0.360 E=0.1238 Z=0.758 gmax=1.54 wmax=1.85 squeeze=0.38 delta=0.4004 n=11.47 1s
+t=0.760 E=0.1197 Z=0.792 gmax=2.06 wmax=1.46 squeeze=1.00 delta=0.3627 n=5.43 3s
+t=1.160 E=0.1132 Z=0.884 gmax=3.54 wmax=1.11 squeeze=2.43 delta=0.0825 n=5.13 4s
+done tg 64 0.0 0.5 t_end 1.28 unresolved (delta*kmax < 1) 5s
+t=0.360 E=0.1242 Z=0.756 gmax=1.48 wmax=1.90 squeeze=0.15 delta=0.6665 n=10.28 1s
+t=0.760 E=0.1215 Z=0.781 gmax=1.72 wmax=1.62 squeeze=0.35 delta=0.5112 n=5.69 3s
+t=1.160 E=0.1173 Z=0.833 gmax=2.14 wmax=1.27 squeeze=0.64 delta=0.2163 n=5.46 4s
+t=1.560 E=0.1116 Z=0.926 gmax=2.77 wmax=1.42 squeeze=1.12 delta=0.0596 n=5.28 5s
+done tg 64 0.0 0.8 t_end 1.64 unresolved (delta*kmax < 1) 6s
+t=0.360 E=0.1245 Z=0.758 gmax=1.47 wmax=1.92 squeeze=0.07 delta=-0.4501 n=20.42 1s
+t=0.760 E=0.1230 Z=0.787 gmax=1.65 wmax=1.67 squeeze=0.17 delta=0.5934 n=5.48 2s
+t=1.160 E=0.1206 Z=0.843 gmax=1.95 wmax=1.36 squeeze=0.30 delta=0.2706 n=5.57 4s
+t=1.560 E=0.1173 Z=0.937 gmax=2.31 wmax=1.42 squeeze=0.48 delta=0.1048 n=5.41 5s
+done tg 64 0.0 0.9 t_end 1.88 unresolved (delta*kmax < 1) 6s
+t=0.360 E=0.1248 Z=0.759 gmax=1.46 wmax=1.93 squeeze=0.04 delta=-0.3479 n=19.68 1s
+t=0.760 E=0.1240 Z=0.791 gmax=1.63 wmax=1.71 squeeze=0.08 delta=0.5788 n=6.00 3s
+t=1.160 E=0.1226 Z=0.853 gmax=1.88 wmax=1.41 squeeze=0.15 delta=0.2996 n=5.64 4s
+t=1.560 E=0.1209 Z=0.952 gmax=2.16 wmax=1.44 squeeze=0.23 delta=0.1296 n=5.49 6s
+t=1.960 E=0.1187 Z=1.100 gmax=2.35 wmax=1.80 squeeze=0.33 delta=0.0606 n=4.99 7s
+done tg 64 0.0 0.95 t_end 2.2 unresolved (delta*kmax < 1) 8s
+t=0.360 E=0.1249 Z=0.760 gmax=1.46 wmax=1.93 squeeze=0.01 delta=-0.2824 n=19.20 1s
+t=0.760 E=0.1246 Z=0.795 gmax=1.62 wmax=1.73 squeeze=0.03 delta=0.6206 n=5.77 2s
+t=1.160 E=0.1240 Z=0.860 gmax=1.85 wmax=1.44 squeeze=0.06 delta=0.3197 n=5.66 4s
+t=1.560 E=0.1233 Z=0.964 gmax=2.08 wmax=1.45 squeeze=0.09 delta=0.1453 n=5.55 5s
+t=1.960 E=0.1224 Z=1.116 gmax=2.23 wmax=1.82 squeeze=0.13 delta=0.0754 n=5.02 7s
+t=2.360 E=0.1213 Z=1.331 gmax=2.42 wmax=2.41 squeeze=0.17 delta=0.0535 n=4.43 8s
+done tg 64 0.0 0.98 t_end 2.52 unresolved (delta*kmax < 1) 9s
+t=0.360 E=0.1250 Z=0.760 gmax=1.46 wmax=1.94 squeeze=0.00 delta=-0.2376 n=18.87 1s
+t=0.760 E=0.1250 Z=0.797 gmax=1.61 wmax=1.74 squeeze=0.00 delta=0.6498 n=5.60 2s
+t=1.160 E=0.1250 Z=0.865 gmax=1.83 wmax=1.46 squeeze=0.00 delta=0.3372 n=5.62 4s
+t=1.560 E=0.1250 Z=0.973 gmax=2.04 wmax=1.46 squeeze=0.00 delta=0.1562 n=5.59 5s
+t=1.960 E=0.1250 Z=1.130 gmax=2.15 wmax=1.83 squeeze=0.00 delta=0.0859 n=5.05 7s
+t=2.360 E=0.1250 Z=1.350 gmax=2.34 wmax=2.37 squeeze=0.00 delta=0.0649 n=4.41 8s
+t=2.760 E=0.1250 Z=1.650 gmax=3.09 wmax=3.25 squeeze=0.00 delta=0.0487 n=4.04 9s
+done tg 64 0.0 1.0 t_end 2.84 unresolved (delta*kmax < 1) 10s
+done rings 64 0.0 0.0 t_end 0.104 unresolved (delta*kmax < 1) 0s
+done rings 64 0.0 0.5 t_end 0.173 unresolved (delta*kmax < 1) 1s
+done rings 64 0.0 0.8 t_end 0.238 unresolved (delta*kmax < 1) 1s
+done rings 64 0.0 0.9 t_end 0.295 unresolved (delta*kmax < 1) 1s
+t=0.335 E=0.1104 Z=1.471 gmax=16.00 wmax=16.39 squeeze=2.54 delta=0.0445 n=2.48 1s
+done rings 64 0.0 0.95 t_end 0.335 unresolved (delta*kmax < 1) 1s
+t=0.339 E=0.1110 Z=1.495 gmax=16.18 wmax=16.62 squeeze=0.96 delta=0.0490 n=2.39 1s
+done rings 64 0.0 0.98 t_end 0.37 unresolved (delta*kmax < 1) 1s
+t=0.341 E=0.1115 Z=1.509 gmax=16.25 wmax=16.75 squeeze=0.00 delta=0.0522 n=2.34 1s
+done rings 64 0.0 1.0 t_end 0.581 unresolved (delta*kmax < 1) 2s
+t=0.360 E=0.0374 Z=0.765 gmax=7.50 wmax=10.28 squeeze=0.00 delta=0.2742 n=1.09 1s
+t=0.760 E=0.0374 Z=0.837 gmax=8.09 wmax=10.97 squeeze=0.00 delta=0.1132 n=2.44 2s
+done klein 64 0.0 1.0 t_end 1.04 unresolved (delta*kmax < 1) 3s
+t=0.360 E=0.1250 Z=0.781 gmax=1.73 wmax=1.77 squeeze=0.83 delta=0.5164 n=7.20 8s
+t=0.760 E=0.1250 Z=0.944 gmax=4.20 wmax=1.27 squeeze=3.59 delta=0.1171 n=4.24 16s
+done tg 128 0.0 0.0 t_end 0.92 unresolved (delta*kmax < 1) 19s
+t=0.360 E=0.1238 Z=0.758 gmax=1.54 wmax=1.85 squeeze=0.38 delta=0.4004 n=11.47 7s
+t=0.760 E=0.1197 Z=0.792 gmax=2.06 wmax=1.46 squeeze=1.00 delta=0.3627 n=5.43 15s
+t=1.160 E=0.1132 Z=0.884 gmax=3.58 wmax=1.12 squeeze=2.47 delta=0.1076 n=4.71 23s
+done tg 128 0.0 0.5 t_end 1.44 unresolved (delta*kmax < 1) 29s
+t=0.360 E=0.1242 Z=0.756 gmax=1.48 wmax=1.90 squeeze=0.15 delta=0.6664 n=10.28 7s
+t=0.760 E=0.1215 Z=0.781 gmax=1.72 wmax=1.62 squeeze=0.35 delta=0.5112 n=5.69 15s
+t=1.160 E=0.1173 Z=0.833 gmax=2.14 wmax=1.27 squeeze=0.64 delta=0.2244 n=5.34 23s
+t=1.560 E=0.1116 Z=0.926 gmax=2.79 wmax=1.43 squeeze=1.12 delta=0.0883 n=4.72 30s
+t=1.960 E=0.1049 Z=1.082 gmax=3.65 wmax=2.17 squeeze=1.94 delta=0.0218 n=4.38 38s
+done tg 128 0.0 0.8 t_end 1.96 unresolved (delta*kmax < 1) 38s
+t=0.360 E=0.1245 Z=0.758 gmax=1.47 wmax=1.92 squeeze=0.07 delta=-0.4501 n=20.42 7s
+t=0.760 E=0.1230 Z=0.787 gmax=1.65 wmax=1.67 squeeze=0.17 delta=0.5934 n=5.48 14s
+t=1.160 E=0.1206 Z=0.843 gmax=1.95 wmax=1.36 squeeze=0.30 delta=0.2688 n=5.60 21s
+t=1.560 E=0.1173 Z=0.937 gmax=2.32 wmax=1.43 squeeze=0.48 delta=0.1196 n=5.14 29s
+t=1.960 E=0.1134 Z=1.081 gmax=2.65 wmax=1.82 squeeze=0.73 delta=0.0505 n=4.61 37s
+done tg 128 0.0 0.9 t_end 2.24 unresolved (delta*kmax < 1) 42s
+t=0.360 E=0.1248 Z=0.759 gmax=1.46 wmax=1.93 squeeze=0.04 delta=-0.3479 n=19.68 7s
+t=0.760 E=0.1240 Z=0.791 gmax=1.63 wmax=1.71 squeeze=0.08 delta=0.5788 n=6.00 15s
+t=1.160 E=0.1226 Z=0.853 gmax=1.88 wmax=1.41 squeeze=0.15 delta=0.3002 n=5.64 23s
+t=1.560 E=0.1209 Z=0.952 gmax=2.16 wmax=1.44 squeeze=0.23 delta=0.1370 n=5.36 30s
+t=1.960 E=0.1187 Z=1.100 gmax=2.37 wmax=1.82 squeeze=0.33 delta=0.0650 n=4.80 38s
+t=2.360 E=0.1162 Z=1.311 gmax=2.69 wmax=2.34 squeeze=0.45 delta=0.0243 n=4.57 46s
+done tg 128 0.0 0.95 t_end 2.4 unresolved (delta*kmax < 1) 47s
+t=0.360 E=0.1249 Z=0.760 gmax=1.46 wmax=1.93 squeeze=0.01 delta=-0.2824 n=19.20 7s
+t=0.760 E=0.1246 Z=0.795 gmax=1.62 wmax=1.73 squeeze=0.03 delta=0.6206 n=5.77 14s
+t=1.160 E=0.1240 Z=0.860 gmax=1.85 wmax=1.44 squeeze=0.06 delta=0.3197 n=5.66 22s
+t=1.560 E=0.1233 Z=0.964 gmax=2.09 wmax=1.45 squeeze=0.09 delta=0.1476 n=5.51 30s
+t=1.960 E=0.1224 Z=1.116 gmax=2.24 wmax=1.82 squeeze=0.13 delta=0.0738 n=4.95 37s
+t=2.360 E=0.1213 Z=1.332 gmax=2.45 wmax=2.35 squeeze=0.17 delta=0.0319 n=4.69 45s
+done tg 128 0.0 0.98 t_end 2.48 unresolved (delta*kmax < 1) 48s
+t=0.360 E=0.1250 Z=0.760 gmax=1.46 wmax=1.94 squeeze=0.00 delta=-0.2376 n=18.87 7s
+t=0.760 E=0.1250 Z=0.797 gmax=1.61 wmax=1.74 squeeze=0.00 delta=0.6498 n=5.60 14s
+t=1.160 E=0.1250 Z=0.865 gmax=1.83 wmax=1.46 squeeze=0.00 delta=0.3372 n=5.62 21s
+t=1.560 E=0.1250 Z=0.973 gmax=2.04 wmax=1.46 squeeze=0.00 delta=0.1560 n=5.59 29s
+t=1.960 E=0.1250 Z=1.130 gmax=2.16 wmax=1.84 squeeze=0.00 delta=0.0798 n=5.05 37s
+t=2.360 E=0.1250 Z=1.351 gmax=2.36 wmax=2.36 squeeze=0.00 delta=0.0369 n=4.78 45s
+done tg 128 0.0 1.0 t_end 2.56 unresolved (delta*kmax < 1) 49s
+done rings 128 0.0 0.0 t_end 0.097 unresolved (delta*kmax < 1) 3s
+done rings 128 0.0 0.5 t_end 0.177 unresolved (delta*kmax < 1) 6s
+done rings 128 0.0 0.8 t_end 0.242 unresolved (delta*kmax < 1) 7s
+t=0.269 E=0.1101 Z=1.255 gmax=17.18 wmax=15.31 squeeze=5.21 delta=0.0263 n=3.11 8s
+done rings 128 0.0 0.9 t_end 0.3 unresolved (delta*kmax < 1) 9s
+t=0.277 E=0.1108 Z=1.280 gmax=16.29 wmax=14.99 squeeze=2.37 delta=0.0322 n=3.00 9s
+done rings 128 0.0 0.95 t_end 0.364 unresolved (delta*kmax < 1) 12s
+t=0.275 E=0.1112 Z=1.277 gmax=15.59 wmax=14.49 squeeze=0.89 delta=0.0371 n=2.95 9s
+t=0.550 E=0.1104 Z=2.705 gmax=27.66 wmax=30.36 squeeze=1.32 delta=0.0297 n=2.14 21s
+t=0.832 E=0.1093 Z=4.881 gmax=39.85 wmax=47.47 squeeze=1.52 delta=0.0430 n=1.24 35s
+done rings 128 0.0 0.98 t_end 0.907 unresolved (spectrum flat to the cutoff, n < 1) 39s
+t=0.274 E=0.1115 Z=1.277 gmax=15.25 wmax=14.17 squeeze=0.00 delta=0.0404 n=2.91 7s
+t=0.555 E=0.1115 Z=2.759 gmax=27.81 wmax=30.63 squeeze=0.00 delta=0.0331 n=2.06 18s
+t=0.843 E=0.1115 Z=5.045 gmax=37.60 wmax=43.72 squeeze=0.00 delta=0.0551 n=0.97 29s
+done rings 128 0.0 1.0 t_end 0.843 unresolved (spectrum flat to the cutoff, n < 1) 30s
+t=0.255 E=0.0374 Z=0.757 gmax=7.34 wmax=10.12 squeeze=0.00 delta=0.2431 n=2.55 6s
+t=0.542 E=0.0374 Z=0.792 gmax=7.73 wmax=10.51 squeeze=0.00 delta=0.1054 n=3.32 13s
+t=0.842 E=0.0374 Z=0.862 gmax=8.62 wmax=11.71 squeeze=0.00 delta=0.0510 n=3.35 21s
+t=1.155 E=0.0374 Z=0.963 gmax=9.46 wmax=13.28 squeeze=0.00 delta=0.0235 n=3.33 29s
+done klein 128 0.0 1.0 t_end 1.186 unresolved (delta*kmax < 1) 30s
+t=0.360 E=0.1237 Z=0.752 gmax=1.45 wmax=1.93 squeeze=0.00 delta=-0.2259 n=18.84 1s
+t=0.760 E=0.1221 Z=0.777 gmax=1.58 wmax=1.73 squeeze=0.00 delta=0.6866 n=5.42 3s
+t=1.160 E=0.1205 Z=0.828 gmax=1.77 wmax=1.45 squeeze=0.00 delta=0.3921 n=5.33 4s
+t=1.560 E=0.1188 Z=0.907 gmax=1.95 wmax=1.38 squeeze=0.00 delta=0.2231 n=5.22 5s
+t=1.960 E=0.1169 Z=1.015 gmax=2.03 wmax=1.68 squeeze=0.00 delta=0.1522 n=4.75 7s
+t=2.360 E=0.1147 Z=1.149 gmax=2.04 wmax=2.04 squeeze=0.00 delta=0.1328 n=4.15 8s
+t=2.760 E=0.1123 Z=1.303 gmax=2.47 wmax=2.54 squeeze=0.00 delta=0.1354 n=3.57 9s
+t=3.160 E=0.1095 Z=1.471 gmax=3.24 wmax=3.20 squeeze=0.00 delta=0.1395 n=3.12 11s
+t=3.560 E=0.1064 Z=1.647 gmax=4.19 wmax=4.10 squeeze=0.00 delta=0.1260 n=2.98 12s
+t=3.960 E=0.1029 Z=1.831 gmax=4.90 wmax=5.42 squeeze=0.00 delta=0.1026 n=3.02 14s
+t=4.360 E=0.0991 Z=2.022 gmax=5.84 wmax=7.40 squeeze=0.00 delta=0.0907 n=2.91 15s
+t=4.760 E=0.0948 Z=2.217 gmax=7.51 wmax=9.72 squeeze=0.00 delta=0.0989 n=2.51 17s
+t=5.160 E=0.0902 Z=2.393 gmax=8.42 wmax=11.26 squeeze=0.00 delta=0.1302 n=1.79 18s
+t=5.560 E=0.0853 Z=2.515 gmax=8.18 wmax=11.26 squeeze=0.00 delta=0.1590 n=1.19 19s
+t=5.960 E=0.0802 Z=2.558 gmax=7.38 wmax=10.37 squeeze=0.00 delta=0.1807 n=0.78 21s
+t=6.360 E=0.0751 Z=2.527 gmax=6.76 wmax=9.51 squeeze=0.00 delta=0.1950 n=0.54 22s
+t=6.760 E=0.0701 Z=2.445 gmax=5.96 wmax=8.36 squeeze=0.00 delta=0.2045 n=0.40 23s
+t=7.160 E=0.0653 Z=2.332 gmax=5.12 wmax=7.16 squeeze=0.00 delta=0.2139 n=0.26 25s
+t=7.560 E=0.0608 Z=2.199 gmax=4.56 wmax=6.19 squeeze=0.00 delta=0.2193 n=0.15 26s
+t=7.960 E=0.0565 Z=2.054 gmax=4.36 wmax=5.65 squeeze=0.00 delta=0.2138 n=0.21 27s
+t=8.360 E=0.0526 Z=1.904 gmax=4.52 wmax=5.11 squeeze=0.00 delta=0.1989 n=0.44 29s
+t=8.760 E=0.0489 Z=1.760 gmax=4.60 wmax=5.27 squeeze=0.00 delta=0.1836 n=0.72 30s
+t=9.160 E=0.0455 Z=1.631 gmax=4.61 wmax=5.38 squeeze=0.00 delta=0.1772 n=0.86 31s
+t=9.560 E=0.0424 Z=1.518 gmax=4.51 wmax=5.40 squeeze=0.00 delta=0.1827 n=0.79 33s
+t=9.960 E=0.0395 Z=1.418 gmax=4.27 wmax=5.25 squeeze=0.00 delta=0.1938 n=0.58 34s
+done tg 64 0.005 1.0 t_end 10.0  34s
+t=0.357 E=0.1097 Z=1.317 gmax=13.48 wmax=13.89 squeeze=0.00 delta=0.0719 n=2.20 1s
+t=0.712 E=0.1069 Z=1.831 gmax=14.24 wmax=16.80 squeeze=0.00 delta=0.1054 n=1.05 2s
+done rings 64 0.005 1.0 t_end 0.747 unresolved (spectrum flat to the cutoff, n < 1) 2s
+t=0.360 E=0.0361 Z=0.701 gmax=6.86 wmax=9.42 squeeze=0.00 delta=0.3096 n=0.92 1s
+t=0.760 E=0.0347 Z=0.674 gmax=6.64 wmax=8.96 squeeze=0.00 delta=0.1659 n=2.25 2s
+t=1.160 E=0.0334 Z=0.640 gmax=6.44 wmax=8.80 squeeze=0.00 delta=0.1000 n=2.86 4s
+t=1.560 E=0.0322 Z=0.593 gmax=6.10 wmax=8.53 squeeze=0.00 delta=0.0632 n=3.37 5s
+done klein 64 0.005 1.0 t_end 1.68 unresolved (delta*kmax < 1) 6s
+t=0.360 E=0.1237 Z=0.752 gmax=1.45 wmax=1.93 squeeze=0.00 delta=-0.2259 n=18.84 8s
+t=0.760 E=0.1221 Z=0.777 gmax=1.58 wmax=1.73 squeeze=0.00 delta=0.6866 n=5.42 17s
+t=1.160 E=0.1205 Z=0.828 gmax=1.77 wmax=1.45 squeeze=0.00 delta=0.3921 n=5.33 26s
+t=1.560 E=0.1188 Z=0.907 gmax=1.95 wmax=1.38 squeeze=0.00 delta=0.2295 n=5.12 34s
+t=1.960 E=0.1169 Z=1.015 gmax=2.04 wmax=1.68 squeeze=0.00 delta=0.1691 n=4.41 42s
+t=2.360 E=0.1147 Z=1.149 gmax=2.04 wmax=2.07 squeeze=0.00 delta=0.1448 n=3.81 51s
+t=2.760 E=0.1123 Z=1.303 gmax=2.47 wmax=2.56 squeeze=0.00 delta=0.1344 n=3.43 60s
+t=3.160 E=0.1095 Z=1.471 gmax=3.26 wmax=3.21 squeeze=0.00 delta=0.1328 n=3.15 70s
+t=3.560 E=0.1064 Z=1.647 gmax=4.33 wmax=4.11 squeeze=0.00 delta=0.1402 n=2.64 79s
+t=3.960 E=0.1029 Z=1.831 gmax=5.23 wmax=5.42 squeeze=0.00 delta=0.1109 n=2.77 88s
+t=4.360 E=0.0991 Z=2.023 gmax=5.98 wmax=7.21 squeeze=0.00 delta=0.0828 n=3.02 97s
+t=4.760 E=0.0948 Z=2.217 gmax=7.23 wmax=9.29 squeeze=0.00 delta=0.0765 n=2.96 107s
+t=5.160 E=0.0902 Z=2.392 gmax=7.94 wmax=10.74 squeeze=0.00 delta=0.0831 n=2.72 116s
+t=5.560 E=0.0853 Z=2.514 gmax=7.96 wmax=11.07 squeeze=0.00 delta=0.0957 n=2.39 125s
+t=5.960 E=0.0802 Z=2.558 gmax=7.28 wmax=10.22 squeeze=0.00 delta=0.1105 n=2.05 135s
+t=6.360 E=0.0751 Z=2.529 gmax=6.40 wmax=8.97 squeeze=0.00 delta=0.1239 n=1.77 144s
+t=6.760 E=0.0701 Z=2.446 gmax=5.49 wmax=7.69 squeeze=0.00 delta=0.1342 n=1.58 153s
+t=7.160 E=0.0653 Z=2.331 gmax=4.83 wmax=6.72 squeeze=0.00 delta=0.1395 n=1.52 162s
+t=7.560 E=0.0608 Z=2.197 gmax=4.49 wmax=6.00 squeeze=0.00 delta=0.1437 n=1.48 172s
+t=7.960 E=0.0565 Z=2.052 gmax=4.47 wmax=5.42 squeeze=0.00 delta=0.1504 n=1.38 181s
+t=8.360 E=0.0526 Z=1.903 gmax=4.66 wmax=5.29 squeeze=0.00 delta=0.1590 n=1.23 190s
+t=8.760 E=0.0489 Z=1.761 gmax=4.78 wmax=5.50 squeeze=0.00 delta=0.1658 n=1.12 199s
+t=9.160 E=0.0455 Z=1.632 gmax=4.81 wmax=5.64 squeeze=0.00 delta=0.1689 n=1.09 209s
+t=9.560 E=0.0424 Z=1.521 gmax=4.69 wmax=5.63 squeeze=0.00 delta=0.1679 n=1.14 217s
+t=9.960 E=0.0394 Z=1.422 gmax=4.64 wmax=5.75 squeeze=0.00 delta=0.1604 n=1.29 227s
+done tg 128 0.005 1.0 t_end 10.0  228s
+t=0.280 E=0.1102 Z=1.167 gmax=12.51 wmax=11.97 squeeze=0.00 delta=0.0636 n=2.67 9s
+t=0.579 E=0.1080 Z=1.677 gmax=13.90 wmax=15.56 squeeze=0.00 delta=0.0757 n=1.74 21s
+t=0.885 E=0.1052 Z=1.971 gmax=13.26 wmax=16.18 squeeze=0.00 delta=0.1089 n=1.12 34s
+t=1.225 E=0.1017 Z=2.102 gmax=12.12 wmax=14.99 squeeze=0.00 delta=0.1092 n=1.43 47s
+t=1.536 E=0.0985 Z=2.119 gmax=10.99 wmax=13.61 squeeze=0.00 delta=0.1195 n=1.44 59s
+t=1.802 E=0.0956 Z=2.092 gmax=10.18 wmax=12.62 squeeze=0.00 delta=0.1306 n=1.40 68s
+t=2.085 E=0.0927 Z=2.041 gmax=9.42 wmax=11.73 squeeze=0.00 delta=0.1342 n=1.54 78s
+t=2.384 E=0.0897 Z=1.971 gmax=8.73 wmax=10.87 squeeze=0.00 delta=0.1350 n=1.74 88s
+t=2.701 E=0.0867 Z=1.889 gmax=8.09 wmax=10.07 squeeze=0.00 delta=0.1351 n=1.96 97s
+t=3.039 E=0.0835 Z=1.801 gmax=7.47 wmax=9.30 squeeze=0.00 delta=0.1375 n=2.14 106s
+t=3.397 E=0.0804 Z=1.709 gmax=6.87 wmax=8.58 squeeze=0.00 delta=0.1423 n=2.26 115s
+t=3.779 E=0.0772 Z=1.620 gmax=6.29 wmax=7.90 squeeze=0.00 delta=0.1458 n=2.41 123s
+done rings 128 0.005 1.0 t_end 4.0  128s
+t=0.257 E=0.0365 Z=0.712 gmax=6.90 wmax=9.51 squeeze=0.00 delta=0.2932 n=1.90 8s
+t=0.547 E=0.0354 Z=0.687 gmax=6.80 wmax=9.26 squeeze=0.00 delta=0.1675 n=2.74 17s
+t=0.856 E=0.0344 Z=0.667 gmax=6.56 wmax=8.85 squeeze=0.00 delta=0.1349 n=2.55 26s
+t=1.187 E=0.0333 Z=0.638 gmax=6.51 wmax=8.96 squeeze=0.00 delta=0.1294 n=2.26 35s
+t=1.526 E=0.0323 Z=0.598 gmax=6.18 wmax=8.64 squeeze=0.00 delta=0.1309 n=2.11 44s
+t=1.864 E=0.0313 Z=0.554 gmax=5.71 wmax=7.99 squeeze=0.00 delta=0.1404 n=1.87 53s
+t=2.208 E=0.0304 Z=0.511 gmax=5.42 wmax=7.28 squeeze=0.00 delta=0.1422 n=1.88 62s
+t=2.562 E=0.0295 Z=0.474 gmax=5.33 wmax=6.94 squeeze=0.00 delta=0.1456 n=1.86 71s
+t=2.928 E=0.0287 Z=0.441 gmax=5.18 wmax=6.63 squeeze=0.00 delta=0.1327 n=2.27 81s
+t=3.302 E=0.0279 Z=0.413 gmax=5.00 wmax=6.40 squeeze=0.00 delta=0.1145 n=2.88 90s
+t=3.684 E=0.0271 Z=0.388 gmax=4.85 wmax=6.21 squeeze=0.00 delta=0.1063 n=3.30 99s
+t=4.075 E=0.0264 Z=0.366 gmax=4.65 wmax=5.96 squeeze=0.00 delta=0.1081 n=3.47 107s
+t=4.473 E=0.0257 Z=0.345 gmax=4.45 wmax=5.77 squeeze=0.00 delta=0.1179 n=3.44 116s
+t=4.873 E=0.0250 Z=0.327 gmax=4.22 wmax=5.49 squeeze=0.00 delta=0.1331 n=3.25 124s
+t=5.273 E=0.0244 Z=0.310 gmax=3.93 wmax=5.14 squeeze=0.00 delta=0.1498 n=2.98 133s
+t=5.673 E=0.0237 Z=0.295 gmax=3.61 wmax=4.76 squeeze=0.00 delta=0.1643 n=2.71 141s
+done klein 128 0.005 1.0 t_end 6.0  150s
+t=0.331 E=0.1250 Z=0.776 gmax=1.67 wmax=1.80 squeeze=0.74 delta=0.3779 n=9.42 120s
+t=0.700 E=0.1250 Z=0.901 gmax=3.38 wmax=1.34 squeeze=2.74 delta=0.1682 n=4.41 258s
+done tg 256 0.0 0.0 t_end 0.957 unresolved (delta*kmax < 1) 355s
+t=0.332 E=0.1239 Z=0.756 gmax=1.52 wmax=1.87 squeeze=0.35 delta=0.4096 n=12.02 114s
+t=0.702 E=0.1204 Z=0.785 gmax=1.95 wmax=1.52 squeeze=0.89 delta=0.4090 n=5.66 250s
+t=1.014 E=0.1158 Z=0.840 gmax=2.81 wmax=1.20 squeeze=1.74 delta=0.1787 n=4.96 364s
+t=1.267 E=0.1112 Z=0.928 gmax=4.48 wmax=1.22 squeeze=3.33 delta=0.0689 n=4.50 462s
+t=1.523 E=0.1058 Z=1.121 gmax=10.32 wmax=2.35 squeeze=9.13 delta=0.0120 n=4.04 561s
+done tg 256 0.0 0.5 t_end 1.549 unresolved (delta*kmax < 1) 571s
+t=0.332 E=0.1243 Z=0.755 gmax=1.47 wmax=1.92 squeeze=0.14 delta=-0.6099 n=22.06 125s
+t=0.704 E=0.1220 Z=0.776 gmax=1.67 wmax=1.66 squeeze=0.32 delta=0.5664 n=5.76 265s
+t=0.955 E=0.1196 Z=0.802 gmax=1.90 wmax=1.45 squeeze=0.48 delta=0.3541 n=5.45 364s
+t=1.211 E=0.1166 Z=0.842 gmax=2.21 wmax=1.23 squeeze=0.69 delta=0.2013 n=5.26 468s
+t=1.470 E=0.1130 Z=0.900 gmax=2.63 wmax=1.35 squeeze=0.99 delta=0.1095 n=4.89 574s
+t=1.734 E=0.1088 Z=0.984 gmax=3.16 wmax=1.64 squeeze=1.43 delta=0.0541 n=4.49 687s
+t=2.002 E=0.1042 Z=1.104 gmax=3.85 wmax=2.22 squeeze=2.08 delta=0.0237 n=4.12 801s
+done tg 256 0.0 0.8 t_end 2.164 unresolved (delta*kmax < 1) 867s
+t=0.332 E=0.1246 Z=0.757 gmax=1.46 wmax=1.93 squeeze=0.07 delta=-0.4427 n=20.91 126s
+t=0.692 E=0.1234 Z=0.780 gmax=1.61 wmax=1.72 squeeze=0.15 delta=0.6136 n=6.07 262s
+t=0.944 E=0.1220 Z=0.809 gmax=1.78 wmax=1.53 squeeze=0.22 delta=0.4153 n=5.62 365s
+t=1.199 E=0.1203 Z=0.851 gmax=1.99 wmax=1.33 squeeze=0.31 delta=0.2460 n=5.61 468s
+t=1.459 E=0.1182 Z=0.909 gmax=2.22 wmax=1.35 squeeze=0.43 delta=0.1492 n=5.24 574s
+t=1.722 E=0.1158 Z=0.988 gmax=2.47 wmax=1.57 squeeze=0.57 delta=0.0852 n=4.90 676s
+t=1.988 E=0.1130 Z=1.093 gmax=2.69 wmax=1.86 squeeze=0.75 delta=0.0471 n=4.55 777s
+t=2.255 E=0.1100 Z=1.230 gmax=3.00 wmax=2.28 squeeze=0.96 delta=0.0265 n=4.19 877s
+done tg 256 0.0 0.9 t_end 2.495 unresolved (delta*kmax < 1) 971s
+t=0.332 E=0.1250 Z=0.759 gmax=1.45 wmax=1.95 squeeze=0.00 delta=-0.2312 n=19.36 118s
+t=0.692 E=0.1250 Z=0.789 gmax=1.58 wmax=1.78 squeeze=0.00 delta=0.5618 n=7.28 247s
+t=0.944 E=0.1250 Z=0.824 gmax=1.70 wmax=1.62 squeeze=0.00 delta=0.5032 n=5.39 338s
+t=1.201 E=0.1250 Z=0.874 gmax=1.85 wmax=1.43 squeeze=0.00 delta=0.3086 n=5.69 433s
+t=1.460 E=0.1250 Z=0.942 gmax=1.99 wmax=1.38 squeeze=0.00 delta=0.1911 n=5.61 523s
+t=1.722 E=0.1250 Z=1.030 gmax=2.11 wmax=1.60 squeeze=0.00 delta=0.1158 n=5.43 615s
+t=1.984 E=0.1250 Z=1.141 gmax=2.17 wmax=1.86 squeeze=0.00 delta=0.0729 n=5.11 708s
+t=2.245 E=0.1250 Z=1.280 gmax=2.25 wmax=2.20 squeeze=0.00 delta=0.0464 n=4.82 797s
+t=2.505 E=0.1250 Z=1.450 gmax=2.58 wmax=2.60 squeeze=0.00 delta=0.0286 n=4.63 898s
+t=2.763 E=0.1250 Z=1.659 gmax=3.13 wmax=3.11 squeeze=0.00 delta=0.0190 n=4.42 997s
+done tg 256 0.0 1.0 t_end 2.996 unresolved (delta*kmax < 1) 1087s
+t=0.255 E=0.0374 Z=0.757 gmax=7.34 wmax=10.12 squeeze=0.00 delta=0.2430 n=2.56 158s
+t=0.541 E=0.0374 Z=0.791 gmax=7.74 wmax=10.52 squeeze=0.00 delta=0.0880 n=3.83 333s
+t=0.842 E=0.0374 Z=0.862 gmax=8.58 wmax=11.70 squeeze=0.00 delta=0.0425 n=3.65 513s
+t=1.155 E=0.0374 Z=0.966 gmax=9.29 wmax=12.99 squeeze=0.00 delta=0.0245 n=3.38 679s
+t=1.460 E=0.0374 Z=1.089 gmax=9.67 wmax=13.65 squeeze=0.00 delta=0.0165 n=3.14 844s
+t=1.760 E=0.0374 Z=1.238 gmax=11.08 wmax=14.07 squeeze=0.00 delta=0.0117 n=2.96 1031s
+done klein 256 0.0 1.0 t_end 1.79 unresolved (delta*kmax < 1) 1048s
+t=0.332 E=0.1248 Z=0.758 gmax=1.46 wmax=1.94 squeeze=0.03 delta=-0.3408 n=20.17 153s
+t=0.692 E=0.1241 Z=0.784 gmax=1.59 wmax=1.75 squeeze=0.08 delta=0.6781 n=5.72 302s
+t=0.944 E=0.1234 Z=0.815 gmax=1.74 wmax=1.57 squeeze=0.11 delta=0.4815 n=5.22 414s
+t=1.200 E=0.1225 Z=0.861 gmax=1.91 wmax=1.38 squeeze=0.15 delta=0.2733 n=5.69 529s
+t=1.460 E=0.1214 Z=0.923 gmax=2.09 wmax=1.37 squeeze=0.20 delta=0.1652 n=5.49 642s
+t=1.722 E=0.1201 Z=1.005 gmax=2.26 wmax=1.58 squeeze=0.27 delta=0.0999 n=5.15 754s
+t=1.987 E=0.1186 Z=1.111 gmax=2.38 wmax=1.85 squeeze=0.34 delta=0.0598 n=4.81 874s
+t=2.251 E=0.1169 Z=1.246 gmax=2.55 wmax=2.18 squeeze=0.42 delta=0.0331 n=4.61 1000s
+t=2.514 E=0.1152 Z=1.413 gmax=3.02 wmax=2.60 squeeze=0.50 delta=0.0212 n=4.26 1137s
+done tg 256 0.0 0.95 t_end 2.723 unresolved (delta*kmax < 1) 1241s

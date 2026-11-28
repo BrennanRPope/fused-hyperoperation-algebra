@@ -148,5 +148,50 @@
   "name": "C30 the hidden motion does not limit anything: total 4D growth rises as the 3D view's growth falls",
   "ok": true,
   "note": "total growth 0.2022, 0.2070, 0.2119, 0.2215, 0.2311, 0.2408, 0.2793"
+ },
+ {
+  "name": "C31 the faster solver (hunt2.py, single precision) matches the first solver (hunt.py) on Taylor\u2013Green, 64\u00b3",
+  "ok": true,
+  "note": "how far the grid follows it: 1.8841 vs 1.8840; spin at t = 2: 1.148636 vs 1.148637; time 10s vs 26s"
+ },
+ {
+  "name": "C32 with full push-back and no viscosity (Euler) energy is conserved in every run, while the grid follows the flow",
+  "ok": true,
+  "note": "largest energy drift 1.8e-06 over 8 runs"
+ },
+ {
+  "name": "C33 pressureless dust (no push-back): the three grids close in on the exact fold time 1 within 4%",
+  "ok": true,
+  "note": "threshold 1: stops at 0.804, 0.894, 0.936 on 64\u00b3/128\u00b3/256\u00b3, step ratio 0.46, closes in on 0.972; threshold 2: stops at 0.747, 0.855, 0.912 on 64\u00b3/128\u00b3/256\u00b3, step ratio 0.53, closes in on 0.975"
+ },
+ {
+  "name": "C34 half push-back: the grids still close in on one blow-up time (step ratio below 0.7)",
+  "ok": true,
+  "note": "threshold 1: step ratio 0.47, blow-up at 1.60; threshold 2: step ratio 0.55, blow-up at 1.58"
+ },
+ {
+  "name": "C35 colliding rings as dust: both grids stop just before the exact fold time 0.1105 (within 15%)",
+  "ok": true,
+  "note": "stops at 0.104 (64\u00b3), 0.097 (128\u00b3)"
+ },
+ {
+  "name": "C36 Navier\u2013Stokes (viscosity 0.005), 128\u00b3: all three candidates stay resolved to the end, peak spin rises and falls back",
+  "ok": true,
+  "note": "Taylor\u2013Green: to t = 10, peak spin 11.1, closest singularity 3.3 grid spacings; rings: to t = 4, peak spin 16.3, closest singularity 2.5 grid spacings; tube pair: to t = 6, peak spin 10.2, closest singularity 4.5 grid spacings"
+ },
+ {
+  "name": "C37 real flow (full push-back), Taylor\u2013Green, Euler: the grids do not close in on a blow-up time (step ratio at least 0.95)",
+  "ok": true,
+  "note": "threshold 2: stops at 1.88, 2.24, 2.60 on 64\u00b3/128\u00b3/256\u00b3, step ratio 0.98; threshold 4: stops at 1.46, 1.82, 2.24 on 64\u00b3/128\u00b3/256\u00b3, step ratio 1.14"
+ },
+ {
+  "name": "C38 the closing-in fades as push-back rises: on Taylor\u2013Green the step ratio (threshold 2) rises from dust to real flow",
+  "ok": true,
+  "note": "\u03b8 0: 0.53, \u03b8 0.5: 0.55, \u03b8 0.8: 0.72, \u03b8 0.9: 0.80, \u03b8 0.95: 0.91, \u03b8 1: 0.98"
+ },
+ {
+  "name": "C39 real flow, bent tube pair, Euler: 256\u00b3 follows it much further than 128\u00b3 (no closing in), and the singularity distance shrinks more slowly over time",
+  "ok": true,
+  "note": "threshold 2: stops at 0.84, 0.88, 1.18 on 64\u00b3/128\u00b3/256\u00b3; \u03b4 shrinks at rate 2.91 early and 1.13 late on 256\u00b3"
  }
 ]

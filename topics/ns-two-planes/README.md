@@ -1,4 +1,4 @@
-# DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes; round 3: how fast two planes feed each other; round 4: a 3D view of a 4D flow)
+# DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes; round 3: how fast two planes feed each other; round 4: a 3D view of a 4D flow; round 5: a blow-up hunt)
 
 > **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
 
@@ -7,16 +7,19 @@ really is 2D, but that the flows are two intersecting planes", then "remember we
 in the Klein bottle work" and "The idea that reality itself is twisted might be a good tack". Round 2 (section 8):
 "On navier stokes it might be three orthagonal planes". Round 3 (section 9): Brennan said yes to looking for a limit on how
 fast two planes can feed each other's spin. Round 4 (section 10): "What if there was a limit because we are only looking at
-a cross section of the real three dimensional behavior", then yes to testing whether a 3D view of a 4D flow is limited.
+a cross section of the real three dimensional behavior", then yes to testing whether a 3D view of a 4D flow is limited. Round 5 (section 11): "Let's look for a counter example where it
+clearly blows up in certain situations", with a dial from gravity's collapse to real flow.
 
-Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **30 of 30 pass** (seconds; reads the run files). Exact algebra:
+Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **39 of 39 pass** (seconds; reads the run files). Exact algebra:
 [`algebra.py`](algebra.py) (sympy). Runs: [`twoplanes.py`](twoplanes.py) (solver, with the k setting on the crossing),
 [`batch1.sh`](batch1.sh), [`batch2.sh`](batch2.sh), [`batch3.sh`](batch3.sh), [`klein_planes.py`](klein_planes.py) (Klein pair),
 [`twist_sectors.py`](twist_sectors.py). Round 2: [`algebra3.py`](algebra3.py) (exact three-plane algebra),
 [`threeplanes.py`](threeplanes.py) (solver with the 27 plane-by-plane stretching terms), [`batch4.sh`](batch4.sh). Round 3: [`feed.py`](feed.py) (search for the fastest-growing flow),
 [`batch5.sh`](batch5.sh), [`batch6.sh`](batch6.sh), [`feed_summary.json`](feed_summary.json). Round 4: [`feedd.py`](feedd.py) (the same search in any
-number of dimensions), [`batch7.sh`](batch7.sh), [`drain.py`](drain.py) (hidden 4th-direction motion), [`feedd_summary.json`](feedd_summary.json).
-Pictures: [`figures.py`](figures.py), [`figures3.py`](figures3.py), [`feed_figs.py`](feed_figs.py), [`feedd_figs.py`](feedd_figs.py) → [`figures/`](figures/).
+number of dimensions), [`batch7.sh`](batch7.sh), [`drain.py`](drain.py) (hidden 4th-direction motion), [`feedd_summary.json`](feedd_summary.json). Round 5:
+[`hunt.py`](hunt.py) and [`hunt2.py`](hunt2.py) (solvers with the push-back dial), [`hunt_an.py`](hunt_an.py) (analysis), [`batch8.sh`](batch8.sh), [`batch10.sh`](batch10.sh),
+[`hunt_summary.json`](hunt_summary.json).
+Pictures: [`figures.py`](figures.py), [`figures3.py`](figures3.py), [`feed_figs.py`](feed_figs.py), [`feedd_figs.py`](feedd_figs.py), [`hunt_figs.py`](hunt_figs.py) → [`figures/`](figures/).
 Everything is known mathematics unless marked **ours**; the "ours" items are readings, exact identities and runs, not
 theorems about blow-up.
 
@@ -52,6 +55,10 @@ theorems about blow-up.
   the fastest possible growth roughly doubles every time the grid allows smaller swirls, so there is no finite worst
   case, while in 3D it settles. Hidden motion along the 4th direction can make the 3D view stop growing (4% as much
   hidden spin is enough), but the total then grows faster. It moves spin out of sight; it doesn't limit it.
+- **Round 5, the blow-up hunt (section 11):** a dial runs from pressureless dust (gravity's collapse model, which
+  folds at a known time) to real flow. With no push-back, finer grids close in on the exact blow-up time. As push-back
+  rises the closing-in fades, and in real flow it is gone on both starts we can resolve. No counterexample, and the
+  route gravity takes (folding) is closed by incompressibility. Any blow-up would have to come from stretching.
 - **Klein link:** the Klein antiparallel pair is one flat flow (the straight pair) plus a bend, and all its stretching
   comes from the bend crossing the flat part (figure 6). What settled there was the **total** spin across grids, never
   the peak.
@@ -358,6 +365,102 @@ exact for the pattern found, and the eigenproblem gives the strongest such patte
 ![figure 13](figures/fig13-four-dimensions.png)
 ![figure 14](figures/fig14-fastest-4d-flow.png)
 
+## 11. The blow-up hunt: turning a dial from gravity's collapse to real flow
+
+**Short answer: the dial shows exactly where the blow-up disappears. With no push-back (dust, gravity's collapse model) the
+grids close in on the exact blow-up time. As push-back rises the closing-in weakens, and at real flow it is gone on both
+starts we can resolve.** That matches the known picture. It is not a counterexample, and it is not a new lead toward one.
+
+**The question.** Brennan: "Let's look for a counter example where it clearly blows up in certain situations", "If we can
+find all the places it could blow up and prove that it doesn't that could also work", and "If we could turn a dial and use
+the 'constant flow' of gravitational acceleration turning into black holes and then show same things happen in velocities
+when mapped back".
+
+**The dial (ours as a setup).** Write the flow's self-push as (u·∇)u = ∇|u|²/2 − u×ω, which holds for any flow. Then let a
+setting θ decide how much of the squeeze the pressure pushes back on: du/dt = −P_θ[(u·∇)u] + ν∆u, with P_θ = 1 − θ·(k kᵀ/|k|²)
+on each Fourier mode.
+
+- **θ = 0:** nothing pushes back. Each bit of fluid coasts, which is pressureless dust: Zel'dovich's model of matter
+  falling into sheets and clumps under gravity. It folds at an exactly known time, 1 ÷ (fastest squeeze at the start):
+  1.0 for Taylor–Green, 0.1105 for the colliding rings.
+- **θ = 1:** full push-back. The flow can't be squeezed, and this is real Euler (ν = 0) or Navier–Stokes (ν > 0).
+- In between the equation is a made-up bridge, not a physical fluid. It is only there to watch the fold fade.
+
+**The test (figure 15).** A blow-up shows up as the distance δ from real time to the nearest complex-time singularity
+shrinking to zero (Sulem, Sulem and Frisch 1983). It is read off the energy spectrum, E(k) ~ k^−n·e^(−2δk). A grid can follow
+the flow only while δ spans at least 2 grid spacings. So each grid has a last time it can be trusted. If the flow blows up
+at time T, finer grids crowd in toward T, and each doubling gains less than the one before: the step ratio
+(256³ step) ÷ (128³ step) is below 1. A fold like dust gives about 0.63. If the flow stays smooth with δ shrinking
+exponentially, each doubling buys the same extra time, and the ratio sits near 1.
+
+| push-back θ | last trusted time on 64³ / 128³ / 256³ | step ratio | grids close in on |
+|---|---|---|---|
+| 0 (dust) | 0.75 / 0.85 / 0.91 | 0.53 | 0.98 (exact fold time 1) |
+| 0.5 | 1.14 / 1.34 / 1.45 | 0.55 | about 1.6 |
+| 0.8 | 1.44 / 1.77 / 2.00 | 0.72 | about 2.6 (3.4 at threshold 4), weakly |
+| 0.9 | 1.60 / 1.99 / 2.30 | 0.80 | no trustworthy time (3.5 to 9.7 by threshold) |
+| 0.95 | 1.72 / 2.11 / 2.47 | 0.91 | no (ratio 1.03 at threshold 4) |
+| 1 (real flow) | 1.88 / 2.24 / 2.60 | 0.98 | no (ratio 1.14 at threshold 4) |
+
+- **The test works:** dust closes in on 0.97–0.98 against the exact 1 (C33). Rings dust stops just before its exact 0.1105 (C35).
+- **Half push-back** still closes in, on about 1.6 (C34).
+- **From 0.8 up** the closing-in weakens (Taylor–Green, threshold 2 in the table; 256³ was not run at 0.98). The ratio climbs steadily toward 1 (C38). By 0.9 the answer swings with the
+  threshold, from 3.5 to 9.7, which is not a finite time anyone could trust.
+- **Real flow** does not close in: ratio 0.98 at threshold 2 and 1.14 at threshold 4 (C37).
+
+**Real flow, two starts (figure 16).**
+
+- **Taylor–Green:** all three grids agree on δ while they can follow it, and δ shrinks at a steady exponential rate.
+  1/peak spin falls steadily over this short window. On its own that can't tell a blow-up from steady growth, which is
+  why the verdict rests on δ and the grids. This agrees with Brachet and coworkers, who followed the
+  same flow on grids up to 4096³ and saw the same steady shrink (Brachet et al. 1983, 1992; Bustamante and Brachet 2012).
+- **Bent antiparallel tube pair** (our Klein-style start): 256³ follows it 0.31 further than 128³, ten times the
+  64³→128³ gain, so the grids spread apart rather than close in. On 256³ δ shrinks more and more slowly: its rate falls from
+  2.9 to 1.1 (C39). The 64³ grid can't hold this start properly (its δ runs above the finer grids'), so only 128³ and 256³
+  count.
+- **Colliding rings:** the start sits near grid scale, so the rings are support only. The dial times agree across 64³ and
+  128³ up to θ = 0.95, and 128³ follows the real flow further than 64³.
+- **Navier–Stokes, viscosity 0.005:** on 128³ all three stay resolved to the end. Peak spin rises to 11–16 and falls back
+  (C36).
+
+**What it means.** Gravity's kind of collapse is a **fold**: fluid piles onto a sheet because nothing pushes back. The dial
+shows that push-back kills it. The fold survives partial push-back and fades as θ nears 1. In real flow the squeeze is
+exactly zero, so the only way left to blow up is **stretching** (vortex lines pulled thinner and thinner). Stretching is a
+different mechanism, and these starts don't show it running away. The known theory points the same way:
+
+- **Beale–Kato–Majda:** a blow-up needs the time integral of the peak spin to diverge.
+- **Caffarelli–Kohn–Nirenberg:** any Navier–Stokes singular set is tiny (one-dimensional parabolic measure zero).
+- **Ruled out:** Leray's self-similar blow-up (Nečas–Růžička–Šverák 1996; Tsai 1998), and the simplest ("Type I")
+  axisymmetric blow-up (Chen–Strain–Tsai–Yau 2008; Koch–Nadirashvili–Seregin–Šverák 2009).
+- **Where blow-up has been found:** with a wall. Chen and Hou proved (computer-assisted, 2022–23) that 3D Euler blows up
+  for smooth data in a cylinder: the Luo–Hou scenario, with swirl pinched against the wall. Hou has also reported a
+  numerical Navier–Stokes candidate in a related axisymmetric setting. That is not a proof. Squeezed fluid with
+  compression, which is not our case, blows up too (Merle–Raphaël–Rodnianski–Szeftel 2022).
+
+So "find all the places it could blow up" comes down to stretching-type scenarios like these. A periodic box with symmetric
+starts is the least likely place to find one.
+
+**Grades.**
+
+- The dial is ours as a setup. At θ = 0 and θ = 1 it is exact known physics; in between it is a bridge.
+- The δ method is known. The grid-closing test is a standard way to use it, applied by us here.
+- All runs are on 64³–256³ grids with three starts.
+- Power-law fits of δ(t) shift with how often δ is sampled, so they are not used for the verdict. On 256³ real flow they
+  give exponents of 20–40, which can't be told apart from exponential.
+- Solvers:
+  - [`hunt.py`](hunt.py): double precision, the first version.
+  - [`hunt2.py`](hunt2.py): single precision with threads, about 7× faster on 256³. It matches hunt.py to 4 digits (C31)
+    and keeps Euler energy to 2·10⁻⁶ (C32).
+- Analysis is in [`hunt_an.py`](hunt_an.py); runs are in [`batch10.sh`](batch10.sh) → `runs/hunt2/`.
+
+**Is it a lead?** Not toward a counterexample. Our resolvable starts show no blow-up in real flow. What it does give is
+a clear picture of why gravity's route is closed: the fold needs squeeze, and full push-back removes squeeze entirely.
+A real hunt would have to target stretching. The best-studied place is the Luo–Hou wall scenario, which needs a different
+solver (axisymmetric, with a wall).
+
+![figure 15](figures/fig15-push-back-dial.png)
+![figure 16](figures/fig16-real-flow-candidates.png)
+
 ## Checks
 
 | check | result | numbers |
@@ -392,3 +495,12 @@ exact for the pattern found, and the eigenproblem gives the strongest such patte
 | C28 every 4D winner is genuinely 4D: it varies along every direction (no direction carries over half its spin, and none is nearly constant) | pass | largest flat share 0.33; smallest share of variation along a direction 0.16 (7 runs) |
 | C29 hidden 4th-direction motion lowers the 3D view's growth exactly in proportion to its spin, at the rate the eigenproblem gives | pass | view growth +0.2022, +0.1517, +0.1011, +0.0000, -0.1011, -0.2022, -0.6067; largest gap from the straight line 1e-10; strongest drain λ = 5.042, hidden spin to cancel 0.0401 = 0.2022/λ |
 | C30 the hidden motion does not limit anything: total 4D growth rises as the 3D view's growth falls | pass | total growth 0.2022, 0.2070, 0.2119, 0.2215, 0.2311, 0.2408, 0.2793 |
+| C31 the faster solver (hunt2.py, single precision) matches the first solver (hunt.py) on Taylor–Green, 64³ | pass | how far the grid follows it: 1.8841 vs 1.8840; spin at t = 2: 1.148636 vs 1.148637; time 10s vs 26s |
+| C32 with full push-back and no viscosity (Euler) energy is conserved in every run, while the grid follows the flow | pass | largest energy drift 1.8e-06 over 8 runs |
+| C33 pressureless dust (no push-back): the three grids close in on the exact fold time 1 within 4% | pass | threshold 1: stops at 0.804, 0.894, 0.936 on 64³/128³/256³, step ratio 0.46, closes in on 0.972; threshold 2: stops at 0.747, 0.855, 0.912 on 64³/128³/256³, step ratio 0.53, closes in on 0.975 |
+| C34 half push-back: the grids still close in on one blow-up time (step ratio below 0.7) | pass | threshold 1: step ratio 0.47, blow-up at 1.60; threshold 2: step ratio 0.55, blow-up at 1.58 |
+| C35 colliding rings as dust: both grids stop just before the exact fold time 0.1105 (within 15%) | pass | stops at 0.104 (64³), 0.097 (128³) |
+| C36 Navier–Stokes (viscosity 0.005), 128³: all three candidates stay resolved to the end, peak spin rises and falls back | pass | Taylor–Green: to t = 10, peak spin 11.1, closest singularity 3.3 grid spacings; rings: to t = 4, peak spin 16.3, closest singularity 2.5 grid spacings; tube pair: to t = 6, peak spin 10.2, closest singularity 4.5 grid spacings |
+| C37 real flow (full push-back), Taylor–Green, Euler: the grids do not close in on a blow-up time (step ratio at least 0.95) | pass | threshold 2: stops at 1.88, 2.24, 2.60 on 64³/128³/256³, step ratio 0.98; threshold 4: stops at 1.46, 1.82, 2.24 on 64³/128³/256³, step ratio 1.14 |
+| C38 the closing-in fades as push-back rises: on Taylor–Green the step ratio (threshold 2) rises from dust to real flow | pass | θ 0: 0.53, θ 0.5: 0.55, θ 0.8: 0.72, θ 0.9: 0.80, θ 0.95: 0.91, θ 1: 0.98 |
+| C39 real flow, bent tube pair, Euler: 256³ follows it much further than 128³ (no closing in), and the singularity distance shrinks more slowly over time | pass | threshold 2: stops at 0.84, 0.88, 1.18 on 64³/128³/256³; δ shrinks at rate 2.91 early and 1.13 late on 256³ |

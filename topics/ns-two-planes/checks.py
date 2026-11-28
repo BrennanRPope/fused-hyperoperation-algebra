@@ -166,6 +166,47 @@ if os.path.exists('runs/feedd'):
     tot = [q['total'] for q in sc]
     check('C30 the hidden motion does not limit anything: total 4D growth rises as the 3D view\'s growth falls',
           all(b > a for a, b in zip(tot, tot[1:])), f"total growth {', '.join(f'{v:.4f}' for v in tot)}")
+# ---- Blow-up hunt: the push-back dial (hunt.py, hunt2.py, batch10.sh) ----
+if os.path.exists('runs/hunt2'):
+    import hunt_an as HA
+    HR = HA.load_all('runs/hunt2')
+    a = L('runs/hunt2/h_tg_n64_nu0_th1.json'); b = L('runs/hunt/h_tg_n64_nu0_th1.json')
+    za = min(a['rows'], key=lambda r: abs(r['t'] - 2))['Z']; zb = min(b['rows'], key=lambda r: abs(r['t'] - 2))['Z']
+    check('C31 the faster solver (hunt2.py, single precision) matches the first solver (hunt.py) on Taylor–Green, 64³',
+          abs(HA.t_trust(a) - HA.t_trust(b)) < 1e-3 and abs(za - zb) < 1e-4*zb,
+          f"how far the grid follows it: {HA.t_trust(a):.4f} vs {HA.t_trust(b):.4f}; spin at t = 2: {za:.6f} vs {zb:.6f}; time {a['secs']:.0f}s vs {b['secs']:.0f}s")
+    eu = [r for k, r in HR.items() if k[2] == 0 and k[3] == 1.0]
+    dE = max(max(abs(q['E'] - r['rows'][0]['E']) for q in r['rows'])/r['rows'][0]['E'] for r in eu)
+    check('C32 with full push-back and no viscosity (Euler) energy is conserved in every run, while the grid follows the flow',
+          dE < 1e-5, f'largest energy drift {dE:.1e} over {len(eu)} runs')
+    g0 = [HA.grid_close(HR, 'tg', 0.0, c=c) for c in (1, 2)]
+    check('C33 pressureless dust (no push-back): the three grids close in on the exact fold time 1 within 4%',
+          all(abs(g['T'] - 1) < 0.04 and g['ratio'] < 0.8 for g in g0),
+          '; '.join(f"threshold {c}: stops at {', '.join(f'{x:.3f}' for x in g['t'])} on 64³/128³/256³, step ratio {g['ratio']:.2f}, closes in on {g['T']:.3f}" for c, g in zip((1, 2), g0)))
+    g5 = [HA.grid_close(HR, 'tg', 0.5, c=c) for c in (1, 2)]
+    check('C34 half push-back: the grids still close in on one blow-up time (step ratio below 0.7)',
+          all(g['ratio'] < 0.7 for g in g5), '; '.join(f"threshold {c}: step ratio {g['ratio']:.2f}, blow-up at {g['T']:.2f}" for c, g in zip((1, 2), g5)))
+    fd = [L(f'runs/hunt2/h_rings_n{N}_nu0_th0.json') for N in (64, 128)]
+    check('C35 colliding rings as dust: both grids stop just before the exact fold time 0.1105 (within 15%)',
+          all(0.85*0.1105 < r['t_end'] <= 0.1105*1.02 for r in fd), f"stops at {fd[0]['t_end']:.3f} (64³), {fd[1]['t_end']:.3f} (128³)")
+    ns = [HR[(ic, 128, 0.005, 1.0)] for ic in ('tg', 'rings', 'klein')]
+    mn = [min(q['delta'] for q in r['rows'] if q.get('nfit', 99) >= 0.5*(128/3 - 3) and np.isfinite(q['delta']))*128/3 for r in ns]
+    check('C36 Navier–Stokes (viscosity 0.005), 128³: all three candidates stay resolved to the end, peak spin rises and falls back',
+          all(r['stop'] == '' for r in ns) and min(mn) > 2, '; '.join(f"{ic}: to t = {r['t_end']:.0f}, peak spin {max(q['wmax'] for q in r['rows']):.1f}, closest singularity {m:.1f} grid spacings"
+                                                                      for ic, r, m in zip(('Taylor–Green', 'rings', 'tube pair'), ns, mn)))
+    g1 = [HA.grid_close(HR, 'tg', 1.0, c=c) for c in (2, 4)]
+    check('C37 real flow (full push-back), Taylor–Green, Euler: the grids do not close in on a blow-up time (step ratio at least 0.95)',
+          all(g['ratio'] >= 0.95 for g in g1), '; '.join(f"threshold {c}: stops at {', '.join(f'{x:.2f}' for x in g['t'])} on 64³/128³/256³, step ratio {g['ratio']:.2f}" for c, g in zip((2, 4), g1)))
+    TH = sorted(th for (i, n, nu, th) in HR if i == 'tg' and n == 256 and nu == 0)
+    rs = [HA.grid_close(HR, 'tg', th, c=2)['ratio'] for th in TH]
+    check('C38 the closing-in fades as push-back rises: on Taylor–Green the step ratio (threshold 2) rises from dust to real flow',
+          rs[0] < 0.6 and rs[-1] > 0.95 and all(b > a - 0.05 for a, b in zip(rs, rs[1:])), ', '.join(f'θ {th:g}: {x:.2f}' for th, x in zip(TH, rs)))
+    gk = HA.grid_close(HR, 'klein', 1.0, c=2); rk = HR[('klein', 256, 0.0, 1.0)]
+    rows = [q for q in rk['rows'] if q.get('nfit', 0) >= 0.5*(256/3 - 3) and np.isfinite(q['delta']) and q['delta'] > 0]
+    tk = np.array([q['t'] for q in rows]); dk = np.log([q['delta'] for q in rows]); m = len(tk)//3
+    r0 = -(dk[m] - dk[0])/(tk[m] - tk[0]); r1 = -(dk[-1] - dk[-m])/(tk[-1] - tk[-m])
+    check('C39 real flow, bent tube pair, Euler: 256³ follows it much further than 128³ (no closing in), and the singularity distance shrinks more slowly over time',
+          gk['t'][2] - gk['t'][1] > 0.2 and r1 < 0.6*r0, f"threshold 2: stops at {', '.join(f'{x:.2f}' for x in gk['t'])} on 64³/128³/256³; δ shrinks at rate {r0:.2f} early and {r1:.2f} late on 256³")
 lines = [f"{'PASS' if r['ok'] else 'FAIL'} {r['name']}: {r['note']}" for r in res]
 lines.append(f"{sum(r['ok'] for r in res)} of {len(res)} pass")
 open('checks_output.txt', 'w').write('\n'.join(lines) + '\n'); json.dump(res, open('checks_results.json', 'w'), indent=1)
