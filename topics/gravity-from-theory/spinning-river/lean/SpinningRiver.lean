@@ -164,7 +164,7 @@ theorem boost_push (U v : R) : -((2 * U) + (2 * U)) * v = -4 * U * v := by grind
 
 end
 
-/-! ### Rounds 16 to 30 over a field (the topic file's `section Field`; proved by grind in place of
+/-! ### Rounds 16 to 31 over a field (the topic file's `section Field`; proved by grind in place of
 linear_combination, mul_eq_zero and rw with sub_div) -/
 section Field
 variable {K : Type} [Field K]
@@ -518,6 +518,18 @@ theorem third_level_phase_weight (de3 : K) :
 /-- **The π² floor** (round 30): missing only relativity's −(205/96)π²ν in the energy moves φ₆ by −(1025/6)π²ν
 (stated with the 96 and the 6 cleared, so it holds in any field). -/
 theorem pi_floor_phase (p2 n : K) : 6 * (-80 * (205 * p2 * n)) = 96 * (-1025 * p2 * n) := by
+  grind
+
+/-- **The boost-safe shape** (round 31): a π² term whose velocity weights satisfy 2α + γ = 0 = 2β + γ depends on
+the bodies' velocities only through v₁ − v₂, so on a circle it carries the relative speed alone. -/
+theorem boost_safe_shape (α v1 v2 : K) : α * v1^2 + α * v2^2 + (-2 * α) * v1 * v2 = α * (v1 - v2)^2 := by
+  grind
+
+/-- **The time part alone on a circle** (round 31): field energy's time part has weights −1/8, −1/8, 1; on a circle
+(v₁ = m₂v, v₂ = −m₁v, m₁ + m₂ = 1) eight times its bracket is −1 − 6ν with ν = m₁m₂, so it would put π² into ν²
+as well, where relativity has none. -/
+theorem time_part_circle (m1 : K) :
+    -((1 - m1)^2 + m1^2) - 8 * (m1 * (1 - m1)) = -1 - 6 * (m1 * (1 - m1)) := by
   grind
 
 end Field
