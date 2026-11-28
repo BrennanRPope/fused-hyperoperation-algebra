@@ -1,0 +1,8 @@
+N1 PASS
+N2 PASS
+N3 PASS
+N4 PASS
+N5 PASS
+5/5 passed
+IC sum: classical E=0.5 -> 0.3774, quantum E=0.7071 -> 0.7982, PR E=1 -> 2.0000
+gbit at (0.5,0): measurement entropy 0.8113 bits, mixing entropy 1.5000 bits
