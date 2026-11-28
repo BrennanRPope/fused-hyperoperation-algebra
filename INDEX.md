@@ -117,7 +117,7 @@ Work saved mid-way so nothing is held back. Each is marked DRAFT at the top of i
 
 | Topic | Folder | Page |
 |---|---|---|
-| Shared Lean library: 3,950 theorems, 183 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
+| Shared Lean library: 3,952 theorems, 183 modules | `lean-library/` | [page](https://claude.ai/artifact/WuSVpapjX9aiXUd6juT22M) |
 | Mathlib version of the Lean library: the 62 modules of the original library (1,750 theorems) on Mathlib's `PreQuasiregular`, plus the proof-complexity study. Built by CI | `lean-library-mathlib/` | see `PORT-NOTES.md` |
 | DRAFT: Mathlib candidates. The Tate curve over R⟦q⟧: c₄ = E₄, c₆ = −E₆, Δ = q · unit, split multiplicative reduction over k⸨q⸩, and E₄, E₆, Δ equal to the q-expansions of Mathlib's modular forms. Known mathematics; not yet sent to Mathlib. 41 theorems, built by CI | `lean-library-mathlib/MathlibCandidates/` | `MathlibCandidates` |
 | Proof engine | `topics/proof-engine/` | [page](https://claude.ai/artifact/CZM59HVTwKMrK5Qnd7p2g9) |
