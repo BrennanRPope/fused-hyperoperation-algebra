@@ -1,16 +1,18 @@
-# DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes)
+# DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes; round 3: how fast two planes feed each other)
 
 **DRAFT, Nov 27 2026.** Part of Fused Hyperoperation Algebra. Asked for by Brennan: "We might show that navier stokes
 really is 2D, but that the flows are two intersecting planes", then "remember we found some stable vortex stretching
 in the Klein bottle work" and "The idea that reality itself is twisted might be a good tack". Round 2 (section 8):
-"On navier stokes it might be three orthagonal planes".
+"On navier stokes it might be three orthagonal planes". Round 3 (section 9): Brennan said yes to looking for a limit on how
+fast two planes can feed each other's spin.
 
-Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **17 of 17 pass** (seconds; reads the run files). Exact algebra:
+Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **24 of 24 pass** (seconds; reads the run files). Exact algebra:
 [`algebra.py`](algebra.py) (sympy). Runs: [`twoplanes.py`](twoplanes.py) (solver, with the k setting on the crossing),
 [`batch1.sh`](batch1.sh), [`batch2.sh`](batch2.sh), [`batch3.sh`](batch3.sh), [`klein_planes.py`](klein_planes.py) (Klein pair),
 [`twist_sectors.py`](twist_sectors.py). Round 2: [`algebra3.py`](algebra3.py) (exact three-plane algebra),
-[`threeplanes.py`](threeplanes.py) (solver with the 27 plane-by-plane stretching terms), [`batch4.sh`](batch4.sh).
-Pictures: [`figures.py`](figures.py), [`figures3.py`](figures3.py) → [`figures/`](figures/).
+[`threeplanes.py`](threeplanes.py) (solver with the 27 plane-by-plane stretching terms), [`batch4.sh`](batch4.sh). Round 3: [`feed.py`](feed.py) (search for the fastest-growing flow),
+[`batch5.sh`](batch5.sh), [`batch6.sh`](batch6.sh), [`feed_summary.json`](feed_summary.json).
+Pictures: [`figures.py`](figures.py), [`figures3.py`](figures3.py), [`feed_figs.py`](feed_figs.py) → [`figures/`](figures/).
 Everything is known mathematics unless marked **ours**; the "ours" items are readings, exact identities and runs, not
 theorems about blow-up.
 
@@ -39,6 +41,9 @@ theorems about blow-up.
   no plane singled out. A plane never stretches its own spin, so all stretching sits on the three crossing lines. In
   the runs every plane takes its full third, three planes grow more than two (2.1–2.3× vs 1.6–1.9×), the twist still
   does not help, and no flat twist of the cube cycles the three planes.
+- **Round 3, a limit on two planes feeding each other (section 9):** there is none. The flow that grows total spin
+  fastest at an instant is itself a two-plane flow (two colliding vortex rings, with no spin along their shared axis),
+  so two planes can feed each other as fast as any 3D flow can grow. This route to a proof is closed.
 - **Klein link:** the Klein antiparallel pair is one flat flow (the straight pair) plus a bend, and all its stretching
   comes from the bend crossing the flat part (figure 6). What settled there was the **total** spin across grids, never
   the peak.
@@ -249,6 +254,57 @@ need, so this is a target, not a hint.
 ![figure 9](figures/fig9-third-plane-fills-in.png)
 ![figure 10](figures/fig10-two-vs-three-planes.png)
 
+
+## 9. Round 3: is there a limit on how fast two planes feed each other's spin?
+
+**Short answer: no. The flows that grow spin fastest are two-plane flows.** So no limit special to two planes exists
+at the instant-by-instant level, and this route to a proof is closed. It is not a lead.
+
+**The question, made exact.** Total spin Z grows at dZ/dt = 2(stretching − viscosity × |change of spin|²). In a
+two-plane flow (no spin along the shared line), the stretching is two terms: each plane's flow stretching the other
+plane's spin, both on the shared line (exact; check C19). For any flow the classical bound is
+dZ/dt ≤ 27/(8π⁴ν³) Z³, and it is sharp: Lu and Doering (Indiana Univ. Math. J. 57, 2008) found flows that come
+close to it, pairs of colliding vortex rings (as later papers describe them; I have not read the original). A useful
+limit would be a smaller bound for two-plane flows.
+
+**The test (ours).** Search for the flow that grows total spin fastest at one instant, with total spin fixed at 1, in
+the 2π box, the way Lu and Doering did. The search is a conjugate-gradient climb and its gradient matches finite
+differences to 1e-9 (C18). Four kinds of flow:
+
+| kind of flow | what it means | fastest growth found, relative to any flow on the same grid |
+|---|---|---|
+| any 3D flow | no restriction | 1 |
+| two planes sharing the box diagonal | no spin along (1,1,1) | 0.9987–1.0000 at three viscosities and two grids (C22) |
+| two planes sharing a box axis | no spin along y | 0.76, 0.93, 0.94 as viscosity drops (64³), 0.95 at 96³ (C21, C23); **cannot grow at all** at viscosity 0.1 and 0.07, where a box-sized 3D flow can (C20) |
+| one layered flat flow | no speed along x | can stretch (a strict flat flow cannot), but the best found is under 6% of two planes; a search result, not a bound (C24) |
+
+**The key finding (ours, figure 12).** The fastest-growing 3D flow has no spin at all along one fixed direction: the
+smallest share of its spin along any direction is under 1e-4 (C22). So it is a two-plane flow with its shared line
+along that direction (at or near the box diagonal in most runs). The pictures show what it is: two colliding vortex rings
+on a common axis. A swirl-free ring pair spins only around its axis, never along it, which is exactly "two planes
+sharing the axis". Two planes on a box axis fall a few percent short only because the periodic box fits the ring pair
+better along the diagonal. That is a fact about the box, not a limit from having two planes.
+
+**What it means.** The danger is not how fast two planes feed each other; at an instant they feed each other as fast
+as anything can. It is whether the flow **stays** a two-plane flow. If a flow is exactly axisymmetric with no swirl,
+it keeps no spin along its axis forever and is known to stay smooth (Ladyzhenskaya; Ukhovskii and Yudovich, 1968).
+Ayala and Protas (J. Fluid Mech. 818, 2017) followed these fastest-growing states in time and saw no sign of
+blow-up. In general a two-plane flow makes spin along its shared line at rate (spin · gradient) of the shared-line
+speed. That is the tilting term from round 1, and it is what separates the two-plane flows known to stay smooth from
+the rest.
+
+**Grades.** The two-plane stretching formula is exact. The search results are numbers at 32³–96³ with one to three
+starts each. The fastest rate itself is not settled at viscosity 0.025: it moves 26% from 64³ to 96³. But the
+comparisons between kinds of flow on the same grid hold within 2% (C23). A climb can stop at a local best, so each
+number is the best found, not a proved maximum.
+
+**Is it a lead?** No. The limit we looked for does not exist. The one open direction is controlling the tilt onto the
+shared line, and that is the vorticity-direction problem studied since Constantin and Fefferman (1993). Nothing here
+adds to it yet.
+
+![figure 11](figures/fig11-fastest-feeding.png)
+![figure 12](figures/fig12-fastest-flows.png)
+
 ## Checks
 
 | check | result | numbers |
@@ -270,3 +326,10 @@ need, so this is a target, not a hint.
 | C15 three planes grow more than two at the same energy (every three-plane seed above every two-plane seed) | pass | two-tw: 1.64, 1.75, 1.86; two-un: 1.88, 1.85, 1.93; three-tw: 2.30, 2.29, 2.14; three-un: 2.18, 2.20, 2.13 |
 | C16 the twist does not lower growth with three planes counted (3 seeds) | pass | twisted minus untwisted: +0.12, +0.08, +0.01; means 2.24 vs 2.17 |
 | C17 three-plane starts: every plane's own spin grows (no plane stays quiet), each plane ~1/3 of the gain | pass | smallest per-plane growth at the peak: 2.1x, 2.1x, 2.0x, 2.0x, 2.1x, 2.1x; gain shares within 0.03 of 1/3 |
+| C18 fastest-growth search: its gradient matches finite differences in every class | pass | any 5e-10, two 9e-10, twod 4e-09, one 1e-09 |
+| C19 in a two-plane flow all stretching sits on the shared line (every two-plane optimum) | pass | largest stretching off the shared line = 1.1e-16 |
+| C20 at high viscosity no two-plane flow (shared line on a box axis) can grow its spin, while some 3D flow can | pass | 32³ visc 0.1: two -0.100, any +0.043; 32³ visc 0.07: two -0.017, any +0.086; 64³ visc 0.07: two -0.016, any +0.086 |
+| C21 at lower viscosity two planes on a box axis come close to the fastest 3D growth, closer as viscosity drops (64³) | pass | visc 0.05: 0.76, visc 0.035: 0.93, visc 0.025: 0.94 |
+| C22 the fastest-growing 3D flow has no spin along one fixed direction (a two-plane flow), and two planes sharing the box diagonal reach its growth within 0.2% | pass | smallest spin-direction share: 64³ visc 0.025 seed 0 4e-05, 64³ visc 0.025 seed 1 5e-05, 64³ visc 0.035 seed 0 2e-06, 64³ visc 0.05 seed 0 3e-05, 96³ visc 0.025 seed 0 9e-06; diagonal ÷ any: 64³ visc 0.025 0.9987, 64³ visc 0.035 1.0000, 64³ visc 0.05 0.9998, 96³ visc 0.025 0.9999 |
+| C23 grid check at viscosity 0.025: the two-plane ÷ any comparison holds at 96³ (the rate itself is not settled) | pass | two ÷ any 0.938 (64³) vs 0.954 (96³); fastest rate itself 1.122 vs 1.412, so 64³ is too coarse for the rate at this viscosity |
+| C24 one layered flat flow alone can stretch (a strict one cannot, C2); best found growth is far below two planes | pass | stretching > 0 in all 19 one-plane optima; best found at visc 0.025: 0.060 vs two planes 1.053 (a search result, not a bound) |

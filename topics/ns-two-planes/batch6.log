@@ -1,0 +1,6 @@
+twod N=64 nu=0.05 seed=0: R=0.2086 P=0.81067 D=12.041 iters=234 k_rms=3.47 95s
+twod N=64 nu=0.035 seed=0: R=0.5684 P=1.9981 D=40.849 iters=115 k_rms=6.39 48s
+twod N=64 nu=0.025 seed=0: R=1.1209 P=2.8736 D=70.109 iters=85 k_rms=8.37 41s
+any N=64 nu=0.025 seed=0: R=1.1212 P=2.8775 D=70.254 iters=243 k_rms=8.38 85s
+two N=64 nu=0.025 seed=0: R=1.0529 P=2.7182 D=66.609 iters=99 k_rms=8.16 38s
+twod N=96 nu=0.025 seed=0: R=1.4122 P=4.3783 D=118.65 iters=109 k_rms=10.89 179s

@@ -15,4 +15,11 @@ PASS C14 two-plane starts: stretching starts on the shared line y (>0.7 at t=0.4
 PASS C15 three planes grow more than two at the same energy (every three-plane seed above every two-plane seed): two-tw: 1.64, 1.75, 1.86; two-un: 1.88, 1.85, 1.93; three-tw: 2.30, 2.29, 2.14; three-un: 2.18, 2.20, 2.13
 PASS C16 the twist does not lower growth with three planes counted (3 seeds): twisted minus untwisted: +0.12, +0.08, +0.01; means 2.24 vs 2.17
 PASS C17 three-plane starts: every plane's own spin grows (no plane stays quiet), each plane ~1/3 of the gain: smallest per-plane growth at the peak: 2.1x, 2.1x, 2.0x, 2.0x, 2.1x, 2.1x; gain shares within 0.03 of 1/3
-17 of 17 pass
+PASS C18 fastest-growth search: its gradient matches finite differences in every class: any 5e-10, two 9e-10, twod 4e-09, one 1e-09
+PASS C19 in a two-plane flow all stretching sits on the shared line (every two-plane optimum): largest stretching off the shared line = 1.1e-16
+PASS C20 at high viscosity no two-plane flow (shared line on a box axis) can grow its spin, while some 3D flow can: 32³ visc 0.1: two -0.100, any +0.043; 32³ visc 0.07: two -0.017, any +0.086; 64³ visc 0.07: two -0.016, any +0.086
+PASS C21 at lower viscosity two planes on a box axis come close to the fastest 3D growth, closer as viscosity drops (64³): visc 0.05: 0.76, visc 0.035: 0.93, visc 0.025: 0.94
+PASS C22 the fastest-growing 3D flow has no spin along one fixed direction (a two-plane flow), and two planes sharing the box diagonal reach its growth within 0.2%: smallest spin-direction share: 64³ visc 0.025 seed 0 4e-05, 64³ visc 0.025 seed 1 5e-05, 64³ visc 0.035 seed 0 2e-06, 64³ visc 0.05 seed 0 3e-05, 96³ visc 0.025 seed 0 9e-06; diagonal ÷ any: 64³ visc 0.025 0.9987, 64³ visc 0.035 1.0000, 64³ visc 0.05 0.9998, 96³ visc 0.025 0.9999
+PASS C23 grid check at viscosity 0.025: the two-plane ÷ any comparison holds at 96³ (the rate itself is not settled): two ÷ any 0.938 (64³) vs 0.954 (96³); fastest rate itself 1.122 vs 1.412, so 64³ is too coarse for the rate at this viscosity
+PASS C24 one layered flat flow alone can stretch (a strict one cannot, C2); best found growth is far below two planes: stretching > 0 in all 19 one-plane optima; best found at visc 0.025: 0.060 vs two planes 1.053 (a search result, not a bound)
+24 of 24 pass

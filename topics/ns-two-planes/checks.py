@@ -1,4 +1,4 @@
-"""DRAFT. Checks for ns-two-planes, from algebra_results.json, algebra3_results.json, twist_sectors.json and runs/*.json.
+"""DRAFT. Checks for ns-two-planes, from algebra_results.json, algebra3_results.json, runs/feed, twist_sectors.json and runs/*.json.
 Run: python3 checks.py  -> checks_output.txt, checks_results.json (a few seconds; run algebra.py, batches first)."""
 import json, os, numpy as np
 L = lambda f: json.load(open(f))
@@ -93,6 +93,46 @@ if os.path.exists('runs/p3_two-un_s0.json'):
           all(min(s['compgrow']) > 1.5 and max(abs(s['gain'] - 1/3)) < 0.06 for s in three),
           'smallest per-plane growth at the peak: ' + ', '.join(f"{min(s['compgrow']):.1f}x" for s in three)
           + '; gain shares within ' + f"{max(max(abs(s['gain'] - 1/3)) for s in three):.2f} of 1/3")
+
+# ---- Round 3: how fast can two planes feed each other? (feed.py, batch5.sh, batch6.sh) ----
+if os.path.exists('runs/feed'):
+    import glob, feed
+    gc = {}
+    for c in ['any', 'two', 'twod', 'one']:
+        n, a = feed.gradcheck(feed.Prob(16, 0.1, c)); gc[c] = abs(n - a)/abs(n)
+    check('C18 fastest-growth search: its gradient matches finite differences in every class', max(gc.values()) < 1e-6,
+          ', '.join(f'{c} {v:.0e}' for c, v in gc.items()))
+    FR = [L(f) for f in glob.glob('runs/feed/f_*.json')]
+    B = {}
+    for r in FR:
+        k = (r['cls'], r['N'], r['nu'])
+        if k not in B or r['R'] > B[k]['R']: B[k] = r
+    offy = max(abs(np.array(r['T'])).sum() - abs(np.array(r['T'])[0, :, 2]).sum() - abs(np.array(r['T'])[2, :, 0]).sum() for r in FR if r['cls'] == 'two')
+    check('C19 in a two-plane flow all stretching sits on the shared line (every two-plane optimum)', offy < 1e-9,
+          f'largest stretching off the shared line = {offy:.1e}')
+    hv = [(N, nu) for N, nu in [(32, 0.1), (32, 0.07), (64, 0.07)]]
+    check('C20 at high viscosity no two-plane flow (shared line on a box axis) can grow its spin, while some 3D flow can',
+          all(B[('two', N, nu)]['R'] < 0 < B[('any', N, nu)]['R'] for N, nu in hv),
+          '; '.join(f"{N}³ visc {nu}: two {B[('two', N, nu)]['R']:+.3f}, any {B[('any', N, nu)]['R']:+.3f}" for N, nu in hv))
+    rat = [(nu, B[('two', 64, nu)]['R']/B[('any', 64, nu)]['R']) for nu in [0.05, 0.035, 0.025]]
+    check('C21 at lower viscosity two planes on a box axis come close to the fastest 3D growth, closer as viscosity drops (64³)',
+          all(b >= a - 1e-3 for (_, a), (_, b) in zip(rat, rat[1:])) and rat[-1][1] > 0.9,
+          ', '.join(f'visc {nu}: {q:.2f}' for nu, q in rat))
+    lo = [(f"{r['N']}³ visc {r['nu']} seed {r['seed']}", r['M_eig'][0]/sum(r['M_eig'])) for r in FR
+          if r['cls'] == 'any' and r.get('M_eig') and r['nu'] <= 0.05 and r['N'] >= 64]
+    dg = [(N, nu, B[('twod', N, nu)]['R']/B[('any', N, nu)]['R']) for (c, N, nu) in B if c == 'twod']
+    check('C22 the fastest-growing 3D flow has no spin along one fixed direction (a two-plane flow), and two planes sharing the box diagonal reach its growth within 0.2%',
+          all(v < 1e-3 for _, v in lo) and all(abs(q - 1) < 2e-3 for *_, q in dg),
+          'smallest spin-direction share: ' + ', '.join(f'{n} {v:.0e}' for n, v in lo) + '; diagonal ÷ any: ' + ', '.join(f'{N}³ visc {nu} {q:.4f}' for N, nu, q in sorted(dg)))
+    if ('two', 96, 0.025) in B:
+        q64 = B[('two', 64, 0.025)]['R']/B[('any', 64, 0.025)]['R']; q96 = B[('two', 96, 0.025)]['R']/B[('any', 96, 0.025)]['R']
+        a64, a96 = B[('any', 64, 0.025)]['R'], B[('any', 96, 0.025)]['R']
+        check('C23 grid check at viscosity 0.025: the two-plane ÷ any comparison holds at 96³ (the rate itself is not settled)', abs(q96 - q64) < 0.05,
+              f'two ÷ any {q64:.3f} (64³) vs {q96:.3f} (96³); fastest rate itself {a64:.3f} vs {a96:.3f}, so 64³ is too coarse for the rate at this viscosity')
+    ones = [r for r in FR if r['cls'] == 'one']
+    check('C24 one layered flat flow alone can stretch (a strict one cannot, C2); best found growth is far below two planes',
+          all(r['P'] > 0 for r in ones) and max(r['R'] for r in ones if r['nu'] == 0.025) < 0.2*B[('two', 64, 0.025)]['R'],
+          f"stretching > 0 in all {len(ones)} one-plane optima; best found at visc 0.025: {max(r['R'] for r in ones if r['nu'] == 0.025):.3f} vs two planes {B[('two', 64, 0.025)]['R']:.3f} (a search result, not a bound)")
 lines = [f"{'PASS' if r['ok'] else 'FAIL'} {r['name']}: {r['note']}" for r in res]
 lines.append(f"{sum(r['ok'] for r in res)} of {len(res)} pass")
 open('checks_output.txt', 'w').write('\n'.join(lines) + '\n'); json.dump(res, open('checks_results.json', 'w'), indent=1)
