@@ -1,0 +1,38 @@
+n= 3  largest |gap| 0.0000  edge-midpoint gap -0.0000  average |gap| 0.0000  share |gap|>0.1 bit 0.000  |gap| at (0.5,0.2) 0.0000
+n= 4  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.5397  share |gap|>0.1 bit 0.927  |gap| at (0.5,0.2) 0.5414
+n= 5  largest |gap| 0.3849  edge-midpoint gap 0.2965  average |gap| 0.1717  share |gap|>0.1 bit 0.610  |gap| at (0.5,0.2) 0.0752
+n= 6  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.4195  share |gap|>0.1 bit 0.937  |gap| at (0.5,0.2) 0.2965
+n= 7  largest |gap| 0.5825  edge-midpoint gap 0.5341  average |gap| 0.1839  share |gap|>0.1 bit 0.579  |gap| at (0.5,0.2) 0.0155
+n= 8  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.3401  share |gap|>0.1 bit 0.910  |gap| at (0.5,0.2) 0.0481
+n= 9  largest |gap| 0.6983  edge-midpoint gap 0.6713  average |gap| 0.1799  share |gap|>0.1 bit 0.522  |gap| at (0.5,0.2) 0.0221
+n=10  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.2785  share |gap|>0.1 bit 0.843  |gap| at (0.5,0.2) 0.1780
+n=11  largest |gap| 0.7718  edge-midpoint gap 0.7554  average |gap| 0.1738  share |gap|>0.1 bit 0.559  |gap| at (0.5,0.2) 0.1416
+n=12  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.2400  share |gap|>0.1 bit 0.809  |gap| at (0.5,0.2) 0.2508
+n=13  largest |gap| 0.8210  edge-midpoint gap 0.8104  average |gap| 0.1677  share |gap|>0.1 bit 0.531  |gap| at (0.5,0.2) 0.1461
+n=14  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.2043  share |gap|>0.1 bit 0.711  |gap| at (0.5,0.2) 0.1582
+n=15  largest |gap| 0.8555  edge-midpoint gap 0.8483  average |gap| 0.1600  share |gap|>0.1 bit 0.552  |gap| at (0.5,0.2) 0.0850
+n=16  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.1803  share |gap|>0.1 bit 0.652  |gap| at (0.5,0.2) 0.0450
+n=17  largest |gap| 0.8803  edge-midpoint gap 0.8756  average |gap| 0.1531  share |gap|>0.1 bit 0.537  |gap| at (0.5,0.2) 0.0829
+n=18  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.1567  share |gap|>0.1 bit 0.565  |gap| at (0.5,0.2) 0.0731
+n=19  largest |gap| 0.8991  edge-midpoint gap 0.8960  average |gap| 0.1459  share |gap|>0.1 bit 0.537  |gap| at (0.5,0.2) 0.1485
+n=20  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.1450  share |gap|>0.1 bit 0.520  |gap| at (0.5,0.2) 0.1382
+n=21  largest |gap| 0.9144  edge-midpoint gap 0.9116  average |gap| 0.1398  share |gap|>0.1 bit 0.534  |gap| at (0.5,0.2) 0.2060
+n=22  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.1292  share |gap|>0.1 bit 0.428  |gap| at (0.5,0.2) 0.1229
+n=23  largest |gap| 0.9258  edge-midpoint gap 0.9238  average |gap| 0.1348  share |gap|>0.1 bit 0.532  |gap| at (0.5,0.2) 0.1165
+n=24  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.1195  share |gap|>0.1 bit 0.363  |gap| at (0.5,0.2) 0.0491
+n=25  largest |gap| 0.9351  edge-midpoint gap 0.9336  average |gap| 0.1289  share |gap|>0.1 bit 0.524  |gap| at (0.5,0.2) 0.0646
+n=26  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.1071  share |gap|>0.1 bit 0.304  |gap| at (0.5,0.2) 0.0435
+n=27  largest |gap| 0.9424  edge-midpoint gap 0.9415  average |gap| 0.1246  share |gap|>0.1 bit 0.508  |gap| at (0.5,0.2) 0.1271
+n=28  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.1007  share |gap|>0.1 bit 0.235  |gap| at (0.5,0.2) 0.0930
+n=29  largest |gap| 0.9488  edge-midpoint gap 0.9481  average |gap| 0.1199  share |gap|>0.1 bit 0.490  |gap| at (0.5,0.2) 0.1462
+n=30  largest |gap| 1.0000  edge-midpoint gap 1.0000  average |gap| 0.0906  share |gap|>0.1 bit 0.196  |gap| at (0.5,0.2) 0.0848
+coarse grid n=30: average |gap| 0.0913
+coarse grid n=31: average |gap| 0.1138
+coarse grid n=61: average |gap| 0.0756
+coarse grid n=62: average |gap| 0.0380
+P1 PASS
+P2 PASS
+P3 PASS
+P4 PASS
+P5 PASS
+5/5 passed
