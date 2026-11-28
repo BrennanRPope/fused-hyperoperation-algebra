@@ -4,7 +4,7 @@ Each `## vX.Y.Z` section below becomes the notes of that GitHub release (and its
 
 ## Version history
 
-A version changes only when VERSION is bumped, not with each commit. Each release gets its own Zenodo DOI, added to this table once Zenodo mints it.
+A version changes only when VERSION is bumped, not with each commit. Every new DOI Zenodo mints gets a row here. The all-versions DOI [10.5281/zenodo.24539304](https://doi.org/10.5281/zenodo.24539304) always points to the newest release.
 
 | Version | Released | DOI | What changed |
 |---|---|---|---|

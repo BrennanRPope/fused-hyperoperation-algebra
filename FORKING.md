@@ -38,8 +38,8 @@ and [LICENSE-docs](LICENSE-docs) (CC BY 4.0), are what apply. Where this page an
 ## How to cite
 
 Use [CITATION.cff](CITATION.cff); GitHub's "Cite this repository" button reads it. The concept DOI
-[10.5281/zenodo.24539305](https://doi.org/10.5281/zenodo.24539305) cites all versions, and Zenodo gives each release
-(such as v0.1.0) its own version DOI. Cite the specific version you used when you can, because names and notation
+[10.5281/zenodo.24539304](https://doi.org/10.5281/zenodo.24539304) cites all versions, and Zenodo gives each release
+its own version DOI (v0.1.0's is 10.5281/zenodo.24539305; see the [version history](CHANGELOG.md#version-history)). Cite the specific version you used when you can, because names and notation
 change at 1.0 (see [NAMING-COLLISIONS.md](NAMING-COLLISIONS.md)).
 
 ## Name and attribution

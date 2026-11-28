@@ -1,11 +1,11 @@
 # Fused Hyperoperation Algebra and Affine Composition Theory
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24539305.svg)](https://doi.org/10.5281/zenodo.24539305)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24539304.svg)](https://doi.org/10.5281/zenodo.24539304)
 [![CI](https://github.com/BrennanRPope/fused-hyperoperation-algebra/actions/workflows/ci.yml/badge.svg)](https://github.com/BrennanRPope/fused-hyperoperation-algebra/actions/workflows/ci.yml)
 [![axioms: 3 standard](https://img.shields.io/badge/axioms-3%20standard-blue)](ASSUMPTIONS.md)
 [![sorry: 0](https://img.shields.io/badge/sorry-0-brightgreen)](ASSUMPTIONS.md)
 
-Cite all versions with DOI [10.5281/zenodo.24539305](https://doi.org/10.5281/zenodo.24539305); Zenodo also gives each release, such as v0.1.0, its own version DOI.
+Cite all versions with DOI [10.5281/zenodo.24539304](https://doi.org/10.5281/zenodo.24539304), which always points to the newest release; each release also has its own version DOI, listed in the [version history](CHANGELOG.md#version-history).
 
 Brennan Pope's math theory, with the proofs, checks, figures and write-ups gathered in one place. It has two layers, and the dependency runs one way ([layers](topics/theory-name/LAYERS.md)):
 
