@@ -253,7 +253,7 @@ Some topic folders also keep the original Lean file they were first written in. 
 
 ## Releases
 
-Releases are made automatically. To cut one, add a `## vX.Y.Z` section to [CHANGELOG.md](CHANGELOG.md), set the same number in [VERSION](VERSION) and in `version:` in [CITATION.cff](CITATION.cff), and push to main. The release workflow then tags it and publishes the GitHub release, and Zenodo archives that snapshot under a new permanent DOI. Pushes that leave VERSION unchanged make no release.
+Releases are made automatically. To cut one, add a `## vX.Y.Z` section to [CHANGELOG.md](CHANGELOG.md), set the same number in [VERSION](VERSION) and in `version:` in [CITATION.cff](CITATION.cff), and push to main. The release workflow then tags it and publishes the GitHub release, and Zenodo archives that snapshot under a new permanent DOI. Pushes that leave VERSION unchanged make no release. The [version history](CHANGELOG.md#version-history) at the top of CHANGELOG.md lists every release with its DOI; once Zenodo mints a new one, add it there.
 
 ## License
 

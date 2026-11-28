@@ -2,6 +2,16 @@
 
 Each `## vX.Y.Z` section below becomes the notes of that GitHub release (and its Zenodo version).
 
+## Version history
+
+A version changes only when VERSION is bumped, not with each commit. Each release gets its own Zenodo DOI, added to this table once Zenodo mints it.
+
+| Version | Released | DOI | What changed |
+|---|---|---|---|
+| [v0.3.0](#v030) | Nov 28, 2026 | [10.5281/zenodo.24622769](https://doi.org/10.5281/zenodo.24622769) | Headline: what time could be (time study, DRAFT). Also the quantum–gravity bridges study, unimodular gravity, the Navier–Stokes blow-up hunt and the known-vs-yours tally. Lean library 3,957 theorems in 183 modules; CI split into three quick jobs. |
+| [v0.2.0](#v020) | Nov 27, 2026 | [10.5281/zenodo.24589932](https://doi.org/10.5281/zenodo.24589932) | Headline: shared-centre fractals (new ties, DRAFT). The two-layer names (Fused Hyperoperation Algebra and Affine Composition Theory), 89 new topic folders, a Mathlib version of the library. Lean library 3,875 theorems in 181 modules. |
+| [v0.1.0](#v010) | Nov 25, 2026 | [10.5281/zenodo.24539305](https://doi.org/10.5281/zenodo.24539305) | First public release: the a + b + k·ab framework, a Lean library of 3,003 theorems in 119 modules, lens results for gravity and electromagnetism, and the licenses. |
+
 ## v0.3.0
 
 Third release, one day after v0.2.0 (Nov 27 to Nov 28, 2026). As before, almost everything new is marked **DRAFT**: checked by its own scripts and by CI, not reviewed by anyone outside the project, and not claimed as a discovery unless proved.
