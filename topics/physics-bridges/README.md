@@ -1,5 +1,7 @@
 # DRAFT · Bridges between Affine Composition Theory and the major physics theories
 
+> **Names:** some words or symbols on this page (fused, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 28 2026. Not versioned, not proved in Lean.** Asked for by Brennan on a voice call, after asking whether superstring
 theory and M-theory are built on the round 36 result: "Okay, so these um, overlaps, I'd like to show the bridges between the
 different theories."

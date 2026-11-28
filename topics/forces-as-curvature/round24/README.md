@@ -1,5 +1,7 @@
 # Round 24: charge as a source of light on the law's mesh
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 23 (`../round23/`). The question is the one Brennan was offered: can round 10's charge ½ act as a source of light on the law's mesh? Light on the law's 3-sphere is from round 17, and the law's own field there is from round 18. Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**, about 90 seconds; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f31`. Colour key: **blue = the law's mesh and field, orange = charges and their light, grey = smooth reference**.*
 
 ## Verdict first

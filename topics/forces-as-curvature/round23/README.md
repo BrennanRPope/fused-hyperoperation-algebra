@@ -1,5 +1,7 @@
 # Round 23: a lump of matter in the law's de Sitter spacetime
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 22 (`../round22/`), which put light and free matter into the law's de Sitter spacetime with no pull back on the geometry. Here matter is allowed to curve the law's spacetime back. Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**, about 6 seconds; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f30`. Colour key: **blue = the law's own geometry, orange = what the mass adds, grey = reference**.*
 
 ## Verdict first

@@ -1,5 +1,7 @@
 # Round 26: the moving half of the tide, and gravitational waves on the law's 3-sphere
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 25 (`../round25/`) on the same merged stream: the weak force's twist and gravity's tide. Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**, about 80 s; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f33`. Colour key: **blue = the law and its gravity, purple = the magnetic tide, orange = the weak force's twist, grey = reference**.*
 
 > **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the n = 3 wave on closed de Sitter is solved exactly for every n by Abbassi, Khodagholizadeh and Abbassi, Eur. Phys. J. C 73:2592 (2013), arXiv:1207.0876 (audit check K4).

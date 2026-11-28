@@ -1,5 +1,7 @@
 # Round 27: hunting for a gravity prediction from the law
 
+> **Names:** some words or symbols on this page (mult-add, fused, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 26 (`../round26/`). Runs alongside the prior-art audit (`../prior-art-audit/`), whose Predictions section points here. Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, under a second; numpy, scipy), numbers in `results.json`. Picture: `figures.py` → `figures/f34`. Colour key: **blue = the law, red = ruled out, green = agrees, amber = open, grey = reference**.*
 
 Brennan chose this over settling the 1997 dispute about spinning twist bubbles, asking to fold it into the audit: "Please merge this work as well". The audit keeps the novelty sort for the whole theory. This round tests gravity candidates: places where the law fixes a number that textbook physics leaves free, or where the two give different numbers. For each: does the law force it or is it only chosen, is it already known or measured, and what data would decide it.

@@ -1,5 +1,7 @@
 # DRAFT: Is there a tie between "can the twist bubble spin?" and "why does quantum mechanics need i?" (Nov 27, 2026)
 
+> **Names:** some words or symbols on this page (mult-add, fused, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT. Not versioned, not proved in Lean. Checks: `checks.py` → `checks_output.txt` (**7 / 7 pass**, a few seconds; numpy, scipy, sympy), numbers in `results.json`. Pictures: `figures.py` → `figures/t1`–`t7`. Colour key: **blue = the law, orange = textbook physics, grey = reference.***
 
 Brennan's asks (Nov 27, his words): "Is the spin dispute the same as the I for quantum dispute?", then "Let's look for a tie between the two questions", then "Still trying for quantum gravity".

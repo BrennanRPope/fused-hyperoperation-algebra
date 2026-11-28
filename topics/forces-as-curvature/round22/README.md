@@ -1,5 +1,7 @@
 # Round 22: light, then matter, in the law's de Sitter spacetime
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 20 (`../round20/`), which built de Sitter spacetime from the law (one dial q, a dot product with one minus sign), and round 21 (`../round21/`), which asked why the sign is Lorentzian. This round is the other branch Brennan was offered: put the forces into the law's spacetime, light first. Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**, about 30 seconds; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f29`. Colour key: **blue = light, orange = matter, grey = reference**.*
 
 ## Verdict first

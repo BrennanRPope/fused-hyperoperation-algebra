@@ -1,5 +1,7 @@
 # DRAFT · Does the law force Shannon's chain rule?
 
+> **Names:** some words or symbols on this page (Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 28 2026. Not versioned, not proved in Lean, not pushed to the repo. Round 5 of `spin-i-tie/`, a lean
 follow-up to `forces-circle/`. Brennan: "Test the chain rule".* Checks: `checks.py` → `checks_output.txt` (**3 / 3
 pass**), `results.json`. Picture: `figures.py` → `figures/cr1_dial.png`. Colour key: blue = the law's own reading;

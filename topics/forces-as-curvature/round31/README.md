@@ -1,5 +1,7 @@
 # Round 31: does the hidden 2-sphere, and its flux, come out of the law's hidden 3-sphere?
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 30 (`../round30/`) and takes up left-handed matter, the next build on the standing goal. Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**: H1, H2, H4 exact; H3 exact spectra from round 7's Dirac operator, unchanged), results in `results.json`. Picture: `figures.py` → `figures/f38`. Colour key: **blue = what follows from the law's geometry, and left-handed modes; orange = flux arrows, right-handed modes, and what is still a choice; red = the no-go; purple = the leftover symmetry; grey = reference**.*
 
 Round 7 found that twisting the hidden space can't make one-handed matter, but flux through a hidden 2-sphere can. Rounds 9 and 10 found the law's twist can act as that flux, and that the law's own bookkeeping gives matter charge ½ and one left-handed massless mode. Both rested on two assumptions:

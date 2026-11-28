@@ -1,5 +1,7 @@
 # DRAFT · One clock for everything: does the i survive, can the clock make the odds, and what does twisted time do?
 
+> **Names:** some words or symbols on this page (fused, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 28 2026. Not versioned, not proved in Lean, not pushed to the repo. Round 2 of `spin-i-tie/`. Asked for by
 Brennan on a call: "keep chasing that", "having the very small clock that produces probability would be something that
 would unify things", "we've already done quite a bit of work on Bell's theorem ... just keep on hammering at it", then

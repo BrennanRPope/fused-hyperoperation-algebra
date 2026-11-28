@@ -1,5 +1,7 @@
 # Round 20: de Sitter spacetime from the law, with space and time in one law
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 19 (`../round19/`) and joins it to rounds 14–16's slabs (`../round16/`), using the twisted-boost law (`../../twisted-boosts/`). Checks: `checks.py` → `checks_output.txt` (**6 / 6 pass**, about 5 seconds; numpy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f27`. Colour key: **blue = the law, orange = light, grey = reference**.*
 
 > **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the law with a Lorentzian norm giving de Sitter is in print: Nesterov and Sabinin, Phys. Rev. D 62, 081501(R) (2000), hep-th/0010159. Where this page says it hasn't been found written in this form, read it as known.

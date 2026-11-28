@@ -1,5 +1,7 @@
 # Round 25: the weak force's twist and gravity's tidal pull, together
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 24 (`../round24/`) and joins two open threads: round 23's missing tidal pull (`../round23/`) and the weak and strong forces' hidden spaces from rounds 4–5 (`../` §6d, `../round5/`), now put on the law's expanding 3-sphere slices (rounds 18–22). Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**, about 16 s; numpy, scipy, sympy), numbers in `results.json`. Picture: `figures.py` → `figures/f32`. Colour key: **blue = the law, orange = the weak force's twist and its energy, grey = reference**.*
 
 > **Prior-art note (DRAFT, added Nov 27 from the [prior-art audit](../prior-art-audit/), section 8):** the tide formula 3/2 (q̄ − q_loc) is Sussman's (Class. Quantum Grav. 2013, arXiv:1209.1962, Eqs. 40a/42a; audit check K2): the tide as the gap between mean and local density, with the names changed. It moves from ours to textbook; the table below is marked to match.

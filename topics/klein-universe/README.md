@@ -1,5 +1,7 @@
 # DRAFT · Is space itself shaped like a Klein bottle, or twisted at all?
 
+> **Names:** some words or symbols on this page (wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 **DRAFT, Nov 27 2026. Not versioned, not proved in Lean.** Part of Affine Composition Theory. Asked for by Brennan:
 "Did we determine if reality was really a Klein bottle?" / "This is my hypothesis that I want to check". On a call the same
 evening he widened it to any twist of space, "Whether it's a Klein bottle or something else ... or a torsion to space ... that

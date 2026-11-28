@@ -1,5 +1,7 @@
 # Round 21: why Lorentzian?
 
+> **Names:** some words or symbols on this page (fused) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 20 (`../round20/`), which built de Sitter spacetime from the law with one dial q and a dot product with one minus sign. Brennan chose this round: look for what in the law, if anything, makes time's sign differ from space's. Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**, about 1 second; numpy), numbers in `results.json`. Picture: `figures.py` → `figures/f28`. Colour key: **blue = space (the law turns), orange = time (the law boosts), grey = light and reference**.*
 
 ## Verdict first

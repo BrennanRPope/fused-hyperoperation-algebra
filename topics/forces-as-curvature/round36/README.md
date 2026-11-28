@@ -1,5 +1,7 @@
 # Round 36: where hypercharge and colour could come from
 
+> **Names:** some words or symbols on this page (⊕) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 35 (`../round35/`). It takes up the two gaps round 33 left (`../round33/`), the last ones on the way to building all the forces in spacetime: hypercharge isn't the circle weight, and colour is missing. Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**, about 1 s: C1 and C2 numbers, C3 exact, C4 exact plus textbook one-loop running), results in `results.json`. Picture: `figures.py` → `figures/f43`. Colour key: **blue = the law and colour triplets, orange = octonions and antitriplets, green = what fits (colour singlets, SO(10)), purple = the law's output and the anomaly sums, red = where it misses measurement, grey = reference**.*
 
 Rounds 1 to 35 put the law on a 3-sphere, where it is the quaternion sandwich x^½·y·x^½. Its symmetries there gave the weak force's SU(2) and a circle (rounds 31 and 33), but no colour and no hypercharge. This round asks what the law actually needs in order to exist, what its symmetries are in general, and whether a bigger sphere holds the missing forces.

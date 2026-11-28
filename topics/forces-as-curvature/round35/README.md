@@ -1,5 +1,7 @@
 # Round 35: the energy gravitational waves carry, and how it bends spacetime
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Brennan chose this round ("Wave energy") after round 34 (`../round34/`), which built the waves themselves on spacetime glued from flat pieces. Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**, about 3 s: E1 numbers on round 34's lattice, whose code is copied verbatim; E2 exact sympy; E3 numbers; E4 published pulsar parameters), results in `results.json`. Picture: `figures.py` → `figures/f42`. Colour key: **blue = the waves and what they predict, orange = the second half of each balance (the × polarization, the wave's motion, numerical points), green = the smooth bending a wave demands, purple = the law's dial, red = measurement, grey = reference**.*
 
 Round 34 found that the law's loop twist, used as curvature on glued flat pieces, carries gravitational waves: 2 shapes at light speed. Round 30 had found that the law leaves those waves' data free. This round follows the waves' energy: how much they carry, how that energy itself bends spacetime, and what it does to an orbiting pair that sends waves off.

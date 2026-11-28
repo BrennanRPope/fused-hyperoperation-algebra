@@ -1,5 +1,7 @@
 # DRAFT · Torsion: a new dial, or derived?
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Asked for by Brennan: "I'd like to take a look at torsion" / "That might be a new dial or a derived property". Builds on forces round 28 (S4), round 25 (K1), `why-i/kappa-poincare/` (K5b), `order-dial/` §3 and the dial audit. Checks: `checks.py` → `checks_output.txt` (**8 / 8 pass**; exact sympy where marked, numeric elsewhere), results in `results.json`. Pictures: `figures.py` → `figures/t1`–`t3`. Colour key: **green = the law's sphere sum (f = 1), orange = plain products and the law's chains (f = 0, 2), blue = curvature, grey dashed = torsion, purple = Einstein–Cartan, red = measured bounds.***
 
 ## Verdict first

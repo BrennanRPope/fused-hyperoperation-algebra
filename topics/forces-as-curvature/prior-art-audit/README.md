@@ -1,5 +1,7 @@
 # DRAFT · Prior-art audit: what in Affine Composition Theory is actually new
 
+> **Names:** some words or symbols on this page (⊕, fused, rung, wall, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned. Brennan's ask: "Run the prior-art check", after "I'm just hoping this is actually
 novel" and "And not just straight math". Then: "Also looking for a prediction seems to be something that would fit with
 that work", and, when the forces thread's round 27 took the gravity prediction hunt, "Please merge this work as well".

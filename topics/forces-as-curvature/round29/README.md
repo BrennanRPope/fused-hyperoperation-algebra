@@ -1,5 +1,7 @@
 # Round 29: does the law fix the slope of the dial as rolling dark energy?
 
+> **Names:** some words or symbols on this page (mult-add) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 28 (`../round28/`), on the stream Brennan merged with the prior-art audit ("Please merge this work as well"). This tests the audit's candidate C6. Checks: `checks.py` → `checks_output.txt` (**5 / 5 pass**: D1–D3 exact in sympy, D4–D5 numbers against data), results in `results.json`. Picture: `figures.py` → `figures/f36`. Colour key: **red = slopes a reading of the law forces, green = a slope that is only chosen, grey = data and the cosmological constant, blue and orange = the two parts of the hidden sphere's potential**.*
 
 The dial-potential search (`../../dial-potential/`) found one live lead. If the mult-add dial k rolls slowly today, rescaling forces its potential to be an exponential, V ∝ exp(−λφ/M_Pl). With the slope fitted, it beats a cosmological constant by Δχ² ≈ 4.85 on Pantheon+ supernovae and DESI DR2 BAO, but the slope λ = 0.82 was fitted, not predicted. A slope only becomes a number once the dial is a piece of geometry, because geometry fixes how its kinetic energy is normalized. Our gravity rounds give the dial three such readings. This round works out the slope each one forces and tests it against the same data with the same fitter.

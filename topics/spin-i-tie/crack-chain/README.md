@@ -1,5 +1,7 @@
 # DRAFT: can the law give Shannon's chain rule instead of assuming it?
 
+> **Names:** some words or symbols on this page (Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 ![which chain rules hold at each dial](cc1_weights.png)
 
 **Plain result: it partly cracks.** The law doesn't break the chain rule: a chain rule holds at

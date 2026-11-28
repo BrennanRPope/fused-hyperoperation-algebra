@@ -1,5 +1,7 @@
 # DRAFT · Why the quantum ceiling is 2√2: information causality, read through the law
 
+> **Names:** some words or symbols on this page (fused) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 28 2026. Not versioned, not proved in Lean, not pushed to the repo. Round 3 of `spin-i-tie/`, a lean
 follow-up to `clock-test/`: Brennan said "Start on that" to looking in the law for why a shared clock's signal stops
 at 2√2 rather than 4, starting with information causality.* Checks: `checks.py` → `checks_output.txt` (**4 / 4

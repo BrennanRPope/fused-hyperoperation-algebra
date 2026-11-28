@@ -1,5 +1,7 @@
 # Round 34: gravitational waves on spacetime glued from flat pieces
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Brennan asked for this round ("And also definitely need to figure out gravitational waves") after round 33 (`../round33/`). It takes up the piece round 30 left free (`../round30/`) and runs round 11's glued-pieces method (`../round11/`) in 4 dimensions for the first time. Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**, about 4 s: G1, G3 and G4 numbers, G2 numbers plus an exact sympy comparison), results in `results.json`. Picture: `figures.py` → `figures/f41`. Colour key: **blue = the glued pieces' own result, orange = the second polarization, purple = the light cone, red = the measured bound, grey = reference and the directions that are always flat**.*
 
 Round 11 showed that on spacetime glued from flat pieces, all curvature sits on the joints, and it is exactly the law's loop twist: the angle a loop comes back turned by. Regge's action, joint size times that angle, tends to Einstein's. Round 30 then found that the law leaves 2 functions per point free on a slice of space, and that these are gravitational-wave data.

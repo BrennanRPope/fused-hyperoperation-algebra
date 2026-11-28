@@ -1,5 +1,7 @@
 # DRAFT: does linear mixing pin the information dial to k = 0?
 
+> **Names:** some words or symbols on this page (Tsallis q) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 ![coin test and the chain of reasoning](lm1_coin.png)
 
 **Plain result: yes, with one honest assumption.** Assume one rule: an irrelevant coin flip

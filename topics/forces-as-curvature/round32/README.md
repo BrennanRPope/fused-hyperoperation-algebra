@@ -1,5 +1,7 @@
 # Round 32: is there a reason inside the law to keep one hand of matter?
 
+> **Names:** some words or symbols on this page (⊕, twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 31 (`../round31/`), which left one assumption under rounds 9 and 10. Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**: K1 exact plus numeric, K2 exact spectra by representation theory, K3 exact with a numeric cross-check, K4 exact algebra), results in `results.json`. Picture: `figures.py` → `figures/f39`. Colour key: **green = the law (f = 1); orange = the other members of the twist family (f ≠ 1) and what is still a choice; blue = Dirac spectra; red = the no-go; grey = reference**.*
 
 Round 31 showed that the hidden 2-sphere with flux under rounds 9 and 10 comes out of the law's own hidden 3-sphere. It left one assumption:

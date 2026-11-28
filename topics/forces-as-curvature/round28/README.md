@@ -1,5 +1,7 @@
 # Round 28: does the law force space to be closed, or fix a spin–twist coupling?
 
+> **Names:** some words or symbols on this page (twist) also mean something else in standard math, physics or computing, or inside this project. [NAMING-COLLISIONS.md](../../../NAMING-COLLISIONS.md) says which meaning is in play.
+
 *DRAFT, Nov 27 2026. Not versioned, not proved in Lean. Follows round 27 (`../round27/`), on the stream Brennan merged with the prior-art audit ("Please merge this work as well"). Checks: `checks.py` → `checks_output.txt` (**4 / 4 pass**, exact, sympy, plus one number check), results in `results.json`. Picture: `figures.py` → `figures/f35`. Colour key: **blue = closed slices (the law's 3-spheres), green = flat, orange = open, red = where q = Λ/3, grey = reference**.*
 
 Round 27 left one open, testable item: if matter's resting slices must be the law's 3-spheres, space is closed (Ω_k < 0), which the next surveys can decide. This round asks whether anything in the law forces that, which would make closed space a real prediction. It also takes the audit's candidate C4: does the law fix a spin–twist coupling different from Einstein–Cartan's, testable against the 10⁻³¹ GeV torsion bounds?
