@@ -82,6 +82,8 @@ jobs:
         # tools/checks_slow.txt (over about a minute each in CI) run in slow-checks.yml, started by hand.
         # The Lean builds above are the core of CI.
         # Split three ways (Brennan, Nov 27): each job runs every third script, so none is left out.
+        # Closed results kept as a one-time record (tools/checks_retired.txt) are not run here or in
+        # slow-checks.yml, so CI never shows red on purpose (Brennan, Nov 28).
         run: python tools/run_checks.py --quick --shard ${{ matrix.shard }}/3 --jobs 4 --timeout 600
 
       - name: Topic write-ups still missing an Assumptions section (report only)

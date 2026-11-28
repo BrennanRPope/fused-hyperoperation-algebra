@@ -6,7 +6,7 @@ Nov 27, 2026. Asked for by Brennan, after the periodic-box round (`../README.md`
 blow up proofso let's explore that as well". (The earlier round said the twisted class is a place to *search* for
 blow-up, Clay's option D; it never offered a proof. This round runs that search on the best-known candidate.)
 
-Checks: `checks_blowup.py` → `checks_blowup_output.txt` (**9 of 10 pass**; B9 fails: peak spin does not settle between the 192³ and 256³ grids, section 3). Runs: `tubes.py` (one run), `batch.sh`,
+Checks: `checks_blowup.py` → `checks_blowup_output.txt` (**9 of 10 pass**; B9 fails: peak spin does not settle between the 192³ and 256³ grids, section 3). This is a closed result, so the checks are a one-time record and are not run in CI; rerun the script by hand only to reproduce it. Runs: `tubes.py` (one run), `batch.sh`,
 `batch2.sh`. Pictures: `fig_pair.py`, `fig_classes.py`, `fig_nu.py`, `fig_grids.py` → `../figures/figF…figI`. 256³ run: `res256.py` (resumes from a checkpoint). DRAFT: everything is
 known work unless marked **ours**; the "ours" items are runs, not theorems.
 

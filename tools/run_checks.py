@@ -14,7 +14,8 @@ the repo's topics/<topic> before the script runs, so the repo copy is what gets 
 Numeric checks are evidence, not proofs; the Lean library is where proofs live.
 With --quick (what CI runs on every push) the slow numeric runs listed in tools/checks_slow.txt are
 left out; --slow-only runs just those (the slow-checks workflow, started by hand). Every script is in
-exactly one of the two runs. --shard K/N runs every N-th script starting at the K-th, so CI splits the
+exactly one of the two runs, except the closed results in tools/checks_retired.txt, which are kept as
+a one-time record and run only when named by path. --shard K/N runs every N-th script starting at the K-th, so CI splits the
 quick run across N jobs with nothing left out.
 A script listed in tools/checks_needing_packages.txt with a Python module CI does not install is
 reported as SKIP (not a failure) while that module can't be imported; it runs as soon as it can.
@@ -133,6 +134,19 @@ def main():
                         sys.exit(f"tools/extra_checks.txt lists {line.strip()}, which does not exist")
                     if p not in scripts:
                         scripts.append(p)
+    # Closed results (tools/checks_retired.txt) are kept as a one-time record and are not run unless
+    # named by path, so CI never shows a known result as red.
+    retired_file = ROOT / "tools" / "checks_retired.txt"
+    if not a.paths and retired_file.exists():
+        retired = set()
+        for line in retired_file.read_text().splitlines():
+            parts = line.split()
+            if parts and not line.startswith("#"):
+                p = (ROOT / parts[0]).resolve()
+                if not p.exists():
+                    sys.exit(f"tools/checks_retired.txt lists {parts[0]}, which does not exist")
+                retired.add(p)
+        scripts = [s for s in scripts if s.resolve() not in retired]
     # Slow numeric runs (tools/checks_slow.txt: path, then its time in CI) stay out of the per-push
     # run (--quick) and run in their own workflow (--slow-only), started by hand. Nothing is dropped:
     # every script is in exactly one of the two runs.

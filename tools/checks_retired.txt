@@ -1,0 +1,7 @@
+# Closed results whose checks are kept in the repo as a one-time record and are not run by CI,
+# neither in the per-push run nor in the slow-checks workflow. Brennan, Nov 28: "I want the automatic
+# check to never show red on purpose"; "We've already shown it doesn't work, so I think it should not be
+# run again". The script, its saved output and its results file stay unchanged; rerun one by hand
+# (python3 tools/run_checks.py <path>) only to reproduce it.
+# Each line: a path from the repo root, then a short reason.
+topics/klein-flow/periodic-box/blowup/checks_blowup.py  closed: B9 records that peak spin does not settle between 192^3 and 256^3
