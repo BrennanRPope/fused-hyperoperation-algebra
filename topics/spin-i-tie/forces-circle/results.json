@@ -1,0 +1,40 @@
+{
+ "F1": {
+  "pass": true,
+  "detail": "Pawlowski's tree multiplies biases along each branch (the law at k = -2), so a measure that grows like |E|^a near a fair coin sums over the 2^n branches to (|E1|^a + |E2|^a)^n exactly. One sent bit can only cover that for every n if |E1|^a + |E2|^a <= 1. The CHSH ceiling is then 2^(2 - 1/a): a = 1: 2.0000, a = 1.5: 2.5198, a = 2: 2.8284, a = 3: 3.1748, a = 4: 3.3636, a = 8: 3.6680. a = 1 gives the local 2, a = 2 gives 2 sqrt 2, large a heads to the PR box's 4. The ceiling is set by one number: how fast information grows with the bias",
+  "ceilings": {
+   "1": 2.0,
+   "1.5": 2.5198420997897464,
+   "2": 2.8284271247461903,
+   "3": 3.174802103936399,
+   "4": 3.363585661014858,
+   "8": 3.668016172818685
+  }
+ },
+ "F2": {
+  "pass": true,
+  "detail": "flipping a bit is composing it with the certain bit, p o_(-2) 1 = 1 - p, which sends the lift E = 1 - 2p to -E. Every measure tested respects that flip; the smooth ones then must start at E^2: Shannon (1 - h): a = 2.000; Renyi-2 (collision): a = 2.000; chi-squared: a = 2.000; Renyi-inf (guessing): a = 0.999; total variation: a = 1.000. Smooth + flip-symmetric gives a = 2 and the circle; the guessing measure and total variation have a corner at the fair coin and give a = 1, the local bound 2",
+  "exponents": {
+   "Shannon (1 - h)": 2.000000721509032,
+   "Renyi-2 (collision)": 1.9999978360420327,
+   "chi-squared": 2.0,
+   "Renyi-inf (guessing)": 0.999279552903641,
+   "total variation": 1.0
+  }
+ },
+ "F3": {
+  "pass": true,
+  "detail": "for independent parts (the union rule's 'share nothing') every Renyi entropy adds: worst error 9e-16 over 200 random pairs for orders 1, 2 and infinity. For correlated parts only Shannon obeys the chain rule H(X, Y) = H(X) + H(Y | X): errors 1e-15 (Shannon), 0.27 (Renyi-2), 0.76 (Renyi-inf), with the averaged conditional. So the union rule cannot pick the measure; the chain rule picks Shannon (Faddeev 1956), and Shannon is smooth, so a = 2",
+  "additivity": {
+   "1": 8.881784197001252e-16,
+   "2": 6.661338147750939e-16,
+   "inf": 4.440892098500626e-16
+  },
+  "chain": {
+   "1": 1.1102230246251565e-15,
+   "2": 0.2720301474647544,
+   "inf": 0.758266700128857
+  }
+ },
+ "summary": "3/3 pass"
+}
