@@ -3556,6 +3556,7 @@ FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.lag_cancels_shape	prope
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.lagged_sum_is_time_derivative	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.mino_radial_stiffness	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.mino_vertical_stiffness	propext, Classical.choice, Quot.sound
+FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.nordtvedt_weight	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.one_dial_beta_gamma	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.one_term_split	propext, Classical.choice, Quot.sound
 FusedAlgebra.Topics.SpinningRiver	CircleOp.SpinningRiver.own_field_squared	propext, Classical.choice, Quot.sound

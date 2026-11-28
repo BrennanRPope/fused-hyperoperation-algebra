@@ -559,6 +559,12 @@ only on y₁ − y₂ (its two gradients are g and −g); so relativity's π² s
 theorem boost_drops_out (v1 v2 u g : K) : (v1 + u) * g + (v2 + u) * (-g) = (v1 - v2) * g := by
   grind
 
+/-- **Nordtvedt's weight** (round 35): a bound pair's falling weight minus its inertia, with kinetic energy T and
+binding energy Ω = −2T (steady orbit), is −2T times Nordtvedt's η = 4β − γ − 3. -/
+theorem nordtvedt_weight (g b T : K) :
+    (2 * g + 1) * T + 2 * (2 * b - 1) * (-2 * T) - (T + -2 * T) = -2 * T * (4 * b - g - 3) := by
+  grind
+
 end Field
 
 end CircleOp.SpinningRiver
