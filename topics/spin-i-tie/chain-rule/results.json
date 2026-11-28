@@ -1,0 +1,41 @@
+{
+ "C1": {
+  "pass": true,
+  "detail": "for 500 random dependent pairs, P(A or B) = P(A) o_-1 P(B | not A) to 2e-16: the union rule, applied one step at a time with the conditional chance, is exact. Its lift 1 - p multiplies (1 - P(A or B) = (1 - P(A))(1 - P(B | not A))). This is the ordinary rule of conditional probability, in the law's form"
+ },
+ "C2": {
+  "pass": true,
+  "detail": "every Renyi order alpha obeys a chain rule shaped like the law: H(X,Y) = H(X) + (lift, weighted average, unlift) of the conditional entropies, using the law's lift at dial k = (1 - alpha) ln 2 and weights p_x^alpha. Worst error alpha = 0.5: 2e-15, alpha = 1.0: 1e-15, alpha = 2.0: 1e-15, alpha = 3.0: 2e-15. Only k = 0 (Shannon) uses the plain probabilities as weights (gap 0.19, 0.00, 0.22, 0.33); with plain weights the other orders miss by 0.16, 0.36, 0.44. So the law does not force Shannon: it holds the whole family, one chain rule per dial",
+  "law_chain_error": {
+   "0.5": 1.5543122344752192e-15,
+   "1.0": 1.3322676295501878e-15,
+   "2.0": 1.1102230246251565e-15,
+   "3.0": 1.7763568394002505e-15
+  },
+  "plain_chain_error": {
+   "0.5": 0.16495725439045072,
+   "1.0": 8.881784197001252e-16,
+   "2.0": 0.3573214525333577,
+   "3.0": 0.4421925509999274
+  },
+  "weight_gap": {
+   "0.5": 0.19409680465332357,
+   "1.0": 2.220446049250313e-16,
+   "2.0": 0.2225933443676349,
+   "3.0": 0.33290339384293677
+  }
+ },
+ "C3": {
+  "pass": true,
+  "detail": "near a fair coin, information grows like bias^a with a = 2.000 (alpha 0.5), 2.000 (alpha 1), 2.000 (alpha 2), 2.000 (alpha 3), 2.000 (alpha 10), 1.000 (alpha inf). Every finite dial is smooth and gives a = 2, so in Pawlowski's tree every one of them would draw the same circle and the same 2 sqrt 2 (forces-circle/, F1; the constant in front drops out). Only alpha = infinity (guessing, dial k -> -infinity) gives a = 1 and the local 2. What differs between dials is not the shape but the proof that one sent bit carries at most one bit: Pawlowski's proof uses Shannon's (k = 0) chain rule",
+  "exponents": {
+   "0.5": 2.000000022204461,
+   "1": 2.0000000072147484,
+   "2": 1.9999999805710968,
+   "3": 1.9999999463392184,
+   "10": 1.9999992256190957,
+   "inf": 0.9999278742636679
+  }
+ },
+ "summary": "3/3 pass"
+}
