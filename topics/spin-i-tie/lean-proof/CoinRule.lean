@@ -1,7 +1,7 @@
 /-
 DRAFT. Round 15: the coin rule forces the dial to k = 0, written for Lean 4 with Mathlib.
-NOT YET COMPILED: installing Lean was refused in the workspace where this was written,
-so no machine has checked this file. The same steps are checked symbolically in checks.py.
+COMPILED: the repo's CI (run 145) compiled this file against the pinned Mathlib with no errors.
+The same steps are also checked symbolically in checks.py.
 What it proves: the law's lift, that the law is commutative and associative, that Tsallis
 entropy composes independent parts by the law with k = 1 - q, and that the coin rule
 (an independent part leaves the leftover unchanged) fails for every q ≠ 1.
