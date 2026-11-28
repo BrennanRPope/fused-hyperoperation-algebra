@@ -1,0 +1,40 @@
+{
+ "identity_ok": true,
+ "lap_lag_ok": true,
+ "round31_time_part_alpha_beta_gamma": [
+  "-1/8",
+  "-1/8",
+  "1"
+ ],
+ "unlagged_equals_J_minus_half_d2F": true,
+ "lagged_total_equals_minus_half_d2F": true,
+ "weights_D1D1_D2D2_D1D2_A": {
+  "time_part": [
+   "-1/8",
+   "-1/8",
+   "-1",
+   "0"
+  ],
+  "lag": [
+   "-3/8",
+   "-3/8",
+   "0",
+   "-1/2"
+  ],
+  "sum": [
+   "-1/2",
+   "-1/2",
+   "-1",
+   "-1/2"
+  ],
+  "minus_half_d2F_dt2": [
+   "-1/2",
+   "-1/2",
+   "-1",
+   "-1/2"
+  ]
+ },
+ "K_time_with_lag": 0,
+ "K_GR_needed": "41/16",
+ "R(-2,-2)": "pi**2/4"
+}

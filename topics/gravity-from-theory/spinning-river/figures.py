@@ -2083,6 +2083,61 @@ def fig39():
     save(fig, "fig39_fifth_rule.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38, fig39):
+def fig40():
+    lg = json.load(open(os.path.join(HERE, "lagged_field_energy.json")))
+    w = lg["weights_D1D1_D2D2_D1D2_A"]
+    fig, axs = plt.subplots(1, 2, figsize=(15.5, 6.6), gridspec_kw={"width_ratios": [1.0, 1.15]})
+    # (a) channels of field energy
+    ax = axs[0]
+    ax.set_xlim(0, 10); ax.set_ylim(0, 10.4); ax.axis("off"); ax.set_aspect("equal")
+    nodes = {"time": (2.0, 7.6, "time part\n(pull, $U$)"), "push": (8.0, 7.6, "push\n(frame dragging)"),
+             "twist": (5.0, 2.2, "twist\n(waves)")}
+    for k, (x, y, t) in nodes.items():
+        ax.add_patch(Circle((x, y), 1.25, fc="#eef3fb", ec=GREY, lw=1.5))
+        ax.text(x, y, t, ha="center", va="center", fontsize=10.5)
+    # self loop on time part: zero
+    ax.add_patch(Circle((2.0, 9.25), 0.55, fc="none", ec=RED, lw=2.2))
+    ax.text(2.8, 9.55, "time part on itself, with the lag: $\\pi^2 = 0$", color=RED, fontsize=10, va="center")
+    for (a, b) in (("time", "push"), ("time", "twist"), ("push", "twist")):
+        xa, ya, _ = nodes[a]; xb, yb, _ = nodes[b]
+        ax.plot([xa, xb], [ya, yb], color=GREEN, lw=2.6, ls="--", zorder=0)
+    ax.text(5.0, 7.95, "time $\\times$ push", color=GREEN, ha="center", fontsize=10)
+    ax.text(2.55, 4.6, "time $\\times$ twist", color=GREEN, ha="right", fontsize=10)
+    ax.text(7.45, 4.6, "push $\\times$ twist", color=GREEN, ha="left", fontsize=10)
+    ax.text(5.0, 0.15, "green: where relativity's $41/16$ has to come from (not yet worked out)",
+            ha="center", fontsize=9.5, color=GREEN)
+    ax.set_title("(a) Field energy between parts of the field:\nthe time part alone gives nothing once it lags")
+    # (b) weights
+    ax = axs[1]
+    labels = ["$D_1^2F$", "$D_2^2F$", "$D_1D_2F$", "$(a\\cdot\\nabla)F$"]
+    rows = [("time part alone (round 31)", w["time_part"], RED),
+            ("the lag's change to the static part", w["lag"], "#9ecae1"),
+            ("sum", w["sum"], "k"),
+            ("$-\\frac{1}{2}\\,d^2F/dt^2$ (a total time derivative)", w["minus_half_d2F_dt2"], GREEN)]
+    xs = np.arange(4); bw = 0.2
+    for i, (name, vals, c) in enumerate(rows):
+        v = [float(sp_frac(s)) for s in vals]
+        ax.bar(xs + (i - 1.5)*bw, v, bw, color=c, label=name, hatch="//" if i == 3 else None,
+               ec="white" if i != 3 else GREEN, fc=c if i != 3 else "white")
+    ax.axhline(0, color=GREY, lw=1)
+    ax.set_xticks(xs); ax.set_xticklabels(labels, fontsize=11)
+    ax.set_ylabel("weight in the $\\pi^2$ part,  $F = (\\pi^2/4)/r_{12}$")
+    ax.set_ylim(-1.15, 0.35)
+    ax.legend(fontsize=9, loc="lower left")
+    ax.text(0.98, 0.96, "sum = total time derivative: no change to any orbit or energy\n"
+            "so this channel gives $K = 0$; relativity needs $K = 41/16$",
+            transform=ax.transAxes, ha="right", va="top", fontsize=9.5, bbox=dict(fc="white", ec=GREY, alpha=0.95))
+    ax.set_title("(b) With the light-speed lag the time part's $\\pi^2$ cancels:\nwhat is left is a total time derivative")
+    fig.suptitle("Fig 40. Field energy with the light-speed lag makes no $\\pi^2$ on its own (DRAFT)", fontsize=13)
+    fig.tight_layout()
+    save(fig, "fig40_lagged_field_energy.png")
+
+
+def sp_frac(s):
+    from fractions import Fraction
+    return Fraction(s)
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38, fig39, fig40):
     f()
 print("figures:", sorted(os.listdir(FIG)))

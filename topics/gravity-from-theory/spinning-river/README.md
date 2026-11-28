@@ -97,6 +97,9 @@ How it got here:
 24. **A fifth rule, field energy on field energy (Part 25):** of every way two bodies' fields can overlap, only
    one makes π², field squared over field squared. It vanishes for bodies at rest and appears when they move; a
    boost-safe version puts it exactly where relativity has it, and needs one number, 41/16, to match its size.
+25. **Field energy with the light-speed lag (Part 26):** once field energy lags, its time part's π² cancels
+   exactly, leaving a total time derivative. So field energy acting on itself within one part of the field makes no
+   π²; relativity's 41/16 has to come from field energy between the pull, the push and the twist.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -121,7 +124,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**139/139 pass**, about 25 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**144/144 pass**, about 25 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2482,6 +2485,8 @@ energy. So:
   part alone gives 3/4. On circles it would come to −(1/8 + 3ν/4), putting π² into a ν² term that relativity
   doesn't have (Fig 39b, red). What restores the balance is the light-speed lag of field energy itself: the river's
   rule A, applied to field energy as it is to the bodies.
+- *Correction (round 32):* the lag doesn't restore the boost-safe shape. It cancels the time part's π² entirely,
+  leaving a total time derivative (Part 26). The lopsided form above was the unlagged half of a total derivative.
 
 ### 25.3 How big it must be (FE5)
 
@@ -2501,10 +2506,67 @@ The 41 is the same 41 as in the self-force value 41π²/32.
 - **Lead?** Yes, and a sharper one than Part 24's. The fifth rule's whole job on circular orbits is now one number,
   41/16, and the simple version fails in a specific way that points to the fix: field energy has to carry the
   light-speed lag. If applying rule A to field energy gives 41/16, the river makes relativity's π² from its own pieces.
+  *Correction (round 32):* it doesn't. With the lag, field energy's time part gives K = 0 (Part 26), so the 41/16 has
+  to come from field energy between the time part, the push and the twist.
 - **Ours, as far as a short search found:** the overlap census as a statement of where π² can come from, the
   static-zero and boost-shape arguments in the river's terms, and K = 41/16 as the fifth rule's target.
 - **Known:** Riesz's formula, the 3PN energy and its π², the self-force value 41π²/32, and the π² terms of the 3PN
   two-body Lagrangian (Blanchet and collaborators; Damour, Jaranowski and Schäfer; Foffa and Sturani).
+
+## Part 26. Field energy with the light-speed lag (round 32)
+
+*DRAFT, round 32 (Nov 28, 2026). Script: `lagged_field_energy.py` → `lagged_field_energy.json` (about 15 seconds,
+55 MB). Checks LG1–LG5. Lean: `lag_cancels_shape`, `lagged_sum_is_time_derivative`.*
+
+![Fig 40](figures/fig40_lagged_field_energy.png)
+
+*Fig 40. (a) Field energy split by which parts of the field meet. The time part acting on itself gives no π² once it
+lags; the green links (time part with push, time part with twist, push with twist) are where relativity's 41/16 has
+to come from. (b) The π² weights, with F = (π²/4)/r₁₂, D₁ and D₂ the two bodies' velocity derivatives and (a·∇) their
+accelerations: the time part alone (red), the lag's change to the at-rest field energy (blue), their sum (black), and
+−½ d²F/dt² (hatched). The last two are the same, so the sum is a total time derivative.*
+
+**Result:** no. Giving field energy the light-speed lag doesn't produce 41/16. It removes the time part's π²
+altogether, so within one part of the field, field energy acting on itself makes no π² at all.
+
+### 26.1 One identity does the work (LG1, LG2)
+
+For any field U, U² ∂U·∂U = ⅓ ∂_μ(U³ ∂^μU) − ⅓ U³ □U. Integrated over space, the first term is an exact total
+time derivative, which changes no orbit and no energy. With the lag, U + δU with δU = m (d²r/dt²)/2 (the first term
+of the retarded m/r) satisfies □(U + δU) = the point sources. Then −⅓∫U³□U only samples fields at the bodies, which
+gives powers of r₁₂ with plain-fraction coefficients. A π² needs the overlap R(−2, −2) = π²/4, and a point sample
+never makes one.
+
+### 26.2 The bookkeeping (LG3–LG5)
+
+| piece | D₁²F | D₂²F | D₁D₂F | (a·∇)F |
+|---|---|---|---|---|
+| time part alone, −∫U²(∂U/∂t)² (round 31) | −1/8 | −1/8 | −1 | 0 |
+| the lag's change to ∫U²(∇U)² | −3/8 | −3/8 | 0 | −1/2 |
+| sum | −1/2 | −1/2 | −1 | −1/2 |
+| −½ d²F/dt² | −1/2 | −1/2 | −1 | −1/2 |
+
+Without the lag, the time part is (3/8)(D₁² + D₂²)F + ½(a·∇)F up to a total time derivative (LG3). That is
+round 31's lopsided form seen another way. The lag brings exactly the opposite (LG4), checked symbolically with the
+accelerations kept and read off at random points (LG5).
+
+### 26.3 What this means, on its own merits
+
+- **What it shows:** in a single field whose field energy has two derivatives, f(U)(∂U)², the lagged self-energy
+  is local plus a total time derivative, so it can't make π². (A relabeling of the field makes f(U)(∂U)² free in any
+  case.) Round 31's hope that rule A applied to field energy gives 41/16 is ruled out.
+- **What it points to:** relativity's π² at the third level has to come from field energy between different parts
+  of the field: the time part meeting the push, the time part meeting the twist, and the push meeting the twist. In
+  relativity's own calculation those are the cross terms between its scalar, vector and tensor potentials (Blanchet
+  and collaborators' V, V_i, Ŵ_ij), and that is where its π² sits.
+- **Lead?** Yes, narrower. Round 31 left the river one number to find; this round rules out the simplest place to
+  find it and names the three places left. The next test is to carry the time part, push and twist of field energy
+  across each other, which is most of relativity's third-level calculation in the river's pieces.
+- **Ours, as far as a short search found:** the statement in the river's terms, with the four-term bookkeeping and
+  the correction to round 31.
+- **Known in spirit:** that a single scalar field's two-derivative self-interaction can be removed by a field
+  redefinition, and that the 3PN π² terms come from non-linear couplings of the different potentials (Blanchet,
+  Damour and Esposito-Farèse; Damour, Jaranowski and Schäfer; Foffa and Sturani).
 
 ## Verdict, on its own merits
 
@@ -2592,9 +2654,9 @@ The 41 is the same 41 as in the self-force value 41π²/32.
 
 ## Files
 
-- `checks.py`: 139 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 144 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level, FE1–FE5 a fifth rule, field energy on field energy), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level, FE1–FE5 a fifth rule, field energy on field energy, LG1–LG5 field energy with the light-speed lag), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2650,6 +2712,8 @@ The 41 is the same 41 as in the self-force value 41π²/32.
   third-level phase term (arXiv:2603.19020, Table 2); writes `third_level_compare.json`.
 - `fifth_rule.py`: Part 25's fifth rule: the overlap census (Riesz), the direct integral, the static and moving
   field-energy terms, the boost check and the size relativity needs; writes `fifth_rule.json` (seconds).
+- `lagged_field_energy.py`: Part 26's lagged field energy: the identity, the lag's Laplacian, the time part, the lag's
+  change and their sum as a total time derivative; writes `lagged_field_energy.json` (about 15 seconds).
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2657,8 +2721,8 @@ The 41 is the same 41 as in the self-force value 41π²/32.
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the thirty-nine figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`, Fig 39 `fifth_rule.json`).
+- `figures.py`: the forty figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`, Fig 39 `fifth_rule.json`, Fig 40 `lagged_field_energy.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2670,8 +2734,9 @@ The 41 is the same 41 as in the self-force value 41π²/32.
   `equator_ratio_three_sources`; round 27 adds `kn_ring_plus_one_term`, `kn_equator_split`,
   `charged_radial_stiffness`, `kn_ratio_three_sources`; round 28 adds `time_part_light`, `push_photon_sphere`,
   `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion`; round 30 adds `third_level_phase_weight`, `pi_floor_phase`;
-  round 31 adds `boost_safe_shape`, `time_part_circle`. Rounds 27–28's were checked in sympy; rounds 29–30's have compiled in
-  the library; round 31's are written here, not yet compiled.
+  round 31 adds `boost_safe_shape`, `time_part_circle`; round 32 adds `lag_cancels_shape`,
+  `lagged_sum_is_time_derivative` (not yet compiled). Rounds 27–28's were checked in sympy; rounds 29–31's have
+  compiled in the library.
   Rounds 18–26's theorems have compiled in the library (as `Topics.SpinningRiver`). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
@@ -2738,3 +2803,4 @@ The 41 is the same 41 as in the self-force value 41π²/32.
 | the radar echo piece by piece: the time part's half as slow clocks, the push's as extra path (γ = λ²), the twist's −8Ma/b; one push dial tying delay, bending and perihelion (β + γ = 2); the prediction written before comparing with Cassini | **ours** as far as a short search found (EC1–EC4); the Shapiro delay (1964), its clocks-plus-space halves in Eddington's γ, the spin (gravitomagnetic) delay and Cassini's γ (2003) known |
 | two bodies at the third level: the rules' coefficients rational, relativity's π² (zero only for a test body, self-force slope at the small end), the π²-only floor on LIGO's φ₆ predicted first and held against GWTC-4.0 | **ours** as far as a short search found (TH1–TH5); the 3PN energy and its π², the first law, the self-force 41π²/32, the phase coefficients and the GWTC-4.0 bounds known |
 | a fifth rule, field energy on field energy: the only overlap that makes π² (field squared over field squared), zero at rest, the boost-safe shape putting it in relativity's slot, and K = 41/16 as its size | **ours** as far as a short search found (FE1–FE5); Riesz's formula, the 3PN π² terms and the self-force 41π²/32 known |
+| field energy with the light-speed lag: its time part's π² cancels to a total time derivative (four-term bookkeeping), so 41/16 must come from field energy between the pull, push and twist | **ours** in the river's terms (LG1–LG5); that a single scalar's two-derivative self-interaction can be redefined away, and that the 3PN π² comes from couplings between different potentials, known in spirit |

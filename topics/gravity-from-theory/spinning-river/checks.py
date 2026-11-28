@@ -33,6 +33,7 @@ KN: charge on the spinning hole: which piece of the river gives each charge term
     kn_split.json).
 SH: the black hole's shadow piece by piece (round 28, shadow_split.py -> shadow_split.json).
 FE: a fifth rule, field energy acting on field energy: where pi^2 comes from (round 31, fifth_rule.py).
+LG: field energy with the light-speed lag makes no pi^2 (round 32, lagged_field_energy.py).
 TH: two bodies at the third level, where the rules must stop matching (round 30, third_level_predict.py,
     then third_level_compare.py against GWTC-4.0).
 EC: the radar echo past the Sun piece by piece, predicted before comparing (round 29, echo_predict.py ->
@@ -1842,6 +1843,29 @@ check("FE4 with the bodies moving, field energy's time part, int U^2 (dU/dt)^2, 
 check("FE5 with the boost-safe shape a circle sees one number K, L = K (pi^2/4) G^3 m1^2 m2^2 v12^2/r^3, shifting the "
       "energy by -(5 pi^2/6) K nu x^3; relativity's -(205 pi^2/96) nu needs K = 41/16",
       fe_.energy_shift_per_K() == -5*sp.pi**2/6 and sp.sympify(json.load(open(os.path.join(HERE, "fifth_rule.json")))["K_GR"]) == sp.Rational(41, 16))
+
+
+# ---------------------------------------------------------------- LG: field energy with the light-speed lag (round 32)
+import lagged_field_energy as lg_  # noqa: E402
+T_lg_, J_lg_, lag_lg_ = lg_.pieces()
+d2F_lg_ = lg_.time_derivative_of(lg_.D1(lg_.F) + lg_.D2(lg_.F))
+check("LG1 the identity U^2 dU.dU = (1/3) d_mu(U^3 d^mu U) - (1/3) U^3 box U holds for any field U: field energy acting "
+      "on field energy is a total time derivative plus -(1/3) int U^3 box U",
+      lg_.identity_check())
+check("LG2 the lag term dU = m (d^2 r/dt^2)/2 has lap dU = d^2(m/r)/dt^2 (velocities and accelerations), so "
+      "box(U + dU) = the point sources and -(1/3) int U^3 box U only samples fields at the bodies (rational, no pi^2)",
+      lg_.lap_lag_check())
+check("LG3 without the lag, round 31's time part equals J - (1/2) d^2F/dt^2, J = pi^2 of "
+      "int (U1^2 U2 d^2U2/dt^2 + U1 U2^2 d^2U1/dt^2) = (3/8)(D1^2 + D2^2)F + (1/2)(a.grad)F, as the identity says",
+      sp.simplify(T_lg_ - (J_lg_ - d2F_lg_/2)) == 0)
+check("LG4 with the lag, time part plus the lag's change to the static part is exactly -(1/2) d^2F/dt^2, a total "
+      "time derivative: the lagged field energy makes no pi^2, K = 0 (round 31's 'the lag restores the shape' was wrong)",
+      sp.simplify(T_lg_ + lag_lg_ + d2F_lg_/2) == 0)
+w_lg_ = json.load(open(os.path.join(HERE, "lagged_field_energy.json")))["weights_D1D1_D2D2_D1D2_A"]
+check("LG5 the weights on D1^2 F, D2^2 F, D1 D2 F, (a.grad) F read off at random points: time part (-1/8, -1/8, -1, 0), "
+      "lag (-3/8, -3/8, 0, -1/2), sum (-1/2, -1/2, -1, -1/2), the same as -(1/2) d^2F/dt^2",
+      w_lg_["time_part"] == ["-1/8", "-1/8", "-1", "0"] and w_lg_["lag"] == ["-3/8", "-3/8", "0", "-1/2"]
+      and w_lg_["sum"] == w_lg_["minus_half_d2F_dt2"] == ["-1/2", "-1/2", "-1", "-1/2"])
 
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))

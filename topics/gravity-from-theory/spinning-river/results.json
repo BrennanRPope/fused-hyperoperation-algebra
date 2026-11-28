@@ -7636,5 +7636,25 @@
   "FE5 with the boost-safe shape a circle sees one number K, L = K (pi^2/4) G^3 m1^2 m2^2 v12^2/r^3, shifting the energy by -(5 pi^2/6) K nu x^3; relativity's -(205 pi^2/96) nu needs K = 41/16": {
     "pass": true,
     "detail": ""
+  },
+  "LG1 the identity U^2 dU.dU = (1/3) d_mu(U^3 d^mu U) - (1/3) U^3 box U holds for any field U: field energy acting on field energy is a total time derivative plus -(1/3) int U^3 box U": {
+    "pass": true,
+    "detail": ""
+  },
+  "LG2 the lag term dU = m (d^2 r/dt^2)/2 has lap dU = d^2(m/r)/dt^2 (velocities and accelerations), so box(U + dU) = the point sources and -(1/3) int U^3 box U only samples fields at the bodies (rational, no pi^2)": {
+    "pass": true,
+    "detail": ""
+  },
+  "LG3 without the lag, round 31's time part equals J - (1/2) d^2F/dt^2, J = pi^2 of int (U1^2 U2 d^2U2/dt^2 + U1 U2^2 d^2U1/dt^2) = (3/8)(D1^2 + D2^2)F + (1/2)(a.grad)F, as the identity says": {
+    "pass": true,
+    "detail": ""
+  },
+  "LG4 with the lag, time part plus the lag's change to the static part is exactly -(1/2) d^2F/dt^2, a total time derivative: the lagged field energy makes no pi^2, K = 0 (round 31's 'the lag restores the shape' was wrong)": {
+    "pass": true,
+    "detail": ""
+  },
+  "LG5 the weights on D1^2 F, D2^2 F, D1 D2 F, (a.grad) F read off at random points: time part (-1/8, -1/8, -1, 0), lag (-3/8, -3/8, 0, -1/2), sum (-1/2, -1/2, -1, -1/2), the same as -(1/2) d^2F/dt^2": {
+    "pass": true,
+    "detail": ""
   }
 }

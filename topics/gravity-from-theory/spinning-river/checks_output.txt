@@ -168,5 +168,10 @@
 [PASS] FE3 field energy acting on field energy with the bodies at rest, int U^2 (grad U)^2, has no pi^2 at m1^2 m2^2 (its overlaps are R(-4,-2) and R(-2,-4), both zero); the identity behind the moving case holds: 
 [PASS] FE4 with the bodies moving, field energy's time part, int U^2 (dU/dt)^2, does make pi^2, with velocity weights -1/8, -1/8, 1 (v1^2, v2^2, v1.v2). That breaks boost symmetry (2 alpha + gamma = 3/4, not 0) and on circles gives -(1/8 + 3 nu/4): a nu^2 pi^2 that relativity lacks: 
 [PASS] FE5 with the boost-safe shape a circle sees one number K, L = K (pi^2/4) G^3 m1^2 m2^2 v12^2/r^3, shifting the energy by -(5 pi^2/6) K nu x^3; relativity's -(205 pi^2/96) nu needs K = 41/16: 
+[PASS] LG1 the identity U^2 dU.dU = (1/3) d_mu(U^3 d^mu U) - (1/3) U^3 box U holds for any field U: field energy acting on field energy is a total time derivative plus -(1/3) int U^3 box U: 
+[PASS] LG2 the lag term dU = m (d^2 r/dt^2)/2 has lap dU = d^2(m/r)/dt^2 (velocities and accelerations), so box(U + dU) = the point sources and -(1/3) int U^3 box U only samples fields at the bodies (rational, no pi^2): 
+[PASS] LG3 without the lag, round 31's time part equals J - (1/2) d^2F/dt^2, J = pi^2 of int (U1^2 U2 d^2U2/dt^2 + U1 U2^2 d^2U1/dt^2) = (3/8)(D1^2 + D2^2)F + (1/2)(a.grad)F, as the identity says: 
+[PASS] LG4 with the lag, time part plus the lag's change to the static part is exactly -(1/2) d^2F/dt^2, a total time derivative: the lagged field energy makes no pi^2, K = 0 (round 31's 'the lag restores the shape' was wrong): 
+[PASS] LG5 the weights on D1^2 F, D2^2 F, D1 D2 F, (a.grad) F read off at random points: time part (-1/8, -1/8, -1, 0), lag (-3/8, -3/8, 0, -1/2), sum (-1/2, -1/2, -1, -1/2), the same as -(1/2) d^2F/dt^2: 
 
-139/139 checks pass
+144/144 checks pass
