@@ -1,0 +1,282 @@
+{
+ "K1": {
+  "pass": true,
+  "detail": "timeless state: |H_total Psi| = 3.6e-15; conditioned on the clock reading t, the system follows e^(-i H_S t) psi0 with fidelity >= 0.999999999999999 at 15 readings (fractional t included)"
+ },
+ "K2": {
+  "pass": true,
+  "detail": "booking a constant c (0.37, 2, -5.5) to both clock and system leaves the constraint identical and moves every conditional probability by at most 2.3e-15: the energy zero is a convention because only the balance is constrained (why-i's A4 and A6, here derived from the constraint)"
+ },
+ "K3": {
+  "pass": true,
+  "detail": "real numbers, plain product, separate quarter turns: the clocked history breaks the constraint (|H_total Psi| = 2.93); its balanced part (0.500 of the weight) obeys it to 2.8e-13, and the rest breaks it (4.15) and obeys H_C - H_S = 0 up to whole turns instead (off-ladder weight 7.1e-14, turns [-1]): a mirror sector where the system runs with -i against the clock. A generic real solution of the constraint read by the clock leaves one rotation flow by 1.26; inside the shared-turn (balanced) part by 5.1e-15"
+ },
+ "K4": {
+  "pass": true,
+  "detail": "gravity as the clock: along the e^(+iMS) branch the matter state follows e^(-i H_m tau) with error 1.4e-01, 1.4e-02, 1.4e-03 for M = 10, 100, 1000 (slope -1.01: error ~ 1/M); the e^(-iMS) branch follows e^(+i H_m tau) (error 6.9e-04); the real solution cos(pa) is their sum: the i in Schrodinger's equation is the orientation of the gravitational phase (Banks 1985; Kiefer-Singh 1991)",
+  "errs": {
+   "10.0": 0.14369841716992168,
+   "100.0": 0.013835629469374723,
+   "1000.0": 0.0013796324171009467
+  }
+ },
+ "K5": {
+  "pass": true,
+  "detail": "real state of the de Sitter constraint (eps = 0.02): zero crossings below / above the turning point and the WKB count above: q = 0.25: 0 / 159 (WKB 159.5); q = 1.0: 0 / 40 (WKB 39.9); q = 4.0: 0 / 10 (WKB 10.0); the turning point is a = 1/sqrt(q), the law's slice size (round 16): no oscillation, so no clock and no phase, below it; a clock and a phase above it",
+  "k5": {
+   "0.25": [
+    0.0,
+    159.0,
+    159.50958678528596
+   ],
+   "1.0": [
+    0.0,
+    40.0,
+    39.87739669632149
+   ],
+   "4.0": [
+    0.0,
+    10.0,
+    9.969349174080373
+   ]
+  }
+ },
+ "K6": {
+  "pass": true,
+  "detail": "the clock read off the oscillating state, tau = arccosh(sqrt(q) a)/sqrt(q), solves dtau/da = a/p exactly: True; inverted, a = cosh(sqrt(q) tau)/sqrt(q) obeys the closed de Sitter law adot^2 = q a^2 - 1: True. The fused shift with real k = sqrt(q) (forward + inverse run) gives that growth to 6.6e-06; with imaginary k it gives the matter turn e^(-i H_m tau) to 2.0e-06"
+ },
+ "P1": {
+  "pass": true,
+  "detail": "averaging over a completely unknown global clock phase changes every outcome probability by 1.2e-15: a hidden global phase is exactly what A4 says drops out, so it cannot be the dice"
+ },
+ "P2": {
+  "pass": true,
+  "detail": "an unknown relative phase between two paths washes the interference out: 1.9171 with the phase known, 1.0000 averaged = |a|^2 + |b|^2. The weights |a|^2 are the norm that rotations keep; the averaging supplies the mixture, not the squares (decoherence, not a derivation of the Born rule)"
+ },
+ "P3": {
+  "pass": true,
+  "detail": "Zurek's envariance: the system's local state does not depend on the branch phases (spread 1.1e-16); after fine-graining sqrt(2/3)|0> + sqrt(1/3)|1> into three equal-amplitude branches (0.5774, 0.5774, 0.5774), symmetry gives outcome 0 the odds 2/3. Unknowable phases do lead to the Born rule here, inside quantum mechanics (with Zurek's assumptions)"
+ },
+ "P4": {
+  "pass": true,
+  "detail": "a clock phase carried by each particle from the source (local hidden variable): CHSH = 2.0000 at the quantum-optimal settings, best over a 9^4 grid of settings 2.0000 <= 2; quantum mechanics 2.8284 = 2 sqrt 2; loophole-free experiments (2015) measured above 2 (Hensen et al.: 2.42 +/- 0.20). A local small clock is ruled out",
+  "S_local": 2.0,
+  "S_best": 2.0,
+  "S_quantum": 2.82842712474619
+ },
+ "P5": {
+  "pass": true,
+  "detail": "two paths at heights 0 and h: the Compton clock phases mc^2 t/hbar each run at ~1e20 turns per second for an atom, but they cancel; the difference is g*h*m*t/hbar, the gravity-induced quantum phase measured for neutrons by Colella-Overhauser-Werner (1975). Whether this counts as reading the Compton clock is disputed (Muller-Peters-Chu 2010 vs Wolf et al. 2011)"
+ },
+ "D1": {
+  "pass": true,
+  "detail": "a clock shared by both particles but read by each with its own setting, however the clock runs (one phase, many hands, global, relational): every such model is a mixture of the 16 deterministic answer rules, and the best of them scores CHSH = 2. Sharing a classical clock is still a local hidden variable (Bell 1964); it adds nothing to the earlier wall (probability-entanglement/, checks F3, G1, I6)"
+ },
+ "D2": {
+  "pass": true,
+  "detail": "Toner-Bacon (2003): two shared random clock hands plus ONE bit sent from one particle's side to the other's give the singlet's correlation -cos(angle) to 4.4e-04 (2,000,000 runs), fair coins on each side (bias 7.6e-04), and CHSH = 2.8297 (2 sqrt 2 = 2.8284). With the bit switched off the same clock scores 1.4144 <= 2. The price of a shared clock that reaches 2 sqrt 2 is a signal between the sides, faster than light when they are far apart",
+  "S_TB": 2.829658,
+  "S_nobit": 1.4143780000000001
+ },
+ "D3": {
+  "pass": true,
+  "detail": "the cheapest classical route: use the one-bit strategy that scores 4 in a fraction 0.4142 of runs and the best local rule otherwise: CHSH = 2.8284 = 2 sqrt 2 at 0.4142 bits per pair on average. Pironio (PRA 68, 062102, 2003) proved this is also the minimum. So a shared clock needs at least 0.41 bits of signal per pair, and nothing in a clock picture says why it should stop at 2 sqrt 2 rather than go to 4"
+ },
+ "D4": {
+  "pass": true,
+  "detail": "one quantum clock shared by both particles (Page-Wootters, timeless state |H Psi| = 8.7e-15): read at time t, the pair's best CHSH rises from 2 to 2.8284 = 2 sqrt 2 when the clock's partner generator couples the two particles, and never passes 2.0000 when it turns each one separately. So the shared clock is not what crosses Bell's line; the joint turn is, and the odds read off it are the Born rule, assumed. This is quantum mechanics, not a new mechanism. The law's fused shift acting on the joint state behaves the same way: product turn, CHSH <= 2; coupled turn, 2 sqrt 2",
+  "S_coupled_max": 2.8284271247461907,
+  "S_free_max": 2.000000000000001,
+  "S_curve": [
+   2.0,
+   2.0377048203744876,
+   2.1414449415352483,
+   2.2879320652654487,
+   2.44948974278318,
+   2.6010318846046827,
+   2.722905353179412,
+   2.801385204684028,
+   2.8284271247461903,
+   2.8013852046840273,
+   2.722905353179412,
+   2.6010318846046827,
+   2.4494897427831783,
+   2.2879320652654487,
+   2.141444941535249,
+   2.0377048203744894,
+   2.0,
+   2.0377048203744894,
+   2.1414449415352506,
+   2.287932065265449,
+   2.4494897427831765,
+   2.601031884604682,
+   2.722905353179413,
+   2.8013852046840286,
+   2.8284271247461907,
+   2.8013852046840295,
+   2.7229053531794127,
+   2.6010318846046805,
+   2.449489742783175,
+   2.287932065265449,
+   2.1414449415352514,
+   2.037704820374489,
+   2.0,
+   2.03770482037449,
+   2.1414449415352492,
+   2.287932065265448,
+   2.449489742783176,
+   2.6010318846046805,
+   2.7229053531794114,
+   2.8013852046840286,
+   2.8284271247461907,
+   2.801385204684029,
+   2.7229053531794145,
+   2.601031884604684,
+   2.4494897427831757,
+   2.287932065265445,
+   2.141444941535248,
+   2.0377048203744903,
+   2.0,
+   2.0377048203744907,
+   2.1414449415352514,
+   2.2879320652654505,
+   2.4494897427831748,
+   2.6010318846046805,
+   2.722905353179412,
+   2.801385204684029,
+   2.8284271247461903,
+   2.801385204684028,
+   2.722905353179412,
+   2.6010318846046783,
+   2.449489742783176
+  ],
+  "ts": [
+   0.0,
+   0.25,
+   0.5,
+   0.75,
+   1.0,
+   1.25,
+   1.5,
+   1.75,
+   2.0,
+   2.25,
+   2.5,
+   2.75,
+   3.0,
+   3.25,
+   3.5,
+   3.75,
+   4.0,
+   4.25,
+   4.5,
+   4.75,
+   5.0,
+   5.25,
+   5.5,
+   5.75,
+   6.0,
+   6.25,
+   6.5,
+   6.75,
+   7.0,
+   7.25,
+   7.5,
+   7.75,
+   8.0,
+   8.25,
+   8.5,
+   8.75,
+   9.0,
+   9.25,
+   9.5,
+   9.75,
+   10.0,
+   10.25,
+   10.5,
+   10.75,
+   11.0,
+   11.25,
+   11.5,
+   11.75,
+   12.0,
+   12.25,
+   12.5,
+   12.75,
+   13.0,
+   13.25,
+   13.5,
+   13.75,
+   14.0,
+   14.25,
+   14.5,
+   14.75,
+   15.0
+  ]
+ },
+ "T1": {
+  "pass": true,
+  "detail": "helical time, space turning by theta per loop: a spin-1/2 component picks up e^(-i theta/2): quarter turn 0.707-0.707j, half turn 0-1j, full turn -1, two turns +1; a spin-1 (m = 1) component picks up -i already at a quarter turn and -1 at a half turn. The 'i once round' of the half-turn space (klein-universe/, U7) is the spin-1/2 case of this; the sign at a full turn was measured with neutrons (Rauch et al. 1975; Werner et al. 1975). Which twist gives i depends on the particle's spin",
+  "f_half": {
+   "quarter": [
+    0.7071067811865476,
+    -0.7071067811865475
+   ],
+   "half": [
+    6.123233995736766e-17,
+    -1.0
+   ],
+   "full": [
+    -1.0,
+    -1.2246467991473532e-16
+   ],
+   "double": [
+    1.0,
+    2.4492935982947064e-16
+   ]
+  },
+  "f_one": {
+   "quarter": [
+    6.123233995736766e-17,
+    -1.0
+   ],
+   "half": [
+    -1.0,
+    -1.2246467991473532e-16
+   ],
+   "full": [
+    1.0,
+    2.4492935982947064e-16
+   ]
+  }
+ },
+ "T2": {
+  "pass": true,
+  "detail": "a half-turn of space squares to (-1)^(2j): spin 0.5: -1, spin 1.0: +1, spin 1.5: -1, spin 2.0: +1. So it is a quarter turn J with J^2 = -1 only for fermions; for photons and other integer spins it squares to +1. It also singles out the twist's axis: it commutes with turns about that axis (0e+00) but not across it (2.8). Quantum mechanics' i must square to -1 for every particle and commute with every observable (Stueckelberg 1960). So a twist of space cannot be the i; at most it adds a spin-dependent phase on top of it (Hestenes reads the Dirac i as the spin plane for this reason, and meets the same axis problem)"
+ },
+ "T3": {
+  "pass": true,
+  "detail": "closed helical time (time a circle of period T, space turned by theta once round: a mapping torus): spin-m levels sit at (2 pi n + m theta)/T. A full turn maps integer-spin levels onto themselves (True) but moves spin-1/2 levels by half a spacing, onto the antiperiodic ladder fermions use on a thermal circle (True); spin-1/2 needs two full turns to come back (True). The twist shifts energies (a rotation chemical potential, e^(-beta(H - Omega J)) after Wick rotation); it does not create the phase"
+ },
+ "T4": {
+  "pass": true,
+  "detail": "twisting each particle by its own amount, at 25 pitches over two full turns: the singlet's best CHSH stays 2.828427 to 2.828427; turning both together leaves the singlet unchanged (overlap >= 1.000000000000). A twist is a turn, turns keep lengths, so no pitch moves the Born odds or the 2 sqrt 2 ceiling; a twist angle shared as a hidden variable is a classical clock (D1: <= 2)"
+ },
+ "T5": {
+  "pass": true,
+  "detail": "the law's fused shift with a complex dial k = s + i omega runs as e^(k tau): it grows at rate s while it turns at rate omega, a log-spiral (a screw in scale and phase) of pitch omega/s. Its k^2 = -omega**2 + 2*I*omega*s + s**2 has imaginary part 2*omega*s, so the sign table k^2 = -q_v q_s with real q's allows only s = 0 (pure turn: the quantum phase) or omega = 0 (pure growth: de Sitter). In the law as it stands a single dial cannot be a helix; growth and turn must live in different sectors (geometry vs matter). Ours, conditional on round 16's sign table"
+ },
+ "T6": {
+  "pass": true,
+  "detail": "a helix of space itself (the cosmos turning steadily as time runs) is limited by the CMB's vorticity bound (sigma_V/H)_0 < 4.7e-11 (Saadeh et al. 2016): Omega < 1.0e-28 rad/s, under 4.5e-11 rad over the universe's whole age. A pitch of one radian per Hubble time, the natural size if the law's sqrt(q) set it, is excluded by a factor 2e+10. The helix that does run fast is internal, the Compton clock: 7.76e+20 rad/s for an electron, 1.43e+24 for a proton, 3.6e+38 and 6.5e+41 radians per Hubble time: set by each particle's mass, so it singles out no universal pitch",
+  "Omega_max": 1.0266066046602067e-28,
+  "pitch_e": 7.763440706952006e+20,
+  "pitch_p": 1.425486243700293e+24,
+  "H0": 2.1842693716174612e-18
+ },
+ "T7": {
+  "pass": true,
+  "detail": "torsion read as the law's order gap k[A, B]: a step in time and a turn of space commute, gap 0e+00; a screw along its own axis, gap 0e+00; a step across the turning axis, gap 0.70. So steady helical time carries no torsion in the law's sense (as klein-universe/ found for shape twists); torsion needs the twist concentrated on a line, as on a spinning cosmic string read as a timelike screw dislocation (Tod 1994; Letelier 1995), or spin density in Einstein-Cartan (torsion-dial/, T8)"
+ },
+ "summary": "22/22 pass"
+}
