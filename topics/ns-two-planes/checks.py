@@ -133,6 +133,39 @@ if os.path.exists('runs/feed'):
     check('C24 one layered flat flow alone can stretch (a strict one cannot, C2); best found growth is far below two planes',
           all(r['P'] > 0 for r in ones) and max(r['R'] for r in ones if r['nu'] == 0.025) < 0.2*B[('two', 64, 0.025)]['R'],
           f"stretching > 0 in all {len(ones)} one-plane optima; best found at visc 0.025: {max(r['R'] for r in ones if r['nu'] == 0.025):.3f} vs two planes {B[('two', 64, 0.025)]['R']:.3f} (a search result, not a bound)")
+# ---- Round 4: a 3D view of a 4D flow (feedd.py, batch7.sh, drain.py) ----
+if os.path.exists('runs/feedd'):
+    import glob, feedd, feed, drain
+    g3 = feedd.gradcheck(feedd.Prob(3, 16, 0.1)); g4 = feedd.gradcheck(feedd.Prob(4, 8, 0.1))
+    e3, e4 = abs(g3[0] - g3[1])/abs(g3[0]), abs(g4[0] - g4[1])/abs(g4[0])
+    p3 = feedd.Prob(3, 16, 0.05); uh = feedd.init(p3, 0, 1.0); va = p3.value(uh)[0]; vb = feed.Prob(16, 0.05, 'any').value(uh)[0]
+    check('C25 any-dimension search (feedd.py): gradient matches finite differences in 3D and 4D, and in 3D it gives the same growth as feed.py on the same flow',
+          max(e3, e4) < 1e-6 and abs(va - vb) < 1e-10, f'gradient error 3D {e3:.0e}, 4D {e4:.0e}; growth feedd {va:.10f} vs feed {vb:.10f}')
+    u4 = np.load('runs/feedd/pic_d4_n16_nu0.05_s0_u.npz')['u'].astype(float); r4 = drain.rate4(u4, (16,)*4, 0.05); p4 = feedd.Prob(4, 16, 0.05); Rp = p4.value(p4.fft(u4))[0]
+    check('C26 in 4D the search formula equals the growth computed straight from 4D Navier–Stokes (Leray-projected advection) on the 4D winner',
+          abs(r4['total'] - Rp) < 1e-8*max(1, abs(Rp)), f"formula {Rp:.10f} vs direct {r4['total']:.10f} (saved field)")
+    GR = [L(f) for f in glob.glob('runs/feedd/g_*.json')]; B = {}
+    for r in GR:
+        k = (r['d'], r['N'], r['nu'])
+        if k not in B or r['R'] > B[k]['R']: B[k] = r
+    s3 = [B[(3, N, 0.1)]['R'] for N in (16, 24, 32, 48)]; t3 = [B[(3, N, 0.05)]['R'] for N in (16, 24, 32, 48)]
+    q4 = [B[(4, 24, nu)]['R']/B[(4, 16, nu)]['R'] for nu in (0.1, 0.05)]; q32 = B[(4, 32, 0.05)]['R']/B[(4, 24, 0.05)]['R']
+    check('C27 the 3D worst case settles as the grid refines, while the 4D one keeps rising (at least 1.5x per refinement)',
+          max(s3) - min(s3) < 1e-4 and abs(t3[-1] - t3[-2]) < 0.05*t3[-1] and min(q4 + [q32]) > 1.5,
+          f"3D visc 0.1: {', '.join(f'{v:.5f}' for v in s3)}; 3D visc 0.05: {', '.join(f'{v:.3f}' for v in t3)}; 4D 16→24: x{q4[0]:.2f} (0.1), x{q4[1]:.2f} (0.05); 24→32 (visc 0.05, climb stopped at 150 steps, so a lower bound): x{q32:.2f}")
+    w4 = [r for r in GR if r['d'] == 4]
+    check('C28 every 4D winner is genuinely 4D: it varies along every direction (no direction carries over half its spin, and none is nearly constant)',
+          all(max(r['flat_share']) < 0.5 and min(r['vary_eig']) > 0.05 for r in w4),
+          f"largest flat share {max(max(r['flat_share']) for r in w4):.2f}; smallest share of variation along a direction {min(min(r['vary_eig']) for r in w4):.2f} ({len(w4)} runs)")
+    Dr = L('runs/drain/drain_rings.json'); sc = Dr['scan']
+    pred = [Dr['R3_view_alone']*(1 - q['frac_of_cancel']) for q in sc]
+    lam = Dr['lambda_kw1.0']; c_pred = Dr['R3_view_alone']/lam
+    check('C29 hidden 4th-direction motion lowers the 3D view\'s growth exactly in proportion to its spin, at the rate the eigenproblem gives',
+          max(abs(q['view'] - p) for q, p in zip(sc, pred)) < 1e-8 and abs(Dr['hidden_spin_to_cancel'] - c_pred) < 1e-6,
+          f"view growth {', '.join(f'{q['view']:+.4f}' for q in sc)}; largest gap from the straight line {max(abs(q['view'] - p) for q, p in zip(sc, pred)):.0e}; strongest drain λ = {lam:.3f}, hidden spin to cancel {Dr['hidden_spin_to_cancel']:.4f} = 0.2022/λ")
+    tot = [q['total'] for q in sc]
+    check('C30 the hidden motion does not limit anything: total 4D growth rises as the 3D view\'s growth falls',
+          all(b > a for a, b in zip(tot, tot[1:])), f"total growth {', '.join(f'{v:.4f}' for v in tot)}")
 lines = [f"{'PASS' if r['ok'] else 'FAIL'} {r['name']}: {r['note']}" for r in res]
 lines.append(f"{sum(r['ok'] for r in res)} of {len(res)} pass")
 open('checks_output.txt', 'w').write('\n'.join(lines) + '\n'); json.dump(res, open('checks_results.json', 'w'), indent=1)

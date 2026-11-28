@@ -118,5 +118,35 @@
   "name": "C24 one layered flat flow alone can stretch (a strict one cannot, C2); best found growth is far below two planes",
   "ok": true,
   "note": "stretching > 0 in all 19 one-plane optima; best found at visc 0.025: 0.060 vs two planes 1.053 (a search result, not a bound)"
+ },
+ {
+  "name": "C25 any-dimension search (feedd.py): gradient matches finite differences in 3D and 4D, and in 3D it gives the same growth as feed.py on the same flow",
+  "ok": true,
+  "note": "gradient error 3D 5e-10, 4D 4e-09; growth feedd -0.4682291866 vs feed -0.4682291866"
+ },
+ {
+  "name": "C26 in 4D the search formula equals the growth computed straight from 4D Navier\u2013Stokes (Leray-projected advection) on the 4D winner",
+  "ok": true,
+  "note": "formula 0.8041301613 vs direct 0.8041301574 (saved field)"
+ },
+ {
+  "name": "C27 the 3D worst case settles as the grid refines, while the 4D one keeps rising (at least 1.5x per refinement)",
+  "ok": true,
+  "note": "3D visc 0.1: 0.04317, 0.04317, 0.04317, 0.04317; 3D visc 0.05: 0.157, 0.188, 0.202, 0.208; 4D 16\u219224: x2.02 (0.1), x2.07 (0.05); 24\u219232 (visc 0.05, climb stopped at 150 steps, so a lower bound): x1.71"
+ },
+ {
+  "name": "C28 every 4D winner is genuinely 4D: it varies along every direction (no direction carries over half its spin, and none is nearly constant)",
+  "ok": true,
+  "note": "largest flat share 0.33; smallest share of variation along a direction 0.16 (7 runs)"
+ },
+ {
+  "name": "C29 hidden 4th-direction motion lowers the 3D view's growth exactly in proportion to its spin, at the rate the eigenproblem gives",
+  "ok": true,
+  "note": "view growth +0.2022, +0.1517, +0.1011, +0.0000, -0.1011, -0.2022, -0.6067; largest gap from the straight line 1e-10; strongest drain \u03bb = 5.042, hidden spin to cancel 0.0401 = 0.2022/\u03bb"
+ },
+ {
+  "name": "C30 the hidden motion does not limit anything: total 4D growth rises as the 3D view's growth falls",
+  "ok": true,
+  "note": "total growth 0.2022, 0.2070, 0.2119, 0.2215, 0.2311, 0.2408, 0.2793"
  }
 ]

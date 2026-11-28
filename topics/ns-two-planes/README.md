@@ -1,18 +1,20 @@
-# DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes; round 3: how fast two planes feed each other)
+# DRAFT · Navier–Stokes as two crossing flat flows (round 2: three perpendicular planes; round 3: how fast two planes feed each other; round 4: a 3D view of a 4D flow)
 
 **DRAFT, Nov 27 2026.** Part of Fused Hyperoperation Algebra. Asked for by Brennan: "We might show that navier stokes
 really is 2D, but that the flows are two intersecting planes", then "remember we found some stable vortex stretching
 in the Klein bottle work" and "The idea that reality itself is twisted might be a good tack". Round 2 (section 8):
 "On navier stokes it might be three orthagonal planes". Round 3 (section 9): Brennan said yes to looking for a limit on how
-fast two planes can feed each other's spin.
+fast two planes can feed each other's spin. Round 4 (section 10): "What if there was a limit because we are only looking at
+a cross section of the real three dimensional behavior", then yes to testing whether a 3D view of a 4D flow is limited.
 
-Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **24 of 24 pass** (seconds; reads the run files). Exact algebra:
+Checks: [`checks.py`](checks.py) → [`checks_output.txt`](checks_output.txt), **30 of 30 pass** (seconds; reads the run files). Exact algebra:
 [`algebra.py`](algebra.py) (sympy). Runs: [`twoplanes.py`](twoplanes.py) (solver, with the k setting on the crossing),
 [`batch1.sh`](batch1.sh), [`batch2.sh`](batch2.sh), [`batch3.sh`](batch3.sh), [`klein_planes.py`](klein_planes.py) (Klein pair),
 [`twist_sectors.py`](twist_sectors.py). Round 2: [`algebra3.py`](algebra3.py) (exact three-plane algebra),
 [`threeplanes.py`](threeplanes.py) (solver with the 27 plane-by-plane stretching terms), [`batch4.sh`](batch4.sh). Round 3: [`feed.py`](feed.py) (search for the fastest-growing flow),
-[`batch5.sh`](batch5.sh), [`batch6.sh`](batch6.sh), [`feed_summary.json`](feed_summary.json).
-Pictures: [`figures.py`](figures.py), [`figures3.py`](figures3.py), [`feed_figs.py`](feed_figs.py) → [`figures/`](figures/).
+[`batch5.sh`](batch5.sh), [`batch6.sh`](batch6.sh), [`feed_summary.json`](feed_summary.json). Round 4: [`feedd.py`](feedd.py) (the same search in any
+number of dimensions), [`batch7.sh`](batch7.sh), [`drain.py`](drain.py) (hidden 4th-direction motion), [`feedd_summary.json`](feedd_summary.json).
+Pictures: [`figures.py`](figures.py), [`figures3.py`](figures3.py), [`feed_figs.py`](feed_figs.py), [`feedd_figs.py`](feedd_figs.py) → [`figures/`](figures/).
 Everything is known mathematics unless marked **ours**; the "ours" items are readings, exact identities and runs, not
 theorems about blow-up.
 
@@ -44,6 +46,10 @@ theorems about blow-up.
 - **Round 3, a limit on two planes feeding each other (section 9):** there is none. The flow that grows total spin
   fastest at an instant is itself a two-plane flow (two colliding vortex rings, with no spin along their shared axis),
   so two planes can feed each other as fast as any 3D flow can grow. This route to a proof is closed.
+- **Round 4, a 3D view of a 4D flow (section 10):** no limit comes from there either. In 4D the worst case is worse:
+  the fastest possible growth roughly doubles every time the grid allows smaller swirls, so there is no finite worst
+  case, while in 3D it settles. Hidden motion along the 4th direction can make the 3D view stop growing (4% as much
+  hidden spin is enough), but the total then grows faster. It moves spin out of sight; it doesn't limit it.
 - **Klein link:** the Klein antiparallel pair is one flat flow (the straight pair) plus a bend, and all its stretching
   comes from the bend crossing the flat part (figure 6). What settled there was the **total** spin across grids, never
   the peak.
@@ -305,6 +311,51 @@ adds to it yet.
 ![figure 11](figures/fig11-fastest-feeding.png)
 ![figure 12](figures/fig12-fastest-flows.png)
 
+## 10. Round 4: is the 3D flow a limited view of a 4D one?
+
+**Short answer: no limit comes from a 4th direction. In 4D the worst case is worse, and hidden 4th-direction motion
+only moves growth out of sight.** It is not a lead.
+
+**The question, made exact.** Take Navier–Stokes in a 4D periodic box (directions x, y, z, w) and look at it from 3D,
+either as the slice or as the average over w. Two facts are exact and known. A 4D flow that doesn't change along w
+*is* a 3D flow, and its 3D view obeys 3D Navier–Stokes. Any other 4D flow's averaged view obeys 3D Navier–Stokes plus
+an extra stress from the hidden w-varying motion (the same kind of term as the Reynolds stress in turbulence). So the
+idea can only help if that extra stress acts as a brake.
+
+**Test 1 (ours, figure 13 left): the worst case in 4D.** Same search as round 3, written for any number of
+dimensions (C25; in 4D its formula matches growth computed straight from 4D Navier–Stokes, C26). Total spin fixed at 1.
+
+| | viscosity 0.1 | viscosity 0.05 |
+|---|---|---|
+| 3D | 0.0432 at 16³, 24³, 32³ and 48³ (settled) | 0.157, 0.188, 0.202, 0.208 at 16³ to 48³ (settling) |
+| 4D | 0.300 (16⁴), 0.606 (24⁴) | 0.804 (16⁴), 1.67 (24⁴), at least 2.85 (32⁴) |
+
+In 3D the worst case settles on a finite value. In 4D it roughly doubles each time the grid allows smaller swirls
+(C27), and the winning flow shrinks with the grid. That is what the known scaling says: in 3D stretching is at most
+C·Z^{3/4}·D^{3/4}, which has a finite top, while in 4D it is at most C·Z^{1/2}·D (D = size of the spin's change), so
+once spin passes a threshold, smaller swirls win without limit. The 4D winners vary along all four directions equally
+(C28, figure 14), so the extra direction is used, not ignored.
+
+**Test 2 (ours, figure 13 right): can hidden motion brake the 3D view?** Start from the fastest-growing 3D flow (the
+colliding rings) and add the motion along w that drains the 3D view's growth most per unit of hidden spin. That best
+pattern comes from an exact eigenproblem (strongest drain λ = 5.04 per unit hidden spin at the longest w-wavelength).
+The drain is exactly linear (C29): hidden spin of 4% of the visible spin stops the 3D view from growing, and more turns
+it negative. But the hidden part grows faster than the view slows, so the total 4D growth goes **up** (C30). The
+hidden motion acts like a pump that takes spin out of the 3D view and puts it where the view can't see it.
+
+**What it means.** A 3D view of a 4D flow is limited only in the sense that some growth is out of view. Only flows
+that don't vary along w project to real 3D Navier–Stokes, and those are 3D flows with the same open problem. The
+4D problem itself is harder in the plain sense that its worst case is unbounded, so it can't supply a limit for 3D.
+
+**Grades.** The projection facts and the scaling are known mathematics. The search numbers are best found at 16–48 grid
+points per side with one or two starts. The 32⁴ climb was stopped at 150 steps, so it is a lower bound. The drain is
+exact for the pattern found, and the eigenproblem gives the strongest such pattern at each w-wavelength.
+
+**Is it a lead?** No. Neither a 4D picture nor a hidden direction brakes the growth.
+
+![figure 13](figures/fig13-four-dimensions.png)
+![figure 14](figures/fig14-fastest-4d-flow.png)
+
 ## Checks
 
 | check | result | numbers |
@@ -333,3 +384,9 @@ adds to it yet.
 | C22 the fastest-growing 3D flow has no spin along one fixed direction (a two-plane flow), and two planes sharing the box diagonal reach its growth within 0.2% | pass | smallest spin-direction share: 64³ visc 0.025 seed 0 4e-05, 64³ visc 0.025 seed 1 5e-05, 64³ visc 0.035 seed 0 2e-06, 64³ visc 0.05 seed 0 3e-05, 96³ visc 0.025 seed 0 9e-06; diagonal ÷ any: 64³ visc 0.025 0.9987, 64³ visc 0.035 1.0000, 64³ visc 0.05 0.9998, 96³ visc 0.025 0.9999 |
 | C23 grid check at viscosity 0.025: the two-plane ÷ any comparison holds at 96³ (the rate itself is not settled) | pass | two ÷ any 0.938 (64³) vs 0.954 (96³); fastest rate itself 1.122 vs 1.412, so 64³ is too coarse for the rate at this viscosity |
 | C24 one layered flat flow alone can stretch (a strict one cannot, C2); best found growth is far below two planes | pass | stretching > 0 in all 19 one-plane optima; best found at visc 0.025: 0.060 vs two planes 1.053 (a search result, not a bound) |
+| C25 any-dimension search (feedd.py): gradient matches finite differences in 3D and 4D, and in 3D it gives the same growth as feed.py on the same flow | pass | gradient error 3D 5e-10, 4D 4e-09; growth feedd -0.4682291866 vs feed -0.4682291866 |
+| C26 in 4D the search formula equals the growth computed straight from 4D Navier–Stokes (Leray-projected advection) on the 4D winner | pass | formula 0.8041301613 vs direct 0.8041301574 (saved field) |
+| C27 the 3D worst case settles as the grid refines, while the 4D one keeps rising (at least 1.5x per refinement) | pass | 3D visc 0.1: 0.04317, 0.04317, 0.04317, 0.04317; 3D visc 0.05: 0.157, 0.188, 0.202, 0.208; 4D 16→24: x2.02 (0.1), x2.07 (0.05); 24→32 (visc 0.05, climb stopped at 150 steps, so a lower bound): x1.71 |
+| C28 every 4D winner is genuinely 4D: it varies along every direction (no direction carries over half its spin, and none is nearly constant) | pass | largest flat share 0.33; smallest share of variation along a direction 0.16 (7 runs) |
+| C29 hidden 4th-direction motion lowers the 3D view's growth exactly in proportion to its spin, at the rate the eigenproblem gives | pass | view growth +0.2022, +0.1517, +0.1011, +0.0000, -0.1011, -0.2022, -0.6067; largest gap from the straight line 1e-10; strongest drain λ = 5.042, hidden spin to cancel 0.0401 = 0.2022/λ |
+| C30 the hidden motion does not limit anything: total 4D growth rises as the 3D view's growth falls | pass | total growth 0.2022, 0.2070, 0.2119, 0.2215, 0.2311, 0.2408, 0.2793 |
