@@ -1,0 +1,6 @@
+[PASS] I1: P(a xor b = 1) = p + q - 2pq = p o_(-2) q exactly, and its fused-shift lift 1 + k p = 1 - 2p, the bias E, multiplies: E(a xor b) = E(a) E(b) (Matsui's piling-up lemma, 1993). Chaining boxes in Pawlowski's protocol is the law at k = -2
+[PASS] I2: a maximally entangled pair, Alice's two settings opened by angle phi around Bob's: the biases Bob gets for his two questions are exactly (cos phi, sin phi) = (Re, Im) of e^(i phi), to 2e-16 over 31 angles. Every such quantum box sits on the unit circle E1^2 + E2^2 = 1: one turn of the law's rotation lift (imaginary k) hands its length out between the two questions
+[PASS] I3: nested random access code with one bit sent: on the circle Bob's information never passes 0.9943 bit (12 angles, up to 120 levels); inside it (0.5, 0.5) at most 0.3774. Outside it, information causality breaks: PR box (1, 1) at level 1, r = 0.75 at level 3, r = 0.72 at level 10, r = 0.71 (just past 1/sqrt 2 = 0.7071) at level 40; an uneven box 3% outside at level 5. Information causality allows exactly the disc (Pawlowski et al., Nature 461, 1101, 2009)
+[PASS] I4: CHSH = 2 (E1 + E2) for these boxes. Inside the disc its largest value is 2*sqrt(2) (Tsirelson's bound), reached at E1 = E2 = 1/sqrt 2, the 45-degree point of the turn; the local boxes fill E1 + E2 <= 1 (CHSH 2), and the PR box sits at the corner (1, 1) (CHSH 4)
+
+4/4 pass
