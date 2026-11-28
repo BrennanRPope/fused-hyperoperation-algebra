@@ -1,0 +1,9 @@
+K1 PASS   f(x)f(y) = f(x∘y) with x∘y = (x+y+k xy)/(1-d xy), k=p+q, d=pq: associative, one family (Coleman–McGuinness 1991; the repo's d dial)
+K2 PASS   associative for every k, d; d = 0 is the original law
+K3 PASS   k=0, d=-1 is relativistic velocity addition (tanh); k=0, d=+1 is tangent addition (rotation)
+K4 PASS   equatorial horizon radius is 2M (as Schwarzschild); rim speed v = Ω_H·2M = a/r+
+K5 PASS   surface gravity κ = (1 - v²)/4M: Schwarzschild's 1/4M times the rim's 1/γ²
+K6 PASS   real time: helix Ω_H/κ = v∘v with k=0, d=+1 (rim composed with itself)
+K7 PASS   imaginary time (a=iα): helix tanh u = t∘t with k=0, d=-1; t = α/r+ = tanh(u/2). The i flips d from +1 to -1
+K8 PASS   the law's multiplicative coordinate is (r+ + α - M)/M = e^u (imaginary time) and (r+ - M + ia)/M = e^{iχ} (real time); Kerr-Newman: κ·2R = 1 - v² - Q²/r+², spin and charge slowdowns add with no cross term
+8/8 passed

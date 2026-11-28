@@ -1,0 +1,14 @@
+PASS A1 rate alone (any N(t,x,y,z)) gives R_0ijk = 0: no tilt, no twist 
+PASS A2 wave has B != 0 (a real tilt/twist, the same in every slicing at this order) E_xx=-Pdd/2, E_xy=-Cdd/2, B_xx=-Cdd/2, B_xy=Pdd/2
+PASS A8 complex B / complex E = +-i: the twist is the winding pattern times i (45 degree turn) B/E = I
+PASS A3 detector-frame tilt is nonzero for the wave g_0x = Cdd*y*z/3 + Pdd*x*z/3, g_0y = Cdd*x*z/3 - Pdd*y*z/3, g_0z = -2*Cdd*x*y/3 - Pdd*x**2/3 + Pdd*y**2/3
+PASS A4 scalar chain (and collinear tilts on the d = -1 law): order never matters, loops close 
+PASS A5 perpendicular tilts composed in order leave a rotation (Thomas-Wigner, exact); small loop angle ~ v^2 angle 4.7116 deg (exact 4.7116); loop/v^2 = [1.    1.003 1.011 1.024 1.042]
+PASS A6 chain law is associative; order gap k[A,B] for two tilts is a pure rotation (k v1 v2 J_z, up to sign) 
+PASS A7 rung 1: all 14 bracketings agree; rung 3: they spread (no single 'next state') rung 1 spread 7.1e-15; rung 3 values 1.168 to 1.475
+PASS A9 rung 1: steps undo exactly; one absorbing step (-1/k) collapses 1000 states to 1, and nothing undoes it distinct after chain: 1000; with absorbing step: 1
+PASS A10 rung 3: left and right readings differ, yet each step is one-to-one (1000 states stay 1000) left 1.4237, right 1.1927; rung 1 left = right: True
+PASS S1 neighbour chain: influence spreads exactly one place per step (a cone) front after 30 steps: 30 places
+PASS S2 velocity addition is the law in disguise, and light speed lands on the absorbing point -1/k a(1) = -1/k; also 1 (+) v = 1 for every v
+PASS S3 30 steps of 0.5c give a speed below c (never reached); one step of c gives c whatever came before after 30 steps: 1 - v = 3.22e-15
+13 of 13 pass

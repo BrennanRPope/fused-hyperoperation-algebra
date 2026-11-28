@@ -1,0 +1,43 @@
+{
+ "M1 unimodular time = four-volume": {
+  "pass": true,
+  "msg": "with N a^3 = 1, dT = a^3 dt; for de Sitter T = (e^{3Ht} - 1)/(3H): each cell keeps its four-volume while space stretches"
+ },
+ "M2 Lambda is the unimodular energy": {
+  "pass": true,
+  "msg": "(adot/a)^2 = (rho - E)/6: Friedmann with 8piG/3 -> 1/6 and the cosmological term set by -E, a constant of the motion"
+ },
+ "M3 vacuum energy changes nothing in unimodular time": {
+  "pass": true,
+  "msg": "<a^3>(T) = [8.0, 8.876, 10.113] at T = 0, 2, 5 (the universe evolves); change for vacuum energy c = 1, 5, 40: 6.1e-13"
+ },
+ "M4 A4 holds: A(H + c) = A(H) + c A(1)": {
+  "pass": true,
+  "msg": "every eigenvalue moves by exactly c (error 4.5e-13); eigenstates unchanged (min overlap 1.000000000000)"
+ },
+ "M5 boundary condition at the big bang is free, A4 holds for each": {
+  "pass": true,
+  "msg": "changing the extension changes <a^3>(3) by 8.52e-01; vacuum energy then changes it by 1.5e-13"
+ },
+ "M6 without fixed volume the vacuum energy is physical": {
+  "pass": true,
+  "msg": "||[z, H_u]|| = 259.6; zero-mode overlap for c = 0 vs 0.05 is 0.610; the zero mode is a real vector (no time, no i needed)"
+ },
+ "M7 unimodular evolution needs i": {
+  "pass": true,
+  "msg": "||Im e^(-i H_u T)|| = 17.2 at T = 1; real form uses J with J^2 = -1"
+ },
+ "M8 Sorkin: Lambda ~ 1/sqrt(V) has the observed order": {
+  "pass": true,
+  "msg": "1/sqrt(V) = 1.39e-122, observed Lambda = 2.85e-122 (Planck units), ratio 2.06; naive vacuum energy ~ 1"
+ },
+ "numbers": {
+  "zexp_T": [
+   8.000000000000002,
+   8.876288440367759,
+   10.112773820807233
+  ],
+  "lam_sorkin": 1.386599552522387e-122,
+  "lam_obs": 2.849462080433505e-122
+ }
+}

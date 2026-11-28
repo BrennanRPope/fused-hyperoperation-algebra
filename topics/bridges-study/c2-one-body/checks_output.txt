@@ -1,0 +1,6 @@
+H1 PASS  spin drag term -2*I*M*a*cos(theta)/r**2 -> at a = i alpha: the dipole of a mass moved by -alpha
+H2 PASS  second-order term 2*M*a**2*cos(theta)**2/r**3: needed for Kerr, missing from 1PN rules; the exact shift by i a has it
+H3 PASS  Kerr's frame-drag rate at the horizon = the river's shell rate a/(r+^2 + a^2), the same at every angle
+H4 PASS  helix turn per loop = beta * river shell rate at r+ = 2*pi*alpha/sqrt(M**2 + alpha**2) = 2 pi tanh u
+H5 PASS  far swirl continues to a real 2 M alpha/r^3, but the loop length beta comes only from the horizon
+5/5 passed

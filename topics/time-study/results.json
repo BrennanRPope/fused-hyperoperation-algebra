@@ -1,0 +1,42 @@
+{
+ "checks": {
+  "T1 TT gauge: lapse N = 1, shift 0, test masses at rest stay at rest (Gamma^i_00 = 0)": {
+   "pass": true,
+   "info": ""
+  },
+  "T2 light round trip changes although N = 1 (numeric ray vs +1/2 integral of h)": {
+   "pass": true,
+   "info": "max signal 9.24e-05, max error 3.6e-08"
+  },
+  "T3 tidal force from the winding-rate field = geodesic deviation from the wave": {
+   "pass": true,
+   "info": "R_0x0x = -hddot_p/2, R_0x0y = -hddot_c/2"
+  },
+  "T4 static per-place winding rate fails for the wave (best fit 0, residual 100%)": {
+   "pass": true,
+   "info": "residual fraction 1.000"
+  },
+  "T5 winding-only error is (wL)^2/6 for small arms": {
+   "pass": true,
+   "info": "LIGO 4 km, 100 Hz: 0.00117%; LIGO 4 km, 1 kHz: 0.117%; LISA 2.5 Gm, 10 mHz: 4.51%; LISA 2.5 Gm, 0.1 Hz: 117%"
+  },
+  "T6 spin 2: 90 deg flips, 180 deg returns, 45 deg turns plus into cross": {
+   "pass": true,
+   "info": ""
+  },
+  "T7 law per place: Re(1 + iv o iv) = clock rate squared, works with a reference clock (the fastest one)": {
+   "pass": true,
+   "info": "reference clock rate^2 1.0250"
+  },
+  "T8 same tidal curvature in both slicings (frame-free content is how the winding rate bends, not its value)": {
+   "pass": true,
+   "info": "detector -Derivative(hp(t), (t, 2))/2, TT -Derivative(hp(t), (t, 2))/2"
+  }
+ },
+ "lapse_only_errors": {
+  "LIGO 4 km, 100 Hz": 1.1697267871868533e-05,
+  "LIGO 4 km, 1 kHz": 0.0011693204794596124,
+  "LISA 2.5 Gm, 10 mHz": 0.04507034144862809,
+  "LISA 2.5 Gm, 0.1 Hz": 1.1653986686265376
+ }
+}

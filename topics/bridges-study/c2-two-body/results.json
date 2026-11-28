@@ -1,0 +1,23 @@
+{
+ "G1": true,
+ "G2": true,
+ "G3": true,
+ "G4": true,
+ "moments_kerr": [
+  "M",
+  "-M*alpha",
+  "M*alpha**2",
+  "-M*alpha**3",
+  "M*alpha**4",
+  "-M*alpha**5"
+ ],
+ "moments_two": [
+  "M",
+  "0",
+  "M*alpha**2",
+  "0",
+  "M*alpha**4",
+  "0"
+ ],
+ "G5": true
+}

@@ -1,0 +1,15 @@
+D1 PASS  A^1.5 patches: k_eff spans 0.000828 to 0.828 (no single k); delta=1 gives k_eff=0
+D2 PASS  Barrow G_eff = 1/(2*A**(Delta/2)*gamma*(Delta + 2)): constant only at Delta = 0
+D3 PASS  ln(1+lam*S)/lam turns a+b+lam*ab into plain addition (the law's lift and unlift)
+D4 PASS  coin multiplies the leftover by 1 + lam*S(coin), so linear mixing needs lam = 0 (max err 1.6e-15)
+D5 PASS  tension T = lam/(4*G*(lam - 1)): lam>0 -> T<0 (excess angle), lam<0 -> T>0 (deficit), lam=0 -> no brane
+D6 PASS  merger 'non-additivity' gives k_eff = 2/sqrt(S1 S2), different for every pair of sizes
+D7 PASS  A^delta = the l^p sum with p = 1/delta (max rel err 7.4e-16); Tsallis-Cirto and Barrow-max both p = 2/3
+E1 PASS  Kerr's scalar = Re of a Coulomb field at z = i a (max err 4.4e-16)
+E2 PASS  Euclidean scalar = average of real Coulomb fields at z = +alpha and -alpha (max err 2.0e-15)
+E3 PASS  Euclidean smoothness gives kappa_E with no theta dependence; alpha -> -i a gives Kerr's kappa
+E4 PASS  S = A/4 = pi(r+^2 + a^2) from I = beta M/2, and Smarr M = 2TS + 2 Omega J
+F1 PASS  Haar mean purity 0.3634 vs Lubkin 0.3636
+F2 PASS  Lubkin = Hawking term 1/d_X + wormhole term 1/d_rest, to 1e-6
+F3 PASS  cross term: Hawking-only exactly 0; with wormholes |c| <= 2.5e-04 before the Page time, -1 at the end
+14/14 passed

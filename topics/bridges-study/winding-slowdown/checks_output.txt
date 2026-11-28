@@ -1,0 +1,8 @@
+W1 PASS   far-seen winding rate = (E/ħ)·N, N² = Re(1 + x∘x) with x = i·(river speed); winding stops where the river reaches light speed (r = 2M)
+W2 PASS   Kerr: 1 − 2M·Re[1/(r−ia)] = Δ/(r²+a²) (shell clock factor), = 0 at r₊; Im[1/(r−ia)] = a/(r²+a²) = shell turn rate
+W3 PASS   κ = ½·slope of the clock factor = M·Re[1/(r₊−ia)²] = (1 − v²)/4M, v = a/r₊: the square comes from the pull being the slope of 1/(r−ia)
+W4 PASS   1 − v² = Re(1 + x∘x), x = i·(rim speed): the rim's slowdown, squared, is the law composing the rim with itself
+W5 PASS   helix Ω_H/κ = Im/Re of (1 + x∘x): slowdown and helix are the real and imaginary parts of one composition; a = iα gives tanh u
+W6 PASS   mass's own phase per imaginary-time loop: M·β = 2S (Schwarzschild); with spin β(M − 2Ω_H J) = 2S (Smarr). Bigger mass: faster winding, longer loop, phase ∝ M²
+W7 PASS   v² = 2GM/(rc²) = 2·(source winding rate)·l_P²/(c·r): the source's winding gives the river speed only with l_P² (so G) put in
+7/7 passed

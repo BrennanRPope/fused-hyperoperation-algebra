@@ -122,6 +122,8 @@ The shape doesn't suggest any bridge that skips the hub. Every candidate below g
 *bq3. The setup for C3. For two independent pieces the law's dial is exactly 1 − q (zero on the vertical axis). As the pieces become
 correlated, an extra term appears and grows. Black dots are check B7.*
 
+**Candidates run (Nov 28):** C1, C2 and C3 are in [`candidates/`](candidates/README.md). C2 passed (Kerr's temperature and S = A/4 from the shifted source); its two-body follow-up failed and is in [`c2-two-body/`](c2-two-body/README.md), where spin shows up as a helix in imaginary time; the one-body follow-up in [`c2-one-body/`](c2-one-body/README.md) found the river's exact shift gives the moved mass and its horizon shell gives the helix, while the 1PN moving-body rules carry only the first step; and [`helix-from-law/`](helix-from-law/README.md) derives the helix as the horizon rim composed with itself, on the law's existing d dial (Coleman–McGuinness 1991, already in the repo); [`winding-slowdown/`](winding-slowdown/README.md) then derives the clock slowdown and the helix as the real and imaginary parts of one composition, (1 + iv)². What's derived and what's assumed is tallied in [`TALLY.md`](TALLY.md); C1 is narrower than hoped; C3 is known physics in the law's coordinates.
+
 ## 5. Checks
 
 | Check | What it shows | Result |

@@ -1,0 +1,43 @@
+{
+ "checks": {
+  "D1 the speed limit alone cuts the curvature to 6 independent pieces (out of 20)": {
+   "pass": true,
+   "info": "rank 6"
+  },
+  "D2 of those 6, 4 are a source riding along (Ricci); 2 carry nothing with them": {
+   "pass": true,
+   "info": "Ricci rank 4, source-free pieces 2"
+  },
+  "D3 with nothing riding along, E is exactly the four-leaf: E_zj = 0 and E_xx = -E_yy": {
+   "pass": true,
+   "info": "E = [[H22/2, -H12/2, 0], [-H12/2, -H22/2, 0], [0, 0, 0]]"
+  },
+  "D4 balanced for one observer leaves 3 riding-along pieces (E_xz, E_yz can survive)": {
+   "pass": true,
+   "info": "Ricci rank left 3; E_xz = -H01/2 - H13/2"
+  },
+  "D5 balanced for every observer leaves exactly the 2 four-leaf pieces": {
+   "pass": true,
+   "info": "curvature pieces left 2"
+  },
+  "D6 the four-leaf is the spin-2 part; what rides along is spin 1 and spin 0": {
+   "pass": true,
+   "info": ""
+  },
+  "D7 neighbour averaging leaves the four-leaf (and spin 1) at rest but moves the trace: one frame fixes only the trace": {
+   "pass": true,
+   "info": "{'four-leaf': 0.0, 'spin 1': 0.0, 'trace': 0.571428571428573}"
+  }
+ },
+ "funnel": {
+  "all curvature": 20,
+  "moving at c": 6,
+  "balanced for one observer": 5,
+  "balanced for every observer": 2
+ },
+ "avg_change": {
+  "four-leaf": 0.0,
+  "spin 1": 0.0,
+  "trace": 0.571428571428573
+ }
+}

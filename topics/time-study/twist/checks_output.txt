@@ -1,0 +1,8 @@
+PASS B1 for every metric: dB/dt = curl E identically (Bianchi; no field equation) sign found: 1
+PASS B2 partner relation fails for a general rate field (needs the field equations) 
+PASS B3 the four-leaf plus its direction forces a nonzero twist B (the tilt is not optional) B_xx = e2(t - z/s)/s, B_xy = -e1(t - z/s)/s
+PASS B4 at the speed limit c the forced twist is B = i*E (same as Einstein's wave in ../tilt A8) B/E = I; B_xx = E_xy, B_xy = -E_xx as in ../tilt A2
+PASS B5 moving at speed s gives B = i*E/s: twist = i*E only at s = c B/E = I/s
+PASS B6 cross-check: the forced twist also satisfies Einstein's partner relation, and only at s = c partner xx residual = (s**2 - 1)*Subs(Derivative(e1(_xi_1), _xi_1), _xi_1, (s*t - z)/s)/s**2
+PASS B7 a moving four-leaf has curl E != 0, while any pure rate field has curl E = 0 
+7 of 7 pass

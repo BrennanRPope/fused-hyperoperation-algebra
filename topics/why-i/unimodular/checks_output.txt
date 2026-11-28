@@ -1,0 +1,10 @@
+[PASS] M1 unimodular time = four-volume: with N a^3 = 1, dT = a^3 dt; for de Sitter T = (e^{3Ht} - 1)/(3H): each cell keeps its four-volume while space stretches
+[PASS] M2 Lambda is the unimodular energy: (adot/a)^2 = (rho - E)/6: Friedmann with 8piG/3 -> 1/6 and the cosmological term set by -E, a constant of the motion
+[PASS] M3 vacuum energy changes nothing in unimodular time: <a^3>(T) = [8.0, 8.876, 10.113] at T = 0, 2, 5 (the universe evolves); change for vacuum energy c = 1, 5, 40: 6.1e-13
+[PASS] M4 A4 holds: A(H + c) = A(H) + c A(1): every eigenvalue moves by exactly c (error 4.5e-13); eigenstates unchanged (min overlap 1.000000000000)
+[PASS] M5 boundary condition at the big bang is free, A4 holds for each: changing the extension changes <a^3>(3) by 8.52e-01; vacuum energy then changes it by 1.5e-13
+[PASS] M6 without fixed volume the vacuum energy is physical: ||[z, H_u]|| = 259.6; zero-mode overlap for c = 0 vs 0.05 is 0.610; the zero mode is a real vector (no time, no i needed)
+[PASS] M7 unimodular evolution needs i: ||Im e^(-i H_u T)|| = 17.2 at T = 1; real form uses J with J^2 = -1
+[PASS] M8 Sorkin: Lambda ~ 1/sqrt(V) has the observed order: 1/sqrt(V) = 1.39e-122, observed Lambda = 2.85e-122 (Planck units), ratio 2.06; naive vacuum energy ~ 1
+
+8/8 checks pass
