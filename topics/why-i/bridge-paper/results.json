@@ -1,0 +1,102 @@
+{
+ "P1 theorem checks re-run": {
+  "pass": true,
+  "msg": "rotations-force-i/checks.py: 32 pass, 0 fail"
+ },
+ "I1 Tsallis entropy composes by the law": {
+  "pass": true,
+  "msg": "S(AB) = S(A)+S(B)+k S(A)S(B), k = 1-q; max error 4.4e-16"
+ },
+ "I2 linear mixing pins k = 0": {
+  "pass": true,
+  "msg": "grouping gap Shannon 0.0e+00, Tsallis q=2 (k=-1) 0.019"
+ },
+ "I3 law interferes at every order, quantum stops at 2": {
+  "pass": true,
+  "msg": "law: I2 = k ab, I3 = k^2 abc; quantum: I2 = 0.924, I3 = -4.4e-16"
+ },
+ "I4 three-slit cap": {
+  "pass": true,
+  "msg": "|k| < 0.073 (Kauten 2017), < 0.73 (Sinha 2010)"
+ },
+ "I5 XOR is the law at k = -2": {
+  "pass": true,
+  "msg": "a + b - 2ab = a XOR b on {0,1}"
+ },
+ "I6 ball gives 2*sqrt2, square gives 4": {
+  "pass": true,
+  "msg": "circle max 2.828427; ceiling 2^(2-1/a): a=1 -> 2, a=2 -> 2.8284, a->inf -> 4"
+ },
+ "H1 energy zero is a convention in QM": {
+  "pass": true,
+  "msg": "shift by c*1: change 1.3e-15; shift by c*G (non-commuting): change 0.75"
+ },
+ "H2 potential zero is physical in a non-Abelian field": {
+  "pass": true,
+  "msg": "|[A, phi]| = 0.862 (su(2)); Abelian = 0.0"
+ },
+ "H3 a constant energy sources gravity": {
+  "pass": true,
+  "msg": "L = -rho sqrt(-g) gives T_mn = -rho g_mn (a cosmological constant), not zero"
+ },
+ "H4 action: same shift for every path in QM, different for every geometry in gravity": {
+  "pass": true,
+  "msg": "path action difference stays 0.3346 for c = 0,1,5; geometry action difference -rho*dV = [-0.0, -2.375, -11.875]"
+ },
+ "H5 imaginary k turns, real k grows": {
+  "pass": true,
+  "msg": "|e^(i t)| = 1; de Sitter a = e^(Ht), H = sqrt(8 pi G rho/3) solves a\"/a = 8piG rho/3; a(2) = [1.784, 3.183, 10.13] for rho = 0.01, 0.04, 0.16"
+ },
+ "H6 entropy leg sits at k = 0": {
+  "pass": true,
+  "msg": "tension(n = 1-k) = 0 only at k = [0]"
+ },
+ "H7 fixed volume makes the constant a convention again": {
+  "pass": true,
+  "msg": "trace-free part of -rho g_mn is 0 (drops out of unimodular field equations); weight ratio 2.225541 for rho = 0,1,5"
+ },
+ "G1 frame dragging 2J/r^3": {
+  "pass": true,
+  "msg": "r^3 * omega -> 2*M*a = 2J with J = M a"
+ },
+ "G2 the shift by i*a gives Kerr r": {
+  "pass": true,
+  "msg": "sqrt((x,y,z - i a)^2) = r_K - i a z/r_K at a sample point: r_K = 1.555787"
+ },
+ "U1 upstream outputs show no failures, bridges-study hashes verify": {
+  "pass": true,
+  "msg": "6 recorded outputs read, 0 [FAIL] lines; bridges-study SHA256SUMS verified"
+ },
+ "upstream": {
+  "rotations-force-i": {
+   "file": "why-i/rotations-force-i/checks_output.txt",
+   "sha256": "3001e226346730b0fdfd8571f8089c55213f517048adf2cd14ba47ec570ca030",
+   "fail_lines": 0
+  },
+  "spin-i-tie": {
+   "file": "spin-i-tie/checks_output.txt",
+   "sha256": "cb0752c7d5deb28c72a3a70d0f0ea051421f9431c329893a193f6ec42916ba3f",
+   "fail_lines": 0
+  },
+  "three-slit-cap": {
+   "file": "spin-i-tie/three-slit-cap/checks_output.txt",
+   "sha256": "e1c2811f80cab7b232b86761fb4258b74414db6494d8b86466d2b6bfeb3fb9c1",
+   "fail_lines": 0
+  },
+  "spinning-river": {
+   "file": "gravity-from-theory/spinning-river/checks_output.txt",
+   "sha256": "095123762d70888fcdda9a852806b1baa3a2afcd274055131bbbf2b992d1ddce",
+   "fail_lines": 0
+  },
+  "bridges-study": {
+   "file": "bridges-study/checks_output.txt",
+   "sha256": "8218b02cf243499cd4118102f88c4a007aa347f253aa67c9bd1bebb582dc9795",
+   "fail_lines": 0
+  },
+  "clock-test": {
+   "file": "spin-i-tie/clock-test/checks_output.txt",
+   "sha256": "fc9b965545fff37a6365da9f3e7f0953a3e5bc198b19ef538d54d80816d5a62f",
+   "fail_lines": 0
+  }
+ }
+}

@@ -1,0 +1,19 @@
+[PASS] P1 theorem checks re-run: rotations-force-i/checks.py: 32 pass, 0 fail
+[PASS] I1 Tsallis entropy composes by the law: S(AB) = S(A)+S(B)+k S(A)S(B), k = 1-q; max error 4.4e-16
+[PASS] I2 linear mixing pins k = 0: grouping gap Shannon 0.0e+00, Tsallis q=2 (k=-1) 0.019
+[PASS] I3 law interferes at every order, quantum stops at 2: law: I2 = k ab, I3 = k^2 abc; quantum: I2 = 0.924, I3 = -4.4e-16
+[PASS] I4 three-slit cap: |k| < 0.073 (Kauten 2017), < 0.73 (Sinha 2010)
+[PASS] I5 XOR is the law at k = -2: a + b - 2ab = a XOR b on {0,1}
+[PASS] I6 ball gives 2*sqrt2, square gives 4: circle max 2.828427; ceiling 2^(2-1/a): a=1 -> 2, a=2 -> 2.8284, a->inf -> 4
+[PASS] H1 energy zero is a convention in QM: shift by c*1: change 1.3e-15; shift by c*G (non-commuting): change 0.75
+[PASS] H2 potential zero is physical in a non-Abelian field: |[A, phi]| = 0.862 (su(2)); Abelian = 0.0
+[PASS] H3 a constant energy sources gravity: L = -rho sqrt(-g) gives T_mn = -rho g_mn (a cosmological constant), not zero
+[PASS] H4 action: same shift for every path in QM, different for every geometry in gravity: path action difference stays 0.3346 for c = 0,1,5; geometry action difference -rho*dV = [-0.0, -2.375, -11.875]
+[PASS] H5 imaginary k turns, real k grows: |e^(i t)| = 1; de Sitter a = e^(Ht), H = sqrt(8 pi G rho/3) solves a"/a = 8piG rho/3; a(2) = [1.784, 3.183, 10.13] for rho = 0.01, 0.04, 0.16
+[PASS] H6 entropy leg sits at k = 0: tension(n = 1-k) = 0 only at k = [0]
+[PASS] H7 fixed volume makes the constant a convention again: trace-free part of -rho g_mn is 0 (drops out of unimodular field equations); weight ratio 2.225541 for rho = 0,1,5
+[PASS] G1 frame dragging 2J/r^3: r^3 * omega -> 2*M*a = 2J with J = M a
+[PASS] G2 the shift by i*a gives Kerr r: sqrt((x,y,z - i a)^2) = r_K - i a z/r_K at a sample point: r_K = 1.555787
+[PASS] U1 upstream outputs show no failures, bridges-study hashes verify: 6 recorded outputs read, 0 [FAIL] lines; bridges-study SHA256SUMS verified
+
+17/17 checks pass
