@@ -1,0 +1,71 @@
+{
+ "prediction_written_utc": "2026-11-28T00:20:45Z",
+ "prediction_sha256": "3c304b0b8a318e3ad4648d244594f1881bb3fd079dcfc20571ec34132bf32782",
+ "measured": {
+  "source": "GWTC-4.0 TGR II (arXiv:2603.19020), Table 2, d_phi6 (3PN non-log), 90% credible",
+  "FTI_hierarchical": [
+   0.0,
+   -0.18,
+   0.18
+  ],
+  "FTI_restricted": [
+   -0.01,
+   -0.06,
+   0.06
+  ],
+  "TIGER_hierarchical": [
+   0.0,
+   -0.29,
+   0.28
+  ],
+  "TIGER_restricted": [
+   0.0,
+   -0.14,
+   0.13
+  ]
+ },
+ "by_mass_ratio": {
+  "0.2": {
+   "q": 0.382,
+   "floor_fraction": 0.693,
+   "times_the_upper_bound": {
+    "FTI_hierarchical": 3.8,
+    "FTI_restricted": 11.5,
+    "TIGER_hierarchical": 2.5,
+    "TIGER_restricted": 5.3
+   }
+  },
+  "0.2222": {
+   "q": 0.4999,
+   "floor_fraction": 0.669,
+   "times_the_upper_bound": {
+    "FTI_hierarchical": 3.7,
+    "FTI_restricted": 11.1,
+    "TIGER_hierarchical": 2.4,
+    "TIGER_restricted": 5.1
+   }
+  },
+  "0.24": {
+   "q": 0.6667,
+   "floor_fraction": 0.654,
+   "times_the_upper_bound": {
+    "FTI_hierarchical": 3.6,
+    "FTI_restricted": 10.9,
+    "TIGER_hierarchical": 2.3,
+    "TIGER_restricted": 5.0
+   }
+  },
+  "0.25": {
+   "q": 1.0,
+   "floor_fraction": 0.646,
+   "times_the_upper_bound": {
+    "FTI_hierarchical": 3.6,
+    "FTI_restricted": 10.8,
+    "TIGER_hierarchical": 2.3,
+    "TIGER_restricted": 5.0
+   }
+  }
+ },
+ "test_body": 0.0,
+ "verdict": "If the rules got every rational part of the third level right, their missing pi^2 alone would move phi_6 by 0.65-0.69 of itself for the comparable-mass binaries that dominate the catalogue; the 66-event bound allows 0.18 (hierarchical) or 0.06 (all events sharing one value). The structural miss is certain; its size is a floor only if the rational parts agree."
+}

@@ -88,6 +88,10 @@ How it got here:
    push the other half (extra path), the twist 0.02 ns. Written down before comparing, with the dials from Parts 3–4:
    γ = 1. Cassini measured 1.000021 ± 0.000023; Kerr predicts the same, so this confirms the push, not the river over
    Kerr.
+23. **Two bodies at the third level (Part 24):** the rules' numbers are rational, relativity's third level has π²,
+   so the rules must stop matching there at every mass ratio except a test body. If the rest matched, the missing π²
+   alone would shift LIGO's third-level phase term by 0.65 of itself at equal masses; 66 events allow 0.06 to 0.18.
+   The fix it points to: field energy acting on itself.
 
 The turn shows up in a measurable place. The cell's clock leg doesn't close around the spin axis: after one lap at
 the equator it is off by 2πa. That is exactly the shift in Kerr's orbital periods: prograde orbits take 2πa longer,
@@ -112,7 +116,7 @@ three outside-gravity look-alikes:
 Right: a spinning hole. The radial leg is also pushed by −v·α along the azimuth leg: the turn, a second shear. The
 two shears commute. Both sit at the dial's flat middle, where boosts and turns both become shears.*
 
-All numbers are from `checks.py` (**129/129 pass**, about 25 minutes). Curvature is computed with exact symbolic
+All numbers are from `checks.py` (**134/134 pass**, about 25 minutes). Curvature is computed with exact symbolic
 derivatives and 50-digit arithmetic at sample points (`numgr.py`).
 
 ---
@@ -2341,6 +2345,100 @@ the perihelion factor would be (2μ² + ν)/3 and the delay's ν, free to disagr
 - **Known:** the Shapiro delay (Shapiro 1964), its half from clocks and half from space in Eddington's γ, the
   gravitomagnetic delay from a body's spin, and Cassini's measurement.
 
+## Part 24. Two bodies at the third level: where the rules must stop matching (round 30)
+
+*DRAFT, round 30 (Nov 28, 2026). Scripts: `third_level_predict.py` (the prediction), then `third_level_compare.py`
+(the comparison). Checks TH1–TH5. Lean: `third_level_phase_weight`, `pi_floor_phase`.*
+
+![Fig 38](figures/fig38_third_level.png)
+
+*Fig 38. (a) The π² part of body 1's clock-rate coefficient at the third level (x⁴), across every mass ratio from a
+test body (left) to the big body (right). General relativity has it; the rules can't make it. It is zero only for a
+test body, rises at the self-force slope 41π²/32 for a small body, and fades as the second power of the other body's
+mass when body 1 is the big one. (b) The size floor, written before any measured bound was looked up, against the
+66-event bound from GWTC-4.0. (c) How much of the binding energy the π² term carries at equal masses, from wide orbits
+(the double pulsar) to tight ones (the last stable orbit).*
+
+### 24.1 The test
+
+Parts 9 and 10 took the two-body rules to the second level (2PN): the three rules missed by a clean polynomial, and
+adding field energy as a fourth rule, with its shapes read from relativity, closed the gap at every mass ratio. Brennan
+asked where the rules stop matching at the next level, across the big and the small and everywhere in between.
+
+Building the rules' whole third-level field would be a long calculation. One property settles the question without
+it. Every piece the rules use (the light-speed potentials, the multiplied clocks, the dressed masses, Fock's
+ln(r₁ + r₂ + r₁₂) pieces and the four field-on-field integrals) is a closed form whose value at a body is a rational
+number at a rational mass ratio. Every second-level coefficient they produced was rational (TH3). So their third-level
+numbers will be rational too.
+
+Relativity's are not. Its third-level energy of a circular binary has the term −(205π²/96)ν x⁴ (Blanchet, Living
+Reviews in Relativity 17, 2 (2014), Eq. 233). Through the first law of binary mechanics (Le Tiec, Blanchet and Whiting
+2012), body 1's clock rate inherits a π² term 41π² m₁(m₁ − 6)(m₁ − 1)²/192 at x⁴ (TH2). A rational number can't
+equal a rational number plus a nonzero multiple of π², so:
+
+- **The rules stop matching at the third level, at every mass ratio except a test body.** A test body sits in one
+  exact Schwarzschild shell, which the river reproduces at every level.
+- **The small end already misses.** For a small body the π² term is first order in its mass, −41π²m₁/32: the known
+  self-force value, also found in numerical self-force calculations (Blanchet, Detweiler, Le Tiec and Whiting 2010).
+- **The cause is physics the rules leave out.** In relativity the π² comes from gravity's field energy acting on its
+  own field energy (the cubic and higher field-on-field terms). The fourth rule has field energy acting on the bodies'
+  fields once; nothing in the rules makes it act on itself.
+
+### 24.2 How big, predicted first (TH4)
+
+The π² part is the piece the rules are sure to lack. If they got every rational part right, the energy would be off by
+δe₃ = +205π²ν/96. With the emitted power kept as relativity's (the rules' power is untested), the stationary-phase rule
+φₖ = 40cₖ/((k − 8)(k − 5)) (TH1 checks it on φ₂ to φ₄) moves the third-level phase coefficient by Δφ₆ = −80 δe₃ =
+−(1025/6)π²ν.
+
+`third_level_predict.py` holds no measured bound. It wrote `third_level_prediction.json` at 00:20:45 UTC on Nov 28
+(script sha256 3c304b0b…), and the two files were committed on their own as 82b48d2 before the bound below was looked
+up. The fractional shift that gravitational-wave tests report:
+
+| binary | ν | floor: fractional shift of φ₆ |
+|---|---|---|
+| test body | 0 | 0 |
+| about 1 : 2.6 | 0.20 | +0.69 |
+| about 1 : 2 | 0.222 | +0.67 |
+| equal masses | 0.25 | +0.65 |
+
+Below ν ≈ 0.1 the third-level phase coefficient itself passes through zero, so a fractional shift stops meaning much
+there; Fig 38(b) starts at ν = 0.1.
+
+### 24.3 Compared (TH5)
+
+GWTC-4.0's parameterized tests (LIGO, Virgo and KAGRA, [arXiv:2603.19020](https://arxiv.org/abs/2603.19020), Table 2)
+combine 66 events, mostly comparable-mass black-hole pairs:
+
+| analysis | allowed fractional shift of φ₆ (90%) |
+|---|---|
+| FTI, each event its own value (hierarchical) | 0.00 ± 0.18 |
+| TIGER, hierarchical | 0.00, +0.28 / −0.29 |
+| FTI, all events one value | −0.01 ± 0.06 |
+| TIGER, all events one value | 0.00, +0.13 / −0.14 |
+
+The floor at equal masses, 0.65, is 2.3 to 11 times what these allow.
+
+### 24.4 What this means, on its own merits
+
+- **What it shows for certain:** the rules as they stand miss relativity at the third level for every pair of masses
+  except a test body. That is a theorem about rational numbers, not a fit.
+- **What it shows if the rest matched:** the data rule out a river that lacks the π², by a wide margin, for the
+  comparable-mass binaries LIGO sees.
+- **What it doesn't show:** the actual size of the miss. The rules' rational third-level number is not computed here,
+  and in principle it could land near relativity's π² by accident. The emitted power at the third level is also
+  untested. Across orbit sizes the miss is invisible for wide orbits: about 4 parts in 10¹⁶ of the energy for the
+  double pulsar, about 1 part in 40 at the last stable orbit (Fig 38c).
+- **Lead?** Yes. It names the next rule the river needs, and says the data want it at close to full strength:
+  gravity's field energy has to gravitate on itself, not only on the bodies. Field energy acting on itself without
+  end is what turns a linear field into relativity (the Feynman–Deser bootstrap), so this is where the river either
+  finds its own reason for that rule or becomes relativity written in its own pieces. The test: add field-on-field-on-
+  field terms as a fifth rule and see whether the 41π²/32 comes out at the small end.
+- **Ours, as far as a short search found:** the rationality argument applied to the river's rules, and the π²-only
+  floor held against the GWTC-4.0 bound.
+- **Known:** the 3PN energy and its π² (Blanchet and collaborators; Damour, Jaranowski and Schäfer), the first law,
+  the self-force value 41π²/32, the stationary-phase phase coefficients and the GWTC-4.0 bounds.
+
 ## Verdict, on its own merits
 
 - **Holds:** full Kerr comes out of a flat lattice plus cells that each carry a velocity and a turn. The equations
@@ -2427,9 +2525,9 @@ the perihelion factor would be (2μ² + ν)/3 and the delay's ν, free to disagr
 
 ## Files
 
-- `checks.py`: 129 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
+- `checks.py`: 134 checks (K1–K7 the spinning river, F1–F3 frames, D1–D6 deriving the turn, S1–S4 deriving the
   speed law, T1–T5 the turn from the shift, C1–C5 charge, B1–B5 two bodies, O1–O6 two bodies in orbit, O7–O8 the
-  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared), writes `checks_output.txt`, `results.json`.
+  next level of detail, O9–O12 the fourth rule, KS1–KS7 Kerr's orbit factor split, TW1–TW5 why only one −3, TL1–TL5 tilted orbits, PL1–PL4 Kerr's orbits over the poles, PX1–PX4 Kerr's polar orbit split, JB1–JB4 push and twist as one jet, WL1–WL4 one law for both wobbles, PC1–PC4 Kerr as Newton's ring plus one term, RT1–RT4 the one term piece by piece, EQ1–EQ3 the equator split three ways, KN1–KN4 charge piece by piece, SH1–SH4 the shadow piece by piece, EC1–EC4 the radar echo predicted then compared, TH1–TH5 two bodies at the third level), writes `checks_output.txt`, `results.json`.
 - `next_order.py`: the 2PN test of Part 9, body 1's clock rate from the rules and from the first law, exact fractions;
   `python3 next_order.py` writes `next_order.json` (seven mass ratios, the fit, the held-out ratio, the two rule
   swaps; about 5 minutes).
@@ -2478,6 +2576,11 @@ the perihelion factor would be (2μ² + ν)/3 and the delay's ν, free to disagr
   seconds).
 - `echo_compare.py`: Part 23's comparison of `echo_prediction.json` with Cassini (Bertotti, Iess & Tortora 2003);
   writes `echo_compare.json` (instant).
+- `third_level_predict.py`: Part 24's prediction, written before the comparison and holding no measured bound: body
+  1's clock rate through x⁴ from the first law, the π² term, the stationary-phase check on φ₂–φ₄ and the π²-only floor
+  across mass ratios; writes `third_level_prediction.json` (seconds).
+- `third_level_compare.py`: Part 24's comparison of `third_level_prediction.json` with the GWTC-4.0 bound on the
+  third-level phase term (arXiv:2603.19020, Table 2); writes `third_level_compare.json`.
 - `fourth_rule_closed.py`: the closed-form field-energy pieces (Fock's function) and their finite parts at each body.
 - `fourth_rule_integrals.py`: the four field-on-field integrals; writes `fourth_rule_integrals.json`; `--cross` adds
   the cross-checks (about 2 minutes, a few more with `--cross`).
@@ -2485,8 +2588,8 @@ the perihelion factor would be (2μ² + ν)/3 and the delay's ν, free to disagr
   about 5 minutes on 4 cores).
 - `numgr.py`: curvature at a point, exact derivatives and 50-digit arithmetic.
 - `grtools.py`: symbolic helper shared with the earlier pages.
-- `figures.py`: the thirty-seven figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
-  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`).
+- `figures.py`: the thirty-eight figures in `figures/` (Figs 19–21 need `orbits.json`, Fig 22 `next_order.json`,
+  Fig 23 `fourth_rule.json`, Fig 24 `kerr_split.json`, Fig 25 `tower.json`, Fig 26 `tilt.json`, Fig 27 `polar.json`, Fig 28 `polar_split.json` and `polar.json`, Fig 29 `jet_boost.json`, Fig 30 `wobble_law.json`, Fig 31 `polar_coupling.json`, Fig 33 `river_term.json`, Fig 34 `equator_split.json`, Fig 35 `kn_split.json`, Fig 36 `shadow_split.json`, Fig 37 `echo_prediction.json` and `echo_compare.json`, Fig 38 `third_level_prediction.json` and `third_level_compare.json`).
 - `lean/SpinningRiver.lean`: `shear_sq`, `cellMap_mul`, `shear_layers`, `kerr_period`; round 7 adds `area_law`,
   `rim_at_light`, `tphi_block`, `horizon_rate`; round 8 adds `complex_distance`, `conj_product`; round 9 adds `ray_norm`; round 11 adds `velocity_addition`, `strut_push`; round 12 adds `clock_multiply`; round 13 adds `two_pn_miss`; round 14 adds `fourth_rule_residual`, `fourth_rule_point_term`; round 15 adds `own_field_squared`; round 16 adds `kerr_factor_pieces`, `boost_push`, `ring_speed`; round 17 adds `shifted_orbit_factor`; round 18 adds `shifted_laplace`, `kerr_laplace_sum`; round 19 adds `kerr_polar_prefactor_newton`, `kerr_polar_prefactor_schwarzschild`; round 20 adds `ee_alone_polar_prefactor`, `ee_alone_polar_modulus`, `equator_push_twist_cancel`, `polar_push_total`; round 21 adds `jet_minus_two_velocities`, `jet_push_on_orbit`, `two_velocity_spin_factor`, `polar_turning_ratio`; round 22 adds `kerr_radial_wobble`, `kerr_vertical_wobble`, `circular_binding`, `mino_radial_stiffness`, `mino_vertical_stiffness` (these two now take
   `(2 : K) ≠ 0`, as in the library's copy: in characteristic 2 both orbit conditions lose their M terms); round 23 adds
@@ -2497,9 +2600,10 @@ the perihelion factor would be (2μ² + ν)/3 and the delay's ν, free to disagr
   `square_from_three_sources`, `generic_radial_stiffness`, `generic_vertical_stiffness`,
   `equator_ratio_three_sources`; round 27 adds `kn_ring_plus_one_term`, `kn_equator_split`,
   `charged_radial_stiffness`, `kn_ratio_three_sources`; round 28 adds `time_part_light`, `push_photon_sphere`,
-  `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion` (written here,
-  checked in sympy). Rounds 18–29's theorems all compile in the library (as `Topics.SpinningRiver`; `ring`,
-  `field_simp`, `linear_combination` and `mul_left_cancel₀` written as `grind`). It builds on `FusedAlgebra.Topics.JetFields`.
+  `push_shadow_radius`; round 29 adds `push_null_term`, `one_dial_beta_gamma`, `square_dial_perihelion`; round 30 adds `third_level_phase_weight`, `pi_floor_phase`.
+  Rounds 27–28's were checked in sympy; round 29's have compiled in the library; round 30's are written here, not yet
+  compiled.
+  Rounds 18–26's theorems have compiled in the library (as `Topics.SpinningRiver`). It builds on `FusedAlgebra.Topics.JetFields`.
 
 ## Known vs ours
 
@@ -2563,3 +2667,4 @@ the perihelion factor would be (2μ² + ν)/3 and the delay's ν, free to disagr
 | charge entering every piece of the shell in mass's slot (2Mr → 2Mr − Q², the mass less the field's energy outside r); the time part as Newton's pull of that mass function; Kerr–Newman's equatorial ratio as the exact sum [1 − 3q² + s²(1 + q²)/V²] + [−6v² + 3s² − s⁴/V²] + [8qV] by piece | **ours** as far as a short search found (KN1–KN4); Kerr–Newman, its Kerr–Schild form, Carter's separation, the mass function and the Reissner–Nordström and Kerr–Newman epicyclic frequencies known |
 | the shadow piece by piece: the time part alone as Newton's light (bending exactly 2 arctan(M/b), no capture, no shadow), the horizon factor only with the push, ring + push's centred squashed shadow, the twist's sideways shift and D shape | **ours** as far as a short search found (SH1–SH4); the half-and-half of light bending (Soldner 1801, Einstein 1911/1915, Eddington's γ), the photon sphere, Bardeen's Kerr shadow (1973) and the EHT measurements known |
 | the radar echo piece by piece: the time part's half as slow clocks, the push's as extra path (γ = λ²), the twist's −8Ma/b; one push dial tying delay, bending and perihelion (β + γ = 2); the prediction written before comparing with Cassini | **ours** as far as a short search found (EC1–EC4); the Shapiro delay (1964), its clocks-plus-space halves in Eddington's γ, the spin (gravitomagnetic) delay and Cassini's γ (2003) known |
+| two bodies at the third level: the rules' coefficients rational, relativity's π² (zero only for a test body, self-force slope at the small end), the π²-only floor on LIGO's φ₆ predicted first and held against GWTC-4.0 | **ours** as far as a short search found (TH1–TH5); the 3PN energy and its π², the first law, the self-force 41π²/32, the phase coefficients and the GWTC-4.0 bounds known |

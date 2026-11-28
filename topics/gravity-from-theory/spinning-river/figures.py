@@ -1979,6 +1979,65 @@ def fig37():
     save(fig, "fig37_echo_split.png")
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37):
+def fig38():
+    pr = json.load(open(os.path.join(HERE, "third_level_prediction.json")))
+    cm = json.load(open(os.path.join(HERE, "third_level_compare.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(18.5, 6.4))
+    # (a) the pi^2 the rules can't make, across mass ratios, in body 1's redshift
+    ax = axs[0]
+    m1 = np.linspace(0, 1, 400)
+    c = 41*np.pi**2*m1*(m1 - 6)*(m1 - 1)**2/192
+    ax.plot(m1, -c, color=RED, lw=2.4, label="relativity's $\\pi^2$ part (the rules have none)")
+    ax.plot(m1[m1 < 0.25], 41*np.pi**2/32*m1[m1 < 0.25], color="k", ls=":", lw=1.6,
+            label="small-body slope $41\\pi^2/32$ (the self-force value)")
+    ax.axhline(0, color=GREY, lw=0.8)
+    ax.scatter([0], [0], s=90, color=GREEN, zorder=5, label="test body: the river is exact (one Schwarzschild shell)")
+    ax.scatter([0.5], [-41*np.pi**2*0.5*(0.5 - 6)*0.25/192], s=60, color=BLUE, zorder=5, label="equal masses")
+    ax.set_xlabel("body 1's share of the total mass  (small  $\\rightarrow$  big)")
+    ax.set_ylabel("size of the $\\pi^2$ part of body 1's clock-rate coefficient at $x^4$")
+    ax.legend(fontsize=8.6, loc="upper right")
+    ax.set_title("(a) What the rules can't make: a $\\pi^2$ that is zero only\nfor a test body, at every ratio in between")
+    # (b) predicted floor against the 66-event bound
+    ax = axs[1]
+    rows = pr["floor_prediction"]
+    nus = np.array([r["nu"] for r in rows]); fr = np.array([r["fractional_d_phi6"] for r in rows])
+    keep = nus >= 0.1
+    nn = np.linspace(0.1, 0.25, 200)
+    ax.plot(nus[keep], fr[keep], "o-", color=RED, lw=2.2, label="predicted floor (written 00:20 UTC, before the bound)")
+    for (lab, k, col, al) in (("hierarchical, 66 events", "FTI_hierarchical", BLUE, 0.18),
+                              ("all events one value", "FTI_restricted", GREEN, 0.35)):
+        lo, hi = cm["measured"][k][1], cm["measured"][k][2]
+        ax.fill_between(nn, lo, hi, color=col, alpha=al, label=f"GWTC-4.0 allows ({lab}): {lo:+.2f} to {hi:+.2f}")
+    ax.axhline(0, color="k", lw=1.0, label="relativity")
+    ax.set_xlim(0.1, 0.25); ax.set_ylim(-0.35, 1.2)
+    ax.set_xlabel("symmetric mass ratio $\\nu$  (0.25 = equal masses; 0.1 is about 1 : 8)")
+    ax.set_ylabel("fractional shift of the third-level phase term $\\delta\\hat\\varphi_6$")
+    ax.legend(fontsize=8.4, loc="center right")
+    ax.text(0.02, 0.03, "floor = the shift if the rules got every rational part right\nand missed only the $\\pi^2$; "
+            "emitted power kept as relativity's.\nBelow $\\nu \\approx 0.1$ the phase term passes through zero,\n"
+            "so a fractional shift stops meaning much there.", transform=ax.transAxes, fontsize=8.4,
+            bbox=dict(fc="white", ec=GREY, alpha=0.9))
+    ax.set_title("(b) Predicted first, then compared: the missing $\\pi^2$ alone\nwould be 2.3 to 11 times what the data allow")
+    # (c) how big the miss is across orbit tightness (equal masses)
+    ax = axs[2]
+    xx = np.logspace(-7, np.log10(1/6), 300)
+    de3 = 205*np.pi**2/96*0.25
+    ax.loglog(xx, de3*xx**3, color=RED, lw=2.4, label="share of the binding energy the $\\pi^2$ term carries")
+    marks = [(4.35e-6, "double pulsar"), (4.66e-2, "LIGO band opens\n(30 + 30 suns, ~10 Hz)"), (1/6, "last stable orbit")]
+    for xv, lab in marks:
+        ax.axvline(xv, color=GREY, ls="--", lw=1)
+        ax.text(xv*1.15, 1e-17, lab, rotation=90, fontsize=8.6, va="bottom")
+    ax.set_xlabel("orbit tightness $x = (Gm\\omega/c^3)^{2/3}$  (wide $\\rightarrow$ tight)")
+    ax.set_ylabel("fraction of the energy")
+    ax.set_ylim(1e-18, 1)
+    ax.legend(fontsize=8.6, loc="upper left")
+    ax.set_title("(c) Wide to tight: invisible for pulsars, about\n1 part in 40 at the last stable orbit")
+    fig.suptitle("Fig 38. Two bodies at the third level: where the river's rules must stop matching relativity (DRAFT)",
+                 fontsize=13)
+    fig.tight_layout()
+    save(fig, "fig38_third_level.png")
+
+
+for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig11, fig12, fig13, fig14, fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29, fig30, fig31, fig32, fig33, fig34, fig35, fig36, fig37, fig38):
     f()
 print("figures:", sorted(os.listdir(FIG)))

@@ -32,6 +32,8 @@ EQ: the equator split three ways: which piece of the field gives each term of ro
 KN: charge on the spinning hole: which piece of the river gives each charge term (round 27, kn_split.py ->
     kn_split.json).
 SH: the black hole's shadow piece by piece (round 28, shadow_split.py -> shadow_split.json).
+TH: two bodies at the third level, where the rules must stop matching (round 30, third_level_predict.py,
+    then third_level_compare.py against GWTC-4.0).
 EC: the radar echo past the Sun piece by piece, predicted before comparing (round 29, echo_predict.py ->
     echo_prediction.json, then echo_compare.py -> echo_compare.json).
 Curvature is computed with exact symbolic derivatives and 50-digit arithmetic at sample points (numgr.py):
@@ -1778,6 +1780,44 @@ check("EC4 the prediction written first (echo_prediction.json: dials lambda = ta
       and cm_ec_["time_part_alone"]["pull_in_sigma"] > 1e4 and cm_ec_["twist"]["twist_over_resolution"] < 0.1,
       cm_ec_)
 results["EC_echo_split"] = {"prediction": pr_ec_["prediction"], "compare": cm_ec_}
+
+
+# ---------------------------------------------------------------- TH: two bodies at the third level (round 30)
+import third_level_predict as tl3_  # noqa: E402
+cs_tl_, m1_tl_ = tl3_.redshift_x4()
+pi_tl_ = sp.factor(cs_tl_[4].coeff(sp.pi**2))
+check("TH1 the stationary-phase rule phi_k = 40 c_k/((k-8)(k-5)) reproduces the known phase coefficients phi_2, "
+      "phi_3 = -16 pi and phi_4 from the known energy and emitted power",
+      all(tl3_.phase_rule_check().values()))
+check("TH2 the first law with the known third-level energy gives the round-13 redshift through x^3 and, at x^4, a pi^2 "
+      "term 41 m1 (m1 - 6)(m1 - 1)^2 / 192 for body 1: zero only for a test body (m1 = 0), first order in the small "
+      "mass (-41 pi^2 m1/32, the self-force value) and second order when body 1 is the big one",
+      all(sp.expand(cs_tl_[k] - tl3_.next_order_truth(m1_tl_)[k]) == 0 for k in range(4))
+      and sp.expand(pi_tl_ - sp.Rational(41, 192)*m1_tl_*(m1_tl_ - 6)*(m1_tl_ - 1)**2) == 0
+      and sp.limit(pi_tl_/m1_tl_, m1_tl_, 0) == sp.Rational(-41, 32))
+no_tl_ = json.load(open(os.path.join(HERE, "next_order.json")))
+fr_tl_ = json.load(open(os.path.join(HERE, "fourth_rule.json")))
+check("TH3 every coefficient the rules produced at the second level is rational (next_order.json, all ratios), and so "
+      "are the four field-on-field integrals of the fourth rule: the rules' closed forms cannot make the pi^2",
+      all(sp.nsimplify(c).is_Rational for r in no_tl_["two_pn"].values() for c in r["rules"])
+      and all(sp.nsimplify(c).is_Rational for c in fr_tl_["f_values"].values()))
+de3_tl_, dphi_tl_, frac_tl_ = tl3_.floor_shift(sp.Rational(1, 4))
+check("TH4 the size floor: missing only the pi^2 piece moves the third-level phase coefficient by -80 delta e3 = "
+      "-(1025/6) pi^2 nu (power kept as in relativity), 0.65 of itself at equal masses and nothing for a test body",
+      abs(dphi_tl_ + 1025/6*np.pi**2/4) < 1e-9 and abs(frac_tl_ - 0.6464) < 1e-3
+      and tl3_.floor_shift(0)[1] == 0.0)
+
+
+tlc_ = json.load(open(os.path.join(HERE, "third_level_compare.json")))
+tlp_ = json.load(open(os.path.join(HERE, "third_level_prediction.json")))
+check("TH5 the floor was written before the bound (third_level_prediction.json, no measured bound used) and held "
+      "against GWTC-4.0's 66-event 3PN bound (arXiv:2603.19020, Table 2: +-0.18 hierarchical, +-0.06 restricted): "
+      "at equal masses the missing pi^2 alone is 0.65, outside both; a test body is untouched",
+      (not tlp_["uses_any_measured_bound"]) and tlc_["prediction_sha256"] == tlp_["script_sha256"]
+      and tlc_["by_mass_ratio"]["0.25"]["floor_fraction"] > tlc_["measured"]["FTI_hierarchical"][2]
+      and tlc_["by_mass_ratio"]["0.25"]["floor_fraction"] > tlc_["measured"]["TIGER_hierarchical"][2]
+      and tlc_["test_body"] == 0.0)
+
 
 n_pass = sum(1 for v_ in results.values() if isinstance(v_, dict) and v_.get("pass"))
 n_all = sum(1 for v_ in results.values() if isinstance(v_, dict) and "pass" in v_)
