@@ -532,6 +532,18 @@ theorem time_part_circle (m1 : K) :
     -((1 - m1)^2 + m1^2) - 8 * (m1 * (1 - m1)) = -1 - 6 * (m1 * (1 - m1)) := by
   grind
 
+/-- **The lag cancels the shape** (round 32): with D₁, D₂ the two bodies' velocity derivatives (written x, y),
+eight times the time part, −(x² + y²) − 8xy, plus four times the full time derivative (x + y)², is 3(x² + y²):
+the time part is (3/8)(D₁² + D₂²) up to a total time derivative, the piece the lag then removes. -/
+theorem lag_cancels_shape (x y : K) : -(x^2 + y^2) - 8 * x * y + 4 * (x + y)^2 = 3 * (x^2 + y^2) := by
+  grind
+
+/-- **What is left is a time derivative** (round 32): eight times (time part + lag), −(x² + y²) − 8xy − 3(x² + y²),
+is −4(x + y)², i.e. the sum is −½(D₁ + D₂)², the velocity part of −½ d²F/dt². -/
+theorem lagged_sum_is_time_derivative (x y : K) :
+    (-(x^2 + y^2) - 8 * x * y) + (-3 * (x^2 + y^2)) = -4 * (x + y)^2 := by
+  grind
+
 end Field
 
 end CircleOp.SpinningRiver

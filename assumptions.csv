@@ -3551,6 +3551,8 @@ FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.kerr_vertical_wobble,ye
 FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.kn_equator_split,yes,yes,yes,
 FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.kn_ratio_three_sources,yes,yes,yes,
 FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.kn_ring_plus_one_term,yes,yes,yes,
+FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.lag_cancels_shape,yes,yes,yes,
+FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.lagged_sum_is_time_derivative,yes,yes,yes,
 FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.mino_radial_stiffness,yes,yes,yes,
 FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.mino_vertical_stiffness,yes,yes,yes,
 FusedAlgebra.Topics.SpinningRiver,CircleOp.SpinningRiver.one_dial_beta_gamma,yes,yes,yes,
